@@ -1,5 +1,5 @@
 ---
-title: Vytvoření uživatelského rozhraní úhlů aplikace s rozhraním API Azure Cosmos DB pro MongoDB (Část3)
+title: Vytvoření rozhraní angular aplikace s rozhraním API Azure Cosmos DB pro MongoDB (část 3)
 description: Třetí část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,15 +11,15 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75444746"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – Sestavte uživatelské rozhraní pomocí úhlů.
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – vytvoření ui s úhlovým
 
-Tento kurz s více částmi ukazuje, jak vytvořit novou aplikaci napsanou v Node. js s Express a úhlovými a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API služby Cosmos DB pro MongoDB](mongodb-introduction.md).
+Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsanou v Souboru Node.js pomocí Express a Angular a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API Cosmos DB pro MongoDB](mongodb-introduction.md).
 
 Třetí část kurzu vychází z [části 2](tutorial-develop-mongodb-nodejs-part2.md) a zabývá se následujícími úlohami:
 
@@ -416,7 +416,7 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
 
 2. Ve Visual Studio Code přejděte zpět do souboru **heroes.components.ts**. Všimněte si, že na řádku `constructor(private heroService: HeroService) {}` (řádek 13) má `HeroService` červené podtržení. Klikněte na `HeroService` a na levé straně bloku kódu se zobrazí žárovka. Klikněte na žárovku a pak klikněte na **Importovat HeroService z umístění ./hero.service**. nebo **Importovat HeroService z umístění /app/hero.service**.
 
-    Kliknutím na žárovku se vloží nový řádek kódu na řádku 2. Pokud řádek 2 odkazuje na složku/App/Hero.Service, upravte ji tak, aby odkazovala na soubor Hero z místní složky (./Hero.Service). Řádek 2 by měl vypadat takto:
+    Kliknutím na žárovku se vloží nový řádek kódu na řádku 2. Pokud řádek 2 odkazuje na složku /app/hero.service, upravte ji tak, aby odkazovala na soubor hrdiny z místní složky (./hero.service). Řádek 2 by měl vypadat takto:
     
     ```javascript
     import { HeroService } from "./hero.service"

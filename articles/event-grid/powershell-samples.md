@@ -1,6 +1,6 @@
 ---
 title: Ukázky Azure PowerShellu – Event Grid | Microsoft Docs
-description: Tento článek obsahuje tabulku s odkazy na Azure PowerShell ukázky skriptování pro Azure Event Grid.
+description: Tento článek obsahuje tabulku s odkazy na ukázky skriptování Azure PowerShellpro Azure Event Grid.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -11,10 +11,10 @@ ms.tgt_pltfrm: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: c3dea89b609dadb4cac26537c6669f5c7806f94e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76717528"
 ---
 # <a name="azure-powershell-samples-for-event-grid"></a>Ukázky Azure PowerShellu pro Event Grid
@@ -23,7 +23,7 @@ Následující tabulka obsahuje odkazy na ukázky Azure PowerShellu pro Event Gr
 
 | | |
 |-|-|
-|**Předplatná Event Gridu**||
+|**Odběry gridu událostí**||
 | [Přihlášení k odběru předplatného Azure](scripts/event-grid-powershell-azure-subscription.md)| Přihlásí se k odběru událostí předplatného Azure. |
 | [Přihlášení k odběru úložiště objektů blob](scripts/event-grid-powershell-blob.md)| Přihlásí se k odběru událostí účtu úložiště objektů blob. |
 | [Přihlášení k odběru vlastního tématu](scripts/event-grid-powershell-subscribe-custom-topic.md)| Přihlásí se k odběru událostí vlastního tématu. |

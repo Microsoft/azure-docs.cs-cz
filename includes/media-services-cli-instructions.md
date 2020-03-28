@@ -8,43 +8,43 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: db431d7815cfcc006563bd6da438154ef77ae6e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ebbac39c8850737ea6f9ef333e45d305a520655
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66814705"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79461210"
 ---
-## <a name="cli-shell"></a>Rozhraní příkazového řádku prostředí
+## <a name="use-cli-shell"></a>Použití prostředí CLI
 
-Doporučuje se použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) ke spuštění příkazů rozhraní příkazového řádku. **Cloud Shell** je zdarma, interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Ve službě Cloud Shell jsou předinstalované obvyklé nástroje Azure a jsou nakonfigurované pro použití s vaším účtem. Poskytuje možnost vybrat si prostředí, která nejlépe vyhovuje stylu vaší práce. Uživatelé Linuxu si mohou vybrat Bash. Uživatelé Windows se mohou rozhodnout pro PowerShell.
+Doporučujeme použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) ke spuštění příkazů příkazového příkazu. **Cloud Shell** je bezplatné interaktivní prostředí, které můžete použít ke spuštění kroků v tomto článku. Ve službě Cloud Shell jsou předinstalované obvyklé nástroje Azure a jsou nakonfigurované pro použití s vaším účtem. Poskytuje flexibilitu při výběru prostředí, které nejlépe vyhovuje vašemu stylu práce. Uživatelé Linuxu si můžou zvolit prostředí Bash, zatímco uživatelé Windows si můžou zvolit PowerShell.
 
-Můžete také nainstalovat rozhraní příkazového řádku místně. Zobrazit [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) pokyny pro vaši platformu.
+Můžete také nainstalovat cli místně. Pokyny pro vaši [platformu najdete v tématu Instalace příkazového příkazového příkazu k Nastavení nastavení si Azure.](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 ### <a name="sign-in"></a>Přihlášení
 
-Použití místní instalaci rozhraní příkazového řádku vyžaduje přihlášení do Azure. Tento krok není povinný pro Azure Cloud Shell. Přihlaste se `az login` příkazu.
+Použití místní instalace příkazového příkazového příkazu vyžaduje přihlášení do Azure. Tento krok není vyžadován pro Azure Cloud Shell. Přihlaste `az login` se pomocí příkazu.
 
-Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě budete muset otevřít stránku prohlížeče a postupujte podle pokynů v příkazovém řádku zadejte autorizační kód po přejití do https://aka.ms/devicelogin v prohlížeči.
+Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je třeba otevřít stránku prohlížeče a podle pokynů na příkazovém řádku zadat autorizační kód po přechodu do https://aka.ms/devicelogin prohlížeče.
 
-### <a name="specify-location-of-files"></a>Zadejte umístění souborů
+### <a name="specify-location-of-files"></a>Určení umístění souborů
 
-Mnoho příkazů rozhraní příkazového řádku Media Services umožňují předat parametr s názvem souboru. Pokud používáte **Cloud Shell**, můžete nahrát soubor do vašeho clouddrive (použijte PowerShell nebo Bash). 
+Mnoho příkazů rozhraní příkazu CLI služby Media Services umožňuje předat parametr s názvem souboru. Pokud používáte **Cloud Shell**, můžete nahrát soubor na cloudDrive (pomocí Bash nebo PowerShell). 
 
 ![Nahrání souborů]
 
-Určuje, zda používáte místní rozhraní příkazového řádku nebo **Cloud Shell**, budete muset zadat cestu k souboru podle operačního systému nebo službě Cloud Shell (Bashe nebo Powershellu), kterou používáte. Dole najdete několik příkladů:
+Ať už používáte místní CLI nebo **Cloud Shell**, musíte zadat cestu k souboru podle operačního systému nebo cloudového prostředí (Bash nebo PowerShell), které používáte. Níže jsou uvedeny některé příklady:
 
-Relativní cesta k souboru (všechny OS)
+Relativní cesta k souboru (všechny operační systém)
 
 * `@"mytestfile.json"`
 * `@"../mytestfile.json"`
 
-Absolutní cestu k souboru v systému Linux/Mac a operačního systému Windows
+Absolutní cesta k souboru na Linuxu/ Macu a Windows OS
 
 * `@ "/usr/home/mytestfile.json"`
-*   `@"c:\tmp\user\mytestfile.json"`
+*    `@"c:\tmp\user\mytestfile.json"`
 
-Použití `{file}` Pokud příkaz je požadující cestu k souboru. Například, `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`. <br/> Použití `@{file}` Pokud příkaz k načtení zadaného souboru. Například, `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`.
+Použijte, `{file}` pokud příkaz žádá o cestu k souboru. Například, `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`. <br/> Použijte, `@{file}` pokud se příkaz chystá načíst zadaný soubor. Například, `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`.
 
 [Nahrání souborů]: ./media/media-services-cli/upload-download-files.png

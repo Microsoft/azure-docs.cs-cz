@@ -1,279 +1,278 @@
 ---
-title: Vyhodnocování serverů pomocí importovaných dat serveru s využitím hodnocení serveru Azure Migrate
-description: Popisuje, jak vyhodnotit místní servery pro migraci do Azure pomocí Azure Migrateho posouzení serveru pomocí importovaných dat.
+title: Vyhodnoťte servery pomocí importovaných dat serveru pomocí azure migrate server assessment
+description: Popisuje, jak posoudit místní servery pro migraci do Azure s Azure Migrate Server Assessment pomocí importovaných dat.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079872"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79453642"
 ---
-# <a name="assess-servers-by-using-imported-data"></a>Posouzení serverů pomocí importovaných dat
+# <a name="assess-servers-by-using-imported-data"></a>Vyhodnocení serverů pomocí importovaných dat
 
-Tento článek vysvětluje, jak vyhodnotit místní servery pomocí nástroje [Azure Migrate: Nástroj pro vyhodnocení serveru](migrate-services-overview.md#azure-migrate-server-assessment-tool) pomocí importu metadat serveru ve formátu hodnot oddělených čárkami (CSV). Tato metoda posouzení nevyžaduje, abyste nastavili zařízení Azure Migrate, abyste mohli vytvořit posouzení. To je užitečné v těchto případech:
+Tento článek vysvětluje, jak posoudit místní servery pomocí nástroje [Azure Migrate: Server Assessment,](migrate-services-overview.md#azure-migrate-server-assessment-tool) importem metadat serveru ve formátu CSV (csv) oddělených čárkami. Tato metoda hodnocení nevyžaduje, abyste nastavili zařízení Azure Migrate k vytvoření hodnocení. Je užitečné, pokud:
 
-- Před nasazením zařízení chcete vytvořit rychlé a počáteční posouzení.
-- Zařízení Azure Migrate ve vaší organizaci nemůžete nasadit.
-- Nemůžete sdílet přihlašovací údaje, které povolují přístup k místním serverům.
-- Omezení zabezpečení brání v shromažďování a odesílání dat shromážděných zařízením do Azure. Data, která sdílíte, můžete řídit v importovaném souboru. Také velká část dat (například poskytování IP adres) je volitelná.
+- Chcete vytvořit rychlé počáteční posouzení před nasazením zařízení.
+- Zařízení Azure Migrate nelze nasadit ve vaší organizaci.
+- Nelze sdílet přihlašovací údaje, které umožňují přístup k místním serverům.
+- Omezení zabezpečení vám brání ve shromažďování a odesílání dat shromážděných zařízením do Azure. Data, která sdílíte v importovaném souboru, můžete ovládat. Velká část dat (například poskytnutí IP adres) je také nepovinná.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Pamatujte na tyto body:
+Uvědomte si tyto body:
 
-- V jednom souboru CSV můžete přidat maximálně 20 000 serverů.
-- Do Azure Migrate projektu můžete přidat až 20 000 serverů pomocí CSV.
-- Informace o serveru můžete odeslat do posouzení serveru několikrát pomocí CSV.
-- Shromažďování informací o aplikaci je užitečné při vyhodnocování místního prostředí pro migraci. Posouzení serveru ale aktuálně neprovádí vyhodnocení na úrovni aplikace nebo při vytváření posouzení nebere v úvahu aplikace.
+- Do jednoho souboru CSV můžete přidat maximálně 20 000 serverů.
+- Můžete přidat až 20 000 serverů v projektu Migrace Azure pomocí CSV.
+- Informace o serveru můžete nahrát do vyhodnocení serveru vícekrát pomocí csv.
+- Shromažďování informací o aplikaci je užitečné při vyhodnocování místního prostředí pro migraci. Posouzení serveru však aktuálně neprovádí hodnocení na úrovni aplikace nebo při vytváření hodnocení nebere v úvahu aplikace.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Nastavte Azure Migrate projekt.
-> * Do souboru CSV zadejte informace o serveru.
-> * Importujte soubor a přidejte informace o serveru do posouzení serveru.
-> * Vytvoření a kontrola posouzení.
+> * Nastavte projekt Migrace Azure.
+> * Vyplňte soubor CSV informacemi o serveru.
+> * Importujte soubor a přidejte informace o serveru do vyhodnocení serveru.
+> * Vytvořte a zkontrolujte hodnocení.
 
 > [!NOTE]
-> Kurzy ukazují nejjednodušší cestu k nasazení scénáře, abyste mohli rychle nastavit zkoušku konceptu. Kurzy používají výchozí možnosti, pokud je to možné, a nezobrazují všechna možná nastavení a cesty. Podrobné pokyny najdete v tématu návody.
+> Kurzy ukazují nejjednodušší cestu nasazení pro scénář, takže můžete rychle nastavit doklad o konceptu. Kurzy používají výchozí možnosti tam, kde je to možné, a nezobrazují všechna možná nastavení a cesty. Podrobné pokyny najdete v návodech k použití.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/pricing/free-trial/) než začnete.
 
-## <a name="set-azure-permissions-for-azure-migrate"></a>Nastavení oprávnění Azure pro Azure Migrate
+## <a name="set-azure-permissions-for-azure-migrate"></a>Nastavení oprávnění Azure pro migraci Azure
 
-Váš účet Azure potřebuje oprávnění k vytvoření projektu Azure Migrate.
+Váš účet Azure potřebuje oprávnění k vytvoření projektu Migrace Azure.
 
-1. V Azure Portal otevřete předplatné a vyberte **řízení přístupu (IAM)** .
-2. V části **kontrolovat přístup**Najděte příslušný účet a pak ho vyberte pro zobrazení oprávnění.
-3. Ujistěte se, že máte oprávnění **Přispěvatel** nebo **Owner** .
-    - Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého předplatného.
-    - Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte roli.
+1. Na webu Azure Portal otevřete předplatné a vyberte **řízení přístupu (IAM).**
+2. V **části Zkontrolovat přístup**vyhledejte příslušný účet a vyberte ho, chcete-li zobrazit oprávnění.
+3. Ujistěte se, že máte oprávnění **přispěvatele** nebo **vlastníka.**
+    - Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem předplatného.
+    - Pokud nejste vlastníkem předplatného, spolupracujte s vlastníkem a přiřaďte roli.
 
-## <a name="set-up-an-azure-migrate-project"></a>Nastavení Azure Migrateho projektu
+## <a name="set-up-an-azure-migrate-project"></a>Nastavení projektu migrace Azure
 
-Nastavení nového projektu Azure Migrate:
+Nastavení nového projektu Migrace Azure:
 
-1. V Azure Portal vyhledejte v části **všechny služby** **Azure Migrate**.
+1. Na webu Azure Portal vyhledejte v **části Všechny služby** **azure migrate**.
 2. V části **Služby** vyberte **Azure Migrate**.
-3. V části **Přehled**v části **zjišťování, vyhodnocení a migrace serverů**vyberte možnost **zhodnotit a migrovat servery**.
+3. V **části Přehled**vyberte v části Zjišťování **vyhodnocovat a migrovat servery**vyberte **Posuzovat a migrovat servery**.
 
-    ![Zjišťování a vyhodnocení serverů](./media/tutorial-assess-import/assess-migrate.png)
+    ![Zjišťování a posuzování serverů](./media/tutorial-assess-import/assess-migrate.png)
 
-4. V části **Začínáme**vyberte **Přidat nástroje**.
+4. V **možnosti Začínáme**vyberte **Přidat nástroje**.
 5. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.
-6. V části **Project Details (podrobnosti projektu**) zadejte název projektu a zeměpisnou oblast, ve které chcete vytvořit projekt. Další informace najdete tady:
+6. V **části PODROBNOSTI PROJEKTU**zadejte název projektu a zeměpisnou polohu, ve které chcete projekt vytvořit. Další informace najdete tady:
 
-    - Kontrola [podporovaných geografických](migrate-support-matrix.md#supported-geographies)oblastí. Zeměpisná oblast projektu slouží pouze k ukládání metadat shromážděných z místních virtuálních počítačů.
+    - Zkontrolujte [podporované zeměpisné oblasti](migrate-support-matrix.md#supported-geographies). Zeměpisná oblast projektu slouží pouze k ukládání metadat shromážděných z místních virtuálních počítačů.
     - Při spouštění migrace můžete vybrat jakoukoli cílovou oblast.
 
-    ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-import/migrate-project.png)
+    ![Vytvoření projektu migrace Azure](./media/tutorial-assess-import/migrate-project.png)
 
-7. Vyberte **Další**.
-8. V **nástroji vybrat nástroj pro posouzení**vyberte **Azure Migrate: posouzení serveru** > **Další**.
+7. Vyberte **další**.
+8. V **nástroji Pro výběr vyberte**možnost Migrace **Azure: Vyhodnocení serveru** > **Další**.
 
-    ![Vytvoření posouzení Azure Migrate](./media/tutorial-assess-import/assessment-tool.png)
+    ![Vytvoření vyhodnocení migrace Azure](./media/tutorial-assess-import/assessment-tool.png)
 
 9. V části **Vybrat nástroj pro migraci** vyberte **V tuto chvíli přeskočit přidání nástroje pro migraci** > **Další**.
-10. V okně **Revize + přidat nástroje**zkontrolujte nastavení a pak vyberte **Přidat nástroje**.
-11. Počkejte několik minut, než se projekt Azure Migrate nasadí. Pak přejdete na stránku projektu. Pokud se projekt nezobrazí, můžete k němu přejít z části **Servery** na řídicím panelu služby Azure Migrate.
+10. V **části Revize + přidání nástrojů**zkontrolujte nastavení a vyberte Přidat **nástroje**.
+11. Počkejte několik minut, než se projekt Azure Migrate nasadí. Poté budete převedena na stránku projektu. Pokud se projekt nezobrazí, můžete k němu přejít z části **Servery** na řídicím panelu služby Azure Migrate.
 
-## <a name="prepare-the-csv"></a>Příprava sdíleného svazku clusteru
+## <a name="prepare-the-csv"></a>Připravte CSV
 
-Stáhněte si šablonu sdíleného svazku clusteru a přidejte do ní informace o serveru.
+Stáhněte si šablonu CSV a přidejte do ní informace o serveru.
 
 ### <a name="download-the-template"></a>Stažení šablony
 
-1. V ** > ** **cíle migrace** > **Azure Migrate: vyhodnocování serveru**vyberte **Vyhledat**.
-2. V možnosti **zjistit počítače**vyberte **importovat pomocí CSV**.
-3. Vyberte **Stáhnout** a stáhněte šablonu sdíleného svazku clusteru. Případně si ho můžete [stáhnout přímo](https://go.microsoft.com/fwlink/?linkid=2109031).
+1. V **serverech cílů** > **migrace, které** > **Azure migruje: Vyhodnocení serveru**, vyberte **Zjistit**.
+2. V **počítačích Discover**vyberte **Importovat pomocí csv**.
+3. Chcete-li stáhnout šablonu CSV, vyberte **možnost Stáhnout.** Případně si jej můžete [stáhnout přímo](https://go.microsoft.com/fwlink/?linkid=2109031).
 
     ![Stáhnout šablonu CSV](./media/tutorial-assess-import/download-template.png)
 
-### <a name="add-server-information"></a>Přidat informace o serveru
+### <a name="add-server-information"></a>Přidání informací o serveru
 
 Shromážděte data serveru a přidejte je do souboru CSV.
 
-- Pokud chcete shromažďovat data, můžete je exportovat z nástrojů, které používáte pro správu místního serveru, jako je například VMware vSphere nebo vaše databáze správy konfigurace (CMDB).
-- Pokud chcete zkontrolovat ukázková data, Stáhněte si náš [ukázkový soubor](https://go.microsoft.com/fwlink/?linkid=2108405).
+- Chcete-li shromažďovat data, můžete je exportovat z nástrojů, které používáte pro místní správu serveru, jako je například VMware vSphere nebo databáze správy konfigurace (CMDB).
+- Chcete-li zkontrolovat ukázková data, stáhněte si náš [ukázkový soubor](https://go.microsoft.com/fwlink/?linkid=2108405).
 
-Následující tabulka shrnuje pole souborů k vyplnění:
+Následující tabulka shrnuje pole souborů, která chcete vyplnit:
 
-**Název pole** | **Závaznou** | **Podrobnosti**
+**Název pole** | **Povinné** | **Podrobnosti**
 --- | --- | ---
-**Název serveru** | Ano | Doporučujeme zadat plně kvalifikovaný název domény (FQDN).
+**Název serveru** | Ano | Doporučujeme zadat plně kvalifikovaný název domény (Plně kvalifikovaný název domény).
 **IP adresa** | Ne | Adresa serveru.
-**Jader** | Ano | Počet jader procesoru přidělených serveru.
-**Rezident** | Ano | Celková velikost paměti RAM (v MB) přidělená serveru.
-**Název operačního systému** | Ano | Serverový operační systém. <br/> Vyhodnocování rozpoznávají názvy operačních systémů, které odpovídají nebo obsahují názvy v [tomto](#supported-operating-system-names) seznamu.
+**Cores** | Ano | Počet procesorových jader přidělených serveru.
+**Paměti** | Ano | Celková paměť RAM v MB přidělená serveru.
+**Název operačního serveru** | Ano | Operační systém serveru. <br/> Názvy operačních systémů, které odpovídají nebo obsahují názvy v [tomto](#supported-operating-system-names) seznamu, jsou rozpoznány hodnocením.
 **Verze operačního systému** | Ne | Verze operačního systému serveru.
-**Počet disků** | Ne | Není nutné, pokud jsou k dispozici podrobnosti o jednotlivých discích.
-**Velikost disku 1**  | Ne | Maximální velikost disku (v GB)<br/>[Přidáním sloupců](#add-multiple-disks) do šablony můžete přidat podrobnosti o dalších discích. Můžete přidat až osm disků.
-**Disk 1 operace čtení** | Ne | Operace čtení z disku za sekundu
-**Operace zápisu na disk 1** | Ne | Operace zápisu na disk za sekundu
-**Propustnost čtení disku 1** | Ne | Data načtená z disku za sekundu, v MB za sekundu.
-**Propustnost zápisu disku 1** | Ne | Data zapsaná na disk za sekundu, v MB za sekundu.
-**Procento využití procesoru** | Ne | Procento využitého procesoru
-**Procento využití paměti** | Ne | Procento využité paměti RAM
-**Operace čtení z celkového počtu disků** | Ne | Operace čtení disku za sekundu
-**Operace zápisu z celkového počtu disků** | Ne | Operace zápisu na disk za sekundu
-**Propustnost čtení celkem disků** | Ne | Data načtená z disku v MB za sekundu.
-**Propustnost zápisu celkem disků** | Ne | Data zapsaná na disk v MB za sekundu.
-**Síť v propustnosti** | Ne | Data přijatá serverem v MB za sekundu.
+**Počet disků** | Ne | Není potřeba, pokud jsou k dispozici podrobnosti o jednotlivých disku.
+**Velikost disku 1**  | Ne | Maximální velikost disku v GB.<br/>Přidáním sloupců do šablony můžete přidat podrobnosti o dalších [discích.](#add-multiple-disks) Můžete přidat až osm disků.
+**Operace pro čtení disku 1** | Ne | Operace čtení disku za sekundu.
+**Disk 1 zápis ops** | Ne | Operace zápisu disku za sekundu.
+**Propustnost čtení disku 1** | Ne | Data čtení z disku za sekundu, v MB za sekundu.
+**Propustnost zápisu disku 1** | Ne | Data zapsaná na disk za sekundu v MB za sekundu.
+**Procento využití procesoru** | Ne | Procento použitého procesoru.
+**Procento využití paměti** | Ne | Procento použité paměti RAM.
+**Celkový počet operací čtení disků** | Ne | Operace čtení disku za sekundu.
+**Celkový počet disků psát ops** | Ne | Operace zápisu disků za sekundu.
+**Propustnost čtení celkový počet disků** | Ne | Data čtení z disku v MB za sekundu.
+**Propustnost celkového počtu disků** | Ne | Data zapsaná na disk v MB za sekundu.
+**Propustnost sítě** | Ne | Data přijatá serverem v MB za sekundu.
 **Propustnost sítě** | Ne | Data přenášená serverem v MB za sekundu.
 **Typ firmwaru** | Ne | Firmware serveru. Hodnoty mohou být "BIOS" nebo "UEFI".
-**Typ serveru** | Ne | Hodnoty můžou být fyzické nebo virtuální.
-**Hypervisoru** | Ne | Hypervisor, na kterém je spuštěný počítač. <br/> Hodnoty mohou být "VMware", "Hyper-V", "Xen", "AWS", "GCP" nebo "jiné".
-**Číslo verze hypervisoru** | Ne | Verze hypervisoru
-**ID virtuálního počítače** | Ne | Identifikátor virtuálního počítače Toto je hodnota **InstanceUUid** pro virtuální počítač VMware VCENTER nebo **ID virtuálního počítače Hyper-v** pro Hyper-v.
-**ID nástroje Virtual Machine Manager** | Ne | Toto je hodnota **InstanceUUid** pro VMware vCenter. Není potřeba pro Hyper-V.
+**Typ serveru** | Ne | Hodnoty mohou být "Fyzické" nebo "Virtuální".
+**Hypervisor** | Ne | Hypervisor, na kterém běží stroj. <br/> Hodnoty mohou být "VMware", "Hyper-V", "Xen", "AWS", "GCP" nebo "Jiné".
+**Číslo verze Hypervisoru** | Ne | Verze Hypervisoru.
+**ID virtuálního počítače** | Ne | Identifikátor virtuálního zařízení. Toto je hodnota **InstanceUUid** pro virtuální virtuální vCenter VMware nebo **ID virtuálního vav technologie Hyper-V** pro technologie Hyper-V.
+**ID správce virtuálních strojů** | Ne | Toto je hodnota **InstanceUUid** pro vCenter VMWare. Není to potřeba pro Hyper-V.
 **Adresa MAC**| Ne | Adresa MAC serveru.
-**ID SYSTÉMU BIOS** | Ne | ID systému BIOS serveru.
-**ID vlastního serveru** | Ne | Místní jedinečné ID serveru v místním prostředí. <br/> Užitečné pro sledování importovaného serveru podle místního ID.
-**Název aplikace 1** | Ne | Název úlohy spuštěné na serveru.<br/>[Přidáním sloupců](#add-multiple-applications) do šablony můžete přidat podrobnosti pro další aplikace. Můžete přidat až pět aplikací.
-**Typ aplikace 1** | Ne | Typ úloh spuštěných na serveru
-**Verze aplikace 1** | Ne | Verze úloh spuštěných na serveru.
-**Vypršení platnosti licence pro aplikaci 1** | Ne | Vyprší platnost licence pro zatížení (Pokud je k dispozici).
-**Organizační jednotka** | Ne | Obchodní jednotka, do které server patří.
-**Vlastník firmy** | Ne | Vlastník obchodní jednotky.
-**Název obchodní aplikace** | Ne | Název aplikace, ke které patří aplikace
-**Umístění** | Ne | Datacenter, ve kterém se server nachází.
-**Datum vyřazení z provozu serveru** | Ne | Datum vyřazení fyzického serveru z provozu nebo ze základního fyzického serveru virtuálního serveru.
+**BIOS ID** | Ne | ID systému Systému windows serveru.
+**Vlastní ID serveru** | Ne | Místní, jedinečné ID serveru v místním prostředí. <br/> Užitečné pro sledování importovaného serveru podle místního ID.
+**Název aplikace 1** | Ne | Název úlohy spuštěné na serveru.<br/>Podrobnosti o dalších aplikacích můžete přidat [přidáním sloupců](#add-multiple-applications) do šablony. Můžete přidat až pět aplikací.
+**Typ aplikace 1** | Ne | Typ úlohy spuštěné na serveru
+**Verze aplikace 1** | Ne | Verze úlohy spuštěné na serveru.
+**Vypršení platnosti licence aplikace 1** | Ne | Vypršení platnosti licence pracovního vytížení (je-li k dispozici).
+**Obchodní jednotka** | Ne | Organizační jednotka, do které server patří.
+**Vlastník firmy** | Ne | Vlastník organizační jednotky.
+**Název obchodní aplikace** | Ne | Název aplikace, do které aplikace patří.
+**Umístění** | Ne | Datové centrum, ve kterém je server umístěn.
 
-### <a name="add-operating-systems"></a>Přidat operační systémy
+### <a name="add-operating-systems"></a>Přidání operačních systémů
 
-Posouzení rozpoznává konkrétní názvy operačních systémů. Libovolný název, který zadáte, musí přesně odpovídat jednomu z řetězců v [seznamu podporovaných názvů](#supported-operating-system-names).
+Assessment rozpozná konkrétní názvy operačních systémů. Každý zadaný název se musí přesně shodovat s jedním z řetězců v [seznamu podporovaných názvů](#supported-operating-system-names).
 
-### <a name="add-multiple-disks"></a>Přidat více disků
+### <a name="add-multiple-disks"></a>Přidání více disků
 
-Šablona poskytuje výchozí pole pro první disk. Podobné sloupce můžete přidat až na osm disků.
+Šablona poskytuje výchozí pole pro první disk. Můžete přidat podobné sloupce až pro osm disků.
 
-Pokud například chcete zadat všechna pole pro druhý disk, přidejte tyto sloupce:
+Chcete-li například zadat všechna pole pro druhý disk, přidejte tyto sloupce:
 
 - Velikost disku 2
-- Operace čtení disku 2
-- Operace zápisu na disk 2
+- Disk 2 číst ops
+- Disk 2 zápis ops
 - Propustnost čtení disku 2
 - Propustnost zápisu disku 2
 
 ### <a name="add-multiple-applications"></a>Přidání více aplikací
 
-Šablona poskytuje pole pro jednu aplikaci. Podobné sloupce můžete přidat až do pěti aplikací.  
+Šablona obsahuje pole pro jednu aplikaci. Podobné sloupce můžete přidat až pro pět aplikací.  
 
-Pokud například chcete zadat všechna pole pro druhou aplikaci, přidejte tyto sloupce:
+Chcete-li například zadat všechna pole pro druhou aplikaci, přidejte tyto sloupce:
 
 - Název aplikace 2
 - Typ aplikace 2
 - Verze aplikace 2
-- Platnost licence Application 2 vypršela.
+- Vypršení platnosti licence aplikace 2
 
 > [!NOTE]
-> Informace o aplikaci jsou užitečné při vyhodnocování místního prostředí pro migraci. Posouzení Azure Migrate serveru teď ale při vytváření posouzení neprovádí hodnocení na úrovni aplikace ani nebere v úvahu aplikace.
+> Informace o aplikacích jsou užitečné při vyhodnocování místního prostředí pro migraci. Azure Migrate Server Assessment však aktuálně neprovádí hodnocení na úrovni aplikací ani nebere v úvahu aplikace při vytváření hodnocení.
 
-## <a name="import-the-server-information"></a>Importovat informace o serveru
+## <a name="import-the-server-information"></a>Import informací o serveru
 
-Po přidání informací do šablony sdíleného svazku clusteru importujte servery do vyhodnocování serveru.
+Po přidání informací do šablony CSV importujte servery do vyhodnocení serveru.
 
-1. V Azure Migrate v části **zjišťování počítačů**přejít na dokončenou šablonu.
-2. Vyberte **importovat**.
+1. V Azure Migrate, v **počítačích Discover**, přejděte na dokončenou šablonu.
+2. Vyberte **Importovat**.
 3. Zobrazí se stav importu.
     - Pokud se ve stavu zobrazí upozornění, můžete je buď opravit, nebo pokračovat bez jejich adresování.
-    - Pro zlepšení přesnosti hodnocení Vylepšete informace o serveru, jak je navrženo v části upozornění.
-    - Chcete-li zobrazit a opravit upozornění, vyberte možnost **Stáhnout podrobnosti upozornění. Sdílený svazek clusteru**. Tato operace stáhne sdílený svazek clusteru s upozorněními, která jsou součástí. Přečtěte si upozornění a opravte problémy podle potřeby.
-    - Pokud se ve stavu objeví chyby, takže se stav importu **nezdařil**, je nutné tyto chyby opravit, aby bylo možné pokračovat v importu:
-        1. Stáhněte si sdílený svazek clusteru, který teď obsahuje podrobnosti o chybě.
-        1. Zkontrolujte a podle potřeby vyřešte chyby. 
-        1. Znovu nahrajte změněný soubor.
-4. Po **dokončení**importu se informace o serveru naimportovaly.
+    - Chcete-li zlepšit přesnost hodnocení, vylepšete informace o serveru, jak je navrženo v upozorněních.
+    - Chcete-li zobrazit a opravit upozornění, vyberte **položku Stáhnout podrobnosti upozornění . CSV**. Tato operace stáhne csv s upozorněním v ceně. Zkontrolujte upozornění a opravte problémy podle potřeby.
+    - Pokud se ve stavu zobrazí chyby, takže stav importu se **nezdařil**, je třeba tyto chyby opravit, než budete moci pokračovat v importu:
+        1. Stáhněte si csv, který nyní obsahuje podrobnosti o chybě.
+        1. Podle potřeby zkontrolujte a řešte chyby. 
+        1. Nahrajte upravený soubor znovu.
+4. Po dokončení **je**stav importu importován informace o serveru.
 
 ## <a name="update-server-information"></a>Aktualizovat informace o serveru
 
-Informace o serveru můžete aktualizovat tak, že znovu naimportujete data pro server se stejným **názvem serveru**. Pole **název serveru** nemůžete změnit. Odstraňování serverů se v tuto chvíli nepodporuje.
+Informace o serveru můžete aktualizovat znovu importem dat pro server se stejným **názvem serveru**. Pole **Název serveru** nelze změnit. Odstranění serverů není aktuálně podporováno.
 
-## <a name="verify-servers-in-the-portal"></a>Ověřit servery na portálu
+## <a name="verify-servers-in-the-portal"></a>Ověření serverů na portálu
 
-Ověření, že se servery zobrazí v Azure Portal po zjištění:
+Ověření, že se servery po zjišťování zobrazují na webu Azure Portal:
 
-1. Otevřete řídicí panel Azure Migrate.
-2. Na stránce **Azure Migrate-servery** > **Azure Migrate: vyhodnocování serveru** vyberte ikonu, která zobrazuje počet **zjištěných serverů**.
-3. Vyberte kartu **Import na základě** .
+1. Otevřete řídicí panel Migrace Azure.
+2. Na stránce **Migrace Azure – servery, které** > **Azure migruje: Vyhodnocení serveru,** vyberte ikonu, která zobrazuje počet **zjištěných serverů**.
+3. Vyberte kartu **Importovat na základě.**
 
-## <a name="set-up-and-run-an-assessment"></a>Nastavení a spuštění posouzení
+## <a name="set-up-and-run-an-assessment"></a>Nastavení a spuštění hodnocení
 
-Pomocí posouzení serveru můžete vytvořit dva typy posouzení.
+Pomocí vyhodnocení serveru můžete vytvořit dva typy hodnocení.
 
 **Typ posouzení** | **Podrobnosti** | **Data**
 --- | --- | ---
-**Na základě výkonu** | Posouzení na základě zadaných hodnot dat o výkonu. | **Doporučená velikost virtuálního počítače**: na základě dat o využití procesoru a paměti.<br/><br/> **Doporučený typ disku (spravovaný disk Standard nebo Premium)** : na základě vstupně-výstupních operací za sekundu (IOPS) a propustnosti místních disků.
-**Jako místní** | Posouzení na základě místních velikostí. | **Doporučená velikost virtuálního počítače**: na základě zadané velikosti serveru.<br/><br> **Doporučený typ disku**: na základě nastavení typu úložiště, které jste vybrali pro posouzení.
+**Na základě výkonu** | Hodnocení založená na zadaných hodnotách výkonu a dat. | **Doporučená velikost virtuálního počítače:** Na základě dat o využití procesoru a paměti.<br/><br/> **Doporučený typ disku (standardní nebo prémiový spravovaný disk):** Na základě vstupu a výstupu za sekundu (IOPS) a propustnosti místních disků.
+**Jako místní** | Hodnocení založená na místním dimenzování. | **Doporučená velikost virtuálního počítače**: Na základě zadané velikosti serveru.<br/><br> **Doporučený typ disku**: Na základě nastavení typu úložiště, které vyberete pro posouzení.
 
-Spuštění posouzení:
+Spuštění hodnocení:
 
 1. Projděte si [osvědčené postupy](best-practices-assessment.md) pro vytváření hodnocení.
-2. Na kartě **servery** na dlaždici **Azure Migrate: posouzení serveru** vyberte možnost **vyhodnotit**.
+2. Na kartě **Servery** vyberte na dlaždici **Azure Migrate: Server Assessment** možnost **Assess**.
 
     ![Posouzení](./media/tutorial-assess-physical/assess.png)
 
-3. V poli **vyhodnotit servery**zadejte název posouzení.
-4. Ve **zdroji zjišťování**vyberte **počítače přidané prostřednictvím importu do Azure Migrate**.
-5. Vyberte **Zobrazit vše** a zkontrolujte vlastnosti posouzení.
+3. V **poli Posoudit servery**zadejte název hodnocení.
+4. Ve **zdroji zjišťování**vyberte Počítače přidané **prostřednictvím importu do Migrace Azure**.
+5. Chcete-li zkontrolovat vlastnosti hodnocení, vyberte možnost **Zobrazit vše.**
 
     ![Vlastnosti posouzení](./media/tutorial-assess-physical/view-all.png)
 
-6. V **Vyberte nebo vytvořte skupinu**vyberte **vytvořit novou**a zadejte název skupiny. Skupina shromažďuje jeden nebo více virtuálních počítačů dohromady pro posouzení.
-7. V části **přidat počítače do skupiny**vyberte servery, které chcete přidat do skupiny.
-8. Vyberte **vytvořit vyhodnocení** , aby se vytvořila skupina, a potom spusťte posouzení.
+6. V **poli Vybrat nebo vytvořit skupinu**vyberte Vytvořit **nový**a zadejte název skupiny. Skupina shromažďuje jeden nebo více virtuálních virtuálních byl v usa z hodnocení.
+7. V **části Přidat počítače do skupiny**vyberte servery, které chcete přidat do skupiny.
+8. Vyberte **Vytvořit hodnocení,** chcete-li vytvořit skupinu, a pak hodnocení spusťte.
 
     ![Vytvoření posouzení](./media/tutorial-assess-physical/assessment-create.png)
 
-9. Po vytvoření posouzení ho zobrazte na stránce **servery** > **Azure Migrate: posouzení serveru** > **posouzení**.
-10. Vyberte **vyhodnocování exportu** a stáhněte ho jako soubor Microsoft Excelu.
+9. Po vytvoření hodnocení jej zobrazte v **části Servery, které** > **Azure migruje: Hodnocení hodnocení** > **serveru**.
+10. Vyberte **Vyhodnocení exportu,** chcete-li jej stáhnout jako soubor aplikace Microsoft Excel.
 
-## <a name="review-an-assessment"></a>Kontrola posouzení
+## <a name="review-an-assessment"></a>Přezkoumat posouzení
 
-Posouzení popisuje:
+Hodnocení popisuje:
 
-- **Připravenost na Azure**: jestli jsou servery vhodné pro migraci do Azure.
-- **Odhad měsíčních nákladů**: Odhadované měsíční náklady na výpočetní prostředky a úložiště pro spouštění serverů v Azure.
-- **Odhad měsíčních nákladů na úložiště**: Odhadované náklady na diskové úložiště po migraci.
+- **Připravenost Azure**: Jestli jsou servery vhodné pro migraci do Azure.
+- **Měsíční odhad nákladů**: Odhadované měsíční náklady na výpočetní výkon a úložiště pro spouštění serverů v Azure.
+- Měsíční odhad nákladů na úložiště : Odhadované náklady na diskové úložiště po **migraci.**
 
-### <a name="view-an-assessment"></a>Zobrazit posouzení
+### <a name="view-an-assessment"></a>Zobrazit hodnocení
 
-1. V ** > ** **cíli migrace** vyberte **hodnocení** v **Azure Migrate: posouzení serveru**.
-2. V **posouzení**vyberte posouzení, které chcete otevřít.
+1. V**oblasti Serverů** **cílů** > migrace vyberte **Hodnocení** v **Azure Migrate: Server Assessment**.
+2. V **posudku**vyberte hodnocení, které ho otevřete.
 
-    ![Souhrn posouzení](./media/tutorial-assess-physical/assessment-summary.png)
+    ![Shrnutí hodnocení](./media/tutorial-assess-physical/assessment-summary.png)
 
-### <a name="review-azure-readiness"></a>Kontrola připravenosti na Azure
+### <a name="review-azure-readiness"></a>Kontrola připravenosti Azure
 
-1. V části **připravenost k Azure**určete, jestli jsou servery připravené na migraci do Azure.
+1. V **připravenosti Azure zjistěte,** jestli jsou servery připravené k migraci do Azure.
 2. Zkontrolujte stav:
-    - **Připraveno pro Azure**: Azure Migrate doporučuje velikost virtuálního počítače a odhad nákladů pro virtuální počítače ve vyhodnocování.
-    - **Připraveno s podmínkami**: zobrazuje problémy a navrhovanou nápravu.
-    - **Nepřipraveno pro Azure**: zobrazuje problémy a navrhovanou nápravu.
-    - **Připravenost není známa**: Azure Migrate nemůže vyhodnotit připravenost z důvodu problémů s dostupností dat.
+    - **Připraveno pro Azure**: Azure Migrate doporučuje odhady velikosti virtuálních počítače a nákladů pro virtuální počítače v hodnocení.
+    - **Připraveno s podmínkami**: Zobrazuje problémy a navrhovanou nápravu.
+    - **Není připraven pro Azure**: Zobrazuje problémy a navrhované nápravy.
+    - **Připravenost neznámý**: Azure Migrate nelze posoudit připravenost, z důvodu problémů s dostupností dat.
 
-3. Vyberte stav **připravenosti na Azure** . Můžete zobrazit podrobnosti o připravenosti serveru a přejít k podrobnostem a zobrazit podrobnosti o serveru, včetně výpočetních prostředků, úložiště a nastavení sítě.
+3. Vyberte stav **připravenosti Azure.** Můžete zobrazit podrobnosti o připravenosti serveru a přejít k podrobnostem a zobrazit podrobnosti o serveru, včetně výpočetních, úložných a síťových nastavení.
 
-### <a name="review-cost-details"></a>Podrobnosti o kontrole nákladů
+### <a name="review-cost-details"></a>Zkontrolovat podrobnosti o nákladech
 
-Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úložiště pro provozování virtuálních počítačů v Azure. Můžete:
+Toto zobrazení zobrazuje odhadované náklady na výpočetní prostředky a úložiště pro spouštění virtuálních počítačů v Azure. Můžete:
 
-- Projděte si měsíční náklady na výpočetní prostředky a úložiště. Náklady se sčítají pro všechny servery v hodnocené skupině.
+- Zkontrolujte měsíční náklady na výpočetní prostředky a úložiště. Náklady jsou agregovány pro všechny servery v posuzované skupině.
 
-    - Odhad nákladů vychází z doporučení na velikost počítače a jeho disků a vlastností.
-    - Zobrazí se Odhadované měsíční náklady na výpočetní prostředky a úložiště.
-    - Odhad nákladů slouží ke spuštění místních serverů jako virtuálních počítačů s IaaS (infrastruktura jako služba). Posouzení serveru nebere v úvahu náklady typu platforma jako služba (PaaS) nebo software jako služba (SaaS).
+    - Odhady nákladů jsou založeny na doporučení velikosti pro počítač a jeho disky a vlastnosti.
+    - Jsou zobrazeny odhadované měsíční náklady na výpočetní prostředky a úložiště.
+    - Odhad nákladů je pro spuštění místních serverů jako virtuálních počítačích infrastruktury jako služby (IaaS). Server Assessment nebere v úvahu platformu jako službu (PaaS) nebo software jako služba (SaaS) náklady.
 
-- Projděte si měsíční odhady nákladů na úložiště. Toto zobrazení ukazuje agregované náklady na úložiště pro vyhodnocenou skupinu rozdělené mezi různé typy disků úložiště.
-- Přejděte k podrobnostem a zobrazte podrobnosti pro konkrétní virtuální počítače.
+- Zkontrolujte odhady měsíčních nákladů na úložiště. Toto zobrazení zobrazuje agregované náklady na úložiště pro odhadovanou skupinu, rozdělené mezi různé typy disků úložiště.
+- Přechodem k podrobnostem zobrazíte podrobnosti o konkrétních virtuálních dětech.
 
 > [!NOTE]
-> Hodnocení spolehlivosti není přiřazeno k posouzení serverů importovaných do posouzení serveru pomocí sdíleného svazku clusteru.
+> Hodnocení spolehlivosti nejsou přiřazena hodnocení serverů importovaných do vyhodnocení serveru pomocí csv.
 
 ## <a name="supported-operating-system-names"></a>Podporované názvy operačních systémů
 
@@ -281,7 +280,7 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
 
 :::row:::
    :::column span="2":::
-      **A-H**
+      **A - H**
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -297,7 +296,7 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
 :::row:::
    :::column span="":::
       CentOS<br/>
-      CentOS 4/5
+      Centos 4/5
    :::column-end:::
    :::column span="":::
       CoreOS Linux
@@ -320,7 +319,7 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
 
 :::row:::
    :::column span="2":::
-      **I-R**
+      **I - R**
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -328,7 +327,7 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
       IBM OS/2
    :::column-end:::
    :::column span="":::
-      systémem
+      Ms-dos
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -351,7 +350,7 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
       Red Hat Enterprise Linux 5<br/>
       Red Hat Enterprise Linux 6<br/>
       Red Hat Enterprise Linux 7<br/>
-      Red Hat Fedora
+      Červený klobouk Fedora
    :::column-end:::
 :::row-end:::
 
@@ -359,7 +358,7 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
 
 :::row:::
    :::column span="2":::
-      **S-T**
+      **S - T**
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -369,14 +368,14 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
       SCO UnixWare 7
    :::column-end:::
    :::column span="":::
-      Serenity systémy eComStation 1<br/>
-      Serenity systémy eComStation 2
+      Systémy klidu eComStation 1<br/>
+      Systémy klidu eComStation 2
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      Systém Sun Microsystems Solaris 8<br/>
-      Sun Microsystems Solaris 9
+      Sluneční mikrosystémy Solaris 8<br/>
+      Sluneční mikrosystémy Solaris 9
    :::column-end:::
    :::column span="":::
       SUSE Linux Enterprise 10<br/>
@@ -391,7 +390,7 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
 <!-- BEGIN U - Z -->
 :::row:::
    :::column span="2":::
-      **U-Z**
+      **U - Z**
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -399,44 +398,44 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
       Ubuntu Linux
    :::column-end:::
    :::column span="":::
-      VMware ESXi 4<br/>
-      VMware ESXi 5<br/>
-      VMware ESXi 6
+      Společnost VMware ESXi 4<br/>
+      Společnost VMware ESXi 5<br/>
+      Společnost VMware ESXi 6
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
       Windows 10<br/>
       Windows 2000<br/>
-      Systém Windows 3<br/>
-      Windows 7<br/>
+      Windows 3<br/>
+      Windows 7<br/>
       Windows 8<br/>
       Windows 95<br/>
       Windows 98<br/>
-      Systém Windows NT<br/>
+      Windows NT<br/>
       Windows Server (R) 2008<br/>
       Windows Server 2003
    :::column-end:::
    :::column span="":::
-      Windows Server 2008<br/>
+      Windows Server 2008<br/>
       Windows Server 2008 R2<br/>
       Windows Server 2012<br/>
       Windows Server 2012 R2<br/>
       Windows Server 2016<br/>
       Windows Server 2019<br/>
-      Prahová hodnota pro Windows Server<br/>
+      Prahová hodnota systému Windows Server<br/>
       Windows Vista<br/>
-      Webový server Windows 2008 R2<br/>
+      Windows Web Server 2008 R2<br/>
       Windows XP Professional
    :::column-end:::
 :::row-end:::
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se naučíte:
+V tomto kurzu jste:
 
 > [!div class="checklist"]
-> * Importované servery do Azure Migrate: posouzení serveru pomocí sdíleného svazku clusteru.
-> * Bylo vytvořeno a zkontrolováno posouzení.
+> * Importované servery do Migrace Azure: Vyhodnocení serveru pomocí CSV.
+> * Vytvořil a přezkoumal hodnocení.
 
-Nyní [Nasaďte zařízení](./migrate-appliance.md) pro přesnější posouzení a Shromážděte servery do skupin pro hlubší hodnocení pomocí [analýzy závislostí](./concepts-dependency-visualization.md).
+Nyní [nasaďte zařízení](./migrate-appliance.md) pro přesnější hodnocení a shromažďujte servery do skupin pro hlubší posouzení pomocí [analýzy závislostí](./concepts-dependency-visualization.md).

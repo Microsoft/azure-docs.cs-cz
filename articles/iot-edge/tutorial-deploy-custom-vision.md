@@ -1,6 +1,6 @@
 ---
-title: Kurz – nasazení Custom Vision třídění do zařízení pomocí Azure IoT Edge
-description: V tomto kurzu se dozvíte, jak aby běžela jako kontejner pomocí vlastní vize a IoT Edge modelem počítačového zpracování obrazu.
+title: Kurz – nasazení vlastního klasifikátoru vize do zařízení pomocí Azure IoT Edge
+description: V tomto kurzu se dozvíte, jak vytvořit model počítačového vidění spustit jako kontejner pomocí vlastní vize a IoT Edge.
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76167000"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Provádění klasifikace obrázků na hraničních zařízeních s využitím služby Custom Vision
@@ -32,29 +32,29 @@ V tomto kurzu se naučíte:
 
 <center>
 
-Diagram ![– architektura kurzu, fáze a](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
-klasifikátoru nasazení </center>
+![Diagram – architektura výuky, fáze a nasazovací klasifikátor](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
+</center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
 >[!TIP]
->Tento kurz je zjednodušenou verzí [Custom Vision a Azure IoT Edge v projektu s](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) ukázkovým projektem malin. PI 3. Tento kurz byl navržený tak, aby se spouštěl v cloudovém virtuálním počítači a pomocí statických imagí dokázal naučit a testovat třídění imagí. to je užitečné pro někoho, co začne hodnotit Custom Vision IoT Edge. Ukázkový projekt používá fyzický hardware a nastavuje živý kanál kamery ke školení a testování klasifikátoru obrázků, který je užitečný pro někoho, kdo chce vyzkoušet podrobnější scénář pro reálný život.
+>Tento kurz je zjednodušená verze [vlastní vize a Azure IoT Edge na ukázkový projekt Raspberry Pi 3.](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) Tento kurz byl navržen tak, aby běžel na cloudovém virtuálním počítači a používá statické image trénovat a testovat klasifikátor obrázků, což je užitečné pro někoho, kdo právě začíná vyhodnocovat vlastní vizi na IoT Edge. Ukázkový projekt používá fyzický hardware a nastaví živý kamerový kanál pro trénování a testování klasifikátoru obrazu, což je užitečné pro někoho, kdo chce vyzkoušet podrobnější scénář reálného života.
 
-Před zahájením tohoto kurzu byste si měli projít předchozí kurz pro nastavení prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
+Před zahájením tohoto kurzu byste měli projít předchozí kurz nastavení prostředí pro vývoj kontejnerů Linux: [Vývoj modulů IoT Edge pro zařízení s Linuxem](tutorial-develop-for-linux.md). Dokončením tohoto kurzu byste měli mít následující předpoklady:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* [Zařízení se systémem Linux se spuštěným Azure IoT Edge](quickstart-linux.md)
-* Registr kontejneru, například [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
-* [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* [Docker CE](https://docs.docker.com/install/) nakonfigurovaný pro spouštění kontejnerů Linux.
+* [Linuxové zařízení se systémem Azure IoT Edge](quickstart-linux.md)
+* Registr kontejnerů, jako je [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* [Visual Studio Kód](https://code.visualstudio.com/) nakonfigurovaný pomocí [nástrojů Azure IoT .](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+* [Docker CE](https://docs.docker.com/install/) nakonfigurován pro spouštění kontejnerů Linuxu.
 
-Pokud chcete vytvořit modul IoT Edge se službou Custom Vision, nainstalujte na svém vývojovém počítači následující další požadavky:
+Chcete-li vyvinout modul IoT Edge se službou Custom Vision, nainstalujte do vývojového počítače následující další předpoklady:
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* [Rozšíření Pythonu pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+* [Rozšíření Pythonu pro kód Visual Studia](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Vytvoření klasifikátoru obrázků s využitím služby Custom Vision
 
@@ -76,11 +76,11 @@ Jakmile bude klasifikátor obrázků vytvořený a natrénovaný, můžete ho ex
    | ----- | ----- |
    | Name (Název) | Zadejte název projektu, například **EdgeTreeClassifier**. |
    | Popis | Volitelný popis projektu. |
-   | Prostředek | Vyberte jednu ze skupin prostředků Azure, která zahrnuje prostředek Custom Vision Service, nebo **vytvořte novou** , pokud jste ho ještě nepřidali. |
-   | Typy projektů | **Klasifikace** |
+   | Prostředek | Vyberte jednu ze skupin prostředků Azure, která obsahuje prostředek služby Custom Vision Service, nebo **vytvořte nový,** pokud jste ho ještě nepřidali. |
+   | Typy projektů | **Classification** |
    | Typy klasifikace | **Více tříd (jedna značka na obrázek)** |
    | Domény | **Obecné (kompaktní)** |
-   | Možnosti exportu | **Základní platformy (Tensorflow, CoreML, ONNX,...)** |
+   | Možnosti exportu | **Základní platformy (Tensorflow, CoreML, ONNX, ...)** |
 
 5. Vyberte **Vytvořit projekt**.
 
@@ -100,9 +100,9 @@ Při vytváření klasifikátoru obrázků je potřeba sada trénovacích obráz
 
 4. Přidejte k této skupině obrázků značku **hemlock** (Jedlovec) a stiskněte **Enter**, aby se značka použila.
 
-5. Vyberte **Nahrát soubory (10)** .
+5. Vyberte **Nahrát soubory (10)**.
 
-   ![Nahrát soubory označené hemlock Custom Vision](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
+   ![Nahrát hemlock označené soubory na vlastní vizi](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
 6. Po úspěšném nahrání obrázků vyberte **Hotovo**.
 
@@ -112,7 +112,7 @@ Při vytváření klasifikátoru obrázků je potřeba sada trénovacích obráz
 
 9. Přidejte k této skupině obrázků značku **japanese cherry** (Sakura) a stiskněte **Enter**, aby se značka použila.
 
-10. Vyberte **Nahrát soubory (10)** . Po úspěšném nahrání obrázků vyberte **Hotovo**.
+10. Vyberte **Nahrát soubory (10)**. Po úspěšném nahrání obrázků vyberte **Hotovo**.
 
 11. Jakmile budou obě sady obrázků označené a nahrané, vyberte **Trénovat** a natrénujte klasifikátor.
 
@@ -120,7 +120,7 @@ Při vytváření klasifikátoru obrázků je potřeba sada trénovacích obráz
 
 1. Po natrénování klasifikátoru na stránce Výkon klasifikátoru vyberte **Exportovat**.
 
-   ![Export klasifikátoru trénovaného image](./media/tutorial-deploy-custom-vision/export.png)
+   ![Exportt trénovaný klasifikátor obrázků](./media/tutorial-deploy-custom-vision/export.png)
 
 2. Jako platformu vyberte **DockerFile**. 
 
@@ -142,7 +142,7 @@ Teď máte soubory pro kontejnerovou verzi klasifikátoru obrázků na svém mí
 
 Řešení představuje logický způsob vývoje a uspořádání více modulů pro jedno nasazení IoT Edge. Řešení obsahuje kód jednoho nebo několika modulů a manifest nasazení, který určuje, jak se mají nakonfigurovat na zařízení IoT Edge. 
 
-1. Výběrem **View** (Zobrazit)  > **Command Palette** (Paleta příkazů) otevřete paletu příkazů VS Code. 
+1. Vyberte **Zobrazit** > **paletu příkazů,** chcete-li otevřít paletu příkazů VS Code. 
 
 1. Na paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Nové řešení IoT Edge). Na paletě příkazů zadejte následující informace k vytvoření řešení: 
 
@@ -152,7 +152,7 @@ Teď máte soubory pro kontejnerovou verzi klasifikátoru obrázků na svém mí
    | Zadejte název řešení | Zadejte popisný název řešení, například **CustomVisionSolution**, nebo přijměte výchozí hodnotu. |
    | Vyberte šablonu modulu | Zvolte **Modul Python**. |
    | Zadejte název modulu | Pojmenujte modul **classifier**.<br><br>Je důležité, aby tento název modulu obsahoval pouze malá písmena. IoT Edge při odkazování na moduly rozlišuje malá a velká písmena a toto řešení využívá knihovnu, která všechny požadavky formátuje tak, aby obsahovaly pouze malá písmena. |
-   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal.<br><br>Výsledný řetězec vypadá jako **\<název registru\>. azurecr.IO/Classifier**. |
+   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal.<br><br>Konečný řetězec vypadá jako ** \<název\>registru .azurecr.io/classifier**. |
  
    ![Zadání úložiště imagí Dockeru](./media/tutorial-deploy-custom-vision/repository.png)
 
@@ -166,13 +166,13 @@ V souboru prostředí jsou uložené přihlašovací údaje pro registr kontejne
 2. Aktualizujte pole hodnotami **uživatelské jméno** a **heslo**, které jste zkopírovali z registru kontejneru Azure.
 3. Soubor uložte.
 
-### <a name="select-your-target-architecture"></a>Vyberte cílovou architekturu.
+### <a name="select-your-target-architecture"></a>Vyberte si cílovou architekturu
 
-V současné době Visual Studio Code může vyvíjet moduly pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64, kterou budeme používat pro tento kurz. 
+V současné době visual studio kód můžete vyvíjet moduly pro Linux AMD64 a Linux ARM32v7 zařízení. Musíte vybrat architekturu, na kterou cílíte s každým řešením, protože kontejner je sestaven a spuštěn jinak pro každý typ architektury. Výchozí hodnota je Linux AMD64, což je to, co budeme používat pro tento kurz. 
 
-1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge**nebo vyberte ikonu zástupce na bočním panelu v dolní části okna. 
+1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro edge řešení**nebo vyberte ikonu zástupce v bočním panelu v dolní části okna. 
 
-2. V paletě příkazů vyberte v seznamu možností cílovou architekturu. Pro tento kurz používáme virtuální počítač s Ubuntu jako zařízení IoT Edge, takže se zachová výchozí hodnota **amd64**. 
+2. V paletě příkazů vyberte cílovou architekturu ze seznamu možností. Pro účely tohoto kurzu používáme jako zařízení IoT Edge virtuální stroj Ubuntu, takže zachováme výchozí **amd64**. 
 
 ### <a name="add-your-image-classifier"></a>Přidání klasifikátoru obrázků
 
@@ -192,7 +192,7 @@ V současné době Visual Studio Code může vyvíjet moduly pro zařízení se 
 
 6. Otevřete soubor **module.json** ve složce classifier. 
 
-7. Aktualizujte parametr **Platforms** tak, aby odkazoval na nový souboru Dockerfile, který jste přidali, a odeberte všechny možnosti kromě AMD64, což je jediná architektura, kterou používáme pro tento kurz. 
+7. Aktualizujte parametr **platformy** tak, aby přecšlápne na nový dockerfile, který jste přidali, a odeberte všechny možnosti kromě AMD64, což je jediná architektura, kterou používáme pro tento kurz. 
 
    ```json
    "platforms": {
@@ -217,7 +217,7 @@ V této části do stejného řešení CustomVisionSolution přidáte nový modu
    | Vyberte soubor šablony nasazení | Vyberte soubor deployment.template.json ve složce CustomVisionSolution. |
    | Vyberte šablonu modulu | Vyberte **Modul Python**. |
    | Zadejte název modulu | Pojmenujte modul **cameraCapture**. |
-   | Zadejte pro modul úložiště imagí Dockeru | Nahraďte **localhost:5000** hodnotou přihlašovacího serveru pro váš registr kontejneru Azure.<br><br>Konečný řetězec vypadá takto: **\<název_registru\>.azurecr.io/cameracapture**. |
+   | Zadejte pro modul úložiště imagí Dockeru | Nahraďte **localhost:5000** hodnotou přihlašovacího serveru pro váš registr kontejneru Azure.<br><br>Poslední řetězec vypadá jako ** \<název\>registru .azurecr.io/cameracapture**. |
 
    V okně VS Code se nový modul načte do pracovního prostoru řešení a aktualizuje se soubor deployment.template.json. Teď by se měly zobrazit dvě složky modulu: classifier a cameraCapture. 
 
@@ -322,11 +322,11 @@ V této části do stejného řešení CustomVisionSolution přidáte nový modu
 
 Místo toho, abychom k poskytování kanálu obrázků pro tento scénář použili skutečnou kameru, použijeme jeden testovací obrázek. Testovací obrázek je součástí úložiště GitHub s trénovacími obrázky, které jste stáhli dříve v tomto kurzu. 
 
-1. Přejděte k testovacímu obrázku, který se nachází v umístění **Cognitive-CustomVision-Windows** / **Samples** / **Images** / **Test**. 
+1. Přejděte na testovací bitovou kopii umístěnou v**testu****obrazů** / **obrazů** /  **Cognitive-CustomVision-Windows** / . 
 
 2. Zkopírujte soubor **test_image.jpg**. 
 
-3. Přejděte do adresáře řešení IoT Edge a vložte testovací obrázek do složky **modules** / **cameraCapture**. Obrázek musí být ve stejné složce jako soubor main.py, který jste upravovali v předchozí části. 
+3. Přejděte do adresáře řešení IoT Edge a vložte testovací bitovou kopii do složky **modules** / **cameraCapture.** Obrázek musí být ve stejné složce jako soubor main.py, který jste upravovali v předchozí části. 
 
 4. Ve Visual Studio Code otevřete soubor **Dockerfile.amd64** s modulem cameraCapture.
 
@@ -346,7 +346,7 @@ Rozšíření IoT Edge pro Visual Studio Code poskytuje v každém řešení IoT
 
 1. Otevřete soubor **deployment.template.json** ve složce řešení. 
 
-2. Vyhledejte oddíl **moduly** , který by měl obsahovat tři moduly: dvě, které jste vytvořili, třídění a cameraCapture, a třetí, který je součástí výchozího nastavení SimulatedTemperatureSensor. 
+2. Najděte sekci **modulů,** která by měla obsahovat tři moduly: dva, které jste vytvořili, třídění a cameraCapture a třetí, který je součástí ve výchozím nastavení, SimulatedTemperatureSensor. 
 
 3. Odstraňte modul **SimulatedTemperatureSensor** se všemi jeho parametry. Tento modul je zahrnutý za účelem poskytování ukázkových dat pro testovací scénáře, ale v tomto nasazení ho nepotřebujeme. 
 
@@ -380,11 +380,11 @@ Jakmile budou image ve vašem registru, můžete řešení nasadit do zařízen�
 
 Nejprve sestavte řešení a odešlete ho do registru kontejneru. 
 
-1. V průzkumníku VS Code klikněte pravým tlačítkem na soubor **deployment.template.json** a vyberte **Vytvořit a odeslat řešení IoT Edge**. Průběh této operace můžete sledovat v integrovaném terminálu VS Code. 
-2. Všimněte si, že do vašeho řešení, **config**bylo přidáno nové složky. Rozbalte tuto složku a otevřete soubor **Deployment. JSON** v části.
+1. V průzkumníku kódu VS klikněte pravým tlačítkem myši na soubor **deployment.template.json** a vyberte **build and push Řešení IoT Edge**. Průběh této operace můžete sledovat v integrovaném terminálu VS Code. 
+2. Všimněte si, že do vašeho řešení byla přidána nová složka **config**. Rozbalte tuto složku a otevřete soubor **deployment.json** uvnitř.
 3. Zkontrolujte informace v souboru deployment.json. Soubor deployment.json se vytvoří (nebo aktualizuje) automaticky na základě souboru šablony nasazení, který jste nakonfigurovali, a informací z řešení, včetně souboru .env a souborů module.json. 
 
-Pak vyberte své zařízení a nasaďte své řešení.
+Dále vyberte zařízení a nasaďte řešení.
 
 1. V průzkumníku VS Code rozbalte oddíl **Azure IoT Hub Devices** (Zařízení Azure IoT Hub). 
 2. Klikněte pravým tlačítkem na zařízení, na které chcete cílit nasazení, a vyberte **Create deployment for single device** (Vytvořit nasazení pro jedno zařízení). 
@@ -408,7 +408,7 @@ Na svém zařízení si prohlédněte protokoly modulu cameraCapture, kde uvidí
    iotedge logs cameraCapture
    ```
 
-V Visual Studio Code klikněte pravým tlačítkem myši na název vašeho zařízení IoT Edge a vyberte **Spustit sledování integrovaného koncového bodu události**. 
+V kódu Visual Studia klikněte pravým tlačítkem myši na název zařízení IoT Edge a vyberte **spustit sledování integrovaného koncového bodu událostí**. 
 
 Výsledky z modulu služby Custom Vision, které se odesílají jako zprávy z modulu cameraCapture, zahrnují pravděpodobnost, s jakou se jedná o obrázek jedlovce nebo sakury. Vzhledem k tomu, že se jedná o obrázek jedlovce, měla by se zobrazit pravděpodobnost 1.0. 
 

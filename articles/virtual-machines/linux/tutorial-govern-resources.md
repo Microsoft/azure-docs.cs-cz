@@ -1,6 +1,6 @@
 ---
-title: Kurz – Správa virtuálních počítačů pomocí rozhraní příkazového řádku
-description: V tomto kurzu se naučíte používat rozhraní příkazového řádku Azure ke správě virtuálních počítačů Azure pomocí RBAC, policies, zámků a značek.
+title: Výuka – správa virtuálních počítačů pomocí cli
+description: V tomto kurzu se dozvíte, jak používat Azure CLI ke správě virtuálních počítačů Azure pomocí RBAC, policie, zámky a značky.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -14,13 +14,13 @@ ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
 ms.openlocfilehash: b9595c6ce464cf9e4ab0baff9ef842e76f3d18a3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75970146"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Kurz: informace o správě virtuálních počítačů s Linux pomocí Azure CLI
+# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Kurz: Další informace o správě virtuálních strojů linuxu pomocí Azure CLI
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -42,7 +42,7 @@ az group create --name myResourceGroup --location "East US"
 
 V tuto chvíli je skupina prostředků prázdná.
 
-## <a name="role-based-access-control"></a>Řízení přístupu založené na rolích
+## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
 Potřebujete zajistit, aby uživatelé ve vaší organizaci měli správnou úroveň přístupu k těmto prostředkům. Nechcete uživatelům dát neomezený přístup, ale zároveň jim potřebujete umožnit dělat svou práci. Pomocí [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) můžete spravovat oprávnění uživatelů k provádění určitých akcí v daném oboru.
 
@@ -64,7 +64,7 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-Pokud se zobrazí chyba oznamující, že **hlavní \<guid > v adresáři neexistuje**, nová skupina se v celém Azure Active Directory nerozšíří. Zkuste příkaz znovu spustit.
+Pokud se zobrazí chyba **oznamující hlavní \<guid> neexistuje v adresáři**, nová skupina nebyla rozšířena v celé službě Azure Active Directory. Zkuste příkaz znovu spustit.
 
 Obvykle tento postup zopakujete pro role *Přispěvatel sítě* a *Přispěvatel účtů úložiště*, abyste zajistili přiřazení uživatelů ke správě nasazených prostředků. V tomto článku můžete tyto kroky vynechat.
 
@@ -172,7 +172,7 @@ Zobrazí se chyba s oznámením, že operaci odstranění nelze kvůli zámku do
 
 ## <a name="tag-resources"></a>Označení prostředků
 
-K logickému uspořádání prostředků Azure podle kategorií slouží [značky](../../azure-resource-manager/management/tag-resources.md). Každá značka se skládá z názvu a hodnoty. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
+[Značky](../../azure-resource-manager/management/tag-resources.md) se použijí na prostředky Azure, aby je logicky uspořádat podle kategorií. Každá značka se skládá z názvu a hodnoty. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
@@ -219,7 +219,7 @@ nsglock=$(az lock show --name LockNSG \
 az lock delete --ids $vmlock $nsglock
 ```
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). Ukončete relaci SSH k vašemu virtuálnímu počítači a pak odstraňte prostředky následujícím způsobem:
+Pokud už nepotřebujete, můžete pomocí příkazu [odstranění skupiny az](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) odebrat skupinu prostředků, virtuální hod a všechny související prostředky. Ukončete relaci SSH k vašemu virtuálnímu počítači a pak odstraňte prostředky následujícím způsobem:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -236,7 +236,7 @@ V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili
 > * Ochrana důležitých prostředků pomocí zámků
 > * Označení prostředků pro fakturaci a správu
 
-Přejděte k dalšímu kurzu, kde se dozvíte, jak identifikovat změny a spravovat aktualizace balíčků na virtuálním počítači.
+Přejdete k dalšímu kurzu, kde se dozvíte, jak identifikovat změny a spravovat aktualizace balíčků na virtuálním počítači.
 
 > [!div class="nextstepaction"]
 > [Správa virtuálních počítačů](tutorial-config-management.md)

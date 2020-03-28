@@ -1,5 +1,5 @@
 ---
-title: Ukázky Azure CLI – použití vlastní image virtuálního počítače
+title: Ukázky nastavení příkazového příkazu Azure – použití vlastní image virtuálního počítače
 description: Tento skript vytvoří škálovací sadu virtuálních počítačů, která jako zdroj pro instance virtuálních počítačů používá vlastní image virtuálního počítače.
 author: cynthn
 tags: azure-resource-manager
@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: fbf9ddb7891c3394ad0ee2b0899a0cf3b96f7f55
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278399"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-the-azure-cli"></a>Vytvoření škálovací sady virtuálních počítačů z vlastní image virtuálního počítače pomocí Azure CLI

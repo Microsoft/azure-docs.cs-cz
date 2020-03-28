@@ -1,21 +1,21 @@
 ---
-title: 'Skript Azure Powershellu ukázkový: vytvoření pracovního prostoru Log Analytics | Dokumentace Microsoftu'
-description: Skript Azure Powershellu ukázkový – vytvořit pracovní prostor Log Analytics
+title: Vytvoření pracovního prostoru Analýzy protokolů – Azure PowerShell
+description: Ukázka skriptu Azure PowerShell – vytvoření pracovního prostoru analýzy protokolů
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2017
-ms.openlocfilehash: fc60be2364e80c288300d78cc5dd23eed4ea9e62
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 62b02de5d1c08f6047052d71e3be420cceb1c5c0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658145"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80054635"
 ---
-# <a name="create-a-log-analytics-workspace-with-powershell"></a>Vytvoření pracovního prostoru Log Analytics pomocí Powershellu
+# <a name="create-a-log-analytics-workspace-with-powershell"></a>Vytvoření pracovního prostoru Analýzy protokolů pomocí Prostředí PowerShell
 
-Tento skript vám pomůže zprovoznit rychle k pracovnímu prostoru Azure Log Analytics, která je vyžadována, pokud chcete spustit shromažďování, analýze a akce a současně s daty.  
+Tento skript vás rychle zprovozní pomocí pracovního prostoru Azure Log Analytics, který je povinný, pokud chcete začít shromažďovat, analyzovat a dělat akce s daty.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -29,12 +29,12 @@ Tento skript vám pomůže zprovoznit rychle k pracovnímu prostoru Azure Log An
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření nového pracovního prostoru Log Analytics v rámci vašeho předplatného. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript používá následující příkazy k vytvoření nového pracovního prostoru Log Analytics ve vašem předplatném. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
-| [Get-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | Získá informace o existujícího pracovního prostoru. |
-| [New-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | Vytvoří pracovní prostor v zadané skupině prostředků a umístění. |
+| [Get-AzOperationalInsightsPracovní prostor](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | Získá informace o existujícím pracovním prostoru. |
+| [Nový-AzOperationalInsightsPracovní prostor](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | Vytvoří pracovní prostor v zadané skupině prostředků a umístění. |
 
 
 ## <a name="next-steps"></a>Další kroky

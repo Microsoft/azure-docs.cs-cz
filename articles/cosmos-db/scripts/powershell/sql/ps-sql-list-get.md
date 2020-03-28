@@ -1,20 +1,20 @@
 ---
-title: Skript PowerShellu pro výpis a získání operací pro rozhraní API pro Azure Cosmos DB SQL (jádro)
-description: Azure PowerShell Azure Cosmos DB skriptu a operace get pro rozhraní API pro SQL (jádro)
+title: Skript Prostředí PowerShell pro seznam a získání prostředků rozhraní SQL API Azure Cosmos DB
+description: Skript Azure PowerShellu – seznam Azure Cosmos DB a získání operací pro rozhraní SQL API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1590136aa000538f6d176364fca22b353d4a48a0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51880e12f5f422acc0df05fa40da5f40f0ede3d3
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445010"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365963"
 ---
-# <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Vypíše a získá databáze a kontejnery pro rozhraní API Azure Cosmos DB-SQL (Core).
+# <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Seznam a získání databází a kontejnerů pro rozhraní API Azure Cosmos DB – SQL (Core)
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75445010"
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-list-get.ps1 "List or get databases or containers for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-list-get.ps1 "List and get databases and containers for SQL API")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -38,8 +38,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-|**Prostředky Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Vytvoří prostředek. |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Seznam účtů Cosmos DB nebo získá zadaný účet Cosmos DB. |
+| [Databáze Get-AzCosmosDBSql](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabase) | Seznam databází Cosmos DB v účtu nebo získá zadanou databázi Cosmos DB v účtu. |
+| [Kontejner Get-AzCosmosDBSql](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Seznam kontejnerů Cosmos DB v databázi nebo získá zadaný kontejner Cosmos DB v databázi. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
