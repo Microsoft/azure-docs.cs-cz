@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Příprava dat pro provedení clusteringu v R'
+title: 'Kurz: Příprava dat k provádění clusteringu v R'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: V první části této série výukových kurzů budete připravovat data z Azure SQL Database, abyste mohli provádět clusteringu v R s Azure SQL Database Machine Learning Services (Preview).
+description: V první části této třídílné série kurzů připravíte data z databáze Azure SQL k provádění clusteringu v R se službami Azure SQL Database Machine Learning Services (preview).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,75 +13,77 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 800dbfc05c47a949bf024e9a5c671979b49ad201
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2241b69e36e3b17475dba115b8d2ae94fe2189a7
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639967"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345851"
 ---
-# <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Příprava dat pro provedení clusteringu v R s Azure SQL Database Machine Learning Services (Preview)
+# <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Příprava dat k provádění clusteringu v R se službami Azure SQL Database Machine Learning Services (preview)
 
-V první části této tři série kurzů budete importovat a připravit data z Azure SQL Database pomocí jazyka R. Později v této sérii použijete tato data ke školení a nasazení modelu clusteringu v jazyce R s Azure SQL Database Machine Learning Services (Preview).
+V první části této třídílné série kurzů importujete a připravíte data z databáze Azure SQL pomocí R. Později v této řadě použijete tato data k trénování a nasazování modelu clusteringu v R se službami Azure SQL Database Machine Learning Services (preview).
 
-*Clustering* se dá vysvětlit jako uspořádání dat do skupin, kde jsou členové skupiny podobným způsobem.
-K provedení clusteringu zákazníků v rámci datové sady nákupů produktů a vrácení se používá algoritmus **K** . Díky clusteringu zákazníkům můžete zaměřit své marketingové úsilí efektivněji tím, že zacílíte na konkrétní skupiny.
-K-znamená, že clustering je bezdohledový algoritmus pro *učení* , který vyhledává vzory v datech na základě podobností.
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-V rámci jedné a dvou částí této série budete vyvíjet několik skriptů R v RStudio, abyste mohli připravit vaše data a naučit model strojového učení. Pak v části 3 spustíte tyto skripty R v databázi SQL pomocí uložených procedur.
+*Clustering* lze vysvětlit jako uspořádání dat do skupin, kde členové skupiny jsou podobné nějakým způsobem.
+Algoritmus **K-Means** použijete k vytvoření clusteringu zákazníků v datové sadě nákupů a vrácení produktů. Seskupením zákazníků můžete své marketingové úsilí efektivněji zaměřit cílením na konkrétní skupiny.
+K-Prostředky clustering je *bez dohledu učení* algoritmus, který hledá vzory v datech na základě podobností.
+
+V částech první a dvě této řady budete vyvíjet některé skripty R v RStudiu pro přípravu dat a trénování modelu strojového učení. Potom v části třetí, budete spouštět tyto skripty R uvnitř databáze SQL pomocí uložené procedury.
 
 V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
-> * Import ukázkové databáze do Azure SQL Database
-> * Samostatné zákazníky v různých dimenzích pomocí jazyka R
-> * Načtení dat z databáze SQL Azure do datového rámce R
+> * Import ukázkové databáze do databáze Azure SQL
+> * Oddělte zákazníky v různých rozměrech pomocí R
+> * Načtení dat z databáze Azure SQL do datového rámce R
 
-V [druhé části](sql-database-tutorial-clustering-model-build.md)se dozvíte, jak vytvořit a naučit model pro clustering v jazyce R.
+V [druhé části](sql-database-tutorial-clustering-model-build.md)se dozvíte, jak vytvořit a trénovat model clusteringu K-Means v R.
 
-V [třetí části](sql-database-tutorial-clustering-model-deploy.md)se dozvíte, jak vytvořit uloženou proceduru ve službě Azure SQL Database, která může provádět clusteringu v R na základě nových dat.
+V [části třetí](sql-database-tutorial-clustering-model-deploy.md)se dozvíte, jak vytvořit uloženou proceduru v databázi Azure SQL, která může provádět clustering v R na základě nových dat.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné Azure – Pokud nemáte předplatné Azure, [vytvořte si účet,](https://azure.microsoft.com/free/) než začnete.
 
-* Azure SQL Database Server se zapnutou Machine Learning Services – ve verzi Public Preview vám Microsoft zaregistruje a povolí Machine Learning pro stávající nebo nové databáze. Postupujte podle kroků v [části registrace ve verzi Preview](sql-database-machine-learning-services-overview.md#signup).
+* Azure SQL Database Server s povolenou službou Machine Learning Services – Během veřejné verze Preview vás Microsoft začlení a povolí strojové učení pro vaše stávající nebo nové databáze. Postupujte podle kroků v [části Zaregistrujte se pro náhled](sql-database-machine-learning-services-overview.md#signup).
 
-* Balíček RevoScaleR – možnosti pro místní instalaci balíčku najdete v tématu [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) .
+* RevoScaleR balíček - Viz [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) pro možnosti instalace tohoto balíčku místně.
 
-* Prostředí IDE jazyka R – tento kurz používá [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/).
+* R IDE - Tento kurz používá [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/).
 
-* Nástroj SQL Query – v tomto kurzu se předpokládá, že používáte [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) nebo [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
+* Sql dotaz nástroj – tento kurz předpokládá, že používáte [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) nebo SQL Server Management [Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
 ## <a name="import-the-sample-database"></a>Import ukázkové databáze
 
-Ukázková datová sada použitá v tomto kurzu se uložila do záložního souboru databáze **. BacPac** , abyste ji mohli stáhnout a použít. Tato datová sada je odvozena z datové sady [tpcx-BB](http://www.tpc.org/tpcx-bb/default.asp) poskytované [Radou výkonu zpracování transakcí (TPC)](http://www.tpc.org/default.asp).
+Ukázková datová sada použitá v tomto kurzu byla uložena do záložního souboru databáze **.bacpac,** který můžete stáhnout a použít. Tato datová sada je odvozena z datového souboru [tpcx-bb](http://www.tpc.org/tpcx-bb/default.asp) poskytnutého [Radou pro výkonnost zpracování transakcí (TPC).](http://www.tpc.org/default.asp)
 
-1. Stáhněte si soubor [tpcxbb_1gb. BacPac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac).
+1. Stáhněte soubor [tpcxbb_1gb.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac).
 
-1. Postupujte podle pokynů v části [Import souboru BacPac a vytvořte databázi SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-import)pomocí těchto podrobností:
+1. Podle pokynů v [části Import souboru BACPAC vytvořte databázi Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-import)pomocí těchto podrobností:
 
-   * Import ze souboru **tpcxbb_1gb. BacPac** , který jste stáhli
-   * Ve verzi Public Preview vyberte konfiguraci **Gen5/Vcore** pro novou databázi.
-   * Pojmenujte novou databázi "tpcxbb_1gb".
+   * Import ze staženého souboru **tpcxbb_1gb.bacpac**
+   * Během veřejné verze Preview zvolte konfiguraci **Gen5/vCore** pro novou databázi.
+   * Pojmenujte novou databázi "tpcxbb_1gb"
 
-## <a name="separate-customers"></a>Samostatné zákazníky
+## <a name="separate-customers"></a>Samostatní zákazníci
 
-Vytvořte nový soubor RScript v RStudio a spusťte následující skript.
-V dotazu SQL oddělíte zákazníky v následujících rozměrech:
+Vytvořte nový soubor RScript v RStudiu a spusťte následující skript.
+V dotazu SQL oddělujete zákazníky podle následujících dimenzí:
 
-* **orderRatio** = poměr návratové objednávky (celkový počet poslaných částečně nebo úplně vrácených objednávek oproti celkovému počtu objednávek)
-* **itemsRatio** = poměr návratové položky (celkový počet vrácených položek oproti počtu zakoupených položek)
-* **monetaryRatio** = poměr návratové hodnoty (celková peněžní částka vrácených položek oproti zakoupené množství)
-* **frekvence** = návratová frekvence
+* **orderRatio** = poměr vratky (celkový počet částečně nebo plně vrácených objednávek oproti celkovému počtu objednávek)
+* **itemsRatio** = poměr vrácených položek (celkový počet vrácených položek oproti počtu zakoupených položek)
+* **monetaryRatio** = poměr vrácené částky (celková peněžní částka vrácených položek oproti nakoupené částce)
+* **frekvence** = frekvence návratu
 
-Ve funkci **vložení** nahraďte **Server**, **UID**a **PWD** vlastními informacemi o připojení.
+Ve funkci **vložení** nahraďte **server**, **UID**a **pwd** vlastními informacemi o připojení.
 
 ```r
 # Define the connection string to connect to the tpcxbb_1gb database
@@ -158,8 +160,8 @@ LEFT OUTER JOIN (
 
 ## <a name="load-the-data-into-a-data-frame"></a>Načtení dat do datového rámce
 
-Nyní pomocí následujícího skriptu vraťte výsledky z dotazu do datového rámce R pomocí funkce **rxSqlServerData** .
-V rámci procesu definujete typ pro vybrané sloupce (pomocí colClasses), abyste se ujistili, že jsou typy správně přeneseny do jazyka R.
+Nyní pomocí následujícího skriptu vraťte výsledky z dotazu do datového rámce R pomocí funkce **rxSqlServerData.**
+Jako součást procesu definujete typ pro vybrané sloupce (pomocí colClasses) a ujistěte se, že typy jsou správně přeneseny do R.
 
 ```r
 # Query SQL Server using input_query and get the results back
@@ -182,7 +184,7 @@ customer_data <- rxDataStep(customer_returns);
 head(customer_data, n = 5);
 ```
 
-Měly by se zobrazit výsledky podobné následujícímu.
+Měli byste vidět výsledky podobné následujícímu.
 
 ```results
   customer orderRatio itemsRatio monetaryRatio frequency
@@ -195,24 +197,24 @@ Měly by se zobrazit výsledky podobné následujícímu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete ***pokračovat v tomto kurzu***, odstraňte databázi tpcxbb_1gb ze serveru Azure SQL Database.
+***Pokud nebudete pokračovat v tomto kurzu***, odstraňte tpcxbb_1gb databázi z vašeho serveru Azure SQL Database.
 
-V Azure Portal postupujte podle následujících kroků:
+Na webu Azure Portal postupujte takto:
 
-1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** nebo **databáze SQL**.
-1. Do pole **filtrovat podle názvu...** zadejte **tpcxbb_1gb**a vyberte své předplatné.
-1. Vyberte databázi **tpcxbb_1gb** .
+1. V levé nabídce na webu Azure Portal vyberte **Všechny prostředky** nebo **databáze SQL**.
+1. Do pole **Filtr podle názvu...** zadejte **tpcxbb_1gb**a vyberte předplatné.
+1. Vyberte **databázi tpcxbb_1gb.**
 1. Na stránce **Přehled** vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V první části této série kurzů jste dokončili tyto kroky:
 
-* Import ukázkové databáze do Azure SQL Database
-* Samostatné zákazníky v různých dimenzích pomocí jazyka R
-* Načtení dat z databáze SQL Azure do datového rámce R
+* Import ukázkové databáze do databáze Azure SQL
+* Oddělte zákazníky v různých rozměrech pomocí R
+* Načtení dat z databáze Azure SQL do datového rámce R
 
-Pokud chcete vytvořit model strojového učení, který používá tato zákaznická data, postupujte podle části 2 této série kurzů:
+Chcete-li vytvořit model strojového učení, který používá tato zákaznická data, postupujte podle druhé části této série kurzů:
 
 > [!div class="nextstepaction"]
-> [Kurz: Vytvoření prediktivního modelu v R s Azure SQL Database Machine Learning Services (Preview)](sql-database-tutorial-clustering-model-build.md)
+> [Kurz: Vytvoření prediktivního modelu v R se službami Azure SQL Database Machine Learning Services (preview)](sql-database-tutorial-clustering-model-build.md)

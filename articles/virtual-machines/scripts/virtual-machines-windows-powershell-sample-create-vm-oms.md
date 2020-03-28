@@ -1,6 +1,6 @@
 ---
-title: Ukázka skriptu Azure PowerShell – protokoly Azure Monitor
-description: Ukázka skriptu Azure PowerShell – protokoly Azure Monitor
+title: Ukázka skriptu Azure PowerShell – protokoly Azure Monitoru
+description: Ukázka skriptu Azure PowerShell – protokoly Azure Monitoru
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,13 +16,13 @@ ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: fdffb05ac7aff8aac2db9ac588c1dedf8f5c9ea5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74038959"
 ---
-# <a name="create-an-azure-monitor-vm-with-powershell"></a>Vytvoření virtuálního počítače s Azure Monitor pomocí prostředí PowerShell 
+# <a name="create-an-azure-monitor-vm-with-powershell"></a>Vytvoření virtuálního počítače Azure Monitor s PowerShellem 
 
 Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Log Analytics a zaregistruje systém v pracovním prostoru služby Log Analytics. Po spuštění skriptu bude virtuální počítač viditelný ve službě Azure Monitor. Také je potřeba aktualizovat ID a klíč pracovního prostoru služby Log Analytics.
 
@@ -46,11 +46,11 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 Tento skript pomocí následujících příkazů vytvoří nasazení. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině zabezpečení sítě. Tento příkaz také otevře port 80 a nastaví přihlašovací údaje pro správu. |
-| [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | Přidá do virtuálního počítače rozšíření virtuálního počítače. |
+| [Rozšíření Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | Přidá do virtuálního počítače rozšíření virtuálního počítače. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
 ## <a name="next-steps"></a>Další kroky

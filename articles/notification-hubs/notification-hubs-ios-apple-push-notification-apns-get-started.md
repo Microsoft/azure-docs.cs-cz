@@ -1,5 +1,5 @@
 ---
-title: Posílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs | Microsoft Docs
+title: Odesílání nabízených oznámení do aplikací pro iOS pomocí Center oznámení Azure | Dokumenty společnosti Microsoft
 description: V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace iOS.
 services: notification-hubs
 documentationcenter: ios
@@ -19,41 +19,41 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
 ms.openlocfilehash: 032ca8d4ecbcf1fc7f3c22cbe5a0ee934fc5e17c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74407165"
 ---
-# <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: Odesílání nabízených oznámení do aplikací pro iOS pomocí Center oznámení Azure
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 > * [Swift](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
 
-V tomto kurzu použijete Azure Notification Hubs k odesílání nabízených oznámení do aplikace pro iOS. Vytvoříte prázdnou aplikaci pro iOS, která přijímá nabízená oznámení [služby Apple Push Notification (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1).
+V tomto kurzu použijete Centra oznámení Azure k odesílání nabízených oznámení do aplikace iOS. Vytvoříte prázdnou aplikaci pro iOS, která přijímá nabízená oznámení [služby Apple Push Notification (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1).
 
 V tomto kurzu provedete následující kroky:
 
 > [!div class="checklist"]
-> * Generování souboru s žádostí o podepsání certifikátu
+> * Vygenerujete soubor s žádostí o podepsání certifikátu
 > * Požádáte aplikaci o nabízená oznámení
 > * Vytvoření zřizovacího profilu pro aplikaci
-> * Konfigurace centra oznámení pro nabízená oznámení iOS
+> * Nakonfigurujete v centru oznámení nabízená oznámení pro iOS
 > * Připojíte aplikaci pro iOS ke službě Notification Hubs
 > * Odešlete nabízená oznámení
 > * Ověříte, že aplikace přijímá oznámení
 
-Úplný kód pro tento kurz najdete [na GitHubu](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples).
+Kompletní kód pro tento kurz lze nalézt [na GitHubu](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
-* Aktivní účet Azure. Pokud účet nemáte, můžete si [vytvořit bezplatný účet Azure](https://azure.microsoft.com/free).
+* Aktivní účet Azure. Pokud nemáte účet, můžete si [vytvořit bezplatný účet Azure](https://azure.microsoft.com/free).
 * [Windows Azure Messaging Framework]
 * Poslední verze jazyka [Xcode]
-* Zařízení s podporou iOS verze 10 (nebo novější)
+* Zařízení podporující iOS verze 10 (nebo novější)
 * Členství v [programu pro vývojáře Apple](https://developer.apple.com/programs/).
   
   > [!NOTE]
@@ -71,60 +71,60 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
 
 2. Když nastavujete možnosti pro nový projekt, nezapomeňte použít stejný **Název produktu** a **Identifikátor organizace**, který jste použili při nastavení identifikátoru sady na portálu pro vývojáře Apple.
 
-3. V části Navigátor projektu vyberte název vašeho projektu v části **cíle**a pak vyberte kartu **možnosti podepisování &** . Ujistěte se, že jste vybrali příslušný **tým** pro svůj účet Apple Developer. XCode by na základě vašeho identifikátoru sady mělo automaticky stáhnout profil zřizování, který jste vytvořili dříve.
+3. V části Project Navigator vyberte název projektu v části **Cíle**a pak vyberte kartu **Možnosti podepisování &.** Ujistěte se, že jste vybrali příslušný **tým** pro svůj účet Apple Developer. XCode by na základě vašeho identifikátoru sady mělo automaticky stáhnout profil zřizování, který jste vytvořili dříve.
 
     Pokud nevidíte nový profil zřizování, který jste vytvořili v Xcode, pokuste se aktualizovat profily pro podpisové identity. Klikněte na tlačítko **Xcode** na panelu nabídek, klikněte na tlačítko **Předvolby**, klikněte na kartu **Účet**, klikněte na tlačítko **Zobrazit podrobnosti**, klikněte na podpisovou identitu a pak klikněte na tlačítko Aktualizovat v pravém dolním rohu.
 
     ![Xcode – profil zřizování][9]
 
-4. Na kartě **Možnosti podpisového &** vyberte **+ funkce**.  Dvojím kliknutím na **nabízená oznámení** ji povolte.
+4. Na kartě **Možnosti podepisování &** vyberte **+ Schopnosti**.  Povolte povolte **nabízená oznámení.**
 
     ![Xcode – možnosti nabízení][12]
 
 5. Přidejte moduly Azure Notification Hubs SDK.
 
-   Sadu Azure Notification Hubs SDK můžete integrovat do své aplikace pomocí [Cocoapods](https://cocoapods.org) nebo ručním přidáním binárních souborů do projektu.
+   Sadku Azure Notification Hubs SDK můžete integrovat do aplikace pomocí [cocoapodů](https://cocoapods.org) nebo ručním přidáním binárních souborů do projektu.
 
-   - Integrace přes Cocoapods
+   - Integrace prostřednictvím kakaopodů
 
-     Přidejte do svého `podfile` následující závislosti, které budou do vaší aplikace zahrnovat sadu Azure Notification Hubs SDK.
+     Přidejte do své `podfile` aplikace následující závislosti, abyste do aplikace zahrnuli sdk centra oznámení Azure.
 
      ```ruby
      pod 'AzureNotificationHubs-iOS'
      ```
 
-     Spusťte `pod install` pro instalaci nově definovaného bodu pod a otevřete `.xcworkspace`.
+     Spuštěním `pod install` nainstalujte nově definovaný `.xcworkspace`pod a otevřete aplikaci .
 
      > [!NOTE]
-     > Pokud se zobrazí chyba, například **[!] Při spouštění `pod install`se nepovedlo najít specifikaci pro AzureNotificationHubs-iOS** , spusťte prosím `pod repo update` a získejte nejnovější lusky z úložiště Cocoapods a pak spusťte `pod install`.
+     > Pokud se zobrazí chyba, například **[!] Nelze najít specifikaci pro AzureNotificationHubs-iOS** při spuštění `pod install`, spusťte `pod repo update` získat nejnovější pods z `pod install`úložiště Cocoapods a pak spustit .
 
-   - Integrace přes Carthage
+   - Integrace přes Krežáme
 
-     Přidejte do svého `Cartfile` následující závislosti, které budou do vaší aplikace zahrnovat sadu Azure Notification Hubs SDK.
+     Přidejte do své `Cartfile` aplikace následující závislosti, abyste do aplikace zahrnuli sdk centra oznámení Azure.
 
      ```ruby
      github "Azure/azure-notificationhubs-ios"
      ```
 
-     Závislosti v následujících, aktualizacích a sestaveních:
+     Dále aktualizujte a sestavte závislosti:
 
      ```shell
      $ carthage update
      ```
 
-     Další informace o použití Carthage najdete v [úložišti GitHub Carthage](https://github.com/Carthage/Carthage).
+     Další informace o používání Krežalí najdete v [úložišti Carthage GitHub](https://github.com/Carthage/Carthage).
 
-   - Integrace kopírováním binárních souborů do projektu
+   - Integrace zkopírováním binárních souborů do projektu
 
-     1. Stáhněte si rozhraní [Azure Notification HUBS SDK](https://github.com/Azure/azure-notificationhubs-ios/releases) , které je k dispozici jako soubor zip, a rozbalte ho.
+     1. Stáhněte si architekturu [Azure Notification Hubs SDK](https://github.com/Azure/azure-notificationhubs-ios/releases) poskytovanou jako soubor zip a rozbalte ho.
 
      2. V Xcode klikněte pravým tlačítkem na projekt a klikněte na možnost **Přidat soubory do** a přidejte složku **WindowsAzureMessaging.framework** do projektu Xcode. Vyberte **Možnosti**, ujistěte se, že je vybraná možnost **Kopírovat položky v případě potřeby**, a pak klikněte na **Přidat**.
 
         ![Rozbalte Azure SDK][10]
 
-6. Přidejte nový hlavičkový soubor do projektu s názvem **konstanty. h**. Provedete to tak, že kliknete pravým tlačítkem myši na název projektu a vyberete **nový soubor...** . Pak vyberte **hlavičkový soubor**. V tomto souboru jsou konstanty vašeho centra oznámení. Pak vyberte **Další**. Pojmenujte soubor **konstanty. h**.
+6. Přidejte do projektu nový soubor záhlaví s názvem **Constants.h**. Chcete-li tak učinit, klepněte pravým tlačítkem myši na název projektu a vyberte **nový soubor...**. Pak vyberte **Soubor záhlaví**. V tomto souboru jsou konstanty vašeho centra oznámení. Pak vyberte **Další**. Pojmenujte soubor **Constants.h**.
 
-7. Do souboru konstanty. h přidejte následující kód:
+7. Do souboru Constants.h přidejte následující kód:
 
     ```objc
     #ifndef Constants_h
@@ -137,11 +137,11 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
     #endif /* Constants_h */
     ```
 
-8. Přidejte implementační soubor pro konstanty. h. Provedete to tak, že kliknete pravým tlačítkem myši na název projektu a vyberete **nový soubor...** . Vyberte **cíl-C soubor**a pak vyberte **Další**. Pojmenujte soubor **konstantami. m**.
+8. Přidejte soubor implementace pro Constants.h. Chcete-li tak učinit, klepněte pravým tlačítkem myši na název projektu a vyberte **nový soubor...**. Vyberte **Soubor cíle C**a pak vyberte **Další**. Pojmenujte soubor **Constants.m**.
 
-    ![Přidat soubor. m](media/notification-hubs-ios-get-started/new-file-objc.png)
+    ![Přidat soubor .m](media/notification-hubs-ios-get-started/new-file-objc.png)
 
-9. Otevřete soubor **konstanty. m** a nahraďte jeho obsah následujícím kódem. Nahraďte zástupné symboly řetězcového literálu `NotificationHubConnectionString` a `NotificationHubConnectionString` pomocí názvu centra a **DefaultListenSharedAccessSignature**, v uvedeném pořadí, jak jste předtím získali z portálu:
+9. Otevřete soubor **Constants.m** a nahraďte jeho obsah následujícím kódem. Nahraďte zástupné `NotificationHubConnectionString` symboly literálu řetězce a `NotificationHubConnectionString` názvem centra a **standardem DefaultListenSharedAccessSignature**, jak jste dříve získali z portálu:
 
     ```objc
     #import <Foundation/Foundation.h>
@@ -152,7 +152,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
     NSString* const NHUserDefaultTags = @"notification_tags";
     ```
 
-10. Otevřete soubor **AppDelegate. h** projektu a nahraďte jeho obsah následujícím kódem:
+10. Otevřete soubor **AppDelegate.h** projektu a nahraďte jeho obsah následujícím kódem:
 
     ```objc
     #import <UIKit/UIKit.h>
@@ -170,20 +170,20 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
 
     ```
 
-11. V souboru **AppDelegate. m** projektu přidejte následující příkazy `import`:
+11. Do souboru **AppDelegate.m** projektu přidejte `import` následující příkazy:
 
     ```objc
     #import "Constants.h"
     #import "NotificationDetailViewController.h"
     ```
 
-12. Také v souboru **AppDelegate. m** přidejte následující řádek kódu do metody `didFinishLaunchingWithOptions` na základě vaší verze iOS. Tento kód zaregistruje popisovač vašeho zařízení do APN:
+12. Také v souboru **AppDelegate.m** přidejte následující `didFinishLaunchingWithOptions` řádek kódu v metodě založené na verzi iOS. Tento kód zaregistruje popisovač vašeho zařízení do APN:
 
     ```objc
     [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
     ```
 
-13. Ve stejném souboru **AppDelegate. m** nahraďte veškerý kód po `didFinishLaunchingWithOptions` s následujícím kódem:
+13. Ve stejném souboru **AppDelegate.m** nahraďte veškerý kód po `didFinishLaunchingWithOptions` s následujícím kódem:
 
     ```objc
     // Tells the app that a remote notification arrived that indicates there is data to be fetched.
@@ -327,11 +327,11 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
     @end
     ```
 
-    Tento kód se připojí k centru oznámení pomocí informací o připojení, které jste zadali v **konstantách. h**. Poté přiřadí token zařízení do centra oznámení tak, aby centrum oznámení mohlo odesílat oznámení.
+    Tento kód se připojuje k centru oznámení pomocí informací o připojení, které jste zadali v **souboru Constants.h**. Poté přiřadí token zařízení do centra oznámení tak, aby centrum oznámení mohlo odesílat oznámení.
 
-### <a name="notificationdetailviewcontroller"></a>NotificationDetailViewController
+### <a name="notificationdetailviewcontroller"></a>OznámeníDetailViewController
 
-1. Podobně jako v předchozích pokynech přidejte další hlavičkový soubor s názvem **NotificationDetailViewController. h**. Nahraďte obsah nového hlavičkového souboru následujícím kódem:
+1. Podobně jako předchozí pokyny, přidejte další soubor záhlaví s názvem **NotificationDetailViewController.h**. Nahraďte obsah nového souboru záhlaví následujícím kódem:
 
     ```objc
     #import <UIKit/UIKit.h>
@@ -353,7 +353,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
     NS_ASSUME_NONNULL_END
     ```
 
-2. Přidejte implementační soubor **NotificationDetailViewController. m**. Nahraďte obsah souboru následujícím kódem, který implementuje `UIViewController` metody:
+2. Přidejte soubor implementace **NotificationDetailViewController.m**. Nahraďte obsah souboru následujícím kódem, `UIViewController` který implementuje metody:
 
     ```objc
     #import "NotificationDetailViewController.h"
@@ -416,16 +416,16 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
     @end
     ```
 
-### <a name="viewcontroller"></a>Soubor viewcontroller
+### <a name="viewcontroller"></a>Kontrolka zobrazení
 
-1. V souboru **soubor viewcontroller. h** projektu přidejte následující příkazy `import`:
+1. Do souboru **ViewController.h** projektu přidejte `import` následující příkazy:
 
     ```objc
     #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
     #import <UserNotifications/UserNotifications.h>
     ```
 
-2. Také v **soubor viewcontroller. h**přidejte následující deklarace vlastností za `@interface` deklarace:
+2. Také v **ViewController.h**, přidejte následující `@interface` deklarace vlastností za prohlášení:
 
     ```objc
     @property (strong, nonatomic) IBOutlet UITextField *tagsTextField;
@@ -433,7 +433,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
     @property (strong, nonatomic) IBOutlet UIButton *unregisterButton;
     ```
 
-3. V implementačním souboru **soubor viewcontroller. m** projektu nahraďte obsah souboru následujícím kódem:
+3. V implementačním souboru **ViewController.m** projektu nahraďte obsah souboru následujícím kódem:
 
     ```objc
     #import "ViewController.h"
@@ -501,10 +501,10 @@ Chcete-li otestovat nabízená oznámení na iOS, musíte aplikaci nasadit do fy
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto příkladu jste vysílali nabízená oznámení pro všechna vaše registrovaná zařízení iOS. V následujícím kurzu se dozvíte, jak zasílat nabízená oznámení do konkrétních zařízení iOS:
+V tomto příkladu jste vysílali nabízená oznámení pro všechna vaše registrovaná zařízení iOS. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením s iOSem, pokračujte následujícím kurzem:
 
 > [!div class="nextstepaction"]
->[Zasílání nabízených oznámení určitým zařízením](notification-hubs-ios-xplat-segmented-apns-push-notification.md)
+>[Zasílání nabízených oznámení do konkrétních zařízení](notification-hubs-ios-xplat-segmented-apns-push-notification.md)
 
 <!-- Images. -->
 [8]: ./media/notification-hubs-ios-get-started/notification-hubs-create-ios-app.png
@@ -530,4 +530,4 @@ V tomto příkladu jste vysílali nabízená oznámení pro všechna vaše regis
 [Azure Notification Hubs Notify Users for iOS with .NET backend]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 [Local and Push Notification Programming Guide]: https://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
-[Azure Portal]: https://portal.azure.com
+[Portál Azure]: https://portal.azure.com

@@ -9,15 +9,15 @@ ms.date: 02/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: dc4281c17b92e1720625764a52a34a94d6f296ab
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67174938"
 ---
 Než začnete vytvářet položky, projdeme si koncept rozsahu. Azure poskytuje čtyři úrovně správy: skupiny pro správu, předplatné, skupina prostředků a prostředek. [Skupiny pro správu](../articles/billing/billing-enterprise-mgmt-group-overview.md) jsou ve verzi Preview. Následující obrázek ukazuje příklad těchto vrstev.
 
-![Scope](./media/resource-manager-governance-scope/scope-levels.png)
+![Rozsah](./media/resource-manager-governance-scope/scope-levels.png)
 
 Nastavení správy můžete použít na jakékoli z těchto úrovní rozsahu. Vybraná úroveň určuje rozsah použití nastavení. Nižší úrovně dědí nastavení z vyšších úrovní. Když nějaké nastavení použijete pro předplatné, použije se toto nastavení pro všechny skupiny prostředků a prostředky v tomto předplatném. Když nějaké nastavení použijete pro skupinu prostředků, použije se toto nastavení pro skupinu prostředků i všechny prostředky, které obsahuje. Jiná skupina prostředků ale toto nastavení nezíská.
 

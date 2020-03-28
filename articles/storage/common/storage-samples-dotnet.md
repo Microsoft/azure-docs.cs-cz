@@ -1,6 +1,6 @@
 ---
-title: Ukázky Azure Storage pomocí .NET | Microsoft Docs
-description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Seznamte se s úvodními ukázkami objektů blob, front, tabulek a souborů pomocí klientských knihoven pro úložiště .NET.
+title: Ukázky úložiště Azure pomocí rozhraní .NET | Dokumenty společnosti Microsoft
+description: Zobrazení, stažení a spuštění ukázkového kódu a aplikací pro Azure Storage. Zjistěte, jak začít ukázky pro objekty BLOB, fronty, tabulky a soubory pomocí knihoven klienta úložiště .NET.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/13/2020
@@ -8,42 +8,42 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: a4c9188c8f1315a3af452cd0c1fb5cf45ab82081
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77486113"
 ---
-# <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Ukázky Azure Storage pomocí klientských knihoven V12 .NET
+# <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Ukázky úložiště Azure pomocí klientských knihoven v12 .NET
 
-Následující tabulka poskytuje přehled našich ukázek úložiště a scénářů popsaných v jednotlivých ukázkách. Kliknutím na odkazy zobrazíte odpovídající vzorový kód v GitHubu.
+Následující tabulka obsahuje přehled úložiště našich ukázek a scénáře uvedené v každé ukázce. Kliknutím na odkazy zobrazíte odpovídající ukázkový kód na GitHubu.
 
 > [!NOTE]
-> Tyto ukázky používají nejnovější knihovnu Azure Storage .NET V12. Starší verzi kódu V11 najdete v tématu [ukázky pro Azure Blob Storage pro .NET](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started) v úložišti GitHub.
+> Tyto ukázky používají nejnovější knihovnu Azure Storage .NET v12. Starší verze kódu v11 najdete v [tématu Ukázky úložiště objektů blob Azure pro rozhraní .NET](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started) v úložišti GitHub.
 
-## <a name="blob-samples"></a>Ukázky objektů BLOB
+## <a name="blob-samples"></a>Vzorky objektů blob
 
 ### <a name="authentication"></a>Ověřování
 
 :::row:::
    :::column span="":::
-      [Ověřování pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L27)
+      [Ověření pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L27)
    :::column-end:::
    :::column span="":::
-      [Ověřování pomocí přihlašovacích údajů sdíleného klíče](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L91)
+      [Ověření pomocí pověření sdíleného klíče](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L91)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Ověřování pomocí identity Azure](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01a_HelloWorld.cs#L210)
+      [Ověření pomocí Azure Identity](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01a_HelloWorld.cs#L210)
    :::column-end:::
    :::column span="":::
-      [Ověřování pomocí tokenu služby Active Directory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L177)
+      [Ověření pomocí tokenu služby Active Directory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L177)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Anonymní přístup k veřejnému objektu BLOB](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L55)
+      [Anonymní přístup k veřejné objektu blob](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L55)
    :::column-end:::
 :::row-end:::
 
@@ -54,23 +54,23 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
       [Odstranění několika objektů BLOB v jednom požadavku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L22)
    :::column-end:::
    :::column span="":::
-      [Nastavte několik úrovní přístupu objektů BLOB v jednom požadavku.](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L56)
+      [Nastavení několika úrovní přístupu k objektům blob v jednom požadavku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Jemně odstupňované řízení v dávce žádosti](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L90)
+      [Jemně odstupňovaná kontrola v požadavku na dávku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L90)
    :::column-end:::
    :::column span="":::
       [Zachytit chyby z neúspěšné dílčí operace](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L136)
    :::column-end:::
 :::row-end:::
 
-### <a name="blob"></a>Blob
+### <a name="blob"></a>Objekt blob
 
 :::row:::
    :::column span="":::
-      [Nahrání souboru do objektu BLOB](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L21)
+      [Nahrání souboru do objektu blob](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L21)
    :::column-end:::
    :::column span="":::
       [Stažení objektu blob do souboru](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L66)
@@ -81,18 +81,18 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
       [Stažení obrázku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L109)
    :::column-end:::
    :::column span="":::
-      [Výpis všech objektů BLOB v kontejneru](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L128)
+      [Vypsat všechny objekty BLOB v kontejneru](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L128)
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>Odstraňování potíží
+### <a name="troubleshooting"></a>Řešení potíží
 :::row:::
    :::column span="2":::
       [Aktivace obnovitelné chyby pomocí klienta kontejneru](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L166)
    :::column-end:::
 :::row-end:::
 
-## <a name="data-lake-storage-gen2-samples"></a>Ukázky Data Lake Storage Gen2
+## <a name="data-lake-storage-gen2-samples"></a>Vzorky Data Lake Storage Gen2
 
 ### <a name="authentication"></a>Ověřování
 
@@ -101,15 +101,15 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
       [Anonymní přístup k veřejnému souboru](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L28)
    :::column-end:::
    :::column span="":::
-      [Ověřování pomocí přihlašovacích údajů sdíleného klíče](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L79)
+      [Ověření pomocí pověření sdíleného klíče](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L79)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Ověřování pomocí sdíleného přístupového podpisu (SAS)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L114)
+      [Ověření pomocí sdíleného přístupového podpisu (SAS)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L114)
    :::column-end:::
    :::column span="":::
-      [Ověřování pomocí tokenu služby Active Directory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L164)
+      [Ověření pomocí tokenu služby Active Directory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L164)
    :::column-end:::
 :::row-end:::
 
@@ -119,7 +119,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
       [Vytvoření souboru pomocí klienta systému souborů](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L22)
    :::column-end:::
    :::column span="":::
-      [Získat vlastnosti souboru a adresáře](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L560)
+      [Získání vlastností souboru a adresáře](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L560)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -135,19 +135,19 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
       [Vytvoření adresáře](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L93)
    :::column-end:::
    :::column span="":::
-      [Vytvoření souboru pomocí adresářového klienta](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L55)
+      [Vytvoření souboru pomocí klienta adresáře](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L55)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Výpis adresářů](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L275)
+      [Seznam adresářů](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L275)
    :::column-end:::
    :::column span="":::
-      [Procházení souborů a adresářů](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L318)
+      [Soubory a adresáře procházení](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L318)
    :::column-end:::
 :::row-end:::
 
-### <a name="file"></a>Soubor
+### <a name="file"></a>File
 :::row:::
    :::column span="":::
       [Nahrání souboru](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L126)
@@ -166,15 +166,15 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
       [Nastavení a získání seznamu řízení přístupu k souborům](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L468)
    :::column-end:::
    :::column span="":::
-      [Nastavení a získání oprávnění souboru](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L426)
+      [Nastavení a získání oprávnění k souboru](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L426)
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>Odstraňování potíží
+### <a name="troubleshooting"></a>Řešení potíží
 
 :::row:::
    :::column span="2":::
-      [Aktivovat obnovitelnou chybu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L389)
+      [Spuštění obnovitelné chyby](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L389)
    :::column-end:::
 :::row-end:::
 
@@ -184,15 +184,15 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 :::row:::
    :::column span="":::
-      [Ověřování pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L24)
+      [Ověření pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L24)
    :::column-end:::
    :::column span="":::
-      [Ověřování pomocí přihlašovacích údajů sdíleného klíče](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L52)
+      [Ověření pomocí pověření sdíleného klíče](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L52)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Ověřování pomocí sdíleného přístupového podpisu (SAS))](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L86)
+      [Ověření pomocí sdíleného přístupového podpisu (SAS))](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L86)
    :::column-end:::
 :::row-end:::
 
@@ -208,41 +208,41 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Procházení souborů a adresářů](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample01b_HelloWorldAsync.cs#L107)
+      [Soubory a adresáře procházení](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample01b_HelloWorldAsync.cs#L107)
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>Odstraňování potíží
+### <a name="troubleshooting"></a>Řešení potíží
 
 :::row:::
    :::column span="2":::
-      [Aktivovat obnovitelnou chybu pomocí sdíleného klienta](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample01b_HelloWorldAsync.cs#L141)
+      [Aktivace obnovitelné chyby pomocí sdíleného klienta](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample01b_HelloWorldAsync.cs#L141)
    :::column-end:::
 :::row-end:::
 
-## <a name="queue-samples"></a>Ukázky front
+## <a name="queue-samples"></a>Ukázky fronty
 
 ### <a name="authentication"></a>Ověřování
 
 :::row:::
    :::column span="":::
-      [Ověřování pomocí Azure Active Directory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L167)
+      [Ověření pomocí služby Azure Active Directory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L167)
    :::column-end:::
    :::column span="":::
-      [Ověřování pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L24)
+      [Ověření pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L24)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Ověřování pomocí přihlašovacích údajů sdíleného klíče](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L52)
+      [Ověření pomocí pověření sdíleného klíče](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L52)
    :::column-end:::
    :::column span="":::
-      [Ověřování pomocí sdíleného přístupového podpisu (SAS))](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L86)
+      [Ověření pomocí sdíleného přístupového podpisu (SAS))](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L86)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Ověřování pomocí tokenu služby Active Directory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L140)
+      [Ověření pomocí tokenu služby Active Directory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L140)
    :::column-end:::
 :::row-end:::
 
@@ -261,27 +261,27 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
       [Příjem a zpracování zpráv](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L61)
    :::column-end:::
    :::column span="":::
-      [Prohlížet zprávy](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L90)
+      [Náhled na zprávy](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L90)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Přijímat zprávy a časový limit viditelnosti aktualizací](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L115)
+      [Příjem zpráv a aktualizace časového limitu viditelnosti](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L115)
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>Odstraňování potíží 
+### <a name="troubleshooting"></a>Řešení potíží 
 :::row:::
    :::column span="2":::
       [Aktivace obnovitelné chyby pomocí klienta fronty](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L188)
    :::column-end:::
 :::row-end:::
 
-## <a name="table-samples-v11"></a>Ukázky tabulek (V11)
+## <a name="table-samples-v11"></a>Ukázky tabulky (v11)
 
 :::row:::
    :::column span="":::
-      [Vytvořit tabulku](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/Common.cs#L40)
+      [Vytvoření tabulky](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/Common.cs#L40)
    :::column-end:::
    :::column span="":::
       [Odstranit entitu/tabulku](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs)
@@ -289,7 +289,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Vložit/sloučit/nahradit entitu](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/SamplesUtils.cs#L41)
+      [Entita Vložení/sloučení/nahrazení](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/SamplesUtils.cs#L41)
    :::column-end:::
    :::column span="":::
       [Entity dotazu](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs#L672)
@@ -297,7 +297,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Tabulky dotazů](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs)
+      [Dotazy na tabulky](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs)
    :::column-end:::
    :::column span="":::
       [Seznam ACL/vlastnosti tabulky](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs#L224)
@@ -309,31 +309,31 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-code-sample-libraries"></a>Knihovny ukázek kódu Azure
+## <a name="azure-code-sample-libraries"></a>Ukázkové knihovny kódu Azure
 
-Chcete-li zobrazit kompletní ukázkové knihovny .NET, přečtěte si:
+Chcete-li zobrazit kompletní ukázkové knihovny .NET, přejděte na:
 
-* [Ukázky kódu Azure Blob](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
-* [Ukázky kódu Azure Data Lake](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples)
+* [Ukázky kódu objektu blob Azure](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+* [Ukázky kódu datového jezera Azure](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples)
 * [Ukázky kódu souborů Azure](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples)
 * [Ukázky kódu fronty Azure](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
 
-Úložiště GitHubu můžete procházet a klonovat pro každou knihovnu.
+Můžete procházet a klonovat úložiště GitHub pro každou knihovnu.
 
-## <a name="getting-started-guides"></a>Úvodní příručky
+## <a name="getting-started-guides"></a>Příručky Začínáme
 
-Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure Storage, přečtěte si následující příručky.
+Pokud hledáte pokyny k instalaci a zahájení instalace s klientskými knihovnami úložiště Azure, podívejte se na následující příručky.
 
-* [Začínáme se službou Azure Blob Service v .NET](../blobs/storage-quickstart-blobs-dotnet.md)
-* [Začínáme se službou Azure Queue v .NET](../queues/storage-quickstart-queues-dotnet.md)
-* [Začínáme se službou Azure Table Service v .NET](../../cosmos-db/tutorial-develop-table-dotnet.md)
-* [Začínáme se službou Azure File Service v .NET](../files/storage-dotnet-how-to-use-files.md)
+* [Začínáme se službou Azure Blob Service v rozhraní .NET](../blobs/storage-quickstart-blobs-dotnet.md)
+* [Začínáme se službou Azure Queue Service v rozhraní .NET](../queues/storage-quickstart-queues-dotnet.md)
+* [Začínáme se službou Azure Table Service v rozhraní .NET](../../cosmos-db/tutorial-develop-table-dotnet.md)
+* [Začínáme se službou Azure File Service v rozhraní .NET](../files/storage-dotnet-how-to-use-files.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o ukázkách pro jiné jazyky:
+Informace o vzorcích pro jiné jazyky:
 
-* Java: [Azure Storage ukázky pomocí jazyka Java](storage-samples-java.md)
-* Python: [Azure Storage ukázky pomocí Pythonu](storage-samples-python.md)
-* JavaScript/Node. js: [Azure Storage ukázky pomocí JavaScriptu](storage-samples-javascript.md)
-* Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)
+* Java: [Ukázky azure úložiště pomocí Javy](storage-samples-java.md)
+* Python: [Ukázky úložiště Azure pomocí Pythonu](storage-samples-python.md)
+* JavaScript/Node.js: [Ukázky úložiště Azure pomocí JavaScriptu](storage-samples-javascript.md)
+* Všechny ostatní jazyky: [Ukázky azure storage](storage-samples.md)

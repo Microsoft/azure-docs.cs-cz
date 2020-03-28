@@ -1,20 +1,20 @@
 ---
-title: Skript PowerShellu pro vytvoření kontejneru Azure Cosmos s velkým klíčem oddílu
-description: Ukázka skriptu Azure PowerShell – vytvoření kontejneru s velkým klíčem oddílu v účtu Azure Cosmos
+title: Skript Prostředí PowerShell pro vytvoření kontejneru Azure Cosmos DB s velkým klíčem oddílu
+description: Ukázka skriptu Azure PowerShell – vytvoření kontejneru s velkým klíčem oddílu v účtu Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: ecc5e7c13d898f89bbd6b542faf69834de26e0e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7746154fe89b655d09345a2de655fa85a0d4cbae
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444981"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365938"
 ---
-# <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-account-using-powershell"></a>Vytvoření kontejneru s velkým klíčem oddílu v účtu Azure Cosmos pomocí PowerShellu
+# <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-db-account-using-powershell"></a>Vytvoření kontejneru s velkým klíčem oddílu v účtu Azure Cosmos DB pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +38,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-|**Prostředky Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Vytvoří prostředek. |
+|**Azure Cosmos DB**| |
+| [Nový účet AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Vytvoří nový účet Cosmos DB. |
+| [Set-AzCosmosDBSqlDatabáze](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Vytvoří novou nebo aktualizuje existující databázi COSMOS DB SQL Database. |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Vytvoří nový nebo aktualizuje existující kontejner SQL Cosmos DB. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

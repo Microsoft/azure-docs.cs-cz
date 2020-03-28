@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s plátnem | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a plátnem.
+title: 'Kurz: Integrace služby Azure Active Directory s plátnem | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a canvas.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,251 +17,251 @@ ms.date: 01/02/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3ce5cff0de2939c25400d1d63138b23bc6c9822
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74232033"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Kurz: Azure Active Directory integrace s plátnem
+# <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Kurz: Integrace služby Azure Active Directory s plátnem
 
-V tomto kurzu se naučíte integrovat plátno s Azure Active Directory (Azure AD).
-Integrace plátna se službou Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat základní stránky s Azure Active Directory (Azure AD).
+Integrace základní stránky s Azure AD poskytuje následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k plátnu.
-* Uživatelům můžete povolit automatické přihlášení k plátnu (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k canvas.
+* Můžete povolit uživatelům, aby se automaticky přihlásili k canvas (jednotné přihlášení) s jejich účty Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s plátnem potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s plátnem, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Odběr povoleného jednotného přihlašování plátna
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné s povoleným jedním přihlášením na základní plátno
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Plátno podporuje jednotné přihlašování na webu **SP**
+* Základní stránka podporuje **sp** inicioval sso
 
-## <a name="adding-canvas-from-the-gallery"></a>Přidání plátna z Galerie
+## <a name="adding-canvas-from-the-gallery"></a>Přidání plátna z galerie
 
-Pokud chcete nakonfigurovat integraci plátna do služby Azure AD, musíte přidat plátno z Galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci základní stránky do Azure AD, musíte přidat základní stránku z galerie do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat plátno z Galerie, proveďte následující kroky:**
+**Chcete-li přidat základní stránku z galerie, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **plátno**, vyberte **plátno** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Základní stránka**, z panelu výsledků vyberte **Základní stránka** a pak kliknutím na Tlačítko **Přidat** přidejte aplikaci.
 
-     ![Plátno v seznamu výsledků](common/search-new-app.png)
+     ![Základní stránka v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí plátna na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být navázán odkaz na vztah mezi uživatelem služby Azure AD a souvisejícím uživatelem na plátně.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí základní hodu na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem na základní stránce.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí plátna, musíte dokončit tyto stavební bloky:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí základní stránky, musíte dokončit následující stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování na plátně](#configure-canvas-single-sign-on)** a nakonfigurujte nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte si testovacího uživatele plátna](#create-canvas-test-user)** , abyste měli protějšek Britta Simon na plátně, která je propojená s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace jednotného přihlašování na plátně](#configure-canvas-single-sign-on)** – konfigurace nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořit plátno testovací ho uživatele](#create-canvas-test-user)** – mít protějšek Britta Simon v plátně, který je propojený s reprezentaci Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí základní stránky, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace na **plátně** vyberte **jednotné přihlašování**.
+1. Na [webu Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **Canvas** vyberte **Jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+4. V části **Základní konfigurace SAML** proveďte následující kroky:
 
-    ![Informace o jednotném přihlašování domény plátna a adresy URL](common/sp-identifier.png)
+    ![Informace o službě Canvas Domain a URL single sign-on](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<tenant-name>.instructure.com`
+    a. Do textového pole **Adresa URL přihlášení** zadejte adresu URL pomocí následujícího vzoru:`https://<tenant-name>.instructure.com`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<tenant-name>.instructure.com/saml2`
+    b. Do textového pole **Identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<tenant-name>.instructure.com/saml2`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pro získání těchto hodnot [tým podpory pro klienty](https://community.canvaslms.com/community/help) s kontaktními osobami. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou přihlašovací adresou URL a identifikátorem. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory klienta základní stránky.](https://community.canvaslms.com/community/help) Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-5. V části **podpisový certifikát SAML** kliknutím na tlačítko **Upravit** otevřete dialogové okno **podpisový certifikát SAML** .
+5. V části **Podpisový certifikát SAML** kliknutím na **tlačítko Upravit** otevřete dialogové okno **Podpisový certifikát SAML.**
 
     ![Upravit podpisový certifikát SAML](common/edit-certificate.png)
 
-6. V části **podpisový certifikát SAML** zkopírujte **kryptografický otisk** a uložte ho do svého počítače.
+6. V části **Podpisový certifikát SAML** zkopírujte **thumbprint** a uložte jej do počítače.
 
-    ![Kopírovat hodnotu kryptografického otisku](common/copy-thumbprint.png)
+    ![Kopírovat kryptografický otisk, hodnota](common/copy-thumbprint.png)
 
-7. V části **nastavit plátno** zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V části **Nastavit základní stránku** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-canvas-single-sign-on"></a>Konfigurace jednotného přihlašování na plátně
+### <a name="configure-canvas-single-sign-on"></a>Konfigurace jednotného přihlášení na plátně
 
-1. V jiném okně webového prohlížeče se přihlaste k webu plátna jako správce.
+1. V jiném okně webového prohlížeče se přihlaste na web společnosti Canvas jako správce.
 
-2. Přejít na **kurzy \> spravované účty \> Microsoft**.
+2. Přejděte na **Kurzy \> spravované účty \> Microsoft**.
 
-    ![Kreslicí](./media/canvas-lms-tutorial/ic775990.png "Kreslicí")
+    ![Plátno](./media/canvas-lms-tutorial/ic775990.png "Plátno")
 
-3. V navigačním podokně na levé straně vyberte **ověřování**a pak klikněte na **Přidat novou konfiguraci SAML**.
+3. V navigačním podokně vlevo vyberte **Možnost Ověřování**a klepněte na tlačítko Přidat **novou konfiguraci SAML**.
 
-    ![Ověřování](./media/canvas-lms-tutorial/ic775991.png "Authentication")
+    ![Ověřování](./media/canvas-lms-tutorial/ic775991.png "Ověřování")
 
-4. Na stránce aktuální integrace proveďte následující kroky:
+4. Na stránce Aktuální integrace proveďte následující kroky:
 
-    ![Aktuální integrace](./media/canvas-lms-tutorial/ic775992.png "Aktuální integrace")
+    ![Současná integrace](./media/canvas-lms-tutorial/ic775992.png "Současná integrace")
 
-    a. Do textového pole **ID entity IDP** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
+    a. V textovém poli **ID Entity ID id id id** id vložte hodnotu **identifikátoru Azure Ad,** které jste zkopírovali z webu Azure Portal.
 
-    b. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    b. Do textového pole **Přihlašovací adresa URL** vložte hodnotu přihlašovací adresy **URL,** kterou jste zkopírovali z webu Azure Portal .
 
-    c. Do textového pole **Adresa URL** pro odhlášení vložte hodnotu **adresy URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
+    c. Do textového pole **Odhlásit adresu URL** vložte hodnotu **adresy URL odhlášení,** kterou jste zkopírovali z webu Azure Portal.
 
-    d. Do textového pole **změnit odkaz na heslo** vložte hodnotu **Adresa URL pro změnu hesla** , kterou jste zkopírovali z Azure Portal.
+    d. V textovém poli **Změnit odkaz na heslo** vložte hodnotu Změnit adresu URL **hesla,** kterou jste zkopírovali z webu Azure Portal.
 
-    e. Do textového pole **otisku certifikátu** vložte hodnotu **kryptografického otisku** certifikátu, který jste zkopírovali z Azure Portal.
+    e. V textovém poli **Otisk prstu certifikátu** vložte hodnotu **kryptografický otisk** certifikátu, který jste zkopírovali z webu Azure Portal.
 
-    f. V seznamu **atribut přihlášení** vyberte **NameId**.
+    f. V seznamu **Atribut přihlášení** vyberte **NameID**.
 
-    g. V seznamu **Formát identifikátoru** vyberte možnost **EmailAddress**.
+    g. Ze seznamu **Formát identifikátoru** vyberte **položku emailAddress**.
 
-    h. Klikněte na **Uložit nastavení ověřování**.
+    h. Klepněte na **tlačítko Uložit nastavení ověřování**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. V poli **Uživatelské jméno** zadejte **\@brittasimon vašecompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
     d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k plátnu.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k základní stránce.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **plátno**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte Základní **stránka**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **plátno**.
+2. V seznamu aplikací vyberte **základní stránka**.
 
-    ![Odkaz na plátno v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Plátno v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-canvas-test-user"></a>Vytvořit testovacího uživatele plátna
+### <a name="create-canvas-test-user"></a>Vytvořit uživatele testu plátna
 
-Aby se uživatelé Azure AD mohli přihlásit k plátnu, musí se zřídit do plátna. V případě plátna je zřizování uživatelů ručním úkolem.
+Chcete-li povolit uživatelům Azure AD k přihlášení k základní stránce, musí být zřízena do základní stránky. V případě základní stránky zřizování uživatele je ruční úlohy.
 
 **Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Přihlaste se k tenantovi **plátna** .
+1. Přihlaste se k tenantovi **základní stránky.**
 
-2. Přejít na **kurzy \> spravované účty \> Microsoft**.
+2. Přejděte na **Kurzy \> spravované účty \> Microsoft**.
 
-   ![Kreslicí](./media/canvas-lms-tutorial/ic775990.png "Kreslicí")
+   ![Plátno](./media/canvas-lms-tutorial/ic775990.png "Plátno")
 
-3. Klikněte na **Uživatelé**.
+3. Klepněte na **položku Uživatelé**.
 
    ![Uživatelé](./media/canvas-lms-tutorial/ic775995.png "Uživatelé")
 
-4. Klikněte na tlačítko **Přidat nového uživatele**.
+4. Klepněte na tlačítko **Přidat nového uživatele**.
 
    ![Uživatelé](./media/canvas-lms-tutorial/ic775996.png "Uživatelé")
 
-5. Na stránce Přidat nový uživatelský dialog proveďte následující kroky:
+5. Na stránce Dialogové okno Přidat nového uživatele proveďte následující kroky:
 
-   ![Přidat uživatele](./media/canvas-lms-tutorial/ic775997.png "Přidání uživatele")
+   ![Přidání uživatele](./media/canvas-lms-tutorial/ic775997.png "Přidání uživatele")
 
-   a. Do textového pole **celé jméno** zadejte jméno uživatele, jako je **BrittaSimon**.
+   a. Do textového pole **Celé jméno** zadejte jméno uživatele, jako je **BrittaSimon**.
 
-   b. Do textového pole **e-mail** zadejte e-maily uživatele, jako je **brittasimon\@contoso.com**.
+   b. Do textového pole **E-mail** zadejte e-mail uživatele, jako **\@je brittasimon contoso.com**.
 
-   c. Do textového pole pro **přihlášení** zadejte e-mailovou adresu Azure AD, jako je **brittasimon\@contoso.com**.
+   c. Do textového pole **Přihlášení** zadejte e-mailovou adresu Azure AD uživatele, jako **je\@brittasimon contoso.com**.
 
-   d. Vyberte **Odeslat e-mail uživateli o vytvoření tohoto účtu**.
+   d. Vyberte **možnost Odeslat uživateli e-mail em o vytvoření tohoto účtu**.
 
-   e. Klikněte na **Přidat uživatele**.
+   e. Klikněte na **Add User** (Přidat uživatele).
 
 > [!NOTE]
-> K zřizování uživatelských účtů Azure AD můžete použít jakékoli nástroje pro vytváření uživatelských účtů nebo rozhraní API, které poskytuje plátno.
+> Můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů canvas nebo rozhraní API poskytované základní hodu k zřízení uživatelských účtů Azure AD.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici plátno na přístupovém panelu, měli byste být automaticky přihlášeni k plátnu, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici Základní stránka na přístupovém panelu, měli byste být automaticky přihlášeni k základní stránce, pro kterou nastavíte přiřazovat. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

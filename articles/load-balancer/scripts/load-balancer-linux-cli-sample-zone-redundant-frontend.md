@@ -1,5 +1,5 @@
 ---
-title: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti – Azure CLI – Azure Load Balancer
+title: Virtuální počítače pro vyrovnávání zatížení napříč zónami dostupnosti – Azure CLI – Azure Load Balancer
 description: Tento ukázkový skript Azure CLI provádí vyrovnávání zatížení provozu na virtuálních počítačích napříč zónami dostupnosti.
 documentationcenter: load-balancer
 author: asudbring
@@ -11,10 +11,10 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.openlocfilehash: 3e0c86fdf97ec2882858a0a92e22e020001816cd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79218340"
 ---
 # <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Ukázkový skript Azure CLI: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti

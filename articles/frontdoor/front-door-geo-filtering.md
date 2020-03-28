@@ -1,6 +1,6 @@
 ---
-title: Geografické filtrování na doméně pro Azure Front Door Service | Microsoft Docs
-description: V tomto článku se seznámíte se zásadami geografického filtrování pro službu Azure Front Door Service.
+title: Geografické filtrování v doméně pro Azure Front Door | Dokumenty společnosti Microsoft
+description: V tomto článku se dozvíte o zásadách geografického filtrování pro Azure Front Door
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 7ad2d181b6343644205c58ab1d5fe83dc25542d4
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 80641ca27949435f65222ecab17cc3079e2a6359
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846410"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79471604"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co je geografické filtrování v doméně pro branou Azure?
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co je geografické filtrování na doméně pro službu Azure Front Door?
 
-Azure Front Door Service ve výchozím nastavení reaguje na požadavky uživatelů bez ohledu na umístění uživatele, který požadavek provádí. Ale v některých případech může chtít omezit přístup k webovým aplikacím podle země nebo oblasti. Brány firewall (WAF) služby webových aplikací za branou umožňuje definovat zásady, pomocí pravidel pro vlastní přístup pro konkrétní cestu na váš koncový bod Pokud chcete povolit nebo blokovat přístup ze zadaného zemích nebo oblastech. 
+Ve výchozím nastavení Azure Front Door reaguje na požadavky uživatelů bez ohledu na umístění uživatele, který žádost. V některých případech však můžete chtít omezit přístup k webovým aplikacím podle země nebo oblasti. Služba waf (firewall) webové aplikace u předních dveří umožňuje definovat zásady pomocí vlastních pravidel přístupu pro konkrétní cestu na koncovém bodu, která umožňuje nebo blokuje přístup z určených zemí nebo oblastí. 
 
-Zásady WAF obvykle zahrnuje sadu vlastních pravidel. Pravidlo se skládá z podmínek shody, akce a priority. V podmínce shody definujete proměnnou shody, operátor a hodnotu shody.  V případě pravidla geografického filtrování je proměnná shody REMOTE_ADDR, operátor je GeoMatch a hodnota je dvoupísmenný kód požadované země. Kombinací podmínky GeoMatch a podmínky shody řetězce REQUEST_URI můžete vytvořit pravidlo geografického filtrování na základě cesty.
+Zásady WAF obvykle obsahují sadu vlastních pravidel. Pravidlo se skládá z podmínek shody, akce a priority. V podmínce shody definujete proměnnou shody, operátor a hodnotu shody.  V případě pravidla geografického filtrování je proměnná shody REMOTE_ADDR, operátor je GeoMatch a hodnota je dvoupísmenný kód požadované země. Kombinací podmínky GeoMatch a podmínky shody řetězce REQUEST_URI můžete vytvořit pravidlo geografického filtrování na základě cesty.
 
-Můžete nakonfigurovat zásady geografického filtrování pro vaše branou buď pomocí [prostředí Azure PowerShell](front-door-tutorial-geo-filtering.md) nebo s použitím našich [šablonu pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
+Zásady geografického filtrování pro vaše přední dveře můžete nakonfigurovat buď pomocí [Azure PowerShellu,](front-door-tutorial-geo-filtering.md) nebo pomocí naší [šablony rychlého startu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
 
 ## <a name="country-code-reference"></a>Odkaz na kód země
 
@@ -53,7 +53,7 @@ Můžete nakonfigurovat zásady geografického filtrování pro vaše branou bu�
 | BH | Bahrajn|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Svatý Bartoloměj|
+| BL | Svatý Barthélemy|
 | BN | Sultanát Brunej|
 | BO | Bolívie|
 | BR | Brazílie|
@@ -63,7 +63,7 @@ Můžete nakonfigurovat zásady geografického filtrování pro vaše branou bu�
 | BY | Bělorusko|
 | BZ | Belize|
 | CA | Kanada|
-| CD | Demokratická republika Kongo|
+| CD | Konžská demokratická republika|
 | CF | Středoafrická republika|
 | CH | Švýcarsko|
 | CI | Pobřeží slonoviny|
@@ -98,12 +98,12 @@ Můžete nakonfigurovat zásady geografického filtrování pro vaše branou bu�
 | GR | Řecko|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hongkong – zvláštní administrativní oblast|
+| HK | Hongkong – zvláštní správní oblast|
 | HN | Honduras|
 | HR | Chorvatsko|
 | HT | Haiti|
 | HU | Maďarsko|
-| id | Indonésie|
+| ID | Indonésie|
 | IE | Irsko|
 | IL | Izrael|
 | IN | Indie|
@@ -137,7 +137,7 @@ Můžete nakonfigurovat zásady geografického filtrování pro vaše branou bu�
 | MA | Maroko|
 | MD | Moldavská republika|
 | MG | Madagaskar|
-| MK | Makedonie – sever|
+| MK | Severní Makedonie|
 | ML | Mali|
 | MM | Myanmar|
 | MN | Mongolsko|
@@ -210,7 +210,7 @@ Můžete nakonfigurovat zásady geografického filtrování pro vaše branou bu�
 | ZM | Zambie|
 | ZW | Zimbabwe|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [zabezpečení aplikační vrstvy pomocí služby Front Door](front-door-application-security.md).
-- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
+- Přečtěte si, jak [vytvořit Front Door](quickstart-create-front-door.md).

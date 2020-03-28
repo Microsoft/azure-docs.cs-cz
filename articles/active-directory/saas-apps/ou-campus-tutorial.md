@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory Integration s ORGANIZAČNÍm areálem | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ORGANIZAČNÍm areálem.
+title: 'Kurz: Integrace služby Azure Active Directory s ou areálem | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a kampusem OU.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,184 +16,184 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 2ef934c691fab5b0b3c2462bca150c3df3f01fd4
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160248"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ou-campus"></a>Kurz: Integrace Azure Active Directory s ORGANIZAČNÍm areálem
+# <a name="tutorial-azure-active-directory-integration-with-ou-campus"></a>Kurz: Integrace Služby Azure Active Directory s ou areálem
 
-V tomto kurzu se naučíte integrovat areál organizačních jednotek pomocí Azure Active Directory (Azure AD).
-Integrace areálu organizačních jednotek s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat OU Campus s Azure Active Directory (Azure AD).
+Integrace kampusu ou s Azure AD vám poskytuje následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k areálu organizačních jednotek.
-* Uživatelům můžete povolit, aby se automaticky přihlásili k ORGANIZAČNÍmu areálu (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+* Můžete řídit ve službě Azure AD, který má přístup k ou campus.
+* Můžete povolit, aby se uživatelé automaticky přihlašovali k kampusu OU (jednotné přihlášení) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete nakonfigurovat integraci Azure AD s organizačním areálem organizačních jednotek, budete potřebovat následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s ou campus, budete potřebovat následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Odběr povoleného jednotného přihlašování organizační jednotky v areálu
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné s povoleným jedním přihlášením do areálu ou.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Areály organizačních jednotek podporují jednotné přihlašování s podporou **SP**
+* OU Campus podporuje **sp** inicioval aso
 
-## <a name="adding-ou-campus-from-the-gallery"></a>Přidání areálu organizační jednotky z Galerie
+## <a name="adding-ou-campus-from-the-gallery"></a>Přidání areálu OU z galerie
 
-Pokud chcete nakonfigurovat integraci organizačního areálu organizačního prostředí do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat školní areál ORGANIZAČNÍch prostředí z galerie.
+Pokud chcete nakonfigurovat integraci kampusu OU do Azure AD, musíte přidat kampus OU z galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat organizační areál organizační jednotky z Galerie, proveďte následující kroky:**
+**Chcete-li přidat kampus ou z galerie, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **organizační areál**, vyberte **organizační jednotku** z panelu výsledek a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **ou campus**, z panelu výsledků vyberte **out campus** a pak klepnutím na tlačítko **Přidat** aplikaci přidejte.
 
-     ![ORGANIZAČNÍ areál v seznamu výsledků](common/search-new-app.png)
+     ![Areál ou v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí areálu organizačních jednotek na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, je potřeba zřídit vztah odkazu mezi uživatelem služby Azure AD a souvisejícím uživatelem v areálu organizačních jednotek.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí ou campusu na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v areálu ou.
 
-Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD pomocí areálu organizačních jednotek, musíte dokončit tyto stavební bloky:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí kampusu OU, musíte dokončit následující stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování organizačního areálu](#configure-ou-campus-single-sign-on)** , abyste na straně aplikace nakonfigurovali nastavení jednotného přihlašování.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvoření testovacího uživatele pro organizační prostředí](#create-ou-campus-test-user)** – Pokud chcete mít protějšek Britta Simon v AREÁLu organizačního prostředí, který je propojený s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace jednotného přihlašování do areálu ou-](#configure-ou-campus-single-sign-on)** pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořit uživatele testu ou campus](#create-ou-campus-test-user)** – mít protějšek Britta Simon v areálu ou, který je propojený s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí areálu organizačních jednotek, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí kampusu OU, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **Campus organizační jednotky** vyberte **jednotné přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **OU Campus** vyberte **Jednotné přihlašování**.
 
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+4. V části **Základní konfigurace SAML** proveďte následující kroky:
 
-    ![Informace o jednotném přihlašování doménového areálu organizační jednotky a adres URL](common/sp-intiated.png)
+    ![Domény ou areálu a adresy URL jednotné přihlašovací informace](common/sp-intiated.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://a.cms.omniupdate.com/<Instance Name>`
+    Do textového pole **Adresa URL přihlášení** zadejte adresu URL pomocí následujícího vzoru:`https://a.cms.omniupdate.com/<Instance Name>`
 
     > [!Note]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou URL pro přihlášení. Pokud chcete získat hodnotu, obraťte se na [tým podpory organizačního areálu](mailto:support@omniupdate.com) IT. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota není skutečná. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Chcete-li získat hodnotu, obraťte se na [tým podpory klienta ou](mailto:support@omniupdate.com) campusu. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
 
-    ![Odkaz na stažení certifikátu](common/metadataxml.png)
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-6. V části **nastavit areál organizačního** prostředí zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **Nastavit kampus ou** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Odhlašovací adresa URL
+    c. Adresa URL odhlášení
 
-### <a name="configure-ou-campus-single-sign-on"></a>Konfigurace jednotného přihlašování ORGANIZAČNÍho areálu
+### <a name="configure-ou-campus-single-sign-on"></a>Konfigurace jednotného přihlašování do areálu ou.
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **organizačních jednotek** , je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu technické podpory organizační jednotky](mailto:support@omniupdate.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **kampusu ou,** musíte odeslat stažený **xml metadat federace** a příslušné zkopírované adresy URL z portálu Azure do týmu podpory [kampusu OU](mailto:support@omniupdate.com). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Uživatelský dialog](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. V poli **Uživatelské jméno** zadejte **\@brittasimon vašecompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k areálu organizačních jednotek.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k OU Campus.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **organizační areál**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Areál výužy .**
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **organizační areál**.
+2. V seznamu aplikací vyberte **možnost OU Campus**.
 
-    ![Odkaz ORGANIZAČNÍho areálu v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Kampus ou v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-ou-campus-test-user"></a>Vytvořit testovacího uživatele ORGANIZAČNÍho areálu
+### <a name="create-ou-campus-test-user"></a>Vytvořit uživatele testu kampusu ou
 
-V této části vytvoříte uživatele s názvem Britta Simon v areálu ORGANIZAČNÍho prostředí. Pokud chcete přidat uživatele do areálu IT platformy, pracujte s [týmem podpory organizačních jednotek](mailto:support@omniupdate.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v areálu ou. Spolupracujte s [týmem podpory OU Campus](mailto:support@omniupdate.com) a přidejte uživatele na platformu KAMPUSU OU. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Campy organizační jednotky, měli byste se automaticky přihlášeni k areálu organizační jednotky, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici kampusu ou na přístupovém panelu, měli byste být automaticky přihlášeni k areálu ou, pro který nastavíte přiřazující správě. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,21 +1,21 @@
 ---
-title: Kurz – konfigurace účtů Azure Cosmos DB pomocí Ansible
-description: Naučte se používat Ansible k vytvoření a konfiguraci Azure Cosmos DB
-keywords: Ansible, Azure, DevOps, bash, PlayBook, Cosmo DB, databáze
+title: Kurz – konfigurace účtů Azure Cosmos DB pomocí ansible
+description: Přečtěte si, jak pomocí ansible vytvořit a nakonfigurovat Db Služby Azure Cosmos
+keywords: ansible, azurové, devops, bash, playbook, cosmo db, databáze
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 8c898e3cb0747a442d50b7241ebfcf401148817e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156484"
 ---
-# <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Kurz: Konfigurace účtů Azure Cosmos DB pomocí Ansible
+# <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Kurz: Konfigurace účtů Azure Cosmos DB pomocí ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure Cosmos DB](/azure/cosmos-db/) je databázová služba, která podporuje několik typů databází. Mezi tyto typy databází patří dokument, klíč-hodnota, široce-Column a Graph. Pomocí Ansible můžete automatizovat nasazení a konfiguraci prostředků ve vašem prostředí.
+[Azure Cosmos DB](/azure/cosmos-db/) je databázová služba, která podporuje několik typů databází. Tyto typy databází zahrnují dokument, hodnotu klíče, široký sloupec a graf. Pomocí Ansible můžete automatizovat nasazení a konfiguraci prostředků ve vašem prostředí.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -23,7 +23,7 @@ ms.locfileid: "74156484"
 >
 > * Vytvoření účtu
 > * Načtení klíčů účtu
-> * Odstranit účet
+> * Odstranění účtu
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,9 +31,9 @@ ms.locfileid: "74156484"
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-random-postfix"></a>Vytvoření náhodné přípony
+## <a name="create-a-random-postfix"></a>Vytvoření náhodné fixy
 
-Vzorový fragment PlayBook vytvoří náhodnou příponu. Přípona se používá jako součást názvu účtu Azure Cosmos DB.
+Ukázkový fragment playbooku vytvoří náhodnou příponu. Přípona se používá jako součást názvu účtu Azure Cosmos DB.
 
 ```yml
   - hosts: localhost
@@ -46,7 +46,7 @@ Vzorový fragment PlayBook vytvoří náhodnou příponu. Přípona se použív�
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků 
 
-Vzorový fragment PlayBook vytvoří skupinu prostředků Azure. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Ukázkový fragment playbooku vytvoří skupinu prostředků Azure. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 ```yml
   - name: Create a resource group
@@ -55,7 +55,7 @@ Vzorový fragment PlayBook vytvoří skupinu prostředků Azure. Skupina prostř
       location: "{{ location }}"
 ```
 
-## <a name="create-virtual-network-and-subnet"></a>Vytvořit virtuální síť a podsíť
+## <a name="create-virtual-network-and-subnet"></a>Vytvoření virtuální sítě a podsítě
 
 Následující kód vytvoří virtuální síť a podsíť pro účet Azure Cosmos DB:
 
@@ -106,11 +106,11 @@ Následující kód vytvoří účet Cosmos DB:
       enable_automatic_failover: yes
 ```
 
-Dokončení vytváření účtu trvá několik minut.
+Vytvoření účtu trvá několik minut.
 
 ## <a name="retrieve-the-keys"></a>Načtení klíčů
 
-Následující kód načte klíče pro použití ve vaší aplikaci.
+Následující kód načte klíče, které chcete použít ve vaší aplikaci.
 
 ```yml
   - name: Get Cosmos DB Account facts with keys
@@ -125,9 +125,9 @@ Následující kód načte klíče pro použití ve vaší aplikaci.
       var: output
 ```
 
-## <a name="delete-the-azure-cosmos-db-account"></a>Odstranit účet Azure Cosmos DB
+## <a name="delete-the-azure-cosmos-db-account"></a>Odstranění účtu Azure Cosmos DB
 
-Nakonec poslední fragment kódu ukazuje, jak odstranit účet Azure Cosmos DB.
+Nakonec poslední úryvek ukazuje, jak odstranit účet Azure Cosmos DB.
 
 ```yml
   - name: Delete instance of Cosmos DB Account
@@ -137,11 +137,11 @@ Nakonec poslední fragment kódu ukazuje, jak odstranit účet Azure Cosmos DB.
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Získat ukázkovou PlayBook
+## <a name="get-the-sample-playbook"></a>Získejte ukázkový playbook
 
-Existují dva způsoby, jak získat úplnou ukázkovou PlayBook:
-- [Stáhněte si PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml) a uložte ho do `cosmosdb.yml`.
-- Vytvořte nový soubor s názvem `cosmosdb.yml` a zkopírujte do něj následující obsah:
+Existují dva způsoby, jak získat kompletní ukázkový playbook:
+- [Stáhněte si playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml) `cosmosdb.yml`a uložte jej do .
+- Vytvořte nový `cosmosdb.yml` soubor s názvem a zkopírujte do něj následující obsah:
 
 ```yml
 ---
@@ -225,15 +225,15 @@ Existují dva způsoby, jak získat úplnou ukázkovou PlayBook:
         state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>Spuštění ukázkové PlayBook
+## <a name="run-the-sample-playbook"></a>Spuštění ukázkového playbooku
 
-V této části spustíte PlayBook k otestování různých funkcí, které jsou uvedené v tomto článku.
+V této části spusťte playbook a otestujte různé funkce uvedené v tomto článku.
 
-Před spuštěním PlayBook proveďte následující změny:
-- V části `vars` nahraďte zástupný text `{{ resource_group_name }}` názvem vaší skupiny prostředků.
-- Ujistěte se, že ' cosmosdbaccount_name obsahuje pouze malá písmena a je globálně jedinečný.
+Před spuštěním playbooku proveďte následující změny:
+- V `vars` části nahraďte `{{ resource_group_name }}` zástupný symbol názvem skupiny prostředků.
+- Ujistěte se, že cosmosdbaccount_name obsahuje pouze malá písmena a je globálně jedinečný.
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook cosmosdb.yml
@@ -241,9 +241,9 @@ ansible-playbook cosmosdb.yml
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku. 
+Pokud již není potřeba, odstraňte prostředky vytvořené v tomto článku. 
 
-Následující kód uložte jako `cleanup.yml`:
+Uložte následující `cleanup.yml`kód jako :
 
 ```yml
 - hosts: localhost
@@ -257,7 +257,7 @@ Následující kód uložte jako `cleanup.yml`:
         state: absent
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook cleanup.yml

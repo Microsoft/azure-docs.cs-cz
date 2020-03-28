@@ -1,5 +1,5 @@
 ---
-title: Kopírování snímku spravovaného disku do předplatného – ukázka PowerShellu
+title: Kopírování snímku spravovaného disku do předplatného – ukázka prostředí PowerShell
 description: Ukázkový skript Azure PowerShellu – Kopírování (přesun) snímku spravovaného disku do stejného nebo jiného předplatného
 services: virtual-machines-windows
 documentationcenter: storage
@@ -15,19 +15,19 @@ ms.workload: infrastructure
 ms.date: 02/28/2019
 ms.author: ramankum
 ms.openlocfilehash: 4189822e493b8906152e5a73d87cffb1d05f31d7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75368840"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Kopírování snímku spravovaného disku do stejného nebo jiného předplatného pomocí PowerShellu
 
 Tento skript zkopíruje snímek spravovaného disku do stejného nebo jiného předplatného. Tento skript použijte pro následující scénáře:
 
-1. Migrujte snímek ve službě Premium Storage (Premium_LRS) do úložiště úrovně Standard (Standard_LRS nebo Standard_ZRS), abyste snížili náklady.
-1. Migrujte snímek z místně redundantního úložiště (Premium_LRS, Standard_LRS) do zóny redundantního úložiště (Standard_ZRS), abyste využili vyšší spolehlivosti úložiště ZRS.
-1. Přesunutí snímku do jiného předplatného ve stejné oblasti pro delší dobu uchování.
+1. Migrujte snímek v úložišti Premium (Premium_LRS) do standardního úložiště (Standard_LRS nebo Standard_ZRS) a snižte náklady.
+1. Migrujte snímek z místně redundantního úložiště (Premium_LRS, Standard_LRS) do zónově redundantního úložiště (Standard_ZRS) a využijte vyšší spolehlivost úložiště ZRS.
+1. Přesuňte snímek do jiného předplatného ve stejné oblasti pro delší uchovávání informací.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -45,8 +45,8 @@ Tento skript k vytvoření snímku v cílovém předplatném pomocí ID zdrojov�
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzSnapshotConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzSnapshotConfig) | Vytvoří konfiguraci snímku, která se použije při vytvoření snímku. Bude obsahovat ID prostředku nadřazeného snímku a stejné umístění, jako má nadřazený snímek.  |
-| [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) | Vytvoří snímek s použitím konfigurace snímku, názvu snímku a názvu skupiny prostředků, které se předají jako parametry. |
+| [Nový-AzSnapshotConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzSnapshotConfig) | Vytvoří konfiguraci snímku, která se použije při vytvoření snímku. Bude obsahovat ID prostředku nadřazeného snímku a stejné umístění, jako má nadřazený snímek.  |
+| [Nový-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) | Vytvoří snímek s použitím konfigurace snímku, názvu snímku a názvu skupiny prostředků, které se předají jako parametry. |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: Nastavení zotavení po havárii technologie Hyper-V do sekundární lokality s Azure Site Recovery
+title: Nastavení zotavení po havárii technologie Hyper-V na sekundární lokalitu pomocí Azure Site Recovery
 description: Zjistěte, jak nastavit zotavení po havárii mezi místními lokalitami pro místní virtuální počítače Hyper-V pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74132985"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii do sekundární místní lokality pro virtuální počítače Hyper-V
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak nastavit zotavení po havárii do sekundární
 > * Nastavení zdrojového a cílového prostředí replikace 
 > * Nastavení mapování sítě 
 > * Vytvoření zásady replikace
-> * Povolit replikaci virtuálního počítače
+> * Povolení replikace virtuálního počítače
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -65,7 +65,7 @@ Připravte VMM následujícím způsobem:
 
 Vyberte, jak chcete počítače replikovat a kam je chcete replikovat.
 
-1. Klikněte na **Site Recovery** > **Krok 1: Příprava infrastruktury** > **Cíl ochrany**.
+1. Klikněte na **Krok obnovení** > webu**1: Připravit** > **cíl ochrany**infrastruktury .
 2. Vyberte **Do lokality pro obnovení** a vyberte **Ano, s technologií Hyper-V**.
 3. Vyberte **Ano**, abyste určili, že ke správě hostitelů Hyper-V používáte VMM.
 4. Vyberte **Ano**, pokud máte sekundární server VMM. Pokud nasazujete replikaci mezi cloudy na jeden server VMM, klikněte na **Ne**. Pak klikněte na **OK**.
@@ -75,7 +75,7 @@ Vyberte, jak chcete počítače replikovat a kam je chcete replikovat.
 
 Nainstalujte na servery VMM zprostředkovatele Azure Site Recovery a vyhledejte a zaregistrujte servery v trezoru.
 
-1. Klikněte na **Připravit infrastrukturu** > **Zdroj**.
+1. Klepněte na tlačítko Připravit > **zdroj** **infrastruktury**.
 2. V okně **Připravit zdroj** klikněte na **+ VMM** a přidejte server VMM.
 3. V části **Přidat server** zkontrolujte, že se v poli **Typ serveru** zobrazí **Server System Center VMM**.
 4. Stáhněte si instalační soubor zprostředkovatele Azure Site Recovery.
@@ -96,24 +96,24 @@ Nainstalujte na servery VMM zprostředkovatele Azure Site Recovery a vyhledejte 
 5. Po dokončení instalace klikněte na **Zaregistrovat**, aby se server zaregistroval v trezoru.
 
     ![Umístění instalace](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
-6. V poli **Název trezoru** ověřte název trezoru, ve kterém bude server zaregistrovaný. Klikněte na **Další**.
+6. V poli **Název trezoru** ověřte název trezoru, ve kterém bude server zaregistrovaný. Klikněte na **Další**.
 7. V části **Připojení k proxy serveru** určete, jak se zprostředkovatel, který běží na serveru VMM, připojí k Azure.
    - Můžete určit, že se zprostředkovatel má k internetu připojit přímo nebo přes proxy server. Podle potřeby zadejte nastavení proxy serveru.
-   - Pokud používáte proxy server, vytvoří se automaticky účet VMM RunAs (DRAProxyAccount) pomocí zadaných přihlašovacích údajů proxy serveru. Proxy server nakonfigurujte tak, aby tento účet bylo možné úspěšně ověřit. Nastavení účtu RunAs můžete upravovat v konzole VMM v části **Nastavení** > **Zabezpečení** > **Účty Spustit jako**.
+   - Pokud používáte proxy server, vytvoří se automaticky účet VMM RunAs (DRAProxyAccount) pomocí zadaných přihlašovacích údajů proxy serveru. Proxy server nakonfigurujte tak, aby tento účet bylo možné úspěšně ověřit. Nastavení účtu RunAs lze upravit v konzole VMM > **nastavení** > **zabezpečení** > **spustit jako účty**.
    - Restartujte službu VMM, aby se projevily změny.
 8. V části **Registrační klíč** vyberte klíč, který jste si stáhli a zkopírovali na server VMM.
 9. Nastavení šifrování není pro tento scénář podstatné. 
 10. Do pole **Název serveru** zadejte popisný název, který bude identifikovat server VMM v trezoru. V clusteru zadejte název role clusteru VMM.
 11. V části **Synchronizovat metadata cloudu** vyberte, zda chcete synchronizovat metadata pro všechny cloudy na serveru VMM. Tuto akci stačí na každém serveru provést pouze jednou. Pokud nechcete synchronizovat všechny cloudy, nechte toto nastavení nezaškrtnuté. Synchronizaci jednotlivých cloudů můžete nastavit ve vlastnostech cloudu v konzole VMM.
-12. Dokončete proces kliknutím na **Další**. Po registraci načte Site Recovery metadata ze serveru VMM. Server se v trezoru zobrazí v části **Servery** > **Servery VMM**.
-13. Jakmile se server zobrazí v trezoru, v části **Zdroj** > **Připravit zdroj** vyberte server VMM a cloud, ve kterém se nachází hostitel Hyper-V. Pak klikněte na **OK**.
+12. Dokončete proces kliknutím na **Další**. Po registraci načte Site Recovery metadata ze serveru VMM. Server se zobrazí na **serverech Servery** > **VMM servery** v úschovně.
+13. Po zjevu serveru v úschovně vyberte ve **zdroji Zdroj** > **připravit** server VMM a vyberte cloud, ve kterém je umístěn hostitel Hyper-V. Pak klikněte na **OK**.
 
 
 ## <a name="set-up-the-target-environment"></a>Nastavení cílového prostředí
 
 Vyberte cílový server VMM a cloud:
 
-1. Klikněte na **Připravit infrastrukturu** > **Cíl** a vyberte cílový server VMM.
+1. Klikněte na **Připravit cíl infrastruktury** > **Target**a vyberte cílový server VMM.
 2. Zobrazí se cloudy VMM synchronizované se Site Recovery. Vyberte cílový cloud.
 
    ![Cíl](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
@@ -123,14 +123,14 @@ Vyberte cílový server VMM a cloud:
 
 Než začnete, ujistěte se, že všichni hostitelé, na které se zásada vztahuje, používají stejný operační systém. Pokud hostitelé používají různé verze Windows Serveru, budete potřebovat několik zásad replikace.
 
-1. Pokud chcete vytvořit novou zásadu replikace, klikněte na **Připravit infrastrukturu** > **Nastavení replikace** >  **+Vytvořit a přidružit**.
-2. V části **Vytvořit a přidružit zásady** zadejte název zásady. Typ zdroje i cíle musí být **Hyper-V**.
+1. Chcete-li vytvořit novou zásadu replikace, klepněte na tlačítko Připravit > nastavení**replikace** **infrastruktury** > **+Vytvořit a přidružit**.
+2. V **poli Vytvořit a přidružit zásady**zadejte název zásady. Typ zdroje i cíle musí být **Hyper-V**.
 3. V poli **Verze hostitele Hyper-V** vyberte, který operační systém běží na hostiteli.
 4. V polích **Typ ověřování** a **Port ověřování** určete, jak se ověřuje provoz mezi primárním hostitelským serverem Hyper-V a hostitelským serverem Hyper-V pro obnovení.
     - Pokud nemáte funkční prostředí Kerberos, vyberte **Certifikát**. Azure Site Recovery automaticky nakonfiguruje certifikáty pro ověřování protokolu HTTPS. Není potřeba cokoli dělat ručně.
     - Ve výchozím nastavení se v branách Windows Firewall na hostitelských serverech Hyper-V otevřou porty 8083 a 8084 (pro certifikáty).
     - Pokud vyberete **Kerberos**, ke vzájemnému ověřování hostitelských serverů se použije lístek Kerberos. Protokol Kerberos je relevantní pouze pro hostitelské servery Hyper-V ve Windows Serveru 2012 R2 nebo novějším.
-1. V části **Frekvence kopírování** určete, jak často chcete replikovat rozdílová data po počáteční replikaci (každých 30 sekund, 5 minut nebo 15 minut).
+1. V **poli Kopírovat frekvenci**určete, jak často chcete replikovat rozdílová data po počáteční replikaci (každých 30 sekund, 5 nebo 15 minut).
 2. V části **Uchování bodu obnovení** zadejte (v hodinách), jak dlouhý bude interval uchovávání dat pro jednotlivé body obnovení. Replikované počítače je možné obnovit do libovolného bodu v rámci tohoto intervalu.
 3. V části **Frekvence pořizování snímků konzistentních vzhledem k aplikacím** určete, jak často (1–12 hodin) se mají vytvářet body obnovení obsahující snímky konzistentní vzhledem k aplikacím. Technologie Hyper-V používá dva typy snímků:
     - **Standardní snímek:** Poskytuje přírůstkový snímek celého virtuálního počítače.
@@ -146,7 +146,7 @@ Než začnete, ujistěte se, že všichni hostitelé, na které se zásada vztah
 
 ## <a name="enable-replication"></a>Povolení replikace
 
-1. Klikněte na **Replikovat aplikaci** > **Zdroj**. 
+1. Klepněte na **položku Replikovat** > **zdroj**aplikace . 
 2. V části **Zdroj** vyberte server VMM a cloud, ve kterém jsou umístění hostitelé Hyper-V, které chcete replikovat. Pak klikněte na **OK**.
 3. V části **Cíl** zkontrolujte sekundární server VMM a cloud.
 4. V části **Virtuální počítače** vyberte ze seznamu virtuální počítače, které chcete chránit.

@@ -1,17 +1,17 @@
 ---
-title: Kurz – škálování aplikací v Azure App Service pomocí Ansible
-description: Naučte se navýšení kapacity aplikace v Azure App Service
-keywords: Ansible, Azure, DevOps, bash, PlayBook, Azure App Service, Webová aplikace, škálování, Java
+title: Kurz – škálování aplikací ve službě Azure App Service pomocí Ansible
+description: Přečtěte si, jak vertikálně navýšit kapacitu aplikace ve službě Azure App Service
+keywords: ansible, azure, devops, bash, playbook, Azure App Service, Web App, scale, Java
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 9eb50922361c817de8047dece4849a9b221677f0
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155909"
 ---
-# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Kurz: škálování aplikací v Azure App Service pomocí Ansible
+# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Kurz: Škálování aplikací ve službě Azure App Service pomocí Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -21,26 +21,26 @@ ms.locfileid: "74155909"
 
 > [!div class="checklist"]
 >
-> * Získání faktů stávajícího plánu App Service
-> * Horizontální navýšení kapacity App Service plánu na S2 a tři pracovní procesy
+> * Získání faktů o existujícím plánu služby App Service
+> * Škálování na výši plánu služby App Service na S2 se třemi pracovníky
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **Azure App Service aplikaci** – pokud nemáte Azure App Service aplikaci, [nakonfigurujte aplikaci v Azure App Service pomocí Ansible](ansible-create-configure-azure-web-apps.md).
+- **Aplikace Azure App Service** – Pokud nemáte aplikaci Azure App Service, [nakonfigurujte aplikaci ve službě Azure App Service pomocí Ansible](ansible-create-configure-azure-web-apps.md).
 
-## <a name="scale-up-an-app"></a>Horizontální navýšení kapacity aplikace
+## <a name="scale-up-an-app"></a>Škálování navýšit kapacitu aplikace
 
-Existují dva pracovní postupy pro škálování: *horizontální navýšení kapacity a horizontální navýšení* kapacity.
+Existují dva pracovní postupy pro škálování: *vertikálně navýšit kapacitu* a *horizontální navýšení kapacity*.
 
-**Horizontální navýšení kapacity:** Pro horizontální navýšení kapacity pro získání dalších prostředků. Tyto prostředky zahrnují procesor, paměť, místo na disku, virtuální počítače a další. Nahorizontální navýšení kapacity aplikace změnou cenové úrovně plánu App Service, do kterého aplikace patří. 
-Horizontální navýšení **kapacity:** K horizontálnímu navýšení kapacity můžete zvýšit počet instancí virtuálních počítačů, na kterých běží vaše aplikace. V závislosti na cenové úrovni plánu App Service můžete horizontální navýšení kapacity na maximálně 20 instancí. Automatické [škálování](/azure/azure-monitor/platform/autoscale-get-started) umožňuje škálovat počet instancí automaticky na základě předdefinovaných pravidel a plánů.
+**Zvětšete kapacitu:** Chcete-li vertikálně navýšit prostředky získat více zdrojů. Tyto prostředky zahrnují procesor, paměť, místo na disku, virtuální počítače a další. Navýšit kapacitu aplikace změnou cenové úrovně plánu služby App Service, do kterého aplikace patří. 
+**Horizontální navýšení kapacity:** Horizontální navýšení kapacity znamená zvýšit počet instancí virtuálních aplikací, které spouštějí vaši aplikaci. V závislosti na cenové úrovni plánu služby App Service můžete škálovat až na 20 instancí. [Automatické škálování](/azure/azure-monitor/platform/autoscale-get-started) umožňuje automaticky škálovat počet instancí na základě předdefinovaných pravidel a plánů.
 
-Kód PlayBook v této části definuje následující operaci:
+Kód playbooku v této části definuje následující operace:
 
-* Získání faktů stávajícího plánu App Service
-* Aktualizace plánu služby App Service na S2 se třemi pracovními procesy
+* Získání faktů o existujícím plánu služby App Service
+* Aktualizace plánu služby App na S2 se třemi pracovníky
 
 Uložte následující ukázkový playbook jako `webapp_scaleup.yml`:
 
@@ -80,13 +80,13 @@ Uložte následující ukázkový playbook jako `webapp_scaleup.yml`:
       var: facts.appserviceplans[0].sku
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook webapp_scaleup.yml
 ```
 
-Po spuštění PlayBook se zobrazí výstup podobný následujícímu výsledku:
+Po spuštění playbooku se zobrazí výstup podobný následujícím výsledkům:
 
 ```Output
 PLAY [localhost] 

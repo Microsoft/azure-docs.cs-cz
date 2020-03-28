@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace pomocí služby signalizace a ověřování GitHubu
+title: Vytvoření webové aplikace pomocí služby SignalR a ověřování GitHubu
 description: Ukázkový skript Azure CLI – Vytvoření webové aplikace využívající službu SignalR a ověřování GitHubu
 author: sffamily
 ms.service: signalr
@@ -9,21 +9,21 @@ ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: d30804d132eec3c9f324413acd68014d1adaa710
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158041"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>Vytvoření webové aplikace využívající službu SignalR a ověřování GitHubu
 
-Tento ukázkový skript vytvoří nový prostředek služby Azure SignalR, který slouží k nabízení aktualizací obsahu v reálném čase do klientů. Tento skript také přidá novou webovou aplikaci a plán služby App Service k hostování webové aplikace ASP.NET Core využívající službu SignalR. V nastavení webové aplikace se nakonfiguruje připojení k novému prostředku služby SignalR a ověřování pomocí [ověřování GitHubu](https://developer.github.com/v3/guides/basics-of-authentication/). Webová aplikace se také nakonfiguruje tak, aby jako zdroj nasazení používala místní úložiště Git.
+Tento ukázkový skript vytvoří nový prostředek služby Azure SignalR, který slouží k nabízení aktualizací obsahu v reálném čase do klientů. Tento skript také přidá novou webovou aplikaci a plán služby App Service k hostování webové aplikace ASP.NET Core využívající službu SignalR. V nastavení webové aplikace se nakonfiguruje připojení k novému prostředku služby SignalR a ověřování pomocí [ověřování GitHubu](https://developer.github.com/v3/guides/basics-of-authentication/). Webová aplikace je dále nakonfigurovaná tak, aby jako zdroj nasazení používala místní úložiště Git.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -105,7 +105,7 @@ Poznamenejte si vygenerovaný název pro novou skupinu prostředků. Zobrazí se
 
 Každý příkaz v tabulce odkazuje na příslušnou část dokumentace. Tento skript používá následující příkazy:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az signalr create](/cli/azure/signalr#az-signalr-create) | Vytvoří prostředek služby Azure SignalR. |

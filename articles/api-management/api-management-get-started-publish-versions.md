@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73176832"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Publikování několika verzí rozhraní API 
@@ -34,10 +34,10 @@ V tomto kurzu se naučíte:
 
 ![Verze zobrazená na portálu pro vývojáře](media/api-management-getstarted-publish-versions/azure_portal.PNG)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
-+ Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
++ Dokončete následující rychlý start: [Vytvořte instanci Azure API Management](get-started-create-service-instance.md).
 + Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 ## <a name="add-a-new-version"></a>Přidání nové verze
@@ -45,7 +45,7 @@ V tomto kurzu se naučíte:
 ![Místní nabídka rozhraní API – přidání verze](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
 
 1. V seznamu rozhraní API vyberte rozhraní **Demo Conference API**.
-2. Vyberte místní nabídku ( **...** ) vedle něj.
+2. Vyberte místní nabídku (**...**) vedle něj.
 3. Vyberte **+ Přidat verzi**.
 
 > [!TIP]
@@ -89,13 +89,13 @@ Aby se volajícím zobrazila nová verze, musí se přidat do **produktu**.
 3. Vyberte **Rozhraní API**.
 4. Vyberte **Přidat**.
 5. Vyberte **Demo Conference API, verze v1**.
-6. Klikněte na **Vybrat**.
+6. Klepněte na **tlačítko Vybrat**.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Zobrazení verze na portálu pro vývojáře
 
 1. V horní nabídce vyberte **Portál pro vývojáře**.
-2. Vyberte **rozhraní API** a klikněte na **UKÁZKOVOU konferenci rozhraní API**.
-3. Vedle názvu rozhraní API byste měli vidět rozevírací seznam s více verzemi.
+2. Vyberte **rozhraní API** a klikněte na **rozhraní API ukázkové konference**.
+3. Vedle názvu rozhraní API byste měli zobrazit rozevírací seznam s více verzemi.
 4. Vyberte **v1**.
 5. Všimněte si **adresy URL požadavku** první operace na seznamu. Ukazuje, že cesta URL rozhraní API zahrnuje **v1**.
 

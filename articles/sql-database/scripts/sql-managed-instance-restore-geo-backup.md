@@ -1,6 +1,6 @@
 ---
-title: Příklad prostředí PowerShell obnovení geografické zálohy – Azure SQL Database
-description: Azure PowerShell ukázkový skript pro obnovení databáze spravované instance Azure SQL z geograficky redundantní zálohy.
+title: Příklad obnovení geografické zálohy powershellu – Azure SQL Database
+description: Ukázkový skript Azure PowerShellu pro obnovení databáze spravovaných instancí Azure SQL z geograficky redundantní zálohy.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -12,21 +12,21 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
 ms.openlocfilehash: f1b4166df2290c1250e3807b4a7133c3afae8e44
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74304084"
 ---
-# <a name="use-powershell-to-restore-a-managed-instance-database-to-another-geo-region"></a>Použití PowerShellu k obnovení databáze spravované instance do jiné geografické oblasti
+# <a name="use-powershell-to-restore-a-managed-instance-database-to-another-geo-region"></a>Obnovení databáze spravované instance do jiné geografické oblasti pomocí Prostředí PowerShell
 
-Tento ukázkový skript PowerShellu obnoví databázi spravované instance Azure SQL ze vzdálené geografické oblasti (geografické obnovení).  
+Tento příklad skriptu Prostředí PowerShell obnoví databázi spravované instance Azure SQL ze vzdálené geografické oblasti (geografické obnovení).  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, je nutné, aby tento kurz byl AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat Prostředí PowerShell místně, tento kurz vyžaduje AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -61,7 +61,7 @@ $backup | Restore-AzSqlInstanceDatabase -FromGeoBackup `
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní spojené prostředky.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $TargetResourceGroupName
@@ -71,15 +71,15 @@ Remove-AzResourceGroup -ResourceGroupName $TargetResourceGroupName
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/New-AzResourceGroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Get-AzSqlInstanceDatabaseGeoBackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | Vytvoří geograficky redundantní zálohu databáze spravované instance. |
-| [Obnovit – AzSqlInstanceDatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Vytvoří databázi na spravované instanci z geografické zálohy. |
+| [Get-AzSqlInstanceDatabaseGeoBackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | Vytvoří geograficky redundantní zálohu databáze spravovaných instancí. |
+| [Obnovit databázi instance AzSql](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Vytvoří databázi spravované instance z geografické zálohy. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShell](/powershell/azure/overview).
+Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
 Další ukázkové skripty PowerShellu pro službu SQL Database najdete v tématu [Skripty PowerShellu pro službu Azure SQL Database](../sql-database-powershell-samples.md).

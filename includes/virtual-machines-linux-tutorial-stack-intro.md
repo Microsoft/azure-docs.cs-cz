@@ -4,12 +4,12 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 64290aad2d9f98006a715b480be8cb96965abbaf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 046a4bc9abb936ca6f9fcecd0f660a723edb092b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175015"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80117040"
 ---
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -17,7 +17,7 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/gr
 
 Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -27,7 +27,7 @@ Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm)
 
 Následující příklad vytvoří virtuální počítač *myVM*, a pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, vytvoří je. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`. Tento příkaz také jako uživatelské jméno správce nastaví *azureuser*. Toto uživatelské jméno použijete později k připojení k virtuálnímu počítači. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
@@ -38,7 +38,7 @@ az vm create \
 
 Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu. Poznamenejte si `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači v dalších krocích.
 
-```azurecli-interactive 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -57,9 +57,10 @@ Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné inform
 
 Ve výchozím nastavení jsou k virtuálním počítačům s Linuxem, které jsou nasazené v Azure, povolená pouze připojení SSH. Protože tento virtuální počítač bude webovým serverem, budete muset otevřít port 80 z internetu. Požadovaný port otevřete pomocí příkazu [az vm open-port](/cli/azure/vm).  
  
-```azurecli-interactive 
+```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
+
 ## <a name="ssh-into-your-vm"></a>Připojení SSH k virtuálnímu počítači
 
 

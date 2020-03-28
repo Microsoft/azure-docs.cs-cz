@@ -2,25 +2,19 @@
 title: Ukázkový skript Azure CLI – Výpočet velikosti kontejneru objektů blob | Microsoft Docs
 description: Vypočítejte velikost kontejneru v úložišti objektů blob v Azure součtem velikostí jednotlivých objektů blob v kontejneru.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: cli
 ms.topic: sample
 ms.date: 06/28/2017
 ms.author: tamram
-ms.openlocfilehash: 3cb1e35617a58fcde7968ab45d437d865c91f983
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83ec8c7b3bf5ba9d23d50d8fa1bce563dc56c135
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61245051"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067115"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Výpočet velikosti kontejneru úložiště objektů blob
 
@@ -37,7 +31,7 @@ Tento skript vypočítá velikost kontejneru v úložišti objektů blob v Azure
 
 [!code-azurecli[main](../../../cli_scripts/storage/calculate-container-size/calculate-container-size.sh?highlight=2-3 "Calculate container size")]
 
-## <a name="clean-up-deployment"></a>Vyčištění nasazení 
+## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, kontejner a všechny související prostředky.
 
@@ -55,7 +49,7 @@ Tento skript k výpočtu velikosti kontejneru úložiště objektů blob použí
 | [az storage blob upload](/cli/azure/storage/account) | Nahraje místní soubory do kontejneru úložiště objektů blob v Azure. |
 | [az storage blob list](/cli/azure/storage/account/keys) | Vypíše objekty blob v kontejneru úložiště objektů blob v Azure. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 

@@ -1,5 +1,5 @@
 ---
-title: Přidání funkcí CRUD do úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB
+title: Přidání funkcí CRUD do angularové aplikace s rozhraním API Azure Cosmos DB pro MongoDB
 description: Šestá část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,19 +11,19 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: 0c39ffe40a490ee23ac65f892c46fba2578bce74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75441105"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – přidání funkcí CRUD do aplikace
 
-Tento kurz s více částmi ukazuje, jak vytvořit novou aplikaci napsanou v Node. js s Express a úhlovými a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API služby Cosmos DB pro MongoDB](mongodb-introduction.md). Šestá část kurzu vychází z [části 5](tutorial-develop-mongodb-nodejs-part5.md) a zabývá se následujícími úlohami:
+Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsanou v Souboru Node.js pomocí Express a Angular a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API Cosmos DB pro MongoDB](mongodb-introduction.md). Šestá část kurzu vychází z [části 5](tutorial-develop-mongodb-nodejs-part5.md) a zabývá se následujícími úlohami:
 
 > [!div class="checklist"]
 > * Vytvoření funkcí Post, Put a Delete pro službu hero
-> * Spusťte aplikaci
+> * Spuštění aplikace
 
 > [!VIDEO https://www.youtube.com/embed/Y5mdAlFGZjc]
 
@@ -86,7 +86,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
 5. Spusťte aplikaci a zkontrolujte, že vše funguje. Ve Visual Studio Code uložte všechny provedené změny, vyberte tlačítko **Ladit**![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) na levé straně a pak vyberte tlačítko **Spustit ladění**![Ikona Spustit ladění ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
 
-6. Nyní přejděte zpět do internetového prohlížeče a stisknutím klávesy F12 (na většině počítačů) otevřete Vývojářské nástroje a kartu Síť. Přejděte na adresu [http://localhost:3000](http://localhost:3000) a sledujte prováděná volání přes síť.
+6. Nyní přejděte zpět do internetového prohlížeče a stisknutím klávesy F12 (na většině počítačů) otevřete Vývojářské nástroje a kartu Síť. Přejděte [http://localhost:3000](http://localhost:3000) na a sledujte hovory uskutečněné v síti.
 
     ![Karta Síť v prohlížeči Chrome ukazující aktivitu sítě](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 

@@ -1,18 +1,18 @@
 ---
-title: Spravované aplikace na webu Marketplace
+title: Spravované aplikace na Marketplace
 description: Popisuje spravované aplikace Azure, dostupné přes Marketplace.
 author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 73d4ccbda854d631248daef439aa3bd232d42e06
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650258"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472992"
 ---
-# <a name="azure-managed-applications-in-the-marketplace"></a>Spravované aplikace Azure v Marketplace
+# <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Kurz: Publikování spravovaných aplikací Azure na Marketplace
 
 Dodavatelé můžou použít spravované aplikace Azure k nabízení svých řešení pro všechny zákazníky využívající Azure Marketplace. Těmito dodavateli mohou být poskytovatelé spravovaných služeb (MSP), nezávislí výrobci softwaru (ISV) a integrátoři systémů (SI). Spravované aplikace snižují zákazníkům náklady na údržbu a servis. Dodavatelé prodávají infrastrukturu a software přes marketplace. Ke spravovaným aplikacím můžou přidat také služby a podporu provozu. Další informace najdete v [Přehledu spravovaných aplikací](overview.md).
 
@@ -22,9 +22,9 @@ Tento článek vysvětluje, jak můžete publikovat aplikaci na Marketplace a t�
 
 K dokončení tohoto článku musíte mít připravený soubor .zip s definicí vaší spravované aplikaci. Další informace najdete v článku [Vytvoření aplikace katalogu služeb](publish-service-catalog-app.md).
 
-Existuje několik obchodních požadavků. Jsou to tyto:
+Existuje několik obchodních předpokladů. Jsou to tyto:
 
-* Vaše společnost nebo její dceřiná společnost se musí nacházet v zemi nebo oblasti, kde prodej podporuje Marketplace.
+* Vaše společnost nebo její dceřiná společnost musí být umístěna v zemi nebo oblasti, kde jsou prodeje podporovány tržištěm.
 * Váš produkt musí mít licenci kompatibilní s modely fakturace, které marketplace podporuje.
 * Zákazníkům je třeba zpřístupnit z obchodního hlediska přiměřenou technickou podporu. Podpora může být bezplatná, placená nebo komunitní.
 * Licence musí pokrývat váš software a všechny závislé komponenty třetích stran.
@@ -32,7 +32,7 @@ Existuje několik obchodních požadavků. Jsou to tyto:
 * Vyjádřete souhlas s podmínkami Zásad účasti v programu Azure Marketplace a Ujednání s vydavatelem.
 * Vyjádřete souhlas s dodržováním Podmínek použití, Prohlášení o zásadách ochrany osobních údajů a Smlouvy k programu Microsoft Azure Certified.
 
-Musíte mít také účet Marketplace. Pokud chcete vytvořit účet, přečtěte si téma [Vytvoření účtu komerčního tržiště v partnerském centru](../../marketplace/partner-center-portal/create-account.md).
+Musíte mít také účet Marketplace. Pokud chcete vytvořit účet, přečtěte si informace o tom, [jak vytvořit účet Commercial Marketplace v Centru partnerů](../../marketplace/partner-center-portal/create-account.md).
 
 ## <a name="create-a-new-azure-application-offer"></a>Vytvoření nové nabídky aplikace Azure
 
@@ -44,7 +44,7 @@ Nabídka pro spravované aplikace odpovídá třídě nabídky produktů od vyda
 
 1. Přihlaste se na [portál partnerů cloudu](https://cloudpartner.azure.com/).
 
-1. V navigačním podokně na levé straně vyberte **+ Nová nabídka** > **Aplikace Azure**.
+1. V navigačním podokně vlevo vyberte **+ Nová nabídka** > **Aplikace Azure**.
 
 1. V zobrazení **Editor** uvidíte požadované formuláře. Každý z formulářů je popsán dále v tomto článku.
 
@@ -70,7 +70,7 @@ SKU je nejmenší zakoupitelná jednotka nabídky. Skladové položky v rámci s
 
 Skladová položka se na marketplace zobrazí pod příslušnou nadřazenou nabídkou. Na webu Azure Portal se zobrazí jako samostatná entita s možností zakoupení.
 
-1. Vyberte **Skladová položky** > **Nová skladová položka**.
+1. Vyberte novou skladovou **položku** > **sku**.
 
 1. Z**ID skladové položky**. ID skladové položky je jedinečný identifikátor SKU v rámci nabídky. Tento identifikátor se zobrazuje na adresách URL produktu, v šablonách Resource Manageru a ve fakturačních sestavách. Může se skládat jenom z malých alfanumerických znaků nebo pomlček (-). ID nemůže končit pomlčkou a jeho délka je omezená na maximálně 50 znaků. Po publikování nabídky je toto pole zamčené. V rámci nabídky může existovat několik skladových položek. Budete potřebovat skladovou položku pro každou image, kterou plánujete publikovat.
 
@@ -82,8 +82,8 @@ Skladová položka se na marketplace zobrazí pod příslušnou nadřazenou nab�
    * **Souhrn:** Zadejte stručný souhrn této skladové položky. Tento text se zobrazí pod názvem.
    * **Popis:** Zadejte podrobný popis skladové položky.
    * **Typ skladové položky:** Povolené hodnoty jsou *Spravovaná aplikace* a *Šablony řešení*. V tomto případě vyberte *Spravovaná aplikace*.
-   * **Dostupnost země/oblasti**: vyberte země nebo oblasti, kde je spravovaná aplikace k dispozici.
-   * **Ceny:** Uveďte cenu za správu této aplikace. Před nastavením ceny vyberte dostupné země/oblasti.
+   * **Dostupnost země nebo oblasti**: Vyberte země nebo oblasti, ve kterých je spravovaná aplikace dostupná.
+   * **Ceny:** Uveďte cenu za správu této aplikace. Před nastavením ceny vyberte dostupné země nebo oblasti.
 
 1. Přidejte nový balíček. V následujícím formuláři vyplňte část s **podrobnými informacemi o balíčku**:
 
@@ -91,12 +91,12 @@ Skladová položka se na marketplace zobrazí pod příslušnou nadřazenou nab�
 
    * **Verze:** Zadejte verzi balíčku, kterou nahráváte. Měla by mít formát `{number}.{number}.{number}{number}`.
    * **Soubor balíčku (.zip):** Tento balíček obsahuje dva požadované soubory komprimované v balíčku .zip. Jedním z těchto souborů je šablona, která definuje prostředky k nasazení pro spravovanou aplikaci. Druhý soubor definuje [uživatelské rozhraní](create-uidefinition-overview.md) pro uživatele nasazující tuto spravovanou aplikaci prostřednictvím portálu. V uživatelském rozhraní zadáváte elementy, které uživatelům umožňují zadávat hodnoty parametrů.
-   * **ID tenanta**: ID tenanta pro účet, pro který chcete získat přístup.
-   * **Povolit přístup JIT**: vyberte **Ano** , pokud chcete povolit [řízení přístupu za běhu](request-just-in-time-access.md) pro účet. Pokud je tato možnost povolená, vyžádáte si k účtu příjemce přístup za zadané časové období. Pokud chcete vyžadovat, aby příjemci spravované aplikace udělili trvalému přístupu k vašemu účtu, vyberte **ne**.
-   * **Přizpůsobit povolené akce zákazníků?** : vyberte **Ano** a určete akce, které můžou uživatelé provádět na spravovaných prostředcích.
-   * **Povolené akce zákazníků**: Pokud pro předchozí nastavení vyberete **Ano** , můžete určit, které akce mají uživatelé povoleno pro uživatele pomocí [přiřazení Odepřít pro prostředky Azure](../../role-based-access-control/deny-assignments.md).
+   * **ID klienta**: ID klienta pro účet získat přístup.
+   * **Povolit přístup JIT**: Výběrem **možnosti Ano** povolíte [řízení přístupu](request-just-in-time-access.md) za dobu. Pokud je tato možnost povolena, požádáte o přístup k účtu spotřebitele po určité časové období. Chcete-li požadovat, aby uživatelé spravované aplikace udělili vašemu účtu trvalý přístup, vyberte **možnost Ne**.
+   * **Přizpůsobit povolené akce zákazníka?**: Výběrem **možnosti Ano** určete, které akce mohou spotřebitelé provádět se spravovanými prostředky.
+   * **Povolené akce zákazníka**: Pokud pro předchozí nastavení vyberete **Ano,** můžete určit, které akce jsou pro spotřebitele povoleny pomocí [odepření přiřazení pro prostředky Azure](../../role-based-access-control/deny-assignments.md).
 
-     Dostupné akce najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md). Pokud například chcete, aby uživatelé mohli restartovat virtuální počítače, přidejte `Microsoft.Compute/virtualMachines/restart/action` k povoleným akcím. Akce `*/read` je povolena automaticky, takže nemusíte toto nastavení zahrnovat.
+     Dostupné akce najdete v tématu [Operace zprostředkovatele prostředků Správce prostředků Azure](../../role-based-access-control/resource-provider-operations.md). Chcete-li například povolit spotřebitelům `Microsoft.Compute/virtualMachines/restart/action` restartování virtuálních počítačů, přidejte k povoleným akcím. Akce `*/read` je automaticky povolena, takže toto nastavení nemusíte zahrňovat.
    * **PrincipalId:** Tato vlastnost je identifikátor Azure Active Directory (Azure AD) pro uživatele, skupinu uživatelů nebo aplikaci, kteří mají přístup k prostředkům v předplatném uživatele. Definice role popisuje tato oprávnění.
    * **Role Definition (Definice role):** Tato vlastnost je seznamem všech integrovaných rolí pro řízení přístupu na základě role (RBAC), které poskytuje Azure AD. Můžete vybrat roli, která je nejvhodnější pro správu prostředků v zastoupení uživatele.
    * **Nastavení zásad:** Použijte na svou spravovanou aplikaci zásady [Azure Policy](../../governance/policy/overview.md), abyste u nasazených řešení určili požadavky na dodržování předpisů. Z dostupných možností vyberte požadované zásady. V části **Parametry zásad** zadejte řetězec JSON s hodnotami parametrů. Definice zásad a formátování hodnot parametrů najdete v tématu [Ukázky Azure Policy](../../governance/policy/samples/index.md).
@@ -111,7 +111,7 @@ Formulář Marketplace vyzývá k zadání polí, která se zobrazují na [Azure
 
 ### <a name="preview-subscription-ids"></a>Zobrazení náhledu ID předplatných
 
-Zadejte seznam ID předplatných Azure, která mohou přistupovat k nabídce po jejím publikování. Tato povolená předplatná můžete využít k otestování nabídky před jejím zprovozněním. Na portálu pro partnery můžete zkompilovat seznam povolených až 100 předplatných.
+Zadejte seznam ID předplatných Azure, která mohou přistupovat k nabídce po jejím publikování. Tato povolená předplatná můžete využít k otestování nabídky před jejím zprovozněním. Můžete sestavit seznam povolených až 100 odběrů na partnerském portálu.
 
 ### <a name="suggested-categories"></a>Navrhované kategorie
 
@@ -131,7 +131,7 @@ Na kartě **Plány a ceny** vaší spravované aplikace se zobrazují tato pole:
 
 ![Plány na Marketplace](./media/publish-marketplace-app/publishvm15.png)
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>portál Azure
 
 V souhrnu vaší spravované aplikace se zobrazují tato pole:
 
@@ -166,12 +166,12 @@ Při vytváření ikony hero loga postupujte podle těchto pokynů:
 
 Ve formuláři **Podpora** vyplňte kontakty na podporu ve vaší společnosti. Mohou to být kontakty na techniky a na zákaznickou podporu.
 
-## <a name="publish-an-offer"></a>Publikovat nabídku
+## <a name="publish-an-offer"></a>Publikování nabídky
 
 Po vyplnění všech částí vyberte **Publish** (Publikovat). Zahájíte tak proces zpřístupnění vaší nabídky zákazníkům.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o tom, co se stane po kliknutí na **publikovat**, najdete v tématu [publikování nabídky aplikací Azure](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md) .
+* Informace o tom, co se stane po **klepnutí**na publikovat , najdete v [tématu Publikování nabídky aplikací Azure.](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací](overview.md).
 * Informace o publikování spravované aplikace katalogu služeb najdete v tématu věnovaném [vytvoření a publikování spravované aplikace katalogu služeb](publish-service-catalog-app.md).

@@ -1,5 +1,5 @@
 ---
-title: ZASTARALÉ Kurz Azure Container Service – Příprava aplikace
+title: (ZASTARALÉ) Kurz služby Azure Container Service – příprava aplikace
 description: Kurz Azure Container Service – Příprava aplikace
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76275425"
 ---
-# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>ZASTARALÉ Vytváření imagí kontejnerů, které se mají používat s Azure Container Service
+# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(ZASTARALÉ) Vytváření ibi kontejnerů, které se použijí se službou Azure Container Service
 
 > [!TIP]
-> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: Příprava aplikace pro Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-prepare-app.md).
+> Aktualizovaná verze tohoto kurzu, který používá službu Azure Kubernetes, [najdete v tématu Kurz: Příprava aplikace pro službu Azure Kubernetes Service (AKS).](../../aks/tutorial-kubernetes-prepare-app.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -38,7 +38,7 @@ V následujících kurzech se image kontejneru nahraje do služby Azure Containe
 
 V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a základní příkazy Dockeru. V případě potřeby najdete základní informace o kontejnerech v článku [Get started with Docker]( https://docs.docker.com/get-started/) (Začínáme s Dockerem). 
 
-K dokončení tohoto kurzu potřebujete vývojové prostředí pro Docker. Docker nabízí balíčky pro snadnou konfiguraci Dockeru na jakémkoli systému [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) nebo [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
+K dokončení tohoto kurzu potřebujete vývojové prostředí pro Docker. Docker nabízí balíčky pro snadnou konfiguraci Dockeru na jakémkoli [Macu](https://docs.docker.com/docker-for-mac/) nebo systému [Windows](https://docs.docker.com/docker-for-windows/) či [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
 
 Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kroků v tomto kurzu. Proto doporučujeme použít úplné vývojové prostředí pro Docker.
 
@@ -85,7 +85,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Spuštěním příkazu [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) zobrazte spuštěné kontejnery.
+Spusťte příkaz [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) a zosakřite spuštěné kontejnery.
 
 ```bash
 docker ps

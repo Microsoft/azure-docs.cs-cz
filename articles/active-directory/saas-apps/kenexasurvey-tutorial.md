@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s IBM Kenexa průzkumu Enterprise | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a IBM Kenexa průzkumu Enterprise.
+title: 'Kurz: Integrace služby Azure Active Directory s IBM Kenexa Survey Enterprise | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a IBM Kenexa Survey Enterprise.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,194 +16,194 @@ ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
 ms.openlocfilehash: c649b966b3e210f6b026b06a9654761e0f97aea1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67099061"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Kurz: Integrace Azure Active Directory s IBM Kenexa průzkumu Enterprise
+# <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Kurz: Integrace Azure Active Directory s IBM Kenexa Survey Enterprise
 
-V tomto kurzu se dozvíte, jak integrovat IBM Kenexa průzkumu organizace Azure Active Directory (Azure AD).
-IBM Kenexa průzkumu podnikové integrace s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat IBM Kenexa Survey Enterprise s Azure Active Directory (Azure AD).
+Integrace IBM Kenexa Survey Enterprise s Azure AD vám poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup do firemní IBM Kenexa zjišťování sítě.
-* Uživatelům se automaticky přihlášeni k IBM Kenexa průzkumu Enterprise (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, která má přístup k IBM Kenexa Survey Enterprise.
+* Uživatelům můžete povolit automatické přihlášení k IBM Kenexa Survey Enterprise (Jednotné přihlášení) pomocí jejich účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s IBM Kenexa průzkumu Enterprise, budete potřebovat následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s IBM Kenexa Survey Enterprise, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* IBM Kenexa průzkumu podnikové jednotné přihlašování povolená předplatného
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné s povoleným jedním přihlášením IBM Kenexa Survey Enterprise
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje IBM Kenexa průzkumu Enterprise **IDP** jednotné přihlašování zahájené pomocí
+* IBM Kenexa Survey Enterprise podporuje sso iniciované **idp**
 
-## <a name="adding-ibm-kenexa-survey-enterprise-from-the-gallery"></a>Přidání organizace průzkumu Kenexa IBM z Galerie
+## <a name="adding-ibm-kenexa-survey-enterprise-from-the-gallery"></a>Přidání produktu IBM Kenexa Survey Enterprise z galerie
 
-Pokud chcete nakonfigurovat integrace IBM Kenexa průzkumu organizace do služby Azure AD, potřebujete přidat IBM Kenexa průzkumu Enterprise z Galerie na váš seznam spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci IBM Kenexa Survey Enterprise do Azure AD, musíte přidat IBM Kenexa Survey Enterprise z galerie do seznamu spravovaných aplikací SaaS.
 
-**Přidání organizace průzkumu Kenexa IBM z galerie, postupujte následovně:**
+**Chcete-li přidat produkt IBM Kenexa Survey Enterprise z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **IBM Kenexa průzkumu Enterprise**vyberte **IBM Kenexa průzkumu Enterprise** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **ibm Kenexa Survey Enterprise**, z panelu výsledků vyberte ibm **Kenexa Survey Enterprise** a klepnutím na tlačítko **Přidat** aplikaci přidejte.
 
-     ![IBM Kenexa průzkumu Enterprise v seznamu výsledků](common/search-new-app.png)
+     ![IBM Kenexa Survey Enterprise v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí IBM Kenexa průzkumu Enterprise na základě testovací uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v IBM Kenexa průzkumu Enterprise.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí IBM Kenexa Survey Enterprise na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v IBM Kenexa Survey Enterprise.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s IBM Kenexa průzkumu organizace, které potřebujete k dokončení následujících stavebních bloků:
+Chcete-li konfigurovat a testovat jednotné přihlašování Azure AD pomocí ibm Kenexa Survey Enterprise, musíte dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace IBM Kenexa průzkumu Enterprise Single Sign-On](#configure-ibm-kenexa-survey-enterprise-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele organizace průzkumu Kenexa IBM](#create-ibm-kenexa-survey-enterprise-test-user)**  – Pokud chcete mít protějšek Britta Simon IBM Kenexa průzkumu organizace, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Nakonfigurujte ibm Kenexa Survey Enterprise Single Sign-On](#configure-ibm-kenexa-survey-enterprise-single-sign-on)** – pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte testovacího uživatele IBM Kenexa Survey Enterprise](#create-ibm-kenexa-survey-enterprise-test-user)** – chcete-li mít protějšek Britty Simonové v IBM Kenexa Survey Enterprise, který je propojený s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s IBM Kenexa průzkumu Enterprise, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí IBM Kenexa Survey Enterprise, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **IBM Kenexa průzkumu Enterprise** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **IBM Kenexa Survey Enterprise** vyberte možnost Jednotné **přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránce, proveďte následující kroky:
+4. Na stránce **Nastavit jednotné přihlašování pomocí saml** proveďte následující kroky:
 
-    ![IBM Kenexa průzkumu podnikové domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+    ![Ibm Kenexa Survey Enterprise Domain a adresy URL jednotné přihlašovací informace](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://surveys.kenexa.com/<companycode>`
+    a. Do textového pole **Identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://surveys.kenexa.com/<companycode>`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://surveys.kenexa.com/<companycode>/tools/sso.asp`
+    b. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://surveys.kenexa.com/<companycode>/tools/sso.asp`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory IBM Kenexa průzkumu Enterprise Client](https://www.ibm.com/support/home/?lnk=fcw) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou adresou URL identifikátoru a odpovědi. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory IBM Kenexa Survey Enterprise Client.](https://www.ibm.com/support/home/?lnk=fcw) Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-5. IBM Kenexa průzkumu podniková aplikace očekává kontrolní výrazy zabezpečení kontrolní výrazy SAML (Markup Language) v určitém formátu, který je potřeba přidat mapování vlastních atributů ke konfiguraci vaší atributy tokenu SAML. Hodnota deklarace identity identifikátor uživatele v odpovědi musí odpovídat ID jednotného přihlašování, který je nakonfigurovaný v Kenexa systému. Pokud chcete namapovat identifikátor odpovídajícího uživatele ve vaší organizaci jako jednotné přihlašování Internet Datagram Protocol (IDP), pracovat s [tým podpory IBM Kenexa průzkumu Enterprise](https://www.ibm.com/support/home/?lnk=fcw).
+5. Aplikace IBM Kenexa Survey Enterprise očekává, že obdrží kontrolní výrazy jazyka rozpoznávání zabezpečení (SAML) v určitém formátu, který vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Hodnota deklarace identifikátoru uživatele v odpovědi musí odpovídat ID přihlašovaného pomocí služby SSO, které je nakonfigurované v systému Kenexa. Chcete-li namapovat příslušný identifikátor uživatele ve vaší organizaci jako protokol IDP (SSO Internet Datagram Protocol), spolupracujte s [týmem podpory IBM Kenexa Survey Enterprise](https://www.ibm.com/support/home/?lnk=fcw).
 
-    Ve výchozím nastavení Azure AD Nastaví uživatelský identifikátor jako hodnotu hlavního názvu (UPN) uživatele. Tuto hodnotu můžete změnit na **atributy uživatele** kartu, jak je znázorněno na následujícím snímku obrazovky. Integrace funguje pouze po dokončení mapování správně.
+    Ve výchozím nastavení Azure AD nastaví identifikátor uživatele jako hlavní název uživatele (UPN) hodnotu. Tuto hodnotu můžete změnit na kartě **Atributy uživatele,** jak je znázorněno na následujícím snímku obrazovky. Integrace funguje až po dokončení mapování správně.
 
     ![image](common/edit-attribute.png)
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+6. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Base64)** z daných možností podle vašeho požadavku a uložte jej do počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-7. Na **nastavení IBM Kenexa průzkumu Enterprise** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V části **Nastavit IBM Kenexa Survey Enterprise** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-ibm-kenexa-survey-enterprise-single-sign-on"></a>Konfigurace IBM Kenexa průzkumu Enterprise Single Sign-On
+### <a name="configure-ibm-kenexa-survey-enterprise-single-sign-on"></a>Konfigurace jednotného přihlašování ibm Kenexa Survey Enterprise
 
-Ke konfiguraci jednotného přihlašování na **IBM Kenexa průzkumu Enterprise** straně, je nutné odeslat na stažený **certifikát (Base64)** a vhodné zkopírovaný adresy URL z webu Azure portal [IBM Kenexa Zjišťování tým podpory Enterprise](https://www.ibm.com/support/home/?lnk=fcw). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **IBM Kenexa Survey Enterprise,** musíte odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z portálu Azure do [týmu podpory IBM Kenexa Survey Enterprise](https://www.ibm.com/support/home/?lnk=fcw). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V poli **Uživatelské jméno** typ pole**brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k IBM Kenexa průzkumu Enterprise.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k IBM Kenexa Survey Enterprise.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **IBM Kenexa průzkumu Enterprise**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **IBM Kenexa Survey Enterprise**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **IBM Kenexa průzkumu Enterprise**.
+2. V seznamu aplikací vyberte **položku IBM Kenexa Survey Enterprise**.
 
-    ![IBM Kenexa průzkumu Enterprise odkaz v seznamu aplikací](common/all-applications.png)
+    ![Odkaz IBM Kenexa Survey Enterprise v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-ibm-kenexa-survey-enterprise-test-user"></a>Vytvořit testovacího uživatele IBM Kenexa průzkumu Enterprise
+### <a name="create-ibm-kenexa-survey-enterprise-test-user"></a>Vytvoření testovacího uživatele IBM Kenexa Survey Enterprise
 
-V této části vytvořte uživatele Britta Simon v IBM Kenexa průzkumu Enterprise.
+V této části vytvoříte uživatele s názvem Britta Simon v IBM Kenexa Survey Enterprise.
 
-Vytvořit uživatele v systému IBM Kenexa průzkumu Enterprise a mapování ID jednotného přihlašování pro ně, můžete pracovat [tým podpory IBM Kenexa průzkumu Enterprise](https://www.ibm.com/support/home/?lnk=fcw). Tato hodnota ID jednotné přihlašování musí být také mapováno na hodnotu identifikátoru uživatele ze služby Azure AD. Toto výchozí nastavení můžete změnit na **atribut** kartu.
+Chcete-li vytvořit uživatele v systému IBM Kenexa Survey Enterprise a namapovat pro ně ID spřimit správě osobních a soc, můžete spolupracovat s [týmem podpory IBM Kenexa Survey Enterprise](https://www.ibm.com/support/home/?lnk=fcw). Tato hodnota ID služby Při šití při microsoftmuž by měla být také mapována na hodnotu identifikátoru uživatele z Azure AD. Toto výchozí nastavení můžete změnit na kartě **Atribut.**
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici IBM Kenexa průzkumu Enterprise na přístupovém panelu, vám by měl být automaticky přihlášeni na Enterprise IBM Kenexa průzkumu, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici IBM Kenexa Survey Enterprise na přístupovém panelu, měli byste být automaticky přihlášeni k IBM Kenexa Survey Enterprise, pro které nastavíte sociální přihlašující. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,6 +1,6 @@
 ---
-title: Kurz pro přípravu Azure Portal prostředí Datacenter k nasazení Azure Data Box Edge | Microsoft Docs
-description: První kurz o nasazení Azure Data Box Edge zahrnuje přípravu Azure Portal.
+title: Kurz pro přípravu portálu Azure, prostředí datového centra k nasazení Azure Data Box Edge | Dokumenty společnosti Microsoft
+description: První kurz o nasazení Azure Data Box Edge zahrnuje přípravu portálu Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5192816ca7be47ecb5e602e46dff16951f7475ee
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 90ed4bf8f0389619f130e998ed76c720442092b2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370266"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474471"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Kurz: Příprava na nasazení Azure Data Box Edge  
 
-Toto je první kurz v řadě kurzů nasazení, které jsou potřeba k úplnému nasazení Azure Data Box Edge. V tomto kurzu se dozvíte, jak připravit Azure Portal k nasazení Data Box Edge prostředků.
+Toto je první kurz v řadě kurzů nasazení, které jsou nutné k úplnému nasazení Azure Data Box Edge. Tento kurz popisuje, jak připravit portál Azure k nasazení prostředku Data Box Edge.
 
 K dokončení této instalace a procesu konfigurace potřebujete oprávnění správce. Příprava portálu trvá méně než 10 minut.
 
@@ -29,47 +29,46 @@ V tomto kurzu se naučíte:
 > * Vytvoření nového prostředku
 > * Získání aktivačního klíče
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ### <a name="get-started"></a>Začínáme
 
-Pokud chcete nasadit Data Box Edge, přečtěte si následující kurzy v předepsané posloupnosti.
+Chcete-li nasadit Data Box Edge, naleznete v následujících kurzech v předepsaném pořadí.
 
 | **#** | **V tomto kroku** | **Použijte tyto dokumenty** |
 | --- | --- | --- | 
 | 1. |**[Příprava webu Azure Portal pro Data Box Edge](data-box-edge-deploy-prep.md)** |Před instalací fyzického zařízení Data Box Edge vytvořte a nakonfigurujte prostředek Data Box Edge. |
 | 2. |**[Instalace Data Boxu Edge](data-box-edge-deploy-install.md)**|Rozbalte fyzické zařízení Data Box Edge, usaďte ho do racku a zapojte kabeláž.  |
-| 3. |**[Připojení, nastavení a aktivace Data Box Edge](data-box-edge-deploy-connect-setup-activate.md)** |Připojte se k místnímu webovému uživatelskému rozhraní, dokončete nastavení zařízení a aktivujte zařízení. Zařízení je připravené na nastavení sdílených složek SMB nebo sdílených složek systému souborů NFS.  |
+| 3. |**[Připojení, nastavení a aktivace okraje datové schránky](data-box-edge-deploy-connect-setup-activate.md)** |Připojte se k místnímu webovému uživatelskému rozhraní, dokončete nastavení zařízení a aktivujte zařízení. Zařízení je připravené na nastavení sdílených složek SMB nebo sdílených složek systému souborů NFS.  |
 | 4. |**[Přenos dat pomocí Data Boxu Edge](data-box-edge-deploy-add-shares.md)** |Přidejte sdílené složky a připojte se k nim pomocí protokolu SMB nebo přes systém souborů NFS. |
-| 5. |**[Transformace dat pomocí Data Boxu Edge](data-box-edge-deploy-configure-compute.md)** |Nakonfigurujte výpočetní moduly na zařízení, aby se data transformoval při přesunu do Azure. |
+| 5. |**[Transformace dat pomocí okraje datové schránky](data-box-edge-deploy-configure-compute.md)** |Nakonfigurujte výpočetní moduly na zařízení tak, aby transformovaly data při přesunu do Azure. |
 
 Teď můžete začít nastavovat Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Níže jsou uvedené požadavky na konfiguraci pro váš prostředek Data Box Edge, Data Box Edge zařízení a síť datacenter.
+Následují požadavky konfigurace pro prostředek Data Box Edge, zařízení Data Box Edge a síť datového centra.
 
 ### <a name="for-the-data-box-edge-resource"></a>Prostředek Data Box Edge
 
 Než začnete, ujistěte se, že:
 
-* Vaše předplatné Microsoft Azure je povolené pro prostředek Azure Stack Edge. Ujistěte se, že jste použili podporované předplatné, jako je například [Microsoft smlouva Enterprise (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)nebo [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
-* Máte přístup vlastníka nebo přispěvatele na úrovni skupiny prostředků pro prostředky Data Box Edge/Data Box Gateway, IoT Hub a Azure Storage.
-
-  * Chcete-li vytvořit libovolný prostředek Data Box Edge/Data Box Gateway, měli byste mít oprávnění jako Přispěvatel (nebo vyšší) v oboru na úrovni skupiny prostředků. Také je nutné zajistit, aby byl zprostředkovatel `Microsoft.DataBoxEdge` zaregistrován. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
-  * Pokud chcete vytvořit libovolný prostředek IoT Hub, ujistěte se, že je poskytovatel Microsoft. Devices zaregistrovaný. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
-  * Pokud chcete vytvořit prostředek účtu úložiště, musíte pro něj znovu použít rozsah přístupu přispěvatele nebo vyšší úrovně. Azure Storage je ve výchozím nastavení registrovaný poskytovatel prostředků.
-* K Graph API Azure Active Directory máte oprávnění správce nebo uživatel. Další informace najdete v tématu [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
-* Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
+* Vaše předplatné Microsoft Azure je povolené pro prostředek Azure Stack Edge. Ujistěte se, že jste použili podporované předplatné, jako je [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/), [Poskytovatel cloudových řešení (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)nebo [Sponzorství Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0036p/).
+* Máte přístup vlastníka nebo přispěvatele na úrovni skupiny prostředků pro brány Data Box Edge/Data Box Gateway, IoT Hub a prostředky Úložiště Azure.
+    - Chcete-li vytvořit jakýkoli prostředek Data Box Edge/ Data Box Gateway, měli byste mít oprávnění jako přispěvatel (nebo vyšší) s vymezeným oborem na úrovni skupiny prostředků. Musíte se také ujistit, že `Microsoft.DataBoxEdge` je registrován zprostředkovatel. Informace o registraci naleznete v seznamu [Registrovat zprostředkovatele prostředků](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+    - Chcete-li vytvořit jakýkoli prostředek služby IoT Hub, ujistěte se, že je registrovaný poskytovatel Microsoft.Devices. Informace o registraci naleznete v seznamu [Registrovat zprostředkovatele prostředků](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+    - Chcete-li vytvořit prostředek účtu úložiště, budete opět potřebovat přispěvatele nebo vyšší přístup s rozsahem na úrovni skupiny prostředků. Azure Storage je ve výchozím nastavení registrovaný poskytovatel prostředků.
+- Máte přístup správce nebo uživatele k rozhraní Microsoft Graph API. Další informace naleznete v [tématu Odkaz na oprávnění aplikace Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference).
+- Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
 
 ### <a name="for-the-data-box-edge-device"></a>Zařízení Data Box Edge
 
 Před nasazením fyzického zařízení se ujistěte, že:
 
-- Zkontrolovali jste bezpečnostní údaje, které byly součástí balíčku dodávek.
-- Máte slot 1U, který je ve vašem datacentru k dispozici ve standardu 19 "Rack pro připojení zařízení.
-- Máte přístup k plochému, stabilnímu a pracovnímu pracovnímu prostoru, kde může zařízení bezpečně klidovat.
-- Lokalita, ve které máte v úmyslu zařízení nastavit, má standardní sílu napájení z nezávislého zdroje nebo jednotky PDU (AC) (napájení) s nepřerušitelným zdrojem napájení (UPS).
+- Zkontrolovali jste bezpečnostní informace, které byly zahrnuty v balíku zásilky.
+- Ve standardním 19" racku máte k dispozici 1U slot pro montáž zařízení do racku.
+- Máte přístup k ploché, stabilní a rovné pracovní ploše, kde může zařízení bezpečně odpočívat.
+- Místo, kde chcete zařízení nastavit, má standardní střídavý proud z nezávislého zdroje nebo rozdělovací jednotky (PDU) v racku s nepřerušitelným zdrojem napájení (UPS).
 - Máte přístup k fyzickému zařízení.
 
 
@@ -77,87 +76,87 @@ Před nasazením fyzického zařízení se ujistěte, že:
 
 Než začnete, ujistěte se, že:
 
-- Síť v datacentru je nakonfigurovaná podle požadavků na síť pro vaše zařízení Data Box Edge. Další informace najdete v tématu [data box Edge systémových požadavků](data-box-edge-system-requirements.md).
+- Síť ve vašem datovém centru je nakonfigurovaná podle síťových požadavků pro vaše zařízení Data Box Edge. Další informace naleznete v tématu [Požadavky na systém Data Box Edge](data-box-edge-system-requirements.md).
 
-- Pro normální provozní podmínky vašeho Data Box Edge máte následující:
+- Pro běžné provozní podmínky vašeho data boxu Edge máte:
 
-    - Minimální šířka pásma ke stažení, která zajistí, že se zařízení bude aktualizovat, musí mít minimálně 10 MB/s.
-    - Minimálně 20 MB/s vyhrazeným nahráváním a šířkou pásma pro přenos souborů.
+    - Minimálně 10 Mb/s šířka pásma pro stažení, aby zařízení zůstalo aktualizované.
+    - Minimálně 20 Mb/s vyhrazená šířka pásma pro nahrávání a stahování pro přenos souborů.
 
 ## <a name="create-a-new-resource"></a>Vytvoření nového prostředku
 
 Pokud už pro správu fyzického zařízení máte existující prostředek Data Box Edge, přeskočte tento krok a přejděte k části [Získání aktivačního klíče](#get-the-activation-key).
 
-Chcete-li vytvořit prostředek Data Box Edge, proveďte následující kroky v Azure Portal.
+Chcete-li vytvořit prostředek Data Box Edge, postupujte na webu Azure Portal následujícím způsobem.
 
-1. Použití přihlašovacích údajů pro Microsoft Azure pro přihlášení k 
+1. Přihlaste se pomocí přihlašovacích údajů k Microsoft Azure. 
     
-    - Azure Portal na této adrese URL: [https://portal.azure.com](https://portal.azure.com).
-    - Nebo Azure Government portál na této adrese URL: [https://portal.azure.us](https://portal.azure.us). Další podrobnosti najdete na webu [připojení k Azure Government pomocí portálu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+    - Portál Azure na této [https://portal.azure.com](https://portal.azure.com)adrese URL: .
+    - Nebo portál Azure Government na [https://portal.azure.us](https://portal.azure.us)této adrese URL: . Další podrobnosti najdete v části [Připojení k Azure Government pomocí portálu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
-2. V levém podokně vyberte **+ vytvořit prostředek**. Vyhledejte **data box Edge/data box Gateway**. Vyberte **data box Edge/data box Gateway**. Vyberte **Vytvořit**.
-3. Vyberte předplatné, které chcete použít pro Data Box Edge zařízení. Vyberte oblast, ve které chcete prostředek Data Box Edge nasadit. Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
+2. V levém podokně vyberte **+ Vytvořit prostředek**. Hledat **data box edge / data box gateway**. Vyberte **Brána okraje datové schránky / brány datové schránky**. Vyberte **Vytvořit**.
+3. Vyberte předplatné, které chcete použít pro zařízení Data Box Edge. Vyberte oblast, ve které chcete prostředek Data Box Edge nasadit. Seznam všech oblastí, kde je prostředek Azure Stack Edge k dispozici, najdete v [tématu produkty Azure dostupné podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
-    Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. V oblasti jsou uložena pouze metadata pro správu zařízení. Skutečná data můžou být uložená v jakémkoli účtu úložiště.
+    Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. Oblast ukládá pouze metadata pro správu zařízení. Skutečná data mohou být uložena v libovolném účtu úložiště.
     
-    V možnosti **data box Edge** vyberte **vytvořit**.
+    V možnosti **Okraj datového pole** vyberte **Vytvořit**.
 
     ![Vyhledání služby Data Box Edge](media/data-box-edge-deploy-prep/data-box-edge-sku.png)
 
-3. Na kartě **základy** zadejte nebo vyberte následující **Podrobnosti o projektu**.
+3. Na kartě **Základy** zadejte nebo vyberte následující **podrobnosti o projektu**.
     
     |Nastavení  |Hodnota  |
     |---------|---------|
-    |Předplatné    |Tato hodnota se vyplní automaticky na základě dřívějšího výběru. Předplatné je propojené s vaším fakturačním účtem. |
+    |Předplatné    |To je automaticky naplněna na základě předchozího výběru. Předplatné je propojené s vaším fakturačním účtem. |
     |Skupina prostředků  |Vyberte existující skupinu nebo vytvořte novou.<br>Další informace o [skupinách prostředků Azure](../azure-resource-manager/management/overview.md).     |
 
-4. Zadejte nebo vyberte následující **Podrobnosti o instanci**.
+4. Zadejte nebo vyberte následující **podrobnosti instance**.
 
     |Nastavení  |Hodnota  |
     |---------|---------|
-    |Název   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |
-    |Oblast     |Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Pokud používáte Azure Government, jsou dostupné všechny oblasti státní správy, jak je znázorněno v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).<br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
+    |Name (Název)   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |
+    |Region (Oblast)     |Seznam všech oblastí, kde je prostředek Azure Stack Edge k dispozici, najdete v [tématu produkty Azure dostupné podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Pokud používáte Azure Government, všechny oblasti státní správy jsou k dispozici, jak je znázorněno v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).<br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
 
     ![Podrobnosti o projektu a instanci](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
 
-5. Vyberte **Další: adresa příjemce**.
+5. Vyberte **další: Dodací adresa**.
 
-    - Pokud už máte nějaké zařízení, vyberte pole se seznamem, **které má data box Edge zařízení**.
-    - Pokud se jedná o nové zařízení, které objednáváte, zadejte jméno kontaktu, společnost, adresu pro odeslání zařízení a kontaktní údaje.
+    - Pokud již zařízení máte, vyberte pole se seznamem, **protože mám zařízení Data Box Edge**.
+    - Pokud se jedná o nové zařízení, které objednáváte, zadejte jméno kontaktu, společnost, adresu pro odeslání zařízení a kontaktní informace.
 
-    ![Dodací adresa pro nové zařízení](media/data-box-edge-deploy-prep/data-box-edge-resource1.png)
+    ![Dodací adresa nového zařízení](media/data-box-edge-deploy-prep/data-box-edge-resource1.png)
 
-6. Vyberte **Další: zkontrolovat + vytvořit**.
+6. Vyberte **další: Kontrola + vytvoření**.
 
-7. Na kartě **Revize + vytvořit** si přečtěte **Podrobnosti o cenách**, **podmínky použití**a podrobnosti k vašemu prostředku. Zaškrtněte pole se seznamem pro **uživatele, kteří si prošli podmínka ochrany osobních údajů**.
+7. Na kartě **Revize + vytvořit** zkontrolujte **podrobnosti o cenách**, **Podmínky použití**a podrobnosti o zdroji. Vyberte pole se seznamem, protože **jsem zkontroloval podmínky ochrany osobních údajů**.
 
-    ![Kontrola Data Box Edge podrobností prostředků a podmínek ochrany osobních údajů](media/data-box-edge-deploy-prep/data-box-edge-resource2.png)
+    ![Kontrola podrobností o zdrojích datové schránky Edge a podmínek ochrany osobních údajů](media/data-box-edge-deploy-prep/data-box-edge-resource2.png)
 
 8. Vyberte **Vytvořit**.
 
-Vytvoření prostředku trvá několik minut. Po úspěšném vytvoření a nasazení prostředku budete upozorněni. Vyberte **Přejít k prostředku**.
+Vytvoření prostředku trvá několik minut. Po úspěšném vytvoření a nasazení prostředku budete upozorněni. Vyberte **Přejít na zdroj**.
 
 ![Přejít na prostředek Data Box Edge](media/data-box-edge-deploy-prep/data-box-edge-resource3.png)
 
-Po uvedení objednávky Microsoft zkontroluje pořadí a zavede vám (prostřednictvím e-mailu) informace o expedici.
+Po odeslání objednávky společnost Microsoft objednávku zkontroluje a kontaktuje vás (e-mailem) s podrobnostmi o odeslání.
 
-![Oznámení pro revizi Data Box Edgeho pořadí](media/data-box-edge-deploy-prep/data-box-edge-resource4.png)
+![Oznámení o kontrole objednávky Data Box Edge](media/data-box-edge-deploy-prep/data-box-edge-resource4.png)
 
 ## <a name="get-the-activation-key"></a>Získání aktivačního klíče
 
-Po zprovoznění prostředku Data Box Edge a spuštění je potřeba získat aktivační klíč. Tento klíč slouží k aktivaci a propojení zařízení Data Box Edge s prostředkem. Tento klíč můžete získat teď, když jste na webu Azure Portal.
+Po spuštění prostředku Data Box Edge budete muset získat aktivační klíč. Tento klíč slouží k aktivaci a propojení zařízení Data Box Edge s prostředkem. Tento klíč můžete získat teď, když jste na webu Azure Portal.
 
-1. Vyberte prostředek, který jste vytvořili. Vyberte **Přehled** a pak vyberte **nastavení zařízení**.
+1. Vyberte prostředek, který jste vytvořili. Vyberte **Přehled** a potom vyberte **Nastavení zařízení**.
 
     ![Vybrat nastavení zařízení](media/data-box-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 
-2. Na dlaždici **aktivovat** vyberte **Generovat klíč** a vytvořte aktivační klíč. Vyberte ikonu kopírování a zkopírujte klíč a uložte ho pro pozdější použití.
+2. Na dlaždici **Aktivovat** vyberte **Generovat klíč** a vytvořte aktivační klíč. Vyberte ikonu kopírování, chcete-li klíč zkopírovat, a uložte jej pro pozdější použití.
 
     ![Získání aktivačního klíče](media/data-box-edge-deploy-prep/get-activation-key.png)
 
 > [!IMPORTANT]
-> - Aktivační klíč vyprší tři dny po vygenerování.
-> - Pokud vypršela platnost klíče, vygenerujte nový klíč. Starší klíč není platný.
+> - Platnost aktivačního klíče vyprší tři dny po jeho vygenerování.
+> - Pokud platnost klíče vypršela, vygenerujte nový klíč. Starší klíč není platný.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -167,10 +166,10 @@ V tomto kurzu jste se dozvěděli o tématech spojených s Data Boxem Edge, jako
 > * Vytvoření nového prostředku
 > * Získání aktivačního klíče
 
-Přejděte k dalšímu kurzu, kde se dozvíte, jak nainstalovat Data Box Edge.
+Přejdete k dalšímu kurzu, kde se dozvíte, jak nainstalovat Data Box Edge.
 
 > [!div class="nextstepaction"]
-> [Nainstalovat Data Box Edge](./data-box-edge-deploy-install.md)
+> [Instalace Data Boxu Edge](./data-box-edge-deploy-install.md)
 
 
 

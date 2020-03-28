@@ -1,6 +1,6 @@
 ---
-title: Zobrazení výsledků směrování zpráv služby Azure IoT Hub (.NET) | Microsoft Docs
-description: Po nastavení všech prostředků pomocí části 1 tohoto kurzu přidejte možnost směrovat zprávy do Azure Stream Analytics a zobrazit výsledky v PowerBI.
+title: Zobrazení výsledků směrování zpráv služby Azure IoT Hub (.NET) | Dokumenty společnosti Microsoft
+description: Po nastavení všech prostředků pomocí části 1 kurzu přidejte možnost směrování zpráv do Azure Stream Analytics a zobrazte výsledky v PowerBI.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -10,13 +10,13 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73890393"
 ---
-# <a name="tutorial-part-2---view-the-routed-messages"></a>Kurz: část 2 – zobrazení směrovaných zpráv
+# <a name="tutorial-part-2---view-the-routed-messages"></a>Kurz: Část 2 - Zobrazení směrovaných zpráv
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
 
@@ -24,7 +24,7 @@ ms.locfileid: "73890393"
 
 ## <a name="rules-for-routing-the-messages"></a>Pravidla pro směrování zpráv
 
-Toto jsou pravidla pro směrování zpráv; Ty byly nastavily v části 1 tohoto kurzu a v této druhé části je fungují.
+Toto jsou pravidla pro směrování zpráv; tyto byly nastaveny v části 1 tohoto kurzu a uvidíte je pracovat v této druhé části.
 
 |Hodnota |Výsledek|
 |------|------|
@@ -32,59 +32,59 @@ Toto jsou pravidla pro směrování zpráv; Ty byly nastavily v části 1 tohoto
 |level="critical" |Zapsat do fronty Service Bus. Aplikace logiky načte zprávu z fronty a pomocí Office 365 ji odešle e-mailem.|
 |default |Zobrazte tato data pomocí Power BI.|
 
-Nyní vytvoříte prostředky, na které budou směrovány zprávy, spustíte aplikaci pro posílání zpráv do centra a provedete směrování v akci.
+Nyní můžete vytvořit prostředky, do kterých budou zprávy směrovány, spustit aplikaci pro odesílání zpráv do centra a zobrazit směrování v akci.
 
 ## <a name="create-a-logic-app"></a>Vytvoření aplikace logiky  
 
 Fronta Service Bus se použije pro příjem zpráv označených jako kritické. Dále vytvořte aplikaci logiky pro monitorování fronty Service Bus, která odešle e-mail, kdykoli se ve frontě objeví nová zpráva.
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **+ vytvořit prostředek**. Do vyhledávacího pole zadejte **aplikace logiky** a stiskněte Enter. V zobrazených výsledcích hledání vyberte aplikace logiky a pak vyberte **vytvořit** , abyste mohli pokračovat v podokně **vytvořit aplikaci logiky** . Vyplňte jednotlivá pole.
+1. Na [webu Azure Portal](https://portal.azure.com)vyberte **+ Vytvořit prostředek**. Do vyhledávacího pole zadejte **aplikace logiky** a stiskněte Enter. Ze zobrazených výsledků hledání vyberte Aplikace logiky a pak vyberte **Vytvořit** a pokračujte v podokně **Vytvořit aplikaci logiky.** Vyplňte jednotlivá pole.
 
    **Název:** V tomto poli je název aplikace logiky. Tento kurz používá **ContosoLogicApp**.
 
    **Předplatné**: Vyberte své předplatné Azure.
 
-   **Skupina prostředků**: vyberte **použít existující** a vyberte svou skupinu prostředků. Tento kurz používá **ContosoResources**.
+   **Skupina prostředků**: Vyberte **Použít existující** a vyberte skupinu prostředků. Tento kurz používá **ContosoResources**.
 
-   **Umístění:** Použijte vaše umístění. Tento kurz používá **Západní USA**.
+   **Umístění:** Použijte vaše umístění. Tento kurz používá **USA – západ**.
 
    **Log Analytics:** Tento přepínač by měl být vypnutý.
 
-   ![Obrazovka vytvoření aplikace logiky](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
+   ![Obrazovka Vytvořit aplikaci logiky](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
    Vyberte **Vytvořit**. Nasazení aplikace může trvat několik minut.
 
-2. Teď přejděte do aplikace logiky. Nejjednodušší způsob, jak se dostat do aplikace logiky, je vybrat **skupiny prostředků**, vybrat skupinu prostředků (Tento kurz používá **ContosoResources**) a pak vybrat aplikaci logiky ze seznamu prostředků. 
+2. Teď přejděte do aplikace logiky. Nejjednodušší způsob, jak se dostat do aplikace logiky, je vybrat **skupiny prostředků**, vyberte skupinu prostředků (tento kurz používá **ContosoResources**), a pak vyberte aplikaci logiky ze seznamu prostředků. 
 
-    Zobrazí se stránka návrháře aplikace logiky (možná se budete muset kvůli zobrazení celé stránky posunout doprava). Na stránce návrháře Logic Apps se posuňte dolů, dokud se nezobrazí dlaždice s textem **prázdná aplikace logiky +** a vyberte ji. Výchozí karta je "za vás". Pokud je toto podokno prázdné, výběrem možnost **vše** zobrazíte všechny konektory a triggery, které jsou k dispozici.
+    Zobrazí se stránka návrháře aplikace logiky (možná se budete muset kvůli zobrazení celé stránky posunout doprava). Na stránce Návrhář eaplikací logiky přejděte dolů, dokud se nezobrazí dlaždice s nápisem **Prázdná aplikace logiky +** a vyberte ji. Výchozí karta je "Pro vás". Pokud je toto podokno prázdné, vyberte **Vše,** chcete-li zobrazit všechny dostupné konektory a aktivační události.
 
-3. V seznamu konektorů vyberte **Service Bus** .
+3. Ze seznamu konektorů vyberte **Service Bus.**
 
    ![Seznam konektorů](./media/tutorial-routing-view-message-routing-results/logic-app-connectors.png)
 
-4. Zobrazí se seznam aktivačních událostí. Vyberte, **kdy se má zpráva přijmout do fronty (automatické dokončování) nebo Service Bus**.
+4. Zobrazí se seznam aktivačních událostí. Vyberte **Při přijetí zprávy ve frontě (automatické dokončování) / Service Bus**.
 
-   ![Seznam aktivačních událostí pro Service Bus](./media/tutorial-routing-view-message-routing-results/logic-app-triggers.png)
+   ![Seznam aktivačních událostí pro sběrnici Service Bus](./media/tutorial-routing-view-message-routing-results/logic-app-triggers.png)
 
 5. Na další obrazovce zadejte Název připojení. Tento kurz používá **ContosoConnection**.
 
-   ![Nastavení připojení pro frontu Service Bus](./media/tutorial-routing-view-message-routing-results/logic-app-define-connection.png)
+   ![Nastavení připojení fronty služby Service Bus](./media/tutorial-routing-view-message-routing-results/logic-app-define-connection.png)
 
-   Vyberte obor názvů Service Bus. Tento kurz používá **ContosoSBNamespace**. Když vyberete obor názvů, portál se dotáže oboru názvů služby Service Bus a načte klíče. Vyberte **RootManageSharedAccessKey** a vyberte **vytvořit**.
+   Vyberte obor názvů Service Bus. Tento kurz používá **ContosoSBNamespace**. Když vyberete obor názvů, portál se dotáže oboru názvů služby Service Bus a načte klíče. Vyberte **RootManageSharedAccessKey** a vyberte **Vytvořit**.
 
-   ![Dokončuje se nastavování připojení.](./media/tutorial-routing-view-message-routing-results/logic-app-finish-connection.png)
+   ![Dokončení nastavení připojení](./media/tutorial-routing-view-message-routing-results/logic-app-finish-connection.png)
 
 6. Na další obrazovce vyberte z rozevíracího seznamu název fronty (tento kurz používá **contososbqueue**). Pro zbývající pole můžete použít výchozí hodnoty.
 
    ![Možnosti fronty](./media/tutorial-routing-view-message-routing-results/logic-app-queue-options.png)
 
-7. Nyní nastavte akci odeslání e-mailu při přijetí nové zprávy do fronty. V Návrháři Logic Apps vyberte **+ Nový krok** a přidejte krok a pak výběrem možnosti **vše** zobrazte všechny dostupné možnosti. V podokně **Zvolte akci** vyhledejte a vyberte **Office 365 Outlook**. Na obrazovce akce vyberte **Odeslat e-mail/Office 365 Outlook**.  
+7. Nyní nastavte akci odeslání e-mailu při přijetí nové zprávy do fronty. V Návrháři aplikací logiky vyberte **+ Nový krok** pro přidání kroku a pak vyberte **Vše,** abyste viděli všechny dostupné možnosti. V **podokně Zvolte akce** vyhledejte a vyberte **Office 365 Outlook**. Na obrazovce Akce vyberte **Odeslat e-mail / Office 365 Outlook**.  
 
-   ![Možnosti Office 365](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
+   ![Možnosti Office365](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
-8. Přihlaste se ke svému účtu Office 365 a nastavte připojení. Pokud vyprší časový limit, zkuste to znovu. Zadejte e-mailové adresy příjemců e-mailu. Také zadejte předmět a zprávu, kterou chcete mít v těle zprávy. Pro testování zadejte jako adresu příjemce vlastní e-mail.
+8. Přihlaste se ke svému účtu Office 365 a nastavte připojení. Pokud tento časový doby ven, zkuste to znovu. Zadejte e-mailové adresy příjemců e-mailu. Také zadejte předmět a zprávu, kterou chcete mít v těle zprávy. Pro testování zadejte jako adresu příjemce vlastní e-mail.
 
-   Pokud chcete zobrazit obsah zprávy, kterou můžete zahrnout, vyberte **Přidat dynamický obsah** . Vyberte **Obsah** – příchozí zpráva bude zahrnuta do e-mailu.
+   Vyberte **Přidat dynamický obsah,** chcete-li zobrazit obsah ze zprávy, kterou můžete zahrnout. Vyberte **Obsah** – příchozí zpráva bude zahrnuta do e-mailu.
 
    ![Možnosti e-mailu pro aplikaci logiky](./media/tutorial-routing-view-message-routing-results/logic-app-send-email.png)
 
@@ -96,55 +96,55 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="create-the-stream-analytics-job"></a>Vytvoření úlohy služby Stream Analytics
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek** > **Internet věcí** **úlohu > Stream Analytics**.
+1. Na [webu Azure Portal](https://portal.azure.com)vyberte **Vytvořit úlohu** > Internet**of Things** > **Stream Analytics**.
 
 2. Zadejte o úloze následující informace.
 
    **Název úlohy:** Název, který chcete úloze dát. Název musí být globálně jedinečný. Tento kurz používá **contosoJob**.
 
-   **Předplatné**: předplatné Azure, které používáte pro tento kurz.
+   **Předplatné**: Předplatné Azure, které používáte pro kurz.
 
    **Skupina prostředků:** Použijte stejnou skupinu prostředků jako pro centrum IoT. Tento kurz používá **ContosoResources**.
 
-   **Umístění:** Použijte stejné umístění, které používáte v instalačním skriptu. Tento kurz používá **Západní USA**.
+   **Umístění:** Použijte stejné umístění, které používáte v instalačním skriptu. Tento kurz používá **USA – západ**.
 
-   ![Vytvoření úlohy Stream Analytics](./media/tutorial-routing-view-message-routing-results/stream-analytics-create-job.png)
+   ![Vytvoření úlohy analýzy datového proudu](./media/tutorial-routing-view-message-routing-results/stream-analytics-create-job.png)
 
-3. Vyberte **vytvořit** a vytvořte úlohu. Nasazení může trvat několik minut.
+3. Chcete-li úlohu vytvořit, vyberte **vytvořit.** Nasazení může trvat několik minut.
 
-    Pokud se chcete vrátit do úlohy, vyberte **skupiny prostředků**. Tento kurz používá **ContosoResources**. Vyberte skupinu prostředků a potom v seznamu prostředků vyberte úlohu Stream Analytics.
+    Chcete-li se k úloze vrátit, vyberte **možnost Skupiny zdrojů**. Tento kurz používá **ContosoResources**. Vyberte skupinu prostředků a v seznamu zdrojů vyberte úlohu Stream Analytics.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
-1. V části **topologie úlohy**vyberte **vstupy**.
+1. V části **Topologie úlohy**vyberte **Vstupy**.
 
-2. V podokně **vstupy** vyberte **Přidat vstup streamu** a vyberte IoT Hub. Na další obrazovce vyplňte následující pole:
+2. V podokně **Vstupy** vyberte **Přidat vstup datového proudu** a vyberte IoT Hub. Na další obrazovce vyplňte následující pole:
 
    **Alias pro vstup:** Tento kurz používá **contosoinputs**.
 
-   **V předplatném vyberte IoT Hub**: Vyberte tuto možnost přepínače.
+   **Vyberte ioT hub z předplatného**: Vyberte tuto možnost přepínacího tlačítka.
 
-   **Předplatné**: vyberte předplatné Azure, které používáte pro tento kurz.
+   **Předplatné**: Vyberte předplatné Azure, které používáte pro tento kurz.
 
-   **IoT Hub**: vyberte Centrum IoT. Tento kurz používá **ContosoTestHub**.
+   **IoT Hub**: Vyberte centrum IoT Hub. Tento kurz používá **ContosoTestHub**.
 
    **Koncový bod:** vyberte **Zasílání zpráv**. (Pokud vyberete monitorování operací, získáte namísto procházejících dat telemetrická data o centru IoT.) 
 
-   **Název zásady sdíleného přístupu**: vyberte **Služba**. Portál vyplní Klíč zásad sdíleného přístupu za vás.
+   **Název zásady sdíleného přístupu**: Vyberte **službu**. Portál vyplní Klíč zásad sdíleného přístupu za vás.
 
-   **Skupina příjemců**: vyberte skupinu uživatelů nastavenou v části 1 tohoto kurzu. Tento kurz používá **contosoconsumers**.
+   **Skupina spotřebitelů**: Vyberte skupinu spotřebitelů nastavenou v části 1 tohoto kurzu. Tento kurz používá **contosoconsumers**.
    
    Pro zbývající pole můžete použít výchozí hodnoty. 
 
-   ![Nastavte vstupy pro úlohu Stream Analytics.](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
+   ![Nastavení vstupů pro úlohu analýzy datového proudu](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
 
 3. Vyberte **Uložit**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
-1. V části **topologie úlohy**vyberte **výstupy**.
+1. V části **Topologie úlohy**vyberte **Výstupy**.
 
-2. V podokně **výstupy** vyberte **Přidat**a pak vyberte **Power BI**. Na další obrazovce vyplňte následující pole:
+2. V podokně **Výstupy** vyberte **Přidat**a pak vyberte **Power BI**. Na další obrazovce vyplňte následující pole:
 
    **Alias pro výstup:** Jedinečný alias pro výstup. Tento kurz používá **contosooutputs**. 
 
@@ -154,9 +154,9 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
    Pro zbývající pole můžete použít výchozí hodnoty.
 
-3. Vyberte **autorizovat**a přihlaste se ke svému účtu Power BI. (Může to trvat více než jeden pokus).
+3. Vyberte **Autorizovat**a přihlaste se ke svému účtu Power BI. (To může trvat více než jeden pokus).
 
-   ![Nastavte výstupy pro úlohu Stream Analytics.](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-outputs.png)
+   ![Nastavení výstupů pro úlohu analýzy datového proudu](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-outputs.png)
 
 4. Vyberte **Uložit**.
 
@@ -168,27 +168,27 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 3. Nahraďte `[YourOutputAlias]` názvem aliasu pro výstup. Tento kurz používá **contosooutputs**.
 
-   ![Nastavte dotaz pro úlohu Stream Analytics.](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-query.png)
+   ![Nastavení dotazu pro úlohu analýzy datového proudu](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-query.png)
 
 4. Vyberte **Uložit**.
 
-5. Zavřete podokno dotazu. Vrátíte se do zobrazení prostředků ve skupině prostředků. Vyberte úlohu Stream Analytics. V tomto kurzu má název **contosoJob**.
+5. Zavřete podokno dotazu. Vrátíte se k zobrazení zdrojů ve skupině zdrojů. Vyberte úlohu Stream Analytics. V tomto kurzu má název **contosoJob**.
 
 ### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
-V Stream Analytics úlohy vyberte **spustit** > **nyní** > **Start**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
+V úloze Stream Analytics vyberte **Spustit** > **nyní** > **spustit**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
 
 K vytvoření sestavy Power BI potřebujete data, takže Power BI je potřeba po vytvoření zařízení a spuštění aplikace simulace zařízení nastavit.
 
-## <a name="run-simulated-device-app"></a>Spustit aplikaci simulovaného zařízení
+## <a name="run-simulated-device-app"></a>Spuštění aplikace simulovaných zařízení
 
-V části 1 tohoto kurzu jste nastavili zařízení pro simulaci pomocí zařízení IoT. V této části si stáhnete konzolovou aplikaci .NET, která simuluje, že zařízení odesílá zprávy ze zařízení do cloudu do služby IoT Hub (za předpokladu, že jste už nestáhli aplikaci a prostředky v části 1).
+V části 1 tohoto kurzu nastavíte zařízení tak, aby simulovalo pomocí zařízení IoT. V této části si stáhnete aplikaci konzoly .NET, která simuluje toto zařízení odesílající zprávy zařízení cloud do centra IoT (za předpokladu, že jste aplikaci a prostředky v části 1 ještě nestáhli).
 
-Tato aplikace odesílá zprávy pro každou z různých metod směrování zpráv. K dispozici je také složka v souboru ke stažení, která obsahuje úplnou Azure Resource Manager šablonu a soubor parametrů a také skripty Azure CLI a PowerShell.
+Tato aplikace odesílá zprávy pro každou z různých metod směrování zpráv. V souboru ke stažení je také složka, která obsahuje úplnou šablonu a soubor parametrů Azure Resource Manageru, stejně jako skripty Azure CLI a PowerShell.
 
-Pokud jste soubory nestáhli z úložiště v části 1 tohoto kurzu, pokračujte a Stáhněte si je hned z [simulace zařízení IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Výběr tohoto odkazu stáhne úložiště s několika aplikacemi. řešení, které hledáte, je IoT-Hub/kurzy/Routing/IoT_SimulatedDevice. sln. 
+Pokud jste nestáhli soubory z úložiště v části 1 tohoto kurzu, pokračujte a stáhněte si je nyní ze [simulace zařízení IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Výběrem tohoto odkazu stáhnete úložiště s několika aplikacemi v něm; řešení, které hledáte, je iot-hub/Tutorials/Routing/IoT_SimulatedDevice.sln. 
 
-Dvojím kliknutím na soubor řešení (IoT_SimulatedDevice. sln) otevřete kód v aplikaci Visual Studio a pak otevřete Program.cs. Nahraďte `{your hub name}` názvem hostitele centra IoT. Formát názvu hostitele centra IoT je **{iot-hub-name}.azure-devices.net**. V tomto kurzu je název hostitele centra **ContosoTestHub.azure-devices.net**. Dále nahraďte `{your device key}` klíčem zařízení, který jste si předtím uložili při vytváření simulovaného zařízení. 
+Poklepáním na soubor řešení (IoT_SimulatedDevice.sln) otevřete kód v sadě Visual Studio a otevřete Program.cs. Nahraďte `{your hub name}` názvem hostitele centra IoT. Formát názvu hostitele centra IoT je **{iot-hub-name}.azure-devices.net**. V tomto kurzu je název hostitele centra **ContosoTestHub.azure-devices.net**. Dále nahraďte `{your device key}` klíčem zařízení, který jste si předtím uložili při vytváření simulovaného zařízení. 
 
    ```csharp
         static string s_myDeviceId = "Contoso-Test-Device";
@@ -216,17 +216,17 @@ Pokud je všechno správně nastavené, v tomto okamžiku byste měli získat n�
    * Aplikace logiky přebírající zprávy z fronty Service Bus pracuje správně.
    * Konektor aplikace logiky do Outlooku pracuje správně. 
 
-2. V [Azure Portal](https://portal.azure.com)vyberte **skupiny prostředků** a vyberte skupinu prostředků. Tento kurz používá **ContosoResources**. 
+2. Na [webu Azure Portal](https://portal.azure.com)vyberte **skupiny prostředků** a vyberte skupinu prostředků. Tento kurz používá **ContosoResources**. 
 
-    Vyberte účet úložiště, vyberte **kontejnery**a pak vyberte kontejner. Tento kurz používá **contosoresults**. Měli byste vidět složku, ve které můžete procházet adresáře, dokud neuvidíte jeden nebo několik souborů. Otevřete jeden z těchto souborů; obsahují položky směrované do účtu úložiště. 
+    Vyberte účet úložiště, vyberte **Kontejnery**a pak vyberte Kontejner. Tento kurz používá **contosoresults**. Měli byste vidět složku, ve které můžete procházet adresáře, dokud neuvidíte jeden nebo několik souborů. Otevřete jeden z těchto souborů; obsahují položky směrované do účtu úložiště. 
 
-   ![Soubory výsledků v úložišti](./media/tutorial-routing-view-message-routing-results/results-in-storage.png)
+   ![Výsledné soubory v úložišti](./media/tutorial-routing-view-message-routing-results/results-in-storage.png)
 
-Tento výsledek znamená, že následující příkaz má hodnotu true.
+Tento výsledek znamená, že následující příkaz je true.
 
    * Směrování do účtu úložiště pracuje správně.
 
-Teď, když je aplikace pořád spuštěná, nastavte vizualizaci Power BI, abyste viděli zprávy přicházející ve výchozím směrování.
+Teď, když je aplikace stále spuštěná, nastavte vizualizaci Power BI tak, aby se uviděly zprávy přicházející přes výchozí směrování.
 
 ## <a name="set-up-the-power-bi-visualizations"></a>Nastavení vizualizací Power BI
 
@@ -234,17 +234,17 @@ Teď, když je aplikace pořád spuštěná, nastavte vizualizaci Power BI, abys
 
 2. Přejděte na **Pracovní prostory** a vyberte pracovní prostor, který jste nastavili při vytváření výstupu pro úlohu služby Stream Analytics. Tento kurz používá **My Workspace**. 
 
-3. Vyberte **datové sady**. Pokud nemáte žádné datové sady, počkejte pár minut a zkuste to znovu.
+3. Vyberte **datové sady**. Pokud nemáte žádné datové sady, počkejte několik minut a zkontrolujte znovu.
 
    Měli byste vidět datovou sadu určenou při vytváření výstupu pro úlohu služby Stream Analytics. Tento kurz používá **contosodataset**. (Zobrazení datové sady může na začátku 5 až 10 minut trvat.)
 
-4. V části **Akce**vyberte první ikonu pro vytvoření sestavy.
+4. V části **AKCE**vyberte první ikonu pro vytvoření sestavy.
 
-   ![Power BI pracovní prostor s zvýrazněnými akcemi a ikonou sestavy](./media/tutorial-routing-view-message-routing-results/power-bi-actions.png)
+   ![Pracovní prostor Power BI se zvýrazněnou ikonou Akce a sestavy](./media/tutorial-routing-view-message-routing-results/power-bi-actions.png)
 
 5. Vytvořte spojnicový graf zobrazující v reálném čase vývoj teploty.
 
-   * Na stránce vytváření sestavy přidejte spojnicový graf výběrem ikony spojnicového grafu.
+   * Na stránce vytvoření sestavy přidejte spojnicový graf výběrem ikony spojnicového grafu.
 
      ![Vizualizace a pole](./media/tutorial-routing-view-message-routing-results/power-bi-visualizations-and-fields.png)
 
@@ -256,39 +256,39 @@ Teď, když je aplikace pořád spuštěná, nastavte vizualizaci Power BI, abys
 
    Vytvoří spojnicový graf. Na ose x bude datum a čas v časovém pásmu UTC. Na ose y bude hodnota snímače teploty.
 
-6. Vytvořte jiný spojnicový graf zobrazující v reálném čase vývoj vlhkosti. Pro nastavení druhého grafu použijte stejný postup jako u prvního grafu a umístěte **EventEnqueuedUtcTime** na osu x (**osu**) a **vlhkost** na ose y (**hodnoty**).
+6. Vytvořte jiný spojnicový graf zobrazující v reálném čase vývoj vlhkosti. Chcete-li nastavit druhý graf, postupujte stejným způsobem pro první graf, umístění **EventEnqueuedUtcTime** na osu x (**osa**) a **vlhkost** na ose y (**Hodnoty**).
 
-   ![Poslední Power BI sestava pomocí dvou grafů](./media/tutorial-routing-view-message-routing-results/power-bi-report.png)
+   ![Závěrečná sestava Power BI se dvěma grafy](./media/tutorial-routing-view-message-routing-results/power-bi-report.png)
 
-7. Vyberte **Uložit** , pokud chcete sestavu uložit, a pokud se zobrazí výzva, zadejte název sestavy.
+7. Vyberte **Uložit,** chcete-li sestavu uložit, zadejte název sestavy, pokud se zobrazí výzva.
 
-Nyní byste měli vidět příchozí data v obou grafech. Tento výsledek znamená, že jsou splněné následující příkazy:
+Nyní byste měli vidět příchozí data v obou grafech. Tento výsledek znamená, že platí následující příkazy:
 
    * Směrování do výchozího koncového bodu pracuje správně.
    * Úloha Azure Stream Analytics správně streamuje.
    * Vizualizace Power BI je nastavená správně.
 
-Kliknutím na tlačítko Aktualizovat v horní části okna Power BI můžete aktualizovat grafy, aby se zobrazila nejnovější data. 
+Grafy můžete aktualizovat a zobrazit nejnovější data tak, že v horní části okna Power BI vyberete tlačítko Aktualizovat. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 
-Pokud chcete odebrat všechny prostředky Azure, které jste vytvořili v obou částech tohoto kurzu, odstraňte skupinu prostředků. Tato akce odstraní všechny prostředky, které skupina obsahuje. V tomto případě se odebere centrum IoT, obor názvů a fronta Service Bus, aplikace logiky, účet úložiště i samotná skupina prostředků. Můžete také odebrat prostředky Power BI a vymazat e-maily odeslané v průběhu tohoto kurzu.
+Pokud chcete odebrat všechny prostředky Azure, které jste vytvořili prostřednictvím obou částí tohoto kurzu, odstraňte skupinu prostředků. Tato akce odstraní všechny prostředky, které skupina obsahuje. V tomto případě se odebere centrum IoT, obor názvů a fronta Service Bus, aplikace logiky, účet úložiště i samotná skupina prostředků. Můžete taky odebrat prostředky Power BI a vymazat e-maily odeslané během kurzu.
 
 ### <a name="clean-up-resources-in-the-power-bi-visualization"></a>Vyčištění prostředků ve vizualizaci Power BI
 
-Přihlaste se ke svému účtu [Power BI](https://powerbi.microsoft.com/). Přejděte do svého pracovního prostoru. Tento kurz používá **My Workspace**. Chcete-li odebrat vizualizaci Power BI, klikněte na datové sady a vyberte ikonu odpadkového koše pro odstranění datové sady. Tento kurz používá **contosodataset**. Pokud datovou sadu odeberete, odebere se také sestava.
+Přihlaste se ke svému účtu [Power BI](https://powerbi.microsoft.com/). Přejděte do svého pracovního prostoru. Tento kurz používá **My Workspace**. Pokud chcete vizualizaci Power BI odebrat, přejděte na Datové sady a vyberte ikonu koše a datovou sadu smažete. Tento kurz používá **contosodataset**. Pokud datovou sadu odeberete, odebere se také sestava.
 
-### <a name="use-the-azure-cli-to-clean-up-resources"></a>Vyčištění prostředků pomocí Azure CLI
+### <a name="use-the-azure-cli-to-clean-up-resources"></a>Použití azure cli k vyčištění prostředků
 
-Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup` bylo na začátku tohoto kurzu nastaveno na **ContosoResources** zpět.
+Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup`byl nastaven na **ContosoResources** zpět na začátku tohoto kurzu.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
 ```
 
-### <a name="use-powershell-to-clean-up-resources"></a>Vyčištění prostředků pomocí PowerShellu
+### <a name="use-powershell-to-clean-up-resources"></a>Čištění prostředků pomocí Prostředí PowerShell
 
-Pokud chcete odebrat skupinu prostředků, použijte příkaz [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) . `$resourceGroup` bylo na začátku tohoto kurzu nastaveno na **ContosoResources** zpět.
+Chcete-li skupinu prostředků odebrat, použijte příkaz [Odebrat azResourceGroup.](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) `$resourceGroup`byl nastaven na **ContosoResources** zpět na začátku tohoto kurzu.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup
@@ -296,18 +296,18 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ### <a name="clean-up-test-emails"></a>Vyčištění testovacích e-mailů
 
-Možná budete chtít také odstranit množství e-mailů ve vaší doručené poště, které byly vygenerovány prostřednictvím aplikace logiky v době, kdy byla aplikace zařízení spuštěna.
+Můžete také odstranit množství e-mailů ve složce doručené pošty, které byly generovány prostřednictvím aplikace logiky, zatímco aplikace zařízení byla spuštěna.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto 2 kurzu jste zjistili, jak používat směrování zpráv ke směrování IoT Hubch zpráv do různých umístění, a to prováděním následujících úkolů.  
+V tomto dvoudílném kurzu jste se naučili používat směrování zpráv ke směrování zpráv služby IoT Hub do různých cílů provedením následujících úkolů.  
 
-**Část I: vytvoření prostředků, nastavení směrování zpráv**
+**Část I: Vytvoření zdrojů, nastavení směrování zpráv**
 > [!div class="checklist"]
-> * Vytvoření prostředků – služby IoT Hub, účtu úložiště, fronty Service Bus a simulovaného zařízení.
-> * Konfigurace koncových bodů a směrování zpráv v IoT Hub pro účet úložiště a Service Bus fronty.
+> * Vytvořte prostředky – centrum IoT, účet úložiště, frontu service bus a simulované zařízení.
+> * Nakonfigurujte koncové body a trasy zpráv v centru IoT Hub pro účet úložiště a frontu service bus.
 
-**Část II: odeslání zpráv do centra, zobrazení směrovaných výsledků**
+**Část II: Odesílání zpráv do centra, zobrazení směrovaných výsledků**
 > [!div class="checklist"]
 > * Vytvoření aplikace logiky, která se aktivuje a odešle e-mail, kdykoli se ve frontě Service Bus objeví nová zpráva.
 > * Stažení a spuštění aplikaci, která bude simulovat IoT zařízení odesílající zprávy do centra s různými možnosti směrování.
@@ -320,4 +320,4 @@ V tomto 2 kurzu jste zjistili, jak používat směrování zpráv ke směrován�
 V dalším kurzu se dozvíte, jak spravovat stav zařízení IoT. 
 
 > [!div class="nextstepaction"]
-> [Nastavení a použití metrik a diagnostiky s IoT Hub](tutorial-use-metrics-and-diags.md)
+> [Nastavení a použití metrik a diagnostiky pomocí centra IoT Hub](tutorial-use-metrics-and-diags.md)

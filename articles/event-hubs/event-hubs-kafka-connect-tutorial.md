@@ -1,6 +1,6 @@
 ---
-title: Integrace s Apache Kafka připojení Azure Event Hubs | Dokumentace Microsoftu
-description: Tento článek obsahuje informace o tom, jak používat Apache Spark pro Azure Event Hubs pro systém Kafka.
+title: Integrace s Apache Kafka Connect - Azure Event Hubs | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje informace o tom, jak používat Apache Spark s Azure Event Hubs pro Kafka.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -10,17 +10,17 @@ ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: df7198b68a083abf9be4ffe88e7a5dd848b2c535
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 94b7ff7d240716b513ebb124de84b622866623d3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119512"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80283612"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Podpora integrace připojení Apache Kafka ve službě Azure Event Hubs (Preview)
-Se zvyšujícími se obchodními požadavky na příjem dat se zvyšuje i potřeba příjmu dat z nejrůznějších externích zdrojů a jímek. [Připojení Apache Kafka](https://kafka.apache.org/documentation/#connect) poskytuje takovou architekturu pro připojení a import nebo export dat do nebo z jakéhokoli externího systému, jako je MySQL, HDFS a systém souborů, prostřednictvím clusteru Kafka. Tento kurz vás provede používáním architektury připojení Kafka se službou Event Hubs s podporou Kafka.
+Se zvyšujícími se obchodními požadavky na příjem dat se zvyšuje i potřeba příjmu dat z nejrůznějších externích zdrojů a jímek. [Připojení Apache Kafka](https://kafka.apache.org/documentation/#connect) poskytuje takovou architekturu pro připojení a import nebo export dat do nebo z jakéhokoli externího systému, jako je MySQL, HDFS a systém souborů, prostřednictvím clusteru Kafka. Tento kurz vás provede pomocí frameworku Kafka Connect s event huby.
 
-Tento kurz vás provede integrací připojení Kafka s centrem událostí Azure s podporou Kafka a nasazením základních konektorů FileStreamSource a FileStreamSink. Tato funkce je aktuálně ve verzi Preview. Tyto konektory nejsou určené pro produkční použití. Předvádějí však kompletní scénář připojení Kafka, kde služba Azure Event Hubs funguje jako zprostředkovatel Kafka.
+Tento kurz vás provede integrací Kafka Connect s centrem událostí a nasazením základních konektorů FileStreamSource a FileStreamSink. Tato funkce je aktuálně ve verzi Preview. Tyto konektory nejsou určené pro produkční použití. Předvádějí však kompletní scénář připojení Kafka, kde služba Azure Event Hubs funguje jako zprostředkovatel Kafka.
 
 > [!NOTE]
 > Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect).
@@ -107,9 +107,9 @@ V tomto kroku se místně spustí pracovní proces připojení Kafka v distribuo
 4. Spusťte `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties`.  Jakmile se zobrazí `'INFO Finished starting connectors and tasks'`, rozhraní REST API pracovního procesu připojení je připravené k interakci. 
 
 > [!NOTE]
-> Kafka Connect používá rozhraní Kafka AdminClient API k automatickému vytváření témat s doporučenými konfiguracemi, včetně komprimace. Rychlou kontrolou oboru názvů na webu Azure Portal zjistíte, že se interní témata pracovního procesu připojení vytvořila automaticky.
+> Kafka Connect používá rozhraní Kafka AdminClient API k automatickému vytváření témat s doporučenými konfiguracemi, včetně zhutnění. Rychlou kontrolou oboru názvů na webu Azure Portal zjistíte, že se interní témata pracovního procesu připojení vytvořila automaticky.
 >
->Interní témata Kafka Connect **musí používat komprimaci**.  Event Hubs tým není zodpovědný za opravu nesprávných konfigurací, pokud jsou témata interního připojení nesprávně nakonfigurovaná.
+>Kafka Connect interní témata **musí používat komprimaci**.  Tým centra událostí nezodpovídá za opravu nesprávných konfigurací, pokud jsou interní témata connect nesprávně nakonfigurována.
 
 ### <a name="create-connectors"></a>Vytvoření konektorů
 Tato část vás provede aktivací konektorů FileStreamSource a FileStreamSink. 
@@ -163,10 +163,10 @@ Další informace o službě Event Hubs a Event Hubs pro ekosystém Kafka najdet
 
 - [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Vytvoření služby Event Hubs s podporou Kafka](event-hubs-create-kafka-enabled.md)
+- [Jak vytvořit centrum událostí](event-hubs-create.md)
 - [Streamování do služby Event Hubs z aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Zrcadlení zprostředkovatele Kafka v centru událostí s podporou Kafka](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Připojení Apache Sparku k centru událostí s podporou Kafka](event-hubs-kafka-spark-tutorial.md)
-- [Připojení Apache Flinku k centru událostí s podporou Kafka](event-hubs-kafka-flink-tutorial.md)
-- [Připojení Akka Streams k centru událostí s podporou Kafka](event-hubs-kafka-akka-streams-tutorial.md)
+- [Zrcadlení zprostředkovatele Kafka v centru událostí](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Připojení Apache Sparku k centru událostí](event-hubs-kafka-spark-tutorial.md)
+- [Připojení Apache Flinku k centru událostí](event-hubs-kafka-flink-tutorial.md)
+- [Připojení Streamů Akka k centru událostí](event-hubs-kafka-akka-streams-tutorial.md)
 - [Prozkoumejte ukázky na našem GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka)

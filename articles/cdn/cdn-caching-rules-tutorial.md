@@ -15,16 +15,16 @@ ms.date: 04/20/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 5330c99f4d42f591944ddc5c58ac98bea6387da5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74278147"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Kurz: Nastavení pravidel ukládání do mezipaměti v Azure CDN
 
 > [!NOTE] 
-> Pravidla ukládání do mezipaměti jsou k dispozici pouze pro **Azure CDN Standard od Verizon** a **Azure CDN Standard od profilů Akamai** . Pro **Azure CDN z profilů Microsoftu** musíte použít modul [Standard rules](cdn-standard-rules-engine-reference.md) pro **Azure CDN Premium ze profilů Verizon** , musíte použít [modul pravidel Verizon Premium](cdn-rules-engine.md) na portálu pro **správu** pro podobné funkce.
+> Pravidla ukládání do mezipaměti jsou k dispozici jenom pro **Azure CDN Standard od Verizonu** a Azure CDN Standard z profilů **Akamai.** Pro **profily Azure CDN od Microsoftu** musíte použít [modul standardních pravidel](cdn-standard-rules-engine-reference.md) pro **profily Azure CDN Premium od společnosti Verizon,** musíte použít [modul pravidel Verizon Premium](cdn-rules-engine.md) na portálu **Pro správu** pro podobné funkce.
  
 
 Tento kurz popisuje, jak můžete použít pravidla ukládání do mezipaměti v Azure Content Delivery Network (CDN) k nastavení nebo úpravě výchozího chování při vypršení platnosti mezipaměti, a to jak u globálních, tak i u vlastních podmínek, jako je například cesta adresy URL nebo přípona souboru. Azure CDN nabízí dva typy pravidel ukládání do mezipaměti:
@@ -65,7 +65,7 @@ Následujícím způsobem vytvořte globální pravidlo ukládání do mezipamě
 
 2. **Chování ukládání do mezipaměti** nastavte na **Nastavit, pokud chybí**.
        
-3. U **Doba vypršení platnosti mezipaměti**  zadejte do pole **Dny** číslo 10.
+3. U **Doba vypršení platnosti mezipaměti ** zadejte do pole **Dny** číslo 10.
 
     Globální pravidlo ukládání do mezipaměti se vztahuje na všechny požadavky na koncový bod. Pokud existuje původní umístění hlaviček direktiv mezipaměti (`Cache-Control` nebo `Expires`), toto pravidlo ho bude respektovat. Pokud není uvedené, nastaví pravidlo mezipaměť na 10 dní. 
 

@@ -10,67 +10,67 @@ ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
 ms.openlocfilehash: 5439de30b02b0ce05853c8112f9e29239743ef98
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67175627"
 ---
-1. V prohlížeči se otevře [image Jenkinse na webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview).
+1. V prohlížeči otevřete [image Azure Marketplace pro Jenkinse](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview).
 
-1. Vyberte **získat teď**.
+1. Vyberte **MOŽNOST ZÍSKAT NYNÍ**.
 
-    ![Vyberte GIT IT teď spustit proces instalace pro image Marketplace Jenkinse.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-get-it-now.png)
+    ![Chcete-li spustit proces instalace image Jenkins Marketplace, vyberte git it now.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-get-it-now.png)
 
-1. Prohlédněte si informace o cenách podrobnosti a podmínky, vyberte **pokračovat**.
+1. Po kontrole podrobností o cenách a informací o podmínkách vyberte **Pokračovat**.
 
-    ![Ceny a podmínky informace z Jenkins Marketplace bitové kopie.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-pricing-and-terms.png)
+    ![Informace o cenách obrázků a podmínkách jenkins marketplace.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-pricing-and-terms.png)
 
-1. Vyberte **vytvořit** ke konfiguraci serveru Jenkins na webu Azure Portal. 
+1. Vyberte **Vytvořit** a nakonfigurujete server Jenkins na webu Azure Portal. 
 
-    ![Instalace image Marketplace Jenkinse.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-create.png)
+    ![Nainstalujte bitovou kopii tržiště Jenkins Marketplace.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-create.png)
 
-1. V **Základy** kartu, zadejte následující hodnoty:
+1. Na kartě **Základy** zadejte následující hodnoty:
 
-   - **Název** – zadejte `Jenkins`.
-   - **Uživatelské jméno** – zadejte uživatelské jméno pro použití při přihlášení k virtuálnímu počítači, na kterém je spuštěný Jenkinse. Uživatelské jméno musí splňovat [určité požadavky](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm).
+   - **Název** - `Jenkins`Zadejte .
+   - **Uživatelské jméno** – Zadejte uživatelské jméno, které se má použít při přihlašování k virtuálnímu počítači, na kterém je Jenkins spuštěn. Uživatelské jméno musí splňovat [určité požadavky](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm).
    - **Typ ověřování** – vyberte **veřejný klíč SSH**.
-   - **Veřejný klíč SSH** -zkopírujte a vložte veřejný klíč RSA v jednořádkovém formátu (začíná `ssh-rsa`) nebo víceřádkovém formátu PEM. Můžete vygenerovat klíče SSH pomocí ssh-keygen v Linuxu a macOS nebo PuTTYGen ve Windows. Další informace o klíči SSH a Azure, najdete v článku, [jak používat klíče SSH s Windows v Azure](/azure/virtual-machines/linux/ssh-from-windows).
+   - **SSH public key** - Zkopírujte a vložte veřejný klíč `ssh-rsa`RSA v jednořádkovém formátu (začínající) nebo víceřádkového formátu PEM. Můžete generovat SSH klíče pomocí ssh-keygen na Linuxu a macOS, nebo PuTTYGen na Windows. Další informace o klíčích SSH a Azure najdete v článku [Jak používat klíče SSH s Windows v Azure](/azure/virtual-machines/linux/ssh-from-windows).
    - **Předplatné** – vyberte předplatné Azure, do kterého chcete nainstalovat Jenkinse.
-   - **Skupina prostředků** – vyberte **vytvořit nový**a zadejte název pro skupinu prostředků, která slouží jako logický kontejner pro kolekci prostředků, které tvoří vaši instalaci Jenkinse.
-   - **Umístění** – vyberte **USA – východ**.
+   - **Skupina prostředků** – vyberte **Vytvořit nový**a zadejte název skupiny prostředků, který slouží jako logický kontejner pro kolekci prostředků, které tvoří instalaci Jenkinse.
+   - **Umístění** – vyberte **možnost Východ USA**.
 
-     ![Zadání informací o skupiny ověřování a prostředků pro Jenkinse kartě Základní.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-basic.png)
+     ![Na kartě Základní zadejte informace o ověřování a skupině prostředků pro Jenkinse.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-basic.png)
 
-1. Vyberte **OK** pokračujte **další nastavení** kartu. 
+1. Chcete-li přejít na kartu **Další nastavení,** vyberte **možnost OK.** 
 
-1. V **další nastavení** kartu, zadejte následující hodnoty:
+1. Na kartě **Další nastavení** zadejte následující hodnoty:
 
-   - **Velikost** – výběr možnosti příslušné nastavení velikosti pro virtuální počítač Jenkinse.
-   - **Typ disku virtuálního počítače** – zadejte buď pevný disk (jednotku pevného disku) nebo SSD (jednotky SSD) k označení jaký typ disku úložiště je povolený pro virtuální počítač Jenkinse.
-   - **Virtuální síť** – (volitelné) vyberte **virtuální síť** upravit výchozí nastavení.
-   - **Podsítě** – vyberte **podsítě**, zkontrolujte zadané informace a vyberte **OK**.
-   - **Veřejná IP adresa** – název IP adresy výchozím názvem Jenkins jste zadali na předchozí stránce s příponou - IP adresy. Můžete vybrat možnost změnit tuto výchozí hodnotu.
-   - **Popisek názvu domény** – zadejte hodnotu pro plně kvalifikovanou adresu URL pro virtuální počítač Jenkinse.
-   - **Typ verze Jenkins** – vyberte typ požadované verze z možností: `LTS`, `Weekly build`, nebo `Azure Verified`. `LTS` a `Weekly build` možnosti jsou popsány v následujícím článku [Jenkins LTS verze řádku](https://jenkins.io/download/lts/). `Azure Verified` Možnost odkazuje na [verze Jenkins LTS](https://jenkins.io/download/lts/) , která byla ověřena ke spuštění v Azure. 
-   - **Typ sady JDK** -JDK k instalaci. Výchozí hodnota je testována, Zulu certifikovaných sestavení OpenJDK.
+   - **Velikost** – vyberte příslušnou možnost velikosti pro váš virtuální počítač Jenkins.
+   - **Typ disku virtuálního počítače** – Zadejte pevný disk (pevný disk) nebo SSD (ssd disk), který označuje, který typ disku úložiště je povolen pro virtuální počítač Jenkins.
+   - **Virtuální síť** - (Volitelné) Vyberte **virtuální síť,** chcete-li změnit výchozí nastavení.
+   - **Podsítě** - Vyberte **podsítě**, ověřte informace a vyberte **OK**.
+   - **Veřejná IP adresa** – název IP adresy je výchozí pro název Jenkinse, který jste zadali na předchozí stránce s příponou -IP. Můžete vybrat možnost změnit toto výchozí nastavení.
+   - **Popisek názvu domény** – zadejte hodnotu plně kvalifikované adresy URL virtuálního počítače Jenkins.
+   - **Typ vydání Jenkinse** - Vyberte požadovaný `LTS` `Weekly build`typ `Azure Verified`verze z možností: , , nebo . `LTS` Možnosti `Weekly build` a jsou vysvětleny v článku [Jenkins LTS Release Line](https://jenkins.io/download/lts/). Tato `Azure Verified` možnost odkazuje na [verzi Jenkins LTS,](https://jenkins.io/download/lts/) která byla ověřena pro spuštění v Azure. 
+   - **JDK Typ** - JDK, které mají být instalovány. Výchozí hodnota je Zulu testován, certifikované sestavení OpenJDK.
 
-     ![Zadejte nastavení virtuálního počítače pro Jenkinse kartě nastavení.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-settings.png)
+     ![Na kartě Nastavení zadejte nastavení virtuálního počítače pro Jenkinse.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-settings.png)
 
-1. Vyberte **OK** pokračujte **nastavení integrace** kartu.
+1. Chcete-li přejít na kartu **Nastavení integrace,** vyberte **možnost OK.**
 
-1. V **nastavení integrace** kartu, zadejte následující hodnoty:
+1. Na kartě **Nastavení integrace** zadejte následující hodnoty:
 
-    - **Instanční objekt služby** -instanční objekt služby je přidán do Jenkinse jako přihlašovací údaje pro ověřování pomocí služby Azure. `Auto` znamená to, že objekt zabezpečení, bude vytvořen pomocí MSI (identita spravované služby). `Manual` znamená to, že by měl být objekt zabezpečení vytvořené vámi. 
-        - **ID aplikace** a **tajný kód** – Pokud vyberete `Manual` možnost **instanční objekt služby** možnost, budete muset zadat `Application ID` a `Secret` pro vaše instanční objekt. Když [vytvoření instančního objektu](/cli/azure/create-an-azure-service-principal-azure-cli), Všimněte si, že je výchozí role **Přispěvatel**, což je dostatečná pro práci s prostředky Azure.
-    - **Povolení cloudové agentů** -zadat výchozí šablona cloud pro agenty kde `ACI` odkazuje na instanci kontejneru Azure, a `VM` odkazuje na virtuální počítače. Můžete také určit `No` pokud ho nechcete povolit agenta do cloudu.
+    - **Instanční objekt** – instanční objekt služby se přidá do Jenkinse jako přihlašovací údaje pro ověřování pomocí Azure. `Auto`znamená, že objekt zabezpečení bude vytvořen MSI (Identita spravované služby). `Manual`znamená, že hlavní objekt by měl být vytvořen vámi. 
+        - **ID aplikace** a **tajné** – `Manual` pokud vyberete možnost **pro instanční** `Application ID` objekt, budete muset zadat a `Secret` pro váš instanční objekt. Při [vytváření instančního objektu](/cli/azure/create-an-azure-service-principal-azure-cli)si všimněte, že výchozí role je **Přispěvatel**, který je dostatečný pro práci s prostředky Azure.
+    - **Povolit cloudové agenty** – zadejte výchozí cloudovou šablonu pro agenty, kde `ACI` odkazuje na Azure Container Instance a `VM` odkazuje na virtuální počítače. Můžete také `No` určit, pokud nechcete povolit agenta cloudu.
 
-1. Vyberte **OK** pokračujte **Souhrn** kartu.
+1. Výběrem **možnosti OK** přejdete na kartu **Souhrn.**
 
-1. Když **Souhrn** zobrazí kartu, se ověří informace zadané. Jakmile se zobrazí **ověření proběhlo úspěšně.** zprávy (v horní části karty), vyberte **OK**. 
+1. Když se zobrazí karta **Souhrn,** zadané informace se ověří. Jakmile se zobrazí zpráva **Ověření předáno** (v horní části karty), vyberte **OK**. 
 
-     ![Karta Souhrn zobrazuje a ověří vybrané možnosti.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-summary.png)
+     ![Karta Souhrn zobrazí a ověří vybrané možnosti.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-summary.png)
 
-1. Když **vytvořit** zobrazí kartu, vyberte **vytvořit** vytvořit virtuální počítač Jenkinse. Pokud váš server připravený, zobrazí se oznámení na webu Azure Portal.
+1. Když se zobrazí karta **Vytvořit,** vyberte **Vytvořit** a vytvořte virtuální počítač Jenkins. Když je váš server připravený, zobrazí se na webu Azure Portal oznámení.
 
-     ![Jenkins je připraven oznámení.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-notification.png)
+     ![Jenkins je připraven k oznámení.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-notification.png)

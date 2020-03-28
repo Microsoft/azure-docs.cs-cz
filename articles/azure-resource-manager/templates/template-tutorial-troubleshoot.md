@@ -1,37 +1,37 @@
 ---
 title: Řešení potíží s nasazeními
-description: Naučte se monitorovat a řešit potíže s nasazeními šablon Azure Resource Manager. Zobrazuje protokoly aktivit a historii nasazení.
+description: Zjistěte, jak monitorovat a řešit potíže s nasazeními šablon Azure Resource Manageru. Zobrazuje protokoly aktivit a historii nasazení.
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ab12b206d5bb82956a8b607368af44ea0eaca40e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 30b66414e87f642bc72b8723ebff57f2e9009f17
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472510"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239236"
 ---
-# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Kurz: řešení potíží s nasazením Správce prostředků šablon
+# <a name="tutorial-troubleshoot-arm-template-deployments"></a>Kurz: Poradce při potížích s nasazením šablony ARM
 
-Naučte se řešit potíže s nasazením Správce prostředků šablon. V tomto kurzu nastavíte dvě chyby v šabloně a naučíte se, jak pomocí protokolů aktivit a historie nasazení tyto problémy vyřešit.
+Zjistěte, jak řešit potíže s chybami nasazení šablony Azure Resource Manager (ARM). V tomto kurzu nastavíte dvě chyby v šabloně a dozvíte se, jak pomocí protokolů aktivit a historie nasazení vyřešit problémy.
 
 Existují dva typy chyb, které souvisejí s nasazením šablony:
 
-- **Chyby ověřování** se projeví ve scénářích, které lze určit před nasazením. Patří k nim chyby syntaxe v šabloně nebo pokusy o nasazení prostředků, které by překročily kvóty předplatného.
-- **Chyby nasazení** nastávají z podmínek, ke kterým dojde během procesu nasazení. Patří mezi ně pokusy o přístup k paralelně nasazovaným prostředkům.
+- **Chyby ověření** vznikají ze scénářů, které lze určit před nasazením. Patří k nim chyby syntaxe v šabloně nebo pokusy o nasazení prostředků, které by překročily kvóty předplatného.
+- **Chyby nasazení** vznikají z podmínek, ke kterým dochází během procesu nasazení. Patří mezi ně pokusy o přístup k paralelně nasazovaným prostředkům.
 
-Oba typy chyb vrací kód chyby, který můžete použít při řešení potíží s nasazením. V protokolu aktivit se zobrazí oba typy chyb. Chyby ověření se ale nezobrazí v historii nasazení, protože vůbec nedojde k zahájení nasazení.
+Oba typy chyb vrací kód chyby, který můžete použít při řešení potíží s nasazením. Oba typy chyb se zobrazí v protokolu aktivit. Chyby ověření se ale nezobrazí v historii nasazení, protože vůbec nedojde k zahájení nasazení.
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Vytvoření problematické šablony
-> * Řešení chyb při ověřování
+> * Poradce při potížích s ověřením
 > * Řešení potíží s chybami nasazení
 > * Vyčištění prostředků
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -39,48 +39,48 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Pokud [chcete vytvořit Azure Resource Manager šablony](use-vs-code-to-create-template.md), přečtěte si téma použití Visual Studio Code.
+* Visual Studio Kód s rozšířením Nástroje Správce prostředků. Viz [Použití kódu Visual Studia k vytvoření šablon ARM](use-vs-code-to-create-template.md).
 
 ## <a name="create-a-problematic-template"></a>Vytvoření problematické šablony
 
-Otevřete šablonu s názvem [Vytvoření standardního účtu úložiště](https://azure.microsoft.com/resources/templates/101-storage-account-create/) ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/)a nastavte dvě problémy se šablonou.
+Otevřete šablonu s názvem [Vytvoření standardního účtu úložiště](https://azure.microsoft.com/resources/templates/101-storage-account-create/) ze šablon Azure [QuickStart templates](https://azure.microsoft.com/resources/templates/)a nastavte dva problémy se šablonami.
 
-1. V nástroji Visual Studio Code vyberte **File** (Soubor) >**Open File** (Otevřít soubor).
+1. V kódu sady Visual Studio vyberte **Soubor**>**otevřít soubor**.
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 3. Výběrem **Open** (Otevřít) soubor otevřete.
-4. Změňte **apiVersion** čáru na následující řádek:
+4. Změňte řádek **apiVersion** na následující řádek:
 
     ```json
     "apiVersion1": "2018-07-02",
     ```
-    - **apiVersion1** je neplatný název elementu. Jedná se o chybu ověřování.
-    - Verze rozhraní API musí být "2018-07-01".  Jedná se o chybu nasazení.
+    - **apiVersion1** je neplatný název prvku. Jedná se o chybu ověření.
+    - Verze ROZHRANÍ API bude "2018-07-01".  Jedná se o chybu nasazení.
 
-5. Vyberte **File** (Soubor) >**Save As** (Uložit jako) a soubor uložte jako **azuredeploy.json** na místní počítač.
+5. Vyberte **Soubor**>**Uložit jako,** chcete-li soubor uložit jako **azuredeploy.json** do místního počítače.
 
-## <a name="troubleshoot-the-validation-error"></a>Řešení chyby ověřování
+## <a name="troubleshoot-the-validation-error"></a>Poradce při potížích s chybou ověření
 
-Chcete-li nasadit šablonu, přečtěte si část [nasazení šablony](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) .
+Viz [část Nasazení šablony](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) k nasazení šablony.
 
-Z prostředí se zobrazí chyba, která bude vypadat přibližně takto:
+Z granátu se zobrazí chyba podobná:
 
 ```
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-Chybová zpráva indikuje, že se jedná o problém s **apiVersion1**.
+Chybová zpráva označuje, že problém je s **apiVersion1**.
 
-K opravě problému použijte Visual Studio Code změňte **apiVersion1** na **apiVersion**a pak šablonu uložte.
+Pomocí kódu Visual Studio problém opravíte změnou **apiVersion1** na **apiVersion**a potom šablonu uložte.
 
-## <a name="troubleshoot-the-deployment-error"></a>Řešení potíží s chybami nasazení
+## <a name="troubleshoot-the-deployment-error"></a>Poradce při potížích s chybou nasazení
 
-Chcete-li nasadit šablonu, přečtěte si část [nasazení šablony](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) .
+Viz [část Nasazení šablony](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) k nasazení šablony.
 
-Z prostředí se zobrazí chyba, která bude vypadat přibližně takto:
+Z granátu se zobrazí chyba podobná:
 
 ```
 New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageAccounts 'storeqii7x2rce77dc' failed with message '{
@@ -91,41 +91,41 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 }'
 ```
 
-Chybu nasazení najdete v Azure Portal pomocí následujícího postupu:
+Chybu nasazení najdete na webu Azure Portal pomocí následujícího postupu:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Otevřete skupinu prostředků tak, že vyberete **skupiny prostředků** a potom název skupiny prostředků. V rámci **nasazení**se zobrazí **1 chyba** .
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. Otevřete skupinu prostředků výběrem **skupin prostředků** a potom názvu skupiny prostředků. Uvidíte **1 Selhání v** rámci **nasazení**.
 
-    ![Řešení potíží s Správce prostředků kurzu](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
-3. Vyberte **Podrobnosti o chybě**.
+    ![Poradce při potížích s kurzem správce prostředků](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
+3. Vyberte **podrobnosti o chybě**.
 
-    ![Řešení potíží s Správce prostředků kurzu](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
+    ![Poradce při potížích s kurzem správce prostředků](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
-    Chybová zpráva je stejná jako ta, která se zobrazila dříve:
+    Chybová zpráva je stejná jako ta, která byla zobrazena dříve:
 
-    ![Řešení potíží s Správce prostředků kurzu](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
+    ![Poradce při potížích s kurzem správce prostředků](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
 
-Chybu můžete najít také v protokolech aktivit:
+Chybu můžete také najít v protokolech aktivit:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Vyberte **monitorování** > **protokolu aktivit**.
-3. K vyhledání protokolu použijte filtry.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. Vyberte **možnost Sledovat** > **protokol aktivit**.
+3. Pomocí filtrů vyhledejte protokol.
 
-    ![Řešení potíží s Správce prostředků kurzu](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)
+    ![Poradce při potížích s kurzem správce prostředků](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)
 
-Opravte problém pomocí Visual Studio Code a pak šablonu znovu nasaďte.
+K opravě problému použijte kód sady Visual Studio a potom šablonu znovu nasaďte.
 
-Seznam běžných chyb najdete v tématu [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](common-deployment-errors.md).
+Seznam běžných chyb najdete [v tématu Poradce při potížích s běžnými chybami nasazení Azure ve Správci prostředků Azure](common-deployment-errors.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků.
 
-1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
+1. Na portálu Azure vyberte **skupinu prostředků** z levé nabídky.
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
 3. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
-4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
+4. V horní nabídce vyberte **Odstranit skupinu prostředků.**
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak řešit problémy s chybami při nasazování šablon Správce prostředků.  Další informace najdete v tématu [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](common-deployment-errors.md).
+V tomto kurzu jste se dozvěděli, jak řešit chyby nasazení šablony ARM.  Další informace najdete [v tématu Poradce při potížích s běžnými chybami nasazení Azure pomocí Správce prostředků Azure](common-deployment-errors.md).

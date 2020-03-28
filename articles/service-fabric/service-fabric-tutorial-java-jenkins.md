@@ -7,15 +7,15 @@ ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75376644"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Kurz: Konfigurace prostředí Jenkins pro povolení CI/CD pro aplikaci Java na platformě Service Fabric
 
-Tento kurz je pátou částí série. Ukazuje použití Jenkinse k nasazování upgradů do aplikace. V tomto kurzu se modul plug-in Service Fabric Jenkinse používá v kombinaci s úložištěm GitHub hostujícím hlasovací aplikaci k nasazení aplikace do clusteru.
+Tento kurz je pátou částí série. Ukazuje použití Jenkinse k nasazování upgradů do aplikace. V tomto kurzu se modul plug-in Service Fabric Jenkins používá v kombinaci s úložištěm GitHub, které je hostitelem aplikace Hlasování k nasazení aplikace do clusteru.
 
 V páté části této série se naučíte:
 > [!div class="checklist"]
@@ -75,7 +75,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Vytvoření a konfigurace úlohy Jenkinse
 
-1. Za prvé, pokud nemáte úložiště, které můžete použít k hostování hlasovacího projektu na GitHubu, vytvořte si ho. Ve zbývající části tohoto kurzu má úložiště název **dev_test**.
+1. Za prvé, pokud nemáte úložiště, které můžete použít k hostování projektu Hlasování na GitHubu, vytvořte ho. Ve zbývající části tohoto kurzu má úložiště název **dev_test**.
 
 1. Na řídicím panelu Jenkinse na adrese ``http://<HOST-IP>:8080`` vytvořte **novou položku**.
 
@@ -85,11 +85,11 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
    a. V části s obecnými informacemi zaškrtněte políčko **GitHub project** (Projekt GitHub) a zadejte adresu URL vašeho projektu GitHub. Tato adresa je hostitelem aplikace Service Fabric v Javě, kterou chcete integrovat s postupy průběžného nasazování a integrace (CI/CD) Jenkinse (např. ``https://github.com/testaccount/dev_test``).
 
-   b. V části **Source Code Management** (Správa zdrojového kódu) vyberte **Git**. Zadejte adresu URL úložiště, které je hostitelem aplikace Service Fabric v Javě, kterou chcete integrovat s postupy CI/CD Jenkinse (např. *https://github.com/testaccount/dev_test.git* ). V této části můžete také zadat, jaká větev se má sestavit (například **/master**).
+   b. V části **Source Code Management** (Správa zdrojového kódu) vyberte **Git**. Zadejte adresu URL úložiště, která je hostitelem aplikace Java service fabric, kterou *https://github.com/testaccount/dev_test.git*chcete integrovat s tokem Jenkins CI/CD (například ). V této části můžete také zadat, jaká větev se má sestavit (například **/master**).
 
 1. Nakonfigurujte *GitHub* (který je hostitelem úložiště) tak, aby mohl komunikovat s Jenkinsem. Použijte k tomu následující postup:
 
-   a. Přejděte na stránku vašeho úložiště Github. Přejděte do části **Settings** (Nastavení) > **Integrations and Services** (Integrace a služby).
+   a. Přejděte na stránku vašeho úložiště Github. Přejděte na **Nastavení** > **integrace a služby**.
 
    b. Vyberte **Add Service** (Přidat službu), zadejte **Jenkins** a vyberte **Jenkins-Github plugin** (Modul plug-in Jenkins-Github).
 
@@ -115,7 +115,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
     > Zde uvedený cluster může být stejný jako cluster, který hostuje aplikaci Jenkins typu kontejner, pokud k nasazení image kontejneru Jenkins používáte Service Fabric.
     >
 
-1. Klikněte na možnost **Uložit**.
+1. Klikněte na **Uložit**.
 
 ## <a name="update-your-existing-application"></a>Aktualizace existující aplikace
 
@@ -172,7 +172,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
     </CodePackage>
     ```
 
-1. Chcete-li inicializovat úlohu Jenkinse, která provádí upgrade aplikace, dodejte nové změny do úložiště GitHub.
+1. Chcete-li inicializovat úlohu Jenkinse, která provádí upgrade aplikace, převezte nové změny do úložiště GitHub.
 
 1. V Service Fabric Exploreru klikněte na rozevírací seznam **Aplikace**. Pokud chcete zobrazit stav upgradu, klikněte na kartu **Probíhající upgrady**.
 
