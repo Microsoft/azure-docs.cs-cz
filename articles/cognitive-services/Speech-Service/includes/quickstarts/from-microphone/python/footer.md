@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči pomocí služby mikrofon-Speech'
+title: 'Úvodní příručka: Rozpoznávání řeči z mikrofonu – služba Řeč'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Bude doplněno
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: 88df2b1fb6cbdb844616c06695b9f114978129b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75468123"
 ---
 > [!div class="nextstepaction"]

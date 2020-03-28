@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: detekce ploch v imagi pomocí REST API Azure a Pythonu'
+title: 'Úvodní příručka: Detekce tváří v bitové kopii pomocí rozhraní Azure REST API a Pythonu'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete REST API Azure Face a Python k detekci ploch v obrázku.
+description: V tomto rychlém startu použijete rozhraní AZURE Face REST API s Pythonem k detekci tváří v bitové kopii.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,39 +11,39 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: c4d136eaf0f6c4ac64093f417f144e422e2da52f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74977909"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Rychlý Start: detekce plošek v obrázku pomocí REST API obličeje a Pythonu
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Úvodní příručka: Detekce tváří v obraze pomocí rozhraní API FACE REST a Pythonu
 
-V tomto rychlém startu použijete REST API Azure Face s Pythonem k detekci lidských plošek v obraze. Skript vykreslí snímky kolem plošek a superimpose pohlaví a informace o stáří na obrázku.
+V tomto rychlém startu použijete rozhraní AZURE Face REST API s Pythonem k detekci lidských tváří v bitové kopii. Skript nakreslí rámečky kolem tváří a překryje informace o pohlaví a věku na obrázku.
 
-![Člověk a žena, každý s obdélníkem nakresleným kolem plošek a stáří a pohlaví zobrazenými na obrázku](../images/labelled-faces-python.png)
+![Muž a žena, každý s obdélníkem nakreslené kolem jejich tváře a věk a pohlaví zobrazené na obrázku](../images/labelled-faces-python.png)
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete. 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
+- Klíč předplatného rozhraní API pro obličej. Můžete získat bezplatný klíč zkušebního předplatného od [společnosti Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili ke službě rozhraní API pro rozpoznávání tváře a získali klíč.
 
 ## <a name="run-the-jupyter-notebook"></a>Spuštění poznámkového bloku Jupyter
 
-Tento rychlý start můžete otevřít jako poznámkový blok Jupyter na webu [MyBinder](https://mybinder.org). Chcete-li spustit aplikaci Binder, vyberte tlačítko níže. Pak postupujte podle pokynů v poznámkovém bloku.
+Tento rychlý start můžete otevřít jako poznámkový blok Jupyter na webu [MyBinder](https://mybinder.org). Chcete-li spustit Binder, vyberte tlačítko níže. Poté postupujte podle pokynů v poznámkovém bloku.
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=FaceAPI.ipynb)
+[![Pořadače](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=FaceAPI.ipynb)
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Alternativně můžete spustit tento rychlý Start z příkazového řádku pomocí následujících kroků:
+Případně můžete spustit tento rychlý start z příkazového řádku pomocí následujících kroků:
 
 1. Zkopírujte do textového editoru následující kód.
 1. Proveďte v kódu na příslušných místech následující změny:
     1. Hodnotu `subscription_key` nahraďte klíčem předplatného.
-    1. Upravte hodnotu `face_api_url` tak, aby zahrnovala adresu URL koncového bodu pro prostředek Face API.
+    1. Upravte hodnotu tak, aby zahrnovala adresu URL koncového `face_api_url` bodu pro váš prostředek rozhraní API pro rozpoznávání tváře.
     1. Volitelně můžete hodnotu `image_url` nahradit adresou URL jiného obrázku, který chcete analyzovat.
 1. Uložte kód jako soubor s příponou `.py`. Například, `detect-face.py`.
 1. Otevřete okno příkazového řádku.
@@ -260,7 +260,7 @@ print(json.dumps(response.json()))
 
 ## <a name="next-steps"></a>Další kroky
 
-Dále si Projděte referenční dokumentaci Face API, kde najdete další informace o podporovaných scénářích.
+Dále prozkoumejte referenční dokumentaci rozhraní API pro rozpoznávání tváře, abyste se dozvěděli další informace o podporovaných scénářích.
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

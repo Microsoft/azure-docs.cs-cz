@@ -11,47 +11,47 @@ ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77112314"
 ---
-Tento rychlý Start založený na držiteli vás provede tím, že získáte odpověď ze znalostní báze.
+Tento pošťák-založené rychlý start vás provede získáním odpovědi z vaší znalostní báze.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nejnovější [**příspěvek**](https://www.getpostman.com/).
+* Poslední [**pošťák**](https://www.getpostman.com/).
 * Musíte mít
-    * [Služba QnA maker](../How-To/set-up-qnamaker-service-azure.md)
-    * Vyškolená a publikovaná [znalostní báze s dotazy a odpověďmi](../Quickstarts/add-question-metadata-portal.md) vytvořenými v rychlém startu je nakonfigurována pomocí funkce konverzace s metadaty a funkce CHITEST.
+    * [Služba QnA Maker](../How-To/set-up-qnamaker-service-azure.md)
+    * Vyškolená a publikovaná [znalostní báze s otázkami a odpověďmi](../Quickstarts/add-question-metadata-portal.md) vytvořenými z rychlého startu je nakonfigurována s metadaty a chatem Chit.
 
 > [!NOTE]
-> Až budete připraveni vygenerovat odpověď na otázku ze znalostní báze Knowledge Base, musíte [vyškolit](../Quickstarts/create-publish-knowledge-base.md#save-and-train) a [publikovat](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) znalostní bázi. Když je vaše znalostní báze publikována, zobrazí se na stránce **publikovat** nastavení požadavku HTTP, které vygeneruje odpověď. Karta **po odeslání** zobrazuje nastavení potřebná k vygenerování odpovědi.
+> Až budete připraveni vygenerovat odpověď na otázku ze znalostní báze, musíte tuto znalostní báze [trénovat](../Quickstarts/create-publish-knowledge-base.md#save-and-train) a [publikovat.](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) Po publikování znalostní báze se na stránce **Publikování** zobrazí nastavení požadavku HTTP pro generování odpovědi. Karta **Pošťák** zobrazuje nastavení potřebná ke generování odpovědi.
 
-## <a name="set-up-postman-for-requests"></a>Nastavení metody post pro žádosti
+## <a name="set-up-postman-for-requests"></a>Nastavit pošťáka pro požadavky
 
-V tomto rychlém startu se používá stejné nastavení pro **odeslání požadavku POST** a potom se nakonfiguruje tak, aby se kód JSON odeslal na službu na základě toho, na co se pokoušíte zadat dotaz.
+Tento rychlý start používá stejné nastavení pro požadavek Postman **POST** pak konfiguruje post tělo JSON odeslané do služby na základě toho, co se pokoušíte dotaz.
 
-Pomocí tohoto postupu nakonfigurujete příkaz post a potom si přečtěte jednotlivé další části, kde můžete nakonfigurovat JSON pro tělo příspěvku.
+Tento postup slouží ke konfiguraci Postman, pak si přečtěte každý následující oddíl pro konfiguraci těla POST JSON.
 
-1. Na stránce **Nastavení** znalostní báze vyberte kartu **publikovat** a zobrazte tak konfiguraci používanou k vygenerování odpovědi ze znalostní báze. Zkopírujte následující informace, které se použijí v poli post.
+1. Na stránce **Nastavení** znalostní báze vyberte kartu **Pošťák** a zobrazte konfiguraci použitou ke generování odpovědi ze znalostní báze. Zkopírujte následující informace, které chcete použít v Postman.
 
-    |Název|Nastavení|Účel a hodnota|
+    |Name (Název)|Nastavení|Účel a hodnota|
     |--|--|--|
-    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Toto je metoda HTTP a trasa pro adresu URL.|
-    |`Host`|`https://diberry-qna-s0-s.azurewebsites.net/qnamaker`|Toto je hostitel adresy URL. Po zřetězení hodnoty host a post získáte úplnou adresu URL generateAnswer.|
-    |`Authorization`|`EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|Hodnota hlavičky pro autorizaci vaší žádosti do Azure |
-    |`Content-type`|`application/json`|Hodnota hlavičky vašeho obsahu|
-    ||`{"question":"<Your question>"}`|Tělo žádosti POST jako objekt JSON Tato hodnota se v každé následující části změní v závislosti na tom, co má dotaz udělat.|
+    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Toto je metoda HTTP a trasa adresy URL.|
+    |`Host`|`https://diberry-qna-s0-s.azurewebsites.net/qnamaker`|Toto je hostitel adresy URL. Zřetězit hodnoty Host a Post získat kompletní generateAnswer URL.|
+    |`Authorization`|`EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|Hodnota záhlaví pro autorizaci vašeho požadavku do Azure. |
+    |`Content-type`|`application/json`|Hodnota záhlaví pro váš obsah.|
+    ||`{"question":"<Your question>"}`|Tělo požadavku POST jako objekt JSON. Tato hodnota se změní v každé následující části v závislosti na tom, co dotaz má dělat.|
 
-1. Otevřete post a vytvořte novou základní žádost **post** s publikovaným nastavením znalostní báze. V následujících částech změňte formát JSON těla zprávy tak, aby se změnil dotaz na znalostní bázi.
+1. Otevřete Pošťák a vytvořte novou základní žádost **POST** s publikovaným nastavením znalostní báze. V následujících částech změňte tělo post JSON změnit dotaz na znalostní bázi.
 
-## <a name="use-metadata-to-filter-answer"></a>Filtrovat odpověď pomocí metadat
+## <a name="use-metadata-to-filter-answer"></a>Použití metadat k filtrování odpovědi
 
-V předchozím rychlém startu se metadata přidala do dvou QnA sad, aby bylo možné rozlišovat mezi dvěma různými otázkami. Přidejte metadata do dotazu, abyste omezili filtr jenom na příslušnou QnA sadu.
+V předchozím rychlém startu metadata byla přidána do dvou sad QnA rozlišovat mezi dvěma různými otázkami. Přidejte metadata do dotazu, abyste omezili filtr pouze na příslušnou sadu QnA.
 
-1. V části autor změňte pouze JSON dotazu přidáním vlastnosti `strictFilters` s dvojicí název/hodnota `service:qna_maker`. KÓD JSON pro tělo by měl být:
+1. V Pošťáku změňte pouze dotaz `strictFilters` JSON přidáním vlastnosti s dvojicí název/hodnota . `service:qna_maker` Tělo JSON by mělo být:
 
     ```json
     {
@@ -64,11 +64,11 @@ V předchozím rychlém startu se metadata přidala do dvou QnA sad, aby bylo mo
     }
     ```
 
-    Otázka je pouze jedno slovo, `size`, což může vracet jednu ze dvou sad otázek a odpovědí. `strictFilters` pole oznamuje odpověď, aby se snížila pouze na `qna_maker` odpovědi.
+    Otázka je jen jedno `size`slovo, , které může vrátit jednu ze dvou otázek a odpovědí sad. Pole `strictFilters` říká odpověď snížit pouze `qna_maker` odpovědi.
 
 1. Odpověď obsahuje pouze odpověď, která splňuje kritéria filtru.
 
-    Byla naformátována následující odpověď pro čitelnost:
+    Následující odpověď byla naformátována pro čitelnost:
 
     ```JSON
     {
@@ -103,13 +103,13 @@ V předchozím rychlém startu se metadata přidala do dvou QnA sad, aby bylo mo
     }
     ```
 
-    Pokud je k dispozici sada otázek a odpovědí, která nevyhověla hledanému termínu, ale nesplnila tento filtr, nebude vrácena. Místo toho se vrátí obecná odpověď `No good match found in KB.`.
+    Pokud existuje sada otázek a odpovědí, která nesplňuje hledaný výraz, ale splnila filtr, nebude vrácena. Místo toho je `No good match found in KB.` vrácena obecná odpověď.
 
-## <a name="use-debug-query-property"></a>Použít vlastnost dotazu pro ladění
+## <a name="use-debug-query-property"></a>Použít vlastnost dotazu ladění
 
-Informace o ladění vám pomůžou pochopit, jak byla zjištěna odpověď. I když je to užitečné, není nutné. Pokud chcete vygenerovat odpověď s ladicími informacemi, přidejte vlastnost `debug`:
+Informace o ladění vám pomohou pochopit, jak byla určena vrácená odpověď. I když je to užitečné, není to nutné. Chcete-li vygenerovat odpověď s `debug` informacemi o ladění, přidejte vlastnost:
 
-1. V poli post změňte pouze JSON těla přidáním vlastnosti `debug`. JSON by měl být:
+1. V Pošťák, změnit pouze tělo JSON přidáním vlastnosti. `debug` JSON by měl být:
 
     ```json
     {
@@ -121,7 +121,7 @@ Informace o ladění vám pomůžou pochopit, jak byla zjištěna odpověď. I k
     }
     ```
 
-1. Odpověď obsahuje relevantní informace o odpovědi. V následujícím výstupu JSON byly některé detaily ladění nahrazeny třemi tečkami.
+1. Odpověď obsahuje příslušné informace o odpovědi. V následujícím výstupu JSON byly některé podrobnosti ladění nahrazeny třemi tečkami.
 
     ```console
     {
@@ -211,11 +211,11 @@ Informace o ladění vám pomůžou pochopit, jak byla zjištěna odpověď. I k
     }
     ```
 
-## <a name="use-test-knowledge-base"></a>Použít testovací znalostní bázi
+## <a name="use-test-knowledge-base"></a>Použití znalostní báze test
 
-Pokud chcete získat odpověď ze zkušební znalostní báze, použijte vlastnost text `isTest`.
+Pokud chcete získat odpověď z testovací znalostní `isTest` báze, použijte vlastnost body.
 
-V poli post změňte pouze JSON těla přidáním vlastnosti `isTest`. JSON by měl být:
+V Pošťák, změnit pouze tělo JSON přidáním vlastnosti. `isTest` JSON by měl být:
 
 ```json
 {
@@ -227,11 +227,11 @@ V poli post změňte pouze JSON těla přidáním vlastnosti `isTest`. JSON by m
 Odpověď JSON používá stejné schéma jako publikovaný dotaz znalostní báze.
 
 > [!NOTE]
-> Pokud jsou testovací a zveřejněné znalostní báze přesně stejné, může se stát, že je stále trochu proměnlivá variace, protože index testu se sdílí mezi všemi bázemi znalostí v prostředku.
+> Pokud jsou testovací a publikované znalostní báze přesně stejné, může stále existovat určitá nepatrná odchylka, protože index testu je sdílen mezi všechny znalostní báze v prostředku.
 
-## <a name="query-for-a-chit-chat-answer"></a>Dotaz na příkaz CHITEST-chat Answer
+## <a name="query-for-a-chit-chat-answer"></a>Dotaz na odpověď chit-chat
 
-1. V poli post změňte pouze JSON těla na příkaz ukončení konverzace od uživatele. JSON by měl být:
+1. V Pošťák, změnit pouze tělo JSON na konverzační příkaz od uživatele. JSON by měl být:
 
     ```json
     {
@@ -239,7 +239,7 @@ Odpověď JSON používá stejné schéma jako publikovaný dotaz znalostní bá
     }
     ```
 
-1. Odpověď zahrnuje skóre a odpověď.
+1. Odpověď obsahuje skóre a odpověď.
 
     ```json
     {
@@ -321,13 +321,13 @@ Odpověď JSON používá stejné schéma jako publikovaný dotaz znalostní bá
     }
     ```
 
-    Vzhledem k tomu, že otázka `Thank you` (Děkuji) přesně odpovídá konverzační otázce, služba QnA Maker udává naprostou jistotu se skóre 100. QnA Maker také vrátil všechny související otázky a vlastnost metadata obsahující informace značky metadat CHITEST-chat.
+    Vzhledem k tomu, že otázka `Thank you` (Děkuji) přesně odpovídá konverzační otázce, služba QnA Maker udává naprostou jistotu se skóre 100. QnA Maker také vrátil všechny související otázky, stejně jako vlastnost metadat a obsahující informace o značce metadat Chit-chat.
 
 ## <a name="use-threshold-and-default-answer"></a>Použít prahovou hodnotu a výchozí odpověď
 
-Pro odpověď můžete požádat o minimální prahovou hodnotu. Pokud není prahová hodnota splněna, je vrácena výchozí odpověď.
+Můžete požádat o minimální prahovou hodnotu pro odpověď. Pokud prahová hodnota není splněna, je vrácena výchozí odpověď.
 
-1. V poli post změňte pouze JSON těla na příkaz ukončení konverzace od uživatele. JSON by měl být:
+1. V Pošťák, změnit pouze tělo JSON na konverzační příkaz od uživatele. JSON by měl být:
 
     ```json
     {
@@ -336,7 +336,7 @@ Pro odpověď můžete požádat o minimální prahovou hodnotu. Pokud není pra
     }
     ```
 
-    Znalostní báze by neměl tuto odpověď najít, protože skóre otázky je 71% a místo toho vrátí výchozí odpověď, kterou jste zadali při vytváření znalostní báze.
+    Znalostní báze by neměla najít tuto odpověď, protože skóre otázky je 71 %, a místo toho vrátit výchozí odpověď, kterou jste zadali při vytváření znalostní báze.
 
     Vrácená odpověď JSON, včetně skóre a odpovědi, je:
 
@@ -357,9 +357,9 @@ Pro odpověď můžete požádat o minimální prahovou hodnotu. Pokud není pra
     }
     ```
 
-    QnA Maker vrátilo skóre `0`, což znamená bez obav. Vrátila se také výchozí odpověď.
+    QnA Maker vrátil `0`skóre , což znamená žádnou důvěru. Také vrátil výchozí odpověď.
 
-1. Změňte prahovou hodnotu na 60% a požádejte o dotaz znovu:
+1. Změňte prahovou hodnotu na 60 % a požádejte o dotaz znovu:
 
     ```json
     {
@@ -368,7 +368,7 @@ Pro odpověď můžete požádat o minimální prahovou hodnotu. Pokud není pra
     }
     ```
 
-    Vrácený kód JSON nalezl odpověď.
+    Vrácená Odpověď našel JSON.
 
     ```json
     {

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Převod řeči na text, C++ (Windows) – služba Speech'
+title: 'Úvodní příručka: Překlad řeči na text, C++ (Windows) - služba řeči'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Bude doplněno
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: d1473f552b24feb194dd0a51e66e731ad79253e4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75469446"
 ---
 > [!div class="nextstepaction"]
-> [Prozkoumejte C++ ukázky na GitHubu](https://aka.ms/speech/github-cpp)
+> [Prozkoumejte ukázky C++ na GitHubu](https://aka.ms/speech/github-cpp)

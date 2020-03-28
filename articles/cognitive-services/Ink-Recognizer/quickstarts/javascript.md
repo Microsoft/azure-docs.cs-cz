@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: rozpoznávání digitálního inkoustu pomocí nástroje pro rozpoznávání rukopisu REST API a Node. js'
+title: 'Úvodní příručka: Rozpoznávání digitálních rukopisů pomocí rozhraní REST API a Node.js nástroje NOK Recognizer'
 titleSuffix: Azure Cognitive Services
-description: Pomocí rozhraní API pro rozpoznávání rukopisu můžete začít rozpoznávat digitální rukopisné tahy v tomto rychlém startu.
+description: Pomocí rozhraní API pro rozpoznávání rukopisu začněte rozpoznávat tahy digitálních inkoustů na tomto rychlém startu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,36 +11,36 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: a37f2b7044fcba04ca18093aa73563961e9e35de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448130"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Rychlý Start: rozpoznávání digitálního inkoustu pomocí REST API a JavaScriptu pro rozpoznávání rukopisu
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Úvodní příručka: Rozpoznávání digitálního inkoustu pomocí rozhraní REST API pro rozpoznávání rukopisu a JavaScriptu
 
-Pomocí tohoto rychlého startu můžete začít používat rozhraní API pro rozpoznávání rukopisu na tahy digitálního pera. Tato aplikace JavaScriptu pošle požadavek rozhraní API obsahující data tahu ve formátu JSON a zobrazí odpověď.
+Pomocí tohoto rychlého startu můžete začít používat rozhraní API rozpoznávání rukopisu u digitálních tahů perem. Tato aplikace JavaScript odešle požadavek rozhraní API obsahující data tahu inkoustu ve formátu JSON a zobrazí odpověď.
 
-I když je tato aplikace napsaná v jazyce JavaScript a běží ve webovém prohlížeči, je rozhraní API webová služba RESTful, která je kompatibilní s většinou programovacích jazyků.
+Zatímco tato aplikace je napsána v Javascriptu a běží ve vašem webovém prohlížeči, API je RESTful webová služba kompatibilní s většinou programovacích jazyků.
 
-Obvykle byste volali rozhraní API z digitální aplikace pro psaní rukou. V tomto rychlém startu se v souboru JSON pošle data tahy perem pro následující psaný vzorek.
+Obvykle byste volat rozhraní API z digitální aplikace rukopisu. Tento rychlý start odesílá data tahu rukopisu pro následující ručně psaný vzorek ze souboru JSON.
 
-![Obrázek rukopisného textu](../media/handwriting-sample.jpg)
+![obrázek ručně psaného textu](../media/handwriting-sample.jpg)
 
-Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2089905).
+Zdrojový kód pro tento rychlý start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2089905).
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Webový prohlížeč
-- Ukázková data tahu perem pro tento rychlý Start najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json).
+- Příklad dat tahů perem pro tento rychlý start najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json).
 
-### <a name="create-an-ink-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání rukopisu
+### <a name="create-an-ink-recognizer-resource"></a>Vytvoření prostředku nástroje pro rozpoznávání rukopisu
 
 [!INCLUDE [creating an ink recognizer resource](../includes/setup-instructions.md)]
 
 ## <a name="create-a-new-application"></a>Vytvoření nové aplikace
 
-1. V oblíbených IDE nebo editoru vytvořte nový soubor `.html`. Pak do něj přidejte základní kód HTML pro kód, který přidáte později.
+1. Ve svém oblíbeném rozhraní IDE `.html` nebo editoru vytvořte nový soubor. Pak k němu přidejte základní HTML pro kód, který přidáme později.
     
     ```html
     <!DOCTYPE html>
@@ -57,9 +57,9 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
     </html>
     ```
 
-2. Do značky `<body>` přidejte následující kód HTML:
-    1. Dvě textové oblasti pro zobrazení žádosti a odpovědi JSON
-    2. Tlačítko pro volání funkce `recognizeInk()`, která bude vytvořena později.
+2. Do `<body>` značky přidejte následující html:
+    1. Dvě textové oblasti pro zobrazení požadavku json a odpovědi.
+    2. Tlačítko pro volání `recognizeInk()` funkce, která bude vytvořena později.
     
     ```HTML
     <!-- <body>-->
@@ -73,13 +73,13 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
     <!--</body>-->
     ```
 
-## <a name="load-the-example-json-data"></a>Načtení ukázkových dat JSON
+## <a name="load-the-example-json-data"></a>Načíst příklad dat JSON
 
-1. V rámci značky `<script>` Vytvořte proměnnou pro sampleJson. Pak vytvořte funkci JavaScriptu s názvem `openFile()`, která otevře Průzkumníka souborů, abyste mohli vybrat soubor JSON. Po kliknutí na tlačítko `Recognize ink` bude tato funkce volána a začít číst soubor.
-2. K asynchronnímu zpracování souboru použijte funkci `FileReader` objektu `onload()`. 
-    1. Nahraďte všechny `\n` nebo `\r` znaky v souboru prázdným řetězcem. 
-    2. Pomocí `JSON.parse()` převést text na platný formát JSON
-    3. Aktualizujte textové pole `request` v aplikaci. K formátování řetězce JSON použijte `JSON.stringify()`. 
+1. V `<script>` rámci značky vytvořte proměnnou pro sampleJson. Pak vytvořte funkci `openFile()` JavaScript s názvem, která otevře průzkumník souborů, abyste mohli vybrat soubor JSON. Po `Recognize ink` klepnutí na tlačítko bude tato funkce volat a začne soubor číst.
+2. Pomocí `FileReader` `onload()` funkce objektu zpracujte soubor asynchronně. 
+    1. Nahraďte všechny `\n` znaky `\r` v souboru prázdným řetězcem. 
+    2. Slouží `JSON.parse()` k převodu textu na platný json.
+    3. Aktualizujte `request` textové pole v aplikaci. Slouží `JSON.stringify()` k formátování řetězce JSON. 
     
     ```javascript
     var sampleJson = "";
@@ -96,9 +96,9 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
     };
     ```
 
-## <a name="send-a-request-to-the-ink-recognizer-api"></a>Poslat žádost na rozhraní API pro rozpoznávání rukopisu
+## <a name="send-a-request-to-the-ink-recognizer-api"></a>Odeslání požadavku do rozhraní API pro rozpoznávání rukopisu
 
-1. V rámci značky `<script>` vytvořte funkci s názvem `recognizeInk()`. Tato funkce později zavolá rozhraní API a aktualizuje stránku pomocí odpovědi. Do této funkce přidejte kód z následujících kroků. 
+1. V `<script>` rámci značky vytvořte funkci nazvanou `recognizeInk()`. Tato funkce bude později volat rozhraní API a aktualizovat stránku s odpovědí. Přidejte kód z následujících kroků v rámci této funkce. 
         
     ```javascript
     function recognizeInk() {
@@ -106,7 +106,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
     }
     ```
 
-    1. Vytvořte proměnné pro adresu URL koncového bodu, klíč předplatného a vzorový kód JSON. Pak vytvořte objekt `XMLHttpRequest` pro odeslání požadavku rozhraní API. 
+    1. Vytvořte proměnné pro adresu URL koncového bodu, klíč předplatného a ukázkový JSON. Pak vytvořte `XMLHttpRequest` objekt pro odeslání požadavku rozhraní API. 
         
         ```javascript
         // Replace the below URL with the correct one for your subscription. 
@@ -116,7 +116,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
         var SUBSCRIPTION_KEY = process.env["INK_RECOGNITION_SUBSCRIPTION_KEY"];
         var xhttp = new XMLHttpRequest();
         ```
-    2. Vytvořte návratovou funkci pro objekt `XMLHttpRequest`. Tato funkce bude analyzovat odpověď rozhraní API z úspěšné žádosti a zobrazí ji v aplikaci. 
+    2. Vytvořte návratovou `XMLHttpRequest` funkci objektu. Tato funkce bude analyzovat odpověď rozhraní API z úspěšného požadavku a zobrazí ji v aplikaci. 
             
         ```javascript
         function returnFunction(xhttp) {
@@ -125,7 +125,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
             document.getElementById('response').innerHTML = JSON.stringify(response, null, 2);
         }
         ```
-    3. Vytvořte funkci Error objektu Request. Tato funkce zaznamená chybu do konzoly. 
+    3. Vytvořte chybovou funkci pro objekt požadavku. Tato funkce zaznamená chybu do konzoly. 
             
         ```javascript
         function errorFunction() {
@@ -133,7 +133,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
         }
         ```
 
-    4. Vytvořte funkci pro vlastnost `onreadystatechange` objektu žádosti. Když se změní stav připravenosti objektu žádosti, použijí se výše uvedené návratové a chybové funkce.
+    4. Vytvořte funkci pro `onreadystatechange` vlastnost objektu požadavku. Při změně stavu připravenosti objektu požadavku budou použity výše uvedené funkce vrácení a chyby.
             
         ```javascript
         xhttp.onreadystatechange = function () {
@@ -147,7 +147,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
         };
         ```
     
-    5. Odešlete žádost o rozhraní API. Do hlavičky `Ocp-Apim-Subscription-Key` přidejte svůj klíč předplatného a nastavte `content-type` na `application/json`
+    5. Odešlete požadavek rozhraní API. Přidejte klíč předplatného `Ocp-Apim-Subscription-Key` do záhlaví `content-type` a nastavte`application/json`
     
         ```javascript
         xhttp.open("PUT", ENDPOINT_URL, true);
@@ -159,14 +159,14 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 ## <a name="run-the-application-and-view-the-response"></a>Spuštění aplikace a zobrazení odpovědi
 
-Tuto aplikaci lze spustit ve webovém prohlížeči. Ve formátu JSON se vrátí úspěšná odpověď. Odpověď JSON můžete také najít na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
+Tato aplikace může být spuštěna ve vašem webovém prohlížeči. Úspěšná odpověď je vrácena ve formátu JSON. Odpověď JSON najdete také na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [REST API – referenční informace](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [Odkaz na rozhraní REST API](https://go.microsoft.com/fwlink/?linkid=2089907)
 
-Pokud chcete zjistit, jak funguje rozhraní API pro rozpoznávání rukopisu v digitální aplikaci pro rukopis, podívejte se na následující ukázkové aplikace na GitHubu:
+Pokud se chcete podívat, jak rozhraní API pro rozpoznávání rukopisu funguje v digitální aplikaci rukopisu, podívejte se na následující ukázkové aplikace na GitHubu:
 * [C# a Univerzální platforma Windows (UPW)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# a Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [Aplikace webového prohlížeče v Javascriptu](https://go.microsoft.com/fwlink/?linkid=2089908)       

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Content Moderator Klientská knihovna pro Java'
+title: 'Úvodní příručka: Klientská knihovna Content Moderator pro Javu'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak začít s Azure Cognitive Services Content Moderator klientské knihovně pro Java.
+description: V tomto rychlém startu se dozvíte, jak začít s klientskou knihovnou Azure Cognitive Services Content Moderator pro Jazyk Java.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,55 +11,55 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 5dd1c1bb2b321e617efc430ce48745c06a827305
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76772452"
 ---
-# <a name="quickstart-content-moderator-client-library-for-java"></a>Rychlý Start: Content Moderator Klientská knihovna pro Java
+# <a name="quickstart-content-moderator-client-library-for-java"></a>Úvodní příručka: Klientská knihovna Content Moderator pro Javu
 
-Začněte s knihovnou klienta Content Moderator pro Java. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Content Moderator je služba rozpoznávání, která kontroluje text, obrázky a obsah videa pro materiál, který je potenciálně urážlivý, rizikové nebo jinak nežádoucí. Pokud se takový materiál najde, použije služba pro obsah odpovídající popisky (příznaky). Vaše aplikace pak může obsah označený příznakem zpracovat a zajistit tak dodržování předpisů nebo zachování zamýšleného prostředí pro uživatele.
+Začínáme s klientskou knihovnou Content Moderator pro Jazyk Java. Následujícím postupem nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úkoly. Content Moderator je kognitivní služba, která kontroluje text, obrázek a video obsah pro materiál, který je potenciálně urážlivý, riskantní nebo jinak nežádoucí. Pokud se takový materiál najde, použije služba pro obsah odpovídající popisky (příznaky). Vaše aplikace pak může obsah označený příznakem zpracovat a zajistit tak dodržování předpisů nebo zachování zamýšleného prostředí pro uživatele.
 
-Pomocí klientské knihovny Content Moderator pro jazyk Java:
+Pomocí klientské knihovny Content Moderator pro Jazyk Java:
 
-* Střední obrázky pro dospělé nebo pikantní obsah, text nebo lidské obličeje.
+* Moderování obrázků pro dospělé nebo pikantní obsah, text nebo lidské tváře.
 
-[Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [artefaktem (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [ukázek](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
+[Ukázky artefaktů z referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [(Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [Samples](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Nástroj Gradle Build](https://gradle.org/install/)nebo jiný správce závislostí.
+* Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
+* Aktuální verze [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Nástroj pro sestavení Gradle](https://gradle.org/install/)nebo jiný správce závislostí.
 
 ## <a name="setting-up"></a>Nastavení
 
-### <a name="create-a-content-moderator-azure-resource"></a>Vytvoření prostředku Azure Content Moderator
+### <a name="create-a-content-moderator-azure-resource"></a>Vytvoření prostředku Azure moderátora obsahu
 
-Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro Content Moderator pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na vašem místním počítači. Můžete také:
+Azure Cognitive Services jsou reprezentované prostředky Azure, které si předplatíte. Vytvořte prostředek pro Content Moderator pomocí [portálu Azure nebo](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na místním počítači. Můžete také:
 
-* Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/#decision) platný po dobu sedmi dnů zdarma. Po registraci bude k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
-* Prohlédněte si prostředek na [Azure Portal](https://portal.azure.com/).
+* Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/#decision) platný po dobu sedmi dnů zdarma. Po registraci bude dostupná na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
+* Zobrazení prostředků na [webu Azure Portal](https://portal.azure.com/).
 
-Po získání klíče ze zkušebního předplatného nebo prostředku [vytvořte pro klíč proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) s názvem `AZURE_CONTENTMODERATOR_KEY`.
+Po získání klíče z zkušebního předplatného nebo prostředku [vytvořte proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč s názvem `AZURE_CONTENTMODERATOR_KEY`.
 
-### <a name="create-a-new-gradle-project"></a>Vytvořit nový projekt Gradle
+### <a name="create-a-new-gradle-project"></a>Vytvoření nového projektu Gradle
 
-V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
+V okně konzoly (například cmd, PowerShell nebo Bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
 
 ```console
 mkdir myapp && cd myapp
 ```
-Spusťte `gradle init`. Tento příkaz vytvoří základní soubory sestavení pro Gradle, včetně *Build. Gradle. kts*, který se používá za běhu k vytvoření a konfiguraci vaší aplikace. Spusťte tento příkaz z pracovního adresáře:
+Spusťte `gradle init`. Tento příkaz vytvoří základní soubory sestavení pro Gradle, včetně *build.gradle.kts*, který se používá za běhu k vytvoření a konfiguraci aplikace. Spusťte tento příkaz z pracovního adresáře:
 
 ```console
 gradle init --type basic
 ```
 
-Po zobrazení výzvy k výběru skriptu sestavení DSL vyberte **Kotlin**.
+Po zobrazení výzvy k výběru skriptu sestavení DSL vyberte **možnost Kotlin**.
 
-Vyhledejte *Build. Gradle. kts* a otevřete ho pomocí vašeho preferovaného integrovaného vývojového prostředí (IDE) nebo textového editoru. Pak zkopírujte do následující konfigurace sestavení. Tato konfigurace definuje projekt jako aplikaci Java, jejíž vstupní bod je třídou **ContentModeratorQuickstart**. Naimportuje sadu Content Moderator SDK i sadu gson SDK pro serializaci JSON.
+Najděte *build.gradle.kts* a otevřete je pomocí preferovaného IDE nebo textového editoru. Potom zkopírujte v následující konfiguraci sestavení. Tato konfigurace definuje projekt jako aplikaci Java, jejíž vstupníbod je třída **ContentModeratorQuickstart**. Importuje content moderator sdk, stejně jako Gson sdk pro serializaci JSON.
 
 ```kotlin
 plugins {
@@ -81,31 +81,31 @@ dependencies{
 }
 ```
 
-V pracovním adresáři spusťte následující příkaz, který vytvoří zdrojovou složku projektu.
+Z pracovního adresáře vytvořte pomocí následujícího příkazu zdrojovou složku projektu.
 
 ```console
 mkdir -p src/main/java
 ```
 
-Pak v nové složce vytvořte soubor s názvem *ContentModeratorQuickstart. Java* . Otevřete soubor v preferovaném editoru nebo IDE a naimportujte následující knihovny v horní části:
+Poté vytvořte soubor s názvem *ContentModeratorQuickstart.java* v nové složce. Otevřete soubor v upřednostňovaném editoru nebo rozhraní IDE a nahoře importujte následující knihovny:
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
 
 ## <a name="object-model"></a>Objektový model
 
-Následující třídy zpracovávají některé hlavní funkce Content Moderator Java SDK.
+Následující třídy zpracovávají některé hlavní funkce sady Content Moderator Java SDK.
 
 |Name (Název)|Popis|
 |---|---|
-|[ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|Tato třída je potřebná pro všechny funkce Content Moderator. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
-|[ImageModeration](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|Tato třída poskytuje funkce pro analýzu obrázků pro obsah pro dospělé, osobní údaje nebo lidské obličeje.|
-|[TextModerations](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.textmoderations?view=azure-java-stable)|Tato třída poskytuje funkce pro analýzu textu pro jazyk, vulgární výrazy, chyby a osobní údaje.|
-|[Revize](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.reviews?view=azure-java-stable)|Tato třída poskytuje funkce v rozhraních API pro revize, včetně metod vytváření úloh, vlastních pracovních postupů a lidských recenzí.|
+|[ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|Tato třída je potřebná pro všechny funkce Content Moderator. Můžete vytvořit konkretizovat s informacemi o předplatném a použít k vytvoření instance jiných tříd.|
+|[Moderování obrázku](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|Tato třída poskytuje funkce pro analýzu obrázků pro obsah pro dospělé, osobní informace nebo lidské tváře.|
+|[Moderování textu](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.textmoderations?view=azure-java-stable)|Tato třída poskytuje funkce pro analýzu textu pro jazyk, vulgární výrazy, chyby a osobní informace.|
+|[Recenze](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.reviews?view=azure-java-stable)|Tato třída poskytuje funkce rozhraní API pro kontrolu, včetně metod pro vytváření úloh, vlastních pracovních postupů a lidských recenzí.|
 
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Content Moderator klientské knihovny pro Java:
+Tyto fragmenty kódu ukazují, jak provést následující úkoly v klientské knihovně Content Moderator pro Jazyk Ovou:
 
 * [Ověření klienta](#authenticate-the-client)
 * [Střední obrázky](#moderate-images)
@@ -113,20 +113,20 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Cont
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
 > [!NOTE]
-> Tento krok předpokládá, že jste pro svůj Content Moderator klíč [vytvořili proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) s názvem `AZURE_CONTENTMODERATOR_KEY`.
+> Tento krok předpokládá, že jste [vytvořili proměnnou](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) prostředí `AZURE_CONTENTMODERATOR_KEY`pro klíč Moderátor obsahu s názvem .
 
-V metodě `main` aplikace vytvořte objekt [ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) pomocí hodnoty koncového bodu předplatného a proměnné prostředí klíče předplatného. 
+V `main` metodě aplikace vytvořte objekt [ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) pomocí hodnoty koncového bodu předplatného a proměnné prostředí klíče předplatného. 
 
 > [!NOTE]
-> Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné.
+> Pokud jste vytvořili proměnnou prostředí po spuštění aplikace, budete muset zavřít a znovu otevřít editor, IDE nebo prostředí, které ji spustilo, abyste měli přístup k proměnné.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
 
 ## <a name="moderate-images"></a>Střední obrázky
 
-### <a name="get-images"></a>Získat obrázky
+### <a name="get-images"></a>Získání obrázků
 
-V části **Src/Main/** složka projektu vytvořte složku **Resources (prostředky** ) a přejděte na ni. Pak vytvořte nový textový soubor *ImageFiles. txt*. V tomto souboru přidáte adresy URL obrázků k analýze&mdash;jednu adresu URL na každém řádku. Můžete použít následující ukázkové obrázky:
+Ve **složce src/main/** projektu vytvořte složku **zdrojů** a přejděte na něj. Potom vytvořte nový textový soubor *ImageFiles.txt*. V tomto souboru přidáte adresy URL obrázků&mdash;a analyzujete jednu adresu URL na každém řádku. Můžete použít následující ukázkové obrázky:
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
@@ -135,42 +135,42 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 ### <a name="define-helper-class"></a>Definovat pomocnou třídu
 
-Potom v souboru *ContentModeratorQuickstart. Java* přidejte do třídy **ContentModeratorQuickstart** následující definici třídy. Tato vnitřní třída bude použita později v procesu moderování obrázku.
+Potom do souboru *ContentModeratorQuickstart.java* přidejte do třídy **ContentModeratorQuickstart** následující definici třídy. Tato vnitřní třída bude použita později v procesu moderování obrazu.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
 
-### <a name="iterate-through-images"></a>Iterovat prostřednictvím imagí
+### <a name="iterate-through-images"></a>Iterate prostřednictvím obrázků
 
-Dále přidejte následující kód do dolní části metody `main`. Nebo ho můžete přidat k samostatné metodě, která je volána z `main`. Tento kód provede jednotlivé řádky souboru _ImageFiles. txt_ .
+Dále přidejte následující kód na `main` konec metody. Nebo jej můžete přidat do samostatné metody, `main`která je volána z . Tento kód prochází každý řádek souboru _ImageFiles.txt._
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
 
-### <a name="check-for-adultracy-content"></a>Kontrolovat obsah pro dospělé/pikantní
-Tento řádek kódu kontroluje obrázek na dané adrese URL pro dospělé nebo pikantní obsah. Informace o těchto pojmech najdete v koncepční příručce pro moderování obrázků.
+### <a name="check-for-adultracy-content"></a>Kontrola obsahu pro dospělé/pikantní
+Tento řádek kódu kontroluje obrázek na dané adrese URL pro obsah pro dospělé nebo pikantní. Informace o těchto podmínkách naleznete v koncepční příručce moderování obrázků.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_ar)]
 
-### <a name="check-for-text"></a>Kontrolovat text
-Tento řádek kódu kontroluje obrázek pro viditelný text.
+### <a name="check-for-text"></a>Kontrola textu
+Tento řádek kódu kontroluje, zda obrázek nezkontroluje viditelný text.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_text)]
 
-### <a name="check-for-faces"></a>Kontrolovat obličeje
-Tento řádek kódu kontroluje obrázek pro lidské obličeje.
+### <a name="check-for-faces"></a>Kontrola ploch
+Tento řádek kódu kontroluje obrázek pro lidské tváře.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_faces)]
 
-Nakonec uložte vrácené informace do seznamu `EvaluationData`.
+Nakonec uložte vrácené `EvaluationData` informace v seznamu.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_storedata)]
 
-### <a name="print-results"></a>Vytisknout výsledky
+### <a name="print-results"></a>Tisk výsledků
 
-Po `while` smyčce přidejte následující kód, který vytiskne výsledky do konzoly a do výstupního souboru, *Src/Main/Resources/ModerationOutput. JSON*.
+Po `while` smyčku přidejte následující kód, který vytiskne výsledky do konzoly a do výstupního *souboru, src/main/resources/ModeonOutput.json*.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 
-Zavřete příkaz `try` a přidejte příkaz `catch` k dokončení metody.
+Zavřete `try` příkaz a `catch` přidejte příkaz k dokončení metody.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
 
@@ -182,27 +182,27 @@ Aplikaci můžete vytvořit pomocí:
 gradle build
 ```
 
-Spusťte aplikaci pomocí příkazu `gradle run`:
+Spusťte aplikaci pomocí příkazu: `gradle run`
 
 ```console
 gradle run
 ```
 
-Pak přejděte do souboru *Src/Main/Resources/ModerationOutput. JSON* a podívejte se na výsledky Moderování obsahu.
+Potom přejděte do souboru *src/main/resources/ModeonOutput.json* a zobrazte výsledky moderování obsahu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
+Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, můžete odstranit prostředek nebo skupinu prostředků. Odstraněním skupiny prostředků také odstraníte všechny další prostředky, které jsou s ní spojené.
 
-* [Azure Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak používat knihovnu Content Moderator Java k provádění úloh moderování. V dalším kroku se dozvíte další informace o moderování imagí nebo jiných médií. Přečtěte si koncepční průvodce.
+V tomto rychlém startu jste se naučili používat knihovnu Java Content Moderator k provádění úkolů moderování. Dále si přečtěte koncepční příručku, kde se dozvíte více o moderování obrázků nebo jiných médií.
 
 > [!div class="nextstepaction"]
 >[Koncepty moderování obrázků](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Co je Azure Content Moderator?](./overview.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/blob/master/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java)
+* Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/blob/master/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java).

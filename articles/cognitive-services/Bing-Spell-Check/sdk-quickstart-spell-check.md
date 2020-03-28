@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu SDK proC#'
+title: 'Úvodní příručka: Kontrola pravopisu pomocí sady SDK kontroly pravopisu Bingu pro C #'
 titleSuffix: Azure Cognitive Services
-description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky.
+description: Můžete začít používat rozhraní REST API kontroly pravopisu Bingu ke kontrole pravopisu a gramatiky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 1cda7032d5bfe58e9f8bcbdb8b18dd597a691441
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78273535"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu SDK proC#
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Úvodní příručka: Kontrola pravopisu pomocí sady SDK kontroly pravopisu Bingu pro C #
 
-Pomocí tohoto rychlého startu můžete spustit kontrolu pravopisu v sadě Kontrola pravopisu Bingu C#SDK pro. I když Kontrola pravopisu Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck).
+Pomocí tohoto rychlého startu můžete zahájit kontrolu pravopisu pomocí sady SDK kontroly pravopisu Bingu pro c#. Zatímco kontrola pravopisu Bing má rozhraní REST API kompatibilní s většinou programovacích jazyků, sada SDK poskytuje snadný způsob integrace služby do vašich aplikací. Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck).
 
 ## <a name="application-dependencies"></a>Závislosti aplikace
 
-* Libovolná edice sady [Visual Studio 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
-* [Balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck) kontrola pravopisu Bingu
+* Libovolná edice [Visual Studia 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
+* [Balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck) pro kontrolu pravopisu Bing
 
-Chcete-li přidat sadu Kontrola pravopisu Bingu SDK do projektu, vyberte možnost **Spravovat balíčky NuGet** z **Průzkumník řešení** v sadě Visual Studio. Přidejte balíček `Microsoft.Azure.CognitiveServices.Language.SpellCheck`. Balíček také nainstaluje následující závislosti:
+Chcete-li přidat sada SDK kontroly pravopisu Bingu do projektu, vyberte **spravovat balíčky NuGet** z **Průzkumníka řešení** v sadě Visual Studio. Přidejte balíček `Microsoft.Azure.CognitiveServices.Language.SpellCheck`. Balíček také nainstaluje následující závislosti:
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
@@ -36,7 +36,7 @@ Chcete-li přidat sadu Kontrola pravopisu Bingu SDK do projektu, vyberte možnos
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nové C# řešení konzoly v aplikaci Visual Studio. Pak přidejte následující příkaz `using`.
+1. Vytvořte nové řešení konzoly C# v sadě Visual Studio. Pak přidejte `using` následující příkaz.
     
     ```csharp
     using System;
@@ -46,9 +46,9 @@ Chcete-li přidat sadu Kontrola pravopisu Bingu SDK do projektu, vyberte možnos
     using Microsoft.Azure.CognitiveServices.Language.SpellCheck.Models;
     ```
 
-2. Vytvořte novou třídu. Pak vytvořte asynchronní funkci nazvanou `SpellCheckCorrection()`, která převezme klíč předplatného a odešle požadavek na kontrolu pravopisu.
+2. Vytvořte novou třídu. Potom vytvořte asynchronní `SpellCheckCorrection()` funkci s názvem, která přebírá klíč předplatného a odešle žádost o kontrolu pravopisu.
 
-3. Vytvořte instanci klienta vytvořením nového objektu `ApiKeyServiceClientCredentials`. 
+3. Vytvořte vytvoření nového `ApiKeyServiceClientCredentials` objektu klienta. 
 
     ```csharp
     public static class SpellCheckSample{
@@ -59,15 +59,15 @@ Chcete-li přidat sadu Kontrola pravopisu Bingu SDK do projektu, vyberte možnos
     }
     ```
 
-## <a name="send-the-request-and-read-the-response"></a>Odeslat požadavek a přečíst odpověď
+## <a name="send-the-request-and-read-the-response"></a>Odeslat žádost a přečíst odpověď
 
-1. Ve funkci vytvořené výše proveďte následující kroky. Odešlete žádost o kontrolu pravopisu u klienta. Přidejte text, který se má zaškrtnout, do parametru `text` a nastavte režim na `proof`.  
+1. Ve výše vytvořené funkci proveďte následující kroky. Odešlete žádost o kontrolu pravopisu s klientem. Přidejte do `text` parametru text, který chcete zkontrolovat, a nastavte režim na `proof`.  
     
     ```csharp
     var result = await client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof");
     ```
 
-2. Získejte první výsledek kontroly pravopisu, pokud je nějaký. Vytiskněte vrácené slovo (token), typ tokenu a počet návrhů.
+2. Získejte první výsledek kontroly pravopisu, pokud existuje. Vytisknout první chybně napsané slovo (token) vrácené, typ tokenu a počet návrhů.
 
     ```csharp
     var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
@@ -81,7 +81,7 @@ Chcete-li přidat sadu Kontrola pravopisu Bingu SDK do projektu, vyberte možnos
     }
     ```
 
-3. Získejte první navrhovanou opravu, pokud je nějaká. Vytiskněte skóre návrhu a navrhované slovo. 
+3. Získejte první navrhovanou opravu, pokud existuje. Vytiskněte skóre návrhu a navrhované slovo. 
 
     ```csharp
     var suggestions = firstspellCheckResult.Suggestions;
@@ -96,12 +96,12 @@ Chcete-li přidat sadu Kontrola pravopisu Bingu SDK do projektu, vyberte možnos
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Sestavte a spusťte projekt. Pokud používáte Visual Studio, můžete soubor ladit stisknutím klávesy **F5** .
+Sestavení a spuštění projektu. Pokud používáte Visual Studio, ladíte soubor stisknutím **klávesy F5.**
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace na jedné stránce](tutorials/spellcheck.md)
+> [Vytvoření jednostránkové webové aplikace](tutorials/spellcheck.md)
 
-- [Co je rozhraní API Bingu pro kontrolu pravopisu?](overview.md)
-- [Referenční C# příručka k sadě kontrola pravopisu Bingu SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)
+- [Co je rozhraní API pro kontrolu pravopisu Bingu?](overview.md)
+- [Referenční příručka sady #Kontrola pravopisu Bingu C# SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)

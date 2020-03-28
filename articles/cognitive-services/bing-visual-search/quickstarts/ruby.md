@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Získání přehledů obrázků pomocí REST API a Ruby-Vizuální vyhledávání Bingu'
+title: 'Úvodní příručka: Získejte přehledy obrázků pomocí rozhraní REST API a Ruby – vizuální vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat přehled o něm.
+description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat o něm přehledy.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,28 +11,28 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: e19f582084bec6915f95cf16fd8571b8d99da6fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75379636"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Rychlý Start: Získání přehledů obrázků pomocí Vizuální vyhledávání Bingu REST API a Ruby
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Úvodní příručka: Získejte přehledy obrázků pomocí rozhraní API REST api pro vizuální vyhledávání Bingu a ruby
 
-V tomto rychlém startu se k volání Vizuální vyhledávání Bingu a zobrazení výsledků používá programovací jazyk Ruby. Požadavek POST nahraje obrázek do koncového bodu rozhraní API. Výsledky zahrnují adresy URL a popisné informace o obrázcích podobně jako nahraný obrázek.
+Tento rychlý start používá programovací jazyk Ruby k volání vizuálního vyhledávání Binga a zobrazení výsledků. Požadavek POST nahraje bitovou kopii do koncového bodu rozhraní API. Výsledky zahrnují adresy URL a popisné informace o obrázcích podobných nahranému obrázku.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Spuštění tohoto rychlého startu:
 
-* Nainstalujte [Ruby 2,4 nebo novější](https://www.ruby-lang.org/en/downloads/) .
-* Získat klíč předplatného:
+* Instalace [ruby 2.4 nebo novější](https://www.ruby-lang.org/en/downloads/)
+* Získejte klíč předplatného:
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-required-modules"></a>Projekt a požadované moduly
 
-Vytvořte nový projekt Ruby v integrovaném vývojovém prostředí nebo v editoru. Naimportujte `net/http`, `uri` a `json` pro zpracování textu JSON výsledků. Knihovna `base64` slouží ke kódování řetězce názvu souboru: 
+Vytvořte nový projekt Ruby ve vašem IDE nebo editoru. Import `net/http` `uri` , `json` , a zpracovat text JSON výsledků. Knihovna `base64` se používá ke kódování řetězce názvu souboru: 
 
 ```
 require 'net/https'
@@ -44,7 +44,7 @@ require 'base64'
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Následující kód přiřadí požadované proměnné. Potvrďte, že je koncový bod správný, a nahraďte `accessKey` hodnotou klíč předplatného ze svého účtu Azure.  `batchNumber` je identifikátor GUID vyžadovaný pro počáteční a koncové hranice dat POST.  Proměnná `fileName` identifikuje soubor obrázku pro daný příspěvek.  `if` blokují testy pro platný klíč předplatného.
+Následující kód přiřazuje požadované proměnné. Zkontrolujte, zda je koncový `accessKey` bod správný, a nahraďte hodnotu klíčem předplatného z vašeho účtu Azure.  Je `batchNumber` identifikátor GUID potřebný pro vedení a koncové hranice dat POST.  Proměnná `fileName` identifikuje soubor obrázku pro POST.  Blok `if` testuje platný klíč předplatného.
 
 ```
 accessKey = "ACCESS-KEY"
@@ -63,7 +63,7 @@ end
 
 ## <a name="form-data-for-post-request"></a>Data formuláře pro požadavek POST
 
-Data obrázku k odeslání jsou ohraničená počátečními a koncovými hranicemi. Hranice nastaví následující funkce:
+Obrazová data post je uzavřena úvodní a koncové hranice. Hranice nastavují následující funkce:
 
 ```
 def BuildFormDataStart(batNum, fileName)
@@ -76,7 +76,7 @@ def BuildFormDataEnd(batNum)
 end
 ```
 
-Dále vytvořte identifikátor URI koncového bodu a pole tak, aby obsahovalo tělo příspěvku.  Pomocí funkce Previous načtěte hranici začátku do pole. Přečtěte si soubor obrázku do pole. Pak si přečtěte hranici end do pole:
+Dále vytvořte identifikátor URI koncového bodu a pole obsahující tělo POST.  Pomocí předchozí funkce načtěte počáteční hranici do pole. Přečtěte si soubor obrázku do pole. Potom si přečtěte koncovou hranici do pole:
 
 ```
 uri = URI(uri + path)
@@ -94,7 +94,7 @@ post_body << BuildFormDataEnd(batchNumber)
 
 ## <a name="create-the-http-request"></a>Vytvoření požadavku HTTP
 
-Nastavte hlavičku `Ocp-Apim-Subscription-Key`.  Vytvořte požadavek. Pak přiřaďte hlavičku a typ obsahu. Připojte dříve vytvořený text příspěvku k žádosti:
+Nastavte `Ocp-Apim-Subscription-Key` záhlaví.  Vytvořte požadavek. Potom přiřaďte záhlaví a typ obsahu. Připojte tělo POST vytvořené dříve k požadavku:
 
 ```
 header = {'Ocp-Apim-Subscription-Key': accessKey}
@@ -108,7 +108,7 @@ request.body = post_body.join
 
 ## <a name="request-and-response"></a>Žádost a odpověď
 
-Ruby pošle požadavek a získá odpověď s následujícím řádkem kódu:
+Ruby odešle požadavek a získá odpověď s následujícím řádkem kódu:
 
 ```
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -117,9 +117,9 @@ end
 
 ```
 
-## <a name="print-the-results"></a>Vytiskněte výsledky.
+## <a name="print-the-results"></a>Tisk výsledků
 
-Vytiskněte hlavičky odpovědi a pomocí knihovny JSON naformátujte výstup:
+Vytiskněte záhlaví odpovědi a pomocí knihovny JSON naformátujte výstup:
 
 ```
 puts "\nRelevant Headers:\n\n"
@@ -136,7 +136,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="results"></a>Výsledky
 
-Následující kód JSON je segment výstupu:
+Následující JSON je segment výstupu:
 
 ```
 Relevant Headers:
@@ -284,5 +284,5 @@ JSON Response:
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přehled Vizuální vyhledávání Bingu](../overview.md)
-> [sestavení jednostránkové webové aplikace vizuální vyhledávání](../tutorial-bing-visual-search-single-page-app.md)
+> [Přehled vizuálního vyhledávání Bingu](../overview.md)
+> [Vytvoření jednostránkové webové aplikace vizuálního vyhledávání](../tutorial-bing-visual-search-single-page-app.md)

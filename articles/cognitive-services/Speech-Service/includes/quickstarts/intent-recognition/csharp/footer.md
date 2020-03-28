@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: dapine
 ms.openlocfilehash: 11091c7efb127ba597cabf9be5ac43fd23facec6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900493"
 ---
 > [!div class="nextstepaction"]
-> [Prozkoumejte C# ukázky na GitHubu](https://aka.ms/speech/github-csharp)
+> [Prozkoumejte ukázky jazyka C# na GitHubu](https://aka.ms/speech/github-csharp)

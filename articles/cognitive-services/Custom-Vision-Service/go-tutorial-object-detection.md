@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: vytvoření projektu pro detekci objektů pomocí sady SDK pro přejít Custom Vision'
+title: 'Úvodní příručka: Vytvoření projektu detekce objektů pomocí sady SDK for Go – vlastní vize'
 titleSuffix: Azure Cognitive Services
-description: Vytvořte projekt, přidejte značky, nahrajte obrázky, vytvořte svůj projekt a vyhledáte objekty pomocí sady SDK jít.
+description: Vytvořte projekt, přidejte značky, nahrajte obrázky, trénujte projekt a detekujte objekty pomocí sady Go SDK.
 services: cognitive-services
 author: areddish
 ms.author: areddish
@@ -11,30 +11,30 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.openlocfilehash: c6303b494c7ea3a15a38cd5fb8bf6a77b0320363
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170135"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Rychlý Start: vytvoření projektu pro detekci objektů pomocí sady Custom Vision jít SDK
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Úvodní příručka: Vytvoření projektu detekce objektů pomocí sady Custom Vision Go SDK
 
-Tento článek poskytuje informace a ukázkový kód, který vám může pomoci začít používat sadu Custom Vision SDK s nástrojem přejít k sestavení modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v cestách.
+Tento článek obsahuje informace a ukázkový kód, který vám pomůže začít používat vlastní vision SDK s Přejít k vytvoření modelu detekce objektů. Po vytvoření můžete přidat označené oblasti, nahrát obrázky, trénovat projekt, získat adresu URL koncového bodu publikované předpovědi projektu a použít koncový bod k programovému testování bitové kopie. Tento příklad použijte jako šablonu pro vytváření vlastní aplikace Go.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Přejít 1.8 +](https://golang.org/doc/install)
+- [Jdi 1.8+](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>Instalace sady Custom Vision SDK
 
-Pokud chcete nainstalovat sadu Custom Vision Service SDK pro přejít, spusťte v PowerShellu následující příkaz:
+Chcete-li nainstalovat vlastní službu Vize SDK for Go, spusťte v Prostředí PowerShell následující příkaz:
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-nebo pokud používáte `dep`, v rámci vašeho úložiště úložišť:
+nebo pokud `dep`používáte , v rámci repo běhu:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
@@ -45,13 +45,13 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 ## <a name="add-the-code"></a>Přidání kódu
 
-Vytvořte nový soubor s názvem *Sample. přejít* do preferovaného adresáře projektu.
+Vytvořte nový soubor s názvem *sample.go* v preferovaném adresáři projektu.
 
 ### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
 Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Adresu URL koncového bodu si také můžete stáhnout ze stránky nastavení na webu Custom Vision.
 
-Chcete-li určit další možnosti při vytváření projektu, viz metoda [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) (vysvětlení najdete v průvodci [vytvořením webového portálu detektoru](get-started-build-detector.md) ).
+Viz [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metoda určit další možnosti při vytváření projektu (vysvětleno v [sestavení detektoru](get-started-build-detector.md) webový portál průvodce).
 
 ```go
 import(
@@ -99,7 +99,7 @@ func main() {
 
 ### <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
-Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující kód na konec *Sample. přejít*:
+Chcete-li do projektu vytvořit značky klasifikace, přidejte na konec *souboru sample.go*následující kód :
 
 ```Go
 # Make two tags in the new project
@@ -107,14 +107,14 @@ forkTag, _ := trainer.CreateTag(ctx, *project.ID, "fork", "A fork", string(train
 scissorsTag, _ := trainer.CreateTag(ctx, *project.ID, "scissors", "Pair of scissors", string(training.Regular))
 ```
 
-### <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
+### <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
 
-Při označování obrázků v projektech detekce obrázků je potřeba zadat oblast každého označeného objektu pomocí normalizovaných souřadnic.
+Když označíte obrázky v projektech detekce objektů, je nutné zadat oblast každého tagovaného objektu pomocí normalizovaných souřadnic.
 
 > [!NOTE]
-> Pokud nemáte k označení souřadnic oblastí k dispozici nástroj pro kliknutí a přetažení, můžete použít webové uživatelské rozhraní na adrese [Customvision.AI](https://www.customvision.ai/). V tomto příkladu jsou souřadnice již poskytovány.
+> Pokud nemáte nástroj pro klepnutí a přetažení, který by označoval souřadnice oblastí, můžete použít webové uživatelské uživatelské tlačítko na [Customvision.ai](https://www.customvision.ai/). V tomto příkladu jsou již k dispozici souřadnice.
 
-Obrázky, značky a oblasti do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Všimněte si, že v tomto kurzu jsou oblasti pevně zakódované jako vložené. Oblasti určují ohraničující rámeček s normalizovanými souřadnicemi, které jsou v tomto pořadí: vlevo, nahoře, šířka, výška.
+Obrázky, značky a oblasti do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Všimněte si, že v tomto kurzu jsou oblasti pevně zakódované. Oblasti určují ohraničující rámeček s normalizovanými souřadnicemi, které jsou v tomto pořadí: vlevo, nahoře, šířka, výška.
 
 ```Go
 forkImageRegions := map[string][4]float64{
@@ -163,10 +163,10 @@ scissorsImageRegions := map[string][4]float64{
     "scissors_20.jpg": [4]float64{ 0.158088237, 0.04047389, 0.6691176, 0.843137264 },
 }
 ```
-Pak použijte tuto mapu přidružení k nahrání jednotlivých ukázkových imagí s souřadnicemi oblastí (do jedné dávky můžete nahrát až 64 obrázků). Přidejte následující kód.
+Potom použijte tuto mapu přidružení k nahrání každého ukázkového obrázku s jeho souřadnicemi oblasti (můžete nahrát až 64 obrázků v jedné dávce). Přidejte následující kód.
 
 > [!NOTE]
-> Budete muset změnit cestu k obrázkům na základě toho, kam jste dříve stáhli projekt ukázek sady Cognitive Services jít na sadu SDK.
+> Budete muset změnit cestu k obrázkům podle toho, kde jste stáhli projekt cognitive services go sdk ukázky dříve.
 
 ```Go
 // Go through the data table above and create the images
@@ -226,9 +226,9 @@ if (!*scissor_batch.IsBatchSuccessful) {
 }     
 ```
 
-### <a name="train-the-project-and-publish"></a>Výuka projektu a publikování
+### <a name="train-the-project-and-publish"></a>Trénování projektu a publikování
 
-Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
+Tento kód vytvoří první iteraci modelu předpověď a potom publikuje tuto iteraci do koncového bodu předpověď. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
 ```go
 iteration, _ := trainer.TrainProject(ctx, *project.ID)
@@ -245,7 +245,7 @@ for {
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získání a použití publikované iterace na koncovém bodu předpovědi
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získat a použít publikovanou iteraci v koncovém bodě předpověď
 
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
@@ -273,7 +273,7 @@ Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpo
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte *Sample. přejít*.
+Spusťte *sample.go*.
 
 ```shell
 go run sample.go

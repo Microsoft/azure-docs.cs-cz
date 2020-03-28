@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: hledání videí pomocí REST API a Pythonu – Vvyhledávání videí Bingu'
+title: 'Úvodní příručka: Hledání videí pomocí rozhraní REST API a Pythonu – Vyhledávání videí Bingem'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání videí do Vvyhledávání videí Bingu REST API pomocí Pythonu.
+description: Tento rychlý start slouží k odesílání požadavků na vyhledávání videa do rozhraní REST API pro vyhledávání videa Bingu pomocí Pythonu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,36 +11,36 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.openlocfilehash: fbf20c2d54506b0f314697d6df34f9a430e7c016
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75382680"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a Pythonu
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Úvodní příručka: Hledání videí pomocí rozhraní REST API pro vyhledávání videí Bingu a Pythonu
 
-Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhraní API Bingu pro vyhledávání videí a zobrazit výsledky hledání z odpovědi JSON. Tato jednoduchá aplikace v Pythonu pošle dotaz na hledání videa HTTP do rozhraní API a zobrazí odpověď. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) s dalším ošetřením chyb a poznámkami ke kódu.
+Pomocí tohoto rychlého startu můžete provést první volání do rozhraní API pro vyhledávání videí Bingu a zobrazit výsledek hledání z odpovědi JSON. Tato jednoduchá aplikace Pythonu odešle vyhledávací dotaz videa HTTP do rozhraní API a zobrazí odpověď. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) s dalším ošetřením chyb a poznámkami ke kódu.
 
 Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https://mybinder.org) tak, že kliknete na odznáček pro spuštění Binderu: 
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
+[![Pořadače](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Python [2. x nebo 3. x](https://python.org)
+* Python [2.x nebo 3.x](https://python.org)
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
-## <a name="initialize-the-application"></a>Inicializace aplikace
+## <a name="initialize-the-application"></a>Inicializovat aplikaci
 
-1. V oblíbených IDE nebo editoru vytvořte nový soubor Pythonu a naimportujte následující knihovny:
+1. Vytvořte nový soubor Pythonu ve svém oblíbeném IDE nebo editoru a importujte následující knihovny,
 
     ```python
     import requests
     from IPython.display import HTML
     ```
-2.  Vytvořte proměnné pro klíč předplatného, koncový bod hledání a hledaný termín. `search_url` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2.  Vytvořte proměnné pro klíč předplatného, koncový bod hledání a hledaný termín. `search_url`může být globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
     
     ```python
     subscription_key = None
@@ -49,21 +49,21 @@ Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https
     search_term = "kittens"
     ```
 
-3. Přidejte klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key` vytvořením nového slovníku, který přiřadí řetězec hlavičky k vašemu klíči.
+3. Přidejte klíč předplatného `Ocp-Apim-Subscription-Key` do záhlaví vytvořením nového slovníku, který přidruží řetězec záhlaví ke klíči.
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     ```
 
-## <a name="send-your-request"></a>Odeslat žádost
+## <a name="send-your-request"></a>Pošlete svůj požadavek
 
-1. Přidejte parametry do žádosti vytvořením slovníku s názvem `params`. Přidejte hledaný výraz do parametru `q`, počet videí 5, `free` pro ceny vrácených videí a `short` pro délku videa.
+1. Přidejte parametry do požadavku vytvořením `params`slovníku s názvem . Přidejte hledaný `q` výraz k parametru, `free` počet videí 5, pro `short` ceny vrácených videí a pro délku videa.
 
     ```python
     params  = {"q": search_term, "count":5, "pricing": "free", "videoLength":"short"}
     ```
 
-2. Použijte knihovnu `requests` v Pythonu k volání rozhraní API Bingu pro vyhledávání videí. Pomocí slovníku `headers` a `params` předejte klíč rozhraní API a parametry vyhledávání.
+2. Pomocí `requests` knihovny v Pythonu můžete volat rozhraní API pro vyhledávání videí Bingu. Předejte klíč rozhraní API a `headers` parametry vyhledávání pomocí slovníku a. `params`
     
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -71,7 +71,7 @@ Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https
     search_results = response.json()
     ```
 
-3. Chcete-li zobrazit jedno ze vrácených videí, Získejte výsledek hledání z objektu `search_results`. Do `IFrame`vložte Vlastnost Result `embedHtml`.  
+3. Chcete-li zobrazit jedno z vrácených videí, získejte výsledek hledání z objektu. `search_results` Vložte `embedHtml` vlastnost výsledku `IFrame`do .  
     
     ```python
     HTML(search_results["value"][0]["embedHtml"].replace("autoplay=1","autoplay=0"))
@@ -191,8 +191,8 @@ Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-video-search-single-page-app.md)
+> [Vytvoření jednostránkové webové aplikace](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také 
 
  [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)

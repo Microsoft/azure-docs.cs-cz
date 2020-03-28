@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Vizuální vyhledávání Bingu klientskou knihovnu pro Java | Microsoft Docs'
-description: Nahrajte Image pomocí sady Vizuální vyhledávání Bingu SDK a Získejte přehled o ní.
+title: 'Úvodní příručka: Klientská knihovna Vizuálního vyhledávání Bingu pro Jazyk Java | Dokumenty společnosti Microsoft'
+description: Nahrajte obrázek pomocí sady SDK vizuálního vyhledávání Bingu a získejte o něm přehledy.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,50 +10,50 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 5a6d39fa6e10ad0ad102f9d25ffd252ec9e0fa8a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75379486"
 ---
-# <a name="quickstart-bing-visual-search-client-library-for-java"></a>Rychlý Start: Vizuální vyhledávání Bingu Klientská knihovna pro Java
+# <a name="quickstart-bing-visual-search-client-library-for-java"></a>Úvodní příručka: Klientská knihovna Vizuálního vyhledávání Bingu pro Jazyk Java
 
-Začněte s knihovnou klienta Vizuální vyhledávání Bingu pro Java. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. 
+Začínáme s klientskou knihovnou Vizuální vyhledávání Bing pro Jazyk Java. Následujícím postupem nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úkoly. 
 
-Pomocí klientské knihovny Vizuální vyhledávání Bingu pro jazyk Java:
+Pomocí klientské knihovny Vizuální vyhledávání Bing pro Jazyk Java:
 
-* Nahrajte obrázek pro odeslání požadavku vizuálního vyhledávání.
-* Získejte tokeny Insight image a vizuální vyhledávací značky.
+* Nahrajte obrázek a odešlete žádost o vizuální vyhledávání.
+* Získejte token pro vyhledávání obrázků a vizuální vyhledávací značky.
 
-[Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable) | [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [artefaktů (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/) | [ukázky](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable) | [Ukázky zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [knihovny](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) [(Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/) | 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Nástroj Gradle Build](https://gradle.org/install/)nebo jiný správce závislostí
+* Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
+* Aktuální verze [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* Nástroj [pro sestavení Gradle](https://gradle.org/install/)nebo jiný správce závislostí
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte pro klíč [proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) s názvem `BING_SEARCH_V7_SUBSCRIPTION_KEY`.
+Po získání klíče z zkušebního předplatného nebo prostředku [vytvořte proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč s názvem `BING_SEARCH_V7_SUBSCRIPTION_KEY`.
 
-### <a name="create-a-new-gradle-project"></a>Vytvořit nový projekt Gradle
+### <a name="create-a-new-gradle-project"></a>Vytvoření nového projektu Gradle
 
-V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
+V okně konzoly (například cmd, PowerShell nebo Bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Spusťte příkaz `gradle init` z pracovního adresáře. Tento příkaz vytvoří základní soubory sestavení pro Gradle, včetně *Build. Gradle. kts* , který se používá za běhu k vytvoření a konfiguraci vaší aplikace.
+Spusťte `gradle init` příkaz z pracovního adresáře. Tento příkaz vytvoří základní soubory sestavení pro Gradle, včetně *build.gradle.kts,* který se používá za běhu k vytvoření a konfiguraci aplikace.
 
 ```console
 gradle init --type basic
 ```
 
-Po zobrazení výzvy k výběru **DSL**vyberte **Kotlin**.
+Po zobrazení výzvy k výběru **dsl**vyberte **možnost Kotlin**.
 
-Vyhledejte *Build. Gradle. kts* a otevřete ho pomocí vašeho preferovaného integrovaného vývojového prostředí (IDE) nebo textového editoru. Pak zkopírujte do této konfigurace sestavení:
+Vyhledejte *soubor build.gradle.kts* a otevřete jej pomocí upřednostňovaného rozhraní IDE nebo textového editoru. Potom zkopírujte v této konfiguraci sestavení:
 
 ```kotlin
 plugins {
@@ -73,19 +73,19 @@ dependencies {
 }
 ```
 
-Vytvořte složku pro ukázkovou aplikaci. V pracovním adresáři spusťte následující příkaz:
+Vytvořte složku pro ukázkovou aplikaci. Z pracovního adresáře spusťte následující příkaz:
 
 ```console
 mkdir -p src/main/java
 ```
 
-Vytvořte složku pro obrázek, který chcete nahrát do rozhraní API. Umístěte obrázek do složky **Resources** .
+Vytvořte složku pro obrázek, který chcete nahrát do rozhraní API. Umístěte obrázek do složky **prostředků.**
 
 ```console
 mkdir -p src/main/resources
 ``` 
 
-Přejděte do nové složky a vytvořte soubor s názvem *BingVisualSearchSample. Java*. Otevřete ho v preferovaném editoru nebo integrovaném vývojovém prostředí a přidejte následující příkazy `import`:
+Přejděte do nové složky a vytvořte soubor s názvem *BingVisualSearchSample.java*. Otevřete ji v preferovaném editoru `import` nebo rozhraní IDE a přidejte následující příkazy:
 
 [!code-java[Import statements](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=imports)]
 
@@ -96,16 +96,16 @@ public class BingVisualSearchSample {
 }
 ```
 
-V metodě `main` aplikace vytvořte proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné. Pak vytvořte `byte[]` pro obrázek, který budete nahrávat. Vytvořte `try` blok pro metody, které definujete později, a načtěte image a převeďte ji na bajty pomocí `toByteArray()`.
+V `main` metodě aplikace vytvořte proměnné pro koncový bod a klíč azure vašeho prostředku. Pokud jste vytvořili proměnnou prostředí po spuštění aplikace, budete muset zavřít a znovu otevřít editor, IDE nebo prostředí, které ji spustilo, abyste měli přístup k proměnné. Pak vytvořte `byte[]` pro obrázek, který budete nahrávat. Vytvořte `try` blok pro metody, které budete definovat později, načíst obraz `toByteArray()`a převést jej na bajty pomocí .
 
 [!code-java[Main method](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=main)]
 
 
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
-V tomto rychlém startu se používá správce závislostí Gradle. Knihovnu klienta a informace pro jiné správce závislostí najdete v [centrálním úložišti Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/).
+Tento rychlý start používá správce závislostí Gradle. Klientskou knihovnu a informace pro ostatní správce závislostí najdete v [centrálním úložišti Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/).
 
-V souboru *Build. Gradle. kts* vašeho projektu nezapomeňte zahrnout klientskou knihovnu jako příkaz `implementation`. 
+V souboru *build.gradle.kts* projektu nezapomeňte zahrnout klientskou knihovnu jako příkaz. `implementation` 
 
 ```kotlin
 dependencies {
@@ -117,33 +117,33 @@ dependencies {
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Vizuální vyhledávání Bingu klientské knihovny a Java:
+Tyto fragmenty kódu ukazují, jak provést následující úkoly s klientskou knihovnou Vizuální vyhledávání Bing a jazykovou javou:
 
 * [Ověření klienta](#authenticate-the-client)
-* [Odeslat žádost o vizuální vyhledávání](#send-a-visual-search-request)
-* [Tisk značek Insight image a vizuálního vyhledávání](#print-the-image-insight-token-and-visual-search-tags)
+* [Odeslání požadavku na vizuální vyhledávání](#send-a-visual-search-request)
+* [Tisk tokenu přehledu obrázků a vizuálních vyhledávacích značek](#print-the-image-insight-token-and-visual-search-tags)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
 > [!NOTE]
-> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro vizuální vyhledávání Bingu klíč s názvem `BING_SEARCH_V7_SUBSCRIPTION_KEY`.
+> Tento rychlý start předpokládá, že jste [vytvořili proměnnou](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) prostředí `BING_SEARCH_V7_SUBSCRIPTION_KEY`pro klíč vizuálního vyhledávání Bing s názvem .
 
 
-V metodě Main nezapomeňte použít svůj klíč předplatného k vytvoření instance objektu [BingVisualSearchAPI](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingvisualsearchapi?view=azure-java-stable) .
+V hlavní metodě nezapomeňte použít klíč předplatného k vytvoření instance objektu [BingVisualSearchAPI.](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingvisualsearchapi?view=azure-java-stable)
 
 ```csharp
 BingVisualSearchAPI client = BingVisualSearchManager.authenticate(subscriptionKey);
 ```
 
-## <a name="send-a-visual-search-request"></a>Odeslat žádost o vizuální vyhledávání
+## <a name="send-a-visual-search-request"></a>Odeslání požadavku na vizuální vyhledávání
 
-V nové metodě odešlete pole bajtů obrázku (které bylo vytvořeno v `main()` metodě) pomocí metody [bingImages (). visualSearch ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingimages.visualsearch?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_visualsearch_BingImages_visualSearch__) klienta. 
+V nové metodě odešlete pole bajtů `main()` bitových kopií (které bylo vytvořeno v metodě) pomocí metody [bingImages().visualSearch()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingimages.visualsearch?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_visualsearch_BingImages_visualSearch__) klienta. 
 
 [!code-java[visualSearch() method](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=visualSearch)]
 
-## <a name="print-the-image-insight-token-and-visual-search-tags"></a>Tisk značek Insight image a vizuálního vyhledávání
+## <a name="print-the-image-insight-token-and-visual-search-tags"></a>Tisk tokenu přehledu obrázků a vizuálních vyhledávacích značek
 
-Zkontroluje, jestli objekt [ImageKnowledge](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.models.imageknowledge?view=azure-java-stable) má hodnotu null. Pokud ne, vytiskněte token Insights pro obrázky, počet značek, počet akcí a první typ akce.
+Zkontrolujte, zda je objekt [ImageKnowledge](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.models.imageknowledge?view=azure-java-stable) null. Pokud ne, vytiskněte token přehledů obrázků, počet značek, počet akcí a typ první akce.
 
 [!code-java[Print token and tags](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=printVisualSearchResults)]
 
@@ -155,7 +155,7 @@ Aplikaci můžete vytvořit pomocí:
 gradle build
 ```
 
-Spusťte aplikaci s cílem `run`:
+Spusťte aplikaci `run` s cílem:
 
 ```console
 gradle run
@@ -163,12 +163,12 @@ gradle run
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
+Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, můžete odstranit prostředek nebo skupinu prostředků. Odstraněním skupiny prostředků také odstraníte všechny další prostředky, které jsou s ní spojené.
 
-* [Azure Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Sestavení webové aplikace s jednou stránkou](tutorial-bing-visual-search-single-page-app.md)
+> [Vytvoření jednostránkové webové aplikace](tutorial-bing-visual-search-single-page-app.md)

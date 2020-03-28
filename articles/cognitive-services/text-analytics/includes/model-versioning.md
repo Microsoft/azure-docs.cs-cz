@@ -1,7 +1,7 @@
 ---
-title: Správa verzí modelů
+title: Správa verzí modelu
 titleSuffix: Azure Cognitive Services
-description: Zadat verze modelu v koncových bodech V3
+description: Určení verzí modelu v koncových bodech V3
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 4cd8d0901ce23fb227bb6919dee18f5aa3d063ed
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77089086"
 ---
-Verze 3 rozhraní API pro analýzu textu umožňuje zvolit verzi modelu, která je pro vaše data nejaktuálnější. Pomocí volitelného parametru `model-version` vyberte verzi modelu, která je pro vaše požadavky požadovaná. Pokud tento parametr není zadán, rozhraní API bude ve výchozím nastavení `latest`, což je nejnovější stabilní verze. I když můžete použít nejnovější verzi modelu v jakékoli žádosti, v každé verzi se aktualizují jenom některé funkce. Následující tabulka popisuje, které funkce byly v každé verzi modelu aktualizované:
+Verze 3 rozhraní API pro analýzu textu umožňuje zvolit verzi modelu, která je pro vaše data nejaktuálnější. Pomocí volitelného `model-version` parametru vyberte verzi modelu, která je požadovaná pro vaše požadavky. Pokud tento parametr není zadán rozhraní `latest`API bude výchozí na , nejnovější stabilní verze. I když můžete použít nejnovější verzi modelu v libovolném požadavku, pouze některé funkce jsou aktualizovány v každé verzi. Následující tabulka popisuje, které funkce byly aktualizovány v každé verzi modelu:
 
 | Verze modelu           | Aktualizované funkce         | Nejnovější verze pro:           |
 |-------------------------|--------------------------|--------------------------|
@@ -24,7 +24,7 @@ Verze 3 rozhraní API pro analýzu textu umožňuje zvolit verzi modelu, která 
 | `2019-10-01`            | Rozpoznávání entit, analýza mínění  | Detekce jazyka, extrakce klíčových frází, analýza mínění|
 
 
-Každá odpověď z koncových bodů V3 obsahuje pole `model-version` určující verzi modelu, která byla použita.
+Každá odpověď z koncových bodů `model-version` verze 3 obsahuje pole určující použitou verzi modelu.
 
 ```json
 {
@@ -33,4 +33,4 @@ Každá odpověď z koncových bodů V3 obsahuje pole `model-version` určujíc�
     "model-version": "2019-10-01"
 }
 ```
-Podrobnosti o aktualizacích pro tyto verze modelu najdete v tématu [co je nového](../whats-new.md) .
+Podrobnosti o aktualizacích těchto verzí modelu najdete v [tématu Co je nového.](../whats-new.md)

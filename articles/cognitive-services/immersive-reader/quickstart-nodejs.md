@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Vytvoření webové aplikace, která spustí moderní čtečku s využitím Node. js'
+title: 'Úvodní příručka: Vytvoření webové aplikace, která spustí immersive Reader s Node.js'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu vytvoříte webovou aplikaci od začátku a přidáte funkce rozhraní API pro moderní čtečku.
+description: V tomto rychlém startu vytvoříte webovou aplikaci od začátku a přidáte funkci rozhraní API pro immersive Reader.
 author: pasta
 manager: nitinme
 ms.service: cognitive-services
@@ -10,29 +10,29 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: pasta
 ms.openlocfilehash: 749e75fed409632c613713a49154e4cd8dc265b3
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75946324"
 ---
-# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-nodejs"></a>Rychlý Start: Vytvoření webové aplikace, která spustí moderní čtečku (Node. js)
+# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-nodejs"></a>Úvodní příručka: Vytvoření webové aplikace, která spustí immersive Reader (Node.js)
 
-[Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
+[Immersive Reader](https://www.onenote.com/learningtools) je inkluzivně navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
-V tomto rychlém startu vytvoříte webovou aplikaci od začátku a integrujete moderní čtečku pomocí sady moderních čtenářů. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs).
+V tomto rychlém startu vytvoříte webovou aplikaci od začátku a integrujete immersive Reader pomocí sady Immersive Reader SDK. Úplný pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](./how-to-create-immersive-reader.md) si můžete nastavit. Při konfiguraci vlastností prostředí budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
-* [Node. js](https://nodejs.org/) a [příze](https://yarnpkg.com)
-* Rozhraní IDE, jako je například [Visual Studio Code](https://code.visualstudio.com/)
+* Prostředek immersive Reader nakonfigurovaný pro ověřování Azure Active Directory. Podle [těchto pokynů](./how-to-create-immersive-reader.md) se připravte. Při konfiguraci vlastností prostředí budete potřebovat některé hodnoty vytvořené zde. Uložte výstup relace do textového souboru pro budoucí použití.
+* [Node.js](https://nodejs.org/) a [příze](https://yarnpkg.com)
+* IDE, jako je [například visual studio kód](https://code.visualstudio.com/)
 
-## <a name="create-a-nodejs-web-app-with-express"></a>Vytvoření webové aplikace v Node. js pomocí Expressu
+## <a name="create-a-nodejs-web-app-with-express"></a>Vytvoření webové aplikace Node.js pomocí expressu
 
-Pomocí nástroje `express-generator` vytvořte webovou aplikaci v Node. js.
+Vytvořte pomocí `express-generator` nástroje webovou aplikaci Node.js.
 
 ```bash
 npm install express-generator -g
@@ -40,7 +40,7 @@ express --view=pug quickstart-nodejs
 cd quickstart-nodejs
 ```
 
-Nainstalujte závislosti příze a přidejte závislosti `request` a `dotenv`, které se použijí později v rychlém startu.
+Nainstalujte závislosti příze a přidejte `dotenv`závislosti a , které budou použity `request` později v rychlém startu.
 
 ```bash
 yarn
@@ -50,10 +50,10 @@ yarn add dotenv
 
 ## <a name="set-up-authentication"></a>Nastavení ověřování
 
-### <a name="configure-authentication-values"></a>Konfigurovat hodnoty ověřování
+### <a name="configure-authentication-values"></a>Konfigurace hodnot ověřování
 
-V kořenovém adresáři projektu vytvořte nový soubor s názvem _. env_ . Vložte do něj následující kód a zadejte hodnoty, které jste zadali při vytváření prostředku pro moderní čtečku.
-Nezahrnujte uvozovky nebo znaky "{" a "}".
+Vytvořte nový soubor s názvem _ENV_ v kořenovém adresáři projektu. Vložte do něj následující kód a zadejte hodnoty dané při vytváření prostředku imersive Reader.
+Nezahrnejte uvozovky ani znaky {a "}".
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -62,18 +62,18 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-Ujistěte se, že tento soubor nechcete potvrdit do správy zdrojových kódů, protože obsahuje tajné klíče, které by neměly být zveřejněny.
+Ujistěte se, že tento soubor není potvrzena do správy zdrojového kódu, protože obsahuje tajné klíče, které by neměly být zveřejněny.
 
-V dalším kroku otevřete _App. js_ a na začátek souboru přidejte následující. Tím se načte vlastnosti definované v souboru. env jako proměnné prostředí do uzlu.
+Dále otevřete _soubor app.js_ a přidejte následující do horní části souboru. Tím se vlastnosti definované v souboru ENV jako proměnné prostředí načtou do uzlu.
 
 ```javascript
 require('dotenv').config();
 ```
 
-### <a name="update-the-router-to-acquire-the-token"></a>Aktualizace směrovače pro získání tokenu
+### <a name="update-the-router-to-acquire-the-token"></a>Aktualizace směrovače za účelem získání tokenu
 Otevřete soubor _routes\index.js_ a nahraďte automaticky generovaný kód následujícím kódem.
 
-Tento kód vytvoří koncový bod rozhraní API, který získá ověřovací token Azure AD pomocí vašeho hesla instančního objektu. Také načte subdoménu. Pak vrátí objekt obsahující token a subdoménu.
+Tento kód vytvoří koncový bod rozhraní API, který získá ověřovací token Azure AD pomocí hesla instančního objektu. Také načte subdoménu. Potom vrátí objekt obsahující token a subdoménu.
 
 ```javascript
 var express = require('express');
@@ -125,11 +125,11 @@ router.get('/GetTokenAndSubdomain', function(req, res) {
 module.exports = router;
 ```
 
-Koncový bod rozhraní API **GetTokenAndSubdomain** by měl být zabezpečený za určitou formou ověřování (například [OAuth](https://oauth.net/2/)), aby se zabránilo neoprávněným uživatelům ve získávání tokenů k použití proti vaší službě s moderní čtečkou a fakturaci. Tato práce překračuje rámec tohoto rychlého startu.
+Koncový bod rozhraní API **GetTokenAndSubdomain** by měl být zabezpečen za nějakou formou ověřování (například [OAuth),](https://oauth.net/2/)aby se zabránilo neoprávněným uživatelům získat tokeny pro použití proti službě Immersive Reader a fakturaci; práce je nad rámec tohoto rychlého startu.
 
-## <a name="add-sample-content"></a>Přidat ukázkový obsah
+## <a name="add-sample-content"></a>Přidání ukázkového obsahu
 
-Nyní přidáme do této webové aplikace vzorový obsah. Otevřete _views\index.pug_ a nahraďte automaticky generovaný kód touto ukázkou:
+Nyní přidáme ukázkový obsah do této webové aplikace. Otevřete _zobrazení\index.pug_ a nahraďte automaticky generovaný kód touto ukázkou:
 
 ```pug
 doctype html
@@ -235,26 +235,26 @@ script(type="text/javascript").
 ```
 
 
-Všimněte si, že veškerý text má atribut **lang** , který popisuje jazyky textu. Tento atribut pomáhá modernímu čtečce poskytovat relevantní jazykové a gramatické funkce.
+Všimněte si, že celý text má **atribut lang,** který popisuje jazyky textu. Tento atribut pomáhá immersive Reader poskytnout příslušné funkce jazyka a gramatiky.
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-Naše webová aplikace je teď připravená. Spusťte aplikaci spuštěním:
+Naše webová aplikace je nyní připravena. Spuštění aplikace spuštěním:
 
 ```bash
 npm start
 ```
 
-Otevřete prohlížeč a přejděte na _http://localhost:3000_ . Měli byste vidět následující:
+Otevřete prohlížeč a _http://localhost:3000_přejděte na . Měli byste vidět následující:
 
 ![Ukázková aplikace](./media/quickstart-nodejs/1-buildapp.png)
 
-## <a name="launch-the-immersive-reader"></a>Spuštění moderního čtecího zařízení
+## <a name="launch-the-immersive-reader"></a>Spuštění immersive Reader
 
-Po kliknutí na tlačítko "moderní čtečka" se zobrazí moderní čtečka, která se spustí s obsahem na stránce.
+Když kliknete na tlačítko "Immersive Reader", uvidíte Immersive Reader zahájena s obsahem na stránce.
 
 ![Asistivní čtečka](./media/quickstart-nodejs/2-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)
+* Seznamte se s [sadou Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) a [referenční sadou Immersive Reader SDK](./reference.md)

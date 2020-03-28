@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: vytvoření projektu pro detekci objektů pomocí sady Custom Vision SDK pro Node. js'
+title: 'Úvodní příručka: Vytvoření projektu detekce objektů pomocí sady Custom Vision SDK pro soubor Node.js'
 titleSuffix: Azure Cognitive Services
-description: Vytvořte projekt, přidejte značky, nahrajte obrázky, proveďte výuku projektu a detekuje objekty pomocí sady Node. js SDK.
+description: Vytvořte projekt, přidejte značky, nahrajte obrázky, trénujte projekt a detekujte objekty pomocí sady SDK Node.js.
 services: cognitive-services
 author: areddish
 manager: daauld
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: 94013b735f70358d0c49512e6d90cd1d03e78d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705713"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Rychlý Start: vytvoření projektu pro detekci objektů pomocí sady Custom Vision Node. js SDK
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Úvodní příručka: Vytvoření projektu detekce objektů pomocí sady SDK Custom Vision Node.js
 
-V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s Node. js k sestavení modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro sestavení vlastní aplikace Node. js.
+Tento článek ukazuje, jak začít používat vlastní vize SDK s Node.js k vytvoření modelu detekce objektů. Po vytvoření můžete přidat označené oblasti, nahrát obrázky, trénovat projekt, získat adresu URL koncového bodu publikované předpovědi projektu a použít koncový bod k programovému testování bitové kopie. Tento příklad použijte jako šablonu pro vytváření vlastní aplikace Node.js.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Je nainstalovaný [Node. js 8](https://www.nodejs.org/en/download/) nebo novější.
-- [npm](https://www.npmjs.com/) je nainstalovaný.
+- [Node.js 8](https://www.nodejs.org/en/download/) nebo novější nainstalován.
+- [npm](https://www.npmjs.com/) nainstalován.
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s No
 
 ## <a name="install-the-custom-vision-sdk"></a>Instalace sady Custom Vision SDK
 
-Chcete-li do projektu nainstalovat sady SDK služby Custom Vision Service pro Node. js, spusťte následující příkazy:
+Chcete-li do projektu nainstalovat sady SDK služby Vlastní vize pro soubor Node.js, spusťte následující příkazy:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -43,11 +43,11 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ## <a name="add-the-code"></a>Přidání kódu
 
-V upřednostňovaném adresáři projektu vytvořte nový soubor s názvem *Sample. js* .
+Vytvořte nový soubor s názvem *sample.js* v preferovaném adresáři projektu.
 
 ### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
-Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do příslušných definic vložte klíče předplatného a nastavte hodnotu cesty sampleDataRoot na cestu ke složce imagí. Ujistěte se, že hodnota koncového bodu odpovídá koncovým bodům školení a předpovědi, které jste vytvořili v [Customvision.AI](https://www.customvision.ai/). Všimněte si, že rozdíl mezi vytvořením projektu detekce objektu a klasifikace obrázků je doména zadaná ve volání **createProject** .
+Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Vložte klíče předplatného do příslušných definic a nastavte hodnotu cesty sampleDataRoot na cestu složky obrázku. Ujistěte se, že hodnota koncového bodu odpovídá koncovým bodům školení a předpovědi, které jste vytvořili v [Customvision.ai](https://www.customvision.ai/). Všimněte si, že rozdíl mezi vytvořením objektu detekce a image klasifikace projektu je doména zadaná ve volání **createProject.**
 
 ```javascript
 const fs = require('fs');
@@ -86,21 +86,21 @@ async function asyncForEach (array, callback) {
 
 ### <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
-Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující kód na konec souboru *Sample. js*:
+Chcete-li do projektu vytvořit značky klasifikace, přidejte na konec *souboru sample.js*následující kód :
 
 ```javascript
     const forkTag = await trainer.createTag(sampleProject.id, "Fork");
     const scissorsTag = await trainer.createTag(sampleProject.id, "Scissors");
 ```
 
-### <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
+### <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
 
-Při označování obrázků v projektech detekce obrázků je potřeba zadat oblast každého označeného objektu pomocí normalizovaných souřadnic. 
+Když označíte obrázky v projektech detekce objektů, je nutné zadat oblast každého tagovaného objektu pomocí normalizovaných souřadnic. 
 
 > [!NOTE]
-> Pokud nemáte k označení souřadnic oblastí k dispozici nástroj pro kliknutí a přetažení, můžete použít webové uživatelské rozhraní na adrese [Customvision.AI](https://www.customvision.ai/). V tomto příkladu jsou souřadnice již poskytovány.
+> Pokud nemáte nástroj pro klepnutí a přetažení, který by označoval souřadnice oblastí, můžete použít webové uživatelské uživatelské tlačítko na [Customvision.ai](https://www.customvision.ai/). V tomto příkladu jsou již k dispozici souřadnice.
 
-Obrázky, značky a oblasti do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Všimněte si, že pro účely tohoto kurzu jsou oblasti pevně vloženy v kódu. Oblasti určují ohraničující rámeček s normalizovanými souřadnicemi, které jsou v tomto pořadí: vlevo, nahoře, šířka, výška. Do jedné dávky můžete nahrát až 64 imagí.
+Obrázky, značky a oblasti do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Všimněte si, že pro účely tohoto kurzu jsou oblasti pevně vloženy v kódu. Oblasti určují ohraničující rámeček s normalizovanými souřadnicemi, které jsou v tomto pořadí: vlevo, nahoře, šířka, výška. V jedné dávce můžete nahrát až 64 obrázků.
 
 ```javascript
 const forkImageRegions = {
@@ -179,9 +179,9 @@ await asyncForEach(scissorsFiles, async (file) => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project-and-publish"></a>Výuka projektu a publikování
+### <a name="train-the-project-and-publish"></a>Trénování projektu a publikování
 
-Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
+Tento kód vytvoří první iteraci modelu předpověď a potom publikuje tuto iteraci do koncového bodu předpověď. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není k dispozici v koncovém bodu předpověď, dokud je publikován.
 
 ```javascript
 console.log("Training...");
@@ -201,7 +201,7 @@ console.log("Training status: " + trainingIteration.status);
 await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získání a použití publikované iterace na koncovém bodu předpovědi
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získat a použít publikovanou iteraci v koncovém bodě předpověď
 
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
@@ -221,7 +221,7 @@ Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpo
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte *Sample. js*.
+Spusťte *soubor sample.js*.
 
 ```shell
 node sample.js

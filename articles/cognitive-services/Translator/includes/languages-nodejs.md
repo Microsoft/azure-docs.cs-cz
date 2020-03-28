@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: fd8b4ae06018de1d03ca60e836534a535c8f5df8
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906944"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
@@ -31,7 +31,7 @@ Tyto moduly jsou potřeba k vytvoření požadavku HTTP a jedinečného identifi
 
 ## <a name="set-the-endpoint"></a>Nastavení koncového bodu
 
-Tato ukázka se pokusí přečíst koncový bod Translator Text z proměnné prostředí: `TRANSLATOR_TEXT_ENDPOINT`. Pokud proměnné prostředí neznáte, můžete hodnotu `endpoint` nastavit jako řetězec a okomentovat podmíněný příkaz.
+Tato ukázka se pokusí přečíst koncový bod `TRANSLATOR_TEXT_ENDPOINT`překladače textu z proměnné prostředí: . Pokud proměnné prostředí neznáte, můžete hodnotu `endpoint` nastavit jako řetězec a okomentovat podmíněný příkaz.
 
 ```javascript
 lorum ipsum
@@ -42,7 +42,7 @@ lorum ipsum
 Metoda `request()` zpřístupněná prostřednictvím modulu požadavků nám umožňuje předat metodu HTTP, adresu URL, parametry požadavku, hlavičky a text JSON jako objekt `options`. V tomto fragmentu kódu nakonfigurujeme požadavek:
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků [najdete v článku Translator text API 3,0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
 ```javascript
 let options = {
@@ -60,7 +60,7 @@ let options = {
 };
 ```
 
-Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Pokud používáte předplatné služeb Cognitive Services s více `Ocp-Apim-Subscription-Region` službami, musíte také zahrnout parametry požadavku. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="make-the-request-and-print-the-response"></a>Vytvoření požadavku a tisk odpovědi
 
@@ -87,7 +87,7 @@ Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na
 
 ## <a name="sample-response"></a>Ukázková odpověď
 
-V tomto [seznamu jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)Najděte zkratku země/oblasti.
+Zkratku země/oblasti naleznete v tomto [seznamu jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 Ukázka je zkrácená, aby zobrazovala jenom fragment výsledku:
 
@@ -181,7 +181,7 @@ Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapome
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na odkaz rozhraní API pochopit vše, co můžete dělat s překladačem text api.
 
 > [!div class="nextstepaction"]
-> [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

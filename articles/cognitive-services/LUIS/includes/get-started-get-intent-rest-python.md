@@ -1,5 +1,5 @@
 ---
-title: Získání záměru pomocí volání REST v Pythonu
+title: Získání záměru s voláním REST v Pythonu
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,40 +9,40 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
 ms.openlocfilehash: 23ac98f91c989c9bedb6b91e6a7ce26dc164ac5a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987755"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 * [Python 3.6](https://www.python.org/downloads/) nebo novější.
-* [Visual Studio Code](https://code.visualstudio.com/)
-* ID veřejné aplikace: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* [Kód visual studia](https://code.visualstudio.com/)
+* ID veřejné aplikace:`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="create-luis-runtime-key-for-predictions"></a>Vytvoření klíče LUIS runtime pro předpovědi
+## <a name="create-luis-runtime-key-for-predictions"></a>Vytvořit klíč runtime LUIS pro předpovědi
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)
-1. Klikněte na [vytvořit **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Zadejte všechna požadovaná nastavení pro klíč **za běhu** :
+1. Přihlášení k [portálu Azure](https://portal.azure.com)
+1. Klikněte na [Vytvořit **jazykové znalosti.** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+1. Zadejte všechna požadovaná nastavení pro klíč **Runtime:**
 
     |Nastavení|Hodnota|
     |--|--|
     |Name (Název)|Požadovaný název (2-64 znaků)|
-    |Předplatné|Vyberte odpovídající předplatné.|
-    |Umístění|Výběr libovolného okolí a dostupného umístění|
-    |Cenová úroveň|`F0` – minimální cenová úroveň|
-    |Skupina prostředků|Vyberte dostupnou skupinu prostředků.|
+    |Předplatné|Vybrat příslušné předplatné|
+    |Umístění|Vyberte libovolné blízké a dostupné místo|
+    |Cenová úroveň|`F0`- minimální cenová úroveň|
+    |Skupina prostředků|Výběr dostupné skupiny prostředků|
 
-1. Klikněte na **vytvořit** a počkejte na vytvoření prostředku. Po vytvoření přejděte na stránku prostředků.
-1. Shromážděte nakonfigurované `endpoint` a `key`.
+1. Klikněte na **Vytvořit** a počkejte na vytvoření prostředku. Po vytvoření přejděte na stránku prostředků.
+1. Sbírat `endpoint` nakonfigurované a `key`.
 
 ## <a name="get-intent-from-the-prediction-endpoint"></a>Získat záměr z koncového bodu předpovědi
 
-Použijte Python k dotazování [koncového bodu předpovědi](https://aka.ms/luis-apim-v3-prediction) a získejte výsledek předpovědi.
+Použijte Python k [dotazování koncového bodu předpověď](https://aka.ms/luis-apim-v3-prediction) a získat výsledek předpověď.
 
-1. Zkopírujte tento fragment kódu do souboru s názvem `predict.py`:
+1. Zkopírujte tento fragment kódu do `predict.py`souboru s názvem :
 
     ```python
     ########### Python 3.6 #############
@@ -75,14 +75,14 @@ Použijte Python k dotazování [koncového bodu předpovědi](https://aka.ms/lu
         print(f'{e}')
     ```
 
-1. Hodnoty `YOUR-KEY` a `YOUR-ENDPOINT` nahraďte vlastním klíčovým a koncovým bodem **prostředí** pro předpověď.
+1. Nahraďte hodnoty `YOUR-KEY` a `YOUR-ENDPOINT` vlastním predikčním klíčem **runtime** a koncovým bodem.
 
     |Informace|Účel|
     |--|--|
-    |`YOUR-KEY`|Klíč **běhu** pro předpověď znaků 32.|
-    |`YOUR-ENDPOINT`| Koncový bod adresy URL předpovědi Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
+    |`YOUR-KEY`|Váš klíč **runtime** predikce 32 znaků.|
+    |`YOUR-ENDPOINT`| Koncový bod adresy URL předpovědi. Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
-1. Nainstalujte závislost `requests`. Slouží k provádění požadavků HTTP:
+1. Nainstalujte `requests` závislost. Používá se k použití požadavků HTTP:
 
     ```console
     pip install requests
@@ -94,13 +94,13 @@ Použijte Python k dotazování [koncového bodu předpovědi](https://aka.ms/lu
     python predict.py
     ```
 
-1. Zkontrolujte odpověď předpovědi, která se vrátí jako JSON:
+1. Zkontrolujte předpověď odpověď, která je vrácena jako JSON:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Tady je odpověď JSON formátovanou pro čitelnost:
+    Zde je odpověď JSON formátován pro čitelnost:
 
     ```JSON
     {
@@ -145,9 +145,9 @@ Použijte Python k dotazování [koncového bodu předpovědi](https://aka.ms/lu
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s tímto rychlým startem hotovi, odstraňte soubor ze systému souborů.
+Po dokončení tohoto rychlého startu odstraňte soubor ze systému souborů.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přidat projevy a vlak](../get-started-get-model-rest-apis.md)
+> [Přidání promluv a vytáčení](../get-started-get-model-rest-apis.md)

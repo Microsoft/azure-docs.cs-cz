@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: provedení vyhledávání na webu pomocí Vyhledávání na webu Bingu přejít REST API'
+title: 'Úvodní příručka: Provedení webového vyhledávání pomocí rozhraní Go - Bing Web Search REST API'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete posílat požadavky na Vyhledávání na webu Bingu REST API pomocí jazyka přejít a přijmout odpověď JSON.
+description: Tento rychlý start slouží k odesílání požadavků do rozhraní REST API pro vyhledávání na webu Bingu pomocí go a k přijetí odpovědi JSON
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -13,18 +13,18 @@ ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
 ms.openlocfilehash: 589f7884f390ae57df4e946bcd34ca3bda629ed8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978794"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API a přejít
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Úvodní příručka: Hledání na webu pomocí rozhraní REST API a go pro vyhledávání na webu Bingu
 
-Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace přechodu odešle do rozhraní API požadavek hledání a zobrazí odpověď. I když je tato aplikace napsaná v cestách, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+Pomocí tohoto rychlého startu můžete provést první volání do rozhraní API pro vyhledávání na webu Bingu a obdržet odpověď JSON. Tato aplikace Go odešle požadavek na vyhledávání do rozhraní API a zobrazí odpověď. Zatímco tato aplikace je napsána v Go, API je RESTful webová služba kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Předpoklady
-Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
+## <a name="prerequisites"></a>Požadavky
+Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 
 * [Binární soubory Go](https://golang.org/dl/)
 * Klíč předplatného
@@ -111,7 +111,7 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Deklarace hlavní funkce a definování proměnných  
 
-Tento kód deklaruje hlavní funkci a nastaví potřebné proměnné. `endpoint` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte správnost koncového bodu a nahraďte hodnotu `token` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz přizpůsobíte tím, že místo `searchTerm` zadáte jinou hodnotu.
+Tento kód deklaruje hlavní funkci a nastaví potřebné proměnné. `endpoint`může být globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek. Ověřte správnost koncového bodu a nahraďte hodnotu `token` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu.
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -307,7 +307,7 @@ func main() {
 
 ## <a name="sample-response"></a>Ukázková odpověď  
 
-Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. Tato ukázková odpověď byla naformátována pomocí `BingAnswer` struktury a zobrazuje `result.Name` a `result.URL`.
+Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. Tato ukázková odpověď byla `BingAnswer` naformátována `result.Name` pomocí `result.URL`struktury a zobrazuje a .
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services

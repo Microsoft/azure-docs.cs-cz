@@ -11,21 +11,21 @@ ms.custom: include file
 ms.date: 06/24/2019
 ms.author: diberry
 ms.openlocfilehash: f69502907e2dd3c5b3c64634b1b11e10af5397f5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67438439"
 ---
-## <a name="more-information-about-bots"></a>Další informace o robotů
+## <a name="more-information-about-bots"></a>Více informací o robotech
 
-Další informace o používání této služby s roboty začněte na následujících odkazech:
+Další informace o používání této služby u robotů získáte v následujících zdrojích:
 
-|Resource|Účel|
+|Prostředek|Účel|
 |--|--|
-|[Azure Bot service](https://dev.botframework.com/)|Azure Bot service poskytuje kompletní hostované v cloudu webové služby pomocí koncového bodu robotů. Použití služby [Bot framework](https://github.com/Microsoft/botframework), která je k dispozici v několika jazycích.|
-|[Bot Framework](https://github.com/Microsoft/botframework)|Microsoft Bot Framework je komplexní platforma pro vývoj konverzační AI prostředí na podnikové úrovni.|
-|[Emulátor bot Framework](https://github.com/Microsoft/botframework#Bot-Framework-Emulator)|Emulátor Bot Framework je desktopová aplikace napříč platformami, která umožňuje vývojářům otestovat a ladit robotů, vytvářejí pomocí sady SDK Bot Framework robota. Emulátor Bot Framework můžete použít k testování robotů spuštěn místně v počítači nebo pro připojení k vzdálené spouštění robotů.|
-|[Bot nástroje](https://github.com/Microsoft/botbuilder-tools)|Nástroje rozhraní Bot Framework jsou kolekcí nástroje příkazového řádku pro různé platformy určená pro pracovní postup vývoje robotů začátku do konce. |
-|[Ukázky bot builder](https://github.com/Microsoft/BotBuilder-Samples)|Plně vyvinuli bot ukázky jsou navržené pro ilustraci scénáře, které budete potřebovat k implementaci pro vytváření skvělých robotů.|
+|[Služba Azure Bot](https://dev.botframework.com/)|Služba Azure Bot poskytuje kompletní webovou službu hostovočenou v cloudu s koncovým bodem robota. Služby používají [rozhraní Bot framework](https://github.com/Microsoft/botframework), které je k dispozici v několika jazycích.|
+|[Architektura robotů](https://github.com/Microsoft/botframework)|Microsoft Bot Framework je komplexní platforma pro vytváření konverzačních prostředí na podnikové úrovni.|
+|[Emulátor architektury botů](https://github.com/Microsoft/botframework#Bot-Framework-Emulator)|Bot Framework Emulátor je desktopová aplikace pro různé platformy, která umožňuje vývojářům botů testovat a ladit roboty vytvořené pomocí sady Bot Framework SDK. Emulátor Rozhraní botů můžete použít k testování robotů spuštěných místně na vašem počítači nebo k připojení k robotům spuštěným na dálku.|
+|[Nástroje pro roboty](https://github.com/Microsoft/botbuilder-tools)|Nástroje Bot Framework jsou kolekce nástrojů příkazového řádku pro různé platformy, které jsou navrženy tak, aby pokrývaly pracovní postup vývoje robotů od začátku do konce. |
+|[Ukázky tvůrce botů](https://github.com/Microsoft/BotBuilder-Samples)|Plně vyvinuté ukázky botů jsou navrženy tak, aby ilustrovaly scénáře, které budete muset implementovat, abyste vytvořili skvělé roboty.|
 |||

@@ -1,7 +1,7 @@
 ---
-title: Co je nástroj pro rozpoznávání rukopisu? – Rozhraní API pro rozpoznávání rukopisu
+title: Co je rozpoznávač inkoustu? - Rozhraní API pro rozpoznávání inkoustu
 titleSuffix: Azure Cognitive Services
-description: Integrujte Nástroj pro rozpoznávání rukopisu do aplikací, webů, nástrojů a dalších řešení, aby bylo možné identifikovat a používat data tahů perem jako vstup.
+description: Integrujte rozpoznávání rukopisu do svých aplikací, webů, nástrojů a dalších řešení, abyste mohli identifikovat a použít data tahu perem a použít je jako vstup.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,50 +11,50 @@ ms.topic: overview
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448152"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Co je rozhraní API pro rozpoznávání rukopisu?
 
 
-Služba rozpoznávání rukopisu poskytuje cloudové REST API k analýze a rozpoznávání obsahu digitálního inkoustu. Na rozdíl od služeb, které používají optické rozpoznávání znaků (OCR), vyžaduje rozhraní API jako vstup data digitálního tahu perem. Digitální tahy perem jsou časově uspořádané sady 2D bodů (souřadnice X, Y), které představují pohyb nástrojů vstupu, jako jsou například digitální pera nebo prsty. Pak rozpoznává obrazce a ručně psaný obsah ze vstupu a vrátí odpověď JSON obsahující všechny rozpoznané entity.
+Služba Rozpoznávání rukopisu Cognitive Service poskytuje cloudové rozhraní REST API pro analýzu a rozpoznávání obsahu digitálního inkoustu. Na rozdíl od služeb, které používají optické rozpoznávání znaků (OCR), rozhraní API vyžaduje data digitálního tahu perem jako vstup. Tahy digitálních per jsou časově uspořádané sady 2D bodů (souřadnice X,Y), které představují pohyb vstupních nástrojů, jako jsou digitální pera nebo prsty. Potom rozpozná tvary a ručně psaný obsah ze vstupu a vrátí odpověď JSON obsahující všechny rozpoznané entity.
 
 ![Vývojový diagram popisující odeslání vstupu tahu perem do rozhraní API](media/ink-recognizer-pen-graph.svg)
 
 ## <a name="features"></a>Funkce
 
-Pomocí rozhraní API pro rozpoznávání rukopisu můžete snadno rozpoznat rukou psaný obsah v aplikacích. 
+Pomocí rozhraní API pro rozpoznávání rukopisu můžete snadno rozpoznat ručně psaný obsah ve vašich aplikacích. 
 
 |Funkce  |Popis  |
 |---------|---------|
-| Rozpoznávání ručně psaného textu | Rozpoznávání rukopisného obsahu v 63 základních [jazycích a národních prostředích](language-support.md) | 
-| Rozpoznávání rozložení | Získat strukturální informace o obsahu digitálního inkoustu Rozdělte obsah do oblasti psaní oblastí, odstavců, řádků, slov a seznamů s odrážkami. Vaše aplikace pak mohou pomocí informací o rozložení sestavovat další funkce, jako je automatické formátování seznamu a zarovnání tvarů. |
-| Rozpoznávání obrazců | Při pořizování poznámek rozpoznáváme nejčastěji používané [geometrické obrazce](concepts/send-ink-data.md#shapes-recognized-by-the-ink-recognizer-api) . |
-| Kombinované tvary a rozpoznávání textu | Rozpoznat, které tahy perem patří k obrazcům nebo ručnímu obsahu, a samostatně je klasifikovat.|
+| Rozpoznávání rukopisu | Rozpoznávejte ručně psaný obsah v 63 základních [jazycích a národních prostředích](language-support.md). | 
+| Rozpoznávání rozvržení | Získejte strukturální informace o obsahu digitálního inkoustu. Rozdělte obsah na oblasti zápisu, odstavce, řádky, slova, seznamy s odrážkami. Aplikace pak mohou pomocí informací o rozložení vytvářet další funkce, jako je automatické formátování seznamu a zarovnání tvarů. |
+| Rozpoznávání obrazců | Rozpoznávejte nejčastěji používané [geometrické tvary](concepts/send-ink-data.md#shapes-recognized-by-the-ink-recognizer-api) při pořizování poznámek. |
+| Kombinované tvary a rozpoznávání textu | Rozpoznejte tahy rukopisu, které patří k tvarům nebo ručně psanému obsahu, a samostatně je klasifikujte.|
 
-## <a name="workflow"></a>Pracovní postupy
+## <a name="workflow"></a>Pracovní postup
 
-Rozhraní API pro rozpoznávání rukopisu je webová služba RESTful, která usnadňuje volání ze všech programovacích jazyků, které mohou provádět požadavky HTTP a analyzovat JSON.
+Rozhraní API rozpoznávání rukopisu je webová služba RESTful, což usnadňuje volání z libovolného programovacího jazyka, který může provádět požadavky HTTP a analyzovat JSON.
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
 Po registraci:
 
-1. Vybere data tahu perem a [naformátuje je](concepts/send-ink-data.md#sending-ink-data) na platný formát JSON.
-1. Odešlete požadavek na rozhraní API pro rozpoznávání rukopisu pomocí vašich dat.
+1. Vezměte data tahu inkoustu a [naformátujte je](concepts/send-ink-data.md#sending-ink-data) do platného JSON.
+1. Odešlete žádost do rozhraní API pro rozpoznávání rukopisu s vašimi daty.
 1. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte si rychlý Start v následujících jazycích, abyste mohli začít volat rozhraní API pro rozpoznávání rukopisu.
-* [C#](quickstarts/csharp.md)
+Zkuste rychlý start v následujících jazycích začít volat do rozhraní API rozpoznávání rukopisu.
+* [C #](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/javascript.md)
+* [Javascript](quickstarts/javascript.md)
 
-Pokud chcete zjistit, jak funguje rozhraní API pro rozpoznávání rukopisu v digitální aplikaci pro rukopis, podívejte se na následující ukázkové aplikace na GitHubu:
+Pokud se chcete podívat, jak rozhraní API pro rozpoznávání rukopisu funguje v digitální aplikaci rukopisu, podívejte se na následující ukázkové aplikace na GitHubu:
 * [C# a Univerzální platforma Windows (UPW)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# a Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [Aplikace webového prohlížeče v Javascriptu](https://go.microsoft.com/fwlink/?linkid=2089908)       

@@ -1,106 +1,106 @@
 ---
-title: 'Kurz: seznam entit – LUIS'
+title: 'Kurz: Entita Seznam – LUIS'
 description: Získejte data, která odpovídají předem definovanému seznamu položek. Každá položka v seznamu může mít synonyma, která také přesně odpovídají.
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79297403"
 ---
-# <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Kurz: získání přesného textu se shodnými daty z entity utterance a list
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Kurz: Získejte přesná data odpovídající textu z entity utterance with list
 
-V tomto kurzu se seznámíte s tím, jak získat data, která se přesně shodují s předdefinovaným seznamem položek.
+V tomto kurzu pochopit, jak získat data, která přesně odpovídá předdefinovaný seznam položek.
 
-**Co se v tomto kurzu naučíte:**
+**V tomto kurzu se dozvíte, jak:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Importovat aplikaci a použít stávající záměr
+> * Import aplikace a použití existujícího záměru
 > * Přidání entity seznamu
-> * Školení, publikování a dotazování aplikace pro získání extrahovaných dat
+> * Trénování, publikování a dotazování aplikace získat extrahovaná data
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="what-is-a-list-entity"></a>Co je entita seznamu?
 
-Entita seznamu je přesný text, který se shoduje se slovy v utterance. Ke každé položce v seznamu může existovat seznam synonym. Pokud chcete vyhledat přesnou shodu, použijte entitu seznam.
+Entita seznamu je přesná shoda textu se slovy v utterance. Ke každé položce v seznamu může existovat seznam synonym. Entitu seznamu použijte, pokud chcete přesnou shodu.
 
-Pro tuto importovanou aplikaci Pizza vytvořte entitu seznam pro různé typy Pizza crust.
+Pro tuto importovoaplikaci pizzy vytvořte entitu seznamu pro různé typy kůry pizzy.
 
 Entita seznamu je vhodná pro tento typ dat, když platí následující:
 
 * Hodnoty dat jsou známou sadou.
 * Tato sada nepřekračuje maximální [hranice](luis-boundaries.md) aplikace LUIS pro tento typ entity.
-* Text v utterance se nerozlišuje bez rozlišení velkých a malých písmen s synonymem nebo kanonickým názvem. LUIS nepoužívá seznam za shodou. Odvozování, plural a další variace se nevyřešily pouze entitou seznamu. Chcete-li spravovat variace, zvažte použití [vzoru](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) s volitelnou syntaxí textu.
+* Text v utterance je malá a velká písmena shoda se synonymem nebo kanonický název. Služba LUIS nepoužívá seznam mimo shodu. Vyplývající, množné číslo a další varianty nejsou vyřešeny pouze entitou seznamu. Chcete-li spravovat varianty, zvažte použití [vzoru](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) s volitelnou syntaxí textu.
 
 > [!CAUTION]
-> Pokud si nejste jistí, jestli chcete, aby entita seznamu nebo entita s odkazem na počítač se seznamem frází jako s popisovačem, nejlepším a nejpružnější praxí je použít entitu s frází, která je v seznamu frází jako popisovač. Tato metoda umožňuje LUIS zjistit a roztáhnout hodnoty dat k extrakci.
+> Pokud si nejste jisti, zda chcete entitu seznamu nebo entitu naučenou počítačem se seznamem frází jako popisovač, je nejlepší a nejflexibilnější praxe použít entitu naučenou počítačem se seznamem frází jako popisovač. Tato metoda umožňuje LUIS učit se a rozšířit hodnoty dat extrahovat.
 
-## <a name="import-example-json-and-add-utterances"></a>Import example. JSON a přidání projevy
+## <a name="import-example-json-and-add-utterances"></a>Importovat příklad json a přidat projevy
 
 1.  Stáhněte a uložte [soubor JSON aplikace](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
 
     [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-1. Importovaná aplikace má `OrderPizza` záměr. Vyberte tento záměr a přidejte několik projevy s novými typy crust:
+1. Importovaná aplikace má `OrderPizza` záměr. Vyberte tento záměr a přidejte několik promluv s novými typy kůry:
 
-    |Nový projevy|
+    |Nové projevy|
     |--|--|
-    |Seřaďte si crust malé pepperoniy na úrovni pan a Pizza|
-    |3 tenké crust havajština pizzas|
-    |doručovat 2 crust pizzas s chlebem – hole|
-    |jeden silný crust Pizza pro vyzvednutí|
-    |Jedna hluboká miska pepperoni pizza|
+    |prosím, objednejte si pánev kůra malé pepperoni pizza|
+    |3 tenké kůry havajské pizzy|
+    |dodat 2 plněné kůrky pizzy s chlebovými tyčinkami|
+    |jedna tlustá kůrka pizza pro vyzvednutí|
+    |jedna hluboká miska pepperoni pizza|
 
-## <a name="crust-list-entity"></a>Entita seznamu crust
+## <a name="crust-list-entity"></a>Entita seznamu kůry
 
-Teď, když má záměr **OrderPizza** příklad projevy s crust typy, Luis musí pochopit, která slova reprezentují typy crust.
+Nyní **OrderPizza** záměr má příklad projevy s typy kůry, LUIS potřebuje pochopit, která slova představují typy kůry.
 
 Příklady primárního názvu a synonym jsou:
 
 |Kanonický název|Synonyma|
 |--|--|
-|Hluboká miska|úrovní<br>crust hloubkové misky<br>tlustá<br>silné crust|
-|Posouvání|regulární<br>původně<br>běžnou<br>běžný crust<br>původní crust<br>normální crust|
-|Nejoblíbenější|crustd|
-|Dynamický|tenké crust<br>změny vzhledu<br>crust změny vzhledu|
+|Hluboké jídlo|Hluboké<br>hluboká miska kůra<br>Tlustý<br>hustá kůra|
+|Posouvání|Pravidelné<br>Původní<br>Normální<br>pravidelná kůra<br>původní kůra<br>normální kůra|
+|Plněné|plněná kůrka|
+|Dynamický|tenká kůra<br>Hubená<br>hubená kůra|
 
 1. Na levém panelu vyberte **Entities** (Entity).
 
-1. Vyberte **+ vytvořit**.
+1. Vyberte **+ Vytvořit**.
 
-1. V automaticky otevíraném dialogovém okně entity zadejte `CrustList` jako název entity a **List** (Seznam) jako typ entity. Vyberte **Další**.
-
-    > [!div class="mx-imgBorder"]
-    > ![snímek obrazovky s dialogovým oknem vytvořit novou entitu](media/luis-quickstart-intent-and-list-entity/create-pizza-crust-list-entity.png)
-
-1. Na stránce **vytvořit entitu seznamu** zadejte kanonické názvy a synonyma pro každý kanonický název a pak vyberte **vytvořit**.
+1. V automaticky otevíraném dialogovém okně entity zadejte `CrustList` jako název entity a **List** (Seznam) jako typ entity. Vyberte **další**.
 
     > [!div class="mx-imgBorder"]
-    > ![snímek obrazovky s přidáním položek do seznamu](media/luis-quickstart-intent-and-list-entity/add-pizza-crust-items-list-entity.png) entit
+    > ![Snímek obrazovky s dialogovým oknem pro vytváření nové entity](media/luis-quickstart-intent-and-list-entity/create-pizza-crust-list-entity.png)
 
-    Když přidáte entitu seznamu do aplikace LUIS, nemusíte tento text [označovat](label-entity-example-utterance.md) entitou seznamu. Aplikuje se na všechny projevy ve všech záměrech.
+1. Na stránce **Vytvořit entitu seznamu** zadejte kanonické názvy a synonyma pro každý kanonický název a vyberte **vytvořit**.
 
-## <a name="train-the-app-before-testing-or-publishing"></a>Výuka aplikace před testováním nebo publikováním
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky s přidáním položek do entity seznamu](media/luis-quickstart-intent-and-list-entity/add-pizza-crust-items-list-entity.png)
+
+    Když přidáte entitu seznamu do aplikace LUIS, nemusíte [popisovat](label-entity-example-utterance.md) text entitou seznamu. Je použita pro všechny projevy ve všech záměrech.
+
+## <a name="train-the-app-before-testing-or-publishing"></a>Trénování aplikace před testováním nebo publikováním
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app-to-query-from-the-endpoint"></a>Publikování aplikace pro dotaz z koncového bodu
+## <a name="publish-the-app-to-query-from-the-endpoint"></a>Publikování aplikace k dotazování z koncového bodu
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání záměru a předpovědi entit z koncového bodu
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání záměru a predikce entit z koncového bodu
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-2. Přejděte na konec adresy URL v adrese a zadejte následující utterance:
+2. Přejděte na konec adresy URL v adrese a zadejte následující promluvu:
 
     `Deliver 2 deep dish hawaiian pizzas and a thin pepperoni`
 
-    Poslední parametr řetězce dotazu je `query`, což je **dotaz** promluvy.
+    Poslední parametr querystring `query`je , **utterance dotazu**.
 
 
     ```json
@@ -178,23 +178,23 @@ Příklady primárního názvu a synonym jsou:
     }
     ```
 
-    Typy crust byly nalezeny jako přesné shody textu a vráceny v odpovědi JSON. Tyto informace používá klientská aplikace ke zpracování objednávky.
+    Typy kůry byly nalezeny jako přesné textové shody a vráceny v odpovědi JSON. Tyto informace používají klientská aplikace ke zpracování objednávky.
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>Související informace
 
-* [Výpis](luis-concept-entity-types.md#list-entity) koncepčních informací entity
-* [Postup výuky](luis-how-to-train.md)
+* Koncepční informace [o entitě seznamu](luis-concept-entity-types.md#list-entity)
+* [Jak trénovat](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
-* [Testování na portálu LUIS](luis-interactive-test.md)
-* [Koncept – entity](luis-concept-entity-types.md)
-* [Odkaz JSON entity regulárního výrazu](reference-entity-regular-expression.md?tabs=V3)
-* [Postup přidání entit pro extrakci dat](luis-how-to-add-entities.md)
+* [Jak testovat na portálu LUIS](luis-interactive-test.md)
+* [Koncepce - entity](luis-concept-entity-types.md)
+* [JSON odkaz entity regulárního výrazu](reference-entity-regular-expression.md?tabs=V3)
+* [Jak přidat entity pro extrahování dat](luis-how-to-add-entities.md)
 
 ## <a name="next-steps"></a>Další kroky
-Tento kurz přidal příklad projevy a pak vytvořil entitu seznamu pro extrakci přesně vyhovujících textů z projevy. Po natrénování a publikování aplikace jste dotazem adresovaným koncovému bodu zjistili záměr a vrátili extrahovaná data.
+Tento kurz přidal příklad projevy, pak vytvořil seznam entity extrahovat přesné textové shody z projevy. Po natrénování a publikování aplikace jste dotazem adresovaným koncovému bodu zjistili záměr a vrátili extrahovaná data.
 
 > [!div class="nextstepaction"]
-> [Přidat předem vytvořenou entitu s rolí](tutorial-entity-roles.md)
+> [Přidání předem sestavené entity s rolí](tutorial-entity-roles.md)
 

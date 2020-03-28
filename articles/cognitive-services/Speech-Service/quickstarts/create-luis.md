@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření klíče LUIS'
+title: 'Úvodní příručka: Vytvoření klíče služby LUIS'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci LUIS a získat klíč.
 services: cognitive-services
@@ -11,17 +11,17 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: dapine
 ms.openlocfilehash: 5b1a5ac4867379457d161d07f4f4f2fc2d8ee6c3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77119594"
 ---
-# <a name="quickstart-getting-a-luis-endpoint-key"></a>Rychlý Start: získání klíče koncového bodu LUIS
+# <a name="quickstart-getting-a-luis-endpoint-key"></a>Úvodní příručka: Získání klíče koncového bodu LUIS
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete s tímto kurzem, ujistěte se, že máte následující položky:
+Než začnete tento kurz, ujistěte se, že máte následující položky:
 
 * Účet služby LUIS. Můžete ho získat zdarma prostřednictvím [portálu LUIS](https://www.luis.ai/home).
 
@@ -29,34 +29,34 @@ Než začnete s tímto kurzem, ujistěte se, že máte následující položky:
 
 Služba LUIS se integruje se službou Speech za účelem rozpoznávání záměrů z řeči. Nepotřebujete předplatné služby Speech, stačí vám služba LUIS.
 
-LUIS používá tři typy klíčů:
+Služba LUIS používá tři druhy klíčů:
 
 |Typ klíče|Účel|
 |--------|-------|
 |Vytváření obsahu|Umožňuje vytvářet a upravovat aplikace LUIS programově.|
-|Starter|Umožňuje testovat aplikace LUIS jenom pomocí textu.|
-|Koncový bod |Autorizuje přístup ke konkrétní aplikaci LUIS.|
+|Starter|Umožňuje otestovat aplikaci LUIS pouze pomocí textu.|
+|Koncový bod |Autorizuje přístup k určité aplikaci LUIS.|
 
-Pro tento kurz potřebujete typ klíče koncového bodu. V tomto kurzu se používá ukázková aplikace LUIS pro automatizaci, kterou můžete vytvořit pomocí programu pro rychlý Start pro [domovskou automatizaci pomocí předdefinovaných aplikací](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) . Pokud jste vytvořili vlastní aplikaci LUIS, můžete ji místo toho použít.
+Pro účely tohoto kurzu potřebujete typ klíče koncového bodu. Kurz používá příklad domácí automatizace LUIS aplikace, kterou můžete vytvořit podle [použití předem domácí automatizace aplikace](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) rychlý start. Pokud jste vytvořili vlastní aplikaci LUIS, můžete ji místo toho použít.
 
-Když vytvoříte aplikaci LUIS, LUIS automaticky vygeneruje počáteční klíč, abyste mohli otestovat aplikaci pomocí textových dotazů. Tento klíč nepovoluje integraci služby Speech Service a nebude v tomto kurzu fungovat. Vytvořte prostředek LUIS na řídicím panelu Azure a přiřaďte ho do aplikace LUIS. Pro účely tohoto kurzu můžete použít na bezplatnou úroveň předplatného.
+Když vytvoříte aplikaci LUIS, LUIS automaticky vygeneruje počáteční klíč, takže můžete aplikaci otestovat pomocí textových dotazů. Tento klíč neumožňuje integraci služby Rozpoznávání řeči a nebude fungovat s tímto kurzem. Vytvořte prostředek LUIS na řídicím panelu Azure a přiřaďte ho k aplikaci LUIS. Pro účely tohoto kurzu můžete použít na bezplatnou úroveň předplatného.
 
-Po vytvoření prostředku LUIS na řídicím panelu Azure se přihlaste k [portálu Luis](https://www.luis.ai/home), vyberte svou aplikaci na stránce **Moje aplikace** a pak přepněte na stránku **správy** aplikace. Nakonec na bočním panelu vyberte **klíče a koncové body** .
+Po vytvoření prostředku LUIS na řídicím panelu Azure se přihlaste k [portálu LUIS](https://www.luis.ai/home), zvolte aplikaci na stránce **Moje aplikace a** přepněte na stránku **Správa** aplikace. Nakonec vyberte **klíče a koncové body** v postranním panelu.
 
 ![Nastavení klíčů a koncových bodů portálu LUIS](~/articles/cognitive-services/Speech-Service/media/sdk/luis-keys-endpoints-page.png)
 
-Na stránce **klíče a nastavení koncového bodu** :
+Na stránce **Nastavení kláves a koncových bodů:**
 
-1. Přejděte dolů k části **prostředky a klíče** a vyberte **přiřadit prostředek**.
-1. V dialogovém okně **přiřadit klíč k aplikaci** proveďte následující změny:
+1. Posuňte se dolů do části **Zdroje a klíče a** vyberte Přiřadit **prostředek**.
+1. V **dialogovém okně Přiřadit klíč k aplikaci proveďte** následující změny:
 
-   * V části **tenant**klikněte na **Microsoft**.
-   * V části **název předplatného**vyberte předplatné Azure, které obsahuje prostředek Luis, který chcete použít.
-   * V části **klíč**vyberte prostředek Luis, který chcete s aplikací používat.
+   * V části **Tenant**zvolte **Microsoft**.
+   * V **části Název předplatného**zvolte předplatné Azure, které obsahuje prostředek LUIS, který chcete použít.
+   * V části **Klíč**vyberte prostředek LUIS, který chcete s aplikací použít.
 
    Nové předplatné se za chvíli zobrazí v tabulce v dolní části stránky.
 
-1. Vyberte ikonu vedle klíče a zkopírujte ji do schránky. (Můžete použít kterýkoli z klíčů.)
+1. Vyberte ikonu vedle klávesy, chcete-li ji zkopírovat do schránky. (Můžete použít kterýkoli z klíčů.)
 
 ![Klíče předplatného aplikace LUIS](~/articles/cognitive-services/Speech-Service/media/sdk/luis-keys-assigned.png)
 
@@ -64,4 +64,4 @@ Na stránce **klíče a nastavení koncového bodu** :
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Rozpoznávat záměry](~/articles/cognitive-services/Speech-Service/quickstarts/intent-recognition.md)
+> [Rozpoznat záměry](~/articles/cognitive-services/Speech-Service/quickstarts/intent-recognition.md)

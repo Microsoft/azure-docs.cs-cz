@@ -1,12 +1,12 @@
 ---
 ms.openlocfilehash: 7987e8a7a9db06608f663b6ae414788ba8330f65
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175338"
 ---
-## <a name="publish-or-revert"></a>Publikování nebo vrátit zpět
-Probíhají změny, které provedete na instanci vlastního vyhledávání v **konfigurace** kartu mohli ověřit změny. Jakmile budete hotovi, provedete změny a jste připraveni publikovat, klikněte na tlačítko **publikovat**. Změny se neprojeví koncové body produkčního prostředí až po publikování.
+## <a name="publish-or-revert"></a>Publikovat nebo vrátit zpět
+Změny provedené v instanci vlastního hledání se provádějí na kartě **Konfigurace,** abyste je mohli ověřit. Až skončíte s prováděním změn a budete připraveni k publikování, klikněte na **Publikovat**. Změny se neprojeví proti koncovým bodům výroby, dokud nepublikujete.
 
-Před publikováním, pokud se rozhodnete, že nechcete zachovat změny provedené, klikněte na tlačítko **vrácení**. Po obnovení změny konfigurace stavu za provozu je beze změny a **konfigurace** kartu se vrátí zpět tak, aby odpovídaly živé stavu.
+Pokud se před publikováním rozhodnete, že změny, které jste provedli, nechcete zachovat, klepněte na tlačítko **Vrátit**. Když vrátíte změny, konfigurace živého stavu se nezmění a karta **Konfigurace** se vrátí tak, aby odpovídala živému stavu.

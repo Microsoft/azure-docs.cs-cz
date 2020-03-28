@@ -1,5 +1,5 @@
 ---
-title: Co je Translator Text API? – Translator Text API
+title: Co je Translator Text API? - Překladač Text API
 titlesuffix: Azure Cognitive Services
 description: Integrací služby Translator Text API do vašich aplikací, webů, nástrojů a dalších řešení můžete poskytnout vícejazyčná uživatelská prostředí.
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
 ms.openlocfilehash: f6b55163440b25bf69c76e9b1217c439b0884d5d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78331038"
 ---
 # <a name="what-is-the-translator-text-api"></a>Co je Translator Text API?
@@ -28,7 +28,7 @@ Translator Text API je součástí kolekce [rozhraní API služeb Azure Cognitiv
 
 Microsoft Translator je cloudová služba pro strojový překlad. Hlavní službou je Translator Text API, která se využívá v řadě produktů a služeb Microsoftu a v aplikacích a pracovních postupech tisíců firem po celém světě, kde umožňuje šíření obsahu k cílové skupině po celém světě.
 
-Překlad řeči s využitím služby Translator Text API je k dispozici také prostřednictvím [služby Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Kombinuje funkce z Translator Speech API a Custom Speech Service do sjednocené a plně přizpůsobitelné služby. Služba Speech nahrazuje Translator Speech API, která bude vyřazena z 15. října 2019.
+Překlad řeči s využitím služby Translator Text API je k dispozici také prostřednictvím [služby Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Kombinuje funkce z překladače řeči API a vlastní řeči služby do jednotné a plně přizpůsobitelné služby.Služba Speech nahrazuje službu Translator Speech API, která se 15. října 2019 vyřadí z provozu.
 
 ## <a name="language-support"></a>Podpora jazyků
 
@@ -55,5 +55,5 @@ Další informace o [přizpůsobení jazyka](customization.md)
 ## <a name="next-steps"></a>Další kroky
 
 - [Zaregistrujte se](translator-text-how-to-signup.md) a získejte přístupový klíč.
-- [Reference k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) poskytuje technickou dokumentaci k rozhraním API.
+- [Odkaz na rozhraní API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) poskytuje technickou dokumentaci pro rozhraní API.
 - [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

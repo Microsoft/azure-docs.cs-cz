@@ -1,5 +1,5 @@
 ---
-title: Získat model s voláním RESTC#
+title: 'Získat model s voláním REST v C #'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -8,35 +8,35 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: e4f995e888d261e1a1a7cb1e63d0d222c165060f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 96129b9141b4759fd61b539fa08354f02af3af7b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368469"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80151218"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-* Azure Language Understanding – vytváření znaků a vytváření kódu URL koncového bodu prostředku 32. Vytvořte pomocí [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) nebo [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli).
-* Importujte aplikaci [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) z úložiště GitHub-Services-Language-porozumění.
-* ID aplikace LUIS pro importovanou aplikaci TravelAgent ID aplikace je uvedené na řídicím panelu aplikace.
-* ID verze v rámci aplikace, která přijímá projevy. Výchozí ID je 0.1.
-* [.NET Core V 2.2 +](https://dotnet.microsoft.com/download)
-* [Visual Studio Code](https://code.visualstudio.com/)
+* Azure Language Understanding – vytváření klíče 32 znaků prostředku a vytváření adresy URL koncového bodu. Vytvořte pomocí [portálu Azure nebo](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) [příkazového příkazového příkazu Kontu Azure](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli).
+* Importujte aplikaci [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) z úložiště GitHub, které rozumí kognitivním službám.
+* ID aplikace LUIS pro naimportovanou aplikaci TravelAgent ID aplikace je uvedené na řídicím panelu aplikace.
+* ID verze aplikace, která přijímá promluvy. Výchozí ID je 0.1.
+* [.NET Jádro 3.1](https://dotnet.microsoft.com/download)
+* [Kód visual studia](https://code.visualstudio.com/)
 
 ## <a name="example-utterances-json-file"></a>Soubor JSON s ukázkovými promluvami
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="change-model-programmatically"></a>Programové změny modelu
+## <a name="change-model-programmatically"></a>Programová změna modelu
 
-1. Vytvořte novou konzolovou aplikaci, která C# cílí na jazyk, s názvem projektu a složky `model-with-rest`.
+1. Vytvořte novou konzolovou aplikaci, která cílí na `model-with-rest`jazyk C# s názvem projektu a složky .
 
     ```console
     dotnet new console -lang C# -n model-with-rest
     ```
 
-1. Požadované závislosti nainstalujte pomocí následujících příkazů dotnet CLI.
+1. Nainstalujte požadované závislosti pomocí následujících příkazů rozhraní příkazu příkazu příkazu příkazu příkazu dotnet.
 
     ```console
     dotnet add package System.Net.Http
@@ -164,15 +164,15 @@ ms.locfileid: "77368469"
     }
     ```
 
-1. Hodnoty začínající `YOUR-` nahraďte vlastními hodnotami.
+1. Nahraďte hodnoty `YOUR-` začínající vlastními hodnotami.
 
     |Informace|Účel|
     |--|--|
-    |`YOUR-KEY`|Klíč pro vytváření znaků 32.|
-    |`YOUR-ENDPOINT`| Váš koncový bod adresy URL pro vytváření například `replace-with-your-resource-name.api.cognitive.microsoft.com`. Název prostředku se nastaví při vytváření prostředku.|
-    |`YOUR-APP-ID`| Vaše ID aplikace LUIS |
+    |`YOUR-KEY`|Váš 32 znak ový klíč.|
+    |`YOUR-ENDPOINT`| Koncový bod adresy URL pro vytváření. Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`. Při vytváření prostředku nastavíte název prostředku.|
+    |`YOUR-APP-ID`| ID aplikace LUIS. |
 
-    Přiřazené klíče a prostředky jsou zobrazené na portálu LUIS v části Správa na stránce **prostředky Azure** . ID aplikace je k dispozici ve stejné části pro správu na stránce **nastavení aplikace** .
+    Přiřazené klíče a prostředky jsou viditelné na portálu LUIS v části Spravovat na stránce **prostředků Azure.** ID aplikace je k dispozici ve stejném oddílu Správa na stránce **Nastavení aplikace.**
 
 1. Sestavte konzolovou aplikaci.
 
@@ -180,7 +180,7 @@ ms.locfileid: "77368469"
     dotnet build
     ```
 
-1. Spusťte konzolovou aplikaci. Výstup konzoly zobrazí stejný kód JSON, který jste viděli dříve v okně prohlížeče.
+1. Spusťte konzolovou aplikaci. Výstup konzoly zobrazuje stejný json, který jste viděli dříve v okně prohlížeče.
 
     ```console
     dotnet run
@@ -188,9 +188,9 @@ ms.locfileid: "77368469"
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s tímto rychlým startem hotovi, odstraňte soubor ze systému souborů.
+Po dokončení tohoto rychlého startu odstraňte soubor ze systému souborů.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Osvědčené postupy pro aplikaci](../luis-concept-best-practices.md)
+> [Doporučené postupy pro aplikaci](../luis-concept-best-practices.md)

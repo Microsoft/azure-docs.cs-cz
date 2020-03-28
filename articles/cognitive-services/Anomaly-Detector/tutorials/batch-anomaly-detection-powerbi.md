@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: vizualizace anomálií pomocí zjišťování dávek a Power BI'
+title: 'Kurz: Vizualizace anomálií pomocí dávkové detekce a Power BI'
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat rozhraní API detektoru anomálií a Power BI k vizualizaci anomálií v rámci vašich dat časových řad.
+description: Přečtěte si, jak pomocí rozhraní API detektoru anomálií a Power BI vizualizovat anomálie v datech časových řad.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,64 +11,64 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 1b486aaf0ce33e31433c2c3d0f7a1ff2c7089132
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78402663"
 ---
-# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Kurz: vizualizace anomálií pomocí zjišťování dávek a Power BI
+# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Kurz: Vizualizace anomálií pomocí dávkové detekce a Power BI
 
-Pomocí tohoto kurzu můžete najít anomálie v rámci datové sady časových řad jako dávku. Pomocí Power BI plochy převezmete excelový soubor, připravíte data pro rozhraní API detektoru anomálií a vizualizujete statistické anomálie v celém IT.
+Tento kurz slouží k vyhledání anomálií v rámci datové sady časových řad jako dávky. Pomocí desktopu Power BI vezmete excelový soubor, připravíte data pro rozhraní API detektoru anomálií a vizualizujete statistické anomálie v něm.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Import a transformace datové sady časových řad pomocí Power BI Desktop
-> * Integrace Power BI Desktop s rozhraním API detektoru anomálií pro detekci anomálií služby Batch
+> * Import a transformace datové sady časových řad pomocí Power BI Desktopu
+> * Integrace Power BI Desktopu s rozhraním API pro detektory anomálií pro detekci dávkových anomálií
 > * Vizualizujte anomálie nalezené v rámci vašich dat, včetně očekávaných a zobrazených hodnot a hranic detekce anomálií.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * [Předplatné Azure](https://azure.microsoft.com/free/)
-* [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), k dispozici zdarma.
-* Excelový soubor (. xlsx), který obsahuje datové body časové řady. Ukázková data pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090962) .
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="vytvořit prostředek Analýza textu"  target="_blank">vytvořit Analýza textu</a> prostředků <span class="docon docon-navigate-external x-hidden-focus"></span> v Azure Portal a získat tak klíč a koncový bod. 
-    * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Provedete to později v rychlém startu.
+* [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), který je k dispozici zdarma.
+* Soubor aplikace Excel (.xlsx) obsahující datové body časových řad. Ukázková data pro tento rychlý start lze nalézt na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090962)
+* Jakmile budete mít předplatné <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Azure, vytvořte"  target="_blank">prostředek analýzy <span class="docon docon-navigate-external x-hidden-focus"></span> </a> textu vytvořit prostředek analýzy textu na webu Azure Portal, abyste získali klíč a koncový bod. 
+    * Budete potřebovat klíč a koncový bod z prostředku, který vytvoříte pro připojení aplikace k rozhraní API analýzy textu. Uděláte to později v rychlém startu.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
 ## <a name="load-and-format-the-time-series-data"></a>Načtení a formátování dat časových řad
 
-Začněte tím, že otevřete Power BI Desktop a načtete data časových řad, která jste stáhli z požadovaných součástí. Tento excelový soubor obsahuje řadu koordinovaných časových razítek a hodnot UTC (Universal Time).  
+Pokud chcete začít, otevřete Power BI Desktop a načtěte data časových řad, která jste si stáhli z předpokladů. Tento soubor aplikace Excel obsahuje řadu časových razítek a dvojic hodnot koordinovaný světový čas (UTC).  
 
 > [!NOTE]
-> Power BI můžou používat data z nejrůznějších zdrojů, jako jsou například soubory. csv, databáze SQL, úložiště objektů blob Azure a další.  
+> Power BI můžete používat data z celé řady zdrojů, jako jsou .csv soubory, SQL databáze, úložiště objektů blob Azure a další.  
 
-V hlavním Power BI Desktop okně klikněte na pás karet **Domů** . Ve skupině **externí data** na pásu karet otevřete rozevírací nabídku **získat data** a klikněte na možnost **Excel**.
+V hlavním okně Power BI Desktop klikněte na pás karet **domů.** Ve skupině **Externí data** na pásu karet otevřete rozevírací nabídku **Získat data** a klikněte na **Excel**.
 
-![Obrázek tlačítka získat data v Power BI](../media/tutorials/power-bi-get-data-button.png)
+![Obrázek tlačítka Získat data v Power BI](../media/tutorials/power-bi-get-data-button.png)
 
-Po zobrazení dialogového okna přejděte do složky, do které jste stáhli soubor example. xlsx a vyberte ho. Po zobrazení dialogu **navigátor** klikněte na **List1**a pak na **Upravit**.
+Po zobrazení dialogového okna přejděte do složky, do které jste stáhli ukázkový soubor XLSX, a vyberte jej. Po otevření dialogového listu **Navigator** klepněte na **položku List1**a potom na **příkaz Upravit**.
 
-![Obrázek obrazovky datového zdroje "navigátor" v Power BI](../media/tutorials/navigator-dialog-box.png)
+![Obrázek obrazovky zdroje dat "Navigátor" v Power BI](../media/tutorials/navigator-dialog-box.png)
 
-Power BI převede časová razítka v prvním sloupci na datový typ `Date/Time`. Tato časová razítka je nutné převést na text, aby bylo možné je odeslat do rozhraní API detektoru anomálií. Pokud se Editor Power Query automaticky neotevře, klikněte na tlačítko **Upravit dotazy** na kartě Domů. 
+Power BI převede časová razítka v `Date/Time` prvním sloupci na datový typ. Tato časová razítka musí být převedeny na text, aby bylo možné odeslat do rozhraní API detektoru anomálií. Pokud se editor Power Query neotevře automaticky, klikněte na kartě Domů na **Upravit dotazy.** 
 
-V editoru Power Query klikněte na pás karet **transformace** . Ve skupině **libovolný sloupec** otevřete položku **datový typ:** rozevírací nabídka a vyberte **text**.
+Klikněte na pás **karet Transformace** v Editoru Power Query. Ve skupině **Libovolný sloupec** otevřete rozevírací nabídku **Datový typ:** a vyberte **Text**.
 
-![Obrázek obrazovky datového zdroje "navigátor" v Power BI](../media/tutorials/data-type-drop-down.png)
+![Obrázek obrazovky zdroje dat "Navigátor" v Power BI](../media/tutorials/data-type-drop-down.png)
 
-Po zobrazení oznámení o změně typu sloupce klikněte na **Nahradit aktuální**. Pak klikněte na tlačítko **zavřít & použít** nebo **použít** na pásu karet **Domů** . 
+Když se zobrazí oznámení o změně typu sloupce, klikněte na **Nahradit aktuální**. Potom klikněte na **pásu** karet **Domů** na Zavřít & použít nebo **Použít.** 
 
-## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>Vytvoření funkce pro odeslání dat a naformátování odpovědi
+## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>Vytvořit funkci pro odeslání dat a formátování odpovědi
 
-K naformátování a odeslání datového souboru do rozhraní API detektoru anomálií můžete vyvolat dotaz na tabulku vytvořenou výše. V editoru Power Query v pásu karet **Domů** otevřete rozevírací nabídku **nový zdroj** a klikněte na příkaz **prázdný dotaz**.
+Chcete-li formátovat a odeslat datový soubor do rozhraní API detektoru anomálií, můžete vyvolat dotaz v tabulce vytvořené výše. V Editoru Power Query otevřete na pásu karet **Domů** rozevírací nabídku **Nový zdroj** a klikněte na **Prázdný dotaz**.
 
-Ujistěte se, že je vybraný nový dotaz, a pak klikněte na **Rozšířený editor**. 
+Zkontrolujte, zda je vybrán nový dotaz, a klepněte na tlačítko **Upřesnit editor**. 
 
 ![Obrázek tlačítka Rozšířený editor v Power BI](../media/tutorials/advanced-editor-screen.png)
 
-V Rozšířený editor použijte následující fragment kódu Power Query M k extrakci sloupců z tabulky a jejich odeslání do rozhraní API. Následně dotaz vytvoří tabulku z odpovědi JSON a vrátí ji. Nahraďte `apiKey` proměnnou platným klíčem rozhraní API pro detekci anomálií a `endpoint` s vaším koncovým bodem. Po zadání dotazu do Rozšířený editor klikněte na **Hotovo**.
+V rozšířeném editoru použijte následující fragment Power Query M k extrahování sloupců z tabulky a jeho odeslání do rozhraní API. Poté dotaz vytvoří tabulku z odpovědi JSON a vrátí ji. Nahraďte `apiKey` proměnnou platným klíčem rozhraní `endpoint` API detektoru anomálií a koncovým bodem. Po zadání dotazu do rozšířeného editoru klepněte na **tlačítko Hotovo**.
 
 ```M
 (table as table) => let
@@ -112,67 +112,67 @@ V Rozšířený editor použijte následující fragment kódu Power Query M k e
  in results
 ```
 
-Vyvolejte dotaz na datovém listu výběrem `Sheet1` pod **parametrem ENTER**a kliknutím na **vyvolat**. 
+Vyvolá dotaz v datovém listu `Sheet1` tak, že vyberete pod **položkou Zadejte parametr**a klepněte na tlačítko **Vyvolat**. 
 
 ![Obrázek tlačítka "Rozšířený editor"](../media/tutorials/invoke-function-screenshot.png)
 
-## <a name="data-source-privacy-and-authentication"></a>Soukromí a ověřování zdroje dat
+## <a name="data-source-privacy-and-authentication"></a>Ochrana osobních údajů a ověřování zdroje dat
 
 > [!NOTE]
-> Uvědomte si zásady vaší organizace na ochranu osobních údajů a přístup k datům. Další informace najdete v tématu [Power BI Desktop úrovně ochrany osobních údajů](https://docs.microsoft.com/power-bi/desktop-privacy-levels) .
+> Mějte na paměti zásady vaší organizace týkající se ochrany osobních údajů a přístupu k nim. Další informace najdete v [tématu Úrovně ochrany osobních údajů na ploše Power BI.](https://docs.microsoft.com/power-bi/desktop-privacy-levels)
 
-Při pokusu o spuštění dotazu se může zobrazit zpráva s upozorněním, že se používá externí zdroj dat. 
+Při pokusu o spuštění dotazu se může zostávat varovná zpráva, protože využívá externí zdroj dat. 
 
-![Obrázek ukazující upozornění vytvořené nástrojem Power BI](../media/tutorials/blocked-function.png)
+![Obrázek s upozorněním vytvořeným Power BI](../media/tutorials/blocked-function.png)
 
-Pokud to chcete opravit, klikněte na **soubor**a vyberte **Možnosti a nastavení**. Pak klikněte na **Možnosti**. Pod **aktuálním souborem**vyberte možnost **soukromí**a **ignorujte úroveň ochrany osobních údajů a potenciálně Vylepšete výkon**. 
+Chcete-li tento problém vyřešit, klepněte na **položku Soubor**a **možnosti a nastavení**. Potom klepněte na tlačítko **Možnosti**. Pod **položkou Aktuální soubor**vyberte možnost Ochrana **osobních údajů**a Ignorovat úrovně ochrany **osobních údajů a potenciálně zlepšit výkon**. 
 
-Kromě toho se může zobrazit zpráva s výzvou, abyste určili, jak se chcete připojit k rozhraní API.
+Kromě toho se může zobrazí zpráva s dotazem, jak chcete určit, jak se chcete připojit k rozhraní API.
 
-![Obrázek ukazující požadavek na zadání přihlašovacích údajů pro přístup](../media/tutorials/edit-credentials-message.png)
+![Obrázek zobrazující požadavek na zadání přístupových pověření](../media/tutorials/edit-credentials-message.png)
 
-Pokud to chcete opravit, klikněte ve zprávě na **Upravit přihlašovací údaje** . Po zobrazení dialogového okna vyberte **anonymní** a připojte se k rozhraní API anonymně. Pak klikněte na **Connect** (Připojit). 
+Chcete-li tento problém vyřešit, klikněte ve zprávě na **Upravit přihlašovací údaje.** Po zřizovacím poli se anonymně připojte k rozhraní API a vyberte **anonymní.** Pak klikněte na **Connect** (Připojit). 
 
-Potom kliknutím na **zavřít & použít** na pásu karet **Domů** , aby se změny projevily.
+Potom klikněte na **Zavřít & Použít** na pásu karet **Domů** a aplikujte změny.
 
-## <a name="visualize-the-anomaly-detector-api-response"></a>Vizualizace odpovědi rozhraní API detektoru anomálií
+## <a name="visualize-the-anomaly-detector-api-response"></a>Vizualizujte odpověď rozhraní API detektoru anomálií
 
-Na hlavní obrazovce Power BI začněte používat dotazy vytvořené výše k vizualizaci dat. Nejprve vyberte **Spojnicový graf** v **vizualizacích**. Pak přidejte časové razítko z vyvolané funkce na **osu**čárového grafu. Klikněte na něj pravým tlačítkem myši a vyberte **časové razítko**. 
+Na hlavní obrazovce Power BI začněte vizualizovat data pomocí výše vytvořených dotazů. Nejprve vyberte **spojnicový graf** ve **vizualizacích**. Potom přidejte časové razítko z vztažné funkce do **osy**spojnicového grafu . Klikněte na něj pravým tlačítkem myši a vyberte **časové razítko**. 
 
-![Kliknutí pravým tlačítkem na hodnotu časového razítka](../media/tutorials/timestamp-right-click.png)
+![Kliknutí pravým tlačítkem myši na hodnotu časového razítka](../media/tutorials/timestamp-right-click.png)
 
-Do pole **hodnoty** v grafu přidejte následující pole z **vyvolané funkce** . K vytvoření grafu můžete použít následující snímek obrazovky.
+Do pole **Hodnoty** grafu přidejte následující pole z **pole Vyvolaná funkce.** Pomocí níže uvedeného snímku obrazovky můžete vytvořit graf.
 
     * Hodnota
-    * UpperMargins
-    * LowerMargins
-    * ExpectedValues
+    * Horní okraje
+    * Nižší marže
+    * Očekávané hodnoty
 
-![Obrázek nové obrazovky rychlé míry](../media/tutorials/chart-settings.png)
+![Obrázek nové obrazovky s rychlým měřením](../media/tutorials/chart-settings.png)
 
-Po přidání polí klikněte na graf a změňte jeho velikost tak, aby se zobrazily všechny datové body. Graf bude vypadat podobně jako na následujícím snímku obrazovky:
+Po přidání polí klikněte na graf a změňte jeho velikost tak, aby se zobrazily všechny datové body. Graf bude vypadat podobně jako níže uvedený snímek obrazovky:
 
-![Obrázek nové obrazovky rychlé míry](../media/tutorials/chart-visualization.png)
+![Obrázek nové obrazovky s rychlým měřením](../media/tutorials/chart-visualization.png)
 
-### <a name="display-anomaly-data-points"></a>Zobrazit datové body anomálií
+### <a name="display-anomaly-data-points"></a>Zobrazení datových bodů anomálií
 
-Na pravé straně okna Power BI pod podoknem **pole** klikněte pravým tlačítkem myši na **hodnotu** pod **vyvolaným dotazem funkce**a klikněte na možnost **Nová rychlá míra**.
+Na pravé straně okna Power BI pod podoknem **POLE** klikněte pravým tlačítkem myši na **hodnotu** v **dotazu Vyvolaná funkce**a klikněte na Nový rychlý **rozměr**.
 
-![Obrázek nové obrazovky rychlé míry](../media/tutorials/new-quick-measure.png)
+![Obrázek nové obrazovky s rychlým měřením](../media/tutorials/new-quick-measure.png)
 
-Na obrazovce, která se zobrazí, vyberte **filtrovaná hodnota** jako výpočet. Nastavte **základní hodnotu** na `Sum of Value`. Potom přetáhněte `IsAnomaly` z **vyvolaných polí funkcí** na **Filtr**. V rozevírací nabídce **Filtr** vyberte `True`.
+Na obrazovce, která se zobrazí, vyberte jako výpočet **filtrovaná hodnota.** Nastavte základní `Sum of Value` **hodnotu** na . Potom `IsAnomaly` tažením z polí **Vztažná funkce** **filtrujte**. Vyberte `True` z rozevírací nabídky **Filtr.**
 
-![Obrázek nové obrazovky rychlé míry](../media/tutorials/new-quick-measure-2.png)
+![Obrázek nové obrazovky s rychlým měřením](../media/tutorials/new-quick-measure-2.png)
 
-Po kliknutí na **OK**budete mít pole `Value for True`, a to v dolní části seznamu polí. Klikněte na něj pravým tlačítkem a přejmenujte ho na **anomálii**. Přidejte ho do **hodnot**grafu. Pak vyberte nástroj pro **formátování** a nastavte typ osy X na **kategorií**.
+Po kliknutí na **tlačítko** `Value for True` Ok budete mít pole v dolní části seznamu polí. Klikněte na něj pravým tlačítkem myši a přejmenujte jej na **Anomálii**. Přidejte jej do **grafu hodnoty**. Pak vyberte nástroj **formát** a nastavte typ osy X na **Kategorický**.
 
-![Obrázek nové obrazovky rychlé míry](../media/tutorials/format-x-axis.png)
+![Obrázek nové obrazovky s rychlým měřením](../media/tutorials/format-x-axis.png)
 
-Nastavte barvy na svůj graf kliknutím na možnost **Formátovat** nástroj a **barvy dat**. Váš graf by měl vypadat nějak takto:
+Barvy v grafu můžete použít kliknutím na nástroj **Formát** a **Barvy dat**. Graf by měl vypadat nějak takto:
 
-![Obrázek nové obrazovky rychlé míry](../media/tutorials/final-chart.png)
+![Obrázek nové obrazovky s rychlým měřením](../media/tutorials/final-chart.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Detekce anomálií streamování pomocí Azure Databricks](anomaly-detection-streaming-databricks.md)
+>[Streamování detekce anomálií pomocí Azure Databricks](anomaly-detection-streaming-databricks.md)

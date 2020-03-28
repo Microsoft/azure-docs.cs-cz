@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Převod řeči na více jazyků C# , – Speech Service'
+title: 'Úvodní příručka: Překlad řeči do více jazyků, C# - Služba rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Bude doplněno
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 5ed9ed4dc39725644c7ed58575e33f5ff370643b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74980519"
 ---
-**Volba cílového prostředí**
+**Vyberte si cílové prostředí**
 
-#### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+#### <a name="net"></a>[.NET](#tab/dotnet)
 [!INCLUDE [dotnet](./dotnet.md)]
-#### <a name="net-coretabdotnetcore"></a>[.NET Core](#tab/dotnetcore)
+#### <a name="net-core"></a>[.NET Core](#tab/dotnetcore)
 [!INCLUDE [dotnetcore](./dotnetcore.md)]
 
 * * *

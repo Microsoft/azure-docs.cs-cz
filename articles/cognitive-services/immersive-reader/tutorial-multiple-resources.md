@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Integrace více prostředků moderního čtecího zařízení'
+title: 'Kurz: Integrace více zdrojů aplikace Immersive Reader'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu vytvoříte aplikaci Node. js, která spustí moderní čtečku s využitím více prostředků moderního čtecího zařízení.
+description: V tomto kurzu vytvoříte aplikaci Node.js, která spustí immersive Reader pomocí více prostředků Immersive Reader.
 author: skamal
 manager: nitinme
 ms.service: cognitive-services
@@ -10,31 +10,31 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
 ms.openlocfilehash: 3912d55b13f3977818e8d898efa651ffeb1a798a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76046272"
 ---
-# <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Kurz: Integrace více prostředků moderního čtecího zařízení
+# <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Kurz: Integrace více zdrojů aplikace Immersive Reader
 
-V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čtečka a jak implementuje osvědčené techniky pro zlepšení porozumění čtení pro jazykové učení, vznikající čtenáři a studenty s rozdíly v učení. V [rychlém startu Node. js](./quickstart-nodejs.md)jste zjistili, jak používat moderní čtečku s jedním prostředkem. V tomto kurzu se dozvíte, jak integrovat více prostředků moderního čtecího zařízení do stejné aplikace. V tomto kurzu se naučíte:
+V [přehledu](./overview.md)jste se dozvěděli o tom, co je Immersive Reader a jak implementuje osvědčené techniky ke zlepšení porozumění čtení pro studenty jazyků, začínající čtenáře a studenty s rozdíly v učení. V [node.js rychlý start](./quickstart-nodejs.md), jste se naučili používat immersive Reader s jedním prostředkem. Tento kurz popisuje, jak integrovat více prostředků immersive Reader ve stejné aplikaci. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření více prostředků moderního čtecího zařízení v existující skupině prostředků
-> * Spuštění moderního čtečky s využitím několika prostředků
+> * Vytvoření více prostředků aplikace Immersive Reader v rámci existující skupiny prostředků
+> * Spuštění immersive readeru s využitím více zdrojů
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Postupujte podle pokynů v [rychlém](./quickstart-nodejs.md) startu a vytvořte webovou aplikaci, která spustí moderní čtečku pomocí NodeJS. V tomto rychlém startu nakonfigurujete jeden prostředek pro moderní čtečku. V tomto kurzu se budeme sestavovat nahoru.
+* Pomocí [rychlého startu](./quickstart-nodejs.md) vytvořte webovou aplikaci, která spustí immersive Reader s NodeJS. V tomto rychlém startu nakonfigurujete jeden prostředek immersive reader. Budeme stavět na vrcholu, že v tomto tutoriálu.
 
-## <a name="create-the-immersive-reader-resources"></a>Vytvoření prostředků pro moderní čtečku
+## <a name="create-the-immersive-reader-resources"></a>Vytvoření zdrojů aplikace Immersive Reader
 
-Podle [těchto pokynů](./how-to-create-immersive-reader.md) vytvořte každý prostředek pro moderní čtečku. Skript **Create-ImmersiveReaderResource** má jako parametry `ResourceName`, `ResourceSubdomain`a `ResourceLocation`. Ty by měly být pro každý vytvořený prostředek jedinečné. Zbývající parametry by měly být stejné jako ty, které jste použili při nastavování prvního prostředku pro moderní čtečku. Tímto způsobem je možné každý prostředek propojit se stejnou skupinou prostředků Azure a aplikací Azure AD.
+Podle [těchto pokynů](./how-to-create-immersive-reader.md) vytvořte každý prostředek aplikace Immersive Reader. Skript **Create-ImmersiveReaderResource** `ResourceName`má `ResourceSubdomain`, `ResourceLocation` a jako parametry. Ty by měly být jedinečné pro každý prostředek, který je vytvořen. Zbývající parametry by měly být stejné jako ty, které jste použili při nastavování prvního prostředku immersive reader. Tímto způsobem každý prostředek lze propojit se stejnou skupinou prostředků Azure a aplikací Azure AD.
 
-Následující příklad ukazuje, jak vytvořit dva prostředky, jeden v WestUS a druhý v EastUS. Všimněte si jedinečných hodnot `ResourceName`, `ResourceSubdomain`a `ResourceLocation`.
+Následující příklad ukazuje, jak vytvořit dva prostředky, jeden v WestUS a druhý v EastUS. Všimněte si `ResourceName`jedinečných hodnot pro , `ResourceSubdomain`a `ResourceLocation`.
 
 ```azurepowershell-interactive
 Create-ImmersiveReaderResource
@@ -62,11 +62,11 @@ Create-ImmersiveReaderResource
   -AADAppClientSecret <AAD_APP_CLIENT_SECRET>
 ```
 
-## <a name="add-resources-to-environment-configuration"></a>Přidat prostředky do konfigurace prostředí
+## <a name="add-resources-to-environment-configuration"></a>Přidání prostředků do konfigurace prostředí
 
-V rychlém startu jste vytvořili konfigurační soubor prostředí, který obsahuje parametry `TenantId`, `ClientId`, `ClientSecret`a `Subdomain`. Vzhledem k tomu, že všechny vaše prostředky používají stejnou aplikaci Azure AD, můžeme použít stejné hodnoty pro `TenantId`, `ClientId`a `ClientSecret`. Jedinou změnou, kterou je třeba udělat, je vypsat každou subdoménu pro každý prostředek.
+V rychlém startu jste vytvořili konfigurační `ClientId` `ClientSecret`soubor `Subdomain` `TenantId`prostředí, který obsahuje , , a parametry. Vzhledem k tomu, že všechny vaše prostředky používají stejnou aplikaci `ClientId`Azure `ClientSecret`AD, můžeme použít stejné hodnoty pro `TenantId`, a . Jedinou změnou, kterou je třeba provést, je vypsat každou subdoménu pro každý prostředek.
 
-Nový soubor __. env__ by teď měl vypadat nějak takto:
+Nový soubor __ENV__ by nyní měl vypadat nějak takto:
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -76,11 +76,11 @@ SUBDOMAIN_WUS={YOUR_WESTUS_SUBDOMAIN}
 SUBDOMAIN_EUS={YOUR_EASTUS_SUBDOMAIN}
 ```
 
-Ujistěte se, že tento soubor nechcete potvrdit do správy zdrojových kódů, protože obsahuje tajné klíče, které by neměly být zveřejněny.
+Ujistěte se, že tento soubor není potvrzena do správy zdrojového kódu, protože obsahuje tajné klíče, které by neměly být zveřejněny.
 
-V dalším kroku provedeme úpravu souboru _routes\index.js_ , který jsme vytvořili pro podporu našich více prostředků. Nahraďte jeho obsah následujícím kódem.
+Dále upravíme soubor _routes\index.js,_ který jsme vytvořili, aby podporoval naše více prostředků. Nahraďte jeho obsah následujícím kódem.
 
-Stejně jako dřív tento kód vytvoří koncový bod rozhraní API, který získá ověřovací token Azure AD pomocí vašeho hesla instančního objektu. Tentokrát umožňuje uživateli zadat umístění prostředku a předat ho jako parametr dotazu. Pak vrátí objekt obsahující token a odpovídající subdoménu.
+Stejně jako dříve tento kód vytvoří koncový bod rozhraní API, který získá ověřovací token Azure AD pomocí hesla instančního objektu. Tentokrát umožňuje uživateli zadat umístění prostředku a předat jej jako parametr dotazu. Potom vrátí objekt obsahující token a odpovídající subdoménu.
 
 ```javascript
 var express = require('express');
@@ -143,11 +143,11 @@ router.get('/GetTokenAndSubdomain', function(req, res) {
 module.exports = router;
 ```
 
-Koncový bod rozhraní API **getimmersivereaderlaunchparams** by měl být zabezpečený za určitou formou ověřování (například [OAuth](https://oauth.net/2/)), aby se zabránilo neoprávněným uživatelům ve získávání tokenů k použití proti vaší službě s moderní čtečkou a fakturaci. Tato práce překračuje rámec tohoto kurzu.
+Koncový bod rozhraní API **getimmersivereaderlaunchparams** by měl být zabezpečen za nějakou formou ověřování (například [OAuth),](https://oauth.net/2/)aby se zabránilo neoprávněným uživatelům získat tokeny pro použití proti službě Immersive Reader a fakturaci; že práce je nad rámec tohoto kurzu.
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>Spuštění moderního čtecího zařízení s ukázkovým obsahem
+## <a name="launch-the-immersive-reader-with-sample-content"></a>Spuštění čtečky Immersive Reader s ukázkovým obsahem
 
-1. Otevřete _views\index.pug_a nahraďte jeho obsah následujícím kódem. Tento kód naplní stránku pomocí nějakého ukázkového obsahu a přidá dvě tlačítka, která spustí moderní čtecí zařízení. Jednu pro spuštění moderního čtecího zařízení pro prostředek EastUS a další pro prostředek WestUS.
+1. Otevřete _zobrazení\index.pug_a nahraďte jeho obsah následujícím kódem. Tento kód naplní stránku s některé ukázkový obsah a přidá dvě tlačítka, která spustí Immersive Reader. Jeden pro spuštění Immersive Reader pro prostředek EastUS a další pro prostředek WestUS.
 
     ```pug
     doctype html
@@ -252,15 +252,15 @@ Koncový bod rozhraní API **getimmersivereaderlaunchparams** by měl být zabez
         }
     ```
 
-3. Naše webová aplikace je teď připravená. Spusťte aplikaci spuštěním:
+3. Naše webová aplikace je nyní připravena. Spuštění aplikace spuštěním:
 
     ```bash
     npm start
     ```
 
-4. Otevřete prohlížeč a přejděte na [http://localhost:3000](http://localhost:3000). Na stránce byste měli vidět výše uvedený obsah. Klikněte na tlačítko **EastUS pro moderní čtení** nebo na tlačítko **WestUS pro moderní čtení** a spusťte moderní čtečku s využitím příslušných prostředků.
+4. Otevřete prohlížeč a [http://localhost:3000](http://localhost:3000)přejděte na . Měli byste vidět výše uvedený obsah na stránce. Klikněte buď na tlačítko **EastUS Immersive Reader** nebo **WestUS Immersive Reader** tlačítko pro spuštění Immersive Reader pomocí těchto příslušných zdrojů.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)
-* Zobrazit ukázky kódu na [GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)
+* Seznamte se s [sadou Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) a [referenční sadou Immersive Reader SDK](./reference.md)
+* Zobrazení ukázek kódu na [GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Převod řeči na text – služba pro rozpoznávání řeči'
+title: 'Úvodní příručka: Překlad řeči na text - služba Řeči'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Bude doplněno
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: yulili
 ms.openlocfilehash: d4781808ce8e80f62e86ce1d0c6db9c38b2636d0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74980513"
 ---
-V tomto rychlém startu použijete [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro interaktivní převod řeči z jednoho jazyka na text v jiném jazyce. Po splnění několika požadavků se převod řeči na text provede jenom pět kroků:
+V tomto rychlém startu použijete [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) k interaktivnímu překladu řeči z jednoho jazyka do textu v jiném jazyce. Po splnění několika předpokladů trvá překlad převod řeči na text pouze pět kroků:
 > [!div class="checklist"]
-> * Vytvořte objekt ````SpeechConfig```` z klíče a oblasti předplatného.
-> * Aktualizujte objekt ````SpeechConfig```` a určete zdrojové a cílové jazyky.
-> * Vytvořte objekt ````TranslationRecognizer```` pomocí výše uvedeného objektu ````SpeechConfig````.
-> * Pomocí objektu ````TranslationRecognizer```` spusťte proces rozpoznávání pro jeden utterance.
-> * Zkontrolujte vrácené ````TranslationRecognitionResult````.
+> * Vytvořte ````SpeechConfig```` objekt z klíče předplatného a oblasti.
+> * Aktualizujte ````SpeechConfig```` objekt a určete zdrojové a cílové jazyky.
+> * Vytvořte ````TranslationRecognizer```` objekt ````SpeechConfig```` pomocí objektu shora.
+> * Pomocí ````TranslationRecognizer```` objektu spusťte proces rozpoznávání pro jeden utterance.
+> * Zkontrolujte ````TranslationRecognitionResult```` vrácené.

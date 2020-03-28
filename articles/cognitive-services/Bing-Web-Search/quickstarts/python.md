@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start: Hledání pomocí Pythonu – rozhraní API Bingu pro vyhledávání na webu'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete posílat požadavky na Vyhledávání na webu Bingu REST API pomocí Pythonu a přijímat odpověď JSON.
+description: Tento rychlý start slouží k odesílání požadavků do rozhraní REST API pro vyhledávání na webu Bingu pomocí Pythonu a k přijetí odpovědi JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,23 +12,23 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: c1af1142faca76cc58b6b3ca9a7106bc0433ea18
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976362"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Rychlý start: Použití Pythonu k volání rozhraní API Bingu pro vyhledávání na webu  
 
-Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace Python odešle do rozhraní API požadavek hledání a zobrazí odpověď. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+Pomocí tohoto rychlého startu můžete provést první volání do rozhraní API pro vyhledávání na webu Bingu a obdržet odpověď JSON. Tato aplikace Pythonu odešle požadavek na vyhledávání do rozhraní API a zobrazí odpověď. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Tento příklad je spuštěný jako poznámkový blok Jupyter na [MyBinder](https://mybinder.org). Výběr spouštěcího znaku pořadače:
+Tento příklad je spuštěný jako poznámkový blok Jupyter na [MyBinder](https://mybinder.org). Vyberte odznak spouštění pořadače:
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
+[![Pořadače](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [Python 2. x nebo 3. x](https://www.python.org/)
+* [Python 2.x nebo 3.x](https://www.python.org/)
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -41,13 +41,13 @@ subscription_key = "YOUR_ACCESS_KEY"
 assert subscription_key
 ```
 
-Deklarujte koncový bod rozhraní API Bingu pro vyhledávání na webu. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+Deklarujte koncový bod rozhraní API Bingu pro vyhledávání na webu. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
 
 ```python
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
 ```
 
-Vyhledávací dotaz přizpůsobíte tím, že místo `search_term` zadáte jinou hodnotu.
+Vyhledávací dotaz můžete přizpůsobit. Stačí místo `search_term` zadat jinou hodnotu.
 
 ```python
 search_term = "Azure Cognitive Services"
@@ -69,7 +69,7 @@ search_results = response.json()
 
 ## <a name="format-and-display-the-response"></a>Formátování a zobrazení odpovědi
 
-Objekt `search_results` zahrnuje výsledky hledání a metadata, jako jsou související dotazy a stránky. Tento kód používá k formátování a zobrazení odpovědi v prohlížeči knihovnu `IPython.display`.
+Objekt `search_results` obsahuje výsledky hledání a metadata, jako jsou související dotazy a stránky. Tento kód používá k formátování a zobrazení odpovědi v prohlížeči knihovnu `IPython.display`.
 
 ```python
 from IPython.display import HTML

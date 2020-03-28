@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: odeslání požadavku na hledání do REST API pomocí Node. js – Vyhledávání entit Bingu'
+title: 'Úvodní příručka: Odeslání požadavku na hledání do rozhraní REST API pomocí souboru Node.js – vyhledávání entit Bingu'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete odeslat žádost Vyhledávání entit Bingu REST API pomocí C#a přijmout odpověď JSON.
+description: Tento rychlý start slouží k odeslání požadavku do rozhraní REST ROZHRANÍ REST search entity Bing pomocí jazyka C# a obdržíte odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: quickstart
 ms.date: 12/11/2019
 ms.author: aahi
 ms.openlocfilehash: f3585e96376a25721f478f9dd621835e75e3c600
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448633"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Rychlý Start: odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí Node. js
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Úvodní příručka: Odeslání požadavku na hledání do rozhraní REST API hledání entit Bingu pomocí souboru Node.js
 
-Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání entit a zobrazení odpovědi JSON. Tato jednoduchá aplikace JavaScriptu pošle vyhledávací dotaz na zprávy do rozhraní API a zobrazí odpověď. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js).
+Pomocí tohoto rychlého startu můžete provést první volání do rozhraní API pro vyhledávání entit Bingu a zobrazit odpověď JSON. Tato jednoduchá javascriptová aplikace odešle dotaz na vyhledávání zpráv do rozhraní API a zobrazí odpověď. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js).
 
-I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+Zatímco tato aplikace je napsána v JavaScriptu, API je RESTful webová služba kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/)
 
-* [Knihovna požadavků JavaScriptu](https://github.com/request/request)
+* [Knihovna žádostí JavaScriptu](https://github.com/request/request)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
@@ -40,7 +40,7 @@ I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služb
     let https = require ('https');
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a vyhledávací dotaz. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a vyhledávací dotaz. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
 
     ```javascript
     let subscriptionKey = 'ENTER YOUR KEY HERE';
@@ -51,14 +51,14 @@ I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služb
     let q = 'italian restaurant near me';
     ```
 
-3. Přidejte svůj trh a parametry dotazu do řetězce s názvem `query`. Nezapomeňte dotaz zakódovat do URL pomocí `encodeURI()`.
+3. Přidejte parametry trhu a dotazu `query`k řetězci s názvem . Nezapomeňte dotaz zakódovat pomocí `encodeURI()`adresy URL pomocí aplikace .
     ```javascript 
     let query = '?mkt=' + mkt + '&q=' + encodeURI(q);
     ```
 
 ## <a name="handle-and-parse-the-response"></a>Zpracování a parsování odpovědi
 
-1. Definujte funkci s názvem `response_handler`, která přebírá volání HTTP, `response`jako parametr. V rámci této funkce proveďte následující kroky:
+1. Definujte funkci `response_handler` s názvem, `response`která přebírá volání HTTP , jako parametr. V rámci této funkce proveďte následující kroky:
 
     1. Definujte proměnnou, která bude obsahovat text odpovědi JSON.  
         ```javascript
@@ -74,7 +74,7 @@ I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služb
         });
         ```
 
-    3. Když je příznak **ukončení** signalizována, analyzujte JSON a vytiskněte ho.
+    3. Když je signalizovánpříznak **konec,** analyzovat JSON a vytisknout.
 
         ```javascript
         response.on ('end', function () {
@@ -85,10 +85,10 @@ I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služb
 
 ## <a name="send-a-request"></a>Odeslání požadavku
 
-1. Vytvořte funkci nazvanou `Search` pro odeslání žádosti o vyhledávání. V takovém případě proveďte následující kroky.
+1. Vytvořte funkci `Search` volanou k odeslání požadavku na vyhledávání. V něm proveďte následující kroky.
 
-   1. Vytvořte objekt JSON, který obsahuje parametry žádosti: pro metodu použijte `Get` a přidejte informace o hostiteli a cestě. Do hlavičky `Ocp-Apim-Subscription-Key` přidejte svůj klíč předplatného. 
-   2. Použijte `https.request()` k odeslání požadavku s obslužnou rutinou odpovědi vytvořenou dříve a parametry hledání.
+   1. Vytvořte objekt JSON obsahující parametry `Get` požadavku: použijte metodu a přidejte informace o hostiteli a cestě. Přidejte klíč předplatného `Ocp-Apim-Subscription-Key` do záhlaví. 
+   2. Slouží `https.request()` k odeslání požadavku s obslužnou rutinou odpovědi vytvořenou dříve a parametry vyhledávání.
     
       ```javascript
       let Search = function () {
@@ -106,7 +106,7 @@ I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služb
       }
       ```
 
-2. Zavolejte funkci `Search()`.
+2. Zavolejte `Search()` funkci.
 
 ## <a name="example-json-response"></a>Příklad odpovědi JSON
 
@@ -176,7 +176,7 @@ I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služb
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-entities-search-single-page-app.md)
+> [Vytvoření jednostránkové webové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md )
-* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Co je rozhraní API pro vyhledávání entit Bingu?](../overview.md )
+* [Odkaz na rozhraní API pro vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

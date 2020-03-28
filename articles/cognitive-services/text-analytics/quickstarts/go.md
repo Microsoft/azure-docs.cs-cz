@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start: Volání rozhraní API pro analýzu textu pomocí Go'
 titleSuffix: Azure Cognitive Services
-description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít s používáním rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
+description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro analýzu textu ve službách Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 03311cb873420f741ca0150dde59fb27eaa5d76f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378754"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Volání rozhraní API pro analýzu textu ve službách Cognitive Services s využitím Go 
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a [identifikovat propojené entity](#Entities) pomocí [Analýza textu rozhraní API](//go.microsoft.com/fwlink/?LinkID=759711) pomocí funkce Přejít.
+Tento článek ukazuje, jak [zjistit jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a identifikovat propojené [entity](#Entities) pomocí rozhraní API pro analýzu textu pomocí [možnosti](//go.microsoft.com/fwlink/?LinkID=759711) Přejít.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -39,9 +39,9 @@ Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu po
 
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
-1. Zkopírujte klíč rozhraní API pro analýzu textu a koncový bod do kódu.
+1. Zkopírujte klíč a koncový bod rozhraní API pro analýzu textových analýz do kódu.
 1. Uložte soubor s příponou .go.
-1. Otevřete příkazový řádek v počítači s nainstalovanou službou přejít z kořenové složky.
+1. Otevřete příkazový řádek v počítači s nainstalovanou aplikací Go z kořenové složky.
 1. Vytvořte soubor, například: `go build detect.go`.
 1. Spusťte soubor, například: `go run detect.go`.
 
@@ -172,9 +172,9 @@ Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznam
 
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
-1. Zkopírujte klíč Analýza textu a koncový bod do kódu.
+1. Zkopírujte klíč a koncový bod Analýzy textu do kódu.
 1. Uložte soubor s příponou .go.
-1. Otevřete příkazový řádek v počítači s nainstalovanou službou přejít z kořenové složky.
+1. Otevřete příkazový řádek v počítači s nainstalovanou aplikací Go z kořenové složky.
 1. Vytvořte soubor, například: `go build sentiment.go`.
 1. Spusťte soubor, například: `go run sentiment.go`.
 
@@ -253,7 +253,7 @@ func main() {
 
 ## <a name="analyze-sentiment-response"></a>Odpověď metody Analyze Sentiment
 
-Výsledek je měřen jako kladný, pokud je skóre zaokrouhleno na 1,0 a záporné, pokud se skóre přiblíží ke 0,0.
+Výsledek se měří jako kladný, pokud je skórován blíže k hodnotě 1,0 a záporný, pokud je skórován blíže k 0,0.
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
 ```json
@@ -280,7 +280,7 @@ Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z te
 
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
-1. Zkopírujte klíč Analýza textu a koncový bod do kódu.
+1. Zkopírujte klíč a koncový bod Analýzy textu do kódu.
 1. Uložte soubor s příponou .go.
 1. Na počítači s nainstalovaným jazykem Go otevřete příkazové okno.
 1. Vytvořte soubor, například: `go build key-phrases.go`.
@@ -404,7 +404,7 @@ func main() {
 
 ## <a name="identify-entities"></a>Identifikace entit
 
-Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahují slova z textu, jako je například "USA", a potom vám poskytne typ a/nebo Wikipedii odkaz na toto slovo (y). Typ pro "USA" je `location`, zatímco odkaz na Wikipedii je `https://en.wikipedia.org/wiki/United_States`.  Následující příklad identifikuje entity pro anglické dokumenty.
+Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahují slova z textu, například "Spojené státy", a pak vám poskytnou odkaz typu a/nebo wikipedie pro toto slovo(y). Typ pro "Spojené státy" je `location`, zatímco `https://en.wikipedia.org/wiki/United_States`odkaz na Wikipedii je .  Následující příklad identifikuje entity pro anglické dokumenty.
 
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
@@ -538,9 +538,9 @@ func main() {
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Analýza textu s Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
- [Přehled rozhraní API pro analýzu textu](../overview.md)  
- [Nejčastější dotazy](../text-analytics-resource-faq.md)
+ [Přehled analýzy textu](../overview.md)  
+ [Nejčastější dotazy (FAQ)](../text-analytics-resource-faq.md)

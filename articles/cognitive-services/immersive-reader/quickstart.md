@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Vytvoření webové aplikace, která spustí moderní čtečku sC#'
+title: 'Úvodní příručka: Vytvořte webovou aplikaci, která spustí immersive Reader s C #'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu vytvoříte webovou aplikaci od začátku a přidáte funkce rozhraní API pro moderní čtečku.
+description: V tomto rychlém startu vytvoříte webovou aplikaci od začátku a přidáte funkci rozhraní API pro immersive Reader.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -11,40 +11,40 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 8dd8459922caa9f765d59bc28fbf050b86834b46
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845240"
 ---
-# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Rychlý Start: Vytvoření webové aplikace, která spustí moderní čtečku (C#)
+# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Úvodní příručka: Vytvoření webové aplikace, která spustí immersive Reader (C#)
 
-[Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
+[Immersive Reader](https://www.onenote.com/learningtools) je inkluzivně navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
-V tomto rychlém startu vytvoříte webovou aplikaci od začátku a integrujete moderní čtečku pomocí sady moderních čtenářů. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp).
+V tomto rychlém startu vytvoříte webovou aplikaci od začátku a integrujete immersive Reader pomocí sady Immersive Reader SDK. Úplný pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads)
-* Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](./how-to-create-immersive-reader.md) si můžete nastavit. Při konfiguraci ukázkových vlastností projektu budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
+* Prostředek immersive Reader nakonfigurovaný pro ověřování Azure Active Directory. Podle [těchto pokynů](./how-to-create-immersive-reader.md) se připravte. Při konfiguraci vlastností ukázkového projektu budete potřebovat některé hodnoty vytvořené zde. Uložte výstup relace do textového souboru pro budoucí použití.
 
 ## <a name="create-a-web-app-project"></a>Vytvoření projektu webové aplikace
 
-Vytvořte nový projekt v aplikaci Visual Studio pomocí šablony ASP.NET Core webové aplikace s integrovaným modelem-View-Controller a ASP.NET Core 2,1. Pojmenujte projekt "QuickstartSampleWebApp".
+Vytvořte nový projekt v sadě Visual Studio pomocí šablony ASP.NET základní webové aplikace s integrovaným modelovým kontrolorem a ASP.NET jádrem 2.1. Pojmenujte projekt "QuickstartSampleWebApp".
 
 ![Nový projekt](./media/quickstart-csharp/1-createproject.png)
 
-![Konfigurovat nový projekt](./media/quickstart-csharp/2-configureproject.png)
+![Konfigurace nového projektu](./media/quickstart-csharp/2-configureproject.png)
 
-![Nová ASP.NET Core webové aplikace](./media/quickstart-csharp/3-createmvc.png)
+![Nová ASP.NET základní webová aplikace](./media/quickstart-csharp/3-createmvc.png)
 
 ## <a name="set-up-authentication"></a>Nastavení ověřování
 
-### <a name="configure-authentication-values"></a>Konfigurovat hodnoty ověřování
+### <a name="configure-authentication-values"></a>Konfigurace hodnot ověřování
 
-V _Průzkumník řešení_ klikněte pravým tlačítkem myši na projekt a vyberte možnost **spravovat tajné klíče uživatele**. Tím se otevře soubor s názvem _tajných_kódů. JSON. Tento soubor není zkontrolován do správy zdrojového kódu. Další informace najdete [tady](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows). Obsah _tajných kódů. JSON_ nahraďte následujícím kódem a zadejte hodnoty, které jste zadali při vytváření prostředku pro moderní čtečku.
+Klikněte pravým tlačítkem myši na projekt v _Průzkumníku řešení_ a zvolte **Spravovat tajné klíče uživatelů**. Tím se otevře soubor s názvem _secrets.json_. Tento soubor není zaškrtnuto do správy zdrojového kódu. Více se dozvíte [zde](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows). Nahraďte obsah _souboru secrets.json_ následujícím a zadejte hodnoty uvedené při vytváření prostředku imersive reader.
 
 ```json
 {
@@ -55,25 +55,25 @@ V _Průzkumník řešení_ klikněte pravým tlačítkem myši na projekt a vybe
 }
 ```
 
-### <a name="add-the-microsoftidentitymodelclientsactivedirectory-nuget-package"></a>Přidejte balíček NuGet Microsoft. IdentityModel. clients. Active.
+### <a name="add-the-microsoftidentitymodelclientsactivedirectory-nuget-package"></a>Přidání balíčku Microsoft.IdentityModel.Clients.ActiveDirectory NuGet
 
-Následující kód používá objekty z balíčku NuGet **Microsoft. IdentityModel. clients. AD** , takže budete muset do svého projektu přidat odkaz na tento balíček.
+Následující kód používá objekty z balíčku **Microsoft.IdentityModel.Clients.ActiveDirectory** NuGet, takže budete muset přidat odkaz na tento balíček v projektu.
 
-Otevřete konzolu Správce balíčků NuGet z **nástrojů – > správce balíčků NuGet – > konzolu Správce balíčků** a spusťte následující příkaz:
+Otevřete konzolu Správce balíčků NuGet z **tools -> NuGet Správce balíčků -> konzoli Správce balíčků** a spusťte následující příkaz:
 
 ```powershell
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 5.2.0
 ```
 
-### <a name="update-the-controller-to-acquire-the-token"></a>Aktualizace kontroleru pro získání tokenu 
+### <a name="update-the-controller-to-acquire-the-token"></a>Aktualizace řadiče pro získání tokenu 
 
-Otevřete _souboru controllers\homecontroller.cs_a za příkazy _using_ v horní části souboru přidejte následující kód.
+Otevřete _controllers\HomeController.cs_a přidejte následující kód za _příkazy using_ v horní části souboru.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Teď nakonfigurujeme kontroler tak, aby získal hodnoty Azure AD z _tajných kódů. JSON_. V horní části třídy _HomeController_ přidejte po ```public class HomeController : Controller {```následující kód.
+Nyní nakonfigurujeme řadič tak, aby získával hodnoty Azure AD z _souboru secrets.json_. V horní části _HomeController_ třídy po ```public class HomeController : Controller {```přidejte následující kód.
 
 ```csharp
 private readonly string TenantId;     // Azure subscription TenantId
@@ -143,14 +143,14 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 }
 ```
 
-## <a name="add-sample-content"></a>Přidat ukázkový obsah
-Nejdřív otevřete _Views\Shared\Layout.cshtml_. Před ```</head>```řádku přidejte následující kód:
+## <a name="add-sample-content"></a>Přidání ukázkového obsahu
+Nejprve otevřete _zobrazení\Shared\Layout.cshtml_. Před řádek ```</head>```přidejte následující kód:
 
 ```html
 @RenderSection("Styles", required: false)
 ```
 
-Nyní přidáme do této webové aplikace vzorový obsah. Otevřete _Views\Home\Index.cshtml_ a nahraďte veškerý automaticky generovaný kód touto ukázkou:
+Nyní přidáme ukázkový obsah do této webové aplikace. Otevřete _zobrazení\Home\Index.cshtml_ a nahraďte všechny automaticky generované kódy touto ukázkou:
 
 ```html
 @{
@@ -216,13 +216,13 @@ Nyní přidáme do této webové aplikace vzorový obsah. Otevřete _Views\Home\
 </div>
 ```
 
-Všimněte si, že veškerý text má atribut **lang** , který popisuje jazyky textu. Tento atribut pomáhá modernímu čtečce poskytovat relevantní jazykové a gramatické funkce.
+Všimněte si, že celý text má **atribut lang,** který popisuje jazyky textu. Tento atribut pomáhá immersive Reader poskytnout příslušné funkce jazyka a gramatiky.
 
-## <a name="add-javascript-to-handle-launching-the-immersive-reader"></a>Přidání JavaScriptu pro zpracování moderního čtecího zařízení
+## <a name="add-javascript-to-handle-launching-the-immersive-reader"></a>Přidat JavaScript pro zpracování spuštění Immersive Reader
 
-Knihovna moderního čtecího zařízení poskytuje funkce, jako je například spuštění moderního čtecího zařízení a vykreslování tlačítek pro moderní čtečku. Další informace najdete [tady](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference).
+Knihovna Immersive Reader poskytuje funkce, jako je například spuštění immersive readeru a vykreslování tlačítek Immersive Reader. Více se dozvíte [zde](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference).
 
-V dolní části _Views\Home\Index.cshtml_přidejte následující kód:
+V dolní části _položky Zobrazení\Home\Index.cshtml_přidejte následující kód:
 
 ```html
 @section Scripts
@@ -294,21 +294,21 @@ V dolní části _Views\Home\Index.cshtml_přidejte následující kód:
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-V řádku nabídek vyberte možnost **ladění > spustit ladění**, nebo stiskněte klávesu **F5** a spusťte aplikaci.
+Na řádku nabídek vyberte **Možnost Ladění > Spustit ladění**nebo spusťte aplikaci stisknutím **klávesy F5.**
 
 V prohlížeči byste měli vidět:
 
 ![Ukázková aplikace](./media/quickstart-csharp/4-buildapp.png)
 
-## <a name="launch-the-immersive-reader"></a>Spuštění moderního čtecího zařízení
+## <a name="launch-the-immersive-reader"></a>Spuštění immersive Reader
 
-Po kliknutí na tlačítko "moderní čtečka" se zobrazí moderní čtečka, která se spustí s obsahem na stránce.
+Když kliknete na tlačítko "Immersive Reader", uvidíte Immersive Reader zahájena s obsahem na stránce.
 
 ![Asistivní čtečka](./media/quickstart-csharp/5-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podívejte se na úvodní seznam pro [Node. js](./quickstart-nodejs.md) , kde vidíte, co dalšího můžete dělat se sadou moderního čtecího zařízení pomocí Node. js.
-* Podívejte se na [kurz Pythonu](./tutorial-python.md) , abyste viděli, co dalšího můžete dělat se sadou moderní čtečky pomocí Pythonu.
-* Podívejte se na [kurz pro iOS](./tutorial-ios-picture-immersive-reader.md) , abyste viděli, co dalšího můžete dělat se sadou pro moderní čtečku pomocí SWIFT.
-* Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)
+* Zobrazení [rychlého startu node.js](./quickstart-nodejs.md) zobrazíte další, co dalšího můžete dělat se sadou Immersive Reader SDK pomocí souboru Node.js
+* Podívejte se na [kurz v Pythonu](./tutorial-python.md) a zjistěte, co dalšího můžete dělat s sadou Immersive Reader SDK pomocí Pythonu
+* Podívejte se na [kurz pro iOS](./tutorial-ios-picture-immersive-reader.md) a zjistěte, co dalšího můžete dělat s sadou Immersive Reader SDK pomocí Swiftu
+* Seznamte se s [sadou Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) a [referenční sadou Immersive Reader SDK](./reference.md)

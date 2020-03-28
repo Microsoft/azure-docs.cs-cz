@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči pomocí mikrofonu C++ – služba řeči'
+title: 'Úvodní příručka: Rozpoznávání řeči z mikrofonu, C++ - služba řeči'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,23 +10,23 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: 13e2bf74de4f2118b338e7b21a7e3e7e818775aa
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75927860"
 ---
-**Volba cílového prostředí**
+**Vyberte si cílové prostředí**
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 [!INCLUDE [linux](./linux.md)]
 
-# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[Macos](#tab/macOS)
 
 [!INCLUDE [macos](./macos.md)]
 
-# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+# <a name="windows"></a>[Windows](#tab/Windows)
 
 [!INCLUDE [windows](./windows.md)]
 

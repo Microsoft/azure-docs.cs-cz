@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: 0f7cbdeef8b6721dcd91c6910a10c8f90441a1ee
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264554"
 ---
-Pokud dáváte přednost přímo v, můžete si zobrazit nebo stáhnout všechny [ukázky sady C++ Speech SDK](https://aka.ms/speech/github-cpp) na GitHubu. V opačném případě můžeme začít.
+Pokud dáváte přednost přechodu přímo na, zobrazte nebo stáhněte všechny [ukázky sady Speech SDK C++](https://aka.ms/speech/github-cpp) na GitHubu. Jinak začneme.

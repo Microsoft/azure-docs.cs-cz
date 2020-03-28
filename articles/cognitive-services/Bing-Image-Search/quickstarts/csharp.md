@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: hledání imagí – Vyhledávání obrázků Bingu REST API aC#'
+title: 'Úvodní příručka: Hledání obrázků – Rozhraní REST API pro vyhledávání obrázků bingem a c #'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání obrázků do Vyhledávání obrázků Bingu REST API C#pomocí a přijímat odpovědi JSON.
+description: Tento rychlý start slouží k odesílání požadavků na vyhledávání obrázků do rozhraní REST ROZHRANÍ API pro vyhledávání obrázků bingu pomocí jazyka C# a přijíměte odpovědi JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 12/06/2019
 ms.author: aahi
 ms.openlocfilehash: e52101b873e03cd6fcd847e9aa2a2d801f8f583d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74918847"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Rychlý Start: hledání imagí pomocí Vyhledávání obrázků Bingu REST API aC#
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Úvodní příručka: Hledání obrázků pomocí rozhraní REST API pro vyhledávání obrázků Bingu a c #
 
-V tomto rychlém startu můžete začít odesílat žádosti o vyhledávání rozhraní API Bingu pro vyhledávání obrázků. Tato C# aplikace pošle vyhledávací dotaz do rozhraní API a zobrazí adresu URL prvního obrázku ve výsledcích. I když je tato aplikace napsaná v C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+Pomocí tohoto rychlého startu můžete začít odesílat požadavky na hledání do rozhraní API pro vyhledávání obrázků Bingu. Tato aplikace Jazyka C# odešle vyhledávací dotaz do rozhraní API a zobrazí adresu URL prvního obrázku ve výsledcích. Zatímco tato aplikace je napsána v jazyce C#, ROZHRANÍ API je restful webová služba kompatibilní s většinou programovacích jazyků.
 
-Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) s dalším zpracováním chyb a poznámkami.
+Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) s dalším zpracováním chyb a anotacemi.
 
-## <a name="prerequisites"></a>Předpoklady
-* Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
+## <a name="prerequisites"></a>Požadavky
+* Libovolná edice [Visual Studia 2017 nebo novější](https://www.visualstudio.com/downloads/).
 * Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
-* Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
+* Pokud používáte Linux/MacOS, lze tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -42,7 +42,7 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
     using Newtonsoft.Json.Linq;
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a hledaný výraz. `uriBase` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a hledaný výraz. `uriBase`může být globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
 
     ```csharp
     //...
@@ -97,7 +97,7 @@ namespace BingSearchApisQuickstart
 
 V metodě `BingImageSearch` proveďte následující kroky.
 
-1. Sestavte URI pro žádost o vyhledávání. Hledaný termín `SearchTerm` musí být před připojením k řetězci zformátován.
+1. Sestavte URI pro žádost o vyhledávání. Hledaný `SearchTerm` termín musí být před připojením k řetězci naformátován.
 
     ```csharp
     static SearchResult BingImageSearch(string SearchTerm){
@@ -206,11 +206,11 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
 > [!div class="nextstepaction"]
 > [Vyhledávání obrázků Bingu – kurz jednostránkové aplikace](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) pro rozhraní API pro vyhledávání Bingu. 
-* [Získat zdarma přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentace Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) pro vyhledávací api Bingu. 
+* [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Dokumentace ke službě Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: provedení vyhledávání na webu pomocí Ruby-rozhraní API Bingu pro vyhledávání na webu'
+title: 'Úvodní příručka: Proveďte vyhledávání na webu pomocí rozhraní Ruby – Rozhraní API pro vyhledávání na webu Bingu'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete posílat požadavky na Vyhledávání na webu Bingu REST API pomocí Ruby a přijímat odpověď JSON.
+description: Tento rychlý start slouží k odesílání požadavků do rozhraní REST API pro vyhledávání na webu Bingu pomocí ruby a k přijetí odpovědi JSON
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 5f3e05752967be8872c0e6fd9008bfae05d950fa
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169539"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Rychlý start: Použití Ruby k volání rozhraní API Bingu pro vyhledávání na webu  
 
-Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace Ruby pošle do rozhraní API požadavek hledání a zobrazí odpověď. Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+Pomocí tohoto rychlého startu můžete provést první volání do rozhraní API pro vyhledávání na webu Bingu a obdržet odpověď JSON. Tato aplikace Ruby odešle požadavek na vyhledávání do rozhraní API a zobrazí odpověď. Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,7 +43,7 @@ require 'json'
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Abychom mohli pokračovat, musíme nastavit několik proměnných. `uri` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte, že hodnoty `uri` a `path` jsou platné a nahraďte hodnotu `accessKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `term` zadat jinou hodnotu.
+Abychom mohli pokračovat, musíme nastavit několik proměnných. `uri`může být globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek. Ověřte, že hodnoty `uri` a `path` jsou platné a nahraďte hodnotu `accessKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `term` zadat jinou hodnotu.
 
 ```ruby
 accessKey = "YOUR_SUBSCRIPTION_KEY"

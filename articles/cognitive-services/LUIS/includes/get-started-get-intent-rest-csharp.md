@@ -1,5 +1,5 @@
 ---
-title: Získat předpovědi s voláním REST vC#
+title: 'Získat předpověď s voláním REST v C #'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,53 +9,53 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
 ms.openlocfilehash: 4cbec342bc20de35c0c62284e4e1fe1ae8b8e8a4
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76966869"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-* [.NET Core V 2.2 +](https://dotnet.microsoft.com/download)
-* [Visual Studio Code](https://code.visualstudio.com/)
-* ID veřejné aplikace: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* [.NET Jádro V2.2+](https://dotnet.microsoft.com/download)
+* [Kód visual studia](https://code.visualstudio.com/)
+* ID veřejné aplikace:`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="create-luis-runtime-key-for-predictions"></a>Vytvoření klíče LUIS runtime pro předpovědi
+## <a name="create-luis-runtime-key-for-predictions"></a>Vytvořit klíč runtime LUIS pro předpovědi
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)
-1. Klikněte na [vytvořit **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Zadejte všechna požadovaná nastavení pro klíč za běhu:
+1. Přihlášení k [portálu Azure](https://portal.azure.com)
+1. Klikněte na [Vytvořit **jazykové znalosti.** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+1. Zadejte všechna požadovaná nastavení pro klíč Runtime:
 
     |Nastavení|Hodnota|
     |--|--|
     |Name (Název)|Požadovaný název (2-64 znaků)|
-    |Předplatné|Vyberte odpovídající předplatné.|
-    |Umístění|Výběr libovolného okolí a dostupného umístění|
-    |Cenová úroveň|`F0` – minimální cenová úroveň|
-    |Skupina prostředků|Vyberte dostupnou skupinu prostředků.|
+    |Předplatné|Vybrat příslušné předplatné|
+    |Umístění|Vyberte libovolné blízké a dostupné místo|
+    |Cenová úroveň|`F0`- minimální cenová úroveň|
+    |Skupina prostředků|Výběr dostupné skupiny prostředků|
 
-1. Klikněte na **vytvořit** a počkejte na vytvoření prostředku. Po vytvoření přejděte na stránku prostředků.
-1. Shromážděte nakonfigurované `endpoint` a `key`.
+1. Klikněte na **Vytvořit** a počkejte na vytvoření prostředku. Po vytvoření přejděte na stránku prostředků.
+1. Sbírat `endpoint` nakonfigurované a `key`.
 
 ## <a name="get-intent-programmatically"></a>Získání záměru prostřednictvím kódu programu
 
-Použijte C# (.NET Core) k dotazování [koncového bodu předpovědi](https://aka.ms/luis-apim-v3-prediction) a získejte výsledek předpovědi.
+Použití Jazyka C# (.NET Core) k [dotazování koncový bod předpověď](https://aka.ms/luis-apim-v3-prediction) a získat výsledek předpověď.
 
-1. Vytvořte novou konzolovou aplikaci, která C# cílí na jazyk, s názvem projektu a složky `predict-with-rest`.
+1. Vytvořte novou konzolovou aplikaci, která cílí na `predict-with-rest`jazyk C# s názvem projektu a složky .
 
     ```console
     dotnet new console -lang C# -n predict-with-rest
     ```
 
-1. Přejděte do adresáře `predict-with-rest`, který jste právě vytvořili, a nainstalujte požadované závislosti pomocí těchto příkazů:
+1. Změňte `predict-with-rest` na adresář, který jste právě vytvořili, a nainstalujte požadované závislosti pomocí těchto příkazů:
 
     ```console
     cd predict-with-rest
     dotnet add package System.Net.Http
     ```
 
-1. Otevřete `Program.cs` v oblíbeném integrovaném vývojovém prostředí (IDE) nebo editoru. Pak `Program.cs` přepsat následujícím kódem:
+1. Otevřete `Program.cs` ve svém oblíbeném ide nebo editoru. Pak přepsat `Program.cs` s následujícím kódem:
 
    ```csharp
     using System;
@@ -115,33 +115,33 @@ Použijte C# (.NET Core) k dotazování [koncového bodu předpovědi](https://a
 
    ```
 
-1. Hodnoty `YOUR-KEY` a `YOUR-ENDPOINT` nahraďte vlastním klíčem předpovědi a koncovým bodem.
+1. Nahraďte hodnoty `YOUR-KEY` a `YOUR-ENDPOINT` vlastním predikčním klíčem a koncovým bodem.
 
     |Informace|Účel|
     |--|--|
-    |`YOUR-KEY`|Klíč předpovědi znaků 32.|
-    |`YOUR-ENDPOINT`| Koncový bod adresy URL předpovědi Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
+    |`YOUR-KEY`|Váš klíč předvídací 32 znaků.|
+    |`YOUR-ENDPOINT`| Koncový bod adresy URL předpovědi. Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
-1. Sestavte konzolovou aplikaci pomocí tohoto příkazu:
+1. Vytvořte konzolovou aplikaci pomocí tohoto příkazu:
 
     ```console
     dotnet build
     ```
 
-1. Spusťte konzolovou aplikaci. Výstup konzoly zobrazí stejný kód JSON, který jste viděli dříve v okně prohlížeče.
+1. Spusťte konzolovou aplikaci. Výstup konzoly zobrazuje stejný json, který jste viděli dříve v okně prohlížeče.
 
     ```console
     dotnet run
     ```
 
-1. Zkontrolujte odpověď předpovědi, která se vrátí jako JSON:
+1. Zkontrolujte předpověď odpověď, která je vrácena jako JSON:
 
     ```console
     Hit ENTER to exit...
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Odpověď JSON naformátovaná pro čitelnost:
+    Odpověď JSON formátovaná pro čitelnost:
 
     ```JSON
     {
@@ -186,9 +186,9 @@ Použijte C# (.NET Core) k dotazování [koncového bodu předpovědi](https://a
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s tímto rychlým startem hotovi, odstraňte soubor ze systému souborů.
+Po dokončení tohoto rychlého startu odstraňte soubor ze systému souborů.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přidat projevy a vlak](../get-started-get-model-rest-apis.md)
+> [Přidání promluv a vytáčení](../get-started-get-model-rest-apis.md)

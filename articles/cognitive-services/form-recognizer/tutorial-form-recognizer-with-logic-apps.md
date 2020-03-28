@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: použití nástroje pro rozpoznávání formulářů s Azure Logic Apps k analýze faktur – Nástroj pro rozpoznávání formulářů'
+title: 'Kurz: K analýze faktur pomocí aplikací Azure Logic Apps použijte nástroj Pro rozpoznávání formulářů – nástroj pro rozpoznávání formulářů .'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu použijete nástroj pro rozpoznávání formulářů s Azure Logic Apps k vytvoření pracovního postupu, který automatizuje proces školení modelu a testování pomocí ukázkových dat.
+description: V tomto kurzu použijete nástroj pro rozpoznávání formulářů s aplikacemi Azure Logic Apps k vytvoření pracovního postupu, který automatizuje proces trénovaní modelu a testování pomocí ukázkových dat.
 services: cognitive-services
 author: nitinme
 manager: nitinme
@@ -11,187 +11,187 @@ ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: nitinme
 ms.openlocfilehash: d71d9c7e6570e562fe4c692ede1d07b70c923cb6
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118271"
 ---
-# <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Kurz: použití nástroje pro rozpoznávání formulářů s Azure Logic Apps k analýze faktur
+# <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Kurz: Analýza faktur pomocí nástroje Pro rozpoznávání formulářů s aplikacemi Azure Logic Apps
 
-V tomto kurzu vytvoříte pracovní postup v Azure Logic Apps, který používá nástroj pro rozpoznávání formulářů, službu, která je součástí sady Azure Cognitive Services Suite, k extrakci dat z faktur. Nejdřív vytvoříte model rozpoznávání formulářů pomocí ukázkové sady dat a pak otestujete model v jiné sadě dat.
+V tomto kurzu vytvoříte pracovní postup v Azure Logic Apps, který používá nástroj pro rozpoznávání formulářů, službu, která je součástí sady Azure Cognitive Services, k extrahování dat z faktur. Nejprve tádáte model nástroje pro rozpoznávání formulářů pomocí ukázkové datové sady a potom model otestujete na jiné datové sadě.
 
-V tomto kurzu se dozvíte, co tento kurz popisuje:
+Zde je to, co tento výukový program pokrývá:
 
 > [!div class="checklist"]
-> * Požádat o přístup pro rozpoznávání formulářů
-> * Vytvoření Azure Storage kontejneru objektů BLOB
+> * Požádat o přístup k rozpoznávání formulářů
+> * Vytvoření kontejneru objektů blob úložiště Azure
 > * Nahrání ukázkových dat do kontejneru objektů blob Azure
-> * Vytvoření aplikace logiky Azure
-> * Konfigurace aplikace logiky, aby používala prostředek pro rozpoznávání formulářů
+> * Vytvoření aplikace azure logiky
+> * Konfigurace aplikace logiky pro použití prostředku nástroje pro rozpoznávání formulářů
 > * Testování pracovního postupu spuštěním aplikace logiky
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
+* Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 
-## <a name="understand-the-invoice-to-be-analyzed"></a>Pochopení faktury k analýze
+## <a name="understand-the-invoice-to-be-analyzed"></a>Principy faktury, která má být analyzována
 
-Ukázková datová sada, kterou použijete ke školení a testování modelu, je k dispozici jako soubor. zip z [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090451). Stáhněte a rozbalte soubor. zip a otevřete soubor PDF faktury ve složce **/Train** . Všimněte si, že má tabulku s číslem faktury, datem faktury atd. 
+Ukázková sada dat, kterou použijete k trénování a testování modelu, je k dispozici jako soubor ZIP z [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090451). Stáhněte a extrahujte soubor ZIP a otevřete soubor PDF faktury ve složce **/Train.** Všimněte si, že má tabulku s číslem faktury, datem faktury a tak dále. 
 
 > [!div class="mx-imgBorder"]
-> ](media/tutorial-form-recognizer-with-logic-apps/sample-receipt.png) ukázkové faktury ![
+> ![Ukázková faktura](media/tutorial-form-recognizer-with-logic-apps/sample-receipt.png)
 
-V tomto kurzu se naučíte, jak pomocí Azure Logic Apps pracovního postupu extrahovat informace z tabulek, jako jsou například ve formátu JSON.
+V tomto kurzu se dozvíte, jak pomocí pracovního postupu Azure Logic Apps extrahovat informace z tabulek, jako jsou tyto do formátu JSON.
 
-## <a name="create-an-azure-storage-blob-container"></a>Vytvoření Azure Storage kontejneru objektů BLOB
+## <a name="create-an-azure-storage-blob-container"></a>Vytvoření kontejneru objektů blob úložiště Azure
 
-Tento kontejner použijete k nahrání ukázkových dat, která jsou nutná pro výuku modelu.
+Tento kontejner slouží k nahrání ukázkových dat, která jsou vyžadována k trénování modelu.
 
-1. Při vytváření účtu úložiště postupujte podle pokynů v části [Vytvoření účtu Azure Storage](../../storage/common/storage-account-create.md) . Jako název účtu úložiště použijte **formrecostorage** .
-1. Podle pokynů v části [vytvoření kontejneru objektů BLOB v Azure](../../storage/blobs/storage-quickstart-blobs-portal.md) vytvořte kontejner v rámci Azure Storage účtu. Jako název kontejneru použijte **formrecocontainer** . Ujistěte se, že jste nastavili úroveň veřejného přístupu na **kontejner (anonymní přístup pro čtení kontejnerů a objektů BLOB)** .
+1. Podle pokynů v [části Vytvoření účtu Úložiště Azure](../../storage/common/storage-account-create.md) vytvořte účet úložiště. Jako název účtu úložiště použijte **formrecostorage.**
+1. Postupujte podle pokynů v [části Vytvoření kontejneru objektů blob Azure](../../storage/blobs/storage-quickstart-blobs-portal.md) k vytvoření kontejneru v rámci účtu Azure Storage. Jako název kontejneru použijte **kontejner formreco.** Ujistěte se, že jste nastavili úroveň veřejného přístupu na **Kontejner (anonymní přístup pro čtení pro kontejnery a objekty BLOB).**
 
     > [!div class="mx-imgBorder"]
-    > ![vytvořit kontejner objektů BLOB](media/tutorial-form-recognizer-with-logic-apps/create-blob-container.png)
+    > ![Vytvoření kontejneru objektů blob](media/tutorial-form-recognizer-with-logic-apps/create-blob-container.png)
 
 ## <a name="upload-sample-data-to-the-azure-blob-container"></a>Nahrání ukázkových dat do kontejneru objektů blob Azure
 
-Stáhněte si ukázková data dostupná na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090451). Extrahujte data do místní složky a nahrajte obsah složky **/Train** do **formrecocontainer** , který jste vytvořili dříve. Podle pokynů v části [nahrání objektu blob bloku](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) nahrajte data do kontejneru.
+Stáhněte si ukázková data dostupná na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090451). Extrahujte data do místní složky a nahrajte obsah složky **/Train** do **kontejneru formrecocontainer,** který jste vytvořili dříve. Podle pokynů na [nahrát objekt blob bloku](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) nahrát data do kontejneru.
 
-Zkopírujte adresu URL kontejneru. Tuto adresu URL budete potřebovat později v tomto kurzu. Pokud jste vytvořili účet úložiště a kontejner se stejnými názvy, jako jsou uvedené v tomto kurzu, adresa URL bude *https:\//formrecostorage.blob.Core.Windows.NET/formrecocontainer/* .
+Zkopírujte adresu URL kontejneru. Tuto adresu URL budete potřebovat později v kurzu. Pokud jste vytvořili účet úložiště a kontejner se stejnými názvy, jak je uvedeno v tomto kurzu, adresa URL bude *\/https: /formrecostorage.blob.core.windows.net/formrecocontainer/*.
 
-## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
+## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku nástroje pro rozpoznávání formulářů
 
 [!INCLUDE [create resource](./includes/create-resource.md)]
 
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
 
-Azure Logic Apps můžete použít k automatizaci a orchestraci úloh a pracovních postupů. V tomto kurzu vytvoříte aplikaci logiky, která se aktivuje přijetím faktury, kterou chcete analyzovat jako přílohu e-mailu. V tomto pracovním postupu provedete následující úlohy:
-* Nastavte automatickou aktivaci aplikace logiky při obdržení e-mailu s připojenou fakturou.
-* Nakonfigurujte aplikaci logiky tak, aby používala funkci rozpoznávání formulářů, která **umožňuje výuku** modelu pomocí ukázkových dat, která jste nahráli do úložiště objektů BLOB v Azure.
-* Nakonfigurujte aplikaci logiky tak, aby používala operaci **analyzovat** formulář nástroje pro rozpoznávání formulářů k použití modelu, který už máte vyškolený. Tato součást provede analýzu faktury, kterou zadáte do této aplikace logiky, na základě modelu, který dříve vyškole.
+Azure Logic Apps můžete použít k automatizaci a orchestraci úloh a pracovních postupů. V tomto kurzu vytvoříte aplikaci logiky, která se aktivuje přijetím faktury, kterou chcete analyzovat jako přílohu e-mailu. V tomto pracovním postupu provádíte následující úkoly:
+* Nakonfigurujte aplikaci logiky tak, aby se automaticky aktivovala, když obdržíte e-mail s připojenou fakturou.
+* Nakonfigurujte aplikaci logiky tak, aby používala operaci **modelu trénování** modelu nástroje Pro rozpoznávání formulářů pomocí ukázkových dat, která jste nahráli do úložiště objektů blob Azure.
+* Nakonfigurujte aplikaci logiky tak, aby používala operaci **analyzátoru rozpoznávání formulářů** k použití modelu, který jste již trénovaní. Tato součást bude analyzovat fakturu, kterou poskytnete do této aplikace logiky na základě modelu, který trénoval dříve.
 
-Pomocí těchto kroků nastavte pracovní postup.
+Postupujte podle následujících kroků a nastavte pracovní postup.
 
-1. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **integraci** > **Aplikace logiky**.
+1. V hlavní nabídce Azure vyberte > Vytvořit > **aplikaci logiky****integrace** **prostředků**.
 
-1. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky, jak je vidět zde. Až budete hotovi, vyberte **vytvořit**.
+1. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky, jak je vidět zde. Až budete hotovi, vyberte **Vytvořit**.
 
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
-   | **Název** | <*Logic-App-name*> | Název aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`), kulaté závorky (`(`, `)`) a tečky (`.`). Tento příklad používá "moji-First-Logic-App". |
-   | **Předplatné** | <*název_předplatného_Azure*> | Název vašeho předplatného Azure |
-   | **Skupina prostředků** | <*Azure-Resource-Group-name*> | Název [skupiny prostředků Azure](./../../azure-resource-manager/management/overview.md) , která slouží k uspořádání souvisejících prostředků. V tomto příkladu se používá "My-First-LA-RG". |
-   | **Umístění** | <*Azure – oblast*> | Oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
+   | **Název** | <*název aplikace logika*> | Název aplikace logiky, který může obsahovat pouze`-`písmena,`_`čísla, pomlčky`(`( `)`), podtržítka ( ), závorky ( , ) a tečky (`.`). Tento příklad používá "My-First-Logic-App". |
+   | **Předplatné** | <*Název předplatného Azure*> | Název předplatného Azure |
+   | **Skupina prostředků** | <*Název skupiny Azure-resource-group*> | Název [skupiny prostředků Azure,](./../../azure-resource-manager/management/overview.md) která slouží k uspořádání souvisejících prostředků. Tento příklad používá "My-First-LA-RG". |
+   | **Umístění** | <*Oblast Azure*> | Oblast, kde chcete uložit informace o aplikaci logiky. Tento příklad používá "Západní USA". |
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
 
-1. Až Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure možnost **oznámení** > pro vaši nasazenou aplikaci logiky **Přejít na prostředek** . Nebo můžete vyhledat a vybrat aplikaci logiky zadáním názvu do vyhledávacího pole.
+1. Po nasazení aplikace Azure na panelu nástrojů Azure vyberte **Oznámení** > **Přejít na prostředek** pro nasazenou aplikaci logiky. Nebo můžete najít a vybrat aplikaci logiky zadáním názvu do vyhledávacího pole.
 
    Otevře se Návrhář pro Logic Apps se zobrazenou stránkou s úvodním videem a běžně používanými triggery. V části **Šablony** vyberte **Prázdná aplikace logiky**.
 
    > [!div class="mx-imgBorder"]
-   > ![pro aplikaci logiky vybrat prázdnou šablonu](./../../logic-apps/media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
+   > ![Výběr prázdné šablony pro aplikaci logiky](./../../logic-apps/media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
-### <a name="configure-the-logic-app-to-trigger-the-workflow-when-an-email-arrives"></a>Konfigurace aplikace logiky, která aktivuje pracovní postup při přijetí e-mailu
+### <a name="configure-the-logic-app-to-trigger-the-workflow-when-an-email-arrives"></a>Konfigurace aplikace logiky pro aktivaci pracovního postupu při příchodu e-mailu
 
-V tomto kurzu aktivujete pracovní postup při přijetí e-mailu s připojenou fakturou. V tomto kurzu se jako e-mailová služba používá Office 365, ale můžete použít libovolného jiného poskytovatele e-mailu, kterého chcete použít.
+V tomto kurzu aktivujete pracovní postup při přijetí e-mailu s připojenou fakturou. Tento kurz používá Office 365 jako e-mailovou službu, ale můžete použít libovolného jiného poskytovatele e-mailu, který chcete použít.
 
-1. Na kartách vyberte vše, vyberte **Office 365 Outlook**a potom v části **triggery**vyberte, **kdy přijde nový e-mail**.
+1. Na kartách vyberte Vše, vyberte **Office 365 Outlook**a potom v části **Triggers**vyberte **When a new email arrives**.
 
     ![Aktivace aplikace logiky prostřednictvím příchozího e-mailu](media/tutorial-form-recognizer-with-logic-apps/logic-app-email-trigger.png)
 
 1. V poli **Office 365 Outlook** klikněte na **Přihlásit**se a zadejte podrobnosti pro přihlášení k účtu Office 365.
 
 1. V dalším dialogovém okně proveďte následující kroky.
-    1. Vyberte složku, která se má monitorovat pro všechny nové e-maily.
-    1. V případě **příloh s přílohami**vyberte **Ano**. Tím se zajistí, že pracovní postup aktivuje jenom e-maily s přílohami.
-    1. V případě **příloh zahrnutí**vyberte **Ano**. Tím se zajistí, že se obsah přílohy použije při zpracování pro příjem dat.
+    1. Vyberte složku, která má být sledována pro všechny nové e-maily.
+    1. V **pole Má přílohy**vyberte **Ano**. Tím je zajištěno, že pracovní postup spustí pouze e-maily s přílohami.
+    1. V **případě zahrnout přílohy**vyberte **ano**. Tím je zajištěno, že obsah přílohy se používají v následnézpracování.
 
         > [!div class="mx-imgBorder"]
-        > ![nakonfigurovat aktivační proceduru e-mailu aplikace logiky](media/tutorial-form-recognizer-with-logic-apps/logic-app-specify-email-folder.png)
+        > ![Konfigurace aktivační události e-mailu aplikace logiky](media/tutorial-form-recognizer-with-logic-apps/logic-app-specify-email-folder.png)
 
-1. V horní části panelu nástrojů klikněte na **Uložit** .
+1. Nahoře klikněte na **Uložit** z panelu nástrojů.
 
-### <a name="configure-the-logic-app-to-use-form-recognizer-train-model-operation"></a>Konfigurace aplikace logiky na použití funkce pro rozpoznávání formulářů
+### <a name="configure-the-logic-app-to-use-form-recognizer-train-model-operation"></a>Konfigurace aplikace logiky pro použití operace modelu vlaku nástroje pro rozpoznávání formulářů
 
-Předtím, než budete moci použít službu pro rozpoznávání formulářů k analýze faktur, je nutné vytvořit model tak, že mu poskytnete některá ukázková data faktury, která model dokáže analyzovat a dozvědět se od nich.
+Před použitím služby Rozpoznávání formulářů k analýze faktur je třeba trénovat model tím, že mu poskytnete data ukázkových faktur, která může model analyzovat a učit se.
 
-1. Vyberte **Nový krok**a v části **Zvolte akci**vyhledejte možnost **rozpoznávání formulářů**. Z zobrazených výsledků vyberte možnost **Nástroj pro rozpoznávání formulářů**a potom v části akce, které jsou k dispozici pro nástroj pro rozpoznávání formulářů vyberte možnost **model výuky**.
-
-    > [!div class="mx-imgBorder"]
-    > ![výukového modelu pro rozpoznávání formulářů](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-train-model.png)
-
-1. V dialogovém okně pro rozpoznávání formulářů zadejte název připojení a zadejte adresu URL koncového bodu a klíč, který jste získali pro prostředek pro rozpoznávání formuláře.
+1. Vyberte **Nový krok**a v části **Zvolit akci**vyhledejte nástroj pro **rozpoznávání formulářů**. Ve výsledcích, které se zobrazí, vyberte **Nástroj pro rozpoznávání formulářů**a potom v části akce, které jsou k dispozici pro rozpoznávání formulářů, vyberte **Model vlaku**.
 
     > [!div class="mx-imgBorder"]
-    > ![název připojení pro nástroj pro rozpoznávání formulářů](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-create-connection.png)
+    > ![Trénování modelu nástroje pro rozpoznávání formulářů](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-train-model.png)
 
-    Klikněte na možnost **Vytvořit**.
-
-1. V dialogovém okně **vlakový model** pro **zdroj**zadejte adresu URL kontejneru, do kterého jste nahráli ukázková data.
+1. V dialogovém okně Nástroj pro rozpoznávání formulářů zadejte název připojení a zadejte adresu URL koncového bodu a klíč, který jste načetli pro prostředek nástroje pro rozpoznávání formulářů.
 
     > [!div class="mx-imgBorder"]
-    > ![kontejner úložiště pro ukázkové faktury](media/tutorial-form-recognizer-with-logic-apps/source-for-train-model.png)
+    > ![Název připojení pro nástroj pro rozpoznávání formulářů](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-create-connection.png)
 
-1. V horní části panelu nástrojů klikněte na **Uložit** .
+    Klikněte na **Vytvořit**.
 
-### <a name="configure-the-logic-app-to-use-the-form-recognizer-analyze-form-operation"></a>Konfigurace aplikace logiky, aby používala operaci analyzovat formulář v nástroji pro rozpoznávání formulářů
-
-V této části přidáte do pracovního postupu operaci **analyzovat formulář** . Tato operace používá již vyškolený model k analýze nové faktury, která je k dispozici v aplikaci logiky.
-
-1. Vyberte **Nový krok**a v části **Zvolte akci**vyhledejte možnost **rozpoznávání formulářů**. Z zobrazených výsledků vyberte možnost **Nástroj pro rozpoznávání formulářů**a potom v části akce, které jsou k dispozici pro nástroj pro rozpoznávání formulářů vyberte možnost **analyzovat formulář**.
+1. V dialogovém okně **Model vlaku** zadejte do pole **Zdroj**adresu URL kontejneru, do kterého jste nahráli ukázková data.
 
     > [!div class="mx-imgBorder"]
-    > ![analyzovat model pro rozpoznávání formulářů](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-analyze-model.png)
+    > ![Skladovací kontejner pro ukázkové faktury](media/tutorial-form-recognizer-with-logic-apps/source-for-train-model.png)
 
-1. V dialogovém okně **Analýza formuláře** proveďte následující kroky:
+1. Nahoře klikněte na **Uložit** z panelu nástrojů.
 
-    1. Klikněte na textové pole **ID modelu** a v dialogovém okně, které se otevře, vyberte na kartě **dynamický obsah** možnost **modelId**. Provedete to tak, že zadáte aplikaci Flow s ID modelu modelu, který jste si vyškolei v poslední části.
+### <a name="configure-the-logic-app-to-use-the-form-recognizer-analyze-form-operation"></a>Konfigurace aplikace logiky pro použití operace Analyzátor uvytvoření formuláře
+
+V této části přidáte operaci **Analyzovat formulář** do pracovního postupu. Tato operace používá již trénovaný model k analýze nové faktury, která je k dispozici do aplikace logiky.
+
+1. Vyberte **Nový krok**a v části **Zvolit akci**vyhledejte nástroj pro **rozpoznávání formulářů**. Ve výsledcích, které se zobrazí, vyberte **Nástroj pro rozpoznávání formulářů**a potom v části akce, které jsou k dispozici pro rozpoznávání formulářů, vyberte **Analyzovat formulář**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Analýza modelu nástroje pro rozpoznávání formulářů](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-analyze-model.png)
+
+1. V dialogovém okně **Analyzovat formulář** proveďte následující kroky:
+
+    1. Klepněte na textové pole **ID modelu** a v dialogovém okně, které se otevře, vyberte v části Karta **Dynamický obsah** **položku Id modelu**. Tímto způsobem poskytnete aplikaci toku s ID modelu modelu, který jste trénovali v poslední části.
 
         > [!div class="mx-imgBorder"]
-        > ![použít ModelID pro rozpoznávání formulářů](media/tutorial-form-recognizer-with-logic-apps/analyze-form-model-id.png)
+        > ![Použití modelové id pro rozpoznávání formulářů](media/tutorial-form-recognizer-with-logic-apps/analyze-form-model-id.png)
 
-    2. Klikněte na textové pole **dokumentu** a v dialogovém okně, které se otevře, v části karta **dynamického obsahu** vyberte **obsah příloh**. Tím se nakonfiguruje tok pro použití ukázkového souboru faktury, který je připojený v e-mailu, který aktivuje pracovní postup.
+    2. Klepněte na textové pole **Dokument** a v dialogovém okně, které se otevře, v části Karta **Dynamický obsah** vyberte **Položku Obsah příloh**. Tím nakonfigurujete tok pro použití ukázkového souboru faktury, který je připojen v e-mailu, který aktivuje pracovní postup.
 
         > [!div class="mx-imgBorder"]
-        > ![k analýze faktur použít přílohu e-mailu](media/tutorial-form-recognizer-with-logic-apps/analyze-form-input-data.png)
+        > ![Analýza faktur pomocí přílohy e-mailu](media/tutorial-form-recognizer-with-logic-apps/analyze-form-input-data.png)
 
-1. V horní části panelu nástrojů klikněte na **Uložit** .
+1. Nahoře klikněte na **Uložit** z panelu nástrojů.
 
-### <a name="extract-the-table-information-from-the-invoice"></a>Extrahuje informace z tabulky z faktury.
+### <a name="extract-the-table-information-from-the-invoice"></a>Extrahovat informace o tabulce z faktury
 
-V této části nakonfigurujete aplikaci logiky tak, aby byly extrahovány informace z tabulky v rámci faktur.
+V této části nakonfigurujete aplikaci logiky extrahovat informace z tabulky v rámci faktury.
 
-1. Vyberte možnost **přidat akci**a v části **Zvolte akci**vyhledejte položku **vytvořit** a v části akce, které jsou k dispozici, vyberte možnost znovu **vytvořit** .
-    ![extrahovat informace o tabulce z faktury](media/tutorial-form-recognizer-with-logic-apps/extract-table.png)
+1. Vyberte **Přidat akci**a v části **Zvolit akci**vyhledejte **compose** a v části akce, které jsou k dispozici, vyberte **Znovu vytvořit.**
+    ![Extrahovat informace o tabulce z faktury](media/tutorial-form-recognizer-with-logic-apps/extract-table.png)
 
-1. V dialogovém okně **psaní** klikněte na textové pole **vstupy** a v dialogovém okně, které se zobrazí, vyberte **tabulky**.
+1. V dialogovém okně **Napsat** klepněte na textové pole **Vstupy** a v dialogovém okně, které se objeví, vyberte **tabulky**.
 
     > [!div class="mx-imgBorder"]
-    > ![extrahovat informace o tabulce z faktury](media/tutorial-form-recognizer-with-logic-apps/select-tables.png)
+    > ![Extrahovat informace o tabulce z faktury](media/tutorial-form-recognizer-with-logic-apps/select-tables.png)
 
-1. Klikněte na možnost **Uložit**.
+1. Klikněte na **Uložit**.
 
 ## <a name="test-your-logic-app"></a>Testování aplikace logiky
 
-K otestování aplikace logiky použijte ukázkové faktury ve složce **/test** ukázkové sady dat, kterou jste si stáhli z [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090451). Postupujte následovně:
+Chcete-li otestovat aplikaci logiky, použijte ukázkové faktury ve složce **/Test** ukázkové datové sady, kterou jste stáhli z [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090451). Postupujte následovně:
 
-1. Z návrháře Azure Logic Apps pro vaši aplikaci vyberte **Spustit** z panelu nástrojů v horní části. Pracovní postup je teď aktivní a čeká na příjem e-mailu s připojenou fakturou.
-1. Odešlete e-mail s ukázkovou fakturou připojenou k e-mailové adrese, kterou jste zadali při vytváření aplikace logiky. Zajistěte, aby byl e-mail doručen do složky, kterou jste zadali při konfiguraci aplikace logiky.
-1. Jakmile se e-mail doručí do složky, Návrhář Logic Apps zobrazí obrazovku s průběhem jednotlivých fází. Na snímku obrazovky níže vidíte, že byl přijat e-mail s přílohou a probíhá pracovní postup.
-
-    > [!div class="mx-imgBorder"]
-    > ![spustit pracovní postup odesláním e-mailu](media/tutorial-form-recognizer-with-logic-apps/logic-apps-email-arrived-progress.png)
-
-1. Po dokončení všech fází pracovního postupu se v Návrháři Logic Apps zobrazí zelené zaškrtávací políčko proti každé fázi. V okně návrháře vyberte **pro každou možnost 2**a pak vyberte **vytvořit**.
+1. V návrháři Azure Logic Apps pro vaši aplikaci vyberte **Spustit** z panelu nástrojů nahoře. Pracovní postup je nyní aktivní a čeká na přijetí e-mailu s přiloženou fakturou.
+1. Odešlete e-mail s ukázkovou fakturou připojenou k e-mailové adrese, kterou jste zadali při vytváření aplikace logiky. Ujistěte se, že e-mail je doručena do složky, které jste zadali při konfiguraci aplikace logiky.
+1. Jakmile je e-mail doručen do složky, Návrhář logických aplikací zobrazí obrazovku s průběhem každé fáze. Na následujícím snímku obrazovky zjistíte, že je přijat e-mail s přílohou a probíhá pracovní postup.
 
     > [!div class="mx-imgBorder"]
-    > Pracovní postup ![dokončen](media/tutorial-form-recognizer-with-logic-apps/logic-apps-verify-output.png)
+    > ![Spuštění pracovního postupu odesláním e-mailu](media/tutorial-form-recognizer-with-logic-apps/logic-apps-email-arrived-progress.png)
 
-    Z pole **výstupy** zkopírujte výstup a vložte ho do libovolného textového editoru.
+1. Po dokončení spuštění všech fází pracovního postupu zobrazí Návrhář logických aplikací zelené zaškrtávací políčko pro každou fázi. V okně návrháře vyberte **Pro každý 2**a pak vyberte **Compose**.
 
-1. Porovnejte výstup JSON s ukázkovou fakturou, kterou jste poslali jako přílohu v e-mailu. Ověřte, že data JSON odpovídají datům v tabulce v rámci faktury.
+    > [!div class="mx-imgBorder"]
+    > ![Pracovní postup dokončen](media/tutorial-form-recognizer-with-logic-apps/logic-apps-verify-output.png)
+
+    Z pole **VÝSTUPY** zkopírujte výstup a vložte jej do libovolného textového editoru.
+
+1. Porovnejte výstup JSON s ukázkovou fakturou, kterou jste odeslali jako přílohu v e-mailu. Ověřte, zda data JSON odpovídají datům v tabulce na faktuře.
 
     ```json
     [
@@ -381,7 +381,7 @@ K otestování aplikace logiky použijte ukázkové faktury ve složce **/test**
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu nastavíte pracovní postup Azure Logic Apps pro použití rozpoznávání formulářů k učení modelu a extrakci obsahu faktury. Dále se naučíte, jak vytvořit školicí sadu dat, abyste mohli vytvořit podobný scénář s vlastními formuláři.
+V tomto kurzu nastavíte pracovní postup Azure Logic Apps pro použití nástroje pro rozpoznávání formulářů k trénování modelu a extrahování obsahu faktury. Dále se dozvíte, jak vytvořit trénovací sadu dat, abyste mohli vytvořit podobný scénář s vlastními formuláři.
 
 > [!div class="nextstepaction"]
-> [Sestavení sady školicích dat](build-training-data-set.md)
+> [Vytvoření trénovací sady dat](build-training-data-set.md)

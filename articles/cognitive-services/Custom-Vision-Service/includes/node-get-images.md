@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 12/05/2018
 ms.author: areddish
 ms.openlocfilehash: 09067b957b5da9b7c54958d9f30381b8d141e639
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175333"
 ---
 ## <a name="get-the-sample-images"></a>Získání ukázkových obrázků
 
-Tento příklad používá Image z **ukázky nebo customvision/imagí** adresáři [Cognitive Services Node.js SDK ukázky](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/customvision/images) úložišti na Githubu. Naklonujte nebo si stáhněte toto úložiště do svého vývojového prostředí.
+Tento příklad používá obrázky z **ukázky/customvision/images** adresář [e-potomek Cognitive Services Node.js SDK ukázky](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/customvision/images) na GitHub. Naklonujte nebo si stáhněte toto úložiště do svého vývojového prostředí.

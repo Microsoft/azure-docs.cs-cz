@@ -1,7 +1,7 @@
 ---
-title: Co je rozhraní API pro moderní čtečku?
+title: Co je rozhraní API pro immersive reader?
 titleSuffix: Azure Cognitive Services
-description: Rozhraní API pro moderní čtečku je nástroj, který se dá použít k obnově informací o rozdílech učení nebo k novým čtenářům a nástrojům pro jazyky.
+description: Rozhraní Immersive Reader API je nástroj, který lze použít k ubytování lidí s rozdíly v učení nebo pomoci novým čtenářům a studentům jazyků.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,22 +10,24 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: 5acd6e4be178c7e645eb6855a79cd0f58303ba9a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2eab7ab62f6a7a105dab33aa889af9f2be3a3fa3
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846418"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80052379"
 ---
 # <a name="what-is-immersive-reader"></a>Co je Asistivní čtečka?
 
-[Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nově vznikající čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia.
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+
+[Immersive Reader](https://www.onenote.com/learningtools) je inkluzivně navržený nástroj, který implementuje osvědčené techniky pro zlepšení čtení porozumění pro začínající čtenáře, studenty jazyků a lidi s rozdíly v učení, jako je dyslexie.
 
 Asistivní čtečku můžete využít ve vašich webových aplikacích prostřednictvím sady SDK pro Asistivní čtečku.
 
-## <a name="what-does-immersive-reader-do"></a>Co dělá moderní čtečka?
+## <a name="what-does-immersive-reader-do"></a>Co dělá Immersive Reader?
 
-Moderní čtečka je navržená tak, aby pro každého mohla být přičtená.
+Pohlcující čtečka je navržena tak, aby čtení bylo přístupnější pro každého.
 
 * Zobrazuje obsah v minimálním zobrazení pro čtení.
 
@@ -35,30 +37,30 @@ Moderní čtečka je navržená tak, aby pro každého mohla být přičtená.
 
   ![Slovník obrázků](./media/picture-dictionary.png)
 
-* Zvýrazní podstatná jména, slovesa, přídavné jména a příslovy.
+* Zvýrazňují ta hřbeta, slovesa, přídavná jména a příslovce
 
   ![Části řeči](./media/parts-of-speech.png)
 
-* Přečte obsah po nahlasu
+* Čte vám obsah nahlas
 
   ![Číst nahlas](./media/read-aloud.png)
 
-* Přeloží obsah do jiného jazyka.
+* Převede obsah do jiného jazyka.
 
   ![Překlad](./media/translation.png)
 
-* Rozdělí slova na slabiky.
+* Rozdělí slova na slabiky
 
-  ![Syllabification](./media/syllabification.png)
+  ![Syllabifikace](./media/syllabification.png)
 
-## <a name="how-does-immersive-reader-work"></a>Jak funguje moderní čtečka?
+## <a name="how-does-immersive-reader-work"></a>Jak funguje immersive Reader?
 
-Moderní čtečka je samostatná webová aplikace, která při vyvolání pomocí sady SDK pro moderní čtečku se zobrazuje na vaší stávající webové aplikaci prostřednictvím `iframe`. Když zavoláte rozhraní API za účelem spuštění moderního čtecího modulu, zadáte obsah, který chcete zobrazit v moderní čtečce. Naše sada SDK zpracovává vytváření a stylování `iframe` a komunikaci se službou moderního čtecího zařízení, která zpracovává obsah pro části řeči, převod textu na řeč, překlad atd.
+Immersive Reader je samostatná webová aplikace, která se při vyvolání pomocí sady JavaScript SDK pro immersive Reader zobrazí v horní části vaší stávající webové aplikace prostřednictvím sady `iframe`. Při volání rozhraní API ke spuštění immersive Reader, zadáte obsah, který chcete zobrazit v immersive Reader. Naše sada SDK zpracovává vytváření a `iframe` styling a komunikaci s back-endovou službou Immersive Reader, která zpracovává obsah částí řeči, textu na řeč, překladu a tak dále.
 
 ## <a name="next-steps"></a>Další kroky
 
 Začínáme s Asistivní čtečkou:
 
-* Přechod k [rychlému](./quickstart.md) startu
-* Prozkoumejte [sadu moderních čtenářů na GitHubu](https://github.com/microsoft/immersive-reader-sdk)
-* Přečtěte si [referenční informace k sadě pro moderní čtečku SDK](./reference.md)
+* Skočit do [rychlého startu](./quickstart.md)
+* Prozkoumejte sadku [Immersive Reader SDK na GitHubu](https://github.com/microsoft/immersive-reader-sdk)
+* Přečtěte si referenční příručku sady [Immersive Reader SDK](./reference.md)
