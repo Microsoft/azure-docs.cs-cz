@@ -1,6 +1,6 @@
 ---
-title: Vytvoření testu přes Internet Analyzer pomocí rozhraní příkazového řádku | Microsoft Docs
-description: V tomto článku se dozvíte, jak vytvořit první test přes Internet Analyzer.
+title: Vytvoření testu internetového analyzátoru pomocí cli | Dokumenty společnosti Microsoft
+description: V tomto článku se dozvíte, jak vytvořit první test nástroje Internet Analyzer.
 services: internet-analyzer
 author: diego-perez-botero
 ms.service: internet-analyzer
@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74184266"
 ---
-# <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Vytvoření testu pomocí rozhraní příkazového řádku (Preview) pro Internet Analyzer
+# <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Vytvoření testu internetového analyzátoru pomocí cli (Preview)
 
-Existují dva způsoby, jak vytvořit prostředek nástroje Internet Analyzer pomocí [Azure Portal](internet-analyzer-create-test-portal.md) nebo pomocí rozhraní příkazového řádku. Tato část vám pomůže vytvořit nový prostředek Azure Internet Analyzer pomocí našeho prostředí CLI. 
+Existují dva způsoby, jak vytvořit prostředek Internet Analyzer – pomocí [portálu Azure](internet-analyzer-create-test-portal.md) nebo pomocí příkazového příkazového příkazu. Tato část vám pomůže vytvořit nový prostředek Azure Internet Analyzer pomocí našeho prostředí příkazového příkazového příkazu. 
 
 
 > [!IMPORTANT]
@@ -25,32 +25,32 @@ Existují dva způsoby, jak vytvořit prostředek nástroje Internet Analyzer po
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Verze Public Preview je k dispozici pro použití globálně; úložiště dat je ale ve verzi Preview omezené na *USA – západ 2* .
+Verze Public Preview je k dispozici pro použití globálně. úložiště dat je však omezena na *US West 2* během náhledu.
 
 ## <a name="object-model"></a>Objektový model
-Rozhraní příkazového řádku pro Internet Analyzer zpřístupňuje následující typy prostředků:
-* **Testy** – test porovná výkon koncových uživatelů dvou koncových bodů (a a B) v průběhu času.
-* **Profily** – testy se vytvářejí v profilu Internet Analyzer. Profily umožňují seskupit související testy; jeden profil může obsahovat jeden nebo více testů.
-* **Předem nakonfigurované koncové body** – nastavili jsme koncové body s řadou konfigurací (oblasti, technologie zrychlení atd.). V testech můžete použít některý z těchto předkonfigurovaných koncových bodů.
-* **Scorecardy** – scorecard poskytuje rychlé a smysluplné souhrny výsledků měření. Přečtěte si téma [Interpretace přehledu výkonnostních metrik](internet-analyzer-scorecard.md).
-* **Time Series** – časová řada ukazuje, jak se metrika mění v čase.
+Uživatel příkazového příkazu k analyzátoru Internetu zveřejňuje následující typy prostředků:
+* **Testy** – test porovnává výkon koncového uživatele dvou koncových bodů internetu (A a B) v čase.
+* **Profily** - Testy jsou vytvářeny pod profilem nástroje Internet Analyzer. Profily umožňují seskupit související testy; jeden profil může obsahovat jeden nebo více testů.
+* **Předkonfigurované koncové body** – nastavili jsme koncové body s různými konfiguracemi (oblasti, akcelerační technologie atd.). Můžete použít některý z těchto předkonfigurovaných koncových bodů v testech.
+* **Přehledy výkonnostních metrik** – Přehled výkonnostních metrik poskytuje rychlé a smysluplné souhrny výsledků měření. Informace o interpretaci přehledu výkonnostních metrik naleznete v části [Interpretace přehledu výkonnostních metrik](internet-analyzer-scorecard.md).
+* **Časové řady** – časové řady ukazují, jak se metrika v průběhu času mění.
 
-## <a name="profile-and-test-creation"></a>Vytváření profilů a testů
-1. Získat přístup k aplikaci Internet Analyzer Preview pomocí **návody se účastní verze Preview?** pokyny najdete v tématu [Nejčastější dotazy k Azure Internet Analyzer](internet-analyzer-faq.md).
-2. [Nainstalujte rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-3. Spusťte příkaz `login` a spusťte tak relaci CLI:
+## <a name="profile-and-test-creation"></a>Vytvoření profilu a testu
+1. Získejte přístup k náhledu nástroje Internet Analyzer podle pokynů **How do I participate in preview?** z [nejčastějších dotazů nástroje Azure Internet Analyzer](internet-analyzer-faq.md).
+2. [Nainstalujte příkazové příkazové nebo tonové zaokrocené.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+3. Spuštěnípříkazu `login` pro spuštění relace příkazového příkazu:
     ```azurecli-interactive
     az login
     ```
 
-    Pokud rozhraní příkazového řádku může otevřít výchozí prohlížeč, bude to mít za následek a načíst přihlašovací stránku Azure.
-    V opačném případě otevřete stránku prohlížeče na https://aka.ms/devicelogin a zadejte autorizační kód zobrazený v terminálu.
+    Pokud příkazové příkazové příkazy můžete otevřít výchozí prohlížeč, bude tak učinit a načíst přihlašovací stránku Azure.
+    V opačném případě otevřete stránku prohlížeče a https://aka.ms/devicelogin zadejte autorizační kód zobrazený ve vašem terminálu.
 
 4. Přihlaste se pomocí přihlašovacích údajů vašeho účtu v prohlížeči.
 
-5. Vyberte ID předplatného, kterému bylo uděleno oprávnění k přístupu k Internet Analyzer Public Preview.
+5. Vyberte ID předplatného, kterému byl udělen přístup k verzi Internet Analyzer public preview.
 
-    Po přihlášení se zobrazí seznam předplatných přidružených k vašemu účtu Azure. Informace o předplatném s `isDefault: true` jsou aktuálně aktivované předplatné po přihlášení. Pokud chcete vybrat jiné předplatné, přejděte k přepínači pomocí příkazu [AZ Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) s ID předplatného. Další informace o výběru předplatného najdete v tématu [použití více předplatných Azure](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Po přihlášení se zobrazí seznam předplatných přidružených k vašemu účtu Azure. Informace o `isDefault: true` předplatném s je aktuálně aktivované předplatné po přihlášení. Chcete-li vybrat jiné předplatné, použijte příkaz [az účet nastavit](https://docs.microsoft.com/cli/azure/account#az-account-set) s ID předplatného přepnout na. Další informace o výběru předplatného najdete v tématu [Použití více předplatných Azure](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
 
     Existují i způsoby, jak se přihlásit neinteraktivně. Ty jsou podrobně popsané v tématu [Přihlášení pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
@@ -59,29 +59,29 @@ Rozhraní příkazového řádku pro Internet Analyzer zpřístupňuje následuj
     az group create --location eastus --name "MyInternetAnalyzerResourceGroup"
     ```
 
-7. Nainstalujte rozšíření Azure CLI Internet Analyzer:
+7. Instalace rozšíření Azure CLI Internet Analyzer:
      ```azurecli-interactive
     az extension add --name internet-analyzer
     ```
 
-8. Vytvořit nový profil pro Internet Analyzer:
+8. Vytvořte nový profil internetového analyzátoru:
     ```azurecli-interactive
     az internet-analyzer profile create --location eastus --resource-group "MyInternetAnalyzerResourceGroup" --name "MyInternetAnalyzerProfile" --enabled-state Enabled
     ```
 
-9. Vypíše všechny předem nakonfigurované koncové body, které jsou k dispozici nově vytvořenému profilu:
+9. Seznam všech předkonfigurovaných koncových bodů, které jsou k dispozici pro nově vytvořený profil:
     ```azurecli-interactive
     az internet-analyzer preconfigured-endpoint list --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile"
     ```
 
-10. Vytvořte nový test pod nově vytvořeným profilem InternetAnalyzer:
+10. Vytvořte nový test v rámci nově vytvořeného profilu InternetAnalyzer:
     ```azurecli-interactive
     az internet-analyzer test create --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --endpoint-a-name "contoso" --endpoint-a-endpoint "www.contoso.com/some/path/to/trans.gif" --endpoint-b-name "microsoft" --endpoint-b-endpoint "www.microsoft.com/another/path/to/trans.gif" --name "MyFirstInternetAnalyzerTest" --enabled-state Enabled
     ```
 
-    Výše uvedený příkaz předpokládá, že `www.contoso.com` i `www.microsoft.com` v rámci vlastních cest hostují obrázek s jedním pixelem ([trans. gif](https://fpc.msedge.net/apc/trans.gif)). Pokud není cesta k objektu explicitně zadaná, služba Internet Analyzer ve výchozím nastavení použije `/apc/trans.gif` jako cestu k objektu, což je umístění předkonfigurovaných koncových bodů, které jsou hostiteli z obrazových bodů. Všimněte si také, že není nutné zadávat schéma (HTTPS/HTTP); Nástroj Internet Analyzer podporuje pouze koncové body HTTPS, takže se předpokládá protokol HTTPS.
+    Výše uvedený příkaz předpokládá, že oba `www.contoso.com` a `www.microsoft.com` jsou hostování obrazu s jedním obrazem[(trans.gif)](https://fpc.msedge.net/apc/trans.gif)pod vlastní cesty. Pokud není explicitně zadána cesta k objektu, internetová analyzer použije `/apc/trans.gif` jako cestu k objektu ve výchozím nastavení, což je místo, kde předkonfigurované koncové body jsou hostitelem bitové kopie s jedním obrazem. Všimněte si také, že schéma (https/http) není nutné zadat; Internet Analyzer podporuje pouze koncové body HTTPS, takže se předpokládá protokol HTTPS.
 
-11. Nový test by měl být zobrazen pod profilem nástroje Internet Analyzer:
+11. Nový test by se měl zobrazit pod profilem Internet Analyzer:
     ```azurecli-interactive
     az internet-analyzer test list --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile"
     ```
@@ -113,14 +113,14 @@ Rozhraní příkazového řádku pro Internet Analyzer zpřístupňuje následuj
     ]
     ````
 
-12. Aby bylo možné začít generovat měření, musí být soubor JavaScriptu, na který odkazuje **scriptFileUri** testu, vložen do vaší webové aplikace. Konkrétní pokyny najdete na stránce pro [vložení klienta Internet Analyzer](internet-analyzer-embed-client.md) .
+12. Chcete-li začít generovat měření, musí být soubor JavaScript upozorpaný **skriptem FileUri** testu vložen do webové aplikace. Konkrétní pokyny naleznete na stránce [Klient embed internet analyzer.](internet-analyzer-embed-client.md)
 
-13. Průběh testu můžete monitorovat tak, že si zachováte jeho hodnotu "stav":
+13. Průběh testu můžete sledovat sledováním jeho hodnoty "stav":
     ```azurecli-interactive
     az internet-analyzer test show --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --name "MyFirstInternetAnalyzerTest"
     ```
 
-14. Shromážděné výsledky testu můžete zkontrolovat tak, že pro něj vygenerujete časové řady nebo přehledy:
+14. Shromážděné výsledky testu můžete zkontrolovat tak, že pro něj vygenerujete časové řady nebo přehledy výkonnostních metrik:
     ```azurecli-interactive
     az internet-analyzer show-scorecard --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --name "MyFirstInternetAnalyzerTest" --aggregation-interval "Daily" --end-date-time-utc "2019-10-24T00:00:00"
     ```
@@ -132,6 +132,6 @@ Rozhraní příkazového řádku pro Internet Analyzer zpřístupňuje následuj
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úplný seznam podporovaných příkazů a příkladů použití najdete v [referenčních informacích](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) k rozhraní příkazového řádku Internet Analyzer.
-* Přečtěte si [Nejčastější dotazy k Internet Analyzer](internet-analyzer-faq.md).
-* Přečtěte si další informace o vložení [klienta Internet Analyzer](internet-analyzer-embed-client.md) a vytvoření [vlastního koncového bodu](internet-analyzer-custom-endpoint.md). 
+* Projděte si [odkaz na příkaz CLI analyzátoru Internetu](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) pro úplný seznam podporovaných příkazů a příkladů použití.
+* Přečtěte si [nejčastější dotazy k internetovému analyzátoru](internet-analyzer-faq.md).
+* Přečtěte si další informace o vložení [klienta Nástroje pro analýzu Internetu](internet-analyzer-embed-client.md) a vytvoření [vlastního koncového bodu](internet-analyzer-custom-endpoint.md). 

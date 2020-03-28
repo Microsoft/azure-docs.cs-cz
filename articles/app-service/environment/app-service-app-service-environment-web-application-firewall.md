@@ -1,18 +1,18 @@
 ---
 title: Konfigurace WAF
-description: Přečtěte si, jak nakonfigurovat Firewall webových aplikací (WAF) před vaším App Service Environment, a to buď pomocí Azure Application Gateway, nebo WAF třetí strany.
+description: Zjistěte, jak nakonfigurovat bránu firewall webové aplikace (WAF) před prostředím služby App Service, a to buď pomocí Azure Application Gateway, nebo pomocí WAF třetí strany.
 author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
-ms.custom: seodec18
-ms.openlocfilehash: ba53438eb5ae1870cb180b169348ab0f92e5f305
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 51375c13d842bda2450a83e1bbc48b741adba39b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688757"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057451"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurace brány firewall webových aplikací pro službu App Service Environment
 ## <a name="overview"></a>Přehled
@@ -66,12 +66,12 @@ Po přihlášení by se měl zobrazit podobný řídicí panel jako na následuj
 
 ![Správa – Řídicí panel][ManagementDashboard]
 
-Po kliknutí na kartu **Services** (Služby) můžete konfigurovat bránu WAF pro služby, které chrání. Další podrobnosti o konfiguraci Barracuda WAF najdete v příslušné [dokumentaci](https://techlib.barracuda.com/waf/getstarted1). V následujícím příkladu je nakonfigurované App Service aplikace obsluhující provoz na protokolech HTTP a HTTPS.
+Po kliknutí na kartu **Services** (Služby) můžete konfigurovat bránu WAF pro služby, které chrání. Další podrobnosti o konfiguraci Barracuda WAF najdete v příslušné [dokumentaci](https://techlib.barracuda.com/waf/getstarted1). V následujícím příkladu byla nakonfigurována aplikace služby App Service, která obsluhuje provoz v protokolech HTTP a HTTPS.
 
 ![Správa – Přidání služeb][ManagementAddServices]
 
 > [!NOTE]
-> V závislosti na tom, jak jsou vaše aplikace nakonfigurované a jaké funkce se ve vašem App Service Environment používají, musíte přesměrováním provozu u jiných portů TCP než 80 a 443, například pokud máte IP SSL instalaci pro App Service aplikaci. Seznam síťových portů používaných ve službě App Service Environment najdete v části Síťové porty v [dokumentaci k řízení příchozího provozu](app-service-app-service-environment-control-inbound-traffic.md).
+> V závislosti na tom, jak jsou vaše aplikace konfigurovány a jaké funkce se používají v prostředí služby App Service, je třeba předávat přenosy pro porty TCP jiné než 80 a 443, například pokud máte nastavení IP SSL pro aplikaci App Service. Seznam síťových portů používaných ve službě App Service Environment najdete v části Síťové porty v [dokumentaci k řízení příchozího provozu](app-service-app-service-environment-control-inbound-traffic.md).
 > 
 > 
 
@@ -82,7 +82,7 @@ Pokud je vaše aplikace dostupná ve více oblastech, měli byste vyrovnávat je
 
 Pokud vaše aplikace vyžaduje ověřování, ujistěte se, že máte některé prostředky, které nevyžadují ověřování, aby služba Traffic Manager mohla pomocí příkazu ping testovat dostupnost vaší aplikace. Adresu URL tohoto prostředku můžete nakonfigurovat na stránce **Konfigurace** na webu [Azure Portal](https://portal.azure.com), jak je znázorněno na následujícím obrázku:
 
-![Konfigurace Traffic Manageru][ConfigureTrafficManager]
+![Konfigurace služby Traffic Manager][ConfigureTrafficManager]
 
 Pokud chcete směrovat příkazy ping služby Traffic Manager z brány WAF do aplikace, musíte v bráně Barracuda WAF nastavit funkci Website Translations (Překlad webů) pro směrování provozu do vaší aplikace, jak je znázorněno v následujícím příkladu:
 

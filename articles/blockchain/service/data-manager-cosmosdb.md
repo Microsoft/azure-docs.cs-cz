@@ -1,300 +1,300 @@
 ---
-title: Použití Data Manager blockchain k aktualizaci Azure Cosmos DB – Azure blockchain Service
-description: Použití blockchain Data Manager pro službu Azure blockchain k odesílání dat blockchain do Azure Cosmos DB
-ms.date: 12/04/2019
+title: Použití Správce dat blockchainu k aktualizaci Azure Cosmos DB – Azure Blockchain Service
+description: Použití Správce blockchainových dat pro službu Azure Blockchain Service k odesílání dat blockchainu do Azure Cosmos DB
+ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 79c39d9883b5ba618e368b0ff6d3e95f1af5bd96
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977386"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79533177"
 ---
-# <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Kurz: použití Data Manager blockchain k odesílání dat do Azure Cosmos DB
+# <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Kurz: Odeslání dat do Azure Cosmos DB pomocí Správce dat blockchainu
 
-V tomto kurzu použijete blockchain Data Manager pro službu Azure blockchain k záznamu dat transakcí blockchain v Azure Cosmos DB. Blockchain Data Manager zachycuje, transformuje a doručuje Blockchainá data pro Azure Event Grid témata. Z Azure Event Grid k vytváření dokumentů v databázi Azure Cosmos DB používáte konektor aplikace logiky Azure. Po dokončení kurzu můžete prozkoumat data blockchain transakcí v Azure Cosmos DB Průzkumník dat.
+V tomto kurzu používáte Blockchain Data Manager pro službu Azure Blockchain service k záznamu dat transakcí blockchainu v Azure Cosmos DB. Blockchain Data Manager zachycuje, transformuje a doručuje data z blockchainové knihy do témat Azure Event Grid. Z Azure Event Grid použijete konektor aplikace Logiky Azure k vytváření dokumentů v databázi Azure Cosmos DB. Po dokončení kurzu můžete prozkoumat data transakcí blockchain v Azure Cosmos DB Data Explorer.
 
-[podrobnosti transakce ![blockchain](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+[![Detail transakce blockchainu](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
-V tomto kurzu se naučíte:
+V tomto kurzu jste:
 
 > [!div class="checklist"]
-> * Vytvoření instance Data Manager blockchain
-> * Přidání aplikace blockchain k dekódování vlastností transakce a událostí
-> * Vytvoření účtu Azure Cosmos DB a databáze pro uložení dat transakce
-> * Vytvoření aplikace logiky Azure pro připojení tématu Azure Event Grid k Azure Cosmos DB
-> * Odeslání transakce do hlavní knihy blockchain
-> * Zobrazit dekódovat data transakce v Azure Cosmos DB
+> * Vytvoření instance Správce dat blockchainu
+> * Přidání blockchainové aplikace pro dekódování vlastností a událostí transakcí
+> * Vytvoření účtu a databáze Azure Cosmos DB pro ukládání dat transakcí
+> * Vytvoření aplikace Logiky Azure pro připojení tématu mřížky událostí Azure k Azure Cosmos DB
+> * Odeslání transakce do hlavní knihy blockchainu
+> * Zobrazení dekódovaných dat transakcí v Azure Cosmos DB
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
-* Kompletní [rychlé zprovoznění: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Rychlý Start vás provede instalací [sady Azure blockchain Development Kit pro ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) a nastavením vašeho vývojového prostředí blockchain.
-* Úplný [kurz: použijte Visual Studio Code k vytváření, sestavování a nasazování inteligentních smluv](send-transaction.md). Kurz vás provede vytvořením ukázkové inteligentní smlouvy.
-* Vytvoření [tématu Event Grid](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
-* Další informace o [obslužných rutinách událostí v Azure Event Grid](../../event-grid/event-handlers.md)
+* Kompletní [úvodní příručka: Vytvoření člena blockchainu pomocí portálu Azure](create-member.md) nebo [úvodního startu: Vytvoření člena blockchainu služby Azure Blockchain pomocí Azure CLI](create-member-cli.md)
+* Kompletní [úvodní příručka: Pomocí kódu Visual Studia se můžete připojit k síti konsorcia Azure Blockchain Service](connect-vscode.md). Rychlý start vás provede instalací [Azure Blockchain Development Kit pro ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) a nastavením vývojového prostředí blockchainu.
+* Kompletní [kurz: Pomocí kódu Visual Studio můžete vytvářet, vytvářet a nasazovat inteligentní kontrakty](send-transaction.md). Kurz prochází vytvoření ukázkové inteligentní smlouvy.
+* Vytvoření [tématu mřížky událostí](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
+* Informace o [obslužných rutinách událostí v Azure Event Grid](../../event-grid/event-handlers.md)
 
 ## <a name="create-instance"></a>Vytvořit instanci
 
-Instance blockchain Data Manager se připojuje a monitoruje uzel transakcí služby Azure blockchain. Instance zachycuje všechna nepracovaná data bloku a nezpracovaná transakce z uzlu transakce. Odchozí připojení odesílá blockchain data do Azure Event Grid. Při vytváření instance nakonfigurujete jedno odchozí připojení.
+Instance Správce dat Blockchain propojuje a monitoruje transakční uzel služby Azure Blockchain Service. Instance zachytí všechna nezpracovaná data bloku a nezpracovaných transakcí z uzlu transakce. Odchozí připojení odesílá data blockchainu do Azure Event Grid. Při vytváření instance nakonfigurujete jedno odchozí připojení.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. Přejít na člen služby Azure blockchain, který jste vytvořili v části [rychlý Start: Vytvoření členu blockchain pomocí Azure Portal](create-member.md). Vyberte **Blockchain data Manager**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přejděte na člena služby Azure Blockchain Service, který jste vytvořili v požadovaném [úvodním panelu: Vytvořte člena blockchainu pomocí portálu Azure](create-member.md). Vyberte **Správce dat blockchainu**.
 1. Vyberte **Přidat**.
 
-    ![Přidat Data Manager blockchain](./media/data-manager-cosmosdb/add-instance.png)
+    ![Přidat Správce dat blockchainu](./media/data-manager-cosmosdb/add-instance.png)
 
     Zadejte následující podrobnosti:
 
-    Nastavení | Příklad: | Popis
+    Nastavení | Příklad | Popis
     --------|---------|------------
-    Name (Název) | mywatcher | Zadejte jedinečný název pro připojenou blockchain Data Manager.
-    Uzel transakce | myblockchainmember | Vyberte výchozí uzel transakce členu služby Azure blockchain, který jste vytvořili v požadovaném stavu.
-    Název připojení | cosmosdb | Zadejte jedinečný název odchozího připojení, kde se odesílají data blockchain transakce.
-    Koncový bod služby Event Grid | myTopic | Vyberte téma Event gridu, které jste vytvořili v požadovaném požadavku. Poznámka: blockchain Data Manager instance a téma Event Grid musí být ve stejném předplatném.
+    Name (Název) | mywatcher | Zadejte jedinečný název připojeného Správce dat blockchainu.
+    Uzel transakce | myblockchainmember | Zvolte výchozí uzel transakce člena služby Azure Blockchain Service, který jste vytvořili v předpokladu.
+    Název připojení | cosmosdb | Zadejte jedinečný název odchozího připojení, kam jsou odesílána data transakcí blockchainu.
+    Koncový bod mřížky událostí | myTopic | Vyberte téma mřížky událostí, které jste vytvořili v předpokladu. Poznámka: Instance Správce dat Blockchain a téma mřížky událostí musí být ve stejném předplatném.
 
 1. Vyberte **OK**.
 
-    Vytvoření instance blockchain Data Manager trvá méně než minutu. Po nasazení instance se automaticky spustí. Běžící instance blockchain Data Manager zachycuje události blockchain z uzlu transakce a odesílá data do služby Event Grid.
+    Vytvoření instance Správce dat blockchainu trvá méně než minutu. Po nasazení instance se automaticky spustí. Spuštěná instance Správce dat Blockchain zachycuje události blockchainu z transakčního uzlu a odesílá data do sítě událostí.
 
 ## <a name="add-application"></a>Přidání aplikace
 
-Přidejte aplikaci **helloblockchain** blockchain, aby blockchain data Manager dekódování událostí a stavu vlastností. Blockchain Data Manager vyžaduje, aby se k přidání aplikace přidal soubor ABI a bytového kódu Smart Contract
+Přidejte aplikaci **helloblockchain** blockchain tak, aby Blockchain Data Manager dekóduje událost a stav vlastností. Blockchain Data Manager vyžaduje inteligentní kontrakt ABI a bytecode soubor přidat aplikaci.
 
-### <a name="get-contract-abi-and-bytecode"></a>Získání kontraktu ABI a bytového kódu
+### <a name="get-contract-abi-and-bytecode"></a>Získat smlouvu ABI a bytecode
 
-Smlouva ABI definuje rozhraní inteligentních kontraktů. Popisuje, jak pracovat s inteligentní smlouvou. K zkopírování kontraktu ABI do schránky můžete použít [rozšíření Azure blockchain Development Kit pro rozšíření ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) .
+Smlouva ABI definuje inteligentní smluvní rozhraní. Popisuje, jak pracovat s inteligentní smlouvy. Pomocí azure [blockchain development kit pro rozšíření Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) můžete zkopírovat smlouvu ABI do schránky.
 
-1. V podokně Visual Studio Code Průzkumník rozbalte složku **Build/Contracts** projektu **helloblockchain** Solid, který jste vytvořili v [kurzu požadavků: pomocí Visual Studio Code můžete vytvářet, sestavovat a nasazovat inteligentní smlouvy](send-transaction.md).
-1. Klikněte pravým tlačítkem na soubor JSON metadat kontraktu. Název souboru je název čipové smlouvy následovaný příponou **. JSON** .
-1. Vyberte **Kopírovat kontrakt ABI**.
+1. V podokně průzkumníka kódu visual studia rozbalte složku **sestavení/kontraktů** projektu **Helloblockchain** Solidity, který jste vytvořili v [požadovaném kurzu: Pomocí kódu Visual Studia vytvořte, sestavujte a nasaďte inteligentní kontrakty](send-transaction.md).
+1. Klikněte pravým tlačítkem myši na soubor JSON metadat smlouvy. Název souboru je inteligentní název smlouvy následovaný příponou **JSON.**
+1. Vyberte **možnost Kopírovat smlouvu ABI**.
 
-    ![Podokno Visual Studio Code s výběrem kopírovat kontrakt ABI](./media/data-manager-cosmosdb/abi-devkit.png)
+    ![Podokno Kódu sady Visual Studio s výběrem ABI smlouvy copy](./media/data-manager-cosmosdb/abi-devkit.png)
 
-    Kontrakt ABI je zkopírován do schránky.
+    Smlouva ABI je zkopírována do schránky.
 
-1. Uložte pole **ABI** jako soubor JSON. Například *ABI. JSON*. Tento soubor použijete v pozdějším kroku.
+1. Uložte pole **abi** jako soubor JSON. Například *abi.json*. Soubor se použije v pozdějším kroku.
 
-Blockchain Data Manager vyžaduje nasazený bytový kód pro inteligentní kontrakt. Nasazený bajt se liší od bajtového kódu inteligentního kontraktu. K zkopírování bytového kódu do schránky použijte rozšíření Azure blockchain Development Kit.
+Blockchain Data Manager vyžaduje nasazený bytecode pro inteligentní kontrakt. Nasazený bajtkód se liší od inteligentního kódu bytecode smlouvy. Rozšíření vývojové sady Azure blockchain slouží ke kopírování bajtového kódu do schránky.
 
-1. V podokně Průzkumník Visual Studio Code rozbalte složku **Build/Contracts** vašeho projektu Solid of.
-1. Klikněte pravým tlačítkem na soubor JSON metadat kontraktu. Název souboru je název čipové smlouvy následovaný příponou **. JSON** .
-1. Vyberte položku **Kopírovat bajtový kód transakce**.
+1. V podokně průzkumníkkódu sady Visual Studio rozbalte složku **sestavení/smluv** projektu Solidity.
+1. Klikněte pravým tlačítkem myši na soubor JSON metadat smlouvy. Název souboru je inteligentní název smlouvy následovaný příponou **JSON.**
+1. Vyberte **možnost Kopírovat bajtový kód transakce**.
 
-    ![Podokno Visual Studio Code s výběrem kopírovat bajtovou část transakce](./media/data-manager-cosmosdb/bytecode-devkit.png)
+    ![Podokno Kódu sady Visual Studio s výběrem kopírovat transakční bajtokód](./media/data-manager-cosmosdb/bytecode-devkit.png)
 
-    Kód bajtu je zkopírován do schránky.
+    Bajtkód se zkopíruje do schránky.
 
-1. Uložte hodnotu **bajtového kódu** jako soubor JSON. Příklad: *bytového kódu. JSON*. Tento soubor použijete v pozdějším kroku.
+1. Uložte hodnotu **bajtového kódu** jako soubor JSON. Například *bytecode.json*. Soubor se použije v pozdějším kroku.
 
-Následující příklad ukazuje soubory *ABI. JSON* a *bytového souboru. JSON* otevřené v editoru vs Code. Soubory by měly vypadat podobně.
+Následující příklad ukazuje *abi.json* a *bytecode.json* soubory otevřené v editoru kódu VS. Soubory by měly vypadat podobně.
 
-![Příklad souborů ABI. JSON a bytového souboru. JSON](./media/data-manager-cosmosdb/contract-files.png)
+![Příklad souborů abi.json a bytecode.json](./media/data-manager-cosmosdb/contract-files.png)
 
-### <a name="create-contract-abi-and-bytecode-url"></a>Vytvořit kontrakt ABI a adresu URL bytového kódu
+### <a name="create-contract-abi-and-bytecode-url"></a>Vytvoření adresy URL smlouvy ABI a bytecode
 
-Blockchain Data Manager vyžaduje, aby při přidávání aplikace byly v adrese URL přístupné soubory ABI a bytového kódu. Pomocí účtu Azure Storage můžete poskytnout soukromě přístupnou adresu URL.
+Blockchain Data Manager vyžaduje, aby soubory abi a bytecode smlouvy byly přístupné pomocí adresy URL při přidávání aplikace. Účet Azure Storage můžete použít k poskytnutí soukromě přístupné adresy URL.
 
 #### <a name="create-storage-account"></a>Vytvoření účtu úložiště
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-#### <a name="upload-contract-files"></a>Nahrání souborů smluv
+#### <a name="upload-contract-files"></a>Nahrát soubory smluv
 
-1. Vytvořte nový kontejner pro účet úložiště. Vyberte **kontejnery > kontejner**.
+1. Vytvořte nový kontejner pro účet úložiště. Vyberte **kontejnery > kontejneru**.
 
     ![Vytvoření kontejneru účtu úložiště](./media/data-manager-cosmosdb/create-container.png)
 
     | Nastavení | Popis |
     |---------|-------------|
-    | Name (Název)  | Pojmenujte kontejner. Například *smartcontract* |
-    | Úroveň veřejného přístupu | Zvolit *privátní (bez anonymního přístupu)* |
+    | Name (Název)  | Zadejte název kontejneru. Například *smartcontract* |
+    | Úroveň veřejného přístupu | Zvolte *Soukromé (bez anonymního přístupu)* |
 
 1. Kliknutím na **OK** kontejner vytvoříte.
-1. Vyberte kontejner a pak vyberte **nahrát**.
-1. Vyberte soubory JSON, které jste vytvořili v části [získání kontraktu ABI a bytového kódu](#get-contract-abi-and-bytecode) .
+1. Vyberte kontejner a pak vyberte **Nahrát**.
+1. Zvolte oba soubory JSON, které jste vytvořili v části [Získat aBI smlouvy a bytecode.](#get-contract-abi-and-bytecode)
 
     ![Nahrát objekt blob](./media/data-manager-cosmosdb/upload-blobs.png)
 
     Vyberte **Nahrát**.
 
-#### <a name="generate-url"></a>Vygenerovat adresu URL
+#### <a name="generate-url"></a>Generovat adresu URL
 
-Pro každý objekt BLOB vygenerujte sdílený přístupový podpis.
+Pro každý objekt blob vygenerujte sdílený přístupový podpis.
 
-1. Vyberte objekt BLOB ABI JSON.
-1. Vyberte **Generovat SAS** .
-1. Nastavte požadovanou dobu vypršení platnosti podpisového podpisu a pak vyberte **Generovat token SAS objektu BLOB a adresu URL**.
+1. Vyberte objekt blob ABI JSON.
+1. Vybrat **generovat SAS**
+1. Nastavte požadovanou expiraci podpisu přístupu a pak vyberte **Generovat token SAS objektu blob a adresu URL**.
 
     ![Generovat token SAS](./media/data-manager-cosmosdb/generate-sas.png)
 
-1. Zkopírujte **adresu URL SAS objektu BLOB** a uložte ji pro další oddíl.
-1. Zopakujte kroky pro [vygenerování adresy URL](#generate-url) pro objekt BLOB JSON kódu.
+1. Zkopírujte **adresu URL objektu Blob SAS** a uložte ji do další části.
+1. Opakujte kroky [generování adresy URL](#generate-url) pro objekt blob Bajtkódu JSON.
 
 ### <a name="add-helloblockchain-application-to-instance"></a>Přidat aplikaci helloblockchain do instance
 
-1. V seznamu instancí vyberte instanci blockchain Data Manager.
-1. Vyberte **blockchain aplikace**.
+1. Vyberte instanci Správce dat Blockchain ze seznamu instancí.
+1. Vyberte **blockchainové aplikace**.
 1. Vyberte **Přidat**.
 
-    ![Přidání aplikace blockchain](./media/data-manager-cosmosdb/add-application.png)
+    ![Přidání blockchainové aplikace](./media/data-manager-cosmosdb/add-application.png)
 
-    Zadejte název aplikace blockchain a adresy URL pro kód a bytového kódu inteligentního kontraktu.
+    Zadejte název blockchainové aplikace a inteligentní smlouvy ABI a adresy URL bajtového kódu.
 
     Nastavení | Popis
     --------|------------
-    Name (Název) | Zadejte jedinečný název, který má blockchain aplikace sledovat.
-    ABI kontraktu | Cesta URL k souboru ABI kontraktu Další informace najdete v tématu [Vytvoření kontraktu ABI a adresy URL bytového kódu](#create-contract-abi-and-bytecode-url).
-    Bajtový kód kontraktu | Cesta URL k souboru bytového kódu Další informace najdete v tématu [Vytvoření kontraktu ABI a adresy URL bytového kódu](#create-contract-abi-and-bytecode-url).
+    Name (Název) | Zadejte jedinečný název blockchainové aplikace ke sledování.
+    Smlouva ABI | Cesta url k souboru ABI smlouvy. Další informace naleznete v [tématu Create contract ABI and bytecode URL](#create-contract-abi-and-bytecode-url).
+    Kód bytecode smlouvy | Cesta URL k souboru bajtového kódu. Další informace naleznete v [tématu Create contract ABI and bytecode URL](#create-contract-abi-and-bytecode-url).
 
 1. Vyberte **OK**.
 
-    Po vytvoření aplikace se aplikace zobrazí v seznamu aplikací blockchain.
+    Jakmile je aplikace vytvořena, aplikace se zobrazí v seznamu blockchainových aplikací.
 
     ![Seznam aplikací blockchain](./media/data-manager-cosmosdb/artifact-list.png)
 
-Můžete odstranit účet Azure Storage nebo ho použít ke konfiguraci dalších aplikací blockchain. Pokud chcete odstranit účet Azure Storage, můžete odstranit skupinu prostředků. Odstraněním skupiny prostředků odstraníte také přidružený účet úložiště a všechny další prostředky, které jsou k příslušné skupině prostředků přidružené.
+Účet Azure Storage můžete odstranit nebo ho použít ke konfiguraci dalších blockchainových aplikací. Pokud chcete odstranit účet Azure Storage, můžete odstranit skupinu prostředků. Odstraněním skupiny prostředků odstraníte také přidružený účet úložiště a všechny další prostředky, které jsou k příslušné skupině prostředků přidružené.
 
-## <a name="create-azure-cosmos-db"></a>Vytvořit Azure Cosmos DB
+## <a name="create-azure-cosmos-db"></a>Vytvoření služby Azure Cosmos DB
 
 [!INCLUDE [cosmos-db-create-storage-account](../../../includes/cosmos-db-create-dbaccount.md)]
 
 ### <a name="add-a-database-and-container"></a>Přidání databáze a kontejneru
 
-K vytvoření databáze a kontejneru můžete použít Průzkumník dat v Azure Portal.
+Průzkumníka dat na webu Azure Portal můžete použít k vytvoření databáze a kontejneru.
 
-1. V levém navigačním panelu na stránce Azure Cosmos DB účtu vyberte **Průzkumník dat** a pak vyberte **Nový kontejner**.
-1. V podokně **Přidat kontejner** zadejte nastavení pro nový kontejner.
+1. V levém navigačním panelu na stránce účtu Azure Cosmos DB vyberte **Průzkumník dat** a pak vyberte **Nový kontejner**.
+1. V podokně **Přidat kontejner** zadejte nastavení nového kontejneru.
 
-    ![Přidat nastavení kontejneru](./media/data-manager-cosmosdb/add-container.png)
+    ![Přidání nastavení kontejneru](./media/data-manager-cosmosdb/add-container.png)
 
     | Nastavení | Popis
     |---------|-------------|
-    | ID databáze | Jako název nové databáze zadejte **blockchain-data** . |
-    | Propustnost | Nechte propustnost na **400** jednotek žádostí za sekundu (ru/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.|
-    | ID kontejneru | Jako název nového kontejneru zadejte **Messages** . |
-    | Klíč oddílu | Jako klíč oddílu použijte **/MessageType** . |
+    | ID databáze | Jako název nové databáze zadejte **data blockchainu.** |
+    | Propustnost | Ponechte propustnost na **400** jednotek požadavku za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.|
+    | ID kontejneru | Jako název nového kontejneru zadejte **Zprávy.** |
+    | Klíč oddílu | Jako klíč oddílu použijte **parametr /MessageType.** |
 
 1. Vyberte **OK**. Průzkumník dat zobrazí novou databázi a kontejner, který jste vytvořili.
 
 ## <a name="create-logic-app"></a>Vytvoření aplikace logiky
 
-Azure Logic Apps pomáhá při plánování a automatizaci obchodních procesů a pracovních postupů, pokud potřebujete integrovat systémy a služby. Aplikaci logiky můžete použít k připojení Event Grid k Azure Cosmos DB.
+Azure Logic Apps vám pomůže naplánovat a automatizovat obchodní procesy a pracovní postupy, když potřebujete integrovat systémy a služby. Pomocí aplikace logiky můžete připojit Event Grid k Azure Cosmos DB.
 
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Integrace** > **Aplikace logiky**.
-1. Zadejte podrobné informace o tom, kde vytvořit aplikaci logiky. Až budete hotovi, vyberte **vytvořit**.
+1. Zadejte podrobnosti o tom, kde vytvořit aplikaci logiky. Až budete hotovi, vyberte **Vytvořit**.
 
-    Další informace o vytváření aplikací logiky najdete v tématu [Vytvoření automatizovaných pracovních postupů pomocí Azure Logic Apps](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
+    Další informace o vytváření aplikací logiky najdete v [tématu Vytváření automatizovaných pracovních postupů pomocí Aplikací logiky Azure](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Až Azure nasadí vaši aplikaci, vyberte prostředek aplikace logiky.
-1. V Návrháři Logic Apps v části **šablony**vyberte **prázdná aplikace logiky**.
+1. Po nasazení aplikace Azure vyberte prostředek aplikace logiky.
+1. V Návrháři aplikací **logiky**vyberte v části Šablony **možnost Blank Logic App**.
 
-### <a name="add-event-grid-trigger"></a>Přidat aktivační událost Event Grid
+### <a name="add-event-grid-trigger"></a>Aktivační událost Přidat mřížku událostí
 
-Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při určité události nebo splnění určité podmínky. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky pro spuštění vašeho pracovního postupu. Pomocí triggeru Azure Event Grid odesílá data transakcí blockchain z Event Grid na Cosmos DB.
+Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při určité události nebo splnění určité podmínky. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky pro spuštění vašeho pracovního postupu. Pomocí aktivační události Azure Event Grid odešlete data transakcí blockchainu z Event Grid do Cosmos DB.
 
-1. V Návrháři Logic Apps vyhledejte a vyberte konektor **Azure Event Grid** .
-1. Na kartě **triggery** vyberte, **kdy dojde k události prostředku**.
-1. Vytvořte připojení rozhraní API k vašemu Event Grid tématu.
+1. V Návrháři aplikací logiky vyhledejte a vyberte konektor **Azure Event Grid.**
+1. Na kartě **Aktivační události** vyberte **Při výskytu události prostředku .**
+1. Vytvořte připojení rozhraní API k tématu mřížky událostí.
 
-    ![Nastavení aktivační události Event gridu](./media/data-manager-cosmosdb/event-grid-trigger.png)
+    ![Nastavení aktivační události mřížky událostí](./media/data-manager-cosmosdb/event-grid-trigger.png)
 
     | Nastavení | Popis
     |---------|-------------|
-    | Předplatné | Vyberte předplatné, které obsahuje Event Grid téma. |
-    | Typ prostředku | Vyberte **Microsoft. EventGrid. témata**. |
-    | Název prostředku | Vyberte název Event Grid téma, kde Data Manager blockchain odesílá zprávy transakčních dat. |
+    | Předplatné | Zvolte předplatné, které obsahuje téma mřížky událostí. |
+    | Typ prostředku | Zvolte **Microsoft.EventGrid.Topics**. |
+    | Název prostředku | Zvolte název tématu mřížky událostí, ve kterém správce dat blockchainu odesílá datové zprávy o transakcích. |
 
-### <a name="add-cosmos-db-action"></a>Přidat Cosmos DB akci
+### <a name="add-cosmos-db-action"></a>Přidat akci Cosmos DB
 
-Přidejte akci pro vytvoření dokumentu v Cosmos DB pro každou transakci. Pro kategorizaci zpráv použijte typ zprávy transakce jako klíč oddílu.
+Přidejte akci pro vytvoření dokumentu v Cosmos DB pro každou transakci. Pomocí typu zprávy transakce jako klíč oddílu zařazujte zprávy do kategorií.
 
 1. Vyberte **Nový krok**.
-1. Na **Vybrat akci**vyhledejte **Azure Cosmos DB**.
-1. Vyberte **Azure Cosmos DB > akce > vytvořit nebo aktualizovat dokument**.
+1. V **poli Zvolte akci**vyhledejte azure **cosmos db**.
+1. Zvolte **Azure Cosmos DB > akce > vytvořit nebo aktualizovat dokument**.
 1. Vytvořte připojení rozhraní API k databázi Cosmos DB.
 
     ![Nastavení připojení Cosmos DB](./media/data-manager-cosmosdb/cosmosdb-connection.png)
 
     | Nastavení | Popis
     |---------|-------------|
-    | Název připojení | Vyberte předplatné, které obsahuje Event Grid téma. |
-    | Účet DocumentDB | Vyberte účet DocumentDB, který jste vytvořili v části [Vytvoření účtu Azure Cosmos DB](#create-azure-cosmos-db) . |
+    | Název připojení | Zvolte předplatné, které obsahuje téma mřížky událostí. |
+    | Účet DocumentDB | Zvolte účet DocumentDB, který jste vytvořili v části [Vytvořit účet Azure Cosmos DB.](#create-azure-cosmos-db) |
 
-1. Zadejte **ID databáze** a **id kolekce** pro Azure Cosmos DB, které jste vytvořili dříve v části [Přidání databáze a kontejneru](#add-a-database-and-container) .
+1. Zadejte **ID databáze** a **ID kolekce** pro azure cosmos DB, které jste vytvořili dříve v části Přidat [databázi a kontejner.](#add-a-database-and-container)
 
-1. Vyberte nastavení **dokumentu** . V rozbalovacím seznamu *Přidat dynamický obsah* vyberte **výraz** a zkopírujte a vložte následující výraz:
+1. Vyberte nastavení **Dokument.** V rozbalovacím okně *Přidat dynamický obsah* vyberte **Výraz** a zkopírujte a vložte následující výraz:
 
     ```
     addProperty(triggerBody()?['data'], 'id', utcNow())
     ```
 
-    Výraz Získá datovou část zprávy a nastaví ID na hodnotu časového razítka.
+    Výraz získá datovou část zprávy a nastaví ID na hodnotu časového razítka.
 
-1. Vyberte **Přidat nový parametr** a zvolte **hodnota klíč oddílu**.
-1. Nastavte **hodnotu klíče oddílu** na `"@{triggerBody()['data']['MessageType']}"`. Hodnota musí být obklopena dvojitými uvozovkami.
+1. Vyberte **Přidat nový parametr** a zvolte **Hodnotu klíče oddílu**.
+1. Nastavte **hodnotu klíče oddílu** na . `"@{triggerBody()['data']['MessageType']}"` Hodnota musí být obklopena dvojitými uvozovkami.
 
-    ![Logic Apps návrháře s nastavením Cosmos DB](./media/data-manager-cosmosdb/create-action.png)
+    ![Návrhář aplikací logiky s nastavením Cosmos DB](./media/data-manager-cosmosdb/create-action.png)
 
     Hodnota nastaví klíč oddílu na typ zprávy transakce.
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
-Aplikace logiky monitoruje téma Event Grid. Při odeslání nové zprávy transakce z Data Manager blockchain vytvoří aplikace logiky dokument v Cosmos DB.
+Aplikace logiky monitoruje téma mřížky událostí. Když je z Správce dat Blockchain odeslána nová zpráva o transakci, aplikace logiky vytvoří dokument v Cosmos DB.
 
-## <a name="send-a-transaction"></a>Odeslat transakci
+## <a name="send-a-transaction"></a>Odeslání transakce
 
-V dalším kroku odešlete transakci do hlavní knihy blockchain, kde otestujete, co jste vytvořili. Použijte skript **SendRequest. js** , který jste vytvořili v kurzu požadavků [: k vytváření, sestavování a nasazování inteligentních kontraktů použijte Visual Studio Code](send-transaction.md).
+Dále odešlete transakci do hlavní knihy blockchainu a otestujte, co jste vytvořili. Použijte funkci **SendRequest** kontraktu **HelloBlockchain,** kterou jste vytvořili v [požadovaném kurzu: Pomocí kódu Visual Studia vytvořte, sestavujte a nasaďte inteligentní kontrakty](send-transaction.md).
 
-V podokně terminálu VS Code použijte Truffle ke spuštění skriptu v síti konsorcia blockchain. V panelu nabídek podokna terminálu vyberte kartu **terminál** a **PowerShell** v rozevíracím seznamu.
+1. Pomocí stránky inteligentní smluvní interakce Azure Blockchain Development Kit volejte funkci **SendRequest.** Klikněte pravým tlačítkem na **HelloBlockchain.sol** a z nabídky zvolte **Zobrazit stránku interakce inteligentní smlouvy.**
 
-``` PowerShell
-truffle exec sendrequest.js --network <blockchain network>
-```
+    ![Z nabídky zvolte Zobrazit stránku interakce inteligentní smlouvy.](./media/data-manager-cosmosdb/contract-interaction.png)
 
-Nahraďte \<blockchain síť\> názvem sítě blockchain definované v **Truffle-config. js**.
+1. Zvolte **SendRequest** smluvní akce a zadejte **Hello, Blockchain!** pro parametr **requestMessage.** Vyberte **Execute** pro volání **sendrequest** funkce prostřednictvím transakce.
 
-![Odeslat transakci](./media/data-manager-cosmosdb/send-request.png)
+    ![Spustit akci SendRequest](./media/data-manager-cosmosdb/sendrequest-action.png)
+
+Funkce SendRequest nastaví pole **RequestMessage** a **State.** Aktuální stav **requestMessage** je argument, který jste **předali Hello, Blockchain**. Hodnota pole **Stav** zůstává **Požadavek**.
 
 ## <a name="view-transaction-data"></a>Zobrazit data transakcí
 
-Teď, když jste se připojili Data Manager blockchain k Azure Cosmos DB, můžete v Cosmos DB Průzkumník dat zobrazit zprávy o transakcích blockchain.
+Teď, když jste připojili správce blockchainových dat k Azure Cosmos DB, můžete zobrazit zprávy o transakcích blockchainu v Průzkumníku dat Cosmos DB.
 
-1. Přejít na Průzkumník dat zobrazení Cosmos DB. Například **cosmosdb-blockchain > Průzkumník dat > blockchain-Data > zprávy > položky**.
+1. Přejděte do zobrazení Průzkumníka dat Cosmos DB. Například **cosmosdb-blockchain > Data Explorer > > zprávy > položky blockchainu**.
 
-    ![Cosmos DB Průzkumník dat](./media/data-manager-cosmosdb/data-explorer.png)
+    ![Průzkumník dat Cosmos DB](./media/data-manager-cosmosdb/data-explorer.png)
 
-    Průzkumník dat vypíše zprávy s blockchain daty, které byly vytvořeny v databázi Cosmos DB.
+    Průzkumník dat uvádí seznam datových zpráv blockchain, které byly vytvořeny v databázi Cosmos DB.
 
-1. Procházejte zprávami tak, že vyberete ID položky a vyhledáte zprávu s hodnotou hash transakce odpovídajícího transakce.
+1. Projděte si zprávy výběrem ID položky a najděte zprávu s odpovídající hodnota hash transakce.
 
-    [podrobnosti transakce ![blockchain](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+    [![Detail transakce blockchainu](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
-    Zpráva o nezpracované transakci obsahuje podrobnosti o transakci. Informace o vlastnostech jsou ale šifrované.
+    Zpráva nezpracované transakce obsahuje podrobnosti o transakci. Informace o vlastnostech jsou však zašifrovány.
 
-    Vzhledem k tomu, že jste přidali HelloBlockchain Smart Contract do instance blockchain Data Manager, pošle se také typ zprávy **ContractProperties** , který obsahuje Dekódovatelné informace o vlastnostech.
+    Vzhledem k tomu, že jste do instance Správce dat Blockchain přidali inteligentní kontrakt HelloBlockchain, je také odeslán typ zprávy **ContractProperties,** který obsahuje informace o dekódovaných vlastnostech.
 
-1. Vyhledejte zprávu **ContractProperties** pro transakci. Mělo by se jednat o další zprávu v seznamu.
+1. Najděte zprávu **ContractProperties** pro transakci. Měla by to být další zpráva v seznamu.
 
-    [podrobnosti transakce ![blockchain](./media/data-manager-cosmosdb/properties-msg.png)](./media/data-manager-cosmosdb/properties-msg.png#lightbox)
+    [![Detail transakce blockchainu](./media/data-manager-cosmosdb/properties-msg.png)](./media/data-manager-cosmosdb/properties-msg.png#lightbox)
 
     Pole **DecodedProperties** obsahuje vlastnosti transakce.
 
-Blahopřejeme! Úspěšně jste vytvořili Průzkumníka transakčních zpráv pomocí Data Manager blockchain a Azure Cosmos DB.
+Blahopřejeme! Úspěšně jste vytvořili průzkumník zpráv o transakcích pomocí Správce dat blockchainu a Azure Cosmos DB.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete odstranit prostředky a skupiny prostředků, které jste použili v tomto kurzu. Odstranění skupiny prostředků:
+Pokud již není potřeba, můžete odstranit prostředky a skupiny prostředků, které jste použili pro tento kurz. Odstranění skupiny prostředků:
 
-1. V Azure Portal přejděte do **skupiny prostředků** v levém navigačním podokně a vyberte skupinu prostředků, kterou chcete odstranit.
-1. Vyberte **Odstranit skupinu prostředků**. Potvrďte odstranění zadáním názvu skupiny prostředků a vyberte **Odstranit**.
+1. Na webu Azure Portal přejděte do **skupiny prostředků** v levém navigačním podokně a vyberte skupinu prostředků, kterou chcete odstranit.
+1. Vyberte **Odstranit skupinu prostředků**. Ověřte odstranění zadáním názvu skupiny prostředků a vyberte **odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o integraci s blockchain účetními kniha.
+Přečtěte si další informace o integraci s knihami blockchainu.
 
 > [!div class="nextstepaction"]
-> [Použití konektoru Ethereem blockchain s Azure Logic Apps](ethereum-logic-app.md)
+> [Použití konektoru Ethereum Blockchain s aplikacemi Azure Logic Apps](ethereum-logic-app.md)

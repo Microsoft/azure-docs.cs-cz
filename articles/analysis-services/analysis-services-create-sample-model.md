@@ -1,5 +1,5 @@
 ---
-title: Kurz – přidání ukázkového modelu – Azure Analysis Services | Microsoft Docs
+title: Kurz – přidání ukázkového modelu – služby Azure Analysis Services | Dokumenty společnosti Microsoft
 description: V této lekci kurzu zjistíte, jak přidat ukázkový model do služby Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: a72236843c13e139f33a669b54f108e91679c8c6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74326582"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Kurz: Přidání ukázkového modelu z portálu
@@ -22,9 +22,9 @@ V tomto kurzu přidáte na server ukázkovou tabulkovou modelovou databázi Adve
 > * Přidání dokončeného ukázkového tabulkového datového modelu na server 
 > * Propojení modelu s SQL Server Management Studiem
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -43,7 +43,7 @@ Přihlaste se k [portálu](https://portal.azure.com/).
 
     ![Vytvoření ukázkového modelu](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. V **novém modelu** > **Zvolte zdroj dat**, ověřte, že je vybraná možnost **ukázková data** , a pak klikněte na **Přidat**.
+2. V **části Nový model** > **Zvolte zdroj dat**, ověřte, zda jsou **vybraná ukázková data,** a klepněte na tlačítko **Přidat**.
 
     ![Výběr ukázkových dat](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 

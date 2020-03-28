@@ -1,21 +1,21 @@
 ---
-title: 'PowerShell: odstranění zálohy aplikace'
-description: Naučte se používat Azure PowerShell k automatizaci nasazení a správy App Service. V této ukázce se dozvíte, jak odstranit zálohu aplikace.
+title: 'PowerShell: Odstranění zálohy aplikace'
+description: Zjistěte, jak pomocí Azure PowerShellu automatizovat nasazení a správu služby App Service. Tato ukázka ukazuje, jak odstranit zálohu aplikace.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: ebcadb49-755d-4202-a5eb-f211827a9168
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: b8d3175b4266e132d94f6f2dde163cb60fb11396
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 93b53bedef291b9aa740f5bbe9c492185f035f89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685799"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044833"
 ---
-# <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Odstranění zálohy webu pomocí Azure PowerShell
+# <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Odstranění zálohy pro web pomocí Azure PowerShellu
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak pro ni vytvoří jednorázovou zálohu. 
 
@@ -41,8 +41,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Získá seznam záloh webové aplikace. |
-| [Remove-AzWebAppBackup](/powershell/module/az.websites/remove-azwebappbackup) | Odebere zadanou zálohu webové aplikace. |
+| [Seznam Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Získá seznam záloh webové aplikace. |
+| [Odebrat-AzWebAppBackup](/powershell/module/az.websites/remove-azwebappbackup) | Odebere zadanou zálohu webové aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 

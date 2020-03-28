@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zařízení v řešení vzdáleného monitorování – Azure | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak nakonfigurovat zařízení připojená k akcelerátoru řešení vzdáleného monitorování.
+title: Konfigurace zařízení v řešení vzdáleného monitorování – Azure | Dokumenty společnosti Microsoft
+description: V tomto kurzu se můžete nakonfigurovat zařízení připojená k akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -10,19 +10,19 @@ ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: e4236952bd41c4955e337813ff6d706263b8ef47
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73890905"
 ---
-# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Kurz: konfigurace zařízení připojených k řešení monitorování
+# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Kurz: Konfigurace zařízení připojených k monitorovacímu řešení
 
 V tomto kurzu použijete akcelerátor řešení pro vzdálené monitorování ke konfiguraci a správě připojených zařízení IoT. Přidáte nové zařízení do akcelerátoru řešení a nakonfigurujete zařízení.
 
-Společnost Contoso si objednala nové stroje pro rozšíření jednoho ze svých závodů. Při čekání na doručení nových strojů budete chtít spustit simulaci a otestovat chování vašeho řešení. Chcete-li spustit simulaci, přidejte nové simulované zařízení modulu do akcelerátoru řešení vzdáleného monitorování a otestujte, že toto simulované zařízení reaguje správně na aktualizace konfigurace. I když tento kurz používá simulovaná zařízení, vývojář zařízení může implementovat přímé metody do [reálného zařízení připojeného k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
+Společnost Contoso si objednala nové stroje pro rozšíření jednoho ze svých závodů. Při čekání na doručení nových strojů budete chtít spustit simulaci a otestovat chování vašeho řešení. Chcete-li spustit simulaci, přidáte nové simulované zařízení motoru do akcelerátoru řešení vzdáleného monitorování a otestujete, zda toto simulované zařízení správně reaguje na aktualizace konfigurace. Zatímco tento kurz používá simulovaná zařízení, vývojář zařízení může implementovat přímé metody na [skutečném zařízení připojeném k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
 
-V tomto kurzu se naučíte:
+V tomto kurzu jste:
 
 >[!div class="checklist"]
 > * Zřízení simulovaného zařízení
@@ -30,29 +30,29 @@ V tomto kurzu se naučíte:
 > * Změna konfigurace zařízení
 > * Uspořádání zařízení
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="add-a-simulated-device"></a>Přidání simulovaného zařízení
 
-V řešení přejděte na stránku **Device Explorer** a pak klikněte na **+ nové zařízení**:
+Přejděte na stránku **Průzkumníkzařízení** v řešení a klikněte na **+ Nové zařízení**:
 
 [![Zřízení simulovaného zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-expanded.png#lightbox)
 
 Na panelu **Nové zařízení** zvolte **Simulované**, počet zařízení, která se mají zřídit, ponechte na hodnotě **1**, zvolte model zařízení **Vadný motor** a pak zvolením možnosti **Použít** vytvořte simulované zařízení:
 
-[![Zřízení simulovaného zařízení motoru](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-expanded.png#lightbox)
+[![Zřízení simulovaného motorového zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-expanded.png#lightbox)
 
 ## <a name="test-the-simulated-device"></a>Test simulovaného zařízení
 
-Chcete-li otestovat simulované zařízení modulu, odesílá hodnoty vlastností telemetrie a vytváření sestav, vyberte je v seznamu zařízení na stránce **Device Explorer** . Na panelu **Podrobnosti o zařízení** se zobrazí aktuální informace o motoru:
+Chcete-li otestovat, že zařízení simulovaného motoru odesílá hodnoty telemetrie a vykazování, vyberte je v seznamu zařízení na stránce **Průzkumník zařízení.** Na panelu **Podrobnosti o zařízení** se zobrazí aktuální informace o motoru:
 
-[![Zobrazení nového simulovaného zařízení motoru](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
+[![Zobrazit nové simulované zařízení motoru](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
 V části **Podrobnosti o zařízení** ověřte, že vaše nové zařízení odesílá telemetrická data. Pokud chcete zobrazit datový proud telemetrických dat o vibracích z vašeho zařízení, klikněte na **Vibrace**:
 
-[![Výběr zobrazení datového proudu telemetrie](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-expanded.png#lightbox)
+[![Výběr telemetrického datového proudu, který chcete zobrazit](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-expanded.png#lightbox)
 
 Na panelu **Podrobnosti o zařízení** se zobrazí další informace o zařízení, jako například hodnoty značek, podporované metody a vlastnosti, které zařízení hlásí.
 
@@ -60,7 +60,7 @@ Pokud chcete zobrazit podrobnou diagnostiku posuňte se na panelu **Podrobnosti 
 
 ## <a name="reconfigure-a-device"></a>Změna konfigurace zařízení
 
-Chcete-li otestovat, zda lze aktualizovat vlastnosti konfigurace modulu, vyberte ji v seznamu zařízení na stránce **Device Explorer** . Pak klikněte na **úlohy**a pak zvolte **vlastnosti**. Na panelu úloh se zobrazí hodnoty vlastností pro vybrané zařízení, které můžete aktualizovat:
+Chcete-li otestovat, zda můžete aktualizovat vlastnosti konfigurace modulu, vyberte jej v seznamu zařízení na stránce **Průzkumník zařízení.** Potom klepněte na **položku Úlohy**a pak zvolte **Vlastnosti**. Na panelu úloh se zobrazí hodnoty vlastností pro vybrané zařízení, které můžete aktualizovat:
 
 [![Změna konfigurace zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 
@@ -74,7 +74,7 @@ Pokud chcete sledovat stav úlohy, klikněte na **Zobrazit stav úlohy**:
 
 Po dokončení úlohy přejděte na stránku **Řídicí panel**. Zařízení motoru se na mapě zobrazí ve svém novém umístění:
 
-[![Zobrazení umístění motoru](./media/iot-accelerators-remote-monitoring-manage/enginelocation-inline.png)](./media/iot-accelerators-remote-monitoring-manage/enginelocation-expanded.png#lightbox)
+[![Zobrazit umístění motoru](./media/iot-accelerators-remote-monitoring-manage/enginelocation-inline.png)](./media/iot-accelerators-remote-monitoring-manage/enginelocation-expanded.png#lightbox)
 
 ## <a name="organize-your-devices"></a>Uspořádání zařízení
 
@@ -83,41 +83,41 @@ Pokud si jako operátor chcete usnadnit uspořádání a správu zařízení, m�
 * Tým pro chytrá vozidla spravuje nákladní vozy a prototypy zařízení.
 * Tým pro chytré budovy spravuje chladiče, výtahy a motory.
 
-Pokud chcete zobrazit všechna vaše zařízení, přejděte na stránku **Device Explorer** a vyberte filtr **všechna zařízení** :
+Pokud chcete zobrazit všechna zařízení, přejděte na stránku **Průzkumník zařízení** a zvolte filtr **Všechna zařízení:**
 
-[![Zobrazení všech zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
+[![Zobrazit všechna zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
 
 ### <a name="add-tags"></a>Přidání značek
 
-Vyberte všechny **Nákladní vozy** a **Prototypy** zařízení. Pak klikněte na **Úlohy**.
+Vyberte všechny **Nákladní vozy** a **Prototypy** zařízení. Potom klepněte na **položku Úlohy**.
 
 Na panelu **Úlohy** vyberte **Značka**, nastavte název úlohy na **AddConnectedVehicleTag** a pak přidejte textovou značku **FieldService** s hodnotou **ConnectedVehicle**. Pak klikněte na **Použít**:
 
-[![Přidání značky k nákladním vozům a prototypům zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-expanded.png#lightbox)
+[![Přidání značky k prototypům a zařízením nákladních vozidel](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-expanded.png#lightbox)
 
-Na stránce zařízení vyberte všechna zařízení **chladiče**, **výtahu** a **motoru**. Pak klikněte na **Úlohy**.
+Na stránce zařízení vyberte všechna zařízení **chladiče**, **výtahu** a **motoru**. Potom klepněte na **položku Úlohy**.
 
 Na panelu **Úlohy** vyberte **Značka**, nastavte název úlohy na **AddSmartBuildingTag** a pak přidejte textovou značku **FieldService** s hodnotou **SmartBuilding**. Pak klikněte na **Použít**:
 
-[![Přidání značky k zařízením chladiče, výtahu a motoru](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-expanded.png#lightbox)
+[![Přidání značky do chladicích, výtahových a motorových zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-expanded.png#lightbox)
 
 ### <a name="create-filters"></a>Vytváření filtrů
 
-Hodnoty značek teď můžete využít k vytváření filtrů. Na stránce **Device Explorer** klikněte na možnost **Spravovat skupiny zařízení**:
+Hodnoty značek teď můžete využít k vytváření filtrů. Na stránce **Průzkumník zařízení** klikněte na **Spravovat skupiny zařízení**:
 
 [![Správa skupin zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-expanded.png#lightbox)
 
 Vytvořte filtr textu, v jehož podmínce se používá značka s názvem **FieldService** a hodnotou **SmartBuilding**. Uložte filtr jako **Chytrá budova**:
 
-[![Vytvoření filtru chytrých budov](./media/iot-accelerators-remote-monitoring-manage/smartbuildingfilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/smartbuildingfilter-expanded.png#lightbox)
+[![Vytvoření filtru inteligentní budovy](./media/iot-accelerators-remote-monitoring-manage/smartbuildingfilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/smartbuildingfilter-expanded.png#lightbox)
 
 Vytvořte filtr textu, v jehož podmínce se používá značka s názvem **FieldService** a hodnotou **ConnectedVehicle**. Uložte filtr jako **Připojené vozidlo**.
 
-[![Vytvoření filtru připojených vozidel](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
+[![Vytvoření filtru připojeného vozidla](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
 
 Operátor společnosti Contoso teď může zadávat dotazy na zařízení na základě operačního týmu:
 
-[![Vytvoření filtru připojených vozidel](./media/iot-accelerators-remote-monitoring-manage/filterinaction-inline.png)](./media/iot-accelerators-remote-monitoring-manage/filterinaction-expanded.png#lightbox)
+[![Vytvoření filtru připojeného vozidla](./media/iot-accelerators-remote-monitoring-manage/filterinaction-inline.png)](./media/iot-accelerators-remote-monitoring-manage/filterinaction-expanded.png#lightbox)
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 

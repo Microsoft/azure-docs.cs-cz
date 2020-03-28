@@ -1,87 +1,87 @@
 ---
-title: Používání aplikací v Azure blockchain Workbench
-description: Kurz týkající se použití kontraktů aplikací v Azure blockchain Workbench Preview
+title: Používání aplikací v Azure Blockchain Workbench
+description: Návod, jak používat kontrakty aplikací ve verzi Azure Blockchain Workbench Preview.
 ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
 ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74324046"
 ---
-# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Kurz: používání aplikací v Azure blockchain Workbench
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Kurz: Používání aplikací v Azure Blockchain Workbench
 
-Blockchain Workbench můžete použít k vytvoření a provedení akcí ve smlouvách. Můžete také zobrazit podrobnosti o kontraktu, například stav a historii transakcí.
+Blockchain Workbench můžete použít k vytváření a akcím na smlouvách. Můžete také zobrazit podrobnosti smlouvy, jako je stav a historie transakcí.
 
 Dozvíte se, jak provést tyto akce:
 
 > [!div class="checklist"]
-> * Vytvořit nový kontrakt
-> * Provedení akce u kontraktu
+> * Vytvoření nové smlouvy
+> * Provést akci na základě smlouvy
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nasazení aplikace blockchain Workbench Další informace najdete v tématu [nasazení Azure blockchain Workbench](deploy.md) pro podrobnosti o nasazení.
-* Nasazená aplikace blockchain v blockchain Workbench. Další informace najdete [v tématu Vytvoření aplikace v blockchain v Azure blockchain Workbench](create-app.md) .
+* Nasazení blockchainworkbench. Další informace najdete v [tématu Nasazení Azure Blockchain Workbench](deploy.md) podrobnosti o nasazení
+* Nasazená blockchainová aplikace v Blockchain Workbench. Viz [Vytvoření blockchainové aplikace v Azure Blockchain Workbench](create-app.md)
 
-[Otevřete aplikaci blockchain Workbench](deploy.md#blockchain-workbench-web-url) v prohlížeči.
+[Otevřete blockchainworkbench](deploy.md#blockchain-workbench-web-url) ve svém prohlížeči.
 
 ![Blockchain Workbench](./media/use/workbench.png)
 
-Musíte se přihlásit jako člen aplikace blockchain Workbench. Pokud nejsou uvedené žádné aplikace, jste členem aplikace blockchain Workbench, ale nejste členem žádné aplikace. Správce blockchain Workbench může přiřadit členy k aplikacím.
+Musíte se přihlásit jako člen Blockchain Workbench. Pokud nejsou uvedeny žádné aplikace, jste členem Blockchain Workbench, ale ne jste členem žádné aplikace. Správce Blockchain Workbench může přiřadit členy k aplikacím.
 
-## <a name="create-new-contract"></a>Vytvořit nový kontrakt
+## <a name="create-new-contract"></a>Vytvořit novou smlouvu
 
-Pokud chcete vytvořit nový kontrakt, musíte být členem, který jste zadali jako **iniciátor**kontraktu. Informace, které definují aplikační role a iniciátory pro kontrakt, najdete [v tématu pracovní postupy v tématu Přehled konfigurace](configuration.md#workflows). Informace o přiřazování členů k aplikačním rolím najdete v tématu [Přidání člena do aplikace](manage-users.md#add-member-to-application).
+Chcete-li vytvořit novou smlouvu, musíte být členem určeným jako **iniciátor**smlouvy . Informace definující role aplikace a iniciátory smlouvy naleznete [v tématu pracovní postupy v přehledu konfigurace](configuration.md#workflows). Informace o přiřazení členů k rolím aplikace naleznete [v tématu Přidání člena do aplikace](manage-users.md#add-member-to-application).
 
-1. V části aplikace blockchain Workbench vyberte dlaždici aplikace obsahující kontrakt, který chcete vytvořit. Zobrazí se seznam aktivních smluv.
+1. V části aplikace Blockchain Workbench vyberte dlaždici aplikace, která obsahuje smlouvu, kterou chcete vytvořit. Zobrazí se seznam aktivních smluv.
 
-2. Chcete-li vytvořit novou smlouvu, vyberte možnost **Nový kontrakt**.
+2. Chcete-li vytvořit novou smlouvu, vyberte **možnost Nová smlouva**.
 
-    ![Tlačítko Nová smlouva](./media/use/contract-list.png)
+    ![Tlačítko Nové smlouvy](./media/use/contract-list.png)
 
-3. Zobrazí se podokno **nové smlouvy** . Zadejte hodnoty počátečních parametrů. Vyberte **Vytvořit**.
+3. Zobrazí se podokno **Nový kontrakt.** Zadejte hodnoty počátečních parametrů. Vyberte **Vytvořit**.
 
-    ![Nové podokno smlouvy](./media/use/new-contract.png)
+    ![Nové podokno smluv](./media/use/new-contract.png)
 
-    Nově vytvořená smlouva se zobrazí v seznamu s ostatními aktivními kontrakty.
+    Nově vytvořená smlouva je zobrazena v seznamu s ostatními aktivními smlouvami.
 
     ![Seznam aktivních smluv](./media/use/active-contracts.png)
 
-## <a name="take-action-on-contract"></a>Provést akci se smlouvou
+## <a name="take-action-on-contract"></a>Přijmout opatření na zakázku
 
-V závislosti na stavu, ve kterém se kontrakt nachází, můžou členové provést akce přechodu do dalšího stavu smlouvy. Akce jsou definovány jako [přechody](configuration.md#transitions) ve [stavu](configuration.md#states). Akce mohou provést členové patřící do povolené role aplikace nebo instance pro přechod. 
+V závislosti na stavu smlouvy, členové mohou provést kroky k přechodu na další stav smlouvy. Akce jsou [definovány](configuration.md#transitions) jako přechody v rámci [stavu](configuration.md#states). Členové, kteří patří k povolené roli aplikace nebo instance pro přechod, mohou provést akci. 
 
-1. V části aplikace blockchain Workbench vyberte dlaždici aplikace, která obsahuje kontrakt pro provedení akce.
-2. Vyberte kontrakt v seznamu. Podrobnosti o kontraktu se zobrazují v různých oddílech. 
+1. V části aplikace Blockchain Workbench vyberte dlaždici aplikace, která obsahuje smlouvu, aby se akce.
+2. Vyberte smlouvu v seznamu. Podrobnosti o smlouvě jsou zobrazeny v různých sekcích. 
 
-    ![Podrobnosti o kontraktu](./media/use/contract-details.png)
+    ![Podrobnosti o smlouvě](./media/use/contract-details.png)
 
     | Sekce  | Popis  |
     |---------|---------|
-    | Status | Zobrazí aktuální průběh v rámci fází smlouvy. |
-    | Podrobnosti | Aktuální hodnoty kontraktu |
+    | Status | Uvádí aktuální pokrok ve fázích smlouvy. |
+    | Podrobnosti | Aktuální hodnoty smlouvy |
     | Akce | Podrobnosti o poslední akci |
-    | Aktivita | Historie transakcí kontraktu |
+    | Aktivita | Historie transakcí smlouvy |
     
-3. V části **Akce** vyberte **provést akci**.
+3. V části **Akce** vyberte **Přijmout akci**.
 
-4. Podrobnosti o aktuálním stavu smlouvy se zobrazí v podokně. V rozevíracím seznamu vyberte akci, kterou chcete provést. 
+4. Podrobnosti o aktuálním stavu smlouvy jsou zobrazeny v podokně. V rozevíracím souboru zvolte akci, kterou chcete provést. 
 
     ![Zvolit akci](./media/use/choose-action.png)
 
-5. Chcete-li zahájit akci, vyberte **provést akci** .
-6. Pokud jsou pro akci vyžadovány parametry, zadejte hodnoty pro akci.
+5. Chcete-li akci zahájit, vyberte **provést akci.**
+6. Pokud jsou pro akci požadovány parametry, zadejte hodnoty akce.
 
-    ![Provést akci](./media/use/take-action.png)
+    ![Přijmout opatření](./media/use/take-action.png)
 
-7. Vyberte **provést akci** a akci spusťte.
+7. Vyberte **Provést akci** k provedení akce.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Správa verzí aplikací v Azure blockchain Workbench](version-app.md)
+> [Správa verzí aplikací Azure Blockchain Workbench](version-app.md)
