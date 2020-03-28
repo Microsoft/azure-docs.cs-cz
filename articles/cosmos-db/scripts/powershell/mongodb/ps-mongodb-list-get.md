@@ -1,20 +1,20 @@
 ---
-title: Skript PowerShellu pro výpis a získání operací v rozhraní API Azure Cosmos DB pro MongoDB
-description: Azure PowerShell Azure Cosmos DB skriptu a operace get pro rozhraní MongoDB API
+title: Skript Prostředí PowerShell pro seznam a získání operací v rozhraní API Azure Cosmos DB pro MongoDB
+description: Skript Azure PowerShellu – seznam Azure Cosmos DB a získání operací pro rozhraní MongoDB API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4b5934e82c14f50ef1884a6c5618f4f98d663e1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 686b140915e90adefa15084c2e8317404b91ed09
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441416"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365891"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Vypíše a získá databáze a grafy pro Azure Cosmos DB MongoDB API.
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Seznam a získání databází a grafů pro Azure Cosmos DB – rozhraní MONGODB API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +38,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-|**Prostředky Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Vytvoří prostředek. |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Seznam účtů Cosmos DB nebo získá zadaný účet Cosmos DB. |
+| [Databáze Get-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabase) | Seznam databází rozhraní API Cosmos DB MongoDB v účtu nebo získá zadanou databázi rozhraní API Cosmos DB MogoDB v účtu. |
+| [Get-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollection) | Seznam kolekcí rozhraní API Cosmos DB MongoDB nebo získá zadanou kolekci rozhraní API Cosmos DB MongoDB v databázi. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

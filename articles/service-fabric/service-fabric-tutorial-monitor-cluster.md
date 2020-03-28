@@ -1,34 +1,34 @@
 ---
 title: Monitorování clusteru Service Fabric v Azure
-description: V tomto kurzu se naučíte monitorovat cluster zobrazením Service Fabric událostí, dotazování rozhraní API pro Eventstoru, čítačů výkonu monitorování a zobrazování sestav o stavu.
+description: V tomto kurzu se dozvíte, jak sledovat cluster zobrazením událostí Service Fabric, dotazováním na pravidla api EventStore, sledováním čítačů perf a zobrazením sestav stavu.
 author: srrengar
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
 ms.openlocfilehash: ab58d622511e0d5793eb6df312bc3fd6dd15bfd6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75376626"
 ---
-# <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Kurz: monitorování clusteru Service Fabric v Azure
+# <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Kurz: Monitorování clusteru Service Fabric v Azure
 
-Monitorování a diagnostika jsou zásadní pro vývoj, testování a nasazování úloh v jakémkoli cloudovém prostředí. Tento kurz je druhou částí série, kde se dozvíte, jak monitorovat a diagnostikovat clustery Service Fabric s využitím událostí, čítačů výkonu a zpráv o stavu.   Další informace najdete v tématu Přehled [monitorování clusteru](service-fabric-diagnostics-overview.md#platform-cluster-monitoring) a [monitorování infrastruktury](service-fabric-diagnostics-overview.md#infrastructure-performance-monitoring).
+Monitorování a diagnostika jsou důležité pro vývoj, testování a nasazování úloh v libovolném cloudovém prostředí. Tento kurz je druhá část řady a ukazuje, jak sledovat a diagnostikovat cluster Service Fabric pomocí událostí, čítačů výkonu a sestav stavu.   Další informace naleznete v přehledu monitorování [clusteru](service-fabric-diagnostics-overview.md#platform-cluster-monitoring) a [monitorování infrastruktury](service-fabric-diagnostics-overview.md#infrastructure-performance-monitoring).
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Zobrazit Service Fabric události
-> * Dotazování rozhraní API Eventstoru pro události clusteru
-> * Monitorování infrastruktury/shromažďování čítačů výkonu
-> * Zobrazení sestav stavu clusteru
+> * Zobrazit události Service Fabric
+> * Dotaz na pravidla API úložiště událostí pro události clusteru
+> * Monitorovat infrastrukturu/shromažďovat čítače perf
+> * Zobrazit sestavy stavu clusteru
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure pomocí šablony
-> * Monitorování clusteru
+> * Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure pomocí šablony
+> * Sledování clusteru
 > * [Horizontální snížení nebo navýšení kapacity clusteru](service-fabric-tutorial-scale-cluster.md)
 > * [Upgrade modulu runtime clusteru](service-fabric-tutorial-upgrade-cluster.md)
 > * [Odstranění clusteru](service-fabric-tutorial-delete-cluster.md)
@@ -40,54 +40,54 @@ V této sérii kurzů se naučíte:
 
 Než začnete s tímto kurzem:
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
-* Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) 
-* Nastavení [kolekce diagnostiky](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor) pro cluster
-* Povolení [služby eventstoru](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor) v clusteru
-* Konfigurace [protokolů Azure monitor a agenta Log Analytics](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureloganalytics_anchor) pro cluster
+* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Nainstalujte [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo [Azure CLI](/cli/azure/install-azure-cli).
+* Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) 
+* [Kolekce diagnostiky](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor) instalace pro cluster
+* Povolení [služby EventStore](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor) v clusteru
+* Konfigurace [protokolů Azure Monitor a agenta Analýzy protokolů](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureloganalytics_anchor) pro cluster
 
-## <a name="view-service-fabric-events-using-azure-monitor-logs"></a>Zobrazení Service Fabricch událostí pomocí protokolů Azure Monitor
+## <a name="view-service-fabric-events-using-azure-monitor-logs"></a>Zobrazení událostí Service Fabric pomocí protokolů Azure Monitor
 
-Protokoly Azure Monitor shromažďuje a analyzuje telemetrii z aplikací a služeb hostovaných v cloudu a poskytuje analytické nástroje, které vám pomůžou maximalizovat jejich dostupnost a výkon. Dotazy můžete spouštět v protokolech Azure Monitor a získat tak přehledy a řešit potíže s tím, co se děje ve vašem clusteru.
+Protokoly Azure Monitor shromažďuje a analyzuje telemetrie z aplikací a služeb hostovaných v cloudu a poskytuje analytické nástroje, které vám pomohou maximalizovat jejich dostupnost a výkon. Můžete spouštět dotazy v protokolech Azure Monitor získat přehledy a řešení potíží, co se děje ve vašem clusteru.
 
-Pokud chcete získat přístup k řešení Service Fabric Analytics, přejděte na [Azure Portal](https://portal.azure.com) a vyberte skupinu prostředků, ve které jste vytvořili řešení Service Fabric Analytics.
+Chcete-li získat přístup k řešení Service Fabric Analytics, přejděte na [portál Azure](https://portal.azure.com) a vyberte skupinu prostředků, ve které jste vytvořili řešení Service Fabric Analytics.
 
-Vyberte prostředek **ServiceFabric (mysfomsworkspace)** .
+Vyberte zdroj **ServiceFabric(mysfomsworkspace)**.
 
-V **přehledu** uvidíte dlaždice ve formě grafu pro každé povolené řešení, včetně jednoho pro Service Fabric. Kliknutím na graf **Service Fabric** pokračujte v řešení Service Fabric Analytics.
+V **přehledu** se zobrazí dlaždice ve formě grafu pro každé z povolených řešení, včetně jednoho pro Service Fabric. Kliknutím na graf **Service Fabric** přenesete k řešení Service Fabric Analytics.
 
-![Řešení Service Fabric](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
+![Service Fabric řešení](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
-Následující obrázek ukazuje domovskou stránku Service Fabric Analytics řešení. Tato domovská stránka nabízí snímek toho, co se děje ve vašem clusteru.
+Následující obrázek znázorňuje domovskou stránku řešení Service Fabric Analytics. Tato domovská stránka poskytuje snímek zobrazení toho, co se děje ve vašem clusteru.
 
-![Řešení Service Fabric](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-solution.png)
+![Service Fabric řešení](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-solution.png)
 
  Pokud jste při vytváření clusteru povolili diagnostiku, můžete zobrazit události pro 
 
-* [Service Fabric události clusteru](service-fabric-diagnostics-event-generation-operational.md)
-* [Reliable Actors události programovacího modelu](service-fabric-reliable-actors-diagnostics.md)
-* [Reliable Services události programovacího modelu](service-fabric-reliable-services-diagnostics.md)
+* [Události clusteru Service Fabric](service-fabric-diagnostics-event-generation-operational.md)
+* [Události programovacího modelu spolehlivých herců](service-fabric-reliable-actors-diagnostics.md)
+* [Události programovacího modelu spolehlivých služeb](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->Kromě Service Fabric událostí z pole mohou být shromážděny podrobnější systémové události prostřednictvím [aktualizace konfigurace diagnostického rozšíření](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
+>Kromě události Service Fabric po vybalení, podrobnější systémové události lze shromažďovat [aktualizací konfigurace rozšíření diagnostiky](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
 
-### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Zobrazit Service Fabric události, včetně akcí na uzlech
+### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Zobrazit události service fabric, včetně akcí na uzlech
 
-Na stránce Service Fabric Analytics klikněte na graf pro **události clusteru**.  Zobrazí se protokoly pro všechny shromážděné systémové události. Azure Storage v případě, že se jedná o referenci z **WADServiceFabricSystemEventsTable** účtu, a podobně události Reliable Services a Actors, které vidíte, jsou z příslušných tabulek.
+Na stránce Service Fabric Analytics klikněte na graf **událostí clusteru**.  Zobrazí se protokoly pro všechny systémové události, které byly shromážděny. Pro referenci jsou z **WADServiceFabricSystemEventsTable** v účtu Azure Storage a podobně spolehlivé služby a objekty actor události, které vidíte další jsou z těchto příslušných tabulek.
     
-![Provozní kanál dotazů](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-events.png)
+![Dotaz na operační kanál](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-events.png)
 
-Dotaz používá dotazovací jazyk Kusto, který můžete upravit, abyste mohli Upřesnit, co hledáte. Pokud například chcete najít všechny akce prováděné na uzlech v clusteru, můžete použít následující dotaz. ID událostí, která se používají níže, najdete v [referenčních událostech pro události provozních kanálů](service-fabric-diagnostics-event-generation-operational.md).
+Dotaz používá dotazovací jazyk Kusto, který můžete upravit, abyste upřesnili, co hledáte. Chcete-li například vyhledat všechny akce provedené v uzlech v clusteru, můžete použít následující dotaz. ID událostí použitá níže se nacházejí v [odkazu na události operačního kanálu](service-fabric-diagnostics-event-generation-operational.md).
 
 ```kusto
 ServiceFabricOperationalEvent
 | where EventId < 25627 and EventId > 25619 
 ```
 
-Dotazovací jazyk Kusto je výkonný. Tady jsou některé další užitečné dotazy.
+Dotazovací jazyk Kusto je silný. Zde jsou některé další užitečné dotazy.
 
-Vytvořte vyhledávací tabulku *ServiceFabricEvent* jako uživatelsky definovanou funkci tak, že dotaz uložíte jako funkci s aliasem ServiceFabricEvent:
+Vytvořte vyhledávací tabulku *ServiceFabricEvent* jako uživatelem definovanou funkci uložením dotazu jako funkce s aliasem ServiceFabricEvent:
 
 ```kusto
 let ServiceFabricEvent = datatable(EventId: int, EventName: string)
@@ -100,7 +100,7 @@ let ServiceFabricEvent = datatable(EventId: int, EventName: string)
 ServiceFabricEvent
 ```
 
-Vrátit provozní události zaznamenané za poslední hodinu:
+Zpětné provozní události zaznamenané za poslední hodinu:
 ```kusto
 ServiceFabricOperationalEvent
 | where TimeGenerated > ago(1h)
@@ -109,7 +109,7 @@ ServiceFabricOperationalEvent
 | sort by TimeGenerated
 ```
 
-Vrátí provozní události s ID události = = 18604 a EventName = = ' NodeDownOperational ':
+Vrátit provozní události s EventId == 18604 a EventName == 'NodeDownOperational':
 ```kusto
 ServiceFabricOperationalEvent
 | where EventId == 18604
@@ -117,7 +117,7 @@ ServiceFabricOperationalEvent
 | sort by TimeGenerated 
 ```
 
-Vrátí provozní události s ID události = = 18604 a EventName = = ' NodeUpOperational ':
+Vrátit provozní události s EventId == 18604 a EventName == 'NodeUpOperational':
 ```kusto
 ServiceFabricOperationalEvent
 | where EventId == 18603
@@ -125,7 +125,7 @@ ServiceFabricOperationalEvent
 | sort by TimeGenerated 
 ``` 
  
-Vrátí sestavy o stavu s podstavem \ = 3 (chyba) a extrahuje další vlastnosti z pole EventMessage:
+Vrátí zprávy o stavu se stavem Stav == 3 (Chyba) a extrahovat další vlastnosti z pole EventMessage:
 
 ```kusto
 ServiceFabricOperationalEvent
@@ -150,7 +150,7 @@ ServiceFabricOperationalEvent
          StatefulReplica = extract(@"StatefulReplica=(\S+) ", 1, EventMessage, typeof(string))
 ```
 
-Vrátí časový graf událostí s ID události! = 17523:
+Vrátit časový graf událostí s EventId != 17523:
 
 ```kusto
 ServiceFabricOperationalEvent
@@ -160,7 +160,7 @@ ServiceFabricOperationalEvent
 | render timechart 
 ```
 
-Získat Service Fabric provozní události agregované se specifickou službou a uzlem:
+Získejte provozní události Service Fabric agregované s konkrétní službou a uzlem:
 
 ```kusto
 ServiceFabricOperationalEvent
@@ -168,7 +168,7 @@ ServiceFabricOperationalEvent
 | summarize AggregatedValue = count() by ApplicationName, ServiceName, Computer 
 ```
 
-Vykreslovat počet Service Fabricch událostí podle ID události/EventName pomocí dotazu na více prostředků:
+Vykreslení počtu událostí Service Fabric podle EventId / EventName pomocí dotazu křížového prostředku:
 
 ```kusto
 app('PlunkoServiceFabricCluster').traces
@@ -181,21 +181,21 @@ app('PlunkoServiceFabricCluster').traces
 | render timechart
 ```
 
-### <a name="view-service-fabric-application-events"></a>Zobrazit Service Fabric události aplikace
+### <a name="view-service-fabric-application-events"></a>Zobrazit události aplikace Service Fabric
 
-Můžete zobrazit události pro aplikace Reliable Services a Reliable actor nasazené v clusteru.  Na stránce Service Fabric Analytics klikněte na graf pro **události aplikace**.
+Můžete zobrazit události pro spolehlivé služby a spolehlivé aplikace aktérů nasazené v clusteru.  Na stránce Service Fabric Analytics klikněte na graf událostí **aplikace**.
 
-Spusťte následující dotaz pro zobrazení událostí z aplikací spolehlivé služby:
+Chcete-li zobrazit události ze spolehlivých aplikací služeb, spusťte následující dotaz:
 ```kusto
 ServiceFabricReliableServiceEvent
 | sort by TimeGenerated desc
 ```
 
-V případě, že je služba RunAsync spuštěná a dokončená, což se obvykle stává při nasazení a upgradech, se můžete podívat na různé události.
+Můžete zobrazit různé události pro při spuštění a dokončení služby runasync, které se obvykle děje na nasazení a upgrady.
 
-![Reliable Services řešení Service Fabric](media/service-fabric-tutorial-monitor-cluster/oms-reliable-services-events-selection.png)
+![Spolehlivé služby service fabric řešení](media/service-fabric-tutorial-monitor-cluster/oms-reliable-services-events-selection.png)
 
-Můžete také najít události pro Reliable Service pomocí ServiceName = = "Fabric:/sledovací/WatchdogService":
+Můžete také najít události pro spolehlivé služby s ServiceName == "fabric:/Watchdog/WatchdogService":
 
 ```kusto
 ServiceFabricReliableServiceEvent
@@ -204,13 +204,13 @@ ServiceFabricReliableServiceEvent
 | order by TimeGenerated desc  
 ```
  
-Spolehlivé události objektu actor lze zobrazit podobným způsobem:
+Spolehlivé události herce lze zobrazit podobným způsobem:
 
 ```kusto
 ServiceFabricReliableActorEvent
 | sort by TimeGenerated desc
 ```
-Chcete-li nakonfigurovat podrobnější události pro Reliable Actors, můžete změnit `scheduledTransferKeywordFilter` v konfiguraci pro diagnostické rozšíření v šabloně clusteru. Podrobnosti o hodnotách pro tyto položky jsou uvedeny v referenčních informacích o [událostech Reliable Actors](service-fabric-reliable-actors-diagnostics.md#keywords).
+Chcete-li nakonfigurovat podrobnější události pro `scheduledTransferKeywordFilter` spolehlivé aktéry, můžete změnit v konfiguraci pro diagnostické rozšíření v šabloně clusteru. Podrobnosti o hodnotách pro tyto jsou v [odkazna události spolehlivé objekty](service-fabric-reliable-actors-diagnostics.md#keywords).
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -224,25 +224,25 @@ Chcete-li nakonfigurovat podrobnější události pro Reliable Actors, můžete 
                 },
 ```
 
-## <a name="view-performance-counters-with-azure-monitor-logs"></a>Zobrazit čítače výkonu pomocí protokolů Azure Monitor
-Chcete-li zobrazit čítače výkonu, otevřete [Azure Portal](https://portal.azure.com) a skupinu prostředků, ve které jste vytvořili řešení Service Fabric Analytics. 
+## <a name="view-performance-counters-with-azure-monitor-logs"></a>Zobrazení čítačů výkonu pomocí protokolů Azure Monitoru
+Pokud chcete zobrazit čítače výkonu, přejděte na [portál Azure](https://portal.azure.com) a skupinu prostředků, ve které jste vytvořili řešení Service Fabric Analytics. 
 
-Vyberte ServiceFabric prostředku **(mysfomsworkspace)** , pak **Log Analytics pracovní prostor**a pak **Rozšířené nastavení**.
+Vyberte prostředek **ServiceFabric (mysfomsworkspace)**, potom **Log Analytics Workspace**a potom **upřesnit nastavení**.
 
-Klikněte na **data**a pak na **čítače výkonu Windows**. K dispozici je seznam výchozích čítačů, které můžete povolit, a můžete nastavit interval pro shromažďování dat. Můžete také přidat [Další čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) ke shromáždění. Správný formát je odkazován v tomto [článku](/windows/desktop/PerfCtrs/specifying-a-counter-path). Klikněte na **Uložit**a pak na **OK**.
+Klepněte na **položku Data**a potom klepněte na **položku Čítače výkonu systému Windows**. K dispozici je seznam výchozích čítačů, které můžete povolit, a můžete také nastavit interval pro shromažďování. Můžete také přidat [další čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) shromažďovat. Správný formát je odkazován v tomto [článku](/windows/desktop/PerfCtrs/specifying-a-counter-path). Klepněte na tlačítko **Uložit**a potom klepněte na tlačítko **OK**.
 
-Zavřete okno Upřesnit nastavení a v části **Obecné** vyberte možnost **Souhrn pracovního prostoru** . Pro každé z povolených řešení je k dispozici grafická dlaždice, včetně jednoho pro Service Fabric. Kliknutím na graf **Service Fabric** pokračujte v řešení Service Fabric Analytics.
+Zavřete okno Upřesnit nastavení a pod nadpisem **Obecné** vyberte **souhrn pracovního prostoru.** Pro každé z povolených řešení je grafická dlaždice, včetně jedné pro Service Fabric. Kliknutím na graf **Service Fabric** přenesete k řešení Service Fabric Analytics.
 
-Pro události provozních kanálů a spolehlivých služeb jsou k dispozici grafické dlaždice. Grafická reprezentace toku dat pro čítače, které jste vybrali, se zobrazí v části **metriky uzlů**. 
+K dispozici jsou grafické dlaždice pro provozní kanál a spolehlivé služby události. Grafické znázornění dat, která se pro počtočí, které jste vybrali, zobrazí v části **Metriky uzlů**. 
 
-Výběrem grafu **metriky kontejnerů** zobrazíte další podrobnosti. Můžete také dotazovat se na data čítače výkonu podobně jako u událostí clusteru a filtrovat uzly, název čítače výkonu a hodnoty pomocí dotazovacího jazyka Kusto.
+Kliknutím na graf **Metrika kontejneru** zobrazíte další podrobnosti. Můžete také dotaz na data čítače výkonu podobně jako události clusteru a filtrovat na uzly, název čítače perf a hodnoty pomocí dotazovacího jazyka Kusto.
 
-## <a name="query-the-eventstore-service"></a>Dotazování na službu Eventstoru
-[Služba eventstoru](service-fabric-diagnostics-eventstore.md) poskytuje způsob, jak pochopit stav clusteru nebo úloh v daném časovém okamžiku. Eventstoru je stavová služba Service Fabric, která udržuje události z clusteru. Události jsou zpřístupněny prostřednictvím [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), Rest a rozhraní API. Eventstoru dotazuje cluster přímo, aby získal diagnostická data na jakékoli entitě v clusteru, aby se zobrazil úplný seznam událostí, které jsou k dispozici v Eventstoru, viz [Service Fabric události](service-fabric-diagnostics-event-generation-operational.md).
+## <a name="query-the-eventstore-service"></a>Dotaz na službu EventStore
+[Služba EventStore](service-fabric-diagnostics-eventstore.md) poskytuje způsob, jak pochopit stav clusteru nebo úloh v daném okamžiku. EventStore je stavová služba Service Fabric, která udržuje události z clusteru. Události jsou vystaveny prostřednictvím [aplikace Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), REST a rozhraní API. EventStore se dotazuje clusteru přímo na získání diagnostických dat na libovolné entitě v clusteru Chcete-li zobrazit úplný seznam událostí dostupných v eventstore, viz [události Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
 
-Rozhraní API pro Eventstoru se dají dotazovat programově pomocí [klientské knihovny Service Fabric](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library).
+Na api úložiště událostí lze programově dotazovat pomocí [klientské knihovny Service Fabric](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library).
 
-Tady je příklad požadavku na všechny události clusteru mezi 2018-04-03T18:00:00Z a 2018-04-04T18:00:00Z, prostřednictvím funkce GetClusterEventListAsync.
+Zde je příklad požadavku na všechny události clusteru mezi 2018-04-03T18:00:00Z a 2018-04-04T18:00:00Z, prostřednictvím funkce GetClusterEventListAsync.
 
 ```csharp
 var sfhttpClient = ServiceFabricClientFactory.Create(clusterUrl, settings);
@@ -255,7 +255,7 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
     .ToList();
 ```
 
-Tady je další příklad, který se dotazuje na stav clusteru a události všech uzlů v září 2018 a tiskne je.
+Zde je další příklad, který se dotazuje na stav clusteru a všechny události uzlu v září 2018 a vytiskne je.
 
 ```csharp
 const int timeoutSecs = 60;
@@ -295,18 +295,18 @@ foreach (var nodeEvent in nodesEvents)
 
 
 ## <a name="monitor-cluster-health"></a>Monitorování stavu clusteru
-Service Fabric zavádí [model stavu](service-fabric-health-introduction.md) s entitami o stavu, na kterých mohou systémové komponenty a sledovací zařízení nahlásit místní podmínky, které monitorují. [Health Store](service-fabric-health-introduction.md#health-store) agreguje všechna data o stavu, abyste zjistili, jestli jsou entity v pořádku.
+Service Fabric zavádí [model stavu](service-fabric-health-introduction.md) s entity stavu, na kterých systémové součásti a watchdogs můžete hlásit místní podmínky, které jsou monitorování. [Úložiště stavu](service-fabric-health-introduction.md#health-store) agreguje všechna data o stavu k určení, zda entity jsou v pořádku.
 
-Cluster se vyplní automaticky zprávami o stavu, které odesílají součásti systému. Další informace najdete v tématu [použití sestav stavu systému k řešení potíží](service-fabric-understand-and-troubleshoot-with-system-health-reports.md).
+Cluster je automaticky naplněn zprávami o stavu odeslanými systémovými součástmi. Další informace naleznete v [článek Použití zpráv o stavu systému k řešení potíží](service-fabric-understand-and-troubleshoot-with-system-health-reports.md).
 
-Service Fabric zveřejňuje dotazy na stav pro každý z podporovaných [typů entit](service-fabric-health-introduction.md#health-entities-and-hierarchy). K nim lze přistupovat prostřednictvím rozhraní API pomocí metod na [FabricClient. HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), rutin PowerShellu a REST. Tyto dotazy vrátí kompletní informace o stavu o entitě: agregovaný stav, události stavu entity, podřízené stavy (Pokud je k dispozici), nestavová hodnocení (Pokud entita není v pořádku) a statistiky stavu dětí (když platí).
+Service Fabric zpřístupňuje dotazy na stav pro každý z [podporovaných typů entit](service-fabric-health-introduction.md#health-entities-and-hierarchy). K nim lze přistupovat prostřednictvím rozhraní API pomocí metod [fabricclient.healthmanager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), rutin prostředí PowerShell a REST. Tyto dotazy vrátí úplné informace o stavu entity: agregovaný stav, události stavu entity, stav dítěte stav (pokud je to možné), nefunkční hodnocení (pokud entita není v pořádku) a statistiky stavu dětí (když jsou k dispozici použitelné).
 
-### <a name="get-cluster-health"></a>Získat stav clusteru
-[Rutina Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) vrátí stav entity clusteru a obsahuje stav aplikací a uzlů (podřízené položky clusteru).  Nejdřív se připojte ke clusteru pomocí [rutiny Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps).
+### <a name="get-cluster-health"></a>Získání stavu clusteru
+[Rutina Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) vrátí stav entity clusteru a obsahuje stavy aplikací a uzlů (podřízených clusteru).  Nejprve se připojte ke clusteru pomocí [rutiny Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps).
 
-Stav clusteru je 11 uzlů, systémová aplikace a prostředky infrastruktury:/hlasování nakonfigurované podle popisu.
+Stav clusteru je 11 uzlů, systémová aplikace a prostředků infrastruktury:/Hlasování nakonfigurováno tak, jak je popsáno.
 
-Následující příklad načte stav clusteru pomocí výchozích zásad stavu. 11 uzlů je v pořádku, ale stav agregovaného stavu clusteru je chyba, protože aplikace Fabric:/hlasovací aplikace je v chybovém stavu. Všimněte si, jak nestavová Hodnocení poskytují podrobnosti o podmínkách, které aktivovaly agregovaný stav.
+Následující příklad získá stav clusteru pomocí výchozích zásad stavu. 11 uzlů jsou v pořádku, ale clusteru agregované stav je chyba, protože fabric:/Hlasování aplikace je v chybě. Všimněte si, jak není v pořádku hodnocení poskytují podrobnosti o podmínky, které spustily agregované stavu.
 
 ```powershell
 Get-ServiceFabricClusterHealth
@@ -381,7 +381,7 @@ HealthStatistics        :
                           Application           : 0 Ok, 0 Warning, 1 Error
 ```
 
-Následující příklad načte stav clusteru pomocí vlastní zásady použití. Vyfiltruje výsledky, aby se v chybách nebo varování dostaly jenom aplikace a uzly. V tomto příkladu nejsou vráceny žádné uzly, protože jsou v pořádku. Filtr aplikací respektuje pouze aplikace Fabric:/hlasovací aplikace. Vzhledem k tomu, že vlastní zásady určují, že v případě chyb pro aplikaci Fabric:/hlasovacích se považují upozornění jako chyby, aplikace se vyhodnotí jako chyba a je to cluster.
+Následující příklad získá stav clusteru pomocí vlastní zásady aplikace. Filtruje výsledky, aby se chybně nebo v upozornění dostaly pouze aplikace a uzly. V tomto příkladu jsou vráceny žádné uzly, protože jsou všechny v pořádku. Pouze fabric:/Hlasování aplikace respektuje aplikace filtr. Vzhledem k tomu, že vlastní zásady určuje považovat upozornění jako chyby pro fabric:/Hlasování aplikace, aplikace je vyhodnocena jako chybně a tak je cluster.
 
 ```powershell
 $appHealthPolicy = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicy
@@ -454,18 +454,18 @@ HealthEvents            : None
 ```
 
 ### <a name="get-node-health"></a>Získat stav uzlu
-[Rutina Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth) vrátí stav entity uzlu a obsahuje události stavu hlášené v uzlu. Nejdřív se připojte ke clusteru pomocí [rutiny Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps). Následující příklad načte stav konkrétního uzlu pomocí výchozích zásad stavu:
+[Rutina Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth) vrátí stav entity uzlu a obsahuje události stavu hlášené v uzlu. Nejprve se připojte ke clusteru pomocí [rutiny Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps). Následující příklad získá stav konkrétního uzlu pomocí výchozích zásad stavu:
 
 ```powershell
 Get-ServiceFabricNodeHealth _nt1vm_3
 ```
 
-Následující příklad načte stav všech uzlů v clusteru:
+Následující příklad získá stav všech uzlů v clusteru:
 ```powershell
 Get-ServiceFabricNode | Get-ServiceFabricNodeHealth | select NodeName, AggregatedHealthState | ft -AutoSize
 ```
 
-### <a name="get-system-service-health"></a>Získat stav systémové služby 
+### <a name="get-system-service-health"></a>Získání stavu systémových služeb 
 
 Získejte agregovaný stav systémových služeb:
 
@@ -478,12 +478,12 @@ Get-ServiceFabricService -ApplicationName fabric:/System | Get-ServiceFabricServ
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Zobrazit Service Fabric události
-> * Dotazování rozhraní API Eventstoru pro události clusteru
-> * Monitorování infrastruktury/shromažďování čítačů výkonu
-> * Zobrazení sestav stavu clusteru
+> * Zobrazit události Service Fabric
+> * Dotaz na pravidla API úložiště událostí pro události clusteru
+> * Monitorovat infrastrukturu/shromažďovat čítače perf
+> * Zobrazit sestavy stavu clusteru
 
-Potom přejděte k následujícímu kurzu, kde se dozvíte, jak škálovat cluster.
+Dále přejdete k následujícímu kurzu, kde se dozvíte, jak škálovat cluster.
 > [!div class="nextstepaction"]
 > [Škálování clusteru](service-fabric-tutorial-scale-cluster.md)
 

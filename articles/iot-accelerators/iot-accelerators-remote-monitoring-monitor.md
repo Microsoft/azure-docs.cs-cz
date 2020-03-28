@@ -1,5 +1,5 @@
 ---
-title: Monitorování zařízení v řešení vzdáleného monitorování – Azure | Microsoft Docs
+title: Monitorování zařízení v řešení vzdáleného monitorování – Azure | Dokumenty společnosti Microsoft
 description: V tomto kurzu se dozvíte, jak monitorovat zařízení IoT pomocí akcelerátoru řešení pro vzdálené monitorování.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 400a71b11fde210b889d938041e88c5ebe73c1dc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73890870"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>Kurz: Monitorování zařízení IoT
@@ -22,7 +22,7 @@ V tomto kurzu použijete akcelerátor řešení pro vzdálené monitorování k 
 
 Tento kurz používá dvě simulovaná zařízení nákladního vozu, která odesílají polohu, rychlost a telemetrická data o teplotě nákladu. Tyto nákladní vozy spravuje organizace Contoso a jsou připojené k akcelerátoru řešení pro vzdálené monitorování. Jako operátor společnosti Contoso potřebujete monitorovat polohu a chování jednoho z vašich nákladních vozů (truck-02) v terénu.
 
-V tomto kurzu se naučíte:
+V tomto kurzu jste:
 
 >[!div class="checklist"]
 > * Filtrování zařízení na řídicím panelu
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Zobrazení upozornění ze zařízení
 > * Zobrazení klíčových ukazatelů výkonu systému
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -39,11 +39,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 K výběru připojených zařízení, která se zobrazí na stránce **Řídicí panel**, použijte filtry. Pokud chcete zobrazit pouze zařízení **Nákladní vůz**, v rozevíracím seznamu filtru zvolte předdefinovaný filtr **Nákladní vozy**:
 
-[![Vyfiltrování nákladních vozů na řídicím panelu](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
+[![Filtr pro nákladní vozidla na palubní desce](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
 
 Když použijete filtr, na mapě a panelu telemetrie se zobrazí pouze zařízení, která splňují podmínky filtru. Uvidíte, že k akcelerátoru řešení jsou připojené dva nákladní vozy (včetně nákladního vozu truck-02):
 
-[![Na stránce se zobrazí pouze nákladní vozy](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
+[![Na mapě jsou zobrazena pouze nákladní vozidla](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 
 Pokud chcete vytvořit, upravit nebo odstranit filtry, klikněte na **Spravovat skupiny zařízení**.
 
@@ -51,11 +51,11 @@ Pokud chcete vytvořit, upravit nebo odstranit filtry, klikněte na **Spravovat 
 
 Akcelerátor řešení vykresluje telemetrická data v reálném čase do grafu na stránce **Řídicí panel**. V horní části grafu telemetrie se zobrazují dostupné typy telemetrie pro zařízení (včetně nákladního vozu truck-02) vybraná na základě aktuálního filtru. Ve výchozím nastavení graf zobrazuje zeměpisnou šířku nákladních vozů a truck-02 vypadá, že stojí:
 
-[![Typy telemetrie nákladních vozů](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
+[![Typy telemetrie nákladních vozidel](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
 
 Pokud chcete zobrazit telemetrická data o teplotě nákladních vozů, klikněte na **Teplota**. Uvidíte, jak se teplota za poslední hodinu u nákladního vozu truck-02 měnila:
 
-[![Graf telemetrických dat o teplotě nákladních vozů](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
+[![Telemetrický graf teploty nákladního vozidla](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
 
 ## <a name="view-the-map"></a>Zobrazení mapy
 
@@ -69,9 +69,9 @@ Pokud chcete zobrazit podrobnosti o nákladním voze truck-02, posuňte a přibl
 
 [![Zobrazení podrobností o zařízení na řídicím panelu](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-expanded.png#lightbox)
 
-## <a name="view-alerts"></a>Zobrazení výstrah
+## <a name="view-alerts"></a>Zobrazení upozornění
 
-Na panelu **Upozornění** se zobrazují podrobné informace o nejnovějších upozorněních ze zařízení. Upozornění z nákladního vozu truck-02 poukazují na vyšší než běžnou teplotu nákladu:
+Panel **Výstrahy** zobrazuje podrobné informace o nejnovějších výstrahách z vašich zařízení. Upozornění z nákladního vozu truck-02 poukazují na vyšší než běžnou teplotu nákladu:
 
 [![Zobrazení upozornění zařízení na řídicím panelu](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
 
@@ -81,7 +81,7 @@ Pomocí filtru můžete upravit časový rozsah pro nedávná upozornění. Ve v
 
 Na stránce **Řídicí panel** se na panelu **Analýza** zobrazují klíčové ukazatele výkonu systému vypočítané akcelerátorem řešení:
 
-[![Klíčové ukazatele výkonu na řídicím panelu](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-expanded.png#lightbox)
+[![KPIs řídicího panelu](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-expanded.png#lightbox)
 
 Na řídicím panelu se zobrazují tři klíčové ukazatele výkonu pro upozornění vybraná na základě aktuálních filtrů zařízení a časového rozsahu:
 

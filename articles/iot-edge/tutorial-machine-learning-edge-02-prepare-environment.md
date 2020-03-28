@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: nastavení prostředí – Machine Learning v Azure IoT Edge'
-description: 'Kurz: Příprava prostředí pro vývoj a nasazení modulů pro strojové učení na hraničních zařízeních.'
+title: 'Kurz: Nastavení prostředí – machine learning na Azure IoT Edge'
+description: 'Kurz: Připravte své prostředí pro vývoj a nasazení modulů pro strojové učení na hraničních zařízeních.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,64 +9,64 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 42c776d4d6c3973e7c222c9c9adf3e5105f6c84f
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79296794"
 ---
-# <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: nastavení prostředí pro strojové učení na IoT Edge
+# <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: Nastavení prostředí pro strojové učení na IoT Edge
 
 > [!NOTE]
-> Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
+> Tento článek je součástí řady pro kurz o používání Azure Machine Learning na IoT Edge. Pokud jste k tomuto článku dorazili přímo, doporučujeme vám začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) v sérii pro dosažení nejlepších výsledků.
 
-Tento článek vám pomůže připravit vaše prostředí pro vývoj a nasazení. Nejdřív nastavte vývojový počítač pro všechny nástroje, které potřebujete. Pak vytvořte potřebné cloudové prostředky v Azure.
+Tento článek vám pomůže připravit prostředí pro vývoj a nasazení. Nejprve nastavte vývojový stroj se všemi potřebnými nástroji. Potom vytvořte potřebné cloudové prostředky v Azure.
 
-## <a name="set-up-the-development-vm"></a>Nastavení vývojového virtuálního počítače
+## <a name="set-up-the-development-vm"></a>Nastavení vývojového virtuálního mísu
 
-Tento krok obvykle provádí vývojář cloudu. Některý z těchto softwaru může být užitečný i pro odborníky na data.
+Tento krok obvykle provádí vývojář cloudu. Některé software může být také užitečné pro datové vědce.
 
-Vytvořili jsme PowerShellový skript, který vytvoří virtuální počítač Azure s řadou nezbytných součástí, které už jsou nakonfigurované. Virtuální počítač, který vytváříme, potřebuje mít možnost zpracovat [vnořenou virtualizaci](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization), což je důvod, proč jsme zvolili velikost [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) počítače.
+Vytvořili jsme skript PowerShellu, který vytvoří virtuální počítač Azure s mnoha požadavky, které jsou už nakonfigurované. Virtuální počítač, který vytvoříme, musí být schopen zpracovat [vnořenou virtualizaci](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization), a proto jsme zvolili [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) velikosti počítače.
 
-Vývojový virtuální počítač se nastaví pomocí:
+Vývoj virtuálního virtuálního montovna se nastaví s:
 
 * Windows 10
-* [Chocolatey](https://chocolatey.org/)
-* [Docker Desktop pro Windows](https://www.docker.com/products/docker-desktop)
+* [Čokoládový](https://chocolatey.org/)
+* [Desktop Dockeru pro Windows](https://www.docker.com/products/docker-desktop)
 * [Git pro Windows](https://gitforwindows.org/)
-* [Správce přihlašovacích údajů Git pro Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
+* [Správce přihlašovacích údajů Git u Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
 * [Sada .NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
-* [Visual Studio Code](https://code.visualstudio.com/)
+* [Kód visual studia](https://code.visualstudio.com/)
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0)
-* [Rozšíření VS Code](https://marketplace.visualstudio.com/search?target=VSCode)
-  * [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+* [Rozšíření kódu VS](https://marketplace.visualstudio.com/search?target=VSCode)
+  * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+  * [C #](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
   * [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
   * [PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
 
-Virtuální počítač vývojářů není nezbytně nutný – všechny vývojové nástroje je možné spustit na místním počítači. Důrazně však doporučujeme použít virtuální počítač k zajištění, aby se zajistilo pole pro hrací úrovni.
+Vývojářský virtuální počítač není nezbytně nutné – všechny vývojové nástroje lze spustit na místním počítači. Důrazně však doporučujeme použít virtuální hokvívač, abyste zajistili rovné podmínky.
 
 Vytvoření a konfigurace virtuálního počítače trvá přibližně 30 minut.
 
-1. Naklonujte nebo stáhněte [Machine Learning a IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) ukázkové úložiště do místního počítače.
+1. Klonujte nebo stáhněte ukázkové úložiště [Machine Learning a IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) do místního počítače.
 
-1. Otevřete PowerShell jako správce a přejděte do adresáře **\IoTEdgeAndMlSample\DevVM** , který se nachází v kořenovém adresáři, kam jste stáhli kód. V kořenovém adresáři pro váš zdroj budeme odkazovat jako na `srcdir`.
+1. Otevřete powershell jako správce a přejděte do adresáře **\IoTEdgeAndMlSample\DevVM** umístěného pod kořenovým adresářem, do kterého jste kód stáhli. Budeme odkazovat na kořenový adresář `srcdir`pro váš zdroj jako .
 
     ```powershell
     cd c:\srcdir\IoTEdgeAndMlSample\DevVM
     ```
 
-   Adresář DevVM obsahuje soubory potřebné k vytvoření virtuálního počítače Azure, který je vhodný pro dokončení tohoto kurzu.
+   Adresář DevVM obsahuje soubory potřebné k vytvoření virtuálního počítače Azure vhodného pro dokončení tohoto kurzu.
 
-1. Spusťte následující příkaz, který povolí spouštění skriptů. Po zobrazení výzvy vyberte možnost **Ano pro všechny** .
+1. Spusťte následující příkaz, který povolí provádění skriptů. Po zobrazení výzvy zvolte **Ano pro všechny.**
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
     ```
 
-1. Spusťte Create-AzureDevVM. ps1.
+1. Spusťte create-AzureDevVM.ps1.
 
     ```powershell
     .\Create-AzureDevVm.ps1
@@ -74,71 +74,71 @@ Vytvoření a konfigurace virtuálního počítače trvá přibližně 30 minut.
 
     Po zobrazení výzvy zadejte následující informace:
 
-    * **ID předplatného Azure**: ID vašeho předplatného, které najdete v [předplatných Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na portálu.
-    * **Název skupiny prostředků**: název nové nebo existující skupiny prostředků v Azure.
-    * **Umístění**: vyberte umístění Azure, ve kterém se virtuální počítač vytvoří. Například ' Západní USA 2 ' nebo ' Severní Evropa '. Další informace najdete v tématu věnovaném [umístěním Azure](https://azure.microsoft.com/global-infrastructure/locations/).
-    * **Username (uživatelské jméno**): zadejte si zapamatovatelné jméno pro účet správce virtuálního počítače.
-    * **Heslo**: nastavte heslo pro účet správce pro virtuální počítač.
+    * **ID předplatného Azure:** ID předplatného, které najdete v [předplatných Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na portálu.
+    * **Název skupiny prostředků:** Název nové nebo existující skupiny prostředků v Azure.
+    * **Umístění:** Zvolte umístění Azure, kde se vytvoří virtuální počítač. Například "Západní USA 2" nebo "Severní Evropa". Další informace najdete v [tématu umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).
+    * **Uživatelské jméno**: Zadejte zapamatovatelné jméno pro účet správce pro virtuální ho.
+    * **Heslo**: Nastavení hesla pro účet správce pro virtuální počítače.
 
-   Skript se spustí několik minut, protože provede následující kroky:
+   Skript se spouští několik minut při provádění následujících kroků:
 
-    1. Nainstaluje [Azure PowerShell AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0).
-    1. Vyzve vás, abyste se přihlásili k Azure.
-    1. Potvrdí informace pro vytvoření virtuálního počítače. Pokračujte stisknutím klávesy **y** nebo **ENTER** .
+    1. Nainstaluje [modul Azure PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0).
+    1. Zobrazí výzvu k přihlášení do Azure.
+    1. Potvrdí informace pro vytvoření virtuálního počítače. Pokračujte stisknutím **klávesy y** nebo **Enter.**
     1. Vytvoří skupinu prostředků, pokud neexistuje.
-    1. Nasadí virtuální počítač.
-    1. Povolí technologii Hyper-V na virtuálním počítači.
-    1. Nainstaluje software potřebný pro vývoj a klonování ukázkového úložiště.
+    1. Nasazuje virtuální počítač.
+    1. Povolí hyper-V na virtuálním počítači.
+    1. Nainstaluje software potřeba pro vývoj a klonovat ukázkové úložiště.
     1. Restartuje virtuální počítač.
     1. Vytvoří soubor RDP na ploše pro připojení k virtuálnímu počítači.
 
-   Pokud se zobrazí výzva k zadání názvu virtuálního počítače, který chcete restartovat, můžete zkopírovat jeho název z výstupu skriptu. Výstup taky zobrazuje cestu k souboru RDP pro připojení k virtuálnímu počítači.
+   Pokud se zobrazí výzva k restartování názvu virtuálního počítače, můžete zkopírovat jeho název z výstupu skriptu. Výstup také zobrazuje cestu k souboru RDP pro připojení k virtuálnímu virtuálnímu soudu.
 
-### <a name="set-auto-shutdown-schedule"></a>Nastavit plán automatického vypínání
+### <a name="set-auto-shutdown-schedule"></a>Nastavení plánu automatického vypínání
 
-Aby vám pomohla snižovat náklady, byl vytvořen vývojový virtuální počítač s plánem automatického vypnutí, který je nastaven na 1900 PST. Toto nastavení možná budete muset aktualizovat v závislosti na vašem umístění a plánu. Aktualizace plánu vypnutí:
+Abychom vám pomohli snížit náklady, vývojový virtuální počítače byl vytvořen s plánem automatického vypnutí, který je nastaven na 1900 PST. Toto nastavení může být nutné aktualizovat v závislosti na poloze a plánu. Aktualizace plánu vypnutí:
 
-1. V Azure Portal přejděte na virtuální počítač, který skript vytvořil.
+1. Na webu Azure Portal přejděte na virtuální počítač, který vytvořil skript.
 
-1. V nabídce v levém podokně v části **operace**vyberte **Automatické vypnutí**.
+1. V nabídce levého podokna vyberte v části **Operace** **možnost Automatické vypnutí**.
 
-1. Podle potřeby upravte **naplánované vypínání** a **časové pásmo** a vyberte **Uložit**.
+1. Podle potřeby upravte **plánované vypnutí** a **časové pásmo** a vyberte **Uložit**.
 
-## <a name="connect-to-the-development-vm"></a>Připojení k vývojovému virtuálnímu počítači
+## <a name="connect-to-the-development-vm"></a>Připojení k vývojovému virtuálnímu virtuálnímu montovně
 
-Teď, když jsme vytvořili virtuální počítač, potřebujeme dokončit instalaci softwaru potřebného k dokončení tohoto kurzu.
+Teď, když jsme vytvořili virtuální hod musíme dokončit instalaci softwaru potřebného k dokončení kurzu.
 
-1. Dvakrát klikněte na soubor RDP, který skript vytvořil na vašem počítači.
+1. Poklepejte na soubor RDP, který skript vytvořil na ploše.
 
-1. Zobrazí se dialogové okno oznamující, že vydavatel vzdáleného připojení není znám. To je přijatelné, takže vyberte **připojit**.
+1. Zobrazí se dialogové okno s prohlášením, že vydavatel vzdáleného připojení není znám. To je přijatelné, proto vyberte **Připojit**.
 
-1. Zadejte heslo správce, které jste zadali pro vytvoření virtuálního počítače, a klikněte na **OK**.
+1. Zadejte heslo správce, které jste zadali k vytvoření virtuálního počítače a klepněte na tlačítko **OK**.
 
-1. Zobrazí se výzva, abyste přijali certifikát pro virtuální počítač. Vyberte **Ano**.
+1. Budete vyzváni k přijetí certifikátu pro virtuální hod. Vyberte **ano**.
 
-## <a name="install-visual-studio-code-extensions"></a>Instalace rozšíření Visual Studio Code
+## <a name="install-visual-studio-code-extensions"></a>Instalace rozšíření kódu sady Visual Studio
 
-Teď, když jste se připojili k vývojovému počítači, přidejte k Visual Studio Code několik užitečných rozšíření, která usnadňují vývojové prostředí.
+Teď, když jste se připojili k vývojovému počítači, přidejte do kódu sady Visual Studio několik užitečných rozšíření, abyste usnadnili vývojové prostředí.
 
-1. Připojte se k vývojovému virtuálnímu počítači, otevřete okno PowerShellu a přejděte do adresáře **C:\source\IoTEdgeAndMlSample\DevVM** . Tento adresář byl vytvořen skriptem, který vytvořil virtuální počítač.
+1. Připojte se k vývojovému virtuálnímu virtuálnímu mandu, otevřete okno Prostředí PowerShell a přejděte do adresáře **C:\source\IoTEdgeAndMlSample\DevVM.** Tento adresář byl vytvořen skriptem, který vytvořil virtuální ho.
 
     ```powershell
     cd C:\source\IoTEdgeAndMlSample\DevVM
     ```
 
-1. Spusťte následující příkaz, který povolí spouštění skriptů. Po zobrazení výzvy vyberte možnost **Ano pro všechny** .
+1. Spusťte následující příkaz, který povolí provádění skriptů. Po zobrazení výzvy zvolte **Ano pro všechny.**
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
     ```
 
-1. Spusťte skript rozšíření Visual Studio Code.
+1. Spusťte skript rozšíření kódu sady Visual Studio.
 
     ```powershell
     .\Enable-CodeExtensions.ps1
     ```
 
-1. Skript se spustí během několika minut instalace rozšíření VS Code Extensions:
+1. Skript bude spuštěn po dobu několika minut instalace rozšíření kódu VS:
 
     * Azure IoT Tools
     * Python
@@ -146,80 +146,80 @@ Teď, když jste se připojili k vývojovému počítači, přidejte k Visual St
     * Docker
     * PowerShell
 
-## <a name="set-up-iot-hub-and-storage"></a>Nastavení IoT Hub a úložiště
+## <a name="set-up-iot-hub-and-storage"></a>Nastavení služby IoT Hub a úložiště
 
 Tyto kroky obvykle provádí vývojář cloudu.
 
-Azure IoT Hub je srdcem jakékoli aplikace IoT, protože zajišťuje zabezpečenou komunikaci mezi zařízeními IoT a cloudem. Je hlavním koordinačním bodem pro provoz řešení IoT Edge Machine Learning.
+Azure IoT Hub je srdcem každé aplikace IoT, protože zpracovává zabezpečenou komunikaci mezi zařízeními IoT a cloudem. Je hlavním koordinačním bodem pro provoz řešení strojového učení IoT Edge.
 
-* IoT Hub používá trasy k přímému směrování příchozích dat ze zařízení IoT do jiných služeb pro příjem dat. Budeme využívat výhod IoT Hubch tras pro posílání dat zařízení do Azure Storage. V Azure Storage se data zařízení spotřebují Azure Machine Learning ke školení našeho zbývajícího RULho života.
+* IoT Hub používá trasy k přesměrování příchozích dat ze zařízení IoT do jiných navazujících služeb. Budeme využívat trasy služby IoT Hub k odesílání dat zařízení do Azure Storage. Ve službě Azure Storage se data zařízení spotřebovávají pomocí Azure Machine Learning k trénování našezbývající životnosti (RUL) třídění.
 
-* Později v tomto kurzu použijeme IoT Hub ke konfiguraci a správě našeho Azure IoT Edge zařízení.
+* Později v kurzu použijeme Službu IoT Hub ke konfiguraci a správě našeho zařízení Azure IoT Edge.
 
-V této části použijete skript k vytvoření služby Azure IoT Hub a účtu Azure Storage. Pak v Azure Portal nakonfigurujete trasu, která předává data přijatá centrem do kontejneru Azure Storage. Dokončení těchto kroků trvá přibližně 10 minut.
+V této části použijete skript k vytvoření centra Azure IoT hub a účtu úložiště Azure. Pak na webu Azure Portal nakonfigurujete trasu, která předává data přijatá centrem do kontejneru úložiště Azure. Tyto kroky trvat asi 10 minut.
 
-1. Připojte se k vývojovému virtuálnímu počítači, otevřete okno PowerShellu a přejděte do adresáře **IoTHub** .
+1. Připojte se k vývojovému virtuálnímu virtuálnímu provozu, otevřete okno PowerShellu a přejděte do adresáře **IoTHub.**
 
     ```powershell
     cd C:\source\IoTEdgeAndMlSample\IoTHub
     ```
 
-1. Spusťte skript pro vytváření. Pro ID předplatného, umístění a skupinu prostředků použijte stejné hodnoty jako při vytváření vývojového virtuálního počítače.
+1. Spusťte skript vytvoření. Použijte stejné hodnoty pro ID předplatného, umístění a skupinu prostředků, jako jste udělali při vytváření vývojového virtuálního mísy.
 
     ```powershell
     .\New-HubAndStorage.ps1 -SubscriptionId <subscription id> -Location <location> -ResourceGroupName <resource group>
     ```
 
     * Budete vyzváni k přihlášení do Azure.
-    * Skript potvrdí informace pro vytvoření vašeho centra a účtu úložiště. Pokračujte stisknutím klávesy **y** nebo **ENTER** .
+    * Skript potvrzuje informace pro vytvoření účtu Hub a storage. Pokračujte stisknutím **klávesy y** nebo **Enter.**
 
-Spuštění skriptu trvá přibližně dvě minuty. Po dokončení skript vytvoří výstup názvu služby IoT Hub a účtu úložiště.
+Skript poběží přibližně dvě minuty. Po dokončení skript uvede název služby IoT hub a účet úložiště.
 
-## <a name="review-route-to-storage-in-iot-hub"></a>Kontrola trasy do úložiště v IoT Hub
+## <a name="review-route-to-storage-in-iot-hub"></a>Kontrola trasy do úložiště v centru IoT Hub
 
-V rámci vytváření služby IoT Hub vytvořil skript, který jsme spustili v předchozí části, také vlastní koncový bod a trasu. Trasy IoT Hub se skládají z výrazu dotazu a koncového bodu. Pokud zpráva odpovídá výrazu, data se odesílají podél trasy do přidruženého koncového bodu. Koncové body můžou být Event Hubs, Service Bus fronty a témata. V tomto případě je koncový bod kontejnerem objektů BLOB v účtu úložiště. Pojďme použít Azure Portal ke kontrole trasy vytvořené pomocí našeho skriptu.
+V rámci vytváření služby IoT hub skript, který jsme spustili v předchozí části také vytvořil vlastní koncový bod a trasu. Trasy ioT Hubu se skládají z výrazu dotazu a koncového bodu. Pokud zpráva odpovídá výrazu, data jsou odeslána podél trasy do přidruženého koncového bodu. Koncové body mohou být centra událostí, fronty služby Service Bus a témata. V tomto případě koncový bod je kontejner objektů blob v účtu úložiště. Podívejme se na portál Azure ke kontrole trasy vytvořené naším skriptem.
 
-1. Otevřete [Azure Portal](https://portal.azure.com) a v tomto kurzu vyhledejte skupinu prostředků, kterou používáte.
+1. Otevřete [portál Azure](https://portal.azure.com) a přejděte do skupiny prostředků, kterou používáte pro tento kurz.
 
-1. V seznamu prostředků vyberte IoT Hub vytvoření skriptu. Bude mít název končící náhodnými znaky, například `IotEdgeAndMlHub-jrujej6de6i7w`.
+1. V seznamu prostředků vyberte službu IoT Hub, kterou vytvořil skript. Bude mít název končící náhodnými `IotEdgeAndMlHub-jrujej6de6i7w`znaky, například .
 
-1. V nabídce v levém podokně v části **zasílání zpráv**vyberte **směrování zpráv**.
+1. V nabídce levého podokna vyberte v části **Zasílání zpráv** **položku Směrování zpráv**.
 
-1. Na stránce **směrování zpráv** vyberte kartu **vlastní koncové body** .
+1. Na stránce **Směrování zpráv** vyberte kartu Vlastní **koncové body.**
 
-1. Rozbalte část **úložiště** :
+1. Rozbalte část **Úložiště:**
 
-   ![Ověřte, že turbofanDeviceStorage je v seznamu vlastních koncových bodů.](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
+   ![Ověřte, zda je turbofanDeviceStorage ve vlastním seznamu koncových bodů](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-   V seznamu vlastní koncové body se zobrazí **turbofanDeviceStorage** . Všimněte si následujících vlastností tohoto koncového bodu:
+   Vidíme **turbofanDeviceStorage** je ve vlastní seznam koncových bodů. Všimněte si následujících charakteristik tohoto koncového bodu:
 
-   * Odkazuje na kontejner úložiště objektů blob, který jste vytvořili s názvem `devicedata`, jak je uvedeno v **názvu kontejneru**.
-   * **Formát názvu souboru** má jako poslední prvek v názvu oddíl. Pro operace se soubory, které provedeme v Azure Notebooks později v tomto kurzu, zjistíme, že tento formát je pohodlnější.
+   * Odkazuje na kontejner úložiště objektů blob, který jste vytvořili, pojmenovaný `devicedata` podle názvu **kontejneru**.
+   * Jeho **Filename formát** má oddíl jako poslední prvek v názvu. Zjistíme, že tento formát je pohodlnější pro operace se soubory budeme dělat s Poznámkovými bloky Azure později v kurzu.
    * Jeho **stav** by měl být v pořádku.
 
-1. Vyberte kartu **trasy** .
+1. Vyberte kartu **Trasy**.
 
 1. Vyberte trasu s názvem **turbofanDeviceDataToStorage**.
 
-1. Na stránce **Podrobnosti o trasách** si všimněte, že koncovým bodem trasy je koncový bod **turbofanDeviceStorage** .
+1. Na stránce **Podrobnosti trasy** všimněte si, že koncový bod trasy je **turbofanDeviceStorage** koncový bod.
 
-   ![Přečtěte si podrobnosti o trase turbofanDeviceDataToStorage.](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
+   ![Zkontrolujte podrobnosti o trase turbodmychadlaDeviceDataToStorage](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
 
-1. Podívejte se na **dotaz směrování**, který je nastaven na **hodnotu true**. Toto nastavení znamená, že všechny zprávy telemetrie zařízení budou odpovídat této trase; a proto se všechny zprávy odešlou do koncového bodu **turbofanDeviceStorage** .
+1. Podívejte se na **směrovací dotaz**, který je nastaven na **hodnotu true**. Toto nastavení znamená, že všechny telemetrické zprávy zařízení budou odpovídat této trase; a proto budou všechny zprávy odeslány do koncového bodu **turbofanDeviceStorage.**
 
-1. Vzhledem k tomu, že se neudělaly žádné úpravy, stačí tuto stránku zavřít.
+1. Vzhledem k tomu, že nebyly provedeny žádné úpravy, stačí zavřít tuto stránku.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jsme vytvořili IoT Hub a nakonfigurovali trasu k účtu Azure Storage. V dalším kroku pošleme data ze sady simulovaných zařízení prostřednictvím IoT Hub do účtu úložiště. Později v tomto kurzu až nakonfigurujeme naše IoT Edge zařízení a moduly, budeme znovu navštěvovat trasy a v dotazu směrování budete hledat trochu víc.
+V tomto článku jsme vytvořili službu IoT Hub a nakonfigurovali trasu k účtu úložiště Azure. Dále budeme odesílat data ze sady simulovaných zařízení prostřednictvím služby IoT Hub do účtu úložiště. Později v kurzu, poté, co jsme nakonfigurovali naše zařízení AoT Edge zařízení a moduly, budeme znovu trasy a podívat se trochu více na směrovací dotaz.
 
-Další informace o krocích popsaných v této části Machine Learning v IoT Edge kurzu najdete v tématu:
+Další informace o krocích, které jsou popsány v této části kurzu Strojové učení na IoT Edge, najdete v tématu:
 
 * [Základy Azure IoT](https://docs.microsoft.com/azure/iot-fundamentals/)
-* [Konfigurace směrování zpráv pomocí IoT Hub](../iot-hub/tutorial-routing.md)
-* [Vytvoření centra IoT pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md)
+* [Konfigurace směrování zpráv pomocí služby IoT Hub](../iot-hub/tutorial-routing.md)
+* [Vytvoření centra IoT pomocí portálu Azure](../iot-hub/iot-hub-create-through-portal.md)
 
-Pokračujte dalším článkem a vytvořte simulované zařízení, které chcete monitorovat.
+Pokračujte k dalšímu článku a vytvořte simulované zařízení ke sledování.
 
 > [!div class="nextstepaction"]
 > [Generování dat zařízení](tutorial-machine-learning-edge-03-generate-data.md)

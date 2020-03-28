@@ -1,6 +1,6 @@
 ---
-title: Ukázky Azure Storage pomocí Java | Microsoft Docs
-description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Seznamte se s úvodními ukázkami objektů blob, front, tabulek a souborů pomocí klientských knihoven pro úložiště Java.
+title: Ukázky azure storage pomocí Javy | Dokumenty společnosti Microsoft
+description: Zobrazení, stažení a spuštění ukázkového kódu a aplikací pro Azure Storage. Pomocí klientských knihoven úložiště Java můžete zjistit, jak začít ukázky objektů BLOB, front, tabulek a souborů.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/13/2020
@@ -8,45 +8,45 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: 46f19748ea56777bd1c23b3cf066fa28787d8882
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77486096"
 ---
-# <a name="azure-storage-samples-using-v12-java-client-libraries"></a>Azure Storage ukázky pomocí klientských knihoven Java V12
+# <a name="azure-storage-samples-using-v12-java-client-libraries"></a>Ukázky azure storage pomocí klientských knihoven v12 Java
 
-Následující tabulka poskytuje přehled našich ukázek úložiště a scénářů popsaných v jednotlivých ukázkách. Kliknutím na odkazy zobrazíte odpovídající vzorový kód v GitHubu.
+Následující tabulka obsahuje přehled úložiště našich ukázek a scénáře uvedené v každé ukázce. Kliknutím na odkazy zobrazíte odpovídající ukázkový kód na GitHubu.
 
 > [!NOTE]
-> Tyto ukázky používají nejnovější Azure Storage knihovnu Java V12. Starší verzi kódu V8 naleznete v tématu [Začínáme with Azure Blob Service v Java](https://github.com/Azure-Samples/storage-blob-java-getting-started) v úložišti GitHub.
+> Tyto ukázky používají nejnovější knihovnu Azure Storage Java v12. Starší verze kódu v8 najdete [v tématu Začínáme se službou Azure Blob Service v Jazyce Java](https://github.com/Azure-Samples/storage-blob-java-getting-started) v úložišti GitHub.
 
-## <a name="blob-samples"></a>Ukázky objektů BLOB
+## <a name="blob-samples"></a>Vzorky objektů blob
 
 ### <a name="authentication"></a>Ověřování
 
 :::row:::
    :::column span="":::
-      [Ověřování pomocí přihlašovacích údajů sdíleného klíče](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L38)
+      [Ověření pomocí pověření sdíleného klíče](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L38)
    :::column-end:::
    :::column span="":::
-      [Ověřování pomocí identity Azure](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/AzureIdentityExample.java#L10)
+      [Ověření pomocí Azure Identity](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/AzureIdentityExample.java#L10)
    :::column-end:::
 :::row-end:::
 
-### <a name="blob-service"></a>Blob Service
+### <a name="blob-service"></a>Blob service
 
 :::row:::
    :::column span="":::
-      [Vytvoření klienta služby BLOB Service](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L49)
+      [Vytvoření klienta služby objektu blob](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L49)
    :::column-end:::
    :::column span="":::
-      [Seznam kontejnerů](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/ListContainersExample.java#L10)
+      [Výpis kontejnerů](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/ListContainersExample.java#L10)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Odstranit kontejnery](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/ListContainersExample.java#L52)
+      [Odstraňování kontejnerů](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/ListContainersExample.java#L52)
    :::column-end:::
 :::row-end:::
 
@@ -54,7 +54,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 :::row:::
    :::column span="":::
-      [Vytvoření klienta Batch v objektu BLOB](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L41)
+      [Vytvoření klienta dávky objektu blob](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L41)
    :::column-end:::
    :::column span="":::
       [Hromadné odstranění objektů BLOB](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L45)
@@ -78,29 +78,29 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Výpis objektů BLOB](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L112)
+      [Výpis objektů blob](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L112)
    :::column-end:::
    :::column span="":::
       [Odstranění kontejneru](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L123)
    :::column-end:::
 :::row-end:::
 
-### <a name="blob"></a>Blob
+### <a name="blob"></a>Objekt blob
 
 :::row:::
    :::column span="":::
-      [Nahrát objekt BLOB](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L79)
+      [Nahrání objektu blob](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L79)
    :::column-end:::
    :::column span="":::
-      [Stažení objektu BLOB](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L86)
+      [Stažení objektu blob](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L86)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Odstranění objektu BLOB](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L118)
+      [Odstranění objektu blob](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L118)
    :::column-end:::
    :::column span="":::
-      [Nahrání objektu BLOB z velkého souboru](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L95)
+      [Nahrání objektu blob z velkého souboru](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L95)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -109,16 +109,16 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>Odstraňování potíží
+### <a name="troubleshooting"></a>Řešení potíží
 :::row:::
    :::column span="2":::
       [Aktivace obnovitelné chyby pomocí klienta kontejneru](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/StorageErrorHandlingExample.java#L11)
    :::column-end:::
 :::row-end:::
 
-## <a name="data-lake-storage-gen2-samples"></a>Ukázky Data Lake Storage Gen2
+## <a name="data-lake-storage-gen2-samples"></a>Vzorky Data Lake Storage Gen2
 
-### <a name="data-lake-service"></a>Služba Data Lake
+### <a name="data-lake-service"></a>Služba Datového jezera
 :::row:::
    :::column span="":::
       [Vytvoření klienta služby Data Lake](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L48)
@@ -155,7 +155,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Seznam systémů souborů v účtu služby Azure Storage](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/ListFileSystemsExample.java#L10)
+      [Seznam systémů souborů v účtu úložiště Azure](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/ListFileSystemsExample.java#L10)
    :::column-end:::
 :::row-end:::
 
@@ -163,7 +163,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 :::row:::
    :::column span="":::
-      [Vytvoření adresářového klienta](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L31)
+      [Vytvoření klienta adresáře](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L31)
    :::column-end:::
    :::column span="":::
       [Vytvoření nadřazeného adresáře](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L37)
@@ -191,7 +191,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
    :::column-end:::
 :::row-end:::
 
-### <a name="file"></a>Soubor
+### <a name="file"></a>File
 
 :::row:::
    :::column span="":::
@@ -203,18 +203,18 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Nastavení řízení přístupu pro soubor](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L82)
+      [Nastavení ovládacích prvků přístupu k souboru](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L82)
    :::column-end:::
    :::column span="":::
-      [Získat řízení přístupu pro soubor](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
+      [Získání ovládacích prvků přístupu k souboru](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Vytvoření souboru pomocí Data Lake klienta souborů](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L67)
+      [Vytvoření souboru pomocí klienta souboru Data Lake](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L67)
    :::column-end:::
    :::column span="":::
-      [Připojit data k souboru](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L85)
+      [Připojení dat k souboru](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L85)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -229,7 +229,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 :::row:::
    :::column span="2":::
-      [Ověřování pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L27)
+      [Ověření pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L27)
    :::column-end:::
 :::row-end:::
 
@@ -245,10 +245,10 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Vypsat sdílené složky](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
+      [Seznam sdílených složek](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
    :::column-end:::
    :::column span="":::
-      [Odstranit sdílené složky](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
+      [Odstranění sdílených složek](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
    :::column-end:::
 :::row-end:::
 
@@ -272,15 +272,15 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Získá vlastnosti sdílené složky.](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L72)
+      [Získání vlastností sdílené položky](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L72)
    :::column-end:::
    :::column span="":::
-      [Získat kořenový adresář a seznam adresářů](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L100)
+      [Získání kořenového adresáře a seznamových adresářů](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L100)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Odstraní sdílenou složku.](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L151)
+      [Odstranění sdílené složky](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L151)
    :::column-end:::
 :::row-end:::
 
@@ -299,19 +299,19 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
       [Vytvoření souboru v podřízeném adresáři](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L50)
    :::column-end:::
    :::column span="":::
-      [Výpis adresářů a souborů](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L66)
+      [Seznam adresářů a souborů](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L66)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Odstraní podřízenou složku.](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L90)
+      [Odstranění podřízené složky](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L90)
    :::column-end:::
    :::column span="":::
       [Odstranění nadřazené složky](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L97)
    :::column-end:::
 :::row-end:::
 
-### <a name="file"></a>Soubor
+### <a name="file"></a>File
 
 :::row:::
    :::column span="":::
@@ -326,7 +326,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
       [Stažení souboru](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L100)
    :::column-end:::
    :::column span="":::
-      [Získat vlastnosti souboru](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L120)
+      [Získání vlastností souboru](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L120)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -336,29 +336,29 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 :::row-end:::
 
 
-## <a name="queue-samples"></a>Ukázky front
+## <a name="queue-samples"></a>Ukázky fronty
 
 ### <a name="authentication"></a>Ověřování
 
 :::row:::
    :::column span="2":::
-      [Ověřování pomocí tokenu SAS](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L17)
+      [Ověření pomocí tokenu SAS](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L17)
    :::column-end:::
 :::row-end:::
 
-### <a name="queue-service"></a>Služba front
+### <a name="queue-service"></a>Služba fronty
 
 :::row:::
    :::column span="":::
       [Vytvoření fronty](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L20)
    :::column-end:::
    :::column span="":::
-      [Výpis front](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L22)
+      [Seznam front](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L22)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Odstranit fronty](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L27)
+      [Odstranění front](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L27)
    :::column-end:::
 :::row-end:::
 
@@ -377,15 +377,15 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 :::row:::
    :::column span="":::
-      [Získání počtu zpráv](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L34)
+      [Počet zpráv](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L34)
    :::column-end:::
    :::column span="":::
-      [Prohlížet zprávy](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L37)
+      [Náhled na zprávy](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L37)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Přijímat zprávy](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L41)
+      [Příjem zpráv](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L41)
    :::column-end:::
    :::column span="":::
       [Aktualizace zprávy](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L45)
@@ -393,10 +393,10 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Odstraní první zprávu.](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L50)
+      [Odstranění první zprávy](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L50)
    :::column-end:::
    :::column span="":::
-      [Vymazat všechny zprávy](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L59)
+      [Vymazání všech zpráv](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L59)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -405,11 +405,11 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
    :::column-end:::
 :::row-end:::
 
-## <a name="table-samples-v11"></a>Ukázky tabulek (V11)
+## <a name="table-samples-v11"></a>Ukázky tabulky (v11)
 
 :::row:::
    :::column span="":::
-      [Vytvořit tabulku](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L50)
+      [Vytvoření tabulky](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L50)
    :::column-end:::
    :::column span="":::
       [Odstranit entitu/tabulku](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L109)
@@ -417,7 +417,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Vložit/sloučit/nahradit entitu](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L195)
+      [Entita Vložení/sloučení/nahrazení](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L195)
    :::column-end:::
    :::column span="":::
       [Entity dotazu](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L234)
@@ -425,7 +425,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Tabulky dotazů](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L262)
+      [Dotazy na tabulky](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L262)
    :::column-end:::
    :::column span="":::
       [Seznam ACL/vlastnosti tabulky](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java#L49)
@@ -437,31 +437,31 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-code-sample-libraries"></a>Knihovny ukázek kódu Azure
+## <a name="azure-code-sample-libraries"></a>Ukázkové knihovny kódu Azure
 
-Pokud chcete zobrazit kompletní ukázkové knihovny Java, přečtěte si:
+Chcete-li zobrazit kompletní ukázkové knihovny Javy, přejděte na:
 
-* [Ukázky kódu Azure Blob](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
-* [Ukázky kódu Azure Data Lake](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake)
+* [Ukázky kódu objektu blob Azure](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+* [Ukázky kódu datového jezera Azure](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake)
 * [Ukázky kódu souborů Azure](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share)
 * [Ukázky kódu fronty Azure](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)
 
-Úložiště GitHubu můžete procházet a klonovat pro každou knihovnu.
+Můžete procházet a klonovat úložiště GitHub pro každou knihovnu.
 
-## <a name="getting-started-guides"></a>Úvodní příručky
+## <a name="getting-started-guides"></a>Příručky Začínáme
 
-Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure Storage, přečtěte si následující příručky.
+Pokud hledáte pokyny k instalaci a zahájení instalace s klientskými knihovnami úložiště Azure, podívejte se na následující příručky.
 
-* [Začínáme se službou Azure Blob Service v jazyce Java](../blobs/storage-quickstart-blobs-java.md)
-* [Začínáme se službou Azure Queue v jazyce Java](../queues/storage-quickstart-queues-java.md)
+* [Začínáme se službou Azure Blob Service v Javě](../blobs/storage-quickstart-blobs-java.md)
+* [Začínáme se službou Azure Queue Service v Javě](../queues/storage-quickstart-queues-java.md)
 * [Začínáme se službou Azure Table Storage v Javě](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Začínáme se službou Azure File Service v jazyce Java](../files/storage-java-how-to-use-file-storage.md)
+* [Začínáme se službou Azure File Service v Javě](../files/storage-java-how-to-use-file-storage.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o ukázkách pro jiné jazyky:
+Informace o vzorcích pro jiné jazyky:
 
-* .NET: [Azure Storage ukázky pomocí .NET](storage-samples-dotnet.md)
-* Python: [Azure Storage ukázky pomocí Pythonu](storage-samples-python.md)
-* JavaScript/Node. js: [Azure Storage ukázky pomocí JavaScriptu](storage-samples-javascript.md)
-* Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)
+* .NET: [Ukázky úložiště Azure pomocí rozhraní .NET](storage-samples-dotnet.md)
+* Python: [Ukázky úložiště Azure pomocí Pythonu](storage-samples-python.md)
+* JavaScript/Node.js: [Ukázky úložiště Azure pomocí JavaScriptu](storage-samples-javascript.md)
+* Všechny ostatní jazyky: [Ukázky azure storage](storage-samples.md)

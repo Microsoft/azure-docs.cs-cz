@@ -1,21 +1,21 @@
 ---
-title: Kurz – konfigurace mezipamětí v mezipaměti Azure pro Redis pomocí Ansible
-description: Naučte se používat Ansible k vytváření, škálování, restartování a přidání pravidla brány firewall do Azure cache pro Redis.
-keywords: Ansible, Azure, DevOps, bash, PlayBook, cache, Redis
+title: Kurz – konfigurace mezipamětí v mezipaměti Azure pro Redis pomocí ansible
+description: Naučte se používat Ansible k vytvoření, škálování, restartování a přidání pravidla brány firewall do Azure Cache for Redis.
+keywords: ansible, azurové, devops, bash, playbook, cache, redis
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2ef36ee9e3601d77bfa114b903f6a75b5874b158
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156506"
 ---
-# <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Kurz: Konfigurace mezipamětí v mezipaměti Azure pro Redis pomocí Ansible
+# <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Kurz: Konfigurace mezipamětí v Azure Cache pro Redis pomocí Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure cache for Redis](/azure/azure-cache-for-redis/) je open source kompatibilní služba, která umožňuje vytvářet aplikace s rychlým přístupem k datům. 
+[Azure Cache for Redis](/azure/azure-cache-for-redis/) je kompatibilní služba s otevřeným zdrojovým kódem, která umožňuje vytvářet responzivní aplikace tím, že poskytuje rychlý přístup k datům. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "74156506"
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
 
-Vytvořte službu Azure cache pro Redis v rámci nové skupiny prostředků.
+Vytvořte mezipaměť Azure pro Redis v rámci nové skupiny prostředků.
 
 ```yml
   - name: Create resource group
@@ -51,7 +51,7 @@ Vytvořte službu Azure cache pro Redis v rámci nové skupiny prostředků.
         size: C1 
 ```
 
-Zřízení mezipaměti může trvat několik minut. Následující kód oznamuje Ansible čekání na dokončení operace:
+Zřízení mezipaměti může trvat několik minut. Následující kód říká Ansible čekat na dokončení operace:
 
 ```yml
   - name: Wait for Redis provisioning to complete
@@ -64,7 +64,7 @@ Zřízení mezipaměti může trvat několik minut. Následující kód oznamuje
     delay: 60
 ```
 
-Během procesu zřizování s délkou se zobrazí několik zpráv "Chyba". Tyto zprávy lze bezpečně ignorovat. Důležitá zpráva je poslední zpráva. V následujícím příkladu je k dispozici mnoho chybových zpráv až do závěrečné zprávy ("OK").
+Během zdlouhavého procesu zřizování se zobrazí několik "chybových" zpráv. Tyto zprávy lze bezpečně ignorovat. Důležitou zprávou je poslední zpráva. V následujícím příkladu existuje mnoho chybových zpráv až do konečné zprávy ("ok").
 
 ```Output
 FAILED - RETRYING: Get facts (100 retries left).
@@ -82,9 +82,9 @@ ok: [localhost]
 
 ## <a name="scale-the-cache"></a>Škálování mezipaměti
 
-Mezipaměť Azure pro Redis má různé nabídky mezipaměti v závislosti na potřebách vaší aplikace. Tyto možnosti mezipaměti poskytují flexibilitu při výběru velikosti a funkcí mezipaměti. Pokud se vaše požadavky na aplikaci po vytvoření mezipaměti změní, můžete mezipaměť škálovat podle potřeby. Další informace o škálování najdete v tématu [Jak škálovat Azure cache pro Redis](/azure/azure-cache-for-redis/cache-how-to-scale).
+Azure Cache for Redis má různé nabídky mezipaměti v závislosti na potřebách vaší aplikace. Tyto možnosti mezipaměti poskytují flexibilitu při výběru velikosti mezipaměti a funkcí. Pokud se požadavky na aplikaci po vytvoření mezipaměti změní, můžete ji podle potřeby škálovat. Další informace o škálování najdete v tématu [Jak škálovat mezipaměť Azure pro Redis](/azure/azure-cache-for-redis/cache-how-to-scale).
 
-Následující vzorový kód škáluje mezipaměť na **Standard**:
+Následující ukázkový kód škáluje mezipaměť na **standardní**:
 
 ```yml
 - name: Scale up Azure Cache for Redis
@@ -96,7 +96,7 @@ Následující vzorový kód škáluje mezipaměť na **Standard**:
         size: C1
 ```
 
-Škálování mezipaměti může trvat několik minut. Následující kód oznamuje Ansible čekání na dokončení operace:
+Škálování mezipaměti může trvat několik minut. Následující kód říká Ansible čekat na dokončení operace:
 
 ```yml
   - name: Wait for Redis scaling up to complete
@@ -109,7 +109,7 @@ Následující vzorový kód škáluje mezipaměť na **Standard**:
     delay: 60
 ```
 
-Podobně jako u úlohy pro zřízení mezipaměti Azure pro Redis je výstup podobně jako u následující zprávy normální:
+Podobně jako úkol zřídit Azure Cache pro Redis, výstup jako následující zpráva je normální:
 
 ```Ouput
 **FAILED - RETRYING: Get facts (100 retries left)** is normal.
@@ -142,7 +142,7 @@ Následující kód přidá do mezipaměti pravidlo brány firewall:
       end_ip_address: 168.1.1.4
 ```
 
-## <a name="delete-the-cache"></a>Odstraní mezipaměť.
+## <a name="delete-the-cache"></a>Odstranění mezipaměti
 
 Následující kód odstraní mezipaměť:
 
@@ -154,11 +154,11 @@ Následující kód odstraní mezipaměť:
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Získat ukázkovou PlayBook
+## <a name="get-the-sample-playbook"></a>Získejte ukázkový playbook
 
-Existují dva způsoby, jak získat úplnou ukázkovou PlayBook:
-- [Stáhněte si PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) a uložte ho do `rediscache.yml`.
-- Vytvořte nový soubor s názvem `rediscache.yml` a zkopírujte do něj následující obsah:
+Existují dva způsoby, jak získat kompletní ukázkový playbook:
+- [Stáhněte si playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) `rediscache.yml`a uložte jej do .
+- Vytvořte nový `rediscache.yml` soubor s názvem a zkopírujte do něj následující obsah:
 
 ```yml
 - name: Manage Azure Cache for Redis
@@ -234,19 +234,19 @@ Existují dva způsoby, jak získat úplnou ukázkovou PlayBook:
       state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>Spuštění ukázkové PlayBook
+## <a name="run-the-sample-playbook"></a>Spuštění ukázkového playbooku
 
-V této části spustíte PlayBook k otestování různých funkcí, které jsou uvedené v tomto článku.
+V této části spusťte playbook a otestujte různé funkce uvedené v tomto článku.
 
-V části `vars` nahraďte zástupný text `{{ resource_group_name }}` názvem vaší skupiny prostředků.
+V `vars` části nahraďte `{{ resource_group_name }}` zástupný symbol názvem skupiny prostředků.
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook rediscache.yml
 ```
 
-Výstup bude vypadat podobně jako u následujících výsledků:
+Výstup vypadá podobně jako následující výsledky:
 
 ```Output
 TASK [create resource group] 
@@ -322,9 +322,9 @@ Tuesday 12 March 2019  16:44:14 +0800 (0:00:06.217)       0:23:08.626
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku. 
+Pokud již není potřeba, odstraňte prostředky vytvořené v tomto článku. 
 
-Následující kód uložte jako `cleanup.yml`:
+Uložte následující `cleanup.yml`kód jako :
 
 ```yml
 - hosts: localhost
@@ -337,9 +337,9 @@ Následující kód uložte jako `cleanup.yml`:
         state: absent
 ```
 
-V části `vars` nahraďte zástupný text `{{ resource_group_name }}` názvem vaší skupiny prostředků.
+V `vars` části nahraďte `{{ resource_group_name }}` zástupný symbol názvem skupiny prostředků.
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook cleanup.yml

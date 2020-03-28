@@ -1,6 +1,6 @@
 ---
-title: Kurz pro připojení, konfiguraci a aktivaci zařízení Azure Data Box Edge v Azure Portal | Microsoft Docs
-description: Kurz nasazení Data Box Edge vás provede pokyny k připojení, nastavení a aktivaci fyzického zařízení.
+title: Kurz pro připojení, konfiguraci, aktivaci zařízení Azure Data Box Edge na webu Azure Portal | Dokumenty společnosti Microsoft
+description: Kurz nasazení Data Box Edge vás instruuje k připojení, nastavení a aktivaci fyzického zařízení.
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,17 +10,17 @@ ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
 ms.openlocfilehash: 144c59c8bc24e8e10584702ec6cd48f7aa8c15c1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239053"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Kurz: připojení, nastavení a aktivace Azure Data Box Edge 
+# <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Kurz: Připojení, nastavení a aktivace Azure Data Box Edge 
 
-V tomto kurzu se dozvíte, jak se můžete připojit k zařízení Azure Data Box Edge pomocí místního webového uživatelského rozhraní, nastavit a aktivovat.
+Tento kurz popisuje, jak se můžete připojit, nastavit a aktivovat zařízení Azure Data Box Edge pomocí místního webového uživatelského rozhraní.
 
-Dokončení procesu instalace a aktivace může trvat přibližně 20 minut.
+Proces instalace a aktivace může trvat přibližně 20 minut.
 
 V tomto kurzu se naučíte:
 
@@ -30,125 +30,125 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před konfigurací a nastavením Data Box Edge zařízení se ujistěte, že:
+Než zařízení Data Box Edge nakonfigurujete a nastavíte, ujistěte se, že:
 
-* Nainstalovali jste fyzické zařízení, jak je podrobně popsáno v části [Install data box Edge](data-box-edge-deploy-install.md).
-* Máte aktivační klíč ze služby Data Box Edge, kterou jste vytvořili pro správu Data Box Edge zařízení. Další informace najdete na webu [Příprava na nasazení Azure Data box Edge](data-box-edge-deploy-prep.md).
+* Fyzické zařízení jste nainstalovali tak, jak je podrobně popsáno v [části Instalace datové schránky Edge](data-box-edge-deploy-install.md).
+* Aktivační klíč máte ze služby Data Box Edge, kterou jste vytvořili ke správě zařízení Data Box Edge. Další informace najdete v centru [připravte se na nasazení Azure Data Box Edge](data-box-edge-deploy-prep.md).
 
-## <a name="connect-to-the-local-web-ui-setup"></a>Připojení k místnímu nastavení webového uživatelského rozhraní 
+## <a name="connect-to-the-local-web-ui-setup"></a>Připojení k místnímu nastavení webového uživatelského prostředí 
 
-1. Nakonfigurujte adaptér Ethernet v počítači, který se připojí k zařízení Data Box Edge se statickou IP adresou 192.168.100.5 a podsítí 255.255.255.0.
+1. Nakonfigurujte adaptér Ethernet v počítači tak, aby se připojil k zařízení Data Box Edge se statickou ADRESOu IP 192.168.100.5 a podsítí 255.255.255.0.
 
-2. Připojte počítač k portu 1 na svém zařízení. Pomocí následující ilustrace Identifikujte PORT 1 na vašem zařízení.
+2. Připojte počítač k portu port 1 v zařízení. Pomocí následujícího obrázku můžete identifikovat port port 1 v zařízení.
 
     ![Propojovací rozhraní zařízení se zapojenou kabeláží](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
 
-3. Otevřete okno prohlížeče a přejděte k místnímu webovému uživatelskému rozhraní zařízení na `https://192.168.100.10`.  
-    Tato akce může trvat několik minut, než se zařízení zapnete. 
+3. Otevřete okno prohlížeče a získejte přístup k `https://192.168.100.10`místnímu webovému uživatelskému rozhraní zařízení na adrese .  
+    Tato akce může trvat několik minut po zapnutí zařízení. 
 
-    Zobrazí se chyba nebo upozornění označující, že došlo k potížím s certifikátem zabezpečení webu. 
+    Zobrazí se chyba nebo upozornění, že došlo k potížím s certifikátem zabezpečení webu. 
    
-    ![Chybová zpráva certifikátu zabezpečení webu](./media/data-box-edge-deploy-connect-setup-activate/image2.png)
+    ![Chybová zpráva o certifikátu zabezpečení webu](./media/data-box-edge-deploy-connect-setup-activate/image2.png)
 
-4. Vyberte možnost **pokračovat na tuto webovou stránku**.  
-    Tyto kroky se můžou lišit v závislosti na prohlížeči, který používáte.
+4. Vyberte **Pokračovat na tuto webovou stránku**.  
+    Tyto kroky se mohou lišit v závislosti na prohlížeči, který používáte.
 
-5. Přihlaste se k webovému uživatelskému rozhraní vašeho zařízení. Výchozí heslo je *Heslo1*. 
+5. Přihlaste se k webovému uživatelskému rozhraní svého zařízení. Výchozí heslo je *Password1*. 
    
-    ![Přihlašovací stránka pro Data Box Edge zařízení](./media/data-box-edge-deploy-connect-setup-activate/image3.png)
+    ![Přihlašovací stránka zařízení Data Box Edge](./media/data-box-edge-deploy-connect-setup-activate/image3.png)
 
-6. V příkazovém řádku změňte heslo správce zařízení.  
-    Nové heslo musí obsahovat 8 až 16 znaků. Musí obsahovat tři z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky.
+6. Na výzvu změňte heslo správce zařízení.  
+    Nové heslo musí obsahovat 8 až 16 znaků. Musí obsahovat tři z následujících znaků: velká, malá, číselná a speciální znatá.
 
 Nyní jste na řídicím panelu zařízení.
 
 ## <a name="set-up-and-activate-the-physical-device"></a>Nastavení a aktivace fyzického zařízení
  
-Řídicí panel zobrazuje různá nastavení, která jsou nutná ke konfiguraci a registraci fyzického zařízení ve službě Data Box Edge. **Název zařízení**, **nastavení sítě**, nastavení **webového proxy serveru**a **Nastavení času** jsou volitelné. Jediná požadovaná nastavení jsou **Nastavení cloudu**.
+Řídicí panel zobrazuje různá nastavení, která jsou nutná ke konfiguraci a registraci fyzického zařízení pomocí služby Data Box Edge. **Název zařízení**, **Nastavení sítě**, Nastavení **webového proxy serveru**a Nastavení **času** jsou volitelné. Jediným požadovaným **nastavením**jsou nastavení cloudu .
    
-![Stránka místního webového uživatelského rozhraní "řídicí panel"](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-1.png)
+![Stránka "Řídicí panel" místního webového uživatelského panelu](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-1.png)
 
-1. V levém podokně vyberte **název zařízení**a zadejte popisný název zařízení.  
-    Popisný název musí být v rozmezí od 1 do 15 znaků a obsahovat písmena, číslice a spojovníky.
+1. V levém podokně vyberte **Název zařízení**a zadejte popisný název zařízení.  
+    Popisný název musí obsahovat 1 až 15 znaků a musí obsahovat písmena, číslice a pomlčky.
 
-    ![Stránka místní webové uživatelské rozhraní "název zařízení"](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
+    ![Stránka "Název zařízení" místního webového uživatelského rozhraní](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
-2. Volitelné V levém podokně vyberte **nastavení sítě** a pak nakonfigurujte nastavení.  
-    Na fyzickém zařízení existuje šest síťových rozhraní. PORTY 1 a 2 jsou síťová rozhraní s rychlostí 1 GB/s. PORT 3, PORT 4, PORT 5 a PORT 6 jsou všechna síťová rozhraní s 25 GB/s, která mohou sloužit také jako síťová rozhraní s rychlostí 10 GB/s. PORT 1 je automaticky nakonfigurován jako port jen pro správu a PORT 2 na PORT 6 jsou všechny datové porty. Stránka **nastavení sítě** je uvedená níže.
+2. (Nepovinné) V levém podokně vyberte **Nastavení sítě** a pak nastavení nakonfigurujte.  
+    Ve fyzickém zařízení existuje šest síťových rozhraní. PORT 1 a PORT 2 jsou síťová rozhraní 1 Gb/s. PORT 3, PORT 4, PORT 5 a PORT 6 jsou všechna síťová rozhraní 25 Gb/s, která mohou sloužit také jako síťová rozhraní 10 Gb/s. PORT 1 je automaticky konfigurován jako port pouze pro správu a port port 2 až port 6 jsou všechny datové porty. Stránka **Nastavení sítě** je uvedena níže.
     
-    ![Stránka místní webové uživatelské rozhraní "nastavení sítě"](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
+    ![Stránka Místní webové uživatelské tlačítko "Nastavení sítě"](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
-    Při konfiguraci nastavení sítě Pamatujte na toto:
+    Při konfiguraci nastavení sítě mějte na paměti:
 
    - Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky. Automaticky se přiřadí IP adresa, podsíť, brána a DNS.
-   - Pokud není protokol DHCP povolený, můžete v případě potřeby přiřadit statické IP adresy.
-   - Síťové rozhraní můžete nakonfigurovat jako IPv4.
+   - Pokud není povolena služba DHCP, můžete v případě potřeby přiřadit statické IP adresy.
+   - Síťové rozhraní můžete nakonfigurovat jako protokol IPv4.
 
      >[!NOTE] 
-     > Doporučujeme, abyste místní IP adresu síťového rozhraní nepnuli z static na DCHP, pokud nemáte jinou IP adresu pro připojení k zařízení. Pokud používáte jedno síťové rozhraní a přepnete na protokol DHCP, tak nemusíte určit adresu DHCP. Pokud chcete přejít na adresu DHCP, počkejte na to, až se zařízení zaregistruje u služby, a pak změňte. Potom můžete zobrazit IP adresy všech adaptérů ve **vlastnostech zařízení** v Azure Portal pro vaši službu.
+     > Doporučujeme nepřepínat místní IP adresu síťového rozhraní ze statického na DCHP, pokud nemáte jinou IP adresu pro připojení k zařízení. Pokud používáte jedno síťové rozhraní a přepnete na server DHCP, nebude možné určit adresu DHCP. Pokud chcete změnit na adresu DHCP, počkejte, dokud se zařízení nezaregistruje u služby, a poté změňte. Potom můžete zobrazit IP adresy všech adaptérů ve **vlastnostech Zařízení** na webu Azure Portal pro vaši službu.
 
-3. Volitelné V levém podokně vyberte **nastavení webového proxy serveru**a pak nakonfigurujte svůj web proxy server. I když je konfigurace webového proxy serveru volitelná, pokud používáte webový proxy server, můžete ho nakonfigurovat jenom na této stránce.
+3. (Nepovinné) V levém podokně vyberte **nastavení webového proxy serveru**a nakonfigurujte webový proxy server. Přestože je konfigurace webového proxy serveru volitelná, pokud používáte webový proxy server, můžete jej nakonfigurovat pouze na této stránce.
    
-   ![Stránka nastavení webového proxy serveru v místním webovém prostředí](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)
+   ![Stránka Nastavení webového proxy uživatelského panelu v místním webovém uživatelském prostředí](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)
    
-   Na stránce **nastavení webového proxy serveru** postupujte takto:
+   Na stránce **Nastavení webového proxy serveru** postupujte takto:
    
-   a. Do pole **Adresa URL webového proxy serveru** zadejte adresu URL v tomto formátu: `http://host-IP address or FQDN:Port number`. Adresy URL protokolu HTTPS nejsou podporovány.
+   a. Do pole **Adresa URL webového proxy** serveru `http://host-IP address or FQDN:Port number`zadejte adresu URL v tomto formátu: . Adresy URL protokolu HTTPS nejsou podporovány.
 
-   b. V části **ověřování**vyberte **žádné** nebo **NTLM**.
+   b. V části **Ověřování**vyberte **možnost Žádný** nebo **NTLM**.
 
    c. Pokud používáte ověřování, zadejte uživatelské jméno a heslo.
 
-   d. Pokud chcete ověřit a použít nakonfigurovaná nastavení webového proxy serveru, vyberte **použít nastavení**.
+   d. Chcete-li ověřit a použít nakonfigurované nastavení webového proxy serveru, vyberte **použít nastavení**.
    
    > [!NOTE]
-   > Soubory automatické konfigurace proxy serveru (PAC) nejsou podporovány. Soubor PAC definuje způsob, jakým můžou webové prohlížeče a další uživatelské agenti automaticky zvolit odpovídající proxy server (přístupovou metodu) pro načtení dané adresy URL.
-   > Proxy servery, které se pokoušejí zachytit a načíst veškerý provoz (pak se znovu podepisuje vše s vlastní certifikací) nejsou kompatibilní, protože certifikát proxy serveru není důvěryhodný.
-   > Obvykle transparentní proxy servery dobře fungují s Azure Data Box Edge.
+   > Proxy-auto config (PAC) soubory nejsou podporovány. Soubor PAC definuje, jak mohou webové prohlížeče a další uživatelští agenti automaticky zvolit příslušný proxy server (metodu přístupu) pro načtení dané adresy URL.
+   > Proxy, které se pokoušejí zachytit a číst veškerý provoz (pak znovu podepsat vše s vlastní certifikací) nejsou kompatibilní, protože certifikát proxy není důvěryhodný.
+   > S Azure Data Box Edge obvykle fungují transparentní proxy servery.
 
-4. Volitelné V levém podokně vyberte **Nastavení času**a pak nakonfigurujte časové pásmo a primární a sekundární servery NTP pro vaše zařízení.  
-    Jsou vyžadovány servery NTP, protože vaše zařízení musí synchronizovat čas, aby se mohl ověřit u vašich poskytovatelů cloudových služeb.
+4. (Nepovinné) V levém podokně vyberte **nastavení času**a pak nakonfigurujte časové pásmo a primární a sekundární servery NTP pro vaše zařízení.  
+    Servery NTP jsou vyžadovány, protože zařízení musí synchronizovat čas, aby se mohlo ověřit u poskytovatelů cloudových služeb.
        
-    Na stránce **Nastavení času** proveďte následující:
+    Na stránce **Nastavení času** postupujte takto:
     
-    1. V rozevíracím seznamu **časové pásmo** vyberte časové pásmo, které odpovídá geografickému umístění, ve kterém se zařízení nasazuje.
-        Výchozím časovým pásmem pro vaše zařízení je PST. Toto časové pásmo bude zařízení používat pro všechny naplánované operace.
+    1. V rozevíracím seznamu **Časové pásmo** vyberte časové pásmo, které odpovídá geografické poloze, ve které je zařízení nasazováno.
+        Výchozí časové pásmo pro vaše zařízení je PST. Toto časové pásmo bude zařízení používat pro všechny naplánované operace.
 
-    2. V poli **primární server NTP** zadejte primární server pro vaše zařízení nebo přijměte výchozí hodnotu Time.Windows.com.  
-        Ujistěte se, že vaše síť umožňuje předávat data NTP z vašeho datacentra na Internet.
+    2. Do pole **Primární server NTP** zadejte primární server pro své zařízení nebo přijměte výchozí hodnotu time.windows.com.  
+        Ujistěte se, že vaše síť umožňuje přenos ntp předat z datového centra do internetu.
 
-    3. Případně můžete v poli **sekundární server NTP** zadat sekundární server pro vaše zařízení.
+    3. Volitelně můžete do pole **Sekundární server NTP** zadat sekundární server pro vaše zařízení.
 
-    4. Pokud chcete ověřit a použít nakonfigurované nastavení času, vyberte **použít nastavení**.
+    4. Chcete-li ověřit a použít nakonfigurovaná nastavení času, vyberte **použít nastavení**.
 
-        ![Stránka nastavení času místního webového uživatelského rozhraní](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
+        ![Stránka "Nastavení času" místního webového uživatelského prostředí](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
 
-5. Volitelné V levém podokně vyberte **Nastavení úložiště** a nakonfigurujte odolnost úložiště v zařízení. Tato funkce je aktuálně ve verzi Preview. Ve výchozím nastavení není úložiště v zařízení odolné a při selhání datového disku v zařízení dojde ke ztrátě dat. Pokud povolíte možnost odolnosti, dojde k překonfigurování úložiště v zařízení a zařízení bude moci odolat selhání jednoho datového disku bez ztráty dat. Pokud úložiště nakonfigurujete jako odolné, sníží se použitelná kapacita vašeho zařízení.
+5. (Nepovinné) V levém podokně vyberte **Nastavení úložiště** a nakonfigurujte odolnost úložiště v zařízení. Tato funkce je aktuálně ve verzi Preview. Ve výchozím nastavení není úložiště v zařízení odolné a dojde ke ztrátě dat, pokud v zařízení selže datový disk. Pokud povolíte možnost Pružná, úložiště v zařízení bude překonfigurováno a zařízení vydrží selhání jednoho datového disku bez ztráty dat. Konfigurace úložiště jako odolného sníží využitelnou kapacitu vašeho zařízení.
 
     > [!IMPORTANT] 
-    > Odolnost proti chybám se dá nakonfigurovat jenom před aktivací zařízení. 
+    > Odolnost proti chybám lze nakonfigurovat pouze před aktivací zařízení. 
 
-    ![Stránka nastavení úložiště místního webového uživatelského rozhraní](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
+    ![Stránka Místní webové uživatelské tlačítko "Nastavení úložiště"](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
 
-6. V levém podokně vyberte **Nastavení cloudu**a potom aktivujte zařízení pomocí služby Data Box Edge v Azure Portal.
+6. V levém podokně vyberte **Nastavení cloudu**a pak aktivujte zařízení pomocí služby Data Box Edge na webu Azure Portal.
     
-    1. Do pole **aktivační klíč** zadejte aktivační klíč, který jste získali v [části získání aktivačního klíče](data-box-edge-deploy-prep.md#get-the-activation-key) pro data box Edge.
+    1. Do pole **aktivační klíč** zadejte aktivační klíč, který jste dostali v části Získat [aktivační klíč](data-box-edge-deploy-prep.md#get-the-activation-key) pro Data Box Edge.
     2. Vyberte **Použít**.
        
-        ![Stránka nastavení cloudu místního webového uživatelského rozhraní](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-6.png)
+        ![Stránka Místní webové uživatelské tlačítko "Nastavení cloudu"](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-6.png)
 
-    3. Nejdřív se zařízení aktivuje. Zařízení pak vyhledá důležité aktualizace a pokud jsou k dispozici, aktualizace se automaticky aplikují. K tomuto účelu se zobrazí oznámení.
+    3. Nejprve je zařízení aktivováno. Zařízení je pak zkontrolováno na všechny důležité aktualizace a pokud jsou k dispozici, budou automaticky použity. Zobrazí se oznámení v tomto smyslu.
 
-        Dialog má také obnovovací klíč, který byste měli zkopírovat a uložit na bezpečném místě. Tento klíč se používá k obnovení dat v případě, že se zařízení nedá spustit.
+        Dialogové okno má také obnovovací klíč, který byste měli zkopírovat a uložit na bezpečném místě. Tento klíč se používá k obnovení dat v případě, že se zařízení nemůže spustit.
 
-        ![Stránka nastavení cloudu místního webového uživatelského rozhraní](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-7.png)
+        ![Místní webové uživatelské tlačítko "Nastavení cloudu" stránka aktualizována](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-7.png)
 
-    4. Po úspěšném dokončení aktualizace možná budete muset počkat několik minut. Stránka se aktualizuje, aby označovala, že se zařízení úspěšně aktivovalo.
+    4. Po úspěšném dokončení aktualizace může být nutné počkat několik minut. Stránka se aktualizuje a označuje, že zařízení bylo úspěšně aktivováno.
 
-        ![Stránka nastavení cloudu místního webového uživatelského rozhraní](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-8.png)
+        ![Místní webové uživatelské tlačítko "Nastavení cloudu" stránka aktualizována](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-8.png)
 
-Instalace zařízení je dokončená. V zařízení teď můžete přidat sdílené složky.
+Nastavení zařízení je dokončeno. Nyní můžete do zařízení přidávat sdílené složky.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -158,7 +158,7 @@ V tomto kurzu jste se naučili:
 > * Připojení k fyzickému zařízení
 > * Nastavení a aktivace fyzického zařízení
 
-Informace o tom, jak přenést data do zařízení Data Box Edge, najdete tady:
+Informace o přenosu dat pomocí zařízení Data Box Edge najdete v tématu:
 
 > [!div class="nextstepaction"]
-> [Přenos dat pomocí data box Edge](./data-box-edge-deploy-add-shares.md).
+> [Přenos dat pomocí data Box Edge](./data-box-edge-deploy-add-shares.md).

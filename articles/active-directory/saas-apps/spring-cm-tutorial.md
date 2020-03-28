@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s SpringCM | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SpringCM.
+title: 'Kurz: Integrace služby Azure Active Directory s SpringCM | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a SpringCM.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,227 +17,227 @@ ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9bd9ea5565ea64415c00a458236456bed04b6c38
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233388"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Kurz: Azure Active Directory integrace s SpringCM
+# <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Kurz: Integrace služby Azure Active Directory s SpringCM
 
 V tomto kurzu se dozvíte, jak integrovat SpringCM s Azure Active Directory (Azure AD).
 Integrace SpringCM s Azure AD poskytuje následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k SpringCM.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k SpringCM (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k SpringCM.
+* Můžete povolit uživatelům, aby se automaticky přihlásili k SpringCM (jednotné přihlášení) s jejich účty Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s SpringCM potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s SpringCM, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
-* Předplatné s povoleným SpringCMm jednotným přihlašováním
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* Předplatné s povoleným jedním přihlášením SpringCM
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* SpringCM podporuje jednotné přihlašování iniciované v **SP**
+* SpringCM podporuje **sp** inicioval sso
 
-## <a name="adding-springcm-from-the-gallery"></a>Přidání SpringCM z Galerie
+## <a name="adding-springcm-from-the-gallery"></a>Přidání SpringCM z galerie
 
-Pokud chcete nakonfigurovat integraci SpringCM do služby Azure AD, musíte přidat SpringCM z Galerie do svého seznamu spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci SpringCM do Azure AD, musíte přidat SpringCM z galerie do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat SpringCM z Galerie, proveďte následující kroky:**
+**Chcete-li přidat SpringCM z galerie, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **SpringCM**, v panelu výsledek vyberte **SpringCM** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **SpringCM**, z panelu výsledků vyberte **SpringCM** a pak klepnutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![SpringCM v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí SpringCM na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SpringCM.
+Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v SpringCM.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SpringCM, musíte dokončit tyto stavební bloky:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SpringCM, musíte dokončit následující stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování SpringCM](#configure-springcm-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvoření SpringCM Test User](#create-springcm-test-user)** – pro Britta Simon v SpringCM, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace single sign-on SpringCM](#configure-springcm-single-sign-on)** - pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte springcm testovací ho uživatele](#create-springcm-test-user)** – mít protějšek Britta Simon v SpringCM, který je propojený s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SpringCM, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí springcm, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SpringCM** vyberte **jednotné přihlašování**.
+1. Na [webu Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **SpringCM** vyberte **Jedno přihlášení**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+4. V části **Základní konfigurace SAML** proveďte následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně SpringCM a adresách URL](common/sp-signonurl.png)
+    ![Informace o doméně springcm a adresách URL s jedním přihlášením](common/sp-signonurl.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://na11.springcm.com/atlas/SSO/SSOEndpoint.ashx?aid=<identifier>`
+    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://na11.springcm.com/atlas/SSO/SSOEndpoint.ashx?aid=<identifier>`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta SpringCM](https://knowledge.springcm.com/support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota není skutečná. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Obraťte se na [tým podpory klienta SpringCM](https://knowledge.springcm.com/support) získat hodnotu. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (RAW)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+4. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Nezpracovaný)** z daných možností a uložte jej do počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificateraw.png)
 
-6. V části **Nastavení SpringCM** zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **Nastavit SpringCM** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-springcm-single-sign-on"></a>Konfigurace jednotného přihlašování SpringCM
+### <a name="configure-springcm-single-sign-on"></a>Konfigurace jednotného přihlášení SpringCM
 
-1. V jiném okně webového prohlížeče se přihlaste k webu **SpringCM** společnosti jako správce.
+1. V jiném okně webového prohlížeče se přihlaste na web společnosti **SpringCM** jako správce.
 
-1. V nabídce v horní části klikněte na **Přejít na**, klikněte na **Předvolby**a potom v části **Předvolby účtu** klikněte na **jednotné přihlašování SAML**.
+1. V nabídce v horní části klikněte na **PŘEJÍT na**, klikněte na **Předvolby**a potom v části **Předvolby účtu** klikněte na **SAML SSO**.
    
-    ![JEDNOTNÉ PŘIHLAŠOVÁNÍ SAML](./media/spring-cm-tutorial/ic797051.png "JEDNOTNÉ PŘIHLAŠOVÁNÍ SAML")
+    ![SAML SSO](./media/spring-cm-tutorial/ic797051.png "SAML SSO")
 
 1. V části Konfigurace zprostředkovatele identity proveďte následující kroky:
    
     ![Konfigurace zprostředkovatele identity](./media/spring-cm-tutorial/ic797052.png "Konfigurace zprostředkovatele identity")
     
-    a. Pokud chcete nahrát stažený Azure Active Directory certifikát, klikněte na **Vybrat certifikát vystavitele** nebo **změnit certifikát vystavitele**.
+    a. Chcete-li nahrát stažený certifikát služby Azure Active Directory, klepněte na tlačítko **Vybrat certifikát vystavitho služby** nebo **změnit certifikát vystavitho služby**.
     
-    b. Do textového pole **vystavitele** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
+    b. Do textového pole **Vystaviter** vložte hodnotu **identifikátoru Azure AD,** kterou jste zkopírovali z webu Azure Portal.
     
-    c. Do textového pole **inicializovaného koncového bodu poskytovatele služeb (SP)** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    c. V textovém poli **Iniciovaný koncový bod poskytovatele služeb (SP)** vložte hodnotu **přihlašovací adresy URL,** kterou jste zkopírovali z portálu Azure.
             
-    d. Vyberte možnost **SAML povolená** jako **Povolit**.
+    d. Jako povolit vyberte **možnost Povoleno saml.** **Enable**
 
-    e. Klikněte na možnost **Uložit**.
+    e. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    b. V poli **Uživatelské** `brittasimon@yourcompanydomain.extension`jméno typ pole . Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
     d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k SpringCM.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu springcm.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **SpringCM**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak **springcm**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **SpringCM**.
+2. V seznamu aplikací vyberte **SpringCM**.
 
-    ![Odkaz SpringCM v seznamu aplikací](common/all-applications.png)
+    ![Odkaz SpringCM v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
 ### <a name="create-springcm-test-user"></a>Vytvořit testovacího uživatele SpringCM
 
-Pokud chcete povolit Azure Active Directory uživatelům, aby se přihlásili k SpringCM, musí se zřídit do SpringCM. V případě SpringCM je zřizování ručním úkolem.
+Chcete-li povolit uživatelům služby Azure Active Directory k přihlášení k SpringCM, musí být zřízena do SpringCM. V případě SpringCM zřizování je ruční úlohy.
 
 > [!NOTE]
-> Další informace najdete v tématu [Vytvoření a úprava uživatele SpringCM](https://knowledge.springcm.com/create-and-edit-a-springcm-user). 
+> Další informace naleznete v [tématu Vytvoření a úprava uživatele SpringCM](https://knowledge.springcm.com/create-and-edit-a-springcm-user). 
 
-**Pokud chcete zřídit uživatelský účet SpringCM, proveďte následující kroky:**
+**Chcete-li zřídit uživatelský účet SpringCM, proveďte následující kroky:**
 
-1. Přihlaste se k webu **SpringCM** společnosti jako správce.
+1. Přihlaste se k webu společnosti **SpringCM** jako správce.
 
-1. Klikněte na **Přejít**a pak klikněte na **adresář.**
+1. Klepněte na **položku GOTO**a potom na **položku ADRESÁŘ**.
    
-    ![Vytvořit uživatele](./media/spring-cm-tutorial/ic797054.png "Vytvoření uživatele")
+    ![Vytvořit uživatele](./media/spring-cm-tutorial/ic797054.png "Vytvořit uživatele")
 
-1. Klikněte na **vytvořit uživatele**.
+1. Klepněte na **tlačítko Vytvořit uživatele**.
 
-1. Vyberte **uživatelskou roli**.
+1. Vyberte **roli uživatele**.
 
 1. Vyberte **Odeslat aktivační e-mail**.
 
-1. Do příslušných textových polí zadejte jméno, příjmení a e-mailovou adresu platného Azure Active Directory uživatelského účtu, který chcete zřídit.
+1. Zadejte jméno, příjmení a e-mailovou adresu platného uživatelského účtu služby Azure Active Directory, který chcete zřídit do souvisejících textových polí.
 
 1. Přidejte uživatele do **skupiny zabezpečení**.
 
-1. Klikněte na možnost **Uložit**.
+1. Klikněte na **Uložit**.
 
    > [!NOTE]
-   > K zřizování uživatelských účtů Azure AD můžete použít jiné nástroje pro vytváření uživatelských účtů SpringCM nebo rozhraní API poskytovaná SpringCM.
+   > Můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů SpringCM nebo rozhraní API poskytované SpringCM zřídit uživatelské účty Azure AD.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici SpringCM, měli byste se automaticky přihlásit k SpringCM, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici SpringCM na přístupovém panelu, můžete by měl být automaticky přihlášeni k SpringCM, u kterého nastavíte přisuzuje. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,65 +1,65 @@
 ---
-title: Kurz – přidání prostředku do šablony
-description: Popisuje kroky k vytvoření první šablony Azure Resource Manager. Dozvíte se o syntaxi souboru šablony a o tom, jak nasadit účet úložiště.
+title: Kurz – přidání zdroje do šablony
+description: Popisuje postup vytvoření první šablony Azure Resource Manager. Dozvíte se o syntaxi souboru šablony a o tom, jak nasadit účet úložiště.
 author: mumian
-ms.date: 02/24/2020
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e533b70ba713b8c52a29cfbcc1cd8ccb99b8543f
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 79e337b411f9d115d93050ebeee346a526913d39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370691"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371738"
 ---
-# <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Kurz: Přidání prostředku do šablony Správce prostředků
+# <a name="tutorial-add-a-resource-to-your-arm-template"></a>Kurz: Přidání zdroje do šablony ARM
 
-V [předchozím kurzu](template-tutorial-create-first-template.md)jste zjistili, jak vytvořit prázdnou šablonu a nasadit ji. Teď jste připraveni nasadit skutečný prostředek. V tomto kurzu přidáte účet úložiště. Dokončení tohoto kurzu trvá přibližně **9 minut** .
+V [předchozím kurzu](template-tutorial-create-first-template.md)jste se naučili, jak vytvořit prázdnou šablonu a nasadit ji. Nyní jste připraveni nasadit skutečný prostředek. V tomto kurzu přidáte účet úložiště. Dokončení tohoto kurzu trvá přibližně **9 minut.**
 
 ## <a name="prerequisites"></a>Požadavky
 
-Doporučujeme, abyste dokončili [Úvodní kurz týkající se šablon](template-tutorial-create-first-template.md), ale není to nutné.
+Doporučujeme dokončit [úvodní kurz o šablonách](template-tutorial-create-first-template.md), ale není to nutné.
 
-Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a buď Azure PowerShell, nebo v rozhraní příkazového řádku Azure. Další informace najdete v tématu [nástroje šablon](template-tutorial-create-first-template.md#get-tools).
+Musíte mít kód Visual Studio s rozšířením Nástroje správce prostředků a buď Azure PowerShell nebo Azure CLI. Další informace naleznete v [tématu nástroje šablony](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="add-resource"></a>Přidat prostředek
+## <a name="add-resource"></a>Přidání zdroje
 
-Pokud chcete přidat definici účtu úložiště do existující šablony, podívejte se na zvýrazněný kód JSON v následujícím příkladu. Místo kopírování oddílů šablony zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
+Chcete-li přidat definici účtu úložiště do existující šablony, podívejte se na zvýrazněné JSON v následujícím příkladu. Místo pokusu o kopírování částí šablony zkopírujte celý soubor a nahraďte šablonu jejím obsahem.
 
-Nahraďte **{poskytnout-Unique-Name}** jedinečným názvem účtu úložiště.
+Nahraďte **{provide-unique-name}** jedinečným názvem účtu úložiště.
 
 > [!IMPORTANT]
-> Název účtu úložiště musí být jedinečný v rámci Azure. Název musí obsahovat jenom malá písmena nebo číslice. Nemůže být delší než 24 znaků. Můžete vyzkoušet způsob pojmenování, jako je například použití **store1** jako předpona a přidání vašich počátečních a dnešních dat. Název, který použijete, může například vypadat jako **store1abc09092019**.
+> Název účtu úložiště musí být jedinečný v rámci Azure. Název musí mít pouze malá písmena nebo čísla. Nesmí být delší než 24 znaků. Můžete zkusit vzor pojmenování, jako je použití **store1** jako předponu a přidání iniciály a dnešní datum. Například název, který používáte může vypadat **store1abc09092019**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
-Odhadování jedinečného názvu účtu úložiště není jednoduché a nefunguje dobře pro automatizaci rozsáhlých nasazení. Později v této sérii kurzů budete používat funkce šablon, které usnadňují vytváření jedinečných názvů.
+Hádání jedinečný název pro účet úložiště není snadné a nefunguje dobře pro automatizaci velkých nasazení. Později v této sérii kurzů budete používat funkce šablony, které usnadňují vytvoření jedinečného názvu.
 
-## <a name="resource-properties"></a>Vlastnosti prostředku
+## <a name="resource-properties"></a>Vlastnosti prostředků
 
-Možná vás zajímá, jak najít vlastnosti, které se mají použít pro každý typ prostředku. Pomocí [odkazu na šablonu správce prostředků](/azure/templates/) můžete najít typy prostředků, které chcete nasadit.
+Možná se divíte, jak najít vlastnosti, které mají být používány pro každý typ prostředku. Pomocí odkazu [na šablonu ARM](/azure/templates/) můžete najít typy prostředků, které chcete nasadit.
 
-Každý prostředek, který nasazujete, má alespoň následující tři vlastnosti:
+Každý prostředek, který nasadíte, má alespoň následující tři vlastnosti:
 
-- **typ**: typ prostředku. Tato hodnota je kombinací oboru názvů poskytovatele prostředků a typu prostředku (například Microsoft. Storage/storageAccounts).
-- **apiVersion**: verze REST API, která se má použít pro vytvoření prostředku. Každý poskytovatel prostředků publikoval vlastní verze rozhraní API, takže tato hodnota je specifická pro daný typ.
-- **název**: název prostředku.
+- **typ**: Typ zdroje. Tato hodnota je kombinací oboru názvů poskytovatele prostředků a typu prostředku (například Microsoft.Storage/storageAccounts).
+- **apiVersion**: Verze rozhraní REST API pro vytvoření prostředku. Každý poskytovatel prostředků publikoval vlastní verze rozhraní API, takže tato hodnota je specifická pro typ.
+- **název**: Název prostředku.
 
-Většina prostředků má také vlastnost **Location** , která nastavuje oblast, kde je prostředek nasazen.
+Většina prostředků má také vlastnost **umístění,** která nastavuje oblast, kde je prostředek nasazen.
 
-Ostatní vlastnosti se liší podle typu prostředku a verze rozhraní API. Je důležité pochopit připojení mezi verzí rozhraní API a dostupnými vlastnostmi, takže se můžete pustit do více podrobností.
+Ostatní vlastnosti se liší podle typu prostředku a verze rozhraní API. Je důležité pochopit připojení mezi verzí rozhraní API a dostupnými vlastnostmi, takže pojďme přejít do podrobností.
 
-V tomto kurzu jste do šablony přidali účet úložiště. Tuto verzi rozhraní API si můžete prohlédnout v [storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts). Všimněte si, že jste do šablony nepřidali všechny vlastnosti. Mnohé z vlastností jsou volitelné. Poskytovatel prostředků Microsoft. Storage by mohl uvolnit novou verzi rozhraní API, ale verze, kterou nasazujete, se nemusí měnit. Tuto verzi můžete dál používat a ví, že výsledky nasazení budou konzistentní.
+V tomto kurzu jste do šablony přidali účet úložiště. Tuto verzi rozhraní API vidíte na [adrese storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts). Všimněte si, že jste do šablony nepřidali všechny vlastnosti. Mnoho vlastností je volitelné. Poskytovatel prostředků Microsoft.Storage může vydat novou verzi rozhraní API, ale verze, kterou nasazujete, se nemusí měnit. Můžete pokračovat v používání této verze a vědět, že výsledky vašeho nasazení bude konzistentní.
 
-Pokud si zobrazíte starší verzi rozhraní API, například [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts), uvidíte, že je k dispozici menší sada vlastností.
+Pokud se zobrazí starší verze rozhraní API, jako je [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts), uvidíte, že jsou k dispozici menší sada vlastností.
 
-Pokud se rozhodnete změnit verzi rozhraní API pro určitý prostředek, ujistěte se, že jste vyhodnotili vlastnosti této verze a odpovídajícím způsobem upravte šablonu.
+Pokud se rozhodnete změnit verzi rozhraní API pro prostředek, ujistěte se, že vyhodnotit vlastnosti pro tuto verzi a upravit šablonu odpovídajícím způsobem.
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
-Šablonu můžete nasadit pro vytvoření účtu úložiště. Dejte vašemu nasazení jiný název, abyste ho mohli snadno najít v historii.
+Šablonu můžete nasadit k vytvoření účtu úložiště. Pojmenujte své nasazení jiným názvem, abyste ho mohli snadno najít v historii.
 
-Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+Pokud jste skupinu prostředků nevytvořili, přečtěte si informace [o vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). Příklad předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -72,6 +72,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+Chcete-li spustit tento příkaz nasazení, musíte mít [nejnovější verzi](/cli/azure/install-azure-cli) azure cli.
+
 ```azurecli
 az deployment group create \
   --name addstorage \
@@ -81,42 +83,42 @@ az deployment group create \
 
 ---
 
-Dvě možné chyby nasazení, se kterými se můžete setkat:
+Dvě možné selhání nasazení, ke kterým může dojít:
 
-- Chyba: kód = AccountNameInvalid; Zpráva = {dis-Unique-Name} není platný název účtu úložiště. Název účtu úložiště musí být dlouhý 3 až 24 znaků a obsahovat jenom číslice a malá písmena.
+- Chyba: Code=AccountNameInvalid; Message={provide-unique-name} není platný název účtu úložiště. Název účtu úložiště musí mít délku 3 až 24 znaků a používat pouze čísla a malá písmena.
 
-    V šabloně nahraďte **{poskytnout-Unique-Name}** jedinečným názvem účtu úložiště.  Viz [Přidat prostředek](#add-resource).
+    V šabloně nahraďte **{provide-unique-name}** jedinečným názvem účtu úložiště.  Viz [Přidání zdroje](#add-resource).
 
-- Chyba: kód = StorageAccountAlreadyTaken; Zpráva = účet úložiště s názvem store1abc09092019 už je obsazený.
+- Chyba: Code=StorageAccountAlreadyTaken; Message=Účet úložiště s názvem store1abc09092019 je již přijata.
 
-    V šabloně zkuste použít jiný název účtu úložiště.
+    V šabloně zkuste jiný název účtu úložiště.
 
-Toto nasazení trvá déle než při nasazení prázdné šablony, protože je vytvořený účet úložiště. Může to trvat přibližně minutu, ale obvykle je rychlejší.
+Toto nasazení trvá déle než vaše nasazení prázdné šablony, protože je vytvořen účet úložiště. To může trvat asi minutu, ale je obvykle rychlejší.
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 
-Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
+Nasazení můžete ověřit tak, že prozkoumáte skupinu prostředků z webu Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. V nabídce vlevo vyberte **skupiny prostředků**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. V levé nabídce vyberte **položku Skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
-1. Vidíte, že je nasazený účet úložiště.
-1. Všimněte si, že jmenovka nasazení teď říká: **nasazení: 2 bylo úspěšné**.
+1. Uvidíte, že účet úložiště byl nasazen.
+1. Všimněte si, že popisek nasazení nyní říká: **Nasazení: 2 Úspěšné**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu prostředků.
+Pokud přecházíte na další kurz, nemusíte odstraňovat skupinu prostředků.
 
-Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
+Pokud nyní zastavujete, můžete chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
 
-1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
+1. Na portálu Azure vyberte **skupinu prostředků** z levé nabídky.
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
 3. Vyberte název skupiny prostředků.
-4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
+4. V horní nabídce vyberte **Odstranit skupinu prostředků.**
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvořili jste jednoduchou šablonu pro nasazení účtu úložiště Azure.  V dalších kurzech se dozvíte, jak přidat parametry, proměnné, prostředky a výstupy do šablony. Tyto funkce jsou stavebními bloky pro mnohem složitější šablony.
+Vytvořili jste jednoduchou šablonu pro nasazení účtu úložiště Azure.  V pozdějších kurzech se dozvíte, jak přidat parametry, proměnné, prostředky a výstupy do šablony. Tyto funkce jsou stavebními kameny pro mnohem složitější šablony.
 
 > [!div class="nextstepaction"]
 > [Přidat parametry](template-tutorial-add-parameters.md)

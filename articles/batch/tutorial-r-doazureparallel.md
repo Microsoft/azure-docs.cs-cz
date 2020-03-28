@@ -12,10 +12,10 @@ ms.date: 01/23/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 64daede5de4f2d1bbc69c65f88fe5b5875a0a5b8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77025839"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Kurz: Spuštění paralelní simulace jazyka R ve službě Azure Batch 
@@ -40,12 +40,12 @@ V tomto kurzu se dozvíte, jak nasadit fond služby Batch a spustit ve službě 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>Instalace balíčku doAzureParallel
 
-V konzole RStudio nainstalujte [balíček GitHub balíček doazureparallel](https://www.github.com/Azure/doAzureParallel). Následující příkazy stáhnou a nainstalují balíček a jeho závislosti v aktuální relaci jazyka R: 
+V konzoli RStudio nainstalujte [balíček doAzureParallel GitHub](https://www.github.com/Azure/doAzureParallel). Následující příkazy stáhnou a nainstalují balíček a jeho závislosti v aktuální relaci jazyka R: 
 
 ```R
 # Install the devtools package  
@@ -226,7 +226,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-Simulace distribuuje úkoly do uzlů ve fondu služby Batch. Aktivitu můžete sledovat na heat mapě fondu na webu Azure Portal. Přejděte na **Účty Batch** > *muj-ucet-Batch*. Klikněte na **Fondy** > *muj-nazev-fondu*. 
+Simulace distribuuje úkoly do uzlů ve fondu služby Batch. Aktivitu můžete sledovat na heat mapě fondu na webu Azure Portal. Přejděte na **dávkové účty** > *myBatchAccount*. Klepněte na **položku Fondy** > *myPoolName*. 
 
 ![Heat mapa fondu spouštějícího paralelní úkoly jazyka R](media/tutorial-r-doazureparallel/pool.png)
 

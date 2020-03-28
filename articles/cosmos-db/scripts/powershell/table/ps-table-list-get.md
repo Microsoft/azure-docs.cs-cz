@@ -1,20 +1,20 @@
 ---
-title: Skript prostředí PowerShell pro výpis a získání Azure Cosmos DBch operací rozhraní API pro tabulky
-description: Azure PowerShell Azure Cosmos DB skriptu a operace get pro rozhraní API pro tabulky
+title: Skript Prostředí PowerShell pro seznam a získání operací rozhraní API Azure Cosmos DB Table API
+description: Skript Azure PowerShellu – seznam Azure Cosmos DB a získání operací pro rozhraní TABLE API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9e904bdb635111b3fb0c3120be08f26e2e097236
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 166b9c2d6b20fbd6a71ba5df17e049838038617d
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444948"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365919"
 ---
-# <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Seznam a získání tabulek pro Azure Cosmos DB-rozhraní API pro tabulky
+# <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Seznam a získání tabulek pro Azure Cosmos DB – rozhraní TABLE API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +38,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-|**Prostředky Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Vytvoří prostředek. |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Seznam účtů Cosmos DB nebo získá zadaný účet Cosmos DB. |
+| [Get-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtable) | Zobrazí seznam tabulek rozhraní API tabulky Cosmos DB v účtu nebo získá zadanou tabulku rozhraní API tabulky Cosmos DB v účtu. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

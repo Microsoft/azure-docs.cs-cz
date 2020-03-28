@@ -1,20 +1,20 @@
 ---
-title: Skript prostředí PowerShell pro vytvoření tabulky v Azure Cosmos DB rozhraní API pro tabulky
-description: Naučte se používat skript prostředí PowerShell k aktualizaci propustnosti databáze nebo kontejneru v Azure Cosmos DB rozhraní API pro tabulky
+title: Skript Prostředí PowerShell pro vytvoření tabulky v rozhraní API tabulky Azure Cosmos DB
+description: Zjistěte, jak pomocí skriptu PowerShellu aktualizovat propustnost pro databázi nebo kontejner v rozhraní API tabulky DB Azure Cosmos
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 12/05/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: b99d4ed9043e0411216b953829a40eb2ee71fc30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9ea03996c793c3d53e4a3657c537f9354892c647
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441305"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365588"
 ---
-# <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Vytvoření tabulky pro Azure Cosmos DB rozhraní API pro tabulky
+# <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Vytvoření tabulky pro Azure Cosmos DB – rozhraní TABLE API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,7 +39,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Prostředky Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Vytvoří prostředek. |
+| [Nový-AzZdroj](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Vytvoří prostředek. |
+|**Azure Cosmos DB**| |
+| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Vytvoří nebo aktualizuje tabulku rozhraní API tabulky Cosmos DB. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

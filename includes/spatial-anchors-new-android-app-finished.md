@@ -7,15 +7,15 @@ ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 8bef7b12f4d9d9a63e41441ef22b029b2ee5afd1
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74276947"
 ---
-## <a name="putting-everything-together"></a>Vložení všech objektů dohromady
+## <a name="putting-everything-together"></a>Dát všechno dohromady
 
-Zde je uveden způsob, jakým by měl soubor `MainActivity` třídy vypadat jako, po tom, co byly všechny různé prvky vloženy dohromady. Můžete ji použít jako referenci pro porovnání s vlastním souborem a na místě, kde můžete mít nějaké jiné rozdíly.
+Zde je, `MainActivity` jak by měl vypadat kompletní soubor třídy, poté, co byly sestaveny všechny různé prvky. Můžete jej použít jako odkaz porovnat s vlastním souborem a na místě, pokud můžete mít nějaké rozdíly vlevo.
 
 ```java
 package com.example.myfirstapp;
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste viděli, jak vytvořit novou aplikaci pro Android, která integruje funkce ARCore s prostorovými kotvami Azure. Další informace o knihovně prostorových kotev Azure najdete v naší příručce k vytváření a hledání kotev.
+V tomto kurzu jste viděli, jak vytvořit novou aplikaci pro Android, která integruje funkce ARCore s azure spatial anchors. Další informace o knihovně Azure Spatial Anchors najdete v našem průvodci, jak vytvořit a vyhledat kotvy.
 
 > [!div class="nextstepaction"]
 > [Vytváření a hledání kotev pomocí prostorových kotev Azure](/azure/spatial-anchors/create-locate-anchors-overview)

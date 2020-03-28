@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Cisco Webex pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
-description: Naučte se konfigurovat Azure Active Directory pro Automatické zřizování a rušení uživatelských účtů pro Cisco Webex.
+title: 'Kurz: Konfigurace cisco webexu pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a zřašovala uživatelské účty společnosti Cisco Webex.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,147 +16,147 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
 ms.openlocfilehash: 0075783c049e7f48645f768026dd9d5ec0ead821
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77058491"
 ---
-# <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Kurz: Konfigurace Cisco Webex pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Kurz: Konfigurace cisco webexu pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v rámci Cisco Webex a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů na Cisco Webex.
+Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v Cisco Webex a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřizování a de-provision uživatelů Cisco Webex.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je momentálně ve verzi Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
+> Tento konektor je aktuálně ve verzi Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
 
 * Tenanta Azure AD.
-* [Tenant Cisco Webex](https://www.webex.com/pricing/index.html).
-* Uživatelský účet v Cisco Webex s oprávněními správce.
+* [Klient společnosti Cisco Webex](https://www.webex.com/pricing/index.html).
+* Uživatelský účet v cisco webexu s oprávněními správce.
 
-## <a name="adding-cisco-webex-from-the-gallery"></a>Přidání Cisco Webex z Galerie
+## <a name="adding-cisco-webex-from-the-gallery"></a>Přidání Cisco Webex z galerie
 
-Než začnete konfigurovat Cisco Webex pro Automatické zřizování uživatelů pomocí Azure AD, musíte přidat Cisco Webex z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
+Před konfigurací Cisco Webex pro automatické zřizování uživatelů pomocí Azure AD, je třeba přidat Cisco Webex z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Cisco Webex z Galerie aplikací Azure AD, proveďte následující kroky:**
+**Chcete-li přidat Cisco Webex z galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Cisco Webex**, vyberte **Cisco Webex** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Cisco Webex**, z panelu výsledků vyberte **cisco Webex** a klepnutím na tlačítko **Přidat** aplikaci přidejte.
 
     ![Cisco Webex v seznamu výsledků](common/search-new-app.png)
 
-## <a name="assigning-users-to-cisco-webex"></a>Přiřazení uživatelů k Cisco Webex
+## <a name="assigning-users-to-cisco-webex"></a>Přiřazení uživatelů společnosti Cisco Webex
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci ve službě Azure AD.
+Azure Active Directory používá koncept s názvem "přiřazení" k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly "přiřazeny" k aplikaci ve službě Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé ve službě Azure AD potřebují přístup k Cisco Webex. Po rozhodnutí můžete tyto uživatele přiřadit k Cisco Webex podle pokynů uvedených tady:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé ve službě Azure AD potřebují přístup k Cisco Webex. Jakmile se rozhodnete, můžete tyto uživatele přiřadit společnosti Cisco Webex podle pokynů zde:
 
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-cisco-webex"></a>Důležité tipy pro přiřazení uživatelů k Cisco Webex
 
-* Doporučujeme, aby se k otestování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD k Cisco Webex. Další uživatele je možné přiřadit později.
+* Doporučuje se, aby jeden uživatel Azure AD je přiřazen a Cisco Webex otestovat konfiguraci automatického zřizování uživatelů. Další uživatelé mohou být přiřazeny později.
 
-* Když přiřadíte uživatele k Cisco Webex, musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
+* Při přiřazování uživatele k cisco webexu je nutné v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
 
 ## <a name="configuring-automatic-user-provisioning-to-cisco-webex"></a>Konfigurace automatického zřizování uživatelů pro Cisco Webex
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů v Cisco Webex na základě přiřazení uživatelů v Azure AD.
+Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů v Cisco Webex na základě přiřazení uživatelů ve službě Azure AD.
 
 ### <a name="to-configure-automatic-user-provisioning-for-cisco-webex-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Cisco Webex ve službě Azure AD:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Cisco Webex**.
+1. Přihlaste se na [portál Azure](https://portal.azure.com) portal a vyberte **Podnikové aplikace**, vyberte Všechny **aplikace**a pak vyberte **Cisco Webex**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Cisco Webex**.
+2. V seznamu aplikací vyberte **možnost Cisco Webex**.
 
-    ![Odkaz Cisco Webex v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Cisco Webex v seznamu Aplikace](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování.**
 
-    ![Zřizování Cisco Webex](common/provisioning.png)
+    ![Zřizování společnosti Cisco Webex](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **režim zřizování** na **automatické**.
 
-    ![Zřizování Cisco Webex](common/provisioning-automatic.png)
+    ![Zřizování společnosti Cisco Webex](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta**a **tajný token** vašeho účtu Cisco Webex.
+5. V části **Přihlašovací údaje správce** zadejte adresu URL **klienta**a **tajný token** vašeho účtu Cisco Webex.
 
-    ![Zřizování Cisco Webex](./media/cisco-webex-provisioning-tutorial/secrettoken1.png)
+    ![Zřizování společnosti Cisco Webex](./media/cisco-webex-provisioning-tutorial/secrettoken1.png)
 
-6.  Do pole **Adresa URL tenanta** zadejte hodnotu ve formátu `https://api.ciscoweb.com/v1/scim/[OrgId]`. Pokud chcete získat `[OrgId]`, přihlaste se do [centra řízení Cisco Webex](https://admin.webex.com/login). V levém dolním rohu klikněte na název vaší organizace a zkopírujte hodnotu z **ID organizace**. 
+6.  Do pole **Adresa URL klienta** zadejte `https://api.ciscoweb.com/v1/scim/[OrgId]`hodnotu ve formě . Chcete-li získat, `[OrgId]`přihlaste se do [centra Cisco Webex Control Hub](https://admin.webex.com/login). Klikněte na název organizace vlevo dole a zkopírujte hodnotu z **ID organizace**. 
 
-    * Pokud chcete získat hodnotu **tajného tokenu**, přejděte na tuto [adresu URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose). Na zobrazené stránce pro přihlášení k WebEx se přihlaste pomocí úplného účtu správce Cisco Webex pro vaši organizaci. Zobrazí se chybová stránka s informací o tom, že lokalita není dostupná, ale je normální.
+    * Chcete-li získat hodnotu **tajného tokenu**, přejděte na tuto [adresu URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose). Na přihlašovací stránce webexu, která se zobrazí, se přihlaste pomocí úplného účtu správce Cisco Webex pro vaši organizaci. Zobrazí se chybová stránka, která říká, že web není dostupný, ale je to normální.
 
-        ![Zřizování Cisco Webex](./media/cisco-webex-provisioning-tutorial/test.png)
+        ![Zřizování společnosti Cisco Webex](./media/cisco-webex-provisioning-tutorial/test.png)
  
-    * Zkopírujte hodnotu vygenerovaného tokenu nosiče z adresy URL, jak je zvýrazněno níže. Tento token je platný po dobu 365 dnů.
+    * Zkopírujte hodnotu generovaného nosného tokenu z adresy URL, jak je zvýrazněno níže. Tento token je platný po dobu 365 dnů.
         
-        ![Zřizování Cisco Webex](./media/cisco-webex-provisioning-tutorial/test1.png)
+        ![Zřizování společnosti Cisco Webex](./media/cisco-webex-provisioning-tutorial/test1.png)
 
-7. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k Cisco Webex. Pokud se připojení nepovede, ujistěte se, že váš účet Cisco Webex má oprávnění správce, a zkuste to znovu.
+7. Po vyplnění polí uvedených v kroku 5 klikněte na **test připojení** a ujistěte se, že Azure AD můžete připojit k Cisco Webex. Pokud se připojení nezdaří, ujistěte se, že váš účet Cisco Webex má oprávnění správce a zkuste to znovu.
 
-    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL klienta + token](common/provisioning-testconnection-tenanturltoken.png)
    
-8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+8. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách při zřizování, a zaškrtněte políčko – **Odeslat e-mailové oznámení, když dojde k chybě**.
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 9. Klikněte na **Uložit**.
 
-10. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelů na Cisco Webex**.
+10. V části **Mapování** vyberte **Synchronizovat uživatele služby Azure Active Directory s webexem Cisco Webex**.
 
-    ![Zřizování Cisco Webex](./media/cisco-webex-provisioning-tutorial/usermapping.png)
+    ![Zřizování společnosti Cisco Webex](./media/cisco-webex-provisioning-tutorial/usermapping.png)
 
-11. Zkontrolujte atributy uživatele synchronizované z Azure AD až Cisco Webex v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Cisco Webex pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+11. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD na Cisco Webex v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v Cisco Webex pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
 
-    ![Zřizování Cisco Webex](./media/cisco-webex-provisioning-tutorial/usermappingattributes.png)
+    ![Zřizování společnosti Cisco Webex](./media/cisco-webex-provisioning-tutorial/usermappingattributes.png)
 
-12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Pokud chcete povolit službu Azure AD Provisioning pro Cisco Webex, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+13. Chcete-li povolit službu zřizování Azure AD pro Cisco Webex, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
 
-14. Definujte uživatele nebo skupiny, které chcete zřídit pro Cisco Webex, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
+14. Definujte uživatele nebo skupiny, které chcete zřídit společnosti Cisco Webex, výběrem požadovaných hodnot v **části Obor.** **Settings**
 
-    ![Rozsah zřizování](common/provisioning-scope.png)
+    ![Obor zřizování](common/provisioning-scope.png)
 
-15. Až budete připraveni zřídit, klikněte na **Uložit**.
+15. Až budete připraveni k zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část **Podrobnosti o synchronizaci** můžete použít ke sledování průběhu a následnému odkazu na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na Cisco Webex.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu zřizování aktivit, která popisuje všechny akce prováděné službou zřizování Azure AD na Cisco Webex.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* Cisco Webex je v současné době ve fázi EFT pro testování v prvním poli společnosti Cisco. Pokud chcete získat další informace, obraťte se na [tým podpory společnosti Cisco](https://www.webex.co.in/support/support-overview.html). 
-* Další informace o konfiguraci Cisco Webex najdete [tady](https://help.webex.com/en-us/aumpbz/Synchronize-Azure-Active-Directory-Users-into-cisco-webex-Control-Hub)v dokumentaci k Cisco.
+* Cisco Webex je v současné době ve fázi early field testing (EFT) společnosti Cisco. Další informace získáte od [týmu podpory společnosti Cisco](https://www.webex.co.in/support/support-overview.html). 
+* Další informace o konfiguraci cisco webex naleznete v dokumentaci společnosti Cisco [zde](https://help.webex.com/en-us/aumpbz/Synchronize-Azure-Active-Directory-Users-into-cisco-webex-Control-Hub).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

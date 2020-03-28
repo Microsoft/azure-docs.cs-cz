@@ -1,67 +1,67 @@
 ---
-title: Kurz – použití šablon pro rychlý Start
-description: Naučte se používat šablony Azure pro rychlý Start k dokončení vývoje šablon.
+title: Kurz – použití šablon rychlého startu
+description: Přečtěte si, jak pomocí šablon Azure QuickStart dokončit vývoj šablon.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1e110bb4711490f53da7628f608f150a2bc3186c
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 8747a4614cb8106ce80c6caef0aae36111d2c384
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79368872"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369851"
 ---
-# <a name="tutorial-use-azure-quickstart-templates"></a>Kurz: použití šablon Azure pro rychlý Start
+# <a name="tutorial-use-azure-quickstart-templates"></a>Kurz: Použití šablon Azure Quickstart
 
-[Šablony Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/) jsou úložištěm, které vám poskytla komunita. Můžete použít ukázkové šablony pro vývoj šablon. V tomto kurzu najdete definici prostředků webu a přidáte ji do své vlastní šablony. Dokončení trvá přibližně **12 minut** .
+[Šablony Azure Quickstart](https://azure.microsoft.com/resources/templates/) je úložiště šablon, do kterých přispěla komunita. Ukázkové šablony můžete použít ve vývoji šablony. V tomto kurzu najdete definici prostředků webu a přidáte ji do vlastní šablony. To trvá asi **12 minut** na dokončení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Doporučujeme, abyste dokončili [kurz týkající se exportovaných šablon](template-tutorial-export-template.md), ale není to nutné.
+Doporučujeme dokončit [kurz o exportovaných šablonách](template-tutorial-export-template.md), ale není to nutné.
 
-Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a buď Azure PowerShell, nebo v rozhraní příkazového řádku Azure. Další informace najdete v tématu [nástroje šablon](template-tutorial-create-first-template.md#get-tools).
+Musíte mít kód Visual Studio s rozšířením Nástroje správce prostředků a buď Azure PowerShell nebo Azure CLI. Další informace naleznete v [tématu nástroje šablony](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Zkontrolovat šablonu
+## <a name="review-template"></a>Šablona revize
 
-Na konci předchozího kurzu má vaše šablona následující JSON:
+Na konci předchozího kurzu měla vaše šablona následující JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json":::
 
-Tato šablona funguje pro nasazení účtů úložiště a plánů služby App Service, ale můžete chtít do ní přidat web. Předem připravené šablony můžete použít k rychlému zjištění formátu JSON, který je potřeba k nasazení prostředku.
+Tato šablona funguje pro nasazení účtů úložiště a plánů služby App Service, ale možná do ní budete chtít přidat web. Pomocí předem vytvořených šablon můžete rychle zjistit JSON, který je nutný pro nasazení prostředku.
 
 ## <a name="find-template"></a>Najít šablonu
 
-1. Otevření [šablon pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/)
-1. Do **Hledat**zadejte **nasazení webové aplikace Linux**.
-1. Vyberte jeden s nadpisem **nasazení základní webové aplikace pro Linux**. Pokud máte potíže s jeho hledáním, tady je [přímý odkaz](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
+1. Otevření [šablon Azure Quickstart](https://azure.microsoft.com/resources/templates/)
+1. Ve **vyhledávání**zadejte **nasazení linuxové webové aplikace**.
+1. Vyberte ten s názvem **Nasadit základní linuxovou webovou aplikaci**. Pokud máte potíže najít, tady je [přímý odkaz](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
 1. Vyberte **Procházet na GitHubu**.
-1. Vyberte **azuredeploy. JSON**.
-1. Zkontrolujte šablonu. Zejména vyhledejte prostředek `Microsoft.Web/sites`.
+1. Vyberte **azuredeploy.json**.
+1. Zkontrolujte šablonu. Zejména vyhledejte `Microsoft.Web/sites` prostředek.
 
-    ![Web rychlý Start pro šablonu Správce prostředků](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
+    ![Web rychlého spuštění šablony Resource Manager](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
 
-## <a name="revise-existing-template"></a>Revidovat existující šablonu
+## <a name="revise-existing-template"></a>Revize existující šablony
 
-Sloučit šablonu pro rychlý Start se stávající šablonou:
+Sloučit šablonu rychlého startu s existující šablonou:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
-Název webové aplikace musí být v rámci Azure jedinečný. Aby nedocházelo k duplicitním názvům, byla proměnná **webAppPortalName** aktualizována z **"webAppPortalName": "[Concat (Parameters (' webAppName '), '-WebApp ')]"** na **"webAppPortalName": "[Concat (Parameters (' webAppName '), uniqueString (resourceName (). ID))]"** .
+Název webové aplikace musí být jedinečný v celém Azure. Aby se zabránilo duplicitním názvům, byla proměnná **webAppPortalName** aktualizována z **"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"** na **"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"**.
 
-Přidejte čárku na konec definice `Microsoft.Web/serverfarms` a oddělte definici prostředků od definice `Microsoft.Web/sites`.
+Přidejte čárku na konci `Microsoft.Web/serverfarms` definice oddělit definici prostředku `Microsoft.Web/sites` od definice.
 
-V tomto novém prostředku si můžete všimnout několika důležitých funkcí.
+V tomto novém prostředku je třeba zaznamenat několik důležitých funkcí.
 
-Všimněte si, že má element s názvem **dependsOn** , který je nastavený na plán služby App Service. Toto nastavení se vyžaduje, protože plán služby App Service musí existovat před vytvořením webové aplikace. Element **dependsOn** oznamuje správce prostředků, jak objednat prostředky pro nasazení.
+Všimněte si, že má prvek s názvem **dependsOn,** který je nastaven na plán služby aplikace. Toto nastavení je povinné, protože plán služby App Service musí existovat před vytvořením webové aplikace. Element **dependsOn** říká Resource Manageru, jak objednat prostředky pro nasazení.
 
-Vlastnost **serverFarmId** používá funkci [ResourceID](template-functions-resource.md#resourceid) . Tato funkce získá jedinečný identifikátor prostředku. V tomto případě získá jedinečný identifikátor plánu služby App Service. Webová aplikace je přidružená k jednomu konkrétnímu plánu služby App Service.
+Vlastnost **serverFarmId** používá funkci [resourceId.](template-functions-resource.md#resourceid) Tato funkce získá jedinečný identifikátor prostředku. V takovém případě získá jedinečný identifikátor pro plán služby aplikace. Webová aplikace je přidružená k jednomu konkrétnímu plánu služby app service.
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
-K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell.
+K nasazení šablony použijte azure CLI nebo Azure PowerShell.
 
-Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+Pokud jste skupinu prostředků nevytvořili, přečtěte si informace [o vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). Příklad předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -77,6 +77,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+Chcete-li spustit tento příkaz nasazení, musíte mít [nejnovější verzi](/cli/azure/install-azure-cli) azure cli.
+
 ```azurecli
 az deployment group create \
   --name addwebapp \
@@ -89,18 +91,18 @@ az deployment group create \
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu prostředků.
+Pokud přecházíte na další kurz, nemusíte odstraňovat skupinu prostředků.
 
-Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
+Pokud nyní zastavujete, můžete chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
 
-1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
+1. Na portálu Azure vyberte **skupinu prostředků** z levé nabídky.
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
 3. Vyberte název skupiny prostředků.
-4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
+4. V horní nabídce vyberte **Odstranit skupinu prostředků.**
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistili jste, jak používat šablonu pro rychlý Start pro vývoj šablon. V dalším kurzu přidáte do prostředků značky.
+Naučili jste se používat šablonu rychlého startu pro vývoj šablony. V dalším kurzu přidáte značky do prostředků.
 
 > [!div class="nextstepaction"]
-> [Přidat značky](template-tutorial-add-tags.md)
+> [Přidání značek](template-tutorial-add-tags.md)

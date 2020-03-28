@@ -1,5 +1,5 @@
 ---
-title: ZASTARALÉ Kurz Azure Container Service – aktualizace aplikace
+title: (ZASTARALÉ) Kurz služby Azure Container Service – aktualizace aplikace
 description: Kurz Azure Container Service – Aktualizace aplikace
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: e65ca30e4f15b6f69f39160c67813047c40ce8ee
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274130"
 ---
-# <a name="deprecated-update-an-application-in-kubernetes"></a>ZASTARALÉ Aktualizace aplikace v Kubernetes
+# <a name="deprecated-update-an-application-in-kubernetes"></a>(ZASTARALÉ) Aktualizace aplikace v Kubernetes
 
 > [!TIP]
-> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: aktualizace aplikace ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
+> Aktualizovanou verzi tohoto kurzu, který používá službu Azure Kubernetes, [najdete v tématu Kurz: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS).](../../aks/tutorial-kubernetes-app-update.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -81,7 +81,7 @@ Přejděte na adresu `http://localhost:8080` a prohlédněte si aktualizovanou a
 
 Označte image `azure-vote-front` pomocí názvu loginServer registru kontejneru. 
 
-Název přihlašovacího serveru získáte pomocí příkazu [az acr list](/cli/azure/acr#az-acr-list).
+Získejte název přihlašovacího serveru pomocí příkazu [az acr list.](/cli/azure/acr#az-acr-list)
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table

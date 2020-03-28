@@ -1,135 +1,137 @@
 ---
 title: Videokurzy mapování toku dat
-description: Seznam výukových kurzů vysvětlujících koncept toku dat pro mapování
+description: Seznam videotutoriálů vysvětlujících koncepty mapování toku dat
 author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 03/04/2020
-ms.openlocfilehash: bb996b0abc16a3d6171c8f7ab2ac0e64dd0c1075
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.date: 03/24/2020
+ms.openlocfilehash: cc0feff48e7da35535e30c6741994f48750d931a
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096794"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80293504"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videokurzy mapování toku dat
 
-Níže je uveden seznam videí s daty o kurzu mapování toku dat vytvořených týmem Azure Data Factory. 
+Níže je seznam mapování tok dat videa vytvořená týmem Azure Data Factory. 
 
-Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce v aktuálním Azure Data Factory uživatelského prostředí přidané nebo jiné funkce.
+Jako aktualizace jsou neustále prováděny na produkt, některé funkce přidali nebo různé funkce v aktuálním uživatelském prostředí Azure Data Factory.
 
-## <a name="getting-started"></a>začínáme
+## <a name="getting-started"></a>Začínáme
 
-[Začínáme s mapováním toků dat v Azure Data Factory](http://youtu.be/MFw7t_8tuV4)
+[Začínáme s mapováním datových toků v Azure Data Factory](http://youtu.be/MFw7t_8tuV4)
 
-## <a name="debugging-and-developing-mapping-data-flows"></a>Ladění a vývoj toků dat mapování
+## <a name="debugging-and-developing-mapping-data-flows"></a>Ladění a vývoj toků mapových dat
 
-[Ladění a testování toků dat mapování](https://www.youtube.com/watch?v=3ANxyvDGfjA)
+[Ladění a testování toků dat mapování](https://www.youtube.com/watch?v=3ANxyvDGfjA).
 
 [Zkoumání dat](https://www.youtube.com/watch?v=En1ztyh5GaA)
 
-[Rychlé akce v náhledu dat](https://www.youtube.com/watch?v=CP0TnNmaLA0)
+[Rychlé akce náhledu dat](https://www.youtube.com/watch?v=CP0TnNmaLA0)
 
-[Monitorování a Správa výkonu toku dat mapování](https://www.youtube.com/watch?v=fktIWdJiqTk)
+[Sledování a správa výkonu toku dat mapování](https://www.youtube.com/watch?v=fktIWdJiqTk)
 
-[Časování srovnávacích testů](http://youtu.be/6CSbWm4lRhw?hd=1)
+[Časování benchmarků](http://youtu.be/6CSbWm4lRhw?hd=1)
 
 ## <a name="transformation-overviews"></a>Přehledy transformace
 
 [Agregovaná transformace](http://youtu.be/jdL75xIr98I)
 
-[ALTER Row Transform](https://www.youtube.com/watch?v=4ktoohwptmQ)
+[Změnit transformaci řádku](https://www.youtube.com/watch?v=4ktoohwptmQ)
 
 [Odvozená transformace sloupce](https://www.youtube.com/watch?v=FFCbU4ujCiY)
 
-[Transformace spojení](https://www.youtube.com/watch?v=zukwayEXRtg)
+[Spojit transformaci](https://www.youtube.com/watch?v=zukwayEXRtg)
 
-[Vzor pro samočinné spojení](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
+[Vzor vlastního spojení](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
 
 [Transformace vyhledávání](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 
 [Transformace pivotu](https://www.youtube.com/watch?v=Tua14ZQA3F8&t=34s)
 
-[Transformace pivotu: mapování sloupců se sloupci](https://youtu.be/5MygzCX0wnM)
+[Transformace kontingenčního pole: mapování posunutých sloupců](https://youtu.be/5MygzCX0wnM)
 
 [Vybrat transformaci](http://youtu.be/F9VjQ_YyRyU?hd=1)
 
-[Výběr transformace: mapování na základě pravidel](https://youtu.be/5lf1lh1qMwU)
+[Vybrat transformaci: Mapování založené na pravidlech](https://youtu.be/5lf1lh1qMwU)
 
 [Transformace náhradního klíče](https://www.youtube.com/watch?v=ISpegL9CbTM)
 
-[Transformace sjednocení](http://youtu.be/_Et6mg1tEr8?hd=1)
+[Transformace Unie](http://youtu.be/_Et6mg1tEr8?hd=1)
 
-[Transformace Unpivot](http://youtu.be/KFYkxcpB8b0?hd=1)
+[Unpivot transformace](http://youtu.be/KFYkxcpB8b0?hd=1)
 
 [Transformace okna](https://www.youtube.com/watch?v=m6zgbtY5AYQ)
 
-[Filtrovat transformaci](https://youtu.be/OhbKDOXSfeE)
+[Transformace filtru](https://youtu.be/OhbKDOXSfeE)
 
-[Podmíněná transformace rozdělení](http://youtu.be/W1lQHojhKZw?hd=1)
+[Podmíněná rozdělení transformace](http://youtu.be/W1lQHojhKZw?hd=1)
 
 [Existuje transformace](http://youtu.be/GS8JVgNBMfs?hd=1)
 
 [Dynamická spojení a dynamická vyhledávání](https://youtu.be/CMOPPie9bXM)
 
-[Transformace sloučení](https://youtu.be/VY2tFQJoAXE)
+[Vyrovnat transformaci](https://youtu.be/VY2tFQJoAXE)
 
-## <a name="source-and-sink"></a>Zdroj a jímka
+## <a name="source-and-sink"></a>Zdroj a umyvadlo
 
-[Čtení a zápis JSON](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
+[Čtení a psaní JSONs](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
 
-[Textové soubory Parquet a s oddělovači](https://youtu.be/V_2a60j2Kjo)
+[Parkety a oddělené textové soubory](https://youtu.be/V_2a60j2Kjo)
 
 [Konektor CosmosDB](http://youtu.be/plp1etT2ftY?hd=1)
 
-[Odvodit datové typy v textových souborech s oddělovači](https://www.youtube.com/watch?v=nJjRzlFktlA)
+[Odvodit datové typy v oddělených textových souborech](https://www.youtube.com/watch?v=nJjRzlFktlA)
 
-[Čtení a zápis dělených souborů](https://www.youtube.com/watch?v=7Q-db4Qgc4M)
+[Čtení a zápis rozdělených souborů](https://www.youtube.com/watch?v=7Q-db4Qgc4M)
 
 [Transformace a vytvoření více tabulek SQL](https://www.youtube.com/watch?v=Sj15Yjwai1A)
 
-[Rozdělit soubory do oddílů v Data Lake](https://youtu.be/VNWv-MvLQ_0)
+[Rozdělení souborů v datovém jezeře](https://youtu.be/VNWv-MvLQ_0)
 
 [Vzor načítání datového skladu](https://www.youtube.com/watch?v=7mLqwtmeQFg)
 
-## <a name="optimizing-mapping-data-flows"></a>Optimalizace toků dat mapování
+## <a name="optimizing-mapping-data-flows"></a>Optimalizace toků mapových dat
 
-[Datové řádky](https://www.youtube.com/watch?v=5KvqYF-y93s)
+[Rodokmen dat](https://www.youtube.com/watch?v=5KvqYF-y93s)
 
 [Tipy pro optimalizaci](https://www.youtube.com/watch?v=a2KtwUJngHo)
 
-[Iterovat soubory s parametry](http://youtu.be/uEgz0ptYRDM?hd=1)
+[Iterátové soubory s parametry](http://youtu.be/uEgz0ptYRDM?hd=1)
 
-[Zkrátit časy zahájení](https://youtu.be/FFCbU4ujCiY?t=528)
+[Snížení doby spuštění](https://youtu.be/FFCbU4ujCiY?t=528)
 
-[Výkon databáze SQL](https://youtu.be/iyZT5CY3V_4)
+[Výkon sql db](https://youtu.be/iyZT5CY3V_4)
 
 [Protokolování a auditování](https://www.youtube.com/watch?v=UC__LOyuf8M)
 
+[Dynamicky optimalizovaná velikost clusteru toku dat za běhu](https://www.youtube.com/watch?v=jWSkJdtiJNM)
+
 ## <a name="mapping-data-flow-scenarios"></a>Mapování scénářů toku dat
 
-[Nepřibližná vyhledávání](http://youtu.be/7gdwExjHBbw)
+[Fuzzy vyhledávání](http://youtu.be/7gdwExjHBbw)
 
-[Vzor testovacích dat](https://youtu.be/mZLKdyoL3Mo)
+[Pracovní datový vzor](https://youtu.be/mZLKdyoL3Mo)
 
-[Vzor vyčištění adres](https://youtu.be/axEYbuU3lmw)
+[Vzor čistých adres](https://youtu.be/axEYbuU3lmw)
 
-[Odstranění duplicitních](https://www.youtube.com/watch?v=OLenvYwg__I)
+[Odstranění duplicit](https://www.youtube.com/watch?v=OLenvYwg__I)
 
-[Sloučit soubory](http://youtu.be/WbDTBAyYte8)
+[Sloučení souborů](http://youtu.be/WbDTBAyYte8)
 
-[Pomalé změny dimenzí typ 1: přepsat](http://youtu.be/Rz2zx5GRbrA)
+[Pomalu se měnící rozměry typu 1: přepsání](http://youtu.be/Rz2zx5GRbrA)
 
-[Pomalé změny dimenzí typ 2: historie](http://youtu.be/123CptslKvU)
+[Pomalu se měnící rozměry typu 2: historie](http://youtu.be/123CptslKvU)
 
-[Načítání tabulek faktů](http://youtu.be/ABG3X9pgFPQ)
+[Načítání tabulky faktů](http://youtu.be/ABG3X9pgFPQ)
 
-[Transformace SQL Server Prem se vzorem načítání rozdílových dat](https://youtu.be/IN-4v0e7UIs)
+[Transformace serveru SQL Server on-prem pomocí vzoru načítání rozdílových dat](https://youtu.be/IN-4v0e7UIs)
 
 [Parametrizace](https://www.youtube.com/watch?v=vpuuQcFojt8)
 
-[Počet řádků & řádků DISTINCT](https://youtu.be/ryYo8UFUgTI)
+[Počet odlišných řádků & řádků](https://youtu.be/ryYo8UFUgTI)
 
 [Zpracování chyb zkrácení](http://youtu.be/sPpcSiKQz34)
 
@@ -139,12 +141,14 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 
 [Logické modely vs. fyzické modely](http://youtu.be/K5tgzLjEE9Q)
 
-[Detekovat změny zdrojových dat](http://youtu.be/CaxIlI7oXfI?hd=1)
+[Zjišťování změn zdrojových dat](http://youtu.be/CaxIlI7oXfI?hd=1)
 
 ## <a name="data-flow-expressions"></a>Výrazy toku dat
 
-[Výrazy pro datum a čas](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)
+[Výrazy data a času](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)
 
-[Rozdělení polí a příkazů Case](https://www.youtube.com/watch?v=DHNH8ZO7YjI)
+[Rozdělení polí a příkazu k případu](https://www.youtube.com/watch?v=DHNH8ZO7YjI)
 
 [Zábava s interpolací řetězců a parametry](https://youtu.be/hb3-cn2CMgM)
+
+[Úvod skriptu toku dat: Kopírování, vkládání, výstřižky](https://www.youtube.com/watch?v=3_1I4XdoBKQ)

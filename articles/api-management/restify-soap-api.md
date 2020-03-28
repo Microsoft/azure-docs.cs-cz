@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: a2bec6401ae3ac53f46e92e9be38abf57a92163d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74108098"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>Import rozhraní API protokolu SOAP a převod na REST
@@ -36,18 +36,18 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Import a publikování back-endového rozhraní API
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Import a publikování rozhraní API back-endu
 
 1. V části **API MANAGEMENT** vyberte **rozhraní API**.
-2. V seznamu **Přidat nové rozhraní API** vyberte **WSDL**.
+2. Vyberte **WSDL** ze seznamu **Přidat nové rozhraní API**.
 
     ![Rozhraní API protokolu SOAP](./media/restify-soap-api/wsdl-api.png)
-3. Do pole **Specifikace WSDL** zadejte adresu URL s vaším rozhraním API protokolu SOAP.
+3. Do **Specifikace WSDL** zadejte adresu URL, kde se nachází rozhraní API SOAP.
 4. Klikněte na přepínač **Ze SOAP do REST**. Po kliknutí na tuto možnost se služba APIM pokusí provést automatickou transformaci mezi XML a JSON. V tomto případě by příjemci měli rozhraní API volat jako rozhraní RESTful API, které vrací JSON. Služba APIM převádí každý požadavek na volání SOAP.
 
     ![Ze SOAP do REST](./media/restify-soap-api/soap-to-rest.png)
 
-5. Stiskněte tabulátor.
+5. Stiskněte klávesu Tab.
 
     Následující pole se vyplní informacemi z rozhraní API SOAP: Zobrazovaný název, Název, Popis.
 6. Přidejte příponu adresy URL rozhraní API. Přípona je název, který identifikuje toto konkrétní rozhraní API v této instanci APIM. Musí být v této instanci APIM jedinečná.
@@ -58,10 +58,10 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
     Ve výchozím nastavení každá instance služby API Management obsahuje dva ukázkové produkty:
 
     * **Starter**
-    * **Unlimited**   
+    * **Neomezené**   
 10. Vyberte **Vytvořit**.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>Otestujte nové rozhraní API v Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Testování nového rozhraní API na webu Azure Portal
 
 Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodlný způsob pro zobrazení a testování operací v rozhraní API.  
 

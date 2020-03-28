@@ -1,6 +1,6 @@
 ---
-title: Ukázky Azure PowerShell – vytvoření základní sady škálování virtuálních počítačů
-description: Tento skript vytvoří sadu škálování virtuálního počítače Azure s Windows serverem 2016, ke které máte přístup prostřednictvím protokolu RDP.
+title: Ukázky prostředí Azure PowerShell – vytvoření základní škálovací sady virtuálních strojů
+description: Tento skript vytvoří škálovací sadu virtuálních strojů Azure se systémem Windows Server 2016, ke kterému máte přístup prostřednictvím rdp.
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 123ba8ef931113b2c822fb1d02fa51e1d085c90e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76276581"
 ---
 # <a name="create-a-basic-virtual-machine-scale-set-with-powershell"></a>Vytvoření základní škálovací sady virtuálních počítačů pomocí PowerShellu
@@ -39,7 +39,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzVmss](/powershell/module/az.compute/new-azvmss) | Vytvoří škálovací sadu virtuálních počítačů a všechny podpůrné prostředky, včetně virtuální sítě, nástroje pro vyrovnávání zatížení a pravidel překladu adres. |
+| [Nový-AzVmss](/powershell/module/az.compute/new-azvmss) | Vytvoří škálovací sadu virtuálních počítačů a všechny podpůrné prostředky, včetně virtuální sítě, nástroje pro vyrovnávání zatížení a pravidel překladu adres. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
 ## <a name="next-steps"></a>Další kroky

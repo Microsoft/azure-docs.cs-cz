@@ -1,6 +1,6 @@
 ---
-title: Ukázka Azure CLI – vytvoření virtuálního počítače Azure se spuštěným Azure Monitor
-description: Ukázka Azure CLI – vytvoření virtuálního počítače Azure se spuštěným virtuálním počítačem s Windows serverem 2016 a Azure Monitor.
+title: Ukázka azure cli – vytvoření virtuálního počítače Azure se systémem Azure Monitor
+description: Ukázka nastavení řízení vybraných příkazových od lože Azure – vytvořte virtuální počítač Azure se systémem Windows Server 2016 VM a Azure Monitor.
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -17,13 +17,13 @@ ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
 ms.openlocfilehash: 77c5996a11b5223778bf0efbe33250f0db9f74f3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74039909"
 ---
-# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Monitorování virtuálního počítače pomocí protokolů Azure Monitor
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Monitorování virtuálního počítače pomocí protokolů Azure Monitoru
 
 Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Log Analytics a zaregistruje systém v pracovním prostoru služby Log Analytics. Po spuštění skriptu bude virtuální počítač viditelný v monitorování Azure.
 
@@ -47,7 +47,7 @@ az group delete --name myResourceGroup --yes
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |

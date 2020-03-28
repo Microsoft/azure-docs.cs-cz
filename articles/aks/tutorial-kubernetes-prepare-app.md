@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77593156"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Kurz: Příprava aplikace pro službu Azure Kubernetes Service (AKS)
@@ -25,13 +25,13 @@ Po dokončení bude ve vašem místním vývojovém prostředí spuštěná nás
 
 ![Obrázek clusteru Kubernetes v Azure](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
-V dalších kurzech se image kontejneru nahraje do Azure Container Registry a pak se nasadí do clusteru AKS.
+V dalších kurzech image kontejneru se nahraje do registru kontejnerů Azure a pak se nasadí do clusteru AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a příkazy `docker`. Základní informace o kontejnerech najdete v článku [Get started with Docker][docker-get-started] (Začínáme s Dockerem).
 
-K dokončení tohoto kurzu potřebujete místní vývojové prostředí pro Docker se spuštěnými kontejnery Linuxu. Docker poskytuje balíčky, které konfigurují Docker v systému [Mac][docker-for-mac], [Windows][docker-for-windows]nebo [Linux][docker-for-linux] .
+K dokončení tohoto kurzu potřebujete místní vývojové prostředí pro Docker se spuštěnými kontejnery Linuxu. Docker nabízí balíčky pro konfiguraci Dockeru v systému [Mac][docker-for-mac], [Windows][docker-for-windows] nebo [Linux][docker-for-linux].
 
 Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kroků v těchto kurzech. Proto doporučujeme použít úplné vývojové prostředí pro Docker.
 
@@ -45,7 +45,7 @@ Pomocí příkazu [git][] naklonujte ukázkovou aplikaci do svého vývojového 
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Přejděte do klonovaného adresáře.
+Změnit na klonovaný adresář.
 
 ```console
 cd azure-voting-app-redis
@@ -55,7 +55,7 @@ Tento adresář obsahuje zdrojový kód aplikace, předem vytvořený soubor Doc
 
 ## <a name="create-container-images"></a>Vytváření imagí kontejneru
 
-[Docker Compose][docker-compose] lze použít k automatizaci vytváření imagí kontejnerů a nasazování aplikací s více kontejnery.
+[Docker Compose][docker-compose] je možné použít k automatizaci sestavování imagí kontejnerů a nasazování vícekontejnerových aplikací.
 
 Pomocí ukázkového souboru `docker-compose.yaml` vytvořte image kontejneru, stáhněte image Redis a spusťte aplikaci:
 
@@ -74,7 +74,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Spuštěním příkazu [Docker PS][docker-ps] Zobrazte spuštěné kontejnery:
+Spuštěním příkazu [docker ps][docker-ps] zobrazte spuštěné kontejnery:
 
 ```
 $ docker ps
@@ -94,13 +94,13 @@ Pokud chcete zobrazit spuštěnou aplikaci, zadejte v místním webovém prohlí
 
 Teď, když jste ověřili funkčnost aplikace, můžete zastavit a odebrat spuštěné kontejnery. Neodstraňujte image kontejnerů – v dalším kurzu se image *azure-vote-front* nahraje do instance služby Azure Container Registry.
 
-Zastavte a odeberte instance kontejnerů a prostředky pomocí příkazu [Docker – vytvořit][docker-compose-down] příkaz:
+Zastavte a odeberte instance kontejnerů a související prostředky pomocí příkazu [docker-compose down][docker-compose-down]:
 
 ```console
 docker-compose down
 ```
 
-Po odebrání místní aplikace máte k dispozici image Docker, která obsahuje hlasovací aplikaci Azure, *hlasování pro Azure*pro použití s dalším kurzem.
+Po odebrání místní aplikace máte image Dockeru, která obsahuje aplikaci Azure Vote, *azure-vote-front*, pro použití s dalším kurzem.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -125,7 +125,7 @@ V dalším kurzu se dozvíte, jak ukládat image do služby Azure Container Regi
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
 [docker-ps]: https://docs.docker.com/engine/reference/commandline/ps/
 [docker-compose-down]: https://docs.docker.com/compose/reference/down
-[git]: https://git-scm.com/downloads
+[Git]: https://git-scm.com/downloads
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md

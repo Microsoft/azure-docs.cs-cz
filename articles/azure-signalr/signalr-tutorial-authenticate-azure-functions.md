@@ -1,16 +1,16 @@
 ---
-title: 'Kurz: ověřování pomocí Azure Functions – signál Azure'
-description: V tomto kurzu se naučíte ověřovat klienty služby Azure Signal Service pro Azure Functions vazby.
+title: 'Kurz: Ověřování pomocí funkcí Azure – Azure SignalR'
+description: V tomto kurzu se dozvíte, jak ověřit azure signalr služby klientů pro azure functions vazby
 author: sffamily
 ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: dfa17720b34962611d240aa7c35ba8092bf99082
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158142"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Kurz: Ověřování služby Azure SignalR s využitím služby Azure Functions
@@ -45,26 +45,26 @@ Přejděte na web [Azure Portal](https://portal.azure.com/) a přihlaste se pomo
 
 Místně sestavíte a otestujete aplikaci Azure Functions. Tato aplikace bude mít přístup k instanci služby SignalR v Azure, kterou je potřeba vytvořit předem.
 
-1. Klikněte na tlačítko **Vytvořit prostředek** ( **+** ) a vytvořte nový prostředek Azure.
+1. Klikněte na tlačítko**+** Vytvořit **prostředek** ( ) pro vytvoření nového prostředku Azure.
 
-1. Vyhledejte a vyberte **službu SignalR**. Klikněte na možnost **Vytvořit**.
+1. Vyhledejte a vyberte **službu SignalR**. Klikněte na **Vytvořit**.
 
     ![Nová služba SignalR](media/signalr-tutorial-authenticate-azure-functions/signalr-quickstart-new.png)
 
 1. Zadejte následující informace.
 
-    | Název | Hodnota |
+    | Name (Název) | Hodnota |
     |---|---|
     | Název prostředku | Jedinečný název instance služby SignalR |
-    | Skupina prostředků | Vytvořte novou skupinu prostředků s jedinečným názvem. |
+    | Skupina prostředků | Vytvoření nové skupiny prostředků s jedinečným názvem |
     | Umístění | Vyberte umístění, které je blízko vás. |
     | Cenová úroveň | Free |
 
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 
-1. Po nasazení instance ho otevřete na portálu a najděte jeho stránku nastavení. Změňte nastavení režimu služby na možnost bez *serveru*.
+1. Po nasazení instance ji otevřete na portálu a vyhledejte její stránku Nastavení. Změňte nastavení servisního režimu na *Bezserveru*.
 
-    ![Režim služby Signal](media/signalr-concept-azure-functions/signalr-service-mode.png)
+    ![Servisní režim SignalR](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
 
 ## <a name="initialize-the-function-app"></a>Inicializace aplikace funkcí
@@ -85,7 +85,7 @@ Místně sestavíte a otestujete aplikaci Azure Functions. Tato aplikace bude m�
 
 V tomto kurzu se k interakci se službou Azure SignalR používají vazby služby Azure Functions. Podobně jako většina ostatních vazeb jsou vazby služby SignalR dostupné jako rozšíření, které je před použitím potřeba nainstalovat pomocí rozhraní příkazového řádku nástrojů Azure Functions Core.
 
-1. Kliknutím na **zobrazit > terminálu** v nabídce (Ctrl-\`) otevřete terminál v vs Code.
+1. Otevřete terminál v VS Code výběrem **možnosti** Zobrazit\`> terminál v nabídce (Ctrl- ).
 
 1. Ujistěte se, že je aktuálním adresářem hlavní složka projektu.
 
@@ -120,11 +120,11 @@ Při místním spouštění a ladění modulu runtime služby Azure Functions se
     ```
 
    * Do nastavení `AzureSignalRConnectionString` zadejte připojovací řetězec služby Azure SignalR. Tuto hodnotu získáte na stránce **Klíče** v prostředku služby Azure SignalR na webu Azure Portal. Můžete použít primární nebo sekundární připojovací řetězec.
-   * Nastavení `WEBSITE_NODE_DEFAULT_VERSION` se místně nepoužívá, ale vyžaduje si při nasazení do Azure.
+   * Nastavení `WEBSITE_NODE_DEFAULT_VERSION` se místně nepoužívá, ale vyžaduje se při nasazení do Azure.
    * V části `Host` se konfigurují nastavení portu a CORS pro místního hostitele služby Functions (při spuštění v Azure nemá toto nastavení žádný vliv).
 
        > [!NOTE]
-       > Živý Server je obvykle nakonfigurovaný pro poskytování obsahu z `http://127.0.0.1:5500`. Pokud zjistíte, že používá jinou adresu URL nebo používáte jiný server HTTP, změňte nastavení `CORS` tak, aby odráželo správný původ.
+       > Live Server je obvykle konfigurován `http://127.0.0.1:5500`tak, aby zobrazoval obsah z aplikace . Pokud zjistíte, že používá jinou adresu URL nebo používáte `CORS` jiný server HTTP, změňte nastavení tak, aby odráželo správný původ.
 
      ![Získání klíče služby SignalR](media/signalr-tutorial-authenticate-azure-functions/signalr-get-key.png)
 
@@ -134,10 +134,10 @@ Při místním spouštění a ladění modulu runtime služby Azure Functions se
 
 ## <a name="create-a-function-to-authenticate-users-to-signalr-service"></a>Vytvoření funkce pro ověřování uživatelů ve službě SignalR
 
-Při prvním otevření chatovací aplikace v prohlížeči se vyžadují platné přihlašovací údaje pro připojení ke službě Azure SignalR. Ve vaší aplikaci Function App vytvoříte funkci aktivovanou protokolem HTTP s názvem *Negotiate* a vrátíte tyto informace o připojení.
+Při prvním otevření chatovací aplikace v prohlížeči se vyžadují platné přihlašovací údaje pro připojení ke službě Azure SignalR. Vytvoříte funkci aktivovanou protokolem HTTP s názvem *negotiate* ve vaší aplikaci funkce, která vrátí tyto informace o připojení.
 
 > [!NOTE]
-> Tato funkce musí být pojmenována jako *Negotiate* , protože klient signalizace vyžaduje koncový bod, který končí v `/negotiate`.
+> Tato funkce musí být pojmenována *negotiate* jako klient SignalR vyžaduje koncový bod, který končí v `/negotiate`.
 
 1. Otevřete paletu příkazů VS Code (`Ctrl-Shift-P`, macOS: `Cmd-Shift-P`).
 
@@ -145,16 +145,16 @@ Při prvním otevření chatovací aplikace v prohlížeči se vyžadují platn�
 
 1. Po zobrazení výzvy zadejte tyto informace.
 
-    | Název | Hodnota |
+    | Name (Název) | Hodnota |
     |---|---|
     | Složka aplikace funkcí | Vyberte hlavní složku projektu. |
     | Šablona | Trigger HTTP |
-    | Název | Mluví |
+    | Name (Název) | negotiate |
     | Úroveň autorizace | Anonymní |
 
-    Vytvoří se složka s názvem **Negotiate** , která obsahuje novou funkci.
+    Je vytvořena složka s názvem **negotiate,** která obsahuje novou funkci.
 
-1. Chcete-li konfigurovat vazby pro funkci, otevřete **funkci Negotiate/Function. JSON** . Následujícím způsobem upravte obsah souboru. Tím se přidá vstupní vazba, která vygeneruje platné přihlašovací údaje pro připojení klienta k centru služby Azure SignalR `chat`.
+1. Otevřete **soubor negotiate/function.json** a nakonfigurujte vazby pro funkci. Následujícím způsobem upravte obsah souboru. Tím se přidá vstupní vazba, která vygeneruje platné přihlašovací údaje pro připojení klienta k centru služby Azure SignalR `chat`.
 
     ```json
     {
@@ -184,7 +184,7 @@ Při prvním otevření chatovací aplikace v prohlížeči se vyžadují platn�
 
     Vlastnost `userId` ve vazbě `signalRConnectionInfo` slouží k vytvoření ověřeného připojení ke službě SignalR. Pro účely místního vývoje ponechte tuto vlastnost prázdnou. Použijete ji při nasazování aplikace funkcí do Azure.
 
-1. Otevřete **Negotiate/index. js** , abyste zobrazili tělo funkce. Následujícím způsobem upravte obsah souboru.
+1. Otevřete **soubor negotiate/index.js** a zobrazte tělo funkce. Následujícím způsobem upravte obsah souboru.
 
     ```javascript
     module.exports = async function (context, req, connectionInfo) {
@@ -192,7 +192,7 @@ Při prvním otevření chatovací aplikace v prohlížeči se vyžadují platn�
     };
     ```
 
-    Tato funkce převezme ze vstupní vazby informace o připojení ke službě SignalR a vrátí je klientovi v textu odpovědi HTTP. Klient nástroje Signal použije tyto informace pro připojení k instanci služby signalizace.
+    Tato funkce převezme ze vstupní vazby informace o připojení ke službě SignalR a vrátí je klientovi v textu odpovědi HTTP. Klient SignalR použije tyto informace k připojení k instanci služby SignalR.
 
 ## <a name="create-a-function-to-send-chat-messages"></a>Vytvoření funkce pro odesílání zpráv chatu
 
@@ -204,11 +204,11 @@ Webová aplikace k odesílání zpráv chatu vyžaduje také rozhraní HTTP API.
 
 1. Po zobrazení výzvy zadejte tyto informace.
 
-    | Název | Hodnota |
+    | Name (Název) | Hodnota |
     |---|---|
     | Složka aplikace funkcí | Vyberte hlavní složku projektu. |
     | Šablona | Trigger HTTP |
-    | Název | SendMessage |
+    | Name (Název) | SendMessage |
     | Úroveň autorizace | Anonymní |
 
     Vytvoří se složka **SendMessage** obsahující novou funkci.
@@ -244,7 +244,7 @@ Webová aplikace k odesílání zpráv chatu vyžaduje také rozhraní HTTP API.
     ```
     U původní funkce se provedou dvě změny:
     * Trasa se změní na `messages` a trigger HTTP se omezí na metodu HTTP **POST**.
-    * Přidá výstupní vazbu služby signalizace, která odešle zprávu vrácenou funkcí všem klientům připojeným k centru služeb signalizace s názvem `chat`.
+    * Přidá výstupní vazbu služby SignalR, která odešle zprávu vrácenou funkcí `chat`všem klientům připojeným k rozbočovači služby SignalR s názvem .
 
 1. Uložte soubor.
 
@@ -283,7 +283,7 @@ Uživatelské rozhraní chatovací aplikace je jednoduchá jednostránková apli
 
 1. Ve složce **content** vytvořte nový soubor **index.html**.
 
-1. Zkopírujte a vložte do něj obsah souboru **[index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/2720a9a565e925db09ef972505e1c5a7a3765be4/docs/demo/chat-with-auth/index.html)** .
+1. Zkopírujte a vložte do něj obsah souboru **[index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/2720a9a565e925db09ef972505e1c5a7a3765be4/docs/demo/chat-with-auth/index.html)**.
 
 1. Uložte soubor.
 
@@ -307,40 +307,40 @@ Spustili jste aplikaci funkcí a chatovací aplikaci v místním prostředí. Te
 
 ### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
-Aplikace Function App běžící v Azure vyžaduje účet Azure Storage. Také budete hostovat webovou stránku pro uživatelské rozhraní chatu pomocí funkce static websites služby Azure Storage.
+Účet Azure Storage vyžaduje aplikace s funkcí spuštěná v Azure. You will also host the web page for the chat UI using the static websites feature of Azure Storage.
 
-1. V Azure Portal klikněte na tlačítko **vytvořit prostředek** ( **+** ) pro vytvoření nového prostředku Azure.
+1. Na webu Azure Portal klikněte na**+** tlačítko Vytvořit **prostředek** ( ) pro vytvoření nového prostředku Azure.
 
-1. Vyberte kategorii **úložiště** a pak vyberte **účet úložiště**.
+1. Vyberte kategorii **Úložiště** a pak vyberte **Účet úložiště**.
 
 1. Zadejte následující informace.
 
-    | Název | Hodnota |
+    | Name (Název) | Hodnota |
     |---|---|
-    | Předplatné | Vyberte předplatné, které obsahuje instanci služby signalizace. |
-    | Skupina prostředků | Vyberte stejnou skupinu prostředků. |
-    | Název prostředku | Jedinečný název pro účet úložiště |
-    | Umístění | Vyberte stejné umístění jako ostatní prostředky. |
+    | Předplatné | Vyberte předplatné obsahující instanci služby SignalR. |
+    | Skupina prostředků | Vybrat stejnou skupinu prostředků |
+    | Název prostředku | Jedinečný název účtu úložiště |
+    | Umístění | Výběr stejného umístění jako ostatní zdroje |
     | Výkon | Standard |
     | Account kind (Druh účtu) | StorageV2 (obecné účely V2) |
     | Replikace | Místně redundantní úložiště (LRS) |
     | Úroveň přístupu | Hot |
 
-1. Klikněte na tlačítko **zkontrolovat + vytvořit**a pak **vytvořit**.
+1. Klepněte na tlačítko **Revize + vytvořit**a potom na tlačítko **Vytvořit**.
 
 ### <a name="configure-static-websites"></a>Konfigurace statických webů
 
-1. Po vytvoření účtu úložiště ho otevřete v Azure Portal.
+1. Po vytvoření účtu úložiště ho otevřete na webu Azure Portal.
 
-1. Vyberte možnost **statický web**.
+1. Vyberte **statický web**.
 
-1. Pokud chcete povolit funkci statického webu, vyberte **povoleno** .
+1. Chcete-li povolit statickou funkci webu, vyberte **možnost Povoleno.**
 
-1. Do **rejstříkového dokumentu název**zadejte *index. html*.
+1. Do **pole Rejstříkový název dokumentu**zadejte soubor *index.html*.
 
-1. Klikněte na možnost **Uložit**.
+1. Klikněte na **Uložit**.
 
-1. Zobrazí se **primární koncový bod** . Poznamenejte si tuto hodnotu. Bude se muset nakonfigurovat aplikace Function App.
+1. Zobrazí **se primární koncový bod.** Poznamenejte si tuto hodnotu. Bude nutné nakonfigurovat aplikaci funkce.
 
 ### <a name="configure-function-app-for-authentication"></a>Konfigurace ověřování v aplikaci funkcí
 
@@ -348,9 +348,9 @@ Chatovací aplikace zatím funguje anonymně. V Azure k ověření uživatele po
 
 Při odesílání zprávy může aplikace určit, jestli se má zpráva odeslat všem připojeným klientům, nebo pouze klientům ověřeným pro daného uživatele.
 
-1. V VS Code otevřete příkaz **Negotiate/Function. JSON**.
+1. V kódu VS otevřete **negotiate/function.json**.
 
-1. Do vlastnosti [userId](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings) vazby *SignalRConnectionInfo* vložte *výraz vazby*: `{headers.x-ms-client-principal-name}`. Tím se hodnota vlastnosti nastaví na uživatelské jméno ověřeného uživatele. Atribut by teď měl vypadat takto:
+1. Do vlastnosti *userId* vazby *SignalRConnectionInfo* vložte [výraz vazby](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings): `{headers.x-ms-client-principal-name}`. Tím se hodnota vlastnosti nastaví na uživatelské jméno ověřeného uživatele. Atribut by teď měl vypadat takto:
 
     ```json
     {
@@ -365,13 +365,13 @@ Při odesílání zprávy může aplikace určit, jestli se má zpráva odeslat 
 1. Uložte soubor.
 
 
-### <a name="deploy-function-app-to-azure"></a>Nasazení aplikace Function App do Azure
+### <a name="deploy-function-app-to-azure"></a>Nasazení aplikace funkcí do Azure
 
 1. Otevřete paletu příkazů VS Code (`Ctrl-Shift-P`, macOS: `Cmd-Shift-P`) a vyberte **Azure Functions: Deploy to Function App** (Azure Functions: Nasadit do aplikace Function App).
 
 1. Po zobrazení výzvy zadejte tyto informace.
 
-    | Název | Hodnota |
+    | Name (Název) | Hodnota |
     |---|---|
     | Složka k nasazení | Vyberte hlavní složku projektu. |
     | Předplatné | Vyberte své předplatné. |
@@ -390,7 +390,7 @@ Při odesílání zprávy může aplikace určit, jestli se má zpráva odeslat 
 
 1. Po zobrazení výzvy zadejte tyto informace.
 
-    | Název | Hodnota |
+    | Name (Název) | Hodnota |
     |---|---|
     | Soubor místního nastavení | local.settings.json |
     | Předplatné | Vyberte své předplatné. |
@@ -409,7 +409,7 @@ Ověřování pomocí služby App Service podporuje ověřování přes Azure Ac
 
 1. Výběrem předplatného a názvu aplikace funkcí otevřete aplikaci funkcí na webu Azure Portal.
 
-1. V aplikaci Function App, která se otevřela na portálu, najděte kartu **funkce platformy** , vyberte **ověřování/autorizace**.
+1. V aplikaci funkce, která byla otevřena na portálu, vyhledejte kartu **Funkce platformy** a vyberte **Ověřování/Autorizace**.
 
 1. Nastavte ověřování pomocí služby App Service na **Zapnuto**.
 
@@ -445,33 +445,33 @@ K hostování webové aplikace využijeme funkci statického webu ve službě Az
 
 1. Otevřete paletu příkazů VS Code (`Ctrl-Shift-P`, macOS: `Cmd-Shift-P`).
 
-1. Vyhledejte a vyberte příkaz **Azure Storage: nasadit do statického webu** .
+1. Vyhledejte a vyberte příkaz **Úložiště Azure: Nasazení na statický web.**
 
 1. Zadejte následující hodnoty:
 
-    | Název | Hodnota |
+    | Name (Název) | Hodnota |
     |---|---|
     | Předplatné | Vyberte své předplatné. |
     | Účet úložiště | Vyberte účet úložiště, který jste vytvořili dříve. |
-    | Složka k nasazení | Vyberte **Procházet** a vyberte složku *obsahu* . |
+    | Složka k nasazení | Vyberte **Procházet** a vyberte složku *obsahu.* |
 
-Soubory ve složce *obsahu* by nyní měly být nasazeny na statický Web.
+Soubory ve složce *obsahu* by nyní měly být nasazeny na statický web.
 
 ### <a name="enable-function-app-cross-origin-resource-sharing-cors"></a>Povolení sdílení prostředků mezi zdroji (CORS) v aplikaci funkcí
 
 Přestože soubor **local.settings.json** obsahuje nastavení CORS, toto nastavení se nerozšíří do aplikace funkcí v Azure. Musíte ho nastavit samostatně.
 
-1. Otevřete aplikaci Function App v Azure Portal.
+1. Otevřete aplikaci funkcí na webu Azure Portal.
 
-1. Na kartě **funkce platformy** vyberte **CORS**.
+1. Na kartě **Funkce platformy** vyberte **CORS**.
 
     ![Vyhledání CORS](media/signalr-tutorial-authenticate-azure-functions/signalr-find-cors.png)
 
-1. V části *Povolené zdroje* přidejte položku s *primárním koncovým bodem* statického webu jako hodnotu (odeberte koncové */* ).
+1. V části *Povolený počátek* přidejte jako hodnotu položku s *primárním koncovým bodem* statického webu (odeberte koncové). */*
 
-1. Aby sada funkcí Signal JavaScript SDK volala aplikaci Function App z prohlížeče, musí být povolená podpora pro přihlašovací údaje v CORS. Zaškrtněte políčko Povolit přístup-řízení – povolit-pověření.
+1. Aby sada JavaScript SDK SignalR zavolala aplikaci funkce z prohlížeče, musí být povolena podpora přihlašovacích údajů v CORS. Zaškrtněte políčko Povolit pověření přístupového řízení- povolení.
 
-    ![Povolení přístupu-řízení-povolit-pověření](media/signalr-tutorial-authenticate-azure-functions/signalr-cors-credentials.png)
+    ![Povolení pověření přístup-řízení-povolení](media/signalr-tutorial-authenticate-azure-functions/signalr-cors-credentials.png)
 
 1. Kliknutím na **Uložit** uložte nastavení CORS.
 

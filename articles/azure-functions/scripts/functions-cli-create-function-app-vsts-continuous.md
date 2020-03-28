@@ -1,19 +1,19 @@
 ---
-title: Vytvoření aplikace Function App s nasazením DevOps – Azure CLI
+title: Vytvoření aplikace funkcí s nasazením DevOps – Azure CLI
 description: Vytvoření aplikace funkcí a nasazení kódu funkce z Azure DevOps
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
 ms.openlocfilehash: d10c3987aef6e0a32081acd17425517f5109c4bb
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75922640"
 ---
-# <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Vytvoření funkce v Azure nasazené z Azure DevOps
+# <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Vytvoření funkce v Azure, která se nasadí z Azure DevOps
 
-V tomto tématu se dozvíte, jak pomocí Azure Functions vytvořit aplikaci s funkcemi bez [serveru](https://azure.microsoft.com/solutions/serverless/) s využitím [plánu spotřeby](../functions-scale.md#consumption-plan). Aplikace Function App, která je kontejnerem pro vaše funkce, je průběžně nasazena z úložiště Azure DevOps. 
+Toto téma ukazuje, jak pomocí funkce Azure vytvořit aplikaci [bez serveru](https://azure.microsoft.com/solutions/serverless/) pomocí [plánu Spotřeba](../functions-scale.md#consumption-plan). Aplikace funkce, která je kontejnerpro vaše funkce, se neustále nasazuje z úložiště Azure DevOps. 
 
 K dokončení tohoto tématu potřebujete:
 
@@ -24,7 +24,7 @@ K dokončení tohoto tématu potřebujete:
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud raději používáte Azure CLI místně, musíte nainstalovat a používat verzi 2.0 nebo novější. Verzi Azure CLI zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Pokud raději používáte Azure CLI místně, musíte nainstalovat a používat verzi 2.0 nebo novější. Verzi Azure CLI zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -42,7 +42,7 @@ Tento skript k vytvoření skupiny prostředků, účtu úložiště, aplikace f
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Vytvoří účet úložiště vyžadovaný aplikací funkcí. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu spotřeby](../functions-scale.md#consumption-plan)bez serveru. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkce v [plánu bezserveru .](../functions-scale.md#consumption-plan) |
 | [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | Přidruží aplikaci funkcí k úložišti Git nebo Mercurial. |
 
 ## <a name="next-steps"></a>Další kroky

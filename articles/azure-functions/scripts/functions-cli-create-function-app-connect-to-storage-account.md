@@ -1,17 +1,17 @@
 ---
-title: Vytvoření aplikace Function App s připojeným úložištěm – Azure CLI
+title: Vytvoření aplikace funkcí s připojeným úložištěm – Azure CLI
 description: Ukázkový skript Azure CLI – Vytvoření funkce Azure, která se připojuje ke službě Azure Storage
 ms.topic: sample
 ms.date: 04/20/2017
 ms.custom: mvc
 ms.openlocfilehash: 833b9223d473c8bfc62485e9e47ba662a4f0e154
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75922675"
 ---
-# <a name="create-a-function-app-with-a-named-storage-account-connection"></a>Vytvoření aplikace funkcí s pojmenovaným připojením účtu úložiště 
+# <a name="create-a-function-app-with-a-named-storage-account-connection"></a>Vytvoření aplikace funkcí s připojením k pojmenovanému účtu úložiště 
 
 Tento ukázkový skript Azure Functions vytvoří aplikaci funkcí a připojí funkci k účtu služby Azure Storage. Nastavení vytvořené aplikace obsahující připojení můžete použít s [triggerem nebo vazbou úložiště](../functions-bindings-storage-blob.md). 
 
@@ -19,7 +19,7 @@ Tento ukázkový skript Azure Functions vytvoří aplikaci funkcí a připojí f
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud používáte rozhraní příkazového řádku místně, ujistěte se, že máte Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+Pokud používáte rozhraní příkazového řádku místně, ujistěte se, že máte Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -37,9 +37,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků s umístěním. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Vytvoření účtu úložiště |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu spotřeby](../functions-scale.md#consumption-plan)bez serveru. |
-| [AZ Storage Account show-Connection-String](/cli/azure/storage/account#az-storage-account-show-connection-string) | Získá připojovací řetězec pro účet. |
-| [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | Nastaví připojovací řetězec jako nastavení aplikace ve Function App. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkce v [plánu bezserveru .](../functions-scale.md#consumption-plan) |
+| [az úložiště účet show-connection-string](/cli/azure/storage/account#az-storage-account-show-connection-string) | Získá připojovací řetězec pro účet. |
+| [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | Nastaví připojovací řetězec jako nastavení aplikace v aplikaci funkce. |
 
 ## <a name="next-steps"></a>Další kroky
 

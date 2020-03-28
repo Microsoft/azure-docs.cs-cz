@@ -1,6 +1,6 @@
 ---
-title: Azure Marketplace fondu hostitelů virtuálních počítačů s Windows – Azure
-description: Postup vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí Azure Marketplace.
+title: Fond hostitelů Virtuálních desktopů Windows Azure Marketplace – Azure
+description: Jak vytvořit fond hostitelů virtuální plochy Windows pomocí Azure Marketplace.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,33 +9,33 @@ ms.date: 03/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: d5165b160ffc196416052a56aaa0d93c05db56bc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238619"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace
 
-V tomto kurzu se naučíte, jak vytvořit fond hostitelů v rámci tenanta virtuálních klientů Windows pomocí nabídky Microsoft Azure Marketplace.
+V tomto kurzu se dozvíte, jak vytvořit fond hostitelů v rámci klienta virtuální plochy Windows pomocí nabídky Microsoft Azure Marketplace.
 
-Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta virtuálních počítačů s Windows. Každý fond hostitelů může obsahovat skupinu aplikací, se kterou můžou uživatelé interaktivně pracovat, jako by na fyzickém počítači.
+Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta Windows Virtual Desktop. Každý fond hostitelů může obsahovat skupinu aplikací, se kterou mohou uživatelé pracovat stejně jako na fyzické ploše.
 
-Úkoly v tomto kurzu zahrnují:
+Mezi úkoly v tomto kurzu patří:
 
 > [!div class="checklist"]
 >
-> * Vytvořte fond hostitelů na virtuálním počítači s Windows.
+> * Vytvořte fond hostitelů ve virtuální ploše Windows.
 > * Vytvořte skupinu prostředků s virtuálními počítači v předplatném Azure.
-> * Připojte virtuální počítače k doméně služby Active Directory.
-> * Zaregistrujte virtuální počítače na virtuálním počítači s Windows.
+> * Připojte virtuální servery k doméně služby Active Directory.
+> * Zaregistrujte virtuální počítače pomocí virtuální plochy Windows.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Tenant na virtuálním počítači. Předchozí [kurz](tenant-setup-azure-active-directory.md) vytvoří tenanta.
-* [Modul PowerShell pro virtuální počítače s Windows](/powershell/windows-virtual-desktop/overview/)
+* Tenant ve virtuální ploše. Předchozí [kurz](tenant-setup-azure-active-directory.md) vytvoří klienta.
+* [Modul PowerShell pro virtuální plochu systému Windows](/powershell/windows-virtual-desktop/overview/).
 
-Jakmile budete mít tento modul, spusťte následující rutinu, abyste se přihlásili ke svému účtu:
+Jakmile budete mít tento modul, spusťte následující rutinu pro přihlášení ke svému účtu:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -43,120 +43,120 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure](https://portal.azure.com).
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Spuštění nabídky Azure Marketplace pro zřízení nového fondu hostitelů
 
 Spuštění nabídky Azure Marketplace pro zřízení nového fondu hostitelů:
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
-1. V okně hledání na Marketplace zadejte **Windows Virtual Desktop** .
-1. Vyberte **virtuální počítač s Windows – zřídit fond hostitelů**a pak vyberte **vytvořit**.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
+1. Do vyhledávacího okna Marketplace zadejte **virtuální plochu Windows.**
+1. Vyberte **Windows Virtual Desktop – Zřídit fond hostitelů**a pak vyberte **Vytvořit**.
 
-Potom postupujte podle pokynů v následující části a zadejte informace o příslušných kartách.
+Poté podle pokynů v další části zadejte informace pro příslušné karty.
 
 ### <a name="basics"></a>Základy
 
-Tady je seznam toho, co uděláte na kartě **základy** :
+Zde je to, co děláte pro kartu **Základy:**
 
-1. Vyberte možnost **Předplatné**.
-1. V poli **Skupina prostředků**vyberte **vytvořit novou** a zadejte název nové skupiny prostředků.
+1. Vyberte **předplatné**.
+1. Ve **skupině Prostředků**vyberte vytvořit **nový** a zadejte název pro novou skupinu prostředků.
 1. Vyberte **oblast**.
-1. Zadejte název fondu hostitelů, který je jedinečný v rámci tenanta virtuálních klientů Windows.
-1. Vyberte **typ pracovní plochy**. Pokud vyberete **osobní**, každý uživatel, který se připojí k tomuto fondu hostitelů, se trvale přiřadí k virtuálnímu počítači.
-1. Zadejte uživatele, kteří se mohou přihlásit k klientům virtuálních klientů Windows a přistupovat k ploše. Použijte seznam oddělený čárkami. Například pokud chcete přiřadit `user1@contoso.com` a přístup k `user2@contoso.com`, zadejte *`user1@contoso.com,user2@contoso.com`*
-1. V poli **umístění metadat služby**vyberte stejné umístění jako virtuální síť, která má připojení k serveru služby Active Directory.
+1. Zadejte název fondu hostitelů, který je jedinečný v tenantovi virtuální plochy Windows.
+1. Vyberte **typ plochy**. Pokud vyberete **osobní**, každý uživatel, který se připojí k tomuto fondu hostitelů, bude trvale přiřazen k virtuálnímu počítači.
+1. Zadejte uživatele, kteří se mohou přihlásit ke klientům Virtuální desktopwindows a získat přístup k ploše. Použijte seznam oddělený čárkami. Chcete-li například přiřadit `user1@contoso.com` `user2@contoso.com` a získat přístup, zadejte*`user1@contoso.com,user2@contoso.com`*
+1. V **umístění metadat služby**vyberte stejné umístění jako virtuální síť, která je připojena k serveru Služby Active Directory.
 
    >[!IMPORTANT]
-   >Pokud používáte řešení Pure Azure Active Directory Domain Services (Azure služba AD DS) a Azure Active Directory (Azure AD), nezapomeňte nasadit fond hostitelů ve stejné oblasti jako Azure služba AD DS, aby se předešlo chybám připojení k doméně a přihlašovacím údajům.
+   >Pokud používáte čistě Azure Active Directory Domain Services (Azure AD DS) a Azure Active Directory (Azure AD) řešení, ujistěte se, že nasazení fondu hostitelů ve stejné oblasti jako vaše Azure AD DS, aby se zabránilo chybám připojení domény a pověření.
 
-1. Vyberte **Další: Konfigurace virtuálních počítačů**.
+1. Vyberte **další: Konfigurace virtuálních počítačů**.
 
 ### <a name="configure-virtual-machines"></a>Konfigurace virtuálních počítačů
 
-Karta **Konfigurace virtuálních počítačů** :
+Na kartě **Konfigurace virtuálních počítačů:**
 
-1. Buď přijměte výchozí hodnoty, nebo upravte počet a velikost virtuálních počítačů.
+1. Buď přijměte výchozí hodnoty, nebo přizpůsobte počet a velikost virtuálních počítačů.
 
     >[!NOTE]
-    >Pokud se v selektoru velikosti nezobrazí konkrétní velikost virtuálního počítače, kterou hledáte, je to proto, že jsme ho ještě nepřipojili k nástroji Azure Marketplace. Pokud si chcete vyžádat velikost, vytvořte žádost nebo si přehlaste stávající požadavek ve [fóru Windows Virtual Desktop UserVoice](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+    >Pokud se konkrétní velikost virtuálního počítače, kterou hledáte, nezobrazuje ve voliči velikosti, je to proto, že jsme ji ještě nezadali do nástroje Azure Marketplace. Chcete-li požádat o velikost, vytvořte požadavek nebo přehlaste existující požadavek ve [fóru Windows Virtual Desktop UserVoice](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
 
-1. Zadejte předponu názvů virtuálních počítačů. Pokud například zadáte *předponu*, virtuální počítače se budou jmenovat **prefix-0**, **prefix-1**atd.
-1. Vyberte **Další: nastavení virtuálního počítače**.
+1. Zadejte předponu pro názvy virtuálních počítačů. Pokud například zadáte *předponu*, virtuální počítače se budou nazývat **prefix-0**, **prefix-1**a tak dále.
+1. Vyberte **Další: Nastavení virtuálního počítače**.
 
 ### <a name="virtual-machine-settings"></a>Nastavení virtuálního počítače
 
-Pro kartu **nastavení virtuálního počítače** :
+Na kartě **Nastavení virtuálního počítače:**
 
-1. V části **zdroj obrázku**vyberte zdroj a zadejte příslušné informace, jak ho najít a jak ho uložit. Vaše možnosti se liší pro úložiště objektů blob, spravovanou image a galerii.
+1. V **části Zdroj obrazu**vyberte zdroj a zadejte příslušné informace o tom, jak jej najít a jak jej uložit. Možnosti se liší pro úložiště objektů Blob, spravované image a galerie.
 
-   Pokud se rozhodnete nepoužívat spravované disky, vyberte účet úložiště, který obsahuje soubor *. VHD* .
-1. Zadejte hlavní název uživatele a heslo. Tento účet musí být doménový účet, který se připojí k virtuálním počítačům k doméně služby Active Directory. Stejné uživatelské jméno a heslo se vytvoří na virtuálních počítačích jako místní účet. Tyto místní účty můžete později obnovit.
+   Pokud se rozhodnete spravované disky nepoužívat, vyberte účet úložiště, který obsahuje soubor *VHD.*
+1. Zadejte hlavní jméno uživatele a heslo. Tento účet musí být účet domény, který připojí virtuální počítače k doméně služby Active Directory. Stejné uživatelské jméno a heslo budou vytvořeny na virtuálních počítačích jako místní účet. Tyto místní účty můžete obnovit později.
 
    >[!NOTE]
-   > Pokud se k virtuálním počítačům připojujete do prostředí Azure služba AD DS, ujistěte se, že je váš uživatel připojení k doméně členem [skupiny Správci AAD řadiče](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)domény.
+   > Pokud připojujete virtuální počítače k prostředí Azure AD DS, ujistěte se, že váš uživatel připojení k doméně je členem [skupiny Správci řadiče domény AAD](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group).
    >
-   > Účet musí být také součástí spravované domény Azure služba AD DS nebo tenanta Azure AD. Účty z externích adresářů přidružených k vašemu tenantovi Azure AD se během procesu připojení k doméně nedají správně ověřit.
+   > Účet musí být také součástí spravované domény Azure AD DS nebo klienta Azure AD. Účty z externích adresářů přidružených k vašemu tenantovi Azure AD se během procesu připojení k doméně nemohou správně ověřit.
 
-1. Vyberte **virtuální síť** , která má připojení k serveru služby Active Directory, a pak zvolte podsíť, která bude hostovat virtuální počítače.
-1. Vyberte **Další: informace o virtuálním počítači s Windows**.
+1. Vyberte **virtuální síť,** která je připojena k serveru Služby Active Directory, a pak zvolte podsíť pro hostování virtuálních počítačů.
+1. Vyberte **další: Informace o virtuální ploše systému Windows**.
 
-### <a name="windows-virtual-desktop-tenant-information"></a>Informace o tenantovi virtuálních klientů Windows
+### <a name="windows-virtual-desktop-tenant-information"></a>Informace o klientovi virtuální plochy Windows
 
-Karta **informace o Tenantovi virtuálních klientů Windows** :
+Na kartě **Informace o klientovi virtuální plochy Windows:**
 
-1. V poli **název skupiny tenantů virtuálních klientů Windows**zadejte název skupiny tenantů, která obsahuje vašeho tenanta. Pokud jste nezadali konkrétní název skupiny tenantů, ponechte ho jako výchozí.
-1. Do pole **název tenanta virtuálních klientů Windows**zadejte název tenanta, do kterého budete tento fond hostitelů vytvářet.
-1. Zadejte typ přihlašovacích údajů, které chcete použít k ověření jako vlastník klienta vzdálené plochy Windows. Zadejte hlavní název uživatele nebo instanční objekt a heslo.
+1. Pro **název skupiny klienta Virtuální plocha Windows**zadejte název skupiny klientů, která obsahuje vašeho klienta. Ponechte ji jako výchozí, pokud jste zadali konkrétní název skupiny klientů.
+1. Pro **název klienta Virtuální plochy Windows**zadejte název klienta, ve kterém budete vytvářet tento fond hostitelů.
+1. Zadejte typ pověření, která chcete použít k ověření jako vlastník a klient a rds virtuální plochy Windows. Zadejte hlavní název nebo instanční objekt a heslo.
 
-   Pokud jste dokončili [kurz vytvoření objektů služby a přiřazení rolí pomocí PowerShellu](./create-service-principal-role-powershell.md), vyberte **instanční objekt**.
+   Pokud jste dokončili [vytvořit instanční objekty a přiřazení rolí pomocí kurzu PowerShellu](./create-service-principal-role-powershell.md), vyberte **Instanční objekt**.
 
-1. Pro instanční **objekt**pro **ID tenanta Azure AD**zadejte účet správce tenanta pro instanci služby Azure AD, která obsahuje instanční objekt. Podporují se jenom instanční objekty s přihlašovacími údaji hesla.
-1. Vyberte **Další: zkontrolovat + vytvořit**.
+1. Pro **instanční objekt**, pro **ID klienta Azure AD**, zadejte účet správce klienta pro instanci Azure AD, která obsahuje instanční objekt. Podporovány jsou pouze instanční objekty s pověřením hesla.
+1. Vyberte **další: Kontrola + vytvoření**.
 
-## <a name="complete-setup-and-create-the-virtual-machine"></a>Dokončení instalace a vytvoření virtuálního počítače
+## <a name="complete-setup-and-create-the-virtual-machine"></a>Kompletní nastavení a vytvoření virtuálního počítače
 
-V části **zkontrolovat a vytvořit**zkontrolujte informace o instalaci. Pokud potřebujete něco změnit, vraťte se zpátky a proveďte změny. Až budete připraveni, vyberte **vytvořit** a nasaďte fond hostitelů.
+V **části Revize a vytvoření**zkontrolujte informace o nastavení. Pokud potřebujete něco změnit, vraťte se a proveďte změny. Až budete připraveni, vyberte **Vytvořit** a nasaďte svůj hostitelský fond.
 
-V závislosti na počtu virtuálních počítačů, které vytváříte, může tento proces trvat 30 minut nebo i déle.
+V závislosti na tom, kolik virtuálních počítačů vytváříte, může tento proces trvat 30 minut nebo déle.
 
 >[!IMPORTANT]
-> Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na virtuálních počítačích neotevírat port 3389. Virtuální počítač s Windows nevyžaduje pro přístup uživatelů k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389.
+> Chcete-li zabezpečit prostředí Virtuální desktopwindows v Azure, doporučujeme neotevírat příchozí port 3389 na virtuálních počítačích. Virtuální plocha Windows nevyžaduje otevřený vstupní port 3389 pro přístup uživatelů k virtuálním počítačům fondu hostitelů.
 >
-> Pokud musíte pro účely odstraňování potíží otevřít port 3389, doporučujeme použít přístup za běhu. Další informace najdete v tématu [zabezpečení portů pro správu pomocí přístupu za běhu](../security-center/security-center-just-in-time.md).
+> Pokud je nutné otevřít port 3389 pro účely řešení potíží, doporučujeme použít přístup just-in-time. Další informace naleznete v [tématu Zabezpečení portů pro správu s přístupem za dobu .](../security-center/security-center-just-in-time.md)
 
-## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>Volitelné Přiřazení dalších uživatelů ke skupině desktopových aplikací
+## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>(Nepovinné) Přiřazení dalších uživatelů ke skupině aplikací klasické pracovní plochy
 
-Až Azure Marketplace dokončí vytváření fondu, můžete přiřadit více uživatelů do skupiny desktopových aplikací. Pokud nechcete přidat další, přeskočte tuto část.
+Po azure marketplace dokončí vytváření fondu, můžete přiřadit více uživatelů do skupiny aplikací pro stolní počítače. Pokud nechcete přidávat další, tuto část přeskočte.
 
-Přiřazení uživatelů ke skupině desktopové aplikace:
+Přiřazení uživatelů ke skupině aplikací klasické pracovní plochy:
 
 1. Otevřete okno PowerShellu.
 
-1. Spusťte následující příkaz, abyste se přihlásili do prostředí virtuálních počítačů s Windows:
+1. Chcete-li se přihlásit do prostředí Virtuální plochy systému Windows, spusťte následující příkaz:
 
    ```powershell
    Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    ```
 
-1. Přidejte uživatele do skupiny desktopových aplikací pomocí tohoto příkazu:
+1. Přidejte uživatele do skupiny aplikací klasické pracovní plochy pomocí tohoto příkazu:
 
    ```powershell
    Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
    ```
 
-   Hlavní název uživatele (UPN) by měl odpovídat identitě uživatele ve službě Azure AD, například *user1@contoso.com* . Pokud chcete přidat více uživatelů, spusťte příkaz pro každého uživatele.
+   Hlavní číslo uživatele by se mělo shodovat s identitou *user1@contoso.com*uživatele ve službě Azure AD, například . Pokud chcete přidat více uživatelů, spusťte příkaz pro každého uživatele.
 
-Uživatelé, které přidáte do skupiny aplikací pracovní plochy, se můžou přihlásit k virtuální ploše Windows pomocí podporovaných klientů vzdálené plochy a zobrazit prostředek pro plochu relace.
+Uživatelé, které přidáte do skupiny aplikací plochy, se mohou přihlásit k virtuální ploše systému Windows s podporovanými klienty vzdálené plochy a zobrazit prostředek pro plochu relace.
 
-Tady jsou aktuálně Podporovaní klienti:
+Zde jsou aktuální podporovaní klienti:
 
-* [Klient služby Vzdálená plocha pro Windows 7 a Windows 10](connect-windows-7-and-10.md)
-* [Webový klient pro virtuální počítače s Windows](connect-web.md)
+* [Klient vzdálené plochy pro Windows 7 a Windows 10](connect-windows-7-and-10.md)
+* [Webový klient virtuální plochy windows](connect-web.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvořili jste fond hostitelů a přiřadili uživatelům přístup k jeho ploše. Fond hostitelů můžete naplnit pomocí aplikací RemoteApp. Další informace o správě aplikací ve virtuálním počítači s Windows najdete v tomto kurzu:
+Vytvořili jste fond hostitelů a přiřadili jste uživatelům přístup k ploše. Fond hostitelů můžete naplnit programy RemoteApp. Další informace o správě aplikací ve Windows Virtual Desktop najdete v tomto kurzu:
 
 > [!div class="nextstepaction"]
-> [Kurz správy skupin aplikací](./manage-app-groups.md)
+> [Kurz Správa skupin aplikací](./manage-app-groups.md)

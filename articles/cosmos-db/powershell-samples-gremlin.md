@@ -1,30 +1,33 @@
 ---
-title: Ukázky Azure PowerShell pro rozhraní API pro Azure Cosmos DB Gremlin
-description: Získání ukázek Azure PowerShell k provádění různých běžných úloh v Azure Cosmos DB účtech rozhraní API Gremlin
+title: Ukázky Prostředí Azure PowerShell pro Azure Cosmos DB – rozhraní GREMLIN API
+description: Získání ukázek Prostředí Azure PowerShell k provádění různých běžných úloh v účtech rozhraní API Azure Cosmos DB Gremlin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 23ede06274f6e929bd04bf9ced60f349ae06caa9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d0deef4df6cfdcfdb2d549cee35892620cf6b791
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871937"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365731"
 ---
-# <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>Ukázky Azure PowerShell pro rozhraní API pro Azure Cosmos DB Gremlin
+# <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>Ukázky Prostředí Azure PowerShell pro rozhraní API Azure Cosmos DB Gremlin
 
-Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pro Azure Cosmos DB rozhraní API pro Gremlin.
+Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShell pro Azure Cosmos DB pro rozhraní GREMLIN API.
+
+> [!NOTE]
+> Ukázky používají rutiny správy [Az.CosmosDB.](https://docs.microsoft.com/powershell/module/az.cosmosdb) Upozorňujeme, `Az.CosmosDB` že rutiny jsou stále ve verzi Preview a mohou se před vydáním změnit. Pravidelně kontrolujte `Az.CosmosDB` aktualizace.
 
 | | |
 |---|---|
 |[Vytvoření účtu, databáze a grafu](scripts/powershell/gremlin/ps-gremlin-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, databázi a graf. |
-|[Vypsat nebo získat databáze nebo grafy](scripts/powershell/gremlin/ps-gremlin-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vypíše nebo Získá databázi nebo graf. |
+|[Seznam nebo získání databází nebo grafů](scripts/powershell/gremlin/ps-gremlin-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Seznam nebo získat databázi nebo graf. |
 |[Získat RU/s](scripts/powershell/gremlin/ps-gremlin-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte RU/s pro databázi nebo graf. |
-|[Aktualizace RU/s](scripts/powershell/gremlin/ps-gremlin-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizujte RU/s pro databázi nebo graf. |
-|[Aktualizace účtu nebo přidání oblasti](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Přidejte oblast do účtu Cosmos. Lze ji také použít pro úpravu dalších vlastností účtu, ale musí být odděleny od změn v oblastech. |
-|[Změna priority převzetí služeb při selhání nebo Aktivace převzetí služeb](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Změňte prioritu regionálního převzetí služeb při selhání účtu Azure Cosmos nebo aktivujte ruční převzetí služeb při selhání. |
-|[Klíče účtu nebo připojovací řetězce](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte primární a sekundární klíče, připojovací řetězce nebo znovu vygenerujte klíč účtu pro účet Azure Cosmos. |
-|[Vytvoření účtu Cosmos pomocí brány firewall protokolu IP](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvořte účet Azure Cosmos s povoleným protokolem IP firewall. |
+|[Aktualizace Ru/s](scripts/powershell/gremlin/ps-gremlin-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizace RU/s pro databázi nebo graf. |
+|[Aktualizace účtu nebo přidání oblasti](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Přidejte oblast do účtu Cosmos. Lze také použít k úpravě jiných vlastností účtu, ale musí být odděleny od změn oblastí. |
+|[Změna priority převzetí služeb při selhání nebo aktivace převzetí služeb při selhání](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Změňte místní prioritu převzetí služeb při selhání účtu Azure Cosmos nebo aktivuj ruční převzetí služeb při selhání. |
+|[Klíče účtů nebo připojovací řetězce](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte primární a sekundární klíče, připojovací řetězce nebo znovu vygenerujte klíč účtu účtu Azure Cosmos. |
+|[Vytvoření účtu Cosmos pomocí ip firewallu](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvořte účet Azure Cosmos s povolenou ip bránou firewall. |
 |||

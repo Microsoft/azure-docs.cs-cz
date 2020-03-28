@@ -10,40 +10,40 @@ ms.custom: include file
 ms.topic: include
 ms.date: 11/04/2019
 ms.openlocfilehash: 8ccd3e6129f4a061eacf83a1f4e70174c697480f
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73633633"
 ---
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů předplatného Azure.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/) pomocí přihlašovacích údajů pro vaše předplatné Azure.
 
-1. V levém horním rohu Azure Portal vyberte **+ vytvořit prostředek**.
+1. V levém horním rohu portálu Azure vyberte **+ Vytvořit prostředek**.
 
     ![Vytvoření nového prostředku](media/aml-create-in-portal/create-workspace.gif)
 
-1. K vyhledání **Machine Learning**použijte panel hledání.
+1. Pomocí vyhledávacího panelu vyhledejte **machine learning**.
 
-1. Vyberte **Machine Learning**.
+1. Vyberte **možnost Strojové učení**.
 
-1. V podokně **Machine Learning** vyberte **vytvořit** a začněte.
+1. V podokně **Strojového učení** vyberte **Vytvořit** a začněte.
 
-1. Zadáním následujících informací nakonfigurujte nový pracovní prostor:
+1. Zadejte následující informace pro konfiguraci nového pracovního prostoru:
 
    Pole|Popis 
    ---|---
-   Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. V tomto příkladu používáme **docs-WS**. Názvy musí být v rámci skupiny prostředků jedinečné. Použijte název, který se dá snadno vyvolat a odlišit z pracovních prostorů vytvořených jinými uživateli.  
+   Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. V tomto příkladu používáme **docs-ws**. Názvy musí být jedinečné v celé skupině prostředků. Použijte název, který se snadno pamatuje a odlišuje od pracovních prostorů vytvořených jinými uživateli.  
    Předplatné |Vyberte předplatné Azure, které chcete použít.
-   Skupina prostředků | Ve svém předplatném použijte existující skupinu prostředků nebo zadejte název pro vytvoření nové skupiny prostředků. Skupina prostředků obsahuje související prostředky pro řešení Azure. V tomto příkladu používáme **docs-AML**. 
-   Umístění | Vyberte umístění, které je nejblíže vašim uživatelům a datovým prostředkům, abyste mohli vytvořit pracovní prostor.
-   Edice pracovního prostoru | Jako typ pracovního prostoru pro tento kurz vyberte **Basic** . Typ pracovního prostoru (Basic & Enterprise) určuje funkce, ke kterým budete mít přístup a ceny. Všechno v tomto kurzu se dá udělat buď s podnikovým pracovním prostorem Basic nebo Enterprise.
+   Skupina prostředků | Použijte stávající skupinu prostředků, kterou máte v předplatném, nebo zadejte název a vytvořte novou skupinu prostředků. Skupina prostředků obsahuje související prostředky pro řešení Azure. V tomto příkladu používáme **docs-aml**. 
+   Umístění | Vyberte umístění, které je nejblíže uživatelům, a datové prostředky k vytvoření pracovního prostoru.
+   Edice pracovního prostoru | Jako typ pracovního prostoru pro tento kurz vyberte **Základní.** Typ pracovního prostoru (Základní & Enterprise) určuje funkce, ke kterým budete mít přístup a ceny. Vše v tomto kurzu lze provést pomocí základního nebo podnikového pracovního prostoru.
 
-1. Po dokončení konfigurace pracovního prostoru vyberte **zkontrolovat + vytvořit**. 
+1. Po dokončení konfigurace pracovního prostoru vyberte **zkontrolovat + Vytvořit**. 
 
    > [!Warning] 
    > Vytvoření pracovního prostoru v cloudu může trvat několik minut.
 
-   Po dokončení procesu se zobrazí zpráva o úspěšném nasazení. 
+   Po dokončení procesu se zobrazí zpráva o úspěchu nasazení. 
  
- 1. Pokud chcete zobrazit nový pracovní prostor, vyberte **Přejít k prostředku**.
+ 1. Chcete-li zobrazit nový pracovní prostor, vyberte **přejít na zdroj**.
 

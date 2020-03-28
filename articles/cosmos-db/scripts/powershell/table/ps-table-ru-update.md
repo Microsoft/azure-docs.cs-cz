@@ -1,20 +1,20 @@
 ---
-title: Skript PowerShellu pro aktualizaci RU/s pro Azure Cosmos DB rozhraní API pro tabulky
-description: Naučte se používat skript prostředí PowerShell k aktualizaci propustnosti databáze nebo kontejneru v Azure Cosmos DB rozhraní API pro tabulkym účtu.
+title: Skript PowerShellu pro aktualizaci RU/s pro rozhraní API tabulky Azure Cosmos DB
+description: Zjistěte, jak pomocí skriptu PowerShellu aktualizovat propustnost pro databázi nebo kontejner v účtu rozhraní API tabulky Db Azure Cosmos
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 37e7ab82a42b8bcd633e0c083e1a3f51505a95cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 101e9e5591198b84bb9bba886249b0784cc6b43e
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444906"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365953"
 ---
-# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Aktualizace RU/s pro tabulku pro Azure Cosmos DB rozhraní API pro tabulky
+# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Aktualizace RU/s pro tabulku pro Azure Cosmos DB – rozhraní TABLE API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +38,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-|**Prostředky Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Vytvoří prostředek. |
+|**Azure Cosmos DB**| |
+| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Vytvoří nebo aktualizuje tabulku rozhraní API tabulky Cosmos DB. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

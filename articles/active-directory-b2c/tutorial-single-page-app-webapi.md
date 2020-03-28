@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: poskytnutí přístupu k webovému rozhraní API ASP.NET Core z jednostránkové aplikace'
+title: 'Kurz: Udělení přístupu k webovému rozhraní API ASP.NET Core z jednostránkové aplikace'
 titleSuffix: Azure AD B2C
-description: V tomto kurzu se naučíte, jak použít Active Directory B2C k ochraně webového rozhraní API .NET Core a volání rozhraní API z jediné stránky aplikace Node. js.
+description: V tomto kurzu se dozvíte, jak pomocí služby Active Directory B2C chránit webové rozhraní API .NET Core a volat rozhraní API z jednostránkové aplikace Node.js.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,29 +12,29 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: f6f9ff7bb0d504ecc163f6ce1f87477b1ea9c2d1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78186134"
 ---
-# <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Kurz: poskytnutí přístupu k ASP.NET Core webovému rozhraní API z jednostránkové aplikace pomocí Azure Active Directory B2C
+# <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Kurz: Udělení přístupu k webovému rozhraní API ASP.NET Core z jednostránkové aplikace pomocí služby Azure Active Directory B2C
 
-V tomto kurzu se dozvíte, jak volat ASP.NET Core prostředku webového rozhraní API chráněného Azure Active Directory B2C (Azure AD B2C) z jednostránkové aplikace.
+Tento kurz ukazuje, jak volat prostředek ASP.NET webového rozhraní API chráněného službou Azure Active Directory B2C (Azure AD B2C) z jednostránkové aplikace.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Přidání aplikace webového rozhraní API
-> * Konfigurace oborů pro webové rozhraní API
+> * Konfigurace oborů webového rozhraní API
 > * Udělení oprávnění webovému rozhraní API
 > * Konfigurace ukázky pro použití aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Proveďte kroky a požadavky v [kurzu: povolení ověřování v aplikaci s jednou stránkou pomocí Azure Active Directory B2C](tutorial-single-page-app.md).
-* Visual Studio 2019 nebo novější nebo Visual Studio Code
-* .NET Core 2,2 nebo novější
+* V kurzu proveďte kroky a [předpoklady: Povolte ověřování v jednostránkové aplikaci pomocí služby Azure Active Directory B2C](tutorial-single-page-app.md).
+* Visual Studio 2019 nebo novější, nebo Visual Studio Code
+* .NET Core 2.2 nebo novější
 * Node.js
 
 ## <a name="add-a-web-api-application"></a>Přidání aplikace webového rozhraní API
@@ -43,27 +43,27 @@ V tomto kurzu se naučíte:
 
 ## <a name="configure-scopes"></a>Konfigurace oborů
 
-Obory poskytují způsob, jak řídit přístup k chráněným prostředkům. Webové rozhraní API používá obory k implementaci řízení přístupu na základě oboru. Někteří uživatelé například můžou mít oprávnění ke čtení i zápisu, zatímco jiní uživatelé můžou mít oprávnění jen pro čtení. V tomto kurzu definujete pro webové rozhraní API oprávnění ke čtení i zápisu.
+Obory poskytují způsob řízení přístupu k chráněným prostředkům. Webové rozhraní API používá obory k implementaci řízení přístupu na základě oboru. Někteří uživatelé například můžou mít oprávnění ke čtení i zápisu, zatímco jiní uživatelé můžou mít oprávnění jen pro čtení. V tomto kurzu definujete oprávnění ke čtení i zápisu pro webové rozhraní API.
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Poznamenejte si hodnotu v části **obory** pro obor `demo.read`, který se má použít v pozdějším kroku při konfiguraci jednostránkové aplikace. Úplná hodnota oboru je podobná `https://contosob2c.onmicrosoft.com/api/demo.read`.
+Zaznamenejte hodnotu `demo.read` v rámci **scopes** pro obor použít v pozdějším kroku při konfiguraci jednostránkové aplikace. Hodnota celého oboru `https://contosob2c.onmicrosoft.com/api/demo.read`je podobná hodnotě .
 
 ## <a name="grant-permissions"></a>Udělení oprávnění
 
-Chcete-li volat chráněné webové rozhraní API z jiné aplikace, je třeba udělit oprávnění aplikace webovému rozhraní API.
+Chcete-li volat chráněné webové rozhraní API z jiné aplikace, musíte této aplikaci udělit oprávnění k webovému rozhraní API.
 
-V kurzu požadavků jste vytvořili webovou aplikaci s názvem *WebApp1*. V tomto kurzu nakonfigurujete tuto aplikaci tak, aby volala webové rozhraní API, které jste vytvořili v předchozí části, *webapi1*.
+V požadovaném kurzu jste vytvořili webovou aplikaci s názvem *webapp1*. V tomto kurzu nakonfigurujete tuto aplikaci tak, aby volala webové rozhraní API, které jste vytvořili v předchozí části *webapi1*.
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-Webová aplikace s jednou stránkou je zaregistrovaná pro volání chráněného webového rozhraní API. Uživatel se ověřuje pomocí Azure AD B2C pro použití jednostránkové aplikace. Jednostránkové aplikace získá udělení autorizace z Azure AD B2C pro přístup k chráněnému webovému rozhraní API.
+Jednostránková webová aplikace je zaregistrována pro volání chráněného webového rozhraní API. Uživatel se ověřuje pomocí Azure AD B2C a použije jednostránkovou aplikaci. Jednostránková aplikace získá udělení autorizace od Azure AD B2C pro přístup k chráněnému webovému rozhraní API.
 
 ## <a name="configure-the-sample"></a>Konfigurace ukázky
 
-Když je teď webové rozhraní API zaregistrované a máte definované obory, nakonfigurujete kód webového rozhraní API tak, aby používal vašeho tenanta Azure AD B2C. V tomto kurzu nakonfigurujete ukázkovou webovou aplikaci .NET Core, kterou stáhnete z GitHubu.
+Teď, když je webové rozhraní API registrované a máte definované obory, nakonfigurujete kód webového rozhraní API tak, aby používal vašeho klienta Azure AD B2C. V tomto kurzu nakonfigurujete ukázkovou webovou aplikaci .NET Core, kterou stáhnete z GitHubu.
 
-[Stáhněte si archiv \*. zip](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip) nebo naklonujte ukázkový projekt webového rozhraní API z GitHubu.
+[Stáhněte \*si archiv ZIP](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip) nebo naklonujte ukázkový projekt webového rozhraní API z GitHubu.
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi.git
@@ -71,8 +71,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 ### <a name="configure-the-web-api"></a>Konfigurace webového rozhraní API
 
-1. Otevřete soubor <em>B2C-WebApi/**appSettings. JSON**</em>  v aplikaci Visual Studio nebo Visual Studio Code.
-1. Upravte blok `AzureAdB2C` tak, aby odrážel název vašeho tenanta, ID aplikace webového rozhraní API, název vaší zásady registrace a přihlašování a obory, které jste definovali dříve. Blok by měl vypadat podobně jako v následujícím příkladu (s příslušnými `Tenant` a `ClientId`mi hodnotami):
+1. Otevřete soubor <em>B2C-WebApi/**appsettings.json** </em> v sadě Visual Studio nebo Visual Studio Code.
+1. Upravte `AzureAdB2C` blok tak, aby odrážel název vašeho klienta, ID aplikace webového rozhraní API, název zásady registrace/přihlášení a obory, které jste definovali dříve. Blok by měl vypadat podobně jako `Tenant` v `ClientId` následujícím příkladu (s příslušnými a hodnotami):
 
     ```json
     "AzureAdB2C": {
@@ -87,7 +87,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 #### <a name="enable-cors"></a>Povolení CORS
 
-Aby mohla vaše jednostránková aplikace volat ASP.NET Core webové rozhraní API, je potřeba povolit [CORS](https://docs.microsoft.com/aspnet/core/security/cors) ve webovém rozhraní API.
+Chcete-li povolit jednostránkové aplikaci volat ASP.NET základní webové rozhraní API, musíte povolit [CORS](https://docs.microsoft.com/aspnet/core/security/cors) ve webovém rozhraní API.
 
 1. V souboru *Startup.cs* přidejte CORS do metody `ConfigureServices()`.
 
@@ -97,15 +97,15 @@ Aby mohla vaše jednostránková aplikace volat ASP.NET Core webové rozhraní A
         services.AddCors();
     ```
 
-1. Také v rámci metody `ConfigureServices()` nastavte hodnotu `jwtOptions.Authority` na následující identifikátor URI vystavitele tokenu.
+1. Také v `ConfigureServices()` rámci metody `jwtOptions.Authority` nastavte hodnotu na následující identifikátor URI vystavitvystavitetele tokenu.
 
-    Nahraďte `<your-tenant-name>` názvem vašeho tenanta B2C.
+    Nahraďte `<your-tenant-name>` se názvem vašeho klienta B2C.
 
     ```csharp
     jwtOptions.Authority = $"https://<your-tenant-name>.b2clogin.com/{Configuration["AzureAdB2C:Tenant"]}/{Configuration["AzureAdB2C:Policy"]}/v2.0";
     ```
 
-1. V metodě `Configure()` nakonfigurujte CORS.
+1. V `Configure()` metodě nakonfigurujte CORS.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -114,8 +114,8 @@ Aby mohla vaše jednostránková aplikace volat ASP.NET Core webové rozhraní A
             builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
-1. (Pouze Visual Studio) V části **vlastnosti** v Průzkumník řešení otevřete soubor *launchSettings. json* a vyhledejte `iisExpress` blok.
-1. (Pouze Visual Studio) Aktualizujte `applicationURL` hodnotu číslem portu, který jste zadali při registraci aplikace *webapi1* v předchozím kroku. Příklad:
+1. (Pouze visual studio) V **části Vlastnosti** v Průzkumníku řešení otevřete soubor *launchSettings.json* a najděte `iisExpress` blok.
+1. (Pouze visual studio) Aktualizujte `applicationURL` hodnotu číslem portu, které jste zadali při registraci aplikace *webapi1* v předchozím kroku. Například:
 
     ```json
     "iisExpress": {
@@ -126,18 +126,18 @@ Aby mohla vaše jednostránková aplikace volat ASP.NET Core webové rozhraní A
 
 ### <a name="configure-the-single-page-application"></a>Konfigurace jednostránkové aplikace
 
-Jednostránkové aplikace (SPA) z [předchozího kurzu](tutorial-single-page-app.md) v řadě používá Azure AD B2C pro registraci a přihlašování uživatelů a volá webové rozhraní API ASP.NET Core chráněné *frabrikamb2c* ukázkovým klientem.
+Jednostránková aplikace (SPA) z [předchozího kurzu](tutorial-single-page-app.md) v řadě používá Azure AD B2C pro registraci a přihlášení uživatele a volá ASP.NET core webové rozhraní API chráněné ukázkovým tenantem *frabrikamb2c.*
 
-V této části provedete aktualizaci jednostránkové aplikace pro volání ASP.NET Core webového rozhraní API chráněného *vaším* klientem Azure AD B2C a spuštěním na místním počítači.
+V této části aktualizujete jednostránkovou aplikaci tak, aby volala webové rozhraní API ASP.NET Core chráněné *vaším* tenantem Azure AD B2C a které spouštěte v místním počítači.
 
-Změna nastavení v zabezpečeném hesla:
+Změna nastavení ve spa:
 
-1. Otevřete soubor *index. html* v projektu [Active-Directory-B2C-JavaScript-msal-singlepageapp][github-js-spa] , který jste stáhli nebo naklonoval v předchozím kurzu.
-1. Nakonfigurujte ukázku s identifikátorem URI pro obor *demo. Read* , který jste vytvořili dříve, a adresu URL webového rozhraní API.
-    1. V definici `appConfig` nahraďte hodnotu `b2cScopes` úplným identifikátorem URI pro obor (hodnotu **rozsahu** , kterou jste si poznamenali dříve).
-    1. Změňte hodnotu `webApi` na identifikátor URI přesměrování, který jste přidali při registraci aplikace webového rozhraní API v předchozím kroku.
+1. Otevřete soubor *index.html* v projektu [active-directory-b2c-javascript-msal-singlepageapp,][github-js-spa] který jste stáhli nebo naklonovali v předchozím kurzu.
+1. Nakonfigurujte ukázku pomocí identifikátoru URI pro dříve vytvořený obor *demo.read* a adresu URL webového rozhraní API.
+    1. V `appConfig` definici nahraďte hodnotu `b2cScopes` úplným identifikátorem URI pro obor (hodnota **SCOPE,** kterou jste zaznamenali dříve).
+    1. Změňte `webApi` hodnotu na identifikátor URI přesměrování, který jste přidali při registraci webové aplikace rozhraní API v předchozím kroku.
 
-    Definice `appConfig` by měla vypadat podobně jako následující blok kódu (s názvem vašeho tenanta v místě `<your-tenant-name>`):
+    Definice `appConfig` by měla vypadat podobně jako následující blok kódu (s názvem klienta `<your-tenant-name>`v místě ):
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -147,25 +147,25 @@ Změna nastavení v zabezpečeném hesla:
     };
     ```
 
-## <a name="run-the-spa-and-web-api"></a>Spuštění ZABEZPEČENÉho a webového rozhraní API
+## <a name="run-the-spa-and-web-api"></a>Spuštění spa a webového rozhraní API
 
-Nakonec na místním počítači spustíte webové rozhraní API ASP.NET Core a jednostránkové aplikaci Node. js. Potom se přihlásíte k jednostránkové aplikaci a stisknutím tlačítka zahájíte požadavek na chráněné rozhraní API.
+Nakonec spustíte ASP.NET základní webové rozhraní API a jednostránkovou aplikaci Node.js v místním počítači. Potom se přihlásíte k jednostránkové aplikaci a stisknutím tlačítka zahájíte požadavek na chráněné rozhraní API.
 
-I když se obě aplikace v tomto kurzu spouštějí místně, používají Azure AD B2C pro zabezpečené registrace, přihlašování a pro udělení přístupu k chráněnému webovému rozhraní API.
+I když obě aplikace spustit místně v tomto kurzu, které používají Azure AD B2C pro zabezpečené registrace nebo přihlášení a udělit přístup k chráněné webové rozhraní API.
 
-### <a name="run-the-aspnet-core-web-api"></a>Spuštění ASP.NET Core webového rozhraní API
+### <a name="run-the-aspnet-core-web-api"></a>Spuštění webového rozhraní API ASP.NET Core
 
-V aplikaci Visual Studio stiskněte klávesu **F5** pro sestavení a ladění řešení *B2C-WebAPI. sln* . Po spuštění projektu se ve výchozím prohlížeči zobrazí webová stránka s oznámením, že webové rozhraní API je k dispozici pro požadavky.
+V sadě Visual Studio stisknutím **klávesy F5** vytvořte a laděte řešení *B2C-WebAPI.sln.* Při spuštění projektu se ve výchozím prohlížeči zobrazí webová stránka oznamující, že webové rozhraní API je k dispozici pro požadavky.
 
-Pokud raději používáte `dotnet` CLI místo sady Visual Studio:
+Pokud dáváte přednost `dotnet` použití vykreslování-li to místo Visual Studio:
 
-1. Otevřete okno konzoly a přejděte do adresáře, který obsahuje soubor *\*. csproj* . Příklad:
+1. Otevřete okno konzoly a změňte adresář obsahující soubor * \*.csproj.* Například:
 
     `cd active-directory-b2c-dotnetcore-webapi/B2C-WebApi`
 
-1. Sestavte a spusťte webové rozhraní API spuštěním `dotnet run`.
+1. Vytvořte a spusťte `dotnet run`webové rozhraní API spuštěním .
 
-    Když je rozhraní API v provozu, měl by se zobrazit výstup podobný následujícímu (pro kurz můžete bez obav ignorovat všechna `NETSDK1059`):
+    Když je rozhraní API v provozu, měli byste vidět výstup podobný následujícímu `NETSDK1059` (pro kurz můžete bezpečně ignorovat všechna upozornění):
 
     ```console
     $ dotnet run
@@ -177,7 +177,7 @@ Pokud raději používáte `dotnet` CLI místo sady Visual Studio:
 
 ### <a name="run-the-single-page-app"></a>Spuštění jednostránkové aplikace
 
-1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku Node. js. Příklad:
+1. Otevřete okno konzoly a změňte adresář obsahující ukázku Node.js. Například:
 
     `cd active-directory-b2c-javascript-msal-singlepageapp`
 
@@ -188,15 +188,15 @@ Pokud raději používáte `dotnet` CLI místo sady Visual Studio:
     node server.js
     ```
 
-    V okně konzoly se zobrazí číslo portu, ve kterém je aplikace hostovaná.
+    V okně konzoly se zobrazí číslo portu, kde je aplikace hostována.
 
     ```console
     Listening on port 6420...
     ```
 
-1. Přejděte na `http://localhost:6420` v prohlížeči a zobrazte aplikaci.
-1. Přihlaste se pomocí e-mailové adresy a hesla, které jste použili v [předchozím kurzu](tutorial-single-page-app.md). Po úspěšném přihlášení by se měla zobrazit `User 'Your Username' logged-in` zpráva.
-1. Vyberte tlačítko **zavolat webové rozhraní API** . SPA získá udělení autorizace z Azure AD B2C a pak přístup k chráněnému webovému rozhraní API, aby zobrazil obsah stránky jeho indexu:
+1. Chcete-li aplikaci zobrazit, přejděte `http://localhost:6420` v prohlížeči.
+1. Přihlaste se pomocí e-mailové adresy a hesla, které jste použili v [předchozím kurzu](tutorial-single-page-app.md). Po úspěšném přihlášení, `User 'Your Username' logged-in` měli byste vidět zprávu.
+1. Vyberte tlačítko **Rozhraní API pro volání.** Spa získá udělení autorizace od Azure AD B2C, pak přistupuje k chráněné webové rozhraní API k zobrazení obsahu jeho index stránky:
 
     ```Output
     Web APi returned:
@@ -209,14 +209,14 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Přidání aplikace webového rozhraní API
-> * Konfigurace oborů pro webové rozhraní API
+> * Konfigurace oborů webového rozhraní API
 > * Udělení oprávnění webovému rozhraní API
 > * Konfigurace ukázky pro použití aplikace
 
-Teď, když jste se seznámili s požadavkem na prostředek z chráněného webového rozhraní API, získáte lepší přehled o tom, jak tyto typy aplikací vzájemně komunikují a s Azure AD B2C.
+Teď, když jste viděli SPA požádat o prostředek z chráněného webového rozhraní API, získat hlubší představu o tom, jak tyto typy aplikací vzájemně spolupracují a s Azure AD B2C.
 
 > [!div class="nextstepaction"]
-> [Typy aplikací, které lze použít v Active Directory B2C >](application-types.md)
+> [Typy aplikací, které lze použít ve službě Active Directory B2C >](application-types.md)
 
 <!-- Links - EXTERNAL -->
 [github-js-spa]: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp

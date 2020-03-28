@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 3/11/2020
 ms.custom: include file
 ms.openlocfilehash: 6ec72dfa227d62804e5cbafef0e2d1acf483e84b
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79370372"
 ---
 > [!NOTE]
-> Program Azure Digital revlákens ve verzi Preview je momentálně v kapacitě. V důsledku toho už se noví zákazníci nevkládají a **v tuto chvíli se nedají vytvářet žádné další prostředky digitálních vláken Azure**. Pokud se instance někam odstraní, je možné, že vaše vytvoření prostředku bude úspěšné a můžete pokračovat normálně, ale nezaručujeme to. Pokračujte prosím a vraťte se na všechny aktualizace tohoto stavu.
+> Program Azure Digital Twins preview je momentálně na kapacitě. V důsledku toho se už nepřidávají noví zákazníci a **v tuto chvíli nelze vytvořit žádné další prostředky Azure Digital Twins**. Pokud je instance někde odstraněna, je možné, že vytvoření prostředku bude úspěšné a můžete pokračovat normálně, ale to není zaručeno. Pokračujte v kontrole jakékoli aktualizace tohoto stavu.

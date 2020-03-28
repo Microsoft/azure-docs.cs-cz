@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: odeslání vlastních událostí do hybridního připojení – Event Grid'
-description: 'Kurz: k publikování tématu použijte Azure Event Grid a Azure CLI a přihlaste se k odběru této události. Hybridní připojení se používá pro koncový bod.'
+title: 'Kurz: Odeslání vlastních událostí hybridnímu připojení – Event Grid'
+description: 'Kurz: Pomocí Azure Event Grid a Azure CLI publikujte téma a přihlaste se k odběru této události. Hybridní připojení se používá pro koncový bod.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 2773d06fdfc606faaab88340fc2ef9685bba21f9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73720698"
 ---
-# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Kurz: směrování vlastních událostí Azure Relay Hybrid Connections pomocí Azure CLI a Event Grid
+# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Kurz: Směrování vlastních událostí do hybridních připojení Azure Relay pomocí Azure CLI a Event Grid
 
 Azure Event Grid je služba zpracování událostí pro cloud. Azure Relay Hybrid Connections je jednou z podporovaných obslužných rutin událostí. Hybridní připojení použijete jako obslužnou rutinu události, když je potřeba zpracovat události z aplikací, které nemají veřejný koncový bod. Tyto aplikace se můžou nacházet ve vaší podnikové síti. V tomto článku vytvoříte pomocí Azure CLI vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Události odešlete do hybridního připojení.
 
@@ -27,7 +27,7 @@ Tento článek předpokládá, že už máte hybridní připojení a aplikaci na
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!NOTE]
-> Pokud na místním počítači používáte rozhraní příkazového řádku Azure CLI, použijte Azure CLI verze 2.0.56 nebo novější. Pokyny k instalaci nejnovější verze rozhraní příkazového řádku Azure najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+> Pokud používáte Azure CLI na místním počítači, použijte Azure CLI verze 2.0.56 nebo vyšší. Pokyny k instalaci nejnovější verze příkazového příkazového příkazu k Azure najdete [v tématu Instalace příkazového příkazového příkazu k azure](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -51,7 +51,7 @@ az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 
 ## <a name="subscribe-to-a-custom-topic"></a>Přihlášení k odběru vlastního tématu
 
-Přihlásíte se k odběru tématu Event gridu, které informuje Event Grid události, které chcete sledovat. Následující příklad přihlásí vlastní téma, které jste vytvořili, a předá ID prostředku hybridního připojení pro koncový bod. ID hybridního připojení je ve formátu:
+Přihlásíte se k odběru tématu mřížky událostí a sdělíte aplikaci Event Grid, které události chcete sledovat. Následující příklad se přihlásí k odběru vlastního tématu, které jste vytvořili, a předá ID prostředku hybridního připojení pro koncový bod. ID hybridního připojení je ve formátu:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
