@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 9aecaa6195509ec4c1f0d6b4b14b9bb30817da34
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906866"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "69906866"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Vytvořte nový projekt pro procházení pomocí oblíbených rozhraní IDE nebo editoru. Pak do svého projektu, do souboru s názvem `sentence-length.go`, zkopírujte tento fragment kódu.
+Vytvořte nový projekt Go pomocí svého oblíbeného rozhraní IDE nebo editoru. Pak do svého projektu, do souboru s názvem `sentence-length.go`, zkopírujte tento fragment kódu.
 
 ```go
 package main
@@ -33,9 +33,9 @@ import (
 )
 ```
 
-## <a name="create-the-main-function"></a>Vytvoření funkce main
+## <a name="create-the-main-function"></a>Vytvoření hlavní funkce
 
-Tato ukázka se pokusí přečíst klíč předplatného Translator text a koncový bod z těchto proměnných prostředí `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` : `TRANSLATOR_TEXT_ENDPOINT`a. Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscriptionKey` a `endpoint` jako řetězce a komentovat podmíněné příkazy.
+Tato ukázka se pokusí přečíst klíč předplatného Translator Text `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` a `TRANSLATOR_TEXT_ENDPOINT`koncový bod z těchto proměnných prostředí: a . Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscriptionKey` a `endpoint` jako řetězce a komentovat podmíněné příkazy.
 
 Zkopírujte do svého projektu tento kód:
 
@@ -67,7 +67,7 @@ func main() {
 
 ## <a name="create-a-function-to-determine-sentence-length"></a>Vytvoření funkce pro určení délky věty
 
-Pojďme vytvořit funkci, která určí délku věty. Tato funkce bude mít jeden argument, Translator Text klíč předplatného.
+Pojďme vytvořit funkci k určení délky věty. Tato funkce bude trvat jeden argument, váš klíč předplatného Translator Text.
 
 ```go
 func breakSentence(subscriptionKey string, uri string)
@@ -78,9 +78,9 @@ func breakSentence(subscriptionKey string, uri string)
 }
 ```
 
-Nyní vytvoříme adresu URL. Adresa URL je sestavena pomocí `Parse()` metod `Query()` a. Všimněte si, že parametry jsou přidány s `Add()` metodou.
+Dále vytvoříme adresu URL. Adresa URL je `Parse()` sestavena pomocí metod a. `Query()` Všimněte si, že parametry `Add()` jsou přidány s metodou.
 
-Zkopírujte tento kód do `breakSentence` funkce.
+Zkopírujte tento `breakSentence` kód do funkce.
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
@@ -91,11 +91,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků [najdete v článku Translator text API 3,0: BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
+> Další informace o koncových bodech, trasách a parametrech požadavku naleznete v [tématu Translator Text API 3.0: BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
-## <a name="create-a-struct-for-your-request-body"></a>Vytvoření struktury pro tělo žádosti
+## <a name="create-a-struct-for-your-request-body"></a>Vytvoření struktury pro tělo požadavku
 
-Dále vytvořte anonymní strukturu pro text žádosti a zakódovat ji jako JSON pomocí `json.Marshal()`. Přidejte tento kód do `breakSentence` funkce.
+Dále vytvořte anonymní strukturu pro tělo požadavku a zakódujte jej jako JSON s `json.Marshal()`. Přidejte tento `breakSentence` kód do funkce.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -107,9 +107,9 @@ body := []struct {
 b, _ := json.Marshal(body)
 ```
 
-## <a name="build-the-request"></a>Žádost o sestavení
+## <a name="build-the-request"></a>Sestavení požadavku
 
-Teď, když jste zakódovi tělo požadavku jako JSON, můžete sestavit požadavek POST a zavolat Translator Text API.
+Teď, když jste kódovali tělo požadavku jako JSON, můžete vytvořit požadavek POST a volat překladač text api.
 
 ```go
 // Build the HTTP POST request
@@ -128,11 +128,11 @@ if err != nil {
 }
 ```
 
-Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Pokud používáte předplatné služeb Cognitive Services s více `Ocp-Apim-Subscription-Region` službami, musíte také zahrnout parametry požadavku. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-## <a name="handle-and-print-the-response"></a>Zpracuje a vytiskne odpověď.
+## <a name="handle-and-print-the-response"></a>Zpracování a tisk odpovědi
 
-Přidejte tento kód do `breakSentence` funkce k dekódování odpovědi JSON a pak formátujte a tiskněte výsledek.
+Přidejte tento `breakSentence` kód do funkce dekódovat odpověď JSON a potom formátovat a vytisknout výsledek.
 
 ```go
 // Decode the JSON response
@@ -173,9 +173,9 @@ Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na odkaz rozhraní API pochopit vše, co můžete dělat s překladačem text api.
 
 > [!div class="nextstepaction"]
-> [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

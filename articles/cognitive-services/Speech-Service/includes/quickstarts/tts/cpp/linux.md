@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: syntetizace řeči C++ , (Linux) – služba Speech'
+title: 'Úvodní příručka: Syntetizační řeč, C++ (Linux) - Služba řeči'
 titleSuffix: Azure Cognitive Services
-description: Naučte se, jak pomocí sady C++ Speech SDK syntetizovat řeč v systému Linux.
+description: Naučte se syntetizovat řeč v jazyce C++ v Linuxu pomocí sady Speech SDK
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: include
 ms.date: 07/05/2019
 ms.author: yinhew
 ms.openlocfilehash: 40befc98c2280418a443ff80e4d246b6e2957e56
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925373"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete, nezapomeňte:
+Než začnete, ujistěte se, že:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=linux)
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
@@ -52,7 +52,7 @@ Než začnete, nezapomeňte:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* V systému **ARM64** (64) spusťte následující příkaz, který sestaví aplikaci.
+* V systému **ARM64** (64 bit) spusťte následující příkaz k vytvoření aplikace.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
@@ -74,7 +74,7 @@ Než začnete, nezapomeňte:
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
      ```
 
-   * V systému **ARM64** (64 bitů) zadejte následující příkaz.
+   * V systému **ARM64** (64 bit) zadejte následující příkaz.
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
@@ -86,7 +86,7 @@ Než začnete, nezapomeňte:
    ./helloworld
    ```
 
-1. V okně konzoly se zobrazí výzva s výzvou k zadání textu. Zadejte několik slov nebo větu. Text, který jste zadali, se přenáší do služby pro rozpoznávání řeči a syntetizuje se na řeč, který hraje na svém mluvčím.
+1. V okně konzoly se zobrazí výzva s výzvou k zadání textu. Zadejte několik slov nebo větu. Zadaný text je přenesen do služby Řeč a syntetizován do řeči, která se přehraje na reproduktoru.
 
    ```text
    Type some text that you want to speak...
@@ -102,4 +102,4 @@ Než začnete, nezapomeňte:
 ## <a name="see-also"></a>Viz také
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Záznam vlastních hlasových ukázek](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

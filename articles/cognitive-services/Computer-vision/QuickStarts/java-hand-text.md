@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Počítačové zpracování obrazu 2,0 a 2,1 – extrakce vytištěných a ručně psaných textových REST, Java'
+title: 'Úvodní příručka: Computer Vision 2.0 a 2.1 - Extrahovat tištěný a ručně psaný text - REST, Java'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu extrahujete vytištěný a rukou psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu v jazyce Java.
+description: V tomto rychlém startu extrahovat tištěný a ručně psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu s javou.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,41 +12,41 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 15c84b0c4cd4311300b951c3bf86b2bd62d48bfd
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77566127"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-java"></a>Rychlý Start: extrakce vytištěného textu a ručního textu pomocí Počítačové zpracování obrazu 2,0 a 2,1 REST API a Java
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-java"></a>Úvodní příručka: Extrakce tištěného a ručně psaného textu pomocí rozhraní API API PRO zobrazení počítače 2.0 a 2.1 a javy
 
-V tomto rychlém startu budete z obrázku extrahovat vytištěný nebo ručně psaný text pomocí REST API Počítačové zpracování obrazu. Pomocí metod [čtení a čtení dávkových](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) [operací](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) Batch můžete detekovat text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je strojově čitelný. Rozhraní API určí, který model rozpoznávání se má použít pro každý řádek textu, takže podporuje obrázky s tištěným i psaným textem.
+V tomto rychlém startu extrahnete tištěný nebo ručně psaný text z obrázku pomocí rozhraní API REKONČOVÁNÍ Počítače. Pomocí metod [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) and Read [Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) můžete detekovat text v obraze a extrahovat rozpoznané znaky do strojově čitelného datového proudu znaků. Rozhraní API určí, který model rozpoznávání se má použít pro každý řádek textu, takže podporuje obrázky s vytištěným i ručně psaným textem.
 
-V porovnání s Počítačové zpracování obrazu 2,0 a 2,1 Počítačové zpracování obrazu 3,0 Public Preview poskytuje:
+Ve srovnání s počítačovým viděním 2.0 a 2.1 poskytuje verze Computer Vision 3.0 Public Preview:
 
 * ještě lepší přesnost
 * změněný výstupní formát
-* hodnocení spolehlivosti pro slova
-* Podpora jazyků španělštiny i angličtiny s parametrem dalšího jazyka
+* skóre spolehlivosti pro slova
+* podpora španělského i anglického jazyka s dodatečným jazykovým parametrem
 
 #### <a name="version-2"></a>[Verze 2](#tab/version-2)
 
 > [!IMPORTANT]
-> Metoda [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) se spouští asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho metoda čtení dávky vrátí identifikátor URI v hodnotě pole hlavičky odpovědi `Operation-Location`. Pak můžete zavolat tento identifikátor URI, který představuje rozhraní API [pro výsledek operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , pro kontrolu stavu a vrácení výsledků volání metody čtení dávky.
+> Metoda [dávkového čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) běží asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho vrátí metoda Dávkové čtení identifikátor `Operation-Location` URI v hodnotě pole hlavičky odpovědi. Potom můžete volat tento identifikátor URI, který představuje rozhraní [API výsledek operace čtení,](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) jak zkontrolovat stav a vrátit výsledky volání metody dávkového čtení.
 
-#### <a name="version-3-public-preview"></a>[Verze 3 (Public Preview)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Verze 3 (Veřejná verze)](#tab/version-3)
 
 > [!IMPORTANT]
-> Metoda [čtení dávky](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) se spouští asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho metoda čtení dávky vrátí identifikátor URI v hodnotě pole hlavičky odpovědi `Operation-Location`. Pak můžete zavolat tento identifikátor URI, který představuje rozhraní API [pro výsledek operace čtení](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) , pro kontrolu stavu a vrácení výsledků volání metody čtení dávky.
+> Metoda [dávkového čtení](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) běží asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho vrátí metoda Dávkové čtení identifikátor `Operation-Location` URI v hodnotě pole hlavičky odpovědi. Potom můžete volat tento identifikátor URI, který představuje rozhraní [API výsledek operace čtení,](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) jak zkontrolovat stav a vrátit výsledky volání metody dávkového čtení.
 
 ---
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) než začnete.
 
 - Musíte mít nainstalovanou platformu [Java&trade;, Standard Edition Development Kit 7 nebo 8](https://aka.ms/azure-jdks) (JDK 7 nebo 8).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT`v uvedeném pořadí.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Potom [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec koncového `COMPUTER_VISION_SUBSCRIPTION_KEY` klíče `COMPUTER_VISION_ENDPOINT`a služby s názvem a , resp.
 
 ## <a name="create-and-run-the-sample-application"></a>Vytvoření a spuštění ukázkové aplikace
 
@@ -54,7 +54,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-1. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java. Vytvořte projekt Java ze šablony aplikace příkazového řádku, pokud je tato možnost k dispozici.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy. Vytvořte projekt Java ze šablony aplikace příkazového řádku, pokud je tato možnost k dispozici.
 1. Následující knihovny naimportujte do projektu Java. Pokud používáte Maven, jsou k dispozici souřadnice Maven pro každou knihovnu.
    - [Klient Apache HTTP](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.5)
    - [Jádro Apache HTTP](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.9)
@@ -76,10 +76,10 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
    import org.json.JSONObject;
    ```
 
-1. Třídu `Main` veřejné třídy nahraďte následujícím kódem.
-1. Volitelně můžete hodnotu `imageToAnalyze` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat text.
+1. Nahraďte veřejnou `Main` třídu následujícím kódem.
+1. Volitelně můžete nahradit `imageToAnalyze` hodnotu adresy URL jiného obrázku, ze kterého chcete extrahovat text.
 1. Uložte a sestavte projekt Java.
-1. Pokud používáte integrované vývojové prostředí, spusťte `Main`. V opačném případě otevřete okno příkazového řádku a potom pomocí příkazu `java` spusťte zkompilovanou třídu. například `java Main`.
+1. Pokud používáte integrované vývojové prostředí, spusťte `Main`. V opačném případě otevřete okno příkazového řádku a potom pomocí příkazu `java` spusťte zkompilovanou třídu. Například, `java Main`.
 
 ```java
 public class Main {
@@ -192,11 +192,11 @@ public class Main {
 }
 ```
 
-#### <a name="version-3-public-preview"></a>[Verze 3 (Public Preview)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Verze 3 (Veřejná verze)](#tab/version-3)
 
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-1. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java. Vytvořte projekt Java ze šablony aplikace příkazového řádku, pokud je tato možnost k dispozici.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy. Vytvořte projekt Java ze šablony aplikace příkazového řádku, pokud je tato možnost k dispozici.
 1. Následující knihovny naimportujte do projektu Java. Pokud používáte Maven, jsou k dispozici souřadnice Maven pro každou knihovnu.
    - [Klient Apache HTTP](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.5)
    - [Jádro Apache HTTP](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.9)
@@ -218,11 +218,11 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
     import org.json.JSONObject;
     ```
 
-1. Třídu `Main` veřejné třídy nahraďte následujícím kódem.
-1. V případě potřeby nahraďte hodnotu `language` jazykem, který chcete rozpoznat. Přijaté hodnoty jsou "en" pro angličtinu a "ES" pro španělštinu.
-1. Volitelně můžete hodnotu `imageToAnalyze` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat text.
+1. Nahraďte veřejnou `Main` třídu následujícím kódem.
+1. Volitelně můžete nahradit `language` hodnotu jazykem, který chcete rozpoznat. Přijaté hodnoty jsou "en" pro angličtinu a "es" pro španělštinu.
+1. Volitelně můžete nahradit `imageToAnalyze` hodnotu adresy URL jiného obrázku, ze kterého chcete extrahovat text.
 1. Uložte a sestavte projekt Java.
-1. Pokud používáte integrované vývojové prostředí, spusťte `Main`. V opačném případě otevřete okno příkazového řádku a potom pomocí příkazu `java` spusťte zkompilovanou třídu. například `java Main`.
+1. Pokud používáte integrované vývojové prostředí, spusťte `Main`. V opačném případě otevřete okno příkazového řádku a potom pomocí příkazu `java` spusťte zkompilovanou třídu. Například, `java Main`.
 
 ```java
 
@@ -456,7 +456,7 @@ Text recognition result response:
 }
 ```
 
-#### <a name="version-3-public-preview"></a>[Verze 3 (Public Preview)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Verze 3 (Veřejná verze)](#tab/version-3)
 
 ```json
 {
@@ -771,7 +771,7 @@ Pokud projekt Java už nepotřebujete, odstraňte jej včetně zkompilované tř
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte aplikaci v Java Swingu, která používá počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytvořte chytře ořezané miniatury a rozpoznávejte, kategorizujte, označujte a popisujte vizuální vlastnosti na obrázku včetně obličejů. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte aplikaci v Java Swing, která používá počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR); vytváření chytře ořezaných miniatur; a rozpoznávání, kategorizování, označování a popisování vizuálních funkcí, včetně obličejů v obrázcích. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Kurz rozhraní API pro počítačové zpracování obrazu v Javě](../Tutorials/java-tutorial.md)

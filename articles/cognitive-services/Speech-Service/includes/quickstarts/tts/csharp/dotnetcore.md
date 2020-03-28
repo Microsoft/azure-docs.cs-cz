@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: syntetizace řeči C# , (.NET Core) – služba Speech'
+title: 'Úvodní příručka: Syntetizovat řeč, C# (.NET Core) - služba řeči'
 titleSuffix: Azure Cognitive Services
-description: Naučte se, jak v C# rámci .NET Core v systému Windows syntetizovat řeč pomocí sady Speech SDK
+description: Naučte se syntetizovat řeč v c# pod .NET Core v systému Windows pomocí sady Speech SDK
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: include
 ms.date: 6/24/2019
 ms.author: yinhew
 ms.openlocfilehash: ba6a373f678f8d34b34a669b3fbb3b570c90ed0d
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925361"
 ---
 > [!NOTE]
 > .NET Core je Open Source multiplatformní rozhraní .NET, které implementuje specifikace rozhraní [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete, nezapomeňte:
+Než začnete, ujistěte se, že:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
@@ -42,17 +42,17 @@ Než začnete, nezapomeňte:
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-1. Sestavte aplikaci. V řádku nabídek zvolte **Sestavení** > **Sestavit řešení**. Kód by se měl zkompilovat bez chyb.
+1. Sestavte aplikaci. Na řádku nabídek zvolte **Sestavení** > **řešení sestavení**. Kód by se měl zkompilovat bez chyb.
 
-    ![Snímek obrazovky aplikace Visual Studio s zvýrazněnou možností řešení sestavení](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-05-build.png "Úspěšné sestavení")
+    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Sestavit řešení](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-05-build.png "Úspěšné sestavení")
 
-1. Spusťte aplikaci. V řádku nabídek zvolte **Ladit** > **Spustit ladění** nebo stiskněte klávesu **F5**.
+1. Spusťte aplikaci. Na řádku nabídek zvolte **Ladění** > **ladění startování**nebo stiskněte **klávesu F5**.
 
-    ![Snímek obrazovky aplikace Visual Studio s zvýrazněnou možností spustit ladění](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Spustit aplikaci do ladění")
+    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Spuštění aplikace do ladění")
 
-1. Zobrazí se okno konzoly, které vás vyzve k zadání textu. Zadejte několik slov nebo větu. Text, který jste zadali, se přenáší do služby pro rozpoznávání řeči a syntetizuje se na řeč, který hraje na svém mluvčím.
+1. Zobrazí se okno konzoly s výzvou k zadání textu. Zadejte několik slov nebo větu. Zadaný text je přenesen do služby Řeč a syntetizován do řeči, která se přehraje na reproduktoru.
 
-    ![Snímek obrazovky s výstupem konzoly po úspěšném Shrnutí](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Výstup na konzole po úspěšném Shrnutí")
+    ![Snímek obrazovky s výstupem konzoly po úspěšné syntéze](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Výstup konzoly po úspěšné syntéze")
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -61,4 +61,4 @@ Než začnete, nezapomeňte:
 ## <a name="see-also"></a>Viz také
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Záznam vlastních hlasových ukázek](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

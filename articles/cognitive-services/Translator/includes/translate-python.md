@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 648842e86410985e3a6fb21f474b9df9d14e109d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906731"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "69906731"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém prostředí nebo editoru. Pak do svého projektu, do souboru s názvem `translate-text.py`, zkopírujte tento fragment kódu. Ujistěte se, že překladač vašeho IDE odkazuje na správnou verzi Pythonu, aby nedocházelo k rozpoznání knihoven.
+Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém prostředí nebo editoru. Pak do svého projektu, do souboru s názvem `translate-text.py`, zkopírujte tento fragment kódu. Ujistěte se, že interpret vašeho IDE odkazuje na správnou verzi Pythonu, aby se zabránilo tomu, že knihovny nebudou rozpoznány.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -31,7 +31,7 @@ První komentář říká interpretu Pythonu, že má použít kódování UTF-8
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>Nastavení klíče předplatného, koncového bodu a cesty
 
-Tato ukázka se pokusí přečíst klíč předplatného Translator text a koncový bod z proměnných prostředí: `TRANSLATOR_TEXT_KEY` a `TRANSLATOR_TEXT_ENDPOINT`. Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscription_key` a `endpoint` jako řetězce a přidat komentář k podmíněným příkazům.
+Tato ukázka se pokusí přečíst klíč předplatného Translator Text `TRANSLATOR_TEXT_KEY` a `TRANSLATOR_TEXT_ENDPOINT`koncový bod z proměnných prostředí: a . Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscription_key` a `endpoint` jako řetězce a komentovat podmíněné příkazy.
 
 Zkopírujte do svého projektu tento kód:
 
@@ -47,12 +47,12 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-Translator Text globální koncový bod je nastaven jako `endpoint`. `path` nastaví trasu `translate` a určuje, že chceme cílit na rozhraní API verze 3.
+Globální koncový bod Translator Text `endpoint`je nastaven jako . `path` nastaví trasu `translate` a určuje, že chceme cílit na rozhraní API verze 3.
 
 `params` slouží k nastavení jazyků výstupu. V této ukázce překládáme z angličtiny do italštiny a němčiny: `it` a `de`.
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků [najdete v článku Translator text API 3,0: Přeložit](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
+> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Překlad](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
 
 ```python
 path = '/translate?api-version=3.0'
@@ -74,7 +74,7 @@ headers = {
 }
 ```
 
-Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Pokud používáte předplatné služeb Cognitive Services s více `Ocp-Apim-Subscription-Region` službami, musíte také zahrnout parametry požadavku. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-request-to-translate-text"></a>Vytvoření požadavku na překlad textu
 
@@ -141,7 +141,7 @@ Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapome
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na odkaz rozhraní API pochopit vše, co můžete dělat s překladačem text api.
 
 > [!div class="nextstepaction"]
-> [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

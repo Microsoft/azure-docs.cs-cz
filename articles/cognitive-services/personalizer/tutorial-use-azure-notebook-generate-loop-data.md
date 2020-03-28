@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: program pro přizpůsobování notebooků Azure'
+title: 'Kurz: Poznámkový blok Azure – personalizátor'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu se simuluje smyčka přizpůsobeného _system v poznámkovém bloku Azure, který navrhuje typ kávy, který si zákazník může objednat. Uživatelé a jejich předvolby jsou uloženy v uživatelské datové sadě. Informace o kávě jsou také k dispozici a uloženy v datové sadě kávy.
+description: Tento kurz simuluje smyčky personalizace _system v poznámkovém bloku Azure, což naznačuje, jaký typ kávy by měl zákazník objednat. Uživatelé a jejich předvolby jsou uloženy v datové sadě uživatele. Informace o kávě jsou také k dispozici a uloženy v datové sadě kávy.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,96 +11,96 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: diberry
 ms.openlocfilehash: 03e8b658f7edf4640d738e5ea3af84953185d0f5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76986831"
 ---
-# <a name="tutorial-use-personalizer-in-azure-notebook"></a>Kurz: použití přizpůsobeného úložiště v Azure poznámkovém bloku
+# <a name="tutorial-use-personalizer-in-azure-notebook"></a>Kurz: Použití personalisty v poznámkovém bloku Azure
 
-V tomto kurzu se spouští smyčka individuálního nastavení v poznámkovém bloku Azure, který demonstruje koncové životní cykly smyčky přizpůsobené v rámci personalizace.
+Tento kurz spustí smyčky personalikátní v poznámkovém bloku Azure, demonstrovat konec do konce životního cyklu personalizované smyčky.
 
-Smyčka navrhuje, který typ kávy by zákazník měl objednat. Uživatelé a jejich předvolby jsou uloženy v uživatelské datové sadě. Informace o kávě jsou uloženy v datové sadě kávy.
+Smyčka naznačuje, jaký typ kávy by si měl zákazník objednat. Uživatelé a jejich předvolby jsou uloženy v datové sadě uživatele. Informace o kávě jsou uloženy v datové sadě kávy.
 
 ## <a name="users-and-coffee"></a>Uživatelé a káva
 
-Poznámkový blok simulující interakci uživatele s webem vybere náhodného uživatele, denní dobu a typ počasí z datové sady. Souhrn informací o uživateli:
+Poznámkový blok, který simuluje interakci uživatele s webem, vybere náhodného uživatele, denní dobu a typ počasí z datové sady. Souhrn informací o uživateli je:
 
-|Zákazníci – kontextové funkce|Denní doba|Typy počasí|
+|Zákazníci - kontextové funkce|Denní doba|Druhy počasí|
 |--|--|--|
-|Alice<br>Bob<br>Cathy<br>Dave|Označení<br>Celkem<br>Celkem|Slunečné<br>RAINY<br>Bílá|
+|Alice<br>Bob<br>Cathy<br>Dave|Ráno<br>Odpoledne<br>Večer|Slunné<br>Deštivé<br>Zasněžené|
 
-Aby bylo možné lépe přizpůsobovat informace, _systém_ ví, že v průběhu času zná také informace o výběru kávy pro každou osobu.
+Chcete-li pomoci Personalista učit, v průběhu času, _systém_ také zná podrobnosti o výběru kávy pro každou osobu.
 
-|Funkce kávy – akce|Typy teploty|Místa původu|Typy Roast|Organický|
+|Káva - akční prvky|Typy teplot|Místa původu|Druhy pečeně|Organic|
 |--|--|--|--|--|
-|Cappacino|Hot|Keňa|Tmavý|Organický|
-|Studená Brew|Chladírenský|Brazílie|Světlý|Organický|
-|Iced Mocha|Chladírenský|Etiopie|Světlý|Neorganické|
-|Latte|Hot|Brazílie|Tmavý|Neorganické|
+|Cappacino|Hot|Keňa|Tmavý|Organic|
+|Studené pivo|Bez zájmu|Brazílie|Světlý|Organic|
+|Ledová moka|Bez zájmu|Etiopie|Světlý|Není ekologické|
+|Latte|Hot|Brazílie|Tmavý|Není ekologické|
 
-**Účelem** smyčky pro přizpůsobování je najít nejlepší shodu mezi uživateli a kávy co nejvíce času.
+**Účelem** smyčky Personalizace je najít nejlepší shodu mezi uživateli a kávou co nejvíce času.
 
-Kód pro tento kurz je k dispozici v [úložišti GitHub Samples Samples](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook).
+Kód pro tento kurz je k dispozici v [personalizované ukázky GitHub úložiště](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook).
 
 ## <a name="how-the-simulation-works"></a>Jak simulace funguje
 
-Na začátku běžícího systému jsou návrhy z přizpůsobeného nástroje úspěšné jenom mezi 20% a 30%. Tato úspěšnost je popsána v případě, že se vám podařilo odeslat zpět do aplikačního rozhraní API pro přizpůsobení s skóre 1. Po určitém pořadí a bez jakýchkoli volání se systém zlepšuje.
+Na začátku běžícího systému jsou návrhy od Personalisty úspěšné pouze mezi 20% až 30%. Tento úspěch je indikován odměnou zaslanou zpět do rozhraní Personalizer's Reward API se skóre 1. Po některých rankových a bonusových hovorech se systém zlepšuje.
 
-Po počátečních požadavcích spusťte offline vyhodnocení. To umožňuje přizpůsobovat, aby si data zkontrolovali a navrhli lepší výukové zásady. Použijte nové zásady učení a znovu spusťte Poznámkový blok s 20% počtu předchozích požadavků. Tato smyčka bude lepší díky novým zásadám učení.
+Po počátečních požadavcích spusťte offline vyhodnocení. To umožňuje personalista zkontrolovat data a navrhnout lepší zásady učení. Použijte nové zásady učení a znovu spusťte poznámkový blok s 20 % předchozího počtu požadavků. Smyčka bude fungovat lépe s novou politikou učení.
 
-## <a name="rank-and-reward-calls"></a>Volání pořadí a odměňování
+## <a name="rank-and-reward-calls"></a>Volání o hodnocení a odměnu
 
-U každého z tisíc volání služby přizpůsobeného rozhraní odešle Poznámkový blok Azure požadavek na **řazení** do REST API:
+Pro každý z několika tisíc volání služby Personalikátor Azure poznámkový blok odešle požadavek **pořadí** na rozhraní REST API:
 
-* Jedinečné ID pro událost pořadí/žádosti
-* Kontextové funkce – náhodným výběrem uživatele, počasí a času, kdy se uživateli na webu nebo na mobilním zařízení simuluje uživatel.
-* Akce s funkcemi – _všechna_ data kávy – od kterých se přizpůsobuje návrh
+* Jedinečné ID události Rank/Request
+* Kontextové funkce - Náhodná volba uživatele, počasí a denní doby - simulace uživatele na webových stránkách nebo mobilním zařízení
+* Akce s funkcemi - _Všechna_ data kávy - ze kterého personalizace dělá návrh
 
-Systém obdrží požadavek a pak porovná tuto předpověď se známou volbou uživatele pro stejnou denní dobu a počasí. Pokud je známá volba stejná jako předpokládaná volba, **odměna** 1 se pošle zpátky do přizpůsobeného. V opačném případě je zpětná síla odeslána 0.
+Systém obdrží požadavek, pak porovná tuto předpověď se známou volbou uživatele pro stejnou denní dobu a počasí. Pokud je známá volba stejná jako předpovídaná volba, **odměna 1** je odeslána zpět personalistovi. V opačném případě je odměna odeslaná zpět 0.
 
 > [!Note]
-> Toto je simulace, takže algoritmus pro odměnu je jednoduchý. Ve scénáři reálného světa by měl algoritmus používat obchodní logiku, případně i váhy pro různé aspekty prostředí zákazníka, a určit tak skóre odměňování.
+> Jedná se o simulaci, takže algoritmus pro odměnu je jednoduchý. V reálném scénáři algoritmus by měl používat obchodní logiku, případně s váhami pro různé aspekty zkušeností zákazníka, k určení skóre odměny.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Účet [poznámkového bloku Azure](https://notebooks.azure.com/) .
-* [Prostředek pro přizpůsobování Azure](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
-    * Pokud jste už použili prostředek pro přizpůsobeného přizpůsobeného, ujistěte se, že se data v Azure Portal pro prostředek [vymazala](how-to-settings.md#clear-data-for-your-learning-loop) .
-* Nahrajte všechny soubory pro [tuto ukázku](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) do projektu poznámkového bloku Azure.
+* Účet [poznámkového bloku Azure.](https://notebooks.azure.com/)
+* Prostředek [Personalisty Azure](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
+    * Pokud jste už použili prostředek personalizace, ujistěte se, že [vymazat data](how-to-settings.md#clear-data-for-your-learning-loop) na portálu Azure pro prostředek.
+* Nahrajte všechny soubory pro [tuto ukázku](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) do projektu Azure Notebook.
 
 Popisy souborů:
 
-* [Personalizovat. ipynb](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/Personalizer.ipynb) je notebook Jupyter pro tento kurz.
+* [Personalizer.ipynb](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/Personalizer.ipynb) je Jupyter notebook pro tento výukový program.
 * [Uživatelská datová sada](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/users.json) je uložena v objektu JSON.
 * [Datová sada kávy](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/coffee.json) je uložena v objektu JSON.
-* [Příkladem JSON požadavku](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/example-rankrequest.json) je očekávaný formát pro požadavek post na rozhraní API řazení.
+* [Příklad Požadavku JSON](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/example-rankrequest.json) je očekávaný formát pro požadavek POST na rank API.
 
-## <a name="configure-personalizer-resource"></a>Konfigurace prostředku přizpůsobeného pro přizpůsobování
+## <a name="configure-personalizer-resource"></a>Konfigurovat prostředek personalikátora
 
-V Azure Portal nakonfigurujte [prostředek](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) přizpůsobeného přizpůsobeného pomocí **Frekvence aktualizace modelu** nastavenou na 15 sekund a **dobu čekání na odměnu** 15 sekund. Tyto hodnoty jsou k dispozici na stránce **[Konfigurace](how-to-settings.md#configure-service-settings-in-the-azure-portal)** .
+Na webu Azure Portal nakonfigurujte [prostředek personalisty](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) s **frekvencí modelu aktualizace** nastavenou na 15 sekund a dobou čekání **odměny** 15 sekund. Tyto hodnoty se nacházejí na stránce **[Konfigurace.](how-to-settings.md#configure-service-settings-in-the-azure-portal)**
 
 |Nastavení|Hodnota|
 |--|--|
-|aktualizace frekvence modelu|15 sekund|
-|Doba čekání na odměnu|15 sekund|
+|aktualizovat frekvenci modelu|15 sekund|
+|doba čekání na odměnu|15 sekund|
 
-Tyto hodnoty mají velmi krátkou dobu trvání, aby bylo možné zobrazit změny v tomto kurzu. Tyto hodnoty by se neměly používat v produkčním scénáři bez ověřování, aby dosáhly svého cíle v rámci vaší smyčky pro přizpůsobování.
+Tyto hodnoty mají velmi krátkou dobu trvání, aby bylo možné zobrazit změny v tomto kurzu. Tyto hodnoty by neměly být použity v produkčním scénáři bez ověření, že dosáhnou vašeho cíle pomocí smyčky personalizátoru.
 
 ## <a name="set-up-the-azure-notebook"></a>Nastavení poznámkového bloku Azure
 
-1. Změňte jádro na `Python 3.6`.
+1. Změňte jádro `Python 3.6`na .
 1. Otevřete soubor `Personalizer.ipynb`.
 
-## <a name="run-notebook-cells"></a>Spustit buňky poznámkového bloku
+## <a name="run-notebook-cells"></a>Spuštění buněk poznámkového bloku
 
-Spusťte každou spustitelnou buňku a počkejte, než se vrátí. Víte, že se nachází v závorkách vedle buňky místo `*`zobrazuje číslo. Následující části vysvětlují, co jednotlivé buňky programově a co mají očekávat pro výstup.
+Spusťte každou spustitelnou buňku a počkejte, až se vrátí. Víte, že se provádí, když závorky vedle `*`buňky zobrazí číslo namísto . V následujících částech je vysvětleno, co každá buňka dělá programově a co lze očekávat pro výstup.
 
-### <a name="include-the-python-modules"></a>Zahrnutí modulů Pythonu
+### <a name="include-the-python-modules"></a>Zahrnout moduly pythonu
 
-Zahrňte požadované moduly Pythonu. Buňka nemá žádný výstup.
+Zahrňte požadované moduly pythonu. Buňka nemá žádný výstup.
 
 ```python
 import json
@@ -111,9 +111,9 @@ import time
 import uuid
 ```
 
-### <a name="set-personalizer-resource-key-and-name"></a>Nastavení klíče a názvu prostředku pro přizpůsobení
+### <a name="set-personalizer-resource-key-and-name"></a>Nastavení klíče a názvu prostředku personalizátoru
 
-V Azure Portal Najděte svůj klíč a koncový bod na stránce **rychlý Start** vašeho prostředku pro přizpůsobení. Změňte hodnotu `<your-resource-name>` na název prostředku pro přizpůsobení. Změňte hodnotu `<your-resource-key>` na klíč pro přizpůsobení.
+Na webu Azure Portal najdete klíč a koncový bod na stránce **Rychlého startu** prostředku personalisty. Změňte hodnotu `<your-resource-name>` na název prostředku personalisty. Změňte hodnotu klávesy `<your-resource-key>` Personalizátor.
 
 ```python
 # Replace 'personalization_base_url' and 'resource_key' with your valid endpoint values.
@@ -122,9 +122,9 @@ resource_key = "<your-resource-key>"
 ```
 
 ### <a name="print-current-date-and-time"></a>Tisk aktuálního data a času
-Pomocí této funkce si můžete všimnout počátečního a koncového času iterační funkce, iterací.
+Pomocí této funkce můžete zaznamenat počáteční a koncový čas iterativní funkce, iterací.
 
-Tyto buňky nemají žádný výstup. Funkce provede výstup aktuálního data a času při volání.
+Tyto buňky nemají žádný výstup. Funkce nemá výstup aktuální datum a čas při volání.
 
 ```python
 # Print out current datetime
@@ -135,11 +135,11 @@ def currentDateTime():
 
 ### <a name="get-the-last-model-update-time"></a>Získat čas poslední aktualizace modelu
 
-Když je zavolána funkce `get_last_updated`, funkce vytiskne datum poslední změny a čas, kdy byl model aktualizován.
+Při volání `get_last_updated`funkce , funkce vytiskne datum a čas poslední změny, kdy byl model aktualizován.
 
-Tyto buňky nemají žádný výstup. Funkce provede výstup posledního data školení modelu při volání.
+Tyto buňky nemají žádný výstup. Funkce nemá výstup poslední model trénování datum při volání.
 
-Funkce pro [získání vlastností modelu](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/GetModelProperties)používá REST API Get.
+Funkce používá rozhraní GET REST API k [získání vlastností modelu](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/GetModelProperties).
 
 ```python
 # ititialize variable for model's last modified date
@@ -165,11 +165,11 @@ def get_last_updated(currentModifiedDate):
         print(f'-----model updated: {lastModifiedTime}')
 ```
 
-### <a name="get-policy-and-service-configuration"></a>Získat konfiguraci zásad a služeb
+### <a name="get-policy-and-service-configuration"></a>Získání konfigurace zásad a služeb
 
 Ověřte stav služby pomocí těchto dvou volání REST.
 
-Tyto buňky nemají žádný výstup. Funkce provede výstup hodnot služeb při volání.
+Tyto buňky nemají žádný výstup. Funkce nemá výstup hodnoty služby při volání.
 
 ```python
 def get_service_settings():
@@ -193,14 +193,14 @@ def get_service_settings():
 
 Tato buňka
 
-* vytvoří adresy URL používané v voláních REST.
-* Nastaví hlavičku zabezpečení pomocí klíče prostředku pro přizpůsobování.
-* nastaví náhodné osazení pro ID události klasifikace.
-* čtení v datových souborech JSON
-* v příkladu výstupu se odebraly tyto výzvy `get_last_updated` zásady učení metod –.
-* volá metodu `get_service_settings`
+* vytvoří adresy URL používané ve volání REST
+* Nastaví záhlaví zabezpečení pomocí klíče prostředku personalizátoru
+* nastaví náhodné osivo pro ID události pořadí
+* čte v datových souborech JSON
+* metoda `get_last_updated` volání - zásady učení byly odstraněny v ukázkovém výstupu
+* metoda `get_service_settings` volání
 
-Buňka obsahuje výstup volání funkce `get_last_updated` a `get_service_settings`.
+Buňka má výstup z `get_last_updated` `get_service_settings` volání a funkce.
 
 ```python
 # build URLs
@@ -244,7 +244,7 @@ print(f'User count {len(userpref)}')
 print(f'Coffee count {len(actionfeaturesobj)}')
 ```
 
-Ověřte, že `rewardWaitTime` a `modelExportFrequency` výstupu jsou obě nastavené na 15 sekund.
+Ověřte, zda `rewardWaitTime` `modelExportFrequency` výstup a jsou nastaveny na 15 sekund.
 
 ```console
 -----checking model
@@ -260,31 +260,31 @@ User count 4
 Coffee count 4
 ```
 
-### <a name="troubleshooting-the-first-rest-call"></a>Řešení potíží s prvním voláním REST
+### <a name="troubleshooting-the-first-rest-call"></a>Poradce při potížích s prvním voláním REST
 
-Tato předchozí buňka je první buňkou, která volá do přizpůsobeného. Ujistěte se, že stavový kód REST ve výstupu je `<Response [200]>`. Pokud se zobrazí chyba, třeba 404, ale jste si jisti, že je klíč prostředku a název správný, znovu načtěte Poznámkový blok.
+Tato předchozí buňka je první buňka, která volá personalistu. Ujistěte se, že stavový `<Response [200]>`kód REST ve výstupu je . Pokud se zobrazí chyba, například 404, ale jste si jisti, že klíč prostředku a název jsou správné, znovu načtěte poznámkový blok.
 
-Ujistěte se, že počet kávy a uživatelé jsou obě 4. Pokud se zobrazí chyba, ověřte, že jste nahráli všechny 3 soubory JSON.
+Ujistěte se, že počet kávy a uživatelů je oba 4. Pokud se zobrazí chyba, zkontrolujte, zda jste nahráli všechny 3 soubory JSON.
 
-### <a name="set-up-metric-chart-in-azure-portal"></a>Nastavení grafu metriky v Azure Portal
+### <a name="set-up-metric-chart-in-azure-portal"></a>Nastavení grafu metrik na webu Azure Portal
 
-V pozdější části tohoto kurzu se dlouho běžící proces 10 000 požadavků zobrazuje v prohlížeči s textovým polem aktualizace. Může být snazší zobrazit v grafu nebo jako celkový součet, až dlouho běžící proces skončí. Chcete-li zobrazit tyto informace, použijte metriky, které jsou k dispozici v prostředku. Graf teď můžete vytvořit, když jste dokončili žádost o službu, a pak graf pravidelně aktualizovat, dokud neběží dlouho probíhající proces.
+Později v tomto kurzu je z prohlížeče s aktualizovaným textovým polem viditelný dlouho běžící proces 10 000 požadavků. Může být snazší vidět v grafu nebo jako celkový součet, když dlouho běžící proces skončí. Chcete-li tyto informace zobrazit, použijte metriky poskytnuté s prostředkem. Graf můžete vytvořit nyní, když jste dokončili požadavek na službu, a pak graf pravidelně aktualizovat, zatímco dlouhodobý proces probíhá.
 
-1. V Azure Portal vyberte prostředek pro přizpůsobování.
-1. V navigaci prostředků vyberte v části monitorování **metriky** .
+1. Na webu Azure Portal vyberte prostředek personalisty.
+1. V navigaci prostředků vyberte **metriky** pod sledováním.
 1. V grafu vyberte **Přidat metriku**.
-1. Obor názvů prostředku a metriky jsou už nastavené. Stačí jenom vybrat metriku **úspěšných volání** a agregaci **Sum**.
+1. Obor názvů prostředků a metriky jsou již nastaveny. Stačí vybrat metriku **úspěšných hovorů** a agregaci **součtu**.
 1. Změňte časový filtr na poslední 4 hodiny.
 
-    ![Nastavením grafu metriky v Azure Portal přidáte metriku pro úspěšná volání za poslední 4 hodiny.](./media/tutorial-azure-notebook/metric-chart-setting.png)
+    ![Nastavte na webu Azure Portal graf a přidejte metriku pro úspěšná volání za poslední 4 hodiny.](./media/tutorial-azure-notebook/metric-chart-setting.png)
 
-    V grafu by se měla zobrazit tři úspěšná volání.
+    V grafu by se měly zobrazit tři úspěšné hovory.
 
-### <a name="generate-a-unique-event-id"></a>Generování jedinečného ID události
+### <a name="generate-a-unique-event-id"></a>Generovat jedinečné ID události
 
-Tato funkce generuje jedinečné ID pro každé volání pořadí. IDENTIFIKÁTOR slouží k identifikaci informací o pořadí a odměnu. Tato hodnota může pocházet z obchodního procesu, jako je ID webového zobrazení nebo ID transakce.
+Tato funkce generuje jedinečné ID pro každé volání pořadí. ID se používá k identifikaci informací o pořadí a odměně. Tato hodnota může pocházet z obchodního procesu, jako je například ID webového zobrazení nebo ID transakce.
 
-Buňka nemá žádný výstup. Při volání funkce výstupuje jedinečné ID.
+Buňka nemá žádný výstup. Funkce má výstup jedinečné ID při volání.
 
 ```python
 def add_event_id(rankjsonobj):
@@ -293,13 +293,13 @@ def add_event_id(rankjsonobj):
     return eventid
 ```
 
-### <a name="get-random-user-weather-and-time-of-day"></a>Získat náhodného uživatele, počasí a denní dobu
+### <a name="get-random-user-weather-and-time-of-day"></a>Získejte náhodného uživatele, počasí a denní dobu
 
-Tato funkce vybere jedinečného uživatele, počasí a denní dobu a potom přidá tyto položky do objektu JSON, který se odešle do žádosti o řazení.
+Tato funkce vybere jedinečného uživatele, počasí a denní dobu a potom tyto položky přidá do objektu JSON, který se odešle do požadavku pořadí.
 
-Buňka nemá žádný výstup. Při volání funkce vrátí jméno náhodného uživatele, náhodné počasí a náhodný denní čas.
+Buňka nemá žádný výstup. Když je funkce volána, vrátí jméno náhodného uživatele, náhodné počasí a náhodný čas dne.
 
-Seznam 4 uživatelů a jejich předvolby – pro zkrácení se zobrazí jenom některé předvolby:
+Seznam 4 uživatelů a jejich preference - pouze některé preference jsou zobrazeny pro stručnost:
 
 ```json
 {
@@ -344,14 +344,14 @@ def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, r
 ```
 
 
-### <a name="add-all-coffee-data"></a>Přidat všechna data v kávě
+### <a name="add-all-coffee-data"></a>Přidat všechna data kávy
 
-Tato funkce přidá celý seznam kávy do objektu JSON, který se odešle do požadavku na řazení.
+Tato funkce přidá celý seznam kávy do objektu JSON odeslat rank požadavku.
 
-Buňka nemá žádný výstup. Funkce změní `rankjsonobj` při volání.
+Buňka nemá žádný výstup. Funkce změní při `rankjsonobj` volání.
 
 
-Příkladem jedné kávové funkce je:
+Příkladem funkcí jedné kávy je:
 
 ```json
 {
@@ -372,11 +372,11 @@ def add_action_features(rankjsonobj):
     rankjsonobj["actions"] = actionfeaturesobj
 ```
 
-### <a name="compare-prediction-with-known-user-preference"></a>Porovnání předpovědi se známými preferencemi uživatele
+### <a name="compare-prediction-with-known-user-preference"></a>Porovnat předpověď se známými uživatelskými předvolbami
 
-Tato funkce se volá po volání rozhraní API řazení pro každou iteraci.
+Tato funkce je volána po rank API je volána, pro každou iteraci.
 
-Tato funkce porovnává preference uživatele pro káva na základě počasí a denního času s návrhem přizpůsobeného pro uživatele pro tyto filtry. Pokud se návrh shoduje, je vráceno skóre 1, jinak je skóre 0. Buňka nemá žádný výstup. Funkce provede výstup skóre při volání.
+Tato funkce porovnává uživatele preference pro kávu, na základě počasí a denní doby, s personalizátní k návrhu pro uživatele pro tyto filtry. Pokud se návrh shoduje, je vráceno skóre 1, jinak je skóre 0. Buňka nemá žádný výstup. Funkce má výstup skóre při volání.
 
 ```python
 def get_reward_from_simulated_data(name, weather, timeofday, prediction):
@@ -385,15 +385,15 @@ def get_reward_from_simulated_data(name, weather, timeofday, prediction):
     return 0
 ```
 
-### <a name="loop-through-calls-to-rank-and-reward"></a>Smyčka prostřednictvím volání do řazení a odměňování
+### <a name="loop-through-calls-to-rank-and-reward"></a>Smyčka prostřednictvím volání na hodnost a odměnu
 
-Další buňkou je _Hlavní_ práce poznámkového bloku, která získá náhodného uživatele, získá seznam kávy a odešle je do rozhraní API pro řazení. Porovnání předpovědi se známými preferencemi uživatele a odeslání odměnu zpět do služby pro přizpůsobení.
+Další buňka je _hlavní_ práce notebooku, získání náhodného uživatele, získání seznamu kávy, odeslání obou do Rank API. Porovnání matné předpovědi se známými předvolbami uživatele a odeslání matné odměny zpět do služby Personalista.
 
-Cyklus se spustí `num_requests` časy. Přizpůsobování vyžaduje několik tisíc volání, která umožňují seřadit a odměnu vytvořit model.
+Smyčka běží `num_requests` na časy. Personalizár potřebuje několik tisíc hovorů na Rank a Odměna k vytvoření modelu.
 
-Následuje příklad formátu JSON odeslaného rozhraním API pro řazení. Seznam kávy není úplný pro zkrácení. Celý formát JSON pro káva můžete zobrazit v `coffee.json`.
+Následuje příklad JSON odeslaného do rozhraní API hodnosti. Seznam kávy není úplný, pro stručnost. Můžete vidět celý JSON na `coffee.json`kávu v .
 
-Do rozhraní API řazení se poslal kód JSON:
+JSON odeslána do Rank API:
 
 ```json
 {
@@ -426,7 +426,7 @@ Do rozhraní API řazení se poslal kód JSON:
 }
 ```
 
-Odpověď JSON z rozhraní API řazení:
+Odpověď JSON z rozhraní RANK API:
 
 ```json
 {
@@ -441,7 +441,7 @@ Odpověď JSON z rozhraní API řazení:
 }
 ```
 
-Nakonec každá smyčka ukazuje náhodný výběr uživatele, počasí, denní dobu a zjištěnou odměnu. Odměna 1 označuje prostředek přizpůsobeného uživatelem, který vybral správný typ kávy pro daného uživatele, počasí a denní dobu.
+Nakonec každá smyčka zobrazuje náhodný výběr uživatele, počasí, denní dobu a určenou odměnu. Odměna 1 označuje, že zdroj Personalista vybral správný typ kávy pro daného uživatele, počasí a denní dobu.
 
 ```console
 1 Alice Rainy Morning Latte 1
@@ -449,8 +449,8 @@ Nakonec každá smyčka ukazuje náhodný výběr uživatele, počasí, denní d
 
 Funkce používá:
 
-* Rank: REST API příspěvku, který [získá pořadí](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank).
-* Odměňování: příspěvek REST API k [vykazování odměna](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward).
+* Pořadí: POST REST API [získat hodnost](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank).
+* Odměna: POST REST API [pro nahlášení odměny](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward).
 
 ```python
 def iterations(n, modelCheck, jsonFormat):
@@ -528,8 +528,8 @@ def iterations(n, modelCheck, jsonFormat):
     return [count, rewards]
 ```
 
-## <a name="run-for-10000-iterations"></a>Spustit pro iterace 10 000
-Spusťte smyčku personalizace pro 10 000 iterace. Jedná se o dlouhou spuštěnou událost. Nezavírejte prohlížeč, který spouští Poznámkový blok. Aktualizujte graf metrik v Azure Portal pravidelně, aby se zobrazila celková volání služby. Pokud máte kolem volání 20 000, je pro každou iteraci smyčky volání pořadí a odměna dokončena.
+## <a name="run-for-10000-iterations"></a>Spustit pro 10 000 iterací
+Spusťte smyčku Personalizátor pro 10 000 iterací. Jedná se o dlouho běžící událost. Nezavírejte prohlížeč se spuštěnou poznámkovým blokem. Aktualizujte graf metrik na webu Azure portal pravidelně zobrazíte celkový počet volání ke službě. Pokud máte kolem 20 000 volání, volání hodnosti a odměny pro každou iteraci smyčky, iterace jsou provedeny.
 
 ```python
 # max iterations
@@ -548,7 +548,7 @@ jsonTemplate = rankactionsjsonobj
 
 ## <a name="chart-results-to-see-improvement"></a>Výsledky grafu pro zobrazení zlepšení
 
-Vytvoří graf z `count` a `rewards`.
+Vytvořte graf `count` z `rewards`a .
 
 ```python
 def createChart(x, y):
@@ -558,9 +558,9 @@ def createChart(x, y):
     plt.show()
 ```
 
-## <a name="run-chart-for-10000-rank-requests"></a>Spuštění grafu pro 10 000 požadavky na řazení
+## <a name="run-chart-for-10000-rank-requests"></a>Spustit graf pro 10 000 požadavků na pořadí
 
-Spusťte funkci `createChart`.
+Spusťte `createChart` funkci.
 
 ```python
 createChart(count,rewards)
@@ -568,46 +568,46 @@ createChart(count,rewards)
 
 ## <a name="reading-the-chart"></a>Čtení grafu
 
-Tento graf znázorňuje úspěšnost modelu pro aktuální výchozí zásady učení.
+Tento graf ukazuje úspěch modelu pro aktuální výchozí zásady učení.
 
-![Tento graf znázorňuje úspěšnost aktuálních zásad učení po dobu trvání testu.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
+![Tento graf ukazuje úspěch aktuální zásady učení po dobu trvání testu.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-V ideálním cíli, který je na konci testu, smyčka je průměrnou mírou úspěšnosti, která je blízko až 100% minus průzkumu. Výchozí hodnota průzkumu je 20%.
+Ideální cíl, že na konci testu smyčky je v průměru úspěšnost, která se blíží 100 procent minus průzkumu. Výchozí hodnota průzkumu je 20 %.
 
 `100-20=80`
 
-Tato hodnota průzkumu se nachází v Azure Portal pro prostředek přizpůsobeného nástroji na stránce **Konfigurace** .
+Tato hodnota průzkumu se nachází na portálu Azure, pro prostředek personalizace, na stránce **Konfigurace.**
 
-Pokud chcete najít lepší zásady učení na základě vašich dat na rozhraní API pro řazení, spusťte na portálu pro vaši smyčku pro přizpůsobování [offline testování](how-to-offline-evaluation.md) .
+Chcete-li najít lepší zásady učení, na základě vašich dat do rozhraní API pořadí, spusťte [offline vyhodnocení](how-to-offline-evaluation.md) na portálu pro vaše smyčky personalizátoru.
 
-## <a name="run-an-offline-evaluation"></a>Spustit zkušební verzi offline
+## <a name="run-an-offline-evaluation"></a>Spuštění offline hodnocení
 
-1. V Azure Portal otevřete stránku **hodnocení** prostředku přizpůsobeného pro přizpůsobení.
-1. Vyberte **vytvořit vyhodnocení**.
-1. Zadejte požadovaná data zkušebního názvu a rozsah dat pro vyhodnocení smyčky. Rozsah kalendářních dat by měl obsahovat jenom dny, na které se zaměřujete pro vyhodnocení.
-    ![v Azure Portal otevřete stránku vyhodnocení prostředku přizpůsobeného pro přizpůsobení. Vyberte vytvořit vyhodnocení. Zadejte název vyhodnocení a rozsah dat.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
+1. Na webu Azure Portal otevřete stránku **Hodnocení** prostředků personalisty.
+1. Vyberte **možnost Vytvořit vyhodnocení**.
+1. Zadejte požadovaná data názvu vyhodnocení a rozsah dat pro vyhodnocení smyčky. Časové období by mělo zahrnovat pouze dny, na které se při hodnocení zaměřujete.
+    ![Na webu Azure Portal otevřete stránku Hodnocení prostředků personalisty. Vyberte Vytvořit vyhodnocení. Zadejte název hodnocení a rozsah dat.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
-    Účelem spuštění tohoto testování v režimu offline je určit, jestli jsou k dispozici lepší zásady učení pro funkce a akce použité v této smyčce. Aby se zajistilo, že se mají lepší zásady učení, ujistěte se, že je zapnuté **zjišťování optimalizace** .
+    Účelem spuštění tohoto offline hodnocení je zjistit, zda existuje lepší zásady učení pro funkce a akce používané v této smyčce. Chcete-li najít lepší zásady učení, ujistěte se, že je **zapnuto zjišťování optimalizace.**
 
-1. Kliknutím na **OK** zahajte vyhodnocení.
-1. Tato stránka **hodnocení** obsahuje nové vyhodnocení a aktuální stav. V závislosti na tom, kolik dat máte, může toto vyhodnocení trvat delší dobu. Po několika minutách se můžete vrátit k této stránce a zobrazit výsledky.
-1. Po dokončení vyhodnocení vyberte hodnocení a pak vyberte **porovnání různých zásad učení**. Zobrazí se dostupné zásady učení a jak se budou chovat s daty.
-1. V tabulce vyberte zásadu učení nejvyšší úrovně a vyberte **použít**. To platí pro vaše modely a přeškolování zásad _nejlepšího_ učení.
+1. Chcete-li zahájit hodnocení, vyberte **možnost OK.**
+1. Tato stránka **Hodnocení** uvádí nové hodnocení a jeho aktuální stav. V závislosti na tom, kolik dat máte, toto vyhodnocení může nějakou dobu trvat. Můžete se vrátit na tuto stránku po několika minutách vidět výsledky.
+1. Po dokončení hodnocení vyberte hodnocení a pak vyberte **porovnání různých zásad učení**. To ukazuje dostupné zásady učení a jak by se chovali s daty.
+1. V tabulce vyberte zásady učení, které je nejvíce nahoře, a vyberte **použít**. To platí _pro_ váš model nejlepší zásady učení a přepne.
 
-## <a name="change-update-model-frequency-to-5-minutes"></a>Změna frekvence aktualizace modelu na 5 minut
+## <a name="change-update-model-frequency-to-5-minutes"></a>Změna četnosti aktualizace modelu na 5 minut
 
-1. V Azure Portal ještě na prostředku přizpůsobeného nástroji vyberte stránku **Konfigurace** .
-1. Změňte **Četnost aktualizace modelu** a nastavte **dobu čekání** na 5 minut a vyberte **Uložit**.
+1. Na webu Azure Portal, který je stále na prostředku personalisty, vyberte stránku **Konfigurace.**
+1. Změňte **frekvenci aktualizace modelu** a **odměňte čekací dobu** na 5 minut a vyberte **Uložit**.
 
-Přečtěte si další informace o [době čekání na odměnu](concept-rewards.md#reward-wait-time) a [četnosti aktualizací modelu](how-to-settings.md#model-update-frequency).
+Přečtěte si další informace o [čekací době odměn](concept-rewards.md#reward-wait-time) y a [četnosti aktualizací modelu](how-to-settings.md#model-update-frequency).
 
 ```python
 #Verify new learning policy and times
 get_service_settings()
 ```
 
-Ověřte, že `rewardWaitTime` a `modelExportFrequency` výstupu jsou nastaveny na 5 minut.
+Ověřte, zda `rewardWaitTime` `modelExportFrequency` výstup a jsou nastaveny na 5 minut.
 ```console
 -----checking model
 <Response [200]>
@@ -624,7 +624,7 @@ Coffee count 4
 
 ## <a name="validate-new-learning-policy"></a>Ověřit nové zásady učení
 
-Vraťte se do poznámkového bloku Azure a pokračujte spuštěním stejné smyčky, ale jenom pro 2 000 iterace. Aktualizujte graf metrik v Azure Portal pravidelně, aby se zobrazila celková volání služby. Pokud máte kolem volání 4 000, je pro každou iteraci smyčky volání pořadí a odměna dokončena.
+Vraťte se do poznámkového bloku Azure a pokračujte spuštěním stejné smyčky, ale pouze pro 2 000 iterací. Aktualizujte graf metrik na webu Azure portal pravidelně zobrazíte celkový počet volání ke službě. Pokud máte kolem 4 000 volání, volání hodnosti a odměny pro každou iteraci smyčky, iterace jsou hotové.
 
 ```python
 # max iterations
@@ -639,9 +639,9 @@ jsonTemplate2 = rankactionsjsonobj
 [count2, rewards2] = iterations(num_requests, lastModCheck2, jsonTemplate)
 ```
 
-## <a name="run-chart-for-2000-rank-requests"></a>Spuštění grafu pro 2 000 požadavky na řazení
+## <a name="run-chart-for-2000-rank-requests"></a>Spustit graf pro 2 000 požadavků na pořadí
 
-Spusťte funkci `createChart`.
+Spusťte `createChart` funkci.
 
 ```python
 createChart(count2,rewards2)
@@ -649,18 +649,18 @@ createChart(count2,rewards2)
 
 ## <a name="review-the-second-chart"></a>Kontrola druhého grafu
 
-Druhý graf by měl zobrazit viditelné zvýšení pořadí řazení předpovědi s uživatelskými preferencemi.
+Druhý graf by měl zobrazovat viditelné zvýšení předpovědi pořadí zarovnány s uživatelskými předvolbami.
 
-![Druhý graf by měl zobrazit viditelné zvýšení pořadí řazení předpovědi s uživatelskými preferencemi.](./media/tutorial-azure-notebook/azure-notebook-chart-results-happy-graph.png)
+![Druhý graf by měl zobrazovat viditelné zvýšení předpovědi pořadí zarovnány s uživatelskými předvolbami.](./media/tutorial-azure-notebook/azure-notebook-chart-results-happy-graph.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nechcete pokračovat v sérii kurzů, vyčistěte následující prostředky:
+Pokud nemáte v úmyslu pokračovat v sérii kurzů, vyčistěte následující zdroje:
 
-* Odstraňte svůj projekt Azure notebook.
-* Odstraňte prostředek pro přizpůsobení.
+* Odstraňte projekt poznámkového bloku Azure.
+* Odstraňte prostředek personalizátoru.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Poznámkový blok Jupyter a datové soubory](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) použité v této ukázce jsou k dispozici v úložišti GitHub pro přizpůsobení.
+[Jupyter notebook a datové soubory](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) použité v této ukázce jsou k dispozici na úložišti GitHub pro personalizaci.
 

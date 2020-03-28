@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c8de61d88417a19680b606be5e06583c36c94fbc
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925140"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Pokud chcete do projektu Javy přidat novou prázdnou třídu, vyberte **File** (Soubor)  > **New** (Nový)  > **Class** (Třída).
+1. Chcete-li do projektu Java přidat novou prázdnou**třídu,** vyberte **možnost Soubor** > **nové** > třídy .
 
 1. V okně **New Java Class** (Nová třída Javy) zadejte do pole **Package** (Balíček) **speechsdk.quickstart** a do pole **Name** (Název) zadejte **Main** (Hlavní).
 
@@ -104,16 +104,16 @@ ms.locfileid: "78925140"
 
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
-1. Nahraďte řetězec `helloworld.wav` vlastním názvem souboru.
+1. Nahraďte `helloworld.wav` řetězec vlastním názvem souboru.
 
-1. Nahraďte řetězec `Hello world!` vlastním textem.
+1. Nahraďte `Hello world!` řetězec vlastním textem.
 
 1. Uložte změny do projektu.
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-Stiskněte F11 nebo vyberte **Run** (Spustit)  > **Debug** (Ladit).
-Váš text se převede na řeč a uloží se do zadaného zvukového data.
+Stiskněte klávesu F11 nebo vyberte **spustit** > **ladění**.
+Text se převede na řeč a uloží se do zadaných zvukových dat.
 
    ```text
    Speech synthesized to [helloworld.wav] for text [Hello world!]
@@ -126,4 +126,4 @@ Váš text se převede na řeč a uloží se do zadaného zvukového data.
 ## <a name="see-also"></a>Viz také
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Záznam vlastních hlasových ukázek](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

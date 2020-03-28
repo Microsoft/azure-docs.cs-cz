@@ -5,24 +5,24 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/17/2019
 ms.openlocfilehash: 7aa478c764ea1d9720d91068fa04d353e6a4db02
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75379487"
 ---
 ## <a name="create-an-azure-resource"></a>Vytvoření prostředku Azure
 
-Začněte používat rozhraní API pro vizuální vyhledávání Bingu vytvořením jednoho z níže uvedených prostředků Azure.
+Začněte používat rozhraní API vizuálního vyhledávání Bingu vytvořením jednoho z prostředků Azure níže.
 
-* [Vytvořte prostředek zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+* [Vytvoření zkušebního prostředku](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
     * Není potřeba žádné předplatné Azure.
-    * Platí po dobu sedmi dnů zdarma. Po registraci bude na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/)dostupný zkušební klíč a koncový bod.
+    * Platí sedm dní, zdarma. Po registraci bude zkušební klíč a koncový bod k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).
 
-* [Vytvořit prostředek vyhledávání Bingu v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
-    * K dispozici prostřednictvím Azure Portal, dokud prostředek neodstraníte.
-    * Vyberte cenovou úroveň `S9`.
+* [Vytvoření prostředku hledání Bingu v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
+    * K dispozici prostřednictvím portálu Azure, dokud neodstraníte prostředek.
+    * Vyberte `S9` cenovou úroveň.
 
 * [Vytvoření prostředku s více službami](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
-    * K dispozici prostřednictvím Azure Portal, dokud prostředek neodstraníte.  
-    * Používejte stejný klíč a koncový bod pro vaše aplikace, a to napříč více Cognitive Services.
+    * K dispozici prostřednictvím portálu Azure, dokud neodstraníte prostředek.  
+    * Použijte stejný klíč a koncový bod pro vaše aplikace, napříč několika službami Cognitive Services.

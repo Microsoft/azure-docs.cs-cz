@@ -6,19 +6,19 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: dapine
 ms.openlocfilehash: d59a55a9b6d57d90ac6ae893b05e1064c11eb58b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900340"
 ---
-V tomto rychlém startu použijete [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) a službu Language UNDERSTANDING (Luis) k rozpoznávání záměrů ze zvukových dat zachycených z mikrofonu. Konkrétně použijete sadu Speech SDK k zachycení řeči a předem vytvořenou doménu z LUIS k identifikaci záměrů pro domácí automatizaci, jako je zapnutí a vypnutí světla. 
+V tomto rychlém startu použijete sadu [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) a službu Language Understanding (LUIS) k rozpoznání záměrů ze zvukových dat zachycených z mikrofonu. Konkrétně budete používat sady Speech SDK k zachycení řeči a předem připravenou doménu z LUIS k identifikaci záměrů pro domácí automatizaci, jako je zapnutí a vypnutí světla. 
 
-Po splnění několika požadavků se rozpoznávání řeči a identifikace záměrů z mikrofonu dá jenom několik kroků:
+Po splnění několika předpokladů, rozpoznání řeči a identifikace záměrů z mikrofonu trvá jen několik kroků:
 
 > [!div class="checklist"]
 >
-> * Vytvořte objekt `SpeechConfig` z klíče a oblasti předplatného.
-> * Vytvořte objekt `IntentRecognizer` pomocí výše uvedeného objektu `SpeechConfig`.
-> * Pomocí objektu `IntentRecognizer` spusťte proces rozpoznávání pro jeden utterance.
-> * Zkontrolujte vrácené `IntentRecognitionResult`.
+> * Vytvořte `SpeechConfig` objekt z klíče předplatného a oblasti.
+> * Vytvořte `IntentRecognizer` objekt `SpeechConfig` pomocí objektu shora.
+> * Pomocí `IntentRecognizer` objektu spusťte proces rozpoznávání pro jeden utterance.
+> * Zkontrolujte `IntentRecognitionResult` vrácené.

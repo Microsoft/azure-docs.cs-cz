@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Převod textového skriptu – Translator Text'
+title: 'Úvodní příručka: Převod textového skriptu - Překladač textu'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak pomocí Translator Text API přepínat (převádět) text z jednoho skriptu na jiný. V této ukázce se provádí transkripce z japonštiny do latinky.
+description: V tomto rychlém startu se dozvíte, jak transliterate (převést) text z jednoho skriptu do druhého pomocí překladače text api. V této ukázce se provádí transkripce z japonštiny do latinky.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 4247983fd39cd8d9acf256d313ae10aa2002585f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525109"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>Rychlý Start: použití Translator Text API k přepisu textu
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>Úvodní příručka: K přeformátování textu pomocí rozhraní Translator Text API
 
-V tomto rychlém startu se dozvíte, jak pomocí Translator Text REST API přepínat text z jednoho skriptu na jiný. V uvedené ukázce se provádí transkripce z japonštiny do latinky.
+V tomto rychlém startu se dozvíte, jak transliterate (převést) text z jednoho skriptu do druhého pomocí rozhraní TRANSLATOR Text REST API. V uvedené ukázce se provádí transkripce z japonštiny do latinky.
 
 K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Translator Text. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
@@ -44,9 +44,9 @@ K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services]
 [!INCLUDE [Python quickstart](includes/transliterate-python.md)]
 ::: zone-end
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-* [Překlad textu](quickstart-translate.md)
+* [Přeložení textu](quickstart-translate.md)
 * [Identifikace jazyka podle vstupu](quickstart-detect.md)
 * [Získání alternativních překladů](quickstart-dictionary.md)
 * [Získání seznamu podporovaných jazyků](quickstart-languages.md)

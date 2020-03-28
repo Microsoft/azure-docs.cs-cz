@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: sestavení, nasazení a použití vlastního modelu – vlastní Překladatel'
+title: 'Úvodní příručka: Sestavení, nasazení a použití vlastního modelu – vlastní překladač'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu projdete podrobný postup sestavení systému překladu pomocí vlastního překladatele.
+description: V tomto rychlém startu procházíte krok za krokem procesem vytváření překladatelského systému pomocí vlastního překladače.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,68 +9,82 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446752"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370159"
 ---
-# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Rychlý Start: sestavení, nasazení a použití vlastního modelu pro překlad
+# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Úvodní příručka: Sestavení, nasazení a použití vlastního modelu pro překlad
 
-Tento článek poskytuje podrobné pokyny k sestavení překladu systému pomocí vlastního překladatele.
+Tento článek obsahuje podrobné pokyny k vytvoření překladového systému pomocí vlastního překladače.
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Pokud chcete použít [vlastní portál překladatelů](https://portal.customtranslator.azure.ai) , budete pro přihlášení potřebovat účet [účet Microsoft](https://signup.live.com) nebo [Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (hostující účet organizace v Azure).
+1. K použití [portálu vlastnípřekladace](https://portal.customtranslator.azure.ai) budete k přihlášení potřebovat [účet Microsoft](https://signup.live.com) nebo účet Azure [AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (účet organizace hostovaný v Azure).
 
-2. Předplatné Translator Text API přes Azure Portal. Pro přidružení k pracovnímu prostoru ve vlastním překladateli budete potřebovat Translator Text API klíč předplatného. Podívejte se, [jak se zaregistrovat k Translator text API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
+2. Předplatné rozhraní Translator Text API prostřednictvím portálu Azure. Budete potřebovat klíč předplatného překladače text api pro přidružit k pracovnímu prostoru v vlastní překladač. Podívejte [se, jak se zaregistrovat do rozhraní Translator Text API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
-3. Když máte obě výše uvedené, přihlaste se k portálu [vlastního překladatele](https://portal.customtranslator.azure.ai) . Jednou na portálu pro vlastní překladatele přejděte na stránku nastavení, kde můžete přidružit svůj klíč předplatného Microsoft Translator Text API k vašemu pracovnímu prostoru.
+3. Pokud máte obě výše uvedené, přihlaste se k portálu [Vlastní překladač](https://portal.customtranslator.azure.ai) a vytvořte pracovní prostory, projekty, nahrávejte soubory a vytvářejte nebo nasazujte modely.
+
+## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
+
+Pokud jste prvním uživatelem, budete požádáni o souhlas s podmínkami služby, vytvoření pracovního prostoru a přidružení pracovního prostoru k předplatnému rozhraní Microsoft Translator Text API.
+
+![](media/quickstart/terms-of-service.png)
+![Vytvoření pracovního prostoru](media/quickstart/create-workspace-1.png)
+![Vytvoření](media/quickstart/create-workspace-2.png)
+![pracovního](media/quickstart/create-workspace-3.png)
+![prostoru Vytvoření](media/quickstart/create-workspace-4.png)
+![pracovního](media/quickstart/create-workspace-5.png)
+![prostoru Vytvoření pracovního prostoru Vytvoření pracovního prostoru Vytvoření pracovního prostoru Vytvoření pracovního prostoru](media/quickstart/create-workspace-6.png)
+
+Při dalších návštěvách portálu Vlastní překladač přejděte na stránku Nastavení, kde můžete spravovat pracovní prostor, vytvořit více pracovních prostorů, přidružit klíč předplatného microsoft translatorového textového rozhraní k vašim pracovním prostorům, přidat spoluvlastníky a změnit předplatného.
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 
-Na úvodní stránce portálu pro vlastní Překladatel klikněte na nový projekt. V dialogovém okně můžete zadat požadovaný název projektu, dvojici jazyků a kategorii a také další relevantní pole. Pak projekt uložte. Další podrobnosti najdete na stránce [Vytvoření projektu](how-to-create-project.md).
+Na vstupní stránce portálu Vlastní překladač klikněte na Nový projekt. V dialogovém okně můžete zadat požadovaný název projektu, dvojici jazyků a kategorii a další relevantní pole. Potom uložte projekt. Další podrobnosti naleznete na stránce [Vytvořit projekt](how-to-create-project.md).
 
 ![Vytvoření projektu](media/quickstart/ct-how-to-create-project.png)
 
 
 ## <a name="upload-documents"></a>Uložení dokumentů
 
-Potom nahrajte [školení](training-and-model.md#training-document-type-for-custom-translator), [vyladění](training-and-model.md#tuning-document-type-for-custom-translator) a [testování](training-and-model.md#testing-dataset-for-custom-translator) sad dokumentů. Můžete nahrát [paralelní](what-are-parallel-documents.md) i kombinované dokumenty. Můžete také nahrát [slovník](what-is-dictionary.md).
+Dále nahrajte [školení](training-and-model.md#training-document-type-for-custom-translator), [ladění](training-and-model.md#tuning-document-type-for-custom-translator) a [testování](training-and-model.md#testing-dataset-for-custom-translator) sad dokumentů. Můžete nahrát [paralelní](what-are-parallel-documents.md) i kombinované dokumenty. Můžete také nahrát [slovník](what-is-dictionary.md).
 
-Dokumenty můžete odeslat buď na kartě dokumenty, nebo na stránce konkrétního projektu.
+Dokumenty můžete nahrát buď z karty Dokumenty, nebo ze stránky konkrétního projektu.
 
 ![Uložení dokumentů](media/quickstart/ct-how-to-upload.png)
 
-Při nahrávání dokumentů vyberte typ dokumentu (školení, ladění nebo testování) a dvojici jazyků. Při odesílání paralelních dokumentů budete muset zadat také název dokumentu. Další podrobnosti najdete na webu [odeslání dokumentu](how-to-upload-document.md).
+Při nahrávání dokumentů zvolte typ dokumentu (školení, ladění nebo testování) a dvojici jazyků. Při nahrávání paralelních dokumentů budete muset zadat název dokumentu. Další podrobnosti naleznete na [stránce Nahrát dokument](how-to-upload-document.md).
 
 ## <a name="create-a-model"></a>Vytvoření modelu
 
-Po nahrání všech požadovaných dokumentů je dalším krokem sestavení modelu.
+Při nahrání všech požadovaných dokumentů je dalším krokem sestavení modelu.
 
-Vyberte projekt, který jste vytvořili. Zobrazí se všechny dokumenty, které jste nahráli, a tento projekt sdílí dvojici jazyků. Vyberte dokumenty, které chcete zahrnout do modelu. Můžete vybrat [školení](training-and-model.md#training-document-type-for-custom-translator), [ladění](training-and-model.md#tuning-document-type-for-custom-translator)a [testování](training-and-model.md#testing-dataset-for-custom-translator) dat nebo vybrat pouze školicí data a umožnit vlastní překladateli automaticky sestavit optimalizace a sady testů pro váš model.
+Vyberte projekt, který jste vytvořili. Zobrazí se všechny dokumenty, které jste nahráli a které sdílejí pár jazyků s tímto projektem. Vyberte dokumenty, které chcete zahrnout do modelu. Můžete vybrat [školení](training-and-model.md#training-document-type-for-custom-translator), [ladění](training-and-model.md#tuning-document-type-for-custom-translator)a [testování](training-and-model.md#testing-dataset-for-custom-translator) dat nebo vybrat pouze trénovací data a nechat vlastní překladač automaticky vytvářet tuning a testovací sady pro váš model.
 
 ![Vytvoření modelu](media/quickstart/ct-how-to-train.png)
 
-Po dokončení výběru požadovaných dokumentů klikněte na tlačítko vytvořit model a vytvořte svůj model a spusťte školení. Na kartě modely můžete zobrazit stav školení a podrobnosti o všech vámi vyškolených modelech.
+Po dokončení výběru požadovaných dokumentů klikněte na tlačítko Vytvořit model, abyste vytvořili model a zahájili školení. Stav školení a podrobnosti o všech modelech, které jste trénovali, najdete na kartě Modely.
 
-Další podrobnosti najdete v [Vytvoření modelu](how-to-train-model.md).
+Další podrobnosti naleznete na stránce [Vytvoření modelu](how-to-train-model.md).
 
 ## <a name="analyze-your-model"></a>Analýza modelu
 
-Po úspěšném dokončení školení Zkontrolujte výsledky. BLEU skóre je jedna metrika, která označuje kvalitu vašeho překladu. Můžete také ručně porovnat překlady vytvořené s vlastním modelem s překlady uvedenými v sadě testů tak, že přejdete na kartu test a kliknete na možnost výsledky systému. Ruční kontrola několika z těchto překladů vám poskytne dobrou představu o kvalitě překladu, kterou váš systém vytvořil. Další podrobnosti najdete v [systému výsledky testů](how-to-view-system-test-results.md).
+Po úspěšném dokončení školení zkontrolujte výsledky. Skóre BLEU je jedna metrika, která označuje kvalitu vašeho překladu. Můžete také ručně porovnat překlady provedené s vlastním modelem s překlady uvedenými v testovací sadě tak, že přejdete na kartu "Test" a kliknete na "Systémové výsledky". Ruční kontrola několika z těchto překladů vám dá dobrou představu o kvalitě překladu vyrobeného vaším systémem. Další podrobnosti naleznete na stránce [Výsledky systémových testů](how-to-view-system-test-results.md).
 
-## <a name="deploy-a-trained-model"></a>Nasazení trained model
+## <a name="deploy-a-trained-model"></a>Nasazení trénovaného modelu
 
-Až budete připraveni nasadit svůj vyškolený model, klikněte na tlačítko nasadit. Můžete mít jeden nasazený model na projekt a stav nasazení můžete zobrazit ve sloupci Stav. Další podrobnosti najdete v [nasazení modelu](how-to-view-system-test-results.md#deploy-a-model) .
+Až budete připraveni nasadit trénovaný model, klikněte na tlačítko "Nasadit". Můžete mít jeden nasazený model na projekt a můžete zobrazit stav nasazení ve sloupci Stav. Další podrobnosti naleznete na webu [Nasazení modelu](how-to-view-system-test-results.md#deploy-a-model)
 
-![Nasazení trained model](media/quickstart/ct-how-to-deploy.png)
+![Nasazení trénovaného modelu](media/quickstart/ct-how-to-deploy.png)
 
 ## <a name="use-a-deployed-model"></a>Použití nasazeného modelu
 
-K nasazeným modelům se dá dostat prostřednictvím [rozhraní Microsoft Translator text API V3 zadáním KódKategorie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). Další informace o Translator Text API najdete na webové stránce [referenčního rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) .
+K nasazeným modelům lze přistupovat prostřednictvím rozhraní Microsoft Translator [Text API V3 zadáním id kategorie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). Další informace o rozhraní Translator Text API naleznete na webové stránce [REFERENCE rozhraní API.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se procházet [vlastní pracovní prostor překladatelů a spravovat vaše projekty](workspace-and-project.md).
+- Přečtěte si, jak se orientovat v [pracovním prostoru Vlastní překladač a spravovat projekty](workspace-and-project.md).

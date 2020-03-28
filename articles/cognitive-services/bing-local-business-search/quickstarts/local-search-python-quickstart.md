@@ -1,7 +1,7 @@
 ---
-title: Rychlý Start – odeslání dotazu do rozhraní API v Pythonu – vyhledávání místních obchodů Bingu
+title: Úvodní příručka – Odeslání dotazu do rozhraní API v Pythonu – Hledání místní chod ů Služby Bing
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu můžete začít používat rozhraní API Bingu pro vyhledávání místních obchodních aplikací v Pythonu.
+description: Pomocí tohoto rychlého startu můžete začít používat rozhraní API pro vyhledávání místních společností Bingu v Pythonu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,32 +11,32 @@ ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: c7e7ef7f052fccfea18b246f41109d5fa7528b4b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75379739"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních hledání v Pythonu
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Úvodní příručka: Odeslání dotazu do rozhraní API pro vyhledávání pro místní firmy Bingu v Pythonu
 
-Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure. I když je tato jednoduchá aplikace napsaná v Pythonu, je rozhraní API webovou službou RESTful, která je kompatibilní s jakýmkoli programovacím jazykem schopným vytvářet požadavky HTTP a analyzovat JSON.
+Tento rychlý start můžete začít odesílat požadavky do rozhraní API pro vyhledávání místních společností Bingu, což je služba Azure Cognitive Service. Zatímco tato jednoduchá aplikace je napsána v Pythonu, API je restful webová služba kompatibilní s libovolným programovacím jazykem schopným provádět požadavky HTTP a analyzovat JSON.
 
-Tato ukázková aplikace získá data místní odpovědi z rozhraní API pro vyhledávací dotaz `hotel in Bellevue`.
+Tato ukázková aplikace získá data místní odpovědi `hotel in Bellevue`z rozhraní API pro vyhledávací dotaz .
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Python](https://www.python.org/) 2. x nebo 3. x
+* [Python](https://www.python.org/) 2.x nebo 3.x
  
-Musíte mít [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Použijte přístupový klíč, který je k dispozici v bezplatné zkušební verzi.  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Musíte mít [účet rozhraní API služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bing. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Použijte přístupový klíč poskytnutý bezplatnou zkušební verzí.  Viz také [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="run-the-complete-application"></a>Spuštění úplné aplikace
 
 Následující kód získá lokalizované výsledky. Implementuje se v následujících krocích:
 1. Deklarujte proměnné, které za použití hostitele a cesty určují koncový bod.
 2. Zadejte parametr dotazu. 
-3. Zadejte vyhledávací funkci, která vytvoří požadavek a přidá hlavičku OCP-APIM-Subscription-Key.
-4. Nastavte hlavičku OCP-APIM-Subscription-Key. 
-5. Vytvořte připojení a odešlete žádost.
+3. Definujte funkci vyhledávání, která vytvoří požadavek a přidá hlavičku Ocp-Apim-Subscription-Key.
+4. Nastavte hlavičku Ocp-Apim-Subscription-Key. 
+5. Vytvořte připojení a odešlete požadavek.
 6. Zobrazte výsledky ve formátu JSON.
 
 Následuje celý kód pro tuto ukázku:
@@ -68,6 +68,6 @@ print (json.dumps(json.loads(result), indent=4))
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- [Rychlý Start pro místní vyhledávání v jazyce Java](local-search-java-quickstart.md)
-- [Rychlý start hledání C# místních obchodních obchodů](local-quickstart.md)
-- [Rychlý Start uzlu místního hledání firmy](local-search-node-quickstart.md)
+- [Rychlý start java vyhledávání místních společností](local-search-java-quickstart.md)
+- [Úvodní příručka pro místní obchodní vyhledávání C#](local-quickstart.md)
+- [Rychlý začátek uzlu hledání místní firmy](local-search-node-quickstart.md)

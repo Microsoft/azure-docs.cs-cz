@@ -1,39 +1,39 @@
 ---
-title: 'Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí Node. js | Microsoft Docs'
+title: 'Úvodní příručka: Volání vlastního koncového bodu služby Bing pomocí souboru Node.js | Dokumenty společnosti Microsoft'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu pomocí Node. js.
+description: Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z instance vlastního vyhledávání Bingpomocí souboru Node.js
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 97bf62c61aee63ce97496e54b99ad641d6150876
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1c7bd97de4e46e1c8da467840006fe2520851caf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972693"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238864"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí Node. js
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Úvodní příručka: Volání vlastního koncového bodu služby Bing pomocí souboru Node.js
 
-Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu. I když je tato aplikace napsaná v JavaScriptu, rozhraní API pro vlastní vyhledávání Bingu je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js).
+Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z instance vlastního vyhledávání Bingu. Zatímco tato aplikace je napsána v JavaScriptu, Bing Custom Search API je RESTful webová služba kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Instance Vlastní vyhledávání Bingu. Další informace najdete v tématu [rychlý Start: Vytvoření první instance vlastní vyhledávání Bingu](quick-start.md) .
+- Instance vlastního vyhledávání Bingu. Další informace najdete [v tématu Úvodní příručka: Vytvoření první instance vlastního vyhledávání Bingu.](quick-start.md)
 
 - [Node.js](https://www.nodejs.org/)
 
-- [Knihovna požadavků JavaScriptu](https://github.com/request/request)
+- [Knihovna žádostí JavaScriptu](https://github.com/request/request)
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor JavaScriptu v oblíbených IDE nebo editoru a přidejte příkaz `require()` pro knihovnu požadavků. Vytvořte proměnné pro svůj klíč předplatného, ID vlastní konfigurace a hledaný termín. 
+1. Vytvořte nový soubor JavaScriptu ve svém oblíbeném `require()` rozhraní IDE nebo editoru a přidejte příkaz pro knihovnu požadavků. Vytvořte proměnné pro klíč předplatného, Vlastní ID konfigurace a hledaný termín. 
 
     ```javascript
     var request = require("request");
@@ -43,9 +43,9 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
     var searchTerm = 'microsoft';
     ```
 
-## <a name="send-and-receive-a-search-request"></a>Odeslání a přijetí žádosti o vyhledávání 
+## <a name="send-and-receive-a-search-request"></a>Odeslání a přijetí požadavku na vyhledávání 
 
-1. Vytvořte proměnnou pro uložení informací odesílaných ve vaší žádosti. Vytvořte adresu URL požadavku připojením hledaného termínu k parametru dotazu `q=` a ID vlastní konfigurace vaší instance hledání `customconfig=`. parametry oddělte znakem `&`. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+1. Vytvořte proměnnou pro uložení informací odesílaných v požadavku. Vytvořte adresu URL požadavku připojením `q=` hledaného výrazu k parametru dotazu `customconfig=`a ID vlastní konfigurace instance hledání. oddělte parametry `&` znakem. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
 
     ```javascript
     var info = {
@@ -58,7 +58,7 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
     }
     ```
 
-1. Použijte knihovnu požadavků JavaScriptu k odeslání žádosti o vyhledávání do instance Vlastní vyhledávání Bingu a vytiskněte informace o výsledcích, včetně jejího názvu, adresy URL a data posledního procházení webové stránky.
+1. Pomocí knihovny požadavků javascriptu odešlete žádost o hledání do vaší instance vlastního vyhledávání Bingu a vytiskněte informace o výsledcích, včetně jejího názvu, adresy URL a data posledního procházení webové stránky.
 
     ```javascript
     request(info, function(error, response, body){
@@ -77,4 +77,4 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření vlastní vyhledávací webové aplikace](./tutorials/custom-search-web-page.md)
+> [Vytvoření webové aplikace pro vlastní vyhledávání](./tutorials/custom-search-web-page.md)

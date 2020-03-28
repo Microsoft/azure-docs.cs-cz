@@ -11,25 +11,25 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.author: diberry
 ms.openlocfilehash: 956aa308bf1cb3736c491031239661ec6b295ddb
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77279717"
 ---
-Klientská aplikace musí znát, jestli utterance není smysluplná nebo vhodná pro aplikaci. Záměr **none** se do každé aplikace přidá jako součást procesu vytváření, aby se zjistilo, jestli klientská aplikace nemůže odpovědět na utterance.
+Klientská aplikace potřebuje vědět, pokud utterance není smysluplné nebo vhodné pro aplikaci. **Žádný** záměr je přidán do každé aplikace jako součást procesu vytváření k určení, pokud utterance by neměla být zodpovězena klientskou aplikací.
 
-Pokud LUIS vrátí záměr **none** pro utterance, může klientská aplikace požádat, jestli chce uživatel ukončit konverzaci, nebo dát další pokyny pro pokračování v konverzaci.
+Pokud služba LUIS vrátí **žádný** záměr pro utterance, klientská aplikace se může zeptat, pokud uživatel chce ukončit konverzaci nebo poskytnout další pokyny pro pokračování konverzace.
 
-Pokud necháte žádný záměr **none** prázdný, utterance, který by měl být předpovězen mimo doménu subjektu, bude předpovězen v jedné z existujících záměrů domény předmětu. Výsledkem je, že klientská aplikace, jako je například robota v chatu, provede nesprávné operace na základě nesprávné předpovědi.
+Pokud ponecháte **žádný** záměr prázdný, utterance, které by měly být předpovězeny mimo doménu předmětu bude předpovězena v jednom z existujících záměrů domény předmětu. Výsledkem je, že klientská aplikace, jako je například chatovací robot, bude provádět nesprávné operace na základě nesprávné předpovědi.
 
 1. Na levém panelu vyberte **Intents** (Záměry).
 
-1. Vyberte záměr **None** (Žádný). Přidejte tři projevy, které může uživatel zadat, ale nesouvisejí s vaší aplikací pro objednávání pizza:
+1. Vyberte záměr **None** (Žádný). Přidejte tři projevy, které může uživatel zadat, ale nejsou relevantní pro vaši aplikaci pro objednávání pizzy:
 
-    |`None` příklad projevy|
+    |`None`příklad projevy|
     |--|
     |`Barking dogs are annoying`|
     |`Penguins in the ocean`|
 
-    Tyto příklady nemůžou používat slova, která očekáváte v doméně předmětu, jako je `pizza`, `cheese`, `crust``pickup` `deliver`.
+    Tyto příklady by neměly používat slova, která `pizza` `cheese`očekáváte v doméně subjektu, například , , `crust`. `pickup` `deliver`

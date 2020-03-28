@@ -1,5 +1,5 @@
 ---
-title: Získání modelu pomocí volání REST v cestách
+title: Získání modelu s voláním REST v go
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,26 +9,26 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
 ms.openlocfilehash: 8d180eeffdbc41db6fa0e636daf7702faad47fcc
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368449"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-* Azure Language Understanding – vytváření znaků a vytváření kódu URL koncového bodu prostředku 32. Vytvořte pomocí [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) nebo [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli).
-* Importujte aplikaci [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) z úložiště GitHub-Services-Language-porozumění.
-* ID aplikace LUIS pro importovanou aplikaci TravelAgent ID aplikace je uvedené na řídicím panelu aplikace.
-* ID verze v rámci aplikace, která přijímá projevy. Výchozí ID je 0.1.
+* Azure Language Understanding – vytváření klíče 32 znaků prostředku a vytváření adresy URL koncového bodu. Vytvořte pomocí [portálu Azure nebo](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) [příkazového příkazového příkazu Kontu Azure](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli).
+* Importujte aplikaci [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) z úložiště GitHub, které rozumí kognitivním službám.
+* ID aplikace LUIS pro naimportovanou aplikaci TravelAgent ID aplikace je uvedené na řídicím panelu aplikace.
+* ID verze aplikace, která přijímá promluvy. Výchozí ID je 0.1.
 * Programovací jazyk [Go](https://golang.org/)
-* [Visual Studio Code](https://code.visualstudio.com/)
+* [Kód visual studia](https://code.visualstudio.com/)
 
 ## <a name="example-utterances-json-file"></a>Soubor JSON s ukázkovými promluvami
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="change-model-programmatically"></a>Programové změny modelu
+## <a name="change-model-programmatically"></a>Programová změna modelu
 
 1. Vytvořte nový soubor s názvem `predict.go`. Přidejte následující kód:
 
@@ -136,17 +136,17 @@ ms.locfileid: "77368449"
     }
     ```
 
-1. Hodnoty začínající `YOUR-` nahraďte vlastními hodnotami.
+1. Nahraďte hodnoty `YOUR-` začínající vlastními hodnotami.
 
     |Informace|Účel|
     |--|--|
-    |`YOUR-KEY`|Klíč pro vytváření znaků 32.|
-    |`YOUR-ENDPOINT`| Váš koncový bod adresy URL pro vytváření například `replace-with-your-resource-name.api.cognitive.microsoft.com`. Název prostředku se nastaví při vytváření prostředku.|
-    |`YOUR-APP-ID`| Vaše ID aplikace LUIS |
+    |`YOUR-KEY`|Váš 32 znak ový klíč.|
+    |`YOUR-ENDPOINT`| Koncový bod adresy URL pro vytváření. Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`. Při vytváření prostředku nastavíte název prostředku.|
+    |`YOUR-APP-ID`| ID aplikace LUIS. |
 
-    Přiřazené klíče a prostředky jsou zobrazené na portálu LUIS v části Správa na stránce **prostředky Azure** . ID aplikace je k dispozici ve stejné části pro správu na stránce **nastavení aplikace** .
+    Přiřazené klíče a prostředky jsou viditelné na portálu LUIS v části Spravovat na stránce **prostředků Azure.** ID aplikace je k dispozici ve stejném oddílu Správa na stránce **Nastavení aplikace.**
 
-1. Pomocí příkazového řádku ve stejném adresáři, ve kterém jste vytvořili soubor, zadejte následující příkaz pro zkompilování souboru přejít:
+1. Pomocí příkazového řádku ve stejném adresáři, ve kterém jste soubor vytvořili, zadejte následující příkaz pro kompilaci souboru Go:
 
     ```console
     go build model.go
@@ -160,9 +160,9 @@ ms.locfileid: "77368449"
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s tímto rychlým startem hotovi, odstraňte soubor ze systému souborů.
+Po dokončení tohoto rychlého startu odstraňte soubor ze systému souborů.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Osvědčené postupy pro aplikaci](../luis-concept-best-practices.md)
+> [Doporučené postupy pro aplikaci](../luis-concept-best-practices.md)

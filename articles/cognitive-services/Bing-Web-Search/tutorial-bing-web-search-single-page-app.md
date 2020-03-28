@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943882"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání na webu
@@ -32,12 +32,12 @@ Tato ukázková aplikace může provádět následující akce:
 
 Abyste mohli použít tuto aplikaci, potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu pro vyhledávání. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tady je pár věcí, které budete potřebovat ke spuštění aplikace:
 
 * Node.js 8 nebo novější
-* Klíč předplatného pro rozhraní Vyhledávání Bingu API. Pokud ho ještě nemáte, [vytvořte prostředek vyhledávání Bingu v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). můžete použít také [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+* Klíč předplatného pro rozhraní API pro vyhledávání Bingu. Pokud ho nemáte, [vytvořte prostředek hledání Bingu v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Můžete také použít [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 ## <a name="get-the-source-code-and-install-dependencies"></a>Získání zdrojového kódu a instalace závislostí
 
 Prvním krokem je naklonování úložiště se zdrojovým kódem ukázkové aplikace.
@@ -88,7 +88,7 @@ Formulář HTML obsahuje možnosti, které se mapují k parametrům dotazu v [ro
 | `what` | Zaškrtávací políčka pro upřednostnění konkrétních typů výsledků. Když například upřednostníte obrázky, zvýší se hodnocení obrázků ve výsledcích hledání. |
 | `when` | Rozevírací nabídka, která umožní uživateli omezit výsledky vyhledávání na dnešek, tento týden nebo tento měsíc |
 | `safe` | Zaškrtávací políčko pro povolení funkce Bezpečné hledání v Bingu, která filtruje obsah pro dospělé |
-| `count` | Skryté pole. Počet výsledků vyhledávání, které se mají vrátit pro jednotlivé požadavky. Pokud chcete zobrazit méně nebo více výsledků na stránku, můžete tuto hodnotu změnit. |
+| `count` | Skryté pole. Počet výsledků hledání, který se má vrátit u jednotlivých žádostí. Pokud chcete zobrazit méně nebo více výsledků na stránku, můžete tuto hodnotu změnit. |
 | `offset` | Skryté pole. Odsazení prvního výsledku hledání v žádosti, které slouží ke stránkování. S každou novou žádostí se hodnota resetuje na `0`. |
 
 > [!NOTE]
@@ -127,9 +127,9 @@ function bingSearchOptions(form) {
 }
 ```
 
-`SafeSearch` je možné nastavit na `strict`, `moderate` nebo `off` a výchozí nastavení pro vyhledávání na webu Bingu je `moderate`. Tento formulář používá zaškrtávací políčko, které má dva stavy: `strict` nebo `moderate`.
+`SafeSearch` je možné nastavit na `strict`, `moderate` nebo `off` a výchozí nastavení pro vyhledávání na webu Bingu je `moderate`. Tento formulář používá zaškrtávací `strict` `moderate`políčko, které má dva stavy: nebo .
 
-Pokud je vybrané kterékoliv ze zaškrtávacích políček **upřednostnění**, přidá se k dotazu parametr `answerCount`. Když je použitý parametr `answerCount`, vyžaduje se `promote`. Aby se vrátily všechny dostupné typy výsledků, je v tomto fragmentu kódu nastavená hodnota `9`.
+Pokud je vybrané kterékoliv ze zaškrtávacích políček **upřednostnění**, přidá se k dotazu parametr `answerCount`. Když je použitý parametr `promote`, vyžaduje se `answerCount`. Aby se vrátily všechny dostupné typy výsledků, je v tomto fragmentu kódu nastavená hodnota `9`.
 > [!NOTE]
 > Upřednostnění typu výsledku *nezaručuje*, že bude tento typ zahrnutý ve výsledcích hledání. Upřednostnění ve srovnání s obvyklým hodnocením spíše zvýší hodnocení daných druhů výsledků. Pokud chcete omezit hledání na konkrétní typy výsledků, použijte parametr dotazu `responseFilter` nebo volejte konkrétnější koncový bod, jako je například Vyhledávání obrázků Bingu nebo Vyhledávání zpráv Bingu.
 
@@ -286,15 +286,15 @@ function handleBingResponse() {
 
 Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. V následujících fázích můžou nastat chyby:
 
-| Krok | Potenciální chyby | Čím se zpracuje |
+| Krok | Potenciální chyby | Čím se zpracují |
 |-------|--------------------|------------|
 | Vytváření objektu žádosti | Neplatná adresa URL | Blok `try` / `catch` |
 | Provedení žádosti | Chyby sítě, přerušená připojení | Obslužné rutiny událostí `error` a `abort` |
-| Provedení vyhledávání | Neplatná žádost, neplatný JSON, omezení rychlosti | Testy v obslužné rutině události `load` |
+| Provedení vyhledávání | Neplatný požadavek, neplatný JSON, omezení rychlosti | Testy v obslužné rutině události `load` |
 
 Chyby se zpracují voláním `renderErrorMessage()`. Pokud odpověď úspěšně projde všemi testy chyb, volá se `renderSearchResults()` k zobrazení výsledků hledání.
 
-## <a name="display-search-results"></a>Zobrazit výsledky hledání
+## <a name="display-search-results"></a>Zobrazení výsledků hledání
 
 Pro výsledky vrácené rozhraním API Bingu pro vyhledávání na webu existují [požadavky týkající se použití a zobrazení](useanddisplayrequirements.md). Protože odpověď může obsahovat různé typy výsledků, nestačí to k iteraci v rámci kolekce `WebPages` na nejvyšší úrovni. Místo toho použije ukázková aplikace k řazení výsledků podle specifikace `RankingResponse`.
 
@@ -434,12 +434,12 @@ Tady je příklad zobrazení obrázků v ukázkové aplikaci:
 
 Odpovědi z rozhraní API Bingu pro vyhledávání můžou zahrnovat hlavičku `X-MSEdge-ClientID`, která by se měla s každou následující žádostí posílat zpátky do rozhraní API. Pokud používá vaše aplikace více než jedno rozhraní API Bingu pro vyhledávání na webu, je nutné poslat s každou žádostí napříč službami stejné ID klienta.
 
-Poskytnutí hlavičky `X-MSEdge-ClientID` umožňuje rozhraním API Bingu spojit si všechna vyhledávání určitého uživatele. Zaprvé to umožňuje, aby vyhledávací web Bing použil při vyhledávání minulý kontext a našel výsledky, které lépe vyhoví žádosti. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, pozdější vyhledání „uzlů“ může přednostně vrátit informace o uzlech používaných při plavbě lodí. Za druhé může Bing náhodně vybírat uživatele k vyzkoušení nových funkcí, než budou všeobecně dostupné. Poskytnutí stejného ID klienta s každou žádostí zajistí, že uživatelé vybraní k tomu, aby danou funkci viděli, ji uvidí vždy. Bez ID klienta může uživatel funkci ve svých výsledcích hledání někdy vidět a jindy ne, zdánlivě náhodně.
+Poskytnutí hlavičky `X-MSEdge-ClientID` umožňuje rozhraním API Bingu spojit si všechna vyhledávání určitého uživatele. Zaprvé to umožňuje, aby vyhledávací web Bing použil při vyhledávání minulý kontext a našel výsledky, které lépe vyhoví žádosti. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, může pozdější vyhledání „uzlů“ přednostně vrátit informace o uzlech používaných při plavbě lodí. Za druhé může Bing náhodně vybírat uživatele k vyzkoušení nových funkcí, než budou všeobecně dostupné. Poskytnutí stejného ID klienta s každou žádostí zajistí, že uživatelé vybraní k tomu, aby danou funkci viděli, ji uvidí vždy. Bez ID klienta může uživatel funkci ve svých výsledcích hledání zdánlivě náhodně někdy vidět a jindy ne.
 
-Zásady zabezpečení prohlížeče, jako je například sdílení prostředků mezi zdroji (CORS), můžou zabránit ukázkové aplikaci v přístupu k hlavičce `X-MSEdge-ClientID`. K tomuto omezení dochází, když má odpověď na vyhledávání jiný zdroj než stránka, která o ni požádala. V produkčním prostředí je potřeba tyto zásady vyřešit hostováním skriptu na straně serveru, který provádí volání rozhraní API ve stejné doméně jako webová stránka. Protože tento skript má stejný původ jako webová stránka, hlavička `X-MSEdge-ClientID` je pak pro JavaScript dostupná.
+Zásady zabezpečení prohlížeče, jako je například sdílení prostředků mezi zdroji (CORS), můžou zabránit ukázkové aplikaci v přístupu k hlavičce `X-MSEdge-ClientID`. K tomuto omezení dochází, když odpověď na vyhledávání má jiný zdroj než stránka, která o ni požádala. V produkčním prostředí je potřeba tyto zásady vyřešit hostováním skriptu na straně serveru, který provádí volání rozhraní API ve stejné doméně jako webová stránka. Protože tento skript má stejný původ jako webová stránka, hlavička `X-MSEdge-ClientID` je pak pro JavaScript dostupná.
 
 > [!NOTE]
-> Při tvorbě webové aplikace byste měli požadavek provádět na straně serveru tak jako tak. Jinak musí být klíč předplatného rozhraní API Bingu pro vyhledávání součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i žádosti provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
+> Při tvorbě webové aplikace byste měli provádět žádost na straně serveru tak jako tak. Jinak musí být klíč předplatného rozhraní API Bingu pro vyhledávání součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
 Pro účely vývoje můžete žádost provést prostřednictvím proxy serveru CORS. Odpověď z takového typu proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
 

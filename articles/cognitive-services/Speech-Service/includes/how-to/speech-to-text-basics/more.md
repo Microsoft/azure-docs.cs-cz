@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 03/13/2020
 ms.author: dapine
 ms.openlocfilehash: 12ab3afed0d1232f126e11d1c227c4c9b50e8ac3
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79372806"
 ---
-## <a name="additional-language-and-platform-support"></a>Další podpora jazyků a platforem
+## <a name="additional-language-and-platform-support"></a>Další jazyková podpora a podpora platformy
 
-Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovacím jazyce nezobrazili článek základy. Nedělejte si starosti, máme k dispozici další ukázky kódu na GitHubu. Pomocí tabulky Najděte správnou ukázku kombinace programovacího jazyka a platformy/OS.
+Pokud jste klikli na tuto kartu, pravděpodobně jste neviděli základní článek ve vašem oblíbeném programovacím jazyce. Nebojte se, máme další ukázky kódu k dispozici na GitHubu. V tabulce najdete tu správnou ukázku pro váš programovací jazyk a kombinaci platformy a operačního systému.
 
 | Jazyk    | Ukázky kódů                                                                                                                            |
 |-------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| C#          | [.NET Framework][csharp-netframework], [.NET Core][csharp-netcore], [UWP][csharp-uwp], [Unity][csharp-unity], [Xamarin][csharp-xamarin] |
+| C#          | [Rozhraní .NET Framework][csharp-netframework], [.NET Core][csharp-netcore], [UPW][csharp-uwp], [Unity][csharp-unity], [Xamarin][csharp-xamarin] |
 | C++         | [Rychlé starty][cpp-quickstarts], [ukázky][cpp-samples]                                                                                  |
 | Java        | [Android][java-android], [JRE][java-jre]                                                                                                |
-| JavaScript  | [Prohlížeee][js-browser]                                                                                                                   |
+| JavaScript  | [Prohlížeč][js-browser]                                                                                                                   |
 | Node.js     | [Windows, Linux, macOS][node-js]                                                                                                        |
-| Objective-C | [iOS][objective-c-ios], [MacOS][objective-c-macos]                                                                                      |
+| Objective-C | [iOS][objective-c-ios], [macOS][objective-c-macos]                                                                                      |
 | Python      | [Windows, Linux, macOS][python]                                                                                                         |
-| Swift       | [iOS][swift-ios], [MacOS][swift-macos]                                                                                                  |
+| Swift       | [iOS][swift-ios], [macOS][swift-macos]                                                                                                  |
 
 <!-- Links -->
 [cpp-quickstarts]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp

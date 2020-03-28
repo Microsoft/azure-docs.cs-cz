@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: sada Speech C# SDK for (Xamarin) Platform Setup – služba pro rozpoznávání řeči'
+title: 'Úvodní příručka: Sada Speech SDK pro nastavení platformy C# (Xamarin) – služba rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto průvodce můžete nastavit platformu pro Xamarin pomocí C# sady SDK služby pro rozpoznávání řeči.
+description: Tato příručka slouží k nastavení platformy pro C# Xamarin se službou Speech SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
 ms.openlocfilehash: f8ba4ef590b3becd9259230246555d6c74b0078b
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925097"
 ---
-V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro [Xamarin](https://docs.microsoft.com/xamarin/get-started/what-is-xamarin), open source platformu pro vytváření moderních a výkonných aplikací pro iOS, Android a Windows pomocí .NET. Pokud chcete, aby název balíčku začal vlastním způsobem, spusťte `Install-Package Microsoft.CognitiveServices.Speech` v konzole NuGet.
+Tato příručka ukazuje, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro [Xamarin](https://docs.microsoft.com/xamarin/get-started/what-is-xamarin), open source platformu pro vytváření moderních a výkonných aplikací pro iOS, Android a Windows s rozhraním .NET. Pokud chcete, aby název balíčku začít na `Install-Package Microsoft.CognitiveServices.Speech` vlastní pěst, spusťte v konzoli NuGet.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K tomuto rychlému startu potřebujete:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 
-## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Vytvořit projekt sady Visual Studio a nainstalovat sadu Speech SDK
+## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Vytvoření projektu sady Visual Studio a instalace sady Speech SDK
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-xamarin-create-proj.md)]
 
-Sada Speech SDK je teď nainstalovaná. Nyní můžete odstranit nebo znovu použít projekt "HelloWorld", který jste vytvořili v předchozích krocích.
+Sada Speech SDK je nyní nainstalována. Nyní můžete odstranit nebo znovu použít projekt "helloworld", který jste vytvořili v předchozích krocích.
 
-Nyní můžete přejít na [Další kroky](#next-steps) níže.
+Nyní můžete přejít na [další kroky](#next-steps) níže.
 
 ## <a name="next-steps"></a>Další kroky
 

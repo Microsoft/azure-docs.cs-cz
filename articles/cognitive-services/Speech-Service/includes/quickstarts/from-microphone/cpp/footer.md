@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči pomocí mikrofonu C++ – služba řeči'
+title: 'Úvodní příručka: Rozpoznávání řeči z mikrofonu, C++ - služba řeči'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,11 +10,11 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: e26c4c51a064128c46af85c660649e0fb090e0c0
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75927951"
 ---
 > [!div class="nextstepaction"]
-> [Prozkoumejte C++ ukázky na GitHubu](https://aka.ms/speech/github-cpp)
+> [Prozkoumejte ukázky C++ na GitHubu](https://aka.ms/speech/github-cpp)

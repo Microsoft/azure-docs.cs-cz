@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: výuka modelu a extrakce dat formuláře pomocí REST API pomocí nástroje pro rozpoznávání formulářů v Pythonu'
+title: 'Úvodní příručka: Trénování modelu a extrahování dat formuláře pomocí rozhraní REST API s Pythonem – rozpoznávání formulářů'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů REST API s Pythonem k učení modelu a extrakci dat z formulářů.
+description: V tomto rychlém startu použijete rozhraní REST API nástroje pro rozpoznávání formulářů s Pythonem k trénování modelu a extrahování dat z formulářů.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,41 +10,41 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 66668f46595c22426984a02c489297e962d061d0
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118082"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s Pythonem
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Úvodní příručka: Trénování modelu rozpoznávání formulářů a extrahování dat formuláře pomocí rozhraní REST API s Pythonem
 
-V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azure REST API s Pythonem k vyučování a seznámení s formuláři pro extrakci párů klíč-hodnota a tabulek.
+V tomto rychlém startu použijete rozhraní REST API nástroje Azure Pro rozpoznávání formulářů s Pythonem k trénování a získávání skóre formulářů pro extrahování párů a tabulek klíč-hodnota.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu musíte mít:
-- Je nainstalovaný [Python](https://www.python.org/downloads/) (Pokud chcete spustit ukázku místně).
-- Sada alespoň pěti forem stejného typu. Tato data použijete ke výuku modelu. Formuláře mohou mít různé typy souborů, ale musí se jednat o stejný typ dokumentu. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) . Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage.
+Chcete-li dokončit tento rychlý start, musíte mít:
+- [Python](https://www.python.org/downloads/) nainstalován (pokud chcete spustit ukázku místně).
+- Sada alespoň pět forem stejného typu. Tato data použijete k trénování modelu. Formuláře mohou mít různé typy souborů, ale musí se jednat o stejný typ dokumentu. Pro tento rychlý start můžete použít [ukázkovou sadu dat.](https://go.microsoft.com/fwlink/?linkid=2090451) Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů blob v účtu Azure Storage.
 
-## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
+## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku nástroje pro rozpoznávání formulářů
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="train-a-form-recognizer-model"></a>Výuka modelu pro rozpoznávání formulářů
+## <a name="train-a-form-recognizer-model"></a>Trénování modelu nástroje pro rozpoznávání formulářů
 
-Nejdřív budete potřebovat sadu školicích dat v Azure Storage kontejneru objektů BLOB. Měli byste mít minimálně pět vyplněných formulářů (dokumenty PDF a image) stejného typu nebo struktury jako vaše hlavní vstupní data. Nebo můžete použít jednu prázdnou formu se dvěma vyplněnými formuláři. Prázdný název souboru formuláře musí obsahovat slovo "prázdné". Tipy a možnosti pro sestavení vašich školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../build-training-data-set.md) .
+Nejprve budete potřebovat sadu trénovacích dat v kontejneru objektů blob azure storage. Měli byste mít minimálně pět vyplněných formulářů (pdf dokumentů a/nebo obrázků) stejného typu/struktury jako hlavní vstupní data. Nebo můžete použít jeden prázdný formulář se dvěma vyplněnými formuláři. Název souboru prázdného formuláře musí obsahovat slovo "prázdný". V [tématu Vytvoření trénovací datové sady pro vlastní model,](../build-training-data-set.md) kde najdete tipy a možnosti pro sestavení trénovacích dat.
 
 > [!NOTE]
-> Funkci popisků dat můžete použít k ručnímu označení některých nebo všech vašich školicích dat. Toto je složitější proces, ale výsledkem je lepší poučený model. Další informace najdete v části [výuka s visačkami](../overview.md#train-with-labels) v přehledu.
+> Pomocí funkce označená data můžete předem ručně označit některá nebo všechna trénovací data. Jedná se o složitější proces, ale výsledkem je lépe trénovaný model. Další informace najdete v části [Vlak s popisky](../overview.md#train-with-labels) v přehledu.
 
-Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure vytvořit model pro rozpoznávání formulářů, zavolejte rozhraní API pro **[vlastní model výuky](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** , a to spuštěním následujícího kódu Pythonu. Před spuštěním kódu proveďte tyto změny:
+Chcete-li trénovat model rozpoznávání formulářů s dokumenty v kontejneru objektů blob Azure, zavolejte **[rozhraní API vlastního modelu train](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** spuštěním následujícího kódu pythonu. Před spuštěním kódu proveďte tyto změny:
 
-1. Nahraďte `<SAS URL>` adresou URL sdíleného přístupového podpisu kontejneru Azure Blob Storage (SAS). Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít následující tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Nahraďte `<SAS URL>` adresu URL sdíleného přístupového podpisu (SAS) kontejneru azure blob. Chcete-li načíst adresu URL SAS, otevřete Průzkumníka úložiště Microsoft Azure, klikněte pravým tlačítkem myši na kontejner a vyberte **získat sdílený přístupový podpis**. Zkontrolujte, zda jsou zaškrtnuta oprávnění **Číst** a **seznam,** a klepněte na **tlačítko Vytvořit**. Pak zkopírujte hodnotu v části **ADRESA URL.** Měl by mít `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`formu: .
 1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
-1. Nahraďte `<endpoint>` adresou URL koncového bodu pro prostředek pro rozpoznávání formulářů.
-1. Nahraďte `<Blob folder name>` cestou ke složce v úložišti objektů blob, kde se nachází vaše formuláře. Pokud jsou vaše formuláře v kořenu vašeho kontejneru, nechte tento řetězec prázdný.
+1. Nahraďte `<endpoint>` adresu URL koncového bodu pro prostředek nástroje pro rozpoznávání formulářů.
+1. Nahraďte `<Blob folder name>` cestou ke složce v úložišti objektů blob, kde jsou umístěny formuláře. Pokud jsou formuláře v kořenovém adresáři kontejneru, ponechte tento řetězec prázdný.
 
     ```python
     ########### Python Form Recognizer Labeled Async Train #############
@@ -86,13 +86,13 @@ Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure vytvořit mod
         print("POST model failed:\n%s" % str(e))
         quit() 
     ```
-1. Uložte kód do souboru s příponou. py. Například *Form-Recognizer-Train.py*.
+1. Uložte kód do souboru s příponou Py. Například *form-recognizer-train.py*.
 1. Otevřete okno příkazového řádku.
-1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. například `python form-recognizer-train.py`.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python form-recognizer-train.py`.
 
-## <a name="get-training-results"></a>Získat výsledky školení
+## <a name="get-training-results"></a>Získejte výsledky školení
 
-Po spuštění operace vlaku použijete vrácené ID k získání stavu operace. Do dolní části skriptu Pythonu přidejte následující kód. Použije se hodnota ID z školicího hovoru v novém volání rozhraní API. Operace školení je asynchronní, takže tento skript volá rozhraní API v pravidelných intervalech, dokud není stav školení dokončeno. Doporučujeme interval jednoho sekundy nebo více.
+Po spuštění operace vlaku použijete vrácené ID k získání stavu operace. Přidejte následující kód do dolní části skriptu Pythonu. To používá hodnotu ID z volání školení v nové volání rozhraní API. Operace školení je asynchronní, takže tento skript volá rozhraní API v pravidelných intervalech, dokud není dokončen stav školení. Doporučujeme interval jedné sekundy nebo více.
 
 ```python 
 n_tries = 15
@@ -124,7 +124,7 @@ while n_try < n_tries:
 print("Train operation did not complete within the allocated time.")
 ```
 
-Po dokončení procesu školení obdržíte odpověď `201 (Success)` s obsahem JSON, jako je následující:
+Po dokončení procesu školení obdržíte `201 (Success)` odpověď s obsahem JSON, jako je následující:
 
 ```json
 { 
@@ -192,11 +192,11 @@ Po dokončení procesu školení obdržíte odpověď `201 (Success)` s obsahem 
 }
 ```
 
-Zkopírujte hodnotu `"modelId"` pro použití v následujících krocích.
+Zkopírujte `"modelId"` hodnotu pro použití v následujících krocích.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-Po dokončení procesu obdržíte odpověď `200 (Success)` s obsahem JSON v následujícím formátu. Odpověď byla zkrácena pro zjednodušení. Přidružení hlavní dvojice klíč/hodnota a tabulky jsou v uzlu `"pageResults"`. Pokud jste také určili extrakci prostého textu prostřednictvím parametru *includeTextDetails* URL, pak uzel `"readResults"` zobrazí obsah a pozice veškerého textu v dokumentu.
+Po dokončení procesu obdržíte odpověď `200 (Success)` s obsahem JSON v následujícím formátu. Odezva byla zkrácena pro jednoduchost. Přidružení a tabulky párování klíčů a `"pageResults"` hodnot jsou v uzlu. Pokud jste také zadali extrakci prostého textu `"readResults"` prostřednictvím parametru *includeTextDetails* URL, pak uzel zobrazí obsah a umístění veškerého textu v dokumentu.
 
 ```bash
 {
@@ -447,13 +447,13 @@ Po dokončení procesu obdržíte odpověď `200 (Success)` s obsahem JSON v ná
 }
 ```
 
-## <a name="improve-results"></a>Zlepšení výsledků
+## <a name="improve-results"></a>Zlepšete výsledky
 
 [!INCLUDE [improve results](../includes/improve-results-unlabeled.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili nástroj pro rozpoznávání formulářů REST API s Pythonem k vytvoření výukového modelu a jeho spuštění ve vzorovém scénáři. Dále si přečtěte referenční dokumentaci a prozkoumejte rozhraní API pro rozpoznávání formulářů ve větší hloubkě.
+V tomto rychlém startu jste použili rozhraní REST API nástroje pro rozpoznávání formulářů s Pythonem k trénování modelu a jeho spuštění v ukázkovém scénáři. Dále naleznete v referenční dokumentaci k podrobnějšímu prozkoumání rozhraní API pro rozpoznávání formulářů.
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+> [Referenční dokumentace rozhraní REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)

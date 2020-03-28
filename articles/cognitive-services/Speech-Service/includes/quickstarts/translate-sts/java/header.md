@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Převod řeči na řeč, Java-Speech Service'
+title: 'Úvodní příručka: Překlad řeči na řeč, Java - Služba řeči'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Bude doplněno
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: ea782dc036518cbb28eca01436c186396c9f987f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75467246"
 ---
-Pokud si přejete přejít přímo v, můžete si prohlédnout nebo stáhnout všechny <a href="https://aka.ms/speech/github-java">ukázky sady Speech SDK Java</a> na GitHubu. V opačném případě můžeme začít.
+Pokud dáváte přednost skoku přímo, zobrazte nebo stáhněte všechny <a href="https://aka.ms/speech/github-java">ukázky řeči SDK Java</a> na GitHubu. Jinak začneme.

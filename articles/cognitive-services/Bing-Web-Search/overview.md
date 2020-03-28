@@ -1,5 +1,5 @@
 ---
-title: Co je rozhraní API Bingu pro vyhledávání na webu?
+title: Co je rozhraní API pro vyhledávání na webu Bingu?
 titleSuffix: Azure Cognitive Services
 description: Rozhraní API Bingu pro vyhledávání na webu je služba RESTful, která poskytuje okamžité odpovědi na dotazy uživatelů. Výsledky hledání je možné snadno nakonfigurovat tak, aby zahrnovaly webové stránky, obrázky, videa, zprávy, překlady a další. Výsledky jsou ve formátu JSON a vycházejí z relevance hledání a vašich předplatných rozhraní API Bingu pro vyhledávání na webu.
 services: cognitive-services
@@ -12,15 +12,15 @@ ms.date: 12/05/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77650278"
 ---
-# <a name="what-is-the-bing-web-search-api"></a>Co je rozhraní API Bingu pro vyhledávání na webu?
+# <a name="what-is-the-bing-web-search-api"></a>Co je rozhraní API pro vyhledávání na webu Bingu?
 
-Rozhraní API Bingu pro vyhledávání na webu je služba RESTful, která poskytuje okamžité odpovědi na dotazy uživatelů. Výsledky hledání je možné snadno nakonfigurovat tak, aby zahrnovaly webové stránky, obrázky, videa, zprávy, překlady a další. Vyhledávání na webu Bingu poskytuje výsledky jako JSON na základě relevance vyhledávání a vašich Vyhledávání na webu Bingu předplatných.
+Rozhraní API Bingu pro vyhledávání na webu je služba RESTful, která poskytuje okamžité odpovědi na dotazy uživatelů. Výsledky hledání je možné snadno nakonfigurovat tak, aby zahrnovaly webové stránky, obrázky, videa, zprávy, překlady a další. Hledání na webu Bing poskytuje výsledky jako JSON na základě relevance vyhledávání a předplatných bingového vyhledávání na webu.
 
 Toto rozhraní API je ideální pro aplikace, které potřebují přístup k veškerému obsahu relevantnímu pro vyhledávací dotaz uživatele. Pokud vytváříte aplikaci, která vyžaduje pouze konkrétní typ výsledku, zvažte použití [rozhraní API Bingu pro vyhledávání obrázků](../Bing-Image-Search/overview.md), [rozhraní API Bingu pro vyhledávání videí](../Bing-Video-Search/search-the-web.md) nebo [rozhraní API Bingu pro vyhledávání zpráv](../Bing-News-Search/search-the-web.md). Úplný seznam rozhraní API pro vyhledávání Bingu najdete v tématu [Rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services).
 
@@ -28,7 +28,7 @@ Chcete se podívat, jak to funguje? Vyzkoušejte naši [ukázku rozhraní API Bi
 
 ## <a name="features"></a>Funkce  
 
-Vyhledávání na webu Bingu vám nedává přístup jenom k okamžitým odpovědím. Poskytuje také další funkce a funkce, které umožňují přizpůsobit výsledky hledání pro uživatele.
+Webové vyhledávání Bing udává nejen okamžitý přístup k okamžitým odpovědím. Poskytuje také další funkce, které umožňují přizpůsobit výsledky hledání pro uživatele.
 
 | Funkce | Popis |
 |---------|-------------|
@@ -40,9 +40,9 @@ Vyhledávání na webu Bingu vám nedává přístup jenom k okamžitým odpově
 
 ## <a name="workflow"></a>Pracovní postup
 
-Rozhraní API Bingu pro vyhledávání na webu se snadno volá z jakéhokoli programovacího jazyka, který dokáže provádět požadavky HTTP a parsovat odpovědi JSON. Služba je přístupná pomocí [REST API](quickstarts/python.md) nebo [klientských knihoven vyhledávání na webu Bingu](./quickstarts/client-libraries.md).
+Rozhraní API Bingu pro vyhledávání na webu se snadno volá z jakéhokoli programovacího jazyka, který dokáže provádět požadavky HTTP a parsovat odpovědi JSON. Služba je přístupná pomocí [rozhraní REST API](quickstarts/python.md) nebo [klientských knihoven Bing Web Search](./quickstarts/client-libraries.md).
 
-1. [Vytvořte prostředek Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).  
+1. [Vytvořte prostředek Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro vyhledávací api Bingu. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).  
 2. Odešlete [požadavek na rozhraní API Bingu pro vyhledávání na webu](quickstarts/python.md).
 3. Parsujte odpověď JSON.
 

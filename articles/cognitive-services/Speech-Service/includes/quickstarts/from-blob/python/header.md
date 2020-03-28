@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči uložených v úložišti objektů blob, Python-Speech Service'
+title: 'Úvodní příručka: Rozpoznávání řeči uložené v úložišti objektů blob, Python - služba Řeč'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Bude doplněno
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: b13d340028cf39a9415efbebfb6cfe293a35b575
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75467714"
 ---
-Pokud si přejete přejít přímo do, zobrazte si nebo Stáhněte si <a href="https://aka.ms/speech/github-python">ukázky Python SDK pro řeč</a> na GitHubu. V opačném případě můžeme začít.
+Pokud dáváte přednost skoku přímo, zobrazte nebo stáhněte všechny <a href="https://aka.ms/speech/github-python">ukázky aplikace Speech SDK Python</a> na GitHubu. Jinak začneme.

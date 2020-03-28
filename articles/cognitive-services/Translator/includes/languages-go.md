@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 05355ad37183d4c14cb8f6598141292ded0386d9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906993"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "69906993"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Vytvořte nový projekt přejít pomocí oblíbeného integrovaného vývojového prostředí (IDE) nebo editoru nebo nové složky na ploše. Potom tento fragment kódu zkopírujte do svého projektu nebo složky v souboru s názvem `get-languages.go`.
+Vytvořte nový projekt Go pomocí svého oblíbeného rozhraní IDE nebo editoru nebo nové složky na ploše. Potom zkopírujte tento fragment kódu do projektu nebo `get-languages.go`složky v souboru s názvem .
 
 ```go
 package main
@@ -32,11 +32,11 @@ import (
 )
 ```
 
-## <a name="create-the-main-function"></a>Vytvoření funkce main
+## <a name="create-the-main-function"></a>Vytvoření hlavní funkce
 
-Pojďme vytvořit hlavní funkci pro naši aplikaci. Všimněte si, že se jedná o jediný řádek kódu. To je proto, že vytváříme jednu funkci pro získání a tisk seznamu podporovaných jazyků pro Translator Text.
+Pojďme vytvořit hlavní funkci pro naši aplikaci. Všimněte si, že je to jeden řádek kódu. Je to proto, že vytváříme jednu funkci, která získá a vytiskne seznam podporovaných jazyků pro překladač textu.
 
-Tato ukázka se pokusí přečíst koncový bod Translator Text z proměnné prostředí: `TRANSLATOR_TEXT_ENDPOINT`. Pokud proměnné prostředí neznáte, můžete hodnotu `endpoint` nastavit jako řetězec a okomentovat podmíněný příkaz.
+Tato ukázka se pokusí přečíst koncový bod `TRANSLATOR_TEXT_ENDPOINT`překladače textu z proměnné prostředí: . Pokud proměnné prostředí neznáte, můžete hodnotu `endpoint` nastavit jako řetězec a okomentovat podmíněný příkaz.
 
 Zkopírujte do svého projektu tento kód:
 
@@ -51,9 +51,9 @@ func main() {
 }
 ```
 
-## <a name="create-a-function-to-get-a-list-of-supported-languages"></a>Vytvoření funkce, která získá seznam podporovaných jazyků
+## <a name="create-a-function-to-get-a-list-of-supported-languages"></a>Vytvoření funkce pro získání seznamu podporovaných jazyků
 
-Pojďme vytvořit funkci, která získá seznam podporovaných jazyků.
+Pojďme vytvořit funkci získat seznam podporovaných jazyků.
 
 ```go
 func getLanguages(uri string) {
@@ -64,9 +64,9 @@ func getLanguages(uri string) {
 }
 ```
 
-Nyní vytvoříme adresu URL. Adresa URL je sestavena pomocí `Parse()` metod `Query()` a.
+Dále vytvoříme adresu URL. Adresa URL je `Parse()` sestavena pomocí metod a. `Query()`
 
-Zkopírujte tento kód do `getLanguages` funkce.
+Zkopírujte tento `getLanguages` kód do funkce.
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
@@ -76,11 +76,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků [najdete v článku Translator text API 3,0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
-## <a name="build-the-request"></a>Žádost o sestavení
+## <a name="build-the-request"></a>Sestavení požadavku
 
-Teď, když jste zakódovi tělo požadavku jako JSON, můžete sestavit požadavek POST a zavolat Translator Text API.
+Teď, když jste kódovali tělo požadavku jako JSON, můžete vytvořit požadavek POST a volat překladač text api.
 
 ```go
 // Build the HTTP GET request
@@ -98,11 +98,11 @@ if err != nil {
 }
 ```
 
-Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Pokud používáte předplatné služeb Cognitive Services s více `Ocp-Apim-Subscription-Region` službami, musíte také zahrnout parametry požadavku. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-## <a name="handle-and-print-the-response"></a>Zpracuje a vytiskne odpověď.
+## <a name="handle-and-print-the-response"></a>Zpracování a tisk odpovědi
 
-Přidejte tento kód do `getLanguages` funkce k dekódování odpovědi JSON a pak formátujte a tiskněte výsledek.
+Přidejte tento `getLanguages` kód do funkce dekódovat odpověď JSON a potom formátovat a vytisknout výsledek.
 
 ```go
 // Decode the JSON response
@@ -127,7 +127,7 @@ Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na
 
 ## <a name="sample-response"></a>Ukázková odpověď
 
-V tomto [seznamu jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)Najděte zkratku země/oblasti.
+Zkratku země/oblasti naleznete v tomto [seznamu jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
@@ -215,9 +215,9 @@ V tomto [seznamu jazyků](https://docs.microsoft.com/azure/cognitive-services/tr
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na odkaz rozhraní API pochopit vše, co můžete dělat s překladačem text api.
 
 > [!div class="nextstepaction"]
-> [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

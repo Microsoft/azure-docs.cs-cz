@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: spuštění sady Speech Devices SDK v systému Windows, Linux nebo Android-Speech Service'
+title: 'Úvodní příručka: Spuštění sady SDK pro řečová zařízení ve windows, linuxové nebo androidové službě Speech'
 titleSuffix: Azure Cognitive Services
-description: Požadavky a pokyny pro Úvod do sady Windows, Linux nebo Android Speech Devices SDK.
+description: Požadavky a pokyny pro začínání se sadou SDK s aplikací SDK pro zařízení pro rozpoznávání řeči se systémem Windows, Linux nebo Android.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/20/2020
 ms.author: dapine
 zone_pivot_groups: platforms-set-of-three
 ms.openlocfilehash: 598a40e0a76606a0fec8f8a029ac08c0d6e9696e
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77563224"
 ---
-# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows-linux-or-android"></a>Rychlý Start: spuštění ukázkové aplikace sady Speech pro zařízení v systému Windows, Linux nebo Android
+# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows-linux-or-android"></a>Úvodní příručka: Spuštění ukázkové aplikace sady SDK pro řečová zařízení ve Windows, Linuxu nebo Androidu
 
 ::: zone pivot="platform-windows"
 [!INCLUDE [Windows platform](includes/speech-devices-sdk-windows-quickstart.md)]
@@ -35,4 +35,4 @@ ms.locfileid: "77563224"
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přečtěte si poznámky k verzi.](devices-sdk-release-notes.md)
+> [Kontrola poznámek k verzi](devices-sdk-release-notes.md)

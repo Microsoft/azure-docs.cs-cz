@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči pomocí mikrofonu C# (.NET) – služba Speech'
+title: 'Úvodní příručka: Rozpoznávání řeči z mikrofonu, C# (.NET) - Služba řeči'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,76 +10,76 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: c969b5e5daa4c4cfd84695fef70f0a2a5c50ce02
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925535"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
+> * Ujistěte se, že máte přístup k mikrofonu pro snímání zvuku
 
-## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v sadě Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otevření projektu v sadě Visual Studio
 
-Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
+Prvním krokem je ujistěte se, že máte projekt otevřený v sadě Visual Studio.
 
 1. Spusťte Visual Studio 2019.
-2. Načtěte projekt a otevřete `Program.cs`.
+2. Načtěte projekt `Program.cs`a otevřete .
 
-## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
+## <a name="start-with-some-boilerplate-code"></a>Začněte s nějakým standardním kódem
 
-Pojďme přidat kód, který funguje jako kostra pro náš projekt. Nezapomeňte, že jste vytvořili asynchronní metodu nazvanou `RecognizeSpeechAsync()`.
+Přidáme nějaký kód, který funguje jako kostra pro náš projekt. Všimněte si, že jste vytvořili `RecognizeSpeechAsync()`asynchronní metodu s názvem .
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=5-15,43-52)]
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Než budete moct inicializovat objekt `SpeechRecognizer`, musíte vytvořit konfiguraci, která používá váš klíč předplatného a oblast předplatného (vyberte **identifikátor oblasti** z [oblasti](https://aka.ms/speech/sdkregion). Vložte tento kód do metody `RecognizeSpeechAsync()`.
+Před inicializaci objektu `SpeechRecognizer` je třeba vytvořit konfiguraci, která používá klíč předplatného a oblast předplatného (zvolte identifikátor **oblasti** z [oblasti](https://aka.ms/speech/sdkregion). Vložte tento `RecognizeSpeechAsync()` kód do metody.
 
 > [!NOTE]
-> Tato ukázka používá metodu `FromSubscription()` k sestavení `SpeechConfig`. Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+> Tato ukázka `FromSubscription()` používá metodu k sestavení `SpeechConfig`. Úplný seznam dostupných metod naleznete v tématu [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=16)]
-> Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
+> Sada Speech SDK bude ve výchozím nastavení rozpoznána použití jazyka en-us, viz [Určení zdrojového jazyka pro řeč na text,](../../../../how-to-specify-source-language.md) kde naleznete informace o výběru zdrojového jazyka.
 
-## <a name="initialize-a-speechrecognizer"></a>Inicializovat SpeechRecognizer
+## <a name="initialize-a-speechrecognizer"></a>Inicializovat rozpoznávání řeči
 
-Nyní vytvoříme `SpeechRecognizer`. Tento objekt je vytvořen v rámci příkazu Using, aby bylo zajištěno správné vydání nespravovaných prostředků. Vložte tento kód do metody `RecognizeSpeechAsync()` hned pod konfigurací řeči.
+Nyní vytvoříme . `SpeechRecognizer` Tento objekt je vytvořen uvnitř using prohlášení k zajištění správné uvolnění nespravovaných prostředků. Vložte tento `RecognizeSpeechAsync()` kód do metody přímo pod konfigurací řeči.
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=17-19,42)]
 
 ## <a name="recognize-a-phrase"></a>Rozpoznání fráze
 
-Z objektu `SpeechRecognizer` zavoláte metodu `RecognizeOnceAsync()`. Tato metoda umožňuje službě rozpoznávání řeči zjistit, že posíláte jednoduchou frázi pro rozpoznávání, a že po identifikaci fráze zastavit rozpoznávání řeči.
+Z `SpeechRecognizer` objektu zavoláte metodu. `RecognizeOnceAsync()` Tato metoda umožňuje řeči služby vědět, že odesíláte jednu frázi pro rozpoznávání a že jakmile je fráze identifikována k zastavení rozpoznávání řeči.
 
-V příkazu Using přidejte tento kód.
+Uvnitř using prohlášení, přidejte tento kód.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=20)]
 
-## <a name="display-the-recognition-results-or-errors"></a>Zobrazit výsledky rozpoznávání (nebo chyby)
+## <a name="display-the-recognition-results-or-errors"></a>Zobrazení výsledků rozpoznávání (nebo chyb)
 
-Když Služba rozpoznávání řeči vrátí výsledek rozpoznávání, budete s ním chtít něco dělat. My to Zjednodušme a vytiskneme výsledek do konzoly.
+Když je výsledek rozpoznávání vrácen službou Řeč, budete s ním chtít něco udělat. Budeme to jednoduché a vytisknout výsledek na konzoli.
 
-V příkazu Using níže `RecognizeOnceAsync()`přidejte tento kód.
+Uvnitř příkazu using `RecognizeOnceAsync()`níže přidejte tento kód.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=22-41)]
 
-## <a name="check-your-code"></a>Kontrolovat kód
+## <a name="check-your-code"></a>Kontrola kódu
 
-V tomto okamžiku by váš kód měl vypadat takto.
+V tomto okamžiku by měl váš kód vypadat takto.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs)]
 
-## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
+## <a name="build-and-run-your-app"></a>Vytvoření a spuštění aplikace
 
-Nyní jste připraveni sestavit aplikaci a otestovat rozpoznávání řeči pomocí služby Speech.
+Teď jste připraveni vytvořit aplikaci a otestovat naše rozpoznávání řeči pomocí služby Řeč.
 
-1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení** **řešení**Build > .
-2. **Spusťte aplikaci** – z panelu nabídek zvolte možnost **ladění** > **Spustit ladění** nebo stiskněte klávesu **F5**.
-3. **Spustit rozpoznávání** – zobrazí výzvu k vymluvenému vynechání fráze v angličtině. Váš hlas se odešle službě Speech, přepisu jako text a vykreslí se v konzole nástroje.
+1. **Kompilace kódu** – z panelu nabídek sady Visual Studio zvolte **Build** > **Build Build Solution**.
+2. **Spuštění aplikace** – z řádku nabídek zvolte **Ladění** > **ladění startování** nebo stiskněte **klávesu F5**.
+3. **Začněte rozpoznávat** - Vyzve vás, abyste mluvili frází v angličtině. Vaše řeč je odeslána do služby Řeč, přepsána jako text a vykreslena v konzole.
 
 ## <a name="next-steps"></a>Další kroky
 

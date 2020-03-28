@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start knihovny klienta Vyhledávání na webu Bingu JavaScript
+title: Rychlý start klientské knihovny JavaScript pro webové vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 0380dc8d2ff34cf9eecaad063a305491a357ca29
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925200"
 ---
-Klientská knihovna Vyhledávání na webu Bingu umožňuje snadnou integraci Vyhledávání na webu Bingu do aplikace Node. js. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
+Klientská knihovna Bing Web Search usnadňuje integraci webového vyhledávání Bingu do aplikace Node.js. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 
-Chcete se rovnou podívat na kód? Ukázky pro [klientské knihovny vyhledávání Bingu pro JavaScript](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) jsou k dispozici na GitHubu.
+Chcete se rovnou podívat na kód? Ukázky [pro klientské knihovny Bing Search pro JavaScript](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) jsou k dispozici na GitHubu.
 
-## <a name="prerequisites"></a>Předpoklady
-Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
+## <a name="prerequisites"></a>Požadavky
+Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 
 * [Node.js 6](https://nodejs.org/en/download/) nebo novější
 * Klíč předplatného  
@@ -65,7 +65,7 @@ const WebSearchAPIClient = require('azure-cognitiveservices-websearch');
 
 ## <a name="instantiate-the-client"></a>Vytvoření instance klienta
 
-Tento kód vytvoří instanci klienta s použitím modulu `azure-cognitiveservices-websearch`. Než budete pokračovat, ujistěte se, že jste zadali platný klíč předplatného k účtu Azure.
+Tento kód vytvoří instanci klienta s použitím modulu `azure-cognitiveservices-websearch`. Než budete pokračovat, ujistěte se, že jste zadali platný klíč předplatného účtu Azure.
 
 ```javascript
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
@@ -102,7 +102,7 @@ Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatn
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Ukázky kognitivních služeb sady Node.js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+> [Ukázky sady SDK aplikace Cognitive Services Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
 ## <a name="see-also"></a>Viz také
 

@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: e2c4530dbd5fa8b65e149e7467ce0f27adc15782
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924926"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete, nezapomeňte:
+Než začnete, ujistěte se, že:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření prostředku řeči Azure](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=windows)
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. V aplikaci Visual Studio otevřete zdrojový soubor **HelloWorld. cpp**.
+1. Z visual studia otevřete zdrojový soubor **helloworld.cpp**.
 
-1. Nahraďte celý kód následujícím fragmentem kódu:
+1. Nahraďte celý kód následujícím fragmentem:
 
     ```cpp
     #include "pch.h"
@@ -201,27 +201,27 @@ Než začnete, nezapomeňte:
 
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
-1. V řádku nabídek vyberte možnost **soubor** > **Uložit vše**.
+1. Na řádku nabídek zvolte **Soubor** > **Uložit vše**.
 
-## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Sestavte a spusťte aplikaci a vytvořte novou konverzaci.
+## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Vytvoření a spuštění aplikace pro vytvoření nové konverzace
 
-1. V řádku nabídek vyberte **sestavit** > **Sestavit řešení** a sestavte aplikaci. Kód by se teď měl zkompilovat bez chyb.
+1. Na řádku nabídek vyberte **sestavení** > **sestavení řešení** k sestavení aplikace. Kód by se teď měl zkompilovat bez chyb.
 
-1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu <kbd>F5</kbd>) a spusťte aplikaci **HelloWorld** .
+1. **Chcete-li** > spustit aplikaci **Helloworld,** zvolte Ladění**spouštění ladění** (nebo stiskněte <kbd>klávesu F5).</kbd>
 
-1. Jakmile se zobrazí `Started transcribing` zpráva, můžete začít mluvit. Při mluvení se zobrazí přepisy.
-    - Pokud sdílíte kód konverzace s ostatními a připojíte se ke konverzaci, uvidíte také jejich přepisy.
+1. Jakmile se `Started transcribing` zobrazí zpráva, můžete začít mluvit. Budete vidět přepisy se objeví, jak mluvíte
+    - Pokud kód konverzace sdílíte s ostatními a oni se k ní připojí, zobrazí se také jejich přepisy.
 
-1. Jakmile budete hotovi, stisknutím <kbd>kombinace kláves CTRL + C</kbd> na klávesnici zastavíte záznam zvuku.
+1. Až budete hotovi mluvit, stiskněte <kbd>Ctrl +C</kbd> na klávesnici zastavit záznam zvuku.
 
     > [!NOTE]
-    > Může se zobrazit zpráva ze sady Visual Studio o výjimce, která je podobná: `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` můžete tuto možnost bezpečně ignorovat.
+    > Může se zobrazit zpráva z aplikace Visual `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` Studio o výjimce podobné: Můžete tuto možnost bezpečně ignorovat.
     > <br/> <br/>
     > Pokračujte stisknutím <kbd>F5</kbd>.
 
-## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Sestavte a spusťte aplikaci, která se připojí k existující konverzaci.
+## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Sestavení a spuštění aplikace pro připojení k existující konverzaci
 
-1. Zkopírujte a vložte následující funkci do souboru **HelloWorld. cpp** těsně před funkci `int main()`:
+1. Zkopírujte a vložte následující funkci do **helloworld.cpp** těsně před `int main()` funkcí:
 
     ```cpp
     void JoinExistingConversation(const std::string& conversationId)
@@ -274,7 +274,7 @@ Než začnete, nezapomeňte:
     }
     ```
 
-2. Ve své funkci `int main()` nahraďte `StartNewConversation();`:
+2. `StartNewConversation();` Nahraďte `int main()` ve své funkci:
 
     ```cpp
     // Set this to the conversation you want to join
@@ -283,23 +283,23 @@ Než začnete, nezapomeňte:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Vraťte se do sady Visual Studio a nahraďte `YourConversationId` ve funkci `int main()` s ID konverzace z předchozího kroku.
+4. Přejděte zpět do `YourConversationId` sady `int main()` Visual Studio a nahraďte ve své funkci ID konverzace z předchozího kroku.
 
-5. V řádku nabídek vyberte **sestavit** > **Sestavit řešení** a sestavte aplikaci. Kód by se měl zkompilovat bez chyb.
+5. Na řádku nabídek vyberte **sestavení** > **sestavení řešení** k sestavení aplikace. Kód by se měl zkompilovat bez chyb.
 
-6. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu <kbd>F5</kbd>) a spusťte aplikaci **HelloWorld** .
+6. **Chcete-li** > spustit aplikaci **Helloworld,** zvolte Ladění**spouštění ladění** (nebo stiskněte <kbd>klávesu F5).</kbd>
 
-7. Jakmile se zobrazí `Started transcribing` zpráva, můžete začít mluvit. Zobrazí se přepisy při mluvení.
-    - Pokud se vrátíte zpátky do svého prohlížeče, měli byste vidět, že se vám budou zobrazovat přepisy i při mluvení.
+7. Jakmile se `Started transcribing` zobrazí zpráva, můžete začít mluvit. Uvidíte, že přepisy se zobrazí, jak mluvíte.
+    - Pokud se vrátíte do prohlížeče, měli byste vidět vaše přepisy se objeví tam, jak mluvíte také.
 
-8.  Jakmile budete hotovi, stisknutím <kbd>kombinace kláves CTRL + C</kbd> zastavte záznam zvuku a ukončete konverzaci.
+8.  Až budete hotovi mluvit, stiskněte <kbd>Ctrl +C</kbd> zastavit sběr zvuku a ukončit konverzaci.
 
     > [!NOTE]
-    > Může se zobrazit zpráva ze sady Visual Studio o výjimce, která je podobná: `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` můžete tuto možnost bezpečně ignorovat.
+    > Může se zobrazit zpráva z aplikace Visual `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` Studio o výjimce podobné: Můžete tuto možnost bezpečně ignorovat.
     > <br/> <br/>
     > Pokračujte stisknutím <kbd>F5</kbd>.
 
-9. Vraťte se do prohlížeče a ukončete konverzaci pomocí tlačítka Exit v pravém horním rohu.
+9. Vraťte se do prohlížeče a ukončete konverzaci pomocí tlačítka ukončení v pravém horním rohu.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: výuka modelu a extrakce dat formuláře pomocí funkce pro rozpoznávání složeného formuláře'
+title: 'Úvodní příručka: Trénování modelu a extrahování dat formuláře pomocí cURL - Rozpoznávání formulářů'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete REST API pro rozpoznávání formulářů s kudrlinkou k učení modelu a extrakce dat z formulářů.
+description: V tomto rychlém startu použijete rozhraní REST API nástroje pro rozpoznávání formulářů s cURL k trénování modelu a extrahování dat z formulářů.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,62 +10,62 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 32756187852de0834afc1dc034d3f7419f0c8087
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118390"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s kudrlinkou
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Úvodní příručka: Trénování modelu rozpoznávání formulářů a extrahování dat formuláře pomocí rozhraní REST API s cURL
 
-V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azure REST API s kudrlinkou ke výukám a k extrakci formulářů a jejich skóre a k extrakci párů klíč-hodnota a tabulek.
+V tomto rychlém startu použijete rozhraní REST API nástroje Azure Pro rozpoznávání formulářů s cURL k trénování a získávání skóre formulářů pro extrahování párů klíč-hodnota a tabulek.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu musíte mít:
-- byl nainstalován [oblý](https://curl.haxx.se/windows/) .
-- Sada alespoň šest forem stejného typu. Pro výuku modelu použijete pět z nich a potom ho otestujete s šestým formulářem. Formuláře mohou mít různé typy souborů, ale musí se jednat o stejný typ dokumentu. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) . Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage. Testovací soubory můžete umístit do samostatné složky.
+Chcete-li dokončit tento rychlý start, musíte mít:
+- [cURL](https://curl.haxx.se/windows/) nainstalován.
+- Sada nejméně šesti forem stejného typu. Budete používat pět z nich trénovat model, a pak budete testovat s šestým formulářem. Formuláře mohou mít různé typy souborů, ale musí se jednat o stejný typ dokumentu. Pro tento rychlý start můžete použít [ukázkovou sadu dat.](https://go.microsoft.com/fwlink/?linkid=2090451) Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů blob v účtu Azure Storage. Testovací soubory můžete umístit do samostatné složky.
 
-## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
+## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku nástroje pro rozpoznávání formulářů
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="train-a-form-recognizer-model"></a>Výuka modelu pro rozpoznávání formulářů
+## <a name="train-a-form-recognizer-model"></a>Trénování modelu nástroje pro rozpoznávání formulářů
 
-Nejdřív budete potřebovat sadu školicích dat v objektu blob Azure Storage. Měli byste mít minimálně pět vyplněných formulářů (dokumenty PDF a image) stejného typu nebo struktury jako vaše hlavní vstupní data. Nebo můžete použít jednu prázdnou formu se dvěma vyplněnými formuláři. Prázdný název souboru formuláře musí obsahovat slovo "prázdné". Tipy a možnosti pro sestavení vašich školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../build-training-data-set.md) .
+Nejprve budete potřebovat sadu trénovacích dat v objektu blob úložiště Azure. Měli byste mít minimálně pět vyplněných formulářů (pdf dokumentů a/nebo obrázků) stejného typu/struktury jako hlavní vstupní data. Nebo můžete použít jeden prázdný formulář se dvěma vyplněnými formuláři. Název souboru prázdného formuláře musí obsahovat slovo "prázdný". V [tématu Vytvoření trénovací datové sady pro vlastní model,](../build-training-data-set.md) kde najdete tipy a možnosti pro sestavení trénovacích dat.
 
 > [!NOTE]
-> Funkci popisků dat můžete použít k ručnímu označení některých nebo všech vašich školicích dat. Toto je složitější proces, ale výsledkem je lepší poučený model. Další informace o této funkci najdete v části [výuka s visačkami](../overview.md#train-with-labels) v přehledu.
+> Pomocí funkce označená data můžete předem ručně označit některá nebo všechna trénovací data. Jedná se o složitější proces, ale výsledkem je lépe trénovaný model. Další informace o této funkci najdete v části [Vlak s popisky](../overview.md#train-with-labels) v přehledu.
 
-Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure vytvořit model pro rozpoznávání formulářů, zavolejte rozhraní API pro **[vlastní modely](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** , a to spuštěním následujícího příkazu složeného. Před spuštěním příkazu proveďte tyto změny:
+Chcete-li trénovat model rozpoznávání formulářů s dokumenty v kontejneru objektů blob Azure, zavolejte **[rozhraní API vlastního modelu trénování](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** spuštěním následujícího příkazu cURL. Před spuštěním příkazu proveďte tyto změny:
 
-1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání vašeho formuláře.
+1. Nahraďte `<Endpoint>` koncovýbod, který jste získali s odběrem nástroje pro rozpoznávání formulářů.
 1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
-1. Nahraďte `<SAS URL>` adresou URL sdíleného přístupového podpisu kontejneru Azure Blob Storage (SAS). Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít následující tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Nahraďte `<SAS URL>` adresu URL sdíleného přístupového podpisu (SAS) kontejneru azure blob. Chcete-li načíst adresu URL SAS, otevřete Průzkumníka úložiště Microsoft Azure, klikněte pravým tlačítkem myši na kontejner a vyberte **získat sdílený přístupový podpis**. Zkontrolujte, zda jsou zaškrtnuta oprávnění **Číst** a **seznam,** a klepněte na **tlačítko Vytvořit**. Pak zkopírujte hodnotu v části **ADRESA URL.** Měl by mít `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`formu: .
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-Dostanete odpověď `201 (Success)` s hlavičkou **umístění** . Hodnota tohoto záhlaví je ID nového vyučeného modelu. 
+Obdržíte `201 (Success)` odpověď s hlavičkou **Umístění.** Hodnota tohoto záhlaví je ID nového modelu, který je trénován. 
 
-## <a name="get-training-results"></a>Získat výsledky školení
+## <a name="get-training-results"></a>Získejte výsledky školení
 
-Po spuštění operace vlaku použijete novou operaci, **[získáte vlastní model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** a zkontrolujete stav školení. Předejte ID modelu do tohoto volání rozhraní API, abyste zkontrolovali stav školení:
+Po spuštění operace vlaku, použijte novou operaci, **[Získat vlastní model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** pro kontrolu stavu školení. Předejte ID modelu do tohoto volání rozhraní API a zkontrolujte stav školení:
 
-1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů.
-1. Nahraďte `<subscription key>` klíčem předplatného.
-1. Nahraďte `<model ID>` číslem ID, které jste obdrželi v předchozím kroku.
+1. Nahraďte `<Endpoint>` koncovýbod, který jste získali pomocí klíče předplatného nástroje pro rozpoznávání formulářů.
+1. Nahrazení `<subscription key>` klíčem předplatného
+1. Nahrazení `<model ID>` ID modelu, které jste obdrželi v předchozím kroku
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-V následujícím formátu obdržíte odpověď `200 (Success)` s textem JSON. Všimněte si pole `"status"`. Po dokončení školení bude tato hodnota `"ready"`. Pokud model nedokončíte, budete ho muset znovu spustit opětovným spuštěním příkazu. Pro mezi voláními doporučujeme interval o délce jedné sekundy nebo více.
+Obdržíte `200 (Success)` odpověď s tělem JSON v následujícím formátu. Všimněte `"status"` si pole. To bude mít `"ready"` hodnotu po dokončení školení. Pokud model není dokončenškolení, budete muset dotaz služby znovu opětovným spuštěním příkazu. Doporučujeme interval jedné sekundy nebo více mezi hovory.
 
-Pole `"modelId"` obsahuje ID modelu, který budete školením. Budete ho potřebovat pro další krok.
+Pole `"modelId"` obsahuje ID modelu, který trénujete. Budete to potřebovat pro další krok.
 
 ```json
 { 
@@ -133,36 +133,36 @@ Pole `"modelId"` obsahuje ID modelu, který budete školením. Budete ho potřeb
 }
 ```
 
-## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Analýza formulářů pro páry klíč-hodnota a tabulky
+## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Analýza formulářů pro dvojice a tabulky klíč-hodnota
 
-V dalším kroku použijete svůj nově vyškolený model k analýze dokumentu a extrakci párů klíč-hodnota a tabulek z něj. Zavolejte rozhraní API pro **[analýzu formuláře](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** spuštěním následujícího příkazu složeného. Před spuštěním příkazu proveďte tyto změny:
+Dále budete používat nově trénovaný model k analýze dokumentu a extrahování párů klíč-hodnota a tabulek z něj. Volání **[rozhraní Analyzovat rozhraní API formuláře](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** spuštěním následujícího příkazu cURL. Před spuštěním příkazu proveďte tyto změny:
 
-1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali z klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
-1. Nahraďte `<model ID>` číslem ID, které jste obdrželi v předchozí části.
-1. Nahraďte `<SAS URL>` adresou URL SAS k souboru ve službě Azure Storage. Postupujte podle kroků v části školení, ale místo získání adresy URL SAS pro celý kontejner objektů BLOB Získejte jeden pro konkrétní soubor, který chcete analyzovat.
+1. Nahraďte `<Endpoint>` koncovýbod, který jste získali z klíče předplatného nástroje pro rozpoznávání formulářů. Najdete ji na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
+1. Nahraďte `<model ID>` id modelu, které jste obdrželi v předchozí části.
+1. Nahraďte `<SAS URL>` adresu URL SAS k souboru v úložišti Azure. Postupujte podle pokynů v části Školení, ale místo získání adresy URL SAS pro celý kontejner objektů blob, získejte jeden pro konkrétní soubor, který chcete analyzovat.
 1. Místo `<subscription key>` použijte váš klíč předplatného.
 
 ```bash
 curl -v "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" -d "{ \"source\": \""<SAS URL>"\" } "
 ```
 
-Dostanete odpověď `202 (Success)` s hlavičkou **umístění operace** . Hodnota této hlavičky zahrnuje ID výsledků, které používáte ke sledování výsledků operace analyzovat. Uložte toto ID výsledků pro další krok.
+Obdržíte `202 (Success)` odpověď s hlavičkou **Operation-Location.** Hodnota této hlavičky obsahuje ID výsledků, které slouží ke sledování výsledků operace Analyzovat. Uložte toto ID výsledků pro další krok.
 
-## <a name="get-the-analyze-results"></a>Získat výsledky analýzy
+## <a name="get-the-analyze-results"></a>Získejte výsledky analýzy
 
-Pomocí následujícího rozhraní API můžete zadat dotaz na výsledky operace analyzovat.
+Pomocí následujícího rozhraní API můžete dotazovat na výsledky operace Analyzovat.
 
-1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali z klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
-1. Nahraďte `<result ID>` číslem ID, které jste obdrželi v předchozí části.
+1. Nahraďte `<Endpoint>` koncovýbod, který jste získali z klíče předplatného nástroje pro rozpoznávání formulářů. Najdete ji na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
+1. Nahraďte `<result ID>` id, které jste obdrželi v předchozí části.
 1. Místo `<subscription key>` použijte váš klíč předplatného.
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyzeResults/<result ID>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-V následujícím formátu obdržíte odpověď `200 (Success)` s textem JSON. Výstup byl zkrácen pro zjednodušení. Všimněte si `"status"` pole poblíž dolního okraje. Tato hodnota bude `"succeeded"` po dokončení operace analyzovat. Pokud se operace analýzy nedokončila, budete se muset znovu dotázat na službu opětovným spuštěním příkazu. Pro mezi voláními doporučujeme interval o délce jedné sekundy nebo více.
+Obdržíte `200 (Success)` odpověď s tělem JSON v následujícím formátu. Výstup byl zkrácen pro jednoduchost. Všimněte `"status"` si pole v dolní části. To bude mít `"succeeded"` hodnotu po dokončení operace Analyzovat. Pokud operace Analyzovat nebyla dokončena, budete muset znovu zadat dotaz na službu opětovným spuštěním příkazu. Doporučujeme interval jedné sekundy nebo více mezi hovory.
 
-Přidružení hlavní dvojice klíč/hodnota a tabulky jsou v uzlu `"pageResults"`. Pokud jste také určili extrakci prostého textu prostřednictvím parametru *includeTextDetails* URL, pak uzel `"readResults"` zobrazí obsah a pozice veškerého textu v dokumentu.
+Přidružení a tabulky párování klíčů a `"pageResults"` hodnot jsou v uzlu. Pokud jste také zadali extrakci prostého textu `"readResults"` prostřednictvím parametru *includeTextDetails* URL, pak uzel zobrazí obsah a umístění veškerého textu v dokumentu.
 
 ```json
 {
@@ -413,13 +413,13 @@ Přidružení hlavní dvojice klíč/hodnota a tabulky jsou v uzlu `"pageResults
 }
 ```
 
-## <a name="improve-results"></a>Zlepšení výsledků
+## <a name="improve-results"></a>Zlepšete výsledky
 
 [!INCLUDE [improve results](../includes/improve-results-unlabeled.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili nástroj pro rozpoznávání formulářů REST API s kudrlinkou ke školení modelu a jeho spuštění ve vzorovém scénáři. Dále si přečtěte referenční dokumentaci a prozkoumejte rozhraní API pro rozpoznávání formulářů ve větší hloubkě.
+V tomto rychlém startu jste použili rozhraní REST API nástroje pro rozpoznávání formulářů s cURL k trénování modelu a jeho spuštění v ukázkovém scénáři. Dále naleznete v referenční dokumentaci k podrobnějšímu prozkoumání rozhraní API pro rozpoznávání formulářů.
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+> [Referenční dokumentace rozhraní REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)

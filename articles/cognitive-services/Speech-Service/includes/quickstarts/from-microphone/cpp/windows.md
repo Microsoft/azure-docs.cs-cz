@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči z mikrofonu C++ , (Windows) – služba Speech'
+title: 'Úvodní příručka: Rozpoznávání řeči z mikrofonu, C++ (Windows) - služba rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
-description: Naučte se rozpoznávat řeč ve C++ Windows desktopu pomocí sady Speech SDK
+description: Zjistěte, jak rozpoznat řeč v jazyce C++ v systému Windows Desktop pomocí sady Speech SDK
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -11,47 +11,47 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: wolfma
 ms.openlocfilehash: 416c2893ebf07cd638f3f1c06c709db2586245d1
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925927"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=windows)
-> * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
+> * Ujistěte se, že máte přístup k mikrofonu pro snímání zvuku
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
 1. Otevřete zdrojový soubor **helloworld.cpp**.
 
-1. Nahraďte celý kód následujícím fragmentem kódu:
+1. Nahraďte celý kód následujícím fragmentem:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-microphone/helloworld/helloworld.cpp#code)]
 
 1. Ve stejném souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného.
 
-1. Nahraďte řetězec `YourServiceRegion` **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému (například `westus` pro bezplatné zkušební předplatné).
+1. Nahraďte `YourServiceRegion` řetězec **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené `westus` k vašemu předplatnému (například pro bezplatné zkušební předplatné).
 
-1. V řádku nabídek vyberte možnost **soubor** > **Uložit vše**.
+1. Na řádku nabídek zvolte **Soubor** > **Uložit vše**.
 
 > [!NOTE]
-> Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
+> Sada Speech SDK bude ve výchozím nastavení rozpoznána použití jazyka en-us, viz [Určení zdrojového jazyka pro řeč na text,](../../../../how-to-specify-source-language.md) kde naleznete informace o výběru zdrojového jazyka.
 
 ## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 
-1. V řádku nabídek vyberte **sestavit** > **Sestavit řešení** a sestavte aplikaci. Kód by se teď měl zkompilovat bez chyb.
+1. Na řádku nabídek vyberte **sestavení** > **sestavení řešení** k sestavení aplikace. Kód by se teď měl zkompilovat bez chyb.
 
-1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci **HelloWorld** .
+1. **Chcete-li** > spustit aplikaci **Helloworld,** zvolte Ladění**spouštění ladění** (nebo stiskněte **klávesu F5).**
 
-1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas do služby pro rozpoznávání řeči, která transcribes na text a pošle ji zpět do aplikace k zobrazení.
+1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš projev do služby Speech, která přepisuje na text a odešle jej zpět do aplikace pro zobrazení.
 
-   ![Výstup na konzole po úspěšném rozpoznání](~/articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-08-console-output-release.png)
+   ![Výstup konzoly po úspěšném rozpoznání](~/articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-08-console-output-release.png)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,39 +1,39 @@
 ---
-title: 'Rychlý Start: zjištění anomálií dat pomocí klientské knihovny detekce anomálií pro Python'
+title: 'Úvodní příručka: Detekce anomálií dat pomocí klientské knihovny Detektoranolií pro Python'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak pomocí rozhraní API pro detekci anomálií detekovat anomálie v datové řadě buď jako dávku, nebo na streamovaná data.
+description: Tento rychlý start ukazuje, jak pomocí rozhraní API detektoru anomálií zjistit abnormality v datové řadě buď jako dávka nebo na datových proudů dat.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 11/19/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 0493f9e4b45d8d4804d1933bb923d3483b87005e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 451d5b0eb4fea8ba9764268d963bb7b021414f4b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448983"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80239074"
 ---
-# <a name="quickstart-anomaly-detector-client-library-for-python"></a>Rychlý Start: Klientská knihovna detektoru anomálií pro Python
+# <a name="quickstart-anomaly-detector-client-library-for-python"></a>Úvodní příručka: Klientská knihovna Detektoranolií pro Python
 
-Začněte s klientskou knihovnou anomálií pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba detektoru anomálií umožňuje v datech časových řad najít neobvyklé typy, a to díky tomu, že automaticky používá nejvhodnější modely, bez ohledu na obor, scénář nebo objem dat.
+Začínáme s klientskou knihovnou Detektoranolií pro Python. Následujícím postupem nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úkoly. Služba Detektor anomálií umožňuje najít abnormality v datech časových řad automaticky pomocí nejvhodnějších modelů, bez ohledu na odvětví, scénář nebo objem dat.
 
-Použijte klientskou knihovnu detektoru anomálií pro Python:
+Pomocí klientské knihovny Detektoranolií pro Python:
 
-* Detekovat anomálie v celé datové sadě časových řad jako požadavek dávky
-* Zjistit stav anomálií z nejnovějšího datového bodu v časové řadě
+* Detekce anomálií v celé datové sadě časových řad jako dávkový požadavek
+* Zjištění stavu anomálií nejnovějšího datového bodu v časových řadách
 
-[Referenční dokumentace ke knihovně](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) |  | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) [(PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [Najít vzorový kód na GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
+[Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [knihovny Balíček zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [knihovny (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | Najít[ukázkový kód na GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
 * Klíč a koncový bod detektoru anomálií
 * [Python 3.x](https://www.python.org/)
-* [Knihovna analýzy dat PANDAS](https://pandas.pydata.org/)
+* [Knihovna analýzy dat Pandy](https://pandas.pydata.org/)
  
 ## <a name="setting-up"></a>Nastavení
 
@@ -41,19 +41,19 @@ Použijte klientskou knihovnu detektoru anomálií pro Python:
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
-### <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
+### <a name="create-a-new-python-application"></a>Vytvoření nové aplikace pythonu
 
  Vytvořte nový soubor Pythonu a importujte následující knihovny.
 
 [!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
 
-Vytvořte proměnné pro klíč jako proměnnou prostředí, cestu k datovému souboru časové řady a umístění Azure vašeho předplatného. Například, `westus2`. 
+Vytvořte proměnné pro klíč jako proměnnou prostředí, cestu k datovému souboru časové řady a umístění azure vašeho předplatného. Například, `westus2`. 
 
 [!code-python[Vars for the key, path location and data path](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=initVars)]
 
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
-Po instalaci Pythonu můžete nainstalovat klientskou knihovnu pomocí nástroje:
+Po instalaci Pythonu můžete nainstalovat klientskou knihovnu pomocí:
 
 ```console
 pip install --upgrade azure-cognitiveservices-anomalydetector
@@ -61,53 +61,53 @@ pip install --upgrade azure-cognitiveservices-anomalydetector
 
 ## <a name="object-model"></a>Objektový model
 
-Klient detektoru anomálií je objekt [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) , který se ověřuje v Azure pomocí vašeho klíče. Klient nabízí dvě metody detekce anomálií: na celé datové sadě pomocí [entire_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)a na nejnovějším datovém bodu pomocí [Last_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-). 
+Zákazník detektoru anomálií je objekt [AnomalyDetectorClient,](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) který se ověřuje v Azure pomocí vašeho klíče. Klient poskytuje dvě metody detekce anomálií: Na celou datovou sadu pomocí [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)a na nejnovější datový bod pomocí [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-). 
 
-Data časové řady se odesílají jako řada [bodů](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) v objektu [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python) . `Request` Objekt obsahuje vlastnosti pro popis dat a parametrů pro detekci anomálií.[(například členitosti)](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) 
+Data časových řad jsou odesílána jako řada [bodů](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) v objektu [Požadavku.](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python) Objekt `Request` obsahuje vlastnosti popisující data (například[rozlišovací schopnost)](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) a parametry pro detekci anomálií. 
 
-Odezva detektoru anomálií je objekt [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) nebo [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) v závislosti na použité metodě. 
+Odpověď detektoru anomálií je [lastdetectresponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) nebo [wholedetectresponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) objekt v závislosti na použité metodě. 
 
 ## <a name="code-examples"></a>Příklady kódu 
 
-Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientské knihovny pro detekci anomálií pro Python:
+Tyto fragmenty kódu ukazují, jak provést následující akce s klientskou knihovnou Detektoranolií pro Python:
 
 * [Ověření klienta](#authenticate-the-client)
 * [Načtení datové sady časových řad ze souboru](#load-time-series-data-from-a-file)
-* [Detekovat anomálie v celé sadě dat](#detect-anomalies-in-the-entire-data-set) 
-* [Zjistit stav anomálií nejnovějšího datového bodu](#detect-the-anomaly-status-of-the-latest-data-point)
+* [Detekce anomálií v celé sadě dat](#detect-anomalies-in-the-entire-data-set) 
+* [Zjištění stavu anomálií nejnovějšího datového bodu](#detect-the-anomaly-status-of-the-latest-data-point)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Přidejte do koncového bodu proměnnou umístění Azure a ověřte klienta s klíčem.
+Přidejte proměnnou umístění azure do koncového bodu a ověřte klienta pomocí klíče.
 
 [!code-python[Client authentication](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=client)]
 
 ## <a name="load-time-series-data-from-a-file"></a>Načtení dat časových řad ze souboru
 
 Stáhněte si ukázková data pro tento rychlý start z [GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv):
-1. V prohlížeči klikněte pravým tlačítkem na **raw**.
-2. Klikněte na **Uložit odkaz jako**.
-3. Uložte soubor do adresáře aplikace jako soubor. csv.
+1. V prohlížeči klepněte pravým tlačítkem myši na **položku Nerejzovní**.
+2. Klepněte na **tlačítko Uložit odkaz jako**.
+3. Uložte soubor do adresáře aplikace jako soubor .csv.
 
-Tato data časové řady jsou formátována jako soubor. csv a budou odeslána do rozhraní API detektoru anomálií.
+Tato data časové řady jsou formátována jako soubor .csv a budou odeslána do rozhraní API detektoru anomálií.
 
-Načtěte datový soubor pomocí `read_csv()` knihovny PANDAS a vytvořte prázdnou proměnnou seznamu pro uložení datové řady. Iterujte soubor a připojovat data jako objekt [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python) . Tento objekt bude obsahovat časové razítko a číselnou hodnotu z řádků datového souboru. csv. 
+Načtěte datový soubor `read_csv()` metodou knihovny Pandas a vytvořte prázdnou proměnnou seznamu pro uložení datové řady. Iterate prostřednictvím souboru a připojit data jako [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python) objektu. Tento objekt bude obsahovat časové razítko a číselnou hodnotu z řádků datového souboru .csv. 
 
 [!code-python[Load the data file](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=loadDataFile)]
 
-Vytvořte objekt [žádosti](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request%28class%29?view=azure-python) s časovou řadou a [členitost](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) (nebo periodicita) svých datových bodů. Například, `Granularity.daily`.
+Vytvořte [request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request%28class%29?view=azure-python) objekt s časové řady a [rozlišovací schopnost](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) (nebo periodicita) jeho datových bodů. Například, `Granularity.daily`.
 
 [!code-python[Create the request object](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=request)]
 
-## <a name="detect-anomalies-in-the-entire-data-set"></a>Detekovat anomálie v celé sadě dat 
+## <a name="detect-anomalies-in-the-entire-data-set"></a>Detekce anomálií v celé sadě dat 
 
-Zavolejte rozhraní API pro detekci anomálií prostřednictvím celých dat časových řad pomocí metody [entire_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) klienta. Uložte vrácený objekt [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) . Iterujte pomocí seznamu `is_anomaly` odpovědi a vytiskněte index všech hodnot `true`. Tyto hodnoty odpovídají indexu datových bodů neobvyklé, pokud byly nalezeny.
+Volání rozhraní API pro detekci anomálií prostřednictvím dat celé časové řady pomocí metody [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) klienta. Uložte vrácený objekt [WholeDetectResponse.](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) Iterate prostřednictvím `is_anomaly` seznamu odpovědí a vytisknout `true` index všech hodnot. Tyto hodnoty odpovídají indexu anomálních datových bodů, pokud byly nalezeny.
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=detectAnomaliesBatch)]
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Zjistit stav anomálií nejnovějšího datového bodu
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Zjištění stavu anomálií nejnovějšího datového bodu
 
-Zavolejte rozhraní API pro detekci anomálií, abyste zjistili, jestli je váš nejnovější datový bod anomálií pomocí metody [last_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) klienta a uložte vrácený objekt [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) . Hodnota `is_anomaly` odpovědi je logická hodnota, která určuje stav anomálie tohoto bodu.  
+Volání rozhraní API detektoru anomálií k určení, pokud váš nejnovější datový bod je anomálie pomocí metody [last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) klienta a uložit vrácený [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) objektu. `is_anomaly` Hodnota odpovědi je logická hodnota, která určuje stav anomálií tohoto bodu.  
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=latestPointDetection)]
 

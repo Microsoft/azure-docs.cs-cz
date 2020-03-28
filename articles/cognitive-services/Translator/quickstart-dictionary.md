@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Vyhledání slov pomocí dvojjazyčného slovníku – Translator Text API'
+title: 'Úvodní příručka: Vyhledávání slov pomocí dvojjazyčného slovníku - Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak získat alternativní překlady pro termín a také příklady použití těchto alternativních překladů pomocí Translator Text API.
+description: V tomto rychlém startu se dozvíte, jak získat alternativní překlady pro termín a také příklady použití těchto alternativních překladů pomocí rozhraní Translator Text API.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 07fd984f72628ac4f6d6736bf0ab903619e96c72
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525154"
 ---
-# <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Rychlý Start: Vyhledání slov pomocí dvojjazyčného slovníku
+# <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Úvodní příručka: Vyhledávání slov pomocí dvojjazyčného slovníku
 
-V tomto rychlém startu se dozvíte, jak získat alternativní překlady pro termín a také příklady použití těchto alternativních překladů pomocí Translator Text API.
+V tomto rychlém startu se dozvíte, jak získat alternativní překlady pro termín a také příklady použití těchto alternativních překladů pomocí rozhraní Translator Text API.
 
 K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Translator Text. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
@@ -44,9 +44,9 @@ K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services]
 [!INCLUDE [Python quickstart](includes/dictionary-python.md)]
 ::: zone-end
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-* [Překlad textu](quickstart-translate.md)
+* [Přeložení textu](quickstart-translate.md)
 * [Transliterace textu](quickstart-transliterate.md)
 * [Identifikace jazyka podle vstupu](quickstart-detect.md)
 * [Získání seznamu podporovaných jazyků](quickstart-languages.md)

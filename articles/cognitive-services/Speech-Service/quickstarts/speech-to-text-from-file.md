@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči ze zvukového souboru – Speech Service'
+title: 'Úvodní příručka: Rozpoznávání řeči ze zvukového souboru – služba Řeč'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete sadu Speech SDK k rozpoznávání řeči ze zvukového souboru.
+description: V tomto rychlém startu použijete sadu Speech SDK k rozpoznání řeči ze zvukového souboru.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: da6094cd654652625a2ebab303c72fb16fb49b6b
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77119478"
 ---
-# <a name="quickstart-recognize-speech-from-an-audio-file"></a>Rychlý Start: rozpoznávání řeči ze zvukového souboru
+# <a name="quickstart-recognize-speech-from-an-audio-file"></a>Úvodní příručka: Rozpoznání řeči ze zvukového souboru
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-file/header.md)]

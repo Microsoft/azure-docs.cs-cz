@@ -5,14 +5,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/20/2018
 ms.openlocfilehash: 6d53d3d6e115742b7b91d9c7e5888ba2cc0478f5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68697212"
 ---
-Klíč a koncový bod pro prostředek Analýza textu. Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro Analýza textu pomocí [Azure Portal](../articles/cognitive-services/cognitive-services-apis-create-account.md) nebo rozhraní příkazového [řádku Azure](../articles/cognitive-services/cognitive-services-apis-create-account-cli.md) na vašem místním počítači. Můžete také:
+Klíč a koncový bod pro prostředek analýzy textu. Azure Cognitive Services jsou reprezentované prostředky Azure, které si předplatíte. Vytvořte prostředek pro analýzu textu pomocí [portálu Azure nebo](../articles/cognitive-services/cognitive-services-apis-create-account.md) [Azure CLI](../articles/cognitive-services/cognitive-services-apis-create-account-cli.md) na místním počítači. Můžete také:
 
-* Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/#lang) platný po dobu sedmi dnů zdarma. Po registraci bude k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+* Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/#lang) platný po dobu sedmi dnů zdarma. Po registraci bude dostupná na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).
 
-* Zobrazení prostředku na [Azure Portal](https://portal.azure.com/)
+* Zobrazení prostředků na [webu Azure Portal](https://portal.azure.com/)

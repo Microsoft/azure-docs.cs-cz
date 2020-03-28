@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Kontrola koncového bodu projevy-LUIS'
+title: 'Kurz: Kontrola promluv koncového bodu – LUIS'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu Vylepšete předpovědi aplikace tím, že ověříte nebo opravíte projevy, které jste obdrželi prostřednictvím koncového bodu HTTP LUIS, který LUIS nedrží. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu.
+description: V tomto kurzu zlepšit předpovědi aplikací ověřením nebo opravou projevy přijaté prostřednictvím koncového bodu LUIS HTTP, který LUIS není jistý. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76843969"
 ---
-# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Opravte si nejistotu, že předpovědi zkontroluje projevy koncového bodu.
-V tomto kurzu Vylepšete předpovědi aplikací tím, že ověříte nebo opravíte projevy, přijmete prostřednictvím koncového bodu LUIS HTTPS, který LUIS NEsI nedrží. Měli byste zkontrolovat projevy koncového bodu jako běžnou součást plánované údržby LUIS.
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Oprava nejistých předpovědí kontrolou promluv koncového bodu
+V tomto kurzu zlepšit předpovědi aplikací ověřením nebo opravou projevy, přijaté prostřednictvím koncového bodu LUIS HTTPS, že LUIS není jistý. Měli byste zkontrolovat projevy koncového bodu jako pravidelnou součást naplánované údržby LUIS.
 
-Tento proces revize umožňuje LUIS zjistit vaši doménu aplikace. LUIS vybere projevy, který se zobrazí v seznamu revizí. Tento seznam:
+Tento proces kontroly umožňuje LUIS naučit doménu aplikace. Služba LUIS vybere projevy, které se zobrazí v seznamu recenzí. Tento seznam:
 
 * Je specifický pro danou aplikaci.
 * Má za cíl zlepšit přesnost předpovědí aplikace.
@@ -29,40 +29,40 @@ Tento proces revize umožňuje LUIS zjistit vaši doménu aplikace. LUIS vybere 
 
 Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný záměr promluvy.
 
-**V tomto kurzu se naučíte:**
+**V tomto kurzu se dozvíte, jak:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Importovat ukázkovou aplikaci
+> * Importovat ukázkové aplikace
 > * Kontrola promluv koncového bodu
-> * Výuka a publikování aplikace
+> * Trénování a publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Importovat ukázkovou aplikaci
+## <a name="import-example-app"></a>Importovat ukázkové aplikace
 
-K importu aplikace použijte následující postup.
+K importu aplikace použijte následující kroky.
 
 1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) a uložte si ho.
 
-1. Na [portálu Luis Preview](https://preview.luis.ai)importujte soubor. JSON do nové aplikace.
+1. Na [portálu LUIS preview](https://preview.luis.ai)importujte soubor JSON do nové aplikace.
 
 1. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `review`.
 
     > [!TIP]
-    > Naklonování do nové verze je osvědčeným postupem před úpravou aplikace. Po dokončení verze exportujte verzi (jako soubor. JSON nebo. Lu) a Prohlédněte si soubor do systému správy zdrojového kódu.
+    > Klonování do nové verze je osvědčeným postupem před úpravou aplikace. Po dokončení verze exportujte verzi (jako soubor JSON nebo .lu) a zaškrtněte soubor do systému správy zdrojového kódu.
 
 
-1. Pokud chcete aplikaci naučit, vyberte **vlak**.
+1. Chcete-li aplikaci trénovat, vyberte **možnost Vlak**.
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Publikování aplikace pro přístup z koncového bodu HTTP
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="add-utterances-at-the-endpoint"></a>Přidat projevy na koncový bod
+## <a name="add-utterances-at-the-endpoint"></a>Přidání promluv v koncovém bodě
 
-V této aplikaci máte záměry a entity, ale nemáte žádné použití koncového bodu. Toto použití koncového bodu je potřeba ke zlepšení aplikace pomocí utterance revize koncového bodu.
+V této aplikaci máte záměry a entity, ale nemáte žádné využití koncového bodu. Toto použití koncového bodu je nutné zlepšit aplikaci s kontrolou utterance koncového bodu.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
@@ -84,35 +84,35 @@ V této aplikaci máte záměry a entity, ale nemáte žádné použití koncov�
 
 ## <a name="review-endpoint-utterances"></a>Kontrola promluv koncového bodu
 
-Prohlédněte si projevy koncového bodu pro správné zarovnání záměru. I když existuje jeden fond projevy pro kontrolu napříč všemi verzemi, proces správného zarovnání záměru přidá příklad utterance pouze k aktuálnímu _aktivnímu modelu_ .
+Zkontrolujte projevy koncového bodu pro správně zarovnaný záměr. Zatímco je jeden fond projevy ke kontrole ve všech verzích, proces správně zarovnání záměru přidá ukázkový utterance pouze aktuální _aktivní model._
 
-1. V části **Build (sestavení** ) na portálu vyberte **zkontrolovat koncový bod projevy** z levé navigační oblasti. Seznam je filtrovaný pro záměr **ApplyForJob**.
-
-    > [!div class="mx-imgBorder"]
-    > ![snímek obrazovky s tlačítkem zkontrolovat koncový bod projevy v levém navigačním](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
-
-    Tento utterance `I'm looking for a job with Natural Language Processing`není správného záměru.
-
-1.  Pokud chcete tento utterance zarovnat na řádku utterance, vyberte správný **záměr** `GetJobInformation`. Přidejte změněné utterance do aplikace tak, že vyberete značku zaškrtnutí.
+1. V části **Sestavení** portálu vyberte **zkontrolovat projevy koncového bodu** z levé navigace. Seznam je filtrovaný pro záměr **ApplyForJob**.
 
     > [!div class="mx-imgBorder"]
-    > ![snímek obrazovky s tlačítkem zkontrolovat koncový bod projevy v levém navigačním](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
+    > ![Snímek obrazovky s tlačítkem pro kontrolu promluv koncového bodu na levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
 
-    Prohlédněte si zbývající projevy tohoto záměru a podle potřeby opravte zarovnaný záměr. K zobrazení zarovnaného záměru použijte úvodní tabulku utterance v tomto kurzu.
+    Tento utterance, `I'm looking for a job with Natural Language Processing`, není ve správném záměru.
 
-    Seznam **projevya koncového bodu Endpoint** by již neměl mít opravenou projevy. Pokud se zobrazí více projevy, pokračujte v práci se seznamem a opravte zarovnané záměry, dokud není seznam prázdný.
+1.  Chcete-li zarovnat tuto utterance, na utterance řádku, vyberte správný **zarovnaný záměr** `GetJobInformation`. Přidejte změněnou promluvu do aplikace zaškrtnutím políčka zaškrtnutí.
 
-    Jakákoli oprava označování entit se provádí po zarovnání záměru na stránce s podrobnostmi záměru.
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky s tlačítkem pro kontrolu promluv koncového bodu na levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
+
+    Zkontrolujte zbývající projevy v tomto záměru a podle potřeby opravte zarovnaný záměr. Pomocí počáteční utterance tabulka v tomto kurzu zobrazit zarovnaný záměr.
+
+    Seznam **projevy koncového bodu revize** by již neměly mít opravené projevy. Pokud se zobrazí další projevy, pokračujte v práci prostřednictvím seznamu, opravovat zarovnané záměry, dokud seznam je prázdný.
+
+    Jakákoli oprava označení entity se provádí po zarovnání záměru ze stránky Podrobnosti záměru.
 
 1. Trénujte a publikujte aplikaci znovu.
 
 ## <a name="get-intent-prediction-from-endpoint"></a>Získat předpověď záměru z koncového bodu
 
-Pokud chcete ověřit, že se správně zarovnaný příklad projevy vylepšuje předpověď aplikace, zkuste utterance zavřít na opravené utterance.
+Chcete-li ověřit správně zarovnané příklad projevy lepší předpověď aplikace, zkuste utterance v blízkosti opravené utterance.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. Na konec adresy URL zadejte `Are there any natural language processing jobs in my department right now?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy.
+1. Na konec adresy URL zadejte `Are there any natural language processing jobs in my department right now?`. Poslední parametr querystring `q`je , **utterance dotazu**.
 
    ```json
     {
@@ -218,7 +218,7 @@ Pokud chcete ověřit, že se správně zarovnaný příklad projevy vylepšuje 
     }
    ```
 
-   Teď, když je projevy správně zarovnaný, byl správný záměr předpověď s **vysokým skóre**.
+   Nyní, když jsou nejistý projevy správně zarovnány, byl správný záměr předpovězen s **vysokým skóre**.
 
 ## <a name="can-reviewing-be-replaced-by-adding-more-utterances"></a>Dá se kontrola nahradit přidáním dalších promluv?
 Asi vás napadá, proč nepřidat další ukázkové promluvy. Jaký je účel kontrol promluv koncového bodu? V reálných aplikacích LUIS jsou promluvy koncového bodu od uživatelů a mají volbu slov a uspořádání, které jste ještě nepoužili. Pokud jste použili stejnou volbu slov a uspořádání, původní predikce by měla vyšší procentní hodnocení.

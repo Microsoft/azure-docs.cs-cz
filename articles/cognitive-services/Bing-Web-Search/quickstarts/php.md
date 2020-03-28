@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start: Hledání pomocí PHP – rozhraní API Bingu pro vyhledávání na webu'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete posílat požadavky na Vyhledávání na webu Bingu REST API pomocí PHP a přijímat odpověď JSON.
+description: Tento rychlý start slouží k odesílání požadavků do rozhraní REST API pro vyhledávání na webu Bingu pomocí PHP a k přijetí odpovědi JSON
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 58192845e0119ce96ea2577007d211f075d3e419
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169726"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rychlý start: Použití PHP k volání rozhraní API Bingu pro vyhledávání na webu  
 
-Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace Node. js odešle požadavek na hledání do rozhraní API a zobrazí odpověď. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+Pomocí tohoto rychlého startu můžete provést první volání do rozhraní API pro vyhledávání na webu Bingu a obdržet odpověď JSON. Tato aplikace Node.js odešle požadavek na hledání do rozhraní API a zobrazí odpověď. Zatímco tato aplikace je napsána v JavaScriptu, API je RESTful webová služba kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,7 +43,7 @@ Než začneme, najděte soubor `php.ini` a zrušte komentář tohoto řádku:
 
 V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP. Nezapomeňte přidat počáteční a koncové značky `<?php` a `?>`.
 
-Abychom mohli pokračovat, musíme nastavit několik proměnných. `$endpoint` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte správnost hodnoty `$endpoint` a nahraďte hodnotu `$accesskey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `$term` zadat jinou hodnotu.
+Abychom mohli pokračovat, musíme nastavit několik proměnných. `$endpoint`může být globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek. Ověřte správnost hodnoty `$endpoint` a nahraďte hodnotu `$accesskey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `$term` zadat jinou hodnotu.
 
 ```php
 $accessKey = 'enter key here';
@@ -83,7 +83,7 @@ function BingWebSearch ($url, $key, $query) {
 }
 ```
 
-## <a name="make-a-request-and-print-the-response"></a>Vytvoření požadavku a tisk odpovědi
+## <a name="make-a-request-and-print-the-response"></a>Vytvoření požadavku a tisk výsledků
 
 Tento kód ověří klíč předplatného, vytvoří požadavek a vytiskne odpověď.
 

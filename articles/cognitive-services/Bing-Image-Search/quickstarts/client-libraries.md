@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: použití klientské knihovny Vyhledávání obrázků Bingu'
+title: 'Úvodní příručka: Použití klientské knihovny hledání obrázků Bingem'
 titleSuffix: Azure Cognitive Services
-description: Rozhraní Vyhledávání obrázků API nabízí klientské knihovny, které usnadňují integraci vyhledávacích funkcí do vašich aplikací. V tomto rychlém startu můžete začít odesílat žádosti o vyhledávání a vracet výsledky.
+description: Rozhraní API pro vyhledávání obrázků nabízí klientské knihovny, které usnadňují integraci funkcí vyhledávání do vašich aplikací. Pomocí tohoto rychlého startu můžete začít odesílat požadavky na hledání a získat zpět výsledky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 4fa00a3f218276804c80229affb23e99e7994cb3
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78899563"
 ---
-# <a name="quickstart-use-the-bing-image-search-client-library"></a>Rychlý Start: použití klientské knihovny Vyhledávání obrázků Bingu
+# <a name="quickstart-use-the-bing-image-search-client-library"></a>Úvodní příručka: Použití klientské knihovny hledání obrázků Bingem
 
 ::: zone pivot="programming-language-csharp"
 

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: sada Speech SDK pro Java (Windows, Linux, macOS) nastavení platformy – služba pro rozpoznávání řeči'
+title: 'Úvodní příručka: Nastavení platformy Platformy Pro Jazyk Java (Windows, Linux, macOS) – služba Řeč'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto průvodce můžete nastavit platformu pro používání Java (Windows, Linux, macOS) se sadou Speech Service SDK.
+description: Tato příručka slouží k nastavení platformy pro používání Javy (Windows, Linux, macOS) se sadou SDK služby Řeč.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
 ms.openlocfilehash: 7147f0d13c88c1d2e17e81a360a5aee55ee760ed
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924972"
 ---
-V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro 64 JRE Java 8. Pokud chcete, aby název balíčku byl spuštěný sami, sada Java SDK není v centrálním úložišti Maven k dispozici. Bez ohledu na to, jestli používáte Gradle nebo soubor závislosti `pom.xml`, musíte přidat vlastní úložiště, které odkazuje na `https://csspeechstorage.blob.core.windows.net/maven/` (dole najdete v části název balíčku).
+Tato příručka ukazuje, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro 64bitovou verzi java 8 JRE. Pokud chcete, aby název balíčku začal sám, java sdk není k dispozici v centrálním úložišti Maven. Ať už používáte Gradle `pom.xml` nebo soubor závislostí, musíte přidat vlastní `https://csspeechstorage.blob.core.windows.net/maven/` úložiště ukazující na (viz níže název balíčku).
 
 > [!NOTE]
 > Informace o sadě Speech Devices SDK a zařízení Roobo najdete v sadě [Speech Devices SDK](~/articles/cognitive-services/speech-service/speech-devices-sdk.md).
@@ -27,32 +27,32 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
 - Balíček Java Speech SDK je k dispozici pro tyto operační systémy:
-  - Windows: jenom 64 bitů
-  - Mac: macOS X verze 10,13 nebo novější
-  - Linux: 64-bit pouze v Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8
+  - Windows: pouze 64bit
+  - Mac: macOS X verze 10.13 nebo novější
+  - Linux: 64bitový pouze na Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-- [Java IDE zatmění](https://www.eclipse.org/downloads/) (vyžaduje už nainstalovaný Java)
-- Podporované platformy Linux budou vyžadovat, aby byly nainstalovány určité knihovny (`libssl` pro podporu technologie Secure Sockets Layer a `libasound2` pro podporu zvuku). Pro příkazy potřebné k instalaci správných verzí těchto knihoven použijte níže uvedenou distribuci.
+- [Eclipse Java IDE](https://www.eclipse.org/downloads/) (vyžaduje Java již nainstalován)
+- Podporované platformy Linux budou vyžadovat`libssl` instalaci určitých knihoven (pro podporu sadezových vrstev a `libasound2` pro podporu zvuku). Níže naleznete níže uvedené informace o níže uvedených příkazech potřebných k instalaci správných verzí těchto knihoven.
 
-  - V Ubuntu spusťte následující příkazy, abyste nainstalovali požadované balíčky:
+  - V Ubuntu spusťte následující příkazy pro instalaci požadovaných balíčků:
 
         ```sh
         sudo apt-get update
         sudo apt-get install build-essential libssl1.0.0 libasound2
         ```
 
-  - V Debian 9 spusťte následující příkazy, abyste nainstalovali požadované balíčky:
+  - V Debianu 9 spusťte následující příkazy pro instalaci požadovaných balíčků:
 
         ```sh
         sudo apt-get update
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
 
-  - Na RHEL/CentOS 8 spusťte následující příkazy, abyste nainstalovali požadované balíčky:
+  - Na RHEL/CentOS 8, spusťte následující příkazy k instalaci požadovaných balíčků:
 
         ```sh
         sudo yum update
@@ -60,11 +60,11 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
         ```
 
 > [!NOTE]
-> V RHEL/CentOS 8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+> Na RHEL/CentOS 8 postupujte podle [pokynů, jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
-- V systému Windows budete potřebovat [Microsoft Visual C++ Redistributable pro Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) pro vaši platformu. Mějte na paměti, že pokud tuto instalaci nainstalujete poprvé, může před pokračováním v této příručce vyžadovat restartování systému Windows.
+- V systému Windows potřebujete pro vaši platformu [redistribuovatelný microsoft visual c++ pro Visual Studio 2019.](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) Všimněte si, že instalace poprvé může vyžadovat restartování systému Windows před pokračováním v této příručce.
 
-## <a name="create-an-eclipse-project-and-install-the-speech-sdk"></a>Vytvořit projekt zatmění a nainstalovat sadu Speech SDK
+## <a name="create-an-eclipse-project-and-install-the-speech-sdk"></a>Vytvoření projektu Eclipse a instalace sady Speech SDK
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 

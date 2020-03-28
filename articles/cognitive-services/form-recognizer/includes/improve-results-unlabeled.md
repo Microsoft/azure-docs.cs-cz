@@ -6,14 +6,14 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
 ms.openlocfilehash: f0761847c3677b324ef16c5987eb9a1561dbcbe0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75379283"
 ---
-Projděte si `"confidence"` hodnoty pro každý výsledek klíč/hodnota pod uzlem `"pageResults"`. Měli byste se také podívat na výsledky spolehlivosti v uzlu `"readResults"`, který odpovídá operaci čtení textu. Spolehlivost výsledků čtení neovlivňuje spolehlivost výsledků extrakce klíč/hodnota, proto byste měli zaškrtnout obě.
-* Pokud jsou skóre spolehlivosti pro operaci čtení nízká, zkuste zlepšit kvalitu vstupních dokumentů (viz [požadavky na vstup](../overview.md#input-requirements)).
-* Pokud jsou skóre spolehlivosti pro operaci extrakce klíč/hodnota nízká, zajistěte, aby analyzované dokumenty byly stejného typu jako dokumenty používané v sadě školení. Pokud se v dokumentech v sadě školení nacházejí změny, zvažte jejich rozdělení do různých složek a školení jednoho modelu pro každou variaci.
+Zkontrolujte `"confidence"` hodnoty pro každý výsledek `"pageResults"` klíče/hodnoty pod uzlem. Měli byste se také podívat `"readResults"` na skóre spolehlivosti v uzlu, které odpovídají operaci čtení textu. Důvěra výsledků čtení nemá vliv na důvěru výsledků extrakce klíče/hodnoty, takže byste měli zkontrolovat obojí.
+* Pokud jsou skóre spolehlivosti pro operaci čtení nízké, pokuste se zlepšit kvalitu vstupních dokumentů (viz [Požadavky na vstup](../overview.md#input-requirements)).
+* Pokud jsou skóre spolehlivosti pro operaci extrakce klíč/hodnota nízká, ujistěte se, že analyzované dokumenty jsou stejného typu jako dokumenty použité v trénovací sadě. Pokud dokumenty v trénovací sadě mají varianty vzhledu, zvažte jejich rozdělení do různých složek a školení jeden model pro každou variantu.
 
-Hodnocení spolehlivosti bude záviset na vašem případu použití, ale obecně je dobrým zvykem zaměřit se na skóre 80% nebo vyšší. Pro citlivější případy, jako je čtení lékařských záznamů nebo výpisů faktur, se doporučuje skóre 100%.
+Skóre spolehlivosti, na které cílíte, bude záviset na vašem případu použití, ale obecně je vhodné cílit na skóre 80 % nebo vyšší. V případě citlivějších případů, jako je čtení lékařských záznamů nebo fakturačních výpisů, se doporučuje skóre 100 %.

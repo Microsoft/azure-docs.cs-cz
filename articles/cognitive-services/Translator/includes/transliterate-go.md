@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 5510088925b7a628417c7f3c11bb89c5ce915381
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906610"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "69906610"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Vytvořte nový projekt pro procházení pomocí oblíbených rozhraní IDE nebo editoru. Pak do svého projektu, do souboru s názvem `transliterate-text.go`, zkopírujte tento fragment kódu.
+Vytvořte nový projekt Go pomocí svého oblíbeného rozhraní IDE nebo editoru. Pak do svého projektu, do souboru s názvem `transliterate-text.go`, zkopírujte tento fragment kódu.
 
 ```go
 package main
@@ -33,9 +33,9 @@ import (
 )
 ```
 
-## <a name="create-the-main-function"></a>Vytvoření funkce main
+## <a name="create-the-main-function"></a>Vytvoření hlavní funkce
 
-Tato ukázka se pokusí přečíst klíč předplatného Translator text a koncový bod z těchto proměnných prostředí `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` : `TRANSLATOR_TEXT_ENDPOINT`a. Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscriptionKey` a `endpoint` jako řetězce a komentovat podmíněné příkazy.
+Tato ukázka se pokusí přečíst klíč předplatného Translator Text `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` a `TRANSLATOR_TEXT_ENDPOINT`koncový bod z těchto proměnných prostředí: a . Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscriptionKey` a `endpoint` jako řetězce a komentovat podmíněné příkazy.
 
 Zkopírujte do svého projektu tento kód:
 
@@ -65,9 +65,9 @@ func main() {
 }
 ```
 
-## <a name="create-a-function-to-transliterate-text"></a>Vytvoření funkce pro přepis textu
+## <a name="create-a-function-to-transliterate-text"></a>Vytvoření funkce pro translitidový text
 
-Pojďme vytvořit funkci pro přepis textu. Tato funkce bude mít jeden argument, Translator Text klíč předplatného.
+Pojďme vytvořit funkci pro translitrate textu. Tato funkce bude trvat jeden argument, váš klíč předplatného Translator Text.
 
 ```go
 func transliterate(subscriptionKey string, uri string) {
@@ -78,9 +78,9 @@ func transliterate(subscriptionKey string, uri string) {
 }
 ```
 
-Nyní vytvoříme adresu URL. Adresa URL je sestavena pomocí `Parse()` metod `Query()` a. Všimněte si, že parametry jsou přidány s `Add()` metodou. V této ukázce provádíme transkripci z japonštiny do latinky.
+Dále vytvoříme adresu URL. Adresa URL je `Parse()` sestavena pomocí metod a. `Query()` Všimněte si, že parametry `Add()` jsou přidány s metodou. V této ukázce provádíme transkripci z japonštiny do latinky.
 
-Zkopírujte tento kód do `transliterate` funkce.
+Zkopírujte tento `transliterate` kód do funkce.
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
@@ -93,11 +93,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků [najdete v článku Translator text API 3,0: Přepis](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
+> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Transkripce](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
 
-## <a name="create-a-struct-for-your-request-body"></a>Vytvoření struktury pro tělo žádosti
+## <a name="create-a-struct-for-your-request-body"></a>Vytvoření struktury pro tělo požadavku
 
-Dále vytvořte anonymní strukturu pro text žádosti a zakódovat ji jako JSON pomocí `json.Marshal()`. Přidejte tento kód do `transliterate` funkce.
+Dále vytvořte anonymní strukturu pro tělo požadavku a zakódujte jej jako JSON s `json.Marshal()`. Přidejte tento `transliterate` kód do funkce.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -109,9 +109,9 @@ body := []struct {
 b, _ := json.Marshal(body)
 ```
 
-## <a name="build-the-request"></a>Žádost o sestavení
+## <a name="build-the-request"></a>Sestavení požadavku
 
-Teď, když jste zakódovi tělo požadavku jako JSON, můžete sestavit požadavek POST a zavolat Translator Text API.
+Teď, když jste kódovali tělo požadavku jako JSON, můžete vytvořit požadavek POST a volat překladač text api.
 
 ```go
 // Build the HTTP POST request
@@ -130,11 +130,11 @@ if err != nil {
 }
 ```
 
-Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Pokud používáte předplatné služeb Cognitive Services s více `Ocp-Apim-Subscription-Region` službami, musíte také zahrnout parametry požadavku. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-## <a name="handle-and-print-the-response"></a>Zpracuje a vytiskne odpověď.
+## <a name="handle-and-print-the-response"></a>Zpracování a tisk odpovědi
 
-Přidejte tento kód do `transliterate` funkce k dekódování odpovědi JSON a pak formátujte a tiskněte výsledek.
+Přidejte tento `transliterate` kód do funkce dekódovat odpověď JSON a potom formátovat a vytisknout výsledek.
 
 ```go
 // Decode the JSON response
@@ -170,7 +170,7 @@ Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na odkaz rozhraní API pochopit vše, co můžete dělat s překladačem text api.
 
 > [!div class="nextstepaction"]
-> [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

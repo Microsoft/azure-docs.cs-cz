@@ -1,30 +1,30 @@
 ---
-title: 'Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Java'
+title: 'Úvodní příručka: Navrhněte vyhledávací dotazy pomocí rozhraní API PRO automatické návrhy služby Bing a jazyka Java'
 titleSuffix: Azure Cognitive Services
-description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
+description: Přečtěte si, jak rychle začít navrhovat hledané termíny v reálném čase pomocí rozhraní API automatického návrhu Bingu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 1593d4079cf7f50d5473f24ecf57351c9d7786e9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b3f279ea50e9923e63f7d6090f4dbaca939eb16c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384913"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238968"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Java
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Úvodní příručka: Navrhněte vyhledávací dotazy pomocí rozhraní API PRO automatické návrhy služby Bing a jazyka Java
 
 
-Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automatické návrhy Bingu a získat odpověď JSON. Tato jednoduchá aplikace Java pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java) .
+Pomocí tohoto rychlého startu můžete začít volat do rozhraní API automatického návrhu Bingu a získat odpověď JSON. Tato jednoduchá java aplikace odešle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro vyhledávání. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Sada Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 * [Knihovna Gson](https://github.com/google/gson)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
@@ -44,7 +44,7 @@ Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automat
     import com.google.gson.JsonParser;
     ```
 
-2. Vytvořte proměnné pro svůj klíč předplatného, hostitele rozhraní API a cestu, [kód na trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a vyhledávací dotaz. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte proměnné pro klíč předplatného, hostitele rozhraní API a cestu, [kód trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a vyhledávací dotaz. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -57,7 +57,7 @@ Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automat
 
 ## <a name="format-the-response"></a>Formátování odpovědi
 
-Vytvořte metodu s názvem `prettify()` a naformátujte odpověď vrácenou z rozhraní API pro video Bing. Použijte `JsonParser` knihovny gson k převzetí řetězce JSON a převeďte jej na objekt. Pak použijte `GsonBuilder()` a `toJson()` k vytvoření formátovaného řetězce.
+Vytvořte metodu s názvem `prettify()` pro formátování odpovědi vrácené z rozhraní API bingu videa. Pomocí knihovny `JsonParser` Gson vezměte řetězec JSON a převeďte jej na objekt. Pak `GsonBuilder()` použijte `toJson()` a vytvořte formátovaný řetězec.
 
 ```java
 // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -69,11 +69,11 @@ public static String prettify(String json_text) {
 }
 ```
 
-## <a name="construct-and-send-the-search-request"></a>Sestavit a odeslat požadavek hledání
+## <a name="construct-and-send-the-search-request"></a>Vytvoření a odeslání požadavku na vyhledávání
 
-1. Vytvořte novou metodu s názvem `get_suggestions()` a proveďte následující kroky:
+1. Vytvořte novou `get_suggestions()` metodu s názvem a proveďte následující kroky:
 
-   1. Vytvořte adresu URL pro vaši žádost kombinací hostitele rozhraní API, cesty a kódování vyhledávacího dotazu. Před připojením dotazu nezapomeňte dotaz zakódovat. Vytvořte řetězec parametrů pro dotaz připojením kódu na trhu k parametru `mkt=` a dotazem na parametr `q=`.
+   1. vytvořte adresu URL pro váš požadavek kombinací hostitele rozhraní API, cesty a kódování vyhledávacího dotazu. Nezapomeňte dotaz před připojením zakódovat url. Vytvořte řetězec parametrů pro dotaz připojením kódu `mkt=` trhu k parametru `q=` a dotazu k parametru.
     
       ```java
   
@@ -84,7 +84,7 @@ public static String prettify(String json_text) {
       }
       ```
     
-   2. Vytvořte novou adresu URL pro požadavek s hostitelem rozhraní API, cestou a parametry vytvořenými výše. 
+   2. Vytvořte novou adresu URL pro požadavek pomocí hostitele rozhraní API, cesty a výše vytvořených parametrů. 
     
        ```java
        //...
@@ -92,7 +92,7 @@ public static String prettify(String json_text) {
        //...
        ```
     
-   3. Vytvořte objekt `HttpsURLConnection` a pomocí `openConnection()` vytvořte připojení. Nastavte metodu Request na `GET`a přidejte svůj klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key`.
+   3. Vytvořte `HttpsURLConnection` objekt a `openConnection()` použijte k vytvoření připojení. Nastavte metodu `GET`požadavku na aplikaci a `Ocp-Apim-Subscription-Key` přidejte klíč předplatného do záhlaví.
 
       ```java
        //...
@@ -103,7 +103,7 @@ public static String prettify(String json_text) {
        //...
       ```
 
-   4. Přečtěte si odpověď rozhraní API na `StringBuilder`. Po zachycení odpovědi zavřete `InputStreamReader` Stream a vraťte odpověď.
+   4. Přečtěte si v `StringBuilder`odpovědi rozhraní API na . Po zachycení odpovědi zavřete `InputStreamReader` datový proud a vraťte odpověď.
 
        ```java
        //...
@@ -119,7 +119,7 @@ public static String prettify(String json_text) {
        return response.toString();
        ```
 
-2. V hlavní funkci aplikace zavolejte `get_suggestions()`a vytiskněte odpověď pomocí `prettify()`.
+2. V hlavní funkci aplikace volejte `get_suggestions()`a vytiskněte odpověď pomocí . `prettify()`
     
     ```java
     public static void main(String[] args) {
@@ -206,5 +206,5 @@ public static String prettify(String json_text) {
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové webové aplikace](../tutorials/autosuggest.md)
 
-- [Co jsou automatické návrhy Bingu?](../get-suggested-search-terms.md)
+- [Co jsou Automatické návrhy Bingu?](../get-suggested-search-terms.md)
 - [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

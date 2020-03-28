@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Převod řeči na řeč, Python-Speech Service'
+title: 'Úvodní příručka: Překlad řeči na řeč, Python - Služba řeči'
 description: Bude doplněno
 services: cognitive-services
 author: chlandsi
@@ -10,18 +10,18 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: chlandsi
 ms.openlocfilehash: e869a6581ac29ac234c075d258b59dbd45045ee2
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925738"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete, nezapomeňte:
+Než začnete, ujistěte se, že:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=python)
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
@@ -78,17 +78,17 @@ Než začnete, nezapomeňte:
 
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](../../../../regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
-1. Uložte změny, které jste udělali v `quickstart.py`.
+1. Uložte změny, které `quickstart.py`jste provedli.
 
-## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
+## <a name="build-and-run-your-app"></a>Vytvoření a spuštění aplikace
 
-1. Spusťte ukázku z konzoly nebo v integrovaném vývojovém prostředí:
+1. Spusťte ukázku z konzoly nebo v ide:
 
    ```
    python quickstart.py
    ```
 
-2. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas ke službě rozpoznávání řeči, která překládá a transcribes text (v tomto případě do němčiny). Služba rozpoznávání řeči pak pošle text zpátky do aplikace k zobrazení.
+2. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš projev do služby Speech, která překládá a přepisuje na text (v tomto případě do němčiny). Služba Řeč pak odešle text zpět do aplikace pro zobrazení.
 
    ````
    Say something...

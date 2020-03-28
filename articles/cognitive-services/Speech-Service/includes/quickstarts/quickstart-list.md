@@ -1,15 +1,16 @@
 ---
-ms.openlocfilehash: 1e329e71298d5fc357f0a4cb7562883bfb742c6b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 1bc7d5e4b895f451b1680408f6cd7d17d76019e7
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73988919"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80243621"
 ---
-- [Rychlý Start: rozpoznávání řeči z mikrofonu](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone.md)
-- [Rychlý Start: rozpoznávání řeči ze souboru](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-file.md)
-- [Rychlý Start: rozpoznávání řeči z objektu blob Azure](~/articles/cognitive-services/speech-service/quickstarts/from-blob.md)
-- [Rychlý Start: Převod řeči na text](~/articles/cognitive-services/speech-service/quickstarts/translate-speech-to-text.md)
-- [Rychlý Start: syntetizace textu na zvukové zařízení](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech.md)
-- [Rychlý Start: syntetizace textu do souboru](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-audio-file.md)
-- [Rychlý Start: rozpoznávání záměrů](~/articles/cognitive-services/speech-service/quickstarts/intent-recognition.md)
+- [Úvodní příručka: Rozpoznání řeči z mikrofonu](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone.md)
+- [Úvodní příručka: Rozpoznání řeči ze souboru](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-file.md)
+- [Úvodní příručka: Rozpoznání řeči z objektu blob Azure](~/articles/cognitive-services/speech-service/quickstarts/from-blob.md)
+- [Úvodní příručka: Překlad převodu řeči na text](~/articles/cognitive-services/speech-service/quickstarts/translate-speech-to-text.md)
+- [Úvodní příručka: Syntetizovat text do zvukového zařízení](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech.md)
+- [Úvodní příručka: Syntetizovat text do souboru](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-audio-file.md)
+- [Úvodní příručka: Rozpoznání záměrů](~/articles/cognitive-services/speech-service/quickstarts/intent-recognition.md)
+- [Úvodní příručka: Vytvoření vlastního hlasového asistenta](~/articles/cognitive-services/speech-service/quickstarts/voice-assistants.md)

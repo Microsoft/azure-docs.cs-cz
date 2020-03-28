@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: použití klientské knihovny Vyhledávání entit Bingu'
+title: 'Úvodní příručka: Použití klientské knihovny hledání entit Bingu'
 titleSuffix: Azure Cognitive Services
-description: Rozhraní Vyhledávání entit API nabízí klientské knihovny, které usnadňují integraci vyhledávacích funkcí do vašich aplikací. V tomto rychlém startu můžete začít odesílat žádosti o vyhledávání a vracet výsledky.
+description: Rozhraní API pro vyhledávání entit nabízí klientské knihovny, které usnadňují integraci funkcí vyhledávání do vašich aplikací. Pomocí tohoto rychlého startu můžete začít odesílat požadavky na hledání a získat zpět výsledky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 03/06/2020
 ms.author: aahi
 ms.openlocfilehash: 206d3514e231fdedc6c13592da0c51d2f93bbe84
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79136750"
 ---
-# <a name="quickstart-use-the-bing-entity-search-client-library"></a>Rychlý Start: použití klientské knihovny Vyhledávání entit Bingu
+# <a name="quickstart-use-the-bing-entity-search-client-library"></a>Úvodní příručka: Použití klientské knihovny hledání entit Bingu
 
 ::: zone pivot="programming-language-csharp"
 

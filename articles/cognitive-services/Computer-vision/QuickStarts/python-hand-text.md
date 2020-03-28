@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Počítačové zpracování obrazu 2,0 a 2,1 – extrakce vytištěných a ručně psaných textů v jazyce Python'
+title: 'Úvodní příručka: Computer Vision 2.0 a 2.1 - Extrahovat tištěný a ručně psaný text - REST, Python'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu extrahujete vytištěný a rukou psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu v Pythonu.
+description: V tomto rychlém startu extrahovat tištěný a ručně psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu s Pythonem.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2f0b8cac2cc26b2fab7255a7e7587985a5425485
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: fafc5234da3e6dfecdae2c8b2e2ba80cbed20b5c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566195"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244797"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-python"></a>Rychlý Start: extrakce vytištěného textu a ručního textu pomocí Počítačové zpracování obrazu 2,0 a 2,1 REST API a Pythonu
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-python"></a>Úvodní příručka: Extrakce tištěného a ručně psaného textu pomocí rozhraní API PRO ZOBRAZENÍ počítače 2.0 a 2.1 a Pythonu
 
-V tomto rychlém startu budete z obrázku extrahovat vytištěný nebo ručně psaný text pomocí REST API Počítačové zpracování obrazu. Pomocí metod [čtení a čtení dávkových](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) [operací](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) Batch můžete detekovat text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je strojově čitelný. Rozhraní API určí, který model rozpoznávání se má použít pro každý řádek textu, takže podporuje obrázky s tištěným i psaným textem.
+V tomto rychlém startu extrahnete tištěný nebo ručně psaný text z obrázku pomocí rozhraní API REKONČOVÁNÍ Počítače. Pomocí metod [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) and Read [Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) můžete detekovat text v obraze a extrahovat rozpoznané znaky do strojově čitelného datového proudu znaků. Rozhraní API určí, který model rozpoznávání se má použít pro každý řádek textu, takže podporuje obrázky s vytištěným i ručně psaným textem.
 
-V porovnání s Počítačové zpracování obrazu 2,0 a 2,1 Počítačové zpracování obrazu 3,0 Public Preview poskytuje:
+Ve srovnání s počítačovým viděním 2.0 a 2.1 poskytuje verze Computer Vision 3.0 Public Preview:
 
 * ještě lepší přesnost
 * změněný výstupní formát
-* hodnocení spolehlivosti pro slova
-* Podpora jazyků španělštiny i angličtiny s parametrem dalšího jazyka
+* skóre spolehlivosti pro slova
+* podpora španělského i anglického jazyka s dodatečným jazykovým parametrem
 
 #### <a name="version-2"></a>[Verze 2](#tab/version-2)
 
 > [!IMPORTANT]
-> Metoda [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) se spouští asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho metoda čtení dávky vrátí identifikátor URI v hodnotě pole hlavičky odpovědi `Operation-Location`. Pak můžete zavolat tento identifikátor URI, který představuje rozhraní API [pro výsledek operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , pro kontrolu stavu a vrácení výsledků volání metody čtení dávky.
+> Metoda [dávkového čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) běží asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho vrátí metoda Dávkové čtení identifikátor `Operation-Location` URI v hodnotě pole hlavičky odpovědi. Potom můžete volat tento identifikátor URI, který představuje rozhraní [API výsledek operace čtení,](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) jak zkontrolovat stav a vrátit výsledky volání metody dávkového čtení.
 
-#### <a name="version-3-public-preview"></a>[Verze 3 (Public Preview)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Verze 3 (Veřejná verze)](#tab/version-3)
 
 > [!IMPORTANT]
-> Metoda [čtení dávky](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) se spouští asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho metoda čtení dávky vrátí identifikátor URI v hodnotě pole hlavičky odpovědi `Operation-Location`. Pak můžete zavolat tento identifikátor URI, který představuje rozhraní API [pro výsledek operace čtení](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) , pro kontrolu stavu a vrácení výsledků volání metody čtení dávky.
+> Metoda [dávkového čtení](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) běží asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho vrátí metoda Dávkové čtení identifikátor `Operation-Location` URI v hodnotě pole hlavičky odpovědi. Potom můžete volat tento identifikátor URI, který představuje rozhraní [API výsledek operace čtení,](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) jak zkontrolovat stav a vrátit výsledky volání metody dávkového čtení.
 
 ---
 
 Tento rychlý start můžete spustit jako podrobný návod pomocí Jupyter Notebooku na webu [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
 
-[![tlačítka Spustit pořadač](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![Tlačítko spouštění Pořadače](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) než začnete.
 
-- Pokud chcete spustit tuto ukázku místně, musíte mít nainstalovaný [Python](https://www.python.org/downloads/).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT`v uvedeném pořadí.
+- Pokud chcete spustit tuto ukázku v místním prostředí, musíte mít nainstalovaný jazyk [Python](https://www.python.org/downloads/).
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Potom [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec koncového `COMPUTER_VISION_SUBSCRIPTION_KEY` klíče `COMPUTER_VISION_ENDPOINT`a služby s názvem a , resp.
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
@@ -59,12 +59,14 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
 1. Zkopírujte do textového editoru následující kód.
-1. Volitelně můžete hodnotu `image_url` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat text.
-1. Uložte kód jako soubor s příponou `.py`. například `get-text.py`.
+1. Volitelně můžete nahradit `image_url` hodnotu adresy URL jiného obrázku, ze kterého chcete extrahovat text.
+1. Uložte kód jako soubor s příponou `.py`. Například, `get-text.py`.
 1. Otevřete okno příkazového řádku.
-1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. například `python get-text.py`.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python get-text.py`.
 
 ```python
+import os
+import sys
 import requests
 import time
 # If you are using a Jupyter notebook, uncomment the following line.
@@ -134,15 +136,15 @@ for polygon in polygons:
     plt.text(vertices[0][0], vertices[0][1], text, fontsize=20, va="top")
 ```
 
-#### <a name="version-3-public-preview"></a>[Verze 3 (Public Preview)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Verze 3 (Veřejná verze)](#tab/version-3)
 
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
 1. Zkopírujte do textového editoru následující kód.
-1. Volitelně můžete hodnotu `image_url` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat text.
-1. Uložte kód jako soubor s příponou `.py`. například `get-text.py`.
+1. Volitelně můžete nahradit `image_url` hodnotu adresy URL jiného obrázku, ze kterého chcete extrahovat text.
+1. Uložte kód jako soubor s příponou `.py`. Například, `get-text.py`.
 1. Otevřete okno příkazového řádku.
-1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. například `python get-text.py`.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python get-text.py`.
 
 ```python
 import json
@@ -516,7 +518,7 @@ plt.show()
 }
 ```
 
-#### <a name="version-3-public-preview"></a>[Verze 3 (Public Preview)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Verze 3 (Veřejná verze)](#tab/version-3)
 
 ```json
 {

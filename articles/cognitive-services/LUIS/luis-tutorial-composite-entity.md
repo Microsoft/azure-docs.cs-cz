@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: kurz složených entit – LUIS'
+title: 'Kurz: Kurz složené entity – LUIS'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
+description: V tomto kurzu přidejte složenou entitu do svazku extrahovaných dat různých typů do jedné obsahující entity. Sdružováním dat může klientská aplikace snadno extrahovat související data v různých datových typech.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,28 +12,28 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75447951"
 ---
-# <a name="tutorial-group-and-extract-related-data"></a>Kurz: seskupení a extrakce souvisejících dat
-V tomto kurzu přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
+# <a name="tutorial-group-and-extract-related-data"></a>Kurz: Seskupení a extrakce souvisejících dat
+V tomto kurzu přidejte složenou entitu do svazku extrahovaných dat různých typů do jedné obsahující entity. Sdružováním dat může klientská aplikace snadno extrahovat související data v různých datových typech.
 
-Účelem složený entity je nadřazená entita kategorie pro seskupení souvisejících entit. Informace o existuje jako samostatný entity před vytvořením složeného.
+Účelem složené entity je seskupit související entity do entity nadřazené kategorie. Informace existují jako samostatné entity před vytvořením složené.
 
-Složený entita je vhodný pro tento typ dat, protože data:
+Složená entita je vhodná pro tento typ dat, protože data:
 
-* Se vztahují k sobě navzájem.
-* Využijte celou řadu typů entit.
+* Jsou spolu příbuzní.
+* Použijte různé typy entit.
 * Musí být seskupeny a zpracovány klientskou aplikací jako jediná informace.
 
-**V tomto kurzu se naučíte:**
+**V tomto kurzu se dozvíte, jak:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Importovat ukázkovou aplikaci
+> * Importovat ukázkové aplikace
 > * Vytvořit záměr
 > * Přidání složené entity
 > * Trénování
@@ -42,85 +42,85 @@ Složený entita je vhodný pro tento typ dat, protože data:
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Importovat ukázkovou aplikaci
+## <a name="import-example-app"></a>Importovat ukázkové aplikace
 
 1.  Stáhněte a uložte [soubor JSON aplikace](
-https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) z kurzu seznam entit.
+https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) z kurzu entity Seznam.
 
-2. Importujte JSON do nové aplikace pomocí [portálu Luis](https://www.luis.ai).
+2. Importujte JSON do nové aplikace pomocí [portálu LUIS](https://www.luis.ai).
 
 3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `composite`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
 ## <a name="composite-entity"></a>Složená entita
 
-V této aplikaci je název oddělení definovaný v entitě seznam **oddělení** a obsahuje synonyma.
+V této aplikaci je název oddělení definován v entitě seznamu **oddělení** a zahrnuje synonyma.
 
-Záměr **TransferEmployeeToDepartment** má jako příklad projevy, jak požádat o zaměstnance, aby se přesunul do nového oddělení.
+**PřevodEmployeeToDepartment** záměr má příklad projevy požádat zaměstnance přesunout do nového oddělení.
 
-Příklad projevy pro tento záměr zahrnuje:
+Příklad projevy pro tento záměr patří:
 
 |Ukázkové promluvy|
 |--|
-|přesunout Jan W. Novák do účetního oddělení|
-|přenos Jill Novotný z na R & D|
+|přesunout Johna W. Smithe do účetního oddělení|
+|převod Jill Jones z R&D|
 
-Požadavek Move by měl obsahovat název oddělení a jméno zaměstnance.
+Žádost o přesunutí by měla obsahovat název oddělení a jméno zaměstnance.
 
-## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>Přidejte předem vytvořenou entitu Person, která bude pomáhat s extrakcí běžných datových typů.
+## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>Přidání předem sestavené entity PersonName, která vám pomůže s běžným extrakcí datového typu
 
 Služba LUIS poskytuje několik předem připravených entit pro extrakci běžných dat.
 
-1. V horním navigačním panelu vyberte **sestavovat** a pak v levé navigační nabídce vyberte **entity** .
+1. Z horní navigace vyberte **Build** a pak v levé navigační nabídce vyberte **Entity.**
 
 1. Vyberte tlačítko **Manage prebuilt entity** (Spravovat předem připravenou entitu).
 
-1. V seznamu předem vytvořených entit vyberte **[Person](luis-reference-prebuilt-person.md)** a potom vyberte **Hotovo**.
+1. Vyberte **[PersonName](luis-reference-prebuilt-person.md)** ze seznamu předem vytvořených entit a vyberte **Hotovo**.
 
     ![Snímek obrazovky s vybranou možností number (číslo) v dialogovém okně s předem připravenými entitami](./media/luis-tutorial-composite-entity/add-personname-prebuilt-entity.png)
 
-    Tato entita vám pomůže přidat rozpoznávání názvů ke klientské aplikaci.
+    Tato entita vám pomůže přidat rozpoznávání názvů do klientské aplikace.
 
-## <a name="create-composite-entity-from-example-utterances"></a>Vytvoření složené entity z příkladu projevy
+## <a name="create-composite-entity-from-example-utterances"></a>Vytvoření složené entity z ukázkových promluv
 
 1. Vyberte **Intents** (Záměry) v levé navigaci.
 
-1. V seznamu záměry vyberte **TransferEmployeeToDepartment** .
+1. V seznamu záměrů vyberte **Možnost Převéstzaměstnancedooddělení.**
 
-1. V `place John Jackson in engineering`utterance vyberte entitu Person, `John Jackson`a pak v místní nabídce vyberte v rozevíracím seznamu možnost **zalamovat ze složené entity** pro následující utterance.
+1. V utterance `place John Jackson in engineering`vyberte entitu `John Jackson`personName a pak **vyberte zalamovat ve složené entitě** v seznamu rozbalovacích nabídek pro následující utterance.
 
-    ![Snímek obrazovky s výběrem složeného balení v dialogovém okně rozevíracího seznamu](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
+    ![Snímek obrazovky s výběrem obtékání složených v rozevíracím dialogovém okně](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
-1. Vyberte poslední entita okamžitě `engineering` v utterance. Panel zelené vykreslením v rámci vybrané slova označující složený entity. V rozbalovací nabídce, zadejte název složený `TransferEmployeeInfo` vyberte ENTER.
+1. Pak okamžitě vyberte `engineering` poslední entitu v utterance. Pod vybranými slovy označujícími složenou entitu je nakreslen zelený pruh. V rozbalovací nabídce zadejte `TransferEmployeeInfo` složený název a vyberte enter.
 
-    ![Snímek obrazovky s zadáním složeného názvu v rozevíracím seznamu](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
+    ![Snímek obrazovky s zadáním složeného názvu v rozevíracím dialogovém okně](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-1. V poli **jaký typ entity chcete vytvořit?** všechna požadovaná pole jsou v seznamu: `personName` a `Department`. Vyberte **Done** (Hotovo). Všimněte si, že předem sestavená entita, person, byla do složené entity přidána. Pokud jste mohli předem připravených entit zobrazí mezi počáteční a koncové tokeny složený entity, složený entity musí obsahovat předem připravených entit. Pokud předem připravených entit nejsou zahrnuty, složený entity není správně předpovědět, ale je každý jednotlivý prvek.
+1. **V poli Jaký typ entity chcete vytvořit?** `personName` `Department` Vyberte **Done** (Hotovo). Všimněte si, že předem sestavená entita, personName, byla přidána do složené entity. Pokud byste mohli mít předem sestavenou entitu mezi počátečními a koncovými tokeny složené entity, musí složená entita obsahovat tyto předem sestavené entity. Pokud předem sestavené entity nejsou zahrnuty, složená entita není správně předpovězena, ale každý jednotlivý prvek je.
 
-    ![Snímek obrazovky s zadáním složeného názvu v rozevíracím seznamu](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
+    ![Snímek obrazovky s zadáním složeného názvu v rozevíracím dialogovém okně](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
-## <a name="label-example-utterances-with-composite-entity"></a>Projevy příklad popisku s složený entity
+## <a name="label-example-utterances-with-composite-entity"></a>Popiskové příkladové projevy s složenou entitou
 
-1. V každé utterance příklad vyberte entitu úplně vlevo, by měla být v složeného. Potom vyberte **zabalit do složeného entity**.
+1. V každém příkladu utterance vyberte entitu nejvíce vlevo, která by měla být ve složeném. Pak vyberte **Obtékat ve složené entitě**.
 
-1. Vyberte poslední slovo v složené entitě a potom v místní nabídce vyberte **TransferEmployeeInfo** .
+1. Vyberte poslední slovo ve složené entitě a z rozbalovací nabídky vyberte **Možnost PřevéstZaměstnanceInfo.**
 
-1. Ověřte, že všechny projevy v záměr jsou označeny složený entity.
+1. Ověřte, zda jsou všechny projevy v záměru označeny složenou entitou.
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Výuka aplikace, aby se mohly testovat změny záměru
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trénování aplikace tak, aby změny záměru mohly být testovány
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikujte aplikaci, aby se Queryable z koncového bodu vyškolený model.
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikování aplikace tak, aby trénovaný model byl dotazovatelný z koncového bodu
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání záměru a předpovědi entit z koncového bodu
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání záměru a predikce entit z koncového bodu
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Na konec adresy URL zadejte `Move Jill Jones to DevOps`. Poslední parametr querystring `q`, dotaz utterance.
+2. Na konec adresy URL zadejte `Move Jill Jones to DevOps`. Poslední parametr řetězce dotazu je `q`, což je dotaz promluvy.
 
-    Ověřte, zda že je správně extrahován složeného je tento test, test může obsahovat buď existující utterance ukázka nebo nové utterance. Dobrá se zahrnou všechny podřízené entity složený entity.
+    Vzhledem k tomu, že tento test je ověřit složený je extrahován správně, test může buď existující ukázkový utterance nebo nové utterance. Dobrým testem je zahrnout všechny podřízené entity ve složené entitě.
 
     ```json
     {
@@ -184,7 +184,7 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
     }
     ```
 
-   Tato utterance vrátí pole složený entity. Každá entita je uveden typ a hodnotu. Najít další přesnosti pro každé podřízené entity, použijte kombinaci typu a hodnoty z položky složený pole Najít odpovídající položku v poli entity.
+   Tato utterance vrátí pole složené entity. Každá entita má typ a hodnotu. Chcete-li najít větší přesnost pro každou podřízenou entitu, použijte kombinaci typu a hodnoty z položky složeného pole k nalezení odpovídající položky v poli entit.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -192,16 +192,16 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 
 ## <a name="related-information"></a>Související informace
 
-* [Kurz pro výpis entit](luis-quickstart-intents-only.md)
-* Koncepční informace o [složených entitách](luis-concept-entity-types.md)
-* [Postup výuky](luis-how-to-train.md)
+* [Kurz entity seznamu](luis-quickstart-intents-only.md)
+* Rámcové informace o složené [entitě](luis-concept-entity-types.md)
+* [Jak trénovat](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
-* [Testování na portálu LUIS](luis-interactive-test.md)
+* [Jak testovat na portálu LUIS](luis-interactive-test.md)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu vytvořili složený entity k zapouzdření existující entity. To umožňuje klientské aplikaci najít skupinu souvisejících dat v různých datových typů, chcete-li pokračovat v konverzaci. Klientská aplikace pro tuto aplikaci lidských zdrojů může požádat, jaký den a čas přechodu musí začínat a končit. Může se také zeptat na další logistiku přesunutí, jako je třeba fyzický telefon.
+Tento kurz vytvořil složenou entitu pro zapouzdření existujících entit. To umožňuje klientské aplikaci najít skupinu souvisejících dat v různých datových typech pokračovat v konverzaci. Klientská aplikace pro tuto aplikaci lidských zdrojů se může zeptat, jaký den a čas musí přesun začít a skončit. Mohlo by se také zeptat na další logistiku pohybu, jako je fyzický telefon.
 
 > [!div class="nextstepaction"]
-> [Opravte nejistotu předpovědi kontrolou Endpoint projevy](luis-tutorial-review-endpoint-utterances.md)
+> [Oprava nejistých předpovědí kontrolou promluv koncového bodu](luis-tutorial-review-endpoint-utterances.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: vytvoření projektu klasifikace obrázků s Custom Vision SDK pro Node. js'
+title: 'Úvodní příručka: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision SDK pro soubor Node.js'
 titleSuffix: Azure Cognitive Services
-description: Vytvořte projekt, přidejte značky, nahrajte obrázky, výukujte projekt a vytvořte předpovědi pomocí Node. js SDK.
+description: Vytvořte projekt, přidejte značky, nahrajte obrázky, trénujte projekt a proveďte předpověď pomocí sady SDK Node.js.
 services: cognitive-services
 author: areddish
 manager: daauld
@@ -10,26 +10,26 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 7490e1261262ff26eec48a691e22ec177954dcf3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f1c0d8f72fe59ff9a8c0fdba86d97ea588a9a808
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169454"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366623"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Rychlý Start: vytvoření projektu klasifikace Image pomocí Custom Vision Node. js SDK
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Úvodní příručka: Vytvoření projektu klasifikace obrázků pomocí sady SDK Custom Vision Node.js
 
-V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s Node. js k sestavení modelu klasifikace imagí. Po vytvoření můžete přidat značky, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro sestavení vlastní aplikace Node. js. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](getting-started-build-a-classifier.md).
+Tento článek ukazuje, jak začít používat vlastní vize SDK s Node.js k vytvoření modelu klasifikace bitových obrázků. Po jeho vytvoření můžete přidat značky, nahrát obrázky, trénovat projekt, získat adresu URL koncového bodu publikované předpovědi projektu a použít koncový bod k programovému testování bitové kopie. Tento příklad použijte jako šablonu pro vytváření vlastní aplikace Node.js. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](getting-started-build-a-classifier.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Je nainstalovaný [Node. js 8](https://www.nodejs.org/en/download/) nebo novější.
-- [npm](https://www.npmjs.com/) je nainstalovaný.
+- [Node.js 8](https://www.nodejs.org/en/download/) nebo novější nainstalován.
+- [npm](https://www.npmjs.com/) nainstalován.
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>Instalace sady Custom Vision SDK
 
-Chcete-li nainstalovat sadu SDK služby Custom Vision Service pro Node. js, spusťte v prostředí PowerShell následující příkaz:
+Chcete-li nainstalovat sadu SDK služby Vlastní vize pro soubor Node.js, spusťte v prostředí PowerShell následující příkaz:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -42,17 +42,17 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ## <a name="add-the-code"></a>Přidání kódu
 
-V upřednostňovaném adresáři projektu vytvořte nový soubor s názvem *Sample. js* .
+Vytvořte nový soubor s názvem *sample.js* v preferovaném adresáři projektu.
 
 ### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
-Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do příslušných definic vložte klíče předplatného a nastavte hodnotu cesty sampleDataRoot na cestu ke složce imagí. Ujistěte se, že hodnota koncového bodu odpovídá koncovým bodům školení a předpovědi, které jste vytvořili v [Customvision.AI](https://www.customvision.ai/). Všimněte si, že rozdíl mezi vytvořením projektu detekce objektu a klasifikace obrázků je doména zadaná ve volání **createProject** .
+Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Vložte klíče předplatného do příslušných definic a nastavte hodnotu cesty sampleDataRoot na cestu složky obrázku. Ujistěte se, že hodnota koncového bodu odpovídá koncovým bodům školení a předpovědi, které jste vytvořili v [Customvision.ai](https://www.customvision.ai/). Všimněte si, že rozdíl mezi vytvořením objektu detekce a image klasifikace projektu je doména zadaná ve volání **createProject.**
 
 ```javascript
 const util = require('util');
 const fs = require('fs');
-const TrainingApiClient = require("@azure/cognitiveservices-customvision-training");
-const PredictionApiClient = require("@azure/cognitiveservices-customvision-prediction");
+const TrainingApi = require("@azure/cognitiveservices-customvision-training");
+const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");
 
 const setTimeoutPromise = util.promisify(setTimeout);
 
@@ -65,7 +65,7 @@ const endPoint = "https://<my-resource-name>.cognitiveservices.azure.com/"
 
 const publishIterationName = "classifyModel";
 
-const trainer = new TrainingApiClient(trainingKey, endPoint);
+const trainer = new TrainingApi.TrainingAPIClient(trainingKey, endPoint);
 
 (async () => {
     console.log("Creating project...");
@@ -74,19 +74,19 @@ const trainer = new TrainingApiClient(trainingKey, endPoint);
 
 ### <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
-Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující kód na konec souboru *Sample. js*:
+Chcete-li do projektu vytvořit značky klasifikace, přidejte na konec *souboru sample.js*následující kód :
 
 ```javascript
 const hemlockTag = await trainer.createTag(sampleProject.id, "Hemlock");
 const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
 ```
 
-### <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
+### <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
 
-Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód nahraje jednotlivé obrázky s odpovídající značkou. Do jedné dávky můžete nahrát až 64 imagí.
+Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód nahraje jednotlivé obrázky s odpovídající značkou. V jedné dávce můžete nahrát až 64 obrázků.
 
 > [!NOTE]
-> Budete muset změnit *sampleDataRoot* na cestu k obrázkům na základě toho, kam jste dříve Cognitive Services stáhli projekt Samples Node. js SDK.
+> Budete muset změnit *sampleDataRoot* na cestu k bitkám na základě toho, kde jste stáhli projekt Cognitive Services Node.js SDK Samples dříve.
 
 ```javascript
 console.log("Adding images...");
@@ -107,9 +107,9 @@ japaneseCherryFiles.forEach(file => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-classifier-and-publish"></a>Výuka třídění a publikování
+### <a name="train-the-classifier-and-publish"></a>Trénování třídění a publikování
 
-Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
+Tento kód vytvoří první iteraci modelu předpověď a potom publikuje tuto iteraci do koncového bodu předpověď. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není k dispozici v koncovém bodu předpověď, dokud je publikován.
 
 ```javascript
 console.log("Training...");
@@ -128,12 +128,12 @@ console.log("Training status: " + trainingIteration.status);
 await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získání a použití publikované iterace na koncovém bodu předpovědi
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získat a použít publikovanou iteraci v koncovém bodě předpověď
 
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
 ```javascript
-    const predictor = new PredictionApiClient(predictionKey, endPoint);
+    const predictor = new PredictionApi.PredictionAPIClient(predictionKey, endPoint);
     const testFile = fs.readFileSync(`${sampleDataRoot}/Test/test_image.jpg`);
 
     const results = await predictor.classifyImage(sampleProject.id, publishIterationName, testFile);
@@ -148,7 +148,7 @@ Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpo
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte *Sample. js*.
+Spusťte *soubor sample.js*.
 
 ```shell
 node sample.js
@@ -170,7 +170,7 @@ Results:
          Japanese Cherry: 0.01%
 ```
 
-Pak můžete ověřit správné označení testovacího obrázku (ve složce v **<adresa_URL_základního_obrázku>/Images/Test/** ). Můžete se také vrátit na [web služby Custom Vision](https://customvision.ai) a zobrazit aktuální stav nově vytvořeného projektu.
+Pak můžete ověřit správné označení testovacího obrázku (ve složce v **<adresa_URL_základního_obrázku>/Images/Test/**). Můžete se také vrátit na [web služby Custom Vision](https://customvision.ai) a zobrazit aktuální stav nově vytvořeného projektu.
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 

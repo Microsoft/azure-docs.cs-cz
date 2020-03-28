@@ -6,24 +6,24 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
 ms.openlocfilehash: 11783f8fac147e6fb2cf371ee1a588cf318a5e9c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75379420"
 ---
-Nástroj pro rozpoznávání formulářů funguje na vstupních dokumentech, které splňují tyto požadavky:
+Nástroj pro rozpoznávání formulářů pracuje na vstupních dokumentech, které splňují tyto požadavky:
 
-* Formát musí být JPG, PNG, PDF (text nebo naskenovaný) nebo TIFF. Soubory PDF vložené jako text jsou nejlepší, protože v extrakci znaků a umístění není možnost chyba.
-* Pokud jsou vaše soubory PDF zamčené heslem, musíte zámek před odesláním odebrat.
-* Dokumenty PDF a TIFF musí mít 200 nebo méně stránek a celková velikost sady školicích dat musí být 500 nebo méně.
-* V případě obrázků musí být rozměry v rozsahu 600 × 100 pixelů až 4200 × 4200 pixelů.
-* Pokud je naskenovaný z papírových dokumentů, formuláře by měly být vysoce kvalitní kontroly.
+* Formát musí být JPG, PNG, PDF (text nebo naskenovaný) nebo TIFF. Textově vložené SOUBORY PDF jsou nejlepší, protože neexistuje žádná možnost chyby v extrakci znaků a umístění.
+* Pokud jsou soubory PDF uzamčeny heslem, musíte zámek před odesláním odebrat.
+* Dokumenty PDF a TIFF musí mít přibližně 200 stran a celková velikost trénovací datové sady musí být 500 stran nebo méně.
+* U obrazů musí být rozměry mezi 600 x 100 pixelů a 4200 x 4200 pixelů.
+* Pokud jsou formuláře skenovány z papírových dokumentů, měly by být vysoce kvalitní.
 * Text musí používat latinku (anglické znaky).
-* V případě bezdohledového učení (bez popisků dat) musí data obsahovat klíče a hodnoty.
-* U bezdohledového učení (bez popisků dat) se klíče musí zobrazit nad nebo nalevo od hodnot. nemůžou se zobrazit níže nebo vpravo.
+* Pro učení bez dozoru (bez označených dat) musí data obsahovat klíče a hodnoty.
+* Pro učení bez dozoru (bez označených dat) musí být klávesy uvedeny nad nebo vlevo od hodnot; nemohou se objevit níže ani vpravo.
 
 Nástroj pro rozpoznávání formulářů v současné době nepodporuje tyto typy vstupních dat:
 
-* Složité tabulky (vnořené tabulky, sloučené záhlaví nebo buňky atd.).
-* Zaškrtávací políčka nebo přepínače.
+* Komplexní tabulky (vnořené tabulky, sloučená záhlaví nebo buňky a tak dále).
+* Zaškrtávací políčka nebo přepínací tlačítka.

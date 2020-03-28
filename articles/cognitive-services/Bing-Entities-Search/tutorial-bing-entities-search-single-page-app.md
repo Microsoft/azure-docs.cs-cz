@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Vyhledávání entit Bingu pomocí jednostránkové webové aplikace'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu se dozvíte, jak používat rozhraní API Bingu pro vyhledávání entit webové aplikace s jednou stránkou.
+description: Tento kurz ukazuje, jak používat rozhraní API pro vyhledávání entit Bingu v jednostránkové webové aplikaci.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943140"
 ---
 # <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránková webová aplikace
@@ -45,7 +45,7 @@ Ukázková aplikace předvádí, jak:
 > * Provést volání rozhraní API Bingu pro vyhledávání entit v JavaScriptu
 > * Provést volání rozhraní API `locationQuery` Map Bing v JavaScriptu
 > * Předat možnosti hledání těmto voláním rozhraní API
-> * Zobrazit výsledky hledání
+> * Zobrazení výsledků hledání
 > * Používat ID klienta Bingu a klíče předplatného rozhraní API
 > * Vyřešit problémy, které by mohly nastat
 
@@ -56,9 +56,9 @@ V tomto kurzu probereme jen vybrané části zdrojového kódu. Úplný zdrojov�
 > [!NOTE]
 > Tento kurz je velmi podobný [kurzu Jednostránková aplikace Bingu pro vyhledávání na webu](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), ale zabývá se jenom výsledky hledání entit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli postupovat podle tohoto kurzu, potřebujete klíče předplatného pro rozhraní Vyhledávání Bingu API a rozhraní API pro mapy Bing. Pokud je nemáte, můžete použít [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) a [základní klíč mapy Bing](https://www.microsoft.com/maps/create-a-bing-maps-key).
+Chcete-li sledovat spolu s kurzem, budete potřebovat klíče předplatného pro rozhraní API pro vyhledávání Bing a rozhraní API Mapy Bing. Pokud je nemáte, můžete použít [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) a [základní klávesu Mapy Bing](https://www.microsoft.com/maps/create-a-bing-maps-key).
 
 ## <a name="app-components"></a>Komponenty aplikace
 
@@ -71,7 +71,7 @@ Stejně jako každá jednostránková webová aplikace i tato obsahuje tři čá
 
 Tento kurz se většinou nezabývá podrobně kódem HTML nebo šablonami stylů CSS, protože jsou docela jednoduché.
 
-Kód HTML obsahuje vyhledávací formulář, do kterého uživatel zadá dotaz a vybere možnosti hledání. Formulář je propojený s JavaScriptem, který pak skutečně provádí hledání podle atributu `<form>` ve značce `onsubmit`:
+Kód HTML obsahuje vyhledávací formulář, do kterého uživatel zadá dotaz a vybere možnosti hledání. Formulář je propojený s JavaScriptem, který pak skutečně provádí hledání podle atributu `onsubmit` ve značce `<form>`:
 
 ```html
 <form name="bing" onsubmit="return newBingEntitySearch(this)">
@@ -90,7 +90,7 @@ Kód HTML také obsahuje úseky (značky HTML `<div>`), kde se zobrazují výsle
 
 Aby se nemusely klíče předplatného rozhraní API pro vyhledávání Bingu a Map Bing zahrnout do kódu, používáme k uložení klíčů trvalé úložiště prohlížeče. Pokud není žádný z klíčů uložený, vyzveme k jeho zadání a uložíme ho pro pozdější použití. Když později rozhraní API klíč odmítne, zneplatníme uložený klíč. Uživatel o něj bude při příštím hledání požádán znovu.
 
-Definujeme funkce `storeValue` a `retrieveValue`, které používají buď objekt `localStorage` (když je podporovaný prohlížečem), nebo soubor cookie. Naše funkce `getSubscriptionKey()` tyto funkce používá k ukládání a načítání uživatelova klíče. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+Definujeme funkce `storeValue` a `retrieveValue`, které používají buď objekt `localStorage` (když je podporovaný prohlížečem), nebo soubor cookie. Naše funkce `getSubscriptionKey()` tyto funkce používá k ukládání a načítání uživatelova klíče. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
 
 ```javascript
 // cookie names for data we store
@@ -163,11 +163,11 @@ function bingSearchOptions(form) {
 
 Například funkce bezpečného hledání může být `strict`, `moderate` nebo `off`, s výchozí hodnotou `moderate`. Náš formulář ale používá zaškrtávací políčko, které má jenom dva stavy. Kód JavaScriptu toto nastavení převede na `strict` nebo `off` (`moderate` nepoužíváme).
 
-Funkce `mapquery` nepracuje s polem `bingSearchOptions()`. To se použije pro dotaz na polohu Mapám Bing, nikoli rozhraní API Bingu pro vyhledávání entit.
+Funkce `bingSearchOptions()` nepracuje s polem `mapquery`. To se použije pro dotaz na polohu Mapám Bing, nikoli rozhraní API Bingu pro vyhledávání entit.
 
 ## <a name="obtaining-a-location"></a>Získání polohy
 
-Rozhraní API Map Bing nabízí [`locationQuery` metodu](//msdn.microsoft.com/library/ff701711.aspx). Použijeme ji k najití zeměpisné šířky a délky polohy, které zadá uživatel. Tyto souřadnice se pak s požadavkem uživatele předají rozhraní API Bingu pro vyhledávání entit. Výsledky hledání upřednostňují entity a místa, která jsou blízko zadané polohy.
+Rozhraní API Map Bing nabízí [ `locationQuery` metodu](//msdn.microsoft.com/library/ff701711.aspx), kterou používáme k nalezení zeměpisné šířky a délky umístění, které uživatel zadá. Tyto souřadnice se pak s požadavkem uživatele předají rozhraní API Bingu pro vyhledávání entit. Výsledky hledání upřednostňují entity a místa, která jsou blízko zadané polohy.
 
 Ve webové aplikaci nemůžeme přistupovat k rozhraní API Map Bing pomocí běžného dotazu `XMLHttpRequest`, protože tato služba nepodporuje dotazy nepůvodního zdroje. JSONP (kde P znamená odsazený (padded)) ji naštěstí podporuje. Odpověď JSONP je běžná odpověď JSON zabalená do volání funkce. Požadavek se vytvoří vložením značky `<script>` do dokumentu. (Načítání skriptů nepodléhá zásadám zabezpečení prohlížeče)
 
@@ -384,11 +384,11 @@ function handleBingResponse() {
 
 Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. V následujících fázích můžou nastat chyby:
 
-|Krok|Potenciální chyby|Čím se zpracuje|
+|Krok|Potenciální chyby|Čím se zpracují|
 |-|-|-|
 |Kompilace JavaScriptu vyžaduje objekt|Neplatná adresa URL|Blok `try`/`catch`|
 |Provedení žádosti|Chyby sítě, přerušená připojení|Obslužné rutiny událostí `error` a `abort`|
-|Provedení vyhledávání|Neplatná žádost, neplatný JSON, omezení rychlosti|Testy v obslužné rutině události `load`|
+|Provedení vyhledávání|Neplatný požadavek, neplatný JSON, omezení rychlosti|Testy v obslužné rutině události `load`|
 
 Chyby se zpracovávají voláním `renderErrorMessage()` se všemi známými podrobnostmi o chybě. Pokud odpověď úspěšné projde kompletní řadou testů chyb, voláme `renderSearchResults()` k zobrazení výsledků hledání na stránce.
 
@@ -518,18 +518,18 @@ Naše funkce rendereru entity:
 
 ## <a name="persisting-client-id"></a>Zachování ID klienta
 
-Odpovědi z rozhraní API pro vyhledávání Bingu můžou zahrnovat hlavičku `X-MSEdge-ClientID`, která by se měla odesílat zpět do rozhraní API v následných požadavcích. Pokud se používá více rozhraní API pro vyhledávání Bingu, mělo by se pro všechny používat stejné ID klienta, pokud je to možné.
+Odpovědi z rozhraní API Bingu pro vyhledávání můžou zahrnovat hlavičku `X-MSEdge-ClientID`, která by se měla v následujících požadavcích posílat zpět do rozhraní API. Pokud se používá více rozhraní API pro vyhledávání Bingu, mělo by se pro všechny používat stejné ID klienta, pokud je to možné.
 
 Poskytnutí hlavičky `X-MSEdge-ClientID` umožňuje rozhraním API Bingu spojit si všechna uživatelova vyhledávání. To má dvě důležité výhody.
 
-Zaprvé to umožňuje, aby vyhledávací web Bing na vyhledávání aplikoval minulý kontext a našel výsledky, které uživatele více uspokojí. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, pozdější vyhledání „doků“ může přednostně vrátit informace o docích používaných pro kotvení lodí.
+Zaprvé to umožňuje, aby vyhledávací web Bing na vyhledávání použil minulý kontext a našel výsledky, které uživatele více uspokojí. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, pozdější vyhledání „doků“ může přednostně vrátit informace o docích používaných pro kotvení lodí.
 
-Za druhé může Bing náhodně vybírat uživatele k vyzkoušení nových funkcí, než budou všeobecně dostupné. Poskytnutí stejného ID klienta s každým požadavkem zajistí, že uživatelé vybraní tuto funkci vidět, ji vidí vždy. Bez ID klienta může uživatel funkci ve svých výsledcích hledání někdy vidět a jindy ne, zdánlivě náhodně.
+Za druhé může Bing náhodně vybírat uživatele k vyzkoušení nových funkcí, než budou všeobecně dostupné. Poskytnutí stejného ID klienta s každým požadavkem zajistí, že uživatelé vybraní tuto funkci vidět, ji vidí vždy. Bez ID klienta může uživatel funkci ve svých výsledcích hledání zdánlivě náhodně někdy vidět a jindy ne.
 
-Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavička `X-MSEdge-ClientID` pro JavaScript dostupná. K tomuto omezení dochází, když má odpověď na vyhledávání jiný zdroj než stránka, která o ni požádala. V produkčním prostředí je potřeba tyto zásady vyřešit hostováním skriptu na straně serveru, který provádí volání rozhraní API ve stejné doméně jako webová stránka. Protože tento skript má stejný původ jako webová stránka, hlavička `X-MSEdge-ClientID` je pak pro JavaScript dostupná.
+Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavička `X-MSEdge-ClientID` pro JavaScript dostupná. K tomuto omezení dochází, když odpověď na vyhledávání má jiný zdroj než stránka, která o ni požádala. V produkčním prostředí je potřeba tyto zásady vyřešit hostováním skriptu na straně serveru, který provádí volání rozhraní API ve stejné doméně jako webová stránka. Protože tento skript má stejný původ jako webová stránka, hlavička `X-MSEdge-ClientID` je pak pro JavaScript dostupná.
 
 > [!NOTE]
-> Při tvorbě webové aplikace byste měli požadavek provádět na straně serveru tak jako tak. Jinak musí být klíč rozhraní API Bingu pro vyhledávání součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i žádosti provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
+> Při tvorbě webové aplikace byste měli provádět žádost na straně serveru tak jako tak. Jinak musí být klíč rozhraní API pro vyhledávání Bingu součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
 Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
 

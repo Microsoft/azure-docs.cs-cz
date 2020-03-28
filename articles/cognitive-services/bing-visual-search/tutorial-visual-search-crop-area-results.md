@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: oříznutí obrázku pomocí Vizuální vyhledávání Bingu SDK'
-description: Pomocí sady Vizuální vyhledávání Bingu SDK získáte přehledy z konkrétního arech na obrázku.
+title: 'Kurz: Oříznutí obrázku pomocí sady SDK vizuálního vyhledávání Bingu'
+description: Pomocí sady SDK vizuálního vyhledávání Bingzískáte přehledy od konkrétních ares na obrázku.
 services: cognitive-services
 titleSuffix: Azure Cognitive Services
 author: aahill
@@ -11,45 +11,45 @@ ms.topic: tutorial
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: 7adca44f1710431ad1095cbd0da897d4c7c7f325
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74689356"
 ---
-# <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Kurz: oříznutí obrázku pomocí Vizuální vyhledávání Bingu SDK proC#
+# <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Kurz: Oříznutí obrázku pomocí sady SDK vizuálního vyhledávání Bingu pro C #
 
-Sada Vizuální vyhledávání Bingu SDK umožňuje oříznout obrázek před hledáním podobných online obrázků. Tato aplikace ořízne jednu osobu z image obsahující několik lidí a potom vrátí výsledky hledání obsahující podobné obrázky, které byly nalezeny online.
+Sada SDK vizuálního vyhledávání Bingu umožňuje oříznout obrázek před vyhledáním podobných online obrázků. Tato aplikace ořízne jednu osobu z obrázku obsahujícího několik osob a poté vrátí výsledky hledání obsahující podobné obrázky nalezené online.
 
-Úplný zdrojový kód pro tuto aplikaci je k dispozici pro další zpracování chyb a poznámky na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchCropImage.cs).
+Úplný zdrojový kód pro tuto aplikaci je k dispozici s dalším zpracováním chyb a anotacemi na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchCropImage.cs).
 
 Tento kurz ukazuje, jak:
 
 > [!div class="checklist"]
-> * Odeslání požadavku pomocí Vizuální vyhledávání Bingu SDK
-> * Oříznutí oblasti obrázku pro hledání ve Vizuální vyhledávání Bingu
-> * Přijmout a zpracovat odpověď
-> * Najde adresy URL položek akcí v odpovědi.
+> * Odeslání požadavku pomocí sady SDK vizuálního vyhledávání Bingu
+> * Oříznutí oblasti obrázku k prohledání pomocí vizuálního vyhledávání Bingu
+> * Příjem a zpracování odpovědi
+> * V odpovědi najdete adresy URL položek akcí
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).
+* Libovolné vydání [Visual Studia 2019](https://www.visualstudio.com/downloads/).
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 * Nainstalovaný balíček [NuGet pro vlastní vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0).
-    - Z Průzkumník řešení v aplikaci Visual Studio klikněte pravým tlačítkem myši na projekt a v nabídce vyberte možnost **Spravovat balíčky NuGet** . Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Při instalaci balíčku NuGet pro vlastní vyhledávání se nainstalují také následující sestavení:
+    - V Průzkumníku řešení v sadě Visual Studio klikněte pravým tlačítkem myši na váš projekt a v nabídce vyberte **Spravovat balíčky NuGet.** Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Při instalaci balíčku NuGet pro vlastní vyhledávání se nainstalují také následující sestavení:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="specify-the-image-crop-area"></a>Určení oblasti oříznutí obrázku
+## <a name="specify-the-image-crop-area"></a>Určení oblasti oříznutí obrazu
 
-Tato aplikace ořízne oblast tohoto obrázku týmu společnosti Microsoft, který má vedoucí pracovník. Tato oblast oříznutí je definována pomocí souřadnic levého horního a dolního pravého, reprezentovaného jako procento celého obrázku:  
+Tato aplikace plodiny oblast tohoto obrázku vedoucího týmu společnosti Microsoft. Tato ořezová plocha je definována pomocí souřadnic vlevo nahoře a vpravo dole, reprezentované jako procento celého obrazu:  
 
 ![Tým nejvyššího vedení Microsoftu](./media/MS_SrLeaders.jpg)
 
-Tento obrázek je oříznut vytvořením objektu `ImageInfo` z oblasti oříznutí a načtením objektu `ImageInfo` do `VisualSearchRequest`. Objekt `ImageInfo` také obsahuje adresu URL obrázku:
+Tento obraz se ořízne vytvořením objektu `ImageInfo` `ImageInfo` z oblasti `VisualSearchRequest`oříznutí a načtením objektu do . Objekt `ImageInfo` také obsahuje adresu URL obrázku:
 
 ```csharp
 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
@@ -59,7 +59,7 @@ ImageInfo imageInfo = new ImageInfo(cropArea: CropArea, url: imageURL);
 VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: imageInfo);
 ```
 
-## <a name="search-for-images-similar-to-the-crop-area"></a>Vyhledat obrázky podobné oblasti oříznutí
+## <a name="search-for-images-similar-to-the-crop-area"></a>Hledání obrázků podobných oblasti oříznutí
 
 Proměnná `VisualSearchRequest` obsahuje informace o oblasti oříznutí obrázku a jeho adrese URL. Metoda `VisualSearchMethodAsync()` získá výsledky:
 
@@ -69,11 +69,11 @@ var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest
 
 ```
 
-## <a name="get-the-url-data-from-imagemoduleaction"></a>Získat data adresy URL z `ImageModuleAction`
+## <a name="get-the-url-data-from-imagemoduleaction"></a>Získání dat adresy URL z`ImageModuleAction`
 
-Výsledky Vizuální vyhledávání Bingu jsou `ImageTag` objekty. Každá značka obsahuje seznam objektů `ImageAction`. Každý `ImageAction` obsahuje `Data` pole, což je seznam hodnot, které závisí na typu akce.
+Výsledky vizuálního `ImageTag` vyhledávání Bingu jsou objekty. Každá značka obsahuje seznam objektů `ImageAction`. Každé `ImageAction` obsahuje `Data` pole, což je seznam hodnot, které závisí na typu akce.
 
-Různé typy lze vytisknout pomocí následujícího kódu:
+Můžete vytisknout různé typy s následujícím kódem:
 
 ```csharp
 Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " + i.WebSearchUrl);
@@ -81,22 +81,22 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 
 Dokončená aplikace vrátí:
 
-|Typ akce  |Adresa URL  | |
+|ActionType  |zprostředkovatele identity  | |
 |---------|---------|---------|
-|PagesIncluding WebSearchURL     |         |
+|Stránky včetně websearchURL     |         |
 |MoreSizes WebSearchURL     |         |  
-|VisualSearch WebSearchURL    |         |
-|ImageById WebSearchURL     |         |  
-|RelatedSearches WebSearchURL     |         |
-|Entita – > WebSearchUrl     | protokol HTTPS\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v=1&r=https%3a%2f%2fwww.bing.com%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5380.1        |
-|TopicResults-> WebSearchUrl    |  protokol HTTPS\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fnadella%2bsatya&p=DevEx,5382.1        |
-|ImageResults-> WebSearchUrl    |  protokol HTTPS\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5384.1        |
+|WebsearchURL vizuálního vyhledávání    |         |
+|Adresa OBRAZOvé_uživatelské místo pro vyhledávání     |         |  
+|SouvisejícíVyhledávání WebSearchURL     |         |
+|Entita -> WebSearchUrl     | https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v=1&r=https%3a%2f%2fwww.bing.com%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5380.1        |
+|TopicResults -> WebSearchUrl    |  https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=3QGtxPb3W9LemuHRxAlW4CW7XN4s PkUYCUynxAqI9zQ&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fnadella%2bsatya&p=DevEx,5382.1        |
+|ImageResults -> WebSearchUrl    |  https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJ szgOuM5sVLs&v=1&r=https%3a%2f%2f.bing.com%2fimages%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5384.1        |
 
-Jak vidíte výše, `Entity` typ akce obsahuje vyhledávací dotaz Bingu, který vrací informace o rozpoznatelné osobě, místě nebo věci. Typy `TopicResults` a `ImageResults` obsahují dotazy pro související obrázky. Adresy URL v seznamu odkazují na výsledky vyhledávání Bingu.
+Jak je uvedeno `Entity` výše, ActionType obsahuje vyhledávací dotaz Bing, který vrací informace o rozpoznatelné osobě, místě nebo věci. Typy `TopicResults` a `ImageResults` obsahují dotazy pro související obrázky. Adresy URL v seznamu odkazují na výsledky vyhledávání Bingu.
 
-## <a name="get-urls-for-pagesincluding-actiontype-images"></a>Získat adresy URL pro `PagesIncluding` `ActionType` imagí
+## <a name="get-urls-for-pagesincluding-actiontype-images"></a>Získání adres URL `PagesIncluding` `ActionType` pro obrázky
 
-Získání skutečné adresy URL obrázku vyžaduje přetypování, které čte `ActionType` jako `ImageModuleAction`, obsahující element `Data` se seznamem hodnot. Každá hodnota je adresa URL obrázku. Následující přetypování `PagesIncluding` typ akce na `ImageModuleAction` a přečte hodnoty:
+Získání skutečné adresy URL obrázku vyžaduje přetypování, které čte `ActionType` jako `ImageModuleAction`, obsahující element `Data` se seznamem hodnot. Každá hodnota je adresa URL obrázku. Následující přetypování `PagesIncluding` typu `ImageModuleAction` akce a přečte hodnoty:
 
 ```csharp
     if (i.ActionType == "PagesIncluding")
@@ -110,7 +110,7 @@ Získání skutečné adresy URL obrázku vyžaduje přetypování, které čte 
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace Vizuální vyhledávání jednostránkového stránkování](tutorial-bing-visual-search-single-page-app.md)
+> [Vytvoření jednostránkové webové aplikace vizuálního vyhledávání](tutorial-bing-visual-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 > [Co je rozhraní API pro vizuální vyhledávání Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)

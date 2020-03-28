@@ -1,5 +1,5 @@
 ---
-title: Získat záměr pomocí volání REST v cestách
+title: Buďte intent s voláním REST v go
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,38 +9,38 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
 ms.openlocfilehash: 02cb7738e20df6aba8690c9fe2ee718144bad114
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987759"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 * Programovací jazyk [Go](https://golang.org/)
-* [Visual Studio Code](https://code.visualstudio.com/)
-* ID veřejné aplikace: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* [Kód visual studia](https://code.visualstudio.com/)
+* ID veřejné aplikace:`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="create-luis-runtime-key-for-predictions"></a>Vytvoření klíče LUIS runtime pro předpovědi
+## <a name="create-luis-runtime-key-for-predictions"></a>Vytvořit klíč runtime LUIS pro předpovědi
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)
-1. Klikněte na [vytvořit **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Zadejte všechna požadovaná nastavení pro klíč **za běhu** :
+1. Přihlášení k [portálu Azure](https://portal.azure.com)
+1. Klikněte na [Vytvořit **jazykové znalosti.** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+1. Zadejte všechna požadovaná nastavení pro klíč **Runtime:**
 
     |Nastavení|Hodnota|
     |--|--|
     |Name (Název)|Požadovaný název (2-64 znaků)|
-    |Předplatné|Vyberte odpovídající předplatné.|
-    |Umístění|Výběr libovolného okolí a dostupného umístění|
-    |Cenová úroveň|`F0` – minimální cenová úroveň|
-    |Skupina prostředků|Vyberte dostupnou skupinu prostředků.|
+    |Předplatné|Vybrat příslušné předplatné|
+    |Umístění|Vyberte libovolné blízké a dostupné místo|
+    |Cenová úroveň|`F0`- minimální cenová úroveň|
+    |Skupina prostředků|Výběr dostupné skupiny prostředků|
 
-1. Klikněte na **vytvořit** a počkejte na vytvoření prostředku. Po vytvoření přejděte na stránku prostředků.
-1. Shromážděte nakonfigurované `endpoint` a `key`.
+1. Klikněte na **Vytvořit** a počkejte na vytvoření prostředku. Po vytvoření přejděte na stránku prostředků.
+1. Sbírat `endpoint` nakonfigurované a `key`.
 
 ## <a name="get-intent-programmatically"></a>Získání záměru prostřednictvím kódu programu
 
-Pomocí příkazu Přejít můžete zadat dotaz na [koncový bod předpovědi](https://aka.ms/luis-apim-v3-prediction) a získat výsledek předpovědi.
+Použijte Přejít na dotaz [koncového bodu předpověď](https://aka.ms/luis-apim-v3-prediction) a získat výsledek předpověď.
 
 1. Vytvořte nový soubor s názvem `predict.go`. Přidejte následující kód:
 
@@ -96,14 +96,14 @@ Pomocí příkazu Přejít můžete zadat dotaz na [koncový bod předpovědi](h
     }
     ```
 
-1. Hodnoty `YOUR-KEY` a `YOUR-ENDPOINT` nahraďte vlastním klíčovým a koncovým bodem **prostředí** pro předpověď.
+1. Nahraďte hodnoty `YOUR-KEY` a `YOUR-ENDPOINT` vlastním predikčním klíčem **runtime** a koncovým bodem.
 
     |Informace|Účel|
     |--|--|
-    |`YOUR-KEY`|Klíč **běhu** pro předpověď znaků 32.|
-    |`YOUR-ENDPOINT`| Koncový bod adresy URL předpovědi Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
+    |`YOUR-KEY`|Váš klíč **runtime** predikce 32 znaků.|
+    |`YOUR-ENDPOINT`| Koncový bod adresy URL předpovědi. Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
-1. Pomocí příkazového řádku ve stejném adresáři, ve kterém jste vytvořili soubor, zadejte následující příkaz pro zkompilování souboru přejít:
+1. Pomocí příkazového řádku ve stejném adresáři, ve kterém jste soubor vytvořili, zadejte následující příkaz pro kompilaci souboru Go:
 
     ```console
     go build predict.go
@@ -126,7 +126,7 @@ Pomocí příkazu Přejít můžete zadat dotaz na [koncový bod předpovědi](h
     {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
     ```
 
-    Formát JSON pro čitelnost:
+    JSON formátován pro čitelnost:
 
     ```json
     {
@@ -172,9 +172,9 @@ Pomocí příkazu Přejít můžete zadat dotaz na [koncový bod předpovědi](h
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s tímto rychlým startem hotovi, odstraňte soubor ze systému souborů.
+Po dokončení tohoto rychlého startu odstraňte soubor ze systému souborů.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přidat projevy a vlak](../get-started-get-model-rest-apis.md)
+> [Přidání promluv a vytáčení](../get-started-get-model-rest-apis.md)

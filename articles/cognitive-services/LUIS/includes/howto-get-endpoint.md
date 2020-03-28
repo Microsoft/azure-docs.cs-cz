@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 5b1b361778de145a5e32a07bb0164ff2293d9a1a
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77279596"
 ---
-V části **Spravovat** (v pravém horním rohu) na stránce **prostředky Azure** (nabídka vlevo) zkopírujte **ukázkovou** adresu URL dotazu a vložte ji do nové karty prohlížeče.
+V části **Spravovat** (vpravo nahoře) zkopírujte na stránce **Prostředky Azure** (vlevo) adresu URL **ukázkového dotazu** a vložte ji do nové karty prohlížeče.
 
-Adresa URL koncového bodu vypadá jako v následujícím formátu a má vlastní ID aplikace a klíč koncového bodu, který nahrazuje ID aplikace a ID klíče:
+Adresa URL koncového bodu vypadá jako následující formát s vlastním ID aplikace a klíčem koncového bodu, který nahrazuje APP-ID a KEY-ID:
 
 ```console
 https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/APP-ID/slots/production/predict?subscription-key=KEY-ID&verbose=true&show-all-intents=true&log=true&query=YOUR_QUERY_HERE

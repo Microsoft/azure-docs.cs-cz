@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči pomocí mikrofonu, Java (Android) – Speech Service'
+title: 'Úvodní příručka: Rozpoznávání řeči z mikrofonu, Java (Android) - Služba řeči'
 titleSuffix: Azure Cognitive Services
-description: Naučte se rozpoznávat řeč v Java v Androidu pomocí sady Speech SDK
+description: Naučte se rozpoznávat řeč v Jazyce Java v Systému Android pomocí sady Speech SDK
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
 ms.openlocfilehash: 6348d09351cf627624340083e2c419def38dfc01
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77446613"
 ---
 ## <a name="prerequisites"></a>Požadavky
@@ -22,17 +22,17 @@ ms.locfileid: "77446613"
 Než začnete:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
 > * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md?tabs=android)
-> * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
+> * Ujistěte se, že máte přístup k mikrofonu pro snímání zvuku
 
 ## <a name="create-a-user-interface"></a>Vytvoření uživatelského rozhraní
 
-Nyní vytvoříme pro aplikaci základní uživatelské rozhraní. Upravte rozložení hlavní aktivity `activity_main.xml`. Ve výchozím rozložení obsahuje záhlaví název vaší aplikace a TextView, který obsahuje text "Hello World!".
+Nyní vytvoříme základní uživatelské rozhraní pro aplikaci. Upravte rozložení hlavní aktivity `activity_main.xml`. Zpočátku rozložení obsahuje záhlaví s názvem aplikace a TextView, který obsahuje text "Hello World!".
 
 * Vyberte element TextView. Změňte jeho atribut ID v pravém horním rohu na `hello`.
 
-* Z palety v levém horním rohu okna `activity_main.xml` přetáhněte tlačítko do prázdného místa nad textem.
+* Z palety v levém `activity_main.xml` horním rohu okna přetáhněte tlačítko do prázdného prostoru nad textem.
 
 * V atributech tlačítka na pravé straně zadejte u atributu `onClick` hodnotu `onSpeechButtonClicked`. Napíšeme metodu s tímto názvem, která bude obsluhovat událost tohoto tlačítka. Změňte jeho atribut ID v pravém horním rohu na `button`.
 
@@ -40,7 +40,7 @@ Nyní vytvoříme pro aplikaci základní uživatelské rozhraní. Upravte rozlo
 
   ![Snímek obrazovky s ikonou kouzelné hůlky](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-10-infer-layout-constraints.png)
 
-Text a grafická reprezentace vašeho uživatelského rozhraní by teď měla vypadat takto:
+Text a grafické znázornění uživatelského rozhraní by teď měly vypadat takto:
 
 ![Uživatelské rozhraní](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-11-gui.png)
 
@@ -48,31 +48,31 @@ Text a grafická reprezentace vašeho uživatelského rozhraní by teď měla vy
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Otevřete zdrojový soubor `MainActivity.java`. Nahraďte celý kód v tomto souboru následujícím kódem:
+1. Otevřete zdrojový soubor `MainActivity.java`. Nahraďte veškerý kód v tomto souboru následujícím:
 
    [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/android/from-microphone/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/quickstart/MainActivity.java#code)]
 
    * Metoda `onCreate` obsahuje kód, který požádá o oprávnění k mikrofonu a internetu a inicializuje vazby nativní platformy. Konfigurace vazeb nativní platformy se vyžaduje jen jednou. Měla by se provést v ranné fázi během inicializace aplikace.
 
-   * Metoda `onSpeechButtonClicked` je obslužná rutina pro kliknutí na tlačítko, jak bylo uvedeno výše. Stisknutí tlačítka aktivuje přepis řeči na text.
+   * Metoda `onSpeechButtonClicked` je obslužná rutina pro kliknutí na tlačítko, jak bylo uvedeno výše. Stisknutí tlačítka spustí přepis řeči na text.
 
 1. Ve stejném souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného.
 
-1. Nahraďte také řetězec `YourServiceRegion` **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému. Použijte například `westus` pro předplatné bezplatné zkušební verze.
+1. Řetězec také `YourServiceRegion` nahraďte **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému. Můžete například `westus` použít bezplatné zkušební předplatné.
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-1. Připojte k vývojovému počítači zařízení s Androidem. Ujistěte se, že jste na zařízení povolili [režim vývoje a ladění USB](https://developer.android.com/studio/debug/dev-options) .
+1. Připojte k vývojovému počítači zařízení s Androidem. Ujistěte se, že jste v zařízení povolili [režim vývoje a ladění USB.](https://developer.android.com/studio/debug/dev-options)
 
-1. Chcete-li sestavit aplikaci, vyberte CTRL + F9 nebo v řádku nabídek vyberte **sestavit** > **vytvořit projekt** .
+1. Chcete-li vytvořit aplikaci, vyberte Ctrl+F9 nebo z řádku nabídek vyberte **Vytvořit** > **projekt.**
 
-1. Pokud chcete aplikaci spustit, vyberte SHIFT + F10 nebo vyberte **spustit** > **Spustit aplikaci**.
+1. Chcete-li aplikaci spustit, vyberte Shift+F10 nebo **možnost Spustit** > **spustit aplikaci**.
 
-1. V okně cíl nasazení, které se zobrazí, vyberte své zařízení s Androidem.
+1. V okně cíle nasazení, které se zobrazí, vyberte zařízení Android.
 
    ![Snímek obrazovky okna s výběrem cíle nasazení](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-12-deploy.png)
 
-Výběrem tlačítka v aplikaci zahajte oddíl rozpoznávání řeči. Následujících 15 sekund řeči v angličtině bude odesláno službě Speech a přepsáno. Výsledek se zobrazí v aplikaci pro Android a v okně logcat v Android Studiu.
+Vyberte tlačítko v aplikaci a začněte oddíl rozpoznávání řeči. Následujících 15 sekund řeči v angličtině bude odesláno službě Speech a přepsáno. Výsledek se zobrazí v aplikaci pro Android a v okně logcat v Android Studiu.
 
 ![Snímek obrazovky aplikace pro Android](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-13-gui-on-device.png)
 

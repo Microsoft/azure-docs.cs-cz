@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: použití nástroje URL k získání odpovědi z znalostní báze Knowledge Base – QnA Maker'
+title: 'Úvodní příručka: Pomocí nástroje URL získáte odpověď ze znalostní báze – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak získat odpověď ze znalostní báze pomocí nástroje pro testování adresy URL, jako je například kudrlinkou nebo post.
+description: Tento rychlý start vás provede získáním odpovědi ze znalostní báze pomocí testovacího nástroje URL, jako je cURL nebo Postman.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: 09337ce599b0044ab38bb0ad0b0383ee90bfcbd8
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77109646"
 ---
-# <a name="quickstart-get-an-answer-from-knowledge-base"></a>Rychlý Start: získání odpovědi od znalostní báze Knowledge Base
+# <a name="quickstart-get-an-answer-from-knowledge-base"></a>Úvodní příručka: Získejte odpověď ze znalostní báze
 
 
 ::: zone pivot="url-test-tool-curl"
@@ -37,4 +37,4 @@ ms.locfileid: "77109646"
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Test znalostní báze pomocí dávkového souboru](batch-testing.md)
+> [Testování znalostní báze s dávkovým souborem](batch-testing.md)

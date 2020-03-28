@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/16/2019
 ms.author: erhopf
 ms.openlocfilehash: 85e72f4f93267611902c40ae5547b6732beec261
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70392921"
 ---
 > [!NOTE]
-> Nové prostředky vytvořené po 1. červenci 2019 budou používat názvy vlastních subdomén. Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](../articles/cognitive-services/cognitive-services-custom-subdomains.md).
+> Nové prostředky vytvořené po 1. Další informace a úplný seznam místních koncových bodů naleznete [v tématu Vlastní názvy subdomén pro služby Cognitive Services](../articles/cognitive-services/cognitive-services-custom-subdomains.md).

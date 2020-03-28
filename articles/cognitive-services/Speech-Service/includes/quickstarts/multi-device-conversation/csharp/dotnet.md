@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: c6291a714083df8954d5162ad38d31b2e3caee76
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925811"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete, nezapomeňte:
+Než začnete, ujistěte se, že:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření prostředku řeči Azure](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Otevřete **program.cs**a v něm nahraďte veškerý kód následujícím kódem:
+1. Otevřete **Program.cs**a nahraďte veškerý kód v něm následujícím kódem:
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -199,26 +199,26 @@ Než začnete, nezapomeňte:
     }
     ```
 
-1. Ve stejném souboru nahraďte řetězec `YourSubscriptionKey` klíčovým předplatným řeči pro rozpoznávání řeči.
+1. Ve stejném souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného cognitive speech.
 
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
-1. V řádku nabídek vyberte možnost **soubor** > **Uložit vše**.
+1. Na řádku nabídek zvolte **Soubor** > **Uložit vše**.
 
-## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Sestavte a spusťte aplikaci a vytvořte novou konverzaci.
+## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Vytvoření a spuštění aplikace pro vytvoření nové konverzace
 
-1. V řádku nabídek vyberte **sestavit** > **Sestavit řešení** a sestavte aplikaci. Kód by se teď měl zkompilovat bez chyb.
+1. Na řádku nabídek vyberte **sestavení** > **sestavení řešení** k sestavení aplikace. Kód by se teď měl zkompilovat bez chyb.
 
-1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci **HelloWorld** .
+1. **Chcete-li** > spustit aplikaci **Helloworld,** zvolte Ladění**spouštění ladění** (nebo stiskněte **klávesu F5).**
 
-1. Jakmile se zobrazí `Started transcribing` zpráva, můžete začít mluvit. Zobrazí se přepisy při mluvení.
-    - Pokud sdílíte kód konverzace s ostatními a připojíte se ke konverzaci, uvidíte také jejich přepisy.
+1. Jakmile se `Started transcribing` zobrazí zpráva, můžete začít mluvit. Uvidíte, že přepisy se zobrazí, jak mluvíte.
+    - Pokud kód konverzace sdílíte s ostatními a oni se k ní připojí, zobrazí se také jejich přepisy.
 
-1. Jakmile budete hotovi, stisknutím <kbd>kombinace kláves CTRL + C</kbd> zastavte záznam zvuku a ukončete konverzaci.
+1. Až budete hotovi mluvit, stiskněte <kbd>Ctrl +C</kbd> zastavit sběr zvuku a ukončit konverzaci.
 
-## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Sestavte a spusťte aplikaci, která se připojí k existující konverzaci.
+## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Sestavení a spuštění aplikace pro připojení k existující konverzaci
 
-1. Zkopírujte a vložte následující funkci do svého **program.CSU**:
+1. Zkopírujte a vložte do **Program.cs**následující funkci :
 
     ```csharp
     static async Task JoinConversationAsync(string conversationId)
@@ -294,7 +294,7 @@ Než začnete, nezapomeňte:
     }
     ```
 
-2. Ve své funkci `public static async Task Main(string[] args)` nahraďte `CreateConversationAsync();`:
+2. `CreateConversationAsync();` Nahraďte `public static async Task Main(string[] args)` ve své funkci:
 
     ```csharp
     // Set this to the conversation you want to join
@@ -303,18 +303,18 @@ Než začnete, nezapomeňte:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Vraťte se do sady Visual Studio a nahraďte řetězec `YourConversationId` číslem konverzace, které jste vytvořili v předchozím kroku.
+4. Vraťte se do sady `YourConversationId` Visual Studio a nahraďte řetězec ID konverzace, které jste vytvořili v předchozím kroku.
 
-5. V řádku nabídek vyberte **sestavit** > **Sestavit řešení** a sestavte aplikaci. Kód by se teď měl zkompilovat bez chyb.
+5. Na řádku nabídek vyberte **sestavení** > **sestavení řešení** k sestavení aplikace. Kód by se teď měl zkompilovat bez chyb.
 
-6. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci **HelloWorld** .
+6. **Chcete-li** > spustit aplikaci **Helloworld,** zvolte Ladění**spouštění ladění** (nebo stiskněte **klávesu F5).**
 
-7. Jakmile se zobrazí `Started transcribing` zpráva, můžete začít mluvit. Zobrazí se přepisy při mluvení.
-    - Pokud se vrátíte zpátky do svého prohlížeče, měli byste vidět, že se vám budou zobrazovat přepisy i při mluvení.
+7. Jakmile se `Started transcribing` zobrazí zpráva, můžete začít mluvit. Uvidíte, že přepisy se zobrazí, jak mluvíte.
+    - Pokud se vrátíte do prohlížeče, měli byste vidět vaše přepisy se objeví tam, jak mluvíte také.
 
-8. Jakmile budete hotovi, stisknutím <kbd>kombinace kláves CTRL + C</kbd> zastavte záznam zvuku a ukončete konverzaci.
+8. Až budete hotovi mluvit, stiskněte <kbd>Ctrl +C</kbd> zastavit sběr zvuku a ukončit konverzaci.
 
-9. Vraťte se do prohlížeče a ukončete konverzaci pomocí tlačítka Exit v pravém horním rohu.
+9. Vraťte se do prohlížeče a ukončete konverzaci pomocí tlačítka ukončení v pravém horním rohu.
 
 ## <a name="next-steps"></a>Další kroky
 

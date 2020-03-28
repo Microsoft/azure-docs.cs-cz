@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Získání přehledů obrázků pomocí REST API a Pythonu – Vizuální vyhledávání Bingu'
+title: 'Úvodní příručka: Získání přehledů obrázků pomocí rozhraní REST API a Pythonu – vizuální vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat přehled o něm.
+description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat o něm přehledy.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: b56f6743b642904349797ac5b6167194f7916b45
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446589"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Rychlý Start: Získání přehledů obrázků pomocí Vizuální vyhledávání Bingu REST API a Pythonu
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Úvodní příručka: Získejte přehledy obrázků pomocí rozhraní API PRO Vizuální vyhledávání Bingu REST API a Pythonu
 
-V tomto rychlém startu můžete provést první volání rozhraní API pro vizuální vyhledávání Bingu a zobrazit výsledky. Tato aplikace v Pythonu nahraje obrázek do rozhraní API a zobrazí informace, které vrátí. I když je tato aplikace napsaná v Pythonu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+Pomocí tohoto rychlého startu můžete provést první volání do rozhraní API pro vizuální vyhledávání Bingu a zobrazit výsledky. Tato aplikace Pythonu nahraje obrázek do rozhraní API a zobrazí informace, které vrátí. Ačkoli tato aplikace je napsána v Pythonu, API je RESTful webová služba kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,15 +27,15 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="initialize-the-application"></a>Inicializace aplikace
+## <a name="initialize-the-application"></a>Inicializovat aplikaci
 
-1. Vytvořte nový soubor Pythonu v oblíbených IDE nebo editoru a přidejte následující příkaz `import`:
+1. Vytvořte nový soubor Pythonu ve svém oblíbeném `import` ide nebo editoru a přidejte následující příkaz:
 
     ```python
     import requests, json
     ```
 
-2. Vytvořte proměnné pro klíč předplatného, koncový bod a cestu k imagi, kterou právě nahráváte. `BASE_URI` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek:
+2. Vytvořte proměnné pro klíč předplatného, koncový bod a cestu k obrázku, který nahráváte. `BASE_URI`může být globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na webu Azure Portal pro váš prostředek:
 
     ```python
 
@@ -44,7 +44,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
     imagePath = 'your-image-path'
     ```
     
-    Když nahrajete místní obrázek, data formuláře musí zahrnovat hlavičku `Content-Disposition`. Je nutné nastavit jeho parametr `name` na hodnotu "image" a můžete nastavit parametr `filename` na libovolný řetězec. Obsah formuláře zahrnuje binární data obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
+    Při nahrávání místního obrázku musí data `Content-Disposition` formuláře obsahovat záhlaví. Je nutné `name` nastavit jeho parametr na "image" `filename` a můžete nastavit parametr na libovolný řetězec. Obsah formuláře obsahuje binární data obrazu. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
     
     ```
     --boundary_1234-abcd
@@ -55,13 +55,13 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
     --boundary_1234-abcd--
     ```
 
-3. Vytvořte objekt Dictionary, který bude uchovávat informace v hlavičce vaší žádosti. Připojte klíč předplatného k řetězci `Ocp-Apim-Subscription-Key`, jak je znázorněno níže:
+3. Vytvořte objekt slovníku pro uložení informací záhlaví požadavku. Spojte klíč předplatného `Ocp-Apim-Subscription-Key`s řetězcem , jak je znázorněno níže:
 
     ```python
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. Vytvořte další slovník, který bude obsahovat image, která se otevře a nahraje při odeslání žádosti:
+4. Vytvořte jiný slovník, který bude obsahovat obrázek, který se otevře a nahraje při odeslání žádosti:
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
@@ -69,7 +69,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
 
 ## <a name="parse-the-json-response"></a>Analyzovat odpověď JSON
 
-1. Vytvořte metodu nazvanou `print_json()` pro přijetí v odpovědi rozhraní API a vytiskněte JSON:
+1. Vytvořte metodu volanou `print_json()` pro odpověď rozhraní API a vytiskněte json:
 
     ```python
     def print_json(obj):
@@ -79,7 +79,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
 
 ## <a name="send-the-request"></a>Odeslat žádost
 
-1. K odeslání žádosti do rozhraní API pro vizuální vyhledávání Bingu použijte `requests.post()`. Zadejte řetězec pro informace o koncovém bodu, hlavičce a souboru. `response.json()` tisku pomocí `print_json()`:
+1. Slouží `requests.post()` k odeslání požadavku do rozhraní API vizuálního vyhledávání Bingu. Zahrňte řetězec pro koncový bod, záhlaví a informace o souboru. Tisk `response.json()` `print_json()`s :
 
     ```python
     try:
@@ -94,4 +94,4 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace Vizuální vyhledávání jednostránkového stránkování](../tutorial-bing-visual-search-single-page-app.md)
+> [Vytvoření jednostránkové webové aplikace vizuálního vyhledávání](../tutorial-bing-visual-search-single-page-app.md)

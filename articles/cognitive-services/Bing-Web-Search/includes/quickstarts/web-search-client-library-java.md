@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start klientské knihovny s Vyhledávání na webu Bingu Java
+title: Rychlý start klientské knihovny Java webového vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: c204f8482d46d6586d490cb2bd3dd1a4cddac682
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925746"
 ---
-Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do aplikace Java. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
+Klientská knihovna Bing Web Search usnadňuje integraci webového vyhledávání Bingu do aplikace Java. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 
-Chcete se rovnou podívat na kód? Ukázky pro [klientské knihovny vyhledávání Bingu pro jazyk Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search) jsou k dispozici na GitHubu.
+Chcete se rovnou podívat na kód? Ukázky [pro klientské knihovny Bing Search pro Javu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search) jsou dostupné na GitHubu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
+Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 
 * [JDK 7 nebo 8](https://aka.ms/azure-jdks)
 * [Apache Maven](https://maven.apache.org/download.cgi) nebo jiný oblíbený nástroj na automatické sestavení
@@ -31,7 +31,7 @@ Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebo
 
 ## <a name="create-a-project-and-set-up-your-pom-file"></a>Vytvoření projektu a nastavení souboru POM
 
-Vytvořte nový projekt Java. Použijte Maven nebo jiný oblíbený nástroj na automatické sestavení. Za předpokladu, že používáte Maven, přidejte následující řádky do souboru [Project Object Model (pom)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) . Všechny instance `mainClass` nahraďte svou aplikací.
+Vytvořte nový projekt Java. Použijte Maven nebo jiný oblíbený nástroj na automatické sestavení. Za předpokladu, že používáte Maven, přidejte následující řádky do souboru [project object model (POM).](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) Všechny instance `mainClass` nahraďte svou aplikací.
 
 ```xml
 <build>
@@ -121,7 +121,7 @@ import com.microsoft.azure.cognitiveservices.search.websearch.models.VideoObject
 import com.microsoft.azure.cognitiveservices.search.websearch.models.WebPage;
 ```
 
-Pokud jste k vytvoření projektu použili Maven, balíček by měl být deklarovaný. Pokud není, deklarujte ho teď. Příklad:
+Pokud jste k vytvoření projektu použili Maven, balíček by měl být deklarovaný. Pokud není, deklarujte ho teď. Například:
 
 ```java
 package com.bingwebsearch.app
@@ -257,7 +257,7 @@ if (webData != null && webData.videos() != null && webData.videos().value() != n
 
 ## <a name="declare-the-main-method"></a>Deklarace hlavní metody
 
-V této aplikaci obsahuje hlavní metoda kód, který vytvoří instanci klienta, ověří `subscriptionKey` a volá `runSample`. Než budete pokračovat, ujistěte se, že jste zadali platný klíč předplatného k účtu Azure.
+V této aplikaci obsahuje hlavní metoda kód, který vytvoří instanci klienta, ověří `subscriptionKey` a volá `runSample`. Než budete pokračovat, ujistěte se, že jste zadali platný klíč předplatného účtu Azure.
 
 ```java
 public static void main(String[] args) {

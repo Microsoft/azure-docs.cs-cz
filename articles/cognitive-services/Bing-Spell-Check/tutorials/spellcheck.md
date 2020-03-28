@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Získání výsledků kontroly pravopisu pomocí rozhraní API Bingu pro kontrolu pravopisu'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu můžete vytvořit webovou stránku, která odešle dotazy do rozhraní API Bingu pro kontrolu pravopisu a zobrazí výsledky.
+description: Tento kurz slouží k vytvoření webové stránky, která odesílá dotazy do rozhraní API kontroly pravopisu Bingu a zobrazuje výsledky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: fa10ab5a4b1c69b359936edf91da767da08d2f98
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943096"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Sestavení klienta pro kontrolu pravopisu na webové stránce
 
-V tomto kurzu vytvoříme webovou stránku, která uživatelům umožňuje zadávat dotazy do rozhraní API Bingu pro kontrolu pravopisu. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
+V tomto kurzu vytvoříme webovou stránku, která uživatelům umožňuje zadávat dotazy do rozhraní API Bingu pro kontrolu pravopisu. Zdrojový kód pro tuto aplikaci je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
 
 V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
 > - vytvoření jednoduchého dotazu na rozhraní API Bingu pro kontrolu pravopisu,
-> - Zobrazení výsledků dotazu
+> - zobrazení výsledků dotazu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného k rozhraní API Bingu pro kontrolu pravopisu. Pokud ho ještě nemáte, vytvořte v Azure Portal [prostředek kontrola pravopisu Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7) . můžete použít také [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api).
+Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného k rozhraní API Bingu pro kontrolu pravopisu. Pokud ho nemáte, [vytvořte prostředek kontroly pravopisu Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7) na webu Azure Portal. Můžete také použít [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api).
 
 ## <a name="create-a-new-web-page"></a>Vytvoření nové webové stránky
 
@@ -37,7 +37,7 @@ Otevřete textový editor. Vytvořte nový soubor s názvem například spellche
 
 ## <a name="add-html-header"></a>Přidání hlavičky HTML
 
-Přidejte informace hlavičky HTML a začněte oddíl script tak, jak vidíte na následujícím obrázku.
+Přidejte informace hlavičky HTML a začněte část se skriptem tak, jak vidíte na následujícím obrázku.
 
 ```html
 <!DOCTYPE html>
@@ -66,7 +66,7 @@ Přidejte informace hlavičky HTML a začněte oddíl script tak, jak vidíte na
 
 ## <a name="getsubscriptionkey-function"></a>Funkce getSubscriptionKey
 
-Funkce getSubscriptionKey vrací klíč rozhraní API Bingu pro kontrolu pravopisu. Buď ho získá z místního úložiště (t.j. souboru cookie), nebo v případě potřeby vyzve uživatele k jeho zadání.
+Funkce getSubscriptionKey vrací klíč rozhraní API Bingu pro kontrolu pravopisu. Buď ho získá z místního úložiště (tj. ze souboru cookie), nebo v případě potřeby vyzve uživatele k jeho zadání.
 
 Začněte s funkcí getSubscriptionKey a deklarujte název souboru cookie následujícím způsobem.
 
@@ -118,7 +118,7 @@ Podpůrná funkce getSubscriptionKeyLocalStorage se nejprve pokusí načíst kl�
     }
 ```
 
-Pomocná funkce GetSubscriptionKey přijímá jeden parametr, **invalidate**. Pokud má **invalidate** hodnotu **true**, funkce getSubscriptionKey odstraní soubor cookie, který obsahuje klíč rozhraní API Bingu pro kontrolu pravopisu. Pokud má **invalidate** hodnotu **false**, funkce getSubscriptionKey vrátí hodnotu klíče rozhraní API Bingu pro kontrolu pravopisu.
+Pomocná funkce GetSubscriptionKey přijímá jeden parametr, **invalidate** (Zneplatnit). Pokud má **invalidate** hodnotu **true**, funkce getSubscriptionKey odstraní soubor cookie, který obsahuje klíč rozhraní API Bingu pro kontrolu pravopisu. Pokud má **invalidate** hodnotu **false**, funkce getSubscriptionKey vrátí hodnotu klíče rozhraní API Bingu pro kontrolu pravopisu.
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -322,4 +322,4 @@ Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Požadavky na zobrazení a použití](../UseAndDisplayRequirements.md)
+> [Požadavky na použití a zobrazení](../UseAndDisplayRequirements.md)

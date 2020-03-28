@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: syntetizace řeči do zvukového souboru, Java-Speech Service'
+title: 'Úvodní příručka: Syntetizovat řeč do zvukového souboru, Java - Služba řeči'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Bude doplněno
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: 1021355d214dc1fabba9914919449fe6ddbe3ff0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75467745"
 ---
 > [!div class="nextstepaction"]
-> [Zkoumání ukázek Java na GitHubu](https://aka.ms/speech/github-java)
+> [Prozkoumejte ukázky Javy na GitHubu](https://aka.ms/speech/github-java)

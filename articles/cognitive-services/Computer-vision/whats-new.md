@@ -1,7 +1,7 @@
 ---
-title: Co je nového v Počítačové zpracování obrazu?
+title: Co je nového v počítačovém vidění?
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje novinky o Počítačové zpracování obrazu.
+description: Tento článek obsahuje novinky o počítačovém vidění.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,29 +10,33 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 02/28/2020
 ms.author: pafarley
-ms.openlocfilehash: c154b75fc8f8a177ab73682fc2af77d1702ae075
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 82e9c9a6dd8dc18f186a21e72a1a3d205094b707
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207649"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80155184"
 ---
-# <a name="whats-new-in-computer-vision"></a>Co je nového v Počítačové zpracování obrazu
+# <a name="whats-new-in-computer-vision"></a>Co je nového v počítačovém vidění
 
-Zjistěte, co je nového ve službě. Tyto položky můžou vydávat poznámky, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
+Přečtěte si, co je ve službě nového. Tyto položky mohou uvolnit poznámky, videa, příspěvky na blogu a další typy informací. Záložka tuto stránku udržovat aktuální se službou.
+
+## <a name="march-2020"></a>Březen 2020
+
+* TLS 1.2 je nyní vynucena pro všechny požadavky HTTP pro tuto službu. Další informace najdete v [tématu Azure Cognitive Services security](../cognitive-services-security.md).
 
 ## <a name="january-2020"></a>Leden 2020
 
-### <a name="read-api-30-preview"></a>Číst rozhraní API 3,0 Preview
+### <a name="read-api-30-preview"></a>Náhled čtení API 3.0
 
-Nyní máte možnost použít rozhraní API pro čtení verze 3,0 k extrakci vytištěného nebo rukopisného textu z obrázků. V porovnání s předchozími verzemi 3,0 poskytuje:
-* Vylepšená přesnost
-* Nový výstupní formát
-* hodnocení spolehlivosti pro každé extrahované slovo
-* Podpora pro španělštinu i anglické jazyky s parametrem dalšího jazyka
+Nyní máte možnost použít verzi 3.0 rozhraní READ API k extrahování tištěného nebo ručně psaného textu z obrázků. Ve srovnání s předchozími verzemi 3.0 poskytuje:
+* vylepšená přesnost
+* nový výstupní formát
+* skóre spolehlivosti pro každé extrahované slovo
+* podpora španělského i anglického jazyka s dodatečným jazykovým parametrem
 
-Pokud chcete začít používat rozhraní 3,0 API, postupujte podle pokynů k [rychlému zprovoznění pro extrakci textu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3) .
+Chcete-li začít používat rozhraní API 3.0, postupujte [podle rychlého startu extrahovat text.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3)
 
-## <a name="cognitive-service-updates"></a>Aktualizace služby vnímání
+## <a name="cognitive-service-updates"></a>Aktualizace služby Cognitive Service
 
-[Oznámení o aktualizacích Azure pro Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Oznámení o aktualizacích Azure pro služby Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)

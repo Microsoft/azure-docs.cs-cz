@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Vytvoření webové stránky pro vlastní vyhledávání – Vlastní vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu se dozvíte, jak nakonfigurovat vlastní instanci vyhledávání Bingu a jak ji integrovat do webové stránky.
+description: Přečtěte si, jak nakonfigurovat vlastní instanci vyhledávání Bingu a integrovat ji do webové stránky v tomto kurzu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
 ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943915"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Kurz: Vytvoření webové stránky pro vlastní vyhledávání
@@ -32,10 +32,10 @@ Probírají se tyto úlohy:
 > - Přidání připnutých položek
 > - Integrace vlastního vyhledávání do webové stránky
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro vlastní vyhledávání Bingu.  Pokud chcete získat klíč, [vytvořte v Azure Portal prostředek vlastní vyhledávání Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) . můžete použít také [zkušební klíč](https://azure.microsoft.com/try/cognitive-services).
-- Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2017 nebo novější, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/).
+- Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro vlastní vyhledávání Bingu.  Chcete-li získat klíč, [vytvořte prostředek vlastního vyhledávání Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) na webu Azure Portal. můžete také použít [zkušební klíč](https://azure.microsoft.com/try/cognitive-services).
+- Pokud ještě nemáte nainstalovaný Visual Studio 2017 nebo novější, můžete si stáhnout a použít **bezplatnou** [visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-custom-search-instance"></a>Vytvoření instance vlastního vyhledávání
 
@@ -45,9 +45,9 @@ Vytvoření instance vlastního vyhledávání Bingu:
   
 2. Přejděte na [portál](https://customsearch.ai) vlastního vyhledávání.  
   
-3. Přihlaste se k portálu pomocí účtu Microsoft. Pokud nemáte MSA, klikněte na **vytvořit účet Microsoft**. Pokud na portálu používáte portál poprvé, bude požádat o oprávnění k přístupu k vašim datům. Klikněte na **Ano**.  
+3. Přihlaste se k portálu pomocí účtu Microsoft. Pokud msa nemáte, klikněte na **Vytvořit účet Microsoft**. Pokud portál používáte poprvé, požádá vás o oprávnění k přístupu k vašim datům. Klepněte na tlačítko **Ano**.  
   
-4. Po přihlášení klikněte na **Nové vlastní vyhledávání**. V okně **vytvořit novou instanci vlastního vyhledávání** zadejte smysluplný název a popis typu obsahu, který hledání vrátí. Název můžete kdykoli změnit.  
+4. Po přihlášení klikněte na **Nové vlastní vyhledávání**. V okně **Vytvořit novou vlastní instanci vyhledávání** zadejte název, který je smysluplný a popisuje typ obsahu, který hledání vrátí. Název můžete kdykoli změnit.  
   
    ![Snímek obrazovky s oknem Vytvořit novou instanci vlastního vyhledávání](../media/newCustomSrch.png)  
   
@@ -79,7 +79,7 @@ Pokud chcete vyloučit výsledky z konkrétních webů nebo adres URL, přidejte
 
 ## <a name="add-pinned-entries"></a>Přidání připnutých položek
 
-Chcete-li připnout konkrétní webovou stránku na začátek výsledků hledání, přidejte webovou stránku a dotaz na **připnuté** kartu. **Připnutá** karta obsahuje seznam párů webových stránek a termínů dotazu, které určují webovou stránku, která se zobrazí jako nejvyšší výsledek konkrétního dotazu. Webová stránka je připnuté pouze v případě, že řetězec dotazu uživatele odpovídá řetězci dotazu PIN na základě podmínky pro shodu PIN kódu. Ve vyhledávání se zobrazí pouze indexované webové stránky. Další informace najdete v tématu [Definování vlastního zobrazení](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
+Pokud chcete určitou webovou stránku připnout k horní části výsledků hledání, přidejte webovou stránku a termín dotazu na kartu **Připnuté.** Karta **Připnutá** obsahuje seznam dvojic termínů webových stránek a dotazů, které určují webovou stránku, která se zobrazí jako nejlepší výsledek pro konkrétní dotaz. Webová stránka je připnutá pouze v případě, že řetězec dotazu uživatele odpovídá řetězci dotazu špendlíku na základě podmínky shody špendlíku. Ve vyhledávání se zobrazí pouze indexované webové stránky. Další informace najdete v tématu [Definování vlastního zobrazení](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
 
 1. Na stránce **Konfigurace** klikněte na kartu **Připnuté** a zadejte webovou stránku, kterou chcete vrátit jako nejlepší výsledek, a její termín dotazu.  
   

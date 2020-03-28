@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči z mikrofonu C# , (Xamarin) – služba Speech'
+title: 'Úvodní příručka: Rozpoznávání řeči z mikrofonu, C# (Xamarin) - Služba řeči'
 titleSuffix: Azure Cognitive Services
-description: V tomto článku vytvoříte aplikaci Xamarin pro různé platformy C# pro Univerzální platforma Windows (UWP), Android a iOS pomocí sady Cognitive Services Speech SDK. Přepisovat řeči na text v reálném čase pomocí mikrofonu vašeho zařízení nebo simulátoru. Aplikace je sestavená pomocí balíčku NuGet sady Speech SDK a Microsoft Visual Studio 2019.
+description: V tomto článku vytvoříte aplikace C# Xamarin pro univerzální platformu Windows (UPW), Android a iOS pomocí sady Cognitive Services Speech SDK. Přepisujete řeč na text v reálném čase z mikrofonu vašeho zařízení nebo simulátoru. Aplikace je vytvořena pomocí balíčku Speech SDK NuGet package a Microsoft Visual Studio 2019.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,138 +11,138 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: 2ed41f424dfe985cc078314da5b138c7d7bcdf37
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924786"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=xamarin)
-> * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
+> * Ujistěte se, že máte přístup k mikrofonu pro snímání zvuku
 
-Pokud jste to již provedli, Skvělé. Pojďme pokračovat.
+Pokud jste to už udělali, skvělé. Pojďme dál.
 
-## <a name="add-sample-code-for-the-common-helloworld-project"></a>Přidat vzorový kód pro běžný projekt HelloWorld
+## <a name="add-sample-code-for-the-common-helloworld-project"></a>Přidat ukázkový kód pro společný projekt Helloworld
 
-Běžný projekt HelloWorld obsahuje implementace nezávislé na platformě pro vaši aplikaci pro různé platformy. Nyní přidejte kód jazyka XAML, který definuje uživatelské rozhraní aplikace, a přidejte C# kód za implementací.
+Společný projekt Helloworld obsahuje implementace nezávislé na platformě pro vaši aplikaci napříč platformami. Nyní přidejte kód XAML, který definuje uživatelské rozhraní aplikace, a přidejte kód Jazyka C# za implementaci.
 
-1. V **Průzkumník řešení**v části běžný projekt helloworld otevřete `MainPage.xaml`.
+1. V **Průzkumníku řešení**otevřete v `MainPage.xaml`rámci společného projektu Helloworld .
 
-1. V zobrazení jazyka XAML návrháře vložte následující fragment kódu XAML do značky **Grid** mezi `<StackLayout>` a `</StackLayout>`:
+1. V zobrazení XAML návrháře vložte do značky **Mřížka** mezi `<StackLayout>` a: `</StackLayout>`
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/MainPage.xaml)]
 
-1. V **Průzkumník řešení**otevřete zdrojový soubor kódu na pozadí `MainPage.xaml.cs`. Je seskupený pod `MainPage.xaml`.
+1. V **Průzkumníku řešení**otevřete zdrojový `MainPage.xaml.cs`soubor s kódem na pozadí . Je seskupena pod `MainPage.xaml`.
 
-1. Nahraďte veškerý kód v něm následujícím fragmentem kódu:
+1. Nahraďte veškerý kód v něm následujícím fragmentem:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/MainPage.xaml.cs)]
 
-1. V obslužné rutině `OnRecognitionButtonClicked` zdrojového souboru Najděte `YourSubscriptionKey`řetězce a nahraďte ho klíčem předplatného.
+1. Ve obslužné rutině `OnRecognitionButtonClicked` `YourSubscriptionKey`zdrojového souboru najděte řetězec a nahraďte ho klíčem předplatného.
 
 
-1. V obslužné rutině `OnRecognitionButtonClicked` Najděte řetězec `YourServiceregion`a nahraďte ho **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) , která je přidružená k vašemu předplatnému. (Například pro předplatné bezplatné zkušební verze použijte `westus`.)
+1. V `OnRecognitionButtonClicked` obslužné `YourServiceregion`rutině vyhledejte řetězec a nahraďte jej **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému. (Použijte například `westus` bezplatné zkušební předplatné.)
 
-1. Dál je potřeba vytvořit [službu Xamarin](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/), která se používá k dotazování na oprávnění mikrofonu z různých projektů platforem, jako je UWP, Android nebo iOS. Chcete-li to provést, přidejte do projektu HelloWorld novou složku s názvem *Services* a vytvořte pod ní C# nový zdrojový soubor. Můžete kliknout pravým tlačítkem na složku *služby* a vybrat **Přidat** > **novou položku** > souboru s **kódem**. Přejmenujte soubor `IMicrophoneService.cs`a do tohoto souboru umístěte veškerý kód z následujícího fragmentu kódu:
+1. Dále je třeba vytvořit [službu Xamarin](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/), která se používá k dotazování oprávnění mikrofonu z různých projektů platformy, jako je NAPříklad UPW, Android a iOS. Chcete-li to provést, přidejte novou složku s názvem *Služby* v rámci projektu helloworld a vytvořte pod ním nový zdrojový soubor Jazyka C#. Můžete klepnout pravým tlačítkem myši na složku *Služby* a vybrat **možnost Přidat** > **soubor kódu**nové**položky** > . Přejmenujte `IMicrophoneService.cs`soubor a umístěte do tohoto souboru veškerý kód z následujícího fragmentu:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
 #### <a name="android"></a>[Android](#tab/x-android)
-## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Přidat vzorový kód pro `helloworld.Android` projekt
+## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Přidání ukázkového `helloworld.Android` kódu projektu
 
-Nyní přidejte C# kód, který definuje část aplikace specifickou pro Android.
+Nyní přidejte kód Jazyka C#, který definuje část aplikace specifickou pro Android.
 
-1. V **Průzkumník řešení**v rámci HelloWorld. Projekt pro Android otevřete `MainActivity.cs`.
+1. V **Průzkumníku řešení**, pod helloworld. Android projekt, `MainActivity.cs`otevřít .
 
-1. Nahraďte veškerý kód v něm následujícím fragmentem kódu:
+1. Nahraďte veškerý kód v něm následujícím fragmentem:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.Android/MainActivity.cs)]
 
-1. V dalším kroku přidejte implementaci pro `MicrophoneService` specifickou pro Android vytvořením nové *služby* složky v rámci HelloWorld. Projekt pro Android. Potom vytvořte nový C# zdrojový soubor. Přejmenujte soubor `MicrophoneService.cs`. Zkopírujte a vložte následující fragment kódu do tohoto souboru:
+1. Dále přidejte implementaci specifickou pro `MicrophoneService` Android vytvořením nové složky *Služby* pod helloworld. Android projektu. Poté pod ním vytvořte nový zdrojový soubor Jazyka C#. Přejmenujte `MicrophoneService.cs`soubor . Zkopírujte a vložte do tohoto souboru následující fragment kódu:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.Android/Services/MicrophoneService.cs)]
 
-1. Potom otevřete `AndroidManifest.xml` ve složce Properties ( *vlastnosti* ). Přidejte následující nastavení použití-oprávnění pro mikrofon mezi `<manifest>` a `</manifest>`:
+1. Poté otevřete `AndroidManifest.xml` ve složce *Vlastnosti.* Mezi `<manifest>` a `</manifest>`:
 
    ```xml
    <uses-permission android:name="android.permission.RECORD_AUDIO" />
    ```
    
 #### <a name="ios"></a>[iOS](#tab/ios)
-## <a name="add-sample-code-for-the-helloworldios-project"></a>Přidat vzorový kód pro `helloworld.iOS` projekt
+## <a name="add-sample-code-for-the-helloworldios-project"></a>Přidání ukázkového `helloworld.iOS` kódu projektu
 
-Nyní přidejte C# kód, který definuje část aplikace specifickou pro iOS. V projektu HelloWorld. iOS taky vytvořte konfigurace specifické pro zařízení Apple.
+Nyní přidejte kód C#, který definuje část aplikace specifickou pro iOS. Vytvořte také konfigurace specifické pro zařízení Apple pro projekt helloworld.iOS.
 
-1. V **Průzkumník řešení**v projektu HelloWorld. iOS otevřete `AppDelegate.cs`.
+1. V **Průzkumníku řešení**otevřete v projektu helloworld.iOS . `AppDelegate.cs`
 
-1. Nahraďte veškerý kód v něm následujícím fragmentem kódu:
+1. Nahraďte veškerý kód v něm následujícím fragmentem:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.iOS/AppDelegate.cs)]
 
-1. V dalším kroku přidejte implementaci pro `MicrophoneService` specifickou pro iOS vytvořením nové *služby* složky v projektu HelloWorld.IO. Potom vytvořte nový C# zdrojový soubor. Přejmenujte soubor `MicrophoneService.cs`. Zkopírujte a vložte následující fragment kódu do tohoto souboru:
+1. Dále přidejte implementaci specifickou `MicrophoneService` pro iOS vytvořením nové složky *Služby* v rámci projektu helloworld.iO. Poté pod ním vytvořte nový zdrojový soubor Jazyka C#. Přejmenujte `MicrophoneService.cs`soubor . Zkopírujte a vložte do tohoto souboru následující fragment kódu:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.iOS/Services/MicrophoneService.cs)]
 
-1. V textovém editoru otevřete `Info.plist` v rámci projektu HelloWorld. iOS. Do části dict – přidejte následující dvojici klíčových hodnot:
+1. Otevřete `Info.plist` pod projektem helloworld.iOS v textovém editoru. Pod oddíl dict přidejte následující dvojici hodnot klíče:
 
    <key>NSMicrophoneUsageDescription</key>
-   <string>Tato ukázková aplikace vyžaduje přístup přes mikrofon</string> .
+   <string>Tato ukázková aplikace vyžaduje přístup k mikrofonu</string>
 
    > [!NOTE]
-   > Pokud vytváříte zařízení pro iPhone, ujistěte se, že `Bundle Identifier` odpovídat ID aplikace profilu zřizování vašeho zařízení. V opačném případě se sestavení nezdaří. Pomocí iPhoneSimulator můžete ponechat tak, jak je.
+   > Pokud vytváříte pro iPhone zařízení, `Bundle Identifier` ujistěte se, že odpovídá ID zřizovacího profilu vašeho zařízení. V opačném případě sestavení se nezdaří. S iPhoneSimulator, můžete nechat tak, jak je.
 
-1. Pokud vytváříte počítač s Windows, navažte připojení k zařízení Mac pro sestavování prostřednictvím **nástrojů** > dvojice > iOS **do počítače Mac**. Postupujte podle pokynů průvodce, který poskytuje Visual Studio, a povolte tak připojení k zařízení Mac.
+1. Pokud stavíte na počítači s Windows, navazte na připojení k zařízení Mac pro vytváření pomocí nástrojů > **iOS** > **Pair to Mac**. **Tools** Chcete-li povolit připojení k zařízení Mac, postupujte podle pokynů poskytnutých souborem Visual Studio.
 
-#### <a name="uwp"></a>[PODPORUJÍ](#tab/helloworlduwp)
-## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Přidat vzorový kód pro `helloworld.UWP` projekt
+#### <a name="uwp"></a>[UWP](#tab/helloworlduwp)
+## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Přidání ukázkového `helloworld.UWP` kódu projektu
 
-## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Přidejte vzorový kód pro HelloWorld. Projekt UWP
+## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Přidejte ukázkový kód pro helloworld. Projekt UPW
 
-Nyní přidejte C# kód, který definuje část aplikace specifickou pro UWP.
+Nyní přidejte kód Jazyka C#, který definuje část aplikace specifickou pro UPW.
 
-1. V **Průzkumník řešení**v rámci HelloWorld. Projekt UWP otevřete `MainPage.xaml.cs`.
+1. V **Průzkumníku řešení**, pod helloworld. Projekt UPW, `MainPage.xaml.cs`otevřít .
 
-1. Nahraďte veškerý kód v něm následujícím fragmentem kódu:
+1. Nahraďte veškerý kód v něm následujícím fragmentem:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.UWP/MainPage.xaml.cs)]
 
-1. Dále přidejte implementaci pro `MicrophoneService` specifickou pro UWP tím, že vytvoříte nové *služby* složky v rámci HelloWorld. Projekt UWP. Potom vytvořte nový C# zdrojový soubor. Přejmenujte soubor `MicrophoneService.cs`. Zkopírujte a vložte následující fragment kódu do tohoto souboru:
+1. Dále přidejte implementaci specifickou `MicrophoneService` pro UWP vytvořením nové složky *Služby* pod helloworld. Projekt UPW. Poté pod ním vytvořte nový zdrojový soubor Jazyka C#. Přejmenujte `MicrophoneService.cs`soubor . Zkopírujte a vložte do tohoto souboru následující fragment kódu:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.UWP/Services/MicrophoneService.cs)]
 
-1. Potom poklikejte na soubor `Package.appxmanifest` pod HelloWorld. Projekt UWP v aplikaci Visual Studio. V části **Možnosti**se ujistěte, že je vybraná možnost **mikrofon** , a uložte soubor.
+1. Dále poklepejte `Package.appxmanifest` na soubor pod helloworld. UWP projektu uvnitř Sady Visual. V části **Capabilities**zkontrolujte, zda je vybraná volba **Mikrofon,** a uložte soubor.
 
-1. Dále dvakrát klikněte na `Package.appxmanifest` soubor pod projektem `helloworld.UWP` v aplikaci Visual Studio a v části **možnosti** > je zaškrtnuto políčko **mikrofon** a soubor uložte.
-   > Poznámka: pro případ, že se zobrazí upozornění: soubor certifikátu neexistuje: HelloWorld. UWP_TemporaryKey. pfx, další informace najdete v ukázce [řeči na text](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp) .
+1. Další poklepání `Package.appxmanifest` na `helloworld.UWP` soubor v rámci projektu uvnitř sady Visual Studio a v části **Možnosti** > **mikrofon** je zaškrtnuto a uložte soubor.
+   > Poznámka: V případě, že vidíte varování : Soubor certifikátu neexistuje: helloworld. UWP_TemporaryKey.pfx, zkontrolujte, zda [řeč na vzorek textu](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp) pro více informací.
 
-1. V řádku nabídek vyberte **soubor** > **Uložit vše** a uložte provedené změny.
+1. Na řádku nabídek vyberte **Uložit** > **vše,** chcete-li uložit změny.
 
-## <a name="build-and-run-the-uwp-application"></a>Sestavení a spuštění aplikace UWP
+## <a name="build-and-run-the-uwp-application"></a>Sestavení a spuštění aplikace UPW
 
-1. Nastavte HelloWorld. UWP jako spouštěný projekt. Klikněte pravým tlačítkem myši na HelloWorld. Pro projekt UWP a vyberte **sestavení** pro sestavení aplikace.
+1. Nastavte helloworld. UWP jako spouštěcí projekt. Klikněte pravým tlačítkem myši na svět vítání. UWP projektu a vyberte **sestavení** k sestavení aplikace.
 
-1. Vyberte **ladění** > **Spustit ladění** (nebo vyberte **F5**) a spusťte tak aplikaci. Zobrazí se okno **HelloWorld** .
+1. Chcete-li spustit aplikaci, vyberte **možnost Ladění** > **zahájit ladění** (nebo vyberte možnost **F5).** Zobrazí se okno **Helloworld.**
 
-   ![Ukázková aplikace pro rozpoznávání řeči C# UWP v rychlém startu](../../../../media/sdk/qs-csharp-xamarin-helloworld-uwp-window.png)
+   ![Ukázka aplikace rozpoznávání řeči UpW v c# - rychlý start](../../../../media/sdk/qs-csharp-xamarin-helloworld-uwp-window.png)
 
-1. Vyberte **Povolit mikrofon**. Po zobrazení žádosti o oprávnění k přístupu vyberte **Ano**.
+1. Vyberte **povolit mikrofon**. Po zobrazíní žádost o přístupová oprávnění vyberte **Ano**.
 
    ![Žádost o oprávnění k přístupu k mikrofonu](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
 
-1. Vyberte možnost **spustit rozpoznávání řeči**a mluvte do mikrofonu zařízení anglickou frázi nebo větu. Vaše řeč se přenese do služby Speech a přepíše na text, který se zobrazí v okně.
+1. Vyberte **Spustit rozpoznávání řeči**a do mikrofonu zařízení vyslovte anglickou frázi nebo větu. Vaše řeč se přenese do služby Speech a přepíše na text, který se zobrazí v okně.
 
-   ![Uživatelské rozhraní rozpoznávání řeči](../../../../media/sdk/qs-csharp-xamarin-uwp-ui-result.png)
+   ![Uživatelské rozhraní pro rozpoznávání řeči](../../../../media/sdk/qs-csharp-xamarin-uwp-ui-result.png)
 * * *
 
-## <a name="build-and-run-the-android-and-ios-applications"></a>Sestavování a spouštění aplikací pro Android a iOS
+## <a name="build-and-run-the-android-and-ios-applications"></a>Vytváření a spouštění aplikací pro Android a iOS
 
-Sestavování a spouštění aplikací pro Android a iOS v zařízení nebo simulátoru dochází podobně jako u UWP. Ujistěte se, že všechny sady SDK jsou správně nainstalované podle požadavků v tomto článku v části požadavky.
+Vytváření a spouštění aplikací pro Android a iOS v zařízení nebo simulátoru se děje podobným způsobem jako UPW. Ujistěte se, že všechny sady SDK jsou nainstalovány správně podle potřeby v části "Požadavky" tohoto článku.
 
 ## <a name="next-steps"></a>Další kroky
 

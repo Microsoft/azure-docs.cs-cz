@@ -1,34 +1,34 @@
 ---
-title: Hledání podobných imagí z předchozích hledání pomocí ImageInsightsToken-Vizuální vyhledávání Bingu
+title: Najít podobné obrázky z předchozích vyhledávání pomocí ImageInsightsToken - Vizuální vyhledávání Bing
 titleSuffix: Azure Cognitive Services
-description: Vizuální vyhledávání Bingu SDK použijte k získání adres URL imagí určených nástrojem ImageInsightsToken.
+description: Pomocí sady SDK vizuálního vyhledávání Bingu můžete získat adresy URL obrázků určených tokenem ImageInsightsToken.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/27/2020
 ms.author: aahi
-ms.openlocfilehash: dff96b19f40c2d897b6a018a4c46cec60f8aa201
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: d005800ed317ff21389f18e4440858ea11042e53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689310"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370078"
 ---
-# <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>Hledání podobných obrázků z předchozích hledání pomocí ImageInsightsToken
+# <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>Kurz: Vyhledání podobných obrázků z předchozích vyhledávání pomocí tokenu přehledů obrázků
 
-Sada Vizuální vyhledávání SDK umožňuje najít image online z předchozích hledání, která vrací `ImageInsightsToken`. Tato aplikace získá `ImageInsightsToken` a použije token při následném hledání. Pak pošle `ImageInsightsToken` do Bingu a vrátí výsledky, které zahrnují Vyhledávání Bingu adresy URL a adresy URL podobných imagí, které byly online.
+Sada Visual Search SDK umožňuje vyhledat obrázky online `ImageInsightsToken`z předchozích hledání, která vracejí soubor . Tato aplikace `ImageInsightsToken` získá a používá token v následném hledání. Potom odešle `ImageInsightsToken` bing a vrátí výsledky, které zahrnují adresy URL vyhledávání Bing a adresy URL podobných obrázků nalezených online.
 
-Úplný zdrojový kód pro tento kurz najdete v části Další zpracování chyb a poznámky na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs).
+Úplný zdrojový kód pro tento kurz lze nalézt s další zpracování chyb a poznámky na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).
-* Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
-* Balíčky NuGet Vizuální vyhledávání a Vyhledávání obrázků.
-    - Z Průzkumník řešení v aplikaci Visual Studio klikněte pravým tlačítkem myši na projekt a v nabídce vyberte možnost **Spravovat balíčky NuGet** . Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch` a balíček `Microsoft.Azure.CognitiveServices.Search.ImageSearch`. Instalace balíčků NuGet nainstaluje také následující:
+* Libovolné vydání [Visual Studia 2019](https://www.visualstudio.com/downloads/).
+* Pokud používáte Linux/MacOS, můžete spustit tuto aplikaci pomocí [Mono](https://www.mono-project.com/).
+* NuGet Visual Search a image Search balíčky.
+    - V Průzkumníku řešení v sadě Visual Studio klikněte pravým tlačítkem myši na váš projekt a v nabídce vyberte **Spravovat balíčky NuGet.** Nainstalujte `Microsoft.Azure.CognitiveServices.Search.CustomSearch` balíček `Microsoft.Azure.CognitiveServices.Search.ImageSearch` a balíček. Instalace balíčků NuGet také nainstaluje následující:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -36,9 +36,9 @@ Sada Vizuální vyhledávání SDK umožňuje najít image online z předchozíc
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>Získat ImageInsightsToken ze sady SDK pro Vyhledávání obrázků Bingu
+## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>Získání imageInsightsToken z bing image search SDK
 
-Tato aplikace používá `ImageInsightsToken` získanou prostřednictvím [sady vyhledávání obrázků Bingu SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart). V nové C# konzolové aplikaci vytvořte klienta pro volání rozhraní API pomocí `ImageSearchClient()`. Pak použijte `SearchAsync()` s vaším dotazem:
+Tato aplikace `ImageInsightsToken` používá získané prostřednictvím [Bing Image Search SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart). V nové aplikaci konzoly C# vytvořte `ImageSearchClient()`klienta pro volání rozhraní API pomocí . Potom `SearchAsync()` použijte s dotazem:
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
@@ -46,7 +46,7 @@ var imageResults = client.Images.SearchAsync(query: "canadian rockies").Result;
 Console.WriteLine("Search images for query \"canadian rockies\"");
 ```
 
-Uložte první výsledek hledání pomocí `imageResults.Value.First()`a potom uložte `ImageInsightsToken`Insight pro obrázky.
+Uložte první výsledek `imageResults.Value.First()`hledání pomocí aplikace a `ImageInsightsToken`potom uložte přehled obrázků .
 
 ```csharp
 String insightTok = "None";
@@ -62,19 +62,19 @@ else
 }
 ```
 
-Tato `ImageInsightsToken` se pošle do Vizuální vyhledávání Bingu v žádosti.
+Tato `ImageInsightsToken` možnost je odeslána do vizuálního vyhledávání Bingu v žádosti.
 
-## <a name="add-the-imageinsightstoken-to-a-visual-search-request"></a>Přidání ImageInsightsToken do žádosti o Vizuální vyhledávání
+## <a name="add-the-imageinsightstoken-to-a-visual-search-request"></a>Přidání tokenu ImageInsightsToken do požadavku vizuálního vyhledávání
 
-Určete `ImageInsightsToken` pro požadavek Vizuální vyhledávání vytvořením objektu `ImageInfo` z `ImageInsightsToken` obsaženého v odpovědích z Vizuální vyhledávání Bingu.
+Zadejte `ImageInsightsToken` požadavek vizuálního hledání `ImageInfo` vytvořením `ImageInsightsToken` objektu z odpovědí obsažených z vizuálního vyhledávání Bing.
 
 ```csharp
 ImageInfo ImageInfo = new ImageInfo(imageInsightsToken: insightsTok);
 ```
 
-## <a name="use-bing-visual-search-to-find-images-from-an-imageinsightstoken"></a>Hledání imagí z ImageInsightsToken pomocí Vizuální vyhledávání Bingu
+## <a name="use-bing-visual-search-to-find-images-from-an-imageinsightstoken"></a>Hledání obrázků z tokenu ImageInsightsToken pomocí vizuálního vyhledávání Bingu
 
-Objekt `VisualSearchRequest` obsahuje informace o obrázku v `ImageInfo` k prohledání. Metoda `VisualSearchMethodAsync()` získá výsledky. Není nutné zadávat binární soubor obrázku, protože je obrázek reprezentován tokenem.
+Objekt `VisualSearchRequest` obsahuje informace o `ImageInfo` obrázku, který má být prohledán. Metoda `VisualSearchMethodAsync()` získá výsledky. Není třeba zadat binární obrázek, jako obrázek je reprezentován token.
 
 ```csharp
 VisualSearchRequest VisualSearchRequest = new VisualSearchRequest(ImageInfo);
@@ -83,9 +83,9 @@ var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest
 
 ```
 
-## <a name="iterate-through-the-visual-search-results"></a>Iterace prostřednictvím výsledků Vizuální vyhledávání
+## <a name="iterate-through-the-visual-search-results"></a>Iterate prostřednictvím výsledků vizuálního hledání
 
-Výsledky Vizuálního vyhledávání jsou objekty `ImageTag`. Každá značka obsahuje seznam objektů `ImageAction`. Každý `ImageAction` obsahuje `Data` pole, což je seznam hodnot, které závisí na typu akce. Můžete iterovat objekty `ImageTag` v `visualSearchResults.Tags`, například, a získat značku `ImageAction` v rámci této třídy. Následující ukázka vytiskne podrobnosti o `PagesIncluding` akcích:
+Výsledky Vizuálního vyhledávání jsou objekty `ImageTag`. Každá značka obsahuje seznam objektů `ImageAction`. Každé `ImageAction` obsahuje `Data` pole, což je seznam hodnot, které závisí na typu akce. Můžete iterate prostřednictvím `ImageTag` `visualSearchResults.Tags`objektů v , například, a získat `ImageAction` značku v něm. Následující ukázka vytiskne podrobnosti o akcích: `PagesIncluding`
 
 ```csharp
 if (visualSearchResults.Tags.Count > 0)
@@ -109,9 +109,9 @@ if (visualSearchResults.Tags.Count > 0)
 }
 ```
 
-### <a name="pagesincluding-actiontypes"></a>PagesIncluding ActionTypes
+### <a name="pagesincluding-actiontypes"></a>Stránky včetně actiontypes
 
-Získání skutečných adres URL obrázků z typů akcí vyžaduje přetypování, které čte `ActionType` jako `ImageModuleAction`, který obsahuje prvek `Data` se seznamem hodnot. Každá hodnota je adresa URL obrázku.  Následující přetypování `PagesIncluding` typ akce na `ImageModuleAction` a přečte hodnoty:
+Získání skutečné image adresy URL z typů akcí `ActionType` vyžaduje `ImageModuleAction`přetypování, který čte as , který obsahuje `Data` prvek se seznamem hodnot. Každá hodnota je adresa URL obrázku.  Následující přetypování `PagesIncluding` typu `ImageModuleAction` akce a přečte hodnoty:
 
 ```csharp
     if (i.ActionType == "PagesIncluding")
@@ -129,19 +129,19 @@ Další informace o těchto typech dat najdete v článku [Obrázky – Vizuáln
 
 Úplná aplikace vrátí následující adresy URL:
 
-|Typ akce  |Adresa URL  | |
+|ActionType  |zprostředkovatele identity  | |
 |---------|---------|---------|
-|MoreSizes-> WebSearchUrl     |         |
-|VisualSearch-> WebSearchUrl     |         |
-|ImageById-> WebSearchUrl    |         |
-|RelatedSearches-> WebSearchUrl:    |         |
-|DocumentLevelSuggestions-> WebSearchUrl:     |         |
-|TopicResults-> WebSearchUrl    | https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1       |
-|ImageResults-> WebSearchUrl    |  https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1       |
+|MoreSizes -> WebSearchUrl     |         |
+|VisualSearch -> WebSearchUrl     |         |
+|ImageById -> WebSearchUrl    |         |
+|RelatedSearches -> WebSearchUrl:    |         |
+|DocumentLevelSuggestions -> WebSearchUrl:     |         |
+|TopicResults -> WebSearchUrl    | https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQmzdKFyYBusjLxxgO42kzq 1Geh7RucVVQvH-900&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1       |
+|ImageResults -> WebSearchUrl    |  https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveS DRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1       |
 
-Jak vidíte výše, typy `TopicResults` a `ImageResults` obsahují dotazy na související obrázky. Adresy URL odkazují na výsledky vyhledávání Bingu.
+Jak je uvedeno `TopicResults` `ImageResults` výše, a typy obsahují dotazy na související obrázky. Adresy URL odkazují na výsledky hledání Bingu.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace Vizuální vyhledávání jednostránkového stránkování](tutorial-bing-visual-search-single-page-app.md)
+> [Vytvoření jednostránkové webové aplikace vizuálního vyhledávání](tutorial-bing-visual-search-single-page-app.md)
