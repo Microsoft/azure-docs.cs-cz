@@ -1,47 +1,41 @@
 ---
-title: Skript Azure Powershellu ukázkový – výpočet fakturace celkové velikosti kontejneru objektů blob | Dokumentace Microsoftu
-description: Vypočítejte celkovou velikost kontejneru v úložišti objektů Blob v Azure pro účely fakturace.
+title: Ukázka skriptu Azure PowerShell – výpočet celkové velikosti fakturace kontejneru objektů blob | Dokumenty společnosti Microsoft
+description: Vypočítejte celkovou velikost kontejneru v úložišti objektů Blob Azure pro účely fakturace.
 services: storage
-documentationcenter: na
 author: fhryo-msft
-manager: cbrooks
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
+ms.subservice: blobs
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 02b4cfcc6d88430701f653665269532a4eb7092f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12b32256c91dfcf93ca55eeb348cc78613ba860e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60460635"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067104"
 ---
-# <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Výpočet fakturace celkové velikosti kontejneru objektů blob
+# <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Výpočet celkové velikosti fakturace kontejneru objektů blob
 
-Tento skript vypočítá velikost kontejneru v úložišti objektů Blob v Azure pro účely odhad fakturačních nákladů. Skript sečte velikost objektů BLOB v kontejneru.
+Tento skript vypočítá velikost kontejneru v úložišti objektů Blob Azure pro účely odhadu fakturačních nákladů. Skript stotals velikost objektů BLOB v kontejneru.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> Tento skript Powershellu vypočítá velikost kontejneru pro účely fakturace. Pokud se výpočet velikosti kontejneru pro jiné účely, přečtěte si téma [vypočítat celkové velikosti úložiště kontejner objektů Blob](../scripts/storage-blobs-container-calculate-size-powershell.md) jednodušší skript, který poskytuje odhad.
+> Tento skript prostředí PowerShell vypočítá velikost kontejneru pro účely fakturace. Pokud počítáte velikost kontejneru pro jiné účely, [přečtěte si téma Výpočet celkové velikosti kontejneru úložiště objektů Blob](../scripts/storage-blobs-container-calculate-size-powershell.md) pro jednodušší skript, který poskytuje odhad.
 
 ## <a name="determine-the-size-of-the-blob-container"></a>Určení velikosti kontejneru objektů blob
 
-Celková velikost kontejneru objektů blob zahrnuje velikost kontejner sám o sobě a velikost všech objektů BLOB v kontejneru.
+Celková velikost kontejneru objektů blob zahrnuje velikost samotného kontejneru a velikost všech objektů BLOB pod kontejnerem.
 
-V dalších částech se popisuje, jak se počítá kapacita úložiště pro kontejnery objektů blob a objekty BLOB. V následující části Len(X) znamená, že počet znaků v řetězci.
+Následující části popisují, jak se vypočítá kapacita úložiště pro kontejnery objektů blob a objekty BLOB.V následující části Len(X) znamená počet znaků v řetězci.
 
-### <a name="blob-containers"></a>Kontejnery objektů BLOB
+### <a name="blob-containers"></a>Kontejnery s objekty blob
 
-Následující výpočet popisuje, jak odhadnout objem úložiště za kontejner objektů blob:
+Následující výpočet popisuje, jak odhadnout množství úložiště, které je spotřebováno na kontejner objektů blob:
 
 ```
 48 bytes + Len(ContainerName) * 2 bytes +
@@ -49,18 +43,18 @@ For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
 For-Each Signed Identifier[512 bytes]
 ```
 
-Tady je rozpis:
-* aspoň 48 bajtů režie pro každý kontejner obsahuje čas poslední změny, oprávnění, nastavení veřejné a některá metadata systému.
+Níže je rozdělení:
+* 48 bajtů režie pro každý kontejner zahrnuje čas poslední změny, oprávnění, veřejná nastavení a některá systémová metadata.
 
-* Název kontejneru je uložena ve formátu Unicode, takže trvat počet znaků a zdvojnásobte.
+* Název kontejneru je uložen jako Unicode, takže se počet znaků a vynásobte dvěma.
 
-* Pro každý blok metadat objektu blob kontejneru, který je uložený uložíme délka názvu (ASCII), a navíc délka řetězcové hodnoty.
+* Pro každý blok metadat kontejneru objektů blob, který je uložen, ukládáme délku názvu (ASCII) plus délku hodnoty řetězce.
 
-* 512 bajtů na podepsané identifikátor obsahuje název identifikátoru podepsaný držitelem, čas zahájení, čas vypršení platnosti a oprávnění.
+* 512 bajtů na podepsaný identifikátor zahrnuje název podepsaného identifikátoru, čas zahájení, čas vypršení platnosti a oprávnění.
 
 ### <a name="blobs"></a>Objekty blob
 
-Tyto výpočty ukazují, jak odhadnout objem úložiště spotřebované u jednotlivých objektů blob.
+Následující výpočty ukazují, jak odhadnout množství úložiště spotřebovaného na objekt blob.
 
 * Objekt blob bloku (základní objekt blob nebo snímek):
 
@@ -81,51 +75,51 @@ Tyto výpočty ukazují, jak odhadnout objem úložiště spotřebované u jedno
    SizeInBytes(data in unique pages stored)
    ```
 
-Tady je rozpis:
+Níže je rozdělení:
 
-* 124 bajty režie pro objekt blob, který obsahuje:
-    - Čas poslední úpravy
+* 124 bajtů režie pro objekt blob, který zahrnuje:
+    - Čas poslední změny
     - Velikost
-    - Cache-Control
+    - Řízení mezipaměti
     - Typ obsahu
-    - Jazyk obsahu
+    - Obsah-jazyk
     - Kódování obsahu
-    - Content-MD5
+    - Obsah-MD5
     - Oprávnění
     - Informace o snímku
-    - Zapůjčení
-    - Některá metadata systému
+    - Pronájem
+    - Některá systémová metadata
 
-* Název objektu blob se ukládá jako kódování Unicode, takže trvat počet znaků a zdvojnásobte.
+* Název objektu blob je uložen jako Unicode, takže vezměte počet znaků a vynásobte dvěma.
 
-* Pro každý blok metadat, která je uložena přidáte délka názvu (uložené ve formátu ASCII), a navíc délka řetězcové hodnoty.
+* Pro každý blok metadat, který je uložen, přidejte délku názvu (uložené jako ASCII) plus délku hodnoty řetězce.
 
 * Pro objekty BLOB bloku:
-  * 8 bajtů pro do seznamu zakázaných položek.
-  * Počet bloků časový limit velikosti bloku ID v bajtech.
-  * Velikost dat ve všech bloků nepotvrzené a potvrzené.
+  * 8 bajtů pro seznam blokování.
+  * Počet bloků krát velikost ID bloku v bajtů.
+  * Velikost dat ve všech potvrzených a nepotvrzených bloků.
 
     >[!NOTE]
-    >Zadáním snímky tato velikost obsahuje pouze jedinečné data pro tento základní nebo snímek objektu blob. Pokud po týdnu nejsou použity nepotvrzené bloky, jsou uvolnění paměti. Po tomto není počet směrem k fakturaci.
+    >Při použití snímků tato velikost zahrnuje pouze jedinečná data pro tento základní nebo snímek objektu blob. Pokud nepotvrzené bloky nejsou použity po týdnu, jsou uvolněny. Poté se nezapočítávají do fakturace.
 
 * Pro objekty BLOB stránky:
-  * Počet rozsahů nejdou stránky s daty vyprší 12 bajtů. Toto je počet jedinečných rozsahů se zobrazí při volání **GetPageRanges** rozhraní API.
+  * Počet nepo sobě jdoucích rozsahů stránek s daty krát 12 bajtů. Toto je počet jedinečných rozsahů stránek, které se zobrazí při volání rozhraní **API GetPageRanges.**
 
-  * Velikost dat v bajtech všech uložených stránek.
+  * Velikost dat v bajtů všech uložených stránek.
 
     >[!NOTE]
-    >Zadáním snímky tato velikost obsahuje pouze jedinečné stránek pro základní objekt blob nebo pořízení snímku objektu blob, který se právě počítá.
+    >Při použití snímků tato velikost zahrnuje pouze jedinečné stránky pro základní objekt blob nebo snímek objektu blob, který se počítá.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
 [!code-powershell[main](../../../powershell_scripts/storage/calculate-container-size/calculate-container-size-ex.ps1 "Calculate container size")]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [vypočítat celkové velikosti úložiště kontejner objektů Blob](../scripts/storage-blobs-container-calculate-size-powershell.md) jednoduchý skript, který poskytuje odhad velikosti kontejneru.
+- Viz [Výpočet celkové velikosti kontejneru úložiště objektů Blob](../scripts/storage-blobs-container-calculate-size-powershell.md) pro jednoduchý skript, který poskytuje odhad velikosti kontejneru.
 
-- Další informace o fakturaci Azure Storage najdete v tématu [Principy Windows Azure Storage fakturace](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
+- Další informace o fakturaci služby Azure Storage najdete [v tématu Principy fakturace úložiště Windows Azure](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-- Další informace o modulu Azure Powershellu najdete v tématu [dokumentaci k Azure Powershellu](https://docs.microsoft.com/powershell/azure/overview).
+- Další informace o modulu Azure PowerShell najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview).
 
-- Můžete najít další ukázkové skripty Powershellu pro úložiště v [ukázky Powershellu pro Azure Storage](../blobs/storage-samples-blobs-powershell.md).
+- Další ukázky skriptů Prostředí PowerShell najdete ve [ukázkách Prostředí PowerShell pro Azure Storage](../blobs/storage-samples-blobs-powershell.md).

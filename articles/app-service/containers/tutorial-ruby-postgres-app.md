@@ -1,20 +1,20 @@
 ---
-title: 'Kurz: aplikace pro Linux Ruby s Postgres'
-description: Naučte se, jak získat aplikaci pro Linux Ruby v Azure App Service práci s připojením k databázi PostgreSQL v Azure. V tomto kurzu se používají kolejnice.
+title: 'Výuka: Aplikace Linux Ruby s Postgresem'
+description: Zjistěte, jak ve službě Azure App Service pracovat aplikaci Linux Ruby s připojením k databázi PostgreSQL v Azure. Kolejnice se používá v tutoriálu.
 ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 6ce52b9754f69ef9c6eaf1f59062b6366670985f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 7339bb1ec2c16e9d6c83d2cbae8810b660b60765
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524025"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80045481"
 ---
-# <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace Ruby a Postgres v Azure App Service v systému Linux
+# <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace Ruby a Postgres ve službě Azure App Service na Linuxu
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. V tomto kurzu se dozvíte, jak vytvořit aplikaci v Ruby a připojit ji k databázi PostgreSQL. Po dokončení budete mít ve službě App Service v Linuxu spuštěnou aplikaci [Ruby on Rails](https://rubyonrails.org/).
+[App Service na Linuxu](app-service-linux-intro.md) poskytuje vysoce škálovatelnou webhostingovou službu s vlastní mizákou pomocí operačního systému Linux. Tento kurz ukazuje, jak vytvořit aplikaci Ruby a připojit ji k databázi PostgreSQL. Po dokončení budete mít ve službě App Service v Linuxu spuštěnou aplikaci [Ruby on Rails](https://rubyonrails.org/).
 
 ![Aplikace Ruby on Rails spuštěná ve službě Azure App Service](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
@@ -23,7 +23,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvořit databázi PostgreSQL v Azure
 > * Připojit k PostgreSQL aplikaci Ruby on Rails
-> * Nasazení aplikace do Azure
+> * Nasadit aplikaci do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat diagnostické protokoly z Azure
 > * Spravovat aplikaci na webu Azure Portal
@@ -110,15 +110,15 @@ Pokud chcete server Rails zastavit, zadejte do terminálu `Ctrl + C`.
 
 V tomto kroku vytvoříte v [Azure Database for PostgreSQL](/azure/postgresql/) databázi Postgres. Později nakonfigurujete aplikaci Ruby on Rails pro připojení k této databázi.
 
-### <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
+### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
 ### <a name="create-a-postgres-server"></a>Vytvoření serveru Postgres
 
-Vytvořte server PostgreSQL pomocí příkazu [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create).
+Vytvořte postgresql server [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) s příkazem.
 
-Na Cloud Shell spusťte následující příkaz a nahraďte zástupný text *\<Postgres-server-name >* jedinečným názvem serveru. Název serveru musí být jedinečný mezi všemi servery v Azure. 
+Spusťte následující příkaz v prostředí Cloud Shell a nahraďte jedinečný název serveru zástupným symbolem * \<postgres-server>.* Název serveru musí být jedinečný mezi všemi servery v Azure. 
 
 ```azurecli-interactive
 az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres-server-name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2
@@ -148,7 +148,7 @@ Po vytvoření serveru Azure Database for PostgreSQL se v Azure CLI zobrazí pod
 
 ### <a name="configure-server-firewall"></a>Konfigurace brány firewall serveru
 
-Ve službě Cloud Shell pomocí příkazu [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) vytvořte pro svůj server Postgres pravidlo brány firewall umožňující klientská připojení. Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. Zástupný text *\<Postgres-server-name >* nahraďte jedinečným názvem serveru.
+V prostředí Cloud Shell vytvořte pravidlo brány firewall pro server Postgres, které umožní připojení klientů pomocí příkazu. [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. Nahraďte zástupný * \<symbol postgres-server-name>* jedinečný název serveru.
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -160,13 +160,13 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 
 ### <a name="connect-to-production-postgres-server-locally"></a>Místní připojení k produkčnímu serveru Postgres
 
-Ve službě Cloud Shell se připojte k serveru Postgres v Azure. Pro _&lt;Postgres-server-name >_ zástupné symboly použijte hodnotu, kterou jste zadali dříve.
+Ve službě Cloud Shell se připojte k serveru Postgres v Azure. Použijte hodnotu, kterou jste zadali dříve pro zástupné _ &lt;symboly postgres-server-name>._
 
 ```bash
 psql -U adminuser@<postgres-server-name> -h <postgres-server-name>.postgres.database.azure.com postgres
 ```
 
-Po zobrazení výzvy k zadání hesla použijte heslo _My5up3r$tr0ngPa$w0rd!_ , které jste zadali při vytváření databázového serveru.
+Po zobrazení výzvy k zadání hesla použijte heslo _My5up3r$tr0ngPa$w0rd!_, které jste zadali při vytváření databázového serveru.
 
 ### <a name="create-a-production-database"></a>Vytvoření produkční databáze
 
@@ -208,7 +208,7 @@ production:
 
 Uložte změny.
 
-### <a name="test-the-application-locally"></a>Testování aplikace v místním prostředí
+### <a name="test-the-application-locally"></a>Test aplikace v místním prostředí
 
 Vraťte se do místního terminálu a nastavte následující proměnné prostředí:
 
@@ -275,7 +275,7 @@ git commit -m "database.yml updates"
 
 Vaše aplikace je připravená k nasazení.
 
-## <a name="deploy-to-azure"></a>Nasadit do Azure
+## <a name="deploy-to-azure"></a>Nasazení do Azure
 
 V tomto kroku nasadíte aplikaci Rails připojenou k Postgres do služby Azure App Service.
 
@@ -295,7 +295,7 @@ V tomto kroku nasadíte aplikaci Rails připojenou k Postgres do služby Azure A
 
 Ve službě App Service můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) v Cloud Shellu.
 
-Následující příkaz Cloud Shellu nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Zástupné symboly nahraďte _&lt;název_aplikace >_ a _&lt;Postgres-server-name >_ .
+Následující příkaz Cloud Shellu nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Nahraďte zástupné symboly _ &lt;>appname_ a _ &lt;>postgres-server-name _.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="railsappuser@<postgres-server-name>" DB_PASSWORD="MyPostgresAzure2017"
@@ -303,7 +303,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 ### <a name="configure-rails-environment-variables"></a>Konfigurace proměnných prostředí Rails
 
-V místním terminálu [Vygenerujte nový tajný klíč](configure-language-ruby.md#set-secret_key_base-manually) pro produkční prostředí na železnici v Azure.
+V místním terminálu [vygenerujte nový tajný klíč](configure-language-ruby.md#set-secret_key_base-manually) pro produkční prostředí Rails v Azure.
 
 ```bash
 rails secret
@@ -311,13 +311,13 @@ rails secret
 
 Nakonfigurujte proměnné vyžadované produkčním prostředím Rails.
 
-V následujícím příkazu Cloud Shell nahraďte _&lt;>_ zástupných symbolů, které jste vygenerovali v místním terminálu, pomocí nového tajného klíče.
+V následujícím příkazu prostředí Cloud Shell nahraďte dva _ &lt;zástupné>výstupy kolejnic_>zástupnými symboly novým tajným klíčem, který jste vygenerovali v místním terminálu.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
 ```
 
-Nastavení `ASSETS_PRECOMPILE="true"` sdělí kontejneru Ruby, že se mají při každém nasazení z Gitu předkompilovat prostředky. Další informace naleznete v tématu [předkompilace prostředků](configure-language-ruby.md#precompile-assets) a [obsluha statických prostředků](configure-language-ruby.md#serve-static-assets).
+Nastavení `ASSETS_PRECOMPILE="true"` sdělí kontejneru Ruby, že se mají při každém nasazení z Gitu předkompilovat prostředky. Další informace naleznete v [tématech Předkompilace datových zdrojů](configure-language-ruby.md#precompile-assets) a [Poskytování statických datových zdrojů](configure-language-ruby.md#serve-static-assets).
 
 ### <a name="push-to-azure-from-git"></a>Přenos z Gitu do Azure
 
@@ -350,7 +350,7 @@ remote: Running deployment command...
 < Output has been truncated for readability >
 ```
 
-### <a name="browse-to-the-azure-app"></a>Přejít k aplikaci Azure
+### <a name="browse-to-the-azure-app"></a>Přejděte do aplikace Azure
 
 Přejděte na adresu `http://<app-name>.azurewebsites.net` a přidejte do seznamu několik úkolů.
 
@@ -366,9 +366,9 @@ Pro scénář úkolů upravíte aplikaci tak, abyste mohli úkol označit jako d
 
 ### <a name="add-a-column"></a>Přidání sloupce
 
-V terminálu přejděte do kořenového adresáře úložiště Gitu.
+V terminálu přejděte do kořenového adresáře úložiště Git.
 
-Vytvořte novou migraci, která přidá do tabulky `Done` logický sloupec s názvem `Tasks`:
+Vytvořte novou migraci, která přidá do tabulky `Tasks` logický sloupec s názvem `Done`:
 
 ```bash
 rails generate migration AddDoneToTasks Done:boolean
@@ -455,7 +455,7 @@ V terminálu spusťte migrace databáze Rails, aby produkční prostředí prove
 rake db:migrate RAILS_ENV=production
 ```
 
-Potvrďte všechny změny v Gitu a potom nasdílejte změny kódu do Azure.
+Potvrďte všechny změny v Gitu a potom odešlete změny kódu do Azure.
 
 ```bash
 git add .
@@ -463,7 +463,7 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-Po dokončení `git push` přejděte do aplikace Azure a otestujte nové funkce.
+Po `git push` dokončení přejděte do aplikace Azure a otestujte nové funkce.
 
 ![Změny modelu a databáze publikované v Azure](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
@@ -475,13 +475,13 @@ Pokud jste přidali nějaké úkoly, zůstanou v databázi. Aktualizace schémat
 
 ## <a name="manage-the-azure-app"></a>Správa aplikace Azure
 
-Chcete-li spravovat aplikaci, kterou jste vytvořili, otevřete [Azure Portal](https://portal.azure.com) .
+Přejděte na [portál Azure](https://portal.azure.com) a spravujte aplikaci, kterou jste vytvořili.
 
-V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
+V levé nabídce klikněte na **App Services**a potom klikněte na název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/tutorial-php-mysql-app/access-portal.png)
 
-Zobrazí se stránka s přehledem vaší aplikace. Tady můžete provádět základní úkoly správy, jako je zastavení, spuštění, restartování, procházení a odstranění.
+Zobrazí se stránka Přehled aplikace. Tady můžete provádět základní úkoly správy, jako je zastavení, spuštění, restartování, procházení a odstranění.
 
 Levá nabídka obsahuje stránky pro konfiguraci vaší aplikace.
 
@@ -498,17 +498,17 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvořit v Azure databázi Postgres
 > * Připojit k Postgres aplikaci Ruby on Rails
-> * Nasazení aplikace do Azure
+> * Nasadit aplikaci do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat diagnostické protokoly z Azure
 > * Spravovat aplikaci na webu Azure Portal
 
-Přejděte k dalšímu kurzu, kde se dozvíte, jak namapovat vlastní název DNS na svou aplikaci.
+Přejdete k dalšímu kurzu, kde se dozvíte, jak namapovat vlastní název DNS do aplikace.
 
 > [!div class="nextstepaction"]
-> [Kurz: mapování vlastního názvu DNS na aplikaci](../app-service-web-tutorial-custom-domain.md)
+> [Kurz: Mapování vlastního názvu DNS do aplikace](../app-service-web-tutorial-custom-domain.md)
 
-Nebo si prohlédněte další zdroje informací:
+Nebo se podívejte na další zdroje:
 
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace Ruby](configure-language-ruby.md)

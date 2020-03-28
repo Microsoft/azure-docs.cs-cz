@@ -1,5 +1,5 @@
 ---
-title: Přírůstkové kopírování dat pomocí Change Tracking
+title: Přírůstkové kopírování dat pomocí sledování změn
 description: V tomto kurzu vytvoříte kanál Azure Data Factory, který přírůstkově kopíruje rozdílová data z několika tabulek v místní databázi SQL Serveru do databáze Azure SQL.
 services: data-factory
 ms.author: yexu
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: c23eaf438f43743600636e006116e3bba8dfbf70
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75982579"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Přírůstkové kopírování dat z Azure SQL Database do Azure Blob Storage s využitím informací sledování změn
@@ -67,13 +67,13 @@ V tomto kurzu vytvoříte dva kanály, které provádějí následující dvě o
     ![Diagram toku přírůstkového načtení](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-load-flow-diagram.png)
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Azure Powershell Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
+* Azure Powershell Nainstalujte nejnovější moduly Azure PowerShell podle pokynů v části [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
 * **Azure SQL Database**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
-* **Účet služby Azure Storage**. Úložiště objektů blob použijete jako úložiště dat **jímky**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření. Vytvořte kontejner s názvem **adftutorial**. 
+* **Účet Azure Storage**. Úložiště objektů blob použijete jako úložiště dat **jímky**. Pokud nemáte účet úložiště Azure, najdete v článku [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) pro kroky k jeho vytvoření. Vytvořte kontejner s názvem **adftutorial**. 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Vytvoření tabulky zdroje dat v databázi Azure SQL
 1. Spusťte **SQL Server Management Studio** a připojte se k serveru SQL Azure.
@@ -177,7 +177,7 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
     ```powershell
     $dataFactoryName = "IncCopyChgTrackingDF";
     ```
-5. Pokud chcete vytvořit datovou továrnu, spusťte následující rutinu **set-AzDataFactoryV2** :
+5. Chcete-li vytvořit datovou továrnu, spusťte následující rutinu **Set-AzDataFactoryV2:**
 
     ```powershell       
     Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName
@@ -191,7 +191,7 @@ Je třeba počítat s následujícím:
     The specified Data Factory name 'ADFIncCopyChangeTrackingTestFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Pro vytvoření instancí Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem rolí **přispěvatel** nebo **vlastník** nebo **správcem** předplatného Azure.
-* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:**[Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
@@ -213,14 +213,14 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
         }
     }
     ```
-2. V **Azure PowerShell**přepněte do složky **C:\ADFTutorials\IncCopyChangeTrackingTutorial** .
-3. Spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte propojenou službu: **AzureStorageLinkedService**. V následujícím příkladu předáte hodnoty pro parametry **ResourceGroupName** a **DataFactoryName**.
+2. V **prostředí Azure PowerShell**přepněte do složky **C:\ADFTutorials\IncCopyChangeTrackingTutorial.**
+3. Spusťte rutinu **Set-AzDataFactoryV2LinkedService** a vytvořte propojenou službu: **AzureStorageLinkedService**. V následujícím příkladu předáte hodnoty parametrů **ResourceGroupName** a **DataFactoryName.**
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureStorageLinkedService
@@ -232,7 +232,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
 ### <a name="create-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
 V tomto kroku propojíte databázi Azure SQL s datovou továrnou.
 
-1. Ve složce **C:\ADFTutorials\IncCopyChangeTrackingTutorial** vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService. JSON** s následujícím obsahem: nahraďte **&lt;server&gt; &lt;název databáze&gt;, &lt;ID uživatele&gt;a &lt;hesla**&gt;s názvem vašeho serveru SQL Azure, názvem databáze, ID uživatele a heslem před uložením souboru.
+1. Vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService.json** ve složce **C:\ADFTutorials\IncCopyChangeTrackingTutorial** s následujícím obsahem: Místo hodnot **&lt;server&gt; &lt;database name&gt;, &lt;user id&gt; a &lt;password&gt;** použijte název vašeho serveru SQL Azure, název vaší databáze, ID uživatele a heslo a potom soubor uložte.
 
     ```json
     {
@@ -245,13 +245,13 @@ V tomto kroku propojíte databázi Azure SQL s datovou továrnou.
         }
     }
     ```
-2. V **Azure PowerShell**spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte propojenou službu: **AzureSQLDatabaseLinkedService**.
+2. V **Prostředí Azure PowerShell**spusťte rutinu **Set-AzDataFactoryV2LinkedService** a vytvořte propojenou službu: **AzureSQLDatabaseLinkedService**.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureSQLDatabaseLinkedService
@@ -284,7 +284,7 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci zdrojových dat.
     }   
     ```
 
-2.  Spuštěním rutiny Set-AzDataFactoryV2Dataset Vytvořte datovou sadu: SourceDataset
+2.  Spuštění rutiny Set-AzDataFactoryV2Dataset pro vytvoření datové sady: SourceDataset
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -326,7 +326,7 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci dat, která se kopíruj�
     ```
 
     Jako součást požadavků ve službě Azure Blob Storage vytvoříte kontejner adftutorial. Pokud tento kontejner neexistuje, vytvořte ho nebo použijte název existujícího kontejneru. V tomto kurzu se název výstupního souboru generuje dynamicky pomocí výrazu @CONCAT('Incremental-', pipeline().RunId, '.txt').
-2.  Spuštěním rutiny Set-AzDataFactoryV2Dataset Vytvořte datovou sadu: SinkDataset
+2.  Spuštění rutiny Set-AzDataFactoryV2Dataset k vytvoření datové sady: SinkDataset
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -364,7 +364,7 @@ V tomto kroku vytvoříte datovou sadu pro uložení verze sledování změn.
     ```
 
     Jako součást požadavků vytvoříte tabulku table_store_ChangeTracking_version.
-2.  Spuštěním rutiny Set-AzDataFactoryV2Dataset Vytvořte datovou sadu: ChangeTrackingDataset
+2.  Spuštění rutiny Set-AzDataFactoryV2Dataset pro vytvoření datové sady: ChangeTrackingDataset
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
@@ -413,13 +413,13 @@ V tomto kroku vytvoříte kanál s aktivitou kopírování, která zkopíruje v�
         }
     }
     ```
-2. Spuštěním rutiny Set-AzDataFactoryV2Pipeline vytvořte kanál: FullCopyPipeline.
+2. Spusťte rutinu Set-AzDataFactoryV2Pipeline a vytvořte kanál: FullCopyPipeline.
 
    ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "FullCopyPipeline" -File ".\FullCopyPipeline.json"
    ```
 
-   Tady je ukázkový výstup:
+   Zde je ukázkový výstup:
 
    ```json
     PipelineName      : FullCopyPipeline
@@ -430,7 +430,7 @@ V tomto kroku vytvoříte kanál s aktivitou kopírování, která zkopíruje v�
    ```
 
 ### <a name="run-the-full-copy-pipeline"></a>Spuštění kanálu úplného kopírování
-Spusťte kanál: **FullCopyPipeline** pomocí rutiny **Invoke-AzDataFactoryV2Pipeline** .
+Spusťte kanál: **FullCopyPipeline** pomocí **příkazu Invoke-AzDataFactoryV2Pipeline.**
 
 ```powershell
 Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName        
@@ -438,7 +438,7 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 
 ### <a name="monitor-the-full-copy-pipeline"></a>Monitorování kanálu úplného kopírování
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [portál Azure](https://portal.azure.com).
 2. Klikněte na **Všechny služby**, spusťte hledání pomocí klíčového slova `data factories` a vyberte **Datové továrny**.
 
     ![Nabídka Datové továrny](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
@@ -448,7 +448,7 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 4. Na stránce Datové továrny klikněte na dlaždici **Monitorování a správa**.
 
     ![Dlaždice Monitorování a správa](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
-5. **Aplikace pro integraci dat** se spustí na samostatné kartě. Můžete zobrazit všechna **spuštění kanálu** a jejich stavy. Všimněte si, že stav spuštění kanálu v následujícím příkladu je **Úspěšně**. Parametry předané kanálu můžete zkontrolovat kliknutím na sloupec **Parametry**. Pokud došlo k chybě, zobrazí se odkaz ve sloupci **Chyba**. Klikněte na odkaz ve sloupci **Akce**.
+5. **Aplikace pro integraci dat** se spustí na samostatné kartě. Můžete zobrazit všechny **spuštění kanálu** a jejich stavy. Všimněte si, že stav spuštění kanálu v následujícím příkladu je **Úspěšně**. Parametry předané kanálu můžete zkontrolovat kliknutím na sloupec **Parametry**. Pokud došlo k chybě, zobrazí se odkaz ve sloupci **Chyba**. Klikněte na odkaz ve sloupci **Akce**.
 
     ![Spuštění kanálu](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
 6. Po kliknutí na odkaz ve sloupci **Akce** uvidíte následující stránku, která zobrazuje všechna **spuštění aktivit** pro příslušný kanál.
@@ -602,13 +602,13 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
     }
 
     ```
-2. Spuštěním rutiny Set-AzDataFactoryV2Pipeline vytvořte kanál: FullCopyPipeline.
+2. Spusťte rutinu Set-AzDataFactoryV2Pipeline a vytvořte kanál: FullCopyPipeline.
 
    ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
    ```
 
-   Tady je ukázkový výstup:
+   Zde je ukázkový výstup:
 
    ```json
     PipelineName      : IncrementalCopyPipeline
@@ -619,7 +619,7 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
    ```
 
 ### <a name="run-the-incremental-copy-pipeline"></a>Spuštění kanálu přírůstkového kopírování
-Spusťte kanál: **IncrementalCopyPipeline** pomocí rutiny **Invoke-AzDataFactoryV2Pipeline** .
+Spusťte kanál: **IncrementalCopyPipeline** pomocí **rutiny Invoke-AzDataFactoryV2Pipeline.**
 
 ```powershell
 Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName     
@@ -658,7 +658,7 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 
 
 ## <a name="next-steps"></a>Další kroky
-Přejděte k následujícímu kurzu, kde se dozvíte, jak kopírovat nové a změněné soubory pouze na základě jejich LastModifiedDate:
+Přejdete k následujícímu kurzu, kde se dozvíte o kopírování nových a změněných souborů pouze na základě jejich LastModifiedDate:
 
 > [!div class="nextstepaction"]
->[Kopírovat nové soubory podle LastModifiedDate](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
+>[Kopírovat nové soubory podle data poslední změny](tutorial-incremental-copy-lastmodified-copy-data-tool.md)

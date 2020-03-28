@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby signalizace pomocí služby App Service pomocí rozhraní příkazového řádku Azure
-description: Pomocí Azure CLI vytvořte službu signalizace s App Service. Seznamte se s příkazy rozhraní příkazového řádku pro službu Azure Signal.
+title: Vytvoření služby SignalR se službou App Service pomocí azure cli
+description: Pomocí azure cli vytvořit signalr služby s app service. Naučte se všechny příkazy příkazu příkazu příkazu pro službu Azure SignalR.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
@@ -9,10 +9,10 @@ ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: eb45adb699ef0f97782e6cdb8e141e254b3993f9
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158022"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>Vytvoření služby SignalR s využitím služby App Service
@@ -23,7 +23,7 @@ Tento ukázkový skript vytvoří nový prostředek služby Azure SignalR, kter�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -78,7 +78,7 @@ Poznamenejte si vygenerovaný název pro novou skupinu prostředků. Zobrazí se
 
 Každý příkaz v tabulce odkazuje na příslušnou část dokumentace. Tento skript používá následující příkazy:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az signalr create](/cli/azure/signalr#az-signalr-create) | Vytvoří prostředek služby Azure SignalR. |

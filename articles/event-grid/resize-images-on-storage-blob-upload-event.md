@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: použití Azure Event Grid k automatizaci změny velikosti nahraných obrázků'
-description: 'Kurz: Azure Event Grid se můžou aktivovat při nahrávání objektů BLOB v Azure Storage. Díky tomu můžete odesílat soubory obrázků nahrané do Azure Storage do jiných služeb, třeba Azure Functions, ke změně velikosti a dalším vylepšením.'
+title: 'Kurz: Použití Azure Event Grid k automatizaci velikosti nahraných ibi'
+description: 'Kurz: Azure Event Grid se dá aktivovat při nahrávání objektů blob ve Službě Azure Storage. Díky tomu můžete odesílat soubory obrázků nahrané do Azure Storage do jiných služeb, třeba Azure Functions, ke změně velikosti a dalším vylepšením.'
 services: event-grid, functions
 author: spelluru
 manager: jpconnoc
@@ -12,26 +12,26 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 6b3375ea8c82ce916f3d6a5e0e29f2845400cc76
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: d01d749300c6ad07e498c75c9487b554810e68cd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117762"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79454070"
 ---
-# <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid
+# <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: Automatizace změna velikosti nahraných obrázků pomocí mřížky událostí
 
-[Azure Event Grid](overview.md) je služba zpracování událostí pro cloud. Event Grid umožňuje vytvářet odběry událostí vyvolaných službami Azure nebo prostředky třetích stran.  
+[Azure Event Grid](overview.md) je služba událostí pro cloud. Event Grid umožňuje vytvářet odběry událostí vyvolaných službami Azure nebo prostředky třetích stran.  
 
-Tento kurz je druhou částí série kurzů o službě Storage. Rozšiřuje [předchozí kurz úložiště][previous-tutorial] a přidává automatické generování miniatur bez serveru pomocí Azure Event Grid a Azure Functions. Event Grid umožňuje službě [Azure Functions](../azure-functions/functions-overview.md) reagovat na události služby [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) a vytvářet miniatury nahraných obrázků. K události vytvoření ve službě Blob Storage se vytvoří odběr události. Při přidání objektu blob do určitého kontejneru služby Blob Storage dojde k volání koncového bodu funkce. K přístupu k objektu blob se použití data předaná do vazby funkce ze služby Event Grid a vygeneruje se obrázek miniatury.
+Tento kurz je druhou částí série kurzů o službě Storage. Navazuje na [předchozí kurz o službě Storage][previous-tutorial] a přidává automatické vytváření miniatur bez serveru s využitím služeb Azure Event Grid a Azure Functions. Event Grid umožňuje službě [Azure Functions](../azure-functions/functions-overview.md) reagovat na události služby [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) a vytvářet miniatury nahraných obrázků. K události vytvoření ve službě Blob Storage se vytvoří odběr události. Při přidání objektu blob do určitého kontejneru služby Blob Storage dojde k volání koncového bodu funkce. K přístupu k objektu blob se použití data předaná do vazby funkce ze služby Event Grid a vygeneruje se obrázek miniatury.
 
 Funkce změny velikosti se do existující aplikace pro nahrávání obrázků přidává pomocí rozhraní Azure CLI a webu Azure Portal.
 
-# <a name="net-v12-sdk"></a>[sada SDK pro \.NET V12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
 ![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
 ![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
@@ -44,21 +44,15 @@ V tomto kurzu se naučíte:
 > * Nasadit kód bez serveru pomocí služby Azure Functions
 > * Vytvořit odběr události služby Blob Storage ve službě Event Grid
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
-Je nutné, abyste dokončili předchozí kurz BLOB Storage: [nahrání obrazových dat v cloudu pomocí Azure Storage][previous-tutorial].
+Nejdřív je potřeba dokončit předchozí kurz o službě Blob Storage: [Odeslání dat obrázků do cloudu v Azure Storage][previous-tutorial].
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-Pokud jste ve svém předplatném ještě nezaregistrovali poskytovatele prostředků Event Grid, zaregistrujte ho.
-
-```azurecli-interactive
-az provider register --namespace Microsoft.EventGrid
-```
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -66,20 +60,26 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 Pokud nepoužíváte cloudové prostředí, musíte se nejdřív přihlásit pomocí `az login`.
 
+Pokud jste ve svém předplatném ještě nezaregistrovali poskytovatele prostředků Event Grid, zaregistrujte ho.
+
+```azurecli-interactive
+az provider register --namespace Microsoft.EventGrid
+```
+
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
 
-Azure Functions vyžaduje obecný účet úložiště. Kromě účtu BLOB Storage, který jste vytvořili v předchozím kurzu, vytvořte ve skupině prostředků samostatný obecný účet úložiště pomocí příkazu [AZ Storage Account Create](/cli/azure/storage/account) . Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom čísla a malá písmena.
+Azure Functions vyžaduje obecný účet úložiště. Kromě účtu úložiště objektů Blob, který jste vytvořili v předchozím kurzu, vytvořte samostatný účet obecného úložiště ve skupině prostředků pomocí příkazu [az storage create.](/cli/azure/storage/account) Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena.
 
-1. Nastavte proměnnou tak, aby obsahovala název skupiny prostředků, kterou jste vytvořili v předchozím kurzu.
+1. Nastavte proměnnou pro uložení názvu skupiny prostředků, kterou jste vytvořili v předchozím kurzu.
 
     ```azurecli-interactive
     resourceGroupName="myResourceGroup"
     ```
-2. Nastavte proměnnou pro název nového účtu úložiště, který Azure Functions vyžaduje.
+2. Nastavte proměnnou pro název nového účtu úložiště, který funkce Azure vyžaduje.
     ```azurecli-interactive
     functionstorage="<name of the storage account to be used by the function>"
     ```
-3. Vytvořte účet úložiště pro funkci Azure Functions.
+3. Vytvořte účet úložiště pro funkci Azure.
 
     ```azurecli-interactive
     az storage account create --name $functionstorage --location southeastasia \
@@ -90,14 +90,14 @@ Azure Functions vyžaduje obecný účet úložiště. Kromě účtu BLOB Storag
 
 K hostování provádění funkcí potřebujete aplikaci Function App. Function App poskytuje prostředí pro provádění kódu funkce bez serveru. Aplikaci Function App vytvoříte pomocí příkazu [az functionapp create](/cli/azure/functionapp).
 
-V následujícím příkazu zadejte vlastní jedinečný název aplikace Function App. Název aplikace funkcí se použije jako výchozí doména DNS pro příslušnou aplikaci funkcí, a proto musí být název mezi všemi aplikacemi v Azure jedinečný.
+V následujícím příkazu zadejte svůj vlastní název aplikace jedinečné funkce. Název aplikace funkcí se použije jako výchozí doména DNS pro příslušnou aplikaci funkcí, a proto musí být název mezi všemi aplikacemi v Azure jedinečný.
 
-1. Zadejte název aplikace Function App, která se má vytvořit.
+1. Zadejte název aplikace funkce, která má být vytvořena.
 
     ```azurecli-interactive
     functionapp="<name of the function app>"
     ```
-2. Vytvořte funkci Azure Functions.
+2. Vytvořte funkci Azure.
 
     ```azurecli-interactive
     az functionapp create --name $functionapp --storage-account $functionstorage \
@@ -105,13 +105,13 @@ V následujícím příkazu zadejte vlastní jedinečný název aplikace Functio
       --functions_version 2
     ```
 
-Teď nakonfigurujte aplikaci Function App, aby se připojovala k účtu úložiště objektů blob, který jste vytvořili v [předchozím kurzu][previous-tutorial].
+Nyní nakonfigurujte aplikaci funkce pro připojení k účtu úložiště objektů Blob, který jste vytvořili v [předchozím kurzu][previous-tutorial].
 
 ## <a name="configure-the-function-app"></a>Konfigurace aplikace Function App
 
-Tato funkce potřebuje přihlašovací údaje pro účet úložiště objektů blob, které se přidají do nastavení aplikace Function App pomocí příkazu [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) .
+Funkce potřebuje pověření pro účet úložiště objektů Blob, které jsou přidány do nastavení aplikace aplikace funkce pomocí příkazu [nastavit nastavení konfigurace aplikace az functionapp.](/cli/azure/functionapp/config/appsettings)
 
-# <a name="net-v12-sdk"></a>[sada SDK pro \.NET V12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
 ```azurecli-interactive
 blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
@@ -123,7 +123,7 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
-# <a name="nodejs-v10-sdk"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
 ```azurecli-interactive
 blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
@@ -149,9 +149,9 @@ Teď můžete nasadit do této aplikace Function App nasadit projekt projektu k�
 
 ## <a name="deploy-the-function-code"></a>Nasazení kódu funkce 
 
-# <a name="net-v12-sdk"></a>[sada SDK pro \.NET V12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
-Ukázková C# funkce změny velikosti je dostupná na [GitHubu](https://github.com/Azure-Samples/function-image-upload-resize). Pomocí příkazu [AZ functionapp Deployment source config](/cli/azure/functionapp/deployment/source) nasaďte tento projekt kódu do aplikace Function App.
+Ukázková funkce změny velikosti jazyka C# je k dispozici na [GitHubu](https://github.com/Azure-Samples/function-image-upload-resize). Nasaďte tento projekt kódu do aplikace funkce pomocí příkazu [konfigurace zdroje nasazení az functionapp.](/cli/azure/functionapp/deployment/source)
 
 ```azurecli-interactive
 az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName \
@@ -159,7 +159,7 @@ az functionapp deployment source config --name $functionapp --resource-group $re
   --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
-# <a name="nodejs-v10-sdk"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
 Ukázková funkce změny velikosti v Node.js je k dispozici na [GitHubu](https://github.com/Azure-Samples/storage-blob-resize-function-node). Pomocí příkazu [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) nasaďte tento projekt kódu funkce do aplikace Function App.
 
@@ -176,13 +176,13 @@ Data předávaná do funkce z oznámení služby Event Grid zahrnují adresu URL
 
 Tento projekt používá aktivační události typu `EventGridTrigger`. Použití aktivační události Event Grid je vhodnější než obecné aktivační události HTTP. Event Grid automaticky ověřuje aktivační události funkcí Event Grid. U obecných aktivačních událostí HTTP je potřeba implementovat [odpověď ověření](security-authentication.md).
 
-# <a name="net-v12-sdk"></a>[sada SDK pro \.NET V12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
 Další informace o této funkci najdete v [souborech function.json a run.csx](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/ImageFunctions).
 
-# <a name="nodejs-v10-sdk"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-Další informace o této funkci naleznete v [souborech Function. JSON a index. js](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
+Další informace o této funkci naleznete v [souborech function.json a index.js](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
 
 ---
 
@@ -192,13 +192,13 @@ Kód projektu funkce se nasadí přímo z veřejného úložiště ukázek. Dal�
 
 Odběr událostí udává, které události vygenerované zprostředkovatelem chcete odeslat do určitého koncového bodu. V tomto případě zveřejňuje koncový bod vaše funkce. Pomocí následujících kroků vytvořte na webu Azure Portal odběr událostí, který odesílá oznámení do vaší funkce:
 
-1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **všechny služby** a pak vyberte **aplikace Function**App.
+1. Na [webu Azure Portal](https://portal.azure.com)vyberte v levé nabídce **všechny služby** a pak vyberte **Aplikace funkcí**.
 
-    ![Navigace na aplikace Function App v Azure Portal](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
+    ![Přechod na funkční aplikace na webu Azure Portal](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
 
-2. Rozbalte aplikaci Function App, zvolte funkci **Miniatura** a pak vyberte **Přidat Event Grid předplatného**.
+2. Rozbalte aplikaci funkcí, zvolte funkci **Miniatura** a pak vyberte **Přidat předplatné mřížky událostí**.
 
-    ![Přejděte k části Přidání předplatného Event Grid v Azure Portal](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
+    ![Přejděte k odběru Přidat grid událostí na webu Azure Portal](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
 
 3. Použijte nastavení odběru událostí uvedená v tabulce.
     
@@ -210,18 +210,18 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
     | **Typ tématu** | Účty úložiště | Vyberte zprostředkovatele událostí Účty úložiště. |
     | **Předplatné** | Vaše předplatné Azure | Ve výchozím nastavení je vybrané vaše aktuální předplatné Azure. |
     | **Skupina prostředků** | myResourceGroup | Vyberte **Použít existující** a zvolte skupinu prostředků, které jste už používali v tomto kurzu. |
-    | **Prostředek** | Váš účet služby Blob Storage | Vyberte účet služby Blob Storage, který jste vytvořili. |
+    | **Zdrojů** | Váš účet služby Blob Storage | Vyberte účet služby Blob Storage, který jste vytvořili. |
     | **Typy událostí** | Vytvoření objektu blob | Zrušte zaškrtnutí všech typů komě **Vytvoření objektu blob**. Do funkce se předají jenom události typu `Microsoft.Storage.BlobCreated`. |
-    | **Typ koncového bodu** | automaticky generovaný | Předem definováno jako **funkce Azure Functions**. |
-    | **Služba** | automaticky generovaný | Použijte adresu URL koncového bodu, která se vygeneruje. |
+    | **Typ koncového bodu** | automaticky generovaný | Předdefinováno jako **funkce Azure**. |
+    | **Koncový bod** | automaticky generovaný | Použijte adresu URL koncového bodu, která se vygeneruje. |
 
-4. Přepněte na kartu **filtry** a proveďte následující akce:
-    1. Vyberte možnost **Povolit filtrování subjektu** .
-    2. Pro **předmět začíná**na zadejte následující hodnotu: **/blobServices/default/Containers/images/BLOBs/** .
+4. Přepněte na kartu **Filtry** a proveďte následující akce:
+    1. Vyberte **Možnost Povolit filtrování předmětů.**
+    2. Do **pole Předmět začíná položkou**zadejte následující hodnotu : **/blobServices/default/containers/images/blobs/**.
 
-        ![Zadat filtr pro odběr události](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
+        ![Zadat filtr pro odběr událostí](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
-5. Vyberte **vytvořit** a přidejte odběr událostí. Tím se vytvoří odběr události, který aktivuje funkci `Thumbnail` při přidání objektu blob do kontejneru `images`. Funkce změní velikost obrázků a přidá je do kontejneru `thumbnails`.
+5. Chcete-li přidat odběr události, vyberte **Vytvořit.** Tím se vytvoří odběr událostí, který aktivuje `Thumbnail` funkci při `images` přidání objektu blob do kontejneru. Funkce změní velikost obrázků a přidá `thumbnails` je do kontejneru.
 
 Teď máte nakonfigurované back-endové služby a můžete funkci změny velikosti obrázků otestovat v ukázkové webové aplikaci.
 
@@ -229,17 +229,17 @@ Teď máte nakonfigurované back-endové služby a můžete funkci změny veliko
 
 Pokud chcete ve webové aplikaci otestovat změnu velikosti obrázků, přejděte na adresu URL publikované aplikace. Výchozí adresa URL webové aplikace je `https://<web_app>.azurewebsites.net`.
 
-# <a name="net-v12-sdk"></a>[sada SDK pro \.NET V12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
 Klikněte na oblast **Nahrát fotografie** a vyberte a nahrajte soubor. Do této oblasti také můžete fotografii přetáhnout.
 
-Všimněte si, že po ukončení nahraného obrázku se v karuselu **vygenerované miniatury** zobrazí kopie nahraného obrázku. Funkce změnila velikost tohoto obrázku, přidala miniaturu do kontejneru *thumbnails* a webový klient ji stáhl.
+Všimněte si, že po zmizení nahraného obrázku se v rotujícím karu **generovaných miniatur** zobrazí kopie nahraného obrázku. Funkce změnila velikost tohoto obrázku, přidala miniaturu do kontejneru *thumbnails* a webový klient ji stáhl.
 
 ![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-Klikněte na **zvolit soubor** a vyberte soubor a pak klikněte na **Odeslat obrázek**. Po úspěšném nahrání se v prohlížeči přejde na stránku úspěchu. Klikněte na odkaz a vraťte se na domovskou stránku. V oblasti **vygenerované miniatury** se zobrazí kopie nahraného obrázku. (Pokud se obrázek nezobrazuje napřed, zkuste stránku znovu načíst.) Velikost tohoto obrázku byla změněna funkcí, přidána do kontejneru *miniatur* a stažena webovým klientem.
+Chcete-li vybrat **soubor,** klepněte na tlačítko Vybrat soubor a potom klepněte na **tlačítko Nahrát obrázek**. Po úspěšném nahrání prohlížeč přejde na stránku o úspěchu. Kliknutím na odkaz se vrátíte na domovskou stránku. Kopie nahraného obrázku se zobrazí v oblasti **Generované miniatury.** (Pokud se obrázek nejprve nezobrazí, zkuste stránku znovu načíst.) Tato velikost obrázku byla ovlivněna funkcí, přidána do kontejneru *miniatur* a stažena webovým klientem.
 
 ![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 

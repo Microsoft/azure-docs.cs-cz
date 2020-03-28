@@ -11,13 +11,13 @@ ms.topic: sample
 ms.date: 05/30/2017
 ms.author: iainfou
 ms.openlocfilehash: 7b5c6d5931b5d36069850b1bba90413731a48022
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76270698"
 ---
-# <a name="deprecated-create-an-azure-container-service-kubernetes-linux-cluster"></a>ZASTARALÉ Vytvoření clusteru Azure Container Service Kubernetes Linux
+# <a name="deprecated-create-an-azure-container-service-kubernetes-linux-cluster"></a>(ZASTARALÉ) Vytvoření clusteru Azure Container Service Kubernetes Linux
 
 [!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 

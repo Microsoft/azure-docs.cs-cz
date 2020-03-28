@@ -9,15 +9,15 @@ ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: d1e7fa1ed1649508f0d4923db8817d17ad556ca1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67174937"
 ---
 Při nasazování prostředků do Azure máte značnou flexibilitu při rozhodování, jaké typy prostředků nasadit, do jakého umístění a jak je nastavit. Tato flexibilita však může otevírat více možností, než byste ve vaší organizaci chtěli povolit. Při zvažování nasazení prostředků do Azure si můžete klást následující otázky:
 
-* Jak můžu splňovat právní požadavky na suverenitu dat v určitých zemích nebo oblastech?
+* Jak mohu splnit zákonné požadavky na suverenitu dat v některých zemích nebo oblastech?
 * Jak můžu řídit náklady?
 * Jak zajistím, že někdo nechtěně nezmění důležitý systém?
 * Jak můžu sledovat náklady na prostředky a správně je účtovat?

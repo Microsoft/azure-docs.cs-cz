@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytvoření a použití disků pro škálované sady pomocí Azure CLI
+title: Kurz – vytváření a používání disků pro škálovací sady pomocí azure cli
 description: Zjistěte, jak pomocí Azure CLI vytvořit a používat spravované disky se škálovací sadou virtuálních počítačů, včetně přidání, přípravy, výpisu a odpojení disků.
 author: cynthn
 tags: azure-resource-manager
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 01dbbcddf7df8e261e865fbb61c1fcfd5abbd5fc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 12bde51222e1e648f97476d5dab039b4ad2adfe8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278235"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067045"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Vytvoření a použití disků se škálovací sadou virtuálních počítačů pomocí Azure CLI
 Škálovací sady virtuálních počítačů využívají disky k ukládání operačních systémů, aplikací a dat instancí virtuálních počítačů. Při vytváření a správě škálovací sady je důležité, abyste zvolili vhodnou velikost disku a konfiguraci pro očekávané úlohy. Tento kurz se zabývá vytvořením a správou disků virtuálních počítačů. Co se v tomto kurzu naučíte:
@@ -25,7 +25,7 @@ ms.locfileid: "76278235"
 > * Výkon disků
 > * Připojení a příprava datových disků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -43,9 +43,9 @@ Při vytváření nebo škálování škálovací sady se ke každé instanci vi
 | Typ | Běžné velikosti | Maximální velikost dočasného disku (GiB) |
 |----|----|----|
 | [Obecné účely](../virtual-machines/linux/sizes-general.md) | Řady A, B a D | 1600 |
-| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md) | F Series | 576 |
+| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md) | Řada F | 576 |
 | [Optimalizované z hlediska paměti](../virtual-machines/linux/sizes-memory.md) | Řady D, E, G a M | 6144 |
-| [Optimalizované z hlediska úložiště](../virtual-machines/linux/sizes-storage.md) | L Series | 5630 |
+| [Optimalizované z hlediska úložiště](../virtual-machines/linux/sizes-storage.md) | Řada L | 5630 |
 | [GPU](../virtual-machines/linux/sizes-gpu.md) | Řada N | 1440 |
 | [Vysoký výkon](../virtual-machines/linux/sizes-hpc.md) | Řady A a H | 2000 |
 
@@ -57,9 +57,9 @@ Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další
 | Typ | Běžné velikosti | Maximum datových disků na virtuální počítač |
 |----|----|----|
 | [Obecné účely](../virtual-machines/linux/sizes-general.md) | Řady A, B a D | 64 |
-| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md) | F Series | 64 |
+| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md) | Řada F | 64 |
 | [Optimalizované z hlediska paměti](../virtual-machines/linux/sizes-memory.md) | Řady D, E, G a M | 64 |
-| [Optimalizované z hlediska úložiště](../virtual-machines/linux/sizes-storage.md) | L Series | 64 |
+| [Optimalizované z hlediska úložiště](../virtual-machines/linux/sizes-storage.md) | Řada L | 64 |
 | [GPU](../virtual-machines/linux/sizes-gpu.md) | Řada N | 64 |
 | [Vysoký výkon](../virtual-machines/linux/sizes-hpc.md) | Řady A a H | 64 |
 
@@ -76,7 +76,7 @@ Disky Premium jsou založené na vysoce výkonných discích SSD s nízkou laten
 ### <a name="premium-disk-performance"></a>Výkon disků Premium
 |Typ disku pro Premium Storage | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Velikost disku (zaokrouhluje se nahoru) | 32 GB | 64 GB | 128 GB | 512 GB | 1 024 GB (1 TB) | 2 048 GB (2 TB) | 4 095 GB (4 TB) |
+| Velikost disku (zaokrouhluje se nahoru) | 32 GB | 64 GB | 128 GB | 512 GB | 1 024 GB (1 TB) | 2 048 GB (2 TB) | 4 095 GB (4 TB) |
 | Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | 120 | 240 | 500 | 2 300 | 5 000 | 7 500 | 7 500 |
 Propustnost / disk | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
@@ -87,13 +87,13 @@ V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekun
 Disky můžete vytvořit a připojit při vytváření škálovací sady nebo u existující škálovací sady.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Připojení disků při vytváření škálovací sady
-Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus*.
+Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). V tomto příkladu je vytvořena skupina prostředků s názvem *myResourceGroup* v oblasti *eastus.*
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří škálovací sadu *myScaleSet* a vygeneruje klíče SSH, pokud ještě neexistují. Pomocí parametru `--data-disk-sizes-gb` se vytvoří dva disky. První disk má velikost *64* GB a druhý disk *128* GB:
+Vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří škálovací sadu s názvem *myScaleSet*a generuje klíče SSH, pokud neexistují. Pomocí parametru `--data-disk-sizes-gb` se vytvoří dva disky. První disk má velikost *64* GB a druhý disk *128* GB:
 
 ```azurecli-interactive
 az vmss create \
@@ -146,7 +146,7 @@ az vmss list-instance-connection-info \
 
 Připojte se k první instanci virtuálního počítače s použitím vlastní veřejné IP adresy a čísla portu, jak je znázorněno v následujícím příkladu:
 
-```azurecli-interactive
+```console
 ssh azureuser@52.226.67.166 -p 50001
 ```
 
@@ -198,7 +198,7 @@ sudo df -h
 
 Následující příklad výstupu ukazuje, že systémy souborů těchto tří disků jsou správně připojené k přípojnému bodu */datadisks*:
 
-```bash
+```output
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda1        30G  1.3G   28G   5% /
 /dev/sdb1        50G   52M   47G   1% /mnt

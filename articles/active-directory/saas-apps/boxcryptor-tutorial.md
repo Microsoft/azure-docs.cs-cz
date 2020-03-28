@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Boxcryptor | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Boxcryptor.
+title: 'Kurz: Integrace služby Azure Active Directory s boxcryptorem | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Boxcryptorem.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,184 +17,184 @@ ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1017eb02783e2d0d970804fc1a20fd2bdb525637
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158784"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>Kurz: Azure Active Directory integrace s Boxcryptor
+# <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>Kurz: Integrace Služby Azure Active Directory s boxcryptorem
 
 V tomto kurzu se dozvíte, jak integrovat Boxcryptor s Azure Active Directory (Azure AD).
 Integrace Boxcryptor s Azure AD poskytuje následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k Boxcryptor.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Boxcryptor (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k Boxcryptor.
+* Můžete povolit, aby se uživatelé automaticky přihlašovali k Boxcryptor (jednotné přihlášení) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s Boxcryptor potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s Boxcryptor, budete potřebovat následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné s povoleným Boxcryptorm jednotným přihlašováním
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné s povoleným jedním přihlášením boxcryptor
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Boxcryptor podporuje jednotné přihlašování iniciované v **SP**
-* Boxcryptor podporuje zřizování uživatelů **jenom v čase** .
+* Boxcryptor podporuje **SP** inicioval SSO
+* Boxcryptor podporuje **just in time** zřizování uživatelů
 
-## <a name="adding-boxcryptor-from-the-gallery"></a>Přidání Boxcryptor z Galerie
+## <a name="adding-boxcryptor-from-the-gallery"></a>Přidání Boxcryptor z galerie
 
-Pokud chcete nakonfigurovat integraci Boxcryptor do služby Azure AD, musíte přidat Boxcryptor z Galerie do svého seznamu spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci Boxcryptor do Azure AD, musíte přidat Boxcryptor z galerie do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Boxcryptor z Galerie, proveďte následující kroky:**
+**Chcete-li přidat Boxcryptor z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Boxcryptor**, vyberte **Boxcryptor** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Boxcryptor**, z panelu výsledků vyberte **Boxcryptor** a pak klepněte na tlačítko **Přidat** a přidejte aplikaci.
 
      ![Boxcryptor v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Boxcryptor na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Boxcryptor.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí boxcryptoru na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v Boxcryptoru.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Boxcryptor, musíte dokončit tyto stavební bloky:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Boxcryptoru, musíte dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Nakonfigurujte jednotné přihlašování Boxcryptor](#configure-boxcryptor-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvoření Boxcryptor Test User](#create-boxcryptor-test-user)** – pro Britta Simon v Boxcryptor, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace Boxcryptor single sign-on](#configure-boxcryptor-single-sign-on)** - pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořit Boxcryptor test uživatele](#create-boxcryptor-test-user)** – mít protějšek Britta Simon v Boxcryptor, který je propojen s reprezentaci Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Boxcryptor, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí boxcryptoru, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Boxcryptor** vyberte **jednotné přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **Boxcryptor** vyberte **Jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+4. V části **Základní konfigurace SAML** proveďte následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně Boxcryptor a adresách URL](common/sp-identifier.png)
+    ![Informace o doméně a adresách URL boxcryptoru](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu url: `https://www.boxcryptor.com/app`
+    a. Do textového pole **Adresa URL přihlášení** zadejte adresu URL:`https://www.boxcryptor.com/app`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte hodnotu: `boxcryptor`
+    b. Do textového pole **Identifikátor (ID entity)** zadejte hodnotu:`boxcryptor`
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Base64)** z daných možností podle vašeho požadavku a uložte jej do počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-6. V části **Nastavení Boxcryptor** zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **Nastavit boxcryptor** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-boxcryptor-single-sign-on"></a>Konfigurace jednotného přihlašování Boxcryptor
+### <a name="configure-boxcryptor-single-sign-on"></a>Konfigurace jednotného přihlašování boxcryptoru
 
-Ke konfiguraci jednotného přihlašování na straně **Boxcryptor** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Boxcryptor](mailto:support@boxcryptor.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **Boxcryptor,** musíte odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z portálu Azure do [týmu podpory Boxcryptor](mailto:support@boxcryptor.com). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. V poli **Uživatelské jméno** zadejte **\@brittasimon vašecompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Boxcryptor.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu boxcryptor.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Boxcryptor**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Boxcryptor**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Boxcryptor**.
+2. V seznamu aplikací vyberte **Boxcryptor**.
 
-    ![Odkaz Boxcryptor v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Boxcryptor v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-boxcryptor-test-user"></a>Vytvořit testovacího uživatele Boxcryptor
+### <a name="create-boxcryptor-test-user"></a>Vytvořit boxcryptor test uživatele
 
-V této části vytvoříte uživatele s názvem Britta Simon v Boxcryptor. Pokud chcete přidat uživatele nebo doménu, která musí být přidána do seznamu povolených platforem Boxcryptor, pracujte s  [týmu podpory Boxcryptor](mailto:support@boxcryptor.com) . Pokud je doména přidána týmem, uživatelé se automaticky zřídí pro platformu Boxcryptor. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v Boxcryptor. Spolupracujte s  [týmem podpory Boxcryptor](mailto:support@boxcryptor.com)a přidejte uživatele nebo doménu, která musí být přidána do seznamu povolených položek pro platformu Boxcryptor. Pokud je doména přidána týmem, uživatelé se automaticky zřídí na platformě Boxcryptor. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Boxcryptor, měli byste se automaticky přihlásit k Boxcryptor, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Boxcryptor na přístupovém panelu, můžete by měl být automaticky přihlášeni k Boxcryptor, pro které nastavíte přiřazovací ho. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s paletou talentů | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a paletou talentů.
+title: 'Kurz: Integrace služby Azure Active Directory s paletou talentů | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a paletou talentů.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,190 +17,190 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9dee0013d227cfc3809d9effe7f4f633bc22f6fa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159909"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>Kurz: Azure Active Directory integrace s paletou talentů
+# <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>Kurz: Integrace služby Azure Active Directory s paletou talentů
 
 V tomto kurzu se dozvíte, jak integrovat paletu talentů s Azure Active Directory (Azure AD).
-Integrace palety talentů s Azure AD poskytuje následující výhody:
+Integrace palety talentů s Azure AD vám poskytuje následující výhody:
 
-* Můžete řídit v Azure AD, který má přístup k talentů paletě.
-* Uživatelům můžete povolit, aby se automaticky přihlásili k paletě talentů (jednotné přihlašování) s účty Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+* Můžete řídit ve službě Azure AD, který má přístup k paletě talentů.
+* Můžete povolit, aby se uživatelé automaticky přihlašovali k paletě talentů (jednotné přihlášení) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci Integrace Azure AD s paletou talentů potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s paletou talentů, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Talentů aktivní odběr palety pro jednotné přihlašování
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné s povoleným jedním přihlášením na Paletě talentů
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Folloze podporuje jednotné přihlašování **IDP** .
-* Folloze podporuje zřizování uživatelů **jenom v čase** .
+* Folloze podporuje **IDP** iniciované sso
+* Folloze podporuje zřizování uživatelů **Just In Time**
 
-## <a name="adding-talent-palette-from-the-gallery"></a>Přidání palety talentů z Galerie
+## <a name="adding-talent-palette-from-the-gallery"></a>Přidání palety talentů z galerie
 
-Pokud chcete nakonfigurovat integraci talentů palety do Azure AD, musíte přidat paletu talentů z Galerie do seznamu spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci palety talentů do Azure AD, musíte přidat paletu talentů z galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat paletu talentů z Galerie, proveďte následující kroky:**
+**Chcete-li přidat paletu talentů z galerie, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select_azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![Okno podnikové aplikace](common/enterprise_applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise_applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add_new_app.png)
 
-4. Do vyhledávacího pole zadejte **talentů paleta**, vyberte **paleta talentů** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Paletu talentů**, z panelu výsledků vyberte **Paleta talentů** a klepnutím na **tlačítko Přidat** přidejte aplikaci.
 
-     ![Talentů paleta v seznamu výsledků](common/search_new_app.png)
+     ![Paleta talentů v seznamu výsledků](common/search_new_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí talentů palety na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být navázán odkaz na odkaz mezi uživatelem služby Azure AD a souvisejícím uživatelem v paletě talentů.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí palety talentů na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v paletě talentů.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí talentů palety, musíte dokončit tyto stavební bloky:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí palety talentů, musíte dokončit následující stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurovat jednotné přihlašování pro paletu talentů](#configure-talent-palette-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořit testovacího uživatele talentů palet](#create-talent-palette-test-user)** -to znamená, že má protějšek Britta Simon v paletě talentů, která je propojená s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace možnosti Jednotné přihlašování palety talentů](#configure-talent-palette-single-sign-on)** – konfigurace nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořit talent palety testovacího uživatele](#create-talent-palette-test-user)** – mít protějšek Britta Simon v talent palety, která je propojena s reprezentaci Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí talentů palety, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí palety talentů, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **palety talentů** vyberte **jednotné přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **Talent Palette** vyberte **Jednotné přihlašování**.
 
-    ![Konfigurovat odkaz jednotného přihlašování](common/select_sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select_sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select_saml_option.png)
+    ![Režim výběru jednotného přihlášení](common/select_saml_option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
     ![Upravit základní konfiguraci SAML](common/edit_urls.png)
 
-4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
+4. V části **Základní konfigurace SAML,** Pokud chcete nakonfigurovat aplikaci v režimu iniciovaného **protokolem IDP,** proveďte následující kroky:
 
-    ![Talentů a informace o jednotném přihlašování k doménám a adresám URL palety](common/both_replyurl.png)
+    ![Informace o jedné přihlašovací oblasti Talent Palette Domain a URL](common/both_replyurl.png)
 
-    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://talent-p.net/saml/acs/<tenantID>`
+    Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://talent-p.net/saml/acs/<tenantID>`
 
-5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
+5. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném **službou SP:**
 
-    ![Talentů a informace o jednotném přihlašování k doménám a adresám URL palety](common/both_signonurl.png)
+    ![Informace o jedné přihlašovací oblasti Talent Palette Domain a URL](common/both_signonurl.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://talent-p.net/saml/sso/<tenantID>`
+    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://talent-p.net/saml/sso/<tenantID>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a přihlašovací adresy URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory talentů palety klientů](mailto:talent-support@pa-consul.co.jp) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou adresou URL pro odpověď a adresou URL pro přihlášení. Obraťte se na [tým podpory klienta Talent Palette,](mailto:talent-support@pa-consul.co.jp) abyste získali tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (RAW)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Nezpracovaný)** z daných možností a uložte jej do počítače.
 
-    ![Odkaz na stažení certifikátu](common/certificateraw.png)
+    ![Odkaz ke stažení certifikátu](common/certificateraw.png)
 
-7. V části **nastavení palety talentů** zkopírujte příslušné adresy URL dle vašeho požadavku.
+7. V části **Nastavit paletu talentů** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Kopírovat adresy URL konfigurace](common/copy_configuration_urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy_configuration_urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Odhlašovací adresa URL
+    c. Adresa URL odhlášení
 
-### <a name="configure-talent-palette-single-sign-on"></a>Konfigurace jednotného přihlašování v paletě talentů
+### <a name="configure-talent-palette-single-sign-on"></a>Konfigurace jednotného přihlašování na paletě talentů
 
-Chcete-li nakonfigurovat jednotné přihlašování na straně **palety talentů** , je třeba odeslat stažený **certifikát (RAW)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory talentů palety](mailto:talent-support@pa-consul.co.jp). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **Paleta talentů,** musíte odeslat stažený **certifikát (Raw)** a příslušné zkopírované adresy URL z portálu Azure do [týmu podpory Talent Palette](mailto:talent-support@pa-consul.co.jp). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko pro nového uživatele](common/new_user.png)
+    ![Tlačítko nového uživatele](common/new_user.png)
 
-3. Ve vlastnostech uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Uživatelský dialog](common/user_properties.png)
+    ![Dialogové okno Uživatel](common/user_properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. V poli **Uživatelské jméno** zadejte **\@brittasimon vašecompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k paletě talentů.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k talent palety.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **paleta talentů**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Paleta talentů**.
 
     ![Okno podnikových aplikací](common/enterprise_applications.png)
 
-2. V seznamu aplikace zadejte a vyberte **paletu talentů**.
+2. V seznamu aplikací zadejte a vyberte **Možnost Paleta talentů**.
 
-    ![Odkaz na paletu talentů v seznamu aplikací](common/all_applications.png)
+    ![Odkaz Paleta talentů v seznamu Aplikace](common/all_applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz uživatelé a skupiny](common/users_groups_blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users_groups_blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
-    ![Podokno přidat přiřazení](common/add_assign_user.png)
+    ![Podokno Přidat přiřazení](common/add_assign_user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-talent-palette-test-user"></a>Vytvořit testovacího uživatele talentů palety
+### <a name="create-talent-palette-test-user"></a>Vytvořit uživatele testu talentové palety
 
-V této části vytvoříte uživatele s názvem Britta Simon v paletě talentů. Pokud chcete přidat uživatele na platformě palet talentů, pracujte s [týmem podpory talentů palety](mailto:talent-support@pa-consul.co.jp) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v talent palety. Spolupracujte s [týmem podpory Talent Palette](mailto:talent-support@pa-consul.co.jp) a přidejte uživatele do platformy Talent Palette. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici paleta talentů, měli byste být automaticky přihlášeni k paletě talentů, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici Paleta talentů na přístupovém panelu, měli byste být automaticky přihlášeni k paletě talentů, pro kterou nastavíte přistupující přistup. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

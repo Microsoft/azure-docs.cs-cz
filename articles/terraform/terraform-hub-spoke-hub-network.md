@@ -1,43 +1,43 @@
 ---
-title: Kurz – vytvoření virtuální sítě rozbočovače v Azure pomocí Terraformu
-description: Kurz, který ukazuje, jak vytvořit virtuální síť rozbočovače v Azure, která funguje jako společný spojovací bod mezi ostatními sítěmi
+title: Kurz – vytvoření centrální virtuální sítě v Azure pomocí Terraform
+description: Kurz, který ukazuje, jak vytvořit centrální virtuální síť v Azure, která funguje jako společný bod připojení mezi jinými sítěmi
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 6669e90c3d12fcf55bcb1ad69c3b275c5117a8fc
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159042"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>Kurz: vytvoření virtuální sítě rozbočovače v Azure pomocí Terraformu
+# <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>Kurz: Vytvoření centrální virtuální sítě v Azure pomocí Terraform
 
-Virtuální síť rozbočovače funguje jako centrální bod připojení k místní síti. Virtuální síť hostuje sdílené služby spotřebované úlohami hostovanými ve virtuálních sítích paprsků. Pro účely ukázky nejsou v tomto kurzu implementovány žádné sdílené služby.
+Virtuální síť rozbočovače funguje jako centrální bod připojení k místní síti. Virtuální síť hostuje sdílené služby spotřebované úlohami hostovanými ve virtuálních sítích pro paprsky. Pro ukázkové účely nejsou v tomto kurzu implementovány žádné sdílené služby.
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * K implementaci virtuální sítě rozbočovače v topologii hvězdicové topologie použijte konfigurační jazyk HashiCorp (HCL).
-> * Pomocí Terraformu vytvořte virtuální počítač JumpBox hub.
-> * Pomocí Terraformu vytvořte bránu virtuální privátní sítě pro rozbočovače.
-> * Pomocí Terraformu můžete vytvářet centra a místní připojení brány.
+> * Pomocí konfiguračního jazyka HashiCorp (HCL) můžete implementovat virtuální síť rozbočovače v topologii rozbočovače a paprsku.
+> * Pomocí Terraform vytvořte virtuální počítač pro přeskakování rozbočovačů.
+> * Terraform slouží k vytvoření brány virtuální privátní sítě rozbočovače.
+> * Terraform slouží k vytváření připojení rozbočovače a místní brány.
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. [Pomocí terraformu v Azure vytvoříte topologii hybridní sítě s rozbočovačem a paprsky](./terraform-hub-spoke-introduction.md).
-1. [Vytvořte si místní virtuální síť s terraformu v Azure](./terraform-hub-spoke-on-prem.md).
+1. [Vytvořte hybridní síťovou topologii hub-and-spoke s Terraformem v Azure](./terraform-hub-spoke-introduction.md).
+1. [Vytvořte místní virtuální síť s Terraform v Azure](./terraform-hub-spoke-on-prem.md).
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
-Síť rozbočovače se skládá z následujících součástí:
+Síť rozbočovačů se skládá z následujících součástí:
 
 - Virtuální síť rozbočovače
 - Brána virtuální sítě rozbočovače
-- Připojení brány centra 
+- Připojení brány rozbočovače 
 
-Následující konfigurační soubor Terraformu definuje prostředky:
+Následující konfigurační soubor Terraform definuje prostředky:
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 
@@ -49,17 +49,17 @@ Následující konfigurační soubor Terraformu definuje prostředky:
     cd clouddrive
     ```
 
-1. Změňte adresáře do nového adresáře.
+1. Změňte adresáře na nový adresář.
 
     ```bash
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-virtual-network"></a>Deklarovat virtuální síť centra
+## <a name="declare-the-hub-virtual-network"></a>Deklarování virtuální sítě rozbočovače
 
-Vytvořte konfigurační soubor Terraformu, který deklaruje virtuální síť centrální sítě.
+Vytvořte konfigurační soubor Terraform, který deklaruje virtuální síť rozbočovače.
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `hub-vnet.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `hub-vnet.tf`.
 
     ```bash
     code hub-vnet.tf
@@ -223,9 +223,9 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje virtuální síť c
     }
     ```
     
-3. Uložte soubor a ukončete Editor.
+3. Uložte soubor a ukončete editor.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Vytvoření zařízení virtuální sítě rozbočovače pomocí Terraformu v Azure](./terraform-hub-spoke-hub-nva.md)
+> [Vytvoření centrálního virtuálního síťového zařízení s Terraformem v Azure](./terraform-hub-spoke-hub-nva.md)

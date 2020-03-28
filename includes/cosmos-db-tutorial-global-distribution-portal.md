@@ -9,14 +9,14 @@ ms.topic: include
 ms.date: 12/26/2018
 ms.custom: include file
 ms.openlocfilehash: cb9899712fd023aaec41f4b6bb34357b60ecb106
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75752386"
 ---
-## <a id="addregion"></a>Přidání globálních oblastí databáze pomocí webu Azure Portal
-Azure Cosmos DB je k dispozici ve všech [oblastech Azure][azureregions] po celém světě. Po výběru výchozí úrovně konzistence účtu databáze k němu můžete přidružit jednu nebo několik oblastí (v závislosti na výběru výchozí úrovně konzistence a potřebách globální distribuce).
+## <a name="add-global-database-regions-using-the-azure-portal"></a><a id="addregion"></a>Přidání globálních oblastí databáze pomocí webu Azure Portal
+Azure Cosmos DB je dostupná ve všech [oblastech Azure][azureregions] po celém světě. Po výběru výchozí úrovně konzistence účtu databáze k němu můžete přidružit jednu nebo několik oblastí (v závislosti na výběru výchozí úrovně konzistence a potřebách globální distribuce).
 
 1. V levém panelu na webu [Azure Portal](https://portal.azure.com/) klikněte na **Azure Cosmos DB**.
 2. Na stránce **Azure Cosmos DB** vyberte účet databáze, který chcete upravit.
@@ -35,7 +35,7 @@ Pro konfiguraci dvou nebo více oblastí existují dva běžné scénáře:
 
 Pro zajištění nízké latence pro koncové uživatele se doporučuje nasadit aplikaci i službu Azure Cosmos DB v oblastech, které odpovídají umístění uživatelů aplikace.
 
-V případě BCDR se doporučuje přidat oblasti založené na páruch oblastí popsaných v tématu [provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure][bcdr] .
+Pro zajištění BCDR se doporučuje přidat oblasti podle spárovaných oblastí popsaných v článku [Provozní kontinuita a zotavení po havárii (BCDR): Spárované oblasti Azure][bcdr].
 
 <!--
 

@@ -1,5 +1,5 @@
 ---
-title: Příklad PowerShellu Import souboru BACPAC Azure SQL Database
+title: Příklad prostředí PowerShell importu databáze Azure SQL souboru BACPAC
 description: Ukázkový skript Azure PowerShellu pro import souboru BACPAC do databáze SQL
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
 ms.openlocfilehash: 1cd7b94ac2717bbfa06d093d13fc201514cdc575
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73691691"
 ---
 # <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>Import souboru BACPAC do databáze Azure SQL pomocí PowerShellu
@@ -26,7 +26,7 @@ Tento ukázkový skript PowerShellu importuje databázi ze souboru BACPAC do dat
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat prostředí PowerShell místně, tento kurz vyžaduje AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -34,7 +34,7 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použ
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní spojené prostředky.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
@@ -47,9 +47,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall serveru SQL Database, které umožňuje přístup ke všem izolovaným databázím a databázi ve fondu na serveru SQL Database z zadaného rozsahu IP adres. |
-| [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) | Importuje soubor BACPAC a vytvoří na serveru novou databázi. |
+| [Nový-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří databázový server SQL, který hostuje jednotlivé databáze a elastické fondy. |
+| [Nové pravidlo azsqlserverfirewallfirewall](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall serveru SQL Database server, které umožňuje přístup ke všem jednotlivým databázím a sdružené databázi na serveru SQL Database z rozsahu zadaných adres IP. |
+| [Nový-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) | Importuje soubor BACPAC a vytvoří na serveru novou databázi. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky

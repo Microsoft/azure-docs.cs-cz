@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: shreshar
 ms.openlocfilehash: fbc91b2610d97fe071e6585a58d7789dca873a9a
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72882293"
 ---
-Nasaďte aplikaci do svého zařízení. Po spuštění aplikace v dialogovém okně **Zvolte ukázku** použijte šipky vlevo nebo vpravo a vyberte možnost **LocalShare** a klepněte na tlačítko **Přejít!** . Postupujte podle pokynů v aplikaci. Můžete vybrat možnost **vytvořit & sdílet kotvu** nebo **Vyhledat sdílené kotvy**.
+Nasaďte aplikaci do zařízení. Po spuštění aplikace vyberte pomocí levé nebo pravé šipky možnost **LocalShare** možnost LocalShare a klepněte na **Přejít!**. **Choose A Demo** Postupujte podle pokynů v aplikaci. Můžete vybrat **možnost Vytvořit & kotvu sdílení** nebo Vyhledat **sdílenou kotvu**.
 
-**Vytvořením kotvy Share &** můžete vytvořit kotvu a uložit ho do služby pro sdílení. V části vrátit se vrátí identifikátor, který můžete použít k načtení ze služby sdílení. Potom můžete spustit druhý scénář, **Vyhledat sdílené kotvy**buď ze svého zařízení, nebo z jiného. **Vyhledání sdílené kotvy** umožňuje vyhledat dříve sdílené kotvy zadáním výše zmíněného identifikátoru. Po výběru scénáře vás aplikace provede dalšími pokyny k tomu, co dělat. Budete například požádáni o přesunutí zařízení do složky pro shromáždění informací o prostředí. Později umístíte kotvu do světa, počkejte na její uložení, spusťte novou relaci a pak ji vyhledejte.
+**Vytvoření & ukotvení sdílení** umožňuje vytvořit kotvu a uložit ji do služby sdílení. Na oplátku získáte zpět identifikátor pro něj, který můžete použít k načtení ze služby sdílení. Poté můžete spustit druhý scénář **Locate Shared Anchor**, buď ze zařízení, nebo z jiného scénáře. **Locate Shared Anchor** umožňuje vyhledat dříve sdílené kotvy zadáním dříve uvedeného identifikátoru. Po výběru scénáře vás aplikace provede dalšími pokyny, co dělat. Budete například vyzváni k přesunutí zařízení za účelem shromažďování informací o prostředí. Později umístíte kotvu do světa, počkáte na její uložení, zahájíte novou relaci a pak ji najdete.

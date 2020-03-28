@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: návrh serveru – Azure CLI – Azure Database for MySQL'
+title: 'Kurz: Návrh serveru – Azure CLI – Azure Database for MySQL'
 description: Tento kurz vysvětluje, jak vytvořit a spravovat databázi a server Azure Database for MySQL pomocí Azure CLI z příkazového řádku.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
 ms.openlocfilehash: 00beae5a65e61f814d3498dbb41af02aaf0287fb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74771208"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Kurz: Návrh databáze Azure Database for MySQL pomocí Azure CLI
@@ -22,8 +22,8 @@ Azure Database for MySQL je relační databázová služba v cloudu Microsoftu z
 > [!div class="checklist"]
 > * Vytvoření Azure Database for MySQL
 > * Konfigurace brány firewall serveru
-> * Použití [nástroje pro příkazový řádek mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) k vytvoření databáze
-> * Načíst ukázková data
+> * Vytvoření databáze pomocí [nástroje příkazového řádku mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)
+> * Načtení ukázkových dat
 > * Dotazování dat
 > * Aktualizace dat
 > * Obnovení dat
@@ -53,13 +53,13 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
 Vytvořte server Azure Database for MySQL pomocí příkazu az mysql server create. Server může spravovat více databází. Obvykle se pro jednotlivé projekty nebo uživatele používají samostatné databáze.
 
-Následující příklad vytvoří server Azure Database for MySQL, jehož umístěním je `westus` ve skupině prostředků `myresourcegroup` s názvem `mydemoserver`. Server má uživatele správce s názvem `myadmin`. Je to Pro obecné účelyý Server Gen 5 se 2 virtuální jádra. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
+Následující příklad vytvoří server Azure Database for MySQL, jehož umístěním je `westus` ve skupině prostředků `myresourcegroup` s názvem `mydemoserver`. Server má uživatele správce `myadmin`s názvem . Jedná se o obecný účel, Gen 5 server s 2 virtuálními jádry. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
 ```
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
-+ `--sku-name B_Gen5_2` se mapuje na Basic, Gen 5 a 2 virtuální jádra.
++ `--sku-name B_Gen5_2`mapy na základní, Gen 5 a 2 virtuální jádra.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 + `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
 
@@ -201,8 +201,8 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for MySQL
 > * Konfigurace brány firewall serveru
-> * Použití [nástroje pro příkazový řádek mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) k vytvoření databáze
-> * Načíst ukázková data
+> * Vytvoření databáze pomocí [nástroje příkazového řádku mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)
+> * Načtení ukázkových dat
 > * Dotazování dat
 > * Aktualizace dat
 > * Obnovení dat

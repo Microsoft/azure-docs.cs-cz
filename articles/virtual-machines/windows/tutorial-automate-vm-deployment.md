@@ -16,15 +16,15 @@ ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 610f8efad473b5f4bed1abc6b2c063ec0ead66ed
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74065365"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Kurz nasazení aplikací na virtuální počítač s Windows v Azure pomocí rozšíření vlastních skriptů
 
-K rychlému a konzistentnímu konfigurování virtuálních počítačů můžete použít [rozšíření vlastních skriptů pro Windows](extensions-customscript.md). Co se v tomto kurzu naučíte:
+Chcete-li rychle a konzistentně nakonfigurovat virtuální počítače, můžete použít [rozšíření Custom Script Extension pro Windows](extensions-customscript.md). Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Použít rozšíření vlastních skriptů k instalaci služby IIS
@@ -35,7 +35,7 @@ K rychlému a konzistentnímu konfigurování virtuálních počítačů můžet
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné [https://shell.azure.com/powershell](https://shell.azure.com/powershell)kartě prohlížeče tak, že přejdete na . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="custom-script-extension-overview"></a>Přehled rozšíření vlastních skriptů
 Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakékoli jiné úlohy konfigurace nebo správy. Skripty si můžete stáhnout z Azure Storage nebo z GitHubu, případně je za běhu rozšíření najdete na portálu Azure Portal.
@@ -46,13 +46,13 @@ Rozšíření vlastních skriptů můžete použít s virtuálními počítači 
 
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
-Nastavte uživatelské jméno a heslo správce virtuálního počítače pomocí [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Nastavte uživatelské jméno správce a heslo pro virtuální počítače s [get-credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Nyní můžete vytvořit virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud ještě neexistuje, vytvoří se skupina prostředků *myResourceGroupAutomate* a podpůrné síťové prostředky. Za účelem povolení webového provozu rutina také otevře port *80*.
+Teď můžete vytvořit virtuální hospodařící s [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud ještě neexistuje, vytvoří se skupina prostředků *myResourceGroupAutomate* a podpůrné síťové prostředky. Za účelem povolení webového provozu rutina také otevře port *80*.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -71,7 +71,7 @@ Vytvoření prostředků a virtuálního počítače trvá několik minut.
 
 
 ## <a name="automate-iis-install"></a>Automatizace instalace služby IIS
-K instalaci rozšíření vlastních skriptů použijte [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) . Rozšíření spustí `powershell Add-WindowsFeature Web-Server` za účelem instalace webového serveru služby IIS a potom aktualizuje stránku *Default.htm*, aby zobrazovala název hostitele virtuálního počítače:
+K instalaci rozšíření Vlastní skript použijte [rozšíření Set-AzVMExtension.](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) Rozšíření spustí `powershell Add-WindowsFeature Web-Server` za účelem instalace webového serveru služby IIS a potom aktualizuje stránku *Default.htm*, aby zobrazovala název hostitele virtuálního počítače:
 
 ```azurepowershell-interactive
 Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
@@ -86,7 +86,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
 
 
 ## <a name="test-web-site"></a>Testovací web
-Získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIPAddress*:
+Získejte veřejnou IP adresu svého vyvyčovávače zatížení pomocí [aplikace Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIPAddress*:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `

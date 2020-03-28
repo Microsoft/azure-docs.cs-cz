@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Form.com | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Form.com.
+title: 'Kurz: Integrace služby Azure Active Directory se Form.com | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Form.com.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,100 +16,100 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: aa6585b981626d3752f2383db20f8e149a2ed007
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73156112"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Kurz: Azure Active Directory integrace s Form.com
+# <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Kurz: Integrace Služby Azure Active Directory s Form.com
 
 V tomto kurzu se dozvíte, jak integrovat Form.com s Azure Active Directory (Azure AD).
 Integrace Form.com s Azure AD poskytuje následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k Form.com.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Form.com (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+* Můžete řídit ve službě Azure AD, který má přístup k Form.com.
+* Můžete povolit, aby vaši uživatelé byli automaticky přihlášeni k Form.com (jednotné přihlášení) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s Form.com potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s Form.com, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné s povoleným Form.comm jednotným přihlašováním
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* Form.com předplatné s povoleným jedním přihlášením
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Form.com podporuje jednotné přihlašování iniciované v **SP**
+* Form.com podporuje **sp** inicioval sso
 
-## <a name="adding-formcom-from-the-gallery"></a>Přidání Form.com z Galerie
+## <a name="adding-formcom-from-the-gallery"></a>Přidání Form.com z galerie
 
-Pokud chcete nakonfigurovat integraci Form.com do služby Azure AD, musíte přidat Form.com z Galerie do svého seznamu spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci Form.com do Azure AD, musíte přidat Form.com z galerie do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Form.com z Galerie, proveďte následující kroky:**
+**Chcete-li přidat Form.com z galerie, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Form.com**, vyberte **Form.com** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Form.com**, vyberte **Form.com** z panelu výsledků a klepnutím na **tlačítko Přidat** přidejte aplikaci.
 
      ![Form.com v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Form.com na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Form.com.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s Form.com na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v Form.com.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Form.com, musíte dokončit tyto stavební bloky:
+Chcete-li konfigurovat a testovat jednotné přihlašování azure ad s Form.com, musíte dokončit následující stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Form.com](#configure-formcom-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvoření Form.com test User](#create-formcom-test-user)** – pro Britta Simon v Form.com, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace Form.com jednotného přihlašování](#configure-formcom-single-sign-on)** – konfigurace nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte Form.com testovacího uživatele](#create-formcom-test-user)** – chcete-li mít protějšek Britta Simon v Form.com, který je propojený s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Form.com, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování azure a disponu, pomocí Form.com, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Form.com** vyberte **jednotné přihlašování**.
+1. Na [webu Azure Portal](https://portal.azure.com/)na stránce integrace **aplikací Form.com** vyberte **Jednotné přihlašování**.
 
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+4. V části **Základní konfigurace SAML** proveďte následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně Form.com a adresách URL](common/sp-identifier-reply.png)
+    ![Form.com informace o jednotném přihlášení doméně a adres URL](common/sp-identifier-reply.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.wa-form.com`
+    a. Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.wa-form.com`
 
-    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.form.com`
+    b. Do pole **Identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.form.com`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
+    c. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:
     
     | |
     |--|
@@ -117,92 +117,92 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Form.com
     | `https://<subdomain>.form.com/Member/UserAccount/SAML2.action` |
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Form.com](https://form.com/about/company/contact-us/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou přihlašovací adresou URL, identifikátorem a adresou URL pro odpověď. Chcete-li získat tyto hodnoty, obraťte se Form.com [tým podpory klienta.](https://form.com/about/company/contact-us/) Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na **Stáhnout** stáhněte **certifikát (Base64)** a kliknutím na **ikonu** Kopírovat zkopírujte **adresu URL federačních metadat aplikace** z dané možnosti podle vašich požadavků a uložte je do vašeho počítače.
+5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte **si certifikát (Base64)** a kliknutím na **ikonu** kopie zkopírujte adresu URL metadat **federace aplikací** z daných možností podle vašeho požadavku a uložte ho do počítače.
 
-    ![Odkaz na stažení certifikátu](./media/formcom-tutorial/certificatebase64-url.png)
+    ![Odkaz ke stažení certifikátu](./media/formcom-tutorial/certificatebase64-url.png)
 
-6. V části **nastavení Form.com** zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **Nastavit Form.com** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Odhlašovací adresa URL
+    c. Adresa URL odhlášení
 
-### <a name="configure-formcom-single-sign-on"></a>Konfigurace jednotného přihlašování Form.com
+### <a name="configure-formcom-single-sign-on"></a>Konfigurace Form.com jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na straně **Form.com** je potřeba odeslat stažený **certifikát (Base64)** , **adresu URL federačních metadat aplikace** a příslušné zkopírované adresy url z Azure Portal do [týmu podpory Form.com](https://form.com/about/company/contact-us/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Chcete-li nakonfigurovat jednotné přihlašování na **Form.com** straně, musíte odeslat stažený **certifikát (Base64),** **adresu URL metadat federace aplikací** a příslušné zkopírované adresy URL z portálu Azure do týmu podpory [Form.com](https://form.com/about/company/contact-us/). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Uživatelský dialog](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. V poli **Uživatelské jméno** zadejte **\@brittasimon vašecompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Form.com.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k Form.com.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Form.com**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak **vyberte Form.com**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Form.com**.
+2. V seznamu aplikací vyberte **Form.com**.
 
-    ![Odkaz Form.com v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Form.com v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-formcom-test-user"></a>Vytvořit testovacího uživatele Form.com
+### <a name="create-formcom-test-user"></a>Vytvořit Form.com testovacího uživatele
 
-V této části vytvoříte uživatele s názvem Britta Simon v Form.com. Pokud chcete přidat uživatele na platformě Form.com, pracujte s [týmem podpory Form.com](https://form.com/about/company/contact-us/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v Form.com. Spolupracujte s [týmem podpory Form.com](https://form.com/about/company/contact-us/) a přidejte uživatele do Form.com platformy. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Form.com, měli byste se automaticky přihlásit k Form.com, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Form.com na přístupovém panelu, můžete by měl být automaticky přihlášeni k Form.com, pro které nastavíte přiřazovat. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

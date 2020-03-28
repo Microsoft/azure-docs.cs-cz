@@ -1,18 +1,18 @@
 ---
-title: Publikování spravované aplikace katalogu služeb
+title: Publikovat spravovanou aplikaci katalogu služeb
 description: Ukazuje, jak vytvořit spravovanou aplikaci Azure, která je určená pro členy vaší organizace.
 author: tfitzmac
 ms.topic: tutorial
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: e756617a700d258078e84a3fa11c8aceb6f4dd88
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 13c45bc6e67d9d3d06a70b7cf3326cc112cd7829
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903271"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79473009"
 ---
-# <a name="create-and-publish-a-managed-application-definition"></a>Vytvoření a publikování definice spravované aplikace
+# <a name="tutorial-create-and-publish-a-managed-application-definition"></a>Kurz: Vytvoření a publikování definice spravované aplikace
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -81,13 +81,13 @@ Přidejte do souboru následující kód JSON. Definuje parametry pro vytvořen�
 
 Uložte soubor mainTemplate.json.
 
-## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Definování prostředí pro vytváření pomocí CreateUiDefinition. JSON
+## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Definování prostředí pro vytváření pomocí souboru CreateUiDefinition.json
 
-Jako vydavatel definujete své prostředí pro vytváření pomocí souboru **createUiDefinition. JSON** , který vygeneruje rozhraní pro uživatele, kteří vytvářejí spravované aplikace. Definujete, jak uživatelé poskytují vstup pro každý parametr pomocí [ovládacích prvků](create-uidefinition-elements.md) , včetně rozevíracích seznamů, textových polí a polí pro hesla.
+Jako vydavatel definujete prostředí pro vytváření pomocí souboru **createUiDefinition.json,** který generuje rozhraní pro uživatele vytvářející spravované aplikace. Můžete definovat, jak uživatelé poskytují vstup pro každý parametr pomocí [ovládacích prvků,](create-uidefinition-elements.md) včetně rozevíracích seznamů, textových polí a hesel.
 
-Vytvoří soubor s názvem **createUiDefinition. JSON** (u tohoto názvu se rozlišují velká a malá písmena).
+Vytvoření souboru s názvem **createUiDefinition.json** (Tento název rozlišuje malá a velká písmena)
 
-Do souboru přidejte následující spouštěcí kód JSON a uložte ho.
+Přidejte do souboru následující počáteční JSON a uložte jej.
 
 ```json
 {
@@ -138,7 +138,7 @@ Do souboru přidejte následující spouštěcí kód JSON a uložte ho.
 }
 ```
 
-Další informace najdete v tématu Začínáme [s CreateUiDefinition](create-uidefinition-overview.md).
+Další informace najdete [v tématu Začínáme s createuidefinition](create-uidefinition-overview.md).
 
 ## <a name="package-the-files"></a>Zabalení souborů
 
@@ -209,29 +209,29 @@ New-AzManagedApplicationDefinition `
 ```
 
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Přineste si vlastní úložiště pro definici spravované aplikace
-Definici spravované aplikace si můžete uložit v rámci účtu úložiště, který vám poskytl během vytváření, aby bylo možné její umístění a přístup plně spravovat podle vašich zákonných potřeb.
+Definici spravované aplikace můžete uložit do účtu úložiště, který jste poskytli během vytváření, aby ji bylo možné plně spravovat pro vaše regulační potřeby.
 
 > [!NOTE]
-> Využití vlastního úložiště je podporované jenom šablonou ARM nebo nasazením REST API definice spravované aplikace.
+> Přineste si vlastní úložiště je podporováno pouze s ARM šablony nebo REST API nasazení definice spravované aplikace.
 
-### <a name="select-your-storage-account"></a>Vyberte svůj účet úložiště.
-Musíte [vytvořit účet úložiště](../../storage/common/storage-account-create.md) , který bude obsahovat definici spravované aplikace pro použití s katalogem služeb.
+### <a name="select-your-storage-account"></a>Vyberte účet úložiště
+Je nutné [vytvořit účet úložiště,](../../storage/common/storage-account-create.md) který bude obsahovat definici spravované aplikace pro použití s katalogem služeb.
 
-Zkopírujte ID prostředku účtu úložiště. Použije se později při nasazování definice.
+Zkopírujte ID prostředku účtu úložiště. Bude použit později při nasazení definice.
 
-### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Nastavte přiřazení role pro "poskytovatele prostředků zařízení" v účtu úložiště.
-Předtím, než bude možné nasadit definici spravované aplikace do svého účtu úložiště, musíte udělit oprávnění přispěvatele k roli **poskytovatele prostředků zařízení** , aby mohla zapisovat definiční soubory do kontejneru účtu úložiště.
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Nastavení přiřazení role pro "Zprostředkovatel prostředků zařízení" v účtu úložiště
+Před nasazením definice spravované aplikace do vašeho účtu úložiště musíte udělit oprávnění přispěvatele k roli **Zprostředkovatel prostředků zařízení,** aby mohl zapisovat definiční soubory do kontejneru vašeho účtu úložiště.
 
-1. Na webu [Azure Portal](https://portal.azure.com) přejděte ke svému účtu úložiště.
-1. Vyberte **řízení přístupu (IAM)** a zobrazte nastavení řízení přístupu pro účet úložiště. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
-1. V okně **Přidat přiřazení role** vyberte roli **Přispěvatel** . 
-1. V poli **přiřadit přístup k** vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD**.
-1. V části **Vyberte** vyhledat roli **poskytovatele prostředků zařízení** a vyberte ji.
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte na svůj účet úložiště.
+1. Vyberte **řízení přístupu (IAM),** chcete-li zobrazit nastavení řízení přístupu pro účet úložiště. Výběrem karty **Přiřazení rolí** zobrazíte seznam přiřazení rolí.
+1. V okně **Přidat přiřazení role** vyberte roli **přispěvatele.** 
+1. V poli **Přiřadit přístup k** vyberte **uživatele, skupinu nebo instanční objekt Azure AD**.
+1. V **části Vyberte** roli Hledat **zprostředkovatele prostředků zařízení** a vyberte ji.
 1. Uložte přiřazení role.
 
 ### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Nasazení definice spravované aplikace pomocí šablony ARM 
 
-Pomocí následující šablony ARM nasaďte zabalené spravované aplikace jako novou definici spravované aplikace v katalogu služeb, jejíž definiční soubory se ukládají a udržují ve vašem vlastním účtu úložiště:
+Následující šablona ARM slouží k nasazení sbalené spravované aplikace jako nové definice spravované aplikace v katalogu služeb, jejíž definiční soubory jsou uloženy a udržovány ve vašem vlastním účtu úložiště:
    
 ```json
     {
@@ -303,12 +303,12 @@ Pomocí následující šablony ARM nasaďte zabalené spravované aplikace jako
 }
 ```
 
-Přidali jsme do vlastností applicationDefintion novou vlastnost s názvem **storageAccountId** a zadáte ID účtu úložiště, do kterého chcete definici uložit, jako její hodnotu:
+Přidali jsme novou vlastnost s názvem **storageAccountId** do vlastností vaší aplikaceDefintion a poskytnout id účtu úložiště, které chcete uložit definici v jako jeho hodnotu:
 
-V kontejneru s názvem **applicationdefinitions**můžete ověřit, zda jsou soubory definic aplikace uloženy v zadaném účtu úložiště.
+Můžete ověřit, že soubory definice aplikace jsou uloženy v zadaný účet úložiště v kontejneru s názvem **applicationdefinitions**.
 
 > [!NOTE]
-> Pro zvýšení zabezpečení můžete vytvořit definici spravovaných aplikací v [objektu BLOB účtu úložiště Azure, kde je šifrování povolené](../../storage/common/storage-service-encryption.md). Obsah definice se šifruje prostřednictvím možností šifrování účtu úložiště. Jenom uživatelé s oprávněními k tomuto souboru uvidí definici v katalogu služeb.
+> Pro zvýšení zabezpečení můžete vytvořit definici spravovaných aplikací, uložte ji do [objektu blob účtu úložiště Azure, kde je povoleno šifrování](../../storage/common/storage-service-encryption.md). Obsah definice je šifrován prostřednictvím možností šifrování účtu úložiště. Definici mohou v katalogu služeb zobrazit pouze uživatelé s oprávněními k souboru.
 
 ### <a name="make-sure-users-can-see-your-definition"></a>Je potřeba zajistit, že budou uživatelé vidět vaši definici.
 

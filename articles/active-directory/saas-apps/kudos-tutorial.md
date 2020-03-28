@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s pochvalné hodnocení | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pochvalné hodnocení.
+title: 'Kurz: Integrace služby Azure Active Directory s kudosem | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Kudos.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,226 +16,226 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 1fb1a1bc7bfd8b3cc9d7758bf8e80d8759f9357e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227483"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Kurz: Azure Active Directory integrace s pochvalné hodnocení
+# <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Kurz: Integrace služby Azure Active Directory s kudosem
 
-V tomto kurzu se dozvíte, jak integrovat pochvalné hodnocení s Azure Active Directory (Azure AD).
-Integrace pochvalné hodnocení s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat kudos s Azure Active Directory (Azure AD).
+Integrace kudos s Azure AD poskytuje následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k pochvalné hodnocení.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k pochvalné hodnocení (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup ke kudos.
+* Můžete povolit, aby se uživatelé automaticky přihlašovali ke kudosu (jednotné přihlášení) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s pochvalné hodnocení potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s Kudos, budete potřebovat následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
-* Předplatné s povoleným pochvalné hodnocením jednotným přihlašováním
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* Předplatné s povoleným jedním přihlášením kudos
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Pochvalné hodnocení podporuje jednotné přihlašování iniciované v **SP**
+* Kudos podporuje **SP** inicioval SSO
 
-## <a name="adding-kudos-from-the-gallery"></a>Přidání pochvalné hodnocení z Galerie
+## <a name="adding-kudos-from-the-gallery"></a>Přidání slávy z galerie
 
-Pokud chcete nakonfigurovat integraci pochvalné hodnocení do služby Azure AD, musíte přidat pochvalné hodnocení z Galerie do svého seznamu spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci Kudos do Azure AD, musíte přidat Kudos z galerie do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat pochvalné hodnocení z Galerie, proveďte následující kroky:**
+**Chcete-li přidat kudos z galerie, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **pochvalné hodnocení**, vyberte **pochvalné hodnocení** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Kudos**, z panelu výsledků vyberte **Kudos** a pak klepněte na tlačítko **Přidat** a přidejte aplikaci.
 
-     ![Pochvalné hodnocení v seznamu výsledků](common/search-new-app.png)
+     ![Sláva v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí pochvalné hodnocení na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v pochvalné hodnocení.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí kudosu na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v Kudos.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí pochvalné hodnocení, musíte dokončit tyto stavební bloky:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí kudosu, musíte dokončit následující stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování pochvalné hodnocení](#configure-kudos-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvoření pochvalné hodnocení Test User](#create-kudos-test-user)** – pro Britta Simon v pochvalné hodnocení, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace jednotného přihlášení Kudos](#configure-kudos-single-sign-on)** - konfigurace nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte uživatele testu Kudos](#create-kudos-test-user)** – chcete-li mít protějšek Britta Simon v Kudos, který je propojen s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí pochvalné hodnocení, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí kudosu, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **pochvalné hodnocení** vyberte **jednotné přihlašování**.
+1. Na [webu Azure Portal](https://portal.azure.com/)vyberte na stránce integrace aplikací **Kudos** **možnost Jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+4. V části **Základní konfigurace SAML** proveďte následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně pochvalné hodnocení a adresách URL](common/sp-signonurl.png)
+    ![Informace o jednotném přihlášení domény kudos a adresy URL](common/sp-signonurl.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<company>.kudosnow.com`
+    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<company>.kudosnow.com`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta pochvalné hodnocení](http://success.kudosnow.com/home) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota není skutečná. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Obraťte [se na tým podpory klienta Kudos](http://success.kudosnow.com/home) získat hodnotu. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Base64)** z daných možností podle vašeho požadavku a uložte jej do počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-6. V části **Nastavení pochvalné hodnocení** zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **Nastavit kudos** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-kudos-single-sign-on"></a>Konfigurace jednotného přihlašování pochvalné hodnocení
+### <a name="configure-kudos-single-sign-on"></a>Konfigurace jednotného přihlašování kudos
 
-1. V jiném okně webového prohlížeče se přihlaste k webu pochvalné hodnocení společnosti jako správce.
+1. V jiném okně webového prohlížeče se přihlaste na web společnosti Kudos jako správce.
 
-1. V nabídce v horní části klikněte na **ikona nastavení**.
+1. V horní nabídce klikněte na **ikonu Nastavení**.
 
     ![Nastavení](./media/kudos-tutorial/ic787806.png "Nastavení")
 
-1. Klikněte na **integrace > jednotné přihlašování** a proveďte následující kroky:
+1. Klikněte na **integrace > přiřazuje k sociálnímu prostředí** a proveďte následující kroky:
 
-    ![JEDNOTNÉ](./media/kudos-tutorial/ic787807.png "JEDNOTNÉ")
+    ![Jednotné přihlašování](./media/kudos-tutorial/ic787807.png "Jednotné přihlašování")
 
-    a. Do textového pole **přihlašovací adresa URL** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    a. V textovém poli **Přihlašovací adresa URL** vložte hodnotu přihlašovací adresy **URL,** kterou jste zkopírovali z webu Azure Portal.
 
-    b. Otevřete v programu Poznámkový blok certifikát s kódováním Base-64, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikátu X. 509.**
+    b. Otevřete svůj certifikát kódovaný base-64 v poznámkovém bloku, zkopírujte jeho obsah do schránky a vložte jej do textového pole **certifikátu X.509**
 
-    c. Do textového pole **Odhlásit k adrese URL** vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
+    c. Do textového pole **Odhlášení do adresy URL** vložte hodnotu **adresy URL odhlášení,** kterou jste zkopírovali z webu Azure Portal.
 
-    d. Do textového pole **Adresa URL pochvalné hodnocení** zadejte název vaší společnosti.
+    d. Do textového pole **Vaše adresa URL kudos** zadejte název společnosti.
 
-    e. Klikněte na možnost **Uložit**.
+    e. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`  
+    b. V poli **Uživatelské jméno** typ pole`brittasimon@yourcompanydomain.extension`  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
     d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k pochvalné hodnocení.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu kudos.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **pochvalné hodnocení**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Kudos**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **pochvalné hodnocení**.
+2. V seznamu aplikací vyberte **Kudos**.
 
-    ![Odkaz pochvalné hodnocení v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Kudos v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-kudos-test-user"></a>Vytvořit testovacího uživatele pochvalné hodnocení
+### <a name="create-kudos-test-user"></a>Vytvořit uživatele testu Kudos
 
-Aby se uživatelé Azure AD mohli přihlašovat k pochvalné hodnocení, musí se zřídit v pochvalné hodnocení. V případě pochvalné hodnocení je zřizování ručním úkolem.
+Aby bylo možné povolit uživatelům Azure AD k přihlášení ke kudos, musí být zřízena do Kudos. V případě Kudos zřizování je ruční úlohy.
 
 **Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Přihlaste se k webu **pochvalné hodnocení** společnosti jako správce.
+1. Přihlaste se k webu společnosti **Kudos** jako správce.
 
-1. V nabídce v horní části klikněte na **ikona nastavení**.
+1. V horní nabídce klikněte na **ikonu Nastavení**.
 
    ![Nastavení](./media/kudos-tutorial/ic787806.png "Nastavení")
 
 1. Klikněte na **Správce uživatelů**.
 
-1. Klikněte na kartu **Uživatelé** a pak klikněte na **Přidat uživatele**.
+1. Klikněte na kartu **Uživatelé** a potom **klikněte**na Přidat uživatele .
 
    ![Správce uživatelů](./media/kudos-tutorial/ic787809.png "Správce uživatelů")
 
 1. V části **Přidat uživatele** proveďte následující kroky:
 
-    ![Přidat uživatele](./media/kudos-tutorial/ic787810.png "Přidat uživatele")
+    ![Přidání uživatele](./media/kudos-tutorial/ic787810.png "Přidání uživatele")
 
-    a. Zadejte **jméno**, **příjmení**, **e-mail** a další podrobnosti platného Azure Active Directory účtu, který chcete zřídit do souvisejících textových polí.
+    a. Zadejte **jméno**, **příjmení**, **e-mail** a další podrobnosti o platném účtu služby Azure Active Directory, který chcete zřídit do souvisejících textových polí.
 
-    b. Klikněte na **vytvořit uživatele**.
+    b. Klepněte na **tlačítko Vytvořit uživatele**.
 
 > [!NOTE]
-> K zřizování uživatelských účtů Azure AD můžete použít jiné nástroje pro vytváření uživatelských účtů pochvalné hodnocení nebo rozhraní API poskytovaná pochvalné hodnocení.
+> Můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů Kudos nebo rozhraní API poskytované Kudos zřídit uživatelské účty Azure AD.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici pochvalné hodnocení, měli byste se automaticky přihlásit k pochvalné hodnocení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Kudos na přístupovém panelu, můžete by měl být automaticky přihlášeni k Kudos, u kterého nastavíte přistupující ho. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

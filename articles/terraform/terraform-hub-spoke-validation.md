@@ -1,41 +1,41 @@
 ---
-title: Kurz – ověření sítě centra a paprsků v Azure pomocí Terraformu
-description: Kurz pro ověření síťové topologie centra a paprsků se všemi virtuálními sítěmi propojenými navzájem.
+title: Kurz – ověření sítě rozbočovače a paprsku v Azure pomocí Terraform
+description: Kurz k ověření topologie sítě rozbočovače a paprsku se všemi virtuálními sítěmi vzájemně propojenými.
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 9ba4780c59e5e9da4999573abbc08ecd2738a2cd
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159201"
 ---
-# <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>Kurz: ověření sítě centra a paprsků v Azure pomocí Terraformu
+# <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>Kurz: Ověření sítě rozbočovače a paprsku v Azure pomocí Terraform
 
-V tomto článku provedete soubory terraformu vytvořené v předchozím článku v této sérii. Výsledkem je ověření připojení mezi ukázkovými virtuálními sítěmi.
+V tomto článku provedete terraform soubory vytvořené v předchozím článku v této řadě. Výsledkem je ověření připojení mezi demo virtuálnísítě.
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Použití HCL (HashiCorp Language) k implementaci virtuální sítě rozbočovače v topologii centra s paprsky
-> * Použijte plán Terraformu k ověření prostředků, které se mají nasadit.
-> * Použití Terraformu se používá k vytvoření prostředků v Azure
+> * Použití HCL (HashiCorp Language) k implementaci virtuální sítě hubu v topologii s hubem
+> * Použití plánu Terraform k ověření prostředků, které mají být nasazeny
+> * Použití aplikace Terraform apply k vytvoření prostředků v Azure
 > * Ověření připojení mezi různými sítěmi
-> * Zničení všech prostředků pomocí Terraformu
+> * Použijte Terraform zničit všechny zdroje
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. [Vytvořte topologii hybridní sítě rozbočovače a paprsku pomocí terraformu v Azure](./terraform-hub-spoke-introduction.md).
-1. [Vytvořte si místní virtuální síť s terraformu v Azure](./terraform-hub-spoke-on-prem.md).
-1. [Vytvořte virtuální síť centra pomocí terraformu v Azure](./terraform-hub-spoke-hub-network.md).
-1. [Vytvořte zařízení virtuální sítě rozbočovače s terraformu v Azure](./terraform-hub-spoke-hub-nva.md).
-1. [Vytvořte hvězdicové virtuální sítě pomocí terraformu v Azure](./terraform-hub-spoke-spoke-network.md).
+1. [Vytvořte topologii hybridní sítě rozbočovače a paprsku s Terraformem v Azure](./terraform-hub-spoke-introduction.md).
+1. [Vytvořte místní virtuální síť s Terraform em v Azure](./terraform-hub-spoke-on-prem.md).
+1. [Vytvořte centrální virtuální síť s Terraform v Azure](./terraform-hub-spoke-hub-network.md).
+1. [Vytvořte centrální virtuální síťové zařízení s Terraform v Azure](./terraform-hub-spoke-hub-nva.md).
+1. [Vytvořte virtuální sítě s paprsky s Terraformem v Azure](./terraform-hub-spoke-spoke-network.md).
 
 ## <a name="verify-your-configuration"></a>Ověření konfigurace
 
-Po dokončení [požadovaných součástí](#prerequisites)ověřte, zda jsou k dispozici příslušné konfigurační soubory.
+Po dokončení [požadavků](#prerequisites)ověřte, zda jsou k dispozici příslušné konfigurační soubory.
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 
@@ -53,27 +53,27 @@ Po dokončení [požadovaných součástí](#prerequisites)ověřte, zda jsou k 
     cd hub-spoke
     ```
 
-1. Spusťte příkaz `ls`, abyste ověřili, že jsou uvedené soubory `.tf` config vytvořené v předchozích kurzech:
+1. Spuštěním `ls` příkazu ověřte, zda jsou uvedeny `.tf` konfigurační soubory vytvořené v předchozích kurzech:
 
-    ![Konfigurační soubory terraformu demo](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
+    ![Terraform demo konfigurační soubory](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
 
 ## <a name="deploy-the-resources"></a>Nasazení prostředků
 
-1. Inicializovat poskytovatele Terraformu:
+1. Inicializovat poskytovatele Terraform:
     
     ```bash
     terraform init
     ```
     
-    ![Příklady výsledků příkazu "terraformu init"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-init.png)
+    ![Příklad výsledků příkazu "terraform init"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-init.png)
     
-1. Spuštěním příkazu `terraform plan` zobrazíte účinek nasazení před provedením:
+1. Spuštěním `terraform plan` příkazu zobrazíte efekt nasazení před spuštěním:
 
     ```bash
     terraform plan
     ```
     
-    ![Příklady výsledků příkazu "terraformu Plan"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-plan.png)
+    ![Příklad výsledků příkazu "terraform plan"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-plan.png)
 
 1. Nasazení řešení:
 
@@ -81,62 +81,62 @@ Po dokončení [požadovaných součástí](#prerequisites)ověřte, zda jsou k 
     terraform apply
     ```
     
-    Po zobrazení výzvy k potvrzení nasazení zadejte `yes`.
+    Po `yes` zobrazení výzvy k potvrzení nasazení zadejte.
 
-    ![Příklady výsledků příkazu "terraformu Apply"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-apply.png)
+    ![Příklad výsledků příkazu "terraform apply"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-apply.png)
     
-## <a name="test-the-hub-vnet-and-spoke-vnets"></a>Otestujte virtuální síť centra a paprskový virtuální sítě
+## <a name="test-the-hub-vnet-and-spoke-vnets"></a>Testování virtuálních sítí a virtuálních sítí pro paprsky rozbočovače
 
-V této části se dozvíte, jak testovat připojení ze simulovaného místního prostředí do virtuální sítě centra.
+Tato část ukazuje, jak otestovat připojení ze simulovaného místního prostředí do virtuální sítě rozbočovače.
 
-1. V Azure Portal přejděte do skupiny prostředků **OnPrem-VNet-RG** .
+1. Na webu Azure Portal přejděte na skupinu prostředků **onprem-vnet-rg.**
 
-1. Na kartě **OnPrem-VNet-RG** vyberte virtuální počítač s názvem **OnPrem-VM**.
+1. Na kartě **onprem-vnet-rg** vyberte virtuální počítač s názvem **onprem-vm**.
 
 1. Vyberte **Connect** (Připojit).
 
-1. Vedle textového **přihlášení pomocí místního účtu virtuálního počítače**zkopírujte příkaz **SSH** do schránky.
+1. Vedle textu **Přihlášení pomocí místního účtu virtuálního účtu**zkopírujte příkaz **ssh** do schránky.
 
-1. Z řádku Linux, spusťte `ssh` pro připojení k simulované místní prostředí. Použijte heslo zadané v souboru parametrů `on-prem.tf`.
+1. Z výzvy Linuxu spusťte `ssh` připojení k simulovanému místnímu prostředí. Použijte heslo zadané `on-prem.tf` v souboru parametrů.
 
-1. Spusťte příkaz `ping`, abyste otestovali připojení k virtuálnímu počítači s JumpBox ve virtuální síti centra:
+1. Spuštěním `ping` příkazu otestujte připojení k virtuálnímu virtuálnímu zařízení jumpbox u centrální virtuální sítě:
 
    ```bash
    ping 10.0.0.68
    ```
 
-1. Spusťte příkaz `ping`, který otestuje připojení k virtuálním počítačům s JumpBox v každém paprsku:
+1. Spuštěním `ping` příkazu otestujte připojení k virtuálním sítím jumpbox v každém paprsku:
 
    ```bash
    ping 10.1.0.68
    ping 10.2.0.68
    ```
 
-1. Pokud chcete ukončit relaci SSH na virtuálním počítači **OnPrem-VM** , zadejte `exit` a stiskněte &lt;Enter >.
+1. Relaci ssh ukončíte na virtuálním počítači **onprem-vm,** zadejte `exit` a stiskněte &lt;Enter>.
 
-## <a name="troubleshoot-vpn-issues"></a>Řešení potíží s VPN
+## <a name="troubleshoot-vpn-issues"></a>Poradce při potížích s VPN
 
-Informace o řešení chyb sítě VPN najdete v článku [řešení potíží s hybridním připojením k síti VPN](/azure/architecture/reference-architectures/hybrid-networking/troubleshoot-vpn).
+Informace o řešení chyb SÍTĚ VPN naleznete v článku [Poradce při potížích s hybridním připojením VPN](/azure/architecture/reference-architectures/hybrid-networking/troubleshoot-vpn).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte prostředky vytvořené v řadě kurzů.
+Pokud již není potřeba, odstraňte prostředky vytvořené v sérii kurzů.
 
-1. Odeberte prostředky deklarované v plánu:
+1. Odeberte zdroje deklarované v plánu:
 
     ```bash
     terraform destroy
     ```
 
-    Po zobrazení výzvy k potvrzení odebrání prostředků zadejte `yes`.
+    Po `yes` zobrazení výzvy k potvrzení odebrání prostředků zadejte.
 
-1. Přejděte do složky nadřazený adresář:
+1. Změna adresářů do nadřazeného adresáře:
 
     ```bash
     cd ..
     ```
 
-1. Odstraňte adresář `hub-scope` (včetně všech jeho souborů):
+1. Odstranit `hub-scope` adresář (včetně všech jeho souborů):
 
     ```bash
     rm -r hub-spoke
@@ -145,4 +145,4 @@ Pokud už je nepotřebujete, odstraňte prostředky vytvořené v řadě kurzů.
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Další informace o používání Terraformu v Azure](/azure/terraform)
+> [Další informace o používání Terraform v Azure](/azure/terraform)

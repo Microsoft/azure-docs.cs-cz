@@ -1,21 +1,21 @@
 ---
-title: 'PowerShell: přiřazení vlastní domény'
-description: Naučte se používat Azure PowerShell k automatizaci nasazení a správy App Service. V této ukázce se dozvíte, jak přiřadit aplikaci vlastní doménu.
+title: 'PowerShell: Přiřazení vlastní domény'
+description: Zjistěte, jak pomocí Azure PowerShellu automatizovat nasazení a správu služby App Service. Tato ukázka ukazuje, jak přiřadit vlastní doménu k aplikaci.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 356f5af9-f62e-411c-8b24-deba05214103
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: f7de667292ed89caa2895f6db3f7d8d6abf15f85
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 4629157142c17122c0aa6c74c1918c1d01d796c0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685589"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044726"
 ---
-# <a name="assign-a-custom-domain-to-a-web-app-using-powershell"></a>Přiřazení vlastní domény k webové aplikaci pomocí PowerShellu
+# <a name="assign-a-custom-domain-to-a-web-app-using-powershell"></a>Přiřazení vlastní domény webové aplikaci pomocí PowerShellu
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak na ni namapuje doménu `www.<yourdomain>`. 
 
@@ -42,10 +42,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. |
-| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří webovou aplikaci. |
-| [Set-AzAppServicePlan](/powershell/module/az.websites/set-azappserviceplan) | Upraví plán služby App Service a změní jeho cenovou úroveň. |
-| [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Upraví konfiguraci webové aplikace. |
+| [Nový-AzAppServicePlán](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. |
+| [Nový-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří webovou aplikaci. |
+| [Set-AzAppServicePlán](/powershell/module/az.websites/set-azappserviceplan) | Upraví plán služby App Service a změní jeho cenovou úroveň. |
+| [Sada-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Upraví konfiguraci webové aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 

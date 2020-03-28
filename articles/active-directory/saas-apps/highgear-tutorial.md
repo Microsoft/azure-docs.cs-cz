@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s HighGear | Microsoft Docs'
+title: 'Kurz: Integrace služby Azure Active Directory s HighGear | Dokumenty společnosti Microsoft'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a HighGear.
 services: active-directory
 documentationCenter: na
@@ -17,247 +17,247 @@ ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed06586435315935566ca0b1519b182d4fc47d39
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159038"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Kurz: Azure Active Directory integrace s HighGear
+# <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Kurz: Integrace Azure Active Directory s HighGear
 
 V tomto kurzu se dozvíte, jak integrovat HighGear s Azure Active Directory (Azure AD).
-Integrace HighGear s Azure AD poskytuje následující výhody:
+Integrace HighGearu s Azure AD vám přináší následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k HighGear.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k HighGear (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+* Můžete řídit ve službě Azure AD, kdo má přístup k HighGear.
+* Uživatelům můžete povolit automatické přihlášení k HighGearu (jednotné přihlašování) pomocí jejich účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s HighGear potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s HighGear, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete si ho stáhnout [sem](https://azure.microsoft.com/pricing/free-trial/) v měsíční zkušební verzi.
-* HighGear systém s licencí Enterprise nebo Unlimited
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* Systém HighGear s licencí Enterprise nebo Unlimited
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu se dozvíte, jak nakonfigurovat a testovat jednotné přihlašování Azure AD v testovacím prostředí.
+V tomto kurzu se dozvíte, jak nakonfigurovat a otestovat jednotné přihlašování Azure AD v testovacím prostředí.
 
-* HighGear podporuje jednotné přihlašování (SSO) **a IDP** .
+* HighGear podporuje **SP a IdP** inicioval SSO
 
-## <a name="adding-highgear-from-the-gallery"></a>Přidání HighGear z Galerie
+## <a name="adding-highgear-from-the-gallery"></a>Přidání HighGear z galerie
 
-Pokud chcete nakonfigurovat integraci HighGear do služby Azure AD, musíte přidat HighGear z Galerie do svého seznamu spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci HighGearu do Azure AD, musíte přidat HighGear z galerie do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat HighGear z Galerie, proveďte následující kroky:**
+**Chcete-li přidat HighGear z galerie, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **HighGear**, vyberte **HighGear** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **HighGear**, z panelu výsledků vyberte **HighGear** a pak kliknutím na tlačítko **Přidat** aplikaci přidejte.
 
      ![HighGear v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části se dozvíte, jak nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí HighGear systému založeného na testovacím uživateli s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v systému HighGear.
+V této části se dozvíte, jak nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí systému HighGear na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem ve vašem systému HighGear.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí systému HighGear, musíte dokončit tyto stavební bloky:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí systému HighGear, musíte dokončit následující stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování HighGear](#configure-highgear-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace HighGear.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvoření HighGear testovacího uživatele](#create-highgear-test-user)** – pro Britta Simon v HighGear, který je propojený s zastoupením uživatele v Azure AD. 
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace jednotného přihlašování HighGear](#configure-highgear-single-sign-on)** – pro konfiguraci nastavení jednotného přihlášení na straně aplikace HighGear.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte uživatele testu HighGear](#create-highgear-test-user)** – chcete-li mít protějšek Britta Simon v HighGear, který je propojen s reprezentací Azure AD uživatele. 
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části se dozvíte, jak povolit jednotné přihlašování Azure AD v Azure Portal.
+V této části se dozvíte, jak povolit jednotné přihlašování Azure AD na webu Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí systému HighGear, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí systému HighGear, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **HighGear** vyberte **jednotné přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **HighGear** vyberte **Jednotné přihlašování**.
 
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** kliknutím na ikonu **Upravit** otevřete základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** otevřete klepnutím na ikonu **Upravit** dialogové okno Základní **konfigurace SAML.**
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+4. V části **Základní konfigurace SAML** proveďte následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně HighGear a adresách URL](common/idp-intiated.png)
+    ![Informace o jednotném přihlášení domény HighGear a adres URL](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** vložte hodnotu pole **ID entity poskytovatele služeb** , které se nachází na stránce nastavení jednotného přihlašování v systému HighGear.
+    a. Do textového pole **Identifikátor** vložte hodnotu pole **ID entity poskytovatele služeb,** které je na stránce Nastavení jednotného přihlášení v systému HighGear.
 
-    ![Pole ID entity poskytovatele služby](media/highgear-tutorial/service-provider-entity-id-field.png)
+    ![Pole ID entity poskytovatele služeb](media/highgear-tutorial/service-provider-entity-id-field.png)
     
     > [!NOTE]
-    > Pro přístup k stránce nastavení jednotného přihlašování se budete muset přihlásit do systému HighGear. Až budete přihlášeni, přesuňte ukazatel myši na kartu Správa v HighGear a klikněte na položku nabídky nastavení jednotného přihlašování.
+    > Abyste měli přístup na stránku Nastavení jednotného přihlášení, musíte se přihlásit do systému HighGear. Po přihlášení přesuňte ukazatel myši na kartu Správa v zařízení HighGear a klikněte na položku nabídky Nastavení jednotného přihlášení.
     
-    ![Položka nabídky nastavení jednotného přihlašování](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
+    ![Položka nabídky Nastavení jednotného přihlášení](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-    b. Do textového pole **Adresa URL odpovědi** vložte hodnotu **adresy URL služby assertion Consumer Service (ACS)** ze stránky nastavení jednotného přihlašování v systému HighGear.
+    b. Do textového pole **Adresa URL pro odpověď** vložte hodnotu adresy URL **služby Assertion Consumer Service (ACS)** ze stránky Nastavení jednotného přihlášení v systému HighGear.
 
-    ![Pole adresy URL služby assertion Consumer Service (ACS)](media/highgear-tutorial/assertion-consumer-service-url-field.png)
+    ![Pole URL služby Assertion Consumer Service (ACS)](media/highgear-tutorial/assertion-consumer-service-url-field.png)
 
-    c. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
+    c. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném **službou SP:**
 
-     ![Informace o jednotném přihlašování v doméně HighGear a adresách URL](common/metadata-upload-additional-signon.png)
+     ![Informace o jednotném přihlášení domény HighGear a adres URL](common/metadata-upload-additional-signon.png)
 
-     Do textového pole **Adresa URL pro přihlášení** vložte hodnotu pole **ID entity poskytovatele služby** , která se nachází na stránce nastavení jednotného přihlašování v systému HighGear. (Toto ID entity je také základní adresou URL systému HighGear, který se má použít pro přihlášení iniciované v rámci služby SP.)
+     Do textového pole **Přihlašovací adresa URL** vložte hodnotu pole **ID entity poskytovatele služeb,** které je na stránce Nastavení jednotného přihlášení v systému HighGear. (Toto ID entity je také základní adresou URL systému HighGear, která má být použita pro přihlášení iniciované sp.)
 
-    ![Pole ID entity poskytovatele služby](media/highgear-tutorial/service-provider-entity-id-field.png)
+    ![Pole ID entity poskytovatele služeb](media/highgear-tutorial/service-provider-entity-id-field.png)
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL ze stránky **nastavení jednotného přihlašování** v systému HighGear. Pokud potřebujete pomoc, obraťte se prosím na [tým podpory HighGear](mailto:support@highgear.com).
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL pro odpověď a adresou URL pro přihlášení na stránce **Nastavení jednotného přihlášení** v systému HighGear. Pokud potřebujete pomoc, obraťte se na [tým podpory HighGear](mailto:support@highgear.com).
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a stáhněte **certifikát (Base64)** a uložte ho do svého počítače. Budete ho potřebovat v pozdějším kroku konfigurace jednotného přihlašování.
+4. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Base64)** a uložte jej do počítače. Budete ji potřebovat v pozdějším kroku konfigurace jednotného přihlášení.
 
-    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-6. V části **Nastavení HighGear** si poznamenejte umístění následujících adres URL.
+6. V části **Nastavení highgear** uvažte umístění následujících adres URL.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL Tuto hodnotu budete potřebovat v kroku #2 v části **Konfigurace jednotného přihlašování HighGear** .
+    a. Adresa URL přihlášení. Tuto hodnotu budete potřebovat v krokové #2 v části **Konfigurace jednotného přihlášení HighGear** níže.
 
-    b. Identifikátor Azure AD. Tuto hodnotu budete potřebovat v kroku #3 v části **Konfigurace jednotného přihlašování HighGear** .
+    b. Identifikátor ad Azure. Tuto hodnotu budete potřebovat v #3 krok v části **Konfigurace jednotného přihlášení HighGear** níže.
 
-    c. Odhlašovací adresa URL Tuto hodnotu budete potřebovat v kroku #4 v části **Konfigurace jednotného přihlašování HighGear** .
+    c. Adresa URL pro odhlášení. Tuto hodnotu budete potřebovat v #4 krok v části **Konfigurace jednotného přihlášení HighGear** níže.
 
 ### <a name="configure-highgear-single-sign-on"></a>Konfigurace jednotného přihlašování HighGear
 
-Pokud chcete nakonfigurovat HighGear pro jednotné přihlašování, přihlaste se prosím k systému HighGear. Až budete přihlášeni, přesuňte ukazatel myši na kartu Správa v HighGear a klikněte na položku nabídky nastavení jednotného přihlašování.
+Chcete-li nakonfigurovat zařízení HighGear pro jednotné přihlašování, přihlaste se do systému HighGear. Po přihlášení přesuňte ukazatel myši na kartu Správa v zařízení HighGear a klikněte na položku nabídky Nastavení jednotného přihlášení.
 
-![Položka nabídky nastavení jednotného přihlašování](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
+![Položka nabídky Nastavení jednotného přihlášení](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-1. Do pole **název zprostředkovatele identity**zadejte krátký popis, který se zobrazí v tlačítku jednotného přihlašování HighGear na přihlašovací stránce. Příklad: Azure AD
+1. Do **pole Název poskytovatele identity**zadejte krátký popis, který se zobrazí v tlačítku jednotného přihlašování zařízení HighGear na stránce Přihlášení. Například: Azure AD
 
-2. V poli **URL jednotného přihlašování (SSO)** v HighGear vložte hodnotu z pole **Adresa URL pro přihlášení** , které se nachází v části **Nastavení HighGear** v Azure.
+2. V poli **Adresa URL jednotného přihlášení (SSO)** v HighGearu vložte hodnotu z pole **Přihlašovací adresa URL,** které je v části **Nastavení HighGear** v Azure.
 
-3. Do pole **ID entity poskytovatele identity** v HighGear vložte hodnotu z pole **identifikátor Azure AD** , které je uvedené v části **Nastavení HighGear** v Azure.
+3. V poli **ID entity zprostředkovatele identity** v HighGearu vložte hodnotu z pole **Identifikátor Azure AD,** které je v části **Nastavení HighGear** v Azure.
 
-4. Do pole **Adresa URL jednotného odhlašování (SLO)** v HighGear vložte hodnotu z pole **Adresa URL pro odhlášení** , které je uvedené v části **Nastavení HighGear** v Azure.
+4. V poli **Adresa URL jednotného odhlášení (SLO)** v HighGearu vložte hodnotu z pole **Url odhlášení,** které je v části **Nastavit HighGear** v Azure.
 
-5. Pomocí poznámkového bloku otevřete certifikát, který jste stáhli z části **podpisový certifikát SAML** v Azure. Měli byste stáhnout formát **certifikátu (Base64)** . Zkopírujte obsah certifikátu z poznámkového bloku a vložte ho do pole **certifikát poskytovatele identity** v HighGear.
+5. Poznámkový blok slouží k otevření certifikátu, který jste stáhli z části **podpisový certifikát SAML** v Azure. Měli jste si stáhnout formát **certifikátu (Base64).** Zkopírujte obsah certifikátu z poznámkového bloku a vložte jej do pole **Certifikát poskytovatele identity** v zařízení HighGear.
 
-6. Odešlete [týmu podpory HighGear](mailto:support@highgear.com) e-mail pro vyžádání certifikátu HighGear. Podle pokynů, které z nich obdržíte, vyplňte pole **HighGear certifikát** a **heslo certifikátu HighGear** .
+6. Pošlete e-mail [emoten týmu podpory HighGear](mailto:support@highgear.com) a požádejte o certifikát HighGear. Podle pokynů, které od nich obdržíte, vyplňte pole **HighGear Certificate** a **HighGear Certificate Password.**
 
-7. Kliknutím na tlačítko **Uložit** uložte konfiguraci HighGear jednotného přihlašování.
+7. Kliknutím na tlačítko **Uložit** uložte konfiguraci jednotného přihlášení zařízení HighGear.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Uživatelský dialog](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. V poli **Uživatelské jméno** zadejte **\@brittasimon vašecompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k HighGear.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k HighGear.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **HighGear**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **HighGear**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **HighGear**.
+2. V seznamu aplikací vyberte **HighGear**.
 
-    ![Odkaz HighGear v seznamu aplikací](common/all-applications.png)
+    ![Odkaz HighGear v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-highgear-test-user"></a>Vytvořit testovacího uživatele HighGear
+### <a name="create-highgear-test-user"></a>Vytvoření testovacího uživatele HighGear
 
-Pokud chcete vytvořit testovacího uživatele HighGear k otestování konfigurace jednotného přihlašování, přihlaste se k systému HighGear.
+Chcete-li vytvořit testovacího uživatele HighGear, který otestuje konfiguraci jednotného přihlášení, přihlaste se do systému HighGear.
 
-1. Klikněte na tlačítko **vytvořit nový kontakt** .
+1. Klepněte na tlačítko **Vytvořit nový kontakt.**
 
-    ![Tlačítko vytvořit nový kontakt](media/highgear-tutorial/create-new-contact-button.png)
+    ![Tlačítko Vytvořit nový kontakt](media/highgear-tutorial/create-new-contact-button.png)
 
-    Zobrazí se nabídka, která umožňuje zvolit druh kontaktu, který chcete vytvořit.
+    Zobrazí se nabídka, která vám umožní zvolit druh kontaktu, který chcete vytvořit.
 
-2. Kliknutím na položku **jednotlivé** nabídky vytvoříte uživatele HighGear.
+2. Kliknutím na položku **individuální** nabídky vytvořte uživatele HighGear.
 
-    Podokno bude na pravé straně, takže můžete zadat informace pro nového uživatele.  
-    ![Formulář nového kontaktu](media/highgear-tutorial/new-contact-form.png)
+    Podokno se posune vpravo, takže můžete zadat informace o novém uživateli.  
+    ![Nový kontaktní formulář](media/highgear-tutorial/new-contact-form.png)
 
-3. Do pole **název** zadejte název kontaktu. Příklad: Britta Simon
+3. Do pole **Název** zadejte název kontaktu. Například: Britta Simon
 
-4. Klikněte na nabídku **Další možnosti** a vyberte položku nabídky **informace o účtu** .
+4. Klepněte na nabídku **Další možnosti** a vyberte položku nabídky **Informace o účtu.**
 
-    ![Kliknutí na položku nabídky informace o účtu](media/highgear-tutorial/account-info-menu-item.png)
+    ![Kliknutí na položku nabídky Informace o účtu](media/highgear-tutorial/account-info-menu-item.png)
 
-5. Nastavte pole **může přihlásit** na Ano.
+5. Nastavte pole **Může se přihlásit** na Ano.
 
-    Pole **Povolit jednotné přihlašování** bude automaticky nastaveno na Ano.
+    Pole **Povolit jednotné přihlašování** bude automaticky nastaveno na ano.
 
-6. Do pole **ID uživatele jednotného přihlašování** zadejte ID uživatele. Příklad: BrittaSimon@contoso.com
+6. Do pole **Id uživatele jednotného přihlášení** zadejte id uživatele. Příklad: BrittaSimon@contoso.com
 
-    Oddíl informace o účtu by teď měl vypadat nějak takto:  
-    ![Část s informacemi o dokončeném účtu](media/highgear-tutorial/finished-account-info-section.png)
+    Část Informace o účtu by nyní měla vypadat nějak takto:  
+    ![Oddíl Informace o dokončeném účtu](media/highgear-tutorial/finished-account-info-section.png)
 
-7. Kontakt uložíte kliknutím na tlačítko **Uložit** v dolní části podokna.
+7. Chcete-li kontakt uložit, klepněte na tlačítko **Uložit** v dolní části podokna.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici HighGear, měli byste se automaticky přihlásit k HighGear, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici HighGear na přístupovém panelu, měli byste být automaticky přihlášeni k HighGear, pro které nastavíte přiřazovat. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

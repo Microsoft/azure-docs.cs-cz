@@ -1,31 +1,31 @@
 ---
-title: Vytvoření aplikace s funkcí bez serveru pomocí Azure CLI
-description: Vytvoření aplikace funkcí pro provádění bez serveru v Azure pomocí Azure CLI
+title: Vytvoření aplikace bez serveru pomocí azure cli
+description: Vytvoření funkční aplikace pro spuštění bez serveru v Azure pomocí azure cli
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: 0fe4cb6e75a74f58b4c3b312f923935053ea4756
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75922609"
 ---
 # <a name="create-a-function-app-for-serverless-code-execution"></a>Vytvoření aplikace funkcí pro provádění kódu bez serveru 
 
-Tento ukázkový skript Azure Functions vytvoří aplikaci funkcí, což je kontejner pro vaše funkce. Aplikace Function App se vytvoří s použitím [plánu spotřeby](../functions-scale.md#consumption-plan), který je ideální pro úlohy řízené událostmi bez serveru.
+Tento ukázkový skript Azure Functions vytvoří aplikaci funkcí, což je kontejner pro vaše funkce. Aplikace funkce se vytvoří pomocí [plánu Spotřeba](../functions-scale.md#consumption-plan), který je ideální pro úlohy bez serveru řízené událostmi.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Tento skript vytvoří aplikaci funkcí Azure pomocí [plánu spotřeby](../functions-scale.md#consumption-plan).
+Tento skript vytvoří aplikaci Azure Function pomocí [plánu Spotřeba](../functions-scale.md#consumption-plan).
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption/create-function-app-consumption.sh "Create an Azure Function on a Consumption plan")]
 

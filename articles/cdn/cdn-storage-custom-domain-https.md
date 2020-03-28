@@ -1,5 +1,6 @@
 ---
-title: Přístup k objektům blob úložiště pomocí Azure CDN vlastní domény přes HTTPS
+title: Přístup k objektům BLOB úložiště pomocí vlastní domény Azure CDN přes protokol HTTPS
+description: Zjistěte, jak přidat vlastní doménu Azure CDN a povolit protokol HTTPS v této doméně pro váš vlastní koncový bod úložiště objektů blob.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -14,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e6415c9e8e0ab8743042891a2d0d422dffe37bdb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: be09229136289e343856f1e2ba61cda63730d21f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279121"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80053969"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Kurz: Přístup k objektům blob úložiště pomocí vlastní domény Azure CDN přes HTTPS
 
@@ -43,15 +44,15 @@ Azure CDN ignoruje jakákoli omezení přidaná do tokenu SAS. Všechny tokeny S
 Pokud vytvoříte více adres URL SAS pro stejný koncový bod objektu blob, zvažte povolení ukládání řetězce dotazu do mezipaměti. Zajistíte tím, že se každá adresa URL bude považovat za jedinečnou entitu. Další informace najdete v článku o [řízení chování Azure CDN při ukládání řetězců dotazu do mezipaměti](cdn-query-string.md).
 
 ## <a name="http-to-https-redirection"></a>Přesměrování HTTP na HTTPS
-Můžete se rozhodnout přesměrovat provoz HTTP na HTTPS tím, že vytvoříte pravidlo přesměrování adresy URL s modulem [Standard Rules](cdn-standard-rules-engine.md) nebo s [modulem pravidel Verizon Premium](cdn-verizon-premium-rules-engine.md). Modul Standard Rules je dostupný jenom pro Azure CDN z profilů Microsoftu, zatímco modul pravidel Premium Verizon je k dispozici jenom z Azure CDN Premium z profilů Verizon.
+Můžete se rozhodnout přesměrovat přenos HTTP na protokol HTTPS vytvořením pravidla přesměrování adresy URL pomocí [modulu standardních pravidel](cdn-standard-rules-engine.md) nebo [modulu pravidel Verizon Premium](cdn-verizon-premium-rules-engine.md). Modul standardních pravidel je k dispozici jenom pro Azure CDN z profilů Microsoftu, zatímco modul pravidel premium Verizon je k dispozici jenom z azure cdn premium z profilů Verizon.
 
-![Pravidlo přesměrování Microsoftu](./media/cdn-storage-custom-domain-https/cdn-standard-redirect-rule.png)
+![Pravidlo přesměrování společnosti Microsoft](./media/cdn-storage-custom-domain-https/cdn-standard-redirect-rule.png)
 
-Ve výše uvedeném pravidle ponechte název hostitele, cestu, řetězec dotazu a fragment hodnoty v přesměrování na použité příchozí hodnoty. 
+Ve výše uvedeném pravidle, opuštění Hostname, Cesta, Řetězec dotazu a Fragment bude mít za následek příchozí hodnoty používané v přesměrování. 
 
-![Pravidlo přesměrování Verizon](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+![Pravidlo přesměrování verizonu](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
 
-Ve výše uvedeném pravidle *CDN-Endpoint-Name* odkazuje na název, který jste nakonfigurovali pro koncový bod CDN, který můžete vybrat z rozevíracího seznamu. Hodnota pro *origin-path* odkazuje na cestu v rámci původního účtu úložiště, ve kterém je uložen statický obsah. Pokud veškerý statický obsah hostujete v jednom kontejneru, nahraďte hodnotu *origin-path* názvem tohoto kontejneru.
+Ve výše uvedeném pravidle *název koncového bodu CDn* odkazuje na název, který jste nakonfigurovali pro koncový bod CDN, který můžete vybrat z rozevíracího seznamu. Hodnota pro *origin-path* odkazuje na cestu v rámci původního účtu úložiště, ve kterém je uložen statický obsah. Pokud veškerý statický obsah hostujete v jednom kontejneru, nahraďte hodnotu *origin-path* názvem tohoto kontejneru.
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 Při přístupu k objektům blob prostřednictvím služby Azure CDN platíte [ceny za úložiště objektů blob](https://azure.microsoft.com/pricing/details/storage/blobs/) pro přenos mezi servery POP a původním umístěním (úložiště objektů blob) a [ceny za Azure CDN](https://azure.microsoft.com/pricing/details/cdn/) pro data, ke kterým ze serverů POP přistupujete.

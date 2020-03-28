@@ -1,6 +1,6 @@
 ---
-title: Příklad rozhraní příkazového řádku škáluje elastický fond SQL – Azure SQL Database
-description: Ukázkový skript Azure CLI pro horizontální navýšení kapacity elastického fondu v Azure SQL Database
+title: Příklad příkazového příkazového příkazu škáluje databázi SQL elastického fondu Azure SQL Database
+description: Ukázkový skript Azure CLI pro škálování elastického fondu v Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,50 +11,49 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 0494ab163e7fb7e8ea93cf255837bfda2d7b1570
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b229aa8976705c5e3ad83c468ebc10a261f14a4f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691534"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067392"
 ---
-# <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Použití CLI k horizontálnímu škálování elastického fondu v Azure SQL Database
+# <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Použití příkazového příkazového příkazu k škálování elastického fondu v Azure SQL Database
 
-Tento ukázkový skript Azure CLI vytvoří elastické fondy, přesune databáze ve fondu a změní výpočetní velikosti elastického fondu.
+Tento příklad skriptu Azure CLI vytvoří elastické fondy, přesune sdružené databáze a změní výpočetní velikoste elastického fondu.
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
+### <a name="sign-in-to-azure"></a>Přihlášení k Azure
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+### <a name="run-the-script"></a>Spuštění skriptu
+
 [!code-azurecli-interactive[main](../../../cli_scripts/sql-database/scale-pool/scale-pool.sh "Move database between pools")]
 
-## <a name="clean-up-deployment"></a>Vyčištění nasazení
+### <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní spojené prostředky.
 
 ```azurecli-interactive
-az group delete --name $resourceGroupName
+az group delete --name $resource
 ```
 
-## <a name="script-explanation"></a>Vysvětlení skriptu
+## <a name="sample-reference"></a>Odkaz na vzorek
 
-Tento skript pomocí následujících příkazů vytvoří skupinu prostředků, SQL Database Server, izolovanou databázi a SQL Database pravidla brány firewall. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| | |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
-| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | Vytvoří elastický fond. |
-| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | Vytvoří jednu nebo sdruženou databázi. |
-| [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update) | Aktualizuje elastický fond. v tomto příkladu změní přiřazenou eDTU. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az sql server](/cli/azure/sql/server) | Serverové příkazy. |
+| [az SQL DB](/cli/azure/sql/db) | Příkazy databáze. |
+| [az sql elastické fondy](/cli/azure/sql/elastic-pool) | Příkazy elastického fondu. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázkové skripty rozhraní příkazového řádku pro službu SQL Database najdete v [dokumentaci ke službě Azure SQL Database](../sql-database-cli-samples.md).

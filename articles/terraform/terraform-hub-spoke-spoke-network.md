@@ -1,38 +1,38 @@
 ---
-title: Kurz – vytvoření sítě paprsků v Azure pomocí Terraformu
-description: Naučte se implementovat dva hvězdicové virtuální sítě připojené k rozbočovači v topologii hvězdicové topologie.
+title: Výuka – vytvoření paprskové sítě v Azure pomocí Terraform
+description: Zjistěte, jak implementovat dvě virtuální sítě s paprsky připojené k rozbočovači v topologii s rozbočovačem
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 2a36b8ac22fb52f6b8f1246fd254d9c3ff22fc82
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159003"
 ---
-# <a name="tutorial-create-a-spoke-network-in-azure-using-terraform"></a>Kurz: vytvoření sítě paprsků v Azure pomocí Terraformu
+# <a name="tutorial-create-a-spoke-network-in-azure-using-terraform"></a>Kurz: Vytvoření paprskové sítě v Azure pomocí Terraform
 
-V tomto kurzu implementujete dvě samostatné sítě paprsků k předvedení oddělení úloh. Sítě sdílejí společné prostředky pomocí virtuální sítě rozbočovače. Paprsky se dají použít k izolování úloh v jejich vlastních virtuálních sítích, které se spravují odděleně od ostatních paprsků. Každá úloha může obsahovat několik vrstev s několika podsítěmi připojenými prostřednictvím nástrojů pro vyrovnávání zatížení Azure.
+V tomto kurzu implementovat dvě samostatné sítě paprsku k předvedení oddělení úloh. Sítě sdílejí společné prostředky pomocí virtuální sítě rozbočovače. Paprsky se dají použít k izolování úloh v jejich vlastních virtuálních sítích, které se spravují odděleně od ostatních paprsků. Každá úloha může obsahovat několik vrstev s několika podsítěmi připojenými prostřednictvím nástrojů pro vyrovnávání zatížení Azure.
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Použití HCL (HashiCorp Language) k implementaci paprskového virtuální sítěu v topologii hvězdicové topologie
-> * Použití Terraformu k vytváření virtuálních počítačů v sítích paprsků
-> * Použití Terraformu k navázání partnerských vztahů virtuálních sítí s centrálními sítěmi
+> * Použití HCL (HashiCorp Language) k implementaci virtuálních sítí Spoke v topologii s rozbočovačem
+> * Použití Terraform k vytvoření virtuálních počítačů v sítích paprsků
+> * Použití Terraform u vytvoření partnerských sítí virtuálních sítí s rozbočovacími sítěmi
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. [Vytvořte topologii hybridní sítě rozbočovače a paprsku pomocí terraformu v Azure](./terraform-hub-spoke-introduction.md).
-1. [Vytvořte si místní virtuální síť s terraformu v Azure](./terraform-hub-spoke-on-prem.md).
-1. [Vytvořte virtuální síť centra pomocí terraformu v Azure](./terraform-hub-spoke-hub-network.md).
-1. [Vytvořte zařízení virtuální sítě rozbočovače s terraformu v Azure](./terraform-hub-spoke-hub-nva.md).
+1. [Vytvořte topologii hybridní sítě rozbočovače a paprsku s Terraformem v Azure](./terraform-hub-spoke-introduction.md).
+1. [Vytvořte místní virtuální síť s Terraform em v Azure](./terraform-hub-spoke-on-prem.md).
+1. [Vytvořte centrální virtuální síť s Terraform v Azure](./terraform-hub-spoke-hub-network.md).
+1. [Vytvořte centrální virtuální síťové zařízení s Terraform v Azure](./terraform-hub-spoke-hub-nva.md).
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
-V této části se vytvoří dvě skripty paprsků. Každý skript definuje virtuální síť paprsků a virtuální počítač pro úlohy. Pak se vytvoří partnerský virtuální síť z rozbočovače na paprskový.
+V této části jsou vytvořeny dva skripty s paprsky. Každý skript definuje virtuální síť s paprsky a virtuální počítač pro úlohy. Virtuální síť partnerského vztahu z rozbočovače na paprsky se pak vytvoří.
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 
@@ -50,9 +50,9 @@ V této části se vytvoří dvě skripty paprsků. Každý skript definuje virt
     cd hub-spoke
     ```
 
-## <a name="declare-the-two-spoke-networks"></a>Deklarace dvou paprskových sítí
+## <a name="declare-the-two-spoke-networks"></a>Deklarovat dvě paprskové sítě
 
-1. V Cloud Shell otevřete nový soubor s názvem `spoke1.tf`.
+1. V prostředí Cloud Shell otevřete nový soubor s názvem `spoke1.tf`.
 
     ```bash
     code spoke1.tf
@@ -172,7 +172,7 @@ V této části se vytvoří dvě skripty paprsků. Každý skript definuje virt
     }
     ```
 
-1. Uložte soubor a ukončete Editor.
+1. Uložte tento soubor a ukončete editor.
 
 1. Vytvořte nový soubor s názvem `spoke2.tf`.
 
@@ -298,9 +298,9 @@ V této části se vytvoří dvě skripty paprsků. Každý skript definuje virt
     }
     ```
      
-1. Uložte soubor a ukončete Editor.
+1. Uložte tento soubor a ukončete editor.
   
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Ověření sítě centra a paprsků pomocí Terraformu v Azure](./terraform-hub-spoke-validation.md)
+> [Ověření sítě rozbočovače a paprsku pomocí Terraform v Azure](./terraform-hub-spoke-validation.md)

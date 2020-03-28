@@ -1,5 +1,5 @@
 ---
-title: Vytvoření virtuálního počítače a účtu úložiště pro škálovatelnou aplikaci v Azure
+title: Vytvoření účtu virtuálního počítače a úložiště pro škálovatelnou aplikaci v Azure
 description: Zjistěte, jak nasadit virtuální počítač, který se použije ke spuštění škálovatelné aplikace využívající úložiště objektů blob v Azure.
 author: roygara
 ms.service: storage
@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: 60bb227af7cc886bb35cbd045cc8a27cf82ae903
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75372224"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Vytvoření virtuálního počítače a účtu úložiště pro škálovatelnou aplikaci
@@ -21,29 +21,29 @@ Tento kurz je první částí série. V tomto kurzu se dozvíte, jak nasadit apl
 V první části tohoto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření účtu úložiště
+> * vytvořit účet úložiště
 > * Vytvoření virtuálního počítače
 > * Konfigurace rozšíření vlastních skriptů
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento kurz Azure PowerShell modul AZ verze 0,7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento kurz vyžaduje modul Azure PowerShell Az verze 0.7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků Azure s [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
  
-Ukázka nahraje 50 velkých souborů do kontejneru objektů blob v účtu služby Azure Storage. Účet služby Storage poskytuje jedinečný obor názvů pro ukládání datových objektů Azure Storage a přístup k nim. Ve skupině prostředků, kterou jste vytvořili, vytvořte účet úložiště pomocí příkazu [New-AzStorageAccount](/powershell/module/az.Storage/New-azStorageAccount) .
+Ukázka nahraje 50 velkých souborů do kontejneru objektů blob v účtu služby Azure Storage. Účet služby Storage poskytuje jedinečný obor názvů pro ukládání datových objektů Azure Storage a přístup k nim. Vytvořte účet úložiště ve skupině prostředků, kterou jste vytvořili pomocí příkazu [New-AzStorageAccount.](/powershell/module/az.Storage/New-azStorageAccount)
 
 V následujícím příkazu nahraďte zástupný symbol `<blob_storage_account>` vlastním globálně jedinečným názvem účtu služby Blob Storage.
 
@@ -59,7 +59,7 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName myResourceGroup `
 
 Vytvořte konfiguraci virtuálního počítače. Tato konfigurace zahrnuje nastavení, která se používají při nasazení virtuálního počítače, jako je image virtuálního počítače, jeho velikost a konfigurace ověřování. Při spuštění tohoto kroku se zobrazí výzva k zadání přihlašovacích údajů. Hodnoty, které zadáte, se nakonfigurují jako uživatelské jméno a heslo pro virtuální počítač.
 
-Vytvořte virtuální počítač pomocí [New-AzVM](/powershell/module/az.compute/new-azvm).
+Vytvořte virtuální počítač s [New-AzVM](/powershell/module/az.compute/new-azvm).
 
 ```azurepowershell-interactive
 # Variables for common values
@@ -126,7 +126,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
 V první části série jste se seznámili s vytvořením účtu úložiště, nasazením virtuálního počítače a konfigurací požadovaných součástí na virtuálním počítači a naučili jste se například:
 
 > [!div class="checklist"]
-> * Vytvoření účtu úložiště
+> * vytvořit účet úložiště
 > * Vytvoření virtuálního počítače
 > * Konfigurace rozšíření vlastních skriptů
 

@@ -1,98 +1,98 @@
 ---
-title: Nasazení aplikací do jarního cloudu Azure pomocí Jenkinse a rozhraní příkazového řádku Azure
-description: Naučte se používat Azure CLI v kanálu průběžné integrace a nasazování k nasazení mikroslužeb do Azure pramenité cloudové služby.
+title: Nasazení aplikací do Azure Spring Cloudu s využitím Jenkinse a Azure CLI
+description: Zjistěte, jak používat Azure CLI v průběžné integraci a kanálu nasazení k nasazení mikroslužeb do služby Azure Spring Cloud
 ms.topic: tutorial
 ms.date: 01/07/2020
 ms.openlocfilehash: 67ad97bb762ed302ef52c404d47c5755ea4b245b
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75734975"
 ---
-# <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>Kurz: nasazení aplikací do jarního cloudu Azure pomocí Jenkinse a rozhraní příkazového řádku Azure
+# <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>Kurz: Nasazení aplikací do Azure Spring Cloud pomocí Jenkinse a Azure CLI
 
-[Azure jaře Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-overview) je plně spravovaný vývoj mikroslužeb s integrovanou správou zjišťování služeb a konfigurací. Služba usnadňuje nasazení mikroslužeb založených na jarních aplikacích do Azure. V tomto kurzu se dozvíte, jak můžete pomocí Azure CLI v Jenkinse automatizovat průběžnou integraci a doručování (CI/CD) pro jarní cloudy Azure.
+[Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-overview) je plně řízený vývoj mikroslužeb s integrovaným zjišťováním a správou konfigurace služeb. Služba usnadňuje nasazení aplikací mikroslužeb založených na jarním spuštění do Azure. Tento kurz ukazuje, jak můžete použít Azure CLI v Jenkinsi k automatizaci průběžné integrace a doručování (CI/CD) pro Azure Spring Cloud.
 
-V tomto kurzu dokončíte tyto úlohy:
+V tomto kurzu dokončíte tyto úkoly:
 
 > [!div class="checklist"]
-> * Zřízení instance služby a spuštění aplikace v jazyce Java pružiny
-> * Příprava serveru Jenkinse
-> * Použití rozhraní příkazového řádku Azure v kanálu Jenkinse k sestavování a nasazování aplikací mikroslužeb 
+> * Zřízení instance služby a spuštění aplikace Java Spring
+> * Příprava serveru Jenkins
+> * Použití azure cli v kanálu Jenkins k sestavení a nasazení aplikací mikroslužeb 
 
-Tento kurz předpokládá průběžné znalosti základních služeb Azure, jarního cloudu Azure, [kanálů](https://jenkins.io/doc/book/pipeline/) Jenkinse a modulů plug-in a GitHubu.
+Tento kurz předpokládá průběžné znalosti základních služeb Azure, Azure Spring Cloud, [Jenkins kanály](https://jenkins.io/doc/book/pipeline/) a moduly plug-in a GitHub.
 
 ## <a name="prerequisites"></a>Požadavky
 
 >[!Note]
-> Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v našich [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo v souboru o [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) , kde se dozvíte víc.
+> Azure Spring Cloud se momentálně nabízí jako veřejná verze Preview. Nabídky ve verzi Public Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiálním vydáním.  Funkce a služby veřejné verze Preview nejsou určeny pro produkční použití.  Další informace o podpoře během náhledů najdete v [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo najdete [žádost o podporu,](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) kde se dozvíte další informace.
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 
-* Účet GitHub. Pokud nemáte účet GitHubu, vytvořte si [bezplatný účet](https://github.com/) před tím, než začnete.
+* Účet GitHub. Pokud nemáte účet GitHub, vytvořte si [bezplatný účet,](https://github.com/) než začnete.
 
-* Hlavní server Jenkins. Pokud ještě nemáte hlavní server Jenkinse, nasaďte [jenkinse](https://aka.ms/jenkins-on-azure) v Azure podle kroků v tomto [rychlém](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template)startu. V uzlu nebo agentu Jenkinse jsou vyžadovány následující požadavky (například. Server sestavení):
+* Hlavní server Jenkins. Pokud ještě nemáte jenkinsový master, nasaďte [Jenkinse](https://aka.ms/jenkins-on-azure) do Azure podle kroků v tomto [rychlém startu](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). Následující jsou požadovány na uzlu Jenkins/agent (například. server sestavení):
 
     * [Git](https://git-scm.com/)
     * [JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-    * [Maven 3,0 nebo vyšší](https://maven.apache.org/download.cgi)
-    * Rozhraní příkazového [řádku Azure je nainstalované](/cli/azure/install-azure-cli?view=azure-cli-latest), verze 2.0.67 nebo vyšší.
+    * [Maven 3.0 nebo vyšší](https://maven.apache.org/download.cgi)
+    * [Nainstalovaný Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), verze 2.0.67 nebo vyšší
 
     >[!TIP]
-    > Nástroje, jako je git, JDK, AZ CLI a Azure plug-ius, jsou ve výchozím nastavení zahrnuty v šabloně řešení Azure Marketplace [Microsoft jenkinse](https://aka.ms/jenkins-on-azure) .
+    > Nástroje jako Git, JDK, Az CLI a Azure plug-ius jsou ve výchozím nastavení zahrnuty v šabloně řešení Azure Marketplace [Microsoft Jenkins.](https://aka.ms/jenkins-on-azure) 
     
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
  
-## <a name="provision-a-service-instance-and-launch-a-java-spring-application"></a>Zřízení instance služby a spuštění aplikace v jazyce Java pružiny
+## <a name="provision-a-service-instance-and-launch-a-java-spring-application"></a>Zřízení instance služby a spuštění aplikace Java Spring
 
-[Metriky Piggy](https://github.com/Azure-Samples/piggymetrics) používáme jako ukázkovou aplikaci služby Microsoft a postupuje se stejným postupem v [rychlém startu: spuštění aplikace v jazyce Java pružiny pomocí rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) pro zřízení instance služby a nastavení aplikací. Pokud jste už prošli stejným procesem, můžete přejít k další části. V opačném případě jsou příkazy rozhraní příkazového řádku Azure CLI zahrnuté v následujících. Další informace najdete [v tématu rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) .
+Metriky [Prasátka](https://github.com/Azure-Samples/piggymetrics) používáme jako ukázkovou aplikaci služby Microsoftu a postupujte podle stejných kroků v [rychlém startu: Spusťte aplikaci Java Spring pomocí rozhraní příkazového příkazu Azure](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) k zřízení instance služby a nastavení aplikací. Pokud jste již prošli stejným procesem, můžete přeskočit na další část. V opačném případě jsou zahrnuty v následujícím jsou příkazy Azure CLI. Odkazovat na [rychlý start: Spuštění aplikace Java Spring pomocí azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) získat další informace o pozadí.
 
-Váš místní počítač musí splňovat stejný požadavek jako server sestavení Jenkinse. Ujistěte se, že jsou nainstalované následující nástroje pro sestavování a nasazování aplikací mikroslužeb:
+Místní počítač musí splňovat stejné předpoklady jako server sestavení Jenkinse. Ujistěte se, že jsou nainstalovány následující k sestavení a nasazení aplikací mikroslužeb:
     * [Git](https://git-scm.com/)
     * [JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-    * [Maven 3,0 nebo vyšší](https://maven.apache.org/download.cgi)
-    * Rozhraní příkazového [řádku Azure je nainstalované](/cli/azure/install-azure-cli?view=azure-cli-latest), verze 2.0.67 nebo vyšší.
+    * [Maven 3.0 nebo vyšší](https://maven.apache.org/download.cgi)
+    * [Nainstalovaný Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), verze 2.0.67 nebo vyšší
 
-1. Instalace rozšíření pro jarní cloud Azure:
+1. Nainstalujte rozšíření Azure Spring Cloud:
 
     ```Azure CLI
         az extension add --name spring-cloud
     ```
 
-2. Vytvořte skupinu prostředků, která bude obsahovat vaši jarní cloudovou službu Azure:
+2. Vytvořte skupinu prostředků, která bude obsahovat vaši službu Azure Spring Cloud:
 
     ```Azure CLI
         az group create --location eastus --name <resource group name>
     ```
 
-3. Zřízení instance Azure jaře cloudu:
+3. Zřízení instance Azure Spring Cloud:
 
     ```Azure CLI
         az spring-cloud create -n <service name> -g <resource group name>
     ```
 
-4. Rozvětvení úložiště [metrik Piggy](https://github.com/Azure-Samples/piggymetrics) na vlastní účet GitHubu. V místním počítači naklonujte úložiště v adresáři s názvem `source-code`:
+4. Vyklopte úložiště [Piggy Metrics](https://github.com/Azure-Samples/piggymetrics) na svůj vlastní účet GitHub. V místním počítači klonujte úložiště v `source-code`adresáři s názvem :
 
     ```bash
         mkdir source-code
         git clone https://github.com/<your GitHub id>/piggymetrics
     ```
 
-5. Nastavte konfigurační server. Ujistěte se, že jste nahradili &lt;ID GitHub&gt; se správnou hodnotou.
+5. Nastavte konfigurační server. Ujistěte se, že jste&gt; id GitHubu nahradili &lt;správnou hodnotou.
 
     ```Azure CLI
         az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/<your GitHub id>/piggymetrics --label config
     ```
 
-6. Sestavit projekt:
+6. Sestavení projektu:
 
     ```bash
         cd piggymetrics
         mvn clean package -D skipTests
     ```
 
-7. Vytvořte tři mikroslužby: **Brána**, **auth-Service**a **account-Service**:
+7. Vytvořte tři mikroslužby: **brána**, **auth-service**a **account-service**:
 
     ```Azure CLI
         az spring-cloud app create --n gateway -s <service name> -g <resource group name>
@@ -108,40 +108,40 @@ Váš místní počítač musí splňovat stejný požadavek jako server sestave
         az spring-cloud app deploy -n auth-service -s <service name> -g <resource group name> --jar-path ./auth-service/target/auth-service.jar
     ```
 
-9. Přiřadit veřejný koncový bod bráně:
+9. Přiřazení veřejného koncového bodu k bráně:
 
     ```Azure CLI
         az spring-cloud app update -n gateway -s <service name> -g <resource group name> --is-public true
     ```
 
-10. Dotaz na aplikaci brány, aby získal adresu URL, abyste mohli ověřit, že je aplikace spuštěná.
+10. Dotaz na aplikaci brány získat adresu URL, takže můžete ověřit, že aplikace je spuštěna.
 
     ```Azure CLI
     az spring-cloud app show --name gateway | grep url
     ```
     
-    Pokud chcete spustit aplikaci PiggyMetrics, přejděte na adresu URL poskytnutou předchozím příkazem. 
+    Přejděte na adresu URL poskytovanou předchozím příkazem a spusťte aplikaci PiggyMetrics. 
 
-## <a name="prepare-jenkins-server"></a>Příprava serveru Jenkinse
+## <a name="prepare-jenkins-server"></a>Příprava serveru Jenkins
 
-V této části připravíte Server Jenkinse pro spuštění sestavení, což je pro testování jemné. Z důvodu nebezpečnosti byste ale měli použít [agenta virtuálního počítače Azure](https://plugins.jenkins.io/azure-vm-agents) nebo [Azure Container agenta](https://plugins.jenkins.io/azure-container-agents) k aktivaci agenta v Azure za účelem spuštění vašich sestavení. Další informace najdete v článku o Jenkinsu věnovaném [bezpečnostním důsledkům sestavování na hlavním serveru](https://wiki.jenkins.io/display/JENKINS/Security+implication+of+building+on+master).
+V této části připravíte server Jenkins spustit sestavení, což je v pořádku pro testování. Z důvodu důsledků pro zabezpečení byste však měli použít [agenta virtuálního počítače Azure](https://plugins.jenkins.io/azure-vm-agents) nebo [agenta Azure Container](https://plugins.jenkins.io/azure-container-agents) ke spuštění agenta v Azure ke spuštění sestavení. Další informace najdete v článku o Jenkinsu věnovaném [bezpečnostním důsledkům sestavování na hlavním serveru](https://wiki.jenkins.io/display/JENKINS/Security+implication+of+building+on+master).
 
-### <a name="install-plug-ins"></a>Nainstalovat moduly plug-in
+### <a name="install-plug-ins"></a>Instalace modulů plug-in
 
-1. Přihlaste se k serveru Jenkinse. Vyberte **Spravovat jenkinse > spravovat moduly plug-in**.
-2. Na kartě **k dispozici** vyberte následující moduly plug-in:
+1. Přihlaste se k serveru Jenkins. Zvolte **Spravovat Jenkins > Spravovat pluginy**.
+2. Na kartě **Dostupné** vyberte následující moduly plug-in:
     * [Integrace GitHubu](https://plugins.jenkins.io/github-pullrequest)
-    * [Přihlašovací údaje Azure](https://plugins.jenkins.io/azure-credentials)
+    * [Pověření Azure](https://plugins.jenkins.io/azure-credentials)
 
-    Pokud se tyto moduly plug-in nezobrazí v seznamu, podívejte se na kartu **nainstalované** a zjistěte, jestli jsou už nainstalované.
+    Pokud se tyto moduly plug-in v seznamu nezobrazují, zkontrolujte kartu **Nainstalováno** a zjistěte, zda už jsou nainstalované.
 
-3. Pokud chcete nainstalovat moduly plug-in, vyberte **Stáhnout hned a po restartování nainstalujte**.
+3. Chcete-li moduly plug-in nainstalovat, zvolte **Stáhnout a nainstalovat po restartování**programu .
 
-4. Dokončete instalaci restartováním serveru Jenkinse.
+4. Restartujte server Jenkins a dokončete instalaci.
 
-### <a name="add-your-azure-service-principal-credential-in-jenkins-credential-store"></a>Přidání přihlašovacích údajů instančního objektu do úložiště přihlašovacích údajů služby Azure Jenkinse
+### <a name="add-your-azure-service-principal-credential-in-jenkins-credential-store"></a>Přidání přihlašovacích údajů primárního objektu služby Azure v úložišti přihlašovacích údajů Jenkinse
 
-1. K nasazení do Azure potřebujete instanční objekt Azure. Další informace najdete v tématu [Vytvoření instančního objektu služby](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) v kurzu nasazení do Azure App Service. Výstup z `az ad sp create-for-rbac` vypadá nějak takto:
+1. K nasazení do Azure potřebujete hlavního povinného k poskytování služeb Azure. Další informace najdete v části [Vytvořit instanční objekt](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) v kurzu Nasazení do služby Azure App Service. Výstup z `az ad sp create-for-rbac` vypadá asi takto:
 
     ```
     {
@@ -153,44 +153,44 @@ V této části připravíte Server Jenkinse pro spuštění sestavení, což je
     }
     ```
 
-2. Na řídicím panelu Jenkinse vyberte **Přihlašovací údaje** > **Systém**. Pak vyberte **Global credentials (unrestricted)** (Globální přihlašovací údaje (neomezené)).
+2. Na řídicím panelu Jenkins vyberte**Systém** **pověření** > . Pak vyberte **Global credentials (unrestricted)** (Globální přihlašovací údaje (neomezené)).
 
-3. Vyberte **Přidat přihlašovací údaje**. 
+3. Vyberte **Přidat pověření**. 
 
-4. Jako typ vyberte **Microsoft Azure instanční objekt** .
+4. Jako druh vyberte **Microsoft Azure Service Principal.**
 
-5. Zadejte hodnoty pro: * ID předplatného: použijte své ID předplatného Azure * ID klienta: použijte `appId` * klientský klíč klienta: použít `password` * ID tenanta: použijte `tenant` * prostředí Azure: vyberte předem nastavenou hodnotu. Použijte například **Azure** pro Azure pro globální * ID: nastaveno jako **azure_service_principal**. Toto ID použijeme v pozdějším kroku v tomto článku * Popis: je volitelné pole. Tady doporučujeme zadat smysluplnou hodnotu.
+5. Zadejte hodnoty pro: * ID předplatného: použijte ID `appId` předplatného Azure * `password` ID klienta: použijte * Tajný klíč klienta: použijte * ID klienta: použijte `tenant` * Prostředí Azure: vyberte přednastavenou hodnotu. Použijte například **Azure** for Azure Global * ID: nastavené jako **azure_service_principal**. Toto ID používáme v pozdějším kroku v tomto článku * Popis: je volitelné pole. Doporučujeme poskytnout smysluplnou hodnotu zde.
 
-### <a name="install-maven-and-az-cli-spring-cloud-extension"></a>Instalace Maven a AZ CLI jaře-Cloud Extension
+### <a name="install-maven-and-az-cli-spring-cloud-extension"></a>Instalace rozšíření maven a az CLI spring-cloud
 
-Vzorový kanál používá Maven k sestavení a AZ CLI pro nasazení do instance služby. Když se Jenkinse nainstaluje, vytvoří účet správce s názvem *Jenkinse*. Ujistěte se, že uživatel *Jenkinse* má oprávnění ke spuštění rozšíření jarního cloudu.
+Ukázkový kanál používá Maven k sestavení a Az CLI k nasazení do instance služby. Po instalaci jenkinse se vytvoří účet správce s názvem *Jenkins*. Ujistěte se, že uživatel *Jenkins* má oprávnění ke spuštění rozšíření spring-cloud.
 
-1. Připojte se k hlavnímu serveru Jenkinse pomocí protokolu SSH. 
+1. Připojte se k jenkinsovu mistrovi přes SSH. 
 
-2. Nainstalovat Maven
+2. Instalace Maven
 
     ```bash
         sudo apt-get install maven 
     ```
 
-3. Nainstalujte Azure CLI. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Azure CLI se instaluje ve výchozím nastavení, pokud používáte [Jenkinse Master v Azure](https://aka.ms/jenkins-on-azure).
+3. Nainstalujte Azure CLI. Další informace naleznete [v tématu Instalace příkazového příkazového příkazu k webu Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Azure CLI se nainstaluje ve výchozím nastavení, pokud používáte [Jenkins Master v Azure](https://aka.ms/jenkins-on-azure).
 
-4. Přepněte na uživatele `jenkins`:
+4. Přepněte `jenkins` na uživatele:
 
     ```bash
         sudo su jenkins
     ```
 
-5. Přidejte rozšíření **jarního cloudu** :
+5. Přidejte rozšíření **spring-cloud:**
 
     ```bash
         az extension add --name spring-cloud
     ```
 
-## <a name="create-a-jenkinsfile"></a>Vytvoření Jenkinsfile
-1. Ve svém vlastním úložišti (https://github.com/&lt ; vaše ID GitHubu&gt; /piggymetrics) vytvořte v kořenovém adresáři **Jenkinsfile** .
+## <a name="create-a-jenkinsfile"></a>Vytvoření jenkinsového souboru
+1. Ve vlastním úložištihttps://github.com/&lt( ;vaše&gt;GitHub id /prasátko) vytvořte **jenkinsfile** v kořenovém adresáři.
 
-2. Aktualizujte soubor následujícím způsobem. Ujistěte se, že jste nahradili hodnoty **\<název skupiny prostředků >** a **\<název služby >** . Pokud při přidání přihlašovacích údajů do Jenkinse použijete jinou hodnotu, nahraďte **azure_service_principal** správným ID. 
+2. Aktualizujte soubor následujícím způsobem. Ujistěte se, že nahradíte hodnoty ** \<>názvu skupiny prostředků** a ** \<>názvů služeb **. Pokud při přidání přihlašovacích údajů v Jenkinsu použijete jinou hodnotu, nahraďte **azure_service_principal** pravým ID. 
 
 ```groovy
     node {
@@ -224,9 +224,9 @@ Vzorový kanál používá Maven k sestavení a AZ CLI pro nasazení do instance
 
 ## <a name="create-the-job"></a>Vytvoření úlohy
 
-1. Na řídicím panelu Jenkinse klikněte na **Nová položka**.
+1. Na řídicím panelu Jenkins klikněte na **Nová položka**.
 
-2. Zadejte název, *Deploy-PiggyMetrics* pro úlohu a vyberte **kanál**. Klikněte na tlačítko OK.
+2. Zadejte název *Deploy-PiggyMetrics* pro úlohu a vyberte **Pipeline**. Klikněte na tlačítko OK.
 
 3. Potom klikněte na kartu **Pipeline** (Kanál).
 
@@ -234,37 +234,37 @@ Vzorový kanál používá Maven k sestavení a AZ CLI pro nasazení do instance
 
 5. V části **SCM** vyberte **Git**.
 
-6. Zadejte adresu URL GitHubu pro vaše rozvětvené úložiště: **https://github.com/&lt ; vaše ID githubu&gt; /piggymetrics.Git**
+6. Zadejte adresu URL GitHubu pro rozpůlené úložiště: ** https://github.com/&lt;vaše&gt;id GitHub /piggymetrics.git**
 
-7. Ujistěte se, že **specifikátor větve (černá pro ' Any ')** je * **/Azure**
+7. Ujistěte **se, že specifikátor větve (černý pro 'any')** je ***/Azure**
 
-8. Zachovat **cestu ke skriptům** jako **Jenkinsfile**
+8. Zachovat **cestu skriptu** jako **Jenkinsfile**
 
-7. Klikněte na **Uložit**.
+7. Klikněte na **Uložit.**
 
-## <a name="validate-and-run-the-job"></a>Ověří a spustí úlohu.
+## <a name="validate-and-run-the-job"></a>Ověřit a spustit úlohu
 
-Před spuštěním úlohy budeme aktualizovat text v textovém poli přihlášení, aby se **zadalo přihlašovací ID**.
+Před spuštěním úlohy aktualizujte text ve vstupním poli přihlášení a **zadejte přihlašovací ID**.
 
-1. Ve svém vlastním úložišti otevřete `index.html` v **/Gateway/src/Main/Resources/static/**
+1. Ve vlastním repo, `index.html` otevřete v **/gateway/src/main/resources/static/**
 
-2. Vyhledejte "zadejte své přihlašovací údaje" a aktualizujte na zadat přihlašovací ID.
+2. Vyhledejte výraz "zadejte své přihlašovací údaje" a aktualizujte na "zadejte přihlašovací ID"
 
     ```HTML
         <input class="frontforms" id="frontloginform" name="username" placeholder="enter login ID" type="text" autocomplete="off"/>
     ```
 
-3. Potvrdit změny
+3. Potvrzení změn
 
-4. Spusťte úlohu v Jenkinse ručně. Na řídicím panelu Jenkinse klikněte na úlohu *Deploy-PiggyMetrics* a **Sestavte ji nyní**.
+4. Spusťte úlohu v Jenkinsi ručně. Na řídicím panelu Jenkins klikněte na úlohu *Deploy-PiggyMetrics* a potom **na Build Now**.
 
-Po dokončení úlohy přejděte k veřejné IP adrese aplikace **brány** a ověřte, jestli je vaše aplikace aktualizovaná. 
+Po dokončení úlohy přejděte na veřejnou IP adresu aplikace **brány** a ověřte, zda byla aplikace aktualizována. 
 
-![Aktualizované metriky Piggy](media/tutorial-jenkins-deploy-cli-spring-cloud/piggymetrics.png)
+![Aktualizované metriky prasátka](media/tutorial-jenkins-deploy-cli-spring-cloud/piggymetrics.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku:
+Pokud již není potřeba, odstraňte prostředky vytvořené v tomto článku:
 
 ```bash
 az group delete -y --no-wait -n <resource group name>
@@ -272,9 +272,9 @@ az group delete -y --no-wait -n <resource group name>
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak pomocí rozhraní příkazového řádku Azure v Jenkinse automatizovat průběžnou integraci a doručování (CI/CD) pro Azure jaře Cloud.
+V tomto článku jste se dozvěděli, jak používat Azure CLI v Jenkinsi k automatizaci průběžné integrace a doručování (CI/CD) pro Azure Spring Cloud.
 
-Další informace o poskytovateli Azure Jenkinse najdete v tématu Jenkinse na webu Azure.
+Další informace o poskytovateli Azure Jenkinse najdete na webu Jenkins e.
 
 > [!div class="nextstepaction"]
 > [Jenkins v Azure](/azure/jenkins/)

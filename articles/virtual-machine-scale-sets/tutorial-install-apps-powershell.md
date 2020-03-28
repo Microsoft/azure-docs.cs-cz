@@ -1,5 +1,5 @@
 ---
-title: Kurz – instalace aplikací do sady škálování pomocí Azure PowerShell
+title: Kurz – instalace aplikací ve škálovací sadě pomocí Azure PowerShellu
 description: Zjistěte, jak pomocí Azure PowerShellu instalovat aplikace do škálovacích sad virtuálních počítačů s využitím rozšíření vlastních skriptů.
 author: cynthn
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 11/08/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 5e1b21b1d00defdb090a35c067fa533a482c828d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76271513"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>Kurz: Instalace aplikací ve škálovacích sadách virtuálních počítačů pomocí Azure PowerShellu
@@ -24,7 +24,7 @@ Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve š
 > * Použití rozšíření vlastních skriptů Azure
 > * Aktualizace spuštěné aplikace ve škálovací sadě
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -34,13 +34,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="what-is-the-azure-custom-script-extension"></a>Co je rozšíření vlastních skriptů Azure?
 Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakékoli jiné úlohy konfigurace nebo správy. Skripty si můžete stáhnout z úložiště Azure nebo z GitHubu, případně je za běhu rozšíření najdete na webu Azure Portal.
 
-Rozšíření vlastních skriptů se integruje s Azure Resource Manager šablonami. Dá se použít i pro Azure CLI, Azure PowerShell, Azure Portal nebo REST API. Další informace najdete v tématu [Přehled rozšíření vlastních skriptů](../virtual-machines/windows/extensions-customscript.md).
+Rozšíření Vlastní skript se integruje se šablonami Azure Resource Manager. Dá se taky použít s rozhraním API Azure, Azure PowerShell, portál Azure nebo rozhraní REST API. Další informace najdete v tématu [Přehled rozšíření vlastních skriptů](../virtual-machines/windows/extensions-customscript.md).
 
 Pokud se chcete podívat na rozšíření vlastních skriptů v akci, vytvořte škálovací sadu, která nainstaluje webový server služby IIS a vypíše název hostitele instance virtuálního počítače ve škálovací sadě. Definice rozšíření vlastních skriptů stáhne ukázkový skript z GitHubu, nainstaluje požadované balíčky a pak vypíše název hostitele instance virtuálního počítače na základní stránce HTML.
 
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
-Teď vytvořte sadu škálování virtuálního počítače pomocí [New-AzVmss](/powershell/module/az.compute/new-azvmss). Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení zahrnuje pravidla pro distribuci provozu na portu TCP 80. Umožňuje taky provoz vzdálené plochy na portu TCP 3389 a vzdálené komunikaci PowerShellu na portu TCP 5985. Po zobrazení výzvy můžete pro instance virtuálních počítačů v sadě škálování nastavit vlastní přihlašovací údaje pro správu:
+Nyní vytvořte škálovací sadu virtuálních strojů s [novou AzVmss](/powershell/module/az.compute/new-azvmss). Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Správce zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80. Umožňuje také provoz vzdálené plochy na portu TCP 3389 a vzdálené vzdálené komunikace prostředí PowerShell na portu TCP 5985. Po zobrazení výzvy můžete nastavit vlastní pověření pro správu pro instance virtuálních počítače ve škálovací sadě:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -68,7 +68,7 @@ $customConfig = @{
 ```
 
 
-Teď použijte rozšíření vlastních skriptů pomocí [Add-AzVmssExtension](/powershell/module/az.Compute/Add-azVmssExtension). Do rozšíření se přidá objekt konfigurace definovaný dříve. Aktualizujte a spusťte rozšíření na instancích virtuálních počítačů pomocí rutiny [Update-AzVmss](/powershell/module/az.compute/update-azvmss).
+Nyní použijte rozšíření vlastní skript s [Add-AzVmssExtension](/powershell/module/az.Compute/Add-azVmssExtension). Do rozšíření se přidá objekt konfigurace definovaný dříve. Aktualizujte a spusťte rozšíření na instancích virtuálních počítačí pomocí [update-AzVmss](/powershell/module/az.compute/update-azvmss).
 
 
 ```azurepowershell-interactive
@@ -98,7 +98,7 @@ Každá instance virtuálního počítače ve škálovací sadě stáhne a spust
 
 ## <a name="allow-traffic-to-application"></a>Povolení provozu do aplikace
 
-K povolení přístupu k základní webové aplikaci vytvořte skupinu zabezpečení sítě pomocí [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). Další informace najdete v tématu věnovaném [síti pro Azure Virtual Machine Scale Sets](virtual-machine-scale-sets-networking.md).
+Chcete-li povolit přístup k základní webové aplikaci, vytvořte skupinu zabezpečení sítě pomocí [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). Další informace najdete [v tématu Sítě pro škálovací sady virtuálních strojů Azure](virtual-machine-scale-sets-networking.md).
 
 ```azurepowershell-interactive
 
@@ -140,7 +140,7 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 
 ## <a name="test-your-scale-set"></a>Test škálovací sady
-Pokud chcete vidět svůj webový server v akci, Získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress). V následujícím příkladu se zobrazí IP adresa vytvořená ve skupině prostředků *myResourceGroup* :
+Chcete-li zobrazit váš webový server v akci, získejte veřejnou IP adresu vašeho vyrovnávání zatížení pomocí [služby Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress). V následujícím příkladu je zobrazena adresa IP vytvořená ve skupině prostředků *myResourceGroup:*
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
@@ -165,7 +165,7 @@ $customConfigv2 = @{
 }
 ```
 
-Aktualizujte konfiguraci rozšíření vlastních skriptů na instance virtuálních počítačů ve vaší sadě škálování. Definice *customConfigv2* slouží k použití aktualizované verze aplikace:
+Aktualizujte konfiguraci rozšíření vlastního skriptu na instance virtuálních počítačů ve škálovací sadě. Definice *customConfigv2* slouží k použití aktualizované verze aplikace:
 
 ```azurepowershell-interactive
 $vmss = Get-AzVmss `
@@ -186,7 +186,7 @@ Na všech instancích virtuálních počítačů ve škálovací sadě se ukázk
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud chcete odebrat sadu škálování a další prostředky, odstraňte skupinu prostředků a všechny její prostředky pomocí [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Parametr `-Force` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz. Parametr `-AsJob` vrátí řízení na příkazový řádek bez čekání na dokončení operace.
+Chcete-li odebrat škálovací sadu a další prostředky, odstraňte skupinu prostředků a všechny její prostředky pomocí [skupiny Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Parametr `-Force` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz. Parametr `-AsJob` vrátí řízení na příkazový řádek bez čekání na dokončení operace.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob

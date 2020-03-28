@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s nástrojem náměstek | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a náměstkem.
+title: 'Kurz: Integrace služby Azure Active Directory se zástupcem | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi službou Azure Active Directory a deputyem.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,97 +16,97 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33830ce5822b2edee345cf58fc6f2a53d3c863fa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cd021b9547048e9f5218ce4f2b8b110b15d05963
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227590"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048563"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Kurz: Azure Active Directory integrace s nástrojem náměstek
+# <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Kurz: Integrace služby Azure Active Directory se zástupcem
 
-V tomto kurzu se naučíte integrovat náměstek s Azure Active Directory (Azure AD).
-Integrování zástupce s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat zástupce s Azure Active Directory (Azure AD).
+Integrace zástupce s Azure AD poskytuje následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k náměstku.
-* Uživatelům můžete povolit, aby se automaticky přihlásili k programu náměstek (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k Zástupce.
+* Můžete povolit, aby se uživatelé automaticky přihlašovali ke zástupci (jednotné přihlášení) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s nástrojem náměstek budete potřebovat následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s deputy, budete potřebovat následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné s povoleným jednotným přihlašováním
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* Zástupce jednotného přihlášení povoleno předplatné
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Náměstek podporuje **SP** a **IDP** iniciované jednotné přihlašování.
+* Zástupce podporuje **SP** a **IDP** inicioval sso
 
-## <a name="adding-deputy-from-the-gallery"></a>Přidání zástupce z Galerie
+## <a name="adding-deputy-from-the-gallery"></a>Přidání zástupce z galerie
 
-Pokud chcete nakonfigurovat integraci programu náměstek do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat zástupce z galerie.
+Chcete-li nakonfigurovat integraci zástupce do Azure AD, musíte přidat zástupce z galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat zástupce z Galerie, proveďte následující kroky:**
+**Chcete-li přidat zástupce z galerie, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **náměstek**, vyberte **náměstek** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Zástupce**, z panelu výsledků vyberte **Zástupce** a klepnutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Zástupce v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí zástupce na základě testovacího uživatele s názvem **Britta Simon**.
-Aby bylo jednotné přihlašování fungovat, je třeba zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v nástroji náměstek.
+Pro jednotné přihlašování do práce, propojení vztah mezi uživatelem Azure AD a související uživatel v Zástupce musí být vytvořena.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí zástupce, musíte dokončit tyto stavební bloky:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí zástupce, musíte dokončit následující stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování](#configure-deputy-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte zástupce testovacího uživatele](#create-deputy-test-user)** – Pokud chcete mít protějšek Britta Simon v náměstku, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace zástupce jednotného přihlášení](#configure-deputy-single-sign-on)** - pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořit zástupce testovacího uživatele](#create-deputy-test-user)** – mít protějšek Britta Simon v zástupce, který je propojen s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroje náměstek, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí služby Deputy, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce **náměstek** Application Integration vyberte **jednotné přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce **Integrace aplikací Zástupce** vyberte Jednotné **přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
+4. V části **Základní konfigurace SAML,** Pokud chcete nakonfigurovat aplikaci v režimu iniciovaného **protokolem IDP,** proveďte následující kroky:
 
-    ![Zástupce domény a adresy URL jednotného přihlašování](common/idp-intiated.png)
+    ![Informace o jednotném přihlášení zástupce domény a adres URL](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
+    a. Do textového pole **Identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
     |  |
     | ----|
@@ -126,7 +126,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
     | `https://<subdomain>.<region>.ent-an.deputy.com` |
     | `https://<subdomain>.<region>.deputy.com` |
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
+    b. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:
     
     | |
     |----|
@@ -146,146 +146,146 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
     | `https://<subdomain>.<region>.ent-an.deputy.com/exec/devapp/samlacs` |
     | `https://<subdomain>.<region>.deputy.com/exec/devapp/samlacs` |
 
-5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
+5. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném **službou SP:**
 
-    ![Zástupce domény a adresy URL jednotného přihlašování](common/metadata-upload-additional-signon.png)
+    ![Informace o jednotném přihlášení zástupce domény a adres URL](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<your-subdomain>.<region>.deputy.com`
+    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<your-subdomain>.<region>.deputy.com`
 
     >[!NOTE]
-    > Přípona zástupce v oblasti je volitelná, nebo by měla používat jednu z těchto možností: au | na | EU | as | La | La | a | prostředník-au | nenáročné na | vše – La | pro \ AF | s jedním z
+    > Přípona náměstka regionu je nepovinná, nebo by měla používat jednu z těchto: au | na | eu |jako |la |af |a |ent-au |ent-na |ent-eu |ent-as | ent-la | ent-af | ent-an
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienty](https://www.deputy.com/call-centers-customer-support-scheduling-software) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL pro odpověď a přihlašovací adresou URL. Obraťte se na [tým podpory zástupce klienta](https://www.deputy.com/call-centers-customer-support-scheduling-software) získat tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Base64)** z daných možností podle vašeho požadavku a uložte jej do počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-7. V části **nastavit zástupce** zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V části **Nastavit zástupce** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-deputy-single-sign-on"></a>Konfigurace jednotného přihlašování náměstkem
+### <a name="configure-deputy-single-sign-on"></a>Konfigurace jednotného přihlašování zástupce
 
-1. Přejděte na následující adresu URL:[https://(vaše subdoména). náměstek. com/exec/config/system_config]( https://(your-subdomain).deputy.com/exec/config/system_config). Přejděte na **nastavení zabezpečení** a klikněte na **Upravit**.
+1. Přejděte na následující`https://(your-subdomain).deputy.com/exec/config/system_config`adresu URL: . Přejděte do **nastavení zabezpečení** a klepněte na tlačítko **Upravit**.
    
     ![Konfigurace jednotného přihlašování](./media/deputy-tutorial/tutorial_deputy_004.png)
 
-2. Na stránce **nastavení zabezpečení** proveďte následující kroky.
+2. Na této stránce **Nastavení zabezpečení** proveďte následující kroky.
 
     ![Konfigurace jednotného přihlašování](./media/deputy-tutorial/tutorial_deputy_005.png)
     
-    a. Povolte **sociální přihlášení**.
+    a. Povolit **přihlášení do sociální ch odsek-sítě**.
    
-    b. Otevřete certifikát kódovaný v kódování Base64 stažený z Azure Portal v programu Poznámkový blok, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikátu OpenSSL** .
+    b. Otevřete kódovaný certifikát Base64 stažený z portálu Azure v poznámkovém bloku, zkopírujte jeho obsah do schránky a vložte ho do textového pole **Certifikát OpenSSL.**
    
-    c. Do textového pole URL jednotného přihlašování SAML zadejte `https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
+    c. Do textového pole URL při spo.`https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
     
-    d. V textovém poli adresy URL jednotného přihlašování SAML nahraďte `<your subdomain>` poddoménou.
+    d. V textovém poli adresy URL `<your subdomain>` při správě při správě SAML nahraďte subdoménou.
    
-    e. V textovém poli adresy URL jednotného přihlašování SAML nahraďte `<saml sso url>` **adresou URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    e. V textovém poli adresy URL `<saml sso url>` při správě při saml nahraďte **přihlašovací adresu URL,** kterou jste zkopírovali z portálu Azure.
    
-    f. Klikněte na **Uložit nastavení**.
+    f. Klepněte na **tlačítko Uložit nastavení**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. V poli **Uživatelské jméno** zadejte **\@brittasimon vašecompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
     d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k náměstku.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu zástupce.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **náměstek**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Zástupce**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **zástupce**.
+2. V seznamu žádostí vyberte **zástupce**.
 
-    ![Odkaz na zástupce v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Zástupce v seznamu Žádostí](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-deputy-test-user"></a>Vytvořit náměstka testovacího uživatele
+### <a name="create-deputy-test-user"></a>Vytvořit zástupce testovacího uživatele
 
-Aby se uživatelé Azure AD mohli přihlásit k náměstku, musí se zřídit jako náměstek. V případě náměstka je zřizování ručním úkolem.
+Chcete-li povolit uživatelům Azure AD k přihlášení k Zástupce, musí být zřízena do Zástupce. V případě zástupce zřizování je ruční úlohy.
 
 #### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Chcete-li zřídit uživatelský účet, proveďte následující kroky:
 
-1. Přihlaste se ke svému náměstkovi firemnímu webu jako správce.
+1. Přihlaste se k webu společnosti zástupce jako správce.
 
-2. V horním navigačním podokně klikněte na **Uživatelé**.
+2. V horním navigačním podokně klikněte na **Lidé**.
    
-    ![Lidé](./media/deputy-tutorial/tutorial_deputy_001.png "Lidé")
+    ![People](./media/deputy-tutorial/tutorial_deputy_001.png "People")
 
-3. Klikněte na tlačítko **Přidat lidi** a pak klikněte na **přidat jednu osobu**.
+3. Klikněte na tlačítko **Přidat lidi** a klikněte na **Přidat jednu osobu**.
    
     ![Přidat lidi](./media/deputy-tutorial/tutorial_deputy_002.png "Přidat lidi")
 
-4. Proveďte následující kroky a klikněte na **uložit & pozvat**.
+4. Proveďte následující kroky a klepněte na **tlačítko Uložit & pozvat**.
    
     ![Nový uživatel](./media/deputy-tutorial/tutorial_deputy_003.png "Nový uživatel")
 
-    a. Do textového pole **název** zadejte název uživatele, jako je **BrittaSimon**.
+    a. Do textového pole **Název** zadejte název uživatele, jako je **BrittaSimon**.
    
-    b. Do textového pole **e-mail** zadejte e-mailovou adresu účtu Azure AD, který chcete zřídit.
+    b. Do textového pole **E-mail** zadejte e-mailovou adresu účtu Azure AD, který chcete zřídit.
    
-    c. Do pole **práce v** textovém poli zadejte název firmy.
+    c. Do textového pole **Práce na** zadejte název firmy.
    
-    d. Klikněte na tlačítko **uložit & tlačítko pozvat** .
+    d. Klikněte na **tlačítko Uložit & pozvat.**
 
-5. Držitel účtu Azure AD obdrží e-mail a provede odkaz k potvrzení jeho účtu předtím, než se aktivuje. K zajištění uživatelských účtů Azure AD můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů nebo rozhraní API od zástupce, které poskytuje náměstek.
+5. Držitel účtu Azure AD obdrží e-mail a následuje odkaz pro potvrzení svého účtu před tím, než se stane aktivním. Můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů zástupce nebo rozhraní API poskytované zástupce zřídit uživatelské účty Azure AD.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici náměstek na přístupovém panelu byste měli být automaticky přihlášeni k náměstku, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Zástupce na přístupovém panelu, by měl být automaticky přihlášeni k zástupce, pro které nastavíte sso. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

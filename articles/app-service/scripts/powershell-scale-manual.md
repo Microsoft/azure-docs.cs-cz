@@ -1,19 +1,19 @@
 ---
-title: 'PowerShell: ruční škálování webové aplikace'
-description: Naučte se používat Azure PowerShell k automatizaci nasazení a správy App Service. V této ukázce se dozvíte, jak ručně škálovat aplikaci.
+title: 'PowerShell: Ruční škálování webové aplikace'
+description: Zjistěte, jak pomocí Azure PowerShellu automatizovat nasazení a správu služby App Service. Tato ukázka ukazuje, jak ručně škálovat aplikaci.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: de5d4285-9c7d-4735-a695-288264047375
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 2ee88ef3d125ccc1ec9675437ea99ac11fe65dff
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: cb0af65f938baf24b2af574b21e09e099b70ba85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684225"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060286"
 ---
 # <a name="scale-a-web-app-manually-using-powershell"></a>Ruční škálování webové aplikace pomocí PowerShellu
 
@@ -42,9 +42,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. |
-| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří webovou aplikaci. |
-| [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Upraví konfiguraci webové aplikace. |
+| [Nový-AzAppServicePlán](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. |
+| [Nový-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří webovou aplikaci. |
+| [Sada-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Upraví konfiguraci webové aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 

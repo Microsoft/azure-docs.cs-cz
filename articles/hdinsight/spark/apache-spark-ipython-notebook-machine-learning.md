@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: sestavení aplikace Spark Machine Learning – Azure HDInsight'
-description: Kurz – podrobné pokyny k sestavení aplikace Apache Spark Machine Learning v clusterech HDInsight Spark pomocí poznámkového bloku Jupyter
+title: 'Kurz: Vytvoření aplikace pro strojové učení Spark – Azure HDInsight'
+description: Výuka – podrobný návod, jak vytvořit aplikaci Apache Spark pro strojové učení v clusterech HDInsight Spark pomocí notebooku Jupyter.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,33 +9,33 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
 ms.openlocfilehash: 6e46d7403e251bccd69467cfcdaa1d5073b4e454
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494559"
 ---
-# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Kurz: Vytvoření aplikace Apache Spark Machine Learning ve službě Azure HDInsight
+# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Kurz: Vytvoření aplikace apache spark strojového učení v Azure HDInsight
 
-V tomto kurzu se naučíte, jak pomocí [Jupyter notebook](https://jupyter.org/) vytvořit aplikaci [Apache Spark](https://spark.apache.org/) Machine Learning pro Azure HDInsight.
+V tomto kurzu se dozvíte, jak pomocí [poznámkového bloku Jupyter](https://jupyter.org/) vytvořit aplikaci [Apache Spark](https://spark.apache.org/) pro strojové učení pro Azure HDInsight.
 
 [MLlib](https://spark.apache.org/docs/latest/ml-guide.html) je knihovna škálovatelného strojového učení Sparku, která se skládá z běžných algoritmů a nástrojů strojového učení, včetně klasifikace, regrese, clusteringu, filtrování založeného na spolupráci, snížení počtu dimenzí a také základních primitiv optimalizace.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Vývoj aplikace Apache Spark Machine Learning
+> * Vývoj aplikace apache spark strojového učení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Spark ve službě HDInsight. Viz [Vytvoření clusteru Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
 
-* Znalost používání poznámkových bloků Jupyter se Sparkem ve službě HDInsight. Další informace najdete v tématech [načtení dat a spuštění dotazů s Apache Spark v HDInsight](./apache-spark-load-data-run-query.md).
+* Znalost používání poznámkových bloků Jupyter se Sparkem ve službě HDInsight. Další informace najdete v [tématu Načítání dat a spouštění dotazů pomocí Apache Spark na HDInsight .](./apache-spark-load-data-run-query.md)
 
 ## <a name="understand-the-data-set"></a>Vysvětlení datové sady
 
-Aplikace používá ukázková data **TVK. csv** , která jsou ve výchozím nastavení k dispozici ve všech clusterech. Soubor je umístěn na adrese `\HdiSamples\HdiSamples\SensorSampleData\hvac`. Data ukazují cílovou teplotu a skutečnou teplotu několika budov s nainstalovanými systémy HVAC. Sloupec **System** představuje ID systému a sloupec **SystemAge** představuje počet let, kolik je systém HVAC v budově umístěný. Pomocí těchto dat můžete odhadnout, jestli budova bude teplejší nebo studenější na základě cílové teploty, daného ID systému a stáří systému.
+Aplikace používá ukázková data **HVAC.csv,** která jsou ve výchozím nastavení k dispozici ve všech clusterech. Soubor je umístěn `\HdiSamples\HdiSamples\SensorSampleData\hvac`na adrese . Data ukazují cílovou teplotu a skutečnou teplotu několika budov s nainstalovanými systémy HVAC. Sloupec **System** představuje ID systému a sloupec **SystemAge** představuje počet let, kolik je systém HVAC v budově umístěný. Pomocí těchto dat můžete odhadnout, jestli budova bude teplejší nebo studenější na základě cílové teploty, daného ID systému a stáří systému.
 
-![Snímek dat používaných jako příklad strojového učení Spark](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Snímek dat používaných jako příklad strojového učení Spark")
+![Snímek dat použitých pro příklad strojového učení Spark](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Snímek dat použitých pro příklad strojového učení Spark")
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Vývoj aplikace strojového učení Sparku pomocí knihovny Spark MLlib
 
@@ -96,7 +96,7 @@ V této aplikaci použijete [kanál ML](https://spark.apache.org/docs/2.2.0/ml-p
     pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
     ```
 
-    Další informace o kanálu a o tom, jak funguje, najdete v tématu [Apache Spark kanálu Machine Learning](https://spark.apache.org/docs/latest/ml-pipeline.html).
+    Další informace o kanálu a jeho fungování najdete v [tématu Apache Spark machine learning pipeline](https://spark.apache.org/docs/latest/ml-pipeline.html).
 
 1. Přizpůsobte kanál pro trénovací dokument.
 
@@ -141,7 +141,7 @@ V této aplikaci použijete [kanál ML](https://spark.apache.org/docs/2.2.0/ml-p
 
     Porovnejte výstup s nezpracovaným souborem CSV. Například první řádek souboru CSV obsahuje tato data:
 
-    ![Snímek výstupních dat pro Spark Machine Learning – příklad](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Snímek výstupních dat pro Spark Machine Learning – příklad")
+    ![Snímek výstupních dat pro příklad strojového učení Spark](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Snímek výstupních dat pro příklad strojového učení Spark")
 
     Všimněte si, že skutečná teplota je nižší než cílová teplota. To značí, že je budova studená. Proto je v trénovacím výstupu hodnota **label** na prvním řádku **0.0**, což znamená, že budova není teplá.
 
@@ -186,27 +186,27 @@ V této aplikaci použijete [kanál ML](https://spark.apache.org/docs/2.2.0/ml-p
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Použití knihovny Anaconda scikit-learn pro strojové učení Sparku
 
-Clustery Apache Spark ve službě HDInsight obsahují knihovny Anaconda. Jejich součástí je také knihovna **scikit-learn** pro strojové učení. Knihovna obsahuje také různé datové sady, které můžete použít k vytváření ukázkových aplikací přímo z poznámkového bloku Jupyter. Příklady použití knihovny scikit-learn najdete tady: [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html).
+Clustery Apache Spark ve službě HDInsight obsahují knihovny Anaconda. Jejich součástí je také knihovna **scikit-learn** pro strojové učení. Knihovna obsahuje také různé datové sady, které můžete použít k vytváření ukázkových aplikací přímo z poznámkového bloku Jupyter. Příklady použití knihovny scikit-learn [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html)naleznete v tématu .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster, který jste vytvořili, pomocí následujících kroků:
+Pokud nebudete nadále používat tuto aplikaci, odstraňte cluster, který jste vytvořili pomocí následujících kroků:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
-1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
+1. Do pole **Hledat** v horní části zadejte **HDInsight**.
 
-1. V části **služby**vyberte **clustery HDInsight** .
+1. V části **Služby** **vyberte clustery HDInsight** .
 
-1. V seznamu clusterů HDInsight, které se zobrazí, vyberte **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu.
+1. V seznamu clusterů HDInsight, který se zobrazí, vyberte **...** vedle clusteru, který jste vytvořili pro tento kurz.
 
-1. Vyberte **Odstranit**. Vyberte **Ano**.
+1. Vyberte **Odstranit**. Vyberte **ano**.
 
-![Azure Portal odstranit cluster HDInsight](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "Odstranit cluster HDInsight")
+![Azure Portal odstraní cluster HDInsight](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "Odstranění clusteru HDInsight")
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak použít Jupyter Notebook k vytvoření aplikace Apache Spark Machine Learning pro Azure HDInsight. V dalším kurzu se dozvíte, jak používat IntelliJ IDEA pro úlohy Sparku.
+V tomto kurzu jste se naučili, jak pomocí poznámkového bloku Jupyter vytvořit aplikaci Apache Spark pro strojové učení pro Azure HDInsight. V dalším kurzu se dozvíte, jak používat IntelliJ IDEA pro úlohy Sparku.
 
 > [!div class="nextstepaction"]
 > [Vytvoření aplikace Scala Maven pomocí IntelliJ](./apache-spark-create-standalone-application.md)

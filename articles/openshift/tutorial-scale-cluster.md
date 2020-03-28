@@ -1,26 +1,26 @@
 ---
 title: Kurz – škálování clusteru Azure Red Hat OpenShift
-description: Naučte se škálovat Microsoft Azure clusteru Red Hat OpenShift pomocí Azure CLI.
+description: Zjistěte, jak škálovat cluster Microsoft Azure Red Hat OpenShift pomocí rozhraní příkazového příkazu Azure
 author: jimzim
 ms.author: jzim
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/06/2019
-ms.openlocfilehash: bf9172f0c84834c951446520ff0bfcc3ef756c9c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c6334aa20b543dfbf87fedcfe45d54bbcf7a219a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278311"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79477013"
 ---
-# <a name="tutorial-scale-an-azure-red-hat-openshift-cluster"></a>Kurz: škálování clusteru Azure Red Hat OpenShift
+# <a name="tutorial-scale-an-azure-red-hat-openshift-cluster"></a>Kurz: Škálování clusteru Azure Red Hat OpenShift
 
-Tento kurz je druhá část série. Naučíte se, jak vytvořit cluster Microsoft Azure Red Hat OpenShift pomocí Azure CLI, škálovat ho a pak odstranit a vyčistit prostředky.
+Tento kurz je druhá část série. Dozvíte se, jak vytvořit cluster Microsoft Azure Red Hat OpenShift pomocí rozhraní příkazového příkazu Azure, škálovat ho a pak ho odstranit, abyste vyčistili prostředky.
 
 Ve druhé části této série se naučíte:
 
 > [!div class="checklist"]
-> * Škálování clusteru Red Hat OpenShift
+> * Změna velikosti clusteru Red Hat OpenShift
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
@@ -32,33 +32,33 @@ V této sérii kurzů se naučíte:
 
 Než začnete s tímto kurzem:
 
-* Pomocí kurzu [Vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md) vytvořte cluster.
+* Vytvořte cluster podle kurzu [vytvořit azure red hat openshift clusteru.](tutorial-create-cluster.md)
 
-## <a name="step-1-sign-in-to-azure"></a>Krok 1: přihlášení k Azure
+## <a name="step-1-sign-in-to-azure"></a>Krok 1: Přihlášení do Azure
 
-Pokud používáte Azure CLI místně, spusťte `az login`, abyste se přihlásili do Azure.
+Pokud používáte azure cli místně, `az login` spusťte přihlášení k Azure.
 
-```bash
+```azurecli
 az login
 ```
 
-Pokud máte přístup k několika předplatným, spusťte `az account set -s {subscription ID}` nahrazující `{subscription ID}` s předplatným, které chcete použít.
+Pokud máte přístup k více `az account set -s {subscription ID}` předplatných, spusťte nahrazení `{subscription ID}` předplatného, které chcete použít.
 
-## <a name="step-2-scale-the-cluster-with-additional-nodes"></a>Krok 2: škálování clusteru pomocí dalších uzlů
+## <a name="step-2-scale-the-cluster-with-additional-nodes"></a>Krok 2: Škálování clusteru s dalšími uzly
 
-V terminálu bash nastavte proměnnou CLUSTER_NAME na název vašeho clusteru:
+Z terminálu Bash nastavte proměnnou CLUSTER_NAME na název clusteru:
 
 ```bash
 CLUSTER_NAME=yourclustername
 ```
 
-Teď budete moct cluster škálovat na pět uzlů pomocí Azure CLI:
+Nyní pojďme škálovat cluster u pěti uzlů pomocí Azure CLI:
 
-```bash
+```azurecli
 az openshift scale --resource-group $CLUSTER_NAME --name $CLUSTER_NAME --compute-count 5
 ```
 
-Po několika minutách se `az openshift scale` úspěšně dokončí a vrátí dokument JSON obsahující podrobnosti o škálování clusteru.
+Po několika minutách `az openshift scale` bude úspěšně dokončena a vrátí dokument JSON obsahující podrobnosti clusteru s měřítkem.
 
 ## <a name="next-steps"></a>Další kroky
 

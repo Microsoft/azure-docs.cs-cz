@@ -1,6 +1,6 @@
 ---
-title: Kurz – nastavení zařízení pro Azure IoT Hub Device Provisioning Service
-description: V tomto kurzu se dozvíte, jak můžete nastavit zařízení pro zřizování prostřednictvím IoT Hub Device Provisioning Service (DPS) během procesu výroby zařízení.
+title: Kurz – nastavení zařízení pro službu Azure IoT Hub Device Provisioning Service
+description: Tento kurz ukazuje, jak můžete nastavit zařízení pro zřizování prostřednictvím služby DPS (Device Provisioning Service) služby IoT Hub (DPS) během procesu výroby zařízení
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -10,13 +10,13 @@ services: iot-dps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 6ff732888e416fcd51216070b3b30ed37b79e92c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239487"
 ---
-# <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Kurz: nastavení zařízení pro zřízení pomocí IoT Hub Device Provisioning Service Azure
+# <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Kurz: Nastavení zařízení pro zřizování pomocí služby Azure IoT Hub Device Provisioning Service
 
 V předchozím kurzu jste zjistili, jak ve službě Azure IoT Hub Device Provisioning nastavit automatické zřizování vašich zařízení pro centrum IoT. V tomto kurzu se dozvíte, jak nastavit své zařízení během výrobního procesu a umožnit tak jeho automatické zřízení pomocí služby IoT Hub. Vaše zařízení se zřídí na základě [mechanismu ověřování](concepts-device.md#attestation-mechanism) po prvním spuštění a připojení ke zřizovací službě. Tento kurz se zabývá následujícími úkony:
 
@@ -27,7 +27,7 @@ V předchozím kurzu jste zjistili, jak ve službě Azure IoT Hub Device Provisi
 
 Tento kurz předpokládá, že jste si už vytvořili instanci služby Device Provisioning a IoT Hub podle pokynů v předchozím kurzu [Nastavení cloudových prostředků](tutorial-set-up-cloud.md).
 
-V tomto kurzu se používá [úložiště sad SDK a knihoven Azure IoT pro C](https://github.com/Azure/azure-iot-sdk-c), které obsahuje klientskou sadu SDK služby Device Provisioning pro C. Tato sada SDK aktuálně poskytuje podporu TPM a X.509 pro zařízení využívající implementace Windows nebo Linuxu. Tento kurz je založen na použití vývojového klienta ve Windows, který také předpokládá základní znalosti se sadou Visual Studio. 
+V tomto kurzu se používá [úložiště sad SDK a knihoven Azure IoT pro C](https://github.com/Azure/azure-iot-sdk-c), které obsahuje klientskou sadu SDK služby Device Provisioning pro C. Tato sada SDK aktuálně poskytuje podporu TPM a X.509 pro zařízení využívající implementace Windows nebo Linuxu. Tento kurz je založen na použití vývojového klienta systému Windows, který také předpokládá základní znalosti s Visual Studio. 
 
 Pokud neznáte proces automatického zřizování, nezapomeňte si přečíst o [konceptech automatického zřizování](concepts-auto-provisioning.md), než budete pokračovat. 
 
@@ -36,23 +36,23 @@ Pokud neznáte proces automatického zřizování, nezapomeňte si přečíst o 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
+Následující předpoklady jsou pro vývojové prostředí systému Windows. Pro Linux nebo macOS, najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci sady SDK.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou pro [vývoj C++desktopových](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) aplikací. Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 s povoleným temanem [pro vývoj plochy s C++.](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) Visual Studio 2015 a Visual Studio 2017 jsou také podporovány.
 
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>Sestavení specifické verze sady SDK pro platformu
 
-Klientská sada SDK služby Device Provisioning pomáhá implementovat software pro registraci zařízení. Před jejím použitím však musíte sestavit specifickou verzi sady SDK pro platformu vašeho vývojového klienta a váš mechanismus ověřování. V tomto kurzu sestavíte sadu SDK, která používá sadu Visual Studio na vývojové platformě Windows, pro podporovaný typ ověření identity:
+Klientská sada SDK služby Device Provisioning pomáhá implementovat software pro registraci zařízení. Před jejím použitím však musíte sestavit specifickou verzi sady SDK pro platformu vašeho vývojového klienta a váš mechanismus ověřování. V tomto kurzu vytvoříte sadu SDK, která používá Visual Studio na vývojové platformě Windows pro podporovaný typ atestace:
 
-1. Stáhněte si [sestavovací systém cmake](https://cmake.org/download/).
+1. Stáhněte si [systém sestavení CMake](https://cmake.org/download/).
 
     Je důležité, aby požadavky na sadu Visual Studio (Visual Studio a sada funkcí Vývoj desktopových aplikací pomocí C++) byly na vašem počítači nainstalované ještě **před** zahájením instalace `CMake`. Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
 
 2. Vyhledejte název značky pro [nejnovější verzi](https://github.com/Azure/azure-iot-sdk-c/releases/latest) sady SDK.
 
-3. Otevřete prostředí příkazového řádku nebo Git Bash. Spuštěním následujících příkazů naklonujte nejnovější verzi úložiště GitHub pro [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) . Použijte značku, kterou jste našli v předchozím kroku, jako hodnotu parametru `-b`:
+3. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkazy a naklonovat nejnovější verzi úložiště [GitHub Azure IoT C SDK.](https://github.com/Azure/azure-iot-sdk-c) Jako hodnotu `-b` parametru použijte značku, kterou jste našli v předchozím kroku:
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -62,7 +62,7 @@ Klientská sada SDK služby Device Provisioning pomáhá implementovat software 
 
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
-4. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z `azure-iot-sdk-c` adresáře spusťte následující příkazy:
+4. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Spusťte z adresáře následující příkazy: `azure-iot-sdk-c`
 
     ```cmd/sh
     mkdir cmake
@@ -121,7 +121,7 @@ V závislosti na tom, jestli jste sestavili sadu SDK, aby používala ověřová
       > [!NOTE]
       > Pokud pro tento krok používáte příkazový řádek Git Bash, budete muset změnit zpětná lomítka na lomítka – například: `./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe`.
 
-   1. Pomocí sady Visual Studio otevřete řešení *vygenerované ve složce*cmake`azure_iot_sdks.sln` a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
+   1. Pomocí sady Visual Studio otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
 
    1. V podokně *Průzkumník řešení* v sadě Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **tpm_device_provision** a vyberte **Nastavit jako spouštěný projekt**. 
 
@@ -129,13 +129,13 @@ V závislosti na tom, jestli jste sestavili sadu SDK, aby používala ověřová
 
 - Simulované zařízení X.509:
 
-  1. Pomocí sady Visual Studio otevřete řešení *vygenerované ve složce*cmake`azure_iot_sdks.sln` a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
+  1. Pomocí sady Visual Studio otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
 
   1. V podokně *Průzkumník řešení* v sadě Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **dice\_device\_enrollment** a vyberte **Nastavit jako spouštěný projekt**. 
   
   1. Spusťte řešení pomocí některého z příkazů Spustit v nabídce Ladění. Po zobrazení výzvy zadejte v okně Výstup **i** pro jednotlivou registraci. V okně Výstup se zobrazí místně vygenerovaný certifikát X.509 pro vaše simulované zařízení. Zkopírujte do schránky výstup začínající na *-----BEGIN CERTIFICATE-----* a končící na první řádek *-----END CERTIFICATE-----* a ujistěte se, že kopírujete i oba tyto řádky. Z okna Výstup potřebujete pouze první certifikát.
  
-  1. Vytvořte soubor **_X509testcert.pem_** , otevřete ho v libovolném textovém editoru a zkopírujte do něj obsah schránky. Soubor uložte, protože ho použijete později k registraci zařízení. Software pro registraci po spuštění používá stejný certifikát jako při automatickém zřizování.    
+  1. Vytvořte soubor **_X509testcert.pem_**, otevřete ho v libovolném textovém editoru a zkopírujte do něj obsah schránky. Soubor uložte, protože ho použijete později k registraci zařízení. Software pro registraci po spuštění používá stejný certifikát jako při automatickém zřizování.    
 
 Tyto artefakty zabezpečení jsou potřeba při registraci vašeho zařízení do služby Device Provisioning. Zřizovací služba počká na budoucí spuštění a připojení zařízení. Při prvním spuštění zařízení logika klientské sady SDK ve spolupráci s čipem (nebo simulátorem) extrahuje ze zařízení artefakty zabezpečení a ověří registraci ve službě Device Provisioning. 
 
@@ -146,7 +146,7 @@ Posledním krokem je napsat registrační aplikaci, která pomocí klientské sa
 > [!NOTE]
 > V tomto kroku budeme předpokládat použití simulovaného zařízení a spuštění ukázkové registrační aplikace sady SDK na vaší pracovní stanici. Stejné koncepty však platí i v případě, že vytváříte registrační aplikaci pro nasazení na fyzické zařízení. 
 
-1. Na webu Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning a zkopírujte hodnotu **_Rozsah ID_** . *Rozsah ID* je generovaný službou a zaručuje jedinečnost. Je neměnný a slouží k jednoznačné identifikaci ID registrací.
+1. Na webu Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning a zkopírujte hodnotu **_Rozsah ID_**. *Rozsah ID* je generovaný službou a zaručuje jedinečnost. Je neměnný a slouží k jednoznačné identifikaci ID registrací.
 
     ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 

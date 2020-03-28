@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – restartování virtuálních počítačů
+title: Ukázka skriptu příkazového příkazu Azure – restartování virtuálních počítačí
 description: Ukázkový skript Azure CLI – Restartování virtuálních počítačů podle značky a podle ID
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5545fc07bd7b30225bcaf01eee8f10a141cd8d57
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 47a6db8d554cd0e6b913e887a4dd3d7bdc438ed0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040253"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066462"
 ---
 # <a name="restart-vms"></a>Restartování virtuálních počítačů
 
@@ -33,13 +33,13 @@ V této ukázce najdete několik způsobů, jak získat některé virtuální po
 
 První příklad restartuje všechny virtuální počítače ve skupině prostředků.
 
-```bash
+```azurecli
 az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id" -o tsv)
 ```
 
 Druhý příklad pomocí příkazu `az resource list` získá označené virtuální počítače, vyfiltruje prostředky, které jsou virtuálními počítači, a tyto virtuální počítače restartuje.
 
-```bash
+```azurecli
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
@@ -77,7 +77,7 @@ Tento skript restartuje všechny virtuální počítače ve skupině prostředk�
 
 Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu odebrat skupiny prostředků, virtuální počítače a všechny související prostředky.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete -n myResourceGroup --no-wait --yes
 ```
 
@@ -85,7 +85,7 @@ az group delete -n myResourceGroup --no-wait --yes
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skupiny dostupnosti, nástroje pro vyrovnávání zatížení a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Vytvoří virtuální počítače.  |

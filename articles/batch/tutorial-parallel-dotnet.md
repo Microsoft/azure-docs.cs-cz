@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 34e43789ffb29963d5013b4acc3ea710a961c838
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9a1a0b37b0fae52677ad989d85e947e0148ac0a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024054"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80153212"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní .NET API
 
@@ -37,22 +37,22 @@ V tomto kurzu pomocí open source nástroje [ffmpeg](https://ffmpeg.org/) parale
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)nebo [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, MacOS nebo Windows.
+* [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)nebo [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, macOS nebo Windows.
 
 * Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch.
 
-* [64bitová verze aplikace ffmpeg 3.4 pro Windows](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Stáhněte soubor zip na místní počítač. Pro tento kurz potřebujete pouze soubor zip. Soubor nemusíte rozbalovat ani ho místně instalovat.
+* [64bitová verze aplikace ffmpeg 3.4 pro Windows](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Stáhněte soubor zip na místní počítač. Pro účely tohoto kurzu potřebujete pouze soubor zip. Soubor nemusíte rozbalovat ani ho místně instalovat.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
 
 ## <a name="add-an-application-package"></a>Přidání balíčku aplikace
 
 Pomocí webu Azure Portal přidejte do svého účtu Batch aplikaci ffmpeg jako [balíček aplikace](batch-application-packages.md). Balíčky aplikací pomáhají spravovat aplikace úkolů a jejich nasazení do výpočetních uzlů ve fondu. 
 
-1. Na webu Azure Portal klikněte na **Další služby** > **Účty Batch** a pak klikněte na název vašeho účtu Batch.
-3. Klikněte na **Aplikace** > **Přidat**.
+1. Na webu Azure Portal klikněte na **Další služby** > **Dávkové účty**a klikněte na název účtu Batch.
+3. Klepněte na **položku Aplikace** > **přidat**.
 4. Jako **ID aplikace** zadejte *ffmpeg* a jako verzi balíčku zadejte *3.4*. Vyberte soubor zip s aplikací ffmpeg, který jste stáhli dříve, a pak klikněte na **OK**. Balíček aplikace ffmpeg se přidá do vašeho účtu Batch.
 
 ![Přidání balíčku aplikace](./media/tutorial-parallel-dotnet/add-application.png)
@@ -71,7 +71,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial.git
 
 Přejděte do adresáře, který obsahuje soubor řešení sady Visual Studio `BatchDotNetFfmpegTutorial.sln`.
 
-Otevřete soubor řešení v sadě Visual Studio a aktualizujte řetězce přihlašovacích údajů v souboru `Program.cs` pomocí hodnot, které jste získali pro své účty. Příklad:
+Otevřete soubor řešení v sadě Visual Studio a aktualizujte řetězce přihlašovacích údajů v souboru `Program.cs` pomocí hodnot, které jste získali pro své účty. Například:
 
 ```csharp
 // Batch account credentials
@@ -97,7 +97,7 @@ const string appPackageVersion = "3.4";
 
 Sestavte a spusťte aplikaci v sadě Visual Studio nebo na příkazovém řádku pomocí příkazů `dotnet build` a `dotnet run`. Po spuštění aplikace se podívejte do kódu a najděte si, co jednotlivé části aplikace dělají. Příklad pro sadu Visual Studio:
 
-* Klikněte pravým tlačítkem na řešení v Průzkumníku řešení a pak klikněte na **Sestavit řešení**. 
+* Klepněte pravým tlačítkem myši na řešení v Průzkumníku řešení a klepněte na příkaz **Sestavit řešení**. 
 
 * Pokud se zobrazí výzva, potvrďte obnovení všech balíčků NuGet. Pokud potřebujete stáhnout chybějící balíčky, ujistěte se, že máte nainstalovaného [Správce balíčků NuGet](https://docs.nuget.org/consume/installing-nuget).
 
@@ -124,7 +124,7 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-Fond, výpočetní uzly, úlohy a úkoly můžete sledovat ve svém účtu Batch na webu Azure Portal. Pokud například chcete zobrazit heat mapu výpočetních uzlů ve fondu, klikněte na **Fondy** > *WinFFmpegPool*.
+Fond, výpočetní uzly, úlohy a úkoly můžete sledovat ve svém účtu Batch na webu Azure Portal. Chcete-li například zobrazit tepelnou mapu výpočetních uzlů ve fondu, klepněte na **položku Fondy** > *WinFFmpegPool*.
 
 Když jsou úkoly spuštěné, heat mapa vypadá přibližně takto:
 
@@ -153,7 +153,7 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnection
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
 
-K vytváření a správě fondů, úloh a úkolů ve službě Batch aplikace vytvoří objekt [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient). Klient služby Batch v ukázce používá ověření pomocí sdíleného klíče. Batch také podporuje ověřování prostřednictvím [Azure Active Directory](batch-aad-auth.md) k ověřování jednotlivých uživatelů nebo bezobslužné aplikace.
+K vytváření a správě fondů, úloh a úkolů ve službě Batch aplikace vytvoří objekt [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient). Klient služby Batch v ukázce používá ověření pomocí sdíleného klíče. Batch také podporuje ověřování prostřednictvím [služby Azure Active Directory](batch-aad-auth.md) k ověření jednotlivých uživatelů nebo bezobslužné aplikace.
 
 ```csharp
 BatchSharedKeyCredentials sharedKeyCredentials = new BatchSharedKeyCredentials(BatchAccountUrl, BatchAccountName, BatchAccountKey);
@@ -198,7 +198,9 @@ Na účtu Batch potom příklad pomocí volání `CreatePoolIfNotExistAsync` vyt
 
 Počet uzlů a velikost virtuálních počítačů jsou definované konstanty. Batch podporuje vyhrazené uzly a [uzly s nízkou prioritou](batch-low-pri-vms.md) a ve svých fondech můžete použít oba typy. Vyhrazené uzly jsou rezervované pro váš fond. Uzly s nízkou prioritou pocházejí z přebytečné kapacity virtuálních počítačů v Azure a nabízejí se za nižší cenu. Pokud Azure nemá dostatek kapacity, uzly s nízkou prioritou budou nedostupné. Ukázka ve výchozím nastavení vytvoří fond obsahující pouze 5 uzlů s nízkou prioritou ve velikosti *Standard_A1_v2*.
 
-Aplikace ffmpeg se do výpočetních uzlů nasadí přidáním odkazu [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) do konfigurace fondu.
+>[Poznámka] Zkontrolujte kvóty uzlů. Pokyny k vytvoření požadavku na kvótu naleznete v tématu [Kvóty a limity dávkových](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) služeb."
+
+Aplikace ffmpeg se do výpočetních uzlů nasadí přidáním odkazu [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) do konfigurace fondu. K zajištění [aktivace aplikace](https://docs.microsoft.com/cli/azure/batch/application/package?view=azure-cli-latest#az-batch-application-package-activate).
 
 Metoda [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) odešle fond do služby Batch.
 
@@ -248,7 +250,7 @@ await job.CommitAsync();
 
 Ukázka vytvoří v úloze úkoly zavoláním metody `AddTasksAsync`, která vytvoří seznam objektů [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask). Každý objekt `CloudTask` pomocí vlastnosti [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) spouští aplikaci ffmpeg, která zpracuje vstupní objekt `ResourceFile`. Aplikace ffmpeg se na každý uzel nainstalovala dříve při vytváření fondu. Tady příkazový řádek spouští aplikaci ffmpeg kvůli převodu jednotlivých vstupních souborů MP4 (video) na soubory MP3 (zvuk).
 
-Ukázka po spuštění příkazového řádku vytvoří pro soubor MP3 objekt [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile). Výstupní soubory všech úkolů (v tomto případě jednoho) se pomocí vlastnosti [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) nahrají do kontejneru v propojeném účtu úložiště. Dříve v ukázce kódu se získala adresa URL sdíleného přístupového podpisu (`outputContainerSasUrl`), která poskytuje přístup pro zápis do výstupního kontejneru. Poznamenejte si podmínky nastavené u objektu `outputFile`. Výstupní soubor z úlohy se do kontejneru nahraje až po úspěšném dokončení úlohy (`OutputFileUploadCondition.TaskSuccess`). Další podrobnosti o implementaci najdete v ukázce úplného [kódu](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) na GitHubu.
+Ukázka po spuštění příkazového řádku vytvoří pro soubor MP3 objekt [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile). Výstupní soubory všech úkolů (v tomto případě jednoho) se pomocí vlastnosti [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) nahrají do kontejneru v propojeném účtu úložiště. Dříve v ukázce kódu byla`outputContainerSasUrl`získána adresa URL sdíleného přístupového podpisu ( ) pro přístup pro zápis do výstupního kontejneru. Poznamenejte si `outputFile` podmínky nastavené na objektu. Výstupní soubor z úkolu se nahraje do kontejneru až po`OutputFileUploadCondition.TaskSuccess`úspěšném dokončení úlohy ( ). Další podrobnosti o implementaci najdete v [ukázce](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) celého kódu na GitHubu.
 
 Potom ukázka přidá úkoly do úlohy pomocí metody [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech.
 
@@ -335,3 +337,6 @@ Další příklady použití rozhraní .NET API k plánování a zpracování ú
 
 > [!div class="nextstepaction"]
 > [Ukázky pro službu Batch v jazyce C#](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
+
+
+Nastavení proměnné instance LowPriorityNodeCount=0 a DedicatedNodeCount=5 opravilo problém a umožnilo dokončení úlohy.

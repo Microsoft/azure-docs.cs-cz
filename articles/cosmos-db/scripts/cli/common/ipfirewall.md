@@ -1,6 +1,6 @@
 ---
-title: Vytvoření účtu Azure Cosmos pomocí brány firewall protokolu IP
-description: Vytvoření účtu Azure Cosmos pomocí brány firewall protokolu IP
+title: Vytvoření účtu Azure Cosmos s bránou firewall IP
+description: Vytvoření účtu Azure Cosmos s bránou firewall IP
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,22 +8,22 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 9/25/2019
 ms.openlocfilehash: 8b0ab04e2117108566962cc9a473556098e0e51d
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71275588"
 ---
-# <a name="create-an-azure-cosmos-account-with-ip-firewall-using-azure-cli"></a>Vytvoření účtu Azure Cosmos pomocí brány firewall protokolu IP pomocí Azure CLI
+# <a name="create-an-azure-cosmos-account-with-ip-firewall-using-azure-cli"></a>Vytvoření účtu Azure Cosmos s ip bránou firewall pomocí Azure CLI
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.73 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat příkaz cli místně, toto téma vyžaduje, abyste spouštěli Azure CLI verze 2.0.73 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
 > [!NOTE]
-> Tato ukázka předvádí použití účtu rozhraní API SQL (Core). Chcete-li použít tuto ukázku pro jiná rozhraní API `ip-range-filter` , použijte parametr ve skriptu níže `az cosmosdb account create` na příkaz pro skript specifický pro rozhraní API.
+> Tato ukázka ukazuje pomocí účtu rozhraní API SQL (Core). Chcete-li použít tuto ukázku `ip-range-filter` pro jiná rozhraní `az cosmosdb account create` API, použijte parametr ve skriptu níže pro příkaz pro skript specifický pro rozhraní API.
 
 [!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/common/ipfirewall.sh "Create an Azure Cosmos account with ip firewall.")]
 
@@ -47,6 +47,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Cosmos DB CLI najdete v [dokumentaci k](/cli/azure/cosmosdb)rozhraní příkazového řádku Azure Cosmos DB.
+Další informace o cli DB Azure Cosmos najdete v [dokumentaci k příkazu KONT db Azure Cosmos](/cli/azure/cosmosdb)DB .
 
-Všechny ukázkové skripty Azure Cosmos DB CLI najdete v [úložišti GitHub Azure Cosmos DB CLI](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
+Všechny ukázky skriptu Rozhraní příkazového od Db BZI Azure Cosmos najdete v [úložišti GitHub Azure Cosmos DB CLI](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).

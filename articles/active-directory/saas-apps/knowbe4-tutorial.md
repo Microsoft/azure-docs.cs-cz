@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s výukou ke sledování povědomí o zabezpečení KnowBe4 | Microsoft Docs'
-description: Naučte se konfigurovat jednotné přihlašování mezi Azure Active Directory a KnowBe4 a školením týkajícím se zabezpečení.
+title: 'Kurz: Integrace služby Azure Active Directory s školením znalostí povědomí o zabezpečení KnowBe4 | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a školením znalostního pořádku KnowBe4.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,195 +17,195 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f774357dc2fd1e37466c2c338e8e8616ae599d12
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159672"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Kurz: Azure Active Directory integrace s výukou ke sledování povědomí o zabezpečení KnowBe4
+# <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Kurz: Integrace služby Azure Active Directory s školením znalostí zabezpečení KnowBe4
 
-V tomto kurzu se naučíte integrovat školení týkající se KnowBe4 zabezpečení pomocí Azure Active Directory (Azure AD).
-Integrace KnowBe4ch školení k zabezpečení pomocí Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat KnowBe4 školení povědomí o zabezpečení s Azure Active Directory (Azure AD).
+Integrace školení povědomí o zabezpečení KnowBe4 s Azure AD vám poskytuje následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k KnowBe4 školení zabezpečení.
-* Uživatelům můžete povolit, aby se automaticky přihlásili k KnowBe4 školením na zabezpečení (jednotné přihlašování) se svými účty Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+* Můžete řídit ve službě Azure AD, který má přístup k KnowBe4 školení povědomí o zabezpečení.
+* Můžete povolit svým uživatelům, aby se automaticky přihlásili k KnowBe4 Školení povědomí o zabezpečení (jednotné přihlášení) s jejich účty Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K nakonfigurování integrace služby Azure AD pomocí školení KnowBe4 Security potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD pomocí školení povědomí o zabezpečení KnowBe4, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* KnowBe4 zabezpečení – školení pro jednotné přihlašování s povoleným odběrem
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* KnowBe4 Školení pro zvýšení povědomí o zabezpečení s povoleným přihlášením
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Školení pro sledování povědomí v KnowBe4 podporuje jednotné přihlašování s využitím služeb **SP**
+* KnowBe4 Školení povědomí o zabezpečení podporuje **SP** iniciované spřiby
 
-* Školení pro sledování povědomí v KnowBe4 podporuje při zřizování uživatelů **jenom včas**
+* KnowBe4 Školení povědomí o zabezpečení podporuje **just in time** zřizování uživatelů
 
-## <a name="adding-knowbe4-security-awareness-training-from-the-gallery"></a>Přidání školení ke sledování KnowBe4 z Galerie
+## <a name="adding-knowbe4-security-awareness-training-from-the-gallery"></a>Přidání knowbe4 školení povědomí o bezpečnosti z galerie
 
-Pokud chcete nakonfigurovat integraci KnowBe4ch školení k zabezpečení do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat školení KnowBe4 pro zabezpečení z galerie.
+Chcete-li nakonfigurovat integraci školení povědomí o zabezpečení KnowBe4 do Azure AD, musíte přidat KnowBe4 Školení pro zvýšení povědomí o zabezpečení z galerie do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete do galerie přidat školení KnowBe4 Security, proveďte následující kroky:**
+**Chcete-li přidat školení povědomí o zabezpečení KnowBe4 z galerie, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **KnowBe4 sledování povědomí o zabezpečení**, vyberte **KnowBe4 sledování povědomí o zabezpečení** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **KnowBe4 Training security awareness ,** z panelu výsledků vyberte **KnowBe4 Security Awareness Training** a pak kliknutím na tlačítko **Přidat** aplikaci přidejte.
 
-     ![KnowBe4 sledování povědomí o zabezpečení v seznamu výsledků](common/search-new-app.png)
+     ![KnowBe4 Školení povědomí o bezpečnosti v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí školení KnowBe4 na zabezpečení na základě testovacího uživatele s názvem **Britta Simon**.
-Aby bylo možné jednotné přihlašování pracovat, je třeba zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci školení o povědomí o zabezpečení KnowBe4.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí školení povědomí o zabezpečení KnowBe4 na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v knowbe4 školení povědomí o zabezpečení.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí školení pro sledování povědomí v KnowBe4, musíte dokončit tyto stavební bloky:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí školení povědomí o zabezpečení KnowBe4, musíte dokončit následující stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte KnowBe4 zabezpečení školením jednotného přihlašování](#configure-knowbe4-security-awareness-training-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytváření KnowBe4ch testů na sledování zabezpečení pro uživatele](#create-knowbe4-security-awareness-training-test-user)** – u Britta Simon ve výukovém programu, který je propojen s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace KnowBe4 Školení povědomí o zabezpečení jednotné přihlášení](#configure-knowbe4-security-awareness-training-single-sign-on)** - pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte knowbe4 školení o bezpečnosti školení test uživatele](#create-knowbe4-security-awareness-training-test-user)** – mít protějšek Britta Simon v KnowBe4 školení povědomí o zabezpečení, který je propojený s reprezentaci Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí školení KnowBe4 na zabezpečení, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí školení povědomí o zabezpečení KnowBe4, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce pro školení týkající se **Sledování zabezpečení KnowBe4** vyberte **jednotné přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikace **KnowBe4 Training pro zvýšení povědomí o zabezpečení** vyberte jednotné **přihlašování**.
 
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+4. V části **Základní konfigurace SAML** proveďte následující kroky:
 
-    ![KnowBe4 zabezpečení – informace o jednotném přihlašování v doméně a v adresách URL](common/sp-identifier.png)
+    ![KnowBe4 Zabezpečení Povědomí Školení domény a adresy URL jednotné přihlašovací informace](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
-
-    > [!NOTE]
-    > Hodnota adresy URL pro přihlášení není v reálném čase. Aktualizujte tuto hodnotu skutečnou adresou URL pro přihlášení. Pokud chcete získat tuto hodnotu, kontaktujte [tým podpory pro školení k KnowBe4 zabezpečení](mailto:support@KnowBe4.com) . Můžete se také podívat na vzor uvedený v části **základní konfigurace SAML** v Azure Portal.
-
-    b. Do textového pole **identifikátor (ID entity)** zadejte hodnotu řetězce: `KnowBe4`
+    a. Do textového pole **Adresa URL přihlášení** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
 
     > [!NOTE]
-    > Rozlišují se malá a velká písmena.
+    > Hodnota adresy URL přiznamování není skutečná. Aktualizujte tuto hodnotu skutečnou přihlašovací adresou URL. Kontaktujte [KnowBe4 Školení povědomí o zabezpečení týmu podpory klienta](mailto:support@KnowBe4.com) získat tuto hodnotu. Můžete také odkazovat na vzor uvedený v části **Základní konfigurace SAML** na webu Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (RAW)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+    b. Do textového pole **Identifikátor (ID entity)** zadejte hodnotu řetězce:`KnowBe4`
 
-    ![Odkaz na stažení certifikátu](common/certificateraw.png)
+    > [!NOTE]
+    > Toto je malá a velká písmena.
 
-6. V části **Nastavení školicích kurzů zabezpečení KnowBe4** zkopírujte příslušné adresy URL podle vašich požadavků.
+5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Nezpracovaný)** z daných možností a uložte jej do počítače.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Odkaz ke stažení certifikátu](common/certificateraw.png)
+
+6. V části **Nastavit KnowBe4 Školení povědomí o zabezpečení** zkopírujte příslušné adresy URL podle vašeho požadavku.
+
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Odhlašovací adresa URL
+    c. Adresa URL odhlášení
 
-### <a name="configure-knowbe4-security-awareness-training-single-sign-on"></a>Konfigurace KnowBe4ho školení v oblasti zabezpečení pro jednotné přihlašování
+### <a name="configure-knowbe4-security-awareness-training-single-sign-on"></a>Konfigurace jednotného přihlášení školení povědomí o zabezpečení knowbe4
 
-Pokud chcete nakonfigurovat jednotné přihlašování na **KnowBe4i školení na zabezpečení** , je potřeba odeslat stažený **certifikát (RAW)** a příslušné zkopírované adresy URL z Azure Portal k [KnowBe4 týmu podpory pro školení](mailto:support@KnowBe4.com)týkající se zabezpečení. Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **školení povědomí o zabezpečení KnowBe4,** musíte odeslat stažený certifikát **(Raw)** a příslušné zkopírované adresy URL z portálu Azure do [týmu podpory školení povědomí o zabezpečení KnowBe4](mailto:support@KnowBe4.com). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Uživatelský dialog](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. V poli **Uživatelské jméno** zadejte **\@brittasimon vašecompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k odbornému školení KnowBe4 zabezpečení.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k KnowBe4 školení povědomí o zabezpečení.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost školení týkající se **sledování KnowBe4 zabezpečení**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **KnowBe4 Training pro zvyšování povědomí o zabezpečení**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **KnowBe4 školení zabezpečení**.
+2. V seznamu aplikací vyberte **KnowBe4 Školení pro zvyšování povědomí o zabezpečení**.
 
-    ![Odkaz na KnowBe4u pro školení o sledování zabezpečení v seznamu aplikací](common/all-applications.png)
+    ![Odkaz KnowBe4 Security Awareness Training v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-knowbe4-security-awareness-training-test-user"></a>Vytvoření testovacího uživatele pro školení ke sledování KnowBe4
+### <a name="create-knowbe4-security-awareness-training-test-user"></a>Vytvořit knowbe4 školení povědomí o zabezpečení školení uživatele
 
-Cílem této části je vytvořit uživatele s názvem Britta Simon ve výukovém programu pro sledování povědomí KnowBe4 Security. Školení pro sledování povědomí KnowBe4 podporuje zřizování za běhu, které je ve výchozím nastavení povolené.
+Cílem této části je vytvořit uživatele s názvem Britta Simon v KnowBe4 školení povědomí o zabezpečení. KnowBe4 Školení pro zvýšení povědomí o zabezpečení podporuje zřizování just-in-time, což je ve výchozím nastavení povoleno.
 
-V této části není žádná položka akce. Nový uživatel se vytvoří během pokusu o přístup k školení KnowBe4 Security, pokud ještě neexistuje.
+V této části pro vás není žádná položka akce. Nový uživatel je vytvořen během pokusu o přístup knowbe4 školení povědomí o zabezpečení, pokud ještě neexistuje.
 
 > [!NOTE]
-> Pokud potřebujete ručně vytvořit uživatele, musíte se obrátit na [tým podpory školení pro KnowBe4 zabezpečení](mailto:support@KnowBe4.com).
+> Pokud potřebujete vytvořit uživatele ručně, musíte kontaktovat [tým podpory knowbe4 sledování zabezpečení](mailto:support@KnowBe4.com).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici školení pro KnowBe4 na zabezpečení, měli byste se automaticky přihlásit ke školení KnowBe4 na zabezpečení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici KnowBe4 školení povědomí o zabezpečení na přístupovém panelu, měli byste být automaticky přihlášeni k KnowBe4 školení povědomí o zabezpečení, pro které nastavíte přistupující zabezpečení. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

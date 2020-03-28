@@ -10,13 +10,13 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74084394"
 ---
-# <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Kurz: použití šablony Azure Resource Manager ke konfiguraci směrování zpráv IoT Hub
+# <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Kurz: Konfigurace směrování zpráv služby IoT Hub pomocí šablony Správce prostředků Azure
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
 
@@ -26,73 +26,73 @@ ms.locfileid: "74084394"
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-## <a name="download-the-template-and-parameters-file"></a>Stažení šablony a souboru parametrů
+## <a name="download-the-template-and-parameters-file"></a>Stažení souboru šablony a parametrů
 
-Druhá část tohoto kurzu vám umožní stáhnout a spustit aplikaci Visual Studio pro posílání zpráv do IoT Hub. V tomto souboru se nachází složka, která obsahuje Azure Resource Manager šablona a soubor parametrů, a také skripty Azure CLI a PowerShell.
+Pro druhou část tohoto kurzu stáhnete a spustíte aplikaci Visual Studio pro odesílání zpráv do služby IoT Hub. V tomto stažení je složka, která obsahuje šablonu Azure Resource Manager a soubor parametrů, stejně jako skripty Azure CLI a PowerShell.
 
-Pokračujte a Stáhněte si [ukázky Azure IoT C# ](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) hned teď. Rozbalte hlavní soubor. zip. Šablona Správce prostředků a soubor parametrů jsou v/iot-hub/Tutorials/Routing/SimulatedDevice/resources/jako **template_iothub. JSON** a **template_iothub_parameters. JSON**.
+Stáhněte si [ukázky Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) teď. Rozbalte soubor master.zip. Šablona Resource Manager a soubor parametrů jsou v /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ jako **template_iothub.json** a **template_iothub_parameters.json**.
 
-## <a name="create-your-resources"></a>Vytvoření prostředků
+## <a name="create-your-resources"></a>Vytvořte si zdroje
 
-Chystáte se použít šablonu Azure Resource Manager (RM) k vytvoření všech vašich prostředků. Skripty Azure CLI a PowerShell můžou běžet postupně po několika řádcích. Šablona služby RM se nasazuje v jednom kroku. Tento článek popisuje samostatné oddíly, které vám pomůžou porozumět každé z nich. Potom vám ukáže, jak nasadit šablonu a vytvořit virtuální zařízení pro testování. Po nasazení šablony můžete zobrazit konfiguraci směrování zpráv na portálu.
+K vytvoření všech prostředků použijete šablonu Azure Resource Manager (RM). Skripty Azure CLI a PowerShell lze spustit několik řádků najednou. Šablona RM je nasazena v jednom kroku. Tento článek zobrazuje oddíly samostatně, které vám pomohou pochopit každý z nich. Pak vám ukáže, jak nasadit šablonu a vytvořit virtuální zařízení pro testování. Po nasazení šablony můžete zobrazit konfiguraci směrování zpráv na portálu.
 
-Existuje několik názvů prostředků, které musí být globálně jedinečné, například IoT Hub název a název účtu úložiště. Aby bylo snazší pojmenování prostředků, jsou tyto názvy prostředků nastaveny tak, aby připojily náhodnou alfanumerický hodnotu vygenerovanou z aktuálního data a času. 
+Existuje několik názvů prostředků, které musí být globálně jedinečné, jako je například název služby IoT Hub a název účtu úložiště. Chcete-li usnadnit pojmenování prostředků, jsou tyto názvy prostředků nastaveny tak, aby připojovaly náhodnou alfanumerickou hodnotu generovanou z aktuálního data a času. 
 
-Pokud se podíváte na šablonu, uvidíte, kde jsou pro tyto prostředky nastaveny proměnné, které přebírají parametr předaný, a zřetězí *randomValue* k parametru. 
+Pokud se podíváte na šablonu, uvidíte, kde jsou nastaveny proměnné pro tyto prostředky, které berou parametr předán a zřetězit *randomValue* na parametr. 
 
 V následující části jsou vysvětleny použité parametry.
 
 ### <a name="parameters"></a>Parametry
 
-Většina těchto parametrů má výchozí hodnoty. Ty, které končí **_in** jsou zřetězené s *randomValue* , aby byly globálně jedinečné. 
+Většina těchto parametrů má výchozí hodnoty. Ty končící **_in** jsou zřetězené s *randomValue,* aby byly globálně jedinečné. 
 
-**randomValue**: Tato hodnota je vygenerována z aktuálního data a času při nasazení šablony. Toto pole není v souboru parametrů, protože je vygenerováno v samotné šabloně.
+**randomValue**: Tato hodnota je generována z aktuálního data a času při nasazení šablony. Toto pole není v souboru parametrů, protože je generováno v samotné šabloně.
 
-**SubscriptionId**: Toto pole je nastaveno pro vás na předplatné, do kterého nasazujete šablonu. Toto pole není v souboru parametrů, protože je nastaveno za vás.
+**subscriptionID**: Toto pole je nastaveno pro odběr, do kterého nasazujíte šablonu. Toto pole není v souboru parametrů, protože je nastaveno pro vás.
 
-**IoTHubName_in**: Toto pole je základní IoT Hub název, který je zřetězený s randomValue, aby byl globálně jedinečný.
+**IoTHubName_in**: Toto pole je základní název služby IoT Hub, který je zřetězen s randomValue globálně jedinečný.
 
 **umístění**: Toto pole je oblast Azure, do které nasazujete, například "westus".
 
-**consumer_group**: Toto pole je nastavená skupina uživatelů pro zprávy přicházející prostřednictvím koncového bodu směrování. Slouží k filtrování výsledků v Azure Stream Analytics. Například je k dispozici celý datový proud, ve kterém získáte vše, nebo pokud máte data přicházející pomocí consumer_group nastavenou na **Contoso**, můžete nastavit datový proud Azure Stream Analytics (a Power BI sestavu), aby se zobrazily jenom tyto položky. Toto pole se používá v části 2 tohoto kurzu.
+**consumer_group**: Toto pole je nastavena skupina příjemce pro zprávy přicházející prostřednictvím koncového bodu směrování. Používá se k filtrování výsledků v Azure Stream Analytics. Například je celý datový proud, kde získáte všechno, nebo pokud máte data přicházející s consumer_group nastavena na **Contoso**, pak můžete nastavit stream Azure Stream Analytics (a sestavu Power BI) tak, aby zobrazoval jenom tyto položky. Toto pole se používá v části 2 tohoto kurzu.
 
-**sku_name**: Toto pole je měřítko pro IoT Hub. Tato hodnota musí být S1 nebo vyšší. Bezplatná úroveň pro tento kurz nefunguje, protože nepovoluje více koncových bodů.
+**sku_name**: Toto pole je měřítko pro ioT hub. Tato hodnota musí být S1 nebo vyšší; bezplatná úroveň nefunguje pro tento kurz, protože neumožňuje více koncových bodů.
 
-**sku_units**: Toto pole se používá **sku_name**a je počet IoT Hub jednotek, které se dají použít.
+**sku_units**: Toto pole je součástí **sku_name**a je počet jednotek ioT hubu, které lze použít.
 
-**d2c_partitions**: Toto pole je počet oddílů používaných pro datový proud událostí.
+**d2c_partitions**: Toto pole je počet oddílů použitých pro datový proud událostí.
 
-**storageAccountName_in**: Toto pole je název účtu úložiště, který se má vytvořit. Zprávy jsou směrovány do kontejneru v účtu úložiště. Toto pole je zřetězené s randomValue, aby se globálně jedinečné.
+**storageAccountName_in**: Toto pole je název účtu úložiště, který má být vytvořen. Zprávy jsou směrovány do kontejneru v účtu úložiště. Toto pole je zřetězeno s randomValue, aby bylo globálně jedinečné.
 
-**storageContainerName**: Toto pole je název kontejneru, ve kterém jsou uložené zprávy směrované do účtu úložiště.
+**storageContainerName**: Toto pole je název kontejneru, ve kterém jsou uloženy zprávy směrované do účtu úložiště.
 
-**storage_endpoint**: Toto pole je název koncového bodu účtu úložiště používaného směrováním zpráv.
+**storage_endpoint**: Toto pole je název koncového bodu účtu úložiště, který používá směrování zpráv.
 
-**service_bus_namespace_in**: Toto pole je název oboru názvů Service Bus, který se má vytvořit. Tato hodnota je zřetězena s randomValue, aby byla globálně jedinečná.
+**service_bus_namespace_in**: Toto pole je název oboru názvů Service Bus, který má být vytvořen. Tato hodnota je zřetězena s randomValue, aby byla globálně jedinečná.
 
-**service_bus_queue_in**: Toto pole je název Service Bus fronty používané pro směrování zpráv. Tato hodnota je zřetězena s randomValue, aby byla globálně jedinečná.
+**service_bus_queue_in**: Toto pole je název fronty služby Service Bus používané pro směrování zpráv. Tato hodnota je zřetězena s randomValue, aby byla globálně jedinečná.
 
-**AuthRules_sb_queue**: Toto pole je autorizační pravidla pro frontu Service Bus, která slouží k načtení připojovacího řetězce pro frontu.
+**AuthRules_sb_queue**: Toto pole je autorizační pravidla pro frontu sběrnice, která se používají k načtení připojovacího řetězce fronty.
 
 ### <a name="variables"></a>Proměnné
 
-Tyto hodnoty se používají v šabloně a jsou převážně odvozené z parametrů.
+Tyto hodnoty se používají v šabloně a jsou většinou odvozeny z parametrů.
 
-**queueAuthorizationRuleResourceId**: Toto pole je ResourceID pro autorizační pravidlo pro frontu Service Bus. ResourceId se pak používá k načtení připojovacího řetězce pro frontu.
+**queueAuthorizationRuleResourceId**: Toto pole je id prostředku pro autorizační pravidlo fronty služby Service Bus. ResourceId se zase používá k načtení připojovacího řetězce pro frontu.
 
-**iotHubName**: Toto pole je název IoT Hub po tom, co se randomValue zřetězí. 
+**iotHubName**: Toto pole je název služby IoT Hub po náhodném zřetězení hodnoty. 
 
-**storageAccountName**: Toto pole je název účtu úložiště po jeho zřetězení randomValue. 
+**storageAccountName**: Toto pole je název účtu úložiště po randomValue concatenated. 
 
-**service_bus_namespace**: Toto pole je obor názvů po randomValue zřetězení.
+**service_bus_namespace**: Toto pole je obor názvů po zřetězení náhodné hodnoty.
 
-**service_bus_queue**: Toto pole je název fronty Service Bus po randomValue zřetězení.
+**service_bus_queue**: Toto pole je název fronty služby Service Bus po zřetězení náhodné hodnoty.
 
-**sbVersion**: verze rozhraní API pro Service Bus, která se má použít. V tomto případě je to "2017-04-01".
+**sbVersion**: THe verze rozhraní API sběrnice, která má být používána. V tomto případě je to "2017-04-01".
 
-### <a name="resources-storage-account-and-container"></a>Prostředky: účet úložiště a kontejner
+### <a name="resources-storage-account-and-container"></a>Prostředky: Účet úložiště a kontejner
 
-Prvním vytvořeným prostředkem je účet úložiště společně s kontejnerem, do kterého se mají zprávy směrovat. Kontejner je prostředkem v účtu úložiště. Obsahuje klauzuli `dependsOn` pro účet úložiště, která vyžaduje vytvoření účtu úložiště před kontejnerem.
+První vytvořený prostředek je účet úložiště, spolu s kontejnerem, do kterého jsou směrovány zprávy. Kontejner je prostředek v rámci účtu úložiště. Má `dependsOn` klauzuli pro účet úložiště, vyžadující účet úložiště být vytvořen před kontejneru.
 
 Tato část vypadá takto:
 
@@ -124,9 +124,9 @@ Tato část vypadá takto:
 }
 ```
 
-### <a name="resources-service-bus-namespace-and-queue"></a>Prostředky: Service Bus obor názvů a fronta
+### <a name="resources-service-bus-namespace-and-queue"></a>Prostředky: Obor názvů a fronta služby Service Bus
 
-Druhým vytvořeným prostředkem je Service Bus obor názvů společně s frontou Service Bus, do které jsou zprávy směrovány. SKU je nastavené na standardní. Verze rozhraní API se načte z proměnných. Také je nastavena k aktivaci Service Bus obor názvů při nasazení této části (stav: aktivní). 
+Druhý vytvořený prostředek je obor názvů Service Bus spolu s frontou Service Bus, do které jsou zprávy směrovány. Skladová položka je nastavena na standardní. Verze rozhraní API je načtena z proměnných. Je také nastavena na aktivaci oboru názvů Service Bus při nasazení této části (stav:Active). 
 
 ```json
 {
@@ -149,7 +149,7 @@ Druhým vytvořeným prostředkem je Service Bus obor názvů společně s front
 }
 ```
 
-V této části se vytvoří fronta Service Bus. Tato část skriptu obsahuje klauzuli `dependsOn`, která zajišťuje, že se obor názvů vytvoří před frontou.
+Tato část vytvoří frontu služby Service Bus. Tato část skriptu `dependsOn` má klauzuli, která zajišťuje, že obor názvů je vytvořen před frontou.
 
 ```json
 {
@@ -165,11 +165,11 @@ V této části se vytvoří fronta Service Bus. Tato část skriptu obsahuje kl
 }
 ```
 
-### <a name="resources-iot-hub-and-message-routing"></a>Prostředky: Centrum IoT a směrování zpráv
+### <a name="resources-iot-hub-and-message-routing"></a>Prostředky: Služba Iot Hub a směrování zpráv
 
-Teď, když jste vytvořili účet úložiště a frontu Service Bus, vytvoříte IoT Hub, která do nich směruje zprávy. Šablona RM používá `dependsOn` klauzulí, takže se nepokouší vytvořit centrum před tím, než se proService Bus prostředky a vytvořil se účet úložiště. 
+Teď, když byl vytvořen účet úložiště a fronta Service Bus, vytvoříte službu IoT Hub, která jim směruje zprávy. Šablona RM `dependsOn` používá klauzule, takže se nepokouší vytvořit rozbočovač před vytvořením prostředků service bus a účtu úložiště. 
 
-Tady je první část IoT Hub části. Tato část šablony nastavuje závislosti a začíná vlastnostmi.
+Tady je první část sekce IoT Hub. Tato část šablony nastaví závislosti a začíná vlastnostmi.
 
 ```json
 {
@@ -191,11 +191,11 @@ Tady je první část IoT Hub části. Tato část šablony nastavuje závislost
             },
 ```
 
-Další část je oddíl konfigurace směrování zpráv pro službu IoT Hub. První je oddíl pro koncové body. Tato část šablony nastavuje koncové body směrování pro frontu Service Bus a účet úložiště, včetně připojovacích řetězců.
+Další část je část pro konfiguraci směrování zpráv pro službu Iot Hub. První je část pro koncové body. Tato část šablony nastaví koncové body směrování pro frontu Service Bus a účet úložiště, včetně připojovacích řetězců.
 
-Pro vytvoření připojovacího řetězce pro frontu potřebujete queueAuthorizationRulesResourcedId, který se načte jako vložený. Pokud chcete vytvořit připojovací řetězec pro účet úložiště, načtěte primární klíč úložiště a pak ho použijte ve formátu připojovacího řetězce.
+Chcete-li vytvořit připojovací řetězec pro frontu, potřebujete queueAuthorizationRulesResourcedId, který je načten v řádku. Chcete-li vytvořit připojovací řetězec pro účet úložiště, načtěte primární klíč úložiště a pak jej použijte ve formátu pro připojovací řetězec.
 
-Konfigurace koncového bodu také umožňuje nastavit formát objektu BLOB na `AVRO` nebo `JSON`.
+Konfigurace koncového bodu je také místo, `AVRO` kde `JSON`nastavíte formát objektu blob nebo .
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
@@ -229,9 +229,9 @@ Konfigurace koncového bodu také umožňuje nastavit formát objektu BLOB na `A
     },
 ```
 
-Tato další část je určena pro směrování zpráv do koncových bodů. U každého koncového bodu je nastavená jedna sada, takže je k dispozici pro frontu Service Bus a jednu pro kontejner účtu úložiště.
+Tato další část je pro zprávy trasy ke koncovým bodům. Je jedno nastaveno pro každý koncový bod, takže je jeden pro frontu service bus a jeden pro kontejner účtu úložiště.
 
-Nezapomeňte, že podmínka dotazu pro zprávy směrované do úložiště je `level="storage"`a podmínka dotazu pro zprávy směrované do fronty Service Bus je `level="critical"`.
+Nezapomeňte, že podmínka dotazu pro zprávy `level="storage"`směrované do úložiště je a podmínka dotazu pro `level="critical"`zprávy směrované do fronty služby Service Bus je .
 
 ```json
 "routes": [
@@ -256,7 +256,7 @@ Nezapomeňte, že podmínka dotazu pro zprávy směrované do úložiště je `l
 ],
 ```
 
-Tento JSON zobrazuje zbývající část IoT Hub, která obsahuje výchozí informace a SKU pro centrum.
+Tento json zobrazuje zbytek oddílu IoT Hub, který obsahuje výchozí informace a skladovou položku pro rozbočovač.
 
 ```json
             "fallbackRoute": {
@@ -301,9 +301,9 @@ Tento JSON zobrazuje zbývající část IoT Hub, která obsahuje výchozí info
 }
 ```
 
-### <a name="resources-service-bus-queue-authorization-rules"></a>Prostředky: autorizační pravidla fronty Service Bus
+### <a name="resources-service-bus-queue-authorization-rules"></a>Prostředky: Pravidla autorizace fronty služby Service Bus
 
-Autorizační pravidlo fronty Service Bus slouží k načtení připojovacího řetězce pro frontu Service Bus. Používá klauzuli `dependsOn`, aby se zajistilo, že není vytvořen před Service Busm oborem názvů a frontou Service Bus.
+Pravidlo autorizace fronty služby Service Bus se používá k načtení připojovacího řetězce pro frontu služby Service Bus. Používá `dependsOn` klauzuli k zajištění, že není vytvořen před oborem názvů service bus a fronty Service Bus.
 
 ```json
 {
@@ -324,9 +324,9 @@ Autorizační pravidlo fronty Service Bus slouží k načtení připojovacího �
 },
 ```
 
-### <a name="resources-consumer-group"></a>Prostředky: Skupina uživatelů
+### <a name="resources-consumer-group"></a>Zdroje: Skupina spotřebitelů
 
-V této části vytvoříte skupinu příjemců pro IoT Hubá data, která budou použita Azure Stream Analytics v druhé části tohoto kurzu.
+V této části vytvoříte skupinu spotřebitelů pro data služby IoT Hub, která mají být použita službou Azure Stream Analytics v druhé části tohoto kurzu.
 
 ```json
 {
@@ -339,9 +339,9 @@ V této části vytvoříte skupinu příjemců pro IoT Hubá data, která budou
 }
 ```
 
-### <a name="resources-outputs"></a>Prostředky: výstupy
+### <a name="resources-outputs"></a>Zdroje: Výstupy
 
-Pokud chcete odeslat hodnotu zpět do skriptu nasazení, který se má zobrazit, použijte výstupní část. Tato část šablony vrátí připojovací řetězec pro frontu Service Bus. Vrácení hodnoty není vyžadováno, je obsaženo jako příklad, jak vracet výsledky do volajícího skriptu.
+Pokud chcete odeslat hodnotu zpět do skriptu nasazení, který má být zobrazen, použijte výstupní oddíl. Tato část šablony vrátí připojovací řetězec pro frontu služby Service Bus. Vrácení hodnoty není povinné, je zahrnuta jako příklad, jak vrátit výsledky do volajícího skriptu.
 
 ```json
 "outputs": {
@@ -354,31 +354,31 @@ Pokud chcete odeslat hodnotu zpět do skriptu nasazení, který se má zobrazit,
 
 ## <a name="deploy-the-rm-template"></a>Nasazení šablony RM
 
-Pokud chcete nasadit šablonu do Azure, nahrajte šablonu a soubor parametrů, abyste Azure Cloud Shell, a pak spuštěním skriptu nasaďte šablonu. Otevřete Azure Cloud Shell a přihlaste se. V tomto příkladu se používá PowerShell.
+Chcete-li nasadit šablonu do Azure, nahrajte šablonu a soubor parametrů do Azure Cloud Shella a pak spusťte skript pro nasazení šablony. Otevřete Azure Cloud Shell a přihlaste se. Tento příklad používá prostředí PowerShell.
 
-Chcete-li nahrát soubory, vyberte ikonu **nahrát/stáhnout soubory** v řádku nabídek a pak zvolte Odeslat.
+Chcete-li soubory nahrát, vyberte v řádku nabídek ikonu **Nahrát nebo stáhnout soubory** a pak zvolte Nahrát.
 
-![Cloud Shell řádku nabídek s zvýrazněnou možností nahrát/stáhnout soubory](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
+![Panel nabídek Prostředí Cloud se zvýrazněným seznamem Nahrát nebo stáhnout soubory](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
 
-Pomocí Průzkumníka souborů, které se zobrazí, Najděte soubory na místním disku a vyberte je a pak zvolte **otevřít**.
+Pomocí Průzkumníka souborů, který se objeví, vyhledejte soubory na místním disku a vyberte je a pak zvolte **Otevřít**.
 
 Po nahrání souborů se v dialogovém okně výsledků zobrazí něco jako na následujícím obrázku.
 
-![Cloud Shell řádku nabídek s zvýrazněnou možností nahrát/stáhnout soubory](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
+![Panel nabídek Prostředí Cloud se zvýrazněným seznamem Nahrát nebo stáhnout soubory](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
 
-Soubory se nahrají do sdílené složky používané instancí Cloud Shell. 
+Soubory se nahrají do sdílené složky používané instancí prostředí Cloud Shell. 
 
-Spusťte skript pro provedení nasazení. Poslední řádek tohoto skriptu načte proměnnou, která je nastavená tak, aby se vrátila – připojovací řetězec fronty Service Bus.
+Spusťte skript k provedení nasazení. Poslední řádek tohoto skriptu načte proměnnou, která byla nastavena na vrácení -- připojovací řetězec fronty service bus.
 
-Skript nastaví a použije tyto proměnné:
+Skript nastavuje a používá tyto proměnné:
 
-**$RGName** je název skupiny prostředků, do které chcete šablonu nasadit. Toto pole je vytvořeno před nasazením šablony.
+**$RGName** je název skupiny prostředků, do kterého chcete šablonu nasadit. Toto pole je vytvořeno před nasazením šablony.
 
-**$Location** je umístění Azure, které se má použít pro šablonu, například "westus".
+**$location** je umístění Azure, které se má použít pro šablonu, například "westus".
 
-název **nasazení** je název, který přiřadíte nasazení, aby se načetla návratová hodnota proměnné.
+**deploymentname** je název, který přiřadíte nasazení k načtení vrácené hodnoty proměnné.
 
-Tady je skript PowerShellu. Zkopírujte tento skript PowerShellu a vložte ho do okna Cloud Shell a pak stiskněte ENTER a spusťte ho.
+Tady je skript Prostředí PowerShell. Zkopírujte tento skript prostředí PowerShell a vložte ho do okna Prostředí cloudu a pak ho spusťte klepnutím na Enter.
 
 ```powershell
 $RGName="ContosoResources"
@@ -406,7 +406,7 @@ New-AzResourceGroupDeployment `
 (Get-AzResourceGroupDeployment -ResourceGroupName $RGName -Name $deploymentname).Outputs.sbq_connectionString.value
 ```
 
-Pokud máte chyby skriptu, můžete skript místně upravit a znovu ho nahrát do Cloud Shell a skript spustit znovu. Po úspěšném spuštění skriptu přejděte k dalšímu kroku.
+Pokud máte chyby skriptu, můžete skript upravit místně, znovu jej nahrát do prostředí Cloud Shell a skript znovu spustit. Po úspěšném spuštění skriptu pokračujte dalším krokem.
 
 ## <a name="create-simulated-device"></a>Vytvoření simulovaného zařízení
 
@@ -418,7 +418,7 @@ Pokud máte chyby skriptu, můžete skript místně upravit a znovu ho nahrát d
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte nastavené všechny prostředky a nakonfigurují se trasy zpráv, přejděte k dalšímu kurzu, kde se dozvíte, jak zpracovávat a zobrazovat informace o směrovaných zprávách.
+Nyní, když máte všechny prostředky nastaveny a trasy zpráv jsou nakonfigurovány, přejde k dalšímu kurzu se dozvíte, jak zpracovat a zobrazit informace o směrovaných zpráv.
 
 > [!div class="nextstepaction"]
-> [Část 2 – zobrazení výsledků směrování zpráv](tutorial-routing-view-message-routing-results.md)
+> [Část 2 – Zobrazení výsledků směrování zpráv](tutorial-routing-view-message-routing-results.md)

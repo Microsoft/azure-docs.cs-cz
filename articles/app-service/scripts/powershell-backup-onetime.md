@@ -1,19 +1,19 @@
 ---
-title: 'PowerShell: zálohování aplikace'
-description: Naučte se používat Azure PowerShell k automatizaci nasazení a správy App Service. V této ukázce se dozvíte, jak zálohovat aplikaci.
+title: 'PowerShell: Zálohování aplikace'
+description: Zjistěte, jak pomocí Azure PowerShellu automatizovat nasazení a správu služby App Service. Tato ukázka ukazuje, jak zálohovat aplikaci.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: fc755f82-ca3e-4532-b251-690b699324d6
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 5b9906abaa253c667c883a2e0e8ecd6e4cc9d496
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: c17cfcd2e55b98be9d86a73f6388d921336f993b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685745"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057667"
 ---
 # <a name="back-up-a-web-app-using-powershell"></a>Zálohování webové aplikace pomocí PowerShellu
 
@@ -43,12 +43,12 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Vytvoří účet úložiště. |
-| [New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer) | Vytvoří kontejner úložiště Azure. |
+| [Nový kontejner AzStorage](/powershell/module/az.storage/new-AzStoragecontainer) | Vytvoří kontejner úložiště Azure. |
 | [New-AzStorageContainerSASToken](/powershell/module/az.storage/new-AzStoragecontainersastoken) | Vygeneruje token SAS pro kontejner úložiště Azure.  |
-| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. |
-| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří webovou aplikaci. |
-| [New-AzWebAppBackup](/powershell/module/az.websites/new-azwebappbackup) | Vytvoří zálohu webové aplikace. |
-| [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Získá seznam záloh webové aplikace. |
+| [Nový-AzAppServicePlán](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. |
+| [Nový-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří webovou aplikaci. |
+| [Nový-AzWebAppBackup](/powershell/module/az.websites/new-azwebappbackup) | Vytvoří zálohu webové aplikace. |
+| [Seznam Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Získá seznam záloh webové aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 

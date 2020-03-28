@@ -1,5 +1,5 @@
 ---
-title: 'Kurz k NoSQL: rozhraní SQL API pro Azure Cosmos DB Java SDK'
+title: 'Kurz NoSQL: ROZHRANÍ SQL API pro Azure Cosmos DB Java SDK'
 description: Kurz k NoSQL, v rámci kterého se vytvoří online databáze a aplikace konzoly Java pomocí rozhraní SQL API pro Azure Cosmos DB. Azure SQL je databáze NoSQL pro JSON.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.openlocfilehash: a046f97dccdcc4a9cb9fe180447c1ff9a316f0df
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73720810"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Kurz k NoSQL: Vytvoření aplikace konzoly Java rozhraní SQL API
@@ -49,7 +49,7 @@ Ujistěte se, že máte následující:
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Git](https://git-scm.com/downloads)
+* [Git](https://git-scm.com/downloads).
 * [Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)
 * [Maven](https://maven.apache.org/download.cgi).
 
@@ -58,7 +58,7 @@ Vytvořme účet služby Azure Cosmos DB. Pokud už máte účet, který chcete 
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>Krok 2: Klonování projektu z GitHubu
+## <a name="step-2-clone-the-github-project"></a><a id="GitClone"></a>Krok 2: Klonování projektu z GitHubu
 Můžete začít naklonováním úložiště GitHub pro projekt [Začínáme se službou Azure Cosmos DB a Javou](https://github.com/Azure-Samples/documentdb-java-getting-started). Například spusťte z místního adresáře následující příkaz, který načte ukázkový projekt pro místní použití.
 
     git clone git@github.com:Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
@@ -73,7 +73,7 @@ Adresář obsahuje soubor `pom.xml` pro projekt a složku `src` obsahující zdr
         <version>LATEST</version>
     </dependency>
 
-## <a id="Connect"></a>Krok 3: Připojení k účtu služby Azure Cosmos DB
+## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>Krok 3: Připojení k účtu služby Azure Cosmos DB
 Dále přejděte zpět na [Azure Portal](https://portal.azure.com) a získejte koncový bod a primární hlavní klíč. Koncový bod a primární klíč služby Azure Cosmos DB jsou potřeba k tomu, aby aplikace věděla, kam se má připojit, a aby služba Azure Cosmos DB důvěřovala připojení aplikace.
 
 Na webu Azure Portal přejděte do účtu služby Azure Cosmos DB a klikněte na **Klíče**. Zkopírujte identifikátor URI z portálu a vložte ho do `https://FILLME.documents.azure.com` v souboru Program.java. Poté zkopírujte PRIMÁRNÍ KLÍČ z portálu a vložte ho do `FILLME`.
@@ -84,7 +84,7 @@ Na webu Azure Portal přejděte do účtu služby Azure Cosmos DB a klikněte na
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 
-![Snímek obrazovky Azure Portal, který se používá v kurzu NoSQL k vytvoření konzolové aplikace Java Ukazuje účet služby Azure Cosmos DB se zvýrazněným aktivním centrem, zvýrazněným tlačítkem KLÍČE v okně účtu služby Azure Cosmos DB a zvýrazněnými hodnotami URI, PRIMÁRNÍ KLÍČ a SEKUNDÁRNÍ KLÍČ v okně Klíče.][keys]
+![Snímek obrazovky s portálem Azure, který používá kurz NoSQL k vytvoření aplikace konzoly Java. Ukazuje účet služby Azure Cosmos DB se zvýrazněným aktivním centrem, zvýrazněným tlačítkem KLÍČE v okně účtu služby Azure Cosmos DB a zvýrazněnými hodnotami URI, PRIMÁRNÍ KLÍČ a SEKUNDÁRNÍ KLÍČ v okně Klíče.][keys]
 
 ## <a name="step-4-create-a-database"></a>Krok 4: Vytvoření databáze
 [Databázi](databases-containers-items.md#azure-cosmos-databases) Azure Cosmos DB je možné vytvořit pomocí metody [createDatabase](/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase) třídy **DocumentClient**. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
@@ -93,13 +93,13 @@ Na webu Azure Portal přejděte do účtu služby Azure Cosmos DB a klikněte na
     database.setId("familydb");
     this.client.createDatabase(database, null);
 
-## <a id="CreateColl"></a>Krok 5: Vytvoření kolekce
+## <a name="step-5-create-a-collection"></a><a id="CreateColl"></a>Krok 5: Vytvoření kolekce
 > [!WARNING]
 > **createCollection** vytvoří novou kolekci s vyhrazenou propustností, za kterou se hradí poplatky. Další podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
 > 
 > 
 
-Kolekci lze vytvořit pomocí metody [CreateCollection](/java/api/com.microsoft.azure.documentdb.documentclient.createcollection) třídy **DocumentClient** . Kolekce je kontejner dokumentů JSON a přidružené logiky javascriptové aplikace.
+Kolekci je možné vytvořit pomocí metody [createCollection](/java/api/com.microsoft.azure.documentdb.documentclient.createcollection) třídy **DocumentClient**. Kolekce je kontejner dokumentů JSON a přidružené logiky javascriptové aplikace.
 
 
     DocumentCollection collectionInfo = new DocumentCollection();
@@ -112,8 +112,8 @@ Kolekci lze vytvořit pomocí metody [CreateCollection](/java/api/com.microsoft.
 
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
-## <a id="CreateDoc"></a>Krok 6: Vytvoření dokumentů JSON
-Dokument lze vytvořit pomocí metody [metody CreateDocument](/java/api/com.microsoft.azure.documentdb.documentclient.createdocument) třídy **DocumentClient** . Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit jeden nebo více dokumentů. Pokud již máte data, která chcete uložit do databáze, můžete použít [nástroj pro migraci dat](import-data.md) služby Azure Cosmos DB a importovat tato data do databáze.
+## <a name="step-6-create-json-documents"></a><a id="CreateDoc"></a>Krok 6: Vytvoření dokumentů JSON
+Dokument je možné vytvořit pomocí metody [createDocument](/java/api/com.microsoft.azure.documentdb.documentclient.createdocument) třídy **DocumentClient**. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit jeden nebo více dokumentů. Pokud již máte data, která chcete uložit do databáze, můžete použít [nástroj pro migraci dat](import-data.md) služby Azure Cosmos DB a importovat tato data do databáze.
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();
@@ -135,7 +135,7 @@ Dokument lze vytvořit pomocí metody [metody CreateDocument](/java/api/com.micr
 
 ![Diagram ilustrující hierarchický vztah mezi účtem, online databází, kolekcí a dokumenty používanými v kurzu NoSQL k vytvoření konzolové aplikace v jazyce Java](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>Krok 7: Dotazování prostředků Azure Cosmos DB
+## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>Krok 7: Dotazování prostředků Azure Cosmos DB
 Azure Cosmos DB podporuje bohaté [dotazy](how-to-sql-query.md) na dokumenty JSON uložené v každé z kolekcí.  Následující ukázkový kód ukazuje dotazování na dokumenty ve službě Azure Cosmos DB pomocí syntaxe SQL a metody [queryDocuments](/java/api/com.microsoft.azure.documentdb.documentclient.querydocuments).
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
@@ -148,7 +148,7 @@ Azure Cosmos DB podporuje bohaté [dotazy](how-to-sql-query.md) na dokumenty JSO
         System.out.println(String.format("\tRead %s", family));
     }
 
-## <a id="ReplaceDocument"></a>Krok 8: Nahrazení dokumentu JSON
+## <a name="step-8-replace-json-document"></a><a id="ReplaceDocument"></a>Krok 8: Nahrazení dokumentu JSON
 Azure Cosmos DB podporuje aktualizaci dokumentů JSON pomocí metody [replaceDocument](/java/api/com.microsoft.azure.documentdb.documentclient.replacedocument).
 
     // Update a property
@@ -159,17 +159,17 @@ Azure Cosmos DB podporuje aktualizaci dokumentů JSON pomocí metody [replaceDoc
         andersenFamily,
         null);
 
-## <a id="DeleteDocument"></a>Krok 9: Odstranění dokumentu JSON
+## <a name="step-9-delete-json-document"></a><a id="DeleteDocument"></a>Krok 9: Odstranění dokumentu JSON
 Podobně Azure Cosmos DB podporuje odstraňování dokumentů JSON pomocí metody [deleteDocument](/java/api/com.microsoft.azure.documentdb.documentclient.deletedocument).  
 
     this.client.delete("/dbs/familydb/colls/familycoll/docs/Andersen.1", null);
 
-## <a id="DeleteDatabase"></a>Krok 10: Odstranění databáze
+## <a name="step-10-delete-the-database"></a><a id="DeleteDatabase"></a>Krok 10: Odstranění databáze
 Odstraněním vytvořené databáze dojde k odebrání databáze a všech jejích podřízených prostředků (kolekcí, dokumentů atd.).
 
     this.client.deleteDatabase("/dbs/familydb", null);
 
-## <a id="Run"></a>Krok 11: Spuštění celé konzolové aplikace jazyka Java!
+## <a name="step-11-run-your-java-console-application-all-together"></a><a id="Run"></a>Krok 11: Spuštění celé konzolové aplikace jazyka Java!
 Chcete-li aplikaci spustit z konzoly, přejděte do složky projektu a proveďte kompilaci pomocí nástroje Maven:
     
     mvn package

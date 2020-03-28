@@ -1,20 +1,20 @@
 ---
-title: Nasazení rozšíření virtuálních počítačů pomocí šablony
+title: Nasazení rozšíření virtuálních počítače pomocí šablony
 description: Zjistěte, jak nasazovat rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru.
 author: mumian
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 30b7aeaed0bfc2621cb2c71ab3f5e618771a1c26
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 469948d3d3207dd684d5a9b752e0c448ac7e83a9
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250088"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239265"
 ---
-# <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Kurz: Nasazování rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru
+# <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Kurz: Nasazení rozšíření virtuálních strojů pomocí šablon ARM
 
-Zjistěte, jak pomocí [rozšíření virtuálních počítačů Azure](../../virtual-machines/extensions/features-windows.md) provádět na virtuálních počítačích Azure úlohy konfigurace a automatizace po nasazení. Pro použití s virtuálními počítači Azure je k dispozici řada různých rozšíření virtuálních počítačů. V tomto kurzu nasadíte rozšíření vlastních skriptů z Azure Resource Manager šablony pro spuštění skriptu PowerShellu na virtuálním počítači s Windows.  Tento skript na virtuálním počítači nainstaluje webový server.
+Zjistěte, jak pomocí [rozšíření virtuálních počítačů Azure](../../virtual-machines/extensions/features-windows.md) provádět na virtuálních počítačích Azure úlohy konfigurace a automatizace po nasazení. Pro použití s virtuálními počítači Azure je k dispozici řada různých rozšíření virtuálních počítačů. V tomto kurzu nasadíte rozšíření vlastního skriptu ze šablony Správce prostředků Azure (ARM) ke spuštění skriptu PowerShellu na virtuálním počítači s Windows.  Tento skript na virtuálním počítači nainstaluje webový server.
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -25,50 +25,50 @@ Tento kurz se zabývá následujícími úkony:
 > * Nasazení šablony
 > * Ověření nasazení
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Pokud [chcete vytvořit Azure Resource Manager šablony](use-vs-code-to-create-template.md), přečtěte si téma použití Visual Studio Code.
+* Visual Studio Kód s rozšířením Nástroje Správce prostředků. Viz [Použití kódu Visual Studia k vytvoření šablon ARM](use-vs-code-to-create-template.md).
 * Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Tady ukázka generování hesla:
 
     ```console
     openssl rand -base64 32
     ```
 
-    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v [kurzu integrace služby Azure Key Vault v nasazení šablony Resource Manageru](./template-tutorial-use-key-vault.md). Doporučujeme vám také aktualizovat heslo každé tři měsíce.
+    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace naleznete [v tématu: Integrace trezoru klíčů Azure v nasazení šablony ARM](./template-tutorial-use-key-vault.md). Doporučujeme také aktualizovat heslo každé tři měsíce.
 
 ## <a name="prepare-a-powershell-script"></a>Příprava skriptu PowerShellu
 
-Z [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)se sdílí skript prostředí PowerShell s následujícím obsahem:
+Skript PowerShellu s následujícím obsahem je sdílen z [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1):
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Pokud se rozhodnete publikovat soubor ve svém vlastním umístění, musíte aktualizovat element `fileUri` v šabloně později v tomto kurzu.
+Pokud se rozhodnete publikovat soubor do vlastního umístění, `fileUri` je nutné aktualizovat prvek v šabloně dále v kurzu.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony rychlého startu
 
-Šablony pro rychlý Start Azure jsou úložiště pro šablony Správce prostředků. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows).
+Azure Quickstart Templates je úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows).
 
-1. V Visual Studio Code vyberte **soubor** > **otevřít soubor**.
-1. Do pole **název souboru** vložte následující adresu URL: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+1. V kódu sady Visual Studio vyberte **Soubor** > **otevřít soubor**.
+1. Do pole **Název souboru** vložte následující adresu URL:https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
 
-1. Chcete-li otevřít soubor, vyberte možnost **otevřít**.
-    Šablona definuje pět prostředků:
+1. Chcete-li soubor otevřít, vyberte **otevřít**.
+    Šablona definuje pět zdrojů:
 
-   * **Microsoft. Storage/storageAccounts**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * **Microsoft. Network/publicIPAddresses**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * **Microsoft. Network/virtualNetworks**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * **Microsoft. Network/networkInterfaces**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * **Microsoft. COMPUTE/virtualMachines**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * **Microsoft.Storage/storageAccounts**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+   * **Microsoft.Network/publicIPAdresy**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+   * **Microsoft.Network/virtualNetworks**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+   * **Microsoft.Network/networkInterfaces**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+   * **Microsoft.Compute/virtualMachines**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
-     Před přizpůsobením šablony je užitečné získat základní informace o této šabloně.
+     Je užitečné získat některé základní znalosti šablony před přizpůsobením.
 
-1. Uložte kopii souboru do místního počítače s názvem *azuredeploy. JSON* , a to tak, že vyberete **soubor** > **Uložit jako**.
+1. Uložte kopii souboru do místního počítače s názvem *azuredeploy.json* výběrem **možnosti Uložit soubor** > **jako**.
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
@@ -98,37 +98,37 @@ Ke stávající šabloně s následujícím obsahem přidejte prostředek rozš�
 }
 ```
 
-Další informace o této definici prostředků najdete v odkazu na [rozšíření](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions). Tady je několik důležitých elementů:
+Další informace o této definici prostředků naleznete v [odkazu na rozšíření](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions). Tady je několik důležitých elementů:
 
-* **name:** Vzhledem k tomu, že prostředek rozšíření je podřízeným prostředkem objektu virtuálního počítače, musí název obsahovat předponu virtuálního počítače. Viz [Nastavení názvu a typu pro podřízené prostředky](child-resource-name-type.md).
-* **dependsOn**: po vytvoření virtuálního počítače vytvořte prostředek rozšíření.
-* **identifikátory URI**: umístění, kde jsou uloženy soubory skriptu. Pokud se rozhodnete, že nepoužijete zadané umístění, je nutné aktualizovat hodnoty.
+* **name:** Vzhledem k tomu, že prostředek rozšíření je podřízeným prostředkem objektu virtuálního počítače, musí název obsahovat předponu virtuálního počítače. Viz [Nastavit název a typ pro podřízené prostředky](child-resource-name-type.md).
+* **dependsOn**: Vytvořte prostředek rozšíření po vytvoření virtuálního počítače.
+* **fileUris**: Umístění, kde jsou uloženy soubory skriptu. Pokud se rozhodnete nepoužívat zadaný umístění, je třeba aktualizovat hodnoty.
 * **commandToExecute**: Tento příkaz vyvolá skript.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Postup nasazení najdete v části "nasazení šablony" v tématu [kurz: vytvoření šablon Azure Resource Manager se závislými prostředky](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Doporučujeme použít vygenerované heslo pro účet správce virtuálního počítače. Viz část [požadavky](#prerequisites) tohoto článku.
+Postup nasazení naleznete v části "Nasazení šablony" [v kurzu: Vytvoření šablon ARM se závislými prostředky](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Doporučujeme použít vygenerované heslo pro účet správce virtuálního počítače. Viz část [Požadavky](#prerequisites) tohoto článku.
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. V Azure Portal vyberte virtuální počítač.
-1. V přehledu virtuálních počítačů zkopírujte IP adresu tak, že **kliknete na tlačítko Kopírovat**a pak ho vložíte na kartu prohlížeče. Otevře se výchozí úvodní stránka Internetová informační služba (IIS):
+1. Na webu Azure Portal vyberte virtuální počítač.
+1. V přehledu virtuálního počítačů zkopírujte IP adresu tak, že vyberete **Kliknutím zkopírujete**a pak ji vložte na kartu prohlížeče. Otevře se výchozí úvodní stránka Internetové informační služby (IIS):
 
-![Úvodní stránka Internetová informační služba](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
+![Uvítací stránka Internetové informační služby](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už prostředky Azure, které jste nasadili, nepotřebujete, vyčistěte je tak, že odstraníte skupinu prostředků.
+Když už nepotřebujete prostředky Azure, které jste nasadili, vyčistěte je odstraněním skupiny prostředků.
 
-1. V Azure Portal v levém podokně vyberte **skupinu prostředků**.
-2. Do pole **filtrovat podle názvu** zadejte název skupiny prostředků.
+1. Na portálu Azure v levém podokně vyberte **skupinu prostředků**.
+2. Do pole **Filtr podle názvu** zadejte název skupiny prostředků.
 3. Vyberte název skupiny prostředků.
-    Ve skupině prostředků se zobrazí šest prostředků.
+    Ve skupině prostředků je zobrazeno šest prostředků.
 4. V horní nabídce vyberte **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nasadili virtuální počítač a rozšíření virtuálního počítače. Toto rozšíření na virtuální počítač nainstalovalo webový server služby IIS. Informace o použití rozšíření Azure SQL Database k importu souboru BACPAC naleznete v tématu:
+V tomto kurzu jste nasadili virtuální počítač a rozšíření virtuálního počítače. Toto rozšíření na virtuální počítač nainstalovalo webový server služby IIS. Informace o tom, jak importovat soubor BACPAC pomocí rozšíření Azure SQL Database, najdete v tématu:
 
 > [!div class="nextstepaction"]
 > [Nasazení rozšíření SQL](./template-tutorial-deploy-sql-extensions-bacpac.md)

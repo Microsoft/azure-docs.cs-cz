@@ -1,5 +1,5 @@
 ---
-title: Vytvoření spravovaného disku ze souboru VHD v účtu úložiště v předplatném – ukázka PowerShellu
+title: Vytvoření spravovaného disku ze souboru Virtuálního pevného disku v účtu úložiště v předplatném – ukázka prostředí PowerShell
 description: 'Ukázkový skript Azure PowerShellu: Vytvoření spravovaného disku ze souboru VHD v účtu úložiště ve stejném nebo jiném předplatném'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
 ms.openlocfilehash: 3fe13751d75d1b4cf549b4921934922ddccfb211
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75368619"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-same-or-different-subscription-with-powershell"></a>Vytvoření spravovaného disku ze souboru VHD v účtu úložiště ve stejném nebo jiném předplatném pomocí PowerShellu
@@ -43,8 +43,8 @@ Tento skript používá pro vytvoření spravovaného disku z virtuálního pevn
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Vytvoří konfiguraci disku, která se použije při vytvoření disku. Její součástí je typ úložiště, umístění, ID prostředku účtu úložiště, kde je nadřazený virtuální pevný disk uložený, a identifikátor URI nadřazeného virtuálního pevného disku. |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Vytvoří disk pomocí konfigurace disku, názvu disku a názvu skupiny prostředků, které použije jako parametry. |
+| [Nový-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Vytvoří konfiguraci disku, která se použije při vytvoření disku. Její součástí je typ úložiště, umístění, ID prostředku účtu úložiště, kde je nadřazený virtuální pevný disk uložený, a identifikátor URI nadřazeného virtuálního pevného disku. |
+| [Nový-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Vytvoří disk pomocí konfigurace disku, názvu disku a názvu skupiny prostředků, které použije jako parametry. |
 
 ## <a name="next-steps"></a>Další kroky
 

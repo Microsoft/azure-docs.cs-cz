@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 01/09/2020
 ms.author: yushwang
 ms.openlocfilehash: 11906dfa8a3d7c49b71ff1cdcc51d8ae5c6cbdc6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75862408"
 ---
 # <a name="download-vpn-device-template-using-powershell"></a>Stažení šablony zařízení VPN pomocí PowerShellu
@@ -38,7 +38,7 @@ Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -Re
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když už nepotřebujete prostředky, které jste vytvořili, odstraňte skupinu prostředků pomocí příkazu [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . Tím odstraníte skupinu prostředků a všechny prostředky, které obsahuje.
+Pokud již nepotřebujete prostředky, které jste vytvořili, odstraňte skupinu prostředků pomocí příkazu [Remove-AzResourceGroup.](/powershell/module/az.resources/remove-azresourcegroup) Tím odstraníte skupinu prostředků a všechny prostředky, které obsahuje.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name TestRG1
@@ -50,7 +50,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzVirtualNetworkGatewaySupportedVpnDevice](/powershell/module/az.network/Get-azVirtualNetworkGatewaySupportedVpnDevice) | Vypíše všechny dostupné modely a verze zařízení VPN. |
+| [Get-AzVirtualNetworkGatewayPodporovanéVpnDevice](/powershell/module/az.network/Get-azVirtualNetworkGatewaySupportedVpnDevice) | Vypíše všechny dostupné modely a verze zařízení VPN. |
 | [Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript](/powershell/module/az.network/Get-azVirtualNetworkGatewayConnectionVpnDeviceConfigScript) | Stáhne šablonu konfigurace pro připojení. |
 
 ## <a name="next-steps"></a>Další kroky

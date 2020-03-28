@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – vytvoření dvou virtuálních počítačů s interními a externími NSG
+title: Ukázka skriptu příkazového příkazu Azure – vytvoření dvou virtuálních počítačů s interním a externím souborem zabezpečení zabezpečení
 description: Ukázkový skript Azure CLI – Vytvoření dvou virtuálních počítačů s interní a externí skupinou zabezpečení sítě
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -17,10 +17,10 @@ ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
 ms.openlocfilehash: eb851b672a3cc9748d1aa5fbe27e4a7fac9d020e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74039917"
 ---
 # <a name="secure-network-traffic-between-virtual-machines"></a>Zabezpečení provozu sítě mezi virtuálními počítači
@@ -47,7 +47,7 @@ az group delete --name myResourceGroup --yes
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Vytvoří virtuální síť Azure a podsíť. |

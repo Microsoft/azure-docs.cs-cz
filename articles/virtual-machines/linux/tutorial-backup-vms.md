@@ -1,5 +1,5 @@
 ---
-title: Kurz – zálohování virtuálních počítačů se systémem Linux v Azure Portal
+title: Výuka – Zálohování virtuálních počítačů S Linuxem na webu Azure Portal
 description: V tomto kurzu se naučíte, jak využít portál Azure k ochraně virtuálních počítačů s Linuxem pomocí Azure Backup.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2a53086b959f5b93d17d307a59682a44fe1f33a8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6c8b29052b4ca1d3ccd6f1f9b6afba5177dbd6c8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034589"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066497"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Kurz: Zálohování a obnova souborů pro virtuální počítače s Linuxem v Azure
 
@@ -43,15 +43,15 @@ Po dokončení přenosu dat se snímek odstraní a vytvoří se bod obnovení.
 ## <a name="create-a-backup"></a>Vytvoření zálohy
 Vytvořte plánované denní zálohování do trezoru služby Recovery Services:
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 2. V nabídce na levé straně vyberte **Virtuální počítače**. 
 3. V seznamu vyberte virtuální počítač, který chcete zálohovat.
-4. V okně virtuálního počítače v části **Nastavení** klikněte na **Zálohování**. Otevře se okno **Povolit zálohování**.
+4. V okně virtuálního počítače v části **Nastavení** klikněte na **Zálohování**. Otevře se okno **Povolit zálohování.**
 5. V části **Trezor služby Recovery Services** klikněte na **Vytvořit nový** a zadejte název nového trezoru. Nový trezor se vytvoří ve stejné skupině prostředků a stejném umístění jako virtuální počítač.
 6. Klikněte na **Zásady zálohování**. Pro účely tohoto příkladu ponechte výchozí hodnoty a klikněte na **OK**.
 7. V okně **Povolit zálohování** klikněte na **Povolit zálohování**. Tím se vytvoří denní zálohování na základě výchozího plánu.
 10. Pokud chcete vytvořit prvotní bod obnovení, v okně **Zálohování** klikněte na **Zálohovat nyní**.
-11. V okně **Zálohovat nyní** klikněte na ikonu kalendáře, pomocí ovládacího prvku kalendáře vyberte poslední den uchování tohoto bodu obnovení a klikněte na **Zálohovat**.
+11. V okně **Backup Now** klepněte na ikonu kalendáře, pomocí ovládacího prvku kalendář vyberte poslední den, kdy je tento bod obnovení zachován, a klepněte na tlačítko **Zálohovat**.
 12. V okně **Zálohování** vašeho virtuálního počítače se zobrazí počet dokončených bodů obnovení.
 
     ![Body obnovení](./media/tutorial-backup-vms/backup-complete.png)
@@ -64,7 +64,7 @@ Pokud omylem odstraníte nebo změníte soubor, můžete ho pomocí obnovení so
 
 V tomto příkladu ukazujeme obnovení výchozí webové stránky serveru NGINX /var/www/html/index.nginx-debian.html. Veřejná IP adresa virtuálního počítače v tomto příkladu je *13.69.75.209*. IP adresu svého virtuálního počítače najdete pomocí tohoto příkazu:
 
- ```bash 
+ ```azurecli
  az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
  ```
 
@@ -78,6 +78,7 @@ V tomto příkladu ukazujeme obnovení výchozí webové stránky serveru NGINX 
     ```bash
     ssh 13.69.75.209
     ```
+
 2. Odstraňte soubor /var/www/html/index.nginx-debian.html.
 
     ```bash
@@ -122,7 +123,7 @@ V tomto příkladu ukazujeme obnovení výchozí webové stránky serveru NGINX 
     
 12. Výstup skriptu obsahuje cestu k přípojnému bodu. Výstup vypadá podobně jako tento:
 
-    ```bash
+    ```output
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
                           

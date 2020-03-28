@@ -16,17 +16,17 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: kumud
 ms.openlocfilehash: 5971b3251812ea4193e71173943ffc0d48207567
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75975355"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>Ukázkové šablony Azure Resource Manageru pro virtuální síť
 
 Následující tabulka obsahuje odkazy na ukázkové šablony Azure Resource Manageru. Šablony můžete nasadit pomocí portálu Azure [Portal](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), Azure [CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo Azure [PowerShellu](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud se chcete dozvědět, jak si můžete vytvořit vlastní šablony, přečtěte si články [Vytvoření první šablony](../azure-resource-manager/resource-manager-create-first-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Princip struktury a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/templates/template-syntax.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Informace o syntaxi a vlastnostech JSON pro použití v šablonách naleznete v tématu [typy prostředků Microsoft. Network](/azure/templates/microsoft.network/allversions).
+Syntaxe json a vlastnosti pro použití v šablonách naleznete v tématu [Microsoft.Network typy prostředků](/azure/templates/microsoft.network/allversions).
 
 
 | Úkol | Popis |
@@ -36,4 +36,4 @@ Informace o syntaxi a vlastnostech JSON pro použití v šablonách naleznete v 
 |[Vytvoření koncového bodu služby pro virtuální síť pro Azure Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vnet-2subnets-service-endpoints-storage-integration)|Vytvoří novou virtuální síť se dvěma podsítěmi a síťovým rozhraním v každé podsíti. Povolí koncový bod služby na Azure Storage pro jednu z podsítí a zabezpečí nový účet úložiště pro danou podsíť.|
 |[Připojení dvou virtuálních sítí](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vnet-to-vnet-peering)| Vytvoří dvě virtuální sítě a partnerský vztah mezi nimi.|
 |[Vytvoření virtuálního počítače s několika IP adresami](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-ipconfig)| Vytvoří virtuální počítač Windows nebo Linux s několika IP adresami.|
-|[Konfigurovat virtuální síť Dual Stack IPv4 a IPv6](https://github.com/Azure/azure-quickstart-templates/tree/master/ipv6-in-vnet)|Nasadí virtuální síť s duálním zásobníkem (IPv4 + IPv6) se dvěma virtuálními počítači a Load Balancer Azure Basic s IP adresami IPv4 a IPv6. |
+|[Konfigurace virtuální sítě iPv4 + IPv6 se dvěma zásobníky](https://github.com/Azure/azure-quickstart-templates/tree/master/ipv6-in-vnet)|Nasazuje virtuální síť s dvěma zásobníky (IPv4+IPv6) se dvěma virtuálními počítači a nástrojem Pro vyrovnávání zatížení Azure Basic s veřejnými IP adresami IPv4 a IPv6. |

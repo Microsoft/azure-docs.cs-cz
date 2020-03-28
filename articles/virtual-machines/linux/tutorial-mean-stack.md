@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytvoření STŘEDNÍho zásobníku na virtuálním počítači se systémem Linux v Azure
+title: Kurz – vytvoření zásobníku MEAN na virtuálním počítači SIP v Azure
 description: V tomto kurzu se dozvíte, jak vytvořit stack MongoDB, Express, AngularJS a Node.js (MEAN) na virtuálním počítači s Linuxem v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50ccf0d6db5a50f7dd89732bc870ced6bcf1c2d7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e0ed3454f11907c5f183f08fd2ec51db3384225
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034406"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154317"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Kurz: Vytvoření stacku MongoDB, Express, AngularJS a Node.js (MEAN) na virtuálním počítači s Linuxem v Azure
 
@@ -34,7 +34,7 @@ V tomto kurzu se dozvíte, jak implementovat stack MongoDB, Express, AngularJS a
 > * Přístup k trasám pomocí AngularJS
 > * Spuštění aplikace
 
-V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
+Tento kurz používá vynesené mezizaviny příkazového příkazové číslo v rámci [prostředí Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), které se neustále aktualizuje na nejnovější verzi. Chcete-li otevřít prostředí Cloud Shell, vyberte **Vyzkoušet** v horní části libovolného bloku kódu.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -220,7 +220,7 @@ sudo apt-get install -y nodejs
 
 [AngularJS](https://angularjs.org) poskytuje webovou architekturu pro vytváření dynamických zobrazení ve webových aplikacích. V tomto kurzu používáme AngularJS k propojení naší webové stránky s Express a provádění akcí s naší databází knih.
 
-1. Vraťte se do adresáře *Books* (`cd ../..`), vytvořte v něm složku *public* a přidejte do ní soubor *script.js* s definicí konfigurace kontroleru.
+1. Změňte adresář zpět *Books* na`cd ../..`Knihy ( ) a potom vytvořte složku s názvem *public* a přidejte soubor s názvem *script.js* s definovanou konfigurací řadiče.
 
     ```javascript
     var app = angular.module('myApp', []);
@@ -317,17 +317,17 @@ sudo apt-get install -y nodejs
 
 ##  <a name="run-the-application"></a>Spuštění aplikace
 
-1. Vraťte se do adresáře *Books* (`cd ..`) a spuštěním následujícího příkazu spusťte server:
+1. Změňte adresář zpět *Books* na`cd ..`Knihy ( ) a spusťte server spuštěním tohoto příkazu:
 
     ```bash
     nodejs server.js
     ```
 
-2. Otevřete webový prohlížeč na adrese, kterou jste si pro virtuální počítač poznamenali. Například *http:\//13.72.77.9:* . Zobrazená stránka by měla vypadat přibližně takto:
+2. Otevřete webový prohlížeč na adrese, kterou jste si pro virtuální počítač poznamenali. Například *http:\//13.72.77.9:3300*. Zobrazená stránka by měla vypadat přibližně takto:
 
     ![Záznam o knize](media/tutorial-mean/meanstack-init.png)
 
-3. Do textových polí zadejte data a klikněte na **Add** (Přidat). Příklad:
+3. Do textových polí zadejte data a klikněte na **Add** (Přidat). Například:
 
     ![Přidání záznamu o knize](media/tutorial-mean/meanstack-add.png)
 
@@ -349,7 +349,7 @@ V tomto kurzu jste pomocí stacku MEAN na virtuálním počítači s Linuxem vyt
 > * Přístup k trasám pomocí AngularJS
 > * Spuštění aplikace
 
-V dalším kurzu se dozvíte, jak zabezpečit webové servery pomocí certifikátů SSL.
+Přejdete k dalšímu kurzu, kde se dozvíte, jak zabezpečit webové servery pomocí certifikátů TLS.
 
 > [!div class="nextstepaction"]
-> [Zabezpečení webového serveru pomocí SSL](tutorial-secure-web-server.md)
+> [Zabezpečený webový server s TLS](tutorial-secure-web-server.md)

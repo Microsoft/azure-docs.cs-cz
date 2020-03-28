@@ -5,17 +5,18 @@ description: Použití tokenů SAS, šifrování a HTTPS k zabezpečení dat apl
 services: storage
 author: tamram
 ms.service: storage
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: b027ed6b936761e35e835401f9ce8398fac33073
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 13a2a0bcc362a13b0c42650509d356f613527cfc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129640"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80061328"
 ---
 # <a name="secure-access-to-application-data"></a>Zabezpečený přístup k datům aplikací
 
@@ -28,11 +29,11 @@ Ve třetí části této série se naučíte:
 > * Zapnutí šifrování na straně serveru
 > * Povolení přenosu pouze přes protokol HTTP
 
-[Úložiště objektů blob v Azure](../common/storage-introduction.md#blob-storage) představuje robustní službu pro ukládání souborů pro aplikace. Tento kurz rozšiřuje [předchozí téma][previous-tutorial] a ukazuje, jak zabezpečit přístup k účtu úložiště z webové aplikace. Až budete hotovi, obrázky budou šifrované a webová aplikace bude pro přístup k obrázkům miniatur používat zabezpečené tokeny SAS.
+[Úložiště objektů blob v Azure](../common/storage-introduction.md#blob-storage) představuje robustní službu pro ukládání souborů pro aplikace. Tento kurz rozšiřuje [předchozí téma][previous-tutorial] a ukazuje, jak bezpečně přistupovat k účtu úložiště z webové aplikace. Až budete hotovi, obrázky budou šifrované a webová aplikace bude pro přístup k obrázkům miniatur používat zabezpečené tokeny SAS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu je nutné dokončit předchozí kurz o službě Storage: [Automatizace změny velikosti nahraných imagí pomocí Event Grid][previous-tutorial].
+K dokončení tohoto kurzu je nutné dokončit předchozí kurz o službě Storage: [Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid][previous-tutorial].
 
 ## <a name="set-container-public-access"></a>Nastavení veřejného přístupu ke kontejneru
 
@@ -53,7 +54,7 @@ az storage container set-permission \
 
 ## <a name="configure-sas-tokens-for-thumbnails"></a>Konfigurace tokenů SAS pro miniatury
 
-V první části této série kurzů zobrazovala webová aplikace obrázky z veřejného kontejneru. V této části série použijete tokeny (SAS) sdíleného přístupového podpisu (SAS) k načtení imagí miniatur. Tokeny SAS umožňují zajistit omezený přístup ke kontejneru nebo objektu blob na základě IP adresy, protokolu, časového intervalu nebo povolených oprávnění. Další informace o SAS najdete v tématu [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md).
+V první části této série kurzů zobrazovala webová aplikace obrázky z veřejného kontejneru. V této části řady použijete tokeny sdílených přístupových podpisů (SAS) k načtení miniatur. Tokeny SAS umožňují zajistit omezený přístup ke kontejneru nebo objektu blob na základě IP adresy, protokolu, časového intervalu nebo povolených oprávnění. Další informace o SAS najdete [v tématu udělení omezeného přístupu k prostředkům Úložiště Azure pomocí sdílených přístupových podpisů (SAS).](../common/storage-sas-overview.md)
 
 V tomto příkladu používá úložiště zdrojového kódu větev `sasTokens`, která obsahuje aktualizovaný vzorový kód. Odstraňte stávající nasazení z GitHubu pomocí příkazu [az webapp deployment source delete](/cli/azure/webapp/deployment/source). Dále nakonfigurujte nasazení z GitHubu do webové aplikace pomocí příkazu [az webapp deployment source config](/cli/azure/webapp/deployment/source).
 
@@ -67,7 +68,7 @@ az webapp deployment source config --name <web_app> \
     --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-Ve větvi `sasTokens` úložiště se aktualizuje soubor `StorageHelper.cs`. Úlohu `GetThumbNailUrls` nahradí níže uvedeným příkladem kódu. Aktualizovaný úkol načte miniatury adres URL pomocí [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) k určení času spuštění, času vypršení platnosti a oprávnění pro token SAS. Webová aplikace teď po nasazení načítá miniatury s použitím adresy URL s tokenem SAS. Aktualizovaná úloha je znázorněná v následujícím příkladu:
+Ve větvi `sasTokens` úložiště se aktualizuje soubor `StorageHelper.cs`. Úlohu `GetThumbNailUrls` nahradí níže uvedeným příkladem kódu. Aktualizovaná úloha načte adresy URL miniatur pomocí [objektu BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) k určení času zahájení, času vypršení platnosti a oprávnění pro token SAS. Webová aplikace teď po nasazení načítá miniatury s použitím adresy URL s tokenem SAS. Aktualizovaná úloha je znázorněná v následujícím příkladu:
 
 ```csharp
 public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _storageConfig)
@@ -127,12 +128,12 @@ Předchozí úloha využívá následující třídy, vlastnosti a metody:
 | Třída | Vlastnosti | Metody |
 |-------|------------|---------|
 |[StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) |  |  |
-|[BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) |  |[GetBlobContainerClient](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainerclient) |
-|[BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) | [Identifikátor URI](/dotnet/api/azure.storage.blobs.blobcontainerclient.uri) |[Neexistuje](/dotnet/api/azure.storage.blobs.blobcontainerclient.exists) <br> [Getblobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) |
-|[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) |  | [SetPermissions](/dotnet/api/azure.storage.sas.blobsasbuilder.setpermissions) <br> [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) |
-|[BlobItem](/dotnet/api/azure.storage.blobs.models.blobitem) | [Název](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
-|[Objekt UriBuilder protokolu](/dotnet/api/system.uribuilder) | [Dotaz](/dotnet/api/system.uribuilder.query) |  |
-|[Seznamu](/dotnet/api/system.collections.generic.list-1) | | [Přidávání](/dotnet/api/system.collections.generic.list-1.add) |
+|[Klient blobservice](/dotnet/api/azure.storage.blobs.blobserviceclient) |  |[Klient GetBlobContainer](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainerclient) |
+|[Klient blobContainer](/dotnet/api/azure.storage.blobs.blobcontainerclient) | [Uri](/dotnet/api/azure.storage.blobs.blobcontainerclient.uri) |[Existuje](/dotnet/api/azure.storage.blobs.blobcontainerclient.exists) <br> [GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) |
+|[Objekt blobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) |  | [SetPermissions](/dotnet/api/azure.storage.sas.blobsasbuilder.setpermissions) <br> [Parametry ToSasQuery](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) |
+|[Objekt blob](/dotnet/api/azure.storage.blobs.models.blobitem) | [Název](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
+|[Uribuilder](/dotnet/api/system.uribuilder) | [Dotazu](/dotnet/api/system.uribuilder.query) |  |
+|[Seznamu](/dotnet/api/system.collections.generic.list-1) | | [Přidat](/dotnet/api/system.collections.generic.list-1.add) |
 
 ## <a name="server-side-encryption"></a>Šifrování na straně serveru
 

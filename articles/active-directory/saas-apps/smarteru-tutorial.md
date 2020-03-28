@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s SmarterU | Microsoft Docs'
+title: 'Kurz: Integrace služby Azure Active Directory s SmarterU | Dokumenty společnosti Microsoft'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SmarterU.
 services: active-directory
 documentationCenter: na
@@ -16,226 +16,226 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 712e7bcf513592f97950902faff2f7754093b9fc
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76549287"
 ---
 > [!NOTE]
-> Proces pro integraci SmarterU s Azure Active Directory je popsán a udržován v [systému SmarterU Help](https://help.smarteru.com/ID2053086).
+> Proces integrace SmarterU s Azure Active Directory je také dokumentován a udržován v [systému nápovědy SmarterU](https://help.smarteru.com/ID2053086).
 
-# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Kurz: Azure Active Directory integrace s SmarterU
+# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Kurz: Integrace Azure Active Directory s SmarterU
 
 V tomto kurzu se dozvíte, jak integrovat SmarterU s Azure Active Directory (Azure AD).
-Integrace SmarterU s Azure AD poskytuje následující výhody:
+Integrace SmarterU s Azure AD vám poskytuje následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k SmarterU.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k SmarterU (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k SmarterU.
+* Můžete povolit, aby se uživatelé automaticky přihlašovali k SmarterU (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s SmarterU potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s SmarterU, budete potřebovat následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné s povoleným SmarterUm jednotným přihlašováním
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné s povolenou jedním přihlášením SmarterU
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* SmarterU podporuje jednotné přihlašování **IDP** .
+* SmarterU podporuje **idp** iniciované spoáně
 
-## <a name="adding-smarteru-from-the-gallery"></a>Přidání SmarterU z Galerie
+## <a name="adding-smarteru-from-the-gallery"></a>Přidání SmarterU z galerie
 
-Pokud chcete nakonfigurovat integraci SmarterU do služby Azure AD, musíte přidat SmarterU z Galerie do svého seznamu spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci SmarterU do Azure AD, musíte přidat SmarterU z galerie do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat SmarterU z Galerie, proveďte následující kroky:**
+**Chcete-li přidat SmarterU z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **SmarterU**, vyberte **SmarterU** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **SmarterU**, z panelu výsledků vyberte **SmarterU** a klepnutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![SmarterU v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí SmarterU na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SmarterU.
+Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v SmarterU.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SmarterU, musíte dokončit tyto stavební bloky:
+Chcete-li konfigurovat a testovat jednotné přihlašování Azure AD pomocí SmarterU, musíte dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Nakonfigurujte jednotné přihlašování SmarterU](#configure-smarteru-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvoření SmarterU Test User](#create-smarteru-test-user)** – pro Britta Simon v SmarterU, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace aplikace SmarterU Single Sign-On](#configure-smarteru-single-sign-on)** – konfigurace nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte smarteru test uživatele](#create-smarteru-test-user)** – mít protějšek Britta Simon v SmarterU, který je propojený s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SmarterU, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí SmarterU, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SmarterU** vyberte **jednotné přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **SmarterU** vyberte **Jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+4. V části **Základní konfigurace SAML** proveďte následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně SmarterU a adresách URL](common/idp-identifier.png)
+    ![SmarterU Domény a adresy URL jednotné přihlašovací informace](common/idp-identifier.png)
 
-    Do textového pole **identifikátor** zadejte adresu URL: `https://www.smarteru.com/`
+    Do textového pole **Identifikátor** zadejte adresu URL:`https://www.smarteru.com/`
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-6. V části **Nastavení SmarterU** zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **Nastavit SmarterU** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-smarteru-single-sign-on"></a>Konfigurace jednotného přihlašování SmarterU
+### <a name="configure-smarteru-single-sign-on"></a>Konfigurace jednotného přihlášení SmarterU
 
-1. V jiném okně webového prohlížeče se přihlaste k webu SmarterU společnosti jako správce.
+1. V jiném okně webového prohlížeče se přihlaste na web společnosti SmarterU jako správce.
 
-1. Na panelu nástrojů v horní části klikněte na **Nastavení účtu**.
+1. Na panelu nástrojů nahoře klikněte na **Nastavení účtu**.
 
     ![Nastavení účtu](./media/smarteru-tutorial/accountsettings.png)
 
-1. Na stránce Konfigurace účtu proveďte následující kroky:
+1. Na stránce konfigurace účtu proveďte následující kroky:
 
     ![Externí autorizace](./media/smarteru-tutorial/externalauthorizationconfiguration.png) 
 
-    a. Vyberte **Povolit externí autorizaci**.
+    a. Vyberte **možnost Povolit externí autorizaci**.
   
-    b. V části **hlavní ovládací prvek přihlášení** vyberte kartu **SmarterU** .
+    b. V části **Master Login Control** vyberte kartu **SmarterU.**
   
-    c. V části **výchozí přihlášení uživatele** vyberte kartu **SmarterU** .
+    c. V části **Výchozí přihlášení uživatele** vyberte kartu **SmarterU.**
   
-    d. Vyberte **Povolit SAML**.
+    d. Vyberte **povolit saml**.
   
-    e. Zkopírujte obsah staženého souboru metadat a vložte ho do textového pole **metadat IDP** .
+    e. Zkopírujte obsah staženého souboru metadat a vložte jej do textového pole **Metadati idp.**
 
-    f. Vyberte **atribut identifikátoru nebo deklaraci identity**.
+    f. Vyberte **atribut/deklaraci identifikátoru**.
   
-    g. Klikněte na možnost **Uložit**.
+    g. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V poli **Uživatelské jméno** typ pole**brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
     d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k SmarterU.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k SmarterU.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **SmarterU**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **SmarterU**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **SmarterU**.
+2. V seznamu aplikací vyberte **Možnost SmarterU**.
 
-    ![Odkaz SmarterU v seznamu aplikací](common/all-applications.png)
+    ![Odkaz SmarterU v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-smarteru-test-user"></a>Vytvořit testovacího uživatele SmarterU
+### <a name="create-smarteru-test-user"></a>Vytvořit test SmarterU uživatele
 
-Aby se uživatelé Azure AD mohli přihlašovat k SmarterU, musí se zřídit v SmarterU. V případě SmarterU je zřizování ručním úkolem.
+Chcete-li povolit uživatelům Azure AD k přihlášení k SmarterU, musí být zřízena do SmarterU. V případě SmarterU zřizování je ruční úlohy.
 
 **Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Přihlaste se ke svému tenantovi **SmarterU** .
+1. přihlaste se ke svému tenantovi **SmarterU.**
 
 1. Přejít na **uživatele**.
 
-1. V části uživatel proveďte následující kroky:
+1. V uživatelské části proveďte následující kroky:
 
     ![Nový uživatel](./media/smarteru-tutorial/adduser.png)  
 
-    a. Klikněte na **+ uživatel**.
+    a. Klepněte na tlačítko **+Uživatel**.
 
-    b. Zadejte hodnoty atributu účtu uživatele Azure AD do následujících textových polí: **primární e-mail**, **ID zaměstnance**, **heslo**, **ověřit heslo**, **křestní jméno**a **příjmení**.
+    b. Zadejte související hodnoty atributů uživatelského účtu Azure AD do následujících textových polí: **Primární e-mail**, **ID zaměstnance**, **Heslo**, **Ověřit heslo**, Křestní **jméno**, **Příjmení**.
 
-    c. Klikněte na **aktivní**.
+    c. Klepněte na **tlačítko Aktivní**.
 
-    d. Klikněte na možnost **Uložit**.
+    d. Klikněte na **Uložit**.
 
 > [!NOTE]
-> K zřizování uživatelských účtů Azure AD můžete použít jiné nástroje pro vytváření uživatelských účtů SmarterU nebo rozhraní API poskytovaná SmarterU.
+> Můžete použít všechny ostatní SmarterU nástroje pro vytváření uživatelských účtů nebo rozhraní API poskytované SmarterU zřídit uživatelské účty Azure AD.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici SmarterU, měli byste se automaticky přihlásit k SmarterU, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici SmarterU na přístupovém panelu, můžete by měl být automaticky přihlášeni k SmarterU, u kterého nastavíte přiřazovat. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

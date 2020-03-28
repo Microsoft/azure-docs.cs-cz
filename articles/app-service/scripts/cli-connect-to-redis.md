@@ -1,6 +1,6 @@
 ---
-title: 'CLI: připojení aplikace k Redis'
-description: Naučte se používat rozhraní příkazového řádku Azure k automatizaci nasazení a správy aplikace App Service. V této ukázce se dozvíte, jak připojit aplikaci k mezipaměti Azure pro Redis.
+title: 'CLI: Připojení aplikace k Redisu'
+description: Zjistěte, jak pomocí azure cli automatizovat nasazení a správu aplikace App Service. Tato ukázka ukazuje, jak připojit aplikaci k azure cache pro Redis.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: bc8345b2-8487-40c6-a91f-77414e8688e6
@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: a5654ea8c0333e21421e0f9c55cc00d70a7be567
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 27b7040bace80fff5cbcb6a12e4020cfe0c7fc9a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688433"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058636"
 ---
-# <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>Připojení aplikace App Service k mezipaměti Azure pro Redis pomocí rozhraní příkazového řádku
+# <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>Připojení aplikace služby App Service k azure cache pro Redis pomocí příkazového příkazového příkazu
 
-Tento ukázkový skript vytvoří mezipaměť Azure pro Redis a aplikaci App Service. Pak pomocí nastavení aplikace propojí mezipaměť Azure pro Redis s aplikací.
+Tento ukázkový skript vytvoří mezipaměť Azure pro Redis a aplikaci služby App Service. Potom propojí Azure Cache for Redis s aplikací pomocí nastavení aplikace.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -34,16 +34,16 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript k vytvoření skupiny prostředků, App Service aplikace, mezipaměti Azure pro Redis a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript používá následující příkazy k vytvoření skupiny prostředků, aplikace App Service, Azure Cache pro Redis a všech souvisejících prostředků. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci App Service. |
-| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | Vytvořte novou mezipaměť Azure pro instanci Redis. |
-| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | Zobrazí přístupové klíče pro instanci Azure cache pro Redis. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Vytvoří nebo aktualizuje nastavení aplikace pro App Service aplikaci. Nastavení aplikace se pro vaši aplikaci zveřejní jako proměnné prostředí. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
+| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | Vytvořte novou instanci Azure Cache for Redis. |
+| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | Zobrazí seznam přístupových klíčů pro instanci Azure Cache for Redis. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Vytvoří nebo aktualizuje nastavení aplikace pro aplikaci App Service. Nastavení aplikace se pro vaši aplikaci zveřejní jako proměnné prostředí. |
 
 ## <a name="next-steps"></a>Další kroky
 

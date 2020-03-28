@@ -15,29 +15,29 @@ ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
 ms.openlocfilehash: 08caf4b78b1042d5753dba2bc73e93fa3a250a17
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71122380"
 ---
-# <a name="cli-example-create-and-submit-a-job"></a>Příklad rozhraní příkazového řádku: Vytvoření a odeslání úlohy
+# <a name="cli-example-create-and-submit-a-job"></a>Ukázka CLI: Vytvoření a odeslání úlohy
 
-Pokud ve službě Media Services v3 odešlete úlohy pro zpracování videí, musíte službu Media Services informovat, kde najde vstupní video. Jednou z možností je určit adresu URL HTTPS jako vstup úlohy (jak je znázorněno v tomto článku). 
+Pokud ve službě Media Services v3 odešlete úlohy pro zpracování videí, musíte službu Media Services informovat, kde najde vstupní video. Jednou z možností je zadat adresu URL HTTPS jako vstup úlohy (jak je znázorněno v tomto článku). 
 
 ## <a name="prerequisites"></a>Požadavky 
 
-[Vytvoření účtu Media Services](create-account-cli-how-to.md).
+[Vytvořte účet mediálních služeb](create-account-cli-how-to.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>Ukázkový skript
 
-Když spustíte `az ams job start`, můžete pro výstup úlohy nastavit popisek. Popisek lze později použít k identifikaci toho, k čemu je tento výstupní prostředek pro. 
+Při spuštění `az ams job start`můžete nastavit popisek na výstupu úlohy. Popisek lze později použít k identifikaci, k čemu je tento výstupní datový zdroj určen. 
 
-- Pokud k popisku přiřadíte hodnotu, nastavte '--Output-assets ' na "Asset = Label".
-- Pokud k popisku nepřiřadíte hodnotu, nastavte '--Output-assets ' na "majetku =".
-  Všimněte si, že přidáte "=" do `output-assets`. 
+- Pokud popisku přiřadíte hodnotu, nastavte příkaz --output-assets na "assetname=label"
+- Pokud popisku nepřiřadíte hodnotu, nastavte hodnotu --output-assets na "assetname=".
+  Všimněte si, že přidáte `output-assets`"=" do . 
 
 ```azurecli
 az ams job start \
@@ -87,4 +87,4 @@ Dostanete odpověď podobnou této:
 
 ## <a name="next-steps"></a>Další kroky
 
-[AZ AMS Job (CLI)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+[az ams práce (CLI)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)

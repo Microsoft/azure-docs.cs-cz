@@ -1,6 +1,6 @@
 ---
-title: Kurz použití příznaků funkcí v aplikaci pro jarní spuštění – konfigurace aplikací Azure | Microsoft Docs
-description: V tomto kurzu se naučíte implementovat příznaky funkcí v aplikacích pro jarní spouštění.
+title: Kurz pro používání příznaků funkcí v aplikaci spring boot – konfigurace aplikace Azure | Dokumenty společnosti Microsoft
+description: V tomto kurzu se dozvíte, jak implementovat příznaky funkcí v aplikacích jarního spuštění.
 services: azure-app-configuration
 documentationcenter: ''
 author: mrm9084
@@ -15,29 +15,29 @@ ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc
 ms.openlocfilehash: d519ac44d617f725aa9b3d3f11671122bd9477bc
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78944316"
 ---
-# <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Kurz: používání příznaků funkcí v aplikaci pro jarní spuštění
+# <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Kurz: Použití příznaků funkcí v aplikaci Spring Boot
 
-Knihovny pro správu funkcí jádra pružinového spouštění poskytují podporu pro implementaci příznaků funkcí v aplikaci pro spouštění pružin. Tyto knihovny umožňují deklarativní Přidání příznaků funkcí do kódu.
+Knihovny Správy funkcí jádra základního spouštění jarního spouštění poskytují podporu pro implementaci příznaků funkcí v aplikaci spring boot. Tyto knihovny umožňují deklarativně přidat příznaky funkce do kódu.
 
-Knihovny správy funkcí také spravují životní cykly příznaků funkcí na pozadí. Například knihovny aktualizace knihoven a příznak cache nebo zaručují, že stav příznaku by měl být během volání žádosti neměnný. Kromě toho knihovna pružinového spouštění nabízí integrace, včetně akcí kontroleru MVC, tras a middlewaru.
+Knihovny správy funkcí také spravují životní cykly příznaku funkcí na pozadí. Například knihovny aktualizovat a cache příznak stavy nebo zaručit stav příznaku neměnné během volání požadavku. Knihovna Spring Boot navíc nabízí integrace, včetně akcí řadiče MVC, tras a middlewaru.
 
-[Příznaky funkce Přidat k rychlému startu při spuštění aplikace](./quickstart-feature-flag-spring-boot.md) ukazují několik způsobů přidávání příznaků funkcí do aplikace pro spouštění pružiny. V tomto kurzu se tyto metody vysvětlují podrobněji.
+Příznaky [funkce Přidat do aplikace Spring Boot Úvodní příručka](./quickstart-feature-flag-spring-boot.md) ukazuje několik způsobů, jak přidat příznaky funkcí v aplikaci jarního spuštění. Tento kurz vysvětluje tyto metody podrobněji.
 
-V tomto kurzu se naučíte, jak:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Přidání příznaků funkcí v klíčových částech vaší aplikace pro řízení dostupnosti funkcí.
+> * Přidejte příznaky funkcí v klíčových částech aplikace k řízení dostupnosti funkcí.
 > * Integrujte s konfigurací aplikace, když ji používáte ke správě příznaků funkcí.
 
-## <a name="set-up-feature-management"></a>Nastavení správy funkcí
+## <a name="set-up-feature-management"></a>Nastavit správu funkcí
 
-Správce funkcí pro spouštění pružiny `FeatureManager` získá příznaky funkcí z nativního konfiguračního systému rozhraní. V důsledku toho můžete definovat příznaky funkcí vaší aplikace pomocí veškerého zdroje konfigurace, který služba pružinového spouštění podporuje, včetně místního souboru *bootstrap. yml* nebo proměnných prostředí. `FeatureManager` spoléhá na vkládání závislostí. Služby správy funkcí můžete zaregistrovat pomocí standardních konvencí:
+Správce `FeatureManager` funkcí jarního spuštění získává příznaky funkcí z nativního konfiguračního systému rozhraní. V důsledku toho můžete definovat příznaky funkcí aplikace pomocí libovolného zdroje konfigurace, který podporuje jarní spuštění, včetně místních proměnných *souboru bootstrap.yml* nebo prostředí. `FeatureManager`spoléhá na vkládání závislostí. Služby správy funkcí můžete zaregistrovat pomocí standardních konvencí:
 
 ```java
 private FeatureManager featureManager;
@@ -47,11 +47,11 @@ public HelloController(FeatureManager featureManager) {
 }
 ```
 
-Doporučujeme zachovat příznaky funkcí mimo aplikaci a spravovat je samostatně. V takovém případě vám umožní kdykoli změnit stav příznaku a tyto změny se projeví v aplikaci hned. Konfigurace aplikací poskytuje centralizované místo pro organizování a řízení všech příznaků funkcí prostřednictvím vyhrazeného uživatelského rozhraní portálu. Konfigurace aplikace také poskytuje příznaky vaší aplikaci přímo prostřednictvím spouštěcích klientských knihoven pro jaře.
+Doporučujeme zachovat příznaky funkcí mimo aplikaci a spravovat je samostatně. To vám umožní kdykoli upravit stavy příznaku a tyto změny se projeví v aplikaci ihned. Konfigurace aplikace poskytuje centralizované místo pro uspořádání a řízení všech příznaků funkcí prostřednictvím vyhrazeného portálového uznatého. Konfigurace aplikace také doručuje příznaky do vaší aplikace přímo prostřednictvím svých knihoven klienta Spring Boot.
 
-Nejjednodušší způsob, jak připojit aplikaci pro spouštění pružin ke konfiguraci aplikace, je prostřednictvím poskytovatele konfigurace:
+Nejjednodušší způsob, jak připojit aplikaci spring boot ke konfiguraci aplikace, je prostřednictvím poskytovatele konfigurace:
 
-### <a name="spring-cloud-11x"></a>Jarní Cloud 1.1. x
+### <a name="spring-cloud-11x"></a>Jarní mrak 1.1.x
 
 ```xml
 <dependency>
@@ -61,7 +61,7 @@ Nejjednodušší způsob, jak připojit aplikaci pro spouštění pružin ke kon
 </dependency>
 ```
 
-### <a name="spring-cloud-12x"></a>Jarní Cloud 1.2. x
+### <a name="spring-cloud-12x"></a>Jarní mrak 1.2.x
 
 ```xml
 <dependency>
@@ -71,13 +71,13 @@ Nejjednodušší způsob, jak připojit aplikaci pro spouštění pružin ke kon
 </dependency>
 ```
 
-## <a name="feature-flag-declaration"></a>Deklarace příznaku funkce
+## <a name="feature-flag-declaration"></a>Deklarace příznaku prvku
 
-Každý příznak funkce má dvě části: název a seznam jednoho nebo více filtrů, které se používají k vyhodnocení, jestli je stav funkce *zapnutý* (to znamená, když je jeho hodnota `True`). Filtr definuje případ použití, kdy má být funkce zapnuta.
+Každý příznak prvku má dvě části: název a seznam jednoho nebo více filtrů, které se používají k vyhodnocení, zda je stav prvku *zapnutý* (tj. pokud je `True`jeho hodnota ). Filtr definuje případ použití, kdy má být prvek zapnutý.
 
-Pokud má příznak funkce více filtrů, seznam filtrů se prochází v pořadí, dokud jeden z filtrů neurčí, že by měla být funkce povolená. V tomto okamžiku je příznak funkce *zapnutý*a všechny zbývající výsledky filtru se přeskočí. Pokud žádný filtr neindikuje, že by měla být funkce povolená, příznak funkce je *vypnutý*.
+Pokud má příznak prvku více filtrů, je seznam filtrů provázán v pořadí, dokud jeden z filtrů neurčí, že by měla být funkce povolena. V tomto okamžiku je příznak prvku *zapnutý*a všechny zbývající výsledky filtru jsou přeskočeny. Pokud žádný filtr neindikuje, že by měl být prvek povolen, je příznak prvku *vypnutý*.
 
-Správce funkcí podporuje jako zdroj konfigurace pro příznaky funkcí *Application. yml* . Následující příklad ukazuje, jak nastavit příznaky funkcí v souboru YAML:
+Správce funkcí podporuje *soubor application.yml* jako zdroj konfigurace pro příznaky funkcí. Následující příklad ukazuje, jak nastavit příznaky prvků v souboru YAML:
 
 ```yml
 feature-management:
@@ -92,15 +92,15 @@ feature-management:
             value: 50
 ```
 
-Podle konvence se `feature-management` oddíl tohoto dokumentu YML používá pro nastavení příznaku funkce. Předchozí příklad ukazuje tři příznaky funkcí s jejich filtry definovanými ve vlastnosti `EnabledFor`:
+Podle konvence `feature-management` se část tohoto dokumentu YML používá pro nastavení příznaku funkce. Předchozí příklad ukazuje tři příznaky funkce s `EnabledFor` jejich filtry definované ve vlastnosti:
 
-* `feature-a` je *zapnuto*.
-* `feature-b` je *vypnutý*.
-* `feature-c` Určuje filtr s názvem `Percentage` s vlastností `parameters`. `Percentage` je konfigurovatelný filtr. V tomto příkladu `Percentage` určuje pravděpodobnost 50% pro příznak `feature-c`, který má být *zapnut*.
+* `feature-a`je *zapnuta*.
+* `feature-b`je *vypnuto*.
+* `feature-c`určuje filtr pojmenovaný `Percentage` s `parameters` vlastností. `Percentage`je konfigurovatelný filtr. V tomto `Percentage` příkladu určuje 50% pravděpodobnost `feature-c` příznaku, který má být *na*.
 
-## <a name="feature-flag-checks"></a>Kontroly příznaků funkcí
+## <a name="feature-flag-checks"></a>Kontroly příznaku funkce
 
-Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto*. V takovém případě správce funkcí spustí akce, které funkce obsahuje. Příklad:
+Základní vzor správy prvků je nejprve zkontrolovat, zda je příznak prvku nastaven *na*. Pokud ano, správce funkcí pak spustí akce, které funkce obsahuje. Například:
 
 ```java
 private FeatureManager featureManager;
@@ -112,7 +112,7 @@ if (featureManager.isEnabledAsync("feature-a").block()) {
 
 ## <a name="dependency-injection"></a>Injektáž závislosti
 
-V případě jarního spuštění můžete k `FeatureManager` správce funkcí přistupovat prostřednictvím injektáže závislosti:
+Při jarním spuštění můžete přistupovat ke správci `FeatureManager` funkcí prostřednictvím vkládání závislostí:
 
 ```java
 @Controller
@@ -126,9 +126,9 @@ public class HomeController {
 }
 ```
 
-## <a name="controller-actions"></a>Akce kontroleru
+## <a name="controller-actions"></a>Akce řadiče
 
-V řadičích MVC pomocí atributu `@FeatureGate` určíte, jestli je povolená konkrétní akce. Následující akce `Index` vyžaduje, *aby předtím, než bude možné* spustit:, `feature-a`.
+V řadičích MVC můžete `@FeatureGate` pomocí atributu určit, zda je povolena určitá akce. Před `Index` spuštěním `feature-a` je třeba *ji zapnout* následující akce:
 
 ```java
 @GetMapping("/")
@@ -138,11 +138,11 @@ public String index(Model model) {
 }
 ```
 
-Když je kontroler MVC nebo akce zablokovaná, protože příznak řídicí funkce je *vypnutý*, zavolá se registrované `IDisabledFeaturesHandler` rozhraní. Výchozí `IDisabledFeaturesHandler` rozhraní vrátí klientovi stav 404 bez těla odpovědi.
+Pokud je řadič nebo akce MVC blokována, protože `IDisabledFeaturesHandler` je *vypnutý*příznak ovládací funkce , je voláno registrované rozhraní. Výchozí `IDisabledFeaturesHandler` rozhraní vrátí 404 stavový kód klientovi bez těla odezvy.
 
 ## <a name="mvc-filters"></a>Filtry MVC
 
-Filtry MVC můžete nastavit tak, aby byly aktivovány na základě stavu příznaku funkce. Následující kód přidá filtr MVC s názvem `FeatureFlagFilter`. Tento filtr se aktivuje v rámci kanálu MVC jenom v případě, že je povolená možnost `feature-a`.
+Filtry MVC můžete nastavit tak, aby byly aktivovány na základě stavu příznaku prvku. Následující kód přidá filtr MVC s názvem `FeatureFlagFilter`. Tento filtr se aktivuje v rámci `feature-a` kanálu MVC pouze v případě, že je povolena.
 
 ```java
 @Component
@@ -166,7 +166,7 @@ public class FeatureFlagFilter implements Filter {
 
 ## <a name="routes"></a>Trasy
 
-Pomocí příznaků funkcí můžete přesměrovat trasy. Následující kód bude přesměrovat uživatele z `feature-a` je povolen:
+Příznaky prvků můžete použít k přesměrování tras. Následující kód přesměruje uživatele `feature-a` z je povolena:
 
 ```java
 @GetMapping("/redirect")
@@ -183,7 +183,7 @@ public String getOldFeature() {
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak implementovat příznaky funkcí v aplikaci pro spouštění po jaře pomocí knihoven `spring-cloud-azure-feature-management-web`. Další informace o podpoře správy funkcí v konfiguraci jarního spuštění a aplikace najdete v následujících zdrojích informací:
+V tomto kurzu jste se naučili, jak implementovat `spring-cloud-azure-feature-management-web` příznaky funkcí v aplikaci spring boot pomocí knihoven. Další informace o podpoře správy funkcí v nástroji Spring Boot a Konfigurace aplikací naleznete v následujících zdrojích:
 
-* [Vzorový kód příznaku funkce pro spuštění pružiny](/azure/azure-app-configuration/quickstart-feature-flag-spring-boot)
+* [Ukázkový kód příznaku funkce pružinového spuštění](/azure/azure-app-configuration/quickstart-feature-flag-spring-boot)
 * [Správa příznaků funkcí](./manage-feature-flags.md)

@@ -1,5 +1,5 @@
 ---
-title: Kurz`:` použití spravované identity pro přístup k Azure Data Lake Store-Windows-Azure AD
+title: Kurz`:` Použití spravované identity pro přístup k Azure Data Lake Store – Windows – Azure AD
 description: V tomto kurzu se dozvíte, jak použít spravovanou identitu přiřazenou systémem virtuálního počítače s Windows pro přístup k Azure Data Lake Storu.
 services: active-directory
 documentationcenter: ''
@@ -16,17 +16,17 @@ ms.date: 11/14/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c03f78341b7521267f8aaf72d58ebd4c912949ce
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977884"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Data Lake Storu
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systémem pro virtuální počítač s Windows získat přístup k Azure Data Lake Storu. Identity spravovaných služeb, které se spravují automaticky v Azure, slouží k ověřování přihlášení ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu. Získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systémem pro virtuální počítač s Windows získat přístup k Azure Data Lake Storu. Identity spravovaných služeb, které se spravují automaticky v Azure, slouží k ověření přístupu ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Udělení přístupu virtuálnímu počítači ke službě Azure Data Lake Store
@@ -54,13 +54,13 @@ V Data Lake Storu vytvořte novou složku a udělte identitě přiřazené syst�
 2. Klikněte na službu Data Lake Store, kterou chcete pro tento kurz použít.
 3. Na panelu příkazů klikněte na **Průzkumník dat**.
 4. Vybere se kořenová složka služby Data Lake Store.  Na panelu příkazů klikněte na **Přístup**.
-5. Klikněte na tlačítko **Přidat**.  Do pole **Vybrat** zadejte název vašeho virtuálního počítače, například **DevTestVM**.  Ve výsledcích hledání kliknutím vyberte váš virtuální počítač a pak klikněte na **Vybrat**.
-6. Klikněte na **Vybrat oprávnění**.  Vyberte **Čtení** a **Spuštění**, přidejte oprávnění k **této složce** a přidejte ho jako **Oprávnění pouze k přístupu**.  Klikněte na tlačítko **OK**.  Oprávnění by se mělo úspěšně přidat.
+5. Klikněte na **Přidat**.  Do pole **Vybrat** zadejte název vašeho virtuálního počítače, například **DevTestVM**.  Ve výsledcích hledání kliknutím vyberte váš virtuální počítač a pak klikněte na **Vybrat**.
+6. Klikněte na **Vybrat oprávnění**.  Vyberte oprávnění **Číst** a **Spustit**, přidejte je k **Tato složka** a přidejte je jako **Položka oprávnění k přístupu**.  Klikněte na **OK**.  Oprávnění by se mělo úspěšně přidat.
 7. Zavřete okno **Přístup**.
-8. Pro účely tohoto kurzu vytvořte novou složku.  Na panelu příkazů klikněte na **Nová složka** a zadejte název nové složky, například **TestFolder**.  Klikněte na tlačítko **OK**.
+8. Pro tento kurz vytvořte novou složku.  Na panelu příkazů klikněte na **Nová složka** a zadejte název nové složky, například **TestFolder**.  Klikněte na **OK**.
 9. Klikněte na složku, kterou jste vytvořili, a pak na panelu příkazů klikněte na **Přístup**.
 10. Podobně jako v kroku 5 klikněte na **Přidat**, do pole **Vybrat** zadejte název vašeho virtuálního počítače, vyberte ho a klikněte na **Vybrat**.
-11. Podobně jako v kroku 6 klikněte na **Vybrat oprávnění**, vyberte **Čtení**, **Zápis** a **Spuštění**, přidejte oprávnění k **této složce** a přidejte ho jako **Položka oprávnění k přístupu a výchozí položka oprávnění**.  Klikněte na tlačítko **OK**.  Oprávnění by se mělo úspěšně přidat.
+11. Podobně jako v kroku 6 klikněte na **Vybrat oprávnění**, vyberte **Čtení**, **Zápis** a **Spuštění**, přidejte oprávnění k **této složce** a přidejte ho jako **Položka oprávnění k přístupu a výchozí položka oprávnění**.  Klikněte na **OK**.  Oprávnění by se mělo úspěšně přidat.
 
 Spravovaná identita přiřazená systémem virtuálního počítače teď může provádět všechny operace se soubory ve složce, kterou jste vytvořili.  Další informace o správě přístupu ke službě Data Lake Store najdete v tomto článku o [Řízení přístupu v Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
 
@@ -75,8 +75,8 @@ V tomto kurzu pomocí PowerShellu provedete ověření v rozhraní REST API syst
 
 1. Na portálu přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a v části **Přehled** klikněte na **Připojit**.
 2. Zadejte své **Uživatelské jméno** a **Heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 
-3. Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete ve vzdálené relaci **PowerShell**. 
-4. Pomocí příkazu `Invoke-WebRequest` v PowerShellu požádejte místní spravované identity o koncový bod prostředků Azure k získání přístupového tokenu pro Azure Data Lake Store.  Identifikátor prostředku pro Data Lake Store je `https://datalake.azure.net/`.  Služba Data Lake hledá přesnou shodu s identifikátorem prostředku, proto je koncové lomítko důležité.
+3. Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete **powershell** ve vzdálené relaci. 
+4. Pomocí příkazu `Invoke-WebRequest` v PowerShellu požádejte místní spravované identity o koncový bod prostředků Azure k získání přístupového tokenu pro Azure Data Lake Store.  Identifikátor prostředku pro úložiště `https://datalake.azure.net/`datových jezer je .  Služba Data Lake hledá přesnou shodu s identifikátorem prostředku, proto je koncové lomítko důležité.
 
    ```powershell
    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}
@@ -183,7 +183,7 @@ V tomto kurzu pomocí PowerShellu provedete ověření v rozhraní REST API syst
 Pomocí dalších rozhraní API systému souborů Data Lake Store můžete provádět připojování k souborům, stahování souborů a další.
 
 
-## <a name="disable"></a>Zákaz
+## <a name="disable"></a>Zakázat
 
 [!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
 

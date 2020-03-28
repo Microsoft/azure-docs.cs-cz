@@ -1,5 +1,5 @@
 ---
-title: Přírůstkové kopírování dat pomocí Change Tracking
+title: Přírůstkové kopírování dat pomocí sledování změn
 description: V tomto kurzu vytvoříte kanál Azure Data Factory, který přírůstkově kopíruje rozdílová data z několika tabulek v místní databázi SQL Serveru do databáze Azure SQL.
 services: data-factory
 ms.author: yexu
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
 ms.openlocfilehash: a1f76987580bc4235a290c8aa18110f8257e74a7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75982669"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Přírůstkové kopírování dat z Azure SQL Database do Azure Blob Storage s využitím informací sledování změn
@@ -65,11 +65,11 @@ V tomto kurzu vytvoříte dva kanály, které provádějí následující dvě o
     ![Diagram toku přírůstkového načtení](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-load-flow-diagram.png)
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 * **Azure SQL Database**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
-* **Účet služby Azure Storage**. Úložiště objektů blob použijete jako úložiště dat **jímky**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření. Vytvořte kontejner s názvem **adftutorial**. 
+* **Účet Azure Storage**. Úložiště objektů blob použijete jako úložiště dat **jímky**. Pokud nemáte účet úložiště Azure, najdete v článku [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) pro kroky k jeho vytvoření. Vytvořte kontejner s názvem **adftutorial**. 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Vytvoření tabulky zdroje dat v databázi Azure SQL
 1. Spusťte **SQL Server Management Studio** a připojte se k serveru SQL Azure.
@@ -152,7 +152,7 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **data a analýzy** > **Data Factory**:
+1. V levé nabídce vyberte **Vytvořit data o prostředku** > **+ Analytics** > **Data Factory**:
 
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -160,21 +160,21 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 
      ![Stránka Nová datová továrna](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png)
 
-   Název datové továrny Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba, změňte název objektu pro vytváření dat (třeba na váš_název_ADFTutorialDataFactory) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba, změňte název objektu pro vytváření dat (třeba na váš_název_ADFTutorialDataFactory) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
 
        `Data factory name “ADFTutorialDataFactory” is not available`
 3. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu.
 4. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
 
       - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
-      - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
+      - Vyberte **Vytvořit nový**a zadejte název skupiny prostředků.   
          
         Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
-4. Jako **verzi** vyberte **V2 (Preview)** .
-5. Vyberte **umístění** pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+4. Jako **verzi** vyberte **V2 (Preview)**.
+5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na **Vytvořit**.      
-8. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**.
+8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **Nasazení datové továrny**.
 
     ![nasazování dlaždice datové továrny](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
@@ -201,7 +201,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
 
     1. Jako **Název** zadejte **AzureStorageLinkedService**.
     2. Jako **Název účtu úložiště** vyberte svůj účet služby Azure Storage.
-    3. Klikněte na možnost **Uložit**.
+    3. Klikněte na **Uložit**.
 
    ![Nastavení účtu služby Azure Storage](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-storage-linked-service-settings.png)
 
@@ -241,7 +241,7 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci zdrojových dat.
 4. Přepněte na kartu **Připojení** a proveďte následující kroky:
 
     1. Jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
-    2. Jako **Tabulka** vyberte **[dbo].[tabulka_zdroje_dat]** .
+    2. Jako **Tabulka** vyberte **[dbo].[tabulka_zdroje_dat]**.
 
    ![Připojení ke zdroji](./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-connection.png)
 
@@ -261,7 +261,7 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci dat, která se kopíruj�
 
     1. Jako **Propojená služba** vyberte **AzureStorageLinkedService**.
     2. Jako část **složka** v **cestě k souboru** zadejte **adftutorial/incchgtracking**.
-    3. Zadejte **\@Concat (' incremental-', Pipeline (). RunId, '. txt ')** pro **soubor** , který je součástí **FilePath**.  
+    3. Zadejte ** \@CONCAT('Incremental-', pipeline(). RunId, '.txt')** pro **část souboru** **filePath**.  
 
        ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -274,7 +274,7 @@ V tomto kroku vytvoříte datovou sadu pro uložení verze sledování změn.  T
 4. Přepněte na kartu **Připojení** a proveďte následující kroky:
 
     1. Jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
-    2. Jako **Tabulka** vyberte **[dbo].[table_store_ChangeTracking_version]** .
+    2. Jako **Tabulka** vyberte **[dbo].[table_store_ChangeTracking_version]**.
 
 ## <a name="create-a-pipeline-for-the-full-copy"></a>Vytvoření kanálu pro úplné kopírování
 V tomto kroku vytvoříte kanál s aktivitou kopírování, která zkopíruje všechna data ze zdrojového úložiště dat (Azure SQL Database) do cílového úložiště dat (Azure Blob Storage).
@@ -294,7 +294,7 @@ V tomto kroku vytvoříte kanál s aktivitou kopírování, která zkopíruje v�
 5. Přepněte na kartu **Jímka** a v poli **Datová sada jímky** vyberte **SinkDataset**.
 
     ![Aktivita kopírování – jímka](./media/tutorial-incremental-copy-change-tracking-feature-portal/copy-activity-sink.png)
-6. Pokud chcete ověřit definici kanálu, klikněte na **Ověřit** na panelu nástrojů. Ověřte, že se nezobrazí žádná chyba ověření. Zavřete okno **Sestava ověření kanálu** kliknutím na **>>** .
+6. Pokud chcete ověřit definici kanálu, klikněte na **Ověřit** na panelu nástrojů. Ověřte, že se nezobrazí žádná chyba ověření. Zavřete okno **Sestava ověření kanálu** kliknutím na **>>**.
 
     ![Ověření kanálu](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-validate.png)
 7. Pokud chcete publikovat entity (propojené služby, datové sady a kanály), klikněte na **Publikovat**. Počkejte na úspěšné dokončení publikování.
@@ -318,7 +318,7 @@ Klikněte na **Aktivační událost** na panelu nástrojů pro kanál a pak klik
 1. Klikněte na kartu **Monitorování** na levé straně. V seznamu se zobrazí spuštění kanálu a jeho stav. Pokud chcete seznam aktualizovat, klikněte na **Aktualizovat**. Pomocí odkazů ve sloupci Akce můžete zobrazit spuštění aktivit související se spuštěním kanálu nebo spustit kanál znovu.
 
     ![Spuštění kanálu](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
-2. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Kanál obsahuje pouze jednu aktivitu, takže se v seznamu zobrazí pouze jedna položka. Pokud chcete přepnout zpět na zobrazení spuštění kanálu, klikněte na odkaz **Kanály** v horní části.
+2. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Kanál obsahuje pouze jednu aktivitu, takže se v seznamu zobrazí pouze jedna položka. Pokud chcete přepnout zpět do zobrazení spuštění kanálu, klikněte nahoře na odkaz **Potrubí.**
 
     ![Spuštění aktivit](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
 
@@ -356,7 +356,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ## <a name="create-a-pipeline-for-the-delta-copy"></a>Vytvoření kanálu pro rozdílové kopírování
 V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho budete spouštět. **Aktivity vyhledávání** získají starou a novou hodnoty SYS_CHANGE_VERSION z Azure SQL Database a předají je aktivitě kopírování. **Aktivita kopírování** zkopíruje vložená/aktualizovaná/odstraněná data mezi dvěma hodnotami SYS_CHANGE_VERSION z Azure SQL Database do Azure Blob Storage. **Aktivita uložených procedur** aktualizuje hodnotu SYS_CHANGE_VERSION pro další spuštění kanálu.
 
-1. V uživatelském rozhraní Data Factory přepněte na kartu **Upravit** . v levém podokně klikněte na **+ (plus)** a pak klikněte na **kanál**.
+1. V uzdu Factory dat přepněte na kartu **Úpravy.** V levém podokně klikněte na **+ (plus)** a klikněte na **Pipeline**.
 
     ![Nabídka Nový kanál](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
 2. Zobrazí se nová karta, na které můžete kanál konfigurovat. Kanál se zobrazí také ve stromovém zobrazení. V okně **Vlastnosti** změňte název kanálu na **IncrementalCopyPipeline**.
@@ -423,7 +423,7 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
 14. **Připojte aktivitu kopírování k aktivitě uložené procedury**. Přetáhněte **zelené** tlačítko připojené k aktivitě Kopírování do aktivity Uložená procedura.
 
     ![Propojení aktivit Kopírování a Uložená procedura](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-copy-stored-procedure.png)
-15. Klikněte na **Ověřit** na panelu nástrojů. Ověřte, že se nezobrazí žádné chyby ověření. Zavřete okno **Sestava ověření kanálu** kliknutím na **>>** .
+15. Klikněte na **Ověřit** na panelu nástrojů. Ověřte, že se nezobrazí žádné chyby ověření. Zavřete okno **Sestava ověření kanálu** kliknutím na **>>**.
 
     ![Tlačítko Ověřit](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
 16. Kliknutím na tlačítko **Publikovat vše** publikujte entity (propojené služby, datové sady a kanály) do služby Data Factory. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**.
@@ -440,7 +440,7 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
 1. Klikněte na kartu **Monitorování** na levé straně. V seznamu se zobrazí spuštění kanálu a jeho stav. Pokud chcete seznam aktualizovat, klikněte na **Aktualizovat**. Pomocí odkazů ve sloupci **Akce** můžete zobrazit spuštění aktivit související se spuštěním kanálu nebo spustit kanál znovu.
 
     ![Spuštění kanálu](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
-2. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Kanál obsahuje pouze jednu aktivitu, takže se v seznamu zobrazí pouze jedna položka. Pokud chcete přepnout zpět na zobrazení spuštění kanálu, klikněte na odkaz **Kanály** v horní části.
+2. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Kanál obsahuje pouze jednu aktivitu, takže se v seznamu zobrazí pouze jedna položka. Pokud chcete přepnout zpět do zobrazení spuštění kanálu, klikněte nahoře na odkaz **Potrubí.**
 
     ![Spuštění aktivit](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
 
@@ -468,7 +468,7 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 
 
 ## <a name="next-steps"></a>Další kroky
-Přejděte k následujícímu kurzu, kde se dozvíte, jak kopírovat nové a změněné soubory pouze na základě jejich LastModifiedDate:
+Přejdete k následujícímu kurzu, kde se dozvíte o kopírování nových a změněných souborů pouze na základě jejich LastModifiedDate:
 
 > [!div class="nextstepaction"]
->[Kopírovat nové soubory podle LastModifiedDate](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
+>[Kopírovat nové soubory podle data poslední změny](tutorial-incremental-copy-lastmodified-copy-data-tool.md)

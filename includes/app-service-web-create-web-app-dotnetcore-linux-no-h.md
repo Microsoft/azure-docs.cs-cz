@@ -9,15 +9,15 @@ ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 2dc35727a82459750b4414b6e3eeddf28b31b718
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68824703"
 ---
-Vytvořte [webovou aplikaci](../articles/app-service/containers/app-service-linux-intro.md) v plánu služby App Service `myAppServicePlan`. 
+Vytvořte [webovou aplikaci](../articles/app-service/containers/app-service-linux-intro.md) v plánu služby `myAppServicePlan` App Service. 
 
-Ve službě Cloud Shell můžete použít příkaz [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest). V následujícím příkladu nahraďte `<app-name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `DOTNETCORE|2.2`. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest). 
+V prostředí Cloud Shell můžete [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) použít příkaz. V následujícím příkladu nahraďte `<app-name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `DOTNETCORE|2.2`. Chcete-li zobrazit všechny [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)podporované moduly runtimes, spusťte . 
 
 ```azurecli-interactive
 # Bash

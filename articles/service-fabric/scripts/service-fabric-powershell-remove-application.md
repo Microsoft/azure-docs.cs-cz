@@ -1,6 +1,6 @@
 ---
-title: Odebrání aplikace z clusteru v PowerShellu
-description: Ukázkový skript Azure PowerShell – odebrání aplikace z clusteru Service Fabric
+title: Odebrání aplikace z clusteru v Powershellu
+description: Ukázka skriptu Azure PowerShell – odebrání aplikace z clusteru Service Fabric.
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -15,13 +15,13 @@ ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 9ac4c23468c74b5a2c6874de2cb6b8d0e6b9e7dd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75610280"
 ---
-# <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>Odebrání aplikace z Service Fabricho clusteru pomocí prostředí PowerShell
+# <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>Odebrání aplikace z clusteru Service Fabric pomocí prostředí Powershell
 
 Tento ukázkový skript odstraní spuštěnou instanci aplikace Service Fabric a zruší registraci typu a verze aplikace z clusteru.  Odstraněním instance aplikace dojde také k odstranění všech spuštěných instancí služby přidružených dané aplikaci. Podle potřeby upravte parametry. 
 
@@ -37,11 +37,11 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) | Odebere instanci běžící Service Fabric aplikace z clusteru.  |
-| [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Zruší registraci typu a verze Service Fabric aplikace z clusteru. |
+| [Remove-ServiceFabricAplikace](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) | Odebere spuštěnou instanci aplikace Service Fabric z clusteru.  |
+| [Zrušit registraci ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Zruší registraci typu a verze aplikace Service Fabric z clusteru. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Service Fabric PowerShellu najdete v [dokumentaci k Azure PowerShell](/powershell/azure/service-fabric/?view=azureservicefabricps).
+Další informace o modulu Service Fabric PowerShell najdete v [dokumentaci k Prostředí Azure PowerShell](/powershell/azure/service-fabric/?view=azureservicefabricps).
 
 Další ukázky PowerShellu pro Azure Service Fabric najdete v [ukázkách Azure PowerShellu](../service-fabric-powershell-samples.md).

@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – nasazení zásobníku LAMP do sady škálování virtuálních počítačů s vyrovnáváním zatížení
+title: Ukázka skriptu příkazového příkazu Azure – nasazení zásobníku LAMP ve škálovací sadě virtuálních strojů s vyrovnáváním zatížení
 description: Pomocí rozšíření vlastních skriptů nasadíte stack LAMP do škálovací sady virtuálních počítačů v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.custom: mvc
 ms.date: 04/05/2017
 ms.openlocfilehash: 00aa744f09b7bcbbbc258b92a8fd5ab750e447c7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74039102"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>Nasazení stacku LAMP do škálovací sady virtuálních počítačů s vyrovnáváním zatížení
@@ -48,7 +48,7 @@ az group delete -n myResourceGroup
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skupiny dostupnosti, nástroje pro vyrovnávání zatížení a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | Vytvoří škálovací sadu virtuálních počítačů. |

@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.openlocfilehash: ec1579792a6e247bf49946bb8609a626154fbd46
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74037357"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Kurz: Vizualizace dat z Průzkumníku dat Azure v Power BI
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Power BI je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky v rámci organizace. V tomto kurzu se nejprve dozvíte, jak vykreslovat vizuály v Průzkumníku dat Azure. Pak propojíte Průzkumníka dat s Power BI, vytvoříte sestavu založenou na ukázkových datech a tu pak publikujete ve službě Power BI.
+Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Power BI je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky v rámci organizace. V tomto kurzu se nejprve dozvíte, jak vykreslovat vizuály v Průzkumníku dat Azure. Pak propojíte Průzkumníka dat s Power BI, vytvoříte sestavu založenou na ukázkových datech a tu pak publikujete ve službě Power BI.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete. Pokud ještě nejste zaregistrovaní k Power BI Pro, [zaregistrujte si bezplatnou zkušební verzi](https://app.powerbi.com/signupredirect?pbi_source=web) před tím, než začnete.
 
@@ -37,13 +37,13 @@ Kromě předplatných Azure a Power BI budete k dokončení tohoto kurzu potřeb
 
 * [Ukázková data StormEvents](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (vyberte **Stáhnout zdarma**)
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (zvolte **STÁHNOUT ZDARMA)**
 
 ## <a name="render-visuals-in-azure-data-explorer"></a>Vykreslování vizuálů v Průzkumníku dat Azure
 
 Než se pustíme do Power BI, podívejme se, jak vykreslovat vizuály v Průzkumníku dat Azure. To se skvěle hodí pro rychlé analýzy.
 
-1. Přihlaste se k webu [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
+1. Přihlaste [https://dataexplorer.azure.com](https://dataexplorer.azure.com)se do .
 
 1. V levém podokně vyberte testovací databázi, která obsahuje ukázková data StormEvents.
 
@@ -81,11 +81,11 @@ Teď je čas podívat se na Power BI, ale s vizuály v Průzkumníku dat Azure t
 
 Teď se připojíte k Průzkumníku dat Azure v Power BI Desktopu.
 
-1. V Power BI Desktop na kartě **Domů** vyberte **získat data** a pak **Další**.
+1. V Power BI Desktop na kartě **Domů** vyberte **Získat data** a pak **Další**.
 
     ![Získání dat](media/visualize-power-bi/get-data-more.png)
 
-1. Vyhledejte *azure Průzkumník dat*, vyberte **Azure Průzkumník dat (beta)** a pak se **Připojte**.
+1. Vyhledejte *Azure Data Explorer*, vyberte Azure Data Explorer **(Beta)** a pak **Connect**.
 
     ![Vyhledání a získání dat](media/visualize-power-bi/search-get-data.png)
 
@@ -219,7 +219,7 @@ Pokud si vytvořenou sestavu nechcete ponechat, stačí odstranit soubor *storm-
 
 1. V části **Můj pracovní prostor** se posuňte dolů do části **SESTAVY** a vyhledejte **storm-events**.
 
-1. Vyberte tři tečky ( **...** ) vedle sestavy **storm-events** a pak vyberte **ODEBRAT**.
+1. Vyberte tři tečky (**...**) vedle sestavy **storm-events** a pak vyberte **ODEBRAT**.
 
     ![Odebrání sestavy](media/visualize-power-bi/remove-report.png)
 

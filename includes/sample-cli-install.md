@@ -4,13 +4,13 @@ ms.topic: include
 ms.date: 05/31/2019
 ms.author: sttramer
 ms.openlocfilehash: c4bc5a6befaf684cd07fb3b6799ba00099627132
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66814861"
 ---
-Tuto ukázku spustit, nainstalujte nejnovější verzi [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli). Spuštěním příkazu `az login` vytvořte připojení k Azure.
+Chcete-li spustit tuto ukázku, nainstalujte nejnovější verzi [příkazového příkazu Konsau .](/cli/azure/install-azure-cli) Spuštěním příkazu `az login` vytvořte připojení k Azure.
 
-Ukázky pro Azure CLI, které jsou určeny pro `bash` prostředí. Tuto ukázku spustit v prostředí Windows PowerShell nebo příkazového řádku, budete muset změnit prvky skriptu.
+Ukázky pro Azure CLI `bash` jsou zapsány pro prostředí. Chcete-li spustit tuto ukázku v prostředí Windows PowerShell nebo příkazovém řádku, bude pravděpodobně nutné změnit prvky skriptu.
 

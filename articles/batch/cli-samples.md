@@ -1,6 +1,6 @@
 ---
-title: Příklady rozhraní příkazového řádku Azure – Batch
-description: Příklady Azure CLI pro službu Azure Batch. Naučte se vytvořit účet Batch a přidat aplikaci.
+title: Příklady azure cli – dávka
+description: Příklady Azure CLI pro službu Azure Batch. Přečtěte si, jak vytvořit dávkový účet a přidat aplikaci.
 services: batch
 documentationcenter: batch
 author: LauraBrenner
@@ -16,10 +16,10 @@ ms.date: 01/29/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: dd95511365a25c8f642cb7dcc5ef477f90926d31
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77022694"
 ---
 # <a name="azure-cli-examples-for-azure-batch"></a>Příklady Azure CLI pro službu Azure Batch
@@ -28,7 +28,7 @@ Následující tabulka obsahuje odkazy na příklady Azure CLI pro službu Azure
 
 |  |  |
 |---|---|
-|**Vytvoření účtu služby Batch**||
+|**Vytvoření účtu Batch**||
 | [Vytvoření účtu Batch v režimu služby Batch](./scripts/batch-cli-sample-create-account.md) | Vytvoří účet Batch ve výchozím režimu a přidruží ho k účtu úložiště. |
 | [Vytvoření účtu Batch v režimu předplatného uživatele](./scripts/batch-cli-sample-create-user-subscription-account.md) | Vytvoří účet Batch v režimu předplatného uživatele. |
 |**Přidání aplikace**||

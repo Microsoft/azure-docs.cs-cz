@@ -1,6 +1,6 @@
 ---
-title: Vytvoření & hledání kotev v SWIFT
-description: Podrobné vysvětlení způsobu vytváření a hledání kotev pomocí prostorových kotev Azure v SWIFT.
+title: Vytvoření & hledání kotev v swiftu
+description: Podrobné vysvětlení, jak vytvořit a lokalizovat kotvy pomocí azure prostorové kotvy v Swiftu.
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,41 +9,41 @@ ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: f72e648d8f7cba0af01e7f87827d38368dba698d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74277324"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-swift"></a>Jak vytvořit a najít kotvy pomocí prostorových kotev Azure v SWIFT
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-swift"></a>Jak vytvořit a lokalizovat kotvy pomocí prostorových ukotvení Azure v Swiftu
 
 > [!div  class="op_single_selector"]
-> * [Jednot](create-locate-anchors-unity.md)
+> * [Unity](create-locate-anchors-unity.md)
 > * [Objective-C](create-locate-anchors-objc.md)
 > * [Swift](create-locate-anchors-swift.md)
 > * [Android Java](create-locate-anchors-java.md)
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Prostorové kotvy Azure umožňují sdílet kotvy na světě mezi různými zařízeními. Podporuje několik různých vývojových prostředí. V tomto článku se podrobněme, jak v SWIFT použít sadu SDK prostorových kotev pro Azure k těmto akcím:
+Azure Spatial Anchors umožňují sdílet kotvy ve světě mezi různými zařízeními. Podporuje několik různých vývojových prostředí. V tomto článku se podíváme na to, jak používat azure prostorové kotvy SDK, v Swift, chcete-li:
 
-- Správně nastavte a spravujte relaci prostorových kotev Azure.
-- Vytváření a nastavování vlastností místních ukotvení.
+- Správně nastavit a spravovat relace Azure prostorových kotvy.
+- Vytvořte a nastavte vlastnosti na místníkotvy.
 - Nahrajte je do cloudu.
-- Najděte a odstraňte cloudové kotvy.
+- Vyhledejte a odstraňte prostorové kotvy v cloudu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto průvodce se ujistěte, že máte následující:
+Chcete-li tuto příručku dokončit, ujistěte se, že máte:
 
-- Přečtěte si [Přehled prostorových kotev Azure](../overview.md).
-- Bylo dokončeno jedno z [5 minut rychlých startů](../index.yml).
-- Základní znalosti o SWIFT
-- Základní znalosti o <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a>
+- Přečtěte si [přehled prostorových kotev Azure](../overview.md).
+- Dokončenjeden z [5minutových rychlých startů](../index.yml).
+- Základní znalosti o Swiftu.
+- Základní znalosti o <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a>.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-Přečtěte si další informace o třídě [ASACloudSpatialAnchorSession](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession) .
+Další informace o [asacloudspatialanchorsession](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession) třídy.
 
 ```swift
     var _cloudSession : ASACloudSpatialAnchorSession? = nil
@@ -53,7 +53,7 @@ Přečtěte si další informace o třídě [ASACloudSpatialAnchorSession](https
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-Přečtěte si další informace o třídě [ASASessionConfiguration](https://docs.microsoft.com/objectivec/api/spatial-anchors/asasessionconfiguration) .
+Další informace o třídě [ASASessionConfiguration.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asasessionconfiguration)
 
 ```swift
     _cloudSession!.configuration.accountKey = "MyAccountKey"
@@ -67,7 +67,7 @@ Přečtěte si další informace o třídě [ASASessionConfiguration](https://do
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-Přečtěte si další informace o metodě protokolu [tokenRequired](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) .
+Další informace o metodě protokolu [tokenRequired.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired)
 
 ```swift
     internal func tokenRequired(_ cloudSession:ASACloudSpatialAnchorSession!, _ args:ASATokenRequiredEventArgs!) {
@@ -121,7 +121,7 @@ Přečtěte si další informace o metodě protokolu [tokenRequired](https://doc
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-ios.md)]
 
-Přečtěte si další informace o metodě [Start](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) .
+Další informace o [metodě start.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start)
 
 ```swift
     _cloudSession!.session = self.sceneView.session;
@@ -131,7 +131,7 @@ Přečtěte si další informace o metodě [Start](https://docs.microsoft.com/ob
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-Další informace o metodě [processFrame](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe)
+Další informace o metodě [processFrame.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe)
 
 ```swift
     _cloudSession?.processFrame(self.sceneView.session.currentFrame)
@@ -139,7 +139,7 @@ Další informace o metodě [processFrame](https://docs.microsoft.com/objectivec
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-Přečtěte si další informace o metodě protokolu [sessionUpdated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) .
+Další informace o [sessionUpdated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) protocol method.
 
 ```swift
     internal func sessionUpdated(_ cloudSession:ASACloudSpatialAnchorSession!, _ args:ASASessionUpdatedEventArgs!) {
@@ -153,7 +153,7 @@ Přečtěte si další informace o metodě protokolu [sessionUpdated](https://do
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-Přečtěte si další informace o třídě [ASACloudSpatialAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor) .
+Další informace o třídě [ASACloudSpatialAnchor.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor)
 
 ```swift
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -182,7 +182,7 @@ Přečtěte si další informace o třídě [ASACloudSpatialAnchor](https://docs
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-Další informace o metodě [getStatusWithCompletionHandler](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getsessionstatus)
+Další informace o metodě [getStatusWithCompletionHandler.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getsessionstatus)
 
 ```swift
     _cloudSession?.getStatusWithCompletionHandler( { (value:ASASessionStatus, error:Error?) in
@@ -199,7 +199,7 @@ Další informace o metodě [getStatusWithCompletionHandler](https://docs.micros
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-Přečtěte si další informace o vlastnosti [appProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) .
+Přečtěte si další informace o vlastnosti [appProperties.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties)
 
 ```swift
     var cloudAnchor : ASACloudSpatialAnchor? = nil
@@ -213,7 +213,7 @@ Přečtěte si další informace o vlastnosti [appProperties](https://docs.micro
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-Další informace o metodě [updateAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties)
+Další informace o metodě [updateAnchorProperties.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties)
 
 ```swift
     var anchor : ASACloudSpatialAnchor? = /* locate your anchor */;
@@ -227,7 +227,7 @@ Další informace o metodě [updateAnchorProperties](https://docs.microsoft.com/
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-Další informace o metodě [getAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getanchorproperties)
+Další informace o metodě [getAnchorProperties.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getanchorproperties)
 
 ```swift
     _cloudSession?.getAnchorProperties("anchorId", withCompletionHandler: { (anchor:SCCCloudSpatialAnchor?, error:Error?) in
@@ -246,7 +246,7 @@ Další informace o metodě [getAnchorProperties](https://docs.microsoft.com/obj
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-Přečtěte si další informace o vlastnosti [vypršení platnosti](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) .
+Přečtěte si další informace o vlastnosti [vypršení platnosti.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration)
 
 ```swift
     let secondsInAWeek = 60.0 * 60.0 * 24.0 * 7.0
@@ -256,7 +256,7 @@ Přečtěte si další informace o vlastnosti [vypršení platnosti](https://doc
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-Další informace o metodě [createWatcher](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher)
+Další informace o metodě [createWatcher.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher)
 
 ```swift
     let criteria = ASAAnchorLocateCriteria()!
@@ -266,7 +266,7 @@ Další informace o metodě [createWatcher](https://docs.microsoft.com/objective
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-Přečtěte si další informace o metodě protokolu [anchorLocated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) .
+Další informace o metodě protokolu [anchorLocated.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated)
 
 ```swift
     internal func anchorLocated(_ cloudSession: ASACloudSpatialAnchorSession!, _ args: ASAAnchorLocatedEventArgs!) {
@@ -294,7 +294,7 @@ Přečtěte si další informace o metodě protokolu [anchorLocated](https://doc
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-Přečtěte si další informace o metodě [Delete](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor) .
+Přečtěte si další informace o metodě [odstranění.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor)
 
 ```swift
     _cloudSession?.delete(cloudAnchor!, withCompletionHandler: { (error: Error?) in
@@ -304,7 +304,7 @@ Přečtěte si další informace o metodě [Delete](https://docs.microsoft.com/o
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-Přečtěte si další informace o metodě [stop](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) .
+Další informace o metodě [stop.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop)
 
 ```swift
     _cloudSession!.stop()
@@ -312,7 +312,7 @@ Přečtěte si další informace o metodě [stop](https://docs.microsoft.com/obj
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-Přečtěte si další informace o metodě [resetování](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#reset) .
+Přečtěte si další informace o metodě [resetování.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#reset)
 
 ```swift
     _cloudSession!.reset()

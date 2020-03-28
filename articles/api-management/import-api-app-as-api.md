@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74108501"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Import aplikace API jako rozhraní API
@@ -33,11 +33,11 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="prerequisites"></a>Požadavky
 
 + Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
-+ Zkontrolujte, jestli ve svém předplatném máte aplikaci API. Další informace najdete v [dokumentaci k App Service](https://docs.microsoft.com/azure/app-service/) .
++ Zkontrolujte, jestli ve svém předplatném máte aplikaci API. Další informace naleznete v [tématu Dokumentace ke službě App Service](https://docs.microsoft.com/azure/app-service/)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Import a publikování back-endového rozhraní API
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Import a publikování rozhraní API back-endu
 
 1. V části **API MANAGEMENT** vyberte **rozhraní API**.
 2. Ze seznamu **Přidat nové rozhraní API** vyberte **Aplikace API**.
@@ -55,10 +55,10 @@ V tomto článku získáte informace o těchto tématech:
     Ve výchozím nastavení každá instance služby API Management obsahuje dva ukázkové produkty:
 
     * **Starter**
-    * **Unlimited**   
+    * **Neomezené**   
 7. Vyberte **Vytvořit**.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>Otestujte nové rozhraní API v Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Testování nového rozhraní API na webu Azure Portal
 
 Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodlný způsob pro zobrazení a testování operací v rozhraní API.  
 

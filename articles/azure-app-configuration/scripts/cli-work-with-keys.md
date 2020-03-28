@@ -1,7 +1,7 @@
 ---
-title: Ukázkový skript Azure CLI – práce s klíčovými hodnotami v App Configuration Storu
+title: Ukázka skriptu příkazového příkazu Azure – práce s hodnotami klíčů v Úložišti konfigurace aplikací
 titleSuffix: Azure App Configuration
-description: Použití skriptu Azure CLI k vytváření, zobrazování, aktualizaci a odstraňování hodnot klíčů z úložiště konfigurace aplikace
+description: Použití skriptu Azure CLI k vytváření, zobrazení, aktualizaci a odstraňování hodnot klíčů z úložiště konfigurace aplikací
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -10,25 +10,25 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 1a4edabe666a554ccd01d110f0f71226221dfc67
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77523641"
 ---
-# <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Práce s klíčovými hodnotami v úložišti konfigurace aplikace Azure
+# <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Práce s hodnotami klíčů v úložišti Azure App Configuration Store
 
 Tento ukázkový skript ukazuje, jak:
-* Vytvoří novou dvojici klíč-hodnota.
-* Vypíše všechny existující páry klíč-hodnota.
+* Vytvoření nového páru klíč-hodnota
+* Seznam všech existujících párů klíč-hodnota
 * Aktualizace hodnoty nově vytvořeného klíče
-* Odstraní novou dvojici klíč-hodnota.
+* Odstranění nového páru klíč-hodnota
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+Tento článek vyžaduje Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -79,16 +79,16 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-V této tabulce jsou uvedené příkazy, které se používají v našem ukázkovém skriptu. 
+V této tabulce jsou uvedeny příkazy použité v našem ukázkovém skriptu. 
 
 | Příkaz | Poznámky |
 |---|---|
-| [AZ appconfig KV set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Vytvoří nebo aktualizuje pár klíč-hodnota. |
-| [AZ appconfig KV list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Vypíše páry klíč-hodnota v úložišti konfigurace aplikace. |
-| [AZ appconfig KV DELETE](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Odstraní pár klíč-hodnota. |
+| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Vytvořte nebo aktualizujte dvojici klíč-hodnota. |
+| [az appconfig kv seznam](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Seznam párů klíč hodnota v úložišti konfigurace aplikace. |
+| [az appconfig kv odstranit](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Odstraňte dvojici klíč-hodnota. |
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
-Další ukázkové skripty rozhraní příkazového řádku pro konfiguraci aplikace najdete v ukázkách rozhraní příkazového [řádku konfigurace Azure](../cli-samples.md).
+Další ukázky skriptu příkazového příkazu konfigurace aplikace najdete v [ukázkách příkazového příkazu konfigurace aplikace Azure](../cli-samples.md).

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b7754a289c06dff37aedcf8da76d35dfac4b183d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: df6719cad79bdb063c2d4d74892206b6e5bbd414
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252804"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292035"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Kurz: Nasazení aplikace v Javě do clusteru Service Fabric v Azure
 
@@ -32,12 +32,12 @@ V této sérii kurzů se naučíte:
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-java-elk.md)
 > * [Nastavení CI/CD](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Instalace příkazového příkazového příkazu Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Nainstalujte sadu Service Fabric SDK pro [Mac](service-fabric-get-started-mac.md) nebo [Linux](service-fabric-get-started-linux.md).
 * [Nainstalujte Python 3](https://wiki.python.org/moin/BeginnersGuide/Download).
 
@@ -162,7 +162,7 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
-    Vaše adresa URL SAS pro EventHubs se řídí strukturou: `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`. Například `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`.
+    Vaše adresa URL SAS pro EventHubs `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`se řídí strukturou: . Například `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`.
 
 12. Otevřete soubor *sfdeploy.parameters.json* a nahraďte následující obsah hodnotami z předchozích kroků. Hodnotu [SAS-URL-STORAGE-ACCOUNT] jste si poznamenali v kroku 8. Hodnotu [SAS-URL-EVENT-HUBS] jste si poznamenali v kroku 11.
 
@@ -217,11 +217,11 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
     ./install.sh
     ```
 
-5. Pokud chcete přejít do nástroje Service Fabric Explorer, otevřete oblíbený prohlížeč a zadejte do něj https://testlinuxcluster.westus.cloudapp.azure.com:19080. Z úložiště certifikátů zvolte certifikát, který chcete použít pro připojení k tomuto koncovému bodu. Pokud používáte počítač s Linuxem, k zobrazení nástroje Service Fabric Explorer je potřeba do Chrome importovat certifikáty vygenerované skriptem *new-service-fabric-cluster-certificate.sh*. Pokud používáte počítač Mac, musíte soubor PFX nainstalovat do své klíčenky. Všimněte si, že se vaše aplikace nainstalovala do clusteru.
+5. Pokud chcete přejít do nástroje Service Fabric Explorer, otevřete oblíbený prohlížeč a zadejte do něj `https://testlinuxcluster.westus.cloudapp.azure.com:19080`. Z úložiště certifikátů zvolte certifikát, který chcete použít pro připojení k tomuto koncovému bodu. Pokud používáte počítač s Linuxem, k zobrazení nástroje Service Fabric Explorer je potřeba do Chrome importovat certifikáty vygenerované skriptem *new-service-fabric-cluster-certificate.sh*. Pokud používáte počítač Mac, musíte soubor PFX nainstalovat do své klíčenky. Všimněte si, že se vaše aplikace nainstalovala do clusteru.
 
     ![SFX pro Javu v Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
-6. Pokud chcete přejít do své aplikace, zadejte https://testlinuxcluster.westus.cloudapp.azure.com:8080.
+6. Pokud chcete přejít do své aplikace, zadejte `https://testlinuxcluster.westus.cloudapp.azure.com:8080`.
 
     ![Hlasovací aplikace v Javě v Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 

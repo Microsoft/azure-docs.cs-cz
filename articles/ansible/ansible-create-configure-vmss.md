@@ -1,17 +1,17 @@
 ---
-title: Kurz – konfigurace služby Virtual Machine Scale Sets v Azure pomocí Ansible
-description: Naučte se používat Ansible k vytváření a konfiguraci služby Virtual Machine Scale Sets v Azure.
+title: Kurz – konfigurace škálovacích sad virtuálních strojů v Azure pomocí ansible
+description: Naučte se používat Ansible k vytváření a konfiguraci škálovacích sad virtuálních strojů v Azure
 keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: e1cc40459988fb9bc38e3dbbcde563cebb531e3d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156552"
 ---
-# <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>Kurz: Konfigurace služby Virtual Machine Scale Sets v Azure pomocí Ansible
+# <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>Kurz: Konfigurace škálovacích sad virtuálních strojů v Azure pomocí Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -21,31 +21,31 @@ ms.locfileid: "74156552"
 
 > [!div class="checklist"]
 >
-> * Konfigurace prostředků pro virtuální počítač
-> * Konfigurace sady škálování
-> * Škálujte škálu nastavenou zvýšením instancí virtuálních počítačů. 
+> * Konfigurace prostředků pro virtuální počítače
+> * Konfigurace škálovací sady
+> * Škálování škálovací sady zvýšením instancí virtuálních montovek 
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="configure-a-scale-set"></a>Konfigurace sady škálování
+## <a name="configure-a-scale-set"></a>Konfigurace škálovací sady
 
-PlayBook kód v této části definuje následující zdroje:
+Kód playbooku v této části definuje následující zdroje:
 
-* **Skupina prostředků** , do které budou nasazeny všechny prostředky.
+* **Skupina prostředků,** do které budou nasazeny všechny prostředky.
 * **Virtuální síť** v adresním prostoru 10.0.0.0/16.
 * **Podsíť** v této virtuální síti.
 * **Veřejná IP adresa**, která vám umožní přistupovat k prostředkům přes internet.
-* **Skupina zabezpečení sítě** , která řídí tok síťového provozu v rámci sady škálování a mimo ni
+* **Skupina zabezpečení sítě,** která řídí tok síťového provozu do a z škálovací sady
 * **Nástroj pro vyrovnávání zatížení**, který s využitím pravidel nástroje pro vyrovnávání zatížení distribuuje provoz mezi sadu definovaných virtuálních počítačů.
 * **Škálovací sada virtuálních počítačů**, která všechny vytvořené prostředky využívá.
 
-Existují dva způsoby, jak získat ukázkovou PlayBook:
+Ukázkový playbook lze získat dvěma způsoby:
 
-* [Stáhněte si PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml) a uložte ho do `vmss-create.yml`.
-* Vytvořte nový soubor s názvem `vmss-create.yml` a zkopírujte do něj následující obsah:
+* [Stáhněte si playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml) `vmss-create.yml`a uložte jej do .
+* Vytvořte nový `vmss-create.yml` soubor s názvem a zkopírujte do něj následující obsah:
 
 ```yml
 - hosts: localhost
@@ -141,17 +141,17 @@ Existují dva způsoby, jak získat ukázkovou PlayBook:
             caching: ReadOnly
 ```
 
-Před spuštěním PlayBook se podívejte na následující poznámky:
+Před spuštěním playbooku se podívejte na následující poznámky:
 
-* V části `vars` nahraďte zástupný text `{{ admin_password }}` vlastním heslem.
+* V `vars` části nahraďte `{{ admin_password }}` zástupný symbol vlastním heslem.
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook vmss-create.yml
 ```
 
-Po spuštění PlayBook se zobrazí výstup podobný následujícímu výsledku:
+Po spuštění playbooku se zobrazí výstup podobný následujícím výsledkům:
 
 ```Output
 PLAY [localhost] 
@@ -185,23 +185,23 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
 
 ```
 
-## <a name="view-the-number-of-vm-instances"></a>Zobrazit počet instancí virtuálních počítačů
+## <a name="view-the-number-of-vm-instances"></a>Zobrazení počtu instancí virtuálních mandinací
 
-[Nakonfigurovaná sada škálování](#configure-a-scale-set) má v současné době dvě instance. K potvrzení této hodnoty slouží následující postup:
+[Nakonfigurovaná škálovací sada](#configure-a-scale-set) má aktuálně dvě instance. Následující kroky se používají k potvrzení této hodnoty:
 
-1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Přejděte do nastavené škály, kterou jste nakonfigurovali.
+1. Přejděte na nakonfigurovanou škálovací sadu.
 
-1. V závorkách se zobrazí název sady škálování s počtem instancí: `Standard_DS1_v2 (2 instances)`
+1. Zobrazí se název škálovací sady s počtem instancí v závorce:`Standard_DS1_v2 (2 instances)`
 
-1. Počet instancí s [Azure Cloud Shell](https://shell.azure.com/) můžete také ověřit spuštěním následujícího příkazu:
+1. Můžete také ověřit počet instancí s [Azure Cloud Shell](https://shell.azure.com/) spuštěním následujícího příkazu:
 
     ```azurecli-interactive
     az vmss show -n myScaleSet -g myResourceGroup --query '{"capacity":sku.capacity}' 
     ```
 
-    Výsledky spuštění příkazu Azure CLI v Cloud Shell ukazují, že existují tři instance: 
+    Výsledky spuštění příkazu Azure CLI v prostředí Cloud ukazují, že nyní existují tři instance: 
 
     ```bash
     {
@@ -209,14 +209,14 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
     }
     ```
 
-## <a name="scale-out-a-scale-set"></a>Horizontální navýšení kapacity sady škálování
+## <a name="scale-out-a-scale-set"></a>Horizontální navýšení kapacity škálovací sady
 
-PlayBook kód v této části načte informace o sadě škálování a změní kapacitu ze dvou na tři.
+Kód playbooku v této části načte informace o škálovací sadě a změní jeho kapacitu ze dvou na tři.
 
-Existují dva způsoby, jak získat ukázkovou PlayBook:
+Ukázkový playbook lze získat dvěma způsoby:
 
-* [Stáhněte si PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml) a uložte ho do `vmss-scale-out.yml`.
-* Vytvořte nový soubor s názvem `vmss-scale-out.yml` a zkopírujte do něj následující obsah:
+* [Stáhněte si playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml) `vmss-scale-out.yml`a uložte jej do .
+* Vytvořte nový `vmss-scale-out.yml` soubor s názvem a zkopírujte do něj následující obsah:
 
 ```yml
 - hosts: localhost
@@ -243,13 +243,13 @@ Existují dva způsoby, jak získat ukázkovou PlayBook:
       azure_rm_virtualmachinescaleset: "{{ body }}"
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook vmss-scale-out.yml
 ```
 
-Po spuštění PlayBook se zobrazí výstup podobný následujícímu výsledku:
+Po spuštění playbooku se zobrazí výstup podobný následujícím výsledkům:
 
 ```Output
 PLAY [localhost] 
@@ -285,15 +285,15 @@ PLAY RECAP
 localhost                  : ok=5    changed=1    unreachable=0    failed=0
 ```
 
-## <a name="verify-the-results"></a>Ověřit výsledky
+## <a name="verify-the-results"></a>Ověření výsledků
 
-Pomocí Azure Portal Ověřte výsledky své práce:
+Ověřte si výsledky své práce prostřednictvím portálu Azure:
 
-1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Přejděte do nastavené škály, kterou jste nakonfigurovali.
+1. Přejděte na nakonfigurovanou škálovací sadu.
 
-1. V závorkách se zobrazí název sady škálování s počtem instancí: `Standard_DS1_v2 (3 instances)` 
+1. Zobrazí se název škálovací sady s počtem instancí v závorce:`Standard_DS1_v2 (3 instances)` 
 
 1. Změnu můžete ověřit také pomocí služby [Azure Cloud Shell](https://shell.azure.com/), a to spuštěním následujícího příkazu:
 
@@ -301,7 +301,7 @@ Pomocí Azure Portal Ověřte výsledky své práce:
     az vmss show -n myScaleSet -g myResourceGroup --query '{"capacity":sku.capacity}' 
     ```
 
-    Výsledky spuštění příkazu Azure CLI v Cloud Shell ukazují, že existují tři instance: 
+    Výsledky spuštění příkazu Azure CLI v prostředí Cloud ukazují, že nyní existují tři instance: 
 
     ```bash
     {
@@ -312,4 +312,4 @@ Pomocí Azure Portal Ověřte výsledky své práce:
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Kurz: nasazení aplikací do služby Virtual Machine Scale Sets v Azure pomocí Ansible](./ansible-deploy-app-vmss.md)
+> [Kurz: Nasazení aplikací do škálovacích sad virtuálních strojů v Azure pomocí Ansible](./ansible-deploy-app-vmss.md)

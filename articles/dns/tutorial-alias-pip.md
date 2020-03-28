@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: vytvoření záznamu aliasu Azure DNS, který odkazuje na veřejnou IP adresu Azure'
+title: 'Kurz: Vytvoření záznamu aliasu Azure DNS, který bude odkazovat na veřejnou IP adresu Azure'
 description: V tomto kurzu se dozvíte, jak nakonfigurovat záznam aliasu Azure DNS tak, aby odkazoval na veřejnou IP adresu Azure.
 services: dns
 author: rohinkoul
@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77149928"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Kurz: Konfigurace záznamu aliasu odkazujícího na veřejnou IP adresu Azure 
@@ -25,9 +25,9 @@ V tomto kurzu se naučíte:
 > * Test záznamu aliasu
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Musíte mít k dispozici název domény, kterou můžete hostovat v Azure DNS a použít k testování. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
 
 Pokyny k hostování domény v Azure DNS najdete v [kurzu hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md).
@@ -36,16 +36,16 @@ Ukázková doména použitá v tomto kurzu je contoso.com, ale použijte vlastn�
 
 ## <a name="create-the-network-infrastructure"></a>Vytvoření síťové infrastruktury
 Nejprve vytvořte virtuální síť a podsíť, do které umístíte webové servery.
-1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+1. Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
 2. V levém horním rohu portálu vyberte **Vytvořit prostředek**. Do vyhledávacího pole zadejte *skupina prostředků* a vytvořte skupinu prostředků **RG-DNS-Alias-pip**.
-3. Vyberte **Vytvořit prostředek** > **Sítě** > **Virtuální síť**.
+3. Vyberte**Networking** > možnost Vytvořit**síť**ovou síť **prostředků** > .
 4. Vytvořte virtuální síť **VNet-Server**. Umístěte ji do skupiny prostředků **RG-DNS-Alias-pip** a podsíť pojmenujte **SN-Web**.
 
 ## <a name="create-a-web-server-virtual-machine"></a>Vytvoření virtuálního počítače s webovým serverem
-1. Vyberte **Vytvořit prostředek** > **Virtuální počítač s Windows Serverem 2016**.
+1. Vyberte **Vytvořit prostředek** > **virtuálního připojení windows server 2016**.
 2. Jako název zadejte **Web-01** a umístěte virtuální počítač do skupiny prostředků **RG-DNS-Alias-TM**. Zadejte uživatelské jméno a heslo a vyberte **OK**.
 3. Jako **Velikost** vyberte skladovou položku s 8 GB paměti RAM.
-4. V části **Nastavení** vyberte virtuální síť **VNet-Servers** a podsíť **SN-Web**. Jako veřejné příchozí porty vyberte **HTTP** > **HTTPS** > **RDP (3389)** a pak vyberte **OK**.
+4. V části **Nastavení** vyberte virtuální síť **VNet-Servers** a podsíť **SN-Web**. U veřejných příchozích portů vyberte **HTTP** > **HTTPS** > **RDP (3389)** a pak vyberte **OK**.
 5. Na stránce **Souhrn** vyberte **Vytvořit**.
 
 Dokončení tohoto postupu trvá několik minut.
@@ -54,9 +54,9 @@ Dokončení tohoto postupu trvá několik minut.
 
 Na virtuální počítač **Web-01** nainstalujte službu IIS.
 
-1. Připojte se k virtuálnímu počítači **Web-01** a přihlaste se.
+1. Připojte se k **webu Web-01**a přihlaste se.
 2. Na řídicím panelu **Správce serveru** vyberte **Přidat role a funkce**.
-3. Třikrát vyberte **Další**. Na stránce **Role serveru** vyberte **Webový server (IIS)** .
+3. Třikrát vyberte **Další**. Na stránce **Role serveru** vyberte **Webový server (IIS)**.
 4. Vyberte **Přidat funkce** a pak **Další**.
 5. Čtyřikrát vyberte **Další** a pak vyberte **Nainstalovat**. Dokončení tohoto postupu trvá několik minut.
 6. Po dokončení instalace vyberte **Zavřít**.

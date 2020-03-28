@@ -1,6 +1,6 @@
 ---
-title: 'CLI: připojení aplikace k Cosmos DB'
-description: Naučte se používat rozhraní příkazového řádku Azure k automatizaci nasazení a správy aplikace App Service. V této ukázce se dozvíte, jak připojit aplikaci k MongoDB (Cosmos DB).
+title: 'CLI: Připojení aplikace k Cosmos DB'
+description: Zjistěte, jak pomocí azure cli automatizovat nasazení a správu aplikace App Service. Tato ukázka ukazuje, jak připojit aplikaci k MongoDB (Cosmos DB).
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: bbbdbc42-efb5-4b4f-8ba6-c03c9d16a7ea
@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 4c19ac6db22c04f958bf332d0b5cdf327294108d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 911282e71491c86fefa86d342e916cdff4fa8c9b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74686570"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058670"
 ---
-# <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>Připojení aplikace App Service k Cosmos DB pomocí rozhraní příkazového řádku
+# <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>Připojení aplikace služby App Service ke službě Cosmos DB pomocí funkce cli
 
-Tento ukázkový skript vytvoří účet Azure Cosmos DB pomocí rozhraní API Azure Cosmos DB pro MongoDB a aplikaci App Service. Pak pomocí nastavení aplikace propojí připojovací řetězec MongoDB s webovou aplikací.
+Tento ukázkový skript vytvoří účet Azure Cosmos DB pomocí rozhraní API Azure Cosmos DB pro MongoDB a aplikaci app service. Potom propojí připojovací řetězec MongoDB s webovou aplikací pomocí nastavení aplikace.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,16 +34,16 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript k vytvoření skupiny prostředků, App Service aplikace, Cosmos DB a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript používá následující příkazy k vytvoření skupiny prostředků, aplikace App Service, Cosmos DB a všech souvisejících prostředků. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci App Service. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
 | [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) | Vytvoří účet služby Cosmos DB. |
 | [`az cosmosdb list-connection-strings`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-list-connection-strings) | Vypíše připojovací řetězce pro zadaný účet služby Cosmos DB. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Vytvoří nebo aktualizuje nastavení aplikace pro App Service aplikaci. Nastavení aplikace se pro vaši aplikaci zveřejní jako proměnné prostředí. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Vytvoří nebo aktualizuje nastavení aplikace pro aplikaci App Service. Nastavení aplikace se pro vaši aplikaci zveřejní jako proměnné prostředí. |
 
 ## <a name="next-steps"></a>Další kroky
 

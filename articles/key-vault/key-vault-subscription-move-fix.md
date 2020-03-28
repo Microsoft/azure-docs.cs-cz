@@ -1,5 +1,5 @@
 ---
-title: Změna ID tenanta trezoru klíčů po přesunu předplatného Azure Key Vault | Microsoft Docs
+title: Změna ID klienta trezoru klíčů po přesunutí předplatného – Azure Key Vault | Dokumenty společnosti Microsoft
 description: Zjistěte, jak přepnout ID tenanta pro trezor klíčů po přesunu předplatného na jiného tenanta
 services: key-vault
 author: amitbapat
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 4531d3bdeab96cb4a753060d59d07e155f4a358e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2b262823323e9491965bc16818220b2f80cf236a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197330"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79457300"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Změna ID tenanta trezoru klíčů po přesunu předplatného
 
@@ -24,13 +24,13 @@ ms.locfileid: "78197330"
 
 Když v rámci předplatného vytvoříte nový trezor klíčů, je automaticky vázán na výchozí ID tenanta služby Azure Active Directory pro dané předplatné. Zároveň jsou k tomuto ID tenanta vázány i všechny položky zásad přístupu. 
 
-Pokud přesunete předplatné Azure z tenanta A na tenanta B, stávající trezory klíčů budou pro objekty zabezpečení (uživatelé a aplikace) v tenantovi B nepřístupné. Chcete-li tento problém vyřešit, je třeba provést následující kroky:
+Pokud přesunete předplatné Azure z tenanta A do tenanta B, vaše stávající trezory klíčů jsou nepřístupné objekty (uživatelé a aplikace) v tenantovi B. Chcete-li tento problém vyřešit, musíte:
 
-* Změňte ID tenanta přidružené ke všem stávajícím trezorům klíčů v předplatném na tenanta B.
+* Změňte ID klienta přidružené ke všem existujícím trezorům klíčů v předplatném klienta B.
 * Odeberte všechny stávající položky zásad přístupu.
 * Přidejte nové položky zásad přístupu přidružené k tenantovi B.
 
-Pokud máte například Trezor klíčů "myvault" v předplatném, které bylo přesunuto z tenanta A na tenanta B, můžete pomocí Azure PowerShell změnit ID tenanta a odebrat staré zásady přístupu.
+Například pokud máte trezor klíčů 'myvault' v předplatném, který byl přesunut z tenanta A do tenanta B, můžete použít Azure PowerShell změnit ID klienta a odebrat staré zásady přístupu.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription
@@ -43,21 +43,21 @@ $vault.Properties.AccessPolicies = @()                                     # Acc
 Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties  # Modifies the key vault's properties.
 ````
 
-Nebo můžete použít rozhraní příkazového řádku Azure CLI.
+Nebo můžete použít azure cli.
 
 ```azurecli
-az account set <your-subscriptionId>                                       # Select your Azure Subscription
+az account set -s <your-subscriptionId>                                    # Select your Azure Subscription
 tenantId=$(az account show --query tenantId)                               # Get your tenantId
 az keyvault update -n myvault --remove Properties.accessPolicies           # Remove the access policies
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```
 
-Teď, když je váš trezor přidružený ke správnému ID tenanta a staré položky zásad přístupu se odeberou, nastavte nové položky zásad přístupu pomocí rutiny Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) nebo pomocí příkazu Azure CLI [AZ klíčů trezor set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) .
+Teď, když je váš trezor přidružený ke správnému ID klienta a starým položkám zásad přístupu, nastavte nové položky zásad přístupu pomocí rutiny Azure PowerShell [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) nebo příkazu Azure CLI [az az keyvault set-policy.](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy)
 
-Pokud používáte spravovanou identitu pro prostředky Azure, budete ji muset aktualizovat taky na nového tenanta Azure AD. Další informace o spravovaných identitách najdete v tématu [zajištění Key Vaultho ověřování pomocí spravované identity](managed-identity.md).
+Pokud používáte spravovanou identitu pro prostředky Azure, budete ji muset aktualizovat i na nového klienta Azure AD. Další informace o spravovaných identitách naleznete v [tématu Poskytování ověřování trezoru klíčů se spravovanou identitou](managed-identity.md).
 
 
-Pokud používáte MSI, budete muset aktualizovat taky identitu MSI, protože stará identita už nebude ve správném tenantovi AAD.
+Pokud používáte MSI, budete také muset aktualizovat identitu MSI, protože stará identita již nebude ve správném tenantovi AAD.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,10 +9,10 @@ ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67175599"
 ---
 1. Přejděte na [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager) a přihlaste se pomocí svých přihlašovacích údajů k účtu Google. 
@@ -51,5 +51,5 @@ ms.locfileid: "67175599"
 
     ![Zkopírování klíče rozhraní API](./media/mobile-services-enable-google-cloud-messaging/copy-api-key.png)
    
-    Pomocí této hodnoty klíče API potom povolíte službě Azure ověření na serveru GCM a odesílání nabízených oznámení jménem vaší aplikace. Přejděte zpět do řídicího panelu Projekt, použijte adresu URL: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
+    Pomocí této hodnoty klíče API potom povolíte službě Azure ověření na serveru GCM a odesílání nabízených oznámení jménem vaší aplikace. K návratu na řídicí panel projektu použijte adresu URL: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 

@@ -2,25 +2,19 @@
 title: Ukázkový skript Azure CLI – Obměna přístupových klíčů účtu úložiště | Microsoft Docs
 description: Vytvoříte účet služby Azure Storage a pak načtete a obměníte přístupové klíče tohoto účtu.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: cli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: ac58886225221677aa003833167ff58cd578255d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa7cba00d865bb7b2c1e0fd1f0059fb35ffff690
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61228248"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060836"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Vytvoření účtu úložiště a obměna přístupových klíčů tohoto účtu
 
@@ -34,7 +28,7 @@ Tento skript vytvoří účet služby Azure Storage, zobrazí přístupové klí
 
 [!code-azurecli-interactive[main](../../../cli_scripts/storage/rotate-storage-account-keys/rotate-storage-account-keys.sh "Rotate storage account keys")]
 
-## <a name="clean-up-deployment"></a>Vyčištění nasazení 
+## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, účet úložiště a všechny související prostředky.
 
@@ -53,7 +47,7 @@ Tento skript k vytvoření účtu úložiště a načtení a obměně jeho pří
 | [az storage account keys list](/cli/azure/storage/account/keys) | Zobrazí přístupové klíče účtu úložiště pro zadaný účet. |
 | [az storage account keys renew](/cli/azure/storage/account/keys) | Znovu vygeneruje primární nebo sekundární přístupový klíč účtu úložiště. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 

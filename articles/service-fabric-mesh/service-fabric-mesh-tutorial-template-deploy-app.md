@@ -1,5 +1,5 @@
 ---
-title: Kurz – nasazení aplikace do sítě Azure Service Fabric
+title: Kurz – nasazení aplikace do sítě Azure Service Fabric Mesh
 description: V tomto kurzu se dozvíte, jak nasadit aplikaci do služby Service Fabric Mesh pomocí šablony.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75494935"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Kurz: Nasazení aplikace do služby Service Fabric Mesh pomocí šablony
@@ -38,13 +38,13 @@ V této sérii kurzů se naučíte:
 
 Než začnete s tímto kurzem:
 
-* Pokud ještě nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+* Pokud nemáte předplatné Azure, můžete [si vytvořit bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 * [Instalace Dockeru](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
 
 * [Nainstalujte si místně Azure CLI a Service Fabric Mesh CLI.](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
 Image kontejneru přidružené k službám ve vaší aplikaci Service Fabric Mesh musí být uložené v registru kontejneru.  V tomto kurzu se používá privátní instance služby Azure Container Registry (ACR). 
 
@@ -100,7 +100,7 @@ Po vytvoření registru se zobrazí výstup podobný tomuto:
 
 ## <a name="push-the-images-to-azure-container-registry"></a>Nasdílení imagí do služby Azure Container Registry
 
-V tomto kurzu se jako příklad používá ukázková aplikace seznamu úkolů.  Image kontejneru pro služby [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) najdete na Docker Hubu. Informace o tom, jak sestavit aplikaci v aplikaci Visual Studio, najdete v tématu [Vytvoření webové aplikace s Service Fabricovou mřížkou](service-fabric-mesh-tutorial-create-dotnetcore.md) . Service Fabrice Mesh podporuje spouštění kontejnerů Dockeru pro Windows nebo Linux.  Pokud pracujete s kontejnery Linuxu, vyberte v Dockeru **Switch to Linux containers** (Přepnout na kontejnery Linuxu).  Pokud pracujete s kontejnery Windows, vyberte v Dockeru **Switch to Windows containers** (Přepnout na kontejnery Windows).
+V tomto kurzu se jako příklad používá ukázková aplikace seznamu úkolů.  Image kontejneru pro služby [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) najdete na Docker Hubu. Informace o tom, jak vytvořit aplikaci v sadě Visual Studio, najdete v tématu [Vytvoření webové aplikace Service Fabric Mesh.](service-fabric-mesh-tutorial-create-dotnetcore.md) Service Fabrice Mesh podporuje spouštění kontejnerů Dockeru pro Windows nebo Linux.  Pokud pracujete s kontejnery Linuxu, vyberte v Dockeru **Switch to Linux containers** (Přepnout na kontejnery Linuxu).  Pokud pracujete s kontejnery Windows, vyberte v Dockeru **Switch to Windows containers** (Přepnout na kontejnery Windows).
 
 Pokud chcete nasdílet image do instance služby ACR, musíte nejprve mít image kontejneru. Pokud ještě nemáte žádné místní image kontejneru, pomocí příkazu [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) si z Docker Hubu stáhněte image [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/).
 
@@ -130,7 +130,7 @@ docker tag seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709 mycontainer
 docker tag seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709 mycontainerregistry.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709
 ```
 
-Přihlaste se k Azure Container Registry.
+Přihlaste se do registru kontejnerů Azure.
 
 ```azurecli
 az acr login -n myContainerRegistry
@@ -351,7 +351,7 @@ Aplikaci nasadíte spuštěním následujícího příkazu:
 az mesh deployment create --resource-group myResourceGroup --template-file c:\temp\mesh_rp.windows.json --parameters c:\temp\mesh_rp.windows.parameters.json
 ```
 
-Tento příkaz vytvoří fragment kódu JSON, který je uveden níže. V části ```outputs``` část výstup ve formátu JSON, zkopírujte ```publicIPAddress``` vlastnost.
+Tento příkaz vytvoří fragment JSON, který je uveden níže. V ```outputs``` části výstupu JSON zkopírujte ```publicIPAddress``` vlastnost.
 
 ```json
 "outputs": {
@@ -362,7 +362,7 @@ Tento příkaz vytvoří fragment kódu JSON, který je uveden níže. V části
 }
 ```
 
-Tyto informace pocházejí z ```outputs``` části šablony ARM. Jak je znázorněno níže, tato část odkazuje na prostředek brány, který chcete načíst veřejnou IP adresu. 
+Tyto informace pocházejí ```outputs``` z části v šabloně ARM. Jak je znázorněno níže, tato část odkazuje na prostředek brány pro načtení veřejné IP adresy. 
 
 ```json
   "outputs": {

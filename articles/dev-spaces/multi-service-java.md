@@ -3,18 +3,18 @@ title: 'Spuštění více závislých služeb: Java & Visual Studio Code'
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
-description: V tomto kurzu se dozvíte, jak pomocí Azure Dev Spaces a Visual Studio Code ladit aplikaci s více službami v jazyce Java ve službě Azure Kubernetes
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
+description: Tento kurz ukazuje, jak používat Azure Dev Spaces a Visual Studio Code k ladění víceúčelové java aplikace ve službě Azure Kubernetes Service
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery, Helm, síť služeb, směrování sítě služeb, kubectl, k8s
 ms.openlocfilehash: beab91964cab9938a5d63584089326bb408f6efc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438330"
 ---
 # <a name="running-multiple-dependent-services-java-and-visual-studio-code-with-azure-dev-spaces"></a>Spuštění více závislých služeb: Java a Visual Studio Code s Azure Dev Spaces
 
-V tomto kurzu se naučíte vyvíjet aplikace s více službami pomocí Azure Dev Spaces společně s dalšími výhodami, které poskytují vývojové prostory.
+V tomto kurzu se dozvíte, jak vyvíjet aplikace s více službami pomocí Azure Dev Spaces, spolu s některými dalšími výhodami, které dev Spaces poskytuje.
 
 ## <a name="call-a-service-running-in-a-separate-container"></a>Volání služby spuštěné v samostatném kontejneru
 
@@ -28,13 +28,13 @@ Kvůli úspoře času si můžete ukázkový kód stáhnout z úložiště GitHu
 ### <a name="run-mywebapi"></a>Spuštění *mywebapi*
 1. V *samostatném okně editoru VS Code* otevřete složku `mywebapi`.
 1. Otevřete **paletu příkazů** (pomocí nabídky **Zobrazit | Paleta příkazů**) a pomocí automatického dokončování zadejte a vyberte tento příkaz: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
-1. Stiskněte F5 a počkejte na sestavení a nasazení služby. Poznáte, že je připravený, když se v konzole ladění zobrazí zpráva podobná této:
+1. Stiskněte F5 a počkejte na sestavení a nasazení služby. Budete vědět, že je připraven, když se v ladicí konzoli zobrazí zpráva podobná níže:
 
     ```cmd
     2019-03-11 17:02:35.935  INFO 216 --- [           main] com.ms.sample.mywebapi.Application       : Started Application in 8.164 seconds (JVM running for 9.272)
     ```
 
-1. Adresa URL koncového bodu bude přibližně takto: `http://localhost:<portnumber>`. **Tip: VS Code stavový řádek se změní na oranžová a zobrazí se adresa URL pro kliknutí.** I když to vypadá, že kontejner je spuštěný lokálně, ve skutečnosti je spuštěný ve vývojovém prostoru v Azure. Důvodem adresy místního hostitele je, že služba `mywebapi` nemá definované veřejné koncové body, a proto je přístupná jenom z instance Kubernetes. Kvůli jednodušší práci a interakci se soukromou službou z místního počítače vytvoří Azure Dev Spaces do kontejneru se spuštěným Azure dočasný tunel SSH.
+1. Adresa URL koncového bodu bude přibližně takto: `http://localhost:<portnumber>`. **Tip: Stavový řádek kódu VS se změní na oranžovou barvu a zobrazí adresu URL, na kterou lze kliknout.** I když to vypadá, že kontejner je spuštěný lokálně, ve skutečnosti je spuštěný ve vývojovém prostoru v Azure. Důvodem adresy místního hostitele je, že služba `mywebapi` nemá definované veřejné koncové body, a proto je přístupná jenom z instance Kubernetes. Kvůli jednodušší práci a interakci se soukromou službou z místního počítače vytvoří Azure Dev Spaces do kontejneru se spuštěným Azure dočasný tunel SSH.
 1. Až bude služba `mywebapi` připravená, otevřete v prohlížeči adresu místního hostitele.
 1. Pokud byly všechny kroky úspěšné, měla by se zobrazit odpověď služby `mywebapi`.
 
@@ -65,7 +65,7 @@ Předchozí příklad kódu předává hlavičku `azds-route-as` z příchozího
 
 ### <a name="debug-across-multiple-services"></a>Ladění více služeb
 1. V této fázi byste měli mít spuštěnou službu `mywebapi` s připojeným ladicím programem. Pokud tomu tak není, stiskněte v projektu `mywebapi` klávesu F5.
-1. Nastavte zarážku v metodě `index()` `mywebapi` projektu, na [řádku 19 `Application.java`](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java#L19)
+1. Nastavte zarážku `index()` v `mywebapi` metodě projektu na [řádku 19 `Application.java` ](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java#L19)
 1. V projektu `webfrontend` na řádku začínajícím `try` nastavte zarážku těsně před odesláním požadavku GET do `mywebapi`.
 1. V projektu `webfrontend` stiskněte F5 (nebo restartujte ladicí program, pokud je aktuálně spuštěný).
 1. Otevřete webovou aplikaci a projděte kód obou služeb.
@@ -78,4 +78,4 @@ Teď máte aplikaci s více kontejnery, kde můžete každý kontejner vyvíjet 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o vývoji týmu ve vývojových prostorech](team-development-java.md)
+> [Další informace o vývoji týmu v Dev Spaces](team-development-java.md)
