@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s místním prostředím Integration runtime v Azure Data Factory
-description: Přečtěte si, jak řešit problémy s místním hostováním prostředí Integration runtime v Azure Data Factory.
+title: Poradce při potížích s runtime vlastní integrace v Azure Data Factory
+description: Zjistěte, jak řešit problémy s runtime vlastní hostované integrace v Azure Data Factory.
 services: data-factory
 author: nabhishek
 ms.service: data-factory
@@ -8,54 +8,54 @@ ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
 ms.openlocfilehash: b8492e8934c782451fb77d5a0ff56b96c34c9a00
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75439877"
 ---
-# <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
+# <a name="troubleshoot-self-hosted-integration-runtime"></a>Poradce při potížích s prostředím runtime vlastní hostované integrace
 
-Tento článek popisuje běžné metody řešení potíží pro prostředí Integration runtime v místním prostředí v Azure Data Factory.
+Tento článek zkoumá běžné metody řešení potíží pro runtime integrace s vlastním hostitelem v Azure Data Factory.
 
-## <a name="common-errors-and-resolutions"></a>Běžné chyby a řešení
+## <a name="common-errors-and-resolutions"></a>Běžné chyby a jejich řešení
 
-### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Chybová zpráva: Integration runtime v místním prostředí se nemůže připojit ke cloudové službě.
+### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Chybová zpráva: Prostředí runtime integrace s vlastním hostitelem se nemůže připojit ke cloudové službě
 
-![Problém s připojením IR v místním prostředí](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
+![Problém s refračerveným připojením s vlastním hostitelem](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
 #### <a name="cause"></a>Příčina 
 
-Místní prostředí Integration runtime se nemůže připojit ke službě Data Factory (back-end). K tomuto problému obvykle dochází v důsledku nastavení sítě v bráně firewall.
+Prostředí runtime integrace s vlastním hostitelem se nemůže připojit ke službě Data Factory (back-end). Tento problém je obvykle způsoben nastavením sítě v bráně firewall.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
-1. Ověřte, jestli je spuštěná služba Integration runtime.
+1. Zkontrolujte, zda je spuštěna služba integračního běhu.
     
-   ![Stav spuštění služby IR v místním prostředí](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
+   ![Stav spuštěné infračervené služby s vlastním hostitelem](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
     
-1. Pokud je služba spuštěná, pokračujte krokem 3.
+1. Pokud je služba spuštěna, přejděte ke kroku 3.
 
-1. Pokud není v místním prostředí Integration runtime nakonfigurovaný žádný proxy server (což je výchozí nastavení), spusťte následující příkaz PowerShellu na počítači, na kterém je nainstalovaný modul runtime integrace v místním prostředí:
+1. Pokud v prostředí runtime integrace s vlastním hostitelem není žádný proxy server (což je výchozí nastavení), spusťte v počítači, ve kterém je nainstalován runtime s vlastním hostitelem, následující příkaz Prostředí PowerShell:
 
     ```powershell
     (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
     ```
         
    > [!NOTE]     
-   > Adresa URL služby se může lišit v závislosti na umístění Data Factory. Adresu URL služby najdete v části **uživatelské rozhraní ADF** > **připojení** > **prostředí Integration runtime** > **úpravách** **adres URL služby**v místním prostředí IR > ch > **uzlů** .
+   > Adresa URL služby se může lišit v závislosti na umístění datové továrny. Adresu URL služby**Nodes** > najdete v**části Runtimes** > integrace**připojení ui** >  >  **služby ADF**Upravit adresy**URL služby****s vlastním hostitelem.** > 
             
-    Očekává se následující odpověď:
+    Následuje očekávaná odpověď:
             
-    ![Odezva příkazu PowerShellu](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+    ![Odpověď příkazu PowerShellu](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
             
-1. Pokud neobdržíte očekávanou odpověď, použijte jednu z následujících metod, která je vhodná pro vaši situaci:
+1. Pokud neobdržíte očekávanou odpověď, použijte jednu z následujících metod podle vaší situace:
             
-    * Pokud se zobrazí zpráva "vzdálený název nelze rozpoznat", dojde k problému se službou DNS (Domain Name System). Pokud chcete tento problém vyřešit, obraťte se na svého síťového týmu.
-    * Pokud se zobrazí zpráva "certifikát SSL/TLS není důvěryhodný", zkontrolujte, zda je certifikát pro https://wu2.frontend.clouddatahub.net/ v počítači důvěryhodný, a pak pomocí Správce certifikátů nainstalujte veřejný certifikát. Tato akce by měla zmírnit problém.
-    * V prohlížeči událostí **systému Windows** >  **(protokoly)**  > **protokoly aplikací a služeb** > **Integration runtime** a vyhledejte případné selhání způsobené službou DNS, pravidlem brány firewall nebo nastavením sítě společnosti. (Pokud narazíte na chybu, nuceně uzavřete připojení.) Vzhledem k tomu, že každá společnost má vlastní nastavení sítě, požádejte o řešení těchto problémů svého síťového týmu.
+    * Pokud se zobrazí zpráva "Vzdálený název nelze vyřešit", dojde k problému se systémem DNS (Domain Name System). Chcete-li tento problém vyřešit, obraťte se na svůj síťový tým.
+    * Pokud obdržíte zprávu "ssl/tls cert is not trusted" https://wu2.frontend.clouddatahub.net/ zkontrolujte, zda je certifikát pro v počítači důvěryhodný, a nainstalujte veřejný certifikát pomocí Správce certifikátů. Tato akce by měla zmírnit problém.
+    * Přejděte na prostředí **Windows** > **Event Viewer (protokoly)** > **Aplikace a protokoly** > služeb**Integration Runtime** a zkontrolujte, zda nenastala jakákoli chyba způsobená službou DNS, pravidlem brány firewall nebo nastavením sítě společnosti. (Pokud zjistíte takové selhání, násilně zavřete připojení.) Vzhledem k tomu, že každá společnost má vlastní nastavení sítě, obraťte se na svůj síťový tým k řešení těchto problémů.
 
-1. Pokud je v místním prostředí Integration runtime nakonfigurovaný proxy server, ověřte, že váš proxy server má přístup ke koncovému bodu služby. Vzorový příkaz najdete v tématu [PowerShell, webové požadavky a proxy servery](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies).    
+1. Pokud byl v prostředí runtime integrace s vlastním hostitelem nakonfigurován "proxy", ověřte, zda má server proxy přístup ke koncovému bodu služby. Ukázkový příkaz najdete v [tématu PowerShell, webové požadavky a proxy servery](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies).    
                 
     ```powershell
     $user = $env:username
@@ -74,31 +74,31 @@ Místní prostředí Integration runtime se nemůže připojit ke službě Data 
     $string
     ```
 
-Očekává se následující odpověď:
+Následuje očekávaná odpověď:
             
-![Odezva příkazu PowerShellu 2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+![Odpověď příkazu Powershell2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
 
 > [!NOTE] 
-> Hlediska proxy serveru:
-> * Ověřte, zda proxy server musí být vloženy do seznamu bezpečných příjemců. Pokud ano, ujistěte se, že jsou [tyto domény](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) v seznamu bezpečných příjemců.
-> * Ověřte, jestli je certifikát TLS/SSL wu2.frontend.clouddatahub.net/na proxy server důvěryhodný.
-> * Pokud na proxy serveru používáte ověřování pomocí služby Active Directory, změňte účet služby na uživatelský účet, který bude mít přístup k proxy serveru jako služba Integration Runtime.
+> Proxy úvahy:
+> * Zkontrolujte, zda je třeba server proxy umístit do seznamu Bezpečných příjemců. Pokud ano, ujistěte se, že [tyto domény](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) jsou v seznamu Bezpečných příjemců.
+> * Zkontrolujte, zda je certifikát TLS/SSL "wu2.frontend.clouddatahub.net/" na serveru proxy důvěryhodný.
+> * Pokud používáte ověřování služby Active Directory na serveru proxy, změňte účet služby na uživatelský účet, který má přístup k serveru proxy jako "Integrační runtime služba".
 
-### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Chybová zpráva: uzel Integration runtime (v místním prostředí)/logický SHIR je v neaktivním stavu (s omezením).
+### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Chybová zpráva: Samoobslužný integrační runtime uzel/ logický kód SHIR je ve stavu Neaktivní/ "Spuštěno (omezeno)"
 
 #### <a name="cause"></a>Příčina 
 
-Hostující uzel integrovaného modulu runtime může mít **neaktivní** stav, jak je znázorněno na následujícím snímku obrazovky:
+Integrovaný uzel runtime s vlastním hostitelem může mít **neaktivní** stav, jak je znázorněno na následujícím snímku obrazovky:
 
-![Neaktivní místní hostitelský uzel IR](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+![Neaktivní samoobslužný infračervený uzel](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
 
-K tomuto chování dochází, když uzly nemůžou vzájemně komunikovat.
+K tomuto chování dochází, když uzly nemohou komunikovat mezi sebou.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
-1. Přihlaste se k virtuálnímu počítači hostovanému na uzlu. V části **protokoly aplikací a služeb** > **Integration Runtime**, otevřete Prohlížeč událostí a vyfiltrujte všechny protokoly chyb.
+1. Přihlaste se k virtuálnímu virtuálnímu ms hostovanému uzly. V části **Aplikace a služby protokoly** > **integrace Runtime**, otevřete Prohlížeč událostí a filtrovat všechny protokoly chyb.
 
-1. Zkontroluje, jestli protokol chyb obsahuje tuto chybu: 
+1. Zkontrolujte, zda protokol chyb obsahuje následující chybu: 
     
     ```System.ServiceModel.EndpointNotFoundException: Could not connect to net.tcp://xxxxxxx.bwld.com:8060/ExternalService.svc/WorkerManager. The connection attempt lasted for a time span of 00:00:00.9940994. TCP error code 10061: No connection could be made because the target machine actively refused it 10.2.4.10:8060. 
     System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it. 

@@ -1,6 +1,6 @@
 ---
-title: Nahrání souboru VHD do Azure DevTest Labs pomocí Průzkumník služby Storage
-description: Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí Průzkumník služby Microsoft Azure Storage
+title: Nahrání souboru Virtuálního pevného disku do laboratoře Azure DevTest pomocí Průzkumníka úložiště
+description: Nahrání souboru Virtuálního pevného disku do účtu úložiště testovacího prostředí pomocí Průzkumníka úložiště Microsoft Azure
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,67 +15,67 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: defafdd5809b7e537b3b9abb78f8cb63d0033c16
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170376"
 ---
-# <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí Průzkumník služby Microsoft Azure Storage
+# <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Nahrání souboru Virtuálního pevného disku do účtu úložiště testovacího prostředí pomocí Průzkumníka úložiště Microsoft Azure
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-V Azure DevTest Labs se soubory VHD dají použít k vytvoření vlastních imagí, které se používají ke zřízení virtuálních počítačů. Tento článek ukazuje, jak použít [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) k nahrání souboru VHD do účtu úložiště testovacího prostředí. Po nahrání souboru VHD se v [části Další kroky](#next-steps) zobrazí některé články, které ukazují, jak vytvořit vlastní image z nahraného souboru VHD. Další informace o discích a virtuálních pevných discích v Azure najdete v tématu [Úvod do Managed disks](../virtual-machines/linux/managed-disks-overview.md) .
+V Azure DevTest Labs, soubory Virtuálního pevného disku lze použít k vytvoření vlastní image, které se používají ke zřízení virtuálních počítačů. Tento článek ukazuje, jak pomocí [Průzkumníka úložiště Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) nahrát soubor Virtuálního pevného disku do účtu úložiště testovacího prostředí. Po nahrání souboru VHD uvádí [v části Další kroky](#next-steps) některé články, které ilustrují, jak vytvořit vlastní obrázek z nahraného souboru Virtuálního pevného disku. Další informace o discích a virtuálních počítačích v Azure najdete v [tématu Úvod ke spravovaným diskům.](../virtual-machines/linux/managed-disks-overview.md)
 
 ## <a name="step-by-step-instructions"></a>Podrobné pokyny
 
-Následující kroky vás provedou odesláním souboru VHD do DevTest Labs pomocí [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+Následující kroky vás provedou nahráním souboru Virtuálního pevného disku do devTest Labs pomocí [Průzkumníka úložiště Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
-1. [Stáhněte a nainstalujte nejnovější verzi Průzkumník služby Microsoft Azure Storage](https://www.storageexplorer.com).
+1. [Stáhněte a nainstalujte nejnovější verzi Průzkumníka úložiště Microsoft Azure](https://www.storageexplorer.com).
 
-1. Získejte název účtu úložiště testovacího prostředí pomocí Azure Portal:
+1. Získejte název účtu úložiště testovacího prostředí pomocí portálu Azure:
 
-    1. Přihlaste se k [Portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+    1. Přihlaste se k [portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
     
-    1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+    1. Vyberte **Všechny služby**a ze seznamu vyberte **DevTest Labs.**
     
-    1. V seznamu cvičení vyberte požadované testovací prostředí.  
+    1. Ze seznamu testovacích prostředí vyberte požadovanou testovací prostředí.  
     
-    1. V okně testovacího prostředí vyberte **Konfigurace**. 
+    1. Na okně testovacího prostředí vyberte **Možnost Konfigurace**. 
     
-    1. V okně **Konfigurace** testovacího prostředí vyberte **vlastní image (VHD)** .
+    1. V okně **Konfigurace** testovacího prostředí vyberte **vlastní image (VD).**
     
-    1. V okně **vlastní image** vyberte **+ Přidat**. 
+    1. V okně **Vlastní obrázky** vyberte **+Přidat**. 
     
-    1. V okně **vlastní obrázek** vyberte **VHD**.
+    1. V okně **Vlastní obrázek** vyberte **VHD**.
     
-    1. V okně **VHD** vyberte **nahrát VHD pomocí PowerShellu**.
+    1. V okně **VHD** vyberte **Nahrát virtuální pevný disk pomocí prostředí PowerShell**.
     
-        ![Nahrání VHD pomocí PowerShellu][0]
+        ![Nahrání virtuálního pevného disku pomocí PowerShellu][0]
     
-    1. Okno **nahrát obrázek pomocí okna PowerShell** zobrazí volání rutiny **Add-AzureVhd** . První parametr (*cíl*) obsahuje název účtu úložiště pro testovací prostředí v následujícím formátu:
+    1. Upload **bitové kopie pomocí** rozhraní PowerShell zobrazí volání **rutiny Add-AzureVhd.** První parametr (*Cíl*) obsahuje název účtu úložiště pro testovací prostředí v následujícím formátu:
     
         `https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...`
 
-    1. Poznamenejte si název účtu úložiště tak, jak se používá v pozdějších krocích.
+    1. Poznamenejte si název účtu úložiště, jak se používá v pozdějších krocích.
     
-1. Připojte se k účtu předplatného Azure pomocí Průzkumník služby Storage.
+1. Připojte se k účtu předplatného Azure pomocí Průzkumníka úložiště.
 
     > [!TIP] 
     > 
-    > Průzkumník služby Storage podporuje několik možností připojení. Tato část ukazuje připojení k účtu úložiště, který je přidružený k vašemu předplatnému Azure. Další možnosti připojení, které podporuje Průzkumník služby Storage, najdete v článku [Začínáme s Průzkumník služby Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+    > Průzkumník úložiště podporuje několik možností připojení. Tato část znázorňuje připojení k účtu úložiště přidruženému k vašemu předplatnému Azure. Další možnosti připojení podporované Průzkumníkem úložišť naleznete v článku [Začínáme s Průzkumníkem úložišť](../vs-azure-tools-storage-manage-with-storage-explorer.md).
  
     1. Otevřete Průzkumníka služby Storage.
     
-    1. V Průzkumník služby Storage vyberte **Nastavení účtu Azure**. 
+    1. V Průzkumníkovi úložiště vyberte **nastavení účtu Azure**. 
     
         ![Nastavení účtu Azure][1]
     
-    1. V levém podokně se zobrazují účty Microsoft, ke kterým jste se přihlásili. Pokud se chcete připojit k jinému účtu, vyberte položku **Add an account** (Přidat účet) a podle pokynů v dialogových oknech se přihlaste účtem Microsoft, který je přidružený minimálně k jednomu aktivnímu předplatnému Azure.
+    1. V levém podokně se zobrazí účty Microsoft, ke které jste se přihlásili. Pokud se chcete připojit k jinému účtu, vyberte položku **Add an account** (Přidat účet) a podle pokynů v dialogových oknech se přihlaste účtem Microsoft, který je přidružený minimálně k jednomu aktivnímu předplatnému Azure.
     
         ![Přidání účtu][2]
     
-    1. Jakmile se úspěšně přihlásíte s účtem Microsoft, zobrazí se v levém podokně předplatná Azure přidružená k tomuto účtu. Vyberte předplatná Azure, se kterými chcete pracovat, a pak vyberte **Apply** (Použít). (Výběr **všech předplatných** přepíná výběr všech nebo žádných z uvedených předplatných Azure.)
+    1. Jakmile se úspěšně přihlásíte s účtem Microsoft, zobrazí se v levém podokně předplatná Azure přidružená k tomuto účtu. Vyberte předplatná Azure, se kterými chcete pracovat, a pak vyberte **Apply** (Použít). (Výběrvšech **předplatných** přepíná výběr všech nebo žádných z uvedených předplatných Azure.)
     
         ![Výběr předplatných Azure][3]
     
@@ -83,47 +83,47 @@ Následující kroky vás provedou odesláním souboru VHD do DevTest Labs pomoc
     
         ![Vybraná předplatná Azure][4]
 
-1. Vyhledejte účet úložiště testovacího prostředí:
+1. Vyhledejte účet úložiště v testovacím prostředí:
 
-    1. V levém podokně Průzkumník služby Storage Najděte a rozbalte uzel pro předplatné Azure, které vlastní testovací prostředí.
+    1. V levém podokně Průzkumníka úložiště vyhledejte a rozbalte uzel pro předplatné Azure, které vlastní testovací prostředí.
     
-    1. V uzlu předplatného rozbalte položku **účty úložiště**.
+    1. V uzlu předplatného rozbalte **položku Účty úložiště**.
 
-    1. Rozbalte uzel účtu úložiště testovacího prostředí, který odhalí uzly pro **kontejnery objektů BLOB**, **sdílené složky**, **fronty**a **tabulky**.
+    1. Rozbalte uzel účtu úložiště testovacího prostředí a odhalte uzly pro **kontejnery objektů BLOB**, **sdílené složky**, **fronty**a **tabulky**.
     
-    1. Rozbalte uzel **kontejnery objektů BLOB** .
+    1. Rozbalte uzel **kontejnerů objektů blob.**
     
-    1. Vyberte kontejner objektů BLOB pro nahrávání, aby se zobrazil jeho obsah v pravém podokně.
+    1. Vyberte kontejner objektů blob pro nahrávání, chcete-li zobrazit jeho obsah v pravém podokně.
         
-        ![Odeslat adresář][5]
+        ![Nahrát adresář][5]
 
-1. Nahrajte soubor VHD pomocí Průzkumník služby Storage:
+1. Nahrajte soubor VHD pomocí Průzkumníka úložiště:
 
-    1. V pravém podokně Průzkumník služby Storage by se měl zobrazit seznam objektů BLOB v kontejneru objektů BLOB při **nahrávání** v účtu úložiště testovacího prostředí. Na panelu nástrojů editoru objektů BLOB vyberte **nahrát** . 
+    1. V pravém podokně Průzkumníka úložiště byste měli vidět výpis objektů BLOB v kontejneru objektů blob **odesílání** účtu úložiště účtu testovacího prostředí. Na panelu nástrojů Editoru objektů blob vyberte **Nahrát** 
         
         ![Tlačítko Nahrát][6]
     
-    1. V rozevírací nabídce **nahrát** vyberte **Odeslat soubory...** .
+    1. V rozevírací nabídce **Nahrát** vyberte **Nahrát soubory...**.
     
-    1. V dialogovém okně **nahrát soubory** vyberte tři tečky.
+    1. V dialogovém okně **Nahrát soubory** vyberte tři tečky.
         
-        ![Výběr souboru][8]  
+        ![Vybrat soubor][8]  
 
-    1. V dialogovém okně **Vyberte soubory k nahrání** přejděte na požadovaný soubor VHD, vyberte ho a pak vyberte **otevřít**.
+    1. V dialogovém okně **Vybrat soubory k nahrání** vyhledejte požadovaný soubor VHD, vyberte ho a pak vyberte **Otevřít**.
     
-    1. Po návratu do dialogového okna **nahrát soubory** změňte **typ objektu BLOB** na **objekt blob stránky**.
+    1. Po návratu do dialogového okna **Nahrát soubory** změňte **typ objektu blob** na **Objekt blob stránky**.
     
     1. Vyberte **Nahrát**.
 
-        ![Výběr souboru][9]  
+        ![Vybrat soubor][9]  
     
-    1. V podokně **protokolu aktivit** Průzkumník služby Storage se zobrazuje stav stahování (spolu s odkazy na zrušení nahrávání). Proces odeslání souboru VHD může být zdlouhavý v závislosti na velikosti souboru VHD a rychlosti připojení. 
+    1. Podokno **Protokol aktivit** Průzkumníka úložiště zobrazuje stav stahování (spolu s odkazy na zrušení nahrávání). Proces nahrávání souboru VHD může být zdlouhavý v závislosti na velikosti souboru VHD a rychlosti připojení. 
 
-        ![Nahrání – stav souboru][10]  
+        ![Stav odeslat soubor][10]  
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření vlastní image v Azure DevTest Labs ze souboru VHD pomocí Azure Portal](devtest-lab-create-template.md)
+- [Vytvoření vlastní image v Azure DevTest Labs ze souboru Virtuálního pevného disku pomocí portálu Azure](devtest-lab-create-template.md)
 - [Vytvoření vlastní image v Azure DevTest Labs ze souboru VHD pomocí PowerShellu](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
 
 [0]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-image-using-psh.png

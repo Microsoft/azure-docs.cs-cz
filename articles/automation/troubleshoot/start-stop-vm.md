@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží při spouštění a zastavování virtuálních počítačů – Azure Automation
-description: Tento článek poskytuje informace o řešení potíží při spouštění a zastavování virtuálních počítačů v Azure Automation.
+title: Poradce při potížích se spouštění mandy a zastavování virtuálních počítače – Azure Automation
+description: Tento článek obsahuje informace o řešení potíží se spuštěním a zastavením virtuálních počítačů v Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -10,19 +10,19 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851380"
 ---
-# <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Řešení potíží s řešením spuštění/zastavení virtuálních počítačů v době mimo špičku
+# <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Poradce při potížích s řešením spuštění a zastavení virtuálních disponecí mimo pracovní dobu
 
-## <a name="deployment-failure"></a>Scénář: řešení pro spuštění/zastavení virtuálního počítače se nepodařilo správně nasadit
+## <a name="scenario-the-startstop-vm-solution-fails-to-properly-deploy"></a><a name="deployment-failure"></a>Scénář: Řešení virtuálního počítače Start/Stop se nedaří správně nasadit
 
 ### <a name="issue"></a>Problém
 
-Při nasazení [virtuálních počítačů spustit/zastavit v době mimo špičku](../automation-solution-vm-management.md)se zobrazí jedna z následujících chyb:
+Při nasazování [spuštění a zastavení virtuálních her během mimo pracovní dobu řešení](../automation-solution-vm-management.md), obdržíte jednu z následujících chyb:
 
 ```error
 Account already exists in another resourcegroup in a subscription. ResourceGroupName: [MyResourceGroup].
@@ -54,51 +54,51 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 ### <a name="cause"></a>Příčina
 
-Nasazení mohou selhat z jednoho z následujících důvodů:
+Nasazení může selhat z jednoho z následujících důvodů:
 
-1. V vybrané oblasti již existuje účet Automation se stejným názvem.
-2. Je zavedena zásada, která zakáže nasazení řešení spustit nebo zastavit virtuální počítače.
-3. Typy prostředků `Microsoft.OperationsManagement`, `Microsoft.Insights`nebo `Microsoft.Automation` nejsou registrovány.
-4. Váš pracovní prostor Log Analytics má na svém počítači zámek.
-5. Máte zastaralou verzi modulů AzureRM nebo řešení spustit/zastavit.
+1. Ve vybrané oblasti již existuje účet automatizace se stejným názvem.
+2. Existuje zásada, která zakazuje nasazení řešení virtuálních počítače Start/Stop.
+3. Typy `Microsoft.OperationsManagement` `Microsoft.Insights`, `Microsoft.Automation` nebo prostředky nejsou registrovány.
+4. Pracovní prostor Log Analytics má zámek.
+5. Máte zastaralou verzi modulů AzureRM nebo řešení Start/Stop.
 
 ### <a name="resolution"></a>Řešení
 
-Projděte si následující seznam, kde můžete najít možná řešení vašeho problému nebo umístit tyto problémy:
+V následujícím seznamu naleznete možná řešení problému nebo míst, která chcete hledat:
 
-1. Účty Automation musí být jedinečné v rámci oblasti Azure, a to i v případě, že jsou v různých skupinách prostředků. Projděte si existující účty služby Automation v cílové oblasti.
-2. Existující zásady zabraňují nasazení řešení pro spuštění nebo zastavení virtuálního počítače. V Azure Portal přejít na přiřazení zásad a ověřte, jestli máte přiřazení zásady, které nepovoluje nasazení tohoto prostředku. Další informace najdete v tématu [RequestDisallowedByPolicy](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md).
-3. Aby bylo možné nasadit řešení pro spuštění/zastavení virtuálního počítače, musí být vaše předplatné zaregistrované v následujících oborech názvů prostředků Azure:
+1. Účty automatizace musí být jedinečné v rámci oblasti Azure, i když jsou v různých skupinách prostředků. Zkontrolujte existující účty automatizace v cílové oblasti.
+2. Existující zásady brání prostředek, který je vyžadován pro řešení spuštění a zastavení virtuálního aplikace, které má být nasazeno. Přejděte na přiřazení zásad na webu Azure portal a zkontrolujte, zda máte přiřazení zásad, které zakazuje nasazení tohoto prostředku. Další informace naleznete v [tématu RequestDisallowedByPolicy](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md).
+3. Aby bylo možné nasadit řešení start/stop virtuálních počítačích, musí být vaše předplatné zaregistrováno do následujících oborů názvů prostředků Azure:
     * `Microsoft.OperationsManagement`
     * `Microsoft.Insights`
     * `Microsoft.Automation`
 
-   Další informace o chybách při registraci zprostředkovatelů najdete v tématu [řešení chyb pro registraci poskytovatele prostředků](../../azure-resource-manager/templates/error-register-resource-provider.md) .
-4. Pokud máte zámek v pracovním prostoru Log Analytics, v Azure Portal vyberte svůj pracovní prostor a odeberte všechny zámky v prostředku.
-5. Pokud výše uvedená řešení problém nevyřeší, postupujte podle pokynů v části [aktualizace řešení](../automation-solution-vm-management.md#update-the-solution) pro opětovné nasazení řešení spustit/zastavit.
+   Další informace o chybách při registraci zprostředkovatelů naleznete v tématu [Resolve errors for resource provider registration.](../../azure-resource-manager/templates/error-register-resource-provider.md)
+4. Pokud máte zámek v pracovním prostoru Log Analytics, přejděte do pracovního prostoru na webu Azure Portal a odeberte všechny zámky na prostředek.
+5. Pokud výše uvedená řešení problém nevyřeší, postupujte podle pokynů v části [Aktualizace řešení](../automation-solution-vm-management.md#update-the-solution) znovu nasadit řešení Start/Stop.
 
-## <a name="all-vms-fail-to-startstop"></a>Scénář: Nepodařilo se spustit nebo zastavit všechny virtuální počítače.
+## <a name="scenario-all-vms-fail-to-startstop"></a><a name="all-vms-fail-to-startstop"></a>Scénář: Všechny virtuální počítače se nepodaří spustit nebo zastavit
 
 ### <a name="issue"></a>Problém
 
-Nakonfigurovali jste řešení spuštění/zastavení virtuálního počítače, ale nespustí se nebo zastaví všechny virtuální počítače nakonfigurované.
+Nakonfigurovali jste řešení virtuálního počítače Start/Stop, ale nespustí se ani nezastaví všechny nakonfigurované virtuální počítače.
 
 ### <a name="cause"></a>Příčina
 
 Tato chyba může být způsobena jedním z následujících důvodů:
 
-1. Plán není správně nakonfigurovaný.
-2. Účet RunAs možná není správně nakonfigurovaný.
-3. Sada Runbook možná běžela s chybami
-4. Možná byly vyloučeny virtuální počítače.
+1. Plán není správně nakonfigurován
+2. Účet RunAs nemusí být správně nakonfigurován.
+3. Runbook může mít dojít k chybám
+4. Virtuální společnosti mohly být vyloučeny.
 
 ### <a name="resolution"></a>Řešení
 
-Projděte si následující seznam, kde můžete najít možná řešení vašeho problému nebo umístit tyto problémy:
+V následujícím seznamu naleznete možná řešení problému nebo míst, která chcete hledat:
 
-* Ověřte, že jste správně nakonfigurovali plán pro řešení spuštění/zastavení virtuálního počítače. Informace o tom, jak nakonfigurovat plán, najdete v článku [plány](../automation-schedules.md) .
+* Zkontrolujte, zda jste správně nakonfigurovali plán pro řešení virtuálního počítače Start/Stop. Informace o konfiguraci plánu naleznete v článku [Plány.](../automation-schedules.md)
 
-* Zkontrolujte [streamy úlohy](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) a vyhledejte případné chyby. Na portálu přejdete do svého účtu Automation a v části **Automatizace procesu**vyberete **úlohy** . Na stránce **úlohy** vyhledejte úlohy z jedné z následujících sad Runbook:
+* Zkontrolujte [datové proudy úloh](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) a vyhledejte případné chyby. Na portálu přejděte na svůj účet automatizace a včásti **Automatizace procesů**vyberte **úlohy** . Na stránce **Úlohy** vyhledejte úlohy z jedné z následujících sad runbooků:
 
   * AutoStop_CreateAlert_Child
   * AutoStop_CreateAlert_Parent
@@ -110,126 +110,126 @@ Projděte si následující seznam, kde můžete najít možná řešení vašeh
   * ScheduledStartStop_Parent
   * SequencedStartStop_Parent
 
-* Ověřte, že [účet RunAs](../manage-runas-account.md) má správná oprávnění k virtuálním počítačům, které se pokoušíte spustit nebo zastavit. Informace o tom, jak kontrolovat oprávnění k prostředku, najdete v tématu [rychlý Start: Zobrazení rolí přiřazených uživateli pomocí Azure Portal](../../role-based-access-control/check-access.md). Bude nutné zadat ID aplikace pro instanční objekt používaný účtem spustit jako. Tuto hodnotu můžete načíst tak, že přejdete do účtu Automation v Azure Portal, vyberete **účty Spustit jako** v části **Nastavení účtu** a kliknete na příslušný účet Spustit jako.
+* Ověřte, zda má [váš účet RunAs](../manage-runas-account.md) správná oprávnění k virtuálním účtům, které se pokoušíte spustit nebo zastavit. Informace o kontrole oprávnění k prostředku najdete v [tématu Úvodní příručka: Zobrazení rolí přiřazených uživateli pomocí portálu Azure](../../role-based-access-control/check-access.md). Budete muset zadat ID aplikace pro instanční objekt používaný spustit jako účet. Tuto hodnotu můžete načíst tak, že přejdete na svůj účet Automation na webu Azure Portal, vyberete **Spustit jako účty** v části Nastavení **účtu** a kliknete na příslušný účet Spustit jako.
 
-* Pokud jsou virtuální počítače explicitně vyloučené, nemusíte je spustit ani zastavit. Vyloučené virtuální počítače jsou nastavené v proměnné **External_ExcludeVMNames** v účtu Automation, do kterého se řešení nasazuje. Následující příklad ukazuje, jak můžete zadat dotaz na tuto hodnotu pomocí PowerShellu.
+* Virtuální ho disponitelů nemusí být spuštěné nebo zastavené, pokud jsou explicitně vyloučeny. Vyloučené virtuální chody na nastavené v **proměnné External_ExcludeVMNames** v účtu automatizace, na které se řešení nasazuje. Následující příklad ukazuje, jak můžete dotaz na tuto hodnotu s PowerShell.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-## <a name="some-vms-fail-to-startstop"></a>Scénář: některé z mých virtuálních počítačů se nepodařilo spustit nebo zastavit.
+## <a name="scenario-some-of-my-vms-fail-to-start-or-stop"></a><a name="some-vms-fail-to-startstop"></a>Scénář: Některé z mých virtuálních počítače se nedaří spustit nebo zastavit
 
 ### <a name="issue"></a>Problém
 
-Nakonfigurovali jste řešení pro spuštění nebo zastavení virtuálního počítače, ale nespustí se nebo nezastaví některé virtuální počítače nakonfigurované.
+Nakonfigurovali jste řešení virtuálního počítače Start/Stop, ale nespustí se ani nezastaví některé nakonfigurované virtuální počítače.
 
 ### <a name="cause"></a>Příčina
 
 Tato chyba může být způsobena jedním z následujících důvodů:
 
-1. Pokud používáte scénář sekvence, značka může chybět nebo být nesprávná.
-2. Virtuální počítač může být vyloučený.
-3. Účet RunAs pravděpodobně nemá dostatečná oprávnění k virtuálnímu počítači.
-4. Virtuální počítač může mít něco, co ho zastavilo od spuštění nebo zastavení.
+1. Při použití sekvenčního scénáře může značka chybět nebo může být nesprávná.
+2. Virtuální vod může být vyloučeno
+3. Účet RunAs nemusí mít dostatečná oprávnění pro virtuální počítač.
+4. Virtuální virtuální ms může mít něco, co mu brání v spuštění nebo zastavení.
 
 ### <a name="resolution"></a>Řešení
 
-Projděte si následující seznam, kde můžete najít možná řešení vašeho problému nebo umístit tyto problémy:
+V následujícím seznamu naleznete možná řešení problému nebo míst, která chcete hledat:
 
-* Pokud používáte [scénář sekvence](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags) virtuálního počítače spustit/zastavit v době mimo špičku, musíte se ujistit, že každý virtuální počítač, který chcete spustit nebo zastavit, má správnou značku. Ujistěte se, že virtuální počítače, které chcete spustit, mají značku `sequencestart` a virtuální počítače, které chcete zastavit, mají značku `sequencestop`. Obě značky vyžadují kladnou celočíselnou hodnotu. Dotaz podobný následujícímu příkladu můžete použít k vyhledání všech virtuálních počítačů, které mají značky a jejich hodnoty.
+* Při použití [sekvenční scénář](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags) řešení Start/Stop virtuálního počítače během mimo pracovní dobu, musíte se ujistit, že každý virtuální počítače, který chcete spustit nebo zastavit má správnou značku. Ujistěte se, že virtuální chod, `sequencestart` které chcete spustit, mají značku `sequencestop` a virtuální chod, které chcete zastavit, mají značku. Obě značky vyžadují kladnou hodnotu celéčíslo. Pomocí dotazu podobného následujícímu příkladu můžete vyhledat všechny virtuální aplikace se značkami a jejich hodnotami.
 
   ```powershell-interactive
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
   ```
 
-* Pokud jsou virtuální počítače explicitně vyloučené, nemusíte je spustit ani zastavit. Vyloučené virtuální počítače jsou nastavené v proměnné **External_ExcludeVMNames** v účtu Automation, do kterého se řešení nasazuje. Následující příklad ukazuje, jak můžete zadat dotaz na tuto hodnotu pomocí PowerShellu.
+* Virtuální ho disponitelů nemusí být spuštěné nebo zastavené, pokud jsou explicitně vyloučeny. Vyloučené virtuální chody na nastavené v **proměnné External_ExcludeVMNames** v účtu automatizace, na které se řešení nasazuje. Následující příklad ukazuje, jak můžete dotaz na tuto hodnotu s PowerShell.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-* Aby bylo možné spouštět a zastavovat virtuální počítače, musí mít účet RunAs pro účet Automation příslušná oprávnění k virtuálnímu počítači. Informace o tom, jak kontrolovat oprávnění k prostředku, najdete v tématu [rychlý Start: Zobrazení rolí přiřazených uživateli pomocí Azure Portal](../../role-based-access-control/check-access.md). Bude nutné zadat ID aplikace pro instanční objekt používaný účtem spustit jako. Tuto hodnotu můžete načíst tak, že přejdete do účtu Automation v Azure Portal, vyberete **účty Spustit jako** v části **Nastavení účtu** a kliknete na příslušný účet Spustit jako.
+* Chcete-li spustit a zastavit virtuální chod, musí mít účet RunAs pro účet Automation příslušná oprávnění k virtuálnímu virtuálnímu účtu. Informace o kontrole oprávnění k prostředku najdete v [tématu Úvodní příručka: Zobrazení rolí přiřazených uživateli pomocí portálu Azure](../../role-based-access-control/check-access.md). Budete muset zadat ID aplikace pro instanční objekt používaný spustit jako účet. Tuto hodnotu můžete načíst tak, že přejdete na svůj účet Automation na webu Azure Portal, vyberete **Spustit jako účty** v části Nastavení **účtu** a kliknete na příslušný účet Spustit jako.
 
-* Pokud má virtuální počítač potíže se spouštěním nebo navrácením, může to být způsobeno problémem na samotném virtuálním počítači. Některé příklady nebo potenciální problémy jsou při pokusu o vypnutí nebo zablokování služby a dalších potížích aplikovány aktualizace. Přejděte k prostředku virtuálního počítače a zkontrolujte **protokoly aktivit** , abyste viděli, jestli jsou v protokolech nějaké chyby. Můžete se taky pokusit přihlásit k virtuálnímu počítači a zjistit, jestli v protokolech událostí nejsou nějaké chyby. Další informace o řešení potíží s vaším VIRTUÁLNÍm počítačem najdete v tématu [řešení potíží s virtuálními počítači Azure](../../virtual-machines/troubleshooting/index.yml) .
+* Pokud virtuální počítač má potíže se spuštěním nebo zrušením volání, toto chování může být způsobeno problémem na samotném virtuálním počítači. Některé příklady nebo potenciální problémy jsou, aktualizace se používá při pokusu o vypnutí, služba přestane reagovat a další). Přejděte k prostředku virtuálního počítače a zkontrolujte **protokoly aktivit,** abyste zjistili, jestli v protokolech nejsou nějaké chyby. Můžete se také pokusit přihlásit do virtuálního virtuálního mísy a zjistit, zda jsou nějaké chyby v protokolech událostí. Další informace o řešení potíží s virtuálním počítačem najdete [v tématu Řešení potíží s virtuálními počítači Azure.](../../virtual-machines/troubleshooting/index.yml)
 
-* Zkontrolujte [streamy úlohy](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) a vyhledejte případné chyby. Na portálu přejdete do svého účtu Automation a v části **Automatizace procesu**vyberete **úlohy** .
+* Zkontrolujte [datové proudy úloh](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) a vyhledejte případné chyby. Na portálu přejděte na svůj účet automatizace a včásti **Automatizace procesů**vyberte **úlohy** .
 
-## <a name="custom-runbook"></a>Scénář: můj vlastní Runbook nedokáže spustit nebo zastavit moje virtuální počítače
+## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>Scénář: Vlastní runbook se nezdaří spustit nebo zastavit virtuální počítače
 
 ### <a name="issue"></a>Problém
 
-Vytvořili jste vlastní Runbook nebo jste si ho stáhli ze Galerie prostředí PowerShell a nefunguje správně.
+Vytvořili jste vlastní runbook nebo jste ji stáhli z Galerie prostředí PowerShell a nefunguje správně.
 
 ### <a name="cause"></a>Příčina
 
-Příčinou selhání může být jedna z mnoha věcí. V Azure Portal klikněte na účet Automation a v části **Automatizace procesu**vyberte **úlohy** . Na stránce **úlohy** vyhledejte úlohy z Runbooku a zobrazte případné selhání úloh.
+Příčinou neúspěchu může být jedna z mnoha věcí. Přejděte na svůj účet Automation na portálu Azure a v části **Automatizace procesů**vyberte **Úlohy** . Na stránce **Úlohy** vyhledejte úlohy z runbooku a zobrazte všechny chyby úloh.
 
 ### <a name="resolution"></a>Řešení
 
-Při spouštění a zastavování virtuálních počítačů v Azure Automation se doporučuje používat [virtuální počítače spustit/zastavit během nepracovních hodin](../automation-solution-vm-management.md) . Toto řešení je vytvořené Microsoftem. Microsoft nepodporuje vlastní Runbooky. Řešení pro vlastní sadu Runbook můžete najít v článku [věnovaném řešení potíží](runbooks.md) se sadou Runbook. Tento článek poskytuje obecné pokyny a řešení potíží pro Runbooky všech typů. Zkontrolujte [streamy úlohy](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) a vyhledejte případné chyby. Na portálu přejdete do svého účtu Automation a v části **Automatizace procesu**vyberete **úlohy** .
+Doporučujeme použít řešení [Start/Stop v době vypnutí počítače](../automation-solution-vm-management.md) ke spuštění a zastavení virtuálních počítačů v Azure Automation. Toto řešení je autorem společnosti Microsoft. Vlastní sady Runbook nejsou podporovány společností Microsoft. Řešení pro vlastní runbook můžete najít v článku [řešení potíží s runbookem.](runbooks.md) Tento článek obsahuje obecné pokyny a řešení potíží pro sady Runbook všech typů. Zkontrolujte [datové proudy úloh](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) a vyhledejte případné chyby. Na portálu přejděte na svůj účet automatizace a včásti **Automatizace procesů**vyberte **úlohy** .
 
-## <a name="dont-start-stop-in-sequence"></a>Scénář: virtuální počítače se nespustí ani nezastaví ve správném pořadí.
+## <a name="scenario-vms-dont-start-or-stop-in-the-correct-sequence"></a><a name="dont-start-stop-in-sequence"></a>Scénář: Virtuální počítače se nespouštějí ani nezastavují ve správném pořadí
 
 ### <a name="issue"></a>Problém
 
-Virtuální počítače, které jste nakonfigurovali v řešení, se nespustí ani neukončí ve správném pořadí.
+Virtuální počítače, které jste nakonfigurovali v řešení nespustí nebo zastavit ve správném pořadí.
 
 ### <a name="cause"></a>Příčina
 
-To je způsobeno nesprávným označením na virtuálních počítačích.
+To je způsobeno nesprávným označováním na virtuálních počítačích.
 
 ### <a name="resolution"></a>Řešení
 
-Proveďte následující kroky, aby bylo zajištěno, že je řešení správně nakonfigurováno.
+Postupujte podle následujících kroků, abyste zajistili, že je řešení správně nakonfigurováno.
 
-1. Zajistěte, aby všechny virtuální počítače byly spuštěny nebo zastaveny, `sequencestart` nebo značka `sequencestop` v závislosti na vaší situaci. Tyto značky vyžadují jako hodnotu kladné celé číslo. Virtuální počítače jsou zpracovávány vzestupném pořadím na základě této hodnoty.
-2. Ujistěte se, že skupiny prostředků pro virtuální počítače, které se mají spustit nebo zastavit, jsou v proměnných `External_Start_ResourceGroupNames` nebo `External_Stop_ResourceGroupNames` v závislosti na vaší situaci.
-3. Otestujte provedené změny spuštěním sady `SequencedStartStop_Parent` Runbook s parametrem WHATIF nastaveným na hodnotu true, abyste zobrazili náhled změn.
+1. Ujistěte se, že všechny virtuální `sequencestart` počítače, které mají být spuštěny nebo zastaveny, mají značku nebo `sequencestop` značku, v závislosti na vaší situaci. Tyto značky potřebují jako hodnotu kladné celé číslo. Virtuální počítači jsou zpracovávány ve vzestupném pořadí na základě této hodnoty.
+2. Ujistěte se, že skupiny prostředků pro virtuální počítače, které mají být spuštěny nebo zastaveny, jsou v proměnných `External_Start_ResourceGroupNames` nebo `External_Stop_ResourceGroupNames` v závislosti na vaší situaci.
+3. Otestujte změny spuštěním `SequencedStartStop_Parent` sady Runbook s parametrem WHATIF nastaveným na hodnotu True, abyste zobrazili náhled změn.
 
-Podrobnější informace a další pokyny k používání řešení ke spouštění a zastavování virtuálních počítačů v sekvenci najdete v tématu [spuštění a zastavení virtuálních počítačů v sekvenci](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags).
+Podrobnější a další pokyny, jak používat řešení ke spuštění a zastavení virtuálních počítačů v pořadí, najdete [v tématu Spuštění a zastavení virtuálních počítačů v pořadí](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags).
 
-## <a name="403"></a>Scénář: úloha spuštění/zastavení virtuálního počítače se nezdařila, stav 403 zakázán
+## <a name="scenario-startstop-vm-job-fails-with-403-forbidden-status"></a><a name="403"></a>Scénář: Spuštění a zastavení úlohy virtuálního počítače se nezdaří s 403 zakázanýstav
 
 ### <a name="issue"></a>Problém
 
-Vyhledáte úlohy, které selhaly s chybou `403 forbidden` pro virtuální počítače spustit/zastavit v době mimo provozní Runbooky řešení.
+Můžete najít úlohy, `403 forbidden` které se nezdařily s chybou pro spuštění a zastavení virtuálních účtů během mimo pracovní dobu sady runbooků řešení.
 
 ### <a name="cause"></a>Příčina
 
-Tento problém může být způsoben nesprávně konfigurovaným nebo vydaným účtem spustit jako s vypršelou platností. Důvodem může být také nedostatečná oprávnění k prostředkům virtuálních počítačů pomocí účtu Automation účtů spustit jako.
+Tento problém může být způsoben nesprávně nakonfigurovaným nebo vypršela platnost spustit jako účet. Může to být také z důvodu nedostatečných oprávnění k prostředkům virtuálního počítačů podle automatizačních účtů spustit jako účet.
 
 ### <a name="resolution"></a>Řešení
 
-Pokud chcete ověřit, jestli je účet Spustit jako správně nakonfigurovaný, Azure Portal v části **Nastavení účtu**vyberte účet Automation a vyberte **účty Spustit jako** . Tady se zobrazí stav účtů spustit jako, pokud je účet Spustit jako nesprávně nakonfigurovaný nebo vypršela jeho platnost. stav se zobrazí.
+Chcete-li zkontrolovat, zda je účet Spustit jako správně nakonfigurovaný, přejděte na portál Azure a v části **Nastavení účtu**vyberte Spustit **jako účty** . Zde uvidíte stav vašeho spuštění jako účtů, pokud je účet Spustit jako nesprávně nakonfigurován nebo vypršela jeho platnost, stav se zobrazí.
 
-Pokud je váš účet Spustit jako špatně nakonfigurovaný, měli byste účet Spustit jako odstranit a znovu vytvořit. Viz [Správa účtů spustit jako Azure Automation](../manage-runas-account.md).
+Pokud je váš účet Spustit jako nesprávně nakonfigurován, měli byste odstranit a znovu vytvořit účet Spustit jako. Viz [Správa azure automatizace spustit jako účty](../manage-runas-account.md).
 
-Pokud platnost certifikátu pro účet Spustit jako vypršela, postupujte podle kroků uvedených v části [obnovení certifikátu podepsané svým držitelem](../manage-runas-account.md#cert-renewal) a obnovte certifikát.
+Pokud platnost certifikátu vypršela pro váš účet Spustit jako, obnovte certifikát podle pokynů uvedených při [obnovení certifikátu podepsaného svým držitelem.](../manage-runas-account.md#cert-renewal)
 
-K tomuto problému může dojít v důsledku chybějících oprávnění. Informace o tom, jak kontrolovat oprávnění k prostředku, najdete v tématu [rychlý Start: Zobrazení rolí přiřazených uživateli pomocí Azure Portal](../../role-based-access-control/check-access.md). Bude nutné zadat ID aplikace pro instanční objekt používaný účtem spustit jako. Tuto hodnotu můžete načíst tak, že přejdete do účtu Automation v Azure Portal, vyberete **účty Spustit jako** v části **Nastavení účtu** a kliknete na příslušný účet Spustit jako.
+Problém může být způsoben chybějícíoprávnění. Informace o kontrole oprávnění k prostředku najdete v [tématu Úvodní příručka: Zobrazení rolí přiřazených uživateli pomocí portálu Azure](../../role-based-access-control/check-access.md). Budete muset zadat ID aplikace pro instanční objekt používaný spustit jako účet. Tuto hodnotu můžete načíst tak, že přejdete na svůj účet Automation na webu Azure Portal, vyberete **Spustit jako účty** v části Nastavení **účtu** a kliknete na příslušný účet Spustit jako.
 
-## <a name="other"></a>Scénář: můj problém není uvedený výše
+## <a name="scenario-my-problem-isnt-listed-above"></a><a name="other"></a>Scénář: Můj problém není uveden výše
 
 ### <a name="issue"></a>Problém
 
-Při použití Start/Stop VMs during off-hours řešení, které není uvedeno na této stránce, dochází k problému nebo neočekávanému výsledku.
+Při použití řešení Start/Stop v době mimo pracovní dobu, které není uvedeno na této stránce, dochází k problému nebo neočekávanému výsledku.
 
 ### <a name="cause"></a>Příčina
 
-V mnoha případech může být chyba způsobena použitím staré a zastaralé verze řešení.
+Mnohokrát chyby mohou být způsobeny pomocí staré a zastaralé verze řešení.
 
 > [!NOTE]
-> Řešení Start/Stop VMs during off-hours bylo testováno pomocí modulů Azure, které jsou importovány do účtu Automation při nasazení řešení. Řešení aktuálně nefunguje s novějšími verzemi modulu Azure. To má vliv jenom na účet Automation, který používáte ke spuštění řešení Start/Stop VMs during off-hours. V dalších účtech Automation můžete dál používat novější verze modulu Azure, jak je popsáno v tématu [Postup aktualizace Azure PowerShellch modulů v Azure Automation](../automation-update-azure-modules.md)
+> Řešení Start/Stop VM během mimopracovní doby bylo testováno pomocí modulů Azure, které se importují do vašeho účtu Automation při nasazování řešení. Řešení aktuálně nefunguje s novějšími verzemi modulu Azure. To má vliv pouze na účet automatizace, který používáte ke spuštění spuštění virtuálních účtů Start/Stop během mimopracovní ho řešení. Novější verze modulu Azure můžete dál používat v jiných účtech automatizace, jak je popsáno v části [Jak aktualizovat moduly Azure PowerShell u Azure Automation.](../automation-update-azure-modules.md)
 
 ### <a name="resolution"></a>Řešení
 
-Chcete-li vyřešit mnoho chyb, doporučujeme řešení odebrat a aktualizovat. Informace o tom, jak řešení aktualizovat, najdete v tématu [aktualizace virtuálních počítačů spustit/zastavit během nepracovních řešení](../automation-solution-vm-management.md#update-the-solution). Navíc můžete zkontrolovat [streamy úloh](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) a vyhledat případné chyby. Na portálu přejdete do svého účtu Automation a v části **Automatizace procesu**vyberete **úlohy** .
+Chcete-li vyřešit mnoho chyb, doporučujeme odebrat a aktualizovat řešení. Informace o tom, jak aktualizovat řešení, najdete [v tématu Aktualizace spuštění a zastavení virtuálních her během mimo pracovní dobu řešení](../automation-solution-vm-management.md#update-the-solution). Kromě toho můžete zkontrolovat [datové proudy úloh](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) a vyhledat případné chyby. Na portálu přejděte na svůj účet automatizace a včásti **Automatizace procesů**vyberte **úlohy** .
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
-* Spojte se s [@AzureSupport](https://twitter.com/azuresupport). Tento oficiální účet Microsoft Azure pomáhá vylepšovat uživatelské prostředí tím, že propojuje komunitu Azure s vhodnými zdroji: odpověďmi, podporou a odborníky.
-* Pokud potřebujete další pomoc, můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s – oficiálním účtem Microsoft Azure pro zlepšení zákaznického prostředí propojením komunity Azure se správnými prostředky: odpověďmi, podporou a odborníky.
+* Pokud potřebujete další pomoc, můžete nastolet incident podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat **podporu**.

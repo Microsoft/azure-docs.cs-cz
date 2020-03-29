@@ -1,5 +1,5 @@
 ---
-title: ZASTARALÉ Rychlý Start – cluster Azure Kubernetes pro Windows
+title: (ZASTARALÉ) Úvodní příručka – cluster Azure Kubernetes pro Windows
 description: Rychle se naučíte, jak pomocí rozhraní příkazového řádku Azure vytvářet cluster Kubernetes pro kontejnery Windows ve službě Azure Container Service.
 author: dlepow
 ms.service: container-service
@@ -8,23 +8,23 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277651"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>ZASTARALÉ Nasazení clusteru Kubernetes pro kontejnery Windows
+# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(ZASTARALÉ) Nasazení clusteru Kubernetes pro kontejnery s Windows
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tato příručka podrobně popisuje použití rozhraní příkazového řádku Azure k nasazení clusteru [Kubernetes](https://kubernetes.io/docs/home/) ve službě [Azure Container Service](../container-service-intro.md). Po nasazení clusteru se k němu připojíte pomocí nástroje pro příkazový řádek Kubernetes `kubectl` a nasadíte svůj první kontejner Windows.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). 
 
 > [!NOTE]
 > Podpora pro kontejnery Windows v Kubernetes ve službě Azure Container Service je ve verzi Preview. 
@@ -61,7 +61,7 @@ Po několika minutách se příkaz dokončí a zobrazí vám informace o nasaz
 
 ## <a name="install-kubectl"></a>Instalace kubectl
 
-Pokud se chcete připojit ke clusteru Kubernetes z klientského počítače, použijte klienta příkazového řádku Kubernetes [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/). 
+Chcete-li se připojit ke clusteru Kubernetes z klientského počítače, použijte [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)klienta příkazového řádku Kubernetes. 
 
 Pokud používáte Azure CloudShell, `kubectl` je už nainstalován. Pokud ho chcete nainstalovat místně, můžete použít příkaz [az acs kubernetes install-cli](/cli/azure/acs/kubernetes).
 
@@ -160,7 +160,7 @@ Pokud chcete zpřístupnit pod celému světu prostřednictvím veřejné IP adr
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-Pomocí tohoto příkazu Kubernetes vytvoří službu a pravidlo nástroje pro vyrovnávání zatížení Azure s veřejnou IP adresou pro službu. 
+Tento příkaz způsobí, že Kubernetes vytvoří službu a pravidlo nástroje pro vyrovnávání zatížení Azure s veřejnou IP adresou pro tuto službu. 
 
 Spuštěním následujícího příkazu zobrazte stav služby.
 

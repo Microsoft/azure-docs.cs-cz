@@ -1,39 +1,39 @@
 ---
-title: Externí orchestrace v Durable Functions – Azure
-description: Naučte se implementovat orchestraci externí pomocí rozšíření Durable Functions pro Azure Functions.
+title: Věčné orchestrace v trvalých funkcích – Azure
+description: Zjistěte, jak implementovat věčné orchestrace pomocí rozšíření Trvalé funkce pro funkce Azure.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 572fec4d6e47efd734bc84a40dc974c79bd619fb
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76262975"
 ---
-# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Orchestrace externí v Durable Functions (Azure Functions)
+# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Věčné orchestrace v trvalých funkcích (funkce Azure)
 
-*Orchestrace externí* jsou funkce nástroje Orchestrator, které nikdy nekončí. Jsou užitečné, pokud chcete použít [Durable Functions](durable-functions-overview.md) pro agregátory a jakýkoli scénář, který vyžaduje nekonečné smyčky.
+*Věčné orchestrace* jsou orchestrátorské funkce, které nikdy nekončí. Jsou užitečné, pokud chcete použít [trvalé funkce](durable-functions-overview.md) pro agregátory a jakýkoli scénář, který vyžaduje nekonečnou smyčku.
 
 ## <a name="orchestration-history"></a>Historie orchestrace
 
-Jak je vysvětleno v tématu [Historie orchestrace](durable-functions-orchestrations.md#orchestration-history) , trvalá architektura pro úlohy sleduje historii každé orchestrace funkcí. Tato historie se průběžně rozroste, dokud funkce Orchestrator nadále plánuje novou práci. Pokud se funkce Orchestrator dostane do nekonečné smyčky a průběžně plánuje práci, může tato historie značně růst a způsobovat významné problémy s výkonem. Koncept *orchestrace externí* je navržený tak, aby zmírnil tyto druhy problémů pro aplikace, které potřebují nekonečné smyčky.
+Jak je vysvětleno v tématu [historie orchestrace,](durable-functions-orchestrations.md#orchestration-history) rámec trvanlivých úloh sleduje historii orchestrace jednotlivých funkcí. Tato historie neustále roste tak dlouho, dokud funkce orchestrator pokračuje v plánování nové práce. Pokud funkce orchestrator přejde do nekonečné smyčky a nepřetržitě plánuje práci, tato historie může růst kriticky velké a způsobit významné problémy s výkonem. Koncept *věčné orchestrace* byl navržen tak, aby zmírnit tyto druhy problémů pro aplikace, které potřebují nekonečné smyčky.
 
 ## <a name="resetting-and-restarting"></a>Resetování a restartování
 
-Namísto použití nekonečné smyčky funkce nástroje Orchestrator obnoví svůj stav voláním metody `ContinueAsNew` (.NET) nebo `continueAsNew` (JavaScript) [vazby triggeru orchestrace](durable-functions-bindings.md#orchestration-trigger). Tato metoda přijímá jeden parametr s možností serializace JSON, který se stal novým vstupem pro další generování funkce Orchestrator.
+Namísto použití nekonečné smyčky, funkce orchestrator obnovit `ContinueAsNew` jejich stav `continueAsNew` voláním (.NET) nebo (JavaScript) metoda [orchestrace aktivační vazby](durable-functions-bindings.md#orchestration-trigger). Tato metoda trvá jeden parametr JSON serializable, který se stane novým vstupem pro další generaci funkce orchestratoru.
 
-Když se zavolá `ContinueAsNew`, instance před ukončením zachová zprávu do sebe samé. Zpráva restartuje instanci s novou vstupní hodnotou. Stejné ID instance je zachované, ale historie funkce Orchestrator je ve skutečnosti zkrácená.
+Při `ContinueAsNew` volání instance zařadí zprávu do samo před ukončením. Zpráva restartuje instanci s novou vstupní hodnotou. Stejné ID instance je zachována, ale historie funkce orchestrator je účinně zkrácena.
 
 > [!NOTE]
-> Prostředí trvalé úlohy udržuje stejné ID instance, ale interně vytvoří nové *ID spuštění* pro funkci Orchestrator, která obnoví `ContinueAsNew`. Toto ID spuštění většinou není vystaveno externě, ale může být užitečné, abyste měli informace o spuštění orchestrace ladění.
+> Architektura trvalé úlohy udržuje stejné ID instance, ale interně vytvoří nové *ID* `ContinueAsNew`spuštění pro funkci orchestrator, která získá reset ování . Toto ID spuštění obecně není vystavena externě, ale může být užitečné vědět o provádění ladění orchestrace.
 
 ## <a name="periodic-work-example"></a>Příklad periodické práce
 
-Jeden případ použití pro orchestraci externí je kód, který potřebuje provést pravidelnou práci po neomezenou dobu.
+Jeden případ použití pro věčné orchestrace je kód, který musí provádět periodické práce neomezeně dlouho.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -51,9 +51,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Předchozí C# příklad je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklad Jazyka C# je pro trvalé funkce 2.x. Pro trvalé funkce 1.x, `DurableOrchestrationContext` musíte `IDurableOrchestrationContext`použít místo . Další informace o rozdílech mezi verzemi naleznete v článku [verze durable functions.](durable-functions-versions.md)
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -72,16 +72,16 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Rozdíl mezi tímto příkladem a funkcí aktivovanou časovačem je, že doba triggeru vyčištění tady není založena na plánu. Například plán CRON, který spouští funkci každou hodinu, se spustí v 1:00, 2:00, 3:00 atd. a může potenciálně vést k překrývání problémů. V tomto příkladu, pokud vyčištění trvá 30 minut, pak bude naplánováno na 1:00, 2:30, 4:00 atd. a neexistuje možnost překrytí.
+Rozdíl mezi tímto příkladem a funkcí spouštěnou časovačem spočívá v tom, že aktivační časy vyčištění zde nejsou založeny na plánu. Například plán CRON, který každou hodinu spustí funkci, ji spustí v 1:00, 2:00, 3:00 atd. V tomto příkladu však pokud vyčištění trvá 30 minut, pak bude naplánováno na 1:00, 2:30, 4:00 atd.
 
-## <a name="starting-an-eternal-orchestration"></a>Spuštění orchestrace externí
+## <a name="starting-an-eternal-orchestration"></a>Zahájení věčné orchestrace
 
-K zahájení orchestrace externí použijte metodu `StartNewAsync` (.NET) nebo `startNew` (JavaScript), stejně jako u jakékoli jiné funkce orchestrace.  
+Pomocí `StartNewAsync` metody (.NET) `startNew` nebo (JavaScript) můžete spustit věčnou orchestraci, stejně jako jakoukoli jinou funkci orchestrace.  
 
 > [!NOTE]
-> Pokud potřebujete zajistit, aby orchestrace typu Singleton externí běžela, je důležité při spouštění orchestrace zachovat stejné `id` instance. Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
+> Pokud potřebujete zajistit, že je spuštěna trvalá orchestrace singletonu, `id` je důležité zachovat stejnou instanci při spuštění orchestrace. Další informace naleznete [v tématu Správa instancí](durable-functions-instance-management.md).
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -97,9 +97,9 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 ```
 
 > [!NOTE]
-> Předchozí kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód je pro trvalé funkce 2.x. Pro trvalé funkce 1.x `OrchestrationClient` je nutné `DurableClient` použít atribut namísto `DurableOrchestrationClient` atributu a `IDurableOrchestrationClient`místo . Další informace o rozdílech mezi verzemi naleznete v článku [verze durable functions.](durable-functions-versions.md)
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -118,13 +118,13 @@ module.exports = async function (context, req) {
 
 ---
 
-## <a name="exit-from-an-eternal-orchestration"></a>Ukončení orchestrace externí
+## <a name="exit-from-an-eternal-orchestration"></a>Odchod z věčné orchestrace
 
-Pokud je nutné, aby funkce Orchestrator mohla být nakonec dokončena, *Nevolejte `ContinueAsNew`* a nechejte funkci ukončit.
+Pokud orchestrator funkce potřebuje nakonec dokončit, pak vše, co `ContinueAsNew` musíte *udělat,* není volání a nechat funkci ukončit.
 
-Pokud je funkce Orchestrator v nekonečné smyčce a je nutné ji zastavit, použijte k zastavení [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) metodu `TerminateAsync` (.NET) nebo `terminate` (JavaScript). Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
+Pokud orchestrator funkce je v nekonečné smyčce a `TerminateAsync` je třeba zastavit, použijte (.NET) nebo `terminate` (JavaScript) metoda [orchestrace vazby klienta](durable-functions-bindings.md#orchestration-client) zastavit. Další informace naleznete [v tématu Správa instancí](durable-functions-instance-management.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Naučte se implementovat orchestrace singleton.](durable-functions-singletons.md)
+> [Naučte se implementovat orchestrace singletonu](durable-functions-singletons.md)

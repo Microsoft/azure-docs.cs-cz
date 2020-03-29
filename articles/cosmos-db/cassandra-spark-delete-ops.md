@@ -1,6 +1,6 @@
 ---
-title: Odstranění operací Azure Cosmos DB rozhraní API Cassandra ze Sparku
-description: Tento článek podrobně popisuje, jak odstranit data v tabulkách v Azure Cosmos DB rozhraní API Cassandra ze Sparku.
+title: Odstranění operací v rozhraní API Azure Cosmos DB Cassandra ze Sparku
+description: Tento článek podrobně popisuje, jak odstranit data v tabulkách v rozhraní AZURE Cosmos DB Cassandra API ze Sparku
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 0317fab158b2ea73b365bedc272721816da22c4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442084"
 ---
-# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Odstranění dat z Azure Cosmos DB rozhraní API Cassandra tabulek ze Sparku
+# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Odstranění dat v tabulkách rozhraní API Azure Cosmos DB Cassandra ze Sparku
 
-Tento článek popisuje, jak odstranit data v Azure Cosmos DB rozhraní API Cassandra tabulkách ze Sparku.
+Tento článek popisuje, jak odstranit data v azure cosmos DB Cassandra API tabulky ze Spark.
 
-## <a name="cassandra-api-configuration"></a>Konfigurace rozhraní Cassandra API
+## <a name="cassandra-api-configuration"></a>Konfigurace rozhraní API Cassandra
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -47,7 +47,7 @@ spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
 ## <a name="sample-data-generator"></a>Generátor ukázkových dat
-K vygenerování ukázkových dat použijeme tento fragment kódu:
+Tento fragment kódu použijeme ke generování ukázkových dat:
 
 ```scala
 //Create dataframe
@@ -67,9 +67,9 @@ booksDF.write
   .save()
 ```
 
-## <a name="dataframe-api"></a>Datový rámec rozhraní API
+## <a name="dataframe-api"></a>Rozhraní API datového rámce
 
-### <a name="delete-rows-that-match-a-condition"></a>Odstraní řádky, které se shodují s podmínkou.
+### <a name="delete-rows-that-match-a-condition"></a>Odstranění řádků, které odpovídají podmínce
 
 ```scala
 //1) Create dataframe
@@ -153,7 +153,7 @@ deleteBooksDF: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] = [book_id
 cdbConnector: com.datastax.spark.connector.cql.CassandraConnector = com.datastax.spark.connector.cql.CassandraConnector@187deb43
 ```
 
-### <a name="delete-all-the-rows-in-the-table"></a>Odstraní všechny řádky v tabulce.
+### <a name="delete-all-the-rows-in-the-table"></a>Odstranění všech řádků v tabulce
 
 ```scala
 //1) Create dataframe
@@ -231,9 +231,9 @@ ReadSchema: struct<book_id:string,book_author:string,book_name:string,book_price
 +-------+-----------+---------+----------+-------------+
 ```
 
-## <a name="rdd-api"></a>ROZHRANÍ API RDD
+## <a name="rdd-api"></a>RDD API
 
-### <a name="delete-all-the-rows-in-the-table"></a>Odstraní všechny řádky v tabulce.
+### <a name="delete-all-the-rows-in-the-table"></a>Odstranění všech řádků v tabulce
 ```scala
 //1) Create RDD with all rows
 val deleteBooksRDD = 
@@ -300,7 +300,7 @@ deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datas
 cdbConnector: com.datastax.spark.connector.cql.CassandraConnector = com.datastax.spark.connector.cql.CassandraConnector@317927
 ```
 
-### <a name="delete-specific-columns"></a>Odstranit konkrétní sloupce
+### <a name="delete-specific-columns"></a>Odstranění určitých sloupců
 
 ```scala
 //1) Create RDD 
@@ -358,7 +358,7 @@ deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datas
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li provést operace agregace a kopírování dat, přečtěte si
+Chcete-li provádět operace agregace a kopírování dat,
  
 * [Agregační operace](cassandra-spark-aggregation-ops.md)
 * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)

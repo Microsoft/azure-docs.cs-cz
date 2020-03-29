@@ -1,61 +1,61 @@
 ---
-title: 'Testování: komunikace s službami'
-description: Komunikace mezi službami je důležitým integračním bodem aplikace Service Fabric. Tento článek popisuje faktory návrhu a postupy testování.
+title: 'Testovatelnost: Servisní komunikace'
+description: Komunikace mezi službami je kritickým integračním bodem aplikace Service Fabric. Tento článek popisuje aspekty návrhu a techniky testování.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465560"
 ---
-# <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric scénáře testování: komunikace se službou
-Mikroslužby a architektury zaměřené na služby se přirozeně nacházejí v Azure Service Fabric. V těchto typech distribuovaných architektur se aplikace mikroslužeb s komponentami typicky skládají z několika služeb, které musí vzájemně komunikovat. I v nejjednodušších případech obvykle máte alespoň bezstavovou webovou službu a službu stavového úložiště dat, která potřebuje komunikovat.
+# <a name="service-fabric-testability-scenarios-service-communication"></a>Scénáře testovatelnosti service fabric: Komunikace služby
+Mikroslužeb a architektury orientované na služby se přirozeně objevují v Azure Service Fabric. V těchto typech distribuovaných architektur komponentizované aplikace mikroslužeb se obvykle skládají z více služeb, které potřebují mluvit mezi sebou. I v těch nejjednodušších případech obvykle máte alespoň bezstavovou webovou službu a stavovou službu úložiště dat, která potřebuje komunikovat.
 
-Komunikace mezi službami je důležitým integračním bodem aplikace, protože každá služba zpřístupňuje vzdálené rozhraní API jiným službám. Práce se sadou hranic rozhraní API, která zahrnuje vstupně-výstupní operace obecně vyžaduje určitou péči, s dobrým množstvím testování a ověřením.
+Komunikace mezi službami je kritickým integračním bodem aplikace, protože každá služba zpřístupňuje vzdálené rozhraní API jiným službám. Práce se sadou hranic rozhraní API, která zahrnuje vstupně-va obecně vyžaduje určitou péči, s dobrým množstvím testování a ověřování.
 
-V distribuovaném systému je potřeba udělat spoustu informací, když se tyto hranice služby budou v distribuovaném systému navzájemovat:
+Existuje mnoho aspektů, které je třeba provést, když jsou tyto hranice služeb propojeny v distribuovaném systému:
 
-* *Transportní protokol*. Budete pro zvýšení interoperability používat protokol HTTP nebo vlastní binární protokol pro maximální propustnost?
-* *Zpracování chyb*. Jak budou zpracovávány trvalé a přechodné chyby? Co se stane, když se služba přesune na jiný uzel?
-* *Vypršení časových limitů a latence*. Jak bude v vícevrstvých aplikacích zacházet při latenci každé vrstvy služby prostřednictvím zásobníku a uživatele?
+* *Transportní protokol*. Použijete protokol HTTP pro zvýšení interoperability nebo vlastní binární protokol pro maximální propustnost?
+* *Při zpracování chyb*. Jak bude zpracována trvalá a přechodná chyba? Co se stane, když se služba přesune do jiného uzlu?
+* *Časové osy a latence*. V vícestupňové aplikace, jak bude každá vrstva služby zpracovat latence prostřednictvím zásobníku a uživateli?
 
-Bez ohledu na to, jestli používáte jednu z vestavěných komunikačních komponent poskytovaných Service Fabric nebo si vytvoříte vlastní, testování interakcí mezi vašimi službami je důležité pro zajištění odolnosti vaší aplikace.
+Ať už používáte jednu z předdefinovaných součástí komunikace služby poskytované Service Fabric nebo vytvořit vlastní, testování interakcí mezi službami je důležité pro zajištění odolnosti proti chybám ve vaší aplikaci.
 
-## <a name="prepare-for-services-to-move"></a>Příprava na přesun služeb
-Instance služby se můžou pohybovat v průběhu času. To platí hlavně v případě, že jsou nakonfigurované s metrikami zatížení pro optimální vyrovnávání zatížení prostředků s vlastním přizpůsobením. Service Fabric přesouvá vaše instance služby za účelem maximalizace jejich dostupnosti, a to i během upgradů, převzetí služeb při selhání, škálování na více systémů a dalších situacích, ke kterým dojde po dobu životnosti distribuovaného systému.
+## <a name="prepare-for-services-to-move"></a>Připravte se na přesun služeb
+Instance služby se mohou v průběhu času pohybovat. To platí zejména v případě, že jsou konfigurovány s metriky zatížení pro vlastní přizpůsobené optimální vyrovnávání prostředků. Service Fabric přesune instance služby maximalizovat jejich dostupnost i během upgradů, převzetí služeb při selhání, horizontální navýšení kapacity a další situace, ke kterým dochází po dobu životnosti distribuovaného systému.
 
-Protože se služby v clusteru pohybují, klienti a další služby by se měly připravit na zpracování dvou scénářů při komunikaci se službou:
+Jak se služby pohybují v clusteru, vaši klienti a další služby by měly být připraveny ke zpracování dvou scénářů při rozhovoru se službou:
 
-* Instance služby nebo replika oddílu se přesunuly od doby, kdy jste je naposledy mluvili. Jedná se o běžnou součást životního cyklu služeb a měla by se vám stát, že se bude během životnosti aplikace očekávat.
-* Instance služby nebo replika oddílu se právě přesouvá. I když převzetí služeb při selhání služby z jednoho uzlu na jiný probíhá velmi rychle v Service Fabric, může dojít ke zpoždění dostupnosti, pokud se komunikační komponenta vaší služby pomalu spustí.
+* Instance služby nebo replika oddílu byla přesunuta od posledního rozhovoru s ní. Toto je normální část životního cyklu služby a je třeba očekávat, že dojde během životnosti vaší aplikace.
+* Instance služby nebo replika oddílu je v procesu přesouvání. Přestože převzetí služeb při selhání služby z jednoho uzlu do druhého dochází velmi rychle v Service Fabric, může dojít ke zpoždění dostupnosti, pokud komunikační součást služby je pomalé spuštění.
 
-Řádné zpracování těchto scénářů je důležité pro bezproblémové spuštění systému. V takovém případě mějte na paměti, že:
+Řádné zpracování těchto scénářů je důležité pro systém s hladkým chodem. Chcete-li tak učinit, mějte na paměti, že:
 
-* Každá služba, ke které se dá připojit, má *adresu* , kterou naslouchá (například http nebo WebSockets). Po přesunutí instance služby nebo oddílu se změní koncový bod adresy. (Přesune se na jiný uzel s jinou IP adresou.) Pokud používáte integrované komunikační komponenty, budou se znovu překládat adresy služby za vás.
-* Může docházet k dočasnému nárůstu latence služby, protože instance služby spouští svůj naslouchací proces znovu. To závisí na tom, jak rychle služba otevře naslouchací proces po přesunu instance služby.
-* Po otevření služby na novém uzlu je nutné zavřít a znovu otevřít všechna existující připojení. Bezproblémové vypnutí nebo restartování uzlu umožňuje bezproblémové vypnutí stávajících připojení.
+* Každá služba, ke které lze připojit, má *adresu,* na které naslouchá (například HTTP nebo WebSockets). Když se přesune instance služby nebo oddíl, změní se její koncový bod adresy. (Přesune se do jiného uzlu s jinou IP adresou.) Pokud používáte vestavěné komunikační součásti, budou zpracovávat opětovné řešení adres služeb za vás.
+* Může dojít k dočasnému zvýšení latence služby, protože instance služby znovu spustí svůj naslouchací proces. To závisí na tom, jak rychle služba otevře naslouchací proces po přesunutí instance služby.
+* Všechna existující připojení je třeba po otevření služby v novém uzlu zavřít a znovu otevřít. Řádné vypnutí nebo restartování uzlu umožňuje řádné vypnutí existujících připojení.
 
-### <a name="test-it-move-service-instances"></a>Test: přesunutí instancí služby
-Pomocí nástrojů pro testování Service Fabric můžete vytvořit testovací scénář pro otestování těchto situací různými způsoby:
+### <a name="test-it-move-service-instances"></a>Testování: Přesunutí instancí služby
+Pomocí nástrojů service fabric je testovatelnost, můžete vytvořit testovací scénář k testování těchto situací různými způsoby:
 
-1. Přesuňte primární repliku stavové služby.
+1. Přesunutí primární repliky stavové služby
    
-    Primární repliku oddílu stavové služby lze přesunout z libovolného počtu důvodů. Tuto možnost použijte, chcete-li cílit na primární repliku konkrétního oddílu, abyste viděli, jak vaše služby reagují na pohyb v rámci velmi řízeného způsobu.
+    Primární repliku oddílu stavové služby lze přesunout z libovolného počtu důvodů. Pomocí tohoto cíle primární repliky konkrétní oddíl zobrazíte, jak vaše služby reagují na přesunutí velmi řízeným způsobem.
    
     ```powershell
    
     PS > Move-ServiceFabricPrimaryReplica -PartitionId 6faa4ffa-521a-44e9-8351-dfca0f7e0466 -ServiceName fabric:/MyApplication/MyService
    
     ```
-2. Zastavte uzel.
+2. Zastavit uzel.
    
-    Když je uzel zastavený, Service Fabric přesune všechny instance služby nebo oddíly, které byly v tomto uzlu, do jednoho z dalších dostupných uzlů v clusteru. Tuto možnost použijte, chcete-li otestovat situaci, kdy dojde ke ztrátě uzlu z clusteru a zda je nutné přesunout všechny instance služby a repliky v tomto uzlu.
+    Když je uzel zastaven, Service Fabric přesune všechny instance služby nebo oddíly, které byly na tomto uzlu do jednoho z dalších dostupných uzlů v clusteru. Pomocí této funkce můžete otestovat situaci, kdy dojde ke ztrátě uzlu z clusteru a všechny instance služby a repliky v tomto uzlu se musí přesunout.
    
-    Uzel můžete zastavit pomocí rutiny PowerShellu **stop-ServiceFabricNode** :
+    Uzel můžete zastavit pomocí rutiny PowerShell **Stop-ServiceFabricNode:**
    
     ```powershell
    
@@ -63,15 +63,15 @@ Pomocí nástrojů pro testování Service Fabric můžete vytvořit testovací 
    
     ```
 
-## <a name="maintain-service-availability"></a>Údržba dostupnosti služby
-Jako platforma je Service Fabric navržená tak, aby poskytovala vysokou dostupnost vašich služeb. V extrémních případech ale můžou problémy s infrastrukturou způsobit nedostupnost. Pro tyto scénáře je důležité ho otestovat.
+## <a name="maintain-service-availability"></a>Udržovat dostupnost služby
+Jako platforma je Service Fabric navržen tak, aby poskytoval vysokou dostupnost vašich služeb. V extrémních případech však základní problémy s infrastrukturou stále mohou způsobit nedostupnost. Je důležité otestovat pro tyto scénáře, příliš.
 
-Stavové služby používají systém založený na kvoru k replikaci stavu pro zajištění vysoké dostupnosti. To znamená, že musí být k dispozici kvorum replik, aby bylo možné provádět operace zápisu. Ve výjimečných případech, jako je například rozšíření selhání hardwaru, nemusí být k dispozici kvorum replik. V těchto případech nebudete moci provádět operace zápisu, ale stále budete moci provádět operace čtení.
+Stavové služby používají systém založený na kvoru k replikaci stavu pro vysokou dostupnost. To znamená, že kvorum replik musí být k dispozici k provedení operací zápisu. Ve výjimečných případech, jako je například rozsáhlé selhání hardwaru, kvorum replik nemusí být k dispozici. V těchto případech nebudete moci provádět operace zápisu, ale stále budete moci provádět operace čtení.
 
-### <a name="test-it-write-operation-unavailability"></a>Test: operace zápisu je nedostupná.
-Pomocí nástrojů pro testování v Service Fabric můžete vložit chybu, která vydává ztrátu kvora jako test. I když je takový scénář vzácný, je důležité, aby klienti a služby, které jsou závislé na stavové službě, byly připravené na zpracování v situacích, kdy do nich nemůžou požadavky na zápis dělat. Je také důležité, aby se tato možnost dozvěděla stavová služba a mohla ji řádně sdělit volajícím.
+### <a name="test-it-write-operation-unavailability"></a>Otestovat: Nedostupnost operace zápisu
+Pomocí nástrojů testovatelnosti v Service Fabric, můžete injekčně chybu, která indukuje ztrátu kvora jako test. I když takový scénář je vzácné, je důležité, aby klienti a služby, které jsou závislé na stavové služby jsou připraveni zpracovat situace, kdy nemohou psát požadavky na něj. Je také důležité, aby stavová služba sama o sobě si je vědoma této možnosti a může řádně komunikovat s volajícími.
 
-Ztrátu kvora můžete vyvolávat pomocí rutiny **Invoke-ServiceFabricPartitionQuorumLoss** prostředí PowerShell:
+Ztrátu kvora můžete vyvolat pomocí rutiny PowerShell **Invoke-ServiceFabricPartitionQuorumLoss:**
 
 ```powershell
 
@@ -79,10 +79,10 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 ```
 
-V tomto příkladu nastavíme `QuorumLossMode`, aby `QuorumReplicas` označovali, že chceme vyvolat ztrátu kvora bez nutnosti pořizovat všechny repliky. Tímto způsobem jsou operace čtení stále možné. Pokud chcete otestovat situaci, kdy je k dispozici celý oddíl, můžete nastavit tento přepínač na `AllReplicas`.
+V tomto příkladu `QuorumLossMode` `QuorumReplicas` jsme nastavili na označení, že chceme vyvolat ztrátu kvora bez zanesení všech replik. Tímto způsobem jsou stále možné operace čtení. Chcete-li otestovat scénář, kdy není k dispozici `AllReplicas`celý oddíl, můžete tento přepínač nastavit na .
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o akcích testování](service-fabric-testability-actions.md)
+[Další informace o akcích testovatelnosti](service-fabric-testability-actions.md)
 
-[Další informace o scénářích testování](service-fabric-testability-scenarios.md)
+[Další informace o scénářích testovatelnosti](service-fabric-testability-scenarios.md)
 

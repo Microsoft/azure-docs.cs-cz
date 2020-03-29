@@ -1,6 +1,6 @@
 ---
-title: Reference k syntaxi Azure Service Bus SQLFilter | Microsoft Docs
-description: Tento článek poskytuje podrobné informace o SQLFilter gramatiky. SqlFilter podporuje podmnožinu standardu SQL-92.
+title: Odkaz na syntaxi služby Azure Service Bus SQLFilter | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje podrobnosti o sqlfilter gramatiky. SqlFilter podporuje podmnožinu standardu SQL-92.
 services: service-bus-messaging
 documentationcenter: na
 author: spelluru
@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
 ms.openlocfilehash: d5a8e165fcee23c5feecd5935983dd77d3ec6c30
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759659"
 ---
 # <a name="sqlfilter-syntax"></a>Syntaxe SQLFilter
 
-Objekt *SqlFilter* je instancí [třídy SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)a představuje výraz filtru založený na jazyce SQL, který je vyhodnocován proti [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). SqlFilter podporuje podmnožinu standardu SQL-92.  
+Objekt *SqlFilter* je instancí [třídy SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)a představuje výraz filtru založený na jazyce SQL, který je vyhodnocen proti [brokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). SqlFilter podporuje podmnožinu standardu SQL-92.  
   
- V tomto tématu jsou uvedeny podrobnosti o gramatice SqlFilter.  
+ Toto téma obsahuje podrobnosti o gramatice SqlFilter.  
   
 ```  
 <predicate ::=  
@@ -60,11 +60,11 @@ Objekt *SqlFilter* je instancí [třídy SqlFilter](/dotnet/api/microsoft.servic
   
 ## <a name="arguments"></a>Argumenty  
   
--   `<scope>` je volitelný řetězec, který označuje rozsah `<property_name>`. Platné hodnoty jsou `sys` nebo `user`. Hodnota `sys` označuje obor systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` označuje obor uživatele, kde `<property_name>` je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . obor `user` je výchozím oborem, pokud není zadán `<scope>`.  
+-   `<scope>`je volitelný řetězec označující rozsah `<property_name>`. Platné hodnoty `sys` `user`jsou nebo . Hodnota `sys` označuje rozsah `<property_name>` systému, kde je název veřejné vlastnosti [BrokeredMessage třídy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user`označuje obor `<property_name>` uživatele, kde je klíč [BrokeredMessage třídy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) slovníku. `user`obor je výchozí `<scope>` obor, pokud není zadán.  
   
 ## <a name="remarks"></a>Poznámky
 
-Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o přístup k neexistující vlastnosti uživatele není chyba. Místo toho je vlastnost neexistujícího uživatele interně vyhodnocena jako neznámá hodnota. Neznámá hodnota je zpracována speciálně při vyhodnocování operátoru.  
+Pokus o přístup k neexistující vlastnosti systému je chyba, zatímco pokus o přístup k neexistující vlastnosti uživatele není chyba. Místo toho je neexistující vlastnost uživatele interně vyhodnocena jako neznámá hodnota. Neznámá hodnota je zpracována speciálně během hodnocení operátora.  
   
 ## <a name="property_name"></a>property_name  
   
@@ -80,21 +80,21 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 ### <a name="arguments"></a>Argumenty  
 
- `<regular_identifier>` je řetězec reprezentovaný následujícím regulárním výrazem:  
+ `<regular_identifier>`je řetězec reprezentované následujícím regulárním výrazem:  
   
 ```  
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
 ```  
   
-Tato gramatika znamená libovolný řetězec, který začíná písmenem a následuje za jedním nebo více podtržítkem, písmenem nebo číslicí.  
+Tato gramatika znamená libovolný řetězec, který začíná písmenem a následuje jedno nebo více podtržítek/písmeno/číslice.  
   
-`[:IsLetter:]` znamená jakýkoli znak Unicode, který je zařazený do kategorie jako písmeno Unicode. `System.Char.IsLetter(c)` vrátí `true`, pokud `c` je písmeno Unicode.  
+`[:IsLetter:]`znamená libovolný znak Unicode, který je zařazen do kategorie písmenunicode. `System.Char.IsLetter(c)``true` vrátí, `c` pokud je písmeno Unicode.  
   
-`[:IsDigit:]` znamená, že znak Unicode, který je zařazený jako desítková číslice. `System.Char.IsDigit(c)` vrátí `true`, pokud `c` je číslice Unicode.  
+`[:IsDigit:]`se rozumí libovolný znak Unicode, který je zařazen do kategorie desetinné číslice. `System.Char.IsDigit(c)``true` vrátí, `c` pokud je číslice Unicode.  
   
-`<regular_identifier>` nemůže být rezervované klíčové slovo.  
+A `<regular_identifier>` nemůže být vyhrazené klíčové slovo.  
   
-`<delimited_identifier>` je libovolný řetězec, který je uzavřený pomocí levé nebo pravé hranaté závorky ([]). Pravá hranatá závorka je vyjádřena jako dvě pravé hranaté závorky. Níže jsou uvedeny příklady `<delimited_identifier>`:  
+`<delimited_identifier>`je libovolný řetězec, který je uzavřen s levou/pravou hranatou závorkou ([]). Pravá hranatá závorka je reprezentována jako dvě pravé hranatá závorky. Následují příklady `<delimited_identifier>`:  
   
 ```  
 [Property With Space]  
@@ -102,13 +102,13 @@ Tato gramatika znamená libovolný řetězec, který začíná písmenem a násl
   
 ```  
   
-`<quoted_identifier>` je libovolný řetězec, který je uzavřený pomocí dvojitých uvozovek. Dvojité uvozovky v identifikátoru jsou reprezentovány dvěma dvojitými uvozovkami. Nedoporučuje se používat identifikátory v uvozovkách, protože je lze snadno zaměňovat pomocí řetězcové konstanty. Pokud je to možné, použijte oddělený identifikátor. Následuje příklad `<quoted_identifier>`:  
+`<quoted_identifier>`je libovolný řetězec, který je uzavřen s uvozovkami. Dvojitá uvozovka v identifikátoru je reprezentována jako dvě dvojité uvozovky. Nedoporučuje se používat identifikátory v uvozovkách, protože je lze snadno zaměnit s řetězcovou konstantou. Pokud je to možné, použijte oddělený identifikátor. Následuje příklad : `<quoted_identifier>`  
   
 ```  
 "Contoso & Northwind"  
 ```  
   
-## <a name="pattern"></a>vzorku  
+## <a name="pattern"></a>Vzor  
   
 ```  
 <pattern> ::=  
@@ -117,11 +117,11 @@ Tato gramatika znamená libovolný řetězec, který začíná písmenem a násl
   
 ### <a name="remarks"></a>Poznámky
   
-`<pattern>` musí být výraz, který je vyhodnocen jako řetězec. Slouží jako vzor pro operátor LIKE.      Může obsahovat následující zástupné znaky:  
+`<pattern>`musí být výraz, který je vyhodnocen jako řetězec. Používá se jako vzor pro operátor LIKE.      Může obsahovat následující zástupné znaky:  
   
--   `%`: libovolný řetězec nula nebo více znaků.  
+-   `%`: Libovolný řetězec s nulovými nebo více znaky.  
   
--   `_`: jakýkoli jeden znak.  
+-   `_`: Libovolný jednotlivý znak.  
   
 ## <a name="escape_char"></a>escape_char  
   
@@ -132,11 +132,11 @@ Tato gramatika znamená libovolný řetězec, který začíná písmenem a násl
   
 ### <a name="remarks"></a>Poznámky  
 
-`<escape_char>` musí být výraz, který je vyhodnocen jako řetězec o délce 1. Slouží jako řídicí znak pro operátor LIKE.  
+`<escape_char>`musí být výraz, který je vyhodnocen jako řetězec délky 1. Používá se jako řídicí znak pro operátor LIKE.  
   
- Například `property LIKE 'ABC\%' ESCAPE '\'` odpovídá `ABC%` namísto řetězce, který začíná `ABC`.  
+ Například `property LIKE 'ABC\%' ESCAPE '\'` odpovídá `ABC%` spíše než řetězec, `ABC`který začíná .  
   
-## <a name="constant"></a>Konstanty  
+## <a name="constant"></a> – konstanta  
   
 ```  
 <constant> ::=  
@@ -145,27 +145,27 @@ Tato gramatika znamená libovolný řetězec, který začíná písmenem a násl
   
 ### <a name="arguments"></a>Argumenty  
   
--   `<integer_constant>` je řetězec čísel, který není uzavřen v uvozovkách a neobsahuje desetinná místa. Hodnoty se ukládají jako `System.Int64` interně a používají stejný rozsah.  
+-   `<integer_constant>`je řetězec čísel, která nejsou uzavřena v uvozovkách a neobsahují desetinné čárky. Hodnoty jsou uloženy jako `System.Int64` interně a postupujte podle stejného rozsahu.  
   
-     Jedná se například o dlouhé konstanty:  
+     Toto jsou příklady dlouhých konstant:  
   
     ```  
     1894  
     2  
     ```  
   
--   `<decimal_constant>` je řetězec čísel, který není uzavřen v uvozovkách a obsahuje desetinnou čárku. Hodnoty jsou uloženy jako `System.Double` interně a budou následovat po stejném rozsahu nebo přesnosti.  
+-   `<decimal_constant>`je řetězec čísel, které nejsou uzavřeny v uvozovkách a obsahují desetinnou čárku. Hodnoty jsou uloženy jako `System.Double` interně a postupujte podle stejného rozsahu/přesnosti.  
   
-     V budoucí verzi může být toto číslo Uloženo v jiném datovém typu, aby podporovalo přesnou sémantiku čísel, takže byste neměli spoléhat na skutečnost, že podkladový datový typ je `System.Double` `<decimal_constant>`.  
+     V budoucí verzi může být toto číslo uloženo v jiném datovém typu, aby podporovalo sémantiku přesného čísla, takže byste neměli spoléhat na skutečnost, že základní datový typ je `System.Double` pro `<decimal_constant>`.  
   
-     Následují příklady desítkových konstant:  
+     Následují příklady desetinných konstant:  
   
     ```  
     1894.1204  
     2.0  
     ```  
   
--   `<approximate_number_constant>` je číslo napsané v matematickém zápisu. Hodnoty jsou uloženy jako `System.Double` interně a budou následovat po stejném rozsahu nebo přesnosti. Následující příklady představují přibližné číselné konstanty:  
+-   `<approximate_number_constant>`je číslo napsané ve vědeckém zápisu. Hodnoty jsou uloženy jako `System.Double` interně a postupujte podle stejného rozsahu/přesnosti. Následují příklady přibližných číselných konstant:  
   
     ```  
     101.5E5  
@@ -181,7 +181,7 @@ Tato gramatika znamená libovolný řetězec, který začíná písmenem a násl
   
 ### <a name="remarks"></a>Poznámky  
 
-Logické konstanty jsou reprezentovány klíčovými slovy **true** nebo **false**. Hodnoty jsou uloženy jako `System.Boolean`.  
+Logické konstanty jsou reprezentovány klíčovými slovy **PRAVDA** nebo **NEPRAVDA**. Hodnoty jsou uloženy jako `System.Boolean`.  
   
 ## <a name="string_constant"></a>string_constant  
   
@@ -191,9 +191,9 @@ Logické konstanty jsou reprezentovány klíčovými slovy **true** nebo **false
   
 ### <a name="remarks"></a>Poznámky  
 
-Řetězcové konstanty jsou uzavřeny v jednoduchých uvozovkách a obsahují všechny platné znaky Unicode. Jednoduché uvozovky vložené v řetězcové konstantě jsou reprezentovány jako dvě jednoduché uvozovky.  
+Konstanty řetězců jsou uzavřeny v jednoduchých uvozovkách a obsahují všechny platné znaky Unicode. Jedna uvozovka vložená do řetězcové konstanty je reprezentována jako dvě jednoduché uvozovky.  
   
-## <a name="function"></a>slouží  
+## <a name="function"></a> – funkce  
   
 ```  
 <function> :=  
@@ -203,49 +203,49 @@ Logické konstanty jsou reprezentovány klíčovými slovy **true** nebo **false
   
 ### <a name="remarks"></a>Poznámky
   
-Funkce `newid()` vrací hodnotu **System. GUID** vygenerovanou metodou `System.Guid.NewGuid()`.  
+Funkce `newid()` vrátí **System.Guid** generované `System.Guid.NewGuid()` metodou.  
   
-Funkce `property(name)` vrací hodnotu vlastnosti, na kterou odkazuje `name`. Hodnotou `name` může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
+Funkce `property(name)` vrátí hodnotu vlastnosti, `name`na kterou odkazuje . Hodnota `name` může být libovolný platný výraz, který vrací hodnotu řetězce.  
   
 ## <a name="considerations"></a>Požadavky
   
-Vezměte v úvahu následující sémantiku [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) :  
+Zvažte následující sémantiku [sqlfilter:](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)  
   
--   V názvech vlastností se nerozlišují malá a velká písmena.  
+-   Názvy vlastností nerozlišují malá a velká písmena.  
   
--   Pokud je C# to možné, operátory budou používat sémantiku implicitního převodu.  
+-   Operátory sledovat C# implicitní převod sémantiku, kdykoli je to možné.  
   
--   Vlastnosti systému jsou veřejné vlastnosti zveřejněné v [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) instancích.  
+-   Vlastnosti systému jsou veřejné vlastnosti vystavené v instancích [BrokeredMessage.](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)  
   
-    Vezměte v úvahu následující `IS [NOT] NULL` sémantika:  
+    Zvažte `IS [NOT] NULL` následující sémantiku:  
   
-    -   `property IS NULL` se vyhodnotí jako `true`, pokud buď vlastnost neexistuje, nebo je hodnota vlastnosti `null`.  
+    -   `property IS NULL`je vyhodnocena, jako `true` by vlastnost neexistuje nebo `null`hodnota vlastnosti je .  
   
-### <a name="property-evaluation-semantics"></a>Sémantika vyhodnocení vlastností  
+### <a name="property-evaluation-semantics"></a>Sémantiku hodnocení vlastností  
   
-- Pokus vyhodnotit neexistující systémovou vlastnost vyvolá výjimku [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) .  
+- Pokus o vyhodnocení neexistující vlastnostsystému vyvolá výjimku [FilterException.](/dotnet/api/microsoft.servicebus.messaging.filterexception)  
   
 - Vlastnost, která neexistuje, je interně vyhodnocena jako **neznámá**.  
   
-  Neznámé vyhodnocení v aritmetických operátorech:  
+  Neznámé hodnocení u aritmetických operátorů:  
   
-- V případě binárních operátorů, pokud je levá nebo pravá strana operandů vyhodnocena jako **neznámá**, je výsledek **Neznámý**.  
+- U binárních operátorů, pokud je levá nebo pravá strana operandů vyhodnocena jako **neznámá**, výsledek není **znám**.  
   
-- U unárních operátorů, pokud je operand vyhodnocen jako **Neznámý**, je výsledek **Neznámý**.  
+- U unárních operátorů, pokud je operand vyhodnocen jako **neznámý**, výsledek není **znám**.  
   
-  Neznámé vyhodnocení v binárních relačních operátorech:  
+  Neznámé vyhodnocení v binárních operátorech porovnání:  
   
-- Pokud je levá nebo pravá strana operandů vyhodnocena jako **neznámá**, výsledek je **Neznámý**.  
+- Pokud je levá a/nebo pravá strana operandů vyhodnocena jako **neznámá**, výsledek není **znám**.  
   
-  Neznámé vyhodnocení v `[NOT] LIKE`:  
+  Neznámé hodnocení `[NOT] LIKE`v :  
   
-- Pokud je jakýkoli operand vyhodnocen jako **Neznámý**, výsledek je **Neznámý**.  
+- Pokud je některý operand vyhodnocen jako **neznámý**, výsledek není **znám**.  
   
-  Neznámé vyhodnocení v `[NOT] IN`:  
+  Neznámé hodnocení `[NOT] IN`v :  
   
-- Pokud je levý operand vyhodnocen jako **Neznámý**, výsledek je **Neznámý**.  
+- Pokud je levý operand vyhodnocen jako **neznámý**, výsledek není **znám**.  
   
-  Neznámé vyhodnocení v operátoru **and** :  
+  Neznámé vyhodnocení v **operátoru AND:**  
   
 ```  
 +---+---+---+---+  
@@ -259,7 +259,7 @@ Vezměte v úvahu následující sémantiku [SqlFilter](/dotnet/api/microsoft.se
 +---+---+---+---+  
 ```  
   
- Neznámé vyhodnocení v operátoru **or** :  
+ Neznámé hodnocení v operátoru **OR:**  
   
 ```  
 +---+---+---+---+  
@@ -273,14 +273,14 @@ Vezměte v úvahu následující sémantiku [SqlFilter](/dotnet/api/microsoft.se
 +---+---+---+---+  
 ```  
   
-### <a name="operator-binding-semantics"></a>Sémantika vazby operátoru
+### <a name="operator-binding-semantics"></a>Sémantiku vázací operátora
   
--   Operátory porovnání, jako `>`, `>=`, `<`, `<=`, `!=`a `=`, dodržují stejnou sémantiku jako vazba C# operátoru v propagačních akcích datového typu a implicitní převody.  
+-   Operátory porovnání, `>`jako `<=` `!=`je `=` například , `>=` `<`, , a postupujte podle stejné sémantiky jako operátor Jazyka C# v povýšení datového typu a implicitní převody.  
   
--   Aritmetické operátory, jako `+`, `-`, `*`, `/`a `%`, sledují stejnou sémantiku jako C# vazby operátoru v propagačních akcích datového typu a implicitní převody.
+-   Aritmetické operátory, `-` `*`jako `/` `+`je například , , , a `%` postupujte podle stejné sémantiky jako operátor Jazyka C# v povýšení datového typu a implicitní převody.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [SQLFilter – třída (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
-- [SQLFilter – třída (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
-- [SQLRuleAction – třída](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [Třída SQLFilter (rozhraní.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [Třída SQLFilter (standard.NET)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
+- [Třída SQLRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)

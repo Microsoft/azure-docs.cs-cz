@@ -8,10 +8,10 @@ ms.date: 2/19/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76939052"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegování zón DNS s využitím Azure DNS
@@ -22,13 +22,13 @@ Azure DNS vám umožňuje hostovat zónu DNS a spravovat záznamy DNS pro domén
 
 ### <a name="domains-and-zones"></a>Domény a zóny
 
-Domain Name System je hierarchie domén. Hierarchie začíná od kořenové domény, jejíž název je jednoduše „ **.** “.  Následují domény nejvyšší úrovně, jako jsou „com“, „net“, „org“, „uk“ nebo „jp“.  Pod doménami nejvyšší úrovně jsou domény druhé úrovně, jako jsou „org.uk“ nebo „co.jp“.  A tak dále. Domény v hierarchii DNS jsou hostované pomocí oddělených zón DNS. Tyto zóny jsou globálně distribuované a hostované názvovými servery DNS po celém světě.
+Domain Name System je hierarchie domén. Hierarchie začíná od 'root' domény, jejíž název je jednoduše :**.**'.  Následují domény nejvyšší úrovně, jako jsou „com“, „net“, „org“, „uk“ nebo „jp“.  Pod doménami nejvyšší úrovně jsou domény druhé úrovně, jako jsou „org.uk“ nebo „co.jp“.  A tak dále. Domény v hierarchii DNS jsou hostované pomocí oddělených zón DNS. Tyto zóny jsou globálně distribuované a hostované názvovými servery DNS po celém světě.
 
-**Zóna DNS** – Doména je jedinečný název v systému DNS (Domain Name System), například contoso.com. Zóna DNS se používá k hostování záznamů DNS pro konkrétní doménu. Například doména contoso.com může obsahovat několik záznamů DNS, třeba mail.contoso.com (pro poštovní server) a www.contoso.com (pro web).
+**Zóna DNS** – Doména je jedinečný název v systému DNS (Domain Name System), například contoso.com. K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Například doména contoso.com může obsahovat několik záznamů DNS, třeba mail.contoso.com (pro poštovní server) a www.contoso.com (pro web).
 
 **Doménový registrátor** – Doménový registrátor je společnost, která poskytuje názvy internetových domén. Ověří, zda je internetová doména, kterou chcete použít, volná a umožní vám ji zakoupit. Jakmile je název domény registrovaný, stanete se jejím právoplatným vlastníkem. Pokud již máte internetovou doménu, použijete pro delegování do Azure DNS současného doménového registrátora.
 
-Další informace o akreditovaných registrátorech domén najdete v tématu [ICANN registrátori](https://www.icann.org/registrar-reports/accredited-list.html).
+Další informace o akreditovaných registrátorech domén naleznete v [tématu Registrátoři akreditovaní iCANN](https://www.icann.org/registrar-reports/accredited-list.html).
 
 ### <a name="resolution-and-delegation"></a>Překládání a delegování
 
@@ -54,13 +54,13 @@ Následující obrázek ukazuje příklad dotazu DNS. Contoso.net a partners.con
 1. Klient si vyžádá `www.partners.contoso.net` z místního serveru DNS.
 2. Místní server DNS záznam nemá, proto vytvoří požadavek na svůj kořenový názvový server.
 3. Kořenový názvový server záznam nemá, ale zná adresu názvového serveru `.net`, kterou poskytne serveru DNS.
-4. Místní server DNS odešle požadavek na `.net` názvového serveru.
-5. Názvový server `.net` nemá záznam, ale zná adresu `contoso.net` názvového serveru. V takovém případě odpoví adresou názvového serveru pro zónu DNS hostovanou v Azure DNS.
-6. Místní server DNS odešle požadavek na názvový server pro zónu `contoso.net` hostovanou v Azure DNS.
-7. `contoso.net` zóny nemá záznam, ale zná názvový server pro `partners.contoso.net` a reaguje na adresu. V tomto případě je to zóna DNS hostovaná v Azure DNS.
-8. Místní server DNS odešle požadavek na názvový server pro zónu `partners.contoso.net`.
-9. Zóna `partners.contoso.net` obsahuje záznam a, který odpovídá IP adrese.
-10. Místní server DNS poskytuje IP adresu klientovi.
+4. Místní server DNS odešle `.net` požadavek na názvový server.
+5. Název `.net` serveru nemá záznam, ale zná adresu `contoso.net` názvového serveru. V takovém případě reaguje s adresou názvového serveru pro zónu DNS hostovací v Azure DNS.
+6. Místní server DNS odešle požadavek na `contoso.net` názvový server pro zónu hostovovnou v Azure DNS.
+7. Zóna `contoso.net` nemá záznam, ale zná názvový server pro `partners.contoso.net` adresu a odpovídá s ní. V tomto případě se jedná o zónu DNS hostovohouji v Azure DNS.
+8. Místní server DNS odešle požadavek na `partners.contoso.net` názvový server zóny.
+9. Zóna `partners.contoso.net` má záznam A a odpovídá ip adresou.
+10. Místní server DNS poskytuje adresu IP klientovi.
 11. Klient se připojí k webu `www.partners.contoso.net`.
 
 Každé delegování má ve skutečnosti dvě kopie záznamů NS – jednu v nadřazené zóně, která ukazuje na podřízenou zónu, a druhou v samotné podřízené zóně. Zóna contoso.net obsahuje záznamy NS pro contoso.net (vedle záznamů NS v „net“). Tyto záznamy se nazývají záznamy autoritativních NS a nacházejí se na vrcholu podřízené zóny.

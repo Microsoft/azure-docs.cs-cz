@@ -1,7 +1,7 @@
 ---
-title: Použití časových posunutí a živých výstupů k vytvoření přehrávání videa na vyžádání
+title: Použití časového posunu a živých výstupů k vytvoření přehrávání videa na vyžádání
 titleSuffix: Azure Media Services
-description: Tento článek popisuje, jak používat časová posunutí a živé výstupy k nahrávání živých streamů a k vytváření přehrávání na vyžádání.
+description: Tento článek popisuje, jak používat posun času a živé výstupy k záznamu živých datových proudů a vytváření přehrávání na vyžádání.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,45 +15,45 @@ ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
 ms.openlocfilehash: 4c7618b60e5fd86a9b8b3f22fb3333c00cfdfa61
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74899800"
 ---
-# <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Použití časových posunutí a živých výstupů k vytvoření přehrávání videa na vyžádání
+# <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Použití časového posunu a živých výstupů k vytvoření přehrávání videa na vyžádání
 
-V Azure Media Services je objekt [živého výstupu](https://docs.microsoft.com/rest/api/media/liveoutputs) podobný digitálnímu záznamu videa, který zachytí a zaznamená svůj živý stream do assetu v účtu Media Services. Zaznamenaný obsah je trvale uložen do kontejneru definovaného prostředkem [assetu](https://docs.microsoft.com/rest/api/media/assets) (kontejner je v účtu Azure Storage připojeném k vašemu účtu). Živý výstup také umožňuje řídit některé vlastnosti odchozího živého streamu, například kolik dat v archivu je uchováváno (například kapacita záznamu v cloudu), nebo když můžou čtenáři začít sledovat živý datový proud. Archiv na disku je kruhový archiv "Window", který uchovává pouze množství obsahu, které je zadáno ve vlastnosti **ArchiveWindowLength** živého výstupu. Obsah, který spadá mimo toto okno, se automaticky zahodí z kontejneru úložiště a nedá se obnovit. Hodnota archiveWindowLength představuje dobu trvání časového rozmezí ISO-8601 (například PTHH: MM: SS), která určuje kapacitu souboru DVR. Hodnota může být nastavená minimálně na tři minuty, a to maximálně na 25 hodin.
+Ve službě Azure Media Services je objekt [živého výstupu](https://docs.microsoft.com/rest/api/media/liveoutputs) jako digitální videorekordér, který zachytí a zaznamená váš živý přenos do datového zdroje ve vašem účtu Mediálních služeb. Zaznamenaný obsah se uchovává do kontejneru definovaného prostředek [prostředků](https://docs.microsoft.com/rest/api/media/assets) asset (kontejner je v účtu Azure Storage připojené k vašemu účtu). Živý výstup také umožňuje řídit některé vlastnosti odchozího živého datového proudu, například kolik datového proudu je uloženo v záznamu archivu (například kapacita cloudového DVR) nebo když diváci mohou začít sledovat živý přenos. Archiv na disku je cyklický archiv "okno", který obsahuje pouze množství obsahu, který je zadán v **archiveWindowLength** vlastnost live výstup. Obsah, který spadá mimo toto okno, je automaticky zahozen z kontejneru úložiště a nelze jej obnovit. Hodnota archiveWindowLength představuje dobu trvání časovým rozpětí ISO-8601 (například PTHH:MM:SS), která určuje kapacitu DVR. Hodnotu lze nastavit od minimálně tří minut do maximálně 25 hodin.
 
-Vztah mezi živou událostí a jeho živými výstupy je podobný tradičnímu TELEVIZNÍmu vysílání, v tom, že kanál (živá událost) představuje konstantní datový proud videa a záznam (živý výstup) je vymezen na určitý časový segment (například večer zprávy z 6:17:30 na 7:13:00). Jakmile datový proud přetéká do živé události, můžete zahájit streamování událostí vytvořením assetu, živého výstupu a lokátoru streamování. Živý výstup bude archivovat datový proud a zpřístupní ho návštěvníkům prostřednictvím [koncového bodu streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints). Můžete vytvořit více živých výstupů (až tří maximum) na živé události s různými délkami archivů a nastavením. Informace o pracovním postupu živého streamování najdete v části [Obecné kroky](live-streaming-overview.md#general-steps) .
+Vztah mezi živou událostí a jejími živými výstupy je podobný tradičnímu televiznímu vysílání v tom, že kanál (Živá událost) představuje konstantní proud videa a záznam (Živý výstup) je vymezen na určitý časový segment (například večerní zprávy 18:30 AŽ 19:00). Jakmile budete mít datový proud proudící do živé události, můžete začít streamování události vytvořením datového zdroje, live výstup a streamování lokátoru. Živý výstup bude archivovat datový proud a zpřístupnit jej divákům prostřednictvím [koncového bodu streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints). Na živé události s různými délkami a nastaveními archivu můžete vytvořit více živých výstupů (maximálně tři). Informace o pracovním postupu živého streamování naleznete v části [Obecné kroky.](live-streaming-overview.md#general-steps)
 
-## <a name="using-a-dvr-during-an-event"></a>Použití DVR během události
+## <a name="using-a-dvr-during-an-event"></a>Použití dvr během události
 
-Tato část popisuje, jak používat záznam DVR během události pro kontrolu nad tím, jaké části streamu jsou k dispozici pro Rewind.
+Tato část popisuje, jak používat DVR během události k řízení, jaké části datového proudu je k dispozici pro 'převinout zpět'.
 
-Hodnota `archiveWindowLength` určuje, jak dlouho může prohlížeč přejít z aktuální pozice v reálném čase. Hodnota `archiveWindowLength` také určuje, jak dlouho mohou klientské manifesty růst.
+Hodnota `archiveWindowLength` určuje, jak daleko zpět v čase může divák přejít z aktuální živé pozice. Hodnota `archiveWindowLength` také určuje, jak dlouho může růst manifestů klienta.
 
-Předpokládejme, že jste streamoval fotbalovou hru a že má `ArchiveWindowLength` jenom 30 minut. Prohlížeč, který začne sledovat událost 45 minut po zahájení hry, může hledat zpět na nejvíce 15 minut. Vaše živé výstupy pro hru budou pokračovat, dokud se zastaví živá událost. Obsah, který se nachází mimo archiveWindowLength, se nepřetržitě zruší z úložiště a je neobnovitelný. V tomto příkladu bylo video mezi začátkem události a značkou od 15 minut vymazáno z vašeho DVR a z kontejneru v úložišti objektů BLOB pro daný prostředek. Archiv se nedá obnovit a odebere se z kontejneru v úložišti objektů BLOB v Azure.
+Předpokládejme, že streamujete fotbalový `ArchiveWindowLength` zápas a má pouze 30 minut. Divák, který začne sledovat vaši událost 45 minut po zahájení hry, může hledat zpět maximálně 15minutovou známku. Vaše živé výstupy pro hru budou pokračovat, dokud nebude živá událost zastavena. Obsah, který spadá mimo archiveWindowLength je průběžně zahozen z úložiště a je neobnovitelný. V tomto příkladu by bylo video mezi začátkem události a 15minutovou značkou vymazáno z vašeho DVR a z kontejneru v úložišti objektů blob pro prostředek. Archiv není obnovitelný a odebere se z kontejneru v úložišti objektů blob Azure.
 
-Živá událost podporuje až tři souběžně běžící živé výstupy (můžete vytvořit maximálně 3 záznamy/archivy z jednoho živého datového proudu ve stejnou dobu). Tato podpora umožňuje publikování a archivaci různých částí události podle potřeby. Předpokládejme, že budete potřebovat vysílat nepřetržitě živý lineární kanál a v průběhu dne vytvářet nahrávky různých programů, které zákazníkům nabízíme jako obsah na vyžádání pro účely zachytávání. V tomto scénáři nejprve vytvoříte primární živý výstup s krátkým oknem archivu o 1 hodinu nebo méně – jedná se o primární živý datový proud, ke kterému by se návštěvníci mohli naladit. Vytvořili jste Lokátor streamování pro tento živý výstup a publikujete ho na aplikaci nebo web jako datový kanál "Live". I když je živá událost spuštěná, můžete programově vytvořit druhý souběžný živý výstup na začátku programu (nebo 5 minut, kdy budete chtít, aby se některé úchyty mohly oříznout později). Tento druhý živý výstup se dá odstranit 5 minut po skončení programu. S tímto druhým prostředkem můžete vytvořit nový Lokátor streamování pro publikování tohoto programu jako prostředku na vyžádání v katalogu vaší aplikace. Tento proces můžete opakovat několikrát pro jiné hranice programu nebo světla, které chcete sdílet jako videa na vyžádání, a to vše, když se "živý" kanál z prvního živého výstupu pokračuje ve vysílání lineárního kanálu.
+Živá událost podporuje až tři souběžně spuštěné živé výstupy (můžete vytvořit maximálně 3 nahrávky / archivy z jednoho živého streamu současně). Tato podpora umožňuje publikovat a archivovat různé části události podle potřeby. Předpokládejme, že potřebujete vysílat 24x7 živý lineární kanál a vytvářet "nahrávky" různých programů po celý den, které budou zákazníkům nabízeny jako obsah na vyžádání pro sledování. V tomto scénáři nejprve vytvoříte primární živý výstup s krátkým archivem 1 hodinu nebo méně – toto je primární živý přenos, který by diváci naladili. Pro tento živý výstup byste vytvořili lokátor streamování a publikovali byste ho ve své aplikaci nebo na webu jako kanál "Live". Během spuštění živé události můžete programově vytvořit druhý souběžný živý výstup na začátku programu (nebo o 5 minut dříve, abyste mohli poskytnout některé úchyty k oříznutí později). Tento druhý živý výstup lze odstranit 5 minut po ukončení programu. Pomocí tohoto druhého datového zdroje můžete vytvořit nový lokátor streamování a publikovat tento program jako datový zdroj na vyžádání v katalogu vaší aplikace. Tento proces můžete opakovat vícekrát pro jiné hranice programu nebo zvýraznění, které chcete sdílet jako videa na vyžádání, a to vše při vysílání kanálu "Live" z prvního živého výstupu v lineárním přenosu.
 
 ## <a name="creating-an-archive-for-on-demand-playback"></a>Vytvoření archivu pro přehrávání na vyžádání
 
-Asset, na který živý výstup archivuje, se automaticky stal Assetem na vyžádání, když se odstraní živý výstup. Aby bylo možné zastavit živou událost, je nutné odstranit všechny živé výstupy. Pomocí volitelného příznaku [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) můžete automaticky odebrat živé výstupy při zastavení.
+Datový zdroj, který živý výstup archivuje, se automaticky stane datovým zdrojem na vyžádání při odstranění živého výstupu. Před zastavením živé události je nutné odstranit všechny živé výstupy. Můžete použít volitelný příznak [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) automaticky odebrat živé výstupy na stop.
 
-I po zastavení a odstranění události můžou uživatelé streamovat archivovaný obsah jako video na vyžádání, pokud prostředek neodstraníte. Asset by neměl být odstraněn, pokud jej používá událost; nejdříve je nutné odstranit událost.
+I po zastavení a odstranění události mohou uživatelé streamovat archivovaný obsah jako video na vyžádání, pokud datový zdroj neodstraníte. Datový zdroj by neměl být odstraněn, pokud je používán událostí; událost musí být nejprve odstraněna.
 
-Pokud jste publikovali Asset svého živého výstupu pomocí lokátoru streamování, bude se dál zobrazovat živá událost (až do délky okna DVR), dokud nevyprší platnost nebo odstranění lokátoru streamování, podle toho, co nastane dřív.
+Pokud jste zveřejnili datový zdroj živého výstupu pomocí lokátoru streamování, živá událost (až do délky okna DVR) bude i nadále zobrazitelná, dokud nevyprší nebo smaže lokátor streamování, podle toho, co nastane dříve.
 
-Další informace:
+Další informace naleznete v tématu:
 
 - [Přehled živého streamování](live-streaming-overview.md)
-- [Kurz živého streamování](stream-live-tutorial-with-api.md)
+- [Živé streamování tutorial](stream-live-tutorial-with-api.md)
 
 > [!NOTE]
-> Když odstraníte živý výstup, neodstraníte základní Asset a obsah v assetu.
+> Když odstraníte živý výstup, neodstraníte podkladový datový zdroj a obsah v datovém zdroji.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vystřihnout vaše videa](subclip-video-rest-howto.md).
-* [Definujte filtry pro vaše prostředky](filters-dynamic-manifest-rest-howto.md).
+* [Subclip vaše videa](subclip-video-rest-howto.md).
+* [Definujte filtry pro své datové zdroje](filters-dynamic-manifest-rest-howto.md).

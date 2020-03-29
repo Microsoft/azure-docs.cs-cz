@@ -1,6 +1,6 @@
 ---
-title: Migrace dat ze služby Amazon S3 do Azure Data Lake Storage Gen2
-description: Naučte se používat šablonu řešení k migraci dat ze služby Amazon S3 pomocí tabulky externích ovládacích prvků k uložení seznamu oddílů v AWS S3 pomocí Azure Data Factory.
+title: Migrace dat z Amazonu S3 do Azure Data Lake Storage Gen2
+description: Zjistěte, jak pomocí šablony řešení migrovat data z AmazonS3 pomocí tabulky externího ovládacího prvku k uložení seznamu oddílů na AWS S3 s Azure Data Factory.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -12,66 +12,66 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
 ms.openlocfilehash: e918fe01426202746f0225d25304b9c1b26cb74b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927323"
 ---
-# <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Migrace dat ze služby Amazon S3 do Azure Data Lake Storage Gen2
+# <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Migrace dat z Amazonu S3 do Azure Data Lake Storage Gen2
 
-Pomocí šablon můžete migrovat petabajty dat sestávající ze stovek milionů souborů z Amazon S3 do Azure Data Lake Storage Gen2. 
+Pomocí šablon můžete migrovat petabajty dat skládajících se ze stovek milionů souborů z Amazonu S3 do Azure Data Lake Storage Gen2. 
 
  > [!NOTE]
- > Pokud chcete zkopírovat malý objem dat z AWS S3 do Azure (například méně než 10 TB), je efektivnější a snadno používat [nástroj Azure Data Factory kopírování dat](copy-data-tool.md). Šablona popsaná v tomto článku je větší, než co potřebujete.
+ > Pokud chcete zkopírovat malý svazek dat z AWS S3 do Azure (například méně než 10 TB), je efektivnější a jednodušší používat [nástroj Azure Data Factory Copy Data .](copy-data-tool.md) Šablona popsaná v tomto článku je víc než to, co potřebujete.
 
-## <a name="about-the-solution-templates"></a>O šablonách řešení
+## <a name="about-the-solution-templates"></a>Šablony řešení
 
-Datový oddíl se doporučuje hlavně při migraci více než 10 TB dat. Chcete-li rozdělit data na oddíly, pomocí nastavení "prefix" vyfiltrujte složky a soubory v Amazon S3 podle názvu a potom jednotlivé úlohy kopírování ADF mohou kopírovat jeden oddíl po druhém. Pro zajištění lepší propustnosti můžete souběžně spustit více úloh kopírování přes ADF.
+Datový oddíl se doporučuje zejména při migraci více než 10 TB dat. Chcete-li rozdělit data, využijte nastavení "prefix" k filtrování složek a souborů na AmazonS3 podle názvu a pak každá úloha kopírování ADF může kopírovat jeden oddíl najednou. Pro lepší propustnost můžete spustit více úloh kopírování ADF současně.
 
-Migrace dat normálně vyžaduje jednorázovou migraci historických dat a pravidelné synchronizaci změn z AWS S3 do Azure. Níže jsou uvedené dvě šablony, kde jedna šablona pokrývá jednorázovou migraci historických dat a další šablona pokrývá synchronizaci změn z AWS S3 do Azure.
+Migrace dat obvykle vyžaduje jednorázovou historickou migraci dat a pravidelnou synchronizaci změn z AWS S3 do Azure. Níže jsou dvě šablony, kde jedna šablona pokrývá jednorázovou migraci historických dat a druhá šablona zahrnuje synchronizaci změn z AWS S3 do Azure.
 
-### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Pro šablonu migrace historických dat ze služby Amazon S3 na Azure Data Lake Storage Gen2
+### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Pro šablonu pro migraci historických dat z Amazon S3 do Azure Data Lake Storage Gen2
 
-Tato šablona (*název šablony: migrace historických dat z AWS S3 na Azure Data Lake Storage Gen2*) předpokládá, že jste v Azure SQL Database napsali seznam oddílů v tabulce externích ovládacích prvků. Proto bude používat aktivitu *vyhledávání* k načtení seznamu oddílů z tabulky externích ovládacích prvků, iterovat přes jednotlivé oddíly a vytvořit každou úlohu kopírování ADF v jednom okamžiku kopii jednoho oddílu. Po dokončení jakékoli úlohy kopírování se pomocí aktivity *uložená procedura* aktualizuje stav kopírování všech oddílů v řídicí tabulce.
+Tato šablona (*název šablony: migrace historických dat z AWS S3 do Azure Data Lake Storage Gen2*) předpokládá, že jste napsali seznam oddílů v tabulce externího ovládacího prvku v Azure SQL Database. Tak to bude používat *vyhledávací* aktivity načíst seznam oddílů z tabulky externího ovládacího prvku, iterát přes každý oddíl a aby každý adf kopie úlohy kopie jeden oddíl najednou. Po dokončení jakékoli úlohy kopírování použije *aktivitu uložené procedury* k aktualizaci stavu kopírování jednotlivých oddílů v řídicí tabulce.
 
 Šablona obsahuje pět aktivit:
-- **Vyhledávání** načte oddíly, které nebyly zkopírovány do Azure Data Lake Storage Gen2 z externí tabulky ovládacích prvků. Název tabulky je *s3_partition_control_table* a dotaz na načtení dat z tabulky je *"SELECT PARTITIONPREFIX from s3_partition_control_table WHERE SuccessOrFailure = 0"* .
-- **Foreach** získá seznam oddílů z aktivity *vyhledávání* a projde každý oddíl do aktivity *TriggerCopy* . Můžete nastavit, aby *batchCount* spouštěla více úloh kopírování ADF současně. V této šabloně jsme nastavili 2.
-- **ExecutePipeline** spustí kanál *CopyFolderPartitionFromS3* . Důvodem je, že vytvoříme další kanál, aby bylo možné každou úlohu kopírování zkopírovat oddíl, protože to usnadňuje opakované načtení tohoto konkrétního oddílu z AWS S3. Všechny ostatní úlohy kopírování načítající jiné oddíly nebudou mít vliv na.
-- **Kopírovat** zkopíruje každý oddíl ze AWS S3 do Azure Data Lake Storage Gen2.
-- **SqlServerStoredProcedure** aktualizovat stav kopírování všech oddílů v řídicí tabulce.
+- **Vyhledávání načte** oddíly, které nebyly zkopírovány do Azure Data Lake Storage Gen2 z tabulky externího ovládacího prvku. Název tabulky je *s3_partition_control_table* a dotaz pro načtení dat z tabulky je *"SELECT PartitionPrefix from s3_partition_control_table Where SuccessOrFailure = 0"*.
+- **ForEach** získá seznam oddílů z *aktivity vyhledávání* a itetuje každý oddíl na *TriggerCopy* aktivity. BatchCount můžete *batchCount* nastavit tak, aby souběžně spouštěl více úloh kopírování ADF. V této šabloně jsme nastavili 2.
+- **Příkaz ExecutePipeline** provede kanál *CopyFolderPartitionFromS3.* Důvod, proč jsme vytvořit jiný kanál, aby se každá kopie kopie úlohy kopírování oddíl je, protože to bude snadné znovu spustit neúspěšné kopie úlohy znovu načíst tento konkrétní oddíl znovu z AWS S3. Všechny ostatní úlohy kopírování načítání jiných oddílů nebudou ovlivněny.
+- **Zkopírujte** kopie jednotlivých oddílů z AWS S3 do Azure Data Lake Storage Gen2.
+- **SqlServerStoredProcedure** aktualizovat stav kopírování jednotlivých oddílů v tabulce ovládacího prvku.
 
 Šablona obsahuje dva parametry:
-- **AWS_S3_bucketName** je název vašeho kontejneru v AWS S3, ze kterého chcete migrovat data. Pokud chcete migrovat data z několika intervalů v AWS S3, můžete do své tabulky externích ovládacích prvků přidat další sloupec pro uložení názvu sady pro každý oddíl a také aktualizovat svůj kanál, aby se odpovídajícím způsobem načetla data z tohoto sloupce.
-- **Azure_Storage_fileSystem** je název systému souborů v Azure Data Lake Storage Gen2, do kterého chcete migrovat data.
+- **AWS_S3_bucketName** je název vašeho bloku na AWS S3, ze kterého chcete migrovat data. Pokud chcete migrovat data z více bloků na AWS S3, můžete přidat ještě jeden sloupec v tabulce externího ovládacího prvku pro uložení názvu bloku pro každý oddíl a také aktualizovat kanál pro načtení dat z tohoto sloupce odpovídajícím způsobem.
+- **Azure_Storage_fileSystem** je název vašeho fileSystem na Azure Data Lake Storage Gen2, kam chcete migrovat data.
 
-### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Aby šablona zkopírovala změněné soubory pouze ze služby Amazon S3 do Azure Data Lake Storage Gen2
+### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Pro šablonu ke kopírování změněných souborů pouze z Amazon S3 do Azure Data Lake Storage Gen2
 
-Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure Data Lake Storage Gen2*) používá časposledníúpravy každého souboru ke zkopírování nových nebo aktualizovaných souborů pouze z AWS S3 do Azure. Počítejte s tím, že vaše soubory nebo složky již byly rozděleny na oddíly s timeslice informacemi jako součást názvu souboru nebo složky v AWS S3 (například/yyyy/MM/DD/File.csv), můžete přejít k tomuto [kurzu](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) a získat tak další postup pro přírůstkové načítání nových souborů. Tato šablona předpokládá, že jste v Azure SQL Database vytvořili seznam oddílů v externí tabulce ovládacích prvků. Proto bude používat aktivitu *vyhledávání* k načtení seznamu oddílů z tabulky externích ovládacích prvků, iterovat přes jednotlivé oddíly a vytvořit každou úlohu kopírování ADF v jednom okamžiku kopii jednoho oddílu. Když Každá úloha kopírování začne kopírovat soubory ze AWS S3, spoléhá se na vlastnost Časposledníúpravy, která identifikuje a zkopíruje pouze nové nebo aktualizované soubory. Po dokončení jakékoli úlohy kopírování se pomocí aktivity *uložená procedura* aktualizuje stav kopírování všech oddílů v řídicí tabulce.
+Tato šablona (*název šablony: zkopírujte rozdílová data z AWS S3 do Azure Data Lake Storage Gen2*) používá LastModifiedTime každého souboru ke kopírování nových nebo aktualizovaných souborů jenom z AWS S3 do Azure. Uvědomte si, zda vaše soubory nebo složky již byly časově rozděleny s informacemi o timeslice jako součást názvu souboru nebo složky na AWS S3 (například /yyyy/mm/dd/file.csv), můžete přejít do tohoto [kurzu,](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) abyste získali výkonnější přístup pro přírůstkové načítání nových souborů. Tato šablona předpokládá, že jste v Azure SQL Database napsali seznam oddílů v tabulce externího ovládacího prvku. Tak to bude používat *vyhledávací* aktivity načíst seznam oddílů z tabulky externího ovládacího prvku, iterát přes každý oddíl a aby každý adf kopie úlohy kopie jeden oddíl najednou. Když každá úloha kopírování začne kopírovat soubory z AWS S3, spoléhá se na Vlastnost LastModifiedTime k identifikaci a zkopírování pouze nové nebo aktualizované soubory. Po dokončení jakékoli úlohy kopírování použije *aktivitu uložené procedury* k aktualizaci stavu kopírování jednotlivých oddílů v řídicí tabulce.
 
 Šablona obsahuje sedm aktivit:
-- **Vyhledávání** načte oddíly z externí tabulky ovládacích prvků. Název tabulky je *s3_partition_delta_control_table* a dotaz pro načtení dat z tabulky je *"vybrat odlišné PartitionPrefix z s3_partition_delta_control_table"* .
-- **Foreach** získá seznam oddílů z aktivity *vyhledávání* a projde každý oddíl do aktivity *TriggerDeltaCopy* . Můžete nastavit, aby *batchCount* spouštěla více úloh kopírování ADF současně. V této šabloně jsme nastavili 2.
-- **ExecutePipeline** spustí kanál *DeltaCopyFolderPartitionFromS3* . Důvodem je, že vytvoříme další kanál, aby bylo možné každou úlohu kopírování zkopírovat oddíl, protože to usnadňuje opakované načtení tohoto konkrétního oddílu z AWS S3. Všechny ostatní úlohy kopírování načítající jiné oddíly nebudou mít vliv na.
-- **Vyhledávání** načte poslední čas spuštění úlohy kopírování z tabulky externích ovládacích prvků tak, aby se nové nebo aktualizované soubory mohly identifikovat pomocí časposledníúpravy. Název tabulky je *s3_partition_delta_control_table* a dotaz pro načtení dat z tabulky je *"SELECT Max (JobRunTime) as časposledníúpravy from s3_partition_delta_control_table WHERE PartitionPrefix = ' @ {Pipeline (). Parameters. prefixStr} ' a SuccessOrFailure = 1"* .
-- **Kopírování** zkopíruje nové nebo změněné soubory pouze pro každý oddíl ze AWS S3 do Azure Data Lake Storage Gen2. Vlastnost *modifiedDatetimeStart* je nastavená na čas posledního spuštění úlohy kopírování. Vlastnost *modifiedDatetimeEnd* je nastavena na aktuální čas spuštění úlohy kopírování. Počítejte s tím, že čas se aplikuje na časové pásmo UTC.
-- **SqlServerStoredProcedure** aktualizovat stav kopírování jednotlivých oddílů a kopírovat dobu běhu v tabulce ovládacích prvků, když je úspěšná. Sloupec SuccessOrFailure je nastaven na hodnotu 1.
-- **SqlServerStoredProcedure** aktualizovat stav kopírování jednotlivých oddílů a kopírovat dobu běhu v kontrolní tabulce, pokud se nezdařila. Sloupec SuccessOrFailure je nastaven na hodnotu 0.
+- **Vyhledávání** načte oddíly z tabulky externího ovládacího prvku. Název tabulky je *s3_partition_delta_control_table* a dotaz pro načtení dat z tabulky je *"select distinct PartitionPrefix from s3_partition_delta_control_table"*.
+- **ForEach** získá seznam oddílů z *aktivity vyhledávání* a iterates každý oddíl *triggerDeltaCopy* aktivity. BatchCount můžete *batchCount* nastavit tak, aby souběžně spouštěl více úloh kopírování ADF. V této šabloně jsme nastavili 2.
+- **Spuštění kanálu** spustí kanál *DeltaCopyFolderPartitionFromS3.* Důvod, proč jsme vytvořit jiný kanál, aby se každá kopie kopie úlohy kopírování oddíl je, protože to bude snadné znovu spustit neúspěšné kopie úlohy znovu načíst tento konkrétní oddíl znovu z AWS S3. Všechny ostatní úlohy kopírování načítání jiných oddílů nebudou ovlivněny.
+- **Vyhledávání načte** poslední dobu spuštění úlohy kopírování z tabulky externího ovládacího prvku, aby bylo možné identifikovat nové nebo aktualizované soubory prostřednictvím lastmodifiedtime. Název tabulky je *s3_partition_delta_control_table* a dotaz pro načtení dat z tabulky je *"select max(JobRunTime) jako LastModifiedTime z s3_partition_delta_control_table kde PartitionPrefix = '@{pipeline().parameters.prefixStr}' a SuccessOrFailure = 1"*.
+- **Zkopírujte** kopie nových nebo změněných souborů jenom pro každý oddíl z AWS S3 do Azure Data Lake Storage Gen2. Vlastnost *modifiedDatetimeStart* je nastavena na poslední dobu běhu úlohy kopírování. Vlastnost *modifiedDatetimeEnd* je nastavena na aktuální dobu běhu úlohy kopírování. Uvědomte si, že čas je použit pro časové pásmo UTC.
+- **SqlServerStoredProcedure** aktualizovat stav kopírování jednotlivých oddílů a kopírování běhu v tabulce ovládacího prvku, když se to podaří. Sloupec SuccessOrFailure je nastavena na 1.
+- **SqlServerStoredProcedure** aktualizovat stav kopírování jednotlivých oddílů a kopírování běhu v tabulce ovládacího prvku, když se nezdaří. Sloupec SuccessOrFailure je nastavena na 0.
 
 Šablona obsahuje dva parametry:
-- **AWS_S3_bucketName** je název vašeho kontejneru v AWS S3, ze kterého chcete migrovat data. Pokud chcete migrovat data z několika intervalů v AWS S3, můžete do své tabulky externích ovládacích prvků přidat další sloupec pro uložení názvu sady pro každý oddíl a také aktualizovat svůj kanál, aby se odpovídajícím způsobem načetla data z tohoto sloupce.
-- **Azure_Storage_fileSystem** je název systému souborů v Azure Data Lake Storage Gen2, do kterého chcete migrovat data.
+- **AWS_S3_bucketName** je název vašeho bloku na AWS S3, ze kterého chcete migrovat data. Pokud chcete migrovat data z více bloků na AWS S3, můžete přidat ještě jeden sloupec v tabulce externího ovládacího prvku pro uložení názvu bloku pro každý oddíl a také aktualizovat kanál pro načtení dat z tohoto sloupce odpovídajícím způsobem.
+- **Azure_Storage_fileSystem** je název vašeho fileSystem na Azure Data Lake Storage Gen2, kam chcete migrovat data.
 
 ## <a name="how-to-use-these-two-solution-templates"></a>Jak používat tyto dvě šablony řešení
 
-### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Pro šablonu migrace historických dat ze služby Amazon S3 na Azure Data Lake Storage Gen2 
+### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Pro šablonu pro migraci historických dat z Amazon S3 do Azure Data Lake Storage Gen2 
 
-1. Vytvořte v Azure SQL Database tabulku ovládacího prvku pro uložení seznamu oddílů AWS S3. 
+1. Vytvořte tabulku ovládacích prvku v Azure SQL Database pro uložení seznamu oddílů AWS S3. 
 
     > [!NOTE]
     > Název tabulky je s3_partition_control_table.
-    > Schéma řídicí tabulky je PartitionPrefix a SuccessOrFailure, kde PartitionPrefix je nastavení předpony ve S3, aby vyfiltroval složky a soubory v Amazon S3 podle názvu a SuccessOrFailure je stav kopírování jednotlivých oddílů: 0 znamená, že tento oddíl má nebylo zkopírováno do Azure a 1 znamená, že tento oddíl byl úspěšně zkopírován do Azure.
+    > Schéma řídicí tabulky je PartitionPrefix a SuccessOrFailure, kde PartitionPrefix je nastavení předpony v S3 filtrovat složky a soubory v Amazon S3 podle názvu a SuccessOrFailure je stav kopírování každého oddílu: 0 znamená, že tento oddíl má nebylzkopírovaný do Azure a 1 znamená, že tento oddíl byl úspěšně zkopírován do Azure.
     > V řídicí tabulce je definováno 5 oddílů a výchozí stav kopírování jednotlivých oddílů je 0.
 
     ```sql
@@ -89,7 +89,7 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
     ('e', 0);
     ```
 
-2. Vytvořte uloženou proceduru pro stejný Azure SQL Database pro kontrolní tabulku. 
+2. Vytvořte uloženou proceduru ve stejné tabulce Azure SQL Database for control. 
 
     > [!NOTE]
     > Název uložené procedury je sp_update_partition_success. Bude vyvolána aktivitou SqlServerStoredProcedure v kanálu ADF.
@@ -105,7 +105,7 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
     GO
     ```
 
-3. Pokud chcete Azure Data Lake Storage Gen2 šablonu, přejdete na **migrace historických dat z AWS S3** . Zadejte připojení do tabulky externích ovládacích prvků, AWS S3 jako úložiště zdrojů dat a Azure Data Lake Storage Gen2 jako cílové úložiště. Mějte na paměti, že externí řídicí tabulka a uložená procedura odkazují na stejné připojení.
+3. Přejděte na šablonu **Migrate historických dat z AWS S3 do šablony Azure Data Lake Storage Gen2.** Zadejte připojení k tabulce externího ovládacího prvku, AWS S3 jako úložiště zdrojů dat a Azure Data Lake Storage Gen2 jako cílové úložiště. Uvědomte si, že tabulka externího ovládacího prvku a uložená procedura odkazují na stejné připojení.
 
     ![Vytvoření nového připojení](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
@@ -113,27 +113,27 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
 
     ![Použít tuto šablonu](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
-5. Uvidíte, že se vytvořily dva kanály a 3 datové sady, jak je znázorněno v následujícím příkladu:
+5. Uvidíte, že byly vytvořeny 2 kanály a 3 datové sady, jak je znázorněno v následujícím příkladu:
 
     ![Kontrola kanálu](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
-6. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+6. Vyberte **Ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
 
-    ![Klikněte na * * ladit * *.](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
+    ![Klikněte na **Ladění**](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
-7. Zobrazí se výsledky podobné následujícímu příkladu:
+7. Zobrazí se výsledky, které jsou podobné v následujícím příkladu:
 
-    ![Kontrola výsledku](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
+    ![Zkontrolujte výsledek](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
 
 
-### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Aby šablona zkopírovala změněné soubory pouze ze služby Amazon S3 do Azure Data Lake Storage Gen2
+### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Pro šablonu ke kopírování změněných souborů pouze z Amazon S3 do Azure Data Lake Storage Gen2
 
-1. Vytvořte v Azure SQL Database tabulku ovládacího prvku pro uložení seznamu oddílů AWS S3. 
+1. Vytvořte tabulku ovládacích prvku v Azure SQL Database pro uložení seznamu oddílů AWS S3. 
 
     > [!NOTE]
     > Název tabulky je s3_partition_delta_control_table.
-    > Schéma řídicí tabulky je PartitionPrefix, JobRunTime a SuccessOrFailure, kde PartitionPrefix je nastavení předpony ve S3, aby se vyfiltroval složky a soubory v Amazon S3 podle názvu, JobRunTime je hodnota DateTime při spuštění úloh kopírování a SuccessOrFailure je. stav kopírování jednotlivých oddílů: 0 znamená, že se tento oddíl nezkopíroval do Azure a 1 znamená, že se tento oddíl zkopíroval do Azure úspěšně.
-    > V řídicí tabulce je definováno 5 oddílů. Výchozí hodnota pro JobRunTime může být čas, kdy se spustí jednorázová migrace historických dat. Aktivita kopírování ADF zkopíruje soubory do AWS S3, které byly po uplynutí této doby naposledy změněny. Výchozí stav kopírování jednotlivých oddílů je 1.
+    > Schéma řídicí tabulky je PartitionPrefix, JobRunTime a SuccessOrFailure, kde PartitionPrefix je nastavení předpony v S3 pro filtrování složek a souborů v Amazon S3 podle názvu, JobRunTime je datetime hodnota při spuštění úlohy kopírování a SuccessOrFailure je stav kopírování jednotlivých oddílů: 0 znamená, že tento oddíl nebyl zkopírován do Azure a 1 znamená, že tento oddíl byl úspěšně zkopírován do Azure.
+    > V řídicí tabulce je definováno 5 oddílů. Výchozí hodnota jobruntime může být čas při jednorázové historické migrace dat. ADF kopírování aktivity zkopírují soubory na AWS S3, které byly naposledy změněny po této době. Výchozí stav kopírování jednotlivých oddílů je 1.
 
     ```sql
     CREATE TABLE [dbo].[s3_partition_delta_control_table](
@@ -151,7 +151,7 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
     ('e','1/1/2019 12:00:00 AM',1);
     ```
 
-2. Vytvořte uloženou proceduru pro stejný Azure SQL Database pro kontrolní tabulku. 
+2. Vytvořte uloženou proceduru ve stejné tabulce Azure SQL Database for control. 
 
     > [!NOTE]
     > Název uložené procedury je sp_insert_partition_JobRunTime_success. Bude vyvolána aktivitou SqlServerStoredProcedure v kanálu ADF.
@@ -168,7 +168,7 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
     ```
 
 
-3. Pokud chcete Azure Data Lake Storage Gen2 šablonu, přejdete do části **kopírování rozdílových dat z AWS S3** . Zadejte připojení do tabulky externích ovládacích prvků, AWS S3 jako úložiště zdrojů dat a Azure Data Lake Storage Gen2 jako cílové úložiště. Mějte na paměti, že externí řídicí tabulka a uložená procedura odkazují na stejné připojení.
+3. Přejděte na šablonu **Kopírovat delta z AWS S3 do šablony Azure Data Lake Storage Gen2.** Zadejte připojení k tabulce externího ovládacího prvku, AWS S3 jako úložiště zdrojů dat a Azure Data Lake Storage Gen2 jako cílové úložiště. Uvědomte si, že tabulka externího ovládacího prvku a uložená procedura odkazují na stejné připojení.
 
     ![Vytvoření nového připojení](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
 
@@ -176,23 +176,23 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
 
     ![Použít tuto šablonu](media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png)
     
-5. Uvidíte, že se vytvořily dva kanály a 3 datové sady, jak je znázorněno v následujícím příkladu:
+5. Uvidíte, že byly vytvořeny 2 kanály a 3 datové sady, jak je znázorněno v následujícím příkladu:
 
     ![Kontrola kanálu](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
 
-6. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+6. Vyberte **Ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
 
-    ![Klikněte na * * ladit * *.](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
+    ![Klikněte na **Ladění**](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
 
-7. Zobrazí se výsledky podobné následujícímu příkladu:
+7. Zobrazí se výsledky, které jsou podobné v následujícím příkladu:
 
-    ![Kontrola výsledku](media/solution-template-migration-s3-azure/delta-migration-s3-azure5.png)
+    ![Zkontrolujte výsledek](media/solution-template-migration-s3-azure/delta-migration-s3-azure5.png)
 
-8. Můžete také kontrolovat výsledky z tabulky Control pomocí dotazu *"SELECT * from s3_partition_delta_control_table"* , zobrazí se výstup podobný následujícímu příkladu:
+8. Můžete také zkontrolovat výsledky z ovládací tabulky dotazem *"select * from s3_partition_delta_control_table"*, zobrazí se výstup podobný následujícímu příkladu:
 
-    ![Kontrola výsledku](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
+    ![Zkontrolujte výsledek](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     
 ## <a name="next-steps"></a>Další kroky
 
-- [Kopírování souborů z více kontejnerů](solution-template-copy-files-multiple-containers.md)
-- [Přesunout soubory](solution-template-move-files.md)
+- [Kopírování souborů z několika kontejnerů](solution-template-copy-files-multiple-containers.md)
+- [Přesunutí souborů](solution-template-move-files.md)

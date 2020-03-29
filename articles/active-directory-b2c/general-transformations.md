@@ -1,7 +1,7 @@
 ---
-title: Příklady obecné transformace deklarací identity pro vlastní zásady
+title: Obecné příklady transformace deklarací pro vlastní zásady
 titleSuffix: Azure AD B2C
-description: Příklady obecných transformačních deklarací identity pro schéma IEF (identity Experience Framework) Azure Active Directory B2C.
+description: Obecné příklady transformace deklarací identity framework (IEF) schéma Služby Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,28 +12,28 @@ ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188541"
 ---
-# <a name="general-claims-transformations"></a>Obecné transformace deklarací identity
+# <a name="general-claims-transformations"></a>Obecné transformace nároků
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek popisuje příklady použití obecných transformací identity schématu rozhraní identity Experience v Azure Active Directory B2C (Azure AD B2C). Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
+Tento článek obsahuje příklady pro použití obecných deklarací identity transformace schématu identity experience framework v Azure Active Directory B2C (Azure AD B2C). Další informace naleznete v tématu [ClaimsTransformations](claimstransformations.md).
 
-## <a name="copyclaim"></a>CopyClaim
+## <a name="copyclaim"></a>Kopírovat nárok
 
-Kopírovat hodnotu deklarace identity na jinou. Obě deklarace identity musí být ze stejného typu.
+Zkopírujte hodnotu deklarace pohledávky do jiného. Oba deklarace musí být ze stejného typu.
 
-| Položka | TransformationClaimType | Typ dat | Poznámky: |
+| Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim | řetězec, int | Typ deklarace, který se má zkopírovat |
-| outputClaim | outputClaim | řetězec, int | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
+| Vstupní deklarace | inputClaim | řetězec, int | Typ deklarace, který má být zkopírován. |
+| Výstupní nárok | outputClaim | řetězec, int | ClaimType, který je vytvořen po této ClaimsTransformation byla vyvolána. |
 
-Tuto transformaci deklarací identity použijte ke zkopírování hodnoty z řetězce nebo číselné deklarace na jinou deklaraci identity. V následujícím příkladu se zkopíruje hodnota deklarace identity externalEmail na deklaraci identity e-mailu.
+Pomocí této transformace deklarací zkopírujte hodnotu z řetězce nebo číselné deklarace do jiné deklarace identity. Následující příklad zkopíruje hodnotu deklarace e-mailu externalEmail.
 
 ```XML
 <ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
@@ -48,21 +48,21 @@ Tuto transformaci deklarací identity použijte ke zkopírování hodnoty z řet
 
 ### <a name="example"></a>Příklad
 
-- Vstupní deklarace identity:
-    - **inputClaim**: bob@contoso.com
-- Deklarace výstupů:
-    - **outputClaim**: bob@contoso.com
+- Vstupní deklarace:
+    - **inputClaim**:bob@contoso.com
+- Výstupní nároky:
+    - **outputClaim**:bob@contoso.com
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
-Kontroluje, zda **inputClaim** existuje nebo není, a nastaví **outputClaim** na hodnotu true nebo false.
+Zkontroluje, zda **inputClaim** existuje nebo ne a nastaví **outputClaim** na true nebo false odpovídajícím způsobem.
 
-| Položka | TransformationClaimType | Typ dat | Poznámky: |
+| Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim |Všechny | Vstupní deklarace identity, jejíž existence je potřeba ověřit. |
-| outputClaim | outputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
+| Vstupní deklarace | inputClaim |Všechny | Vstupní tvrzení, jehož existence musí být ověřena. |
+| Výstupní nárok | outputClaim | Boolean | ClaimType, který je vytvořen po této ClaimsTransformation byla vyvolána. |
 
-Pomocí této transformace deklarací identity ověřte, zda deklarace identity existuje nebo obsahuje libovolnou hodnotu. Vrácená hodnota je logická hodnota, která označuje, zda existuje deklarace identity. Následující příklad zkontroluje, jestli tato e-mailová adresa existuje.
+Pomocí této transformace deklarací zkontrolujte, zda deklarace existuje nebo obsahuje libovolnou hodnotu. Vrácená hodnota je logická hodnota, která označuje, zda deklarace existuje. Následující příklad zkontroluje, zda e-mailová adresa existuje.
 
 ```XML
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
@@ -77,21 +77,21 @@ Pomocí této transformace deklarací identity ověřte, zda deklarace identity 
 
 ### <a name="example"></a>Příklad
 
-- Vstupní deklarace identity:
-  - **inputClaim**: someone@contoso.com
-- Deklarace výstupů:
-  - **outputClaim**: true
+- Vstupní deklarace:
+  - **inputClaim**:someone@contoso.com
+- Výstupní nároky:
+  - **outputClaim**: true outputClaim : true outputClaim : true outputClaim
 
 ## <a name="hash"></a>Hodnota hash
 
-Vytvoří hodnotu hash zadaného prostého textu pomocí soli a tajného klíče. Použitý algoritmus hash je SHA-256.
+Hash za předpokladu, prostý text pomocí soli a tajemství. Použitý algoritmus hash je SHA-256.
 
-| Položka | TransformationClaimType | Typ dat | Poznámky: |
+| Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | prostý | řetězec | Vstupní deklarace identity, která se má zašifrovat |
-| inputClaim | sůl | řetězec | Parametr Salt. Náhodnou hodnotu můžete vytvořit pomocí `CreateRandomString` transformace deklarací identity. |
-| InputParameter | randomizerSecret | řetězec | Odkazuje na existující **klíč zásad**Azure AD B2C. Pokud chcete vytvořit nový klíč zásad: v tenantovi Azure AD B2C v části **Spravovat**vyberte **Architektura prostředí identity**. Vyberte **klíče zásad** pro zobrazení klíčů, které jsou k dispozici ve vašem tenantovi. Vyberte **Přidat**. V případě **možností**vyberte možnost **ručně**. Zadejte název (předponu *B2C_1A_* možné přidat automaticky.) Do textového pole **tajný kód** zadejte libovolný tajný klíč, který chcete použít, například 1234567890. V případě **použití klíče**vyberte možnost **podpis**. Vyberte **Vytvořit**. |
-| outputClaim | kontrole | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. Deklarace identity konfigurovaná ve `plaintext` inputClaim. |
+| Vstupní deklarace | Nešifrovaném | řetězec | Vstupní deklarace, která má být zašifrována |
+| Vstupní deklarace | Sůl | řetězec | Parametr soli. Můžete vytvořit náhodnou hodnotu pomocí `CreateRandomString` transformace deklarací. |
+| Parametr Input | randomizerSecret | řetězec | Odkazuje na existující **klíč zásad**Azure AD B2C . Chcete-li vytvořit nový klíč zásad: V tenantovi Azure AD B2C vyberte v části **Správa** **vyberte rozhraní Identity Experience Framework**. Vyberte **klávesy zásad,** chcete-li zobrazit klíče, které jsou k dispozici ve vašem tenantovi. Vyberte **Přidat**. V **části Možnosti**vyberte **možnost Ručně**. Zadejte název (předpona *B2C_1A_* může být přidána automaticky.). Do textového pole **Tajné** zadejte libovolný tajný klíč, který chcete použít, například 1234567890. V **části Použití klíče**vyberte možnost **Podpis**. Vyberte **Vytvořit**. |
+| Výstupní nárok | hash | řetězec | ClaimType, který je vytvořen po této deklarace transformace byla vyvolána. Deklarace nakonfigurovaná v `plaintext` inputClaim. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
@@ -110,9 +110,9 @@ Vytvoří hodnotu hash zadaného prostého textu pomocí soli a tajného klíče
 
 ### <a name="example"></a>Příklad
 
-- Vstupní deklarace identity:
-  - **prostý text**: MyPass@word1
+- Vstupní deklarace:
+  - **prostý text**:MyPass@word1
   - **sůl**: 487624568
   - **randomizerSecret**: B2C_1A_AccountTransformSecret
-- Deklarace výstupů:
-  - **outputClaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U =
+- Výstupní nároky:
+  - **outputClaim**: CdMNb/KTEfsWzh9MR1kQGRZKjuxGMWhA5YQNihzV6U=

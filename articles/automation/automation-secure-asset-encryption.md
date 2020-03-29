@@ -1,6 +1,6 @@
 ---
 title: Šifrování zabezpečených prostředků v automatizaci
-description: Azure Automation chrání zabezpečené prostředky pomocí více úrovní šifrování. Ve výchozím nastavení se šifrování provádí pomocí klíčů spravovaných Microsoftem. Zákazníci můžou nakonfigurovat své účty Automation, aby používali klíče spravované zákazníky k šifrování. Tento článek popisuje podrobné informace o obou režimech šifrování a o tom, jak můžete mezi nimi přepínat.
+description: Azure automation chrání zabezpečené prostředky pomocí několika úrovní šifrování. Ve výchozím nastavení se šifrování provádí pomocí klíčů spravovaných společností Microsoft. Zákazníci mohou nakonfigurovat své účty automatizace tak, aby k šifrování používaly klíče spravované zákazníkem. Tento článek popisuje podrobnosti o obou režimech šifrování a jak můžete přepínat mezi těmito dvěma.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -10,57 +10,57 @@ ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
 ms.openlocfilehash: 3c21e2fcdde9bffac91af56d49dfa0bf336e8c0c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246236"
 ---
-# <a name="secure-assets-in-azure-automation"></a>Zabezpečení prostředků v Azure Automation
+# <a name="secure-assets-in-azure-automation"></a>Zabezpečení datových zdrojů v Azure Automation
 
-Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou chráněné v Azure Automation s využitím více úrovní šifrování. Na základě klíče nejvyšší úrovně používaného pro šifrování jsou k dispozici dva modely šifrování:
--   Používání klíčů spravovaných Microsoftem
+Zabezpečené datové zdroje v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou chráněné v Azure Automation pomocí několika úrovní šifrování. Na základě klíče nejvyšší úrovně použitého pro šifrování existují dva modely pro šifrování:
+-   Použití klíčů spravovaných společností Microsoft
 -   Použití klíčů spravovaných zákazníkem
 
 ## <a name="microsoft-managed-keys"></a>Klíče spravované společností Microsoft
 
 Ve výchozím nastavení používá váš účet Azure Automation klíče spravované společností Microsoft.
 
-Každý zabezpečený prostředek je zašifrovaný a uložený v Azure Automation pomocí jedinečného klíče (datového šifrovacího klíče), který se generuje pro každý účet Automation. Tyto klíče se samy šifrují a ukládají v Azure Automation pomocí jiného jedinečného klíče, který se generuje pro každý účet s názvem šifrovací klíč účtu (AEK). Tyto šifrovací klíče účtu se šifrují a ukládají v Azure Automation pomocí klíčů spravovaných Microsoftem. 
+Každý zabezpečený prostředek je šifrovaný a uložený v Azure Automation pomocí jedinečného klíče (klíč šifrování dat), který se generuje pro každý účet automatizace. Tyto klíče samy o sobě jsou šifrované a uložené v Azure Automation pomocí dalšího jedinečného klíče, který se generuje pro každý účet nazývaný šifrovací klíč účtu (AEK). Tyto šifrovací klíče účtu šifrované a uložené v Azure Automation pomocí klíčů spravovaných Microsoftem. 
 
-## <a name="customer-managed-keys-with-key-vault-preview"></a>Klíče spravované zákazníkem s Key Vault (Preview)
+## <a name="customer-managed-keys-with-key-vault-preview"></a>Klíče spravované zákazníkem s trezorem klíčů (náhled)
 
-Můžete spravovat šifrování zabezpečených prostředků pro svůj účet Automation pomocí vlastních klíčů. Když na úrovni účtu Automation zadáte klíč spravovaný zákazníkem, použije se tento klíč k ochraně a řízení přístupu k šifrovacímu klíči účtu pro účet Automation. To zase slouží k šifrování a dešifrování všech zabezpečených prostředků. Klíče spravované zákazníkem nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Můžete také auditovat šifrovací klíče používané k ochraně vašich zabezpečených prostředků.
+Šifrování zabezpečených datových zdrojů pro svůj účet Automation můžete spravovat pomocí vlastních klíčů. Když zadáte klíč spravovaný zákazníkem na úrovni účtu Automation, tento klíč se používá k ochraně a řízení přístupu k šifrovacímu klíči účtu pro účet Automation. To se zase používá k šifrování a dešifrování všech zabezpečených datových zdrojů. Klíče spravované zákazníkem nabízejí větší flexibilitu při vytváření, otáčení, zakázání a odvolání ovládacích prvků přístupu. Můžete také auditovat šifrovací klíče používané k ochraně zabezpečených datových zdrojů.
 
-K ukládání klíčů spravovaných zákazníkem použijte Azure Key Vault. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů.  Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../key-vault/key-vault-overview.md)
+K ukládání klíčů spravovaných zákazníky použijte Azure Key Vault. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít Azure Key Vault API ke generování klíčů.  Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](../key-vault/key-vault-overview.md)
 
-## <a name="enable-customer-managed-keys-for-an-automation-account"></a>Povolení klíčů spravovaných zákazníkem pro účet Automation
+## <a name="enable-customer-managed-keys-for-an-automation-account"></a>Povolení klíčů spravovaných zákazníkem pro účet automatizace
 
-Když zapnete šifrování pomocí klíčů spravovaných zákazníkem pro účet Automation, Azure Automation zabalí šifrovací klíč účtu s klíčem spravovaným zákazníkem v přidruženém trezoru klíčů. Povolení klíčů spravovaných zákazníkem nemá vliv na výkon a účet je zašifrovaný pomocí nového klíče hned bez zpoždění.
+Když povolíte šifrování pomocí klíčů spravovaných zákazníkem pro účet Automation, Azure Automation zabalí šifrovací klíč účtu s klíčem spravovaným zákazníkem v přidruženém trezoru klíčů. Povolení klíčů spravovaných zákazníkem nemá vliv na výkon a účet je okamžitě zašifrován pomocí nového klíče, bez zpoždění.
 
-Nový účet Automation je vždycky zašifrovaný pomocí klíčů spravovaných Microsoftem. V okamžiku vytvoření účtu není možné povolit klíče spravované zákazníkem. Klíče spravované zákazníkem jsou uložené v Azure Key Vault a trezor klíčů musí být zřízený pomocí zásad přístupu, které udělí klíčová oprávnění ke spravované identitě, která je přidružená k účtu Automation. Spravovaná identita je k dispozici až po vytvoření účtu úložiště.
+Nový účet Automation je vždy šifrován pomocí klíčů spravovaných společností Microsoft. V době vytvoření účtu není možné povolit klíče spravované zákazníkem. Klíče spravované zákazníkem jsou uloženy v trezoru klíčů Azure a trezor klíčů musí být zřízen zásadami přístupu, které udělují oprávnění klíče ke spravované identitě přidružené k účtu Automation. Spravovaná identita je k dispozici pouze po vytvoření účtu úložiště.
 
-Když upravíte klíč, který se používá pro Azure Automation zabezpečené šifrování prostředků, povolením nebo zakázáním klíčů spravovaných zákazníkem, aktualizací verze klíče nebo zadáním jiného klíče, šifrování šifrovacího klíče účtu se změní, ale zabezpečené prostředky v nástroji Váš účet Azure Automation nemusíte znovu šifrovat.
+Když upravíte klíč používaný pro zabezpečené šifrování prostředků Azure Automation, povolíte nebo zakážete klíče spravované zákazníkem, aktualizujete verzi klíče nebo zadáte jiný klíč, změní se šifrování šifrovacího klíče účtu, ale zabezpečené prostředky v aplikaci váš účet Azure Automation není nutné znovu zašifrovat.
 
-Následující tři oddíly popisují mechanismy povolování klíčů spravovaných zákazníkem pro účet Automation. 
+Následující tři části popisují mechanismy povolení klíčů spravovaných zákazníkem pro účet automatizace. 
 
 > [!NOTE] 
-> Pokud chcete povolit klíče spravované zákazníkem, musíte provést Azure Automation REST API volání pomocí rozhraní API verze 2020-01-13-Preview.
+> Chcete-li povolit klíče spravované zákazníkem, je třeba provést volání rozhraní REST API Azure Automation pomocí rozhraní API verze 2020-01-13-preview
 
-### <a name="pre-requisites-for-using-customer-managed-keys-in-azure-automation"></a>Předpoklady pro použití klíčů spravovaných zákazníkem v Azure Automation
+### <a name="pre-requisites-for-using-customer-managed-keys-in-azure-automation"></a>Předpoklady pro použití klíčů spravovaných zákazníky v Azure Automation
 
-Než povolíte klíče spravované zákazníkem pro účet Automation, musíte zajistit, aby byly splněné následující předpoklady:
+Před povolením klíčů spravovaných zákazníkem pro účet Automation je nutné zajistit splnění následujících předpokladů:
 
- - Klíč zákazníka-spravovaných je uložený v Azure Key Vault. 
- - V trezoru klíčů povolte jak **obnovitelné odstranění** , tak i **nemazatelné** vlastnosti. Tyto funkce jsou nutné k povolení obnovení klíčů v případě náhodného odstranění.
- - Šifrování Azure Automation podporuje jenom klíče RSA. Další informace o klíčích najdete v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
-- Účet Automation a trezor klíčů můžou být v různých předplatných, ale musí být ve stejném Azure Active Directory tenantovi.
+ - Klíč vytvořený zákazníkem je uložen v trezoru klíčů Azure. 
+ - Povolte vlastnosti **Obnovitelné odstranění** i **Nečistit** v trezoru klíčů. Tyto funkce jsou nutné, aby bylo možné obnovit klíče v případě náhodného odstranění.
+ - Šifrování azure automation podporuje jenom klíče RSA. Další informace o klíčích naleznete v [tématu O klíčích, tajných klíčích a certifikátech trezoru klíčů Azure](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+- Účet Automatizace a trezor klíčů může být v různých předplatných, ale musí být ve stejném tenantovi služby Azure Active Directory.
 
-### <a name="assign-an-identity-to-the-automation-account"></a>Přiřazení identity k účtu Automation
+### <a name="assign-an-identity-to-the-automation-account"></a>Přiřazení identity k účtu automatizace
 
-Pokud chcete používat klíče spravované zákazníkem s účtem Automation, váš účet Automation musí ověřovat proti trezoru klíčů, který ukládá klíče spravované zákazníkem. Azure Automation používá spravované identity přiřazené systémem k ověření účtu s Azure Key Vault. Další informace o spravovaných identitách najdete v tématu [co jsou spravované identity pro prostředky Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+Chcete-li používat klíče spravované zákazníkem s účtem Automation, musí se váš účet Automation ověřit v trezoru klíčů, který ukládá klíče spravované zákazníkem. Azure Automation používá k ověření účtu pomocí Azure Key Vault u systému přiřazené spravované identity. Další informace o spravovaných identitách najdete v tématu [Co je spravované identity pro prostředky Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-Nakonfigurujte spravovanou identitu přiřazenou systémem na účet Automation pomocí následujícího REST API volání:
+Nakonfigurujte systém přiřazenou spravovanou identitu k účtu automatizace pomocí následujícího volání rozhraní REST API:
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
@@ -77,7 +77,7 @@ Text požadavku:
 }
 ```
 
-Identita přiřazená systémem pro účet Automation se vrátí v odpovědi podobné následujícímu:
+Systém přiřazená identita pro účet Automatizace je vrácena v odpovědi podobné následující:
 
 ```json
 {
@@ -93,11 +93,11 @@ Identita přiřazená systémem pro účet Automation se vrátí v odpovědi pod
 }
 ```
 
-### <a name="configure-the-key-vault-access-policy"></a>Konfigurace zásad přístupu Key Vault
+### <a name="configure-the-key-vault-access-policy"></a>Konfigurace zásad přístupu trezoru klíčů
 
-Jakmile se ke účtu Automation přiřadí spravovaná identita, nakonfigurujete přístup k trezoru klíčů, který ukládá klíče spravované zákazníkem. Azure Automation pro klíče spravované zákazníkem vyžaduje **Get**, **Recovery**, **wrapKey**a **UnwrapKey** .
+Jakmile je spravovaná identita přiřazena k účtu Automation, nakonfigurujete přístup k trezoru klíčů, který ukládá klíče spravované zákazníkem. Azure Automation vyžaduje **get**, **recover**, **wrapKey**, **UnwrapKey** na klíčích spravovaných zákazníkem.
 
-Tyto zásady přístupu se dají nastavit pomocí následujícího REST API volání:
+Tyto zásady přístupu lze nastavit pomocí následujícího volání rozhraní REST API:
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-group/providers/Microsoft.KeyVault/vaults/sample-vault/accessPolicies/add?api-version=2018-02-14
@@ -129,11 +129,11 @@ Text požadavku:
 ```
 
 > [!NOTE]
-> Pole **tenantId** a **objectID** musí být k dispozici s hodnotami **identity. tenantId** a **identity. PrincipalId** z odpovědi spravované identity pro účet Automation.
+> Pole **tenantId** a **objectId** musí být poskytnuta s hodnotami **identity.tenantId** a **identity.principalId** z odpovědi spravované identity pro účet Automation.
 
-### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>Změna konfigurace účtu Automation na použití klíče spravovaného zákazníkem
+### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>Změna konfigurace účtu Automation tak, aby používal klíč spravovaný zákazníkem
 
-Nakonec můžete přepnout účet Automation z Microsoft klíčů na klíče spravované zákazníky pomocí následujícího volání REST API:
+Nakonec můžete přepnout svůj účet Automation z klíčů spravovaných microsft na klíče spravované zákazníky pomocí následujícího volání rozhraní REST API:
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
@@ -178,17 +178,17 @@ Ukázková odpověď
 }
 ```
 
-## <a name="manage-customer-managed-keys-lifecycle"></a>Spravovat životní cyklus klíčů spravovaných zákazníkem
+## <a name="manage-customer-managed-keys-lifecycle"></a>Správa životního cyklu klíčů spravovaných zákazníkem
 
-### <a name="rotate-customer-managed-keys"></a>Otočit klíče spravované zákazníkem
+### <a name="rotate-customer-managed-keys"></a>Otočení klíčů spravovaných zákazníkem
 
-Klíč spravovaný zákazníkem můžete v Azure Key Vault otočit podle vašich zásad dodržování předpisů. Při otočení klíče musíte aktualizovat účet Automation, aby používal nový identifikátor URI klíče.
+Klíč spravovaný zákazníkem můžete v trezoru klíčů Azure v souladu s vašimi zásadami dodržování předpisů otočit. Při otočení klíče je nutné aktualizovat účet automatizace, aby se použil nový identifikátor URI klíče.
 
-Otáčení klíče neaktivuje opětovné šifrování zabezpečených prostředků v účtu Automation. Není vyžadována žádná další akce.
+Otočení klíče neaktivuje opětovné šifrování zabezpečených prostředků v účtu automatizace. Není nutná žádná další akce.
 
-### <a name="revoke-access-to-customer-managed-keys"></a>Odvolat přístup k klíčům spravovaným zákazníkem
+### <a name="revoke-access-to-customer-managed-keys"></a>Odvolání přístupu ke klíčům spravovaným zákazníkem
 
-K odvolání přístupu k klíčům spravovaným zákazníkem použijte PowerShell nebo Azure CLI. Další informace najdete v tématu [Azure Key Vault PowerShellu](https://docs.microsoft.com/powershell/module/az.keyvault/) nebo rozhraní příkazového [řádku Azure Key Vault](https://docs.microsoft.com/cli/azure/keyvault). Odvolání přístupu efektivně blokuje přístup ke všem zabezpečeným prostředkům v účtu Automation, protože šifrovací klíč je nepřístupný Azure Automation.
+Pokud chcete odvolat přístup ke klíčům spravovaným zákazníkem, použijte PowerShell nebo Azure CLI. Další informace najdete [v tématu Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) nebo [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault). Zrušení přístupu efektivně blokuje přístup ke všem zabezpečeným prostředkům v účtu Automation, protože šifrovací klíč není pro Azure Automation přístupný.
 
 ## <a name="next-steps"></a>Další kroky
 

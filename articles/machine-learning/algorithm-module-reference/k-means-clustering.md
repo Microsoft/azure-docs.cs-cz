@@ -1,7 +1,7 @@
 ---
-title: 'K-znamená clustering: odkaz na modul'
+title: Shlukování prostředků K:Reference modulu
 titleSuffix: Azure Machine Learning
-description: Naučte se používat K tomu modul clustering v Azure Machine Learning ke školení modelů clusteringu.
+description: Zjistěte, jak používat modul K-Means Clustering v Azure Machine Learning k trénování modelů clusteringu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,138 +10,138 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
 ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921160"
 ---
-# <a name="module-k-means-clustering"></a>Modul: K-znamená clustering
+# <a name="module-k-means-clustering"></a>Modul: K-prostředky clustering
 
-Tento článek popisuje, jak použít modul pro *clustering* v Návrháři Azure Machine Learning (Preview) k vytvoření nevýukového modelu pro clustering k. 
+Tento článek popisuje, jak pomocí modulu *K-Means Clustering* v návrháři Azure Machine Learning (preview) vytvořit netrénovaný model clusteringu K znamená. 
  
-K-znamená, že je jedním z nejjednodušších a osvědčených *bezdohledných* algoritmů učení. Můžete použít algoritmus pro nejrůznější úlohy strojového učení, například: 
+K-prostředky je jedním z nejjednodušších a nejznámějších algoritmů učení *bez dozoru.* Algoritmus můžete použít pro různé úkoly strojového učení, například: 
 
-* [Zjišťování neobvyklých dat](https://msdn.microsoft.com/magazine/jj891054.aspx)
-* Vytváření clusterů textových dokumentů.
+* [Detekce abnormálních dat](https://msdn.microsoft.com/magazine/jj891054.aspx).
+* Shlukování textových dokumentů.
 * Analýza datových sad před použitím jiných metod klasifikace nebo regrese. 
 
-Chcete-li vytvořit model clusteringu, postupujte takto:
+Chcete-li vytvořit model clusteringu, můžete:
 
-* Přidejte tento modul do vašeho kanálu.
+* Přidejte tento modul do kanálu.
 * Připojte datovou sadu.
-* Nastavte parametry, třeba počet očekávaných clusterů, metriku vzdálenosti, která se má použít při vytváření clusterů, a tak dále. 
+* Nastavte parametry, jako je například počet clusterů, které očekáváte, metrika vzdálenosti, která se má použít při vytváření clusterů a tak dále. 
   
-Až nakonfigurujete parametry modulu, připojíte nevlakový model k [modelu clusteringu](train-clustering-model.md). Vzhledem k tomu, že se jedná o bezdohledový způsob učení, sloupec popisku je nepovinný. 
+Po konfiguraci hyperparameterů modulu připojíte netrénovaný model k [modelu clusterování vlaků](train-clustering-model.md). Vzhledem k tomu, že algoritmus K-znamená je metoda učení bez dozoru, sloupec popisku je volitelný. 
 
-+ Pokud data obsahují popisek, můžete použít hodnoty popisku k seznámení s výběrem clusterů a optimalizaci modelu. 
++ Pokud data obsahují popisek, můžete pomocí hodnot popisků vést výběr clusterů a optimalizovat model. 
 
-+ Pokud vaše data nemají žádný popisek, algoritmus Vytvoří clustery reprezentující možné kategorie založené výhradně na datech.  
++ Pokud vaše data nemá žádný popisek, algoritmus vytvoří clustery představující možné kategorie, založené výhradně na datech.  
 
-##  <a name="understand-k-means-clustering"></a>Porozumění K-znamená clusteringu
+##  <a name="understand-k-means-clustering"></a>Principy clusteringu K-prostředků
  
-Obecně platí, že Clustering používá iterativní techniky k seskupení případů v datové sadě do clusterů, které mají podobné charakteristiky. Tato seskupení jsou užitečná pro zkoumání dat, identifikaci anomálií v datech a nakonec pro provádění předpovědi. Modely clusteringu vám také pomůžou identifikovat relace v datové sadě, které nemůžete logicky odvodit pomocí procházení nebo jednoduchého sledování. Z těchto důvodů se clustering často používá v počátečních fázích úloh strojového učení, aby bylo možné prozkoumat data a zjišťovat neočekávané korelace.  
+Clustering obecně používá iterativní techniky k seskupení případů v datové sadě do clusterů, které mají podobné vlastnosti. Tato seskupení jsou užitečné pro zkoumání dat, identifikaci anomálií v datech a nakonec pro vytváření předpovědí. Clustering modely můžete také pomoci identifikovat vztahy v datové sadě, které nemusí logicky odvodit procházením nebo jednoduché pozorování. Z těchto důvodů clustering se často používá v raných fázích úloh strojového učení, prozkoumat data a zjistit neočekávané korelace.  
   
- Když nakonfigurujete model clusteringu pomocí metody K-označuje, je nutné zadat cílové číslo *K* , které určuje počet *centroids* v modelu. Těžiště je bod, který je reprezentativní pro každý cluster. Algoritmus K přiřadí každému příchozímu datovému bodu jeden z clusterů tím, že minimalizuje součet čtverců v rámci clusteru. 
+ Při konfiguraci modelu clusteringu pomocí metody K-means je nutné zadat cílové číslo *k,* které označuje požadovaný počet *centroidů* v modelu. Centroid je bod, který je reprezentativní pro každou hvězdokupu. Algoritmus K-znamená přiřadí každý příchozí datový bod jednomu z clusterů minimalizací součtu čtverců v rámci clusteru. 
  
-Při zpracovávání dat školení začíná algoritmus K, který začíná počáteční sadou náhodně zvolených centroids. Centroids slouží jako počáteční body pro clustery a používají algoritmus Lloyd 's pro iterativní upřesnění jejich umístění. Algoritmus K zastaví sestavování a upřesnění clusterů, když splní jednu nebo více z těchto podmínek:  
+Když zpracovává trénovací data, algoritmus K-prostředků začíná počáteční sadou náhodně vybraných centroidů. Centroidy slouží jako výchozí body pro klastry a aplikují Lloydův algoritmus na iterativně zdokonalování jejich umístění. Algoritmus K-znamená zastaví vytváření a rafinaci clusterů, když splňuje jednu nebo více z těchto podmínek:  
   
--   Centroids stabilizovat, což znamená, že přiřazení clusteru pro jednotlivé body se už nemění a algoritmus se sblížen na řešení.  
+-   Centroidy se stabilizují, což znamená, že přiřazení clusteru pro jednotlivé body se již nemění a algoritmus se konvergoval v řešení.  
   
--   Algoritmus dokončil běh zadaného počtu iterací.  
+-   Algoritmus dokončil spuštění zadaného počtu iterací.  
   
- Po dokončení fáze školení použijete modul [přiřazení dat ke clusterům](assign-data-to-clusters.md) k přiřazení nových případů k jednomu z clusterů, které jste našli pomocí algoritmu k. Přiřazení clusteru provedete pomocí výpočtu vzdálenosti mezi novým a těžiště každého clusteru. Každému novému případu se přiřadí cluster s nejbližším těžiště.  
+ Po dokončení fáze školení pomocí modulu [Přiřadit data clusterům](assign-data-to-clusters.md) přiřadíte nové případy jednomu z clusterů, které jste našli pomocí algoritmu K-znamená. Přiřazení clusteru provedete výpočtem vzdálenosti mezi novým případem a centroidem každého clusteru. Každý nový případ je přiřazen ke clusteru s nejbližším centroidem.  
 
-## <a name="configure-the-k-means-clustering-module"></a>Konfigurace K – znamená modul clusteringu
+## <a name="configure-the-k-means-clustering-module"></a>Konfigurace modulu Clustering K-Means
   
-1.  Přidejte k vašemu kanálu modul **clusteringu** .  
+1.  Přidejte do kanálu modul **Clustering K-Means.**  
   
-2.  Chcete-li určit, jakým způsobem chcete model vyškolet, vyberte možnost **vytvořit režim Trainer** .  
+2.  Chcete-li určit, jak chcete model trénovat, vyberte možnost **Vytvořit režim trenažéru.**  
   
-    -   **Jediný parametr**: Pokud znáte přesné parametry, které chcete použít v modelu clusteringu, můžete zadat konkrétní sadu hodnot jako argumenty.  
+    -   **Jeden parametr**: Pokud znáte přesné parametry, které chcete použít v modelu clusteringu, můžete zadat určitou sadu hodnot jako argumenty.  
   
-3.  Do pole **počet centroids**zadejte počet clusterů, se kterými má algoritmus začínat.  
+3.  Do **pole Počet centroidů**zadejte počet clusterů, se kterými má algoritmus začínat.  
   
-     Model není zaručený, aby vyprodukoval přesně tento počet clusterů. Algoritmus začíná tímto počtem datových bodů a provede iterace k nalezení optimální konfigurace.  
+     Model není zaručeno, že vyrábět přesně tento počet clusterů. Algoritmus začíná tímto počtem datových bodů a itetuje najít optimální konfiguraci.  
   
-4.  **Inicializace** vlastností slouží k určení algoritmu, který se používá k definování počáteční konfigurace clusteru.  
+4.  Vlastnosti **Inicializace** se používá k určení algoritmu, který se používá k definování počáteční konfigurace clusteru.  
   
-    -   **First N**: z datové sady se vybere nějaký počáteční počet datových bodů, který se používá jako počáteční prostředky. 
+    -   **První N**: Některé počáteční počet datových bodů jsou vybrány z datové sady a použity jako počáteční prostředek. 
     
-         Tato metoda se označuje také jako *Metoda padělání*.  
+         Tato metoda se také nazývá *Forgy metoda*.  
   
-    -   **Náhodný**: algoritmus náhodně umístí datový bod do clusteru a pak vypočítá počáteční střední hodnotu jako těžištěy náhodně přiřazených bodů clusteru. 
+    -   **Random**: Algoritmus náhodně umístí datový bod do clusteru a poté vypočítá počáteční střední hodnota jako centroid náhodně přiřazených bodů clusteru. 
 
-         Tato metoda se označuje také jako metoda *náhodného dělení* .  
+         Tato metoda se také nazývá metoda *náhodného oddílu.*  
   
-    -   **K-znamená + +** : Toto je výchozí metoda pro inicializaci clusterů.  
+    -   **K-Means++**: Toto je výchozí metoda pro inicializaci clusterů.  
   
-         Algoritmus **k** byl navržený v 2007. David Arthur a Sergei Vassilvitskii, aby nedocházelo ke špatnému clusteringu pomocí standardu k. **K-znamená + +** se zlepšuje na standardu k – znamená použití jiné metody pro výběr počátečních Center clusterů.  
+         **Algoritmus K-means++** byl navržen v roce 2007 Davidem Arthurem a Sergejem Vassilvitskiim, aby se zabránilo špatnému shlukování standardním algoritmem K-prostředků. **K-means++** vylepšuje standardní K-prostředky pomocí jiné metody pro výběr počátečních center clusteru.  
   
     
-5.  V případě **náhodného čísla**můžete zadat hodnotu, která se má použít jako počáteční hodnota pro inicializaci clusteru. Tato hodnota může mít významný vliv na výběr clusteru.  
+5.  Do **pole Osiva náhodného čísla**volitelně zadejte hodnotu, která se má použít jako počáteční hodnota pro inicializaci clusteru. Tato hodnota může mít významný vliv na výběr clusteru.  
   
-6.  V části **metrika**vyberte funkci, která se má použít pro měření vzdálenosti mezi vektory clusteru nebo mezi novými datovými body a náhodně zvoleným těžiště. Azure Machine Learning podporuje následující metriky na dálku clusteru:  
+6.  V **případě metrické**ho zvolte funkci, která se má použít pro měření vzdálenosti mezi vektory clusteru nebo mezi novými datovými body a náhodně vybraným centroidem. Azure Machine Learning podporuje následující metriky vzdálenosti clusteru:  
   
-    -   **Euclidean**: Euclideaná vzdálenost se běžně používá jako míra bodových clusterů pro k, znamená clusteringu. Tato metrika je preferována, protože minimalizuje střední vzdálenost mezi body a centroids.
+    -   **Euklidovský**: Euklidova vzdálenost se běžně používá jako měřítko rozptylu klastrů pro shlukování K-prostředků. Tato metrika je upřednostňována, protože minimalizuje střední vzdálenost mezi body a centroidy.
   
-7.  Pro **iterace**zadejte počet, kolikrát se má algoritmus iterovat přes školicí data před tím, než dokončí výběr centroids.  
+7.  Pro **iterací**zadejte, kolikrát by měl algoritmus iteraci nad trénovacími daty před dokončením výběru centroidů.  
   
-     Tento parametr můžete upravit tak, aby vyrovnal přesnost na dobu školení.  
+     Tento parametr můžete upravit tak, aby přesnost vyvažovala s dobou tréninku.  
   
-8.  V případě **režimu přiřazení popisků**vyberte možnost, která určuje, jak má být zpracován sloupec popisku, pokud je přítomen v datové sadě.  
+8.  V **režimu Přiřadit popisek**zvolte možnost, která určuje, jak má být sloupec popisku, pokud je přítomen v datové sadě, zpracován.  
   
-     Vzhledem K tomu, že clustering je nekontrolovaný způsob strojového učení, popisky jsou volitelné. Pokud však vaše datová sada již obsahuje sloupec popisku, můžete tyto hodnoty použít k nastavení služby pro výběr clusterů nebo můžete určit, že se mají hodnoty ignorovat.  
+     Vzhledem k tomu, že clustering prostředků K-znamená, že metoda strojového učení bez dohledu, popisky jsou volitelné. Pokud však vaše datová sada již obsahuje sloupec popisků, můžete tyto hodnoty použít k vedení výběru clusterů nebo můžete určit, že hodnoty budou ignorovány.  
   
-    -   **Ignorovat popisek sloupce**: hodnoty ve sloupci popisek jsou ignorovány a nejsou použity při sestavování modelu.
+    -   **Ignorovat sloupec popisku**: Hodnoty ve sloupci popisku jsou ignorovány a při vytváření modelu se nepoužívají.
   
-    -   **Vyplnit chybějící hodnoty**: hodnoty sloupců popisku se používají jako funkce, které vám pomůžou sestavení clusterů. Pokud v některých řádcích chybí popisek, hodnota se připravuje pomocí dalších funkcí.  
+    -   **Chybějící hodnoty výplně**: Hodnoty sloupců popisků se používají jako funkce, které pomáhají vytvářet clustery. Pokud některé řádky chybí popisek, hodnota je imputována pomocí jiných funkcí.  
   
-    -   **Přepsat z nejbližšího středu**: hodnoty sloupce Label jsou nahrazeny hodnotami předpokládaných popisků, které používají popisek bodu, který je nejblíže aktuálnímu těžiště.  
+    -   **Přepsat od nejbližšího ke středu**: Hodnoty sloupců popisků jsou nahrazeny předpokládanými hodnotami popisků pomocí popisku bodu, který je nejblíže aktuálnímu centroidu.  
 
-8.  Vyberte možnost **normalizovat funkce** , pokud chcete před školením normalizovat funkce.
+8.  Pokud chcete normalizovat funkce před trénování, vyberte možnost **Normalizovat funkce.**
   
-     Použijete-li normalizaci před školením, jsou datové body normalizovány na `[0,1]` pomocí MinMaxNormalizer.
+     Pokud použijete normalizaci, před trénování `[0,1]` jsou datové body normalizovány minMaxNormalizer.
 
-10. Proveďte výuku modelu.  
+10. Trénujte model.  
   
-    -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, přidáte s příznakovou datovou sadu a pomocí modulu [model clusteringu](train-clustering-model.md) provedete model.  
+    -   Pokud nastavíte **vytvořit režim treniace** na **jeden parametr**, přidejte tagovované datové sady a trénování modelu pomocí modulu [model clustering vlak.](train-clustering-model.md)  
   
 ## <a name="results"></a>Výsledky
 
-Po dokončení konfigurace a školení modelu máte model, který můžete použít ke generování skóre. Existuje však několik způsobů, jak model naučit, a více způsobů zobrazení a používání výsledků: 
+Po dokončení konfigurace a trénování modelu máte model, který můžete použít ke generování skóre. Existuje však několik způsobů, jak trénovat model a několik způsobů zobrazení a použití výsledků: 
 
-### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Zachycení snímku modelu ve vašem pracovním prostoru
+### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Zachycení snímku modelu v pracovním prostoru
 
-Pokud jste použili modul [výukového modelu clusteringu](train-clustering-model.md) :
+Pokud jste použili modul [Model shlukování vlaků:](train-clustering-model.md)
 
-1. Vyberte modul **výuka clusteringu modelů** a otevřete pravý panel.
+1. Vyberte modul **Model clusteringu vlaků** a otevřete pravý panel.
 
-2. Vyberte kartu **výstupy** . výběrem ikony **Registrovat datovou sadu** uložte kopii proučeného modelu.
+2. Vyberte **kartu Výstupy.** **Register dataset**
 
-Uložený model představuje školicí data v době, kdy jste model uložili. Pokud později aktualizujete školicí data použitá v kanálu, neaktualizuje uložený model. 
+Uložený model představuje trénovací data v době uložení modelu. Pokud později aktualizujete trénovací data použitá v kanálu, neaktualizuje uložený model. 
 
 ### <a name="see-the-clustering-result-dataset"></a>Zobrazit datovou sadu výsledků clusteringu 
 
-Pokud jste použili modul [výukového modelu clusteringu](train-clustering-model.md) :
+Pokud jste použili modul [Model shlukování vlaků:](train-clustering-model.md)
 
-1. Klikněte pravým tlačítkem na modul **výuka clusteringu modelu** .
+1. Klikněte pravým tlačítkem myši na modul **Model clusteringu vlaků.**
 
-2. Vyberte **vizualizovat**.
+2. Vyberte **možnost Vizualizovat**.
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>Tipy pro generování nejlepšího modelu clusteringu  
 
-Je známo, že proces *osazení* , který se používá během clusteringu, může významně ovlivnit model. Osazení označuje počáteční umístění bodů do potenciálního centroids.
+Je známo, že proces *výsevu,* který se používá během clustering může významně ovlivnit model. Výsev znamená počáteční umístění bodů do potenciálních centroidů.
  
-Pokud například datová sada obsahuje mnoho nezaložených hodnot a izolované se vybere pro osazení clusterů, žádné další datové body by se do tohoto clusteru nevešly a cluster by mohl být typu singleton. To znamená, že může mít pouze jeden bod.  
+Například pokud datová sada obsahuje mnoho odlehlé hodnoty a odlehlé je vybrán a osít clustery, žádné jiné datové body by se vešly dobře s tímto clusterem a clusteru může být singleton. To znamená, že to může mít jen jeden bod.  
   
 Tomuto problému se můžete vyhnout několika způsoby:  
   
--   Změňte počet centroids a zkuste použít více počátečních hodnot.  
+-   Změňte počet centroidů a vyzkoušejte více hodnot osiva.  
   
--   Vytvořte si více modelů, různou metriku nebo více iterací.  
+-   Vytvořte více modelů, které mění metriku nebo více iterace.  
   
-Obecně platí, že u modelů clusteringu je možné, že kterákoli z těchto konfigurací bude mít za následek místně optimalizovanou sadu clusterů. Jinými slovy, sada clusterů, které model vrací, barevně vyhovuje pouze aktuálním datovým bodům a nelze je zobecnit do dalších dat. Pokud používáte jinou počáteční konfiguraci, znamená to, že metoda K tomu může najít jinou nadřazenou konfiguraci. 
+Obecně platí, že s clustering modely, je možné, že každá daná konfigurace bude mít za následek místně optimalizované sady clusterů. Jinými slovy sada clusterů, která je vrácena modelem, vyhovuje pouze aktuálním datovým bodům a nelze ji generalizovat na jiná data. Pokud použijete jinou počáteční konfiguraci, metoda K-means může najít jinou, nadřazenou konfiguraci. 
 
 ## <a name="next-steps"></a>Další kroky
 

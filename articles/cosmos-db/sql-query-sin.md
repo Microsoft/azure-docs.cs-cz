@@ -1,6 +1,6 @@
 ---
-title: SIN v Azure Cosmos DB dotazovací jazyk
-description: Přečtěte si o funkci systému SQL SIN v Azure Cosmos DB.
+title: SIN v dotazovacím jazyce Azure Cosmos DB
+description: Další informace o funkci systému SQL SIN v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 25e7cf66fdd55a0b641c35443e38b0a67cbe365d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303099"
 ---
 # <a name="sin-azure-cosmos-db"></a>SIN (Azure Cosmos DB)
- Vrátí trigonometrických sinus úhlu určeného v radiánech v zadaným výrazem.  
+ Vrátí goniometrické sinus zadaného úhlu v radiánech v určeném výrazu.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -30,11 +30,11 @@ SIN(<numeric_expr>)
   
 ## <a name="return-types"></a>Návratové typy
   
-  Vrátí hodnotu číselného výrazu.  
+  Vrátí číselný výraz.  
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad vypočítá `SIN` zadaného úhlu.  
+  Následující příklad vypočítá `SIN` zadaný úhel.  
   
 ```sql
 SELECT SIN(45.175643) AS sin  
@@ -48,7 +48,7 @@ SELECT SIN(45.175643) AS sin
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude index využívat.
+Tato systémová funkce nebude využívat index.
 
 ## <a name="next-steps"></a>Další kroky
 

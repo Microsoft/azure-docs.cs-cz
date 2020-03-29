@@ -1,61 +1,61 @@
 ---
 title: Ovládací prvky zabezpečení
-description: Kontrolní seznam předdefinovaných ovládacích prvků zabezpečení pro vyhodnocení Azure Resource Manager služby.
+description: Kontrolní seznam integrovaných ovládacích prvků zabezpečení pro vyhodnocení služby Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.openlocfilehash: d0a0625153e428a0d261e52d40b31ef5142eddfd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75485621"
 ---
-# <a name="security-controls-for-azure-resource-manager"></a>Ovládací prvky zabezpečení pro Azure Resource Manager
+# <a name="security-controls-for-azure-resource-manager"></a>Ovládací prvky zabezpečení pro Správce prostředků Azure
 
-Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Resource Manager.
+Tento článek dokumentuje ovládací prvky zabezpečení integrované do Správce prostředků Azure.
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
 ## <a name="data-protection"></a>Ochrana dat
 
-| Řízení zabezpečení | Ano/Ne | Poznámky |
+| Ovládací prvek zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Ano |  |
+| Šifrování na straně serveru v klidovém stavu: Klíče spravované společností Microsoft | Ano |  |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | HTTPS/TLS. |
-| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Nevztahuje se | Azure Resource Manager neukládá žádný zákaznický obsah, řídí se jenom data. |
-| Šifrování na úrovni sloupce (Azure Data Services)| Ano | |
+| Šifrování na straně serveru v klidovém stavu: klíče spravované zákazníkem (BYOK) | Není dostupné. | Azure Resource Manager ukládá žádný zákaznický obsah, pouze data řízení. |
+| Šifrování na úrovni sloupců (Azure Data Services)| Ano | |
 | Zašifrovaná volání rozhraní API| Ano | |
 
 ## <a name="network"></a>Network (Síť)
 
-| Řízení zabezpečení | Ano/Ne | Poznámky |
+| Ovládací prvek zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
 | Podpora koncového bodu služby| Ne | |
-| Podpora vkládání virtuální sítě| Ano | |
-| Izolace sítě a podpora brány firewall| Ne |  |
+| Podpora vstřikování virtuální sítě| Ano | |
+| Podpora izolace sítě a brány firewall| Ne |  |
 | Podpora vynuceného tunelování| Ne |  |
 
-## <a name="monitoring--logging"></a>Monitorování protokolování &
+## <a name="monitoring--logging"></a>Sledování & protokolování
 
-| Řízení zabezpečení | Ano/Ne | Poznámky|
+| Ovládací prvek zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ne | |
-| Protokolování a audit roviny řízení a správy| Ano | Protokoly aktivit zpřístupňují všechny operace zápisu (PUT, POST, DELETE) provedené na vašich prostředcích. v tématu [zobrazení protokolů aktivit můžete auditovat akce u prostředků](view-activity-logs.md). |
-| Protokolování a audit roviny dat| Nevztahuje se | |
+| Podpora monitorování Azure (analýza protokolů, přehledy aplikací atd.)| Ne | |
+| Protokolování a audit roviny řízení a správy| Ano | Protokoly aktivit vystavit všechny operace zápisu (PUT, POST, DELETE) provádí na vašich prostředků; Viz [Zobrazení protokolů aktivit k auditování akcí na zdrojích](view-activity-logs.md). |
+| Protokolování a audit roviny dat| Není dostupné. | |
 
 ## <a name="identity"></a>Identita
 
-| Řízení zabezpečení | Ano/Ne | Poznámky|
+| Ovládací prvek zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Ověření| Ano | Na základě [Azure Active Directory](/azure/active-directory) .|
+| Ověřování| Ano | Na základě [služby Azure Active Directory.](/azure/active-directory)|
 | Autorizace| Ano | |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
-| Řízení zabezpečení | Ano/Ne | Poznámky|
+| Ovládací prvek zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano |  |
+| Podpora správy konfigurace (správa verzí konfigurace atd.)| Ano |  |
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [integrovaných kontrolních prvcích zabezpečení napříč službami Azure](../../security/fundamentals/security-controls.md).
+- Přečtěte si další informace o [integrovaných ovládacích prvcích zabezpečení napříč službami Azure](../../security/fundamentals/security-controls.md).

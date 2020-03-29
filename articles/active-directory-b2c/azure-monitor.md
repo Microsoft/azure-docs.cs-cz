@@ -1,7 +1,7 @@
 ---
-title: Monitorování Azure AD B2C s využitím Azure Monitor
+title: Monitorování Azure AD B2C pomocí Azure Monitoru
 titleSuffix: Azure AD B2C
-description: Naučte se protokolovat události Azure AD B2C pomocí Azure Monitor pomocí delegované správy prostředků.
+description: Zjistěte, jak protokolovat události Azure AD B2C pomocí Azure Monitor pomocí správy delegovaných prostředků.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,82 +12,82 @@ ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
 ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78190054"
 ---
-# <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C s využitím Azure Monitor
+# <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C pomocí Azure Monitoru
 
-Pomocí Azure Monitor můžete směrovat přihlašování Azure Active Directory B2C (Azure AD B2C) a protokoly [auditování](view-audit-logs.md) do různých řešení monitorování. Protokoly můžete uchovávat pro dlouhodobé použití nebo integraci s nástroji SIEM (Security Information and Event Management) třetích stran, abyste získali přehled o vašem prostředí.
+Azure Monitor slouží ke směrování přihlášení azure active directory B2C (Azure AD B2C) a [auditování](view-audit-logs.md) protokolů do různých řešení monitorování. Protokoly můžete uchovávat pro dlouhodobé použití nebo integrovat s nástroji pro správu informací o zabezpečení a událostí (SIEM) třetích stran, abyste získali přehled o vašem prostředí.
 
 Události protokolu můžete směrovat do:
 
-* Účet služby Azure [Storage](../storage/blobs/storage-blobs-introduction.md).
-* [Centrum událostí](../event-hubs/event-hubs-about.md) Azure (a integrujte je s vašimi logickými instancemi Splunk a sumo).
-* [Pracovní prostor Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) (pro analýzu dat, vytváření řídicích panelů a upozornění na konkrétní události).
+* Účet [úložiště](../storage/blobs/storage-blobs-introduction.md)Azure .
+* Centrum [událostí](../event-hubs/event-hubs-about.md) Azure (a integrovat s instancemi Splunk a Sumo Logic).
+* Pracovní [prostor Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) (k analýze dat, vytváření řídicích panelů a upozornění na konkrétní události).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v tomto článku nasadíte Azure Resource Manager šablonu pomocí modulu Azure PowerShell.
+Postup v tomto článku nasadíte pomocí modulu Azure PowerShell pomocí šablony Azure ResourceShell.
 
-* Verze [modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 6.13.1 nebo vyšší
+* [Modul Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) verze 6.13.1 nebo vyšší
 
-Můžete také použít [Azure Cloud Shell](https://shell.azure.com), která zahrnuje nejnovější verzi modulu Azure PowerShell.
+Můžete taky použít [Azure Cloud Shell](https://shell.azure.com), který obsahuje nejnovější verzi modulu Azure PowerShell.
 
-## <a name="delegated-resource-management"></a>Delegovaná Správa prostředků
+## <a name="delegated-resource-management"></a>Správa delegovaných prostředků
 
-Azure AD B2C využívá [Azure Active Directory monitorování](../active-directory/reports-monitoring/overview-monitoring.md). Pokud chcete povolit *nastavení diagnostiky* v Azure Active Directory v rámci vašeho tenanta Azure AD B2C, použijte [delegovanou správu prostředků](../lighthouse/concepts/azure-delegated-resource-management.md).
+Azure AD B2C využívá [monitorování Služby Azure Active Directory](../active-directory/reports-monitoring/overview-monitoring.md). Chcete-li povolit *nastavení diagnostiky* ve službě Azure Active Directory v rámci klienta Azure AD B2C, použijte [delegovanou správu prostředků](../lighthouse/concepts/azure-delegated-resource-management.md).
 
-Uživatele nebo skupinu autorizujete v adresáři Azure AD B2C ( **poskytovatel služeb**), abyste nakonfigurovali instanci Azure monitor v rámci tenanta, který obsahuje vaše předplatné Azure ( **zákazníka**). Pokud chcete vytvořit autorizaci, nasadíte šablonu [Azure Resource Manager](../azure-resource-manager/index.yml) do svého tenanta služby Azure AD obsahujícího předplatné. Následující části vás provedou procesem.
+Autorizace uživatele nebo skupiny v adresáři Azure AD B2C **(poskytovatel služeb)** ke konfiguraci instance Azure Monitor v rámci klienta, který obsahuje vaše předplatné Azure **(zákazník).** Chcete-li vytvořit autorizaci, nasadíte šablonu [Azure Resource Manager](../azure-resource-manager/index.yml) do vašeho tenanta Azure AD obsahujícího předplatné. Následující části vás provedou procesem.
 
-## <a name="create-or-choose-resource-group"></a>Vytvořit nebo zvolit skupinu prostředků
+## <a name="create-or-choose-resource-group"></a>Vytvořit nebo vybrat skupinu prostředků
 
-Jedná se o skupinu prostředků, která obsahuje cílový účet úložiště Azure, centrum událostí nebo Log Analytics pracovní prostor pro příjem dat z Azure Monitor. Název skupiny prostředků určíte při nasazení šablony Azure Resource Manager.
+Toto je skupina prostředků obsahující cílový účet úložiště Azure, centrum událostí nebo pracovní prostor Log Analytics pro příjem dat z Azure Monitoru. Název skupiny prostředků zadáte při nasazení šablony Azure Resource Manager.
 
-[Vytvořte skupinu prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) nebo vyberte existující v tenantovi Azure Active Directory (Azure AD), která obsahuje vaše předplatné Azure, *nikoli* adresář, který obsahuje vašeho tenanta Azure AD B2C.
+[Vytvořte skupinu prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) nebo zvolte existující v tenantovi Služby Azure Active Directory (Azure AD), který obsahuje vaše předplatné Azure, *ne* adresář, který obsahuje vašeho klienta Azure AD B2C.
 
-Tento příklad používá skupinu prostředků s názvem *Azure-AD-B2C-monitor* v oblasti *střed USA* .
+Tento příklad používá skupinu prostředků s názvem *azure-ad-b2c-monitor* v oblasti *centrální USA.*
 
-## <a name="delegate-resource-management"></a>Delegovat správu prostředků
+## <a name="delegate-resource-management"></a>Delegovat správu zdrojů
 
 Dále shromážděte následující informace:
 
-**ID adresáře** vašeho adresáře Azure AD B2C (označuje se také jako ID tenanta).
+**ID adresáře** vašeho adresáře Azure AD B2C (označované také jako ID klienta).
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako uživatel s rolí *Správce uživatelů* (nebo vyšší).
-1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
-1. Vyberte možnost **Azure Active Directory**, vyberte možnost **vlastnosti**.
-1. Poznamenejte si **ID adresáře**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/) jako uživatel s rolí *správce uživatele* (nebo vyšší).
+1. Vyberte ikonu **Directory + Subscription** na panelu nástrojů portálu a pak vyberte adresář, který obsahuje vašeho klienta Azure AD B2C.
+1. Vyberte **Azure Active Directory**, vyberte **Vlastnosti**.
+1. Zaznamenejte **ID adresáře**.
 
-**ID objektu** Azure AD B2C skupiny nebo uživatele, které chcete udělit oprávnění *přispěvatele* ke skupině prostředků, kterou jste vytvořili dříve v adresáři, který obsahuje vaše předplatné.
+**ID objektu** skupiny Azure AD B2C nebo uživatele, který chcete udělit *přispěvateli* oprávnění ke skupině prostředků, kterou jste vytvořili dříve v adresáři obsahujícím vaše předplatné.
 
-Pro usnadnění správy doporučujeme použít pro každou roli *skupiny* uživatelů Azure AD, což umožňuje přidat nebo odebrat jednotlivé uživatele do skupiny místo přiřazování oprávnění přímo tomuto uživateli. V tomto návodu přidáte uživatele.
+Chcete-li usnadnit správu, doporučujeme použít *skupiny* uživatelů Azure AD pro každou roli, což vám umožní přidat nebo odebrat jednotlivé uživatele do skupiny, nikoli přiřazovat oprávnění přímo tomuto uživateli. V tomto návodu přidáte uživatele.
 
-1. Pokud jste v Azure Portal stále vybrali **Azure Active Directory** , vyberte možnost **Uživatelé**a potom vyberte uživatele.
-1. Poznamenejte si **ID objektu**uživatele.
+1. Když **je služba Azure Active Directory** pořád vybraná na webu Azure Portal, vyberte **Uživatelé**a pak vyberte uživatele.
+1. Zaznamenejte **ID objektu**uživatele .
 
 ### <a name="create-an-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manageru
 
-Pokud chcete připojit klienta služby Azure AD ( **zákazníka**), vytvořte [šablonu Azure Resource Manager](../lighthouse/how-to/onboard-customer.md) pro vaši nabídku s následujícími informacemi. Hodnoty `mspOfferName` a `mspOfferDescription` se zobrazí při zobrazení podrobností nabídky na [stránce poskytovatelé služeb](../lighthouse/how-to/view-manage-service-providers.md) Azure Portal.
+Chcete-li napalubě klienta Azure AD **(zákazník),** vytvořte [šablonu Azure Resource Manager](../lighthouse/how-to/onboard-customer.md) pro vaši nabídku s následujícími informacemi. A `mspOfferName` `mspOfferDescription` hodnoty jsou viditelné při zobrazení podrobností o nabídce na [stránce zprostředkovatelé služeb](../lighthouse/how-to/view-manage-service-providers.md) na webu Azure Portal.
 
 | Pole   | Definice |
 |---------|------------|
-| `mspOfferName`                     | Název popisující tuto definici. Například *Azure AD B2C spravované služby*. Tato hodnota se zobrazí zákazníkovi jako název nabídky. |
-| `mspOfferDescription`              | Stručný popis vaší nabídky Například *povolí Azure monitor v Azure AD B2C*.|
-| `rgName`                           | Název skupiny prostředků, kterou jste v tenantovi Azure AD vytvořili dříve. Například *Azure-AD-B2C-monitor*. |
-| `managedByTenantId`                | **ID adresáře** vašeho tenanta Azure AD B2C (označuje se také jako ID tenanta). |
-| `authorizations.value.principalId` | **ID objektu** skupiny B2C nebo uživatele, který bude mít přístup k prostředkům v tomto předplatném Azure. Pro tento návod zadejte ID objektu uživatele, které jste si poznamenali dříve. |
+| `mspOfferName`                     | Název popisující tuto definici. Například *spravované služby Azure AD B2C*. Tato hodnota je zákazníkovi zobrazena jako název nabídky. |
+| `mspOfferDescription`              | Stručný popis vaší nabídky. Například *povolí Azure Monitor v Azure AD B2C*.|
+| `rgName`                           | Název skupiny prostředků, kterou vytvoříte dříve ve vašem tenantovi Azure AD. Například *azure-ad-b2c-monitor*. |
+| `managedByTenantId`                | **ID adresáře** vašeho klienta Azure AD B2C (označované také jako ID klienta). |
+| `authorizations.value.principalId` | **ID objektu** skupiny B2C nebo uživatele, který bude mít přístup k prostředkům v tomto předplatném Azure. Pro tento návod zadejte ID objektu uživatele, které jste zaznamenali dříve. |
 
-Stažení šablony Azure Resource Manager a souborů parametrů:
+Stáhněte si šablonu a soubory parametrů Azure Resource Manageru:
 
-- [rgDelegatedResourceManagement. JSON](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement. Parameters. JSON](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegovánoResourceManagement.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement.parameters.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
-Dále aktualizujte soubor parametrů s hodnotami, které jste si poznamenali dříve. Následující fragment kódu JSON ukazuje příklad souboru parametrů šablony Azure Resource Manager. Pro `authorizations.value.roleDefinitionId`použijte [předdefinovanou hodnotu role](../role-based-access-control/built-in-roles.md) *přispěvatele*`b24988ac-6180-42a0-ab88-20f7382dd24c`.
+Dále aktualizujte soubor parametrů s hodnotami, které jste zaznamenali dříve. Následující fragment JSON ukazuje příklad souboru parametrů šablony Azure Resource Manageru. V `authorizations.value.roleDefinitionId`případě , použijte [předdefinovanou](../role-based-access-control/built-in-roles.md) hodnotu `b24988ac-6180-42a0-ab88-20f7382dd24c`role pro *roli přispěvatele*.
 
 ```JSON
 {
@@ -119,29 +119,29 @@ Dále aktualizujte soubor parametrů s hodnotami, které jste si poznamenali dř
 }
 ```
 
-### <a name="deploy-the-azure-resource-manager-templates"></a>Nasazení šablon Azure Resource Manager
+### <a name="deploy-the-azure-resource-manager-templates"></a>Nasazení šablon Azure Resource Manageru
 
-Po aktualizaci souboru parametrů nasaďte šablonu Azure Resource Manager do tenanta Azure jako nasazení na úrovni předplatného. Vzhledem k tomu, že se jedná o nasazení na úrovni předplatného, nejde ho iniciovat v Azure Portal. Nasazení můžete nasadit pomocí modulu Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Níže je uvedena metoda Azure PowerShell.
+Po aktualizaci souboru parametrů nasaďte šablonu Azure Resource Manager u tenanta Azure jako nasazení na úrovni předplatného. Vzhledem k tomu, že se jedná o nasazení na úrovni předplatného, nelze jej inicializovat na webu Azure Portal. Můžete nasadit pomocí modulu Azure PowerShell nebo Azure CLI. Metoda Azure PowerShell je zobrazena níže.
 
-Přihlaste se k adresáři, který obsahuje vaše předplatné, pomocí [Connect-AzAccount](/powershell/azure/authenticate-azureps). Použijte příznak `-tenant` k vynucení ověřování do správného adresáře.
+Přihlaste se k adresáři obsahujícímu předplatné pomocí [služby Connect-AzAccount](/powershell/azure/authenticate-azureps). Pomocí `-tenant` příznaku vynuťte ověřování do správného adresáře.
 
 ```PowerShell
 Connect-AzAccount -tenant contoso.onmicrosoft.com
 ```
 
-Pomocí rutiny [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) můžete zobrazit seznam předplatných, ke kterým má aktuální účet přístup v TENANTOVI Azure AD. Poznamenejte si ID předplatného, které chcete zamítnout do svého tenanta Azure AD B2C.
+Pomocí rutiny [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) uveďte předplatná, ke kterým má mít přístup běžný účet v rámci klienta Azure AD. Zaznamenejte ID předplatného, které chcete promítnout do klienta Azure AD B2C.
 
 ```PowerShell
 Get-AzSubscription
 ```
 
-Potom přepněte do předplatného, které chcete zamítnout do tenanta Azure AD B2C:
+Dále přepněte na předplatné, které chcete promítnout do tenanta Azure AD B2C:
 
 ``` PowerShell
 Select-AzSubscription <subscription ID>
 ```
 
-Nakonec nasaďte šablonu Azure Resource Manager a soubory parametrů, které jste stáhli a aktualizovali dříve. Nahraďte hodnoty `Location`, `TemplateFile`a `TemplateParameterFile` odpovídajícím způsobem.
+Nakonec nasaďte šablonu a soubory parametrů Azure Resource Manageru, které jste stáhli a aktualizovali dříve. Odpovídajícím `Location`způsobem `TemplateFile`nahraďte hodnoty , a `TemplateParameterFile` hodnoty.
 
 ```PowerShell
 New-AzDeployment -Name "AzureADB2C" `
@@ -151,7 +151,7 @@ New-AzDeployment -Name "AzureADB2C" `
                  -Verbose
 ```
 
-Úspěšné nasazení šablony vytvoří výstup podobný následujícímu (výstup zkrácen pro zkrácení):
+Úspěšné nasazení šablony vytváří výstup podobný následujícímu (výstup zkrácen pro stručnost):
 
 ```Console
 PS /usr/csuser/clouddrive> New-AzDeployment -Name "AzureADB2C" `
@@ -191,60 +191,60 @@ Parameters              :
 ...
 ```
 
-Až šablonu nasadíte, může trvat několik minut, než se projekce prostředků dokončí. Než budete moct přejít k další části a vybrat předplatné, možná budete muset několik minut počkat (obvykle ne víc než pět).
+Po nasazení šablony může trvat několik minut, než se projekce prostředků dokončí. Možná budete muset počkat několik minut (obvykle ne více než pět) před přechodem na další část vybrat předplatné.
 
 ## <a name="select-your-subscription"></a>Vyberte své předplatné.
 
-Po nasazení šablony a dokončení projekce prostředku počkejte několik minut, přiřaďte své předplatné ke svému Azure AD B2C adresáři pomocí následujících kroků.
+Po nasazení šablony a čekali několik minut na dokončení projekce prostředků, přidružte své předplatné k adresáři Azure AD B2C s následujícími kroky.
 
-1. Pokud jste aktuálně přihlášení, **odhlaste** se z Azure Portal. Tato a následující krok se provádí za účelem aktualizace přihlašovacích údajů v relaci portálu.
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu správce Azure AD B2C.
-1. Na panelu nástrojů portálu vyberte ikonu **adresář + předplatné** .
+1. Pokud jste teď přihlášení, **odhlaste** se z webu Azure Portal. Tento a následující krok se provádí k aktualizaci přihlašovacích údajů v relaci portálu.
+1. Přihlaste se k [portálu Azure pomocí](https://portal.azure.com) svého účtu pro správu Azure AD B2C.
+1. Na panelu nástrojů portálu vyberte ikonu **Adresář + Odběr.**
 1. Vyberte adresář, který obsahuje vaše předplatné.
 
     ![Přepnout adresář](./media/azure-monitor/azure-monitor-portal-03-select-subscription.png)
-1. Ověřte, že jste vybrali správný adresář a předplatné. V tomto příkladu jsou vybrané všechny adresáře a odběry.
+1. Ověřte, zda jste vybrali správný adresář a předplatné. V tomto příkladu jsou vybrány všechny adresáře a odběry.
 
-    ![Všechny adresáře vybrané ve filtru předplatných adresářových &](./media/azure-monitor/azure-monitor-portal-04-subscriptions-selected.png)
+    ![Všechny adresáře vybrané ve filtru & odběr adresáře](./media/azure-monitor/azure-monitor-portal-04-subscriptions-selected.png)
 
 ## <a name="configure-diagnostic-settings"></a>Konfigurace nastavení diagnostiky
 
-Nastavení diagnostiky definují, kam se mají odesílat protokoly a metriky prostředku. Možné cíle:
+Nastavení diagnostiky definují, kam mají být odesílány protokoly a metriky pro prostředek. Možné destinace jsou:
 
 - [Účet služby Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md)
-- Řešení pro [centra událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
-- [Pracovní prostor služby Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md)
+- [Řešení event hubů.](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+- [Pracovní prostor Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md)
 
-Pokud jste to ještě neudělali, vytvořte ve skupině prostředků, kterou jste zadali v [šabloně Azure Resource Manager](#create-an-azure-resource-manager-template), instanci vybraného cílového typu.
+Pokud jste tak ještě neučinili, vytvořte instanci zvoleného cílového typu ve skupině prostředků, kterou jste zadali v [šabloně Azure Resource Manager](#create-an-azure-resource-manager-template).
 
-### <a name="create-diagnostic-settings"></a>Vytvořit nastavení diagnostiky
+### <a name="create-diagnostic-settings"></a>Vytvoření nastavení diagnostiky
 
-Jste připraveni [vytvořit nastavení diagnostiky](../active-directory/reports-monitoring/overview-monitoring.md) v Azure Portal.
+Jste připraveni [k vytvoření nastavení diagnostiky](../active-directory/reports-monitoring/overview-monitoring.md) na webu Azure Portal.
 
-Postup konfigurace nastavení monitorování pro Azure AD B2C protokoly aktivit:
+Konfigurace nastavení monitorování pro protokoly aktivit Azure AD B2C:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
-1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
-1. Vyberte **Azure Active Directory**
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Vyberte ikonu **Directory + Subscription** na panelu nástrojů portálu a pak vyberte adresář, který obsahuje vašeho klienta Azure AD B2C.
+1. Výběr **služby Azure Active Directory**
 1. V části **Monitorování** vyberte **Nastavení diagnostiky**.
-1. Pokud je u prostředku k dispozici existující nastavení, zobrazí se seznam nastavení, která jsou už nakonfigurovaná. Buď vyberte možnost **Přidat nastavení diagnostiky** a přidejte nové nastavení, nebo **upravte** nastavení a upravte stávající nastavení. Každé nastavení nemůže mít více než jeden z cílových typů..
+1. Pokud jsou v prostředku existující nastavení, zobrazí se již nakonfigurovaný seznam nastavení. Buď vyberte **Přidat diagnostické nastavení,** chcete-li přidat nové nastavení, nebo **Upravit** nastavení pro úpravu existujícího nastavení. Každé nastavení může mít maximálně jeden z jednotlivých typů cílů.
 
-    ![Podokno nastavení diagnostiky v Azure Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
+    ![Podokno nastavení diagnostiky na webu Azure Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
-1. Dejte nastavení název, pokud ho ještě nikdo nemá.
-1. Zaškrtněte políčko pro všechny cílové umístění pro odeslání protokolů. Vyberte **Konfigurovat** a určete jejich nastavení, jak je popsáno v následující tabulce.
+1. Zadejte název nastavení, pokud ho ještě nemá.
+1. Chcete-li protokoly odeslat, zaškrtněte políčko pro každý cíl. Vyberte **Konfigurovat,** chcete-li určit jejich nastavení, jak je popsáno v následující tabulce.
 
     | Nastavení | Popis |
     |:---|:---|
-    | Archivovat do účtu úložiště | Název účtu úložiště |
-    | Datový proud do centra událostí | Obor názvů, ve kterém se vytvoří centrum událostí (Pokud se jedná o vaše první přihlášení ke streamování protokolů) nebo streamování do služby (Pokud už existují prostředky streamující do tohoto oboru názvů do kategorie log).
-    | Odeslání do Log Analytics | Název pracovního prostoru |
+    | Archivovat v účtu úložiště | Název účtu úložiště. |
+    | Streamovat do centra událostí | Obor názvů, kde je centrum událostí vytvořeno (pokud se jedná o první protokoly streamování) nebo do datového proudu (pokud již existují prostředky, které jsou datovým proudem této kategorie protokolu do tohoto oboru názvů).
+    | Odeslání do Log Analytics | Název pracovního prostoru. |
 
 1. Vyberte **AuditLogs** a **SignInLogs**.
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o přidání a konfiguraci nastavení diagnostiky v Azure Monitor najdete v tématu [kurz: shromáždění a analýza protokolů prostředků z prostředku Azure](../azure-monitor/insights/monitor-azure-resource.md).
+Další informace o přidávání a konfiguraci diagnostických nastavení v Azure Monitoru najdete v [tématu Kurz: Shromažďování a analýza protokolů prostředků z prostředku Azure](../azure-monitor/insights/monitor-azure-resource.md).
 
-Informace o streamování protokolů služby Azure AD do centra událostí najdete v tématu [kurz: streamování Azure Active Directory protokoly do centra událostí Azure](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).
+Informace o streamování protokolů Azure AD do centra událostí najdete [v tématu Kurz: Streamování protokolů služby Azure Active Directory do centra událostí Azure](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).

@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus – vypršení platnosti zprávy
-description: Tento článek vysvětluje vypršení platnosti a dobu provozu Azure Service Busch zpráv. Po uplynutí tohoto termínu se zpráva už nedoručuje.
+description: Tento článek vysvětluje vypršení platnosti a čas pro spuštění zpráv Azure Service Bus. Po uplynutí této lhůty se zpráva již nedoručuje.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,77 +14,77 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: e86c92fa1cfb13929d5617502224f479709efdd3
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76756330"
 ---
 # <a name="message-expiration-time-to-live"></a>Vypršení platnosti zpráv (hodnota TTL)
 
-Datová část ve zprávě nebo příkaz nebo dotaz, který zpráva předává přijímači, je téměř vždy v souladu s některými formami konečného termínu vypršení platnosti na úrovni aplikace. Po uplynutí tohoto termínu se obsah už nedoručuje nebo požadovaná operace se už nespustí.
+Datová část ve zprávě nebo příkaz nebo dotaz, který zpráva předává příjemci, téměř vždy podléhá nějaké formě konečného termínu vypršení platnosti na úrovni aplikace. Po uplynutí této lhůty již není obsah doručen nebo požadovaná operace již není provedena.
 
-Pro vývojová a testovací prostředí, ve kterých jsou fronty a témata často používány v kontextu částečných spuštění aplikací nebo částí aplikace, je také žádoucí, aby byly automaticky uvolněny hromadné zkušební zprávy, aby mohl další testovací běh Spusťte čištění.
+Pro vývojová a testovací prostředí, ve kterých jsou fronty a témata často používány v kontextu částečných spuštění aplikací nebo částí aplikace, je také žádoucí, aby se automaticky shromažďovaly nevypozované testovací zprávy, aby mohl být další testovací běh začít čistit.
 
-Vypršení platnosti pro jednotlivé zprávy lze ovládat nastavením vlastnosti systému [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) , která určuje relativní dobu trvání. Vypršení platnosti se bude absolutní okamžitá, když je zpráva zařazená do fronty. V tomto okamžiku převezme vlastnost [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) hodnotu [(**EnqueuedTimeUtc** ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [ **TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). Nastavení TTL (Time-to-Live) u zprostředkovaných zpráv se nevynutilo, když neaktivně nenaslouchá žádní klienti.
+Vypršení platnosti pro každou jednotlivou zprávu lze řídit nastavením vlastnosti systému [TimeToLive,](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) která určuje relativní dobu trvání. Vypršení platnosti se stane absolutní okamžik, když je zpráva zařazena do fronty do entity. V té době [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) vlastnost přebírá hodnotu [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**).](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) Nastavení time-to-live (TTL) na zprostředkované zprávy není vynuceno, pokud nejsou žádní klienti aktivně naslouchání.
 
-Po **ExpiresAtUtc** Instant se zprávy stanou neoprávněnými pro načtení. Vypršení platnosti nemá vliv na zprávy, které jsou momentálně uzamčené pro doručení; Tyto zprávy jsou stále zpracovávány normálně. Pokud zámek vyprší nebo dojde k opuštění zprávy, bude vypršení platnosti platit okamžitě.
+Po **vypršení expiresAtUtc** instant, zprávy stanou nezpůsobilé pro načtení. Vypršení platnosti nemá vliv na zprávy, které jsou aktuálně uzamčeny pro doručení; tyto zprávy jsou stále zpracovávány normálně. Pokud vyprší platnost zámku nebo je zpráva opuštěna, vypršení platnosti se projeví okamžitě.
 
-I když je zpráva uzamčená, může být aplikace v držbě zprávy, jejíž platnost vypršela. Zda je aplikace ochotna pokračovat se zpracováním nebo se rozhodnete zrušit zprávu pro implementátora.
+Zatímco zpráva je pod zámkem, aplikace může být v držení zprávy, která vypršela. Zda je aplikace ochotna pokračovat ve zpracování nebo se rozhodne zprávu opustit, je na implementátorovi.
 
-## <a name="entity-level-expiration"></a>Vypršení platnosti úrovně entity
+## <a name="entity-level-expiration"></a>Vypršení platnosti na úrovni entity
 
-Všechny zprávy odeslané do fronty nebo tématu podléhají výchozímu vypršení platnosti, které je nastaveno na úrovni entity s vlastností [defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) a které lze také nastavit na portálu během vytváření a později upravit. Pro všechny zprávy odesílané do entity, kde [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) není explicitně nastavené, se použije výchozí doba platnosti. Výchozí hodnota vypršení platnosti funguje také jako strop pro hodnotu **TimeToLive** . Zprávy, které mají delší dobu **TimeToLive** , než je výchozí hodnota, se před zařazováním do fronty tiše upraví na hodnotu **defaultMessageTimeToLive** .
+Všechny zprávy odeslané do fronty nebo tématu podléhají výchozí vypršení platnosti, která je nastavena na úrovni entity s [výchozíVlastnostMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) a které lze také nastavit na portálu během vytváření a upravit později. Výchozí vypršení platnosti se používá pro všechny zprávy odeslané entitě, kde [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) není explicitně nastavena. Výchozí vypršení platnosti také funguje jako strop pro hodnotu **TimeToLive.** Zprávy, které mají delší expiraci **TimeToLive** než výchozí hodnota jsou tiše upraveny na výchozí Hodnotu **MessageTimeToLive** před zařazením do fronty.
 
 > [!NOTE]
-> Výchozí hodnota [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) pro zprostředkované zprávy je [TimeSpan. Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) , pokud není uvedeno jinak.
+> Výchozí hodnota [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) pro zprostředkovanou zprávu je [TimeSpan.Max,](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) pokud není zadán jinak.
 >
-> U entit zasílání zpráv (fronty a témata) je výchozí doba vypršení platnosti také [TimeSpan. Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) pro Service Bus úrovně Standard a Premium.  Pro úroveň Basic je výchozím časem vypršení platnosti 14 dní.
+> Pro zasílání zpráv entity (fronty a témata), výchozí čas vypršení platnosti je také [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) pro service bus standardní a úrovně premium.  Pro základní úroveň je výchozí doba vypršení platnosti 14 dní.
 
-Zprávy s vypršenou platností můžete volitelně přesunout do [fronty nedoručených](service-bus-dead-letter-queues.md) zpráv nastavením vlastnosti [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) nebo zaškrtnutím příslušného pole na portálu. Pokud je možnost ponecháno zakázaná, zprávy s vypršenou platností se vynechává. Zprávy s vypršenou platností přesunuté do fronty nedoručených zpráv je možné odlišit od jiných nedoručených zpráv vyhodnocením vlastnosti [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) , kterou zprostředkovatel ukládá v části vlastnosti uživatele. v tomto případě je hodnota [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) .
+Zprávy s ukončenou platností lze volitelně přesunout do [fronty nedoručených zpráv](service-bus-dead-letter-queues.md) nastavením vlastnosti [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) nebo zaškrtnutím příslušného políčka na portálu. Pokud je tato možnost zakázána, jsou zprávy s prošlou platností vynechány. Zprávy s prošlou platností přesunuté do fronty nedoručených zpráv lze odlišit od jiných nedoručených zpráv vyhodnocením [vlastnosti DeadletterReason,](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) kterou zprostředkovatel ukládá v části vlastností uživatele. hodnota je [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) v tomto případě.
 
-Ve výše uvedeném případě, kdy je zpráva chráněná před vypršením platnosti, a pokud je příznak nastaven na entitě, zpráva se přesune do fronty nedoručených zpráv, protože zámek je zrušený nebo vyprší jeho platnost. Není však přesunuta, je-li zpráva úspěšně vyrovnána, což pak předpokládá, že aplikace ji úspěšně zpracovala, a to i v případě nominálního vypršení platnosti.
+Ve výše uvedeném případě, ve kterém je zpráva chráněna před vypršením platnosti, zatímco pod zámkem a pokud je nastaven příznak na entitě, zpráva je přesunuta do fronty nedoručených zpráv jako zámek je opuštěnnebo vyprší. Však není přesunuta, pokud je zpráva úspěšně vyrovnána, což pak předpokládá, že aplikace úspěšně zpracována, navzdory nominální vypršení platnosti.
 
-Kombinací [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) a automatického (a transakčního) nedoručených zpráv o vypršení platnosti je cenný nástroj pro zajištění důvěry v tom, zda je pro zpracování v konečném termínu načtena úloha předaná obslužné rutině nebo skupině obslužných rutin pod konečným termínem.
+Kombinace [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) a automatické (a transakční) dead-lettering po vypršení platnosti jsou cenným nástrojem pro stanovení důvěry v tom, zda je úloha poskytnutá obslužné rutině nebo skupině obslužných rutin v termínu načtena ke zpracování po dosažení konečného termínu.
 
-Představte si například web, který potřebuje spolehlivě spouštět úlohy v back-endu s omezeným škálováním a občas se v nich vyskytují špičky provozu nebo se má v případě dostupnosti tohoto back-endu izolované. V běžném případě obslužná rutina na straně serveru pro odeslaná uživatelská data předává informace do fronty a následně obdrží odpověď potvrzující úspěšné zpracování transakce do fronty odpovědí. Pokud existuje špička provozu a obslužná rutina back-endu nemůže zpracovat své nevyřízené položky v čase, úlohy s vypršenou platností se vrátí do fronty nedoručených zpráv. Interaktivní uživatel může obdržet oznámení o tom, že požadovaná operace bude trvat trochu déle než obvykle, a požadavek je pak možné umístit do jiné fronty pro cestu zpracování, kde je konečný výsledek zpracování odeslán uživateli e-mailem. 
+Zvažte například web, který potřebuje spolehlivě provádět úlohy v back-endu omezeném škálovacím měřítkem a který občas dochází k špičkám provozu nebo chce být izolován proti epizodám dostupnosti tohoto back-endu. V běžném případě obslužná rutina na straně serveru pro odeslaná uživatelská data odešle informace do fronty a následně obdrží odpověď potvrzující úspěšné zpracování transakce do fronty odpovědí. Pokud je špička přenosu a obslužná rutina back-endu nemůže zpracovat své nevyřízené položky v čase, jsou vráceny úlohy s ukončenou platností ve frontě nedoručených zpráv. Interaktivní uživatel může být upozorněn, že požadovaná operace bude trvat o něco déle než obvykle a požadavek pak může být umístěn na jinou frontu pro cestu zpracování, kde je konečný výsledek zpracování odeslán uživateli e-mailem. 
 
 
-## <a name="temporary-entities"></a>Dočasné entity
+## <a name="temporary-entities"></a>Dočasné subjekty
 
-Service Bus fronty, témata a odběry je možné vytvořit jako dočasné entity, které se automaticky odeberou, když se v zadaném časovém období nepoužijí.
+Fronty, témata a odběry služby Service Bus lze vytvořit jako dočasné entity, které jsou automaticky odebrány, pokud nebyly použity po určitou dobu.
  
-Automatické čištění je užitečné ve scénářích vývoje a testování, ve kterých se entity vytvářejí dynamicky a nejsou vyčištěny po použití, kvůli nějakému přerušení testu nebo běhu ladění. Je také užitečné, když aplikace vytvoří dynamické entity, jako je například fronta odpovědí, pro příjem odpovědí zpět do procesu webového serveru nebo do jiného poměrně krátkodobého nenáročného objektu, kde je obtížné je spolehlivě spolehlivě vyčistit, když objekt instance zmizí.
+Automatické vyčištění je užitečné ve scénářích vývoje a testování, ve kterých jsou entity vytvářeny dynamicky a nejsou po použití vyčištěny z důvodu přerušení testu nebo ladění. Je také užitečné, když aplikace vytvoří dynamické entity, jako je například fronta odpovědí, pro příjem odpovědí zpět do procesu webového serveru nebo do jiného objektu s relativně krátkou životností, kde je obtížné tyto entity spolehlivě vyčistit, když objekt instance zmizí.
 
-Tato funkce je povolená pomocí vlastnosti [autoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues) . Tato vlastnost je nastavená na dobu, po kterou musí být entita nečinná (nepoužívá se), než se automaticky odstraní. Minimální hodnota této vlastnosti je 5.
+Tato funkce je povolena pomocí vlastnosti [autoDeleteOnIdle.](/azure/templates/microsoft.servicebus/namespaces/queues) Tato vlastnost je nastavena na dobu, po kterou musí být entita nečinná (nevyužitá), než bude automaticky odstraněna. Minimální hodnota pro tuto vlastnost je 5.
  
-Vlastnost **autoDeleteOnIdle** musí být nastavena prostřednictvím operace Azure Resource Manager nebo prostřednictvím [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) rozhraní API klienta .NET Framework. Nemůžete ho nastavit na portálu.
+Vlastnost **autoDeleteOnIdle** musí být nastavena prostřednictvím operace Azure Resource Manager nebo prostřednictvím rozhraní API client [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) klienta .NET Framework. Nemůžete to nastavit na portálu.
 
-## <a name="idleness"></a>Nečinnost
+## <a name="idleness"></a>Nečinnosti
 
-Tady je postup, který se považuje za nečinnost entit (fronty, témata a odběry):
+Co považovalo za nečinnost entit (fronty, témata a odběry):
 
 - Fronty
-    - Žádná odeslání  
-    - Žádná přijetí  
-    - Ve frontě nejsou žádné aktualizace.  
+    - Žádné odeslání  
+    - Žádné příjemy  
+    - Žádné aktualizace fronty  
     - Žádné naplánované zprávy  
-    - Bez procházení/prohlížení 
+    - Žádné procházení/náhled 
 - Témata  
-    - Žádná odeslání  
+    - Žádné odeslání  
     - Žádné aktualizace tématu  
     - Žádné naplánované zprávy 
 - Předplatná
-    - Žádná přijetí  
+    - Žádné příjemy  
     - Žádné aktualizace předplatného  
-    - K předplatnému se nepřidala žádná nová pravidla.  
-    - Bez procházení/prohlížení  
+    - Do předplatného nebyla přidána žádná nová pravidla.  
+    - Žádné procházení/náhled  
  
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
+Další informace o zasílání zpráv služby Service Bus najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

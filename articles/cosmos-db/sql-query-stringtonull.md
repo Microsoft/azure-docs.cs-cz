@@ -1,6 +1,6 @@
 ---
-title: StringToNull v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o StringToNull funkcí SQL systému v Azure Cosmos DB.
+title: StringToNull v dotazovacím jazyce Azure Cosmos DB
+description: Další informace o funkci systému SQL StringToNull v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 7e17547f88465103b61eabec04978ea806ffa2c9
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78296435"
 ---
 # <a name="stringtonull-azure-cosmos-db"></a>StringToNull (Azure Cosmos DB)
- Vrátí výraz, který je přeložen na hodnotu null. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
+ Vrátí výraz přeložený na hodnotu null. Pokud výraz nelze přeložit, vrátí undefined.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,7 +26,7 @@ StringToNull(<str_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *str_expr*  
-   Je řetězcový výraz, který má být analyzován jako výraz s hodnotou null.
+   Je řetězec výraz, který má být analyzován jako prázdný výraz.
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,11 +34,11 @@ StringToNull(<str_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, jak se `StringToNull` chová napříč různými typy. 
+  Následující příklad ukazuje, jak `StringToNull` se chová napříč různými typy. 
 
-Níže jsou uvedeny příklady s platným vstupem.
+Následují příklady s platným vstupem.
 
- Prázdný znak je povolen pouze před nebo za "null".
+ Mezery jsou povoleny pouze před nebo za "null".
 
 ```sql
 SELECT 
@@ -55,7 +55,7 @@ SELECT
 
 Následují příklady s neplatným vstupem.
 
-Hodnota null rozlišuje velká a malá písmena a musí být zapsána bez malých písmen, tj. "null".
+Null rozlišuje malá a malá písmena a musí být zapsána se všemi znaky s nižšími písmeny, tj.
 
 ```sql
 SELECT    
@@ -69,7 +69,7 @@ SELECT
 [{}]
 ```  
 
-Předaný výraz se analyzuje jako výraz s hodnotou null. Tyto vstupy se nevyhodnotí na typ null a proto se vrátí nedefinované.
+Předaný výraz bude analyzován jako prázdný výraz; tyto vstupy nevyhodnocují na typ null a proto vrátit undefined.
 
 ```sql
 SELECT    
@@ -87,10 +87,10 @@ SELECT
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude index využívat.
+Tato systémová funkce nebude využívat index.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
+- [Funkce řetězce Azure Cosmos DB](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

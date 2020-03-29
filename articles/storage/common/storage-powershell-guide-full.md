@@ -1,6 +1,6 @@
 ---
-title: Použití Azure PowerShell s Azure Storage | Microsoft Docs
-description: Naučte se používat rutiny Azure PowerShell pro Azure Storage.
+title: Používání Azure PowerShellu s Azure Storage | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak používat rutiny Azure PowerShellu pro Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,38 +9,38 @@ ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: d2404ee58f5f44fbe5625f267e6d1c504d0bd237
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465093"
 ---
-# <a name="using-azure-powershell-with-azure-storage"></a>Použití Azure PowerShellu s Azure Storage
+# <a name="using-azure-powershell-with-azure-storage"></a>Použití Azure Powershell s Azure Storage
 
-Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V případě Azure Storage tyto rutiny spadají do dvou kategorií – rovina ovládacího prvku a rovina dat. Rutiny řídicí roviny se používají ke správě účtu úložiště – k vytváření účtů úložiště, nastavení vlastností, odstraňování účtů úložiště, otočení přístupových klíčů atd. Rutiny roviny dat se používají ke správě dat uložených *v* účtu úložiště. Například nahrávání objektů blob, vytváření sdílených složek a přidávání zpráv do fronty.
+Azure PowerShell se používá k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. Pro Azure Storage tyto rutiny spadají do dvou kategorií – rovina ovládacího prvku a rovina dat. Rutiny roviny ovládacího prvku se používají ke správě účtu úložiště – k vytvoření účtů úložiště, nastavení vlastností, odstranění účtů úložiště, otočení přístupových klíčů a tak dále. Rutiny roviny dat se používají ke správě dat uložených *v* účtu úložiště. Například nahrávání objektů BLOB, vytváření sdílených složek a přidávání zpráv do fronty.
 
-Tento článek s návody popisuje běžné operace pomocí rutin roviny správy ke správě účtů úložiště. Získáte informace o těchto tématech:
+Tento článek s návody popisuje běžné operace pomocí rutin roviny správy pro správu účtů úložiště. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Výpis účtů úložiště
-> * Získat odkaz na existující účet úložiště
-> * Vytvoření účtu úložiště
+> * Seznam účtů úložiště
+> * Získání odkazu na existující účet úložiště
+> * vytvořit účet úložiště
 > * Nastavení vlastností účtu úložiště
-> * Načtení a opětovné vygenerování přístupových klíčů
+> * Načtení a obnovení přístupových klíčů
 > * Ochrana přístupu k účtu úložiště
-> * Povolit Analýza úložiště
+> * Povolení analýzy úložiště
 
-Tento článek obsahuje odkazy na několik dalších článků prostředí PowerShell pro úložiště, jako je například povolení a přístup k Analýza úložiště, použití rutin pro rovinu dat a přístup k nezávislým cloudům Azure, jako jsou například čínské cloudy, německé cloudy a státní správa. Cloudu.
+Tento článek obsahuje odkazy na několik dalších článků Prostředí PowerShell pro úložiště, jako je například povolení a přístup k storage Analytics, jak používat rutiny roviny dat a jak získat přístup k nezávislým cloudům Azure, jako je China Cloud, Německý cloud a Správa. Cloud.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Toto cvičení vyžaduje Azure PowerShell modul AZ verze 0,7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
+Toto cvičení vyžaduje modul Azure PowerShell Az verze 0.7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
-Pro toto cvičení můžete zadat příkazy do normálního okna PowerShellu, nebo můžete použít [Integrované skriptovací prostředí (ISE) Windows PowerShellu](/powershell/scripting/components/ise/exploring-the-windows-powershell-ise) a zadat příkazy do editoru a při přechodu k příkladům otestovat jeden nebo víc příkazů najednou. Můžete zvýraznit řádky, které chcete spustit, a klikněte na spustit vybrané a stačí spustit tyto příkazy.
+Pro toto cvičení můžete zadat příkazy do běžného okna prostředí PowerShell nebo můžete použít [prostředí ISE (Windows PowerShell Integrated Scripting Environment)](/powershell/scripting/components/ise/exploring-the-windows-powershell-ise) a zadat příkazy do editoru a potom otestovat jeden nebo více příkazů najednou při procházení příkladů. Můžete zvýraznit řádky, které chcete spustit, a kliknutím na Spustit vybrané tyto příkazy spustit.
 
-Další informace o účtech úložiště najdete v tématu [Úvod do úložiště](storage-introduction.md) a [o účtech Azure Storage](storage-create-storage-account.md).
+Další informace o účtech úložiště najdete [v tématu Úvod do úložiště](storage-introduction.md) a O [účtech úložiště Azure](storage-create-storage-account.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -50,21 +50,21 @@ Přihlaste se ke svému předplatnému Azure pomocí příkazu `Connect-AzAccoun
 Connect-AzAccount
 ```
 
-## <a name="list-the-storage-accounts-in-the-subscription"></a>Výpis účtů úložiště v předplatném
+## <a name="list-the-storage-accounts-in-the-subscription"></a>Seznam účtů úložiště v předplatném
 
-Spuštěním rutiny [Get-AzStorageAccount](/powershell/module/az.storage/Get-azStorageAccount) načtěte seznam účtů úložiště v aktuálním předplatném.
+Spusťte rutinu [Get-AzStorageAccount](/powershell/module/az.storage/Get-azStorageAccount) a načtěte seznam účtů úložiště v aktuálním předplatném.
 
 ```powershell
 Get-AzStorageAccount | Select StorageAccountName, Location
 ```
 
-## <a name="get-a-reference-to-a-storage-account"></a>Získat odkaz na účet úložiště
+## <a name="get-a-reference-to-a-storage-account"></a>Získání odkazu na účet úložiště
 
-Dál potřebujete odkaz na účet úložiště. Můžete buď vytvořit nový účet úložiště, nebo získat odkaz na existující účet úložiště. V následující části jsou uvedeny obě metody.
+Dále potřebujete odkaz na účet úložiště. Můžete buď vytvořit nový účet úložiště, nebo získat odkaz na existující účet úložiště. Následující část ukazuje obě metody.
 
-### <a name="use-an-existing-storage-account"></a>Použít existující účet úložiště
+### <a name="use-an-existing-storage-account"></a>Použití existujícího účtu úložiště
 
-Pokud chcete načíst existující účet úložiště, potřebujete název skupiny prostředků a název účtu úložiště. Nastavte proměnné pro tato dvě pole a pak použijte rutinu [Get-AzStorageAccount](/powershell/module/az.storage/Get-azStorageAccount) .
+Chcete-li načíst existující účet úložiště, potřebujete název skupiny prostředků a název účtu úložiště. Nastavte proměnné pro tato dvě pole a pak použijte rutinu [Get-AzStorageAccount.](/powershell/module/az.storage/Get-azStorageAccount)
 
 ```powershell
 $resourceGroup = "myexistingresourcegroup"
@@ -74,11 +74,11 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName
 ```
 
-Nyní máte $storageAccount, který odkazuje na existující účet úložiště.
+Teď máte $storageAccount, který odkazuje na existující účet úložiště.
 
-### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Následující skript ukazuje, jak vytvořit účet úložiště pro obecné účely pomocí [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Po vytvoření účtu načtěte jeho kontext, který se dá použít v dalších příkazech namísto zadání ověřování u každého volání.
+Následující skript ukazuje, jak vytvořit účet úložiště pro obecné účely pomocí [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Po vytvoření účtu načtěte jeho kontext, který lze použít v následujících příkazech, nikoli v zadání ověřování při každém volání.
 
 ```powershell
 # Get list of locations and select one.
@@ -103,43 +103,43 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
 $ctx = $storageAccount.Context
 ```
 
-Skript používá následující rutiny PowerShellu:
+Skript používá následující rutiny prostředí PowerShell:
 
-*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) --načte seznam platných umístění. V příkladu se používá `eastus` pro umístění.
+*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) -- načte seznam platných umístění. Příklad používá `eastus` pro umístění.
 
-*   [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) --vytvoří novou skupinu prostředků. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují vaše prostředky Azure. Pozdrav se nazývá `teststoragerg`.
+*   [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) – vytvoří novou skupinu prostředků. Skupina prostředků je logický kontejner, do kterého se vaše prostředky Azure nasazují a spravují. Naše se `teststoragerg`jmenuje .
 
-*   [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) --vytvoří účet úložiště. V příkladu se používá `testpshstorage`.
+*   [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) -- vytvoří účet úložiště. Příklad používá `testpshstorage`.
 
-Název SKU označuje typ replikace pro účet úložiště, například LRS (místně redundantní úložiště). Další informace o replikaci najdete v tématu [Azure Storage replikace](storage-redundancy.md).
+Název skladové položky označuje typ replikace pro účet úložiště, například LRS (Místně redundantní úložiště). Další informace o replikaci najdete v [tématu Replikace úložiště Azure](storage-redundancy.md).
 
 > [!IMPORTANT]
-> Název vašeho účtu úložiště musí být v rámci Azure jedinečný a musí být malými písmeny. Zásady vytváření názvů a omezení najdete v tématu [pojmenování kontejnerů, objektů BLOB a metadat a odkazování](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)na ně.
+> Název vašeho účtu úložiště musí být jedinečný v rámci Azure a musí být malá písmena. Zásady vytváření názvů a omezení najdete v [tématu Pojmenování a odkazování kontejnerů, objektů BLOB a metadat .](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)
 >
 
-Teď máte k dispozici nový účet úložiště a odkaz na něj.
+Teď máte nový účet úložiště a odkaz na něj.
 
 ## <a name="manage-the-storage-account"></a>Správa účtu úložiště
 
-Teď, když máte odkaz na nový účet úložiště nebo existující účet úložiště, v následující části jsou uvedené některé příkazy, které můžete použít ke správě svého účtu úložiště.
+Teď, když máte odkaz na nový účet úložiště nebo existující účet úložiště, následující část zobrazuje některé příkazy, které můžete použít ke správě účtu úložiště.
 
 ### <a name="storage-account-properties"></a>Vlastnosti účtu úložiště
 
-Pokud chcete změnit nastavení pro účet úložiště, použijte [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount). I když nemůžete změnit umístění účtu úložiště nebo skupinu prostředků, ve které se nachází, můžete změnit mnoho dalších vlastností. V následující části jsou uvedené některé vlastnosti, které můžete změnit pomocí PowerShellu.
+Chcete-li změnit nastavení účtu úložiště, použijte [set-azstorageaccount](/powershell/module/az.storage/set-azstorageaccount). Zatímco nelze změnit umístění účtu úložiště nebo skupiny prostředků, ve kterém se nachází, můžete změnit mnoho dalších vlastností. V následujícím seznamu jsou uvedeny některé vlastnosti, které můžete změnit pomocí prostředí PowerShell.
 
 * **Vlastní doména** přiřazená k účtu úložiště.
 
-* **Značky** přiřazené k účtu úložiště Značky se často používají ke kategorizaci prostředků pro účely fakturace.
+* **Značky** přiřazené k účtu úložiště. Značky se často používají ke kategorizaci prostředků pro účely fakturace.
 
-* **SKU** je nastavení replikace pro účet úložiště, například LRS pro místně redundantní úložiště. Můžete například změnit ze standardních\_LRS na standard\_GRS nebo Standard\_RAGRS. Všimněte si, že nemůžete změnit úrovně Standard\_ZRS, Standard\_GZRS, Standard\_RAGZRS nebo Premium\_LRS na jiné SKU nebo změnit jiné SKU na tyto.
+* Skladová **položka** je nastavení replikace pro účet úložiště, jako je například LRS pro místně redundantní úložiště. Můžete například změnit ze\_standardního\_LRS na\_standardní GRS nebo standardní RAGRS. Všimněte si, že\_nelze změnit\_standardní ZRS,\_Standardní GZRS, Standardní RAGZRS nebo Premium\_LRS na jiné sku, nebo změnit jiné skusto na tyto.
 
-* **Úroveň přístupu** pro účty BLOB Storage. Hodnota pro úroveň přístupu je nastavená na **horkou** nebo **studenou**a umožňuje vám snížit náklady tím, že vyberete úroveň přístupu, která se zarovnává s tím, jak používáte účet úložiště. Další informace najdete v tématu [horké, studené a archivní úrovně úložiště](../blobs/storage-blob-storage-tiers.md).
+* **Úroveň přístupu** pro účty úložiště objektů Blob. Hodnota pro úroveň přístupu je nastavena na **horkou** nebo **studenou**a umožňuje minimalizovat náklady výběrem úrovně přístupu, která je v souladu s tím, jak používáte účet úložiště. Další informace naleznete v tématu [Horké, studené a archivní úrovně úložiště](../blobs/storage-blob-storage-tiers.md).
 
-* Povoluje jenom přenosy protokolu HTTPS.
+* Povolte pouze přenos HTTPS.
 
 ### <a name="manage-the-access-keys"></a>Správa přístupových klíčů
 
-Účet Azure Storage obsahuje dva klíče účtu. K načtení klíčů použijte [příkaz Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey). Tento příklad načte první klíč. K načtení druhé použijte `Value[1]` místo `Value[0]`.
+Účet Azure Storage je dodáván se dvěma klíči účtu. Chcete-li načíst klíče, použijte [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey). Tento příklad načte první klíč. Chcete-li načíst `Value[1]` druhý, `Value[0]`použijte místo .
 
 ```powershell
 $storageAccountKey = `
@@ -148,7 +148,7 @@ $storageAccountKey = `
     -Name $storageAccountName).Value[0]
 ```
 
-K opětovnému vygenerování klíče použijte [New-AzStorageAccountKey](/powershell/module/az.Storage/New-azStorageAccountKey).
+Chcete-li klíč znovu vygenerovat, použijte [klávesu New-AzStorageAccountKey](/powershell/module/az.Storage/New-azStorageAccountKey).
 
 ```powershell
 New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
@@ -156,100 +156,100 @@ New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
   -KeyName key1
 ```
 
-Pokud chcete znovu vygenerovat druhý klíč, místo `key1`použijte `key2` jako název klíče.
+Chcete-li znovu vygenerovat druhý klíč, použijte `key2` jako název klíče namísto `key1`.
 
-Znovu vygenerujte jeden z vašich klíčů a potom ho znovu načtěte, abyste viděli novou hodnotu.
+Znovu vygenerujte jeden z klíčů a pak jej znovu načtěte, abyste viděli novou hodnotu.
 
 > [!NOTE]
-> Před obnovením klíče pro produkční účet úložiště byste měli provést pečlivé plánování. Opětovné generování jednoho nebo obou klíčů zruší platnost přístupu pro žádnou aplikaci pomocí klíče, který se znovu vygeneroval. Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](storage-account-keys-manage.md).
+> Před obnovením klíče pro účet produkčního úložiště byste měli pečlivě plánovat. Obnovení jednoho nebo obou klíčů zruší platnost přístupu pro všechny aplikace pomocí klíče, který byl obnoven. Další informace naleznete v [tématu Správa přístupových klíčů účtu úložiště](storage-account-keys-manage.md).
 
 
 ### <a name="delete-a-storage-account"></a>Odstranění účtu úložiště
 
-Pokud chcete odstranit účet úložiště, použijte [Remove-AzStorageAccount](/powershell/module/az.storage/Remove-azStorageAccount).
+Chcete-li odstranit účet úložiště, použijte [příkaz Remove-AzStorageAccount](/powershell/module/az.storage/Remove-azStorageAccount).
 
 ```powershell
 Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccountName
 ```
 
 > [!IMPORTANT]
-> Při odstranění účtu úložiště se odstraní také všechny prostředky uložené v účtu. Pokud omylem odstraníte účet, zavolejte podporu hned a otevřete lístek pro obnovení účtu úložiště. Obnovení vašich dat není zaručené, ale někdy funguje. Nevytvářejte nový účet úložiště se stejným názvem jako starý, dokud se nevyřeší lístek podpory.
+> Když odstraníte účet úložiště, odstraní se také všechny prostředky uložené v účtu. Pokud omylem odstraníte účet, okamžitě zavolejte na podporu a otevřete lístek pro obnovení účtu úložiště. Obnovení dat není zaručeno, ale někdy funguje. Nevytvářejte nový účet úložiště se stejným názvem jako starý, dokud nebude vyřešen lístek podpory.
 >
 
-### <a name="protect-your-storage-account-using-vnets-and-firewalls"></a>Ochrana účtu úložiště pomocí virtuální sítě a bran firewall
+### <a name="protect-your-storage-account-using-vnets-and-firewalls"></a>Ochrana účtu úložiště pomocí virtuálních sítí a firewallů
 
-Ve výchozím nastavení jsou všechny účty úložiště dostupné ze všech sítí, které mají přístup k Internetu. Můžete ale nakonfigurovat Síťová pravidla tak, aby povolovala přístup k účtu úložiště jenom aplikacím z konkrétních virtuálních sítí. Další informace najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](storage-network-security.md).
+Ve výchozím nastavení jsou všechny účty úložiště přístupné ze všech sítí, které mají přístup k Internetu. Můžete však nakonfigurovat pravidla sítě tak, aby umožňovala přístup k účtu úložiště pouze aplikacím z určitých virtuálních sítí. Další informace najdete [v tématu Konfigurace bran firewall úložišť Azure a virtuálních sítí](storage-network-security.md).
 
-Tento článek ukazuje, jak spravovat tato nastavení pomocí následujících rutin PowerShellu:
+Článek ukazuje, jak spravovat tato nastavení pomocí následujících rutin prostředí PowerShell:
 * [Add-AzStorageAccountNetworkRule](/powershell/module/az.Storage/Add-azStorageAccountNetworkRule)
 * [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
-* [Remove-AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
+* [Odebrat-AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
 
-## <a name="use-storage-analytics"></a>Použití služby Storage Analytics
+## <a name="use-storage-analytics"></a>Použití analýzy úložiště
 
-[Analýza úložiště Azure](storage-analytics.md) sestávají z [Analýza úložiště metrik](/rest/api/storageservices/about-storage-analytics-metrics) a [protokolování analýza úložiště](/rest/api/storageservices/about-storage-analytics-logging).
+[Azure Storage Analytics](storage-analytics.md) se skládá z [metrik storage analytics](/rest/api/storageservices/about-storage-analytics-metrics) a [protokolování analýzy úložiště](/rest/api/storageservices/about-storage-analytics-logging).
 
-**Metriky analýza úložiště** se používají ke shromažďování metrik pro účty služby Azure Storage, které můžete použít k monitorování stavu účtu úložiště. Metriky lze povolit pro objekty blob, soubory, tabulky a fronty.
+**Metriky Storage Analytics** se používají ke shromažďování metrik pro vaše účty úložiště Azure, které můžete použít ke sledování stavu účtu úložiště. Metriky lze povolit pro objekty BLOB, soubory, tabulky a fronty.
 
-**Analýza úložiště protokolování** probíhá na straně serveru a umožňuje zaznamenávat podrobnosti o úspěšných i neúspěšných požadavcích na váš účet úložiště. Tyto protokoly umožňují zobrazit podrobné informace o operacích čtení, zápisu a odstraňování na vašich tabulkách, frontách a objektech blob a také důvody pro neúspěšné požadavky. Pro soubory Azure není protokolování k dispozici.
+**Protokolování služby Storage Analytics** probíhá na straně serveru a umožňuje zaznamenávat podrobnosti o úspěšných i neúspěšných požadavcích na váš účet úložiště. Tyto protokoly umožňují zobrazit podrobnosti o operacích čtení, zápisu a odstraňování proti vašim tabulkám, frontám a objektům BLOB, stejně jako důvody neúspěšných požadavků. Protokolování není k dispozici pro soubory Azure.
 
-Monitorování můžete nakonfigurovat pomocí [Azure Portal](https://portal.azure.com), PowerShellu nebo programově pomocí klientské knihovny pro úložiště.
+Monitorování můžete nakonfigurovat pomocí [portálu Azure](https://portal.azure.com), PowerShellu nebo programově pomocí knihovny klienta úložiště.
 
 > [!NOTE]
-> Můžete povolit minutové analýzy pomocí prostředí PowerShell. Tato možnost není k dispozici na portálu.
+> Pomocí prostředí PowerShell můžete povolit analýzu minut. Tato funkce není k dispozici na portálu.
 >
 
-* Informace o tom, jak povolit a zobrazit data metrik úložiště pomocí PowerShellu, najdete v tématu [metriky služby Storage Analytics](storage-analytics-metrics.md).
+* Informace o povolení a zobrazení dat metrik úložiště pomocí PowerShellu najdete v [tématu Metriky analýzy úložiště](storage-analytics-metrics.md).
 
-* Informace o tom, jak povolit a načíst data protokolování úložiště pomocí PowerShellu, najdete v tématu [Postup povolení protokolování úložiště pomocí prostředí PowerShell](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data) a [hledání dat protokolu protokolování úložiště](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data).
+* Informace o povolení a načtení dat protokolování úložiště pomocí PowerShellu najdete v tématu [Povolení protokolování úložiště pomocí prostředí PowerShell](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data) a [Hledání dat protokolu protokolování úložiště](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data).
 
-* Podrobné informace o použití metrik úložiště a protokolování úložiště k řešení problémů s úložištěm najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
+* Podrobné informace o používání metrik úložiště a protokolování úložiště k řešení problémů s úložištěm najdete v tématu [Monitorování, diagnostika a řešení potíží s úložištěm Microsoft Azure](storage-monitoring-diagnosing-troubleshooting.md).
 
 ## <a name="manage-the-data-in-the-storage-account"></a>Správa dat v účtu úložiště
 
-Teď, když jste se seznámili s tím, jak spravovat účet úložiště pomocí PowerShellu, můžete pomocí následujících článků zjistit, jak získat přístup k datovým objektům v účtu úložiště.
+Teď, když pochopíte, jak spravovat účet úložiště pomocí PowerShellu, můžete použít následující články, abyste zjistili, jak získat přístup k datovým objektům v účtu úložiště.
 
-* [Jak spravovat objekty BLOB pomocí PowerShellu](../blobs/storage-how-to-use-blobs-powershell.md)
+* [Správa objektů BLOB pomocí Prostředí PowerShell](../blobs/storage-how-to-use-blobs-powershell.md)
 * [Jak spravovat soubory pomocí PowerShellu](../files/storage-how-to-use-files-powershell.md)
 * [Správa front pomocí PowerShellu](../queues/storage-powershell-how-to-use-queues.md)
-* [Provádění operací Azure Table Storage pomocí PowerShellu](../../storage/tables/table-storage-how-to-use-powershell.md)
+* [Provádění operací úložiště azure table pomocí PowerShellu](../../storage/tables/table-storage-how-to-use-powershell.md)
 
-Azure Cosmos DB rozhraní API pro tabulky poskytuje prémiové funkce pro úložiště tabulek, jako je globální distribuce klíč, čtení a zápisy s nízkou latencí, automatické sekundární indexování a vyhrazená propustnost.
+Azure Cosmos DB Table API poskytuje prémiové funkce pro úložiště tabulek, jako je globální distribuce na klíč, čtení a zápisy s nízkou latencí, automatické sekundární indexování a vyhrazená propustnost.
 
-* Další informace najdete v tématu [Azure Cosmos DB rozhraní API pro tabulky](../../cosmos-db/table-introduction.md).
+* Další informace naleznete v tématu [Azure Cosmos DB Table API](../../cosmos-db/table-introduction.md).
 
 ## <a name="independent-cloud-deployments-of-azure"></a>Nezávislá cloudová nasazení Azure
 
-Většina lidí používá ke globálnímu nasazení Azure veřejný cloud Azure. Existují také některá nezávislá nasazení Microsoft Azure z důvodů svrchovanosti a tak dále. Tato nezávislá nasazení se označují jako "prostředí". K dispozici jsou tato prostředí:
+Většina lidí používá Azure Public Cloud pro své globální nasazení Azure. Existují také některé nezávislé nasazení Microsoft Azure z důvodu suverenity a tak dále. Tato nezávislá nasazení se označují jako "prostředí". Toto jsou dostupná prostředí:
 
 * [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
-* [Azure Čína 21Vianet Cloud provozovaný společností 21Vianet v Číně](http://www.windowsazure.cn/)
-* [Cloud pro Azure němčina](../../germany/germany-welcome.md)
+* [Azure China 21Vianet Cloud provozovaný společností 21Vianet v Číně](http://www.windowsazure.cn/)
+* [Německý cloud Azure](../../germany/germany-welcome.md)
 
-Informace o tom, jak získat přístup k těmto cloudům a jejich úložišti pomocí PowerShellu, najdete v tématu [Správa úložiště v nezávislých cloudech Azure pomocí PowerShellu](storage-powershell-independent-clouds.md).
+Informace o tom, jak získat přístup k těmto cloudům a jejich úložišti pomocí PowerShellu, najdete [v tématu Správa úložiště v cloudech nezávislých pro Azure pomocí PowerShellu](storage-powershell-independent-clouds.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud jste pro toto cvičení vytvořili novou skupinu prostředků a účet úložiště, může yous odebrat všechny prostředky, které jste vytvořili, odebráním skupiny prostředků. Tím se odstraní také všechny prostředky, které skupina obsahuje. V takovém případě se odebere účet úložiště, který je vytvořený, a skupinu prostředků.
+Pokud jste pro toto cvičení vytvořili novou skupinu prostředků a účet úložiště, můžete odebrat všechny prostředky, které jste vytvořili odebráním skupiny prostředků. Tím se odstraní také všechny prostředky, které skupina obsahuje. V takovém případě odebere vytvořený účet úložiště a samotnou skupinu prostředků.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek s návody popisuje běžné operace pomocí rutin roviny správy ke správě účtů úložiště. Naučili jste se tyto postupy:
+Tento článek s návody popisuje běžné operace pomocí rutin roviny správy pro správu účtů úložiště. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Výpis účtů úložiště
-> * Získat odkaz na existující účet úložiště
-> * Vytvoření účtu úložiště
+> * Seznam účtů úložiště
+> * Získání odkazu na existující účet úložiště
+> * vytvořit účet úložiště
 > * Nastavení vlastností účtu úložiště
-> * Načtení a opětovné vygenerování přístupových klíčů
+> * Načtení a obnovení přístupových klíčů
 > * Ochrana přístupu k účtu úložiště
-> * Povolit Analýza úložiště
+> * Povolení analýzy úložiště
 
-V tomto článku najdete také odkazy na několik dalších článků, jako je třeba Správa datových objektů, povolení Analýza úložiště a přístup k nezávislým cloudům Azure, jako jsou například čínské cloudy, německé cloudy a státní Cloud. Tady je několik dalších souvisejících článků a prostředků pro referenci:
+Tento článek také poskytl odkazy na několik dalších článků, například jak spravovat datové objekty, jak povolit analýzu úložiště a jak získat přístup k nezávislým cloudům Azure, jako je China Cloud, German Cloud a Government Cloud. Zde jsou některé další související články a zdroje pro referenci:
 
-* [Rutiny PowerShellu pro řízení Azure Storage roviny](/powershell/module/az.storage/)
-* [Azure Storage rutiny PowerShellu pro rovinu dat](/powershell/module/azure.storage/)
-* [Reference k prostředí Windows PowerShell](/powershell/scripting/overview)
+* [Rutiny PowerShellu pro ovládací prvek Azure Storage](/powershell/module/az.storage/)
+* [Rutiny Prostředí PowerShell pro datové roviny Azure Storage](/powershell/module/azure.storage/)
+* [Referenční informace k Windows PowerShellu](/powershell/scripting/overview)

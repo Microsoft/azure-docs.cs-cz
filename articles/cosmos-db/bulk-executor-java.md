@@ -1,6 +1,6 @@
 ---
-title: Použití hromadného vykonavatele Java Library v Azure Cosmos DB k provádění hromadných operací importu a aktualizace
-description: Hromadný import a aktualizace Azure Cosmos DBch dokumentů pomocí hromadné prováděcí knihovny Java
+title: Použití knihovny Java hromadného vykonavatele v Azure Cosmos DB k provádění operací hromadného importu a aktualizace
+description: Hromadný import a aktualizace dokumentů Azure Cosmos DB pomocí knihovny Java hromadného vykonavatele
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -10,50 +10,50 @@ ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: bf2a2385b3129ddf24ede7f6d851701186b0e33c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445708"
 ---
-# <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Java prováděcí modul hromadného budou provádět hromadné operace s daty služby Azure Cosmos DB
+# <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Bulk Executor Java k provádění hromadných operací s daty služby Azure Cosmos DB
 
-Tento kurz obsahuje pokyny k používání knihovny Java prováděcí modul hromadného rozhraní Azure Cosmos DB importovat a aktualizovat dokumenty Azure Cosmos DB. Další informace o hromadně prováděcí modul knihovny a jak vám může pomoct využít mimořádně velkou propustnost a úložiště, najdete v článku [hromadně přehled knihovny prováděcí modul](bulk-executor-overview.md) článku. V tomto kurzu vytvoříte aplikaci Java, která generuje náhodné dokumenty a hromadně importuje do kontejneru Azure Cosmos. Po naimportování pak hromadně aktualizovat některé vlastnosti dokumentu. 
+Tento kurz obsahuje pokyny k použití knihovny Java hromadného vykonavatele služby Azure Cosmos DB k importu a aktualizaci dokumentů Azure Cosmos DB. Další informace o knihovně hromadného vykonavatele a o tom, jak vám pomáhá využít masivní propustnost a úložiště, najdete v článku [přehled knihovny hromadného vykonavatele.](bulk-executor-overview.md) V tomto kurzu vytvoříte java aplikaci, která generuje náhodné dokumenty a jsou hromadně importovány do kontejneru Azure Cosmos. Po importu budete hromadně aktualizovat některé vlastnosti dokumentu. 
 
-V současné době je knihovna hromadných prováděcích modulů podporovaná jenom pomocí Azure Cosmos DB SQL API a účtů rozhraní API Gremlin. Tento článek popisuje, jak používat hromadnou prováděcí knihovnu Java s účty rozhraní SQL API. Další informace o použití knihovny hromadné prováděcí modul .NET pomocí rozhraní Gremlin API, najdete v článku [provádět hromadné operace v rozhraní Gremlin API služby Azure Cosmos DB](bulk-executor-graph-dotnet.md).
+V současné době je knihovna hromadného prováděcího modulu podporovaná jenom účty Azure Cosmos DB SQL API a Gremlin API. Tento článek popisuje, jak používat hromadnou knihovnu Java vykonavatele s účty rozhraní SQL API. Informace o použití hromadné hostovětní ho knihovny .NET s rozhraním Gremlin API najdete [v tématu provádění hromadných operací v rozhraní API Azure Cosmos DB Gremlin](bulk-executor-graph-dotnet.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.  
+* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) než začnete.  
 
-* Můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. Nebo můžete použít [emulátor Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) s koncovým bodem `https://localhost:8081`. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).  
+* Azure [Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, a to zdarma a závazků. Nebo můžete použít [Emulátor Azure Cosmos](https://docs.microsoft.com/azure/cosmos-db/local-emulator) DB `https://localhost:8081` s koncovým bodem. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).  
 
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)  
   - Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.  
 
   - Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
 
-* [Stáhněte](https://maven.apache.org/download.cgi) a [nainstalujte](https://maven.apache.org/install.html) binární archiv [Maven](https://maven.apache.org/).  
+* [Stažení](https://maven.apache.org/download.cgi) a [instalace](https://maven.apache.org/install.html) binárního archivu [Maven](https://maven.apache.org/)  
   
   - Na Ubuntu můžete Maven nainstalovat spuštěním příkazu `apt-get install maven`.
 
-* Vytvořte Azure Cosmos DB účet rozhraní SQL API pomocí postupu popsaného v části [vytvoření databázového účtu](create-sql-api-java.md#create-a-database-account) v článku rychlý Start pro Java.
+* Vytvořte účet Azure Cosmos DB SQL API pomocí kroků popsaných v části [vytvořit databázový účet](create-sql-api-java.md#create-a-database-account) v článku rychlého startu java.
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-Teď přejděme k práci s kódem stažením ukázkové aplikace v Javě z Githubu. Tato aplikace provádí hromadné operace s daty služby Azure Cosmos DB. Klonování aplikace, otevřete příkazový řádek, přejděte do adresáře, kam chcete zkopírovat aplikace a spusťte následující příkaz:
+Nyní přepneme na práci s kódem stažením ukázkové java aplikace z GitHubu. Tato aplikace provádí hromadné operace na datech Azure Cosmos DB. Chcete-li aplikaci klonovat, otevřete příkazový řádek, přejděte do adresáře, do kterého chcete aplikaci zkopírovat, a spusťte následující příkaz:
 
 ```
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
-Naklonované úložiště obsahuje dvě ukázky "hromadný import" a "bulkupdate", "\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor" složkou. Aplikace "hromadný import" generuje náhodné dokumenty a naimportuje je do služby Azure Cosmos DB. Aplikace "bulkupdate" aktualizuje některé dokumenty ve službě Azure Cosmos DB. V následujících částech Podíváme se kód v každém z těchto ukázkových aplikací. 
+Klonované úložiště obsahuje dva ukázky "bulkimport" a "bulkupdate" vzhledem ke složce "\azure-cosmosdb-bulkexecutor-java-get-started\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor". Aplikace "bulkimport" generuje náhodné dokumenty a importuje je do Azure Cosmos DB. Aplikace "bulkupdate" aktualizuje některé dokumenty v Azure Cosmos DB. V dalších částech zkontrolujeme kód v každé z těchto ukázkových aplikací. 
 
-## <a name="bulk-import-data-to-azure-cosmos-db"></a>Hromadné import dat do služby Azure Cosmos DB
+## <a name="bulk-import-data-to-azure-cosmos-db"></a>Hromadná data importu do Azure Cosmos DB
 
-1. Azure Cosmos DB připojovací řetězce jsou číst jako argumenty a přiřazen do proměnné definované v souboru CmdLineConfiguration.java.  
+1. Připojovací řetězce Azure Cosmos DB se čtou jako argumenty a přiřazují se k proměnným definovaným v souboru CmdLineConfiguration.java.  
 
-2. Vedle objektu DocumentClient je inicializována pomocí následujících příkazů:  
+2. Dále DocumentClient objekt je inicializován pomocí následujících příkazů:  
 
    ```java
    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
@@ -65,7 +65,7 @@ Naklonované úložiště obsahuje dvě ukázky "hromadný import" a "bulkupdate
       ConsistencyLevel.Session)
    ```
 
-3. DocumentBulkExecutor objekt je inicializován s hodnotami vysoké opakování pro doba čekání a omezuje požadavky. A pak jsou nastaveny na hodnotu 0 pro předání řízení zahlcení DocumentBulkExecutor po dobu jeho existence.  
+3. DocumentBulkExecutor objekt je inicializován s vysokými hodnotami opakování pro čekací doby a omezené požadavky. A pak jsou nastaveny na 0 předat řízení přetížení DocumentBulkExecutor po dobu jeho životnosti.  
 
    ```java
    // Set client's retry options high for initialization
@@ -88,12 +88,12 @@ Naklonované úložiště obsahuje dvě ukázky "hromadný import" a "bulkupdate
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
    ```
 
-4. Zavolejte rozhraní API pro vyvolání, které generuje náhodné dokumenty pro hromadnou import do kontejneru Azure Cosmos. Konfigurace příkazový řádek v souboru CmdLineConfiguration.java můžete nakonfigurovat.
+4. Volání importAll rozhraní API, které generuje náhodné dokumenty pro hromadný import do kontejneru Azure Cosmos. Konfigurace příkazového řádku můžete konfigurovat v souboru CmdLineConfiguration.java.
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
    ```
-   Rozhraní API hromadného importu přijímá kolekce dokumentů, serializací JSON a má následující syntaxi, další podrobnosti naleznete [dokumentace k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
+   Rozhraní API pro hromadný import přijímá kolekci serializovaných dokumentů JSON a má následující syntaxi, další podrobnosti naleznete v [dokumentaci k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
 
    ```java
    public BulkImportResponse importAll(
@@ -103,43 +103,43 @@ Naklonované úložiště obsahuje dvě ukázky "hromadný import" a "bulkupdate
         Integer maxConcurrencyPerPartitionRange) throws DocumentClientException;   
    ```
 
-   Metoda hodnotu importAll přijímá následující parametry:
+   Metoda importAll přijímá následující parametry:
  
    |**Parametr**  |**Popis**  |
    |---------|---------|
-   |isUpsert    |   Příznak, který chcete povolit upsert dokumenty. Pokud dokument s daným ID již existuje, se aktualizuje.  |
-   |disableAutomaticIdGeneration     |   Příznak, který chcete zakázat automatické generování ID. Ve výchozím nastavení, je nastavena na hodnotu true.   |
-   |maxConcurrencyPerPartitionRange    |  Maximální stupeň souběžnosti na rozsah klíče oddílu. Výchozí hodnota je 20.  |
+   |isUpsert    |   Příznak povolit upsert dokumentů. Pokud dokument s daným ID již existuje, aktualizuje se.  |
+   |disableAutomatickéIdGeneration     |   Příznak zakázat automatické generování ID. Ve výchozím nastavení je nastavena na hodnotu true.   |
+   |maxConcurrencyPerPartitionRange    |  Maximální stupeň souběžnosti na rozsah klíčů oddílu. Výchozí hodnota je 20.  |
 
-   **Hromadný import definice objektu odpovědi** výsledek hromadný import volání rozhraní API obsahuje následující dvě metody get:
+   **Definice objektu odpovědi hromadného importu** Výsledek volání rozhraní API hromadného importu obsahuje následující metody get:
 
    |**Parametr**  |**Popis**  |
    |---------|---------|
-   |int getNumberOfDocumentsImported()  |   Celkový počet dokumentů, které byly úspěšně naimportovány z dokumentů zadaný pro hromadného importu volání rozhraní API.      |
-   |dvojité getTotalRequestUnitsConsumed()   |  Jednotky celkový počet žádostí (RU) využívaný hromadného importu volání rozhraní API.       |
-   |Doba trvání getTotalTimeTaken()   |    Celková doba, za kterou hromadný import volání rozhraní API k dokončení provádění.     |
-   |\<vypsat výjimku > GetErrors () |  Získá seznam chyb, pokud některé dokumenty ze služby batch, zadaný do hromadného importu se nepodařilo získat vložit volání rozhraní API.       |
-   |Seznam\<objektů > getBadInputDocuments ()  |    Seznam chybný formát dokumenty, které nebyly úspěšně naimportovány hromadně importovat volání rozhraní API. Uživatel musí opravit vrácených dokumentů a zkuste import zopakovat. Dokumenty ve formátu chybný obsahovat dokumenty, jejichž ID hodnota není řetězec (datový typ null nebo jakékoli jiné se považuje za neplatný).     |
+   |int getNumberOfDocumentsImported()  |   Celkový počet dokumentů, které byly úspěšně importovány z dokumentů dodaných do volání rozhraní API hromadného importu.      |
+   |double getTotalRequestUnitsConsumed()   |  Celkový počet jednotek požadavku (RU) spotřebovaných voláním rozhraní API hromadného importu.       |
+   |Doba trvání getTotalTimeTaken()   |    Celková doba, kterou volání rozhraní API hromadného importu trvalo dokončení provádění.     |
+   |Výjimka seznamu\<> getErrors() |  Získá seznam chyb, pokud některé dokumenty z dávky dodané do hromadného importu volání rozhraní API se nepodařilo vložit.       |
+   |Objekt\<seznamu> getBadInputDocuments()  |    Seznam dokumentů chybného formátu, které nebyly úspěšně importovány v volání rozhraní API hromadného importu. Uživatel by měl opravit vrácené dokumenty a opakovat import. Chybně formátované dokumenty zahrnují dokumenty, jejichž hodnota ID není řetězec (null nebo jakýkoli jiný datový typ je považován za neplatný).     |
 
-5. Až budete mít hromadného importu aplikace připravené, sestavení pomocí příkazu 'mvn čisté balíčku' nástroj příkazového řádku ze zdroje. Tento příkaz vygeneruje v cílové složce soubor jar:  
+5. Po připravení aplikace hromadného importu vytvořte nástroj příkazového řádku ze zdroje pomocí příkazu "mvn clean package". Tento příkaz generuje soubor jar v cílové složce:  
 
    ```java
    mvn clean package
    ```
 
-6. Po vygenerování závislosti cílů, můžete vyvolat programu pro import aplikace hromadně pomocí následujícího příkazu:  
+6. Po vygenerování cílových závislostí můžete vyvolat aplikaci hromadného importu pomocí následujícího příkazu:  
 
    ```java
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB’s endpoint>*  -masterKey *<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
-   Programu pro import hromadné vytvoří novou databázi a kolekci s názvem databáze, název kolekce a propustnost hodnoty zadané v souboru App.config. 
+   Velkoobjemový importér vytvoří novou databázi a kolekci s názvem databáze, názvem kolekce a hodnotami propustnosti zadanými v souboru App.config. 
 
-## <a name="bulk-update-data-in-azure-cosmos-db"></a>Hromadné aktualizace dat ve službě Azure Cosmos DB
+## <a name="bulk-update-data-in-azure-cosmos-db"></a>Data hromadné aktualizace v Azure Cosmos DB
 
-Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumenty. V tomto příkladu bude nastavena na novou hodnotu pole název a popis pole odebrat z existujících dokumentů. Operace aktualizace úplnou sadu podporovaných polí naleznete v tématu [dokumentace k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor). 
+Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync API. V tomto příkladu nastavíte pole Název na novou hodnotu a odeberete pole Popis z existujících dokladů. Úplnou sadu podporovaných operací aktualizace polí naleznete v [dokumentaci k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor). 
 
-1. Definuje aktualizace položek spolu s odpovídající operace aktualizace pole. V tomto příkladu použijete SetUpdateOperation aktualizovat pole s názvem a UnsetUpdateOperation odebrání pole Popis všechny dokumenty. Můžete také provádět jiné operace jako přírůstek pole dokumentu podle konkrétní hodnoty, nasdílení změn určité hodnoty do pole nebo odebrat konkrétní hodnoty z pole. Další informace o různých způsobech hromadné aktualizace rozhraní API poskytuje, najdete v článku [dokumentace k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor).  
+1. Definuje položky aktualizace spolu s odpovídajícími operacemi aktualizace polí. V tomto příkladu použijete SetUpdateOperation k aktualizaci pole Název a UnsetUpdateOperation k odebrání pole Description ze všech dokumentů. Můžete také provádět další operace, jako je zvýšení pole dokumentu o určitou hodnotu, nabízení určitých hodnot do pole nebo odebrání určité hodnoty z pole pole. Další informace o různých metodách poskytovaných rozhraním API pro hromadnou aktualizaci naleznete v [dokumentaci k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor).  
 
    ```java
    SetUpdateOperation<String> nameUpdate = new SetUpdateOperation<>("Name","UpdatedDocValue");
@@ -155,13 +155,13 @@ Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumen
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
 
-2. Zavolejte rozhraní updateAll API, které generuje náhodné dokumenty, které se pak hromadně importují do kontejneru Azure Cosmos. Můžete nakonfigurovat příkazového řádku konfigurace mají být předány v CmdLineConfiguration.java souboru.
+2. Volání updateAll rozhraní API, které generuje náhodné dokumenty, které mají být hromadně importovány do kontejneru Azure Cosmos. Konfigurace příkazového řádku můžete nakonfigurovat tak, aby byly předány v souboru CmdLineConfiguration.java.
 
    ```java
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
    ```
 
-   Hromadná aktualizace rozhraní API přijímá kolekci položek, které chcete aktualizovat. Každá položka aktualizace určuje seznam operací aktualizace pole mají být provedeny pro dokument určený ID a hodnotu klíče oddílu. Další podrobnosti najdete v tématu [dokumentace k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
+   Rozhraní API hromadné aktualizace přijímá kolekci položek, které mají být aktualizovány. Každá položka aktualizace určuje seznam operací aktualizace polí, které mají být provedeny na dokumentu označeném ID a hodnotou klíče oddílu. Další podrobnosti naleznete v [dokumentaci](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)k rozhraní API :
 
    ```java
    public BulkUpdateResponse updateAll(
@@ -169,28 +169,28 @@ Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumen
         Integer maxConcurrencyPerPartitionRange) throws DocumentClientException;
    ```
 
-   UpdateAll – metoda přijímá následující parametry:
+   Metoda updateAll přijímá následující parametry:
 
    |**Parametr** |**Popis** |
    |---------|---------|
-   |maxConcurrencyPerPartitionRange   |  Maximální stupeň souběžnosti na rozsah klíče oddílu. Výchozí hodnota je 20.  |
+   |maxConcurrencyPerPartitionRange   |  Maximální stupeň souběžnosti na rozsah klíčů oddílu. Výchozí hodnota je 20.  |
  
-   **Hromadný import definice objektu odpovědi** výsledek hromadný import volání rozhraní API obsahuje následující dvě metody get:
+   **Definice objektu odpovědi hromadného importu** Výsledek volání rozhraní API hromadného importu obsahuje následující metody get:
 
    |**Parametr** |**Popis**  |
    |---------|---------|
-   |int getNumberOfDocumentsUpdated()  |   Celkový počet dokumentů, které byly úspěšně aktualizovány mimo dokumenty zadaný pro hromadné aktualizace volání rozhraní API.      |
-   |dvojité getTotalRequestUnitsConsumed() |  Jednotky celkový počet žádostí (RU) využívaný hromadné aktualizace volání rozhraní API.       |
-   |Doba trvání getTotalTimeTaken()  |   Celková doba, za kterou hromadného aktualizujte volání rozhraní API k dokončení provádění.      |
-   |\<vypsat výjimku > GetErrors ()   |    Získá seznam chyb, pokud hromadné aktualizace volání rozhraní API se nepodařilo získat vloží některé dokumenty ze služby batch.      |
+   |int getNumberOfDocumentsUpdated()  |   Celkový počet dokumentů, které byly úspěšně aktualizovány z dokumentů dodaných do volání rozhraní API hromadné aktualizace.      |
+   |double getTotalRequestUnitsConsumed() |  Celkový počet jednotek požadavku (RU) spotřebovaných voláním rozhraní API hromadné aktualizace.       |
+   |Doba trvání getTotalTimeTaken()  |   Celková doba, kterou volání rozhraní API hromadné aktualizace dokončení provádění.      |
+   |Výjimka seznamu\<> getErrors()   |    Získá seznam chyb, pokud některé dokumenty z dávky dodané do volání rozhraní API hromadné aktualizace se nepodařilo vložit.      |
 
-3. Až budete mít hromadné aktualizace aplikace připravené, sestavení pomocí příkazu 'mvn čisté balíčku' nástroj příkazového řádku ze zdroje. Tento příkaz vygeneruje v cílové složce soubor jar:  
+3. Po vytvoření aplikace pro hromadnou aktualizaci vytvořte nástroj příkazového řádku ze zdroje pomocí příkazu "mvn clean package". Tento příkaz generuje soubor jar v cílové složce:  
 
    ```
    mvn clean package
    ```
 
-4. Po vygenerování závislosti cílů, můžete vyvolat hromadné aktualizace aplikace pomocí následujícího příkazu:
+4. Po vygenerování cílových závislostí můžete vyvolat aplikaci hromadné aktualizace pomocí následujícího příkazu:
 
    ```
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB’s endpoint>* -masterKey **<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
@@ -198,20 +198,20 @@ Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumen
 
 ## <a name="performance-tips"></a>Tipy pro zvýšení výkonu 
 
-Zvažte následující body pro zajištění lepšího výkonu při použití hromadné prováděcí modul knihovny:
+Při použití knihovny hromadného vykonavatele zvažte následující body pro lepší výkon:
 
-* Pro zajištění nejlepšího výkonu spusťte aplikaci z virtuálního počítače Azure ve stejné oblasti jako oblast zápisu účtu Cosmos DB.  
+* Pokud máte co nejlepší výkon, spusťte aplikaci z virtuálního počítače Azure ve stejné oblasti jako oblast zápisu účtu Cosmos DB.  
 * Pro dosažení vyšší propustnost:  
 
-   * Velikost haldy JVM nastavena na hodnotu dostatečně velký, aby jakýkoli problém paměti při zpracování velkého množství dokumentů. Navržená velikost haldy: maximální počet (3GB, 3 * sizeof (všechny dokumenty předaný k hromadnému importu rozhraní API v jedné dávce)).  
-   * Existuje předzpracování času, které získáte vyšší propustnost při provádění operace hromadného s velkým množstvím dokumentů. Proto pokud chcete importovat 10 000 000 dokumentů, zprovoznění hromadný import 10krát na 10 hromadné dokumentů každý o velikosti 1 000 000 je vhodnější srovnání se spouštěním hromadný import 100krát na 100 hromadné dokumentů všech velikostí 100 000 dokumentů.  
+   * Nastavte velikost haldy JVM na dostatečně velké číslo, aby se zabránilo jakémukoli problému s pamětí při zpracování velkého počtu dokumentů. Doporučená velikost haldy: max (3 GB, 3 * sizeof (všechny dokumenty předané do rozhraní API hromadného importu v jedné dávce)).  
+   * K dispozici je doba předběžného zpracování, díky které získáte vyšší propustnost při provádění hromadných operací s velkým počtem dokumentů. Takže pokud chcete importovat 10 000 000 dokumentů, je vhodnější spustit hromadný import 10krát na 10 přeplňované dokumenty o velikosti 1 000 000 než spuštění hromadného importu 100krát na 100 hromadných dokumentech velikosti 100 000.  
 
-* Doporučuje se vytvořit instanci jednoho objektu DocumentBulkExecutor pro celou aplikaci v jednom virtuálním počítači, který odpovídá konkrétnímu kontejneru Azure Cosmos.  
+* Doporučujeme vytvořit instanci jednoho objektu DocumentBulkExecutor pro celou aplikaci v rámci jednoho virtuálního počítače, který odpovídá konkrétnímu kontejneru Azure Cosmos.  
 
-* Protože spuštění operace rozhraní API jednou hromadnou spotřebovává velké blok klientského počítače procesoru a sítě vstupně-výstupních operací. To se stane, vytvořením více úkolů interně, vyhněte se vytváření podřízeného procesu více souběžných úloh v rámci procesu aplikace, které volá každé rozhraní API provádění hromadné operace. Pokud volání jednou hromadnou operaci rozhraní API běžící na jeden virtuální počítač nemůže využívat propustnosti celého kontejneru (Pokud se váš kontejner propustnost > 1 milion RU/s), je vhodnější k vytvoření samostatných virtuálních počítačů současně provést hromadné volání operace rozhraní API.
+* Vzhledem k tomu, že spuštění rozhraní API s jednou hromadnou operací spotřebovává velký blok vznětového procesoru a síťových vzpona. K tomu dochází tím, že vytváří více úloh interně, vyhnout se tření více souběžných úloh v rámci procesu aplikace každý provádění hromadných volání rozhraní API operace. Pokud volání rozhraní API s jednou hromadnou operací spuštěné na jednom virtuálním počítači nemůže spotřebovávat propustnost celého kontejneru (pokud propustnost vašeho kontejneru > 1 milion RU/s), je vhodnější vytvořit samostatné virtuální počítače pro souběžné spuštění hromadných volání rozhraní API.
 
     
 ## <a name="next-steps"></a>Další kroky
-* Další informace o podrobnosti balíčku maven a knihovny Java prováděcí modul hromadného poznámky k verzi najdete v tématu[hromadně podrobnosti o sadě SDK prováděcí modul](sql-api-sdk-bulk-executor-java.md).
+* Informace o podrobnostech balíčku maven a poznámkách k verzi knihovny Java hromadného vykonavatele naleznete v[tématu hromadné vykonavatelé sady SDK](sql-api-sdk-bulk-executor-java.md).
 
 

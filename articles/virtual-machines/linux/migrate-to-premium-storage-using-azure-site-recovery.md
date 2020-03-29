@@ -1,6 +1,6 @@
 ---
-title: Migrace virtuálních počítačů se systémem Linux do Azure Premium Storage s využitím Azure Site Recovery
-description: Migrujte stávající virtuální počítače do Azure Premium Storage pomocí Site Recovery. Premium Storage nabízí podporu vysoce výkonných disků s nízkou latencí pro úlohy náročné na vstupně-výstupní operace běžící na Azure Virtual Machines.
+title: Migrace virtuálních počítačů s Linuxem do úložiště Azure Premium pomocí Azure Site Recovery
+description: Migrujte své stávající virtuální počítače do úložiště Azure Premium pomocí site recovery. Úložiště Premium storage nabízí vysoce výkonnou podporu disku s nízkou latencí pro úlohy náročné na vstupně-výstupní služby spuštěné na virtuálních počítačích Azure.
 author: luywang
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -8,216 +8,216 @@ ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
 ms.openlocfilehash: 0d03c2df720a4e3ccf57fe0be00c2af4fcf72eb0
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944834"
 ---
-# <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrace na Premium Storage pomocí Azure Site Recovery
+# <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrace do úložiště Premium pomocí Azure Site Recovery
 
-[Azure Premium SSD](disks-types.md) poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých běží úlohy náročné na vstupně-výstupní operace. Tato příručka vám pomůže migrovat disky virtuálních počítačů z účtu úložiště úrovně Standard na účet Premium Storage pomocí [Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
+[Azure premium SSD poskytuje](disks-types.md) vysoce výkonnou diskovou podporu s nízkou latencí pro virtuální počítače,, na kterých běží úlohy náročné na vstupně-výstupní služby. Tato příručka vám pomůže migrovat disky virtuálních počítačů ze standardního účtu úložiště na účet úložiště pro premium pomocí [Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
 
-Site Recovery je služba Azure, která přispívá k strategii pro provozní kontinuitu a zotavení po havárii tím, že orchestruje replikaci místních fyzických serverů a virtuálních počítačů do cloudu (Azure) nebo do sekundárního datacentra. Pokud dojde k výpadkům v primárním umístění, převezmete služby při selhání do sekundárního umístění, aby aplikace a úlohy zůstaly dostupné. Vrátíte se zpátky do svého primárního umístění, až se vrátí k normální operaci. 
+Site Recovery je služba Azure, která přispívá k vaší strategii pro kontinuitu podnikání a zotavení po havárii tím, že organizuje replikaci místních fyzických serverů a virtuálních počítačů do cloudu (Azure) nebo do sekundárního datového centra. Pokud dojde k výpadkům v primárním umístění, převzetí služeb při selhání do sekundárního umístění, aby aplikace a úlohy k dispozici. Po návratu do primárního umístění po návratu do normálního provozu se vrátí tezi na vrácení se zpět do primárního umístění. 
 
-Site Recovery poskytuje testovací převzetí služeb při selhání pro podporu zotavení po havárii, aniž by to ovlivnilo produkční prostředí. Můžete spustit převzetí služeb při selhání s minimálními ztrátami dat (v závislosti na četnosti replikace) pro neočekávané katastrofy. Ve scénáři migrace na Premium Storage můžete pomocí [převzetí služeb při selhání v Site Recovery](../../site-recovery/site-recovery-failover.md) migrovat cílové disky na účet Premium Storage.
+Site Recovery poskytuje převzetí služeb při selhání test pro podporu cvičení zotavení po havárii bez ovlivnění produkčních prostředí. Převzetí služeb při selhání můžete spustit s minimální ztrátou dat (v závislosti na četnosti replikace) pro neočekávané havárie. Ve scénáři migrace do úložiště Premium můžete použít [převzetí služeb při selhání v site recovery](../../site-recovery/site-recovery-failover.md) k migraci cílových disků do účtu úložiště s prémií.
 
-Doporučujeme migrovat na Premium Storage pomocí Site Recovery, protože tato možnost poskytuje minimální prostoje. Tato možnost také zabraňuje ručnímu spuštění kopírování disků a vytváření nových virtuálních počítačů. Site Recovery bude systematicky kopírovat vaše disky a vytvářet nové virtuální počítače během převzetí služeb při selhání. 
+Doporučujeme migrovat do úložiště Premium pomocí site recovery, protože tato možnost poskytuje minimální prostoje. Tato možnost také zabraňuje ručnímu spuštění kopírování disků a vytváření nových virtuálních počítačů. Site Recovery bude systematicky kopírovat disky a vytvářet nové virtuální počítače během převzetí služeb při selhání. 
 
-Site Recovery podporuje různé typy převzetí služeb při selhání s minimálními nebo žádnými výpadky. Informace o tom, jak naplánovat výpadky a ztráty dat, najdete v tématu [typy převzetí služeb při selhání v Site Recovery](../../site-recovery/site-recovery-failover.md). Pokud [připravujete připojení k virtuálním počítačům Azure po převzetí služeb při selhání](../../site-recovery/vmware-walkthrough-overview.md), měli byste se po převzetí služeb při selhání připojit k virtuálnímu počítači Azure pomocí protokolu RDP.
+Site Recovery podporuje řadu typů převzetí služeb při selhání s minimálnínebo žádné prostoje. Pokud chcete naplánovat prostoje a odhadnout ztrátu dat, podívejte se na [typy převzetí služeb při selhání v site recovery](../../site-recovery/site-recovery-failover.md). Pokud [se připravíte pro připojení k virtuálním počítačům Azure po převzetí služeb při selhání](../../site-recovery/vmware-walkthrough-overview.md), měli byste být schopni se připojit k virtuálnímu počítači Azure pomocí RDP po převzetí služeb při selhání.
 
 ![Diagram zotavení po havárii][1]
 
-## <a name="azure-site-recovery-components"></a>Azure Site Recovery komponenty
+## <a name="azure-site-recovery-components"></a>Součásti obnovení webu Azure
 
-Tyto součásti Site Recovery jsou relevantní pro tento scénář migrace:
+Tyto součásti obnovení webu jsou relevantní pro tento scénář migrace:
 
-* **Konfigurační server** je virtuální počítač Azure, který koordinuje komunikaci a spravuje procesy replikace a obnovení dat. Na tomto virtuálním počítači spustíte jeden soubor instalace a nainstalujete konfigurační server a další komponentu, jako je třeba procesový Server, jako bránu replikace. Přečtěte si o [požadavcích konfiguračního serveru](../../site-recovery/vmware-walkthrough-overview.md). Konfigurační server se nastavuje jenom jednou a můžete ho použít pro všechny migrace do stejné oblasti.
+* **Konfigurační server** je virtuální počítač Azure, který koordinuje komunikaci a spravuje procesy replikace a obnovení dat. Na tomto virtuálním počítači spustíte jeden instalační soubor pro instalaci konfiguračního serveru a další součást, nazývanou procesní server, jako replikační bránu. Přečtěte si o [požadavcích konfiguračního serveru](../../site-recovery/vmware-walkthrough-overview.md). Konfigurační server nastavíte pouze jednou a můžete jej použít pro všechny migrace do stejné oblasti.
 
-* **Procesový Server** je bránou replikace, která: 
+* **Procesní server** je replikační brána, která: 
 
-  1. Přijímá data replikace ze zdrojových virtuálních počítačů.
-  2. Optimalizuje data ukládáním do mezipaměti, kompresí a šifrováním.
+  1. Přijímá data replikace ze zdrojových virtuálních měn.
+  2. Optimalizuje data pomocí ukládání do mezipaměti, komprese a šifrování.
   3. Odešle data do účtu úložiště. 
 
-  Také zpracovává nabízenou instalaci služby mobility na zdrojové virtuální počítače a provádí automatické zjišťování zdrojových virtuálních počítačů. Výchozí procesový Server je nainstalovaný na konfiguračním serveru. Můžete nasadit další samostatné procesní servery pro škálování vašeho nasazení. Přečtěte si o [osvědčených postupech pro nasazení procesového serveru a o](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/) [nasazení dalších procesových serverů](../../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers). Procesový Server se nastavuje jenom jednou a můžete ho použít pro všechny migrace do stejné oblasti.
+  Také zpracovává nabízenou instalaci služby mobility do zdrojových virtuálních zařízení a provádí automatické zjišťování zdrojových virtuálních zařízení. Na konfiguračním serveru je nainstalován výchozí procesní server. Můžete nasadit další samostatné procesní servery pro škálování vašeho nasazení. Přečtěte si [o doporučených postupech pro nasazení procesního serveru](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/) a [nasazení dalších procesních serverů](../../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers). Procesní server nastavíte pouze jednou a můžete jej použít pro všechny migrace do stejné oblasti.
 
-* **Služba mobility** je komponenta, která je nasazená na všech standardních virtuálních počítačích, které chcete replikovat. Zachycuje zápisy dat na standardním virtuálním počítači a předá je na procesový Server. Přečtěte si o [požadavcích na replikovaný počítač](../../site-recovery/vmware-walkthrough-overview.md).
+* **Služba mobility** je komponenta, která se nasadí na každý standardní virtuální počítač, který chcete replikovat. Zachycuje zápisy dat na standardní virtuální počítač a předává je na procesový server. Přečtěte si o [požadavcích replikovaného počítače](../../site-recovery/vmware-walkthrough-overview.md).
 
-Tento obrázek ukazuje, jak tyto komponenty pracují:
+Tento obrázek znázorňuje interakci těchto součástí:
 
-![Interakce Site Recoverych komponent][15]
+![Interakce součástí obnovení lokality][15]
 
 > [!NOTE]
 > Site Recovery nepodporuje migraci disků prostorů úložiště.
 
-Další součásti pro jiné scénáře najdete v tématu [Architektura scénáře](../../site-recovery/vmware-walkthrough-overview.md).
+Další součásti pro jiné scénáře naleznete v [tématu Architektura scénářů](../../site-recovery/vmware-walkthrough-overview.md).
 
 ## <a name="azure-essentials"></a>Základy Azure
 
 Toto jsou požadavky Azure pro tento scénář migrace:
 
 * Předplatné Azure.
-* Účet služby Azure Premium Storage pro ukládání replikovaných dat.
-* Virtuální síť Azure, ke které se virtuální počítače připojí při jejich vytvoření při převzetí služeb při selhání. Virtuální síť Azure musí být ve stejné oblasti jako ta, ve které Site Recovery běží.
-* Účet úložiště Azure standard pro ukládání protokolů replikace. Může to být stejný účet úložiště pro disky virtuálních počítačů, které se migrují.
+* Účet úložiště Azure premium pro ukládání replikovaných dat.
+* Virtuální síť Azure, ke které se virtuální počítače připojí, když se vytvoří při převzetí služeb při selhání. Virtuální síť Azure musí být ve stejné oblasti jako ve kterém je spuštěna služba Site Recovery.
+* Účet standardního úložiště Azure pro ukládání protokolů replikace. Může se jedná o stejný účet úložiště pro disky virtuálních počítačů, které jsou migrovány.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Pochopení relevantních součástí scénáře migrace v předchozí části.
-* Naplánujte prostoje o [převzetí služeb při selhání v Site Recovery](../../site-recovery/site-recovery-failover.md).
+* Seznamte se s příslušnými součástmi scénáře migrace v předchozí části.
+* Naplánujte si prostoje tím, že se dozvíte o [převzetí služeb při selhání v site recovery](../../site-recovery/site-recovery-failover.md).
 
-## <a name="setup-and-migration-steps"></a>Kroky instalace a migrace
+## <a name="setup-and-migration-steps"></a>Kroky nastavení a migrace
 
-K migraci virtuálních počítačů Azure IaaS mezi oblastmi nebo ve stejné oblasti můžete použít Site Recovery. Následující pokyny jsou přizpůsobené pro tento scénář migrace z článku [replikace virtuálních počítačů VMware nebo fyzických serverů do Azure](../../site-recovery/vmware-walkthrough-overview.md). Podrobnější postup najdete v odkazech v tomto článku.
+Site Recovery můžete použít k migraci virtuálních stránek Azure IaaS mezi oblastmi nebo ve stejné oblasti. Následující pokyny jsou přizpůsobeny pro tento scénář migrace z článku [Replikovat virtuální počítače VMware nebo fyzické servery do Azure](../../site-recovery/vmware-walkthrough-overview.md). Kromě pokynů v tomto článku postupujte podle odkazů na podrobné kroky.
 
-### <a name="step-1-create-a-recovery-services-vault"></a>Krok 1: vytvoření trezoru Recovery Services
+### <a name="step-1-create-a-recovery-services-vault"></a>Krok 1: Vytvoření trezoru služby Recovery Services
 
 1. Otevřete [portál Azure](https://portal.azure.com).
-2. Vyberte **vytvořit prostředek** > **Správa** > **zálohování** a **Site Recovery (OMS)** . Případně můžete vybrat **procházet** > **Recovery Services trezor** > **Přidat**. 
-3. Zadejte oblast, do které se budou virtuální počítače replikovat. Pro účely migrace ve stejné oblasti vyberte oblast, ve které jsou zdrojové virtuální počítače a účty zdrojového úložiště. 
+2. Vyberte **možnost Vytvořit** > **zálohu** **pro správu** > prostředků a **obnovení lokality (OMS).** Případně můžete vybrat **možnost Přidat** > **trezor** > **služby Pro obnovení .** 
+3. Zadejte oblast, do které budou virtuální chod replikovány. Pro účely migrace ve stejné oblasti vyberte oblast, kde jsou vaše zdrojové virtuální počítače a účty zdrojového úložiště. 
 
-### <a name="step-2-choose-your-protection-goals"></a>Krok 2: výběr cílů ochrany 
+### <a name="step-2-choose-your-protection-goals"></a>Krok 2: Vyberte si cíle ochrany 
 
-1. Na virtuálním počítači, kam chcete nainstalovat konfigurační server, otevřete [Azure Portal](https://portal.azure.com).
-2. V **Recovery Services trezory** > **nastavení** > **Site Recovery** > **kroku 1: Připravte infrastrukturu** > **cíl ochrany**.
+1. Na virtuálním počítači, kde chcete nainstalovat konfigurační server, otevřete [portál Azure](https://portal.azure.com).
+2. Přejděte do **trezorů služby** > Recovery Services**Nastavení** > **obnovení webu** > **Krok 1: Připravit**cíl > **ochrany**infrastruktury .
 
-   ![Procházení k podoknu cíle ochrany][2]
+   ![Procházení podokna cílů ochrany][2]
 
-3. V části **cíl ochrany**vyberte v prvním rozevíracím seznamu možnost **Azure**. V druhém rozevíracím seznamu vyberte **nevirtualizované/jiné**a pak vyberte **OK**.
+3. V části **Cíl ochrany**vyberte v prvním rozevíracím seznamu možnost **Do Azure**. V druhém rozevíracím seznamu vyberte **Možnost Není virtualizována / Jiná**a pak vyberte **OK**.
 
-   ![Podokno cíle ochrany s poli s výplní][3]
+   ![Podokno cíle ochrany s vyplněnými rámečky][3]
 
-### <a name="step-3-set-up-the-source-environment-configuration-server"></a>Krok 3: nastavení zdrojového prostředí (konfigurační server)
+### <a name="step-3-set-up-the-source-environment-configuration-server"></a>Krok 3: Nastavení zdrojového prostředí (konfigurační server)
 
-1. Stáhněte si **Azure Site Recovery Unified Setup** a registrační klíč trezoru, a to tak, že v části **Příprava infrastruktury** > **připravíte zdrojový** > **přidejte podokna serveru** . 
+1. Stáhněte si **sjednocené nastavení obnovení webu Azure** a registrační klíč trezoru tak, že přejdete do **panelu Připravit** > **zdroj Připravit zdroj** > **Přidat server.** 
  
-   Abyste mohli spustit sjednocenou instalaci, budete potřebovat registrační klíč trezoru. Klíč je platný pět dní od jeho vygenerování.
+   Ke spuštění jednotného nastavení budete potřebovat registrační klíč trezoru. Klíč je platný pět dní od jeho vygenerování.
 
-   ![Procházení k podoknu přidat server][4]
+   ![Procházení podokna Přidat server][4]
 
-2. V podokně **Přidat server** Přidejte konfigurační server.
+2. V podokně **Přidat server** přidejte konfigurační server.
 
-   ![Přidat podokno serveru s vybraným konfiguračním serverem][5]
+   ![Podokno Přidat server s vybranou možností Konfigurační server][5]
 
-3. Na virtuálním počítači, který používáte jako konfigurační server, spusťte sjednocené nastavení a nainstalujte konfigurační server a procesový Server. K dokončení instalace můžete projít [snímky obrazovky](../../site-recovery/vmware-walkthrough-overview.md) . Kroky zadané pro tento scénář migrace můžete vyhledat na následujících snímcích obrazovky.
+3. Na virtuálním počítači, který používáte jako konfigurační server, spusťte sjednocené nastavení a nainstalujte konfigurační server a procesní server. Můžete [projít screenshoty](../../site-recovery/vmware-walkthrough-overview.md) k dokončení instalace. Můžete odkazovat na následující snímky obrazovky pro kroky určené pro tento scénář migrace.
 
-   1. V části **než začnete**vyberte **nainstalovat konfigurační server a procesový Server**.
+   1. V **části Before You Begin**vyberte Install the configuration server and process **server**.
 
-      ![Než začnete stránku][6]
+      ![Stránka Před zahájením][6]
 
-   2. V části **registrace**vyhledejte a vyberte registrační klíč, který jste si stáhli z trezoru.
+   2. V **části Registrace**projděte a vyberte registrační klíč, který jste stáhli z trezoru.
 
       ![Registrační stránka][7]
 
-   3. Na stránce **Podrobnosti o prostředí** vyberte, zda se chystáte replikovat virtuální počítače VMware. V případě tohoto scénáře migrace vyberte možnost **ne**.
+   3. Na stránce **Podrobnosti o prostředí** vyberte, zda se chystáte replikovat virtuální počítače VMware. Pro tento scénář migrace zvolte **Ne**.
 
-      ![Stránka s podrobnostmi prostředí][8]
+      ![Stránka Podrobnosti o prostředí][8]
 
-4. Po dokončení instalace proveďte v okně **Microsoft Azure Site Recovery konfiguračního serveru** následující kroky:
+4. Po dokončení instalace postupujte v okně **Microsoft Azure Site Recovery Configuration Server** následujícím způsobem:
  
-   1. Karta **Spravovat účty** slouží k vytvoření účtu, který Site Recovery může použít pro automatické zjišťování. (Ve scénáři ochrany fyzických počítačů není nastavení účtu relevantní, ale potřebujete aspoň jeden účet, abyste mohli povolit jeden z následujících kroků. V takovém případě můžete účet a heslo pojmenovat jako všechny.) 
-   2. Kartu **registrace trezoru** použijte k nahrání souboru s přihlašovacími údaji trezoru.
+   1. Na kartě **Spravovat účty** vytvořte účet, který může site recovery použít pro automatické zjišťování. (Ve scénáři o ochraně fyzických počítačů není nastavení účtu relevantní, ale k povolení jednoho z následujících kroků potřebujete alespoň jeden účet. V takovém případě můžete účet a heslo pojmenovat jako jakékoli jiné.) 
+   2. Na kartě **Registrace úložiště** můžete nahrát soubor přihlašovacích údajů trezoru.
 
-      ![Karta registrace trezoru][9]
+      ![Karta Registrace úložiště][9]
 
-### <a name="step-4-set-up-the-target-environment"></a>Krok 4: nastavení cílového prostředí
+### <a name="step-4-set-up-the-target-environment"></a>Krok 4: Nastavení cílového prostředí
 
-Vyberte **připravit infrastrukturu** > **cíl**a zadejte model nasazení, který chcete použít pro virtuální počítače po převzetí služeb při selhání. V závislosti na vašem scénáři můžete zvolit možnost **Classic** nebo **Správce prostředků**.
+Vyberte Připravit**cíl** **infrastruktury** > a zadejte model nasazení, který chcete použít pro virtuální počítače po převzetí služeb při selhání. V závislosti na scénáři můžete zvolit **Klasický** nebo **Správce prostředků**.
 
 ![Cílové podokno][10]
 
 Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure. 
 
 > [!NOTE]
-> Pokud pro replikovaná data používáte účet Premium Storage, budete muset nastavit další účet úložiště úrovně Standard pro ukládání protokolů replikace.
+> Pokud používáte účet úložiště premium pro replikovaná data, musíte nastavit další účet standardního úložiště pro ukládání protokolů replikace.
 
-### <a name="step-5-set-up-replication-settings"></a>Krok 5: nastavení replikace
+### <a name="step-5-set-up-replication-settings"></a>Krok 5: Nastavení replikace
 
-Pokud chcete ověřit, jestli je konfigurační server úspěšně přidružený k zásadě replikace, kterou vytvoříte, postupujte podle pokynů nastavení [replikace](../../site-recovery/vmware-walkthrough-overview.md).
+Chcete-li ověřit, zda je konfigurační server úspěšně přidružen k zásadám replikace, kterou vytvoříte, postupujte podle pokynů [Nastavit nastavení replikace](../../site-recovery/vmware-walkthrough-overview.md).
 
-### <a name="step-6-plan-capacity"></a>Krok 6: plánování kapacity
+### <a name="step-6-plan-capacity"></a>Krok 6: Plánování kapacity
 
-1. Použijte [Plánovač kapacity](../../site-recovery/site-recovery-capacity-planner.md) k přesnému odhadu šířky pásma sítě, úložiště a dalších požadavků pro splnění požadavků na replikaci. 
-2. Až to budete mít, vyberte **Ano, mám jste hotové** **plánování kapacity?** .
+1. Pomocí [plánovače kapacit](../../site-recovery/site-recovery-capacity-planner.md) můžete přesně odhadnout šířku pásma sítě, úložiště a další požadavky, aby vyhovovaly vašim potřebám replikace. 
+2. Až budete hotovi, vyberte **Ano, udělal jsem to** v **Už jste dokončili plánování kapacity?**.
 
    ![Box pro potvrzení, že jste dokončili plánování kapacity][11]
 
-### <a name="step-7-install-the-mobility-service-and-enable-replication"></a>Krok 7: instalace služby mobility a povolení replikace
+### <a name="step-7-install-the-mobility-service-and-enable-replication"></a>Krok 7: Instalace služby mobility a povolení replikace
 
-1. Můžete zvolit [nabízenou instalaci](../../site-recovery/vmware-walkthrough-overview.md) do zdrojových virtuálních počítačů nebo [ručně nainstalovat službu mobility](../../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md) na zdrojové virtuální počítače. Požadavek na vložení instalace a cestu k ručnímu instalačnímu programu najdete v zadaném odkazu. Pokud provádíte ruční instalaci, možná budete muset k vyhledání konfiguračního serveru použít interní IP adresu.
+1. Můžete se [rozhodnout, že instalaci předáte](../../site-recovery/vmware-walkthrough-overview.md) zdrojovým virtuálním počítačům nebo [ručně nainstalujete službu mobility](../../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md) na zdrojové virtuální počítače. Požadavek na zatlačení instalace a cestu ručního instalátoru naleznete v poskytnutém odkazu. Pokud provádíte ruční instalaci, možná budete muset k nalezení konfiguračního serveru použít interní adresu IP.
 
-   ![Stránka s podrobnostmi konfiguračního serveru][12]
+   ![Stránka Podrobnosti konfiguračního serveru][12]
 
-   Virtuální počítač s podporou převzetí služeb při selhání bude mít dva dočasné disky: jednu z primárního virtuálního počítače a druhou vytvořenou během zřizování virtuálního počítače v oblasti obnovení. Pokud chcete dočasný disk před replikací vyloučit, nainstalujte před povolením replikace službu mobility. Další informace o tom, jak vyloučit dočasný disk, najdete v tématu [vyloučení disků z replikace](../../site-recovery/vmware-walkthrough-overview.md).
+   Virtuální modul s převzetím služeb při selhání bude mít dva dočasné disky: jeden z primárního virtuálního počítače a druhý vytvořený během zřizování virtuálního počítače v oblasti obnovení. Chcete-li dočasný disk před replikací vyloučit, nainstalujte před povolením replikace službu mobility. Další informace o tom, jak dočasný disk vyloučit, najdete v [tématu Vyloučení disků z replikace](../../site-recovery/vmware-walkthrough-overview.md).
 
 2. Replikaci povolte následujícím způsobem:
-   1. Vyberte **replikovat** **zdroj** > aplikace. Po prvním povolení replikace výběrem **+ replikovat** v trezoru Povolte replikaci pro další počítače.
-   2. V kroku 1 nastavte **zdroj** jako procesový Server.
-   3. V kroku 2 určete model nasazení po převzetí služeb při selhání, účet Premium Storage, který se má migrovat na, standardní účet úložiště pro ukládání protokolů a virtuální síť, která se nezdařila.
-   4. V kroku 3 přidejte chráněné virtuální počítače podle IP adresy. (K jejich vyhledání možná budete potřebovat interní IP adresu.)
-   5. V kroku 4 nakonfigurujte vlastnosti tak, že vyberete účty, které jste na procesovém serveru nastavili dříve.
-   6. V kroku 5 vyberte zásadu replikace, kterou jste vytvořili dříve v části "krok 5: nastavení replikace."
+   1. Vyberte **možnost Replikovat** > **zdroj**aplikace . Po prvním povolení replikace vyberte v trezoru **možnost +Replikovat,** chcete-li replikovat pro další počítače.
+   2. V kroku 1 nastavte **zdroj** jako procesní server.
+   3. V kroku 2 zadejte model nasazení po převzetí služeb při selhání, účet úložiště premium, na který se má migrovat, účet standardního úložiště pro uložení protokolů a selhání virtuální sítě.
+   4. V kroku 3 přidejte chráněné virtuální počítače podle IP adresy. (K jejich vyhledání může být potřeba interní IP adresa.)
+   5. V kroku 4 nakonfigurujte vlastnosti výběrem účtů, které jste nastavili dříve na procesovém serveru.
+   6. V kroku 5 zvolte zásady replikace, které jste vytvořili dříve v kroku 5: Nastavení replikace.
    7. Vyberte **OK**.
 
    > [!NOTE]
-   > Pokud je virtuální počítač Azure uvolněný a znovu spuštěný, není nijak zaručeno, že bude mít stejnou IP adresu. Pokud se změní IP adresa konfiguračního serveru/procesového serveru nebo chráněných virtuálních počítačů Azure, nemusí replikace v tomto scénáři fungovat správně.
+   > Když je virtuální počítač Azure navrácena a znovu spuštěna, neexistuje žádná záruka, že získá stejnou IP adresu. Pokud se změní IP adresa konfiguračního serveru/procesního serveru nebo chráněné virtuální počítače Azure, replikace v tomto scénáři nemusí fungovat správně.
 
-   ![Povolit podokno replikace se zvoleným zdrojem][13]
+   ![Povolit podokno replikace s vybranou položkou Zdroj][13]
 
-Při návrhu Azure Storageho prostředí doporučujeme pro každý virtuální počítač ve skupině dostupnosti použít samostatné účty úložiště. Doporučujeme, abyste podle osvědčeného postupu ve vrstvě úložiště [používali pro každou skupinu dostupnosti více účtů úložiště](../linux/manage-availability.md). Distribuce disků virtuálních počítačů do několika účtů úložiště pomáhá zlepšit dostupnost úložiště a distribuuje vstupně-výstupní operace v infrastruktuře úložiště Azure.
+Při navrhování prostředí Azure Storage doporučujeme použít samostatné účty úložiště pro každý virtuální počítač v sadě dostupnosti. Doporučujeme, abyste postupovali podle osvědčených postupů ve vrstvě úložiště [a používali pro každou sadu dostupnosti více účtů úložiště](../linux/manage-availability.md). Distribuce disků virtuálních počítačů do více účtů úložiště pomáhá zlepšit dostupnost úložiště a distribuuje vstupně-va napříč infrastrukturou úložiště Azure.
 
-Pokud jsou vaše virtuální počítače ve skupině dostupnosti, místo replikace disků všech virtuálních počítačů do jednoho účtu úložiště důrazně doporučujeme migrovat několik virtuálních počítačů vícekrát. Virtuální počítače ve stejné skupině dostupnosti tak nebudou sdílet jeden účet úložiště. Pomocí podokna **Povolit replikaci** můžete nastavit cílový účet úložiště pro každý virtuální počítač v jednom okamžiku.
+Pokud jsou vaše virtuální počítače v sadě dostupnosti, namísto replikace disků všech virtuálních počítačů do jednoho účtu úložiště, důrazně doporučujeme migrovat více virtuálních počítačů vícekrát. Tímto způsobem virtuální chody ve stejné sadě dostupnosti nesdílejí jeden účet úložiště. Podokno **Povolit replikaci** slouží k nastavení cílového účtu úložiště pro každý virtuální účet po jednom.
  
-Podle potřeby můžete zvolit model nasazení po převzetí služeb při selhání. Pokud zvolíte Azure Resource Manager jako model nasazení po převzetí služeb při selhání, můžete převzít služby virtuálního počítače (Správce prostředků) na virtuální počítač (Správce prostředků), nebo můžete převzít služby při selhání virtuálního počítače (Classic) na virtuální počítač (Správce prostředků).
+Můžete zvolit model nasazení po převzetí služeb při selhání podle potřeby. Pokud jako model nasazení po převzetí služeb při selhání zvolíte Správce prostředků Azure, můžete přepojit virtuální počítač (Správce prostředků) na virtuální počítač (Resource Manager) nebo můžete převést na místo služeb při selhání virtuálního počítače (klasické) na virtuální počítač (Správce prostředků).
 
-### <a name="step-8-run-a-test-failover"></a>Krok 8: spuštění testovacího převzetí služeb při selhání
+### <a name="step-8-run-a-test-failover"></a>Krok 8: Spuštění zkušebního převzetí služeb při selhání
 
-Pokud chcete zjistit, jestli je vaše replikace dokončená, vyberte instanci Site Recovery a pak vyberte **nastavení** > **replikované položky**. Zobrazí se stav a procento procesu replikace. 
+Chcete-li zkontrolovat, zda je replikace dokončena, vyberte instanci obnovení lokality a pak vyberte **Nastavení** > **replikovaných položek**. Zobrazí se stav a procento procesu replikace. 
 
-Po dokončení počáteční replikace spusťte testovací převzetí služeb při selhání, abyste ověřili strategii replikace. Podrobné kroky testovacího převzetí služeb při selhání najdete v tématu [spuštění testovacího převzetí služeb při selhání v Site Recovery](../../site-recovery/vmware-walkthrough-overview.md). 
+Po dokončení počáteční replikace spusťte zkušební převzetí služeb při selhání k ověření strategie replikace. Podrobné kroky převzetí služeb při selhání testu naleznete v [tématu Spuštění převzetí služeb při selhání testu v obnovení webu](../../site-recovery/vmware-walkthrough-overview.md). 
 
 > [!NOTE]
-> Před spuštěním převzetí služeb při selhání se ujistěte, že vaše virtuální počítače a strategie replikace splňují požadavky. Další informace o spuštění testovacího převzetí služeb při selhání najdete v tématu [Test převzetí služeb při selhání do Azure v Site Recovery](../../site-recovery/site-recovery-test-failover-to-azure.md).
+> Před spuštěním jakékoli převzetí služeb při selhání, ujistěte se, že vaše virtuální počítače a strategie replikace splňují požadavky. Další informace o spuštění testu převzetí služeb při selhání najdete v [tématu Test převzetí služeb při selhání do Azure v site recovery](../../site-recovery/site-recovery-test-failover-to-azure.md).
 
-Stav testovacího převzetí služeb při selhání můžete zobrazit v **nastavení** > **úlohy** > *YOUR_FAILOVER_PLAN_NAME*. V podokně uvidíte rozpis kroků a výsledků úspěch/selhání. Pokud se testovací převzetí služeb při selhání v jakémkoli kroku nepovede, vyberte krok a zkontrolujte chybovou zprávu. 
+Stav převzetí služeb při selhání testu najdete v*YOUR_FAILOVER_PLAN_NAME*úloh**y** >  **Nastavení** > . V podokně se zobrazí rozpis kroků a výsledky úspěšnosti/neúspěchu. Pokud test převzetí služeb při selhání selže v libovolném kroku, vyberte krok pro kontrolu chybové zprávy. 
 
-### <a name="step-9-run-a-failover"></a>Krok 9: spuštění převzetí služeb při selhání
+### <a name="step-9-run-a-failover"></a>Krok 9: Spuštění převzetí služeb při selhání
 
-Po dokončení testovacího převzetí služeb při selhání spusťte převzetí služeb při selhání pro migraci disků Premium Storage a replikaci instancí virtuálních počítačů. Postupujte podle podrobných kroků v části [spuštění převzetí služeb při selhání](../../site-recovery/site-recovery-failover.md#run-a-failover). 
+Po dokončení testu převzetí služeb při selhání spusťte převzetí služeb při selhání, chcete-li migrovat disky do úložiště Premium a replikovat instance virtuálních počítačů. Postupujte podle podrobných kroků v [spuštění převzetí služeb při selhání](../../site-recovery/site-recovery-failover.md#run-a-failover). 
 
-Nezapomeňte vybrat **vypnout virtuální počítače a synchronizovat nejnovější data**. Tato možnost určuje, že Site Recovery by se měla pokusit vypnout chráněné virtuální počítače a synchronizovat data, aby se při selhání převzala nejnovější verze dat. Pokud tuto možnost nevyberete nebo pokud tento pokus neproběhne úspěšně, převzetí služeb při selhání bude z posledního dostupného bodu obnovení pro virtuální počítač. 
+Nezapomeňte vybrat **Vypnout virtuální uživatele a synchronizovat nejnovější data**. Tato možnost určuje, že site recovery by se měl pokusit vypnout chráněné virtuální počítače a synchronizovat data tak, aby nejnovější verze dat bude převzetí osobních údajů převzetí osobních údajů. Pokud tuto možnost nevyberete nebo pokus neproběhne úspěšně, převzetí služeb při selhání bude z nejnovějšího dostupného bodu obnovení pro virtuální hod. 
 
-Site Recovery vytvoří instanci virtuálního počítače, jejíž typ je stejný jako nebo podobný virtuálnímu počítači podporujícímu Premium Storage. Můžete kontrolovat výkon a cenu různých instancí virtuálních počítačů, a to tak, že kliknete na ceny [Windows Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) nebo ceny [Linux Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+Site Recovery vytvoří instanci virtuálního zařízení, jejíž typ je stejný nebo podobný virtuálnímu virtuálnímu ms s podporou úložiště Premium. Výkon a cenu různých instancí virtuálních počítačů můžete zkontrolovat tak, že přejdete na [Ceny virtuálních počítačů Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) nebo Linux Virtual [Machines](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 ## <a name="post-migration-steps"></a>Kroky po migraci
 
-1. **Pokud je to možné, nakonfigurujte replikované virtuální počítače na skupinu dostupnosti**. Site Recovery nepodporuje migraci virtuálních počítačů společně se sadou dostupnosti. V závislosti na nasazení replikovaného virtuálního počítače proveďte jednu z následujících akcí:
-   * Pro virtuální počítač vytvořený prostřednictvím modelu nasazení Classic: přidejte virtuální počítač do skupiny dostupnosti v Azure Portal. Podrobný postup najdete v popisu [Přidání existujícího virtuálního počítače do skupiny dostupnosti](../linux/classic/configure-availability-classic.md).
-   * Pro virtuální počítač vytvořený pomocí modelu nasazení Správce prostředků: uložte konfiguraci virtuálního počítače a pak odstraňte a znovu vytvořte virtuální počítače ve skupině dostupnosti. Provedete to tak, že použijete skript v [nastavení Azure Resource Manager skupinu dostupnosti virtuálního počítače](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Před spuštěním tohoto skriptu si Projděte jeho omezení a naplánujte výpadky.
+1. **Nakonfigurujte replikované virtuální počítače na sadu dostupnosti, pokud je to možné**. Site Recovery nepodporuje migraci virtuálních aplikací spolu s sadou dostupnosti. V závislosti na nasazení replikovaného virtuálního počítače proveďte jednu z následujících akcí:
+   * Pro virtuální počítač vytvořený pomocí klasického modelu nasazení: Přidejte virtuální počítač do sady dostupnosti na webu Azure Portal. Podrobné kroky najdete v části [Přidání existujícího virtuálního počítače do skupiny dostupnosti](../linux/classic/configure-availability-classic.md).
+   * Pro virtuální počítač vytvořený pomocí modelu nasazení Správce prostředků: Uložte konfiguraci virtuálního počítače a potom odstraňte a znovu vytvořte virtuální počítače v sadě dostupnosti. Chcete-li tak učinit, použijte skript na [nastavit Azure Resource Manager Dostupnost sady .](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4) Před spuštěním tohoto skriptu zkontrolujte jeho omezení a naplánujte si prostoje.
 
-2. **Odstraňte staré virtuální počítače a disky**. Zajistěte, aby byly prémiové disky konzistentní se zdrojovými disky a aby nové virtuální počítače prováděly stejnou funkci jako u zdrojových virtuálních počítačů. Odstraňte virtuální počítač a odstraňte disky ze zdrojového účtu úložiště v Azure Portal. Pokud dojde k potížím, kdy se disk neodstranil, i když jste virtuální počítač odstranili, přečtěte si téma [řešení chyb při odstraňování prostředků úložiště](storage-resource-deletion-errors.md).
+2. **Odstraňte staré virtuální počítače a disky**. Ujistěte se, že disky Premium jsou konzistentní se zdrojovými disky a že nové virtuální počítače vykonávají stejnou funkci jako zdrojové virtuální počítače. Odstraňte virtuální počítač a odstraňte disky z účtů zdrojového úložiště na webu Azure Portal. Pokud se problém, ve kterém disk není odstraněn, i když jste odstranili virtuální ho, najdete [v tématu Poradce při potížích odstranění prostředků úložiště](storage-resource-deletion-errors.md).
 
-3. **Vyčistěte infrastrukturu Azure Site Recovery**. Pokud už Site Recovery nepotřebujete, můžete svou infrastrukturu vyčistit. Odstraňte replikované položky, konfigurační server a zásady obnovení a pak odstraňte trezor Azure Site Recovery.
+3. **Vyčistěte infrastrukturu Azure Site Recovery**. Pokud obnovení webu již není potřeba, můžete vyčistit jeho infrastrukturu. Odstraňte replikované položky, konfigurační server a zásady obnovení a odstraňte trezor obnovení webu Azure.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-* [Monitorování a odstraňování potíží s ochranou pro virtuální počítače a fyzické servery](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
-* [Fórum Microsoft Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
+* [Sledování a odstraňování potíží s ochranou virtuálních počítačů a fyzických serverů](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
+* [Fórum pro obnovení webu Microsoft Azure](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
 
 ## <a name="next-steps"></a>Další kroky
 
 Konkrétní scénáře migrace virtuálních počítačů najdete v následujících zdrojích informací:
 
-* [Migrace Azure Virtual Machines mezi účty úložiště](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Nahrání virtuálního pevného disku se systémem Linux](upload-vhd.md)
-* [Migrace Virtual Machines z Amazon AWS do Microsoft Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
+* [Migrace virtuálních počítačů Azure mezi účty úložiště](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
+* [Nahrání virtuálního pevného disku pro Linux](upload-vhd.md)
+* [Migrace virtuálních počítačů z Amazon AWS do Microsoft Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
-Další informace o Azure Storage a službě Azure Virtual Machines najdete v následujících zdrojích informací:
+Další informace o Azure Storage a Virtuálních počítačích Azure najdete v následujících zdrojích informací:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
-* [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Vyberte typ disku pro virtuální počítače s IaaS.](disks-types.md)
+* [Virtuální počítače Azure](https://azure.microsoft.com/documentation/services/virtual-machines/)
+* [Výběr typu disku pro virtuální počítače IaaS](disks-types.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

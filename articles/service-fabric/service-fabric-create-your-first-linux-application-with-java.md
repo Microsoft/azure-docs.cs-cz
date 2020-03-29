@@ -1,19 +1,19 @@
 ---
-title: Vytvoření aplikace Azure Service Fabric Reliable Actors v jazyce Java v systému Linux
+title: Vytvoření spolehlivé aplikace Azure Service Fabric pro virtuální počítače s Javem na Linuxu
 description: Zjistěte, jak za pět minut vytvořit a nasadit aplikaci Service Fabric Reliable Actors v Javě.
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458161"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Vytvoření první aplikace Service Fabric Reliable Actors v Javě v Linuxu
 > [!div class="op_single_selector"]
 > * [Java – Linux](service-fabric-create-your-first-linux-application-with-java.md)
-> * [C# – Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
+> * [C# - Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
 >
 >
 
@@ -208,18 +208,18 @@ Jakmile je aplikace nasazená, otevřete prohlížeč a přejděte k nástroji [
 Pak rozbalte uzel **Aplikace** a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
 > [!IMPORTANT]
-> Pokud chcete nasadit aplikaci do clusteru zabezpečeného Linux v Azure, musíte nakonfigurovat certifikát pro ověření aplikace pomocí modulu runtime Service Fabric. To umožňuje, aby vaše služby Reliable Actors komunikovaly se základními rozhraními API Service Fabric runtime. Další informace najdete v tématu [Konfigurace aplikace Reliable Services pro spouštění v clusterech se systémem Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Chcete-li nasadit aplikaci do zabezpečeného clusteru Linux v Azure, musíte nakonfigurovat certifikát pro ověření aplikace pomocí runtime Service Fabric. To umožňuje služby Reliable Actors komunikovat s podkladovými prostředími runtime Service Fabric. Další informace najdete [v tématu Konfigurace aplikace Spolehlivé služby pro spuštění v clusterech Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Spuštění klienta testování a převzetí služeb při selhání
 Samotné objekty actor nic nedělají – vyžadují, aby jim jiná služba nebo klient posílali zprávy. Šablona actor zahrnuje jednoduchý testovací skript, který můžete použít k interakci se službou actor.
 
 > [!Note]
-> Testovací klient používá ke komunikaci s objekty actor třídu ActorProxy, která musí běžet v rámci stejného clusteru jako služba actor nebo sdílet stejný adresní prostor IP adres.  Testovacího klienta můžete spustit na stejném počítači jako místní vývojový cluster.  Aby bylo možné komunikovat s objekty actor ve vzdáleném clusteru, je však nutné nasadit bránu do clusteru, který zpracovává externí komunikaci s objekty Actors.
+> Testovací klient používá třídu ActorProxy ke komunikaci s objekty actor, které musí být spuštěny ve stejném clusteru jako služba actor nebo sdílet stejný adresní prostor IP.  Testovacího klienta můžete spustit ve stejném počítači jako cluster místního vývoje.  Chcete-li však komunikovat s aktéry ve vzdáleném clusteru, musíte v clusteru nasadit bránu, která zpracovává externí komunikaci s aktéry.
 
 1. Spusťte skript pomocí pomocného sledovacího programu a prohlédněte si výstup služby actor.  Testovací skript volá metodu `setCountAsync()` objektu actor pro zvýšení čítače a metodu `getCountAsync()` objektu actor pro získání nové hodnoty čítače, kterou zobrazí v konzole.
 
-   V případě systému MAC OS X je nutné zkopírovat složku HelloWorldTestClient do umístění v rámci kontejneru spuštěním následujících dalších příkazů.    
+   V případě MAC OS X, je třeba zkopírovat HelloWorldTestClient složku do některého umístění uvnitř kontejneru spuštěním následující chod další chod.    
     
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
@@ -232,11 +232,11 @@ Samotné objekty actor nic nedělají – vyžadují, aby jim jiná služba nebo
     watch -n 1 ./testclient.sh
     ```
 
-2. V nástroji Service Fabric Explorer vyhledejte uzel, který je hostitelem primární repliky pro službu objektu actor. Na snímku níže je to uzel 3. Primární replika služby zpracovává operace čtení a zápisu.  Změny stavu služby se pak replikují do sekundárních replik, které běží na uzlech 0 a 1 na snímku obrazovky níže.
+2. V nástroji Service Fabric Explorer vyhledejte uzel, který je hostitelem primární repliky pro službu objektu actor. Na snímku níže je to uzel 3. Primární replika služby zpracovává operace čtení a zápisu.  Změny ve stavu služby jsou pak replikovány do sekundárních replik, spuštěné na uzlech 0 a 1 na následujícím snímku obrazovky.
 
     ![Vyhledání primární repliky v Service Fabric Exploreru][sfx-primary]
 
-3. V části **Uzly** klikněte na uzel, který jste našli v předchozím kroku, a pak v nabídce Akce vyberte **Deaktivovat (restartovat)** . Tato akce restartuje uzel spuštěný v primární replice služby a vynutí převzetí služeb při selhání jednou ze sekundárních replik spuštěných na jiném uzlu.  Úroveň této sekundární repliky se zvýší na primární, v jiném uzlu se vytvoří jiná sekundární replika a primární replika začne přijímat operace čtení a zápisu. Při restartování uzlu sledujte výstup z testovacího klienta a všimněte si, že se čítač bez ohledu na převzetí služeb při selhání pořád postupně zvyšuje.
+3. V části **Uzly** klikněte na uzel, který jste našli v předchozím kroku, a pak v nabídce Akce vyberte **Deaktivovat (restartovat)**. Tato akce restartuje uzel spuštěný v primární replice služby a vynutí převzetí služeb při selhání jednou ze sekundárních replik spuštěných na jiném uzlu.  Úroveň této sekundární repliky se zvýší na primární, v jiném uzlu se vytvoří jiná sekundární replika a primární replika začne přijímat operace čtení a zápisu. Při restartování uzlu sledujte výstup z testovacího klienta a všimněte si, že se čítač bez ohledu na převzetí služeb při selhání pořád postupně zvyšuje.
 
 ## <a name="remove-the-application"></a>Odebrání aplikace
 Pomocí odinstalačního skriptu, který je součástí šablony, odstraňte instanci aplikace, zrušte registraci balíčku aplikace a odeberete balíček aplikace z úložiště imagí clusteru.
@@ -292,8 +292,8 @@ Podpora Service Fabric Reliable Services pro vaši aplikaci.
   }
   ```
 
-### <a name="others"></a>Další
-#### <a name="transport"></a>Doprava
+### <a name="others"></a>Ostatní
+#### <a name="transport"></a>Přenos
 
 Podpora přenosové vrstvy pro aplikace Service Fabric Java. Pokud neprogramujete na úrovni přenosové vrstvy, nemusíte tuto závislost do aplikace Reliable Actor nebo aplikace služby explicitně přidávat.
 

@@ -1,7 +1,7 @@
 ---
-title: Přenos dat pomocí knihovny pro přesun dat pro .NET
+title: Přenos dat pomocí knihovny Pohyb dat pro rozhraní .NET
 titleSuffix: Azure Storage
-description: Pomocí knihovny pro přesun dat můžete přesunout nebo zkopírovat data z objektu BLOB a souboru. Kopírování dat do Azure Storage z místních souborů nebo kopírování dat v rámci nebo mezi účty úložiště. Snadná migrace dat do Azure Storage.
+description: Knihovna Přesun dat slouží k přesouvání nebo kopírování dat do nebo z objektu blob a obsahu souborů. Zkopírujte data do Služby Azure Storage z místních souborů nebo zkopírujte data v rámci účtů úložiště nebo mezi nimi. Snadno migrujte data do Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,48 +11,48 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 5b8654500fd697685b38e4f51ba1069e0cf6ccfc
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942907"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Přenos dat s využitím knihovny pro přesun dat
 
-Knihovna pro přesun dat Azure Storage je open source knihovna pro různé platformy, která je určená pro vysoce výkonné nahrávání, stahování a kopírování objektů BLOB a souborů. Knihovna pro přesun dat poskytuje pohodlný způsob, který není dostupný v klientské knihovně Azure Storage pro .NET. Tyto metody poskytují možnost nastavit počet paralelních operací, sledovat průběh přenosu, snadno obnovit zrušený přenos a mnohem víc.
+Knihovna Azure Storage Data Movement je knihovna s otevřeným zdrojovým kódem pro různé platformy, která je navržená pro vysoce výkonné nahrávání, stahování a kopírování objektů BLOB a souborů. Knihovna Přesun dat poskytuje pohodlné metody, které nejsou k dispozici v klientské knihovně Úložiště Azure pro .NET. Tyto metody poskytují možnost nastavit počet paralelních operací, sledovat průběh přenosu, snadno obnovit zrušený přenos a mnoho dalšího.
 
-Tato knihovna také využívá .NET Core, což znamená, že ji můžete použít při sestavování aplikací .NET pro Windows, Linux a macOS. Další informace o .NET Core najdete v [dokumentaci k .NET Core](https://dotnet.github.io/). Tato knihovna funguje také pro tradiční aplikace .NET Framework pro Windows.
+Tato knihovna také používá .NET Core, což znamená, že ji můžete použít při vytváření aplikací .NET pro Windows, Linux a macOS. Další informace o jádru .NET naleznete v [dokumentaci .NET Core](https://dotnet.github.io/). Tato knihovna funguje také pro tradiční aplikace rozhraní .NET Framework pro Windows.
 
-Tento dokument ukazuje, jak vytvořit konzolovou aplikaci .NET Core, která běží na systémech Windows, Linux a macOS a provádí následující scénáře:
+Tento dokument ukazuje, jak vytvořit konzolovou aplikaci .NET Core, která běží ve Windows, Linuxu a macOS a provede následující scénáře:
 
-- Nahrajte soubory a adresáře do Blob Storage.
+- Nahrajte soubory a adresáře do úložiště objektů Blob.
 - Definujte počet paralelních operací při přenosu dat.
 - Sledujte průběh přenosu dat.
-- Obnovit zrušený přenos dat
-- Kopírování souboru z adresy URL do Blob Storage.
-- Kopírovat z Blob Storage do Blob Storage
+- Pokračovat v zrušeném přenosu dat.
+- Zkopírujte soubor z adresy URL do úložiště objektů Blob.
+- Kopírování z úložiště objektů blob do úložiště objektů blob.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- [Visual Studio Code](https://code.visualstudio.com/)
+- [Kód visual studia](https://code.visualstudio.com/)
 - [Účet úložiště Azure](storage-account-create.md)
 
 ## <a name="setup"></a>Nastavení
 
-1. Navštivte [Průvodce instalací .NET Core](https://www.microsoft.com/net/core) a nainstalujte .NET Core. Při výběru prostředí zvolte možnost příkazového řádku.
-2. Z příkazového řádku vytvořte adresář pro váš projekt. Přejděte do tohoto adresáře a potom zadejte `dotnet new console -o <sample-project-name>` pro vytvoření projektu C# konzoly.
-3. Otevřete tento adresář v Visual Studio Code. Tento krok můžete rychle provést pomocí příkazového řádku zadáním `code .` ve Windows.
-4. Nainstalujte [ C# rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) z webu Visual Studio Code Marketplace. Restartujte Visual Studio Code.
-5. V tomto okamžiku byste měli vidět dvě výzvy. Jedna je určena k přidání "požadovaných assetů pro sestavení a ladění". Klikněte na tlačítko Ano. Další výzvou pro obnovení nevyřešených závislostí. Klikněte na tlačítko obnovit.
-6. Upravte `launch.json` v části `.vscode` na použití externího terminálu jako konzoly. Toto nastavení by se mělo číst jako `"console": "externalTerminal"`
-7. Visual Studio Code umožňuje ladit aplikace .NET Core. Spusťte aplikaci `F5` a ověřte, že instalace funguje. Měl by se zobrazit "Hello World!" vytištěno do konzoly.
+1. Chcete-li nainstalovat [rozhraní .NET Core,](https://www.microsoft.com/net/core) navštivte příručku k instalaci rozhraní .NET Core. Při výběru prostředí zvolte možnost příkazového řádku.
+2. Z příkazového řádku vytvořte adresář pro projekt. Přejděte do tohoto `dotnet new console -o <sample-project-name>` adresáře a zadejte a vytvořte projekt konzoly Jazyka C#.
+3. Otevřete tento adresář v kódu sady Visual Studio. Tento krok lze rychle provést prostřednictvím `code .` příkazového řádku zadáním v systému Windows.
+4. Nainstalujte [rozšíření C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) z webu Visual Studio Code Marketplace. Restartujte kód sady Visual Studio.
+5. V tomto okamžiku byste měli vidět dvě výzvy. Jedním z nich je pro přidání "požadované prostředky pro sestavení a ladění." Klikněte na "ano". Další výzva je pro obnovení nevyřešených závislostí. Klikněte na tlačítko Obnovit.
+6. Upravit `launch.json` `.vscode` pod použít externí terminál jako konzolu. Toto nastavení by mělo být`"console": "externalTerminal"`
+7. Visual Studio Code umožňuje ladit aplikace .NET Core. Chcete-li spustit aplikaci a ověřit, zda nastavení funguje, stiskněte tak `F5` to, že aplikace funguje. Měl bys vidět "Hello World!" vytištěny na konzoli.
 
-## <a name="add-the-data-movement-library-to-your-project"></a>Přidání knihovny pro přesun dat do projektu
+## <a name="add-the-data-movement-library-to-your-project"></a>Přidání knihovny Přesun dat do projektu
 
-1. Přidejte nejnovější verzi knihovny pro přesun dat do části `dependencies` souboru `<project-name>.csproj`. V době psaní by tato verze byla `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
-2. Zobrazí se výzva k obnovení projektu. Klikněte na tlačítko obnovit. Svůj projekt můžete také obnovit z příkazového řádku zadáním příkazu `dotnet restore` v kořenovém adresáři adresáře projektu.
+1. Přidejte nejnovější verzi knihovny Přesun `dependencies` dat `<project-name>.csproj` do oddílu souboru. V době psaní tohoto článku by tato verze byla`"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+2. K obnovení projektu by se měla zobrazit výzva. Klikněte na tlačítko "obnovit". Projekt můžete také obnovit z příkazového řádku `dotnet restore` zadáním příkazu do kořenového adresáře projektu.
 
-Upravit `<project-name>.csproj`:
+Změnit `<project-name>.csproj`:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -68,9 +68,9 @@ Upravit `<project-name>.csproj`:
 
 ## <a name="set-up-the-skeleton-of-your-application"></a>Nastavení kostry aplikace
 
-První věc, kterou jsme provedli, je nastavení "kostry" naší aplikace. Tento kód vás vyzve k zadání názvu účtu úložiště a klíče účtu a pomocí těchto přihlašovacích údajů vytvoří objekt `CloudStorageAccount`. Tento objekt se používá k interakci s naším účtem úložiště ve všech scénářích přenosu. Kód také vyzve k výběru typu operace přenosu, kterou bychom chtěli spustit.
+První věc, kterou uděláme, je nastavit "kostru" kód naší aplikace. Tento kód nás vyzve k zadání názvu účtu úložiště a klíče `CloudStorageAccount` účtu a použije tato pověření k vytvoření objektu. Tento objekt se používá k interakci s naším účtem úložiště ve všech scénářích přenosu. Kód nás také vyzve k výběru typu operace přenosu, kterou bychom chtěli provést.
 
-Upravit `Program.cs`:
+Změnit `Program.cs`:
 
 ```csharp
 using System;
@@ -145,9 +145,9 @@ namespace DMLibSample
 }
 ```
 
-## <a name="upload-a-local-file-to-a-blob"></a>Nahrání místního souboru do objektu BLOB
+## <a name="upload-a-local-file-to-a-blob"></a>Nahrání místního souboru do objektu blob
 
-Přidejte metody `GetSourcePath` a `GetBlob` do `Program.cs`:
+Přidejte `GetSourcePath` metody `GetBlob` `Program.cs`a do :
 
 ```csharp
 public static string GetSourcePath()
@@ -175,7 +175,7 @@ public static CloudBlockBlob GetBlob(CloudStorageAccount account)
 }
 ```
 
-Upravte metodu `TransferLocalFileToAzureBlob`:
+Upravte `TransferLocalFileToAzureBlob` metodu:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -189,19 +189,19 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-Tento kód vás vyzve pro cestu k místnímu souboru, název nového nebo existujícího kontejneru a název nového objektu BLOB. Metoda `TransferManager.UploadAsync` provede odeslání pomocí těchto informací.
+Tento kód nás vyzve k cestě k místnímu souboru, název nového nebo existujícího kontejneru a název nového objektu blob. Metoda `TransferManager.UploadAsync` provádí nahrávání pomocí těchto informací.
 
-Spusťte aplikaci `F5` ke spuštění aplikace. Můžete ověřit, že k nahrávání došlo, zobrazením účtu úložiště pomocí [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/).
+Hitem `F5` spustíte aplikaci. K nahrání můžete ověřit zobrazením účtu úložiště v [Průzkumníku úložiště Microsoft Azure](https://storageexplorer.com/).
 
 ## <a name="set-the-number-of-parallel-operations"></a>Nastavení počtu paralelních operací
 
-Jednou funkcí nabízená knihovnou přesunu dat je schopnost nastavit počet paralelních operací, aby se zvýšila propustnost přenosu dat. Knihovna pro přesun dat ve výchozím nastavení nastavuje počet paralelních operací na 8 * počet jader v počítači.
+Jednou z funkcí, kterou nabízí knihovna Přesun dat, je možnost nastavit počet paralelních operací pro zvýšení propustnosti přenosu dat. Ve výchozím nastavení knihovna Přesun dat nastaví počet paralelních operací na 8 * počet jader v počítači.
 
-Mějte na paměti, že mnoho paralelních operací v prostředí s nízkou šířkou pásma může být zahlcené síťovým připojením a ve skutečnosti zabránit kompletnímu dokončení operací. Abyste zjistili, co nejlépe funguje na základě dostupné šířky pásma sítě, budete muset experimentovat s tímto nastavením.
+Mějte na paměti, že mnoho paralelních operací v prostředí s malou šířkou pásma může zahltit síťové připojení a ve skutečnosti zabránit úplnému dokončení operací. Budete muset experimentovat s tímto nastavením, abyste zjistili, co nejlépe funguje na základě dostupné šířky pásma sítě.
 
-Pojďme přidat nějaký kód, který nám umožní nastavit počet paralelních operací. Pojďme také přidat kód, který krát, jak dlouho trvá dokončení přenosu.
+Přidáme nějaký kód, který nám umožňuje nastavit počet paralelních operací. Přidáme také kód, který krát, jak dlouho trvá dokončení přenosu.
 
-Přidejte `SetNumberOfParallelOperations` metodu pro `Program.cs`:
+Přidejte `SetNumberOfParallelOperations` metodu do `Program.cs`:
 
 ```csharp
 public static void SetNumberOfParallelOperations()
@@ -212,7 +212,7 @@ public static void SetNumberOfParallelOperations()
 }
 ```
 
-Upravte metodu `ExecuteChoice` pro použití `SetNumberOfParallelOperations`:
+Upravte `ExecuteChoice` metodu, která má být používána `SetNumberOfParallelOperations`:
 
 ```csharp
 public static void ExecuteChoice(CloudStorageAccount account)
@@ -241,7 +241,7 @@ public static void ExecuteChoice(CloudStorageAccount account)
 }
 ```
 
-Upravte metodu `TransferLocalFileToAzureBlob` pro použití časovače:
+Upravte `TransferLocalFileToAzureBlob` metodu tak, aby používala časovač:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -257,11 +257,11 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-## <a name="track-transfer-progress"></a>Průběh přenosu sledovat
+## <a name="track-transfer-progress"></a>Sledování průběhu přenosu
 
-Je užitečné vědět, jak dlouho trvalo přenosu dat. Nicméně schopnost zobrazit průběh přenosu *během* operace přenosu by byla ještě lepší. Pro dosažení tohoto scénáře musíme vytvořit objekt `TransferContext`. Objekt `TransferContext` se nachází ve dvou formách: `SingleTransferContext` a `DirectoryTransferContext`. Předchozí je pro přenos jednoho souboru a druhý pro přenos adresáře souborů.
+Vědět, jak dlouho trvalo přenos dat, je užitečné. Možnost vidět průběh převodu *během* operace převodu by však byla ještě lepší. K dosažení tohoto scénáře, musíme vytvořit `TransferContext` objekt. Objekt `TransferContext` je dodáván ve `SingleTransferContext` `DirectoryTransferContext`dvou formách: a . První z nich je pro přenos jednoho souboru a druhý je pro přenos adresáře souborů.
 
-Přidejte metody `GetSingleTransferContext` a `GetDirectoryTransferContext` do `Program.cs`:
+Přidejte `GetSingleTransferContext` metody `GetDirectoryTransferContext` `Program.cs`a do :
 
 ```csharp
 public static SingleTransferContext GetSingleTransferContext(TransferCheckpoint checkpoint)
@@ -289,7 +289,7 @@ public static DirectoryTransferContext GetDirectoryTransferContext(TransferCheck
 }
 ```
 
-Upravte metodu `TransferLocalFileToAzureBlob` pro použití `GetSingleTransferContext`:
+Upravte `TransferLocalFileToAzureBlob` metodu, která má být používána `GetSingleTransferContext`:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -307,11 +307,11 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-## <a name="resume-a-canceled-transfer"></a>Obnovit zrušený přenos
+## <a name="resume-a-canceled-transfer"></a>Obnovení zrušeného přenosu
 
-Další pohodlnější funkce nabízená knihovnou přesunu dat je schopnost obnovit zrušený přenos. Pojďme přidat nějaký kód, který nám umožní dočasně zrušit přenos zadáním `c`a potom pokračovat v přenosu 3 sekundy později.
+Další praktickou funkcí, kterou knihovna Data Movement nabízí, je možnost pokračovat v zrušeném přenosu. Přidáme nějaký kód, který nám umožňuje dočasně zrušit `c`přenos zadáním a poté pokračovat v přenosu o 3 sekundy později.
 
-Upravit `TransferLocalFileToAzureBlob`:
+Změnit `TransferLocalFileToAzureBlob`:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -363,13 +363,13 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-Až do té doby se naše `checkpoint` hodnota vždycky nastavila na `null`. Když teď tento přenos zrušíte, načteme poslední kontrolní bod pro náš přenos a pak tento nový kontrolní bod použijete v našem kontextu přenosu.
+Až do teď `checkpoint` byla naše hodnota `null`vždy nastavena na . Pokud zrušíme převod, získáme poslední kontrolní bod našeho převodu a použijeme tento nový kontrolní bod v našem kontextu přenosu.
 
-## <a name="transfer-a-local-directory-to-blob-storage"></a>Přenos místního adresáře do úložiště objektů BLOB
+## <a name="transfer-a-local-directory-to-blob-storage"></a>Přenos místního adresáře do úložiště objektů Blob
 
-By se disappointing, pokud by knihovna pro přesun dat mohla najednou přenést jenom jeden soubor. Donovanovo, nejedná se o případ. Knihovna pro přesun dat poskytuje možnost přenosu adresáře souborů a všech jeho podadresářů. Pojďme přidat kód, který nám umožní to udělat jenom to.
+Bylo by zklamáním, kdyby knihovna Přesun dat mohla přenášet pouze jeden soubor najednou. Naštěstí tomu tak není. Knihovna Přesun dat umožňuje přenášet adresář souborů a všechny jeho podadresáře. Pojďme přidat nějaký kód, který nám umožňuje udělat právě to.
 
-Nejprve přidejte metodu `GetBlobDirectory` do `Program.cs`:
+Nejprve přidejte `GetBlobDirectory` `Program.cs`metodu do :
 
 ```csharp
 public static CloudBlobDirectory GetBlobDirectory(CloudStorageAccount account)
@@ -387,7 +387,7 @@ public static CloudBlobDirectory GetBlobDirectory(CloudStorageAccount account)
 }
 ```
 
-Pak upravte `TransferLocalDirectoryToAzureBlobDirectory`:
+Potom upravte `TransferLocalDirectoryToAzureBlobDirectory`:
 
 ```csharp
 public static async Task TransferLocalDirectoryToAzureBlobDirectory(CloudStorageAccount account)
@@ -444,13 +444,13 @@ public static async Task TransferLocalDirectoryToAzureBlobDirectory(CloudStorage
 }
 ```
 
-Mezi touto metodou a metodou pro nahrání jednoho souboru existuje několik rozdílů. Nyní používáme `TransferManager.UploadDirectoryAsync` a metodu `getDirectoryTransferContext`, kterou jsme vytvořili dříve. Kromě toho nyní poskytujeme `options` hodnotu pro naši operaci nahrávání, což nám umožňuje indikovat, že chceme do nahrávání zahrnout podadresáře.
+Existuje několik rozdílů mezi touto metodou a metodou pro nahrávání jednoho souboru. Nyní používáme `TransferManager.UploadDirectoryAsync` a `getDirectoryTransferContext` metodu, kterou jsme vytvořili dříve. Kromě toho nyní poskytujeme hodnotu `options` naší operace nahrávání, což nám umožňuje označit, že chceme zahrnout podadresáře do našeho nahrávání.
 
-## <a name="copy-a-file-from-url-to-a-blob"></a>Kopírování souboru z adresy URL do objektu BLOB
+## <a name="copy-a-file-from-url-to-a-blob"></a>Kopírování souboru z adresy URL do objektu blob
 
-Teď přidáme kód, který nám umožní zkopírovat soubor z adresy URL do objektu blob Azure.
+Teď přidáme kód, který nám umožňuje zkopírovat soubor z adresy URL do objektu Blob Azure.
 
-Upravit `TransferUrlToAzureBlob`:
+Změnit `TransferUrlToAzureBlob`:
 
 ```csharp
 public static async Task TransferUrlToAzureBlob(CloudStorageAccount account)
@@ -502,13 +502,13 @@ public static async Task TransferUrlToAzureBlob(CloudStorageAccount account)
 }
 ```
 
-Jedním z důležitých případů použití této funkce je situace, kdy potřebujete přesunout data z jiné cloudové služby (např. AWS) do Azure. Pokud máte adresu URL, která vám poskytne přístup k prostředku, můžete tento prostředek snadno přesunout do objektů blob Azure pomocí metody `TransferManager.CopyAsync`. Tato metoda také zavádí nový logický parametr. Nastavením tohoto parametru na `true` znamená, že chceme provést asynchronní kopírování na straně serveru. Nastavením tohoto parametru na `false` se indikuje synchronní kopírování – což znamená, že se prostředek stáhl do našeho místního počítače a pak se nahrál do Azure Blob. Synchronní kopie je však nyní k dispozici pouze pro kopírování z jednoho prostředku Azure Storage do jiného.
+Jeden důležitý případ použití pro tuto funkci je, když potřebujete přesunout data z jiné cloudové služby (např. AWS) do Azure. Pokud máte adresu URL, která vám poskytuje přístup k prostředku, můžete snadno přesunout `TransferManager.CopyAsync` tento prostředek do objektů Blob Azure pomocí metody. Tato metoda také zavádí nový logický parametr. Nastavení tohoto `true` parametru označuje, že chceme provést asynchronní kopii na straně serveru. Nastavení tohoto `false` parametru označuje synchronní kopii – což znamená, že prostředek se nejprve stáhne do místního počítače a pak se nahraje do objektu Blob Azure. Synchronní kopie je však aktuálně k dispozici pouze pro kopírování z jednoho prostředku úložiště Azure do jiného.
 
-## <a name="copy-a-blob"></a>Kopírování objektu BLOB
+## <a name="copy-a-blob"></a>Kopírování objektu blob
 
-Jiná funkce, která je jednoznačně poskytována knihovnou přesunu dat, je možnost kopírování z jednoho prostředku Azure Storage do jiného.
+Další funkcí, která je jedinečně poskytovaná knihovnou Přesun dat, je možnost kopírování z jednoho prostředku úložiště Azure do jiného.
 
-Upravit `TransferAzureBlobToAzureBlob`:
+Změnit `TransferAzureBlobToAzureBlob`:
 
 ```csharp
 public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount account)
@@ -560,12 +560,12 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-V tomto příkladu nastavíme parametr Boolean v `TransferManager.CopyAsync` na `false`, aby označoval, že chceme provést synchronní kopii. To znamená, že se prostředek stáhne nejdřív do našeho místního počítače a pak se nahraje do objektu blob Azure. Možnost synchronní kopírování představuje skvělý způsob, jak zajistit, aby operace kopírování měla konzistentní rychlost. Naproti tomu rychlost asynchronního kopírování na straně serveru závisí na dostupné šířce pásma sítě na serveru, která může kolísat. Synchronní kopírování ale může v porovnání s asynchronní kopírováním způsobit další náklady na výstup. Doporučený postup je použít synchronní kopii na virtuálním počítači Azure, který je ve stejné oblasti jako zdrojový účet úložiště, abyste předešli nákladům na výstup.
+V tomto příkladu jsme nastavili `TransferManager.CopyAsync` `false` logický parametr v označující, že chceme provést synchronní kopii. To znamená, že prostředek se nejprve stáhne do našeho místního počítače a pak se nahraje do objektu Blob Azure. Možnost synchronní kopie je skvělý způsob, jak zajistit, že operace kopírování má konzistentní rychlost. Naproti tomu rychlost asynchronní kopie na straně serveru závisí na dostupné šířce pásma sítě na serveru, která může kolísat. Synchronní kopie však může generovat další náklady na odchozí přenos ve srovnání s asynchronní kopírování. Doporučeným přístupem je použití synchronní kopie ve virtuálním počítači Azure, který je ve stejné oblasti jako účet zdrojového úložiště, aby se zabránilo nákladům na odchozí přenos.
 
-Aplikace pro přesun dat je teď dokončená. [Kompletní ukázka kódu je k dispozici na GitHubu](https://github.com/azure-samples/storage-dotnet-data-movement-library-app).
+Aplikace pro přesun dat je nyní dokončena. [Ukázka celého kódu je k dispozici na GitHubu](https://github.com/azure-samples/storage-dotnet-data-movement-library-app).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Azure Storage referenční dokumentaci knihovny pro přesun dat](https://azure.github.io/azure-storage-net-data-movement).
+[Referenční dokumentace ke knihovně Azure Storage Data Movement](https://azure.github.io/azure-storage-net-data-movement).
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]

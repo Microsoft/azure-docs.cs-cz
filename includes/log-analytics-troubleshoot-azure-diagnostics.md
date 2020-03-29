@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: magoedte
 ms.openlocfilehash: 6890c71ac7c265d46cc77751786fea4d0b228588
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175400"
 ---
 ### <a name="troubleshoot-azure-diagnostics"></a>Odstraňování potíží Diagnostiky Azure
@@ -30,8 +30,8 @@ Pokud chcete poskytovatele prostředků registrovat, proveďte na webu Azure Por
 Jakmile bude poskytovatel prostředků *Microsoft.insights* zaregistrovaný, zopakujte konfiguraci diagnostiky.
 
 
-Potřebujete v prostředí PowerShell, pokud se zobrazí následující chybová zpráva, aktualizujte na verzi prostředí PowerShell:
+Pokud se v PowerShellu zobrazí následující chybová zpráva, budete muset aktualizovat verzi PowerShellu:
 
 `Set-AzDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
 
-Aktualizujte na verzi prostředí Azure PowerShell, postupujte podle pokynů [instalace Azure Powershellu](/powershell/azure/install-az-ps) článku.
+Aktualizujte svou verzi Azure PowerShellu podle pokynů v článku [Instalace Azure PowerShellu.](/powershell/azure/install-az-ps)

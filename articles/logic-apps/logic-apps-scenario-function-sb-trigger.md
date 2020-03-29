@@ -1,55 +1,55 @@
 ---
 title: Volání aplikací logiky s využitím Azure Functions
-description: Vytvoření Azure Functions, které volají nebo spouštějí Logic Apps naslouchání Azure Service Bus
+description: Vytvářejte funkce Azure, které volají nebo aktivují aplikace logiky nasloucháním službě Azure Service Bus
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75428710"
 ---
-# <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Volání nebo spuštění Logic Apps pomocí Azure Functions a Azure Service Bus
+# <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Volání nebo aktivace logických aplikací pomocí Azure Functions a Azure Service Bus
 
-Můžete použít [Azure Functions](../azure-functions/functions-overview.md) pro aktivaci aplikace logiky, pokud potřebujete nasadit dlouhodobě spuštěný naslouchací proces nebo úlohu. Můžete například vytvořit funkci Azure, která naslouchá ve frontě [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) a hned spustí aplikaci logiky jako Trigger push.
+[Funkce Azure](../azure-functions/functions-overview.md) můžete použít k aktivaci aplikace logiky, když potřebujete nasadit dlouhotrvající naslouchací proces nebo úlohu. Můžete například vytvořit funkci Azure, která naslouchá ve frontě [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) a okamžitě spustí aplikaci logiky jako aktivační událost push.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Azure Service Bus obor názvů. Pokud obor názvů nemáte, [vytvořte nejprve obor názvů](../service-bus-messaging/service-bus-create-namespace-portal.md).
+* Obor názvů Azure Service Bus. Pokud nemáte obor názvů, [vytvořte nejprve obor názvů](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
-* Aplikace Azure Functions, což je kontejner pro Azure Functions. Pokud nemáte aplikaci Function App, [nejprve vytvořte aplikaci Function App](../azure-functions/functions-create-first-azure-function.md)a ujistěte se, že jste vybrali .NET jako zásobník modulu runtime.
+* Aplikace funkce Azure, což je kontejner pro funkce Azure. Pokud nemáte aplikaci funkce, [nejprve vytvořte aplikaci funkcí](../azure-functions/functions-create-first-azure-function.md)a ujistěte se, že vyberete .NET jako zásobník za běhu.
 
-* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 ## <a name="create-logic-app"></a>Vytvoření aplikace logiky
 
-V tomto scénáři máte funkci spouštějící jednotlivé aplikace logiky, které chcete aktivovat. Nejdřív vytvořte aplikaci logiky, která začíná triggerem požadavku HTTP. Tato funkce volá koncový bod při každém přijetí zprávy fronty.
+Pro tento scénář máte funkci spuštěnou každou aplikaci logiky, kterou chcete aktivovat. Nejprve vytvořte aplikaci logiky, která začíná aktivační událostí požadavku HTTP. Funkce volá tento koncový bod při každém přijetí zprávy fronty.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prázdnou aplikaci logiky.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com)a vytvořte prázdnou aplikaci logiky.
 
-   Pokud s Logic Apps začínáte, Projděte si [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+   Pokud s aplikacemi logiky teprve začínáte, přečtěte si [úvodní příručku: Vytvořte první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Do vyhledávacího pole zadejte `http request`. V seznamu triggery vyberte aktivační událost **při přijetí požadavku HTTP** .
+1. Do vyhledávacího pole zadejte `http request`. Ze seznamu aktivačních událostí vyberte aktivační **událost Při přijetí požadavku HTTP.**
 
    ![Vybrat aktivační událost](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
-   Pomocí triggeru žádosti můžete volitelně zadat schéma JSON, které se bude používat ve zprávě fronty. Schémata JSON pomůžou návrháři aplikace logiky pochopit strukturu vstupních dat a usnadnit tak použití ve vašem pracovním postupu.
+   Pomocí aktivační události Požadavek můžete volitelně zadat schéma JSON, které se použije se zprávou fronty. JSON schémata pomoci Návrhář epoje pochopit strukturu pro vstupní data a usnadnit výstupy pro použití v pracovním postupu.
 
-1. Chcete-li zadat schéma, zadejte schéma do pole **schéma JSON textu žádosti** , například:
+1. Chcete-li zadat schéma, zadejte schéma do pole **Schéma JSON v** požadavku, například:
 
-   ![Zadat schéma JSON](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger-schema.png)
+   ![Určení schématu JSON](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger-schema.png)
 
-   Pokud schéma nemáte, ale máte ukázkovou datovou část ve formátu JSON, můžete z této datové části vygenerovat schéma.
+   Pokud nemáte schéma, ale máte ukázkovou datovou část ve formátu JSON, můžete vygenerovat schéma z této datové části.
 
-   1. V triggeru žádosti vyberte **použít ukázkovou datovou část k vygenerování schématu**.
+   1. V aktivační události Požadavek vyberte **použít ukázkovou datovou část ke generování schématu**.
 
-   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte datovou část ukázky a potom vyberte **Hotovo**.
+   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON**, zadejte ukázkovou datovou část a pak vyberte **Hotovo**.
 
       ![Zadat ukázkovou datovou část](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
@@ -83,47 +83,47 @@ V tomto scénáři máte funkci spouštějící jednotlivé aplikace logiky, kte
    }
    ```
 
-1. Přidejte všechny další akce, které chcete spustit po přijetí zprávy fronty.
+1. Přidejte další akce, které chcete spustit po obdržení zprávy fronty.
 
-   Můžete třeba poslat e-mail s konektorem Office 365 Outlook.
+   Můžete například odeslat e-mail pomocí konektoru Office 365 Outlook.
 
-1. Uložte aplikaci logiky, která generuje adresu URL zpětného volání pro Trigger v této aplikaci logiky. Později použijete tuto adresu URL zpětného volání v kódu pro aktivační událost fronty Azure Service Bus.
+1. Uložte aplikaci logiky, která generuje adresu URL zpětného volání pro aktivační událost v této aplikaci logiky. Později použijete tuto adresu URL zpětného volání v kódu pro aktivační událost fronty služby Azure Service Bus.
 
-   Adresa URL zpětného volání se zobrazí ve vlastnosti **Adresa URL příspěvku http** .
+   Adresa URL zpětného volání se zobrazí ve vlastnosti **adresy URL HTTP POST.**
 
    ![Vygenerovaná adresa URL zpětného volání pro aktivační událost](./media/logic-apps-scenario-function-sb-trigger/callback-URL-for-trigger.png)
 
-## <a name="create-azure-function"></a>Vytvoření funkce Azure Functions
+## <a name="create-azure-function"></a>Vytvoření funkce Azure
 
-Dále vytvořte funkci, která funguje jako Trigger a naslouchat do fronty.
+Dále vytvořte funkci, která funguje jako aktivační událost a naslouchá frontě.
 
-1. V Azure Portal otevřete a rozbalte aplikaci Function App, pokud ještě není otevřená. 
+1. Na webu Azure Portal otevřete a rozbalte aplikaci funkcí, pokud už není otevřená. 
 
-1. V části název aplikace Function App rozbalte **funkce**. V podokně **funkce** vyberte možnost **Nová funkce**.
+1. Pod názvem aplikace funkce rozbalte **funkce Funkce**. V podokně **Funkce** vyberte **Nová funkce**.
 
-   ![Rozbalte položku funkce a vyberte možnost Nová funkce.](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
+   ![Rozbalte "Funkce" a vyberte "Nová funkce"](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 
-1. Tuto šablonu vyberte na základě toho, jestli jste vytvořili novou aplikaci Function App, kde jste vybrali .NET jako zásobník modulu runtime, nebo používáte existující aplikaci Function App.
+1. Tuto šablonu vyberte na základě toho, zda jste vytvořili novou aplikaci funkcí, ve které jste jako zásobník za běhu vybrali rozhraní .NET nebo zda používáte existující aplikaci funkcí.
 
-   * Pro nové aplikace Function App vyberte tuto šablonu: **aktivační událost Service Bus Queue** .
+   * U nových aplikací funkcí vyberte tuto šablonu: **Aktivační událost fronty služby Service Bus**
 
-     ![Vybrat šablonu pro novou aplikaci Function App](./media/logic-apps-scenario-function-sb-trigger/current-add-queue-trigger-template.png)
+     ![Výběr šablony pro novou aplikaci funkcí](./media/logic-apps-scenario-function-sb-trigger/current-add-queue-trigger-template.png)
 
-   * V případě existující aplikace Function App vyberte tuto šablonu: **aktivační událost Service Bus Queue C# –**
+   * Pro existující aplikaci funkcí vyberte tuto šablonu: **Aktivační událost fronty služby Service Bus - C#**
 
-     ![Vybrat šablonu pro existující aplikaci Function App](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
+     ![Výběr šablony pro existující aplikaci funkcí](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 
-1. V podokně **aktivace fronty Azure Service Bus** zadejte název triggeru a nastavte **připojení Service Bus** pro frontu, která používá `OnMessageReceive()` naslouchací proces sady Azure Service Bus SDK, a vyberte **vytvořit**.
+1. V podokně **aktivační chodu fronty služby Azure Service Bus** zadejte název aktivační události a nastavte připojení **služby Service Bus** pro frontu, která používá naslouchací proces Azure Service Bus SDK, `OnMessageReceive()` a vyberte **Vytvořit**.
 
-1. Napište základní funkci pro volání dříve vytvořeného koncového bodu aplikace logiky pomocí zprávy Queue jako triggeru. Před psaním funkce si Projděte tyto požadavky:
+1. Napište základní funkci pro volání dříve vytvořeného koncového bodu aplikace logiky pomocí zprávy fronty jako aktivační události. Než napíšete svou funkci, přečtěte si tyto aspekty:
 
-   * V tomto příkladu se používá typ obsahu zprávy `application/json`, ale tento typ můžete podle potřeby změnit.
+   * Tento příklad `application/json` používá typ obsahu zprávy, ale tento typ můžete podle potřeby změnit.
    
-   * Z důvodu možného souběžného spouštění funkcí, velkých objemů nebo velkého zatížení se vyhnete vytvoření instance [třídy HTTPClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) pomocí příkazu `using` a přímém vytváření instancí HTTPClient na požadavek. Další informace najdete v tématu [Použití HttpClientFactory k implementaci odolných HTTP požadavků](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
+   * Z důvodu možnésouběžně spuštěné funkce, velké svazky nebo velká zatížení, vyhnout `using` se vytváření instanci [třídy HTTPClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) s příkazem a přímo vytvářet instance HTTPClient na požadavek. Další informace naleznete [v tématu HttpClientFactory k implementaci odolných požadavků HTTP](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
    
-   * Pokud je to možné, znovu použijte instanci klientů protokolu HTTP. Další informace najdete v tématu [Správa připojení v Azure Functions](../azure-functions/manage-connections.md).
+   * Pokud je to možné, znovu použijte instanci klientů HTTP. Další informace najdete [v tématu Správa připojení v Azure Functions](../azure-functions/manage-connections.md).
 
-   Tento příklad používá [metodu`Task.Run`](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) v [asynchronním](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) režimu. Další informace naleznete v tématu [asynchronní programování s Async a await](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/).
+   Tento příklad používá [ `Task.Run` metodu](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) v [asynchronním](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) režimu. Další informace naleznete [v tématu Asynchronní programování s async a await](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/).
 
    ```csharp
    using System;
@@ -144,10 +144,10 @@ Dále vytvořte funkci, která funguje jako Trigger a naslouchat do fronty.
    }
    ```
 
-1. Pokud chcete funkci otestovat, přidejte zprávu fronty pomocí nástroje, jako je [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer).
+1. Chcete-li tuto funkci otestovat, přidejte zprávu fronty pomocí nástroje, jako je například [Průzkumník sběrnice](https://github.com/paolosalvatori/ServiceBusExplorer).
 
-   Aplikace logiky se spustí hned poté, co funkce obdrží zprávu.
+   Aplikace logiky se aktivuje ihned po funkci obdrží zprávu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Volání, Trigger nebo vnoření pracovních postupů pomocí koncových bodů HTTP](../logic-apps/logic-apps-http-endpoint.md)
+* [Volání, aktivační událost nebo vnoření pracovních postupů pomocí koncových bodů HTTP](../logic-apps/logic-apps-http-endpoint.md)

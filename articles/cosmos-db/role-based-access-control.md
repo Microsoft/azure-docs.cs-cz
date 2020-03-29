@@ -1,49 +1,49 @@
 ---
-title: Řízení přístupu na základě role v Azure Cosmos DB
-description: Přečtěte si, jak Azure Cosmos DB poskytuje ochranu databáze pomocí integrace služby Active Directory (RBAC).
+title: Řízení přístupu na základě role ve službě Azure Cosmos DB
+description: Zjistěte, jak Azure Cosmos DB poskytuje ochranu databáze s integrací active directory (RBAC).
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: 0c7332a42751b35b6ad8ec3f88afb7bc78cc85e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445089"
 ---
-# <a name="role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role v Azure Cosmos DB
+# <a name="role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role ve službě Azure Cosmos DB
 
-Azure Cosmos DB poskytuje integrované řízení přístupu na základě role (RBAC) pro běžné scénáře správy v Azure Cosmos DB. Jednotlivec, který má profil v Azure Active Directory může přiřadit tyto role RBAC uživatelům, skupinám, instančním objektům nebo spravovaným identitám pro udělení nebo odepření přístupu k prostředkům a operacím na Azure Cosmos DBch prostředcích. Přiřazování rolí je vymezené jenom na úrovni řízení a přístup, což zahrnuje přístup k účtům Azure Cosmos, databázím, kontejnerům a nabídkám (propustnost).
+Azure Cosmos DB poskytuje integrované řízení přístupu na základě rolí (RBAC) pro běžné scénáře správy v Azure Cosmos DB. Jednotlivec, který má profil ve službě Azure Active Directory můžete přiřadit tyto role RBAC uživatelům, skupinám, instanční objekty nebo spravované identity udělit nebo odepřít přístup k prostředkům a operacím na prostředky Azure Cosmos DB. Přiřazení rolí jsou vymezeny pouze pro přístup k rovině řízení, který zahrnuje přístup k účtům Azure Cosmos, databázím, kontejnerům a nabídkám (propustnost).
 
 ## <a name="built-in-roles"></a>Vestavěné role
 
-Níže jsou uvedené předdefinované role podporované nástrojem Azure Cosmos DB:
+Níže jsou uvedeny předdefinované role podporované službou Azure Cosmos DB:
 
-|**Předdefinovaná role**  |**Popis**  |
+|**Vestavěná role**  |**Popis**  |
 |---------|---------|
-|[Přispěvatel účtu DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Může spravovat účty Azure Cosmos DB.|
-|[Čtečka účtů Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Může číst data Azure Cosmos DB účtu.|
-|[Cosmos – operátor zálohování](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Může odeslat žádost o obnovení pro databázi Azure Cosmos nebo kontejner.|
-|[Operátor Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Může zřídit účty, databáze a kontejnery Azure Cosmos, ale nemůže získat přístup k klíčům, které jsou nutné pro přístup k datům.|
+|[Přispěvatel účtu DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Můžete spravovat účty Azure Cosmos DB.|
+|[Čtečka účtů Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Umí číst data účtu Azure Cosmos DB.|
+|[Operátor zálohování Cosmos](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Můžete odeslat žádost o obnovení pro databázi Azure Cosmos nebo kontejneru.|
+|[Operátor Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Můžete zřídit Účty Azure Cosmos, databáze a kontejnery, ale nemůže získat přístup ke klíčům, které jsou nutné pro přístup k datům.|
 
 > [!IMPORTANT]
-> Podpora RBAC v Azure Cosmos DB se vztahuje pouze na operace řízení roviny. Operace roviny dat se zabezpečují pomocí hlavních klíčů nebo tokenů prostředků. Další informace najdete v tématu [zabezpečený přístup k datům v Azure Cosmos DB](secure-access-to-data.md)
+> Podpora RBAC v Azure Cosmos DB platí pouze pro operace roviny řízení. Operace roviny dat jsou zabezpečeny pomocí hlavních klíčů nebo tokenů prostředků. Další informace najdete v tématu [Zabezpečený přístup k datům v Azure Cosmos DB](secure-access-to-data.md)
 
-## <a name="identity-and-access-management-iam"></a>Správa identit a řízení přístupu (IAM)
+## <a name="identity-and-access-management-iam"></a>Správa identit a přístupu (IAM)
 
-Podokno **řízení přístupu (IAM)** v Azure Portal slouží ke konfiguraci řízení přístupu na základě role v prostředcích Azure Cosmos. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role. Následující snímek obrazovky ukazuje integraci služby Active Directory (RBAC) pomocí řízení přístupu (IAM) v Azure Portal:
+Podokno **Řízení přístupu (IAM)** na portálu Azure se používá ke konfiguraci řízení přístupu na základě rolí na prostředky Azure Cosmos. Role jsou použity pro uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Můžete použít předdefinované role nebo vlastní role pro jednotlivce a skupiny. Následující snímek obrazovky ukazuje integraci služby Active Directory (RBAC) pomocí řízení přístupu (IAM) na webu Azure Portal:
 
-![Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze](./media/role-based-access-control/database-security-identity-access-management-rbac.png)
+![Řízení přístupu (IAM) na webu Azure Portal – prokázání zabezpečení databáze](./media/role-based-access-control/database-security-identity-access-management-rbac.png)
 
 ## <a name="custom-roles"></a>Vlastní role
 
-Kromě předdefinovaných rolí můžou uživatelé také vytvářet [vlastní role](../role-based-access-control/custom-roles.md) v Azure a tyto role použít pro instanční objekty ve všech předplatných v rámci svého tenanta služby Active Directory. Vlastní role poskytují uživatelům způsob, jak vytvořit definice rolí RBAC s vlastní sadou operací poskytovatele prostředků. Informace o tom, které operace jsou k dispozici pro vytváření vlastních rolí pro Azure Cosmos DB najdete v tématu [Azure Cosmos DB operace poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb) .
+Kromě předdefinovaných rolí mohou uživatelé také vytvářet [vlastní role](../role-based-access-control/custom-roles.md) v Azure a použít tyto role na objekty zabezpečení služeb ve všech předplatných v rámci jejich tenanta služby Active Directory. Vlastní role poskytují uživatelům způsob, jak vytvořit definice rolí RBAC s vlastní sadou operací zprostředkovatele prostředků. Informace o tom, které operace jsou k dispozici pro vytváření vlastních rolí pro Azure Cosmos DB, viz [operace zprostředkovatele prostředků Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
 
-## <a name="preventing-changes-from-cosmos-sdk"></a>Zabránění změnám ze sady Cosmos SDK
+## <a name="preventing-changes-from-cosmos-sdk"></a>Zabránění změnám z sady Cosmos SDK
 
-Poskytovatel prostředků Cosmos se může uzamknout, aby se zabránilo jakýmkoli změnám v prostředcích, včetně účtů Cosmos, databází, kontejnerů a propustnosti, od jakýchkoli klientů připojujících se pomocí klíčů účtu (tj. aplikace připojující se prostřednictvím sady Cosmos SDK). Při nastavení musí být změny libovolného prostředku od uživatele s patřičnou rolí RBAC a přihlašovacími údaji. Tato možnost je nastavena s hodnotou vlastnosti `disableKeyBasedMetadataWriteAccess` v poskytovateli prostředků Cosmos. Příklad šablony Azure Resource Manager s nastavením Tato vlastnost je níže.
+Zprostředkovatele prostředků Cosmos lze uzamknout, aby se zabránilo jakékoli změny prostředků, včetně účtu Cosmos, databáze, kontejnery a propustnost z libovolného klienta připojení prostřednictvím klíče účtu (tj. aplikace připojení přes Cosmos SDK). Pokud je nastavena, změny libovolného prostředku musí být od uživatele s vlastní rolí RBAC a pověření. Tato funkce je `disableKeyBasedMetadataWriteAccess` nastavena s hodnotou vlastnosti v zprostředkovateli prostředků Cosmos. Příklad šablony Azure Resource Manager s tímto nastavením vlastností je níže.
 
 ```json
 {
@@ -65,6 +65,6 @@ Poskytovatel prostředků Cosmos se může uzamknout, aby se zabránilo jakýmko
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je řízení přístupu na základě role (RBAC) pro prostředky Azure](../role-based-access-control/overview.md)
+- [Co je řízení přístupu na základě rolí (RBAC) pro prostředky Azure](../role-based-access-control/overview.md)
 - [Vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md)
-- [Azure Cosmos DB operace poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
+- [Operace zprostředkovatele prostředků Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)

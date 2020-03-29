@@ -1,25 +1,25 @@
 ---
-title: Vytvoření klíče syntetického oddílu v Azure Cosmos DB
-description: Naučte se používat syntetické klíče oddílů v kontejnerech Azure Cosmos k distribuci dat a zatížení rovnoměrně napříč klíči oddílů.
+title: Vytvoření syntetického klíče oddílu v Azure Cosmos DB
+description: Zjistěte, jak používat syntetické klíče oddílů v kontejnerech Azure Cosmos k rovnoměrné distribuci dat a úloh mezi klíče oddílů.
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441220"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Vytvoření syntetického klíče oddílu
 
-Osvědčeným postupem je klíč oddílu s velkým množstvím různých hodnot, jako jsou stovky nebo tisíce. Cílem je distribuovat vaše data a zatížení napříč položkami přidruženými k těmto hodnotám klíče oddílu. Pokud taková vlastnost ve vašich datech neexistuje, můžete vytvořit *syntetický klíč oddílu*. Tento dokument popisuje několik základních postupů pro generování syntetického klíče oddílu pro váš Cosmos kontejner.
+Je vhodné mít klíč oddílu s mnoha odlišnými hodnotami, například stovky nebo tisíce. Cílem je rovnoměrně distribuovat data a úlohy mezi položky přidružené k těmto hodnotám klíče oddílu. Pokud taková vlastnost v datech neexistuje, můžete vytvořit *syntetický klíč oddílu*. Tento dokument popisuje několik základních technik pro generování syntetického klíče oddílu pro kontejner Cosmos.
 
-## <a name="concatenate-multiple-properties-of-an-item"></a>Zřetězení více vlastností položky
+## <a name="concatenate-multiple-properties-of-an-item"></a>Zřetězit více vlastností položky
 
-Klíč oddílu můžete vytvořit zřetězením více hodnot vlastností do jedné uměle `partitionKey` vlastnosti. Tyto klíče se označují jako syntetické klíče. Zvažte například následující příklad dokumentu:
+Klíč oddílu můžete vytvořit zřetězením více hodnot vlastností do jedné umělé `partitionKey` vlastnosti. Tyto klíče jsou označovány jako syntetické klíče. Zvažte například následující ukázkový dokument:
 
 ```JavaScript
 {
@@ -28,7 +28,7 @@ Klíč oddílu můžete vytvořit zřetězením více hodnot vlastností do jedn
 }
 ```
 
-Pro předchozí dokument je jednou z možností nastavit/deviceId nebo/Date jako klíč oddílu. Tuto možnost použijte, pokud chcete rozdělit kontejner na základě ID nebo data zařízení. Další možností je zřetězit tyto dvě hodnoty do syntetické vlastnosti `partitionKey`, která se používá jako klíč oddílu.
+Pro předchozí dokument je jednou z možností nastavení /deviceId nebo /date jako klíč oddílu. Tuto možnost použijte, pokud chcete oddíl kontejneru na základě ID zařízení nebo data. Další možností je zřetězit tyto dvě `partitionKey` hodnoty do syntetické vlastnosti, která se používá jako klíč oddílu.
 
 ```JavaScript
 {
@@ -38,27 +38,27 @@ Pro předchozí dokument je jednou z možností nastavit/deviceId nebo/Date jako
 }
 ```
 
-V případě scénářů v reálném čase můžete mít v databázi tisíce položek. Namísto ručního přidávání syntetického klíče definujte logiku na straně klienta pro zřetězení hodnot a vložte syntetický klíč do položek v kontejnerech Cosmos.
+Ve scénářích v reálném čase můžete mít tisíce položek v databázi. Namísto ručního přidání syntetického klíče definujte logiku na straně klienta, abyste zřetězili hodnoty, a vložte syntetický klíč do položek v kontejnerech Cosmos.
 
-## <a name="use-a-partition-key-with-a-random-suffix"></a>Použít klíč oddílu s náhodnou příponou
+## <a name="use-a-partition-key-with-a-random-suffix"></a>Použití klíče oddílu s náhodnou příponou
 
-Další možnou strategií pro distribuci úloh je, že se na konci hodnoty klíče oddílu připojí náhodné číslo. Při distribuci položek tímto způsobem můžete provádět paralelní operace zápisu napříč oddíly.
+Další možnou strategií pro rovnoměrnější distribuci úlohy je připojit náhodné číslo na konec hodnoty klíče oddílu. Při distribuci položek tímto způsobem můžete provádět paralelní operace zápisu napříč oddíly.
 
-Příkladem je, že klíč oddílu představuje datum. Můžete zvolit náhodné číslo mezi 1 a 400 a zřetězit ho jako příponu k datu. Tato metoda má za následek hodnoty klíčů oddílu, například `2018-08-09.1`,`2018-08-09.2`a tak dále, prostřednictvím `2018-08-09.400`. Vzhledem k tomu, že je klíč oddílu náhodně, operace zápisu na kontejneru v každém dni jsou rovnoměrně rozloženy mezi několik oddílů. Výsledkem této metody je lepší paralelismus a celková vyšší propustnost.
+Příkladem je, pokud klíč oddílu představuje datum. Můžete zvolit náhodné číslo mezi 1 a 400 a zřetězit jej jako příponu k datu. Výsledkem této metody jsou `2018-08-09.1``2018-08-09.2`hodnoty klíče oddílu, jako je , a tak dále, prostřednictvím `2018-08-09.400`. Vzhledem k tomu, že randomizovat klíč oddílu, operace zápisu na kontejneru na každý den jsou rovnoměrně rozloženy mezi více oddílů. Tato metoda má za následek lepší paralelismus a celkově vyšší propustnost.
 
-## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Použít klíč oddílu s předem vypočítanými příponami 
+## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Použití klíče oddílu s předem vypočtenými příponami 
 
-Strategie náhodné přípony může významně zlepšit propustnost zápisu, ale je obtížné si přečíst konkrétní položku. Neznáte hodnotu přípony, která se použila při zapsání položky. Aby bylo snazší číst jednotlivé položky, použijte strategii předběžně vypočítaných přípon. Místo použití náhodného čísla k distribuci položek mezi oddíly použijte číslo, které se vypočítá na základě něčeho, co chcete dotazovat.
+Strategie náhodné přípony může výrazně zlepšit propustnost zápisu, ale je obtížné číst konkrétní položku. Neznáte hodnotu přípony, která byla použita při zapisujepoložku. Chcete-li usnadnit čtení jednotlivých položek, použijte předem vypočtenou strategii příponek. Namísto použití náhodného čísla k distribuci položek mezi oddíly použijte číslo, které je vypočteno na základě něčeho, na co chcete dotazovat.
 
-Vezměte v úvahu předchozí příklad, kde kontejner používá jako klíč oddílu datum. Nyní předpokládejme, že každá položka má atribut `Vehicle-Identification-Number` (`VIN`), ke kterému chceme získat přístup. Dále Předpokládejme, že často spouštíte dotazy pro hledání položek `VIN`, a navíc k datu. Předtím, než aplikace zapíše položku do kontejneru, může vypočítat příponu hash založenou na kódu VIN a připojit ji k datu klíče oddílu. Výpočet může vygenerovat číslo mezi 1 a 400, které je rovnoměrně distribuováno. Tento výsledek je podobný výsledkům, které vytvořila metoda strategie náhodné přípony. Hodnota klíče oddílu je pak datum zřetězení s vypočítaným výsledkem.
+Vezměme si předchozí příklad, kde kontejner používá datum jako klíč oddílu. Nyní předpokládejme, že `Vehicle-Identification-Number` `VIN`každá položka má atribut ( ), ke kterému chceme získat přístup. Dále předpokládejme, že často spouštět `VIN`dotazy najít položky podle , kromě data. Předtím, než aplikace zapíše položku do kontejneru, může vypočítat příponu hash na základě VIN a připojit ji k datu klíče oddílu. Výpočet může generovat číslo mezi 1 a 400, které je rovnoměrně rozloženo. Tento výsledek je podobný výsledkům vytvořeným metodou strategie náhodné přípony. Hodnota klíče oddílu je pak datum spojené s vypočteným výsledkem.
 
-V této strategii jsou zápisy rovnoměrně rozloženy mezi hodnoty klíčů oddílu a mezi oddíly. Můžete snadno přečíst konkrétní položku a datum, protože můžete vypočítat hodnotu klíče oddílu pro konkrétní `Vehicle-Identification-Number`. Výhodou této metody je, že se můžete vyhnout vytváření jediného aktivního klíče oddílu, tj. klíč oddílu, který přebírá všechny úlohy. 
+S touto strategií zápisy jsou rovnoměrně rozloženy mezi hodnoty klíče oddílu a přes oddíly. Můžete snadno číst konkrétní položku a datum, protože můžete vypočítat hodnotu klíče oddílu pro konkrétní `Vehicle-Identification-Number`. Výhodou této metody je, že se můžete vyhnout vytvoření jednoho klíče aktivního oddílu, tj. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o konceptu dělení na oddíly najdete v následujících článcích:
+Další informace o konceptu dělení najdete v následujících článcích:
 
-* Přečtěte si další informace o [logických oddílech](partition-data.md).
-* Přečtěte si další informace o tom, jak [zřídit propustnost na Cosmosch kontejnerech a databázích Azure](set-throughput.md).
-* Naučte se [zřídit propustnost v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
-* Naučte se [zřídit propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).
+* Další informace o [logických oddílech](partition-data.md).
+* Další informace o tom, jak [zřídit propustnost na kontejnery A databáze Azure Cosmos](set-throughput.md).
+* Zjistěte, jak [zřídit propustnost v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
+* Zjistěte, jak [zřídit propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).

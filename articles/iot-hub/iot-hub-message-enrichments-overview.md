@@ -1,6 +1,6 @@
 ---
-title: Přehled rozšíření zpráv IoT Hub Azure
-description: V tomto článku se dozvíte o rozšířeních zpráv, která IoT Hub schopnost zasílat zprávy s dalšími informacemi ještě předtím, než se zprávy odešlou do určeného koncového bodu.
+title: Přehled obohacení zpráv služby Azure IoT Hub
+description: Tento článek ukazuje obohacení zpráv, které poskytují službu IoT Hub možnost razítko zprávy s další informace před zprávy jsou odesílány do určeného koncového bodu.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,95 +9,95 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
 ms.openlocfilehash: c3dbd01faf61c164c88f09b0da03c07be4abd187
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75429123"
 ---
-# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Rozšíření zpráv pro zprávy ze zařízení na Cloud IoT Hub
+# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Obohacení zpráv pro zprávy služby IoT Hub mezi zařízeními
 
-*Rozšiřování zpráv* je schopnost IoT Hub k *razítku* zpráv s dalšími informacemi, než se zprávy odešlou do určeného koncového bodu. Jedním z důvodů použití rozšíření zpráv je zahrnutí dat, která je možné použít ke zjednodušení zpracování po směru. Například obohacení zpráv telemetrie zařízení pomocí značky s dvojitou silou zařízení může snížit zatížení zákazníky, aby pro tyto informace volalo volání rozhraní API zařízení.
+*Obohacení zpráv* je schopnost služby IoT Hub *razítko* zprávy s další informace před zprávy jsou odeslány do určeného koncového bodu. Jedním z důvodů, proč používat obohacení zpráv, je zahrnout data, která lze použít ke zjednodušení následného zpracování. Například obohacení telemetrických zpráv zařízení pomocí značky dvojčete zařízení může snížit zatížení zákazníků, aby tato informace mohla volat rozhraní API dvojčete zařízení.
 
-![Tok rozšíření zpráv](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
+![Tok obohacení zpráv](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
 
-Rozšíření zprávy má tři klíčové prvky:
+Obohacení zprávy má tři klíčové prvky:
 
-* Název nebo klíč obohacení
+* Název obohacení nebo klíč
 
 * Hodnota
 
-* Jeden nebo více [koncových bodů](iot-hub-devguide-endpoints.md) , pro které by mělo být rozšíření použito.
+* Jeden nebo více [koncových bodů,](iot-hub-devguide-endpoints.md) pro které by mělo být použito obohacení.
 
-**Klíč** je řetězec. Klíč může obsahovat jenom alfanumerické znaky nebo tyto speciální znaky: spojovník (`-`), podtržítko (`_`) a perioda (`.`).
+**Klíčem** je řetězec. Klávesa může obsahovat pouze alfanumerické znaky`-`nebo tyto`_`speciální znaky: pomlčka ( ), podtržítko ( ) a tečka (`.`).
 
-**Hodnota** může být libovolná z následujících příkladů:
+**Hodnota** může být libovolný z následujících příkladů:
 
-* Libovolný statický řetězec. Dynamické hodnoty, jako jsou podmínky, logika, operace a funkce, nejsou povoleny. Pokud například vyvíjíte aplikaci SaaS, kterou používá několik zákazníků, můžete každému zákazníkovi přiřadit identifikátor a tento identifikátor zpřístupnit v aplikaci. Po spuštění aplikace IoT Hub označí zprávy telemetrie zařízení pomocí identifikátoru zákazníka, aby bylo možné zpracovat zprávy jinak pro každého zákazníka.
+* Libovolný statický řetězec. Dynamické hodnoty, jako jsou podmínky, logika, operace a funkce, nejsou povoleny. Pokud například vyvíjíte aplikaci SaaS, kterou používá několik zákazníků, můžete každému zákazníkovi přiřadit identifikátor a tento identifikátor zpřístupnit v aplikaci. Při spuštění aplikace ioT Hub orazítkuje telemetrické zprávy zařízení s identifikátorem zákazníka, takže je možné zpracovat zprávy odlišně pro každého zákazníka.
 
-* Název centra IoT, které posílá zprávu Tato hodnota je *$iothubname*.
+* Název služby IoT hub odesílající zprávu. Tato hodnota je *$iothubname*.
 
-* Informace z vlákna zařízení, například jeho cesta. Příklady by byly *$Twin. Tags. Field* a *$Twin. Tags. Zeměpisná šířka*.
+* Informace z dvojčete zařízení, například jeho cesta. Příkladem mohou být *$twin.tags.field* a *$twin.tags.latitude*.
 
    > [!NOTE]
-   > V tuto chvíli pouze $iothubname, $twin. tagss, $twin. Properties. resired a $twin. Properties. hlášeny, podporované proměnné pro rozšíření zprávy.
+   > V současné době pouze $iothubname, $twin.tags, $twin.properties.desired a $twin.properties.reported jsou podporované proměnné pro obohacení zpráv.
 
-Rozšíření zprávy jsou přidána jako vlastnosti aplikace do zpráv odesílaných na vybrané koncové body.  
+Obohacení zpráv jsou přidány jako vlastnosti aplikace do zpráv odeslaných do vybraného koncového bodu.  
 
 ## <a name="applying-enrichments"></a>Použití obohacení
 
-Zprávy mohou pocházet z libovolného zdroje dat podporovaného [IoT Hub směrováním zpráv](iot-hub-devguide-messages-d2c.md), včetně následujících příkladů:
+Zprávy mohou pocházet z libovolného zdroje dat podporovaného [směrováním zpráv služby IoT Hub](iot-hub-devguide-messages-d2c.md), včetně následujících příkladů:
 
 * telemetrie zařízení, jako je teplota nebo tlak
-* oznámení o zdvojených změnách zařízení – změny v zařízení jsou v nevlákenné
-* události životního cyklu zařízení, například při vytvoření nebo odstranění zařízení
+* oznámení o změně dvojčete zařízení – změny v dvojčeti zařízení
+* události životního cyklu zařízení, například když je zařízení vytvořeno nebo odstraněno
 
-Ke zprávám, které se předávají do předdefinovaného koncového bodu IoT Hub, můžete přidat rozšíření nebo zprávy směrované do vlastních koncových bodů, jako je například úložiště objektů BLOB v Azure, fronta Service Bus nebo Service Bus téma.
+Obohacení můžete přidat ke zprávám, které se nacházejí do integrovaného koncového bodu služby IoT Hub, nebo zpráv, které jsou směrovány do vlastních koncových bodů, jako je úložiště objektů Blob Azure, fronta služby Service Bus nebo téma služby Service Bus.
 
-Můžete přidat rozšíření do zpráv, které jsou publikovány do Event Grid tím, že vyberete koncový bod jako Event Grid. Vytvoříme výchozí trasu v IoT Hub k telemetrie zařízení na základě vašeho předplatného Event Grid. Tato jediná trasa dokáže zvládnout všechna Vaše předplatná Event Grid. Po vytvoření odběru Event gridu pro telemetrii zařízení můžete nakonfigurovat rozšíření pro koncový bod služby Event Grid. Další informace najdete v tématu [IoT Hub a Event Grid](iot-hub-event-grid.md).
+Obohacení zpráv, které jsou publikovány do mřížky událostí, můžete přidat výběrem koncového bodu jako mřížky událostí. V centru IoT hub uvedeme výchozí trasu telemetrii zařízení na základě vašeho předplatného Služby Event Grid. Tato jediná trasa může zpracovat všechna vaše odběry služby Event Grid. Můžete nakonfigurovat obohacení pro koncový bod mřížky událostí po vytvoření odběr mřížky událostí pro telemetrii zařízení. Další informace naleznete [v tématu Iot Hub a Event Grid](iot-hub-event-grid.md).
 
-Pro každý koncový bod se aplikují obohacení. Pokud zadáte pro určitý koncový bod pět obohacení, budou se všechny zprávy, které se na tento koncový bod natištěny, natištěny se stejnými pěti rozšířeními.
+Obohacení se aplikuje na jeden koncový bod. Pokud zadáte pět obohacení, které mají být označeny pro konkrétní koncový bod, všechny zprávy, které přejdou do tohoto koncového bodu jsou označeny stejnými pěti obohacení.
 
-Rozšíření lze konfigurovat pomocí následujících metod:
+Obohacení lze konfigurovat pomocí následujících metod:
 
 | **Metoda** | **Příkaz** |
 | ----- | -----| 
-| Portál | [Azure Portal](https://portal.azure.com) | Viz [kurz pro rozšíření zpráv](tutorial-message-enrichments.md) . | 
-| Azure CLI   | [AZ IoT Hub Message-obohacení](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Portál | [Portál Azure](https://portal.azure.com) | Podívejte se na [kurz obohacení zpráv](tutorial-message-enrichments.md) | 
+| Azure CLI   | [az iot hub obohacení zpráv](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
 
-Přidání rozšíření zprávy nepřidá latenci do směrování zpráv.
+Přidání obohacení zprávy nepřidá latence směrování zpráv.
 
-Informace o tom, jak vyzkoušet rozšíření zpráv, najdete v [kurzu rozšíření zpráv](tutorial-message-enrichments.md) .
+Chcete-li vyzkoušet obohacení zpráv, podívejte se na [kurz obohacení zpráv](tutorial-message-enrichments.md)
 
 ## <a name="limitations"></a>Omezení
 
-* Můžete přidat až 10 rozšíření na jednu IoT Hub pro tato centra na úrovni Standard nebo Basic. Pro centra IoT na bezplatné úrovni můžete přidat až 2 rozšíření.
+* Můžete přidat až 10 obohacení na IoT Hub pro tyto rozbočovače ve standardní nebo základní vrstvě. Pro IoT Hubs ve volné vrstvě můžete přidat až 2 obohacení.
 
-* V některých případech, pokud aplikujete obohacení s hodnotou nastavenou na značku nebo vlastnost v zařízení, bude tato hodnota označena jako řetězcová hodnota. Pokud je například hodnota obohacení nastavena na $twin. Tags. Field, zprávy budou označeny řetězcem "$twin. Tags. Field", nikoli hodnotou tohoto pole z vlákna. K tomu dochází v následujících případech:
+* V některých případech, pokud používáte obohacení s hodnotou nastavenou na značku nebo vlastnost v dvojčeti zařízení, hodnota bude označena jako hodnota řetězce. Pokud je například hodnota obohacení nastavena na $twin.tags.field, budou zprávy označeny řetězcem "$twin.tags.field" spíše než hodnotou tohoto pole z dvojčete. K tomu dochází v následujících případech:
 
-   * Vaše IoT Hub jsou na úrovni Basic. Centra IoT úrovně Basic nepodporují vlákna zařízení.
+   * Váš IoT Hub je v základní vrstvě. Základní vrstvy služby IoT huby nepodporují dvojčata zařízení.
 
-   * Vaše IoT Hub jsou na úrovni Standard, ale zařízení, které posílá zprávu, nemá žádné nevlákenné zařízení.
+   * Vaše služba IoT Hub je ve standardní úrovni, ale zařízení odesílající zprávu nemá žádné dvojče zařízení.
 
-   * Vaše IoT Hub jsou na úrovni Standard, ale cesta k tomuto zařízení použitá pro hodnotu rozšíření neexistuje. Pokud je například hodnota obohacení nastavena na $twin. Tags. Location a v případě, že se zařízení nezobrazuje v rámci značek, je zpráva označena řetězcem "$twin. Tags. Location". 
+   * Vaše ioT hub je ve standardní vrstvě, ale cesta dvojčete zařízení používá pro hodnotu obohacení neexistuje. Pokud je například hodnota obohacení nastavena na $twin.tags.location a dvojče zařízení nemá vlastnost umístění pod značkami, je zpráva označena řetězcem "$twin.tags.location". 
 
-* Aktualizace vlákna zařízení může trvat až pět minut, než se odrazí v odpovídající hodnotě obohacení.
+* Aktualizace dvojčete zařízení může trvat až pět minut, než se projeví v odpovídající hodnotě obohacení.
 
-* Celková velikost zprávy, včetně rozšíření, nesmí překročit 256 KB. V případě, že velikost zprávy překračuje 256 KB, bude zpráva vynechá IoT Hub. Můžete použít [IoT Hub metriky](iot-hub-metrics.md) k identifikaci a ladění chyb při vyřazení zpráv. Například můžete monitorovat D2C. telemetrie. odchozí. neplatné.
+* Celková velikost zprávy, včetně obohacení, nesmí překročit 256 kB. Pokud velikost zprávy překročí 256 kB, služba IoT Hub zprávu vysadí. [Metriky ioT hubu](iot-hub-metrics.md) můžete použít k identifikaci a ladění chyb při vynechání zpráv. Můžete například sledovat d2c.telemetry.egress.invalid.
 
-* Rozšiřování zpráv se nevztahuje na události s digitálními událostmi změny (součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md)).
+* Obohacení zpráv se nevztahuje na události změny digitálních dvojčat (část [veřejné verze IoT Plug and Play).](../iot-pnp/overview-iot-plug-and-play.md)
 
 ## <a name="pricing"></a>Ceny
 
-Rozšíření zpráv je k dispozici bez dalších poplatků. V současné době se vám budou účtovat poplatky za odeslání zprávy do IoT Hub. U této zprávy se účtují jenom jednou, a to i v případě, že zpráva přejde do více koncových bodů.
+Obohacení zpráv je k dispozici bez dalších poplatků. V současné době se vám účtují poplatky při odeslání zprávy do služby IoT Hub. Za tuto zprávu se vám budou účtovat jenom jednou, i když zpráva přejde do více koncových bodů.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o směrování zpráv do IoT Hub najdete v těchto článcích:
+Další informace o směrování zpráv do služby IoT Hub najdete v těchto článcích:
 
-* [Kurz rozšíření zpráv](tutorial-message-enrichments.md)
+* [Kurz obohacení zpráv](tutorial-message-enrichments.md)
 
-* [Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů](iot-hub-devguide-messages-d2c.md)
+* [Směrování zpráv služby IoT Hub slouží k odesílání zpráv mezi zařízeními a cloudy do různých koncových bodů](iot-hub-devguide-messages-d2c.md)
 
-* [Kurz: IoT Hub směrování](tutorial-routing.md)
+* [Kurz: Směrování služby IoT Hub](tutorial-routing.md)

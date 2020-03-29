@@ -1,5 +1,5 @@
 ---
-title: Kódy chyb na portálu Azure Active Directory | Microsoft Docs
+title: Kódy chyb na portálu Azure Active Directory | Dokumenty společnosti Microsoft
 description: Referenční informace ke kódům chyb v sestavě aktivit přihlašování.
 services: active-directory
 documentationcenter: ''
@@ -18,18 +18,18 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6b4e21a23ebc455653b4d5b22ac18023b533728c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78190462"
 ---
-# <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestav aktivit přihlašování 
+# <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestavy aktivit přihlášení 
 
-Na základě informací poskytnutých [sestavou přihlášení uživatelů](concept-sign-ins.md)najdete odpovědi na otázky, jako například:
+S informacemi poskytnutými [v sestavě přihlášení uživatele](concept-sign-ins.md)najdete odpovědi na otázky, jako jsou:
 
-- Kdo se přihlásil k aplikaci?
-- Které aplikace se přihlásily k?
+- Kdo se přihlásil k mé přihlášce?
+- Ke kterým žádostem byly přihlášeny?
 - Která přihlášení se nezdařila a proč?
 
 Pokud se přihlášení nezdaří, zobrazí se kód chyby odpovídající selhání. [Vyhledejte popis kódu chyby](https://login.microsoftonline.com/error).

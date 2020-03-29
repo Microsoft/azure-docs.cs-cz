@@ -1,49 +1,49 @@
 ---
-title: Přesunout prostředky nasazení Azure Classic
-description: Pomocí Azure Resource Manager můžete přesunout prostředky nasazení Classic do nové skupiny prostředků nebo předplatného.
+title: Přesunutí prostředků nasazení Azure Classic
+description: Pomocí Správce prostředků Azure přesuňte prostředky klasického nasazení do nové skupiny prostředků nebo předplatného.
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 78b9769a31fa0c96c12e18d05cb9c484aa52a1d5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75485283"
 ---
-# <a name="move-guidance-for-classic-deployment-model-resources"></a>Pokyny k přesunutí pro prostředky modelu nasazení Classic
+# <a name="move-guidance-for-classic-deployment-model-resources"></a>Přesunout pokyny pro prostředky modelu klasického nasazení
 
-Postup přesunutí prostředků nasazených přes klasický model se liší v závislosti na tom, zda přesouváte prostředky v rámci předplatného nebo na nové předplatné.
+Postup přesunutí prostředků nasazených prostřednictvím klasického modelu se liší v závislosti na tom, zda přesouváte prostředky v rámci předplatného nebo na nové předplatné.
 
-## <a name="move-in-the-same-subscription"></a>Přesunout do stejného předplatného
+## <a name="move-in-the-same-subscription"></a>Přechod ve stejném předplatném
 
-Při přesouvání prostředků z jedné skupiny prostředků do jiné skupiny prostředků v rámci stejného předplatného, platí následující omezení:
+Při přesunu prostředků z jedné skupiny prostředků do jiné skupiny prostředků v rámci stejného předplatného platí následující omezení:
 
-* Nelze přesunout virtuální sítě (classic).
-* Virtuální počítače (classic) musí přesunout s cloudovou službou.
-* Cloudová služba se dá přesunout jedině po přesunutí zahrnuje všechny virtuální počítače.
-* Pouze jednu cloudovou službu se dají přesunout najednou.
-* Pouze jeden účet úložiště (classic) je možné přesunout najednou.
-* Účet úložiště (classic) se nedají přesouvat v rámci jedné operace se virtuální počítač nebo cloudovou službu.
+* Virtuální sítě (klasické) nelze přesunout.
+* Virtuální počítače (klasické) musí být přesunuty pomocí cloudové služby.
+* Cloudovou službu lze přesunout pouze v případě, že přesun zahrnuje všechny své virtuální počítače.
+* Současně lze přesunout pouze jednu cloudovou službu.
+* Současně lze přesouvat pouze jeden účet úložiště (klasický).
+* Účet úložiště (klasický) nelze přesunout ve stejné operaci s virtuálním počítačem nebo cloudové služby.
 
-Pokud chcete přesunout klasické prostředky do nové skupiny prostředků v rámci stejného předplatného, použijte [operace přesunu Standard](../move-resource-group-and-subscription.md) na portálu, Azure PowerShell, Azure CLI nebo REST API. Můžete použít stejné operace jako při přesouvání prostředků Resource Manageru.
+Chcete-li přesunout klasické prostředky do nové skupiny prostředků v rámci stejného předplatného, použijte [standardní operace přesunutí](../move-resource-group-and-subscription.md) prostřednictvím portálu, Azure PowerShell, Azure CLI nebo REST API. Stejné operace, které používáte k přesunutí prostředků Správce prostředků, se používají stejné operace.
 
-## <a name="move-across-subscriptions"></a>Pohyb mezi předplatnými
+## <a name="move-across-subscriptions"></a>Přechod mezi předplatnými
 
-Při přesouvání prostředků do nového předplatného, platí následující omezení:
+Při přesunu prostředků do nového předplatného platí následující omezení:
 
-* V rámci jedné operace musí přesunout všechny klasické prostředky v předplatném.
+* Všechny klasické prostředky v předplatném musí být přesunuty ve stejné operaci.
 * Cílové předplatné nesmí mít žádné jiné klasické prostředky.
-* Přesunutí je možné jenom požádat prostřednictvím samostatných rozhraní REST API pro klasické přesuny. Standardní příkazy Resource Manager přesunout nefungují při přesouvání klasických prostředků do nového předplatného.
+* Přesun lze požadovat pouze prostřednictvím samostatného rozhraní REST API pro klasické pohyby. Standardní Správce prostředků přesunout příkazy nefungují při přesunu klasických prostředků do nového předplatného.
 
-Klasické prostředky přesunout do nového předplatného, pomocí operace REST, které jsou specifické pro klasické prostředky. Chcete-li použít REST, proveďte následující kroky:
+Chcete-li přesunout klasické prostředky do nového předplatného, použijte operace REST, které jsou specifické pro klasické prostředky. Chcete-li použít rest, postupujte takto:
 
-1. Zaškrtněte, pokud zdrojové předplatné mohl podílet na přesun mezi předplatnými. Použijte následující operace:
+1. Zkontrolujte, jestli se zdrojové předplatné může účastnit přesunu mezi předplatnými. Použijte následující operaci:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
    ```
 
-     V textu požadavku patří:
+     V textu žádosti uveďte:
 
    ```json
    {
@@ -51,7 +51,7 @@ Klasické prostředky přesunout do nového předplatného, pomocí operace REST
    }
    ```
 
-     Odpověď pro operace ověření je v následujícím formátu:
+     Odpověď pro operaci ověření je v následujícím formátu:
 
    ```json
    {
@@ -63,13 +63,13 @@ Klasické prostředky přesunout do nového předplatného, pomocí operace REST
    }
    ```
 
-1. Zaškrtněte, pokud cílové předplatné se mohou účastnit přesun mezi předplatnými. Použijte následující operace:
+1. Zkontrolujte, jestli se cílové předplatné může zúčastnit přesunu mezi předplatnými. Použijte následující operaci:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
    ```
 
-     V textu požadavku patří:
+     V textu žádosti uveďte:
 
    ```json
    {
@@ -77,14 +77,14 @@ Klasické prostředky přesunout do nového předplatného, pomocí operace REST
    }
    ```
 
-     Odpověď je ve stejném formátu jako zdroj ověření předplatného.
-1. Pokud obě předplatná projít ověřením, přesune všechny klasické prostředky z jednoho předplatného do jiného předplatného pomocí následující operace:
+     Odpověď je ve stejném formátu jako ověření zdrojového předplatného.
+1. Pokud obě předplatná projít ověření, přesuňte všechny klasické prostředky z jednoho předplatného do jiného předplatného s následující operací:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
    ```
 
-    V textu požadavku patří:
+    V textu žádosti uveďte:
 
    ```json
    {
@@ -92,10 +92,10 @@ Klasické prostředky přesunout do nového předplatného, pomocí operace REST
    }
    ```
 
-Operace může běžet několik minut.
+Operace může být spuštěna několik minut.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte potíže s přesunem klasických prostředků, obraťte se na [podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+Pokud máte potíže s přesunem klasických zdrojů, obraťte se [na podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-Příkazy pro přesunutí prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../move-resource-group-and-subscription.md).
+Příkazy k přesunutí prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../move-resource-group-and-subscription.md).
