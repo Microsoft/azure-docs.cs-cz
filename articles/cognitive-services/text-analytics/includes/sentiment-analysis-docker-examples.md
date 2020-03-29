@@ -1,7 +1,7 @@
 ---
-title: Příklady Analýza mínění kontejnerů Docker
+title: Příklady dockeru analýzy mínění
 titleSuffix: Azure Cognitive Services
-description: Příklady Analýza mínění kontejnerů Docker
+description: Příklady dockeru analýzy mínění
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,15 +10,15 @@ ms.topic: include
 ms.date: 09/19/2019
 ms.author: dapine
 ms.openlocfilehash: c384d9d8af932db343aad106b6e89ea87821d900
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71148384"
 ---
-### <a name="sentiment-analysis-container-docker-examples"></a>Příklady Analýza mínění kontejnerů Docker
+### <a name="sentiment-analysis-container-docker-examples"></a>Příklady dockeru analýzy mínění
 
-Následující příklady Docker jsou pro kontejner Analýza mínění.
+Následující příklady dockeru jsou pro kontejner analýzy mínění.
 
 #### <a name="basic-example"></a>Základní příklad 
 

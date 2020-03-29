@@ -1,7 +1,7 @@
 ---
-title: Počet předem sestavených entit – LUIS
+title: Předestavěná entita číslo – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje informace o čísle předem připravených entit v Language Understanding (LUIS).
+description: Tento článek obsahuje informace o předem sestavené entitě číslo v jazyce porozumění (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,19 +12,19 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 85e3589d7467691e2b9a11879510ab980bbd875a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273466"
 ---
-# <a name="number-prebuilt-entity-for-a-luis-app"></a>Počet předem sestavené entity pro aplikaci LUIS
-Existuje mnoho způsobů, ve kterých se používají číselných hodnot umožňuje vyčíslit, express a popisují informace. Tento článek se týká jenom některé z možných příkladů. Služba LUIS interpretuje kolísání uživatele projevy a vrátí konzistentní číselné hodnoty. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující číslo k záměry aplikace.
+# <a name="number-prebuilt-entity-for-a-luis-app"></a>Číslo předem sestavené entity pro aplikaci LUIS
+Existuje mnoho způsobů, jak číselné hodnoty se používají ke kvantifikace, vyjádřit a popsat části informací. Tento článek popisuje pouze některé z možných příkladů. Služba LUIS interpretuje změny v projevech uživatelů a vrací konzistentní číselné hodnoty. Vzhledem k tomu, že tato entita je již trénovaný, není nutné přidávat příklad projevy obsahující číslo záměry aplikace.
 
-## <a name="types-of-number"></a>Typy číslo
-Číslo je spravované z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) v GitHubu.
+## <a name="types-of-number"></a>Typy čísel
+Číslo je spravováno z úložiště GitHub [s textem pro rozpoznávání](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml)
 
-## <a name="examples-of-number-resolution"></a>Příklady čísel řešení
+## <a name="examples-of-number-resolution"></a>Příklady rozlišení čísel
 
 | Promluva        | Entita   | Řešení |
 | ------------- |:----------------:| --------------:|
@@ -38,17 +38,17 @@ Existuje mnoho způsobů, ve kterých se používají číselných hodnot umož�
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-LUIS zahrnuje rozpoznanou hodnotu **`builtin.number`** entitu v poli `resolution` odpovědi JSON, kterou vrátí.
+Služba LUIS zahrnuje rozpoznanou hodnotu **`builtin.number`** entity v `resolution` poli odpovědi JSON, kterou vrátí.
 
-## <a name="resolution-for-prebuilt-number"></a>Řešení pro předem připravených číslo
+## <a name="resolution-for-prebuilt-number"></a>Rozlišení pro předem sestavené číslo
 
-Pro dotaz se vrátí následující objekty entity:
+Pro dotaz jsou vráceny následující objekty entity:
 
 `order two dozen eggs`
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující JSON je s parametrem `verbose` nastaveným na `false`:
+Následující JSON je `verbose` s parametrem nastaveným na `false`:
 
 ```json
 "entities": {
@@ -57,9 +57,9 @@ Následující JSON je s parametrem `verbose` nastaveným na `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/V3-verbose)
 
-Následující JSON je s parametrem `verbose` nastaveným na `true`:
+Následující JSON je `verbose` s parametrem nastaveným na `true`:
 
 ```json
 "entities": {
@@ -83,9 +83,9 @@ Následující JSON je s parametrem `verbose` nastaveným na `true`:
     }
 }
 ```
-#### <a name="v2-response"></a>[Odpověď v2](#tab/V2)
+#### <a name="v2-response"></a>[Odpověď V2](#tab/V2)
 
-Následující příklad ukazuje služby luis, odpověď ve formátu JSON, který obsahuje řešení hodnota 24, utterance "z dvou tuctů".
+Následující příklad ukazuje odpověď JSON z LUIS, která zahrnuje rozlišení hodnoty 24, pro utterance "dva tucty".
 
 ```json
 "entities": [
@@ -105,6 +105,6 @@ Následující příklad ukazuje služby luis, odpověď ve formátu JSON, kter�
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
 
-Přečtěte si o [měně](luis-reference-prebuilt-currency.md), [ordinálním](luis-reference-prebuilt-ordinal.md)a [procentuálním podílu](luis-reference-prebuilt-percentage.md).
+Informace o [měně](luis-reference-prebuilt-currency.md), [oslnění](luis-reference-prebuilt-ordinal.md)a [procentu](luis-reference-prebuilt-percentage.md).

@@ -1,7 +1,7 @@
 ---
 title: Koncepce návrhu s využitím akustické simulace
 titlesuffix: Azure Cognitive Services
-description: Tento koncepční přehled vysvětluje, jak by akustické množství projektu v podniku bylo akustické simulace do procesu návrhu zvuku.
+description: Tento koncepční přehled vysvětluje, jak aplikace Project Acoustics zahrnuje akustickou simulaci do procesu návrhu zvuku.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,55 +12,55 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 11e1e3f45b5198ddedb6c31fcd354185adef445d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68854298"
 ---
-# <a name="project-acoustics-design-process-concepts"></a>Koncepty procesu návrhu projektových akustických procesů
+# <a name="project-acoustics-design-process-concepts"></a>Koncepty návrhu návrhu akustiky projektu
 
-Tento koncepční přehled vysvětluje, jak se akustické z projektu dotýkají fyzické akustické simulace do procesu návrhu zvuku.
+Tento koncepční přehled vysvětluje, jak aplikace Project Acoustics začleňuje fyzickou akustickou simulaci do procesu návrhu zvuku.
 
-## <a name="sound-design-with-audio-dsp-parameters"></a>Návrh zvuku pomocí parametrů pro DSP zvuku
+## <a name="sound-design-with-audio-dsp-parameters"></a>Zvukový design s parametry audio DSP
 
-Trojrozměrné interaktivní tituly dosahují svého konkrétního zvuku pomocí bloků protokolu DSP (audio Digital Signal Processing) hostovaných ve zvukovém stroji. Tyto bloky mají složitost od jednoduchého míchání až po reverberation, ozvěny, zpoždění, rovnost, kompresi a omezení a další účinky. Výběr, uspořádání a nastavení parametrů těchto efektů je zodpovědný za návrháře zvuku, který sestavuje zvukový graf, který dosahuje cílů prostředí estetického a hraní.
+3D interaktivní tituly dosahují svého konkrétního zvuku pomocí zvukových digitálních bloků zpracování signálu (DSP) hostovaných v audio motoru. Tyto bloky se pohybují ve složitosti od jednoduchého míchání, dozvuku, echo, zpoždění, vyrovnání, komprese a omezení a další chod. Výběr, uspořádání a nastavení parametrů na tyto efekty je odpovědností zvukového designéra, který staví zvukový graf, který dosahuje estetických a herních cílů zážitku.
 
-V interaktivním názvu, když se zvuky a naslouchací proces pohybují po celém 3D prostoru, jak se tyto parametry přizpůsobí měnícím se podmínkám? Návrhář zvuku často uspořádá svazky v prostoru, které jsou naprogramovány na změny parametrů, aby bylo možné dosáhnout změn v reverberationch efektech, například nebo pro ztracené zvuky v kombinaci při přesunu naslouchacího procesu z jedné části scény do jiné. K dispozici jsou také zvukové systémy, které mohou automatizovat některé z těchto efektů.
+Jak se tyto parametry přizpůsobují měnícím se podmínkám, jak se tyto parametry přizpůsobují měnícím se podmínkám, jak se tyto parametry přizpůsobují měnícím se podmínkám? Zvukový designér často uspořádá svazky v celém prostoru, které jsou naprogramovány tak, aby spouštěly změny parametrů, aby se dosáhlo změn v efektech dozvuku, například, nebo aby se vyhnul zvukům v mixu, když se posluchač pohybuje z jedné části scény do druhé. K dispozici jsou také akustické systémy, které mohou některé z těchto efektů automatizovat.
 
-Trojrozměrné tituly používají osvětlovací a kinematické fyziky, které jsou kvalitativně motivované, ale návrháři jsou upravené, aby dosáhli kombinace jejich cílů. Vizuální Návrhář nenastavuje jednotlivé hodnoty pixelů, ale místo toho upravuje 3D modely, materiály a systémy lehkých přenosů, které jsou fyzicky založené na obchodování na vizuálních prostředcích a náklady na procesor. Jaký je stejný postup pro zvuk? Akustické množství projektu je prvním krokem při průzkumu této otázky. Nejdřív se podíváme na to, co znamená pro přenos akustického energie přes prostor.
+3D tituly používají systémy osvětlení a kinematické fyziky, které jsou fyzikicky motivované, ale designově upravené tak, aby dosáhly kombinace cílů ponoření a hraní. Vizuální návrhář nenastavuje jednotlivé hodnoty pixelů, ale spíše upravuje 3D modely, materiály a lehké transportní systémy, které jsou fyzicky založeny na vypnutí vizuální estetiky a nákladů na procesor. Jaký by byl ekvivalentní proces pro zvuk? Projekt Akustika je prvním krokem při zkoumání této otázky. Nejprve se dotkneme toho, co to znamená přepravovat akustickou energii prostorem.
 
-![Snímek obrazovky AltSpace scény překrytý reverb zónami](media/reverb-zones-altspace.png)
+![Snímek obrazovky altspace scény překryté zónami dozvuku](media/reverb-zones-altspace.png)
 
-## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Impulse odpovědi: Akustické propojení dvou bodů v prostoru
+## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Impulsní odezvy: Akusticky spojující dva body v prostoru
 
-Pokud jste obeznámeni s návrhem zvukového obsahu, možná budete obeznámeni s akustickými Impulse odpověďmi. Akustická odezva Impulse modeluje přenos zvuku ze zdroje do naslouchacího procesu. Proto může odpověď Impulse zachytit každý zajímavý účinek akustické místnosti, jako je například překrytí a reverberation. Odpovědi na Impulse mají také určité výkonné vlastnosti, které umožňují škálování zvukových PROCESORů. Přidání dvou zvukových signálů společně a zpracování pomocí odpovědi Impulse má stejný výsledek jako použití odpovědi Impulse odděleně u každého signálu a přidání výsledků. Akustické šíření a odezvy Impulse také nezávisí na zpracovávaných zvukech, pouze na scéně, která je modelována, a na zdrojových a naslouchacích místech. V krátké době Impulse odpověď přechází vlivem scény na šíření zvuku.
+Pokud jste obeznámeni se zvukovým designem, můžete být obeznámeni s akustickými impulsními odezvami. Akustická impulsní odezva modeluje přenos zvuku ze zdroje na posluchače. Proto impulsní odezva může zachytit každý zajímavý efekt akustiky místnosti, jako je okluze a dozvuk. Impulsní odezvy mají také určité výkonné vlastnosti, které umožňují škálování zvukových efektů DSP. Sečtenídvou zvukových signálů dohromady a zpracování s impulsní odezvou dává stejný výsledek jako použití impulsní odezvy zvlášť na každý signál a přidání výsledků. Akustické šíření a impulsní odezvy také nezávisí na zpracovávaném zvuku, pouze na modelované scéně a na umístění zdroje a posluchače. Stručně řečeno, impulsní odezva destiluje vliv scény na šíření zvuku.
 
-Impulse odpověď zachycuje každý zajímavý zvukový efekt a můžeme ho použít pro efektivní zvuk s filtrem a můžeme získat Impulse odpovědi z měření nebo simulace. Ale co dělat v případě, že nechcete, aby akustické objemy přesně odpovídaly fyzikě, ale místo toho je tvarovat, aby odpovídaly požadavkům scény emocionálních? Ale podobně jako u hodnot v pixelech je Impulse odpověď jenom na seznam tisíců čísel, jak ho můžeme upravit tak, aby splňovalo estetické potřeby? A co když chceme mít překrytí/překážku, který se při předávání přes dveře nebo za překážkou mění bez problémů, kolik odpovědí Impulse potřebujeme k hladkému účinku? Co když se zdroj pohybuje rychle? Jak se interpoluje?
+Impulsní odezva zachycuje každý zajímavý akustický efekt místnosti a můžeme jej efektivně aplikovat na zvuk pomocí filtru a můžeme získat impulsní odezvy z měření nebo simulace. Ale co když nechceme, aby akustika přesně odpovídala fyzice, ale spíše ji formovat tak, aby odpovídala emocionálním požadavkům scény? Ale stejně jako hodnoty pixelů, impulsní odezva je jen seznam tisíců čísel, jak ji můžeme případně upravit tak, aby vyhovovala estetickým potřebám? A co když chceme mít okluzi / obstrukce, která se mění hladce při průchodu dveřmi nebo za překážkami, kolik impulsních reakcí potřebujeme, abychom získali hladký efekt? Co když se zdroj pohybuje rychle? Jak to, že interpolujeme?
 
-Zvuky v IT obtížně využívají simulaci a Impulse odezvy pro některé aspekty akustických funkcí v interaktivních titulcích. Přesto ale můžeme vytvořit systém zvukové dopravy, který podporuje úpravy návrháře, pokud můžeme připojit Naše odpovědi Impulse z simulace s našimi známými parametry efektu DSP pro záznam.
+Pro některé aspekty akustiky v interaktivních titulech se zdá obtížné používat simulační a impulsní odezvy. Ale stále můžeme vytvořit audio transportní systém, který podporuje úpravy designérů, pokud můžeme spojit naše impulsní reakce ze simulace s našimi známými parametry zvukového DSP efektu.
 
-## <a name="connecting-simulation-to-audio-dsp-with-parameters"></a>Propojení simulace s použitím parametrů
+## <a name="connecting-simulation-to-audio-dsp-with-parameters"></a>Připojení simulace ke zvukovému DSP s parametry
 
-Impulse odpověď obsahuje každý zajímavý (a každý nezajímavý) Akustický účinek. Zvukové bloky DSP v případě správného nastavení jejich parametrů můžou vykreslovat zajímavý akustický efekt. Použití akustické simulace k řízení zvukového bloku DSP pro automatizaci zvukového přenosu ve 3D scéně je jen pro měření parametrů zvukového protokolu DSP z Impulse odpovědi. Toto měření se dobře rozumí pro určité běžné a důležité akustické účinky, včetně překrytí, překážky, portálu a reverberation.
+Impulsní odezva obsahuje každý zajímavý (a každý nezajímavý) akustický efekt. Audio DSP bloky, když jsou jejich parametry správně nastaveny, může vykreslit zajímavý akustický efekt. Použití akustické simulace k pohonu zvukového bloku DSP pro automatizaci přenosu zvuku ve 3D scéně je pouze otázkou měření parametrů audio DSP z impulsní odezvy. Toto měření je dobře pochopeno pro některé běžné a důležité akustické účinky, včetně okluze, obstrukce, portálování a dozvuku.
 
-Pokud je však simulace připojena přímo k parametrům DSP zvukového zařízení, kde se jedná o úpravu návrháře? Co jsme získali? Díky zahození odpovědí na Impulse a uchování několika parametrů DSP je dobré získat velkou velikost paměti. A pokud chcete, aby Návrhář před konečným výsledkem vyplynul, musíme najít pouze způsob, jak vložit návrháře mezi simulací a DSP zvukového zařízení.
+Ale pokud je simulace připojena přímo k parametrům audio DSP, kde je nastavení návrháře? Co jsme získali? No, získáme značné množství paměti zpět tím, že vyřadíimpulsní odpovědi a udržet několik DSP parametrů. A dát návrháři určitou moc nad konečným výsledkem, musíme jen najít způsob, jak vložit návrháře mezi simulaci a audio DSP.
 
-![Graf se stylizovanou Impulse odpovědí s překrývajícími se parametry](media/acoustic-parameters.png)
+![Graf se stylizovanou impulsní odezvou s překrytými parametry](media/acoustic-parameters.png)
 
-## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>Návrh zvuku tím, že transformují zvukové parametry DSP z simulace
+## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>Zvukový design transformací parametrů zvukového DSP ze simulace
 
-Vezměte v úvahu účinek, který vaše Sunglasses má na pohled světa. V jasném dni mohou skleněné brýle omezit září na pohodlnější. V tmavé místnosti možná nebudete moci vůbec zobrazit cokoli. Brýle nenastavuje určitou úroveň jasu ve všech situacích. jenom to vše zjednodušuje.
+Zamyslete se nad tím, jaký vliv mají vaše sluneční brýle na váš pohled na svět. Za jasného dne mohou brýle snížit lesk na něco pohodlnějšího. V temné místnosti možná nic neuvidíte. Brýle nenastavují určitou úroveň jasu ve všech situacích; Dělají všechno temnější.
 
-Pokud používáme simulaci k vyřízení našeho zvukového DSP pomocí parametrů překrytí a reverberation, můžeme po simulátoru přidat filtr pro úpravu parametrů, které se v zařízení DSP zobrazuje. Filtr by vynutil určitou úroveň překrytí nebo reverb zakončení, podobně jako Sunglasses v každé místnosti stejnou hodnotu jasu. Filtr může pouze učinit všechny occluder occlude méně. Nebo occlude více. Přidáním a úpravou filtru parametrů ztmavení překrytí, velkých a otevřených místností by stále neměl žádný překrytí efekt, zatímco dveře by se zvýšily na silný překrytí efekt a zároveň zachovávají plynulé přechody v důsledku. které simulace poskytuje.
+Pokud použijeme simulaci k pohonu našeho audio DSP pomocí parametrů okluze a dozvuku, můžeme přidat filtr po simulátoru pro úpravu parametrů, které DSP "vidí". Filtr by nevynutil určitou úroveň okluze nebo dozvuku ocasní délky, podobně jako sluneční brýle nedělají v každé místnosti stejný jas. Filtr může jen dělat každý okluzní okluze méně. Nebo více okluze. Přidáním a úpravou jednoho "ztmavujícího" parametru okluze by velké otevřené místnosti stále měly malý nebo žádný efekt okluze, zatímco dveře by se zvýšily ze středního na silný efekt okluze při zachování hladkosti ve efektních přechodech které simulace poskytuje.
 
-V tomto paradigma se úlohy návrháře mění z výběru akustických parametrů pro každou a každou situaci, k výběru a úpravě filtrů, které se použijí na nejdůležitější parametry DSP přicházející z simulace. Zvyšuje vliv na aktivity návrháře z úzkých důvodů nastavení hladkého přechodu na vyšší aspekty intenzity překrytí a reverberation a přítomnosti zdrojů v kombinaci. V případě, že se situace vyžaduje, je vždy k dispozici jeden filtr, který umožňuje jednoduše přejít zpět a vybrat parametry DSP pro konkrétní zdroj v konkrétní situaci.
+V tomto paradigmatu se úloha návrháře mění od výběru akustických parametrů pro každou situaci až po výběr a úpravu filtrů, které se použijí na nejdůležitější parametry DSP pocházející ze simulace. Povyšuje činnost projektanta z úzkých obav o nastavení hladkých přechodů na vyšší obavy z intenzity okluze a dozvuku a přítomnosti zdrojů v mixu. Samozřejmě, když situace vyžaduje, jeden filtr vždy k dispozici je jednoduše vrátit k výběru parametrů DSP pro konkrétní zdroj v konkrétní situaci.
 
-## <a name="sound-design-in-project-acoustics"></a>Návrh zvuku v případě akustického projektu
+## <a name="sound-design-in-project-acoustics"></a>Zvukový design v aplikaci Project Acoustics
 
-Balíček akustického projektu integruje každou z komponent popsaných výše: simulátor, kodér, který extrahuje parametry a sestavuje prostředky akustického přenosu, DSP pro přenos zvuku a výběr filtrů. Návrh zvuku s akustickými vlivy na projekt má za následek výběr parametrů pro filtry, které upraví parametry překrytí a reverberation odvozené z simulace a aplikované na zvukový procesor, s dynamickými ovládacími prvky zveřejněnými v editoru her a zvukovým modulem.
+Balíček Akustika projektu integruje každou z výše popsaných součástí: simulátor, kodér, který extrahuje parametry a vytváří akustiku, zvukový DSP a výběr filtrů. Zvukový design s project acoustics zahrnuje výběr parametrů pro filtry, které upravují parametry okluze a dozvuku odvozené ze simulace a aplikované na audio DSP, s dynamickými ovládacími prvky vystavenými uvnitř herního editoru a zvukového enginu.
 
-## <a name="next-steps"></a>Další postup
-* Vyzkoušejte si paradigmata návrhu pomocí [projektů pro rychlý Start akustického projektu pro Unity](unity-quickstart.md) nebo [rychlý Start akustického projektu pro Unreal](unreal-quickstart.md)
-* Prozkoumejte ovládací [prvky pro návrh akustického projektu pro Unity](unity-workflow.md) nebo [ovládací prvky návrhu pro Unreal](unreal-workflow.md) , které jsou v projektu.
+## <a name="next-steps"></a>Další kroky
+* Vyzkoušejte paradigma návrhu pomocí [rychlého startu aplikace Project Acoustics for Unity](unity-quickstart.md) nebo [rychlého startu aplikace Akustika projektu pro unreal](unreal-quickstart.md)
+* Prozkoumejte [ovládací prvky návrhu akustiky projektu pro Unity](unity-workflow.md) nebo ovládací [prvky návrhu akustiky projektu pro unreal](unreal-workflow.md)
 

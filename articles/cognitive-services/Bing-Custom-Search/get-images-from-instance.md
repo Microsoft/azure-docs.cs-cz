@@ -1,7 +1,7 @@
 ---
-title: Získat Image z vlastního zobrazení – vlastní vyhledávání Bingu
+title: Získání obrázků z vlastního zobrazení – Vlastní vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
-description: Základní přehled o použití vlastní vyhledávání Bingu k získání bitové kopie z vašeho vlastního zobrazení webu.
+description: Přehled vysoké úrovně o používání vlastního vyhledávání Bingu k získání obrázků z vlastního zobrazení webu.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
 ms.openlocfilehash: 5fa71c62969e0f1ff7e98f374eca63efa051c041
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66390334"
 ---
-# <a name="get-images-from-your-custom-view"></a>Získat Image z vlastního zobrazení
+# <a name="get-images-from-your-custom-view"></a>Získání obrázků z vlastního zobrazení
 
-Vlastní vyhledávání obrázků Bingu umožňuje vylepšit prostředí pro vlastní vyhledávání s obrázky. Podobně jako webové výsledky podporuje vlastní vyhledávání i vyhledávání obrázků v seznamu webů vaší instance. Můžete získat pomocí rozhraní API Bingu pro vyhledávání bitové kopie pro vlastní Image nebo prostřednictvím uživatelského rozhraní hostované funkce. Pomocí funkcí hostované uživatelského rozhraní se snadno používá a doporučuje se pro vaše prostředí hledání zprovoznění v krátkém pořadí.  Informace o konfiguraci vašeho uživatelského rozhraní hostované zahrnout i obrázky, najdete v tématu [hostované uživatelské rozhraní konfigurace](hosted-ui.md).
+Hledání vlastních obrázků bingem umožňuje obohatit vlastní vyhledávání o obrázky. Podobně jako webové výsledky podporuje vlastní vyhledávání i vyhledávání obrázků v seznamu webů vaší instance. Obrázky můžete získat pomocí rozhraní API pro vyhledávání vlastních obrázků bingu nebo prostřednictvím funkce Hosted UI. Použití funkce Hosted UI je jednoduché a doporučuje se pro zprovoznění vyhledávání v krátkém pořadí.  Informace o konfiguraci hostovaného uživatelského rozhraní tak, aby zahrnovalo obrázky, naleznete v [tématu Konfigurace hostovaného uživatelského rozhraní](hosted-ui.md).
 
-Pokud chcete mít větší kontrolu nad zobrazením výsledků hledání, můžete použít rozhraní API Bingu pro vyhledávání bitové kopie pro vlastní. Vzhledem k tomu, že volání rozhraní API je podobný volání rozhraní API vyhledávání obrázků Bingu checkout [Bingu pro vyhledávání obrázků](../Bing-Image-Search/overview.md) příklady volání rozhraní API. Ale předtím, než to uděláte, seznamte se s [referenční dokumentace rozhraní API pro vyhledávání obrázků vlastní](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) obsah. Hlavní rozdíly jsou podporované parametry dotazu (musí obsahovat parametr dotazu customConfig) a odesílat požadavky na koncový bod.
+Pokud chcete mít větší kontrolu nad zobrazením výsledků hledání, můžete použít rozhraní API pro vyhledávání vlastních obrázků bingu. Vzhledem k tomu, že volání rozhraní API rozhraní API pro vyhledávání obrázků bingu je podobné jako volání rozhraní API pro vyhledávání obrázků [bingem,](../Bing-Image-Search/overview.md) kde najdete příklady volající rozhraní API. Než to však uděláte, seznamte se s referenčním obsahem [rozhraní API pro vyhledávání vlastních obrázků.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) Hlavními rozdíly jsou podporované parametry dotazu (musíte zahrnout parametr dotazu customConfig) a koncový bod, na který odesíláte požadavky.
 
 <!--
 ## Next steps

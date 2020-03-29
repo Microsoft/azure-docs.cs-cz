@@ -1,5 +1,5 @@
 ---
-title: Kontejnery – další kroky
+title: Kontejnery další kroky
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
 ms.openlocfilehash: a28dfc93fd007a5a0d83274af741a6a56fc747f5
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73522574"
 ---
 ## <a name="next-steps"></a>Další kroky 
 
-Pojďme pokračovat v práci s kontejnery Cognitive Services Azure.
+Pokračujme v práci s kontejnery Azure Cognitive Services.
 
 > [!div class="nextstepaction"]
-> [Použít více Cognitive Servicesch kontejnerů](../../cognitive-services-container-support.md)
+> [Použití více kontejnerů služeb Cognitive Services](../../cognitive-services-container-support.md)

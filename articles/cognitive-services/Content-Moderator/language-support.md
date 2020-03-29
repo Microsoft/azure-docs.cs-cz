@@ -1,7 +1,7 @@
 ---
-title: Jazyková podpora – rozhraní Content Moderator API
+title: Jazyková podpora – rozhraní CONTENT Moderator API
 titleSuffix: Azure Cognitive Services
-description: Toto je seznam přirozených jazyků, které podporuje rozhraní API služby Azure Cognitive Services Content Moderator.
+description: Toto je seznam přirozených jazyků, které podporuje rozhraní API Content Moderator služby Azure Cognitive Services.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,87 +11,87 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 9574af31c881589668c462099cae46d9e83b454b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73744361"
 ---
-# <a name="language-support-for-content-moderator-api"></a>Jazyková podpora pro rozhraní Content Moderator API
+# <a name="language-support-for-content-moderator-api"></a>Jazyková podpora rozhraní CONTENT Moderator API
 
 > [!NOTE]
-> Pro parametr **jazyka** přiřaďte `eng` nebo nechte prázdné, aby se zobrazila **odpověď s** podporou počítače (funkce Preview). **Tato funkce podporuje jenom angličtinu**.
+> Pro parametr **jazyka** `eng` přiřaďte nebo ponechte prázdný, abyste viděli odpověď **klasifikace** s podporou počítače (funkce náhledu). **Tato funkce podporuje pouze angličtinu**.
 >
-> Pro detekci **podmínek vulgárních** výrazů použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku, nebo ponechte prázdné.
+> Pro **detekci vulgárních výrazů** použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku nebo jej ponechte prázdný.
 
 
-| Rozpoznávání jazyka | Vulgárních výrazů   | OCR    | Automatické opravy     |
+| Rozpoznávání jazyka | Vulgární výrazy   | OCR    | Automatická oprava     |
 | -------------------- |-------------|--------|---------------------|
-| Arabština (Roman)   | Afrikánština   | arabština   | arabština |
-| Čára | Albánština | Čínština (zjednodušená)    | dánština |
-| Bengálština | Amharšina | Čínština (tradiční)     | Holandština |
-| Bugiština | arabština | Čeština                     | Angličtina |
-| Buhid | Arménština | dánština                     | Finština |
-| Carian | Ásámština | Holandština                     | Francouzština |
+| Arabština (romská)   | Afrikánština   | Arabština   | Arabština |
+| Balinéskou | Albánština | Čínština (zjednodušená)    | Dánština |
+| Bengálština | Amharština | Čínština (tradiční)     | Nizozemština |
+| Buginese | Arabština | Čeština                     | Angličtina |
+| Buhid (Buhid) | Arménština | Dánština                     | Finština |
+| Carian (Carian) | Ásámštinu | Nizozemština                     | Francouzština |
 | Čínština (zjednodušená) | Ázerbájdžánština | Angličtina  | Řečtina (moderní) |
-| Čínština (tradiční) | Bengálština – Bangladéš | Finština  | italština |
-| Staroslověnština (Jihoslovanský) | Bengálština – Indie | Francouzština     | Korejština |
-| Tibetské | Baskičtina | Němčina                      | norština |
-| Čeština |  Běloruština | Řečtina (moderní)         | polština |
-| Dhivehi | Bosenština – cyrilice | Maďarština      | Portugalština |
-| Holandština | Bosenština – latinka | italština             | Rumunština |
-| Angličtina (kreolština) | Bretonština [non-GeoPol] | Japonština  | ruština |
-| Fársíjština | Bulharština | Korejština                        | Slovenština |
-| Francouzština | Katalánština | norština                        | Španělština |
-| Němčina | Centrální kurdština | polština        | turečtina |
-| Řečtina | Diakritické | Portugalština | |
-| Haitská | Čínština (zjednodušená) | Rumunština | |
-| Hebrejština | Čínština (tradiční) – Hongkong – zvláštní správní oblast | ruština | |
-| Hindština | Čínština (tradiční) – Tchaj-wan | Srbština – cyrilice | |
-| Hmong | Chorvatština | Srbština – latinka | |
+| Čínština (tradiční) | Bangla - Bangladéš | Finština  | Italština |
+| Kostel (slovanský) | Bangla - Indie | Francouzština     | Korejština |
+| Koptické | Baskičtina | Němčina                      | Norština |
+| Čeština |  Běloruština | Řečtina (moderní)         | Polština |
+| Dhivehi | Bosenský - cyrilice | Maďarština      | Portugalština |
+| Nizozemština | Bosensko - latinka | Italština             | Rumunština |
+| Angličtina (kreolština) | Breton [non-GeoPol] | Japonština  | Ruština |
+| Perština | Bulharština | Korejština                        | Slovenština |
+| Francouzština | Katalánština | Norština                        | Španělština |
+| Němčina | Centrální kurdština | Polština        | Turečtina |
+| Řečtina | Cherokee | Portugalština | |
+| Haitské | Čínština (zjednodušená) | Rumunština | |
+| Hebrejština | Čínština (tradiční) - Hongkong – zvláštní správní oblast ČLR | Ruština | |
+| Hindština | Čínština (tradiční) - Tchaj-wan | Srbská cyrilice | |
+| Hmong | Chorvatština | Srbská latinka | |
 | Maďarština | Čeština | Slovenština | |
-| italština | dánština | Španělština | |
-| Japonština | Dáríština | švédština | |
-| Korejština | Holandština | turečtina | |
-| Kurdština (arabské písmo) | Angličtina | | |
-| Kurdština (latinka) | Estonština | | |
-| Tří | Filipínština | | |
+| Italština | Dánština | Španělština | |
+| Japonština | Dari | Švédština | |
+| Korejština | Nizozemština | Turečtina | |
+| Kurdština (arabština) | Angličtina | | |
+| Kurdská (latinka) | Estonština | | |
+| Lepcha | Filipino | | |
 | Limbu | Finština | | |
-| Logická | Francouzština | | |
+| Lu | Francouzština | | |
 | Lycian | Galicijština | | |
-| Lydian | Gruzínština | | |
-| Mycenaean (řečtina) | Němčina | | |
-| Etiopská | Řečtina | | |
-| Norština (bokmal) | Gudžarátština | | |
-| Norština (Nynorsk) |  Hauština | | |
-| Starý (Perština) | Hebrejština | | |
-| Paštština | Hindština | | |
-| polština | Maďarština | | |
+| Lydian (Lydian) | Gruzínština | | |
+| Mycenaean (Řec.) | Němčina | | |
+| Nko | Řečtina | | |
+| Norština (Bokmal) | Gudžarátština | | |
+| Norština (Nynorsk) |  Hausa | | |
+| Starý (perský) | Hebrejština | | |
+| Paštin | Hindština | | |
+| Polština | Maďarština | | |
 | Portugalština | Islandština | | |
-| Paňdžábština | Igbo | | |
-| Rejang | Indonéština | | |
-| ruština | Inuktitutština | | |
-| Santali | Irština | | |
-| Sasak | Xhoština | | |
-| Šipka | zuluština | | |
-| Srbština (cyrilice) | italština | | |
+| Paňdžábština | Igbo (Něm.) | | |
+| Rejang (Rejang) | Indonéština | | |
+| Ruština | Inuktitutština | | |
+| Santali (Santali) | Irština | | |
+| Sasak (Sasak) | Isixhosa | | |
+| Saurashtra | Isizulu | | |
+| Srbština (cyrilice) | Italština | | |
 | Srbština (latinka) | Japonština | | |
-| Sinhálské | Kannadština | | |
+| Sinhala | Kannadština | | |
 | Slovinština | Kazaština | | |
-| Španělština | Khmerština | | |
-| švédština | Kičejština | | |
-| Sylheti | Kinyarwandština | | |
-| Slabika | Svahilština | | |
-| Tagbanwa | Konkanština | | |
-| Tai (Nua) | Korejština | | |
-| Tamashek | Kyrgyzština | | |
-| turečtina | Laoský | | |
-| Ugaritic | Lotyština | | |
+| Španělština | Khmer | | |
+| Švédština | K'iche | | |
+| Sylheti (Sylheti) | Kinyarwanda | | |
+| Syrské | Kiswahili | | |
+| Tagbanwa (Něm.) | Konkani | | |
+| Tai (Švýc.) | Korejština | | |
+| Tamašek | Kyrgyzština | | |
+| Turečtina | Laoskou | | |
+| Ugaritický | Lotyština | | |
 | Uzbečtina (cyrilice) | Litevština | | |
-| Uzbečtina (latinka) | Lucemburština | | |
-| Já | Makedonie | | |
-| Kompatibilní | Malajština | | |
-| Čuangština, Čuangština | Malajalámština | | |
+| Uzbek (latinka) | Lucemburština | | |
+| Vai | Makedonština | | |
+| Yi | Malajština | | |
+| Zhuang, Chuang | Malajalámština | | |
 | | Maltština | | |
 | | Maorština | | |
 | | Maráthština | | |
@@ -99,45 +99,45 @@ ms.locfileid: "73744361"
 | | Nepálština | | |
 | | Norština (Bokmål) | | |
 | | Norština (Nynorsk) | | |
-| | Udijština | | |
-| | Paštština | | |
+| | Odia | | |
+| | Paštin | | |
 | | Perština | | |
-| | polština | | |
+| | Polština | | |
 | | Portugalština – Brazílie | | |
-| | Portugalština (Portugalsko) | | |
+| | Portugalština – Portugalsko | | |
 | | Pulaar | | |
 | | Paňdžábština | | |
 | | Paňdžábština (Pákistán) | | |
-| | Kečujština (Peru) | | |
+| | Čchua (Peru) | | |
 | | Rumunština | | |
-| | ruština | | |
+| | Ruština | | |
 | | Skotská gaelština | | |
 | | Srbština (cyrilice) | | |
 | | Srbština (cyrilice, Bosna a Hercegovina) | | |
 | | Srbština (latinka) | | |
-| | Sotština | | |
-| | Severní SA sótština | | |
-| | Setswanština | | |
+| | Sesotho | | |
+| | Sesotho sa Leboa | | |
+| | Setswana | | |
 | | Sindhština | | |
-| | Sinhálské | | |
+| | Sinhala | | |
 | | Slovenština | | |
 | | Slovinština | | |
 | | Španělština | | |
-| | švédština | | |
+| | Švédština | | |
 | | Tádžičtina | | |
 | | Tamilština | | |
 | | Tatarština | | |
 | | Telugština | | |
 | | Thajština | | |
-| | Tigriňňa | | |
-| | turečtina | | |
-| | Turkmenština | | |
+| | Tigrinya | | |
+| | Turečtina | | |
+| | Turkmeni | | |
 | | Ukrajinština | | |
 | | Urdština | | |
-| | Ujghurština | | |
+| | Ujgurské | | |
 | | Uzbečtina | | |
-| | Valencijština | | |
+| | Valencie | | |
 | | Vietnamština | | |
 | | Velština | | |
-| | Wolofština | | |
-| | Jorubština | | |
+| | Wolof (Wolof) | | |
+| | Jorubsky | | |

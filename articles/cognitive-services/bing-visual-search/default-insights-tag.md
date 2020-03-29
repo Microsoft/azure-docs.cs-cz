@@ -1,7 +1,7 @@
 ---
-title: Výchozí značka insights - pro vizuální vyhledávání Bingu
+title: Výchozí značka přehledů – vizuální vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
-description: Obsahuje podrobné informace o výchozí přehledy, které vrátí pro vizuální vyhledávání Bingu o bitovou kopii.
+description: Obsahuje podrobnosti o výchozích přehledech, které vizuální vyhledávání Bingu vrací o obrázku.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: b6bc323f4e8deaf975c292f92d862b1fbe0e2714
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "60510118"
 ---
-# <a name="default-insights-tag"></a>Výchozí značka insights
+# <a name="default-insights-tag"></a>Výchozí značka přehledů
 
-Výchozí značka insights je se `displayName` pole nastavenou na prázdný řetězec. Následující příklad ukazuje možné seznamu výchozí insights (akce). Seznam akcí, které obsahuje odpověď závisí na imagi. A pro každou akci, seznam vlastností, které se liší podle obrázku, tak zkontrolujte, jestli vlastnost existuje před pokusem o jeho použití.
+Výchozí značka přehledů je `displayName` značka s polem nastaveným na prázdný řetězec. Následující příklad ukazuje možný seznam výchozích přehledů (akcí). Seznam akcí, které odpověď zahrnuje, závisí na obrázku. A pro každou akci se seznam vlastností může lišit podle obrázku, proto před pokusem o její použití zkontrolujte, zda vlastnost existuje.
 
 ```json
 {
@@ -98,9 +98,9 @@ Výchozí značka insights je se `displayName` pole nastavenou na prázdný řet
 }
 ```
 
-## <a name="pagesincluding-insight"></a>PagesIncluding insight
+## <a name="pagesincluding-insight"></a>Stránkyvčetně přehledu
 
-Přehled PagesIncluding obsahuje seznam webové stránky, které zahrnují tuto bitovou kopii. Je ve skutečnosti seznam `Image` objekty a `hostPageUrl` pole obsahuje adresu URL na webovou stránku, který obsahuje bitovou kopii. Příklady použití, naleznete v tématu [PagesIncluding insight příklad](./bing-insights-usage.md#pagesincluding-insight-example).
+Přehled PagesIncluding poskytuje seznam webových stránek, které obsahují tento obrázek. Je to vlastně seznam `Image` objektů a `hostPageUrl` pole obsahuje adresu URL webové stránky, která obsahuje obrázek. Například použití, viz [PagesIncluding insight příklad](./bing-insights-usage.md#pagesincluding-insight-example).
 
 ```json
       {
@@ -137,9 +137,9 @@ Přehled PagesIncluding obsahuje seznam webové stránky, které zahrnují tuto 
       }
 ```
 
-## <a name="shoppingsources-insight"></a>ShoppingSources insight
+## <a name="shoppingsources-insight"></a>ShoppingSources přehled
 
-Přehled ShoppingSources obsahuje seznam webů, kde uživatel můžete zakoupit položky zobrazené na obrázku. Seznam nabídek obsahuje adresu URL na webovou stránku, kde uživatel můžete zakoupit položky, cena zboží a hodnocení nebo recenzi podrobnosti. Příklady použití, naleznete v tématu [ShoppingSources příklad](./bing-insights-usage.md#shoppingsources-insight-example).
+ShoppingSources insight poskytuje seznam webových stránek, kde si uživatel může koupit položku zobrazenou na obrázku. Seznam nabídek obsahuje adresu URL webové stránky, kde si uživatel může položku zakoupit, cenu položky a podrobnosti o hodnocení nebo kontrole. Například použití, viz [ShoppingSources příklad](./bing-insights-usage.md#shoppingsources-insight-example).
 
 ```json
       {
@@ -166,9 +166,9 @@ Přehled ShoppingSources obsahuje seznam webů, kde uživatel můžete zakoupit 
       }
 ```
 
-## <a name="moresizes-insight"></a>MoreSizes insight
+## <a name="moresizes-insight"></a>Přehled MoreSizes
 
-Přehled MoreSizes určuje počet velikosti (větší nebo menší) bitovou kopii, kterou objevila Bing na Internetu (viz `availableSizesCount` pole):
+Přehled MoreSizes určuje počet velikostí (větších nebo menších) bitové kopie, kterou `availableSizesCount` bing našel na Internetu (viz pole):
 
 ```json
       {
@@ -201,9 +201,9 @@ Přehled MoreSizes určuje počet velikosti (větší nebo menší) bitovou kopi
       },
 ```
 
-## <a name="visualsearch-insight"></a>VisualSearch insight
+## <a name="visualsearch-insight"></a>Přehled vizuálního vyhledávání
 
-Přehled VisualSearch obsahuje seznam imagí, které jsou vizuálně podobné původní bitové kopie (obsahuje obsah, který je podobný obsah zobrazovaný v původní bitové kopie). Příklady použití, naleznete v tématu [VisualSearch insight příklad](./bing-insights-usage.md#visualsearch-insight-example).
+Přehled Vizuální vyhledávání poskytuje seznam obrázků, které jsou vizuálně podobné původnímu obrázku (obsahuje obsah, který je podobný obsahu zobrazenému v původním obrázku). Například použití, viz [VisualSearch přehled příklad](./bing-insights-usage.md#visualsearch-insight-example).
 
 ```json
       {
@@ -241,9 +241,9 @@ Přehled VisualSearch obsahuje seznam imagí, které jsou vizuálně podobné p�
       }
 ```
 
-## <a name="recipes-insight"></a>Přehled recepty
+## <a name="recipes-insight"></a>Recepty vhled
 
-Přehled recepty obsahuje seznam webových stránek, které obsahují recepty vznesení potravin je znázorněno na obrázku. Příklady použití, naleznete v tématu [recepty insight příklad](./bing-insights-usage.md#recipes-insight-example).
+Recepty insight poskytuje seznam webových stránek, které obsahují recept na výrobu potravin uvedených na obrázku. Například použití, viz [Recepty přehled příklad](./bing-insights-usage.md#recipes-insight-example).
 
 ```json
       {
@@ -276,9 +276,9 @@ Přehled recepty obsahuje seznam webových stránek, které obsahují recepty vz
 ```
 
 
-## <a name="imagebyid-insight"></a>ImageById insight
+## <a name="imagebyid-insight"></a>Pohled imageById
 
-Poskytuje přehled o ImageById `Image` objekt bitovou kopii, kterou jste požadovali přehledy pro:
+Přehled ImageById poskytuje `Image` objekt obrázku, který jste požadovali přehledy pro:
 
 ```json
       {
@@ -311,9 +311,9 @@ Poskytuje přehled o ImageById `Image` objekt bitovou kopii, kterou jste požado
       },
 ```
 
-## <a name="productvisualsearch-insight"></a>ProductVisualSearch insight
+## <a name="productvisualsearch-insight"></a>Přehled ProductVisualSearch
 
-Přehled ProductVisualSearch obsahuje seznam obrázků produktů, které jsou vizuálně podobné produkty, které je znázorněno v původní bitové kopie. `insightsMetadata` Pole může obsahovat informace o nabídkách, kterého si můžete koupit produktu a cenou jednoho produktu.
+ProductVisualSearch insight poskytuje seznam obrázků produktů, které jsou vizuálně podobné produkty zobrazené v původním obrázku. Pole `insightsMetadata` může obsahovat informace o nabídkách, kde si můžete produkt zakoupit, a cenu produktu.
 
 ```json
       {
@@ -375,9 +375,9 @@ Přehled ProductVisualSearch obsahuje seznam obrázků produktů, které jsou vi
       }
 ```
 
-## <a name="relatedsearches-insight"></a>RelatedSearches insight
+## <a name="relatedsearches-insight"></a>RelatedVyhledávání přehled
 
-Přehled RelatedSearches obsahuje seznam související hledání provedené jinými uživateli (podle jiných uživatelů hledané termíny). Příklady použití, naleznete v tématu [RelatedSearches insight příklad](./bing-insights-usage.md#relatedsearches-insight-example).
+Přehled RelatedSearches poskytuje seznam souvisejících vyhledávání provedených jinými uživateli (na základě vyhledávacích dotazů jiných uživatelů). Například použití, viz [RelatedSearches přehled příklad](./bing-insights-usage.md#relatedsearches-insight-example).
 
 ```json
       {
@@ -398,9 +398,9 @@ Přehled RelatedSearches obsahuje seznam související hledání provedené jin�
       }
 ```
 
-## <a name="documentlevelsuggestions-insight"></a>DocumentLevelSuggestions insight
+## <a name="documentlevelsuggestions-insight"></a>Přehled DocumentLevelSuggestions
 
-Přehled DocumentLevelSuggestions obsahuje seznam navrhovaných hledané termíny na základě obsahu obrázku:
+Přehled DocumentLevelSuggestions poskytuje seznam navržených hledaných výrazů na základě obsahu obrázku:
 
 ```json
       {
@@ -421,8 +421,8 @@ Přehled DocumentLevelSuggestions obsahuje seznam navrhovaných hledané termín
       }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [využití insights příklady Bingu](bing-insights-usage.md) zobrazíte, jak může Bing se zobrazí vizuální přehledy.
+Podívejte se na [příklady využití přehledů Bingu,](bing-insights-usage.md) abyste zjistili, jak může Bing zobrazit vizuální přehledy.
 
-Abyste mohli rychle začít s vaší první žádost, najdete v článku postupů rychlý start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Chcete-li začít rychle s prvním požadavkem, podívejte se na rychlé starty: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).

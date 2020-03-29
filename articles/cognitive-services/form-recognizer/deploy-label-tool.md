@@ -1,46 +1,127 @@
 ---
-title: Jak nasadit nástroj pro označování ukázek pro rozpoznávání formulářů
+title: Jak nasadit nástroj pro rozpoznávání vzorků formuláře
 titleSuffix: Azure Cognitive Services
-description: Seznamte se s různými způsoby, jak můžete nasadit nástroj pro označování ukázek pro rozpoznávání formulářů, který vám umožní pomáhat s dohledem.
+description: Seznamte se s různými způsoby nasazení nástroje pro rozpoznávání vzorků formuláře, který vám pomůže s učením pod dohledem.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
-ms.topic: conceptual
-ms.date: 02/28/2020
+ms.topic: how-to
+ms.date: 03/20/2020
 ms.author: pafarley
-ms.openlocfilehash: fa419d7dd9668ac2ce8f2b0eb904117c7e22692d
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 795d21e05ade652b52c06d597ca4c5fef85e7245
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207841"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80152803"
 ---
-# <a name="deploy-the-sample-labeling-tool"></a>Nasazení ukázkového nástroje pro označování
+# <a name="deploy-the-sample-labeling-tool"></a>Nasazení ukázkového štítku
 
-Nástroj pro označování ukázkových popisků ve formuláři je aplikace, která běží v kontejneru Docker. Poskytuje užitečné uživatelské rozhraní, které můžete použít k ručnímu označení dokumentů formulářů k tomu, aby bylo možné pod dohledem učení. Průvodce [výukou s popisky](./quickstarts/label-tool.md) vám ukáže, jak spustit nástroj na místním počítači, což je nejběžnější scénář. 
+Nástroj pro rozpoznávání vzorků formuláře je aplikace, která poskytuje jednoduché uživatelské rozhraní (UI), které můžete použít k ručnímu označení formulářů (dokumentů) pro účely učení pod dohledem. V tomto článku vám poskytneme odkazy a pokyny, které vás naučí:
 
-Tato příručka vysvětluje alternativní způsoby, jak můžete nasadit a spustit vzorový Nástroj pro označování. 
+* [Spuštění ukázkového štítkovacího nástroje místně](#run-the-sample-labeling-tool-locally)
+* [Nasazení ukázkového štítku do instance kontejneru Azure (ACI)](#deploy-with-azure-container-instances-aci)
+* [Použití a přispívání k nástroji pro označování formulářů OCR s otevřeným zdrojovým kódem](#open-source-on-github)
 
-## <a name="deploy-with-azure-container-instances"></a>Nasazení pomocí Azure Container Instances
+## <a name="run-the-sample-labeling-tool-locally"></a>Spuštění ukázkového štítkovacího nástroje místně
 
-Nástroj Label můžete spustit v kontejneru webové aplikace Docker. Nejprve [vytvořte nový prostředek webové aplikace](https://ms.portal.azure.com/#create/Microsoft.WebSite) na Azure Portal. Vyplňte formulář s podrobnostmi o předplatném a skupině prostředků. Do požadovaných polí zadejte následující informace:
-* **Publikování**: kontejner Docker
-* **Operační systém** Systém: Linux
+Nejrychlejší způsob, jak začít popisovat data, je spustit ukázkový nástroj pro označování místně. Následující rychlý start používá rozhraní REST API nástroje pro rozpoznávání formulářů a ukázkový nástroj pro modelování popisů k trénování vlastního modelu s ručně označenými daty. 
 
-Na další stránce vyplňte následující pole pro nastavení kontejneru Docker:
+* [Úvodní příručka: Popisky formulářů, trénování modelu a analýza formuláře pomocí nástroje pro označování vzorků](./quickstarts/label-tool.md).
 
-* **Možnosti**: jeden kontejner
-* **Zdroj bitové kopie**: Azure Container Registry
-* **Typ přístupu**: veřejné
-* **Obrázek a značka**: MCR.Microsoft.com/Azure-Cognitive-Services/Custom-Form/labeltool:Latest
+## <a name="deploy-with-azure-container-instances-aci"></a>Nasazení s instancemi kontejnerů Azure (ACI)
 
-Postup, který následuje, je nepovinný. Po dokončení nasazení aplikace ji můžete spustit a získat přístup k nástroji Label online.
+Než začneme, je důležité si uvědomit, že existují dva způsoby, jak nasadit nástroj pro označování ukázkových vzorků do instance kontejneru Azure (ACI). Obě možnosti se používají ke spuštění ukázkového štítkovacího nástroje s ACI: 
+
+* [Používání portálu Azure](#azure-portal)
+* [Pomocí Azure CLI](#azure-cli)
+
+### <a name="azure-portal"></a>portál Azure
+
+Podle těchto kroků vytvořte nový prostředek pomocí webu Azure Portal: 
+
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/signin/index/).
+2. Vyberte **Vytvořit prostředek**. 
+3. Dále vyberte **Web App**. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Výběr webové aplikace](./media/quickstarts/formre-create-web-app.png)
+   
+4. Nejprve zkontrolujte, zda je vybrána karta **Základy.** Nyní budete muset poskytnout nějaké informace: 
+
+   > [!div class="mx-imgBorder"]
+   > ![Vybrat základy](./media/quickstarts/formre-select-basics.png)
+   * Předplatné – výběr existujícího předplatného Azure
+   * Skupina zdrojů – můžete znovu použít existující skupinu zdrojů nebo vytvořit novou skupinu pro tento projekt. Doporučujeme vytvořit novou skupinu prostředků.
+   * Jméno – Pojmenujte webovou aplikaci. 
+   * Publikovat – vybrat **kontejner Dockeru**
+   * Operační systém - Vyberte **Linux**
+   * Region – Vyberte oblast, která vám dává smysl.
+   * Plán Linuxu – vyberte cenovou úroveň/plán pro vaši aplikační službu. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Konfigurace webové aplikace](./media/quickstarts/formre-select-docker-linux.png)
+
+5. Dále vyberte kartu **Docker.** 
+
+   > [!div class="mx-imgBorder"]
+   > ![Vybrat Docker](./media/quickstarts/formre-select-docker.png)
+
+6. Nyní nakonfigurujeme váš kontejner Dockeru. Není-li uvedeno jinak, jsou vyžadována všechna pole:
+
+   * Možnosti – výběr **jednoho kontejneru**
+   * Zdroj obrázku – výběr **soukromého registru** 
+   * Adresa URL serveru – nastavte tuto`https://mcr.microsoft.com`
+   * Uživatelské jméno (Volitelné) - Vytvořte uživatelské jméno. 
+   * Heslo (volitelné) – Vytvořte si bezpečné heslo, které si zapamatujete.
+   * Obrázek a značka - Nastavte tuto`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+   * Příkaz Po spuštění – nastavte tuto položku na`./run.sh eula=accept`
+
+   > [!div class="mx-imgBorder"]
+   > ![Konfigurace Dockeru](./media/quickstarts/formre-configure-docker.png)
+
+7. A to je vše. Dále vyberte **Zkontrolovat + Vytvořit**a pak **Vytvořit** a nasadit webovou aplikaci. Po dokončení můžete přistupovat k webové aplikaci na adrese URL uvedené v **přehledu** pro váš prostředek.
+
+> [!NOTE]
+> Při vytváření webové aplikace můžete také nakonfigurovat autorizaci/ověřování. To není nutné, abyste mohli začít. 
+
+### <a name="azure-cli"></a>Azure CLI
+
+Jako alternativu k používání portálu Azure můžete vytvořit prostředek pomocí azure cli. Než budete pokračovat, budete muset nainstalovat [azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Tento krok můžete přeskočit, pokud už pracujete s azure CLI. 
+
+O tomto příkazu je třeba vědět několik věcí:
+
+* `DNS_NAME_LABEL=aci-demo-$RANDOM`vygeneruje náhodný název DNS. 
+* Tato ukázka předpokládá, že máte skupinu prostředků, kterou můžete použít k vytvoření prostředku. Nahraďte `<resource_group_name>` platnou skupinou prostředků přidruženou k vašemu předplatnému. 
+* Budete muset určit, kde chcete zdroj vytvořit. Nahraďte `<region name>` požadovanou oblast pro webovou aplikaci. 
+* Tento příkaz automaticky přijme eula.
+
+Z příkazového příkazu Konto Azure spusťte tento příkaz a vytvořte prostředek webové aplikace pro ukázkový nástroj pro popisování: 
+
+```azurecli
+DNS_NAME_LABEL=aci-demo-$RANDOM
+
+az container create \
+  --resource-group <resorunce_group_name> \
+  --name <name> \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool \
+  --ports 3000 \
+  --dns-name-label $DNS_NAME_LABEL \
+  --location <region name> \
+  --cpu 2 \
+  --memory 8
+  --command-line "./run.sh eula=accept"
+```
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>Připojení k Azure AD pro autorizaci
 
-Doporučujeme připojit webovou aplikaci ke službě Azure Active Directory (AAD), aby se aplikace mohla přihlásit a používat jenom osoba s přihlašovacími údaji. Pokud se chcete připojit k AAD, postupujte podle pokynů v části [Konfigurace aplikace App Service](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) .
+Doporučujeme připojit webovou aplikaci k Azure Active Directory. Tím zajistíte, že se k vaší webové aplikaci budou moci přihlašovat a používat pouze uživatelé s platnými přihlašovacími údaji. Podle pokynů [postupujte](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) podle pokynů v části Konfigurace aplikace App Service pro připojení k Azure Active Directory.
+
+## <a name="open-source-on-github"></a>Open source na GitHubu
+
+Nástroj pro popisování formulářů OCR je také k dispozici jako open source projekt na GitHubu. Nástroj je webová aplikace postavena pomocí React + Redux, a je napsán v TypeScriptu. Další informace nebo příspěvky naleznete [v tématu Nástroj pro označování formulářů OCR](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Vraťte se do [výukového programu s popisem](./quickstarts/label-tool.md) průvodce a Naučte se používat tento nástroj k ručnímu označení školicích dat a provádění vzdělávání pod dohledem.
+Pomocí [rychlého](./quickstarts/label-tool.md) startu Train s popisky se dozvíte, jak pomocí nástroje ručně označovat trénovací data a provádět učení pod dohledem.

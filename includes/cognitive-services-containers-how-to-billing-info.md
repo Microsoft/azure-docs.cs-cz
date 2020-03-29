@@ -5,26 +5,26 @@ ms.date: 02/19/2020
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 2ac93f5aba722eea78267a512999a5581a887b99
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77474186"
 ---
-Dotazy na kontejner se účtují v cenové úrovni prostředku Azure, který se používá pro `ApiKey`.
+Dotazy na kontejner se účtují na cenové úrovni prostředku Azure, `ApiKey`který se používá pro .
 
-U kontejnerů Azure Cognitive Services není licencováno běžet bez připojení ke koncovému bodu měření/fakturace. Kontejnerům musíte povolit, aby informace o fakturaci komunikovaly s koncovým bodem fakturace. Kontejnery Cognitive Services neodesílají zákaznická data, jako je například analyzovaný obrázek nebo text, do společnosti Microsoft.
+Kontejnery Azure Cognitive Services nejsou licencovány ke spuštění, aniž by byly připojeny ke koncovému bodu měření a fakturace. Je nutné povolit kontejnery ke komunikaci fakturační informace s koncovým bodem fakturace za všech okolností. Kontejnery služeb Cognitive Services neodesílají společnosti Microsoft data zákazníků, například obrázek nebo text, který se analyzuje.
 
 ### <a name="connect-to-azure"></a>Připojení k Azure
 
-Kontejner potřebuje ke spuštění hodnoty argumentu fakturace. Tyto hodnoty umožní kontejneru připojení ke koncovému bodu fakturace. Kontejner hlásí využití každých 10 až 15 minut. Pokud se kontejner nepřipojí k Azure v rámci povoleného časového okna, kontejner pokračuje v běhu, ale neobsluhuje dotazy, dokud se neobnoví koncový bod fakturace. Pokus o připojení se desetkrát vyzkouší v intervalu 10 až 15 minut. Pokud se nemůže připojit ke koncovému bodu fakturace v rámci 10 pokusů, kontejner přestane obsluhovat požadavky.
+Kontejner potřebuje hodnoty argumentů fakturace ke spuštění. Tyto hodnoty umožňují kontejneru pro připojení ke koncovému bodu fakturace. Kontejner hlásí využití přibližně každých 10 až 15 minut. Pokud se kontejner nepřipojí k Azure v povoleném časovém okně, kontejner se nadále spouštějí, ale neobsluhuje dotazy, dokud se nezmění koncový bod fakturace. O připojení se pokusí 10krát ve stejném časovém intervalu 10 až 15 minut. Pokud se nemůže připojit ke koncovému bodu fakturace v rámci 10 pokusů, kontejner přestane obsluhovat požadavky.
 
 ### <a name="billing-arguments"></a>Argumenty fakturace
 
-Příkaz <a href="https://docs.docker.com/engine/reference/commandline/run/" target="_blank">`docker run` <span class="docon docon-navigate-external x-hidden-focus"></span> </a> spustí kontejner, pokud jsou k dispozici všechny tři z následujících možností s platnými hodnotami:
+<a href="https://docs.docker.com/engine/reference/commandline/run/" target="_blank"> `docker run` Příkaz <span class="docon docon-navigate-external x-hidden-focus"></span> </a> spustí kontejner, pokud jsou k dispozici všechny tři následující možnosti s platnými hodnotami:
 
 | Možnost | Popis |
 |--------|-------------|
-| `ApiKey` | Klíč rozhraní API prostředku Cognitive Services, který se používá ke sledování fakturačních informací.<br/>Hodnota této možnosti musí být nastavená na klíč rozhraní API pro zřízený prostředek, který je zadaný v `Billing`. |
-| `Billing` | Koncový bod prostředku Cognitive Services, který se používá ke sledování fakturačních informací.<br/>Hodnota této možnosti musí být nastavená na identifikátor URI koncového bodu zřízeného prostředku Azure.|
-| `Eula` | Označuje, že jste přijali licenci pro kontejner.<br/>Hodnota této možnosti musí být nastavena na hodnotu **přijmout**. |
+| `ApiKey` | Klíč rozhraní API prostředku služeb Cognitive Services, který se používá ke sledování fakturačních údajů.<br/>Hodnota této možnosti musí být nastavena na klíč rozhraní API `Billing`pro zřízený prostředek, který je zadán v aplikaci . |
+| `Billing` | Koncový bod prostředku služeb Cognitive Services, který se používá ke sledování fakturačních údajů.<br/>Hodnota této možnosti musí být nastavena na identifikátor URI koncového bodu zřízeného prostředku Azure.|
+| `Eula` | Označuje, že jste přijali licenci pro kontejner.<br/>Hodnota této možnosti musí být nastavena tak, aby **byla akceptována**. |

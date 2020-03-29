@@ -1,7 +1,7 @@
 ---
-title: Všechny předem připravené entity – LUIS
+title: Všechny předem sestavené entity – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje seznam předem připravených entit, které jsou zahrnuty v Language Understanding (LUIS).
+description: Tento článek obsahuje seznamy předem vytvořených entit, které jsou zahrnuty v porozumění jazykům (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,307 +12,307 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219717"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entity na jazykovou verzi v modelu LUIS
 
-Language Understanding (LUIS) poskytuje předem připravených entit. Předem připravených entit je obsažen ve vaší aplikaci, LUIS obsahuje odpovídající entity predikce v odpovědi koncového bodu. Všechny projevy příkladu jsou označeny jako také s entitou. Chování předem sestavených entit **nelze** změnit. Pokud není uvedeno jinak, jsou předem připravených entit k dispozici ve všech oblastech aplikace LUIS (jazykové verze). V následující tabulce jsou uvedeny předem připravených entit, které jsou podporovány pro každou jazykovou verzi.
+Porozumění jazykům (LUIS) poskytuje předem vytvořené entity. Když je do vaší aplikace zahrnuta předem sestavená entita, služba LUIS zahrne odpovídající predikci entity do odpovědi koncového bodu. Všechny ukázkové projevy jsou také označeny entitou. Chování předem vytvořených entit **nelze** změnit. Pokud není uvedeno jinak, předem vytvořené entity jsou k dispozici ve všech národních prostředích aplikací LUIS (jazykové verze). V následující tabulce jsou uvedeny předem vytvořené entity, které jsou podporovány pro každou jazykovou verzi.
 
-|Jazyková verze|Subkultury|Poznámky|
+|Culture|Subkultur|Poznámky|
 |--|--|--|
-|Čínština|[zh-CN](#chinese-entity-support)||
-|Holandština|[nl – NL](#dutch-entity-support)||
-|Angličtina|[EN-US (USA)](#english-american-entity-support)||
-|Francouzština|[fr – CA (Kanada)](#french-canadian-entity-support), [fr-FR (Francie)](#french-france-entity-support), ||
+|Chinese|[zh-CN](#chinese-entity-support)||
+|Nizozemština|[nl-NL](#dutch-entity-support)||
+|Angličtina|[en-US (americká)](#english-american-entity-support)||
+|Francouzština|[fr-CA (Kanada)](#french-canadian-entity-support), [fr-FR (Francie),](#french-france-entity-support) ||
 |Němčina|[de-DE](#german-entity-support)||
-|italština|[IT oddělení IT](#italian-entity-support)||
+|Italština|[it-IT](#italian-entity-support)||
 |Japonština|[ja-JP](#japanese-entity-support)||
-|Korejština|[ko – KR](#korean-entity-support)||
+|Korejština|[ko-KR](#korean-entity-support)||
 |Portugalština|[pt-BR (Brazílie)](#portuguese-brazil-entity-support)||
-|Španělština|[ES-ES (Španělsko)](#spanish-spain-entity-support), [ES-MX (Mexiko)](#spanish-mexico-entity-support)||
-|turečtina|[Turečtina](#turkish-entity-support)|V turečtině nejsou podporované předem připravené entity|
+|Španělština|[es-ES (Španělsko)](#spanish-spain-entity-support), [es-MX (Mexiko)](#spanish-mexico-entity-support)||
+|Turečtina|[Turečtina](#turkish-entity-support)|Žádné předem vytvořené entity podporované v turečtině|
 
-## <a name="prediction-endpoint-runtime"></a>Modul runtime koncového bodu předpovědi
+## <a name="prediction-endpoint-runtime"></a>Doba běhu koncového bodu předpovědi
 
-Dostupnost předem připravené entity v konkrétním jazyce je určena verzí modulu runtime koncového bodu předpovědi.
+Dostupnost předem vytvořené entity v určitém jazyce je určena verzí runtime koncového bodu předpověď.
 
-## <a name="chinese-entity-support"></a>Podpora čínských entity
+## <a name="chinese-entity-support"></a>Podpora čínských subjektů
 
-Podporují se následující entity:
+Podporovány jsou následující entity:
 
-|Předem připravených entit|```zh-CN``` |
+|Předem sestavená entita|```zh-CN``` |
 ------|:------:|
-[Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    V2, V3   |
-[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    V2, V3   |
-[Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    V2, V3   |
+[Věk](luis-reference-prebuilt-age.md):<br>year<br>month<br>Týden<br>day   |    V2, V3   |
+[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>Dolar<br>frakční jednotka (ex: penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>rozsah dat<br>time<br>časový rozsah   |    V2, V3   |
+[Rozměr](luis-reference-prebuilt-dimension.md):<br>Objem<br>oblast<br>Hmotnost<br>informace (ex: bit/byte)<br>délka (ex: metr)<br>rychlost (například: míle za hodinu)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
-[Automatické](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Řadový](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[GeografieV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
+[Číslo](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Pořadové](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Procento](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    V2, V3   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita.<br>kelvinech.<br>rankine<br>delisle<br>ve stupních Celsia   |    V2, V3   |
+[Jméno osoby](luis-reference-prebuilt-person.md)   |    V2, V3   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita<br>Kelvin<br>rankine (rak.)<br>delisle (Fr.)<br>Celsia   |    V2, V3   |
 [Adresa URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="dutch-entity-support"></a>Podpora Nizozemská entity
+## <a name="dutch-entity-support"></a>Podpora nizozemských subjektů
 
-Podporují se následující entity:
+Podporovány jsou následující entity:
 
-|Předem připravených entit|```nl-NL``` |
+|Předem sestavená entita|```nl-NL``` |
 ------|:------:|
-[Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    V2, V3   |
-[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    V2, V3   |
-[Hodnotu](luis-reference-prebuilt-deprecated.md)   |    -   |
-[Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    V2, V3   |
+[Věk](luis-reference-prebuilt-age.md):<br>year<br>month<br>Týden<br>day   |    V2, V3   |
+[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>Dolar<br>frakční jednotka (ex: penny)  |    V2, V3   |
+[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
+[Rozměr](luis-reference-prebuilt-dimension.md):<br>Objem<br>oblast<br>Hmotnost<br>informace (ex: bit/byte)<br>délka (ex: metr)<br>rychlost (například: míle za hodinu)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Automatické](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Řadový](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[GeografieV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Číslo](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Pořadové](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Procento](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita.<br>kelvinech.<br>rankine<br>delisle<br>ve stupních Celsia   |    V2, V3   |
+[Jméno osoby](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita<br>Kelvin<br>rankine (rak.)<br>delisle (Fr.)<br>Celsia   |    V2, V3   |
 [Adresa URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="english-american-entity-support"></a>Angličtina (American) entity podpory
+## <a name="english-american-entity-support"></a>Podpora anglických (amerických) subjektů
 
-Podporují se následující entity:
+Podporovány jsou následující entity:
 
-|Předem připravených entit|```en-US``` |
+|Předem sestavená entita|```en-US``` |
 ------|:------:|
-[Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    V2, V3   |
-[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    V2, V3   |
-[Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    V2, V3   |
+[Věk](luis-reference-prebuilt-age.md):<br>year<br>month<br>Týden<br>day   |    V2, V3   |
+[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>Dolar<br>frakční jednotka (ex: penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>rozsah dat<br>time<br>časový rozsah   |    V2, V3   |
+[Rozměr](luis-reference-prebuilt-dimension.md):<br>Objem<br>oblast<br>Hmotnost<br>informace (ex: bit/byte)<br>délka (ex: metr)<br>rychlost (například: míle za hodinu)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Automatické](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Řadový](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[GeografieV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Číslo](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Pořadové](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2, V3   |
 [Procento](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    V2, V3   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita.<br>kelvinech.<br>rankine<br>delisle<br>ve stupních Celsia   |    V2, V3   |
+[Jméno osoby](luis-reference-prebuilt-person.md)   |    V2, V3   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita<br>Kelvin<br>rankine (rak.)<br>delisle (Fr.)<br>Celsia   |    V2, V3   |
 [Adresa URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="french-france-entity-support"></a>Podpora entity francouzština (Francie)
+## <a name="french-france-entity-support"></a>Podpora francouzských (francouzských) subjektů
 
-Podporují se následující entity:
+Podporovány jsou následující entity:
 
-|Předem připravených entit|```fr-FR``` |
+|Předem sestavená entita|```fr-FR``` |
 ------|:------:|
-[Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    V2, V3   |
-[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    V2, V3   |
-[Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    V2, V3   |
+[Věk](luis-reference-prebuilt-age.md):<br>year<br>month<br>Týden<br>day   |    V2, V3   |
+[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>Dolar<br>frakční jednotka (ex: penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>rozsah dat<br>time<br>časový rozsah   |    V2, V3   |
+[Rozměr](luis-reference-prebuilt-dimension.md):<br>Objem<br>oblast<br>Hmotnost<br>informace (ex: bit/byte)<br>délka (ex: metr)<br>rychlost (například: míle za hodinu)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Automatické](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Řadový](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[GeografieV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Číslo](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Pořadové](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Procento](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |   -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita.<br>kelvinech.<br>rankine<br>delisle<br>ve stupních Celsia   |    V2, V3   |
+[Jméno osoby](luis-reference-prebuilt-person.md)   |   -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita<br>Kelvin<br>rankine (rak.)<br>delisle (Fr.)<br>Celsia   |    V2, V3   |
 [Adresa URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="french-canadian-entity-support"></a>Francouzština (Kanada) entity podpory
+## <a name="french-canadian-entity-support"></a>Podpora francouzských (kanadských) subjektů
 
-Podporují se následující entity:
+Podporovány jsou následující entity:
 
-|Předem připravených entit|```fr-CA``` |
+|Předem sestavená entita|```fr-CA``` |
 ------|:------:|
-[Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    V2, V3   |
-[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    V2, V3   |
-[Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    V2, V3   |
+[Věk](luis-reference-prebuilt-age.md):<br>year<br>month<br>Týden<br>day   |    V2, V3   |
+[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>Dolar<br>frakční jednotka (ex: penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>rozsah dat<br>time<br>časový rozsah   |    V2, V3   |
+[Rozměr](luis-reference-prebuilt-dimension.md):<br>Objem<br>oblast<br>Hmotnost<br>informace (ex: bit/byte)<br>délka (ex: metr)<br>rychlost (například: míle za hodinu)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Automatické](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Řadový](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[GeografieV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Číslo](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Pořadové](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Procento](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita.<br>kelvinech.<br>rankine<br>delisle<br>ve stupních Celsia   |    V2, V3   |
+[Jméno osoby](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita<br>Kelvin<br>rankine (rak.)<br>delisle (Fr.)<br>Celsia   |    V2, V3   |
 [Adresa URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="german-entity-support"></a>Podpora německé entity
+## <a name="german-entity-support"></a>Podpora německých subjektů
 
-Podporují se následující entity:
+Podporovány jsou následující entity:
 
-|Předem připravených entit|```de-DE``` |
+|Předem sestavená entita|```de-DE``` |
 ------|:------:|
-[Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    V2, V3   |
-[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    V2, V3   |
-[Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    V2, V3   |
+[Věk](luis-reference-prebuilt-age.md):<br>year<br>month<br>Týden<br>day   |    V2, V3   |
+[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>Dolar<br>frakční jednotka (ex: penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>rozsah dat<br>time<br>časový rozsah   |    V2, V3   |
+[Rozměr](luis-reference-prebuilt-dimension.md):<br>Objem<br>oblast<br>Hmotnost<br>informace (ex: bit/byte)<br>délka (ex: metr)<br>rychlost (například: míle za hodinu)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Automatické](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Řadový](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[GeografieV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Číslo](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Pořadové](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Procento](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita.<br>kelvinech.<br>rankine<br>delisle<br>ve stupních Celsia   |    V2, V3   |
+[Jméno osoby](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita<br>Kelvin<br>rankine (rak.)<br>delisle (Fr.)<br>Celsia   |    V2, V3   |
 [Adresa URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="italian-entity-support"></a>Podpora italské entity
+## <a name="italian-entity-support"></a>Podpora italských subjektů
 
-Předem sestavený věk v italštině, měna, dimenze, číslo a procento _rozlišení_ bylo změněno z v2 a V3 Preview.
+Italský předdefinovaný věk, měna, dimenze, číslo, procentuální _rozlišení_ změněno z náhledu V2 a V3.
 
-Podporují se následující entity:
+Podporovány jsou následující entity:
 
-|Předem připravených entit|```it-IT``` |
+|Předem sestavená entita|```it-IT``` |
 ------|:------:|
-[Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    V2, V3   |
-[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    V2, V3   |
-[Hodnotu](luis-reference-prebuilt-deprecated.md)   |    -   |
-[Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    V2, V3   |
+[Věk](luis-reference-prebuilt-age.md):<br>year<br>month<br>Týden<br>day   |    V2, V3   |
+[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>Dolar<br>frakční jednotka (ex: penny)  |    V2, V3   |
+[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
+[Rozměr](luis-reference-prebuilt-dimension.md):<br>Objem<br>oblast<br>Hmotnost<br>informace (ex: bit/byte)<br>délka (ex: metr)<br>rychlost (například: míle za hodinu)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Automatické](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Řadový](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[GeografieV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Číslo](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Pořadové](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Procento](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita.<br>kelvinech.<br>rankine<br>delisle<br>ve stupních Celsia   |    V2, V3   |
+[Jméno osoby](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita<br>Kelvin<br>rankine (rak.)<br>delisle (Fr.)<br>Celsia   |    V2, V3   |
 [Adresa URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="japanese-entity-support"></a>Podpora japonské entity
+## <a name="japanese-entity-support"></a>Podpora japonských entit
 
-Podporují se následující entity:
+Podporovány jsou následující entity:
 
-|Předem připravených entit|```ja-JP``` |
+|Předem sestavená entita|```ja-JP``` |
 ------|:------:|
-[Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    V2,-   |
-[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    V2,-   |
-[Hodnotu](luis-reference-prebuilt-deprecated.md)   |    -   |
-[Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    V2,-   |
+[Věk](luis-reference-prebuilt-age.md):<br>year<br>month<br>Týden<br>day   |    V2, -   |
+[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>Dolar<br>frakční jednotka (ex: penny)  |    V2, -   |
+[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
+[Rozměr](luis-reference-prebuilt-dimension.md):<br>Objem<br>oblast<br>Hmotnost<br>informace (ex: bit/byte)<br>délka (ex: metr)<br>rychlost (například: míle za hodinu)  |    V2, -   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Automatické](luis-reference-prebuilt-number.md)   |    V2,-   |
-[Řadový](luis-reference-prebuilt-ordinal.md)   |    V2,-   |
+[GeografieV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Číslo](luis-reference-prebuilt-number.md)   |    V2, -   |
+[Pořadové](luis-reference-prebuilt-ordinal.md)   |    V2, -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procento](luis-reference-prebuilt-percentage.md)   |    V2,-   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita.<br>kelvinech.<br>rankine<br>delisle<br>ve stupních Celsia   |    V2,-   |
+[Procento](luis-reference-prebuilt-percentage.md)   |    V2, -   |
+[Jméno osoby](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita<br>Kelvin<br>rankine (rak.)<br>delisle (Fr.)<br>Celsia   |    V2, -   |
 [Adresa URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="korean-entity-support"></a>Podpora Korejské entity
+## <a name="korean-entity-support"></a>Podpora korejské entity
 
-Podporují se následující entity:
+Podporovány jsou následující entity:
 
-|Předem připravených entit|```ko-KR``` |
+|Předem sestavená entita|```ko-KR``` |
 ------|:------:|
-[Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    -   |
-[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    -   |
-[Hodnotu](luis-reference-prebuilt-deprecated.md)   |    -   |
-[Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    -   |
+[Věk](luis-reference-prebuilt-age.md):<br>year<br>month<br>Týden<br>day   |    -   |
+[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>Dolar<br>frakční jednotka (ex: penny)  |    -   |
+[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
+[Rozměr](luis-reference-prebuilt-dimension.md):<br>Objem<br>oblast<br>Hmotnost<br>informace (ex: bit/byte)<br>délka (ex: metr)<br>rychlost (například: míle za hodinu)  |    -   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Automatické](luis-reference-prebuilt-number.md)   |    -   |
-[Řadový](luis-reference-prebuilt-ordinal.md)   |    -   |
+[GeografieV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Číslo](luis-reference-prebuilt-number.md)   |    -   |
+[Pořadové](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Procento](luis-reference-prebuilt-percentage.md)   |    -   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita.<br>kelvinech.<br>rankine<br>delisle<br>ve stupních Celsia   |    -   |
+[Jméno osoby](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita<br>Kelvin<br>rankine (rak.)<br>delisle (Fr.)<br>Celsia   |    -   |
 [Adresa URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="portuguese-brazil-entity-support"></a>Podpora entity portugalština (Brazílie)
+## <a name="portuguese-brazil-entity-support"></a>Podpora portugalského (brazilského) subjektu
 
-Podporují se následující entity:
+Podporovány jsou následující entity:
 
-|Předem připravených entit|```pt-BR``` |
+|Předem sestavená entita|```pt-BR``` |
 ------|:------:|
-[Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    V2, V3   |
-[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    V2, V3   |
-[Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    V2, V3   |
+[Věk](luis-reference-prebuilt-age.md):<br>year<br>month<br>Týden<br>day   |    V2, V3   |
+[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>Dolar<br>frakční jednotka (ex: penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>rozsah dat<br>time<br>časový rozsah   |    V2, V3   |
+[Rozměr](luis-reference-prebuilt-dimension.md):<br>Objem<br>oblast<br>Hmotnost<br>informace (ex: bit/byte)<br>délka (ex: metr)<br>rychlost (například: míle za hodinu)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Automatické](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Řadový](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[GeografieV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Číslo](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Pořadové](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Procento](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita.<br>kelvinech.<br>rankine<br>delisle<br>ve stupních Celsia   |    V2, V3   |
+[Jméno osoby](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita<br>Kelvin<br>rankine (rak.)<br>delisle (Fr.)<br>Celsia   |    V2, V3   |
 [Adresa URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="spanish-spain-entity-support"></a>Podpora entity Španělština (Španělsko)
+## <a name="spanish-spain-entity-support"></a>Podpora španělského (španělského) subjektu
 
-Podporují se následující entity:
+Podporovány jsou následující entity:
 
-|Předem připravených entit|```es-ES``` |
+|Předem sestavená entita|```es-ES``` |
 ------|:------:|
-[Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    V2, V3   |
-[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    V2, V3   |
-[Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    V2, V3   |
+[Věk](luis-reference-prebuilt-age.md):<br>year<br>month<br>Týden<br>day   |    V2, V3   |
+[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>Dolar<br>frakční jednotka (ex: penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>rozsah dat<br>time<br>časový rozsah   |    V2, V3   |
+[Rozměr](luis-reference-prebuilt-dimension.md):<br>Objem<br>oblast<br>Hmotnost<br>informace (ex: bit/byte)<br>délka (ex: metr)<br>rychlost (například: míle za hodinu)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Automatické](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Řadový](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[GeografieV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Číslo](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Pořadové](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Procento](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita.<br>kelvinech.<br>rankine<br>delisle<br>ve stupních Celsia   |    V2, V3   |
+[Jméno osoby](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita<br>Kelvin<br>rankine (rak.)<br>delisle (Fr.)<br>Celsia   |    V2, V3   |
 [Adresa URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="spanish-mexico-entity-support"></a>Španělština (Mexiko) entity podpory
+## <a name="spanish-mexico-entity-support"></a>Podpora španělského (mexického) subjektu
 
-Podporují se následující entity:
+Podporovány jsou následující entity:
 
-|Předem připravených entit|```es-MX``` |
+|Předem sestavená entita|```es-MX``` |
 ------|:------:|
-[Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    -   |
-[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    -   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    -   |
-[Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    -   |
+[Věk](luis-reference-prebuilt-age.md):<br>year<br>month<br>Týden<br>day   |    -   |
+[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>Dolar<br>frakční jednotka (ex: penny)  |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>rozsah dat<br>time<br>časový rozsah   |    -   |
+[Rozměr](luis-reference-prebuilt-dimension.md):<br>Objem<br>oblast<br>Hmotnost<br>informace (ex: bit/byte)<br>délka (ex: metr)<br>rychlost (například: míle za hodinu)  |    -   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Automatické](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Řadový](luis-reference-prebuilt-ordinal.md)   |    -   |
+[GeografieV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Číslo](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Pořadové](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Procento](luis-reference-prebuilt-percentage.md)   |    -   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita.<br>kelvinech.<br>rankine<br>delisle<br>ve stupních Celsia   |    -   |
+[Jméno osoby](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Teplota:](luis-reference-prebuilt-temperature.md)<br>Fahrenheita<br>Kelvin<br>rankine (rak.)<br>delisle (Fr.)<br>Celsia   |    -   |
 [Adresa URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-Zobrazit poznámky u [zastaralých předem definovaných entit](luis-reference-prebuilt-deprecated.md)
+Viz poznámky [k zastaralé předem sestavené entity](luis-reference-prebuilt-deprecated.md)
 
-KeyPhrase není k dispozici ve všech podkulturách portugalštiny (Brazílie) – ```pt-BR```.
+KeyPhrase není k dispozici ve všech subkulturách ```pt-BR```portugalštiny (Brazílie) - .
 
-## <a name="turkish-entity-support"></a>Podpora pro tureckou entitu
+## <a name="turkish-entity-support"></a>Podpora tureckých subjektů
 
-**V turečtině nejsou podporovány žádné předem připravené entity.**
+**V turečtině nejsou podporovány žádné předem vytvořené entity.**
 
 <!--
 
@@ -339,11 +339,11 @@ See notes on [Deprecated prebuilt entities](luis-reference-prebuilt-deprecated.m
 KeyPhrase is not available.
 -->
 
-## <a name="contribute-to-prebuilt-entity-cultures"></a>Přispívat do předem připravených entit jazykových verzí
-Předem připravených entit jsou vyvíjeny v projektu open source nástrojů pro rozpoznávání textu. [Přispět](https://github.com/Microsoft/Recognizers-Text) k projektu. Tento projekt obsahuje příklady měny na jazykovou verzi.
+## <a name="contribute-to-prebuilt-entity-cultures"></a>Přispívat k předem vytvořeným kulturám entit
+Předem sestavené entity jsou vyvinuty v projektu open-source rozpoznávání textu. [Přispějte](https://github.com/Microsoft/Recognizers-Text) k projektu. Tento projekt obsahuje příklady měny na jazykovou verzi.
 
-GeographyV2 a PersonName nejsou součástí projektu nástrojů pro rozpoznávání textu. V případě problémů s těmito předem vytvořenými entitami prosím otevřete [žádost o podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md).
+GeographyV2 a PersonName nejsou zahrnuty v projektu rozpoznávání textu. V případě problémů s těmito předem vytvořenými entitami otevřete [žádost o podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se s entitami [Number](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md)a [Currency](luis-reference-prebuilt-currency.md) .
+Informace o [číslech](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md)a [měnových](luis-reference-prebuilt-currency.md) entitách.

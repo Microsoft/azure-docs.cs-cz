@@ -1,7 +1,7 @@
 ---
-title: Nejčastější dotazy k Cognitive Services Containers (FAQ)
+title: Kognitivní služby kontejnery často kladené otázky (FAQ)
 titleSuffix: Azure Cognitive Services
-description: Nejčastější dotazy a odpovědi
+description: Nejčastější dotazy a odpovědi.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,157 +10,157 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: dapine
 ms.openlocfilehash: 33b99d50db4384c7de818a7dd0bb8492c86bef97
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73961893"
 ---
-# <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Cognitive Services Containers (FAQ)
+# <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services kontejnery nejčastější dotazy (FAQ)
 
 ## <a name="general-questions"></a>Obecné otázky
 
-**Otázka: co je k dispozici?**
+**Otázka: Co je k dispozici?**
 
-Odpověď **:** [Podpora kontejnerů v Azure Cognitive Services](../cognitive-services-container-support.md) umožňuje vývojářům používat stejné inteligentní rozhraní API, která jsou k dispozici v Azure, ale s [výhodami](../cognitive-services-container-support.md#features-and-benefits) kontejnerů. Podpora kontejnerů je v současnosti k dispozici ve verzi Preview pro podmnožinu Cognitive Services Azure, včetně částí:
+**A:** [Kontejnerová podpora ve službě Azure Cognitive Services](../cognitive-services-container-support.md) umožňuje vývojářům používat stejná inteligentní rozhraní API, která jsou dostupná v Azure, ale s [výhodami](../cognitive-services-container-support.md#features-and-benefits) kontejnerizace. Podpora kontejnerů je momentálně dostupná ve verzi Preview pro podmnožinu služeb Azure Cognitive Services, včetně částí:
 
 > [!div class="checklist"]
 > * [Detektor anomálií][ad-containers]
-> * [Počítačové zpracování obrazu][cv-containers]
-> * [Rozpoznávání tváře][fa-containers]
-> * [Nástroj pro rozpoznávání formulářů][fr-containers]
+> * [Počítačové vidění][cv-containers]
+> * [Tvář][fa-containers]
+> * [Rozpoznávání formulářů][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
 > * [Rozhraní API služby Speech][sp-containers]
 > * [Analýza textu][ta-containers]
 
-**Otázka: existuje nějaký rozdíl mezi Cognitive Services cloudem a kontejnery?**
+**Otázka: Existuje nějaký rozdíl mezi cloudem služeb Cognitive Services a kontejnery?**
 
-**A:** Kontejnery Cognitive Services jsou alternativou ke cloudu Cognitive Services. Kontejnery nabízejí stejné možnosti jako odpovídající cloudové služby. Zákazníci můžou kontejnery nasazovat místně nebo v Azure. Základní technologie AI, cenové úrovně, klíče rozhraní API a signatura rozhraní API jsou stejné mezi kontejnerem a odpovídajícími cloudovou službou. Tady jsou [funkce a výhody](../cognitive-services-container-support.md#features-and-benefits) pro výběr kontejnerů přes svůj ekvivalent cloudové služby.
+**A:** Kontejnery služeb Cognitive Services jsou alternativou ke cloudu služeb Cognitive Services. Kontejnery nabízejí stejné funkce jako odpovídající cloudové služby. Zákazníci můžou nasadit kontejnery místně nebo v Azure. Základní technologie AI, cenové úrovně, klíče rozhraní API a podpis rozhraní API jsou stejné mezi kontejnerem a odpovídajícími cloudovými službami. Tady jsou [funkce a výhody](../cognitive-services-container-support.md#features-and-benefits) pro výběr kontejnerů před jejich ekvivalentem cloudové služby.
 
-**Otázka: budou kontejnery k dispozici pro všechny Cognitive Services a jaké jsou další sady kontejnerů, které bychom měli očekávat?**
+**Otázka: Budou kontejnery k dispozici pro všechny služby Cognitive Services a jaké jsou další sady kontejnerů, které bychom měli očekávat?**
 
-**A:** Rádi bychom Cognitive Services k dispozici jako nabídky kontejnerů. Pokud chcete získat aktualizace nových verzí kontejnerů a dalších oznámení Cognitive Services, kontaktujte svého místního správce účet Microsoft.
+**A:** Rádi bychom, aby více cognitive services k dispozici jako kontejner nabídky. Obraťte se na místního správce účtů Microsoft a získejte aktuální informace o nových verzích kontejnerů a dalších oznámeních služeb Cognitive Services.
 
-**Otázka: co bude smlouva SLA (Service-level agreement) pro kontejnery Cognitive Services?**
+**Otázka: Jaká bude smlouva o úrovni služeb (SLA) pro kontejnery služeb Cognitive Services?**
 
-**A:** Cognitive Services kontejnery nemají smlouvu SLA.
+**A:** Kontejnery služeb Cognitive Services nemají sla.
 
-Cognitive Services konfigurace kontejnerů prostředků se řídí zákazníky, takže Microsoft nenabídne smlouvu SLA pro obecnou dostupnost (GA). Zákazníkům je zdarma nasazovat kontejnery, takže definují prostředí hostitele.
+Konfigurace prostředků kontejneru služby Cognitive Services jsou řízeny zákazníky, takže společnost Microsoft nebude nabízet sla pro obecnou dostupnost (GA). Zákazníci mohou nasadit kontejnery místně, a proto definují hostitelská prostředí.
 
 > [!IMPORTANT]
-> Další informace o Cognitive Services smluv o úrovni služeb [najdete na naší stránce věnované smlouvě SLA](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/).
+> Další informace o smlouvách o úrovni služeb služeb cognitive services [najdete na naší stránce smlouvy SLA](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/).
 
-**Otázka: jsou tyto kontejnery k dispozici v cloudech z svrchovaného místa?**
+**Otázka: Jsou tyto kontejnery k dispozici v suverénních cloudech?**
 
-**A:** S termínem "svrchovaného cloudu" nemusíte mít všechny uživatele, takže začneme s definicí:
+**A:** Ne každý je obeznámen s termínem "suverénní mrak", takže začněme s definicí:
 
-> "Svrchovaná Cloud" se skládá z cloudů [Azure Government](../../azure-government/documentation-government-welcome.md), [Azure Německo](../../germany/germany-welcome.md)a [Azure Čína 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) .
+> "Suverénní cloud" se skládá z cloudů [Azure Government](../../azure-government/documentation-government-welcome.md), [Azure Germany](../../germany/germany-welcome.md)a Azure [China 21Vianet.](https://docs.microsoft.com/azure/china/overview-operations)
 
-Kontejnery Cognitive Services v cloudech svrchovaného *nativně nepodporují.* Kontejnery mohou být spuštěny v těchto cloudech, ale budou vyžádány z veřejného cloudu a musí odesílat data o využití do veřejného koncového bodu.
+Bohužel kontejnery cognitive services *nejsou* nativně podporovány v suverénních cloudech. Kontejnery lze spustit v těchto cloudech, ale budou vyňaty z veřejného cloudu a je třeba odeslat data o využití do veřejného koncového bodu.
 
 ### <a name="versioning"></a>Správa verzí
 
-**Otázka: jak jsou kontejnery aktualizovány na nejnovější verzi?**
+**Otázka: Jak jsou kontejnery aktualizovány na nejnovější verzi?**
 
-**A:** Zákazníci si můžou vybrat, kdy se mají aktualizovat kontejnery, které nasadili. Kontejnery budou označeny standardními [značkami Docker](https://docs.docker.com/engine/reference/commandline/tag/) , jako je například `latest`, aby označovaly nejnovější verzi. Zákazníkům doporučujeme, aby při jejich vydávání vyčetli nejnovější verzi kontejnerů, zaregistrujte [Azure Container Registry webhooků](../../container-registry/container-registry-webhook.md) , abyste získali podrobnosti o tom, jak se při aktualizaci obrázku zobrazí oznámení.
+**A:** Zákazníci si mohou vybrat, kdy mají aktualizovat kontejnery, které nasadili. Kontejnery budou označeny standardními `latest` [značkami Dockeru,](https://docs.docker.com/engine/reference/commandline/tag/) například k označení nejnovější verze. Doporučujeme zákazníkům, aby vytahovali nejnovější verzi kontejnerů po jejich vydání, pokladní [webhooky Azure Container Registry](../../container-registry/container-registry-webhook.md) pro podrobnosti o tom, jak získat upozornění při aktualizaci bitové kopie.
  
 **Otázka: Jaké verze budou podporovány?**
 
-**A:** Bude podporována aktuální a poslední hlavní verze kontejneru. Doporučujeme však zákazníkům, aby si získali nejnovější technologii.
+**A:** Aktuální a poslední hlavní verze kontejneru bude podporována. Doporučujeme však zákazníkům, aby zůstali aktuální, aby získali nejnovější technologie.
  
-**Otázka: jak se verze aktualizují?**
+**Otázka: Jak jsou aktualizace verzí?**
 
-**A:** Hlavní změny verze znamenají, že došlo k zásadní změně podpisu rozhraní API. Předpokládáme, že se obecně shoduje se změnami hlavní verze v odpovídající nabídce cloudové služby pro rozpoznávání. Změny podverze označují opravy chyb, aktualizace modelů nebo nové funkce, které nedělají zásadní změnu v signatuře rozhraní API.
+**A:** Hlavní verze změny označují, že je narušující změny podpisu rozhraní API. Předpokládáme, že se to obecně bude shodovat s hlavními změnami verzí odpovídající nabídky cloudu služby Cognitive Service. Dílčí verze změny označují opravy chyb, aktualizace modelu nebo nové funkce, které neprovedou narušující změny podpisu rozhraní API.
 
-## <a name="technical-questions"></a>Technické dotazy
+## <a name="technical-questions"></a>Technické otázky
 
-**Otázka: Jak mám spustit kontejnery Cognitive Services na zařízeních IoT?**
+**Otázka: Jak mám spouštět kontejnery služeb Cognitive Services na zařízeních IoT?**
 
-Bez ohledu na to, jestli nemáte spolehlivé připojení k Internetu, nebo pokud chcete ušetřit náklady na šířku pásma. Nebo pokud mají požadavky na nízkou latenci nebo pracujete s citlivými daty, která je potřeba analyzovat na pracovišti, [Azure IoT Edge s kontejnery Cognitive Services](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) poskytuje konzistenci s cloudem.
+Ať už nemáte spolehlivé připojení k internetu, nebo chcete ušetřit na ceně šířky pásma. Nebo pokud máte požadavky na nízkou latenci nebo máte co do činění s citlivými daty, která je potřeba analyzovat na místě, [Azure IoT Edge s kontejnery kognitivních služeb](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) vám dává konzistenci s cloudem.
 
-**Otázka: Návody poskytovat zpětnou vazbu k produktu a doporučení funkcí?**
+**Otázka: Jak mohu poskytnout zpětnou vazbu k produktu a doporučení funkcí?**
 
-**A:** Zákazníkům se doporučuje [hlasovat své obavy](https://cognitive.uservoice.com/) veřejně a hlasovat pro ostatní, kteří provedli stejný postup jako při překrytí potenciálních problémů. Nástroj pro telefonování uživatelů se dá použít pro zpětnou vazbu k produktu i pro doporučení funkcí.
+**A:** Zákazníci jsou povzbuzováni, aby [vyjádřili své obavy](https://cognitive.uservoice.com/) veřejně, a up-hlasování ostatní, kteří učinili totéž, kde potenciální problémy překrývají. Uživatelský hlasový nástroj lze použít jak pro zpětnou vazbu produktu, tak pro doporučení funkcí.
 
-**Otázka: koho se mám obrátit na podporu?**
+**Otázka: Na koho se mám obrátit s žádostí o podporu?**
 
-**A:** Kanály zákaznické podpory jsou stejné jako u cloudové nabídky Cognitive Services. Všechny kontejnery Cognitive Services zahrnují funkce protokolování, které nám pomůžou a komunita podpory pro zákazníky. Další podporu najdete v následujících možnostech.
+**A:** Kanály zákaznické podpory jsou stejné jako cloudová nabídka služeb Cognitive Services. Všechny kontejnery služeb Cognitive Services obsahují funkce protokolování, které nám a zákazníkům komunitní podpory pomohou. Další podporu naleznete v následujících možnostech.
 
 ### <a name="customer-support-plan"></a>Plán zákaznické podpory
 
-Zákazníci by se měli obrátit na svůj [plán podpory Azure](https://azure.microsoft.com/support/plans/) , aby mohli zjistit, kdo má kontaktovat podporu.
+Zákazníci by měli odkazovat na jejich [plán podpory Azure](https://azure.microsoft.com/support/plans/) a zjistit, koho kontaktovat pro podporu.
 
-### <a name="azure-knowledge-center"></a>Centrum znalostí Azure
+### <a name="azure-knowledge-center"></a>Znalostní centrum Azure
 
-Zákazníkům je zdarma prozkoumat [Centrum znalostí Azure](https://azure.microsoft.com/resources/knowledge-center/) , které odpoví na otázky a problémy s podporou.
+Zákazníci si mohou prohlédnout [znalostní centrum Azure](https://azure.microsoft.com/resources/knowledge-center/) a zodpovědět otázky a problémy s podporou.
 
 ### <a name="stack-overflow"></a>Stack Overflow
 
-> [Stack Overflow](https://en.wikipedia.org/wiki/Stack_Overflow) je web otázek a odpovědí pro programátory Professional a patříte mezi fanoušky.
+> [Stack Overflow](https://en.wikipedia.org/wiki/Stack_Overflow) je otázka a odpověď stránky pro profesionální a nadšence programátory.
 
-Seznamte se s případnými otázkami a odpověďmi, které odpovídají vašim potřebám, v následujících značkách.
+Prozkoumejte následující značky pro potenciální otázky a odpovědi, které odpovídají vašim potřebám.
 
 * [Azure Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
-* [Rozpoznávání Microsoftu](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+* [Microsoft Kognitivní](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
 
 **Otázka: Jak funguje fakturace?**
 
-**A:** Zákazníkům se účtují na základě spotřeby, podobně jako u Cognitive Servicesho cloudu. Kontejnery je potřeba nakonfigurovat tak, aby odesílaly data měření do Azure, a odpovídajícím způsobem se účtují transakce. Prostředky používané v rámci hostovaných a místních služeb se budou přidávat k jedné kvótě s vrstvenými cenami a počítají se v obou použitích. Další podrobnosti najdete na stránce s cenami odpovídající nabídky.
+**A:** Zákazníkům se účtuje účtovaná spotřeba, podobně jako cloud služeb Cognitive Services. Kontejnery musí být nakonfigurované pro odesílání dat měření do Azure a transakce se budou účtovat odpovídajícím způsobem. Prostředky používané v hostovaných a místních službách přidají k jedné kvótě s odstupňovanými cenami a započítá se do obou použití. Další podrobnosti naleznete na stránce s cenami odpovídající nabídky.
 
 * [Detektor anomálií][ad-containers-billing]
-* [Počítačové zpracování obrazu][cv-containers-billing]
-* [Rozpoznávání tváře][fa-containers-billing]
-* [Nástroj pro rozpoznávání formulářů][fr-containers-billing]
+* [Počítačové vidění][cv-containers-billing]
+* [Tvář][fa-containers-billing]
+* [Rozpoznávání formulářů][fr-containers-billing]
 * [Language Understanding (LUIS)][lu-containers-billing]
 * [Rozhraní API služby Speech][sp-containers-billing]
 * [Analýza textu][ta-containers-billing]
 
 > [!IMPORTANT]
-> Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Kontejnery Cognitive Services neodesílají zákaznická data společnosti Microsoft.
+> Kontejnery služeb Cognitive Services nejsou licencovány ke spuštění bez připojení k Azure pro měření. Zákazníci musí povolit kontejnery komunikovat fakturační údaje se službou měření za všech okolností. Kontejnery služeb Cognitive Services neodesílají zákaznická data společnosti Microsoft.
  
-**Otázka: jaká je aktuální záruka podpory kontejnerů?**
+**Otázka: Jaká je aktuální záruka podpory pro kontejnery?**
 
-**A:** Pro verze Preview není k dispozici žádná záruka. Standardní záruka společnosti Microsoft pro podnikový software se použije, pokud jsou kontejnery formálně vyhlášené jako obecně dostupné (GA).
+**A:** Na náhledy se nevztahuje žádná záruka. Standardní záruka společnosti Microsoft na podnikový software bude platit, pokud jsou kontejnery formálně oznámeny jako obecné dostupnosti (GA).
  
-**Otázka: co se stane s Cognitive Services kontejnery, když dojde ke ztrátě připojení k Internetu?**
+**Otázka: Co se stane s kontejnery služeb Cognitive Services, když dojde ke ztrátě připojení k internetu?**
 
-**A:** Nemusíte spouštět kontejnery Cognitive Services bez připojení k Azure pro měření. Zákazníci musí povolit kontejnerům nepřetržitě komunikovat se službou měření dat.
+**A:** Kontejnery služeb Cognitive Services *nejsou licencovány* ke spuštění bez připojení k Azure pro měření. Zákazníci musí povolit, aby kontejnery mohly vždy komunikovat se službou měření.
 
-**Otázka: jak dlouho může kontejner fungovat bez připojení k Azure?**
+**Otázka: Jak dlouho může kontejner fungovat, aniž by byl připojen k Azure?**
 
-**A:** Nemusíte spouštět kontejnery Cognitive Services bez připojení k Azure pro měření. Zákazníci musí povolit kontejnerům nepřetržitě komunikovat se službou měření dat.
+**A:** Kontejnery služeb Cognitive Services *nejsou licencovány* ke spuštění bez připojení k Azure pro měření. Zákazníci musí povolit, aby kontejnery mohly vždy komunikovat se službou měření.
  
-**Otázka: co je aktuální hardware potřebný ke spuštění těchto kontejnerů?**
+**Otázka: Jaký je aktuální hardware potřebný ke spuštění těchto kontejnerů?**
 
-**A:** Kontejnery Cognitive Services jsou kontejnery založené na platformě x64, které můžou spouštět libovolný kompatibilní uzel Linux, virtuální počítač a hraniční zařízení, které podporují kontejnery Docker platformy x64 Linux. Všechny vyžadují procesorové procesory. Minimální a doporučené konfigurace pro jednotlivé nabídky kontejnerů jsou k dispozici níže:
+**A:** Kontejnery služeb Cognitive Services jsou kontejnery založené na x64, které můžou spouštět libovolné kompatibilní linuxové uzly, virtuální počítače a hraniční zařízení, které podporuje kontejnery x64 Linux Docker. Všechny vyžadují procesory. Minimální a doporučené konfigurace pro každou nabídku kontejnerů jsou k dispozici níže:
 
 * [Detektor anomálií][ad-containers-recommendations]
-* [Počítačové zpracování obrazu][cv-containers-recommendations]
-* [Rozpoznávání tváře][fa-containers-recommendations]
-* [Nástroj pro rozpoznávání formulářů][fr-containers-recommendations]
+* [Počítačové vidění][cv-containers-recommendations]
+* [Tvář][fa-containers-recommendations]
+* [Rozpoznávání formulářů][fr-containers-recommendations]
 * [Language Understanding (LUIS)][lu-containers-recommendations]
 * [Rozhraní API služby Speech][sp-containers-recommendations]
 * [Analýza textu][ta-containers-recommendations]
  
-**Otázka: jsou tyto kontejnery aktuálně podporovány ve Windows?**
+**Otázka: Jsou tyto kontejnery aktuálně podporovány v systému Windows?**
 
-**A:** Kontejnery Cognitive Services jsou kontejnery pro Linux, ale v systému Windows je k dispozici podpora kontejnerů pro Linux. Další informace o kontejnerech Linux ve Windows najdete v [dokumentaci k Docker](https://blog.docker.com/2017/09/preview-linux-containers-on-windows/).
+**A:** Kontejnery Cognitive Services jsou kontejnery Linux, ale existuje určitá podpora pro kontejnery Linux u systému Windows. Další informace o kontejnerech Linuxu v systému Windows naleznete v [dokumentaci k Dockeru](https://blog.docker.com/2017/09/preview-linux-containers-on-windows/).
  
-**Otázka: Návody zjišťování kontejnerů?**
+**Otázka: Jak zjistím kontejnery?**
 
-**A:** Kontejnery Cognitive Services jsou k dispozici v různých umístěních, jako je Azure Portal, centrum Docker a Registry kontejnerů Azure. Pro nejnovější umístění kontejnerů se podívejte na [úložiště kontejnerů a image](../cognitive-services-container-support.md#container-repositories-and-images).
+**A:** Kontejnery služeb Cognitive Services jsou dostupné na různých místech, jako je například portál Azure, centrum Dockeru a registry kontejnerů Azure. Nejnovější umístění kontejnerů naleznete v [úložištích kontejnerů a nastoupení obrázků](../cognitive-services-container-support.md#container-repositories-and-images).
 
-**Otázka: jak se Cognitive Services kontejnery porovnávají s AWS a Google nabídkami?**
+**Otázka: Jak se kontejnery služeb Cognitive Services porovnávají s nabídkami AWS a Google?**
 
-**A:** Microsoft je prvním poskytovatelem cloudu, který umožňuje přesunout své předem připravené modely AI do kontejnerů s jednoduchou fakturací na transakci, jako by zákazníci používali cloudovou službu. Microsoft se domnívá, že hybridní cloud nabízí zákazníkům více možností.
+**A:** Microsoft je prvním poskytovatelem cloudu, který přesouvá své předem vycvičené modely AI v kontejnerech s jednoduchou fakturací za transakci, jako by zákazníci používali cloudovou službu. Microsoft věří, že hybridní cloud dává zákazníkům větší výběr.
 
-**Otázka: Jaké certifikáty pro certifikace dodržování předpisů mají kontejnery?**
+**Otázka: Jaké certifikace dodržování předpisů kontejnery mají?**
 
-**A:** Kontejnery služby pro rozpoznávání neobsahují žádné certifikace dodržování předpisů.
+**A:** Kontejnery služeb Cognitive Services nemají žádné certifikace dodržování předpisů
 
-**Otázka: Jaké oblasti jsou Cognitive Services kontejnery k dispozici v nástroji?**
+**Otázka: V jakých oblastech jsou kontejnery služeb Cognitive Services k dispozici?**
 
-**A:** Kontejnery je možné spustit kdekoli v libovolné oblasti, ale potřebují klíč a zavolat zpátky do Azure pro měření. Všechny podporované oblasti pro cloudovou službu se podporují pro volání měření kontejneru.
+**A:** Kontejnery lze spustit kdekoli v libovolné oblasti, ale potřebují klíč a volat zpět do Azure pro měření. Všechny podporované oblasti pro cloudovou službu jsou podporovány pro volání měření kontejnerů.
 
 [!INCLUDE [Containers next steps](includes/containers-next-steps.md)]
 

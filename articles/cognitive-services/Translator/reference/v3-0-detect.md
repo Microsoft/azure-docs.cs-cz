@@ -1,7 +1,7 @@
 ---
-title: Translator Text API metoda Detect
+title: Metoda detekce textového rozhraní překladače
 titleSuffix: Azure Cognitive Services
-description: Identifikujte jazyk části textu pomocí metody zjišťování Translator Text API Azure Cognitive Services.
+description: Identifikujte jazyk části textu pomocí metody Detekce překladače překladačů Azure Cognitive Services.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,63 +11,63 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837296"
 ---
-# <a name="translator-text-api-30-detect"></a>Translator Text API 3,0: zjištění
+# <a name="translator-text-api-30-detect"></a>Překladač Text API 3.0: Detekce
 
-Určuje jazyk části textu.
+Identifikuje jazyk části textu.
 
 ## <a name="request-url"></a>Adresa URL požadavku
 
-Odeslat žádost o `POST`:
+Odeslání `POST` žádosti na:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 ```
 
-## <a name="request-parameters"></a>Parametry žádosti
+## <a name="request-parameters"></a>Parametry požadavku
 
-Parametry žádosti předané řetězci dotazu jsou:
+Parametry požadavku předané v řetězci dotazu jsou:
 
 <table width="100%">
   <th width="20%">Parametr dotazu</th>
   <th>Popis</th>
   <tr>
-    <td>verze API-Version</td>
-    <td>*Povinný parametr*.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0`.</td>
+    <td>verze-api</td>
+    <td>*Povinný parametr*.<br/>Verze rozhraní API požadované klientem. Hodnota musí `3.0`být .</td>
   </tr>
 </table> 
 
-Hlavičky požadavku zahrnují:
+Mezi hlavičky požadavku patří:
 
 <table width="100%">
   <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
-    <td>Ověřovací hlavičky (y)</td>
-    <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
+    <td>Autentizační hlavička (záhlaví)</td>
+    <td><em>Hlavička požadavku .</em><br/>Viz <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">dostupné možnosti ověřování</a>.</td>
   </tr>
   <tr>
     <td>Typ obsahu</td>
-    <td>*Požadovaná hlavička žádosti*<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json`.</td>
+    <td>*Hlavička požadavku .*<br/>Určuje typ obsahu datové části. Možné hodnoty `application/json`jsou: .</td>
   </tr>
   <tr>
-    <td>Content-Length</td>
-    <td>*Požadovaná hlavička žádosti*<br/>Délka textu žádosti</td>
+    <td>Délka obsahu</td>
+    <td>*Hlavička požadavku .*<br/>Délka těla požadavku.</td>
   </tr>
   <tr>
-    <td>X – ClientTraceId</td>
-    <td>*Volitelné*.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Všimněte si, že tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId`.</td>
+    <td>X-ClientTraceId</td>
+    <td>*Nepovinné*.<br/>Identifikátor GUID generovaný klientem k jednoznačné identifikaci požadavku. Všimněte si, že můžete vynechat toto záhlaví, pokud zahrnete `ClientTraceId`ID trasování v řetězci dotazu pomocí parametru dotazu s názvem .</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Text požadavku
 
-Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností řetězce s názvem `Text`. Rozpoznávání jazyka se použije na hodnotu vlastnosti `Text`. Vzorový text žádosti vypadá nějak takto:
+Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON `Text`s vlastností string s názvem . Detekce jazyka se použije `Text` na hodnotu vlastnosti. Tělo požadavku vzorku vypadá takto:
 
 ```json
 [
@@ -78,24 +78,24 @@ Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností �
 Platí následující omezení:
 
 * Pole může mít maximálně 100 prvků.
-* Textová hodnota prvku pole nesmí být delší než 10 000 znaků včetně mezer.
-* Celý text zahrnutý v požadavku nesmí být delší než 50 000 znaků včetně mezer.
+* Textová hodnota prvku pole nesmí přesáhnout 10 000 znaků včetně mezer.
+* Celý text obsažený v požadavku nesmí přesáhnout 50 000 znaků včetně mezer.
 
-## <a name="response-body"></a>Tělo odpovědi
+## <a name="response-body"></a>Text odpovědi
 
-Úspěšná odpověď je pole JSON s jedním výsledkem pro každý řetězec ve vstupním poli. Objekt výsledku obsahuje následující vlastnosti:
+Úspěšná odpověď je pole JSON s jedním výsledkem pro každý řetězec ve vstupním poli. Výsledný objekt obsahuje následující vlastnosti:
 
-  * `language`: kód zjištěného jazyka.
+  * `language`: Kód detekovaného jazyka.
 
-  * `score`: hodnota typu float označující důvěru ve výsledku. Skóre je v rozsahu 0 až 1 a nízké skóre indikuje nízkou důvěru.
+  * `score`: Hodnota plovoucího signálu označující důvěru ve výsledek. Skóre je mezi nulou a jedním a nízké skóre označuje nízkou důvěru.
 
-  * `isTranslationSupported`: logická hodnota, která má hodnotu true, pokud zjištěný jazyk je jedním z jazyků podporovaných pro překlad textu.
+  * `isTranslationSupported`: Logická hodnota, která je pravdivá, pokud je zjištěný jazyk jedním z jazyků podporovaných pro překlad textu.
 
-  * `isTransliterationSupported`: logická hodnota, která má hodnotu true, pokud zjištěný jazyk je jedním z jazyků podporovaných pro účely přepočtu.
+  * `isTransliterationSupported`: Logická hodnota, která je true, pokud je zjištěný jazyk jedním z jazyků podporovaných pro přepis.
   
-  * `alternatives`: pole dalších možných jazyků. Každý prvek pole je další objekt se stejnými vlastnostmi, které jsou uvedeny výše: `language`, `score`, `isTranslationSupported` a `isTransliterationSupported`.
+  * `alternatives`: Řada dalších možných jazyků. Každý prvek pole je jiný objekt se stejnými `score` `isTranslationSupported` vlastnostmi uvedenými výše: `isTransliterationSupported` `language`, , a .
 
-Příklad odpovědi JSON:
+Příklad odpovědi JSON je:
 
 ```json
 [
@@ -129,13 +129,13 @@ Příklad odpovědi JSON:
   <th>Popis</th>
   <tr>
     <td>X-RequestId</td>
-    <td>Hodnota, kterou služba vygenerovala k identifikaci požadavku. Používá se pro účely řešení potíží.</td>
+    <td>Hodnota generovaná službou k identifikaci požadavku. Používá se pro účely řešení potíží.</td>
   </tr>
 </table> 
 
-## <a name="response-status-codes"></a>Stavové kódy odpovědí
+## <a name="response-status-codes"></a>Stavové kódy odpovědi
 
-Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí. 
+Následují možné stavové kódy HTTP, které požadavek vrátí. 
 
 <table width="100%">
   <th width="20%">Stavový kód</th>
@@ -146,31 +146,31 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   </tr>
   <tr>
     <td>400</td>
-    <td>Jeden z parametrů dotazu chybí nebo je neplatný. Před opakováním pokusu proveďte správné parametry žádosti.</td>
+    <td>Jeden z parametrů dotazu chybí nebo je neplatný. Před opakováním opravte parametry požadavku.</td>
   </tr>
   <tr>
     <td>401</td>
-    <td>Požadavek nebylo možné ověřit. Ověřte, jestli jsou přihlašovací údaje zadané a platné.</td>
+    <td>Požadavek nelze ověřit. Zkontrolujte, zda jsou zadána a platná pověření.</td>
   </tr>
   <tr>
     <td>403</td>
-    <td>Požadavek není autorizovaný. Podívejte se na podrobnosti chybové zprávy. To často znamená, že se využívaly všechny bezplatné překlady, které jsou součástí zkušebního předplatného.</td>
+    <td>Požadavek není autorizován. Zkontrolujte chybovou zprávu podrobností. To často znamená, že všechny bezplatné překlady poskytované zkušební předplatné byly vypovězeny.</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>Server odmítl požadavek, protože klient překročil omezení požadavků.</td>
+    <td>Server požadavek zamítl, protože klient překročil limity požadavků.</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky odpovědi `X-RequestId`a identifikátor klienta z hlavičky žádosti `X-ClientTraceId`.</td>
+    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, oznamte ji s: datem a `X-RequestId`časem selhání, `X-ClientTraceId`identifikátorem požadavku z hlavičky odpovědi a identifikátorem klienta z hlavičky požadavku .</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Server je dočasně nedostupný. Opakujte požadavek. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky odpovědi `X-RequestId`a identifikátor klienta z hlavičky žádosti `X-ClientTraceId`.</td>
+    <td>Server je dočasně nedostupný. Opakujte požadavek. Pokud chyba přetrvává, oznamte ji s: datem a `X-RequestId`časem selhání, `X-ClientTraceId`identifikátorem požadavku z hlavičky odpovědi a identifikátorem klienta z hlavičky požadavku .</td>
   </tr>
 </table> 
 
-Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb najdete na [stránce s referenčními Translator text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Pokud dojde k chybě, požadavek také vrátí odpověď na chybu JSON. Kód chyby je šestimístné číslo kombinující 3místný stavový kód HTTP následovaný třímístným číslem pro další kategorizaci chyby. Běžné kódy chyb naleznete na [referenční stránce v3 Translator Text API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Příklady
 

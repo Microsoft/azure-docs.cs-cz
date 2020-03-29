@@ -1,7 +1,7 @@
 ---
-title: Vzor. libovolný typ entity – LUIS
+title: Type entity Pattern.any – LUIS
 titleSuffix: Azure Cognitive Services
-description: Pattern. any je zástupný symbol s proměnlivou délkou, který se používá jenom v šabloně vzoru utterance k označení, kde začíná a končí entita.
+description: Pattern.any je zástupný symbol proměnné délky používaný pouze v utterance šablony vzoru k označení místa, kde entita začíná a končí.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,49 +11,49 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75979165"
 ---
 # <a name="patternany-entity"></a>Entita Pattern.any
 
-Pattern. any je zástupný symbol s proměnlivou délkou, který se používá jenom v šabloně vzoru utterance k označení, kde začíná a končí entita.  
+Pattern.any je zástupný symbol proměnné délky používaný pouze v utterance šablony vzoru k označení místa, kde entita začíná a končí.  
 
-Vzor. všechny entity musí být označeny v příkladech šablony [vzoru](luis-how-to-model-intent-pattern.md) , nikoli v příkladech uživatele záměr.
+Pattern.any entity musí být označeny v příkladech šablony [Pattern,](luis-how-to-model-intent-pattern.md) nikoli v příkladech záměru uživatele.
 
-**Entita je vhodná v případě, že:**
+**Entita se hodí, když:**
 
-* Koncová entita může být zaměněna se zbývajícím textem utterance.
+* Koncovka entity může být zaměňována se zbývajícím textem utterance.
 
 ## <a name="usage"></a>Využití
 
-Pro klientskou aplikaci, která vyhledává knihy na základě názvu, vzoru. vše extrahuje úplný název. Šablona utterance pomocí vzoru. pro toto hledání v této knize je `Was {BookTitle} written by an American this year[?]`.
+Vzhledem k tomu, klientská aplikace, která hledá knihy na základě názvu, pattern.any extrahuje celý název. Promluva šablony pomocí pattern.any pro `Was {BookTitle} written by an American this year[?]`toto hledání knihy je .
 
-V následující tabulce má každý řádek dvě verze utterance. Horní utterance je to, jak LUIS zpočátku vidí utterance. Není jasné, kde začíná a končí nadpis knihy. Dolní utterance používá vzor. kterákoli entita označuje začátek a konec entity.
+V následující tabulce má každý řádek dvě verze utterance. Horní utterance je, jak LUIS zpočátku vidí utterance. Není jasné, kde název knihy začíná a končí. Dolní utterance používá Pattern.any entity označit začátek a konec entity.
 
 |Utterance s entitou tučně|
 |--|
-|`Was The Man Who Mistook His Wife for a Hat and Other Clinical Tales written by an American this year?`<br><br>Jednalo **se o člověka, který v tomto roce nedokázal své manželky na Hat a další klinické úkony** zapsané americkým?|
-|`Was Half Asleep in Frog Pajamas written by an American this year?`<br><br>Byl tento rok v roce Pajamas zapsaný na **polovinu režimu spánku** ?|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>Jednalo **se o konkrétní smuteký dort: nové** zapsané do USA tento rok?|
-|`Was There's A Wocket In My Pocket! written by an American this year?`<br><br>**Ve svém kapesním počítači je Wocket!** Napsali jste tento rok American?|
+|`Was The Man Who Mistook His Wife for a Hat and Other Clinical Tales written by an American this year?`<br><br>Byl **muž, který si spletl svou ženu za klobouk a další klinické příběhy** napsal Američan v tomto roce?|
+|`Was Half Asleep in Frog Pajamas written by an American this year?`<br><br>Byl **Half Asleep v žabím pyžamu** napsaný američanem letos?|
+|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>Byl **zvláštní smutek Lemon Cake: Román** napsal Američan v tomto roce?|
+|`Was There's A Wocket In My Pocket! written by an American this year?`<br><br>**Byl tam wocket v mé kapse!** napsal američan v tomto roce?|
 ||
 
 
 
-## <a name="example-json"></a>Ukázkový soubor JSON
+## <a name="example-json"></a>Příklad JSON
 
 Zamyslete se nad následujícím dotazem:
 
 `where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
-S názvem vloženého formuláře, který se má extrahovat jako vzor. any:
+S vloženým názvem formuláře, který chcete extrahovat jako Pattern.any:
 
 `Understand your responsibilities as a member of the community`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpověď koncového bodu predikce V2](#tab/V2)
 
 ```JSON
 "entities": [
@@ -67,9 +67,9 @@ S názvem vloženého formuláře, který se má extrahovat jako vzor. any:
 ```
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpověď koncového bodu predikce V3](#tab/V3)
 
-Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=false`:
+Toto je JSON, pokud `verbose=false` je nastavena v řetězci dotazu:
 
 ```json
 "entities": {
@@ -79,7 +79,7 @@ Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=false`:
 }
 ```
 
-Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=true`:
+Toto je JSON, pokud `verbose=true` je nastavena v řetězci dotazu:
 
 ```json
 "entities": {
@@ -108,4 +108,4 @@ Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=true`:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto [kurzu](luis-tutorial-pattern.md)použijte **vzor. libovolnou** entitu pro extrahování dat z projevy, kde jsou projevy ve správném formátu a kde se konce dat můžou snadno zaměňovat se zbývajícími slovy utterance.
+V tomto [kurzu](luis-tutorial-pattern.md)použijte **Pattern.any** entity extrahovat data z projevy, kde projevy jsou dobře formátovány a kde konec dat lze snadno zaměnit se zbývající slova utterance.

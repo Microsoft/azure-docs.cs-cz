@@ -1,7 +1,7 @@
 ---
-title: Použití úloh moderování s konzolou REST API – Content Moderator
+title: Použití úloh moderování s konzolou rozhraní REST API – Moderátor obsahu
 titleSuffix: Azure Cognitive Services
-description: Pomocí operací prověřit rozhraní API můžete zahájit kompletní úlohy Moderování obsahu pro obrázek nebo textový obsah v Azure Content Moderator.
+description: Operace úloh rozhraní Review API slouží k zahájení úloh moderování obsahu od konce na konec pro obrazový nebo textový obsah v Moderátoru obsahu Azure.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,57 +11,57 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 83ee8e0c0583cba72da8702e196f0f38128f8d8a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72935939"
 ---
-# <a name="define-and-use-moderation-jobs-rest"></a>Definování a použití úloh moderování (REST)
+# <a name="define-and-use-moderation-jobs-rest"></a>Definování a používání úloh moderování (REST)
 
-Úloha moderování slouží jako typ obálky pro funkčnost Moderování obsahu, pracovních postupů a revizí. V této příručce se dozvíte, jak pomocí rozhraní REST API úlohy iniciovat a kontrolovat úlohy Moderování obsahu. Jakmile pochopíte strukturu rozhraní API, můžete tato volání snadno přenést na libovolnou platformu kompatibilní s REST.
+Moderování úloha slouží jako druh obálky pro funkce moderování obsahu, pracovnípostupy a recenze. Tato příručka ukazuje, jak pomocí úlohy REST API zahájit a zkontrolovat úlohy moderování obsahu. Jakmile porozumíte struktuře rozhraní API, můžete tato volání snadno přenést na libovolnou platformu kompatibilní s rest.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Přihlaste se nebo vytvořte účet na webu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) Content moderator.
-- Volitelné [Definujte vlastní pracovní postup](./Review-Tool-User-Guide/Workflows.md) , který se má používat s vaší úlohou. můžete použít také výchozí pracovní postup.
+- Přihlaste se nebo si vytvořte účet na webu [nástroje Kontrola](https://contentmoderator.cognitive.microsoft.com/) moderátora obsahu.
+- (Nepovinné) [Definujte vlastní pracovní postup,](./Review-Tool-User-Guide/Workflows.md) který se použije s úlohou. můžete také použít výchozí pracovní postup.
 
 ## <a name="create-a-job"></a>Vytvoření úlohy
 
-Pokud chcete vytvořit úlohu moderování, klikněte na referenční stránku pro [úlohu vytvořit](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) rozhraní API a vyberte tlačítko pro vaši oblast předplatného (najdete ho na stránce s **přihlašovacími údaji** v [nástroji pro kontrolu](https://contentmoderator.cognitive.microsoft.com/)na adrese URL koncového bodu). Spustí se konzola rozhraní API, kde můžete snadno sestavit a spustit REST API volání.
+Chcete-li vytvořit úlohu moderování, přejděte na referenční stránku [úlohy – vytvoření](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) referenční stránky rozhraní API a vyberte tlačítko pro oblast předplatného (najdete ji v adrese URL koncového bodu na stránce **Přihlašovací údaje** [nástroje Revize).](https://contentmoderator.cognitive.microsoft.com/) Tím se spustí konzola rozhraní API, kde můžete snadno vytvořit a spustit volání rozhraní REST API.
 
 ![Úloha – vytvoření výběru oblasti stránky](images/test-drive-job-1.png)
 
-### <a name="enter-rest-call-parameters"></a>Zadejte parametry volání REST
+### <a name="enter-rest-call-parameters"></a>Zadat parametry volání REST
 
-Zadejte následující hodnoty pro sestavení volání REST:
+Zadejte následující hodnoty pro vytvoření volání REST:
 
-- ID **týmu**: ID týmu, které jste vytvořili při nastavování účtu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) (najdete ho v poli **ID** na obrazovce s přihlašovacími údaji nástroje pro kontrolu).
-- **ContentType**: může to být "image", "text" nebo "video".
-- ID **obsahu: vlastní**řetězec identifikátoru. Tento řetězec je předán rozhraní API a vrácen prostřednictvím zpětného volání. Je vhodný pro přidružení interních identifikátorů nebo metadat k výsledkům úlohy moderování.
-- **Workflow**: název pracovního postupu, který jste dříve vytvořili (nebo výchozí) pro výchozí pracovní postup.
-- **CallbackEndpoint**: (volitelné) adresa URL pro příjem informací o zpětném volání po dokončení revize.
-- **OCP-APIM-Subscription-Key**: váš Content moderator klíč. Najdete ho na kartě **Nastavení** [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com).
+- **TeamName**: ID týmu, které jste vytvořili při nastavování účtu [nástroje revize](https://contentmoderator.cognitive.microsoft.com/) (najdete v poli **Id** na obrazovce Pověření nástroje pro kontrolu).
+- **ContentType**: To může být "Obrázek", "Text", nebo "Video".
+- **ContentId**: Řetězec vlastního identifikátoru. Tento řetězec je předán do rozhraní API a vrácena prostřednictvím zpětného volání. Je užitečné pro připojování vnitřníidentifikátory nebo metadata s výsledky úlohy moderování.
+- **Název pracovního postupu**: Název pracovního postupu, který jste dříve vytvořili (nebo "výchozí" pro výchozí pracovní postup).
+- **CallbackEndpoint**: (Volitelné) Adresa URL pro příjem informací o zpětném volání po dokončení recenze.
+- **Ocp-Apim-Subscription-Key**: Klíč moderátora obsahu. Najdete ji na kartě **Nastavení** [nástroje Revize](https://contentmoderator.cognitive.microsoft.com).
 
-### <a name="fill-in-the-request-body"></a>Vyplnit text žádosti
+### <a name="fill-in-the-request-body"></a>Vyplnit tělo požadavku
 
-Tělo volání REST obsahuje jedno pole **ContentValue**. Pokud připravujete text, vložte obsah nezpracovaného textu, pokud jste přihlásili obrázek nebo video, pokud jste přihlásili obrázek nebo video. Můžete použít následující adresu URL ukázkového obrázku: [https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
+Tělo volání REST obsahuje jedno pole **ContentValue**. Pokud moderujete text, vložte do nezpracovaného textového obsahu nebo zadejte adresu URL obrázku nebo videa, pokud zmírňujete obraz/video. Můžete použít následující adresu URL ukázkového obrázku:[https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
 
-![Úloha – vytvoření parametrů dotazu konzoly, záhlaví a textu požadavku na konzolu](images/job-api-console-inputs.PNG)
+![Úloha – vytvoření parametrů dotazu konzoly, záhlaví a pole Text požadavku](images/job-api-console-inputs.PNG)
 
-### <a name="submit-your-request"></a>Odeslat žádost
+### <a name="submit-your-request"></a>Odešlete svůj požadavek
 
-Vyberte **Poslat**. Pokud je operace úspěšná, bude **stav odpovědi** `200 OK` a v poli **obsah odpovědi** se zobrazí ID úlohy. Zkopírujte toto ID, které chcete použít v následujících krocích.
+Vyberte **Poslat**. Pokud je operace úspěšná, `200 OK` **je stav Odpověď** a pole Obsah **odpovědi** zobrazí ID úlohy. Zkopírujte toto ID, které se použije v následujících krocích.
 
-![Revize – pole vytvořit obsah odpovědi konzoly zobrazí ID revize.](images/test-drive-job-3.PNG)
+![Recenze – pole Vytvořit obsah odpovědi konzoly zobrazuje ID recenze.](images/test-drive-job-3.PNG)
 
 ## <a name="get-job-status"></a>Získat stav úlohy
 
-Chcete-li získat stav a podrobnosti o spuštěné nebo dokončené úloze, klikněte na stránku Reference k rozhraní API pro [úlohu](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c3) a vyberte tlačítko pro vaši oblast (oblast, ve které je klíč spravovaný).
+Chcete-li získat stav a podrobnosti o spuštěné nebo dokončené úloze, přejděte na referenční stránku [Úloha – získání](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c3) rozhraní API a vyberte tlačítko pro vaši oblast (oblast, ve které je váš klíč spravován).
 
-![Úloha – získat výběr oblasti](images/test-drive-region.png)
+![Úloha – výběr oblasti](images/test-drive-region.png)
 
-Zadejte parametry volání REST jako v předchozí části. Pro tento krok je identifikátor **JobId** jedinečným řetězcem ID, který jste dostali při vytváření úlohy. Vyberte **Poslat**. Pokud je operace úspěšná, bude **stav odpovědi** `200 OK` a v poli **obsah odpovědi** se zobrazí úloha ve formátu JSON, například následující:
+Zadejte parametry volání REST jako ve výše uvedené části. Pro tento krok **JobId** je jedinečný řetězec ID, který jste obdrželi při vytváření úlohy. Vyberte **Poslat**. Pokud je operace úspěšná, `200 OK` **je stav Odpověď** a pole Obsah **odpovědi** zobrazí úlohu ve formátu JSON, například následující:
 
 ```json
 {  
@@ -111,12 +111,12 @@ Zadejte parametry volání REST jako v předchozí části. Pro tento krok je id
 }
 ```
 
-![Úloha – získat odpověď volání REST](images/test-drive-job-5.png)
+![Úloha – odpověď na volání REST](images/test-drive-job-5.png)
 
-### <a name="examine-the-new-reviews"></a>Prozkoumejte nové revize (y)
+### <a name="examine-the-new-reviews"></a>Prozkoumat nové recenze (y)
 
-Pokud vaše úloha s obsahem skončila vytvořením recenze, můžete ji zobrazit v [nástroji pro revize](https://contentmoderator.cognitive.microsoft.com). Vyberte možnost **zkontrolovat**  > **obrázek** /**textové** /**video** (v závislosti na obsahu, který jste použili). Měl by se zobrazit obsah, který je připravený pro lidskou kontrolu. Po revizi lidského moderátora se automaticky přiřadí značky a předpovědi a odešle konečné rozhodnutí o moderování. rozhraní API úlohy odešle všechny tyto informace do určeného koncového bodu koncového bodu zpětného volání.
+Pokud vaše úloha obsahu vedla k vytvoření recenze, můžete ji zobrazit v [nástroji Revize](https://contentmoderator.cognitive.microsoft.com). Vyberte **Zkontrolovat** > **textové**/**video** **obrázku**/(v závislosti na použitém obsahu). Obsah by se měl objevit, připravený k lidské kontrole. Poté, co lidský moderátor zkontroluje automaticky přiřazené značky a data předpovědi a odešle konečné rozhodnutí o moderování, rozhraní API úloh odešle všechny tyto informace do určeného koncového bodu zpětného volání.
 
 ## <a name="next-steps"></a>Další kroky
 
-V této příručce jste zjistili, jak vytvořit a dotazovat úlohy Moderování obsahu pomocí REST API. Dále Integrujte úlohy do kompletního scénáře moderování, jako je například kurz pro [moderování elektronického obchodování](./ecommerce-retail-catalog-moderation.md) .
+V této příručce jste se naučili, jak vytvořit a dotazovat úlohy moderování obsahu pomocí rozhraní REST API. Dále integrujte úlohy do scénáře moderování od konce, jako je například kurz [moderování elektronického obchodování.](./ecommerce-retail-catalog-moderation.md)

@@ -1,7 +1,7 @@
 ---
-title: Seznamy frází – služba pro rozpoznávání řeči
+title: Seznamy frází - služba řeči
 titleSuffix: Azure Cognitive Services
-description: Naučte se poskytovat hlasovou službu pomocí seznamu frází pomocí objektu `PhraseListGrammar` ke zlepšení výsledků rozpoznávání řeči na text.
+description: Zjistěte, jak službě Řeči dodat seznam `PhraseListGrammar` frází pomocí objektu ke zlepšení výsledků rozpoznávání řeči na text.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,26 +12,26 @@ ms.date: 02/04/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: f84ea6b2b0f1e8246e1d765e54f663cd01f29b1d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77560843"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Seznamy frází pro převod řeči na text
 
-Zadáním služby Speech Service se seznamem frází můžete zlepšit přesnost rozpoznávání řeči. Seznamy frází slouží k identifikaci známých frází ve zvukových datech, jako je jméno osoby nebo konkrétní umístění.
+Poskytnutím funkce Řeč se seznamem frází můžete zlepšit přesnost rozpoznávání řeči. Seznamy frází se používají k identifikaci známých frází ve zvukových datech, jako je jméno osoby nebo konkrétní umístění.
 
-Příklad: Pokud máte příkaz "přesunout do" a možné místo cíle "", které je možné přehlasovat, můžete přidat položku "přesunout do" dál ". Přidáním fráze dojde k nárůstu pravděpodobnosti, že při rozpoznání zvuku bude místo možnosti přesunout směrem nahoru rozpoznáno "Přesun na".
+Pokud máte například příkaz "Přesunout do" a možný cíl "Ward", který může být vysloven, můžete přidat položku "Přesunout do sboru". Přidání fráze zvýší pravděpodobnost, že když je zvuk rozpoznán, že "Přesunout do Ward" bude rozpoznán místo "Přesunout směrem".
 
-Do seznamu frází lze přidat jednotlivá slova nebo kompletní fráze. Při rozpoznávání se používá záznam v seznamu frází, pokud je přesná shoda pro celou frázi zahrnutá jako samostatná fráze. Pokud se nenalezne přesná shoda se slovem, rozpoznávání vám nepomáhá.
+Do seznamu frází lze přidat jednotlivá slova nebo úplné fráze. Během rozpoznávání se položka v seznamu frází používá, pokud je do zvuku zahrnuta přesná shoda pro celou frázi jako samostatná fráze. Pokud není nalezena přesná shoda s frází, rozpoznávání není podporováno.
 
 >[!Note]
-> V současné době seznamy frází podporují pouze angličtinu pro převod řeči na text.
+> V současné době funkce Seznamy frází podporuje pouze angličtinu pro převod řeči na text.
 
-## <a name="how-to-use-phrase-lists"></a>Používání seznamů frází
+## <a name="how-to-use-phrase-lists"></a>Jak používat seznamy frází
 
-Následující ukázky ukazují, jak vytvořit seznam frází pomocí objektu `PhraseListGrammar`.
+Ukázky níže ilustrují, jak `PhraseListGrammar` vytvořit seznam frází pomocí objektu.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -89,9 +89,9 @@ phraseListGrammar.addPhrase("Move to Ted");
 ::: zone-end
 
 >[!Note]
-> Maximální počet frází seznamů, které bude služba řeči používat pro porovnávání řeči, je 1024 frází.
+> Maximální počet seznamů frází, které bude služba Speech používat k odpovídání řeči, je 1024 frází.
 
-Můžete také vymazat fráze spojené s `PhraseListGrammar` voláním Clear ().
+Můžete také vymazat fráze spojené `PhraseListGrammar` s voláním clear().
 
 ::: zone pivot="programming-language-csharp"
 
@@ -134,7 +134,7 @@ phraseListGrammar.clear();
 ::: zone-end
 
 > [!NOTE]
-> Změny `PhraseListGrammar`ho objektu se projeví při příštím rozpoznávání nebo po opětovném připojení ke službě Speech.
+> Změny objektu `PhraseListGrammar` se projeví při dalším rozpoznávání nebo po opětovném připojení ke službě Speech.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: Konverzace s více zařízeními (Preview) – služba Speech
+title: Konverzace na více zařízeních (náhled) – služba řeči
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -11,115 +11,115 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: dapine
 ms.openlocfilehash: b3802e66b0ba5a68c898e69ec64b01edce1541c1
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371354"
 ---
-# <a name="what-is-multi-device-conversation-preview"></a>Co je konverzace s více zařízeními (Preview)?
+# <a name="what-is-multi-device-conversation-preview"></a>Co je konverzace s více zařízeními (náhled)?
 
-**Konverzace s více zařízeními** usnadňují vytváření hlasových nebo textových konverzací mezi více klienty a koordinaci zpráv odesílaných mezi nimi.
+**Konverzace na více zařízeních** usnadňuje vytvoření hlasové nebo textové konverzace mezi více klienty a koordinaci zpráv odeslaných mezi nimi.
 
-**Konverzace s více zařízeními**vám umožní:
+Při **konverzaci na více zařízeních**můžete:
 
-- Připojit více klientů ke stejné konverzaci a spravovat odesílání a přijímání zpráv mezi nimi.
-- Snadno přepisovat zvuk od každého klienta a předávejte přepis ostatním uživatelům s volitelným překladem.
-- Snadné odesílání textových zpráv mezi klienty s volitelným překladem.
+- Připojte více klientů ke stejné konverzaci a spravujte odesílání a přijímání zpráv mezi nimi.
+- Snadno přepisujte zvuk z každého klienta a pošlete přepis ostatním s volitelným překladem.
+- Snadno odesílejte textové zprávy mezi klienty s volitelným překladem.
 
-Můžete vytvořit funkci nebo řešení, které funguje v poli zařízení. Každé zařízení může nezávisle odesílat zprávy (přepisovat zvukové a rychlé zprávy) na všechna ostatní zařízení.
+Můžete vytvořit funkci nebo řešení, které funguje v celé řadě zařízení. Každé zařízení může nezávisle odesílat zprávy (přepisy zvuku nebo rychlé zprávy) do všech ostatních zařízení.
 
-Vzhledem k tomu, že [**přepis konverzace**](conversation-transcription.md) funguje na jednom zařízení s vícekanálovým polem mikrofonu, **konverzace s více** zařízeními jsou vhodné pro scénáře s více zařízeními, z nichž každý má jeden mikrofon.
+Zatímco [**přepis konverzace**](conversation-transcription.md) funguje na jednom zařízení s vícekanálovým mikrofonním polem, **konverzace s více zařízeními** je vhodná pro scénáře s více zařízeními, z nichž každý má jeden mikrofon.
 
 >[!IMPORTANT]
-> Konverzace s více **zařízeními nepodporuje** Posílání zvukových souborů mezi klienty: jenom přepis a/nebo překlad.
+> Konverzace na více zařízeních **nepodporuje** odesílání zvukových souborů mezi klienty: pouze přepis a/nebo překlad.
 
 ## <a name="key-features"></a>Klíčové funkce
 
-- **Přepis v reálném čase** – všichni obdrží přepis konverzace, takže můžou sledovat text v reálném čase nebo ho uložit pro pozdější účely.
-- **Překlad v reálném čase** – s více než 60 [podporovanými jazyky](language-support.md#text-languages) pro překlad textu můžou uživatelé překládat konverzaci na jejich preferované jazyky.
-- **Čitelné přepisy** – přepis a překlad se snadno sleduje, a to s využitím interpunkce a konců vět.
-- **Hlasový nebo textový vstup** – každý uživatel může mluvit nebo psát na svém vlastním zařízení, v závislosti na podporovaných možnostech jazyka pro vybraný jazyk účastníka. Další informace najdete v tématu [Podpora jazyků](language-support.md#speech-to-text).
-- **Předávání zpráv** – služba konverzace s více zařízeními bude distribuovat zprávy odesílané jedním klientem do všech ostatních, v jazycích podle jejich výběru.
-- **Identifikace zprávy** – každá zpráva, kterou uživatelé obdrží v konverzaci, bude označená přezdívkou uživatele, který ho odeslal.
+- **Přepis v reálném čase** – Každý obdrží přepis konverzace, aby mohl text sledovat v reálném čase nebo jej uložit na později.
+- **Překlad v reálném čase** – S více než 60 [podporovanými jazyky](language-support.md#text-languages) pro překlad textu mohou uživatelé překládat konverzaci do svého preferovaného jazyka.
+- **Čitelné přepisy** - přepis a překlad jsou snadno sledovat, s interpunkcí a věty přestávky.
+- **Hlasový nebo textový vstup** – Každý uživatel může mluvit nebo psát na svém vlastním zařízení v závislosti na možnostech jazykové podpory povolených pro vybraný jazyk účastníka. Viz [jazyková podpora](language-support.md#speech-to-text).
+- **Přenos zpráv** – služba konverzace s více zařízeními bude distribuovat zprávy odeslané jedním klientem všem ostatním, v jazyce podle svého výběru.
+- **Identifikace zprávy** – Každá zpráva, kterou uživatelé obdrží v konverzaci, bude označena přezdívkou uživatele, který ji odeslal.
 
 ## <a name="use-cases"></a>Případy použití
 
 ### <a name="lightweight-conversations"></a>Odlehčené konverzace
 
-Vytvoření konverzace a připojení k ní je snadné. Jeden uživatel bude fungovat jako hostitel a vytvoří konverzaci, která vytvoří náhodný kód konverzace s pěti písmeny a kód QR. Všichni ostatní uživatelé se můžou ke konverzaci připojit zadáním kódu konverzace nebo kontrolou kódu QR. 
+Vytvoření konverzace a připojení se k ní je snadné. Jeden uživatel bude fungovat jako "hostitel" a vytvoří konverzaci, která generuje náhodný pětipísmenný kód konverzace a QR kód. Všichni ostatní uživatelé se mohou připojit ke konverzaci zadáním kódu konverzace nebo skenováním QR kódu. 
 
-Vzhledem k tomu, že se uživatelé připojují prostřednictvím kódu konverzace a nevyžadují, aby mohli sdílet kontaktní údaje, je snadné vytvořit rychlá konverzace na místě.
+Vzhledem k tomu, že se uživatelé připojují prostřednictvím kódu konverzace a nejsou povinni sdílet kontaktní informace, je snadné vytvářet rychlé konverzace na místě.
 
-### <a name="inclusive-meetings"></a>Uzavřené schůzky
+### <a name="inclusive-meetings"></a>Inkluzivní schůzky
 
-Přepis a překlady v reálném čase můžou přispět k usnadnění přístupu k konverzacím pro lidi, kteří komunikují s různými jazyky nebo jsou neslyšící nebo sluchové. Každá osoba se může také aktivně zúčastnit konverzace, když mluví jejich preferovaný jazyk nebo odesílá rychlé zprávy.
+Přepis a překlad v reálném čase mohou pomoci zpřístupnit konverzace lidem, kteří mluví různými jazyky a/nebo jsou neslyšící nebo nedoslýchaví. Každý člověk se také může aktivně účastnit konverzace tím, že mluví svým preferovaným jazykem nebo posílá rychlé zprávy.
 
-### <a name="presentations"></a>Instalovat
+### <a name="presentations"></a>Prezentace
 
-Můžete také zadat titulky pro prezentace a přednášky na obrazovkách i na vlastních zařízeních členů cílové skupiny. Poté, co se cílová skupina připojí k kódu konverzace, uvidí přepis v upřednostňovaném jazyce na vlastním zařízení.
+Můžete také poskytnout titulky pro prezentace a přednášky jak na obrazovce, tak na vlastních zařízeních členů publika. Jakmile se posluchači připojí ke kódu konverzace, uvidí přepis v preferovaném jazyce na vlastním zařízení.
 
 > [!NOTE]
-> Příklad zobrazíte tak, že zaškrtnete [Překladatel prezentace](https://www.microsoft.com/translator/apps/presentation-translator/), doplněk aplikace PowerPoint, který používá službu pro konverzaci s více zařízeními. Můžete si ho stáhnout [tady](https://www.microsoft.com/download/details.aspx?id=55024).
+> Chcete-li zobrazit příklad, podívejte se na [překladač prezentací](https://www.microsoft.com/translator/apps/presentation-translator/), doplněk aplikace PowerPoint, který používá konverzační službu pro více zařízení. Můžete si ho stáhnout [tady](https://www.microsoft.com/download/details.aspx?id=55024).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Všichni klienti použijí sadu Speech SDK k vytvoření nebo připojení konverzace. Sada Speech SDK spolupracuje se službou konverzace s více zařízeními, která spravuje životnost konverzace, včetně seznamu účastníků, zvolených jazyků a zpráv každého klienta.  
+Všichni klienti budou používat sadu Speech SDK k vytvoření konverzace nebo připojení ke konverzaci. Sada Speech SDK spolupracuje se službou konverzace s více zařízeními, která spravuje životnost konverzace, včetně seznamu účastníků, vybraných jazyků každého klienta a odeslaných zpráv.  
 
-Každý klient může posílat zvukové nebo rychlé zprávy. Služba bude používat rozpoznávání řeči k převodu zvuku na text a posílání rychlých zpráv tak, jak jsou. Pokud klienti zvolí jiné jazyky, služba převede všechny zprávy na konkrétní jazyky každého klienta.
+Každý klient může odesílat zvukové nebo rychlé zprávy. Služba bude používat rozpoznávání řeči k převodu zvuku na text a odesílání rychlých zpráv tak, jak jsou. Pokud klienti zvolí různé jazyky, bude služba překládat všechny zprávy do zadaného jazyka každého klienta.
 
-![Diagram s přehledem konverzací s více zařízeními](media/scenarios/multi-device-conversation.png)
+![Diagram přehledu konverzace na více zařízeních](media/scenarios/multi-device-conversation.png)
 
 ## <a name="overview-of-conversation-host-and-participant"></a>Přehled konverzace, hostitele a účastníka
 
-**Konverzace** je relace, kterou jeden uživatel spustí, aby se připojili k ostatním zúčastněným uživatelům. Všichni klienti se připojují k konverzacím pomocí **kódu konverzace**s pěti písmeny.
+**Konverzace** je relace, ke které se může připojit jeden uživatel. Všichni klienti se připojují ke konverzaci pomocí **pětipísmenového kódu konverzace**.
 
 Každá konverzace vytvoří metadata, která zahrnují:
--    Časová razítka při zahájení a ukončení konverzace
--    Seznam všech účastníků v konverzaci, včetně přezdívky jednotlivých uživatelů a jejich primárního jazyka pro hlasový vstup nebo textové zadání.
+-    Časová razítka, kdy konverzace začala a skončila
+-    Seznam všech účastníků konverzace, která zahrnuje vybranou přezdívku každého uživatele a primární jazyk pro zadávání řeči nebo textu.
 
 
-V konverzaci existují dva typy uživatelů: **hostitel** a **účastník**.
+V konverzaci jsou dva typy uživatelů: **hostitel** a **účastník**.
 
-**Hostitel** je uživatel, který spouští konverzaci a který funguje jako správce dané konverzace.
-- Každá konverzace může mít jenom jednoho hostitele.
+Hostitel **host** je uživatel, který zahájí konverzaci a který funguje jako správce této konverzace.
+- Každá konverzace může mít pouze jednoho hostitele.
 - Hostitel musí být připojen ke konverzaci po dobu trvání konverzace. Pokud hostitel opustí konverzaci, konverzace skončí pro všechny ostatní účastníky.
 - Hostitel má několik dalších ovládacích prvků pro správu konverzace: 
-    - Uzamknout konverzaci – zabránit dalším účastníkům v přidávání
-    - Ztlumení všech účastníků – zabrání ostatním účastníkům v posílání zpráv do konverzace, ať už přepisu z řeči nebo rychlých zpráv.
+    - Uzamknout konverzaci – zabrání dalším účastníkům připojit se
+    - Ztlumit všechny účastníky – zabrání ostatním účastníkům v odesílání zpráv do konverzace, ať už přepisovaných z řeči nebo rychlých zpráv
     - Ztlumit jednotlivé účastníky
-    - Zrušit ztlumení všech účastníků
-    - Zrušit ztlumení jednotlivých účastníků
+    - Zrušení ztlumení všech účastníků
+    - Zrušení ztlumení jednotlivých účastníků
 
 **Účastník** je uživatel, který se připojí ke konverzaci.
-- Účastník může stejnou konverzaci opustit a znovu se připojit, aniž by se musela ukončit konverzace pro ostatní účastníky.
-- Účastníci nemůžou konverzaci uzamknout nebo ztlumit nebo zrušit ztlumení ostatních
+- Účastník může kdykoli opustit stejnou konverzaci a znovu se k ní připojit, aniž by ukončil konverzaci pro ostatní účastníky.
+- Účastníci nemohou uzamknout konverzaci nebo ztlumit/zrušit ztlumení ostatních osob.
 
 > [!NOTE]
-> Každá konverzace může mít až 100 účastníků, z nichž 10 může být v libovolnou dobu hovořit.
+> Každá konverzace může mít až 100 účastníků, z nichž 10 může být současně mluvit v daném okamžiku.
 
 ## <a name="language-support"></a>Podpora jazyků
 
-Při vytváření nebo spojování konverzace musí každý uživatel zvolit **primární jazyk**: jazyk, ve kterém budou mluvit a odesílat rychlé zprávy, a také jazyk, ve kterém uvidí zprávy jiných uživatelů.
+Při vytváření konverzace nebo při popřihlášení musí každý uživatel zvolit **primární jazyk**: jazyk, ve kterém bude mluvit a odesílat rychlé zprávy, a také jazyk, ve kterém se jim budou zoašit zprávy ostatních uživatelů.
 
-Existují dva druhy jazyků: **Převod řeči na text** a **text**:
-- Pokud uživatel zvolí jazyk **řeči na text** jako svůj primární jazyk, bude moci v konverzaci použít hlasový vstup a text.
+Existují dva druhy jazyků: **pouze převod řeči na text** a **text**:
+- Pokud uživatel zvolí jazyk **převodu řeči na text** jako svůj primární jazyk, bude moci v konverzaci používat hlasivky i texty.
 
-- Pokud uživatel zvolí jazyk **pouze text** , bude moci používat textové zadání a odesílat rychlé zprávy v konverzaci. Jazyky pouze s textem jsou jazyky, které jsou podporovány pro překlad textu, ale nikoli pro převod řeči na text. Dostupné jazyky můžete zobrazit na stránce [Podpora jazyků](supported-languages.md) .
+- Pokud uživatel zvolí jazyk **pouze text,** bude moci používat pouze zadávání textu a odesílat rychlé zprávy v konverzaci. Jazyky pouze pro text jsou jazyky, které jsou podporovány pro překlad textu, ale ne pro převod řeči na text. Dostupné jazyky si můžete prohlédnout na stránce [podpory jazyků.](supported-languages.md)
 
-Od jejich primárního jazyka může každý účastník také určit další jazyky pro překlad konverzace.
+Kromě primárního jazyka může každý účastník také určit další jazyky pro překlad konverzace.
 
-Níže je uveden přehled toho, co uživatel bude moci dělat v konverzaci s více zařízeními na základě zvoleného primárního jazyka.
+Níže je uveden přehled toho, co bude uživatel moci dělat v konverzaci s více zařízeními na základě zvoleného primárního jazyka.
 
 
-| Co může uživatel dělat v konverzaci | Převod řeči na text | Pouze text |
+| Co může uživatel v konverzaci dělat | Převod řeči na text | Pouze text |
 |-----------------------------------|----------------|------|
-| Použití vstupu řeči | ✔️ | ❌ |
+| Použití hlasového vstupu | ✔️ | ❌ |
 | Odesílání rychlých zpráv | ✔️ | ✔️ |
-| Posunutí konverzace | ✔️ | ✔️ |
+| Přeložit konverzaci | ✔️ | ✔️ |
 
 > [!NOTE]
-> Seznam dostupných jazyků pro převod řeči na text a text naleznete v tématu [podporované jazyky](supported-languages.md).
+> Seznamy dostupných jazyků převodu řeči na text a překlad textu naleznete v [podporovaných jazycích](supported-languages.md).
 
 
 

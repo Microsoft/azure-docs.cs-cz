@@ -1,7 +1,7 @@
 ---
 title: Vytváření změn v rozhraní API
 titleSuffix: Azure Cognitive Services
-description: Rozhraní API pro vytváření obsahu V2 a V3 se změnila. Pomocí tohoto průvodce můžete pochopit, jak používat rozhraní API pro vytváření obsahu.
+description: Došlo ke změně vytváření v2 a v3 API. V této příručce můžete pochopit, jak používat vytváření api.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: eb01ccc211be55885b945c40bd88553818b0ab78
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73507800"
 ---
 # <a name="authoring-api-changes"></a>Vytváření změn rozhraní API 
 
-Rozhraní API pro vytváření obsahu jsou aktualizována v případě verze v3, aby bylo možné [modelovat rozložení s entitami zjištěnými počítačem](luis-concept-data-extraction.md). 
+Vytváření API jsou aktualizovány, pro V3, aby bylo možné [rozklad modelu s entitymi naučenými stroji](luis-concept-data-extraction.md). 
 
-Můžete vytvářet v rozhraních API v2 nebo Preview v3. Stejná aplikace může také zvolit, že se mají použít předpovědi koncového bodu v2 nebo V3. Nemusíte mít stejnou verzi rozhraní API pro vytváření obsahu a prediktivní odpověď koncového bodu.
+Můžete vytvářet v V2 nebo náhled V3 APIS. Stejná aplikace můžete také zvolit použití v2 nebo V3 předpověď koncového bodu odpovědi. Není třeba mít stejnou verzi rozhraní API pro vytváření a předpověď koncového bodu odpovědi.
 
-Portál LUIS používá výhradně rozhraní API pro vytváření obsahu.
+Portál LUIS používá výhradně vytváření v3 api výhradně.
 
 ## <a name="next-steps"></a>Další kroky
 
-Zkontrolujte [změny koncového bodu předpovědi](luis-migration-api-v3.md) pro rozhraní V3 API.
+Zkontrolujte [změny koncového bodu předpověď](luis-migration-api-v3.md) pro Rozhraní API V3.

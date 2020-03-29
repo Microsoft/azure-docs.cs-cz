@@ -1,7 +1,7 @@
 ---
-title: Detekce tváře – Počítačové zpracování obrazu
+title: Detekce obličeje - Počítačové vidění
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si o konceptech souvisejících s funkcí detekce obličeje rozhraní API pro počítačové zpracování obrazu.
+description: Seznamte se s koncepty souvisejícími s funkcí detekce obličeje rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3675acf59c6889dd00c8f26089f509bbcd3c724e
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d10e4c98d3e2f00e7139063c8263e65ffd015d7c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945248"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244696"
 ---
-# <a name="face-detection-with-computer-vision"></a>Rozpoznávání tváře pomocí Počítačové zpracování obrazu
+# <a name="face-detection-with-computer-vision"></a>Detekce obličeje s počítačovým viděním
 
-Počítačové zpracování obrazu dokáže detekovat lidské obličeje v rámci obrázku a generovat věk, pohlaví a obdélník pro každou zjištěnou plochu. 
+Počítačové vidění dokáže detekovat lidské tváře v obraze a generovat věk, pohlaví a obdélník pro každou detekovanou tvář. 
 
 > [!NOTE]
-> Tuto funkci nabízí i služba Azure [Face](/azure/cognitive-services/face/) . Viz Tato alternativa pro podrobnější analýzu obličeje, včetně identifikace obličeje a detekce pozice. 
+> Tuto funkci nabízí také služba Azure [Face.](/azure/cognitive-services/face/) Podrobnější analýzu obličeje, včetně identifikace obličeje a detekce pózy, naleznete v této alternativě. 
 
 ## <a name="face-detection-examples"></a>Příklady detekce obličeje
 
-Následující příklad ukazuje odpověď JSON vrácenou Počítačové zpracování obrazu pro obrázek obsahující jednu lidskou plochu.
+Následující příklad ukazuje odpověď JSON vrácenou programem Počítačové vidění pro obrázek obsahující jednu lidskou tvář.
 
 ![Vizuální analýza ženy na střeše](./Images/woman_roof_face.png)
 
@@ -54,9 +54,9 @@ Následující příklad ukazuje odpověď JSON vrácenou Počítačové zpracov
 }
 ```
 
-Následující příklad ukazuje odpověď JSON vrácenou pro obrázek obsahující více lidských plošek.
+Další příklad ukazuje odpověď JSON vrácenou pro obraz obsahující více lidských tváří.
 
-![Fotografická analýza rodiny](./Images/family_photo_face.png)
+![Vision Analyze Rodinná fotografie Tvář](./Images/family_photo_face.png)
 
 ```json
 {
@@ -111,6 +111,9 @@ Následující příklad ukazuje odpověď JSON vrácenou pro obrázek obsahují
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="use-the-api"></a>Použití rozhraní API
 
-Další informace o tom, jak používat funkci detekce obličeje, najdete v referenční dokumentaci k [analýze obrázku](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
+Funkce detekce obličeje je součástí rozhraní Analyzovat rozhraní API [pro obrázky.](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) Toto rozhraní API můžete volat prostřednictvím nativní sady SDK nebo prostřednictvím volání REST. Zahrnout `Faces` do parametru dotazu **visualFeatures.** Potom, když získáte úplnou odpověď JSON, jednoduše analyzovat řetězec `"faces"` pro obsah oddílu.
+
+* [Úvodní příručka: Počítačové zpracování počítače .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Úvodní příručka: Analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)

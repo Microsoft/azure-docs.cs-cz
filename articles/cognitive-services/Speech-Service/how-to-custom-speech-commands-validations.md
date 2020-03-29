@@ -1,7 +1,7 @@
 ---
-title: 'Postupy: Přidání ověření do vlastních parametrů příkazu (Preview)'
+title: 'Postup: Přidání ověření do parametrů vlastního příkazu (náhled)'
 titleSuffix: Azure Cognitive Services
-description: V tomto článku vysvětlujeme, jak do parametru ve vlastních příkazech přidat ověřování.
+description: V tomto článku vysvětlujeme, jak přidat ověření k parametru ve vlastních příkazech.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,44 +11,44 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
 ms.openlocfilehash: cf6e4e4f0bfab43fb738f8415022e55fcbcbd05a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76156450"
 ---
-# <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>Postupy: Přidání ověření do vlastních parametrů příkazu (Preview)
+# <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>Postup: Přidání ověření do parametrů vlastního příkazu (náhled)
 
-V tomto článku se dozvíte, jak přidat ověření do parametrů a zobrazit výzvu k opravě.
+V tomto článku se dozvíte, jak přidat ověření parametrů a výzvu k opravě.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Je nutné provést kroky v následujících článcích:
+Musíte mít dokončeny kroky v následujících článcích:
 
-- [Rychlý Start: Vytvoření vlastního příkazu (Preview)](./quickstart-custom-speech-commands-create-new.md)
-- [Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)](./quickstart-custom-speech-commands-create-parameters.md)
+- [Úvodní příručka: Vytvoření vlastního příkazu (náhled)](./quickstart-custom-speech-commands-create-new.md)
+- [Úvodní příručka: Vytvoření vlastního příkazu s parametry (náhled)](./quickstart-custom-speech-commands-create-parameters.md)
 
 ## <a name="create-a-settemperature-command"></a>Vytvoření příkazu SetTemperature
 
-K předvedení ověření můžete vytvořit nový příkaz, který uživateli umožní nastavit teplotu.
+Chcete-li demonstrovat ověření, vytvořme nový příkaz, který uživateli umožní nastavit teplotu.
 
-1. Otevřete dříve vytvořenou aplikaci Custom Commands v [studiu řeči](https://speech.microsoft.com/)
-1. Vytvoření nového příkazu **SetTemperature**
-1. Přidat parametr pro cílovou teplotu
-1. Přidat ověření pro parametr teploty
+1. Otevření dříve vytvořené aplikace Vlastní příkazy v [aplikaci Speech Studio](https://speech.microsoft.com/)
+1. Vytvořit novou sadu **příkazůTeplota**
+1. Přidání parametru pro cílovou teplotu
+1. Přidání ověření parametru teploty
    > [!div class="mx-imgBorder"]
-   > ![přidat ověřování rozsahu](media/custom-speech-commands/validations-add-temperature.png)
+   > ![Přidání ověření rozsahu](media/custom-speech-commands/validations-add-temperature.png)
 
    | Nastavení           | Navrhovaná hodnota                                          | Popis                                                                                      |
    | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-   | Name (Název)              | Teplota                                              | Popisný název pro parametr příkazu                                                    |
-   | Požaduje se          | true                                                     | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr |
-   | Šablona odpovědi | "– Jakou teplotu chcete?"                     | Výzva k zadání hodnoty tohoto parametru, pokud není známa                              |
-   | Typ              | Číslo                                                   | Typ parametru, například číslo, řetězec nebo datum a čas                                      |
-   | Ověřování        | Minimální hodnota: 60, maximální hodnota: 80                             | Pro číselné parametry, povolený rozsah hodnot pro parametr                             |
-   | Šablona odpovědi | – Je nám líto, ale dá se nastavit jenom mezi 60 a 80 stupně.      | Výzva k zadání aktualizované hodnoty, pokud se ověření nepovede                                       |
+   | Name (Název)              | Teplota                                              | Popisný název parametru Command                                                    |
+   | Požaduje se          | true                                                     | Zaškrtávací políčko označující, zda je před dokončením příkazu vyžadována hodnota tohoto parametru. |
+   | Šablona odpovědi | "- Jakou teplotu byste chtěli?"                     | Výzva k žádosti o hodnotu tohoto parametru, pokud není známa                              |
+   | Typ              | Číslo                                                   | Typ parametru, například Číslo, Řetězec nebo Čas data                                      |
+   | Ověřování        | Min Hodnota: 60, Maximální hodnota: 80                             | Pro parametry Number je povolený rozsah hodnot pro parametr                             |
+   | Šablona odpovědi | "- Omlouvám se, mohu nastavit pouze mezi 60 a 80 stupňů"      | V případě, že se ověření nezdaří, zobrazí se výzva k žádosti o aktualizovanou hodnotu                                       |
 
-1. Přidat ukázkové věty
+1. Přidání některých ukázkových vět
 
    ```
    set the temperature to {Temperature} degrees
@@ -57,30 +57,30 @@ K předvedení ověření můžete vytvořit nový příkaz, který uživateli u
    change the temperature
    ```
 
-1. Přidat pravidlo pro dokončení pro potvrzení výsledku
+1. Přidání pravidla dokončení pro potvrzení výsledku
 
    | Nastavení    | Navrhovaná hodnota                                           | Popis                                        |
    | ---------- | --------------------------------------------------------- | -------------------------------------------------- |
    | Název pravidla  | Potvrzovací zpráva                                      | Název popisující účel pravidla          |
-   | Podmínky | Požadovaná parametr-teplota                          | Podmínky, které určují, kdy se pravidlo dá spustit    |
-   | Akce    | SpeechResponse-"-OK, nastavení na {teploty} stupňů" | Akce, která se má provést, když je podmínka pravidla pravdivá |
+   | Podmínky | Požadovaný parametr - teplota                          | Podmínky, které určují, kdy může být pravidlo spuštěno    |
+   | Akce    | SpeechResponse - "- Ok, nastavení na {Temperature} stupňů" | Akce, která má být v případě, že je splněna podmínka pravidla |
 
 > [!TIP]
-> V tomto příkladu se k potvrzení výsledku používá odezva na řeč. Příklady dokončení příkazu s akcí klienta najdete v tématu: [Postupy: plnění příkazů v klientovi pomocí sady Speech SDK (Preview)](./how-to-custom-speech-commands-fulfill-sdk.md) .
+> Tento příklad používá odpověď na řeč k potvrzení výsledku. Příklady dokončení příkazu s akcí klienta viz: [Jak: Plnit příkazy na straně klienta pomocí sady Speech SDK (Preview)](./how-to-custom-speech-commands-fulfill-sdk.md)
 
-## <a name="try-it-out"></a>Vyzkoušet
+## <a name="try-it-out"></a>Vyzkoušejte si to.
 
-Vyberte panel test a vyzkoušejte několik interakcí.
+Vyberte panel Test a vyzkoušejte několik interakcí.
 
-- Vstup: Nastavte teplotu na 72 stupňů.
-- Výstup: "OK", nastavení na 72 stupňů "
+- Vstup: Nastavte teplotu na 72 stupňů
+- Výstup: "Ok, nastavení na 72 stupňů"
 
-- Vstup: Nastavte teplotu na 45 stupňů.
-- Výstup: "je nám líto, ale dá se nastavit jenom mezi 60 a 80 stupni"
-- Vstup: nastavte místo toho 72 stupňů.
-- Výstup: "OK", nastavení na 72 stupňů "
+- Vstup: Nastavte teplotu na 45 stupňů
+- Výstup: "Omlouvám se, mohu nastavit pouze mezi 60 a 80 stupňů"
+- Vstup: aby to 72 stupňů místo
+- Výstup: "Ok, nastavení na 72 stupňů"
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Postupy: Přidání potvrzení k vlastnímu příkazu (Preview)](./how-to-custom-speech-commands-confirmations.md)
+> [Postup: Přidání potvrzení do vlastního příkazu (náhled)](./how-to-custom-speech-commands-confirmations.md)

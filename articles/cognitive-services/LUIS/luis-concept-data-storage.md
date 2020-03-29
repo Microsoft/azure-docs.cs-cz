@@ -1,7 +1,7 @@
 ---
 title: Úložiště dat – LUIS
 titleSuffix: Azure Cognitive Services
-description: Služba LUIS ukládá data šifrovaná v úložišti Azure dat. odpovídající oblast učená klíčem.
+description: Služba LUIS ukládá data zašifrovaná v úložišti dat Azure, které odpovídá oblasti určené klíčem.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220014"
 ---
-# <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Úložiště dat a odebírání ve službě Cognitive Services Language Understanding (LUIS)
-Služba LUIS ukládá data šifrovaná v úložišti Azure dat. odpovídající oblast učená klíčem. Tato data jsou ukládána po dobu 30 dnů. 
+# <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Úložiště a odebrání dat v jazykových znalostech (LUIS) Cognitive Services
+Služba LUIS ukládá data zašifrovaná v úložišti dat Azure, které odpovídá oblasti určené klíčem. Tato data jsou uložena po dobu 30 dnů. 
 
-## <a name="export-and-delete-app"></a>Exportovat a odstranit aplikaci
+## <a name="export-and-delete-app"></a>Export a odstranění aplikace
 Uživatelé mají plnou kontrolu nad [exportem](luis-how-to-start-new-app.md#export-app) a [odstraněním](luis-how-to-start-new-app.md#delete-app) aplikace. 
 
 ## <a name="utterances"></a>Projevy
 
-Projevy může být uložená na dvou různých místech. 
+Projevy mohou být uloženy na dvou různých místech. 
 
-* Během **procesu vytváření obsahu**jsou projevy vytvořeny a uloženy v záměru. Projevy v záměrech se vyžadují pro úspěšnou aplikaci LUIS. Jakmile se aplikace publikuje a přijme dotazy v koncovém bodu, dotaz na žádost koncového bodu (QueryString) `log=false`určuje, jestli je uložený koncový bod utterance. Pokud je koncový bod uložený, bude se jednat o součást aktivního výukového projevyu, která se nachází v části **Build** na portálu, v části **Kontrola koncového bodu projevy** . 
-* Když provedete **kontrolu koncového bodu projevy**a do záměru přidáte utterance, utterance se už neukládá jako součást koncového bodu projevy, který se má zkontrolovat. Přidá se do záměrů aplikace. 
+* Během **procesu vytváření**projevy jsou vytvořeny a uloženy v záměru. Projevy v záměrech jsou vyžadovány pro úspěšnou aplikaci LUIS. Jakmile je aplikace publikována a přijímá dotazy v koncovém bodě, řetězec `log=false`dotazu požadavku koncového bodu , určuje, zda je uložen projev koncového bodu. Pokud je uložen koncový bod, stane se součástí projevy aktivní učení nalezené v části **Sestavení** portálu, v části **Zkontrolovat koncový bod projevy.** 
+* Při **kontrole promluv y koncového bodu**a přidání utterance k záměru utterance již není uložen jako součást projevy koncového bodu, které mají být přezkoumány. Přidá se k záměrům aplikace. 
 
 <a name="utterances-in-an-intent"></a>
 
-### <a name="delete-example-utterances-from-an-intent"></a>Odstranění příkladu projevy z záměru
+### <a name="delete-example-utterances-from-an-intent"></a>Odstranění ukázkových projevů ze záměru
 
-Odstraňte příklad projevy, který se používá pro školení [Luis](luis-reference-regions.md). Pokud odstraníte utterance příklad z vaší aplikace LUIS, se odebere z webové služby LUIS a není k dispozici pro export.
+Odstranit příklad projevy používané pro školení [LUIS](luis-reference-regions.md). Pokud odstraníte příklad utterance z aplikace LUIS, je odebrán z webové služby LUIS a není k dispozici pro export.
 
 <a name="utterances-in-review"></a>
 
-### <a name="delete-utterances-in-review-from-active-learning"></a>Odstranit projevy v recenzi z aktivního učení
+### <a name="delete-utterances-in-review-from-active-learning"></a>Odstranění projevů v recenzi z aktivního učení
 
-Projevy je možné odstranit ze seznamu uživatelských projevy, který LUIS navrhuje na **[stránce zkontrolovat koncový bod pro projevy](luis-how-to-review-endpoint-utterances.md)** . Odstraňuje se z tohoto seznamu projevy brání jejich navržena, ale nedojde k jejich odstranění z protokolů.
+Můžete odstranit projevy ze seznamu projevy uživatelů, které luis navrhuje na **[stránce Zkontrolovat projevy koncového bodu](luis-how-to-review-endpoint-utterances.md)**. Odstranění projevy z tohoto seznamu zabraňuje jejich navržení, ale neodstraní je z protokolů.
 
-Pokud nechcete aktivní výukové projevy, můžete [zakázat aktivní učení](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Zakázáním aktivního učení také zakážete protokolování.
+Pokud nechcete aktivní učení projevy, můžete [zakázat aktivní učení](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Zakázání aktivní učení také zakáže protokolování.
 
-### <a name="disable-logging-utterances"></a>Zakázat protokolování projevy
-[Zakázáním aktivního učení](luis-how-to-review-endpoint-utterances.md#disable-active-learning) zakážete protokolování.
+### <a name="disable-logging-utterances"></a>Zakázat protokolování promluv
+[Zakázání aktivní učení](luis-how-to-review-endpoint-utterances.md#disable-active-learning) je zakáže protokolování.
 
 
 <a name="accounts"></a>
 
 ## <a name="delete-an-account"></a>Odstranění účtu
-Pokud odstraníte účet, se odstraní všechny aplikace, spolu s jejich příklad projevy a protokoly. Data se uchovávají po dobu 60 dní, než účet a data se trvale odstraní.
+Pokud odstraníte účet, budou odstraněny všechny aplikace spolu s jejich příklady projevy a protokoly. Data jsou uchovávána po dobu 60 dnů před trvalým odstraněním účtu a dat.
 
-Odstranění účtu je k dispozici na stránce **Nastavení** . Na stránce **Nastavení** se dostanete tak, že vyberete název svého účtu v pravém horním navigačním panelu.
+Odstranění účtu je k dispozici na stránce **Nastavení.** Vyberte název účtu v pravém horním navigačním panelu a přejděte na stránku **Nastavení.**
 
-## <a name="data-inactivity-as-an-expired-subscription"></a>Data nečinnosti jako předplatného s vypršelou platností
-Pro účely uchovávání a odstranění dat může být neaktivní aplikace LUIS na _uvážení společnosti Microsoft_ považována za předplatné s vypršenou platností. Aplikace se považuje za neaktivní, pokud za posledních 90 dní splňuje následující kritéria: 
+## <a name="data-inactivity-as-an-expired-subscription"></a>Nečinnost dat jako předplatné s ukončenou platností
+Pro účely uchovávání a odstraňování dat může být neaktivní aplikace LUIS _dle uvážení společnosti Microsoft_ považována za předplatné, jehož platnost vypršela. Aplikace je považována za neaktivní, pokud splňuje následující kritéria za posledních 90 dní: 
 
-* Na ni se neudělala **žádná** volání.
-* Nebyl změněn.
-* Není aktuální klíč přiřadili k němu.
-* Přihlaste se k ní uživatel neměl.
+* Nikdo k tomu **nevolal.**
+* Nebylzměněn.
+* Nemá přiřazen aktuální klíč.
+* Nemá uživatel přihlásit k němu.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o exportu a odstraňování aplikace](luis-how-to-start-new-app.md)
+> [Informace o exportu a odstranění aplikace](luis-how-to-start-new-app.md)

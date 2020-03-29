@@ -5,30 +5,30 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/5/2019
 ms.openlocfilehash: 993b0e8cc5b1ec482b2f6041dfc970dc7e7409dd
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68229323"
 ---
-Vyplňte a odešlete [formulář žádosti o kontejnery pro zpracování obrazu Cognitive Services](https://aka.ms/VisionContainersPreview) chcete požádat o přístup ke kontejneru. Formulář požádá o informace o vás, vaše společnost a uživatelský scénář, který budete používat kontejneru. Po odeslání formuláře, tým Azure Cognitive Services a ujistit se, že splňují kritéria pro přístup k registru kontejneru soukromého kontroly.
+Vyplňte a odešlete [formulář žádosti o požadavky na kontejnery Cognitive Services Vision,](https://aka.ms/VisionContainersPreview) abyste požádali o přístup ke kontejneru. Formulář požaduje informace o vás, vaší společnosti a uživatelském scénáři, pro který budete kontejner používat. Po odeslání formuláře tým Azure Cognitive Services zkontroluje, zda splňujete kritéria pro přístup k registru privátního kontejneru.
 
 > [!IMPORTANT]
-> Musíte použít e-mailovou adresu, přidružené k účtu Microsoft (MSA) nebo účet Azure Active Directory (Azure AD) ve formuláři.
+> Ve formuláři musíte použít e-mailovou adresu přidruženou k účtu Microsoft (MSA) nebo k účtu Azure Active Directory (Azure AD).
 
-Pokud vaše žádost se schválí, obdržíte e-mail s pokyny, které popisují, jak získat vaše přihlašovací údaje a přístup k registru kontejneru soukromého.
+Pokud je váš požadavek schválen, obdržíte e-mail s pokyny, které popisují, jak získat přihlašovací údaje a přístup k registru soukromého kontejneru.
 
-## <a name="log-in-to-the-private-container-registry"></a>Přihlásit do soukromého registru kontejnerů
+## <a name="log-in-to-the-private-container-registry"></a>Přihlášení do registru privátního kontejneru
 
-Existuje několik způsobů, jak ověřením v daném kontejneru soukromého registru kontejnerů služby Cognitive Services. Doporučujeme používat metodu příkazového řádku pomocí [rozhraní příkazového řádku Dockeru](https://docs.docker.com/engine/reference/commandline/cli/).
+Existuje několik způsobů, jak ověřit pomocí registru soukromého kontejneru pro kontejnery Cognitive Services. Doporučujeme použít metodu příkazového řádku pomocí [příkazového řádku Dockeru](https://docs.docker.com/engine/reference/commandline/cli/).
 
-Použití [docker login](https://docs.docker.com/engine/reference/commandline/login/) příkaz, jak je znázorněno v následujícím příkladu se přihlaste k `containerpreview.azurecr.io`, což je privátní registr kontejnerů služby Cognitive Services. Nahraďte *\<uživatelské jméno\>* s uživatelským jménem a *\<heslo\>* s heslo zadané přihlašovací údaje, který jste dostali od Azure Týmu služeb cognitive Services.
+Pomocí příkazu [přihlášení dockeru,](https://docs.docker.com/engine/reference/commandline/login/) jak je znázorněno `containerpreview.azurecr.io`v následujícím příkladu, se přihlaste k , což je soukromý registr kontejnerů pro kontejnery cognitive services. Nahraďte * \<uživatelské jméno\> * uživatelským jménem a * \<heslem\> * heslem, které je uvedeno v pověřeních, která jste obdrželi od týmu Služby Azure Cognitive Services.
 
 ```
 docker login containerpreview.azurecr.io -u <username> -p <password>
 ```
 
-Pokud jste zabezpečili svoje přihlašovací údaje do textového souboru, lze zřetězit obsah tohoto souboru text na `docker login` příkazu. Použití `cat` příkaz, jak je znázorněno v následujícím příkladu. Nahraďte *\<passwordFile\>* cestou a názvem textového souboru, který obsahuje heslo. Nahraďte *\<uživatelské jméno\>* s uživatelským jménem, zadat svoje přihlašovací údaje.
+Pokud jste zabezpečili pověření v textovém souboru, můžete obsah tohoto `docker login` textového souboru zřetězit do příkazu. Použijte `cat` příkaz, jak je znázorněno v následujícím příkladu. Nahraďte * \<passwordFile\> * cestou a názvem textového souboru, který obsahuje heslo. Nahraďte * \<uživatelské jméno\> * uživatelským jménem, které je uvedeno ve vašich pověřeních.
 
 ```
 cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin

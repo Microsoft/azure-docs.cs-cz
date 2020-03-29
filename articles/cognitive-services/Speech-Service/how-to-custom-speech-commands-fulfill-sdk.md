@@ -1,7 +1,7 @@
 ---
-title: Jak vyplnit příkazy z klienta pomocí sady Speech SDK
+title: Jak splnit příkazy od klienta pomocí sady Speech SDK
 titleSuffix: Azure Cognitive Services
-description: V tomto článku vysvětlujeme, jak zpracovávat vlastní příkazy v klientovi pomocí sady Speech SDK.
+description: V tomto článku vysvětlujeme, jak zpracovat vlastní příkazy aktivity na klienta s sadou Speech SDK.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,49 +11,49 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: donkim
 ms.openlocfilehash: e109955774722da7f55defe1417de35ff202cce8
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367734"
 ---
-# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>Doplňování příkazů z klienta pomocí sady Speech SDK (Preview)
+# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>Plnit příkazy od klienta pomocí sady Speech SDK (Preview)
 
-Chcete-li dokončit úlohy pomocí vlastní aplikace příkazů, můžete odesílat vlastní datové části do připojeného klientského zařízení.
+Chcete-li dokončit úkoly pomocí aplikace Vlastní příkazy, můžete odeslat vlastní datové části do připojeného klientského zařízení.
 
-V tomto článku:
+V tomto článku budete:
 
-- Definování a odeslání vlastní datové části JSON z aplikace Custom Commands
-- Přijímání a vizualizace vlastního obsahu datové části JSON z klientské C# aplikace sady Speech pro rozpoznávání řeči
+- Definování a odeslání vlastní datové části JSON z aplikace Vlastní příkazy
+- Příjem a vizualizace vlastního obsahu datové části JSON z klientské aplikace sady C# UWP Speech SDK
 
 ## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Klíč předplatného Azure pro službu Speech Service
-  - [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
-- Dříve vytvořená aplikace vlastních příkazů
-  - [Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)](./quickstart-custom-speech-commands-create-parameters.md)
-- Klientská aplikace podporující sadu Speech SDK
-  - [Rychlý Start: připojení k vlastnímu příkazu aplikace pomocí sady Speech SDK (Preview)](./quickstart-custom-speech-commands-speech-sdk.md)
+- Klíč předplatného Azure pro službu Speech
+  - [Získejte jeden zdarma](get-started.md) nebo si ho vytvořte na [webu Azure Portal](https://portal.azure.com)
+- Dříve vytvořená aplikace Vlastní příkazy
+  - [Úvodní příručka: Vytvoření vlastního příkazu s parametry (náhled)](./quickstart-custom-speech-commands-create-parameters.md)
+- Klientská aplikace s povolenou sadou Speech SDK
+  - [Úvodní příručka: Připojení k aplikaci Custom Command pomocí sady Speech SDK (Preview)](./quickstart-custom-speech-commands-speech-sdk.md)
 
-## <a name="optional-get-started-fast"></a>Volitelné: rychlý začátek
+## <a name="optional-get-started-fast"></a>Volitelné: Rychlé zahájení
 
-Tento článek popisuje, jak vytvořit klientskou aplikaci, aby provedla komunikaci s aplikacemi pro vlastní příkazy. Pokud dáváte přednost podrobněi přímo v, je k dispozici kompletní zdrojový kód připravený k zkompilování, který je použit v tomto článku, v [ukázkách sady Speech SDK](https://aka.ms/csspeech/samples).
+Tento článek popisuje krok za krokem, jak vytvořit klientskou aplikaci pro rozhovor s aplikací Vlastní příkazy. Pokud dáváte přednost ponořit přímo do, kompletní, připravený ke kompilaci zdrojový kód použitý v tomto článku je k dispozici v [řeči SDK ukázky](https://aka.ms/csspeech/samples).
 
-## <a name="fulfill-with-json-payload"></a>Plnění s datovou částí JSON
+## <a name="fulfill-with-json-payload"></a>Splňte s datovou částí JSON
 
-1. Otevřete dříve vytvořenou aplikaci Custom Commands z nástroje [Speech Studio](https://speech.microsoft.com/)
-1. Podívejte se na část **pravidla dokončování** a ujistěte se, že máte dříve vytvořené pravidlo, které reaguje zpátky na uživatele.
-1. Pokud chcete poslat datovou část přímo klientovi, vytvořte nové pravidlo s akcí odeslat aktivitu.
+1. Otevření dříve vytvořené aplikace Vlastní příkazy z [aplikace Speech Studio](https://speech.microsoft.com/)
+1. Zkontrolujte část **Pravidla dokončení** a ujistěte se, že máte dříve vytvořené pravidlo, které reaguje zpět na uživatele.
+1. Chcete-li odeslat datovou část přímo klientovi, vytvořte nové pravidlo pomocí akce Odeslat aktivitu.
 
    > [!div class="mx-imgBorder"]
-   > ![odeslání pravidla dokončení aktivity](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
+   > ![Odeslat pravidlo dokončení aktivity](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
    | Nastavení | Navrhovaná hodnota | Popis |
    | ------- | --------------- | ----------- |
-   | Název pravidla | UpdateDeviceState | Název popisující účel pravidla |
-   | Podmínky | Povinný parametr-`OnOff` a `SubjectDevice` | Podmínky, které určují, kdy se pravidlo dá spustit |
-   | Akce | `SendActivity` (viz níže) | Akce, která se má provést, když je podmínka pravidla pravdivá |
+   | Název pravidla | AktualizovatStav zařízení | Název popisující účel pravidla |
+   | Podmínky | Povinný parametr `OnOff` - a`SubjectDevice` | Podmínky, které určují, kdy může být pravidlo spuštěno |
+   | Akce | `SendActivity`(viz níže) | Akce, která má být v případě, že je splněna podmínka pravidla |
 
    > [!div class="mx-imgBorder"]
    > ![Odeslat datovou část aktivity](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
@@ -67,11 +67,11 @@ Tento článek popisuje, jak vytvořit klientskou aplikaci, aby provedla komunik
    }
    ```
 
-## <a name="create-visuals-for-device-on-or-off-state"></a>Vytváření vizuálů pro stav zařízení nebo jeho vypnutí
+## <a name="create-visuals-for-device-on-or-off-state"></a>Vytváření vizuálů pro zařízení ve stavu zapnutí nebo vypnutí
 
-V [rychlém startu: Připojte se k vlastnímu příkazu aplikace pomocí sady Speech SDK (Preview)](./quickstart-custom-speech-commands-speech-sdk.md) , kterou jste vytvořili jako klientskou aplikaci sady Speech SDK, která zpracovává příkazy jako `turn on the tv``turn off the fan`. Teď přidejte nějaké vizuály, abyste mohli vidět výsledek těchto příkazů.
+V [úvodním seznamu: Připojení k aplikaci custom command pomocí sady Speech SDK (Preview)](./quickstart-custom-speech-commands-speech-sdk.md) jste `turn on the tv` `turn off the fan`vytvořili klientskou aplikaci sady Speech SDK, která zpracovávala příkazy, jako je například . Nyní přidejte některé vizuály, abyste viděli výsledek těchto příkazů.
 
-Přidat pole s popiskem s textem **, který označuje nebo** **vypíná** pomocí následujícího kódu XML přidaných do `MainPage.xaml.cs`
+Přidání polí s popiskem s textem označujícím **zapnuto** nebo **vypnuto** pomocí následujícího xml přidaného do`MainPage.xaml.cs`
 
 ```xml
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
@@ -90,14 +90,14 @@ Přidat pole s popiskem s textem **, který označuje nebo** **vypíná** pomoc�
 </StackPanel>
 ```
 
-## <a name="handle-customizable-payload"></a>Zpracovat přizpůsobitelnou datovou část
+## <a name="handle-customizable-payload"></a>Zpracování přizpůsobitelné datové části
 
-Teď, když jste vytvořili datovou část JSON, můžete přidat odkaz na knihovnu [JSON.NET](https://www.newtonsoft.com/json) pro zpracování deserializace.
+Teď, když jste vytvořili datovou část JSON, můžete přidat odkaz na [knihovnu JSON.NET](https://www.newtonsoft.com/json) pro zpracování rekonstruované.
 
 > [!div class="mx-imgBorder"]
 > ![Odeslat datovou část aktivity](media/custom-speech-commands/fulfill-sdk-json-nuget.png)
 
-V `InitializeDialogServiceConnector` přidejte následující do obslužné rutiny události `ActivityReceived`. Další kód extrahuje datovou část z aktivity a odpovídajícím způsobem změní vizuální stav televizního vysílání nebo ventilátoru.
+V `InitializeDialogServiceConnector` přidejte následující `ActivityReceived` do obslužné rutiny události. Další kód extrahuje užitečné zatížení z aktivity a odpovídajícím způsobem změní vizuální stav televizoru nebo ventilátoru.
 
 ```C#
 connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
@@ -131,15 +131,15 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 };
 ```
 
-## <a name="try-it-out"></a>Vyzkoušet
+## <a name="try-it-out"></a>Vyzkoušejte si to.
 
 1. Spuštění aplikace
-1. Vyberte Povolit mikrofon.
-1. Výběr tlačítka rozhovor
-1. Řekněme `turn on the tv`
-1. Vizuální stav televizoru by se měl změnit na zapnuto
+1. Vybrat možnost Povolit mikrofon
+1. Výběr tlačítka Talk
+1. Říct`turn on the tv`
+1. Vizuální stav televizoru by se měl změnit na "Zapnuto"
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Postupy: Přidání ověření do vlastních parametrů příkazu (Preview)](./how-to-custom-speech-commands-validations.md)
+> [Postup: Přidání ověření do parametrů vlastního příkazu (náhled)](./how-to-custom-speech-commands-validations.md)

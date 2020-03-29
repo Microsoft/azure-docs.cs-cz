@@ -1,7 +1,7 @@
 ---
-title: Popisovače – LUIS
+title: Deskriptory – LUIS
 titleSuffix: Azure Cognitive Services
-description: Pomocí Language Understanding (LUIS) přidejte funkce aplikací, které můžete zlepšit zjišťování nebo předpověď záměry a entity, které kategorie a vzory
+description: Přidání funkcí aplikace pomocí funkce jazyka (Language Understanding) může zlepšit zjišťování nebo predikci záměrů a entit, které kategorie a vzory
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,48 +12,48 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: diberry
 ms.openlocfilehash: 2b5046bb61dcafbba0b0540935e08777fbd747a5
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74123153"
 ---
-# <a name="use-descriptors-to-boost-signal-of-word-list"></a>Použití popisovačů k posílení signálu v seznamu slov
+# <a name="use-descriptors-to-boost-signal-of-word-list"></a>Použití popisovačů k posílení signálu seznamu slov
 
-Přidání funkcí do své aplikace LUIS a zvýšit jeho přesnost. Funkce pomáhají LUIS tím, že poskytuje pomocné parametry tohoto slova a frází jsou součástí slovníku domény aplikaci. 
+Do aplikace LUIS můžete přidat funkce, které zlepší její přesnost. Funkce pomáhají LUIS tím, že poskytuje rady, že určitá slova a fráze jsou součástí slovníku domény aplikace. 
 
-[Popisovač](luis-concept-feature.md) (seznam frází) obsahuje skupinu hodnot (slova nebo fráze), které patří do stejné třídy a musí se nacházet podobně (například názvy měst nebo produktů). Služba LUIS dozvídá o jeden z nich se automaticky využije na ostatní také. Tento seznam není stejný jako [entita seznamu](reference-entity-list.md) (shoda přes text) odpovídajících slov.
+[Deskriptor](luis-concept-feature.md) (seznam frází) obsahuje skupinu hodnot (slova nebo fráze), které patří do stejné třídy a musí se s nimi zacházet podobně (například názvy měst nebo produktů). Co luis dozví o jednom z nich se automaticky použije na ostatní také. Tento seznam není totéž jako [entita seznamu](reference-entity-list.md) (přesná shoda textu) odpovídajících slov.
 
-Popisovač přidá do slovníku domény aplikace jako druhý signál k LUIS o těchto slovech.
+Deskriptor přidá do slovníku domény aplikace jako druhý signál LUIS o těchto slovech.
 
-Seznamte se s [Koncepty funkcí](luis-concept-feature.md) a zjistěte, kdy a proč použít popisovač. 
+Zkontrolujte [koncepty funkcí,](luis-concept-feature.md) abyste pochopili, kdy a proč použít popisovač. 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="add-descriptor"></a>Přidat popisovač
+## <a name="add-descriptor"></a>Přidání popisovače
 
-1. Otevřete aplikaci kliknutím na její název na stránce **Moje aplikace** a pak klikněte na **sestavit**a pak na **popisovače** v levém panelu vaší aplikace. 
+1. Otevřete aplikaci tak, že kliknete na její název na stránce **Moje aplikace** a potom klikněte na **Vytvořit**a potom klikněte na **Deskriptory** v levém panelu aplikace. 
 
-1. Na stránce **popisovače** klikněte na **+ Přidat popisovač**. 
+1. Na stránce **Deskriptory** klikněte na **+ Přidat popisovač**. 
  
-1. V dialogovém okně **vytvořit nový popisovač seznamu frází** zadejte název pro popisovač, například `Cities`. Do pole **hodnota** zadejte hodnoty popisovačů, například `Seattle`. Zadejte jednu hodnotu, nebo sadu hodnot oddělených čárkami a potom stiskněte klávesu **Enter**.
+1. V dialogovém okně **Vytvořit nový seznam frází** zadejte název, například `Cities` pro popisovač. Do pole **Hodnota** zadejte hodnoty popisovačů, například `Seattle`. Můžete zadat jednu hodnotu najednou nebo sadu hodnot oddělených čárkami a pak stiskněte **Enter**.
 
     > [!div class="mx-imgBorder"]
-    > ![přidat města deskriptoru](./media/luis-add-features/add-phrase-list-cities.png)
+    > ![Přidat města deskriptoru](./media/luis-add-features/add-phrase-list-cities.png)
 
-    Až zadáte dostatek hodnot pro LUIS, zobrazí se návrhy. Můžete **+ Přidat všechny** navrhované hodnoty nebo vybrat jednotlivé výrazy.
+    Po zadání dostatečného množství hodnot pro službu LUIS se zobrazí návrhy. Můžete **+ Přidat všechny** navrhované hodnoty nebo vybrat jednotlivé termíny.
 
-1. Zachovat **tyto hodnoty jsou zaměnitelné** , pokud jsou přidané hodnoty popisovače alternativami, které lze použít zaměnitelné.
+1. Zachovat **Tyto hodnoty jsou zaměnitelné** zkontrolovat, pokud přidané hodnoty popisovače jsou alternativy, které lze použít zaměnitelně.
 
-1. Vyberte **Done** (Hotovo). Nový popisovač se přidá na stránku **popisovače** .
+1. Vyberte **Done** (Hotovo). Nový deskriptor je přidán na stránku **Deskriptory.**
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> Popisovač můžete odstranit nebo deaktivovat z kontextového panelu nástrojů na stránce **popisovače** .
+> Deskriptor můžete odstranit nebo deaktivovat z kontextového panelu nástrojů na stránce **Deskriptory.**
 
 ## <a name="next-steps"></a>Další kroky
 
-Po přidání, úpravě, odstranění nebo deaktivaci deskriptoru, [školení a otestování aplikace](luis-interactive-test.md) znovu, abyste viděli, jestli se zvyšuje výkon.
+Po přidání, úpravě, odstranění nebo deaktivaci popisovače [znovu zaškolte a otestujte aplikaci,](luis-interactive-test.md) abyste zjistili, zda se výkon zlepší.

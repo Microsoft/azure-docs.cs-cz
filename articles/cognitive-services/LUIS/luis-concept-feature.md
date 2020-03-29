@@ -1,7 +1,7 @@
 ---
-title: Funkce – LUIS
+title: Funkce - LUIS
 titleSuffix: Azure Cognitive Services
-description: Přidání funkcí do jazykového modelu poskytnout nápovědu, jak rozpoznat vstup, který chcete klasifikovat a označovat.
+description: Přidejte do jazykového modelu funkce, které poskytují rady o tom, jak rozpoznat vstup, který chcete označit nebo klasifikovat.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,44 +12,44 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
 ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220993"
 ---
-# <a name="machine-learned-features"></a>Funkce učené počítačem 
+# <a name="machine-learned-features"></a>Funkce naučené strojem 
 
-Ve službě Machine Learning je _funkce_ odlišující se vlastností a atributů dat, které systém sleduje & se naučí. V Language Understanding (LUIS) funkce popisuje a vysvětluje, co je důležité o vašich záměrech a entitách.
+Ve strojovém učení je _funkce_ rozlišovací vlastností nebo atributem dat, které váš systém sleduje & se učí. V jazyce porozumění (LUIS), funkce popisuje a vysvětluje, co je důležité o vaše záměry a entity.
 
-Na [portálu Luis ve verzi Preview](https://preview.luis.ai)jsou funkce _popisovače_ , protože se používají k _popisu_ záměru nebo entity.  
+Na [portálu LUIS preview](https://preview.luis.ai)jsou funkce _popisovače,_ protože se používají k _popisu_ záměru nebo entity.  
 
-## <a name="features-_descriptors_-in-language-understanding"></a>Funkce (_popisovače_) v Language Understanding
+## <a name="features-_descriptors_-in-language-understanding"></a>Funkce _(popisovače)_ v jazyce Porozumění
 
-Funkce, které jsou známé také jako popisovače, popisují popsaných prvků, které vám pomůžou Language Understanding identifikovat příklad projevy. Mezi hlavní funkce patří: 
+Funkce, označované také jako popisovače, popisují vodítka, která pomáhají jazykově rozumět při identifikaci ukázkových promluv. K funkcím patří: 
 
-* Seznam frází jako funkce pro záměry nebo entit
-* Entity jako funkce pro záměry nebo entity
+* Seznam frází jako funkce pro záměry nebo entity
+* Entity jako prvky pro záměry nebo entity
 
-Funkce by měly být považovány za nezbytnou součást schématu pro rozložení modelu. 
+Prvky by měly být považovány za nezbytnou součást vašeho schématu pro rozklad modelu. 
 
 ## <a name="what-is-a-phrase-list"></a>Co je seznam frází
 
-Seznam frází je seznam slov, frází, číslic nebo jiných znaků, které vám pomohou identifikovat koncept, který se pokoušíte identifikovat. V seznamu se nerozlišují malá a velká písmena. 
+Seznam frází je seznam slov, frází, čísel nebo jiných znaků, které pomáhají identifikovat koncept, který se pokoušíte identifikovat. Seznam nerozlišuje malá a velká písmena. 
 
 ## <a name="when-to-use-a-phrase-list"></a>Kdy použít seznam frází
 
-Seznam frází LUIS považuje za kontext a generalizy k identifikaci položek, které jsou podobné, ale nikoli přesného textu. Pokud potřebujete, aby vaše aplikace LUIS dokázala zobecnit a identifikovat nové položky, použijte seznam frází. 
+Se seznamem frází LUIS považuje kontext a generalizuje k identifikaci položek, které jsou podobné, ale není přesnou shodou textu. Pokud potřebujete, aby vaše aplikace LUIS bylo možné generalizovat a identifikovat nové položky, použijte seznam frází. 
 
-Pokud chcete být schopni rozpoznat nové instance, jako je třeba Plánovač schůzky, který by měl rozpoznávat názvy nových kontaktů, nebo aplikaci inventáře, která by měla rozpoznávat nové produkty, začněte s entitou učenou počítačem. Pak vytvořte seznam frází, který pomůže LUIS hledání slov s podobným významem. Tento seznam frází LUIS k rozpoznávání příkladů přidáním dalšího významu k hodnotě těchto slov. 
+Pokud chcete mít možnost rozpoznat nové instance, jako je plánovač schůzek, který by měl rozpoznat názvy nových kontaktů, nebo aplikace inventáře, která by měla rozpoznat nové produkty, začněte s entitou naučenou počítačem. Pak vytvořte seznam frází, který pomáhá LUIS najít slova s podobným významem. Tento seznam frází vede LUIS rozpoznat příklady přidáním další význam hodnoty těchto slov. 
 
-Fráze seznamy jsou jako slovník jazyka specifického pro doménu, která usnadní vylepšení kvality znalost záměry a entity. 
+Seznamy frází jsou jako slovník specifický pro doménu, který pomáhá zlepšit kvalitu porozumění záměrům i entitám. 
 
-## <a name="considerations-when-using-a-phrase-list"></a>Předpoklady při použití seznamu frází
+## <a name="considerations-when-using-a-phrase-list"></a>Důležité informace při použití seznamu frází
 
-Seznam frází se ve výchozím nastavení aplikuje na všechny modely v aplikaci. To bude fungovat pro seznamy frází, které mohou být více záměry a entitami. V případě deformulace byste měli použít seznam frází jenom na modely, ke kterým je relevantní. 
+Ve výchozím nastavení se na všechny modely v aplikaci použije seznam frází. To bude fungovat pro seznamy frází, které mohou přes všechny záměry a entity. Chcete-li rozluštitelnost, měli byste použít seznam frází pouze na modely, pro které je relevantní. 
 
-Pokud vytvoříte seznam frází (ve výchozím nastavení vytvořen globálně), pak ho později použijete jako popisovač (funkce) na konkrétní model, odebere se z ostatních modelů. Toto odebrání přispěje k seznamu frází pro model, pro který je použit, což pomáhá zlepšit přesnost, kterou poskytuje model. 
+Pokud vytvoříte seznam frází (vytvořený globálně ve výchozím nastavení), později jej použijete jako deskriptor (prvek) na konkrétní model, bude odebrán z ostatních modelů. Toto odebrání přidává relevanci seznamu frází pro model, na který se používá, což pomáhá zlepšit přesnost, kterou poskytuje v modelu. 
 
 Příznak `enabledForAllModels` řídí tento obor modelu v rozhraní API. 
 
@@ -57,38 +57,38 @@ Příznak `enabledForAllModels` řídí tento obor modelu v rozhraní API.
 
 ### <a name="how-to-use-a-phrase-list"></a>Jak používat seznam frází
 
-[Vytvořte seznam frází](luis-how-to-add-features.md) , pokud má váš záměr nebo entita slova nebo fráze, které jsou důležité, například:
+[Seznam frází vytvořte,](luis-how-to-add-features.md) pokud váš záměr nebo entita obsahuje slova nebo fráze, které jsou důležité, například:
 
-* oborové výrazy
-* slangem
-* zkratky
+* oborové termíny
+* Slang
+* Zkratky
 * jazyk specifický pro společnost
-* jazyk, který pochází z jiného jazyka, ale často se používá ve vaší aplikaci
-* Klíčová slova a fráze v příkladu projevy
+* jazyk, který je z jiného jazyka, ale často používaný ve vaší aplikaci
+* klíčová slova a fráze ve vašem příkladu projevy
 
-Nepřidávat **všechna** možná slova ani fráze. Místo toho přidejte několik slov nebo frází najednou a pak je přehlaste a publikujte. Jakmile se seznam rozroste v průběhu času, může se stát, že některé výrazy mají mnoho forem (synonym). Rozdělte je do jiného seznamu. 
+**Nepřidávejte** všechna možná slova nebo fráze. Místo toho přidejte několik slov nebo frází najednou, pak přeškolte a publikujte. Jak seznam roste v průběhu času, můžete najít některé termíny mají mnoho forem (synonyma). Rozdělte je na jiný seznam. 
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="when-to-use-an-entity-as-a-feature"></a>Kdy použít entitu jako funkci 
+## <a name="when-to-use-an-entity-as-a-feature"></a>Kdy použít entitu jako prvek 
 
-Entitu lze přidat jako funkci na úrovni záměru nebo entitu. 
+Entitu lze přidat jako prvek na úrovni záměru nebo entity. 
 
-### <a name="entity-as-a-feature-to-an-intent"></a>Entita jako součást záměru
+### <a name="entity-as-a-feature-to-an-intent"></a>Entita jako prvek záměru
 
-Přidejte entitu jako popisovač (funkce) k záměru, když je zjišťování dané entity pro záměr významné.
+Přidejte entitu jako popisovač (funkce) k záměru, když je detekce této entity významná pro záměr.
 
-Například pokud je záměrem rezervovat určitý let a entita má informace o lístkech (například počet míst, původ a cíl), pak hledání entity s informacemi o lístkech by mělo přidat váhu k předpovědi záměru letu. 
+Pokud je například záměrem rezervace letu a entita je informace o letence (například počet sedadel, původ a cíl), mělo by nalezení entity informací o letence přidat váhu předvídavosti záměru letu knihy. 
 
-### <a name="entity-as-a-feature-to-another-entity"></a>Entita jako funkce pro jinou entitu
+### <a name="entity-as-a-feature-to-another-entity"></a>Entita jako prvek pro jinou entitu
 
-Entita (A) by měla být přidána jako funkce jiné entitě (B), pokud je zjišťování této entity (A) významné pro předpověď entity (B).
+Entita (A) by měla být přidána jako funkce k jiné entitě (B), pokud je detekce této entity (A) významná pro predikci entity (B).
 
-Například pokud je zjištěna entita adresy (A), pak hledání ulice (A) přidá váhu předpovědi pro entitu dodací adresy (B). 
+Pokud je například zjištěna entita ulice (A), přičte nalezení adresy ulice (A) k predikci entity dodací adresy (B) váhu. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
-Seznamte se s [osvědčenými postupy](luis-concept-best-practices.md).
+Seznamte se s [doporučenými postupy](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak přidat funkce do aplikace LUIS, najdete v tématu věnovaném [Přidání funkcí](luis-how-to-add-features.md) .
+Další informace o tom, jak přidat funkce do aplikace LUIS, najdete v tématu [Přidání funkcí.](luis-how-to-add-features.md)

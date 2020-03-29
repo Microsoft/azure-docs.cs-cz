@@ -1,31 +1,30 @@
 ### YamlMime:Landing
 title: Dokumentace k hlasovým asistentům
-summary: Hlasový asistent využívající službu Speech umožňuje vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku.
+summary: Hlasoví asistenti využívající službu Řeč umožňuje vývojářům vytvářet přirozené konverzační rozhraní podobné lidem pro jejich aplikace a prostředí.
 metadata:
-  title: Dokumentace k hlasovým pomocníkům – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  title: Dokumentace k hlasovým asistentům – výukové lekce, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 369213485934236a05ecb3fcb458bdd28fd76136
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 6ae919317269753cbc3c8bf5b0df11e19a47989f
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79365555"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415151"
 landingContent:
-- title: O hlasových asistentcích
+- title: Hlasové asistenty
   linkLists:
   - linkListType: overview
     links:
     - text: Co je hlasový asistent?
       url: voice-assistants.md
-    - text: Co je to aplikace pro vlastní příkazy?
+    - text: Co je aplikace Vlastní příkazy?
       url: custom-commands.md
     - text: Co je Direct Line Speech?
       url: direct-line-speech.md
@@ -35,11 +34,11 @@ landingContent:
       url: faq-voice-assistants.md
     - text: Ceny hlasových asistentů
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
-- title: Vývoj s využitím vlastních příkazů
+- title: Vývoj pomocí vlastních příkazů
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Vytvoření vlastní aplikace příkazů
+    - text: Vytvoření aplikace Vlastní příkazy
       url: quickstart-custom-speech-commands-create-new.md
     - text: Vytvoření vlastního příkazu s parametry
       url: quickstart-custom-speech-commands-create-parameters.md
@@ -49,15 +48,15 @@ landingContent:
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: Splnění příkazů z klienta
+    - text: Plnění příkazů od klienta
       url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Přidat ověření parametru
+    - text: Přidání ověření parametru
       url: how-to-custom-speech-commands-validations.md
-    - text: Přidat potvrzení
+    - text: Přidání potvrzení
       url: how-to-custom-speech-commands-confirmations.md
-    - text: Přidat opravu s jedním krokem
+    - text: Přidání jednostupňové opravy
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Vývoj pomocí funkce Direct line Speech
+- title: Vyvíjejte s přímou přímou řečí
   linkLists:
   - linkListType: quickstart
     links:
@@ -71,7 +70,7 @@ landingContent:
     links:
     - text: Hlasová podpora robota s využitím sady Speech SDK
       url: tutorial-voice-enable-your-bot-speech-sdk.md
-- title: Vývoj s vlastním klíčovým slovem
+- title: Vývoj pomocí vlastního klíčového slova
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -79,5 +78,5 @@ landingContent:
       url: speech-devices-sdk-create-kws.md
   - linkListType: reference
     links:
-    - text: Vlastní pokyny pro pojmenovávání klíčových slov
+    - text: Pokyny pro vlastní pojmenování klíčových slov
       url: speech-devices-sdk-kws-guidelines.md

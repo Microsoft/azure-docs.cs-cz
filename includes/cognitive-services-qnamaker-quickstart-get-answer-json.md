@@ -11,15 +11,15 @@ ms.custom: include file
 ms.date: 11/12/2018
 ms.author: diberry
 ms.openlocfilehash: fd6a4a4e2d779047d252fdc5e3eae8e3fba8b507
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175307"
 ---
-## <a name="request-and-response-json"></a>Žádost a odpověď JSON
+## <a name="request-and-response-json"></a>Požadavek a odpověď JSON
 
-Příkladu ve formátu JSON otázka pro rozhraní REST API:
+Příklad otázky ve formátu JSON pro rozhraní REST API:
 
 ```json
 {
@@ -28,9 +28,9 @@ Příkladu ve formátu JSON otázka pro rozhraní REST API:
 }
 ```
 
-Dotaz obsahuje vlastnost, která má nejvyšší tři odpovědět. 
+Otázka zahrnuje vlastnost vrátit první tři odpovědi. 
 
-Odpověď se vrátí v objektu JSON:
+Odpověď je vrácena v objektu JSON:
 
 ```json
 {

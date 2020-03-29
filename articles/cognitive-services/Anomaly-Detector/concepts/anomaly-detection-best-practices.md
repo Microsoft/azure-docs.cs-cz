@@ -1,7 +1,7 @@
 ---
 title: Osvědčené postupy při používání rozhraní API Detektoru anomálií
 titleSuffix: Azure Cognitive Services
-description: Další informace o osvědčených postupech při zjišťování anomálií s rozhraním API detekce anomálií.
+description: Další informace o osvědčených postupech při zjišťování anomálií pomocí rozhraní API detektoru anomálií.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,50 +11,50 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67721619"
 ---
-# <a name="best-practices-for-using-the-anomaly-detector-api"></a>Doporučené postupy pro používání rozhraní API detekce anomálií
+# <a name="best-practices-for-using-the-anomaly-detector-api"></a>Doporučené postupy pro používání rozhraní API detektoru anomálií
 
-Rozhraní API detekce anomálií je služba detekce anomálií bezstavové. Může být ovlivněno přesnost a výkon svých výsledků:
+Rozhraní API detektoru anomálií je služba detekce anomálií bez stavů. Přesnost a výkon jeho výsledků může být ovlivněna:
 
-* Jak je připravit data časových řad.
-* Parametry rozhraní API detekce anomálií, které byly použity.
-* Počet datových bodů ve vaší žádosti rozhraní API. 
+* Jak jsou připravena data vašich časových řad.
+* Parametry rozhraní API detektoru anomálií, které byly použity.
+* Počet datových bodů v žádosti o rozhraní API. 
 
-Pomocí tohoto článku se dozvíte o osvědčené postupy při používání rozhraní API pro získání nejlepších výsledků pro vaše data. 
+V tomto článku se dozvíte o doporučených postupech pro používání rozhraní API, které vám zpřístupní nejlepší výsledky pro vaše data. 
 
-## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Použití služby batch (celá) nebo poslední (naposledy) bodu detekce anomálií
+## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Kdy použít detekci anomálií dávky (celé) nebo poslední (poslední) bodové anomálie
 
-Koncový bod zjišťování služby batch API detekce anomálií vám umožní detekovat anomálie přes celou dobu data řady. V tomto režimu detekce jeden statistické model je vytvořit a použít pro každý bod v datové sadě. Pokud má vaše časové řady následující charakteristiky, doporučujeme použít zjišťování služby batch a zobrazit náhled dat v jednom volání rozhraní API.
+Koncový bod detekce dávek rozhraní API detektoru anomálií umožňuje detekovat anomálie prostřednictvím dat řady celé časy. V tomto režimu zjišťování je vytvořen jeden statistický model a použije se pro každý bod v sadě dat. Pokud vaše časové řady má níže uvedené charakteristiky, doporučujeme použít detekci dávek k zobrazení náhledu dat v jednom volání rozhraní API.
 
-* Sezónní časové řady, s občasné anomálie.
-* Plochý trend časové řadě, s občasné provozní špičky a vyhrazené IP adresy. 
+* Sezónní časová řada s občasnými anomáliemi.
+* Plochý trend časové řady, s občasnými hroty / poklesy. 
 
-Nedoporučujeme používat pro detekci anomálií služby batch pro data v reálném čase, monitorování nebo pomocí datech časových řad, který nemá nad charakteristiky. 
+Nedoporučujeme používat detekci anomálií dávek pro monitorování dat v reálném čase nebo je používat na datech časových řad, která nemají výše uvedené charakteristiky. 
 
-* Zjišťování služby batch vytvoří a použije jenom jeden model, se provádí zjišťování pro každý bod v rámci celé řady. Je-li změnit čas trendy data řady směrem nahoru a dolů bez sezonnost, některé body (vyhrazené IP adresy a provozní špičky v datech) mohou chybět modelem. Podobně nemusí některé body změn, které jsou méně důležité než těch, které jsou dále v sadě dat počítá jako natolik závažné, má být zahrnut do modelu.
+* Detekce dávky vytvoří a použije pouze jeden model, detekce pro každý bod se provádí v kontextu celé řady. Pokud se data časových řad trendy nahoru a dolů bez sezónnosti, některé body změny (poklesy a špičky v datech) může být vynechány modelem. Podobně některé body změny, které jsou méně významné než ty později v sadě dat nemusí být započítány jako dostatečně významné, aby mohly být začleněny do modelu.
 
-* Zjišťování služby batch je pomalejší než zjišťování anomálií stav poslední bod při monitorování dat v reálném čase z důvodu počet bodů analyzován.
+* Detekce dávek je pomalejší než zjišťování stavu anomálií posledního bodu při monitorování dat v reálném čase z důvodu počtu analyzovaných bodů.
 
-Ke sledování dat v reálném čase, doporučujeme, abyste zjišťování anomálií stav pouze nejnovější data bodu. Použitím průběžně poslední bod zjišťování, streamování dat monitorování lze efektivněji a přesně.
+Pro monitorování dat v reálném čase doporučujeme zjistit stav anomálií pouze vašeho nejnovějšího datového bodu. Neustálým používáním nejnovější detekce bodů lze monitorování dat streamování provádět efektivněji a přesněji.
 
-Následující příklad popisuje dopad, který tyto režimy zjišťování může mít na výkon. První obrázek ukazuje výsledek průběžně zjišťování anomálií stav nejnovějšího bodu podél 28 dříve zobrazenou datových bodů. Červená body jsou anomálie.
+Následující příklad popisuje dopad těchto režimů zjišťování na výkon. První obrázek ukazuje výsledek neustálého zjišťování stavu anomálií nejnovější bod podél 28 dříve viděných datových bodů. Červené body jsou anomálie.
 
-![Obrázek znázorňující detekce anomálií pomocí posledního bodu](../media/last.png)
+![Obrázek znázorňující detekci anomálií pomocí nejnovějšího bodu](../media/last.png)
 
-Níže je sada dat pomocí služby batch pro detekci anomálií. Model sestavený pro operaci ignoroval několik anomálie, označen obdélníků.
+Níže je stejná sada dat pomocí detekce anomálií dávky. Model vytvořený pro operaci ignoroval několik anomálií označených obdélníky.
 
-![Obrázek znázorňující detekce anomálií pomocí služby batch – metoda](../media/entire.png)
+![Obrázek znázorňující detekci anomálií pomocí dávkové metody](../media/entire.png)
 
 ## <a name="data-preparation"></a>Příprava dat
 
-Rozhraní API detekce anomálií přijímá časové řady na žádost o objekt JSON ve formátu data. Časové řady může být jakékoli číselných dat zaznamenaných v průběhu času v sekvenčním pořadí. Koncový bod rozhraní API detekce anomálií, a to kvůli zvýšení výkonu rozhraní API můžete poslat windows daty časových řad. Minimální počet datových bodů, které můžete odeslat je 12 a maximální hodnota je 8640 body. [Členitost](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) je definován jako vašich dat se definuje na rychlost. 
+Rozhraní API detektoru anomálií přijímá data časových řad formátované do objektu požadavku JSON. Časová řada může být libovolná číselná data zaznamenaná v průběhu času v sekvenčním pořadí. Můžete odeslat okna dat časové řady do koncového bodu rozhraní API detektoru anomálií ke zlepšení výkonu rozhraní API. Minimální počet datových bodů, které můžete odeslat, je 12 a maximální počet je 8640 bodů. [Rozlišovací schopnost](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) je definována jako rychlost, při které jsou data vzorkována. 
 
-Datových bodů poslaných do rozhraní API detekce anomálií musí mít platné časové razítko koordinovaný univerzální čas (UTC) a číselnou hodnotu. 
+Datové body odeslané do rozhraní API detektoru anomálií musí mít platné časové razítko koordinovaného světového času (UTC) a číselnou hodnotu. 
 
 ```json
 {
@@ -72,7 +72,7 @@ Datových bodů poslaných do rozhraní API detekce anomálií musí mít platn�
 }
 ```
 
-Pokud vaše data se definuje na nestandardní časový interval, můžete použít tak, že přidáte `customInterval` atribut ve vaší žádosti. Například pokud řady je vzorkováno každých 5 minut, můžete přidat následující k žádosti JSON:
+Pokud jsou data vzorkována v nestandardním časovém intervalu, `customInterval` můžete je zadat přidáním atributu do požadavku. Pokud je například vaše řada vzorkována každých 5 minut, můžete do požadavku JSON přidat následující:
 
 ```json
 {
@@ -83,25 +83,25 @@ Pokud vaše data se definuje na nestandardní časový interval, můžete použ�
 
 ### <a name="missing-data-points"></a>Chybějící datové body
 
-Chybějící datové body jsou běžné ve rovnoměrně distribuovaných čas řady datových sad, zejména těch, které jsou s jemnou rozlišovací schopnost (interval drobné příklady. For example, data vzorkováno každých několik minut). Chybí méně než 10 % očekávaný počet bodů ve vašich datech by neměla mít negativní dopad na vaše výsledky zjišťování. Zvažte vyplnění mezer v datech podle jeho vlastnosti, jako je nahrazování datové body z předchozích období, lineární interpolace nebo klouzavý průměr.
+Chybějící datové body jsou běžné v rovnoměrně distribuovaných datových sadách časových řad, zejména těch s jemnou granularitou (Malý interval vzorkování. Například data vzorkovaná každých několik minut). Chybějící méně než 10 % očekávaného počtu bodů v datech by nemělo mít negativní dopad na výsledky zjišťování. Zvažte vyplnění mezer v datech na základě jejich charakteristik, jako je nahrazení datových bodů z dřívějšího období, lineární interpolace nebo klouzavý průměr.
 
-### <a name="aggregate-distributed-data"></a>Agregační distribuovaných dat
+### <a name="aggregate-distributed-data"></a>Agregovaná distribuovaná data
 
-Rozhraní API detekce anomálií funguje nejlépe na rovnoměrně distribuovaných časové řady. Pokud vaše data jsou distribuovaná náhodně, můžete by ho agregovat jednotku času, například po minutách, hodinových nebo denních třeba.
+Rozhraní API detektoru anomálií funguje nejlépe v rovnoměrně distribuovaných časových řadách. Pokud jsou data distribuována náhodně, měli byste je agregovat podle jednotky času, například za minutu, každou hodinu nebo denně.
 
-## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>Detekce anomálií na datech s sezónní vzory
+## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>Detekce anomálií u dat se sezónními vzory
 
-Pokud víte, že data časových řad se sezónním vzoru (jeden, který se nachází v pravidelných intervalech), můžete zlepšit přesnost a doba odezvy rozhraní API. 
+Pokud víte, že data časových řad má sezónní vzor (ten, který se vyskytuje v pravidelných intervalech), můžete zlepšit přesnost a dobu odezvy rozhraní API. 
 
-Určení `period` při vytváření vaší žádosti JSON může snížit latenci detekce anomálií až o 50 %. `period` Je celé číslo, které určuje zhruba kolik datových bodů řady čas potřebný k opakováním vzoru. Například by mít časové řady s jeden datový bod za den `period` jako `7`, a bude mít časové řady s jedním bodem za hodinu (se stejným vzorem týdně) `period` z `7*24`. Pokud si nejste jisti vzorů vaše data, není nutné tento parametr zadán.
+Určení `period` při vytváření požadavku JSON může snížit latenci detekce anomálií až o 50 %. Je `period` celé číslo, které určuje zhruba kolik datových bodů časové řady trvá opakovat vzorek. Například časové řady s jedním datovým bodem `period` `7`za den by měly as a časové řady s jedním `period` `7*24`bodem za hodinu (se stejným týdenním vzorem) by měly . Pokud si nejste jisti vzory dat, nemusíte tento parametr zadávat.
 
-Nejlepších výsledků dosáhnete, poskytují 4 `period`uživatele za datový bod a další. Například hodinová data s týdenní opakování výše popsaným způsobem by měly poskytnout 673 datových bodů v textu požadavku (`7 * 24 * 4 + 1`).
+Pro dosažení nejlepších `period`výsledků zadejte 4 's v hodnotě datového bodu, plus další. Například hodinová data s týdenním vzorem, jak je popsáno výše,`7 * 24 * 4 + 1`by měla poskytnout 673 datových bodů v těle požadavku ( ).
 
-### <a name="sampling-data-for-real-time-monitoring"></a>Data vzorkování pro monitorování v reálném čase
+### <a name="sampling-data-for-real-time-monitoring"></a>Vzorkovací data pro monitorování v reálném čase
 
-Pokud streamování dat se definuje na krátkou dobu (například několika sekund nebo minut), odesílání doporučený počet datových bodů může být delší než rozhraní API detekce anomálií maximální počet povolených (8640 datových bodů). Pokud se vaše data zobrazí stabilní sezónním vzoru, vezměte v úvahu odesílá vzorek dat časových řad na větší časový interval, jako jsou hodiny. Vzorkování dat tímto způsobem můžete také výrazně zlepšit dobu odezvy rozhraní API. 
+Pokud jsou data streamování vzorkována v krátkém intervalu (například sekundy nebo minuty), může odeslání doporučeného počtu datových bodů překročit maximální povolený počet rozhraní API detektoru anomálií (8640 datových bodů). Pokud vaše data ukazují stabilní sezónní vzor, zvažte odeslání vzorku dat časových řad ve větším časovém intervalu, například hodin. Vzorkování dat tímto způsobem může také výrazně zlepšit dobu odezvy rozhraní API. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Co je API detekce anomálií?](../overview.md)
-* [Rychlé zprovoznění: Detekovat anomálie ve vašich datech časových řad pomocí rozhraní REST API detekce anomálií](../quickstarts/detect-data-anomalies-csharp.md)
+* [Co je rozhraní API Detektoru anomálií?](../overview.md)
+* [Úvodní příručka: Detekce anomálií v datech časových řad pomocí rozhraní REST API detektoru anomálií](../quickstarts/detect-data-anomalies-csharp.md)

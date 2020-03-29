@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: 28f6ef7248fada8286bbe90c868cd9f947f0435d
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943808"
 ---
-Zpracování komprimovaného zvuku je implementováno pomocí [GStreamer](https://gstreamer.freedesktop.org). Z důvodů licencování nejsou binární soubory GStreamer kompilovány a propojeny se sadou Speech SDK. Místo toho je nutné sestavit a dodat obálkovou knihovnu obsahující tyto funkce pomocí sady SDK.
+Manipulace s komprimovaným zvukem je realizována pomocí [GStreameru](https://gstreamer.freedesktop.org). Z licenčních důvodů gstreamer binární soubory nejsou kompilovány a propojeny s sadou Speech SDK. Místo toho musí být vytvořena obálková knihovna obsahující tyto funkce a dodána s aplikacemi pomocí sady SDK.
 
-Pro sestavení této knihovny obálek si nejdřív Stáhněte a nainstalujte [sadu GStreamer SDK](https://gstreamer.freedesktop.org/data/pkg/ios/1.16.0/gstreamer-1.0-devel-1.16.0-ios-universal.pkg). Pak stáhněte projekt **Xcode** pro [knihovnu obálek](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/compressed-streams/GStreamerWrapper).
+Chcete-li vytvořit tuto knihovnu obálky, nejprve stáhněte a nainstalujte [sadu GStreamer SDK](https://gstreamer.freedesktop.org/data/pkg/ios/1.16.0/gstreamer-1.0-devel-1.16.0-ios-universal.pkg). Potom stáhněte projekt **Xcode** pro [knihovnu obálky](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/compressed-streams/GStreamerWrapper).
 
-Otevřete projekt v **Xcode** a sestavte ho pro **obecný cíl zařízení iOS** *– nebude tak fungovat,* aby se vytvořil pro konkrétní cíl.
+Otevřete projekt v **Xcode** a sestavte ho pro obecný cíl **zařízení iOS** – *nebude* fungovat jeho sestavení pro konkrétní cíl.
 
-Krok sestavení vygeneruje sadu dynamického rozhraní s dynamickou knihovnou pro všechny nezbytné architektury s názvem `GStreamerWrapper.framework`.
+Krok sestavení vygeneruje balíček dynamického frameworku s dynamickou `GStreamerWrapper.framework`knihovnou pro všechny potřebné architektury s názvem .
 
-Tato architektura musí být zahrnutá ve všech aplikacích, které používají komprimované zvukové streamy pomocí sady SDK služby pro rozpoznávání řeči.
+Tento rámec musí být součástí všech aplikací, které používají komprimované zvukové proudy se sadou SDK služby Rozpoznávání řeči.
 
-Použijte následující nastavení v projektu **Xcode** k tomuto účelu:
+Chcete-li to provést, použijte v projektu **Xcode** následující nastavení:
 
-1. Zkopírujte `GStreamerWrapper.framework`, který jste právě vytvořili, a architektury sady Cognitive Services Speech pro rozpoznávání řeči, kterou si můžete stáhnout z [tohoto tématu](https://aka.ms/csspeech/iosbinary), do adresáře, který obsahuje ukázkový projekt.
-1. Upravte cesty k architekturám v *nastavení projektu*.
-   1. Na kartě **Obecné** pod hlavičkou **vložená binární soubory** přidejte knihovnu SDK jako rozhraní: **přidejte vložené binární soubory** > **Přidat další...** > přejděte do adresáře, který jste zvolili, a vyberte obě architektury.
+1. `GStreamerWrapper.framework` Zkopírujte právě vytvořené sady a rámec sady SDK pro rozpoznávání řeči služby Cognitive Services, kterou si můžete stáhnout [zde](https://aka.ms/csspeech/iosbinary), do adresáře obsahujícího ukázkový projekt.
+1. Upravte cesty k rozhraní mj. *Project Settings*
+   1. Na kartě **Obecné** v záhlaví **Vložené binární soubory** přidejte knihovnu Sady SDK jako architekturu: **Přidejte vložené binární soubory** > **Přidat další...** > Přejděte do vybraného adresáře a vyberte obě architektury.
    1. Přejděte na kartu **Build Settings** (Nastavení sestavení) a aktivujte **všechna** nastavení.
-1. Do části `$(SRCROOT)/..`Framework Search Paths _(Cesty pro hledání rozhraní) pod nadpisem_Search Paths **(Cesty pro hledání) přidejte adresář**.
+1. Do části _Framework Search Paths_ (Cesty pro hledání rozhraní) pod nadpisem **Search Paths** (Cesty pro hledání) přidejte adresář `$(SRCROOT)/..`.

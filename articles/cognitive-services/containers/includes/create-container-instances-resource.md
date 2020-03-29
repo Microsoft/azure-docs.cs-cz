@@ -1,7 +1,7 @@
 ---
 title: Podpora kontejnerů
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak vytvořit prostředek Azure Container instance.
+description: Zjistěte, jak vytvořit prostředek instance kontejneru Azure.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,43 +10,43 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 18f4edf5cc63a448779423cc1b302130b4b80724
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75692589"
 ---
-## <a name="create-an-azure-container-instance-resource"></a>Vytvoření prostředku Azure Container instance
+## <a name="create-an-azure-container-instance-resource"></a>Vytvoření prostředku instance kontejneru Azure
 
-1. Pro Container Instances přejít na stránku [vytvořit](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) .
+1. Přejděte na stránku [Vytvořit](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) pro instance kontejnerů.
 
-2. Na kartě **základy** zadejte následující podrobnosti:
+2. Na kartě **Základy** zadejte následující podrobnosti:
 
     |Nastavení|Hodnota|
     |--|--|
     |Předplatné|Vyberte své předplatné.|
-    |Skupina prostředků|Vyberte dostupnou skupinu prostředků nebo vytvořte novou, například `cognitive-services`.|
-    |Název kontejneru|Zadejte název, například `cognitive-container-instance`. Název musí být malými písmeny.|
+    |Skupina prostředků|Vyberte dostupnou skupinu prostředků nebo `cognitive-services`vytvořte novou, například .|
+    |Název kontejneru|Zadejte název, `cognitive-container-instance`například . Název musí být v dolních písmenech.|
     |Umístění|Vyberte oblast pro nasazení.|
-    |Typ image|Pokud je vaše image kontejneru uložená v registru kontejneru, který nevyžaduje přihlašovací údaje, vyberte `Public`. Pokud přístup k imagi kontejneru vyžaduje přihlašovací údaje, vyberte `Private`. Podrobnosti o tom, jestli je image kontejneru `Public` nebo `Private` (Public Preview), najdete v tématu [úložiště kontejnerů a image](../../cognitive-services-container-support.md#container-repositories-and-images) . |
-    |Název image|Zadejte umístění kontejneru Cognitive Services. Umístění se používá jako argument pro příkaz `docker pull`. Podívejte se na [úložiště kontejnerů a obrázky](../../cognitive-services-container-support.md#container-repositories-and-images) pro dostupné názvy imagí a jejich odpovídající úložiště.<br><br>Název Image musí být plně kvalifikovaný, aby se zadaly tři části. Nejprve registr kontejneru, potom úložiště, nakonec název bitové kopie: `<container-registry>/<repository>/<image-name>`.<br><br>Tady je příklad, `mcr.microsoft.com/azure-cognitive-services/keyphrase` by představoval Extrakce klíčových frází image v Container Registry Microsoftu v úložišti Cognitive Services Azure. Dalším příkladem je `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text`, který představuje řeč k textovému obrázku v úložišti Microsoftu úložiště kontejnerů pro náhled kontejneru. |
-    |Typ operačního systému|`Linux`|
-    |Velikost|Změňte velikost na navrhovaná doporučení pro konkrétní kontejner služby pro rozpoznávání:<br>2 jádra procesoru<br>4 GB
+    |Typ image|Pokud je bitová kopie kontejneru uložená v registru `Public`kontejneru, který nevyžaduje pověření, zvolte . Pokud přístup k image kontejneru `Private`vyžaduje přihlašovací údaje, zvolte . Podrobnosti o tom, zda je obraz kontejneru `Public` nebo `Private` zda je ("Public Preview"), naleznete v [úložišti kontejnerů a na obrázcích.](../../cognitive-services-container-support.md#container-repositories-and-images) |
+    |Název image|Zadejte umístění kontejneru služby Cognitive Services. Umístění je to, co se používá `docker pull` jako argument příkazu. Názvy dostupných obrázků a jejich odpovídající úložiště naleznete v [úložišti kontejnerů a na obrázcích.](../../cognitive-services-container-support.md#container-repositories-and-images)<br><br>Název obrázku musí být plně kvalifikovaný a specifikuje tři části. Nejprve registr kontejnerů, pak úložiště, nakonec `<container-registry>/<repository>/<image-name>`název obrázku: .<br><br>Tady je příklad, `mcr.microsoft.com/azure-cognitive-services/keyphrase` který by představoval bitovou kopii extrakce klíčových frází v registru kontejnerů Microsoft u úložiště Azure Cognitive Services. Dalším příkladem `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` je, který by představoval obraz Převod řeči na text v úložišti Microsoft registru kontejneru Náhled. |
+    |Typ operačního příkazu|`Linux`|
+    |Velikost|Změňte velikost na navrhovaná doporučení pro konkrétní kontejner služby Cognitive Service:<br>2 procesorová jádra<br>4 GB
 
-3. Na kartě **sítě** zadejte následující podrobnosti:
+3. Na kartě **Síť** zadejte následující podrobnosti:
 
     |Nastavení|Hodnota|
     |--|--|
-    |Porty|Nastavte port TCP na `5000`. Zpřístupňuje kontejner na portu 5000.|
+    |Porty|Nastavte port TCP `5000`na . Zpřístupní kontejner na portu 5000.|
 
-4. Na kartě **Upřesnit** zadejte požadované **proměnné prostředí** pro nastavení fakturace kontejneru prostředku Azure Container instance:
+4. Na kartě **Upřesnit** zadejte požadované **proměnné prostředí** pro nastavení fakturace kontejneru prostředku instance kontejneru Azure:
 
     | Klíč | Hodnota |
     |--|--|
-    |`apikey`|Zkopírováno ze stránky **klíče** v prostředku. Je to 32 řetězec alfanumerického znaku, který neobsahuje mezery ani pomlčky, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |`apikey`|Zkopírováno ze stránky **Klíče** prostředku. Jedná se o řetězec 32 alfanumerických znaků `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`bez mezer nebo pomlček .|
     |`billing`|Zkopírováno ze stránky **Přehled** prostředku.|
     |`eula`|`accept`|
 
-5. Klikněte na tlačítko **zkontrolovat a vytvořit**
-6. Po úspěšném ověření kliknutím na **vytvořit** dokončete proces vytváření.
-7. Po úspěšném nasazení prostředku je jeho připravenost
+5. Klikněte na **Zkontrolovat a vytvořit.**
+6. Po uplynutí platnosti ověření můžete dokončit proces vytváření kliknutím na **Vytvořit.**
+7. Když je prostředek úspěšně nasazen, je připraven

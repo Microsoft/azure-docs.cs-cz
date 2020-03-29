@@ -1,7 +1,7 @@
 ---
-title: Odesílání dotazů do rozhraní API Bingu pro vyhledávání zpráv
+title: Odesílání dotazů do rozhraní API pro vyhledávání zpráv Bingu
 titleSuffix: Azure Cognitive Services
-description: Rozhraní API Bingu pro vyhledávání zpráv umožňuje vyhledat relevantní novinky v webu. V tomto článku se dozvíte víc o posílání vyhledávacích dotazů do rozhraní API.
+description: Rozhraní API pro vyhledávání zpráv Bing umožňuje vyhledávat na webu příslušné diskusní položky. V tomto článku se dozvíte další informace o odesílání vyhledávacích dotazů do rozhraní API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: f59c924caca86505e9f1e91bf58095b271475794
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75383715"
 ---
-# <a name="sending-queries-to-the-bing-news-search-api"></a>Odesílání dotazů do rozhraní API Bingu pro vyhledávání zpráv
+# <a name="sending-queries-to-the-bing-news-search-api"></a>Odesílání dotazů do rozhraní API pro vyhledávání zpráv Bingu
 
-Rozhraní API Bingu pro vyhledávání zpráv umožňuje vyhledat relevantní novinky v webu. V tomto článku se dozvíte víc o posílání vyhledávacích dotazů do rozhraní API.
+Rozhraní API pro vyhledávání zpráv Bing umožňuje vyhledávat na webu příslušné diskusní položky. V tomto článku se dozvíte další informace o odesílání vyhledávacích dotazů do rozhraní API.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-## <a name="sending-a-request"></a>Odesílá se žádost.
+## <a name="sending-a-request"></a>Odeslání žádosti
 
 Pokud chcete získat výsledky hledání, které se týkají jenom zpráv, odešlete požadavek GET na následující koncový bod:
 
@@ -35,7 +35,7 @@ Požadavek musí používat protokol HTTPS.
 
 Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíče v rámci klientské aplikace nabízí více příležitostí pro přístup kyberzločinců. Voláním ze serveru také zajistíte, že u budoucích verzí rozhraní API bude stačit upgradovat pouze jediný bod.
 
-Požadavek musí obsahovat parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query), který obsahuje hledaný termín daného uživatele. Přestože je volitelný, měl by požadavek obsahovat také parametr [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#mkt) dotazu, který identifikuje trh, ze kterého chcete obdržet výsledky. Seznam volitelných parametrů dotazu jako `freshness` nebo `textDecorations` naleznete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.
+Požadavek musí obsahovat parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query), který obsahuje hledaný termín daného uživatele. Přestože je volitelný, měl by požadavek obsahovat také parametr dotazu [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#mkt), který identifikuje trh, ze kterého chcete obdržet výsledky. Seznam volitelných parametrů dotazu jako `freshness` nebo `textDecorations` naleznete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.
 
 Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#subscriptionkey). Přestože jsou volitelné, doporučujeme, aby požadavek obsahoval i následující hlavičky:
 
@@ -44,7 +44,7 @@ Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.mi
 - [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#clientip)
 - [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#location)
 
-IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umístění.
+Adresa IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umístění.
 
 Seznam všech hlaviček žádostí a odpovědí najdete v části s [hlavičkami](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headers).
 
@@ -60,7 +60,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-## <a name="bing-news-search-api-response"></a>rozhraní API Bingu pro vyhledávání zprávová odpověď
+## <a name="bing-news-search-api-response"></a>Odpověď rozhraní API pro vyhledávání zpráv bingu
 
 Následující příklad ukazuje odpověď na předchozí požadavek. Příklad taky zobrazuje hlavičky odpovědi.
 
@@ -284,7 +284,7 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Co je vyhledávání zpráv Bingu?](../search-the-web.md). 
-* [Získat dnešní hlavní novinky](search-for-news.md#get-todays-top-news)
-* [Získat zprávy podle kategorie](search-for-news.md#get-news-by-category)
-* [Získat zprávy o trendech](search-for-news.md#get-trending-news)
+* [Co je vyhledávání zpráv Bing?](../search-the-web.md). 
+* [Získejte dnešní nejlepší novinky](search-for-news.md#get-todays-top-news)
+* [Získejte novinky podle kategorií](search-for-news.md#get-news-by-category)
+* [Získejte trendy novinky](search-for-news.md#get-trending-news)

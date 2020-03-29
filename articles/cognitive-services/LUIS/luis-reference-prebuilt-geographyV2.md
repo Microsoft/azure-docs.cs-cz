@@ -1,7 +1,7 @@
 ---
-title: Předdefinovaná entita geografie v2 – LUIS
+title: Předem vytvořená entita Geografie V2 – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje geographyV2 informace předem připravených entit v Language Understanding (LUIS).
+description: Tento článek obsahuje informace o předem sestavené entitě geographyV2 v jazyce Porozumění (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,36 +12,36 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273496"
 ---
-# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 předem vytvořenou entitu pro aplikaci LUIS
-GeographyV2 předem připravených entit rozpozná místech. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující GeographyV2 záměry aplikace. Entita GeographyV2 je podporována v anglické [jazykové verzi](luis-reference-prebuilt-entities.md).
+# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>Předem připravená entita GeographyV2 pro aplikaci LUIS
+Předem sestavená entita geographyV2 detekuje místa. Vzhledem k tomu, že tato entita je již trénovaný, není nutné přidat příklad projevy obsahující GeographyV2 záměry aplikace. GeographyV2 entita je podporována v anglické [jazykové verzi](luis-reference-prebuilt-entities.md).
 
 ## <a name="subtypes"></a>Podtypy
-Zeměpisné umístění mít podtypy:
+Zeměpisná umístění mají podtypy:
 
-|Podtyp|Účel|
+|Podtypu|Účel|
 |--|--|
-|`poi`|bodu zájmu|
+|`poi`|bod zájmu|
 |`city`|název města|
-|`countryRegion`|Název země nebo oblasti|
-|`continent`|Název kontinent|
-|`state`|Název státu nebo provincie|
+|`countryRegion`|název země nebo regionu|
+|`continent`|název kontinentu|
+|`state`|název státu nebo provincie|
 
 
 ## <a name="resolution-for-geographyv2-entity"></a>Řešení pro entitu GeographyV2
 
-Pro dotaz se vrátí následující objekty entity:
+Pro dotaz jsou vráceny následující objekty entity:
 
 `Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující JSON je s parametrem `verbose` nastaveným na `false`:
+Následující JSON je `verbose` s parametrem nastaveným na `false`:
 
 ```json
 "entities": {
@@ -70,11 +70,11 @@ Následující JSON je s parametrem `verbose` nastaveným na `false`:
 }
 ```
 
-V předchozím formátu JSON je `poi` zkratkou pro **bod zájmu**.
+V předchozím JSON, `poi` je zkratka pro **Bod zájmu**.
 
-#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/V3-verbose)
 
-Následující JSON je s parametrem `verbose` nastaveným na `true`:
+Následující JSON je `verbose` s parametrem nastaveným na `true`:
 
 ```json
 "entities": {
@@ -161,9 +161,9 @@ Následující JSON je s parametrem `verbose` nastaveným na `true`:
     }
 }
 ```
-#### <a name="v2-response"></a>[Odpověď v2](#tab/V2)
+#### <a name="v2-response"></a>[Odpověď V2](#tab/V2)
 
-Následující příklad ukazuje řešení entity **Builtin. geographyV2** .
+Následující příklad ukazuje rozlišení entity **builtin.geographyV2.**
 
 ```json
 "entities": [
@@ -209,6 +209,6 @@ Následující příklad ukazuje řešení entity **Builtin. geographyV2** .
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
 
-Přečtěte si informace o [e-mailu](luis-reference-prebuilt-email.md), [číslu](luis-reference-prebuilt-number.md)a [řadových](luis-reference-prebuilt-ordinal.md) entitách.
+Přečtěte si o [e-mailových](luis-reference-prebuilt-email.md), [číselných](luis-reference-prebuilt-number.md)a [řadových](luis-reference-prebuilt-ordinal.md) entitách.

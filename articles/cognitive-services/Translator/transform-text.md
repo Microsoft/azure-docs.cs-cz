@@ -1,7 +1,7 @@
 ---
-title: Transformovat text – Translator Text API
+title: Transformovat text - Překladač Text API
 titleSuffix: Azure Cognitive Services
-description: Transformuje text pomocí Translator Text API.
+description: Transformujte text pomocí rozhraní Translator Text API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68594908"
 ---
-# <a name="how-to-use-the-transformtext-method"></a>Jak používat metodu běhu metody TransformText
+# <a name="how-to-use-the-transformtext-method"></a>Použití metody TransformText
 
 > [!NOTE]
-> Tato metoda je zastaralá. Není k dispozici v v 3.0 Translator Text API.
+> Tato metoda je zastaralé. Není k dispozici ve V3.0 překladače text API.
 
-Metoda běhu metody TransformText je funkce normalizace textu pro sociální média, která vrací normalizovanou formu vstupu. Metodu lze použít jako krok předzpracování v strojovém překladu nebo v jiných aplikacích, které očekávají čistý vstupní text, který se obvykle nenajde na sociálních médiích nebo v obsahu generovaném uživatelem. Funkce aktuálně funguje pouze se vstupem v angličtině.
+Metoda TransformText je funkce normalizace textu pro sociální média, která vrací normalizovanou formu vstupu. Metoda může být použita jako krok předběžného zpracování v strojovém překladu nebo jiných aplikacích, které očekávají čistý vstupní text, který se obvykle nenachází v sociálních médiích nebo obsahu generovaném uživateli. Funkce v současné době pracuje pouze s anglickým vstupem.
 
-Metoda je služba RESTful pomocí metody GET přes HTTP. Podporuje jednoduché serializace XML a JSON.
+Metoda je služba RESTful pomocí GET přes HTTP. Podporuje jednoduchou serializaci XML a JSON.
 
 ## <a name="parameters"></a>Parametry
 
 | Parametr | Popis |
 |:---|:---|
-| Autorizační hlavička | **Vyžaduje** se Hlavička protokolu HTTP používaná k identifikaci aplikace Použít klíč: "Authorization" a hodnota: "Nosič" + "+ přístupový token. Podrobnosti najdete tady.|
-| jazyk | **Vyžaduje** se Řetězec představující kód jazyka. Tento parametr podporuje pouze angličtinu s **EN** jako název jazyka.|
-| category | **Volitelné** Řetězec obsahující kategorii nebo doménu překladu. Tento parametr podporuje pouze výchozí možnost **Obecné**.|
-| aktuální | **Vyžaduje** se Věta, kterou chcete opravit. |
+| Hlavička autorizace | **Povinné** Hlavička HTTP použitá k identifikaci aplikace. Použijte klíč: "Autorizace" a hodnota: "Nosič" + " " + přístupový token. Podrobnosti naleznete zde.|
+| language | **Povinné** Řetězec představující kód jazyka. Tento parametr podporuje pouze angličtinu s **en** jako název jazyka.|
+| category | **Nepovinné** Řetězec obsahující kategorii nebo doménu překladu. Tento parametr podporuje pouze výchozí **obecnou**možnost .|
+| Věta | **Povinné** Věta, kterou chcete opravit. |
 
 ## <a name="return-value"></a>Návratová hodnota
 
-Návratová hodnota poskytuje transformované věty.
+Vrácená hodnota poskytuje transformované věty.
 
 > [!div class="tabbedCodeSnippets"]
 > ```json

@@ -1,18 +1,18 @@
 ---
-title: Test aplikace portálu služby LUIS
-description: Language Understanding (LUIS) umožňuje neustále pracovat na aplikaci zpřesnit jej a zvýšit jeho umožňující porozumět jazyku.
+title: Testovací aplikace na portálu LUIS
+description: Pomocí funkce Language Understanding (LUIS) můžete nepřetržitě pracovat na aplikaci a vylepšovat ji a zlepšovat její jazykové porozumění.
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: ba7e23a72cd308dd4393bf9a581571e2bc9f5fa0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219816"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testování aplikace LUIS na portálu LUIS
 
-[Testování](luis-concept-test.md) aplikace je iterativní proces. Po školení aplikace LUIS, otestujte ho s ukázka projevy a zjistěte, jestli jsou správně rozpoznány záměry a entity. Pokud ne, proveďte aktualizace znovu na aplikaci LUIS, trénování a testování.
+[Testování](luis-concept-test.md) aplikace je iterativní proces. Po trénování aplikace LUIS, otestujte ji s ukázkové projevy, abyste zjistili, zda záměry a entity jsou rozpoznány správně. Pokud nejsou, proveďte aktualizace aplikace LUIS, trénování a testování znovu.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -22,84 +22,84 @@ ms.locfileid: "79219816"
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
-## <a name="train-before-testing"></a>Výuka před testováním
+## <a name="train-before-testing"></a>Vlak před testováním
 
-Chcete-li provést test na nejnovější verzi aktivní aplikace, vyberte před testováním z horní nabídky možnost **výuka** .
+Chcete-li otestovat nejnovější verzi aktivní aplikace, vyberte **vlak** z horní nabídky před testováním.
 
 ## <a name="test-an-utterance"></a>Testování utterance
 
-Utterance testu by neměl být přesně stejný jako jakýkoli příklad projevy v aplikaci. Testovací utterance by měl obsahovat volbu Word, délku fráze a využití entity, které očekáváte pro uživatele.
+Test utterance by neměla být přesně stejná jako všechny příklad projevy v aplikaci. Promluva testu by měla zahrnovat volbu slova, délku fráze a použití entity, které očekáváte pro uživatele.
 
-1. Přístup k aplikaci získáte tak, že na stránce **Moje aplikace** vyberete její název.
+1. Přístup k aplikaci vyberete její název na stránce **Moje aplikace.**
 
-1. Pro přístup k panelu **testovacího** snímku vyberte v horním panelu aplikace **test** .
+1. Chcete-li získat přístup k panelu **Testovat** vysunutí, vyberte **testovat** v horním panelu aplikace.
 
     > [!div class="mx-imgBorder"]
-    > Stránka aplikace ![& testování](./media/luis-how-to-interactive-test/test.png)
+    > ![Stránka aplikace test & vlaku](./media/luis-how-to-interactive-test/test.png)
 
-1. Zadejte utterance do textového pole a stiskněte Enter. V **testu**můžete zadat tolik projevy testů, ale pouze jeden utterance v jednom okamžiku.
+1. Do textového pole zadejte promluvu a vyberte Enter. Můžete zadat libovolný počet testovacích projevů v **testu**, ale současně pouze jeden projev.
 
-1. Utterance, hlavní záměr a skóre jsou přidány do seznamu projevy pod textovým polem.
+1. Utterance, jeho hlavní záměr a skóre jsou přidány do seznamu projevy pod textové pole.
 
-    ![Interaktivní testování identifikuje nesprávné záměr](./media/luis-how-to-interactive-test/test-weather-1.png)
+    ![Interaktivní testování identifikuje nesprávný záměr](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="inspect-score"></a>Kontrola skóre
+## <a name="inspect-score"></a>Zkontrolovat skóre
 
-Podrobnosti o výsledku testu si můžete prohlédnout na panelu **Kontrola** .
+Podrobnosti o výsledku testu zkontrolujte v panelu **Kontrola.**
 
-1. V otevřeném panelu **testovacího** snímku vyberte **zkontrolovat** pro utterance, který chcete porovnat.
+1. Když je otevřený panel **Testovat** vysunutí, vyberte **Zkontrolovat** promluvu, kterou chcete porovnat.
 
-    ![Kliknutím na tlačítko zkontrolovat zobrazíte další podrobnosti o výsledcích testu.](./media/luis-how-to-interactive-test/inspect.png)
+    ![Výběrem tlačítka Zkontrolovat zobrazíte další podrobnosti o výsledcích testu.](./media/luis-how-to-interactive-test/inspect.png)
 
-1. Zobrazí se panel **Kontrola** . Na panelu zahrnuje nejvyšší hodnocení záměr, stejně jako všechny zjištěné entity. Na panelu zobrazuje výsledek vybraný utterance.
+1. Zobrazí se **kontrolní** panel. Panel obsahuje hlavní záměr hodnocení, stejně jako všechny identifikované entity. Panel zobrazuje výsledek vybrané utterance.
 
-    ![Na panelu zahrnuje nejvyšší hodnocení záměr, stejně jako všechny zjištěné entity. Na panelu zobrazuje výsledek vybraný utterance.](./media/luis-how-to-interactive-test/inspect-panel.png)
+    ![Panel obsahuje hlavní záměr hodnocení, stejně jako všechny identifikované entity. Panel zobrazuje výsledek vybrané utterance.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
-## <a name="correct-top-scoring-intent"></a>Správné nejvyšší hodnocení záměr
+## <a name="correct-top-scoring-intent"></a>Opravit hlavní záměr hodnocení
 
-1. Pokud je záměr nejvyšší bodování nesprávný, vyberte tlačítko **Upravit** .
+1. Pokud je záměr nejvyššího bodování nesprávný, vyberte tlačítko **Upravit.**
 
-1.  V rozevíracím seznamu vyberte správné záměr pro utterance.
+1.  V rozevíracím seznamu vyberte správný záměr pro utterance.
 
-    ![Vyberte správný záměr](./media/luis-how-to-interactive-test/intent-select.png)
+    ![Vybrat správný záměr](./media/luis-how-to-interactive-test/intent-select.png)
 
-## <a name="view-sentiment-results"></a>Zobrazení výsledků mínění
+## <a name="view-sentiment-results"></a>Zobrazit výsledky mínění
 
-Pokud je na stránce **[publikovat](luis-how-to-publish-app.md#enable-sentiment-analysis)** nakonfigurována **Analýza mínění** , výsledky testu zahrnují mínění nalezený v utterance.
+Pokud **je analýza mínění** nakonfigurována na stránce **[Publikovat,](luis-how-to-publish-app.md#enable-sentiment-analysis)** výsledky testů zahrnují mínění nalezené v utterance.
 
-![Obrázek testovací podokno s analýzou mínění](./media/luis-how-to-interactive-test/sentiment.png)
+![Obrázek podokna Test s analýzou mínění](./media/luis-how-to-interactive-test/sentiment.png)
 
-## <a name="correct-matched-patterns-intent"></a>Opravte odpovídající vzor záměr
+## <a name="correct-matched-patterns-intent"></a>Správný záměr odpovídajícího vzoru
 
-Pokud používáte [vzory](luis-concept-patterns.md) , ale utterance odpovídá vzoru, ale nesprávný záměr byl předpovězen, vyberte odkaz **Upravit** podle vzoru a pak vyberte správný záměr.
+Pokud používáte [Patterns](luis-concept-patterns.md) a utterance uzavřeno vzor, ale byl předpovězen nesprávný záměr, vyberte **upravit** odkaz podle vzoru, pak vyberte správný záměr.
 
-## <a name="compare-with-published-version"></a>Porovnat s publikovanou verzi
+## <a name="compare-with-published-version"></a>Porovnat s publikovanou verzí
 
-Aktivní verzi aplikace můžete otestovat pomocí publikované verze [koncového bodu](luis-glossary.md#endpoint) . Na panelu **Kontrola** vyberte **Porovnat s publikováním**. Testování publikované modelu se odečte od kvóty zůstatek vašeho předplatného Azure.
+Aktivní verzi aplikace můžete otestovat pomocí publikované verze [koncového bodu.](luis-glossary.md#endpoint) V panelu **Zkontrolovat** vyberte **Porovnat s publikovanými**. Jakékoli testování proti publikovanémodelu se odečte z vašeho zůstatku kvóty předplatného Azure.
 
-![Porovnat s publikování](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+![Porovnat s publikovanými](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
-## <a name="view-endpoint-json-in-test-panel"></a>Zobrazit koncový bod JSON v panelu testu
-Můžete zobrazit vrácený koncový bod JSON pro porovnání tím, že vyberete **zobrazení zobrazit JSON**.
+## <a name="view-endpoint-json-in-test-panel"></a>Zobrazení koncového bodu JSON v testovacím panelu
+Koncový bod, který json vrátil pro porovnání, můžete zobrazit výběrem **zobrazení Zobrazit JSON**.
 
-![Publikované odpověď JSON](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+![Publikovaná odpověď JSON](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
-## <a name="additional-settings-in-test-panel"></a>Další nastavení panelu testu
+## <a name="additional-settings-in-test-panel"></a>Další nastavení v testovacím panelu
 
 ### <a name="luis-endpoint"></a>Koncový bod služby LUIS
 
-Pokud máte několik koncových bodů LUIS, použijte odkaz **Další nastavení** v podokně Publikováno v testu ke změně koncového bodu používaného pro testování. Pokud si nejste jisti, který koncový bod chcete použít, vyberte výchozí **Starter_Key**.
+Pokud máte několik koncových bodů LUIS, použijte odkaz **Další nastavení** v podokně Publikovaný test změnit koncový bod použitý pro testování. Pokud si nejste jisti, který koncový bod použít, vyberte výchozí **Starter_Key**.
 
 > [!div class="mx-imgBorder"]
-> ![testovací panel se zvýrazněným odkazem na další nastavení](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
+> ![Testovací panel se zvýrazněnou vazbou Další nastavení](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
 
 
 ## <a name="batch-testing"></a>Dávkové testování
-Podívejte se na [Koncepty](luis-concept-batch-test.md) testování dávek a Naučte [se](luis-how-to-batch-test.md) testovat dávku projevy.
+Viz [koncepty dávkového](luis-concept-batch-test.md) testování a zjistěte, [jak](luis-how-to-batch-test.md) otestovat dávku promluv.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud testování označuje, že aplikace LUIS nedokáže rozpoznat správný záměry a entity, můžete pracovat zvyšte přesnost aplikace LUIS označování další projevy nebo přidáním funkcí.
+Pokud testování znamená, že vaše aplikace LUIS nerozpozná správné záměry a entity, můžete pracovat na zlepšení přesnosti aplikace LUIS označením další projevy nebo přidáním funkcí.
 
-* [Popisek navržený projevy pomocí LUIS](luis-how-to-review-endpoint-utterances.md)
-* [Využijte funkce ke zlepšení výkonu aplikace v LUIS.](luis-how-to-add-features.md)
+* [Popisek navrhované projevy s LUIS](luis-how-to-review-endpoint-utterances.md)
+* [Vylepšování výkonu aplikace LUIS pomocí funkcí](luis-how-to-add-features.md)

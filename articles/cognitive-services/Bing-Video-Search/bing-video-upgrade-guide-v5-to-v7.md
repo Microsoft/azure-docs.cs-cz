@@ -1,7 +1,7 @@
 ---
-title: Upgrade rozhraní API Bingu pro vyhledávání videí V5 na v7
+title: Upgrade rozhraní API pro vyhledávání videa Bingu v5 na 7
 titleSuffix: Azure Cognitive Services
-description: Určuje části aplikace, které je třeba aktualizovat, aby používaly verzi 7.
+description: Identifikuje části aplikace, které je třeba aktualizovat, abyste měli používat verzi 7.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,71 +11,71 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: 5dc4c870ae8dbe9f082456d738836aced1271732
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68500728"
 ---
-# <a name="video-search-api-upgrade-guide"></a>Průvodce upgradem rozhraní Vyhledávání videí API
+# <a name="video-search-api-upgrade-guide"></a>Průvodce upgradem rozhraní API pro vyhledávání videí
 
-Tento průvodce upgradem identifikuje změny mezi verzemi 5 a verze 7 rozhraní API Bingu pro vyhledávání videí. Tento průvodce vám pomůže identifikovat části aplikace, které potřebujete aktualizovat, aby používaly verzi 7.
+Tato příručka pro upgrade identifikuje změny mezi verzí 5 a verzí 7 rozhraní API pro vyhledávání videí Bingu. V této příručce můžete identifikovat části aplikace, které je třeba aktualizovat, abyste měli používat verzi 7.
 
 ## <a name="breaking-changes"></a>Změny způsobující chyby
 
 ### <a name="endpoints"></a>Koncové body
 
-- Číslo verze koncového bodu bylo změněno z verze 5 na v7. Například, `https://api.cognitive.microsoft.com/bing/v7.0/videos/search`.
+- Číslo verze koncového bodu se změnilo z verze v5 na v7. Například, `https://api.cognitive.microsoft.com/bing/v7.0/videos/search`.
 
-### <a name="error-response-objects-and-error-codes"></a>Objekty a chybové kódy pro odpověď na chybu
+### <a name="error-response-objects-and-error-codes"></a>Objekty odpovědí na chybu a kódy chyb
 
-- Všechny neúspěšné žádosti by nyní měly `ErrorResponse` obsahovat objekt v těle odpovědi.
+- Všechny neúspěšné požadavky by `ErrorResponse` nyní měly obsahovat objekt v těle odpovědi.
 
-- Do `Error` objektu byla přidána následující pole.  
-  - `subCode`&mdash;Rozdělí kód chyby do diskrétních kontejnerů, pokud je to možné.
-  - `moreDetails`&mdash;Další informace o chybě popsané v `message` poli
+- Do objektu byla `Error` přidána následující pole.  
+  - `subCode`&mdash;Rozdělí kód chyby do samostatných bloků, pokud je to možné
+  - `moreDetails`&mdash;Další informace o chybě popsané `message` v poli
    
 
-- Kódy chyb 5 nahradily následujícími možnými `code` hodnotami a. `subCode`
+- Kódy chyb v5 byly nahrazeny následujícími možnými `code` hodnotami a `subCode` hodnotami.
 
-|Kód|Podřízeného kódu|Popis
+|kód|Dílčí kód|Popis
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>Neimplementováno|Bing vrátí ServerError vždy, když dojde ke kterékoli z podmínek dílčího kódu. Odpověď zahrnuje tyto chyby, pokud je stavový kód HTTP 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokováno|Bing vrátí InvalidRequest, pokud jakákoli část požadavku není platná. Například povinný parametr chybí nebo hodnota parametru není platná.<br/><br/>Pokud se jedná o chybu ParameterMissing nebo ParameterInvalidValue, kód stavu HTTP je 400.<br/><br/>Pokud je chyba HttpNotAllowed, kód stavu HTTP 410.
-|RateLimitExceeded||Bing vrátí RateLimitExceeded vždy, když překročíte kvótu dotazů za sekundu (QPS) nebo dotazů za měsíc (QPM).<br/><br/>Bing vrátí stavový kód HTTP 429, pokud jste překročili QPS a 403, pokud jste překročili QPM.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing vrátí InvalidAuthorization, když Bing nemůže ověřit volajícího. `Ocp-Apim-Subscription-Key` Hlavička například chybí nebo klíč předplatného není platný.<br/><br/>Redundance probíhá, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, kód stavu HTTP je 401.
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing vrátí InsufficientAuthorization, pokud volající nemá oprávnění pro přístup k prostředku. Tato situace může nastat, pokud byl klíč předplatného zakázán nebo vypršela jeho platnost. <br/><br/>Pokud je chyba InsufficientAuthorization, kód stavu HTTP je 403.
+|Chyba serveru|Neočekávaná chyba<br/>Chyba zdroje<br/>Není implementováno|Bing vrátí chybu serveru vždy, když dojde k některé z podmínek podkódu. Odpověď zahrnuje tyto chyby, pokud je stavový kód HTTP 500.
+|Neplatný požadavek|ParametrMissing ParametrMissing ParametrMissing ParametrMissing<br/>ParametrInvalidValue<br/>HttpNotAllowed<br/>Blokované|Bing vrátí InvalidRequest vždy, když žádná část požadavku není platná. Například chybí požadovaný parametr nebo hodnota parametru není platná.<br/><br/>Pokud je chyba ParametrMissing nebo ParameterInvalidValue, je stavový kód HTTP 400.<br/><br/>Pokud je chyba HttpNotAllowed, stavový kód HTTP 410.
+|RateLimit překročena||Bing vrátí RateLimitExceeded vždy, když překročíte vaše dotazy za sekundu (QPS) nebo dotazy za měsíc (QPM) kvóta.<br/><br/>Bing vrátí stavový kód HTTP 429, pokud jste překročili QPS a 403, pokud jste překročili QPM.
+|Neplatná autorizace|AutorizaceChybí<br/>Redundance autorizace|Bing vrátí InvalidAuthorization, když Bing nemůže ověřit volajícího. Například `Ocp-Apim-Subscription-Key` záhlaví chybí nebo klíč předplatného není platný.<br/><br/>K redundanci dochází, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, stavový kód HTTP je 401.
+|Nedostatečná autorizace|Autorizace zakázána.<br/>Platnost oprávnění vypršela.|Bing vrátí InsufficientAuthorization, pokud volající nemá oprávnění k přístupu k prostředku. Tato situace může nastat, pokud byl zakázán klíč předplatného nebo vypršela jeho platnost. <br/><br/>Pokud je chyba InsufficientAuthorization, stavový kód HTTP je 403.
 
-- Následující kód namapuje předchozí chybové kódy na nové kódy. Pokud jste se seznámili s kódy chyb V5, aktualizujte odpovídající kód.
+- Následující mapy předchozí kódy chyb na nové kódy. Pokud jste přijali závislost na kódech chyb v5, aktualizujte kód odpovídajícím způsobem.
 
-|Kód verze 5|Kód verze 7. Subcode
+|Kód verze 5|Kód 7 verze.subCode
 |-|-
 |RequestParameterMissing|InvalidRequest.ParameterMissing
-RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
-ResourceAccessDenied|InsufficientAuthorization
-ExceededVolume|RateLimitExceeded
-ExceededQpsLimit|RateLimitExceeded
-Zakázáno|InsufficientAuthorization.AuthorizationDisabled
-UnexpectedError|ServerError. UnexpectedError
-DataSourceErrors|ServerError. ResourceError
-AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
-HttpNotAllowed|InvalidRequest.HttpNotAllowed
+RequestParameterInvalidValue|Neplatný parametr Invalid.Neplatný parametr
+ResourceAccessDenied|Nedostatečná autorizace
+ExceededVolume|RateLimit překročena
+Limit překročil qpsLimit|RateLimit překročena
+Zakázáno|InsufficientAuthorization.Authorization.AuthorizationDisabled
+Neočekávaná chyba|Chyba_serveru_nechybě
+Chyby zdroje dat|Chyba_serveru.ResourceError
+AutorizaceChybí|InvalidAuthorization.AuthorizationMissing
+HttpNotAllowed|InvalidRequest.httpNotAllowed
 UserAgentMissing|InvalidRequest.ParameterMissing
-Neimplementováno|ServerError. NotImplemented
-InvalidAuthorization|InvalidAuthorization
-InvalidAuthorizationMethod|InvalidAuthorization
-MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
-ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
-InsufficientScope|InsufficientAuthorization
-Blokováno|InvalidRequest. Block
+Není implementováno|ServerError.NotImplemented
+Neplatná autorizace|Neplatná autorizace
+Metoda Neplatnostauthorizationm|Neplatná autorizace
+Metoda multipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
+Platnost tokenu AuthorizationToken|InsufficientAuthorization.AuthorizationVypršela
+Nedostatečný rozsah|Nedostatečná autorizace
+Blokované|Neplatný požadavek.blokován
 
 ### <a name="query-parameters"></a>Parametry dotazu
 
-- Parametr dotazu byl přejmenován na [moduly.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) `modulesRequested`  
+- Byl přejmenován na parametr dotazu `modulesRequested` na [moduly](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested).  
 
-### <a name="object-changes"></a>Změny objektu
+### <a name="object-changes"></a>Změny objektů
 
-- Pole videí bylo přejmenováno `nextOffset`na. [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) `nextOffsetAddCount` Způsob, jakým používáte posun, se také změnil. Dřív byste nastavili parametr [posunutí](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) dotazu na `nextOffset` hodnotu plus hodnotu předchozí posunutí a počet videí ve výsledku. Nyní jednoduše nastavíte `offset` parametr dotazu `nextOffset` na hodnotu.  
+- Přejmenováno `nextOffsetAddCount` pole [Videa](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) na `nextOffset`. Změnil se také způsob použití odsazení. Dříve byste nastavili parametr [posunového](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) dotazu na hodnotu `nextOffset` plus předchozí hodnotu posunu plus počet videí ve výsledku. Nyní jednoduše nastavíte parametr `offset` `nextOffset` dotazu na hodnotu.  
   
-- Změnili `relatedVideos` jste datový typ pole z `Video[]` na [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) (viz [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).
+- Byl změněn datový `relatedVideos` typ `Video[]` pole z [na VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) (viz [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).
 

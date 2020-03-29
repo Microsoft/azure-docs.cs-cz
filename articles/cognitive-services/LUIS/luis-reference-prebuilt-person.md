@@ -1,7 +1,7 @@
 ---
-title: Předem vytvořená entita person – LUIS
+title: Předdefinovaná entita PersonName – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje personName informace předem připravených entit v Language Understanding (LUIS).
+description: Tento článek obsahuje informace o předem sestavené entitě personName v jazyce Porozumění (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,18 +12,18 @@ ms.topic: reference
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 768c719211e8a8f2133d3798343d076e795a3da0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273421"
 ---
-# <a name="personname-prebuilt-entity-for-a-luis-app"></a>Předem sestavená entita person pro aplikaci LUIS
-PersonName předem připravených entit rozpozná jména lidí. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující personName k záměry aplikace. entita person je podporovaná v anglické a čínské [jazykové verzi](luis-reference-prebuilt-entities.md).
+# <a name="personname-prebuilt-entity-for-a-luis-app"></a>Předdefinovaná entita PersonName pro aplikaci LUIS
+Předvytvořená entita personName detekuje jména osob. Vzhledem k tomu, že tato entita je již trénovaný, není nutné přidávat ukázkové projevy obsahující personName záměry aplikace. personName entita je podporována v anglické a čínské [jazykové verzi](luis-reference-prebuilt-entities.md).
 
 ## <a name="resolution-for-personname-entity"></a>Řešení pro entitu personName
 
-Pro dotaz se vrátí následující objekty entity:
+Pro dotaz jsou vráceny následující objekty entity:
 
 `Is Jill Jones in Cairo?`
 
@@ -31,7 +31,7 @@ Pro dotaz se vrátí následující objekty entity:
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
 
-Následující JSON je s parametrem `verbose` nastaveným na `false`:
+Následující JSON je `verbose` s parametrem nastaveným na `false`:
 
 ```json
 "entities": {
@@ -40,8 +40,8 @@ Následující JSON je s parametrem `verbose` nastaveným na `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
-Následující JSON je s parametrem `verbose` nastaveným na `true`:
+#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/V3-verbose)
+Následující JSON je `verbose` s parametrem nastaveným na `true`:
 
 ```json
 "entities": {
@@ -65,9 +65,9 @@ Následující JSON je s parametrem `verbose` nastaveným na `true`:
     }
 }
 ```
-#### <a name="v2-response"></a>[Odpověď v2](#tab/V2)
+#### <a name="v2-response"></a>[Odpověď V2](#tab/V2)
 
-Následující příklad ukazuje řešení entity **Builtin. person** .
+Následující příklad ukazuje rozlišení entity **builtin.personName.**
 
 ```json
 "entities": [
@@ -83,6 +83,6 @@ Následující příklad ukazuje řešení entity **Builtin. person** .
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
 
-Přečtěte si informace o [e-mailu](luis-reference-prebuilt-email.md), [číslu](luis-reference-prebuilt-number.md)a [řadových](luis-reference-prebuilt-ordinal.md) entitách.
+Přečtěte si o [e-mailových](luis-reference-prebuilt-email.md), [číselných](luis-reference-prebuilt-number.md)a [řadových](luis-reference-prebuilt-ordinal.md) entitách.

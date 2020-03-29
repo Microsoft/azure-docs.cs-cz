@@ -1,7 +1,7 @@
 ---
-title: Přehled Neuronovéch vstupů vlastního hlasu
+title: Vlastní neurální hlasové vznětové nastavení – přehled
 titleSuffix: Azure Cognitive Services
-description: Úvod k procesu uzavírání pro vlastní neuronové hlas
+description: Úvod do procesu otočného řízení pro vlastní nervový hlas.
 services: cognitive-services
 author: shlo
 manager: nitinme
@@ -11,44 +11,44 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: shlo
 ms.openlocfilehash: 73e6e4e69a245485ca473f048bbeafef21dbbf37
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73836794"
 ---
-# <a name="custom-neural-voice-gating-overview"></a>Přehled Neuronovéch vstupů vlastního hlasu
+# <a name="custom-neural-voice-gating-overview"></a>Vlastní neurální hlas gating přehled
 
-Přečtěte si další informace o procesu Začínáme s vlastním neuronové hlasem.
+Přečtěte si další informace o procesu, jak začít s vlastním neural hlasem.
 
-## <a name="commitment-to-responsible-innovation"></a>Závazek na příslušné inovace
+## <a name="commitment-to-responsible-innovation"></a>Závazek k odpovědným inovacím
 
-V rámci snahy Microsoftu o návrh zodpovědného AI jsme shromáždili sadu materiálů, které zákazníkům pomáhají s používáním vlastního hlasu neuronové. Tady najdete pokyny a přehledy, které jsou založené na [zásadách Microsoftu pro příslušné inovace v AI.](https://www.microsoft.com/AI/our-approach-to-ai)
+V rámci závazku společnosti Microsoft navrhnout odpovědnou umělou ai jsme sestavili sadu materiálů, které zákazníkům povedou k používání vlastního nervového hlasu. Pokyny a přehledy, které zde najdete, jsou založeny na zásadách společnosti Microsoft [pro zodpovědné inovace v oblasti ai.](https://www.microsoft.com/AI/our-approach-to-ai)
 
-### <a name="guidance-for-deploying-custom-neural-voice"></a>Pokyny pro nasazení vlastního hlasu neuronové
+### <a name="guidance-for-deploying-custom-neural-voice"></a>Pokyny pro nasazení vlastního nervového hlasu
 
-- [Pokyny pro zodpovědné nasazení](concepts-guidelines-responsible-deployment-synthetic.md): naše nejdůležitější doporučení na základě našeho výzkumu
-- [Zveřejnění hlasových talentů](https://aka.ms/disclosure-voice-talent): co potřebujete znát a informovat o tom hlasové talentů o technologii pro její použití zodpovědnou
-- [Návrh zpřístupnění](concepts-disclosure-guidelines.md): jak navrhovat prostředí, aby uživatelé věděli, kdy se používá syntetické hlasové hovory a důvěřují vaší službě.
+- [Pokyny pro odpovědné nasazení](concepts-guidelines-responsible-deployment-synthetic.md): naše hlavní doporučení založená na našem výzkumu
+- [Zveřejnění pro Voice Talent](https://aka.ms/disclosure-voice-talent): co potřebujete vědět a informovat hlasové talenty o technologii používat zodpovědně
+- [Disclosure Design:](concepts-disclosure-guidelines.md)jak navrhnout prostředí tak, aby uživatelé věděli, kdy je syntetický hlas používán, a důvěřovali vaší službě
 
-### <a name="why-custom-neural-voice-is-a-gated-technology"></a>Proč vlastní neuronové hlas je ověřovaná technologie
+### <a name="why-custom-neural-voice-is-a-gated-technology"></a>Proč custom neural voice je bránou technologie
 
-Naším záměrem je chránit práva jednotlivců a společností, podporovat transparentní interakce v rámci lidského počítače a vymezit šíření škodlivého deepfakes a zavádějícího obsahu. Z tohoto důvodu jsme nastavili použití vlastního hlasu neuronové. Zákazníci získají přístup k technologii až po kontrole jejich aplikací a jejich použití v souladu s našimi principy etiky.
+Naším záměrem je chránit práva jednotlivců a společnosti, podporovat transparentní interakce mezi člověkem a počítačem a působit proti šíření škodlivých deepfakes a zavádějícího obsahu. Z tohoto důvodu jsme bránou použití vlastní neurální hlas. Zákazníci získají přístup k technologii až poté, co jejich aplikace jsou přezkoumány a zavázaly se k jejich použití v souladu s našimi etickými zásadami.
 
-### <a name="our-gating-process"></a>Náš proces uzavírání
+### <a name="our-gating-process"></a>Náš gating ový proces
 
-Pokud chcete získat přístup k vlastnímu neuronové hlasu, budete muset začít vyplňovat online formulář pro příjem. Začněte svou aplikaci [tady](https://aka.ms/custom-neural-intake-form).
+Chcete-li získat přístup k vlastnímu nervovému hlasu, musíte začít vyplněním našeho online příjmu. Začněte svou žádost [zde](https://aka.ms/custom-neural-intake-form).
 
-Přístup ke službě Custom neuronové Voice Service se může vztahovat jenom na základě našich kritérií způsobilosti, dozvíte ČSFD procesu a dostupnosti pro podporu omezeného počtu zákazníků v rámci této ověřované verze Preview.
+Přístup ke službě Custom Neural Voice podléhá výhradnímu uvážení společnosti Microsoft na základě našich kritérií způsobilosti, procesu prověřování a dostupnosti pro podporu omezeného počtu zákazníků během této brány preview.
 
-V rámci procesu aplikace budete muset před vytvořením hlasového písma, aby bylo možné získat explicitní zapsané oprávnění od hlasové talentů, a to včetně sdílení [zpřístupnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent). Je také nutné souhlasit s tím, že při nasazování hlasového písma vaše implementace [zveřejňuje syntetickou povahu](concepts-disclosure-guidelines.md) služby pro uživatele, poskytne službě Microsoft syntetického hlasového oddělení své podmínky a bude podporovat kanál pro zpětnou vazbu, který umožňuje uživatelům služby nahlásit problémy a sdílet podrobnosti s Microsoftem. Přečtěte si další informace o našich [pojmech použití.](https://aka.ms/custom-neural-code-of-conduct)
+V rámci procesu podávání žádostí se budete muset před vytvořením hlasového písma, které zahrnuje sdílení [funkce Disclosure for Voice Talent](https://aka.ms/disclosure-voice-talent), zavázat k získání výslovného písemného souhlasu od hlasového talentu. Musíte také souhlasit s tím, že při nasazení hlasového písma vaše implementace [odhalí uživatelům syntetickou povahu](concepts-disclosure-guidelines.md) služby, poskytne přiřazení službě syntetické řeči společnosti Microsoft ve vašich podmínkách služby a podpoří kanál pro zpětnou vazbu, který uživatelům služby umožní hlásit problémy a sdílet podrobnosti se společností Microsoft. Další informace o našich podmínkách použití naleznete [zde](https://aka.ms/custom-neural-code-of-conduct).
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)
-* [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
+* [Zveřejnění informací o mluvčím](https://aka.ms/disclosure-voice-talent)
+* [Pokyny pro odpovědné zavádění syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Jak zveřejnit](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
+* [Pokyny pro odpovědné zavádění syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)

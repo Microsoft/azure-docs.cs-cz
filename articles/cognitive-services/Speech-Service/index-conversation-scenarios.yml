@@ -1,59 +1,58 @@
 ### YamlMime:Landing
 title: Dokumentace ke scénářům konverzace
-summary: Prozkoumejte různé scénáře konverzace, přepis konverzace nebo konverzace s více zařízeními.
+summary: Prozkoumejte různé scénáře konverzace. Naučte se používat přepis konverzace nebo konverzace s více zařízeními ve scénářích schůzek a přepis ve scénářích centra volání.
 metadata:
-  title: Dokumentace k scénářům konverzace – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  title: Dokumentace ke scénářům konverzace – kurzy, odkaz na rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 03/10/2020
+  ms.date: 03/16/2020
   ms.author: dapine
-  ms.openlocfilehash: 0df2992564dcf90f6b927b5a917993caec18af45
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 75254b0b0b3afb391006a422300c0d4cb9d27fdb
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79365766"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79479684"
 landingContent:
-- title: Informace o přepisu konverzace
+- title: Přepis konverzace (scénář schůzky)
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je přepis konverzace?
+    - text: Co je přepis konverzace na schůzkách?
       url: conversation-transcription.md
   - linkListType: how-to-guide
     links:
-    - text: Zpracování scénářů pro call centra
-      url: call-center-transcription.md
-    - text: Přepis konverzací v reálném čase
+    - text: Přepis konverzace v reálném čase
       url: how-to-use-conversation-transcription.md
     - text: Asynchronní přepis konverzace
       url: how-to-async-conversation-transcription.md
-  - linkListType: reference
-    links:
-    - text: Podpora přepisu jazyka v konverzaci
-      url: conversation-transcription.md#language-support
-- title: Konverzace s více zařízeními
+- title: O konverzaci na více zařízeních (scénář schůzky)
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je konverzace více zařízení?
+    - text: Co je konverzace s více zařízeními?
       url: multi-device-conversation.md
   - linkListType: quickstart
     links:
     - text: Zahájení konverzace a připojení ke konverzaci
       url: quickstarts/multi-device-conversation.md
-  - linkListType: reference
+- title: Přepis call centra (scénář vlastní/agent)
+  linkLists:
+  - linkListType: overview
     links:
-    - text: Podpora jazyka s více zařízeními
-      url: multi-device-conversation.md#language-support
+    - text: Zpracování scénářů pro call centra
+      url: call-center-transcription.md
 - title: Odkaz
   linkLists:
   - linkListType: reference
     links:
+    - text: Podpora jazyka přepisu konverzace
+      url: conversation-transcription.md#language-support
+    - text: Podpora jazyka konverzace na více zařízeních
+      url: multi-device-conversation.md#language-support
     - text: Ceny přepisu řeči
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

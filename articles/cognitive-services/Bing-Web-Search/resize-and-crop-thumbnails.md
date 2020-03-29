@@ -1,7 +1,7 @@
 ---
-title: Změnit velikost a oříznout miniatury obrázků – rozhraní API Bingu pro vyhledávání na webu
+title: Změna velikosti a oříznutí miniatur obrázků – rozhraní API pro vyhledávání na webu Bingu
 titleSuffix: Azure Cognitive Services
-description: Mezi odpovědi z rozhraní API pro vyhledávání Bingu patří adresy URL k obrázkům miniatur poskytovaných bingem, které můžete měnit velikosti a oříznutí a můžou obsahovat parametry dotazu.
+description: Některé odpovědi z rozhraní API pro vyhledávání Bing udávají adresy URL miniatur y obsluhované službou Bing, jejichž velikost a oříznutí můžete změnit a mohou obsahovat parametry dotazu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,119 +12,119 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
 ms.openlocfilehash: 630b86f55a537d109c851cb585cfccc34d229f83
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74110635"
 ---
-# <a name="resize-and-crop-thumbnail-images"></a>Změna velikosti a oříznutí obrázků miniatur
+# <a name="resize-and-crop-thumbnail-images"></a>Změna velikosti a oříznutí miniatur obrázků
 
-Mezi odpovědi z rozhraní API pro vyhledávání Bingu patří adresy URL k obrázkům miniatur poskytovaných bingem, které můžete měnit velikosti a oříznutí a můžou obsahovat parametry dotazu. Příklad:
+Některé odpovědi z rozhraní API pro vyhledávání Bing udávají adresy URL miniatur y obsluhované službou Bing, jejichž velikost a oříznutí můžete změnit a mohou obsahovat parametry dotazu. Například:
 
 `https://<host>/th?id=AMMS_92772df988...&w=110&h=73&rs=1&qlt=80&cdv=1&pid=16.1`
 
-Pokud zobrazíte podmnožinu těchto miniatur, zadejte možnost zobrazení zbývajících obrázků.
+Pokud zobrazíte podmnožinu těchto miniatur, poskytněte možnost zobrazení zbývajících obrazů.
 
 > [!NOTE]
-> Ujistěte se, že oříznutí a změna velikosti miniatur budou sloužit jako scénář hledání, který respektují práva třetích stran, jak vyžadují Vyhledávání Bingu rozhraní API [použití a zobrazení požadavků](use-display-requirements.md).
+> Ujistěte se, že oříznutí a změna velikosti miniatur budou poskytovat scénář vyhledávání, který respektuje práva třetích stran, jak to vyžadují [požadavky na použití a zobrazení](use-display-requirements.md)rozhraní API pro vyhledávání Bing .
 
 ## <a name="resize-a-thumbnail"></a>Změna velikosti miniatury 
 
-Pokud chcete změnit velikost miniatury, Bing doporučuje zadat v adrese URL miniatury jenom jednu z `w` (Width) nebo `h` (Height) parametrů dotazu. Když zadáte jenom výšku nebo šířku, umožníte službě Bing zachovat původní aspekt obrázku. Zadejte šířku a výšku v pixelech. 
+Chcete-li změnit velikost miniatury, bing doporučuje `w` zadat pouze `h` jeden parametry (šířka) nebo (výška) dotazu v adrese URL miniatury. Určení pouze výšky nebo šířky umožní Bingzachovat původní aspekt obrazu. Určete šířku a výšku v obrazových bodech. 
 
-Například pokud je původní Miniatura 480x620:
+Pokud je například původní miniatura 480x620:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=480&h=620`
 
-A chcete zmenšit jeho velikost, nastavte parametr `w` na novou hodnotu (například `336`) a odeberte parametr `h`:
+A chcete zmenšit jeho `w` velikost, nastavit parametr `336`na novou `h` hodnotu (například ) a odebrat parametr:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=336`
 
-Pokud zadáte pouze výšku nebo šířku miniatury, bude zachován původní poměr stran obrázku. Pokud zadáte oba parametry a poměr stran se nezachová, Bing přidá bílé odsazení k okraji obrázku.
+Pokud zadáte pouze výšku nebo šířku miniatury, zůstane zachován původní poměr stran obrázku. Pokud zadáte oba parametry a poměr stran se neudrží, Bing přidá bílé odsazení k okraji obrazu.
 
-Pokud například změníte velikost 480x359 obrázku na 200x200 bez ořezávání, plná šířka bude mít obrázek, ale výška bude obsahovat 25 pixelů bílého odsazení v horní a dolní části obrázku. Pokud se obrázek 359x480, levý a pravý okraj by obsahoval bílé odsazení. Pokud oříznete obrázek, nepřidá se bílé odsazení.  
+Pokud například změníte velikost obrázku 480 × 359 na 200 × 200 bez oříznutí, bude celá šířka obsahovat obrázek, ale výška bude obsahovat 25 pixelů bílého odsazení v horní a dolní části obrázku. Pokud by byl obrázek 359 × 480, levé a pravé ohraničení by obsahovalo bílé odsazení. Pokud obraz oříznete, bílé odsazení se nepřidá.  
 
-Následující obrázek ukazuje původní velikost obrázku miniatury (480x300).  
+Následující obrázek znázorňuje původní velikost miniatury (480x300).  
   
-![Obrázek původní na šířku](./media/resize-crop/bing-resize-crop-landscape.png)  
+![Původní obrázek na šířku](./media/resize-crop/bing-resize-crop-landscape.png)  
   
-Následující obrázek ukazuje, že se velikost obrázku změní na 200x200. Poměr stran se zachová a horní a dolní ohraničení jsou doplněna bílou (k zobrazení odsazení je uvedené černé ohraničení).  
+Následující obrázek znázorňuje velikost obrázku na 200x200. Poměr stran je zachován a horní a dolní hranice jsou doplněny bílou barvou (zde je zahrnutčerný okraj pro zobrazení odsazení).  
   
-![Obrázek se změněnou velikostí na šířku](./media/resize-crop/bing-resize-crop-landscape-resized.png)  
+![Velikost obrázku na šířku](./media/resize-crop/bing-resize-crop-landscape-resized.png)  
 
-Pokud zadáte rozměry, které jsou větší než původní šířka a výška obrázku, Bing přidá bílé odsazení k levému a hornímu okraji.  
+Pokud zadáte rozměry, které jsou větší než původní šířka a výška obrazu, bing přidá bílé odsazení k levému a hornímu okraji.  
 
-## <a name="request-different-thumbnail-sizes"></a>Žádosti o jiné velikosti miniatur
+## <a name="request-different-thumbnail-sizes"></a>Žádost o různé velikosti miniatur
 
-Chcete-li požádat o jinou velikost obrázku miniatur, odeberte všechny parametry dotazu z adresy URL miniatury s výjimkou parametrů `id` a `pid`. Pak přidejte parametr dotazu `&w` (Width) nebo `&h` (Height) s požadovanou velikostí obrázku v pixelech, ale ne obojí. Bing bude udržovat původní poměr stran obrázku. 
+Chcete-li požádat o jinou velikost miniatury, odeberte `id` všechny `pid` parametry dotazu z adresy URL miniatury s výjimkou parametrů a. Potom přidejte `&w` parametr dotazu (šířka) nebo `&h` (výška) s požadovanou velikostí obrázku v obrazových bodech, ale ne obojí. Bing zachová původní poměr stran obrázku. 
 
 Chcete-li zvětšit šířku obrázku určeného výše uvedenou adresou URL na 165 pixelů, použijte následující adresu URL:
 
 `https://<host>/th?id=AMMS_92772df988...&w=165&pid=16.1`
 
-Pokud si vyžádáte obrázek, který je větší než původní velikost obrázku, Bing podle potřeby přidá bílé odsazení kolem obrázku. Pokud je například původní velikost obrázku 474x316 a nastavíte `&w` na 500, Bing vrátí image 500x333. Tento obrázek bude mít 8,5 pixelů bílého odsazení podél horního a dolního okraje a 13 pixelů odsazení na levém a pravém okraji.
+Pokud požadujete obrázek, který je větší než původní velikost obrázku, Bing přidá bílé odsazení kolem obrázku podle potřeby. Pokud je například původní velikost obrázku 474 x 316 a je nastavena `&w` na 500, Bing vrátí obrázek 500x333. Tento obrázek bude mít 8,5 pixelů bílého odsazení podél horního a dolního okraje a 13 pixelů odsazení na levém a pravém okraji.
 
-Pokud chcete zabránit tomu, aby se v Bingu přidalo bílé odsazení, pokud je požadovaná velikost větší než původní velikost obrázku, nastavte parametr dotazu `&p` na hodnotu 0. Například pokud zahrnete parametr `&p=0` do výše uvedené adresy URL, Bing vrátí obrázek 474x316 místo image 500x333:
+Chcete-li zabránit bingu v přidání bílého odsazení, pokud `&p` je požadovaná velikost větší než původní velikost obrázku, nastavte parametr dotazu na 0. Pokud například zahrnete `&p=0` parametr do výše uvedené adresy URL, bing vrátí obrázek 474 × 316 namísto obrázku 500x333:
 
 `https://<host>/th?id=AMMS_92772df988...&w=500&p=0&pid=16.1`
 
-Pokud zadáte parametry dotazu `&w` i `&h`, Bing bude udržovat poměr stran obrázku a podle potřeby přidá bílé odsazení. Pokud je například původní velikost obrázku 474x316 a nastavíte parametry Width a Height na 200x200 (`&w=200&h=200`), Bing vrátí obrázek, který obsahuje 33 pixelů bílého odsazení v horní a dolní části. Pokud zahrnete parametr dotazu `&p`, Bing vrátí obrázek 200x134.
+Pokud zadáte `&w` parametry `&h` dotazu, Bing zachová poměr stran obrázku a podle potřeby přidá bílé odsazení. Pokud je například původní velikost obrázku 474 x 316 a nastavíte parametry šířky`&w=200&h=200`a výšky na 200 × 200 ( ), vrátí Bing obrázek, který obsahuje 33 pixelů bílého odsazení v horní a dolní části. Pokud zahrnete parametr dotazu, `&p` Bing vrátí obrázek 200x134.
 
 ## <a name="crop-a-thumbnail"></a>Oříznutí miniatury 
 
-Chcete-li oříznout obrázek, zahrňte parametr dotazu `c` (oříznout). Můžete použít následující hodnoty:
+Chcete-li obrázek `c` oříznout, zahrňte parametr (oříznutého) dotazu. Můžete použít následující hodnoty:
   
-- Poměr `4` &mdash;  
-- Inteligentní poměr `7` &mdash;  
+- `4`&mdash; Blind poměr  
+- `7`&mdash; Inteligentní poměr  
 
-### <a name="smart-ratio-cropping"></a>Oříznutí inteligentního poměru
+### <a name="smart-ratio-cropping"></a>Inteligentní poměr oříznutí
 
-Pokud si vyžádáte oříznutí inteligentního poměru (nastavením parametru `c` na `7`), Bing ořízne obrázek od středu oblasti zájmu, při zachování poměru stran obrázku. Oblast zájmu je oblast obrázku, kterou Bing určí, obsahuje nejvíce importovaných částí. Níže vidíte ukázkovou oblast zájmu.  
+Pokud požadujete oříznutí inteligentního `c` poměru `7`(nastavením parametru na ), Bing ořízne obraz ze středu jeho oblasti zájmu směrem ven při zachování poměru stran obrázku. Oblast zájmu je oblast obrazu, která Bing určuje obsahuje nejvíce importčástí. Následující ukazuje příklad oblasti zájmu.  
   
-![Oblast zájmu](./media/resize-crop/bing-resize-crop-regionofinterest.png)
+![Region zájmu](./media/resize-crop/bing-resize-crop-regionofinterest.png)
 
-Pokud změníte velikost obrázku a vyžádáte oříznutí inteligentního poměru, Bing při zachování poměru stran zmenší obrázek na požadovanou velikost. Bing pak ořízne obrázek na základě dimenzí se změněnou velikostí. Pokud je například šířka se změněnou velikostí menší nebo rovna výšce, Bing ořízne obrázek vlevo a vpravo od středu oblasti zájmu. V opačném případě bude Bing v oblasti zájmu oříznout na horní a dolní část centra.  
+Pokud změníte velikost obrázku a požádáte o oříznutí inteligentního poměru, Bing zmenší obraz na požadovanou velikost při zachování poměru stran. Bing pak ořízne obraz na základě rozměrů velikosti. Pokud je například velikost šířky menší nebo rovna výšce, bing ořízne obraz vlevo a vpravo od středu oblasti zájmu. V opačném případě bing ořízne ji na začátek a dolů středu oblasti zájmu.  
   
  
-Následující obrázek ukazuje obraz zmenšený na 200x200 pomocí ořezávání inteligentního poměru. Vzhledem k tomu, že Bing měří obrázek z levého horního rohu, je dolní část obrázku oříznuta. 
+Následující obrázek zredukovaný na 200x200 pomocí oříznutí inteligentního poměru. Protože Bing měří obraz z levého horního rohu, je spodní část obrazu oříznuta. 
   
 ![Obrázek na šířku oříznutý na 200x200](./media/resize-crop/bing-resize-crop-landscape200x200c7.png) 
   
-Následující obrázek ukazuje obraz zmenšený na 200x100 pomocí ořezávání inteligentního poměru. Vzhledem k tomu, že Bing měří obrázek z levého horního rohu, je dolní část obrázku oříznuta. 
+Následující obrázek zredukovaný na 200x100 pomocí oříznutí inteligentního poměru. Protože Bing měří obraz z levého horního rohu, je spodní část obrazu oříznuta. 
    
 ![Obrázek na šířku oříznutý na 200x100](./media/resize-crop/bing-resize-crop-landscape200x100c7.png)
   
-Následující obrázek ukazuje obraz zmenšený na 100x200 pomocí ořezávání inteligentního poměru. Vzhledem k tomu, že Bing měří obrázek z centra, jsou oříznuté levé a pravé části obrázku.
+Následující obrázek zredukovaný na 100x200 pomocí oříznutí inteligentního poměru. Protože Bing měří obraz ze středu, oříznou se levá a pravá část obrazu.
   
 ![Obrázek na šířku oříznutý na 100x200](./media/resize-crop/bing-resize-crop-landscape100x200c7.png) 
 
-Pokud Bing nemůže určit oblast obrázku, která je zajímavá, bude tato služba používat oříznutí poměru.  
+Pokud Bing nemůže určit oblast zájmu obrázku, služba použije oříznutí Blind Ratio.  
 
-### <a name="blind-ratio-cropping"></a>Oříznutí poměru rolety
+### <a name="blind-ratio-cropping"></a>Oříznout poměr oříznutí
 
-Pokud si vyžádáte oříznutí poměru po sleposti (nastavením parametru `c` na `4`), Bing pomocí následujících pravidel ořízne bitovou kopii.  
+Pokud požadujete oříznutí Blind Ratio `c` (nastavením parametru `4`na ), bing použije k oříznutí obrazu následující pravidla.  
   
-- Pokud `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)`, obrázek se měří z levého horního rohu a ořízne se v dolní části.  
-- Pokud `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)`, obraz se měří od středu a ořízne se vlevo a vpravo.  
+- Pokud `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)`se obraz změří z levého horního rohu a ořízne se dole.  
+- Pokud `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)`se obraz změří od středu a ořízne doleva a doprava.  
 
-Níže vidíte obrázek na výšku, který je 225x300.  
+Následující obrázek na výšku je 225x300.  
   
-![Původní slunečnicová image](./media/resize-crop/bing-resize-crop-sunflower.png)
+![Původní slunečnicový obraz](./media/resize-crop/bing-resize-crop-sunflower.png)
   
-Následující obrázek ukazuje obraz zmenšený na 200x200 pomocí oříznutí poměru po sleposti. Obrázek se měří od levého horního rohu, které má za následek oříznutí dolní části obrázku.  
+Následující obrázek zredukovaný na 200x200 pomocí oříznutí Blind Ratio. Obraz se měří od levého horního rohu, což vede k oříznutí spodní části obrazu.  
   
-![Slunečnicová image oříznutá na 200x200](./media/resize-crop/bing-resize-crop-sunflower200x200c4.png)
+![Slunečnicový obrázek oříznutý na 200x200](./media/resize-crop/bing-resize-crop-sunflower200x200c4.png)
   
-Následující obrázek ukazuje obraz zmenšený na 200x100 pomocí oříznutí poměru po sleposti. Obrázek se měří od levého horního rohu, které má za následek oříznutí dolní části obrázku.  
+Následující obrázek zredukovaný na 200x100 pomocí oříznutí Blind Ratio. Obraz se měří od levého horního rohu, což vede k oříznutí spodní části obrazu.  
   
-![Slunečnicová image oříznutá na 200x100](./media/resize-crop/bing-resize-crop-sunflower200x100c4.png)
+![Slunečnicový obrázek oříznutý na 200x100](./media/resize-crop/bing-resize-crop-sunflower200x100c4.png)
   
-Následující obrázek ukazuje obraz zmenšený na 100x200 pomocí oříznutí poměru po sleposti. Obrázek se měří od středu, což znamená, že se oříznou levou a pravou část obrázku.  
+Následující obrázek zredukovaný na 100x200 pomocí oříznutí Blind Ratio. Obraz se měří od středu, což vede k oříznutí levé a pravé části obrazu.  
   
-![Slunečnicová image oříznutá na 100x200](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
+![Slunečnicový obrázek oříznutý na 100x200](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Co je rozhraní API pro vyhledávání Bingu?](bing-api-comparison.md)
-* [Vyhledávání Bingu požadavky na použití rozhraní API a zobrazení](use-display-requirements.md)
+* [Co jsou vyhledávací api Bingu?](bing-api-comparison.md)
+* [Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití](use-display-requirements.md)

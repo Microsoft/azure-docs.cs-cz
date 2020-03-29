@@ -1,35 +1,35 @@
 ---
-title: Integrace s jinými aplikacemi – QnA Maker
-description: QnA Maker se integruje do klientských aplikací, jako jsou roboty chatu, stejně jako jiné služby pro zpracování v přirozeném jazyce, jako je například Language Understanding (LUIS).
+title: Integrace s dalšími aplikacemi - QnA Maker
+description: QnA Maker integruje do klientských aplikací, jako jsou chatovací roboty, stejně jako s jinými službami zpracování přirozeného jazyka, jako je například language understanding (LUIS).
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300515"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>Návrh znalostní báze pro klientské aplikace
 
-QnA Maker se integruje do klientských aplikací, jako jsou roboty chatu, stejně jako jiné služby pro zpracování v přirozeném jazyce, jako je například Language Understanding (LUIS).
+QnA Maker integruje do klientských aplikací, jako jsou chatovací roboty, stejně jako s jinými službami zpracování přirozeného jazyka, jako je například language understanding (LUIS).
 
-## <a name="integration-with-a-conversational-client"></a>Integrace s konverzací klienta
+## <a name="integration-with-a-conversational-client"></a>Integrace s konverzačním klientem
 
-QnA Maker se integruje s klientskými aplikacemi v konverzaci, jako je [Microsoft bot Framework](https://dev.botframework.com/). Text odeslaný do QnA Maker není nutné vyčistit ani transformovat. QnA Maker přijímá přirozené jazyky a vrací nejlepší odpověď.
+QnA Maker integruje s konverzační klientské aplikace, jako je [Microsoft Bot Framework](https://dev.botframework.com/). Text odeslaný do QnA Makeru nemusí být vyčištěn ani transformován. QnA Maker přijímá přirozené jazyky a vrací nejlepší odpověď.
 
-## <a name="create-a-bot-without-writing-any-code"></a>Vytvoření robota bez psaní kódu
+## <a name="create-a-bot-without-writing-any-code"></a>Vytvořte bot bez psaní kódu
 
-Po publikování znalostní báze vytvořte robota ze stránky **publikování** tak, že vyberete tlačítko **vytvořit robot** . Pomocí [kurzu robota](../Quickstarts/create-publish-knowledge-base.md) se dozvíte, co se stane po výběru tlačítka.
+Po publikování znalostní báze vytvořte robota ze stránky **Publikovat** výběrem tlačítka **Vytvořit robota.** Pomocí [kurzu pro roboty](../Quickstarts/create-publish-knowledge-base.md) se dozvíte, co se stane po výběru tlačítka.
 
-## <a name="providing-multi-turn-conversations"></a>Zajištění vícenásobného zapínání konverzací
+## <a name="providing-multi-turn-conversations"></a>Poskytování vícenásobných konverzací
 
-Klient bot nabízí nejlepší vybranou odpověď ze znalostní báze a může poskytnout následné výzvy, pokud je odpověď součástí QnA sady s vícenásobným zapnete. Naučte se, [jak](../how-to/multiturn-conversation.md) do znalostní báze přidat otázky a sady odpovědí s vícenásobným zavoláním.
+Klient robota poskytuje nejlepší vybranou odpověď z vaší znalostní báze a může poskytnout následné výzvy, pokud je odpověď součástí vícesměrové sady QnA. Přečtěte [si, jak do](../how-to/multiturn-conversation.md) znalostní báze přidat vícesměrné konverzační otázky a sady odpovědí.
 
 ## <a name="natural-language-processing"></a>Zpracování přirozeného jazyka
 
-I když QnA Maker zpracovává dotazy, které používají zpracování přirozeného jazyka, lze také použít část většího systému, který odpovídá na otázky z více znalostní báze. Můžete zkombinovat QnA Maker s jinou službou pro rozpoznávání Language Understanding (LUIS), která zajistí zpracování v přirozeném jazyce před tím, než se dostanete ke konkrétní znalostní bázi. Přečtěte si další informace o tom, kdy a jak používat [Luis a QnA maker](../../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json) dohromady.
+Zatímco QnA Maker zpracovává otázky, které používají zpracování přirozeného jazyka, lze jej také použít jako součást většího systému, který odpovídá na otázky z více znalostních bází. QnA Maker můžete kombinovat s jinou službou Cognitive Service, Language Understanding (LUIS), a to před tím, než se dostanete ke konkrétní znalostní bázi, můžete zajistit zpracování přirozeného jazyka. Přečtěte si další informace o tom, kdy a jak používat [LUIS a QnA Maker](../../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json) společně.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si o [konceptech](development-lifecycle-knowledge-base.md) vývojové cykly pro QnA maker.
+Seznamte se [s koncepty vývojového](development-lifecycle-knowledge-base.md) cyklu pro QnA Maker.

@@ -1,7 +1,7 @@
 ---
-title: Analýzy na základě znalostní báze – QnA Maker
+title: Analýza znalostní báze - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Pokud jste povolili App Insights během vytváření služby QnA Maker, QnA Maker ukládá všechny protokoly chatu a další telemetrie. Spusťte Ukázkové dotazy pro získání protokolů chatu z App Insights.
+description: QnA Maker ukládá všechny protokoly chatu a další telemetrie, pokud jste povolili App Insights při vytváření služby QnA Maker. Spusťte ukázkové dotazy a získejte protokoly chatu z Přehledů aplikací.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,23 +12,23 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: diberry
 ms.openlocfilehash: e769bde39bc796b5b598109328b468b15385f38a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650397"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Získání analýz pro znalostní bázi
 
-Pokud jste povolili App Insights během [vytváření služby QnA maker](./set-up-qnamaker-service-azure.md), QnA maker ukládá všechny protokoly chatu a další telemetrie. Spusťte Ukázkové dotazy pro získání protokolů chatu z App Insights.
+QnA Maker ukládá všechny protokoly chatu a další telemetrie, pokud jste povolili App Insights při [vytváření služby QnA Maker](./set-up-qnamaker-service-azure.md). Spusťte ukázkové dotazy a získejte protokoly chatu z Přehledů aplikací.
 
-1. Přejít na prostředek služby App Insights.
+1. Přejděte do zdroje Přehledy aplikací.
 
-    ![Vyberte prostředek Application Insights.](../media/qnamaker-how-to-analytics-kb/resources-created.png)
+    ![Vyberte zdroj přehledů aplikací.](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. Vyberte **protokol (Analytics)** . Otevře se nové okno, kde se můžete dotazovat QnA Maker telemetrie.
+2. Vyberte **protokol (Analytics)**. Otevře se nové okno, kde můžete dotazovat telemetrie QnA Maker.
 
-3. Vložte následující dotaz a spusťte ho.
+3. Vložte do následujícího dotazu a spusťte jej.
 
     ```kusto
     requests
@@ -44,13 +44,13 @@ Pokud jste povolili App Insights během [vytváření služby QnA maker](./set-u
     | project timestamp, resultCode, duration, id, question, answer, score, performanceBucket,KbId
     ```
 
-    Vyberte **Spustit** a spusťte dotaz.
+    Vyberte **Spustit** a dotaz spusťte.
 
-    [![spustit dotaz pro určení otázek, odpovědí a skóre uživatelů](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
+    [![Spuštění dotazu k určení otázek, odpovědí a skóre od uživatelů](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
-## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Spouštění dotazů pro další analýzy na QnA Maker znalostní bázi Knowledge Base
+## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Spouštění dotazů na další analýzy ve znalostní bázi QnA Maker
 
-### <a name="total-90-day-traffic"></a>Celkový počet 90 dní provozu
+### <a name="total-90-day-traffic"></a>Celkový 90denní provoz
 
 ```kusto
 //Total Traffic
@@ -60,7 +60,7 @@ requests
 | summarize ChatCount=count() by bin(timestamp, 1d), KbId
 ```
 
-### <a name="total-question-traffic-in-a-given-time-period"></a>Celkový provoz dotazů v daném časovém období
+### <a name="total-question-traffic-in-a-given-time-period"></a>Celkový provoz otázek v daném časovém období
 
 ```kusto
 //Total Question Traffic in a given time period
@@ -73,7 +73,7 @@ requests
 | summarize ChatCount=count() by KbId
 ```
 
-### <a name="user-traffic"></a>Přenos uživatelů
+### <a name="user-traffic"></a>Provoz uživatelů
 
 ```kusto
 //User Traffic
@@ -88,7 +88,7 @@ traces | extend id = operation_ParentId
 | summarize ChatCount=count() by bin(timestamp, 1d), UserId, KbId
 ```
 
-### <a name="latency-distribution-of-questions"></a>Latence při distribuci otázek
+### <a name="latency-distribution-of-questions"></a>Latence distribuce otázek
 
 ```kusto
 //Latency distribution of questions
@@ -121,4 +121,4 @@ traces | extend id = operation_ParentId
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Zvolit capactiy](./improve-knowledge-base.md)
+> [Vyberte si capactiy](./improve-knowledge-base.md)

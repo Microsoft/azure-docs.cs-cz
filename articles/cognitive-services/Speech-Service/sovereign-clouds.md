@@ -1,7 +1,7 @@
 ---
-title: Cloudy svrchované – služba pro rozpoznávání řeči
+title: Suverénní mraky - služba řeči
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat cloudy v svrchovaném provozu.
+description: Naučte se používat suverénní cloudy
 services: cognitive-services
 author: cbasoglu
 manager: xdh
@@ -11,69 +11,69 @@ ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: cbasoglu
 ms.openlocfilehash: b41967033b00144ca5bd52ce23cf8aabcea6749e
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78228088"
 ---
-# <a name="speech-services-with-sovereign-clouds"></a>Hlasové služby s svrchovanými cloudy
+# <a name="speech-services-with-sovereign-clouds"></a>Hlasové služby se suverénními mraky
 
-## <a name="azure-government-united-states"></a>Azure Government (USA)
+## <a name="azure-government-united-states"></a>Azure Government (Spojené státy)
 
-Přístup k této vyhrazené instanci mají jenom americké federální, státní, místní nebo samosprávnéové vlády a jejich partneři s činnostmi, které řídí naši občané USA.
-- Oblasti: US Gov – Virginie
-- SR in SpeechSDK:*config. FromHost ("WSS://Virginia.STT.Speech.Azure.us"; "\<Key\>");*
-- TTS v SpeechSDK: *config. FromHost ("https[]()://Virginia.TTS.Speech.Azure.us"; "\<Key\>");*
-- Ověřovací tokeny:[]()https://Virginia.API.Cognitive.Microsoft.us/STS/v1.0/issueToken
-- Azure Portal: https://portal.azure.us  
-- Portál Custom Speech: https://virginia.cris.azure.us/Home/CustomSpeech
-- Dostupné SKU: S0
+Pouze americké federální, státní, místní a kmenové vlády a jejich partneři mají přístup k této specializované instanci s operacemi kontrolovanými prověřenými občany USA.
+- Regiony: US Gov Virginia
+- SR v SpeechSDK:*config. FromHost("wss://virginia.stt.speech.azure.us",\<" váš\>klíč ");*
+- TTS v SpeechSDK: *config. FromHost("https://virginia.tts.speech.azure.us",[]()\<" váš\>klíč ");*
+- Ověřovací tokeny:[]()https ://virginia.api.cognitive.microsoft.us/sts/v1.0/issueToken
+- Portál Azure:https://portal.azure.us  
+- Vlastní řečový portál:https://virginia.cris.azure.us/Home/CustomSpeech
+- K dispozici SKUs: S0
 - Podporované funkce:
   - Řeč na text
-  - Custom Speech (úprava akustického/jazyka)
+  - Vlastní řeč (akustická/jazyková adaptace)
   - Převod textu na řeč
-  - Překladatel řeči
+  - Překladač řeči
 - Nepodporované funkce
   - Vlastní hlas
-  - Neuronové hlasy pro převod textu na řeč
-- Podporovaná národní prostředí: národní prostředí pro následující jazyky jsou podporovaná.
+  - Neurální hlasy pro převod textu na řeč
+- Podporovaná národní prostředí: Národní prostředí pro následující jazyky jsou podporovány.
   - Arabština (ar-*)
   - Čínština (zh-*)
-  - Angličtina (EN-*)
-  - Francouzština (FR-*)
+  - Angličtina (en-*)
+  - Francouzština (fr-*)
   - Němčina (de-*)
   - Hindština
   - Korejština
   - Ruština
-  - Španělština (ES-*)
+  - Španělština (es-*)
 
-## <a name="microsoft-azure-china"></a>Microsoft Azure – Čína
+## <a name="microsoft-azure-china"></a>Microsoft Azure V Číně
 
-V Číně je k dispozici datové centrum Azure s přímým přístupem k Číně Mobile, Čína Telecom, Čína UNICOM a další hlavní páteřní síť pro uživatele, kteří budou mít k dispozici vysokorychlostní a stabilní přístup k místní síti.
-- Oblasti: Čína – východ 2 (Shanghai)
-- SR in SpeechSDK: *config. FromHost ("WSS://chinaeast2.STT.Speech.Azure.cn"; "\<Key\>");*
-- TTS v SpeechSDK: *config. FromHost ("https[]()://chinaeast2.TTS.Speech.Azure.cn"; "\<Key\>");*
-- Ověřovací tokeny:[]()https://chinaeast2.API.Cognitive.Azure.cn/STS/v1.0/issueToken
-- Azure Portal: https://portal.azure.cn
-- Portál Custom Speech: https://speech.azure.cn/CustomSpeech
-- Dostupné SKU: S0
+Datové centrum Azure se nachází v Číně, které má přímý přístup k zařízením China Mobile, China Telecom, China Unicom a dalším významným páteřním sítím operátorů, a čínským uživatelům poskytuje vysokorychlostní a stabilní přístup k místní síti.
+- Regiony: Čína východ 2 (Šanghaj)
+- SR v SpeechSDK: *config. FromHost("wss://chinaeast2.stt.speech.azure.cn",\<" your-key\>");*
+- TTS v SpeechSDK: *config. FromHost("https://chinaeast2.tts.speech.azure.cn",[]()\<" váš\>klíč ");*
+- Ověřovací tokeny:[]()https://chinaeast2.api.cognitive.azure.cn/sts/v1.0/issueToken
+- Portál Azure:https://portal.azure.cn
+- Vlastní řečový portál:https://speech.azure.cn/CustomSpeech
+- K dispozici SKUs: S0
 - Podporované funkce:
   - Řeč na text
-  - Custom Speech (úprava akustického/jazyka)
+  - Vlastní řeč (akustická/jazyková adaptace)
   - Převod textu na řeč
-  - Překladatel řeči
+  - Překladač řeči
 - Nepodporované funkce
   - Vlastní hlas
-  - Neuronové hlasy pro převod textu na řeč
-- Podporovaná národní prostředí: národní prostředí pro následující jazyky jsou podporovaná.
+  - Neurální hlasy pro převod textu na řeč
+- Podporovaná národní prostředí: Národní prostředí pro následující jazyky jsou podporovány.
   - Arabština (ar-*)
   - Čínština (zh-*)
-  - Angličtina (EN-*)
-  - Francouzština (FR-*)
+  - Angličtina (en-*)
+  - Francouzština (fr-*)
   - Němčina (de-*)
   - Hindština
   - Korejština
   - Ruština
-  - Španělština (ES-*)
+  - Španělština (es-*)
 

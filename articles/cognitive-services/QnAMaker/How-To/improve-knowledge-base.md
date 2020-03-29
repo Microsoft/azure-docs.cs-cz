@@ -1,95 +1,65 @@
 ---
-title: Vylepšení znalostní báze Knowledge Base – QnA Maker
-titleSuffix: Azure Cognitive Services
-description: Vylepšete kvalitu znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo odmítněte, přidejte bez odebrání nebo změny existujících otázek.
-author: diberry
-manager: nitinme
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: qna-maker
+title: Zlepšete znalostní bázi - QnA Maker
+description: Zlepšete kvalitu své znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo zamítněte, přidejte bez odebrání nebo změny stávajících otázek.
 ms.topic: conceptual
-ms.date: 02/27/2020
-ms.author: diberry
-ms.openlocfilehash: dea2bf3b34ca336f3932dd85bf587184ab6881db
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/16/2020
+ms.openlocfilehash: 8b2176731ce456b70521cc9208435d0b19943ab8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79220685"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053073"
 ---
-# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Využití aktivního učení k vylepšení vaší znalostní báze
-
-[Aktivní učení](../Concepts/active-learning-suggestions.md) vám umožní vylepšit kvalitu znalostní báze tím, že navrhuje alternativní otázky na základě počtu uživatelů, a to na pár otázek a odpovědí. Tyto návrhy si můžete prohlédnout, buď je přidáte do existujících otázek, nebo je odmítnete.
-
-Vaše znalostní báze se nemění automaticky. Aby se změny projevily, musíte přijmout návrhy. Tyto návrhy přidávají otázky, ale nemění ani neodstraňují stávající otázky.
+# <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Přijetí aktivních otázek navržených učením ve znalostní bázi
 
 
-## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>Upgrade verze modulu runtime pro použití aktivního učení
+<a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>
 
-Aktivní učení je podporované v modulu runtime verze 4.4.0 a vyšší. Pokud byla znalostní báze vytvořena v dřívější verzi, [upgradujte modul runtime](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) , aby tuto funkci používal.
+Funkce Active Learning po schválení návrhu změní znalostní bázi nebo vyhledávací službu a uloží a táčí. Pokud návrh schválíte, bude přidán jako alternativní otázka.
 
-## <a name="turn-on-active-learning-to-see-suggestions"></a>Pokud chcete zobrazit návrhy, zapněte aktivní učení.
+## <a name="turn-on-active-learning"></a>Zapnutí aktivního učení
 
-Aktivní učení je ve výchozím nastavení vypnuté. Zapněte ho, aby se zobrazily navržené otázky. Po zapnutí aktivního učení je potřeba odeslat informace z klientské aplikace do QnA Maker. Další informace najdete v tématu [architektonický tok pro použití GenerateAnswer a rozhraní API pro učení z robota](#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot).
+Chcete-li zobrazit navrhované otázky, musíte [zapnout aktivní učení](use-active-learning.md) pro zdroj QnA Maker.
 
-1. Vyberte **publikovat** a publikujte znalostní bázi. Aktivní výukové dotazy se shromažďují jenom z koncového bodu předpovědi rozhraní GenerateAnswer API. Dotazy do podokna test na portálu QnA Maker neovlivňují aktivní učení.
+## <a name="view-suggested-questions"></a>Zobrazit navrhované otázky
 
-1. Pokud chcete zapnout aktivní učení na portálu QnA Maker, přečtěte si v pravém horním rohu, vyberte své **jméno**a pak přejít na [**nastavení služby**](https://www.qnamaker.ai/UserSettings).
+1. Chcete-li zobrazit navrhované otázky, vyberte na stránce **Upravit** znalostní bázi **možnost Zobrazit možnosti**a pak vyberte **Zobrazit návrhy aktivních učení**.
 
-    ![Na stránce nastavení služby zapněte možnosti pro navrhované otázky pro aktivní učení. V pravé horní nabídce vyberte své uživatelské jméno a pak vyberte nastavení služby.](../media/improve-knowledge-base/Endpoint-Keys.png)
+    [![V části Úpravy na portálu vyberte Zobrazit návrhy, abyste viděli nové alternativy otázek aktivního učení.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
+1. Umožňuje filtrovat znalostní bázi pomocí párů otázek a odpovědí tak, aby zobrazovala pouze návrhy výběrem **možnosti Filtrovat podle návrhů**.
 
-1. Vyhledejte službu QnA Maker a potom přepněte **aktivní učení**.
+    [![Pomocí přepínače Filtr podle návrhů zobrazíte pouze alternativy doporučených otázek pro aktivní učení.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-    > [!div class="mx-imgBorder"]
-    > [![na stránce nastavení služby přepněte na funkci aktivního učení. Pokud nemůžete funkci zapnout, možná budete muset upgradovat službu.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+1. Každá dvojice QnA navrhuje nové alternativy otázek `✔` se zaškrtnutím , `x` přijmout otázku nebo odmítnout návrhy. Zaškrtnutím políčka přidejte otázku.
 
-    > [!Note]
-    > Přesná verze na předchozím obrázku se zobrazí jenom jako příklad. Vaše verze se může lišit.
+    [![Vyberte nebo odmítněte alternativy doporučených otázek aktivního učení zaškrtnutím zelené značky zaškrtnutí nebo červené značky odstranění.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
-    Po povolení **aktivního učení** znalostní báze v pravidelných intervalech navrhuje nové otázky na základě dotazů odeslaných uživatelem. Můžete zakázat **aktivní učení** tím, že znovu přepnete nastavení.
+    _Všechny návrhy_ můžete přidat nebo odstranit tak, že v kontextovém panelu nástrojů vyberete **Přidat vše** nebo **Odmítnout vše.**
 
-## <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>Přijmout aktivní návrh učení ve znalostní bázi
+1. Chcete-li uložit změny do znalostní báze, vyberte možnost **Uložit a trénovat.**
 
-Aktivní učení mění znalostní bázi nebo Search Service, když schválíte návrh a pak ho uložíte a naučíte. Pokud schválíte návrh, přidá se jako alternativní otázka.
+1. Vyberte **Publikovat,** chcete-li povolit, aby změny byly k dispozici v [rozhraní API GenerateAnswer .](metadata-generateanswer-usage.md#generateanswer-request-configuration)
 
-1. Chcete-li zobrazit navrhované otázky, na stránce **Upravit** znalostní bázi vyberte možnost **Zobrazit možnosti**a pak vyberte možnost **Zobrazit návrhy aktivního učení**.
-
-    [![v části Upravit na portálu vyberte možnost Zobrazit návrhy, aby se zobrazily nové alternativy otázek aktivního učení.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
-
-1. Vyfiltrujte znalostní bázi dvojice otázek a odpovědí, abyste zobrazili jenom návrhy, a to tak, že vyberete **filtrovat podle návrhů**.
-
-    [![pomocí přepínače filtrovat podle návrhů zobrazit jenom navrhované alternativy otázky aktivního učení.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
-
-1. Každý pár QnA navrhuje nové alternativy k otázce zaškrtnutí, `✔`, pro přijetí otázky nebo `x` k zamítnutí návrhů. Kliknutím na značku zaškrtnutí přidejte otázku.
-
-    [výběrem zelené značky zaškrtnutí nebo červeného odstranění ![zamítnout vybrané alternativy otázek pro aktivní učení.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
-
-    _Všechny návrhy_ můžete přidat nebo odstranit výběrem možnosti **Přidat vše** nebo **Odmítnout vše** na kontextovém panelu nástrojů.
-
-1. Kliknutím na **Uložit a výuka** uložte změny ve znalostní bázi.
-
-1. Vyberte **publikovat** , pokud chcete, aby byly změny dostupné z [rozhraní GenerateAnswer API](metadata-generateanswer-usage.md#generateanswer-request-configuration).
-
-    V případě, že je 5 nebo více podobných dotazů clusterovaných, QnA Maker každých 30 minut návrhy alternativních otázek, které můžete přijmout nebo odmítnout.
+    Když jsou seskupeny 5 nebo více podobných dotazů, každých 30 minut, QnA Maker navrhuje alternativní otázky, které můžete přijmout nebo odmítnout.
 
 
 <a name="#score-proximity-between-knowledge-base-questions"></a>
 
-### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>Postup architektury pro používání rozhraní API pro GenerateAnswer a vlak z robota
+### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>Architektonický tok pro použití generateAnswer a trénování API z robota
 
-Robot nebo jiná klientská aplikace by se měli pomocí tohoto toku architektury použít k používání aktivního učení:
+Robot nebo jiná klientská aplikace by měla používat následující architektonický tok používat aktivní učení:
 
-* Robot [získá odpověď ze znalostní báze](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) s rozhraním API GenerateAnswer pomocí vlastnosti `top` k získání počtu odpovědí.
-* Robot určí explicitní zpětnou vazbu:
-    * Pomocí vlastní [obchodní logiky](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)vyfiltrujte nízká skóre.
-    * V robotu nebo klientské aplikaci můžete zobrazit seznam možných odpovědí na uživatele a získat zvolenou odpověď uživatele.
-* Robot [pošle vybranou odpověď zpátky do QnA maker](#bot-framework-sample-code) s využitím [rozhraní API pro vlaky](#train-api).
+* Bot [získá odpověď ze znalostní báze](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) pomocí `top` rozhraní GENERATEAnswer API, pomocí vlastnosti získat řadu odpovědí.
+* Bot určuje explicitní zpětnou vazbu:
+    * Pomocí vlastní [obchodní logiky](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)odfiltrujte nízké skóre.
+    * V bot nebo klient-aplikace, zobrazit seznam možných odpovědí na uživatele a získat uživatele vybrané odpovědi.
+* Bot [odešle vybranou odpověď zpět qnA makeru](#bot-framework-sample-code) pomocí [Train API](#train-api).
 
 
-### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Použijte vlastnost Top v žádosti GenerateAnswer k získání několika vyhovujících odpovědí.
+### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Použití nejvyšší vlastnosti v požadavku Generovat odpověď k získání několika odpovídajících odpovědí
 
-Při odesílání otázky QnA Maker pro odpověď nastaví vlastnost `top` těla zprávy JSON počet odpovědí, které se mají vrátit.
+Při odesílání otázky QnA Maker pro odpověď, `top` vlastnost těla JSON nastaví počet odpovědí vrátit.
 
 ```json
 {
@@ -99,9 +69,9 @@ Při odesílání otázky QnA Maker pro odpověď nastaví vlastnost `top` těla
 }
 ```
 
-### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>K získání seznamu odpovědí pro zobrazení uživatele použijte vlastnost skóre spolu s obchodní logikou.
+### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>Použití vlastnosti score spolu s obchodní logikou k získání seznamu odpovědí pro zobrazení uživatele
 
-Když klientská aplikace (například robota v programu chat) obdrží odpověď, vrátí se 3 Nejčastější dotazy. Vlastnost `score` slouží k analýze blízkosti výsledků. Tento rozsah blízkosti je určený vaší vlastní obchodní logikou.
+Když klientská aplikace (například chatovací robot) obdrží odpověď, jsou vráceny první 3 otázky. Pomocí `score` vlastnosti můžete analyzovat blízkost mezi skóre. Tento rozsah přiblížení je určen vlastní obchodní logikou.
 
 ```json
 {
@@ -110,7 +80,7 @@ Když klientská aplikace (například robota v programu chat) obdrží odpově�
             "questions": [
                 "Wi-Fi Direct Status Indicator"
             ],
-            "answer": "**Wi-Fi Direct Status Indicator**\n\nStatus bar icons indicate your current Wi-Fi Direct connection status:  \n\nWhen your device is connected to another device using Wi-Fi Direct, '$  \n\n+ •+ ' Wi-Fi Direct is displayed in the Status bar.",
+            "answer": "**Wi-Fi Direct Status Indicator**\n\nStatus bar icons indicate your current Wi-Fi Direct connection status:  \n\nWhen your device is connected to another device using Wi-Fi Direct, '$  \n\n+ *+ ' Wi-Fi Direct is displayed in the Status bar.",
             "score": 74.21,
             "id": 607,
             "source": "Bugbash KB.pdf",
@@ -140,15 +110,15 @@ Když klientská aplikace (například robota v programu chat) obdrží odpově�
 }
 ```
 
-## <a name="client-application-follow-up-when-questions-have-similar-scores"></a>Sledování klientských aplikací, když mají dotazy podobné skóre
+## <a name="client-application-follow-up-when-questions-have-similar-scores"></a>Zpracování klientské aplikace v případě, že otázky mají podobné skóre
 
-Klientská aplikace zobrazí otázky s možností, jak uživateli vybrat _jedinou otázku_ , která nejvíc představuje svůj záměr.
+Klientská aplikace zobrazí otázky s možností pro uživatele vybrat _jednu otázku,_ která nejvíce představuje jejich záměr.
 
-Jakmile uživatel vybere jednu z existujících otázek, klientská aplikace pošle výběr uživatele jako zpětnou vazbu pomocí QnA Makerho rozhraní API pro vlaky. Tato zpětná vazba dokončí smyčku aktivního výukového zpětné vazby.
+Jakmile uživatel vybere jednu z existujících otázek, klientská aplikace odešle volbu uživatele jako zpětnou vazbu pomocí rozhraní API train api služby QnA Maker. Tato zpětná vazba dokončí aktivní smyčku zpětné vazby učení.
 
 ## <a name="train-api"></a>Rozhraní Train API
 
-Zpětná vazba k aktivnímu učení se pošle QnA Maker s žádostí POST API pro vlak. Podpis rozhraní API:
+Aktivní zpětná vazba učení se odesílá do QnA Makeru s požadavkem Train API POST. Podpis rozhraní API je:
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
@@ -157,24 +127,24 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Vlastnost požadavku HTTP|Název|Typ|Účel|
+|Vlastnost požadavku HTTP|Name (Název)|Typ|Účel|
 |--|--|--|--|
-|Parametr trasy adresy URL|ID znalostní báze|řetězec|Identifikátor GUID znalostní báze|
-|Vlastní subdoména|Název prostředku Qnamakerem|řetězec|Název prostředku se používá jako vlastní subdoména pro váš QnA Maker. Tato možnost je k dispozici na stránce nastavení po publikování znalostní báze. Je uveden jako `host`.|
-|Hlavička|Content-Type|řetězec|Typ média těla odesílaného do rozhraní API Výchozí hodnota je: `application/json`|
-|Hlavička|Autorizace|řetězec|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
-|Tělo příspěvku|JSON – objekt|JSON|Váš názor na školení|
+|Parametr trasy adresy URL|ID znalostní báze|řetězec|Identifikátor GUID pro vaši znalostní bázi.|
+|Vlastní subdoména|Název prostředku QnAMaker|řetězec|Název prostředku se používá jako vlastní subdoména pro váš QnA Maker. Tato možnost je k dispozici na stránce Nastavení po publikování znalostní báze. Je uveden jako `host`.|
+|Hlavička|Typ obsahu|řetězec|Typ média těla odeslaného do rozhraní API. Výchozí hodnota je:`application/json`|
+|Hlavička|Autorizace|řetězec|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxxxxxxxxx).|
+|Tělo příspěvku|Objekt JSON|JSON|Zpětná vazba školení|
 
 Tělo JSON má několik nastavení:
 
-|Vlastnost těla zprávy JSON|Typ|Účel|
+|Vlastnost těla JSON|Typ|Účel|
 |--|--|--|--|
-|`feedbackRecords`|array|Seznam zpětné vazby|
-|`userId`|řetězec|ID uživatele osoby, která přijímá navrhované otázky. Formát ID uživatele je až vám. Například e-mailová adresa může být platným ID uživatele ve vaší architektuře. Volitelná.|
-|`userQuestion`|řetězec|Přesný text dotazu uživatele. Požadováno.|
-|`qnaID`|number|ID otázky nalezené v [odpovědi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties) |
+|`feedbackRecords`|pole|Seznam zpětné vazby.|
+|`userId`|řetězec|ID uživatele osoby, která navrhované otázky přijímá. Formát ID uživatele je na vás. E-mailová adresa může být například platným ID uživatele ve vaší architektuře. Nepovinný parametr.|
+|`userQuestion`|řetězec|Přesný text dotazu uživatele. Povinná hodnota.|
+|`qnaID`|číslo|ID otázky, nalezené v [generateanswer odpověď](metadata-generateanswer-usage.md#generateanswer-response-properties). |
 
-Ukázkový text JSON vypadá takto:
+Příklad JSON tělo vypadá takto:
 
 ```json
 {
@@ -188,13 +158,13 @@ Ukázkový text JSON vypadá takto:
 }
 ```
 
-Úspěšná odpověď vrátí stav 204 a text odpovědi JSON.
+Úspěšná odpověď vrátí stav 204 a žádné tělo odezvy JSON.
 
-### <a name="batch-many-feedback-records-into-a-single-call"></a>Batch mnoho záznamů zpětné vazby do jednoho volání
+### <a name="batch-many-feedback-records-into-a-single-call"></a>Dávka mnoha záznamů zpětné vazby do jednoho hovoru
 
-V aplikaci na straně klienta, jako je robot, můžete data uložit a pak poslat mnoho záznamů v jednom těle JSON v poli `feedbackRecords`.
+V aplikaci na straně klienta, jako je například bot, můžete uložit data a `feedbackRecords` potom odeslat mnoho záznamů v jednom těle JSON v poli.
 
-Ukázkový text JSON vypadá takto:
+Příklad JSON tělo vypadá takto:
 
 ```json
 {
@@ -222,18 +192,18 @@ Ukázkový text JSON vypadá takto:
 
 <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>
 
-## <a name="bot-framework-sample-code"></a>Vzorový kód pro bot Framework
+## <a name="bot-framework-sample-code"></a>Ukázkový kód rozhraní bot
 
-Pokud se má dotaz uživatele použít pro aktivní učení, váš kód rozhraní bot Framework musí volat rozhraní API pro analýzu. Existují dva části kódu pro zápis:
+Váš kód architektury robota musí volat Train API, pokud dotaz uživatele by měl být použit pro aktivní učení. Existují dva kusy kódu k napsání:
 
-* Určení, jestli se má dotaz použít pro aktivní učení
-* Poslat dotaz zpátky do QnA Maker API pro školení pro aktivní učení
+* Určení, zda má být dotaz použit pro aktivní učení
+* Odeslání dotazu zpět do rozhraní API pro aktivní výuku služby QnA Maker
 
-V [ukázce Azure bot](https://aka.ms/activelearningsamplebot)byly obě tyto aktivity naprogramované.
+V [ukázce Azure Botu](https://aka.ms/activelearningsamplebot)byly naprogramovány obě tyto aktivity.
 
-### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Příklad C# kódu pro rozhraní API pro učení s robot Framework 4. x
+### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Příklad kódu Jazyka C# pro rozhraní TRAIN API s rozhraním Bot Framework 4.x
 
-Následující kód ilustruje, jak odeslat informace zpět do QnA Maker pomocí rozhraní API pro vlaky. Tato [kompletní ukázka kódu](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-activelearning/csharp_dotnetcore) je k dispozici na GitHubu.
+Následující kód ukazuje, jak odesílat informace zpět do QnA Maker s train API. Tato [ukázka úplného kódu](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-activelearning/csharp_dotnetcore) je k dispozici na GitHubu.
 
 ```csharp
 public class FeedbackRecords
@@ -294,9 +264,9 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 }
 ```
 
-### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Příklad kódu Node. js pro rozhraní API pro učení s bot Framework 4. x
+### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Příklad kódu Node.js pro rozhraní TRAIN API s rozhraním Bot Framework 4.x
 
-Následující kód ilustruje, jak odeslat informace zpět do QnA Maker pomocí rozhraní API pro vlaky. Tato [kompletní ukázka kódu](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs) je k dispozici na GitHubu.
+Následující kód ukazuje, jak odesílat informace zpět do QnA Maker s train API. Tato [ukázka úplného kódu](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs) je k dispozici na GitHubu.
 
 ```javascript
 async callTrain(stepContext){
@@ -337,11 +307,11 @@ async callTrain(stepContext){
 }
 ```
 
-## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Aktivní učení se ukládá do exportované znalostní báze.
+## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Aktivní učení je uloženo v exportované znalostní bázi
 
-Když má aplikace aktivní učení a exportujete aplikaci, sloupec `SuggestedQuestions` v souboru TSV uchová aktivní výuková data.
+Když je vaše aplikace povolena aktivní výuka `SuggestedQuestions` a exportujete aplikaci, sloupec v souboru tsv zachová aktivní data učení.
 
-`SuggestedQuestions` sloupec je objekt JSON s informacemi o implicitní, `autosuggested`a explicitní `usersuggested` zpětnou vazbu. Příkladem tohoto objektu JSON pro jednu otázku odeslanou uživatelem `help` je:
+Sloupec `SuggestedQuestions` je objekt JSON informací implicitní, `autosuggested`a `usersuggested` explicitní, zpětná vazba. Příkladem tohoto objektu JSON pro otázku `help` odeslanou jedním uživatelem je:
 
 ```JSON
 [
@@ -360,20 +330,20 @@ Když má aplikace aktivní učení a exportujete aplikaci, sloupec `SuggestedQu
 ]
 ```
 
-Můžete také použít rozhraní API pro stažení změn ke kontrole těchto změn pomocí REST nebo jakékoli sady SDK založené na jazyku:
-* [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
+Pomocí rozhraní API pro změny stahování můžete také zkontrolovat tyto změny pomocí sady REST nebo libovolné sady SDK založené na jazyce:
+* [ROZHRANÍ API PRO ODPOČINEK](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
+* [Sada SDK rozhraní .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
 
 
-Když znovu naimportujete tuto aplikaci, aktivní učení nadále shromažďuje informace a doporučuje návrhy vaší znalostní báze.
+Při opětovném importu této aplikace aktivní učení pokračuje ve shromažďování informací a doporučujeme návrhy pro vaši znalostní bázi.
 
 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Osvědčené postupy při používání aktivního učení najdete v tématu [osvědčené postupy](../Concepts/best-practices.md#active-learning).
+Doporučené postupy při používání aktivního učení naleznete v [tématu Doporučené postupy](../Concepts/best-practices.md#active-learning).
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Použití metadat s rozhraním API GenerateAnswer](metadata-generateanswer-usage.md)
+> [Použití metadat s rozhraním GenerateAnswer API](metadata-generateanswer-usage.md)

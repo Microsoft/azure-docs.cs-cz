@@ -1,42 +1,42 @@
 ---
-title: Jak nainstalovat a spustit kontejnery – Počítačové zpracování obrazu
+title: Jak nainstalovat a spustit kontejnery - Počítačové vidění
 titleSuffix: Azure Cognitive Services
-description: Jak si stáhnout, nainstalovat a spouštění kontejnerů v tomto kurzu návod pro počítačové zpracování obrazu.
+description: Jak stáhnout, nainstalovat a spustit kontejnery pro počítačové zpracování počítače v tomto kurzu návodu.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 03/17/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 530a8848eceecb1a15d14ce1fef2aa58a3ef5908
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f8d19ded32f7f4a90b23106b6cec53418eef407e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79220245"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458031"
 ---
-# <a name="install-and-run-read-containers-preview"></a>Instalace a spuštění kontejnerů pro čtení (Preview)
+# <a name="install-and-run-read-containers-preview"></a>Instalace a spuštění kontejnerů pro čtení (náhled)
 
-Kontejnery umožňují spouštět rozhraní API Počítačové zpracování obrazu ve vlastním prostředí. Kontejnery jsou skvělé pro specifické požadavky zabezpečení a zásad správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner Počítačové zpracování obrazu.
+Kontejnery umožňují spustit api počítačového zpracování ve vlastním prostředí. Kontejnery jsou skvělé pro specifické požadavky na zabezpečení a zásadsprávné řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner počítačového vidění.
 
-Pro Počítačové zpracování obrazu je k dispozici jeden kontejner Docker, který je *určen*. Kontejner *pro čtení* umožňuje detekovat a extrahovat *vytištěný text* z obrázků různých objektů s různými povrchy a pozadími, jako jsou například příjmy, plakáty a vizitky. Kromě toho kontejner *pro čtení* detekuje *rukou psaný text* v obrázcích a poskytuje podporu PDF, TIFF a vícestránkového souboru. Další informace najdete v dokumentaci k rozhraní API [pro čtení](concept-recognizing-text.md#read-api) .
+Jeden kontejner Dockeru *Read*je k dispozici pro počítačové zpracování obrazu. Kontejner *Pro čtení* umožňuje detekovat a extrahovat tištěný *text* z obrázků různých objektů s různými povrchy a pozadími, jako jsou účtenky, plakáty a vizitky. Kontejner pro *čtení* navíc detekuje *ručně psaný text* v obrazech a poskytuje podporu souborů PDF, TIFF a vícestránkových souborů. Další informace naleznete v dokumentaci [k rozhraní READ](concept-recognizing-text.md#read-api) API.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před použitím kontejnerů musíte splnit následující předpoklady:
+Před použitím kontejnerů musíte splnit následující požadavky:
 
-|Požadováno|Účel|
+|Požaduje se|Účel|
 |--|--|
-|Modul Docker| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Informace o úvodu k Docker a kontejneru najdete v tématu [Přehled Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
-|Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
-|Prostředek Počítačové zpracování obrazu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure **počítačové zpracování obrazu** a přidružený klíč rozhraní API identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}** : jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : koncový bod uvedený na stránce **Přehled**|
+|Docker Engine| Potřebujete modul Docker Engine nainstalovaný v [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojení k fakturačním datům a odesílání fakturačních dat do Azure. <br><br> **V systému Windows**musí být Docker také nakonfigurován pro podporu kontejnerů Linuxu.<br><br>|
+|Znalost Dockeru | Měli byste mít základní znalosti konceptů Dockeru, jako jsou registry, úložiště, kontejnery `docker` a image kontejnerů, stejně jako znalost základních příkazů.| 
+|Zdroj počítačového vidění |Chcete-li kontejner používat, musíte mít:<br><br>Prostředek Azure **Computer Vision** a přidružený klíč rozhraní API identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránce Přehled a Klíče pro prostředek a jsou nutné ke spuštění kontejneru.<br><br>**{API_KEY}:** Jeden ze dvou dostupných klíčů prostředků na stránce **Klíče**<br><br>**{ENDPOINT_URI}:** Koncový bod uvedený na stránce **Přehled**|
 
-## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k registru kontejneru soukromého
+## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k registru privátního kontejneru
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -46,31 +46,31 @@ Před použitím kontejnerů musíte splnit následující předpoklady:
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="advanced-vector-extension-support"></a>Rozšířená podpora rozšíření Vector
+### <a name="advanced-vector-extension-support"></a>Podpora pro Advanced Vector Extension
 
-**Hostitelský** počítač je počítač, který spouští kontejner Docker. Hostitel *musí podporovat* [Rozšířená rozšíření Vector](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). Podporu AVX2 pro hostitele se systémem Linux můžete vyhledat pomocí následujícího příkazu:
+**Hostitelský** počítač je počítač, který spouští kontejner dockeru. Hostitel *musí podporovat* [rozšíření Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). Podporu AVX2 můžete zkontrolovat na hostitelích Linuxu pomocí následujícího příkazu:
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
 > [!WARNING]
-> K podpoře AVX2 se *vyžaduje* hostitelský počítač. *Kontejner nebude* správně fungovat bez podpory AVX2.
+> Pro podporu AVX2 je *vyžadován* hostitelský počítač. Kontejner *nebude* fungovat správně bez podpory AVX2.
 
-### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
+### <a name="container-requirements-and-recommendations"></a>Požadavky na kontejnery a doporučení
 
 [!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
-## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí `docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Získejte obrázek kontejneru pomocí`docker pull`
 
-K dispozici jsou image kontejneru pro čtení.
+K dispozici jsou ifotky kontejnerů pro čtení.
 
-| Kontejner | Název Container Registry/úložiště/image |
+| Kontejner | Registr kontejnerů / úložiště / název obrázku |
 |-----------|------------|
-| Číst | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
+| Čtení | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
 
-K stažení Image kontejneru použijte příkaz [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) .
+Pomocí [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) příkazu stáhněte bitovou kopii kontejneru.
 
-### <a name="docker-pull-for-the-read-container"></a>Pull Docker pro kontejner pro čtení
+### <a name="docker-pull-for-the-read-container"></a>Docker vytáhnout pro kontejner čtení
 
 ```bash
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
@@ -78,18 +78,18 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-## <a name="how-to-use-the-container"></a>Jak používat kontejner
+## <a name="how-to-use-the-container"></a>Jak kontejner používat
 
-Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
+Jakmile je kontejner v [hostitelském počítači](#the-host-computer), použijte následující proces pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K dispozici jsou další [příklady](computer-vision-resource-container-config.md) `docker run` příkazu. 
-1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint) 
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. Další [příklady](computer-vision-resource-container-config.md) `docker run` příkazu jsou k dispozici. 
+1. [Dotaz na koncový bod předpověď kontejneru](#query-the-containers-prediction-endpoint). 
 
-## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner pomocí `docker run`
+## <a name="run-the-container-with-docker-run"></a>Spusťte nádobu s`docker run`
 
-Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat `{ENDPOINT_URI}` a `{API_KEY}` hodnoty, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) .
+Ke spuštění kontejneru použijte příkaz [spustit docker.](https://docs.docker.com/engine/reference/commandline/run/) Podrobnosti o tom, jak získat hodnoty `{ENDPOINT_URI}` `{API_KEY}` a, naleznete v [části shromažďování požadovaných parametrů.](#gathering-required-parameters)
 
-K dispozici jsou [příklady](computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` příkazu.
+[Příklady](computer-vision-resource-container-config.md#example-docker-run-commands) příkazu `docker run` jsou k dispozici.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -101,15 +101,15 @@ ApiKey={API_KEY}
 
 Tento příkaz:
 
-* Spustí načtený kontejner z image kontejneru.
-* Přiděluje 8 PROCESORových jader a 16 gigabajtů (GB) paměti.
-* Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
-* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+* Spustí kontejner pro čtení z image kontejneru.
+* Přiděluje 8 procesoru jádro a 16 gigabajtů (GB) paměti.
+* Zpřístupní port TCP 5000 a přidělí pseudo-TTY pro kontejner.
+* Automaticky odebere kontejner po jeho ukončení. Bitová kopie kontejneru je stále k dispozici v hostitelském počítači.
 
-K dispozici jsou další [příklady](./computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` příkazu. 
+Další [příklady](./computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` příkazu jsou k dispozici. 
 
 > [!IMPORTANT]
-> Aby bylo možné spustit kontejner, musí být zadány možnosti `Eula`, `Billing`a `ApiKey`. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
+> `Eula`, `Billing`a `ApiKey` možnosti musí být zadány ke spuštění kontejneru; v opačném případě se kontejner nespustí.  Další informace naleznete v [tématu Fakturace](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -117,21 +117,21 @@ K dispozici jsou další [příklady](./computer-vision-resource-container-confi
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
+## <a name="query-the-containers-prediction-endpoint"></a>Dotaz na koncový bod předpovědi kontejneru
 
-Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST. 
+Kontejner poskytuje úložiště dat na základě dotazu předpověď koncový bod API. 
 
-Pro rozhraní API kontejneru použijte hostitele, `http://localhost:5000`.
+Použijte hostitele `http://localhost:5000`, pro kontejnerová řešení API.
 
 ### <a name="asynchronous-read"></a>Asynchronní čtení
 
-Můžete použít operace `POST /vision/v2.0/read/core/asyncBatchAnalyze` a `GET /vision/v2.0/read/operations/{operationId}` společně k asynchronnímu čtení obrázku podobným způsobem, jakým služba Počítačové zpracování obrazu používá tyto odpovídající operace REST. Metoda asynchronního POST vrátí `operationId`, který se používá jako identifikátorem požadavku HTTP GET.
+Můžete použít `POST /vision/v2.0/read/core/asyncBatchAnalyze` a `GET /vision/v2.0/read/operations/{operationId}` operace ve shodě asynchronně číst obrázek, podobně jako služba počítačového zpracování používá tyto odpovídající operace REST. Asynchronní METODA POST vrátí, `operationId` který se používá jako identifer na požadavek HTTP GET.
 
-V uživatelském rozhraní Swagger vyberte `asyncBatchAnalyze` a rozbalte ho v prohlížeči. Pak vyberte **vyzkoušet,**  > **Zvolte soubor**. V tomto příkladu použijeme následující obrázek:
+V unovém ovládacím `asyncBatchAnalyze` místě swagger vyberte, chcete-li jej rozbalit v prohlížeči. Pak vyberte **Vyzkoušet** > **zvolte soubor**. V tomto příkladu použijeme následující obrázek:
 
-![tabulátory vs – mezery](media/tabs-vs-spaces.png)
+![karty vs mezery](media/tabs-vs-spaces.png)
 
-Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **HTTP 202** . V rámci odpovědi je k dispozici `operation-location` záhlaví, které obsahuje výsledný koncový bod pro požadavek.
+Pokud je asynchronní POST úspěšně spuštěn, vrátí stavový kód **HTTP 202.** Jako součást odpovědi je `operation-location` záhlaví, které obsahuje koncový bod výsledku pro požadavek.
 
 ```http
  content-length: 0
@@ -140,7 +140,7 @@ Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **
  server: Kestrel
 ```
 
-`operation-location` je plně kvalifikovaná adresa URL, ke které se dostanete prostřednictvím HTTP GET. Tady je odpověď JSON pro spuštění `operation-location` URL z předchozího obrázku:
+Je `operation-location` plně kvalifikovaná adresa URL a je přístupná přes HTTP GET. Zde je odpověď JSON z `operation-location` provádění URL z předchozího obrázku:
 
 ```json
 {
@@ -186,7 +186,7 @@ Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **
 
 ### <a name="synchronous-read"></a>Synchronní čtení
 
-K synchronnímu čtení obrázku můžete použít operaci `POST /vision/v2.0/read/core/Analyze`. Když se image načte v celém rozsahu, pak rozhraní API pak vrátí odpověď JSON. Jedinou výjimkou je situace, kdy dojde k chybě. Pokud dojde k chybě, vrátí se následující JSON:
+Pomocí `POST /vision/v2.0/read/core/Analyze` této operace můžete synchronně číst obrázek. Při čtení obrázku v plném rozsahu, potom a teprve potom rozhraní API vrátí odpověď JSON. Jedinou výjimkou je, pokud dojde k chybě. Pokud dojde k chybě, je vrácena následující JSON:
 
 ```json
 {
@@ -194,7 +194,7 @@ K synchronnímu čtení obrázku můžete použít operaci `POST /vision/v2.0/re
 }
 ```
 
-Objekt odpovědi JSON má stejný graf objektů jako asynchronní verze. Pokud jste uživatelem JavaScriptu a chcete typ zabezpečení, můžete použít následující typy k přetypování odezvy JSON jako objekt `AnalyzeResult`.
+Objekt odezvy JSON má stejný objektový graf jako asynchronní verze. Pokud jste uživatel JavaScriptu a chcete bezpečnost typů, následující typy mohou být použity k obsazení odpovědi JSON jako `AnalyzeResult` objekt.
 
 ```typescript
 export interface AnalyzeResult {
@@ -241,25 +241,25 @@ export interface Word {
 }
 ```
 
-Příklad použití naleznete <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">tady <span class="docon docon-navigate-external x-hidden-focus"></span> </a> : v karanténě pro TypeScript a výběrem **Spustit** provizualizujte jeho snadné použití.
+Příklad případu použití naleznete <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">v izolovaném prostoru <span class="docon docon-navigate-external x-hidden-focus"></span> TypeScript zde</a> a vyberte **Spustit,** chcete-li vizualizovat jeho snadnost použití.
 
 ## <a name="stop-the-container"></a>Zastavení kontejneru
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud spouštíte kontejner s povoleným výstupním [připojením](./computer-vision-resource-container-config.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
+Pokud spustíte kontejner s povoleným výstupním [připojením](./computer-vision-resource-container-config.md#mount-settings) a protokolováním, kontejner generuje soubory protokolu, které jsou užitečné k řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Fakturace
 
-Kontejnery Cognitive Services odesílají informace o fakturaci do Azure pomocí odpovídajícího prostředku v účtu Azure.
+Kontejnery služeb Cognitive Services odesílají fakturační údaje do Azure pomocí odpovídajícího prostředku na vašem účtu Azure.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](./computer-vision-resource-container-config.md).
+Další informace o těchto možnostech naleznete v [tématu Konfigurace kontejnerů](./computer-vision-resource-container-config.md).
 
 <!--blogs/samples/video course -->
 
@@ -267,21 +267,21 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání kontejnerů pro počítačové zpracování obrazu. Souhrn:
+V tomto článku jste se naučili koncepty a pracovní postupy pro stahování, instalaci a spouštění kontejnerů počítačového vidění. Souhrn:
 
-* Počítačové zpracování obrazu poskytuje kontejner pro Linux pro Docker, zapouzdření čtení.
-* Image kontejnerů se stáhnou z registru kontejnerů "kontejner ve verzi Preview" v Azure.
-* Spuštění imagí kontejnerů v Dockeru.
-* Pomocí REST API nebo sady SDK můžete volat operace v kontejnerech pro čtení, a to zadáním identifikátoru URI hostitele kontejneru.
-* Při vytváření instance kontejneru, je nutné zadat fakturační informace.
+* Computer Vision poskytuje linuxový kontejner pro Docker, zapouzdření Read.
+* Image kontejnerů se stahují z registru kontejnerů "Container Preview" v Azure.
+* Image kontejnerů běží v Dockeru.
+* Pomocí rozhraní REST API nebo sady SDK můžete volat operace v kontejnerech read zadáním identifikátoru URI hostitele kontejneru.
+* Při vytváření instancí kontejneru je nutné zadat fakturační údaje.
 
 > [!IMPORTANT]
-> Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Kontejnery Cognitive Services neodesílají zákaznická data (například obrázek nebo analyzovaný text) společnosti Microsoft.
+> Kontejnery služeb Cognitive Services nejsou licencovány ke spuštění bez připojení k Azure pro měření. Zákazníci musí povolit kontejnery komunikovat fakturační údaje se službou měření za všech okolností. Kontejnery služeb Cognitive Services neodesílají data zákazníků (například obrázek nebo text, který se analyzuje) společnosti Microsoft.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si téma [konfigurace kontejnerů](computer-vision-resource-container-config.md) pro nastavení konfigurace
-* Přečtěte si [počítačové zpracování obrazu přehled](Home.md) , kde najdete další informace o rozpoznávání vytištěného a rukopisného textu.
-* Podrobnosti o metodách podporovaných kontejnerem najdete v [rozhraní API pro počítačové zpracování obrazu](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
-* Přečtěte si [Nejčastější dotazy](FAQ.md) k řešení problémů souvisejících se počítačové zpracování obrazu funkcemi.
-* Použít více [Cognitive Servicesch kontejnerů](../cognitive-services-container-support.md)
+* Kontrola [Konfigurace kontejnerů](computer-vision-resource-container-config.md) pro nastavení konfigurace
+* Další [informace](Home.md) o rozpoznávání tištěného a ručně psaného textu najdete v přehledu informací o rozpoznávání tištěného a ručně psaného textu
+* Podrobnosti o metodách podporovaných kontejnerem naleznete v [rozhraní API pro počítačové zpracování obrazu.](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)
+* Problémy související s funkcí počítačového vidění naleznete v [nejčastějších dotazech.](FAQ.md)
+* Použití více [kontejnerů služeb Cognitive Services](../cognitive-services-container-support.md)

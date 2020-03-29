@@ -1,7 +1,7 @@
 ---
-title: Seznam hlasů pro převod textu na řeč, Python-Speech Service
+title: Seznam hlasů pro převod textu na řeč, Python - Služba řeči
 titleSuffix: Azure Cognitive Services
-description: V tomto článku se dozvíte, jak získat úplný seznam standardních a neuronové hlasů pro oblast nebo koncový bod pomocí Pythonu. Seznam se vrátí jako JSON a dostupnost hlasu se v jednotlivých oblastech liší.
+description: V tomto článku se dozvíte, jak získat úplný seznam standardních a neurálních hlasů pro oblast/koncový bod pomocí Pythonu. Seznam je vrácen jako JSON a dostupnost hlasu se liší podle oblasti.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: dapine
 ms.openlocfilehash: 51fe6cea80e097f34432ab8dc7293c758bd8d720
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77119809"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>Získání seznamu hlasů pro převod textu na řeč pomocí Pythonu
 
-V tomto článku se dozvíte, jak získat úplný seznam standardních a neuronové hlasů pro oblast nebo koncový bod pomocí Pythonu. Seznam se vrátí jako JSON a dostupnost hlasu se v jednotlivých oblastech liší. Seznam podporovaných oblastí najdete v tématu [oblasti](regions.md).
+V tomto článku se dozvíte, jak získat úplný seznam standardních a neurálních hlasů pro oblast/koncový bod pomocí Pythonu. Seznam je vrácen jako JSON a dostupnost hlasu se liší podle oblasti. Seznam podporovaných oblastí najdete v [tématu Oblasti](regions.md).
 
-Tento článek vyžaduje [účet Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby řeči. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](get-started.md).
+Tento článek vyžaduje [účet Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Řeči. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](get-started.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Python 2.7.x nebo 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)nebo váš oblíbený textový editor
-* Klíč předplatného Azure pro službu pro rozpoznávání řeči
+* Klíč předplatného Azure pro službu Řeč
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
@@ -40,11 +40,11 @@ import requests
 > [!NOTE]
 > Pokud jste tyto moduly ještě nikdy nepoužili, budete je muset před spuštěním programu nainstalovat. Tyto balíčky nainstalujete spuštěním příkazu `pip install requests`.
 
-Požadavky se používají pro požadavky HTTP na službu převodu textu na řeč.
+Požadavky se používají pro požadavky HTTP pro službu převodu textu na řeč.
 
-## <a name="set-the-subscription-key-and-create-a-prompt-for-tts"></a>Nastavte klíč předplatného a vytvoření výzvu pro převod textu na ŘEČ
+## <a name="set-the-subscription-key-and-create-a-prompt-for-tts"></a>Nastavení klíče předplatného a vytvoření výzvy pro tts
 
-V následujících částech vytvoříte metody pro autorizaci, volání rozhraní API pro převod textu na řeč a ověřit odpověď. Pojďme začít vytvořením třídy. Je to, kde dáme naše metody pro výměnu tokenů a volání rozhraní API pro převod textu na řeč.
+V několika následujících částech vytvoříte metody pro zpracování autorizace, volání rozhraní API pro převod textu na řeč a ověření odpovědi. Začněme vytvořením třídy. Toto je místo, kde budeme umístit naše metody pro výměnu tokenů a volání rozhraní API pro převod textu na řeč.
 
 ```python
 class GetVoices(object):
@@ -53,15 +53,15 @@ class GetVoices(object):
         self.access_token = None
 ```
 
-`subscription_key` je jedinečný klíč z Azure Portal.
+Je `subscription_key` váš jedinečný klíč z portálu Azure.
 
 ## <a name="get-an-access-token"></a>Získání přístupového tokenu
 
-Tento koncový bod vyžaduje přístupový token pro ověřování. Chcete-li získat přístupový token, je potřeba systému exchange. Tato ukázka vyměňuje klíč předplatného služby Speech pro přístupový token pomocí `issueToken`ho koncového bodu.
+Tento koncový bod vyžaduje přístupový token pro ověřování. Chcete-li získat přístupový token, je vyžadována výměna. Tato ukázka výměny klíče předplatného služby `issueToken` Speech pro přístupový token pomocí koncového bodu.
 
-V této ukázce se předpokládá, že vaše předplatné služby Speech je v oblasti Západní USA. Pokud používáte jinou oblast, aktualizujte hodnotu pro `fetch_token_url`. Úplný seznam najdete v tématu [oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+Tato ukázka předpokládá, že vaše předplatné služby Řeči je v oblasti USA – západ. Pokud používáte jinou oblast, aktualizujte `fetch_token_url`hodnotu pro aplikaci . Úplný seznam naleznete v tématu [Oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
-Zkopírujte tento kód do třídy `GetVoices`:
+Zkopírujte tento `GetVoices` kód do třídy:
 
 ```python
 def get_token(self):
@@ -74,15 +74,15 @@ def get_token(self):
 ```
 
 > [!NOTE]
-> Další informace o ověřování najdete v tématu [ověřování pomocí přístupového tokenu](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
+> Další informace o ověřování naleznete v tématu [Authenticate with an access token](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
 
-## <a name="make-a-request-and-save-the-response"></a>Vytvořit žádost a uložit odpověď
+## <a name="make-a-request-and-save-the-response"></a>Žádost a uložení odpovědi
 
-Tady se chystáte vytvořit žádost a uložit seznam vrácených hlasů. Nejdřív je potřeba nastavit `base_url` a `path`. Tento příklad předpokládá, že používáte koncový bod západní USA. Pokud je prostředek zaregistrován v jiné oblasti, nezapomeňte aktualizovat `base_url`. Další informace najdete v tématu [oblasti služby Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Zde budete stavět žádost a uložit seznam vrácených hlasů. Nejprve je třeba `base_url` nastavit `path`a . Tato ukázka předpokládá, že používáte koncový bod V USA . Pokud je prostředek zaregistrován v jiné oblasti, `base_url`nezapomeňte aktualizovat . Další informace naleznete v tématu [Oblasti služby Rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
-Dále přidejte požadovaná záhlaví pro požadavek. A konečně provede požadavek do služby. Pokud je požadavek úspěšný a vrátí se stavový kód 200, odpověď se zapíše do souboru.
+Dále přidejte požadované hlavičky pro požadavek. Nakonec požádáte o službu. Pokud je požadavek úspěšný a je vrácen stavový kód 200, odpověď je zapsána do souboru.
 
-Zkopírujte tento kód do třídy `GetVoices`:
+Zkopírujte tento `GetVoices` kód do třídy:
 
 ```python
 def get_voices(self):
@@ -105,7 +105,7 @@ def get_voices(self):
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-Už jste téměř hotovi. Posledním krokem je vytvoření instance své třídy a volání funkce.
+Už jste téměř hotovi. Posledním krokem je vytvoření instance vaší třídy a volání funkcí.
 
 ```python
 if __name__ == "__main__":
@@ -117,7 +117,7 @@ if __name__ == "__main__":
 
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
 
-To je to, že jste připraveni spustit ukázku. Z příkazového řádku (nebo relaci Terminálové služby) přejděte do adresáře vašeho projektu a spusťte:
+To je ono, jste připraveni spustit vzorek. Z příkazového řádku (nebo terminálové relace) přejděte do adresáře projektu a spusťte:
 
 ```console
 python get-voices.py
@@ -125,7 +125,7 @@ python get-voices.py
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Ujistěte se, že zdrojový kód ukázkové aplikace, jako jsou klíče předplatného odebrání jakýchkoli důvěrných informací.
+Nezapomeňte odebrat všechny důvěrné informace ze zdrojového kódu ukázkové aplikace, jako jsou klíče předplatného.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -136,4 +136,4 @@ Ujistěte se, že zdrojový kód ukázkové aplikace, jako jsou klíče předpla
 
 * [Referenční informace k rozhraní API pro převod textu na řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [Vytváření vlastních hlasových písem](how-to-customize-voice-font.md)
-* [Záznam ukázek hlasu pro vytvoření vlastního hlasu](record-custom-voice-samples.md)
+* [Záznam hlasových vzorků pro vytvoření vlastního hlasu](record-custom-voice-samples.md)

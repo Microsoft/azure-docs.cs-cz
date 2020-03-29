@@ -1,7 +1,7 @@
 ---
-title: Přepis asynchronních konverzací (Preview) – služba Speech
+title: Přepis asynchronní konverzace (preview) – služba řeči
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat přepis asynchronní konverzace pomocí služby Speech. K dispozici pouze pro Java.
+description: Zjistěte, jak používat přepis asynchronní konverzace pomocí služby Řeč. K dispozici pouze pro Jazyk Java.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,30 +10,30 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: amishu
-ms.openlocfilehash: d20cdb2f37c3da357ca112045a0d2845bbb6df98
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
-ms.translationtype: MT
+ms.openlocfilehash: c1f0110c83eb42aaedbd36736946ae3faff58699
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260017"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80366611"
 ---
-# <a name="asynchronous-conversation-transcription-preview"></a>Přepis asynchronní konverzace (Náhled)
+# <a name="asynchronous-conversation-transcription-preview"></a>Přepis asynchronní konverzace (náhled)
 
-V tomto článku se v přepisu asynchronní konverzace ukazuje použití rozhraní **RemoteConversationTranscriptionClient** API. Pokud jste nakonfigurovali přepis konverzace na asynchronní přepis a máte `conversationId`, můžete získat přepis přidružený k tomuto `conversationId` pomocí rozhraní **RemoteConversationTranscriptionClient** API.
+V tomto článku je přepis asynchronní konverzace prokázáno pomocí **rozhraní API vzdálenékonverzacetranskripce klienta.** Pokud jste nakonfigurovali přepis konverzace k asynchronnímu `conversationId`přepisu a mají , můžete `conversationId` získat přepis přidružený k tomupomocí rozhraní API **klienta RemoteConversationTranscriptionClient.**
 
-## <a name="asynchronous-vs-real-time--asynchronous"></a>Asynchronní vs. v reálném čase a asynchronní
+## <a name="asynchronous-vs-real-time--asynchronous"></a>Asynchronní vs. real-time + asynchronní
 
-Pomocí asynchronního přepisu zařadíte do proudu zvuk konverzace, ale v reálném čase nebudete vracet žádný přepis. Místo toho se po odeslání zvuku pomocí `conversationId` `Conversation` dotazuje na stav asynchronního přepisu. Po přípravě asynchronního přepisu získáte `RemoteConversationTranscriptionResult`.
+S asynchronním přepisem streamujete zvuk konverzace, ale nepotřebujete přepis vrácený v reálném čase. Místo toho po odeslání zvuku `conversationId` použijte `Conversation` of k dotazování na stav asynchronního přepisu. Když je asynchronní přepis připraven, získáte `RemoteConversationTranscriptionResult`.
 
-V reálném čase plus asynchronní získáte přepis v reálném čase, ale také získáte přepis pomocí `conversationId` (podobně jako asynchronní scénář).
+S real-time plus asynchronní, získáte přepis v reálném čase, ale také získat přepis `conversationId` dotazováním s (podobně jako asynchronní scénář).
 
-K provedení asynchronního přepisu se vyžadují dva kroky. Prvním krokem je nahrání zvuku a výběr buď asynchronního, nebo plus v reálném čase. Druhým krokem je získání výsledků přepisu.
+K provedení asynchronního transkripce jsou nutné dva kroky. Prvním krokem je nahrát zvuk, výběr buď asynchronní pouze nebo v reálném čase plus asynchronní. Druhým krokem je získat výsledky přepisu.
 
 ## <a name="upload-the-audio"></a>Nahrát zvuk
 
-Před provedením asynchronního přepisu je třeba odeslat zvuk do služby přepisu konverzace pomocí sady Microsoft rozpoznávání řeči Client SDK (verze 1.8.0 nebo vyšší).
+Před provedením asynchronního přepisu je třeba odeslat zvuk do služby přepisu konverzace pomocí sady Microsoft Cognitive Speech client SDK (verze 1.8.0 nebo vyšší).
 
-Tento příklad kódu ukazuje, jak vytvořit Transcriber konverzace pro režim pouze asynchronního režimu. Aby bylo možné streamovat zvuk do Transcriber, budete muset pro sadu Speech SDK přidat zvukový stream odvozený z [konverzací přepisovat v reálném čase](how-to-use-conversation-transcription-service.md). V části **omezení** tohoto tématu najdete podporované rozhraní API platforem a jazyků.
+Tento ukázkový kód ukazuje, jak vytvořit přepiskonverzace pro režim pouze pro asynchronní. Chcete-li streamovat zvuk do přepisovače, budete muset přidat kód streamování zvuku odvozený z [přepisování konverzací v reálném čase pomocí sady Speech SDK](how-to-use-conversation-transcription-service.md). Naleznete v části **Omezení** v tomto tématu zobrazíte podporovaná platformy a jazyky API.
 
 ```java
 // Create the speech config object
@@ -56,8 +56,8 @@ Conversation conversation = conversationFuture.get();
 
 // Create an audio stream from a wav file or from the default microphone if you want to stream live audio from the supported devices
 // Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback
-PullAudioInputStreamCallback wavfilePullStreamCallback = Helper.OpenWavFile("16Khz16Bits8channelsOfRecordedPCMAudio.wav");
-// Create an audio stream format assuming the file used above is 16Khz, 16 bits and 8 channel pcm wav file
+PullAudioInputStreamCallback wavfilePullStreamCallback = Helper.OpenWavFile("16kHz16Bits8channelsOfRecordedPCMAudio.wav");
+// Create an audio stream format assuming the file used above is 16kHz, 16 bits and 8 channel pcm wav file
 AudioStreamFormat audioStreamFormat = AudioStreamFormat.getWaveFormatPCM((long)16000, (short)16,(short)8);
 // Create an input stream
 AudioInputStream audioStream = AudioInputStream.createPullStream(wavfilePullStreamCallback, audioStreamFormat);
@@ -101,7 +101,7 @@ Future<?> future = transcriber.startTranscribingAsync();
 ...
 ```
 
-Pokud chcete v reálném čase _plus_ asynchronní, komentovat a odkomentovat příslušné řádky kódu následujícím způsobem:
+Pokud chcete v reálném čase _plus_ asynchronní, komentář a odkomentovat příslušné řádky kódu takto:
 
 ```java
 // Set the property for asynchronous transcription
@@ -111,17 +111,17 @@ Pokud chcete v reálném čase _plus_ asynchronní, komentovat a odkomentovat p�
 speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", ServicePropertyChannel.UriQueryParameter);
 ```
 
-## <a name="get-transcription-results"></a>Získat výsledky přepisu
+## <a name="get-transcription-results"></a>Získání výsledků přepisu
 
-Tento krok získá asynchronní výsledky přepisu, ale předpokládá, že se vyžaduje zpracování v reálném čase, které můžete potřebovat jinde. Další informace najdete v tématu [konverzace přepisovat v reálném čase se sadou Speech SDK](how-to-use-conversation-transcription-service.md).
+Tento krok získá výsledky asynchronního přepisu, ale předpokládá, že jakékoli zpracování v reálném čase, které jste mohli vyžadovat, se provádí jinde. Další informace naleznete [v tématu Přepiskonverzace v reálném čase s sadou Speech SDK](how-to-use-conversation-transcription-service.md).
 
-Zde uvedený kód vyžaduje **vzdálenou konverzaci verze 1.8.0**, která je podporovaná jenom pro Java (1.8.0 nebo vyšší) v systémech Windows, Linux a Android (jenom úroveň rozhraní API 26 nebo vyšší).
+Pro kód zde uvedený potřebujete **vzdálenou konverzaci verze 1.8.0**, podporovanou pouze pro Javu (1.8.0 nebo vyšší) ve Windows, Linuxu a Androidu (pouze úroveň rozhraní API 26 nebo vyšší).
 
-### <a name="obtaining-the-client-sdk"></a>Získání klientské sady SDK
+### <a name="obtaining-the-client-sdk"></a>Získání sady SDK klienta
 
-**Vzdálenou konverzaci** můžete získat úpravou souboru pom. XML následujícím způsobem.
+**Vzdálenou konverzaci** můžete získat takto úpravou souboru pom.xml.
 
-1. Na konci souboru před uzavírací `</project>`značky vytvořte `repositories` element s odkazem na úložiště Maven pro sadu Speech SDK:
+1. Na konci souboru před uzavírací `</project>`značkou `repositories` vytvořte prvek s odkazem na úložiště Maven pro sadu Speech SDK:
 
    ```xml
    <repositories>
@@ -133,7 +133,7 @@ Zde uvedený kód vyžaduje **vzdálenou konverzaci verze 1.8.0**, která je pod
    </repositories>
    ```
 
-2. Přidejte také prvek `dependencies` s remoteconversation-Client-SDK 1.8.0 jako závislost:
+2. Také přidat `dependencies` prvek, s remoteconversation-client sdk 1.8.0 jako závislost:
 
    ```xml
    <dependencies>
@@ -145,11 +145,11 @@ Zde uvedený kód vyžaduje **vzdálenou konverzaci verze 1.8.0**, která je pod
    </dependencies>
    ```
 
-3. Uložit změny
+3. Uložení změn
 
-### <a name="sample-transcription-code"></a>Ukázka přepisu kódu
+### <a name="sample-transcription-code"></a>Ukázkový kód přepisu
 
-Po dokončení `conversationId`vytvořte vzdálenou konverzaci s přepisem klienta **RemoteConversationTranscriptionClient** v klientské aplikaci, aby se dotazoval na stav asynchronního přepisu. K získání objektu [PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) použijte metodu **getTranscriptionOperation** v **RemoteConversationTranscriptionClient** . Objekt PollerFlux bude obsahovat informace o stavu vzdálené operace **RemoteConversationTranscriptionOperation** a konečném výsledku **RemoteConversationTranscriptionResult**. Po dokončení operace Získejte **RemoteConversationTranscriptionResult** voláním **getFinalResult** na [SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java). V tomto kódu jednoduše vypíšeme obsah výsledku do systémového výstupu.
+Po , `conversationId`vytvořte vzdálené konverzace přepis **klienta RemoteConversationTranscriptionClient** v klientské aplikaci dotaz na stav asynchronního přepisu. Použijte **metodu getTranscriptionOperation** v **remoteconversationtranscriptionClient** k získání objektu [PollerFlux.](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) Objekt PollerFlux bude mít informace o stavu vzdáleného provozu **RemoteConversationTranscriptionOperation** a konečném výsledku **RemoteConversationTranscriptionResult**. Po dokončení operace, **získejte RemoteConversationTranscriptionResult** voláním **getFinalResult** na [SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java). V tomto kódu jednoduše vytiskneme obsah výsledků na výstup systému.
 
 ```java
 // Create the speech config object
@@ -202,4 +202,4 @@ System.out.println("Operation finished");
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte naše ukázky na GitHubu](https://aka.ms/csspeech/samples)
+> [Prohlédněte si naše ukázky na GitHubu](https://aka.ms/csspeech/samples)

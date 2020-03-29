@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: 02227a0d4b9bf436632c5179696228ae865ff866
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943737"
 ---
-Pokud chcete streamovat v komprimovaném zvukovém formátu ke službě rozpoznávání řeči, vytvořte `PullAudioInputStream` nebo `PushAudioInputStream`. Pak vytvořte `AudioConfig` z instance vaší třídy streamu a určete formát komprese datového proudu.
+Chcete-li streamovat v komprimovaném `PullAudioInputStream` formátu `PushAudioInputStream`zvuku do služby Řeč, vytvořte nebo . Potom vytvořte `AudioConfig` z instance třídy datového proudu a určete formát komprese datového proudu.
 
-Řekněme, že máte vstupní třídu streamu nazvanou `pushStream` a používáte OPUS/OGG. Váš kód může vypadat takto:
+Předpokládejme, že máte vstupní stream `pushStream` třídy volána a používají OPUS/OGG. Váš kód může vypadat takto:
 
 ```cpp
 using namespace Microsoft::CognitiveServices::Speech;

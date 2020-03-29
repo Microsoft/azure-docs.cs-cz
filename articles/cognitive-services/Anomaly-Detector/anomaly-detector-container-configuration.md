@@ -1,7 +1,7 @@
 ---
-title: Postup konfigurace kontejneru pro rozhraní API detektoru anomálií
+title: Konfigurace kontejneru pro rozhraní API detektoru anomálií
 titleSuffix: Azure Cognitive Services
-description: Běhové prostředí kontejneru rozhraní API pro detekci anomálií je nakonfigurované pomocí argumentů příkazu `docker run`. Tento kontejner má několik požadovaných nastavení spolu s několika volitelnými nastaveními.
+description: Prostředí runtime kontejneru rozhraní API detektoru anomálií je konfigurováno pomocí argumentů příkazu. `docker run` Tento kontejner má několik požadovaných nastavení, spolu s několika volitelnými nastaveními.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
 ms.openlocfilehash: f7e04a16fa35d492b8e5e6c53a05220e8b96a38a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73795854"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurace kontejnerů Detektoru anomálií
 
-Běhové prostředí kontejneru **detektoru anomálií** se konfiguruje pomocí `docker run`ch argumentů příkazu. Tento kontejner má několik požadovaných nastavení spolu s několika volitelnými nastaveními. K dispozici je několik [příkladů](#example-docker-run-commands) příkazu. Nastavení fakturace jsou specifická pro kontejner. 
+Prostředí runtime kontejneru **detektoru anomálií** je konfigurováno pomocí argumentů příkazu. `docker run` Tento kontejner má několik požadovaných nastavení, spolu s několika volitelnými nastaveními. K dispozici je několik [příkladů](#example-docker-run-commands) příkazu. Nastavení specifická pro kontejner jsou nastavení fakturace. 
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 
@@ -27,51 +27,51 @@ Tento kontejner má následující nastavení konfigurace:
 
 |Požaduje se|Nastavení|Účel|
 |--|--|--|
-|Ano|[ApiKey](#apikey-configuration-setting)|Používá se ke sledování fakturačních informací.|
-|Ne|[ApplicationInsights](#applicationinsights-setting)|Umožňuje přidat do svého kontejneru podporu telemetrie [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) .|
+|Ano|[ApiKey](#apikey-configuration-setting)|Slouží ke sledování fakturačních údajů.|
+|Ne|[ApplicationInsights](#applicationinsights-setting)|Umožňuje přidat do kontejneru telemetrická podporu [Azure Application Insights.](https://docs.microsoft.com/azure/application-insights)|
 |Ano|[Fakturace](#billing-configuration-setting)|Určuje identifikátor URI koncového bodu prostředku služby v Azure.|
-|Ano|[Konkrétní](#eula-setting)| Označuje, že jste přijali licenci pro kontejner.|
-|Ne|[Fluent](#fluentd-settings)|Protokol zápisu a volitelně data metriky na server se systémem.|
-|Ne|[Proxy server http](#http-proxy-credentials-settings)|Nakonfigurujte proxy server HTTP pro vytváření odchozích požadavků.|
-|Ne|[Protokolu](#logging-settings)|Poskytuje podporu protokolování ASP.NET Core pro váš kontejner. |
-|Ne|[Připojí](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru zpátky do hostitelského počítače.|
+|Ano|[Eula](#eula-setting)| Označuje, že jste přijali licenci pro kontejner.|
+|Ne|[Plynulý](#fluentd-settings)|Zápis protokolu a volitelně metrických dat na server Fluentd.|
+|Ne|[Http Proxy](#http-proxy-credentials-settings)|Nakonfigurujte proxy http pro vytváření odchozích požadavků.|
+|Ne|[protokolování](#logging-settings)|Poskytuje podporu protokolování ASP.NET core pro váš kontejner. |
+|Ne|[Koně](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru zpět do hostitelského počítače.|
 
 > [!IMPORTANT]
-> Nastavení [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)a [`Eula`](#eula-setting) se používají společně a je nutné zadat platné hodnoty pro všechny tři z nich. v opačném případě se Váš kontejner nespustí. Další informace o tom, jak pomocí těchto nastavení konfigurace vytvořit instanci kontejneru, najdete v tématu [fakturace](anomaly-detector-container-howto.md#billing).
+> Nastavení [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting), [`Eula`](#eula-setting) a jsou používány společně a je nutné zadat platné hodnoty pro všechny tři z nich; jinak se kontejner nespustí. Další informace o použití těchto nastavení konfigurace k vytvoření instance kontejneru naleznete v tématu [Fakturace](anomaly-detector-container-howto.md#billing).
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-Nastavení `ApiKey` Určuje klíč prostředku Azure, který se používá ke sledování fakturačních informací pro kontejner. Je nutné zadat hodnotu pro ApiKey a hodnota musí být platným klíčem pro prostředek _detektoru anomálie_ zadaný pro nastavení konfigurace [`Billing`](#billing-configuration-setting) .
+Toto `ApiKey` nastavení určuje klíč prostředků Azure, který slouží ke sledování fakturačních údajů pro kontejner. Je nutné zadat hodnotu apikey a hodnota musí být platný klíč pro [`Billing`](#billing-configuration-setting) prostředek _detektoru anomálií_ zadaný pro nastavení konfigurace.
 
-Toto nastavení najdete na následujícím místě:
+Toto nastavení naleznete na následujícím místě:
 
-* Azure Portal: Správa prostředků **detektoru anomálií** , v části **klíče**
+* Portál Azure: Správa prostředků **detektoru anomálií** v části **Klíče**
 
-## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
+## <a name="applicationinsights-setting"></a>ApplicationInsights, nastavení
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
 ## <a name="billing-configuration-setting"></a>Nastavení konfigurace fakturace
 
-Nastavení `Billing` Určuje identifikátor URI koncového bodu prostředku _detektoru anomálií_ v Azure, který se používá pro informace o fakturaci pro daný kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro prostředek _detektoru anomálií_ v Azure.
+Nastavení `Billing` určuje identifikátor URI koncového bodu prostředku _detektoru anomálií v_ Azure, který slouží k měření fakturačních informací pro kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a hodnota musí být platný identifikátor URI koncového bodu pro prostředek _detektoru anomálií v_ Azure.
 
-Toto nastavení najdete na následujícím místě:
+Toto nastavení naleznete na následujícím místě:
 
-* Azure Portal: Přehled **detektoru anomálií** , označený `Endpoint`
+* Portál Azure: Přehled **detektoru anomálií** s označením`Endpoint`
 
-|Požaduje se| Název | Data type | Popis |
+|Požaduje se| Name (Název) | Datový typ | Popis |
 |--|------|-----------|-------------|
-|Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace Další informace o získání identifikátoru URI fakturace najdete v tématu [shromáždění požadovaných parametrů](anomaly-detector-container-howto.md#gathering-required-parameters). Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](../cognitive-services-custom-subdomains.md). |
+|Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace. Další informace o získání fakturačního identifikátoru URI naleznete v [tématu shromažďování požadovaných parametrů](anomaly-detector-container-howto.md#gathering-required-parameters). Další informace a úplný seznam místních koncových bodů naleznete [v tématu Vlastní názvy subdomén pro služby Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
-## <a name="eula-setting"></a>Nastavení smlouvy EULA
+## <a name="eula-setting"></a>Nastavení Eula
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Nastavení Fluent
+## <a name="fluentd-settings"></a>Nastavení fluentdu
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Nastavení přihlašovacích údajů proxy serveru http
+## <a name="http-proxy-credentials-settings"></a>Nastavení pověření proxy http
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -82,40 +82,40 @@ Toto nastavení najdete na následujícím místě:
 
 ## <a name="mount-settings"></a>Nastavení připojení
 
-Ke čtení a zápisu dat do a z kontejneru použijte připojení BIND. Zadáním možnosti `--mount` v příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) můžete zadat vstupní připojení nebo připojení výstupu.
+Pomocí vazební připojení číst a zapisovat data do a z kontejneru. Vstupní připojení nebo výstupní připojení můžete určit `--mount` zadáním možnosti v příkazu [spustit docker.](https://docs.docker.com/engine/reference/commandline/run/)
 
-Kontejnery detektoru anomálií nepoužívají vstupní ani výstupní připojení k ukládání dat o školeních nebo službách. 
+Kontejnery detektoranolií nepoužívají vstupní nebo výstupní připojení k ukládání dat školení nebo služby. 
 
-Přesná syntaxe umístění hostitelského připojení se liší v závislosti na hostitelském operačním systému. Kromě toho je možné, že umístění pro připojení k [hostitelskému počítači](anomaly-detector-container-howto.md#the-host-computer)není přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby Docker a oprávněním pro umístění připojení hostitele. 
+Přesná syntaxe umístění připojení hostitele se liší v závislosti na hostitelském operačním systému. Umístění připojení [hostitelského počítače](anomaly-detector-container-howto.md#the-host-computer)navíc nemusí být přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby Docker a oprávněními umístění připojení hostitele. 
 
-|Nepovinné| Název | Data type | Popis |
+|Nepovinné| Name (Název) | Datový typ | Popis |
 |-------|------|-----------|-------------|
-|Nepovolené| `Input` | Řetězec | Kontejnery detektoru anomálií toto nepoužívají.|
-|Nepovinné| `Output` | Řetězec | Cíl připojení pro výstup. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nepovolené| `Input` | Řetězec | Kontejnery detektoru anomálií nepoužívají toto.|
+|Nepovinné| `Output` | Řetězec | Cíl výstupního připojení. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Příklady příkazů pro spuštění Docker 
+## <a name="example-docker-run-commands"></a>Příklad příkazů spuštění dockeru 
 
-Následující příklady používají konfigurační nastavení k ilustraci, jak psát a používat `docker run` příkazy.  Po spuštění bude kontejner dál běžet, dokud ho [nezastavíte](anomaly-detector-container-howto.md#stop-the-container) .
+Následující příklady používají nastavení konfigurace pro ilustraci, jak psát a používat `docker run` příkazy.  Po spuštění kontejneru pokračuje v běhu, dokud jej [nezastavíte.](anomaly-detector-container-howto.md#stop-the-container)
 
-* **Znak pro pokračování řádku**: příkazy Docker v následujících částech používají zpětné lomítko, `\`jako znak pro pokračování řádku pro prostředí bash shell. Tuto položku nahraďte nebo odeberte na základě požadavků vašich hostitelských operačních systémů. Například znak pro pokračování řádku pro systém Windows je blikající kurzor, `^`. Nahraďte zpětné lomítko znakem stříšky. 
-* **Pořadí argumentů**: Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
+* **Znak pokračování řádku**: Příkazy Dockeru v následujících `\`částech používají zpětné lomítko , jako znak pokračování řádku pro bash shell. Nazákladě požadavků hostitelského operačního systému jej nahraďte nebo odeberte. Například znak pokračování řádku pro okna je `^`stříška, . Nahraďte zadní lomítko stříškou. 
+* **Pořadí argumentů**: Neměňte pořadí argumentů, pokud nejste velmi obeznámeni s kontejnery Dockeru.
 
-Hodnotu v závorkách nahraďte `{}`s vlastními hodnotami:
+Nahraďte hodnotu `{}`v závorkách , vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-| **{API_KEY}** | Klíč koncového bodu prostředku `Anomaly Detector` na stránce klíčů Azure `Anomaly Detector`. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled služby Azure `Anomaly Detector`.| Explicitní příklady najdete v tématu [shromažďování požadovaných parametrů](anomaly-detector-container-howto.md#gathering-required-parameters) . |
+| **{API_KEY}** | Klíč koncového bodu `Anomaly Detector` prostředku na `Anomaly Detector` stránce Azure Keys. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Hodnota koncového bodu fakturace `Anomaly Detector` je dostupná na stránce Přehled Azure.| Viz [shromažďování požadovaných parametrů](anomaly-detector-container-howto.md#gathering-required-parameters) pro explicitní příklady. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> Aby bylo možné spustit kontejner, musí být zadány možnosti `Eula`, `Billing`a `ApiKey`. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](anomaly-detector-container-howto.md#billing).
-> Hodnota ApiKey je **klíč** ze stránky klíče prostředků služby Azure anomálie detektor. 
+> `Eula`, `Billing`a `ApiKey` možnosti musí být zadány ke spuštění kontejneru; v opačném případě se kontejner nespustí.  Další informace naleznete v [tématu Fakturace](anomaly-detector-container-howto.md#billing).
+> Hodnota ApiKey je **klíč** ze stránky klíče prostředků Azure Anomaly Detector. 
 
-## <a name="anomaly-detector-container-docker-examples"></a>Příklady Docker kontejneru detektoru anomálií
+## <a name="anomaly-detector-container-docker-examples"></a>Příklady dockeru kontejneru anomálií
 
-Následující příklady Docker jsou pro kontejner detektoru anomálií. 
+Následující příklady Dockeru jsou pro kontejner detektoru anomálií. 
 
 ### <a name="basic-example"></a>Základní příklad 
 
@@ -139,5 +139,5 @@ Následující příklady Docker jsou pro kontejner detektoru anomálií.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nasazení kontejneru detektoru anomálií pro Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)
-* [Další informace o službě rozhraní API detektoru anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
+* [Nasazení kontejneru detektoru anomálií do instancí kontejnerů Azure](how-to/deploy-anomaly-detection-on-container-instances.md)
+* [Další informace o službě API detektoru anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

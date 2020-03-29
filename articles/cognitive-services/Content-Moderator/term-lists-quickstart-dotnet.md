@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72935943"
 ---
-# <a name="check-text-against-a-custom-term-list-in-c"></a>Kontrolovat text proti vlastnímu seznamu podmínek vC#
+# <a name="check-text-against-a-custom-term-list-in-c"></a>Kontrola textu podle seznamu vlastních termínů v c #
 
 Výchozí globální seznam výrazů v Azure Content Moderatoru je dostačující pro většinu potřeb z hlediska moderování obsahu. Možná ale budete potřebovat vyhledat výrazy, které jsou specifické pro vaši organizaci. Například můžete chtít označit názvy konkurentů k další kontrole. 
 
@@ -32,17 +32,17 @@ Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít
 - Úprava informací o seznamu
 - Aktualizace indexu tak, aby změny provedené v seznamu byly součástí nového porovnávání
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Registrace do služeb Content Moderatoru
 
 Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč předplatného. Získáte ho přihlášením k odběru služby Content Moderator na webu [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
 
-## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
+## <a name="create-your-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio
 
-1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)** .
+1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)**.
 
-1. Pojmenujte projekt **TermLists**. Projekt vyberte jako jediný spouštěný projekt řešení.
+1. Pojmenujte projekt **TermLists**. Projekt vyberte jako jeden spouštěný projekt řešení.
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
@@ -69,7 +69,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
-Přidejte následující kód, abyste pro své předplatné vytvořili klienta Content Moderatoru. Aktualizujte pole `AzureEndpoint` a `CMSubscriptionKey` hodnotou adresy URL koncového bodu a klíče předplatného. Můžete je najít na kartě **rychlý Start** prostředku v Azure Portal.
+Přidejte následující kód, abyste pro své předplatné vytvořili klienta Content Moderatoru. Aktualizujte `AzureEndpoint` `CMSubscriptionKey` pole a hodnotami adresy URL koncového bodu a klíče předplatného. Najdete je na kartě **Rychlý start** vašeho prostředku na webu Azure Portal.
 
 ```csharp
 /// <summary>
@@ -264,7 +264,7 @@ Text prohledáte s použitím seznamu výrazů pomocí **ContentModeratorClient.
 - Typ MIME, což může být "text/html", "text/xml", "text/markdown" nebo "text/plain"
 - Text, který se má prohledat
 - Logická hodnota. Nastavte toto pole na **true**, pokud chcete, aby se v textu před jeho prohledáním provedly automatické opravy.
-- Logická hodnota. Nastavte toto pole na **hodnotu true** , chcete-li zjistit osobní údaje v textu.
+- Logická hodnota. Chcete-li zjistit osobní údaje v textu, nastavte toto pole na **hodnotu true.**
 - ID seznamu výrazů
 
 Další informace najdete v [referenčních informacích k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
@@ -362,9 +362,9 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="compose-the-main-method"></a>Vytvoření metody Main
+## <a name="compose-the-main-method"></a>Sestavit hlavní metodu
 
-Přidejte definici metody **Main** do oboru názvů **TermLists**, třída **Program**. Nakonec zavřete třídu **Program** a obor názvů **TermLists**.
+Přidejte definici **hlavní** metody do oboru názvů **TermLists**, **program**třídy . Nakonec zavřete třídu **Program** a obor názvů **TermLists.**
 
 ```csharp
 static void Main(string[] args)
@@ -404,7 +404,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>Zobrazení výstupu spuštěním aplikace
 
-Výstup vaší konzoly bude vypadat následovně:
+Výstup konzole bude vypadat takto:
 
 ```console
 Creating term list.
@@ -438,4 +438,4 @@ Press ENTER to close the application.
 
 ## <a name="next-steps"></a>Další kroky
 
-Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro technologii .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.
+Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.

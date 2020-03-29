@@ -1,5 +1,5 @@
 ---
-title: Nasazení kontejneru LUIS ve službě Azure Container Instances
+title: Nasazení kontejneru LUIS v instanci azure kontejnerů
 titleSuffix: Azure Cognitive Services
 description: Nasaďte kontejner LUIS do instance kontejneru Azure a otestujte ho ve webovém prohlížeči.
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: dapine
 ms.openlocfilehash: 30fd19634f6054b8b636dabcb4ef83b118554468
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75689444"
 ---
-# <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>Nasazení kontejneru Language Understanding (LUIS) do služby Azure Container Instances
+# <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>Nasazení kontejneru language understanding (LUIS) do instancí kontejneru Azure
 
-Naučte se, jak nasadit kontejner Cognitive Services [Luis](luis-container-howto.md) do služby Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Tento postup ukazuje vytvoření prostředku detektoru anomálií. Pak se podíváme na navýšení přidružené image kontejneru. Nakonec zvýrazníme možnost cvičení těchto dvou z prohlížeče. Pomocí kontejnerů můžete před správou infrastruktury místo toho, aby se zaměřily na vývoj aplikací, posunout pozornost vývojářů.
+Zjistěte, jak nasadit kontejner [LUIS](luis-container-howto.md) služeb cognitive services do [instancí Azure Container](https://docs.microsoft.com/azure/container-instances/). Tento postup ukazuje vytvoření prostředku detektoru anomálií. Pak budeme diskutovat o vytažení přidružené image kontejneru. Nakonec zvýrazněme schopnost vykonávat orchestraci obou z prohlížeče. Pomocí kontejnerů můžete přesunout pozornost vývojářů od správy infrastruktury místo toho se zaměřením na vývoj aplikací.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-prerequisites.md)]
 
@@ -27,14 +27,14 @@ Naučte se, jak nasadit kontejner Cognitive Services [Luis](luis-container-howto
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 
-Kontejner LUIS vyžaduje soubor modelu `.gz`, který se během běhu vyžádal. Kontejner musí být schopný získat přístup k tomuto souboru modelu prostřednictvím připojení svazku z instance kontejneru. Informace o tom, jak vytvořit sdílenou složku Azure, najdete v tématu [Vytvoření sdílení souborů](../../storage/files/storage-how-to-create-file-share.md). Poznamenejte si název účtu Azure Storage, klíč a název sdílené složky, abyste je mohli později potřebovat.
+Kontejner LUIS vyžaduje `.gz` soubor modelu, který je vyžádán za běhu. Kontejner musí mít přístup k tomuto souboru modelu prostřednictvím připojení svazku z instance Container. Informace o vytvoření sdílené složky Azure najdete [v tématu vytvoření sdílené složky](../../storage/files/storage-how-to-create-file-share.md). Název účtu Azure Storage, klíč a název sdílené složky Azure Storage si všimněte, protože je budete později potřebovat.
 
-### <a name="export-and-upload-packaged-luis-app"></a>Export a nahrání zabalených aplikací v LUIS
+### <a name="export-and-upload-packaged-luis-app"></a>Export a nahrávání zabalené aplikace LUIS
 
-Aby bylo možné nahrát LUIS model (zabalenou aplikaci) do sdílené složky Azure, budete <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">ho muset nejdřív <span class="docon docon-navigate-external x-hidden-focus"> </span>exportovat z portálu Luis </a>. V Azure Portal přejděte na stránku **Přehled** prostředku účtu úložiště a vyberte **sdílené složky**. Vyberte název sdílené složky, který jste nedávno vytvořili, a pak vyberte tlačítko **nahrát** .
+Chcete-li nahrát model LUIS (zabalenou aplikaci) do sdílené složky Azure, budete ho muset <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">nejprve <span class="docon docon-navigate-external x-hidden-focus"> </span>exportovat z portálu LUIS </a>. Na webu Azure najdete na stránce **Přehled** prostředku účtu úložiště a vyberte **Sdílené položky souborů**. Vyberte název sdílené složky, který jste nedávno vytvořili, a pak vyberte tlačítko **Odeslat.**
 
 > [!div class="mx-imgBorder"]
-> ![odeslat do sdílené složky](media/luis-how-to-deploy-to-aci/upload-file-share.png)
+> ![Nahrát do sdílené složky](media/luis-how-to-deploy-to-aci/upload-file-share.png)
 
 Nahrajte soubor modelu LUIS.
 

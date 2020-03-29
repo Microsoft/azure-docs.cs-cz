@@ -5,21 +5,21 @@ ms.date: 10/02/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 7ccbc6c06419d22add7c52829069bb858cb35cf7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73484080"
 ---
 Kontejner má následující nastavení konfigurace:
 
 |Požaduje se|Nastavení|Účel|
 |--|--|--|
-|Ano|[ApiKey](#apikey-configuration-setting)|Sleduje fakturační informace.|
-|Ne|[ApplicationInsights](#applicationinsights-setting)|Umožňuje přidat do svého kontejneru podporu telemetrie [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) .|
+|Ano|[ApiKey](#apikey-configuration-setting)|Sleduje fakturační údaje.|
+|Ne|[ApplicationInsights](#applicationinsights-setting)|Umožňuje přidání podpory telemetrie [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) do vašeho kontejneru.|
 |Ano|[Fakturace](#billing-configuration-setting)|Určuje identifikátor URI koncového bodu prostředku služby v Azure.|
-|Ano|[Konkrétní](#eula-setting)| Označuje, že jste přijali licenci pro kontejner.|
-|Ne|[Fluent](#fluentd-settings)|Zapisuje protokol a volitelně také data metriky na server, který je na něj.|
-|Ne|Proxy server HTTP|Konfiguruje proxy server HTTP pro vytváření odchozích požadavků.|
-|Ne|[Protokolu](#logging-settings)|Poskytuje podporu protokolování ASP.NET Core pro váš kontejner. |
-|Ne|[Připojí](#mount-settings)|Přečte a zapisuje data z hostitelského počítače do kontejneru a z kontejneru zpátky do hostitelského počítače.|
+|Ano|[Eula](#eula-setting)| Označuje, že jste přijali licenci pro kontejner.|
+|Ne|[Plynulý](#fluentd-settings)|Zapisuje protokol a volitelně metrická data na server Fluentd.|
+|Ne|HTTP Proxy|Konfiguruje proxy server HTTP pro vytváření odchozích požadavků.|
+|Ne|[protokolování](#logging-settings)|Poskytuje podporu protokolování ASP.NET core pro váš kontejner. |
+|Ne|[Koně](#mount-settings)|Čte a zapisuje data z hostitelského počítače do kontejneru a z kontejneru zpět do hostitelského počítače.|

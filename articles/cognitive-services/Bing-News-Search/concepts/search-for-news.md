@@ -1,7 +1,7 @@
 ---
-title: Hledání zpráv pomocí rozhraní API Bingu pro vyhledávání zpráv
+title: Hledání novinek pomocí rozhraní API pro vyhledávání zpráv Bingu
 titleSuffix: Azure Cognitive Services
-description: Naučte se odesílat vyhledávací dotazy pro obecné novinky, témata trendů a titulky.
+description: Přečtěte si, jak odesílat vyhledávací dotazy na obecné zprávy, aktuální témata a nadpisy.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220322"
 ---
-# <a name="search-for-news-with-the-bing-news-search-api"></a>Hledání zpráv pomocí rozhraní API Bingu pro vyhledávání zpráv
+# <a name="search-for-news-with-the-bing-news-search-api"></a>Hledání novinek pomocí rozhraní API pro vyhledávání zpráv Bingu
 
-Rozhraní API Bingu pro vyhledávání obrázků usnadňuje integraci funkcí vyhledávání zpráv Bingu ve vašich aplikacích.
+Rozhraní API pro vyhledávání obrázků Bingu usnadňuje integraci funkcí vyhledávání kognitivních zpráv bingu do vašich aplikací.
 
-I když rozhraní API Bingu pro vyhledávání zpráv primárně najde a vrátí relevantní články s příspěvky, nabízí několik funkcí pro inteligentní a cílené načítání zpráv na webu.
+Zatímco rozhraní API pro vyhledávání zpráv Bingu primárně vyhledává a vrací relevantní zpravodajské články, poskytuje několik funkcí pro inteligentní a cílené získávání zpráv na webu.
 
-## <a name="suggest-and-use-search-terms"></a>Navrhnout a použít hledané výrazy
+## <a name="suggest-and-use-search-terms"></a>Navrhnout a používat hledané výrazy
 
 Pokud nabízíte vyhledávací pole, do kterého může uživatel zadat hledaný termín, můžete hledání vylepšit s využitím [rozhraní API pro automatické návrhy Bingu](../../bing-autosuggest/get-suggested-search-terms.md). Toto rozhraní API vrací navrhované řetězce dotazů na základě částečné shody hledaných termínů zadávaných uživatelem.
 
 Jakmile uživatel zadá hledaný termín, před nastavením parametru dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) ho zakódujte pomocí kódování URL. Pokud uživatel například zadá *sailing dinghies*, nastavte parametr `q` na hodnotu `sailing+dinghies` nebo `sailing%20dinghies`.
 
-## <a name="get-general-news"></a>Získat obecné novinky
+## <a name="get-general-news"></a>Získejte obecné novinky
 
 Pokud chcete z webu získat obecné zprávy související s hledaným termínem uživatele, odešlete tento požadavek GET:
 
@@ -51,7 +51,7 @@ Pokud chcete získat zprávy z konkrétní domény, použijte operátor dotazu [
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-Následující ukázka JSON znázorňuje odpověď na předchozí dotaz. V rámci požadavků na [použití a zobrazení](../useanddisplayrequirements.md) pro rozhraní API pro vyhledávání Bingu je nutné zobrazit všechny příspěvky v uvedeném pořadí v odpovědi. Pokud článek obsahuje články v clusteru, měli byste určit, že existují související články, a zobrazit je na vyžádání.
+Následující ukázka JSON ukazuje odpověď na předchozí dotaz. Jako součást [požadavky na použití a zobrazení pro](../useanddisplayrequirements.md) vyhledávací api Bing, je nutné zobrazit každý zpravodajský článek v pořadí uvedeném v odpovědi. Pokud článek obsahuje seskupené články, měli byste označit, že existují související články a zobrazit je na požádání.
 
 ```json
 {
@@ -105,9 +105,9 @@ Každý [zpravodajský článek](https://docs.microsoft.com/rest/api/cognitivese
 
 Pokud Bing dokáže určit kategorii zpravodajského článku, obsahuje článek pole `category`.
 
-## <a name="get-todays-top-news"></a>Získat dnešní hlavní novinky
+## <a name="get-todays-top-news"></a>Získejte dnešní nejlepší novinky
 
-Chcete-li získat dnešní hlavní novinky, můžete odeslat stejnou obecnou žádost o zprávy jako dříve a zároveň nechat parametr `q` zrušit.
+Chcete-li získat dnešní nejlepší zpravodajské články, můžete odeslat stejný požadavek na obecné zprávy jako dříve a ponechat `q` parametr odstavit.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,9 +119,9 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Odpověď pro získání horních zpráv je skoro stejná jako ta pro získání obecných zpráv. Odpověď `news` ale neobsahuje pole `totalEstimatedMatches`, protože existuje stanovený počet výsledků. Počet nejčtenějších zpravodajských článků se může lišit v závislosti na zpravodajském cyklu. Nezapomeňte použít pole `provider` k atributu článku.
+Odpověď na získání top novinky je téměř stejný jako jeden pro získání obecné zprávy. Odpověď `news` ale neobsahuje pole `totalEstimatedMatches`, protože existuje stanovený počet výsledků. Počet nejčtenějších zpravodajských článků se může lišit v závislosti na zpravodajském cyklu. Nezapomeňte použít `provider` pole k atributu článku.
 
-## <a name="get-news-by-category"></a>Získat zprávy podle kategorie
+## <a name="get-news-by-category"></a>Získejte novinky podle kategorií
 
 Pokud chcete získat zpravodajské články podle kategorií, třeba hlavní sportovní zprávy nebo zprávy ze zábavního průmyslu, pošlete do Bingu tento požadavek GET:
 
@@ -139,7 +139,7 @@ Pomocí parametru dotazu [category](https://docs.microsoft.com/rest/api/cognitiv
 
 Odpověď pro získání zpráv podle kategorie je skoro stejná jako pro získání obecných zpráv. Články jsou ale všechny ze zadané kategorie.
 
-## <a name="get-headline-news"></a>Získat novinky nadpisu
+## <a name="get-headline-news"></a>Získejte hlavní zprávy
 
 Pokud chcete požádat o hlavní zpravodajské články a získat články ze všech zpravodajských kategorií, pošlete do Bingu tento požadavek GET:
 
@@ -161,7 +161,7 @@ Ve výchozím nastavení odpověď obsahuje až 12 hlavních článků. Pokud ch
 
 Odpověď počítá shluky článků jako jeden článek. Protože shluk článků může obsahovat několik článků, může odpověď obsahovat více než 12 hlavních článků a více než čtyři nehlavní články v každé kategorii.
 
-## <a name="get-trending-news"></a>Získat zprávy o trendech
+## <a name="get-trending-news"></a>Získejte trendy novinky
 
 Pokud chcete získat zpravodajská témata, která jsou na vzestupu na sociálních sítích, pošlete do Bingu tento požadavek GET:
 
@@ -264,4 +264,4 @@ Pokud existují další články, které se zpravodajským článkem souvisejí,
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Postup stránky Vyhledávání zpráv Bingu výsledky](../paging-news.md)
+> [Jak stránkovat s výsledky vyhledávání zpráv Bing](../paging-news.md)

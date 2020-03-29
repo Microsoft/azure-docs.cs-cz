@@ -1,7 +1,7 @@
 ---
-title: Vyžádané čtení Docker pro kontejner Rozpoznávání jazyka
+title: Docker u kontejneru detekce jazyka
 titleSuffix: Azure Cognitive Services
-description: Příkaz Docker Pull pro kontejner Rozpoznávání jazyka
+description: Příkaz pro vyžádat docker pro kontejner detekce jazyka
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: 23669a5440799ff071b3a30e3e41ab5d49f212df
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70966690"
 ---
-#### <a name="docker-pull-for-the-language-detection-container"></a>Vyžádané čtení Docker pro kontejner Rozpoznávání jazyka
+#### <a name="docker-pull-for-the-language-detection-container"></a>Docker u kontejneru detekce jazyka
 
-[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) Pomocí příkazu si stáhněte image kontejneru z Microsoft Container Registry.
+Pomocí [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) příkazu stáhněte bitovou kopii kontejneru z registru kontejnerů společnosti Microsoft.
 
-Úplný popis dostupných značek pro kontejnery Analýza textu najdete v kontejneru [rozpoznávání jazyka](https://go.microsoft.com/fwlink/?linkid=2018759) v Docker Hub.
+Úplný popis dostupných značek pro kontejnery Analýzy textu najdete v kontejneru [rozpoznávání jazyků](https://go.microsoft.com/fwlink/?linkid=2018759) v centru Docker.
 
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/language:latest

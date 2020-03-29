@@ -1,7 +1,7 @@
 ---
 title: Instalace kontejnerů řeči
 titleSuffix: Azure Cognitive Services
-description: Podrobnější informace o možnostech konfigurace grafu Helm řeči na text
+description: Podrobnosti o možnostech konfigurace grafu kormidelník řeči na text.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,32 +11,32 @@ ms.topic: include
 ms.date: 08/22/2019
 ms.author: dapine
 ms.openlocfilehash: 3f390affe7badb401277aa86d1867c763aa0ae3b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "69971314"
 ---
-### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>Převod řeči na text (dílčí graf: grafy/speechToText)
+### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>Převod řeči na text (podgraf: grafy/speechToText)
 
-Chcete-li potlačit graf "zastřešující", přidejte `speechToText.` předponu pro libovolný parametr, aby byl konkrétnější. Například přepíše odpovídající parametr, `speechToText.numberOfConcurrentRequest` například Overrides. `numberOfConcurrentRequest`
+Chcete-li přepsat "deštník" graf, `speechToText.` přidejte předponu na libovolný parametr, aby byl konkrétnější. Například přepíše odpovídající parametr, `speechToText.numberOfConcurrentRequest` například přepsání `numberOfConcurrentRequest`.
 
 |Parametr|Popis|Výchozí|
 | -- | -- | -- |
-| `enabled` | Zda je povolena služba **Převod řeči na text** . | `false` |
-| `numberOfConcurrentRequest` | Počet souběžných požadavků služby **Speech-to-text** . Tento graf automaticky vypočítá prostředky procesoru a paměti na základě této hodnoty. | `2` |
-| `optimizeForAudioFile`| Zda služba potřebuje k optimalizaci zvukového vstupu přes zvukové soubory. Pokud `true`bude tento graf přidělovat službě více prostředků procesoru. | `false` |
-| `image.registry`| Registr v programu **Speech to text** Docker image. | `containerpreview.azurecr.io` |
-| `image.repository` | Úložiště obrázků Docker pro dopředné **zpracování textu** . | `microsoft/cognitive-services-speech-to-text` |
-| `image.tag` | Značka obrázku Docker **pro domluvené slovo na text** | `latest` |
-| `image.pullSecrets` | Obrazová tajemství pro vyžádání image Docker pro **text v textu** | |
-| `image.pullByHash`| Zda je obrázek Docker načítán pomocí algoritmu hash. Pokud `true`jevyžadováno. `image.hash` | `false` |
-| `image.hash`| Hodnota hash obrázku Docker **na text** Používá se pouze `image.pullByHash: true`v případě.  | |
-| `image.args.eula`požadovanou | Označuje, že jste přijali licenci. Jediná platná hodnota je`accept` | |
-| `image.args.billing`požadovanou | Hodnota identifikátoru URI fakturačního koncového bodu je k dispozici na stránce Přehled řeči Azure Portal. | |
-| `image.args.apikey`požadovanou | Lze sledovat fakturační údaje. ||
-| `service.type` | Typ služby Kubernetes služby **Speech-to-text** . Další podrobnosti najdete v pokynech k [typům služby Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/) a ověření podpory poskytovatele cloudu. | `LoadBalancer` |
-| `service.port`|  Port služby převodu **řeči na text** . | `80` |
-| `service.annotations` | Poznámky **k textovému** převodu pro metadata služby. Poznámky jsou páry klíč-hodnota. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
-| `service.autoScaler.enabled` | Určuje, zda je [Automatické škálování vodorovně pod](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) povoleno. Pokud `true`sebudenasaditdoclusteru Kubernetes.`speech-to-text-autoscaler` | `true` |
-| `service.podDisruption.enabled` | Zda je povoleno [rozpočet přerušení pod](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) . Pokud `true`sebudenasaditdoclusteru Kubernetes.`speech-to-text-poddisruptionbudget` | `true` |
+| `enabled` | Určuje, zda je povolena služba **převodu řeči na text.** | `false` |
+| `numberOfConcurrentRequest` | Počet souběžných požadavků na službu **převodu řeči na text.** Tento graf automaticky vypočítá prostředky procesoru a paměti na základě této hodnoty. | `2` |
+| `optimizeForAudioFile`| Zda služba potřebuje optimalizovat pro zvukový vstup prostřednictvím zvukových souborů. Pokud `true`bude tento graf přidělovat službu více prostředků procesoru. | `false` |
+| `image.registry`| Registr bitových obrázků **dockeru převodu řeči na text.** | `containerpreview.azurecr.io` |
+| `image.repository` | Úložiště obrázků dockeru **pro převod řeči na text.** | `microsoft/cognitive-services-speech-to-text` |
+| `image.tag` | Značka image dockeru **převodu řeči na text.** | `latest` |
+| `image.pullSecrets` | Tajemství obrázku pro tahání image dockeru **převodu řeči na text.** | |
+| `image.pullByHash`| Určuje, zda je bitová kopie dockeru vytahována pomocí hash. Pokud `true` `image.hash` je požadováno . | `false` |
+| `image.hash`| Hash **obrázku dockeru převodu řeči na text.** Používá se `image.pullByHash: true`pouze v případě, že .  | |
+| `image.args.eula`(povinné) | Označuje, že jste licenci přijali. Jedinou platnou hodnotou je`accept` | |
+| `image.args.billing`(povinné) | Hodnota URI koncového bodu fakturace je dostupná na stránce Přehled řeči na webu Azure Portal. | |
+| `image.args.apikey`(povinné) | Slouží ke sledování fakturačních údajů. ||
+| `service.type` | Typ služby Kubernetes pro **převod řeči na text.** Další podrobnosti najdete v [pokynech k typům služeb Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/) a ověřte podporu poskytovatele cloudu. | `LoadBalancer` |
+| `service.port`|  Port služby **převodřeči na text.** | `80` |
+| `service.annotations` | Poznámky **převodu řeči na text** pro metadata služby. Poznámky jsou dvojice hodnot klíče. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
+| `service.autoScaler.enabled` | Určuje, zda je povolen [horizontální pod autoscaler.](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) Pokud `true` `speech-to-text-autoscaler` bude nasazena v clusteru Kubernetes. | `true` |
+| `service.podDisruption.enabled` | Určuje, zda je povolen [rozpočet přerušení podu.](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) Pokud `true` `speech-to-text-poddisruptionbudget` bude nasazena v clusteru Kubernetes. | `true` |

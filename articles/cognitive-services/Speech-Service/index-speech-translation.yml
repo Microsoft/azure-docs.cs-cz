@@ -1,25 +1,24 @@
 ### YamlMime:Landing
 title: Dokumentace k překladu řeči
-summary: Překlad řeči ze služby Speech umožňuje v reálném čase využívat Převod zvukových streamů na řeč a převod řeči na text.
+summary: Překlad řeči ze služby Speech umožňuje překlad zvukových proudů z více jazyků v reálném čase, více jazyků a převod řeči na text
 metadata:
-  title: Dokumentace k překladu řeči – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  title: Dokumentace k překladu řeči – kurzy, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 742b9710fc7ab396aa906c956d6809df9440c78e
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 75f620d5210f5ba0dc61ac1c5be2f30aa23dea9c
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79367971"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415321"
 landingContent:
-- title: O překladu řeči
+- title: Překlad řeči
   linkLists:
   - linkListType: overview
     links:
@@ -37,11 +36,11 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: Převod řeči v reálném čase
+    - text: Překlad řeči v reálném čase
       url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
   - linkListType: tutorial
     links:
-    - text: Překlad a syntetizování textu pomocí rozhraní REST API
+    - text: Překlad a syntetizovat text pomocí rest API
       url: ../translator/tutorial-build-flask-app-translation-synthesis.md
 - title: Odkaz
   linkLists:
@@ -51,5 +50,5 @@ landingContent:
       url: language-support.md#speech-translation
     - text: Nejčastější dotazy k překladu řeči
       url: https://www.microsoft.com/translator/business/faq/
-    - text: Ceny za překlady řeči
+    - text: Ceny překladu řeči
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

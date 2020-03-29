@@ -1,7 +1,7 @@
 ---
-title: Podpora jazyků – QnA Maker
+title: Jazyková podpora - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Seznam jazykovou verzi, podporuje QnA Maker znalostní báze přirozeného jazyka. Nekombinujte jazyky ve stejném znalostní báze.
+description: Seznam jazykových verzí, přirozených jazyků podporovaných qnA makerem pro vaši znalostní bázi. Nemíchejte jazyky ve stejné znalostní bázi.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220553"
 ---
-# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Jazyková podpora pro QnA Maker prostředky a základy znalostní báze
+# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Jazyková podpora zdrojů a znalostních báze QnA Maker
 
-Při vytváření první znalostní báze v prostředku je vybraný jazyk pro službu. Všechny další databáze znalostí v prostředku musí být ve stejném jazyce. 
+Jazyk služby je vybrán při vytváření první znalostní báze v prostředku. Všechny další znalostní báze v prostředku musí být ve stejném jazyce. 
 
-Jazyk určuje relevanci výsledků QnA Maker poskytuje odpověď na dotazy uživatelů.
+Jazyk určuje relevanci výsledků QnA Maker poskytuje v reakci na dotazy uživatelů.
 
-Přečtěte si další informace o [dopadu výběru jazyka](../how-to/language-knowledge-base.md).
+Přečtěte si další informace [o dopadu výběru jazyka](../how-to/language-knowledge-base.md).
 
 ## <a name="languages-supported"></a>Podporované jazyky
 
-Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem. 
+Následující seznam obsahuje jazyky podporované pro prostředek QnA Maker. 
 
 |Jazyk|
 |--|
-|arabština|
+|Arabština|
 |Arménština|
-|bengálština|
+|Bengálština|
 |Baskičtina|
 |Bulharština|
 |Katalánština|
@@ -41,8 +41,8 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 |Chinese_Traditional|
 |Chorvatština|
 |Čeština|
-|dánština|
-|Holandština|
+|Dánština|
+|Nizozemština|
 |Angličtina|
 |Estonština|
 |Finština|
@@ -57,16 +57,16 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 |Islandština|
 |Indonéština|
 |Irština|
-|italština|
+|Italština|
 |Japonština|
-|Kannada|
+|Kannadština|
 |Korejština|
 |Lotyština|
 |Litevština|
-|Malajálamština|
+|Malajalámština|
 |Malajština|
-|norština|
-|polština|
+|Norština|
+|Polština|
 |Portugalština|
 |Paňdžábština|
 |Rumunština|
@@ -76,11 +76,11 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 |Slovenština|
 |Slovinština|
 |Španělština|
-|švédština|
+|Švédština|
 |Tamilština|
 |Telugština|
 |Thajština|
-|turečtina|
+|Turečtina|
 |Ukrajinština|
 |Urdština|
 |Vietnamština|

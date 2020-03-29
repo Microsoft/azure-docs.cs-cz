@@ -1,7 +1,7 @@
 ---
-title: Co je nového – přizpůsobené přizpůsobování
+title: Co je nového - Personalizace
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje novinky o přizpůsobeném nástroji.
+description: Tento článek obsahuje novinky o personalista.
 author: diberry
 manager: nitinme
 services: cognitive-services
@@ -10,41 +10,45 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 1ec0c83655574cb09724bcf97be19519e1f6d72f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 450328fecde3be0ee0cead174c9d172bf3ac1000
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467071"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155966"
 ---
-# <a name="whats-new-in-personalizer"></a>Co je nového v přizpůsobování
+# <a name="whats-new-in-personalizer"></a>Co je nového v personalizaci
 
-Zjistěte, co je nového ve službě. Tyto položky můžou zahrnovat poznámky k verzi, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.  
+Přečtěte si, co je ve službě nového. Tyto položky mohou zahrnovat poznámky k verzi, videa, příspěvky na blogu a další typy informací. Záložka tuto stránku udržovat aktuální se službou.  
 
 ## <a name="release-notes"></a>Poznámky k verzi 
 
-### <a name="november-2019---ignite-conference"></a>Listopadu 2019 – konference Ignite
+### <a name="march-2020"></a>Březen 2020
 
-* Přizpůsobování je všeobecně dostupné (GA)
-* [Kurz](tutorial-use-azure-notebook-generate-loop-data.md) Azure Notebooks s celým životním cyklem
+* TLS 1.2 je nyní vynucena pro všechny požadavky HTTP pro tuto službu. Další informace najdete v [tématu Azure Cognitive Services security](../cognitive-services-security.md).
 
-### <a name="may-6-2019---build-conference"></a>6\. května 2019 – konference Build
+### <a name="november-2019---ignite-conference"></a>Listopad 2019 - Ignite konference
 
-Následující funkce verze Preview byly vydané na konferenci Build 2019:
+* Personalizátor je obecně dostupný (GA)
+* Kurz poznámkových [bloků](tutorial-use-azure-notebook-generate-loop-data.md) Azure s celým životním cyklem
 
-* [Výuková smyčka pořadí a odměňování](what-is-personalizer.md)
+### <a name="may-2019---build-conference"></a>Květen 2019 - //Build konference
+
+Na konferenci Build 2019 byly vydány následující funkce náhledu:
+
+* [Pořadí a odměna učení smyčky](what-is-personalizer.md)
 
 ## <a name="videos"></a>Videa
 
-### <a name="2019-build-videos"></a>videa k sestavám 2019
+### <a name="2019-build-videos"></a>2019 Vytváření videí
 
-* [Doručovat správné prostředí & obsahu, jako je Xbox pomocí přizpůsobení Cognitive Services](https://mybuild.techcommunity.microsoft.com/sessions/76970?source=sessions#top-anchor)
+* [Poskytujte správné prostředí & obsah, jako je Xbox s personalizátorem služeb Cognitive Services](https://mybuild.techcommunity.microsoft.com/sessions/76970?source=sessions#top-anchor)
 
-## <a name="service-updates"></a>Aktualizace služby
+## <a name="service-updates"></a>Aktualizace služeb
 
-[Oznámení o aktualizacích Azure pro Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Oznámení o aktualizacích Azure pro služby Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rychlý Start: vytvoření smyčky zpětné vazby vC#](csharp-quickstart-commandline-feedback-loop.md)
+* [Úvodní příručka: Vytvoření smyčky zpětné vazby v C #](csharp-quickstart-commandline-feedback-loop.md)
 * [Použití interaktivní ukázky](https://personalizationdemo.azurewebsites.net/)

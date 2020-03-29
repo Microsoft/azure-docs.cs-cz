@@ -1,33 +1,33 @@
 ---
-title: Seznam typů entit – LUIS
-description: Seznam entit představuje pevně uzavřenou sadu příbuzných slov spolu s jejich synonymy. Služba LUIS nevyhledává další hodnoty pro seznam entit. Pomocí funkce doporučit můžete zobrazit návrhy nových slov na základě aktuálního seznamu.
+title: Typ entity seznamu – LUIS
+description: Seznam entit představují pevnou, uzavřenou sadu souvisejících slov spolu s jejich synonymy. Služba LUIS nezjišťuje další hodnoty pro entity seznamu. Pomocí funkce Doporučit můžete zobrazit návrhy nových slov na základě aktuálního seznamu.
 ms.topic: reference
 ms.date: 03/12/2020
 ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79297233"
 ---
 # <a name="list-entity"></a>Entita seznamu
 
-Seznam entit představuje pevně uzavřenou sadu příbuzných slov spolu s jejich synonymy. Služba LUIS nevyhledává další hodnoty pro seznam entit. Pomocí funkce **doporučit** můžete zobrazit návrhy nových slov na základě aktuálního seznamu. Pokud existuje více než jednu entitu seznamu se stejnou hodnotou, je každá entita vrácené dotazem koncový bod.
+Seznam entit představují pevnou, uzavřenou sadu souvisejících slov spolu s jejich synonymy. Služba LUIS nezjišťuje další hodnoty pro entity seznamu. Pomocí funkce **Doporučit** můžete zobrazit návrhy nových slov na základě aktuálního seznamu. Pokud existuje více než jeden seznam entity se stejnou hodnotou, každá entita je vrácena v dotazu koncového bodu.
 
-Entita seznamu není zjištěna počítačem. Se neshoduje přesný text. Služba LUIS označí všechny shody jako položka v seznamu jako entity v odpovědi.
+Entita seznamu se neučí strojově. Je to přesná shoda textu. Služba LUIS označí libovolnou shodu s položkou v libovolném seznamu jako entitu v odpovědi.
 
-**Entita je vhodná, když jsou textová data:**
+**Entita se hodí, když textová data:**
 
-* Jsou známá sada.
-* Nemění se často. Pokud potřebujete seznam často změnit, nebo chcete, aby se seznam automaticky rozšířil, je lepší volbou jednoduchá entita se seznamem frází.
+* Jsou známé sady.
+* Moc se nemění. Pokud potřebujete seznam často měnit nebo chcete, aby se seznam rozbalil sám, je lepší volbou jednoduchá entita posílená seznamem frází.
 * Tato sada nepřekračuje maximální [hranice](luis-boundaries.md) aplikace LUIS pro tento typ entity.
-* Text v utterance se nerozlišuje bez rozlišení velkých a malých písmen s synonymem nebo kanonickým názvem. LUIS nepoužívá seznam za shodou. Nepřibližná shoda, odvozování, plural a jiné varianty nejsou vyřešeny entitou seznamu. Chcete-li spravovat variace, zvažte použití [vzoru](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) s volitelnou syntaxí textu.
+* Text v utterance je malá a velká písmena shoda se synonymem nebo kanonický název. Služba LUIS nepoužívá seznam mimo shodu. Přibližné párování, vyplývající, množné číslo a další varianty nejsou vyřešeny s entitou seznamu. Chcete-li spravovat varianty, zvažte použití [vzoru](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) s volitelnou syntaxí textu.
 
-![seznam entit](./media/luis-concept-entities/list-entity.png)
+![entita seznamu](./media/luis-concept-entities/list-entity.png)
 
-## <a name="example-json-to-import-into-list-entity"></a>Příklad: JSON pro import do seznamu entit
+## <a name="example-json-to-import-into-list-entity"></a>Příklad .json pro import do entity seznamu
 
-  Hodnoty můžete importovat do existující entity seznamu pomocí následujícího formátu. JSON:
+  Hodnoty můžete importovat do existující entity seznamu pomocí následujícího formátu json:
 
   ```JSON
   [
@@ -52,18 +52,18 @@ Entita seznamu není zjištěna počítačem. Se neshoduje přesný text. Služb
 
 ## <a name="example-json-response"></a>Příklad odpovědi JSON
 
-Předpokládejme, že aplikace obsahuje seznam s názvem `Cities`, který umožňuje variace názvů měst, včetně města letiště (mořské TAC), kódu letiště (moře), poštovního směrovacího čísla (98101) a kódu telefonní oblasti (206).
+Předpokládejme, že aplikace `Cities`má seznam s názvem , umožňující varianty názvů měst včetně města letiště (Sea-tac), číslo letiště (SEA), PSČ (98101) a telefonní směrové číslo (206).
 
 |Položka seznamu|Synonyma položky|
 |---|---|
-|`Seattle`|`sea-tac`, `sea`, `98101`, `206``+1` |
-|`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1``+33`|
+|`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
+|`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
 
 `book 2 tickets to paris`
 
-V předchozím utterance je slovo `paris` namapováno na pařížovou položku jako součást `Cities` seznamu entit. Seznam entit odpovídá normalizovaný název položky i synonyma položky.
+V předchozí utterance slovo `paris` je mapována na položku `Cities` paříž jako součást entity seznamu. Entita seznamu odpovídá normalizovanému názvu položky i synonymům položky.
 
-#### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpověď koncového bodu predikce V2](#tab/V2)
 
 ```JSON
   "entities": [
@@ -81,10 +81,10 @@ V předchozím utterance je slovo `paris` namapováno na pařížovou položku j
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpověď koncového bodu predikce V3](#tab/V3)
 
 
-Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=false`:
+Toto je JSON, pokud `verbose=false` je nastavena v řetězci dotazu:
 
 ```json
 "entities": {
@@ -96,7 +96,7 @@ Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=false`:
 }
 ```
 
-Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=true`:
+Toto je JSON, pokud `verbose=true` je nastavena v řetězci dotazu:
 
 ```json
 "entities": {
@@ -127,9 +127,9 @@ Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=true`:
 
 |Datový objekt|Název entity|Hodnota|
 |--|--|--|
-|Seznam entit|`Cities`|`paris`|
+|Entita seznamu|`Cities`|`paris`|
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto [kurzu](tutorial-list-entity.md)se naučíte používat **entitu seznam** k extrakci přesných shod textu ze seznamu známých položek.
+V tomto [kurzu](tutorial-list-entity.md)se dozvíte, jak pomocí **entity seznamu** extrahovat přesné shody textu ze seznamu známých položek.

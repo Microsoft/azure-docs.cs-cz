@@ -1,23 +1,22 @@
 ### YamlMime:Landing
 title: Dokumentace k převodu textu na řeč
-summary: Převod textu na řeč od služby pro rozpoznávání řeči umožňuje vašim aplikacím, nástrojům a zařízením převádět text na syntetizované rozpoznávání řeči od člověka.
+summary: Převod textu na řeč ze služby Řeč umožňuje aplikacím, nástrojům nebo zařízením převést text na syntetizovanou řeč podobné člověku.
 metadata:
-  title: Dokumentace k převodu textu na řeč – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  title: Dokumentace pro převod textu na řeč – kurzy, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 82499c16b6ad8cd8c1adfe27eeb7a0c842e37d1e
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 4aa2cb134bc47841da2964f4f83898875098e6c4
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79370402"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "80052802"
 landingContent:
 - title: Převod textu na řeč
   linkLists:
@@ -27,20 +26,18 @@ landingContent:
       url: text-to-speech.md
   - linkListType: quickstart
     links:
-    - text: Syntetizace řeči do reproduktoru
+    - text: Syntéza řeči do reproduktoru
       url: quickstarts/text-to-speech.md
     - text: Syntéza řeči do zvukového souboru
       url: quickstarts/text-to-speech-audio-file.md
     - text: Syntéza řeči s využitím dlouhého formátu
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
-- title: Vývoj s využitím převodu textu na řeč
+- title: Vývoj s převodem textu na řeč
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Vylepšení syntézy pomocí jazyka SSML
       url: speech-synthesis-markup.md
-    - text: Vylepšení syntézy pomocí sady Vlastní hlas
-      url: how-to-custom-voice.md
     - text: Získání seznamu hlasů s využitím REST (Python)
       url: quickstart-python-get-text-to-speech-voices.md
     - text: Převod textu na řeč s využitím REST (Python)
@@ -57,11 +54,11 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Podpora standardního hlasu
+    - text: Standardní hlasová podpora
       url: language-support.md#standard-voices
-    - text: Neuronové hlasová podpora
+    - text: Podpora neurálního hlasu
       url: language-support.md#neural-voices
-    - text: SSML fonetické sady
+    - text: Fonetické sady SSML
       url: speech-ssml-phonetic-sets.md
-    - text: Ceny za převod textu na řeč
+    - text: Ceny převodu textu na řeč
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

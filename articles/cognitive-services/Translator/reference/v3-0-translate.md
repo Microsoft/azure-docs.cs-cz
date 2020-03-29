@@ -1,37 +1,37 @@
 ---
-title: Metoda Translator Text APIho překladu
+title: Metoda překladače textového rozhraní API překladu
 titleSuffix: Azure Cognitive Services
-description: Porozumíte parametrům, hlavičkám a textovým zprávám pro metodu Azure Cognitive Services Translator Text API přeložit k překladu textu.
+description: Seznamte se s parametry, záhlavími a základními zprávami pro metodu Překladač textu Překladače překladače překladače překladače překladače překladače azure cognitive services překladač ů.
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 11/12/2019
+ms.date: 03/20/2020
 ms.author: swmachan
-ms.openlocfilehash: d58383b20e4311f8ab9490dc241722eee2e44ad6
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1821623fbe2a22234af649934ac06e72897a19cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184793"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80052395"
 ---
-# <a name="translator-text-api-30-translate"></a>Translator Text API 3,0: přeložit
+# <a name="translator-text-api-30-translate"></a>Překladač Text API 3.0: Přeložit
 
-Přeloží text.
+Překládá text.
 
 ## <a name="request-url"></a>Adresa URL požadavku
 
-Odeslat žádost o `POST`:
+Odeslání `POST` žádosti na:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 ```
 
-## <a name="request-parameters"></a>Parametry žádosti
+## <a name="request-parameters"></a>Parametry požadavku
 
-Parametry žádosti předané řetězci dotazu jsou:
+Parametry požadavku předané v řetězci dotazu jsou:
 
 ### <a name="required-parameters"></a>Požadované parametry
 
@@ -39,12 +39,12 @@ Parametry žádosti předané řetězci dotazu jsou:
   <th width="20%">Parametr dotazu</th>
   <th>Popis</th>
   <tr>
-    <td>api-version</td>
-    <td><em>Povinný parametr</em>.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být <code>3.0</code>.</td>
+    <td>verze-api</td>
+    <td><em>Povinný parametr</em>.<br/>Verze rozhraní API požadované klientem. Hodnota musí <code>3.0</code>být .</td>
   </tr>
   <tr>
     <td>na</td>
-    <td><em>Povinný parametr</em>.<br/>Určuje jazyk výstupního textu. Cílový jazyk musí být jeden z <a href="./v3-0-languages.md">podporovaných jazyků</a> , které jsou zahrnuté v oboru <code>translation</code>. Například použijte <code>to=de</code> k převodu do němčiny.<br/>Je možné překládat na více jazyků současně opakováním parametru v řetězci dotazu. Můžete například použít <code>to=de&to=it</code> k převodu do němčiny a italštiny.</td>
+    <td><em>Povinný parametr</em>.<br/>Určuje jazyk výstupního textu. Cílový jazyk musí být jedním z <a href="./v3-0-languages.md">podporovaných jazyků</a> zahrnutých v <code>translation</code> oboru. Slouží <code>to=de</code> například k překladu do němčiny.<br/>Je možné překládat do více jazyků současně opakováním parametru v řetězci dotazu. Slouží například <code>to=de&to=it</code> k překladu do němčiny a italštiny.</td>
   </tr>
 </table>
 
@@ -54,78 +54,78 @@ Parametry žádosti předané řetězci dotazu jsou:
   <th width="20%">Parametr dotazu</th>
   <th>Popis</th>
   <tr>
-    <td>from</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje jazyk vstupního textu. Vyhledáním <a href="./v3-0-languages.md">podporovaných jazyků</a> pomocí oboru <code>translation</code> zjistíte, které jazyky jsou k dispozici pro překlad. Pokud parametr <code>from</code> neurčíte, použije se pro určení zdrojového jazyka automatické rozpoznávání jazyka. <br/><br/>Při použití funkce <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamického slovníku</a> je nutné použít parametr <code>from</code>, nikoli funkci autodetection.</td>
+    <td>Z</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje jazyk vstupního textu. Vyhledejte jazyky, ze kterých je možné <code>translation</code> je překládat, vyhledáním <a href="./v3-0-languages.md">podporovaných jazyků</a> pomocí oboru. Pokud <code>from</code> parametr není zadán, je k určení zdrojového jazyka použito automatické zjišťování jazyka. <br/><br/>Při použití <code>from</code> funkce <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamického slovníku</a> je nutné použít parametr, nikoli automatickou detekci.</td>
   </tr>  
   <tr>
-    <td>textType</td>
-    <td><em>Volitelný parametr</em>.<br/>Definuje, zda je převáděný text prostý text nebo text HTML. Libovolný kód HTML musí být dobře vytvořený, kompletní element. Možné hodnoty jsou: <code>plain</code> (výchozí) nebo <code>html</code>.</td>
+    <td>textTyp</td>
+    <td><em>Volitelný parametr</em>.<br/>Definuje, zda je přeložený text ve formátu prostého textu nebo textu HTML. Každý HTML musí být dobře tvarovaný, kompletní prvek. Možné hodnoty <code>plain</code> jsou: (výchozí) nebo <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
-    <td><em>Volitelný parametr</em>.<br/>Řetězec určující kategorii (doménu) překladu. Tento parametr slouží k získání překladu z přizpůsobeného systému vytvořeného pomocí <a href="../customization.md">vlastního překladatele</a>. Přidejte ID kategorie z <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">podrobností projektu</a> vlastního překladatele do tohoto parametru pro použití nasazeného přizpůsobeného systému. Výchozí hodnota je: <code>general</code>.</td>
+    <td><em>Volitelný parametr</em>.<br/>Řetězec určující kategorii (doménu) překladu. Tento parametr se používá k získání překladů z přizpůsobeného systému vytvořeného pomocí <a href="../customization.md">vlastního překladače</a>. Přidejte ID kategorie z vašeho vlastního překladače <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">podrobnosti projektu</a> do tohoto parametru použít nasazený přizpůsobený systém. Výchozí hodnota <code>general</code>je: .</td>
   </tr>
   <tr>
-    <td>profanityAction</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje, jak by měly být v překladech ošetřeny vulgární výrazy. Možné hodnoty jsou: <code>NoAction</code> (výchozí), <code>Marked</code> nebo <code>Deleted</code>. Pro pochopení způsobů, jak považovat vulgární výrazy, se podívejte na téma <a href="#handle-profanity">zpracování vulgárních výrazů</a>.</td>
+    <td>vulgární výrazyAkce</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje, jak by mělo být vulgární výrazy v překladech zacházet. Možné hodnoty <code>NoAction</code> jsou: <code>Marked</code> (výchozí) nebo <code>Deleted</code>. Informace o způsobech zacházení s vulgárními výrazy naleznete v <a href="#handle-profanity">tématu Zpracování vulgárních výrazů</a>.</td>
   </tr>
   <tr>
-    <td>profanityMarker</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje, jak by měly být v překlady označeny vulgární výrazy. Možné hodnoty jsou: <code>Asterisk</code> (výchozí) nebo <code>Tag</code>. Pro pochopení způsobů, jak považovat vulgární výrazy, se podívejte na téma <a href="#handle-profanity">zpracování vulgárních výrazů</a>.</td>
+    <td>vulgární chodMarker</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje, jak mají být vulgární výrazy v překladech označeny. Možné hodnoty <code>Asterisk</code> jsou: (výchozí) nebo <code>Tag</code>. Informace o způsobech zacházení s vulgárními výrazy naleznete v <a href="#handle-profanity">tématu Zpracování vulgárních výrazů</a>.</td>
   </tr>
   <tr>
     <td>includeAlignment</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje, zda se má zahrnout projekce zarovnání ze zdrojového textu do přeloženého textu. Možné hodnoty jsou: <code>true</code> nebo <code>false</code> (výchozí). </td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje, zda má být projekce zarovnání zahrnuta ze zdrojového textu na přeložený text. Možné hodnoty <code>true</code> jsou: nebo <code>false</code> (výchozí). </td>
   </tr>
   <tr>
-    <td>includeSentenceLength</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje, zda se mají zahrnout hranice věty pro vstupní text a přeložený text. Možné hodnoty jsou: <code>true</code> nebo <code>false</code> (výchozí).</td>
+    <td>includeDélka věty</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje, zda mají být zahrnuty hranice věty pro vstupní text a přeložený text. Možné hodnoty <code>true</code> jsou: nebo <code>false</code> (výchozí).</td>
   </tr>
   <tr>
-    <td>suggestedFrom</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje záložní jazyk, pokud nelze identifikovat jazyk vstupního textu. Automatické zjišťování jazyka se použije, když se vynechá parametr <code>from</code>. Pokud se detekce nezdaří, předpokládá se <code>suggestedFrom</code> jazyk.</td>
+    <td>navrhlFrom</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje záložní jazyk, pokud nelze identifikovat jazyk vstupního textu. Automatická detekce jazyka se <code>from</code> použije, když je parametr vynechán. Pokud se zjišťování <code>suggestedFrom</code> nezdaří, bude předpokládán jazyk.</td>
   </tr>
   <tr>
     <td>fromScript</td>
     <td><em>Volitelný parametr</em>.<br/>Určuje skript vstupního textu.</td>
   </tr>
   <tr>
-    <td>toScript</td>
+    <td>doscriptu</td>
     <td><em>Volitelný parametr</em>.<br/>Určuje skript přeloženého textu.</td>
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje, že služba může přejít do obecného systému, pokud vlastní systém neexistuje. Možné hodnoty jsou: <code>true</code> (výchozí) nebo <code>false</code>.<br/><br/><code>allowFallback=false</code> určuje, že překlad by měl používat pouze systémy vyškolené pro <code>category</code> určené požadavkem. Pokud překlad pro jazyk X na jazyk Y vyžaduje řetězení pomocí jazyka pivotu E, pak všechny systémy v řetězu (X-> E a E-> Y) budou muset být vlastní a musí mít stejnou kategorii. Pokud se s konkrétní kategorií nenajde žádný systém, bude požadavek vracet kód stavu 400. <code>allowFallback=true</code> určuje, že služba může přejít do obecného systému, když neexistuje vlastní systém.
+    <td><em>Volitelný parametr</em>.<br/>Určuje, že služba může záložní do obecného systému, pokud vlastní systém neexistuje. Možné hodnoty <code>true</code> jsou: (výchozí) nebo <code>false</code>.<br/><br/><code>allowFallback=false</code>určuje, že překlad by měl používat <code>category</code> pouze systémy vyškolené pro určené požadavkem. Pokud překlad jazyka X do jazyka Y vyžaduje řetězení přes otočný jazyk E, pak všechny systémy v řetězci (X->E a E->Y) bude muset být vlastní a mají stejnou kategorii. Pokud není nalezen žádný systém s konkrétní kategorií, požadavek vrátí stavový kód 400. <code>allowFallback=true</code>určuje, že služba může záložní do obecného systému, pokud vlastní systém neexistuje.
 </td>
   </tr>
 </table> 
 
-Hlavičky požadavku zahrnují:
+Mezi hlavičky požadavku patří:
 
 <table width="100%">
   <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
-    <td>Ověřovací hlavičky (y)</td>
-    <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
+    <td>Autentizační hlavička (záhlaví)</td>
+    <td><em>Hlavička požadavku .</em><br/>Viz <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">dostupné možnosti ověřování</a>.</td>
   </tr>
   <tr>
     <td>Typ obsahu</td>
-    <td><em>Požadovaná hlavička žádosti</em><br/>Určuje typ obsahu datové části.<br/> Přijatá hodnota je <code>application/json; charset=UTF-8</code>.</td>
+    <td><em>Hlavička požadavku .</em><br/>Určuje typ obsahu datové části.<br/> Přijatá <code>application/json; charset=UTF-8</code>hodnota je .</td>
   </tr>
   <tr>
-    <td>Content-Length</td>
-    <td><em>Požadovaná hlavička žádosti</em><br/>Délka textu žádosti</td>
+    <td>Délka obsahu</td>
+    <td><em>Hlavička požadavku .</em><br/>Délka těla požadavku.</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td><em>Volitelné</em>.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem <code>ClientTraceId</code>.</td>
+    <td><em>Nepovinné</em>.<br/>Identifikátor GUID generovaný klientem k jednoznačné identifikaci požadavku. Toto záhlaví můžete vynechat, pokud do řetězce dotazu zahrnete <code>ClientTraceId</code>ID trasování pomocí parametru dotazu s názvem .</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Text požadavku
 
-Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností řetězce s názvem `Text`, který představuje řetězec, který chcete přeložit.
+Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON `Text`s vlastností string s názvem , která představuje řetězec přeložit.
 
 ```json
 [
@@ -136,47 +136,47 @@ Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností �
 Platí následující omezení:
 
 * Pole může mít maximálně 100 prvků.
-* Celý text zahrnutý v požadavku nesmí být delší než 5 000 znaků včetně mezer.
+* Celý text obsažený v požadavku nesmí přesáhnout 5 000 znaků včetně mezer.
 
 ## <a name="response-body"></a>Text odpovědi
 
-Úspěšná odpověď je pole JSON s jedním výsledkem pro každý řetězec ve vstupním poli. Objekt výsledku obsahuje následující vlastnosti:
+Úspěšná odpověď je pole JSON s jedním výsledkem pro každý řetězec ve vstupním poli. Výsledný objekt obsahuje následující vlastnosti:
 
-  * `detectedLanguage`: objekt popisující zjištěný jazyk prostřednictvím následujících vlastností:
+  * `detectedLanguage`: Objekt popisující zjištěný jazyk prostřednictvím následujících vlastností:
 
-      * `language`: řetězec představující kód zjištěného jazyka.
+      * `language`: Řetězec představující kód zjištěného jazyka.
 
-      * `score`: hodnota typu float označující důvěru ve výsledku. Skóre je v rozsahu 0 až 1 a nízké skóre indikuje nízkou důvěru.
+      * `score`: Hodnota plovoucího signálu označující důvěru ve výsledek. Skóre je mezi nulou a jedním a nízké skóre označuje nízkou důvěru.
 
-    Vlastnost `detectedLanguage` je přítomna pouze v objektu Result, pokud je požadováno automatické zjišťování jazyka.
+    Vlastnost `detectedLanguage` je k dispozici pouze v objektu výsledek, pokud je požadováno automatické zjišťování jazyka.
 
-  * `translations`: pole výsledků překladu. Velikost pole odpovídá počtu cílových jazyků, které jsou zadány prostřednictvím parametru `to` dotazu. Každý prvek v poli obsahuje:
+  * `translations`: Pole výsledků překladu. Velikost pole odpovídá počtu cílových jazyků zadaných prostřednictvím parametru dotazu. `to` Každý prvek v poli obsahuje:
 
-    * `to`: řetězec představující kód jazyka cílového jazyka.
+    * `to`: Řetězec představující kód jazyka cílového jazyka.
 
-    * `text`: řetězec, který poskytuje přeložený text.
+    * `text`: Řetězec s přeloženým textem.
 
-    * `transliteration`: objekt, který poskytuje přeložený text ve skriptu určeném parametrem `toScript`.
+    * `transliteration`: Objekt, který dává přeložený text `toScript` ve skriptu určeném parametrem.
 
-      * `script`: řetězec určující cílový skript.   
+      * `script`: Řetězec určující cílový skript.   
 
-      * `text`: řetězec, který poskytuje přeložený text v cílovém skriptu.
+      * `text`: Řetězec s přeloženým textem v cílovém skriptu.
 
-    Objekt `transliteration` není zahrnutý v případě, že se nepřekoná přemístění.
+    Objekt `transliteration` není zahrnuta, pokud transliterace neprobíhá.
 
-    * `alignment`: objekt s jedinou řetězcovou vlastností nazvanou `proj`, která mapuje vstupní text na přeložený text. Informace o zarovnání jsou k dispozici pouze v případě, že parametr žádosti `includeAlignment` `true`. Zarovnání je vráceno jako řetězcová hodnota v následujícím formátu: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dvojtečka odděluje počáteční a koncový index, čárku odděluje jazyky a mezeru odděluje slova. O jedno slovo může bylo v souladu s žádným, jedním nebo více slov v jiném jazyce, a může být nesouvislé zarovnané slova. Pokud nejsou k dispozici žádné informace o zarovnání, element zarovnání bude prázdný. Příklady a omezení najdete v tématu [získání informací o zarovnání](#obtain-alignment-information) .
+    * `alignment`: Objekt s vlastností `proj`jednoho řetězce s názvem , který mapuje vstupní text na přeložený text. Informace o zarovnání jsou k `includeAlignment` `true`dispozici pouze v případě, že je parametr požadavku . Zarovnání je vráceno jako řetězcová hodnota následujícího formátu: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dvojtečka odděluje počáteční a koncový index, pomlčka odděluje jazyky a prostor odděluje slova. Jedno slovo může být zarovnáno s nulou, jedním nebo více slovy v jiném jazyce a zarovnaná slova mohou být nesouvislá. Pokud nejsou k dispozici žádné informace o zarovnání, prvek zarovnání bude prázdný. Příklad a omezení najdete v tématu [Získání informací o zarovnání.](#obtain-alignment-information)
 
-    * `sentLen`: objekt vrací hranice věty ve vstupních a výstupních textech.
+    * `sentLen`: Objekt vracející hranice věty ve vstupních a výstupních textech.
 
-      * `srcSentLen`: celočíselné pole představující délky vět ve vstupním textu. Délka pole je počet vět a hodnoty jsou délkou jednotlivých vět.
+      * `srcSentLen`: Celé pole představující délky vět ve vstupním textu. Délka pole je počet vět a hodnoty jsou délka každé věty.
 
-      * `transSentLen`: celočíselné pole představující délky vět v přeloženém textu. Délka pole je počet vět a hodnoty jsou délkou jednotlivých vět.
+      * `transSentLen`: Celé pole představující délky vět v přeloženém textu. Délka pole je počet vět a hodnoty jsou délka každé věty.
 
-    Hranice věty jsou zahrnuté jenom v případě, že parametr žádosti `includeSentenceLength` `true`.
+    Hranice věty jsou zahrnuty `includeSentenceLength` `true`pouze v případě, že parametr požadavku je .
 
-  * `sourceText`: objekt s jedinou řetězcovou vlastností nazvanou `text`, která poskytuje vstupní text ve výchozím skriptu zdrojového jazyka. vlastnost `sourceText` je přítomna pouze v případě, že vstup je vyjádřen ve skriptu, který není obvyklým skriptem pro daný jazyk. Například pokud byl vstup ve skriptu latinky napsaný arabskou, `sourceText.text` by byl stejný arabský text, který se převedl na Arabský skript.
+  * `sourceText`: Objekt s vlastností `text`jednoho řetězce s názvem , který poskytuje vstupní text ve výchozím skriptu zdrojového jazyka. `sourceText`vlastnost je k dispozici pouze v případě, že vstup je vyjádřen ve skriptu, který není obvyklý skript pro jazyk. Například pokud vstup byl arabština napsaný `sourceText.text` v latince, pak by se stejný arabský text převeden na arabský skript.
 
-Příklad odpovědí JSON je uveden v části [Příklady](#examples) .
+Příklad odpovědí JSON jsou uvedeny v části [příklady.](#examples)
 
 ## <a name="response-headers"></a>Hlavičky odpovědi
 
@@ -185,17 +185,17 @@ Příklad odpovědí JSON je uveden v části [Příklady](#examples) .
   <th>Popis</th>
     <tr>
     <td>X-RequestId</td>
-    <td>Hodnota, kterou služba vygenerovala k identifikaci požadavku. Používá se pro účely řešení potíží.</td>
+    <td>Hodnota generovaná službou k identifikaci požadavku. Používá se pro účely řešení potíží.</td>
   </tr>
   <tr>
-    <td>X-MT-System</td>
-    <td>Určuje typ systému, který se použil pro překlad pro každý jazyk, který se požaduje pro překlad. Hodnota je čárkami oddělený seznam řetězců. Každý řetězec označuje typ:<br/><ul><li>Vlastní požadavek obsahuje vlastní systém a v průběhu překladu byl použit alespoň jeden vlastní systém.</li><li>Team – všechny ostatní požadavky</li></td>
+    <td>X-MT-systém</td>
+    <td>Určuje typ systému, který byl použit pro překlad pro každý jazyk do požadovaný pro překlad. Hodnota je seznam řetězců oddělený čárkou. Každý řetězec označuje typ:<br/><ul><li>Vlastní - Požadavek obsahuje vlastní systém a alespoň jeden vlastní systém byl použit během překladu.</li><li>Tým - Všechny ostatní požadavky</li></td>
   </tr>
 </table> 
 
-## <a name="response-status-codes"></a>Stavové kódy odpovědí
+## <a name="response-status-codes"></a>Stavové kódy odpovědi
 
-Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí. 
+Následují možné stavové kódy HTTP, které požadavek vrátí. 
 
 <table width="100%">
   <th width="20%">Stavový kód</th>
@@ -206,47 +206,47 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   </tr>
   <tr>
     <td>400</td>
-    <td>Jeden z parametrů dotazu chybí nebo je neplatný. Před opakováním pokusu proveďte správné parametry žádosti.</td>
+    <td>Jeden z parametrů dotazu chybí nebo je neplatný. Před opakováním opravte parametry požadavku.</td>
   </tr>
   <tr>
     <td>401</td>
-    <td>Požadavek nebylo možné ověřit. Ověřte, jestli jsou přihlašovací údaje zadané a platné.</td>
+    <td>Požadavek nelze ověřit. Zkontrolujte, zda jsou zadána a platná pověření.</td>
   </tr>
   <tr>
     <td>403</td>
-    <td>Požadavek není autorizovaný. Podívejte se na podrobnosti chybové zprávy. To často znamená, že se využívaly všechny bezplatné překlady, které jsou součástí zkušebního předplatného.</td>
+    <td>Požadavek není autorizován. Zkontrolujte chybovou zprávu podrobností. To často znamená, že všechny bezplatné překlady poskytované zkušební předplatné byly vypovězeny.</td>
   </tr>
   <tr>
     <td>408</td>
-    <td>Požadavek nebylo možné splnit, protože chybí prostředek. Podívejte se na podrobnosti chybové zprávy. Při použití vlastního <code>category</code>to často znamená, že vlastní překladový systém ještě není k dispozici pro poskytování požadavků. Žádost by se měla opakovat po dobu čekání (např. 1 minuta).</td>
+    <td>Požadavek nelze splnit, protože chybí prostředek. Zkontrolujte chybovou zprávu podrobností. Při použití <code>category</code>vlastní , to často znamená, že vlastní překladsystém ještě není k dispozici pro poskytování požadavků. Žádost by měla být zopakována po uplynutí čekací doby (např. 1 minuta).</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>Server odmítl požadavek, protože klient překročil omezení požadavků.</td>
+    <td>Server požadavek zamítl, protože klient překročil limity požadavků.</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky odpovědi <code>X-RequestId</code>a identifikátor klienta z hlavičky žádosti <code>X-ClientTraceId</code>.</td>
+    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, oznamte ji s: datem a <code>X-RequestId</code>časem selhání, <code>X-ClientTraceId</code>identifikátorem požadavku z hlavičky odpovědi a identifikátorem klienta z hlavičky požadavku .</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Server je dočasně nedostupný. Opakujte požadavek. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky odpovědi <code>X-RequestId</code>a identifikátor klienta z hlavičky žádosti <code>X-ClientTraceId</code>.</td>
+    <td>Server je dočasně nedostupný. Opakujte požadavek. Pokud chyba přetrvává, oznamte ji s: datem a <code>X-RequestId</code>časem selhání, <code>X-ClientTraceId</code>identifikátorem požadavku z hlavičky odpovědi a identifikátorem klienta z hlavičky požadavku .</td>
   </tr>
 </table> 
 
-Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb najdete na [stránce s referenčními Translator text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Pokud dojde k chybě, požadavek také vrátí odpověď na chybu JSON. Kód chyby je šestimístné číslo kombinující 3místný stavový kód HTTP následovaný třímístným číslem pro další kategorizaci chyby. Běžné kódy chyb naleznete na [referenční stránce v3 Translator Text API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Příklady
 
-### <a name="translate-a-single-input"></a>Přeložit jeden vstup
+### <a name="translate-a-single-input"></a>Překlad jednoho vstupu
 
-Tento příklad ukazuje, jak přeložit jednu větu z angličtiny na zjednodušenou čínštinu.
+Tento příklad ukazuje, jak přeložit jednu větu z angličtiny do zjednodušené čínštiny.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
-Tělo odpovědi:
+Tělo odpovědi je:
 
 ```
 [
@@ -260,15 +260,15 @@ Tělo odpovědi:
 
 Pole `translations` obsahuje jeden prvek, který poskytuje překlad jednoho kusu textu ve vstupu.
 
-### <a name="translate-a-single-input-with-language-auto-detection"></a>Překlad jednoho vstupu s použitím jazyka pro automatické zjišťování
+### <a name="translate-a-single-input-with-language-auto-detection"></a>Překlad jednoho vstupu pomocí automatické detekce jazyka
 
-Tento příklad ukazuje, jak přeložit jednu větu z angličtiny na zjednodušenou čínštinu. Požadavek neurčuje vstupní jazyk. Místo toho se použije automatické zjišťování zdrojového jazyka.
+Tento příklad ukazuje, jak přeložit jednu větu z angličtiny do zjednodušené čínštiny. Požadavek neurčuje vstupní jazyk. Místo toho se používá automatická detekce zdrojového jazyka.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
-Tělo odpovědi:
+Tělo odpovědi je:
 
 ```
 [
@@ -280,17 +280,17 @@ Tělo odpovědi:
     }
 ]
 ```
-Odpověď je podobná odpovědi z předchozího příkladu. Vzhledem k tomu, že se požadovalo automatické zjišťování jazyka, odpověď obsahuje také informace o jazyce zjištěném pro vstupní text. 
+Odpověď je podobná odpovědi z předchozího příkladu. Vzhledem k tomu, že byla požadována automatická detekce jazyka, odpověď obsahuje také informace o jazyku zjištěném pro vstupní text. 
 
-### <a name="translate-with-transliteration"></a>Převod s využitím převodu na více než litry
+### <a name="translate-with-transliteration"></a>Přeložit s přepisem
 
-Předchozí příklad si rozšíříme tak, že přidáte předávaného litru. Následující požadavek se zeptá na čínský překlad napsaný ve skriptu latinky.
+Pojďme rozšířit předchozí příklad přidáním přepisu. Následující žádost žádá o čínský překlad napsaný v latince.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
-Tělo odpovědi:
+Tělo odpovědi je:
 
 ```
 [
@@ -307,17 +307,17 @@ Tělo odpovědi:
 ]
 ```
 
-Výsledek překladu nyní obsahuje vlastnost `transliteration`, která poskytuje přeložený text pomocí znaků latinky.
+Výsledek překladu `transliteration` nyní obsahuje vlastnost, která poskytuje přeložený text pomocí latinky.
 
-### <a name="translate-multiple-pieces-of-text"></a>Přeložit více částí textu
+### <a name="translate-multiple-pieces-of-text"></a>Překlad více částí textu
 
-Překlad více řetězců najednou je pouhým určením pole řetězců v textu žádosti.
+Překlad více řetězců najednou je jednoduše záležitostí určení pole řetězců v těle požadavku.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
-Tělo odpovědi:
+Tělo odpovědi je:
 
 ```
 [
@@ -334,7 +334,7 @@ Tělo odpovědi:
 ]
 ```
 
-### <a name="translate-to-multiple-languages"></a>Převést na více jazyků
+### <a name="translate-to-multiple-languages"></a>Překlad do více jazyků
 
 Tento příklad ukazuje, jak přeložit stejný vstup do několika jazyků v jednom požadavku.
 
@@ -342,7 +342,7 @@ Tento příklad ukazuje, jak přeložit stejný vstup do několika jazyků v jed
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
-Tělo odpovědi:
+Tělo odpovědi je:
 
 ```
 [
@@ -355,47 +355,47 @@ Tělo odpovědi:
 ]
 ```
 
-### <a name="handle-profanity"></a>Vulgární výrazy
+### <a name="handle-profanity"></a>Zpracování vulgárních výrazů
 
-Služba Translator (normálně) zachovává vulgární výrazy, které se nacházejí ve zdroji v překladu. Stupeň vulgárních výrazů a kontext, který dává slova neslušně odlišně mezi kulturami a v důsledku toho může být stupeň vulgárních výrazů v cílovém jazyku rozšířen nebo snížen.
+Za normálních okolností překladatel služby zachová vulgární výrazy, které je k dispozici ve zdroji v překladu. Stupeň vulgárních výrazů a kontext, který činí slova vulgární mise se liší mezi kulturami, a v důsledku toho stupeň vulgárních výrazů v cílovém jazyce může být zesílen nebo snížen.
 
-Pokud se chcete vyhnout používání vulgárních výrazů v překladu bez ohledu na přítomnost vulgárních výrazů ve zdrojovém textu, můžete použít možnost filtrování vulgárních výrazů. Tato možnost umožňuje zvolit, zda chcete odstranit vulgární výrazy, bez ohledu na to, zda chcete označit vulgární výrazy vhodnými značkami (což vám dává možnost přidat vlastní následné zpracování), nebo chcete provést žádnou akci. Přijaté hodnoty `ProfanityAction` jsou `Deleted`, `Marked` a `NoAction` (výchozí).
+Pokud se chcete vyhnout vulgárním výrazům v překladu, bez ohledu na přítomnost vulgárních výrazů ve zdrojovém textu, můžete použít možnost filtrování vulgárních výrazů. Tato možnost vám umožní zvolit, zda chcete vidět vulgární výrazy odstraněny, zda chcete označit vulgární výrazy s příslušnými značkami (dává vám možnost přidat vlastní post-zpracování), nebo chcete, aby žádná akce přijata. Přijaté hodnoty `ProfanityAction` jsou `Deleted` `Marked` , `NoAction` a (výchozí).
 
 <table width="100%">
-  <th width="20%">ProfanityAction</th>
+  <th width="20%">Vulgární akce</th>
   <th>Akce</th>
   <tr>
     <td><code>NoAction</code></td>
-    <td>Toto je výchozí chování. Vulgární výrazy přecházejí ze zdroje do cíle.<br/><br/>
-    <strong>Příklad zdroje (japonština)</strong>: 彼はジャッカスです Marketplace.<br/>
-    <strong>Příklad překladu (angličtina)</strong>: je to Jackass.
+    <td>Toto je výchozí chování. Vulgární výrazy budou přecházet ze zdroje na cíl.<br/><br/>
+    <strong>Příklad Zdroj (japonština)</strong>: 中中中中中中中中中中中中中<br/>
+    <strong>Příklad Překlad (anglicky)</strong>: On je blbec.
     </td>
   </tr>
   <tr>
     <td><code>Deleted</code></td>
-    <td>Slova v vulgárních textech se z výstupu odeberou bez náhrady.<br/><br/>
-    <strong>Příklad zdroje (japonština)</strong>: 彼はジャッカスです Marketplace.<br/>
-    <strong>Příklad překladu (angličtina)</strong>: je.
+    <td>Vulgární slova budou odstraněna z výstupu bez náhrady.<br/><br/>
+    <strong>Příklad Zdroj (japonština)</strong>: 中中中中中中中中中中中中中<br/>
+    <strong>Příklad překladu (anglicky)</strong>: Je.
     </td>
   </tr>
   <tr>
     <td><code>Marked</code></td>
-    <td>Slova v vulgárních výrazech jsou nahrazena značkou ve výstupu. Tato značka závisí na parametru <code>ProfanityMarker</code>.<br/><br/>
-V případě <code>ProfanityMarker=Asterisk</code>se slova vulgární slovy nahrazují <code>***</code>:<br/>
-    <strong>Příklad zdroje (japonština)</strong>: 彼はジャッカスです Marketplace.<br/>
-    <strong>Příklad překladu (angličtina)</strong>: je \*\*\*.<br/><br/>
-V případě <code>ProfanityMarker=Tag</code>jsou slova ohraničená značkami XML &lt;mi vulgárními výrazy&gt; a &lt;/Profanity&gt;:<br/>
-    <strong>Příklad zdroje (japonština)</strong>: 彼はジャッカスです Marketplace.<br/>
-    <strong>Příklad překladu (angličtina)</strong>: je &lt;vulgárních výrazů&gt;Jackass&lt;/Profanity&gt;.
+    <td>Vulgární slova jsou nahrazena značkou ve výstupu. Značka závisí na <code>ProfanityMarker</code> parametru.<br/><br/>
+Pro <code>ProfanityMarker=Asterisk</code>vulgární slova jsou nahrazena <code>***</code>:<br/>
+    <strong>Příklad Zdroj (japonština)</strong>: 中中中中中中中中中中中中中<br/>\* \* \* 
+    <strong>Příklad překladu (anglicky)</strong>: On je .<br/><br/>
+Pro <code>ProfanityMarker=Tag</code>, vulgární slova jsou obklopeny &lt;XML tagy vulgárních výrazů&gt; a &lt;/ vulgární výrazy&gt;:<br/>
+    <strong>Příklad Zdroj (japonština)</strong>: 中中中中中中中中中中中中中<br/>
+    <strong>Příklad Překlad (anglicky)</strong> &lt;: On&gt;je vulgární&lt;blbec /&gt;vulgární výrazy .
   </tr>
 </table> 
 
-Příklad:
+Například:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
-Tato akce vrátí:
+Příkaz vrací:
 
 ```
 [
@@ -407,7 +407,7 @@ Tato akce vrátí:
 ]
 ```
 
-Porovnat s:
+Porovnejte s:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
@@ -425,22 +425,22 @@ Poslední požadavek vrátí:
 ]
 ```
 
-### <a name="translate-content-with-markup-and-decide-whats-translated"></a>Překladu obsahu pomocí značek a rozhodnutí o tom, co se má přeložit
+### <a name="translate-content-with-markup-and-decide-whats-translated"></a>Překlad obsahu pomocí značek a rozhodnutí o přeloženém
 
-Je běžné přeložit obsah, který obsahuje značky, jako je například obsah ze stránky HTML nebo obsahu z dokumentu XML. Při překladu obsahu pomocí značek zahrnout parametr dotazu `textType=html`. Kromě toho je někdy užitečné vyloučit konkrétní obsah z překladu. Atribut `class=notranslate` můžete použít k určení obsahu, který by měl zůstat v původním jazyce. V následujícím příkladu obsah uvnitř prvního `div` elementu nebude přeložen, zatímco obsah v druhém elementu `div` bude přeložen.
+Je běžné překládat obsah, který obsahuje značky, jako je obsah ze stránky HTML nebo obsah z dokumentu XML. Při překladu obsahu pomocí značek zahrňte parametr `textType=html` dotazu. Kromě toho je někdy užitečné vyloučit určitý obsah z překladu. Atribut `class=notranslate` můžete použít k určení obsahu, který by měl zůstat v původním jazyce. V následujícím příkladu nebude obsah `div` uvnitř prvního prvku přeložen, zatímco `div` obsah v druhém prvku bude přeložen.
 
 ```
 <div class="notranslate">This will not be translated.</div>
 <div>This will be translated. </div>
 ```
 
-Tady je ukázkový požadavek, který se má ilustrovat.
+Zde je ukázkový požadavek pro ilustraci.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
 ```
 
-Odpověď:
+Odpověď je:
 
 ```
 [
@@ -454,13 +454,13 @@ Odpověď:
 
 ### <a name="obtain-alignment-information"></a>Získat informace o zarovnání
 
-Chcete-li získat informace o zarovnání, zadejte `includeAlignment=true` v řetězci dotazu.
+Chcete-li získat `includeAlignment=true` informace o zarovnání, zadejte na řetězec dotazu.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation.'}]"
 ```
 
-Odpověď:
+Odpověď je:
 
 ```
 [
@@ -476,27 +476,28 @@ Odpověď:
 ]
 ```
 
-Informace o zarovnání začínají `0:2-0:1`, což znamená, že první tři znaky ve zdrojovém textu (`The`) jsou namapovány na první dva znaky v přeloženém textu (`La`).
+Informace o zarovnání začínají písmenem `0:2-0:1`, což znamená, že první tři znaky ve zdrojovém textu (`The`) se mapují na první dva znaky v přeloženém textu (`La`).
 
 #### <a name="limitations"></a>Omezení
-Pamatujte na následující omezení:
+Získání informací o zarovnání je experimentální funkce, kterou jsme povolili pro výzkum prototypů a zkušenosti s mapováním potenciálních frází. Můžeme se rozhodnout, že to v budoucnu přestaneme podporovat. Zde jsou některé z pozoruhodných omezení, kde nejsou podporovány zarovnání:
 
-* Zarovnání není pro text ve formátu HTML k dispozici, tj., textType = HTML.
-* Zarovnání se vrátí jenom pro podmnožinu párů jazyků:
-  - z angličtiny do jakéhokoli jiného jazyka;
-  - z jakéhokoli jiného jazyka až po angličtinu, s výjimkou čínského zjednodušené čínštiny, tradiční čínštiny a lotyšské angličtiny;
-  - z japonštiny do korejštiny nebo z korejštiny do japonštiny.
-* Pokud je větu zarovnaným překladem, nebudete přicházet. Příkladem překonzervovaného překladu je "Toto je test", "Miluji vás" a dalšími větami s vysokou frekvencí.
+* Zarovnání není k dispozici pro text ve formátu HTML, tj.
+* Zarovnání je vráceno pouze pro podmnožinu dvojic jazyků:
+  - z angličtiny do jiného jazyka;
+  - z jakéhokoli jiného jazyka do angličtiny s výjimkou zjednodušené čínštiny, tradiční čínštiny a lotyštiny do angličtiny;
+  - z japonštiny na korejštinu nebo z korejštiny do japonštiny.
+* Pokud je věta přeložena do konzerv, neobdržíte zarovnání. Příklad konzervovaného překladu je "Toto je test", "Miluji tě" a další vysokofrekvenční věty.
+* Zarovnání není k dispozici, pokud použijete některý z přístupů, abyste zabránili [překladu,](../prevent-translation.md) jak je popsáno zde
 
 ### <a name="obtain-sentence-boundaries"></a>Získat hranice věty
 
-Chcete-li získat informace o délce věty ve zdrojovém textu a přeloženém textu, zadejte `includeSentenceLength=true` v řetězci dotazu.
+Chcete-li získat informace o délce věty ve `includeSentenceLength=true` zdrojovém textu a přeloženém textu, zadejte na řetězci dotazu.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
 ```
 
-Odpověď:
+Odpověď je:
 
 ```
 [
@@ -512,23 +513,23 @@ Odpověď:
 ]
 ```
 
-### <a name="translate-with-dynamic-dictionary"></a>Přeložit pomocí dynamického slovníku
+### <a name="translate-with-dynamic-dictionary"></a>Překlad pomocí dynamického slovníku
 
-Pokud už znáte překlad, který chcete použít pro slovo nebo frázi, můžete ho v rámci žádosti dodat jako značku. Dynamický slovník je bezpečný jenom pro složená podstatná jména, jako jsou správné názvy a názvy produktů.
+Pokud již znáte překlad, který chcete použít u slova nebo fráze, můžete jej zadat jako značku v žádosti. Dynamický slovník je bezpečný pouze pro složená vlastní jména, jako jsou vlastní názvy a názvy produktů.
 
-Značka, která se má dodat, používá následující syntaxi.
+Značka, která má být zadat, používá následující syntaxi.
 
 ``` 
 <mstrans:dictionary translation="translation of phrase">phrase</mstrans:dictionary>
 ```
 
-Například je třeba vzít v úvahu anglickou větu "slovo wordomatic je položka slovníku". Pokud chcete zachovat slovo _wordomatic_ v překladu, pošlete žádost:
+Zvažte například větu z angličtiny "Slovo wordomatic je položka slovníku." Chcete-li zachovat slovo _wordomatic_ v překladu, pošlete žádost:
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
 ```
 
-Výsledek je následující:
+Výsledkem je:
 
 ```
 [
@@ -540,4 +541,4 @@ Výsledek je následující:
 ]
 ```
 
-Tato funkce funguje stejným způsobem jako u `textType=text` nebo s `textType=html`. Funkce by se měla používat zřídka. Vhodný a mnohem lepší způsob přizpůsobení překladu je použití vlastního překladatele. Vlastní Překladatel umožňuje plné využití kontextových a statistických pravděpodobností. Pokud máte nebo máte možnost chtít vytvořit školicí údaje, které ukazují vaši práci nebo frázi v kontextu, získáte mnohem lepší výsledky. [Přečtěte si další informace o vlastním překladateli](../customization.md).
+Tato funkce funguje stejným `textType=text` způsobem `textType=html`s nebo s . Funkce by měla být používána střídmě. Vhodný a mnohem lepší způsob přizpůsobení překladu je pomocí vlastního překladače. Vlastní Překladač plně využívá kontextové a statistické pravděpodobnosti. Pokud máte nebo si můžete dovolit vytvořit trénovací data, která zobrazují vaši práci nebo frázi v kontextu, získáte mnohem lepší výsledky. [Další informace o vlastním překladači](../customization.md).

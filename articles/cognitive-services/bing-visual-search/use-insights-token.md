@@ -1,7 +1,7 @@
 ---
-title: Pomocí tokenu insights - pro vizuální vyhledávání Bingu
+title: Použití tokenu přehledů – vizuální vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
-description: Ukazuje, jak používat obrazu insight tokenu s využitím Visual API pro vyhledávání Bingu k získání přehledů o bitovou kopii.
+description: Ukazuje, jak pomocí tokenu přehledu obrázku pomocí rozhraní API pro vizuální vyhledávání Bingzískat přehledy o obrázku.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67341726"
 ---
-# <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Použít insights token získat přehled o určité imagi
+# <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Použití tokenu přehledů k získání přehledů pro obrázek
 
-Rozhraní API pro Vizuální vyhledávání Bingu vrátí informace o obrázku, který poskytnete. Obrázek můžete zadat pomocí adresy URL obrázku, tokenu insights nebo nahráním obrázku. Informace o těchto možnostech najdete v tématu [co je API pro vizuální vyhledávání Bingu?](overview.md). Tento článek ukazuje použití tokenu insights. Příklady, které ukazují, jak nahrát obrázek pro získání rychlého přehledu, najdete rychlých startech ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)).
+Rozhraní API pro Vizuální vyhledávání Bingu vrátí informace o obrázku, který zadáte. Obrázek můžete zadat pomocí adresy URL obrázku, tokenu insights nebo nahráním obrázku. Informace o těchto možnostech naleznete v tématu [Co je rozhraní API pro vizuální vyhledávání Bing?](overview.md). Tento článek ukazuje pomocí tokenu přehledy. Příklady, které ukazují, jak nahrát obrázek získat přehledy, naleznete v tématu rychlé starty ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)).
 
-Při odesílání pro vizuální vyhledávání Bingu tokenu image nebo adresu URL, následuje data formuláře, že je třeba zahrnout text příspěvku. Musí zahrnovat data formuláře `Content-Disposition` záhlaví a nastavte jeho `name` parametr "knowledgeRequest". Podrobnosti o `imageInfo` objektu, najdete v článku žádosti:
+Pokud odešlete vizuální vyhledávání Bingu token obrázku nebo adresu URL, zobrazí se následující data formuláře, která je nutné zahrnout do těla příspěvku. Data formuláře musí `Content-Disposition` obsahovat záhlaví a `name` je nutné nastavit jeho parametr na "knowledgeRequest". Podrobnosti o `imageInfo` objektu naleznete v žádosti:
 
 ```json
 {
@@ -43,7 +43,7 @@ Při odesílání pro vizuální vyhledávání Bingu tokenu image nebo adresu U
 }
 ```
 
-V příkladech v tomto článku ukazují, jak používat insights token. Získat přehledy token ze `Image` objekt /images/hledat odpovědi rozhraní API. Informace o tom, jak insights token najdete v tématu [co je rozhraní API Bingu pro vyhledávání obrázků?](../Bing-Image-Search/overview.md).
+Příklady v tomto článku ukazují, jak používat token přehledů. Získáte token přehledů `Image` z objektu v odpovědi rozhraní API /images/search. Informace o získání tokenu přehledů najdete [v tématu Co je rozhraní API pro vyhledávání obrázků Bingu?](../Bing-Image-Search/overview.md).
 
 ```
 --boundary_1234-abcd
@@ -58,23 +58,23 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Příklady, které používají insights token najdete v tématu [jazyka C#](#use-with-c) | [Java](#use-with-java) | [Node.js](#use-with-nodejs) | [Python](#use-with-python).
+Příklady, které používají token přehledů, naleznete [v tématu C#](#use-with-c) | [Java](#use-with-java) | [Node.js](#use-with-nodejs) | [Python](#use-with-python).
 
-## <a name="use-with-c"></a>Použití sC#
+## <a name="use-with-c"></a>Použití s C #
 
-### <a name="c-prerequisites"></a>C#požadované součásti
+### <a name="c-prerequisites"></a>Požadavky jazyka C#
 
-- Upgrade kterékoli verze [Visual Studio 2019](https://www.visualstudio.com/downloads/) Chcete-li získat tento kód běžící na Windows.
-- Předplatné Azure. Pro účely tohoto rychlého startu můžete použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klíč předplatného, nebo klíč do placené předplatné.
+- Všechny verze [Visual Studia 2019,](https://www.visualstudio.com/downloads/) aby tento kód běžel v systému Windows.
+- Předplatné Azure. Pro tento rychlý start můžete použít bezplatný klíč [zkušebního](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) předplatného nebo klíč placeného předplatného.
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
 Pokud chcete tuto aplikaci spustit, postupujte následovně:
 
-1. Vytvořte konzole řešení v sadě Visual Studio.
-2. Nahraďte obsah souboru program.cs kódem zobrazeným v tomto rychlém startu.
+1. Vytvořte konzolové řešení v sadě Visual Studio.
+2. Nahraďte obsah Program.cs kódem zobrazeným v tomto rychlém startu.
 3. Hodnotu `accessKey` nahraďte klíčem předplatného.
-4. Nahraďte `insightsToken` hodnotu s tokenem přehledy z odpovědi hledání/imagí /.
+4. Nahraďte hodnotu `insightsToken` tokenem přehledů z odpovědi /images/search.
 5. Spusťte program.
 
 ```csharp
@@ -235,17 +235,17 @@ namespace VisualSearchInsightsToken
 
 ## <a name="use-with-java"></a>Použití s Javou
 
-### <a name="java-prerequisites"></a>Požadavky na jazyce Java
+### <a name="java-prerequisites"></a>Java předpoklady
 
-- Je nutné použít [JDK 7 nebo 8](https://aka.ms/azure-jdks) kompilace a spuštění tohoto kódu. Pokud máte Oblíbené, ale bude stačit textový editor, můžete použít prostředí Java IDE.
-- Pro účely tohoto rychlého startu můžete použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klíč předplatného, nebo klíč do placené předplatné.
+- Ke kompilaci a spuštění tohoto kódu je nutné použít [jdk 7 nebo 8.](https://aka.ms/azure-jdks) IDE java můžete použít, pokud máte oblíbené, ale textový editor bude stačit.
+- Pro tento rychlý start můžete použít bezplatný klíč [zkušebního](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) předplatného nebo klíč placeného předplatného.
 
-## <a name="run-the-java-application"></a>Spusťte aplikaci v Javě
+## <a name="run-the-java-application"></a>Spuštění aplikace Java
 
 Pokud chcete tuto aplikaci spustit, postupujte následovně:
 
-1. Stáhnout nebo nainstalovat [knihovna Gson Java](https://github.com/google/gson). Můžete také získat Gson prostřednictvím nástroje Maven.
-2. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java.
+1. Stáhněte nebo nainstalujte [knihovnu Gson Java](https://github.com/google/gson). Můžete také získat Gson přes Maven.
+2. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy.
 3. Přidejte poskytnutý kód do souboru s názvem `VisualSearch.java`.
 4. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
 5. Spusťte program.
@@ -347,14 +347,14 @@ public class InsightsToken {
 }
 ```
 
-## <a name="use-with-nodejs"></a>Použití s využitím Node.js
+## <a name="use-with-nodejs"></a>Použití s souborem Node.js
 
-### <a name="nodejs-prerequisites"></a>Požadavky na Node.js
+### <a name="nodejs-prerequisites"></a>Požadavky node.js
 
-- Musíte mít [Node.js 6](https://nodejs.org/en/download/) tento kód spustit.
-- Pro účely tohoto rychlého startu můžete použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klíč předplatného, nebo klíč do placené předplatné.
+- Chcete-li spustit tento kód, musíte mít [soubor Node.js 6.](https://nodejs.org/en/download/)
+- Pro tento rychlý start můžete použít bezplatný klíč [zkušebního](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) předplatného nebo klíč placeného předplatného.
 
-## <a name="run-the-javascript-application"></a>Spuštění aplikace jazyka JavaScript
+## <a name="run-the-javascript-application"></a>Spuštění aplikace JavaScript
 
 Pokud chcete tuto aplikaci spustit, postupujte následovně:
 
@@ -411,14 +411,14 @@ function requestCallback(err, res, body) {
 }
 ```
 
-## <a name="use-with-python"></a>Použití s využitím Pythonu
+## <a name="use-with-python"></a>Použití v Pythonu
 
-### <a name="python-prerequisites"></a>Požadavky na Pythonu
+### <a name="python-prerequisites"></a>Požadavky pythonu
 
-- Musíte mít [Python 3](https://www.python.org/) tento kód spustit.
+- Chcete-li spustit tento kód, musíte mít [Python 3.](https://www.python.org/)
 - Pro tento rychlý start můžete použít klíč [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) předplatného, nebo klíč placeného předplatného.
 
-## <a name="run-the-python-application"></a>Spusťte aplikaci v Pythonu
+## <a name="run-the-python-application"></a>Spuštění aplikace Python
 
 Pokud chcete tuto aplikaci spustit, postupujte následovně:
 
@@ -474,10 +474,10 @@ if __name__ == '__main__':
     main()
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Vytvořit pro vizuální vyhledávání jednostránkovou webovou aplikaci](tutorial-bing-visual-search-single-page-app.md)  
-[Co je API aplikace pro vizuální vyhledávání Bingu?](overview.md)  
-[Vyzkoušet služby Cognitive Services](https://aka.ms/bingvisualsearchtryforfree)  
+[Vytvoření jednostránkové webové aplikace vizuálního vyhledávání](tutorial-bing-visual-search-single-page-app.md)  
+[Co je rozhraní API pro vizuální vyhledávání Bingu?](overview.md)  
+[Zkuste Cognitive Services](https://aka.ms/bingvisualsearchtryforfree)  
 [Získání bezplatné zkušební verze přístupového klíče](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[Image - vizuálního vyhledávání](https://aka.ms/bingvisualsearchreferencedoc)
+[Obrázky - Vizuální vyhledávání](https://aka.ms/bingvisualsearchreferencedoc)

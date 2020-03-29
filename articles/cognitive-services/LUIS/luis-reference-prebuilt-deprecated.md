@@ -1,7 +1,7 @@
 ---
-title: Zastaralé předem vytvořené entity – LUIS
+title: Zastaralé předem sestavené entity – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje informace zastaralé předem připravených entit v Language Understanding (LUIS).
+description: Tento článek obsahuje zastaralé předem vytvořené informace o entitě v jazyce Porozumění (LUIS).
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -12,25 +12,25 @@ ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270682"
 ---
-# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Zastaralé předem připravené entity v aplikaci LUIS
-Následující předem připravených entit se považují za zastaralé a nelze přidat do nové aplikace LUIS.
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Zastaralé předem sestavené entity v aplikaci LUIS
+Následující předem vytvořené entity jsou zastaralé a nelze je přidat do nových aplikací LUIS.
 
-* **DateTime**: existující aplikace Luis, které používají **DateTime** , by měly být migrovány do **datetimeV2**, i když entita DateTime nadále funguje v existujících aplikacích, které ji používají.
-* **Geografie**: stávající aplikace Luis, které používají **geografickou** podporu, jsou podporované do prosince 2018.
-* **Encyklopedie**: stávající aplikace Luis, které používají **encyklopedii** , se podporují do prosince 2018.
+* **Datetime**: Existující aplikace LUIS, které používají **datetime** by měly být migrovány na **datetimeV2**, i když datetime entity nadále fungovat v již existujícíaplikace, které ji používají.
+* **Geografie**: Existující aplikace LUIS, které používají **geografické oblasti** je podporována až do prosince 2018.
+* **Encyklopedie**: Existující aplikace LUIS, které používají **encyklopedii,** jsou podporovány až do prosince 2018.
 
-## <a name="geography-culture"></a>Zeměpisné oblasti jazykovou verzi
-Oblast **geografie** je k dispozici pouze v `en-us` národním prostředí.
+## <a name="geography-culture"></a>Geografie kultura
+**Geografie** je k `en-us` dispozici pouze v národním prostředí.
 
-#### <a name="3-geography-subtypes"></a>3 podtypy zeměpisné oblasti
+#### <a name="3-geography-subtypes"></a>3 Podtypy geografie
 
-Předem připravených entit   |   Ukázková promluva   |   JSON
+Předem sestavená entita   |   Ukázková promluva   |   JSON
 ------|------|------|
 `builtin.geography.city`   |  `seattle`    |`{ "type": "builtin.geography.city", "entity": "seattle" }`|
 `builtin.geography.city`   |  `paris`    |`{ "type": "builtin.geography.city", "entity": "paris" }`|
@@ -39,11 +39,11 @@ Předem připravených entit   |   Ukázková promluva   |   JSON
 `builtin.geography.pointOfInterest`   |   `amazon river` |`{ "type": "builtin.geography.pointOfInterest", "entity": "amazon river" }`|
 `builtin.geography.pointOfInterest`   |   `sahara desert`|`{ "type": "builtin.geography.pointOfInterest", "entity": "sahara desert" }`|
 
-## <a name="encyclopedia-culture"></a>Encyklopedie jazykovou verzi
-**Encyklopedie** je k dispozici pouze v `en-US` národním prostředí.
+## <a name="encyclopedia-culture"></a>Encyklopedie kultura
+**Encyklopedie** je k dispozici `en-US` pouze v národním prostředí.
 
 #### <a name="encyclopedia-subtypes"></a>Podtypy encyklopedie
-Integrované entity encyklopedie obsahuje více než 100 podtypy v následující tabulce: encyklopedie entity se navíc často mapují na víc typů. Například dotaz Ronald Reagan poskytuje:
+Integrovaná entita encyklopedie obsahuje více než 100 podtypů v následující tabulce: Entity encyklopedie se navíc často mapují na více typů. Například dotaz Ronald Reagan výnosy:
 
 ```json
 {
@@ -65,7 +65,7 @@ Integrované entity encyklopedie obsahuje více než 100 podtypy v následujíc�
  ```
 
 
-Předem připravených entit   |   Předem připravených entit (podtypy)   |   Ukázková promluva
+Předem sestavená entita   |   Předem sestavená entita (podtypy)   |   Ukázková promluva
 ------|------|------|
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.people.person`| `bryan adams` |
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.film.producer`| `walt disney` |
@@ -163,5 +163,5 @@ Předem připravených entit   |   Předem připravených entit (podtypy)   |   
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si informace o [dimenzích](luis-reference-prebuilt-dimension.md), [e-mailových](luis-reference-prebuilt-email.md) entitách a [číslech](luis-reference-prebuilt-number.md).
+Informace o [dimenzi](luis-reference-prebuilt-dimension.md), [e-mailových](luis-reference-prebuilt-email.md) entitách a [čísle](luis-reference-prebuilt-number.md).
 

@@ -1,7 +1,7 @@
 ---
-title: Vlastní příkazy (Preview) – služba Speech
+title: Vlastní příkazy (náhled) – služba řeči
 titleSuffix: Azure Cognitive Services
-description: Přehled funkcí, možností a omezení pro vlastní příkazy (Preview), řešení pro vytváření hlasových aplikací.
+description: Přehled funkcí, možností a omezení pro vlastní příkazy (Náhled), řešení pro vytváření hlasových aplikací.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -11,45 +11,45 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
 ms.openlocfilehash: 2e1b6ee0bd6c392804915fac6ff23278a00b6d33
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367835"
 ---
-# <a name="what-are-custom-commands-preview"></a>Co jsou vlastní příkazy (Preview)?
+# <a name="what-are-custom-commands-preview"></a>Co jsou vlastní příkazy (náhled)?
 
-Hlasové aplikace, jako jsou [hlasové asistenti](voice-assistants.md) , naslouchají uživatelům a probírají akci v reakci, často se domluví zpět. Používají [Převod řeči na text](speech-to-text.md) k přepisovat řeči uživatele a pak provádějí akci s použitím přirozeného jazyka pro porozumění textu. Tato akce často zahrnuje mluvený výstup z pomocníka generovaného [převodem textu na řeč](text-to-speech.md). Zařízení se připojují k asistentům pomocí objektu `DialogServiceConnector` sady Speech SDK.
+Hlasové aplikace, jako jsou [hlasoví asistenti, poslouchají](voice-assistants.md) uživatele a reagují na ně a často se vyjadřují zpět. Používají [převod řeči na text](speech-to-text.md) k přepisu řeči uživatele a poté akce na pochopení textu v přirozeném jazyce. Tato akce často zahrnuje mluvený výstup z pomocníka generovaného [převodem textu na řeč](text-to-speech.md). Zařízení se připojují k asistentům `DialogServiceConnector` pomocí objektu sady Speech SDK.
 
-**Vlastní příkazy (Preview)** jsou zjednodušené řešení pro vytváření hlasových aplikací. Poskytuje jednotné prostředí pro vytváření, automatický hostující model a relativně nižší složitost a další možnosti, jako je například [přímý line Speech](direct-line-speech.md). Toto zjednodušení ale přináší omezení flexibility. Vlastní příkazy (Preview) jsou proto nejvhodnější pro dokončování úkolů nebo pro scénáře příkazů a řízení. Je obzvláště vhodná pro Internet věcí (IoT) a bezobslužná zařízení.
+**Vlastní příkazy (Preview)** je zjednodušené řešení pro vytváření hlasových aplikací. Poskytuje jednotné vytváření zkušeností, automatické hostování modelu, a relativně nižší složitost oproti jiným možnostem, jako [je direct line řeči](direct-line-speech.md). Toto zjednodušení však přichází se snížením flexibility. Takže vlastní příkazy (Preview) je nejvhodnější pro dokončení úkolu nebo příkaz-a-control scénáře. Je obzvláště dobře sladěný pro internet věcí (IoT) a bezhlavá zařízení.
 
-Pro komplexní interakci s konverzací a integraci s dalšími řešeními, jako je [řešení Virtual Assistant a podniková šablona](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) , doporučujeme používat přímý hlasový vstup.
+Pro komplexní konverzační interakci a integraci s dalšími řešeními, jako je [řešení virtuálního asistenta a podniková šablona,](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) doporučujeme použít přímou řeč.
 
-Dobré kandidáty pro vlastní příkazy (Preview) mají pevný slovník s dobře definovanými sadami proměnných. Například úlohy pro domovskou automatizaci, jako je řízení termostatu, jsou ideální.
+Dobří kandidáti pro vlastní příkazy (Náhled) mají pevnou slovní zásobu s dobře definovanými sadami proměnných. Ideální jsou například úkoly domácí automatizace, jako je ovládání termostatu.
 
-   ![Příklady scénářů dokončování úkolů](media/voice-assistants/task-completion-examples.png "Příklady dokončení úkolu")
+   ![Příklady scénářů dokončení úkolu](media/voice-assistants/task-completion-examples.png "příklady dokončení úkolu")
 
-## <a name="getting-started-with-custom-commands-preview"></a>Začínáme s vlastními příkazy (Preview)
+## <a name="getting-started-with-custom-commands-preview"></a>Začínáme s vlastními příkazy (náhled)
 
-Prvním krokem pro použití vlastních příkazů (Preview) k vytvoření hlasové aplikace je [získání klíče předplatného pro rozpoznávání řeči](get-started.md) a přístup k vlastnímu tvůrci příkazů (Preview) v [studiu řeči](https://speech.microsoft.com). Odtud můžete vytvořit novou vlastní aplikaci (Preview) a publikovat ji, po které může aplikace na zařízení komunikovat pomocí sady Speech SDK.
+Prvním krokem pro použití vlastních příkazů (preview) k vytvoření hlasové aplikace je [získání klíče předplatného řeči](get-started.md) a přístup k nástroji Tvůrce vlastních příkazů (Preview) v [aplikaci Speech Studio](https://speech.microsoft.com). Odtud můžete vytvořit novou aplikaci Vlastní příkazy (Náhled) a publikovat ji, po které aplikace na zařízení může komunikovat s ním pomocí sady Speech SDK.
 
-   ![Vytváření toku pro vlastní příkazy (Preview)](media/voice-assistants/custom-commands-flow.png "Tok pro vytváření vlastních příkazů (ve verzi Preview)")
+   ![Tok vytváření pro vlastní příkazy (náhled)](media/voice-assistants/custom-commands-flow.png "Tok vytváření vlastních příkazů (náhledu)")
 
-Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za méně než 10 minut.
+Nabízíme rychlé starty navržené tak, abyste mohli spustit kód za méně než 10 minut.
 
-* [Vytvoření vlastní aplikace (Preview)](quickstart-custom-speech-commands-create-new.md)
-* [Vytvoření vlastních příkazů (ve verzi Preview) s parametry](quickstart-custom-speech-commands-create-parameters.md)
-* [Připojení k aplikaci Custom Commands (Preview) pomocí sady Speech SDK,C#](quickstart-custom-speech-commands-speech-sdk.md)
+* [Vytvoření aplikace Vlastní příkazy (Náhled)](quickstart-custom-speech-commands-create-new.md)
+* [Vytvoření aplikace vlastních příkazů (Náhled) s parametry](quickstart-custom-speech-commands-create-parameters.md)
+* [Připojení k aplikaci Vlastní příkazy (Náhled) pomocí sady Speech SDK, C #](quickstart-custom-speech-commands-speech-sdk.md)
 
-Až budete s rychlým startem hotovi, Prozkoumejte naše postupy.
+Jakmile budete hotovi s quickstarts, prozkoumejte naše návody.
 
-- [Přidat ověření do vlastních parametrů příkazu](./how-to-custom-speech-commands-validations.md)
-- [Plnění příkazů v klientovi pomocí sady Speech SDK](./how-to-custom-speech-commands-fulfill-sdk.md)
+- [Přidání ověření do parametrů vlastního příkazu](./how-to-custom-speech-commands-validations.md)
+- [Plnit příkazy na straně klienta pomocí sady Speech SDK](./how-to-custom-speech-commands-fulfill-sdk.md)
 - [Přidání potvrzení k vlastnímu příkazu](./how-to-custom-speech-commands-confirmations.md)
-- [Přidání opravy s jedním krokem k vlastnímu příkazu](./how-to-custom-speech-commands-one-step-correction.md)
+- [Přidání korekce v jednom kroku k vlastnímu příkazu](./how-to-custom-speech-commands-one-step-correction.md)
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Získejte zdarma klíč předplatného služby Speech](get-started.md)
-* [Pokud si chcete vyzkoušet vlastní příkazy, přejdete do sady Speech Studio.](https://speech.microsoft.com)
-* [Získat sadu Speech SDK](speech-sdk.md)
+* [Přejděte do aplikace Speech Studio a vyzkoušejte vlastní příkazy.](https://speech.microsoft.com)
+* [Získání sady SDK pro rozpoznávání řeči](speech-sdk.md)

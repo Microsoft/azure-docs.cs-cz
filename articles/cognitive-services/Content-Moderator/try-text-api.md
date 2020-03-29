@@ -1,7 +1,7 @@
 ---
-title: Mírný text pomocí rozhraní API pro moderování textu – Content Moderator
+title: Moderování textu pomocí rozhraní API pro moderování textu – moderátor obsahu
 titleSuffix: Azure Cognitive Services
-description: Moderování textu testovacího disku pomocí rozhraní API pro moderování textu v online konzole.
+description: Moderování textu testovací jednotky pomocí rozhraní API pro moderování textu v online konzole.
 services: cognitive-services
 author: PatrickFarley
 ms.author: pafarley
@@ -11,56 +11,56 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: e0930558f31b27a77fa2cd6b44fcea2fe9091086
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74538830"
 ---
-# <a name="moderate-text-from-the-api-console"></a>Střední text z konzoly API
+# <a name="moderate-text-from-the-api-console"></a>Moderování textu z konzoly rozhraní API
 
-[Rozhraní API pro moderování textu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) v Azure Content moderator slouží ke kontrole vulgárních textů a jejich porovnání s vlastními a sdílenými seznamy.
+Pomocí [rozhraní API pro moderování textu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) v Moderátoru obsahu Azure můžete naskenovat textový obsah, aby neobsahuje vulgární výrazy, a porovnat ho s vlastními a sdílenými seznamy.
 
 ## <a name="get-your-api-key"></a>Získání klíče rozhraní API
 
-Než budete moct otestovat rozhraní API v online konzole, budete potřebovat svůj klíč předplatného. Najdete ho na kartě **Nastavení** v poli **OCP-APIM-Subscription-Key** . Další informace najdete v tématu [Přehled](overview.md).
+Než budete moci testovací disk API v online konzole, budete potřebovat klíč předplatného. To se nachází na kartě **Nastavení,** v **poli Ocp-Apim-Subscription-Key.** Další informace najdete v tématu [Přehled](overview.md).
 
-## <a name="navigate-to-the-api-reference"></a>Přejít na reference k rozhraní API
+## <a name="navigate-to-the-api-reference"></a>Přechod na odkaz rozhraní API
 
-Přejít na [odkaz rozhraní API pro moderování textu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) 
+Přejděte na [odkaz na rozhraní API pro moderování textu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f). 
 
-  Otevře se stránka s **textovou obrazovkou** .
+  Otevře se stránka **Text – obrazovka.**
 
-## <a name="open-the-api-console"></a>Otevřete konzolu rozhraní API.
+## <a name="open-the-api-console"></a>Otevření konzoly rozhraní API
 
-V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
+V **části Ovládací konzole pro testování rozhraní Open API**vyberte oblast, která nejpřesněji popisuje vaši polohu. 
 
-  ![Výběr oblasti stránky text-obrazovka](images/test-drive-region.png)
+  ![Text – výběr oblasti stránky obrazovky](images/test-drive-region.png)
 
-  Otevře se konzola rozhraní API pro **textovou obrazovku** .
+  Otevře se konzola Rozhraní API **obrazovky.**
 
-## <a name="select-the-inputs"></a>Vybrat vstupy
+## <a name="select-the-inputs"></a>Vyberte vstupy
 
 ### <a name="parameters"></a>Parametry
 
-Vyberte parametry dotazu, které chcete použít na textové obrazovce. V tomto příkladu použijte výchozí hodnotu pro **jazyk**. Můžete ho nechat prázdné, protože operace automaticky detekuje pravděpodobný jazyk v rámci provádění.
+Vyberte parametry dotazu, které chcete použít na textové obrazovce. V tomto příkladu použijte výchozí hodnotu pro **jazyk**. Můžete jej také ponechat prázdné, protože operace automaticky rozpozná pravděpodobný jazyk jako součást jeho spuštění.
 
 > [!NOTE]
-> Pro parametr **jazyka** přiřaďte `eng` nebo nechte prázdné, aby se zobrazila **odpověď s** podporou počítače (funkce Preview). **Tato funkce podporuje jenom angličtinu**.
+> Pro parametr **jazyka** `eng` přiřaďte nebo ponechte prázdný, abyste viděli odpověď **klasifikace** s podporou počítače (funkce náhledu). **Tato funkce podporuje pouze angličtinu**.
 >
-> Pro detekci **podmínek vulgárních** výrazů použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku, nebo ponechte prázdné.
+> Pro **detekci vulgárních výrazů** použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku nebo jej ponechte prázdný.
 
-V možnosti **Automatické**hodnoty, **PII**a **klasifikovat (Preview)** vyberte **true (pravda**). Pole **ListId** ponechte prázdné.
+**Chcete-li automatické opravy**, **PII**a **klasifikovat (náhled),** vyberte **true**. Ponechte pole **ListId** prázdné.
 
-  ![Parametry dotazu na konzolu text-obrazovka](images/text-api-console-inputs.PNG)
+  ![Text – parametry dotazu konzoly obrazovky](images/text-api-console-inputs.PNG)
 
 ### <a name="content-type"></a>Typ obsahu
 
-Jako **typ obsahu**vyberte typ obsahu, který chcete na obrazovce. V tomto příkladu použijte výchozí typ **textu/prostý** obsah. Do pole **OCP-APIM-Subscription-Key** zadejte svůj klíč předplatného.
+V **části Typ obsahu**vyberte typ obsahu, který chcete promítat. V tomto příkladu použijte výchozí **text nebo prostý** typ obsahu. Do pole **Ocp-Apim-Subscription-Key** zadejte klíč předplatného.
 
-### <a name="sample-text-to-scan"></a>Ukázkový text, který se má zkontrolovat
+### <a name="sample-text-to-scan"></a>Ukázkový text ke skenování
 
-Do pole text **žádosti** zadejte nějaký text. Následující příklad ukazuje úmyslné překlep v textu.
+Do pole **Vyžádat text** zadejte nějaký text. Následující příklad ukazuje záměrné překlep v textu.
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555. These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300. Also, 999-99-9999 looks like a social security number (SSN).
@@ -68,10 +68,10 @@ Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 255.255.
 
 ## <a name="analyze-the-response"></a>Analyzovat odpověď
 
-Následující odpověď ukazuje různé přehledy z rozhraní API. Obsahuje potenciální vulgární výrazy, osobní údaje, klasifikaci (Preview) a automaticky opravenou verzi.
+Následující odpověď ukazuje různé přehledy z rozhraní API. Obsahuje potenciální vulgární výrazy, osobní údaje, klasifikaci (náhled) a automaticky opravenou verzi.
 
 > [!NOTE]
-> Funkce klasifikace s asistencí počítače je ve verzi Preview a podporuje jenom angličtinu.
+> Funkce "Klasifikace" s pomocí stroje je ve verzi preview a podporuje pouze angličtinu.
 
 ```json
 {"OriginalText":"Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.\r\nThese are all UK phone numbers: +44 123 456 7890 or 0234 567 8901 or 0456 789 0123.\r\nAlso, 999-99-9999 looks like a social security number (SSN).",
@@ -167,8 +167,8 @@ Následující odpověď ukazuje různé přehledy z rozhraní API. Obsahuje pot
 }
 ```
 
-Podrobné vysvětlení všech sekcí v odpovědi JSON najdete v koncepční příručce pro [moderování textu](text-moderation-api.md) .
+Podrobné vysvětlení všech oddílů v odpovědi JSON naleznete v koncepční příručce [Moderování textu.](text-moderation-api.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Použijte REST API ve vašem kódu nebo postupujte podle pokynů pro [rychlý Start .NET SDK](dotnet-sdk-quickstart.md) pro integraci s vaší aplikací.
+Použijte rozhraní REST API ve vašem kódu nebo postupujte podle [rychlého startu sady .NET SDK](dotnet-sdk-quickstart.md) pro integraci s vaší aplikací.

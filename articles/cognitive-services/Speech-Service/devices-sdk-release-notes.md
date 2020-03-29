@@ -1,7 +1,7 @@
 ---
-title: Dokumentace k sadě Speech Devices SDK
+title: Dokumentace sady SDK pro řečová zařízení
 titleSuffix: Azure Cognitive Services
-description: Poznámky k verzi obsahují protokol aktualizací, vylepšení, oprav chyb a změny v sadě Speech SDK pro zařízení. Tento článek je aktualizovaný pomocí všech vydání sady Speech Devices SDK.
+description: Poznámky k verzi poskytují protokol aktualizací, vylepšení, oprav chyb a změn sady SDK pro řečová zařízení. Tento článek je aktualizován s každou verzí sady SDK zařízení řeči.
 services: cognitive-services
 author: wsturman
 manager: nitinme
@@ -10,95 +10,95 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: c12aaea1dbc99a3f6db064e03b4b49e569f15194
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 29dcb3c0e74482fd6670d1a0983e751043379d6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189063"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80371624"
 ---
-# <a name="release-notes-speech-devices-sdk"></a>Poznámky k verzi: sada Speech SDK pro zařízení
+# <a name="release-notes-speech-devices-sdk"></a>Poznámky k verzi: Řečová zařízení SDK
 
-V následujících částech jsou uvedeny změny v posledních verzích.
+V následujících částech jsou uvedeny změny v nejnovějších verzích.
 
-## <a name="speech-devices-sdk-190"></a>Sada Speech 1.9.0 SDK pro zařízení:
+## <a name="speech-devices-sdk-190"></a>Řečová zařízení SDK 1.9.0:
 
-- K dispozici jsou počáteční binární soubory pro [URBETTER DDK](https://aka.ms/sdsdk-download-urbetter) (Linux ARM64).
-- Roobo v1 nyní používá Maven pro sadu Speech SDK
-- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.9.0. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
+- K dispozici jsou počáteční binární soubory pro [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter) (Linux ARM64).
+- Roobo v1 nyní používá Maven pro řeč SDK
+- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.9.0. Další informace naleznete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
 
-## <a name="speech-devices-sdk-170"></a>Sada Speech 1.7.0 SDK pro zařízení:
+## <a name="speech-devices-sdk-170"></a>Řečová zařízení SDK 1.7.0:
 
-- Systém Linux ARM je nyní podporován.
+- Linux ARM je nyní podporován.
 - K dispozici jsou počáteční binární soubory pro [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) (Linux ARM64).
-- Uživatelé systému Windows můžou použít `AudioConfig.fromDefaultMicrophoneInput()` nebo `AudioConfig.fromMicrophoneInput(deviceName)` k určení mikrofonu, který se má použít.
+- Uživatelé systému Windows mohou použít `AudioConfig.fromDefaultMicrophoneInput()` nebo `AudioConfig.fromMicrophoneInput(deviceName)` zadat mikrofon, který má být použit.
 - Velikost knihovny byla optimalizována.
-- Podpora pro rozpoznávání vícenásobného zapnutí pomocí stejného objektu pro rozpoznávání řeči nebo záměru.
-- Opravte příležitostné zablokování, ke kterému by došlo při zastavování rozpoznávání.
-- Ukázkové aplikace teď obsahují ukázkové účastníky. soubor vlastností, které demonstrují formát souboru.
-- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.7.0. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
+- Podpora pro vícenásobné rozpoznávání pomocí stejného objektu rozpoznávání řeči/záměru.
+- Opravte příležitostné zablokování, ke kterému by došlo při zastavení rozpoznávání.
+- Ukázkové aplikace nyní obsahují ukázkový soubor participants.properties, který ukazuje formát souboru.
+- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.7.0. Další informace naleznete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
 
-## <a name="speech-devices-sdk-160"></a>Sada Speech 1.6.0 SDK pro zařízení:
+## <a name="speech-devices-sdk-160"></a>Řečová zařízení SDK 1.6.0:
 
-- Podpora [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) v systémech Windows a Linux s [využitím Common Sample Application](https://aka.ms/sdsdk-download)
-- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.6.0. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
+- Podpora [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) ve Windows a Linuxu pomocí běžné [ukázkové aplikace](https://aka.ms/sdsdk-download)
+- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.6.0. Další informace naleznete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
 
-## <a name="speech-devices-sdk-151"></a>Sada Speech 1.5.1 SDK pro zařízení:
+## <a name="speech-devices-sdk-151"></a>Řečová zařízení SDK 1.5.1:
 
-- Zahrne do ukázkové aplikace [přepis konverzace](conversation-transcription-service.md) .
-- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.5.1. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
+- Zahrňte [přepis konverzace](conversation-transcription-service.md) do ukázkové aplikace.
+- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.5.1. Další informace naleznete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
 
-## <a name="speech-devices-sdk-150-2019-may-release"></a>Speech Devices SDK 1.5.0:2019 – může vydávat
+## <a name="speech-devices-sdk-150-2019-may-release"></a>Řečová zařízení SDK 1.5.0: vydání 2019-May
 
-- Sada Speech Devices SDK je teď GA a už není ve verzi ověřované verze Preview.
-- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.5.0. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
-- Nová technologie klíčového slova přináší významná vylepšení kvality, viz přerušující změny.
-- Nový kanál zpracování zvuku, který vylepšuje rozpoznávání daleko se všemi poli.
+- Sada SDK pro řečová zařízení je nyní ga a již není bránou náhled.
+- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.5.0. Další informace naleznete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
+- Nová technologie klíčových slov přináší významné zlepšení kvality, viz Nejnovější změny.
+- Nový kanál pro zpracování zvuku pro lepší rozpoznávání vzdáleného pole.
 
-**Průlomové změny**
+**Změny způsobující chyby**
 
-- Z důvodu nové technologie klíčových slov se musí všechna klíčová slova znovu vytvořit na našem vylepšeném portálu klíčových slov. Pokud chcete úplně odebrat stará klíčová slova ze zařízení, odinstalujte starou aplikaci.
-  - adb uninstall com.microsoft.coginitiveservices.speech.samples.sdsdkstarterapp
+- Vzhledem k nové klíčové slovo technologie všechna klíčová slova musí být re-created na naší vylepšené klíčové slovo portálu. Chcete-li zcela odebrat stará klíčová slova ze zařízení odinstalovat starou aplikaci.
+  - ADB uninstall com.microsoft.cognitiveservices.speech.samples.sdsdkstarterapp
 
-## <a name="speech-devices-sdk-140-2019-apr-release"></a>Speech Devices SDK 1.4.0:2019-APR – verze
+## <a name="speech-devices-sdk-140-2019-apr-release"></a>Řečová zařízení SDK 1.4.0: vydání 2019-Duben
 
-- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.4.0. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
+- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.4.0. Další informace naleznete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
 
-## <a name="speech-devices-sdk-131-2019-mar-release"></a>Speech Devices SDK 1.3.1:2019-březen Release
+## <a name="speech-devices-sdk-131-2019-mar-release"></a>Řečová zařízení SDK 1.3.1: vydání 2019-Mar
 
-- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.3.1. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
-- Bylo aktualizováno zpracování klíčových slov, viz přerušující změny.
-- Ukázková aplikace přidá výběr jazyka pro rozpoznávání řeči i pro překlad.
+- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.3.1. Další informace naleznete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
+- Aktualizované zpracování klíčových slov naleznete v tématu Breaking Changes.
+- Ukázková aplikace přidává výběr jazyka pro rozpoznávání řeči i překlad.
 
-**Průlomové změny**
+**Změny způsobující chyby**
 
-- Zjednodušená [instalace klíčového slova](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) je teď součástí aplikace a nepotřebuje samostatnou instalaci na zařízení.
-- Rozpoznávání klíčového slova se změnilo a podporují se dvě události.
-  - `RecognizingKeyword,` označuje, že výsledek rozpoznávání řeči obsahuje text klíčového slova (Neověřeno).
-  - `RecognizedKeyword`označuje, že rozpoznávání klíčového slova dokončilo rozpoznávání daného klíčového slova.
+- [Instalace klíčového slova](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) byla zjednodušena, je nyní součástí aplikace a nepotřebuje samostatnou instalaci na zařízení.
+- Změnilo se rozpoznávání klíčových slov a jsou podporovány dvě události.
+  - `RecognizingKeyword,`označuje, že výsledek řeči obsahuje (neověřený) text klíčového slova.
+  - `RecognizedKeyword`, označuje, že rozpoznávání klíčových slov bylo dokončeno s rozpoznáním daného klíčového slova.
 
-## <a name="speech-devices-sdk-110-2018-nov-release"></a>Speech Devices SDK 1.1.0:2018. listopadu – vydání
+## <a name="speech-devices-sdk-110-2018-nov-release"></a>Řečová zařízení SDK 1.1.0: vydání 2018-Nov
 
-- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.1.0. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
-- Vylepšili jsme přesnost rozpoznávání řeči v terénu pomocí našeho vylepšeného algoritmu pro zpracování zvuku.
-- Ukázková aplikace přidala podporu rozpoznávání řeči v čínštině.
+- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.1.0. Další informace naleznete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
+- Přesnost rozpoznávání řeči vzdáleného pole byla vylepšena pomocí našeho vylepšeného algoritmu zpracování zvuku.
+- Ukázková aplikace přidala podporu rozpoznávání řeči v Čínštině.
 
-## <a name="speech-devices-sdk-101-2018-oct-release"></a>Speech Devices SDK 1.0.1:2018 – říjen – vydání
+## <a name="speech-devices-sdk-101-2018-oct-release"></a>Řečová zařízení SDK 1.0.1: vydání 2018-Oct
 
-- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.0.1. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
-- Vylepšení rozpoznávání řeči bude vylepšeno pomocí našeho vylepšeného algoritmu pro zpracování zvuku.
-- Je opravena jedna zvuková relace průběžného rozpoznávání.
+- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.0.1. Další informace naleznete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
+- Přesnost rozpoznávání řeči se zlepší s naším vylepšeným algoritmem zpracování zvuku
+- Jedna chyba nepřetržité rozpoznávání zvukové relace je opravena.
 
-**Průlomové změny**
+**Změny způsobující chyby**
 
-- V této verzi představeny počet nejnovější změny. Podrobnosti o rozhraních API najdete na [této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) .
-- Soubory modelu KWS nejsou kompatibilní se sadou Speech SDK pro 1.0.1. Existující soubory klíčových slov budou odstraněny po zápisu nových souborů klíčových slov do zařízení.
+- V této verzi je zavedena řada nejnovějších změn. Podrobnosti týkající se api naleznete na [této stránce.](https://aka.ms/csspeech/breakingchanges_1_0_0)
+- Soubory modelu KWS nejsou kompatibilní s sadou Speech Devices SDK 1.0.1. Existující soubory klíčových slov budou odstraněny po zápisu nových souborů klíčových slov do zařízení.
 
-## <a name="speech-devices-sdk-050-2018-aug-release"></a>Speech Devices SDK 0.5.0:2018 – srpen Release
+## <a name="speech-devices-sdk-050-2018-aug-release"></a>Řečová zařízení SDK 0.5.0: vydání 2018-Aug
 
-- Vylepšení přesnosti rozpoznávání řeči opravou chyby v kódu zpracování zvuku.
-- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 0.5.0. Další informace najdete v [poznámkách k verzi](releasenotes.md#cognitive-services-speech-sdk-050-2018-july-release).
+- Vylepšena přesnost rozpoznávání řeči opravou chyby v kódu zpracování zvuku.
+- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 0.5.0. Další informace naleznete v [poznámkách k verzi](releasenotes.md#cognitive-services-speech-sdk-050-2018-july-release).
 
-## <a name="speech-devices-sdk-0212733-2018-may-release"></a>Speech Devices SDK 0.2.12733:2018 – může vydávat
+## <a name="speech-devices-sdk-0212733-2018-may-release"></a>Řečová zařízení SDK 0.2.12733: vydání 2018-May
 
-První verze Public Preview sady Cognitive Services Speech pro zařízení.
+The first public preview release of the Cognitive Services Speech Devices SDK.

@@ -1,56 +1,56 @@
 ---
-title: Správa nastavení modelu a učení – přizpůsobování
-description: Nastavení strojového a výukového modelu, které se naučilo počítačem, se dá exportovat pro zálohování ve vlastním systému správy zdrojového kódu.
+title: Správa nastavení modelu a výuky – personalizátor
+description: Strojově navedutou model a nastavení učení lze exportovat pro zálohování ve vašem vlastním systému správy zdrojového kódu.
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: c544d058019c8d507f65dc6bfd854376b364abd1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624294"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>Jak spravovat nastavení modelu a učení
 
-Nastavení strojového a výukového modelu, které se naučilo počítačem, se dá exportovat pro zálohování ve vlastním systému správy zdrojového kódu.
+Strojově navedutou model a nastavení učení lze exportovat pro zálohování ve vašem vlastním systému správy zdrojového kódu.
 
-## <a name="export-the-personalizer-model"></a>Export modelu přizpůsobeného pro přizpůsobování
+## <a name="export-the-personalizer-model"></a>Export modelu personalisty
 
-V části Správa prostředků pro **Nastavení modelu a učení**si prohlédněte vytváření modelů a datum poslední aktualizace a exportujte aktuální model. Pomocí Azure Portal nebo rozhraní API pro přizpůsobení můžete exportovat soubor modelu pro účely archivace.
+V části Správa zdrojů pro **model a nastavení učení**zkontrolujte vytvoření modelu a datum poslední aktualizace a exportujte aktuální model. K exportu souboru modelu pro účely archivace můžete použít portál Azure nebo uživatelská api.
 
-![Exportovat aktuální model přizpůsobeného přizpůsobování](media/settings/export-current-personalizer-model.png)
+![Exportovat aktuální model personalisty](media/settings/export-current-personalizer-model.png)
 
-## <a name="clear-data-for-your-learning-loop"></a>Vymazat data pro studijní smyčku
+## <a name="clear-data-for-your-learning-loop"></a>Vymazání dat pro vaši učební smyčku
 
-1. V Azure Portal na stránce **Nastavení modelu a učení** vyberte u svého prostředku pro přizpůsobování možnost **Vymazat data**.
-1. Pokud chcete vymazat všechna data a resetovat smyčku učení do původního stavu, zaškrtněte políčko všechna 3 zaškrtávací políčka.
+1. Na webu Azure Portal vyberte pro prostředek personalisty na stránce **Model a nastavení učení** možnost Vymazat **data**.
+1. Chcete-li vymazat všechna data a obnovit smyčku učení do původního stavu, zaškrtněte všechna 3 políčka.
 
-    ![V Azure Portal vymažte data z prostředku pro přizpůsobování.](./media/settings/clear-data-from-personalizer-resource.png)
+    ![Na webu Azure Portal vymažte data z prostředků personalisty.](./media/settings/clear-data-from-personalizer-resource.png)
 
     |Hodnota|Účel|
     |--|--|
-    |Zaprotokolované individuální přizpůsobení a data odměna.|Tato data protokolování se používají při offline hodnocení. Vymažte data při resetování prostředku.|
-    |Resetujte model přizpůsobeného přizpůsobování.|Tento model se při každém přeškolení mění. Tato frekvence školení je určena v **frekvence nahrávání modelu** na stránce **Konfigurace** . |
-    |Nastavte zásady učení na výchozí.|Pokud jste zásady učení změnili jako součást testování offline, tato zásada obnoví původní zásady učení.|
+    |Protokolovaná data přizpůsobení a odměn.|Tato data protokolování se používají v offline hodnocení. Pokud resetujete prostředek, vymažte data.|
+    |Resetujte model personalisty.|Tento model se mění při každém přeškolení. Tato frekvence školení je specifikována v **četnosti nahraných modelů** na stránce **Konfigurace.** |
+    |Nastavte výchozí zásady učení.|Pokud jste změnili zásady učení jako součást offline hodnocení, obnoví se původní zásady učení.|
 
-1. Zaškrtnutím **políčka vymazat vybraná data** zahajte proces mazání. Stav je hlášen v oznámeních Azure v pravém horním navigačním panelu.
+1. Chcete-li zahájit proces vymazání, vyberte **vymazat vybraná data.** Stav se hlásí v oznámeních Azure v navigaci vpravo nahoře.
 
-## <a name="import-a-new-learning-policy"></a>Importovat nové zásady učení
+## <a name="import-a-new-learning-policy"></a>Import nové zásady učení
 
-Nastavení [zásad učení](concept-active-learning.md#understand-learning-policy-settings) určuje základní _parametry_ školení modelů. Pokud chcete najít nové zásady učení, proveďte [offline vyhodnocení](how-to-offline-evaluation.md) .
+Nastavení [zásad učení](concept-active-learning.md#understand-learning-policy-settings) určuje _hyperparametry_ trénování modelu. Proveďte [offline hodnocení](how-to-offline-evaluation.md) a vyhledejte nové zásady učení.
 
-1. Otevřete [Azure Portal](https://portal.azure.com)a vyberte prostředek pro přizpůsobování.
-1. V části **Správa prostředků** vyberte **Nastavení modelu a učení** .
-1. V části **Import výukového nastavení** vyberte soubor, který jste vytvořili ve formátu JSON, který jste zadali výše, a pak vyberte tlačítko **nahrát** .
+1. Otevřete [portál Azure](https://portal.azure.com)a vyberte prostředek personalisty.
+1. V části **Správa zdrojů** vyberte nastavení modelu **a výuky.**
+1. V **nastavení importu výuky** vyberte soubor, který jste vytvořili ve výše určeném formátu JSON, a pak vyberte tlačítko **Nahrát.**
 
-    Počkejte, až se oznámení, že se zásady učení úspěšně nahrály.
+    Počkejte na oznámení, že zásady učení byla odeslána úspěšně.
 
-## <a name="export-a-learning-policy"></a>Exportovat zásady učení
+## <a name="export-a-learning-policy"></a>Export zásad učení
 
-1. Otevřete [Azure Portal](https://portal.azure.com)a vyberte prostředek pro přizpůsobování.
-1. V části **Správa prostředků** vyberte **Nastavení modelu a učení** .
-1. V části **Nastavení výuky pro import** vyberte tlačítko **Exportovat nastavení učení** . Tím se soubor `json` uloží do místního počítače.
+1. Otevřete [portál Azure](https://portal.azure.com)a vyberte prostředek personalisty.
+1. V části **Správa zdrojů** vyberte nastavení modelu **a výuky.**
+1. V **nastavení importu výuky** vyberte tlačítko **Exportovat nastavení výuky.** Tím uložíte `json` soubor do místního počítače.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Naučte se spravovat zásady učení.](how-to-manage-model.md)
+[Přečtěte si, jak spravovat zásady učení](how-to-manage-model.md)

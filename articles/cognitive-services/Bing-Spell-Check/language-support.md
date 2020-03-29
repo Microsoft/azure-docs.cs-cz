@@ -1,7 +1,7 @@
 ---
-title: Podpora jazyků – API kontrola pravopisu Bingu
+title: Jazyková podpora – rozhraní API pro kontrolu pravopisu Bingu
 titleSuffix: Azure Cognitive Services
-description: Seznam podporované rozhraní API Bingu pro kontrolu pravopisu zkontrolujte přirozeného jazyka.
+description: Seznam přirozených jazyků podporovaných rozhraním API pro kontrolu pravopisu Bingu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,62 +11,62 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66390165"
 ---
-# <a name="language-and-region-support-for-bing-spell-check-api"></a>Podpora jazyka a oblasti pro API kontrola pravopisu Bingu
+# <a name="language-and-region-support-for-bing-spell-check-api"></a>Jazyková a oblastová podpora rozhraní API pro kontrolu pravopisu Bingu
 
-Rozhraní API Bingu pro kontrolu pravopisu zkontrolujte podporuje tyto jazyky (pouze v `spell` režim).
+Tyto jazyky jsou podporovány rozhraním `spell` API pro kontrolu pravopisu Bingu (pouze v režimu).
 
-Pamatujte, že pro práci s jakéhokoli jiného jazyka než `en-US`, `mkt` by měla být nastavena a buď `Accept-Language` nebo `setLang` je třeba nastavit tak, že je popsán v [referenční dokumentace rozhraní API kontrolu pravopisu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+Vezměte prosím na vědomí, že `en-US`pro `mkt` práci s `Accept-Language` jiným `setLang` jazykem než , by měla být nastavena a buď nebo by měla být nastavena, jak bylo popsáno v [spell check api v7 odkaz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|
-| arabština      | `ar`          |
-| Čínština (lidé lidová republika)     | `zh-CN`          |
-| Čínština (Hongkong – zvláštní administrativní oblast)    | `zh-HK`          |
+| Arabština      | `ar`          |
+| Čínština (Čínská lidová republika)     | `zh-CN`          |
+| Čínština (Hongkong – zvláštní správní oblast ČLR)    | `zh-HK`          |
 | Čínština (Tchaj-wan)     | `zh-TW`          |
-| dánština      | `da`          |
-| Holandština (Belgie)       | `nl-BE`          |
-| Nizozemština (Nizozemsko)      | `nl-NL`          |
-| angličtina (Austrálie)    | `en-AU`          |
-| angličtina (Kanada)     | `en-CA`          |
-| English (India)    | `en-IN`          |
+| Dánština      | `da`          |
+| Nizozemština (Belgie)       | `nl-BE`          |
+| nizozemština (Nizozemsko)      | `nl-NL`          |
+| Angličtina (Austrálie)    | `en-AU`          |
+| Angličtina (Kanada)     | `en-CA`          |
+| Angličtina (Indie)    | `en-IN`          |
 | Angličtina (Indonésie)     | `en-ID`          |
 | Angličtina (Malajsie)     | `en-MY`          |
-| angličtina (Nový Zéland)    | `en-NZ`          |
+| Angličtina (Nový Zéland)    | `en-NZ`          |
 | Angličtina (Filipíny)     | `en-PH`          |
-| Angličtina (Jižní Afrika)    | `en-ZA`          |
+| Angličtina (Jihoafrická republika)    | `en-ZA`          |
 | Angličtina (Spojené království)    | `en-GB`          |
 | Angličtina (Spojené státy)    | `en-US`          |
 | Finština     | `fi`          |
 | Francouzština (Belgie)     | `fr-BE`          |
 | Francouzština (Kanada)     | `fr-CA`          |
-| Francouzština (Francie)     | `fr-FR`          |
-| francouzština (Švýcarsko)      | `fr-CH`          |
-| němčina (Rakousko)      | `de-AT`          |
-| Němčina (Německo)      | `de-DE`          |
-| němčina (Švýcarsko)      | `de-CH`          |
-| italština     | `it`          |
+| francouzština (Francie)     | `fr-FR`          |
+| Francouzština (Švýcarsko)      | `fr-CH`          |
+| Němčina (Rakousko)      | `de-AT`          |
+| němčina (Německo)      | `de-DE`          |
+| Němčina (Švýcarsko)      | `de-CH`          |
+| Italština     | `it`          |
 | Japonština    | `ja`          |
 | Korejština      | `ko`          |
-| norština   | `no`          |
-| polština      | `pl`          |
+| Norština   | `no`          |
+| Polština      | `pl`          |
 | Portugalština (Brazílie)   | `pt-BR`|
-| Portugalština (Portugalsko) | `pt-PT`|
-| ruština     | `ru`          |
+| portugalština (Portugalsko) | `pt-PT`|
+| Ruština     | `ru`          |
 | Španělština (Argentina)    | `es-AR`          |
 | Španělština (Chile)     | `es-CL`          |
 | Španělština (Mexiko)    | `es-MX`          |
 | Španělština (Španělsko)    | `es-ES`          |
 | Španělština (Spojené státy)    | `es-US`          |
-| švédština     | `sv`          |
-| turečtina     | `tr`          |
+| Švédština     | `sv`          |
+| Turečtina     | `tr`          |
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [Stránka dokumentace ke službám Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
 - [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

@@ -11,42 +11,42 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
 ms.openlocfilehash: 350c2bf3c4d0fc0a16f1b393e7c8d8a372679797
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78331140"
 ---
 # <a name="configure-openssl-for-linux"></a>Konfigurace OpenSSL pro Linux
 
-Při použití libovolné verze sady Speech SDK před 1.9.0 je [OpenSSL](https://www.openssl.org) dynamicky nakonfigurovaný na verzi hostitelského systému. V novějších verzích sady Speech SDK je OpenSSL (verze [1.1.1 b](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html)) staticky propojena se základní knihovnou sady Speech SDK.
+Při použití libovolné verze sady Speech SDK před 1.9.0 je [OpenSSL](https://www.openssl.org) dynamicky konfigurován na verzi hostitelského systému. V novějších verzích sady Speech SDK je OpenSSL (verze [1.1.1b)](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html)staticky propojen s základní knihovnou sady Speech SDK.
 
-Aby bylo zajištěno připojení, ověřte, zda byly v systému nainstalovány certifikáty OpenSSL. Spusťte příkaz:
+Chcete-li zajistit připojení, ověřte, zda byly ve vašem systému nainstalovány certifikáty OpenSSL. Spuštění příkazu:
 ```bash
 openssl version -d
 ```
 
-Výstup v systémech založených na Ubuntu/Debian by měl být následující:
+Výstup na ubuntu / debianí systémy by měly být:
 ```
 OPENSSLDIR: "/usr/lib/ssl"
 ```
 
-Ověřte, zda je v OPENSSLDIR podadresář `certs`. V příkladu výše by byl `/usr/lib/ssl/certs`.
+Zkontrolujte, `certs` zda je podadresář v openssldir. Ve výše uvedeném příkladu by `/usr/lib/ssl/certs`bylo .
 
-* Pokud je `/usr/lib/ssl/certs` a obsahuje mnoho jednotlivých souborů certifikátů (s rozšířením `.crt` nebo `.pem`), není nutné provádět další akce.
+* Pokud existuje `/usr/lib/ssl/certs` a obsahuje mnoho jednotlivých `.crt` `.pem` souborů certifikátů (s nebo rozšíření), není třeba další akce.
 
-* Pokud je OPENSSLDIR jiným způsobem než `/usr/lib/ssl` a/nebo existuje jeden soubor sady prostředků namísto několika individuálních souborů, musíte nastavit příslušnou proměnnou prostředí SSL, která bude označovat, kde se certifikáty mají najít.
+* Pokud openssldir je `/usr/lib/ssl` něco jiného než a/ nebo je jeden soubor svazku certifikátu namísto více jednotlivých souborů, je třeba nastavit odpovídající proměnnou prostředí SSL k označení, kde lze certifikáty nalézt.
 
 ## <a name="examples"></a>Příklady
 
-- OPENSSLDIR je `/opt/ssl`. Existuje `certs` podadresář s mnoha soubory `.crt` nebo `.pem`.
-Nastavte proměnnou prostředí `SSL_CERT_DIR`, aby odkazovala na `/opt/ssl/certs` před spuštěním programu, který používá sadu Speech SDK. Příklad:
+- OPENSSLDIR `/opt/ssl`je . Existuje `certs` podadresář s `.crt` `.pem` mnoha nebo soubory.
+Nastavte proměnnou `SSL_CERT_DIR` prostředí `/opt/ssl/certs` tak, aby ukazovala na před spuštěním programu, který používá sadu Speech SDK. Například:
 ```bash
 export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
-- OPENSSLDIR je `/etc/pki/tls` (například v systémech založených na RHEL/CentOS). `certs` podadresář se souborem sady certifikátů, například `ca-bundle.crt`.
-Nastavte proměnnou prostředí `SSL_CERT_FILE`, aby odkazovala na tento soubor před spuštěním programu, který používá sadu Speech SDK. Příklad:
+- OPENSSLDIR `/etc/pki/tls` je (jako na systémech založených na RHEL/CentOS). Existuje `certs` podadresář se souborem sady `ca-bundle.crt`certifikátů, například .
+Před spuštěním programu, který používá sadu Speech SDK, nastavte proměnnou `SSL_CERT_FILE` prostředí tak, aby ukazovala na tento soubor. Například:
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
@@ -54,4 +54,4 @@ export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Sada Speech SDK](speech-sdk.md)
+> [Informace o sadě Speech SDK](speech-sdk.md)

@@ -1,7 +1,7 @@
 ---
-title: Získat populárních obrázků pomocí rozhraní API Bingu pro vyhledávání obrázků
+title: Získejte trendy obrázky pomocí rozhraní API pro vyhledávání obrázků Bingu
 titleSuffix: Azure Cognitive Services
-description: Hledání dnešní populárních obrázků z webu pomocí rozhraní API Bingu pro vyhledávání obrázků.
+description: Vyhledejte dnešní populární obrázky z webu pomocí rozhraní API pro vyhledávání obrázků Bing.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -13,15 +13,15 @@ ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 2936b94d7ba791b1a4e5a9b95aca3ca3ecdb5904
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66383435"
 ---
-# <a name="get-trending-images-from-the-web"></a>Získat populární imagí z webu
+# <a name="get-trending-images-from-the-web"></a>Získání populárních obrázků z webu
 
-Chcete-li získat dnešní populárních obrázků, poslat následující požadavek GET:  
+Chcete-li získat dnešní trendy obrázky, pošlete následující požadavek GET:  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending?mkt=en-us HTTP/1.1  
@@ -32,14 +32,14 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Rozhraní API pro obrázky vzroste zájem o aktuálně podporuje pouze následujících zemích:  
+Rozhraní API pro populární obrázky v současné době podporuje pouze následující trhy:  
 
-- en US (angličtina, USA)  
-- cs CA (angličtina, Kanada)  
-- cs Austrálie (angličtina, Austrálie)  
+- en-US (Angličtina, Spojené státy americké)  
+- cs-CA (angličtina, Kanada)  
+- en-AU (anglicky, Austrálie)  
 - zh-CN (čínština, Čína)
 
-Odpověď obsahuje [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) objekt, který obsahuje seznam imagí podle kategorie. Kategorie se používá `title` k seskupení imagí v činnost koncového uživatele. Kategorie může každý den vznikají.  
+Odpověď obsahuje [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) objekt, který obsahuje obrázky podle kategorie. Pomocí kategorie můžete `title` obrázky seskupit v uživatelském prostředí. Kategorie se mohou měnit každý den.  
 
 ```json
 {
@@ -88,11 +88,11 @@ Odpověď obsahuje [TrendingImages](https://docs.microsoft.com/rest/api/cognitiv
 }  
 ```  
 
-Každá dlaždice obsahuje bitovou kopii a možnosti pro získání související obrázky. Chcete-li získat související obrázky, můžete použít dotaz `text` volat [API pro vyhledávání obrázků](./search-the-web.md) a zobrazit související obrázky sami. Nebo můžete použít na adresu URL v `webSearchUrl` umožní uživateli Bingu imagí stránky s výsledky hledání, který obsahuje související obrázky.
+Každá dlaždice obsahuje obrázek a možnosti pro získání souvisejících obrázků. Chcete-li získat související obrázky, `text` můžete pomocí dotazu volat [rozhraní API pro vyhledávání obrázků](./search-the-web.md) a zobrazit související obrázky sami. Nebo můžete použít adresu `webSearchUrl` URL v převést uživatele na stránku s výsledky hledání obrázků Bing, která obsahuje související obrázky.
 
-Při volání rozhraní API pro vyhledávání obrázků získat související obrázky, nastavte [id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) parametr ID v dotazu `id` pole. Určení ID zajistí, že odpověď obsahuje bitovou kopii (je to první obrázek v odpovědi) a související obrázky. Navíc nastavte [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) parametr na text v dotazu `query` objektu `text` pole.
+Pokud zavoláte rozhraní API pro vyhledávání obrázků, abyste získali související obrázky, nastavte parametr dotazu [id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) na ID v `id` poli. Zadání ID zajistí, že odpověď obsahuje obraz (jedná se o první obrázek v odpovědi) a související obrazy. Nastavte také parametr [dotazu q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) na `query` text `text` v poli objektu.
 
-Následující příklad ukazuje, jak získat související obrázky pan Smith v předchozí odpovědi vzroste zájem o rozhraní Image API pomocí ID bitové kopie.
+Následující příklad ukazuje, jak pomocí ID obrázku získat související obrázky pana Nováka v předchozí odpovědi rozhraní API trendy obrázky.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=Smith&id=77FDE4A1C6529A23C7CF0EC073FAA64843E828F2&mkt=en-us HTTP/1.1  

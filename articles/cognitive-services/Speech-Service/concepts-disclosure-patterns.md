@@ -1,7 +1,7 @@
 ---
-title: Vzory návrhu zpřístupnění
+title: Zveřejnění návrhových vzorů
 titleSuffix: Azure Cognitive Services
-description: Vzory návrhu a osvědčené postupy pro zveřejnění.
+description: Návrhové vzory a osvědčené postupy pro zveřejňování informací.
 services: cognitive-services
 author: sharonlo101
 manager: nitinme
@@ -11,247 +11,247 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74776618"
 ---
 # <a name="disclosure-design-patterns"></a>Zpřístupnění způsobů návrhu
-Teď, když&#39;jste zjistili správnou [úroveň zveřejnění](concepts-disclosure-guidelines.md#disclosure-assessment) pro syntetické hlasové zážitky, je&#39;vhodný čas na prozkoumání potenciálních vzorů návrhu.
+Nyní, když jste&#39;určili správnou [úroveň zveřejnění](concepts-disclosure-guidelines.md#disclosure-assessment) pro váš syntetistický hlasový zážitek,&#39;je vhodná doba prozkoumat potenciální návrhové vzory.
 ## <a name="overview"></a>Přehled
-Existuje spektrum vzorů návrhu zpřístupnění, které můžete použít na syntetické hlasové prostředí. Pokud byl výsledek hodnocení zveřejnění "vysoké zpřístupnění", doporučujeme, abyste [**výslovně vyzrazeni**](#explicit-disclosure), což znamená, že navzájem komunikují původem syntetického hlasu. [**Implicitní zveřejnění**](#implicit-disclosure) zahrnuje hromádky a vzory interakce, které využívají hlasové funkce, ať už jsou požadované úrovně zveřejnění vysoké nebo nízké.
-![spektrum způsobů zpřístupnění](media/responsible-ai/disclosure-patterns/affordances.png)
+Existuje spektrum vzorů odhalení, které můžete použít pro váš syntetický hlasový zážitek. Pokud byl výsledek vašeho zveřejnění "High Disclosure", doporučujeme [**výslovné zveřejnění**](#explicit-disclosure), což znamená, že sdělujete původ syntetického hlasu. [**Implicitní zveřejnění**](#implicit-disclosure) obsahuje podněty a interakce vzory, které využívají hlasové zkušenosti, zda jsou požadované úrovně zveřejnění vysoké nebo nízké.
+![Spektrum vzorců zveřejňování](media/responsible-ai/disclosure-patterns/affordances.png)
 
 
 
 
 
 
-| Explicitní vzory zveřejnění                                                                                                                                                                                    | Implicitní vzory zveřejnění                                                                 |
+| Explicitní vzory zveřejňování                                                                                                                                                                                    | Implicitní vzory zveřejňování                                                                 |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-|[Transparentní Úvod](#transparent-introduction)<br> [Slovní transparentní Úvod](#verbal-transparent-introduction)<br>  [Explicitní Podtitulek](#explicit-byline)<br>  [Přizpůsobení a kalibrace](#customization-and-calibration)<br> [Odhalení rodičů](#parental-disclosure)<br> [Poskytnutí příležitostí k získání dalších informací o tom, jak byl hlas proveden](#providing-opportunities-to-learn-more-about-how-the-voice-was-made) | [Vyzrazení schopností](#capability-disclosure)<br>[Implicitní upozornění a zpětná vazba](#implicit-cues--feedback)<br> [Průhlednost konverzací](#conversational-transparency) |
+|[Transparentní úvod](#transparent-introduction)<br> [Verbální transparentní úvod](#verbal-transparent-introduction)<br>  [Explicitní podřád](#explicit-byline)<br>  [Přizpůsobení a kalibrace](#customization-and-calibration)<br> [Zveřejnění rodičovské zodpovědnosti](#parental-disclosure)<br> [Poskytování příležitostí dozvědět se více o tom, jak byl hlas](#providing-opportunities-to-learn-more-about-how-the-voice-was-made) | [Zveřejňování schopností](#capability-disclosure)<br>[Implicitní podněty a zpětná vazba](#implicit-cues--feedback)<br> [Konverzační průhlednost](#conversational-transparency) |
 
 
 
-Následující graf vám umožní odkazovat přímo na vzory, které se vztahují k vašemu syntetickému hlasu. Některé další podmínky v tomto grafu se můžou vztahovat i na váš scénář:<br/>
+Pomocí následujícího grafu odkazovat přímo na vzory, které se vztahují k syntetické hlas. Některé další podmínky v tomto grafu mohou také platit pro váš scénář:<br/>
 
 
 
-| Pokud máte syntetické hlasové prostředí... | Doporučení | Způsoby návrhu |
+| Pokud váš syntetický hlas zkušenosti ... | Doporučení | Způsoby návrhu |
 | --- | --- | --- |
-| Vyžaduje vysoké zveřejnění  | K tomu, aby uživatelé mohli vytvářet přidružení, použijte alespoň jeden explicitní vzor a implicitní hromádky. |[Explicitní zveřejnění](#explicit-disclosure)<br>[Implicitní zveřejnění](#implicit-disclosure)  |
-| Vyžaduje nízké zpřístupnění | Zveřejnění může být minimální nebo zbytečné, ale může mít užitek z některých implicitních vzorů. | [Vyzrazení schopností](#capability-disclosure)<br>[Průhlednost konverzací](#conversational-transparency)  |
-| Má vysokou úroveň zapojení | Vytvářejte po dlouhou dobu a poskytněte více vstupních bodů k zveřejnění na cestě uživatele. Důrazně doporučujeme mít prostředí pro připojování. | [Transparentní Úvod](#transparent-introduction)<br>[Přizpůsobení a kalibrace](#customization-and-calibration)<br>[Vyzrazení schopností](#capability-disclosure) |
-| Zahrnuje podřízené objekty jako primární zamýšlenou cílovou skupinu. | Cílí na cíle jako na primární cílovou skupinu pro zveřejňování a zajistěte, aby mohli efektivně komunikovat s podřízenou položkou.  | [Odhalení rodičů](#parental-disclosure)<br>[Slovní transparentní Úvod](#verbal-transparent-introduction)<br> [Implicitní zveřejnění](#implicit-disclosure)<br> [Průhlednost konverzací](#conversational-transparency)  |
-| Zahrnuje nevidomé uživatele nebo lidi s nízkou schopností jako primární zamýšlenou cílovou skupinu.  | Být zahrnuti do všech uživatelů a zajistěte, aby jakékoli formy vizuálního zpřístupnění byly přidružené k alternativnímu textovému nebo zvukovému dopadu. Dodržování standardů přístupnosti pro kontrastní poměr a velikost zobrazení K sdělování informací používejte auditorské pomůcky.  | [Slovní transparentní Úvod](#verbal-transparent-introduction) <br>[Upozornění pro auditory](#implicit-cues--feedback)<br>[Hmatové](#implicit-cues--feedback)<br>[Průhlednost konverzací](#conversational-transparency)<br>[Standardy přístupnosti](https://www.microsoft.com/accessibility) |
-| Je menší než na obrazovce, zařízení nebo používá hlas jako primární nebo jediný režim interakce | K sdělování informací používejte auditorské pomůcky. | [Slovní transparentní Úvod](#verbal-transparent-introduction) <br> [Upozornění pro auditory](#implicit-cues--feedback)  |
-| Potenciálně zahrnuje více uživatelů nebo naslouchacího procesu (například osobní asistent ve více domácnostech).  | Je třeba mít na vědomí různé kontexty uživatelů a úrovně porozumění a nabízet více příležitostí k odhalení na cestě uživatele.  | [Transparentní Úvod (návrat uživatele)](#transparent-introduction)<br> [Poskytnutí příležitostí k získání dalších informací o tom, jak byl hlas proveden](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)<br> [Průhlednost konverzací](#conversational-transparency)  |
+| Vyžaduje vysoké zveřejnění  | Použijte alespoň jeden explicitní vzor a implicitní podněty předem pomáhá uživatelům vytvářet přidružení. |[Výslovné zveřejnění](#explicit-disclosure)<br>[Implicitní zveřejnění](#implicit-disclosure)  |
+| Vyžaduje nízké zveřejnění | Zveřejnění může být minimální nebo zbytečné, ale mohlo by těžit z některých implicitních vzorců. | [Zveřejňování schopností](#capability-disclosure)<br>[Konverzační průhlednost](#conversational-transparency)  |
+| Má vysokou úroveň angažovanosti | Stavět na dlouhou dobu a nabízejí více vstupních bodů pro zveřejnění podél cesty uživatele. Důrazně doporučujeme mít zážitek z nástupu. | [Transparentní úvod](#transparent-introduction)<br>[Přizpůsobení a kalibrace](#customization-and-calibration)<br>[Zveřejňování schopností](#capability-disclosure) |
+| Zahrnuje děti jako primární zamýšlené publikum | Zacilte na rodiče jako na primární publika a zajistěte, aby mohli účinně sdělovat informace dětem.  | [Zveřejnění rodičovské zodpovědnosti](#parental-disclosure)<br>[Verbální transparentní úvod](#verbal-transparent-introduction)<br> [Implicitní zveřejnění](#implicit-disclosure)<br> [Konverzační průhlednost](#conversational-transparency)  |
+| Zahrnuje nevidomé uživatele nebo osoby se zlabujícím zrakem jako primární zamýšlené publikum  | Buďte zahrnutí všech uživatelů a ujistěte se, že jakákoli forma vizuálního zveřejnění má přidružené alternativní textové nebo zvukové efekty. Dodržujte standardy přístupnosti pro kontrastní poměr a velikost displeje. Ke komunikaci s informací používejte sluchové podněty.  | [Verbální transparentní úvod](#verbal-transparent-introduction) <br>[Sluchové podněty](#implicit-cues--feedback)<br>[Haptické podněty](#implicit-cues--feedback)<br>[Konverzační průhlednost](#conversational-transparency)<br>[Standardy přístupnosti](https://www.microsoft.com/accessibility) |
+| Je obrazovka bez obrazovky, bez zařízení nebo používá hlas jako primární nebo jediný způsob interakce | Ke komunikaci s informací používejte sluchové podněty. | [Verbální transparentní úvod](#verbal-transparent-introduction) <br> [Sluchové podněty](#implicit-cues--feedback)  |
+| Potenciálně zahrnuje více uživatelů/posluchačů (např. osobní asistent ve více domácnostech)  | Mějte na paměti různé uživatelské kontexty a úrovně porozumění a nabízejí více příležitostí pro zveřejnění v cestě uživatele.  | [Transparentní úvod (návratový uživatel)](#transparent-introduction)<br> [Poskytování příležitostí dozvědět se více o tom, jak byl hlas](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)<br> [Konverzační průhlednost](#conversational-transparency)  |
 
 
 
-## <a name="explicit-disclosure"></a>Explicitní zveřejnění
-Pokud vaše syntetické hlasové prostředí vyžaduje vysoké zveřejnění, je vhodné použít alespoň jeden z následujících explicitních vzorů k jasnému zjištění syntetické povahy.
-### <a name="transparent-introduction"></a>Transparentní Úvod
+## <a name="explicit-disclosure"></a>Výslovné zveřejnění
+Pokud váš syntetický hlas ový zážitek vyžaduje vysoké zveřejnění, je nejlepší použít alespoň jeden z následujících explicitních vzorů, aby bylo jasné, že je syntetická povaha.
+### <a name="transparent-introduction"></a>Transparentní úvod
 
-Než začnete s hlasovým prostředím, zaveďte digitální asistenta tak, aby byl plně transparentní o původu jeho hlasu a jeho schopností. Optimálním okamžikem použití tohoto modelu je při připojování nového uživatele nebo při zavádění nových funkcí vracejícího uživatele. Implementace implicitních pomůcek během úvodu pomůže uživatelům vytvořit duševní model o syntetické povaze digitálního agenta.
+Než začne hlasové prostředí, představte digitálního asistenta tím, že bude plně transparentní, pokud jde o původ jeho hlasu a jeho schopnosti. Optimální okamžik pro použití tohoto vzoru je při zapnutí nového uživatele nebo při zavádění nových funkcí vracejícímu se uživateli. Implementace implicitních podnětů během úvodu pomáhá uživatelům vytvořit mentální model o syntetické povaze digitálního agenta.
 
-#### <a name="first-time-user-experience"></a>Uživatelské prostředí při prvním spuštění
+#### <a name="first-time-user-experience"></a>První uživatelské prostředí
 
-![transparentní Úvod během prvního spuštění](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
-*Při připojování nového uživatele se zavádí syntetický hlas.*
-
-Doporučení
-- Popište, že je tento hlas umělý (např. &quot;Digital&quot;).
-- Popište, co je agent schopný provádět
-- Explicitní stav zdroje hlasu&#39;s
-- Nabídnout vstupní bod pro další informace o syntetickém hlasu
-
-#### <a name="returning-user-experience"></a>Vracení uživatelského prostředí
-
-Pokud uživatel přeskočí prostředí pro registraci, pokračujte v poskytování vstupních bodů do transparentního úvodního prostředí, dokud uživatel poprvé nespustí hlasový vstup.
-<br/>
-
-![transparentní Úvod během vracení koncového uživatele](media/responsible-ai/disclosure-patterns/transparent-intro-return.png)<br/>
-*Poskytněte konzistentní vstupní bod syntetického hlasového prostředí. Umožní uživateli vracet se do prostředí pro registraci při prvním spuštění hlasu v jakémkoli okamžiku cesty uživatele.*
-
-
-### <a name="verbal-transparent-introduction"></a>Slovní transparentní Úvod
-
-Mluvené okno s upozorněním, že zdroje digitálního asistenta&#39;s jsou dostatečně dostačující, aby bylo možné vyzrazení. Tento model je nejvhodnější pro scénáře s vysokou dostupností, kde je hlasový přístup jediným způsobem, který je v interakci k dispozici.
-<br/>
-
-![operace s transparentním představením](media/responsible-ai/disclosure-patterns/spoken-prompt-1.png)
-<br/>*Využijte transparentní Úvod, pokud se setkáte s uživatelským prostředím, kde jste už mohli začlenit nebo zadat nějaký hlas osoby&#39;s.*
-
-
-![operace s průhledným představením při první osobě](media/responsible-ai/disclosure-patterns/spoken-prompt-2.png)<br/>
-*Pro další transparentnost může hlas actor zveřejnit původ syntetického hlasu v první osobě.*
-
-### <a name="explicit-byline"></a>Explicitní Podtitulek
-
-Tento model použijte v případě, že uživatel bude při aktivaci hlasu spolupracovat se zvukovým přehrávačem nebo interaktivní komponentou.
-
-
-![explicitní Podtitulek ve scénáři pro příspěvky na média](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
-*Explicitní Podtitulek je přidělení místa, odkud hlas pochází.*
+![Transparentní úvod při prvním spuštění](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
+*Syntetický hlas je zaveden při nástupu nového uživatele.*
 
 Doporučení
+- Popište, že hlas je umělý &quot;&quot;(např. digitální)
+- Popište, čeho je agent schopen dělat
+- Explicitně uveďte původ hlasu&#39;
+- Nabídněte vstupní bod, abyste se dozvěděli více o syntetickém hlasu
 
-- Vstupní bod nabídky, kde najdete další informace o syntetizovém hlasu
+#### <a name="returning-user-experience"></a>Vrácení uživatelského prostředí
+
+Pokud uživatel přeskočí prostředí pro připojení, pokračujte v nabídce vstupních bodů do prostředí Transparentní úvod, dokud uživatel poprvé nespustí hlas.
+<br/>
+
+![Transparentní úvod během zpětného uživatelského prostředí](media/responsible-ai/disclosure-patterns/transparent-intro-return.png)<br/>
+*Zajistěte konzistentní vstupní bod syntetického hlasového prostředí. Umožněte uživateli vrátit se k nástupu, když poprvé spustí hlas v libovolném okamžiku cesty uživatele.*
+
+
+### <a name="verbal-transparent-introduction"></a>Verbální transparentní úvod
+
+Mluvená výzva uvádějící původ hlasu digitálního asistenta&#39;je dostatečně explicitní, aby bylo dosaženo zveřejnění. Tento vzor je nejvhodnější pro scénáře s vysokým zveřejněním, kde je hlas jediným dostupným způsobem interakce.
+<br/>
+
+![Verbálně mluvený transparentní úvod](media/responsible-ai/disclosure-patterns/spoken-prompt-1.png)
+<br/>*Transparentní úvod použijte v momentech, kdy v uživatelském prostředí jsou okamžiky, kdy již můžete osobu&#39;hlas uvádět nebo přiřazovat.*
+
+
+![Verbálně mluvený transparentní úvod v první osobě](media/responsible-ai/disclosure-patterns/spoken-prompt-2.png)<br/>
+*Pro větší transparentnost může hlasový objekt odhalit původ syntetického hlasu v první osobě.*
+
+### <a name="explicit-byline"></a>Explicitní podřád
+
+Tento vzor použijte, pokud uživatel bude pracovat se zvukovým přehrávačem nebo interaktivní komponentou pro spuštění hlasu.
+
+
+![Explicitní podtitulek ve scénáři zpravodajských médií](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
+*Explicitní podřádka je přiřazení místa, odkud hlas pochází.*
+
+Doporučení
+
+- Nabídněte vstupní bod, abyste se dozvěděli více o syntetizovaném hlasu
 
 ### <a name="customization-and-calibration"></a>Přizpůsobení a kalibrace
 
-Poskytněte uživatelům kontrolu nad tím, jak digitální asistent reaguje na ně (tj. jak hlasová zvuk).  Když uživatel komunikuje s systémem na svých vlastních termínech a s konkrétními cíli je, pak podle definice již rozumí, že se&#39;nejedná o skutečnou osobu.
+Poskytněte uživatelům kontrolu nad tím, jak na ně digitální asistent reaguje (tj. na to, jak zní hlas).  Když uživatel interaguje se systémem na své vlastní podmínky a s konkrétními cíli na mysli, pak podle definice, oni už pochopili, že to&#39;není skutečná osoba.
 
-#### <a name="user-control"></a>Uživatelský ovládací prvek
+#### <a name="user-control"></a>Uživatelské řízení
 
-Nabízí volby, které mají smysluplný a znatelný dopad na syntetické hlasové prostředí.
+Nabídněte možnosti, které mají smysluplný a znatelný dopad na syntetickou hlasovou zkušenost.
 
-![předvolby uživatele](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
-*Uživatelské předvolby umožňují uživatelům přizpůsobení a vylepšení jejich prostředí.*
-
-Doporučení
-
-- Umožněte uživatelům přizpůsobení hlasu (např. Vyberte jazyk a typ hlasu).
-- Poskytněte uživatelům způsob, jak naučit systém, aby reagoval na jeho jedinečný hlas (například kalibrace hlasu, vlastní příkazy).
-- Optimalizace pro uživatelem generovaná nebo kontextová interakce (například připomenutí)
-
-#### <a name="persona-customization"></a>Přizpůsobení uživatelských serverů
-
-Nabízí způsoby přizpůsobení hlasu digitálního asistenta&#39;s. Pokud je hlas založen na celebrit nebo široce rozpoznatelné osobě, zvažte použití vizuálního i mluveného úvodu, když uživatelé zobrazí náhled hlasu.
-
-![přizpůsobení hlasu](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
-*Nabídka možnosti vybírat ze sady hlasů pomáhá předávat umělou povahu.*
-
-Doporučení
-- Umožní uživatelům zobrazit náhled zvuku každého hlasu.
-- Používejte pro každý hlas závazné úvodní informace.
-- Vstupní body nabídky pro další informace o syntetizovém hlasu
-
-### <a name="parental-disclosure"></a>Odhalení rodičů
-
-Kromě dodržování předpisů COPPA poskytují dětem informace o tom, jestli je vaše primární zamýšlená cílová skupina mladými dětmi a úroveň ozáření je vysoká. V případě citlivých použití zvažte možnost využívání tohoto prostředí, dokud dospělý nepotvrdí používání syntetického hlasu. Pozvěte rodiče, aby zprávu komunikovali se svými podřízenými položkami.
-
-![zpřístupnění pro nadřazené](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
-*Transparentní Úvod, který je optimalizován pro nadřazené objekty, zajišťuje, že dospělý má na vědomí syntetickou povahu hlasu před tím, než se s ním podřízená.*
+![Uživatelské předvolby](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
+*Uživatelské předvolby umožňují uživatelům přizpůsobit a zlepšit jejich zkušenosti.*
 
 Doporučení
 
-- Cílové nadřízené položky jako primární cílová skupina pro zpřístupnění
-- Podpora rodičů pro komunikaci se svými dětmi
-- Vstupní body nabídky pro další informace o syntetizovém hlasu
-- Využijte možnost vyžádat si rodiče a jednoduše &quot;chránit&quot; otázky, aby viděli, že si přečetli zveřejnění.
+- Umožnit uživatelům přizpůsobit hlas (např. vybrat jazyk a typ hlasu)
+- Poskytnout uživatelům způsob, jak naučit systém reagovat na jeho jedinečný hlas (např. kalibrace hlasu, vlastní příkazy)
+- Optimalizace pro uživatelem generované nebo kontextové interakce (např. připomenutí)
 
-### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>Poskytnutí příležitostí k získání dalších informací o tom, jak byl hlas proveden
+#### <a name="persona-customization"></a>Přizpůsobení persona
 
-Nabízí kontextově závislé vstupní body na stránce, v místní nabídce nebo na externím webu, který poskytuje další informace o syntetické hlasové technologii. Můžete například vytvořit Surface odkazu a získat další informace během připojování nebo když se uživatel během konverzace vyzve k zadání dalších informací.
+Nabídněte způsoby přizpůsobení digitálního asistenta&#39;hlasu. Pokud je hlas založen na celebritách nebo široce rozpoznatelné osobě, zvažte použití vizuálních i mluvených úvodů, když uživatelé zobrazí náhled hlasu.
 
-![vstupní bod pro další informace](media/responsible-ai/disclosure-patterns/learn-more-entry-point.png)<br/>
-*Příklad vstupního bodu, který nabízí možnost získat další informace o syntetizovém hlasu.*
+![Přizpůsobení hlasu](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
+*Nabídka možnosti výběru ze sady hlasů pomáhá zprostředkovat umělou povahu.*
 
-Jakmile si uživatel požádá o další informace o syntetickém hlasu, primárním cílem je informovat se o původu syntetického hlasu a být transparentní na technologii.
+Doporučení
+- Povolit uživatelům zobrazit náhled zvuku každého hlasu
+- Použití autentického úvodu pro každý hlas
+- Nabídněte vstupní body, abyste se dozvěděli více o syntetizovaném hlasu
 
-![poskytnout uživatelům další informace o syntetickém hlasovém](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
-*Další informace lze nabídnout na webu s externím webem pro podporu.*
+### <a name="parental-disclosure"></a>Zveřejnění rodičovské zodpovědnosti
+
+Kromě dodržování předpisů COPPA poskytněte rodičům informace, pokud je vaším primárním zamýšleným publikem malé děti a vaše úroveň expozice je vysoká. Pro citlivá použití, zvažte gating zkušenosti, dokud dospělý uznal použití syntetického hlasu. Povzbuďte rodiče, aby poselství sdělili svým dětem.
+
+![Zveřejnění pro rodiče](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
+*Transparentní úvod optimalizovaný pro rodiče zajišťuje, že dospělý byl informován o syntetické povaze hlasu předtím, než s ním dítě interaguje.*
 
 Doporučení
 
-- Zjednodušení složitých konceptů a zamezení používání legalese a technických žargonu
-- Nebury tento obsah v prohlášeních o zásadách ochrany osobních údajů a podmínek použití
-- Používejte stručně vypřesnější obsah a použijte k dispozici obrázek.
+- Cílit rodiče jako primární publikum pro zveřejnění
+- Povzbuzovat rodiče, aby svým dětem sdělovali informace
+- Nabídněte vstupní body, abyste se dozvěděli více o syntetizovaném hlasu
+- Gate zkušenosti tím, že &quot;&quot; žádá rodiče jednoduchou ochrannou otázku ukázat, že si přečetli zveřejnění
+
+### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>Poskytování příležitostí dozvědět se více o tom, jak byl hlas
+
+Nabídněte kontextové vstupní body na stránku, automaticky otevírané okno nebo externí web, který poskytuje další informace o technologii syntetického hlasu. Můžete například zobrazit odkaz, abyste se dozvěděli více během registrace nebo když uživatel během konverzace vyzve k zadání dalších informací.
+
+![Vstupní bod se dozvíte více](media/responsible-ai/disclosure-patterns/learn-more-entry-point.png)<br/>
+*Příklad vstupního bodu, který nabízí možnost dozvědět se více o syntetizovaném hlasu.*
+
+Jakmile uživatel požaduje více informací o syntetickém hlasu, hlavním cílem je vzdělávat je o původu syntetického hlasu a být transparentní o technologii.
+
+![Poskytnout uživatelům více informací o syntetickém hlasu](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
+*Další informace lze nabídnout na externím webu nápovědy.*
+
+Doporučení
+
+- Zjednodušte složité pojmy a vyhněte se používání legalese a technického žargonu
+- Nezakopávejte tento obsah v prohlášeních o ochraně osobních údajů a podmínkách použití
+- Udržujte obsah výstižný a používejte snímky, pokud jsou k dispozici
 
 ## <a name="implicit-disclosure"></a>Implicitní zveřejnění
 
-Konzistence je klíč k dosažení implicitního zpřístupnění v průběhu cesty uživatele. Konzistentní používání vizuálních a auditorních pomůcek napříč zařízeními a režimy interakce může pomáhat při vytváření přidružení mezi implicitními vzory a explicitním zveřejněním.
+Konzistence je klíčem k dosažení zpřístupnění implicitně v průběhu cesty uživatele. Konzistentní používání vizuálních a zvukových podnětů napříč zařízeními a režimy interakce může pomoci vytvářet přidružení mezi implicitními vzory a explicitním zveřejněním.
 
-![Konzistence implicitních pomůcek](media/responsible-ai/disclosure-patterns/consistency.png)
+![Konzistence implicitních podnětů](media/responsible-ai/disclosure-patterns/consistency.png)
 
-### <a name="implicit-cues--feedback"></a>Implicitní hromádky & zpětné vazby
+### <a name="implicit-cues--feedback"></a>Implicitní upozornění & zpětnou vazbu
 
-Anthropomorphism může manifestovat různými způsoby, od skutečného vizuální reprezentace agenta až po hlas, zvuky, vzory světla, skákající tvary nebo dokonce vibrace zařízení. Při definování svého uživatelů Využijte implicitní hromádky a vzory zpětné vazby, místo cílení na miniaturu, která je člověkem podobná. To je jeden ze způsobů, jak minimalizovat nutnost výslovného odhalení.
+Antropomorfismus se může projevit různými způsoby, od skutečné vizuální reprezentace agenta, až po hlas, zvuky, vzory světla, skákací tvary nebo dokonce vibrace zařízení. Při definování vaší osobnosti, pákový efekt implicitní podněty a zpětnou vazbu vzory spíše než usilovat o velmi lidské-jako avatar. To je jeden ze způsobů, jak minimalizovat potřebu jasnějšího zveřejnění.
 
-![vizuálních pomůcek a Feedback](media/responsible-ai/disclosure-patterns/visual-affordances.png)<br/>
-*Tyto pomůcky vám pomůžou anthropomorphize agenta bez toho, aby byl příliš člověk podobný. Můžou se také stát účinnými mechanismy zveřejnění, pokud se v průběhu času používají konzistentně.*
+![Vizuální podněty a zpětná vazba](media/responsible-ai/disclosure-patterns/visual-affordances.png)<br/>
+*Tyto podněty pomáhají antropomorfizovat agenta, aniž by byl příliš lidský- jako. Mohou se také stát účinnými mechanismy zveřejňování samy o sobě, pokud jsou používány konzistentně v průběhu času.*
 
-Při začleňování následujících typů pomůcek zvažte různé režimy interakce s vaším prostředím:
+Při začleňování následujících typů podnětů zvažte různé způsoby interakce, které máte zacházet:
 
-| Vizuální pomůcky                                                                                                                                                               | Upozornění pro auditory                                                      | Hmatové |
+| Vizuální podněty                                                                                                                                                               | Sluchové podněty                                                      | Haptické podněty |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|-------------|
-|  Miniatur <br>Reakce na pomůcky v reálném čase (například animace)<br> Pomůcky neobsahující obrazovku (například světla a vzory na zařízení)<br>  | Sonicon (např. Stručný rozlišující zvuk, série hudebních poznámek) | Vibrační   |
+|  Avatar <br>Responzivní podněty v reálném čase (např. animace)<br> Upozornění mimo obrazovku (např. světla a vzory na zařízení)<br>  | Sonicon (např. krátký výrazný zvuk, série notových zkratek) | Vibrace   |
 
-### <a name="capability-disclosure"></a>Vyzrazení schopností
+### <a name="capability-disclosure"></a>Zveřejňování schopností
 
-Zveřejnění se dá provést implicitně nastavením přesného očekávání za to, co je digitální asistent schopný. Poskytněte ukázkové příkazy, aby se uživatelé mohli naučit pracovat s digitálním asistentem a nabídnout kontextovou nápovědu pro další informace o syntetickém hlasu v počátečních fázích prostředí.
+Zveřejnění lze dosáhnout implicitně nastavením přesných očekávání pro to, čeho je digitální asistent schopen. Poskytněte ukázkové příkazy, aby se uživatelé mohli naučit pracovat s digitálním asistentem a nabídnout kontextovou pomoc, abyste se dozvěděli více o syntetickém hlasu v raných fázích prostředí.
 
-![Vizuální pomůcky a zpětná vazba](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![Vizuální podněty a zpětná vazba](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
-### <a name="conversational-transparency"></a>Průhlednost konverzací
+### <a name="conversational-transparency"></a>Konverzační průhlednost
 
-V případě, že konverzace spadají do neočekávaných cest, zvažte vytvoření výchozích odpovědí, které mohou přispět k resetování očekávání, posílení transparentnosti a řízení uživatelů na úspěšné cesty. K dispozici jsou také možnosti použití explicitního zveřejnění v konverzaci.
+Když konverzace spadají do neočekávaných cest, zvažte vytvoření výchozích odpovědí, které mohou pomoci obnovit očekávání, posílit transparentnost a nasměrovat uživatele k úspěšným cestám. Existují příležitosti k použití explicitní zveřejnění v konverzaci stejně.
 
 ![Zpracování neočekávaných cest](media/responsible-ai/disclosure-patterns/conversational-transparency-1.png)<br/>
 
 <br/>
-Mimo úkol nebo &quot;osobní&quot; dotazy směrované na agenta jsou vhodný čas k připomenutí uživatelům syntetické povahy agenta a jejich řízení, aby se s ním mohli řádně zapojit nebo přesměrovat na skutečnou osobu.
+Off-úkol &quot;nebo&quot; osobní otázky zaměřené na agenta jsou vhodná doba připomenout uživatelům syntetickou povahu agenta a řídit je, aby se s ním vhodně zapojili nebo je přesměrovali na skutečnou osobu.
 
-![Zpracování dotazů na úlohy](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
+![Zpracování otázek mimo úkol](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
 
-## <a name="when-to-disclose"></a>Kdy se má zveřejnit
+## <a name="when-to-disclose"></a>Kdy zveřejnit
 
-Existuje mnoho příležitostí k odhalení během cesty uživatele. Návrh pro první použití, druhé použití, n-tý použití..., ale také k výpadku &quot;selhání&quot; ke zvýraznění transparentnosti, například když systém vytvoří chybu nebo když uživatel zjistí omezení schopností s agentem&#39;.
+Existuje mnoho příležitostí pro zveřejnění v průběhu cesty uživatele. Návrh pro první použití, druhé použití, n-té použití..., ale také přijmout okamžiky selhání &quot;&quot; upozornit na transparentnost-jako když systém udělá chybu, nebo když uživatel zjistí omezení agenta&#39;s schopnosti.
 
-![Příležitosti k zveřejnění v průběhu cesty uživatelů](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
+![Příležitosti k zveřejnění během cesty uživatele](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
 
-Příklad standardní cesty uživatele digitálního asistenta zvýrazňování různých příležitostí k vyzrazení.
+Příklad standardní cesty uživatele digitálního asistenta, která zvýrazňuje různé možnosti zveřejnění.
 
-### <a name="up-front"></a>Dopředu
+### <a name="up-front"></a>Up-front
 
-Optimální termín pro zveřejnění je první, kdo komunikuje s syntetickým hlasem.  V osobním scénáři hlasového asistenta by to bylo během připojování, nebo když uživatel prakticky nepředá toto prostředí. V jiných scénářích to může být první, když syntetický hlas čte obsah na webu nebo když uživatel poprvé komunikuje s virtuálním znakem.
+Optimální okamžik pro zveřejnění je poprvé, kdy člověk interaguje se syntetickým hlasem.V případě osobního hlasového asistenta by to bylo během registrace nebo poprvé, kdy uživatel prakticky rozbalí prostředí. V jiných scénářích to může být poprvé, kdy syntetický hlas čte obsah na webu nebo poprvé, kdy uživatel interaguje s virtuálním znakem.
 
-- [Transparentní Úvod](#transparent-introduction)
-- [Vyzrazení schopností](#capability-disclosure)
+- [Transparentní úvod](#transparent-introduction)
+- [Zveřejňování schopností](#capability-disclosure)
 - [Přizpůsobení a kalibrace](#customization-and-calibration)
-- [Implicitní hromádky](#implicit-cues--feedback)
+- [Implicitní podněty](#implicit-cues--feedback)
 
-### <a name="upon-request"></a>Na vyžádání
+### <a name="upon-request"></a>Vyžádání
 
-Uživatelé by měli mít možnost snadno získat přístup k dalším informacím, předvolby řízení a přijímat transparentní komunikaci kdykoli během každé žádosti o cestu uživatele.
+Uživatelé by měli mít možnost snadno přistupovat k dalším informacím, předvolbám kontroly a přijímat transparentní komunikaci kdykoli během cesty uživatele, pokud je o to požádáni.
 
-- [Poskytnutí příležitostí k získání dalších informací o tom, jak byl hlas proveden](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
+- [Poskytování příležitostí dozvědět se více o tom, jak byl hlas](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
 - [Přizpůsobení a kalibrace](#customization-and-calibration)
-- [Průhlednost konverzací](#conversational-transparency)
+- [Konverzační průhlednost](#conversational-transparency)
 
-### <a name="continuously"></a>Soustavné
+### <a name="continuously"></a>Neustále
 
-Používejte implicitní vzory návrhu, které uživateli zvyšují nepřetržité uživatelské prostředí.
+Používejte implicitní návrhové vzory, které neustále vylepšují uživatelské prostředí.
 
-- [Vyzrazení schopností](#capability-disclosure)
-- [Implicitní hromádky](#implicit-cues--feedback)
+- [Zveřejňování schopností](#capability-disclosure)
+- [Implicitní podněty](#implicit-cues--feedback)
 
-### <a name="when-the-system-fails"></a>Když dojde k chybě systému
+### <a name="when-the-system-fails"></a>Když systém selže
 
-Vyzrazení můžete využít jako příležitost k řádnému selhání.
+Použijte zveřejnění jako příležitost k selhání elegantně.
 
-- [Průhlednost konverzací](#conversational-transparency)
-- [Poskytnutí příležitostí k získání dalších informací o tom, jak byl hlas proveden](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
-- [Předání do lidského](#conversational-transparency)
+- [Konverzační průhlednost](#conversational-transparency)
+- [Poskytování příležitostí dozvědět se více o tom, jak byl hlas](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
+- [Předání člověku](#conversational-transparency)
 
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
-- [Pokyny pro Microsoft bot](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
+## <a name="additional-resources"></a>Další zdroje
+- [Pokyny pro roboty Microsoft Bot](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
 - [Pokyny pro návrh Cortany](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Pokyny pro návrh mluveného slova pro Microsoft Windows UWP](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [Microsoft Windows Mixed reality – pokyny pro hlasové příkazy](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Pokyny pro návrh řeči služby Microsoft Windows UPW](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
+- [Pokyny pro hlasové příkazy pro smíšenou realitu systému Microsoft Windows](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)
-* [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
-* [Přehled o uzavírání](concepts-gating-overview.md)
+* [Zveřejnění pro hlasové talenty](https://aka.ms/disclosure-voice-talent)
+* [Pokyny pro odpovědné zavádění syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
+* [Gating – přehled](concepts-gating-overview.md)
 * [Jak zveřejnit](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)
+* [Zveřejnění pro hlasové talenty](https://aka.ms/disclosure-voice-talent)

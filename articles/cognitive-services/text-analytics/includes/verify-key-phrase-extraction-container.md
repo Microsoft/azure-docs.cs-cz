@@ -1,7 +1,7 @@
 ---
-title: Ověření instance kontejneru Extrakce klíčových frází
+title: Ověření instance kontejneru extrakce klíčových frází
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak ověřit instanci kontejneru Extrakce klíčových frází.
+description: Přečtěte si, jak ověřit instanci kontejneru extrakce klíčových frází.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,22 +10,22 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: 1e2001c1f4cb2da195a3dcd0ca8fe198de8dd264
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70968559"
 ---
-### <a name="verify-the-key-phrase-extraction-container-instance"></a>Ověření instance kontejneru Extrakce klíčových frází
+### <a name="verify-the-key-phrase-extraction-container-instance"></a>Ověření instance kontejneru extrakce klíčových frází
 
-1. Vyberte kartu **Přehled** a zkopírujte IP adresu.
-1. Otevřete novou kartu prohlížeče a zadejte IP adresu. Zadejte `http://<IP-address>:5000 (http://55.55.55.55:5000`například). Zobrazí se Domovská stránka kontejneru, která vám umožní zjistit, že je kontejner spuštěný.
+1. Vyberte kartu **Přehled** a zkopírujte adresu IP.
+1. Otevřete novou kartu prohlížeče a zadejte adresu IP. Zadejte `http://<IP-address>:5000 (http://55.55.55.55:5000`například ). Zobrazí se domovská stránka kontejneru, která vás dozví, že je kontejner spuštěn.
 
-    ![Zobrazte domovskou stránku kontejneru a ověřte, že je spuštěný.](../media/how-tos/container-instance/swagger-docs-on-container.png)
+    ![Zobrazení domovské stránky kontejneru k ověření, zda je spuštěná](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
-1. Kliknutím na odkaz **Popis rozhraní API služby** přejdete na stránku Swagger kontejneru.
+1. Vyberte odkaz **Popis rozhraní API služby** a přejděte na stránku Swagger kontejneru.
 
-1. Zvolte kterékoli rozhraní API pro **post** a vyberte **vyzkoušet**. Zobrazí se parametry, které obsahují tento příklad vstupu:
+1. Zvolte libovolné z api **POST** a vyberte **Vyzkoušet**. Zobrazí se parametry, které zahrnují tento příklad vstupu:
 
     ```json
     {
@@ -66,11 +66,11 @@ ms.locfileid: "70968559"
 
 1. Nastavte **showStats** na `true`.
 
-1. Výběrem příkazu **Execute** určete mínění textu.
+1. Chcete-li určit mínění textu, vyberte **spustit.**
 
-    Model, který je zabalen v kontejneru, vygeneruje skóre, které je v rozsahu od 0 do 1, kde 0 je záporné a 1 je kladné.
+    Model, který je zabalen v kontejneru generuje skóre, které se pohybuje od 0 do 1, kde 0 je negativní a 1 je pozitivní.
 
-    Vrácená odpověď JSON obsahuje mínění pro aktualizovaný textový vstup:
+    Vrácená odpověď JSON zahrnuje mínění pro aktualizovaný textový vstup:
 
     ```json
     {
@@ -100,4 +100,4 @@ ms.locfileid: "70968559"
     }
     ```
 
-Nyní můžeme sladit dokument `id` dat JSON datové části odpovědi s původním dokumentem `id`datové části požadavku. Výsledný dokument `keyPhrases` obsahuje pole, které obsahuje seznam klíčových frází, které byly extrahovány z odpovídajícího vstupního dokumentu. Kromě toho jsou k dispozici různé statistiky `characterCount` , `transactionCount` například a pro každý výsledný dokument.
+Nyní můžeme korelovat `id` dokument dat JSON datové části odpovědi s původním `id`dokumentem datové části požadavku . Výsledný dokument má `keyPhrases` pole, které obsahuje seznam klíčových frází, které byly extrahovány z odpovídajícího vstupního dokumentu. Kromě toho existují různé statistiky, jako `characterCount` je a `transactionCount` pro každý výsledný dokument.

@@ -1,7 +1,7 @@
 ---
-title: Typ entity, která se naučila počítačem – LUIS
+title: Typ entity navoděné počítačem – LUIS
 titleSuffix: Azure Cognitive Services
-description: Entita získaná počítačem je upřednostňovanou entitou pro sestavování aplikací LUIS.
+description: Počítačově učená entita je upřednostňovanou entitou pro vytváření aplikací LUIS.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: reference
 ms.date: 12/30/2019
 ms.author: diberry
 ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75551994"
 ---
 # <a name="machine-learned-entity"></a>Strojově naučená entita
 
-Entita získaná počítačem je upřednostňovanou entitou pro sestavování aplikací LUIS.
+Počítačově učená entita je upřednostňovanou entitou pro vytváření aplikací LUIS.
 
 
-## <a name="example-json"></a>Ukázkový soubor JSON
+## <a name="example-json"></a>Příklad JSON
 
-Předpokládejme, že aplikace přijímá Pizza objednávky, jako je například [kurz deskládání entit](tutorial-machine-learned-entity.md). Každé pořadí může zahrnovat několik různých pizzas, včetně různých velikostí.
+Předpokládejme, že aplikace přijímá objednávky pizzy, jako je [například kurz rozložitelné entity](tutorial-machine-learned-entity.md). Každá objednávka může obsahovat několik různých pizz, včetně různých velikostí.
 
 Mezi ukázkové promluvy patří:
 
-|Příklad projevy pro aplikaci Pizza|
+|Příklad projevy pro aplikaci pizza|
 |--|
 |`Can I get a pepperoni pizza and a can of coke please`|
 |`can I get a small pizza with onions peppers and olives`|
@@ -36,15 +36,15 @@ Mezi ukázkové promluvy patří:
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpověď koncového bodu predikce V3](#tab/V3)
 
-Vzhledem k tomu, že entita získaná počítačem může mít mnoho dílčích komponent s omezeními a popisovači, je to pouze příklad. Měl by se považovat za vodítko, co vaše entita vrátí.
+Vzhledem k tomu, že entita nazdu se naučila stroj, může mít mnoho dílčích součástí s omezeními a popisovači, je to pouze příklad. To by mělo být považováno za vodítko pro to, co vaše entita vrátí.
 
-Vezměte v úvahu dotaz:
+Zvažte dotaz:
 
 `deliver 1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust`
 
-Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=false`:
+Toto je JSON, pokud `verbose=false` je nastavena v řetězci dotazu:
 
 ```json
 "entities": {
@@ -102,7 +102,7 @@ Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=false`:
 
 ```
 
-Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=true`:
+Toto je JSON, pokud `verbose=true` je nastavena v řetězci dotazu:
 
 ```json
 "entities": {
@@ -341,13 +341,13 @@ Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=true`:
     }
 }
 ```
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpověď koncového bodu predikce V2](#tab/V2)
 
-Tato entita není k dispozici v modulu runtime předpovědi v2.
+Tato entita není k dispozici v běhu predikce V2.
 * * *
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o provedených entitách počítačů, včetně [kurzu](tutorial-machine-learned-entity.md), [konceptů](luis-concept-entity-types.md#design-entities-for-decomposition)a [Průvodce](luis-how-to-add-entities.md#create-a-machine-learned-entity).
+Další informace o entitě naučené strojem, včetně [výukového programu](tutorial-machine-learned-entity.md), [konceptů](luis-concept-entity-types.md#design-entities-for-decomposition)a [návodu](luis-how-to-add-entities.md#create-a-machine-learned-entity).
 
-Přečtěte si informace o entitě [seznamu](reference-entity-list.md) a entitě [regulárního výrazu](reference-entity-regular-expression.md) .
+Informace o entitě [seznamu](reference-entity-list.md) a entitě [regulárních výrazů.](reference-entity-regular-expression.md)

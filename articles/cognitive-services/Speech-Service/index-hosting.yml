@@ -1,23 +1,22 @@
 ### YamlMime:Landing
 title: Dokumentace k hostování
-summary: Kontejnery služby Speech jsou k dispozici pro scénáře převodu řeči na text i pro převod textu na řeč, včetně standardních nebo přizpůsobených modelů.
+summary: Kontejnery služby rozpoznávání řeči jsou k dispozici pro scénáře převodu řeči na text i převod textu na řeč, které zahrnují standardní nebo přizpůsobené modely.
 metadata:
-  title: Dokumentace k hostování – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  title: Hostingová dokumentace – kurzy, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: ff12c357ba273c6965b11db4eabc1890925439be
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 8298a2e37520e7920f18b7ffd5b49074098e0243
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79366696"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415909"
 landingContent:
 - title: O hostování
   linkLists:
@@ -25,15 +24,15 @@ landingContent:
     links:
     - text: Instalace a spuštění kontejnerů řeči
       url: speech-container-howto.md
-    - text: Kontejnery řeči s Kubernetes a Helm
+    - text: Řečové kontejnery s Kubernetes a Helmem
       url: speech-container-howto-on-premises.md
-    - text: Kontejnery řeči ve službě Azure Container Instances
+    - text: Kontejnery řeči v instancích kontejnerů Azure
       url: deploy-speech-on-container-instances.md
-- title: Vytvoření a konfigurace
+- title: Vytvořit a nakonfigurovat
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Vytvoření prostředku Azure Speech
+    - text: Vytvoření prostředku řeči Azure
       url: get-started.md#new-resource
     - text: Konfigurace kontejnerů řeči
       url: speech-container-configuration.md
@@ -43,5 +42,5 @@ landingContent:
     links:
     - text: Podporované oblasti
       url: regions.md
-    - text: Suverénní cloudy
+    - text: Suverénní mraky
       url: sovereign-clouds.md

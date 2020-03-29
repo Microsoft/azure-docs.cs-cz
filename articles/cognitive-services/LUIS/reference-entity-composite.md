@@ -1,7 +1,7 @@
 ---
 title: Typ složené entity – LUIS
 titleSuffix: Azure Cognitive Services
-description: Složená entita je tvořena dalšími entitami, jako jsou předem připravené entity, jednoduché, regulární výrazy a seznam entit. Samostatné entity tvoří celou entitu.
+description: Složená entita se skládá z jiných entit, jako jsou předem vytvořené entity, jednoduché, regulární výraz y a seznam entity. Samostatné entity tvoří celou entitu.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,39 +11,39 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71695154"
 ---
 # <a name="composite-entity"></a>Složená entita 
 
-Složená entita je tvořena dalšími entitami, jako jsou předem připravené entity, jednoduché, regulární výrazy a seznam entit. Samostatné entity tvoří celou entitu. 
+Složená entita se skládá z jiných entit, jako jsou předem vytvořené entity, jednoduché, regulární výraz y a seznam entity. Samostatné entity tvoří celou entitu. 
 
-**Tato entita je vhodná, když jsou data:**
+**Tato entita se hodí, když data:**
 
-* Jsou vzájemně propojené. 
-* Jsou vzájemně propojené v kontextu utterance.
-* Použijte nejrůznější typy entit.
-* Musí být seskupena a zpracována klientskou aplikací jako jednotka informací.
-* Máte celou řadu uživatelských projevy, která vyžadují strojové učení.
+* Jsou spolu příbuzní. 
+* Se k sobě v kontextu promluvy navzájem vztahují.
+* Použijte různé typy entit.
+* Je třeba je seskupit a zpracovat klientskou aplikací jako jednotku informací.
+* Mít různé uživatelské projevy, které vyžadují strojové učení.
 
 ![složená entita](./media/luis-concept-entities/composite-entity.png)
 
-## <a name="example-json"></a>Ukázkový kód JSON
+## <a name="example-json"></a>Příklad JSON
 
-Vezměte v úvahu složenou entitu předem sestavených `number` a `Location::ToLocation` s následujícím utterance:
+Zvažte složený entitu předem sestavené `number` a `Location::ToLocation` s následující utterance:
 
 `book 2 tickets to cairo`
 
-Všimněte si, že `2`, číslo a `cairo` ToLocation obsahují slova, která nejsou součástí žádné z entit. Zelené podtržení, které se používá v utterance na webu [Luis](luis-reference-regions.md) , označuje složenou entitu.
+Všimněte `2`si, že `cairo`, číslo a , ToLocation mají slova mezi nimi, které nejsou součástí žádné entity. Zelené podtržení, které se používá v popiskované utterance na webu [LUIS,](luis-reference-regions.md) označuje složenou entitu.
 
 ![Složená entita](./media/luis-concept-data-extraction/composite-entity.png)
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpověď koncového bodu predikce V2](#tab/V2)
 
-Složené entity jsou vráceny v poli `compositeEntities` a všechny entity v rámci složeného pole jsou vráceny také v poli `entities`:
+Složené entity jsou vráceny v `compositeEntities` poli a všechny entity ve `entities` složeném jsou také vráceny v poli:
 
 ```JSON
   "entities": [
@@ -89,9 +89,9 @@ Složené entity jsou vráceny v poli `compositeEntities` a všechny entity v r�
   ]
 ```    
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpověď koncového bodu predikce V3](#tab/V3)
 
-Toto je JSON, pokud je v řetězci dotazu nastavená hodnota `verbose=false`:
+Toto je JSON, pokud `verbose=false` je nastavena v řetězci dotazu:
 
 ```json
 "entities": {
@@ -108,7 +108,7 @@ Toto je JSON, pokud je v řetězci dotazu nastavená hodnota `verbose=false`:
 }
 ```
 
-Toto je JSON, pokud je v řetězci dotazu nastavená hodnota `verbose=true`:
+Toto je JSON, pokud `verbose=true` je nastavena v řetězci dotazu:
 
 ```json
 "entities": {
@@ -174,9 +174,9 @@ Toto je JSON, pokud je v řetězci dotazu nastavená hodnota `verbose=true`:
 
 |Datový objekt|Název entity|Hodnota|
 |--|--|--|
-|Předem sestavené číslo entity|"Builtin. Number"|odst|
-|Předem sestavená entita – GeographyV2|"Umístění:: ToLocation"|Cairo|
+|Předbudovaná entita - číslo|"builtin.number"|"2"|
+|Předbudovaná entita - GeographyV2|"Umístění::Tolocation"|"Káhira"|
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto [kurzu](luis-tutorial-composite-entity.md)přidejte **složenou entitu** , která bude seskupit extrahovaná data různých typů do jedné obsahující entity. Díky sdružování dat může klientská aplikace snadno extrahovat související data v různých datových typech.
+V tomto [kurzu](luis-tutorial-composite-entity.md)přidejte **složenou entitu** do svazku extrahovaných dat různých typů do jedné obsahující entity. Sdružováním dat může klientská aplikace snadno extrahovat související data v různých datových typech.

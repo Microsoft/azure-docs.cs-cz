@@ -1,111 +1,111 @@
 ---
-title: Kde a jak používat uživatelsky přizpůsobování
-description: Přizpůsobování se dá použít v každé situaci, kdy vaše aplikace může vybrat správnou položku, akci nebo produkt k zobrazení, aby bylo lépe lepší, dosáhli jsme lepších obchodních výsledků nebo zlepšili produktivitu.
+title: Kde a jak používat - Personalizace
+description: Personalizátor lze použít v každé situaci, kdy vaše aplikace může vybrat správnou položku, akci nebo produkt k zobrazení - s cílem zlepšit zážitek, dosáhnout lepších obchodních výsledků nebo zvýšit produktivitu.
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 63e66315898242beb5da59927e8d506e6f2cff78
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219321"
 ---
-# <a name="where-and-how-to-use-personalizer"></a>Kde a jak používat přizpůsobené přizpůsobování
+# <a name="where-and-how-to-use-personalizer"></a>Kde a jak používat personalista
 
-Přizpůsobené možnosti můžete použít v jakékoli situaci, kdy aplikace potřebuje vybrat správnou akci (obsah), aby se zajistilo lepší, dosáhnout lepších obchodních výsledků nebo zvýšit produktivitu.
+Použijte personalizátor v každé situaci, kdy vaše aplikace potřebuje vybrat správnou akci (obsah) pro zobrazení - s cílem zlepšit zážitek, dosáhnout lepších obchodních výsledků nebo zvýšit produktivitu.
 
-Individuální nastavení používá Machine Learning k výběru akce (obsahu) k zobrazení uživatele. Výběr se může výrazně lišit v závislosti na množství, kvalitě a distribuci dat odesílaných službě.
+Personalizátor používá strojové učení k výběru akce (obsahu), která má uživateli zobrazit. Výběr se může výrazně lišit v závislosti na množství, kvalitě a distribuci dat odeslaných do služby.
 
-## <a name="example-use-cases-for-personalizer"></a>Příklady případů použití pro přizpůsobování
+## <a name="example-use-cases-for-personalizer"></a>Příklad případů použití pro personalizace
 
-* **Vysvětlení záměru & zrušení nejasností**: pomůžete uživatelům lepší zkušenosti, když jejich záměr není jasný, protože nabízí možnost, která je přizpůsobená.
-* **Výchozí návrhy** pro nabídky & možnosti: robotovi nabídne nejpravděpodobnější položku přizpůsobeným způsobem jako první krok, namísto prezentace nepracovní nabídky nebo seznamu alternativ.
-* **Znaky robota & tónové**: pro roboty, které se můžou lišit ve stylu tónů, podrobností a psaní, zvažte, že se tyto vlastnosti liší.
-* **Obsah upozornění & oznámení**: Rozhodněte, jaký text se má použít pro výstrahy, aby bylo možné uživatele zapojit.
-* **Oznámení & časování výstrah**: máte přizpůsobené informace o tom, kdy posílat oznámení uživatelům, aby je mohli zapojit.
+* **Záměr objasnění & rozdvojení**: pomozte uživatelům mít lepší zážitek, když jejich záměr není jasné tím, že poskytuje možnost, která je personalizovaná.
+* **Výchozí návrhy** pro nabídky & možnosti: nechat robota navrhnout nejpravděpodobnější položku personalizovaným způsobem jako první krok namísto prezentace neosobní nabídky nebo seznamu alternativ.
+* **Bot rysy & tón**: pro roboty, které se mohou lišit tón, výmluvnost, a styl psaní, zvažte různé tyto vlastnosti.
+* **Oznámení & obsah upozornění**: rozhodněte se, jaký text použít pro výstrahy, aby se uživatelé více zapojili.
+* **Oznámení & časování výstrah**: máte personalizované informace o tom, kdy mají posílat oznámení uživatelům, aby je více zapojili.
 
 
-## <a name="expectations-required-to-use-personalizer"></a>Požadované očekávání k použití přizpůsobeného přizpůsobování
+## <a name="expectations-required-to-use-personalizer"></a>Očekávání nutná k používání personalisty
 
-Přizpůsobené přizpůsobování můžete použít v situacích, kdy splňujete nebo můžete implementovat následující pokyny.
+Personalista můžete použít v situacích, kdy se setkáte nebo můžete implementovat následující pokyny.
 
 |Pokyn|Vysvětlení|
 |--|--|
-|Obchodní cíl|Pro vaši aplikaci máte cíl pro podnikání nebo použitelnost.|
-|Obsah|V aplikaci máte místo, kde se pro účely kontextového rozhodování o tom, co Ukázat uživatelům, tento cíl vylepší.|
-|Množství obsahu|Pro každé volání máte méně než 50 akcí.|
-|Agregovaná data|Nejlepší volba může a měla by se poznat z kolektivního chování uživatelů a celkové skóre odměňování.|
-|Etické použití|Používání strojového učení pro přizpůsobení se řídí [pokyny pro použití](ethics-responsible-use.md) a volbami, které jste zvolili.
-|Nejlepší jedna možnost|Kontextové rozhodnutí může být vyjádřeno jako hodnocení nejlepší možnosti (akce) z omezené sady možností.|
-|Výsledek skóre|To, jak dobře se vybraná volba rozpracované pro vaši aplikaci může určit měřením určitého aspektu chování uživatelů, a jejím vyjádřením ve _[skóre odměňování](concept-rewards.md)_ .|
-|Příslušné časování|Skóre odměňování nepřináší příliš mnoho nenalezených nebo externích faktorů. Doba trvání experimentu je dostatečně nízká, aby bylo možné vypočítat skóre odměňování, zatímco je stále relevantní.|
-|Dostatečné funkce kontextu|Můžete vyjádřit kontext pro řazení jako seznam alespoň 5 [funkcí](concepts-features.md) , o kterých se domníváte, že vám pomůžete vybrat správnou volbu a nezahrnuje uživatelsky identifikovatelné informace specifické pro uživatele.|
-|Dostatečné funkce pro akce|Máte informace o jednotlivých možnostech obsahu, _akcích_, jako seznam o nejméně 5 [funkcích](concepts-features.md) , které si myslíte, že přizpůsobíte správnou volbu.|
-|Denní data|V případě, že je problém v průběhu času (například předvolby zprávy nebo způsobu), existuje dostatek událostí, aby zůstaly nad optimálním přizpůsobením. Přizpůsobený modul se přizpůsobí nepřetržité změně reálného světa, ale výsledky nebudou optimální, pokud není dostatek událostí a data, která by se dala zjistit a usadit na nové vzory. Měli byste zvolit případ použití, který je často k dispozici. Zvažte možnost Hledat případy použití, které se vyskytují minimálně 500 časů za den.|
-|Historická data|Vaše aplikace může uchovávat data dostatečně dlouho a shromažďovat tak historii nejméně 100 000 interakcí. To umožňuje přizpůsobovat shromažďování dostatečného množství dat pro offline vyhodnocení a optimalizaci zásad.|
+|Obchodní cíl|Máte obchodní nebo použitelný cíl pro vaši aplikaci.|
+|Obsah|Máte místo ve vaší aplikaci, kde kontextové rozhodnutí o tom, co ukázat uživatelům zlepší tento cíl.|
+|Množství obsahu|Na jedno volání můžete zařadit méně než 50 akcí.|
+|Agregovaná data|Nejlepší volbou může a měli bychom se naučit z kolektivního chování uživatelů a celkové odměny skóre.|
+|Etické použití|Použití strojového učení pro přizpůsobení se řídí [pokyny pro zodpovědné používání](ethics-responsible-use.md) a volbami, které jste zvolili.
+|Nejlepší možnost|Kontextové rozhodnutí lze vyjádřit jako nejlepší možnost (akce) z omezeného souboru možností.|
+|Výsledek skóre|Jak dobře hodnocená volba fungovala pro vaši aplikaci, může být určena měřením některých aspektů chování uživatelů a jeho vyjádřením v _[skóre odměny](concept-rewards.md)_.|
+|Příslušné načasování|Skóre odměny nepřináší příliš mnoho matoucích nebo vnějších faktorů. Doba trvání experimentu je dostatečně nízká, že skóre odměny lze vypočítat, dokud je stále relevantní.|
+|Dostatečné kontextové funkce|Kontext pro hodnocení můžete vyjádřit jako seznam alespoň 5 [funkcí,](concepts-features.md) o kterých si myslíte, že by pomohly učinit správnou volbu, a které neobsahují identifikovatelné informace specifické pro uživatele.|
+|Dostatečné akční funkce|Máte informace o každé volbě obsahu, _akci_, jako seznam alespoň 5 [funkcí,](concepts-features.md) o kterých si myslíte, že pomohou personalistovi učinit správnou volbu.|
+|Denní data|Je tu dost událostí, aby zůstali na vrcholu optimální personalizace, pokud problém driftuje v průběhu času (například preference ve zprávách nebo módě). Personalizák se přizpůsobí neustálým změnám v reálném světě, ale výsledky nebudou optimální, pokud nebude dostatek událostí a dat, ze kterých se můžete učit, abyste objevili nové vzory a usadili se na nových vzorcích. Měli byste zvolit případ použití, který se stane dost často. Zvažte hledání případů použití, které se dějí nejméně 500krát denně.|
+|Historická data|Aplikace může uchovávat data dostatečně dlouho a shromažďovat historii alespoň 100 000 interakcí. To umožňuje personalista shromažďovat dostatek dat k provádění offline hodnocení a optimalizace zásad.|
 
-**Nepoužívejte** Přizpůsobené, kde individuální chování není něco, co je možné zjistit u všech uživatelů. Například použití přizpůsobeného modulu k navržení prvního Pizza objednávky ze seznamu 20 možných položek nabídky je užitečné, ale kontakt na volání ze seznamu kontaktů uživatelů, když se vyžaduje pomáhat s péči o dítě (například "Grandma"), není objekt, který je přizpůsobitelný napříč vaše uživatelská základna.
+**Nepoužívejte personalizace,** kde personalizované chování není něco, co lze zjistit u všech uživatelů. Například použití personalistu k navržení první objednávky pizzy ze seznamu 20 možných položek nabídky je užitečné, ale který kontakt, který má volat ze seznamu kontaktů uživatelů, když vyžaduje pomoc s péčí o děti (například "Babička"), není něco, co je přizpůsobitelné v rámci vaší uživatelské základny.
 
-## <a name="how-to-use-personalizer-in-a-web-application"></a>Použití přizpůsobení ve webové aplikaci
+## <a name="how-to-use-personalizer-in-a-web-application"></a>Jak používat personalizace ve webové aplikaci
 
-Přidávání výukových smyček do webové aplikace zahrnuje:
+Přidání výukové smyčky do webové aplikace zahrnuje:
 
-* Určete, jaké prostředí se má přizpůsobit, jaké akce a funkce máte, jaké kontextové funkce se mají použít, a jaké možnosti, které nastavíte.
-* Přidejte odkaz na sadu SDK přizpůsobení ve vaší aplikaci.
-* Až budete připraveni k přizpůsobení, zavolejte rozhraní API pro řazení.
-* Uložte ID události. Později se vám pošle protiměna pomocí API pro odměnu.
-1. Pokud jste si jisti, že uživatel viděl vaši personalizovanou stránku, zavolejte aktivovat pro událost.
-1. Počkejte na výběr uživatelem seřazeného obsahu.
-1. K určení, jak dobře existoval výstup rozhraní API řazení, zavolejte API pro odměnu.
+* Určete, jaké prostředí chcete přizpůsobit, jaké akce a funkce máte, jaké kontextové funkce použít a jakou odměnu nastavíte.
+* Přidejte odkaz na sadu SDK individuálního nastavení ve vaší aplikaci.
+* Zavolejte rozhraní Rank API, až budete připraveni přizpůsobit se.
+* Uložte id události. Odměnu s rozhraním Reward API odešlete později.
+1. Pokud si budete jistý, že uživatel vaši personalizovanou stránku uvidí, zavolejte aktivovat událost.
+1. Počkejte na výběr uživatele hodnoceného obsahu.
+1. Volání Bonus API určit, jak dobře výstup Rank API udělal.
 
-## <a name="how-to-use-personalizer-with-a-chat-bot"></a>Použití přizpůsobení s robotem chatu
+## <a name="how-to-use-personalizer-with-a-chat-bot"></a>Jak používat Personalizace s chat bot
 
-V tomto příkladu se dozvíte, jak použít přizpůsobení k vytvoření výchozího návrhu místo odeslání uživatele v několika nabídkách nebo volbách pokaždé, když.
+V tomto příkladu uvidíte, jak pomocí individuálního nastavení vytvořit výchozí návrh namísto odeslání uživatele dolů řadu nabídek nebo volby pokaždé.
 
 * Získat [kód](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/ChatbotExample) pro tuto ukázku.
-* Nastavte své řešení robot. Ujistěte se, že jste publikovali aplikaci LUIS.
-* Spravujte volání API pro řazení a měnu pro robota.
-    * Přidejte kód pro správu zpracování záměru LUIS. Pokud se jako nejvyšší záměr vrátí **žádná položka None** nebo je skóre nejvyšší záměru pod prahovou hodnotou vaší obchodní logiky, pošlete seznam záměrů, aby bylo možné seřadit záměr.
-    * Zobrazit seznam záměrů pro uživatele jako volitelných odkazů s prvním záměrem z odpovědi rozhraní API řazení
-    * Zachyťte výběr uživatele a odešlete ho v volání API pro odměnu.
+* Nastavte si řešení bot. Nezapomeňte publikovat aplikaci LUIS.
+* Správa Rank a Odměna API hovory pro bot.
+    * Přidejte kód pro správu zpracování záměru LUIS. Pokud **none** je vrácena jako hlavní záměr nebo nejvyšší záměr skóre je pod prahovou hodnotou obchodní logiky, odešlete seznam záměrů personalistu pořadí záměry.
+    * Zobrazit seznam záměru pro uživatele jako volitelné odkazy s prvním záměrem je nejvyšší hodnocené záměr z odpovědi rozhraní API pořadí.
+    * Zachyťte výběr uživatele a odešlete jej do volání rozhraní API pro odměňování.
 
-### <a name="recommended-bot-patterns"></a>Doporučené vzory robotů
+### <a name="recommended-bot-patterns"></a>Doporučené vzory botů
 
-* Zajistěte volání rozhraní API pro přizpůsobování při každém nutnosti nejednoznačnosti, a to na rozdíl od ukládání výsledků do mezipaměti pro každého uživatele. Výsledek jednoznačného záměru se může v průběhu času pro jednu osobu změnit a povolit rozhraní API řazení pro zkoumání odchylek zrychlí celkové učení.
-* Vyberte interakci, která je společná pro mnoho uživatelů, abyste měli k dispozici dostatek dat pro přizpůsobení. Úvodní otázky můžou být například lepší, než menší vyjasnění v grafu konverzace, ke kterým se může dostat jenom pár uživatelů.
-* Použijte volání rozhraní API pro řazení, pokud chcete povolit konverzace "první návrh je pravá", kde se uživateli zobrazí výzva "líbí se vám X?" nebo "znamenali jste X?" a uživatel si ho může jenom potvrdit; na rozdíl od poskytnutí možností uživateli, kde musí zvolit z nabídky. Například uživatel: "chtěl bych seřadit bot" robot: "chcete mít dvojitou espresso?". Tímto způsobem je signál pro odměnu také silný, protože se vztahuje přímo k jednomu návrhu.
+* Proveďte volání rozhraní API hodnocení personalizátoru pokaždé, když je potřeba rozdvojení, na rozdíl od ukládání výsledků do mezipaměti pro každého uživatele. Výsledek nejednoznačného záměru se může v průběhu času změnit pro jednu osobu a povolení rozhraní API pořadí prozkoumat odchylky urychlí celkové učení.
+* Zvolte interakci, která je společná pro mnoho uživatelů, abyste měli dostatek dat k přizpůsobení. Například úvodní otázky mohou být vhodnější než menší vysvětlení hluboko v konverzačním grafu, ke kterým se může dostat pouze několik uživatelů.
+* Pomocí volání rozhraní API rank povolte konverzace "první návrh je správný", kde se uživateli zeptá na otázku "Chcete x?" nebo "Myslel jsi X?" a uživatel může jen potvrdit; na rozdíl od poskytování možností uživateli, kde si musí vybrat z nabídky. Například Uživatel: "Chtěl bych si objednat kávu" Bot: "Chtěli byste dvojité espresso?". Tímto způsobem je signál odměny také silný, protože se přímo jedná o jeden návrh.
 
-## <a name="how-to-use-personalizer-with-a-recommendation-solution"></a>Používání přizpůsobeného řešení s řešením doporučení
+## <a name="how-to-use-personalizer-with-a-recommendation-solution"></a>Jak používat personalista s řešením doporučení
 
-Mnohé společnosti využívají moduly doporučení, marketingové a týmové nástroje, segmentování skupin a clusteringu, filtrování pro spolupráci a další způsoby, jak doporučit produkty od velkého katalogu zákazníkům.
+Mnoho společností používá moduly doporučení, marketingové nástroje a nástroje pro kampaně, segmentaci publika a shlukování, kolaborativní filtrování a další prostředky k doporučení produktů z velkého katalogu zákazníkům.
 
-[Úložiště GitHubu, které doporučuje Microsoft](https://github.com/Microsoft/Recommenders) , poskytuje příklady a osvědčené postupy pro vytváření systémů doporučení, které se poskytují jako Jupyter poznámkové bloky. Poskytuje pracovní příklady pro přípravu dat, sestavování modelů, vyhodnocování, ladění a zprovozňováníí pro doporučení pro mnohé běžné přístupy, včetně xDeepFM, správní rady, ALS, MKP, DKN.
+[Úložiště GitHub společnosti Microsoft Recommenders](https://github.com/Microsoft/Recommenders) poskytuje příklady a osvědčené postupy pro vytváření doporučených systémů, které jsou k dispozici jako poznámkové bloky Jupyter. Poskytuje pracovní příklady pro přípravu dat, vytváření modelů, vyhodnocení, ladění a zprovoznění modulů doporučení pro mnoho běžných přístupů, včetně xDeepFM, SAR, ALS, RbM, DKN.
 
-Přizpůsobování může pracovat s modulem doporučení, když je přítomen.
+Personalizátář může pracovat s moduldoporučení, když je přítomen.
 
-* Moduly doporučení využívají velké množství položek (například 500 000) a doporučují podmnožinu (například prvních 20) ze stovek nebo tisíců možností.
-* Přizpůsobený modul přebírá malý počet akcí s velkým množstvím informací o nich a řadí je v reálném čase pro daný bohatý kontext, zatímco většina modulů pro doporučení používá jenom několik atributů o uživatelích, produktech a jejich interakcích.
-* Přizpůsobený modul je navržený tak, aby se samostatně seznámil s uživatelskými preferencemi, což vám poskytne lepší výsledky, při kterých se rychle mění obsah, jako jsou novinky, živé události, živý obsah komunity, obsah s denními aktualizacemi nebo sezónní obsah.
+* Moduly doporučení berou velké množství položek (například 500 000) a doporučují podmnožinu (například prvních 20) ze stovek nebo tisíců možností.
+* Personalizár má malý počet akcí se spoustou informací o nich a řadí je v reálném čase pro daný bohatý kontext, zatímco většina doporučení motory používají pouze několik atributů o uživatelích, produktech a jejich interakcích.
+* Personalizátor je navržen tak, aby autonomně prozkoumával uživatelské preference po celou dobu, což přinese lepší výsledky tam, kde se obsah rychle mění, jako jsou zprávy, živé události, živý komunitní obsah, obsah s denními aktualizacemi nebo sezónní obsah.
 
-Běžným použitím je pořídit výstup modulu doporučení (například prvních 20 produktů pro určitého zákazníka) a použít ho jako vstupní akce pro přizpůsobené aplikace.
+Běžné použití je vzít výstup modulu doporučení (například top 20 produktů pro určitého zákazníka) a použít jako vstupní akce pro personalista.
 
-## <a name="adding-content-safeguards-to-your-application"></a>Přidání ochrany obsahu do aplikace
+## <a name="adding-content-safeguards-to-your-application"></a>Přidání zabezpečení obsahu do aplikace
 
-Pokud vaše aplikace umožňuje velké odchylky v obsahu zobrazeného uživatelům a některý z těchto obsahů může být pro některé uživatele nebezpečný nebo nevhodný, měli byste předem naplánovat, aby se zajistilo, že jsou zavedená správná ochranná opatření, aby se uživatelům zabránilo v nepřijatelném zobrazení. sušin. Nejlepším způsobem, jak implementovat ochranu, je:
-    * Získejte seznam akcí, které je potřeba seřadit.
-    * Vyfiltrujte ty, které nejsou pro cílovou skupinu životaschopné.
-    * Tyto životaschopné akce je možné seřadit pouze.
-    * Zobrazí uživateli horní seřazenou akci.
+Pokud vaše aplikace umožňuje velké odchylky v obsahu zobrazeném uživatelům a některé z těchto obsahů mohou být pro některé uživatele nebezpečné nebo nevhodné, měli byste plánovat předem, abyste se ujistili, že jsou zavedena správná ochranná opatření, která zabrání uživatelům v tom, aby viděli nepřijatelné Obsah. Nejlepší způsob zavedení ochranných opatření je:
+    * Získejte seznam akcí k hodnocení.
+    * Odfiltrujte ty, které nejsou životaschopné pro publikum.
+    * Pouze pořadí těchto životaschopných akcí.
+    * Zobrazí uživateli nejvyšší hodnocenou akci.
 
-V některých architekturách může být výše uvedená sekvence těžká implementace. V takovém případě existuje alternativní přístup k implementaci ochrany po hodnocení, ale je třeba provést zřízení, takže akce, které spadají mimo ochranu, se nepoužijí ke školení modelu přizpůsobeného objektu pro přizpůsobení.
+V některých architekturách výše uvedené sekvence může být obtížné implementovat. V takovém případě existuje alternativní přístup k provádění záruk po pořadí, ale je třeba přijmout ustanovení, aby se k trénování modelu personalisty nepoužívala opatření, která nespadají do ochranného opatření.
 
-* Získejte seznam akcí, které se mají seřadit, a Naučte se deaktivovat.
-* Akce pořadí.
-* Zkontroluje, jestli je akce nejvyšší úrovně životaschopná.
-    * Pokud je nejdůležitější akce životaschopná, aktivujte pro toto pořadí učení a pak ho Zobrazte uživateli.
-    * Pokud akce nejvyšší úrovně není životaschopná, nepovolujte si výuku tohoto hodnocení a rozhodněte se pomocí vlastní logiky nebo alternativních přístupů k tomu, co se uživateli zobrazí. I v případě, že použijete druhou možnost, která je v pořadí, neaktivuje se učení pro toto hodnocení.
+* Získejte seznam akcí k hodnocení s deaktivovaným učením.
+* Pořadí akce.
+* Zkontrolujte, zda je horní akce životaschopná.
+    * Pokud je nejvyšší akce životaschopná, aktivujte výuku pro tuto hodnost a pak ji ukažte uživateli.
+    * Pokud není nejvyšší akce životaschopná, neaktivujte učení pro toto hodnocení a rozhodněte se pomocí vlastní logiky nebo alternativních přístupů, co chcete uživateli zobrazit. Dokonce i když použijete druhou nejlepší možnost hodnocení, neaktivujte učení pro toto hodnocení.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Etika & odpovědná za použití](ethics-responsible-use.md).
+[Etické & odpovědné používání](ethics-responsible-use.md).

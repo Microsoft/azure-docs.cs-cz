@@ -1,7 +1,7 @@
 ---
-title: Použití Cognitive Services NLP k obohacení konverzací
+title: Obohacování konverzací pomocí služeb NLP Cognitive Services
 titleSuffix: Azure Cognitive Services
-description: Cognitive Services poskytuje dvě služby pro zpracování v přirozeném jazyce, Language Understanding a QnA Maker, každý s jiným účelem. Informace o tom, kdy používat jednotlivé služby a jak se vzájemně přidávají
+description: Služby Cognitive Services poskytují dvě služby zpracování přirozeného jazyka, language understanding a QnA Maker, z nichž každá má jiný účel. Pochopit, kdy používat každou službu a jak se kompliment navzájem.
 author: diberry
 ms.author: diberry
 manager: nitinme
@@ -9,85 +9,85 @@ ms.topic: conceptual
 ms.service: cognitive-services
 ms.date: 08/01/2019
 ms.openlocfilehash: 32159b37d3d1a8609181d81dc1a73f27177adb85
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73818195"
 ---
-# <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>Použití Cognitive Services se zpracováním přirozeného jazyka (NLP) k obohacení konverzací robota
+# <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>Použití služeb Cognitive Services se zpracováním přirozeného jazyka (NLP) k obohacení konverzací botů
 
-Cognitive Services poskytuje dvě služby pro zpracování v přirozeném jazyce, [Language Understanding](what-is-luis.md) a [QnA maker](../qnamaker/overview/overview.md), každý s jiným účelem. Informace o tom, kdy používat jednotlivé služby a jak se vzájemně přidávají 
+Služby Cognitive Services poskytují dvě služby zpracování přirozeného jazyka, [language understanding](what-is-luis.md) a [QnA Maker](../qnamaker/overview/overview.md), z nichž každá má jiný účel. Pochopit, kdy používat každou službu a jak se kompliment navzájem. 
 
-Zpracování přirozeného jazyka (NLP) umožňuje vaše klientské aplikace, jako je třeba robota, pracovat s uživateli, a to v přirozeném jazyce. Uživatel zadá větu nebo frázi. Text uživatele může mít špatnou gramatiku, pravopis a interpunkční znaménko. Služba rozpoznávání může i přesto pracovat s uživatelskou větou a vracet informace, které musí uživatel poznamenat v programu chat bot. 
+Zpracování přirozeného jazyka (NLP) umožňuje vaší klientské aplikaci, jako je například chatovací robot, pracovat s uživateli pomocí přirozeného jazyka. Uživatel zadá větu nebo frázi. Text uživatele může mít špatnou gramatiku, pravopis a interpunkci. Služba Cognitive Service může pracovat prostřednictvím věty uživatele tak jako tak, vrácení informací chat bot potřebuje pomoci uživateli. 
 
-## <a name="cognitive-services-with-nlp"></a>Cognitive Services s NLP
+## <a name="cognitive-services-with-nlp"></a>Kognitivní služby s NLP
 
-Language Understanding (LUIS) a QnA Maker poskytují NLP. Klientská aplikace odesílá text v přirozeném jazyce. Služba převezme text, zpracuje ho a vrátí výsledek. 
+Porozumění jazykům (LUIS) a QnA Maker poskytují NLP. Klientská aplikace odešle text v přirozeném jazyce. Služba převezme text, zpracuje jej a vrátí výsledek. 
 
-## <a name="when-to-use-each-service"></a>Kdy použít jednotlivé služby
+## <a name="when-to-use-each-service"></a>Kdy použít každou službu
 
-Language Understanding (LUIS) a QnA Maker řeší různé problémy. LUIS určuje záměr textu uživatele (označovaného jako utterance), zatímco QnA Maker určuje odpověď na text uživatele (známý jako dotaz). 
+Porozumění jazykům (LUIS) a QnA Maker řeší různé problémy. Služba LUIS určuje záměr textu uživatele (označované jako utterance), zatímco QnA Maker určuje odpověď na text uživatele (označovaný jako dotaz). 
 
-Aby bylo možné vybrat správnou službu, je nutné pochopit text uživatele z klientské aplikace a informace o tom, které klientské aplikace potřebují získat ze služby pro rozpoznávání.
+Chcete-li vybrat správnou službu, musíte pochopit text uživatele pocházející z klientské aplikace a jaké informace klientská aplikace potřebuje získat ze služby Cognitive Service.
 
-Pokud vaše chatovací robot obdrží text `How do I get to the Human Resources building on the Seattle North campus?`, použijte následující graf, který vám pomůže pochopit, jak každá služba pracuje s textem.
+Pokud váš chatovací robot `How do I get to the Human Resources building on the Seattle North campus?`obdrží text , použijte níže uvedenou tabulku, abyste pochopili, jak jednotlivé služby s textem fungují.
 
 |Služba|Klientská aplikace určuje|
 |--|--|
-|LUIS|**Určuje** , zda je uživatel členem textu – služba nevrátí odpověď na otázku. Například tento text je klasifikován jako vyhovující `FindLocation` záměr.<br>|
-|QnA Maker|**Vrátí odpověď na dotaz** z vlastní znalostní báze. Například tento text je určen jako otázka se statickou textovou odpovědí `Get on the #9 bus and get off at Franklin street`.|
+|LUIS|**Určuje záměr uživatele** textu - služba nevrátí odpověď na otázku. Tento text je například klasifikován `FindLocation` jako odpovídající záměru.<br>|
+|QnA Maker|**Vrátí odpověď na otázku** z vlastní znalostní báze. Tento text je například určen jako otázka se `Get on the #9 bus and get off at Franklin street`statickou textovou odpovědí společnosti .|
 |||
 
-## <a name="when-do-you-use-luis"></a>Kdy používáte LUIS? 
+## <a name="when-do-you-use-luis"></a>Kdy používáte službu LUIS? 
 
-LUIS použijte, pokud potřebujete znát záměr utterance jako součást procesu v robotovi chatu. Když budete pokračovat s ukázkovým textem, `How do I get to the Human Resources building on the Seattle North campus?`po zjištění záměru uživatele najít umístění, můžete předat podrobnosti o utterance (vycházejících s entitami) do jiné služby, jako je například Transport Server, a získat tak odpověď. 
+Luis, když potřebujete znát záměr utterance jako součást procesu v chatu robota. Pokračování s ukázkovým `How do I get to the Human Resources building on the Seattle North campus?`textem , jakmile znáte, že záměrem uživatele je najít umístění, můžete předat podrobnosti o utterance (vytažené s entitami) jiné službě, například dopravnímu serveru, abyste získali odpověď. 
 
-K určení záměru nemusíte kombinovat LUIS a QnA Maker. 
+Není nutné kombinovat LUIS a QnA Maker k určení záměru. 
 
-Tyto dvě služby můžete v tomto utterance kombinovat, pokud robot robot potřebuje zpracovat text na základě záměrů a entit (pomocí LUIS) a najít konkrétní odpověď statického textu (pomocí QnA Maker).
+Můžete kombinovat dvě služby pro tuto utterance, pokud chatovací robot potřebuje zpracovat text na základě záměrů a entit (pomocí LUIS) stejně jako najít konkrétní statické textové odpovědi (pomocí QnA Maker).
 
-## <a name="when-do-you-use-qna-maker"></a>Kdy použijete QnA Maker? 
+## <a name="when-do-you-use-qna-maker"></a>Kdy používáte QnA Maker? 
 
-Použijte QnA Maker, když máte statickou znalostní bázi odpovědí. Tato znalostní báze je vlastní pro vaše potřeby, které jste sestavili s dokumenty, jako jsou soubory PDF a adresy URL. 
+QnA Maker použijte, pokud máte statickou znalostní bázi odpovědí. Tato znalostní báze je vlastní vašim potřebám, které jste vytvořili pomocí dokumentů, jako jsou soubory PDF a adresy URL. 
 
-Pokračujeme v příkladu utterance `How do I get to the Human Resources building on the Seattle North campus?`, pošlete text, jako dotaz na publikovanou QnA Maker službu a dostanete nejlepší odpověď. 
+Pokračování s příklad utterance `How do I get to the Human Resources building on the Seattle North campus?`, odešlete text jako dotaz na publikovanou službu QnA Maker a obdržíte nejlepší odpověď. 
 
-K určení odpovědi na otázku nemusíte kombinovat LUIS a QnA Maker.
+Není nutné kombinovat LUIS a QnA Maker k určení odpovědi na otázku.
 
-Tyto dvě služby pro tento utterance můžete kombinovat, pokud robot robot potřebuje zpracovat text založený na záměrech a entitách (pomocí LUIS) a také najít odpověď (pomocí QnA Maker).
+Můžete kombinovat dvě služby pro tuto utterance, pokud chatovací robot potřebuje zpracovat text na základě záměrů a entit (pomocí LUIS) stejně jako najít odpověď (pomocí QnA Maker).
 
-## <a name="use-both-services-when-your-knowledge-base-is-incomplete"></a>Pokud je vaše znalostní báze neúplná, použijte obě služby.
+## <a name="use-both-services-when-your-knowledge-base-is-incomplete"></a>Využijte obě služby v případě neúplné znalostní báze
 
-Pokud sestavíte QnA Maker znalostní bázi, ale víte, že se doména předmětu mění (například včasné informace), mohli byste kombinovat služby LUIS a QnA Maker. To vám umožňuje používat informace ve znalostní bázi Knowledge Base, ale také pomocí LUIS určit záměr uživatele. Jakmile má klientská aplikace záměr, může požádat o relevantní informace z jiného zdroje. 
+Pokud vytváříte znalostní bázi QnA Maker, ale víte, že se doména předmětu mění (například včasné informace), můžete kombinovat služby LUIS a QnA Maker. To umožňuje použít informace ve znalostní bázi, ale také použít LUIS k určení záměru uživatele. Jakmile má klientská aplikace záměr, může požadovat relevantní informace z jiného zdroje. 
 
-Vaše klientská aplikace by musela monitorovat LUIS i QnA Maker reakce na skóre. Pokud je skóre z QnA Maker menší než jakákoli prahová hodnota, použijte informace o záměru a entitě vrácené z LUIS a předejte informace službě třetí strany.
+Vaše klientská aplikace bude muset sledovat luis a QnA Maker odpovědi na skóre. Pokud skóre z QnA Maker je pod některé libovolné prahové hodnoty, použijte záměr a informace o entitě vrácené z LUIS předat informace o službě třetí strany.
 
-Pokračování s ukázkovým textem `How do I get to the Human Resources building on the Seattle North campus?`předpokládá, že QnA Maker vrací skóre s nízkou spolehlivostí. Pomocí záměru vráceného z LUIS `FindLocation` a všech extrahovaných entit, jako je například `Human Resources building` a `Seattle North campus`, můžete odeslat tyto informace službě mapování nebo vyhledávání pro jinou odpověď. 
+Pokračujte v ukázkovém textu , předpokládejme, `How do I get to the Human Resources building on the Seattle North campus?`že QnA Maker vrátí nízké skóre spolehlivosti. Použijte záměr vrácený `FindLocation` z LUIS a všechny extrahované entity, jako je například `Human Resources building` a `Seattle North campus`, k odeslání těchto informací do mapování nebo vyhledávací služby pro jinou odpověď. 
 
-Tuto odpověď třetí strany můžete zobrazit uživateli k ověření. Jakmile budete mít schválení uživatele, můžete přejít zpět na QnA Maker a přidat informace, abyste mohli rozšířit vaše znalosti. 
+Tuto odpověď jiného výrobce můžete uživateli představit k ověření. Jakmile budete mít souhlas uživatele, můžete se vrátit do QnA Maker přidat informace pro růst své znalosti. 
 
-## <a name="use-both-services-when-your-chat-bot-needs-more-information"></a>V případě, že robot potřebuje další informace, použijte obě služby.
+## <a name="use-both-services-when-your-chat-bot-needs-more-information"></a>Obě služby používejte, když chatovací robot potřebuje více informací
 
-Pokud vaše chatovací robot potřebuje více informací, než je kterákoli z poskytované služby, pokračujte v rozhodování pomocí obou služeb a zpracujte obě odezvy v klientské aplikaci. 
+Pokud váš chatovací robot potřebuje více informací, než poskytuje kterákoli služba, chcete-li pokračovat prostřednictvím rozhodovacího stromu, použijte obě služby a zpracujte obě odpovědi v klientské aplikaci. 
 
-Pomocí nástroje bot Framework **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** můžete vytvořit proces, který bude spolupracovat s oběma službami. Tento nástroj vytvoří nejvyšší LUIS aplikaci záměrů, které odesílají mezi LUIS a QnA Maker jako podřízené aplikace. 
+Pomocí nástroje **[rozhraní SE řízení montovny rozhraní PRO odesílání](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** architektury botů můžete vytvořit proces pro práci s oběma službami. Tento nástroj vytváří horní LUIS aplikace záměrů, které odesílá mezi LUIS a QnA Maker jako podřízené aplikace. 
 
-K implementaci tohoto typu robota chatu použijte vzorek bot [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) Builder, **NLP s odesláním**, v nebo [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch). 
+Použijte bot tvůrce ukázky **NLP s odesláním**, v [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) nebo [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch), k implementaci tohoto typu chatu bot. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
 Implementujte osvědčené postupy pro každou službu:
 
-* Osvědčené postupy pro [Luis](luis-concept-best-practices.md)
-* [QnA maker](../qnamaker/concepts/best-practices.md) osvědčené postupy
+* Doporučené postupy [služby LUIS](luis-concept-best-practices.md)
+* Doporučené postupy [pro qnA maker](../qnamaker/concepts/best-practices.md)
 
 ## <a name="see-also"></a>Viz také
 
 * [Language Understanding (LUIS)](what-is-luis.md)
 * [QnA Maker](../qnamaker/overview/overview.md)
-* [Rozhraní příkazového řádku pro odesílání](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
-* [Ukázky pro robot Framework](https://github.com/Microsoft/BotBuilder-Samples)
-* [Azure bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
-* [Emulátor Azure bot](https://github.com/Microsoft/BotFramework-Emulator)
-* [Webový chat pro robot Framework](https://github.com/microsoft/BotFramework-WebChat)
+* [Odeslání CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
+* [Ukázky architektury botů](https://github.com/Microsoft/BotBuilder-Samples)
+* [Služba Azure botů](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+* [Emulátor robotů Azure](https://github.com/Microsoft/BotFramework-Emulator)
+* [Webový chat s frameworkem botů](https://github.com/microsoft/BotFramework-WebChat)

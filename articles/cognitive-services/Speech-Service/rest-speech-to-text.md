@@ -1,89 +1,89 @@
 ---
-title: Referenční informace k rozhraní API pro převod řeči na text (REST) – služba Speech
+title: Odkaz na rozhraní API pro převod řeči na text (REST) – služba řeči
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat REST API převodu řeči na text. V tomto článku se dozvíte o autorizaci, možnosti dotazu, jak strukturovat žádost a přijetí odpovědi.
+description: Přečtěte si, jak používat rozhraní REST API pro převod řeči na text. V tomto článku se dozvíte o možnostech autorizace, možnostech dotazu, způsobu strukturování požadavku a přijetí odpovědi.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.author: erhopf
-ms.openlocfilehash: 873898ce321100edbaa800d2436d0413c06ce175
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/16/2020
+ms.author: dapine
+ms.openlocfilehash: 759ea697e4093da5bfc1c082c886c6dfda636f42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79220443"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474794"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
-Jako alternativu k [sadě Speech SDK](speech-sdk.md)vám služba rozpoznávání řeči umožňuje převod řeči na text pomocí REST API. Každý dostupný koncový bod je přidružen k oblasti. Vaše aplikace vyžaduje klíč předplatného pro koncový bod, který chcete použít.
+Jako alternativu k [řeči SDK](speech-sdk.md), řeči služba umožňuje převést řeč na text pomocí rozhraní REST API. Každý přístupný koncový bod je přidružen k oblasti. Vaše aplikace vyžaduje klíč předplatného pro koncový bod, který chcete použít. Rozhraní REST API je velmi omezené a mělo by být použito pouze v případech, kdy sada [Speech SDK](speech-sdk.md) nemůže.
 
-Než začnete používat převod řeči na text, REST API pochopit:
+Před použitím rozhraní REST API pro převod řeči na text pochopte:
 
-* Požadavky, které používají REST API a přímo odesílají zvuk, můžou obsahovat až 60 sekund zvukového přenosu.
-* Rozhraní REST API pro rozpoznávání řeči na text vrací pouze konečných výsledků. Nejsou k dispozici částečné výsledky.
+* Požadavky, které používají rozhraní REST API a přenášejí zvuk přímo, mohou obsahovat pouze 60 sekund zvuku.
+* Rozhraní REST API pro převod řeči na text pouze vrací konečné výsledky. Částečné výsledky nejsou k dispozici.
 
-Pokud je odeslání delšího zvukového požadavku nutné pro vaši aplikaci, zvažte použití [sady Speech SDK](speech-sdk.md) nebo souborového REST API, jako je například [Batch přepis](batch-transcription.md).
+Pokud je odesílání delšího zvuku požadavkem pro vaši aplikaci, zvažte použití [sady Speech SDK](speech-sdk.md) nebo rozhraní REST API založeného na souborech, jako je [dávkový přepis](batch-transcription.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="regions-and-endpoints"></a>Oblasti a koncových bodů
+## <a name="regions-and-endpoints"></a>Oblasti a koncové body
 
-Koncový bod pro REST API má tento formát:
+Koncový bod pro rozhraní REST API má tento formát:
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti vašeho předplatného z této tabulky:
+Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti předplatného z této tabulky:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
 > [!NOTE]
-> Parametr Language se musí připojit k adrese URL, aby nedošlo k 4xx chybě HTTP. Například jazyk nastavený na AMERICKou angličtinu pomocí Západní USAho koncového bodu je: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
+> Parametr jazyka musí být připojen k adrese URL, aby se zabránilo přijetí chyby 4xx HTTP. Například jazyk nastavený na americkou angličtinu pomocí `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`koncového bodu –USA je: .
 
 ## <a name="query-parameters"></a>Parametry dotazu
 
 Tyto parametry mohou být zahrnuty v řetězci dotazu požadavku REST.
 
-| Parametr | Popis | Povinné / volitelné |
+| Parametr | Popis | Povinné / Nepovinné |
 |-----------|-------------|---------------------|
-| `language` | Identifikuje mluvený jazyk, který je právě rozpoznán. Viz [podporované jazyky](language-support.md#speech-to-text). | Požadováno |
-| `format` | Určuje formát výsledku. Přijaté hodnoty jsou `simple` a `detailed`. Jednoduché výsledky zahrnují `RecognitionStatus`, `DisplayText`, `Offset`a `Duration`. Podrobné odpovědi zahrnout více výsledků s jistotou hodnotami a čtyři různé reprezentace. Výchozí nastavení je `simple`. | Volitelné |
-| `profanity` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Přípustné hodnoty jsou `masked`, které nahradí vulgární znaky hvězdičkami, `removed`, které odstraní všechny vulgární výrazy z výsledku nebo `raw`, což zahrnuje vulgární výrazy ve výsledku. Výchozí nastavení je `masked`. | Volitelné |
-| `cid` | Při použití [portálu Custom Speech](how-to-custom-speech.md) k vytváření vlastních modelů můžete na stránce **nasazení** použít vlastní modely přes **ID koncového bodu** . Jako argument pro parametr řetězce dotazu `cid` použijte **ID koncového bodu** . | Volitelné |
+| `language` | Identifikuje mluvený jazyk, který je rozpoznán. Viz [Podporované jazyky](language-support.md#speech-to-text). | Požaduje se |
+| `format` | Určuje formát výsledků. Přijaté hodnoty `simple` `detailed`jsou a . Jednoduché výsledky `RecognitionStatus` `DisplayText`zahrnují `Offset`, `Duration`, a . Podrobné odpovědi zahrnují více výsledků s hodnotami spolehlivosti a čtyři různé reprezentace. Výchozí hodnota je `simple`. | Nepovinné |
+| `profanity` | Určuje způsob zpracování vulgárních výrazů ve výsledcích rozpoznávání. Přijaté hodnoty `masked`jsou , které nahrazují vulgární výrazy `removed`hvězdičkami , , které odstraní všechny `raw`vulgární výrazy z výsledku, nebo , který obsahuje vulgární výrazy ve výsledku. Výchozí hodnota je `masked`. | Nepovinné |
+| `cid` | Při vytváření vlastních modelů [pomocí portálu Vlastní řeči](how-to-custom-speech.md) můžete použít vlastní modely prostřednictvím jejich **ID koncového bodu,** které se nachází na stránce **Nasazení.** Použijte **ID koncového bodu** jako `cid` argument pro parametr řetězce dotazu. | Nepovinné |
 
 ## <a name="request-headers"></a>Hlavičky požadavku
 
-Tato tabulka obsahuje povinné a nepovinné hlavičky pro žádosti o převod řeči na text.
+V této tabulce jsou uvedena povinná a volitelná záhlaví pro požadavky převodu řeči na text.
 
-|Hlavička| Popis | Povinné / volitelné |
+|Hlavička| Popis | Povinné / Nepovinné |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Tato hlavička nebo `Authorization` je povinná. |
-| `Authorization` | Autorizační token předchází `Bearer`m slovem. Další informace najdete v tématu [Ověřování](#authentication). | Tato hlavička nebo `Ocp-Apim-Subscription-Key` je povinná. |
-| `Content-type` | Popisuje formátu a kodek zadaná zvuková data. Přijaté hodnoty jsou `audio/wav; codecs=audio/pcm; samplerate=16000` a `audio/ogg; codecs=opus`. | Požadováno |
-| `Transfer-Encoding` | Určuje, že blokového zvukových dat je odesíláno, místo jednoho souboru. Tuto hlavičku používají pouze bloků zvuková data. | Volitelné |
-| `Expect` | Pokud používáte přenos přes blok dat, pošlete `Expect: 100-continue`. Služba rozpoznávání řeči potvrdí počáteční požadavek a očekává další data.| Požadováno při odesílání bloku zvuková data. |
-| `Accept` | Je-li tento příkaz zadán, musí být `application/json`. Služba rozpoznávání řeči poskytuje výsledky ve formátu JSON. Některé architektury požadavků poskytují nekompatibilní výchozí hodnotu. Je vhodné vždy zahrnout `Accept`. | Volitelné, ale doporučené. |
+| `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Buď toto `Authorization` záhlaví nebo je povinné. |
+| `Authorization` | Autorizační token, kterému `Bearer`předchází slovo . Další informace najdete v tématu [Ověřování](#authentication). | Buď toto `Ocp-Apim-Subscription-Key` záhlaví nebo je povinné. |
+| `Content-type` | Popisuje formát a kodek poskytnutých zvukových dat. Přijaté hodnoty `audio/wav; codecs=audio/pcm; samplerate=16000` `audio/ogg; codecs=opus`jsou a . | Požaduje se |
+| `Transfer-Encoding` | Určuje, že jsou odesílána data blouzniných zvukových dat, nikoli jeden soubor. Tuto hlavičku používejte pouze v případě, že jsou zvuková data zkazena. | Nepovinné |
+| `Expect` | Pokud používáte blokový `Expect: 100-continue`přenos, odešlete . Služba Speech potvrzuje počáteční požadavek a čeká na další data.| Povinné při odesílání datových bloků zvukových dat. |
+| `Accept` | Pokud je k dispozici, musí být `application/json`. Služba Řeč poskytuje výsledky v JSON. Některé rozhraní pro požadavky poskytují nekompatibilní výchozí hodnotu. Je vhodné vždy zahrnout `Accept`. | Nepovinné, ale doporučené. |
 
-## <a name="audio-formats"></a>Formáty zvuku
+## <a name="audio-formats"></a>Zvukové formáty
 
-V těle požadavku HTTP `POST` se pošle zvuk. Musí být v jednom z formátů, v této tabulce:
+Zvuk je odeslán v textu `POST` požadavku HTTP. Musí být v jednom z formátů v této tabulce:
 
-| Formát | Kodek | S přenosovou rychlostí | Vzorkovací frekvence  |
+| Formát | Kodek | Datový tok | Vzorkovací frekvence  |
 |--------|-------|---------|--------------|
-| WAV    | PCM   | 16 bitů  | 16 kHz, mono |
-| OGG    | DÍLE  | 16 bitů  | 16 kHz, mono |
+| WAV    | PCM   | 16bitový  | 16 kHz, mono |
+| Ogg    | Opus  | 16bitový  | 16 kHz, mono |
 
 >[!NOTE]
->Výše uvedené formáty jsou podporovány prostřednictvím REST API a WebSocket ve službě Speech. [Sada Speech SDK](speech-sdk.md) aktuálně podporuje formát WAV pomocí kodeku PCM i [dalších formátů](how-to-use-codec-compressed-audio-input-streams.md).
+>Výše uvedené formáty jsou podporovány prostřednictvím rozhraní REST API a WebSocket ve službě Řeč. [Sada Speech SDK](speech-sdk.md) v současné době podporuje formát WAV s kodekem PCM a [dalšími formáty](how-to-use-codec-compressed-audio-input-streams.md).
 
-## <a name="sample-request"></a>Ukázková žádost
+## <a name="sample-request"></a>Požadavek na ukázku
 
-Následující ukázka obsahuje název hostitele a požadované záhlaví. Je důležité si uvědomit, že služba také očekává, že zvukových dat, která není zahrnutá v této ukázce. Jak bylo zmíněno dříve, bloků se doporučuje, ale nevyžaduje.
+Následující ukázka obsahuje název hostitele a požadovaná záhlaví. Je důležité si uvědomit, že služba také očekává zvuková data, která nejsou zahrnuta v této ukázce. Jak již bylo zmíněno dříve, chunking se doporučuje, nicméně, není nutné.
 
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -97,21 +97,21 @@ Expect: 100-continue
 
 ## <a name="http-status-codes"></a>Stavové kódy HTTP
 
-Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
+Stavový kód HTTP pro každou odpověď označuje úspěch nebo běžné chyby.
 
 | Stavový kód HTTP | Popis | Možný důvod |
 |------------------|-------------|-----------------|
-| `100` | Pokračovat | Byla přijata v prvotní žádosti. Pokračujte v odesílání zbývajícími daty. (Používá se s přenosem v bloku) |
-| `200` | OK | Žádost byla úspěšná. text odpovědi je objekt JSON. |
-| `400` | Nesprávná žádost | Kód jazyka není k dispozici, nejedná se o podporovaný jazyk, neplatný zvukový soubor atd. |
-| `401` | Neautorizováno | Klíč předplatného nebo autorizační token je neplatný. v zadané oblasti nebo neplatný koncový bod. |
-| `403` | Zakázáno | Chybí klíč předplatného nebo autorizační token. |
+| `100` | Pokračovat | Původní požadavek byl přijat. Pokračujte v odesílání zbývajících dat. (Používá se s chunked přenosu) |
+| `200` | OK | Požadavek byl úspěšný. tělo odezvy je objekt JSON. |
+| `400` | Chybný požadavek | Kód jazyka není k dispozici, není podporovaný jazyk, neplatný zvukový soubor, atd. |
+| `401` | Neautorizováno | Klíč předplatného nebo autorizační token je v zadané oblasti neplatný nebo neplatný koncový bod. |
+| `403` | Forbidden | Chybí klíč předplatného nebo autorizační token. |
 
-## <a name="chunked-transfer"></a>Bloku
+## <a name="chunked-transfer"></a>Blokovaný přenos
 
-Přenos v bloku dat (`Transfer-Encoding: chunked`) může pomáhat snižovat latenci při rozpoznávání. Umožňuje službě Speech Service zahájit zpracování zvukového souboru během přenosu. Rozhraní REST API neposkytuje výsledky částečné nebo dočasné.
+Blokovaný přenos`Transfer-Encoding: chunked`( ) může pomoci snížit latenci rozpoznávání. Umožňuje službě Řeč zahájit zpracování zvukového souboru během přenosu. Rozhraní REST API neposkytuje částečné nebo průběžné výsledky.
 
-Tento vzorový kód ukazuje, jak posílat zvuk v blocích. Zvukový soubor záhlaví by měl obsahovat pouze u prvního bloku. `request` je objekt `HttpWebRequest` připojený k příslušnému koncovému bodu REST. `audioFile` je cesta ke zvukovému souboru na disku.
+Tato ukázka kódu ukazuje, jak odeslat zvuk v blocích. Pouze první blok by měl obsahovat záhlaví zvukového souboru. `request`je `HttpWebRequest` objekt připojený k příslušnému koncovému bodu REST. `audioFile`je cesta ke zvukovému souboru na disku.
 
 ```csharp
 var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
@@ -143,45 +143,45 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="response-parameters"></a>Parametry odpovědi
+## <a name="response-parameters"></a>Parametry odezvy
 
-Výsledky jsou k dispozici jako dokumenty JSON. `simple` formát zahrnuje tato pole nejvyšší úrovně.
+Výsledky jsou poskytovány jako JSON. Formát `simple` obsahuje tato pole nejvyšší úrovně.
 
 | Parametr | Popis  |
 |-----------|--------------|
-|`RecognitionStatus`|Stav, například `Success` pro úspěšné rozpoznávání. Najdete v následující tabulce.|
-|`DisplayText`|Rozpoznaný text po použití velkých a malých písmen, normalizaci textu (konverze mluveného textu na kratších formulářích, například 200 pro "200" nebo "Dr. Smith" pro "Doctor Smith") a maskování vulgárních výrazů. K dispozici pouze v případě úspěchu.|
-|`Offset`|Čas (v jednotkách 100 nanosekund), ve kterém začíná rozpoznané řeči v zvukový datový proud.|
-|`Duration`|Doba (v jednotkách 100 nanosekund) rozpoznané řeči v zvukový datový proud.|
+|`RecognitionStatus`|Stav, například `Success` pro úspěšné uznání. Viz další stůl.|
+|`DisplayText`|Rozpoznaný text po velkých písmenech, interpunkci, normalizaci inverzního textu (převod mluveného textu na kratší formy, například 200 pro "dvě stě" nebo "Dr. Smith" pro "doctor smith") a maskování vulgárních výrazů. Prezentujte pouze o úspěchu.|
+|`Offset`|Čas (ve 100 nanosekundových jednotkách), kdy rozpoznaná řeč začíná v datovém proudu zvuku.|
+|`Duration`|Doba trvání (ve 100 nanosekundových jednotkách) rozpoznané řeči v zvukovém proudu.|
 
 Pole `RecognitionStatus` může obsahovat tyto hodnoty:
 
-| Stav | Popis |
+| Status | Popis |
 |--------|-------------|
-| `Success` | Rozpoznávání bylo úspěšné a pole `DisplayText` je k dispozici. |
-| `NoMatch` | V zvukový datový proud byl zjištěn řeči, ale žádná slova v cílovém jazyce se shoda našla. Obvykle znamená, že jazyk rozpoznávání je jiný jazyk než ty, které uživatel to mluví. |
-| `InitialSilenceTimeout` | Začátek zvukový datový proud obsahovala pouze nečinnosti a službu vypršel časový limit čekání na rozpoznávání řeči. |
-| `BabbleTimeout` | Začátek zvukový datový proud obsahovala pouze šum a službu vypršel časový limit čekání na řeč. |
-| `Error` | Rozpoznávání služby došlo k interní chybě a nemohl pokračovat. Zkuste to znovu Pokud je to možné. |
+| `Success` | Uznání bylo úspěšné `DisplayText` a pole je přítomno. |
+| `NoMatch` | V datovém proudu zvuku byla zjištěna řeč, ale nebyla spárována žádná slova z cílového jazyka. Obvykle znamená, že jazyk rozpoznávání je jiný jazyk než ten, který uživatel mluví. |
+| `InitialSilenceTimeout` | Spuštění zvukového proudu obsahovalo pouze ticho a službě byl časový čas čekání na řeč. |
+| `BabbleTimeout` | Spuštění zvukového proudu obsahovalo pouze šum a službě byl časový rozsah čekání na řeč. |
+| `Error` | Služba rozpoznávání zjistila vnitřní chybu a nemohla pokračovat. Zkuste to znovu, pokud je to možné. |
 
 > [!NOTE]
-> Pokud se zvuk skládá jenom z vulgárních výrazů a parametr dotazu `profanity` je nastaven na `remove`, služba nevrátí výsledek řeči.
+> Pokud se zvuk skládá pouze z vulgárních `profanity` výrazů a `remove`parametr dotazu je nastaven na , služba nevrátí výsledek řeči.
 
-Formát `detailed` obsahuje stejná data jako `simple` formátu společně se `NBest`m seznamem alternativních interpretů stejného výsledku rozpoznávání. Tyto výsledky jsou seřazené z nejpravděpodobnějšího nejnižší pravděpodobně. První položka je stejná jako u hlavního výsledku rozpoznávání.  Při použití formátu `detailed` je `DisplayText` k dispozici jako `Display` pro každý výsledek v seznamu `NBest`.
+Formát `detailed` obsahuje stejná data `simple` jako formát, spolu s `NBest`, seznam alternativních interpretací stejného výsledku rozpoznávání. Tyto výsledky jsou seřazeny od nejpravděpodobnější nejméně pravděpodobné. První položka je stejná jako hlavní výsledek rozpoznávání.  Při použití `detailed` formátu, `DisplayText` je `Display` k dispozici jako `NBest` pro každý výsledek v seznamu.
 
-Každý objekt v seznamu `NBest` obsahuje:
+Každý objekt `NBest` v seznamu obsahuje:
 
 | Parametr | Popis |
 |-----------|-------------|
-| `Confidence` | Skóre spolehlivosti položky od 0.0 (bez obav) 1.0 (plnou důvěru) |
-| `Lexical` | Lexikální formu textové rozpoznaných: vlastních slov rozpoznán. |
-| `ITN` | Inverzní text normalized ("canonical") formu rozpoznaný text pomocí telefonního čísla, čísla, zkratky ("lékař smith" k "zotavení po havárii smith") a dalších transformací použít. |
-| `MaskedITN` | Formulář není s vulgárních výrazů maskování použít, pokud o to požádá. |
-| `Display` | Zobrazení formu rozpoznaný text s interpunkce a přidali malá a velká písmena. Tento parametr je stejný jako `DisplayText` poskytnutý, když je formát nastavený na `simple`. |
+| `Confidence` | Skóre důvěry vstupu z 0,0 (bez důvěry) na 1,0 (plná důvěra) |
+| `Lexical` | Lexikální forma rozpoznaného textu: skutečná rozpoznaná slova. |
+| `ITN` | Inverzní-text-normalizované ("kanonické") forma rozpoznaného textu, s telefonní miými čísly, čísly, zkratkami ("doctor smith" na "dr smith"), a další transformace použity. |
+| `MaskedITN` | Formulář ITN s vulgárním maskováním použitý, pokud je požadováno. |
+| `Display` | Zobrazovaná forma rozpoznaného textu s přidányu interpunkce a velkých písmen. Tento parametr je `DisplayText` stejný jako k dispozici, pokud je formát nastaven na hodnotu `simple`. |
 
-## <a name="sample-responses"></a>Ukázkové odpovědi
+## <a name="sample-responses"></a>Odpovědi na ukázky
 
-Typická odpověď pro rozpoznávání `simple`:
+Typická odpověď `simple` na uznání:
 
 ```json
 {
@@ -192,7 +192,7 @@ Typická odpověď pro rozpoznávání `simple`:
 }
 ```
 
-Typická odpověď pro rozpoznávání `detailed`:
+Typická odpověď `detailed` na uznání:
 
 ```json
 {

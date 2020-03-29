@@ -1,7 +1,7 @@
 ---
-title: Hledání videí pomocí rozhraní API Bingu pro vyhledávání videí
+title: Hledání videí pomocí rozhraní API pro vyhledávání videí Bingu
 titleSuffix: Azure Cognitive Services
-description: Vvyhledávání videí Bingu APIfinds a vrátí relevantní videa z webu, nabízí několik funkcí pro inteligentní a cílené načítání videa na webu.
+description: Bing Video Search APInajde a vrátí relevantní videa z webu, poskytuje několik funkcí pro inteligentní a cílené vyhledávání videa na webu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220300"
 ---
-# <a name="search-for-videos-with-the-bing-video-search-api"></a>Hledání videí pomocí rozhraní API Bingu pro vyhledávání videí
+# <a name="search-for-videos-with-the-bing-video-search-api"></a>Hledání videí pomocí rozhraní API pro vyhledávání videí Bingu
 
-Rozhraní API Bingu pro vyhledávání videí usnadňuje integraci funkcí vyhledávání zpráv Bingu ve vašich aplikacích. I když rozhraní API primárně najde a vrátí relevantní videa z webu, nabízí několik funkcí pro inteligentní a cílené načítání videí na webu.
+Rozhraní API pro vyhledávání videí Bing usnadňuje integraci funkcí vyhledávání kognitivních zpráv bingu do vašich aplikací. Zatímco rozhraní API primárně vyhledává a vrací relevantní videa z webu, poskytuje několik funkcí pro inteligentní a cílené načítání videa na webu.
 
 ## <a name="getting-videos"></a>Získávání videí
 
@@ -96,9 +96,9 @@ Odpověď obsahuje objekt [Videos](https://docs.microsoft.com/rest/api/cognitive
 }
 ```
 
-## <a name="video-thumbnails"></a>Miniatury videa
+## <a name="video-thumbnails"></a>Miniatury videí
 
-Můžete zobrazit všechny nebo podmnožinu miniatur videa vrácených rozhraní API Bingu pro vyhledávání videí. Pokud zobrazíte podmnožinu, poskytněte uživateli možnost zobrazit zbývající videa. v rámci [požadavků na použití a zobrazení](../UseAndDisplayRequirements.md)rozhraní API Bingu je nutné zobrazit videa v uvedeném pořadí v odpovědi. Informace o změně velikosti miniatury najdete v tématu [Změna velikosti a oříznutí miniatur](../../bing-web-search/resize-and-crop-thumbnails.md). 
+Můžete zobrazit všechny miniatury videa vrácené rozhraním API pro vyhledávání videa Bingu. Pokud zobrazíte podmnožinu, poskytněte uživateli možnost zobrazit zbývající videa. Jako součást požadavků [na použití a zobrazení](../UseAndDisplayRequirements.md)rozhraní API Bingu je nutné zobrazit videa v pořadí uvedeném v odpovědi. Informace o změně velikosti miniatury najdete v tématu [Změna velikosti a oříznutí miniatur](../../bing-web-search/resize-and-crop-thumbnails.md). 
 
 Pokud uživatel najede myší na miniaturu, může pomocí [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) spustit přehrávání miniatury videa. Ujistěte se, že je při zobrazení přiřazená filmová miniatura.
 
@@ -106,7 +106,7 @@ Pokud uživatel najede myší na miniaturu, může pomocí [motionThumbnailUrl](
 ![Motion thumbnail of a video](../bing-web-search/media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
 -->
 
-Při kliknutí na miniaturu jsou k dispozici tři možnosti zobrazení videa:
+Po klepnutí na miniaturu existují tři možnosti pro zobrazení videa:
 
 - Použitím adresy [hostPageUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-hostpageurl) zobrazíte video na webu hostitele (například YouTube)
 - Použitím adresy [webSearchUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-websearchurl) zobrazíte video v prohlížeči videa Bingu
@@ -120,10 +120,10 @@ Podrobné informace o použití [videoId](https://docs.microsoft.com/rest/api/co
 
 Ve výchozím nastavení vrací rozhraní API Bingu pro vyhledávání videí všechna videa, která jsou pro dotaz relevantní. Pokud chcete zobrazit pouze videa zdarma nebo videa kratší než pět minut, můžete použít následující parametry dotazu filtru:
 
-- [pricing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash; filtrování videí podle ceny (například videa, která jsou zdarma nebo placená videa)
-- [resolution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash; filtrování videí podle rozlišení (například videa s rozlišením 720p nebo vyšším rozlišením)
-- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash; filtrování videí podle jeho délky (například videa, která jsou kratší než pět minut)
-- [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash; filtrování videí podle stáří (například videa nalezená Bingem během posledního týdne)
+- [ceny](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;Filtrovat videa podle cen (například videa, která jsou zdarma nebo za která musíte zaplatit)
+- [rozlišení](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;Filtrujte videa podle rozlišení (například videa s rozlišením 720p nebo vyšším)
+- [videoDélka](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;filtru videa podle délky videa (například videa o délce kratší než pět minut)
+- [čerstvost](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;Filtr videa podle věku (například videa objevil Bing v minulém týdnu)
 
 Pokud chcete získat videa z konkrétní domény, použijte v řetězci dotazu operátor [site:](https://msdn.microsoft.com/library/ff795613.aspx).
 

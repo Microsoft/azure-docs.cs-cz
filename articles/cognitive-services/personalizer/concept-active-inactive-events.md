@@ -1,46 +1,46 @@
 ---
-title: Aktivní a neaktivní události – Přizpůsobte si
-description: Tento článek popisuje použití aktivních a neaktivních událostí v rámci služby přizpůsobeného modulu.
+title: Aktivní a neaktivní události - Personalizátor
+description: Tento článek popisuje použití aktivních a neaktivních událostí v rámci služby Personalizace.
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: a8f27542208965e2b820b9fc45cfcc5353a7f193
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624250"
 ---
 # <a name="active-and-inactive-events"></a>Aktivní a neaktivní události
 
-**Aktivní** událost je jakékoli volání do pořadí, ve kterém víte, že se vám zobrazí výsledek pro zákazníka, a určí se skóre odměny. Toto je výchozí chování.
+**Aktivní** událostí je jakékoli volání do hodnosti, kde víte, že ukážete výsledek zákazníkovi a určíte skóre odměny. Toto je výchozí chování.
 
-**Neaktivní** událost je volání k zařazení, kde si nejste jistí, jestli se uživatel někdy na základě obchodní logiky uvidí doporučenou akci. To vám umožní tuto událost zrušit, takže přizpůsobování není školené s výchozí záměna. Neaktivní události by neměly volat rozhraní API pro odměnu.
+**Neaktivní** událost je volání pořadí, kde si nejste jisti, zda uživatel někdy uvidí doporučenou akci, z důvodu obchodní logiky. To vám umožní zahodit událost, takže Personalizátor není vyškolen s výchozí odměnou. Neaktivní události by neměly volat rozhraní API pro odměňování.
 
-Je důležité, aby studijní smyčka znala skutečný typ události. Neaktivní událost nebude mít volání odměna. Aktivní událost by měla být volána, ale pokud není volání rozhraní API nikdy provedeno, použije se výchozí skóre pro odměňování. Změnit stav události z neaktivní na aktivní, jakmile budete znát, bude mít vliv na uživatelské prostředí.
+Je důležité, aby učení smyčky znát skutečný typ události. Neaktivní událost nebude mít hovor o odměně. Aktivní událost by měla mít volání o odměnu, ale pokud není nikdy uskutečněno volání rozhraní API, použije se výchozí skóre odměny. Změňte stav události z neaktivní na aktivní, jakmile zjistíte, že bude mít vliv na uživatelské prostředí.
 
 ## <a name="typical-active-events-scenario"></a>Scénář typických aktivních událostí
 
-Když vaše aplikace volá rozhraní API pro řazení, dostanete akci, kterou by měla aplikace zobrazit v poli **rewardActionId** .  V takovém případě očekává, že přizpůsobuje volání odměna s skóre odměňování, které má stejné ID události. Skóre odměňování se používá ke školení modelu pro budoucí volání pořadí. Pokud se pro ID události nepřijme žádné volání, použije se výchozí měna. [Výchozí ceny](how-to-settings.md#configure-rewards-for-the-feedback-loop) jsou nastaveny na prostředku přizpůsobeného v Azure Portal.
+Když vaše aplikace volá rozhraní API pořadí, obdržíte akci, kterou by měla aplikace zobrazit v poli **rewardActionId.**  Od tohoto okamžiku personalista očekává volání odměny se skóre odměny, které má stejné id události. Skóre odměny se používá k trénování modelu pro budoucí volání hodnosti. Pokud není přijato žádné volání o odměnu pro id události, použije se výchozí odměna. [Výchozí odměny](how-to-settings.md#configure-rewards-for-the-feedback-loop) se najdou u prostředků personalisty na webu Azure Portal.
 
-## <a name="other-event-type-scenarios"></a>Další scénáře typu události
+## <a name="other-event-type-scenarios"></a>Jiné scénáře typu události
 
-V některých scénářích může aplikace před tím, než bude vědět, zda bude výsledek použit nebo zobrazen uživateli, volat funkci Rank. K tomu může dojít v situacích, kdy například vykreslování stránky propagovaného obsahu přepíše marketingová kampaň. Pokud výsledek volání řazení nebyl nikdy použit a uživatel ho nikdy neviděl, neodešlete odpovídající volání odměna.
+V některých případech aplikace může být nutné volat Rank ještě před ví, pokud výsledek bude použit nebo zobrazen uživateli. K tomu může dojít v situacích, kdy je například vykreslování propagovaného obsahu přepsáno marketingovou kampaní. Pokud nebyl výsledek volání hodnosti nikdy použit a uživatel jej nikdy neviděl, neposílejte odpovídající bonusový hovor.
 
-K těmto scénářům obvykle dochází v následujících případech:
+Obvykle k těmto scénářům dochází, když:
 
-* Předvedete si předvykreslování uživatelského rozhraní, které uživatel může nebo nemusí zobrazit.
-* Vaše aplikace provádí prediktivní přizpůsobení, ve kterém se provádí volání pořadí s malým kontextem v reálném čase a aplikace může nebo nemusí používat výstup.
+* Jste prerendering uživatelskérozhraní, které uživatel může nebo nemusí dostat vidět.
+* Vaše aplikace provádí prediktivní přizpůsobení, ve kterém rank volání jsou prováděny s malým kontextem v reálném čase a aplikace může nebo nemusí používat výstup.
 
-V těchto případech použijte přizpůsobení pro volání pořadí, které vyžaduje, aby událost byla _neaktivní_. Přizpůsobování neočekává pro tuto událost odměňování a nepoužije výchozí odměnu.
+V těchto případech použijte Personalizace k volání pořadí a požádejte událost, aby byla _neaktivní_. Personalizák nebude očekávat odměnu za tuto událost a nebude uplatňovat výchozí odměnu.
 
-Pokud aplikace používá informace z volání pořadí, použijte později v obchodní logice, stačí událost _aktivovat_ . Jakmile je událost aktivní, přizpůsobování očekává nějakou odměnu události. Pokud neprovede žádné explicitní volání rozhraní API pro odměnu, přizpůsobuje se výchozí odměna.
+Později v obchodní logiky, pokud aplikace používá informace z Rank volání, stačí _aktivovat_ událost. Jakmile je událost aktivní, personalizátka očekává odměnu za událost. Pokud není provedeno žádné explicitní volání do rozhraní Reward API, personalizátor použije výchozí odměnu.
 
 ## <a name="inactive-events"></a>Neaktivní události
 
-Chcete-li zakázat školení pro událost, zakažte pořadí volání pomocí `learningEnabled = False`.
+Chcete-li zakázat školení pro `learningEnabled = False`událost, volejte Rank pomocí .
 
-V případě neaktivní události se učení implicitně aktivuje, pokud odešlete nějakou příležitost pro ID události nebo zavoláte rozhraní API pro `activate` pro daný ID události.
+Pro neaktivní událost učení je implicitně aktivován, pokud odešlete odměnu za eventId nebo volání `activate` rozhraní API pro tuto eventId.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte [se určit skóre a jaká data zvážit](concept-rewards.md).
+* Přečtěte [si, jak určit skóre odměny a jaká data je třeba vzít v úvahu](concept-rewards.md).

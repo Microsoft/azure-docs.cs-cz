@@ -1,7 +1,7 @@
 ---
-title: Popisy obrázků – Počítačové zpracování obrazu
+title: Popisy obrázků - Počítačové vidění
 titleSuffix: Azure Cognitive Services
-description: Koncepty související s funkcí Popis obrázku rozhraní API pro počítačové zpracování obrazu.
+description: Koncepty související s funkcí popisu obrázku rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: dcf61c642a9f8ad7aa68d72736ce8fdb0e9a6e3c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7bf95a2b49608ef1f031a3b443db92b42cdae624
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945267"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244711"
 ---
-# <a name="describe-images-with-human-readable-language"></a>Popište Image pomocí uživatelsky čitelného jazyka.
+# <a name="describe-images-with-human-readable-language"></a>Popis obrázků pomocí jazyka čitelného pro člověka
 
-Počítačové zpracování obrazu může analyzovat obrázek a generovat větu umožňující čtení, která popisuje jeho obsah. Algoritmus ve skutečnosti vrátí několik popisů založených na různých vizuálních funkcích a každý popis je dán skóre spolehlivosti. Konečný výstup je seznam popisů seřazených od nejvyšších po nejnižší spolehlivost.
+Počítačové vidění může analyzovat obraz a generovat lidsky čitelnou větu, která popisuje jeho obsah. Algoritmus ve skutečnosti vrátí několik popisů na základě různých vizuálních funkcí a každý popis je uveden skóre spolehlivosti. Konečný výstup je seznam popisů seřazených od nejvyšší po nejnižší spolehlivost.
 
 ## <a name="image-description-example"></a>Příklad popisu obrázku
 
-Následující odpověď JSON ukazuje, co Počítačové zpracování obrazu vrátí, když popisují příklad obrázku na základě jeho vizuálních funkcí.
+Následující odpověď JSON ilustruje, co počítačové vidění vrátí při popisu ukázkový obrázek na základě jeho vizuální funkce.
 
-![Černý a bílý obrázek budov v Manhattan](./Images/bw_buildings.png)
+![Černobílý obraz budov na Manhattanu](./Images/bw_buildings.png)
 
 ```json
 {
@@ -56,6 +56,13 @@ Následující odpověď JSON ukazuje, co Počítačové zpracování obrazu vr�
 }
 ```
 
+## <a name="use-the-api"></a>Použití rozhraní API
+
+Funkce popisu obrázku je součástí rozhraní Analyzovat rozhraní API [pro obrázky.](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) Toto rozhraní API můžete volat prostřednictvím nativní sady SDK nebo prostřednictvím volání REST. Zahrnout `Description` do parametru dotazu **visualFeatures.** Potom, když získáte úplnou odpověď JSON, jednoduše analyzovat řetězec `"description"` pro obsah oddílu.
+
+* [Úvodní příručka: Počítačové zpracování počítače .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Úvodní příručka: Analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)
+
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se koncepty [označování imagí](concept-tagging-images.md) a [kategorizace imagí](concept-categorizing-images.md).
+Naučte se související koncepty [označování obrázků](concept-tagging-images.md) a [kategorizace obrázků](concept-categorizing-images.md).

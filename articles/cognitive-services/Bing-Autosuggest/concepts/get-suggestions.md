@@ -1,7 +1,7 @@
 ---
-title: Navrhněte hledané výrazy pomocí rozhraní API pro automatické návrhy Bingu
+title: Navrhování hledaných výrazů pomocí rozhraní API pro automatické návrhy bingu
 titleSuffix: Azure Cognitive Services
-description: Tento článek popisuje pojem navrhování výrazů pro dotazování pomocí rozhraní API pro automatické návrhy Bingu a dopad délky dotazů na relevanci.
+description: Tento článek popisuje koncept navrhování termíny dotazu pomocí Bing Autosuggest ROZHRANÍ API a dopad délky dotazu na relevanci.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 060dbd29ee4ddb78e8ae9b2ed4e7814da3c4eebf
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072888"
 ---
 # <a name="suggesting-query-terms"></a>Návrhy termínů dotazu
 
-Obvykle byste vyvolali rozhraní API pro automatické návrhy Bingu pokaždé, když uživatel do vyhledávacího pole aplikace zadá nový znak. Úplnost řetězce dotazu má vliv na relevanci navrhovaných termínů dotazu, které rozhraní API vrátí. Čím je řetězec dotazu úplnější, tím relevantnější seznam navrhovaných termínů dotazů se zobrazí. Například návrhy, které může rozhraní API vracet pro `s`, jsou pravděpodobně méně důležité než dotazy, které vrací pro `sailing dinghies`.
+Obvykle byste volat Bing Autosuggest ROZHRANÍ API pokaždé, když uživatel zadá nový znak ve vyhledávacím poli vaší aplikace. Úplnost řetězce dotazu má vliv na relevanci navrhovaných termínů dotazu, které rozhraní API vrátí. Čím je řetězec dotazu úplnější, tím relevantnější seznam navrhovaných termínů dotazů se zobrazí. Například návrhy, které rozhraní `s` API může vrátit pro jsou pravděpodobně méně `sailing dinghies`relevantní než dotazy, které vrátí pro .
 
 ## <a name="example-request"></a>Příklad požadavku
 
@@ -45,11 +45,11 @@ Následující odpověď obsahuje seznam objektů [SearchAction](https://docs.mi
 }, ...
 ```
 
-## <a name="using-suggested-query-terms"></a>Použití výrazů navrhovaných pro dotazování
+## <a name="using-suggested-query-terms"></a>Použití doporučených termínů dotazu
 
 Každý návrh obsahuje pole `displayText`, `query` a `url`. Pole `displayText` obsahuje navrhovaný dotaz, který můžete použít k vyplnění rozevíracího seznamu vašeho vyhledávacího pole. Musíte zobrazit všechny návrhy, které odpověď obsahuje, v uvedeném pořadí.
 
-Následující příklad ukazuje rozevírací vyhledávací pole s navrhovanými výrazy dotazu z rozhraní API pro automatické návrhy Bingu.
+Následující příklad ukazuje rozevírací vyhledávací pole s navrženými termíny dotazu z rozhraní API automatického návrhu Bingu.
 
 ![Rozevírací seznam vyhledávacího pole s automatickými návrhy](../media/cognitive-services-bing-autosuggest-api/bing-autosuggest-drop-down-list.PNG)
 

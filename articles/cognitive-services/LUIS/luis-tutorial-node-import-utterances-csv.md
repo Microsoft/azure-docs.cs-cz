@@ -1,7 +1,7 @@
 ---
-title: Import projevy pomocí Node. js – LUIS
+title: Import projevů pomocí souboru Node.js – LUIS
 titleSuffix: Azure Cognitive Services
-description: Naučte se vytvářet aplikace LUIS programově z existujících dat ve formátu CSV pomocí rozhraní API pro vytváření LUIS.
+description: Zjistěte, jak programově vytvořit aplikaci LUIS z již existujících dat ve formátu CSV pomocí rozhraní API pro vytváření luis.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,58 +12,58 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: diberry
 ms.openlocfilehash: ef5f6967b7ad9500672d00d93dd8acaca99e5948
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73499469"
 ---
-# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Programové vytvoření aplikace v LUIS pomocí Node. js
+# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Vytvoření aplikace LUIS programově pomocí souboru Node.js
 
-LUIS poskytuje programové rozhraní API, které provádí všechny weby [Luis](luis-reference-regions.md) . To může ušetřit čas i v případě, že máte již existující data a je rychlejší vytvořit aplikaci LUIS programově, než zadáním informací ručně. 
+Služba LUIS poskytuje programové rozhraní API, které provádí vše, co dělá web [LUIS.](luis-reference-regions.md) To může ušetřit čas, pokud máte již existující data a bylo by rychlejší vytvořit aplikaci LUIS programově než zadáním informací ručně. 
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Přihlaste se k webu [Luis](luis-reference-regions.md) a vyhledejte svůj [klíč pro vytváření obsahu](luis-concept-keys.md#authoring-key) v nastavení účtu. Tento klíč použijete k volání rozhraní API pro vytváření obsahu.
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-* Tento článek začíná na CSV pro soubory protokolu hypotetické společnosti pro požadavky uživatelů. Stáhněte si ho [sem](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
-* Nainstalujte nejnovější Node. js pomocí NPM. Stáhněte [si ho odsud.](https://nodejs.org/en/download/)
-* **[Doporučeno]** Visual Studio Code pro IntelliSense a ladění, Stáhněte si ho [odsud zdarma](https://code.visualstudio.com/) .
+* Přihlaste se k webu [LUIS](luis-reference-regions.md) a vyhledejte [svůj klíč pro vytváření](luis-concept-keys.md#authoring-key) v nastavení účtu. Tento klíč slouží k volání vytváření api.
+* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+* Tento článek začíná csv pro hypotetické soubory protokolu společnosti uživatelských požadavků. Stáhněte si ji [zde](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
+* Nainstalujte nejnovější soubor Node.js pomocí služby NPM. Stáhněte si ji [zde](https://nodejs.org/en/download/).
+* **[Doporučeno]** Visual Studio Kód pro IntelliSense a ladění, stáhněte si jej [zde](https://code.visualstudio.com/) zdarma.
 
-Veškerý kód v tomto článku je k dispozici v [úložišti Azure-samples Language Understanding GitHubu](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv). 
+Všechny kód v tomto článku je k dispozici na [azure ukázky jazyk porozumění GitHub úložiště](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv). 
 
-## <a name="map-preexisting-data-to-intents-and-entities"></a>Mapování stávajících dat k záměrům a entitám
-I v případě, že máte systém, který se nevytvořil s LUIS, pokud obsahuje textová data, která se mapují na různé věci, které chtějí uživatelé udělat, možná budete moct vytvořit mapování z existujících kategorií vstupu uživatele na záměry v LUIS. Pokud můžete identifikovat důležitá slova nebo fráze v tom, co uživatelé uvedli, můžou být tato slova namapována na entity.
+## <a name="map-preexisting-data-to-intents-and-entities"></a>Mapování již existujících dat na záměry a entity
+I v případě, že máte systém, který nebyl vytvořen s LUIS v mysli, pokud obsahuje textová data, která mapuje na různé věci, které uživatelé chtějí dělat, můžete přijít s mapování z existujících kategorií vstupu uživatele na záměry v LUIS. Pokud můžete identifikovat důležitá slova nebo fráze v tom, co uživatelé řekli, tato slova mohou mapovat na entity.
 
-Otevřete soubor [`IoT.csv`](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv) . Obsahuje protokol uživatelských dotazů na hypotetickou službu pro domácnost, včetně toho, jak byly zařazeny do kategorií, podle toho, co uživatel uvedli, a některých sloupců s užitečnými informacemi z nich. 
+Otevřete [`IoT.csv`](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv) soubor. Obsahuje protokol uživatelských dotazů na hypotetickou službu domácí automatizace, včetně toho, jak byly rozděleny do kategorií, co uživatel řekl, a některé sloupce s užitečnými informacemi vytaženými z nich. 
 
-![Soubor CSV s již existujícími daty](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
+![CSV soubor již existujících dat](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
-Vidíte, že sloupec **RequestType** by mohl být záměrem a sloupec **Request** zobrazuje příklad utterance. Ostatní pole mohou být entity, pokud se vyskytují v utterance. Vzhledem k tomu, že existují záměry, entity a příklady projevy, máte požadavky na jednoduchou ukázkovou aplikaci.
+Uvidíte, že **RequestType** sloupec může být záměry a **Request** sloupec zobrazuje příklad utterance. Ostatní pole mohou být entity, pokud k nim dojde v utterance. Vzhledem k tomu, že existují záměry, entity a příklad projevy, máte požadavky na jednoduché, ukázkové aplikace.
 
-## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>Postup generování aplikace LUIS z jiných než LUIS dat
-Vytvoření nové aplikace LUIS ze souboru CSV:
+## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>Postup generování aplikace LUIS z dat, která nejsou luis
+Jak generovat novou aplikaci LUIS ze souboru CSV:
 
 * Analyzovat data ze souboru CSV:
-    * Převeďte na formát, který můžete nahrát na LUIS pomocí rozhraní API pro vytváření obsahu. 
-    * Z analyzovaných dat Shromážděte informace o záměrech a entitách. 
-* Vytvářená volání rozhraní API:
+    * Převeďte do formátu, který můžete odeslat do služby LUIS pomocí rozhraní API pro vytváření. 
+    * Z analyzovaných dat shromážděte informace o záměrech a entitách. 
+* Vytváření volání rozhraní API pro:
     * Vytvořte aplikaci.
-    * Přidejte záměry a entity shromážděné z analyzovaných dat. 
-    * Po vytvoření aplikace LUIS můžete přidat příklad projevy z analyzovaných dat. 
+    * Přidejte záměry a entity, které byly shromážděny z analyzovaných dat. 
+    * Po vytvoření aplikace LUIS můžete přidat ukázkové projevy z analyzovaných dat. 
 
-Tento tok programu vidíte v poslední části souboru `index.js`. Zkopírujte nebo [Stáhněte](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js) tento kód a uložte ho v `index.js`.
+Tento tok programu můžete vidět v `index.js` poslední části souboru. Zkopírujte nebo [stáhněte](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js) tento `index.js`kód a uložte jej do .
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
 
-## <a name="parse-the-csv"></a>Analyzovat sdílený svazek clusteru
+## <a name="parse-the-csv"></a>Analyzovat CSV
 
-Položky sloupců obsahující projevy ve sdíleném svazku clusteru musí být analyzovány do formátu JSON, který LUIS dokáže pochopit. Tento formát JSON musí obsahovat pole `intentName`, které určuje záměr pro utterance. Musí obsahovat také pole `entityLabels`, které může být prázdné, pokud utterance žádné entity. 
+Položky sloupce, které obsahují projevy v CSV musí být analyzovány do formátu JSON, který luis může pochopit. Tento formát JSON `intentName` musí obsahovat pole, které identifikuje záměr utterance. Musí také obsahovat `entityLabels` pole, které může být prázdné, pokud neexistují žádné entity v utterance. 
 
-Například položka pro "zapnout světla" namapuje na tento kód JSON:
+Například položka pro "Zapnout světla" mapuje na tento JSON:
 
 ```json
         {
@@ -84,33 +84,33 @@ Například položka pro "zapnout světla" namapuje na tento kód JSON:
         }
 ```
 
-V tomto příkladu `intentName` pochází od požadavku uživatele v záhlaví sloupce **žádosti** v souboru CSV a `entityName` pocházejí z dalších sloupců s informacemi o klíčích. Pokud je například položka pro **operaci** nebo **zařízení**a k tomuto řetězci dojde také v samotné žádosti, může být označena jako entita. Následující kód demonstruje tento proces analýzy. Můžete ho zkopírovat nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js) a uložit ho do `_parse.js`.
+V tomto příkladu `intentName` pochází z požadavku uživatele pod **záhlavím sloupec Požadavek** v souboru CSV a `entityName` pochází z ostatních sloupců s klíčovými informacemi. Například pokud je položka pro **operace** nebo **zařízení**a tento řetězec se vyskytuje také ve skutečném požadavku, pak může být označen jako entita. Následující kód ukazuje tento proces analýzy. Můžete jej [download](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js) zkopírovat nebo stáhnout `_parse.js`a uložit do .
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
 
 
 ## <a name="create-the-luis-app"></a>Vytvoření aplikace LUIS
-Jakmile se data analyzují do formátu JSON, přidejte je do aplikace LUIS. Následující kód vytvoří aplikaci LUIS. Zkopírujte ho nebo [si ho stáhněte](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_create.js) a uložte ho do `_create.js`.
+Po analýzy dat do JSON, přidejte je do aplikace LUIS. Následující kód vytvoří aplikaci LUIS. Zkopírujte nebo [stáhněte](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_create.js) a `_create.js`uložte jej do .
 
    [!code-javascript[Node.js code for creating a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/_create.js)]
 
 
 ## <a name="add-intents"></a>Přidání záměrů
-Jakmile máte aplikaci, je nutné k ní přizáměrit. Následující kód vytvoří aplikaci LUIS. Zkopírujte ho nebo [si ho stáhněte](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_intents.js) a uložte ho do `_intents.js`.
+Jakmile máte aplikaci, musíte ji vnímat. Následující kód vytvoří aplikaci LUIS. Zkopírujte nebo [stáhněte](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_intents.js) a `_intents.js`uložte jej do .
 
    [!code-javascript[Node.js code for creating a series of intents](~/samples-luis/examples/build-app-programmatically-csv/_intents.js)]
 
 
 ## <a name="add-entities"></a>Přidání entit
-Následující kód přidá entity do aplikace LUIS. Zkopírujte ho nebo [si ho stáhněte](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js) a uložte ho do `_entities.js`.
+Následující kód přidá entity do aplikace LUIS. Zkopírujte nebo [stáhněte](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js) a `_entities.js`uložte jej do .
 
    [!code-javascript[Node.js code for creating entities](~/samples-luis/examples/build-app-programmatically-csv/_entities.js)]
    
 
 
 ## <a name="add-utterances"></a>Přidání projevů
-Po definování entit a záměrů v aplikaci LUIS můžete přidat projevy. Následující kód používá rozhraní [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) API, které umožňuje přidat až 100 projevy v čase.  Zkopírujte ho nebo [si ho stáhněte](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js) a uložte ho do `_upload.js`.
+Jakmile entity a záměry byly definovány v aplikaci LUIS, můžete přidat projevy. Následující kód používá [rozhraní API Utterances_AddBatch,](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) které umožňuje přidat až 100 projevy najednou.  Zkopírujte nebo [stáhněte](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js) a `_upload.js`uložte jej do .
 
    [!code-javascript[Node.js code for adding utterances](~/samples-luis/examples/build-app-programmatically-csv/_upload.js)]
 
@@ -118,17 +118,17 @@ Po definování entit a záměrů v aplikaci LUIS můžete přidat projevy. Nás
 ## <a name="run-the-code"></a>Spuštění kódu
 
 
-### <a name="install-nodejs-dependencies"></a>Nainstalovat závislosti Node. js
-Nainstalujte závislosti Node. js z NPM do terminálu nebo příkazového řádku.
+### <a name="install-nodejs-dependencies"></a>Instalace závislostí node.js
+Nainstalujte závislosti Node.js z npm do terminálu/příkazového řádku.
 
 ```console
 > npm install
 ```
 
-### <a name="change-configuration-settings"></a>Změnit nastavení konfigurace
-Aby bylo možné tuto aplikaci používat, je nutné změnit hodnoty v souboru index. js na svůj vlastní klíč koncového bodu a zadat název, který má aplikace mít. Můžete také nastavit jazykovou verzi aplikace nebo změnit číslo verze.
+### <a name="change-configuration-settings"></a>Změna nastavení konfigurace
+Chcete-li použít tuto aplikaci, musíte změnit hodnoty v souboru index.js na vlastní klíč koncového bodu a zadat název, který má mít aplikace. Můžete také nastavit jazykovou verzi aplikace nebo změnit číslo verze.
 
-Otevřete soubor index. js a změňte hodnoty v horní části souboru.
+Otevřete soubor index.js a změňte tyto hodnoty v horní části souboru.
 
 
 ```javascript
@@ -140,20 +140,20 @@ const LUIS_versionId = "0.1";
 ```
 
 ### <a name="run-the-script"></a>Spuštění skriptu
-Spusťte skript z terminálu nebo příkazového řádku s Node. js.
+Spusťte skript z terminálu/příkazového řádku pomocí souboru Node.js.
 
 ```console
 > node index.js
 ```
 
-nebo
+– nebo –
 
 ```console
 > npm start
 ```
 
 ### <a name="application-progress"></a>Průběh aplikace
-Když je aplikace spuštěná, zobrazí se v příkazovém řádku průběh. Výstup příkazového řádku zahrnuje formát odpovědí z LUIS.
+Při spuštění aplikace příkazový řádek zobrazuje průběh. Výstup příkazového řádku obsahuje formát odpovědí z LUIS.
 
 ```console
 > node index.js
@@ -181,20 +181,20 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>Otevření aplikace LUIS
-Až se skript dokončí, můžete se přihlásit k [Luis](luis-reference-regions.md) a zobrazit aplikaci Luis, kterou jste vytvořili v části **Moje aplikace**. Měli byste být schopni zobrazit projevy, které jste přidali pod **TurnOn**, **TurnOff**a **žádné** záměry.
+Po dokončení skriptu se můžete přihlásit ke [službě LUIS](luis-reference-regions.md) a zobrazit aplikaci LUIS, kterou jste vytvořili v části **Moje aplikace**. Měli byste být schopni zobrazit projevy, které jste přidali pod **TurnOn**, **TurnOff**a **None** záměry.
 
-![Záměr TurnOn](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
+![Záměr turnonu](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Testování a výuka aplikace na webu LUIS](luis-interactive-test.md)
+> [Testování a trénování aplikace na webu LUIS](luis-interactive-test.md)
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
-Tato ukázková aplikace používá následující LUIS rozhraní API:
-- [vytvořit aplikaci](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
-- [Přidat záměry](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
-- [Přidat entity](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
-- [Přidat projevy](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)
+Tato ukázková aplikace používá následující pravidla API LUIS:
+- [vytvoření aplikace](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
+- [přidání záměrů](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
+- [přidání entit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
+- [přidání promluv](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)

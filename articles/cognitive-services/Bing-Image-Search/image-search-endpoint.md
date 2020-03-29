@@ -1,7 +1,7 @@
 ---
-title: Koncové body pro rozhraní API Bingu pro vyhledávání obrázků
+title: Koncové body pro rozhraní API pro vyhledávání obrázků Bingu
 titleSuffix: Azure Cognitive Services
-description: Rozhraní API pro Vyhledávání obrázků obsahuje tři koncové body. Koncový bod 1 vrací obrázky z webu. Koncový bod 2 vrátí ImageInsights. Koncový bod 3 vrátí obrázky pro vývoj.
+description: Rozhraní API pro vyhledávání obrázků obsahuje tři koncové body. Koncový bod 1 vrací obrázky z webu. Koncový bod 2 vrátí ImageInsights. Koncový bod 3 vrátí trendy obrázky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,47 +11,47 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 38416f6a580d270aefc287de0c198bd418a44db9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072628"
 ---
-# <a name="endpoints-for-the-bing-image-search-api"></a>Koncové body pro rozhraní API Bingu pro vyhledávání obrázků
+# <a name="endpoints-for-the-bing-image-search-api"></a>Koncové body pro rozhraní API pro vyhledávání obrázků Bingu
 
-**Rozhraní API pro vyhledávání obrázků** obsahuje tři koncové body.  Koncový bod 1 vrátí obrázky z webu na základě dotazu. Koncový bod 2 vrátí [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse).  Koncový bod 3 vrátí obrázky pro vývoj.
+Rozhraní **API pro vyhledávání obrázků** obsahuje tři koncové body.  Koncový bod 1 vrátí obrázky z webu na základě dotazu. Koncový bod 2 vrátí [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse).  Koncový bod 3 vrátí trendy obrázky.
 
 ## <a name="endpoints"></a>Koncové body
 
-Pokud chcete získat výsledky obrázků pomocí rozhraní API Bingu, odešlete žádost jednomu z následujících koncových bodů. K definování dalších specifikací použijte záhlaví a parametry URL.
+Chcete-li získat výsledky obrazu pomocí rozhraní API Bingu, odešlete požadavek na jeden z následujících koncových bodů. Pomocí záhlaví a parametrů adresy URL definujte další specifikace.
 
-**Koncový bod 1:** Vrátí obrázky, které jsou relevantní pro vyhledávací dotaz uživatele definovaný `?q=""`.
+**Koncový bod 1:** Vrátí obrázky, které jsou relevantní pro `?q=""`vyhledávací dotaz uživatele definované .
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search
 ```
 
-**Koncový bod 2:** Vrátí přehledy o obrázku pomocí `GET` nebo `POST`.
+**Koncový bod 2:** Vrátí přehledy o obrázku pomocí jednoho `GET` nebo . `POST`
 ```
  GET or POST https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
-Požadavek GET vrátí přehled o obrázku, jako jsou například webové stránky, které obsahují obrázek. Zahrňte parametr [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) s požadavkem `GET`.
+Požadavek GET vrací přehledy o obrázku, jako jsou webové stránky, které obsahují obrázek. Zahrňte parametr `GET` [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) s požadavkem.
 
-Nebo můžete zahrnout binární obrázek do těla `POST` žádosti a nastavit parametr [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) na hodnotu `RecognizedEntities`. Vrátí [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) , který se použije jako parametr v následném požadavku `GET`, který vrátí informace o lidech v imagi.  Nastavte `modules` na `All`, abyste získali všechny přehledy, s výjimkou `RecognizedEntities` ve výsledcích `POST`, aniž by bylo nutné další volání pomocí `insightsToken`.
+Nebo můžete zahrnout binární obrázek v `POST` těle požadavku a nastavit `RecognizedEntities`parametr [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) na . Tím se vrátí [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) použít jako parametr `GET` v následné žádosti, která vrátí informace o lidech v bitové kopii.  Nastavte `modules` `All` pro získání všech `RecognizedEntities` přehledů, s `POST` výjimkou výsledků bez `insightsToken`dalšího volání pomocí .
 
 
-**Koncový bod 3:** Vrátí obrázky, které jsou v trendech, na základě požadavků na hledání provedených ostatními. Obrázky jsou rozdělené do různých kategorií, například podle zajímavosti lidí nebo událostí.
+**Koncový bod 3:** Vrátí obrázky, které jsou trendy na základě požadavků na vyhledávání jiných uživatelů. Obrázky jsou rozděleny do různých kategorií, například na základě pozoruhodných lidí nebo událostí.
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending
 ```
 
-Seznam trhů, které podporují obrázky v trendech, najdete v tématu věnovaném [trendům obrázků](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/trending-images).
+Seznam trhů, které podporují obrázky trendů, naleznete [v tématu Trendy obrázky](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/trending-images).
 
-Podrobnosti o hlavičkách, parametrech, kódech trhu, objektech odpovědí, chybách atd. naleznete v tématu [rozhraní API Bingu pro vyhledávání obrázků v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) reference.
+Podrobnosti o záhlavích, parametrech, kódech trhu, objektech odpovědí, chybách atd., naleznete v odkazu rozhraní [API pro vyhledávání obrázků Bingu v7.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
 ## <a name="response-json"></a>Odpověď JSON
-Odpověď na požadavek hledání obrázku obsahuje výsledky jako objekty JSON. Příklady analýzy výsledků najdete v [kurzu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app) a ve [zdrojovém kódu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app-source).
+Odpověď na požadavek hledání obrázku zahrnuje výsledky jako objekty JSON. Příklady analýzy výsledků naleznete v [kurzu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app) a [zdrojový kód](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app-source).
 
 ## <a name="next-steps"></a>Další kroky
-Rozhraní API **Bing** podporují akce hledání, které vracejí výsledky podle jejich typu. Všechny koncové body hledání vrátí výsledky jako objekty odezvy JSON.  Všechny koncové body podporují dotazy, které vracejí konkrétní jazyk a umístění podle délky, zeměpisné šířky a poloměru hledání.
+Bing **Bing** API podporují akce vyhledávání, které vracejí výsledky podle jejich typu.Všechny koncové body hledání vrátí výsledky jako objekty odezvy JSON. Všechny koncové body podporují dotazy, které vracejí určitý jazyk nebo umístění podle zeměpisné délky, šířky a poloměru hledání.
 
-Úplné informace o parametrech podporovaných každým koncovým bodem naleznete na referenčních stránkách pro každý typ.
-Příklady základních požadavků využívajících rozhraní API pro hledání obrázků najdete v tématu [vyhledávání obrázků rychlé zahájení](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/search-the-web)práce.
+Úplné informace o parametrech podporovaných jednotlivými koncovými body naleznete v referenčních stránkách pro každý typ.
+Příklady základních požadavků pomocí rozhraní API pro vyhledávání obrázků naleznete v [tématu Rychlé spuštění hledání obrázků](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/search-the-web).

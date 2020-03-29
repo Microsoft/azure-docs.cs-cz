@@ -1,56 +1,56 @@
 ---
-title: Konfigurace služby – QnA Maker
-description: Zjistěte, jak a kde nakonfigurovat prostředky.
+title: Konfigurace služby - QnA Maker
+description: Zjistěte, jak a kde konfigurovat prostředky.
 ms.topic: reference
 ms.date: 02/21/2020
 ms.openlocfilehash: 8ef6fecbfeb119d0c68ec5bc3bbc90ec449dbb7d
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651858"
 ---
 # <a name="service-configuration"></a>Konfigurace služby
 
-QnA Maker využívá několik prostředků Azure (služby) včetně Kognitivní hledání, App Service, App Service plánů a Application Insights.
+QnA Maker používá několik prostředků Azure (služeb), včetně kognitivního vyhledávání, služby App Service, plánu služby App Service a přehledů aplikací.
 
-Všechna přizpůsobení pro tato nastavení podporovaná QnA Maker jsou uvedená níže.
+Všechna nastavení těchto nastavení podporovaná qnA makerem jsou uvedena níže.
 
 ## <a name="app-service"></a>App Service
 
-QnA Maker používá App Service k poskytnutí modulu runtime dotazu používaného [rozhraním API generateAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer).
+QnA Maker používá službu App Service k poskytování za běhu dotazu používaného [rozhraním GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer).
 
 
-Tato nastavení jsou k dispozici v Azure Portal pro App Service. Nastavení jsou dostupná, když vyberete **Nastavení**a pak na **Konfigurace**.
+Tato nastavení jsou k dispozici na webu Azure Portal pro službu App Service. Nastavení jsou k dispozici výběrem **nastavení**a potom **konfigurace**.
 
-Jednotlivá nastavení můžete nastavit buď prostřednictvím seznamu nastavení aplikace, nebo můžete upravit několik nastavení tak, že vyberete **Rozšířené úpravy**.
+Jednotlivá nastavení můžete nastavit buď prostřednictvím seznamu Nastavení aplikace, nebo můžete změnit několik nastavení výběrem **možnosti Upřesnit úpravy**.
 
 |Prostředek|Nastavení|
 |--|--|
-|AzureSearchAdminKey|Kognitivní hledání – používá se pro úložiště a #1 pro QnA sadu|
-|AzureSearchName|Kognitivní hledání – používá se pro úložiště a #1 pro QnA sadu|
-|DefaultAnswer|Text odpovědi, pokud se nenajde žádná shoda|
-|UserAppInsightsAppId|Protokol a telemetrie chatu|
-|UserAppInsightsKey|Protokol a telemetrie chatu|
-|UserAppInsightsName|Protokol a telemetrie chatu|
+|Klíč AzureSearchAdmin|Kognitivní vyhledávání - používá se pro úložiště sady QnA a ranker #1|
+|AzureSearchName|Kognitivní vyhledávání - používá se pro úložiště sady QnA a ranker #1|
+|Výchozí odpověď|Text odpovědi, pokud není nalezena žádná shoda|
+|UživatelAppInsightsId|Protokol chatu a telemetrie|
+|Klíč UserAppInsights|Protokol chatu a telemetrie|
+|Jméno UserAppInsightsName|Protokol chatu a telemetrie|
 
-Naučte [se, jak přidat službu kognitivní hledání](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) do vaší služby.
+Přečtěte [si, jak do služby přidat změnu služby Kognitivní vyhledávání.](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource)
 
-Až provedete změny, budete muset službu **restartovat** ze stránky **Přehled** Azure Portal.
+Po dokončení provádění změn je potřeba **službu restartovat** na stránce **Přehled** na webu Azure Portal.
 
 ## <a name="qna-maker-service"></a>Služba QnA Maker
 
-Služba QnA Maker poskytuje konfiguraci pro tyto uživatele, aby spolupracovali na jediné službě QnA Maker a všech svých základech znalostní báze.
+Služba QnA Maker poskytuje konfiguraci pro následující uživatele ke spolupráci na jedné službě QnA Maker a všech jejích znalostních bází.
 
-Naučte se, jak do služby [Přidat spolupracovníky](./how-to/collaborate-knowledge-base.md) .
+Přečtěte si, jak ke službě [přidat spolupracovníky.](./how-to/collaborate-knowledge-base.md)
 
 ## <a name="application-insights"></a>Application Insights
 
-Application Insights nemá žádná konfigurační nastavení specifická pro QnA Maker.
+Application Insights nemá žádné nastavení konfigurace specifické pro QnA Maker.
 
 ## <a name="app-service-plan"></a>Plán služby App Service
 
-Plán App Service nemá žádná nastavení konfigurace specifická pro QnA Maker.
+Plán služby App Service nemá žádné nastavení konfigurace specifické pro QnA Maker.
 
 ## <a name="next-steps"></a>Další kroky
 

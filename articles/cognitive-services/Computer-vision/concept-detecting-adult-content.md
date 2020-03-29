@@ -1,7 +1,7 @@
 ---
-title: Dospělý, pikantní, gorie obsahu – Počítačové zpracování obrazu
+title: Dospělý, pikantní, krvavý obsah - Počítačové vidění
 titleSuffix: Azure Cognitive Services
-description: Koncepty týkající se rozpoznávání obsahu pro dospělé v obrázcích pomocí rozhraní Počítačové zpracování obrazu APi.
+description: Koncepty týkající se detekce obsahu pro dospělé v obrázcích pomocí počítače Vision APi.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,30 +12,30 @@ ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71718518"
 ---
-# <a name="detect-adult-content"></a>Zjistit obsah pro dospělé
+# <a name="detect-adult-content"></a>Detekce obsahu pro dospělé
 
-Počítačové zpracování obrazu dokáže detekovat obsah pro dospělé v obrázcích, aby vývojáři mohli omezit zobrazení těchto imagí v softwaru. Příznaky obsahu jsou aplikovány se skóre mezi nulou a jedním, aby vývojáři mohli interpretovat výsledky podle jejich vlastních předvoleb.
+Počítačové vidění dokáže detekovat materiál pro dospělé na obrázcích, takže vývojáři mohou omezit zobrazování těchto obrázků ve svém softwaru. Příznaky obsahu jsou použity se skóre mezi nulou a jedním, takže vývojáři mohou interpretovat výsledky podle svých vlastních preferencí.
 
 > [!NOTE]
-> Mnohé z těchto funkcí nabízí služba [Azure Content moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) . V této Alternative najdete řešení pro přísnější scénáře Moderování obsahu, jako je například moderování textu a pracovní postupy pro lidské kontroly.
+> Většinu těchto funkcí nabízí služba [Azure Content Moderator.](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) Tato alternativa najdete v této alternativě, kde najdete řešení přísnějších scénářů moderování obsahu, jako je moderování textu a pracovní postupy lidské kontroly.
 
-## <a name="content-flag-definitions"></a>Definice příznaků obsahu
+## <a name="content-flag-definitions"></a>Definice příznaku obsahu
 
-V rámci klasifikace "dospělý" je několik různých kategorií:
+V rámci klasifikace "dospělých" je několik různých kategorií:
 
-- Obrázky **pro dospělé** se definují jako ty, které jsou výslovně pohlavní v podstatě a často vycházejí z nahoty a pohlavního chování.
-- **Pikantní** obrázky jsou definovány jako obrázky, které jsou pohlavní sugestivní v podstatě, a často obsahují méně zřejmý sexuální obsah než obrázky označené jako **dospělý**.
-- **Gorie** obrázky jsou definovány jako ty, které vizuálně Gore.
+- **Obrázky pro dospělé** jsou definovány jako ty, které jsou výslovně sexuální povahy a často zobrazují nahotu a sexuální akty.
+- Pikantní obrázky jsou definovány jako **obrázky,** které jsou sexuálně sugestivní povahy a často obsahují méně sexuálně explicitní obsah než obrázky označené jako **dospělý**.
+- Krvavé obrazy jsou **definovány** jako ty, které zobrazují gore.
 
 ## <a name="use-the-api"></a>Použití rozhraní API
 
-Obsah pro dospělé můžete detekovat pomocí rozhraní API pro [analýzu imagí](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Když přidáte hodnotu `Adult` do parametru dotazu **visualFeatures** , vrátí rozhraní API tři logické vlastnosti&mdash;`isAdultContent`, `isRacyContent`a `isGoryContent`&mdash;ve své odpovědi JSON. Metoda také vrátí odpovídající vlastnosti&mdash;`adultScore`, `racyScore`a `goreScore`&mdash;který představuje hodnocení spolehlivosti mezi nulou a jednou pro každou příslušnou kategorii.
+Obsah pro dospělé můžete zjistit pomocí [rozhraní Analyzovat rozhraní API pro obrázky.](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) Když přidáte hodnotu `Adult` parametru dotazu **visualFeatures,** rozhraní API&mdash;`isAdultContent` `isRacyContent`vrátí `isGoryContent` &mdash;tři logické vlastnosti a v odpovědi JSON. Metoda také vrátí&mdash;`adultScore`odpovídající `racyScore`vlastnosti , a `goreScore` &mdash;které představují skóre spolehlivosti mezi nulou a jednou pro každou příslušnou kategorii.
 
-- [Rychlý Start: analýza obrázku (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
-- [Rychlý Start: analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)
+- [Úvodní příručka: Analýza bitové kopie (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+- [Úvodní příručka: Analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)

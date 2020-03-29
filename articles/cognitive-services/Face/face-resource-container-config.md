@@ -1,7 +1,7 @@
 ---
-title: Konfigurace kontejnerů – Face
+title: Konfigurace kontejnerů – plocha
 titleSuffix: Azure Cognitive Services
-description: Prostředí modulu runtime kontejneru obličeje je konfigurováno pomocí `docker run`ch argumentů příkazu. K dispozici jsou požadovaná i volitelná nastavení.
+description: Prostředí runtime kontejneru Plochy `docker run` je konfigurováno pomocí argumentů příkazu. Existují požadovaná i volitelná nastavení.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,101 +12,101 @@ ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
 ms.openlocfilehash: 3c78c9eb85c3a8be236be5c3a24bd877db204b6c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76167983"
 ---
-# <a name="configure-face-docker-containers"></a>Konfigurace kontejnerů Docker obličeje
+# <a name="configure-face-docker-containers"></a>Konfigurace kontejnerů Face Dockeru
 
-Prostředí modulu runtime kontejneru **obličeje** je konfigurováno pomocí `docker run`ch argumentů příkazu. Tento kontejner má několik požadovaných nastavení spolu s několika volitelnými nastaveními. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení fakturace jsou specifická pro kontejner. 
+Prostředí runtime kontejneru **Plochy** `docker run` je konfigurováno pomocí argumentů příkazu. Tento kontejner má několik požadovaných nastavení, spolu s několika volitelnými nastaveními. K dispozici je několik [příkladů](#example-docker-run-commands) příkazu. Nastavení specifická pro kontejner jsou nastavení fakturace. 
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně a pro všechny tři je; v opačném případě je nutné zadat platné hodnoty kontejner se nespustí. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](face-how-to-install-containers.md#billing).
+> Nastavení [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting), [`Eula`](#eula-setting) a jsou používány společně a je nutné zadat platné hodnoty pro všechny tři z nich; jinak se kontejner nespustí. Další informace o použití těchto nastavení konfigurace k vytvoření instance kontejneru naleznete v tématu [Fakturace](face-how-to-install-containers.md#billing).
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Je nutné zadat hodnotu pro ApiKey a hodnota musí být platným klíčem pro prostředek _Cognitive Services_ zadaný pro nastavení [`Billing`](#billing-configuration-setting) konfigurace.
+Toto `ApiKey` nastavení určuje klíč prostředků Azure, který slouží ke sledování fakturačních údajů pro kontejner. Je nutné zadat hodnotu apikey a hodnota musí být platný klíč pro [`Billing`](#billing-configuration-setting) prostředek cognitive _services_ zadaný pro nastavení konfigurace.
 
-Toto nastavení najdete na následujícím místě:
+Toto nastavení naleznete na následujícím místě:
 
-* Azure Portal: Správa prostředků **Cognitive Services** v části **klíče**
+* Portál Azure: Správa prostředků **kognitivních služeb** v části **Klíče**
 
-## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
+## <a name="applicationinsights-setting"></a>ApplicationInsights, nastavení
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
+## <a name="billing-configuration-setting"></a>Nastavení konfigurace fakturace
 
-Nastavení `Billing` Určuje identifikátor URI koncového bodu prostředku _Cognitive Services_ v Azure, který se používá pro informace o fakturaci pro daný kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro prostředek _Cognitive Services_ v Azure. Kontejner hlásí využití každých 10 až 15 minut.
+Toto `Billing` nastavení určuje identifikátor URI koncového bodu prostředku _služeb Cognitive Services_ v Azure, který slouží k měření fakturačních informací pro kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a hodnota musí být platný identifikátor URI koncového bodu pro prostředek _služeb Cognitive Services_ v Azure. Kontejner hlásí využití přibližně každých 10 až 15 minut.
 
-Toto nastavení najdete na následujícím místě:
+Toto nastavení naleznete na následujícím místě:
 
-* Azure Portal: **Cognitive Services** Overview, označený `Endpoint`
+* Portál Azure: Přehled **kognitivních služeb** s označením`Endpoint`
 
-Nezapomeňte přidat směrování _obličeje_ k identifikátoru URI koncového bodu, jak je znázorněno v příkladu. 
+Nezapomeňte přidat směrování _plochy_ do identifikátoru URI koncového bodu, jak je znázorněno v příkladu. 
 
-|Požaduje se| Name (Název) | Data type | Popis |
+|Požaduje se| Name (Název) | Datový typ | Popis |
 |--|------|-----------|-------------|
-|Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace Další informace o získání identifikátoru URI fakturace najdete v tématu [shromáždění požadovaných parametrů](face-how-to-install-containers.md#gathering-required-parameters). Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](../cognitive-services-custom-subdomains.md). |
+|Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace. Další informace o získání fakturačního identifikátoru URI naleznete v [tématu shromažďování požadovaných parametrů](face-how-to-install-containers.md#gathering-required-parameters). Další informace a úplný seznam místních koncových bodů naleznete [v tématu Vlastní názvy subdomén pro služby Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
 <!-- specific to face only -->
 
 ## <a name="cloudai-configuration-settings"></a>Nastavení konfigurace CloudAI
 
-Nastavení konfigurace `CloudAI` části poskytují možnosti specifické pro kontejner jedinečných do kontejneru. Jsou podporovány následující nastavení a objekty pro kontejner pro rozpoznávání tváře ve `CloudAI` oddílu
+Nastavení konfigurace v `CloudAI` části poskytují možnosti specifické pro kontejner jedinečné pro váš kontejner. Následující nastavení a objekty jsou podporovány `CloudAI` pro kontejner Plocha v části
 
-| Name (Název) | Data type | Popis |
+| Name (Název) | Datový typ | Popis |
 |------|-----------|-------------|
-| `Storage` | Objekt | Scénář úložiště používané pro rozpoznávání tváře kontejneru. Další informace o scénáře využití služby storage a související nastavení `Storage` objektu, najdete v článku [scénář nastavení úložiště](#storage-scenario-settings) |
+| `Storage` | Objekt | Scénář úložiště používá kontejner face. Další informace o scénářích úložiště `Storage` a přidružených nastaveních objektu najdete v [tématu Nastavení scénáře úložiště.](#storage-scenario-settings) |
 
-### <a name="storage-scenario-settings"></a>Scénář nastavení úložiště
+### <a name="storage-scenario-settings"></a>Nastavení scénáře úložiště
 
-Kontejner pro rozpoznávání tváře ukládá objekt blob, mezipaměť, metadata a data fronty, podle toho, co je právě uložili. Například školení indexy a výsledky pro velké osoby skupiny se ukládají jako data objektů blob. Kontejner pro rozpoznávání tváře nabízí dva různé scénáře využití služby storage při práci s a ukládání tyto typy dat:
+Kontejner Face ukládá data objektů blob, mezipaměti, metadat a fronty v závislosti na tom, co se ukládá. Například trénovací indexy a výsledky pro skupinu velkých osob jsou uloženy jako data objektu blob. Kontejner Plochy poskytuje dva různé scénáře úložiště při interakci s těmito typy dat a jejich ukládání:
 
-* Paměť  
-  Všechny čtyři typy dat jsou uložené v paměti. Nejsou distribuovány ani jsou trvalé. Pokud je zastavena nebo odebrání kontejneru pro rozpoznávání tváře je zničen všechna data v úložišti pro tento kontejner.  
-  Toto je výchozí scénář úložiště pro kontejner pro rozpoznávání tváře.
+* Memory (Paměť)  
+  Všechny čtyři typy dat jsou uloženy v paměti. Nejsou distribuovány, ani nejsou vytrvalé. Pokud je kontejner Face zastaven nebo odebrán, všechna data v úložišti pro tento kontejner je zničena.  
+  Toto je výchozí scénář úložiště pro kontejner Plochy.
 * Azure  
-  Kontejner pro rozpoznávání tváře využívá Azure Storage a Azure Cosmos DB k distribuci tyto čtyři typy dat napříč trvalého úložiště. Zpracování dat objektů BLOB a fronty Azure Storage. Metadata a data mezipaměti jsou zpracovávána nástrojem Azure Cosmos DB. Pokud kontejner pro rozpoznávání tváře je zastavena nebo odebrán, všechna data v úložišti pro tento kontejner zůstane uložená v Azure Storage a Azure Cosmos DB.  
-  Prostředky využívané třídou scénáře služby Azure storage mají následující další požadavky
-  * Prostředek služby Azure Storage, musíte použít StorageV2 druh účtu
-  * Prostředek Azure Cosmos DB musí používat rozhraní API Azure Cosmos DB pro MongoDB.
+  Kontejner Face používá Azure Storage a Azure Cosmos DB k distribuci těchto čtyř typů dat napříč trvalým úložištěm. Data objektů blob a fronty jsou zpracovávána službou Azure Storage. Metadata a data mezipaměti zpracovává Azure Cosmos DB. Pokud je kontejner Face zastavené nebo odebrané, všechna data v úložišti pro tento kontejner zůstane uložená v Azure Storage a Azure Cosmos DB.  
+  Prostředky používané ve scénáři úložiště Azure mají následující další požadavky
+  * Prostředek úložiště Azure musí používat druh účtu StorageV2.
+  * Prostředek Azure Cosmos DB musí používat rozhraní API Azure Cosmos DB pro MongoDB
 
-Scénáře využití služby storage a související konfigurační nastavení jsou spravovány `Storage` objektu v oblasti `CloudAI` konfigurační oddíl. Jsou k dispozici v následujícím nastavením konfigurace `Storage` objektu:
+Scénáře úložiště a přidružená nastavení `Storage` konfigurace jsou `CloudAI` spravovány objektem v části konfigurace. V objektu `Storage` jsou k dispozici následující nastavení konfigurace:
 
-| Name (Název) | Data type | Popis |
+| Name (Název) | Datový typ | Popis |
 |------|-----------|-------------|
-| `StorageScenario` | Řetězec | Scénář úložiště podporuje kontejneru. Následující hodnoty jsou k dispozici<br/>`Memory` – Výchozí hodnota. Kontejner používá dočasné nedistribuovaná a v paměti úložiště pro použití s jedním uzlem, dočasné. Pokud je zastavena nebo odebrání kontejneru úložiště pro tento kontejner je zničen.<br/>`Azure` -Kontejner využívá úložiště prostředků Azure. Pokud je zastavena nebo odebrání kontejneru úložiště pro tento kontejner se ukládají.|
-| `ConnectionStringOfAzureStorage` | Řetězec | Připojovací řetězec pro prostředek služby Azure Storage používaný kontejneru.<br/>Toto nastavení platí jenom v případě `Azure` je určená pro `StorageScenario` nastavení konfigurace. |
-| `ConnectionStringOfCosmosMongo` | Řetězec | Připojovacího řetězce MongoDB pro prostředek služby Azure Cosmos DB používá kontejneru.<br/>Toto nastavení platí jenom v případě `Azure` je určená pro `StorageScenario` nastavení konfigurace. |
+| `StorageScenario` | Řetězec | Scénář úložiště podporované kontejneru. K dispozici jsou následující hodnoty<br/>`Memory`- Výchozí hodnota. Kontejner používá netrvalé, nedistribuované a v paměti úložiště, pro jednouzel, dočasné použití. Pokud je kontejner zastaven nebo odebrán, úložiště pro tento kontejner je zničen.<br/>`Azure`- Container používá prostředky Azure pro úložiště. Pokud je kontejner zastaven nebo odebrán, úložiště pro tento kontejner je trvalé.|
+| `ConnectionStringOfAzureStorage` | Řetězec | Připojovací řetězec pro prostředek úložiště Azure používaný kontejnerem.<br/>Toto nastavení platí `Azure` pouze v `StorageScenario` případě, že je určeno pro nastavení konfigurace. |
+| `ConnectionStringOfCosmosMongo` | Řetězec | Připojovací řetězec MongoDB pro prostředek Azure Cosmos DB používaný kontejnerem.<br/>Toto nastavení platí `Azure` pouze v `StorageScenario` případě, že je určeno pro nastavení konfigurace. |
 
-Například následující příkaz určuje scénář úložiště Azure a poskytuje ukázkové připojovací řetězce pro prostředky Azure Storage a Cosmos DB používá k ukládání dat pro kontejner pro rozpoznávání tváře.
+Například následující příkaz určuje scénář úložiště Azure a poskytuje ukázkové připojovací řetězce pro prostředky Azure Storage a Cosmos DB používané k ukládání dat pro kontejner Face.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
   ```
 
-Scénář úložiště je zpracovávat odděleně od připojení vstupní a výstupní připojení. Můžete zadat kombinací těchto funkcí pro jeden kontejner. Například následující příkaz definuje přípojný vazby Dockeru k `D:\Output` složky na hostitelském počítači jako výstup připojení, pak vytvoří kontejner z image kontejneru pro rozpoznávání tváře a ukládání souborů protokolu ve formátu JSON do výstupu připojení. Příkaz také určuje scénář úložiště Azure a poskytuje ukázkové připojovací řetězce pro prostředky Azure Storage a Cosmos DB používá k ukládání dat pro kontejner pro rozpoznávání tváře.
+Scénář úložiště je zpracován odděleně od vstupních připojení a výstupních připojení. Můžete zadat kombinaci těchto funkcí pro jeden kontejner. Například následující příkaz definuje připojení vazby `D:\Output` Dockeru ke složce v hostitelském počítači jako výstupní připojení, pak vytvoří instance kontejneru z image kontejneru Face a uloží soubory protokolu ve formátu JSON do výstupního připojení. Příkaz také určuje scénář úložiště Azure a poskytuje ukázkové připojovací řetězce pro prostředky Azure Storage a Cosmos DB používané k ukládání dat pro kontejner Face.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 Logging:Disk:Format=json CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
   ```
 
-## <a name="eula-setting"></a>Smlouva EULA nastavení
+## <a name="eula-setting"></a>Nastavení Eula
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Nastavení Fluentd
+## <a name="fluentd-settings"></a>Nastavení fluentdu
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Nastavení přihlašovacích údajů proxy serveru http
+## <a name="http-proxy-credentials-settings"></a>Nastavení pověření proxy http
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -114,42 +114,42 @@ Scénář úložiště je zpracovávat odděleně od připojení vstupní a výs
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-## <a name="mount-settings"></a>Nastavení připojování
+## <a name="mount-settings"></a>Nastavení připojení
 
-Použití vazby připojí ke čtení a zápisu dat do a z kontejneru. Můžete určit vstupní připojení nebo připojení výstup tak, že zadáte `--mount` možnost [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkazu.
+Pomocí vazební připojení číst a zapisovat data do a z kontejneru. Vstupní připojení nebo výstupní připojení můžete určit `--mount` zadáním možnosti v příkazu [spustit docker.](https://docs.docker.com/engine/reference/commandline/run/)
 
-Kontejnery obličeje nepoužívají vstupní ani výstupní připojení k ukládání dat o školeních nebo službách. 
+Kontejnery face nepoužívají vstupní nebo výstupní připojení k ukládání dat školení nebo služby. 
 
-Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho je možné, že umístění pro připojení k [hostitelskému počítači](face-how-to-install-containers.md#the-host-computer)není přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby Docker a oprávněním pro umístění připojení hostitele. 
+Přesná syntaxe umístění připojení hostitele se liší v závislosti na hostitelském operačním systému. Umístění připojení [hostitelského počítače](face-how-to-install-containers.md#the-host-computer)navíc nemusí být přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby Docker a oprávněními umístění připojení hostitele. 
 
-|Volitelné| Name (Název) | Data type | Popis |
+|Nepovinné| Name (Název) | Datový typ | Popis |
 |-------|------|-----------|-------------|
-|Není povoleno| `Input` | Řetězec | Kontejnery obličeje to nepoužívají.|
-|Volitelné| `Output` | Řetězec | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nepovolené| `Input` | Řetězec | Čelní nádoby nepoužívají toto.|
+|Nepovinné| `Output` | Řetězec | Cíl výstupního připojení. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad 
+## <a name="example-docker-run-commands"></a>Příklad příkazů spuštění dockeru 
 
-Následující příklady ukazují, jak napsat a použít pomocí nastavení konfigurace `docker run` příkazy.  Po spuštění kontejneru nadále běžel dokud [Zastavit](face-how-to-install-containers.md#stop-the-container) ho.
+Následující příklady používají nastavení konfigurace pro ilustraci, jak psát a používat `docker run` příkazy.  Po spuštění kontejneru pokračuje v běhu, dokud jej [nezastavíte.](face-how-to-install-containers.md#stop-the-container)
 
-* **Znak pro pokračování řádku**: příkazy Docker v následujících částech používají zpětné lomítko, `\`jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. 
-* **Pořadí argumentů**: Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
+* **Znak pokračování řádku**: Příkazy Dockeru v následujících `\`částech používají jako znak pokračování řádku znak zpětného lomítka . Nazákladě požadavků hostitelského operačního systému jej nahraďte nebo odeberte. 
+* **Pořadí argumentů**: Neměňte pořadí argumentů, pokud nejste velmi obeznámeni s kontejnery Dockeru.
 
-Nahradit {_argument_name_} s vlastními hodnotami:
+Nahraďte {_argument_name_} vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-| **{API_KEY}** | Klíč koncového bodu prostředku `Face` na stránce klíčů Azure `Face`. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled služby Azure `Face`.| Explicitní příklady najdete v tématu [shromažďování požadovaných parametrů](face-how-to-install-containers.md#gathering-required-parameters) . |
+| **{API_KEY}** | Klíč koncového bodu `Face` prostředku na `Face` stránce Azure Keys. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Hodnota koncového bodu fakturace `Face` je dostupná na stránce Přehled Azure.| Viz [shromažďování požadovaných parametrů](face-how-to-install-containers.md#gathering-required-parameters) pro explicitní příklady. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](face-how-to-install-containers.md#billing).
-> Hodnota ApiKey je **klíč** ze stránky klíče prostředků Azure `Cognitive Services`. 
+> `Eula`, `Billing`a `ApiKey` možnosti musí být zadány ke spuštění kontejneru; v opačném případě se kontejner nespustí.  Další informace naleznete v [tématu Fakturace](face-how-to-install-containers.md#billing).
+> Hodnota ApiKey je **klíč** ze `Cognitive Services` stránky klíče prostředků Azure. 
 
-## <a name="face-container-docker-examples"></a>Příklady Docker kontejneru Face
+## <a name="face-container-docker-examples"></a>Příklady Dockeru kontejneru tváří
 
-Následující příklady Docker jsou pro kontejner obličeje. 
+Následující příklady Dockeru jsou pro kontejner plochy. 
 
 ### <a name="basic-example"></a>Základní příklad 
 
@@ -172,4 +172,4 @@ Následující příklady Docker jsou pro kontejner obličeje.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Kontrola [instalace a spouštění kontejnerů](face-how-to-install-containers.md)
+* Přečtěte [si, jak nainstalovat a spustit kontejnery](face-how-to-install-containers.md)

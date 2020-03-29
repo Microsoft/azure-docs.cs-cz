@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview) – služba Speech'
+title: 'Úvodní příručka: Vytvoření vlastního příkazu s parametry (náhled) – služba řeč'
 titleSuffix: Azure Cognitive Services
-description: V tomto článku přidáte parametry do aplikace Custom Commands.
+description: V tomto článku přidáte parametry do aplikace Vlastní příkazy.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -10,70 +10,70 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 994ac88f78dfe5a5b0ee6fef3fa97d66d53c911b
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 96312bac369cfa5fe3cb8a00fd63ecfbec624918
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156688"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80348536"
 ---
-# <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)
+# <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Úvodní příručka: Vytvoření vlastního příkazu s parametry (náhled)
 
-V [předchozím článku](./quickstart-custom-speech-commands-create-new.md)jsme vytvořili nový projekt Custom Commands, který bude reagovat na příkazy bez parametrů.
+V [předchozím článku](./quickstart-custom-speech-commands-create-new.md)jsme vytvořili nový projekt vlastních příkazů, který reaguje na příkazy bez parametrů.
 
-V tomto článku tuto aplikaci rozšíříme pomocí parametrů tak, aby bylo možné zvládnout zapnutí a vypnutí více zařízení.
+V tomto článku rozšíříme tuto aplikaci o parametry tak, aby zvládla zapnutí a vypnutí více zařízení.
 
-## <a name="create-parameters"></a>Vytvoření parametrů
+## <a name="create-parameters"></a>Vytvořit parametry
 
-1. Otevřete projekt, který [jsme vytvořili dříve](./quickstart-custom-speech-commands-create-new.md) .
-1. Vzhledem k tomu, že se příkaz bude nyní zpracovávat a vypnut, přejmenujte příkaz na "TurnOnOff".
-   - Najeďte myší na název příkazu a výběrem ikony upravit změňte název.
-1. Vytvořte nový parametr, který bude představovat, jestli uživatel chce zařízení zapnout nebo vypnout.
-   - Vyberte ikonu `+` vedle části parametry.
+1. Otevření projektu, který [jsme vytvořili dříve](./quickstart-custom-speech-commands-create-new.md)
+1. Vzhledem k tomu, že příkaz bude nyní zpracovávat zapnutí a vypnutí, přejmenujte příkaz na "TurnOnOff"
+   - Najeďte nad názvem příkazu a vyberte ikonu úprav, chcete-li změnit název
+1. Vytvoření nového parametru představujícího, zda chce uživatel zařízení zapnout nebo vypnout.
+   - Výběr `+` ikony vedle oddílu Parametry
 
    > [!div class="mx-imgBorder"]
-   > ![vytvořit parametr](media/custom-speech-commands/create-on-off-parameter.png)
+   > ![Vytvořit parametr](media/custom-speech-commands/create-on-off-parameter.png)
 
    | Nastavení            | Navrhovaná hodnota     | Popis                                                                                               |
    | ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------- |
-   | Name (Název)               | (OnOff)               | Popisný název pro parametr                                                                     |
-   | Je globální          | unchecked           | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v projektu |
-   | Požaduje se           | checked             | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr          |
-   | Šablona odpovědi  | "-Zapnuto nebo vypnuto?"      | Výzva k zadání hodnoty tohoto parametru, pokud není známa                                       |
-   | Typ               | Řetězec              | Typ parametru, například číslo, řetězec nebo datum a čas                                               |
-   | Konfigurace      | Seznam řetězců         | V případě řetězců seznam řetězců omezuje vstupy na sadu možných hodnot.                                      |
-   | Hodnoty seznamu řetězců | zapnuto, vypnuto             | Pro parametr seznamu řetězců, sada možných hodnot a jejich synonyma                                |
+   | Name (Název)               | Onoff               | Popisný název parametru                                                                     |
+   | Je globální          | unchecked           | Zaškrtávací políčko označující, zda je hodnota tohoto parametru globálně použita pro všechny příkazy v projektu. |
+   | Požaduje se           | checked             | Zaškrtávací políčko označující, zda je před dokončením příkazu vyžadována hodnota tohoto parametru.          |
+   | Šablona odpovědi  | "- Zapnutí nebo vypnutí?"      | Výzva k žádosti o hodnotu tohoto parametru, pokud není známa                                       |
+   | Typ               | Řetězec              | Typ parametru, například Číslo, Řetězec nebo Čas data                                               |
+   | Konfigurace      | Seznam řetězců         | Pro řetězce seznam řetězců omezuje vstupy na sadu možných hodnot                                      |
+   | Hodnoty seznamu řetězců | zapnuto, vypnuto             | Pro parametr String List sada možných hodnot a jejich synonyma                                |
 
-   - Potom znovu vyberte ikonu `+` a přidejte druhý parametr, který bude představovat název zařízení. V tomto příkladu TV a ventilátor
+   - Dále vyberte `+` ikonu znovu a přidejte druhý parametr představující název zařízení. V tomto příkladu televizor a ventilátor
 
    | Nastavení            | Navrhovaná hodnota       | Popis                                                                                               |
    | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
-   | Name (Název)               | SubjectDevice         | Popisný název pro parametr                                                                     |
-   | Je globální          | unchecked             | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v projektu |
-   | Požaduje se           | checked               | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr          |
-   | Šablona odpovědi  | ", Které zařízení?"     | Výzva k zadání hodnoty tohoto parametru, pokud není známa                                       |
-   | Typ               | Řetězec                | Typ parametru, například číslo, řetězec nebo datum a čas                                               |
-   | Konfigurace      | Seznam řetězců           | V případě řetězců seznam řetězců omezuje vstupy na sadu možných hodnot.                                      |
-   | Hodnoty seznamu řetězců | TV, ventilátor               | Pro parametr seznamu řetězců, sada možných hodnot a jejich synonyma                                |
-   | Synonyma (TV)      | televize, řekněte     | Volitelná synonyma pro každou možnou hodnotu parametru seznamu řetězců                                      |
+   | Name (Název)               | PředmětZařízení         | Popisný název parametru                                                                     |
+   | Je globální          | unchecked             | Zaškrtávací políčko označující, zda je hodnota tohoto parametru globálně použita pro všechny příkazy v projektu. |
+   | Požaduje se           | checked               | Zaškrtávací políčko označující, zda je před dokončením příkazu vyžadována hodnota tohoto parametru.          |
+   | Šablona odpovědi  | "- Které zařízení?"     | Výzva k žádosti o hodnotu tohoto parametru, pokud není známa                                       |
+   | Typ               | Řetězec                | Typ parametru, například Číslo, Řetězec nebo Čas data                                               |
+   | Konfigurace      | Seznam řetězců           | Pro řetězce seznam řetězců omezuje vstupy na sadu možných hodnot                                      |
+   | Hodnoty seznamu řetězců | tv, ventilátor               | Pro parametr String List sada možných hodnot a jejich synonyma                                |
+   | Synonyma (tv)      | televize, televize     | Volitelná synonyma pro každou možnou hodnotu parametru seznamu řetězců                                      |
 
-## <a name="add-sample-sentences"></a>Přidat ukázkové věty
+## <a name="add-sample-sentences"></a>Přidat vzorové věty
 
 S parametry je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Například:
 
-1. Úplné informace o parametrech – `"turn {OnOff} the {SubjectDevice}"`
-1. Informace o částečném parametru – `"turn it {OnOff}"`
-1. Žádné informace o parametru – `"turn something"`
+1. Úplné informace o parametrech -`"turn {OnOff} the {SubjectDevice}"`
+1. Informace o dílčích parametrech -`"turn it {OnOff}"`
+1. Žádné informace o parametrech -`"turn something"`
 
-Ukázkové věty s různými množstvími informací umožňují, aby aplikace Custom Commands vyřešila řešení jednoho snímku a řešení vícenásobného zapínání s částečnými informacemi.
+Ukázkové věty s různým množstvím informací umožňují aplikaci Custom Commands vyřešit rozlišení jednoho výstřelu i rozlišení s více otočeními s částečnými informacemi.
 
-V takovém případě upravte ukázkové věty tak, aby používaly parametry, jak je navrženo níže.
+S ohledem na to upravte ukázkové věty tak, aby používaly níže uvedené parametry.
 
 > [!TIP]
-> V editoru ukázkových vět použijte složené závorky, které odkazují na vaše parametry. - `turn {OnOff} the {SubjectDevice}` pomocí dokončování karet můžete odkazovat na dříve vytvořené parametry.
+> V editoru ukázkových vět použijte složené závorky, abyste odkazovali na parametry. - `turn {OnOff} the {SubjectDevice}`Pomocí dokončování tabulátoru můžete odkazovat na dříve vytvořené parametry.
 
 > [!div class="mx-imgBorder"]
-> ![ukázkové věty s parametry](media/custom-speech-commands/create-parameter-sentences.png)
+> ![Ukázkové věty s parametry](media/custom-speech-commands/create-parameter-sentences.png)
 
 ```
 turn {OnOff} the {SubjectDevice}
@@ -85,30 +85,30 @@ turn something
 
 ## <a name="add-parameters-to-completion-rule"></a>Přidat parametry do pravidla dokončení
 
-Upravte pravidlo dokončení, které jste vytvořili v [předchozím rychlém](./quickstart-custom-speech-commands-create-new.md)startu:
+Upravte pravidlo dokončení, které jste [vytvořili](./quickstart-custom-speech-commands-create-new.md)v předchozím rychlém startu :
 
-1. Přidejte novou podmínku a vyberte požadovaný parametr. Vyberte `OnOff` i `SubjectDevice`
-1. Upravit akci odpovědi na řeč pro použití `OnOff` a `SubjectDevice`:
+1. Přidejte novou podmínku a vyberte Povinný parametr. Vyberte `OnOff` obě a`SubjectDevice`
+1. Upravte akci Odezva `OnOff` `SubjectDevice`řeči, která se má použít, a :
 
    ```
-   Ok, turning {OnOff} the {SubjectDevice}
+   - Ok, turning {OnOff} the {SubjectDevice}
    ```
 
-## <a name="try-it-out"></a>Vyzkoušet
+## <a name="try-it-out"></a>Vyzkoušejte si to.
 
-Otevřete panel test chat a vyzkoušejte několik interakcí.
-
-- Vstup: vypnutí televizního vysílání
-- Výstup: OK, vypnutí televizního vysílání
+Otevřete panel Testovací chat a vyzkoušejte několik interakcí.
 
 - Vstup: vypnutí televizoru
-- Výstup: OK, vypnutí televizního vysílání
+- Výstup: Ok, vypnutí televizoru
 
-- Vstup: vypnout
-- Výstup: které zařízení?
-- Vstup: TV
-- Výstup: OK, vypnutí televizního vysílání
+- Vstup: vypnutí televizoru
+- Výstup: Ok, vypnutí televizoru
+
+- Vstup: vypněte jej
+- Výstup: Které zařízení?
+- Vstup: tv
+- Výstup: Ok, vypnutí televizoru
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Rychlý Start: připojení k vlastnímu příkazu aplikace pomocí sady Speech SDK (Preview)](./quickstart-custom-speech-commands-speech-sdk.md)
+> [Úvodní příručka: Použití vlastních příkazů s vlastním hlasem (náhled)](./quickstart-custom-speech-commands-select-custom-voice.md)

@@ -9,71 +9,71 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77211382"
 ---
 ## <a name="general-entity-types"></a>Obecné typy entit:
 
 ### <a name="person"></a>Person (Osoba)
 
-Rozpoznat jména osob v textu.
+Rozpoznání jmen osob v textu.
 
 Jazyky:
-* Public Preview: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` a `Turkish`
+* Veřejná `Arabic`verze `Czech` `Chinese-Simplified`preview: `English`, `Finnish` `French`, `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish` , `Dutch`, , , , , , , , , , , , , , a `Danish``Turkish`
 
 | Název podtypu | Popis                                                      | K dispozici počínaje verzí modelu |
 |--------------|------------------------------------------------------------------|---------------------------------------|
-| Není k dispozici          | Rozpoznané jméno osoby, například `Bill Gates`, `Marie Curie` | `2019-10-01`                          | 
+| Není dostupné.          | Jména rozpoznaných `Bill Gates`osob, například ,`Marie Curie` | `2019-10-01`                          | 
 
-### <a name="persontype"></a>PersonType
-Typ úlohy nebo role držené osobou.
+### <a name="persontype"></a>Typ osoby
+Typ zaměstnání nebo role v držení osoby.
 
 Jazyky:
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                                                                                | K dispozici počínaje verzí modelu |
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
-| Není k dispozici          | Typy úloh například `civil engineer`, `salesperson`, `chef`, `librarian`, `nursing aide` | `2020-02-01`                           |
+| Není dostupné.          | Typy úloh `civil engineer`například `chef` `librarian`, `salesperson`, , ,`nursing aide` | `2020-02-01`                           |
 
 ### <a name="location"></a>Umístění
 
-Přirozené a uživatelsky vytvořené orientačních bodů, struktur, geografických funkcí a geopolitických entit.
+Přírodní a lidské památky, struktury, geografické rysy a geopolitické entity.
 
 Jazyky:
 
-* Public Preview: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` a `Turkish`
+* Veřejná `Arabic`verze `Czech` `Chinese-Simplified`preview: `English`, `Finnish` `French`, `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish` , `Dutch`, , , , , , , , , , , , , , a `Danish``Turkish`
 
 | Název podtypu              | Popis                                                                              | K dispozici počínaje verzí modelu |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
-| Není k dispozici                       | umístění, například `Atlantic Ocean`, `library`, `Eiffel Tower``Statue of Liberty`  | `2019-10-01`                           |
-| Geopolitická entita (GPE) – pouze anglicky| Města, země, státy, například `Seattle`, `Pennsylvania`, `South Africa``Tokyo` | `2020-02-01`                           |
+| Není dostupné.                       | lokality, `Atlantic Ocean`například , `library`, `Eiffel Tower``Statue of Liberty`  | `2019-10-01`                           |
+| Geopolitická entita (GPE) - pouze v angličtině| Města, země, státy `Seattle` `Pennsylvania`například , , `South Africa``Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Organizace  
 
-Uznávané organizace, společnosti, organizace a další skupiny lidí. Například: společnosti, politické skupiny, hudební pásma, sportovní klub, státní orgány a veřejné organizace. Státní příslušníky a náboženství nejsou zahrnuté do tohoto typu entity. 
+Uznávané organizace, korporace, agentury a další skupiny lidí. Například: společnosti, politické skupiny, hudební skupiny, sportovní kluby, vládní orgány a veřejné organizace. Národnosti a náboženství nejsou zahrnuty v tomto typu entity. 
 
 Jazyky: 
 
-* Public Preview: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` a `Turkish`
+* Veřejná `Arabic`verze `Czech` `Chinese-Simplified`preview: `English`, `Finnish` `French`, `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish` , `Dutch`, , , , , , , , , , , , , , a `Danish``Turkish`
 
 | Název podtypu | Popis                                                                                             | K dispozici počínaje verzí modelu |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| Není k dispozici          | organizace, například `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration``VOA` | `2019-10-01`                           |
+| Není dostupné.          | organizace, například `Microsoft` `NASA`, `National Oceanic and Atmospheric Administration`,`VOA` | `2019-10-01`                           |
 
 ### <a name="event"></a>Událost  
 
-Historické, sociální a přirozené události, které se vyskytují.  
+Historické, společenské a přirozené události.  
 
 Jazyky: 
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                                                            | K dispozici počínaje verzí modelu |
 |--------------|------------------------------------------------------------------------|----------------------------------------|
-| Není k dispozici          | Události jako `wedding`, `hurricane`, `car accident`, `solar eclipse`, `American Revolution` | `2020-02-01`                           |
+| Není dostupné.          | Události `wedding`jako `hurricane`, `car accident` `solar eclipse`, , ,`American Revolution` | `2020-02-01`                           |
 
 ### <a name="product"></a>Produkt  
 
@@ -81,90 +81,90 @@ Fyzické objekty různých kategorií.
 
 Jazyky: 
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                                                                        | K dispozici počínaje verzí modelu |
 |--------------|------------------------------------------------------------------------------------|----------------------------------------|
-| Není k dispozici          | Například `Microsoft Surface laptop`, `sunglasses`, `motorcycle``bag`, `Xbox` | `2020-02-01`                           |
+| Není dostupné.          | Například `Microsoft Surface laptop`, `sunglasses` `motorcycle`, `bag`, , ,`Xbox` | `2020-02-01`                           |
 | Výpočetní operace    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
 
-### <a name="skill"></a>Tuhle  
+### <a name="skill"></a>Dovednost  
 
-Entita popisující schopnost nebo odbornost.  
+Entita popisující schopnosti nebo odborné znalosti.  
 
 Jazyky: 
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                                                                 | K dispozici počínaje verzí modelu |
 |--------------|-----------------------------------------------------------------------------|----------------------------------------|
-| Není k dispozici          | `nursing`, `data mining`, `linguistics`, `critical thinking``photography` | `2020-02-01`                           |
+| Není dostupné.          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
 
 ### <a name="phone-number"></a>Telefonní číslo
 
-Telefonní čísla (jenom telefonní čísla USA). 
+Telefonní čísla (pouze telefonní čísla USA). 
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                                    | K dispozici počínaje verzí modelu |
 |--------------|------------------------------------------------|----------------------------------------|
-| Není k dispozici          | Telefonní čísla USA, například `(312) 555-0176` | `2019-10-01`                           |
+| Není dostupné.          | Telefonní čísla v USA, například`(312) 555-0176` | `2019-10-01`                           |
 
-### <a name="email"></a>Email
+### <a name="email"></a>E-mail
 
-E-mailovou adresu. 
+E-mailovou adresu 
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                                      | K dispozici počínaje verzí modelu |
 |--------------|--------------------------------------------------|----------------------------------------|
-| Není k dispozici          | E-mailová adresa, například `support@contoso.com` | `2019-10-01`                           |
+| Není dostupné.          | E-mailová adresa, například`support@contoso.com` | `2019-10-01`                           |
 
-### <a name="url"></a>Adresa URL
+### <a name="url"></a>zprostředkovatele identity
 
-Internetové adresy URL.
+Adresy URL internetu.
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                                          | K dispozici počínaje verzí modelu |
 |--------------|------------------------------------------------------|----------------------------------------|
-| Není k dispozici          | Adresy URL webů, například `https://www.bing.com` | `2019-10-01`                           |
+| Není dostupné.          | Adresy URL pro webové stránky, například`https://www.bing.com` | `2019-10-01`                           |
 
 ### <a name="ip-address"></a>IP adresa
 
-Adresa Internet Protocol
+Adresa internetového protokolu
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                              | K dispozici počínaje verzí modelu |
 |--------------|------------------------------------------|----------------------------------------|
-| Není k dispozici          | Síťová adresa například `10.0.0.101` | `2019-10-01`                           |
+| Není dostupné.          | Síťová adresa například`10.0.0.101` | `2019-10-01`                           |
 
 ###  <a name="datetime"></a>DateTime
 
 Entity data a času. 
 
-* K dispozici počínaje verzí modelu `2019-10-01`
+* K dispozici počínaje verzí modelu`2019-10-01`
 
 Jazyky:
 
-* Public Preview: `Chinese-Simplified`, `English`, `French`, `German` a `Spanish`
+* Veřejná `Chinese-Simplified`předběžná `French` `German` verze: , `English`, a`Spanish`
 
 | Název podtypu    | Příklady                     |
 |-------------|------------------------------|
-| Není k dispozici         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
+| Není dostupné.         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
 | Datum  | `May 2nd, 2017`, `05/02/2017`       |
-| Čas     | `8:15`, `6AM`              |
-| DateRange    | `August 2nd to August 5th`         |
-| TimeRange   | `4-6PM`, `10:00AM to Noon`          |
+| Time     | `8:15`, `6AM`              |
+| Rozsah dat    | `August 2nd to August 5th`         |
+| Časový rozsah   | `4-6PM`, `10:00AM to Noon`          |
 | Doba trvání | `2.5 minutes`, `one and a half hours`         |
 | Nastavit | `every Saturday`         |
 
@@ -172,18 +172,18 @@ Jazyky:
 
 Čísla a číselná množství. 
 
-* K dispozici počínaje verzí modelu `2019-10-01`
+* K dispozici počínaje verzí modelu`2019-10-01`
 
 Jazyky:
 
-* Public Preview: `Chinese-Simplified`, `English`, `French`, `German` a `Spanish`
+* Veřejná `Chinese-Simplified`předběžná `French` `German` verze: , `English`, a`Spanish`
 
 | Název podtypu    | Příklady                     |
 |-------------|------------------------------|
 | Číslo         | `6`, `six`                   |
 | Procento  | `50%`, `fifty percent`       |
-| Řadový     | `2nd`, `second`              |
+| Pořadové     | `2nd`, `second`              |
 | Věk         | `90 day old`, `30 years old` |
-| Currency    | `$10.99`, `€30.00`           |
-| Globální   | `10 miles`, `40 cm`          |
+| Měna    | `$10.99`, `€30.00`           |
+| Dimenze   | `10 miles`, `40 cm`          |
 | Teplota | `32 degrees`, `10°C`         |

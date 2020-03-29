@@ -1,7 +1,7 @@
 ---
 title: Podporované typy pro rozpoznávání pojmenovaných entit
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si o podporovaných typech entit v rozhraní API pro analýzu textu.
+description: Informace o podporovaných typech entit najdete v rozhraní API pro analýzu textu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77086918"
 ---
-# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Podporované typy pro rozpoznávání pojmenovaných entit verze 3 (Preview)
+# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Podporované typy pro modul y pro rozpoznávání pojmenovaných entit verze 3 (preview)
 
-Rozhraní API pro analýzu textu poskytuje možnost identifikovat a jednoznačně určit entity nalezené v textu. [Rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md) (ner) je schopnost identifikovat různé entity v textu a kategorizovat je do předem definovaných tříd.
+Rozhraní API pro analýzu textu umožňuje identifikovat a rozptýlit entity nalezené v textu. [Rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md) (NER) je schopnost identifikovat různé entity v textu a kategorizovat je do předdefinovaných tříd.
 
 ## <a name="entity-types"></a>Typy entit
 
-Podporované typy entit a dílčí typy (tam, kde je k dispozici) jsou uvedeny níže:
+Podporované typy a podtypy entit (pokud jsou použitelné) jsou uvedeny níže:
 
-#### <a name="generaltabgeneral"></a>[Obecné](#tab/general)
+#### <a name="general"></a>[Obecné](#tab/general)
 
 [!INCLUDE [supported entity types - general](./includes/entity-types/general-entities.md)]
 
-#### <a name="personal-informationtabpersonal"></a>[Osobní údaje](#tab/personal)
+#### <a name="personal-information"></a>[Osobní údaje](#tab/personal)
 
 [!INCLUDE [supported entity types - personally identifying information](./includes/entity-types/personal-information-entities.md)]
 
@@ -37,4 +37,4 @@ Podporované typy entit a dílčí typy (tam, kde je k dispozici) jsou uvedeny n
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Jak používat rozpoznávání pojmenovaných entit v Analýza textu](how-tos/text-analytics-how-to-entity-linking.md)
+* [Použití rozpoznávání pojmenovaných entit v textové analýze](how-tos/text-analytics-how-to-entity-linking.md)

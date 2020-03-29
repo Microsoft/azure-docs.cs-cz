@@ -1,7 +1,7 @@
 ---
-title: Detekce typu obrázku – Počítačové zpracování obrazu
+title: Detekce typu obrazu - Počítačové vidění
 titleSuffix: Azure Cognitive Services
-description: Koncepty týkající se funkce detekce typu obrázku rozhraní API pro počítačové zpracování obrazu.
+description: Koncepty související s funkcí detekce typu obrazu rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e89fd977129113fa88af1acccd6b05f0bbe90243
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 4e6c2db5333962d7ae43534998ffc1c48b0dba45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945217"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244558"
 ---
-# <a name="detecting-image-types-with-computer-vision"></a>Detekce typů obrázků pomocí Počítačové zpracování obrazu
+# <a name="detecting-image-types-with-computer-vision"></a>Detekce typů obrazů pomocí počítačového vidění
 
-Pomocí rozhraní API pro [analýzu imagí](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) počítačové zpracování obrazu může analyzovat typ obsahu imagí, který označuje, jestli je obrázek Klipart nebo kreslení čáry.
+Pomocí [rozhraní Analyzovat rozhraní API pro obrázky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) může počítačové vidění analyzovat typ obsahu obrázků, což ukazuje, zda se jedná o klipart nebo kresbu čar.
 
 ## <a name="detecting-clip-art"></a>Detekce klipartu
 
-Počítačové zpracování obrazu analyzuje obrázek a hodnotí pravděpodobnost obrázku, který je klipartem, na škále od 0 do 3, jak je popsáno v následující tabulce.
+Počítačové vidění analyzuje obraz a hodnotí pravděpodobnost, že obraz je klipartem na stupnici od 0 do 3, jak je popsáno v následující tabulce.
 
-| Value | Význam |
+| Hodnota | Význam |
 |-------|---------|
 | 0 | Není klipart |
-| 1 | Jednoznačn |
-| 2 | Normální – kliparty |
-| 3 | Good-clip-art |
+| 1 | Nejednoznačné |
+| 2 | Normální klipart |
+| 3 | Dobrý klip-art |
 
-### <a name="clip-art-detection-examples"></a>Příklady Detekce klipartů
+### <a name="clip-art-detection-examples"></a>Příklady detekce klipartů
 
-Následující odpovědi JSON znázorňují, co Počítačové zpracování obrazu vrátí při hodnocení pravděpodobnosti, že se v ukázkových obrázcích vystřihují kliparty.
+Následující odpovědi JSON znázorňují, co počítačová vize vrací při hodnocení pravděpodobnosti ukázkových obrázků, které jsou klipartem.
 
-![Klipartový obrázek řezu sýra](./Images/cheese_clipart.png)
+![Klipartový obrázek plátku sýra](./Images/cheese_clipart.png)
 
 ```json
 {
@@ -54,7 +54,7 @@ Následující odpovědi JSON znázorňují, co Počítačové zpracování obra
 }
 ```
 
-![Modrý dům a přední yard](./Images/house_yard.png)
+![Modrý dům a předzahrádka](./Images/house_yard.png)
 
 ```json
 {
@@ -71,15 +71,15 @@ Následující odpovědi JSON znázorňují, co Počítačové zpracování obra
 }
 ```
 
-## <a name="detecting-line-drawings"></a>Zjišťování kreseb čar
+## <a name="detecting-line-drawings"></a>Detekce čárových výkresů
 
-Počítačové zpracování obrazu analyzuje obrázek a vrátí logickou hodnotu, která označuje, zda se jedná o spojnicové vykreslování.
+Počítačové vidění analyzuje obraz a vrátí logickou hodnotu označující, zda se jedná o kresbu čáry.
 
-### <a name="line-drawing-detection-examples"></a>Příklady detekce kreslení čáry
+### <a name="line-drawing-detection-examples"></a>Příklady detekce kreslení čar
 
-Následující odpovědi JSON znázorňují, co Počítačové zpracování obrazu vrátí, když značí, jestli jsou ukázkové obrázky řádky čáry.
+Následující odpovědi JSON znázorňují, co se vrátí počítačové vidění, když označuje, zda jsou ukázkové obrázky čárové kresby.
 
-![Obrázek čáry vykreslování Lion](./Images/lion_drawing.png)
+![Obrázek čáry lva](./Images/lion_drawing.png)
 
 ```json
 {
@@ -96,7 +96,7 @@ Následující odpovědi JSON znázorňují, co Počítačové zpracování obra
 }
 ```
 
-![Bílá květina se zeleným pozadím](./Images/flower.png)
+![Bílý květ se zeleným pozadím](./Images/flower.png)
 
 ```json
 {
@@ -113,6 +113,9 @@ Následující odpovědi JSON znázorňují, co Počítačové zpracování obra
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="use-the-api"></a>Použití rozhraní API
 
-Podívejte se na referenční dokumentaci k [analýze imagí](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) , kde se dozvíte, jak detekovat typy obrázků.
+Funkce detekce typu obrázku je součástí rozhraní Analyzovat rozhraní API [pro obrázky.](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) Toto rozhraní API můžete volat prostřednictvím nativní sady SDK nebo prostřednictvím volání REST. Zahrnout `ImageType` do parametru dotazu **visualFeatures.** Potom, když získáte úplnou odpověď JSON, jednoduše analyzovat řetězec `"imageType"` pro obsah oddílu.
+
+* [Úvodní příručka: Počítačové zpracování počítače .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Úvodní příručka: Analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)

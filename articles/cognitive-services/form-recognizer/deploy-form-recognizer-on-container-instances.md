@@ -1,7 +1,7 @@
 ---
-title: Spustit kontejner pro rozpoznávání formulářů v Azure Container Instances
+title: Spuštění kontejneru nástroje pro rozpoznávání formulářů v instanci kontejneru Azure
 titleSuffix: Azure Cognitive Services
-description: Nasaďte kontejner pro rozpoznávání formulářů do instance kontejneru Azure a otestujte ho ve webovém prohlížeči.
+description: Nasaďte kontejner rozpoznávání formulářů do instance kontejneru Azure a otestujte ho ve webovém prohlížeči.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: dapine
 ms.openlocfilehash: 9a3456eb4d30aa8d163488f558b571dd97c73bf4
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77605119"
 ---
-# <a name="deploy-the-form-recognizer-container-to-azure-container-instances"></a>Nasaďte kontejner pro rozpoznávání formulářů do Azure Container Instances
+# <a name="deploy-the-form-recognizer-container-to-azure-container-instances"></a>Nasazení kontejneru nástroje pro rozpoznávání formulářů do instancí kontejnerů Azure
 
-Přečtěte si, jak nasadit kontejner pro [rozpoznávání formulářů](form-recognizer-container-howto.md) Cognitive Services do Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Tento postup ukazuje vytvoření prostředku pro rozpoznávání formulářů Azure. Pak se podíváme na navýšení přidružené image kontejneru. Nakonec zvýrazníme možnost cvičení těchto dvou z prohlížeče. Pomocí kontejnerů můžete před správou infrastruktury místo toho, aby se zaměřily na vývoj aplikací, posunout pozornost vývojářů.
+Zjistěte, jak nasadit kontejner [rozpoznávání formulářů](form-recognizer-container-howto.md) cognitive services do [instancí kontejnerů](https://docs.microsoft.com/azure/container-instances/)Azure . Tento postup ukazuje vytvoření prostředku nástroje azure form recognizer. Pak budeme diskutovat o vytažení přidružené image kontejneru. Nakonec zvýrazněme schopnost vykonávat orchestraci obou z prohlížeče. Pomocí kontejnerů můžete přesunout pozornost vývojářů od správy infrastruktury místo toho se zaměřením na vývoj aplikací.
 
 > [!IMPORTANT]
-> Kontejnery pro rozpoznávání formulářů aktuálně používají rozhraní API pro rozpoznávání formulářů verze 1,0. K nejnovější verzi rozhraní API můžete přistupovat pomocí spravované služby místo toho.
+> Kontejnery nástroje pro rozpoznávání formulářů aktuálně používají verzi 1.0 rozhraní API pro rozpoznávání formulářů. K nejnovější verzi rozhraní API můžete získat přístup pomocí spravované služby.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 
 ## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
 
-Aby bylo možné požádat o přístup ke kontejneru, musíte nejprve dokončit a odeslat [formulář žádosti o přístup kontejnerů pro rozpoznávání formulářů Cognitive Services](https://aka.ms/FormRecognizerContainerRequestAccess) . Tím se také zaregistruje Počítačové zpracování obrazu. Nemusíte se do formuláře žádosti o Počítačové zpracování obrazu zaregistrovat samostatně. 
+Musíte nejprve vyplnit a odeslat [formulář pro rozpoznávání formulářů Cognitive Services Kontejnery přístup formulář požádat](https://aka.ms/FormRecognizerContainerRequestAccess) o přístup ke kontejneru. Přitom také podepíše vás na počítačové vidění. Není nutné se přihlásit do formuláře žádosti o počítačové vize samostatně. 
 
 [!INCLUDE [Request access](../../../includes/cognitive-services-containers-request-access-only.md)]
 

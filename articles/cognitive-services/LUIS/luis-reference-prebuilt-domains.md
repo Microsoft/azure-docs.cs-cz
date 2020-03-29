@@ -1,7 +1,7 @@
 ---
 title: Předem sestavený odkaz na doménu – LUIS
 titleSuffix: Azure Cognitive Services
-description: Referenční informace pro předem připravených domén, které jsou předem sestavené kolekce záměry a entity z Language Understanding Intelligent Services (LUIS).
+description: Odkaz na předem vytvořené domény, které jsou předem vytvořené kolekce záměrů a entit z inteligentních služeb pro porozumění jazykům (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,41 +12,41 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 05ad340b3856291832ba0521c7da70ad55260384
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270613"
 ---
-# <a name="prebuilt-domain-reference-for-your-luis-app"></a>Předem sestavený odkaz na doménu pro aplikaci LUIS
-Tento odkaz obsahuje informace o [předem sestavených doménách](luis-how-to-use-prebuilt-domains.md), které představují předem sestavené kolekce záměrů a entit, které Luis nabídky.
+# <a name="prebuilt-domain-reference-for-your-luis-app"></a>Předem sestavený odkaz na doménu pro vaši aplikaci LUIS
+Tento odkaz obsahuje informace o [předem sestavené domény](luis-how-to-use-prebuilt-domains.md), které jsou předem vytvořené kolekce záměrů a entit, které nabízí LUIS.
 
-[Vlastní domény](luis-how-to-start-new-app.md)na rozdíl od začátku bez záměrů a modelů. Všechny předem připravených domény záměry a entity můžete přidat do vlastního modelu.
+[Vlastní domény](luis-how-to-start-new-app.md), naopak začít bez záměrů a modelů. Do vlastního modelu můžete přidat všechny předem vytvořené záměry a entity domény.
 
-## <a name="custom-domains-per-language"></a>Vlastní domény na jazyk
+## <a name="custom-domains-per-language"></a>Vlastní domény podle jazyka
 
-Následující tabulka shrnuje aktuálně podporované domény. Podpora angličtiny je obvykle více dokončena než jiné.
+Níže uvedená tabulka shrnuje aktuálně podporované domény. Podpora angličtiny je obvykle úplnější než ostatní.
 
-| Typ entity       | EN-US      | ZH-CN   | DE    | FR     | ES    | IT      | PT – BR |  JP  |      KO |        NL |    TR |
+| Typ entity       | CS-US      | ZH-CN   | DE    | FR     | ES    | IT      | PT-BR |  JP  |      Ko |        NL |    TR |
 |:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:|
 | Kalendář  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-|Komunikace  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Email     | ✓    | ✓       | ✓   | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+|Communication  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| E-mail     | ✓    | ✓       | ✓   | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | HomeAutomation          | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Poznámky:     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| Poznámky     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Místa   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | RestaurantReservation  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| ToDo     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Veřejné služby      | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Počasí        | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| Todo     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| Nástroje      | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| Weather        | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Web    | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 
-Předem připravené domény nejsou v nástroji **podporované** :
+Předem vytvořené domény **nejsou podporovány** v:
 
-* Francouzština (Kanada)
+* Kanadská francouzština
 * Hindština
-* Španělština – Mexiko
+* Španělština mexická
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se s [jednoduchou entitou](reference-entity-simple.md).
+Naučte se [jednoduchou entitu](reference-entity-simple.md).

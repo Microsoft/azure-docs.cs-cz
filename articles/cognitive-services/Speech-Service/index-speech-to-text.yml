@@ -1,30 +1,33 @@
 ### YamlMime:Landing
 title: Dokumentace k převodu řeči na text
-summary: Převod řeči na text ze služby Speech, označovaný také jako rozpoznávání řeči, umožňuje přepis zvukových streamů v reálném čase na text.
+summary: Převod řeči na text ze služby Řeč, označovaný také jako rozpoznávání řeči, umožňuje přepis zvukových proudů v reálném čase a v šarži do textu.
 metadata:
-  title: Dokumentace pro převod řeči na text – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  title: Dokumentace k převodu řeči na text – kurzy, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 03/10/2020
+  ms.date: 03/19/2020
   ms.author: dapine
-  ms.openlocfilehash: 7f3486e9944cf7f01c2a53ca101c5cc26530e086
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: b6f2fed7b5d6722b07b7f996c46e48ea0d86f755
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79370351"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "80052844"
 landingContent:
-- title: Převod řeči na text
+- title: O převodu řeči na text
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je převod řeči na text?
+    - text: Co je převod řeči na text v reálném čase?
       url: speech-to-text.md
+    - text: Co je dávková řeč na text?
+      url: batch-transcription.md
+    - text: Základy rozpoznávání řeči?
+      url: speech-to-text-basics.md
   - linkListType: quickstart
     links:
     - text: Rozpoznávání řeči se vstupem z mikrofonu
@@ -33,7 +36,7 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: Rozpoznávání řeči uložené v úložišti objektů blob
       url: quickstarts/from-blob.md
-- title: Vývoj s využitím řeči na text
+- title: Vývoj pomocí převodu řeči na text
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -45,11 +48,15 @@ landingContent:
       url: how-to-custom-speech.md
     - text: Použití komprimovaných formátů zvukového vstupu
       url: how-to-use-codec-compressed-audio-input-streams.md
+  - linkListType: tutorial
+    links:
+    - text: Zlepšení přesnosti s využitím modelů tenantů
+      url: tutorial-tenant-model.md
   - linkListType: concept
     links:
-    - text: Příprava dat pro Custom Speech
+    - text: Příprava dat pro vlastní řeč
       url: how-to-custom-speech-test-data.md
-    - text: Výuka modelu pro Custom Speech
+    - text: Trénování modelu pro vlastní řeč
       url: how-to-custom-speech-train-model.md
     - text: Vytváření přepisů pořízených lidmi
       url: how-to-custom-speech-human-labeled-transcriptions.md
@@ -61,5 +68,5 @@ landingContent:
       url: language-support.md#speech-to-text
     - text: Nejčastější dotazy k převodu řeči na text
       url: faq-stt.md
-    - text: Ceny z převodu řeči na text
+    - text: Ceny převodu řeči na text
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

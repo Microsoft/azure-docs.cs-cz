@@ -1,45 +1,44 @@
 ### YamlMime:Landing
 title: Dokumentace ke Speech Devices
-summary: Sada SDK zařízení řeči je pretuned knihovny, které je spárováno pomocí účelových, mikrofon pole development Kit.
+summary: Sada Speech Devices SDK je předem vyladěná knihovna, která je spárována s účelovými sadami pro vývoj mikrofonního pole.
 metadata:
-  title: Dokumentace k zařízením pro rozpoznávání řeči – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  title: Dokumentace k řečovým zařízením – kurzy, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: cbdbcce25d357530775140bc8b5fdf82808c64ad
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 5fc9e045162c03585f20e0b06a01524480070050
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79369246"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415355"
 landingContent:
-- title: O sadě Speech SDK pro zařízení
+- title: O sadě SDK pro rozpoznávání řeči
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je sada Speech Devices SDK?
+    - text: Co je sada SDK pro řečová zařízení?
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
-    - text: Použití sady Speech Devices SDK (Windows)
+    - text: Použití sad y SDK pro rozpoznávání řeči (Windows)
       url: speech-devices-sdk-quickstart.md?pivots=platform-windows
-    - text: Použití sady Speech Devices SDK (Linux)
+    - text: Použití řečových zařízení SDK (Linux)
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
-    - text: Použití sady Speech Devices SDK (Android)
+    - text: Použití řečových zařízení SDK (Android)
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: Vývoj se sadou Speech SDK pro zařízení
+- title: Vývoj pomocí řečových zařízení SDK
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Návrh pole mikrofonu
       url: speech-devices-sdk-microphone.md
-    - text: Nastavení sady Roobo v1
+    - text: Nastavení roobo v1 kit
       url: speech-devices-sdk-roobo-v1.md
 - title: Odkaz
   linkLists:

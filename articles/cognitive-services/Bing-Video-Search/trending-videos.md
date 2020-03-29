@@ -1,7 +1,7 @@
 ---
-title: Hledání v trendech na webu pro vývoj videí pomocí rozhraní API Bingu pro vyhledávání videí
+title: Hledání populárních videí na webu pomocí rozhraní API pro vyhledávání videí Bingu
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat rozhraní API Bingu pro vyhledávání videí k vyhledávání trendů na webu.
+description: Přečtěte si, jak pomocí rozhraní API pro vyhledávání videí Bingu vyhledávat na webu populární videa.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: ea6f79bf6c305ecc07b3e684ede15ad439039e7e
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68500619"
 ---
-# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Získejte vývoj videí pomocí rozhraní API Bingu pro vyhledávání videí 
+# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Získejte populární videa pomocí rozhraní API pro vyhledávání videí Bingu 
 
-Rozhraní API Bingu pro vyhledávání videí vám umožní najít dnešní vývojové videa z celého webu a v různých kategoriích. 
+Rozhraní API pro vyhledávání videí Bing umožňuje najít dnešní populární videa z celého webu a v různých kategoriích. 
 
-## <a name="get-request"></a>ZÍSKAT žádost
+## <a name="get-request"></a>Požadavek GET
 
-Pokud si chcete z rozhraní API Bingu pro vyhledávání videí dostat dnešní vývojové videa, pošlete následující požadavek GET:  
+Chcete-li získat dnešní trendová videa z rozhraní API pro vyhledávání videí Bingu, odešlete následující žádost GET:  
   
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
@@ -37,25 +37,25 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="market-support"></a>Podpora trhu
 
-Následující trhy podporují vývojové videa.  
+Následující trhy podporují populární videa.  
  
--   EN-AU (angličtina, Austrálie)  
--   en-CA (angličtina, Kanada)  
--   en-GB (angličtina, Velká Británie)  
--   EN-ID (angličtina, Indonésie)  
--   EN-IE (angličtina, Irsko)  
+-   en-AU (anglicky, Austrálie)  
+-   cs-CA (angličtina, Kanada)  
+-   en-GB (anglicky, Velká Británie)  
+-   en-ID (anglicky, indonésie)  
+-   en-IE (angličtina, Irsko)  
 -   en-IN (angličtina, Indie)  
--   EN-NZ (angličtina, Nový Zéland)  
--   EN-PH (angličtina, Filipínská republika)  
--   EN-SG (angličtina, Singapur)  
--   EN-US (angličtina, USA)  
--   EN-WW (v angličtině, celosvětově agregovaný kód)  
--   EN-ZA (angličtina, Jihoafrická Amerika)  
+-   en-NZ (angličtina, Nový Zéland)  
+-   en-PH (angličtina, Filipíny)  
+-   en-SG (Angličtina, Singapur)  
+-   en-US (Angličtina, Spojené státy americké)  
+-   en-WW (angličtina, celosvětový souhrnný kód)  
+-   en-ZA (angličtina, Jihoafrická republika)  
 -   zh-CN (čínština, Čína)
 
 ## <a name="example-json-response"></a>Příklad odpovědi JSON  
 
-Následující příklad ukazuje odpověď rozhraní API obsahující vývojová videa, která jsou uvedena v kategorii a podkategorií. Odpověď také obsahuje videa s bannery, která jsou nejoblíbenějším trendem videí a která může pocházet z jedné nebo více kategorií.  
+Následující příklad ukazuje odpověď rozhraní API, která obsahuje trendová videa, která jsou uvedena podle kategorie a podkategorie. Odpověď také obsahuje bannerová videa, která jsou nejoblíbenějšími populárními videi a mohou pocházet z jedné nebo více kategorií.  
 
 ```json
 {  
@@ -121,7 +121,7 @@ Následující příklad ukazuje odpověď rozhraní API obsahující vývojová
   
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Získat video přehledy](video-insights.md)
+> [Získání přehledů videí](video-insights.md)

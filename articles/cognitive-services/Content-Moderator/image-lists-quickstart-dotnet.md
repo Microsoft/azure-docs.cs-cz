@@ -1,5 +1,5 @@
 ---
-title: Kontrolovat image proti vlastním seznamům C# v Content moderator
+title: Kontrola obrázků s vlastními seznamy v c# - Moderátor obsahu
 titleSuffix: Azure Cognitive Services
 description: Návod, jak moderovat obrázky se seznamy vlastních obrázků pomocí sady Content Moderator SDK pro jazyk C#.
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: e650529f3adb998ce683354565acdeb3928b50c3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72931750"
 ---
-# <a name="moderate-with-custom-image-lists-in-c"></a>Střední s vlastními seznamy obrázků vC#
+# <a name="moderate-with-custom-image-lists-in-c"></a>Moderovat s vlastními seznamy obrázků v C #
 
 Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) k následujícím účelům:
 - Vytvoření seznamu vlastních obrázků
@@ -32,21 +32,21 @@ Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít
 > [!NOTE]
 > Limit je maximálně **5 seznamů obrázků** a v každém seznamu může být **maximálně 10 000 obrázků**.
 
-Konzolová aplikace pro tuto příručku simuluje některé úlohy, které můžete provádět s rozhraním API pro seznam imagí.
+Konzolová aplikace pro tuto příručku simuluje některé úlohy, které můžete provádět pomocí rozhraní API seznamu obrázků.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Registrace do služeb Content Moderatoru
 
 Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč předplatného rozhraní API. Získáte ho přihlášením k odběru služby Content Moderator na webu [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
 
-## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
+## <a name="create-your-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio
 
-1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)** .
+1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)**.
 
    Ve vzorovém kódu pojmenujte tento projekt **ImageLists**.
 
-1. Projekt vyberte jako jediný spouštěný projekt řešení.
+1. Projekt vyberte jako jeden spouštěný projekt řešení.
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
@@ -72,7 +72,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
-Přidejte následující kód, abyste pro své předplatné vytvořili klienta Content Moderatoru. Aktualizujte pole `AzureEndpoint` a `CMSubscriptionKey` hodnotou adresy URL koncového bodu a klíče předplatného. Můžete je najít na kartě **rychlý Start** prostředku v Azure Portal.
+Přidejte následující kód, abyste pro své předplatné vytvořili klienta Content Moderatoru. Aktualizujte `AzureEndpoint` `CMSubscriptionKey` pole a hodnotami adresy URL koncového bodu a klíče předplatného. Najdete je na kartě **Rychlý start** vašeho prostředku na webu Azure Portal.
 
 ```csharp
 /// <summary>
@@ -292,7 +292,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Vytvoření metody k přidání kolekce obrázků do seznamu
 
-Do třídy **Program** přidejte následující metodu. Tato příručka neukazuje, jak používat značky pro obrázky v seznamu. 
+Do třídy **Program** přidejte následující metodu. Tato příručka neukazuje, jak použít značky na obrázky v seznamu. 
 
 ```csharp
 /// <summary>
@@ -1080,4 +1080,4 @@ Response:
 
 ## <a name="next-steps"></a>Další kroky
 
-Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro technologii .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.
+Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.

@@ -1,7 +1,7 @@
 ---
-title: Časté otázky týkající se řeči na text
+title: Projev na text nejčastější chátých otázek
 titleSuffix: Azure Cognitive Services
-description: Získejte odpovědi na nejčastější dotazy týkající se rozpoznávání řeči s textovou službou.
+description: Získejte odpovědi na nejčastější dotazy týkající se služby Řeč na text.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -11,189 +11,189 @@ ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
 ms.openlocfilehash: a279aebdd19ebd3a41ddad0c1c279937e00838c2
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77168466"
 ---
-# <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
+# <a name="speech-to-text-frequently-asked-questions"></a>Projev na text nejčastější chátých otázek
 
-Pokud nemůžete najít odpovědi na vaše otázky v těchto nejčastějších dotazech, podívejte se na [Další možnosti podpory](support.md).
+Pokud v těchto nejčastějších dotazech nemůžete najít odpovědi na své otázky, podívejte se na [další možnosti podpory](support.md).
 
 ## <a name="general"></a>Obecné
 
-**Otázka: Jaký je rozdíl mezi směrným modelem a vlastním převodem textu na textový model?**
+**Otázka: Jaký je rozdíl mezi modelem směrného plánu a vlastním modelem převodu na text?**
 
-Odpověď **: základní**model byl vyučen pomocí dat vlastněných společností Microsoft a již je nasazen v cloudu. Vlastní model můžete použít k přizpůsobení modelu, aby lépe vyhovoval konkrétnímu prostředí, které má určitý okolní hluk nebo jazyk. Podlahová výroba, automobily nebo převozy na vysokou úroveň by vyžadovala upravený akustický model. Témata, jako jsou biologie, fyzika, radiologie, názvy produktů a vlastní akronymy, vyžadují upravený jazykový model.
+**A**: Základní model byl trénovaný pomocí dat vlastněných microsoftem a je již nasazen v cloudu. Vlastní model můžete použít k přizpůsobení modelu tak, aby lépe vyhovoval určitému prostředí, které má určitý okolní hluk nebo jazyk. Tovární podlahy, auta nebo hlučné ulice by vyžadovaly přizpůsobený akustický model. Témata jako biologie, fyzika, radiologie, názvy produktů a vlastní zkratky by vyžadovaly přizpůsobený jazykový model.
 
-**Otázka: kde se mám začít používat základní model?**
+**Otázka: Kde mám začít, pokud chci použít základní model?**
 
-Odpověď **: nejdřív**Získejte [klíč předplatného](get-started.md). Chcete-li provést volání REST do přednasazených standardních modelů, přečtěte si téma [rozhraní REST API](rest-apis.md). Pokud chcete použít objekty WebSockets, [Stáhněte si sadu SDK](speech-sdk.md).
+**A**: Nejprve získejte [klíč předplatného](get-started.md). Pokud chcete provést volání REST k předem nasazeným modelům směrného plánu, přečtěte si informace o [souborech REST API](rest-apis.md). Chcete-li použít websockets, [stáhněte si sadu SDK](speech-sdk.md).
 
-**Otázka: Musím vždy vytvořit vlastní model řeči?**
+**Otázka: Musím vždy vytvořit vlastní řečový model?**
 
-Odpověď **: ne**. Pokud vaše aplikace používá obecný a každodenní jazyk, nemusíte model upravovat. Pokud se vaše aplikace používá v prostředí, kde je málo nebo bez hluku na pozadí, nemusíte model upravovat.
+**A:** Ne. Pokud vaše aplikace používá obecný, každodenní jazyk, nemusíte přizpůsobit model. Pokud se vaše aplikace používá v prostředí, kde je malý nebo žádný šum na pozadí, není nutné přizpůsobit model.
 
-Na portálu můžete nasadit základní a přizpůsobené modely a pak pro ně spustit testy přesnosti. Pomocí této funkce lze změřit přesnost směrného modelu oproti vlastnímu modelu.
+Můžete nasadit směrný plán a přizpůsobené modely na portálu a pak spustit testy přesnosti proti nim. Tuto funkci můžete použít k měření přesnosti modelu směrného plánu oproti vlastnímu modelu.
 
-**Otázka: Jak poznám, že zpracování pro datovou sadu nebo model je dokončeno?**
+**Otázka: Jak poznám, že je zpracování datové sady nebo modelu dokončeno?**
 
-Odpověď **: v**současné době je stav modelu nebo datové sady v tabulce jediným způsobem, jak znát. Po dokončení zpracování se stav **podařilo**.
+**A**: V současné době stav modelu nebo datové sady v tabulce je jediný způsob, jak zjistit. Po dokončení zpracování je stav **succeeded**.
 
-**Otázka: mohu vytvořit více než jeden model?**
+**Otázka: Mohu vytvořit více než jeden model?**
 
-Odpověď **: neexistuje**žádné omezení počtu modelů, které v kolekci můžete mít.
+**A:** Neexistuje žádný limit na počet modelů, které můžete mít ve své sbírce.
 
-**Otázka: jsem mi udělal chybu. Návody zrušit import dat nebo vytvoření modelu, který probíhá?**
+**Otázka: Uvědomil jsem si, že jsem udělal chybu. Jak zruším import dat nebo vytváření modelů, které právě probíhá?**
 
-Odpověď **: v**současné době nemůžete vrátit zpět akustický nebo přizpůsobený proces úprav jazyka. Importovaná data a modely můžete odstranit, pokud jsou ve stavu terminálu.
+**Odpověď:** V současné době nelze vrátit zpět proces akustické nebo jazykové adaptace. Importovaná data a modely můžete odstranit, pokud jsou v terminálovém stavu.
 
-**Otázka: Jaký je rozdíl mezi modelem vyhledávání a diktování a modelem konverzace?**
+**Otázka: Jaký je rozdíl mezi modelem vyhledávání a diktování a konverzačním modelem?**
 
-Odpověď **: můžete**vybrat z více než jednoho směrného modelu ve službě Speech Service. Model konverzace je užitečný pro rozpoznávání řeči, která se používá ve stylu konverzace. Tento model je ideální pro zdlouhavého přepisování telefonní hovory. Model hledání a diktování je ideální pro aplikace aktivované hlasem. Univerzální model je nový model, který se zaměřuje na řešení obou scénářů. Univerzální model je aktuálně na úrovni kvality v rámci prostředí ve většině místních hodnot nebo nad ním.
+**A**: Můžete si vybrat z více než jednoho základního modelu ve službě Řeč. Konverzační model je užitečný pro rozpoznávání řeči, která je mluvená v konverzačním stylu. Tento model je ideální pro přepis telefonních hovorů. Model Vyhledávání a diktování je ideální pro hlasem spouštěné aplikace. Univerzální model je nový model, jehož cílem je řešit oba scénáře. Univerzální model je aktuálně na nebo nad úroveň kvality konverzační model ve většině národních prostředí.
 
-**Otázka: mohu aktualizovat existující model (skládání modelů)?**
+**Otázka: Lze aktualizovat svůj stávající model (stohování modelu)?**
 
-Odpověď **: nelze**aktualizovat existující model. Jako řešení Zkombinujte starou datovou sadu s novou datovou sadou a proveďte novou úpravu.
+**A**: Existující model nelze aktualizovat. Jako řešení zkombinujte starou datovou sadu s novou datovou sadou a znovu se přizpůsobte.
 
-Starou datovou sadu a novou datovou sadu musí být sloučeny do jednoho souboru. zip (pro akustická data) nebo do souboru. txt (pro data jazyka). Po dokončení přizpůsobení je potřeba znovu nasadit nový aktualizovaný model, aby se získal nový koncový bod.
+Stará datová sada a nová datová sada musí být sloučeny do jednoho souboru ZIP (pro akustická data) nebo do souboru TXT (pro jazyková data). Po dokončení úpravy je třeba nový aktualizovaný model znovu nasadit, aby získal nový koncový bod.
 
-**Otázka: je-li k dispozici nová verze směrného plánu, je moje nasazení automaticky aktualizováno?**
+**Otázka: Je moje nasazení automaticky aktualizováno, pokud je k dispozici nová verze směrného plánu?**
 
-Odpověď **: nasazení**nebudou automaticky aktualizována.
+**A**: Nasazení nebudou automaticky aktualizována.
 
-Pokud jste přizpůsobeni a nasadili model pomocí směrného plánu V 1.0, zůstane nasazení tak tak, jak je. Zákazníci mohou vyřadit nasazený model z provozu a znovu je upravit pomocí novější verze směrného plánu a znovu nasadit.
+Pokud jste upravili a nasadili model se směrným plánem V1.0, toto nasazení zůstane tak, jak je. Zákazníci mohou vyřadit z provozu nasazený model, znovu se přizpůsobit pomocí novější verze směrného plánu a znovu nasadit.
 
-**Otázka: můžu stáhnout svůj model a spustit ho místně?**
+**Otázka: Mohu stáhnout model a spustit jej místně?**
 
-**A**: modely nelze stáhnout a spustit místně.
+**A**: Modely nelze stáhnout a spustit místně.
 
-**Otázka: jsou protokolovány moje požadavky?**
+**Otázka: Jsou moje požadavky zaznamenány?**
 
-Odpověď **: můžete**vybrat, když vytvoříte nasazení pro přepnutí trasování. V tomto okamžiku nebudou protokolovány žádné zvuky ani přepisy. V opačném případě se požadavky obvykle protokolují do Azure v zabezpečeném úložišti.
+**A**: Máte na výběr při vytváření nasazení pro vypnutí trasování. V tomto okamžiku nebude zaznamenán žádný zvuk nebo přepisy. V opačném případě se požadavky obvykle zaznamenávají v Azure v zabezpečeném úložišti.
 
-**Otázka: jsou omezeny moje požadavky?**
+**Otázka: Jsou mé požadavky omezeny?**
 
-Odpověď **: REST API**omezuje požadavky na 25 za 5 sekund. Podrobnosti najdete na stránkách pro [Převod řeči na text](speech-to-text.md).
+**A**: Rozhraní REST API omezuje požadavky na 25 za 5 sekund. Podrobnosti naleznete na našich stránkách pro [řeč na text](speech-to-text.md).
 
-**Otázka: jak se mi účtuje zvuk Dual Channel?**
+**Otázka: Jak se mi účtují za dvoukanálový zvuk?**
 
-Odpověď **: Pokud**odešlete každý kanál samostatně (každý kanál ve vlastním souboru), bude se vám účtovat doba trvání každého souboru. Pokud odešlete jeden soubor s každým multiplexem kanálu, bude se vám účtovat doba trvání jednoho souboru. Podrobnosti o cenách najdete na [stránce s cenami za Azure Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+**A**: Pokud odešlete každý kanál samostatně (každý kanál ve svém vlastním souboru), bude vám účtována doba trvání každého souboru. Pokud odešlete jeden soubor s každým kanálem multiplexem dohromady, bude vám účtována doba trvání jednoho souboru. Podrobnosti o cenách najdete na [stránce s cenami azure cognitive services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 > [!IMPORTANT]
-> Pokud máte k dispozici další aspekty ochrany osobních údajů, které vám zabrání v používání služby Custom Speech Service, obraťte se na jeden z kanálů podpory.
+> Pokud máte další obavy o ochranu osobních údajů, které vám zakazují používat vlastní službu Speech, obraťte se na jeden z kanálů podpory.
 
 ## <a name="increasing-concurrency"></a>Zvýšení souběžnosti
 
-**Otázka: Co když potřebuji vyšší souběžnost pro nasazený model, než je nabídka na portálu?**
+**Otázka: Co když potřebuji vyšší souběžnost pro nařízený model, než co je nabízeno na portálu?**
 
-Odpověď **: model**můžete škálovat v přírůstcích po 20 souběžných požadavcích.
+**A**: Můžete vertikálně navýšit kapacitu modelu v krocích po 20 souběžných požadavků.
 
-Pomocí požadovaných informací vytvořte žádost o podporu na [portálu podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Nezveřejňujte informace na žádném z veřejných kanálů (GitHub, StackOverflow,...), které jsou uvedené na [stránce podpory](support.md).
+S požadovanými informacemi vytvořte žádost o podporu na [portálu podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Nezveřejňujte informace o žádném z veřejných kanálů (GitHub, Stackoverflow, ...) uvedených na [stránce podpory](support.md).
 
-Pro zvýšení souběžnosti pro ***vlastní model***potřebujeme následující informace:
+Chcete-li zvýšit souběžnost pro ***vlastní model***, potřebujeme následující informace:
 
-- Oblast, ve které je model nasazený,
+- Oblast, kde je model nasazen,
 - ID koncového bodu nasazeného modelu:
-  - Máte [Custom Speech portálu](https://aka.ms/customspeech),
-  - přihlásit (v případě potřeby)
-  - Vyberte svůj projekt a nasazení,
-  - Vyberte koncový bod, pro který potřebujete zvýšení souběžnosti,
-  - Zkopírujte `Endpoint ID`.
+  - Dostal jsem se na [portál vlastní řeči](https://aka.ms/customspeech),
+  - přihlášení (v případě potřeby),
+  - vyberte svůj projekt a nasazení,
+  - vyberte koncový bod, pro který potřebujete zvýšení souběžnosti,
+  - zkopírujte `Endpoint ID`.
 
-Pro zvýšení souběžnosti pro ***základní model***potřebujeme následující informace:
+Chcete-li zvýšit souběžnost pro ***základní model***, potřebujeme následující informace:
 
-- Oblast vaší služby,
+- Oblast vašich služeb,
 
-a buď
+a to buď
 
-- přístupový token pro vaše předplatné (viz [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
+- přístupový token pro vaše předplatné (viz [zde](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
 
-nebo
+– nebo –
 
 - ID prostředku pro vaše předplatné:
-  - Přejít na [Azure Portal](https://portal.azure.com),
-  - Vyberte `Cognitive Services` do vyhledávacího pole,
-  - ze zobrazených služeb vyberte službu rozpoznávání řeči, pro kterou chcete, aby se souběžnost zvýšila,
-  - Zobrazit `Properties` pro tuto službu,
-  - Zkopírujte kompletní `Resource ID`.
+  - Přejděte na [portál Azure](https://portal.azure.com),
+  - vyberte `Cognitive Services` do vyhledávacího pole,
+  - ze zobrazených služeb vyberte službu Řeči, pro kterou chcete zvýšit souběžnost,
+  - zobrazit `Properties` pro tuto službu,
+  - zkopírujte `Resource ID`celý .
 
 ## <a name="importing-data"></a>Importing data
 
-**Otázka: Jaký je limit velikosti datové sady a proč je limit?**
+**Otázka: Jaký je limit velikosti datové sady a proč je limitem?**
 
-**O**: aktuální limit pro datovou sadu je 2 GB. Omezení je způsobeno omezením velikosti souboru pro nahrání protokolu HTTP.
+**A**: Aktuální limit pro datovou sadu je 2 GB. Limit je způsoben omezením velikosti souboru pro nahrávání http.
 
-**Otázka: můžu odeslat textové soubory, aby mohl nahrát větší textový soubor?**
+**Otázka: Mohu soubory scvokovat do zipu, abych mohl nahrát větší textový soubor?**
 
-Odpověď **: ne**. V současné době jsou povoleny pouze nekomprimované textové soubory.
+**A:** Ne. V současné době jsou povoleny pouze nekomprimované textové soubory.
 
-**Otázka: v sestavě dat se zobrazí zpráva, že došlo k chybě projevy. Jaký je problém?**
+**Otázka: Sestava dat říká, že byly neúspěšné projevy. V čem je problém?**
 
-**O**: selhání nahrání 100% projevy v souboru není problém. Pokud je velká většina projevy v akustické nebo jazykové datové sadě (například více než 95 procent) úspěšně naimportována, lze datovou sadu použít. Doporučujeme však, abyste se seznámili s tím, proč se projevy nezdařila, a opravili problémy. Nejběžnější problémy, jako jsou například chyby formátování, lze snadno opravit.
+**A**: Nenahrání 100 procent projevy v souboru není problém. Pokud drtivá většina projevy v akustické nebo jazykové datové sady (například více než 95 procent) jsou úspěšně importovány, datová sada může být použitelné. Doporučujeme však pokusit se pochopit, proč projevy se nezdařilo a opravit problémy. Nejčastější problémy, jako jsou chyby formátování, lze snadno opravit.
 
 ## <a name="creating-an-acoustic-model"></a>Vytvoření akustického modelu
 
-**Otázka: kolik akustických dat potřebuji?**
+**Otázka: Kolik akustických dat potřebuji?**
 
-Odpověď **: doporučujeme**začít od 30 minut a jedné hodiny akustických dat.
+**A**: Doporučujeme začít s mezi 30 minut a jednu hodinu akustických dat.
 
-**Otázka: jaká data mám shromažďovat?**
+**Otázka: Jaké údaje mám shromažďovat?**
 
-Odpověď **: Shromážděte**data, která jsou blízko scénáře použití aplikace, a případ použití. Shromažďování dat by se mělo shodovat s cílovou aplikací a uživateli z pohledu zařízení nebo zařízení, prostředí a typů mluvčích. Obecně byste měli shromažďovat data z co největší škály mluvčích mluvčích.
+**A**: Shromažďovat data, která je co nejblíže k scénáři aplikace a případ použití, jak je to možné. Shromažďování dat by mělo odpovídat cílové aplikaci a uživatelům z hlediska zařízení nebo zařízení, prostředí a typů reproduktorů. Obecně byste měli shromažďovat data z co nejširšího okruhu řečníků.
 
 **Otázka: Jak mám shromažďovat akustická data?**
 
-Odpověď: můžete vytvořit samostatnou aplikaci pro shromažďování dat nebo použít software pro záznam **zvuku z provozu**. Můžete také vytvořit verzi aplikace, která zaznamená zvuková data a následně data použije.
+**A**: Můžete vytvořit samostatnou aplikaci pro shromažďování dat nebo použít software pro nahrávání zvuku mimo polici. Můžete také vytvořit verzi aplikace, která protokoluje zvuková data a potom data použije.
 
-**Otázka: Potřebuji přepisovat přizpůsobit data?**
+**Otázka: Musím přepsat adaptační data sám?**
 
-Odpověď **: Ano**! Můžete ji přepisovat sami nebo použít profesionální přepisovou službu. Někteří uživatelé upřednostňují profesionální transcribers a jiné používají crowdsourcingový nebo mají vlastní přepisy.
+**A:** Ano! Můžete přepsat sami nebo použít profesionální transkripční službu. Někteří uživatelé dávají přednost profesionálním přepisovatelům a jiní používají crowdsourcing nebo přepisy dělají sami.
 
 ## <a name="accuracy-testing"></a>Testování přesnosti
 
-**Otázka: je možné provést offline testování mého vlastního akustického modelu pomocí vlastního jazykového modelu?**
+**Otázka: Lze provést offline testování vlastního akustického modelu pomocí vlastního jazykového modelu?**
 
-Odpověď **: Ano**, stačí vybrat vlastní jazykový model v rozevírací nabídce při nastavení offline testu.
+**A:** Ano, stačí vybrat vlastní jazykový model v rozevírací nabídce při nastavovat offline test.
 
-**Otázka: je možné provést offline testování vlastního jazykového modelu pomocí vlastního akustického modelu?**
+**Otázka: Lze provést offline testování vlastního jazykového modelu pomocí vlastního akustického modelu?**
 
-Odpověď **: Ano**, stačí vybrat vlastní akustický model v rozevírací nabídce při nastavení offline testu.
+**A:** Ano, stačí vybrat vlastní akustický model v rozevírací nabídce při nastavovat offline test.
 
-**Otázka: co je počet chyb aplikace Word (WER) a jak je vypočítána?**
+**Otázka: Co je chybová frekvence slov (WER) a jak se počítá?**
 
-Odpověď **: wer**je metrika vyhodnocení pro rozpoznávání řeči. Služba WER se počítá jako celkový počet chyb, včetně vložení, odstranění a nahrazení, dělený celkovým počtem slov v přepisu odkazu. Další informace najdete v tématu [Četnost chyb aplikace Word](https://en.wikipedia.org/wiki/Word_error_rate).
+**A**: WER je metrika hodnocení pro rozpoznávání řeči. WER se počítá jako celkový počet chyb, který zahrnuje vložení, odstranění a nahrazení, děleno celkovým počtem slov v přepisu odkazu. Další informace naleznete v tématu [chybovost slov](https://en.wikipedia.org/wiki/Word_error_rate).
 
-**Otázka: Návody určení, zda jsou výsledky testu přesnosti dobré?**
+**Otázka: Jak zjistím, zda jsou výsledky testu přesnosti dobré?**
 
-Odpověď **: výsledky**znázorňují porovnání mezi směrným modelem a modelem, který jste přizpůsobili. Měli byste se zaměřit na přesměrovat základní model, aby bylo přizpůsobení vhodné.
+**A**: Výsledky ukazují porovnání mezi modelem základní linie a modelem, který jste přizpůsobili. Měli byste se snažit porazit základní model, aby přizpůsobení stálo za to.
 
-**Otázka: Návody určení služby WER základního modelu, aby bylo možné zjistit, zda došlo k vylepšení?**
+**Otázka: Jak zjistím WER základního modelu, abych zjistil, zda došlo ke zlepšení?**
 
-Odpověď **: výsledky**offline testu ukazují přesnost směrného plánu vlastního modelu a zlepšení oproti směrnému plánu.
+**A**: Výsledky offline testu ukazují přesnost směrného plánu vlastního modelu a zlepšení oproti směrnému plánu.
 
 ## <a name="creating-a-language-model"></a>Vytvoření jazykového modelu
 
-**Otázka: kolik textových dat Potřebuji nahrávat?**
+**Otázka: Kolik textových dat je potřeba nahrát?**
 
-Odpověď **: závisí**na tom, jak se liší slovní a slovní fráze používané ve vaší aplikaci od počátečních jazykových modelů. Pro všechna nová slova je vhodné zadat tolik příkladů, kolik jich může použití těchto slov. Pro běžné fráze, které jsou používány ve vaší aplikaci, včetně frází v jazykových datech, je také užitečné, protože systém oznamuje, že se tyto výrazy naslouchají. Je běžné mít minimálně 100 a obvykle několik stovek nebo více projevy v datové sadě jazyka. Pokud se očekává, že některé typy dotazů budou běžnější než jiné, můžete do datové sady vložit více kopií běžných dotazů.
+**A**: Záleží na tom, jak odlišné slovní zásoby a fráze používané ve vaší aplikaci jsou z výchozí jazykové modely. Pro všechna nová slova je užitečné poskytnout co nejvíce příkladů použití těchto slov. Pro běžné fráze, které se používají ve vaší aplikaci, včetně frází v datech jazyka je také užitečné, protože říká systému také naslouchat pro tyto termíny. Je běžné mít alespoň 100 a obvykle několik set nebo více projevy v datové sadě jazyka. Také pokud některé typy dotazů se očekává, že bude běžnější než ostatní, můžete vložit více kopií běžných dotazů v datové sadě.
 
-**Otázka: mohu nahrát jenom seznam slov?**
+**Otázka: Mohu jen nahrát seznam slov?**
 
-Odpověď: nahráním seznamu slov budou do slovníku přidána slova, ale nezpůsobí systém, jak jsou slova obvykle používána. Poskytnutím úplných nebo částečných projevy (vět nebo frází věcí, které uživatelé nejspíš říkají), se může jazykový model naučit nová slova a jejich použití. Vlastní jazykový model je dobrý, nejen pro přidávání nových slov do systému, ale také pro úpravu pravděpodobnosti známých slov pro vaši aplikaci. Poskytování úplných projevy pomáhá lépe se seznámit se systémem.
+**A**: Nahráním seznamu slov přidáte slova do slovní zásoby, ale nebude učit systém, jak se slova obvykle používají. Poskytnutím úplné nebo částečné projevy (věty nebo fráze věcí, které uživatelé pravděpodobně řeknou), jazykový model může naučit nová slova a jak jsou používány. Vlastní jazykový model je vhodná nejen pro přidávání nových slov do systému, ale také pro úpravu pravděpodobnosti známých slov pro vaši aplikaci. Poskytování úplné projevy pomáhá systému lépe učit.
 
-## <a name="tenant-model-custom-speech-with-office-365-data"></a>Model tenanta (Custom Speech s daty sady Office 365)
+## <a name="tenant-model-custom-speech-with-office-365-data"></a>Model klienta (vlastní řeč s daty Office 365)
 
-**Otázka: Jaké informace jsou součástí modelu tenanta a jak se vytvoří?**
+**Otázka: Jaké informace jsou zahrnuty v modelu klienta a jak se vytvoří?**
 
-**A:** Model tenanta se sestavuje pomocí e-mailů a dokumentů [veřejných skupin](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) , které může kdokoli ve vaší organizaci vidět.
+**A:** Model klienta je sestaven pomocí [e-mailů a dokumentů veřejné skupiny,](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) které může zobrazit kdokoli ve vaší organizaci.
 
-**Otázka: Jaké prostředí pro rozpoznávání řeči vylepšuje model tenanta?**
+**Otázka: Jaké prostředí řeči vylepšuje model klienta?**
 
-**A:** Když je model tenanta povolený, vytvořený a publikovaný, používá se ke zlepšení rozpoznávání pro všechny podnikové aplikace vytvořené pomocí služby Speech. Tím se také předají token AAD uživatele, který indikuje členství v podniku.
+**A:** Když je model klienta povolen, vytvořen a publikován, slouží ke zlepšení rozpoznávání pro všechny podnikové aplikace vytvořené pomocí služby Speech; které také předat token AAD uživatele označující členství v rozlehlé síti.
 
-Prostředí pro rozpoznávání řeči, která jsou integrovaná do Office 365, jako je například popis diktování a aplikace PowerPoint, se při vytváření modelu tenanta pro aplikace služby Speech nemění.
+Prostředí řeči integrované v Office 365, jako je diktování a titulky v PowerPointu, se nezmění při vytváření modelu tenanta pro aplikace služby Speech.
 
 ## <a name="next-steps"></a>Další kroky
 

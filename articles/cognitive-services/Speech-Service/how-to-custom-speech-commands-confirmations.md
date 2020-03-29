@@ -1,7 +1,7 @@
 ---
-title: 'Postupy: Přidání potvrzení k vlastnímu příkazu (Preview)'
+title: 'Postup: Přidání potvrzení do vlastního příkazu (náhled)'
 titleSuffix: Azure Cognitive Services
-description: V tomto článku, jak implementovat potvrzení pro příkaz ve vlastních příkazech.
+description: V tomto článku, jak implementovat potvrzení pro příkaz ve vlastní příkazy.
 services: cognitive-services
 author: encorona-ms
 manager: yetian
@@ -11,41 +11,41 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: encorona
 ms.openlocfilehash: afa197c83b4f66f12863de4185ef7763447f3ed9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75456495"
 ---
-# <a name="how-to-add-a-confirmation-to-a-custom-command-preview"></a>Postupy: Přidání potvrzení k vlastnímu příkazu (Preview)
+# <a name="how-to-add-a-confirmation-to-a-custom-command-preview"></a>Postup: Přidání potvrzení do vlastního příkazu (náhled)
 
-V tomto článku se dozvíte, jak přidat potvrzení do příkazu.
+V tomto článku se dozvíte, jak přidat potvrzení příkazu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Je nutné provést kroky v následujících článcích:
+Musíte mít dokončeny kroky v následujících článcích:
 
-- [Rychlý Start: Vytvoření vlastního příkazu (Preview)](./quickstart-custom-speech-commands-create-new.md)
-- [Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)](./quickstart-custom-speech-commands-create-parameters.md)
+- [Úvodní příručka: Vytvoření vlastního příkazu (náhled)](./quickstart-custom-speech-commands-create-new.md)
+- [Úvodní příručka: Vytvoření vlastního příkazu s parametry (náhled)](./quickstart-custom-speech-commands-create-parameters.md)
 
 ## <a name="create-a-setalarm-command"></a>Vytvoření příkazu SetAlarm
 
-K předvedení ověření můžete vytvořit nový příkaz, který uživateli umožní nastavit alarm.
+Chcete-li demonstrovat ověření, vytvořme nový příkaz, který uživateli umožní nastavit budík.
 
-1. Otevřete dříve vytvořenou aplikaci Custom Commands v [studiu řeči](https://speech.microsoft.com/)
-1. Vytvoření nového příkazu **SetAlarm**
-1. Přidat parametr s názvem DateTime
+1. Otevření dříve vytvořené aplikace Vlastní příkazy v [aplikaci Speech Studio](https://speech.microsoft.com/)
+1. Vytvoření nového příkazového **příkazu SetAlarm**
+1. Přidání parametru s názvem DateTime
 
    | Nastavení           | Navrhovaná hodnota                                          | Popis                                                                                      |
    | ----------------- | ---------------------------------------------------------| ------------------------------------------------------------------------------------------------ |
-   | Název              | DateTime                                                 | Popisný název pro parametr příkazu                                                    |
-   | Požadováno          | true                                                     | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr |
-   | Šablona odpovědi | "– Jaký čas?"                                           | Výzva k zadání hodnoty tohoto parametru, pokud není známa                              |
-   | Typ              | DateTime                                                 | Typ parametru, například číslo, řetězec nebo datum a čas                                      |
-   | Výchozí hodnoty data     | Pokud datum chybí, použijte dnešní den.                             |                                                                                                  |
-   | Výchozí hodnoty času     | V případě chybějícího času použít začátek dne                      |                                                                                                  | 
+   | Name (Název)              | DateTime                                                 | Popisný název parametru Command                                                    |
+   | Požaduje se          | true                                                     | Zaškrtávací políčko označující, zda je před dokončením příkazu vyžadována hodnota tohoto parametru. |
+   | Šablona odpovědi | "- V kolik hodin?"                                           | Výzva k žádosti o hodnotu tohoto parametru, pokud není známa                              |
+   | Typ              | DateTime                                                 | Typ parametru, například Číslo, Řetězec nebo Čas data                                      |
+   | Výchozí datum     | Pokud datum chybí použití dnes                             |                                                                                                  |
+   | Výchozí čas     | Pokud čas chybí, použijte začátek dne                      |                                                                                                  | 
 
-1. Přidat ukázkové věty
+1. Přidání některých ukázkových vět
    
    ```
     set an alarm for {DateTime}
@@ -53,71 +53,71 @@ K předvedení ověření můžete vytvořit nový příkaz, který uživateli u
     alarm for {DateTime}
    ```
 
-1. Přidat pravidlo pro dokončení pro potvrzení výsledku
+1. Přidání pravidla dokončení pro potvrzení výsledku
 
    | Nastavení    | Navrhovaná hodnota                                         | Popis                                        |
    | ---------- | ------------------------------------------------------- | -------------------------------------------------- |
-   | Název pravidla  | Nastavit alarm                                               | Název popisující účel pravidla          |
-   | Akce    | SpeechResponse-"-OK, sada alarmů pro {DateTime}"       | Akce, která se má provést, když je podmínka pravidla pravdivá |
+   | Název pravidla  | Nastavení budíku                                               | Název popisující účel pravidla          |
+   | Akce    | SpeechResponse - "- Ok, budík nastaven pro {DateTime}"       | Akce, která má být v případě, že je splněna podmínka pravidla |
 
-## <a name="try-it-out"></a>Vyzkoušet
+## <a name="try-it-out"></a>Vyzkoušejte si to.
 
-Vyberte panel test a vyzkoušejte několik interakcí.
+Vyberte panel Test a vyzkoušejte několik interakcí.
 
-- Vstup: nastavit alarm pro zítřejší čas v poledne
-- Výstup: "OK, sada alarmů pro 12/06/2019 12:00:00"
+- Vstup: Nastavení budíku na zítřek v poledne
+- Výstup: "Ok, budík nastaven na 12/06/2019 12:00:00"
 
-- Vstup: Nastavení alarmu
-- Výstup: "jaký čas?"
+- Vstup: Nastavení budíku
+- Výstup: "V kolik?"
 - Vstup: 17:00
-- Výstup: "OK, sada alarmů pro 12/05/2019 17:00:00"
+- Výstup: "Ok, budík nastaven na 12/05/2019 17:00:00"
 
-## <a name="add-the-advanced-rules-for-confirmation"></a>Přidat Rozšířená pravidla pro potvrzení
+## <a name="add-the-advanced-rules-for-confirmation"></a>Přidání rozšířených pravidel pro potvrzení
 
-1. Přidejte rozšířené pravidlo pro potvrzení. 
+1. Přidejte pro potvrzení rozšířené pravidlo. 
 
-    Toto pravidlo vyzve uživatele k potvrzení data a času alarmu a očekává se potvrzení (ano/ne) pro další tah.
-
-   | Nastavení               | Navrhovaná hodnota                                                                  | Popis                                        |
-   | --------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- |
-   | Název pravidla             | Potvrdit datum a čas                                                                | Název popisující účel pravidla          |
-   | Podmínky            | Povinný parametr-DateTime                                                    | Podmínky, které určují, kdy se pravidlo dá spustit    |   
-   | Akce               | SpeechResponse-"– Opravdu chcete nastavit alarm pro {DateTime}?"       | Akce, která se má provést, když je podmínka pravidla pravdivá |
-   | Stav po provedení | Počkat na vstup                                                                   | Stav pro uživatele po zapnutí                  |
-   | Očekávání          | Potvrzení                                                                     | Očekává se další zapínání.                      |
-
-1. Přidejte rozšířené pravidlo pro zpracování úspěšného potvrzení (uživatel uvedli Ano).
+    Toto pravidlo požádá uživatele o potvrzení data a času alarmu a očekává potvrzení (ano/ne) pro další tah.
 
    | Nastavení               | Navrhovaná hodnota                                                                  | Popis                                        |
    | --------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- |
-   | Název pravidla             | Přijato potvrzení                                                            | Název popisující účel pravidla          |
-   | Podmínky            | SuccessfulConfirmation & požadován parametr-DateTime                           | Podmínky, které určují, kdy se pravidlo dá spustit    |   
-   | Stav po provedení | Připraveno k dokončení                                                             | Stav uživatele po zapnutí                   |
+   | Název pravidla             | Potvrdit čas data                                                                | Název popisující účel pravidla          |
+   | Podmínky            | Povinný parametr - datetime                                                    | Podmínky, které určují, kdy může být pravidlo spuštěno    |   
+   | Akce               | SpeechResponse - "- Opravdu chcete nastavit budík pro {DateTime}?"       | Akce, která má být v případě, že je splněna podmínka pravidla |
+   | Stát po provedení | Čekat na vstup                                                                   | Stav pro uživatele po otočení                  |
+   | Očekávání          | Potvrzení                                                                     | Očekávání pro další tah                      |
 
-1. Přidejte rozšířené pravidlo pro zpracování potvrzení zamítnuté (uživatel se mu nic nejedná).
+1. Přidání rozšířeného pravidla pro zpracování úspěšného potvrzení (uživatel řekl ano)
 
    | Nastavení               | Navrhovaná hodnota                                                                  | Popis                                        |
    | --------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- |
-   | Název pravidla             | Zamítnuté potvrzení                                                                   | Název popisující účel pravidla          |
-   | Podmínky            | DeniedConfirmation & požadován parametr-DateTime                               | Podmínky, které určují, kdy se pravidlo dá spustit    |   
-   | Akce               | ClearParameter-DateTime & SpeechResponse-"– žádný problém, čas?"     | Akce, která se má provést, když je podmínka pravidla pravdivá |
-   | Stav po provedení | Počkat na vstup                                                                   | Stav uživatele po zapnutí                   |
-   | Očekávání          | ElicitParameters – DateTime                                                      | Očekává se další zapínání.                      |
+   | Název pravidla             | Přijaté potvrzení                                                            | Název popisující účel pravidla          |
+   | Podmínky            | Úspěšné potvrzení & povinný parametr - DateTime                           | Podmínky, které určují, kdy může být pravidlo spuštěno    |   
+   | Stát po provedení | Připraveno k dokončení                                                             | Stav uživatele po otočení                   |
 
-## <a name="try-it-out"></a>Vyzkoušet
+1. Přidání rozšířeného pravidla pro zpracování zamítnutého potvrzení (uživatel řekl ne)
 
-Vyberte panel test a vyzkoušejte několik interakcí.
+   | Nastavení               | Navrhovaná hodnota                                                                  | Popis                                        |
+   | --------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- |
+   | Název pravidla             | Zamítnuto potvrzení                                                                   | Název popisující účel pravidla          |
+   | Podmínky            | DeniedConfirmation & povinný parametr - DateTime                               | Podmínky, které určují, kdy může být pravidlo spuštěno    |   
+   | Akce               | ClearParameter - DateTime & SpeechResponse - "- Žádný problém, v kolik hodin pak?"     | Akce, která má být v případě, že je splněna podmínka pravidla |
+   | Stát po provedení | Čekat na vstup                                                                   | Stav uživatele po otočení                   |
+   | Očekávání          | ElicitParameters - DateTime                                                      | Očekávání pro další tah                      |
 
-- Vstup: nastavit alarm pro zítřejší čas v poledne
-- Výstup: "Opravdu chcete nastavit alarm pro 12/07/2019 12:00:00?"
-- Vstup: ne
-- Výstup: "žádný problém, čas?"
+## <a name="try-it-out"></a>Vyzkoušejte si to.
+
+Vyberte panel Test a vyzkoušejte několik interakcí.
+
+- Vstup: Nastavení budíku na zítřek v poledne
+- Výstup: "Opravdu chcete nastavit budík na 12/07/2019 12:00:00?"
+- Vstup: Ne
+- Výstup: "Žádný problém, v kolik tedy?"
 - Vstup: 17:00
-- Výstup: "Opravdu chcete nastavit alarm pro 12/06/2019 17:00:00?"
+- Výstup: "Opravdu chcete nastavit budík na 12/06/2019 17:00:00?"
 - Vstup: Ano
-- Výstup: "OK, sada alarmů pro 12/06/2019 17:00:00"
+- Výstup: "Ok, budík nastaven na 12/06/2019 17:00:00"
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Postupy: Přidání opravy s jedním krokem k vlastnímu příkazu (Preview)](./how-to-custom-speech-commands-one-step-correction.md)
+> [Postup: Přidání jednokrokové opravy do vlastního příkazu (náhled)](./how-to-custom-speech-commands-one-step-correction.md)

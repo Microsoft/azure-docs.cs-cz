@@ -1,7 +1,7 @@
 ---
-title: Přeložit za branami firewall – Translator Text API
+title: Překlad za firewally - Překladač Text API
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services Translator Text API můžete překládat za brány firewall pomocí filtrování názvů domén nebo IP adres.
+description: Azure Cognitive Services Translator Text API můžete přeložit za firewally pomocí domény název nebo IP filtrování.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: cd7904fedd3ab3f64315cb6f98d99b8fd12254f6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837406"
 ---
-# <a name="how-to-translate-behind-ip-firewalls-with-the-translator-text-api"></a>Postup při překladu za bránou firewall IP adres pomocí Translator Text API
+# <a name="how-to-translate-behind-ip-firewalls-with-the-translator-text-api"></a>Jak překládat za IP firewally s Translator Text API
 
-Translator Text API může překládat za brány firewall pomocí filtrování názvů domén nebo IP adres. Filtrování názvů domén je upřednostňovaná metoda. **Nedoporučujeme** spouštět Microsoft Translator za bránou firewall filtrovanou pomocí protokolu IP. Instalační program se může v budoucnu poškodit bez předchozího upozornění.
+Překladač Text API lze přeložit za brány firewall pomocí domény název nebo IP filtrování. Upřednostňovanou metodou je filtrování názvů domén. **Nedoporučujeme spouštět** Microsoft Translator zpoza brány firewall filtrované IP adresou. Nastavení se pravděpodobně v budoucnu zlomí bez předchozího upozornění.
 
-## <a name="translator-ip-addresses"></a>IP adresy překladatele
-IP adresy pro api.cognitive.microsofttranslator.com – Microsoft Translator Text API od 21. srpna 2019:
+## <a name="translator-ip-addresses"></a>Překladač IP adres
+21. srpna 2019 adresy IP adres api.cognitive.microsofttranslator.com – Microsoft Translator Text API:
 
 * **Asie a Tichomoří:** 20.40.125.208, 20.43.88.240, 20.184.58.62, 40.90.139.163, 104.44.89.44
 * **Evropa:** 40.90.138.4, 40.90.141.99, 51.105.170.64, 52.155.218.251
@@ -31,4 +31,4 @@ IP adresy pro api.cognitive.microsofttranslator.com – Microsoft Translator Tex
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Překlad za IP adresami firewallů ve vašem volání překladače rozhraní API](reference/v3-0-translate.md)
+> [Překlad za IP firewally v volání Překladače ROZHRANÍ API](reference/v3-0-translate.md)

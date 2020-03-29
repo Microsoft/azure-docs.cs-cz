@@ -5,32 +5,32 @@ ms.topic: include
 ms.date: 02/12/2020
 ms.author: wolfma
 ms.openlocfilehash: c8e6c11771ae4cd216b3b1e43f3db7924dca81cd
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77168173"
 ---
-| Geografické | Oblast | Identifikátor oblasti |
+| Geography | Region (Oblast) | Identifikátor oblasti |
 | ----- | ----- | ----- |
-| Amerika | Střední USA | `centralus` |
+| Amerika | USA – střed | `centralus` |
 | Amerika | USA – východ | `eastus` |
-| Amerika | Východní USA 2 | `eastus2` |
-| Amerika | Středoseverní USA | `northcentralus` |
-| Amerika | Střed USA – jih | `southcentralus` |
-| Amerika | Střed USA – západ | `westcentralus` |
-| Amerika | Západní USA | `westus` |
-| Amerika | Západní USA 2 | `westus2` |
-| Amerika | Kanada – střed | `canadacentral` |
+| Amerika | USA – východ 2 | `eastus2` |
+| Amerika | USA – středosever | `northcentralus` |
+| Amerika | USA – středojih | `southcentralus` |
+| Amerika | USA – středozápad | `westcentralus` |
+| Amerika | USA – západ | `westus` |
+| Amerika | USA – západ 2 | `westus2` |
+| Amerika | Střední Kanada | `canadacentral` |
 | Amerika | Brazílie – jih | `brazilsouth` |
 | Asie a Tichomoří | Východní Asie | `eastasia` |
 | Asie a Tichomoří | Jihovýchodní Asie | `southeastasia` |
 | Asie a Tichomoří | Austrálie – východ | `australiaeast` |
-| Asie a Tichomoří | Střed Indie | `centralindia` |
+| Asie a Tichomoří | Indie – střed | `centralindia` |
 | Asie a Tichomoří | Japonsko – východ | `japaneast` |
 | Asie a Tichomoří | Japonsko – západ | `japanwest` |
 | Asie a Tichomoří | Jižní Korea – střed | `koreacentral` |
 | Evropa | Severní Evropa | `northeurope` |
 | Evropa | Západní Evropa | `westeurope` |
 | Evropa | Francie – střed | `francecentral` |
-| Evropa | Velká Británie – jih | `uksouth` |
+| Evropa | Spojené království – jih | `uksouth` |

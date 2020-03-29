@@ -1,81 +1,81 @@
 ---
-title: Přepis konverzace (Preview) – služba Speech
+title: Přepis konverzace (náhled) – služba řeči
 titleSuffix: Azure Cognitive Services
-description: Přepis konverzace je řešení převodu řeči na text, které kombinuje rozpoznávání řeči, identifikaci mluvčího a přidaných vět ke každému mluvčímu (označuje se také jako diarization), aby poskytovala v reálném čase a/nebo asynchronní přepis jakékoli konverzace.
+description: Přepis konverzace je řešení pro schůzky, které kombinuje rozpoznávání, ID mluvčího a diarizaci, aby poskytlpřepis jakékoli konverzace.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 03/16/2020
 ms.author: dapine
-ms.openlocfilehash: 8fc52428795b0dc8123d501dac9605c473f61456
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: ba56c7fb989658195f6394c7390c4f83027c7c96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79367818"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479735"
 ---
-# <a name="what-is-conversation-transcription-preview"></a>Co je přepis konverzace (Preview)?
+# <a name="what-is-conversation-transcription-in-meetings-preview"></a>Co je přepis konverzace na schůzkách (náhled)?
 
-Přepis konverzace je řešení převodu [řeči na text](speech-to-text.md) , které kombinuje rozpoznávání řeči, identifikaci mluvčího a přidaných vět ke každému mluvčímu (označuje se také jako _diarization_), aby poskytovala v reálném čase a/nebo asynchronní přepis jakékoli konverzace. Přepis konverzace rozlišuje mluvčí v konverzacích a určí, kdo, co a kdy a usnadňuje vývojářům přidávání řeči k textu do aplikací, které provádějí diarization více mluvčích.
+Přepis konverzace je řešení [převodu řeči na text,](speech-to-text.md) které kombinuje rozpoznávání řeči, identifikaci mluvčího a přiřazení věty každému řečníkovi (označované také jako _diarizace)_ a poskytuje tak v reálném čase a/nebo asynchronní přepis jakékoli konverzace. Přepis konverzace rozlišuje řečníky v konverzaci, aby zjistil, kdo co řekl co a kdy, a usnadňuje vývojářům přidávání řeči na text do svých aplikací, které provádějí diarizaci více reproduktorů.
 
 ## <a name="key-features"></a>Klíčové funkce
 
-- **Časová razítka** – každé mluvčí utterance má časové razítko, abyste mohli snadno najít, kdy se fráze říká.
-- **Čitelná přepisy** – přepisy mají automaticky přidané formátování a interpunkci, aby text přesně odpovídal tomu, co bylo zmíněno.
-- **Uživatelské profily** – profily uživatelů jsou generovány shromažďováním ukázek uživatelského hlasu a jejich odesláním do generování podpisu.
-- **Identifikace mluvčího** – mluvčí se identifikují pomocí uživatelských profilů a každý z nich se přiřadí _identifikátor mluvčího_ .
-- **Diarization pro více mluvčích** – určení toho, kdo říká, co vysyntetizuje zvukový stream s každým identifikátorem mluvčího.
-- **Přepis v reálném čase** – poskytněte živý přepis, který říká, co a kdy se konverzace děje.
-- **asynchronní přepis** – poskytují přepisy s vyšší přesností pomocí zvukového streamu ve vícekanálovém formátu.
+- **Časová razítka** - každý mluvčí utterance má časové razítko, takže můžete snadno najít, když byla řečfráze.
+- **Čitelné přepisy** - přepisy mají formátování a interpunkci automaticky přidané, aby se zajistilo, že text úzce odpovídá tomu, co bylo řečeno.
+- **Profily uživatelů** - uživatelské profily jsou generovány sběrem hlasových vzorků uživatelů a jejich odesláním generování podpisu.
+- **Identifikace mluvčího** - reproduktory jsou identifikovány pomocí uživatelských profilů a každému z nich je přiřazen _identifikátor reproduktoru._
+- **Diarizace více reproduktorů** - zjistěte, kdo co řekl syntetizovat zvukový proud s každým identifikátorem reproduktoru.
+- **Přepis v reálném čase** - poskytněte živé přepisy toho, kdo říká, co a kdy se konverzace děje.
+- **asynchronní přepis** – poskytují přepisy s vyšší přesností pomocí vícekanálového zvukového proudu.
 
 > [!NOTE]
-> I když přepis konverzace neomezuje počet mluvčích v místnosti, je optimalizován pro 2-10 mluvčích na relaci.
+> Přestože přepis konverzace neomezuje počet reproduktorů v místnosti, je optimalizován pro 2-10 reproduktorů na relaci.
 
 ## <a name="use-cases"></a>Případy použití
 
-### <a name="inclusive-meetings"></a>Uzavřené schůzky
+### <a name="inclusive-meetings"></a>Inkluzivní schůzky
 
-Chcete-li vytvořit schůzky, které jsou pro všechny, jako jsou neslyšící a sluchové slyšení, je důležité mít v reálném čase přepis. Přepis konverzace v režimu v reálném čase přijímá zvuk a určuje, kdo říká, co říkají, aby všichni účastníci schůzky mohli postupovat podle přepisu a zúčastnit se schůzky bez prodlení.
+Chcete-li, aby setkání zahrnovala všechny, například pro neslyšící a nedoslýchavé účastníky, je důležité mít přepis v reálném čase. Přepis konverzace v režimu v reálném čase přebírá zvuk schůzky a určuje, kdo co říká, což umožňuje všem účastníkům schůzky sledovat přepis a účastnit se schůzky bez prodlení.
 
 ### <a name="improved-efficiency"></a>Vyšší efektivita
 
-Účastníci schůzky se můžou soustředit na schůzku a nechat si pořizovat poznámky k přepisu konverzace. Účastníci se můžou aktivně zapojit do schůzky a rychle se řídit podle dalších kroků, a to pomocí přepisu namísto pořizování poznámek a potenciálně chybějících něco během schůzky.
+Účastníci schůzky se mohou soustředit na schůzku a ponechat poznámku na přepis konverzace. Účastníci se mohou aktivně zapojit do schůzky a rychle navázat na další kroky, používat přepis namísto pořizování poznámek a potenciálně něco během schůzky chybět.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Toto je podrobný přehled toho, jak funguje přepis konverzace.
+Toto je přehled na vysoké úrovni o tom, jak funguje přepis konverzace.
 
-![Diagram přepisu importu konverzací](media/scenarios/conversation-transcription-service.png)
+![Diagram přepisu importu konverzace](media/scenarios/conversation-transcription-service.png)
 
 ## <a name="expected-inputs"></a>Očekávané vstupy
 
-- **Audio stream s více kanály** – pro specifikace a podrobné informace o návrhu najdete informace v tématu věnovaném [mikrofonu sady SDK pro zařízení Microsoft Speech](https://aka.ms/cts/microphone). Další informace o tom, jak si můžete koupit vývojovou sadu, najdete v tématu věnovaném [sadě SDK pro zařízení Speech](https://aka.ms/cts/getsdk).
-- **Ukázky uživatelských hlasu** – přepis konverzace potřebuje profily uživatelů před konverzací. Budete potřebovat shromažďovat zvukové nahrávky od každého uživatele a pak je odeslat do [služby pro generování podpisů](https://aka.ms/cts/signaturegenservice) , abyste ověřili zvuk a vygenerovali profily uživatelů.
+- **Vícekanálový zvukový proud** – podrobnosti o specifikacích a návrhu naleznete v [tématu Microsoft Speech Device SDK Microphone](https://aka.ms/cts/microphone). Další informace nebo zakoupení vývojové sady naleznete v [tématu Získání sady Microsoft Speech Device SDK](https://aka.ms/cts/getsdk).
+- **Ukázky hlasu uživatele** – Přepis konverzace potřebuje profily uživatelů před konverzací. Budete muset shromažďovat zvukové nahrávky od každého uživatele a poté je odeslat do [služby Generování podpisu,](https://aka.ms/cts/signaturegenservice) abyste ověřili zvuk a vygenerovali uživatelské profily.
 
-## <a name="real-time-vs-asynchronous"></a>Vs. asynchronní v reálném čase
+## <a name="real-time-vs-asynchronous"></a>V reálném čase vs. asynchronní
 
 Přepis konverzace nabízí tři režimy přepisu:
 
-### <a name="real-time"></a>V reálném čase
+### <a name="real-time"></a>Reálný čas
 
-Zvuková data se zpracovávají živě, aby se vracel identifikátor mluvčího a přepis. Tento režim vyberte, pokud vaše požadavek na přepis řešení vyžaduje, aby účastníci konverzace měli k dispozici přehled o probíhajících konverzacích za živý přepis. Například sestavíte aplikaci, aby se schůzky lépe přizpůsobily neslyšící a byli postižení účastníci sluchu, což je ideální případ použití pro přepis v reálném čase.
+Zvuková data jsou zpracovávána živě, aby se vrátil identifikátor reproduktoru + přepis. Tento režim vyberte, pokud je požadavkem na řešení přepisu poskytnout účastníkům konverzace živé zobrazení živého přepisu jejich probíhající konverzace. Například vytvoření aplikace, aby se schůzky přístupnější neslyšící a nedoslýchaví účastníci je ideální případ použití pro real-time přepis.
 
-### <a name="asynchronous"></a>Asynchronně
+### <a name="asynchronous"></a>Asynchronní
 
-Zvuková data jsou zpracována dávkou, která vrací identifikátor mluvčího a přepis. Tento režim vyberte, pokud váš požadavek na přepis řešení vyžaduje zajištění vyšší přesnosti bez zobrazení živého přepisu. Například pokud chcete vytvořit aplikaci, která účastníkům schůzky umožní snadno zachytit zmeškané schůzky, použijte režim asynchronního přepisu, abyste získali přesnější výsledky v přepisu.
+Zvuková data jsou dávkově zpracována, aby se vrátil identifikátor mluvčího a přepis. Tento režim vyberte, pokud je požadavkem na řešení přepisu poskytnout vyšší přesnost bez zobrazení živého přepisu. Například pokud chcete vytvořit aplikaci, která umožní účastníkům schůzky snadno dohnat zmeškané schůzky, pak použijte režim asynchronního přepisu získat výsledky přepisu s vysokou přesností.
 
-### <a name="real-time-plus-asynchronous"></a>Asynchronní plus v reálném čase
+### <a name="real-time-plus-asynchronous"></a>V reálném čase plus asynchronní
 
-Zvuková data se zpracovávají živě, aby se vracel identifikátor mluvčího a přepisu, a navíc se vytvoří požadavek, který také získá přepis s vysokou přesností prostřednictvím asynchronního zpracování. Tento režim vyberte, pokud vaše aplikace potřebuje přepis v reálném čase, ale také vyžaduje přesnější přepis pro použití po konverzaci nebo schůzi.
+Zvuková data jsou zpracována živě vrátit identifikátor reproduktoru + přepis, a navíc je vytvořen požadavek také získat vysokou přesnost přepis prostřednictvím asynchronního zpracování. Tento režim vyberte, pokud vaše aplikace potřebuje přepis v reálném čase, ale také vyžaduje přepis vyšší přesnosti pro použití po konverzaci nebo schůzce.
 
 ## <a name="language-support"></a>Podpora jazyků
 
-Přepis konverzace v současné době podporuje "en-US" a "zh-CN" v následujících oblastech: *centralus* a *eastasia*. Pokud požadujete další podporu národního prostředí, obraťte se na pracovníka funkce v rámci [konverzace](mailto:CTSFeatureCrew@microsoft.com).
+V současné době, Přepis konverzace podporuje "en-US" a "zh-CN" v následujících oblastech: *centralus* a *eastasia*. Pokud požadujete další podporu národního prostředí, obraťte se na [tým funkcí přepisu konverzace](mailto:CTSFeatureCrew@microsoft.com).
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přepisovat konverzací v reálném čase](how-to-use-conversation-transcription-service.md)
+> [Přepiskonverzace v reálném čase](how-to-use-conversation-transcription-service.md)

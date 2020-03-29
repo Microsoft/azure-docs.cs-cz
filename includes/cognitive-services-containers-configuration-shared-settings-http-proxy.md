@@ -5,20 +5,20 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 84cd8ed79281b005407b5a857398b5669635c072
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68320499"
 ---
-Pokud potřebujete nakonfigurovat proxy server HTTP pro vytváření odchozích požadavků, použijte tyto dva argumenty:
+Pokud potřebujete nakonfigurovat proxy http pro vytváření odchozích požadavků, použijte tyto dva argumenty:
 
-| Name | Typ dat | Popis |
+| Name (Název) | Datový typ | Popis |
 |--|--|--|
-|HTTP_PROXY|řetězec|proxy, který se má použít, například`http://proxy:8888`<br>`<proxy-url>`|
-|HTTP_PROXY_CREDS|řetězec|jakékoli přihlašovací údaje potřebné k ověření vůči proxy serveru, například uživatelské jméno: heslo.|
-|`<proxy-user>`|řetězec|Uživatel pro proxy|
-|`<proxy-password>`|řetězec|Heslo spojené s `<proxy-user>` pro proxy server.|
+|HTTP_PROXY|řetězec|Proxy použít, například,`http://proxy:8888`<br>`<proxy-url>`|
+|HTTP_PROXY_CREDS|řetězec|Všechna pověření potřebná k ověření proti proxy serveru, například uživatelské jméno:heslo.|
+|`<proxy-user>`|řetězec|Uživatel proxy serveru.|
+|`<proxy-password>`|řetězec|Heslo přidružené `<proxy-user>` k serveru proxy.|
 ||||
 
 

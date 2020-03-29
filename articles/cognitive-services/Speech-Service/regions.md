@@ -1,7 +1,7 @@
 ---
-title: Oblasti – služba řeči
+title: Regiony - Řečová služba
 titleSuffix: Azure Cognitive Services
-description: Seznam dostupných oblastí a koncových bodů pro službu rozpoznávání řeči, včetně převodu řeči na text, převod textu na řeč a překladu řeči.
+description: Seznam dostupných oblastí a koncových bodů pro službu Řeč, včetně převodu řeči na text, převodu textu na řeč a překladu řeči.
 services: cognitive-services
 author: mahilleb-msft
 manager: nitinme
@@ -12,92 +12,92 @@ ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
 ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220465"
 ---
-# <a name="speech-service-supported-regions"></a>Oblasti podporované službou Speech
+# <a name="speech-service-supported-regions"></a>Oblasti podporované službou Speech Service
 
-Služba Speech umožňuje vaší aplikaci převod zvuku na text, překlad řeči a převod textu na řeč. Služba je k dispozici v několika oblastech pomocí jedinečných koncových bodů pro rozhraní API REST a sadou SDK pro řeč.
+Služba Řeč umožňuje aplikaci převádět zvuk na text, provádět překlad řeči a skrytý text na řeč. Služba je k dispozici ve více oblastech s jedinečnými koncovými body pro rozhraní API sady Speech SDK a REST.
 
-Portál pro rozpoznávání řeči pro vlastní konfigurace prostředí Speech pro všechny oblasti je k dispozici zde: https://speech.microsoft.com
+Portál Řeči k provádění vlastních konfigurací pro vaše prostředí řeči pro všechny oblasti je k dispozici zde:https://speech.microsoft.com
 
-V případě vyvolání služby Speech zajistěte, aby se hovor shodoval s oblastí vašeho předplatného.
+U vyvolání služby Řeč se ujistěte, že volání odpovídá oblasti pro vaše předplatné.
 
 ## <a name="speech-sdk"></a>Speech SDK
 
-V [sadě Speech SDK](speech-sdk.md)jsou oblasti určeny jako řetězec (například jako parametr `SpeechConfig.FromSubscription` v sadě Speech SDK pro C#).
+V [sadě Speech SDK](speech-sdk.md)jsou oblasti určeny jako řetězec `SpeechConfig.FromSubscription` (například jako parametr v sadě Speech SDK pro c#).
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>Převod řeči na text, převod textu na řeč a překlad
 
-Portál pro přizpůsobení řeči je k dispozici zde: https://speech.microsoft.com
+Portál pro přizpůsobení řeči je k dispozici zde:https://speech.microsoft.com
 
-Služba Speech je v těchto oblastech dostupná pro **rozpoznávání řeči**, převod **textu na řeč**a **překlady**:
+Služba Řeč je k dispozici v těchto oblastech pro **rozpoznávání řeči**, **převod textu na řeč**a **překlad**:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-Použijete-li [sadu Speech SDK](speech-sdk.md), oblasti jsou určeny **identifikátorem oblasti** (například jako parametr `SpeechConfig.FromSubscription`). Ujistěte se, že je oblast shodná s oblastí vašeho předplatného.
+Pokud používáte [sadu Speech SDK](speech-sdk.md), oblasti jsou určeny **identifikátorem oblasti** (například jako parametr). `SpeechConfig.FromSubscription` Ujistěte se, že oblast odpovídá oblasti vašeho předplatného.
 
-### <a name="intent-recognition"></a>Rozpoznání záměru
+### <a name="intent-recognition"></a>Rozpoznávání záměru
 
-Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speech SDK jsou následující:
+Dostupné oblasti pro **rozpoznávání záměru** prostřednictvím sady Speech SDK jsou následující:
 
-| Globální oblast | Oblast           | Identifikátor oblasti |
+| Globální oblast | Region (Oblast)           | Identifikátor oblasti |
 | ------------- | ---------------- | -------------------- |
 | Asie          | Východní Asie        | `eastasia`           |
 | Asie          | Jihovýchodní Asie   | `southeastasia`      |
 | Austrálie     | Austrálie – východ   | `australiaeast`      |
 | Evropa        | Severní Evropa     | `northeurope`        |
 | Evropa        | Západní Evropa      | `westeurope`         |
-| Severní Amerika | Východní USA          | `eastus`             |
-| Severní Amerika | Východní USA 2        | `eastus2`            |
-| Severní Amerika | Střed USA – jih | `southcentralus`     |
-| Severní Amerika | Střed USA – západ  | `westcentralus`      |
-| Severní Amerika | Západní USA          | `westus`             |
-| Severní Amerika | Západní USA 2        | `westus2`            |
+| Severní Amerika | USA – východ          | `eastus`             |
+| Severní Amerika | USA – východ 2        | `eastus2`            |
+| Severní Amerika | USA – středojih | `southcentralus`     |
+| Severní Amerika | USA – středozápad  | `westcentralus`      |
+| Severní Amerika | USA – západ          | `westus`             |
+| Severní Amerika | USA – západ 2        | `westus2`            |
 | Jižní Amerika | Brazílie – jih     | `brazilsouth`        |
 
-Toto je podmnožina oblastí publikování, které podporuje [služba Language Understanding (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
+Toto je podmnožina oblastí publikování podporovaných [službou Language Understanding (LUIS).](/azure/cognitive-services/luis/luis-reference-regions)
 
 ### <a name="voice-assistants"></a>Hlasoví asistenti
 
-[Sada Speech SDK](speech-sdk.md) podporuje možnosti **hlasového asistenta** v těchto oblastech:
+Sada [Speech SDK](speech-sdk.md) podporuje funkce **hlasového asistenta** v těchto oblastech:
 
-| Oblast         | Identifikátor oblasti |
+| Region (Oblast)         | Identifikátor oblasti |
 | -------------- | -------------------- |
-| Západní USA        | `westus`             |
-| Západní USA 2      | `westus2`            |
-| Východní USA        | `eastus`             |
-| Východní USA 2      | `eastus2`            |
+| USA – západ        | `westus`             |
+| USA – západ 2      | `westus2`            |
+| USA – východ        | `eastus`             |
+| USA – východ 2      | `eastus2`            |
 | Západní Evropa    | `westeurope`         |
 | Severní Evropa   | `northeurope`        |
 | Jihovýchodní Asie | `southeastasia`      |
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 
-Speech service také poskytuje koncové body REST pro požadavky na převod řeči na text a převod textu na řeč.
+Služba Řeč také zveřejňuje koncové body REST pro požadavky na řeč a převod textu na řeč.
 
 ### <a name="speech-to-text"></a>Převod řeči na text
 
-Referenční dokumentaci k textu pro převod řeči na text najdete v tématu [REST API řeči](rest-speech-to-text.md).
+Referenční dokumentace převodu na text naleznete v [tématu Rozhraní REST API pro převod řeči na text](rest-speech-to-text.md).
 
-Koncový bod pro REST API má tento formát:
+Koncový bod pro rozhraní REST API má tento formát:
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti vašeho předplatného z této tabulky:
+Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti předplatného z této tabulky:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
 > [!NOTE]
-> Parametr Language se musí připojit k adrese URL, aby nedošlo k 4xx chybě HTTP. Například jazyk nastavený na AMERICKou angličtinu pomocí Západní USAho koncového bodu je: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
+> Parametr jazyka musí být připojen k adrese URL, aby se zabránilo přijetí chyby 4xx HTTP. Například jazyk nastavený na americkou angličtinu pomocí `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`koncového bodu –USA je: .
 
 ### <a name="text-to-speech"></a>Převod textu na řeč
 
-Referenční dokumentaci pro převod textu na řeč najdete v tématu [REST API převodu textu na řeč](rest-text-to-speech.md).
+Referenční dokumentace pro převod textu na řeč naleznete v [tématu Rozhraní REST API pro převod textu na řeč](rest-text-to-speech.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

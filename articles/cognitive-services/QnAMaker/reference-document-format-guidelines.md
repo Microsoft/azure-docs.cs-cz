@@ -1,33 +1,33 @@
 ---
-title: Pokyny k importu formátu dokumentů – QnA Maker
-description: Pochopení způsobu, jakým jsou typy adres URL použity pro import a vytvoření QnA sad.
+title: Pokyny pro import formátu dokumentu – QnA Maker
+description: Zjistěte, jak se typy adres URL používají k importu a vytváření sad QnA.
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: 6a954f2fd607b70c6db256ab6dcc1dbcd7a5a473
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651836"
 ---
-# <a name="format-guidelines-for-imported-documents-and-urls"></a>Pokyny pro formát importovaných dokumentů a adres URL
+# <a name="format-guidelines-for-imported-documents-and-urls"></a>Pokyny pro formátování importovaných dokumentů a adres URL
 
-Projděte si tyto pokyny pro formátování, abyste získali nejlepší výsledky pro svůj obsah.
+Projděte si tyto pokyny pro formátování, abyste získali nejlepší výsledky pro váš obsah.
 
 ## <a name="formatting-considerations"></a>Důležité informace o formátování
 
-Po importu souboru nebo adresy URL QnA Maker převádí a ukládá obsah ve [formátu Markdownu](https://en.wikipedia.org/wiki/Markdown). Proces převodu přidá nové řádky do textu, například `\n\n`. Znalost formátu Markdownu vám pomůže pochopit převedený obsah a spravovat obsah znalostní báze.
+Po importu souboru nebo adresy URL nástroj QnA Maker převede a uloží váš obsah ve [formátu markdownu](https://en.wikipedia.org/wiki/Markdown). Proces převodu přidá do textu nové `\n\n`řádky, například . Znalost formátu markdown vám pomůže pochopit převedený obsah a spravovat obsah znalostní báze.
 
-Pokud přidáte nebo upravíte svůj obsah přímo ve znalostní bázi, použijte **formátování Markdownu** k vytvoření formátovaného textu nebo změňte obsah formátu Markdownu, který je již v odpovědi. QnA Maker podporuje většinu formátu Markdownu, aby bylo možné do obsahu dostat možnosti formátovaného textu. Klientská aplikace, jako je například robot pro chat, nemusí podporovat stejnou sadu formátů Markdownu. Je důležité otestovat zobrazení odpovědí klientské aplikace.
+Pokud přidáte nebo upravíte obsah přímo ve znalostní bázi, použijte **formátování markdownu** k vytvoření obsahu s formátem RTNebo ke změně obsahu ve formátu markdown, který je již v odpovědi. QnA Maker podporuje většinu formátu markdown, aby do vašeho obsahu přinesl funkce s formátovaným textem. Klientská aplikace, například chatovací robot, však nemusí podporovat stejnou sadu formátů markdownu. Je důležité otestovat zobrazení odpovědí klientské aplikace.
 
 ## <a name="basic-document-formatting"></a>Základní formátování dokumentu
 
-QnA Maker identifikuje oddíly a pododdíly a vztahy v souboru na základě vizuálních vzhledů, jako je:
+QnA Maker identifikuje oddíly a podsekce a vztahy v souboru na základě vizuálních vodítek, jako jsou:
 
 * velikost písma
 * styl písma
-* Od
-* barvy
+* Číslování
+* Barvy
 
 |Příklady pro dokumenty|
 |--|
@@ -35,28 +35,28 @@ QnA Maker identifikuje oddíly a pododdíly a vztahy v souboru na základě vizu
 
 
 
-## <a name="product-manuals"></a>Produktových příruček
+## <a name="product-manuals"></a>Příručky k produktům
 
-Ruční je obvykle pokyny materiál, který doprovází produktu. Umožňuje uživateli nastavit, použít, udržovat a řešit produktu. Nástroj QnA Maker zpracovává ruční, extrahuje položek a podpoložek jako dotazy a další obsah jako odpovědi. [Tady se můžete](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf)podívat na příklad.
+Příručka je obvykle naváděcí materiál, který doprovází produkt. Pomáhá uživateli nastavit, používat, udržovat a řešit problémy s produktem. Když QnA Maker zpracuje manuál, extrahuje nadpisy a podnadpisy jako otázky a následný obsah jako odpovědi. Viz příklad [zde](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf).
 
-Tady je příklad příručky s indexovou stránku a hierarchické obsahu
+Níže je uveden příklad příručky se stránkou indexu a hierarchickým obsahem
 
- ![Ruční příklad znalostní bázi produktu](./media/qnamaker-concepts-datasources/product-manual.png)
+ ![Příklad příručky k produktu pro znalostní bázi](./media/qnamaker-concepts-datasources/product-manual.png)
 
 > [!NOTE]
-> Extrakce funguje nejlépe na příručky, které mají tabulku obsah a/nebo indexovou stránku a Vymazat strukturu s hierarchické záhlaví.
+> Extrakce funguje nejlépe u příruček, které mají obsah nebo stránku indexu a jasnou strukturu s hierarchickými nadpisy.
 
-## <a name="brochures-guidelines-papers-and-other-files"></a>Brožury, pokyny, papírů a další soubory
+## <a name="brochures-guidelines-papers-and-other-files"></a>Brožury, pokyny, dokumenty a další soubory
 
-Mnoho dalších typů dokumentů mohou být také zpracovány ke generování dvojice dotazů a odpovědí, za předpokladu, že máte Vymazat strukturu a rozložení. Patří mezi ně: brožury, pokyny, sestavy, dokumenty White Paper, vědecké dokumenty, zásady, knihy atd. [Tady se můžete](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)podívat na příklad.
+Mnoho dalších typů dokumentů lze také zpracovat pro generování párů QA za předpokladu, že mají jasnou strukturu a rozložení. Patří mezi ně: brožury, pokyny, zprávy, bílé knihy, vědecké dokumenty, politiky, knihy atd. Viz příklad [zde](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
 
-Níže je příklad částečně strukturovaných dokumentů, bez indexu:
+Níže je uveden příklad polostrukturovaného dokumentu bez indexu:
 
- ![Azure Blob storage částečně strukturovaných dokumentů](./media/qnamaker-concepts-datasources/semi-structured-doc.png)
+ ![Částečně strukturovaný doc úložiště objektů blob Azure](./media/qnamaker-concepts-datasources/semi-structured-doc.png)
 
 ## <a name="structured-qna-document"></a>Strukturovaný dokument QnA
 
-Formát pro strukturované – odpovědi na otázky v souborech DOC, je ve formě střídavé otázky a odpovědi na každém řádku jednu otázku na řádek následovaný jeho odpovědí na následujícím řádku, jak je znázorněno níže:
+Formát pro strukturované odpovědi na otázky v souborech DOC je ve formě střídavých otázek a odpovědí na řádek, jedna otázka na řádek následovaná jeho odpovědí v následujícím řádku, jak je znázorněno níže:
 
 ```text
 Question1
@@ -68,53 +68,53 @@ Question2
 Answer2
 ```
 
-Níže je příklad strukturovaných QnA wordový dokument:
+Níže je uveden příklad strukturovaného dokumentu qnA slovo:
 
- ![Strukturované příklad QnA dokument znalostní báze](./media/qnamaker-concepts-datasources/structured-qna-doc.png)
+ ![Příklad strukturovaného dokumentu QnA pro znalostní bázi](./media/qnamaker-concepts-datasources/structured-qna-doc.png)
 
-## <a name="structured-txt-tsv-and-xls-files"></a>Strukturované soubory *txt*, *TSV* a *XLS*
+## <a name="structured-txt-tsv-and-xls-files"></a>Strukturované *TXT*, *TSV* a *XLS* soubory
 
-QnAs ve formě strukturovaných souborů *. txt*, *. TSV* nebo *. xls* je také možné odeslat QnA maker k vytvoření nebo rozšíření znalostní báze.  Toto může být prostý text nebo může mít obsah ve formátu RTF nebo HTML.
+QnAs ve formě strukturovaných *souborů TXT*, *TSV* nebo *XLS* lze také nahrát do qnA makeru a vytvořit nebo rozšířit znalostní bázi.  Může se jedná buď o prostý text, nebo o obsah v RTF nebo HTML.
 
 | Otázka  | Odpověď  | Metadata (1 klíč: 1 hodnota) |
 |-----------|---------|-------------------------|
-| Question1 | Answer1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
-| Question2 | Answer2 |      `Key:Value`           |
+| Otázka 1 | Odpověď1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Otázka 2 | Odpověď2 |      `Key:Value`           |
 
-Žádné další sloupce ve zdrojovém souboru jsou ignorovány.
+Všechny další sloupce ve zdrojovém souboru jsou ignorovány.
 
-### <a name="example-of-structured-excel-file"></a>Příklad strukturovaného excelového souboru
+### <a name="example-of-structured-excel-file"></a>Příklad strukturovaného souboru aplikace Excel
 
-Níže je uveden příklad strukturovaného souboru QnA *. xls* s obsahem HTML:
+Níže je uveden příklad strukturovaného souboru QnA *.xls* s obsahem HTML:
 
- ![Strukturované QnA excel příklad znalostní báze](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
+ ![Strukturovaný příklad aplikace QnA excel pro znalostní bázi](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
 ### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Příklad alternativních otázek pro jednu odpověď v excelovém souboru
 
-Níže je uveden příklad strukturovaného souboru QnA *. xls* , který má několik alternativních otázek pro jednu odpověď:
+Níže je uveden příklad strukturovaného souboru QnA *.xls* s několika alternativními otázkami pro jednu odpověď:
 
  ![Příklad alternativních otázek pro jednu odpověď v excelovém souboru](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
 
-Po importu souboru se dvojice otázka a odpověď nachází ve znalostní bázi, jak je znázorněno níže:
+Po importu souboru je dvojice otázek a odpovědí ve znalostní bázi, jak je znázorněno níže:
 
- ![Snímek obrazovky s alternativními otázkami pro import jedné odpovědi do znalostní báze Knowledge Base](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
+ ![Snímek obrazovky s alternativními otázkami pro jednu odpověď importovo do znalostní báze](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
-## <a name="structured-data-format-through-import"></a>Formát strukturovaných dat pomocí importu
+## <a name="structured-data-format-through-import"></a>Strukturovaný formát dat prostřednictvím importu
 
-Import znalostní báze nahradí obsah znalostní báze existující. Strukturované TSV soubor, který obsahuje informace o zdroji dat vyžaduje import. Tyto informace pomáhají QnA Maker seskupovat páry dotazů a jejich atributy na konkrétní zdroj dat.
+Import znalostní báze nahrazuje obsah stávající znalostní báze. Import vyžaduje strukturovaný soubor TSV, který obsahuje informace o zdroji dat. Tyto informace pomáhají qnA makeru seskupit dvojice odpovědí na otázky a přiřadit je k určitému zdroji dat.
 
 | Otázka  | Odpověď  | Zdroj| Metadata (1 klíč: 1 hodnota) |
 |-----------|---------|----|---------------------|
-| Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
-| Question2 | Answer2 | Redakční|    `Key:Value`       |
+| Otázka 1 | Odpověď1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Otázka 2 | Odpověď2 | Redakční|    `Key:Value`       |
 
 <a href="#formatting-considerations"></a>
 
-## <a name="multi-turn-document-formatting"></a>Vícenásobné formátování dokumentu
+## <a name="multi-turn-document-formatting"></a>Vícesměrné formátování dokumentů
 
-* Použijte záhlaví a dílčí záhlaví k označení hierarchie. Například můžete chtít, aby se QnAy, které jsou v nadřazeném prvku, a přiřadí se QnA, který by měl být proveden jako výzva. Použijte malou velikost nadpisu k označení další hierarchie. Nepoužívejte styly, barvy ani jiný mechanismus pro určení struktury v dokumentu, QnA Maker neextrahuje výzvy vícenásobného zapnutí.
+* K označení hierarchie použijte nadpisy a podnadpisy. Například Můžete h1 označuje nadřazené QnA a h2 označuje QnA, které by měly být brány jako výzva. Malá velikost nadpisu označuje následnou hierarchii. Nepoužívejte styl, barvu nebo jiný mechanismus, který by naznačoval strukturu v dokumentu, QnA Maker nebude extrahovat vícesměrové výzvy.
 * První znak nadpisu musí být velkými písmeny.
-* Nekončit záhlavím otazníkem, `?`.
+* Nezakončuj nadpis `?`otazníkem .
 
 
 |Příklady pro dokumenty|

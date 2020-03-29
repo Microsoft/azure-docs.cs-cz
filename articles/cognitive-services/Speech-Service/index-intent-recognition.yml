@@ -1,31 +1,30 @@
 ### YamlMime:Landing
 title: Dokumentace k rozpoznávání záměru
-summary: Rozpoznávání záměrů pomocí služeb Speech a Language Understanding (LUIS) umožňuje přepis zvukových streamů v reálném čase na text a při určování záměrů a entit.
+summary: Záměr rozpoznávání se službami rozpoznávání řeči a jazyka (LUIS), umožňuje přepis zvukových proudů v reálném čase do textu při identifikaci záměru a entity.
 metadata:
-  title: Dokumentace k rozpoznávání záměrů – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  title: Dokumentace k rozpoznávání záměru – kurzy, odkaz na rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 63c830b20ad5a3bf322fe2402d72230a80399d45
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 87e698c2a9b09b54c6015293b5be26ea2006a786
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79371456"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415168"
 landingContent:
-- title: O rozpoznávání záměrů
+- title: O uznání záměru
   linkLists:
   - linkListType: quickstart
     links:
     - text: Rozpoznávání řeči, záměru a entit
       url: quickstarts/intent-recognition.md
-- title: Vývoj s rozpoznáváním záměrů
+- title: Vývoj s rozpoznáváním záměru
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -41,5 +40,5 @@ landingContent:
       url: ../luis/developer-reference-resource.md
     - text: Podpora jazyků
       url: ../luis/luis-language-support.md#languages-supported
-    - text: Ceny za rozpoznávání záměrů
+    - text: Ceny za rozhodce za záměr
       url: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services
