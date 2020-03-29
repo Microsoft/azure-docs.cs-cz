@@ -1,6 +1,6 @@
 ---
-title: Přechod na produkční webovou aplikaci, která volá webová rozhraní API – Microsoft Identity Platform | Azure
-description: Přečtěte si, jak přesunout do produkční webové aplikace, která volá webová rozhraní API.
+title: Přechod na produkční webovou aplikaci, která volá webová rozhraní API – platforma microsoftových identit | Azure
+description: Přečtěte si, jak přejít do produkční webové aplikace, která volá webová API.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,30 +15,30 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: b1307df8f6dfb0457719b13c9e5cd0bf28660caa
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758937"
 ---
-# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Webová aplikace, která volá webová rozhraní API: přesunout do produkčního prostředí
+# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Webová aplikace, která volá webová API: Přechod do produkčního prostředí
 
-Když teď víte, jak získat token pro volání webových rozhraní API, přečtěte si, jak přejít do produkčního prostředí.
+Teď, když víte, jak získat token pro volání webových api, naučte se, jak přejít do produkčního prostředí.
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si kompletní postupný kurz pro ASP.NET Core Web Apps. Tento kurz:
+Další informace najdete v tom, že vyzkoušíte celý, progresivní kurz pro webové aplikace ASP.NET Core. Výukový program:
 
-- Ukazuje, jak podepisovat uživatele do více cílových skupin nebo do národních cloudů nebo pomocí sociálních identit.
+- Ukazuje, jak přihlásit uživatele k více okruhům uživatelů nebo k národním cloudům nebo pomocí sociálních identit.
 - Volá Microsoft Graph.
-- Volá několik rozhraní API Microsoftu.
+- Volá několik rozhraní API společnosti Microsoft.
 - Zpracovává přírůstkový souhlas.
-- Volá vaše vlastní webové rozhraní API.
+- Volá vlastní webové rozhraní API.
 
 > [!div class="nextstepaction"]
-> [Kurz ASP.NET Core webové aplikace](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
+> [ASP.NET kurz webové aplikace Core](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
 
 <!--- Removing this diagram as it's already shown from the next step linked tutorial
 

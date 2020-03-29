@@ -1,6 +1,6 @@
 ---
-title: Migrace dat na StorSimple řad 5000 – 7000 zařízení 8000 series | Dokumentace Microsoftu
-description: Poskytuje přehled a požadavky funkci migrace.
+title: Migrace dat v řadě StorSimple 5000-7000 do zařízení řady 8000| Dokumenty společnosti Microsoft
+description: Poskytuje přehled a předpoklady funkce Migrace.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,116 +14,116 @@ ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 967c03f3c4201bdcf1529fdda93717b6eb74e771
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60631631"
 ---
-# <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrovat data z StorSimple 5000 – 7000 series do zařízení 8000 series
+# <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrace dat ze série StorSimple 5000-7000 do zařízení řady 8000
 
 > [!IMPORTANT]
-> - Do 31. července 2019 řady StorSimple 5000/7000 skončí jeho stavu podpory (SESTAVENÁ). Doporučujeme vám, že zákazníci řady StorSimple 5000/7000 migrace na jednu z alternativ popsané v dokumentu.
-> - Migrace se aktuálně operaci s asistencí. Pokud máte v úmyslu migrovat data ze zařízení StorSimple řad 5000 – 7000 zařízení řady 8000, budete muset naplánovat migraci do Microsoft Support. Microsoft Support vám pak umožní vaše předplatné pro migraci. Další informace najdete v tématu Jak [vytvořit lístek podpory](storsimple-8000-contact-microsoft-support.md).
-> - Poté, co je soubor žádosti o službu, může trvat několik týdnů k provedení migrace plánu a skutečně zahájit migraci.
-> - Předtím, než se obrátíte na Microsoft Support, nezapomeňte si zkontrolujte a dokončete [požadavky na migraci](#migration-prerequisites) uvedeno v následujícím článku.
+> - Července 31, 2019 Série StorSimple 5000/7000 dosáhne stavu ukončení podpory (EOS). Doporučujeme, aby zákazníci řady StorSimple 5000/7000 migrovali na jednu z alternativ popsaných v dokumentu.
+> - Migrace je v současné době asistovaná operace. Pokud máte v úmyslu migrovat data ze zařízení řady StorSimple 5000-7000 do zařízení řady 8000, je třeba naplánovat migraci pomocí podpory společnosti Microsoft. Podpora společnosti Microsoft pak povolí vaše předplatné pro migraci. Další informace naleznete v [tématu Jak otevřít lístek podpory](storsimple-8000-contact-microsoft-support.md).
+> - Po podání žádosti o službu může trvat několik týdnů, než se spustí plán migrace a migrace skutečně spustí.
+> - Než se obrátíte na podporu společnosti Microsoft, zkontrolujte a dokončete [požadavky migrace](#migration-prerequisites) uvedené v článku.
 
 ## <a name="overview"></a>Přehled
 
-Tento článek představuje funkci migrace, která umožňuje zákazníkům StorSimple řady 5000-7000 migrovat data do fyzického zařízení StorSimple 8000 series nebo zařízení 8010/8020 cloudu. Tento článek obsahuje odkazy taky ke stažení najdete podrobný návod pro kroky potřebné k migraci dat ze starší verze zařízení řady 8000 fyzické řady 5000-7000 nebo cloudového zařízení.
+Tento článek zavádí funkci migrace, která umožňuje zákazníkům řady StorSimple 5000-7000 migrovat svá data do fyzického zařízení řady StorSimple 8000 nebo cloudového zařízení řady 8010/8020. Tento článek také odkazuje na krok za krokem ke stažení postup potřebný k migraci dat ze staršího zařízení řady 5000-7000 do fyzického nebo cloudového zařízení řady 8000.
 
-Tento článek platí pro zařízení řady 8000 v místním i řešení StorSimple Cloud Appliance.
+Tento článek se vztahuje jak pro místní zařízení řady 8000, tak pro zařízení StorSimple Cloud Appliance.
 
 
-## <a name="migration-feature-versus-host-side-migration"></a>Funkce migrace a migrace na straně hostitele
+## <a name="migration-feature-versus-host-side-migration"></a>Funkce migrace versus migrace na straně hostitele
 
-Můžete přesunout data pomocí funkce migrace nebo provedením migrace straně hostitele. Tato část popisuje podrobností o jednotlivých metod, včetně výhody a nevýhody. Pomocí těchto informací zjistit, jakou metodu chcete vykonávat migrovat svoje data.
+Data můžete přesunout pomocí funkce migrace nebo provedením migrace na straně hostitele. Tato část popisuje specifika každé metody, včetně klady a zápory. Tyto informace slouží k tomu, abyste zjistili, kterou metodu chcete provádět migraci dat.
 
-Funkce migrace simuluje procesu zotavení po havárii z řady 7000/5000 řady 8000. Tato funkce umožňuje migraci dat z formátu 5000/7000 series do formátu 8000 series na Azure. Zahájit proces migrace pomocí nástroje Migrace StorSimple. Nástroj spustí stahování a převodu metadat zálohy na zařízení řady 8000 a potom pomocí poslední zálohy k vystavení svazky na zařízení.
+Funkce migrace simuluje proces zotavení po havárii (DR) od řady 7000/5000 do řady 8000. Tato funkce umožňuje migrovat data z formátu řady 5000/7000 do formátu řady 8000 v Azure. Proces migrace je zahájen pomocí nástroje Migrace StorSimple. Nástroj spustí stahování a převod metadat zálohování na zařízení řady 8000 a pak použije nejnovější zálohu k vystavení svazků v zařízení.
 
-|      | V oblasti IT                                                                                                                                     |Nevýhody                                                                                                                                                              |
+|      | Výhody                                                                                                                                     |Nevýhody                                                                                                                                                              |
 |------|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | Proces migrace zachová historii zálohování, které byly provedeny na řady 5000/7000.                                               | Když se uživatelé pokusí o přístup k datům, tato migrace stáhne data z Azure, tak bez nákladů stahování dat.                                     |
-| 2.   | Žádná data jsou migrována na straně hostitele.                                                                                                     | Proces potřebuje výpadku mezi začátkem zálohování a nejnovější zálohování se zobrazí v případě řady 8000 (se dá odhadnout pomocí nástroje migrace). |
-| 3.   | Tento proces zachová všechny zásady, šablony šířky pásma, šifrování a ostatní nastavení na zařízení řady 8000.                      | Přístup uživatele se vrácení pouze data přistupují uživatelé a nebude dosazení celou datovou sadu.                                                  |
-| 4.   | Tento proces vyžaduje čas navíc k převedení všech starších záloh v Azure, která se provádí asynchronně bez dopadu na produkční | Migraci můžete udělat jenom na úrovni konfigurace cloudu.  Jednotlivé svazky v konfiguraci cloudu nelze migrovat samostatně                       |
+| 1.   | Proces migrace zachovává historii záloh, které byly pořízeny v řadě 5000/7000.                                               | Když se uživatelé pokusí o přístup k datům, tato migrace stáhne data z Azure, čímž vzniknou náklady na stahování dat.                                     |
+| 2.   | Na straně hostitele nejsou migrována žádná data.                                                                                                     | Proces potřebuje prostoje mezi začátkem zálohování a nejnovější zálohy se vynořil na 8000 série (lze odhadnout pomocí nástroje pro migraci). |
+| 3.   | Tento proces zachovává všechny zásady, šablony šířky pásma, šifrování a další nastavení na zařízeních řady 8000.                      | Přístup uživatele přinese zpět pouze data přístupná uživateli a nebude rehydratovat celou datovou sadu.                                                  |
+| 4.   | Tento proces vyžaduje více času na převod všech starších záloh v Azure, které se provádí asynchronně bez dopadu na produkční prostředí | Migraci lze provést pouze na úrovni konfigurace cloudu.  Jednotlivé svazky v konfiguraci cloudu nelze migrovat samostatně                       |
 
-Migrace straně hostitele umožňuje nezávisle na sobě nastavení z řady 8000 a kopírování dat ze zařízení řady 5000/7000 zařízení řady 8000. Jedná se o ekvivalent k migraci dat z jednoho zařízení úložiště do druhého. Ke kopírování dat se používají širokou škálu nástrojů, jako je Diskboss robocopy.
+Migrace na straně hostitele umožňuje nezávisle nastavit řadu 8000 a zkopírovat data ze zařízení řady 5000/7000 do zařízení řady 8000. To je ekvivalentní migraci dat z jednoho zařízení úložiště do jiného. Ke kopírování dat se používá celá řada nástrojů, jako je Diskboss, robocopy.
 
-|      | V oblasti IT                                                                                                                      |Nevýhody                                                                                                                                                                                                      |
+|      | Výhody                                                                                                                      |Nevýhody                                                                                                                                                                                                      |
 |------|---------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | Migraci můžete dosaženy postupně každý svazek svazek.                                               | Předchozí záložní kopie (pořízené řady 5000/7000) nebude k dispozici na zařízení řady 8000.                                                                                                       |
-| 2.   | Umožňuje konsolidace dat do jednoho účtu úložiště v Azure.                                                       | První zálohování do cloudu na 8000 series bude trvat delší dobu jako veškerá data na 8000 series je potřeba zálohovat do Azure.                                                                     |
-| 3.   | Po úspěšné migraci je lokální na zařízení všechna data. Neexistují žádné latenci při přístupu k datům. | Spotřebu úložiště Azure se zvýší, dokud data se odstraní ze zařízení 5000/7000.                                                                                                        |
-| 4.   |                                                                                                                           | Pokud má zařízení řady 7000/5000 velké množství dat, během migrace tato data musí být stažené z azure, který bude mít za následek náklady a latence související se stahování dat z Azure |
+| 1.   | K migraci lze přistupovat postupně po objemovém základě.                                               | Předchozí zálohy (převzaté v řadě 5000/7000) nebudou k dispozici na zařízení řady 8000.                                                                                                       |
+| 2.   | Umožňuje konsolidaci dat do jednoho účtu úložiště v Azure.                                                       | První zálohování do cloudu na řadě 8000 bude trvat déle, protože všechna data řady 8000 musí být zálohována do Azure.                                                                     |
+| 3.   | Po úspěšné migraci jsou všechna data v zařízení místní. Neexistují žádné latence při přístupu k datům. | Spotřeba úložiště Azure se zvýší, dokud se data neodstraní ze zařízení 5000/7000.                                                                                                        |
+| 4.   |                                                                                                                           | Pokud zařízení řady 7000/5000 má velké množství dat, během migrace je třeba tato data stáhnout z Azure, které budou mít vzniknout náklady a latence související se stahováním dat z Azure |
 
-Tento článek se zaměřuje pouze na tuto funkci migrace z 5000/7000 zařízení řady 8000. Další informace o migraci na straně hostitele, přejděte na [migrace z jiných zařízení úložišť](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf).
+Tento článek se zaměřuje pouze na funkci migrace ze zařízení řady 5000/7000 na 8000. Další informace o migraci na straně hostitele najdete v části [Migrace z jiných úložných zařízení](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf).
 
-## <a name="migration-prerequisites"></a>Požadavky na migraci
+## <a name="migration-prerequisites"></a>Předpoklady migrace
 
-Zde jsou uvedeny požadavky migrace pro starší verze zařízení řady 5000 a 7000 a zařízení StorSimple řady 8000.
+Zde jsou předpoklady migrace pro starší zařízení řady 5000 nebo 7000 a zařízení StorSimple řady 8000.
 
 > [!IMPORTANT]
-> Zkontrolujte a dokončete migraci požadavky před soubor žádosti o službu pomocí Microsoft Support.
+> Před podáním žádosti o službu pomocí podpory společnosti Microsoft zkontrolujte a dokončete požadavky na migraci.
 
 ### <a name="for-the-50007000-series-device-source"></a>Pro zařízení řady 5000/7000 (zdroj)
 
-Před zahájením migrace, ujistěte se, že:
+Než začnete s migrací, ujistěte se, že:
 
-* Je třeba vaše 5000 nebo řady 7000 zdrojového zařízení; zařízení může být live nebo dolů.
+* Máte 5000 nebo 7000 série zdrojové zařízení; zařízení může být živé nebo zkonzit.
 
     > [!IMPORTANT]
-    > Doporučujeme, abyste měli sériový přístup k tomuto zařízení během tohoto procesu migrace. Mělo by být problémy zařízení, sériového přístupu může pomoct s řešením potíží.
+    > Doporučujeme, abyste měli sériový přístup k tomuto zařízení v průběhu celého procesu migrace. V případě problémů se zařízením může sériový přístup pomoci při řešení potíží.
 
-* Zdrojové zařízení řady 5000 a 7000 běží software verze v2.1.1.518 nebo novější. Starší verze se nepodporují.
-* K ověření verze, na kterém běží řad 5000 a 7000, podívejte se v pravém horním rohu webové uživatelské rozhraní. Mělo by se zobrazit verze softwaru, na kterém běží vaše zařízení. Pro migraci by měl být řad 5000 a 7000 spuštěn v2.1.1.518.
+* Zdrojové zařízení řady 5000 nebo 7000 používá verzi softwaru verze 2.1.1.518 nebo novější. Dřívější verze nejsou podporovány.
+* Chcete-li ověřit verzi, ve které je spuštěna řada 5000 nebo 7000, podívejte se do pravého horního rohu webového uživatelského rozhraní. To by mělo zobrazit verzi softwaru, který je spuštěn v zařízení. Pro migraci by měl být spuštěn v2.1.1.518 řady 5000 nebo 7000.
 
-    ![Zkontrolujte verzi softwaru na zařízení starší verze](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
+    ![Kontrola verze softwaru na starším zařízení](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * Pokud není spuštěná v2.1.1.518 nebo později, upgradujte systém na požadovanou minimální verzi vašeho zařízení za provozu. Podrobné pokyny najdete v tématu [upgradovat systém v2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518).
-    * Pokud používáte v2.1.1.518, přejděte na webové uživatelské rozhraní, aby viděli, jestli jsou všechny oznámení selhání obnovení registru. Pokud registru obnovení se nezdařila, spusťte obnovení registru. Další informace najdete v části Jak [spustit obnovení registru](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry).
-    * Pokud máte dolů zařízení, která nebyla spuštěna v2.1.1.518, proveďte převzetí služeb při selhání na náhradní zařízení, na kterém běží v2.1.1.518. Podrobné pokyny najdete zotavení po Havárii vašeho zařízení StorSimple řady 5000/7000.
-    * Zálohujte data pro zařízení s využitím snímek v cloudu.
-    * Zkontrolujte všechny ostatní aktivní úlohy zálohování, které běží na zdrojové zařízení. To zahrnuje úlohy na hostiteli konzole ochrany dat StorSimple. Počkejte na dokončení aktuální úlohy.
+    * Pokud vaše živé zařízení není spuštěno v2.1.1.518 nebo novější, upgradujte systém na požadovanou minimální verzi. Podrobné pokyny naleznete v [podrobnostech o upgradu systému na v2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518).
+    * Pokud používáte v2.1.1.518, přejděte na webové uživatelské právo a zjistěte, zda existují nějaká oznámení pro selhání obnovení registru. Pokud se obnovení registru nezdařilo, spusťte obnovení registru. Další informace naleznete v informacích o [spuštění obnovení registru](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry).
+    * Pokud máte zařízení dolů, které nebylo spuštěno v2.1.1.518, proveďte převzetí služeb při selhání na náhradní zařízení, které je spuštěno v2.1.1.518. Podrobné pokyny naleznete v části DR zařízení StorSimple řady 5000/7000.
+    * Zálohujte data pro vaše zařízení tak, že pořizujete snímek cloudu.
+    * Zkontrolujte, zda nejsou spuštěny všechny další aktivní úlohy zálohování, které jsou spuštěny na zdrojovém zařízení. To zahrnuje úlohy na hostiteli StorSimple Data Protection Console. Počkejte na dokončení aktuálních úloh.
 
 
-### <a name="for-the-8000-series-physical-device-target"></a>Pro fyzickým zařízením řady 8000 (cíl).
+### <a name="for-the-8000-series-physical-device-target"></a>Pro fyzické zařízení řady 8000 (cíl)
 
-Před zahájením migrace, ujistěte se, že:
+Než začnete s migrací, ujistěte se, že:
 
-* Vaší cílové 8000 series zařízení je registrované a spuštěna. Další informace najdete v tématu Jak [nasazení zařízení StorSimple pomocí služby StorSimple Manager](storsimple-8000-deployment-walkthrough-u2.md).
-* Zařízení řady 8000 má nejnovější StorSimple 8000 Series Update 5 nainstalován a běží 6.3.9600.17845 nebo novější verzi. Pokud zařízení nemá nainstalované nejnovější aktualizace, budete muset nainstalovat nejnovější aktualizace, abyste mohli pokračovat v migraci. Další informace najdete v tématu Jak [instalace nejnovější aktualizace na vašem zařízení řady 8000](storsimple-8000-install-update-5.md).
-* Vaše předplatné Azure je povoleno pro migraci. Pokud u vašeho odběru není aktivováno, obraťte se na Microsoft Support pro své předplatné pro migraci.
+* Vaše cílové zařízení řady 8000 je zaregistrováno a spuštěno. Další informace naleznete v tématu [Jak nasadit zařízení StorSimple pomocí služby StorSimple Manager](storsimple-8000-deployment-walkthrough-u2.md).
+* Vaše zařízení řady 8000 má nainstalovanou nejnovější aktualizaci StorSimple 8000 Series Update 5 a používá verzi 6.3.9600.17845 nebo novější. Pokud v zařízení nejsou nainstalovány nejnovější aktualizace, je třeba před zahájením migrace nainstalovat nejnovější aktualizace. Další informace naleznete v [tématu Instalace nejnovější aktualizace na zařízení řady 8000](storsimple-8000-install-update-5.md).
+* Vaše předplatné Azure je povolené pro migraci. Pokud vaše předplatné není povolené, obraťte se na podporu Microsoftu a povolte předplatné pro migraci.
 
-### <a name="for-the-80108020-cloud-appliance-target"></a>Pro 8010/8020 cloudového zařízení (cíl).
+### <a name="for-the-80108020-cloud-appliance-target"></a>Pro cloudové zařízení 8010/8020 (cíl)
 
-Před zahájením migrace, zkontrolujte:
+Než začnete s migrací, ujistěte se:
 
-* Cílové cloudové zařízení je registrované a spuštěna. Další informace najdete v tématu Jak [nasadit a spravovat řešení StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md).
-* Cloudové zařízení je spuštěna nejnovější StorSimple 8000 Series Update 5 verze softwaru 6.3.9600.17845. Pokud vaše cloudové zařízení není spuštěna Update 5, vytvoření nového cloudového zařízení Update 5 předtím, než budete pokračovat v migraci. Další informace najdete v tématu Jak [vytvoření 8010/8020 cloudového zařízení](storsimple-8000-cloud-appliance-u2.md).
+* Vaše cílové cloudové zařízení je registrované a spuštěné. Další informace naleznete v tématu [Nasazení a správa StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md).
+* Vaše cloudové zařízení používá nejnovější software StorSimple 8000 Series Update 5 verze 6.3.9600.17845. Pokud vaše cloudové zařízení neběží aktualizace 5, vytvořte před pokračováním migrace nové cloudové zařízení aktualizace 5. Další informace najdete v [tématu vytvoření cloudového zařízení 8010/8020](storsimple-8000-cloud-appliance-u2.md).
 
-### <a name="for-the-computer-running-storsimple-migration-tool"></a>Pro počítač se systémem nástroj pro migraci StorSimple
+### <a name="for-the-computer-running-storsimple-migration-tool"></a>Pro počítač se spuštěnou nástrojem Migrace StorSimple
 
-Nástroj pro migraci StorSimple je nástroj uživatelského rozhraní, který vám umožňuje migrovat data z StorSimple řad 5000 – 7000 zařízení řady 8000. Chcete-li nainstalovat nástroj pro migraci StorSimple, použijte počítač, který splňuje následující požadavky.
+Nástroj StorSimple Migration je nástroj založený na ui, který umožňuje migrovat data z řady StorSimple 5000-7000 do zařízení řady 8000. Chcete-li nainstalovat nástroj Migrace StorSimple, použijte počítač, který splňuje následující požadavky.
 
-Počítač je připojený k Internetu a:
+Počítač je připojen k Internetu a:
 
-* Používá následující operační systém
+* Je spuštěn následující operační systém
     * Windows 10.
-    * Windows Server 2012 R2 (nebo vyšší) Chcete-li nainstalovat nástroj pro migraci StorSimple.
-* Má nainstalované rozhraní .NET 4.5.2.
-* Má minimálně 5 GB volného místa k instalaci a použití nástroje.
+    * Windows Server 2012 R2 (nebo vyšší) pro instalaci nástroje StorSimple Migration.
+* Byla nainstalována rozhraní .NET 4.5.2.
+* Má minimálně 5 GB volného místa pro instalaci a použití nástroje.
 
 > [!TIP]
-> Pokud zařízení StorSimple je připojený k hostiteli s Windows serverem, můžete nainstalovat nástroj pro migraci na hostitelském počítači systém Windows Server.
+> Pokud je zařízení StorSimple připojeno k hostiteli systému Windows Server, můžete nástroj pro migraci nainstalovat do hostitelského počítače se systémem Windows Server.
 
-#### <a name="to-install-storsimple-migration-tool"></a>Chcete-li nainstalovat nástroj pro migraci StorSimple
+#### <a name="to-install-storsimple-migration-tool"></a>Instalace nástroje Migrace StorSimple
 
-Proveďte následující kroky, chcete-li nainstalovat nástroj pro migraci StorSimple ve vašem počítači.
+Chcete-li do počítače nainstalovat nástroj StorSimple Migration, proveďte následující kroky.
 
-1. Zkopírujte složku _StorSimple8000SeriesMigrationTool_ do počítače Windows. Ujistěte se, že na jednotce, kde je zkopírován software má dostatek místa.
+1. Zkopírujte složku _StorSimple8000SeriesMigrationTool_ do počítače se systémem Windows. Ujistěte se, že jednotka, na které je software zkopírován, má dostatek místa.
 
-    Otevřete konfigurační soubor nástroje _StorSimple8000SeriesMigrationTool.exe.config_ ve složce. Tady je fragment kódu souboru.
+    Otevřete ve složce konfigurační soubor nástroje _StorSimple8000SeriesMigrationTool.exe.config._ Zde je úryvek souboru.
     
     ```xml
         <add key="UserName" value="username@xyz.com" />
@@ -134,20 +134,20 @@ Proveďte následující kroky, chcete-li nainstalovat nástroj pro migraci Stor
         <add key="ResourceGroupName" value="YourResourceGroupName" />
 
     ```
-2. Upravit hodnoty odpovídající klíči a nahradit:
+2. Upravte hodnoty odpovídající klávesám a nahraďte je:
 
-    * `UserName` – Uživatelské jméno pro přihlášení k webu Azure portal.
-    * `SubscriptionName and SubscriptionId` – Zadejte název a ID vašeho předplatného Azure. Ve službě Správce zařízení StorSimple úvodní stránka, v části **Obecné**, klikněte na tlačítko **vlastnosti**. Zkopírujte název předplatného a ID předplatného související s vaší službou.
-    * `ResourceName` – Název služby Správce zařízení StorSimple na webu Azure Portal. Také se zobrazí v části Vlastnosti služby.
-    * `ResourceGroup` – Název skupiny prostředků související s vaší službou Správce zařízení StorSimple na webu Azure Portal. Také se zobrazí v části Vlastnosti služby.
-    ![Zkontrolujte vlastnosti služby pro cílové zařízení](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
-    * `TenantId` – Azure ID Tenanta Active Directory na webu Azure portal. Přihlaste se k Microsoft Azure jako správce. Na portálu Microsoft Azure, klikněte na tlačítko **Azure Active Directory**. V části **spravovat**, klikněte na tlačítko **vlastnosti**. ID se zobrazí v tenantovi **ID adresáře** pole.
-    ![Zkontrolujte ID Tenanta pro službu Azure Active Directory](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
+    * `UserName`– Uživatelské jméno pro přihlášení na portál Azure.
+    * `SubscriptionName and SubscriptionId`– Název a ID předplatného Azure. Na vstupní stránce služby Správce zařízení StorSimple klikněte v části **Obecné**na **položku Vlastnosti**. Zkopírujte název předplatného a ID předplatného přidružené k vaší službě.
+    * `ResourceName`– Název služby StorSimple Device Manager na webu Azure Portal. Také se zobrazí v části vlastnosti služby.
+    * `ResourceGroup`– Název skupiny prostředků přidružené ke službě StorSimple Device Manager na webu Azure Portal. Také se zobrazí v části vlastnosti služby.
+    ![Kontrola vlastností služby pro cílové zařízení](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
+    * `TenantId`– ID klienta Azure Active Directory na webu Azure Portal. Přihlaste se k Microsoft Azure jako správce. Na portálu Microsoft Azure klikněte na **Azure Active Directory**. V části **Spravovat** klikněte na **Vlastnosti**. ID klienta se zobrazí v poli **ID adresáře.**
+    ![Kontrola ID klienta pro Azure Active Directory](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
 
 3.  Uložte změny provedené v konfiguračním souboru.
-4.  Spustit _StorSimple8000SeriesMigrationTool.exe_ spusťte nástroj. Po zobrazení výzvy k zadání pověření, zadejte přihlašovací údaje související s vaším předplatným na webu Azure portal. 
-5.  Zobrazí se nástroj pro migraci StorSimple uživatelského rozhraní.
+4.  Spusťte nástroj _StorSimple8000SeriesMigrationTool.exe._ Po zobrazení výzvy k zadání přihlašovacích údajů zadejte přihlašovací údaje přidružené k vašemu předplatnému na webu Azure Portal. 
+5.  Zobrazí se ui nástroje StorSimple Migration.
   
 
-## <a name="next-steps"></a>Další postup
-Stáhněte si podrobné pokyny o tom, jak [migrovat data z StorSimple řad 5000 – 7000 zařízení řady 8000](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b).
+## <a name="next-steps"></a>Další kroky
+Stáhněte si podrobné pokyny k [migraci dat ze série StorSimple 5000-7000 do zařízení řady 8000](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b).

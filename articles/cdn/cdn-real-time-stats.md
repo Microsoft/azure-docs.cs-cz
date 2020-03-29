@@ -1,6 +1,6 @@
 ---
-title: Statistiky v reálném čase v Azure CDN | Dokumentace Microsoftu
-description: Statistiky v reálném čase poskytuje v reálném čase data o výkonu Azure CDN při doručování obsahu vašim klientům.
+title: Statistiky v reálném čase v Azure CDN | Dokumenty společnosti Microsoft
+description: Statistiky v reálném čase poskytují data v reálném čase o výkonu Azure CDN při doručování obsahu svým klientům.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,82 +15,82 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d56007e5a196a0857f3b69ac51f5e3b5a88c4f6e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593494"
 ---
-# <a name="real-time-stats-in-microsoft-azure-cdn"></a>Statistiky v reálném čase v Microsoft Azure CDN
+# <a name="real-time-stats-in-microsoft-azure-cdn"></a>Statistiky v reálném čase v microsoft azure cdn
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Přehled
-Tento dokument popisuje statistiky v reálném čase v Microsoft Azure CDN.  Tato funkce poskytuje data v reálném čase, jako je například šířky pásma, stavy mezipaměti a souběžná připojení k vašemu profilu CDN při doručování obsahu vašim klientům. To umožňuje nepřetržité monitorování stavu služby v okamžiku, včetně událostí pro uvedení do provozu.
+Tento dokument vysvětluje statistiky v reálném čase v microsoft azure cdn.  Tato funkce poskytuje data v reálném čase, jako je šířka pásma, stavy mezipaměti a souběžná připojení k profilu CDN při doručování obsahu klientům. To umožňuje nepřetržité sledování stavu vaší služby kdykoli, včetně živých událostí.
 
-Jsou k dispozici následující grafy:
+K dispozici jsou následující grafy:
 
-* [Bandwidth](#bandwidth)
+* [Šířka pásma](#bandwidth)
 * [Stavové kódy](#status-codes)
 * [Stavy mezipaměti](#cache-statuses)
 * [Připojení](#connections)
 
-## <a name="accessing-real-time-stats"></a>Přístup k statistiky v reálném čase
-1. V [webu Azure Portal](https://portal.azure.com), přejděte na svůj profil CDN.
+## <a name="accessing-real-time-stats"></a>Přístup ke statistikám v reálném čase
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte na svůj profil CDN.
    
-    ![Okno profilu CDN](./media/cdn-real-time-stats/cdn-profile-blade.png)
-2. Z okna profil CDN, klikněte na tlačítko **spravovat** tlačítko.
+    ![CdN profilový nůž](./media/cdn-real-time-stats/cdn-profile-blade.png)
+2. V okně profilu CDN klepněte na tlačítko **Spravovat.**
    
-    ![Tlačítko Spravovat okno profilu CDN](./media/cdn-real-time-stats/cdn-manage-btn.png)
+    ![Tlačítko pro správu okna profilu CDN](./media/cdn-real-time-stats/cdn-manage-btn.png)
    
-    Otevře se na portálu pro správu CDN.
-3. Najeďte myší **Analytics** kartu a pak najeďte myší **statistiky v reálném čase** Kontextová nabídka.  Klikněte na **velkého objektu HTTP**.
+    Otevře se portál pro správu CDN.
+3. Najeďte na kartu **Analytics** a najeďte na informační **rámeček Statistiky v reálném čase.**  Klikněte na **HTTP Velký objekt**.
    
     ![Portál pro správu CDN](./media/cdn-real-time-stats/cdn-premium-portal.png)
    
-    Se zobrazí v grafech statistiky v reálném čase.
+    Zobrazí se grafy statistik v reálném čase.
 
-Jednotlivé grafy zobrazuje statistiky v reálném čase pro vybraný časový rozsah, spouští se při načtení stránky.  V grafech automaticky aktualizovat každých několik sekund.  **Aktualizovat graf** tlačítko, pokud jsou k dispozici, se vymažou grafu, po jejímž uplynutí se zobrazí jenom vybraná data.
+Každý z grafů zobrazuje statistiky v reálném čase pro vybraný časový rozsah, počínaje načtením stránky.  Grafy se aktualizují automaticky každých několik sekund.  Tlačítko **Aktualizovat graf,** pokud je k dispozici, vymaže graf, po kterém se zobrazí pouze vybraná data.
 
 ## <a name="bandwidth"></a>Šířka pásma
 ![Graf šířky pásma](./media/cdn-real-time-stats/cdn-bandwidth.png)
 
-**Šířky pásma** grafu zobrazí šířka pásma použitá pro aktuální platformu za vybrané časové období. Šedá část grafu označuje využití šířky pásma. Přesné množství šířky pásma, které jsou právě používány se zobrazí přímo pod spojnicový graf.
+Graf **šířky pásma** zobrazuje šířku pásma použitou pro aktuální platformu ve zvoleném časovém rozpětí. Stínovaná část grafu označuje využití šířky pásma. Přesná šířka pásma, která je právě používána, je zobrazena přímo pod čárkovým grafem.
 
 ## <a name="status-codes"></a>Stavové kódy
-![Stavový kód grafu](./media/cdn-real-time-stats/cdn-status-codes.png)
+![Graf stavového kódu](./media/cdn-real-time-stats/cdn-status-codes.png)
 
-**Stavové kódy** grafu určuje, jak často se provádí některé kódy odpovědi HTTP přes vybraný časový rozsah.
+Graf **Stavových kódů** označuje, jak často se ve vybraném časovém rozpětí vyskytují určité kódy odpovědí HTTP.
 
 > [!TIP]
-> Popis jednotlivých možností kód stavu HTTP najdete v tématu [stavové kódy HTTP Azure CDN](/previous-versions/azure/mt759238(v=azure.100)).
+> Popis jednotlivých možností stavového kódu HTTP najdete v [tématu Azure CDN HTTP Status Codes](/previous-versions/azure/mt759238(v=azure.100)).
 > 
 > 
 
-Přímo nad grafu se zobrazí seznam stavových kódů HTTP. Tento seznam uvádí všech kódů, které mohou být součástí spojnicový graf a aktuální počet opakování za sekundu pro tento kód stavu. Ve výchozím nastavení zobrazí se řádek pro každou z těchto stavů v grafu. Můžete však pouze monitorovat stavové kódy, které mají speciální význam pro vaši konfiguraci CDN. Zkontrolujte požadované stavové kódy a zrušte zaškrtnutí všech ostatních možností a klikněte na **aktualizovat graf**. 
+Seznam stavových kódů HTTP se zobrazí přímo nad grafem. Tento seznam označuje každý stavový kód, který může být zahrnut do spojového grafu, a aktuální počet výskytů za sekundu pro tento stavový kód. Ve výchozím nastavení se pro každý z těchto stavových kódů v grafu zobrazí řádek. Můžete však sledovat pouze stavové kódy, které mají zvláštní význam pro konfiguraci CDN. Chcete-li to provést, zkontrolujte požadované stavové kódy a zrušte zaškrtnutí všech ostatních možností a klepněte na tlačítko **Aktualizovat graf**. 
 
-Můžete dočasně skrýt zaznamenaných dat pro konkrétní stavový kód.  V legendě přímo pod grafem klikněte na stavový kód, který chcete skrýt. Stavový kód bude okamžitě skrytá z grafu. Opětovným kliknutím Tento stavový kód způsobí, že tuto možnost, který se má zobrazit znovu.
+Protokolovaná data můžete dočasně skrýt pro určitý stavový kód.  Z legendy přímo pod grafem klikněte na stavový kód, který chcete skrýt. Stavový kód bude okamžitě skryt v grafu. Opětovným kliknutím na tento stavový kód se tato možnost znovu zobrazí.
 
 ## <a name="cache-statuses"></a>Stavy mezipaměti
-![Graf stavy mezipaměti](./media/cdn-real-time-stats/cdn-cache-status.png)
+![Graf Stavů mezipaměti](./media/cdn-real-time-stats/cdn-cache-status.png)
 
-**Stavy mezipaměti** grafu určuje, jak často jsou určité typy stavy mezipaměti ke kterým dochází za vybrané časové období. 
+Graf **Stavy mezipaměti** označuje, jak často se ve vybraném časovém rozpětí vyskytují určité typy stavů mezipaměti. 
 
 > [!TIP]
-> Popis jednotlivých možností kód stavu mezipaměti najdete v tématu [Azure CDN mezipaměti stavové kódy](/previous-versions/azure/mt759237(v=azure.100)).
+> Popis jednotlivých možností kódu stavu mezipaměti najdete v [tématu Azure CDN cache Stavové kódy](/previous-versions/azure/mt759237(v=azure.100)).
 > 
 > 
 
-Přímo nad grafu se zobrazí seznam stavových kódů mezipaměti. Tento seznam uvádí všech kódů, které mohou být součástí spojnicový graf a aktuální počet opakování za sekundu pro tento kód stavu. Ve výchozím nastavení zobrazí se řádek pro každou z těchto stavů v grafu. Můžete však pouze monitorovat stavové kódy, které mají speciální význam pro vaši konfiguraci CDN. Zkontrolujte požadované stavové kódy a zrušte zaškrtnutí všech ostatních možností a klikněte na **aktualizovat graf**. 
+Seznam stavových kódů mezipaměti se zobrazí přímo nad grafem. Tento seznam označuje každý stavový kód, který může být zahrnut do spojového grafu, a aktuální počet výskytů za sekundu pro tento stavový kód. Ve výchozím nastavení se pro každý z těchto stavových kódů v grafu zobrazí řádek. Můžete však sledovat pouze stavové kódy, které mají zvláštní význam pro konfiguraci CDN. Chcete-li to provést, zkontrolujte požadované stavové kódy a zrušte zaškrtnutí všech ostatních možností a klepněte na tlačítko **Aktualizovat graf**. 
 
-Můžete dočasně skrýt zaznamenaných dat pro konkrétní stavový kód.  V legendě přímo pod grafem klikněte na stavový kód, který chcete skrýt. Stavový kód bude okamžitě skrytá z grafu. Opětovným kliknutím Tento stavový kód způsobí, že tuto možnost, který se má zobrazit znovu.
+Protokolovaná data můžete dočasně skrýt pro určitý stavový kód.  Z legendy přímo pod grafem klikněte na stavový kód, který chcete skrýt. Stavový kód bude okamžitě skryt v grafu. Opětovným kliknutím na tento stavový kód se tato možnost znovu zobrazí.
 
 ## <a name="connections"></a>Připojení
-![Připojení grafu](./media/cdn-real-time-stats/cdn-connections.png)
+![Graf připojení](./media/cdn-real-time-stats/cdn-connections.png)
 
-Tento graf označuje, kolik připojení byly vytvořeny na hraničních serverech. Každý požadavek pro určitý prostředek, který se předá prostřednictvím našich CDN výsledků v připojení.
+Tento graf ukazuje, kolik připojení bylo vytvořeno k hraničním serverům. Každá žádost o prostředek, který prochází naší CDN má za následek připojení.
 
 ## <a name="next-steps"></a>Další kroky
-* Dostanete oznámení zprávou [výstrahy v reálném čase v Azure CDN](cdn-real-time-alerts.md)
-* Hlubší vhled díky [Rozšířené sestavy HTTP](cdn-advanced-http-reports.md)
-* Analýza [vzorů využití](cdn-analyze-usage-patterns.md)
+* Upozornění v [reálném čase v Azure CDN](cdn-real-time-alerts.md)
+* Ponořte se hlouběji pomocí [pokročilých zpráv HTTP](cdn-advanced-http-reports.md)
+* Analýza [vzorců využití](cdn-analyze-usage-patterns.md)
 

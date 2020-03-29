@@ -1,26 +1,26 @@
 ---
-title: Správa omezení kontextu zabezpečení v Azure Red Hat OpenShift | Microsoft Docs
+title: Správa omezení kontextu zabezpečení v Azure Red Hat OpenShift | Dokumenty společnosti Microsoft
 description: Omezení kontextu zabezpečení pro správce clusteru Azure Red Hat OpenShift
 services: container-service
 author: troy0820
-ms.author: jzim
+ms.author: b-trconn
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: f98f55dca8b3dbbfbe03cb8c79691cedb63335a0
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168979"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063179"
 ---
 # <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Správa omezení kontextu zabezpečení v Azure Red Hat OpenShift 
 
-Omezení kontextu zabezpečení (SCCs) umožňují správcům clusterů řídit oprávnění pro lusky. Další informace o tomto typu rozhraní API najdete v [dokumentaci k architektuře pro SCCs](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). SCCs v instanci můžete spravovat jako normální objekty rozhraní API pomocí rozhraní příkazového řádku (CLI).
+Omezení kontextu zabezpečení (SCC) umožňují správcům clusteru řídit oprávnění pro pody. Další informace o tomto typu rozhraní API naleznete v [dokumentaci k architektuře pro řadiče SCC](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). Scc můžete spravovat ve vaší instanci jako normální objekty rozhraní API pomocí rozhraní se knám.
 
-## <a name="list-security-context-constraints"></a>Vypsat omezení kontextu zabezpečení
+## <a name="list-security-context-constraints"></a>Omezení kontextu zabezpečení seznamu
 
-Pokud chcete získat aktuální seznam SCCs, použijte tento příkaz: 
+Chcete-li získat aktuální seznam sc, použijte tento příkaz: 
 
 ```bash
 $ oc get scc
@@ -35,41 +35,41 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examine-an-object-for-security-context-constraints"></a>Kontrola objektu pro omezení kontextu zabezpečení
+## <a name="examine-an-object-for-security-context-constraints"></a>Zkontrolujte, zda objekt nehledá omezení kontextu zabezpečení
 
-K prohlédnutí konkrétního SCCu použijte `oc get`, `oc describe` nebo `oc edit`.  Chcete-li například prostudovat **omezené** SCC, použijte tento příkaz:
+Chcete-li prozkoumat konkrétní `oc get` `oc describe`SCC, použijte , nebo `oc edit`.  Chcete-li například zkontrolovat **omezený** SCC, použijte tento příkaz:
 ```bash
 $ oc describe scc restricted
-Name:                   restricted
-Priority:               <none>
+Name:                    restricted
+Priority:                <none>
 Access:
   Users:                <none>
-  Groups:               system:authenticated
+  Groups:                system:authenticated
 Settings:
-  Allow Privileged:         false
-  Default Add Capabilities:     <none>
-  Required Drop Capabilities:       KILL,MKNOD,SYS_CHROOT,SETUID,SETGID
-  Allowed Capabilities:         <none>
-  Allowed Seccomp Profiles:     <none>
-  Allowed Volume Types:         configMap,downwardAPI,emptyDir,persistentVolumeClaim,projected,secret
-  Allow Host Network:           false
-  Allow Host Ports:         false
-  Allow Host PID:           false
-  Allow Host IPC:           false
+  Allow Privileged:            false
+  Default Add Capabilities:        <none>
+  Required Drop Capabilities:        KILL,MKNOD,SYS_CHROOT,SETUID,SETGID
+  Allowed Capabilities:            <none>
+  Allowed Seccomp Profiles:        <none>
+  Allowed Volume Types:            configMap,downwardAPI,emptyDir,persistentVolumeClaim,projected,secret
+  Allow Host Network:            false
+  Allow Host Ports:            false
+  Allow Host PID:            false
+  Allow Host IPC:            false
   Read Only Root Filesystem:        false
   Run As User Strategy: MustRunAsRange
     UID:                <none>
-    UID Range Min:          <none>
-    UID Range Max:          <none>
+    UID Range Min:            <none>
+    UID Range Max:            <none>
   SELinux Context Strategy: MustRunAs
-    User:               <none>
-    Role:               <none>
-    Type:               <none>
-    Level:              <none>
+    User:                <none>
+    Role:                <none>
+    Type:                <none>
+    Level:                <none>
   FSGroup Strategy: MustRunAs
-    Ranges:             <none>
+    Ranges:                <none>
   Supplemental Groups Strategy: RunAsAny
-    Ranges:             <none>
+    Ranges:                <none>
 ```
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]

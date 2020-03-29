@@ -1,53 +1,52 @@
 ---
-title: Konfigurace správy potenciálních zákazníků ve Marketě | Azure Marketplace
-description: Nakonfigurujte řízení správy pro zákazníky na webu Marketo pro zákazníky Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Konfigurace správy potenciálních zákazníků v Marketu | Azure Marketplace
+description: Konfigurace správy potenciálních zákazníků pro zákazníky marketu pro Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: 7949507c8c7ef57cded25cde8579c1945aa93a81
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9fa05eae2d297cbd6ae7243d191cae5a7a3f990e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825200"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288525"
 ---
-# <a name="configure-lead-management-in-marketo"></a>Konfigurace správy potenciálních zákazníků ve Marketě
+# <a name="configure-lead-management-in-marketo"></a>Konfigurace správy potenciálních zákazníků v Marketu
 
-Tento článek popisuje, jak nastavit Marketo pro zpracování zájemců Microsoftu pro prodej.
+Tento článek popisuje, jak nastavit Marketo pro zpracování prodejních zájemců společnosti Microsoft.
 
-1. Přihlaste se k Marketo.
-2. Vyberte **návrh Studio**.
-    ![Market Design Studio](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo1.png)
+1. Přihlaste se do Marketo.
+2. Vyberte **návrhstudia**.
+    ![Marketo Design Studio](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo1.png)
 
-3.  Vyberte **nový formulář**.
-    nový formulář ![Market](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo2.png)
+3.  Vyberte **Nový formulář**.
+    ![Marketo nová forma](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo2.png)
 
-4.  Vyplňte požadovaná pole v novém formuláři a pak vyberte **vytvořit**.
-    ![Marketo vytvořit nový formulář](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo3.png)
+4.  Vyplňte požadovaná pole v novém formuláři a pak vyberte **Vytvořit**.
+    ![Marketo vytvořit novou formu](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo3.png)
 
-4.  V poli Podrobnosti o poli vyberte **Dokončit**.
-    ![formulář dokončení Market](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo4.png)
+4.  V části Podrobnosti pole vyberte **Dokončit**.
+    ![Marketo dokončovací formulář](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo4.png)
 
-5.  Schvalte a zavřete.
+5.  Schválit a zavřít.
 
 6.  Na kartě MarketplaceLeadBacked vyberte **Vložit kód**.
-    možnost kódu pro vložení ![Market](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo5.png)
+    ![Možnost vložit kód Marketo](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo5.png)
 
-7.  Kód pro vložení do markety zobrazí kód podobný následujícímu příkladu.
+7.  Kód pro vložení Marketo zobrazí kód podobný následujícímu příkladu.
 
 `<script src="//app-ys12.marketo.com/js/forms2/js/forms2.min.js"></script>`
 
     <form id="mktoForm_1179"></form>
-    <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
+    <script>MktoForms2.loadForm("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
 
-1. Zkopírujte hodnoty uvedené v kódu pro vložení, abyste mohli nakonfigurovat **ID serveru**, **ID Munchkin**a **ID formuláře** v polích Marketo na portál partnerů cloudu.
+1. Zkopírujte hodnoty zobrazené v části Kód pro vložení, abyste mohli nakonfigurovat **ID serveru**, **ID protokolu Munchkin**a **ID formuláře** v polích Marketo na portálu partnerů cloudu.
 
-Následující příklad slouží jako vodítko pro získání potřebných ID z příkladu kódu pro vložení do Marketo.
+Použijte další příklad jako vodítko pro získání Ids, které potřebujete z Marketo Vložit kód příkladu.
 
-- ID serveru = **ys12**
-- Munchkin ID = **123-PQR-789**
-- ID formuláře = **1179**\
+- Id serveru = **ys12**
+- Munchkin Id = **123-PQR-789**
+- Id formuláře = **1179**

@@ -1,70 +1,70 @@
 ---
-title: Správa verzí pro klientské a serverové sady SDK
-description: Seznam klientských sad SDK a kompatibilita s verzemi serveru SDK pro Mobile Services a Azure Mobile Apps.
+title: Správa verzí sady SDK klienta a serveru
+description: Seznam sad SDK klienta a kompatibilita s verzemi sady SDK serveru pro mobilní služby a mobilní aplikace Azure.
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: f24ae0a48b835785a2e000210f3609b82d42d0f6
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: a9ba442c00ec2498139ee34a1ff7497c98f17ede
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461551"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293488"
 ---
-# <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Správa verzí klienta a serveru v Mobile Apps a Mobile Services
+# <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Správa verzí klienta a serveru v mobilních aplikacích a mobilních službách
 
-Nejnovější verze služby Azure Mobile Services je **Mobile Apps** funkce Azure App Service.
+Nejnovější verze mobilních služeb Azure je funkce **Mobilní aplikace** služby Azure App Service.
 
-Sady SDK pro Mobile Apps klienta a serveru jsou původně založené na těch, *které jsou v* Mobile Services, ale nejsou vzájemně kompatibilní.
-To znamená, že musíte použít sadu SDK klienta *Mobile Apps* se sadou sdk serveru *Mobile Apps* a podobně pro *Mobile Services*. Tato smlouva se vynutila prostřednictvím speciální hodnoty hlavičky, kterou používají klientské a serverové sady SDK `ZUMO-API-VERSION`.
+Sady SDK pro klienty a servery Mobile Apps jsou původně založeny na klientských sadách Mobile Services a serverech SDK, které jsou původně založeny na klientských službách a serverech Mobile Services, ale *nejsou* vzájemně kompatibilní.
+To znamená, že je nutné použít sadu SDK klienta *mobilních aplikací* se sadou SDK serveru *mobilních aplikací* a podobně pro *mobilní služby*. Tato smlouva je vynucena prostřednictvím speciální hodnoty záhlaví používané klientem a serverem Sady SDK . `ZUMO-API-VERSION`
 
-Poznámka: pokaždé, když tento dokument odkazuje na *Mobile Services* back-end, nemusí být nutně hostovaný na Mobile Services. Nyní je možné migrovat mobilní službu, aby běžela na App Service bez jakýchkoli změn kódu, ale služba stále používá *Mobile Services* verze SDK.
+Poznámka: Vždy, když tento dokument odkazuje na back-end *mobilních služeb,* nemusí být nutně hostován v mobilních službách. Nyní je možné migrovat mobilní službu spustit na App Service bez jakýchkoli změn kódu, ale služba by stále používat *mobilní služby* SDK verze.
 
 ## <a name="header-specification"></a>Specifikace záhlaví
-Klávesová `ZUMO-API-VERSION` může být zadána buď v hlavičce protokolu HTTP, nebo v řetězci dotazu. Hodnota je řetězec verze ve formátu **x. y. z**.
+Klíč `ZUMO-API-VERSION` může být zadán v hlavičce PROTOKOLU HTTP nebo v řetězci dotazu. Hodnota je řetězec verze ve formuláři **x.y.z**.
 
 Například:
 
-ZÍSKAT https://service.azurewebsites.net/tables/TodoItem
+`GET https://service.azurewebsites.net/tables/TodoItem`
 
-HLAVIČKY: ZUMO-API-VERSION: 2.0.0
+HLAVIČKY: ZUMO-API-VERZE: 2.0.0
 
-PŘÍSPĚVEK https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
+`POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0`
 
-## <a name="opting-out-of-version-checking"></a>Zrušení kontroly verze
-Kontrolu verzí můžete odhlásit nastavením hodnoty **true** pro nastavení aplikace **MS_SkipVersionCheck**. Zadejte to buď v souboru Web. config, nebo v části nastavení aplikace Azure Portal.
+## <a name="opting-out-of-version-checking"></a>Odhlášení z kontroly verze
+Z kontroly verzí se můžete odhlásit nastavením hodnoty **true** pro nastavení aplikace **MS_SkipVersionCheck**. Zadejte to buď ve vašem web.config nebo v části Nastavení aplikace na webu Azure Portal.
 
 > [!NOTE]
-> Mezi Mobile Services a Mobile Apps se mění množství chování, zejména v oblasti offline synchronizace, ověřování a nabízených oznámení. Po kompletním testování byste měli odhlásit jenom kontrolu verzí, aby se zajistilo, že tyto změny chování nebudou přerušovat funkčnost vaší aplikace.
+> Mezi mobilními službami a mobilními aplikacemi dochází k řadě změn chování, zejména v oblastech offline synchronizace, ověřování a nabízených oznámení. Po dokončení testování byste se měli odhlásit z kontroly verzí, abyste zajistili, že tyto změny chování neporuší funkčnost aplikace.
 
-## <a name="2.0.0"></a>Klient a server Azure Mobile Apps
-### <a name="MobileAppsClients"></a>Klientské sady SDK pro mobilní *aplikace*
-Kontrola verze byla představena počínaje následujícími verzemi klientské sady SDK pro **Azure Mobile Apps**:
+## <a name="azure-mobile-apps-client-and-server"></a><a name="2.0.0"></a>Klient a server mobilních aplikací Azure
+### <a name="mobile-apps-client-sdks"></a><a name="MobileAppsClients"></a>Sady SDK klienta mobilních *aplikací*
+Kontrola verzí byla zavedena počínaje následujícími verzemi sady SDK klienta pro **mobilní aplikace Azure**:
 
-| Klientská platforma | Verze | Hodnota hlavičky verze |
+| Platforma klienta | Version | Hodnota záhlaví verze |
 | --- | --- | --- |
 | Spravovaný klient (Windows, Xamarin) |[2.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) |2.0.0 |
 | iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |
 | Android |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=717033&clcid=0x409) |3.0.0 |
 
-### <a name="mobile-apps-server-sdks"></a>Sady SDK serveru Mobile *Apps*
-Kontrola verze je zahrnutá v následujících verzích sady SDK serveru:
+### <a name="mobile-apps-server-sdks"></a>Sady SDK serveru *mobilních aplikací*
+Kontrola verzí je součástí následujících verzí sady SDK serveru:
 
 | Serverová platforma | Sada SDK | Hlavička přijaté verze |
 | --- | --- | --- |
-| .NET |[Microsoft. Azure. Mobile. Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
-| Node.js |[Azure – Mobile – aplikace](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
+| .NET |[Microsoft.Azure.Mobile.Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
+| Node.js |[azurové mobilní aplikace)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
 
-### <a name="behavior-of-mobile-apps-backends"></a>Chování Mobile Apps back-endy
-| ZUMO-API-VERSION | Hodnota MS_SkipVersionCheck | Odpověď |
+### <a name="behavior-of-mobile-apps-backends"></a>Chování back-endů mobilních aplikací
+| ZUMO-API-VERZE | Hodnota MS_SkipVersionCheck | Odpověď |
 | --- | --- | --- |
-| x. y. z nebo null |True |200 – OK |
-| Null |Hodnota false/není zadána |400 – Chybný požadavek |
-| 1. x. y |Hodnota false/není zadána |400 – Chybný požadavek |
-| 2.0.0-2.x.y |Hodnota false/není zadána |200 – OK |
-| 3.0.0-3.x.y |Hodnota false/není zadána |400 – Chybný požadavek |
+| x.y.z nebo Null |True |200 - OK |
+| Null |False/Není zadáno |400 – Chybný požadavek |
+| 1.x.y |False/Není zadáno |400 – Chybný požadavek |
+| 2.0.0-2.x.y |False/Není zadáno |200 - OK |
+| 3.0.0-3.x.y |False/Není zadáno |400 – Chybný požadavek |
 
 [Mobile Services clients]: #MobileServicesClients
 [Mobile Apps clients]: #MobileAppsClients

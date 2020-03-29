@@ -1,6 +1,6 @@
 ---
-title: Vytvoření Shrnutí videa pomocí Azure Media Video Thumbnailsu | Microsoft Docs
-description: Shrnutí videa vám může přispět k vytváření souhrnů dlouhých videí tím, že automaticky vybere zajímavé fragmenty ze zdrojového videa. To je užitečné v případě, že chcete poskytnout rychlý přehled toho, co na dlouhém videu očekáváte.
+title: Použití miniatur videa médií Azure k vytvoření souhrnu videa | Dokumenty společnosti Microsoft
+description: Shrnutí videa vám pomůže vytvořit souhrny dlouhých videí automatickým výběrem zajímavých úryvků ze zdrojového videa. To je užitečné, pokud chcete poskytnout rychlý přehled o tom, co můžete očekávat v dlouhém videu.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -16,31 +16,31 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918310"
 ---
-# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Vytvoření Shrnutí videa pomocí Azure Media Video Thumbnails  
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Použití miniatur videa médií Azure k vytvoření souhrnu videa  
 
 > [!NOTE]
-> Procesor **Azure Media Video Thumbnails** médií bude vyřazen. Informace o datu vyřazení najdete v tématu [starší verze součástí](legacy-components.md) .
+> Mediální procesor **Miniatury videa Azure** Media bude vyřazen. Datum vyřazení naleznete v tématu [starších součástí.](legacy-components.md)
 
 ## <a name="overview"></a>Přehled
 
-Procesor **Azure Media Video Thumbnails** Media (MP) umožňuje vytvořit souhrn videa, který je užitečný pro zákazníky, kteří chtějí jenom zobrazit náhled na souhrnné informace o dlouhém videu. Zákazníci například můžou chtít při najetí myší na miniaturu zobrazit krátké "Souhrnné video". Díky vylepšení parametrů **Azure Media Video Thumbnails** pomocí přednastavení konfigurace můžete k algorithmically generování popisného dílčího klipu použít výkonnou detekci a zřetězení technologie MP.  
+Mediální procesor **Azure Media Video Thumbnails** (MP) umožňuje vytvořit souhrn videa, který je užitečný pro zákazníky, kteří chtějí zobrazit náhled souhrnu dlouhého videa. Zákazníci mohou například chtít vidět krátké "souhrnné video", když najedou na miniaturu. Úpravou parametrů **miniatur videa médií Azure** prostřednictvím přednastavení konfigurace můžete pomocí výkonné technologie detekce a zřetězení mp algoritmicky generovat popisný podklip.  
 
-Sada MP **miniatury multimédií Azure** je aktuálně ve verzi Preview.
+Azure **Media Video Thumbnail** MP je aktuálně ve verzi Preview.
 
-Tento článek obsahuje podrobné informace o **miniaturách multimédií Azure** a ukazuje, jak ho používat s Media Services SDK pro .NET.
+Tento článek obsahuje podrobnosti o **miniaturách videa médií Azure** a ukazuje, jak ji používat s sadou Media Services SDK pro rozhraní .NET.
 
 ## <a name="limitations"></a>Omezení
 
-V některých případech platí, že pokud vaše video nezahrnuje různé scény, výstup bude jenom jeden snímek.
+V některých případech, pokud vaše video není složeno z různých scén, bude výstupem pouze jeden snímek.
 
-## <a name="video-summary-example"></a>Příklad souhrnu videa
-Tady je několik příkladů toho, co může procesor Azure Media Video Thumbnails Media provádět:
+## <a name="video-summary-example"></a>Příklad shrnutí videa
+Tady je několik příkladů toho, co dokáže mediální procesor Azure Media Video Thumbnails:
 
 ### <a name="original-video"></a>Původní video
 [Původní video](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
@@ -48,8 +48,8 @@ Tady je několik příkladů toho, co může procesor Azure Media Video Thumbnai
 ### <a name="video-thumbnail-result"></a>Výsledek miniatury videa
 [Výsledek miniatury videa](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
-## <a name="task-configuration-preset"></a>Konfigurace úlohy (předvolba)
-Při vytváření úlohy miniatury videa pomocí **Azure Media Video Thumbnails**musíte zadat předvolby konfigurace. Ukázka výše uvedeného miniatury byla vytvořena s následující základní konfigurací JSON:
+## <a name="task-configuration-preset"></a>Konfigurace úloh (přednastavení)
+Při vytváření úlohy miniatury videa pomocí **miniatur mediálního videa Azure**je nutné zadat přednastavení konfigurace. Výše uvedená ukázka miniatur byla vytvořena s následující základní konfigurací JSON:
 
 ```json
     {
@@ -61,18 +61,18 @@ V současné době můžete změnit následující parametry:
 
 | Param | Popis |
 | --- | --- |
-| outputAudio |Určuje, zda výsledné video obsahuje libovolný zvuk. <br/>Povolené hodnoty jsou: true nebo false. Výchozí hodnota je true. |
-| fadeInFadeOut |Určuje, zda jsou použity přechody mezi jednotlivými miniaturami pohybu.  <br/>Povolené hodnoty jsou: true nebo false.  Výchozí hodnota je true. |
-| maxMotionThumbnailDurationInSecs |Celé číslo, které určuje, jak dlouho musí být celé výsledné video.  Výchozí hodnota závisí na původním trvání videa. |
+| outputAudio |Určuje, zda výsledné video obsahuje nějaký zvuk. <br/>Povolené hodnoty jsou: True nebo False. Výchozí hodnota je true. |
+| fadeInFadeOut |Určuje, zda se mezi samostatnými miniaturami pohybu použijí přechody zeslabení.  <br/>Povolené hodnoty jsou: True nebo False.  Výchozí hodnota je true. |
+| maxMotionThumbnailDurationInSecs |Celé číslo, které určuje, jak dlouho bude celé výsledné video.  Výchozí nastavení závisí na původní době trvání videa. |
 
-Následující tabulka popisuje výchozí dobu trvání, když se **maxMotionThumbnailInSecs** nepoužívá.
+Následující tabulka popisuje výchozí dobu trvání, pokud není **použita maxMotionThumbnailInSecs.**
 
 |  |  |  |
 | --- | --- | --- |
-| Doba trvání videa |d < 3 min. |3 min < d < 15 min |
-| Doba trvání miniatury |15 sekund (2-3 scén) |30 sekund (3-5 scén) |
+| Doba trvání videa |d < 3 min |3 min < d < 15 min |
+| Doba trvání miniatury |15 s (2-3 scény) |30 s (3-5 scén) |
 
-Následující sady JSON mají dostupné parametry.
+Následující JSON nastaví dostupné parametry.
 
 ```json
     {
@@ -85,12 +85,12 @@ Následující sady JSON mají dostupné parametry.
     }
 ```
 
-## <a name="net-sample-code"></a>Vzorový kód .NET
+## <a name="net-sample-code"></a>Ukázkový kód rozhraní .NET
 
 Následující program ukazuje, jak:
 
-1. Vytvořte Asset a nahrajte do něj mediální soubor.
-2. Vytvoří úlohu s úkolem miniatury videa na základě konfiguračního souboru, který obsahuje následující předvolbu JSON: 
+1. Vytvořte datový zdroj a nahrajte do něj mediální soubor.
+2. Vytvoří úlohu s úlohou miniatury videa založenou na konfiguračním souboru, který obsahuje následující přednastavení json: 
     
     ```json
             {                
@@ -284,14 +284,14 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
 ### <a name="video-thumbnail-output"></a>Výstup miniatury videa
 [Výstup miniatury videa](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy
-[Přehled analýzy Azure Media Services](media-services-analytics-overview.md)
+[Přehled analýzy Mediálních služeb Azure](media-services-analytics-overview.md)
 
 [Ukázky Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

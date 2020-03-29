@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s Azure Disk Encryption pro virtuální počítače se systémem Linux
-description: Tento článek popisuje tipy pro řešení potíží pro Microsoft Azure šifrování disku pro virtuální počítače se systémem Linux.
+title: Poradce při potížích s šifrováním disku Azure pro virtuální počítače s Linuxem
+description: Tento článek obsahuje tipy pro řešení potíží s microsoft azure šifrování disků pro virtuální počítače s Linuxem.
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -9,40 +9,40 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: eeacea9e3305865881747801100dc17770b7df63
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970491"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Disk Encryption
+# <a name="azure-disk-encryption-troubleshooting-guide"></a>Průvodce odstraňováním potíží s šifrováním disku Azure
 
-Tento průvodce je pro odborníky v oblasti IT, analytikům zabezpečení informací a správcům cloudů, jejichž organizace používat Azure Disk Encryption. Tento článek je pomoci při řešení problémů souvisejících s disk encryption.
+Tato příručka je určen pro odborníky v oblasti IT, analytiky zabezpečení informací a správce cloudu, jejichž organizace používají Azure Disk Encryption. Tento článek vám pomůže s odstraňováním potíží souvisejících s šifrováním disku.
 
-Než začnete s některým z následujících kroků, zajistěte, aby virtuální počítače, které se pokoušíte zašifrovat, byly mezi [podporovanými velikostmi virtuálních počítačů a operačními systémy](disk-encryption-overview.md#supported-vms-and-operating-systems), a že jste splnili všechny požadavky:
+Před přijetím některého z následujících kroků nejprve ujistěte se, že virtuální počítače, které se pokoušíte zašifrovat, patří mezi [podporované velikosti virtuálních počítače a operační systémy](disk-encryption-overview.md#supported-vms-and-operating-systems)a že jste splnili všechny požadavky:
 
-- [Další požadavky na virtuální počítače](disk-encryption-overview.md#supported-vms-and-operating-systems)
-- [Požadavky na síť](disk-encryption-overview.md#networking-requirements)
+- [Další požadavky na virtuální chod](disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [Požadavky na vytváření sítí](disk-encryption-overview.md#networking-requirements)
 - [Požadavky na úložiště šifrovacího klíče](disk-encryption-overview.md#encryption-key-storage-requirements)
 
  
 
-## <a name="troubleshooting-linux-os-disk-encryption"></a>Řešení potíží s šifrování disku operačního systému Linux
+## <a name="troubleshooting-linux-os-disk-encryption"></a>Poradce při potížích s šifrováním disku operačního systému Linux
 
-Šifrování disku operačního systému (OS) Linux musí před spuštěním procesu šifrování celého disku odpojit jednotku operačního systému. Pokud ho nelze odpojit jednotku, chybová zpráva o "se nepodařilo odpojit po..." by mohla nastat.
+Šifrování disku operačního systému Linux (OS) musí před spuštěním jednotky operačního systému zrušit proces šifrování celého disku. Pokud se nemůže odpojit disk, chybová zpráva "se nepodařilo odpojit po ..." pravděpodobně dojde.
 
-K této chybě může dojít, když se na virtuálním počítači zkouší šifrování disku s operačním systémem a prostředí, které bylo změněno z podporované Image Galerie uložených v síti. Odchylky od podporované image může narušovat tohoto rozšíření možnost odpojit jednotku operačního systému. Příklady odchylky může obsahovat následující položky:
-- Přizpůsobené Image už neodpovídá podporovaném systému souborů nebo schéma vytváření oddílů.
-- Velké aplikace, jako je například SAP, MongoDB, Apache Cassandra a Docker nejsou podporovány, když budou nainstalovány a spuštěny v operačním systému před šifrování. Azure Disk Encryption se nepodařilo vypnout tyto procesy bezpečně podle potřeby při přípravě jednotky operačního systému pro šifrování disku. Pokud stále aktivní procesy, které drží otevřené popisovače souborů na jednotce operačního systému, jednotka operačního systému nemůže být odpojeny, což vede k selhání při šifrování jednotky operačního systému. 
-- Vlastní skripty, která spustí v blízkosti čas uzavření šifrování povolené, nebo pokud jakýkoli jiný nemění na virtuálním počítači během procesu šifrování. Tomuto konfliktu může dojít, pokud šablonu Azure Resource Manager definuje několik rozšíření současného provádění nebo pokud se rozšíření vlastních skriptů nebo jiné akce je spouštěný souběžně k šifrování disku. Serializace a izolaci těchto kroků mohou problém vyřešit.
-- Před povolením šifrování, tak selhání kroku odpojení bylo nezakázala Linux rozšířeného zabezpečení (SELinux). Po dokončení šifrování může SELinux opětovně povolena.
-- Disk s operačním systémem používá schéma Správce logických svazků (LVM). I když omezenou podporu pro disky data LVM je k dispozici, není disk s operačním systémem LVM.
-- Nejsou splněny požadavky na minimální velikost paměti (7 GB je určeno pro šifrování disku operačního systému).
-- Datové jednotky jsou rekurzivně připojený v adresáři /mnt/ nebo mezi sebou (například /mnt/data1, /mnt/data2, /data3 + /data3/data4).
+K této chybě může dojít při pokusu o šifrování disku operačního systému na virtuálním počítači s prostředím, které bylo změněno z podporované honosné galerie. Odchylky od podporovaného obrázku mohou narušit schopnost rozšíření odpojit jednotku operačního systému. Příklady odchylek mohou zahrnovat následující položky:
+- Přizpůsobené bitové kopie již neodpovídají podporovanému systému souborů nebo schématu dělení.
+- Velké aplikace jako SAP, MongoDB, Apache Cassandra a Docker nejsou podporovány, když jsou nainstalovány a spuštěny v ospřed šifrováním. Azure Disk Encryption nemůže tyto procesy bezpečně vypnout podle potřeby při přípravě jednotky operačního systému pro šifrování disku. Pokud stále existují aktivní procesy, které drží otevřené popisovače souborů na jednotce operačního systému, jednotku operačního systému nelze odpojit, což vede k selhání šifrování jednotky operačního systému. 
+- Vlastní skripty, které běží v těsné blízkosti časové vzdálenosti k šifrování je povoleno, nebo pokud jsou prováděny jiné změny na virtuálním počítači během procesu šifrování. K tomuto konfliktu může dojít, když šablona Azure Resource Manager definuje více rozšíření pro současné spuštění nebo když se vlastní rozšíření skriptu nebo jiná akce spustí současně na šifrování disku. Serializace a izolace těchto kroků může problém vyřešit.
+- Bezpečnostní Enhanced Linux (SELinux) nebyl zakázán před povolením šifrování, takže krok odpojit selže. SELinux lze znovu povolit po dokončení šifrování.
+- Disk operačního systému používá schéma Správce logických svazků (LVM). Přestože je k dispozici omezená podpora datového disku LVM, disk operačního systému LVM není.
+- Minimální požadavky na paměť nejsou splněny (7 GB je navrženo pro šifrování disku operačního systému).
+- Datové jednotky jsou rekurzivně připojeny pod adresář /mnt/ nebo navzájem (například /mnt/data1, /mnt/data2, /data3 + /data3/data4).
 
-## <a name="update-the-default-kernel-for-ubuntu-1404-lts"></a>Aktualizace výchozího jádra pro Ubuntu 14,04 LTS
+## <a name="update-the-default-kernel-for-ubuntu-1404-lts"></a>Aktualizace výchozího jádra pro Ubuntu 14.04 LTS
 
-Bitová kopie Ubuntu 14,04 LTS je dodávána s výchozí verzí jádra 4,4. Tato verze jádra má známý problém, kdy nedostatek paměti Killer nesprávně ukončuje příkaz dd během procesu šifrování operačního systému. Tato chyba byla opravena v nejnovějším jádru systému Linux pro Azure. Chcete-li se této chybě vyhnout, před povolením šifrování v imagi aktualizujte na [Azure vyladěné jádro 4,15](https://packages.ubuntu.com/trusty/linux-azure) nebo novější pomocí následujících příkazů:
+Obrázek Ubuntu 14.04 LTS je dodáván s výchozí verzí jádra 4.4. Tato verze jádra má známý problém, ve kterém out of Memory Killer nesprávně ukončí příkaz dd během procesu šifrování operačního systému. Tato chyba byla opravena v nejnovějším azure laděném linuxovém jádře. Chcete-li se této chybě vyhnout, před povolením šifrování na bitové kopii aktualizujte na [azure laděné jádro 4.15](https://packages.ubuntu.com/trusty/linux-azure) nebo novější pomocí následujících příkazů:
 
 ```
 sudo apt-get update
@@ -50,27 +50,27 @@ sudo apt-get install linux-azure
 sudo reboot
 ```
 
-Po restartování virtuálního počítače do nového jádra se dá potvrdit nová verze jádra pomocí:
+Po restartování virtuálního virtuálního zařízení do nového jádra lze novou verzi jádra potvrdit pomocí:
 
 ```
 uname -a
 ```
 
-## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Aktualizovat agenty a verze rozšíření virtuálních počítačů Azure
+## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Aktualizace agenta virtuálních strojů Azure a rozšíření verze
 
-U imagí virtuálních počítačů, které používají nepodporované verze agenta virtuálního počítače Azure, se operace Azure Disk Encryption nemusí zdařit. Image Linux s verzemi agentů staršími než 2.2.38 by se měly aktualizovat před povolením šifrování. Další informace najdete v tématu [Postup aktualizace agenta Azure Linux na virtuálním](../extensions/update-linux-agent.md) počítači a [minimální verzi podpory pro agenty virtuálních počítačů v Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
+Operace Azure Disk Encryption může selhat na image virtuálního počítače pomocí nepodporovaných verzí agenta virtuálních počítačů Azure. Linuxové image s verzemi agenta staršími než 2.2.38 by měly být před povolením šifrování aktualizovány. Další informace najdete v [tématu Jak aktualizovat Agenta Azure Linuxu na virtuálním počítači](../extensions/update-linux-agent.md) a [minimální verze podpory pro agenty virtuálních strojů v Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
-Také je vyžadována správná verze rozšíření agenta hosta Microsoft. Azure. Security. AzureDiskEncryption nebo Microsoft. Azure. Security. AzureDiskEncryptionForLinux. Verze rozšíření se automaticky udržují a aktualizují platformou, když se splní požadavky na agenta virtuálních počítačů Azure a použije se podporovaná verze agenta virtuálního počítače.
+Je také vyžadována správná verze rozšíření agenta hosta Microsoft.Azure.Security.AzureDiskEncryption nebo Microsoft.Azure.Security.AzureDiskEncryptionForLinux. Verze rozšíření jsou udržovány a aktualizovány automaticky platformou, když jsou splněny předpoklady agenta virtuálního počítače Azure a používá se podporovaná verze agenta virtuálního počítače.
 
-Přípona Microsoft. OSTCExtensions. AzureDiskEncryptionForLinux je zastaralá a už není podporovaná.  
+Rozšíření Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux bylo zastaralé a již není podporováno.  
 
-## <a name="unable-to-encrypt-linux-disks"></a>Nejde zašifrovat disky se systémem Linux.
+## <a name="unable-to-encrypt-linux-disks"></a>Nelze šifrovat disky Linuxu.
 
-V některých případech je zakázána Linux šifrování disku se zdá být zaseknuto v "Zahájeno šifrování disku operačního systému" a SSH. Proces šifrování může trvat přibližně 3 – 16 hodin na základní Galerie obrázků. Pokud přidáte více terabajt velikosti datových disků, tento proces může trvat dny.
+V některých případech se zdá, že šifrování disku Linux uvízne na "Šifrování disku operačního systému spuštěno" a SSH je zakázán. Proces šifrování může trvat 3-16 hodin, než se dokončí na obrázku galerie akcií. Pokud jsou přidány datové disky o velikosti více terabajtů, může proces trvat několik dní.
 
-Pořadí šifrování disku operačního systému Linux dočasně odpojí jednotky operačního systému. Potom provede blok po bloku šifrování celého disku s operačním systémem, než ji opět připojí ji ve stavu zašifrované. Šifrování disku se systémem Linux nepovoluje souběžné použití virtuálního počítače, zatímco probíhá šifrování. Výkonové charakteristiky virtuálního počítače může být velký rozdíl čas potřebný k dokončení šifrování. Tyto vlastnosti obsahovat velikost disku a zda je standardní účet úložiště nebo úložiště úrovně premium (SSD).
+Sekvence šifrování disku operačního systému Linux dočasně odpojí jednotku operačního systému. Poté provádí blok po bloku šifrování celého disku operačního systému, než jej znovu připojí v šifrovaném stavu. Šifrování disku linuxu neumožňuje souběžné použití virtuálního počítače v průběhu šifrování. Charakteristiky výkonu virtuálního soudu může mít významný vliv na čas potřebný k dokončení šifrování. Mezi tyto charakteristiky patří velikost disku a to, zda je účet úložiště standardní nebo premium (SSD) úložiště.
 
-Chcete-li zjistit stav šifrování, proveďte dotaz na pole **ProgressMessage** , které se vrátí z příkazu [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) . Při šifrované jednotky operačního systému virtuálního počítače přejde do stavu údržby a zakáže abychom zabránili případnému přerušení k aktuálnímu procesu SSH. Zpráva **EncryptionInProgress** zprávy pro většinu času, kdy probíhá šifrování. Po několika hodinách později se zobrazí zpráva **VMRestartPending** s výzvou k restartování virtuálního počítače. Příklad:
+Chcete-li zkontrolovat stav šifrování, zosuňte pole **ProgressMessage** vrácené z příkazu [Get-AzVmDiskEncryptionStatus.](/powershell/module/az.compute/get-azvmdiskencryptionstatus) Zatímco jednotka operačního systému je šifrována, virtuální ho důchek přejde do stavu obsluhy a zakáže SSH, aby se zabránilo narušení probíhajícího procesu. **Zpráva EncryptionInProgress** hlásí po většinu času během šifrování probíhá. O několik hodin později zpráva **VMRestartPending** vás vyzve k restartování virtuálního počítače. Například:
 
 
 ```azurepowershell
@@ -87,29 +87,29 @@ OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncry
 ProgressMessage            : OS disk successfully encrypted, please reboot the VM
 ```
 
-Poté, co se zobrazí výzva k restartování virtuálního počítače a po restartování virtuálního počítače, musíte počkat, 2 až 3 minuty, pro restartování a poslední postup provést v cíli. Zpráva stav se změní při šifrování je nakonec dokončí. Poté, co tato zpráva je k dispozici, až bude připravená k použití se očekává šifrované jednotky operačního systému a virtuálního počítače je připravená k použití znovu.
+Po zobrazení výzvy k restartování virtuálního počítače a po restartování virtuálního počítače musíte počkat 2 až 3 minuty na restartování a na poslední kroky, které mají být provedeny na cíl. Stavová zpráva se změní po dokončení šifrování. Po této zprávě je k dispozici, šifrované jednotky operačního systému se očekává, že bude připraven k použití a virtuální ho virtuálního realitu je připraven k použití znovu.
 
-V těchto případech doporučujeme obnovení virtuálního počítače do snímku nebo zálohy provedené bezprostředně před šifrování:
-   - Pokud tomu tak není pořadí restartování, je popsáno výše.
-   - Pokud se informace o spuštění, zpráva o průběhu nebo jiných ukazatelů výkonu chyba hlásit šifrování operačního systému se nezdařilo během tohoto procesu. Příklad zprávy se chyba "se nepodařilo odpojit", který je popsaný v tomto průvodci.
+V následujících případech doporučujeme obnovit virtuální ho znovu na snímek nebo zálohu pořízenou bezprostředně před šifrováním:
+   - Pokud se sekvence restartování, popsané výše, nestane.
+   - Pokud informace o spuštění, zpráva o průběhu nebo jiné indikátory chyb hlásí, že šifrování operačního systému se nezdařilo uprostřed tohoto procesu. Příkladem zprávy je chyba "nepodařilo se odpojit", která je popsána v této příručce.
 
-Před dalším pokusem přehodnotit vlastnosti virtuálního počítače a ujistěte se, že jsou splněné všechny požadavky.
+Před dalším pokusem přehodnotit charakteristiky virtuálního virtuálního soudu a ujistěte se, že jsou splněny všechny požadavky.
 
-## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Řešení potíží s Azure Disk Encryption za bránou firewall
+## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Poradce při potížích s šifrováním disku Azure za bránou firewall
 
-Viz [šifrování disků v izolované síti](disk-encryption-isolated-network.md)
+Viz [Šifrování disku v izolované síti](disk-encryption-isolated-network.md)
 
-## <a name="troubleshooting-encryption-status"></a>Řešení potíží se stavem šifrování 
+## <a name="troubleshooting-encryption-status"></a>Poradce při potížích se stavem šifrování 
 
-Portál může zobrazit disk jako zašifrovaný, i když byl v rámci virtuálního počítače nešifrovaný.  K tomu může dojít, když se k přímému rozšifrování disku z virtuálního počítače používají příkazy nízké úrovně, místo abyste používali příkazy pro správu Azure Disk Encryption vyšší úrovně.  Příkazy vyšší úrovně nešifrují jenom disk v rámci virtuálního počítače, ale mimo virtuální počítač aktualizují důležitá nastavení šifrování na úrovni platformy a nastavení rozšíření přidružená k virtuálnímu počítači.  Pokud tyto možnosti nejsou zachovány, platforma nebude moci nahlásit stav šifrování ani zřídit virtuální počítač správně.   
+Portál může zobrazit disk jako zašifrovaný i poté, co byl nezašifrován v rámci virtuálního počítače.  K tomu může dojít, když se příkazy nižší úrovně používají k přímému odšifrování disku z virtuálního počítače, namísto použití příkazů pro správu azure disk encryption vyšší úrovně.  Příkazy vyšší úrovně nejen dešifrují disk z virtuálního počítače, ale mimo virtuální počítače také aktualizují důležitá nastavení šifrování na úrovni platformy a nastavení rozšíření přidružená k virtuálnímu počítače.  Pokud tyto nejsou udržovány v zarovnání, platforma nebude moci hlásit stav šifrování nebo zřídit virtuální ho virtuálního média správně.   
 
-Pokud chcete Azure Disk Encryption zakázat pomocí prostředí PowerShell, použijte [příkaz disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) následovaný rutinou [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Spuštění Remove-AzVMDiskEncryptionExtension před zakázáním šifrování selže.
+Chcete-li zakázat šifrování disku Azure pomocí prostředí PowerShell, použijte [příkaz Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) následovaný [příkazem Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Spuštění remove-AzVMDiskEncryptionExtension před zakázáním šifrování se nezdaří.
 
-Pokud chcete zakázat Azure Disk Encryption pomocí rozhraní příkazového řádku, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption). 
+Chcete-li zakázat šifrování disku Azure pomocí příkazového příkazu k příkazu příkazu cli, použijte [šifrování vaslužby az zakázat](/cli/azure/vm/encryption). 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste se dozvěděli informace o některé běžné problémy v Azure Disk Encryption a řešení těchto potíží. Další informace o této službě a její možnosti najdete v následujících článcích:
+V tomto dokumentu jste se dozvěděli více o některých běžných problémech v Azure Disk Encryption a jak tyto problémy vyřešit. Další informace o této službě a jejích možnostech naleznete v následujících článcích:
 
-- [Použít šifrování disku v Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
-- [Šifrování dat Azure v klidovém umístění](../../security/fundamentals/encryption-atrest.md)
+- [Použití šifrování disku v Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
+- [Šifrování dat Azure v klidovém stavu](../../security/fundamentals/encryption-atrest.md)

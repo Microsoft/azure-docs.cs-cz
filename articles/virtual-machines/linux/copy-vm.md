@@ -1,36 +1,36 @@
 ---
-title: Kopírování virtuálního počítače se systémem Linux pomocí Azure CLI
-description: Naučte se vytvořit kopii virtuálního počítače Azure Linux pomocí Azure CLI a Managed Disks.
+title: Kopírování virtuálního počítače s Linuxem pomocí azure cli
+description: Zjistěte, jak vytvořit kopii virtuálního počítače Azure Linux pomocí Azure CLI a spravovaných disků.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.openlocfilehash: ed8574133eafe751699e90ea8cae832ee649fb00
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969584"
 ---
-# <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Vytvoření kopie virtuálního počítače se systémem Linux pomocí rozhraní příkazového řádku Azure a Managed Disks
+# <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Vytvoření kopie virtuálního počítače s Linuxem pomocí Azure CLI a spravovaných disků
 
-V tomto článku se dozvíte, jak pomocí rozhraní příkazového řádku Azure a modelu nasazení Azure Resource Manager vytvořit kopii virtuálního počítače Azure s operačním systémem Linux. 
+Tento článek ukazuje, jak vytvořit kopii virtuálního počítače Azure (VM) se systémem Linux pomocí Azure CLI a modelu nasazení Azure Resource Manager. 
 
-[Virtuální počítač můžete také nahrát a vytvořit z virtuálního pevného disku](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Můžete taky [nahrát a vytvořit virtuální hod z virtuálního pevného disku](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -   Nainstalujte [rozhraní příkazového řádku Azure CLI](/cli/azure/install-az-cli2).
 
--   Přihlaste se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index#az-login).
+-   Přihlaste se k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az-login).
 
--   Mít virtuální počítač Azure, který se použije jako zdroj pro vaši kopii.
+-   Mít virtuální počítač Azure použít jako zdroj pro vaši kopii.
 
-## <a name="stop-the-source-vm"></a>Zastavení zdrojového virtuálního počítače
+## <a name="stop-the-source-vm"></a>Zastavení zdrojového virtuálního virtuálního montovana
 
-Nasaďte zdrojový virtuální počítač pomocí [AZ VM disallocate](/cli/azure/vm#az-vm-deallocate).
-Následující příklad zruší přidělení virtuálního počítače s názvem *myVM* ve skupině prostředků *myResourceGroup*:
+Navrátit zdrojový virtuální virtuální hod pomocí [az vm navrátit](/cli/azure/vm#az-vm-deallocate).
+Následující příklad navrací virtuální hosti s názvem *myVM* ve skupině prostředků *myResourceGroup*:
 
 ```azurecli
 az vm deallocate \
@@ -38,13 +38,13 @@ az vm deallocate \
     --name myVM
 ```
 
-## <a name="copy-the-source-vm"></a>Kopírování zdrojového virtuálního počítače
+## <a name="copy-the-source-vm"></a>Kopírování zdrojového virtuálního virtuálního montova.
 
-K zkopírování virtuálního počítače vytvoříte kopii základního virtuálního pevného disku. Tento proces vytvoří specializovaný virtuální pevný disk (VHD) jako spravovaný disk, který obsahuje stejnou konfiguraci a nastavení jako zdrojový virtuální počítač.
+Chcete-li zkopírovat virtuální počítač, vytvořte kopii podkladového virtuálního pevného disku. Tento proces vytvoří specializovaný virtuální pevný disk (VHD) jako spravovaný disk, který obsahuje stejnou konfiguraci a nastavení jako zdrojový virtuální počítač.
 
 Další informace o Spravovaných discích Azure najdete v tématu [Přehled Spravovaných disků Azure](../windows/managed-disks-overview.md). 
 
-1.  Seznamte se s každým virtuálním počítačem a názvem jeho disku s operačním systémem pomocí [seznamu AZ VM list](/cli/azure/vm#az-vm-list). Následující příklad zobrazí seznam všech virtuálních počítačů ve skupině prostředků s názvem *myResourceGroup*:
+1.  Seznam jednotlivých virtuálních počítačů a název jeho disku operačního systému se [seznamem vm az](/cli/azure/vm#az-vm-list). V následujícím příkladu jsou uvedeny všechny virtuální společnosti ve skupině prostředků s názvem *myResourceGroup*:
     
     ```azurecli
     az vm list -g myResourceGroup \
@@ -60,14 +60,14 @@ Další informace o Spravovaných discích Azure najdete v tématu [Přehled Spr
     myVM    myDisk
     ```
 
-1.  Zkopírujte disk vytvořením nového spravovaného disku a pomocí [AZ disk Create](/cli/azure/disk#az-disk-create). Následující příklad vytvoří disk s názvem *myCopiedDisk* ze spravovaného disku s názvem *myDisk*:
+1.  Zkopírujte disk vytvořením nového spravovaného disku a pomocí [az disku create](/cli/azure/disk#az-disk-create). Následující příklad vytvoří disk s názvem *myCopiedDisk* ze spravovaného disku s názvem *myDisk*:
 
     ```azurecli
     az disk create --resource-group myResourceGroup \
          --name myCopiedDisk --source myDisk
     ``` 
 
-1.  Ověřte, že se spravované disky teď nacházejí ve vaší skupině prostředků, pomocí [AZ disk list](/cli/azure/disk#az-disk-list). Následující příklad vypíše spravované disky ve skupině prostředků s názvem *myResourceGroup*:
+1.  Ověřte spravované disky ve skupině prostředků pomocí [seznamu az disků](/cli/azure/disk#az-disk-list). V následujícím příkladu jsou uvedeny spravované disky ve skupině prostředků s názvem *myResourceGroup*:
 
     ```azurecli
     az disk list --resource-group myResourceGroup --output table
@@ -76,13 +76,13 @@ Další informace o Spravovaných discích Azure najdete v tématu [Přehled Spr
 
 ## <a name="set-up-a-virtual-network"></a>Nastavení virtuální sítě
 
-V následujících volitelných krocích se vytvoří nová virtuální síť, podsíť, veřejná IP adresa a karta virtuální sítě (NIC).
+Následující volitelné kroky vytvoří novou virtuální síť, podsíť, veřejnou IP adresu a kartu rozhraní virtuální sítě (NIC).
 
 Pokud kopírujete virtuální počítač pro účely řešení potíží nebo další nasazení, možná nebudete chtít použít virtuální počítač v existující virtuální síti.
 
-Pokud chcete vytvořit infrastrukturu virtuální sítě pro zkopírované virtuální počítače, postupujte podle následujících několika kroků. Pokud nechcete vytvořit virtuální síť, přejděte k [Vytvoření virtuálního počítače](#create-a-vm).
+Pokud chcete vytvořit infrastrukturu virtuální sítě pro zkopírované virtuální počítače, postupujte podle následujících několika kroků. Pokud nechcete vytvořit virtuální síť, přeskočte na [Vytvořit virtuální počítač](#create-a-vm).
 
-1.  Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create). Následující příklad vytvoří virtuální síť s názvem *myVnet* a podsíť s názvem *mySubnet*:
+1.  Vytvořte virtuální síť pomocí [az sítě virtuální sítě vytvořit](/cli/azure/network/vnet#az-network-vnet-create). Následující příklad vytvoří virtuální síť s názvem *myVnet* a podsíť s názvem *mySubnet*:
 
     ```azurecli
     az network vnet create --resource-group myResourceGroup \
@@ -92,7 +92,7 @@ Pokud chcete vytvořit infrastrukturu virtuální sítě pro zkopírované virtu
         --subnet-prefix 192.168.1.0/24
     ```
 
-1.  Vytvořte veřejnou IP adresu pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create). Následující příklad vytvoří veřejnou IP adresu s názvem *myPublicIP* s názvem DNS *mypublicdns*. (Protože název DNS musí být jedinečný, zadejte jedinečný název.)
+1.  Vytvořte veřejnou IP adresu pomocí [az sítě public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create). Následující příklad vytvoří veřejnou IP adresu s názvem *myPublicIP* s názvem DNS *mypublicdns*. (Vzhledem k tomu, že název DNS musí být jedinečný, zadejte jedinečný název.)
 
     ```azurecli
     az network public-ip create --resource-group myResourceGroup \
@@ -100,8 +100,8 @@ Pokud chcete vytvořit infrastrukturu virtuální sítě pro zkopírované virtu
         --allocation-method static --idle-timeout 4
     ```
 
-1.  Pomocí [AZ Network nic Create](/cli/azure/network/nic#az-network-nic-create)vytvořte síťovou kartu.
-    Následující příklad vytvoří síťovou kartu s názvem *myNic* , která je připojena k podsíti *mySubnet* :
+1.  Vytvořte síťovou konto pomocí [az network nic create](/cli/azure/network/nic#az-network-nic-create).
+    Následující příklad vytvoří síťovou síť ovou síť s názvem *myNic,* která je připojena k podsíti *mySubnet:*
 
     ```azurecli
     az network nic create --resource-group myResourceGroup \
@@ -112,9 +112,9 @@ Pokud chcete vytvořit infrastrukturu virtuální sítě pro zkopírované virtu
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Pomocí [AZ VM Create](/cli/azure/vm#az-vm-create)vytvořte virtuální počítač.
+Vytvořte virtuální hospo- vytvoření pomocí [az vm create](/cli/azure/vm#az-vm-create).
 
-Zadejte zkopírovaný spravovaný disk, který se použije jako disk s operačním systémem (`--attach-os-disk`), a to následujícím způsobem:
+Zadejte zkopírovaný spravovaný disk, který se má použít jako disk operačního systému (`--attach-os-disk`), následujícím způsobem:
 
 ```azurecli
 az vm create --resource-group myResourceGroup \
@@ -125,4 +125,4 @@ az vm create --resource-group myResourceGroup \
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se používat [sdílenou galerii imagí](shared-images.md) ke správě imagí virtuálních počítačů.
+Chcete-li se dozvědět, jak používat [sdílenou galerii obrázků](shared-images.md) ke správě imblin virtuálních počítačů.

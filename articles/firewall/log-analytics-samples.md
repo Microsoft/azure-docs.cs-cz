@@ -1,6 +1,6 @@
 ---
-title: Azure Firewall ukázek Log Analytics
-description: K analýze Azure Firewall lze použít protokoly Azure Monitor. Vzorový soubor je sestavený v Návrháři zobrazení v Azure Monitor.
+title: Ukázky analýzprotokolu azure firewall
+description: Protokoly Azure Monitoru se můžou použít k analýze azure firewall. Ukázkový soubor je vestavěný v Návrháři zobrazení v Azure Monitoru.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,43 +8,43 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: victorh
 ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705963"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Azure Firewall ukázek Log Analytics
+# <a name="azure-firewall-log-analytics-samples"></a>Ukázky analýzprotokolu azure firewall
 
-Následující příklady protokolů Azure Monitor lze použít k analýze protokolů Azure Firewall. Vzorový soubor je sestaven v Návrháři zobrazení v Azure Monitor, [Návrhář zobrazení v Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) článku obsahuje další informace o konceptu zobrazení návrhu.
+Následující ukázky protokolů Azure Monitor uhasit k analýze protokolů Azure Firewall. Ukázkový soubor je vestavěné v Návrháře zobrazení v Azure Monitor, [zobrazit návrháře v Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) článek obsahuje další informace o konceptu návrhu zobrazení.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="azure-monitor-logs-view"></a>Zobrazení protokolů Azure Monitor
 
-Tady je postup, jak můžete nakonfigurovat příklad vizualizace protokolů Azure Monitor. Ukázkovou vizualizaci si můžete stáhnout z úložiště [ukázek Azure-docs-JSON](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) . Nejjednodušší způsob je kliknout pravým tlačítkem na tuto stránku na hypertextový odkaz a vybrat *Uložit jako* a zadat název jako **AzureFirewall. omsview**. 
+Tady je postup, jak můžete nakonfigurovat ukázkovou vizualizaci protokolů Azure Monitoru. Ukázkovou vizualizaci si můžete stáhnout z úložiště [azure-docs-json-samples.](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) Nejjednodušší způsob je kliknout pravým tlačítkem myši na hypertextový odkaz na této stránce a zvolit *uložit jako* a zadat název jako **AzureFirewall.omsview**. 
 
-Provedením následujících kroků přidejte zobrazení do svého pracovního prostoru Log Analytics:
+Chcete-li přidat zobrazení do pracovního prostoru Analýzy protokolů, proveďte následující kroky:
 
-1. Otevřete pracovní prostor Log Analytics v Azure Portal.
-2. Otevřete **návrháře zobrazení** v části **Obecné**.
-3. Klikněte na **Importovat**.
-4. Vyhledejte a vyberte soubor **AzureFirewall. omsview** , který jste si stáhli dřív.
-5. Klikněte na možnost **Uložit**.
+1. Otevřete pracovní prostor Log Analytics na webu Azure Portal.
+2. Otevřete **Návrhář zobrazení** pod **obecným**.
+3. Klepněte na **tlačítko Importovat**.
+4. Projděte a vyberte soubor **AzureFirewall.omsview,** který jste si stáhli dříve.
+5. Klikněte na **Uložit**.
 
-Tady je způsob, jak zobrazení vyhledává data protokolu pravidel aplikace:
+Zobrazení vypadá tak, jak hledá data protokolu pravidel aplikace:
 
-![Data protokolu pravidla aplikace](./media/log-analytics-samples/azurefirewall-applicationrulelogstats.png)
+![Data protokolu pravidel aplikace](./media/log-analytics-samples/azurefirewall-applicationrulelogstats.png)
 
-A pro data protokolu síťových pravidel:
+A pro data protokolu pravidel sítě:
 
-![Data protokolu síťového pravidla]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
+![Data protokolu síťových pravidel]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Azure Firewall do protokolu zapíše data níže AzureDiagnostics a kategorie buď **AzureFirewallApplicationRule** , nebo **AzureFirewallNetworkRule**. Data obsahující podrobnosti jsou uložena v poli msg_s. Pomocí operátoru pro [analýzu](https://docs.microsoft.com/azure/kusto/query/parseoperator) můžeme z pole msg_s extrahovat různé zajímavé vlastnosti. Níže uvedené dotazy extrahují informace pro obě kategorie.
+Azure Firewall protokoluje data pod AzureDiagnostics s kategorií jako **AzureFirewallApplicationRule** nebo **AzureFirewallNetworkRule**. Data obsahující podrobnosti jsou uložena v poli msg_s. Pomocí operátoru [analýzy](https://docs.microsoft.com/azure/kusto/query/parseoperator) můžeme extrahovat různé zajímavé vlastnosti z msg_s pole. Níže uvedené dotazy extrahovat informace pro obě kategorie.
 
-## <a name="application-rules-log-data-query"></a>Dotaz na data protokolu pro pravidla aplikace
+## <a name="application-rules-log-data-query"></a>Dotaz na data protokolu pravidel aplikace
 
-Níže uvedený dotaz analyzuje data protokolu pravidla aplikace. V různých řádcích komentáře jsou pokyny, jak byl vytvořen dotaz:
+Následující dotaz analyzuje data protokolu pravidel aplikace. V různých řádků komentáře je několik pokynů, jak byl vytvořen dotaz:
 
 ```Kusto
 AzureDiagnostics
@@ -80,7 +80,7 @@ Action1 = case(Action1 == "Deny","Deny","Unknown Action")
 | project TimeGenerated, msg_s, Protocol, SourceIP, SourcePort, FQDN, TargetPort, Action ,RuleCollection, Rule
 ```
 
-Stejný dotaz v zhuštěném formátu:
+Stejný dotaz ve více zhuštěném formátu:
 
 ```Kusto
 AzureDiagnostics
@@ -98,9 +98,9 @@ RuleCollection = case(RuleCollection2b == "",case(RuleCollection2a == "","No rul
 | project TimeGenerated, msg_s, Protocol, SourceIP, SourcePort, FQDN, TargetPort, Action ,RuleCollection, Rule
 ```
 
-## <a name="network-rules-log-data-query"></a>Dotaz na data protokolů síťových pravidel
+## <a name="network-rules-log-data-query"></a>Datový dotaz protokolu síťových pravidel
 
-Následující dotaz analyzuje data protokolu síťových pravidel. V různých řádcích komentáře jsou pokyny, jak byl vytvořen dotaz:
+Následující dotaz analyzuje data protokolu síťových pravidel. V různých řádků komentáře je několik pokynů, jak byl vytvořen dotaz:
 
 ```Kusto
 AzureDiagnostics
@@ -137,7 +137,7 @@ TargetPort = tostring(TargetPortInt)
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
 ```
 
-Stejný dotaz v zhuštěném formátu:
+Stejný dotaz ve více zhuštěném formátu:
 
 ```Kusto
 AzureDiagnostics
@@ -151,9 +151,9 @@ AzureDiagnostics
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
 ```
 
-## <a name="threat-intelligence-log-data-query"></a>Dotaz na data protokolu pro analýzu hrozeb
+## <a name="threat-intelligence-log-data-query"></a>Dotaz na data protokolu analýzy hrozeb
 
-Následující dotaz analyzuje data protokolu pravidla analýzy hrozeb:
+Následující dotaz analyzuje data protokolu pravidel analýzy hrozeb:
 
 ```Kusto
 AzureDiagnostics
@@ -168,13 +168,13 @@ AzureDiagnostics
 
 ## <a name="sample-logs"></a>Ukázky protokolů
 
-Následující ukázky protokolu zobrazují data zahrnutá v záznamu protokolu.
+Následující ukázky protokolu zobrazují data obsažená v položce protokolu.
 
-![Položka protokolu](media/log-analytics-samples/log1.png)
+![položka protokolu](media/log-analytics-samples/log1.png)
 
-![Položka protokolu](media/log-analytics-samples/log2.png)
+![položka protokolu](media/log-analytics-samples/log2.png)
 
-![Položka protokolu](media/log-analytics-samples/log3.png)
+![položka protokolu](media/log-analytics-samples/log3.png)
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Firewall monitorování a diagnostiku najdete v tématu [kurz: monitorování Azure firewall protokolů a metrik](tutorial-diagnostics.md).
+Další informace o monitorování a diagnostice azure firewallu najdete [v tématu Sledování protokolů a metrik azure firewall](tutorial-diagnostics.md).

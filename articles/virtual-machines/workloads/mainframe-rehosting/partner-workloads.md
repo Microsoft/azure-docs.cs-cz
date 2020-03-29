@@ -1,6 +1,6 @@
 ---
-title: Úlohy sálových počítačů podporované v Azure | Microsoft Docs
-description: Použijte emulátor sálového počítače a další služby od partnerů Microsoftu k opětovnému hostování vašich sálových úloh, jako jsou například systémy na bázi IBM Z, pomocí Microsoft Azure.
+title: Úlohy sálových počítačů podporované v Azure | Dokumenty společnosti Microsoft
+description: Pomocí emulátoru sálových počítačů a dalších služeb od partnerů microsoftu můžete znovu hostovat úlohy sálových počítačů, jako jsou systémy založené na IBM Z pomocí Microsoft Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -11,49 +11,49 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: cf02ff7078fe5d33f220c0abc2d941d483e5c125
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76293500"
 ---
 # <a name="mainframe-workloads-supported-on-azure"></a>Úlohy sálových počítačů podporované v Azure
 
-Řešení, která jsou tady uvedená, vám můžou přispět k migraci vašich úloh sálového počítače na Microsoft Azure. Některé úlohy je možné migrovat pomocí relativního snadného. Další úlohy, které závisí na starší verzi systémového softwaru, je možné znovu hostovat. 
+Zde uvedená řešení vám můžou pomoct migrovat úlohy sálových počítačů do Microsoft Azure. Některé úlohy lze migrovat s relativní lehkostí. Ostatní úlohy, které závisí na starším systémovém softwaru, lze znovu hostovat. 
 
-Další nápovědu k emulaci a službám sálového počítače najdete v [centru migrace pro sálové počítače Azure](https://azure.microsoft.com/migration/mainframe/).
+Další pomoc s emulací a službami sálových počítačů najdete v [Centru migrace sálových počítačů Azure](https://azure.microsoft.com/migration/mainframe/).
 
-## <a name="migrate-mainframe-closer-to-azure"></a>Migrace sálového počítače blíž k Azure
+## <a name="migrate-mainframe-closer-to-azure"></a>Migrace sálového počítače blíže k Azure
 
-- Vývojové nástroje pro vývoj a integraci v [jazyce Micro Focus COBOL](https://www.microfocus.com/products/visual-cobol/)
-- Kompilátorem [pl/i](https://www.microfocus.com/campaign/download/pli-modernization/) starší verze kompilátoru pro platformu .NET, které podporují SYNTAXI typu pl/i pro sálové počítače, datové typy a chování.
-- Platforma Micro Integration pro sálové [podniky na podnikovém serveru](https://www.microfocus.com/products/enterprise-suite/enterprise-server/)
-- Nástroje pro vývoj a integraci [Fujitsu NetCOBOL](https://www.fujitsu.com/global/products/software/developer-tool/netcobol/)
-- [NTT data Enterprise COBOL](https://us.nttdata.com/en/digital/application-development-and-modernization) Development and Integration Tools.
-- [NTT otevřený zastaralý kompilátor pl/i](https://us.nttdata.com/en/digital/application-development-and-modernization) pro platformu .NET, která podporuje SYNTAXI typu pl/i sálového počítače, datové typy a chování.
-- Nástroje pro vývoj a integraci [kompilátoru RAINCODE COBOL](https://www.raincode.com/products/cobol/)
-- [Kompilátor pl/i Raincode](https://www.raincode.com/products/pli/) pro platformu .NET podporuje syntaxi, datové typy a chování sálového počítače.
-- [RAINCODE ASM370 Compiler](https://www.raincode.com/technical-landscape/asm370/) pro sálové počítače Assembler 370 a HLASM syntax.
-- [ASNA Visual RPG pro kompilátor .NET](https://asna.com/us/products/visual-rpg) pro .NET Framework přes modul plug-in sady Visual Studio.
-- [Moderní systémy CTU (COBOL-to-Universal) nástroje pro](https://modernsystems.com/automatic-cobol-to-java-conversion/) vývoj a integraci.
+- Nástroje pro vývoj a integraci [Micro Focus Visual COBOL.](https://www.microfocus.com/products/visual-cobol/)
+- Starší kompilátor [Micro Focus PL/I](https://www.microfocus.com/campaign/download/pli-modernization/) pro platformu .NET, podporující syntaxi sálového počítače PL/I, datové typy a chování.
+- [Platforma](https://www.microfocus.com/products/enterprise-suite/enterprise-server/) integrace mainframů serveru Micro Focus Enterprise Server.
+- Vývojové a integrační nástroje [Fujitsu NetCOBOL.](https://www.fujitsu.com/global/products/software/developer-tool/netcobol/)
+- Vývojové a integrační nástroje [NTT Data Enterprise COBOL.](https://us.nttdata.com/en/digital/application-development-and-modernization)
+- [NTT Open PL/I](https://us.nttdata.com/en/digital/application-development-and-modernization) starší kompilátor pro platformu .NET, podporující syntaxi sálového počítače PL/I, datové typy a chování.
+- [Raincode COBOL vývojové](https://www.raincode.com/products/cobol/) a integrační nástroje.
+- [Překladač RAINCode PL/I](https://www.raincode.com/products/pli/) pro platformu .NET podporuje syntaxi sálového počítače PL/I, datové typy a chování.
+- [Raincode ASM370 kompilátor](https://www.raincode.com/technical-landscape/asm370/) pro sálový počítač Assembler 370 a syntaxe HLASM.
+- [ASNA Visual RPG pro](https://asna.com/us/products/visual-rpg) kompilátor .NET pro rozhraní .NET Framework prostřednictvím modulu plug-in sady Visual Studio.
+- [Moderní systémy ČVUT (COBOL-To-Universal)](https://modernsystems.com/automatic-cobol-to-java-conversion/) vývojové a integrační nástroje.
 
-## <a name="deploy-an-emulation-environment-for-online-and-batch-processing"></a>Nasazení prostředí pro emulaci pro online a dávkové zpracování
+## <a name="deploy-an-emulation-environment-for-online-and-batch-processing"></a>Nasazení prostředí emulace pro online a dávkové zpracování
 
-- Platforma Micro Integration pro sálové [podniky na podnikovém serveru](https://www.microfocus.com/products/enterprise-suite/enterprise-server/)
-- [NTT data sálového počítače](https://us.nttdata.com/en/-/media/assets/white-paper/apps-mainframe-re-hosting-development-environment-whitepaper.pdf) , který je hostitelem prostředí pro zpracování nativních transakcí.
-- [NTT BPE (data Batch Processing Environment](https://us.nttdata.com/en/-/media/assets/white-paper/apps-mainframe-re-hosting-development-environment-whitepaper.pdf) ) včetně možností JCL transakcí.
-- Emulátor [RAINCODE CICS](https://www.raincode.com/technical-landscape/cics/) pro platformy .NET a Azure
-- Překladač JCL [RAINCODE JCL](https://www.raincode.com/products/jcl/) kompatibilní s modulem plug-in
+- [Platforma](https://www.microfocus.com/products/enterprise-suite/enterprise-server/) integrace mainframů serveru Micro Focus Enterprise Server.
+- [NTT DATA Mainframe Rehosting Vývojové prostředí](https://us.nttdata.com/en/-/media/assets/white-paper/apps-mainframe-re-hosting-development-environment-whitepaper.pdf) nativní prostředí zpracování transakcí.
+- [Prostředí pro zpracování datových dat NTT](https://us.nttdata.com/en/-/media/assets/white-paper/apps-mainframe-re-hosting-development-environment-whitepaper.pdf) (BPE) včetně možností transakcí JCL.
+- [Raincode CICS](https://www.raincode.com/technical-landscape/cics/) emulátor pro platformy .NET a Azure.
+- [Raincode JCL](https://www.raincode.com/products/jcl/) plug-kompatibilní JCL interpret.
 
 ## <a name="code-conversion"></a>Převod kódu
 
 - [Asysco](https://www.asysco.com/azure-cloud/) převod zdrojového kódu.
-- [LzLabs software s definovanými sálovými](https://www.lzlabs.com/) počítači pro migraci sálových aplikací do počítačů se systémem Linux nebo privátních, veřejných a hybridních cloudových prostředí.
-- Nástroje na více [disků Blu](https://www.bluage.com/) pro digitalizaci starších obchodních aplikací a databází.
-- [Heirloom výpočetní](https://www.heirloomcomputing.com/tag/convert-cobol-to-java/) služby pro převod sálových COBOL, CICS a VSAM na Java.
+- Softwarový softwarový spravovaný softwarový kontejner [LzLabs Software Defined Mainframe](https://www.lzlabs.com/) pro migraci aplikací sálových počítačů do počítačů SIP nebo do privátního, veřejného a hybridního cloudového prostředí.
+- [Nástroje Blu Age](https://www.bluage.com/) pro digitalizaci starších obchodních aplikací a databází.
+- [Dědictví Výpočetní](https://www.heirloomcomputing.com/tag/convert-cobol-to-java/) služby převést mainframe COBOL, CICS a VSAM na Java.
 
-## <a name="modernization-services"></a>Moderní služby
+## <a name="modernization-services"></a>Modernizace
 
-Partneři Microsoftu s globálními integrátory systému (GSIs), kteří můžou pomáhat velké organizace navrhovat, sestavovat a spravovat řešení. 
+Společnost Microsoft spolupracuje s globálními systémovými integrátory (GSI), kteří mohou velkým organizacím pomoci při navrhování, vytváření a správě řešení. 
 
-- [Centrum migrace pro Azure sálové](https://azure.microsoft.com/migration/mainframe/)
+- [Centrum migrace sálových počítačů Azure](https://azure.microsoft.com/migration/mainframe/)

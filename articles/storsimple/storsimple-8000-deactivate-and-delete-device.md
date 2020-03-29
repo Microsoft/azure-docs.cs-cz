@@ -1,6 +1,6 @@
 ---
-title: Deaktivace a odstranění zařízení StorSimple 8000 series | Dokumentace Microsoftu
-description: Popisuje postup odstranění zařízení StorSimple ze služby tak, že nejprve deaktivace a poté odstraní.
+title: Deaktivace a odstranění zařízení řady StorSimple 8000 | Dokumenty společnosti Microsoft
+description: Popisuje, jak odebrat zařízení StorSimple ze služby nejprve deaktivací a jeho odstraněním.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,110 +15,110 @@ ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 116ac5c4efda87b5d16336dd326d516299f6955d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61481936"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>Deaktivace a odstranění zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Tento článek popisuje, jak deaktivace a odstranění zařízení StorSimple, který je připojen ke službě Správce zařízení StorSimple. Pokyny v tomto článku se vztahuje pouze na zařízeních StorSimple řady 8000 včetně řešení StorSimple Cloud Appliance. Pokud používáte StorSimple Virtual Array, pak přejděte na [deaktivace a odstranění StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md).
+Tento článek popisuje, jak deaktivovat a odstranit zařízení StorSimple, které je připojeno ke službě StorSimple Device Manager. Pokyny v tomto článku platí pouze pro zařízení řady StorSimple 8000, včetně storsimple cloudových zařízení. Pokud používáte storsimple virtuální pole, přejděte na [Deaktivovat a odstranit StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md).
 
-Deaktivace přeruší připojení mezi zařízením a odpovídající služby Správce zařízení StorSimple. Můžete chtít provést zařízení StorSimple mimo provoz (např. Pokud jsou nahrazení nebo upgrade zařízení nebo pokud už používáte StorSimple). Pokud ano, budete muset deaktivovat zařízení, než budete moct odstranit.
+Deaktivace přeruší spojení mezi zařízením a odpovídající službou Správce zařízení StorSimple. Možná budete chtít vzít Zařízení StorSimple z provozu (například pokud je výměna nebo upgrade zařízení nebo pokud již nepoužíváte StorSimple). Pokud ano, musíte zařízení před odstraněním deaktivovat.
 
-Po deaktivaci zařízení všechna data, která byla uložená místně na zařízení už nejsou dostupné. Je možné obnovit jenom data, které jsou přidružené k zařízení, která byla uložená v cloudu.
+Když zařízení deaktivujete, všechna data, která byla v zařízení uložena místně, již nejsou přístupná. Lze obnovit pouze data přidružená k zařízení, které bylo uloženo v cloudu.
 
 > [!WARNING]
-> Deaktivace je trvalé a není možné vrátit zpět. Deaktivované zařízení nejde zaregistrovat ve službě Správce zařízení StorSimple, není-li obnovit tovární nastavení.
+> Deaktivace je trvalá operace a nelze ji vrátit zpět. Deaktivované zařízení nelze zaregistrovat ve službě StorSimple Device Manager, pokud není resetováno na výchozí hodnoty z výroby.
 >
-> Obnovení továrního nastavení procesu odstraní všechna data, která byla uložená místně na vašem zařízení. Proto je nutné provést cloudový snímek všech vašich dat před deaktivací zařízení. Tento snímek v cloudu umožňuje obnovit všechna data v pozdější fázi.
+> Proces obnovení továrního nastavení odstraní všechna data, která byla uložena místně ve vašem zařízení. Proto je nutné pořizovat snímek cloudu všech dat před deaktivací zařízení. Tento snímek cloudu umožňuje obnovit všechna data v pozdější fázi.
 
-Po přečtení tohoto kurzu, budete moct:
+Po přečtení tohoto výukového programu, budete moci:
 
-* Deaktivace zařízení a odstraňte data.
-* Deaktivace zařízení a zachovat data.
+* Deaktivujte zařízení a odstraňte data.
+* Deaktivujte zařízení a uchovávejte data.
 
 > [!NOTE]
-> Před deaktivací fyzického zařízení StorSimple nebo cloudové zařízení zastavit nebo odstranit klienty a hostitele, které jsou závislé na tomto zařízení.
+> Před deaktivací fyzického zařízení Nebo cloudového zařízení StorSimple zastavte nebo odstraňte klienty a hostitele, kteří jsou na tomto zařízení závislí.
 
 
 ## <a name="deactivate-and-delete-data"></a>Deaktivace a odstranění dat
 
-Pokud mají zájem o úplné odstraněním tohoto zařízení a nechcete uchovat data na zařízení, potom proveďte následující kroky.
+Máte-li zájem o úplné odstranění zařízení a nechcete uchovávat data v zařízení, proveďte následující kroky.
 
-#### <a name="to-deactivate-the-device-and-delete-the-data"></a>Chcete-li deaktivovat a odstranit data
+#### <a name="to-deactivate-the-device-and-delete-the-data"></a>Deaktivace zařízení a odstranění dat
 
-1. Před deaktivací zařízení, je nutné odstranit všechny svazku kontejnerů (a svazky) přidružené k zařízení. Kontejnery svazků můžete odstranit pouze po odstranění přidružené zálohy.
+1. Před deaktivací zařízení je nutné odstranit všechny kontejnery svazků (a svazky) přidružené k zařízení. Kontejnery svazků můžete odstranit až po odstranění přidružených záloh.
 
     > [!NOTE]
-    > Před deaktivací cloudového zařízení a fyzickým zařízením StorSimple, ujistěte se, že data z kontejneru odstraněných svazku se ve skutečnosti odstraní ze zařízení. Můžete monitorovat grafy využití cloudu a když se zobrazí využití cloudu vyřadit z důvodu zálohy, který jste odstranili, potom můžete přejít k deaktivaci zařízení. Při deaktivaci zařízení, než dojde k této rozevírací, data se Bezvýchodná situace v účtu úložiště a nabíhají poplatky.
+    > Před deaktivací fyzického zařízení Nebo cloudového zařízení StorSimple se ujistěte, že data z odstraněného kontejneru svazku jsou ze zařízení skutečně odstraněna. Můžete sledovat grafy spotřeby cloudu a když uvidíte pokles využití cloudu kvůli zálohám, které jste odstranili, můžete pokračovat v deaktivaci zařízení. Pokud zařízení deaktivujete dříve, než dojde k tomuto přetažení, data se zvěčnou kapacitou v účtu úložiště a nasáhne poplatky.
 
-2. Deaktivace zařízení následujícím způsobem:
+2. Deaktivujte zařízení následujícím způsobem:
    
-   1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V **zařízení** okno, vyberte zařízení, které chcete deaktivovat, klikněte pravým tlačítkem a pak klikněte na tlačítko **deaktivovat**.
+   1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V okně **Zařízení** vyberte zařízení, které chcete deaktivovat, klikněte pravým tlačítkem myši a potom klikněte na **Deaktivovat**.
 
-        ![Deaktivace zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
-   2. V **deaktivovat** okno, zadejte název zařízení potvrďte a pak klikněte na tlačítko **deaktivovat**. Proces deaktivovat začíná a trvá několik minut.
+        ![Deaktivovat zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
+   2. V okně **Deaktivovat** zadejte název zařízení, který potvrďte, a klepněte na tlačítko **Deaktivovat**. Proces deaktivace se spustí a trvá několik minut.
 
-        ![Deaktivace zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
+        ![Deaktivovat zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
 
-3. Po deaktivaci můžete zcela odstranit zařízení. Odstraňuje se zařízení odebere ze seznamu zařízení připojených ke službě. Služba potom již nemůže spravovat odstraněné zařízení. Pomocí následujících kroků odstraňte zařízení:
+3. Po deaktivaci můžete zařízení zcela odstranit. Odstraněním zařízení odeberete ze seznamu zařízení připojených ke službě. Služba pak již nemůže spravovat odstraněné zařízení. Zařízení odstraníte následujícím postupem:
    
-   1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V **zařízení** okně Výběr deaktivovaného zařízení, kterou chcete odstranit, klikněte pravým tlačítkem a pak klikněte na tlačítko **odstranit**.
+   1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V okně **Zařízení** vyberte deaktivované zařízení, které chcete odstranit, klepněte pravým tlačítkem myši a klepněte na příkaz **Odstranit**.
 
-        ![Deaktivace zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
-   2. V **odstranit** okno, zadejte název zařízení potvrďte a pak klikněte na tlačítko **odstranit**. Odstranění trvá několik minut.
+        ![Deaktivovat zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
+   2. Do okna **Odstranit** zadejte název zařízení, který potvrďte, a klepněte na tlačítko **Odstranit**. Odstranění trvá několik minut.
 
-        ![Deaktivace zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
-   3. Po odstranění se úspěšně dokončí, budete upozorněni. Seznam zařízení se rovněž aktualizuje tak, aby odrážely odstranění.
+        ![Deaktivovat zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
+   3. Po úspěšném dokončení odstranění budete upozorněni. Seznam zařízení se také aktualizuje tak, aby odrážel odstranění.
 
-## <a name="deactivate-and-retain-data"></a>Deaktivace a zachovat data
+## <a name="deactivate-and-retain-data"></a>Deaktivace a uchovávání dat
 
-Pokud mají zájem odstraněním tohoto zařízení, ale chcete zachovat data, potom proveďte následující kroky:
+Pokud máte zájem o odstranění zařízení, ale chcete zachovat data, proveďte následující kroky:
 
-#### <a name="to-deactivate-a-device-and-retain-the-data"></a>Deaktivace zařízení a zachovat data
-1. Deaktivujte zařízení. Všechny kontejnery svazků a snímků zařízení zůstanou.
+#### <a name="to-deactivate-a-device-and-retain-the-data"></a>Deaktivace zařízení a zachování dat
+1. Deaktivujte zařízení. Všechny kontejnery svazků a snímky zařízení zůstávají.
    
-   1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V **zařízení** okno, vyberte zařízení, které chcete deaktivovat, klikněte pravým tlačítkem a pak klikněte na tlačítko **deaktivovat**.
+   1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V okně **Zařízení** vyberte zařízení, které chcete deaktivovat, klikněte pravým tlačítkem myši a potom klikněte na **Deaktivovat**.
 
-         ![Deaktivace zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
-   2. V **deaktivovat** okno, zadejte název zařízení potvrďte a pak klikněte na tlačítko **deaktivovat**. Proces deaktivovat začíná a trvá několik minut.
+         ![Deaktivovat zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
+   2. V okně **Deaktivovat** zadejte název zařízení, který potvrďte, a klepněte na tlačítko **Deaktivovat**. Proces deaktivace se spustí a trvá několik minut.
 
-         ![Deaktivace zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
-2. Můžete teď převzetí služeb při selhání kontejnerů svazků a přidružené snímky. Postupy najdete v části [převzetí služeb při selhání a zotavení po havárii pro zařízení StorSimple](storsimple-8000-device-failover-disaster-recovery.md).
-3. Po deaktivaci a převzetí služeb při selhání můžete zcela odstranit zařízení. Odstraňuje se zařízení odebere ze seznamu zařízení připojených ke službě. Služba potom již nemůže spravovat odstraněné zařízení. Pokud chcete odstranit zařízení, proveďte následující kroky:
+         ![Deaktivovat zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
+2. Nyní můžete převzetí služeb při selhání kontejnery svazku a přidružené snímky. Postupy naleznete na [převzetí služeb při selhání a zotavení po havárii pro vaše zařízení StorSimple](storsimple-8000-device-failover-disaster-recovery.md).
+3. Po deaktivaci a převzetí služeb při selhání můžete zařízení zcela odstranit. Odstraněním zařízení odeberete ze seznamu zařízení připojených ke službě. Služba pak již nemůže spravovat odstraněné zařízení. Chcete-li zařízení odstranit, proveďte následující kroky:
    
-   1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V **zařízení** okně Výběr deaktivovaného zařízení, kterou chcete odstranit, klikněte pravým tlačítkem a pak klikněte na tlačítko **odstranit**.
+   1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V okně **Zařízení** vyberte deaktivované zařízení, které chcete odstranit, klepněte pravým tlačítkem myši a klepněte na příkaz **Odstranit**.
 
-       ![Deaktivace zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
-   2. V **odstranit** okno, zadejte název zařízení potvrďte a pak klikněte na tlačítko **odstranit**. Odstranění trvá několik minut.
+       ![Deaktivovat zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
+   2. Do okna **Odstranit** zadejte název zařízení, který potvrďte, a klepněte na tlačítko **Odstranit**. Odstranění trvá několik minut.
 
-       ![Deaktivace zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
-   3. Po odstranění se úspěšně dokončí, budete upozorněni. Seznam zařízení se rovněž aktualizuje tak, aby odrážely odstranění.
+       ![Deaktivovat zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
+   3. Po úspěšném dokončení odstranění budete upozorněni. Seznam zařízení se také aktualizuje tak, aby odrážel odstranění.
 
      
 ## <a name="deactivate-and-delete-a-cloud-appliance"></a>Deaktivace a odstranění cloudového zařízení
 
-Deaktivace z portálu pro řešení StorSimple Cloud Appliance, zruší přidělení a odstraní virtuální počítač a prostředky vytvořené při jeho zřizování. Po deaktivaci cloudového zařízení není možné ho obnovit do předchozího stavu.
+Pro StorSimple Cloud Appliance deaktivace z portálu naruší a odstraní virtuální počítač a prostředky vytvořené při jeho zřízení. Po deaktivaci cloudového zařízení není možné ho obnovit do předchozího stavu.
 
-![Deaktivace řešení StorSimple Cloud Appliance](./media/storsimple-8000-deactivate-and-delete-device/deactivate7.png)
+![Deaktivace cloudového zařízení StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate7.png)
 
-Deaktivace za následek následující akce:
+Deaktivace má za následek následující akce:
 
-* Řešení StorSimple Cloud Appliance se odebere ze služby.
-* Odstranění virtuálního počítače pro řešení StorSimple Cloud Appliance.
-* Disk s operačním systémem a datové disky vytvořené pro řešení StorSimple Cloud Appliance zůstanou zachovány. Pokud nepoužíváte tyto entity, je nutné je odstranit ručně.
-* Hostované služby a virtuální sítě, které se vytvořily při zřizování zůstanou zachovány. Pokud nepoužíváte tyto entity, je nutné je odstranit ručně.
-* Cloudové snímky vytvořené službou řešení StorSimple Cloud Appliance se zachovají.
+* StorSimple Cloud Appliance je odebrán ze služby.
+* Virtuální počítač pro StorSimple Cloud Appliance se odstraní.
+* Disk y operačního systému a datové disky vytvořené pro zařízení StorSimple Cloud Appliance jsou zachovány. Pokud tyto entity nepoužíváte, měli byste je odstranit ručně.
+* Hostovaná služba a virtuální síť, které byly vytvořeny během zřizování jsou zachovány. Pokud tyto entity nepoužíváte, měli byste je odstranit ručně.
+* Cloudové snímky vytvořené StorSimple Cloud Appliance jsou zachovány.
 
-Po deaktivaci cloudového zařízení můžete ho odstranit ze seznamu zařízení. Vyberte deaktivované zařízení, klikněte pravým tlačítkem a pak klikněte na tlačítko **odstranit**. StorSimple oznámení po odstranění zařízení a seznam zařízení se aktualizuje.
+Po deaktivaci cloudového zařízení jej můžete odstranit ze seznamu zařízení. Vyberte deaktivované zařízení, klikněte pravým tlačítkem myši a potom klepněte na příkaz **Odstranit**. StorSimple vás upozorní, jakmile je zařízení odstraněno a seznam zařízení se aktualizuje.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Deaktivované zařízení obnovíte výchozí tovární nastavení, přejděte na [obnovíte výchozí tovární nastavení zařízení](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
-* Pro technickou podporu [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md).
-* Další informace o tom, jak použít službu Správce zařízení StorSimple, přejděte na [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Chcete-li obnovit výchozí nastavení deaktivovaného zařízení z výroby, přejděte na [obnovit výchozí nastavení zařízení z výroby](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
+* Technickou pomoc [získáte od podpory společnosti Microsoft](storsimple-8000-contact-microsoft-support.md).
+* Další informace o používání služby StorSimple Device Manager naleznete v [části Správa zařízení StorSimple pomocí služby StorSimple Device Manager](storsimple-8000-manager-service-administration.md).
 

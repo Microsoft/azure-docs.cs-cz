@@ -1,6 +1,6 @@
 ---
-title: Připojit virtuální systém souborů ve fondu – Azure Batch | Microsoft Docs
-description: Přečtěte si, jak připojit virtuální systém souborů ve fondu Batch.
+title: Připojení virtuálního systému souborů ve fondu – Azure Batch | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak připojit virtuální systém souborů do fondu dávek.
 services: batch
 documentationcenter: ''
 author: LauraBrenner
@@ -12,55 +12,55 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: labrenne
 ms.openlocfilehash: bdf0b3bfc955d8a2e2ce1b363c8699ca719b957c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919001"
 ---
-# <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Připojení virtuálního systému souborů ve fondu Batch
+# <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Připojení virtuálního systému souborů do fondu dávek
 
-Azure Batch teď podporuje připojení cloudového úložiště nebo externího systému souborů ve výpočetních uzlech se systémem Windows nebo Linux ve fondech služby Batch. Když je výpočetní uzel připojen k fondu, je virtuální systém souborů připojen a je v tomto uzlu považován za místní disk. Můžete připojit souborové systémy, jako jsou soubory Azure, Azure Blob Storage, systém souborů NFS (Network File System), včetně [mezipaměti avere vFXT cache](../avere-vfxt/avere-vfxt-overview.md)nebo protokolu CIFS (Common Internet File System).
+Azure Batch teď podporuje připojení cloudového úložiště nebo externího souborového systému ve výpočetních uzlech Windows nebo Linuxu ve vašich fondů batch. Když výpočetní uzel připojí fond, virtuální systém souborů je připojen a považován za místní jednotku na tomto uzlu. Můžete připojit systémy souborů, jako jsou soubory Azure, úložiště objektů blob Azure, síťový souborový systém (NFS) včetně [mezipaměti Avere vFXT](../avere-vfxt/avere-vfxt-overview.md)nebo společný internetový souborový systém (CIFS).
 
-V tomto článku se dozvíte, jak připojit virtuální systém souborů ve fondu výpočetních uzlů pomocí [knihovny pro správu služby Batch pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet).
+V tomto článku se dozvíte, jak připojit virtuální systém souborů do fondu výpočetních uzlů pomocí [knihovny správy dávek pro rozhraní .NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet).
 
 > [!NOTE]
-> Připojení virtuálního systému souborů je podporováno v fondech Batch vytvořených v nebo po 2019-08-19. Fondy dávek vytvořené před 2019-08-19 tuto funkci nepodporují.
+> Připojení virtuálního systému souborů je podporováno u fondů dávek vytvořených v letech 2019-08-19 nebo po něm. Dávkové fondy vytvořené před 2019-08-19 tuto funkci nepodporují.
 > 
-> Rozhraní API pro připojování systémů souborů na výpočetním uzlu jsou součástí knihovny [Batch .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet) .
+> Rozhraní API pro připojení systémů souborů na výpočetní uzel jsou součástí [knihovny Batch .NET.](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet)
 
-## <a name="benefits-of-mounting-on-a-pool"></a>Výhody připojení ve fondu
+## <a name="benefits-of-mounting-on-a-pool"></a>Výhody montáže na bazén
 
-Systém souborů se připojuje ke fondu. místo toho, aby úkoly načetly vlastní data z velké sady dat, usnadňuje a zefektivňuje pro úlohy přístup k potřebným datům.
+Připojení systému souborů do fondu, namísto umožnění úloh načíst vlastní data z velké sady dat, usnadňuje a zefektivňuje úkoly pro přístup k potřebným datům.
 
-Vezměte v úvahu scénář s více úlohami, které vyžadují přístup ke společné sadě dat, jako je například vykreslování filmu. Každý úkol vykreslí jeden nebo více snímků v čase ze souborů scény. Připojením jednotky, která obsahuje soubory scény, je snazší u výpočetních uzlů získat přístup ke sdíleným datům. V závislosti na výkonu a škálování (propustnost a IOPS) vyžadovaných počtem výpočetních uzlů, které jsou souběžně přistupují k datům, je navíc možné zvolit a škálovat základní systém souborů. Například distribuovanou mezipaměť [avere vFXT](../avere-vfxt/avere-vfxt-overview.md) lze použít k podpoře velkého měřítka obrázků s využitím tisíců souběžných uzlů vykreslování a přístup ke zdrojovým datům, která se nacházejí v místním prostředí. Alternativně můžete pro data, která se nacházejí v cloudovém úložišti objektů blob, použít [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) k připojení těchto dat jako místní systém souborů. Blobfuse je k dispozici pouze na uzlech systému Linux, ale služby [soubory Azure](https://azure.microsoft.com/blog/a-new-era-for-azure-files-bigger-faster-better/) poskytují podobný pracovní postup a jsou k dispozici v systémech Windows i Linux.
+Zvažte scénář s více úkoly, které vyžadují přístup ke společné sadě dat, jako je vykreslování filmu. Každá úloha vykreslí jeden nebo více snímků najednou ze souborů scény. Připojením jednotky, která obsahuje soubory scény, je pro výpočetní uzly snazší přístup ke sdíleným datům. Kromě toho základní systém souborů lze zvolit a škálovat nezávisle na výkonu a škálování (propustnost a IOPS) vyžadované počtem výpočetních uzlů souběžně přístup k datům. Například [avere vFXT](../avere-vfxt/avere-vfxt-overview.md) distribuované mezipaměti v paměti lze použít pro podporu velkých vykreslování v měřítku filmu s tisíci souběžných vykreslovacích uzlů, přístup ke zdrojovým datům, která jsou umístěna v místním prostředí. Případně pro data, která jsou již umístěna v cloudovém úložišti objektů [Blob, lze blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) použít k připojení těchto dat jako místního systému souborů. Blobfuse je k dispozici jenom na linuxových uzlech, ale [soubory Azure](https://azure.microsoft.com/blog/a-new-era-for-azure-files-bigger-faster-better/) poskytují podobný pracovní postup a jsou dostupné ve Windows i linuxu.
 
-## <a name="mount-a-virtual-file-system-on-a-pool"></a>Připojení virtuálního systému souborů ve fondu  
+## <a name="mount-a-virtual-file-system-on-a-pool"></a>Připojení virtuálního systému souborů do fondu  
 
-Připojení virtuálního systému souborů ve fondu způsobí, že je systém souborů dostupný pro každý výpočetní uzel ve fondu. Systém souborů je nakonfigurován buď v případě, kdy se výpočetní uzel připojí k fondu, nebo když se uzel restartuje nebo obnoví z image.
+Připojení virtuálního systému souborů ve fondu zpřístupní systém souborů každému výpočetnímu uzlu ve fondu. Systém souborů je nakonfigurován buď při připojení výpočetního uzlu do fondu, nebo při restartování nebo reimaged uzlu.
 
-Chcete-li připojit systém souborů ve fondu, vytvořte objekt `MountConfiguration`. Vyberte objekt, který odpovídá vašemu virtuálnímu systému souborů: `AzureBlobFileSystemConfiguration`, `AzureFileShareConfiguration`, `NfsMountConfiguration`nebo `CifsMountConfiguration`.
+Chcete-li připojit systém souborů do `MountConfiguration` fondu, vytvořte objekt. Zvolte objekt, který odpovídá `AzureBlobFileSystemConfiguration`virtuálnímu systému souborů: , `AzureFileShareConfiguration`, `NfsMountConfiguration`, nebo `CifsMountConfiguration`.
 
-Všechny konfigurační objekty připojení potřebují následující základní parametry. Některé konfigurace připojení mají parametry specifické pro používaný systém souborů, které jsou podrobněji popsány v příkladech kódu.
+Všechny objekty konfigurace připojení potřebují následující základní parametry. Některé konfigurace připojení mají parametry specifické pro používaný systém souborů, které jsou podrobněji popsány v příkladech kódu.
 
-- **Název účtu nebo zdroj**: Pokud chcete připojit sdílenou složku virtuálního souboru, potřebujete název účtu úložiště nebo jeho zdroje.
-- **Relativní cesta nebo zdroj připojení**: umístění systému souborů připojeného k výpočetnímu uzlu vzhledem ke standardnímu adresáři `fsmounts` přístupnému na uzlu prostřednictvím `AZ_BATCH_NODE_MOUNTS_DIR`. Přesné umístění se liší v závislosti na operačním systému, který se používá na uzlu. Například fyzické umístění na uzlu Ubuntu je namapováno na `mnt\batch\tasks\fsmounts`a na uzlu CentOS je namapováno na `mnt\resources\batch\tasks\fsmounts`.
-- Možnosti **připojení nebo možnosti blobfuse**: tyto možnosti popisují konkrétní parametry pro připojení systému souborů.
+- **Název účtu nebo zdroj**: Chcete-li připojit virtuální sdílenou složku, potřebujete název účtu úložiště nebo jeho zdroj.
+- **Relativní cesta nebo zdroj**připojení : Umístění systému souborů připojeného `fsmounts` na výpočetním uzlu `AZ_BATCH_NODE_MOUNTS_DIR`vzhledem ke standardnímu adresáři přístupnému na uzlu přes . Přesné umístění se liší v závislosti na operačním systému používaném v uzlu. Například fyzické umístění v uzlu Ubuntu je `mnt\batch\tasks\fsmounts`mapováno na a na uzlu CentOS je mapováno na `mnt\resources\batch\tasks\fsmounts`.
+- **Možnosti připojení nebo možnosti blobfuse**: Tyto možnosti popisují specifické parametry pro připojení systému souborů.
 
-Jakmile je objekt `MountConfiguration` vytvořen, přiřaďte objekt k vlastnosti `MountConfigurationList` při vytváření fondu. Systém souborů je připojen buď když se uzel připojí k fondu, nebo když se uzel restartuje nebo obnoví z image.
+Po `MountConfiguration` vytvoření objektu přiřaďte `MountConfigurationList` objekt vlastnosti při vytváření fondu. Systém souborů je připojen buď při připojení uzlu do fondu nebo při restartování nebo reimaged uzlu.
 
-Když je systém souborů připojen, je vytvořena proměnná prostředí `AZ_BATCH_NODE_MOUNTS_DIR`, která odkazuje na umístění připojených systémů souborů i soubory protokolů, které jsou užitečné při řešení potíží a ladění. Podrobnější vysvětlení souborů protokolu najdete v části [Diagnostika chyb připojení](#diagnose-mount-errors) .  
+Při montáži systému souborů `AZ_BATCH_NODE_MOUNTS_DIR` je vytvořena proměnná prostředí, která odkazuje na umístění připojených systémů souborů a také na soubory protokolu, které jsou užitečné pro řešení potíží a ladění. Soubory protokolu jsou podrobněji vysvětleny v části [Diagnostikovat chyby připojení.](#diagnose-mount-errors)  
 
 > [!IMPORTANT]
-> Maximální počet připojených systémů souborů ve fondu je 10. Podrobnosti a další omezení najdete v tématu [kvóty služby Batch a omezení](batch-quota-limit.md#other-limits) .
+> Maximální počet připojených systémů souborů ve fondu je 10. Podrobnosti a další omezení najdete v [tématu Kvóty a limity dávkových služeb.](batch-quota-limit.md#other-limits)
 
 ## <a name="examples"></a>Příklady
 
-Následující příklady kódu ukazují připojení nejrůznějších sdílených složek do fondu výpočetních uzlů.
+Následující příklady kódu ukazují připojení různých sdílených složek do fondu výpočetních uzlů.
 
 ### <a name="azure-files-share"></a>Sdílená složka Azure Files
 
-Azure Files je standardní nabídka Azure cloudového systému souborů. Další informace o tom, jak získat libovolný parametr v ukázce konfiguračního kódu připojení, najdete v tématu [použití sdílené složky Azure Files](../storage/files/storage-how-to-use-files-windows.md).
+Azure Files je standardní nabídka cloudového souborového systému Azure. Další informace o tom, jak získat některý z parametrů v ukázce konfiguračního kódu připojení, najdete v [tématu Použití sdílené složky Azure Files](../storage/files/storage-how-to-use-files-windows.md).
 
 ```csharp
 new PoolAddParameter
@@ -85,9 +85,9 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Systém souborů Azure Blob
 
-Další možností je používat úložiště objektů BLOB v Azure prostřednictvím [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Připojení systému souborů BLOB vyžaduje `AccountKey` nebo `SasKey` pro váš účet úložiště. Informace o tom, jak tyto klíče získat, najdete v tématech [Správa přístupových klíčů účtu úložiště](../storage/common/storage-account-keys-manage.md)nebo [použití sdílených přístupových podpisů (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Další informace o použití blobfuse najdete v tématu [věnovaném řešení potíží s](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)blobfuse. Pokud chcete získat výchozí přístup k připojenému adresáři blobfuse, spusťte úlohu jako **správce**. Blobfuse připojí adresář v uživatelském prostoru a při vytváření fondu je připojen jako kořenový adresář. V systému Linux jsou všechny úlohy **správce** kořenové. Všechny možnosti pro modul zapékací postupu jsou popsány na [referenční stránce zapékací stránky](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
+Další možností je použití úložiště objektů blob Azure přes [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Připojení systému souborů objektů `AccountKey` `SasKey` blob vyžaduje účet úložiště nebo pro váš účet úložiště. Informace o získání těchto klíčů naleznete v [tématu Správa přístupových klíčů účtu úložiště](../storage/common/storage-account-keys-manage.md)nebo [použití sdílených přístupových podpisů (SAS).](../storage/common/storage-dotnet-shared-access-signature-part-1.md) Další informace o používání blobfuse naleznete v [nejčastějších dotazech k řešení problémů s](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)blobfuse . Chcete-li získat výchozí přístup k adresáři připojenému k blobfuse, spusťte úlohu jako **správce**. Blobfuse připojí adresář v uživatelském prostoru a při vytváření fondu je připojen jako root. V Linuxu jsou všechny úlohy **správce** root. Všechny možnosti modulu FUSE jsou popsány na [referenční stránce FUSE](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
 
-Kromě Průvodce odstraňováním potíží je v úložišti blobfuse užitečný způsob, jak kontrolovat aktuální problémy s blobfuse a jejich řešení. Další informace najdete v tématu [blobfuse problémy](https://github.com/Azure/azure-storage-fuse/issues).
+Kromě průvodce odstraňováním problémů jsou problémy GitHubu v úložišti blobfuse užitečným způsobem, jak zkontrolovat aktuální problémy s blobfuse a řešení. Další informace naleznete v tématu [blobfuse problémy](https://github.com/Azure/azure-storage-fuse/issues).
 
 ```csharp
 new PoolAddParameter
@@ -111,9 +111,9 @@ new PoolAddParameter
 }
 ```
 
-### <a name="network-file-system"></a>Systém souborů sítě
+### <a name="network-file-system"></a>Síťový systém souborů
 
-Systémy souborů NFS (Network File System) je možné připojit také k uzlům fondu, aby bylo možné k tradičním systémům souborů snadno přistupovat Azure Batch uzly. Může to být jeden server NFS nasazený v cloudu nebo místní server NFS, ke kterému se přistupoval přes virtuální síť. Alternativně můžete využít výhod řešení mezipaměťové mezipaměti [avere vFXT](../avere-vfxt/avere-vfxt-overview.md) , které poskytuje bezproblémové připojení k místnímu úložišti, čtení dat na vyžádání do mezipaměti a poskytuje vysoký výkon a škálování na cloudové výpočetní uzly.
+Síťové systémy souborů (NFS) lze také připojit k uzlům fondu, což umožňuje snadné přístup k tradičním systémům souborů pomocí uzlů Azure Batch. Může se jedná o jeden server nfs nasazený v cloudu nebo místní server systému zabezpečení sítě, ke který se přistupuje přes virtuální síť. Případně můžete využít řešení distribuované mezipaměti [Avere vFXT,](../avere-vfxt/avere-vfxt-overview.md) které poskytuje bezproblémové připojení k místnímu úložišti, čtení dat na vyžádání do mezipaměti a poskytuje vysoký výkon a škálování pro cloudové výpočetní uzly.
 
 ```csharp
 new PoolAddParameter
@@ -134,9 +134,9 @@ new PoolAddParameter
 }
 ```
 
-### <a name="common-internet-file-system"></a>Common Internet File System
+### <a name="common-internet-file-system"></a>Běžný systém souborů V Internetu
 
-Společné soubory protokolu CIFS (Common Internet File System) je možné připojit také k uzlům fondu, aby bylo možné k tradičním systémům souborů snadno přicházet pomocí Azure Batchch uzlů. CIFS je protokol pro sdílení souborů, který poskytuje mechanismus pro otevření a více platforem pro vyžádání souborů a služeb síťového serveru. Protokol CIFS je založený na rozšířené verzi protokolu SMB (Server Message Block) společnosti Microsoft pro sdílení souborů v Internetu a intranetu a používá se k připojení externích systémů souborů v uzlech systému Windows. Další informace o protokolu SMB najdete v tématu [souborový server a SMB](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview).
+Běžné systémy souborů Internetu (CIFS) lze také připojit ke sudům fondu, což umožňuje snadné přístup k tradičním systémům souborů pomocí uzlů Azure Batch. CIFS je protokol pro sdílení souborů, který poskytuje otevřený a multiplatformní mechanismus pro vyžádání souborů a služeb síťového serveru. CIFS je založen na rozšířené verzi protokolu SMB (Server Message Block) společnosti Microsoft pro sdílení souborů v síti Internet a intranet a používá se k připojení externích systémů souborů na uzly systému Windows. Další informace o smb naleznete [v tématu Souborový server a SMB](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview).
 
 ```csharp
 new PoolAddParameter
@@ -161,31 +161,31 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>Diagnostika chyb připojení
 
-Pokud konfigurace připojení selže, výpočetní uzel ve fondu selže a stav uzlu bude nepoužitelný. Chcete-li diagnostikovat selhání konfigurace připojení, zkontrolujte podrobnosti o chybě v vlastnosti [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) .
+Pokud konfigurace připojení selže, výpočetní uzel ve fondu se nezdaří a stav uzlu se stane nepoužitelným. Chcete-li diagnostikovat selhání [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) konfigurace připojení, zkontrolujte vlastnost podrobnosti o chybě.
 
-Chcete-li získat soubory protokolu pro ladění, použijte [OutputFiles](batch-task-output-files.md) pro nahrání souborů `*.log`. `*.log` soubory obsahují informace o připojení systému souborů v umístění `AZ_BATCH_NODE_MOUNTS_DIR`. Soubory protokolu připojení mají formát: `<type>-<mountDirOrDrive>.log` pro každé připojení. Například připojení `cifs` v adresáři pro připojení s názvem `test` bude mít soubor protokolu připojení s názvem: `cifs-test.log`.
+Chcete-li získat soubory protokolu pro ladění, použijte `*.log` [OutputFiles](batch-task-output-files.md) k nahrání souborů. Soubory `*.log` obsahují informace o připojení systému souborů v `AZ_BATCH_NODE_MOUNTS_DIR` umístění. Soubory protokolu připojení mají `<type>-<mountDirOrDrive>.log` formát: pro každé připojení. Například `cifs` připojení v adresáři `test` připojení s názvem bude `cifs-test.log`mít soubor protokolu připojení s názvem: .
 
-## <a name="supported-skus"></a>Podporované SKU
+## <a name="supported-skus"></a>Podporované skUs
 
-| Vydavatel | Nabídka | Skladová jednotka (SKU) | Sdílená složka Azure Files | Blobfuse | Připojení systému souborů NFS | Připojení CIFS |
+| Vydavatel | Nabídka | Skladová jednotka (SKU) | Sdílení souborů Azure | Blůza | NFS připojit | Držák CIFS |
 |---|---|---|---|---|---|---|
-| dávka | rendering-centos73 | vykreslení | :heavy_check_mark: <br>Poznámka: kompatibilní s CentOS 7,7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Canonical | UbuntuServer | 16,04 – LTS, 18,04 – LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| credativ | Debian | 8| :heavy_check_mark: | znak | :heavy_check_mark: | :heavy_check_mark: |
-| credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>Poznámka: kompatibilní s CentOS 7,4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | centos-container | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | centos-container-rdma | 7,4 | :heavy_check_mark: <br>Poznámka: podporuje úložiště A_8 nebo 9.</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | ubuntu-server-container | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-dsvm | linux-data-science-vm-ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS-HPC | 7,4, 7,3, 7,1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle – Linux | 7,6 | znak | znak | znak | znak |
-| Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | znak | znak | znak |
+| dávka | rendering-centos73 | Vykreslování | :heavy_check_mark: <br>Poznámka: Kompatibilní s CentOS 7.7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Canonical | UbuntuServer | 16.04-LTS, 18.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Kredativ | Debian | 8| :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
+| Kredativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-reklamy | linux-data-věda-vm | linuxdsvm | :heavy_check_mark: <br>Poznámka: Kompatibilní s CentOS 7.4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-azure-batch | centtos-kontejner | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-azure-batch | centos-kontejner-rdma | 7.4 | :heavy_check_mark: <br>Poznámka: Podporuje A_8 nebo 9 úložišť</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-azure-batch | ubuntu-server-kontejner | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-dsvm | linux-data-věda-vm-ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenLogic | Centos-HPC | 7.4, 7.3, 7.1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Oracle | Společnost Oracle-Linux | 7.6 | :x: | :x: | :x: | :x: |
+| Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | :x: | :x: | :x: |
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další podrobnosti o připojení sdílené složky služby soubory Azure se [systémem Windows](../storage/files/storage-how-to-use-files-windows.md) nebo [Linux](../storage/files/storage-how-to-use-files-linux.md).
-- Seznamte se s používáním a připojením virtuálních systémů souborů [blobfuse](https://github.com/Azure/azure-storage-fuse) .
-- Informace o systému souborů NFS a jeho aplikacích najdete v tématu [Přehled systému souborů](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview) NFS.
-- Další informace o CIFS najdete v tématu [Přehled protokolu SMB a protokolu CIFS](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) .
+- Přečtěte si další podrobnosti o připojení sdílené položky Azure Files s [Windows](../storage/files/storage-how-to-use-files-windows.md) nebo [Linuxem](../storage/files/storage-how-to-use-files-linux.md).
+- Další informace o používání a [montážblobfuse](https://github.com/Azure/azure-storage-fuse) virtuální souborové systémy.
+- Informace o systému souborů NFS a jeho aplikacích najdete v tématu [Přehled síťového systému.](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)
+- Další informace o CIFS najdete v [tématu Protokol Microsoft SMB a přehled protokolu CIFS.](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)

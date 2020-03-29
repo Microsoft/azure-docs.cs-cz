@@ -1,51 +1,51 @@
 ---
-title: Nastavení certifikátu šifrování u clusterů se systémem Linux
-description: Naučte se, jak nastavit šifrovací certifikát a šifrovat tajné klíče v clusterech se systémem Linux.
+title: Nastavení šifrovacího certifikátu v clusterech Linuxu
+description: Přečtěte si, jak nastavit šifrovací certifikát a šifrovat tajné kódy v clusterech Linuxu.
 author: shsha
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
 ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969037"
 ---
-# <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Nastavení šifrovacího certifikátu a šifrování tajných klíčů v clusterech se systémem Linux
-V tomto článku se dozvíte, jak nastavit šifrovací certifikát a použít ho k šifrování tajných klíčů v clusterech se systémem Linux. Clustery Windows najdete v tématech [Nastavení šifrovacího certifikátu a šifrování tajných klíčů v clusterech Windows][secret-management-windows-specific-link].
+# <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Nastavení šifrovacího certifikátu a šifrování tajných kódů v clusterech Linux
+Tento článek ukazuje, jak nastavit šifrovací certifikát a použít jej k šifrování tajných kódů v clusterech Linux. Clustery Windows najdete [v tématu Nastavení šifrovacího certifikátu a šifrování tajných kódů v clusterech Windows][secret-management-windows-specific-link].
 
-## <a name="obtain-a-data-encipherment-certificate"></a>Získání certifikátu pro zakódování dat
-Certifikát zašifrování dat se používá výhradně pro šifrování a dešifrování [parametrů][parameters-link] v nastavení služby. XML a [proměnných prostředí][environment-variables-link] v souboru ServiceManifest. XML služby. Nepoužívá se k ověřování nebo podepisování šifrovacího textu. Certifikát musí splňovat následující požadavky:
+## <a name="obtain-a-data-encipherment-certificate"></a>Získání certifikátu zašepletování dat
+Certifikát zakódování dat se používá výhradně pro šifrování a dešifrování [parametrů][parameters-link] v proměnné Settings.xml služby a proměnné prostředí v servicemanifest.xml [služby.][environment-variables-link] Nepoužívá se pro ověřování nebo podepisování šifrovacího textu. Osvědčení musí splňovat tyto požadavky:
 
-* Certifikát musí obsahovat privátní klíč.
-* Použití klíče certifikátu musí zahrnovat zašifrování dat (10) a nemělo by zahrnovat ověřování serveru nebo ověřování klientů.
+* Certifikát musí obsahovat soukromý klíč.
+* Použití klíče certifikátu musí zahrnovat šifrování dat (10) a nemělo by zahrnovat ověřování serveru nebo ověřování klienta.
 
-  Například následující příkazy lze použít k vygenerování požadovaného certifikátu pomocí OpenSSL:
+  Například následující příkazy lze použít ke generování požadovaného certifikátu pomocí OpenSSL:
   
   ```console
   user@linux:~$ openssl req -newkey rsa:2048 -nodes -keyout TestCert.prv -x509 -days 365 -out TestCert.pem
   user@linux:~$ cat TestCert.prv >> TestCert.pem
   ```
 
-## <a name="install-the-certificate-in-your-cluster"></a>Instalace certifikátu do clusteru
-Certifikát musí být nainstalovaný na každém uzlu v clusteru v části `/var/lib/sfcerts`. Uživatelský účet, pod kterým je služba spuštěna (sfuser ve výchozím nastavení), **by měl mít přístup pro čtení** nainstalovaného certifikátu (tj. `/var/lib/sfcerts/TestCert.pem` pro aktuální příklad).
+## <a name="install-the-certificate-in-your-cluster"></a>Instalace certifikátu v clusteru
+Certifikát musí být nainstalován na každém uzlu `/var/lib/sfcerts`v clusteru pod aplikací . Uživatelský účet, pod kterým je služba spuštěna (sfuser ve výchozím nastavení) **by měl mít přístup pro čtení** k nainstalovanému certifikátu (to znamená pro `/var/lib/sfcerts/TestCert.pem` aktuální příklad).
 
-## <a name="encrypt-secrets"></a>Šifrování tajných klíčů
-Následující fragment kódu lze použít k šifrování tajného klíče. Tento fragment kódu šifruje pouze hodnotu. **nepodepisuje** šifrovaný text. Pokud chcete pro tajné hodnoty vydávat šifrovaný text, **musíte použít** stejný certifikát zašifrování, který je nainstalovaný v clusteru.
+## <a name="encrypt-secrets"></a>Šifrování tajných kódů
+Následující úryvek lze použít k šifrování tajného klíče. Tento úryvek pouze šifruje hodnotu; **nepodepíše** šifrovaný text. **K** vytvoření šifrovacího textu pro tajné hodnoty je nutné použít stejný certifikát šifrování, který je nainstalován v clusteru.
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt
 user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
-Výsledný výstup řetězce s kódováním Base-64 na Encrypted. txt obsahuje tajný šifrovaný kód i informace o certifikátu, který se použil k zašifrování. Jeho platnost můžete ověřit tak, že ho dešifrujete pomocí OpenSSL.
+Výsledný výstup řetězce base-64 pro encrypted.txt obsahuje jak tajný šifrovaný text, tak informace o certifikátu, který byl použit k jeho šifrování. Jeho platnost můžete ověřit dešifrováním pomocí OpenSSL.
 ```console
 user@linux:$ cat encrypted.txt | base64 -d | openssl smime -decrypt -inform der -inkey TestCert.prv
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Naučte se, jak [zadat šifrované tajné klíče v aplikaci.][secret-management-specify-encrypted-secrets-link]
+Přečtěte si, jak [zadat šifrované tajné klíče v aplikaci.][secret-management-specify-encrypted-secrets-link]
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md

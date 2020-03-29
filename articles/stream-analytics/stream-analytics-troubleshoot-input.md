@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s vstupů pro službu Azure Stream Analytics
-description: Tento článek popisuje postupy řešení potíží s vstupní připojení v úlohách Azure Stream Analytics.
+title: Poradce při potížích se vstupy pro Azure Stream Analytics
+description: Tento článek popisuje techniky řešení potíží se vstupními připojeními v azure stream analytics úlohy.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,99 +9,99 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: dac3037f82c38980c9ac16685aa7fddac68a2e7b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720295"
 ---
 # <a name="troubleshoot-input-connections"></a>Řešení potíží se vstupními připojeními
 
-Tato stránka popisuje běžné problémy s vstupní připojení a postupy jejich řešení.
+Tato stránka popisuje běžné problémy se vstupními připojeními a jejich řešení.
 
-## <a name="input-events-not-received-by-job"></a>Nebyl přijat úlohou vstupní události 
-1.  Test připojení. Ověřte připojení ke vstupům a výstupům pomocí tlačítka **Testovat připojení** pro jednotlivé vstupy a výstupy.
+## <a name="input-events-not-received-by-job"></a>Vstupní události, které nebyly přijaty podle úlohy 
+1.  Otestujte připojení. Ověřte připojení ke vstupům a výstupům pomocí tlačítka **Testovat připojení** pro každý vstup a výstup.
 
 2.  Zkontrolujte vstupní data.
 
-    1. Pokud chcete ověřit, jestli se vstupní data přenášejí do centra událostí, připojte se k centru událostí Azure pomocí [Service Bus Exploreru](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) (Pokud se používá vstup centra událostí).
+    1. Chcete-li ověřit, že vstupní data proudí do centra událostí, použijte [Service Bus Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) pro připojení k Centru událostí Azure (pokud se používá vstup centra událostí).
         
-    1. Pro jednotlivé vstupy použijte tlačítko [**ukázková data**](stream-analytics-sample-data-input.md) . Stáhněte si vstupní ukázková data.
+    1. Pro každý vstup použijte tlačítko [**Ukázková data.**](stream-analytics-sample-data-input.md) Stáhněte si vstupní ukázková data.
         
-    1. Zkontrolujte ukázková data, abyste pochopili tvar dat – to znamená schéma a [datové typy](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+    1. Zkontrolujte ukázková data, abyste pochopili tvar dat, tedy schématu a [datových typů](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
 
-3.  Ujistěte se, že jste ve vstupní verzi Preview vybrali časový rozsah. Zvolte **možnost vybrat časový rozsah**a pak před testováním dotazu zadejte dobu trvání vzorku.
+3.  Ujistěte se, že jste ve vstupním náhledu vybrali časový rozsah. Zvolte **Vybrat časový rozsah**a před testováním dotazu zadejte dobu trvání vzorku.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Poškozená vstupní událost způsobuje chyby deserializace 
-Deserializace potíže jsou způsobeny, když vstupní datový proud vaší úlohy Stream Analytics obsahuje špatně vytvořené zprávy. Například může být způsobeno poškozená zpráva. chybí pravá závorka. nebo závorka v objektu JSON nebo nesprávný časové razítko formátu v poli Doba. 
+Problémy s deserialací jsou způsobeny, když vstupní datový proud úlohy Stream Analytics obsahuje poškozené zprávy. Například poškozená zpráva může být způsobena chybějící závorkou nebo složenou závorkou v objektu JSON nebo nesprávným formátem časového razítka v časovém poli. 
  
-Když úloha Stream Analytics přijímá chybnou zprávu z vstup, zahodí a upozorní uživatele s upozorněním. Na dlaždici **vstupy** Stream Analytics úlohy se zobrazí výstražný symbol. Tento znak upozornění existuje za předpokladu, že je úloha ve spuštěném stavu:
+Když úloha Stream Analytics obdrží z oněcovanou zprávu ze vstupu, zahodí zprávu a upozorní vás upozorněním. Na dlaždici **Vstupy** v úloze Stream Analytics se zobrazí výstražný symbol. Tento výstražný znak existuje tak dlouho, dokud je úloha ve spuštěném stavu:
 
-![Dlaždici vstupy Azure Stream Analytics](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
+![Dlaždice vstupů Azure Stream Analytics](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-Povolte diagnostické protokoly, chcete-li zobrazit podrobnosti upozornění. Pro vstupní události nemají správný formát protokoly spuštění obsahovat zprávu, která bude vypadat takto: 
+Povolte protokoly diagnostiky a zobrazte podrobnosti upozornění. U poškozených vstupních událostí obsahují protokoly spuštění položku se zprávou, která vypadá takto: 
 ```
 Could not deserialize the input event(s) from resource <blob URI> as json.
 ```
 
-### <a name="what-caused-the-deserialization-error"></a>Tom, co způsobilo chyby deserializace
-Můžete využít následující kroky a analyzovat události vstupu podrobně lepší přehled o tom, co způsobilo chyba deserializace. Potom můžete opravit zdroj událostí k vygenerování událostí ve správném formátu a tím vám znemožnit tím tento problém opakujte.
+### <a name="what-caused-the-deserialization-error"></a>Co způsobilo chybu deserializace
+Můžete provést následující kroky k analýze vstupní události podrobně získat jasnou představu o tom, co způsobilo chybu deserializace. Potom můžete opravit zdroj událostí generovat události ve správném formátu, aby se zabránilo zasažení tohoto problému znovu.
 
-1. Přejděte na vstupní dlaždice a klikněte na symboly upozornění zobrazíte seznam problémů.
+1. Přejděte na vstupní dlaždici a kliknutím na symboly upozornění zobrazíte seznam problémů.
 
-2. Podrobnosti vstupu dlaždici se zobrazuje seznam upozornění s podrobnostmi o jednotlivých problémů. Upozornění následující příklad obsahuje oddíl, posun a pořadová čísla níž se nachází poškozená data JSON. 
+2. Na dlaždici vstupních podrobností se zobrazí seznam upozornění s podrobnostmi o každém problému. Příklad upozornění níže zahrnuje oddíl, posun a pořadová čísla, kde je poškozená data JSON. 
 
-   ![Stream Analytics varovné zprávy s posunem](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+   ![Varovná zpráva Stream Analytics s posunem](media/stream-analytics-malformed-events/warning-message-with-offset.png)
    
-3. Pokud chcete najít data JSON s nesprávným formátem, spusťte kód CheckMalformedEvents.cs dostupný v [úložišti ukázek GitHubu](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Tento kód čte ID oddílu, posun a vytiskne data, která se nachází v tento posun. 
+3. Chcete-li najít data JSON s nesprávným formátem, spusťte CheckMalformedEvents.cs kód dostupný v [úložišti ukázek GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Tento kód přečte ID oddílu, posun a vytiskne data, která je umístěna v tomto posunu. 
 
 4. Jakmile načtete data, můžete analyzovat a opravit formát serializace.
 
-5. [Události můžete z IoT Hub také číst pomocí Service Bus Exploreru](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b).
+5. Události můžete číst také [z centra IoT Hub pomocí Průzkumníka služby Service Bus](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b).
 
-## <a name="job-exceeds-maximum-event-hub-receivers"></a>Úloha překračuje maximální přijímače centra událostí
-Doporučený postup pro použití služby Event Hubs je použít víc skupin konzumentů zajistit škálovatelnost úloh. Počet čtenářů v rámci úlohy Stream Analytics pro určitý vstup ovlivňuje počet čtenářů v skupinu jednoho příjemce. Přesný počet přijímačů je založen na podrobnosti interní implementace pro horizontální navýšení kapacity topologie logiku a není dostupná externě. Při spuštění úlohy nebo během upgradu projektu můžete změnit počet čtenářů.
+## <a name="job-exceeds-maximum-event-hub-receivers"></a>Úloha překračuje maximální počet přijímačů centra událostí.
+Osvědčeným postupem pro použití centra událostí je použití více skupin spotřebitelů k zajištění škálovatelnosti úloh. Počet čtenářů v úloze Stream Analytics pro konkrétní vstup ovlivňuje počet čtenářů v jedné skupině spotřebitelů. Přesný počet přijímačů je založen na podrobnostech interní implementace pro logiku topologie horizontálního navýšení kapacity a není vystaven externě. Počet čtenářů se může změnit při spuštění úlohy nebo při upgradu úlohy.
 
 Při překročení maximálního počtu přijímačů se zobrazí tato chyba: `The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
 
 > [!NOTE]
-> Když se počet čtenářů změní během úlohy upgradu, přechodných upozornění se zapisují do protokolů auditu. Úlohy Stream Analytics automaticky zotavit tyto přechodné problémy.
+> Při změně počtu čtenářů během upgradu úlohy jsou do protokolů auditu zapsána přechodná upozornění. Úlohy Stream Analytics se automaticky zotavují z těchto přechodných problémů.
 
-### <a name="add-a-consumer-group-in-event-hubs"></a>Přidat skupinu uživatelů ve službě Event Hubs
-Chcete-li přidat novou skupinu uživatelů ve vaší instanci služby Event Hubs, postupujte podle těchto kroků:
+### <a name="add-a-consumer-group-in-event-hubs"></a>Přidání skupiny spotřebitelů do centra událostí
+Pokud chcete do instance Event Hubs přidat novou skupinu spotřebitelů, postupujte takto:
 
 1. Přihlaste se k portálu Azure.
 
-2. Vyhledejte vaši službu Event Hubs.
+2. Vyhledejte centra událostí.
 
-3. V záhlaví **entity** vyberte **Event Hubs** .
+3. Pod nadpisem **Entity** **vyberte Centra událostí.**
 
 4. Vyberte Centrum událostí podle názvu.
 
-5. Na stránce **Event Hubs instance** pod nadpisem **entity** vyberte **skupiny uživatelů**. V seznamu je uvedena skupina uživatelů s názvem **$Default** .
+5. Na stránce **Instance Centra událostí** vyberte pod nadpisem **Entity** **skupiny spotřebitelů**. Je uvedena skupina spotřebitelů s názvem **$Default.**
 
-6. Vyberte **+ Skupina uživatelů** a přidejte novou skupinu příjemců. 
+6. Výběrem **možnosti + skupina spotřebitelů** přidáte novou skupinu spotřebitelů. 
 
-   ![Přidat skupinu uživatelů ve službě Event Hubs](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
+   ![Přidání skupiny spotřebitelů do centra událostí](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
 
-7. Při vytváření vstup do úlohy Stream Analytics tak, aby odkazoval do centra událostí, zadat skupinu příjemců existuje. $Default se používá, když není zadaný žádný. Jakmile vytvoříte novou skupinu uživatelů, upravit vstup Centrum událostí v úloze Stream Analytics a zadejte název nové skupiny příjemců.
+7. Když jste vytvořili vstup v úloze Stream Analytics tak, aby přecšlákem na Centrum událostí, zadali jste tam skupinu spotřebitelů. $Default se používá, pokud není zadán žádný. Po vytvoření nové skupiny spotřebitelů upravte vstup centra událostí v úloze Stream Analytics a zadejte název nové skupiny spotřebitelů.
 
 
-## <a name="readers-per-partition-exceeds-event-hubs-limit"></a>Čtenáři na oddíl překračuje limit služby Event Hubs
+## <a name="readers-per-partition-exceeds-event-hubs-limit"></a>Čtenáři na oddíl překročí limit centra událostí
 
-Pokud streamování syntaxi dotazu odkazuje na stejný vstupní prostředek centra událostí více než jednou, modul úlohy můžete použít několik čtenářů každý dotaz z tu samou skupinu příjemců. Pokud existuje příliš mnoho odkazů na stejnou skupinu uživatelů, můžete úlohy překročily maximální počet pět a vyvolána k chybě. V těchto případech můžete dál rozdělit pomocí více vstupů napříč více skupin konzumentů, pomocí řešení popsaných v následující části. 
+Pokud syntaxe dotazu streamování odkazuje na stejný vstupní prostředek centra událostí vícekrát, modul úloh může použít více čtenářů na dotaz ze stejné skupiny spotřebitelů. Pokud existuje příliš mnoho odkazů na stejnou skupinu příjemce, úloha může překročit limit pět a vyvolat chybu. Za těchto okolností můžete dále rozdělit pomocí více vstupů napříč více skupin spotřebitelů pomocí řešení popsaného v následující části. 
 
-Scénáře, ve kterých počet čtenářů na oddíl překračuje limit služby Event Hubs pěti patří:
+Scénáře, ve kterých počet čtenářů na oddíl překročí limit Centra událostí pět patří následující:
 
-* Vícenásobné příkazy SELECT: Pokud použijete více příkazů SELECT, které odkazují na **stejný** vstup centra událostí, každý příkaz SELECT způsobí vytvoření nového příjemce.
-* SJEDNOCENí: když použijete SJEDNOCENí, je možné mít několik vstupů, které odkazují na **stejné** centrum událostí a skupinu uživatelů.
-* Připojovat se k sobě: když použijete operaci připojovat do sebe, je možné, že se na **stejné** centrum událostí odkazuje víckrát.
+* Více příkazů SELECT: Pokud použijete více příkazů SELECT, které odkazují na **stejný** vstup centra událostí, každý příkaz SELECT způsobí vytvoření nového příjemce.
+* UNIE: Při použití UNION, je možné mít více vstupů, které odkazují na **stejné** centrum událostí a skupiny spotřebitelů.
+* VLASTNÍ SPOJENÍ: Při použití operace SELF JOIN je možné odkazovat na **stejné** centrum událostí vícekrát.
 
-Následující osvědčené postupy může pomoci zmírnit scénáře, ve kterých počet čtenářů na oddíl překračuje limit služby Event Hubs pět.
+Následující osvědčené postupy mohou pomoci zmírnit scénáře, ve kterých počet čtenářů na oddíl překračuje limit centra událostí pět.
 
-### <a name="split-your-query-into-multiple-steps-by-using-a-with-clause"></a>Rozdělit několik kroků dotazu pomocí klauzule WITH
+### <a name="split-your-query-into-multiple-steps-by-using-a-with-clause"></a>Rozdělení dotazu do několika kroků pomocí klauzule WITH
 
-V klauzuli WITH určuje sadu dočasné pojmenované výsledků, které lze odkazovat pomocí klauzule FROM v dotazu. Definujete v rámci provedení jednoho příkazu SELECT s klauzulí with.
+Klauzule WITH určuje dočasnou pojmenovanou sadu výsledků, na kterou lze odkazovat klauzulí FROM v dotazu. Definujete with klauzule v oboru provádění jednoho příkazu SELECT.
 
 Například místo tohoto dotazu:
 
@@ -116,7 +116,7 @@ FROM inputEventHub
 …
 ```
 
-Pomocí tohoto dotazu:
+Použijte tento dotaz:
 
 ```SQL
 WITH data AS (
@@ -133,13 +133,13 @@ FROM data
 …
 ```
 
-### <a name="ensure-that-inputs-bind-to-different-consumer-groups"></a>Ujistěte se, že vstupy vytvořit vazbu na jiný příjemce skupiny
+### <a name="ensure-that-inputs-bind-to-different-consumer-groups"></a>Ujistěte se, že vstupy se vážou na různé skupiny spotřebitelů
 
-Pro dotazy, které jsou připojené tři nebo více vstupů do stejné skupiny příjemců centra událostí vytvořte samostatné příjemce skupiny. To vyžaduje vytvoření další vstupy Stream Analytics.
+Pro dotazy, ve kterých jsou tři nebo více vstupů připojeny ke stejné skupině spotřebitelů Centra událostí, vytvořte samostatné skupiny spotřebitelů. To vyžaduje vytvoření dalších vstupů Stream Analytics.
 
 ## <a name="get-help"></a>Podpora
 
-Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Další pomoc našlápneme na fórum [Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další kroky
 

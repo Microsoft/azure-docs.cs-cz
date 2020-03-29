@@ -1,22 +1,21 @@
 ---
-title: Karta testovacích jednotek nabídky aplikace Dynamics 365 for Customer Engagement | Azure Marketplace
-description: Zastaralý článek CPP, propojený s počítačem článek; byl "jak nakonfigurovat testovací jednotku pro nabídku aplikace Dynamics 365 for Customer Engagement na webu AppSource Marketplace".
-services: Azure, Marketplace, AppSource, Cloud Partner Portal, Dynamics 365 for Customer Engagement
-author: ChJenk
+title: Karta Test Drive aplikace Dynamics 365 for Customer Engagement | Azure Marketplace
+description: Zastaralé CPP článek, souvisí s PC článek; byl "Jak nakonfigurovat testovací jednotku pro nabídku aplikace Dynamics 365 for Customer Engagement na webu AppSource Marketplace".
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: 0e201f6d54d46fab7120239b26a58e1d2b92020e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ef464ad288127ad0440d4a80a2a3745887dea973
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824639"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286604"
 ---
-# <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Karta testovací jednotka aplikace Dynamics 365 for Customer Engagement
+# <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Karta Testovací jednotka aplikace Dynamics 365 for Customer Engagement
 
-[Portál partnerů cloudu](https://cloudpartner.azure.com/) už nepodporuje vytváření a správu nabídek Dynamics 365 Customer Engagement. Místo toho se tato funkce přesunula na [portál partnerského centra](https://partner.microsoft.com/)Microsoftu. Další informace najdete v tématu [Vytvoření nové sady Dynamics 365 pro Customer Engagement & nabídky PowerApps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
+[Portál partnerů cloudu](https://cloudpartner.azure.com/) již nepodporuje vytváření a správu nabídek Dynamics 365 Customer Engagement. Místo toho byla tato funkce přesunuta na [portál Microsoft Partner Center](https://partner.microsoft.com/). Další informace najdete [v tématu Vytvoření nové nabídky Dynamics 365 for Customer Engagement & PowerApps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-Před vytvořením nové nabídky Dynamics 365 for Customer Engagement byste si měli přečíst téma [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a pak otevřít [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/directory) se zvolenou stránkou s **přehledem** . Podle pokynů v tématu [Vytvoření nové nabídky Dynamics 365 for Customer Engagement & PowerApps nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) vytvořte.
+Před vytvořením nové nabídky Dynamics 365 for Customer Engagement byste si měli přečíst [článek Vytvoření účtu Centra partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a pak otevřít řídicí panel Komerční [tržiště](https://partner.microsoft.com/dashboard/directory) s vybranou stránkou **Přehled.** K vytvoření nabídky se řiďte pokyny v [části Vytvoření nové nabídky Dynamics 365 for Customer Engagement & PowerApps.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)

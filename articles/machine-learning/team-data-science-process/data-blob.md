@@ -1,6 +1,6 @@
 ---
-title: Zpracování dat objektů blob v Azure pomocí pokročilé analýzy – vědecké zpracování týmových dat
-description: Zkoumání dat a generovat funkce z dat uložených v úložišti objektů Blob v Azure pomocí pokročilých analýz.
+title: Zpracování dat objektů blob Azure pomocí pokročilých analýz – proces vědecké analýzy týmových dat
+description: Prozkoumejte data a generujte funkce z dat uložených v úložišti objektů Blob Azure pomocí pokročilých analýz.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,19 +12,19 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4c47dfb8b221b6cb4b6237669ecd17c1637107a2
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721094"
 ---
-# <a name="heading"></a>Zpracování dat Azure BLOB pomocí pokročilých analýz
-Tento dokument popisuje analýzu dat a generování funkcí z dat uložených v úložišti objektů Blob v Azure. 
+# <a name="process-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>Zpracování dat Azure Blob pomocí pokročilých analýz
+Tento dokument popisuje zkoumání dat a generování funkcí z dat uložených v úložišti objektů blob Azure. 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Načtení dat do datového rámce Pandas
-Aby bylo možné prozkoumat a manipulovat s datovou sadou, je nutné ji stáhnout ze zdroje objektu blob do místního souboru, který lze poté načíst do datového rámce PANDAS. Tady jsou kroky pro tento postup:
+Aby bylo možné prozkoumat a manipulovat s datovou sadou, musí být stažena ze zdroje objektů blob do místního souboru, který pak lze načíst v datovém rámci Pandas. Zde jsou kroky, které je třeba pro tento postup postupovat:
 
-1. Stáhněte si data z objektu blob Azure pomocí následujícího ukázkového kódu Pythonu pomocí Blob service. Proměnná ve níže uvedeného kódu nahraďte konkrétní hodnoty: 
+1. Stáhněte si data z objektu blob Azure s následujícím ukázkovým kódem Pythonu pomocí služby Blob. Nahraďte proměnnou v níže uvedeném kódu konkrétními hodnotami: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -41,52 +41,52 @@ Aby bylo možné prozkoumat a manipulovat s datovou sadou, je nutné ji stáhnou
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
         print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. Načtení dat do dat – rámec Pandas ze staženého souboru.
+2. Přečtěte si data do datového rámce Pandas ze staženého souboru.
    
         #LOCALFILE is the file path    
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-Nyní jste připraveni na zkoumání dat a generovat funkce pro tuto datovou sadu.
+Nyní jste připraveni prozkoumat data a generovat funkce v této datové sadě.
 
-## <a name="blob-dataexploration"></a>Zkoumání dat
-Tady je pár příkladů, jak zkoumat data pomocí Pandas:
+## <a name="data-exploration"></a><a name="blob-dataexploration"></a>Průzkum dat
+Zde je několik příkladů způsobů, jak prozkoumat data pomocí pand:
 
 1. Kontrola počtu řádků a sloupců 
    
         print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
-2. Kontrola první nebo poslední několik řádků v datové sadě, jak je uvedeno níže:
+2. Zkontrolujte první nebo posledních několik řádků v datové sadě, jak je uvedeno níže:
    
         dataframe_blobdata.head(10)
    
         dataframe_blobdata.tail(10)
-3. Zkontrolujte datový typ importované každý sloupec jako pomocí následujícího ukázkového kódu
+3. Zkontrolujte datový typ, který byl importován každý sloupec, jako použití následujícího ukázkového kódu.
    
         for col in dataframe_blobdata.columns:
             print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
-4. Zkontrolujte následující základní statistiky pro sloupce v datové sadě
+4. Podívejte se na základní statistiky sloupců v datové sadě takto
    
         dataframe_blobdata.describe()
-5. Podívejte se na počet položek pro každou hodnotu sloupce, které následujícím způsobem
+5. Podívejte se na počet položek pro každou hodnotu sloupce následujícím způsobem
    
         dataframe_blobdata['<column_name>'].value_counts()
-6. Počet chybějících hodnot a skutečný počet položek v jednotlivých sloupcích pomocí následujícího ukázkového kódu
+6. Počet chybějících hodnot ve skutečném počtu položek v každém sloupci pomocí následujícího ukázkového kódu
    
         miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
         print miss_num
-7. Pokud máte v datech chybějící hodnoty pro konkrétní sloupce, můžete je zrušit následujícím způsobem:
+7. Pokud v datech chybí hodnoty pro určitý sloupec, můžete je vynechat následujícím způsobem:
    
         dataframe_blobdata_noNA = dataframe_blobdata.dropna()
         dataframe_blobdata_noNA.shape
    
-   Dalším způsobem, jak nahradit chybějících hodnot je ve funkci režimu:
+   Dalším způsobem, jak nahradit chybějící hodnoty, je funkce režimu:
    
         dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
-8. Vytvoření histogramu vykreslení pomocí proměnný počet intervalů k vykreslení distribuce proměnné    
+8. Vytvoření obrázku histogramu pomocí proměnného počtu přihrádek k vykreslení rozdělení proměnné    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
    
         np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
-9. Podívejte se na korelace mezi proměnné pomocí diagnostického nebo funkcí vestavěné korelace
+9. Podívejte se na korelace mezi proměnnými pomocí scatterplot nebo pomocí vestavěné korelační funkce
    
         #relationship between column_a and column_b using scatter plot
         plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])
@@ -94,49 +94,49 @@ Tady je pár příkladů, jak zkoumat data pomocí Pandas:
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-## <a name="blob-featuregen"></a>Generace funkcí
-Vygenerujeme funkce Python následujícím způsobem:
+## <a name="feature-generation"></a><a name="blob-featuregen"></a>Generování funkcí
+Můžeme generovat funkce pomocí Pythonu takto:
 
-### <a name="blob-countfeature"></a>Generování funkcí na základě hodnoty ukazatele
-Funkce zařazené do kategorií můžete vytvořit následujícím způsobem:
+### <a name="indicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>Generování prvků založených na hodnotách indikátoru
+Kategorické prvky lze vytvořit následujícím způsobem:
 
-1. Zkontrolujte distribuci sloupci zařazené do kategorií:
+1. Zkontrolujte rozložení kategorického sloupce:
    
         dataframe_blobdata['<categorical_column>'].value_counts()
-2. Generování indikátor hodnot pro všechny hodnoty ve sloupcích
+2. Generovat hodnoty indikátorů pro každou hodnotu sloupce
    
         #generate the indicator column
         dataframe_blobdata_identity = pd.get_dummies(dataframe_blobdata['<categorical_column>'], prefix='<categorical_column>_identity')
-3. Připojte se k sloupci indikátorů původního datového rámce 
+3. Spojení sloupce indikátoru s původním datovým rámcem 
    
             #Join the dummy variables back to the original data frame
             dataframe_blobdata_with_identity = dataframe_blobdata.join(dataframe_blobdata_identity)
-4. Odeberte původní sám:
+4. Odeberte samotnou původní proměnnou:
    
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="blob-binningfeature"></a>Generace funkcí binningu
-Pro generování rozdělený na intervaly funkce jsme postupujte následovně:
+### <a name="binning-feature-generation"></a><a name="blob-binningfeature"></a>Generování binningu
+Pro generování funkcí binned postupujeme takto:
 
-1. Přidat posloupnost sloupců do adresáře bin číselný sloupec
+1. Přidání posloupnosti sloupců do přihrádky číselného sloupce
    
         bins = [0, 1, 2, 4, 10, 40]
         dataframe_blobdata_bin_id = pd.cut(dataframe_blobdata['<numeric_column>'], bins)
-2. Převést binning na řadu proměnné typu boolean
+2. Převést binning na posloupnost logických proměnných
    
         dataframe_blobdata_bin_bool = pd.get_dummies(dataframe_blobdata_bin_id, prefix='<numeric_column>')
-3. A konečně připojte se k fiktivní proměnné zpět do původního datového rámce
+3. Nakonec připojte fiktivní proměnné zpět k původnímu datovému rámci
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="sql-featuregen"></a>Zápis dat zpět do objektu blob Azure a využití v Azure Machine Learning
-Po prozkoumání dat a vytvoření potřebných funkcí můžete data (sampleed nebo natrénuje) nahrát do objektu blob Azure a využít je v Azure Machine Learning pomocí následujících kroků: v Azure Machine Learning se dají vytvořit další funkce. Studio (Classic) také. 
+## <a name="writing-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>Zápis dat zpět do objektu blob Azure a náročné v Azure Machine Learning
+Po prozkoumání dat a vytvoření nezbytných funkcí můžete data (ukázková nebo featurized) nahrát do objektu blob Azure a využívat je v Azure Machine Learning pomocí následujících kroků: Další funkce lze vytvořit v Azure Machine Learning Studio (klasické). 
 
 1. Zápis datového rámce do místního souboru
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. Nahrání dat do objektů blob v Azure následujícím způsobem:
+2. Nahrajte data do objektu blob Azure takto:
    
         from azure.storage.blob import BlobService
         import tables
@@ -157,9 +157,9 @@ Po prozkoumání dat a vytvoření potřebných funkcí můžete data (sampleed 
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Nyní je možné číst data z objektu BLOB pomocí modulu Azure Machine Learning [Import dat][import-data] , jak je znázorněno na následující obrazovce:
+3. Teď se data můžou číst z objektu blob pomocí modulu Azure Machine Learning [Import Data,][import-data] jak je znázorněno na obrazovce níže:
 
-![Čtečka objektů blob][1]
+![objekt blob čtečky][1]
 
 [1]: ./media/data-blob/reader_blob.png
 

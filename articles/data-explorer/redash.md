@@ -1,6 +1,6 @@
 ---
-title: Vizualizace Průzkumník dat Azure s pomlčkou
-description: V tomto článku se dozvíte, jak vizualizovat data v Azure Průzkumník dat pomocí přepřerušovaného nativního konektoru.
+title: Vizualizace Průzkumníka dat Azure pomocí funkce Redash
+description: V tomto článku se dozvíte, jak vizualizovat data v Průzkumníku dat Azure pomocí nativního konektoru Redash.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,90 +8,90 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773959"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Vizualizace dat z Azure Průzkumník dat v přerušování
+# <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Vizualizace dat z Průzkumníka dat Azure v redashu
 
-[Pomlčky](https://redash.io/) se připojují k datovým zdrojům a dotazují se na ně, vytváří řídicí panely k vizualizaci dat a sdílí je s partnerskými složkami. V tomto článku se dozvíte, jak nastavit službu Azure Průzkumník dat jako zdroj dat pro přerušování a pak vizualizovat data.
+[Redash](https://redash.io/) propojuje a dotazuje vaše zdroje dat, vytváří řídicí panely pro vizualizaci dat a jejich sdílení s kolegy. V tomto článku se dozvíte, jak nastavit Azure Data Explorer jako zdroj dat pro Redash a pak vizualizovat data.
 
 ## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořte cluster a databázi](create-cluster-database-portal.md).
-1. Ingestování dat, jak je vysvětleno v tématu příjem [ukázkových dat do Azure Průzkumník dat](ingest-sample-data.md) Další možnosti ingestování najdete v tématu [Přehled](ingest-data-overview.md)ingestování.
+1. Ingestujte data, jak je vysvětleno v [ingestování ukázkových dat do Průzkumníka dat Azure](ingest-sample-data.md). Další možnosti požití naleznete v [tématu přehled požití](ingest-data-overview.md).
 
 [!INCLUDE [data-explorer-configure-data-source](../../includes/data-explorer-configure-data-source.md)]
 
-## <a name="create-azure-data-explorer-connector-in-redash"></a>Vytvořit konektor Azure Průzkumník dat v přerušování 
+## <a name="create-azure-data-explorer-connector-in-redash"></a>Vytvoření konektoru Průzkumníka dat Azure v redashu 
 
-1. Přihlaste se a [přečárkujte](https://www.redash.io/)se. Vyberte **Začínáme** a vytvořte účet.
-1. V části **Pojďme začít**vyberte **připojit zdroj dat**.
+1. Přihlaste se k [Redash](https://www.redash.io/). Chcete-li vytvořit účet, vyberte **Možnost Začínáme.**
+1. V části **Začínáme**vyberte **Připojit zdroj dat**.
 
-    ![Připojení zdroje dat](media/redash/connect-data-source.png)
+    ![Připojit zdroj dat](media/redash/connect-data-source.png)
 
-1. V okně **vytvořit nový zdroj dat** vyberte **Azure Průzkumník dat (Kusto)** a pak vyberte **vytvořit**. 
+1. V **okně Vytvořit nový zdroj dat** vyberte Průzkumník dat Azure **(Kusto) a**pak vyberte **Vytvořit**. 
 
-    ![Vybrat zdroj dat Průzkumník dat Azure](media/redash/select-adx-data-source.png)
+    ![Výběr zdroje dat Průzkumníka dat Azure](media/redash/select-adx-data-source.png)
 
-1. V okně **Azure Průzkumník dat (Kusto)** vyplňte následující formulář a vyberte **vytvořit**.
+1. V okně **Průzkumníka dat Azure (Kusto)** vyplňte následující formulář a vyberte **Vytvořit**.
 
-    ![Okno nastavení Azure Průzkumník dat (Kusto)](media/redash/adx-settings-window.png)
+    ![Okno nastavení Průzkumníka dat Azure (Kusto)](media/redash/adx-settings-window.png)
 
-1. V okně **Nastavení** vyberte **Uložit** a **otestovat připojení** pro otestování připojení ke zdroji dat v **Azure Průzkumník dat (Kusto)** .
+1. V okně **Nastavení** vyberte **Uložit** a **otestovat připojení** k testování připojení zdroje dat Aplikace **Azure (Kusto).**
 
-## <a name="create-queries-in-redash"></a>Vytváření dotazů v přerušování
+## <a name="create-queries-in-redash"></a>Vytváření dotazů v pochodce
 
-1. V levém horním rohu přerušování vyberte **vytvořit** > **dotaz**. Klikněte na **Nový dotaz** a přejmenujte dotaz.
+1. Vlevo nahoře na Redashu vyberte **Vytvořit** > **dotaz**. Klikněte na **Nový dotaz** a přejmenujte dotaz.
 
     ![Vytvořit dotaz](media/redash/create-query.png)
 
-1. Zadejte dotaz v horním podokně úprav a vyberte **Uložit** a **Spustit**. Vyberte **publikovat** a publikujte dotaz pro budoucí použití.
+1. Zadejte dotaz do horního podokna úprav a vyberte **Uložit** a **spustit**. Vyberte **Publikovat,** chcete-li publikovat dotaz pro budoucí použití.
 
-    ![Uložit a spustit dotaz](media/redash/save-and-execute-query.png)
+    ![Uložení a spuštění dotazu](media/redash/save-and-execute-query.png)
 
-    V levém podokně uvidíte v rozevírací nabídce název připojení zdroje dat (**konektor GitHubu** v našem toku) a tabulky ve vybrané databázi. 
+    V levém podokně uvidíte název připojení zdroje dat **(konektor Github** v našem toku) v rozevírací nabídce a tabulky ve vybrané databázi. 
 
-1. Zobrazení výsledků dotazu v dolním centrálním podokně. Vytvořte vizualizaci, kterou chcete použít pro dotaz, a to tak, že vyberete tlačítko **Nová vizualizace** .
+1. Zobrazení výsledků dotazu v dolním centrálním podokně Vytvořte vizualizaci, která se bude s dotazem přikládat, a to tak, že vyberete tlačítko **Nová vizualizace.**
 
     ![Nová vizualizace](media/redash/new-visualization.png)
 
-1. Na obrazovce vizualizace vyberte **typ vizualizace** a příslušná pole, například sloupec **X** a **Y**. **Uložte** vizualizaci.
+1. Na obrazovce vizualizace vyberte **typ vizualizace** a příslušná pole, například **Sloupec X** a **Sloupec Y**. **Uložte** vizualizaci.
 
     ![Konfigurace a uložení vizualizace](media/redash/configure-visualization.png)
 
 ### <a name="create-a-query-using-a-parameter"></a>Vytvoření dotazu pomocí parametru
 
-1. **Vytvořte** **dotaz** > pro vytvoření nového dotazu. Přidejte do něj parametr pomocí složených závorek {{}}. Vyberte **{{}}** pro otevření okna **Přidat parametr** . Můžete také vybrat *ikonu nastavení* pro úpravu atributů existujícího parametru a otevření okna **< parameter_name >** . 
+1. **Vytvořte** > **dotaz** a vytvořte nový dotaz. Přidejte parametr pomocí{}{ } složených závorek. Výběrem **možnosti {{}}** otevřete okno Přidat **parametr.** Můžete také vybrat *ikonu nastavení* a upravit atributy existujícího parametru a otevřít okno<parameter_name **>.** 
 
     ![vložit parametr](media/redash/insert-parameter.png)
 
-1. Pojmenujte parametr. Vyberte **typ**: **rozevírací seznam založený na dotazu** z rozevírací nabídky. Vyberte **OK**.
+1. Pojmenujte svůj parametr. V rozevírací nabídce vyberte **Typ**: **Rozevírací seznam založený na dotazu.** Vybrat **OK**
 
-    ![rozevírací seznam založený na dotazu](media/redash/query-based-dropdown-list.png)
+    ![rozevírací seznam založený na dotazech](media/redash/query-based-dropdown-list.png)
 
     > [!NOTE]
-    > Dotaz používá více hodnot, proto musíte zahrnout následující syntaxi `| where Type in ((split('{{Type}}', ',')))`. Další informace najdete v tématu [operátor in](/azure/kusto/query/inoperator). Výsledkem je [vícenásobné možnosti parametrů dotazu v aplikaci s pomlčkou](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io) .
+    > Dotaz používá více hodnot, proto je `| where Type in ((split('{{Type}}', ',')))`nutné zahrnout následující syntaxi . Další informace naleznete [v tématu operátor](/azure/kusto/query/inoperator). Výsledkem [je více možností parametrů dotazu v aplikaci redash](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io)
 
-## <a name="create-a-dashboard-in-redash"></a>Vytvoření řídicího panelu v přerušování
+## <a name="create-a-dashboard-in-redash"></a>Vytvoření řídicího panelu v redashu
 
-1. Řídicí panel vytvoříte tak, že **vytvoříte** > **řídicí panel**. Případně vyberte existující řídicí panel, **řídicí panely** > v seznamu vyberte řídicí panel.
+1. Chcete-li vytvořit řídicí panel, **vytvořte** > **řídicí panel**. Případně vyberte existující řídicí panel, **řídicí panely** > vyberte řídicí panel ze seznamu.
 
     ![Vytvořit řídicí panel](media/redash/create-dashboard.png)
 
-1. V okně **nové řídicí panel** pojmenujte řídicí panel a vyberte **Uložit**. V okně **< Dashboard_name >** vyberte **Přidat widget** a vytvořte nový widget. 
+1. V okně **Nový řídicí panel** pojmenujte řídicí panel a vyberte **Uložit**. V **okně<Dashboard_name>** vyberte Přidat **widget,** abyste vytvořili nový widget. 
 
-1. V okně **Přidat widget** vyberte název dotazu, **Zvolte vizualizaci**a **parametry**. Vybrat **Přidat na řídicí panel**
+1. V okně **Přidat widget** vyberte název dotazu, **Zvolte vizualizaci**a **Parametry**. Vybrat **přidat na řídicí panel**
 
    ![Výběr vizualizací a přidání na řídicí panel](media/redash/add-widget-window.png)
 
-1. Kliknutím na **hotové úpravy** dokončíte vytváření řídicích panelů.
+1. Chcete-li dokončit vytvoření řídicího panelu, vyberte **Hotovo úpravy.**
 
-1.  V režimu úprav řídicího panelu vyberte **použít filtry na úrovni řídicího panelu** a použijte dříve definovaný parametr **typu** .
+1.  V režimu úprav řídicího panelu vyberte **Použít filtry úrovně řídicího panelu,** chcete-li použít dříve definovaný parametr **Typ.**
 
-    ![Dokončit vytváření řídicího panelu](media/redash/complete-dashboard.png)
+    ![Kompletní vytvoření řídicího panelu](media/redash/complete-dashboard.png)
 
 ## <a name="next-steps"></a>Další kroky
 

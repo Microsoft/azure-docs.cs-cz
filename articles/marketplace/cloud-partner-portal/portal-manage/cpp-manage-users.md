@@ -1,21 +1,19 @@
 ---
-title: Správa uživatelů na portál partnerů cloudu | Azure Marketplace
-description: Zastaralý článek v CPP, odkazoval na počítač v článku; byl "Správa uživatelů na portálu partnera cloudu"
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
-manager: pbutlerm
+title: Správa uživatelů na portálu partnerů cloudu | Azure Marketplace
+description: Zastaralé CPP článek, poukázal na PC článek; byla "Správa uživatelů na portálu partnerů cloudu"
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: 15c173748f6e38d72f6f05d83a93bbf1fd4a243d
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: d0a83f0a6c842e7b364e7fa8553768bab063dc68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666405"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288474"
 ---
-# <a name="managing-users-on-the-cloud-partner-portal"></a>Správa uživatelů na portál partnerů cloudu
+# <a name="managing-users-on-the-cloud-partner-portal"></a>Správa uživatelů na portálu cloudových partnerů
 
-Tato funkce se přesunula na [portál partnerského centra](https://partner.microsoft.com/)Microsoftu. Další informace najdete v tématu [Správa účtu komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+Tato funkce byla přesunuta na portál Microsoft [Partner Center](https://partner.microsoft.com/). Další informace naleznete v tématu [Jak spravovat účet Commercial Marketplace v Centru partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).

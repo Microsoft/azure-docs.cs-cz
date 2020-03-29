@@ -1,6 +1,6 @@
 ---
 title: Mapování vizuálního monitorování toku dat
-description: Jak vizuálně monitorovat toky Azure Data Factory dat
+description: Jak vizuálně sledovat toky dat Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -9,55 +9,55 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
 ms.openlocfilehash: 93d92286fa9eecbc64229059274cc8f9ed99e21e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928276"
 ---
-# <a name="monitor-data-flows"></a>Monitorování toků dat
+# <a name="monitor-data-flows"></a>Sledování toků dat
 
 
 
-Po dokončení sestavování a ladění toku dat budete chtít tok dat naplánovat tak, aby se spouštěl podle plánu v kontextu kanálu. Kanál můžete naplánovat z Azure Data Factory pomocí triggerů. Nebo můžete použít možnost aktivovat nyní z Tvůrce kanálů Azure Data Factory ke spuštění jednoho spuštění za účelem testování toku dat v rámci kontextu kanálu.
+Po dokončení vytváření a ladění toku dat, budete chtít naplánovat tok dat spustit podle plánu v rámci kanálu. Kanál můžete naplánovat z Azure Data Factory pomocí aktivačních událostí. Nebo můžete použít možnost Trigger Now z Azure Data Factory Pipeline Builder k provedení spuštění jednoho spuštění k testování toku dat v kontextu kanálu.
 
-Po spuštění kanálu budete moct monitorovat kanál a všechny aktivity obsažené v kanálu, včetně aktivity toku dat. Klikněte na ikonu monitorování na levém panelu uživatelského rozhraní Azure Data Factory. Zobrazí se obrazovka podobná té. Zvýrazněné ikony vám umožní přejít na aktivity v kanálu, včetně aktivity toku dat.
+Při spuštění kanálu budete moci sledovat kanál a všechny aktivity obsažené v kanálu, včetně aktivity toku dat. Klikněte na ikonu monitoru v levém panelu Azure Data Factory. Uvidíte obrazovku podobnou té níže. Zvýrazněné ikony vám umožní přejít k podrobnostem o aktivitách v kanálu, včetně aktivity toku dat.
 
 ![Sledování toku dat](media/data-flow/mon001.png "Sledování toku dat")
 
-Na této úrovni uvidíte statistiku, včetně časů běhu a stavu. ID spuštění na úrovni aktivity se liší od ID běhu na úrovni kanálu. ID spuštění na předchozí úrovni je pro kanál. Kliknutím na brýlí získáte podrobné informace o spuštění toku dat.
+Zobrazí se také statistiky na této úrovni, včetně časů spuštění a stavu. Id spuštění na úrovni aktivity se liší od ID spuštění na úrovni kanálu. ID spuštění na předchozí úrovni je pro kanál. Kliknutím na brýle získáte podrobné informace o provádění toku dat.
 
 ![Sledování toku dat](media/data-flow/mon002.png "Sledování toku dat")
 
-Když jste v zobrazení monitorování grafického uzlu, zobrazí se zjednodušená verze grafu toku dat, která je jen pro zobrazení.
+Pokud se zobrazí zobrazení monitorování grafického uzlu, zobrazí se zjednodušená verze grafu toku dat pouze zjednodušená.
 
 ![Sledování toku dat](media/data-flow/mon003.png "Sledování toku dat")
 
-## <a name="view-data-flow-execution-plans"></a>Zobrazit plány spuštění toku dat
+## <a name="view-data-flow-execution-plans"></a>Zobrazit plány provádění toku dat
 
-Po spuštění toku dat ve Sparku Azure Data Factory určí optimální cesty kódu na základě celého toku dat. V různých uzlech a datových oddílech se škálováním na více instancí můžou být taky cesty spouštění. Proto graf monitorování představuje návrh toku, přičemž vezme v úvahu cestu spuštění vašich transformací. Po kliknutí na jednotlivé uzly se zobrazí "seskupení", která představuje kód, který byl spuštěn společně v clusteru. Časování a počty, které vidíte, tyto skupiny zastupují na rozdíl od jednotlivých kroků v návrhu.
-
-![Sledování toku dat](media/data-flow/mon004.png "Sledování toku dat")
-
-* Když kliknete na volné místo v okně monitorování, v dolním podokně se zobrazí počty časování a řádků pro každou jímku a transformace, které vedly k datům jímky pro transformaci.
-
-* Když vyberete jednotlivé transformace, dostanete další zpětnou vazbu na panel na pravé straně, který zobrazuje statistiky oddílu, počty sloupců, zkosení (jak rovnoměrně jsou data distribuovaná napříč oddíly), a špičatost (jak nárazové data).
-
-* Po kliknutí na jímku v zobrazení uzlu se zobrazí řádek sloupce. Existují tři různé metody, které jsou v průběhu toku dat shrnuty do jímky. Jsou to tyto:
-
-  * Vypočítáno: použijete sloupec pro podmíněné zpracování nebo v rámci výrazu v toku dat, ale nebudete ho do jímky nakládat.
-  * Derived: sloupec je nový sloupec, který jste vygenerovali ve vašem toku, to znamená, že se ve zdroji nenachází.
-  * Namapováno: sloupec pochází ze zdroje a vaše mapování je na pole jímky.
-  * Stav toku dat: aktuální stav provádění
-  * Čas spuštění clusteru: doba, po kterou se získá výpočetní prostředí JIT ve službě JIT pro spuštění toku dat
-  * Počet transformací: kolik kroků transformace se provádí v toku
-  
-![Sledování toku dat](media/data-flow/monitornew.png "Nové monitorování toku dat")  
-  
-## <a name="monitor-icons"></a>Monitorovat ikony
-
-Tato ikona znamená, že data transformace již byla v clusteru uložena do mezipaměti, takže časování a cesta provádění poberou v úvahu:
+Když se váš tok dat spustí ve Sparku, Azure Data Factory určuje optimální cesty kódu na základě celého toku dat. Kromě toho může dojít ke spuštění cesty na různých uzlech horizontálního navýšení kapacity a datové oddíly. Proto graf monitorování představuje návrh toku, s přihlédnutím k cestě provádění transformace. Po kliknutí na jednotlivé uzly se zobrazí "seskupení", které představují kód, který byl proveden společně v clusteru. Časování a počty, které vidíte představují tyto skupiny na rozdíl od jednotlivých kroků v návrhu.
 
 ![Sledování toku dat](media/data-flow/mon004.png "Sledování toku dat")
 
-V transformaci se zobrazí taky ikony zelených kroužků. Představují Počet umyvadel, do kterých data přecházejí.
+* Když kliknete na otevřené místo v okně monitorování, statistiky v dolním podokně zobrazí časování a počty řádků pro každý jímky a transformace, které vedly k datům jímky pro linie transformace.
+
+* Když vyberete jednotlivé transformace, obdržíte další zpětnou vazbu na pravém panelu, který zobrazuje statistiky oddílů, počty sloupců, šikmost (jak rovnoměrně jsou data rozložená mezi oddíly) a špičatou (jak špičaté jsou data).
+
+* Když kliknete na dřez v zobrazení uzlu, uvidíte řádek sloupce. Existují tři různé metody, které sloupce jsou akumulovány v celém toku dat přistát v jímce. Jsou to tyto:
+
+  * Vypočítané: Sloupec se používá pro podmíněné zpracování nebo v rámci výrazu v toku dat, ale nepřistanete v jímce
+  * Odvozeno: Sloupec je nový sloupec, který jste vygenerovali ve vašem toku, tj.
+  * Mapováno: Sloupec pochází ze zdroje a vaše jsou mapování na dřez pole
+  * Stav toku dat: Aktuální stav provádění
+  * Doba spuštění clusteru: Doba získání výpočetního prostředí JIT Spark pro spuštění toku dat
+  * Počet transformací: Kolik transformačních kroků se provádí ve vašem toku
+  
+![Sledování toku dat](media/data-flow/monitornew.png "Monitorování toku dat Nové")  
+  
+## <a name="monitor-icons"></a>Ikony monitoru
+
+Tato ikona znamená, že data transformace byla již uložena v mezipaměti v clusteru, takže časování a cesta spuštění vzali v úvahu:
+
+![Sledování toku dat](media/data-flow/mon004.png "Sledování toku dat")
+
+V transformaci uvidíte také ikony zeleného kruhu. Představují počet počtu jímky, které data proudí do.

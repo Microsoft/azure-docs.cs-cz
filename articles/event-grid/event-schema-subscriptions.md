@@ -1,6 +1,6 @@
 ---
-title: Schéma událostí předplatného Azure Event Grid
-description: Popisuje vlastnosti, které jsou k dispozici pro odběr událostí pomocí služby Azure Event Grid
+title: Schéma události předplatného služby Azure Event Grid
+description: Popisuje vlastnosti, které jsou k dispozici pro události předplatného s Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,47 +8,47 @@ ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561672"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Schéma událostí Azure Event Grid pro předplatná
 
-Tento článek obsahuje vlastnosti a schéma pro události předplatného Azure. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma pro události předplatného Azure.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
 
-Skupiny prostředků a předplatná Azure generování stejné typy událostí. Typy událostí se vztahují na změny zdrojů nebo akce. Hlavní rozdíl je, že skupiny prostředků vysílat události pro prostředky v rámci skupiny prostředků a předplatných Azure vysílat události pro prostředky v rámci předplatného.
+Předplatná Azure a skupiny prostředků vyzařují stejné typy událostí. Typy událostí se vztahují ke změnám nebo akcím zdrojů. Hlavní rozdíl je, že skupiny prostředků vyzařují události pro prostředky v rámci skupiny prostředků a předplatná Azure vyzařují události pro prostředky v rámci předplatného.
 
-Zdroj události jsou vytvořeny pro metodu POST PUT, PATCH, operací a odstranění, které se pošlou `management.azure.com`. ZÍSKAT operace nevytvářet události. Operace odeslání k rovině dat (třeba `myaccount.blob.core.windows.net`) nevytvářet události. Akce události poskytují data události pro operace, jako je výpis klíčů pro prostředek.
+Události prostředků jsou vytvářeny pro operace PUT, PATCH, `management.azure.com`POST a DELETE, které jsou odesílány do aplikace . Operace GET nevytvářejí události. Operace odeslané do roviny dat (například) `myaccount.blob.core.windows.net`nevytvářejí události. Události akce poskytují data událostí pro operace, jako je výpis klíčů pro prostředek.
 
-Při vytvoření odběru událostí předplatného Azure, váš koncový bod přijímá všechny události pro toto předplatné. Události můžou zahrnovat události, kterou chcete zobrazit, jako je například aktualizaci virtuálního počítače, ale také událostí, které nejsou možná pro vás důležitá, jako je například zápis nová položka v historii nasazení. Můžete zobrazit všechny události na váš koncový bod a napsat kód, který zpracovává události, kterou chcete zpracovat. Nebo můžete nastavit filtr při vytváření odběru událostí.
+Když se přihlásíte k odběru událostí pro předplatné Azure, váš koncový bod obdrží všechny události pro toto předplatné. Události mohou zahrnovat událost, kterou chcete zobrazit, jako je například aktualizace virtuálního počítače, ale také události, které pro vás možná nejsou důležité, jako je například zápis nové položky v historii nasazení. Můžete přijímat všechny události v koncovém bodě a napsat kód, který zpracovává události, které chcete zpracovat. Nebo můžete nastavit filtr při vytváření předplatného události.
 
-Programově zpracování událostí, můžete seřadit události pohledem `operationName` hodnotu. Například může váš koncový bod události pouze zpracovávat události pro operace, které se rovnají `Microsoft.Compute/virtualMachines/write` nebo `Microsoft.Storage/storageAccounts/write`.
+Chcete-li programově zpracovávat události, můžete `operationName` události seřadit podle hodnoty. Koncový bod události může například zpracovávat `Microsoft.Compute/virtualMachines/write` události pouze `Microsoft.Storage/storageAccounts/write`pro operace, které jsou stejné nebo .
 
-Předmět události je ID prostředku prostředků, které je cílem operaci. Chcete-li filtrovat události pro prostředek, zadejte tento prostředek ID při vytvoření odběru událostí. Chcete-li filtrovat podle typu prostředku, použijte hodnotu v následujícím formátu: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+Předmět události je ID prostředku, který je cílem operace. Chcete-li filtrovat události pro prostředek, zadejte toto ID prostředku při vytváření předplatného události. Chcete-li filtrovat podle typu prostředku, použijte hodnotu v následujícím formátu:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-Seznam ukázkových skriptů a kurzy, naleznete v tématu [zdroj událostí předplatného Azure](event-sources.md#azure-subscriptions).
+Seznam ukázkových skriptů a kurzů najdete v tématu [Zdroj událostí předplatného Azure](event-sources.md#azure-subscriptions).
 
-## <a name="available-event-types"></a>Typy událostí k dispozici
+## <a name="available-event-types"></a>Dostupné typy událostí
 
-Předplatná Azure vysílat události management z Azure Resource Manageru, například při vytvoření virtuálního počítače nebo účet úložiště je odstraněný.
+Předplatná Azure vyzařují události správy ze Správce prostředků Azure, například když se vytvoří virtuální počítač nebo se odstraní účet úložiště.
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceActionCancel | Vyvoláno, když se zruší akci u prostředku. |
-| Microsoft.Resources.ResourceActionFailure | Vyvoláno, když se akce u prostředku se nezdaří. |
-| Microsoft.Resources.ResourceActionSuccess | Vyvoláno, když se akce u prostředku proběhne úspěšně. |
-| Microsoft.Resources.ResourceDeleteCancel | Vyvolá se, když odstranit operace se zrušila. Tato událost se stane, když se zruší nasazení šablony. |
-| Microsoft.Resources.ResourceDeleteFailure | Vyvolá se, když se odstranění nezdaří operace. |
-| Microsoft.Resources.ResourceDeleteSuccess | Vyvolá se, když operace odstranění úspěšná. |
-| Microsoft.Resources.ResourceWriteCancel | Vyvolá se, když vytvoření nebo aktualizace operace se zrušila. |
-| Microsoft.Resources.ResourceWriteFailure | Vyvolá se, když vytvořit nebo aktualizovat operace se nezdaří. |
-| Microsoft.Resources.ResourceWriteSuccess | Vyvolá se, když vytvoření nebo aktualizace operace úspěšná. |
+| Microsoft.Resources.ResourceActionCancel | Vyvolána při zrušení akce na prostředku. |
+| Microsoft.Resources.ResourceActionFailure | Je aktivována, když se akce na prostředek nezdaří. |
+| Microsoft.Resources.ResourceActionSuccess | Vyvolána, když je akce na prostředek úspěšná. |
+| Microsoft.Resources.ResourcesDeleteCancel | Je aktivována při odstranění operace je zrušena. K této události dojde, když je nasazení šablony zrušeno. |
+| Microsoft.Resources.ResourcesDeleteSelhání | Je aktivována při odstranění operace se nezdaří. |
+| Microsoft.Resources.ResourcesDeleteÚspěch | Je aktivována při úspěšném odstranění operace. |
+| Microsoft.Resources.ResourceWriteCancel | Je aktivována při zrušení operace vytvoření nebo aktualizace. |
+| Microsoft.Resources.ResourceWriteFailure | Je aktivována při vytvoření nebo aktualizaci operace se nezdaří. |
+| Microsoft.Resources.ResourceWriteSuccess | Je aktivována při úspěšném vytvoření nebo aktualizaci operace. |
 
 ## <a name="example-event"></a>Příklad události
 
-Následující příklad ukazuje schématu **ResourceWriteSuccess** událostí. Se používá stejné schéma pro **ResourceWriteFailure** a **ResourceWriteCancel** události s různými hodnotami parametru `eventType`.
+Následující příklad ukazuje schéma události **ResourceWriteSuccess.** Stejné schéma se používá pro **události ResourceWriteFailure** a **ResourceWriteCancel** s různými hodnotami pro `eventType`.
 
 ```json
 [{
@@ -108,7 +108,7 @@ Následující příklad ukazuje schématu **ResourceWriteSuccess** událostí. 
 }]
 ```
 
-Následující příklad ukazuje schématu **ResourceDeleteSuccess** událostí. Se používá stejné schéma pro **ResourceDeleteFailure** a **ResourceDeleteCancel** události s různými hodnotami parametru `eventType`.
+Následující příklad ukazuje schéma události **ResourceDeleteSuccess.** Stejné schéma se používá pro **události ResourceDeleteFailure** a **ResourceDeleteCancel** s různými hodnotami pro `eventType`.
 
 ```json
 [{
@@ -174,7 +174,7 @@ Následující příklad ukazuje schématu **ResourceDeleteSuccess** událostí.
 }]
 ```
 
-Následující příklad ukazuje schématu **ResourceActionSuccess** událostí. Se používá stejné schéma pro **ResourceActionFailure** a **ResourceActionCancel** události s různými hodnotami parametru `eventType`.
+Následující příklad ukazuje schéma události **ResourceActionSuccess.** Stejné schéma se používá pro **události ResourceActionFailure** a **ResourceActionCancel** s různými hodnotami pro `eventType`.
 
 ```json
 [{   
@@ -232,35 +232,35 @@ Následující příklad ukazuje schématu **ResourceActionSuccess** událostí.
 
 ## <a name="event-properties"></a>Vlastnosti události
 
-Událost má následující dat nejvyšší úrovně:
+Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| subject | string | Vydavatel definované cesta předmět události. |
-| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
-| id | string | Jedinečný identifikátor pro událost. |
-| data | object | Data události předplatného. |
-| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| téma | řetězec | Úplná cesta k prostředku ke zdroji události. Toto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| Předmět | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| Eventtype | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy je událost generována na základě času UTC zprostředkovatele. |
+| id | řetězec | Jedinečný identifikátor události |
+| data | objekt | Data událostí předplatného. |
+| dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
+| metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| authorization | object | Požadovaná oprávnění pro operaci. |
-| claims | object | Vlastnosti deklarace identity. Další informace najdete v tématu [JWT specifikace](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
-| correlationId | string | ID operace odstraňování potíží. |
-| httpRequest | object | Podrobnosti o operaci. Tento objekt je pouze zahrnuty při aktualizaci stávajícího prostředku nebo odstranění prostředku. |
-| resourceProvider | string | Poskytovatel prostředků pro operaci. |
-| resourceUri | string | Identifikátor URI prostředku v operaci. |
-| operationName | string | Operace, která byla provedena. |
-| status | string | Stav operace. |
-| subscriptionId | string | ID předplatného prostředku. |
-| tenantId | string | ID tenanta prostředku. |
+| autorizace | objekt | Požadované povolení pro operaci. |
+| Nároky | objekt | Vlastnosti deklarací. Další informace naleznete v [tématu Specifikace JWT](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| correlationId | řetězec | ID operace pro řešení potíží. |
+| httpRequest | objekt | Podrobnosti o operaci. Tento objekt je zahrnut pouze při aktualizaci existujícího prostředku nebo odstranění prostředku. |
+| resourceProvider | řetězec | Zprostředkovatel prostředků pro operaci. |
+| resourceUri | řetězec | Identifikátor URI prostředku v operaci. |
+| operationName | řetězec | Operace, která byla provedena. |
+| status | řetězec | Stav operace. |
+| subscriptionId | řetězec | ID předplatného prostředku. |
+| tenantId | řetězec | ID klienta prostředku. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Úvod do služby Azure Event Grid najdete v tématu [novinky služby Event Grid?](overview.md).
-* Další informace o vytváření předplatného služby Azure Event Grid najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Úvod do Služby Azure Event Grid najdete v tématu [Co je event grid?](overview.md).
+* Další informace o vytvoření předplatného Služby Azure Event Grid najdete v [tématu schéma předplatného služby Event Grid](subscription-creation-schema.md).

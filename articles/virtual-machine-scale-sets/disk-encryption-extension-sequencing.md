@@ -1,34 +1,34 @@
 ---
-title: Sekvence rozšíření pro Azure Disk Encryption a Azure Virtual Machine Scale Sets
-description: Tento článek obsahuje pokyny týkající se povolení Microsoft Azure Disk Encryption pro virtuální počítače IaaS s Linuxem.
+title: Azure Disk Encryption a škálování virtuálních počítačů Azure sestavuje sekvenování rozšíření
+description: Tento článek obsahuje pokyny k povolení microsoft azure diskšifrování pro linuxové virtuální počítače IaaS.
 author: msmbaldwin
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.openlocfilehash: aa638b86b0788b8c274f9dcb3c04c1fc385b4ae1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76279030"
 ---
-# <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Použití Azure Disk Encryption s pořadím rozšíření pro škálování sady virtuálních počítačů
+# <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Použití Azure Disk Encryption s řazením rozšíření škálovací sady virtuálních počítačů
 
-Rozšíření, jako je Azure Disk Encryption, se dají přidat do sady škálování virtuálních počítačů Azure v zadaném pořadí. Provedete to tak, že použijete [sekvencování rozšíření](virtual-machine-scale-sets-extension-sequencing.md). 
+Rozšíření, jako je šifrování disku Azure lze přidat do škálování virtuálních počítačů Azure v zadaném pořadí. Chcete-li tak učinit, použijte [sekvencování rozšíření](virtual-machine-scale-sets-extension-sequencing.md). 
 
-Obecně platí, že by se mělo použít šifrování na disk:
+Obecně platí, že šifrování by mělo být použito na disku:
 
-- Po rozšíření nebo vlastních skriptech, které připravují disky nebo svazky.
-- Než rozšíření nebo vlastní skripty, které přistupují k datům na šifrovaných discích nebo svazcích, nebo je z nich spotřebují.
+- Po rozšíření nebo vlastní skripty, které připravují disky nebo svazky.
+- Před rozšířeními nebo vlastními skripty, které přistupují k datům na šifrovaných discích nebo svazcích nebo je spotřebovávají.
 
-V obou případech vlastnost `provisionAfterExtensions` určuje, které rozšíření by mělo být přidáno později v sekvenci.
+V obou případech `provisionAfterExtensions` vlastnost určuje, které rozšíření by měly být přidány později v pořadí.
 
 ## <a name="sample-azure-templates"></a>Ukázkové šablony Azure
 
-Pokud chcete po jiné příponě použít Azure Disk Encryption, vložte vlastnost `provisionAfterExtensions` do bloku rozšíření AzureDiskEncryption. 
+Pokud chcete, aby se po jiném rozšíření `provisionAfterExtensions` použilo azure diskové šifrování, vložte vlastnost do rozšíření AzureDiskEncryption. 
 
-Tady je příklad pomocí "CustomScriptExtension", skriptu prostředí PowerShell, který inicializuje a formátuje disk s Windows a následovaný "AzureDiskEncryption":
+Zde je příklad pomocí "CustomScriptExtension", skriptu Powershellu, který inicializuje a formátuje disk systému Windows, následovaný "AzureDiskEncryption":
 
 ```json
 "virtualMachineProfile": {
@@ -84,9 +84,9 @@ Tady je příklad pomocí "CustomScriptExtension", skriptu prostředí PowerShel
 }
 ```
 
-Pokud chcete použít Azure Disk Encryption před jinou příponou, vložte vlastnost `provisionAfterExtensions` do bloku, aby následovala.
+Pokud chcete, aby bylo šifrování disku Azure `provisionAfterExtensions` použito před jiným rozšířením, vložte vlastnost do bloku rozšíření, který chcete sledovat.
 
-Tady je příklad s použitím "AzureDiskEncryption" následovaného "VMDiagnosticsSettings", rozšíření, které poskytuje možnosti monitorování a diagnostiky na virtuálním počítači Azure se systémem Windows:
+Tady je příklad s použitím "AzureDiskEncryption" následovaný "VMDiagnosticsSettings", rozšíření, které poskytuje možnosti monitorování a diagnostiky na virtuálním počítači Azure založené na Windows:
 
 
 ```json
@@ -151,14 +151,14 @@ Tady je příklad s použitím "AzureDiskEncryption" následovaného "VMDiagnost
 }
 ```
 
-Podrobnější šablonu najdete v těchto tématech:
-* Použít rozšíření Azure Disk Encryption po vlastním skriptu prostředí, který formátuje disk (Linux): [Deploy-extseq-Linux-ADE-After-CustomScript. JSON](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
+Podrobnější šablonu naleznete v tématu:
+* Použití rozšíření Azure Disk Encryption po vlastním skriptu prostředí, který disk formátuje (Linux): [deploy-extseq-linux-ADE-after-customscript.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o sekvencování rozšíření: [zřizování rozšíření sekvence ve službě Virtual Machine Scale Sets](virtual-machine-scale-sets-extension-sequencing.md).
-- Přečtěte si další informace o vlastnosti `provisionAfterExtensions`: Referenční dokumentace k [šabloně Microsoft. COMPUTE virtualMachineScaleSets/Extensions](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
-- [Azure Disk Encryption pro Virtual Machine Scale Sets](disk-encryption-overview.md)
-- [Šifrování sady škálování virtuálních počítačů pomocí Azure CLI](disk-encryption-cli.md)
-- [Šifrování virtuálních počítačů pomocí Azure PowerShell](disk-encryption-powershell.md)
-- [Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption](disk-encryption-key-vault.md)
+- Další informace o sekvenování rozšíření: [Zřizování rozšíření sekvence ve škálovacích sadách virtuálních strojů](virtual-machine-scale-sets-extension-sequencing.md).
+- Další informace `provisionAfterExtensions` o vlastnosti: [Microsoft.Compute virtualMachineScaleSets/extensions odkaz na šablonu](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
+- [Šifrování disku Azure pro škálovací sady virtuálních počítačů](disk-encryption-overview.md)
+- [Šifrování škálovacích sad virtuálních strojů pomocí příkazového příkazového příkazu Azure](disk-encryption-cli.md)
+- [Šifrování škálovacích sad virtuálních strojů pomocí Azure PowerShellu](disk-encryption-powershell.md)
+- [Vytvoření a konfigurace trezoru klíčů pro šifrování disku Azure](disk-encryption-key-vault.md)

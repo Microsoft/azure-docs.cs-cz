@@ -1,7 +1,7 @@
 ---
-title: Nástroje pro sledování výkonu pro Linux
+title: Nástroje pro výkon Linuxu
 titleSuffix: Azure Kubernetes Service
-description: Přečtěte si, jak řešit problémy a řešit běžné problémy při používání služby Azure Kubernetes Service (AKS).
+description: Zjistěte, jak řešit a řešit běžné problémy při používání služby Azure Kubernetes Service (AKS).
 services: container-service
 author: alexeldeib
 ms.service: container-service
@@ -9,60 +9,60 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
 ms.openlocfilehash: eb6b126b4d1794adf0380432040190b91a17a675
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77925602"
 ---
-# <a name="linux-performance-troubleshooting"></a>Řešení potíží s výkonem pro Linux
+# <a name="linux-performance-troubleshooting"></a>Řešení potíží s výkonem Linuxu
 
-Vyčerpání prostředků na počítačích se systémem Linux je běžný problém a může se vydávat za nejrůznějších symptomů. Tento dokument poskytuje podrobný přehled dostupných nástrojů, které vám pomůžou diagnostikovat tyto problémy.
+Vyčerpání prostředků na počítačích s Linuxem je běžný problém a může projevit prostřednictvím široké škály příznaků. Tento dokument poskytuje přehled na vysoké úrovni o nástrojích, které jsou k dispozici pro diagnostiku těchto problémů.
 
-Mnohé z těchto nástrojů přijímají interval, ve kterém se má vydávat výstup za provozu. Tento výstupní formát obvykle usnadňuje vzory hledání. V případě přijetí bude příklad vyvolání zahrnovat `[interval]`.
+Mnoho z těchto nástrojů přijmout interval, na kterém chcete vyrábět klouzavý výstup. Tento výstupní formát obvykle usnadňuje zjišnit vzorky. Pokud je přijat, bude `[interval]`příklad vyvolání zahrnovat .
 
-Mnohé z těchto nástrojů mají rozsáhlou historii a širokou škálu možností konfigurace. Tato stránka poskytuje pouze jednoduchou podmnožinu vyvolání pro zdůraznění běžných problémů. Kanonický zdroj informací je vždy referenční dokumentaci pro každý konkrétní nástroj. Tato dokumentace bude mnohem důkladnější, než je zde uvedeno.
+Mnoho z těchto nástrojů má rozsáhlou historii a širokou sadu možností konfigurace. Tato stránka obsahuje pouze jednoduchou podmnožinu vyvolání, která zvýrazňuje běžné problémy. Kanonickým zdrojem informací je vždy referenční dokumentace pro každý konkrétní nástroj. Tato dokumentace bude mnohem důkladnější, než to, co je zde k dispozici.
 
 ## <a name="guidance"></a>Doprovodné materiály
 
-Při zkoumání problémů s výkonem byste měli systematicky postupovat. POUŽÍVAJÍ se dva běžné přístupy (využití, sytost, chyby) a červená (rychlost, chyby, doba trvání). ČERVENÁ se obvykle používá v kontextu služeb pro monitorování na základě požadavků. POUŽITÍ se obvykle používá pro monitorování prostředků: pro každý prostředek v počítači, využití monitorování, sytost a chyby. Mezi čtyři hlavní druhy prostředků na jakémkoli počítači patří procesor, paměť, disk a síť. Vysoké využití, sytost nebo chybové sazby pro některý z těchto prostředků označují možný problém se systémem. Pokud problém existuje, prozkoumejte hlavní příčinu: Proč je vysoká latence v/v disku? Jsou disky nebo SKU virtuálního počítače omezené? Které procesy zapisují do zařízení a do jakých souborů?
+Buďte systematický ve svém přístupu k vyšetřování problémů s výkonem. Dva běžné přístupy jsou USE (využití, sytost, chyby) a RED (rychlost, chyby, doba trvání). RED se obvykle používá v kontextu služeb pro monitorování založené na požadavcích. POUŽITÍ se obvykle používá pro monitorování prostředků: pro každý prostředek v počítači, využití monitoru, sytost a chyby. Čtyři hlavní druhy prostředků v libovolném počítači jsou procesor, paměť, disk a síť. Vysoké využití, sytost nebo chybovost pro některý z těchto zdrojů označuje možný problém se systémem. Pokud problém existuje, prozkoumejte hlavní příčinu: proč je latence vi. Jsou disky nebo virtuální počítač sku omezen? Jaké procesy jsou zápis do zařízení, a na jaké soubory?
 
-Některé příklady běžných problémů a indikátorů pro jejich diagnostiku:
-- Omezování IOPS: k měření IOPS za zařízení použít iostat. Zajistěte, aby žádný jednotlivý disk nebyl nad rámec limitu, a součet pro všechny disky je menší než limit pro virtuální počítač.
-- Omezení šířky pásma: použijte iostat jako pro IOPS, ale měření propustnosti čtení a zápisu. Zajistěte, aby obě zařízení i agregovaná propustnost byly pod limity šířky pásma.
-- Vyčerpání SNAT: Tato možnost může v administrativních oblastech v případě vysokého aktivního (odchozího) připojení. 
-- Ztráta paketů: dá se měřit proxy serverem prostřednictvím počtu opakovaných přenosů TCP vzhledem k počtu odeslaných nebo přijatých položek. Tyto informace mohou zobrazit jak `sar`, tak `netstat`.
+Některé příklady běžných problémů a ukazatelů pro jejich diagnostiku:
+- Omezení IOPS: použijte iostat k měření viopů pro zařízení. Ujistěte se, že žádný jednotlivý disk není nad jeho limit a součet pro všechny disky je menší než limit pro virtuální počítač.
+- Omezení šířky pásma: použijte iostat jako pro IOPS, ale měření propustnost pro čtení a zápisu. Ujistěte se, že propustnost pro jedno zařízení i agregátjsou pod limity šířky pásma.
+- Vyčerpání SNAT: to se může projevit jako vysoká aktivní (odchozí) připojení v SAR. 
+- Ztráta paketů: to lze měřit prostřednictvím proxy serveru prostřednictvím počtu opakovaného přenosu TCP vzhledem k počtu odeslaných/přijatých. Oba `sar` `netstat` a může zobrazit tyto informace.
 
 ## <a name="general"></a>Obecné
 
-Tyto nástroje jsou pro obecné účely a zahrnují základní systémové informace. Jsou dobrým výchozím bodem pro další šetření.
+Tyto nástroje jsou univerzální a zahrnují základní systémové informace. Jsou dobrým výchozím bodem pro další vyšetřování.
 
-### <a name="uptime"></a>Doba provozu
+### <a name="uptime"></a>Uptime
 
 ```
 $ uptime
  19:32:33 up 17 days, 12:36,  0 users,  load average: 0.21, 0.77, 0.69
 ```
 
-Doba provozu zajišťuje dobu provozu systému a 1, 5 a 15 minutový průměr zatížení. Tyto průměry zatížení zhruba odpovídají vláknům, které provádějí práci nebo čekají na dokončení nepřerušitelného práce. V absolutních těchto číslech může být obtížné je interpretovat, ale měří se v čase, kdy nám mohou sdělit užitečné informace:
+doba je v posuzovací choda a průměry zatížení 1, 5 a 15 minut. Tyto průměry zatížení zhruba odpovídají vláknům, která pracují nebo čekají na dokončení nepřerušitelné práce. V absolutních číslech mohou být tato čísla obtížně interpretovatelná, ale měřená v průběhu času nám mohou sdělit užitečné informace:
 
-- Průměrná hodnota 1 minuty >a 5 minut – průměr znamená, že se zátěž zvyšuje.
-- Průměrná hodnota 1 minuty <a 5 minut průměrně znamená zatížení klesá.
+- 1-minutový průměr > 5-minutové průměrné znamená, že zatížení se zvyšuje.
+- 1-minutový průměr < 5-minutové průměrné znamená, že zatížení klesá.
 
-Doba provozu také může zjistit, proč nejsou k dispozici informace: problém byl pravděpodobně vyřešen vlastním nebo restartováním, než uživatel bude moci získat přístup k počítači.
+doba provozu může také osvětlit, proč nejsou informace k dispozici: problém mohl vyřešit samostatně nebo restartováním, než mohl uživatel přistupovat k počítači.
 
-Průměrné zatížení, které je vyšší než počet dostupných vláken procesoru, může signalizovat problémy s výkonem u dané úlohy.
+Průměry zatížení vyšší než počet vláken procesoru k dispozici může znamenat problém s výkonem s danou úlohou.
 
-### <a name="dmesg"></a>dmesg
+### <a name="dmesg"></a>Dmesg
 
 ```
 $ dmesg | tail 
 $ dmesg --level=err | tail
 ```
 
-dmesg vypíše vyrovnávací paměť jádra. Události jako OOMKill přidávají položku do vyrovnávací paměti jádra. Hledání OOMKill nebo jiných zpráv o vyčerpání prostředků v protokolech dmesg je silným indikátorem problému.
+dmesg vypíše vyrovnávací paměť jádra. Události jako OOMKill přidávají položku do vyrovnávací paměti jádra. Nalezení OOMKill nebo jiné zprávy vyčerpání prostředků v dmesg protokoly je silným ukazatelem problému.
 
-### <a name="top"></a>Vrchol
+### <a name="top"></a>top
 
 ```
 $ top
@@ -78,17 +78,17 @@ KiB Swap:        0 total,        0 free,        0 used. 62739060 avail Mem
      ...
 ```
 
-`top` poskytuje komplexní přehled o aktuálním stavu systému. Hlavičky obsahují několik užitečných agregačních informací:
+`top`poskytuje široký přehled o aktuálním stavu systému. Záhlaví poskytují některé užitečné souhrnné informace:
 
-- stav úloh: spuštěno, v režimu spánku, zastaveno.
-- Využití procesoru, v tomto případě se většinou zobrazuje doba nečinnosti.
-- Celková, volná a využitá systémová paměť.
+- stav úkolů: běh, spánek, zastaveno.
+- Využití procesoru, v tomto případě většinou ukazuje dobu nečinnosti.
+- celková, bezplatná a použitá systémová paměť.
 
-`top` mohou chybět krátkodobé procesy; alternativy, jako je `htop` a `atop`, poskytují podobná rozhraní při odstraňování některých těchto nedostatků.
+`top`mohou chybět krátkodobé procesy; alternativy, `htop` `atop` jako je a poskytují podobná rozhraní při stanovení některých z těchto nedostatků.
 
 ## <a name="cpu"></a>Procesor
 
-Tyto nástroje poskytují informace o využití procesoru. To je užitečné hlavně při zavedení výstupu, kde se vzory snadno zahodí.
+Tyto nástroje poskytují informace o využití procesoru. To je užitečné zejména při válcování výstupu, kde se vzory snadno na místě.
 
 ### <a name="mpstat"></a>mpstat
 
@@ -108,7 +108,7 @@ Linux 4.15.0-1064-azure (aks-main-10212767-vmss000001)  02/10/20        _x86_64_
 19:49:04       7    1.98    0.00    0.99    0.00    0.00    0.00    0.00    0.00    0.00   97.03
 ```
 
-`mpstat` vypíše podobné informace o procesoru nahoře, ale je rozdělené podle vlákna procesoru. Zobrazení všech jader najednou může být užitečné pro detekci vysoce vyrovnaných využití CPU, například když jediná aplikace s vláknem používá jedno jádro při 100% využití. Tento problém může být obtížnější, pokud je agregovaný pro všechny procesory v systému.
+`mpstat`vytiskne podobné informace o procesoru nazačátek, ale člení podle vlákna PROCESORU. Zobrazení všech jader najednou může být užitečné pro detekci vysoce nevyváženévyužití procesoru, například když jedno vláknové aplikace používá jedno jádro při 100% využití. Tento problém může být obtížnější na místě při agregaci přes všechny procesory v systému.
 
 ### <a name="vmstat"></a>vmstat
 
@@ -119,13 +119,13 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  2  0      0 43300372 545716 19691456    0    0     3    50    3    3  2  1 95  1  0
 ```
 
-`vmstat` poskytuje podobné informace `mpstat` a `top`, výčet počtu procesů čekajících na procesor (sloupec r), statistiku paměti a procento času procesoru stráveného v jednotlivých pracovních stavech.
+`vmstat`poskytuje podobné `mpstat` `top`informace a , výčet počet procesů čekání na CPU (r sloupec), statistiky paměti a procento času procesoru stráveného v každém stavu práce.
 
 ## <a name="memory"></a>Memory (Paměť)
 
-Paměť je velice důležitá a naštěstí snadné, což je prostředek ke sledování. Některé nástroje mohou hlásit procesor i paměť, například `vmstat`. Ale nástroje jako `free` mohou být stále užitečné pro rychlé ladění.
+Paměť je velmi důležité, a naštěstí snadné, zdroj sledovat. Některé nástroje mohou hlásit procesor `vmstat`i paměť, například . Ale nástroje, jako `free` je může být stále užitečné pro rychlé ladění.
 
-### <a name="free"></a>zdarma
+### <a name="free"></a>free
 
 ```
 $ free -m
@@ -134,11 +134,11 @@ Mem:          64403        2338       42485           1       19579       61223
 Swap:             0           0           0
 ```
 
-`free` prezentuje základní informace o celkové paměti a využité paměti a volnou paměť. `vmstat` může být užitečnější i pro základní analýzu paměti z důvodu jeho schopnosti poskytnout výstup do provozu.
+`free`obsahuje základní informace o celkové paměti, stejně jako o použité a volné paměti. `vmstat`může být užitečnější i pro základní analýzu paměti díky své schopnosti poskytovat postupný výstup.
 
 ## <a name="disk"></a>Disk
 
-Tyto nástroje měří počet vstupně-výstupních operací disku, čekacích front a celkové propustnosti. 
+Tyto nástroje měří vipony na disku, čekací fronty a celkovou propustnost. 
 
 ### <a name="iostat"></a>iostat
 
@@ -157,31 +157,31 @@ sda               0.00    56.00    0.00   65.00     0.00   504.00    15.51     0
 scd0              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
 ```
 
-`iostat` poskytuje podrobné přehledy o využití disku. Toto vyvolání předává `-x` pro rozšířené statistiky, `-y` pro přeskočení počátečního výstupního tiskového tisku průměrných hodnot od spuštění a `1 1`, aby bylo možné určit, že chceme zadat interval 1 sekund, který končí po jednom bloku výstupu. 
+`iostat`poskytuje podrobné informace o využití disku. Toto vyvolání prochází `-x` `-y` pro rozšířené statistiky, přeskočit počáteční průměry výstupního tiskového systému od spuštění a `1 1` určit, že chceme interval 1 sekundy, končící po jednom bloku výstupu. 
 
-`iostat` zveřejňuje mnoho užitečných statistik:
+`iostat`vystavuje mnoho užitečných statistik:
 
-- `r/s` a `w/s` jsou čtení za sekundu a zápisy za sekundu. Součet těchto hodnot je IOPS.
-- `rkB/s` a `wkB/s` jsou za sekundu čteny a zapisovány kilobajty. Součet těchto hodnot je propustnost.
-- `await` je průměrná doba iowait v milisekundách pro požadavky zařazené do fronty.
-- `avgqu-sz` je průměrná velikost fronty v zadaném intervalu.
+- `r/s`a `w/s` jsou čte za sekundu a zápisy za sekundu. Součet těchto hodnot je VOPS.
+- `rkB/s`a `wkB/s` jsou kilobajty číst/zapisovat za sekundu. Součet těchto hodnot je propustnost.
+- `await`je průměrná iowait čas v milisekundách pro požadavky ve frontě.
+- `avgqu-sz`je průměrná velikost fronty za daný interval.
 
 Na virtuálním počítači Azure:
 
-- součet `r/s` a `w/s` pro jednotlivá bloková zařízení nesmí překročit limity SKU tohoto disku.
-- součet `rkB/s` a `wkB/s` pro jednotlivá bloková zařízení nesmí překročit limity SKU tohoto disku.
-- součet `r/s` a `w/s` pro všechna bloková zařízení nesmí překročit limity pro SKU virtuálního počítače.
-- součet `rkB/s` a wkB/s pro všechna blokovaná zařízení nesmí překročit limity pro SKU virtuálního počítače.
+- součet `r/s` a `w/s` pro jednotlivé blokové zařízení nesmí překročit limity skladové položky tohoto disku.
+- součet `rkB/s` jednotlivých blokových zařízení a `wkB/s` pro jednotlivá bloková zařízení nesmí překročit limity skladové položky tohoto disku
+- součet `r/s` a `w/s` pro všechna bloková zařízení nesmí překročit limity pro skladovou položku virtuálního zařízení.
+- součet `rkB/s` a 'wkB/s pro všechna bloková zařízení nesmí překročit limity pro skladovou jednotku virtuálního zařízení.
 
-Počítejte s tím, že disk s operačním systémem se počítá jako spravovaný disk nejnižší SKU odpovídající jeho kapacitě. Například disk s operačním systémem 1024GB odpovídá disku P30. Dočasné disky s operačním systémem a dočasné disky nemají omezení jednotlivých disků. jsou omezené jenom na omezení celého virtuálního počítače.
+Všimněte si, že disk operačního systému se počítá jako spravovaný disk nejmenší skladové položky odpovídající jeho kapacitě. Například 1024GB OS Disk odpovídá disku P30. Dočasné disky operačního systému a dočasné disky nemají individuální disková omezení. jsou omezeny pouze úplnými limity virtuálních mís.
 
-Nenulové hodnoty operátoru await nebo avgqu-SZ jsou také dobrým indikátorem kolizí v/v.
+Nenulové hodnoty await nebo avgqu-sz jsou také dobrými ukazateli tvrzení iO.
 
-## <a name="network"></a>Síť
+## <a name="network"></a>Network (Síť)
 
-Tyto nástroje měří statistiku sítě, jako je propustnost, selhání přenosu a využití. Hlubší analýza může vystavovat jemně odstupňované statistiky TCP týkající se zahlcení a vyřazených paketů.
+Tyto nástroje měří síťové statistiky, jako je propustnost, selhání přenosu a využití. Hlubší analýza může vystavit jemně odstupňované statistiky TCP o přetížení a vyřazených paketech.
 
-### <a name="sar"></a>Hongkong
+### <a name="sar"></a>Sar
 
 ```
 $ sar -n DEV [interval]
@@ -199,10 +199,10 @@ $ sar -n DEV [interval]
 22:36:58    azvdbf16b0b2fc      9.00     19.00      3.36      1.18      0.00      0.00      0.00      0.00
 ```
 
-`sar` je výkonný nástroj pro rozsáhlou škálu analýz. I když tento příklad používá svoji možnost měření statistiky sítě, je stejně efektivní pro měření spotřeby procesoru a paměti. Tento příklad vyvolá `sar` s příznakem `-n` k zadání klíčového slova `DEV` (síťové zařízení), které zobrazuje propustnost sítě podle zařízení.
+`sar`je mocnýnástroj pro širokou škálu analýz. Zatímco tento příklad používá svou schopnost měřit síťové statistiky, je stejně výkonný pro měření spotřeby procesoru a paměti. Tento příklad `sar` vyvolá `-n` s příznakem `DEV` určit (síťové zařízení) klíčové slovo, zobrazení propustnost sítě podle zařízení.
 
-- Součet `rxKb/s` a `txKb/s` je celková propustnost pro dané zařízení. Pokud tato hodnota překročí limit zřízené síťové karty Azure, budou mít úlohy na počítači zvýšenou latenci sítě.
-- `%ifutil` využití míry pro dané zařízení. Vzhledem k tomu, že se tato hodnota blíží 100%, budou mít úlohy zvýšenou latenci sítě.
+- Součet `rxKb/s` a `txKb/s` je celková propustnost pro dané zařízení. Když tato hodnota překročí limit pro zřízenou síťovou síťovou kinu Azure, úlohy v počítači budou mít zvýšenou latenci sítě.
+- `%ifutil`opatření pro využití daného zařízení. Vzhledem k tomu, že se tato hodnota blíží 100 %, dojde ke zvýšení latence sítě.
 
 ```
 $ sar -n TCP,ETCP [interval]
@@ -221,11 +221,11 @@ Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s
 Average:         0.00      0.00      0.00      0.00      0.00
 ```
 
-Toto vyvolání `sar` používá `TCP,ETCP` klíčová slova k prohlédnutí připojení TCP. Třetí sloupec posledního řádku, "retrans", je počet opakovaných přenosů TCP za sekundu. Vysoké hodnoty pro toto pole označují nespolehlivé síťové připojení. V prvním a třetím řádku znamená "aktivní" připojení pocházející z místního zařízení, zatímco "vzdálené" označuje příchozí připojení.  Běžný problém v Azure je vyčerpání portů SNAT, což `sar` může pomáhat detekovat. Vyčerpání portů SNAT by jako vysoké "aktivní" hodnoty znamenalo, vzhledem k tomu, že je příčinou vysoké míry odchozího, místně iniciovaná připojení TCP.
+Toto vyvolání `sar` `TCP,ETCP` používá klíčová slova ke kontrole připojení TCP. Třetí sloupec posledního řádku , "retrans", je počet tcp retransmits za sekundu. Vysoké hodnoty pro toto pole označují nespolehlivé síťové připojení. V prvním a třetím řádku "aktivní" znamená připojení pocházející z místního zařízení, zatímco "vzdálené" označuje příchozí připojení.  Běžným problémem v Azure je vyčerpání portů SNAT, které `sar` může pomoci zjistit. Vyčerpání portu SNAT by se projevilo jako vysoké "aktivní" hodnoty, protože problém je způsoben vysokou rychlostí odchozích připojení TCP iniciovaných místně.
 
-Jak `sar` přebírá určitý interval, vytiskne výstup výstupu a pak vytiskne konečné řádky výstupu, které obsahují průměrné výsledky volání.
+Jako `sar` trvá interval, vytiskne průběžný výstup a pak vytiskne konečné řádky výstupu obsahující průměrné výsledky z vyvolání.
 
-### <a name="netstat"></a>netstat
+### <a name="netstat"></a>Netstat
 
 ```
 $ netstat -s
@@ -323,4 +323,4 @@ IpExt:
     InECT0Pkts: 14
 ```
 
-`netstat` může introspect širokou škálu statistik sítě, která se tady vyvolala se souhrnným výstupem. V závislosti na problému se tady vyskytuje mnoho užitečných polí. Jedno užitečné pole v části TCP je "nezdařené pokusy o připojení". Může to znamenat vyčerpání portů SNAT nebo jiné problémy při vytváření odchozích připojení. Vysoká míra přenesených segmentů (také v části protokolu TCP) může označovat problémy se doručením paketů. 
+`netstat`může introspekt širokou škálu síťových statistik, zde vyvolána se souhrnným výstupem. Existuje mnoho užitečných polí zde v závislosti na problému. Jedno užitečné pole v části TCP je "neúspěšné pokusy o připojení". To může být údaj vyčerpání portu SNAT nebo jiné problémy dělat odchozí připojení. Vysoká míra opakovaně přenášených segmentů (také v části TCP) může znamenat problémy s doručováním paketů. 

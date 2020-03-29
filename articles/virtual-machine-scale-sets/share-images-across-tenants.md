@@ -1,6 +1,6 @@
 ---
-title: Sdílení imagí Galerie napříč klienty v Azure
-description: Naučte se sdílet image virtuálních počítačů napříč klienty Azure pomocí galerií sdílených imagí.
+title: Sdílení imitací galerie mezi tenanty v Azure
+description: Zjistěte, jak sdílet image virtuálních počítačí mezi klienty Azure pomocí sdílených galerií obrázků.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: cynthn
 ms.openlocfilehash: a29999102ad8a10d8965145b31a7d804675e0e57
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76276345"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Sdílení imagí virtuálních počítačů galerie v klientech Azure
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>Sdílení ibi virtuálních počítačů galerie napříč tenanty Azure
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../includes/virtual-machines-share-images-across-tenants.md)]
 
 
-## <a name="create-a-scale-set-using-azure-cli"></a>Vytvoření sady škálování pomocí Azure CLI
+## <a name="create-a-scale-set-using-azure-cli"></a>Vytvoření škálovací sady s použitím Azure CLI
 
-Přihlaste se k objektu služby pro tenanta 1 pomocí appID, klíče aplikace a ID tenanta 1. V případě potřeby můžete pomocí `az account show --query "tenantId"` získat ID tenanta.
+Přihlaste se k instančnímu objektu pro klienta 1 pomocí id aplikace, klíče aplikace a ID klienta 1. V případě `az account show --query "tenantId"` potřeby můžete získat ID klienta.
 
 ```azurecli-interactive
 az account clear
@@ -30,14 +30,14 @@ az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 1 ID>
 az account get-access-token 
 ```
  
-Přihlaste se k instančnímu objektu pro tenanta 2 pomocí appID, klíče aplikace a ID tenanta 2:
+Přihlaste se k instančnímu objektu pro klienta 2 pomocí id aplikace, klíče aplikace a ID klienta 2:
 
 ```azurecli-interactive
 az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 2 ID>'
 az account get-access-token
 ```
 
-Vytvořte sadu škálování. Informace v příkladu nahraďte vlastními.
+Vytvořte škálovací sadu. Nahraďte informace v příkladu vlastními.
 
 ```azurecli-interactive
 az vmss create \
@@ -50,4 +50,4 @@ az vmss create \
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud narazíte na nějaké problémy, můžete [řešit problémy s galerií sdílených imagí](troubleshooting-shared-images.md).
+Pokud narazíte na nějaké problémy, můžete [řešit sdílené galerie obrázků](troubleshooting-shared-images.md).

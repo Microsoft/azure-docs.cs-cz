@@ -1,50 +1,50 @@
 ---
-title: Porovnávání vzorů a speciálních znaků
+title: Sladění vzorů a speciálních znaků
 titleSuffix: Azure Cognitive Search
-description: Použijte zástupné znaky a dotazy předpony, které se budou shodovat s celými nebo částečnými výrazy v žádosti o dotaz na Azure Kognitivní hledání Vzorce, které obsahují speciální znaky, lze přeložit pomocí úplné syntaxe dotazů a vlastních analyzátorů.
+description: Pomocí dotazů se zástupnými kódy a předčíslími se shodují na celé nebo částečné termíny v žádosti o dotaz Azure Cognitive Search. Těžko shodovat vzory, které obsahují speciální znaky lze vyřešit pomocí syntaxe úplného dotazu a vlastní analyzátory.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: ec1422d03cce78bdd8206f6687a78b63ddf989dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f78ba5b351a3da46d7b8b3780cf00772c4f3b2ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989615"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289307"
 ---
-# <a name="match-on-patterns-and-special-characters-dashes"></a>Porovnávání vzorů a speciálních znaků (pomlčky)
+# <a name="match-on-patterns-and-special-characters-dashes"></a>Shoda na vzorech a speciálních znacích (pomlčky)
 
-Pro dotazy, které zahrnují speciální znaky (`-, *, (, ), /, \, =`) nebo pro vzorce dotazů na základě částečných podmínek v rámci většího výrazu, jsou obvykle potřeba další konfigurační kroky, aby se zajistilo, že index obsahuje očekávaný obsah ve správném formátu. 
+Pro dotazy, které obsahují`-, *, (, ), /, \, =`speciální znaky ( ), nebo pro vzorky dotazů založené na částečných termínech v rámci většího termínu jsou obvykle potřeba další kroky konfigurace, aby bylo zajištěno, že index obsahuje očekávaný obsah ve správném formátu. 
 
-Ve výchozím nastavení je telefonní číslo jako `+1 (425) 703-6214` vyraženo jako `"1"`, `"425"``"703"``"6214"`. Jak je možné si představit, hledání `"3-62"`, částečné výrazy, které zahrnují pomlčku, selžou, protože daný obsah v indexu skutečně neexistuje. 
+Ve výchozím nastavení je `+1 (425) 703-6214` telefonní číslo `"1"` `"425"`tokenizováno jako , , `"703"`. `"6214"` Jak si dokážete `"3-62"`představit, hledání na , částečné termíny, které obsahují pomlčka, se nezdaří, protože tento obsah ve skutečnosti neexistuje v indexu. 
 
-Pokud potřebujete hledat na částečných řetězcích nebo speciální znaky, můžete výchozí analyzátor přepsat vlastním analyzátorem, který pracuje v rámci jednodušších pravidel pro tokenizace, přičemž se zachovává celá slova, která jsou nezbytná, když řetězce dotazů obsahují části Term nebo Special. písmena. Krok zpět, přístup vypadá takto:
+Pokud potřebujete hledat na částečných řetězcích nebo speciálních znacích, můžete přepsat výchozí analyzátor vlastním analyzátorem, který pracuje podle jednodušších pravidel tokenizace, zachování celých termínů, které jsou nezbytné, pokud řetězce dotazu obsahují části termínu nebo speciální Znaky. Vezmeme-li krok zpět, přístup vypadá takto:
 
-+ Vyberte předdefinovaný analyzátor nebo definujte vlastní analyzátor, který vytváří požadovaný výstup.
-+ Přiřaďte analyzátor k poli.
-+ Sestavení indexu a testu
++ Zvolte předdefinovaný analyzátor nebo definujte vlastní analyzátor, který vytváří požadovaný výstup
++ Přiřazení analyzátoru k poli
++ Sestavení indexu a testování
 
-Tento článek vás provede těmito úkoly. Postup, který je zde popsán, je užitečný v dalších scénářích: dotazy na zástupné znaky a regulární výrazy také vyžadují jako základ pro porovnávání vzorů celé výrazy. 
+Tento článek vás provede těmito úkoly. Zde popsaný přístup je užitečný v jiných scénářích: dotazy se zástupnými znaky a regulárními výrazy také potřebují celé termíny jako základ pro porovnávání vzorů. 
 
 > [!TIP]
-> Vyhodnocování analyers je iterativní proces, který vyžaduje časté opětovné sestavení indexu. Tento krok můžete usnadnit pomocí metody post, rozhraní REST API pro [vytváření indexů](https://docs.microsoft.com/rest/api/searchservice/create-index), [odstraňování indexů](https://docs.microsoft.com/rest/api/searchservice/delete-index),[načítání dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)a [hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents). V případě načtených dokumentů musí tělo žádosti obsahovat malý reprezentativní datový soubor, který chcete otestovat (například pole s telefonními čísly nebo kódy produktů). Pomocí těchto rozhraní API ve stejné kolekci pro publikování můžete tyto kroky rychle procházet.
+> Vyhodnocení analyerů je iterativní proces, který vyžaduje časté obnovení indexu. Tento krok můžete usnadnit pomocí Postman, REST API pro [vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index), [Odstranit index](https://docs.microsoft.com/rest/api/searchservice/delete-index),[Načíst dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)a Hledat [dokumenty](https://docs.microsoft.com/rest/api/searchservice/search-documents). U načíst dokumenty by měl text požadavku obsahovat malou reprezentativní datovou sadu, kterou chcete otestovat (například pole s telefonními čísly nebo kódy produktů). S těmito api ve stejné kolekci Postman, můžete cykonoběh ovat tyto kroky rychle.
 
 ## <a name="choosing-an-analyzer"></a>Výběr analyzátoru
 
-Při výběru analyzátoru, který vytváří úplné tokeny, jsou běžné možnosti následujících analyzátorů:
+Při výběru analyzátoru, který vytváří tokeny po celou dobu, jsou běžné volby následující analyzátory:
 
-| MBSA | Chování |
+| Analyzer | Chování |
 |----------|-----------|
-| [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | Obsah celého pole je považován za jeden výraz. |
-| [typy](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Odděluje pouze prázdné znaky. Výrazy, které obsahují pomlčky nebo jiné znaky, jsou považovány za jeden token. |
-| [vlastní analyzátor](index-add-custom-analyzers.md) | doporučil Vytvoření vlastního analyzátoru vám umožní zadat provádějících tokenizaci i filtr tokenů. Předchozí analyzátory se musí používat tak, jak jsou. Vlastní analyzátor vám umožní vybrat, které tokenizátory musíte nejdřív a filtry tokenů se mají použít. <br><br>Doporučenou kombinací je [klíčové slovo provádějících tokenizaci](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) s [filtrem malých případových tokenů](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Předem definovaný [analyzátor klíčových slov](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) nerozlišuje malá a velká písmena, což může způsobit selhání dotazů. Vlastní analyzátor poskytuje mechanismus pro přidání filtru s nižším případem tokenu. |
+| [klíčové slovo](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | Obsah celého pole je tokenizován jako jeden termín. |
+| [Mezery](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Odděluje pouze na prázdné matné znaky. Termíny, které obsahují pomlčky nebo jiné znaky jsou považovány za jeden token. |
+| [vlastní analyzátor](index-add-custom-analyzers.md) | (doporučeno) Vytvoření vlastního analyzátoru umožňuje zadat tokenizer a token filtr. Předchozí analyzátory musí být použity tak, jak jsou. Vlastní analyzátor umožňuje vybrat, které tokenizers a token filtry použít. <br><br>Doporučená kombinace je [tokenizer klíčového slova](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) s [filtrem tokenů malých písmen](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Předdefinovaný [analyzátor klíčových slov](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) sám o sobě nepředstavuje malá písmena žádného textu s velkými písmeny, což může způsobit selhání dotazů. Vlastní analyzátor poskytuje mechanismus pro přidání filtru tokenu malých písmen. |
 
-Pokud používáte nástroj pro testování webového rozhraní API, jako je například post, můžete přidat [volání nástroje Test Analyzer REST](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) pro kontrolu výstupu s vydanými tokeny. V případě existujícího indexu a pole obsahujícího pomlčky nebo částečné výrazy můžete vyzkoušet různé analyzátory nad konkrétními podmínkami a zjistit, jaké tokeny jsou vydávané.  
+Pokud používáte testovací nástroj webového rozhraní API, jako je Postman, můžete přidat [volání REST analyzátoru testu](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) ke kontrole tokenizovaného výstupu. Vzhledem k existující index a pole obsahující pomlčky nebo částečné termíny, můžete vyzkoušet různé analyzátory přes konkrétní termíny zjistit, jaké tokeny jsou vydávány.  
 
-1. Podívejte se na standardní analyzátor a zjistěte, jak se ve výchozím nastavení používají výrazy.
+1. Zkontrolujte standardní analyzátor a zjistěte, jak jsou ve výchozím nastavení tokenizovány termíny.
 
    ```json
    {
@@ -53,7 +53,7 @@ Pokud používáte nástroj pro testování webového rozhraní API, jako je nap
    }
     ```
 
-1. Vyhodnoťte odpověď, abyste viděli, jak je text v indexu vyhodnocený jako token. Všimněte si, jak je každý výraz nižší – použita a rozčleněný.
+1. Vyhodnoťte odpověď a podívejte se, jak je text tokenizován v rámci indexu. Všimněte si, jak každý termín je malá písmena a rozdělena.
 
     ```json
     {
@@ -79,7 +79,7 @@ Pokud používáte nástroj pro testování webového rozhraní API, jako je nap
         ]
     }
     ```
-1. Upravte požadavek na použití `whitespace` nebo analyzátoru `keyword`:
+1. Upravte požadavek `whitespace` na `keyword` použití analyzátoru nebo:
 
     ```json
     {
@@ -88,7 +88,7 @@ Pokud používáte nástroj pro testování webového rozhraní API, jako je nap
     }
     ```
 
-1. Nyní se odpověď skládá z jediného tokenu, horních použita, s pomlčkami zachované jako součást řetězce. Pokud potřebujete vyhledávat vzor nebo částečný termín, stroj dotazů má teď základ pro vyhledání shody.
+1. Nyní odpověď se skládá z jednoho tokenu, velká písmena, s pomlčky zachovány jako součást řetězce. Pokud potřebujete hledat na vzor nebo částečný termín, dotazovací stroj má nyní základ pro nalezení shody.
 
 
     ```json
@@ -105,15 +105,15 @@ Pokud používáte nástroj pro testování webového rozhraní API, jako je nap
     }
     ```
 > [!Important]
-> Počítejte s tím, že analyzátory dotazů často v rámci vyhledávacího výrazu při sestavování stromu dotazů často malými písmeny. Pokud používáte analyzátor, který nerozlišuje malá a velká písmena a nezískáváte očekávané výsledky, může to být důvod. Řešením je přidat filtr tokenů lwower-Case.
+> Uvědomte si, že analyzátory dotazů často malá písmena ve výrazu hledání při vytváření stromu dotazů. Pokud používáte analyzátor, který nemá vstupy textu s nižšími písmeny a nedostáváte očekávané výsledky, může to být důvod. Řešením je přidání filtru tokenů lwower-case.
 
 ## <a name="analyzer-definitions"></a>Definice analyzátoru
  
-Bez ohledu na to, jestli vyhodnocujete analyzátory nebo přesouváte do konkrétní konfigurace, budete muset určit analyzátor definice pole a případně nakonfigurovat samotný analyzátor, pokud nepoužíváte integrovaný analyzátor. Při výměně analyzátorů je obvykle nutné index znovu sestavit (vyřadit, znovu vytvořit a znovu načíst). 
+Bez ohledu na to, zda vyhodnocujete analyzátor nebo se posouváte vpřed s určitou konfigurací, budete muset určit analyzátor v definici pole a případně nakonfigurovat samotný analyzátor, pokud nepoužíváte vestavěný analyzátor. Při výměně analyzátory, obvykle je třeba znovu vytvořit index (přetažení, znovu vytvořit a znovu načíst). 
 
-### <a name="use-built-in-analyzers"></a>Použití integrovaných analyzátorů
+### <a name="use-built-in-analyzers"></a>Použití vestavěných analyzátorů
 
-Předdefinované nebo předdefinované analyzátory lze zadat podle názvu u vlastnosti `analyzer` definice pole, přičemž v indexu není vyžadována žádná další konfigurace. Následující příklad ukazuje, jak byste nastavili analyzátor `whitespace` v poli.
+Vestavěné nebo předdefinované analyzátory lze `analyzer` zadat podle názvu na vlastnost definice pole, bez další konfigurace požadované v indexu. Následující příklad ukazuje, jak byste `whitespace` nastavili analyzátor v poli.
 
 ```json
     {
@@ -125,18 +125,18 @@ Předdefinované nebo předdefinované analyzátory lze zadat podle názvu u vla
       "analyzer": "whitespace"
     }
 ```
-Další informace o všech dostupných analyzátorech jsou uvedeny v [seznamu předdefinované analyzátory](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
+Další informace o všech dostupných vestavěných analyzátorech naleznete v [seznamu předdefinovaných analyzátorů](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
 
 ### <a name="use-custom-analyzers"></a>Použití vlastních analyzátorů
 
-Pokud používáte [vlastní analyzátor](index-add-custom-analyzers.md), definujte ho v indexu pomocí uživatelsky definované kombinace provádějících tokenizaci, tokenfilter, s možnými konfiguračními nastaveními. Potom na ni odkazuje definice pole, stejně jako na integrovaný analyzátor.
+Pokud používáte [vlastní analyzátor](index-add-custom-analyzers.md), definujte jej v indexu s uživatelem definovanou kombinací tokenizeru, tokenfilteru s možným nastavením konfigurace. Dále odkaz na definici pole, stejně jako byste vestavěný analyzátor.
 
-Pokud je cílem celočíselné tokenizace, doporučuje se vlastní analyzátor, který se skládá z **klíčového slova provádějících tokenizaci** a **Filtr tokenů nižších případů** .
+Pokud je cílem tokenizace celého období, doporučuje se vlastní analyzátor, který se skládá z **tokenizeru klíčového slova** a **filtru malých tokenů.**
 
-+ Klíčové slovo provádějících tokenizaci vytvoří jeden token pro celý obsah pole.
-+ Filtr s malými písmeny transformuje velká písmena na text s malými písmeny. Analyzátory dotazů obvykle malými písmeny obsahují textové vstupy. Lowercasing se na vstupy a s vydanými výrazy homogenní hodnoty.
++ Tokenizer klíčového slova vytvoří jeden token pro celý obsah pole.
++ Filtr malých písmen tokenu transformuje velká písmena na text s velkými písmeny. Analyzátory dotazů obvykle malá písmena jakékoli vstupy textu velkých písmen. Snížení homogenizuje vstupy s tokenizované podmínky.
 
-Následující příklad znázorňuje vlastní analyzátor, který poskytuje klíčové slovo provádějících tokenizaci a filtr tokenu malého písmena.
+Následující příklad ilustruje vlastní analyzátor, který poskytuje tokenizer klíčového slova a filtr tokenů s malou písmena.
 
 ```json
 {
@@ -151,7 +151,7 @@ Následující příklad znázorňuje vlastní analyzátor, který poskytuje kl�
   "sortable": false,
   "facetable": false
   }
-]
+],
 
 "analyzers": [
   {
@@ -168,15 +168,15 @@ Následující příklad znázorňuje vlastní analyzátor, který poskytuje kl�
 ```
 
 > [!NOTE]
-> Filtr tokenů `keyword_v2` provádějících tokenizaci a `lowercase` jsou v systému známy a používají výchozí konfigurace, což je důvod, proč je můžete na ně odkazovat podle názvu, aniž byste je museli definovat jako první.
+> Tokenizer `keyword_v2` a `lowercase` token filtr jsou známy systému a pomocí jejich výchozí konfigurace, což je důvod, proč můžete odkazovat podle názvu, aniž by bylo třeba je definovat jako první.
 
 ## <a name="tips-and-best-practices"></a>Tipy a osvědčené postupy
 
 ### <a name="tune-query-performance"></a>Ladění výkonu dotazů
 
-Pokud implementujete doporučenou konfiguraci, která zahrnuje keyword_v2 provádějících tokenizaci a filtr tokenů menšího případu, můžete si všimnout snížení výkonu dotazů kvůli dalšímu zpracování filtru tokenů u stávajících tokenů ve vašem indexu. 
+Pokud implementujete doporučenou konfiguraci, která zahrnuje keyword_v2 tokenizer a filtr tokenů malých písmen, můžete zaznamenat snížení výkonu dotazu z důvodu zpracování filtru dalších tokenů přes existující tokeny v indexu. 
 
-Následující příklad přidá [EdgeNGramTokenFilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html) , aby bylo možné porovnávat předpony rychleji. Pro kombinace znaků 2-25, které obsahují znaky, jsou vygenerovány další tokeny: (nikoli pouze MS, MSF, MSFT, MSFT/, MSFT/S, MSFT/Čt, MSFT/SQL). Jak si představím, další tokenizace je výsledkem většího indexu.
+Následující příklad přidá [EdgeNGramTokenFilter,](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html) aby se rychleji shody předpony. Další tokeny jsou generovány pro v kombinacích 2-25 znaků, které obsahují znaky: (nejen MS, MSF, MSFT, MSFT/, MSFT/S, MSFT/SQ, MSFT/SQL). Jak si dokážete představit, další tokenizace má za následek větší index.
 
 ```json
 {
@@ -191,7 +191,7 @@ Následující příklad přidá [EdgeNGramTokenFilter](https://lucene.apache.or
   "sortable": false,
   "facetable": false
   }
-]
+],
 
 "analyzers": [
   {
@@ -217,11 +217,11 @@ Následující příklad přidá [EdgeNGramTokenFilter](https://lucene.apache.or
 
 ### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>Použití různých analyzátorů pro indexování a zpracování dotazů
 
-Analyzátory jsou volány během indexování a při provádění dotazu. Je běžné použít stejný analyzátor pro obojí, ale můžete pro každou úlohu nakonfigurovat vlastní analyzátory. Přepisy analyzátoru jsou zadány v [definici indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) v sekci `analyzers` a následně odkazovány na konkrétní pole. 
+Analyzátory jsou volány během indexování a během provádění dotazu. Je běžné používat stejný analyzátor pro oba, ale můžete nakonfigurovat vlastní analyzátory pro každou úlohu. Přepsání analyzátoru jsou zadána `analyzers` v [definici indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) v oddílu a poté odkazována na konkrétní pole. 
 
-Když se vlastní analýza vyžaduje jenom při indexování, můžete použít vlastní analyzátor pro jenom indexování a pokračovat v používání standardního analyzátoru Lucene (nebo jiného analyzátoru) pro dotazy.
+Pokud je vlastní analýza vyžadována pouze během indexování, můžete použít vlastní analyzátor pouze indexování a nadále používat standardní analyzátor Lucene (nebo jiný analyzátor) pro dotazy.
 
-Chcete-li určit analýzu konkrétní role, můžete nastavit vlastnosti pro každé z nich, nastavení `indexAnalyzer` a `searchAnalyzer` namísto výchozí vlastnosti `analyzer`.
+Chcete-li určit analýzu specifickou pro roli, můžete `indexAnalyzer` nastavit `searchAnalyzer` vlastnosti `analyzer` pole pro každou z nich nastavení a místo výchozí vlastnosti.
 
 ```json
 "name": "featureCode",
@@ -231,7 +231,7 @@ Chcete-li určit analýzu konkrétní role, můžete nastavit vlastnosti pro ka�
 
 ### <a name="duplicate-fields-for-different-scenarios"></a>Duplicitní pole pro různé scénáře
 
-Jiná možnost využívá přiřazení analyzátoru pro každé pole k optimalizaci pro různé scénáře. Konkrétně můžete definovat "featureCode" a "featureCodeRegex" pro podporu normálního fulltextového vyhledávání na prvním a rozšířené porovnávání vzorů na druhé straně.
+Další možností využívá přiřazení analyzátoru pro pole k optimalizaci pro různé scénáře. Konkrétně můžete definovat "featureCode" a "featureCodeRegex" pro podporu pravidelné fulltextové vyhledávání na první a pokročilé porovnávání vzorů na druhé.
 
 ```json
 {
@@ -252,9 +252,9 @@ Jiná možnost využívá přiřazení analyzátoru pro každé pole k optimaliz
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek vysvětluje, jak analyzátory přispívat k dotazování na problémy a řešení problémů s dotazy. V dalším kroku se podíváme na podrobnější přehled o tom, jaký vliv má analýza na indexování a zpracování dotazů. Zejména zvažte použití rozhraní analyzovat text API k vrácení výstupu s vydanými tokeny, abyste viděli přesně to, co analyzátor vytváří pro váš index.
+Tento článek vysvětluje, jak analyzátory přispívají k problémům s dotazy a řeší problémy s dotazy. Jako další krok se blíže podívejte na dopad analyzátoru na indexování a zpracování dotazů. Zejména zvažte použití analyzovat textové rozhraní API vrátit tokenizovaný výstup, takže můžete přesně vidět, co analyzátor vytváří pro váš index.
 
 + [Analyzátory jazyka](search-language-support.md)
-+ [Analyzátory pro zpracování textu v Azure Kognitivní hledání](search-analyzers.md)
++ [Analyzátory pro zpracování textu v Azure Cognitive Search](search-analyzers.md)
 + [Analyzovat textové rozhraní API (REST)](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
 + [Jak funguje fulltextové vyhledávání (architektura dotazů)](search-lucene-query-architecture.md)

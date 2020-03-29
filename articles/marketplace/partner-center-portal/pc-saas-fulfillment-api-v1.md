@@ -1,53 +1,52 @@
 ---
-title: Rozhraní API pro plnění SaaS v1 | Azure Marketplace
-description: Vysvětluje, jak vytvořit a spravovat nabídku SaaS na Azure Marketplace s použitím přidružených rozhraní API pro splnění verze V1.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: SaaS Plnění API v1 | Azure Marketplace
+description: Vysvětluje, jak vytvořit a spravovat nabídku SaaS na Azure Marketplace pomocí přidružených virtuálních api plnění v1.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 05/23/2019
-ms.author: evansma
+ms.author: dsindona
 ROBOTS: NOINDEX
-ms.openlocfilehash: f56e9b4f6c3db6fb47452c7478f5a27445955e87
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3ec8373288a2ea5809ee5d349c52c57051586035
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715384"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288338"
 ---
-# <a name="saas-fulfillment-apis-version-1-deprecated"></a>Rozhraní API pro splnění SaaS verze 1 (zastaralé)
+# <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS Plnění API verze 1 (zastaralé)
 
-Tento článek vysvětluje, jak vytvořit SaaS nabídku s rozhraními API. Rozhraní API, skládající se z metod REST a koncových bodů, jsou nutná pro povolení předplatných vaší nabídky SaaS, pokud jste prodávali pomocí Azure Selected.  
+Tento článek vysvětluje, jak vytvořit nabídku SaaS s api. Api, složené z rest metod a koncových bodů, jsou nezbytné pro povolení předplatného vaší nabídky SaaS, pokud máte vyvolený Prodávat přes Azure.  
 
 > [!WARNING]
-> Tato počáteční verze rozhraní API pro plnění SaaS je zastaralá. místo toho použijte [rozhraní API pro splnění SaaS verze V2](./pc-saas-fulfillment-api-v2.md).  Tato počáteční verze rozhraní API se v současné době udržuje jenom pro poskytování stávajících vydavatelů. 
+> Tato počáteční verze rozhraní API plnění SaaS je zastaralá; místo toho použijte [rozhraní SaaS Fulfillment API V2](./pc-saas-fulfillment-api-v2.md).  Tato počáteční verze rozhraní API je aktuálně udržována pouze tak, aby sloužila existujícím vydavatelům. 
 
-K dispozici jsou následující rozhraní API, která vám pomohou integrovat službu SaaS s Azure:
+Následující api jsou k dispozici, které vám pomohou integrovat službu SaaS s Azure:
 
 -   Vyřešit
--   Hlásit
+-   Odběr
 -   Převést
--   odhlášení odběru
+-   Přestat odebírat
 
 
-## <a name="api-methods-and-endpoints"></a>Metody a koncové body rozhraní API
+## <a name="api-methods-and-endpoints"></a>Metody rozhraní API a koncové body
 
-Následující části popisují metody a koncové body rozhraní API, které jsou k dispozici pro povolení předplatných nabídky SaaS.
+Následující části popisují metody rozhraní API a koncové body, které jsou k dispozici pro povolení předplatných pro nabídku SaaS.
 
 
-### <a name="marketplace-api-endpoint-and-api-version"></a>Koncový bod rozhraní API Marketplace a verze rozhraní API
+### <a name="marketplace-api-endpoint-and-api-version"></a>Koncový bod rozhraní API marketplace a verze rozhraní API
 
-Koncový bod pro rozhraní Azure Marketplace API je `https://marketplaceapi.microsoft.com`.
+Koncový bod pro rozhraní `https://marketplaceapi.microsoft.com`API Azure Marketplace je .
 
-Aktuální verze rozhraní API je `api-version=2017-04-15`.
+Aktuální verze rozhraní `api-version=2017-04-15`API je .
 
 
 ### <a name="resolve-subscription"></a>Vyřešit předplatné
 
-Akce po vyřešení koncového bodu umožňuje uživatelům přeložit token Marketplace na trvalé ID prostředku.  ID prostředku je jedinečný identifikátor pro předplatné SAAS. 
+Akce POST na konci řešení umožňuje uživatelům přeložit token tržiště na trvalé ID prostředku.  ID prostředku je jedinečný identifikátor pro odběr SAAS. 
 
-Když se uživatel přesměruje na web ISV, adresa URL obsahuje token v parametrech dotazu. U nezávislého výrobce softwaru se očekává, že tento token použijete, a požádejte ho, aby ho vyřešil. Odpověď obsahuje jedinečné ID předplatného SAAS, název, ID nabídky a plán pro daný prostředek. Tento token je platný jenom pro hodinu.
+Když je uživatel přesměrován na web uživatele isv, adresa URL obsahuje token v parametrech dotazu. Očekává se, že isv používat tento token a požádat o jeho vyřešení. Odpověď obsahuje jedinečné ID předplatného SAAS, název, ID nabídky a plán pro prostředek. Tento token je platný pouze hodinu.
 
 *Požadavek*
 
@@ -57,19 +56,19 @@ Když se uživatel přesměruje na web ISV, adresa URL obsahuje token v parametr
 
 |  **Název parametru** |     **Popis**                                      |
 |  ------------------ |     ---------------------------------------------------- |
-|  api-version        |  Verze operace, která se má použít pro tento požadavek.   |
+|  verze-api        |  Verze operace, která má být pro tento požadavek používána.   |
 |  |  |
 
 
 *Hlavičky*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                                                                                                                                                  |
+| **Klíč záhlaví**     | **Požadováno** | **Popis**                                                                                                                                                                                                                  |
 |--------------------|--------------|-----------------------------------------------------------|
-| x-ms-requestid     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.  |
-| x-ms-correlationid | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Toto pole koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
+| x-ms-requestid     | Ne           | Jedinečná hodnota řetězce pro sledování požadavku od klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, jeden bude generována a poskytnuta v hlavičce odpovědi.  |
+| x-ms-correlationid | Ne           | Jedinečná hodnota řetězce pro operaci na straně klienta. Toto pole koreluje všechny události z operace klienta s událostmi na straně serveru. Pokud tato hodnota není k dispozici, jeden bude generována a poskytnuta v hlavičce odpovědi. |
 | Typ obsahu       | Ano          | `application/json`                                        |
-| authorization      | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
-| x-ms-marketplace-token| Ano| Parametr dotazu tokenu v adrese URL, když se uživatel přesměruje na web SaaS ISV z Azure **Poznámka:** Tento token je platný jenom 1 hodina. Kromě toho adresa URL před použitím překóduje hodnotu tokenu z prohlížeče.|
+| autorizace      | Ano          | Token nosiče JSON (JWT).                    |
+| x-ms-marketplace-token| Ano| Parametr dotazu tokenu v adrese URL při přesměrování uživatele na web saas isv z Azure. **Poznámka:** Tento token je platný pouze po dobu 1 hodiny. Adresa URL navíc dekóduje hodnotu tokenu z prohlížeče před jeho použitím.|
 |  |  |  |
   
 
@@ -86,10 +85,10 @@ Když se uživatel přesměruje na web ISV, adresa URL obsahuje token v parametr
 
 | **Název parametru** | **Datový typ** | **Popis**                       |
 |--------------------|---------------|---------------------------------------|
-| id                 | Řetězec        | ID předplatného SaaS          |
-| subscriptionName| Řetězec| Název předplatného SaaS nastaveného uživatelem v Azure během přihlášení k odběru služby SaaS.|
-| Hodnotami OfferId            | Řetězec        | ID nabídky, na kterou se uživatel přihlásil |
-| planId             | Řetězec        | ID plánu, se kterým se uživatel přihlásil k odběru.  |
+| id                 | Řetězec        | ID předplatného SaaS.          |
+| subscriptionName| Řetězec| Název předplatného SaaS nastaveného uživatelem v Azure při přihlášení ke službě SaaS.|
+| OfferId            | Řetězec        | ID nabídky, k jehož odběru se uživatel přihlásil. |
+| planId             | Řetězec        | ID plánu, k jehož odběru se uživatel přihlásil.  |
 |  |  |  |
 
 
@@ -98,48 +97,48 @@ Když se uživatel přesměruje na web ISV, adresa URL obsahuje token v parametr
 | **Stavový kód HTTP** | **Kód chyby**     | **Popis**                                                                         |
 |----------------------|--------------------| --------------------------------------------------------------------------------------- |
 | 200                  | `OK`                 | Token byl úspěšně vyřešen.                                                            |
-| 400                  | `BadRequest`         | Buď chybí požadovaná záhlaví, nebo je zadaná neplatná verze API-Version. Nepodařilo se přeložit token, protože token je poškozený nebo vypršela jeho platnost (token je platný jenom 1 hodina po vygenerování). |
-| 403                  | `Forbidden`          | Volající nemá autorizaci k provedení této operace.                                 |
-| 429                  | `RequestThrottleId`  | Služba zpracovává požadavky, které jsou zaneprázdněné, a zkuste to znovu později.                                |
-| 503                  | `ServiceUnavailable` | Služba je dočasně vypnutá, zkuste to znovu později.                                        |
+| 400                  | `BadRequest`         | Chybí buď požadovaná záhlaví, nebo je zadána neplatná verze rozhraní API. Nepodařilo se vyřešit token, protože token je poškozený nebo vypršela (token je platný pouze po dobu 1 hodiny po vygenerování). |
+| 403                  | `Forbidden`          | Volající není oprávněn provést tuto operaci.                                 |
+| 429                  | `RequestThrottleId`  | Služba je zaneprázdněna zpracováním požadavků, opakujte akci později.                                |
+| 503                  | `ServiceUnavailable` | Služba je dočasně vypnutá, opakujte akci později.                                        |
 |  |  |  |
 
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-ms-correlationid | Ano          | ID korelace, je-li klient předán, jinak je tato hodnota ID korelace serveru.                   |
+| x-ms-requestid     | Ano          | ID požadavku přijaté od klienta.                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, pokud je klient předán, jinak je tato hodnota ID korelace serveru.                   |
 | x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Toto ID se používá pro všechna odsouhlasení. |
-| Opakovat – za        | Ne           | Tato hodnota se nastavuje jenom pro odpověď 429.                                                                   |
+| Opakovat po opakování        | Ne           | Tato hodnota je nastavena pouze pro odpověď 429.                                                                   |
 |  |  |  |
 
 
-### <a name="subscribe"></a>Hlásit
+### <a name="subscribe"></a>Odběr
 
-Koncový bod přihlášení k odběru umožňuje uživatelům spustit předplatné služby SaaS pro daný plán a povolit účtování v Commerce systému.
+Koncový bod odběru umožňuje uživatelům spustit předplatné služby SaaS pro daný plán a povolit fakturaci v commerce systému.
 
-**PUT**
+**Dát**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{SubscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | Jedinečný identifikátor předplatného SaaS, který se získá po vyřešení tokenu prostřednictvím řešení API.                              |
-| api-version         | Verze operace, která se má použít pro tento požadavek. |
+| subscriptionId      | Jedinečné ID předplatného SaaS, které se získá po vyřešení tokenu pomocí rozhraní Resolve API.                              |
+| verze-api         | Verze operace, která má být pro tento požadavek používána. |
 |  |  |
 
 *Hlavičky*
 
-|  **Klíč záhlaví**        | **Požadovanou** |  **Popis**                                                  |
+|  **Klíč záhlaví**        | **Požadováno** |  **Popis**                                                  |
 | ------------------     | ------------ | --------------------------------------------------------------------------------------- |
-| x-ms-requestid         |   Ne         | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi. |
-| x-ms-correlationid     |   Ne         | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi. |
-| If-Match/If-None-Match |   Ne         |   Silná ověřovací hodnota ETag.                                                          |
-| Typ obsahu           |   Ano        |    `application/json`                                                                   |
-|  authorization         |   Ano        |    Token nosiče webového tokenu JSON (JWT).                                               |
-| x-ms-marketplace-session-mode| Ne | Příznak, který povolí režim suchého běhu při přihlášení k odběru nabídky SaaS. Pokud je nastaveno, předplatné se nebude účtovat. To je užitečné pro scénáře testování ISV. Nastavte ho prosím na **' dryrun '.**|
+| x-ms-requestid         |   Ne         | Jedinečná hodnota řetězce pro sledování požadavku od klienta, nejlépe identifikátor GUID. Pokud to není k dispozici, jeden bude generována a poskytnuta v hlavičkách odpovědi. |
+| x-ms-correlationid     |   Ne         | Jedinečná hodnota řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud to není k dispozici, jeden bude generována a poskytnuta v hlavičkách odpovědi. |
+| Pokud-Shoda/If-None-Shoda |   Ne         |   Silná hodnota validátoru ETag.                                                          |
+| typ obsahu           |   Ano        |    `application/json`                                                                   |
+|  autorizace         |   Ano        |    Token nosiče JSON (JWT).                                               |
+| x-ms-marketplace-session-mode| Ne | Příznak pro povolení režimu suchého běhu při přihlášení k odběru nabídky SaaS. Pokud je nastaveno, předplatné se nebude účtovat. To je užitečné pro scénáře testování isv. Nastavte jej prosím na **"dryrun"**|
 |  |  |  |
 
 *Text*
@@ -152,58 +151,58 @@ Koncový bod přihlášení k odběru umožňuje uživatelům spustit předplatn
 
 | **Název elementu** | **Datový typ** | **Popis**                      |
 |------------------|---------------|--------------------------------------|
-| planId           | Požadovanou Řetezce        | ID plánu uživatele služby SaaS se přihlašuje k odběru.  |
+| planId           | (Povinné) Řetězec        | ID plánu uživatele služby SaaS se přihlásí k odběru.  |
 |  |  |  |
 
 *Kódy odpovědí*
 
 | **Stavový kód HTTP** | **Kód chyby**     | **Popis**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
-| 202                  | `Accepted`           | Byla přijata Aktivace předplatného SaaS pro daný plán.                   |
-| 400                  | `BadRequest`         | Chybí buď požadované hlavičky, nebo tělo JSON má špatný formát. |
-| 403                  | `Forbidden`          | Volající nemá autorizaci k provedení této operace.                   |
-| 404                  | `NotFound`           | Předplatné se nenašlo s daným ID.                                  |
-| 409                  | `Conflict`           | V rámci předplatného probíhá jiná operace.                     |
-| 429                  | `RequestThrottleId`  | Služba zpracovává požadavky, které jsou zaneprázdněné, a zkuste to znovu později.                  |
-| 503                  | `ServiceUnavailable` | Služba je dočasně vypnutá, zkuste to znovu později.                          |
+| 202                  | `Accepted`           | Aktivace předplatného SaaS přijata pro daný plán.                   |
+| 400                  | `BadRequest`         | Chybí buď požadované hlavičky nebo je poškozeno tělo jsonu. |
+| 403                  | `Forbidden`          | Volající není oprávněn provést tuto operaci.                   |
+| 404                  | `NotFound`           | Předplatné nebylo nalezeno s daným ID                                  |
+| 409                  | `Conflict`           | Další operace probíhá na předplatné.                     |
+| 429                  | `RequestThrottleId`  | Služba je zaneprázdněna zpracováním požadavků, opakujte akci později.                  |
+| 503                  | `ServiceUnavailable` | Služba je dočasně vypnutá, opakujte akci později.                          |
 |  |  |  |
 
-V případě odpovědi 202 se řiďte stavem operace požadavku v hlavičce Operational Location. Ověřování je stejné jako u ostatních rozhraní API Marketplace.
+Pro odpověď 202, v návaznosti na stav operace požadavku v záhlaví "Umístění operace". Ověřování je stejné jako u ostatních souborů API marketplace.
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-ms-correlationid | Ano          | ID korelace, je-li klient předán, jinak je tato hodnota ID korelace serveru.                   |
+| x-ms-requestid     | Ano          | ID požadavku přijaté od klienta.                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, pokud je klient předán, jinak je tato hodnota ID korelace serveru.                   |
 | x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Tato hodnota se používá pro všechna odsouhlasení. |
-| Opakovat – za        | Ano          | Interval, se kterým může klient kontrolovat stav.                                                       |
-| Operace – umístění | Ano          | Připojte se k prostředku, abyste získali stav operace.                                                        |
+| Opakovat po opakování        | Ano          | Interval, se kterým může klient zkontrolovat stav.                                                       |
+| Umístění operace | Ano          | Odkaz na prostředek pro získání stavu operace.                                                        |
 |  |  |  |
 
 ### <a name="change-plan-endpoint"></a>Změnit koncový bod plánu
 
-Koncový bod změny umožňuje uživateli převést aktuálně přihlášený odběr plánu na nový plán.
+Koncový bod změny umožňuje uživateli převést svůj aktuálně odebíaný plán na nový plán.
 
-**POUŽITA**
+**Oprava**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{SubscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | ID předplatného SaaS                              |
-| api-version         | Verze operace, která se má použít pro tento požadavek. |
+| subscriptionId      | ID předplatného SaaS.                              |
+| verze-api         | Verze operace, která má být pro tento požadavek používána. |
 |  |  |
 
 *Hlavičky*
 
-| **Klíč záhlaví**          | **Požadovanou** | **Popis**                                                                                                                                                                                                                  |
+| **Klíč záhlaví**          | **Požadováno** | **Popis**                                                                                                                                                                                                                  |
 |-------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
-| x-ms-requestid          | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku od klienta. Doporučujeme identifikátor GUID. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi.   |
-| x-ms-correlationid      | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi. |
-| /If-None-Match If-Match | Ne           | Silná ověřovací hodnota ETag.                              |
-| Typ obsahu            | Ano          | `application/json`                                        |
-| authorization           | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
+| x-ms-requestid          | Ne           | Jedinečná hodnota řetězce pro sledování požadavku od klienta. Doporučte identifikátor GUID. Pokud to není k dispozici, jeden bude generována a poskytnuta v hlavičkách odpovědi.   |
+| x-ms-correlationid      | Ne           | Jedinečná hodnota řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud to není k dispozici, jeden bude generována a poskytnuta v hlavičkách odpovědi. |
+| Pokud shoda /If-None-Shoda | Ne           | Silná hodnota validátoru ETag.                              |
+| typ obsahu            | Ano          | `application/json`                                        |
+| autorizace           | Ano          | Token nosiče JSON (JWT).                    |
 |  |  |  |
 
 *Text*
@@ -216,106 +215,106 @@ Koncový bod změny umožňuje uživateli převést aktuálně přihlášený od
 
 |  **Název elementu** |  **Datový typ**  | **Popis**                              |
 |  ---------------- | -------------   | --------------------------------------       |
-|  planId           |  Požadovanou Řetezce         | ID plánu uživatele služby SaaS se přihlašuje k odběru.          |
+|  planId           |  (Povinné) Řetězec         | ID plánu uživatele služby SaaS se přihlásí k odběru.          |
 |  |  |  |
 
 *Kódy odpovědí*
 
 | **Stavový kód HTTP** | **Kód chyby**     | **Popis**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
-| 202                  | `Accepted`           | Byla přijata Aktivace předplatného SaaS pro daný plán.                   |
-| 400                  | `BadRequest`         | Chybí buď požadované hlavičky, nebo tělo JSON má špatný formát. |
-| 403                  | `Forbidden`          | Volající nemá autorizaci k provedení této operace.                   |
-| 404                  | `NotFound`           | Předplatné se nenašlo s daným ID.                                  |
-| 409                  | `Conflict`           | V rámci předplatného probíhá jiná operace.                     |
-| 429                  | `RequestThrottleId`  | Služba zpracovává požadavky, které jsou zaneprázdněné, a zkuste to znovu později.                  |
-| 503                  | `ServiceUnavailable` | Služba je dočasně vypnutá, zkuste to znovu později.                          |
+| 202                  | `Accepted`           | Aktivace předplatného SaaS přijata pro daný plán.                   |
+| 400                  | `BadRequest`         | Chybí buď požadované hlavičky nebo je poškozeno tělo jsonu. |
+| 403                  | `Forbidden`          | Volající není oprávněn provést tuto operaci.                   |
+| 404                  | `NotFound`           | Předplatné nebylo nalezeno s daným ID                                  |
+| 409                  | `Conflict`           | Další operace probíhá na předplatné.                     |
+| 429                  | `RequestThrottleId`  | Služba je zaneprázdněna zpracováním požadavků, opakujte akci později.                  |
+| 503                  | `ServiceUnavailable` | Služba je dočasně vypnutá, opakujte akci později.                          |
 |  |  |  |
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-ms-correlationid | Ano          | ID korelace, je-li klient předán, jinak je tato hodnota ID korelace serveru.                   |
+| x-ms-requestid     | Ano          | ID požadavku přijaté od klienta.                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, pokud je klient předán, jinak je tato hodnota ID korelace serveru.                   |
 | x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Tato hodnota se používá pro všechna odsouhlasení. |
-| Opakovat – za        | Ano          | Interval, se kterým může klient kontrolovat stav.                                                       |
-| Operace – umístění | Ano          | Připojte se k prostředku, abyste získali stav operace.                                                        |
+| Opakovat po opakování        | Ano          | Interval, se kterým může klient zkontrolovat stav.                                                       |
+| Umístění operace | Ano          | Odkaz na prostředek pro získání stavu operace.                                                        |
 |  |  |  |
 
 ### <a name="delete-subscription"></a>Odstranění předplatného
 
-Akce Odstranit na koncovém bodu odběru umožňuje uživateli odstranit předplatné s daným ID.
+Akce Odstranit na koncovém bodu odběru umožňuje uživateli odstranit odběr s daným ID.
 
 *Požadavek*
 
-**DELETE**
+**Odstranit**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{SubscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | ID předplatného SaaS                              |
-| api-version         | Verze operace, která se má použít pro tento požadavek. |
+| subscriptionId      | ID předplatného SaaS.                              |
+| verze-api         | Verze operace, která má být pro tento požadavek používána. |
 |  |  |
 
 *Hlavičky*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                                                                                                                                                  |
+| **Klíč záhlaví**     | **Požadováno** | **Popis**                                                                                                                                                                                                                  |
 |--------------------|--------------| ----------------------------------------------------------|
-| x-ms-requestid     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku od klienta. Doporučujeme identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.                                                           |
-| x-ms-correlationid | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi. |
-| authorization      | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
+| x-ms-requestid     | Ne           | Jedinečná hodnota řetězce pro sledování požadavku od klienta. Doporučte identifikátor GUID. Pokud tato hodnota není k dispozici, jeden bude generována a poskytnuta v hlavičce odpovědi.                                                           |
+| x-ms-correlationid | Ne           | Jedinečná hodnota řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud to není k dispozici, jeden bude generována a poskytnuta v hlavičkách odpovědi. |
+| autorizace      | Ano          | Token nosiče JSON (JWT).                    |
 |  |  |  |
 
 *Kódy odpovědí*
 
 | **Stavový kód HTTP** | **Kód chyby**     | **Popis**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
-| 202                  | `Accepted`           | Byla přijata Aktivace předplatného SaaS pro daný plán.                   |
-| 400                  | `BadRequest`         | Chybí buď požadované hlavičky, nebo tělo JSON má špatný formát. |
-| 403                  | `Forbidden`          | Volající nemá autorizaci k provedení této operace.                   |
-| 404                  | `NotFound`           | Předplatné se nenašlo s daným ID.                                  |
-| 429                  | `RequestThrottleId`  | Služba je zaneprázdněná zpracováním požadavků. zkuste to prosím znovu později.                  |
-| 503                  | `ServiceUnavailable` | Služba je dočasně mimo provoz. Zkuste to prosím znovu později.                          |
+| 202                  | `Accepted`           | Aktivace předplatného SaaS přijata pro daný plán.                   |
+| 400                  | `BadRequest`         | Chybí buď požadované hlavičky nebo je poškozeno tělo jsonu. |
+| 403                  | `Forbidden`          | Volající není oprávněn provést tuto operaci.                   |
+| 404                  | `NotFound`           | Předplatné nebylo nalezeno s daným ID                                  |
+| 429                  | `RequestThrottleId`  | Služba je zaneprázdněna zpracováním požadavků, opakujte akci později.                  |
+| 503                  | `ServiceUnavailable` | Služba je dočasně vypnutá. Opakujte akci později.                          |
 |  |  |  |
 
-V případě odpovědi 202 se řiďte stavem operace požadavku v hlavičce Operational Location. Ověřování je stejné jako u ostatních rozhraní API Marketplace.
+Pro odpověď 202, v návaznosti na stav operace požadavku v záhlaví "Umístění operace". Ověřování je stejné jako u ostatních souborů API marketplace.
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-ms-correlationid | Ano          | ID korelace, pokud je klient předává, jinak se jedná o ID korelace serveru.                   |
+| x-ms-requestid     | Ano          | ID požadavku přijaté od klienta.                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, pokud je předán klientem, jinak se jedná o ID korelace serveru.                   |
 | x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení. |
-| Opakovat – za        | Ano          | Interval, se kterým může klient kontrolovat stav.                                                       |
-| Operace – umístění | Ano          | Připojte se k prostředku, abyste získali stav operace.                                                        |
+| Opakovat po opakování        | Ano          | Interval, se kterým může klient zkontrolovat stav.                                                       |
+| Umístění operace | Ano          | Odkaz na prostředek pro získání stavu operace.                                                        |
 |   |  |  |
 
-### <a name="get-operation-status"></a>Načíst stav operace
+### <a name="get-operation-status"></a>Získání stavu operace
 
-Tento koncový bod umožňuje uživateli sledovat stav aktivované asynchronní operace (přihlášení k odběru/zrušení předplatných nebo změna plánu).
+Tento koncový bod umožňuje uživateli sledovat stav spuštěné asynchronní operace (Subscribe/Unsubscribe/Change plan).
 
 *Požadavek*
 
-**GET**
+**Dostat**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
-| operationId         | Jedinečné ID pro aktivaci operace.                |
-| api-version         | Verze operace, která se má použít pro tento požadavek. |
+| operationId         | Jedinečné ID pro spuštěnou operaci.                |
+| verze-api         | Verze operace, která má být pro tento požadavek používána. |
 |  |  |
 
 *Hlavičky*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                                                                                                                                                  |
+| **Klíč záhlaví**     | **Požadováno** | **Popis**                                                                                                                                                                                                                  |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku od klienta. Doporučujeme identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.   |
-| x-ms-correlationid | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.  |
-| authorization      | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
+| x-ms-requestid     | Ne           | Jedinečná hodnota řetězce pro sledování požadavku od klienta. Doporučte identifikátor GUID. Pokud tato hodnota není k dispozici, jeden bude generována a poskytnuta v hlavičce odpovědi.   |
+| x-ms-correlationid | Ne           | Jedinečná hodnota řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud tato hodnota není k dispozici, jeden bude generována a poskytnuta v hlavičce odpovědi.  |
+| autorizace      | Ano          | Token nosiče JSON (JWT).                    |
 |  |  |  | 
 
 *Tělo odpovědi*
@@ -332,58 +331,58 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivované asynchronní 
 
 | **Název parametru** | **Datový typ** | **Popis**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
-| id                 | Řetězec        | ID operace                                                                      |
-| status             | Výčet          | Stav operace, jedna z následujících: `In Progress`, `Succeeded`nebo `Failed`.          |
-| resourceLocation   | Řetězec        | Připojte se k předplatnému, které jste vytvořili nebo upravili. Díky tomu může klient získat aktualizovanou operaci po stavu. Tato hodnota není nastavená pro operace `Unsubscribe`. |
-| vytvářejí            | DateTime      | Čas vytvoření operace v UTC                                                           |
-| lastModified       | DateTime      | Poslední aktualizace operace v UTC                                                      |
+| id                 | Řetězec        | ID operace.                                                                      |
+| status             | Výčet          | Stav operace, jeden z `In Progress` `Succeeded`následujících: , , nebo `Failed`.          |
+| resourceLocation   | Řetězec        | Odkaz na předplatné, které bylo vytvořeno nebo změněno. To pomáhá klientovi získat aktualizované stav po operaci. Tato hodnota není `Unsubscribe` nastavena pro operace. |
+| Vytvořen            | DateTime      | Čas vytvoření operace v čase UTC.                                                           |
+| lastModified       | DateTime      | Poslední aktualizace operace v UTC.                                                      |
 |  |  |  |
 
 *Kódy odpovědí*
 
 | **Stavový kód HTTP** | **Kód chyby**     | **Popis**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
-| 200                  | `OK`                 | Požadavek GET byl úspěšně vyřešen a tělo obsahuje odpověď.    |
-| 400                  | `BadRequest`         | Chybí buď požadovaná záhlaví, nebo byla zadána neplatná verze API-Version. |
-| 403                  | `Forbidden`          | Volající nemá autorizaci k provedení této operace.                      |
-| 404                  | `NotFound`           | Předplatné se nepodařilo najít s daným ID.                                     |
-| 429                  | `RequestThrottleId`  | Služba zpracovává požadavky, které jsou zaneprázdněné, a zkuste to znovu později.                     |
-| 503                  | `ServiceUnavailable` | Služba je dočasně vypnutá, zkuste to znovu později.                             |
+| 200                  | `OK`                 | Úspěšně vyřešen požadavek get a tělo obsahuje odpověď.    |
+| 400                  | `BadRequest`         | Buď chybí požadovaná záhlaví, nebo byla zadána neplatná verze rozhraní API. |
+| 403                  | `Forbidden`          | Volající není oprávněn provést tuto operaci.                      |
+| 404                  | `NotFound`           | Předplatné nebylo nalezeno s daným ID.                                     |
+| 429                  | `RequestThrottleId`  | Služba je zaneprázdněna zpracováním požadavků, opakujte akci později.                     |
+| 503                  | `ServiceUnavailable` | Služba je dočasně vypnutá, opakujte akci později.                             |
 |  |  |  |
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-ms-correlationid | Ano          | ID korelace, pokud je klient předává, jinak se jedná o ID korelace serveru.                   |
+| x-ms-requestid     | Ano          | ID požadavku přijaté od klienta.                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, pokud je předán klientem, jinak se jedná o ID korelace serveru.                   |
 | x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení. |
-| Opakovat – za        | Ano          | Interval, se kterým může klient kontrolovat stav.                                                       |
+| Opakovat po opakování        | Ano          | Interval, se kterým může klient zkontrolovat stav.                                                       |
 |  |  |  |
 
 ### <a name="get-subscription"></a>Získat předplatné
 
-Akce získat při přihlášení k odběru koncového bodu umožňuje uživateli načíst předplatné s daným identifikátorem prostředku.
+Akce Získat na koncový bod odběru umožňuje uživateli načíst odběr s daným identifikátorem prostředku.
 
 *Požadavek*
 
-**GET**
+**Dostat**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{SubscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | ID předplatného SaaS                              |
-| api-version         | Verze operace, která se má použít pro tento požadavek. |
+| subscriptionId      | ID předplatného SaaS.                              |
+| verze-api         | Verze operace, která má být pro tento požadavek používána. |
 |  |  |
 
 *Hlavičky*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                           |
+| **Klíč záhlaví**     | **Požadováno** | **Popis**                                                                                           |
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.                                                           |
-| x-ms-correlationid | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
-| authorization      | Ano          | Token nosiče webového tokenu JSON (JWT).                                                                    |
+| x-ms-requestid     | Ne           | Jedinečná hodnota řetězce pro sledování požadavku od klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, jeden bude generována a poskytnuta v hlavičce odpovědi.                                                           |
+| x-ms-correlationid | Ne           | Jedinečná hodnota řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud tato hodnota není k dispozici, jeden bude generována a poskytnuta v hlavičce odpovědi. |
+| autorizace      | Ano          | Token nosiče JSON (JWT).                                                                    |
 |  |  |  |
 
 *Tělo odpovědi*
@@ -402,60 +401,60 @@ Akce získat při přihlášení k odběru koncového bodu umožňuje uživateli
 
 | **Název parametru**     | **Datový typ** | **Popis**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | Řetězec        | ID prostředku předplatného SaaS v Azure    |
-| Hodnotami OfferId                | Řetězec        | ID nabídky, na kterou se uživatel přihlásil         |
-| planId                 | Řetězec        | ID plánu, se kterým se uživatel přihlásil k odběru.          |
-| saasSubscriptionName   | Řetězec        | Název předplatného SaaS                |
-| saasSubscriptionStatus | Výčet          | Stav operace.  Jeden z následujících produktů:  <br/> - `Subscribed`: předplatné je aktivní.  <br/> - `Pending`: uživatel vytvoří prostředek, ale neaktivuje ho ISV.   <br/> - `Unsubscribed`: uživatel zrušil odběr.   <br/> - `Suspended`: uživatel pozastavil předplatné.   <br/> - `Deactivated`: předplatné Azure je pozastavené.  |
-| vytvářejí                | DateTime      | Hodnota časového razítka vytváření předplatného ve standardu UTC |
-| lastModified           | DateTime      | Hodnota časového razítka změny předplatného ve standardu UTC |
+| id                     | Řetězec        | ID prostředku předplatného SaaS v Azure.    |
+| offerId                | Řetězec        | ID nabídky, k jehož odběru se uživatel přihlásil.         |
+| planId                 | Řetězec        | ID plánu, k jehož odběru se uživatel přihlásil.          |
+| saasSubscriptionNázev   | Řetězec        | Název předplatného SaaS.                |
+| saasSubscriptionStav | Výčet          | Stav operace.  Jeden z následujících produktů:  <br/> - `Subscribed`: Předplatné je aktivní.  <br/> - `Pending`: Uživatel vytvoří prostředek, ale není aktivován uživatelem ISV.   <br/> - `Unsubscribed`: Uživatel se odhlásil.   <br/> - `Suspended`: Uživatel pozastavil předplatné.   <br/> - `Deactivated`: Předplatné Azure je pozastaveno.  |
+| Vytvořen                | DateTime      | Hodnota časového razítka vytvoření předplatného v čase UTC. |
+| lastModified           | DateTime      | Předplatné změněné časové razítko hodnotu v UTC. |
 |  |  |  |
 
 *Kódy odpovědí*
 
 | **Stavový kód HTTP** | **Kód chyby**     | **Popis**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
-| 200                  | `OK`                 | Požadavek GET byl úspěšně vyřešen a tělo obsahuje odpověď.    |
-| 400                  | `BadRequest`         | Chybí buď požadovaná záhlaví, nebo byla zadána neplatná verze API-Version. |
-| 403                  | `Forbidden`          | Volající nemá autorizaci k provedení této operace.                      |
-| 404                  | `NotFound`           | Předplatné se nenašlo s daným ID.                                     |
-| 429                  | `RequestThrottleId`  | Služba zpracovává požadavky, které jsou zaneprázdněné, a zkuste to znovu později.                     |
-| 503                  | `ServiceUnavailable` | Služba je dočasně vypnutá, zkuste to znovu později.                             |
+| 200                  | `OK`                 | Úspěšně vyřešen požadavek get a tělo obsahuje odpověď.    |
+| 400                  | `BadRequest`         | Buď chybí požadovaná záhlaví, nebo byla zadána neplatná verze rozhraní API. |
+| 403                  | `Forbidden`          | Volající není oprávněn provést tuto operaci.                      |
+| 404                  | `NotFound`           | Předplatné nebylo nalezeno s daným ID                                     |
+| 429                  | `RequestThrottleId`  | Služba je zaneprázdněna zpracováním požadavků, opakujte akci později.                     |
+| 503                  | `ServiceUnavailable` | Služba je dočasně vypnutá, opakujte akci později.                             |
 |  |  |  |
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-ms-correlationid | Ano          | ID korelace, pokud je klient předává, jinak se jedná o ID korelace serveru.                   |
+| x-ms-requestid     | Ano          | ID požadavku přijaté od klienta.                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, pokud je předán klientem, jinak se jedná o ID korelace serveru.                   |
 | x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení. |
-| Opakovat – za        | Ne           | Interval, se kterým může klient kontrolovat stav.                                                       |
-| eTag               | Ano          | Připojte se k prostředku, abyste získali stav operace.                                                        |
+| Opakovat po opakování        | Ne           | Interval, se kterým může klient zkontrolovat stav.                                                       |
+| Etag               | Ano          | Odkaz na prostředek pro získání stavu operace.                                                        |
 |  |  |  |
 
-### <a name="get-subscriptions"></a>Získání předplatných
+### <a name="get-subscriptions"></a>Získat odběry
 
-Koncový bod přihlášení k předplatným umožňuje uživateli načíst všechna předplatná pro všechny nabídky od nezávislého výrobce softwaru.
+Get akce na odběry koncový bod umožňuje uživateli načíst všechna předplatná pro všechny nabídky z ISV.
 
 *Požadavek*
 
-**GET**
+**Dostat**
 
 **https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
-| api-version         | Verze operace, která se má použít pro tento požadavek. |
+| verze-api         | Verze operace, která má být pro tento požadavek používána. |
 |  |  |
 
 *Hlavičky*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                           |
+| **Klíč záhlaví**     | **Požadováno** | **Popis**                                           |
 |--------------------|--------------|-----------------------------------------------------------|
-| x-ms-requestid     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku od klienta. Doporučujeme identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.             |
-| x-ms-correlationid | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
-| authorization      | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
+| x-ms-requestid     | Ne           | Jedinečná hodnota řetězce pro sledování požadavku od klienta. Doporučte identifikátor GUID. Pokud tato hodnota není k dispozici, jeden bude generována a poskytnuta v hlavičce odpovědi.             |
+| x-ms-correlationid | Ne           | Jedinečná hodnota řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud tato hodnota není k dispozici, jeden bude generována a poskytnuta v hlavičce odpovědi. |
+| autorizace      | Ano          | Token nosiče JSON (JWT).                    |
 |  |  |  |
 
 *Tělo odpovědi*
@@ -475,39 +474,39 @@ Koncový bod přihlášení k předplatným umožňuje uživateli načíst všec
 | **Název parametru**     | **Datový typ** | **Popis**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | Řetězec        | ID prostředku předplatného SaaS v Azure    |
-| Hodnotami OfferId                | Řetězec        | ID nabídky, na kterou se uživatel přihlásil         |
-| planId                 | Řetězec        | ID plánu, kterému se uživatel přihlásil          |
-| saasSubscriptionName   | Řetězec        | Název předplatného SaaS                |
-| saasSubscriptionStatus | Výčet          | Stav operace.  Jeden z následujících produktů:  <br/> - `Subscribed`: předplatné je aktivní.  <br/> - `Pending`: uživatel vytvoří prostředek, ale neaktivuje ho ISV.   <br/> - `Unsubscribed`: uživatel zrušil odběr.   <br/> - `Suspended`: uživatel pozastavil předplatné.   <br/> - `Deactivated`: předplatné Azure je pozastavené.  |
-| vytvářejí                | DateTime      | Hodnota časového razítka vytváření předplatného v UTC |
-| lastModified           | DateTime      | Hodnota časového razítka změny předplatného ve standardu UTC |
+| offerId                | Řetězec        | ID nabídky, k jehož odběru se uživatel přihlásil         |
+| planId                 | Řetězec        | ID plánu, k jehož odběru se uživatel přihlásil          |
+| saasSubscriptionNázev   | Řetězec        | Název předplatného SaaS                |
+| saasSubscriptionStav | Výčet          | Stav operace.  Jeden z následujících produktů:  <br/> - `Subscribed`: Předplatné je aktivní.  <br/> - `Pending`: Uživatel vytvoří prostředek, ale není aktivován uživatelem ISV.   <br/> - `Unsubscribed`: Uživatel se odhlásil.   <br/> - `Suspended`: Uživatel pozastavil předplatné.   <br/> - `Deactivated`: Předplatné Azure je pozastaveno.  |
+| Vytvořen                | DateTime      | Hodnota časového razítka vytvoření předplatného v čase UTC |
+| lastModified           | DateTime      | Hodnota časového razítka upraveného předplatného v čase UTC |
 |  |  |  |
 
 *Kódy odpovědí*
 
 | **Stavový kód HTTP** | **Kód chyby**     | **Popis**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
-| 200                  | `OK`                 | Požadavek GET byl úspěšně vyřešen a tělo obsahuje odpověď.    |
-| 400                  | `BadRequest`         | Chybí buď požadovaná záhlaví, nebo byla zadána neplatná verze API-Version. |
-| 403                  | `Forbidden`          | Volající nemá autorizaci k provedení této operace.                      |
-| 404                  | `NotFound`           | Předplatné se nenašlo s daným ID.                                     |
-| 429                  | `RequestThrottleId`  | Služba je zaneprázdněná zpracováním požadavků. zkuste to prosím znovu později.                     |
-| 503                  | `ServiceUnavailable` | Služba je dočasně mimo provoz. Zkuste to prosím znovu později.                             |
+| 200                  | `OK`                 | Úspěšně vyřešen požadavek get a tělo obsahuje odpověď.    |
+| 400                  | `BadRequest`         | Buď chybí požadovaná záhlaví, nebo byla zadána neplatná verze rozhraní API. |
+| 403                  | `Forbidden`          | Volající není oprávněn provést tuto operaci.                      |
+| 404                  | `NotFound`           | Předplatné nebylo nalezeno s daným ID                                     |
+| 429                  | `RequestThrottleId`  | Služba je zaneprázdněna zpracováním požadavků, opakujte akci později.                     |
+| 503                  | `ServiceUnavailable` | Služba je dočasně vypnutá. Opakujte akci později.                             |
 |  |  |  |
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Požadováno** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-ms-correlationid | Ano          | ID korelace, pokud je klient předává, jinak se jedná o ID korelace serveru.                   |
+| x-ms-requestid     | Ano          | ID požadavku přijaté od klienta.                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, pokud je předán klientem, jinak se jedná o ID korelace serveru.                   |
 | x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení. |
-| Opakovat – za        | Ne           | Interval, se kterým může klient kontrolovat stav.                                                       |
+| Opakovat po opakování        | Ne           | Interval, se kterým může klient zkontrolovat stav.                                                       |
 |  |  |  |
 
-### <a name="saas-webhook"></a>Webhook SaaS
+### <a name="saas-webhook"></a>SaaS webový hák
 
-Webhook SaaS slouží k proaktivnímu upozorňování změn na službu SaaS. Očekává se, že tento příspěvek rozhraní API nebude ověřený a služba Microsoftu ho bude volat. Očekává se, že služba SaaS před provedením akce v oznámení Webhooku zavolá rozhraní API operací k ověření a autorizaci. 
+Webový hák SaaS se používá pro aktivní upozornění změn na službu SaaS. Očekává se, že toto rozhraní POST API bude neověřené a bude voláno službou společnosti Microsoft. Očekává se, že služba SaaS zavolá rozhraní API operací k ověření a autorizaci před přijetím akce na oznámení webhooku. 
 
 *Text*
 
@@ -524,17 +523,17 @@ Webhook SaaS slouží k proaktivnímu upozorňování změn na službu SaaS. Oč
 
 | **Název parametru**     | **Datový typ** | **Popis**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id  | Řetězec       | Jedinečné ID pro aktivaci operace.                |
+| id  | Řetězec       | Jedinečné ID pro spuštěnou operaci.                |
 | activityId   | Řetězec        | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení.               |
-| subscriptionId                     | Řetězec        | ID prostředku předplatného SaaS v Azure    |
-| Hodnotami OfferId                | Řetězec        | ID nabídky, na kterou se uživatel přihlásil Tato možnost je k dispozici pouze s akcí Update.        |
-| publisherId                | Řetězec        | ID vydavatele nabídky SaaS         |
-| planId                 | Řetězec        | ID plánu, se kterým se uživatel přihlásil k odběru. Tato možnost je k dispozici pouze s akcí Update.          |
-| action                 | Řetězec        | Akce, která aktivuje toto oznámení. Možné hodnoty – aktivovat, odstranit, pozastavit, obnovit, aktualizovat          |
-| Časové razítko                 | Řetězec        | Hodnota časového razítka ve standardu UTC, kdy se toto oznámení aktivovalo.          |
+| subscriptionId                     | Řetězec        | ID prostředku předplatného SaaS v Azure.    |
+| offerId                | Řetězec        | ID nabídky, k jehož odběru se uživatel přihlásil. K dispozici pouze s akcí "Aktualizovat".        |
+| id vydavatele                | Řetězec        | ID vydavatele nabídky SaaS         |
+| planId                 | Řetězec        | ID plánu, k jehož odběru se uživatel přihlásil. K dispozici pouze s akcí "Aktualizovat".          |
+| action                 | Řetězec        | Akce, která spouští toto oznámení. Možné hodnoty - Aktivovat, odstranit, pozastavit, obnovit, aktualizovat          |
+| Časové razítko                 | Řetězec        | Hodnota TImestamp v utc při aktivaci tohoto oznámení.          |
 |  |  |  |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Vývojáři také mohou programově načítat a manipulaci s úlohami, nabídkami a profily vydavatelů pomocí [rozhraní portál partnerů cloudu REST API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview).
+Vývojáři mohou také programově načítat a manipulovat s úlohami, nabídkami a profily vydavatelů pomocí rozhraní [REST rozhraní REST portálu cloudových partnerů](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview).

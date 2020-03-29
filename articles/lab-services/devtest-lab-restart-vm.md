@@ -1,6 +1,6 @@
 ---
-title: Restartování virtuálního počítače v testovacím prostředí v Azure DevTest Labs | Microsoft Docs
-description: Tento článek popisuje kroky pro rychlé a snadné restartování virtuálních počítačů v Azure DevTest Labs.
+title: Restartování virtuálního počítače v testovacím prostředí v laboratořích Azure DevTest Labs | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje kroky k rychlému a snadnému restartování virtuálních počítačů (VM) v azure devtest labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,45 +15,45 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 52d3b92909483a99eb82c86b727261bbeb5f8d46
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759990"
 ---
-# <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Restartování virtuálního počítače v testovacím prostředí v Azure DevTest Labs
-Pomocí kroků v tomto článku můžete rychle a snadno restartovat virtuální počítač v DevTest Labs. Před restartováním virtuálního počítače zvažte následující:
+# <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Restartování virtuálního počítače v testovacím prostředí v laboratořích Azure DevTest Labs
+Můžete rychle a snadno restartovat virtuální počítač v DevTest Labs podle kroků v tomto článku. Před restartováním virtuálního virtuálního montovana zvažte následující:
 
-- Aby bylo možné funkci restart povolit, musí být spuštěný virtuální počítač.
-- Pokud je uživatel připojen ke spuštěnému virtuálnímu počítači, když provádí restart, musí se po jeho spuštění znovu připojit k virtuálnímu počítači.
-- Pokud se při restartování virtuálního počítače použije artefakt, zobrazí se upozornění, že artefakt nemůžete použít.
+- Virtuální počítač musí být spuštěn, aby byla povolena funkce restartování.
+- Pokud je uživatel při restartování připojený ke spuštěnému virtuálnímu počítači, musí se po spuštění znovu připojit k virtuálnímu počítači.
+- Pokud artefakt se používá při restartování virtuálního počítače, zobrazí se upozornění, že artefakt nemusí být použita.
 
-    ![Upozornění při restartování při aplikování artefaktů](./media/devtest-lab-restart-vm/devtest-lab-restart-vm-apply-artifacts.png)
+    ![Upozornění při restartování při použití artefaktů](./media/devtest-lab-restart-vm/devtest-lab-restart-vm-apply-artifacts.png)
 
 
    > [!NOTE]
-   > Pokud při použití artefaktu byl virtuální počítač zastavený, můžete ho použít jako potenciální způsob řešení problému.
+   > Pokud se virtuální počítač zastavil při použití artefaktu, můžete použít funkci restartování virtuálního počítače jako potenciální způsob řešení problému.
    >
    >
 
-## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Postup restartování virtuálního počítače v testovacím prostředí v Azure DevTest Labs
-1. Přihlaste se k [Portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
-1. V seznamu Labs vyberte testovací prostředí, které obsahuje virtuální počítač, který chcete restartovat.
-1. Na levém panelu vyberte **moje Virtual Machines**.
-1. V seznamu virtuálních počítačů vyberte spuštěný virtuální počítač.
-1. V horní části podokna Správa virtuálních počítačů vyberte **restartovat**.
+## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Postup restartování virtuálního počítače v testovacím prostředí v laboratořích Azure DevTest Labs
+1. Přihlaste se k [portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Vyberte **Všechny služby**a ze seznamu vyberte **DevTest Labs.**
+1. Ze seznamu testovacích prostředí vyberte testovací prostředí, které obsahuje virtuální počítač, který chcete restartovat.
+1. V levém panelu vyberte **Moje virtuální počítače**.
+1. Ze seznamu virtuálních měn vyberte spuštěný virtuální ms.
+1. V horní části podokna správy virtuálních počítačových společností vyberte **Restartovat**.
 
-    ![Tlačítko restartovat virtuální počítač](./media/devtest-lab-restart-vm/devtest-lab-restart-vm.png)
+    ![Tlačítko Restartovat virtuální počítač](./media/devtest-lab-restart-vm/devtest-lab-restart-vm.png)
 
-1. Monitorujte stav restartování výběrem ikony **oznámení** v pravém horním rohu okna.
+1. Sledování stavu restartování výběrem ikony **Oznámení** v pravém horním rohu okna.
 
     ![Zobrazení stavu restartování virtuálního počítače](./media/devtest-lab-restart-vm/devtest-lab-restart-notification.png)
 
-Běžící virtuální počítač můžete také restartovat tak, že v seznamu **mých Virtual Machines**vyberete jeho tři tečky (...).
+Spuštěný virtuální počítač můžete také restartovat výběrem jeho tři tečky (...) v seznamu **Moje virtuální počítače**.
 
-![Restartování virtuálního počítače přes tři tečky](./media/devtest-lab-restart-vm/devtest-lab-restart-elipses.png)
+![Restartování virtuálního počítače prostřednictvím elips](./media/devtest-lab-restart-vm/devtest-lab-restart-elipses.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Po restartování se můžete k virtuálnímu počítači připojit tak, že v podokně Správa vyberete **připojit** .
-* Prozkoumejte [galerii šablon rychlého startu Azure Resource Manager DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)
+* Po restartování se můžete znovu připojit k virtuálnímu počítači výběrem **možnosti Připojit** v podokně správy.
+* Prozkoumejte [galerii šablon Rychléspuštění nástroje DevTest Labs Azure](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)

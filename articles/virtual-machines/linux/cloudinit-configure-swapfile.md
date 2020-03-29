@@ -1,6 +1,6 @@
 ---
-title: Použití Cloud-init ke konfiguraci odkládacího oddílu na virtuálním počítači se systémem Linux
-description: Jak pomocí Cloud-init nakonfigurovat odkládací oddíl na virtuálním počítači Linux během vytváření pomocí Azure CLI
+title: Konfigurace odkládacího oddílu na virtuálním počítači s Linuxem pomocí cloud-initu
+description: Jak používat cloud-init ke konfiguraci odkládacího oddílu ve virtuálním počítači SB Linux během vytváření pomocí rozhraní příkazového příkazu Azure
 author: rickstercdn
 manager: gwallace
 ms.service: virtual-machines-linux
@@ -8,21 +8,21 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: 1247652e536042ee249054d86aed3c3f8e7aa7bf
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969208"
 ---
-# <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Použití Cloud-init ke konfiguraci odkládacího oddílu na virtuálním počítači se systémem Linux
-V tomto článku se dozvíte, jak pomocí [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat odkládací oddíl u různých distribucí systému Linux. Odkládací oddíl byl tradičně nakonfigurovaný agentem pro Linux (WALA) na základě toho, která distribuce je vyžaduje.  Tento dokument vám pomůže sestavovat proces vytváření swapového oddílu na vyžádání během doby zřízení pomocí Cloud-init.  Další informace o tom, jak nativně funguje Cloud-init v Azure a podporované distribuce Linux, najdete v článku [Přehled Cloud-init](using-cloud-init.md) .
+# <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Konfigurace odkládacího oddílu na virtuálním počítači s Linuxem pomocí cloud-initu
+Tento článek ukazuje, jak pomocí [cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat odkládací oddíl na různých distribucích Linuxu. Odkládací oddíl byl tradičně konfigurován agentem Linuxu (WALA) na základě toho, které distribuce ji vyžadovaly.  Tento dokument bude nastínit proces pro vytváření odkládacího oddílu na vyžádání během zřizování čas pomocí cloud-init.  Další informace o tom, jak cloud-init funguje nativně v Azure a podporované distribuce Linuxu, najdete [v tématu cloud-init přehled](using-cloud-init.md)
 
-## <a name="create-swap-partition-for-ubuntu-based-images"></a>Vytvoření odkládacího oddílu pro image založené na Ubuntu
-Ve výchozím nastavení v Azure Image Galerie Ubuntu nevytváří swapové oddíly. Povolení konfigurace prohozeného oddílu během zřizování virtuálního počítače pomocí Cloud-init – Podívejte se na [AzureSwapPartitions dokument](https://wiki.ubuntu.com/AzureSwapPartitions) na wikiwebu Ubuntu.
+## <a name="create-swap-partition-for-ubuntu-based-images"></a>Vytvořte odkládací oddíl pro obrázky založené na Ubuntu
+Ve výchozím nastavení v Azure nevytvářejí obrázky galerie Ubuntu odkládací oddíly. Chcete-li povolit konfiguraci odkládacího oddílu během doby zřizování virtuálních počítačů pomocí cloud-initu – přečtěte si [dokument AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions) na wiki Ubuntu.
 
-## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>Vytvoření odkládacího oddílu pro image založené na Red Hat a CentOS
+## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>Vytvoření odkládacího oddílu pro obrázky založené na Red Hatu a CentOS
 
-V aktuálním prostředí vytvořte soubor s názvem *cloud_init_swappart. txt* a vložte následující konfiguraci. V tomto příkladu vytvořte soubor v Cloud Shell ne na vašem místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_swappart.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Vyberte #1 pro použití editoru **nano** . Přesvědčte se, zda je celý soubor Cloud-init zkopírován správně, zejména první řádek.  
+Vytvořte soubor v aktuálním prostředí s názvem *cloud_init_swappart.txt* a vložte následující konfiguraci. V tomto příkladu vytvořte soubor v prostředí Cloud Shell není v místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_swappart.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Zvolte #1, abyste použili **editor nano.** Ujistěte se, že celý soubor cloud-init je zkopírován správně, zejména první řádek.  
 
 ```yaml
 #cloud-config
@@ -41,13 +41,13 @@ mounts:
   - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
 ```
 
-Před nasazením této image je potřeba vytvořit skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group) . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
+Před nasazením této bitové kopie je třeba vytvořit skupinu prostředků pomocí příkazu [az group create.](/cli/azure/group) Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Nyní vytvořte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) a zadejte soubor Cloud-init pomocí `--custom-data cloud_init_swappart.txt` následujícím způsobem:
+Teď vytvořte virtuální hosti s [vytvořením virtuálního virtuálního virtuálního připojení a](/cli/azure/vm) zadejte soubor `--custom-data cloud_init_swappart.txt` cloud-init takto:
 
 ```azurecli-interactive 
 az vm create \
@@ -58,14 +58,14 @@ az vm create \
   --generate-ssh-keys 
 ```
 
-## <a name="verify-swap-partition-was-created"></a>Ověřit vytvoření odkládacího oddílu
-SSH na veřejnou IP adresu vašeho virtuálního počítače zobrazeného ve výstupu z předchozího příkazu. Zadejte vlastní **publicIpAddress** následujícím způsobem:
+## <a name="verify-swap-partition-was-created"></a>Ověření vytvoření odkládacího oddílu
+SSH na veřejnou IP adresu vašeho virtuálního počítače zobrazené ve výstupu z předchozího příkazu. Zadejte svůj vlastní **publicIpAddress** takto:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Až se SSH'ed do virtuálního počítače, podívejte se, jestli se odkládací oddíl vytvořil.
+Jakmile máte SSH'ed do virtuálního virtuálního disku, zkontrolujte, zda byl vytvořen odkládací oddíl
 
 ```bash
 swapon -s
@@ -79,12 +79,12 @@ Filename                Type        Size    Used    Priority
 ```
 
 > [!NOTE] 
-> Máte-li existující bitovou kopii Azure s nakonfigurovaným odkládacím oddílem a chcete změnit konfiguraci odkládacího oddílu pro nové image, odeberte existující odkládací oddíl. Další podrobnosti najdete v dokumentu "přizpůsobení imagí pro zřízení pomocí Cloud-init".
+> Pokud máte existující image Azure, která má nakonfigurovaný odkládací oddíl a chcete změnit konfiguraci odkládacího oddílu pro nové bitové kopie, měli byste odebrat existující odkládací oddíl. Další podrobnosti naleznete v dokumentu "Přizpůsobení obrázků pro poskytování pomocí cloud-init".
 
 ## <a name="next-steps"></a>Další kroky
-Další příklady cloudových inicializací změn konfigurace najdete v následujících tématech:
+Další příklady změn konfigurace cloud-init najdete v následujících tématech:
  
-- [Přidání dalšího uživatele se systémem Linux k virtuálnímu počítači](cloudinit-add-user.md)
-- [Spusťte Správce balíčků, aby při prvním spuštění aktualizoval existující balíčky.](cloudinit-update-vm.md)
-- [Změnit místní název hostitele virtuálního počítače](cloudinit-update-vm-hostname.md) 
-- [Instalace balíčku aplikace, aktualizace konfiguračních souborů a vkládání klíčů](tutorial-automate-vm-deployment.md)
+- [Přidání dalšího uživatele Linuxu do virtuálního počítače](cloudinit-add-user.md)
+- [Spuštění správce balíčků pro aktualizaci existujících balíčků při prvním spuštění](cloudinit-update-vm.md)
+- [Změna názvu místního hostitele virtuálního_kmontíva](cloudinit-update-vm-hostname.md) 
+- [Instalace balíčku aplikace, aktualizace konfiguračních souborů a vložení klíčů](tutorial-automate-vm-deployment.md)

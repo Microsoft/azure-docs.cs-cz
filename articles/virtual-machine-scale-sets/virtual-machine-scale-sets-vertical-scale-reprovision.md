@@ -1,6 +1,6 @@
 ---
-title: Vertikálně škálované služby Virtual Machine Scale Sets v Azure
-description: Jak vertikálně škálovat virtuální počítač v reakci na monitorování výstrah pomocí Azure Automation
+title: Škálovací sady virtuálních strojů Azure svisle škálušednou škáluženy virtuálních strojů Azure
+description: Jak vertikálně škálovat virtuální počítač v reakci na upozornění monitorování pomocí Azure Automation
 author: mayanknayar
 tags: azure-resource-manager
 ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
@@ -11,36 +11,36 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: manayar
 ms.openlocfilehash: fa1dda2907e8400491c8d18897bb41fb9cff49fd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76274434"
 ---
-# <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikální automatické škálování se sadami škálování virtuálních počítačů
+# <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikální automatické škálování se sadami měřítek virtuálních strojů
 
-Tento článek popisuje, jak vertikálně škálovat [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) Azure s přezřizováním nebo bez něj. 
+Tento článek popisuje, jak vertikálně [škálovat škálovací sady virtuálních strojů](https://azure.microsoft.com/services/virtual-machine-scale-sets/) Azure s nebo bez opětovného zřízení. 
 
-Vertikální škálování, označované také jako *horizontální navýšení kapacity* *, znamená*zvýšení nebo snížení velikosti virtuálních počítačů v reakci na zatížení. Porovnejte toto chování s [horizontálním škálováním](virtual-machine-scale-sets-autoscale-overview.md), které se také označuje jako horizontální navýšení *kapacity* a *horizontální*navýšení kapacity, kde se počet virtuálních počítačů mění v závislosti na zatížení.
+Vertikální škálování, označované také jako *vertikálně navýšit* kapacitu a *vertikálně snížit kapacitu*, znamená zvýšení nebo snížení velikosti virtuálních počítačů (VM) v reakci na zatížení. Porovnejte toto chování s [horizontální škálování](virtual-machine-scale-sets-autoscale-overview.md), označované také jako *horizontální navýšení kapacity* a *škálování v*, kde se mění počet virtuálních počítačích v závislosti na zatížení.
 
-Opětovné zřízení znamená odebrání existujícího virtuálního počítače a jeho nahrazení novým. Když zvětšíte nebo zmenšíte velikost virtuálních počítačů ve službě Virtual Machine Scale set, v některých případech budete chtít změnit velikost stávajících virtuálních počítačů a zachovat data, zatímco v jiných případech potřebujete nasadit nové virtuální počítače nové velikosti. Tento dokument popisuje oba případy.
+Reprovisioning znamená odebrání existujícího virtuálního mandu a jeho nahrazení novým. Když zvětšíte nebo zmenšíte velikost virtuálních počítačů ve škálovací sadě virtuálních počítačů, v některých případech chcete změnit velikost stávajících virtuálních počítačů a zachovat data, zatímco v jiných případech potřebujete nasadit nové virtuální počítače nové velikosti. Tento dokument se týká obou případů.
 
-Vertikální škálování může být užitečné v těchto případech:
+Vertikální měřítko může být užitečné, když:
 
-* Služba založená na virtuálních počítačích je využívána v provozu (například u víkendů). Snížení velikosti virtuálního počítače může snížit měsíční náklady.
-* Zvýšení velikosti virtuálních počítačů, aby se vypořádat s větší poptávkou bez vytváření dalších virtuálních počítačů.
+* Služba postavená na virtuálních počítačích je nedostatečně využívaná (například o víkendech). Zmenšení velikosti virtuálního počítače může snížit měsíční náklady.
+* Zvýšení velikosti virtuálních počítače, abyste se vyrovnali s větší poptávkou bez vytváření dalších virtuálních počítače.
 
-Můžete nastavit svislé škálování, které se aktivuje na základě výstrah založených na metrikách ze sady škálování virtuálních počítačů. Když je výstraha aktivována, vyvolá Webhook, který aktivuje sadu Runbook, která může škálovat nastavené nebo vypnuté škálování. Vertikální škálování se dá nakonfigurovat pomocí následujících kroků:
+Můžete nastavit vertikální škálování, které se aktivuje na základě upozornění založených na metrikách z škálovací sady virtuálních strojů. Když je výstraha aktivována, spustí webhook, který aktivuje runbook, který může škálovat nastavení škálování nahoru nebo dolů. Vertikální škálování lze nakonfigurovat následujícími kroky:
 
-1. Vytvořte účet Azure Automation s funkcí Run-as.
-2. Importujte Azure Automation sady Runbook škálované do svého předplatného pro virtuální počítače.
-3. Přidejte Webhook do Runbooku.
-4. Pomocí oznámení Webhooku přidejte do sady škálování virtuálního počítače upozornění.
+1. Vytvořte účet Azure Automation s funkcí run-as.
+2. Importujte runbooky s vertikálním škálovacím systémem Azure Automation pro škálovací sady virtuálních strojů do vašeho předplatného.
+3. Přidejte do sady Runbook webový hák.
+4. Přidejte výstrahu do škálovací sady virtuálních strojů pomocí oznámení webhooku.
 
 > [!NOTE]
-> Vzhledem k velikosti prvního virtuálního počítače se můžou velikosti, na které se dá škálovat, omezit kvůli dostupnosti dalších velikostí v clusteru, na kterém je nasazený aktuální virtuální počítač. V publikovaných runbookůch Automation používaných v tomto článku se postará o tento případ a jenom škálovat v rámci dvojice velikostí virtuálních počítačů. To znamená, že virtuální počítač s Standard_D1v2 nebude po navýšení do Standard_G5 škálované na Basic_A0. Také omezené velikosti virtuálních počítačů se škálují nahoru/dolů nejsou podporované. Můžete si vybrat, jestli chcete škálovat mezi následujícími páry velikostí:
+> Vzhledem k velikosti prvního virtuálního počítače, velikosti, které lze škálovat na, může být omezena z důvodu dostupnosti jiných velikostí v clusteru aktuální virtuální počítač je nasazen v. V publikovaných runbooků automatizace použitých v tomto článku se postaráme o tento případ a pouze škálování v rámci dvojice velikosti virtuálního počítače. To znamená, že virtuální počítač Standard_D1v2 nebude náhle škálovat na Standard_G5 nebo zmenšen na Basic_A0. Také omezené velikosti virtuálních strojů navýšit/snížit kapacitu není podporována. Můžete se rozhodnout pro škálování mezi následujícími dvojicemi velikostí:
 > 
-> | Velikost virtuálního počítače – párování škálování |  |
+> | Dvojice změn velikosti virtuálních počítače |  |
 > | --- | --- |
 > | Basic_A0 |Basic_A4 |
 > | Standard_A0 |Standard_A4 |
@@ -87,39 +87,39 @@ Můžete nastavit svislé škálování, které se aktivuje na základě výstra
 > | Standard_NV12s_v3 |Standard_NV48s_v3 |
 > 
 
-## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Vytvoření účtu Azure Automation s možností spuštění jako
-První věc, kterou potřebujete udělat, je vytvořit účet Azure Automation, který hostuje Runbooky používané pro škálování instancí sady škálování virtuálních počítačů. Nedávno [Azure Automation](https://azure.microsoft.com/services/automation/) zavedli funkci účet Spustit jako, která umožňuje nastavit instanční objekt pro automatické spouštění Runbooků jménem uživatele. Další informace:
+## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Vytvoření účtu Azure Automation s funkcí run-as
+První věc, kterou musíte udělat, je vytvořit účet Azure Automation, který je hostitelem runbooků používaných k škálování instancí škálovací sady virtuálních strojů. Nedávno [Azure Automation](https://azure.microsoft.com/services/automation/) představil funkci "Spustit jako účet", která umožňuje nastavení instančního objektu pro automatické spouštění runbooků jménem uživatele. Další informace naleznete v tématu:
 
 * [Ověření runbooků pomocí účtu Spustit v Azure jako](../automation/automation-sec-configure-azure-runas-account.md)
 
-## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Import Azure Automationch sad Runbook se vertikálním škálováním do předplatného
+## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Import runbooků Azure Automation s vertikálním škálovacím kamenem do předplatného
 
-Sady Runbook, které jsou potřeba ke vertikálnímu škálování vašich virtuálních počítačů, jsou už publikované v galerii sady Runbook Azure Automation. Pokud je chcete importovat do svého předplatného, postupujte podle kroků v tomto článku:
+Sady runbooků potřebné k vertikálnímu škálování škálovacích sad virtuálních počítačů se už publikují v Galerii runbooků Azure Automation. Pokud je chcete importovat do předplatného, postupujte takto:
 
 * [Galerie runbooků a modulů pro Azure Automation](../automation/automation-runbook-gallery.md)
 
-V nabídce Runbooky vyberte možnost Procházet galerii:
+Zvolte možnost Procházet galerii z nabídky Runbook:
 
-![Runbooky k importu][runbooks]
+![Sady Runbook, které mají být importovány][runbooks]
 
-Zobrazí se Runbooky, které je třeba importovat. Vyberte sadu Runbook na základě toho, zda chcete svislé škálování s nebo bez opětovného zřizování:
+Zobrazí se sady Runbook, které je třeba importovat. Vyberte runbook na základě toho, jestli chcete vertikální změnu měřítka s nebo bez reprovisioningu:
 
-![Galerie runbooků][gallery]
+![Galerie Runbooků][gallery]
 
-## <a name="add-a-webhook-to-your-runbook"></a>Přidání Webhooku do Runbooku
+## <a name="add-a-webhook-to-your-runbook"></a>Přidání webového háčku do sady Runbook
 
-Po importu runbooků přidejte Webhook do Runbooku, aby ho mohl aktivovat výstraha ze sady škálování virtuálního počítače. Podrobnosti o vytvoření Webhooku pro váš Runbook jsou popsány v tomto článku:
+Po importu runbooků přidejte do sady Runbook webový hák, aby ho mohla aktivovat výstraha ze škálovací sady virtuálních strojů. Podrobnosti o vytvoření webhooku pro váš Runbook jsou popsány v tomto článku:
 
-* [Azure Automation Webhooky](../automation/automation-webhooks.md)
+* [Webhooky Azure Automation](../automation/automation-webhooks.md)
 
 > [!NOTE]
-> Před zavřením dialogu Webhooku si nezapomeňte zkopírovat identifikátor URI Webhooku, protože tuto adresu budete potřebovat v další části.
+> Ujistěte se, že zkopírujete webhooku URI před zavřením webhooku dialogové okno, jak budete potřebovat tuto adresu v další části.
 > 
 > 
 
-## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Přidání výstrahy do sady škálování virtuálních počítačů
+## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Přidání upozornění do škálovací sady virtuálních strojů
 
-Níže je skript PowerShellu, který ukazuje, jak přidat výstrahu do sady škálování virtuálních počítačů. V následujícím článku najdete název metriky, na které se má upozornění aktivovat: [Azure monitor automatické škálování běžných metrik](../azure-monitor/platform/autoscale-common-metrics.md).
+Níže je skript prostředí PowerShell, který ukazuje, jak přidat výstrahu do škálovací sady virtuálních strojů. V následujícím článku získáte název metriky, na kterou se má výstraha zapálit: [Automatické škálování běžných metrik Azure Monitoru](../azure-monitor/platform/autoscale-common-metrics.md).
 
 ```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
@@ -148,18 +148,18 @@ Add-AzMetricAlertRule  -Name  $alertName `
 ```
 
 > [!NOTE]
-> Doporučuje se nakonfigurovat přiměřené časové období pro výstrahu, aby se předešlo spouštění vertikálního škálování a jakékoli přidružené přerušení služby bylo příliš často. Vezměte v úvahu interval minimálně 20-30 minut. Pokud se potřebujete vyhnout jakémukoli přerušení, zvažte horizontální škálování.
+> Doporučuje se nakonfigurovat přiměřené časové okno pro výstrahu, aby se zabránilo aktivaci vertikální škálování a jakékoli přidružené přerušení služby, příliš často. Zvažte okno nejméně 20-30 minut nebo více. Pokud potřebujete zabránit přerušení, zvažte horizontální škálování.
 > 
 > 
 
-Další informace o tom, jak vytvářet výstrahy, najdete v následujících článcích:
+Další informace o vytváření výstrah naleznete v následujících článcích:
 
-* [Ukázky Azure Monitor PowerShellu pro rychlý Start](../azure-monitor/platform/powershell-quickstart-samples.md)
-* [Ukázky rychlých startů pro Azure Monitor pro různé platformy](../azure-monitor/platform/cli-samples.md)
+* [Ukázky rychlého startu PowerShellu azure monitoru](../azure-monitor/platform/powershell-quickstart-samples.md)
+* [Azure Monitor Rychlé spuštění příkazového systému pro různé platformy](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>Souhrn
 
-Tento článek ukázal jednoduché příklady vertikálního škálování. Pomocí těchto stavebních bloků – účet Automation, Runbooky, Webhooky, výstrahy – můžete připojit bohatou řadu událostí s přizpůsobenou sadou akcí.
+Tento článek ukázal jednoduché příklady vertikálního měřítka. S těmito stavebními bloky - Automatizační účet, runbooky, webhooky, výstrahy - můžete připojit bohatou škálu událostí s přizpůsobenou sadou akcí.
 
 [runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png
 [gallery]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks-gallery.png

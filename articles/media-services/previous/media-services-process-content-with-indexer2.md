@@ -1,6 +1,6 @@
 ---
-title: Indexování mediálních souborů pomocí Azure Media Indexer 2 Preview | Microsoft Docs
-description: Azure Media Indexer umožňuje zpřístupnění obsahu mediálních souborů a vytvoření fulltextového přepisu pro skryté titulky a klíčová slova. V tomto tématu se dozvíte, jak používat Media Indexer 2 Preview.
+title: Indexování mediálních souborů pomocí azure media indexeru 2 Preview | Dokumenty společnosti Microsoft
+description: Azure Media Indexer umožňuje prohledávat obsah mediálních souborů a generovat fulltextový přepis pro skryté titulky a klíčová slova. Toto téma ukazuje, jak používat Media Indexer 2 Preview.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,46 +15,46 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
 ms.openlocfilehash: c24218dc116803ca0e0a1f166b7b54b24fc4d5ef
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163790"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Indexování mediálních souborů pomocí Azure Media Indexer 2 Preview
 
 > [!NOTE]
-> Procesor médií **Azure Media Indexer 2** bude vyřazen. Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tento starší multimediální procesor. Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](migrate-indexer-v1-v2.md).
+> Mediální procesor **Azure Media Indexer 2** bude vyřazen. Data vyřazení naleznete v tomto tématu [starších součástí.](legacy-components.md) [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahradí tento starší mediální procesor. Další informace najdete [v tématu Migrace z Azure Media Indexer a Azure Media Indexer 2 do Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
 
-Procesor médií **verze Preview Azure Media Indexer 2** (MP) umožňuje vytvářet soubory médií a obsah prohledávatelné a také generovat skryté titulky. Ve srovnání s předchozí verzí [Azure Media Indexer](media-services-index-content.md)provádí **Azure Media Indexer 2 Preview** rychlejší indexování a nabízí širší podporu pro jazyky. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (Mandarin, zjednodušená), portugalština, arabština, ruština a japonština.
+Mediální procesor **Azure Media Indexer 2 Preview** (MP) umožňuje prohledávat mediální soubory a obsah a také generovat stopy skrytých titulků. Ve srovnání s předchozí verzí [Azure Media Indexer](media-services-index-content.md), **Azure Media Indexer 2 Preview** provádí rychlejší indexování a nabízí širší jazykovou podporu. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (mandarínština, zjednodušená), portugalština, arabština, ruština a japonština.
 
-Sada Management Pack **Azure Media Indexer 2 Preview** je momentálně ve verzi Preview.
+**Azure Media Indexer 2 Preview** MP je aktuálně ve verzi Preview.
 
-Tento článek ukazuje, jak vytvořit úlohy indexování pomocí **Azure Media Indexer 2 ve verzi Preview**.
+Tento článek ukazuje, jak vytvořit úlohy indexování pomocí **Azure Media Indexer 2 Preview**.
 
 ## <a name="considerations"></a>Požadavky
 
-Platí následující požadavky:
+Platí následující důležité informace:
  
-* Indexer 2 není podporován v Azure Čína 21Vianet a Azure Government.
-* Při indexování obsahu se ujistěte, že používáte mediální soubory, které mají velmi jasný zvuk (bez hudby, hluku, efektů nebo mikrofonu Hiss). Mezi příklady příslušného obsahu patří: zaznamenané schůzky, přednášky nebo prezentace. Následující obsah nemusí být vhodný pro indexování: filmy, televizní pořady, cokoli se smíšeným zvukovým a zvukovým efektem, špatně zaznamenaného obsahu s hlukem na pozadí (Hiss).
+* Indexer 2 není podporován v Azure China 21Vianet a Azure Government.
+* Při indexování obsahu používejte mediální soubory, které mají velmi jasnou řeč (bez hudby na pozadí, šumu, efektů nebo syčení mikrofonu). Příklady vhodného obsahu jsou: nahrané schůzky, přednášky nebo prezentace. Následující obsah nemusí být vhodný pro indexování: filmy, televizní pořady, cokolise se smíšenými zvukovými a zvukovými efekty, špatně nahraný obsah s šumem na pozadí (syčení).
  
 ## <a name="input-and-output-files"></a>Vstupní a výstupní soubory
 ### <a name="input-files"></a>Vstupní soubory
 Zvukové soubory nebo videosoubory
 
 ### <a name="output-files"></a>Výstupní soubory
-Úloha indexování může generovat soubory titulků v následujících formátech:  
+Úloha indexování může generovat soubory skrytých titulků v následujících formátech:  
 
 * **TTML**
 * **WebVTT**
 
-Soubory skrytého titulku (CC) v těchto formátech lze použít k zpřístupnění zvukových a videosouborů uživatelům s postižením sluchu.
+Soubory s uzavřeným titulkem (CC) v těchto formátech lze použít k tomu, aby byly zvukové soubory a video soubory přístupné osobám se sluchovým postižením.
 
-## <a name="task-configuration-preset"></a>Konfigurace úlohy (předvolba)
-Při vytváření úlohy indexování pomocí **Azure Media Indexer 2 Preview**je nutné zadat předvolby konfigurace.
+## <a name="task-configuration-preset"></a>Konfigurace úloh (přednastavení)
+Při vytváření úlohy indexování pomocí **Azure Media Indexer 2 Preview**je nutné zadat přednastavení konfigurace.
 
-Následující sady JSON mají dostupné parametry.
+Následující JSON nastaví dostupné parametry.
 
 ```json
     {
@@ -73,31 +73,31 @@ Následující sady JSON mají dostupné parametry.
 ```
 
 ## <a name="supported-languages"></a>Podporované jazyky
-Azure Media Indexer 2 Preview podporuje převod řeči na text pro následující jazyky (při zadávání názvu jazyka v konfiguraci úlohy použijte 4 znaky kódu v závorkách, jak je znázorněno níže):
+Azure Media Indexer 2 Preview podporuje převod řeči na text pro následující jazyky (při zadávání názvu jazyka v konfiguraci úlohy použijte čtyřmístný kód v závorkách, jak je znázorněno níže):
 
 * Angličtina [EnUs]
-* Španělština [EsEs]
-* Čínština (Mandarin, zjednodušená) [ZhCn]
+* Španělština [Eses]
+* Čínština (mandarínština, zjednodušená) [ZhCn]
 * Francouzština [FrFr]
 * Němčina [DeDe]
-* Italština [ItIt]
+* Italština [Itit]
 * Portugalština [PtBr]
-* Arabština (Egypt) [ArEg]
-* Japonština [JaJp]
-* Ruština [RuRu]
-* British – angličtina [EnGb]
+* Arabština (egyptská) [ArEg]
+* Japonština [Jajp]
+* Ruština.[ RuRu]
+* Britská angličtina [EnGb]
 * Španělština (Mexiko) [EsMx] 
 
 ## <a name="supported-file-types"></a>Podporované typy souborů
 
-Informace o podporovaných typech souborů najdete v části [podporované kodeky a formáty](media-services-media-encoder-standard-formats.md#input-containerfile-formats) .
+Informace o podporovaných typech souborů naleznete v části [Podporované kodeky/formáty.](media-services-media-encoder-standard-formats.md#input-containerfile-formats)
 
-## <a name="net-sample-code"></a>Vzorový kód .NET
+## <a name="net-sample-code"></a>Ukázkový kód rozhraní .NET
 
 Následující program ukazuje, jak:
 
-1. Vytvořte Asset a nahrajte do něj mediální soubor.
-2. Vytvořte úlohu s úlohou indexování na základě konfiguračního souboru, který obsahuje následující předvolbu JSON:
+1. Vytvořte datový zdroj a nahrajte do něj mediální soubor.
+2. Vytvořte úlohu s úlohou indexování založenou na konfiguračním souboru, který obsahuje následující přednastavení json:
 
     ```json
             {
@@ -291,14 +291,14 @@ namespace IndexContent
 }
 ```
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy
-[Přehled analýzy Azure Media Services](media-services-analytics-overview.md)
+[Přehled analýzy Mediálních služeb Azure](media-services-analytics-overview.md)
 
 [Ukázky Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

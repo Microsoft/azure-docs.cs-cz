@@ -1,94 +1,109 @@
 ---
 title: Operátory dotazů SQL pro Azure Cosmos DB
-description: Přečtěte si o operátorech SQL, jako jsou rovnost, porovnání a logické operátory podporované Azure Cosmos DB.
-author: markjbrown
+description: Další informace o operátorech SQL, jako je rovnost, porovnání a logické operátory podporované Službou Azure Cosmos DB.
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: mjbrown
-ms.openlocfilehash: f3efe4bee749f0d3132206ca68a33a60f0e16b81
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 03/19/2020
+ms.author: tisande
+ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870934"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063562"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Operátory v Azure Cosmos DB
 
-Tento článek podrobně popisuje různé operátory podporované nástrojem Azure Cosmos DB.
+Tento článek podrobně popisuje různé operátory podporované Azure Cosmos DB.
 
 ## <a name="equality-and-comparison-operators"></a>Operátory rovnosti a porovnání
 
-V následující tabulce jsou uvedeny výsledek porovnání rovnosti v rozhraní SQL API mezi jakékoli dva typy JSON.
+Následující tabulka ukazuje výsledek porovnání rovnosti v rozhraní SQL API mezi libovolnými dvěma typy JSON.
 
-| **OP** | **Nedefinovaný** | **Hodnotu Null** | **Datový typ Boolean** | **Číslo** | **řetězec** | **objekt** | **Pole** |
+| **Op** | **Nedefinované** | **Null** | **Logická hodnota** | **Číslo** | **Řetězec** | **Objekt** | **Pole** |
 |---|---|---|---|---|---|---|---|
-| **Nedefinovaný** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
-| **Hodnotu Null** | Nedefinováno | **Ok** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
-| **Datový typ Boolean** | Nedefinováno | Nedefinováno | **Ok** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
-| **Číslo** | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** | Nedefinováno | Nedefinováno | Nedefinováno |
-| **řetězec** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** | Nedefinováno | Nedefinováno |
-| **objekt** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** | Nedefinováno |
-| **Pole** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** |
+| **Nedefinované** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované |
+| **Null** | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované |
+| **Logická hodnota** | Nedefinované | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované | Nedefinované |
+| **Číslo** | Nedefinované | Nedefinované | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované |
+| **Řetězec** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | **Ok** | Nedefinované | Nedefinované |
+| **Objekt** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | **Ok** | Nedefinované |
+| **Pole** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | **Ok** |
 
-Pro operátory porovnání, například `>`, `>=`, `!=`, `<`a `<=`, porovnávání mezi typy nebo mezi dvěma objekty nebo poli vytváří `Undefined`.  
+Pro operátory `>`porovnání, `!=` `<`jako `<=`je například , `>=`, , a `Undefined`, porovnání mezi typy nebo mezi dvěma objekty nebo pole vytváří .  
 
-Pokud je výsledek skalárního výrazu `Undefined`, položka není obsažena ve výsledku, protože `Undefined` se nerovná `true`.
+Pokud je `Undefined`výsledkem skalárního výrazu , položka není zahrnuta ve výsledku, protože `Undefined` se nerovná `true`.
 
-## <a name="logical-and-or-and-not-operators"></a>Logický (AND, OR a NOT) operátory
+## <a name="logical-and-or-and-not-operators"></a>Logické (AND, OR a NOT) operátory
 
-Logické operátory pracují s logickými hodnotami. V následujících tabulkách jsou uvedeny logické tabulky pravdy pro tyto operátory:
+Logické operátory pracují s logickými hodnotami. V následujících tabulkách jsou uvedeny tabulky logické pravdy pro tyto operátory:
 
-**NEBO – operátor**
+**Operátor OR**
 
-| NEBO | Pravda | Nepravda | Nedefinováno |
+Vrátí, `true` pokud je `true`některá z podmínek .
+
+|  | **True** | **False** | **Nedefinované** |
 | --- | --- | --- | --- |
-| Pravda |Pravda |Pravda |Pravda |
-| Nepravda |Pravda |Nepravda |Nedefinováno |
-| Nedefinováno |Pravda |Nedefinováno |Nedefinováno |
+| **True** |True |True |True |
+| **False** |True |False |Nedefinované |
+| **Nedefinované** |True |Nedefinované |Nedefinované |
 
-**AND – operátor**
+**Operátor A**
 
-| A | Pravda | Nepravda | Nedefinováno |
+Vrátí, `true` pokud jsou `true`oba výrazy .
+
+|  | **True** | **False** | **Nedefinované** |
 | --- | --- | --- | --- |
-| Pravda |Pravda |Nepravda |Nedefinováno |
-| Nepravda |Nepravda |Nepravda |Nepravda |
-| Nedefinováno |Nedefinováno |Nepravda |Nedefinováno |
+| **True** |True |False |Nedefinované |
+| **False** |False |False |False |
+| **Nedefinované** |Nedefinované |False |Nedefinované |
 
-**NOT – operátor**
+**NOT operátor**
 
-| NOT |  |
+Obrátí hodnotu libovolného logického výrazu.
+
+|  | **Ne** |
 | --- | --- |
-| Pravda |Nepravda |
-| Nepravda |Pravda |
-| Nedefinováno |Nedefinováno |
+| **True** |False |
+| **False** |True |
+| **Nedefinované** |Nedefinované |
 
+**Priorita operátorů**
+
+Logické `OR`operátory `AND`, `NOT` a mají níže uvedenou úroveň priority:
+
+| **Operátor** | **Priorita** |
+| --- | --- |
+| **Ne** |1 |
+| **A** |2 |
+| **Nebo** |3 |
 
 ## <a name="-operator"></a>* – operátor
 
-Speciální operátor * projektuje celou položku tak, jak je. Při použití, musí být pouze očekávané pole. Dotaz, jako je `SELECT * FROM Families f`, je platný, ale `SELECT VALUE * FROM Families f` a `SELECT *, f.id FROM Families f` nejsou platné.
+Speciální operátor * promítá celou položku tak, jak je. Při použití musí být jediným promítatým polem. Dotaz jako `SELECT * FROM Families f` je platný, ale `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` nejsou platné.
 
-## <a name="-and--operators"></a>? a?? operátory
+## <a name="-and--operators"></a>? A?? operátory
 
-Můžete použít operátory Ternární (?) a COALESCE (??) k sestavení podmíněných výrazů, jako v programovacích jazycích C# , jako je například JavaScript. 
+Můžete použít Ternary (?) a Coalesce (??) operátory k vytvoření podmíněných výrazů, jako v programovacích jazycích, jako je C# a JavaScript.
 
-Můžete použít? operátor pro vytvoření nových vlastností JSON za běhu. Následující dotaz například klasifikuje úrovně stupňů do `elementary` nebo `other`:
+Můžete použít ? operátor a vytvořit nové vlastnosti JSON za běhu. Například následující dotaz klasifikuje `elementary` `other`úrovně hodnocení do nebo :
 
 ```sql
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel
      FROM Families.children[0] c
 ```
 
-Můžete také vnořit volání do? – operátor, jak je uvedeno v následujícím dotazu: 
+Můžete také hnízdit volání do ? operátor, jako v následujícím dotazu: 
 
 ```sql
     SELECT (c.grade < 5)? "elementary": ((c.grade < 9)? "junior": "high") AS gradeLevel
     FROM Families.children[0] c
 ```
 
-Stejně jako u jiných operátorů dotazů? operátor vyloučí položky, pokud nebyly nalezeny odkazované vlastnosti nebo se porovnávané typy liší.
+Stejně jako u jiných operátorů dotazů, ? operátor vyloučí položky, pokud chybí odkazované vlastnosti nebo porovnávané typy se liší.
 
-Chcete použít? operátor pro efektivní kontrolu vlastnosti v položce při dotazování na částečně strukturovaných nebo smíšených dat typu. Například následující dotaz vrátí `lastName`, pokud je k dispozici, nebo `surname`, pokud `lastName` není k dispozici.
+Použijte ?? operátor efektivně kontrolovat vlastnost v položce při dotazování proti částečně strukturované nebo smíšené typu dat. Například následující dotaz `lastName` vrátí, pokud `surname` `lastName` je k dispozici, nebo pokud není k dispozici.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
@@ -97,6 +112,6 @@ Chcete použít? operátor pro efektivní kontrolu vlastnosti v položce při do
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [klíčová slova](sql-query-keywords.md)
+- [Ukázky služby Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Klíčová slova](sql-query-keywords.md)
 - [Klauzule SELECT](sql-query-select.md)

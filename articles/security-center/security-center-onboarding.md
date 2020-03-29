@@ -1,6 +1,6 @@
 ---
-title: Rozšířené zabezpečení na úrovni Standard úrovně – Azure Security Center
-description: " Naučte se, jak se připojit k Azure Security Center Standard pro rozšířené zabezpečení. "
+title: Vylepšené zabezpečení úrovně Standard – Azure Security Center
+description: " Přečtěte si, jak se nalodit na Azure Security Center Standard pro lepší zabezpečení. "
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,33 +14,33 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
 ms.openlocfilehash: be26a9d4c66412518079de303ac0764d979c3e7c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77912048"
 ---
-# <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Připojování k Azure Security Center Standard pro rozšířené zabezpečení
-Upgradujte na Security Center Standard, abyste mohli využívat rozšířenou správu zabezpečení a ochranu před hrozbami pro vaše hybridní cloudové úlohy. Můžete vyzkoušet Standard zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/) Security Center.
+# <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Připojení ke službě Azure Security Center úrovně Standard pro zvýšení zabezpečení
+Upgradujte na Security Center Standard, abyste využili výhod rozšířené správy zabezpečení a ochrany před hrozbami pro hybridní cloudové úlohy. Můžete zkusit Standard zdarma. Další informace naleznete na [stránce S cenách](https://azure.microsoft.com/pricing/details/security-center/) Centra zabezpečení.
 
-Úroveň Standard Security Center zahrnuje:
+Standardní úroveň Security Center zahrnuje:
 
-- **Hybridní zabezpečení** – Získejte jednotný přehled o zabezpečení napříč všemi vašimi místními i Cloud úlohami. Použijte zásady zabezpečení a průběžně vyhodnoťte zabezpečení vašich hybridních cloudových úloh, abyste zajistili dodržování standardů zabezpečení. Shromažďování, vyhledávání a analýza dat zabezpečení z nejrůznějších zdrojů, včetně bran firewall a dalších partnerských řešení.
-- **Výstrahy zabezpečení** – pomocí pokročilých analýz a Microsoft Intelligent Security Graph můžete získat hraniční přístup k nově vznikajícím internetovým útokům. Využijte integrované analýzy chování a strojové učení k identifikaci útoků a využívání funkce Zero Day. Monitorujte sítě, počítače a cloudové služby pro příchozí útoky a činnost po porušení zabezpečení. Zjednodušte šetření pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
-- **Řízení přístupu a aplikací** – zablokuje malware a další nežádoucí aplikace pomocí doporučení na seznam povolených, která jsou přizpůsobená vašim konkrétním úlohám a využívají Machine Learning. Snižte úroveň útoku na síť pomocí řízeného přístupu za běhu k portům pro správu virtuálních počítačů Azure, což výrazně snižuje riziko útoků hrubou silou a dalších sítí.
+- **Hybridní zabezpečení** – Získejte jednotný přehled o zabezpečení napříč všemi místními a cloudovými úlohami. Používejte zásady zabezpečení a průběžně vyhodnocujte zabezpečení hybridních cloudových úloh, abyste zajistili dodržování bezpečnostních standardů. Shromažďujte, vyhledávejte a analyzujte data zabezpečení z různých zdrojů, včetně bran firewall a dalších partnerských řešení.
+- **Výstrahy zabezpečení** – Pomocí pokročilých analýz a microsoftintelligent security graph získáte výhodu nad vyvíjejícími se kybernetickými útoky. Využijte integrovanou analýzu chování a strojové učení k identifikaci útoků a zero-day exploitů. Monitorujte sítě, počítače a cloudové služby pro příchozí útoky a aktivity po porušení zabezpečení. Zjednodušte vyšetřování pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
+- **Ovládání přístupu a aplikací** – Zablokujte malware a další nežádoucí aplikace použitím doporučení pro zařazení na seznam povolených, která jsou přizpůsobena vašim konkrétním pracovním zátěžím a poháněná strojovým učením. Snižte povrch síťového útoku pomocí řízeného přístupu k portům pro správu na virtuálních počítačích Azure, který umožňuje just-in-time, výrazně snížit vystavení hrubé síle a dalším síťovým útokům.
 
 ## <a name="detecting-unprotected-resources"></a>Zjišťování nechráněných prostředků
 Security Center automaticky rozpozná veškerá předplatná a pracovní prostory Azure, které ještě nepřešly na úroveň Security Center Standard. To zahrnuje předplatná Azure využívající úroveň Security Center Free volné a pracovní prostory, které nemají povolené řešení zabezpečení.
 
-Můžete upgradovat celé předplatné Azure na úroveň Standard, která se dědí ze všech podporovaných prostředků v rámci předplatného. Použití úrovně Standard na pracovní prostor se vztahuje na všechny prostředky, které jsou v pracovním prostoru vydávány.
+Můžete upgradovat celé předplatné Azure na úroveň Standard, která je zděděna všemi podporovanými prostředky v rámci předplatného. Použití úrovně Standard na pracovní prostor se vztahuje na všechny prostředky, které se hlásí do pracovního prostoru.
 
 > [!NOTE]
-> Můžete chtít spravovat náklady a omezit množství shromažďovaných dat pro řešení tím, že je omezíte na konkrétní sadu agentů. [Cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) umožňuje použít obor pro řešení a cílit na podmnožinu počítačů v pracovním prostoru. Pokud používáte cílení řešení, Security Center zobrazí seznam pracovních prostorů, které nemají řešení.
+> Můžete chtít spravovat náklady a omezit množství dat shromážděných pro řešení tím, že je omezíte na určitou sadu agentů. [Cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) umožňuje použít obor na řešení a cílit na podmnožinu počítačů v pracovním prostoru. Pokud používáte cílení na řešení, Centrum zabezpečení uvádí, že pracovní prostor nemá řešení.
 >
 >
 
 ## <a name="upgrade-an-azure-subscription-or-workspace"></a>Upgrade předplatného nebo pracovního prostoru Azure
-Upgrade předplatného nebo pracovního prostoru na standard:
+Upgrade předplatného nebo pracovního prostoru na standardní:
 1. V hlavní nabídce služby Security Center vyberte **Začínáme**.
   ![Začínáme](./media/security-center-onboarding/get-started.png)
 2. V části **Upgrade** zobrazí Security Center seznam předplatných a pracovních prostorů, ke kterým se můžete připojit. 
@@ -48,19 +48,19 @@ Upgrade předplatného nebo pracovního prostoru na standard:
    -    Předplatná a pracovní prostory, které si nemůžete zdarma vyzkoušet, můžete upgradovat.
    -    V bezplatné zkušební verzi můžete začít používat vybrané pracovní prostory a předplatná.
 3.  Pokud chcete začít používat zkušební verzi vybraných předplatných, klikněte na **Zahájit zkušební období**.
-  ![vybrat odběr](./media/security-center-onboarding/select-subscription.png)
+  ![Vybrat předplatné](./media/security-center-onboarding/select-subscription.png)
 
 
    > [!NOTE]
-   > Možnosti bezplatného Security Center se uplatní jenom pro virtuální počítače Azure a jenom pro VMSS. Bezplatné možnosti se nevztahují na počítače mimo Azure. Pokud vyberete možnost standard, budou se standardní možnosti použít u všech virtuálních počítačů Azure, virtuálních počítačů a počítačů mimo Azure, které vytvářejí sestavy do pracovního prostoru. Doporučujeme použít standard, abyste zajistili rozšířené zabezpečení pro prostředky Azure i mimo Azure.
+   > Funkce Security Center zdarma se použijí pouze na virtuální počítače Azure a v mss. Funkce Free se nepoužijí na vaše počítače mimo Azure. Pokud vyberete Standardní, možnosti Standard se použijí na všechny virtuální počítače Azure, škálovací sady virtuálních počítačů a počítače, které nejsou azure, které se hlásí do pracovního prostoru. Doporučujeme použít standard k zajištění rozšířeného zabezpečení pro vaše prostředky Azure i jiné prostředky než Azure.
    >
 
-## <a name="onboard-non-azure-computers"></a>Připojování počítačů mimo Azure
-Security Center může monitorovat stav zabezpečení počítačů mimo Azure, tyto prostředky je však nejprve potřeba připojit. Počítače mimo Azure můžete přidat z okna **Začínáme** nebo z okna **COMPUTE** . Provedeme vás oběma metodami.
+## <a name="onboard-non-azure-computers"></a>Palubní počítače, které nejsou v Azure
+Security Center může monitorovat stav zabezpečení počítačů mimo Azure, tyto prostředky je však nejprve potřeba připojit. Můžete přidat počítače, které nejsou Azure z okna **Začínáme** nebo z okna **Compute.** Projdeme si obě metody.
 
-### <a name="add-new-non-azure-computers-from-getting-started"></a>Přidání nových počítačů mimo Azure z **Začínáme**
+### <a name="add-new-non-azure-computers-from-getting-started"></a>Přidání nových počítačů, které nejsou azure, ze **služby Začínáme**
 
-1. Vraťte se do části **Začínáme**.
+1. Vraťte se k **souboru Začínáme**.
 2. Vyberte kartu **Začínáme**.
 
    ![Mimo Azure](./media/security-center-onboarding/non-azure.png)
@@ -69,44 +69,44 @@ Security Center může monitorovat stav zabezpečení počítačů mimo Azure, t
 
    ![Přidání počítače umístěného mimo Azure][7]
 
-Pokud máte existující pracovní prostory, jsou uvedené v části **Přidat nové počítače mimo Azure**. Můžete přidat počítače do existujícího pracovního prostoru nebo vytvořit nový pracovní prostor. Pokud chcete vytvořit nový pracovní prostor, vyberte odkaz **Přidat nový pracovní prostor**.
+Pokud máte existující pracovní prostory, jsou uvedeny v části **Přidat nové počítače mimo Azure**. Počítače můžete přidat do existujícího pracovního prostoru nebo vytvořit nový pracovní prostor. Chcete-li vytvořit nový pracovní prostor, vyberte odkaz **přidat nový pracovní prostor**.
 
-### <a name="add-new-non-azure-computers-from-compute"></a>Přidat nové počítače mimo Azure z **COMPUTE**
+### <a name="add-new-non-azure-computers-from-compute"></a>Přidání nových počítačů, které nejsou azure, z **výpočetních prostředků**
 
-**Vytvořit nový pracovní prostor a přidat počítač**
+**Vytvoření nového pracovního prostoru a přidání počítače**
 
-1. V části **Přidat nové počítače mimo Azure**vyberte **Přidat nový pracovní prostor**.
+1. V části **Přidat nové počítače, které nejsou azure**, vyberte přidat nový pracovní **prostor**.
 
-   ![Přidat nový pracovní prostor][4]
+   ![Přidání nového pracovního prostoru][4]
 
-2. V části **Security and Audit**vyberte **pracovní prostor OMS** a vytvořte nový pracovní prostor.
+2. V části **Zabezpečení a auditování**vyberte **pracovní prostor OMS** a vytvořte nový pracovní prostor.
    > [!NOTE]
    > Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
-3. V části **pracovní prostor OMS**zadejte informace pro svůj pracovní prostor.
-4. V části **pracovní prostor OMS**vyberte **OK**. Po výběru OK získáte odkaz pro stažení agenta pro Windows nebo Linux a klíčů pro ID vašeho pracovního prostoru, který se použije při konfiguraci agenta.
-5. V části **Security and Audit**vyberte **OK**.
+3. V části **Pracovní prostor OMS**zadejte informace o pracovním prostoru.
+4. V části **Pracovní prostor OMS**vyberte **OK**. Po výběru ok získáte odkaz pro stažení agenta systému Windows nebo Linux a klíče pro ID pracovního prostoru, které chcete použít při konfiguraci agenta.
+5. V části **Zabezpečení a audit**vyberte možnost **OK**.
 
-**Vyberte existující pracovní prostor a přidejte počítač.**
+**Výběr existujícího pracovního prostoru a přidání počítače**
 
-Počítač můžete přidat pomocí pracovního **postupu z registrace, jak je uvedeno**výše. Počítač můžete také přidat pomocí pracovního postupu z **COMPUTE**. V tomto příkladu používáme **COMPUTE**.
+Počítač můžete přidat podle následujícího pracovního postupu z **přiřazování**, jak je znázorněno výše. Počítač můžete přidat také podle pracovního postupu z **výpočetní ho dispozice**. V tomto příkladu používáme **Compute**.
 
-1. Vraťte se do hlavní nabídky Security Center a na řídicí panel **Přehled** .
+1. Vraťte se do hlavní nabídky Centra zabezpečení a **panelu Přehled.**
 
    ![Přehled][5]
 
-2. Vyberte **výpočetní & aplikace**.
-3. V části **výpočetní & aplikace**vyberte **přidat počítače**.
+2. Vyberte **Možnost Vypočítat & aplikace**.
+3. V části **Compute & apps**vyberte Přidat **počítače**.
 
    ![Okno Compute][6]
 
-4. V části **Přidat nové počítače mimo Azure**vyberte pracovní prostor, ke kterému se má počítač připojit, a klikněte na **přidat počítače**.
+4. V části **Přidat nové počítače, které nejsou azure**, vyberte pracovní prostor, ke kterému chcete počítač připojit, a klepněte na tlačítko Přidat **počítače**.
 
-   ![Přidat počítače][7]
+   ![Přidání počítačů][7]
 
-   Okno **přímý agent** poskytuje odkaz pro stažení agenta systému Windows nebo Linux a ID a klíče pracovního prostoru pro použití při konfiguraci agenta.
+   Okno **Direct Agent** obsahuje odkaz pro stažení agenta systému Windows nebo Linux, stejně jako ID pracovního prostoru a klíče, které mají být používány při konfiguraci agenta.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se naučili, jak začlenit prostředky Azure a jiné než Azure, aby bylo možné využívat pokročilé zabezpečení Security Center. Další informace o prostředcích připojení najdete v tématu.
+V tomto článku jste se dozvěděli, jak na palubě prostředků Azure a non-Azure, aby bylo možné využívat pokročilé zabezpečení Centra zabezpečení. Další informace o vašich palubních zdrojích najdete v tématu
 
 - [Povolení shromažďování dat](security-center-enable-data-collection.md)
 - [Sestava analýzy hrozeb](security-center-threat-report.md)

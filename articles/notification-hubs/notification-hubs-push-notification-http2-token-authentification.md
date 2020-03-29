@@ -1,6 +1,6 @@
 ---
-title: Ověřování založené na tokenech (HTTP/2) pro službu APN v Azure Notification Hubs | Microsoft Docs
-description: Naučte se používat nové ověřování tokenu pro APNS.
+title: Ověřování na základě tokenu (HTTP/2) pro APNS v centru oznámení Azure | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak používat nové ověřování tokenu pro apns.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,42 +16,42 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
 ms.openlocfilehash: 448b5c38371024c2eae900f4f87b343ee0a3b36a
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263808"
 ---
-# <a name="token-based-http2-authentication-for-apns"></a>Ověřování založené na tokenech (HTTP/2) na APNS
+# <a name="token-based-http2-authentication-for-apns"></a>Ověřování založené na tokenech (HTTP/2) pro apns
 
 ## <a name="overview"></a>Přehled
 
-Tento článek vysvětluje, jak používat nový protokol HTTP/2 služby APN s ověřováním na základě tokenu.
+Tento článek vysvětluje, jak používat nový protokol HTTP/2 APNS s ověřováním na základě tokenu.
 
-Mezi klíčové výhody použití nového protokolu patří:
+Mezi hlavní výhody použití nového protokolu patří:
 
-* Generování tokenu je poměrně jednoduché (ve srovnání s certifikáty).
-* Žádná další data vypršení platnosti – máte kontrolu nad svými ověřovacími tokeny a jejich odvolání.
-* Datové vytížení teď můžou být až 4 KB.
+* Generování tokenu je poměrně jednoduché (ve srovnání s certifikáty)
+* Žádné další data vypršení platnosti – máte kontrolu nad vašimi ověřovacími tokeny a jejich odvoláním
+* Užitečné zatížení může být nyní až 4 KB
 * Synchronní zpětná vazba
-* Pracujete na nejnovějším protokolu Apple – certifikáty pořád používají binární protokol, který je označený pro zastaralost.
+* Nacházíte se na nejnovějším protokolu společnosti Apple – certifikáty stále používají binární protokol, který je označen pro vyřazení
 
-Použití tohoto nového mechanismu se dá provést ve dvou krocích:
+Pomocí tohoto nového mechanismu lze provést ve dvou krocích:
 
-* Získejte potřebné informace z portálu Apple Developer Account Portal.
-* Nakonfigurujte centrum oznámení o nové informace.
+* Potřebné informace získáte z portálu účtu Apple Developer.
+* Nakonfigurujte centrum oznámení s novými informacemi.
 
-Notification Hubs je teď nastavená tak, aby používala nový ověřovací systém s APNS.
+Centra oznámení jsou nyní nastavena tak, aby používala nový ověřovací systém s protokolem APNS.
 
-Počítejte s tím, že pokud jste migrovali z používání přihlašovacích údajů certifikátu pro službu APN, vlastnosti tokenu přepíšou certifikát v našem systému, ale aplikace bude nadále přijímat oznámení bez problémů.
+Všimněte si, že pokud jste migrovali z použití pověření certifikátu pro APNS, vlastnosti tokenu přepsat certifikát v našem systému, ale vaše aplikace i nadále přijímat oznámení bez problémů.
 
 ## <a name="obtaining-authentication-information-from-apple"></a>Získání ověřovacích informací od společnosti Apple
 
-Pokud chcete povolit ověřování na základě tokenu, budete potřebovat následující vlastnosti z vašeho účtu Apple Developer:
+K povolení ověřování pomocí tokenů potřebujete z účtu Apple Developer následující vlastnosti:
 
 ### <a name="key-identifier"></a>Identifikátor klíče
 
-Identifikátor klíče se dá získat ze stránky **klíče** v části **certifikáty, identifikátory & profily**ve vašem účtu Apple Developer:
+Identifikátor klíče lze získat na stránce **Klíče** v části **Certifikáty, identifikátory & profily**ve vašem účtu Apple Developer:
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
 
@@ -59,29 +59,29 @@ Identifikátor klíče se dá získat ze stránky **klíče** v části **certif
 
 ### <a name="application-identifier-and-application-name"></a>Identifikátor aplikace a název aplikace
 
-Název a identifikátor aplikace jsou také k dispozici na stránce **certifikáty, identifikátory & profily** v účtu vývojáře:
+Název a identifikátor aplikace jsou také k dispozici na stránce **Certifikáty, Identifikátory & profily** v účtu vývojáře:
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
-### <a name="configure-via-the-net-sdk-or-the-azure-portal"></a>Konfigurace prostřednictvím sady .NET SDK nebo Azure Portal
+### <a name="configure-via-the-net-sdk-or-the-azure-portal"></a>Konfigurace prostřednictvím sady .NET SDK nebo portálu Azure
 
-Centrum můžete nakonfigurovat tak, aby používalo ověřování založené na tokenech pomocí [nejnovější klientské sady SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs)nebo v Azure Portal. Pokud chcete na portálu povolit ověřování na základě tokenu, přihlaste se k Azure Portal a na panelu Nastavení centra oznámení **> Apple (APNs)** . Vyberte **token** z vlastnosti **režim ověřování** a aktualizujte své centrum se všemi odpovídajícími vlastnostmi tokenu.
+Centrum můžete nakonfigurovat tak, aby používalo ověřování na základě tokenů pomocí naší [nejnovější sady SDK klienta](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs)nebo na webu Azure Portal. Pokud chcete povolit ověřování na základě tokenů na portálu, přihlaste se na portál Azure portal a přejděte na panel **Nastavení > Apple (APNS)** v centru oznámení. Vyberte **token** z vlastnosti **Režim ověřování** a aktualizujte rozbočovač se všemi příslušnými vlastnostmi tokenu.
 
 ![Konfigurace tokenu](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
 
-* Zadejte vlastnosti, které jste načetli z účtu Apple Developer.
-* Vyberte režim aplikace (**produkční** nebo **izolovaný prostor**).
-* Kliknutím na tlačítko **Uložit** aktualizujte přihlašovací údaje služby APN.
+* Zadejte vlastnosti, které jste získali z účtu Apple Developer.
+* Zvolte režim aplikace **(Výroba** nebo **Pískoviště).**
+* Klepnutím na tlačítko **Uložit** aktualizujte přihlašovací údaje apns.
 
-Přihlašovací údaje založené na tokenech se skládají z následujících polí:
+Pověření založená na tokenech se skládají z následujících polí:
 
-* **ID klíče**: identifikátor privátního klíče vygenerovaného na portálu pro vývojáře Apple; například `2USFGKSKLT`.
-* **ID týmu**: taky se označuje jako předpona nebo předpona aplikace. Toto je identifikátor organizace na portálu pro vývojáře Apple. například `S4V3D7CHJR`.
-* **ID sady**: označuje se taky jako ID aplikace. Toto je identifikátor sady prostředků pro aplikaci. například `com.microsoft.nhubsample2019`. Všimněte si, že pro mnoho aplikací můžete použít jeden klíč. Tato hodnota se mapuje na `apns-topic` hlavičku protokolu HTTP při odesílání oznámení a slouží k zacílení na konkrétní aplikaci.
-* **Token**: taky se označuje jako klíč nebo privátní klíč. To se získá ze souboru. P8 vygenerovaného na portálu pro vývojáře Apple. Klíč musí mít povolený APN (který je při generování klíče vybraný na portálu pro vývojáře Apple). Hodnota musí mít záhlaví nebo zápatí PEM z něj odstraněna, až ji dodáte na portál NH nebo rozhraní API.
-* **Koncový bod**: Toto je přepínač v okně Notification Hubsového portálu a pole řetězce v rozhraní API. Platné hodnoty jsou `https://api.push.apple.com` nebo `https://api.sandbox.push.apple.com`. Notification Hubs používá tuto hodnotu pro prostředí produkčního prostředí nebo izolovaného prostoru (sandbox) pro odesílání oznámení. Musí se shodovat s oprávněním `aps-environment` v aplikaci, jinak generované tokeny zařízení APNS neodpovídají prostředí a oznámení se nepodaří odeslat.
+* **ID klíče**: Identifikátor soukromého klíče generovaného na portálu Pro vývojáře Apple; například `2USFGKSKLT`.
+* **ID týmu**: Také se nazývá "Prefix" nebo "Předpona aplikace." Toto je identifikátor organizace na portálu Pro vývojáře Apple; například `S4V3D7CHJR`.
+* **ID balíčku**: Také se nazývá "ID aplikace". Toto je identifikátor balíčku pro aplikaci; například `com.microsoft.nhubsample2019`. Všimněte si, že můžete použít jeden klíč pro mnoho aplikací. Tato hodnota se `apns-topic` mapuje na hlavičku PROTOKOLU HTTP při odesílání oznámení a slouží k cílení na konkrétní aplikaci.
+* **Token**: Také se nazývá "Klíč" nebo "Soukromý klíč" . To se získá ze souboru .p8 generovaného na portálu Apple Developer. Klíč musí mít povolen apns (který je vybrán na portálu Apple Developer při generování klíče). Hodnota musí mít záhlaví PEM nebo zápatí odstraněny z něj při dodání nh portálu / rozhraní API.
+* **Koncový bod**: Toto je přepínač v okně portálu Centra oznámení a pole řetězce v rozhraní API. Platné hodnoty `https://api.push.apple.com` `https://api.sandbox.push.apple.com`jsou nebo . Centra oznámení používá tuto hodnotu pro produkční prostředí nebo prostředí izolovaného prostoru pro odesílání oznámení. To musí `aps-environment` odpovídat nároku v aplikaci, jinak generované tokeny zařízení APNS neodpovídají prostředí a oznámení se nepodaří odeslat.
 
-Zde je ukázka kódu ilustrující správné použití:
+Tady je ukázka kódu ilustrující správné použití:
 
 ```csharp
 NamespaceManager nm = NamespaceManager.CreateFromConnectionString(_endpoint);
@@ -97,5 +97,5 @@ nm.UpdateNotificationHubAsync(desc);
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md)
-* [Konfigurace centra oznámení v Azure Portal](create-notification-hub-portal.md)
+* [Vytvoření centra oznámení Azure na webu Azure Portal](create-notification-hub-portal.md)
+* [Konfigurace centra oznámení na webu Azure Portal](create-notification-hub-portal.md)

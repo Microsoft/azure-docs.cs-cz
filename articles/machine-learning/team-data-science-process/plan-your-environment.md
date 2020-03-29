@@ -1,6 +1,6 @@
 ---
-title: Identifikujte scénáře a naplánujte proces analýzy – vědecký proces týmových dat | Azure Machine Learning
-description: Identifikujte scénáře a plánovat zpracování dat pokročilé analýzy s ohledem na několik klíčových otázek.
+title: Identifikujte scénáře a naplánujte proces analýzy – proces vědecké vědy o týmových datech | Azure Machine Learning
+description: Identifikujte scénáře a plánujte pokročilé zpracování analytických dat s ohledem na řadu klíčových otázek.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,151 +12,151 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76710325"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Jak určit scénáře a plánovat zpracování dat pokročilé analýzy
 
-Jaké prostředky potřebujete k vytvoření prostředí, které umožňuje provádět pokročilé analytické zpracování na datové sadě? Tento článek navrhuje několik otázek, které vám pomůžou s identifikací úloh a prostředků, které jsou relevantní pro váš scénář.
+Jaké prostředky jsou potřebné k vytvoření prostředí, které může provádět pokročilé zpracování analýzy v datové sadě? Tento článek navrhuje řadu otázek, které mohou pomoci identifikovat úkoly a zdroje relevantní váš scénář.
 
-Další informace o pořadí nejdůležitějších kroků pro prediktivní analýzy najdete v tématu [co je vědecký proces týmového zpracování dat (TDSP)](overview.md). Každý krok vyžaduje konkrétní prostředky pro úlohy, které jsou důležité pro konkrétní scénář.
+Další informace o pořadí kroků vysoké úrovně pro prediktivní analýzy, najdete [v tématu Co je proces vědecké vědy o týmových datech (TDSP).](overview.md) Každý krok vyžaduje specifické zdroje pro úkoly relevantní pro konkrétní scénář.
 
 Odpovězte na klíčové otázky v následujících oblastech a identifikujte svůj scénář:
 
-* Logistika dat
-* charakteristiky dat
-* kvalita datové sady
+* logistika dat
+* charakteristiky údajů
+* kvalita datovésady
 * preferované nástroje a jazyky
 
-## <a name="logistic-questions-data-locations-and-movement"></a>Logistické dotazy: umístění dat a pohybu
+## <a name="logistic-questions-data-locations-and-movement"></a>Logistické otázky: umístění dat a pohyb
 
-Logistické otázky zahrnují následující položky:
+Logistické otázky se týkají následujících položek:
 
 * umístění zdroje dat
-* cíl cíle v Azure
-* požadavky na přesun dat, včetně plánu, množství a souvisejících prostředků
+* cílová destinace v Azure
+* požadavky na přesun údajů, včetně harmonogramu, částky a zdrojů, které jsou
 
-Možná budete muset data během procesu analýzy několikrát přesunout. Běžný scénář, kdy je pro přesun místních dat do nějakou formu úložiště v Azure a pak do nástroje Machine Learning Studio.
+Během procesu analýzy může být nutné data několikrát přesunout. Běžným scénářem je přesunutí místních dat do nějaké formy úložiště v Azure a potom do Machine Learning Studio.
 
 ### <a name="what-is-your-data-source"></a>Jaký je váš zdroj dat?
 
-Jsou vaše data v místním nebo cloudovém prostředí? Mezi možná umístění patří:
+Jsou vaše data místní nebo v cloudu? Mezi možná místa patří:
 
-* veřejně dostupná adresa HTTP
+* veřejně dostupná HTTP adresa
 * umístění místního nebo síťového souboru
-* databáze SQL Server
-* kontejner Azure Storage
+* Databáze SQL Serveru
+* kontejner úložiště Azure
 
-### <a name="what-is-the-azure-destination"></a>Co je to cíl Azure?
+### <a name="what-is-the-azure-destination"></a>Co je cíl Azure?
 
-Kde jsou vaše data potřeba pro zpracování nebo modelování? 
+Kde musí být vaše data pro zpracování nebo modelování? 
 
 * Azure Blob Storage
 * Databáze SQL Azure
 * SQL Server na virtuálním počítači Azure
-* HDInsight (Hadoop v Azure) nebo tabulek Hive
+* Tabulky HDInsight (Hadoop v Azure) nebo Hive
 * Azure Machine Learning
 * Připojitelné virtuální pevné disky Azure
 
-### <a name="how-are-you-going-to-move-the-data"></a>Jak se budou data přesouvat?
+### <a name="how-are-you-going-to-move-the-data"></a>Jak chceš přesunout data?
 
-Postupy a prostředky k ingestování nebo načítání dat do nejrůznějších různých prostředí úložišť a zpracování najdete v těchto tématech:
+Postupy a prostředky pro ingestování nebo načítání dat do různých prostředí úložiště a zpracování naleznete v těchto tématech:
 
 * [Načtení dat do prostředí úložiště pro analýzu](ingest-data.md)
-* [Import školicích dat do Azure Machine Learning Studio (Classic) z různých zdrojů dat](../studio/import-data.md)
+* [Import trénovacích dat do Azure Machine Learning Studio (klasické) z různých zdrojů dat](../studio/import-data.md)
 
-### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Je potřeba data při migraci přesunout podle pravidelného plánu nebo změnit?
+### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Je třeba data během migrace přesouvat podle pravidelného plánu nebo upravovat?
 
-Zvažte použití Azure Data Factory (ADF), když je potřeba průběžně migrovat data. ADF může být užitečné pro:
+Zvažte použití Azure Data Factory (ADF) když je potřeba data neustále migrovat. ADF může být užitečné pro:
 
 * hybridní scénář, který zahrnuje místní i cloudové prostředky
-* scénář, ve kterém jsou data v průběhu migrace zpracovávána, upravena nebo měněna obchodní logikou
+* scénář, kdy jsou data v průběhu migrace zpracována, změněna nebo změněna obchodní logikou
 
-Další informace najdete v tématu [přesun dat z místního SQL serveru pro SQL Azure s Azure Data Factory](move-sql-azure-adf.md).
+Další informace najdete v tématu [Přesun dat z místního serveru SQL do SQL Azure pomocí Azure Data Factory](move-sql-azure-adf.md).
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Kolik dat se má přesunout do Azure?
 
-Velké datové sady mohou překročit kapacitu úložiště určitých prostředí. Příklad najdete v diskuzi o omezeních velikosti pro Machine Learning Studio (Classic) v následující části. V takových případech můžete použít ukázku dat během analýzy. Podrobnosti o tom, jak vytvořit ukázkovou datovou sadu v různých prostředích Azure, najdete v tématu [vzorová data v rámci vědeckého zpracování týmových dat](sample-data.md).
+Velké datové sady mohou překročit kapacitu úložiště v určitých prostředích. Příklad najdete v tématu diskuse o omezení velikosti pro Machine Learning Studio (klasické) v další části. V takových případech můžete použít vzorek dat během analýzy. Podrobnosti o tom, jak odebrat vzorek datové sady v různých prostředích Azure, najdete [v tématu Ukázková data v procesu vědecké ho sloužiny týmových dat](sample-data.md).
 
-## <a name="data-characteristics-questions-type-format-and-size"></a>Otázky ohledně dat charakteristiky: typ, formátu a velikost
+## <a name="data-characteristics-questions-type-format-and-size"></a>Otázky týkající se charakteristik dat: typ, formát a velikost
 
-Tyto otázky jsou klíčem k plánování prostředí úložiště a zpracování. Pomůžou vám zvolit vhodný scénář pro datový typ a pochopit jakákoli omezení.
+Tyto otázky jsou klíčem k plánování prostředí úložiště a zpracování. Pomohou vám vybrat vhodný scénář pro váš datový typ a pochopit všechna omezení.
 
 ### <a name="what-are-the-data-types"></a>Jaké jsou datové typy?
 
 * Číselné
 * Kategorické
 * Řetězce
-* Binární hodnota
+* binární
 
-### <a name="how-is-your-data-formatted"></a>Jak vaše data jsou formátovaná?
+### <a name="how-is-your-data-formatted"></a>Jak jsou data formátována?
 
-* Oddělený čárkami (CSV) nebo oddělené tabulátorem (TSV) plochých souborů
-* Komprimované nebo nekomprimovaný
+* Ploché soubory oddělené čárkami (CSV) nebo tabulátory (TSV)
+* Komprimované nebo nekomprimované
 * Objekty BLOB Azure
-* Tabulek Hadoop Hive
-* Tabulek systému SQL Server
+* Stoly Hadoop Hive
+* Tabulky serveru SQL Server
 
 ### <a name="how-large-is-your-data"></a>Jak velká jsou vaše data?
 
-* Malé: menší než 2 GB
-* Střední: Větší než 2 GB a menší než 10 GB
-* Velké: Větší než 10 GB
+* Malé: Méně než 2 GB
+* Střední: Větší než 2 GB a méně než 10 GB
+* Velký: Větší než 10 GB
 
-Vezměte v úvahu například prostředí Azure Machine Learning Studio (Classic):
+Vezměte si prostředí Azure Machine Learning Studio (klasické) například:
 
-* Seznam formátů dat a typů podporovaných nástrojem Azure Machine Learning Studio najdete v části [formáty dat a podporované datové typy](../studio/import-data.md#supported-data-formats-and-data-types) .
-* Informace o omezeních ostatních služeb Azure, které se používají v procesu analýzy, najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+* Seznam datových formátů a typů podporovaných službou Azure Machine Learning Studio najdete v článku [Podporované datové formáty a datové typy.](../studio/import-data.md#supported-data-formats-and-data-types)
+* Informace o omezeních jiných služeb Azure používaných v procesu analýzy najdete v tématu [Limity předplatného a služeb Azure, kvóty a omezení](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-## <a name="data-quality-questions-exploration-and-pre-processing"></a>Otázky ohledně dat kvality: zkoumání a předběžného zpracování
+## <a name="data-quality-questions-exploration-and-pre-processing"></a>Otázky kvality dat: průzkum a předběžné zpracování
 
-### <a name="what-do-you-know-about-your-data"></a>Co víte o vašich datech?
+### <a name="what-do-you-know-about-your-data"></a>Co víte o svých datech?
 
-Seznamte se se základními charakteristikami vašich dat:
+Seznamte se se základními charakteristikami svých dat:
 
-* Jaké modely nebo trendy se vykazují
-* Co všechno má
-* Kolik hodnot chybí
+* Jaké vzory nebo trendy vykazuje
+* Jaké odlehlé hodnoty má
+* Počet hodnot chybí
 
-Tento krok je důležitý, abychom vám pomohli:
+Tento krok je důležitý, aby vám pomohl:
 
-* Určete, kolik předběžných zpracování je potřeba.
-* Formulujte hypotézu, která navrhuje nejvhodnější funkce nebo typ analýzy.
-* Formulujte plány pro další shromažďování dat
+* Určení, kolik předběžného zpracování je potřeba
+* Formulovat hypotézy, které naznačují nejvhodnější rysy nebo typ analýzy
+* Formulovat plány pro další sběr dat
 
-Mezi užitečné techniky pro kontrolu dat patří výpočty popisných statistik a vizualizace. Podrobnosti o tom, jak prozkoumat datovou sadu v různých prostředích Azure, najdete v tématu [prozkoumávání dat v rámci vědeckého zpracování týmových dat](explore-data.md).
+Mezi užitečné techniky kontroly dat patří výpočty popisných statistik a vizualizace. Podrobnosti o tom, jak prozkoumat datovou sadu v různých prostředích Azure, najdete [v tématu Prozkoumání dat v procesu vědecké ho sloužiny týmových dat](explore-data.md).
 
-### <a name="does-the-data-require-preprocessing-or-cleaning"></a>Vyžadují data předzpracování nebo čištění?
+### <a name="does-the-data-require-preprocessing-or-cleaning"></a>Vyžadují data předběžné zpracování nebo čištění?
 
-Aby bylo možné datovou sadu efektivně použít pro strojové učení, možná budete muset data předzpracovat a vyčistit. Nezpracovaná data jsou často vysokou úrovní šumu a nespolehlivá. Můžou chybět hodnoty. Pomocí těchto dat pro modelování můžete vytvářet zavádějící výsledky. Popis najdete v tématu [úlohy pro přípravu dat pro rozšířené strojové učení](prepare-data.md).
+Možná budete muset předzpracování mašlí a vyčistit data před efektivní matnou datpro strojové učení. Nezpracovaná data jsou často hlučná a nespolehlivá. Může to být chybějící hodnoty. Použití těchto dat pro modelování může vést k zavádějícím výsledkům. Popis najdete v [tématu Úkoly pro přípravu dat pro rozšířené strojové učení](prepare-data.md).
 
-## <a name="tools-and-languages-questions"></a>Otázky týkající se nástroje a jazyky
+## <a name="tools-and-languages-questions"></a>Nástroje a jazyky otázky
 
-K dispozici je celá řada možností pro jazyky, vývojová prostředí a nástroje. Buďte si vědomi vašich potřeb a preferencí.
+Existuje mnoho možností pro jazyky, vývojová prostředí a nástroje. Buďte si vědomi svých potřeb a preferencí.
 
-### <a name="what-languages-do-you-prefer-to-use-for-analysis"></a>Jaké jazyky preferujete pro účely analýzy?
+### <a name="what-languages-do-you-prefer-to-use-for-analysis"></a>Jaké jazyky dáváte přednost pro analýzu?
 
 * R
 * Python
 * SQL
 
-### <a name="what-tools-should-you-use-for-data-analysis"></a>Jaké nástroje byste měli použít k analýze dat?
+### <a name="what-tools-should-you-use-for-data-analysis"></a>Jaké nástroje byste měli použít pro analýzu dat?
 
-* [Microsoft Azure PowerShell](/powershell/azure/overview) – skriptovací jazyk, který se používá ke správě prostředků Azure ve skriptovacím jazyce
+* [Microsoft Azure Powershell](/powershell/azure/overview) – skriptovací jazyk používaný ke správě prostředků Azure ve skriptovacím jazyce
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
-* [Analýza revoluce](https://www.microsoft.com/sql-server/machinelearningserver)
+* [Revoluční analytika](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [Python Tools pro Visual Studio](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
 * [Poznámkové bloky Jupyter](https://jupyter.org/)
-* [Power BI Microsoftu](https://powerbi.microsoft.com)
+* [Microsoft Power BI](https://powerbi.microsoft.com)
 
-## <a name="identify-your-advanced-analytics-scenario"></a>Určení scénáře pokročilých analýz
+## <a name="identify-your-advanced-analytics-scenario"></a>Identifikujte pokročilý scénář analýzy
 
-Po zodpovězení otázek v předchozí části jste připraveni určit, který scénář nejlépe vyhovuje vašemu případu. Ukázkové scénáře jsou uvedené ve [scénářích pro pokročilou analýzu v Azure Machine Learning](plan-sample-scenarios.md).
+Poté, co jste odpověděli na otázky v předchozí části, jste připraveni určit, který scénář nejlépe vyhovuje vašemu případu. Ukázkové scénáře jsou popsané ve [scénářích pro pokročilou analýzu v Azure Machine Learning](plan-sample-scenarios.md).
 
 ## <a name="next-steps"></a>Další kroky
 

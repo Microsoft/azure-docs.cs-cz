@@ -1,127 +1,141 @@
 ---
-title: Zabezpečení a ochrana dat
+title: Zabezpečení a ochrana osobních údajů
 titleSuffix: Azure Cognitive Search
-description: Azure Kognitivní hledání je kompatibilní s SOC 2, HIPAA a dalšími certifikacemi. Připojení a šifrování dat, ověřování a přístup k identitám prostřednictvím identifikátorů zabezpečení uživatelů a skupin ve výrazech filtru.
+description: Azure Cognitive Search je kompatibilní s SOC 2, HIPAA a dalšími certifikacemi. Šifrování připojení a dat, ověřování a přístup k identitě prostřednictvím identifikátorů zabezpečení uživatelů a skupin ve výrazech filtru.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/25/2020
+ms.openlocfilehash: 713a9762206b5083268fd48136cd8077c296c690
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79282832"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289290"
 ---
-# <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Zabezpečení a ochrana dat v Azure Kognitivní hledání
+# <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Zabezpečení a ochrana osobních údajů v Azure Cognitive Search
 
-Komplexní funkce zabezpečení a řízení přístupu jsou integrované do Azure Kognitivní hledání k zajištění toho, aby byl soukromý obsah stále v tomto případě. Tento článek obsahuje výčet funkcí zabezpečení a dodržování standardů integrovaných v Azure Kognitivní hledání.
+Komplexní funkce zabezpečení a ovládací prvky přístupu jsou integrované do Azure Cognitive Search, aby zajistily, že soukromý obsah zůstane tímto způsobem. Tento článek vyjmenovává funkce zabezpečení a dodržování standardů integrované do Azure Cognitive Search.
 
-Architektura zabezpečení Azure Kognitivní hledání zahrnuje fyzické zabezpečení, šifrované přenosy, šifrované úložiště a kompatibilitu standardů pro celou platformu. V případě provozu Azure Kognitivní hledání akceptuje pouze ověřené požadavky. Volitelně můžete přidat řízení přístupu pro jednotlivé uživatele k obsahu prostřednictvím filtrů zabezpečení. Tento článek se dotýká zabezpečení na jednotlivých vrstvách, ale primárně se zaměřuje na to, jak jsou data a operace zabezpečené v Azure Kognitivní hledání.
+Architektura zabezpečení Azure Cognitive Search zahrnuje fyzické zabezpečení, šifrované přenosy, šifrované úložiště a dodržování standardů na celé platformě. Z provozního provozu Azure Cognitive Search přijímá pouze ověřené požadavky. Volitelně můžete přidat ovládací prvky přístupu pro jednotlivé uživatele k obsahu prostřednictvím filtrů zabezpečení. Tento článek se dotýká zabezpečení v každé vrstvě, ale primárně se zaměřuje na zabezpečení dat a operací v Azure Cognitive Search.
 
-## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Dodržování standardů: ISO 27001, SOC 2, HIPAA
+## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Dodržování norem: ISO 27001, SOC 2, HIPAA
 
-Azure Kognitivní hledání je certifikovaný v následujících standardech, jak je uvedeno [v červnu 2018](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/):
+Azure Cognitive Search je certifikován pro následující standardy, jak [bylo oznámeno v červnu 2018](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/):
 
 + [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
-+ [SOC 2 typ 2 – dodržování předpisů](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) Pro celou sestavu použijte [sestavu Azure-a Azure Government SOC 2 Type II](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
-+ [Zákon o odpovědnosti za ochranu zdravotního pojištění a AKT (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
-+ [GxP (21 CFR část 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
++ [Soc 2 typ 2 shody](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) Celou zprávu najdete na [Azure – a Azure Government SOC 2 typ II sestavy](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
++ [Zákon o přenositelnosti a odpovědnosti zdravotního pojištění (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
++ [GxP (21 CFR Část 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
-+ [PCI DSS úroveň 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
-+ [Austrálie IRAP – neklasifikované DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
++ [PCI DSS úrovně 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [Austrálie IRAP Neklasifikované DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
-Dodržování standardů se vztahuje na všeobecně dostupné funkce. Funkce ve verzi Preview jsou certifikovány při přechodu na obecnou dostupnost a nesmí se používat v řešeních s přísnými požadavky na standardy. Certifikace dodržování předpisů je popsána v článku [Přehled dodržování předpisů Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) a [centra zabezpečení](https://www.microsoft.com/en-us/trustcenter). 
+Dodržování standardů se vztahuje na obecně dostupné funkce. Funkce náhledu jsou certifikovány při přechodu na obecnou dostupnost a nesmí být používány v řešeních s přísnými požadavky na standardy. Certifikace dodržování předpisů je zdokumentována v [přehledu dodržování předpisů Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) a v Centru [zabezpečení](https://www.microsoft.com/en-us/trustcenter). 
 
-## <a name="encrypted-transmission-and-storage"></a>Zašifrovaný přenos a úložiště
+## <a name="encrypted-transmission-and-storage"></a>Šifrovaný přenos a ukládání
 
-Šifrování se nachází v celém kanálu indexování: od připojení, přes přenos a dolů po indexovaná data uložená v Azure Kognitivní hledání.
+Šifrování se rozšiřuje v celém kanálu indexování: od připojení, přes přenos až po indexovaná data uložená v Azure Cognitive Search.
 
 | Vrstva zabezpečení | Popis |
 |----------------|-------------|
-| Šifrování při přenosu <br>(HTTPS/SSL/TLS) | Azure Kognitivní hledání naslouchá na portu HTTPS 443. V rámci platformy jsou připojení ke službám Azure zašifrovaná. <br/><br/>Všechny interakce mezi klientem a službou Azure Kognitivní hledání jsou s podporou protokolu SSL/TLS 1,2.  Ujistěte se, že pro připojení SSL k vaší službě používáte TLSv 1.2.|
-| Šifrování v klidovém stavu <br>Spravované klíče společnosti Microsoft | Šifrování je plně v procesu indexování plně prohlášeno bez měřitelnosti při indexování času na dokončení nebo velikost indexu. K tomu dochází automaticky při každém indexování, včetně přírůstkových aktualizací indexu, který není plně šifrovaný (vytvořený před lednem 2018).<br><br>Šifrování je interně založené na [šifrování Azure Storage služby](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)pomocí 256 [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Šifrování je interní pro Azure Kognitivní hledání, pomocí certifikátů a šifrovacích klíčů spravovaných interně Microsoftem a univerzálně se používá. Šifrování nelze zapnout nebo vypnout, spravovat nebo nahrazovat vlastní klíče nebo zobrazit nastavení šifrování na portálu nebo programově.<br><br>Šifrování v klidovém umístění bylo oznámeno 24. ledna 2018 a vztahuje se na všechny úrovně služeb, včetně úrovně Free, ve všech oblastech. Pro úplné šifrování musí být indexy vytvořené před tímto datem vyřazeny a znovu sestaveny, aby mohlo dojít k šifrování. V opačném případě jsou zašifrována pouze nová data přidaná po 24. ledna.|
-| Šifrování v klidovém stavu <br>Klíče spravované zákazníkem | Šifrování se spravovanými klíči Customer je teď všeobecně dostupné pro vyhledávací služby vytvořené v nebo po lednu 2019. Nepodporuje se na bezplatných (sdílených) službách.<br><br>Indexy Azure Kognitivní hledání a mapy synonym se teď dají zašifrovat v klidovém stavu pomocí klíčů zákazníka spravovaných klíči v Azure Key Vault. Další informace najdete v tématu [Správa šifrovacích klíčů v Azure kognitivní hledání](search-security-manage-encryption-keys.md).<br><br>Tato funkce nenahrazuje výchozí šifrování v klidovém stavu, ale místo toho se používá.<br><br>Povolením této funkce se zvýší velikost indexu a sníží se výkon dotazů. Na základě pozorování k datu můžete očekávat zvýšení 30% až 60% v době dotazu, přestože skutečný výkon se bude lišit v závislosti na definici indexu a typech dotazů. Z důvodu tohoto dopadu na výkon doporučujeme tuto funkci povolit pouze pro indexy, které ji skutečně vyžadují.
+| Šifrování během přenosu <br>(HTTPS/SSL/TLS) | Azure Cognitive Search naslouchá na portu HTTPS 443. Napříč platformou se připojení ke službám Azure šifrují. <br/><br/>Všechny interakce Azure Cognitive Search mezi klientem a službami jsou schopné SSL/TLS 1.2.  Nezapomeňte použít TLSv1.2 pro připojení SSL k vaší službě.|
+| Šifrování v klidovém stavu <br>Spravované klíče společnosti Microsoft | Šifrování je plně internalizovánv procesu indexování, bez měřitelné dopad na indexování čas dokončení nebo velikost indexu. Dochází automaticky na všechny indexování, včetně přírůstkové aktualizace indexu, který není plně šifrována (vytvořené před lednem 2018).<br><br>Interně je šifrování založené na [šifrování služby Azure Storage Service](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)pomocí 256bitového šifrování [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Šifrování je interní azure cognitive search, s certifikáty a šifrovací klíče spravované interně společností Microsoft a univerzálně aplikované. Šifrování nelze zapnout ani vypnout, spravovat nebo nahradit vlastní klíče ani zobrazovat nastavení šifrování na portálu nebo programově.<br><br>Šifrování v klidovém stavu bylo oznámeno v lednu 24, 2018 a platí pro všechny úrovně služeb, včetně volné úrovně, ve všech oblastech. Pro úplné šifrování indexy vytvořené před tímto datem musí být vynechány a znovu sestaveny, aby k šifrování došlo. V opačném případě jsou šifrována pouze nová data přidaná po 24.|
+| Šifrování v klidovém stavu <br>Klíče spravované zákazníkem | Šifrování pomocí klíčů spravovaných zákazníkem je nyní obecně dostupné pro vyhledávací služby vytvořené v lednu 2019 nebo po něm. Není podporována u bezplatných (sdílených) služeb.<br><br>Indexy Azure Cognitive Search a mapy synonym teď můžou být šifrované v klidovém stavu pomocí klíčů spravovaných zákazníky v azure key vaultu. Další informace najdete [v tématu Správa šifrovacích klíčů v Azure Cognitive Search](search-security-manage-encryption-keys.md).<br><br>Tato funkce nenahrazuje výchozí šifrování v klidovém stavu, ale spíše se používá kromě něj.<br><br>Povolením této funkce se zvýší velikost indexu a sníží výkon dotazu. Na základě pozorování k dnešnímu dni můžete očekávat zvýšení o 30%-60% v době dotazu, i když skutečný výkon se bude lišit v závislosti na definici indexu a typy dotazů. Z důvodu tohoto dopadu na výkon doporučujeme povolit tuto funkci pouze na indexy, které skutečně vyžadují.
 
-## <a name="azure-wide-user-access-controls"></a>Řízení přístupu uživatelů na úrovni Azure
+## <a name="azure-wide-user-access-controls"></a>Ovládací prvky přístupu uživatelů pro celý Azure
 
-K dispozici je několik mechanismů zabezpečení, které jsou k dispozici v rámci Azure, a tak automaticky dostupné pro prostředky Azure Kognitivní hledání, které vytvoříte.
+Několik mechanismů zabezpečení jsou k dispozici v celém Azure, a proto automaticky k dispozici pro azure cognitive search prostředky, které vytvoříte.
 
-+ [Uzamkne na úrovni předplatného nebo prostředku, aby se zabránilo odstranění.](../azure-resource-manager/management/lock-resources.md)
-+ [Access Control na základě rolí (RBAC) pro řízení přístupu k informacím a operacím správy](../role-based-access-control/overview.md)
++ [Uzamkne na úrovni předplatného nebo prostředků, aby se zabránilo odstranění](../azure-resource-manager/management/lock-resources.md)
++ [Řízení přístupu na základě rolí (RBAC) pro řízení přístupu k informacím a administrativníoperace](../role-based-access-control/overview.md)
 
-Všechny služby Azure podporují řízení přístupu na základě rolí (RBAC) pro jednotné nastavení úrovní přístupu napříč všemi službami. Například zobrazení citlivých dat, jako je klíč správce, je omezeno na role vlastníka a přispěvatele, zatímco zobrazení stavu služby je k dispozici pro členy jakékoli role. RBAC poskytuje role vlastníka, přispěvatele a čtenáře. Ve výchozím nastavení jsou všichni správci služby členy role vlastníka.
+Všechny služby Azure podporují ovládací prvky přístupu založené na rolích (RBAC) pro nastavení úrovní přístupu konzistentně ve všech službách. Například zobrazení citlivých dat, jako je klíč správce, je omezeno na role vlastníka a přispěvatele. Zobrazení stavu služby je však k dispozici členům libovolné role. RBAC poskytuje role vlastníka, přispěvatele a čtenáře. Ve výchozím nastavení jsou všichni správci služeb členy role Vlastník.
 
 <a name="service-access-and-authentication"></a>
 
-## <a name="service-access-and-authentication"></a>Přístup ke službě a ověřování
+## <a name="endpoint-access"></a>Přístup ke koncovému bodu
 
-I když Azure Kognitivní hledání dědí bezpečnostní ochranu platformy Azure, poskytuje také vlastní ověřování na základě klíčů. Klíč rozhraní API je řetězec tvořený náhodně generovanými čísly a písmeny. Typ klíče (správce nebo dotaz) určuje úroveň přístupu. Odeslání platného klíče se považuje za důkaz, že požadavek pochází z důvěryhodné entity. 
+### <a name="public-access"></a>Přístup veřejnosti
 
-Existují dvě úrovně přístupu k vaší vyhledávací službě, které jsou povoleny dvěma typy klíčů:
+Azure Cognitive Search dědí zabezpečení platformy Azure a poskytuje vlastní ověřování na základě klíče. Klíč rozhraní api je řetězec složený z náhodně generovaných čísel a písmen. Úroveň přístupu určuje typ klíče (správce nebo dotaz). Odeslání platného klíče je považováno za důkaz, že požadavek pochází od důvěryhodné entity. 
 
-* Přístup správce (platný pro všechny operace čtení a zápisu na službu)
-* Přístup k dotazům (platný pro operace jen pro čtení, jako jsou dotazy, s kolekcí dokumentů indexu)
+K vyhledávací službě mají přístup ke dvěma úrovním, které umožňují dva typy klíčů:
 
-*Klíče správce* se vytvoří při zřizování služby. Existují dva klíče správce určené jako *primární* a *sekundární* , aby byly zachovány, ale ve skutečnosti jsou zaměnitelné. Každá služba má dva klíče správce, takže je možné ji navrátit, aniž byste ztratili přístup ke službě. [Klíč správce můžete pravidelně vygenerovat](search-security-api-keys.md#regenerate-admin-keys) na základě osvědčených postupů zabezpečení Azure, ale nemůžete přidat do celkového počtu klíčů správce. Pro službu vyhledávání existuje maximálně dva klíče správce.
+* Přístup správce (platný pro všechny operace čtení a zápisu proti službě)
+* Přístup k dotazu (platný pro operace jen pro čtení, například dotazy, proti shromažďování dokumentů indexu)
 
-*Klíče dotazů* jsou vytvořeny podle potřeby a jsou určeny pro klientské aplikace, které vydávají dotazy. Můžete vytvořit až 50 klíčů dotazů. V kódu aplikace zadáte adresu URL pro vyhledávání a klíč rozhraní API pro dotaz, který povolí přístup jen pro čtení k kolekci dokumentů určitého indexu. Zároveň koncový bod, klíč rozhraní API-Key pro přístup jen pro čtení a cílový index definují rozsah a úroveň přístupu připojení z klientské aplikace.
+*Klíče správce* se vytvoří při zřízení služby. Existují dva klíče správce, označené jako *primární* a *sekundární,* aby byly rovné, ale ve skutečnosti jsou zaměnitelné. Každá služba má dva klíče správce, takže můžete převrátit jeden přes bez ztráty přístupu ke službě. Klíč správce můžete pravidelně [regenerovat](search-security-api-keys.md#regenerate-admin-keys) podle doporučených postupů zabezpečení Azure, ale nemůžete přidat k celkovému počtu klíčů správce. Na vyhledávací službu jsou k dispozici maximálně dva klíče správce.
 
-Pro každý požadavek se vyžaduje ověřování, kde každý požadavek se skládá z povinného klíče, operace a objektu. Při zřetězení jsou dvě úrovně oprávnění (úplné nebo jen pro čtení) a kontext (například operace dotazu na index) dostačující pro zajištění plného spektra provozu provozu. Další informace o klíčích najdete v tématu [Vytvoření a Správa klíčů rozhraní API](search-security-api-keys.md).
+*Klávesy dotazu* jsou vytvořeny podle potřeby a jsou určeny pro klientské aplikace, které vydávají dotazy. Můžete vytvořit až 50 kláves dotazu. V kódu aplikace zadáte adresu URL hledání a klíč rozhraní api dotazu, který umožní přístup jen pro čtení ke shromažďování dokumentů určitého indexu. Společně koncový bod, klíč rozhraní api pro přístup jen pro čtení a cílový index definovat rozsah a úroveň přístupu připojení z klientské aplikace.
+
+Ověřování je vyžadováno u každého požadavku, kde každý požadavek se skládá z povinného klíče, operace a objektu. Při zřetězení dohromady, dvě úrovně oprávnění (úplné nebo jen pro čtení) plus kontext (například operace dotazu na indexu) jsou dostatečné pro poskytování zabezpečení celého spektra operací služby. Další informace o klíčích naleznete v [tématu Vytvoření a správa klíčů rozhraní API](search-security-api-keys.md).
+
+### <a name="restricted-access"></a>Omezený přístup
+
+Pokud máte veřejnou službu a chcete omezit používání služby, můžete použít pravidlo omezení IP ve verzi rozhraní REST API pro správu: 2020-03-13, [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2020-03-13/createorupdate-service#iprule-). IpRule umožňuje omezit přístup k vaší službě tím, že identifikuje IP adresy, jednotlivě nebo v rozsahu, který chcete udělit přístup k vaší vyhledávací služby. 
+
+### <a name="private-access"></a>Soukromý přístup
+
+[Privátní koncové body](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) pro Azure Cognitive Search umožňují klientovi ve virtuální síti zabezpečit přístup k datům v indexu vyhledávání přes [privátní propojení](https://docs.microsoft.com/azure/private-link/private-link-overview). Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro vyhledávací službu. Síťový provoz mezi klientem a vyhledávací službou prochází přes virtuální síť a privátní propojení v páteřní síti společnosti Microsoft, což eliminuje expozici z veřejného internetu.
+
+[Virtuální síť Azure (VNet)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) umožňuje zabezpečenou komunikaci mezi prostředky, s místní sítí i internetem. 
 
 ## <a name="index-access"></a>Přístup k indexu
 
-V Azure Kognitivní hledání není jednotlivý index zabezpečitelným objektem. Místo toho je přístup k indexu určen na úrovni služby (přístup pro čtení nebo zápis) spolu s kontextem operace.
+V Azure Cognitive Search, jednotlivé index není sevyléčitelný objekt. Místo toho je přístup k indexu určen ve vrstvě služby (přístup pro čtení nebo zápis) spolu s kontextem operace.
 
-Pro přístup koncového uživatele můžete strukturovat požadavky na dotazy pro připojení pomocí klíče dotazu, který zpřístupňuje všechny požadavky jen pro čtení a zahrnuje konkrétní index používaný vaší aplikací. V požadavku na dotaz neexistuje koncept spojování indexů ani přístup k několika indexům současně, takže všechny požadavky cílí na jeden index podle definice. V důsledku toho konstrukce samotné žádosti o dotaz (klíč a jeden cílový index) definuje hranici zabezpečení.
+Pro přístup koncových uživatelů můžete strukturovat požadavky na dotazy pro připojení pomocí klíče dotazu, který umožňuje jakýkoli požadavek jen pro čtení, a zahrnout konkrétní index používaný vaší aplikací. V požadavku na dotaz neexistuje žádný koncept spojování indexů nebo přístupu k více indexů současně, takže všechny požadavky cílí na jeden index podle definice. Jako takové konstrukce samotného požadavku na dotaz (klíč plus jeden cílový index) definuje hranici zabezpečení.
 
-Přístup správců a vývojářů k indexům není odlišený: musí mít přístup pro zápis k vytváření, odstraňování a aktualizaci objektů spravovaných službou. Kdokoli s klíčem správce ke službě může číst, upravovat nebo odstraňovat libovolný index ve stejné službě. Pro ochranu proti náhodnému nebo škodlivému odstranění indexů je vaše interní Správa zdrojového kódu pro assety kódů nápravou pro vrácení nechtěného odstranění nebo změny indexu. Azure Kognitivní hledání má v rámci clusteru převzetí služeb při selhání, aby se zajistila dostupnost, ale neukládá ani neprovádí vlastní kód používaný k vytváření nebo načítání indexů.
+Přístup správce a vývojáře k indexům je nediferencovaný: oba potřebují přístup pro zápis k vytvoření, odstranění a aktualizaci objektů spravovaných službou. Každý, kdo má klíč správce vaší služby, může číst, upravovat nebo odstraňovat libovolný index ve stejné službě. Pro ochranu proti náhodnému nebo škodlivému odstranění indexů je interní správa zdrojového kódu pro datové zdroje kódu lékem na zrušení nechtěného odstranění nebo úpravy indexu. Azure Cognitive Search má převzetí služeb při selhání v rámci clusteru k zajištění dostupnosti, ale neukládá ani nespustí váš proprietární kód používaný k vytvoření nebo načtení indexů.
 
-Pro řešení s více architekturami, které vyžadují hranice zabezpečení na úrovni indexu, taková řešení obvykle zahrnují střední úroveň, kterou zákazníci používají ke zpracování izolace indexu. Další informace o případu použití s více klienty najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS a Azure kognitivní hledání](search-modeling-multitenant-saas-applications.md).
+U víceklientské řešení, která vyžadují hranice zabezpečení na úrovni indexu, tato řešení obvykle zahrnují střední vrstvu, kterou zákazníci používají ke zpracování izolace indexu. Další informace o případu použití více klientů naleznete v [tématu Návrhové vzory pro víceklientské aplikace SaaS a Azure Cognitive Search](search-modeling-multitenant-saas-applications.md).
 
-## <a name="admin-access"></a>Přístup správce
+## <a name="authentication"></a>Ověřování
 
-[Přístup na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) určuje, jestli máte přístup k ovládacím prvkům přes službu a její obsah. Pokud jste vlastníkem nebo přispěvatelem služby Azure Kognitivní hledání, můžete k vytváření, aktualizaci nebo odstraňování objektů ve službě použít portál nebo modul PowerShell **AZ. Search.** Můžete použít také [REST API správy Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+### <a name="admin-access"></a>Přístup správce
 
-## <a name="user-access"></a>Přístup uživatelů
+[Přístup založený na rolích (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) určuje, zda máte přístup k ovládacím prvkům nad službou a jejím obsahem. Pokud jste vlastníkem nebo přispěvatelem ve službě Azure Cognitive Search, můžete pomocí portálu nebo modulu PowerShell **Az.Search** vytvářet, aktualizovat nebo odstraňovat objekty ve službě. Můžete také použít [rozhraní REST API azure cognitive search management .](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)
 
-Ve výchozím nastavení je přístup uživatelů k indexu určen pomocí přístupového klíče v žádosti o dotaz. Většina vývojářů vytváří a přiřazuje [*klíče dotazů*](search-security-api-keys.md) pro žádosti o vyhledávání na straně klienta. Klíč dotazu uděluje přístup ke čtení pro veškerý obsah v rámci indexu.
+### <a name="user-access"></a>Přístup uživatelů
 
-Pokud potřebujete detailní kontrolu obsahu pro jednotlivé uživatele, můžete pro své dotazy vytvořit filtry zabezpečení a vracet tak dokumenty přidružené k dané identitě zabezpečení. Místo předdefinovaných rolí a přiřazení rolí se řízení přístupu na základě identity implementuje jako *Filtr* , který ořízne výsledky hledání dokumentů a obsahu na základě identit. Následující tabulka popisuje dva přístupy k oříznutí výsledků hledání neoprávněného obsahu.
+Ve výchozím nastavení je přístup uživatelů k indexu určen přístupovým klíčem v požadavku na dotaz. Většina vývojářů vytváří a přiřazuje [*klíče dotazů*](search-security-api-keys.md) pro požadavky na vyhledávání na straně klienta. Klíč dotazu uděluje přístup pro čtení k veškerému obsahu v rámci indexu.
+
+Pokud požadujete podrobnou kontrolu obsahu podle uživatele, můžete na dotazech vytvořit filtry zabezpečení a vrátit dokumenty přidružené k dané identitě zabezpečení. Namísto předdefinovaných rolí a přiřazení rolí je řízení přístupu založené na identitě implementováno jako *filtr,* který ořízne výsledky hledání dokumentů a obsahu na základě identit. Následující tabulka popisuje dva přístupy k oříznutí výsledků hledání neautorizovaného obsahu.
 
 | Přístup | Popis |
 |----------|-------------|
-|[Oříznutí zabezpečení na základě filtrů identity](search-security-trimming-for-azure-search.md)  | Dokumentuje základní pracovní postup pro implementaci řízení přístupu identity uživatele. Zahrnuje přidávání identifikátorů zabezpečení do indexu a pak vysvětluje filtrování na základě tohoto pole za účelem oříznutí výsledků zakázaného obsahu. |
-|[Oříznutí zabezpečení na základě Azure Active Directory identit](search-security-trimming-for-azure-search-with-aad.md)  | V tomto článku se rozbalí předchozí článek, který poskytuje kroky pro načtení identit z Azure Active Directory (AAD), jednu z [bezplatných služeb](https://azure.microsoft.com/free/) na cloudové platformě Azure. |
+|[Oříznutí zabezpečení na základě filtrů identity](search-security-trimming-for-azure-search.md)  | Dokumentuje základní pracovní postup pro implementaci řízení přístupu k identitě uživatele. Zahrnuje přidání identifikátorů zabezpečení do indexu a potom vysvětluje filtrování proti tomuto poli za účelem oříznutí výsledků zakázaného obsahu. |
+|[Oříznutí zabezpečení na základě identit služby Azure Active Directory](search-security-trimming-for-azure-search-with-aad.md)  | Tento článek rozšiřuje o předchozí článek, který poskytuje kroky pro načítání identit z Azure Active Directory (AAD), jedné z [bezplatných služeb](https://azure.microsoft.com/free/) v cloudové platformě Azure. |
 
-## <a name="table-permissioned-operations"></a>Tabulka: oprávněné operace
+## <a name="table-permissioned-operations"></a>Tabulka: Operace s oprávněním
 
-V následující tabulce najdete souhrn operací povolených v Azure Kognitivní hledání a který klíč odemkne přístup k určité operaci.
+Následující tabulka shrnuje operace povolené v Azure Cognitive Search a klíč odemkne přístup k určité operaci.
 
-| Funkce | Oprávnění |
+| Operace | Oprávnění |
 |-----------|-------------------------|
-| Vytvoření služby | Vlastník předplatného Azure|
-| Škálování služby | Klíč správce, vlastník RBAC nebo přispěvatel v prostředku  |
-| Odstranění služby | Klíč správce, vlastník RBAC nebo přispěvatel v prostředku |
-| Vytváření, úpravy a odstraňování objektů ve službě: <br>Indexy a části komponent (včetně definic analyzátoru, profilů vyhodnocování, možností CORS), indexerů, zdrojů dat, synonym a návrhů. | Klíč správce, vlastník RBAC nebo přispěvatel v prostředku  |
-| Dotazování indexu | Správce nebo klíč dotazu (RBAC není k dispozici) |
-| Dotaz na systémové informace, jako je například vrácení statistik, počtů a seznamů objektů. | Klíč správce, RBAC na prostředku (vlastník, přispěvatel, čtenář) |
-| Správa klíčů pro správu | Klíč správce, vlastník RBAC nebo přispěvatel na prostředku |
-| Správa klíčů dotazů |  Klíč správce, vlastník RBAC nebo přispěvatel na prostředku  |
+| Vytvoření služby | Držitel předplatného Azure|
+| Škálování služby | Klíč správce, vlastník RBAC nebo přispěvatel prostředku  |
+| Odstranění služby | Klíč správce, vlastník RBAC nebo přispěvatel prostředku |
+| Vytvářet, upravovat, odstraňovat objekty ve službě: <br>Indexy a součásti (včetně definic analyzátorů, profilů hodnocení, možností CORS), indexerů, zdrojů dat, synonym, návrhovek. | Klíč správce, vlastník RBAC nebo přispěvatel prostředku  |
+| Dotaz na index | Klíč správce nebo dotazu (RBAC není použitelný) |
+| Informace o systému dotazů, jako jsou například vracející se statistiky, počty a seznamy objektů. | Klíč správce, RBAC na prostředek (vlastník, přispěvatel, čtenář) |
+| Správa klíčů správce | Klíč správce, vlastník RBAC nebo přispěvatel prostředku. |
+| Správa klíčů dotazu |  Klíč správce, vlastník RBAC nebo přispěvatel prostředku.  |
 
 ## <a name="physical-security"></a>Fyzické zabezpečení
 
-Datová centra Microsoftu poskytují špičkové fyzické zabezpečení a jsou v souladu s rozsáhlým portfoliem standardů a předpisů. Pokud se chcete dozvědět víc, podívejte se na stránku [globální datová centra](https://www.microsoft.com/cloud-platform/global-datacenters) nebo sledujte krátké video o zabezpečení datového centra.
+Datová centra Microsoftu poskytují špičkové fyzické zabezpečení a jsou v souladu s rozsáhlým portfoliem standardů a předpisů. Další informace najdete na stránce [Globální datová centra](https://www.microsoft.com/cloud-platform/global-datacenters) nebo se podívejte na krátké video o zabezpečení datových center.
 
 > [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-+ [Začínáme s .NET (ukazuje použití klíče správce k vytvoření indexu)](search-create-index-dotnet.md)
++ [Začínáme .NET (ukazuje použití klíče správce k vytvoření indexu)](search-create-index-dotnet.md)
 + [Začínáme REST (ukazuje použití klíče správce k vytvoření indexu)](search-create-index-rest-api.md)
-+ [Řízení přístupu na základě identity pomocí filtrů Azure Kognitivní hledání](search-security-trimming-for-azure-search.md)
-+ [Řízení přístupu na základě identity ve službě Active Directory s využitím filtrů Azure Kognitivní hledání](search-security-trimming-for-azure-search-with-aad.md)
-+ [Filtry v Azure Kognitivní hledání](search-filters.md)
++ [Řízení přístupu založené na identitě pomocí filtrů Azure Cognitive Search](search-security-trimming-for-azure-search.md)
++ [Řízení přístupu založené na identitách služby Active Directory pomocí filtrů Azure Cognitive Search](search-security-trimming-for-azure-search-with-aad.md)
++ [Filtry v Azure Cognitive Search](search-filters.md)

@@ -1,28 +1,28 @@
 ---
-title: Dílčí orchestrace pro Durable Functions – Azure
-description: Jak volat orchestrace z orchestrace v rozšíření Durable Functions pro Azure Functions.
+title: Podorchestrations pro trvanlivé funkce – Azure
+description: Jak volat orchestrations z orchestrations v rozšíření trvalé funkce pro funkce Azure.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76261513"
 ---
-# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Dílčí orchestrace v Durable Functions (Azure Functions)
+# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Podorchestrace v trvalých funkcích (funkce Azure)
 
-Kromě volání funkcí aktivity mohou funkce Orchestrator volat jiné funkce nástroje Orchestrator. Například můžete vytvořit větší orchestraci z knihovny menších funkcí nástroje Orchestrator. Nebo můžete souběžně spustit více instancí funkce nástroje Orchestrator.
+Kromě volání funkce aktivity orchestrator funkce můžete volat jiné funkce orchestrator. Můžete například vytvořit větší orchestraci z knihovny menších funkcí orchestratoru. Nebo můžete spustit více instancí funkce orchestrator paralelně.
 
-Funkce Orchestrator může volat další funkci Orchestrator pomocí `CallSubOrchestratorAsync` nebo `CallSubOrchestratorWithRetryAsync` metod v rozhraní .NET nebo `callSubOrchestrator` nebo `callSubOrchestratorWithRetry`ch metod v JavaScriptu. Další informace o automatickém opakování najdete v článku o [zpracování chyb & kompenzaci](durable-functions-error-handling.md#automatic-retry-on-failure) .
+Funkce orchestrator může volat jinou funkci `CallSubOrchestratorAsync` orchestrator pomocí `CallSubOrchestratorWithRetryAsync` metod `callSubOrchestrator` nebo `callSubOrchestratorWithRetry` v rozhraní .NET nebo metod or v Jazyce JavaScript. Článek [Kompenzace zpracování &](durable-functions-error-handling.md#automatic-retry-on-failure) obsahuje další informace o automatickém opakování.
 
-Funkce dílčího nástroje Orchestrator se chovají stejně jako funkce aktivity z perspektivy volajícího. Mohou vracet hodnotu, vyvolat výjimku a může být očekávána nadřazenou funkcí Orchestrator. 
-## <a name="example"></a>Příklad:
+Funkce suborchestrtoru se chovají stejně jako funkce aktivity z pohledu volajícího. Mohou vrátit hodnotu, vyvolat výjimku a může být očekáván nadřazenou funkcí orchestrator. 
+## <a name="example"></a>Příklad
 
-Následující příklad znázorňuje scénář IoT ("Internet věcí"), kde je více zařízení, které je třeba zřídit. Následující funkce představuje pracovní postup zřizování, který je třeba spustit pro každé zařízení:
+Následující příklad ilustruje scénář IoT ("Internet věcí"), kde existuje více zařízení, které je potřeba zřídit. Následující funkce představuje pracovní postup zřizování, který je třeba provést pro každé zařízení:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
@@ -43,7 +43,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -66,11 +66,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Tato funkce Orchestrator se dá použít jako pro jednorázové zřizování zařízení nebo může být součástí větší orchestrace. V druhém případě může nadřazená funkce Orchestrator naplánovat instance `DeviceProvisioningOrchestration` pomocí rozhraní API `CallSubOrchestratorAsync` (.NET) nebo `callSubOrchestrator` (JavaScript).
+Tato funkce orchestrator lze použít jako-je pro zřizování jednorázové zařízení nebo může být součástí větší orchestraci. V druhém případě může nadřazená funkce `DeviceProvisioningOrchestration` orchestrator naplánovat instance použití rozhraní `CallSubOrchestratorAsync` API (.NET) nebo `callSubOrchestrator` (JavaScript).
 
-Tady je příklad, který ukazuje, jak paralelně spustit více funkcí nástroje Orchestrator.
+Zde je příklad, který ukazuje, jak spustit více funkcí orchestrator paralelně.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
@@ -94,9 +94,9 @@ public static async Task ProvisionNewDevices(
 ```
 
 > [!NOTE]
-> Předchozí C# příklady jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklady jazyka C# jsou pro trvalé funkce 2.x. Pro trvalé funkce 1.x, `DurableOrchestrationContext` musíte `IDurableOrchestrationContext`použít místo . Další informace o rozdílech mezi verzemi naleznete v článku [verze durable functions.](durable-functions-versions.md)
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -123,9 +123,9 @@ module.exports = df.orchestrator(function*(context) {
 ---
 
 > [!NOTE]
-> Dílčí orchestrace musí být definovaná ve stejné aplikaci Function App jako nadřazená orchestrace. Pokud potřebujete zavolat a počkat na orchestraci v jiné aplikaci Function App, zvažte použití integrované podpory rozhraní HTTP API a vzoru příjemce cyklického dotazování HTTP 202. Další informace najdete v tématu [funkce protokolu HTTP](durable-functions-http-features.md) .
+> Podorchestrations musí být definovány ve stejné aplikaci funkce jako nadřazené orchestraci. Pokud potřebujete volat a čekat na orchestrace v jiné aplikaci funkce, zvažte použití integrované podpory pro http api a http 202 dotazování spotřebitele vzor. Další informace naleznete v tématu [Funkce protokolu HTTP.](durable-functions-http-features.md)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přečtěte si, jak nastavit vlastní stav orchestrace.](durable-functions-custom-orchestration-status.md)
+> [Přečtěte si, jak nastavit vlastní stav orchestrace](durable-functions-custom-orchestration-status.md)

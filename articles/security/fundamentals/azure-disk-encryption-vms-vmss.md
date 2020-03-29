@@ -1,77 +1,79 @@
 ---
-title: Azure Disk Encryption pro virtuální počítače a sady škálování virtuálních počítačů
-description: Tento článek poskytuje přehled Azure Disk Encryption
+title: Azure Disk Encryption pro virtuální počítače a škálovací sady virtuálních počítačů
+description: Tento článek obsahuje přehled šifrování disku Azure
 author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 239bfb4f5a0e9115c113bb2d5ddbc931f41c0f3d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c881b2b9743766e4d35e6cb05f6f3469803850bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599952"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062130"
 ---
-# <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Azure Disk Encryption pro virtuální počítače a sady škálování virtuálních počítačů
+# <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Azure Disk Encryption pro virtuální počítače a škálovací sady virtuálních počítačů
 
-Azure Disk Encryption se dá použít pro virtuální počítače se systémem Linux i Windows i pro službu Virtual Machine Scale Sets. 
+Šifrování disku Azure lze použít pro virtuální počítače S Linuxem i Windows, stejně jako pro škálovací sady virtuálních počítačů. 
 
 ## <a name="linux-virtual-machines"></a>Virtuální počítače s Linuxem
 
-Následující články obsahují pokyny k šifrování virtuálních počítačů se systémem Linux.
+Následující články poskytují pokyny pro šifrování virtuálních počítačů Linuxu.
 
-### <a name="current-version-of-azure-disk-encryption"></a>Aktuální verze Azure Disk Encryption
+### <a name="current-version-of-azure-disk-encryption"></a>Aktuální verze šifrování disku Azure
 
-- [Přehled Azure Disk Encryption pro virtuální počítače se systémem Linux](../../virtual-machines/linux/disk-encryption-overview.md)
-- [Scénáře Azure Disk Encryption na virtuálních počítačích se systémem Linux](../../virtual-machines/linux/disk-encryption-linux.md)
-- [Vytvoření a šifrování virtuálního počítače se systémem Linux pomocí Azure CLI](../../virtual-machines/linux/disk-encryption-cli-quickstart.md)
-- [Vytvoření a šifrování virtuálního počítače se systémem Linux pomocí Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
-- [Vytvoření a šifrování virtuálního počítače se systémem Linux pomocí Azure Portal](../../virtual-machines/linux/disk-encryption-portal-quickstart.md)
-- [Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption](../../virtual-machines/linux/disk-encryption-key-vault.md)
-- [Azure Disk Encryption ukázkové skripty](../../virtual-machines/linux/disk-encryption-sample-scripts.md)
-- [Řešení potíží s Azure Disk Encryption](../../virtual-machines/linux/disk-encryption-troubleshooting.md)
-- [Azure Disk Encryption nejčastějších dotazech](../../virtual-machines/linux/disk-encryption-faq.md)
+- [Přehled služby Azure Disk Encryption pro virtuální počítače s Linuxem](../../virtual-machines/linux/disk-encryption-overview.md)
+- [Scénáře služby Azure Disk Encryption na virtuálních počítačích s Linuxem](../../virtual-machines/linux/disk-encryption-linux.md)
+- [Vytvoření a šifrování virtuálního počítače s Linuxem s využitím Azure CLI](../../virtual-machines/linux/disk-encryption-cli-quickstart.md)
+- [Vytvoření a šifrování virtuálního počítače s Linuxem s využitím Azure PowerShellu](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
+- [Vytvoření a šifrování virtuálního počítače s Linuxem s využitím webu Azure Portal](../../virtual-machines/linux/disk-encryption-portal-quickstart.md)
+- [Schéma rozšíření šifrování disku Azure pro Linux](../../virtual-machines/extensions/azure-disk-enc-linux.md)
+- [Vytvoření a konfigurace trezoru klíčů pro službu Azure Disk Encryption](../../virtual-machines/linux/disk-encryption-key-vault.md)
+- [Ukázkové skripty pro službu Azure Disk Encryption](../../virtual-machines/linux/disk-encryption-sample-scripts.md)
+- [Řešení potíží se službou Azure Disk Encryption](../../virtual-machines/linux/disk-encryption-troubleshooting.md)
+- [Nejčastější dotazy ke službě Azure Disk Encryption](../../virtual-machines/linux/disk-encryption-faq.md)
 
-### <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>Azure Disk Encryption s Azure AD (předchozí verze)
+### <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>Šifrování disku Azure pomocí Azure AD (předchozí verze)
 
-- [Přehled Azure Disk Encryption s Azure AD pro virtuální počítače se systémem Linux](../../virtual-machines/linux/disk-encryption-overview-aad.md)
-- [Azure Disk Encryption se scénáři Azure AD na virtuálních počítačích se systémem Linux](../../virtual-machines/linux/disk-encryption-linux.md)
-- [Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption s využitím Azure AD (předchozí verze)](../../virtual-machines/linux/disk-encryption-key-vault-aad.md)
+- [Přehled šifrování disku Azure pomocí virtuálních počítačů Azure AD pro Linux](../../virtual-machines/linux/disk-encryption-overview-aad.md)
+- [Šifrování disku Azure se scénáři Azure AD na virtuálních počítačích s Linuxem](../../virtual-machines/linux/disk-encryption-linux.md)
+- [Vytvoření a konfigurace trezoru klíčů pro šifrování disku Azure pomocí Azure AD (předchozí verze)](../../virtual-machines/linux/disk-encryption-key-vault-aad.md)
 
 ## <a name="windows-virtual-machines"></a>Virtuální počítače s Windows
 
-Následující články obsahují pokyny k šifrování virtuálních počítačů s Windows.
+Následující články obsahují pokyny pro šifrování virtuálních počítačů s Windows.
 
-### <a name="current-version-of-azure-disk-encryption"></a>Aktuální verze Azure Disk Encryption
+### <a name="current-version-of-azure-disk-encryption"></a>Aktuální verze šifrování disku Azure
 
-- [Přehled Azure Disk Encryption pro virtuální počítače s Windows](../../virtual-machines/windows/disk-encryption-overview.md)
-- [Scénáře Azure Disk Encryption na virtuálních počítačích s Windows](../../virtual-machines/windows/disk-encryption-windows.md)
-- [Vytvoření a šifrování virtuálního počítače s Windows pomocí Azure CLI](../../virtual-machines/windows/disk-encryption-cli-quickstart.md)
-- [Vytvoření a šifrování virtuálního počítače s Windows pomocí Azure PowerShell](../../virtual-machines/windows/disk-encryption-powershell-quickstart.md)
-- [Vytvoření a šifrování virtuálního počítače s Windows pomocí Azure Portal](../../virtual-machines/windows/disk-encryption-portal-quickstart.md)
-- [Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption](../../virtual-machines/windows/disk-encryption-key-vault.md)
-- [Azure Disk Encryption ukázkové skripty](../../virtual-machines/windows/disk-encryption-sample-scripts.md)
-- [Řešení potíží s Azure Disk Encryption](../../virtual-machines/windows/disk-encryption-troubleshooting.md)
-- [Azure Disk Encryption nejčastějších dotazech](../../virtual-machines/windows/disk-encryption-faq.md)
+- [Přehled služby Azure Disk Encryption pro virtuální počítače s Windows](../../virtual-machines/windows/disk-encryption-overview.md)
+- [Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows](../../virtual-machines/windows/disk-encryption-windows.md)
+- [Vytvoření a šifrování virtuálního počítače s Windows s využitím Azure CLI](../../virtual-machines/windows/disk-encryption-cli-quickstart.md)
+- [Vytvoření a šifrování virtuálního počítače s Windows s využitím Azure PowerShellu](../../virtual-machines/windows/disk-encryption-powershell-quickstart.md)
+- [Vytvoření a šifrování virtuálního počítače s Windows s využitím webu Azure Portal](../../virtual-machines/windows/disk-encryption-portal-quickstart.md)
+- [Schéma rozšíření šifrování disku Azure pro Windows](../../virtual-machines/extensions/azure-disk-enc-windows.md)
+- [Vytvoření a konfigurace trezoru klíčů pro službu Azure Disk Encryption](../../virtual-machines/windows/disk-encryption-key-vault.md)
+- [Ukázkové skripty pro službu Azure Disk Encryption](../../virtual-machines/windows/disk-encryption-sample-scripts.md)
+- [Řešení potíží se službou Azure Disk Encryption](../../virtual-machines/windows/disk-encryption-troubleshooting.md)
+- [Nejčastější dotazy ke službě Azure Disk Encryption](../../virtual-machines/windows/disk-encryption-faq.md)
 
-### <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>Azure Disk Encryption s Azure AD (předchozí verze)
+### <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>Šifrování disku Azure pomocí Azure AD (předchozí verze)
 
-- [Přehled Azure Disk Encryption s Azure AD pro virtuální počítače s Windows](../../virtual-machines/windows/disk-encryption-overview-aad.md)
-- [Azure Disk Encryption se scénáři Azure AD na virtuálních počítačích s Windows](../../virtual-machines/windows/disk-encryption-windows.md)
-- [Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption s využitím Azure AD (předchozí verze)](../../virtual-machines/windows/disk-encryption-key-vault-aad.md)
+- [Přehled šifrování disku Azure pomocí azure ad pro virtuální počítače s Windows](../../virtual-machines/windows/disk-encryption-overview-aad.md)
+- [Šifrování disku Azure se scénáři Azure AD na virtuálních počítačích s Windows](../../virtual-machines/windows/disk-encryption-windows.md)
+- [Vytvoření a konfigurace trezoru klíčů pro šifrování disku Azure pomocí Azure AD (předchozí verze)](../../virtual-machines/windows/disk-encryption-key-vault-aad.md)
 
 ## <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
 
-Následující články obsahují pokyny k šifrování služby Virtual Machine Scale Sets.
+Následující články obsahují pokyny pro šifrování škálovacích sad virtuálních strojů.
 
-- [Přehled Azure Disk Encryption pro Virtual Machine Scale Sets](../../virtual-machine-scale-sets/disk-encryption-overview.md) 
-- [Šifrování sady škálování virtuálních počítačů pomocí Azure CLI](../../virtual-machine-scale-sets/disk-encryption-cli.md) 
-- [Pomocí Azure PowerShellu Zašifrujte služby Virtual Machine Scale Sets](../../virtual-machine-scale-sets/disk-encryption-powershell.md).
-- [Šifrování virtuálních počítačů pomocí Azure Resource Manager](../../virtual-machine-scale-sets/disk-encryption-azure-resource-manager.md)
-- [Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption](../../virtual-machine-scale-sets/disk-encryption-key-vault.md)
-- [Použití Azure Disk Encryption s pořadím rozšíření pro škálování sady virtuálních počítačů](../../virtual-machine-scale-sets/disk-encryption-extension-sequencing.md)
+- [Přehled šifrování disku Azure pro škálovací sady virtuálních počítačů](../../virtual-machine-scale-sets/disk-encryption-overview.md) 
+- [Šifrování škálovacích sad virtuálních strojů pomocí příkazového příkazového příkazu Azure](../../virtual-machine-scale-sets/disk-encryption-cli.md) 
+- [Šifrujte škálovací sady virtuálních strojů pomocí Azure Powershellu](../../virtual-machine-scale-sets/disk-encryption-powershell.md).
+- [Šifrování škálovacích sad virtuálních strojů pomocí Správce prostředků Azure](../../virtual-machine-scale-sets/disk-encryption-azure-resource-manager.md)
+- [Vytvoření a konfigurace trezoru klíčů pro šifrování disku Azure](../../virtual-machine-scale-sets/disk-encryption-key-vault.md)
+- [Použití Azure Disk Encryption s řazením rozšíření škálovací sady virtuálních počítačů](../../virtual-machine-scale-sets/disk-encryption-extension-sequencing.md)
 
 ## <a name="next-steps"></a>Další kroky
 

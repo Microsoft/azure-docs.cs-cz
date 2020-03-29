@@ -1,6 +1,6 @@
 ---
-title: Spravovat záznamy řízení přístupu pro StorSimple Virtual Array | Dokumentace Microsoftu
-description: Popisuje, jak spravovat záznamy řízení přístupu (záznamů Acr) k určení, které hostitele může připojit k svazku na StorSimple Virtual Array.
+title: Správa záznamů řízení přístupu pro virtuální pole StorSimple | Dokumenty společnosti Microsoft
+description: Popisuje, jak spravovat záznamy řízení přístupu (AVR) k určení, kteří hostitelé se mohou připojit ke svazku na virtuálním poli StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -16,118 +16,118 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1dfc1b0e0576402624bfe62de0e206d9bd7cd1b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64724426"
 ---
-# <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Pomocí Správce zařízení StorSimple ke správě záznamy řízení přístupu pro StorSimple Virtual Array
+# <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Správa záznamů řízení přístupu pro virtuální pole StorSimple pomocí Správce zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Záznamy řízení přístupu (záznamů Acr) umožňují určit, které hostitele může připojit k svazku na StorSimple Virtual Array (označované také jako místní virtuální zařízení StorSimple). Záznamů Acr jsou nastaveny na určitý svazek a obsahovat kvalifikované názvy iSCSI (IQN) hostitele. Když hostitel se pokusí připojit ke svazku, zařízení zkontroluje ACR přidružené k tento svazek pro název IQN a pokud se zjistí shoda, bude připojení navázáno. **Záznamy řízení přístupu** okno v rámci **konfigurace** část služby Správce zařízení zobrazí všechny záznamy řízení přístupu s odpovídající IQN hostitele.
+Záznamy řízení přístupu (AVR) umožňují určit, kteří hostitelé se mohou připojit ke svazku na virtuálním poli StorSimple (označované také jako místní virtuální zařízení StorSimple). ACC jsou nastaveny na určitý svazek a obsahují kvalifikované názvy iSCSI (IQN) hostitelů. Když se hostitel pokusí připojit ke svazku, zařízení zkontroluje ACR přidružené k tomuto svazku pro název IQN a pokud je shoda, je připojení navázáno. Okno **Řízení přístupu zaznamenává** v části **Konfigurace** služby Správce zařízení zobrazuje všechny záznamy řízení přístupu s odpovídajícími sítěmi IQN hostitelů.
 
-![Spravovat záznamy řízení přístupu](./media/storsimple-virtual-array-manage-acrs/ova-manage-acrs.png)
+![Správa záznamů řízení přístupu](./media/storsimple-virtual-array-manage-acrs/ova-manage-acrs.png)
 
 Tento kurz vysvětluje následující běžné úkoly související s ACR:
 
-* Získání názvu IQN
-* Přidat záznam řízení přístupu
-* Upravit záznam řízení přístupu
-* Odstranit záznam řízení přístupu
+* Získejte IQN
+* Přidání záznamu řízení přístupu
+* Úprava záznamu řízení přístupu
+* Odstranění záznamu řízení přístupu
 
 > [!IMPORTANT]
 > 
-> * Při přiřazování ACR svazku, zajistíme, že svazek není přistupovat souběžně více než jeden neclusterovaného hostitele protože to může způsobit poškození svazku.
-> * Při odstraňování ACR ze svazku, ujistěte se, že daný hostitel není přístup ke svazku protože odstranění by mohlo způsobit přerušení čtení i zápis.
+> * Při přiřazování ACR ke svazku dbát na to, aby ke svazku současně nepřistupovalo více než jeden neclusterovaný hostitel, protože by to mohlo svazek poškodit.
+> * Při odstraňování ACR ze svazku se ujistěte, že odpovídající hostitel nemá přístup ke svazku, protože odstranění může vést k přerušení čtení a zápisu.
 
 
-## <a name="get-the-iqn"></a>Získání názvu IQN
+## <a name="get-the-iqn"></a>Získejte IQN
 
-Proveďte následující kroky k získání názvu IQN hostitele Windows, na kterém běží Windows Server 2012.
+Chcete-li získat iqn hostitele systému Windows se systémem Windows Server 2012, postupujte podle následujících kroků.
 
 [!INCLUDE [storsimple-get-iqn](../../includes/storsimple-get-iqn.md)]
 
-## <a name="add-an-acr"></a>Přidat ACR
+## <a name="add-an-acr"></a>Přidání ACR
 
-Použijete **záznamy řízení přístupu** okno v rámci **konfigurace** část služby Správce zařízení StorSimple pro přidání záznamů Acr. Jeden svazek obvykle lze přidružit jeden ACR.
+K přidání záznamů o řízení přístupu v části **Konfigurace** služby Správce zařízení se používá okno **záznamů řízení přístupu.** Obvykle přidružíte jeden ACR k jednomu svazku.
 
-Informace o přidružování ACR svazku, přejděte na [přidat svazek](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
+Informace o přisuzování acr se svazkem získáte k [přidání svazku](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
 
 > [!IMPORTANT]
-> Při přiřazování ACR svazku, zajistíme, že svazek není přistupovat souběžně více než jeden neclusterovaného hostitele protože to může způsobit poškození svazku.
+> Při přiřazování ACR ke svazku dbát na to, aby ke svazku současně nepřistupovalo více než jeden neclusterovaný hostitel, protože by to mohlo svazek poškodit.
 
 
-Proveďte následující kroky pro přidání ACR.
+Chcete-li přidat acr, proveďte následující kroky.
 
-#### <a name="to-add-an-acr"></a>Chcete-li přidat službu ACR
+#### <a name="to-add-an-acr"></a>Přidání ACR
 
-1. Na úvodní stránce služby vyberte svoji službu, klikněte dvakrát na název služby a pak v rámci **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.
-2. V **záznamy řízení přístupu** okna, klikněte na tlačítko **přidat**.
-3. V **přidat ACR** okno, postupujte takto:
+1. Na vstupní stránce služby vyberte službu, poklepejte na název služby a v části **Konfigurace** klikněte na **záznamy řízení přístupu**.
+2. V okně **Záznamy ovládacího prvku access** klepněte na tlačítko **Přidat**.
+3. V okně **Přidat acr** postupujte takto:
    
     1. Zadejte **Název** záznamu ACR.
     
-    2. V části **název iniciátoru iSCSI**, zadejte název IQN hostitele Windows. K získání názvu IQN hostitele Windows serveru, postupujte takto:
+    2. V **části Název iniciátoru iSCSI**zadejte název IQN hostitele systému Windows. Chcete-li získat iqn hostitele systému Windows Server, postupujte takto:
    
-    3. Na hostiteli s Windows spusťte iniciátor iSCSI od Microsoftu. V okně Vlastnosti iniciátoru iSCSI na **konfigurace** kartu, vyberte a zkopírujte řetězec z **název iniciátoru** pole.
-    Vložte tento řetězec **IQN** pole **přidat ACR** okno.
+    3. Na hostiteli s Windows spusťte iniciátor iSCSI od Microsoftu. V okně iSCSI Initiator Properties (Vlastnosti iniciátoru iSCSI) na kartě **Konfigurace** vyberte a zkopírujte řetězec z pole **Název iniciátoru**.
+    Vložte tento řetězec do pole **IQN** v okně **Přidat ACR.**
    
-    6. Klikněte na tlačítko **přidat** přidáte služby ACR.  
+    6. Kliknutím na **Přidat** přidejte acr.  
    
-        ![Přidat záznamy řízení přístupu](./media/storsimple-virtual-array-manage-acrs/ova-add-acrs.png)
-4. Tabulkovém výpisu se aktualizuje tak, aby odrážely tento sčítání.
+        ![Přidání záznamů řízení přístupu](./media/storsimple-virtual-array-manage-acrs/ova-add-acrs.png)
+4. Tabulkový výpis je aktualizován tak, aby odrážel tento přírůstek.
 
-## <a name="edit-an-acr"></a>Upravovat ACR
+## <a name="edit-an-acr"></a>Úprava acr
 
-Můžete použít **záznamy řízení přístupu** okno v rámci **konfigurace** část služby Správce zařízení na webu Azure Portal k úpravě záznamů Acr.
+Okno **Záznamy řízení přístupu** v části **Konfigurace** služby Správce zařízení na webu Azure Portal se používá k úpravám akreditivů.
 
 > [!NOTE]
-> Byste neměli měnit ACR, který se právě používá. Upravovat ACR přidružené k svazku, který je aktuálně používán, byste měli nejprve provést svazku do režimu offline.
+> ACR, který je právě používán, byste neměli měnit. Chcete-li upravit acr přidružený ke svazku, který je právě používán, měli byste nejprve převést svazek do offline.
 
 
-Proveďte následující kroky a upravovat ACR.
+Chcete-li upravit acr, proveďte následující kroky.
 
-#### <a name="to-edit-an-acr"></a>Chcete-li upravit službu ACR
+#### <a name="to-edit-an-acr"></a>Úprava acr
 
-1. Na úvodní stránce služby vyberte svoji službu, klikněte dvakrát na název služby a pak v rámci **konfigurace** části **záznamy řízení přístupu**.
-2. V **záznamy řízení přístupu** okno v tabulkovém výpisu záznamy řízení přístupu, klikněte dvakrát na ACR, kterou chcete upravit.
-3. V **upravit záznamy řízení přístupu** okno, postupujte takto:
+1. Na vstupní stránce služby vyberte službu, poklepejte na název služby a potom v části **Konfigurace,** **záznamy řízení přístupu**.
+2. V okně **Záznamy řízení přístupu** poklepejte na tabulkový výpis záznamů řízení přístupu na acr, který chcete upravit.
+3. V okně **Upravit záznamy řízení přístupu** postupujte takto:
    
-    1. Zadejte identifikátor IQN ACR.
+    1. Dodávat IQN pro ACR.
    
-    2. Klikněte na tlačítko **Uložit** v horní části okna uložte změny služby ACR. Zobrazí následující potvrzující zpráva:
+    2. Klepnutím na tlačítko **Uložit** v horní části okna uložte upravený acr. Zobrazí se následující potvrzovací zpráva:
    
-        ![Upravit záznamy řízení přístupu](./media/storsimple-virtual-array-manage-acrs/ova-edit-acrs.png)
+        ![Úprava záznamů řízení přístupu](./media/storsimple-virtual-array-manage-acrs/ova-edit-acrs.png)
 
-## <a name="delete-an-access-control-record"></a>Odstranit záznam řízení přístupu
+## <a name="delete-an-access-control-record"></a>Odstranění záznamu řízení přístupu
 
-Můžete použít **konfigurace** stránky na webu Azure Portal k odstranění záznamů Acr.
+Pomocí stránky **Konfigurace** na webu Azure Portal můžete odstranit akreditace.
 
 > [!NOTE]
 > 
-> * Nedoporučuje se mazat ACR, který se právě používá. Odstraníte ACR přidružené k svazku, který se právě používá, je měli nejprve provést svazku do režimu offline.
-> * Při odstraňování ACR ze svazku, ujistěte se, že daný hostitel není přístup ke svazku protože odstranění by mohlo způsobit přerušení čtení i zápis.
+> * ACR, který je právě používán, byste neměli odstraňovat. Chcete-li odstranit acr přidružený ke svazku, který je právě používán, měli byste nejprve převést svazek do offline.
+> * Při odstraňování ACR ze svazku se ujistěte, že odpovídající hostitel nemá přístup ke svazku, protože odstranění může vést k přerušení čtení a zápisu.
 
 
-Proveďte následující kroky, chcete-li odstranit záznam řízení přístupu.
+Chcete-li odstranit záznam řízení přístupu, proveďte následující kroky.
 
-#### <a name="to-delete-an-access-control-record"></a>Chcete-li odstranit záznam řízení přístupu
+#### <a name="to-delete-an-access-control-record"></a>Odstranění záznamu řízení přístupu
 
-1. Na úvodní stránce služby vyberte svoji službu, klikněte dvakrát na název služby a pak v rámci **konfigurace** části **záznamy řízení přístupu**.
+1. Na vstupní stránce služby vyberte službu, poklepejte na název služby a potom v části **Konfigurace,** **záznamy řízení přístupu**.
 
-2. V **záznamy řízení přístupu** okno v tabulkovém výpisu záznamy řízení přístupu, klikněte dvakrát na ACR, kterou chcete odstranit.
+2. V okně **Záznamy řízení přístupu** poklepejte na tabulkový výpis záznamů řízení přístupu na acr, který chcete odstranit.
 
-3. V okně záznamy řízení přístupu úprav klikněte na tlačítko **odstranit**.
+3. V okně Upravit záznamy řízení přístupu klepněte na tlačítko **Odstranit**.
    
-    ![Odstranění záznamů ACR](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs.png)
+    ![Odstranit acrs](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs.png)
 
-4. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **odstranit** pro pokračování v odstranění. Tabulkovém výpisu se aktualizuje tak, aby odrážely odstranění.
+4. Po zobrazení výzvy k potvrzení pokračujte klepnutím na **tlačítko Odstranit.** Tabulkový výpis je aktualizován tak, aby odrážel odstranění.
    
-   ![Zpráva upozornění](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs-warning.png)
+   ![Varovná zpráva](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs-warning.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o [přidání svazků a konfigurace záznamů Acr](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
+* Přečtěte si další informace o [přidávání svazků a konfiguraci akreditivů](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
 

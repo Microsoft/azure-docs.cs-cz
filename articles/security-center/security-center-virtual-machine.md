@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
 ms.openlocfilehash: 69062e42a5d572cf7b73bec3932613d39be9b92f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921500"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center a Azure Virtual Machines
@@ -42,12 +42,12 @@ Security Center kromě toho, že pomáhá chránit vaše virtuální počítače
 > 
 > 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Abyste mohli začít s Azure Security Center, je třeba znát a zvážit následující skutečnosti:
 
 * Musíte mít předplatné Microsoft Azure. V tématu [Ceny Security Center](https://azure.microsoft.com/pricing/details/security-center/) najdete další informace o úrovních Free a Standard služby Security Center.
 * Naplánujte své přijetí Security Center. V tématu [Průvodce plánováním a provozem Azure Security Center](security-center-planning-and-operations-guide.md) najdete další informace o tom, na co si dát pozor při plánování a provozu.
-* Informace týkající se podporovaných operačních systémů najdete v tématu [Azure Security Center Nejčastější dotazy (FAQ)](faq-vms.md). 
+* Informace týkající se podporovaných operačních systémů naleznete v [tématu Azure Security Center nejčastější dotazy (FAQ).](faq-vms.md) 
 
 ## <a name="set-security-policy"></a>Nastavení zásad zabezpečení
 Je nutné povolit shromažďování dat, aby Azure Security Center mohl shromažďovat informace, které potřebuje k poskytování doporučení a výstrah generovaných na základě vámi nakonfigurovaných zásad zabezpečení. Na obrázku níže vidíte, že **Shromažďování dat** bylo **Zapnuto**.
@@ -82,7 +82,7 @@ Po nastavení zásad zabezpečení bude Security Center analyzovat stav zabezpe�
 > 
 
 ## <a name="monitor-security-health"></a>Monitorování stavu zabezpečení
-Po povolení [zásad zabezpečení](tutorial-security-policy.md) pro prostředky předplatného bude služba Security Center analyzovat zabezpečení vašich prostředků, aby identifikovala potenciální ohrožení zabezpečení.  V okně **Stav zabezpečení prostředků** můžete zobrazit stav zabezpečení svých prostředků spolu s případnými problémy. Když na dlaždici **Stav zabezpečení prostředků** kliknete na **Virtuální počítače**, otevře se okno **Virtuální počítače**, které obsahuje doporučení pro vaše virtuální počítače. 
+Po povolení [zásad zabezpečení](tutorial-security-policy.md) pro prostředky předplatného bude služba Security Center analyzovat zabezpečení vašich prostředků, aby identifikovala potenciální ohrožení zabezpečení.  Můžete zobrazit stav zabezpečení prostředků, spolu s problémy v okně **stav zabezpečení prostředků.** Když na dlaždici **Stav zabezpečení prostředků** kliknete na **Virtuální počítače**, otevře se okno **Virtuální počítače**, které obsahuje doporučení pro vaše virtuální počítače. 
 
 ![Stav zabezpečení](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
@@ -97,5 +97,5 @@ Vyberte výstrahu zabezpečení, abyste se dozvěděli další informace o udál
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
-* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Nejčastější dotazy – Virtual Machines](faq-vms.md) – Přečtěte si nejčastější dotazy týkající se používání služby.
+* [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
+* [Nejčastější dotazy – virtuální počítače](faq-vms.md) – Najděte nejčastější dotazy týkající se používání služby.

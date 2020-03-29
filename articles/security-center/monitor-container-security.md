@@ -1,6 +1,6 @@
 ---
-title: Monitorování zabezpečení kontejnerů v Azure Security Center
-description: Naučte se kontrolovat stav zabezpečení vašich kontejnerů z Azure Security Center
+title: Sledování zabezpečení kontejnerů v Azure Security Center
+description: Zjistěte, jak zkontrolovat stav zabezpečení kontejnerů z Azure Security Center
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,138 +9,138 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
 ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919528"
 ---
-# <a name="monitoring-the-security-of-your-containers"></a>Monitorování zabezpečení kontejnerů
+# <a name="monitoring-the-security-of-your-containers"></a>Sledování zabezpečení vašich kontejnerů
 
-Tato stránka vysvětluje použití funkcí zabezpečení kontejnerů popsaných v článku věnovaném [zabezpečení kontejnerů](container-security.md) v části koncepty.
+Tato stránka vysvětluje, jak používat funkce zabezpečení kontejneru popsané v [článku Zabezpečení kontejneru](container-security.md) v naší části koncepty.
 
-Azure Security Center pokrývá následující tři aspekty zabezpečení kontejneru:
+Azure Security Center pokrývá následující tři aspekty zabezpečení kontejnerů:
 
-- **Správa ohrožení zabezpečení** – Pokud používáte cenovou úroveň Standard Security Center (viz [ceny](/azure/security-center/security-center-pricing)), můžete Azure Container Registry na bázi ARM kontrolovat při každém vložení nového obrázku. Skener (s technologií Qualys) prezentuje závěry jako doporučení Security Center.
-    Podrobné pokyny najdete v části [Kontrola registrů kontejnerů](#scanning-your-arm-based-container-registries-for-vulnerabilities) v následujících chybách.
+- **Správa ohrožení zabezpečení** – pokud jste na standardní cenové úrovni Security Center (viz [ceny),](/azure/security-center/security-center-pricing)můžete prohledávat váš registr kontejnerů Azure založený na ARM při každém stisknutí nové bitové kopie. Skener (poháněný společností Qualys) prezentuje nálezy jako doporučení Security Center.
+    Podrobné pokyny najdete v [tématu Hledání chyb zabezpečení v registrech kontejnerů](#scanning-your-arm-based-container-registries-for-vulnerabilities) níže.
 
-- **Posílení zabezpečení kontejnerů Docker hostitelé** – Security Center najde nespravované kontejnery hostované na virtuálních počítačích s IaaS Linux nebo v jiných počítačích se systémem Linux, na kterých běží Docker, a průběžně porovnává konfigurace kontejnerů s centrem pro testování přes Internet Security (SNS) Docker. Security Center vás upozorní na to, že kontejnery nevyhovují žádnému z ovládacích prvků. Nepřetržité monitorování rizik zabezpečení z důvodu neplatných konfigurací je zásadní součástí jakéhokoli programu zabezpečení. 
-    Podrobné pokyny najdete v článku [posílení zabezpečení kontejnerů Docker pro kontejnery](#hardening-your-containers-docker-hosts) .
+- **Posílení zabezpečení hostitelů Dockeru vašich kontejnerů** – Security Center najde nespravované kontejnery hostované na virtuálních počítačích IaaS Linux nebo jiných počítačích s Linuxem se systémem Docker a průběžně porovnává konfigurace kontejnerů s referenčníhodnotou Dockeru centra pro internetovou bezpečnost (CIS). Centrum zabezpečení vás upozorní, pokud vaše kontejnery nesplňují žádný z ovládacích prvků. Nepřetržité sledování bezpečnostních rizik způsobených chybnou konfigurací je klíčovou součástí každého bezpečnostního programu. 
+    Podrobné pokyny najdete v tématu [Posílení zabezpečení hostitelů Dockeru vašich kontejnerů](#hardening-your-containers-docker-hosts) níže.
 
-- **Posílení zabezpečení clusterů služby Azure Kubernetes** – Security Center poskytuje doporučení při hledání ohrožení zabezpečení v konfiguraci clusterů služby Azure Kubernetes. Podrobnosti o specifických doporučeních, která se mohou zobrazit, najdete v tématu [věnovaném doporučením služby Kubernetes](recommendations-reference.md#recs-containers).
+- **Posílení zabezpečení clusterů služby Azure Kubernetes** – Centrum zabezpečení poskytuje doporučení, když najde chyby zabezpečení v konfiguraci clusterů služby Azure Kubernetes. Podrobnosti o konkrétních doporučeních, která se mohou zobrazit, naleznete v [doporučeních kubernetesservice](recommendations-reference.md#recs-containers).
 
-- **Ochrana modulem runtime** – Pokud používáte cenovou úroveň Standard Security Center, získáte ochranu před hrozbami v reálném čase pro vaše kontejnerová prostředí. Security Center generuje výstrahy pro podezřelé aktivity na úrovni hostitele a clusteru AKS. Podrobnosti o relevantních výstrahách zabezpečení, které se mohou zobrazit, najdete v částech [výstrahy pro clustery služby Azure Kubernetes](alerts-reference.md#alerts-akscluster) a [výstrahy pro kontejnery – úroveň hostitele](alerts-reference.md#alerts-containerhost) v referenční tabulce výstrahy.
+- **Ochrana za běhu** – Pokud jste na standardní cenové úrovni Security Center, získáte ochranu před hrozbami v reálném čase pro kontejnerová prostředí. Security Center generuje výstrahy pro podezřelé aktivity na úrovni hostitele a clusteru AKS. Podrobnosti o příslušných výstrahách zabezpečení, které se mohou zobrazit, najdete v tématu [výstrahy pro clustery služby Azure Kubernetes](alerts-reference.md#alerts-akscluster) a [výstrahy pro kontejnery – oddíly na úrovni hostitele](alerts-reference.md#alerts-containerhost) referenční tabulky výstrah.
 
-## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Kontrola registrů kontejnerů založených na ARM pro ohrožení zabezpečení 
+## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Vyhledávání chyb zabezpečení v registrech kontejnerů založených na armu 
 
-1. Postup povolení kontroly ohrožení zabezpečení Azure Container Registry imagí:
+1. Povolení prohledává chybu zabezpečení ibi obrázků registru kontejnerů Azure:
 
-    1. Ujistěte se, že jste v Azure Security Center cenové úrovně Standard.
+    1. Ujistěte se, že jste na standardní cenové úrovni Azure Security Center.
 
-    1. Na stránce **Nastavení cenové &** povolte pro vaše předplatné volitelný kontejner Registry registry: ![povolování sady registrů kontejnerů](media/monitor-container-security/enabling-container-registries-bundle.png)
+    1. Na stránce **Nastavení cenové &** povolte pro své předplatné ![volitelný balíček registrů kontejnerů: Povolení balíčku registrů kontejnerů](media/monitor-container-security/enabling-container-registries-bundle.png)
 
-        Security Center je teď připravený ke skenování imagí, které se připravují do registru. 
+        Centrum zabezpečení je nyní připraveno ke skenování bitových kopií, které jsou zatlačeny do registru. 
 
         >[!NOTE]
-        >Tato funkce se účtuje na základě obrázku.
+        >Tato funkce se účtuje podle obrázku.
 
 
-1. Pokud chcete spustit kontrolu obrázku, nahrajte ho do svého registru. 
+1. Chcete-li spustit prohledávací akci, zatlačte ji do registru. 
 
-    Až se kontrola dokončí (obvykle po přibližně 10 minutách), výsledky jsou k dispozici v Security Center doporučení.
+    Po dokončení skenování (obvykle po přibližně 10 minutách) jsou zjištění k dispozici v doporučeních centra zabezpečení.
     
 
-1. Pokud si chcete prohlédnout nálezy, navštivte stránku **doporučení** . Pokud byly zjištěny problémy, zobrazí se následující doporučení:
+1. Zjištění zobrazíte na stránce **Doporučení.** Pokud byly zjištěny problémy, zobrazí se následující doporučení:
 
     ![Doporučení k nápravě problémů ](media/monitor-container-security/acr-finding.png)
 
 
 1. Vyberte doporučení. 
-    Otevře se stránka s podrobnostmi o doporučení s dalšími informacemi. Tyto informace obsahují seznam registrů s ohroženými bitovými kopiemi ("ovlivněné prostředky") a nápravné kroky. 
+    Otevře se stránka podrobností o doporučení s dalšími informacemi. Tyto informace zahrnují seznam registrů se zranitelnými obrázky ("Ovlivněné zdroje") a nápravné kroky. 
 
-1. Výběrem konkrétního registru zobrazíte úložiště, která obsahují zranitelná úložiště.
+1. Vyberte konkrétní registr, chcete-li zobrazit úložiště v něm, které mají ohrožené úložiště.
 
     ![Výběr registru](media/monitor-container-security/acr-finding-select-registry.png)
 
-    Otevře se stránka s podrobnostmi o registru se seznamem ovlivněných úložišť.
+    Otevře se stránka s podrobnostmi o registru se seznamem ohrožených úložišť.
 
-1. Vyberte konkrétní úložiště, ve kterém se zobrazí úložiště obsahující zranitelné obrázky.
+1. Vyberte konkrétní úložiště, chcete-li zobrazit úložiště v něm, které mají zranitelné obrázky.
 
-    ![Vyberte úložiště.](media/monitor-container-security/acr-finding-select-repository.png)
+    ![Výběr úložiště](media/monitor-container-security/acr-finding-select-repository.png)
 
-    Otevře se stránka s podrobnostmi úložiště. Obsahuje seznam ohrožených imagí spolu s posouzením závažnosti zjištění.
+    Otevře se stránka s podrobnostmi o úložišti. Uvádí zranitelné obrázky spolu s posouzením závažnosti nálezů.
 
-1. Vyberte konkrétní obrázek pro zobrazení ohrožení zabezpečení.
+1. Vyberte konkrétní obrázek, abyste viděli chyby zabezpečení.
 
-    ![Vybrat obrázky](media/monitor-container-security/acr-finding-select-image.png)
+    ![Výběr obrázků](media/monitor-container-security/acr-finding-select-image.png)
 
-    Otevře se seznam zjištění pro vybraný obrázek.
+    Otevře se seznam nálezů vybraného obrázku.
 
     ![Seznam zjištění](media/monitor-container-security/acr-findings.png)
 
-1. Pokud se chcete dozvědět víc o hledání, vyberte hledání. 
+1. Chcete-li se dozvědět více o hledání, vyberte hledání. 
 
-    Otevře se podokno Podrobnosti o zjištěních.
+    Otevře se podokno podrobností o zjištěních.
 
-    [Podokno podrobností o zjištěních ![](media/monitor-container-security/acr-finding-details-pane.png)](media/monitor-container-security/acr-finding-details-pane.png#lightbox)
+    [![Podokno podrobností o hledání](media/monitor-container-security/acr-finding-details-pane.png)](media/monitor-container-security/acr-finding-details-pane.png#lightbox)
 
     Toto podokno obsahuje podrobný popis problému a odkazy na externí prostředky, které pomáhají zmírnit hrozby.
 
-1. Postupujte podle kroků v části náprava v tomto podokně.
+1. Postupujte podle pokynů v části náprava v tomto podokně.
 
-1. Pokud jste provedli kroky potřebné k nápravě problému se zabezpečením, nahraďte image v registru:
+1. Pokud jste provedli kroky potřebné k nápravě problému se zabezpečením, nahraďte bitovou kopii v registru:
 
-    1. Odeslat aktualizovaný obrázek Tím se aktivuje kontrola. 
+    1. Posuňte aktualizovaný obrázek. Tím se spustí skenování. 
     
-    1. Podívejte se na stránku doporučení pro doporučení ohrožení zabezpečení v Azure Container Registry imagí by mělo být opravené. 
+    1. Na stránce doporučení najdete doporučení "Chyby zabezpečení v ibi objektů registru kontejnerů Azure by měly být opraveny". 
     
-        Pokud se doporučení stále zobrazuje a obrázek, který jste nastavili, se stále zobrazuje v seznamu ohrožených imagí, znovu ověřte postup nápravy.
+        Pokud se doporučení stále zobrazuje a obrázek, který jste zpracovali, se stále zobrazuje v seznamu ohrožených obrázků, zkontrolujte kroky nápravy znovu.
 
-    1. Když si jste jistí, že se aktualizovaná image nahrála, prohledala a už se nezobrazuje v doporučení, odstraňte z registru starou ohrožený image.
+    1. Pokud jste si jisti, že aktualizovaný obrázek byl posunut, naskenován a již se v doporučení nezobrazuje, odstraňte "starou" zranitelnou bitovou kopii z registru.
 
 
-## <a name="hardening-your-containers-docker-hosts"></a>Posílení zabezpečení kontejnerů Docker
+## <a name="hardening-your-containers-docker-hosts"></a>Posílení zabezpečení hostitelů Dockeru vašich kontejnerů
 
-Security Center nepřetržitě monitoruje konfiguraci hostitelů Docker a vygeneruje doporučení zabezpečení, která odpovídají oborovým standardům.
+Security Center neustále monitoruje konfiguraci vašich hostitelů Dockeru a generuje doporučení zabezpečení, která odrážejí oborové standardy.
 
-Chcete-li zobrazit doporučení zabezpečení Azure Security Center pro hostitele Docker vašich kontejnerů:
+Zobrazení doporučení zabezpečení Azure Security Center pro hostitele Dockeru vašich kontejnerů:
 
-1. Na Security Center navigačním panelu otevřete **compute & aplikace** a vyberte kartu **kontejnery** .
+1. Na navigačním panelu Centra zabezpečení otevřete **výpočetní & aplikace** a vyberte kartu **Kontejnery.**
 
-1. Volitelně můžete filtrovat seznam prostředků kontejneru na hostitele kontejnerů hostitelé.
+1. Volitelně můžete filtrovat seznam prostředků kontejneru hostitelům hostitelů kontejnerů.
 
-    ![Filtr prostředků kontejneru](media/monitor-container-security/container-resources-filter.png)
+    ![Kontejnerové prostředky, filtr](media/monitor-container-security/container-resources-filter.png)
 
-1. V seznamu hostitelských počítačů kontejnerů vyberte jednu pro další prozkoumání.
+1. Ze seznamu hostitelských počítačů kontejneru vyberte jeden, který chcete dále prozkoumat.
 
     ![Doporučení hostitele kontejneru](media/monitor-container-security/container-resources-filtered-to-hosts.png)
 
-    Otevře se **Stránka informace o hostiteli kontejneru** s podrobnostmi o hostiteli a seznamem doporučení.
+    Otevře **se stránka s informacemi o hostiteli kontejneru** s podrobnostmi o hostiteli a seznamem doporučení.
 
-1. V seznamu doporučení vyberte doporučení, které chcete prozkoumat.
+1. Ze seznamu doporučení vyberte doporučení pro další zkoumání.
 
     ![Seznam doporučení hostitele kontejneru](media/monitor-container-security/container-host-rec.png)
 
-1. Volitelně si přečtěte popis, informace, hrozby a kroky pro nápravu. 
+1. Volitelně si přečtěte popis, informace, hrozby a nápravné kroky. 
 
-1. V dolní části stránky vyberte **provést akci** .
+1. V dolní části stránky vyberte **Provést akci.**
 
-    [![tlačítko provést akci](media/monitor-container-security/host-security-take-action-button.png)](media/monitor-container-security/host-security-take-action.png#lightbox)
+    [![Tlačítko Provést akci](media/monitor-container-security/host-security-take-action-button.png)](media/monitor-container-security/host-security-take-action.png#lightbox)
 
-    Log Analytics se otevře s vlastní operací připravenou ke spuštění. Výchozí vlastní dotaz obsahuje seznam všech neúspěšných pravidel, která byla vyhodnocena, spolu s pokyny, které vám pomohou tyto problémy vyřešit.
+    Otevře se služba Log Analytics s vlastní operací připravenou ke spuštění. Výchozí vlastní dotaz obsahuje seznam všech chybných pravidel, která byla posouzena, spolu s pokyny, které vám pomohou vyřešit problémy.
 
-    [akce ![Log Analytics](media/monitor-container-security/log-analytics-for-action-small.png)](media/monitor-container-security/log-analytics-for-action.png#lightbox)
+    [![Akce Log Analytics](media/monitor-container-security/log-analytics-for-action-small.png)](media/monitor-container-security/log-analytics-for-action.png#lightbox)
 
-1. Selepšit parametry dotazu a vyberte **Spustit** , když jste si jisti, že je připravený pro hostitele. 
+1. Vyladit parametry dotazu a vyberte **Spustit,** když jste si jisti, že je připraven pro hostitele. 
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak používat funkce zabezpečení kontejneru Security Center. 
+V tomto článku jste se dozvěděli, jak používat funkce zabezpečení kontejneru Centra zabezpečení. 
 
-Další související materiály najdete na následujících stránkách: 
+Další související materiály naleznete na následujících stránkách: 
 
-- [Security Center doporučení pro kontejnery](recommendations-reference.md#recs-containers)
-- [Výstrahy na úrovni clusteru AKS](alerts-reference.md#alerts-akscluster)
-- [Výstrahy na úrovni hostitele kontejneru](alerts-reference.md#alerts-containerhost)
+- [Doporučení Centra zabezpečení pro kontejnery](recommendations-reference.md#recs-containers)
+- [Výstrahy pro úroveň clusteru AKS](alerts-reference.md#alerts-akscluster)
+- [Výstrahy pro úroveň hostitele kontejneru](alerts-reference.md#alerts-containerhost)

@@ -1,6 +1,6 @@
 ---
-title: Zřízení zařízení s virtuálním čipem TPM na platformě Linux – Azure IoT Edge
-description: Použít čip TPM simulované na virtuální počítač s Linuxem k otestování služby Azure Device Provisioning Service pro Azure IoT Edge
+title: Zřizovací zařízení s virtuálním čipem TPM na virtuálním počítači s Linuxem – Azure IoT Edge
+description: Použití simulovaného čipu TPM na virtuálním počítači s Linuxem k testování služby Azure Device Provisioning Service pro Azure IoT Edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,101 +9,101 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 6bb1282212ccff45f179b8750e3ed8aec27d129e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76511055"
 ---
-# <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Vytvoření a zřízení zařízení IoT Edge s virtuálním čipem TPM na virtuálním počítači se systémem Linux
+# <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Vytvoření a zřízení zařízení IoT Edge s virtuálním čipem TPM na virtuálním počítači s Linuxem
 
-Zařízení Azure IoT Edge se dají automaticky zřídit pomocí [služby Device Provisioning](../iot-dps/index.yml). Pokud neznáte proces automatického zřizování, přečtěte si [konceptům automatického zřizování](../iot-dps/concepts-auto-provisioning.md) než budete pokračovat.
+Zařízení Azure IoT Edge se dá automaticky zřídit pomocí [služby Device Provisioning Service](../iot-dps/index.yml). Pokud nejste obeznámeni s procesem automatického zřizování, zkontrolujte [koncepty automatického zřizování](../iot-dps/concepts-auto-provisioning.md) před pokračováním.
 
-V tomto článku se dozvíte, jak otestovat Automatické zřizování na simulovaném IoT Edge zařízení pomocí následujících kroků:
+Tento článek ukazuje, jak otestovat automatické zřizování na simulovaném zařízení IoT Edge pomocí následujících kroků:
 
-* Vytvoření virtuálního počítače (VM) s Linuxem v technologii Hyper-V s Simulovaná Trusted Platform Module (TPM) pro zabezpečení hardwaru.
-* Vytvoření instance z IoT Hubu zařízení zřizování služby (DPS).
-* Vytvořit jednotlivou registraci pro zařízení
-* Nainstalujte modul runtime IoT Edge a připojení zařízení k centru IoT
+* Vytvořte virtuální počítač (VM) linuxového počítače v hyper-V se simulovaným modulem Důvěryhodné platformy (TPM) pro zabezpečení hardwaru.
+* Vytvořte instanci služby Zřizování zařízení služby IoT Hub (DPS).
+* Vytvoření individuální registrace pro zařízení
+* Instalace runtime IoT Edge a připojení zařízení k centru IoT Hub
 
 > [!TIP]
-> Tento článek popisuje, jak otestovat zřizování DPS pomocí simulátoru TPM, ale většina z nich se vztahuje na fyzický hardware TPM, jako je [INFINEON OPTIGA&trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board), zařízení Azure Certified for IoT.
+> Tento článek popisuje, jak otestovat zřizování DPS pomocí simulátoru Čipu TPM, ale velká část se vztahuje na fyzický hardware čipu TPM, jako je [infineon&trade; OPTIGA TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board), zařízení s certifikací Azure pro IoT.
 >
-> Pokud používáte fyzické zařízení, můžete přeskočit k [informacím o načtení zřizování z fyzického zařízení](#retrieve-provisioning-information-from-a-physical-device) v tomto článku.
+> Pokud používáte fyzické zařízení, můžete přeskočit na [načíst informace z zřizování z fyzického zařízení](#retrieve-provisioning-information-from-a-physical-device) části v tomto článku.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Vývojový počítač s Windows s [Hyper-V povolené](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). Tento článek používá Windows 10, spuštění virtuálního počítače s Ubuntu Server.
-* Aktivním centrem IoT.
-* Pokud používáte simulovaný čip TPM, [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s povoleným pracovním vytížením pro [desktopový vývoj C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
+* Vývojový počítač systému Windows s [povolenou technologií Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). Tento článek používá Windows 10 se systémem Ubuntu Server VM.
+* Aktivní služba IoT Hub.
+* Pokud používáte simulovaný čip TPM, [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s povoleným [zatížením "Vývoj plochy s C++".](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)
 
 > [!NOTE]
-> ČIP TPM 2,0 se vyžaduje při použití ověření identity pomocí čipu TPM s DPS a dá se použít jenom k vytvoření individuálních, neskupinových a registrací certifikátů.
+> Čip TPM 2.0 je vyžadován při použití atestace čipu TPM s DPS a lze jej použít pouze k vytvoření individuálních, nikoli skupinových zápisů.
 
-## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>Vytvoření virtuálního počítače s Linuxem pomocí virtuální čip TPM
+## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>Vytvoření virtuálního počítače s Linuxem s virtuálním čipem TPM
 
-V této části vytvoříte nový virtuální počítač se systémem Linux v systému Hyper-V. Tento virtuální počítač jste nakonfigurovali simulovaným čipem TPM, abyste ho mohli použít k testování, jak Automatické zřizování spolupracuje s IoT Edge.
+V této části vytvoříte nový virtuální počítač Linux u technologie Hyper-V. Tento virtuální počítač jste nakonfigurovali se simulovaným čipem TPM, abyste ho mohli použít k testování toho, jak funguje automatické zřizování s IoT Edge.
 
 ### <a name="create-a-virtual-switch"></a>Vytvoření virtuálního přepínače
 
-Virtuální přepínač umožňuje ve virtuálním počítači pro připojení k fyzické síti.
+Virtuální přepínač umožňuje virtuálnímu počítači připojit se k fyzické síti.
 
-1. Na počítači s Windows otevřete Správce technologie Hyper-V.
+1. Otevřete správce technologie Hyper-V na počítači se systémem Windows.
 
-2. V **akce** nabídce vyberte možnost **Správce virtuálních přepínačů**.
+2. V nabídce **Akce** vyberte **Správce virtuálních přepínačů**.
 
-3. Zvolte **externí** virtuální přepínače a potom vyberte **vytvořit virtuální přepínač**.
+3. Zvolte **externí** virtuální přepínač a pak vyberte **Vytvořit virtuální přepínač**.
 
-4. Pojmenujte nový virtuální přepínač, například **EdgeSwitch**. Ujistěte se, že typ připojení je nastaven na **externí síť**a pak vyberte **Ok**.
+4. Pojmenujte nový virtuální přepínač, například **EdgeSwitch**. Zkontrolujte, zda je typ připojení nastaven na **externí síť**, a pak vyberte **ok**.
 
-5. Automaticky otevírané okno vás upozorní, že může přerušit připojení k síti. Vyberte **Ano** pokračujte.
+5. Automaticky otevírané okno vás upozorní, že připojení k síti může být přerušeno. Chcete-li pokračovat, vyberte **možnost Ano.**
 
-Pokud se zobrazí chyby při vytváření nového virtuálního přepínače, ujistěte se, žádné přepínače používáte adaptér sítě ethernet a že žádné další přepínače použijte stejný název.
+Pokud se při vytváření nového virtuálního přepínače zobrazí chyby, ujistěte se, že adaptér ethernet nepoužívají žádné jiné přepínače a že žádné jiné přepínače nepoužívají stejný název.
 
 ### <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. Stažení souboru bitové kopie disku pro virtuální počítač a uloží do místního prostředí. Například [Ubuntu server](https://www.ubuntu.com/download/server).
+1. Stáhněte si soubor s bitovou kopií disku, který chcete použít pro svůj virtuální počítač, a uložte ho místně. [Například, Ubuntu server](https://www.ubuntu.com/download/server).
 
-2. Ve Správci technologie Hyper-V znovu vyberte **nový** > **virtuální počítač** v nabídce **Akce** .
+2. Ve Správci technologie Hyper-V znovu vyberte **nový** > **virtuální počítač** v nabídce **Akce.**
 
-3. Dokončení **Průvodce novým virtuálním počítačem** s následující konkrétní konfigurace:
+3. Dokončete **Průvodce novým virtuálním počítačem** pomocí následujících specifických konfigurací:
 
-   1. **Zadejte generování**: vyberte **2. generace**. Virtuální počítače generace 2 mají povolenou vnořenou virtualizaci, která je nutná ke spuštění IoT Edge na virtuálním počítači.
-   2. **Konfigurace sítí**: nastavte hodnotu **připojení** k virtuálnímu přepínači, který jste vytvořili v předchozí části.
-   3. **Možnosti instalace**: vyberte **nainstalovat operační systém ze souboru bitové spouštěcí kopie** a přejděte do souboru image disku, který jste uložili místně.
+   1. **Určit generování**: Vyberte **generaci 2**. Virtuální počítače generace 2 mají povolenou vnořenou virtualizaci, která je nutná ke spuštění IoT Edge na virtuálním počítači.
+   2. **Konfigurace sítě**: Nastavte hodnotu **připojení** k virtuálnímu přepínači, který jste vytvořili v předchozí části.
+   3. **Možnosti instalace**: Vyberte **nainstalovat operační systém ze spouštěcího souboru bitové kopie** a přejděte do souboru bitové kopie disku, který jste uložili místně.
 
-4. V průvodci vyberte **Dokončit** a vytvořte virtuální počítač.
+4. **Chcete-li** vytvořit virtuální počítač, vyberte v průvodci dokončit.
 
-Může trvat několik minut pro vytvoření nového virtuálního počítače.
+Vytvoření nového virtuálního virtuálního movitého virtuálního movitého virtuálního<e. může trvat několik minut.
 
-### <a name="enable-virtual-tpm"></a>Povolit virtuální čip TPM
+### <a name="enable-virtual-tpm"></a>Povolení virtuálního čipu TPM
 
-Po vytvoření virtuálního počítače otevřete jeho nastavení, abyste povolili čip TPM (Virtual Trusted Platform Module), který umožňuje automatické zřízení zařízení.
+Po vytvoření virtuálního počítače otevřete jeho nastavení a povolte modul virtuální důvěryhodné platformy (TPM), který vám umožní automaticky zřídit zařízení.
 
-1. Vyberte virtuální počítač a pak otevřete jeho **Nastavení**.
+1. Vyberte virtuální počítač a otevřete jeho **Nastavení**.
 
-2. Přejděte do **zabezpečení**.
+2. Přejděte na **zabezpečení**.
 
-3. Zrušte zaškrtnutí políčka **povolení zabezpečeného spouštění**.
+3. Zrušit zaškrtnutí **políčka Povolit zabezpečené spouštění**.
 
-4. Zkontrolujte **povolit Trusted Platform Module**.
+4. Zaškrtněte **políčko Povolit modul důvěryhodné platformy**.
 
-5. Klikněte na **OK**.  
+5. Klikněte na tlačítko **OK**.  
 
-### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>Spustit virtuální počítač a shromažďovat TPM data
+### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>Spuštění virtuálního počítače a shromažďování dat čipu TPM
 
-Na virtuálním počítači Sestavte nástroj, který můžete použít k načtení **ID registrace** a **ověřovacího klíče**zařízení.
+Ve virtuálním počítači vytvořte nástroj, který můžete použít k načtení **Registračního ID** a **ověřovacího klíče**zařízení .
 
 1. Spusťte virtuální počítač a připojte se k němu.
 
-1. Podle pokynů v rámci virtuálního počítače dokončete proces instalace a restartujte počítač.
+1. Postupujte podle pokynů ve virtuálním počítači k dokončení procesu instalace a restartování počítače.
 
-1. Přihlaste se k VIRTUÁLNÍmu počítači a pak postupujte podle kroků uvedených v části [Nastavení vývojového prostředí pro Linux](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) pro instalaci a sestavení sady SDK pro zařízení Azure IoT pro jazyk C.
+1. Přihlaste se k virtuálnímu počítači a pak postupujte podle kroků v [části Nastavení vývojového prostředí Linuxu](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) k instalaci a sestavení sady Azure IoT device SDK pro C.
 
    >[!TIP]
-   >V průběhu tohoto článku budete kopírovat a vkládat z virtuálního počítače, který není snadný prostřednictvím aplikace připojení správce technologie Hyper-V. Když se chcete připojit k virtuálnímu počítači přes Správce technologie Hyper-V, můžete se hned pokusit získat jeho IP adresu: `ifconfig`. Pak můžete použít IP adresu pro připojení prostřednictvím SSH: `ssh <username>@<ipaddress>`.
+   >V průběhu tohoto článku budete kopírovat a vložit z virtuálního počítače, což není snadné prostřednictvím aplikace připojení Správce Hyper-V. Chcete-li načíst jeho IP adresu, můžete se k virtuálnímu počítači připojit prostřednictvím správce Technologie Hyper-V: `ifconfig`. Potom můžete použít IP adresu pro připojení `ssh <username>@<ipaddress>`přes SSH: .
 
-1. Spuštěním následujících příkazů Sestavte nástroj SDK, který načte informace o zřizování zařízení z simulátoru TPM.
+1. Spusťte následující příkazy k vytvoření nástroje SDK, který načte informace o zřizování zařízení ze simulátoru čipu TPM.
 
    ```bash
    cd azure-iot-sdk-c/cmake
@@ -113,27 +113,27 @@ Na virtuálním počítači Sestavte nástroj, který můžete použít k načte
    sudo ./tpm_device_provision
    ```
 
-1. Z příkazového okna přejděte do adresáře `azure-iot-sdk-c` a spusťte simulátor TPM. Ten naslouchá přes soket na portech 2321 a 2322. Toto příkazové okno nezavírejte; je nutné, aby byl tento simulátor spuštěný.
+1. Z příkazového okna přejděte do `azure-iot-sdk-c` adresáře a spusťte simulátor čipu TPM. Ten naslouchá přes soket na portech 2321 a 2322. Nezavírejte toto příkazové okno. budete muset udržet tento simulátor spuštěn.
 
-   V adresáři `azure-iot-sdk-c` spusťte následující příkaz, který spustí simulátor:
+   V `azure-iot-sdk-c` adresáři spusťte simulátor následujícím příkazem:
 
    ```bash
    ./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe
    ```
 
-1. Pomocí sady Visual Studio otevřete řešení vygenerované v adresáři `cmake` s názvem `azure_iot_sdks.sln`a sestavte jej pomocí příkazu **Sestavit řešení** v nabídce **sestavení** .
+1. Pomocí sady Visual Studio otevřete `cmake` řešení `azure_iot_sdks.sln`generované v adresáři s názvem a vytvořte ho pomocí příkazu **Sestavit řešení** v nabídce **Sestavení.**
 
 1. V podokně **Průzkumník řešení** v sadě Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **tpm_device_provision** a vyberte **Nastavit jako spouštěný projekt**.
 
-1. Spusťte řešení pomocí některého z příkazů **Start** v nabídce **ladění** . V okně výstup se zobrazí **ID registrace** simulátoru TPM a **ověřovací klíč**, který byste měli zkopírovat pro pozdější použití při vytváření individuální registrace zařízení v nástroji, můžete toto okno zavřít (s ID registrace a ověřovacím klíčem), ale nechat okno simulátoru TPM spuštěné.
+1. Spusťte řešení pomocí některého z příkazů **Start** v nabídce **Ladění.** Ve výstupním okně se zobrazí **ID registrace** simulátoru čipu TPM a **ověřovací klíč**, který byste měli později zkopírovat, až vytvoříte individuální zápis pro vaše zařízení: Toto okno můžete zavřít (s ID registrace a ověřovacím klíčem), ale ponechat okno simulátoru čipu TPM spuštěné.
 
-## <a name="retrieve-provisioning-information-from-a-physical-device"></a>Načíst informace o zřizování z fyzického zařízení
+## <a name="retrieve-provisioning-information-from-a-physical-device"></a>Načtení informací o zřizování z fyzického zařízení
 
-V zařízení vytvořte nástroj, který můžete použít k načtení informací o zřizování zařízení.
+Na zařízení vytvořte nástroj, který můžete použít k načtení informací o zřizování zařízení.
 
-1. Podle postupu v části [Nastavení vývojového prostředí pro Linux](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) nainstalujte a Sestavte sadu SDK pro zařízení Azure IoT pro jazyk C.
+1. Postupujte podle kroků v [části Nastavení vývojového prostředí Linuxu](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) k instalaci a sestavení sady Azure IoT device SDK pro C.
 
-1. Spuštěním následujících příkazů Sestavte nástroj SDK, který načte informace o zřizování zařízení ze zařízení TPM.
+1. Spusťte následující příkazy k vytvoření nástroje SDK, který načte informace o zřizování zařízení ze zařízení TPM.
 
    ```bash
    cd azure-iot-sdk-c/cmake
@@ -143,40 +143,40 @@ V zařízení vytvořte nástroj, který můžete použít k načtení informac�
    sudo ./tpm_device_provision
    ```
 
-1. Zkopírujte hodnoty pro **ID registrace** a **ověřovací klíč**. Tyto hodnoty použijete k vytvoření jednotlivé registrace pro zařízení do služby Device Provisioning.
+1. Zkopírujte hodnoty pro **ID registrace** a **ověřovací klíč**. Tyto hodnoty slouží k vytvoření individuální registrace pro vaše zařízení v DPS.
 
-## <a name="set-up-the-iot-hub-device-provisioning-service"></a>Nastavte si IoT Hub Device Provisioning Service
+## <a name="set-up-the-iot-hub-device-provisioning-service"></a>Nastavení služby zřizování zařízení služby IoT Hub
 
-Vytvořit novou instanci IoT Hub Device Provisioning Service v Azure a propojit jej do služby IoT hub. Můžete podle pokynů v [nastavení IoT Hub DPS](../iot-dps/quick-setup-auto-provision.md).
+Vytvořte novou instanci služby Zřizování zařízení služby IoT Hub v Azure a propojte ji s vaším centrem IoT hub. Podle pokynů můžete [postupovat v části Nastavení DPS centra IoT](../iot-dps/quick-setup-auto-provision.md)Hub .
 
-Jakmile budete mít spuštěné služby Device Provisioning Service, zkopírujte hodnotu **rozsah ID** na stránce Přehled. Tuto hodnotu použijete při konfiguraci modulu runtime IoT Edge.
+Po spuštění služby Device Provisioning Service zkopírujte hodnotu **oboru ID** ze stránky s přehledem. Tuto hodnotu použijete při konfiguraci běhu IoT Edge.
 
-## <a name="create-a-dps-enrollment"></a>Vytvoření registrace distribučních bodů
+## <a name="create-a-dps-enrollment"></a>Vytvoření registrace DPS
 
-Načíst informace o zajištění z vašeho virtuálního počítače a použít k vytvoření jednotlivé registrace do služby Device Provisioning.
+Načtěte informace o zřizování z vašeho virtuálního počítače a použijte je k vytvoření individuální registrace ve službě Device Provisioning Service.
 
-Až vytvořit registraci ve službě Device Provisioning, budete mít příležitost k deklaraci **počáteční stav Dvojčete zařízení**. Ve dvojčeti zařízení můžete nastavit značky k seskupení zařízení podle libovolné metriky, které potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo zařízení typu. Tyto značky se používají k vytváření [automatické nasazení](how-to-deploy-monitor.md).
+Při vytváření registrace v DPS máte možnost deklarovat **počáteční stav dvojčete zařízení**. V dvojčeti zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky se používají k vytvoření [automatických nasazení](how-to-deploy-monitor.md).
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do vaší instance IoT Hub Device Provisioning Service.
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte na instanci služby Zřizování zařízení služby IoT Hub.
 
-2. V části **nastavení**vyberte **Správa registrací**.
+2. V části **Nastavení**vyberte **Spravovat registrace**.
 
-3. Vyberte **přidat jednotlivou registraci** pak dokončete následující postup pro konfiguraci registrace:  
+3. Vyberte **Přidat individuální zápis** a proveďte následující kroky konfigurace registrace:  
 
-   1. Pro **mechanismus**vyberte **TPM**.
+   1. V **případě mechanismu**vyberte možnost **TPM**.
 
-   2. Zadejte **ověřovací klíč** a **ID registrace** , které jste zkopírovali z virtuálního počítače.
+   2. Zadejte **klíč potvrzení** a **ID registrace,** které jste zkopírovali z virtuálního počítače.
 
       > [!TIP]
-      > Pokud používáte fyzické zařízení TPM, je nutné určit **ověřovací klíč**, který je jedinečný pro každý čip TPM a získá se od výrobce čipu TPM, který je k němu přidružený. Jedinečné **ID registrace** pro vaše zařízení TPM můžete odvodit, například vytvořením hodnoty hash SHA-256 ověřovacího klíče.
+      > Pokud používáte fyzické zařízení TPM, musíte určit **klíč potvrzení**, který je jedinečný pro každý čip Čip TPM a je získán od výrobce čipu TPM, který je k němu přidružen. Jedinečné **ID registrace** pro zařízení TPM můžete odvodit například vytvořením hash SHA-256 ověřovacího klíče.
 
-   3. Výběrem **hodnoty true** deklarujete, že tento virtuální počítač je IoT Edge zařízení.
+   3. Vyberte **True,** chcete-li deklarovat, že tento virtuální počítač je zařízení IoT Edge.
 
-   4. Zvolte propojený **služby IoT Hub** , že chcete připojení k zařízení. Můžete zvolit více rozbočovačů a zařízení bude přiřazeno k jednomu z nich podle vybrané zásady přidělování.
+   4. Vyberte propojené **služby IoT Hub,** ke kterému chcete zařízení připojit. Můžete zvolit více rozbočovačů a zařízení bude přiřazeno jednomu z nich podle vybraných zásad přidělení.
 
-   5. Pokud chcete, zadejte ID pro vaše zařízení. ID zařízení můžete cílit na jednotlivá zařízení pro nasazení modulu. Pokud ID zařízení nezadáte, použije se ID registrace.
+   5. Pokud chcete, zadejte id zařízení. ID zařízení můžete použít k cílení na jednotlivé zařízení pro nasazení modulu. Pokud ID zařízení nezadáte, použije se ID registrace.
 
-   6. Přidat hodnotu značky k **počáteční stav Dvojčete zařízení** Pokud byste o ni. Značky na cílové skupiny zařízení můžete použít pro nasazení modulu. Například:
+   6. Pokud chcete, přidejte hodnotu značky do **počátečního stavu dvojčete zařízení.** Značky můžete použít k cílení skupin zařízení pro nasazení modulu. Například:
 
       ```json
       {
@@ -189,31 +189,31 @@ Až vytvořit registraci ve službě Device Provisioning, budete mít příleži
       }
       ```
 
-   7. Vyberte **Save** (Uložit).
+   7. Vyberte **Uložit**.
 
-Teď, když pro toto zařízení existuje registrace, IoT Edge modul runtime může zařízení během instalace automaticky zřídit.
+Teď, když pro toto zařízení existuje registrace, může runtime IoT Edge automaticky zřídit zařízení během instalace.
 
-## <a name="install-the-iot-edge-runtime"></a>Nainstalovat modul runtime IoT Edge
+## <a name="install-the-iot-edge-runtime"></a>Instalace runtime IoT Edge
 
-Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho součástí spouštění v kontejnerech a můžete nasadit další kontejnery do zařízení tak, aby kód můžete spustit na hraničních zařízeních. Nainstalujte modul runtime IoT Edge ve vašem virtuálním počítači.
+Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho součásti spustit v kontejnerech a umožňují nasadit další kontejnery do zařízení, takže můžete spustit kód na okraji. Nainstalujte runtime IoT Edge do virtuálního počítače.
 
-Vědět, službě Device Provisioning **rozsah ID** a zařízení **ID registrace** před zahájením článek, který odpovídá typu vašeho zařízení. Pokud jste nainstalovali server se systémem Ubuntu v příkladu, použijte **x64** pokyny. Ujistěte se, že konfigurace modulu runtime IoT Edge není ruční, automatické zřizování.
+Před zahájením článku, který odpovídá typu vašeho zařízení, znáte **obor DPS ID** a **ID registrace** zařízení. Pokud jste nainstalovali příklad serveru Ubuntu, použijte pokyny **x64.** Ujistěte se, že konfigurace ioT Edge runtime pro automatické, ne ruční zřizování.
 
-[Instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md)
+[Instalace runtime Azure IoT Edge na Linux](how-to-install-iot-edge-linux.md)
 
-## <a name="give-iot-edge-access-to-the-tpm"></a>Poskytnout přístup IoT Edge do čipu TPM
+## <a name="give-iot-edge-access-to-the-tpm"></a>Poskytnutí přístupu k čipu TPM ioT Edge
 
-Aby modul runtime IoT Edge k automatickému zřízení zařízení potřebuje přístup do čipu TPM.
+Aby runtime IoT Edge automaticky zřizovat vaše zařízení, potřebuje přístup k čipu TPM.
 
-Můžete poskytnout přístup TPM na modul runtime IoT Edge tak, že přepíšete systemd nastavení tak, aby **iotedge** služby má oprávnění root. Pokud nechcete, aby ke zvýšení oprávnění služby, můžete použít následující kroky také ručně poskytnout přístup čipu TPM.
+Čip TPM můžete udělit přístup k runtime IoT Edge přepsáním nastavení systemd tak, aby služba **iotedge** má oprávnění root. Pokud nechcete zvýšit oprávnění služby, můžete také použít následující kroky k ručnímu poskytnutí přístupu čipu TPM.
 
-1. Najít cestu k modulu hardwarového TPM na vašem zařízení a uložte ho jako lokální proměnné.
+1. Najděte cestu k hardwarovému modulu TPM v zařízení a uložte ji jako místní proměnnou.
 
    ```bash
    tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
    ```
 
-2. Vytvořte nové pravidlo, které vám poskytne IoT Edge, modul runtime přístup k tpm0.
+2. Vytvořte nové pravidlo, které umožní runtime přístup ioT Edge k tpm0.
 
    ```bash
    sudo touch /etc/udev/rules.d/tpmaccess.rules
@@ -225,81 +225,81 @@ Můžete poskytnout přístup TPM na modul runtime IoT Edge tak, že přepíšet
    sudo nano /etc/udev/rules.d/tpmaccess.rules
    ```
 
-4. Zkopírujte následující informace o přístup do souboru pravidel.
+4. Zkopírujte následující informace o přístupu do souboru pravidel.
 
    ```input
    # allow iotedge access to tpm0
    KERNEL=="tpm0", SUBSYSTEM=="tpm", GROUP="iotedge", MODE="0660"
    ```
 
-5. Uložte a zavřete soubor.
+5. Uložte a ukončete soubor.
 
-6. Aktivace procesu udev systému k vyhodnocení nové pravidlo.
+6. Aktivujte systém udev k vyhodnocení nového pravidla.
 
    ```bash
    /bin/udevadm trigger $tpm
    ```
 
-7. Ověřte, že bylo úspěšně aplikováno pravidlo.
+7. Ověřte, zda bylo pravidlo úspěšně použito.
 
    ```bash
    ls -l /dev/tpm0
    ```
 
-   Úspěšný výstup by měl vypadat nějak takto:
+   Úspěšný výstup vypadá takto:
 
    ```output
    crw-rw---- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
    ```
 
-   Pokud se nezobrazí, zda byla použita správná oprávnění, zkuste restartovat systém aktualizovat udev.
+   Pokud nevidíte, že byla použita správná oprávnění, zkuste restartovat počítač a aktualizovat udev.
 
-## <a name="restart-the-iot-edge-runtime"></a>Restartujte modul runtime IoT Edge
+## <a name="restart-the-iot-edge-runtime"></a>Restartujte runtime IoT Edge
 
-Restartujte modul runtime IoT Edge, aby použila všechny změny konfigurace, které jste provedli v zařízení.
+Restartujte runtime IoT Edge tak, aby zachytil všechny změny konfigurace, které jste provedli v zařízení.
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-Zkontrolujte, zda je spuštěn modul runtime IoT Edge.
+Zkontrolujte, zda běží runtime IoT Edge.
 
    ```bash
    sudo systemctl status iotedge
    ```
 
-Pokud vidíte chyby zřizování, může být, že změny konfigurace ještě nevstoupilo v platnost. Restartujte démona IoT Edge znovu.
+Pokud se zobrazí chyby zřizování, může se zobrazit, že změny konfigurace se ještě neprojevily. Zkuste znovu restartovat daemon IoT Edge.
 
    ```bash
    sudo systemctl daemon-reload
    ```
 
-Nebo, zkuste restartovat virtuální počítač zobrazíte, pokud se změny projeví na začít znovu.
+Nebo zkuste restartovat virtuální počítač a zjistěte, jestli se změny projeví při novém začátku.
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 
-Pokud modul runtime byl úspěšně spuštěn, můžete přejít do služby IoT Hub a najdete v článku, že byl automaticky zřídit nové zařízení. Vaše zařízení je nyní připraven ke spuštění moduly IoT Edge.
+Pokud se runtime úspěšně spustil, můžete přejít do svého ioT hubu a zjistit, že se vaše nové zařízení automaticky zřídí. Teď je vaše zařízení připravené ke spuštění modulů IoT Edge.
 
-Kontrola stavu démona IoT Edge.
+Zkontrolujte stav daemonu IoT Edge.
 
 ```cmd/sh
 systemctl status iotedge
 ```
 
-Zkontrolujte démon protokoly.
+Zkontrolujte protokoly daemonů.
 
 ```cmd/sh
 journalctl -u iotedge --no-pager --no-full
 ```
 
-Seznam s moduly.
+Seznam spuštěných modulů.
 
 ```cmd/sh
 iotedge list
 ```
 
-Můžete ověřit, že se použil jednotlivý zápis, který jste vytvořili v rámci služby Device Provisioning. V Azure Portal přejděte na instanci služby Device Provisioning. Otevřete podrobnosti registrace pro jednotlivou registraci, kterou jste vytvořili. Všimněte si, že je **přiřazený** stav registrace a že je uvedené ID zařízení.
+Můžete ověřit, že byla použita individuální registrace, kterou jste vytvořili ve službě Device Provisioning Service. Přejděte na instanci služby zřizování zařízení na webu Azure Portal. Otevřete podrobnosti o registraci pro jednotlivé registrace, které jste vytvořili. Všimněte si, že je **přiřazen** stav registrace a id zařízení je uveden.
 
 ## <a name="next-steps"></a>Další kroky
 
-Proces registrace služby Device Provisioning umožňuje nastavit ID zařízení a značky dvojčat zařízení ve stejnou dobu, jak zřídit nové zařízení. Tyto hodnoty můžete cílit na jednotlivá zařízení nebo skupin pomocí automatické správy zařízení. Zjistěte, jak [nasazení a monitorování modulů při škálování na portálu Azure IoT Edge](how-to-deploy-monitor.md) nebo [pomocí Azure CLI](how-to-deploy-monitor-cli.md).
+Proces registrace služby Device Provisioning Service umožňuje nastavit ID zařízení a značky dvojčete zařízení současně s zřízením nového zařízení. Tyto hodnoty můžete použít k cílení na jednotlivá zařízení nebo skupiny zařízení pomocí automatické správy zařízení. Zjistěte, jak [nasadit a monitorovat moduly IoT Edge ve velkém měřítku pomocí portálu Azure](how-to-deploy-monitor.md) nebo [pomocí rozhraní příkazového příkazového příkazu Azure](how-to-deploy-monitor-cli.md).

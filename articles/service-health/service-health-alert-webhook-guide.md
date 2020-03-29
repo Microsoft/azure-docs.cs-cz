@@ -1,70 +1,70 @@
 ---
-title: Odesílání oznámení o Azure Service Health pomocí Webhooku
-description: Odesílat přizpůsobená oznámení o událostech služby Service Health do stávajícího systému správy problémů.
+title: Odesílání oznámení o stavu služby Azure prostřednictvím webhooků
+description: Odešlete přizpůsobená oznámení o událostech stavu služby do stávajícího systému správy problémů.
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
-ms.openlocfilehash: 95926185057d9fc1177b974fe76b2da18ebfc124
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062860"
 ---
-# <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Použití Webhooku ke konfiguraci oznámení o stavu pro systémy správy problémů
+# <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Konfigurace oznámení o stavu pro systémy správy problémů pomocí webového háku
 
-V tomto článku se dozvíte, jak nakonfigurovat výstrahy Azure Service Health pro posílání dat prostřednictvím webhooků do stávajícího systému oznámení.
+Tento článek ukazuje, jak nakonfigurovat výstrahy stavu služby Azure pro odesílání dat prostřednictvím webhooků do stávajícího oznamovacího systému.
 
-Můžete nakonfigurovat výstrahy Service Health, abyste na základě textové zprávy nebo e-mailu upozornili na incident služby Azure.
+Můžete nakonfigurovat výstrahy stavu služby, aby vás upozornili textovou zprávou nebo e-mailem, když se vás incident služby Azure týká.
 
-Je ale možné, že už máte k dispozici existující externí systém oznámení, který budete chtít použít. Tento článek popisuje nejdůležitější části datové části Webhooku. A popisuje, jak vytvořit vlastní výstrahy, které vás upozorní, když dojde k relevantním problémům se službou.
+Ale můžete již mít existující externí oznamovací systém na místě, které chcete použít. Tento článek identifikuje nejdůležitější části datové části webhooku. A popisuje, jak vytvořit vlastní výstrahy, které vás upozorní, když dojde k příslušným problémům se službami.
 
-Pokud chcete použít přednakonfigurovanou integraci, přečtěte si:
-* [Konfigurace upozornění pomocí ServiceNow](service-health-alert-webhook-servicenow.md)
-* [Konfigurace upozornění pomocí PagerDuty](service-health-alert-webhook-pagerduty.md)
-* [Konfigurace upozornění pomocí OpsGenie](service-health-alert-webhook-opsgenie.md)
+Pokud chcete použít předkonfigurovanou integraci, přečtěte si:
+* [Konfigurace výstrah pomocí služby ServiceNow](service-health-alert-webhook-servicenow.md)
+* [Konfigurace výstrah pomocí služby PagerDuty](service-health-alert-webhook-pagerduty.md)
+* [Konfigurace výstrah pomocí OpsGenie](service-health-alert-webhook-opsgenie.md)
 
 **Podívejte se na úvodní video:**
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUV]
 
-## <a name="configure-a-custom-notification-by-using-the-service-health-webhook-payload"></a>Konfigurace vlastního oznámení pomocí Service Health datové části Webhooku
-Chcete-li nastavit vlastní integraci webhooků, je nutné analyzovat datovou část JSON, která je odeslána prostřednictvím Service Health oznámení.
+## <a name="configure-a-custom-notification-by-using-the-service-health-webhook-payload"></a>Konfigurace vlastního oznámení pomocí datové části webhooku service health
+Chcete-li nastavit vlastní integraci webhooku, musíte analyzovat datovou část JSON, která je odeslána prostřednictvím oznámení o stavu služby.
 
-Podívejte [se na příklad](../azure-monitor/platform/activity-log-alerts-webhook.md) `ServiceHealth` datovou část Webhooku.
+Podívejte se [na příklad](../azure-monitor/platform/activity-log-alerts-webhook.md) `ServiceHealth` datové části webhooku.
 
-Můžete potvrdit, že se jedná o výstrahu o stavu služby, a to tak, že prohlížíte `context.eventSource == "ServiceHealth"`. Následující vlastnosti jsou nejrelevantnější:
-- **data. Context. activityLog. status**
-- **data. Context. activityLog. Level**
-- **data. Context. activityLog. subscriptionId**
-- **data. Context. activityLog. Properties. title**
-- **data. Context. activityLog. Properties. impactStartTime**
-- **data. Context. activityLog. Properties. Communication**
-- **data. Context. activityLog. Properties. impactedServices**
-- **data. Context. activityLog. Properties. trackingId**
+Můžete potvrdit, že se jedná o výstrahu stavu služby při pohledu na `context.eventSource == "ServiceHealth"`. Nejdůležitější jsou následující vlastnosti:
+- **data.context.activityLog.status**
+- **data.context.activityLog.level**
+- **data.context.activityLog.subscriptionId**
+- **data.context.activityLog.properties.title**
+- **data.context.activityLog.properties.impactStartTime**
+- **data.context.activityLog.properties.communication**
+- **data.context.activityLog.properties.impactedServices**
+- **data.context.activityLog.properties.trackingId**
 
-## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>Vytvoření odkazu na řídicí panel Service Health pro incident
-Můžete vytvořit přímý odkaz na Service Health řídicí panel na počítači nebo mobilním zařízení vygenerováním specializované adresy URL. Použijte *trackingId* a první tři a poslední tři číslice vašeho *SubscriptionId* v tomto formátu:
+## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>Vytvoření odkazu na řídicí panel Stav služby pro incident
+Pomocí specializované adresy URL můžete vytvořit přímý odkaz na řídicí panel Stavu služby na počítači nebo mobilním zařízení. Použijte *trackingId* a první tři a poslední tři číslice *vašeho subscriptionId* v tomto formátu:
 
-https<i></i>://App.Azure.com/h/ *&lt;trackingId&gt;* / *&lt;první tři a poslední tři číslice SubscriptionId&gt;*
+<i></i>https://app.azure.com/h/*&lt;trackingId&gt;*/*&lt;první tři a poslední tři&gt; číslice subscriptionId*
 
-Pokud je vaše *SubscriptionId* například bba14129-e895-429b-8809-278e836ecdb3 a vaše *trackingId* je 0DET-URB, vaše Service Health adresa URL:
+Například pokud vaše *subscriptionId* je bba14129-e895-429b-8809-278e836ecdb3 a *vaše trackingId* je 0DET-URB, vaše adresa URL stavu služby je:
 
-https<i></i>://App.Azure.com/h/0DET-URB/bbadb3
+https<i></i>://app.azure.com/h/0DET-URB/bbadb3
 
-## <a name="use-the-level-to-detect-the-severity-of-the-issue"></a>K detekci závažnosti problému použijte úroveň
-Od nejnižší k nejvyšší závažnosti může být vlastnost **Level** v datové části *informativní*, *varovná*, *Chyba*nebo *kritická*.
+## <a name="use-the-level-to-detect-the-severity-of-the-issue"></a>Pomocí úrovně zjistíte závažnost problému
+Od nejnižší po nejvyšší závažnost může být **vlastností level** v datové části *informační*, *upozornění*, *chyba*nebo *kritická*.
 
-## <a name="parse-the-impacted-services-to-determine-the-incident-scope"></a>Analyzujte ovlivněné služby a určete rozsah incidentu.
-Výstrahy Service Health můžou informovat o problémech napříč různými oblastmi a službami. Chcete-li získat podrobné informace, je nutné analyzovat hodnotu `impactedServices`.
+## <a name="parse-the-impacted-services-to-determine-the-incident-scope"></a>Analyzovat ovlivněné služby k určení rozsahu incidentu
+Výstrahy stavu služby vás mohou informovat o problémech ve více oblastech a službách. Chcete-li získat úplné podrobnosti, je `impactedServices`třeba analyzovat hodnotu .
 
-Obsah, který je uvnitř je řídicí řetězec formátu [JSON](https://json.org/) , který v případě neřídicího znaku obsahuje jiný objekt JSON, který lze pravidelně analyzovat. Příklad:
+Obsah, který je uvnitř je uvozený řetězec [JSON,](https://json.org/) který při neuvozenou, obsahuje jiný objekt JSON, který lze pravidelně analyzovat. Například:
 
 ```json
 {"data.context.activityLog.properties.impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"},{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"Alerts & Metrics\"},{\"ImpactedRegions\":[{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"App Service\"}]"}
 ```
 
-stane
+se stává:
 
 ```json
 [
@@ -91,16 +91,16 @@ stane
 ```
 
 Tento příklad ukazuje problémy pro:
-- "Výstrahy & metriky" v oblasti Austrálie – východ a Austrálie – jihovýchod.
-- "App Service" v Austrálii – jihovýchod.
+- "Upozornění & metriky" v Austrálii východ a Austrálie jihovýchod.
+- "App Service" v Jihovýchodní Austrálie.
 
-## <a name="test-your-webhook-integration-via-an-http-post-request"></a>Otestujte integraci Webhooku přes požadavek HTTP POST.
+## <a name="test-your-webhook-integration-via-an-http-post-request"></a>Testování integrace webhooku prostřednictvím požadavku HTTP POST
 
 Postupujte následovně:
 
-1. Vytvořte datovou část stavu služby, kterou chcete odeslat. Podívejte se na příklad datové části Webhooku Webhooku u [webhooků pro výstrahy protokolu aktivit Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
+1. Vytvořte datovou část stavu služby, kterou chcete odeslat. Podívejte se na příklad stavu služby webhookužitečné datové části na [Webhooks pro výstrahy protokolu aktivit Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
 
-1. Požadavek HTTP POST vytvoříte takto:
+1. Vytvořte požadavek HTTP POST následujícím způsobem:
 
     ```
     POST        https://your.webhook.endpoint
@@ -109,11 +109,11 @@ Postupujte následovně:
 
     BODY        <service health payload>
     ```
-   Měla by se zobrazit odpověď "2XX-úspěch".
+   Měli byste obdržet odpověď "2XX - Successful".
 
-1. Pokud chcete ověřit, že se integrace úspěšně nastavila, navštivte [PagerDuty](https://www.pagerduty.com/) .
+1. Přejděte na [StránkrDuty](https://www.pagerduty.com/) a potvrďte, že vaše integrace byla úspěšně nastavena.
 
 ## <a name="next-steps"></a>Další kroky
-- Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Přečtěte si o [oznámeních o stavu služby](../azure-monitor/platform/service-notifications.md).
+- Zkontrolujte [webhookové schéma výstrahy protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Další informace o [oznámeních o stavu služby](../azure-monitor/platform/service-notifications.md).
 - Přečtěte si další informace o [skupinách akcí](../azure-monitor/platform/action-groups.md).

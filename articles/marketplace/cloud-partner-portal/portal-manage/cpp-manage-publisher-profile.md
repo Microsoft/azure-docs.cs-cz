@@ -1,21 +1,19 @@
 ---
-title: Spravovat Azure Marketplace a profil vydavatele AppSource | Azure Marketplace
-description: Zastaralý článek CPP, propojený s počítačem článek; bylo vysvětleno, jak spravovat Azure Marketplace a AppSource profily vydavatelů.
-services: Azure, Marketplace, AppSource, Cloud Partner Portal, Partner Center
-author: ChJenk
-manager: pbutlerm
+title: Správa profilu vydavatele Azure Marketplace a AppSource | Azure Marketplace
+description: Zastaralé CPP článek, souvisí s PC článek; byl "Vysvětluje, jak spravovat Azure Marketplace a AppSource profily vydavatele"
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: e2fdbd8720fe80a7d647f908a78614123202c657
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: bc75ebbba807aa981e8de29c40947516fea6638d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666439"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288491"
 ---
-# <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Spravovat Azure Marketplace a profil vydavatele AppSource
+# <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Správa profilu vydavatele Azure Marketplace a AppSource
 
-Tato funkce se přesunula na [portál partnerského centra](https://partner.microsoft.com/)Microsoftu. Další informace najdete v tématu [Správa účtu komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+Tato funkce byla přesunuta na portál Microsoft [Partner Center](https://partner.microsoft.com/). Další informace naleznete v tématu [Jak spravovat účet Commercial Marketplace v Centru partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).

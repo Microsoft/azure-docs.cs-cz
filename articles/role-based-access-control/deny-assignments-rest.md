@@ -1,6 +1,6 @@
 ---
-title: Vypíše přiřazení zamítnutí pro prostředky Azure s REST API.
-description: Přečtěte si, jak vypsat přiřazení zamítnutí pro uživatele, skupiny a aplikace pomocí řízení přístupu na základě role (RBAC) pro prostředky Azure a REST API.
+title: Seznam odepřít přiřazení pro prostředky Azure s rozhraním REST API
+description: Zjistěte, jak vypsat přiřazení odepření pro uživatele, skupiny a aplikace pomocí řízení přístupu na základě rolí (RBAC) pro prostředky Azure a rozhraní REST API.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,30 +12,30 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9e6214b3cb2cdca2d80ebae43771b206e3396d8b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0f648405a3d71bf27c64dacbb3fd78f3e9801137
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137322"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063016"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Vypsat přiřazení zamítnutí pro prostředky Azure pomocí REST API
+# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Seznam odepřít přiřazení pro prostředky Azure pomocí rozhraní REST API
 
-[Odmítnutí přiřazení](deny-assignments.md) zablokuje uživatelům, aby prováděli konkrétní akce prostředku Azure i v případě, že jim přiřazením role udělí přístup. Tento článek popisuje, jak vypsat přiřazení zamítnutí pomocí REST API.
+[Odepřít přiřazení](deny-assignments.md) blokovat uživatelům provádět konkrétní akce prostředků Azure i v případě, že přiřazení role jim uděluje přístup. Tento článek popisuje, jak seznam odepřít přiřazení pomocí rozhraní REST API.
 
 > [!NOTE]
-> Nemůžete přímo vytvořit vlastní přiřazení zamítnutí. Informace o tom, jak se vytvářejí přiřazení odepřít, najdete v tématu [zamítnutí](deny-assignments.md)přiřazení.
+> Nelze přímo vytvořit vlastní přiřazení odepřít. Informace o způsobu vytváření přiřazení odepření naleznete v tématu [Odepřít přiřazení](deny-assignments.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následující:
+Chcete-li získat informace o odepření přiřazení, musíte mít:
 
-- `Microsoft.Authorization/denyAssignments/read` oprávnění, které je součástí většiny [předdefinovaných rolí pro prostředky Azure](built-in-roles.md).
+- `Microsoft.Authorization/denyAssignments/read`oprávnění, které je součástí většiny [předdefinovaných rolí pro prostředky Azure](built-in-roles.md).
 
-## <a name="list-a-single-deny-assignment"></a>Vypsat jedno přiřazení zamítnutí
+## <a name="list-a-single-deny-assignment"></a>Vypsat jedno odepření přiřazení
 
 1. Začněte s následujícím požadavkem:
 
@@ -43,67 +43,74 @@ Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následuj
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments/{deny-assignment-id}?api-version=2018-07-01-preview
     ```
 
-1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam přiřazení odepřít.
+1. V rámci identifikátoru URI nahraďte *{scope}* oborem, pro který chcete uvést odepřít přiřazení.
 
-    | Rozsah | Typ |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | Předplatné |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    > [!div class="mx-tableFixed"]
+    > | Rozsah | Typ |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId}` | Předplatné |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Prostředek |
 
-1. Nahraďte *{Deny-Assignment-ID}* identifikátorem přiřazení odepření, který chcete načíst.
+1. Nahraďte *{deny-assignment-id}* identifikátorem odepřít přiřazení, který chcete načíst.
 
-## <a name="list-multiple-deny-assignments"></a>Seznam více přiřazení odepřít
+## <a name="list-multiple-deny-assignments"></a>Vypsat více přiřazení zamítnutí
 
-1. Začněte s jedním z následujících požadavků:
+1. Začněte jedním z následujících požadavků:
 
     ```http
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview
     ```
 
-    S nepovinnými parametry:
+    S volitelnými parametry:
 
     ```http
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter={filter}
     ```
 
-1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam přiřazení odepřít.
+1. V rámci identifikátoru URI nahraďte *{scope}* oborem, pro který chcete uvést odepřít přiřazení.
 
-    | Rozsah | Typ |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | Předplatné |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    > [!div class="mx-tableFixed"]
+    > | Rozsah | Typ |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId}` | Předplatné |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Prostředek |
 
-1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu přiřazení odepřít.
+1. Nahraďte *{filter}* podmínkou, kterou chcete použít k filtrování seznamu odepřít přiřazení.
 
-    | Filtr | Popis |
-    | --- | --- |
-    | (žádný filtr) | Vypíše všechna přiřazení odepřít v, výše a pod zadaným oborem. |
-    | `$filter=atScope()` | Vypíše přiřazení zamítnutá jenom pro zadaný obor a výše. Nezahrnuje přiřazení zamítnutí v podoborech. |
-    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | Vypíše zamítnutá přiřazení se zadaným názvem. |
+    > [!div class="mx-tableFixed"]
+    > | Filtr | Popis |
+    > | --- | --- |
+    > | (bez filtru) | Zobrazí seznam všech odepření přiřazení na, nad a pod zadaný obor. |
+    > | `$filter=atScope()` | Seznamy odepřít přiřazení pouze pro zadaný obor a výše. Nezahrnuje odepřít přiřazení v podoborech. |
+    > | `$filter=assignedTo('{objectId}')` | Seznamy odepřít přiřazení pro zadaný uživatel nebo instanční objekt.<br/>Pokud je uživatel členem skupiny, která má odepřít přiřazení, toto odepření přiřazení je také uveden. Tento filtr je přenositý pro skupiny, což znamená, že pokud je uživatel členem skupiny a tato skupina je členem jiné skupiny, která má odepřít přiřazení, je toto odepření přiřazení také uvedeno.<br/>Tento filtr přijímá pouze ID objektu pro uživatele nebo instanční objekt. ID objektu nelze předat pro skupinu. |
+    > | `$filter=atScope()+and+assignedTo('{objectId}')` | Seznamy odepřít přiřazení pro zadaný uživatel nebo instanční objekt a na zadaný obor. |
+    > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Seznamy odepřít přiřazení se zadaným názvem. |
+    > | `$filter=principalId+eq+'{objectId}'` | Seznamy odepřít přiřazení pro zadaného uživatele, skupiny nebo instančního objektu. |
 
-## <a name="list-deny-assignments-at-the-root-scope-"></a>Vypsat přiřazení zamítnutí v kořenovém oboru (/)
+## <a name="list-deny-assignments-at-the-root-scope-"></a>Vypsat přiřazení v kořenovém oboru (/)
 
-1. Zvyšte přístup k vašemu přístupu, jak je popsáno v tématu [zvýšení přístupu pro globálního správce v Azure Active Directory](elevate-access-global-admin.md).
+1. Zvyšte přístup, jak je popsáno v [seznamu Zvýšit přístup pro globálního správce ve službě Azure Active Directory](elevate-access-global-admin.md).
 
-1. Použijte následující požadavek:
+1. Použijte následující žádost:
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter={filter}
     ```
 
-1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu přiřazení odepřít. Je vyžadován filtr.
+1. Nahraďte *{filter}* podmínkou, kterou chcete použít k filtrování seznamu odepřít přiřazení. Je vyžadován filtr.
 
-    | Filtr | Popis |
-    | --- | --- |
-    | `$filter=atScope()` | Vypíše přiřazení zamítnutá jenom pro kořenový obor. Nezahrnuje přiřazení zamítnutí v podoborech. |
-    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | Vypíše zamítnutá přiřazení se zadaným názvem. |
+    > [!div class="mx-tableFixed"]
+    > | Filtr | Popis |
+    > | --- | --- |
+    > | `$filter=atScope()` | Seznam odepřít přiřazení pouze kořenový obor. Nezahrnuje odepřít přiřazení v podoborech. |
+    > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Seznam odepřít přiřazení se zadaným názvem. |
 
-1. Odeberte přístup se zvýšenými oprávněními.
+1. Odeberte zvýšený přístup.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Pochopení přiřazení zamítnutí pro prostředky Azure](deny-assignments.md)
+- [Principy odepření přiřazení pro prostředky Azure](deny-assignments.md)
 - [Zvýšení úrovně přístupu pro globálního správce v Azure Active Directory](elevate-access-global-admin.md)
-- [Reference k rozhraní Azure REST API](/rest/api/azure/)
+- [Odkaz na rozhraní API Azure REST](/rest/api/azure/)

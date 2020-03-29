@@ -1,63 +1,63 @@
 ---
 title: Fáze nasazení podrobného plánu
-description: Seznamte se s postupy souvisejícími se zabezpečením a artefaktem, které procházejí službami Azure modrotisky během vytváření přiřazení podrobného plánu.
+description: Seznamte se s kroky souvisejícími se zabezpečením a artefakty, kterými procházejí služby Azure Blueprints při vytváření přiřazení podrobného plánu.
 ms.date: 11/13/2019
 ms.topic: conceptual
 ms.openlocfilehash: daa7722fa37547929aa21b76b870f70143ae71ab
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76156620"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Fáze nasazení podrobného plánu
 
-Po nasazení podrobného plánu služba Azure Modrotiskys povede k nasazení prostředků definovaných v podrobném plánu. Tento článek obsahuje podrobné informace o tom, co každý krok zahrnuje.
+Když se nasadí podrobný plán, služba Azure Blueprints provádí řadu akcí k nasazení prostředků definovaných v podrobném plánu. Tento článek obsahuje podrobnosti o tom, co zahrnuje každý krok.
 
-Nasazení podrobného plánu se aktivuje přiřazením podrobného plánu k předplatnému nebo [aktualizací stávajícího přiřazení](../how-to/update-existing-assignments.md). Během nasazení provede plány následující kroky vysoké úrovně:
+Nasazení podrobného plánu se aktivuje přiřazením podrobného plánu k předplatnému nebo [aktualizací existujícího přiřazení](../how-to/update-existing-assignments.md). Během nasazení podrobné plány provede následující kroky na vysoké úrovni:
 
 > [!div class="checklist"]
-> - Plány s udělenými oprávněními vlastníka
-> - Vytvoří se objekt přiřazení podrobného plánu.
-> - Volitelné – modrotisky vytvoří spravovanou identitu **přiřazenou systémem** .
-> - Artefakty podrobného plánu nasazují spravované identity
-> - Oprávnění služby **podrobného plánu a systémem přiřazená** ke spravovaným identitám se odvolají.
+> - Plány udělená práva vlastníka
+> - Objekt přiřazení podrobného plánu je vytvořen.
+> - Volitelné – podrobné plány vytvoří **spravovanou identitu přiřazenou systémem.**
+> - Spravovaná identita nasazuje artefakty podrobného plánu
+> - Služba Podrobného plánu a práva spravované identity **přiřazená systémem** jsou odvolána.
 
-## <a name="blueprints-granted-owner-rights"></a>Plány s udělenými oprávněními vlastníka
+## <a name="blueprints-granted-owner-rights"></a>Plány udělená práva vlastníka
 
-Instančnímu objektu služby Azure modrotisky se uděluje oprávnění vlastníka přiřazeného předplatného nebo předplatného, když se používá spravovaná identita [přiřazená systémem](../../../active-directory/managed-identities-azure-resources/overview.md) . Přidělená role umožňuje vytvořit a později odvolat spravovanou identitu **přiřazenou systémem** . Pokud používáte spravovanou identitu **přiřazenou uživatelem** , instanční objekt služby Azure modrotiskys nezíská a nepotřebuje oprávnění vlastníka k tomuto předplatnému.
+Instanční objekt služby Azure Blueprints je při použití spravované identity [spravované spravované identity přiřazené k systému](../../../active-directory/managed-identities-azure-resources/overview.md) udělena práva vlastníka přiřazeným předplatným nebo předplatným. Udělená role umožňuje plánům vytvořit a později odvolat spravovanou identitu **přiřazenou systémem.** Pokud používáte **uživatelem přiřazenou spravovanou** identitu, hlavní povinný služeb Azure Blueprints nezíská a nepotřebuje práva vlastníka k předplatnému.
 
-Práva se udělují automaticky v případě, že se přiřazení provádí prostřednictvím portálu. Pokud je však přiřazení provedeno prostřednictvím REST API, udělení práv musí být provedeno pomocí samostatného volání rozhraní API. Rozhraní AppId Azure Modrotiskys je `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, ale instanční objekt se liší podle tenanta. K získání instančního objektu použijte [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) a [servicePrincipals](/graph/api/resources/serviceprincipal) koncového bodu REST. Pak udělte Azure modrotisky roli _vlastníka_ prostřednictvím [portálu](../../../role-based-access-control/role-assignments-portal.md), rozhraní příkazového [řádku azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md)nebo [šablony Správce prostředků](../../../role-based-access-control/role-assignments-template.md).
+Práva jsou udělena automaticky, pokud je přiřazení provedeno prostřednictvím portálu. Pokud se však přiřazení provádí prostřednictvím rozhraní REST API, je třeba udělení práv provést pomocí samostatného volání rozhraní API. Azure Blueprints AppId `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`je , ale instanční objekt se liší podle tenanta. Pomocí [rozhraní Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) a služby REST [koncového boduPrincipals](/graph/api/resources/serviceprincipal) získejte instanční objekt. Potom udělte azure blueprints role _vlastníka_ prostřednictvím [portálu](../../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md)nebo šablony [Správce prostředků](../../../role-based-access-control/role-assignments-template.md).
 
-Služba modrotisky neimplementuje přímo prostředky.
+Služba Podrobné plány není přímo nasadit prostředky.
 
-## <a name="the-blueprint-assignment-object-is-created"></a>Vytvoří se objekt přiřazení podrobného plánu.
+## <a name="the-blueprint-assignment-object-is-created"></a>Objekt přiřazení podrobného plánu je vytvořen.
 
-Uživatel, skupina nebo instanční objekt přiřadí k předplatnému plán. Objekt přiřazení existuje na úrovni předplatného, ve které byl plán plánu přiřazen. Prostředky vytvořené nasazením se neprovádí v kontextu nasazování entity.
+Uživatel, skupina nebo instanční objekt přiřadí podrobný plán k předplatnému. Objekt přiřazení existuje na úrovni předplatného, kde byl přiřazen podrobný plán. Prostředky vytvořené nasazením se neprovádějí v kontextu nasazovací entity.
 
-Při vytváření přiřazení podrobného plánu se zvolí typ [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md) . Výchozím nastavením je spravovaná identita **přiřazená systémem** . Může být zvolena spravovaná identita **přiřazená uživatelem** . Při použití spravované identity **přiřazené uživatelem** musí být definováno a uděleno oprávnění před vytvořením přiřazení podrobného plánu. K vytvoření přiřazení, které používá **uživatelem přiřazenou** identitu, mají `blueprintAssignment/write` předdefinované role jak v rámci předdefinovaných rolí, tak i na základě uživatelsky definovaného [operátoru](../../../role-based-access-control/built-in-roles.md#blueprint-operator) [Owner](../../../role-based-access-control/built-in-roles.md#owner) .
+Při vytváření přiřazení podrobného plánu je vybrán typ [spravované identity.](../../../active-directory/managed-identities-azure-resources/overview.md) Výchozí hodnota je **spravovaná** identita přiřazená systémem. Lze zvolit **spravovanou** identitu přiřazenou uživatelem. Při použití spravované identity **přiřazené uživateli** musí být před vytvořením přiřazení podrobného plánu definována a udělena oprávnění. Předdefinované role [Vlastník](../../../role-based-access-control/built-in-roles.md#owner) a [Operátor podrobného plánu](../../../role-based-access-control/built-in-roles.md#blueprint-operator) mají potřebná `blueprintAssignment/write` oprávnění k vytvoření přiřazení, které používá spravovanou identitu **přiřazenou uživatelem.**
 
-## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Volitelné – modrotisky vytvoří spravovanou identitu přiřazenou systémem.
+## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Volitelné – podrobné plány vytvoří spravovanou identitu přiřazenou systémem.
 
-Když je při přiřazení vybraná [spravovaná identita přiřazená systémem](../../../active-directory/managed-identities-azure-resources/overview.md) , modrotisky vytvoří identitu a udělí spravované identitě roli [vlastníka](../../../role-based-access-control/built-in-roles.md#owner) . Pokud [je existující přiřazení upgradované](../how-to/update-existing-assignments.md), budou se v nich používat dřív vytvořená spravovaná identita.
+Když je během přiřazení k [systému vybrána spravovaná identita,](../../../active-directory/managed-identities-azure-resources/overview.md) plány vytvoří identitu a udělí spravovanou identitu roli [vlastníka.](../../../role-based-access-control/built-in-roles.md#owner) Pokud [je upgradováno existující přiřazení](../how-to/update-existing-assignments.md), plány používají dříve vytvořenou spravovanou identitu.
 
-Spravovaná identita související s přiřazením podrobného plánu se používá k nasazení nebo opětovnému nasazení prostředků definovaných v podrobném plánu. Tento návrh zabraňuje neúmyslnému narušování přiřazení.
-Tento návrh také podporuje funkci [zamykání prostředků](./resource-locking.md) tím, že řídí zabezpečení všech nasazených prostředků z podrobného plánu.
+Spravovaná identita související s přiřazením podrobného plánu se používá k nasazení nebo opětovnému nasazení prostředků definovaných v podrobném plánu. Tento návrh zabraňuje přiřazení nechtěně zasahovat do sebe.
+Tento návrh také podporuje funkci [uzamčení prostředků](./resource-locking.md) tím, že řídí zabezpečení každého nasazeného prostředku z podrobného plánu.
 
-## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>Artefakty podrobného plánu nasazují spravované identity
+## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>Spravovaná identita nasazuje artefakty podrobného plánu
 
-Spravovaná identita poté aktivuje Správce prostředků nasazení artefaktů v plánu v rámci definovaného [pořadí řazení](./sequencing-order.md). Pořadí může být upraveno, aby bylo zajištěno, že artefakty závislé na jiných artefaktech jsou nasazeny ve správném pořadí.
+Spravovaná identita pak aktivuje nasazení Správce prostředků artefaktů v rámci podrobného plánu v definovaném [pořadí řazení](./sequencing-order.md). Pořadí lze upravit tak, aby artefakty závislé na jiných artefaktů jsou nasazeny ve správném pořadí.
 
-Příčinou selhání přístupu nasazení je často výsledek úrovně přístupu udělené spravované identitě. Služba modrotisky spravuje životní cyklus zabezpečení spravované identity **přiřazené systémem** . Uživatel ale zodpovídá za správu práv a životního cyklu **uživatelsky přiřazené** spravované identity.
+Selhání přístupu nasazení je často výsledkem úrovně přístupu udělené spravované identity. Služba Podrobné plány spravuje životní cyklus zabezpečení spravované identity **přiřazené k systému.** Uživatel je však zodpovědný za správu práv a životního cyklu spravované identity **přiřazené uživateli.**
 
-## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>Oprávnění služby podrobného plánu a systémem přiřazená ke spravovaným identitám se odvolají.
+## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>Služba Podrobného plánu a práva spravované identity přiřazená systémem jsou odvolána.
 
-Až se nasazení dokončí, plány odvolají práva spravované identity **přiřazené systémem** z předplatného. Služba modrotisky potom odvolá svá práva k předplatnému. Odebrání práv brání tomu, aby se podrobné plány staly trvalým vlastníkem předplatného.
+Po dokončení nasazení podrobné plány odvolá práva **systémově přiřazené** spravované identity z předplatného. Potom služby Podrobné plány zruší svá práva z předplatného. Odebrání práv zabrání tomu, aby se plány staly trvalým vlastníkem předplatného.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Principy použití [statických a dynamických parametrů](parameters.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)
-- Použití [zamykání prostředků podrobného plánu](resource-locking.md)
-- Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)
-- Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)
+- Pochopit, jak používat [statické a dynamické parametry](parameters.md).
+- Naučte se přizpůsobit [pořadí sekvencování podrobných plánů](sequencing-order.md).
+- Zjistěte, jak využít [zamykání prostředků podrobného plánu](resource-locking.md).
+- Přečtěte si, jak [aktualizovat existující přiřazení](../how-to/update-existing-assignments.md).
+- Vyřešte problémy během přiřazení podrobného plánu s [obecným řešením potíží](../troubleshoot/general.md).

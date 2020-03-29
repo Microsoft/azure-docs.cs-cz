@@ -1,6 +1,6 @@
 ---
-title: Ingestování dat z Kafka do Průzkumníku dat Azure
-description: V tomto článku se dozvíte, jak se přijmout data (načíst) do Průzkumníku dat Azure z platformy Kafka.
+title: Ingestování dat z Kafky do Průzkumníka dat Azure
+description: V tomto článku se dozvíte, jak ingestovat (načíst) data do Průzkumníka dat Azure z Kafky.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66497282"
 ---
-# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Ingestování dat z Kafka do Průzkumníku dat Azure
+# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Ingestování dat z Kafky do Průzkumníka dat Azure
  
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Průzkumník dat Azure nabízí zpracování (načítání dat) z platformy Kafka. Kafka je distribuovaná streamovací platforma, která umožňuje vytváření v reálném čase streamovaných datových kanálů, které spolehlivě přesunovat data mezi systémy nebo aplikace.
+Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí ingestování (načítání dat) z Kafky. Kafka je distribuovaná streamovací platforma, která umožňuje vytvářet datové kanály datových proudů v reálném čase, které spolehlivě přesouvají data mezi systémy nebo aplikacemi.
  
 ## <a name="prerequisites"></a>Požadavky
  
@@ -24,19 +24,19 @@ Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání d
  
 * [Testovací cluster a databáze](create-cluster-database-portal.md).
  
-* [Ukázková aplikace](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) , který generuje data a odesílá je do systému Kafka.
+* [Ukázková aplikace,](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) která generuje data a odesílá je Kafkovi.
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) na spuštění ukázkové aplikace.
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) pro spuštění ukázkové aplikace.
  
-## <a name="kafka-connector-setup"></a>Instalace konektoru Kafka
+## <a name="kafka-connector-setup"></a>Nastavení konektoru Kafka
 
-Připojit Kafka je nástroj pro škálovatelných a spolehlivých streamování dat mezi Apache Kafka a dalšími systémy. To zjednodušuje k rychlému definování konektorů, které přesun velkých sad dat do a z Kafka. Jímka Kafka ADX slouží jako konektor z platformy Kafka.
+Kafka Connect je nástroj pro škálovatelné a spolehlivé streamování dat mezi Apache Kafka a dalšími systémy. Usnadňuje rychlé definování konektorů, které přesouvají velké kolekce dat do a z Kafky. Umyvadlo ADX Kafka slouží jako konektor od společnosti Kafka.
  
-### <a name="bundle"></a>Sady prostředků
+### <a name="bundle"></a>Svazek
 
-Můžete načíst Kafka `.jar` jako modul plug-in, který bude sloužit jako vlastní konektor. K vytvoření, `.jar`, budeme klonování kódu místně a sestavení pomocí nástroje Maven. 
+Kafka může `.jar` načíst jako plugin, který bude fungovat jako vlastní konektor. Chcete-li `.jar`vytvořit takové , budeme klonovat kód místně a sestavení pomocí Maven. 
 
-#### <a name="clone"></a>Klon
+#### <a name="clone"></a>Klonování
 
 ```bash
 git clone git://github.com:Azure/kafka-sink-azure-kusto.git
@@ -45,13 +45,13 @@ cd ./kafka-sink-azure-kusto/kafka/
 
 #### <a name="build"></a>Sestavení
 
-Místně sestavovat pomocí Maven k vytvoření `.jar` dokončení se závislostmi.
+Sestavte místně s Maven vytvořit `.jar` kompletní s závislostmi.
 
-* JDK > = 1.8 [stáhnout](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Maven [stáhnout](https://maven.apache.org/install.html)
+* JDK >= 1,8 [ke stažení](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* Maven [ke stažení](https://maven.apache.org/install.html)
  
 
-V kořenovém adresáři *kafka jímky azure kusto*, spusťte:
+Uvnitř kořenového adresáře *kafka-sink-azure-kusto*, spusťte:
 
 ```bash
 mvn clean compile assembly:single
@@ -59,10 +59,10 @@ mvn clean compile assembly:single
 
 ### <a name="deploy"></a>Nasazení 
 
-Načtení modulu plug-in do Kafka. Příklad nasazení pomocí dockeru najdete tady [kafka jímky azure kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy)
+Načíst plugin do Kafka. Příklad nasazení pomocí dockeru lze nalézt na [kafka-sink-azure-kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy)
  
 
-Podrobné dokumentaci na konektory Kafka a jak je nasadit lze nalézt v [Kafka připojení](https://kafka.apache.org/documentation/#connect) 
+Podrobnou dokumentaci ke konektorům Kafka a jejich nasazení naleznete na [adrese Kafka Connect](https://kafka.apache.org/documentation/#connect) 
 
 ### <a name="example-configuration"></a>Příklad konfigurace 
  
@@ -83,11 +83,11 @@ kusto.sink.tempdir=/var/tmp/
 kusto.sink.flush_size=1000
 ```
  
-## <a name="create-a-target-table-in-adx"></a>Vytvoření cílové tabulky v ADX
+## <a name="create-a-target-table-in-adx"></a>Vytvoření cílové tabulky v adxu
  
-Vytvoření tabulky v ADX, ke kterému Kafka může odesílat data. Vytvoření tabulky v clusteru a zřizována jako databáze **požadavky**.
+Vytvořte tabulku v adxu, do které může Kafka odesílat data. Vytvořte tabulku v clusteru a databázi zřízené v **části Požadavky**.
  
-1. Na webu Azure Portal, přejděte do vašeho clusteru a vyberte **dotazu**.
+1. Na webu Azure Portal přejděte do svého clusteru a vyberte **Dotaz**.
  
     ![Dotaz – odkaz aplikace](media/ingest-data-event-hub/query-explorer-link.png)
  
@@ -110,11 +110,11 @@ Vytvoření tabulky v ADX, ke kterému Kafka může odesílat data. Vytvoření 
 
 ## <a name="generate-sample-data"></a>Generování ukázkových dat
 
-Teď, když Kafka cluster je připojený k ADX, použijte [ukázkovou aplikaci](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) jste si stáhli generují data.
+Teď, když je cluster Kafka připojený k ADX, použijte [ukázkovou aplikaci,](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) kterou jste stáhli ke generování dat.
 
-### <a name="clone"></a>Klon
+### <a name="clone"></a>Klonování
 
-Naklonujte ukázkovou aplikaci místně:
+Klonujte ukázkovou aplikaci místně:
 
 ```cmd
 git clone git://github.com:Azure/azure-kusto-samples-dotnet.git
@@ -125,41 +125,41 @@ cd ./azure-kusto-samples-dotnet/kafka/
 
 1. Otevřete řešení ukázkové aplikace v sadě Visual Studio.
 
-1. V `Program.cs` soubor, aktualizovat `connectionString` konstanty pro připojovací řetězec systému Kafka.
+1. V `Program.cs` souboru aktualizujte konstantu `connectionString` na připojovací řetězec Kafka.
 
     ```csharp    
     const string connectionString = @"<YourConnectionString>";
     ```
 
-1. Sestavte a spusťte aplikaci. Aplikace odešle zprávy do clusteru Kafka a vytiskne na jeho stav každých 10 sekund.
+1. Sestavte a spusťte aplikaci. Aplikace odesílá zprávy do clusteru Kafka a vytiskne svůj stav každých 10 sekund.
 
-1. Po odeslání několik zpráv aplikace přesune k dalšímu kroku.
+1. Po odeslání několika zpráv aplikace přejděte k dalšímu kroku.
  
-## <a name="query-and-review-the-data"></a>Dotazování a zkontrolujte data
+## <a name="query-and-review-the-data"></a>Dotaz a kontrola dat
 
-1. Aby nedošlo k žádným chybám při příjmu:
+1. Chcete-li se ujistit, že během požití nedošlo k žádným chybám:
 
     ```Kusto
     .show ingestion failures
     ```
 
-1. Chcete-li zobrazit nově přijatých dat:
+1. Chcete-li zobrazit nově požitá data:
 
     ```Kusto
     TestTable 
     | count
     ```
 
-1. Chcete-li zobrazit obsah zprávy:
+1. Zobrazení obsahu zpráv:
  
     ```Kusto
     TestTable
     ```
  
-    Sadu výsledků dotazu by měl vypadat nějak takto:
+    Sada výsledků by měla vypadat takto:
  
     ![Sada výsledků dotazu na zprávy](media/ingest-data-event-hub/message-result-set.png)
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
  
-* [Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
+* [Dotazovat se na data v Průzkumníku dat Azure](web-query-data.md)

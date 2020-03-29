@@ -1,6 +1,6 @@
 ---
-title: Monitorování a Správa Azure HDInsight pomocí webového uživatelského rozhraní Ambari
-description: Naučte se používat Ambari k monitorování a správě clusterů HDInsight se systémem Linux. V tomto dokumentu se dozvíte, jak používat webové uživatelské rozhraní Ambari, které je součástí clusterů HDInsight.
+title: Sledování a správa Azure HDInsight pomocí webového uživatelského rozhraní Ambari
+description: Přečtěte si, jak pomocí Ambari monitorovat a spravovat clustery HDInsight založené na Linuxu. V tomto dokumentu se dozvíte, jak používat webové uživatelské rozhraní Ambari, které je součástí clusterů HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,108 +8,110 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: d8cb8bfa32db958b6dfdda0df23429669ce2a439
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: bf780897317d41c7da85140f64313546cf5c31d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063794"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064692"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari zjednodušuje správu a monitorování clusteru Apache Hadoop tím, že poskytuje snadné použití webového uživatelského rozhraní a REST API. Ambari je součástí clusterů HDInsight a používá se k monitorování clusteru a provádění změn konfigurace.
+Apache Ambari zjednodušuje správu a monitorování clusteru Apache Hadoop tím, že poskytuje snadno použitelné webové uživatelské rozhraní a REST API. Ambari je součástí clusterů HDInsight a používá se ke sledování clusteru a provádění změn konfigurace.
 
 V tomto dokumentu se dozvíte, jak používat webové uživatelské rozhraní Ambari s clusterem HDInsight.
 
-## <a id="whatis"></a>Co je Apache Ambari?
+## <a name="what-is-apache-ambari"></a><a id="whatis"></a>Co je Apache Ambari?
 
-[Apache Ambari](https://ambari.apache.org) zjednodušuje správu Hadoop tím, že nabízí snadno použitelné webové uživatelské rozhraní. Pomocí Ambari můžete spravovat a monitorovat clustery Hadoop. Vývojáři můžou tyto možnosti integrovat do svých aplikací pomocí [rozhraní AMBARI REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+[Apache Ambari](https://ambari.apache.org) zjednodušuje správu Hadooptím, že poskytuje snadno použitelné webové uživatelské uzly. Ambari můžete použít ke správě a sledování clusterů Hadoop. Vývojáři mohou integrovat tyto funkce do svých aplikací pomocí [rozhraní API Ambari REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 ## <a name="connectivity"></a>Připojení
 
-Webové uživatelské rozhraní Ambari je k dispozici v clusteru HDInsight na adrese `https://CLUSTERNAME.azurehdinsight.net`, kde `CLUSTERNAME` je název vašeho clusteru.
+Webové uživatelské rozhraní Ambari je k dispozici `https://CLUSTERNAME.azurehdinsight.net`v `CLUSTERNAME` clusteru HDInsight na adrese , kde je název clusteru.
 
 > [!IMPORTANT]  
-> Připojení k Ambari v HDInsight vyžaduje protokol HTTPS. Po zobrazení výzvy k ověření použijte název účtu správce a heslo, které jste zadali při vytvoření clusteru. Pokud se vám nezobrazí výzva k zadání přihlašovacích údajů, zkontrolujte nastavení sítě a potvrďte, že mezi klientem a clustery Azure HDInsight nedochází k potížím s připojením.
+> Připojení k Ambari na HDInsight vyžaduje HTTPS. Po zobrazení výzvy k ověření použijte název účtu správce a heslo, které jste zadali při vytvoření clusteru. Pokud se nezobrazí výzva k zadání přihlašovacích údajů, zkontrolujte nastavení sítě a potvrďte, že mezi klientem a clustery Azure HDInsight není žádný problém s připojením.
 
 ## <a name="ssh-tunnel-proxy"></a>Tunel SSH (proxy)
 
-I když je Ambari pro váš cluster přístupný přímo přes Internet, některé odkazy z webového uživatelského rozhraní Ambari (například na JobTracker) nejsou zveřejněné na internetu. Chcete-li získat přístup k těmto službám, je nutné vytvořit tunel SSH. Další informace najdete v tématu [použití tunelového propojení SSH se službou HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
+Zatímco Ambari pro váš cluster je přístupný přímo přes internet, některé odkazy z Ambari Web UI (například jobtracker) nejsou vystaveny na internetu. Chcete-li získat přístup k těmto službám, musíte vytvořit tunelové propojení SSH. Další informace naleznete [v tématu Použití tunelového propojení SSH s rozhraním HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
 
-## <a name="ambari-web-ui"></a>Ambari Web UI
+## <a name="ambari-web-ui"></a>Webové uživatelské uzlina Ambari
 
 > [!WARNING]  
-> Ve službě HDInsight nejsou podporovány všechny funkce webového uživatelského rozhraní Ambari. Další informace najdete v části [nepodporované operace](#unsupported-operations) v tomto dokumentu.
+> V rozhraní HDInsight nejsou podporovány všechny funkce webového uživatelského rozhraní Ambari. Další informace naleznete v části [Nepodporované operace](#unsupported-operations) tohoto dokumentu.
 
-Při připojování k webovému uživatelskému rozhraní Ambari se zobrazí výzva k ověření na stránce. Použijte uživatele Správce clusteru (výchozí správce) a heslo, které jste použili při vytváření clusteru.
+Při připojování k webovému uživatelskému uživatelskému uživatelskému panelu Ambari budete vyzváni k ověření na stránce. Použijte uživatele správce clusteru (výchozísprávce) a heslo, které jste použili při vytváření clusteru.
 
-Po otevření stránky si poznamenejte pruh v horní části. Tento panel obsahuje následující informace a ovládací prvky:
+Po otevření stránky si poznamenejte pruh nahoře. Tento panel obsahuje následující informace a ovládací prvky:
 
 ![Přehled řídicího panelu Apache Ambari](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
 |Položka |Popis |
 |---|---|
-|Logo Ambari|Otevře řídicí panel, který se dá použít k monitorování clusteru.|
-|Název clusteru # OPS|Zobrazí počet probíhajících operací Ambari. Když vyberete název clusteru nebo **# OPS** , zobrazí se seznam operací na pozadí.|
-|počet výstrah|Zobrazí upozornění nebo kritická upozornění, pokud existují, pro cluster.|
+|Logo Ambari|Otevře řídicí panel, který lze použít ke sledování clusteru.|
+|Název clusteru # ops|Zobrazuje počet probíhajících operací Ambari. Výběrem názvu clusteru nebo **# ops** zobrazí seznam operací na pozadí.|
+|# upozornění|Zobrazí upozornění nebo kritické výstrahy, pokud existuje, pro cluster.|
 |Řídicí panel|Zobrazí řídicí panel.|
-|Služby|Informace a konfigurační nastavení pro služby v clusteru.|
-|Hostitelé|Informace a nastavení konfigurace pro uzly v clusteru.|
-|Upozornění|Protokol informací, upozornění a kritických výstrah.|
-|Správce|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
-|Tlačítko Správce|Správa Ambari, uživatelské nastavení a odhlášení.|
+|Služby|Informace a nastavení konfigurace pro služby v clusteru.|
+|Hostitelé|Informace a nastavení konfigurace uzlů v clusteru.|
+|Výstrahy|Protokol informací, upozornění a kritických výstrah.|
+|Správce|Zásobník/služby softwaru, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
+|Tlačítko Správce|Ambari management, uživatelská nastavení a odhlášení.|
 
 ## <a name="monitoring"></a>Monitorování
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
-Následující seznam obsahuje běžné stavy výstrah, které používá Ambari:
+Následující seznam obsahuje společné stavy výstrah používané společností Ambari:
 
-* **Ok**
+* **OK**
 * **Upozornění**
-* **KRITICKÉ**
+* **Kritické**
 * **Neznámý**
 
-Jiné výstrahy než **OK** způsobí, že položka **# výstrahy** v horní části stránky zobrazuje počet výstrah. Výběrem této položky se zobrazí upozornění a jejich stav.
+Výstrahy jiné než **OK** způsobit **# výstrahy** položky v horní části stránky zobrazit počet výstrah. Výběrem této položky se zobrazí výstrahy a jejich stav.
 
-Výstrahy jsou uspořádány do několika výchozích skupin, které lze zobrazit na stránce s **výstrahami** .
+Výstrahy jsou uspořádány do několika výchozích skupin, které lze zobrazit na stránce **Výstrahy.**
 
-![Shrnutí stránky s upozorněními Apache Ambari](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
+![Apache Ambari upozornění shrnutí stránky](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
 
-Skupiny můžete spravovat pomocí nabídky **Akce** a výběrem **možnosti spravovat skupiny výstrah**.
+Skupiny můžete spravovat pomocí nabídky **Akce** a výběrem **možnosti Spravovat skupiny výstrah**.
 
-![Správa skupin výstrah Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
+![Apache Ambari spravovat skupiny výstrah](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
-Můžete také spravovat metody upozorňování a vytvářet oznámení výstrah z nabídky **Akce** výběrem __možnosti spravovat oznámení__. Zobrazí se všechna aktuální oznámení. Můžete také vytvořit oznámení z tohoto místa. Oznámení je možné odeslat **e-mailem** nebo **protokolem SNMP** , když dojde k určitým kombinacím výstrah a závažnosti. Můžete například odeslat e-mailovou zprávu, pokud se některá z výstrah ve **výchozí skupině příze** nastaví na **kritickou**.
+Můžete také spravovat metody výstrah a vytvářet upozornění z nabídky **Akce** výběrem __možnosti Spravovat oznámení__. Zobrazí se všechna aktuální oznámení. Můžete také vytvořit oznámení zde. Oznámení lze odesílat prostřednictvím **e-mailu** nebo **protokolu SNMP,** pokud dojde k určitým kombinacím výstraha/závažnost. Můžete například odeslat e-mailovou zprávu, pokud je některá výstraha ve výchozí skupině **YARN** nastavena na **hodnotu Kritická**.
 
-![Oznámení o vytvoření výstrahy pro Apache Ambari](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
+![Apache Ambari vytvořit upozornění](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
-Nakonec vyberte __možnost spravovat nastavení výstrah__ z nabídky __Akce__ a nastavte počet pokusů, které se musí objevit před odesláním oznámení. Toto nastavení se dá použít k tomu, aby se zabránilo oznámením přechodným chybám.
+Nakonec výběr __možnosti Spravovat nastavení výstrah__ z nabídky __Akce__ umožňuje nastavit počet, kolikrát musí výstraha proběhnout před odesláním oznámení. Toto nastavení lze zabránit oznámení o přechodné chyby.
+
+Kurz upozornění pomocí bezplatného [účtu SendGrid](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email)najdete v [tématu Konfigurace e-mailových oznámení Apache Ambari v Azure HDInsight](./apache-ambari-email.md).
 
 ### <a name="cluster"></a>Cluster
 
-Karta **metriky** řídicího panelu obsahuje řadu widgetů, které usnadňují sledování stavu vašeho clusteru na první pohled. Několik widgetů, jako je například **využití procesoru**, poskytují další informace při kliknutí.
+Karta **Metriky** na řídicím panelu obsahuje řadu widgetů, které usnadňují sledování stavu clusteru na první pohled. Několik widgetů, například **Využití procesoru**, poskytuje po klepnutí další informace.
 
 ![Řídicí panel Apache Ambari s metrikami](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
-Karta **Heat mapy** zobrazuje metriky jako barevné Heat mapyy z zelené na červenou.
+Karta **Heatmaps** zobrazuje metriky jako barevné heatmapy, které přejdou ze zelené na červenou.
 
-![Řídicí panel Apache Ambari s Heat mapy](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
+![Řídicí panel Apache Ambari s heatmapami](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
-Chcete-li získat další informace o uzlech v clusteru, vyberte možnost **hostitelé**. Pak vyberte konkrétní uzel, na který vás zajímáte.
+Další informace o uzlech v clusteru získáte výběrem **možnosti Hostitelé**. Pak vyberte konkrétní uzel, který vás zajímá.
 
-![Souhrnné informace o Ambari hostitele Apache](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
+![Souhrnné podrobnosti hostitele Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
 ### <a name="services"></a>Služby
 
-Postranní panel **služby** na řídicím panelu poskytuje rychlý přehled o stavu služeb spuštěných v clusteru. K označení stavu nebo akcí, které by měly být provedeny, se používají různé ikony. Například pokud je potřeba recyklovat službu, zobrazí se žlutý symbol recyklace.
+Postranní panel **Služby** na řídicím panelu poskytuje rychlý přehled o stavu služeb spuštěných v clusteru. Různé ikony se používají k označení stavu nebo akce, které by měly být přijata. Například žlutý symbol recyklace se zobrazí, pokud je třeba službu recyklovat.
 
-![Boční panel služeb Apache Ambari Services](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
+![Boční lišta služeb Apache Ambari](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
-> Zobrazené služby se v různých typech a verzích clusteru HDInsight liší. Zobrazené služby se můžou lišit od služeb zobrazených pro váš cluster.
+> Zobrazené služby se liší mezi typy clusterů HDInsight a verzemi. Zde zobrazené služby se mohou lišit od služeb zobrazených pro váš cluster.
 
 Výběr služby zobrazí podrobnější informace o službě.
 
@@ -117,35 +119,35 @@ Výběr služby zobrazí podrobnější informace o službě.
 
 #### <a name="quick-links"></a>Rychlé odkazy
 
-Některé služby zobrazí v horní části stránky odkaz **Rychlé odkazy** . Tato možnost se dá použít pro přístup k webovým uživatelská rozhraní specifickým pro danou službu, jako je například:
+Některé služby zobrazují odkaz **Rychlé odkazy** v horní části stránky. To lze použít pro přístup k webovým unám specifickým pro službu, například:
 
-* **Historie úlohy** – historie úloh MapReduce
-* **Správce prostředků** – uživatelské rozhraní Správce prostředků příze.
-* **NameNode** -Hadoop systém souborů DFS (DISTRIBUTED File System) (HDFS) NameNode UI.
-* **Webové uživatelské rozhraní Oozie** – uživatelské rozhraní Oozie.
+* **Historie úloh** – mapaZmenit historii úloh.
+* **Správce prostředků** - uj.
+* **NameNode** - Hadoop Distributed File System (HDFS) NameNode UI.
+* **Oozie Web UI** - Oozie uživatelské hod.
 
-Výběrem kteréhokoli z těchto odkazů otevřete v prohlížeči novou kartu, která zobrazí vybranou stránku.
+Výběrem některého z těchto odkazů se v prohlížeči otevře nová karta, která zobrazí vybranou stránku.
 
 > [!NOTE]  
-> Výběr položky **Rychlé odkazy** pro službu může vracet chybu "Server nebyl nalezen". Pokud k této chybě dojde, musíte při použití položky **Rychlé odkazy** pro tuto službu použít tunel SSH. Informace najdete v tématu [použití tunelového propojení SSH se službou HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) .
+> Výběr položky **Rychlé odkazy** pro službu může vrátit chybu "server nebyl nalezen". Pokud narazíte na tuto chybu, je nutné použít tunelové propojení SSH při použití položky **rychlé odkazy** pro tuto službu. Další informace naleznete v tématu [Použití tunelového propojení SSH s rozhraním HDInsight.](hdinsight-linux-ambari-ssh-tunnel.md)
 
 ## <a name="management"></a>Správa
 
-### <a name="ambari-users-groups-and-permissions"></a>Ambari uživatelé, skupiny a oprávnění
+### <a name="ambari-users-groups-and-permissions"></a>Uživatelé, skupiny a oprávnění ambari
 
-Práce s uživateli, skupinami a oprávněními se podporuje při použití clusteru HDInsight [připojeného k doméně](./domain-joined/hdinsight-security-overview.md) . Informace o používání uživatelského rozhraní pro správu Ambari na clusteru připojeném k doméně najdete v tématu [Správa clusterů HDInsight připojených k doméně](./domain-joined/hdinsight-security-overview.md).
+Práce s uživateli, skupinami a oprávněními je podporována při použití clusteru HDInsight [přilehlém k doméně.](./domain-joined/hdinsight-security-overview.md) Informace o používání ustálení ambari v clusteru přilehlém k doméně naleznete v [tématu Správa clusterů HDInsight přilehlých k doméně](./domain-joined/hdinsight-security-overview.md).
 
 > [!WARNING]  
-> Neměňte heslo sledovacího zařízení Ambari (hdinsightwatchdog) v clusteru HDInsight se systémem Linux. Změna hesla zruší schopnost používat akce skriptu nebo provádět operace škálování s vaším clusterem.
+> Neměňte heslo hlídacího psa Ambari (hdinsightwatchdog) ve vašem clusteru HDInsight založeném na Linuxu. Změna hesla přeruší možnost použití akcí skriptu nebo provádění operací škálování s clusterem.
 
 ### <a name="hosts"></a>Hostitelé
 
-Na stránce **hostitelé** jsou uvedeni všichni hostitelé v clusteru. Chcete-li spravovat hostitele, postupujte podle těchto kroků.
+Na stránce **Hosts** jsou uvedeni všichni hostitelé v clusteru. Chcete-li spravovat hostitele, postupujte takto.
 
-![Přehled stránek hostitelů Apache Ambari](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
+![Apache Ambari hostí přehled stránek](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
 
 > [!NOTE]  
-> Přidání, vyřazení z provozu a reřazování z provozu hostitele by se nemělo používat s clustery HDInsight.
+> Přidání, vyřazení z provozu a opětovné uvedení hostitele z provozu by nemělo být používáno s clustery HDInsight.
 
 1. Vyberte hostitele, kterého chcete spravovat.
 
@@ -153,66 +155,66 @@ Na stránce **hostitelé** jsou uvedeni všichni hostitelé v clusteru. Chcete-l
 
     |Položka |Popis |
     |---|---|
-    |Spustit všechny součásti|Spusťte všechny součásti na hostiteli.|
-    |Zastavit všechny komponenty|Zastavte všechny součásti na hostiteli.|
+    |Spuštění všech součástí|Spusťte všechny součásti na hostiteli.|
+    |Zastavit všechny součásti|Zastavte všechny součásti na hostiteli.|
     |Restartovat všechny součásti|Zastavte a spusťte všechny součásti na hostiteli.|
-    |Zapnout režim údržby|Potlačí výstrahy pro hostitele. Tento režim by měl být povolen, pokud provádíte akce, které generují výstrahy. Například zastavení a spuštění služby.|
-    |Vypnout režim údržby|Vrátí hostitele do normálního upozorňování.|
-    |Zastavit|Zastaví na hostiteli datanode nebo NodeManagers.|
-    |Spustit|Spustí na hostiteli datanode nebo NodeManagers.|
-    |Restart|Zastaví a spustí na hostiteli datanode nebo NodeManagers.|
-    |Vyřazení|Odebere hostitele z clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
-    |Reprovize|Přidá dříve vyřazeného hostitele do clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
+    |Zapnutí režimu údržby|Potlačí výstrahy pro hostitele. Tento režim by měl být povolen, pokud provádíte akce, které generují výstrahy. Například zastavení a spuštění služby.|
+    |Vypnutí režimu údržby|Vrátí hostitele k normálnímu upozorňování.|
+    |Zastavit|Zastaví DataNode nebo NodeManagers na hostiteli.|
+    |Start|Spustí DataNode nebo NodeManagers na hostiteli.|
+    |Restartování|Zastaví a spustí DataNode nebo NodeManagers na hostiteli.|
+    |Vyřazení|Odebere hostitele z clusteru. **Tuto akci nepoužívejte v clusterech HDInsight.**|
+    |Opětovné uvedení do provozu|Přidá do clusteru dříve vyřazeného hostitele. **Tuto akci nepoužívejte v clusterech HDInsight.**|
 
-### <a id="service"></a>Orgány
+### <a name="services"></a><a id="service"></a>Služby
 
-Na stránce **řídicí panel** nebo **služby** pomocí tlačítka **Akce** v dolní části seznamu služeb zastavte a spusťte všechny služby.
+Na stránce **Řídicí panel** nebo **Služby** můžete zastavit a spustit všechny služby pomocí tlačítka **Akce** v dolní části seznamu služeb.
 
 ![Seznam akcí služby Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
 
 > [!WARNING]  
-> Když je v této nabídce uvedená **Služba Add Service** , neměla by se používat k přidávání služeb do clusteru HDInsight. Nové služby by se měly přidat pomocí akce skriptu během zřizování clusteru. Další informace o použití akcí skriptů najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md).
+> Při **přidání služby** je uveden v této nabídce, by neměl být používán k přidání služeb do clusteru HDInsight. Nové služby by měly být přidány pomocí akce skriptu během zřizování clusteru. Další informace o používání akcí skriptů naleznete v [tématu Přizpůsobení clusterů HDInsight pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
-Zatímco tlačítko **Akce** může restartovat všechny služby, často chcete spustit, zastavit nebo restartovat konkrétní službu. Pomocí následujících kroků můžete provádět akce s jednotlivými službami:
+Zatímco tlačítko **Akce** můžete restartovat všechny služby, často chcete spustit, zastavit nebo restartovat konkrétní službu. K provedení akcí v jednotlivých službách použijte následující kroky:
 
-1. Na stránce **řídicí panel** nebo **služby** vyberte službu.
+1. Na stránce **Řídicí panel** nebo **Služby** vyberte službu.
 
-2. V horní části karty **Souhrn** použijte tlačítko **Akce služby** a vyberte akci, která se má provést. Tím se služba restartuje na všech uzlech.
+2. V horní části karty **Souhrn** použijte tlačítko **Akce servisu** a vyberte akci, kterou chcete provést. Tím se služba restartuje ve všech uzlech.
 
-    ![Akce jednotlivých služeb Apache Ambari](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
-
-   > [!NOTE]  
-   > Restartování některých služeb, když cluster běží, může generovat výstrahy. Abyste se vyhnuli výstrahám, můžete před provedením restartování Povolit pro službu **režim údržby** pomocí tlačítka **Akce služby** .
-
-3. Po výběru akce se položka **# op** v horní části stránky zvýší a ukáže, že se vyskytne operace na pozadí. Pokud je nakonfigurováno pro zobrazení, zobrazí se seznam operací na pozadí.
+    ![Apache Ambari individuální servisní akce](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
    > [!NOTE]  
-   > Pokud jste pro službu povolili **režim údržby** , nezapomeňte ji po dokončení operace zakázat pomocí tlačítka **Akce služby** .
+   > Restartování některých služeb v době, kdy je spuštěný cluster, může generovat výstrahy. Chcete-li se vyhnout výstrahám, můžete před restartováním povolit **režim údržby** služby pomocí tlačítka **Akce služby.**
 
-Ke konfiguraci služby použijte následující postup:
+3. Jakmile je akce byla vybrána, **# op** položka v horní části stránky přírůstky ukázat, že operace na pozadí dochází. Pokud je nakonfigurován pro zobrazení, zobrazí se seznam operací na pozadí.
 
-1. Na stránce **řídicí panel** nebo **služby** vyberte službu.
+   > [!NOTE]  
+   > Pokud jste pro službu **povolili režim údržby,** nezapomeňte jej po dokončení operace zakázat pomocí tlačítka **Akce servisu.**
 
-2. Vyberte kartu **Konfigurace** . Zobrazí se aktuální konfigurace. Zobrazí se také seznam předchozích konfigurací.
+Chcete-li službu nakonfigurovat, postupujte takto:
+
+1. Na stránce **Řídicí panel** nebo **Služby** vyberte službu.
+
+2. Vyberte kartu **Konfigurace.** Zobrazí se aktuální konfigurace. Zobrazí se také seznam předchozích konfigurací.
 
     ![Konfigurace služby Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
-3. Pomocí zobrazených polí Upravte konfiguraci a potom vyberte **Uložit**. Nebo vyberte předchozí konfiguraci a pak vyberte **nastavit jako aktuální** a vraťte se k předchozímu nastavení.
+3. Pomocí zobrazených polí upravte konfiguraci a pak vyberte **Uložit**. Nebo vyberte předchozí konfiguraci a pak vyberte **Vytvořit aktuální,** chcete-li vrátit zpět k předchozím ustavičům.
 
-## <a name="ambari-views"></a>Zobrazení Ambari
+## <a name="ambari-views"></a>Ambari pohledy
 
-Ambari zobrazení umožňují vývojářům napojit prvky uživatelského rozhraní do webového uživatelského rozhraní Ambari pomocí [architektury zobrazení Apache Ambari](https://cwiki.apache.org/confluence/display/AMBARI/Views). HDInsight poskytuje následující zobrazení s typy clusterů Hadoop:
+Ambari Zobrazení umožňují vývojářům připojit prvky uživatelského rozhraní do Ambari web UI pomocí [Apache Ambari zobrazení framework .](https://cwiki.apache.org/confluence/display/AMBARI/Views) HDInsight poskytuje následující zobrazení s typy clusterů Hadoop:
 
-* Zobrazení podregistru: zobrazení podregistru umožňuje spouštět dotazy na podregistr přímo z webového prohlížeče. Můžete ukládat dotazy, zobrazovat výsledky, ukládat výsledky do úložiště clusteru nebo stahovat výsledky do místního systému. Další informace o používání zobrazení podregistru najdete v tématu [použití zobrazení Apache Hive se službou HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md).
+* Zobrazení hive: Zobrazení Hive umožňuje spouštět dotazy Hive přímo z webového prohlížeče. Můžete ukládat dotazy, zobrazovat výsledky, ukládat výsledky do úložiště clusteru nebo stahovat výsledky do místního systému. Další informace o používání zobrazení Hive najdete v [tématu Použití zobrazení Hive Apache s HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md).
 
-* Zobrazení tez: tez zobrazení vám umožní lépe pochopit a optimalizovat úlohy. Můžete si prohlédnout informace o tom, jak se úlohy tez spouštějí a jaké prostředky se používají.
+* Tez View: Tez View umožňuje lépe pochopit a optimalizovat úlohy. Můžete zobrazit informace o tom, jak jsou úlohy Tez spouštěny a jaké prostředky se používají.
 
 ## <a name="unsupported-operations"></a>Nepodporované operace
 
-Ve službě HDInsight nejsou podporovány následující operace Ambari:
+Následující operace Ambari nejsou podporovány na HDInsight:
 
-* Probíhá __Přesun služby sběrače metrik__. Při zobrazení informací o službě sběrače metrik je jednou z akcí, které jsou k dispozici v nabídce Akce služby, __kolekce metriky přesunutí__. V HDInsight to není podporováno.
+* __Přesunutí služby kolektoru metrik__. Při zobrazení informací o službě Sběratel metriky je jednou z akcí dostupných v nabídce Akce __služby kolektor přesunout metriky__. To není podporováno s HDInsight.
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se používat [REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md) se službou HDInsight.
+Přečtěte si, jak používat [rozhraní APACHE Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) s HDInsight.

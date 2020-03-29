@@ -1,6 +1,6 @@
 ---
-title: Začínáme s identitou modulu Azure IoT Hub identity & modulu (C)
-description: Přečtěte si, jak vytvořit identitu modulu a aktualizovat modul na vlákna pomocí sad IoT SDK pro C.
+title: Začínáme s identitou identity modulu Azure IoT Hub & dvojče modulu (C)
+description: Naučte se, jak vytvořit identitu modulu a aktualizovat dvojče modulu pomocí sad IoT SDK pro C.
 author: chrissie926
 ms.service: iot-hub
 services: iot-hub
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
 ms.openlocfilehash: 095f6c6ab8395c4ab314fbe948cbc1fbd32cd510
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76719139"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Začínáme s identitou modulu IoT Hub a modulem s dvojitou identitou (C)
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Začínáme s identitou modulu IoT Hub a dvojčetem modulu (C)
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
@@ -29,29 +29,29 @@ Na konci tohoto kurzu máte dvě aplikace C:
 * Aplikaci **UpdateModuleTwinReportedProperties**, která do služby IoT Hub odešle aktualizované hlášené vlastnosti dvojčete modulu.
 
 > [!NOTE]
-> Informace o sadách Azure IoT SDK, které můžete použít k vytváření aplikací pro spouštění na zařízeních a back-endu vašeho řešení, najdete v tématu sady [SDK Azure IoT](iot-hub-devguide-sdks.md).
+> Informace o sadách Azure IoT SDK, které můžete použít k sestavení obou aplikací pro spuštění na zařízeních a back-endu vašeho řešení, najdete v [tématu sady Azure IoT SDK](iot-hub-devguide-sdks.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Aktivní účet Azure. (Pokud účet nemáte, můžete si [bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/) vytvořit během několika minut.)
+* Aktivní účet Azure. (Pokud nemáte účet, můžete si vytvořit [bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 
-* Nejnovější [sada SDK Azure IoT C](https://github.com/Azure/azure-iot-sdk-c).
+* Nejnovější [Sada Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c).
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
+## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT hub
 
 [!INCLUDE [iot-hub-howto-module-twin-shared-access-policy-text](../../includes/iot-hub-howto-module-twin-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
 
-## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Vytvoření identity zařízení a identity modulu v IoT Hub
+## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Vytvoření identity zařízení a identity modulu v centru IoT Hub
 
-V této části vytvoříte aplikaci v jazyce C, která vytvoří identitu zařízení a identitu modulu v registru identit ve službě IoT Hub. Zařízení nebo modul je možné připojit k centru IoT, pouze pokud má záznam v registru identit. Další informace najdete v části **registr identit** v [příručce pro vývojáře IoT Hub](iot-hub-devguide-identity-registry.md). Když spustíte tuto konzolovou aplikaci, vygeneruje jedinečné ID a klíč zařízení i modulu. Vaše zařízení a modul použijí tyto hodnoty k vlastní identifikaci při odesílání zpráv typu zařízení-cloud do služby IoT Hub. V ID se rozlišují malá a velká písmena.
+V této části vytvoříte aplikaci C, která vytvoří identitu zařízení a identitu modulu v registru identit v centru IoT. Zařízení nebo modul je možné připojit k centru IoT, pouze pokud má záznam v registru identit. Další informace naleznete v části **Registru identit** v [průvodci vývojáři služby IoT Hub](iot-hub-devguide-identity-registry.md). Když spustíte tuto konzolovou aplikaci, vygeneruje jedinečné ID a klíč zařízení i modulu. Vaše zařízení a modul použijí tyto hodnoty k vlastní identifikaci při odesílání zpráv typu zařízení-cloud do služby IoT Hub. V ID se rozlišují malá a velká písmena.
 
-Do souboru jazyka C přidejte následující kód:
+Do souboru C přidejte následující kód:
 
 ```C
 #include <stdio.h>
@@ -177,22 +177,22 @@ int main(void)
 }
 ```
 
-Tato aplikace vytvoří identitu zařízení s ID **myFirstDevice** a identitou modulu s ID **MyFirstModule** v části **myFirstDevice**zařízení. (Pokud toto ID modulu již v registru identit existuje, kód jednoduše načte informace o stávajícím modulu.) Aplikace pak zobrazí primární klíč pro tuto identitu. Tento klíč v aplikaci simulovaného modulu slouží k připojení k centru IoT.
+Tato aplikace vytvoří identitu zařízení s ID **myFirstDevice** a identitu modulu s ID **myFirstModule** pod zařízením **myFirstDevice**. (Pokud toto ID modulu již v registru identit existuje, kód jednoduše načte existující informace o modulu.) Aplikace pak zobrazí primární klíč pro tuto identitu. Tento klíč v aplikaci simulovaného modulu slouží k připojení k centru IoT.
 
 > [!NOTE]
-> V registru identit služby IoT Hub se uchovávají identity zařízení a modulů pouze za účelem bezpečného přístupu k centru IoT. Registr identit ukládá ID zařízení a klíče pro použití jako bezpečnostních pověření. Registr identit také ukládá povolené a zakázané příznaky pro jednotlivá zařízení, pomocí kterých můžete zakázat přístup pro dané zařízení. Pokud aplikace potřebuje pro zařízení ukládat další metadata, měla by používat úložiště pro konkrétní aplikaci. Pro identity modulů neexistuje žádný příznak povoleno/zakázáno. Další informace najdete v tématu [IoT Hub příručka pro vývojáře](iot-hub-devguide-identity-registry.md).
+> V registru identit služby IoT Hub se uchovávají identity zařízení a modulů pouze za účelem bezpečného přístupu k centru IoT. Registr identit ukládá ID zařízení a klíče pro použití jako bezpečnostních pověření. Registr identit také ukládá povolené a zakázané příznaky pro jednotlivá zařízení, pomocí kterých můžete zakázat přístup pro dané zařízení. Pokud aplikace potřebuje pro zařízení ukládat další metadata, měla by používat úložiště pro konkrétní aplikaci. Pro identity modulů neexistuje žádný příznak povoleno/zakázáno. Další informace najdete v [Příručce pro vývojáře pro službu IoT Hub](iot-hub-devguide-identity-registry.md).
 
-## <a name="update-the-module-twin-using-c-device-sdk"></a>Aktualizujte modul s dvojitou sadou pomocí sady SDK pro zařízení jazyka C.
+## <a name="update-the-module-twin-using-c-device-sdk"></a>Aktualizace dvojčete modulu pomocí sady SDK zařízení C
 
-V této části vytvoříte aplikaci v jazyce C na simulovaném zařízení, které aktualizuje nedokončené hlášené vlastnosti modulu.
+V této části vytvoříte aplikaci C na simulovaném zařízení, která aktualizuje vlastnosti ohlášené dvojčete modulu.
 
-1. **Získání připojovacího řetězce modulu** – teď, když se přihlásíte k [Azure Portal](https://portal.azure.com). Přejděte do vaší služby IoT Hub a klikněte na Zařízení IoT. Najděte myFirstDevice, otevřete ho a uvidíte, že myFirstModule se úspěšně vytvořil. Zkopírujte připojovací řetězec modulu. Budete ho potřebovat v dalším kroku.
+1. **Získání připojovacího řetězce modulu** – Teď se přihlaste k webu [Azure Portal](https://portal.azure.com). Přejděte do vaší služby IoT Hub a klikněte na Zařízení IoT. Najít myFirstDevice, otevřete jej a uvidíte myFirstModule byl úspěšně vytvořen. Zkopírujte připojovací řetězec modulu. Budete ho potřebovat v dalším kroku.
 
     ![Podrobnosti o modulu na webu Azure Portal](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **Vytvoření aplikace UpdateModuleTwinReportedProperties**
+2. **Vytvořit aplikaci UpdateModuleTwinReportedProperties**
    
-   Do souboru jazyka C přidejte následující:
+   Do souboru C přidejte následující:
 
     ```C
     #include <stdio.h>
@@ -248,11 +248,11 @@ V této části vytvoříte aplikaci v jazyce C na simulovaném zařízení, kte
     }
     ```
 
-V tomto příkladu kódu se dozvíte, jak načíst nedokončené a aktualizované vlastnosti modulu. 
+Tato ukázka kódu ukazuje, jak načíst dvojče modulu a aktualizovat hlášené vlastnosti. 
 
-## <a name="get-updates-on-the-device-side"></a>Získat aktualizace na straně zařízení
+## <a name="get-updates-on-the-device-side"></a>Získání aktualizací na straně zařízení
 
-Kromě výše uvedeného kódu můžete přidat níže uvedený blok kódu, který na zařízení získá zprávu o zdvojené aktualizaci.
+Kromě výše uvedeného kódu můžete přidat níže blok kódu, abyste získali zprávu o aktualizaci dvojčat v zařízení.
 
 ```C
 #include <stdio.h>
@@ -388,4 +388,4 @@ int main(void)
 Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další scénáře IoT, podívejte se na tato témata:
 
 * [Začínáme se správou zařízení](iot-hub-node-node-device-management-get-started.md)
-* [Začínáme s IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Začínáme se službou IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

@@ -1,6 +1,6 @@
 ---
-title: Povolení sdílených disků pro Azure Managed disks
-description: Nakonfigurujte Azure Managed disk se sdílenými disky (Preview), abyste ho mohli sdílet napříč několika virtuálními počítači.
+title: Povolení sdílených disků pro spravované disky Azure
+description: Konfigurace spravovaného disku Azure se sdílenými disky (preview), abyste ho mohli sdílet mezi více virtuálními počítači
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
@@ -8,15 +8,15 @@ ms.date: 02/18/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 0e925abf151abc1a229b57bb035775430fa5332f
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970366"
 ---
-# <a name="enable-shared-disk"></a>Povolit sdílený disk
+# <a name="enable-shared-disk"></a>Povolení sdíleného disku
 
-Tento článek popisuje, jak povolit funkci sdílené disky (Preview) pro Azure Managed disks. Azure Shared Disks (Preview) je nová funkce pro služby Azure Managed disks, která umožňuje současně připojit spravovaný disk k několika virtuálním počítačům (VM). Připojení spravovaného disku k několika virtuálním počítačům vám umožní nasadit do Azure nové nebo migrovat existující clusterové aplikace. 
+Tento článek popisuje, jak povolit funkci sdílené disky (náhled) pro spravované disky Azure. Sdílené disky (preview) Azure je nová funkce pro spravované disky Azure, která umožňuje připojit spravovaný disk k více virtuálním počítačům (VM) současně. Připojení spravovaného disku k více virtuálním počítačům umožňuje nasadit nové nebo migrovat existující clusterované aplikace do Azure. 
 
-Pokud hledáte koncepční informace o spravovaných discích, které mají povolené sdílené disky, přečtěte si téma [sdílené disky Azure](disks-shared.md).
+Pokud hledáte rámcové informace na spravovaných discích, které mají povolené sdílené disky, přečtěte si [téma Sdílené disky Azure](disks-shared.md).
 [!INCLUDE [virtual-machines-enable-shared-disk](../../../includes/virtual-machines-enable-shared-disk.md)]

@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení pro vaše Azure Data Box těžké | Dokumentace Microsoftu
-description: Popisuje konvence bezpečnost, pokyny a důležité informace a vysvětluje, jak bezpečně instalaci a provozování váš Azure Data Box náročné.
+title: Bezpečnost pro vaši datovou schránku Azure Heavy | Dokumenty společnosti Microsoft
+description: Popisuje bezpečnostní konvence, pokyny a důležité informace a vysvětluje, jak bezpečně nainstalovat a provozovat azure data box heavy.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,175 +9,175 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
 ms.openlocfilehash: b7562ab6c7ec9c6234ed3fbb867361307b80a638
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67673116"
 ---
-# <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Bezpečně instalaci a provozování váš Azure Data Box náročné
+# <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Bezpečně nainstalujte a provozujte azure data box heavy
 
-Tento článek obsahuje informace o zabezpečení pro váš Azure Data Box náročné.
+Tento článek obsahuje bezpečnostní informace pro azure data box těžké.
 
-![Ikona upozornění](./media/data-box-heavy-safety/warning-icon.png)
-![čtení bezpečnosti Všimněte si, že ikona](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) **nejprve přečíst všechny pokyny**
+![Výstražná](./media/data-box-heavy-safety/warning-icon.png)
+![ikona](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) Přečíst ikonu bezpečnostního upozornění **Nejprve si přečtěte všechny pokyny**
 
-Před použitím váš Azure Data Box náročné, přečtěte si bezpečnostní informace v tomto článku. Selhání postupujte podle pokynů může způsobit fire, electric otřást nebo jiných schopnost se zranit při nebo poškodit váš vlastnosti.
+Přečtěte si všechny bezpečnostní informace v tomto článku před použitím Azure Data Box Heavy. Nedodržení pokynů může mít za následek požár, úraz elektrickým proudem nebo jiná zranění nebo poškození vašich vlastností.
 
-## <a name="safety-icon-conventions"></a>Bezpečný přístup z více ikonu konvence
-Tady jsou ikony, zjistíte, když zkontrolujete bezpečnostní opatření, která má být dodržen po nastavení a spuštění vašeho zařízení Data Box.
+## <a name="safety-icon-conventions"></a>Konvence bezpečnostních ikon
+Zde jsou ikony, které najdete při kontrole bezpečnostních opatření, která je třeba dodržovat při nastavování a spouštění datové schránky.
 
 | Ikona | Popis |
 |:--- |:--- |
-| ![Ikona nebezpečí](./media/data-box-heavy-safety/warning-icon.png) **nebezpečí!** |Označuje nebezpečné situace, která, pokud není vyhnout, bude výsledkem úmrtí nebo vážným. Toto slovo signálu je omezená na v nejextrémnějších případech. |
-| ![Ikona upozornění](./media/data-box-heavy-safety/warning-icon.png) **upozornění!** |Označuje nebezpečné situace, která, pokud není vyhnout, může způsobit úmrtí nebo vážným. |
-| ![Ikona upozornění](./media/data-box-heavy-safety/warning-icon.png) **OPATRNĚ!** |Označuje nebezpečné situace, která, pokud není vyhnout, by mohlo způsobit vedlejší nebo střední škody. |
-| ![Všimněte si, že ikona](./media/data-box-heavy-safety/notice-icon.png) **oznámení:** |Označuje informace, které jsou považovány za důležité, ale ne související nebezpečí. |
-| ![Ikona k elektrické otřást](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **nebezpečí k elektrické otřást** |Snímač napětí vysoké. |
-| ![Tučná tloušťka ikonu](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **Tučná tloušťka** | |
-| ![Žádná ikona možnost změny části uživatele](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **žádné části možnost změny uživatele** |K přístup, pokud správně školení. |
-| ![Ikona oznámení bezpečný přístup z více čtení](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) **nejprve přečíst všechny pokyny** | |
-| ![Ikona nebezpečí tipu](./media/data-box-heavy-safety/tip-hazard-icon.png) **nebezpečí Tip** | |
-| ![Přetížení ikony tipu nebezpečí](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) **nebezpečí tip přetížení** | |
-| ![Více ikonu zdroje napájení](./media/data-box-heavy-safety/multiple-power-sources-icon.png) **více zdroje napájení** | |
+| ![Ikona](./media/data-box-heavy-safety/warning-icon.png) nebezpečí **DANGER!** |Označuje nebezpečnou situaci, která, pokud se jí nevyhnete, bude mít za následek smrt nebo vážné zranění. Toto signální slovo má být omezeno na nejextrémnější situace. |
+| ![Výstražná ikona](./media/data-box-heavy-safety/warning-icon.png) **POZOR!** |Označuje nebezpečnou situaci, která, pokud se jí nevyhnete, může mít za následek smrt nebo vážné zranění. |
+| ![Výstražná ikona](./media/data-box-heavy-safety/warning-icon.png) **POZOR!** |Označuje nebezpečnou situaci, která, pokud se jí nevyhnete, může vést k menšímu nebo střednímu zranění. |
+| ![Upozornění](./media/data-box-heavy-safety/notice-icon.png) ikona **UPOZORNĚNÍ:** |Označuje informace považované za důležité, ale ne související s nebezpečím. |
+| ![Ikona](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) elektrického šoku **Nebezpečí úrazu elektrickým proudem** |Vysoké napětí. |
+| ![Ikona](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) těžké váhy **Těžká váha** | |
+| ![Žádná ikona opravitelných](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) dílů uživatelem **Žádné uživatelem opravitelné díly** |Nevstupte do funkce, pokud není řádně vyškolen. |
+| ![Přečtěte si](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) ikonu bezpečnostního upozornění **Nejprve si přečtěte všechny pokyny** | |
+| ![Tip nebezpečnost ikona](./media/data-box-heavy-safety/tip-hazard-icon.png) Tip Nebezpečí **nebezpečí** | |
+| ![Ikona nebezpečí](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) přetížení Nebezpečí **přetížení Nebezpečí přetížení** | |
+| ![Ikona](./media/data-box-heavy-safety/multiple-power-sources-icon.png) více zdrojů napájení **Více zdrojů energie** | |
 
-## <a name="handling-precautions"></a>Zpracování opatření
+## <a name="handling-precautions"></a>Bezpečnostní opatření pro manipulaci
 
-![Ikona upozornění](./media/data-box-heavy-safety/warning-icon.png) **upozornění!**
+![Upozornění](./media/data-box-heavy-safety/warning-icon.png) na ikonu **VAROVÁNÍ!**
 
-* Při přesouvání a zpracování přepravka musí použít správné zařízení (například Jan palety) a osobní ochranné zařízení (například rukavice).
-* Doběhu musí být zabezpečená na přepravka pomocí zadané funkce bolts než odeberete zařízení, aby se zabránilo schopnost se zranit při nebo vlastnost poškození.
+* Při přemísťování a manipulaci s bednou musí být použito správné vybavení (například paletový zvedák) a osobní ochranné prostředky (například rukavice).
+* Rampa musí být připevněna k bedně pomocí dodaných šroubů před vyjmutím zařízení, aby nedošlo ke zranění nebo poškození majetku.
 
-![Ikona upozornění](./media/data-box-heavy-safety/warning-icon.png) ![Tip ikonu nebezpečí](./media/data-box-heavy-safety/tip-hazard-icon.png) **nebezpečí Tip**
+![Warning Icon](./media/data-box-heavy-safety/warning-icon.png) ![Tip Hazard Icon](./media/data-box-heavy-safety/tip-hazard-icon.png) **Tip hazard**
 
-* Umístíte zařízení na povrch bez stromové struktury, pevné a stabilní, aby riziko tip nebo tlakem.
-* Ověřte, že že koleček se uzamknout, aby kontrolovat, zapněte a provozovat zařízení.
+* Umístěte zařízení na rovný, tvrdý a stabilní povrch, aby se zabránilo možnému nebezpečí špičky nebo rozdrcení.
+* Před kontrolou, zapnutím a ovládáním zařízení ověřte, zda jsou kolečka uzamčena.
 
-![Ikona upozornění](./media/data-box-heavy-safety/warning-icon.png) ![ikonu k elektrické otřást](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)![žádná ikona možnost změny části uživatele](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **upozornění!** 
+![Výstražná](./media/data-box-heavy-safety/warning-icon.png) ![](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)![ikona Ikona úrazu](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) elektrickým proudem Žádná uživatelská ikona opravitelných dílů **POZOR!** 
 
-* Zkontrolujte *jako přijaté* zařízení za škody. Pokud je poškozená zařízení skříň, obraťte se na [Microsoft Support](data-box-disk-contact-microsoft-support.md) získat náhradu. Nepokoušejte se provozovat zařízení. 
-* Zařízení je vybavený šrouby odolný proti manipulaci. Pokud máte podezření, že zařízení je nefunguje, jak má, [Microsoft Support](data-box-disk-contact-microsoft-support.md) získat náhradu. Nepokoušejte se službu zařízení. 
-* Zařízení neobsahuje žádné části měnit uživatele. Nebezpečné napětí, aktuální a energie úrovně jsou k dispozici uvnitř. Nelze otevřít. Vrátíte zařízení do společnosti Microsoft pro obsluhu.
+* Zkontrolujte, zda zařízení *neutrpělo* poškození. Pokud je skříň zařízení poškozená, požádejte o výměnu [od podpory společnosti Microsoft.](data-box-disk-contact-microsoft-support.md) Nepokoušejte se ovládat zařízení. 
+* Zařízení je vybaveno šrouby odolnými proti nedoletům. Pokud máte podezření, že zařízení nefunguje správně, [podpora společnosti Microsoft](data-box-disk-contact-microsoft-support.md) získat náhradu. Nepokoušejte se zařízení obsluhovat. 
+* Zařízení neobsahuje žádné díly opravitelné uživatelem. Uvnitř jsou přítomny nebezpečné napětí, proud a energetické hladiny. Neotvírejte. Vraťte zařízení společnosti Microsoft k obslužování.
 
-![Ikona upozornění](./media/data-box-heavy-safety/warning-icon.png) ![Tučná tloušťka ikonu](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **upozornění!** 
+![Výstražná](./media/data-box-heavy-safety/warning-icon.png) ![ikona Ikona](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) těžké váhy **VAROVÁNÍ!** 
 
-* Plně nakonfigurovaného skříně můžete naváží 326 kg (719 lbs); Nepokoušejte se přenést sami.
-* Nepokoušejte se lift zařízení bez správné mechanickým podpory. Mějte na paměti, že všechny pokusy o zrušení této váha může způsobit vážné schopnost se zranit při.
-* Odpovídat místní profesní stavu a bezpečnostní požadavky při přesunu a zrušení toto zařízení.
-* Použijte mechanickým pomoc nebo jiné vhodné pomoci při přesunu a zrušení zařízení.
-
-
-![Ikona upozornění](./media/data-box-heavy-safety/warning-icon.png) ![přetížení tip nebezpečí ikonu](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) ![ikony tipu nebezpečí](./media/data-box-heavy-safety/tip-hazard-icon.png)![Tučná tloušťka ikonu](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **upozornění!**
-* Data Box velké je nechcete použít jako tabulku nebo pracovního prostoru. Přidání jakéhokoli typu zatížení můžete vytvořit potenciální nebezpečí, což může vést ke zranění nese nebo vlastnost poškození.
-* Skříňová zařízení se použije jako police nebo pracovní prostory. Neumísťujte na Data Box náročné o skříňová zařízení. Přidání jakéhokoli typu zatížení do rozšířené skříňová jednotky můžete vytvořit potenciální nebezpečí tip, který může vést ke zranění, úmrtí nebo poškození produktu.
-
-![Ikona upozornění](./media/data-box-heavy-safety/warning-icon.png) **upozornění!**
-
-* Systém navržený pro použití v typické kancelářské prostředí. Vyberte lokalitu, která je:
-
-    - Dobře provádějí a od zdroje heat včetně sluneční přímé světlo a radiátory.
-    - Směřující od zdroje pronikavost nebo fyzické otřást.
-    - Nezávisle vytvořené metodou elektrické zařízení silné elektromagnetická pole.
-    - K dispozici správně základě konkrétních wall výstupy.
-    - K dispozici dostatek místa pro přístup k cord(s) dodávek energie, protože slouží jako odpojit napájení produktu.
-
-* Nastavení zařízení v pracovním prostoru umožňuje adekvátní air oběhu celého zařízení.
-* Instalace zařízení v řízenou vnitřní oblasti bezplatný vodivé kontaminantů a povolit pro odpovídající air oběhu celého zařízení.
-* Udržujte zařízení směřující od zdroje liquid a nadměrně vlhké prostředí.
+* Plně nakonfigurovaná skříň může vážit až 326 kg; nepokoušejte se jej zvedat sami.
+* Nepokoušejte se zařízení zvedat bez řádné mechanické pomůcky. Uvědomte si, že jakékoli pokusy o zvýšení této hmotnosti mohou způsobit vážná zranění.
+* Při přemísťování a zvedání tohoto zařízení dokončte místním požadavkům na ochranu zdraví a ochranu zdraví při práci.
+* Při přemísťovacím a zvedacím zařízení používejte mechanickou pomoc nebo jinou vhodnou pomoc.
 
 
-## <a name="electrical-precautions"></a>Elektrické opatření
+![Výstražná](./media/data-box-heavy-safety/warning-icon.png) ![ikona](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) ![Ikona](./media/data-box-heavy-safety/tip-hazard-icon.png)![nebezpečí hrotu Přetížení Ikona nebezpečí špičky Ikona těžké hmotnosti](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **VAROVÁNÍ!**
+* Data Box Heavy se nepoužije jako tabulka nebo pracovní prostor. Přidání jakéhokoli typu nákladu může způsobit potenciální nebezpečí, které by mohlo vést ke zranění nebo poškození majetku.
+* Zařízení montované do racku se nesmí používat jako police nebo pracovní prostory. Nepokládejte datovou schránku Heavy na zařízení montované do racku. Přidání jakéhokoli typu nákladu do jednotky s prodlouženým nosičem může způsobit potenciální nebezpečí špičky, které by mohlo vést ke zranění, smrti nebo poškození výrobku.
 
-![Ikona upozornění](./media/data-box-heavy-safety/warning-icon.png) ![ikonu k elektrické otřást](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **upozornění!**
+![Výstražná ikona](./media/data-box-heavy-safety/warning-icon.png) **POZOR!**
 
-* Nabízí tak bezpečné elektrické earth připojení k dodání napájecí kabel. Kabel AC má tři při přenosu se seznámíte s obecnými moduly (moduly, který má kód pin se seznámíte s obecnými). Tato moduly odpovídá pouze základě konkrétních AC ze zásuvky. Není vůbec nemělo smysl se seznámíte s obecnými PIN kód.
-* Vzhledem k tomu, že moduly na napájecí kabel napájení je hlavním odpojení zařízení, ujistěte se, že výstupy soketu se nacházejí v zařízení a jsou snadno dostupné.
-* Odpojte napájecí kabel (přidáním modulů, ne kabel) a odpojit všechny kabely, pokud některé z následujících podmínek:
+* Systém je navržen tak, aby fungoval v typickém kancelářském prostředí. Vyberte web, který je:
 
-    - Napájecí kabel nebo moduly otřepané nebo jinak poškozen.
-    - Úniky něco do malých a velkých písmen zařízení.
-    - Zařízení je přístupný déšť nebo přílišné vlhkosti.
-    - Zařízení byla zahozena, a použití malých a zařízení je poškozen.
-    - Máte podezření, že bude nutné zařízení služby nebo opravit.
-* Trvale Odpojte jednotku před přesunutím nebo pokud si myslíte, že je poškozená žádným způsobem.
-* Zdroj napájení vhodné poskytněte elektrické přetížení ochrany podle následujících specifikací power:
+    - Dobře větrané a mimo zdroje tepla, včetně přímého slunečního světla a radiátorů.
+    - Pryč od zdrojů vibrací nebo fyzického šoku.
+    - Izolováno od silných elektromagnetických polí produkovaných elektrickými zařízeními.
+    - Opatřeno řádně uzemněnými zásuvkami.
+    - Jsou vybaveny dostatečným prostorem pro přístup k napájecímu kabelu (napájecím kabelům), protože slouží jako hlavní odpojení napájení produktu.
 
-    - Snímač napětí: 100 V AC 240 V AC
-    - Aktuální stav: Maximální počet 6 a 10 A za napájecí kabel. K dispozici jsou čtyři napájecích kabelů.
+* Nastavte zařízení v pracovním prostoru, což umožňuje dostatečnou cirkulaci vzduchu kolem zařízení.
+* Přístroj instalujte do vnitřního prostoru s řízenou teplotou bez vodivých nečistot a zajistěte dostatečnou cirkulaci vzduchu kolem zařízení.
+* Přístroj udržujte mimo rozsah zdrojů kapaliny a příliš vlhkého prostředí.
+
+
+## <a name="electrical-precautions"></a>Elektrická bezpečnostní opatření
+
+![Výstražná](./media/data-box-heavy-safety/warning-icon.png) ![ikona Ikona úrazu](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **elektrickým proudem VAROVÁNÍ!**
+
+* Zajistěte bezpečné elektrické uzemnění s napájecím kabelem. Kabel střídavého vedení má třívodičovou uzemňovací zástrčku (zástrčku, která má uzemňovací kolík). Tato zástrčka se vejde pouze do uzemněné zásuvky střídavého vzduchu. Nezrazuj účel uzemnovacího kolíku.
+* Vzhledem k tomu, že zástrčka na napájecím kabelu je hlavním odpojovacím zařízením, ujistěte se, že zásuvky jsou umístěny v blízkosti zařízení a jsou snadno přístupné.
+* Odpojte napájecí kabel (vytažením zástrčky, nikoli kabelu) a odpojte všechny kabely, pokud existuje některá z následujících podmínek:
+
+    - Napájecí kabel nebo zástrčka se roztřepí nebo jinak poškodí.
+    - Vyliješ něco do krytu zařízení.
+    - Zařízení je vystaveno dešti nebo nadměrné vlhkosti.
+    - Zařízení bylo upuštěno a kryt zařízení je poškozen.
+    - Máte podezření, že zařízení potřebuje servis nebo opravu.
+* Před pohybem přístroje trvale odpojte přístroj ze zásuvky nebo pokud se domníváte, že je jakkoli poškozen.
+* Zajistěte vhodný zdroj energie s ochranou proti elektrickému přetížení, který splňuje následující specifikace napájení:
+
+    - Napětí: 100 V AC až 240 V AC
+    - Proud: 6 A až 10 A, maximum na napájecí kabel. K dispozici jsou čtyři napájecí kabely.
     - Frekvence: 50 Hz až 60 Hz
-* Nepokoušejte se upravovat nebo použijte AC power cord(s) kromě těch, které jsou součástí zařízení. Napájení cord(s) musí splňovat následující kritéria:
-    - Napájecí kabel musí mít elektrické hodnocení, která je větší než u elektrické aktuální hodnocení na produktu.
-    - Napájecí kabel musí mít bezpečný přístup z více základu kódu pin nebo kontakt, který je vhodný k elektrické zásuvky.
+* Nepokoušejte se upravovat ani používat napájecí kabel (napájecí kabely) jiné než ty, které jsou dodávány se zařízením. Napájecí kabel (napájecí kabely) musí splňovat tato kritéria:
+    - Napájecí kabel musí mít elektrický výkon, který je větší než výkon elektrického proudu vyznačený na výrobku.
+    - Napájecí kabel musí mít bezpečnostní zemnový kolík nebo kontakt, který je vhodný pro elektrickou zásuvku.
 
-![Ikona upozornění](./media/data-box-heavy-safety/warning-icon.png)![ikonu k elektrické otřást](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) ![více ikonu zdroje napájení](./media/data-box-heavy-safety/multiple-power-sources-icon.png) **upozornění!**
+![Výstražná ikona](./media/data-box-heavy-safety/warning-icon.png)![Ikona elektrického šoku Ikona](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) ![více zdrojů](./media/data-box-heavy-safety/multiple-power-sources-icon.png) napájení **VAROVÁNÍ!**  
 
-* Odpojte všechny cord(s) power AC úplně odebrat ze zařízení napájení ze sítě.
+* Odpojte všechny napájecí kabely, abyste zcela odstranili střídavý proud ze zařízení.
 
-![Ikona upozornění](./media/data-box-heavy-safety/warning-icon.png) **OPATRNĚ!**
+![Výstražná ikona](./media/data-box-heavy-safety/warning-icon.png) **POZOR!**
 
-* Toto zařízení obsahuje mince buňky baterie. Nepokoušejte se službu zařízení. Baterie v tomto zařízení se nedají měnit uživatele. 
-* **Pro pracovníky služby pouze**: Riziko výbuchu Pokud baterie je nahrazena nesprávného typu. Uvolnění používané baterie podle pokynů.
-* Laserové periferní zařízení nebo zařízení jsou k dispozici. Abyste předešli riziku nebo ozáření a/nebo zranění, neotevírejte skříň laserové periferní zařízení nebo zařízení. Laserové periferní zařízení nebo zařízení, je možnost změny. Používejte pouze certifikace a hodnocení laserové třídy I pro optické vysílač produktu.
+* Toto zařízení obsahuje mince baterie. Nepokoušejte se zařízení obsluhovat. Baterie v tomto zařízení nelze opravit uživatelem. 
+* **Pouze pro servisní personál**: Nebezpečí výbuchu při výměně baterie za nesprávný typ. Použité baterie zlikvidujte podle pokynů.
+* Laserová periferie nebo zařízení jsou přítomny. Abyste se vyhnuli riziku nebo ozáření a/nebo zranění osob, neotevírejte kryt žádného laserového periferního zařízení nebo zařízení. Laserová periferní zařízení nebo zařízení nelze opravit. Používejte pouze certifikovaný a hodnocený laserovou třídu I pro optický vysílač.
 
-![Všimněte si, že ikona](./media/data-box-heavy-safety/notice-icon.png) **oznámení:**
+![Upozornění](./media/data-box-heavy-safety/notice-icon.png) ikona **UPOZORNĚNÍ:**
 
-Pro správný provoz vašeho zařízení a zabránit poškození produktu:
+Pro správnou funkci zařízení a zabránění poškození výrobku:
 
-* Zajistěte, aby front-endem a back dveře byly zcela otevřená spuštěného zařízení.
+* Ujistěte se, že přední a zadní dveře jsou během provozu zařízení zcela otevřené.
 
-## <a name="regulatory-information"></a>Informace o dodržování legislativních
+## <a name="regulatory-information"></a>Regulační informace
 
-Tato část obsahuje regulační informace pro Azure Data Box vysoké, číslo regulační modelu DB020.
+Tato část obsahuje regulační informace pro Azure Data Box Heavy, regulační číslo modelu DB020.
 
-Je toto zařízení:
+Toto zařízení je:
 
-- Vyhodnotit jako informace o technologii zařízení (sadu testů), navržená tak, aby provoz v prostředí místnosti typické data. Vhodnosti pro tento produkt jiných prostředích můžou vyžadovat další hodnocení.
-- Určený pro použití s NRTL uvedené (UL, CSA, ETL atd.) a IE/EN 60950 1 nebo IE/EN 62368 1 předpisy (CE označena) zařízení informačních technologií.
-- Účelem je fungovat v toto prostředí. 
-    - Provozní teplota: 41° až 95° F (5° až 35° C)
-    - Úložiště teploty:-40 ° 149 ° f (-40 ° 65 ° c)
-    - Relativní vlhkosti: 20 % na 85 % (nekondenzovaná) 
-    - Provozní výška: Testovat 6,560 nohou (až 2000 metry)
+- Hodnoceno jako zařízení informačních technologií (ITE), které je navrženo pro provoz v typickém prostředí datových místností. Vhodnost tohoto produktu pro jiná prostředí může vyžadovat další hodnocení.
+- Navrženo pro použití se zařízením informačních technologií v seznamu (UL, CSA, ETL atd.) a IEC/EN 60950-1 nebo IEC/EN 62368-1 (označení CE).
+- Navrženo pro provoz v následujícím prostředí. 
+    - Provozní teplota: 41° až 95° F (5 až 35°C)
+    - Skladovací teplota: -40° až 149° F (-40° až 65°C)
+    - Relativní vlhkost: 20% až 85% (nekondenzující) 
+    - Provozní nadmořská výška: Testováno až do výšky 6 560 stop (až 2000 metrů)
 
-K elektrické napájení hodnocení odkazovat na zařízení hodnocení popisek jednotce je přidružená k dispozici. 
+Údaje o elektrickém napájení naleznete na štítku s jmenovitým zařízením dodaným s přístrojem. 
 
-![Všimněte si, že ikona](./media/data-box-heavy-safety/notice-icon.png) **oznámení:** 
+![Upozornění](./media/data-box-heavy-safety/notice-icon.png) ikona **UPOZORNĚNÍ:** 
 
-Oprávnění uživatele k používání zařízení může zrušit změny nebo změny zařízení schváleno nejsou výslovně udělena společností Microsoft.
+Změny nebo změny provedené v zařízení, které nejsou výslovně schváleny společností Microsoft, mohou způsobit ztrátu oprávnění uživatele k provozu zařízení.
 
 **Kanada a USA:**
 
-![Všimněte si, že ikona](./media/data-box-heavy-safety/notice-icon.png) **oznámení:** 
+![Upozornění](./media/data-box-heavy-safety/notice-icon.png) ikona **UPOZORNĚNÍ:** 
 
-Toto zařízení byly testovány a najít pro dosažení souladu s omezeními třídy A digitální zařízení, se zapojením – část 15 FCC pravidel. Tato omezení jsou navržené tak zajistit přiměřené ochranu před škodlivým rušení při zařízení je provozována v komerčním prostředí. Toto zařízení generuje, používá a můžete radiate frekvenci energie a, pokud není nainstalovaná a použít v souladu s návodem, může to způsobit škodlivých rušení přepínač komunikace. Operace tato zařízení v obytné oblasti by mohla způsobit škodlivých rušení, ve kterém případ uživatel bude muset opravit rušení na vlastní náklady.
+Toto zařízení bylo testováno a bylo zjištěno, že splňuje limity pro digitální zařízení třídy A podle části 15 pravidel FCC. Tyto limity jsou navrženy tak, aby poskytovaly přiměřenou ochranu před škodlivým rušením, pokud je zařízení provozováno v komerčním prostředí. Toto zařízení generuje, používá a může vyzařovat vysokofrekvenční energii, a pokud není instalováno a používáno v souladu s návodem k použití, může způsobit škodlivé rušení rádiové komunikace. Provoz tohoto zařízení v obytné oblasti může způsobit škodlivé rušení v takovém případě bude uživatel povinen opravit rušení na vlastní náklady.
 
-Tato zařízení v souladu se část 15 FCC pravidel a oborové Kanada licence výjimkou RSS normě. Operace je v souladu s následující dvě podmínky: 
+Toto zařízení je v souladu s částí 15 standardu (norem RSS) osvobozených od licence FCC a standardu (norem) SPOLEČNOSTI Industry Canada. Provoz podléhá následujícím dvěma podmínkám: 
 
-- Toto zařízení nemůže způsobit škodlivé rušení.
-- Toto zařízení, musíte přijmout všechny přijaté rušení, včetně rušení, který může způsobit neočekávané chování zařízení.
+- Toto zařízení nesmí způsobovat škodlivé rušení.
+- Toto zařízení musí akceptovat jakékoli přijaté rušení, včetně rušení, které může způsobit nežádoucí provoz zařízení.
 
 ![Kanada](./media/data-box-heavy-safety/canada.png)
 
 CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
-Spojené státy americké: Kanada (800) 426-9400: (800) 933-4750
+Spojené státy: (800) 426-9400 Kanada: (800) 933-4750
 
-**Evropské unie:**
+**Evropská unie:**
 
-[Požádat o](mailto:CSI_Compliance@microsoft.com) kopii prohlášení o shodě EU.
+[Vyžádejte si](mailto:CSI_Compliance@microsoft.com) kopii PROHLÁŠENÍ EU o shodě.
 
-![Ikona upozornění](./media/data-box-heavy-safety/warning-icon.png) **upozornění!** 
+![Výstražná ikona](./media/data-box-heavy-safety/warning-icon.png) **POZOR!** 
 
-Toto je třída A produktu. Tento produkt může v prostředí domácí způsobit rušením, ve kterém může být případ uživatel nutné podniknout adekvátní opatření.
+Jedná se o výrobek třídy A. V domácím prostředí může tento výrobek způsobovat rádiové rušení, v takovém případě může být uživatel požádán, aby přijal odpovídající opatření.
 
-**Vyřazení produkovaného odpadu baterie a elektrické a elektronických zařízení:**
+**Likvidace odpadních baterií a elektrických a elektronických zařízení:**
 
-![Ikona vyřazení baterie](./media/data-box-heavy-safety/battery-disposal-icon.png)
+![Ikona likvidace baterie](./media/data-box-heavy-safety/battery-disposal-icon.png)
 
-Tento symbol v produktu nebo jeho baterie nebo jeho balení znamená, že tohoto produktu a jakékoli baterie, které obsahuje nesmí být odstraněny s domácnosti plýtvání. Místo toho je vaší odpovědností, abyste předá to do příslušné kolekce bodu recyklaci baterie a k elektrické a elektronických zařízení. Tato samostatné kolekce a recyklace se pomohou šetřit přírodních zdrojů a zabránit potenciální negativní důsledky pro zdravotnictví a prostředí kvůli možné přítomnosti nebezpečných látek v baterie a elektrické a elektronické zařízení, která by mohla být způsobena nevhodný vyřazení. Další informace o tom, kde zanechání baterie a elektrické a elektronické plýtvání obraťte se prosím na vaše místní město nebo obec office, službě nakládání s odpady domácnosti nebo obchod, kde jste zakoupili tohoto produktu. Kontakt *erecycle\@microsoft.com* Další informace o OEEZ.
+Tento symbol na výrobku nebo jeho bateriích nebo jeho obalu znamená, že tento výrobek a baterie, které obsahuje, nesmí být likvidovány společně s domovním odpadem. Místo toho je vaší odpovědností předat je příslušnému sběrně pro recyklaci baterií a elektrických a elektronických zařízení. Tento tříděný sběr a recyklace pomůže šetřit přírodní zdroje a zabránit možným negativním důsledkům pro lidské zdraví a životní prostředí v důsledku možné přítomnosti nebezpečných látek v bateriích a elektrických a elektronických zařízení, které by mohlo být způsobeno nevhodnou likvidací. Další informace o tom, kam můžete odvážet baterie a elektrický a elektronický odpad, získáte u místního městského/obecního úřadu, služby likvidace domovního odpadu nebo v obchodě, kde jste tento výrobek zakoupili. Další informace o OEEZ získáte *microsoft.com pro\@recyklaci.*
 
-Tento produkt obsahuje battery(ies) mince buňky.
+Tento výrobek obsahuje mincovní článkové baterie.
 
-Společnost Microsoft Ireland Sandyford ajít Est Dublin D18 KX32 IRL telefonní číslo: +353 1 295 3826 faxové číslo: +353 1 706 4110 
+Microsoft Ireland Sandyford Ind Est Dublin D18 KX32 IRL Telefonní číslo: +353 1 295 3826 Faxové číslo: +353 1 706 4110 
 
 <!--**Japan**
 
@@ -189,10 +189,10 @@ Společnost Microsoft Ireland Sandyford ajít Est Dublin D18 KX32 IRL telefonní
 
 -->
 
-Po zkontrolování těchto oznámení o bezpečnost, můžete nastavit a zapojení kabeláže zařízení.
+Po proskenování těchto bezpečnostních upozornění můžete zařízení nastavit a kabelovat.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zapojení a připojte vaše Data Box náročné](data-box-heavy-deploy-set-up.md)
+* [Kabel a připojte datovou schránku Heavy](data-box-heavy-deploy-set-up.md)
 
 

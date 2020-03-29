@@ -1,6 +1,6 @@
 ---
-title: Dv3 a Dsv3-Series – Azure Virtual Machines
-description: Specifikace pro virtuální počítače s Dv3 a Dsv3-Series.
+title: Dv3 a Dsv3-series – virtuální počítače Azure
+description: Specifikace pro virtuální chody řady Dv3 a Dsv3.
 services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
@@ -8,37 +8,37 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 9ea5811fa20ea4866655de74d79ff3905ba03f16
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164402"
 ---
 # <a name="dv3-and-dsv3-series"></a>Řada Dv3 a DSv3
 
-Dv3-Series běží na procesorech Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) v konfiguraci s více vlákny, čímž je zajištěno lepší umístění nejdůležitějších hodnot. zatížení pro účely. Paměť se rozšířila (od ~ 3,5 GiB/vCPU na 4 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, aby se přerovnaly k přechodu na vlákno. Řady Dv3-Series již nemají virtuální počítače s vysokou velikostí paměti řady D/Dv2-Series byly přesunuty do paměti optimalizované pro [Ev3 a Esv3-Series](ev3-esv3-series.md).
+Řada Dv3 běží na procesorech Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) nebo Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) procesory v hyper-threaded konfiguraci, která poskytuje lepší hodnotu pro většinu obecných účelové pracovní zátěže. Paměť byla rozšířena (z ~ 3.5 GiB / vCPU na 4 GiB / vCPU), zatímco diskové a síťové limity byly upraveny na základě jádra tak, aby byly v souladu s přechodem na hyperthreading. Řada Dv3 již nemá velikosti virtuálních zařízení s vysokou pamětí řady D/Dv2, ty byly přesunuty do paměti optimalizované [řady Ev3 a Esv3](ev3-esv3-series.md).
 
-Příklady případů použití řady D-Series zahrnují aplikace na podnikové úrovni, relační databáze, ukládání do mezipaměti v paměti a analýzy.
+Příklad případy použití řady D zahrnují podnikové aplikace, relační databáze, ukládání do mezipaměti v paměti a analýzy.
 
 ## <a name="dv3-series"></a>Dv3-series
 
-Velikosti řady Dv3-Series běží na procesorech Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell), nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) s technologií Intel Turbo zvyšovat 2,0. Velikosti Dv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
+Velikosti řady Dv3 běží na procesorech Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) nebo procesorech Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) s technologií Intel Turbo Boost 2.0. Velikosti Dv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
 
 Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti Dsv3. Měřiče cen a účtování pro velikosti Dsv3 jsou stejné jako pro Dv3-series.
 
-Virtuální počítače Dv3-Series jsou součástí technologie Intel® technologie Hyper-Threading.
+Virtuální aplikace řady Dv3 jsou vybaveny technologií Intel® Technologie hypervláken.
 
 ACU: 160–190
 
-Premium Storage: nepodporováno
+Úložiště Premium: Není podporováno
 
-Ukládání Premium Storage do mezipaměti: nepodporováno
+Ukládání do mezipaměti úložiště Premium: Není podporováno
 
-Migrace za provozu: podporováno
+Migrace za provozu: Podporováno
 
-Aktualizace pro zachování paměti: podporováno
+Aktualizace pro zachování paměti: Podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Maximální počet síťových karet/šířka pásma sítě |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS/Read MBps/Write MB/B/b/s | Maximální šířka pásma sítě/síť |
 |---|---|---|---|---|---|---|
 | Standard_D2_v3  | 2  | 8   | 50   | 4  | 3 000 / 46 / 23     | 2/1000  |
 | Standard_D4_v3  | 4  | 16  | 100  | 8  | 6 000 / 93 / 46     | 2/2000  |
@@ -50,21 +50,21 @@ Aktualizace pro zachování paměti: podporováno
 
 ## <a name="dsv3-series"></a>Dsv3-series
 
-Velikosti řady Dsv3-Series běží na procesorech Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) s technologií Intel Turbo 2,0 a používat Premium Storage. Velikosti Dsv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
+Velikosti řady Dsv3 běží na procesorech Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) nebo procesorech Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) s technologií Intel Turbo Boost 2.0 a používají prémiové úložiště. Velikosti Dsv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
 
-Virtuální počítače Dsv3-Series jsou součástí technologie Intel® technologie Hyper-Threading.
+Virtuální aplikace řady Dsv3 jsou vybaveny technologií Intel® Technologie hypervláken.
 
 ACU: 160–190
 
-Premium Storage: podporováno
+Úložiště Premium: Podporováno
 
-Ukládání Premium Storage do mezipaměti: podporováno
+Ukládání do mezipaměti úložiště Premium: Podporováno
 
-Migrace za provozu: podporováno
+Migrace za provozu: Podporováno
 
-Aktualizace pro zachování paměti: podporováno
+Aktualizace pro zachování paměti: Podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a protemplovaná propustnost úložiště: IOPS/MBps (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS/MBps | Maximální počet síťových připojení/očekávaná šířka pásma sítě (Mb/s) |
 |---|---|---|---|---|---|---|---|
 | Standard_D2s_v3  | 2  | 8   | 16  | 4  | 4000/32 (50)       | 3200/48    | 2/1000  |
 | Standard_D4s_v3  | 4  | 16  | 32  | 8  | 8000/64 (100)      | 6400/96    | 2/2000  |
@@ -87,4 +87,4 @@ Aktualizace pro zachování paměti: podporováno
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám můžou pomoct porovnat výpočetní výkon napříč virtuálními jednotkami Azure.

@@ -1,6 +1,6 @@
 ---
-title: Začínáme s Azure CDN SDK pro Node.js | Dokumentace Microsoftu
-description: Zjistěte, jak psát aplikace Node.js a spravovat Azure CDN.
+title: Začínáme s sadou Azure CDN SDK pro soubor Node.js | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak psát aplikace Node.js pro správu Azure CDN.
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 18dbcbf93947306334ccc2c156d9266884198e19
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67594127"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
@@ -28,34 +28,34 @@ ms.locfileid: "67594127"
 > 
 > 
 
-Můžete použít [Azure CDN SDK pro Node.js](https://www.npmjs.com/package/azure-arm-cdn) automatizovat vytváření a správa koncových bodů a profilů CDN.  Tento kurz vás provede vytvořením jednoduchou konzolovou aplikaci Node.js, který ukazuje několik dostupných operací.  V tomto kurzu není určená k podrobnému popisu, všechny aspekty Azure CDN SDK pro Node.js.
+Sadazure [CDN SDK pro Node.js](https://www.npmjs.com/package/azure-arm-cdn) můžete použít k automatizaci vytváření a správy profilů CDN a koncových bodů.  Tento kurz provede vytvoření jednoduché aplikace konzoly Node.js, která ukazuje několik dostupných operací.  Tento kurz není určen k popisu všech aspektů sady Azure CDN SDK pro node.js podrobně.
 
-K dokončení tohoto kurzu byste už měli mít [Node.js](https://www.nodejs.org) **4.x.x** nebo novější nainstalován a nakonfigurován.  Můžete použít libovolný textový editor, kterou chcete vytvořit aplikaci Node.js.  Zápis v tomto kurzu, můžu použít [Visual Studio Code](https://code.visualstudio.com).  
+Chcete-li dokončit tento kurz, měli byste již mít [node.js](https://www.nodejs.org) **4.x.x** nebo vyšší nainstalován a nakonfigurován.  Můžete použít libovolný textový editor, který chcete vytvořit aplikaci Node.js.  Chcete-li napsat tento výukový program, použil jsem [Visual Studio Code](https://code.visualstudio.com).  
 
 > [!TIP]
-> [Dokončený projekt z tohoto kurzu](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) je k dispozici ke stažení na webu MSDN.
+> [Dokončený projekt z tohoto kurzu](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) je k dispozici ke stažení na MSDN.
 > 
 > 
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
-## <a name="create-your-project-and-add-npm-dependencies"></a>Vytvoření projektu a přidání závislosti na NPM
-Teď, když jsme vytvořili skupinu prostředků pro naše profily CDN a naše oprávnění aplikace Azure AD ke správě profilů CDN a koncové body v rámci dané skupiny, můžeme začít vytváření naši aplikaci.
+## <a name="create-your-project-and-add-npm-dependencies"></a>Vytvoření projektu a přidání závislostí NPM
+Teď, když jsme vytvořili skupinu prostředků pro naše profily CDN a udělili naše aplikace Azure AD oprávnění ke správě profilů CDN a koncových bodů v rámci této skupiny, můžeme začít vytvářet naši aplikaci.
 
-Vytvořte složku pro uložení vaší aplikace.  Z konzoly s nástroji Node.js v aktuální cestě nastavte své aktuální polohy do této nové složky a inicializovat spuštěním projektu:
+Vytvořte složku pro uložení aplikace.  Z konzoly s nástroji Node.js v aktuální cestě nastavte aktuální umístění do této nové složky a inicializujte projekt spuštěním:
 
     npm init
 
-Pak zobrazí na několik otázek k inicializaci vašeho projektu.  Pro **vstupní bod**, tento kurz používá *app.js*.  Zobrazí se Moje jiné možnosti v následujícím příkladu.
+Poté se zobrazí řada otázek pro inicializaci projektu.  Pro **vstupní bod**tento kurz používá soubor *app.js*.  Můžete vidět mé další volby v následujícím příkladu.
 
-![Výstup init NPM](./media/cdn-app-dev-node/cdn-npm-init.png)
+![Výstup init npm](./media/cdn-app-dev-node/cdn-npm-init.png)
 
-Naše projektu je teď inicializují se *packages.json* souboru.  Náš projekt bude používat některé knihovny Azure součástí balíčků NPM.  Použijeme modul Runtime klienta Azure pro Node.js (ms-rest azure) a Azure CDN klientské knihovny pro Node.js (azure-arm-cd).  Přidejme do projektu jako závislosti.
+Náš projekt je nyní inicializován se souborem *packages.json.*  Náš projekt bude používat některé knihovny Azure obsažené v balíčcích NPM.  Použijeme Azure Client Runtime pro Node.js (ms-rest-azure) a klientskou knihovnu Azure CDN pro Node.js (azure-arm-cd).  Přidáme je do projektu jako závislosti.
 
     npm install --save ms-rest-azure
     npm install --save azure-arm-cdn
 
-Po dokončení balíčky instalace, *package.json* soubor by měl vypadat podobně jako tento příklad (verze čísel se může lišit):
+Po dokončení instalace balíčků by měl soubor *package.json* vypadat podobně jako v tomto příkladu (čísla verzí se mohou lišit):
 
 ``` json
 {
@@ -75,18 +75,18 @@ Po dokončení balíčky instalace, *package.json* soubor by měl vypadat podobn
 }
 ```
 
-Nakonec pomocí textového editoru, vytvořte prázdný textový soubor a uložte jej do kořenové složky naše projektu jako *app.js*.  Máme teď můžete začít s psaním kódu.
+Nakonec pomocí textového editoru vytvořte prázdný textový soubor a uložte jej do kořenového adresáře naší složky projektu jako *app.js*.  Nyní jsme připraveni začít psát kód.
 
-## <a name="requires-constants-authentication-and-structure"></a>Vyžaduje, konstanty, ověřování a struktury
-S *app.js* otevřete v našem editoru, pojďme si základní struktura naše programu.
+## <a name="requires-constants-authentication-and-structure"></a>Vyžaduje, konstanty, ověřování a struktura
+S *app.js* otevřené v našem editoru, pojďme si základní strukturu našeho programu písemného.
 
-1. Přidejte "vyžaduje" pro naše balíčky NPM v horní části následujícími způsoby:
+1. Přidejte "vyžaduje" pro naše npm balíčky v horní části s následujícími:
    
     ``` javascript
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. Budeme muset definovat některé konstanty, které bude používat naše metody.  Přidejte následující.  Nezapomeňte nahradit zástupné symboly, včetně  **&lt;ostrých závorek&gt;** , vlastními hodnotami podle potřeby.
+2. Musíme definovat některé konstanty, které naše metody budou používat.  Přidejte následující.  Nezapomeňte nahradit zástupné ** &lt;symboly, včetně&gt;úhlových závorek**, vlastními hodnotami podle potřeby.
    
     ``` javascript
     //Tenant app constants
@@ -99,17 +99,17 @@ S *app.js* otevřete v našem editoru, pojďme si základní struktura naše pro
     const resourceGroupName = "CdnConsoleTutorial";
     const resourceLocation = "<YOUR PREFERRED AZURE LOCATION, SUCH AS Central US>";
     ```
-3. V dalším kroku vytvoříme vytvořit instanci klienta správy CDN a jí naše přihlašovací údaje.
+3. Dále nastoupíme instance klienta pro správu CDN a dáme mu naše přihlašovací údaje.
    
     ``` javascript
     var credentials = new msRestAzure.ApplicationTokenCredentials(clientId, tenantId, clientSecret);
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    Pokud používáte ověřování jednotlivých uživatelů, bude vypadat trochu jinak tyto dva řádky.
+    Pokud používáte individuální ověřování uživatele, budou tyto dva řádky vypadat mírně odlišně.
    
    > [!IMPORTANT]
-   > Tento vzorový kód použijte, pouze pokud zvolíte ověřování jednotlivých uživatelů místo instančního objektu služby.  Buďte opatrní chránit vaše přihlašovací údaje jednotlivých uživatelů a udržujte je v tajnosti.
+   > Tuto ukázku kódu použijte pouze v případě, že se rozhodnete mít individuální ověřování uživatele namísto instančního objektu.  Dávejte pozor, abyste chránili vaše individuální přihlašovací údaje uživatele a drželi je v tajnosti.
    > 
    > 
    
@@ -119,8 +119,8 @@ S *app.js* otevřete v našem editoru, pojďme si základní struktura naše pro
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    Nezapomeňte nahradit položky v **&lt;ostrých závorek&gt;** se správnými informacemi.  Pro `<redirect URI>`, použijte identifikátor URI, které jste zadali při registraci aplikace ve službě Azure AD pro přesměrování.
-4. Naše aplikace konzoly Node.js bude trvat několik parametrů příkazového řádku.  Pojďme ověřit, že nejméně jedna byl předán parametr.
+    Nezapomeňte nahradit položky v ** &lt;úhlových&gt; závorkách** správnými informacemi.  Pro `<redirect URI>`použití identifikátoru URI přesměrování, který jste zadali při registraci aplikace ve službě Azure AD.
+4. Naše aplikace konzoly Node.js bude trvat některé parametry příkazového řádku.  Ověřme, zda byl předán alespoň jeden parametr.
    
    ```javascript
    //Collect command-line parameters
@@ -134,7 +134,7 @@ S *app.js* otevřete v našem editoru, pojďme si základní struktura naše pro
        process.exit(1);
    }
    ```
-5. Který přináší do hlavní část našeho programu, ve kterém jsme větví dalších funkcí založené na jaké parametry byly předány.
+5. Tím se dostáváme do hlavní části našeho programu, kde se rozdělíme na další funkce na základě toho, jaké parametry byly předány.
    
     ```javascript
     switch(parms[0].toLowerCase())
@@ -160,7 +160,7 @@ S *app.js* otevřete v našem editoru, pojďme si základní struktura naše pro
             process.exit(1);
     }
     ```
-6. Na několika místech v naší aplikaci potřebujeme zajistit správný počet parametrů předané a zobrazí nějaké Nápověda, pokud je jejich nevypadají správné.  Pojďme vytvořit funkce, které provedete.
+6. Na několika místech našeho programu se musíme ujistit, že správný počet parametrů byl předán a zobrazit nějakou pomoc, pokud nevypadají správně.  Pojďme vytvořit funkce k tomu, že.
    
    ```javascript
    function requireParms(parmCount) {
@@ -198,7 +198,7 @@ S *app.js* otevřete v našem editoru, pojďme si základní struktura naše pro
        }
    }
    ```
-7. Nakonec jsou asynchronní, funkce, které budeme používat na straně klienta pro správu CDN, takže potřebují metodu volat zpět při nepřenesete.  Vytvoříme ten, který může zobrazit výstup z CDN správy klienta (pokud existuje) a řádně ukončit program.
+7. Nakonec funkce, které budeme používat v klientovi pro správu CDN, jsou asynchronní, takže potřebují metodu pro volání zpět, když jsou hotové.  Udělejme ten, který může zobrazit výstup z klienta správy CDN (pokud existuje) a ukončit program elegantně.
    
     ```javascript
     function callback(err, result, request, response) {
@@ -212,10 +212,10 @@ S *app.js* otevřete v našem editoru, pojďme si základní struktura naše pro
     }
     ```
 
-Teď, když je základní struktura náš program napsán, vytvoříme by to funkce volané založené na na našich parametry.
+Nyní, když je napsána základní struktura našeho programu, měli bychom vytvořit funkce nazývané na základě našich parametrů.
 
 ## <a name="list-cdn-profiles-and-endpoints"></a>Seznam profilů CDN a koncových bodů
-Začněme s kódem, když chci zveřejnit naší stávající profily a koncových bodů.  Moje komentáře ke kódu poskytují očekávaná syntaxe, abychom věděli, kde každý parametr odkazuje.
+Začněme s kódem pro seznam našich stávajících profilů a koncových bodů.  Můj kód komentáře poskytují očekávanou syntaxi, takže víme, kde každý parametr jde.
 
 ```javascript
 // list profiles
@@ -242,8 +242,8 @@ function cdnList(){
 }
 ```
 
-## <a name="create-cdn-profiles-and-endpoints"></a>Vytvořte profily CDN a koncových bodů
-V dalším kroku budeme psát funkce k vytvoření koncových bodů a profilů.
+## <a name="create-cdn-profiles-and-endpoints"></a>Vytvoření profilů a koncových bodů CDN
+Dále napíšeme funkce pro vytvoření profilů a koncových bodů.
 
 ```javascript
 function cdnCreate() {
@@ -294,8 +294,8 @@ function cdnCreateEndpoint() {
 }
 ```
 
-## <a name="purge-an-endpoint"></a>Vyprázdnění koncového bodu
-Za předpokladu, že se vytvořil koncový bod, je jednou z běžných úloh, která chceme v naší aplikaci provést vymazání obsahu v našich koncový bod.
+## <a name="purge-an-endpoint"></a>Vymazání koncového bodu
+Za předpokladu, že koncový bod byl vytvořen, jeden společný úkol, který můžeme chtít provést v našem programu je vymazání obsahu v našem koncovém bodu.
 
 ```javascript
 // purge <profile name> <endpoint name> <path>
@@ -307,8 +307,8 @@ function cdnPurge() {
 }
 ```
 
-## <a name="delete-cdn-profiles-and-endpoints"></a>Odstranění koncových bodů a profilů CDN
-Poslední funkci, kterou zavedeme odstraní koncových bodů a profilů.
+## <a name="delete-cdn-profiles-and-endpoints"></a>Odstranění profilů a koncových bodů CDN
+Poslední funkce, kterou zahrneme, odstraní koncové body a profily.
 
 ```javascript
 function cdnDelete() {
@@ -337,35 +337,35 @@ function cdnDelete() {
 ```
 
 ## <a name="running-the-program"></a>Spuštění programu
-Teď můžeme spouštět náš program Node.js pomocí našich oblíbených ladicího programu, nebo na konzole.
+Nyní můžeme spustit náš program Node.js pomocí našeho oblíbeného ladicího programu nebo na konzoli.
 
 > [!TIP]
-> Pokud používáte Visual Studio Code jako ladicí program, bude nutné nastavit prostředí a zajistěte tak předání parametrů příkazového řádku.  Visual Studio Code to dělá **launch.json** souboru.  Vyhledejte vlastnost s názvem **args** a přidat pole řetězcových hodnot pro parametry, aby vypadá podobně jako tento: `"args": ["list", "profiles"]`.
+> Pokud používáte Visual Studio Kód jako ladicí program, budete muset nastavit prostředí předat parametry příkazového řádku.  Visual Studio Code to v souboru **launch.json.**  Vyhledejte vlastnost s názvem **args** a přidejte pole řetězcových hodnot pro vaše `"args": ["list", "profiles"]`parametry, aby vypadala podobně jako tato: .
 > 
 > 
 
-Začněme tím, že výpis našich profilů.
+Začněme tím, že seznam našich profilů.
 
-![Seznam profilů](./media/cdn-app-dev-node/cdn-list-profiles.png)
+![Profily seznamu](./media/cdn-app-dev-node/cdn-list-profiles.png)
 
-My zpět prázdné pole.  Protože nemáme žádné profily v naší skupiny prostředků, to je očekáváno.  Pojďme teď vytvořit profil.
+Máme zpátky prázdné pole.  Vzhledem k tomu, že nemáme žádné profily v naší skupině prostředků, to se očekává.  Nyní vytvoříme profil.
 
-![Vytvoření profilu](./media/cdn-app-dev-node/cdn-create-profile.png)
+![Vytvořit profil](./media/cdn-app-dev-node/cdn-create-profile.png)
 
-Nyní Pojďme přidat koncový bod.
+Nyní přidáme koncový bod.
 
 ![Vytvoření koncového bodu](./media/cdn-app-dev-node/cdn-create-endpoint.png)
 
-A konečně můžeme odstranit naše profil.
+Nakonec smažme náš profil.
 
 ![Odstranit profil](./media/cdn-app-dev-node/cdn-delete-profile.png)
 
 ## <a name="next-steps"></a>Další kroky
-Dokončený projekt z tohoto návodu, zobrazíte [Stáhněte ukázku](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).
+Chcete-li zobrazit dokončený projekt z tohoto návodu, [stáhněte si ukázku](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).
 
-Chcete-li zobrazit odkaz pro Azure CDN SDK pro Node.js, zobrazte [odkaz](https://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).
+Chcete-li zobrazit odkaz na azure CDN SDK pro Node.js, zobrazte [odkaz](https://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).
 
-Chcete-li vyhledat další dokumentaci na sadu Azure SDK pro Node.js, podívejte se [úplné referenční](https://azure.github.io/azure-sdk-for-node/).
+Chcete-li najít další dokumentaci k azure sdk pro Node.js, zobrazte [úplný odkaz](https://azure.github.io/azure-sdk-for-node/).
 
-Správa prostředků CDN pomocí [Powershellu](cdn-manage-powershell.md).
+Spravujte prostředky CDN pomocí [prostředí PowerShell](cdn-manage-powershell.md).
 

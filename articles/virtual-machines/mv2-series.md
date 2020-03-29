@@ -1,6 +1,6 @@
 ---
-title: Mv2-Series – Azure Virtual Machines
-description: Specifikace pro virtuální počítače řady Mv2-Series.
+title: Řada Mv2 – virtuální počítače Azure
+description: Specifikace pro virtuální chod řady Mv2.
 services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
@@ -8,38 +8,38 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 6fb0f93d3ac124b21bbc52ddc57bc720de6406e6
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163892"
 ---
 # <a name="mv2-series"></a>Řada Mv2
 
-Mv2-Series funkce s vysokou propustností a nízkou latencí běžící na procesorech Intel® Xeon® Platinum 8180M 2,5 GHz (Skylake) se základní frekvencí 2,5 GHz a maximální frekvencí 3,8 GHz. Všechny velikosti virtuálních počítačů řady Mv2-Series můžou využívat trvalé disky úrovně Standard i Premium. Instance Mv2-Series jsou paměťové optimalizované velikosti virtuálních počítačů, které poskytují bezkonkurenční výpočetní výkon pro podporu rozsáhlých databází a úloh s vysokým výkonem, které jsou ideální pro servery relačních databází, velké mezipaměti a v paměti. Analytics.
+Řada Mv2 je vybavena vysokou propustností, platformou s nízkou latencí, která běží na hyper-threaded Intel® Xeon® Platinum 8180M 2.5GHz (Skylake) procesor s základní frekvencí jádra 2,5 GHz a maximální turbo frekvencí 3,8 GHz. Všechny velikosti virtuálních počítačů řady Mv2 mohou používat standardní i prémiové trvalé disky. Instance řady Mv2 jsou velikosti virtuálních počítače optimalizované pro paměť, které poskytují bezkonkurenční výpočetní výkon pro podporu velkých databází a úloh v paměti s vysokým poměrem paměti k procesoru, který je ideální pro relační databázové servery, velké mezipaměti a v paměti Analytics.
 
-Funkce virtuálního počítače Mv2-Series Intel® technologie Hyper-Threading
+Funkce virtuálního rozhraní Mv2 intel® technologie hyper-threadingu
 
-Premium Storage: podporováno
+Úložiště Premium: Podporováno
 
-Ukládání Premium Storage do mezipaměti: podporováno
+Ukládání do mezipaměti úložiště Premium: Podporováno
 
-Migrace za provozu: nepodporováno
+Migrace za provozu: Není podporována
 
-Aktualizace pro zachování paměti: nepodporováno
+Aktualizace pro zachování paměti: Není podporováno
 
-Akcelerátor zápisu: [podporováno](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+Akcelerátor zápisu: [Podporováno](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-|Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+|Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových připojení / Očekávaná šířka pásma sítě (Mb/s) |
 |---|---|---|---|---|---|---|---|
-| Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4 096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16 000 |
-| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4 096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16 000 |
-| Standard_M416ms_v2<sup>1, 2</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 / 32000 |
-| Standard_M416s_v2<sup>1, 2</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 / 32000 |
+| Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4 096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16 000 |
+| <sup>1.</sup> Standard_M208s_v2 | 208 | 2850 | 4 096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16 000 |
+| Standard_M416ms_v2<sup>1, 2.</sup> | 416 | 11400 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
+| Standard_M416s_v2<sup>1, 2.</sup> | 416 | 5700 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
 
-<sup>1</sup> virtuální počítače řady Mv2-Series jsou pouze 2. generace. Pokud používáte Linux, přečtěte si téma [Podpora pro virtuální počítače generace 2 v Azure](./linux/generation-2.md) , kde najdete pokyny, jak najít a vybrat obrázek.
+<sup>1</sup> Virtuální klíče řady Mv2 jsou pouze generace 2. Pokud používáte Linux, přečtěte si informace o tom, jak najít a vybrat bitovou kopii nawebu [podpory virtuálních počítačích generace 2 v Azure.](./linux/generation-2.md)
 
-<sup>2</sup> pro M416ms_v2 a velikosti M416s_v2 si všimněte, že je k dispozici pouze počáteční podpora pro následující obrázek: "GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 for SAP Applications".
+<sup>2</sup> Pro M416ms_v2 a M416s_v2 velikosti si všimněte, že existuje počáteční podpora pouze pro následující obrázek: "GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 pro aplikace SAP."
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
@@ -54,4 +54,4 @@ Akcelerátor zápisu: [podporováno](https://docs.microsoft.com/azure/virtual-ma
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám můžou pomoct porovnat výpočetní výkon napříč virtuálními jednotkami Azure.

@@ -1,6 +1,6 @@
 ---
-title: Aktualizace schématu Azure Traffic Analytics – březen 2020 | Microsoft Docs
-description: Ukázkové dotazy s novými poli ve schématu Analýza provozu.
+title: Aktualizace schématu analýzy provozu Azure – březen 2020 | Dokumenty společnosti Microsoft
+description: Ukázkové dotazy s novými poli ve schématu Traffic Analytics.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -14,22 +14,22 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
 ms.openlocfilehash: 0e9d37e3a89473e59b94168f8f8c80e7a6621107
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969065"
 ---
-# <a name="sample-queries-with-new-fields-in-traffic-analytics-schema-august-2019-schema-update"></a>Ukázkové dotazy s novými poli ve schématu Analýza provozu (aktualizace schématu srpna 2019)
+# <a name="sample-queries-with-new-fields-in-traffic-analytics-schema-august-2019-schema-update"></a>Ukázkové dotazy s novými poli ve schématu Analýzy provozu (aktualizace schématu ze srpna 2019)
 
-[Schéma protokolu Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) se aktualizovalo tak, aby obsahovalo následující nová pole **: SrcPublicIPs_s** , **DestPublicIPs_s** **NSGRule_s**. V následujících několika měsících budou tato starší pole zastaralá: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s**, **VM_s**, **NIC_s**, **PublicIPs_s**, **FlowCount_d**.
-Nová pole poskytují informace o zdrojových a cílových IP adresách a zjednodušují dotazy.
+[Schéma protokolu analýzy provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) bylo aktualizováno tak, aby zahrnovalo následující nová pole: **SrcPublicIPs_s** , **DestPublicIPs_s**, **NSGRule_s**. V příštích několika měsících budou zastaralá následující starší pole: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s VM_s**, **VM_s**, **NIC_s**, **PublicIPs_s**, **FlowCount_d**.
+Nová pole poskytují informace o zdrojových a cílových IP adresy a zjednodušují dotazy.
 
-Níže jsou tři příklady, které ukazují, jak nahradit stará pole novými.
+Níže jsou uvedeny tři příklady, které ukazují, jak nahradit stará pole novými.
 
-## <a name="example-1---vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-publicips_s"></a>Příklad 1 VMIP_s, Subscription_g, Region_s, Subnet_s, VM_s, NIC_s, PublicIPs_s
+## <a name="example-1---vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-publicips_s"></a>Příklad 1 - VMIP_s, Subscription_g, Region_s, Subnet_s, VM_s, NIC_s, PublicIPs_s
 
-Pro Azure a externí veřejné toky z FlowDirection_sho pole pro toky AzurePublic a ExternalPublic nemusíme odvodit zdrojový a cílový případ. V případě síťové virtuální zařízení (síťové virtuální zařízení) může být pole FlowDirection_s nevhodné, aby bylo možné ho použít taky.
+Není potřeba odvodit zdroj a cíl případy pro Azure a externí veřejné toky z FlowDirection_s pole pro AzurePublic a ExternalPublic toky konkrétně. V případě síťového virtuálního zařízení (Network Virtual Appliance) může být FlowDirection_s pole také nevhodné.
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -72,11 +72,11 @@ DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A
 ```
 
 
-## <a name="example-2---nsgrules_s"></a>Příklad 2 – NSGRules_s
+## <a name="example-2---nsgrules_s"></a>Příklad 2 - NSGRules_s
 
-Předchozí pole bylo formátu: < hodnota indexu 0) > | < NSG_RULENAME > |<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
+Dřívější pole bylo formátované: <hodnota indexu 0)>| NSG_RULENAME<>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
 
-Dříve jsme použili pro agregaci dat napříč NSG a NSGRules. Teď neagregujeme. Takže NSGList_s obsahuje jenom jeden NSG a NSGRules_s se taky používá k tomu, aby obsahovalo jenom jedno pravidlo. Proto jsme odebrali komplikované formátování, které najdete v dalších polích, jak je uvedeno níže:
+Dříve jsme agregovat data mezi NSG a NSGRules. Nyní se neagregujeme. Takže NSGList_s obsahuje pouze jeden skupiny nsg a NSGRules_s také obsahuje pouze jedno pravidlo. Takže jsme odstranili složité formátování zde a totéž lze nalézt v jiných oblastech, jak je uvedeno níže:
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -101,16 +101,16 @@ FlowStatus = FlowStatus_s,
 FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d
 ```
 
-## <a name="example-3---flowcount_d"></a>Příklad 3 – FlowCount_d
+## <a name="example-3---flowcount_d"></a>Příklad 3 - FlowCount_d
 
-Vzhledem k tomu, že data nepoužíváme napříč NSG, je FlowCount_d jednoduše AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d.
-Pouze jedna z výše uvedených 4 bude nenulová a zbývající tři budou 0. A to by znamenalo, že v síťovém adaptéru, ve kterém byl tok zachycen, byl zaznamenán stav a počet.
+Vzhledem k tomu, že nechceme klubová data v rámci NSG, je FlowCount_d jednoduše AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d.
+Pouze 1 z výše uvedených 4 bude nenulová a zbytek tři bude 0. A to by znamenat stav a počet v nic, kde byl zachycen tok.
 
-Pokud byl tok povolený, naplní se jedno z polí s předponou "povoleno". Naplní se některá pole s předponou "Odepřít".
-Pokud tok byl příchozí, naplní se jedno z polí s příponou "\_d" jako "InFlows_d". Naplní se jinak "OutFlows_d".
+Pokud tok byl povolen, bude vyplněno jedno z polí s předponou "Povoleno". Else jedno pole s předponou "Odepřeno" budou naplněny.
+Pokud tok byl příchozí, jedno z polí suffixed s "\_d " jako "InFlows_d" suffixed pole bude naplněna. Jinak bude naplněn "OutFlows_d".
 
-V závislosti na předchozích 2 podmínkách ví, že se naplní jedna ze 4.
+V závislosti na výše uvedených 2 podmínkách víme, který ze 4 bude obydlený.
 
 
 ## <a name="next-steps"></a>Další kroky
-Odpovědi na nejčastější dotazy najdete v tématu [Nejčastější dotazy k analýze provozu](traffic-analytics-faq.md) a zobrazení podrobností o funkcích najdete v tématu [dokumentace k analýze provozu](traffic-analytics.md) .
+Odpovědi na nejčastější dotazy najdete v [tématu Nejčastější dotazy k analýze provozu,](traffic-analytics-faq.md) kde najdete podrobnosti o [funkcích,](traffic-analytics.md) v dokumentaci k analýze provozu.

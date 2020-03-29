@@ -1,7 +1,7 @@
 ---
-title: Automatizované vzdálené výpočetní cíle pro automatizované na ML
+title: Automatizované vzdálené výpočetní cíle ML
 titleSuffix: Azure Machine Learning
-description: Naučte se vytvářet modely pomocí automatizovaného strojového učení na Azure Machine Learning vzdálených výpočetních cílů s Azure Machine Learning
+description: Zjistěte, jak vytvářet modely pomocí automatizovaného strojového učení na vzdáleném výpočetním cíli Azure Machine Learning pomocí Azure Machine Learning
 services: machine-learning
 author: cartacioS
 ms.author: sacartac
@@ -12,35 +12,35 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 9e499d609a3f78dc5f422b9ed90df09be30f2e7c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79080407"
 ---
-# <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaných strojového učení v cloudu
+# <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaného strojového učení v cloudu
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ve službě Azure Machine Learning vyzkoušejte svůj model pro různé typy výpočetní prostředky, které spravujete. Cílem výpočtů může být místní počítač nebo prostředek v cloudu.
+V Azure Machine Learning trénujete svůj model na různých typech výpočetních prostředků, které spravujete. Cílem výpočetních prostředků může být místní počítač nebo prostředek v cloudu.
 
-Experimenty ve strojovém učení můžete snadno škálovat nebo škálovat přidáním dalších výpočetních cílů, například Azure Machine Learning COMPUTE (AmlCompute). AmlCompute je spravovaná výpočetní infrastruktura, která umožňuje snadno vytvářet výpočetní prostředky s jedním nebo několika uzly.
+Můžete snadno vertikálně navýšit kapacitu nebo vertikálně navýšit kapacitu experimentu strojového učení přidáním dalších výpočetních cílů, jako je Azure Machine Learning Compute (AmlCompute). AmlCompute je spravovaná výpočetní infrastruktura, která umožňuje snadno vytvářet výpočetní prostředky s jedním nebo několika uzly.
 
-V tomto článku se dozvíte, jak vytvořit model pomocí automatizovaného ML s AmlCompute.
+V tomto článku se dozvíte, jak vytvořit model pomocí automatizované ml s AmlCompute.
 
-## <a name="how-does-remote-differ-from-local"></a>Jak se liší vzdálené a místní?
+## <a name="how-does-remote-differ-from-local"></a>Jak se vzdálená pošta liší od místních?
 
-V tomto kurzu se naučíte[model klasifikace pomocí automatizovaného strojového učení](tutorial-auto-train-models.md)a naučíte se používat místní počítač k výuce modelu pomocí automatizovaného ml. Pracovní postup, když místně školení platí také pro i vzdálených cílů. Však s vzdálený výpočetní automatizované iterací experimentů v ML jsou spouštěny asynchronně. Tato funkce umožňuje zrušit konkrétní iteraci, podívejte se na stav provádění nebo pokračovat v práci na ostatní buňky v poznámkovém bloku Jupyter. Chcete-li se naučit vzdáleně, vytvořte nejprve vzdálené výpočetní cíle, jako je AmlCompute. Potom nakonfigurujte vzdáleného prostředku a odeslání kódu existuje.
+Kurz "[Trénování klasifikačního modelu s automatizovaným strojovým učením](tutorial-auto-train-models.md)" vás naučí, jak používat místní počítač k trénování modelu s automatizovaným ML. Pracovní postup při místním trénování platí také pro vzdálené cíle. Při vzdáleném výpočetním počítači jsou však automatizované iterace experimentu ML prováděny asynchronně. Tato funkce umožňuje zrušit konkrétní iteraci, sledovat stav spuštění nebo pokračovat v práci na jiných buňkách v poznámkovém bloku Jupyter. Chcete-li trénovat na dálku, nejprve vytvořte vzdálený výpočetní cíl, jako je Například AmlCompute. Potom nakonfigurujete vzdálený prostředek a odešlete tam kód.
 
-V tomto článku se dozvíte o dalších krocích potřebných ke spuštění automatizovaného experimentu ML na vzdáleném AmlCompute cíli. Objekt pracovního prostoru `ws`v tomto kurzu se používá v celém kódu zde.
+Tento článek ukazuje další kroky potřebné ke spuštění automatizovaného experimentu ML na vzdáleném cíli AmlCompute. Objekt pracovního `ws`prostoru , z kurzu se používá v celém kódu zde.
 
 ```python
 ws = Workspace.from_config()
 ```
 
-## <a name="create-resource"></a>Vytvořit prostředek
+## <a name="create-resource"></a>Vytvoření prostředku
 
-Pokud ještě neexistuje, vytvořte v pracovním prostoru [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) cíl (`ws`).
+Pokud [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) cíl ještě neexistuje,`ws`vytvořte cíl v pracovním prostoru ( ).
 
 **Časový odhad**: Vytvoření cíle AmlCompute trvá přibližně 5 minut.
 
@@ -79,17 +79,17 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-Nyní můžete objekt `compute_target` použít jako cíl vzdáleného výpočtu.
+Nyní můžete použít `compute_target` objekt jako vzdálený výpočetní cíl.
 
-Mezi omezení názvu clusteru patří:
+Omezení názvů clusteru zahrnují:
 + Musí být kratší než 64 znaků.
-+ Nelze zahrnout žádný z následujících znaků: `\` ~! @ # $% ^ & * () = + _ [] {} \\\\ |; : \' \\", < >/?. `
++ Nelze zahrnout žádný z `\` následujících znaků: ~ ! @ # $ % ^ & * ( \\ \\ ) = + ] { } | ; : \' \\" , < > / ?. `
 
 ## <a name="access-data-using-tabulardataset-function"></a>Přístup k datům pomocí funkce TabularDataset
 
-Definováno training_data jako [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) a popisek, který se předává do automatizovaného ML v [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py). Metoda `TabularDataset` `from_delimited_files`ve výchozím nastavení nastaví `infer_column_types` na hodnotu true, čímž se automaticky odvodí typ sloupce. 
+Definována [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) training_data a popisek, které jsou [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)předány automatizované ML v . Metoda `TabularDataset` `from_delimited_files`ve výchozím nastavení `infer_column_types` nastaví hodnotu true, která automaticky odvodí typ sloupce. 
 
-Pokud chcete ručně nastavit typy sloupců, můžete nastavit argument `set_column_types` tak, aby ručně nastavil typ každého sloupce. V následující ukázce kódu data pocházejí z balíčku skriptu sklearn.
+Pokud chcete ručně nastavit typy sloupců, můžete `set_column_types` nastavit argument ručně nastavit typ každého sloupce. V následující ukázce kódu data pocházejí z balíčku sklearn.
 
 ```python
 from sklearn import datasets
@@ -122,8 +122,8 @@ ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progr
 training_data = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/digits.csv'))
 ```
 
-## <a name="configure-experiment"></a>Konfigurace testu
-Zadejte nastavení pro `AutoMLConfig`.  (Podívejte se na [úplný seznam parametrů](how-to-configure-auto-train.md#configure-experiment) a jejich možné hodnoty.)
+## <a name="configure-experiment"></a>Konfigurace experimentu
+Zadejte nastavení `AutoMLConfig`aplikace .  (Podívejte se na úplný seznam parametrů a jejich [možných](how-to-configure-auto-train.md#configure-experiment) hodnot.)
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -150,9 +150,9 @@ automl_config = AutoMLConfig(task='classification',
                              )
 ```
 
-## <a name="submit-training-experiment"></a>Odeslat výukového experimentu
+## <a name="submit-training-experiment"></a>Odeslat tréninkový experiment
 
-Teď odešlete konfigurace k automatickému výběru algoritmus, hyper parametry a trénování modelu.
+Nyní odešlete konfiguraci, abyste automaticky vybrali algoritmus, hyper parametry a trénovali model.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -196,35 +196,35 @@ Zobrazí se výstup podobný následujícímu příkladu:
 
 ## <a name="explore-results"></a>Prozkoumejte výsledky
 
-Můžete použít stejnou [pomůcku Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) , jak je znázorněno v [kurzu školení](tutorial-auto-train-models.md#explore-the-results) pro zobrazení grafu a tabulky výsledků.
+Můžete použít stejný [widget Jupyter,](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) jak je znázorněno v [tréninkovém tutoriálu,](tutorial-auto-train-models.md#explore-the-results) abyste viděli graf a tabulku výsledků.
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(remote_run).show()
 ```
 
-Tady je statický obrázek pomůcky.  V poznámkovém bloku můžete kliknutím na kterýkoli řádek v tabulce najdete ve vlastnostech spuštění a výstupních protokolů pro spuštění.   Rozevírací seznam nad grafem můžete také použít k zobrazení grafu jednotlivé dostupné metriky pro každou iteraci.
+Tady je statický obrázek pomůcky.  V poznámkovém bloku můžete kliknutím na libovolný řádek v tabulce zobrazit vlastnosti spuštění a výstupní protokoly pro tento běh.   Můžete také použít rozbalovací rozbalovací nad grafem k zobrazení grafu každé dostupné metriky pro každou iteraci.
 
 ![tabulka pomůcky](./media/how-to-auto-train-remote/table.png)
 ![diagram pomůcky](./media/how-to-auto-train-remote/plot.png)
 
-Ve widgetu zobrazí adresu URL můžete zobrazit a prozkoumat podrobnosti o spuštění jednotlivých.  
+Widget zobrazuje adresu URL, kterou můžete použít k zobrazení a prozkoumání jednotlivých podrobností o spuštění.  
 
-Pokud nejste v Jupyter poznámkovém bloku, můžete zobrazit adresu URL z samotného spuštění:
+Pokud nejste v poznámkovém bloku Jupyter, můžete zobrazit adresu URL ze samotného spuštění:
 
 ```
 remote_run.get_portal_url()
 ```
 
-Ve vašem pracovním prostoru jsou k dispozici stejné informace.  Další informace o těchto výsledcích najdete v tématu [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md).
+Stejné informace jsou k dispozici ve vašem pracovním prostoru.  Další informace o těchto výsledcích najdete [v tématu Principy výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md).
 
 ## <a name="example"></a>Příklad
 
-Následující [Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb) znázorňuje koncepty v tomto článku.
+Následující [poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb) ukazuje koncepty v tomto článku.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte [se konfigurovat nastavení pro automatické školení](how-to-configure-auto-train.md).
-* Další informace [najdete v tématu](how-to-machine-learning-interpretability-automl.md) povolení funkcí interpretace modelu v rámci automatizovaných experimentů ml.
+* Přečtěte [si, jak nakonfigurovat nastavení pro automatické trénování](how-to-configure-auto-train.md).
+* Podívejte se [na návod y na](how-to-machine-learning-interpretability-automl.md) povolení funkce interpretace modelu v automatizovaných experimentech ML.

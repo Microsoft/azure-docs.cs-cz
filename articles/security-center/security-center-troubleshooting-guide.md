@@ -1,6 +1,6 @@
 ---
 title: Průvodce odstraňováním potíží se službou Azure Security Center | Dokumentace Microsoftu
-description: Tato příručka je určena pro profesionály v oblasti IT, analytikům zabezpečení a cloudovým správcům, kteří potřebují řešit problémy související s Azure Security Center.
+description: Tato příručka je pro odborníky v oblasti IT, analytiky zabezpečení a správce cloudu, kteří potřebují řešit problémy související s Azure Security Center.
 services: security-center
 author: v-miegge
 manager: dcscontentpm
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 55a4aa066739203f8697fb4c9083869f5a05ef4f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 1c751fc31ba9066cf49eabbb86d37eda230c9c98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79282663"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062883"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro službu Azure Security Center
 
@@ -36,9 +36,7 @@ V závislosti na typech výstrahy mohou uživatelé shromáždit nezbytné infor
 
 * Protokoly zabezpečení v prohlížeči událostí virtuálního počítače ve Windows
 * AuditD v Linuxu
-* Protokoly aktivit Azure a povolte diagnostické protokoly na prostředku útoku.
-
-U některých upozornění Máme také hodnocení spolehlivosti. Skóre spolehlivosti v centru **Security Center** může vašemu týmu pomoci posoudit a určit priority výstrah. **Security Center** automaticky používá osvědčené postupy, inteligentní algoritmy a procesy používané analytiky k určení, jestli je hrozba legitimní a poskytuje smysluplné přehledy ve formě skóre spolehlivosti.
+* Protokoly aktivit Azure a povolení diagnostických protokolů u zdroje útoku.
 
 Zákazníci můžou sdílet zpětnou vazbu ohledně popisu a relevance výstrahy. Přejděte na výstrahu samotnou, vyberte tlačítko **Bylo vám to užitečné**, vyberte důvod a zadejte komentář vysvětlující zpětnou vazbu. Tento kanál zpětné vazby neustále sledujeme, abychom naše výstrahy vylepšili.
 
@@ -56,7 +54,7 @@ Protokol auditu obsahuje všechny operace zápisu (PUT, POST, DELETE) prováděn
 
 ## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
 
-Security Center používá Microsoft Monitoring Agent – jedná se o stejného agenta, kterého používá služba Azure Monitor – ke shromažďování dat zabezpečení z virtuálních počítačů Azure. Po povolení shromažďování dat a řádné instalaci agenta v cílovém počítači by se měl provádět tento proces:
+Security Center používá Microsoft Monitoring Agent – to je stejný agent používaný službou Azure Monitor – ke shromažďování dat zabezpečení z vašich virtuálních počítačů Azure. Po povolení shromažďování dat a řádné instalaci agenta v cílovém počítači by se měl provádět tento proces:
 
 * HealthService.exe
 
@@ -66,20 +64,20 @@ Pokud otevřete konzolu pro správu služeb (services.msc), uvidíte také spuš
 
 Pokud chcete zjistit, kterou verzi agenta máte, otevřete **Správce úloh**, na kartě **Procesy** vyhledejte **Služba Microsoft Monitoring Agent**, klikněte na ni pravým tlačítkem myši a klikněte na **Vlastnosti**. Na kartě **Podrobnosti** vyhledejte verzi souboru, jak je znázorněno níže:
 
-![Soubor](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
+![File](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
 ## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Scénáře instalace služby Microsoft Monitoring Agent
 
 Existují dva scénáře instalace služby Microsoft Monitoring Agent na počítač, které mohou přinést různé výsledky. Podporované scénáře:
 
-* **Agent nainstalovaný automaticky službou Security Center**: V tomto scénáři se budete moci podívat na výstrahy v obou umístěních – ve službě Security Center i v Hledání v protokolu. Dostanete e-mailová oznámení na e-mailovou adresu, která byla nakonfigurovaná v zásadách zabezpečení pro předplatné, ke kterému prostředek patří.
+* **Agent nainstalovaný automaticky službou Security Center**: V tomto scénáři se budete moci podívat na výstrahy v obou umístěních – ve službě Security Center i v Hledání v protokolu. Obdržíte e-mailová oznámení na e-mailovou adresu, která byla nakonfigurována v zásadách zabezpečení pro předplatné, ke kterému prostředek patří.
 
-* **Agent ručně nainstalovaný na virtuálním počítači, který se nachází v Azure**: v tomto scénáři platí, že pokud používáte agenty, kteří se stáhli a nainstalovali ručně před únorem 2017, můžete výstrahy zobrazit na portálu Security Center jenom v případě, že vyfiltrujete předplatné, ke kterému pracovní prostor patří. Pokud filtrujete předplatné, ke kterému prostředek patří, neuvidíte žádné výstrahy. Dostanete e-mailová oznámení na e-mailovou adresu, která byla nakonfigurovaná v zásadách zabezpečení předplatného, ke kterému pracovní prostor patří.
+* **Agent ručně nainstalovaný na virtuálním počítači umístěném v Azure**: v tomto scénáři, pokud používáte agenty stažené a nainstalované ručně před únorem 2017, můžete zobrazit výstrahy na portálu Centra zabezpečení pouze v případě, že filtrujete předplatné, do které pracovní prostor patří. Pokud filtrujete předplatné, do které prostředek patří, neuvidíte žádné výstrahy. Budete dostávat e-mailová oznámení na e-mailovou adresu, která byla nakonfigurovaná v zásadách zabezpečení pro předplatné, ke kterému pracovní prostor patří.
 
 > [!NOTE]
 > Pokud se chcete vyhnout chování uvedenému v druhém scénáři, stáhněte si nejnovější verzi agenta.
 
-## Problémy se stavem agenta monitorování <a name="mon-agent"></a>
+## <a name="monitoring-agent-health-issues"></a>Monitorování problémů se stavem agenta<a name="mon-agent"></a>
 
 **Stav monitorování** indikuje důvod, proč se službě Security Center nepodařilo úspěšně monitorovat virtuální počítače a počítače inicializované pro automatické zřizování. Seznam hodnot, popisů a postupů řešení pro hodnoty **stavu monitorování** najdete v následující tabulce.
 
@@ -90,13 +88,13 @@ Existují dva scénáře instalace služby Microsoft Monitoring Agent na počít
 | Agent virtuálního počítače Azure chybí nebo není platný | Microsoft Monitoring Agent ještě není nainstalovaný.  Aby služba Security Center mohla nainstalovat rozšíření, potřebuje platného agenta virtuálního počítače Azure. | Nainstalujte, přeinstalujte nebo upgradujte na virtuálním počítači agenta virtuálního počítače Azure. |
 | Stav virtuálního počítače není připravený k instalaci  | Microsoft Monitoring Agent ještě není nainstalovaný, protože stav virtuálního počítače brání v jeho instalaci. Virtuální počítač není připraven pro instalaci z důvodu problému s agentem nebo zřizováním virtuálního počítače. | Zkontrolujte stav virtuálního počítače. Vraťte se na portálu na obrazovku **Virtual Machines** a výběrem virtuálního počítače zobrazte jeho stav. |
 |Instalace selhala – obecná chyba | Microsoft Monitoring Agent je nainstalovaný, ale selhal kvůli chybě. | [Ručně rozšíření nainstalujte](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) nebo odinstalujte, aby se ho služba Security Center mohla pokusit znovu nainstalovat. |
-| Instalace selhala – místní agent je už nainstalovaný | Instalace nástroje Microsoft Monitoring Agent selhala. Security Center identifikovali místního agenta (Log Analytics nebo System Center Operations Manager), který je už na virtuálním počítači nainstalovaný. Aby se zabránilo vícenásobné konfiguraci, kdy se virtuální počítač hlásí dvěma samostatným pracovním prostorům, instalace agenta Microsoft Monitoring Agent byla zastavena. | Je možné to vyřešit dvěma způsoby: [nainstalovat rozšíření ručně](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) a připojit ho do požadovaného pracovního prostoru. Nebo nastavit požadovaný pracovní prostor jako výchozí a povolit automatické zřizování agenta.  Viz [zapnutí automatického zřizování](security-center-enable-data-collection.md). |
-| Agent se nemůže připojit k pracovnímu prostoru | Microsoft Monitoring Agent je nainstalovaný, ale selhal kvůli chybě připojení k síti.  Zkontrolujte připojení k internetu a jestli je pro agenta nakonfigurovaný správný proxy server HTTP. | Viz požadavky na síť agenta monitorování. |
-| Agent je připojený do chybějícího nebo neznámého pracovního prostoru | Služba Security Center zjistila, že Microsoft Monitoring Agent instalovaný na virtuálním počítači je připojený k pracovnímu prostoru, do kterého nemá přístup. | K tomu může dojít ve dvou případech. Pracovní prostor byl odstraněn a už neexistuje. Znovu nainstalujte agenta s použitím správného pracovního prostoru nebo agenta odinstalujte a povolte službě Security Center provést jeho instalaci pomocí automatického zřizování. Druhou možností je, že pracovní prostor patří do předplatného, pro které nemá Security Center oprávnění. Security Center vyžaduje, aby předplatné povolovalo přístup zprostředkovateli služby Microsoft Security Resource Provider. Napravíte to tak, že dané předplatné zaregistrujete do služby Microsoft Security Resource Provider. Můžete to udělat přes rozhraní API, v prostředí PowerShell, na portálu nebo jednoduše pomocí filtrování podle předplatného na řídicím panelu **Přehled** služby Security Center. Další informace najdete v tématu [Poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
-| Agent neodpovídá nebo chybí ID | Security Center nemůže z virtuálního počítače načíst shromážděná data zabezpečení, přestože je agent nainstalovaný. | Agent nevrací žádná data, a to ani prezenční signál. Agent může být poškozený nebo něco blokuje provoz. Agent možná odesílá data, ale chybí mu ID prostředku Azure, takže není možné data přiřadit správnému virtuálnímu počítači. Řešení potíží s Linuxem najdete v tématu [Průvodce odstraňováním potíží pro Log Analytics agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Informace o řešení problémů ve Windows najdete v tématu [Odstraňování problémů virtuálních počítačů Windows](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
+| Instalace selhala – místní agent je už nainstalovaný | Instalace nástroje Microsoft Monitoring Agent selhala. Security Center identifikovalo místního agenta (Log Analytics nebo System Center Operations Manager), který je už na virtuálním počítači nainstalovaný. Aby se zabránilo vícenásobné konfiguraci, kdy se virtuální počítač hlásí dvěma samostatným pracovním prostorům, instalace agenta Microsoft Monitoring Agent byla zastavena. | Je možné to vyřešit dvěma způsoby: [nainstalovat rozšíření ručně](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) a připojit ho do požadovaného pracovního prostoru. Nebo nastavit požadovaný pracovní prostor jako výchozí a povolit automatické zřizování agenta.  Viz [zapnutí automatického zřizování](security-center-enable-data-collection.md). |
+| Agent se nemůže připojit k pracovnímu prostoru | Microsoft Monitoring Agent je nainstalovaný, ale selhal kvůli chybě připojení k síti.  Zkontrolujte připojení k internetu a jestli je pro agenta nakonfigurovaný správný proxy server HTTP. | Viz požadavky agenta monitorování na síť. |
+| Agent je připojený do chybějícího nebo neznámého pracovního prostoru | Security Center zjistil, že Microsoft Monitoring Agent nainstalovaný na virtuálním počítači je připojen k pracovnímu prostoru, který nemá přístup k. | K tomu může dojít ve dvou případech. Pracovní prostor byl odstraněn a už neexistuje. Znovu nainstalujte agenta s použitím správného pracovního prostoru nebo agenta odinstalujte a povolte službě Security Center provést jeho instalaci pomocí automatického zřizování. Druhou možností je, že pracovní prostor patří do předplatného, pro které nemá Security Center oprávnění. Security Center vyžaduje, aby předplatné povolovalo přístup zprostředkovateli služby Microsoft Security Resource Provider. Napravíte to tak, že dané předplatné zaregistrujete do služby Microsoft Security Resource Provider. Můžete to udělat přes rozhraní API, v prostředí PowerShell, na portálu nebo jednoduše pomocí filtrování podle předplatného na řídicím panelu **Přehled** služby Security Center. Další informace najdete v tématu [Poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
+| Agent neodpovídá nebo chybí ID | Security Center nemůže z virtuálního počítače načíst shromážděná data zabezpečení, přestože je agent nainstalovaný. | Agent nevrací žádná data, a to ani prezenční signál. Agent může být poškozený nebo něco blokuje provoz. Nebo agent hlásí data, ale chybí ID prostředku Azure, takže není možné spárovat data s virtuálním počítačem Azure. Informace o řešení potíží s Linuxem naleznete [v příručce poradce při potížích s agentem analýzy protokolů pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Informace o řešení problémů ve Windows najdete v tématu [Odstraňování problémů virtuálních počítačů Windows](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
 | Agent nenainstalován | Shromažďování dat je vypnuté. | Zapněte shromažďování dat v zásadách zabezpečení nebo nainstalujte agenta Microsoft Monitoring Agent ručně. |
 
-## Řešení potíží se síťovými požadavky na agenta monitorování <a name="mon-network-req"></a>
+## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Řešení potíží se síťovými požadavky na agenta monitorování <a name="mon-network-req"></a>
 
 Agenti, kteří se připojují ke službě Security Center a registrují se v ní, musí mít přístup k síťovým prostředkům, včetně čísel portů a doménových adres URL.
 
@@ -134,25 +132,24 @@ Pokud dochází k problémům s načtením řídicího panelu služby Security C
 
 ## <a name="contacting-microsoft-support"></a>Kontaktování oddělení podpory společnosti Microsoft
 
-Některé potíže lze identifikovat podle pokynů v tomto článku, některé další jsou také dokumentovány ve veřejném [fóru](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) služby Security Center. Pokud však potřebujete odstraňovat potíže mimo tento rámec, můžete vytvořit novou žádost o podporu prostřednictvím webu **Azure Portal**, jak je znázorněno níže:
+Některé potíže lze identifikovat podle pokynů v tomto článku, některé další jsou také dokumentovány ve veřejném [fóru](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) služby Security Center. Pokud však potřebujete další řešení potíží, můžete otevřít novou žádost o podporu pomocí **portálu Azure,** jak je znázorněno níže:
 
-![Podpora Microsoftu](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
+![Podpora společnosti Microsoft](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 V tomto dokumentu jste zjistili, jak ve službě Azure Security Center konfigurovat zásady zabezpečení. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md) – Zjistěte, jak naplánovat a pochopit aspekty návrhu, abyste mohli přejít na Azure Security Center.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure
-* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně
-* [Principy výstrah zabezpečení ve službě Azure Security Center](security-center-alerts-type.md).
+* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
+* [Principy výstrah zabezpečení ve službě Azure Security Center](security-center-alerts-type.md)
 * [Kurz: Reakce na incidenty zabezpečení](tutorial-security-incident.md)
 * [Ověřování výstrah ve službě Azure Security Center](security-center-alert-validation.md)
 * [E-mailová oznámení ve službě Azure Security Center](security-center-provide-security-contact-details.md)
-* [Řešení bezpečnostních incidentů ve službě Azure Security Center](security-center-incident.md)
-* [Skóre spolehlivosti výstrah](security-center-secure-score.md)
+* [Řešení bezpečnostních incidentů v Azure Security Center](security-center-incident.md)
 * [Vyšetřování incidentů a výstrah ve službě Azure Security Center](security-center-investigation.md)
-* [Možnosti detekce v Azure Security Center](security-center-detection-capabilities.md)
+* [Funkce detekce Azure Security Center](security-center-detection-capabilities.md)
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
-* [Azure Security Center – nejčastější dotazy](faq-general.md) – Přečtěte si nejčastější dotazy o použití této služby.
+* [Azure Security Center – nejčastější dotazy](faq-general.md) – Přečtěte si nejčastější dotazy o použití této služby
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
 ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920633"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Možnosti zapojení kabeláže Azure Data Boxu
@@ -74,7 +74,7 @@ Při zapojování kabeláže zařízení postupujte následovně.
 
 Při zapojování kabeláže zařízení postupujte následovně.
 
-1. Pro konfiguraci použijte ethernetový kabel RJ45 od samostatného počítače přímo k portu pro správu.
+1. Pro konfiguraci použijte ethernetový kabel RJ45 ze samostatného počítače přímo do portu MGMT.
 2. Propojte datový port se serverem – v případě portu DATA 3 použijte kabel RJ45 a v případě portu DATA 1 nebo DATA 2 použijte kabel SFP+. Pro zajištění co nejlepšího výkonu doporučujeme použít port DATA 1 nebo DATA 2 10 GbE. Datové porty jsou k serveru s daty připojené přes přepínač 10 GbE.
 3. Na přenosném počítači, pomocí kterého se připojujete k zařízení, nakonfigurujte adaptér sítě Ethernet:
 

@@ -1,6 +1,6 @@
 ---
-title: Šifrování tokenu SAML v Azure Active Directory
-description: Přečtěte si, jak nakonfigurovat Azure Active Directory šifrování tokenu SAML.
+title: Šifrování tokenů SAML ve službě Azure Active Directory
+description: Přečtěte si, jak nakonfigurovat šifrování tokenů Azure Active Directory SAML.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,85 +17,85 @@ ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79365862"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Postupy: Konfigurace šifrování tokenů SAML v Azure AD
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Postup: Konfigurace šifrování tokenů Azure AD SAML
 
 > [!NOTE]
-> Šifrování tokenu je funkce Premium služby Azure Active Directory (Azure AD). Další informace o edicích, funkcích a cenách Azure AD najdete v tématu [ceny služby Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
+> Šifrování tokenů je prémiová funkce Azure Active Directory (Azure AD). Další informace o edicích, funkcích a cenách Azure AD najdete v [tématu Ceny Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Šifrování tokenu SAML umožňuje použití šifrovaných kontrolních výrazů SAML v aplikaci, která ji podporuje. Při konfiguraci pro aplikaci Azure AD zašifruje kontrolní výrazy SAML, které tato aplikace vygeneruje, pomocí veřejného klíče získaného z certifikátu uloženého v Azure AD. Aby bylo možné token použít jako legitimaci ověřování pro přihlášeného uživatele, musí aplikace použít stejný privátní klíč k dešifrování.
+Šifrování tokenů SAML umožňuje použití šifrovaných kontrolních výrazů SAML s aplikací, která jej podporuje. Při konfiguraci pro aplikaci Azure AD zašifruje kontrolní výrazy SAML, které pro tuto aplikaci vydává, pomocí veřejného klíče získaného z certifikátu uloženého ve službě Azure AD. Aplikace musí použít odpovídající soukromý klíč k dešifrování tokenu, než jej lze použít jako důkaz ověření pro přihlášeného uživatele.
 
-Šifrování kontrolních výrazů SAML mezi Azure AD a aplikací poskytuje další jistotu, že obsah tokenu nejde zachytit, a osobní nebo firemní data budou ohrožená.
+Šifrování kontrolních výrazů SAML mezi službou Azure AD a aplikací poskytuje další záruku, že obsah tokenu nelze zachytit a ohrožena osobní nebo podniková data.
 
-Bez šifrování tokenů se tokeny SAML služby Azure AD nikdy neúspěšně předávají v síti v jasném případě. Služba Azure AD vyžaduje, aby výměna požadavků a odpovědí na tokeny probíhat prostřednictvím šifrovaných kanálů HTTPS/TLS, aby byla komunikace mezi IDP, prohlížečem a aplikací prováděna prostřednictvím šifrovaných odkazů. Vezměte v úvahu hodnotu šifrování tokenu pro vaši situaci v porovnání s režií při správě dalších certifikátů.   
+I bez šifrování tokenů tokeny Azure AD SAML tokeny jsou nikdy předány v síti v vymazat. Azure AD vyžaduje, aby se výměny žádostí o odpověď tokenů a odpovědí uskutečňovaly přes šifrované kanály HTTPS/TLS, aby komunikace mezi IDP, prohlížečem a aplikací probíhala přes šifrované odkazy. Zvažte hodnotu šifrování tokenu pro vaši situaci ve srovnání s režií správy dalších certifikátů.   
 
-Ke konfiguraci šifrování tokenů je potřeba nahrát soubor certifikátu X. 509, který obsahuje veřejný klíč, do objektu aplikace Azure AD, který představuje aplikaci. Pokud chcete získat certifikát X. 509, můžete si ho stáhnout z samotné aplikace nebo ho získat od dodavatele aplikace v případech, kdy dodavatel aplikace poskytuje šifrovací klíče, nebo v případech, kdy aplikace očekává, že zadáte privátní klíč, může být Při vytváření pomocí kryptografických nástrojů se část privátního klíče nahrála do úložiště klíčů aplikace a odpovídající certifikát veřejného klíče se nahrál do Azure AD.
+Chcete-li nakonfigurovat šifrování tokenů, musíte nahrát soubor certifikátu X.509, který obsahuje veřejný klíč do aplikačního objektu Azure AD, který představuje aplikaci. Chcete-li získat certifikát X.509, můžete jej stáhnout ze samotné aplikace nebo jej získat od dodavatele aplikace v případech, kdy dodavatel aplikace poskytuje šifrovací klíče, nebo v případech, kdy aplikace očekává, že poskytnete soukromý klíč, může být vytvořenpomocí kryptografických nástrojů, část soukromého klíče nahrané do úložiště klíčů aplikace a odpovídající certifikát veřejného klíče nahraný do Azure AD.
 
-Azure AD používá algoritmus AES-256 k šifrování dat kontrolního výrazu SAML.
+Azure AD používá AES-256 k šifrování saml kontrolní data.
 
-## <a name="configure-saml-token-encryption"></a>Konfigurace šifrování tokenu SAML
+## <a name="configure-saml-token-encryption"></a>Konfigurace šifrování tokenů SAML
 
-Při konfiguraci šifrování tokenů SAML postupujte takto:
+Chcete-li nakonfigurovat šifrování tokenů SAML, postupujte takto:
 
-1. Získejte certifikát veřejného klíče, který odpovídá privátnímu klíči nakonfigurovanému v aplikaci.
+1. Získejte certifikát veřejného klíče, který odpovídá soukromému klíči, který je nakonfigurován v aplikaci.
 
-    Vytvořte dvojici asymetrických klíčů, která se má použít pro šifrování. Nebo pokud aplikace poskytuje veřejný klíč, který se má použít pro šifrování, Stáhněte si certifikát X. 509 podle pokynů aplikace.
+    Vytvořte asymetrický pár klíčů, který chcete použít pro šifrování. Nebo pokud aplikace poskytuje veřejný klíč pro šifrování, postupujte podle pokynů aplikace ke stažení certifikátu X.509.
 
-    Veřejný klíč by měl být uložený v souboru certifikátu X. 509 ve formátu. cer.
+    Veřejný klíč by měl být uložen v souboru certifikátu X.509 ve formátu CER.
 
-    Pokud aplikace používá klíč, který vytvoříte pro instanci, postupujte podle pokynů, které vám poskytuje aplikace pro instalaci privátního klíče, který aplikace použije k dešifrování tokenů z vašeho tenanta Azure AD.
+    Pokud aplikace používá klíč, který vytvoříte pro vaši instanci, postupujte podle pokynů poskytnutých vaší aplikací pro instalaci privátního klíče, který aplikace použije k dešifrování tokenů z vašeho klienta Azure AD.
 
 1. Přidejte certifikát do konfigurace aplikace ve službě Azure AD.
 
-### <a name="to-configure-token-encryption-in-the-azure-portal"></a>Konfigurace šifrování tokenů v Azure Portal
+### <a name="to-configure-token-encryption-in-the-azure-portal"></a>Konfigurace šifrování tokenů na webu Azure Portal
 
-Veřejný certifikát můžete přidat do konfigurace aplikace v rámci Azure Portal.
+Veřejný certifikát můžete přidat do konfigurace aplikace v rámci portálu Azure.
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 
-1. V okně **Azure Active Directory > podnikových aplikací** vyberte aplikaci, pro kterou chcete nakonfigurovat šifrování tokenu.
+1. Přejděte do okna **aplikace Azure Active Directory > enterprise** a vyberte aplikaci, pro kterou chcete nakonfigurovat šifrování tokenů.
 
 1. Na stránce aplikace vyberte **šifrování tokenu**.
 
-    ![Možnost šifrování tokenu v Azure Portal](./media/howto-saml-token-encryption/token-encryption-option-small.png)
+    ![Možnost šifrování tokenů na webu Azure Portal](./media/howto-saml-token-encryption/token-encryption-option-small.png)
 
     > [!NOTE]
-    > Možnost **šifrování tokenu** je dostupná jenom pro aplikace SAML, které jste nastavili v okně **podnikové aplikace** v Azure Portal, a to buď z Galerie aplikací, nebo z aplikace mimo galerii. Pro jiné aplikace je tato možnost nabídky zakázána. Pro aplikace zaregistrované v prostředí **Registrace aplikací** v Azure Portal můžete nakonfigurovat šifrování pro tokeny SAML pomocí manifestu aplikace, prostřednictvím Microsoft Graph nebo prostřednictvím PowerShellu.
+    > Možnost **šifrování tokenu** je k dispozici jenom pro aplikace SAML, které byly nastaveny z okna **podnikové aplikace** na portálu Azure, buď z Galerie aplikací nebo z aplikace mimo galerii. U jiných aplikací je tato možnost nabídky zakázána. Pro aplikace registrované prostřednictvím prostředí **registrace aplikací** na webu Azure Portal můžete nakonfigurovat šifrování tokenů SAML pomocí manifestu aplikace, prostřednictvím Microsoft Graphu nebo přes PowerShell.
 
-1. Na stránce **šifrování tokenů** vyberte **importovat certifikát** , abyste importovali soubor. CER, který obsahuje váš veřejný certifikát X. 509.
+1. Na stránce **šifrování tokenu** vyberte **importovat certifikát,** chcete-li importovat soubor CER obsahující veřejný certifikát X.509.
 
-    ![Importujte soubor. CER, který obsahuje certifikát X. 509.](./media/howto-saml-token-encryption/import-certificate-small.png)
+    ![Import souboru CER obsahujícího certifikát X.509](./media/howto-saml-token-encryption/import-certificate-small.png)
 
-1. Po importu certifikátu a zadání privátního klíče pro použití na straně aplikace aktivujte šifrování tak, že vyberete **...** vedle stavu kryptografických otisků, a pak vyberte **aktivovat šifrování tokenů** z možností v rozevírací nabídce.
+1. Po importu certifikátu a nakonfigurován soukromý klíč pro použití na straně aplikace, aktivujte šifrování výběrem **...** vedle stavu kryptografického otisku a pak z možností v rozbalovací nabídce vyberte **Aktivovat šifrování tokenu.**
 
-1. Výběrem **Ano** potvrďte aktivaci certifikátu pro šifrování tokenu.
+1. Výběrem **možnosti Ano** potvrďte aktivaci šifrovacího certifikátu tokenu.
 
-1. Ověřte, zda jsou výrazy SAML vydávané pro aplikaci zašifrované.
+1. Zkontrolujte, zda jsou výrazy SAML vysílané pro aplikaci šifrovány.
 
-### <a name="to-deactivate-token-encryption-in-the-azure-portal"></a>Deaktivace šifrování tokenu v Azure Portal
+### <a name="to-deactivate-token-encryption-in-the-azure-portal"></a>Deaktivace šifrování tokenů na webu Azure Portal
 
-1. V Azure Portal klikněte na **Azure Active Directory > podnikové aplikace**a pak vyberte aplikaci s povoleným šifrováním tokenu SAML.
+1. Na webu Azure Portal přejděte na **Azure Active Directory > podnikové aplikace**a vyberte aplikaci, která má povoleno šifrování tokenů SAML.
 
-1. Na stránce aplikace vyberte **šifrování tokenu**, Najděte certifikát a potom vyberte možnost **...** . zobrazí se rozevírací nabídka.
+1. Na stránce aplikace vyberte **Šifrování tokenu**, vyhledejte certifikát a pak vyberte možnost **...** pro zobrazení rozbalovací nabídky.
 
-1. Vyberte **deaktivovat šifrování tokenu**.
+1. Vyberte **Možnost Deaktivovat šifrování tokenu**.
 
-## <a name="configure-saml-token-encryption-using-graph-api-powershell-or-app-manifest"></a>Konfigurace šifrování tokenu SAML pomocí Graph API, PowerShellu nebo manifestu aplikace
+## <a name="configure-saml-token-encryption-using-graph-api-powershell-or-app-manifest"></a>Konfigurace šifrování tokenů SAML pomocí rozhraní Graph API, PowerShellu nebo manifestu aplikace
 
-Šifrovací certifikáty jsou uložené v objektu aplikace v Azure AD s použitím značky `encrypt`ho použití. Můžete nakonfigurovat víc šifrovacích certifikátů a tu, která je aktivní pro šifrování tokenů, je identifikovaná atributem `tokenEncryptionKeyID`.
+Šifrovací certifikáty jsou uložené na objektu aplikace ve službě Azure AD se značkou `encrypt` využití. Můžete nakonfigurovat více šifrovacích certifikátů a ten, který `tokenEncryptionKeyID` je aktivní pro šifrování tokenů, je identifikován atributem.
 
-K nakonfigurování šifrování tokenů pomocí rozhraní Microsoft Graph API nebo prostředí PowerShell budete potřebovat ID objektu aplikace. Tuto hodnotu můžete najít programově nebo na stránce **vlastností** aplikace v Azure Portal a zaznamenání hodnoty **ID objektu** .
+K konfiguraci šifrování tokenů pomocí rozhraní Microsoft Graph API nebo PowerShellu budete potřebovat ID objektu aplikace. Tuto hodnotu můžete najít programově nebo na stránce **Vlastnosti** aplikace na webu Azure Portal a s uvedením hodnoty **ID objektu.**
 
-Když konfigurujete přihlašovací údaje pomocí grafu, PowerShellu nebo v manifestu aplikace, měli byste vygenerovat identifikátor GUID, který se má použít pro keyId.
+Při konfiguraci keyCredential pomocí graph, PowerShell nebo v manifestu aplikace, měli byste vygenerovat IDENTIFIKÁTOR GUID použít pro keyId.
 
-### <a name="to-configure-token-encryption-using-microsoft-graph"></a>Konfigurace šifrování tokenů pomocí Microsoft Graph
+### <a name="to-configure-token-encryption-using-microsoft-graph"></a>Konfigurace šifrování tokenů pomocí aplikace Microsoft Graph
 
-1. Aktualizujte `keyCredentials` aplikace pomocí certifikátu X. 509 pro šifrování. Následující příklad ukazuje, jak to provést.
+1. Aktualizujte aplikace `keyCredentials` pomocí certifikátu X.509 pro šifrování. Následující příklad ukazuje, jak to provést.
 
     ```
     Patch https://graph.microsoft.com/beta/applications/<application objectid>
@@ -123,15 +123,15 @@ Když konfigurujete přihlašovací údaje pomocí grafu, PowerShellu nebo v man
 
 ### <a name="to-configure-token-encryption-using-powershell"></a>Konfigurace šifrování tokenů pomocí PowerShellu
 
-1. K připojení k vašemu tenantovi použijte nejnovější modul Azure AD PowerShell.
+1. Použijte nejnovější modul Azure AD PowerShell pro připojení k tenantovi.
 
-1. Nastavení šifrování tokenu nastavte pomocí příkazu **[set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** .
+1. Nastavte nastavení šifrování tokenů pomocí příkazu **[Set-AzureApplication.](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)**
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
     ```
 
-1. Přečtěte si nastavení šifrování tokenu pomocí následujících příkazů.
+1. Přečtěte si nastavení šifrování tokenů pomocí následujících příkazů.
 
     ```powershell
     $app=Get-AzureADApplication -ObjectId <ApplicationObjectId>
@@ -141,15 +141,15 @@ Když konfigurujete přihlašovací údaje pomocí grafu, PowerShellu nebo v man
 
 ### <a name="to-configure-token-encryption-using-the-application-manifest"></a>Konfigurace šifrování tokenů pomocí manifestu aplikace
 
-1. V Azure Portal **Azure Active Directory > Registrace aplikací**.
+1. Na webu Azure najdete v **registračních službách služby Azure Active Directory > .**
 
-1. Výběrem možnost **všechny aplikace** z rozevíracího seznamu zobrazíte všechny aplikace a pak vyberte podnikovou aplikaci, kterou chcete nakonfigurovat.
+1. V rozevíracím souboru vyberte **Všechny aplikace,** chcete-li zobrazit všechny aplikace, a pak vyberte podnikovou aplikaci, kterou chcete nakonfigurovat.
 
-1. Na stránce aplikace vyberte **manifest** pro úpravu [manifestu aplikace](../develop/reference-app-manifest.md).
+1. Na stránce aplikace vyberte **Manifest,** chcete-li upravit [manifest aplikace](../develop/reference-app-manifest.md).
 
-1. Nastavte hodnotu atributu `tokenEncryptionKeyId`.
+1. Nastavte hodnotu `tokenEncryptionKeyId` atributu.
 
-    Následující příklad ukazuje manifest aplikace nakonfigurovaný pomocí dvou šifrovacích certifikátů a druhý vybraný jako aktivní pomocí tokenEnryptionKeyId.
+    Následující příklad ukazuje manifest aplikace nakonfigurovaný se dvěma šifrovacími certifikáty a druhý vybraný jako aktivní pomocí tokenenryptionKeyId.
 
     ```json
     { 
@@ -220,5 +220,5 @@ Když konfigurujete přihlašovací údaje pomocí grafu, PowerShellu nebo v man
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zjistěte [, jak Azure AD používá protokol SAML](../develop/active-directory-saml-protocol-reference.md) .
-* Naučte se formát, charakteristiky zabezpečení a obsah [tokenů SAML v Azure AD](../develop/reference-saml-tokens.md) .
+* Zjistěte, [jak Azure AD používá protokol SAML](../develop/active-directory-saml-protocol-reference.md)
+* Naučte se formát, charakteristiky zabezpečení a obsah [tokenů SAML ve službě Azure AD](../develop/reference-saml-tokens.md)

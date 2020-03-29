@@ -1,6 +1,6 @@
 ---
-title: Integrace Splunk pomocí Azure Monitor | Microsoft Docs
-description: Informace o tom, jak integrovat protokoly Azure Active Directory s využitím SumoLogic pomocí Azure Monitor
+title: Integrace Splunk pomocí Azure Monitor | Dokumenty společnosti Microsoft
+description: Zjistěte, jak integrovat protokoly služby Azure Active Directory s SumoLogic pomocí Služby Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,44 +18,44 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2eda3643a7b1a341c7ed664dbfea933145f1f927
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78968716"
 ---
-# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Postupy: integrace protokolů Azure Active Directory s využitím Splunk pomocí Azure Monitor
+# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Postup: Integrace protokolů služby Azure Active Directory s aplikací Splunk pomocí nástroje Azure Monitor
 
-V tomto článku se dozvíte, jak integrovat protokoly Azure Active Directory (Azure AD) s Splunk pomocí Azure Monitor. Nejprve protokoly směrujete do centra událostí Azure a potom integrujete centrum událostí pomocí Splunk.
+V tomto článku se dozvíte, jak integrovat protokoly Azure Active Directory (Azure AD) s Splunk pomocí Azure Monitor. Nejprve směrovat protokoly do centra událostí Azure a potom integrovat centrum událostí s Splunk.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
-- Centrum událostí Azure, které obsahuje protokoly aktivit služby Azure AD. Naučte se, jak [streamovat protokoly aktivit do centra událostí](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+- Centrum událostí Azure, které obsahuje protokoly aktivit Azure AD. Přečtěte si, jak [streamovat protokoly aktivit do centra událostí](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
 
--  [Microsoft Azure přidat do pro Splunk](https://splunkbase.splunk.com/app/3757/). 
+-  [Microsoft Azure Přidat pro Splunk](https://splunkbase.splunk.com/app/3757/). 
 
-## <a name="integrate-azure-active-directory-logs"></a>Integrace protokolů Azure Active Directory 
+## <a name="integrate-azure-active-directory-logs"></a>Integrace protokolů služby Azure Active Directory 
 
-1. Otevřete instanci Splunk a vyberte **data Summary (souhrn dat**).
+1. Otevřete instanci Splunk a vyberte **Souhrn dat**.
 
-    ![Tlačítko Souhrn dat](./media/howto-integrate-activity-logs-with-splunk/DataSummary.png)
+    ![Tlačítko "Souhrn dat"](./media/howto-integrate-activity-logs-with-splunk/DataSummary.png)
 
-2. Vyberte kartu **sourceType** a pak vyberte **Amal: aadal: audit.**
+2. Vyberte kartu **Sourcetypes** a pak vyberte **amal: aadal:audit**
 
-    ![Karta karta pro shrnutí dat](./media/howto-integrate-activity-logs-with-splunk/sourcetypeaadal.png)
+    ![Karta Zdroje souhrnu dat](./media/howto-integrate-activity-logs-with-splunk/sourcetypeaadal.png)
 
-    Protokoly aktivit Azure AD jsou zobrazené na následujícím obrázku:
+    Protokoly aktivit Azure AD jsou zobrazeny na následujícím obrázku:
 
     ![Protokoly aktivit](./media/howto-integrate-activity-logs-with-splunk/activitylogs.png)
 
 > [!NOTE]
-> Pokud nemůžete nainstalovat doplněk do instance Splunk (například pokud používáte proxy server nebo spuštěný v Splunk cloudu), můžete tyto události pře do sběrače událostí protokolu HTTP Splunk. Uděláte to tak, že použijete tuto [funkci Azure](https://github.com/Microsoft/AzureFunctionforSplunkVS), která se aktivuje novými zprávami v centru událostí. 
+> Pokud nemůžete nainstalovat doplněk v instanci Splunk (například pokud používáte proxy server nebo běží na Splunk Cloud), můžete tyto události předat kolekcí událostí Splunk HTTP. Chcete-li tak učinit, použijte tuto [funkci Azure](https://github.com/Microsoft/AzureFunctionforSplunkVS), která se aktivuje nové zprávy v centru událostí. 
 >
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Interpretace schématu protokolů auditu ve službě Azure Monitor](reference-azure-monitor-audit-log-schema.md)
+* [Interpretace schématu protokolů auditu v Azure Monitoru](reference-azure-monitor-audit-log-schema.md)
 * [Interpretace schématu protokolů přihlášení ve službě Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md)
 * [Nejčastější dotazy a známé problémy](concept-activity-logs-azure-monitor.md#frequently-asked-questions)
