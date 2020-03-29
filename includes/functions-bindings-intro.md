@@ -1,25 +1,23 @@
 ---
 title: zahrnout soubor
 description: zahrnout soubor
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 01/09/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: b9f0816ad67afa05a5325f03991ac22393c1b416
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 1ae2d694853b72009af3f45013e147099943577c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174795"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "76277372"
 ---
-Toto jsou referenční informace pro vývojáře Azure Functions. Pokud začínáte do služby Azure Functions, začněte s následující prostředky:
+Toto jsou referenční informace pro vývojáře Azure Functions. Pokud s Funkcemi Azure tečte, začněte s následujícími prostředky:
 
-* Vytvoření první funkce: [C#](../articles/azure-functions/functions-create-first-azure-function.md), [JavaScript](../articles/azure-functions/functions-create-first-azure-function.md), [Java](../articles/azure-functions/functions-create-first-java-maven.md), nebo [Python](../articles/azure-functions/functions-create-first-function-python.md).
-* [Azure Functions – reference pro vývojáře.](../articles/azure-functions/functions-reference.md)
-* Referenční informace specifické pro jazyk: [C#](../articles/azure-functions/functions-dotnet-class-library.md), [ C# skript](../articles/azure-functions/functions-reference-csharp.md), [ F# ](../articles/azure-functions/functions-reference-fsharp.md), [Java](../articles/azure-functions/functions-reference-java.md), [JavaScript](../articles/azure-functions/functions-reference-node.md), nebo [Python](../articles/azure-functions/functions-reference-python.md).
-* [Aktivace Azure Functions a vazby koncepty.](../articles/azure-functions/functions-triggers-bindings.md)
-* [Kódování a testování Azure Functions místně.](../articles/azure-functions/functions-develop-local.md)
+* Vytvořte si první funkci: [C#](../articles/azure-functions/functions-create-first-azure-function.md), [JavaScript](../articles/azure-functions/functions-create-first-azure-function.md), [Java](../articles/azure-functions/functions-create-first-java-maven.md)nebo [Python](../articles/azure-functions/functions-create-first-function-python.md).
+* [Azure Functions odkaz na vývojáře.](../articles/azure-functions/functions-reference.md)
+* Odkaz specifický pro jazyk: [C#](../articles/azure-functions/functions-dotnet-class-library.md), [C# script](../articles/azure-functions/functions-reference-csharp.md), [F#](../articles/azure-functions/functions-reference-fsharp.md), [Java](../articles/azure-functions/functions-reference-java.md), [JavaScript](../articles/azure-functions/functions-reference-node.md)nebo [Python](../articles/azure-functions/functions-reference-python.md).
+* [Azure Functions aktivuje a vazby koncepty.](../articles/azure-functions/functions-triggers-bindings.md)
+* [Kód a test Funkce Azure místně.](../articles/azure-functions/functions-develop-local.md)

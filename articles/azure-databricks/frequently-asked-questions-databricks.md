@@ -1,5 +1,5 @@
 ---
-title: 'Azure Databricks: běžné dotazy a pomáhat'
+title: 'Azure Databricks: Běžné otázky a pomoc'
 description: Získejte odpovědi na běžné otázky a informace o řešení potíží o Azure Databricks.
 services: azure-databricks
 author: mamccrea
@@ -10,125 +10,125 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.openlocfilehash: 8d7aab43641c6c594ff60368ccb3810e0c060dd7
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671564"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Nejčastější dotazy týkající se Azure Databricks
 
-V tomto článku jsou uvedené Nejčastější dotazy, které se vám mohly vzjímat s Azure Databricks. Obsahuje taky některé běžné problémy, které jste mohli mít při používání datacihlů. Další informace najdete v tématu [co je Azure Databricks](what-is-azure-databricks.md). 
+V tomto článku jsou uvedeny hlavní otázky, které by mohly souviset s Azure Databricks. Obsahuje také seznam některých běžných problémů, které můžete mít při používání databricks. Další informace najdete v tématu [Co je Azure Databricks](what-is-azure-databricks.md). 
 
-## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>Můžu použít Azure Key Vault k ukládání klíčů/tajných klíčů, které se mají použít v Azure Databricks?
-Ano. Pomocí Azure Key Vault můžete ukládat klíče a tajné kódy pro použití s Azure Databricks. Další informace najdete v tématu [Azure Key Vault obory](/azure/databricks/security/secrets/secret-scopes).
+## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>Můžu použít Azure Key Vault k ukládání klíčů nebo tajných klíčů, které se mají používat v Azure Databricks?
+Ano. Azure Key Vault můžete použít k ukládání klíčů nebo tajných klíčů pro použití s Azure Databricks. Další informace naleznete v [tématu Azure Key Vault-couval obory](/azure/databricks/security/secrets/secret-scopes).
 
 
-## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Můžu používat virtuální sítě Azure s datacihly?
-Ano. Můžete použít Azure Virtual Network (VNET) s Azure Databricks. Další informace najdete v tématu [nasazení Azure Databricks ve službě Azure Virtual Network](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
+## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Můžu virtuální sítě Azure používat s datovými cihlami?
+Ano. Virtuální síť Azure (VNET) můžete použít s Azure Databricks. Další informace najdete [v tématu Nasazení Datových cihel Azure ve virtuální síti Azure](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
 
-## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>Návody přistupovat Azure Data Lake Storage z poznámkového bloku? 
+## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>Jak se dostanu k Azure Data Lake Storage z poznámkového bloku? 
 
 Postupujte následovně:
-1. Ve službě Azure Active Directory (Azure AD) zřiďte instanční objekt a zaznamenejte jeho klíč.
-1. Přiřaďte potřebná oprávnění k instančnímu objektu v Data Lake Storage.
-1. Pokud chcete získat přístup k souboru v Data Lake Storage, použijte přihlašovací údaje instančního objektu ve službě Poznámkový blok.
+1. Ve službě Azure Active Directory (Azure AD) zřídíte instanční objekt a zaznamenejte jeho klíč.
+1. Přiřaďte potřebná oprávnění instančnímu objektu v úložišti datového jezera.
+1. Chcete-li získat přístup k souboru v úložišti datového jezera, použijte pověření hlavního povinného zápisníku v poznámkovém bloku.
 
-Další informace najdete v tématu [použití Azure Data Lake Storage s Azure Databricks](/azure/databricks/data/data-sources/azure/azure-datalake).
+Další informace najdete [v tématu Použití Azure Data Lake Storage s Azure Databricks](/azure/databricks/data/data-sources/azure/azure-datalake).
 
-## <a name="fix-common-problems"></a>Řešení běžných problémů
+## <a name="fix-common-problems"></a>Oprava běžných problémů
 
-Tady je několik problémů, se kterými se můžete setkat s datacihly.
+Zde je několik problémů, se kterými se můžete setkat s Databricks.
 
-### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>Problém: v tomto předplatném není zaregistrované používání oboru názvů Microsoft. datacihly.
-
-#### <a name="error-message"></a>Chybová zpráva
-
-"Toto předplatné není zaregistrované pro používání oboru názvů" Microsoft. datacihly ". Postup registrace předplatných najdete v tématu https://aka.ms/rps-not-found. (Kód: MissingSubscriptionRegistration) "
-
-#### <a name="solution"></a>Řešení
-
-1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Vyberte **předplatná**, předplatné, které používáte, a pak **poskytovatele prostředků**. 
-1. V seznamu poskytovatelů prostředků s **cihlami Microsoft. datacihly**vyberte **Registrovat**. Abyste mohli registrovat poskytovatele prostředků, musíte mít v předplatném roli přispěvatel nebo vlastník.
-
-
-### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>Problém: váš účet {email} nemá roli vlastníka nebo přispěvatele v prostředku pracovního prostoru datacihly v Azure Portal
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>Problém: Toto předplatné není registrováno pro použití oboru názvů Microsoft.Databricks
 
 #### <a name="error-message"></a>Chybová zpráva
 
-"Váš účet {email} nemá roli vlastníka nebo přispěvatele v prostředku pracovního prostoru datacihly v Azure Portal. K této chybě může dojít také v případě, že jste uživatel typu Host v tenantovi. Požádejte správce, aby vám udělil přístup, nebo ho přidejte jako uživatele přímo do pracovního prostoru datacihly. 
+"Toto předplatné není registrováno pro použití oboru názvů Microsoft.Databricks. Podívejte https://aka.ms/rps-not-found se, jak zaregistrovat odběry. (Kód: MissingSubscriptionRegistration)"
 
 #### <a name="solution"></a>Řešení
 
-Toto je několik řešení tohoto problému:
-
-* Chcete-li inicializovat klienta, musíte být přihlášeni jako běžný uživatel tenanta, nikoli jako uživatel typu Host. Musíte mít také roli Přispěvatel v prostředku pracovního prostoru datacihly. Přístup uživatele můžete udělit z karty **řízení přístupu (IAM)** v pracovním prostoru datacihly v Azure Portal.
-
-* K této chybě může dojít také v případě, že je název domény e-mailu přiřazen více adresářům ve službě Azure AD. Pokud chcete tento problém obejít, vytvořte nového uživatele v adresáři, který obsahuje předplatné s vaším pracovním prostorem datacihly.
-
-    a. V Azure Portal přejdete do služby Azure AD. Vyberte **Uživatelé a skupiny** > **Přidat uživatele**.
-
-    b. Místo `@<your_domain>` e-mailu přidejte uživatele s `@<tenant_name>.onmicrosoft.com` e-mailem. Tuto možnost můžete najít ve **vlastních doménách**v části Azure AD v Azure Portal.
-    
-    c. Tomuto novému uživateli udělte roli **Přispěvatel** v prostředku pracovního prostoru datacihly.
-    
-    d. Přihlaste se k Azure Portal pomocí nového uživatele a najděte pracovní prostor datacihly.
-    
-    e. Jako tohoto uživatele spusťte pracovní prostor datacihly.
+1. Přejděte na [portál Azure](https://portal.azure.com).
+1. Vyberte **Předplatná**, předplatné, které používáte, a potom **vyberte zprostředkovatele prostředků**. 
+1. V seznamu poskytovatelů prostředků ve skutečnosti **microsoft.databricks**vyberte **Registrovat**. Chcete-li zaregistrovat poskytovatele prostředků, musíte mít v předplatném roli přispěvatele nebo vlastníka.
 
 
-### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>Problém: váš účet {email} není zaregistrovaný v datacihlech. 
-
-#### <a name="solution"></a>Řešení
-
-Pokud jste pracovní prostor nevytvořili a Přidali jste ho jako uživatel, obraťte se na osobu, která pracovní prostor vytvořila. Přidejte tuto osobu pomocí konzoly pro správu Azure Databricks. Pokyny najdete v tématu [Přidání a Správa uživatelů](/azure/databricks/administration-guide/users-groups/users). Pokud jste vytvořili pracovní prostor a stále se zobrazí tato chyba, zkuste z Azure Portal vybrat možnost **inicializovat pracovní prostor** znovu.
-
-### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Problém: poskytovatel cloudu selhal při nastavování clusteru (PublicIPCountLimitReached).
+### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>Problém: Váš účet {e-mail} nemá roli vlastníka nebo přispěvatele v prostředku pracovního prostoru Databricks na webu Azure Portal.
 
 #### <a name="error-message"></a>Chybová zpráva
 
-"Nepovedlo se spustit poskytovatele cloudu: při nastavování clusteru došlo k chybě poskytovatele cloudu. Další informace najdete v příručce pro datacihly. Kód chyby Azure: PublicIPCountLimitReached. Chybová zpráva Azure: pro toto předplatné v této oblasti nejde vytvořit více než 10 veřejných IP adres.
+"Váš účet {email} nemá roli vlastníka nebo přispěvatele na prostředku pracovního prostoru Databricks na webu Azure Portal. K této chybě může dojít také v případě, že jste uživatelem typu Host v tenantovi. Požádejte správce, aby vám udělil přístup nebo vás přidal jako uživatele přímo v pracovním prostoru Databricks." 
+
+#### <a name="solution"></a>Řešení
+
+Následuje několik řešení tohoto problému:
+
+* Chcete-li inicializovat klienta, musíte být přihlášeni jako běžný uživatel klienta, nikoli jako uživatel typu Host. Musíte mít také roli přispěvatele na prostředek pracovního prostoru Databricks. Uživateli můžete udělit přístup z karty **Řízení přístupu (IAM)** v pracovním prostoru Databricks na webu Azure Portal.
+
+* K této chybě může dojít také v případě, že název e-mailové domény je přiřazen k více adresářů ve službě Azure AD. Chcete-li tento problém vyřešit, vytvořte nového uživatele v adresáři, který obsahuje předplatné s pracovním prostorem Databricks.
+
+    a. Na webu Azure Portal přejděte na Azure AD. Vyberte **Uživatelé a skupiny** > **Přidat uživatele**.
+
+    b. Přidejte uživatele `@<tenant_name>.onmicrosoft.com` pomocí e-mailu místo `@<your_domain>` e-mailu. Tuto možnost najdete ve **vlastních doménách**v části Azure AD na webu Azure Portal.
+    
+    c. Udělte tomuto novému uživateli roli **přispěvatele** v prostředku pracovního prostoru Databricks.
+    
+    d. Přihlaste se k portálu Azure s novým uživatelem a najděte pracovní prostor Databricks.
+    
+    e. Spusťte pracovní prostor Databricks jako tento uživatel.
+
+
+### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>Problém: Váš účet {email} nebyl zaregistrován v Databricks. 
+
+#### <a name="solution"></a>Řešení
+
+Pokud jste pracovní prostor nevytvořili a jste přidáni jako uživatel, obraťte se na osobu, která pracovní prostor vytvořila. Nech te, aby vás tato osoba přidala pomocí Konzoly pro správu Azure Databricks. Pokyny naleznete v tématu [Přidání a správa uživatelů](/azure/databricks/administration-guide/users-groups/users). Pokud jste vytvořili pracovní prostor a stále se zobrazí tato chyba, zkuste znovu vybrat **Inicializovat pracovní prostor** z webu Azure Portal.
+
+### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Problém: Selhání spuštění zprostředkovatele cloudu při nastavování clusteru (PublicIPCountLimitReached)
+
+#### <a name="error-message"></a>Chybová zpráva
+
+"Selhání spuštění poskytovatele cloudu: Při nastavování clusteru došlo k chybě zprostředkovatele cloudu. Další informace naleznete v průvodci Databricks. Kód chyby Azure: PublicIPCountLimitReached. Chybová zpráva Azure: Pro toto předplatné v této oblasti nelze vytvořit více než 10 veřejných IP adres."
 
 #### <a name="background"></a>Pozadí
 
-Clustery datacihly používají jednu veřejnou IP adresu na uzel (včetně uzlu ovladače). Předplatná Azure mají [omezení veřejných IP adres](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address) na oblast. Vytvoření clusteru a operace škálování můžou selhat, pokud by počet veřejných IP adres přidělených k tomuto předplatnému v této oblasti překročil limit. Tento limit zahrnuje také veřejné IP adresy přidělené pro použití bez datacihlů, jako jsou například vlastní uživatelem definované virtuální počítače.
+Clustery Databricks používají jednu veřejnou IP adresu na uzel (včetně uzlu ovladače). Předplatná Azure mají [omezení veřejných IP adres](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address) na oblast. Proto operace vytváření clusteru a škálování může selhat, pokud by způsobily, že počet veřejných IP adres přidělených tomuto předplatnému v této oblasti překročí limit. Toto omezení zahrnuje také veřejné IP adresy přidělené pro použití mimo Databricks, jako jsou vlastní uživatelem definované virtuální počítače.
 
-Obecně platí, že clustery využívají jenom veřejné IP adresy, když jsou aktivní. `PublicIPCountLimitReached` chyby ale můžou pořád nastat po krátké době i po ukončení ostatních clusterů. Důvodem je to, že datacihly dočasně uloží prostředky Azure do mezipaměti, když se cluster ukončí. Ukládání prostředků do mezipaměti je záměrné, protože výrazně snižuje latenci spouštění a automatického škálování clusteru v mnoha běžných scénářích.
+Clustery obecně spotřebovávají pouze veřejné IP adresy, když jsou aktivní. Chyby `PublicIPCountLimitReached` však může nadále dochází po krátkou dobu i po ukončení jiných clusterů. Důvodem je, že Databricks dočasně ukládá prostředky Azure při ukončení clusteru. Ukládání prostředků do mezipaměti je záměrné, protože výrazně snižuje latenci spuštění clusteru a automatické škálování v mnoha běžných scénářích.
 
 #### <a name="solution"></a>Řešení
 
-Pokud vaše předplatné již dosáhlo svého limitu veřejných IP adres pro danou oblast, měli byste provést jednu nebo druhou z následujících akcí.
+Pokud vaše předplatné již dosáhlo limitu veřejné IP adresy pro danou oblast, měli byste udělat jednu nebo druhou z následujících možností.
 
-- Vytvořte nové clustery v jiném pracovním prostoru datacihly. Druhý pracovní prostor se musí nacházet v oblasti, ve které jste nedosáhli limitu veřejných IP adres vašeho předplatného.
-- [Požadavek na zvýšení limitu vaší veřejné IP adresy](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Jako **typ problému**vyberte **kvóta** a v části **síť: ARM** jako **typ kvóty**. V **podrobnostech**si vyžádejte zvýšení kvóty veřejných IP adres. Například pokud je váš limit aktuálně 60 a chcete vytvořit cluster 100, požádejte o zvýšení limitu na 160.
+- Vytvořte nové clustery v jiném pracovním prostoru Databricks. Druhý pracovní prostor musí být umístěn v oblasti, ve které jste nedosáhli limitu veřejné IP adresy vašeho předplatného.
+- [Žádost o zvýšení limitu veřejné IP adresy](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Zvolte **Kvóta** jako **typ problému**a **Síť: ARM** jako typ **kvóty**. V **části Podrobnosti**požádejte o zvýšení kvóty veřejné IP adresy. Například pokud je váš limit aktuálně 60 a chcete vytvořit cluster se 100 uzlem, požádejte o zvýšení limitu na 160.
 
-### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Problém: druhý typ neúspěšného spuštění poskytovatele cloudu při nastavování clusteru (MissingSubscriptionRegistration)
+### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Problém: Druhý typ selhání spuštění poskytovatele cloudu při nastavování clusteru (MissingSubscriptionRegistration)
 
 #### <a name="error-message"></a>Chybová zpráva
 
-"Nepovedlo se spustit poskytovatele cloudu: při nastavování clusteru došlo k chybě poskytovatele cloudu. Další informace najdete v příručce pro datacihly.
-Kód chyby Azure: MissingSubscriptionRegistration chybová zpráva Azure: předplatné není zaregistrované pro používání oboru názvů Microsoft. Compute. Postup registrace předplatných najdete v tématu https://aka.ms/rps-not-found.
+"Selhání spuštění poskytovatele cloudu: Při nastavování clusteru došlo k chybě zprostředkovatele cloudu. Další informace naleznete v průvodci Databricks.
+Kód chyby Azure: MissingSubscriptionRegistration Azure chybová zpráva: Odběr není registrován pro použití oboru názvů 'Microsoft.Compute'. Přečtěte si, https://aka.ms/rps-not-found jak zaregistrovat odběry."
 
 #### <a name="solution"></a>Řešení
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Vyberte **předplatná**, předplatné, které používáte, a pak **poskytovatele prostředků**. 
-1. V seznamu poskytovatelů prostředků vyberte v části **Microsoft. COMPUTE**možnost **Registrovat**. Abyste mohli registrovat poskytovatele prostředků, musíte mít v předplatném roli přispěvatel nebo vlastník.
+1. Přejděte na [portál Azure](https://portal.azure.com).
+1. Vyberte **Předplatná**, předplatné, které používáte, a potom **vyberte zprostředkovatele prostředků**. 
+1. V seznamu poskytovatelů prostředků ve skutečnosti **microsoft.compute**vyberte **Registrovat**. Chcete-li zaregistrovat poskytovatele prostředků, musíte mít v předplatném roli přispěvatele nebo vlastníka.
 
-Podrobnější pokyny najdete v tématu [poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md).
+Podrobnější pokyny naleznete v tématu [Zprostředkovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md).
 
-### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>Problém: Azure Databricks potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, který může udělit jenom správce.
+### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>Problém: Azure Databricks potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, které může udělit jenom správce.
 
 #### <a name="background"></a>Pozadí
 
-Azure Databricks je integrována s Azure Active Directory. Můžete nastavit oprávnění v rámci Azure Databricks (například v poznámkových blocích nebo clusterech) zadáním uživatelů ze služby Azure AD. Aby bylo možné Azure Databricks Zobrazit jména uživatelů ze služby Azure AD, vyžaduje, aby tyto informace a souhlas bylo uděleno oprávněním ke čtení. Pokud souhlas ještě není k dispozici, zobrazí se chyba.
+Azure Databricks je integrovaný s Azure Active Directory. Oprávnění v rámci Azure Databricks (například u poznámkových bloků nebo clusterů) můžete nastavit zadáním uživatelů z Azure AD. Aby Azure Databricks mohli uvést jména uživatelů z vašeho Azure AD, vyžaduje oprávnění ke čtení těchto informací a souhlas, který má být udělen. Pokud souhlas ještě není k dispozici, zobrazí se chyba.
 
 #### <a name="solution"></a>Řešení
 
-Přihlaste se jako globální správce Azure Portal. V případě Azure Active Directory přejít na kartu **uživatelská nastavení** a ujistěte se, že **Uživatelé můžou udělit souhlas s aplikacemi, které přistupují k firemním datům** , je nastaveno na **Ano**.
+Přihlaste se jako globální správce portálu Azure. Ve službě Azure Active Directory přejděte na kartu **Uživatelská nastavení** a ujistěte se, že **uživatelé mohou souhlasit s tím, aby aplikace přistupující k firemním datům jejich jménem** byly nastaveny na **Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Rychlý Start: Začínáme s Azure Databricks](quickstart-create-databricks-workspace-portal.md)
+- [Úvodní příručka: Začínáme s Azure Databricks](quickstart-create-databricks-workspace-portal.md)
 - [Co je Azure Databricks?](what-is-azure-databricks.md)

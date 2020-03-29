@@ -1,5 +1,5 @@
 ---
-title: Vysoká dostupnost SAP HANA na virtuálních počítačích Azure v SLES | Microsoft Docs
+title: Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SLES | Dokumenty společnosti Microsoft
 description: Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: radeltch
 ms.openlocfilehash: 69dcf91957263cea36f8ff6db6a7af14588998ee
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78927215"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
@@ -25,17 +25,17 @@ ms.locfileid: "78927215"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2205917]: https://launchpad.support.sap.com/#/notes/2205917
-[1944799]: https://launchpad.support.sap.com/#/notes/1944799
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2205917]:https://launchpad.support.sap.com/#/notes/2205917
+[1944799]:https://launchpad.support.sap.com/#/notes/1944799
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
-[401162]: https://launchpad.support.sap.com/#/notes/401162
+[401162]:https://launchpad.support.sap.com/#/notes/401162
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -46,212 +46,212 @@ ms.locfileid: "78927215"
 [template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
 
-Pro místní vývoj můžete k zajištění vysoké dostupnosti pro SAP HANA použít buď replikaci systému HANA, nebo použít sdílené úložiště.
-Na virtuálních počítačích Azure je replikace systému HANA v Azure aktuálně jedinou podporovanou funkcí vysoké dostupnosti. Replikace SAP HANA se skládá z jednoho primárního uzlu a alespoň jednoho sekundárního uzlu. Změny dat v primárním uzlu jsou replikovány do sekundárního uzlu synchronně nebo asynchronně.
+Pro místní vývoj můžete použít replikaci systému HANA nebo použít sdílené úložiště k vytvoření vysoké dostupnosti pro SAP HANA.
+Ve virtuálních počítačích Azure (VM) je replikace systému HANA v Azure aktuálně jedinou podporovanou funkcí vysoké dostupnosti. SAP HANA Replication se skládá z jednoho primárního uzlu a alespoň jednoho sekundárního uzlu. Změny dat v primárním uzlu jsou replikovány do sekundárního uzlu synchronně nebo asynchronně.
 
-Tento článek popisuje nasazení a konfiguraci virtuálních počítačů, instalaci architektury clusterů a instalaci a konfiguraci replikace systému SAP HANA.
-V ukázkových konfiguracích se používají instalační příkazy, číslo instance **03**a ID systému Hana **HN1** .
+Tento článek popisuje, jak nasadit a nakonfigurovat virtuální počítače, nainstalovat architekturu clusteru a nainstalovat a nakonfigurovat replikaci systému SAP HANA.
+V ukázkových konfiguracích se používají instalační příkazy, číslo instance **03**a ID systému HANA **HN1.**
 
 Nejprve si přečtěte následující poznámky a dokumenty SAP:
 
-* Poznámka [1928533]pro SAP obsahuje:
+* SAP Poznámka [1928533], která má:
   * Seznam velikostí virtuálních počítačů Azure, které jsou podporované pro nasazení softwaru SAP.
   * Důležité informace o kapacitě pro velikosti virtuálních počítačů Azure.
-  * Podporovaný software SAP a kombinace operačního systému (OS) a databáze.
+  * Podporovaný software SAP a operační systém (OS) a databázové kombinace.
   * Požadovaná verze jádra SAP pro Windows a Linux v Microsoft Azure.
-* Poznámka [2015553] SAP uvádí požadavky na nasazení softwaru SAP podporovaná službou SAP v Azure.
-* Pro SUSE Linux Enterprise Server pro aplikace SAP bylo doporučeno nastavení operačního systému SAP Poznámka [2205917] .
-* Poznámka SAP Poznámka [1944799] obsahuje pokyny pro SAP HANA SUSE Linux Enterprise Server pro aplikace SAP.
-* V části SAP Note [2178632] najdete podrobné informace o všech metrikách monitorování, které jsou hlášeny pro SAP v Azure.
-* V případě SAP Poznámka [2191498] je požadovaná verze agenta hostitele SAP pro Linux v Azure.
-* Poznámka SAP Poznámka [2243692] obsahuje informace o LICENCOVÁNí SAP v systému Linux v Azure.
-* Poznámka SAP poznámky [1984787] obsahuje obecné informace o SUSE Linux Enterprise Server 12.
-* V části SAP Note [1999351] najdete další informace o odstraňování potíží pro rozšíření Azure Enhanced Monitoring pro SAP.
-* V části SAP Note [401162] najdete informace o tom, jak se při nastavování replikace systému Hana vyhnout adrese, která se už používá.
-* [Komunitní komunita SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
-* [SAP HANA certifikované platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
-* Průvodce [plánováním a implementací Azure Virtual Machines pro SAP v systému Linux][planning-guide] .
-* [Nasazení Azure Virtual Machines pro SAP v systému Linux][deployment-guide] (Tento článek).
-* Průvodce [nasazením Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide] .
-* [Příručky k osvědčeným postupům SUSE Linux Enterprise Server pro SAP Applications 12 SP3][sles-for-sap-bp]
-  * Nastavení SAP HANA infrastruktury optimalizované pro výkon SR (SLES for SAP Applications 12 SP1). Průvodce obsahuje všechny požadované informace pro nastavení SAP HANA systémové replikace pro místní vývoj. Tento průvodce použijte jako základ.
-  * Nastavení SAP HANA infrastruktury optimalizované pro náklady na SR (SLES for SAP Applications 12 SP1)
+* SAP Note [2015553] uvádí předpoklady pro nasazení softwaru SAP v Azure podporované SAP.
+* SAP Note [2205917] doporučil nastavení operačního systému pro SUSE Linux Enterprise Server pro aplikace SAP.
+* SAP Note [1944799] má SAP HANA guidelines for SUSE Linux Enterprise Server for SAP Applications.
+* SAP Note [2178632] má podrobné informace o všech metrikmonitorování, které jsou hlášeny pro SAP v Azure.
+* SAP Note [2191498] má požadovanou verzi SAP Host Agent pro Linux v Azure.
+* SAP Note [2243692] má informace o licencování SAP na Linuxu v Azure.
+* SAP Note [1984787] má obecné informace o SUSE Linux Enterprise Server 12.
+* SAP Note [1999351] má další informace o řešení potíží pro rozšíření Azure Enhanced Monitoring Extension pro SAP.
+* SAP Poznámka [401162] obsahuje informace o tom, jak se vyhnout "adresa již používá" při nastavování hana systémové replikace.
+* [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované SAP Notes pro Linux.
+* [Platformy IaaS s certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
+* [Plánování a implementace virtuálních počítačů Azure pro SAP na Linuxu.][planning-guide]
+* [Nasazení virtuálních počítačů Azure pro SAP na Linuxu][deployment-guide] (tento článek).
+* [Nasazení DBMS virtuálních počítačů Azure pro SAP na Linuxu][dbms-guide] průvodce.
+* [Příručky osvědčených postupů SUSE Linux Enterprise Server pro SAP Aplikace 12 SP3][sles-for-sap-bp]
+  * Nastavení infrastruktury optimalizované pro výkon SAP HANA SR (SLES pro aplikace SAP 12 SP1). Průvodce obsahuje všechny požadované informace pro nastavení sap hana systémové replikace pro místní vývoj. Tuto příručku použijte jako směrný plán.
+  * Nastavení infrastruktury optimalizované pro náklady SAP HANA SR (SLES pro aplikace SAP 12 SP1)
 
 ## <a name="overview"></a>Přehled
 
-Aby se dosáhlo vysoké dostupnosti, SAP HANA je nainstalovaná na dvou virtuálních počítačích. Data se replikují pomocí replikace systému HANA.
+Pro dosažení vysoké dostupnosti sap HANA je nainstalován na dvou virtuálních počítačích. Data jsou replikována pomocí replikace systému HANA.
 
-![Přehled SAP HANA vysoké dostupnosti](./media/sap-hana-high-availability/ha-suse-hana.png)
+![SAP HANA přehled vysoké dostupnosti](./media/sap-hana-high-availability/ha-suse-hana.png)
 
-SAP HANA instalace replikace systému používá vyhrazený virtuální hostitelský název a virtuální IP adresy. V Azure se nástroj pro vyrovnávání zatížení vyžaduje k použití virtuální IP adresy. Následující seznam uvádí konfiguraci nástroje pro vyrovnávání zatížení:
+Nastavení systémové replikace SAP HANA používá vyhrazený virtuální název hostitele a virtuální IP adresy. V Azure je nástroj pro vyrovnávání zatížení nutný k použití virtuální IP adresy. V následujícím seznamu je uvedena konfigurace nástroje pro vyrovnávání zatížení:
 
-* Konfigurace front-endu: IP adresa 10.0.0.13 pro HN1-DB
-* Konfigurace back-endu: připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí replikace systému HANA
-* Port testu paměti: port 62503
+* Front-end konfigurace: IP adresa 10.0.0.13 pro hn1-db
+* Back-endkonfigurace: Připojení k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí replikace systému HANA
+* Port sondy: Port 62503
 * Pravidla vyrovnávání zatížení: 30313 TCP, 30315 TCP, 30317 TCP
 
 ## <a name="deploy-for-linux"></a>Nasazení pro Linux
 
-Agent prostředků pro SAP HANA je zahrnutý v SUSE Linux Enterprise Server pro aplikace SAP.
-Azure Marketplace obsahuje obrázek pro SUSE Linux Enterprise Server aplikace SAP 12, které můžete použít k nasazení nových virtuálních počítačů.
+Agent prostředků pro SAP HANA je součástí SUSE Linux Enterprise Server pro aplikace SAP.
+Azure Marketplace obsahuje image pro SUSE Linux Enterprise Server pro SAP Aplikace 12, které můžete použít k nasazení nových virtuálních počítačů.
 
 ### <a name="deploy-with-a-template"></a>Nasazení pomocí šablony
 
-K nasazení všech požadovaných prostředků můžete použít jednu z šablon pro rychlý Start, které jsou na GitHubu. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, skupinu dostupnosti a tak dále.
-K nasazení šablony použijte následující postup:
+Můžete použít jednu ze šablon rychlého startu, které jsou na GitHubu k nasazení všech požadovaných prostředků. Šablona nasazuje virtuální počítače, nástroj pro vyrovnávání zatížení, sadu dostupnosti a tak dále.
+Chcete-li šablonu nasadit, postupujte takto:
 
-1. Otevřete [šablonu databáze][template-multisid-db] nebo [sblíženou šablonu][template-converged] na Azure Portal. 
-    Šablona databáze vytvoří pravidla vyrovnávání zatížení pouze pro databázi. Sblížená šablona také vytvoří pravidla vyrovnávání zatížení pro instanci ASCS/SCS a OLAJÍCÍCH (pouze Linux). Pokud máte v plánu nainstalovat systém založený na SAP NetWeaver a chcete nainstalovat instanci ASCS/SCS do stejného počítače, použijte [sblíženou šablonu][template-converged].
+1. Otevřete [šablonu databáze][template-multisid-db] nebo [konvergotelou šablonu][template-converged] na webu Azure Portal. 
+    Šablona databáze vytvoří pravidla vyrovnávání zatížení pouze pro databázi. Konvergovaná šablona také vytvoří pravidla vyrovnávání zatížení pro instanci ASCS/SCS a ERS (pouze linux). Pokud plánujete nainstalovat systém založený na sap netweaveru a chcete nainstalovat instanci ASCS/SCS na stejných počítačích, použijte [konvergovní šablonu][template-converged].
 
 1. Zadejte následující parametry:
-    - **ID systému SAP**: Zadejte ID systému SAP pro systém SAP, který chcete nainstalovat. ID se používá jako předpona pro nasazené prostředky.
-    - **Typ zásobníku**: (Tento parametr lze použít pouze v případě, že použijete sblíženou šablonu.) Vyberte typ zásobníku SAP NetWeaver.
-    - **Typ operačního systému**: vyberte jednu z distribucí systému Linux. V tomto příkladu vyberte **SLES 12**.
-    - **Typ databáze**: vyberte **Hana**.
-    - **Velikost systému SAP**: zadejte počet SAP, který bude nový systém poskytovat. Pokud si nejste jistí, kolik SAP systém vyžaduje, požádejte svého partnera technologie SAP nebo systémový integrátor.
-    - **Dostupnost systému**: vyberte **ha**.
-    - **Uživatelské jméno správce a heslo správce**: vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
-    - **Nová nebo existující podsíť**: Určuje, jestli se má vytvořit nová virtuální síť a podsíť, nebo jestli se používá existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-    - **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako **/subscriptions/\<ID předplatného >/resourceGroups/\<název skupiny prostředků >/providers/Microsoft.Network/virtualNetworks/\<název virtuální sítě >/subnets/\<název podsítě >** .
+    - **SAP System ID**: Zadejte ID systému SAP systému SAP, který chcete nainstalovat. ID se používá jako předpona pro prostředky, které jsou nasazeny.
+    - **Typ zásobníku**: (Tento parametr je použitelný pouze v případě, že použijete konvergované šablony.) Vyberte typ zásobníku SAP NetWeaver.
+    - **Typ operačního systému**: Vyberte jednu z distribucí Linuxu. V tomto příkladu vyberte **SLES 12**.
+    - **Typ db**: Vyberte **možnost HANA**.
+    - **Velikost systému SAP**: Zadejte počet SAPS, který nový systém poskytne. Pokud si nejste jisti, kolik SAPS systém vyžaduje, zeptejte se svého technologického partnera SAP nebo systémového integrátora.
+    - **Dostupnost systému**: Vyberte **možnost HA**.
+    - **Admin Uživatelské jméno a heslo správce:** Je vytvořen nový uživatel, který lze použít k přihlášení k počítači.
+    - **Nová nebo existující podsíť**: Určuje, zda má být vytvořena nová virtuální síť a podsíť nebo zda má být použita existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **Existující**.
+    - **ID podsítě**: Pokud chcete nasadit virtuální ho do existující virtuální sítě, kde máte podsíť definovanou, k které by měl být virtuální hotel přiřazen, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako **/subscriptions/\<subscription ID\<>/resourceGroups/ název skupiny prostředků\<>/providers/Microsoft.Network/virtualNetworks/ název virtuální sítě>/podsítě/\<název podsítě>**.
 
 ### <a name="manual-deployment"></a>Ruční nasazení
 
 > [!IMPORTANT]
-> Ujistěte se, že operační systém, který vyberete, je SAP Certified for SAP HANA na specifických typech virtuálních počítačů, které používáte. Seznam SAP HANA certifikovaných typů virtuálních počítačů a verzí operačních systémů pro tyto typy můžete vyhledat v [SAP HANA certifikovaných IaaS platformách](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Ujistěte se, že kliknete na podrobnosti o typu virtuálního počítače a získáte úplný seznam SAP HANA podporovaných vydání operačních systémů pro konkrétní typ virtuálního počítače.
+> Ujistěte se, že operační systém, který vyberete, je sap certifikovaný pro SAP HANA na konkrétní typy virtuálních počítačů, které používáte. Seznam typů virtuálních počítačů certifikovaných SAP HANA a verzí operačního systému pro tyto typy lze vyhledat v [platformách IaaS s certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Nezapomeňte kliknout na podrobnosti o typu virtuálního uživatele uvedené maže získat úplný seznam SAP HANA podporované verze operačního systému pro konkrétní typ virtuálního uživatele
 >  
 
 1. Vytvořte skupinu prostředků.
 1. Vytvořte virtuální síť.
-1. Vytvořte skupinu dostupnosti.
-   - Nastavte maximální doménu aktualizace.
-1. Vytvořte Nástroj pro vyrovnávání zatížení (interní). Doporučujeme [standardní nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
+1. Vytvořte sadu dostupnosti.
+   - Nastavte doménu s maximální aktualizací.
+1. Vytvořte systém pro vyrovnávání zatížení (interní). Doporučujeme [standardní vyvažovač zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
    - Vyberte virtuální síť vytvořenou v kroku 2.
 1. Vytvořte virtuální počítač 1.
-   - Použijte SLES4SAP image v galerii Azure, která je podporovaná pro SAP HANA pro vybraný typ virtuálního počítače.
-   - Vyberte skupinu dostupnosti vytvořenou v kroku 3.
+   - Použijte bitovou kopii SLES4SAP v galerii Azure, která je podporovaná pro SAP HANA na typu virtuálního počítače, který jste vybrali.
+   - Vyberte sadu dostupnosti vytvořenou v kroku 3.
 1. Vytvořte virtuální počítač 2.
-   - Použijte SLES4SAP image v galerii Azure, která je podporovaná pro SAP HANA pro vybraný typ virtuálního počítače.
-   - Vyberte skupinu dostupnosti vytvořenou v kroku 3. 
+   - Použijte bitovou kopii SLES4SAP v galerii Azure, která je podporovaná pro SAP HANA na typu virtuálního počítače, který jste vybrali.
+   - Vyberte sadu dostupnosti vytvořenou v kroku 3. 
 1. Přidejte datové disky.
-1. Pokud používáte standardní nástroj pro vyrovnávání zatížení, postupujte podle těchto kroků konfigurace:
-   1. Nejprve vytvořte front-end fond IP adres:
+1. Pokud používáte standardní nástroj pro vyrovnávání zatížení, postupujte takto:
+   1. Nejprve vytvořte fond front-endIP:
    
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond**a vyberte **Přidat**.
-      1. Zadejte název nového fondu front-end IP adres (například **Hana-front-endu**).
-      1. Nastavte **přiřazení** na **statické** a zadejte IP adresu (například **10.0.0.13**).
+      1. Otevřete balancer na zatížení, vyberte **front-endový fond IP**adres a vyberte **Přidat**.
+      1. Zadejte název nového front-endového fondu IP (například **hana-frontend).**
+      1. Nastavte **přiřazení** na **statickou** a zadejte adresu IP (například **10.0.0.13).**
       1. Vyberte **OK**.
-      1. Až se vytvoří nový fond front-end IP adres, poznamenejte si IP adresu fondu.
+      1. Po vytvoření nového front-endového fondu IP adres si poznamenejte IP adresu fondu.
    
-   1. Dále vytvořte fond back-end:
+   1. Dále vytvořte back-endový fond:
    
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu**a vyberte **Přidat**.
-      1. Zadejte název nového fondu back-end (například **Hana-back-end**).
-      1. Vyberte **Virtual Network**.
+      1. Otevřete balancer, vyberte **back-endové fondy**a vyberte **Přidat**.
+      1. Zadejte název nového back-endového fondu (například **hana-backend).**
+      1. Vyberte **možnost Virtuální síť**.
       1. Vyberte **Přidat virtuální počítač**.
-      1. Vyberte * * virtuální počítač * *.
-      1. Vyberte virtuální počítače SAP HANA clusteru a jejich IP adresy.
+      1. Vyberte ** Virtuální počítač**.
+      1. Vyberte virtuální počítače clusteru SAP HANA a jejich IP adresy.
       1. Vyberte **Přidat**.
    
-   1. Potom vytvořte sondu stavu:
+   1. Dále vytvořte sondu stavu:
    
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu**a vyberte **Přidat**.
-      1. Zadejte název nové sondy stavu (například **Hana-HP**).
-      1. Jako protokol a port 625**03**vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
+      1. Otevřete systém vyrovnávání zatížení, vyberte **sondy stavu**a vyberte **Přidat**.
+      1. Zadejte název nové sondy stavu (například **hana-hp**).
+      1. Jako protokol a port 625**03**vyberte **protokol TCP** . Ponechte hodnotu **Interval** nastavenou na hodnotu 5 a prahovou hodnotu **Nefunkční** nastavenou na hodnotu 2.
       1. Vyberte **OK**.
    
    1. Dále vytvořte pravidla vyrovnávání zatížení:
    
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
-      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **Hana-kg**).
-      1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**, **Hana-back-endu** a **Hana-HP**).
-      1. Vyberte **porty ha**.
+      1. Otevřete správce zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
+      1. Zadejte název nového pravidla pro vyrovnávání zatížení (například **hana-lb**).
+      1. Vyberte adresu IP front-endu, back-endový fond a sondu stavu, kterou jste vytvořili dříve (například **hana-frontend**, **hana-backend** a **hana-hp).**
+      1. Vyberte **porty HA**.
       1. Zvyšte **časový limit nečinnosti** na 30 minut.
-      1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
+      1. Ujistěte se, že **povolit plovoucí IP**.
       1. Vyberte **OK**.
 
    > [!Note]
-   > Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)  
+   > Když virtuální počítače bez veřejných IP adres jsou umístěny v back-endovém fondu interní (žádná veřejná IP adresa) standardní azure vyrovnávání zatížení, bude existovat žádné odchozí připojení k internetu, pokud se provádí další konfigurace umožňující směrování do veřejných koncových bodů. Podrobnosti o tom, jak dosáhnout odchozí připojení viz [veřejné připojení koncového bodu pro virtuální počítače pomocí Nástroje pro vyrovnávání zatížení Azure Standard ve scénářích sap vysoké dostupnosti](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
-1. Případně, pokud váš scénář používá základní nástroj pro vyrovnávání zatížení, postupujte podle těchto kroků konfigurace:
-   1. Nejprve vytvořte front-end fond IP adres:
+1. Případně pokud váš scénář diktuje pomocí základnínástroj pro vyrovnávání zatížení, postupujte podle následujících kroků konfigurace:
+   1. Nejprve vytvořte fond front-endIP:
    
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond**a vyberte **Přidat**.
-      1. Zadejte název nového fondu front-end IP adres (například **Hana-front-endu**).
-      1. Nastavte **přiřazení** na **statické** a zadejte IP adresu (například **10.0.0.13**).
+      1. Otevřete balancer na zatížení, vyberte **front-endový fond IP**adres a vyberte **Přidat**.
+      1. Zadejte název nového front-endového fondu IP (například **hana-frontend).**
+      1. Nastavte **přiřazení** na **statickou** a zadejte adresu IP (například **10.0.0.13).**
       1. Vyberte **OK**.
-      1. Až se vytvoří nový fond front-end IP adres, poznamenejte si IP adresu fondu.
+      1. Po vytvoření nového front-endového fondu IP adres si poznamenejte IP adresu fondu.
    
-   1. Dále vytvořte fond back-end:
+   1. Dále vytvořte back-endový fond:
    
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu**a vyberte **Přidat**.
-      1. Zadejte název nového fondu back-end (například **Hana-back-end**).
+      1. Otevřete balancer, vyberte **back-endové fondy**a vyberte **Přidat**.
+      1. Zadejte název nového back-endového fondu (například **hana-backend).**
       1. Vyberte **Přidat virtuální počítač**.
-      1. Vyberte skupinu dostupnosti vytvořenou v kroku 3.
+      1. Vyberte sadu dostupnosti vytvořenou v kroku 3.
       1. Vyberte virtuální počítače clusteru SAP HANA.
       1. Vyberte **OK**.
    
-   1. Potom vytvořte sondu stavu:
+   1. Dále vytvořte sondu stavu:
    
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu**a vyberte **Přidat**.
-      1. Zadejte název nové sondy stavu (například **Hana-HP**).
-      1. Jako protokol a port 625**03**vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
+      1. Otevřete systém vyrovnávání zatížení, vyberte **sondy stavu**a vyberte **Přidat**.
+      1. Zadejte název nové sondy stavu (například **hana-hp**).
+      1. Jako protokol a port 625**03**vyberte **protokol TCP** . Ponechte hodnotu **Interval** nastavenou na hodnotu 5 a prahovou hodnotu **Nefunkční** nastavenou na hodnotu 2.
       1. Vyberte **OK**.
    
-   1. Pro SAP HANA 1,0 vytvořte pravidla vyrovnávání zatížení:
+   1. Pro SAP HANA 1.0 vytvořte pravidla vyrovnávání zatížení:
    
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
-      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**15).
-      1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**).
-      1. Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**15.
+      1. Otevřete správce zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
+      1. Zadejte název nového pravidla pro vyrovnávání zatížení (například hana-lb-3**03**15).
+      1. Vyberte adresu IP front-endu, back-endový fond a sondu stavu, kterou jste vytvořili dříve (například **hana-frontend).**
+      1. Podržte **protokol** nastavený na **protokol TCP**a zadejte port 3**03**15.
       1. Zvyšte **časový limit nečinnosti** na 30 minut.
-      1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
+      1. Ujistěte se, že **povolit plovoucí IP**.
       1. Vyberte **OK**.
-      1. Opakujte tento postup pro port 3**03**17.
+      1. Opakujte tyto kroky pro port 3**03**17.
    
-   1. Pro SAP HANA 2,0 vytvořte pravidla vyrovnávání zatížení pro systémovou databázi:
+   1. Pro SAP HANA 2.0 vytvořte pravidla vyrovnávání zatížení pro systémovou databázi:
    
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
-      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**13).
-      1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**).
-      1. Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**13.
+      1. Otevřete správce zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
+      1. Zadejte název nového pravidla pro vyrovnávání zatížení (například hana-lb-3**03**13).
+      1. Vyberte adresu IP front-endu, back-endový fond a sondu stavu, kterou jste vytvořili dříve (například **hana-frontend).**
+      1. Podržte **protokol** nastavený na **protokol TCP**a zadejte port 3**03**13.
       1. Zvyšte **časový limit nečinnosti** na 30 minut.
-      1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
+      1. Ujistěte se, že **povolit plovoucí IP**.
       1. Vyberte **OK**.
-      1. Opakujte tento postup pro port 3**03**14.
+      1. Opakujte tyto kroky pro port 3**03**14.
    
-   1. Pro SAP HANA 2,0 nejprve vytvořte pravidla vyrovnávání zatížení pro databázi tenanta:
+   1. Pro SAP HANA 2.0 nejprve vytvořte pravidla vyrovnávání zatížení pro databázi klienta:
    
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
-      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**40).
-      1. Vyberte front-end IP adresu, fond back-endu a sondu stavu, který jste vytvořili dříve (například **Hana-Endu**).
-      1. Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**40.
+      1. Otevřete správce zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
+      1. Zadejte název nového pravidla pro vyrovnávání zatížení (například hana-lb-3**03**40).
+      1. Vyberte adresu IP front-endu, back-endový fond a sondu stavu, kterou jste vytvořili dříve (například **hana-frontend).**
+      1. Podržte **protokol** nastavený na **protokol TCP**a zadejte port 3**03**40.
       1. Zvyšte **časový limit nečinnosti** na 30 minut.
-      1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
+      1. Ujistěte se, že **povolit plovoucí IP**.
       1. Vyberte **OK**.
       1. Opakujte tyto kroky pro porty 3**03**41 a 3**03**42.
 
-   Další informace o požadovaných portech pro SAP HANA naleznete v kapitole [připojení k databázím tenantů](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) v průvodci [SAP HANA databáze klienta](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) nebo v tématu [SAP Note 2388694][2388694].
+   Další informace o požadovaných portech pro SAP HANA načtete v kapitole [Připojení k databázím klientů](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) v průvodci [databázemi klienta SAP HANA](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) nebo [v poznámce SAP 2388694][2388694].
 
 > [!IMPORTANT]
-> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
-> Viz také SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Nástroj pro vyrovnávání zatížení Azure. Povolení časových razítek TCP způsobí selhání sond y stavu. Nastavte parametr **net.ipv4.tcp_timestamps** na **0**. Podrobnosti viz [Sondy stavu vykladače zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Viz také poznámka SAP [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
-## <a name="create-a-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
+## <a name="create-a-pacemaker-cluster"></a>Vytvoření clusteru kardiostimulátoru
 
-Postupujte podle kroků v části [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](high-availability-guide-suse-pacemaker.md) a vytvořte pro tento server Hana základní cluster Pacemaker. Stejný cluster Pacemaker můžete použít pro SAP HANA a SAP NetWeaver (A) SCS.
+Postupujte podle kroků v [části Nastavení kardiostimulátoru na SUSE Linux Enterprise Server v Azure](high-availability-guide-suse-pacemaker.md) a vytvořte pro tento server HANA základní cluster pacemakeru. Můžete použít stejný cluster Kardiostimulátoru pro SAP HANA a SAP NetWeaver (A)SCS.
 
 ## <a name="install-sap-hana"></a>Instalace SAP HANA
 
 Kroky v této části používají následující předpony:
-- **[A]** : krok platí pro všechny uzly.
-- **[1]** : krok platí pouze pro uzel 1.
-- **[2]** : Tento krok platí jenom pro uzel 2 clusteru Pacemaker.
+- **[A]**: Krok platí pro všechny uzly.
+- **[1]**: Krok platí pouze pro uzel 1.
+- **[2]**: Krok se vztahuje pouze na uzel 2 clusteru Pacemaker.
 
-1. **[A]** nastavte rozložení disku: **Správce logických svazků (LVM)** .
+1. **[A]** Nastavení rozložení disku: **Logický správce svazků (LVM)**.
 
-   Pro svazky, které ukládají data a soubory protokolů, doporučujeme použít LVM. Následující příklad předpokládá, že virtuální počítače mají připojené čtyři datové disky, které se používají k vytvoření dvou svazků.
+   Doporučujeme používat LVM pro svazky, které ukládají data a soubory protokolu. Následující příklad předpokládá, že virtuální počítače mají připojené čtyři datové disky, které se používají k vytvoření dvou svazků.
 
-   Vypíše všechny dostupné disky:
+   Seznam všech dostupných disků:
 
    <pre><code>ls /dev/disk/azure/scsi1/lun*
    </code></pre>
@@ -277,7 +277,7 @@ Kroky v této části používají následující předpony:
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Vytvořte logické svazky. Při použití `lvcreate` bez přepínače `-i` se vytvoří lineární svazek. Doporučujeme vytvořit prokládaný svazek pro vyšší výkon vstupně-výstupních operací, kde `-i` argument by měl být číslo základního fyzického svazku. V tomto dokumentu se pro datový svazek používají dva fyzické svazky, takže argument `-i` přepínač je nastaven na hodnotu **2**. Pro svazek protokolu se používá jeden fyzický svazek, takže se explicitně nepoužije přepínač `-i`. Použijte přepínač `-i` a nastavte jej na číslo základního fyzického svazku, pokud pro každé z nich používáte více než jeden fyzický svazek.
+   Vytvořte logické svazky. Lineární svazek se vytvoří `lvcreate` při `-i` použití bez přepínače. Doporučujeme vytvořit pruhovaný svazek pro lepší výkon vstupně-va, kde `-i` argumentby měl být číslo základního fyzického svazku. V tomto dokumentu se pro objem dat používají dva `-i` fyzické svazky, takže argument přepínače je nastaven na **2**. Pro svazek protokolu se používá jeden `-i` fyzický svazek, takže se explicitně nepoužívá žádný přepínač. Použijte `-i` přepínač a nastavte jej na číslo základního fyzického svazku, pokud pro každé datové svazek, protokol nebo sdílené svazky použijete více než jeden fyzický svazek.
 
    <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
@@ -287,7 +287,7 @@ Kroky v této části používají následující předpony:
    sudo mkfs.xfs /dev/vg_hana_shared_<b>HN1</b>/hana_shared
    </code></pre>
 
-   Vytvořte adresáře připojení a zkopírujte identifikátor UUID všech logických svazků:
+   Vytvořte adresáře připojení a zkopírujte UUID všech logických svazků:
 
    <pre><code>sudo mkdir -p /hana/data/<b>HN1</b>
    sudo mkdir -p /hana/log/<b>HN1</b>
@@ -296,12 +296,12 @@ Kroky v této části používají následující předpony:
    sudo blkid
    </code></pre>
 
-   Vytvořte položky `fstab` pro tři logické svazky:       
+   Vytvořte `fstab` položky pro tři logické svazky:       
 
    <pre><code>sudo vi /etc/fstab
    </code></pre>
 
-   Do souboru `/etc/fstab` vložte následující řádek:      
+   Do `/etc/fstab` souboru vložte následující řádek:      
 
    <pre><code>/dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_data_<b>HN1</b>-hana_data&gt;</b> /hana/data/<b>HN1</b> xfs  defaults,nofail  0  2
    /dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_log_<b>HN1</b>-hana_log&gt;</b> /hana/log/<b>HN1</b> xfs  defaults,nofail  0  2
@@ -313,9 +313,9 @@ Kroky v této části používají následující předpony:
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A]** nastavte rozložení disku: **prosté disky**.
+1. **[A]** Nastavení rozložení disku: **Plain Disks**.
 
-   Pro ukázkové systémy můžete umístit data a soubory protokolu HANA na jeden disk. Vytvořte oddíl na/dev/disk/Azure/scsi1/lun0 a naformátujte ho pomocí xfs:
+   U ukázkových systémů můžete data HANA a soubory protokolu umístit na jeden disk. Vytvořte oddíl na /dev/disk/azure/scsi1/lun0 a naformátujte jej pomocí xfs:
 
    <pre><code>sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun0'
    sudo mkfs.xfs /dev/disk/azure/scsi1/lun0-part1
@@ -325,7 +325,7 @@ Kroky v této části používají následující předpony:
    sudo vi /etc/fstab
    </code></pre>
 
-   Vložte tento řádek do souboru/etc/fstab:
+   Vložte tento řádek do souboru /etc/fstab:
 
    <pre><code>/dev/disk/by-uuid/<b>&lt;UUID&gt;</b> /hana xfs  defaults,nofail  0  2
    </code></pre>
@@ -336,81 +336,81 @@ Kroky v této části používají následující předpony:
    sudo mount -a
    </code></pre>
 
-1. **[A]** nastavte překlad názvů hostitelů pro všechny hostitele.
+1. **[A]** Nastavte překlad názvů hostitele pro všechny hostitele.
 
-   Můžete buď použít server DNS, nebo upravit soubor/etc/hosts na všech uzlech. V tomto příkladu se dozvíte, jak použít soubor/etc/hosts.
-   V následujících příkazech nahraďte IP adresu a název hostitele:
+   Můžete použít server DNS nebo upravit soubor /etc/hosts ve všech uzlech. Tento příklad ukazuje, jak používat soubor /etc/hosts.
+   Nahraďte adresu IP a název hostitele v následujících příkazech:
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Do souboru/etc/hosts vložte následující řádky. Změňte IP adresu a název hostitele tak, aby odpovídaly vašemu prostředí:
+   Vložte následující řádky do souboru /etc/hosts. Změňte IP adresu a název hostitele tak, aby odpovídaly vašemu prostředí:
 
    <pre><code><b>10.0.0.5 hn1-db-0</b>
    <b>10.0.0.6 hn1-db-1</b>
    </code></pre>
 
-1. **[A]** nainstalujte SAP HANA balíčky s vysokou dostupností:
+1. **[A]** Nainstalujte balíčky SAP HANA s vysokou dostupností:
 
    <pre><code>sudo zypper install SAPHanaSR
    </code></pre>
 
-Pokud chcete nainstalovat SAP HANA systémovou replikaci, postupujte podle kapitoly 4 [příručky SAP HANA optimalizovaného scénáře pro výkon SR](https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/).
+Chcete-li nainstalovat replikaci systému SAP HANA, postupujte podle kapitoly 4 [průvodce scénáři optimalizovaný pro výkon sap HANA SR](https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/).
 
-1. **[A]** spusťte program **hdblcm** z disku DVD Hana. Na příkazovém řádku zadejte následující hodnoty:
-   * Vyberte možnost instalace: zadejte **1**.
-   * Vyberte další komponenty k instalaci: zadejte **1**.
-   * Zadejte instalační cestu [/Hana/Shared]: vyberte Enter.
-   * Zadejte název místního hostitele [..]: vyberte Enter.
-   * Chcete přidat další hostitele do systému? (a/n) [n]: vyberte Enter.
-   * Zadejte ID SAP HANA systému: zadejte SID HANA, například: **HN1**.
-   * Zadejte číslo instance [00]: zadejte číslo instance HANA. Pokud jste použili šablonu Azure nebo postupovali podle části Ruční nasazení tohoto článku, zadejte **03** .
-   * Vyberte režim databáze/zadejte index [1]: vyberte Enter.
-   * Vyberte využití systému/zadejte index [4]: vyberte hodnotu využití systému.
-   * Zadejte umístění datových svazků [/hana/data/HN1]: vyberte Enter.
-   * Zadejte umístění svazků protokolu [/hana/log/HN1]: vyberte Enter.
-   * Omezit maximální přidělení paměti? [n]: vyberte Enter.
-   * Zadejte název hostitele certifikátu pro hostitele... [...]: Vyberte Enter.
-   * Zadejte heslo uživatele agenta SAP (sapadm): zadejte heslo uživatele agenta hostitele.
-   * Potvrďte heslo uživatele agenta SAP hostitele (sapadm): Zadejte znovu heslo uživatele agenta hostitele a potvrďte ho.
-   * Zadejte heslo správce systému (hdbadm): zadejte heslo správce systému.
-   * Potvrzení hesla správce systému (hdbadm): zadejte heslo správce systému znovu a potvrďte ho.
-   * Zadejte domovský adresář správce systému [/usr/sap/HN1/home]: vyberte Enter.
-   * Zadejte prostředí přihlášení správce systému [/bin/sh]: vyberte Enter.
-   * Zadejte ID uživatele správce systému [1001]: vyberte Enter.
-   * Zadejte ID skupiny uživatelů (sapsys) [79]: vyberte Enter.
-   * Zadejte heslo uživatele databáze (systém): zadejte heslo uživatele databáze.
-   * Potvrďte heslo uživatele databáze (systém): zadejte heslo uživatele databáze a potvrďte ho.
-   * Restartovat systém po restartování počítače? [n]: vyberte Enter.
-   * Chcete pokračovat? (a/n): Ověřte souhrn. Pokračujte zadáním **y** .
+1. **[A]** Spusťte **hdblcm** program z DISKU DVD HANA. Na výzvu zadejte následující hodnoty:
+   * Zvolte instalaci: Zadejte **1**.
+   * Vyberte další součásti pro instalaci: Zadejte **1**.
+   * Zadejte Instalační cestu [/hana/shared]: Vyberte Enter.
+   * Zadejte název místního hostitele [..]: Vyberte Enter.
+   * Chcete do systému přidat další hostitele? (a/n) [n]: Vyberte Enter.
+   * Zadejte ID systému SAP HANA: Zadejte SID HANA, například: **HN1**.
+   * Zadejte číslo instance [00]: Zadejte číslo instance HANA. Zadejte **03,** pokud jste použili šablonu Azure nebo postupovali podle části ruční nasazení tohoto článku.
+   * Vyberte režim databáze / zadejte index [1]: Vyberte Enter.
+   * Vyberte Možnost Využití systému / Zadejte index [4]: Vyberte hodnotu využití systému.
+   * Zadejte umístění datových svazků [/hana/data/HN1]: Vyberte Enter.
+   * Zadejte umístění svazků protokolu [/hana/log/HN1]: Vyberte Enter.
+   * Omezit maximální přidělení paměti? [n]: Vyberte Enter.
+   * Zadejte název hostitele certifikátu pro hostitele '...' [...]: Vyberte Enter.
+   * Zadejte heslo uživatele hostitelského agenta SAP (sapadm): Zadejte heslo uživatele hostitelského agenta.
+   * Potvrďte heslo uživatele hostitele SAP (sapadm): Znovu zadejte heslo uživatele hostitelského agenta pro potvrzení.
+   * Zadejte heslo správce systému (hdbadm): Zadejte heslo správce systému.
+   * Potvrdit heslo správce systému (hdbadm): Znovu zadejte heslo správce systému pro potvrzení.
+   * Zadejte domovský adresář správce systému [/usr/sap/HN1/home]: Vyberte Enter.
+   * Zadejte přihlašovací prostředí správce systému [/bin/sh]: Vyberte Enter.
+   * Zadejte ID uživatele správce systému [1001]: Vyberte Enter.
+   * Zadejte ID skupiny uživatelů (sapsys) [79]: Vyberte Enter.
+   * Zadejte heslo uživatele databáze (SYSTEM): Zadejte uživatelské heslo databáze.
+   * Potvrdit heslo uživatele databáze (SYSTEM): Znovu zadejte uživatelské heslo databáze pro potvrzení.
+   * Restartujte systém po restartu počítače? [n]: Vyberte Enter.
+   * Chcete pokračovat? (a/n): Ověřte souhrn. Zadejte **y,** chcete-li pokračovat.
 
-1. **[A]** Upgradujte agenta hostitele SAP.
+1. **[A]** Inovujte hostitelského agenta SAP.
 
-   Stáhněte si nejnovější archiv agenta hostitele SAP z [centra softwaru SAP][sap-swcenter] a spuštěním následujícího příkazu Upgradujte agenta. Nahraďte cestu k archivu, který bude odkazovat na stažený soubor:
+   Stáhněte si nejnovější archiv sap host agenta z [SAP Software Center][sap-swcenter] a spusťte následující příkaz pro upgrade agenta. Nahraďte cestu k archivu tak, aby přecštoval na stažený soubor:
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>
 
-## <a name="configure-sap-hana-20-system-replication"></a>Konfigurace replikace systému SAP HANA 2,0
+## <a name="configure-sap-hana-20-system-replication"></a>Konfigurace systémové replikace SAP HANA 2.0
 
 Kroky v této části používají následující předpony:
 
-* **[A]** : krok platí pro všechny uzly.
-* **[1]** : krok platí pouze pro uzel 1.
-* **[2]** : Tento krok platí jenom pro uzel 2 clusteru Pacemaker.
+* **[A]**: Krok platí pro všechny uzly.
+* **[1]**: Krok platí pouze pro uzel 1.
+* **[2]**: Krok se vztahuje pouze na uzel 2 clusteru Pacemaker.
 
-1. **[1]** vytvořte databázi tenanta.
+1. **[1]** Vytvořte databázi klienta.
 
-   Pokud používáte SAP HANA 2,0 nebo MDC, vytvořte databázi tenanta pro systém SAP NetWeaver. Nahraďte **NW1** identifikátorem SID vašeho systému SAP.
+   Pokud používáte SAP HANA 2.0 nebo MDC, vytvořte databázi klienta pro váš systém SAP NetWeaver. Vyměňte **NW1** za SID vašeho systému SAP.
 
-   Jako < hanasid\>ADM spusťte následující příkaz:
+   Proveďte následující příkaz jako\><hanasid adm :
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
-1. **[1]** nakonfigurujte replikaci systému na prvním uzlu:
+1. **[1]** Konfigurace systémové replikace na prvním uzlu:
 
-   Zálohujte databáze jako < hanasid\>ADM:
+   Záloha databází jako <hanasid\>adm:
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -423,30 +423,30 @@ Kroky v této části používají následující předpony:
    scp /usr/sap/<b>HN1</b>/SYS/global/security/rsecssfs/key/SSFS_<b>HN1</b>.KEY  <b>hn1-db-1</b>:/usr/sap/<b>HN1</b>/SYS/global/security/rsecssfs/key/
    </code></pre>
 
-   Vytvořit primární lokalitu:
+   Vytvořte primární lokalitu:
 
    <pre><code>hdbnsutil -sr_enable --name=<b>SITE1</b>
    </code></pre>
 
-1. **[2]** nakonfigurujte replikaci systému na druhém uzlu:
+1. **[2]** Konfigurace systémové replikace na druhém uzlu:
     
-   Zaregistrujte druhý uzel pro spuštění replikace systému. Spusťte následující příkaz < hanasid\>ADM:
+   Zaregistrujte druhý uzel a spusťte replikaci systému. Spusťte následující příkaz jako\><hanasid adm :
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
    </code></pre>
 
-## <a name="configure-sap-hana-10-system-replication"></a>Konfigurace replikace systému SAP HANA 1,0
+## <a name="configure-sap-hana-10-system-replication"></a>Konfigurace systémové replikace SAP HANA 1.0
 
 Kroky v této části používají následující předpony:
 
-* **[A]** : krok platí pro všechny uzly.
-* **[1]** : krok platí pouze pro uzel 1.
-* **[2]** : Tento krok platí jenom pro uzel 2 clusteru Pacemaker.
+* **[A]**: Krok platí pro všechny uzly.
+* **[1]**: Krok platí pouze pro uzel 1.
+* **[2]**: Krok se vztahuje pouze na uzel 2 clusteru Pacemaker.
 
-1. **[1]** vytvořit požadované uživatele.
+1. **[1]** Vytvořte požadované uživatele.
 
-   Spusťte následující příkaz jako kořenový. Nezapomeňte nahradit tučné řetězce (ID systému HANA **HN1** a číslo instance **03**) hodnotami instalace SAP HANA:
+   Spusťte následující příkaz jako root. Ujistěte se, že nahradit tučné řetězce (HANA System ID **HN1** a číslo instance **03**) s hodnotami instalace SAP HANA:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -u system -i <b>03</b> 'CREATE USER <b>hdb</b>hasync PASSWORD "<b>passwd</b>"'
@@ -454,38 +454,38 @@ Kroky v této části používají následující předpony:
    hdbsql -u system -i <b>03</b> 'ALTER USER <b>hdb</b>hasync DISABLE PASSWORD LIFETIME'
    </code></pre>
 
-1. **[A]** vytvořte položku úložiště klíčů.
+1. **[A]** Vytvořte položku úložiště klíčů.
 
-   Spusťte následující příkaz jako kořenový adresář pro vytvoření nové položky úložiště klíčů:
+   Spusťte následující příkaz jako root a vytvořte novou položku úložiště klíčů:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
    </code></pre>
 
-1. **[1]** zálohování databáze.
+1. **[1]** Záloha databáze.
 
-   Zálohovat databáze jako kořen:
+   Záloha databází jako root:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -d SYSTEMDB -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
    </code></pre>
 
-   Pokud používáte víceklientské instalace, zálohujte také databázi tenanta:
+   Pokud používáte víceklientskou instalaci, zálohujte také databázi klienta:
 
    <pre><code>hdbsql -d <b>HN1</b> -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
    </code></pre>
 
-1. **[1]** nakonfigurujte replikaci systému na prvním uzlu.
+1. **[1]** Konfigurace systémové replikace v prvním uzlu.
 
-   Vytvořte primární lokalitu jako < hanasid\>ADM:
+   Vytvořte primární lokalitu jako\><hanasid adm :
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
    </code></pre>
 
-1. **[2]** nakonfigurujte replikaci systému na sekundárním uzlu.
+1. **[2]** Konfigurace systémové replikace v sekundárním uzlu.
 
-   Zaregistrujte sekundární lokalitu jako < hanasid\>ADM:
+   Zaregistrujte sekundární lokalitu jako\><hanasid adm:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -493,7 +493,7 @@ Kroky v této části používají následující předpony:
 
 ## <a name="create-sap-hana-cluster-resources"></a>Vytvoření prostředků clusteru SAP HANA
 
-Nejdřív vytvořte topologii HANA. Na jednom z uzlů clusteru Pacemaker spusťte následující příkazy:
+Nejprve vytvořte topologii HANA. Spusťte následující příkazy na jednom z uzlů clusteru Pacemaker:
 
 <pre><code>sudo crm configure property maintenance-mode=true
 
@@ -510,16 +510,16 @@ sudo crm configure clone cln_SAPHanaTopology_<b>HN1</b>_HDB<b>03</b> rsc_SAPHana
   meta is-managed="true" clone-node-max="1" target-role="Started" interleave="true"
 </code></pre>
 
-Pak vytvořte prostředky HANA:
+Dále vytvořte prostředky HANA:
 
 > [!IMPORTANT]
-> Nedávné testování odhalilo situace, kde NetCat přestane reagovat na požadavky z důvodu nevyřízených položek a omezení zpracování pouze jednoho připojení. Prostředek NetCat přestane naslouchat požadavkům nástroje pro vyrovnávání zatížení Azure a plovoucí IP adresa přestane být k dispozici.  
-> Pro existující clustery Pacemaker doporučujeme v minulosti nahradit NetCat pomocí Socat. V současné době doporučujeme použít agenta prostředků Azure-, který je součástí prostředků balíčku – agenti s následujícími požadavky na verzi balíčku:
-> - Pro SLES 12 SP4/SP5 musí být ve verzi aspoň Resource-Agents-4.3.018. a7fb5035-3.30.1.  
-> - Pro SLES 15/15 SP1 musí být verze aspoň Resource-Agents-4.3.0184.6 ee15eb2-4.13.1.  
+> Nedávné testování odhalilo situace, kdy netcat přestane reagovat na požadavky z důvodu nevyřízených položek a jeho omezení zpracování pouze jednoho připojení. Prostředek netcat přestane naslouchat požadavkům azure balancer a plovoucí IP přestane být k dispozici.  
+> Pro stávající pacemaker clustery, doporučujeme v minulosti nahradit netcat socat. V současné době doporučujeme používat agenta prostředků azure-lb, který je součástí agenty prostředků balíčku, s následujícími požadavky na verzi balíčku:
+> - Pro SLES 12 SP4/SP5 verze musí být alespoň agenty prostředků-4.3.018.a7fb5035-3.30.1.  
+> - Pro SLES 15/15 SP1 verze musí být alespoň agenty prostředků-4.3.0184.6ee15eb2-4.13.1.  
 >
-> Všimněte si, že tato změna bude vyžadovat krátké výpadky.  
-> V případě existujících clusterů Pacemaker se v případě, že konfigurace již změnila tak, aby používala socat, jak je popsáno v tématu [posílení zabezpečení zjišťování služby Azure Load Balancer](https://www.suse.com/support/kb/doc/?id=7024128), není nutné okamžitě přepínat na agenta prostředků Azure-9,1.
+> Všimněte si, že změna bude vyžadovat krátké prostoje.  
+> Pro existující clustery Pacemaker, pokud konfigurace již byla změněna na použití socat, jak je popsáno v [Azure Load Balancer detekce posílení ,](https://www.suse.com/support/kb/doc/?id=7024128)není nutné okamžitě přepnout na agenta prostředků azure-lb.
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer. 
 
@@ -561,7 +561,7 @@ sudo crm configure rsc_defaults resource-stickiness=1000
 sudo crm configure rsc_defaults migration-threshold=5000
 </code></pre>
 
-Ujistěte se, že stav clusteru je OK a že jsou spuštěné všechny prostředky. Není důležité, na kterém uzlu jsou prostředky spuštěné.
+Ujistěte se, že stav clusteru je v pořádku a že jsou spuštěny všechny prostředky. Není důležité, na kterém uzlu jsou spuštěny prostředky.
 
 <pre><code>sudo crm_mon -r
 
@@ -581,13 +581,13 @@ Ujistěte se, že stav clusteru je OK a že jsou spuštěné všechny prostředk
 #     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
 </code></pre>
 
-## <a name="test-the-cluster-setup"></a>Otestování instalace clusteru
+## <a name="test-the-cluster-setup"></a>Testování nastavení clusteru
 
-Tato část popisuje, jak můžete otestovat instalaci. Každý test předpokládá, že jste kořen a že je na virtuálním počítači **HN1-DB-0** spuštěná předloha SAP HANA.
+Tato část popisuje, jak můžete otestovat nastavení. Každý test předpokládá, že jste kořenové a sap hana master běží na virtuálním počítači **hn1-db-0.**
 
 ### <a name="test-the-migration"></a>Testování migrace
 
-Před zahájením testu se ujistěte, že Pacemaker nemá žádnou neúspěšnou akci (přes crm_mon-r), že neexistují žádná neočekávaná omezení umístění (například Leftovers testu migrace) a že HANA je stav synchronizace, například s SAPHanaSR-showAttr:
+Před zahájením testu se ujistěte, že Pacemaker nemá žádnou neúspěšnou akci (přes crm_mon -r), neexistují žádná neočekávaná omezení umístění (například zbytky testu migrace) a že HANA je stav synchronizace, například s SAPHanaSR-showAttr:
 
 <pre><code>hn1-db-0:~ # SAPHanaSR-showAttr
 
@@ -601,14 +601,14 @@ hn1-db-0 PROMOTED    1534159564  online     logreplay nws-hana-vm-1 4:P:master1:
 hn1-db-1 DEMOTED     30          online     logreplay nws-hana-vm-0 4:S:master1:master:worker:master 100   SITE2 sync   SOK        2.00.030.00.1522209842 nws-hana-vm-1
 </code></pre>
 
-SAP HANA hlavní uzel můžete migrovat spuštěním následujícího příkazu:
+Hlavní uzel SAP HANA můžete migrovat provedením následujícího příkazu:
 
 <pre><code>crm resource migrate msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-1</b>
 </code></pre>
 
-Pokud nastavíte `AUTOMATED_REGISTER="false"`, bude tato sekvence příkazů migrována SAP HANA hlavní uzel a skupina, která obsahuje virtuální IP adresu HN1-DB-1.
+Pokud nastavíte `AUTOMATED_REGISTER="false"`, tato posloupnost příkazů by měla migrovat hlavní uzel SAP HANA a skupinu, která obsahuje virtuální IP adresu na hn1-db-1.
 
-Po dokončení migrace bude výstup crm_mon-r vypadat takto:
+Po dokončení migrace vypadá výstup crm_mon -r takto
 
 <pre><code>Online: [ hn1-db-0 hn1-db-1 ]
 
@@ -629,7 +629,7 @@ Failed Actions:
     last-rc-change='Mon Aug 13 11:31:37 2018', queued=0ms, exec=2095ms
 </code></pre>
 
-Prostředek SAP HANA na HN1-DB-0 se nepovede spustit jako sekundární. V takovém případě Nakonfigurujte instanci HANA jako sekundární spuštěním tohoto příkazu:
+Prostředek SAP HANA na hn1-db-0 se nespustí jako sekundární. V takovém případě nakonfigurujte instanci HANA jako sekundární spuštěním tohoto příkazu:
 
 <pre><code>su - <b>hn1</b>adm
 
@@ -638,19 +638,19 @@ hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> sapcontrol -nr <b>03</b> -function StopWait 
 hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=<b>hn1-db-1</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE1</b>
 </code></pre>
 
-Migrace vytvoří omezení umístění, která je potřeba odstranit znovu:
+Migrace vytvoří omezení umístění, která je třeba znovu odstranit:
 
 <pre><code># Switch back to root and clean up the failed state
 exit
 hn1-db-0:~ # crm resource unmigrate msl_SAPHana_<b>HN1</b>_HDB<b>03</b>
 </code></pre>
 
-Také je nutné vyčistit stav prostředku sekundárního uzlu:
+Je také nutné vyčistit stav prostředku sekundárního uzlu:
 
 <pre><code>hn1-db-0:~ # crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 </code></pre>
 
-Monitorujte stav prostředku HANA pomocí crm_mon-r. Jakmile se HANA spustí na HN1-DB-0, výstup by měl vypadat nějak takto:
+Sledujte stav prostředku HANA pomocí crm_mon -r. Po spuštění HANA na hn1-db-0 by výstup měl vypadat takto.
 
 <pre><code>Online: [ hn1-db-0 hn1-db-1 ]
 
@@ -667,17 +667,17 @@ stonith-sbd     (stonith:external/sbd): Started hn1-db-1
      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
 </code></pre>
 
-### <a name="test-the-azure-fencing-agent-not-sbd"></a>Testování agenta pro oplocení Azure (ne SBD)
+### <a name="test-the-azure-fencing-agent-not-sbd"></a>Testování agenta oplocení Azure (ne SBD)
 
-Instalaci agenta pro oplocení Azure můžete otestovat zakázáním síťového rozhraní na uzlu HN1-DB-0:
+Nastavení agenta oplocení Azure můžete otestovat zakázáním síťového rozhraní v uzlu hn1-db-0:
 
 <pre><code>sudo ifdown eth0
 </code></pre>
 
-V závislosti na konfiguraci clusteru by se teď měl virtuální počítač restartovat nebo zastavit.
-Pokud nastavíte možnost `stonith-action` na vypnuto, virtuální počítač se zastaví a prostředky se migrují na běžící virtuální počítač.
+Virtuální počítač by se teď měl restartovat nebo zastavit v závislosti na konfiguraci clusteru.
+Pokud nastavíte `stonith-action` nastavení vypnout, virtuální počítač se zastaví a prostředky se migrují do spuštěného virtuálního počítače.
 
-Po opětovném spuštění virtuálního počítače se prostředek SAP HANA nepovede spustit jako sekundární, pokud nastavíte `AUTOMATED_REGISTER="false"`. V takovém případě Nakonfigurujte instanci HANA jako sekundární spuštěním tohoto příkazu:
+Po spuštění virtuálního počítače znovu, SAP HANA prostředek se nezdaří spustit jako sekundární, pokud nastavíte `AUTOMATED_REGISTER="false"`. V takovém případě nakonfigurujte instanci HANA jako sekundární spuštěním tohoto příkazu:
 
 <pre><code>su - <b>hn1</b>adm
 
@@ -690,9 +690,9 @@ exit
 crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 </code></pre>
 
-### <a name="test-sbd-fencing"></a>Testování SBDch zón
+### <a name="test-sbd-fencing"></a>Test SBD oplocení
 
-Instalaci SBD můžete otestovat ukončením procesu Inquisitor.
+Můžete otestovat nastavení SBD tím, že zabije inkvizitor procesu.
 
 <pre><code>hn1-db-0:~ # ps aux | grep sbd
 root       1912  0.0  0.0  85420 11740 ?        SL   12:25   0:00 sbd: inquisitor
@@ -706,16 +706,16 @@ root      13877  0.0  0.0   9292  1572 pts/0    S+   12:27   0:00 grep sbd
 hn1-db-0:~ # kill -9 1912
 </code></pre>
 
-Uzel clusteru HN1-DB-0 by měl být restartován. Služba Pacemaker možná nebude možné začít později. Ujistěte se, že ho znovu spustíte.
+Uzel clusteru hn1-db-0 by měl být restartován. Služba Pacemaker nemusí začít později. Ujistěte se, že jej znovu spustíte.
 
-### <a name="test-a-manual-failover"></a>Test ručního převzetí služeb při selhání
+### <a name="test-a-manual-failover"></a>Testování ručního převzetí služeb při selhání
 
-Ruční převzetí služeb při selhání můžete otestovat zastavením služby `pacemaker` na uzlu HN1-DB-0:
+Ruční převzetí služeb při selhání `pacemaker` můžete otestovat zastavením služby v uzlu hn1-db-0:
 
 <pre><code>service pacemaker stop
 </code></pre>
 
-Po převzetí služeb při selhání můžete službu spustit znovu. Pokud nastavíte `AUTOMATED_REGISTER="false"`, SAP HANA prostředek na uzlu HN1-DB-0 se nepovede spustit jako sekundární. V takovém případě Nakonfigurujte instanci HANA jako sekundární spuštěním tohoto příkazu:
+Po převzetí služeb při selhání můžete službu znovu spustit. Pokud nastavíte `AUTOMATED_REGISTER="false"`, prostředek SAP HANA na uzlu hn1-db-0 se nespustí jako sekundární. V takovém případě nakonfigurujte instanci HANA jako sekundární spuštěním tohoto příkazu:
 
 <pre><code>service pacemaker start
 su - <b>hn1</b>adm
@@ -729,21 +729,21 @@ exit
 crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 </code></pre>
 
-### <a name="suse-tests"></a>SUSE testy
+### <a name="suse-tests"></a>Testy SUSE
 
 > [!IMPORTANT]
-> Ujistěte se, že operační systém, který vyberete, je SAP Certified for SAP HANA na specifických typech virtuálních počítačů, které používáte. Seznam SAP HANA certifikovaných typů virtuálních počítačů a verzí operačních systémů pro tyto typy můžete vyhledat v [SAP HANA certifikovaných IaaS platformách](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Ujistěte se, že kliknete na podrobnosti o typu virtuálního počítače a získáte úplný seznam SAP HANA podporovaných vydání operačních systémů pro konkrétní typ virtuálního počítače.
+> Ujistěte se, že operační systém, který vyberete, je sap certifikovaný pro SAP HANA na konkrétní typy virtuálních počítačů, které používáte. Seznam typů virtuálních počítačů certifikovaných SAP HANA a verzí operačního systému pro tyto typy lze vyhledat v [platformách IaaS s certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Nezapomeňte kliknout na podrobnosti o typu virtuálního uživatele uvedené maže získat úplný seznam SAP HANA podporované verze operačního systému pro konkrétní typ virtuálního uživatele
 
-Spusťte všechny testovací případy, které jsou uvedené ve scénáři SAP HANA optimalizovaného výkonu SR nebo průvodce scénářem SAP HANA SR pro optimalizaci v závislosti na vašem případu použití. Příručky najdete na [stránce s osvědčenými postupy pro SLES for SAP][sles-for-sap-bp].
+Spusťte všechny testovací případy, které jsou uvedeny v SAP HANA SR výkon optimalizovaný scénář nebo SAP HANA SR nákladově optimalizovaný scénář průvodce, v závislosti na případu použití. Návody najdete na [stránce Osvědčených postupů pro SAP][sles-for-sap-bp].
 
-Následující testy jsou kopie popisů testů SAP HANA scénář s optimalizovaným výkonem SR SUSE Linux Enterprise Server v průvodci pro SAP Applications 12 SP1. V případě aktuálnosti verze si vždy přečtěte také příručku samotné. Před spuštěním testu vždy zajistěte, aby byl HANA synchronizovaný, a ujistěte se také, že konfigurace Pacemaker je správná.
+Následující testy jsou kopií popisů testů sap HANA SR performance optimized scenario SUSE Linux Enterprise Server for SAP Applications 12 SP1 guide. Pro aktuální verzi si vždy přečtěte také samotnou příručku. Před zahájením testu se vždy ujistěte, že hana je synchronizovaná, a také se ujistěte, že konfigurace kardiostimulátoru je správná.
 
-V následujících popisech testů jsme předpokládali PREFER_SITE_TAKEOVER = "true" a AUTOMATED_REGISTER = "false".
-Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořadí a závisí na stavu ukončení předchozích testů.
+V následujících popisech testů předpokládáme PREFER_SITE_TAKEOVER="true" a AUTOMATED_REGISTER="false".
+Poznámka: Následující testy jsou navrženy tak, aby spustit v pořadí a závisí na stavu ukončení předchozí testy.
 
-1. TEST 1: ZASTAVENÍ PRIMÁRNÍ DATABÁZE V UZLU 1
+1. TEST 1: ZASTAVENÍ PRIMÁRNÍ DATABÁZE NA UZLU 1
 
-   Stav prostředku před spuštěním testu:
+   Stav prostředku před zahájením testu:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -755,14 +755,14 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   Spusťte následující příkazy < hanasid\>ADM v Node HN1-DB-0:
+   Spusťte následující příkazy jako\><hanasid adm na uzlu hn1-db-0:
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
 
-   Pacemaker by měl detekovat zastavenou instanci HANA a převzetí služeb při selhání do jiného uzlu. Po převzetí služeb při selhání se instance HANA na uzlu HN1-DB-0 zastaví, protože Pacemaker automaticky neregistruje uzel jako sekundární databáze HANA.
+   Kardiostimulátor by měl zjistit zastavenou instanci HANA a převzetí služeb při selhání do druhého uzlu. Po dokončení převzetí služeb při selhání je instance HANA v uzlu hn1-db-0 zastavena, protože pacemaker automaticky neregistruje uzel jako sekundární HANA.
 
-   Spusťte následující příkazy pro registraci uzlu HN1-DB-0 jako sekundárního a vyčištění neúspěšného prostředku.
+   Spusťte následující příkazy pro registraci uzlu hn1-db-0 jako sekundárního a vyčištění neúspěšného prostředku.
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=hn1-db-1 --remoteInstance=03 --replicationMode=sync --name=SITE1
    
@@ -770,7 +770,7 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
    hn1-db-0:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-0
    </code></pre>
 
-   Stav prostředku po testu:
+   Stav zdroje po zkoušce:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -782,9 +782,9 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-1. TEST 2: ZASTAVENÍ PRIMÁRNÍ DATABÁZE V UZLU 2
+1. TEST 2: ZASTAVENÍ PRIMÁRNÍ DATABÁZE NA UZLU 2
 
-   Stav prostředku před spuštěním testu:
+   Stav prostředku před zahájením testu:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -796,14 +796,14 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   Spusťte následující příkazy < hanasid\>ADM v Node HN1-DB-1:
+   Spusťte následující příkazy jako\><hanasid adm na uzlu hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
 
-   Pacemaker by měl detekovat zastavenou instanci HANA a převzetí služeb při selhání do jiného uzlu. Až se převzetí služeb při selhání provede, instance HANA na uzlu HN1-DB-1 se zastaví, protože Pacemaker neregistruje uzel automaticky jako sekundární službu HANA.
+   Kardiostimulátor by měl zjistit zastavenou instanci HANA a převzetí služeb při selhání do druhého uzlu. Po dokončení převzetí služeb při selhání je instance HANA v uzlu hn1-db-1 zastavena, protože pacemaker automaticky neregistruje uzel jako sekundární HANA.
 
-   Spusťte následující příkazy pro registraci uzlu HN1-DB-1 jako sekundárního a vyčištění neúspěšného prostředku.
+   Spusťte následující příkazy pro registraci uzlu hn1-db-1 jako sekundárního a vyčištění neúspěšného prostředku.
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=hn1-db-0 --remoteInstance=03 --replicationMode=sync --name=SITE2
    
@@ -811,7 +811,7 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
    hn1-db-1:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-1
    </code></pre>
 
-   Stav prostředku po testu:
+   Stav zdroje po zkoušce:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -823,9 +823,9 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-1. TEST 3: PRIMÁRNÍ DATABÁZE SELHÁNÍ NA UZLU
+1. TEST 3: PRIMÁRNÍ DATABÁZE SELHÁNÍ V UZLU
 
-   Stav prostředku před spuštěním testu:
+   Stav prostředku před zahájením testu:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -837,14 +837,14 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   Spusťte následující příkazy < hanasid\>ADM v Node HN1-DB-0:
+   Spusťte následující příkazy jako\><hanasid adm na uzlu hn1-db-0:
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
    
-   Pacemaker by měl detekovat ukončenou instanci HANA a převzetí služeb při selhání do jiného uzlu. Po převzetí služeb při selhání se instance HANA na uzlu HN1-DB-0 zastaví, protože Pacemaker automaticky neregistruje uzel jako sekundární databáze HANA.
+   Kardiostimulátor by měl zjistit usmrcené hana instance a převzetí služeb při selhání do druhého uzlu. Po dokončení převzetí služeb při selhání je instance HANA v uzlu hn1-db-0 zastavena, protože pacemaker automaticky neregistruje uzel jako sekundární HANA.
 
-   Spusťte následující příkazy pro registraci uzlu HN1-DB-0 jako sekundárního a vyčištění neúspěšného prostředku.
+   Spusťte následující příkazy pro registraci uzlu hn1-db-0 jako sekundárního a vyčištění neúspěšného prostředku.
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=hn1-db-1 --remoteInstance=03 --replicationMode=sync --name=SITE1
    
@@ -852,7 +852,7 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
    hn1-db-0:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-0
    </code></pre>
 
-   Stav prostředku po testu:
+   Stav zdroje po zkoušce:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -864,9 +864,9 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-1. TEST 4: PRIMÁRNÍ DATABÁZE SELHÁNÍ V UZLU 2
+1. TEST 4: PRIMÁRNÍ DATABÁZE SELHÁNÍ NA UZLU 2
 
-   Stav prostředku před spuštěním testu:
+   Stav prostředku před zahájením testu:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -878,14 +878,14 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   Spusťte následující příkazy < hanasid\>ADM v Node HN1-DB-1:
+   Spusťte následující příkazy jako\><hanasid adm na uzlu hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
 
-   Pacemaker by měl detekovat ukončenou instanci HANA a převzetí služeb při selhání do jiného uzlu. Až se převzetí služeb při selhání provede, instance HANA na uzlu HN1-DB-1 se zastaví, protože Pacemaker neregistruje uzel automaticky jako sekundární službu HANA.
+   Kardiostimulátor by měl zjistit usmrcené hana instance a převzetí služeb při selhání do druhého uzlu. Po dokončení převzetí služeb při selhání je instance HANA v uzlu hn1-db-1 zastavena, protože pacemaker automaticky neregistruje uzel jako sekundární HANA.
 
-   Spusťte následující příkazy pro registraci uzlu HN1-DB-1 jako sekundárního a vyčištění neúspěšného prostředku.
+   Spusťte následující příkazy pro registraci uzlu hn1-db-1 jako sekundárního a vyčištění neúspěšného prostředku.
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=hn1-db-0 --remoteInstance=03 --replicationMode=sync --name=SITE2
    
@@ -893,7 +893,7 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
    hn1-db-1:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-1
    </code></pre>
 
-   Stav prostředku po testu:
+   Stav zdroje po zkoušce:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -907,7 +907,7 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
 
 1. TEST 5: UZEL PRIMÁRNÍ LOKALITY SELHÁNÍ (UZEL 1)
 
-   Stav prostředku před spuštěním testu:
+   Stav prostředku před zahájením testu:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -919,14 +919,14 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   Spusťte následující příkazy jako kořen v uzlu HN1-DB-0:
+   Spusťte následující příkazy jako root na uzlu hn1-db-0:
 
    <pre><code>hn1-db-0:~ #  echo 'b' > /proc/sysrq-trigger
    </code></pre>
 
-   Pacemaker by měl detekovat uzel ukončeného clusteru a jeho plot. Jakmile je uzel v ohrazení, Pacemaker spustí převzetí instance HANA. Po restartování uzlu s ochranou se Pacemaker nespustí automaticky.
+   Kardiostimulátor by měl zjistit usmrcený uzel clusteru a oplotit uzel. Jakmile je uzel oplocen, kardiostimulátor spustí převzetí instance HANA. Po restartování oploceného uzlu se kardiostimulátor nespustí automaticky.
 
-   Spuštěním následujících příkazů spusťte Pacemaker, vyčistěte zprávy SBD pro Node HN1-DB-0, registrujte uzel HN1-DB-0 jako sekundární a vyčistěte prostředek, který se nezdařil.
+   Spusťte následující příkazy ke spuštění kardiostimulátoru, vyčistěte zprávy SBD pro uzel hn1-db-0, zaregistrujte uzel hn1-db-0 jako sekundární a vyčistěte neúspěšný prostředek.
 
    <pre><code># run as root
    # list the SBD device(s)
@@ -944,7 +944,7 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
    hn1-db-0:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-0
    </code></pre>
 
-   Stav prostředku po testu:
+   Stav zdroje po zkoušce:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -956,9 +956,9 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-1. TEST 6: UZEL SEKUNDÁRNÍ LOKALITY HAVÁRIE (UZEL 2)
+1. TEST 6: CRASH SEKUNDÁRNÍ UZLOVÁ NOD (NODE 2)
 
-   Stav prostředku před spuštěním testu:
+   Stav prostředku před zahájením testu:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -970,14 +970,14 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   Spusťte následující příkazy jako kořen v uzlu HN1-DB-1:
+   Spusťte následující příkazy jako root na uzlu hn1-db-1:
 
    <pre><code>hn1-db-1:~ #  echo 'b' > /proc/sysrq-trigger
    </code></pre>
 
-   Pacemaker by měl detekovat uzel ukončeného clusteru a jeho plot. Jakmile je uzel v ohrazení, Pacemaker spustí převzetí instance HANA. Po restartování uzlu s ochranou se Pacemaker nespustí automaticky.
+   Kardiostimulátor by měl zjistit usmrcený uzel clusteru a oplotit uzel. Jakmile je uzel oplocen, kardiostimulátor spustí převzetí instance HANA. Po restartování oploceného uzlu se kardiostimulátor nespustí automaticky.
 
-   Spuštěním následujících příkazů spusťte Pacemaker, vyčistěte zprávy SBD pro Node HN1-DB-1, registrujte uzel HN1-DB-1 jako sekundární a vyčistěte prostředek, který se nezdařil.
+   Spusťte následující příkazy ke spuštění kardiostimulátoru, vyčistěte zprávy SBD pro uzel hn1-db-1, zaregistrujte uzel hn1-db-1 jako sekundární a vyčistěte neúspěšný prostředek.
 
    <pre><code># run as root
    # list the SBD device(s)
@@ -995,7 +995,7 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
    hn1-db-1:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-1
    </code></pre>
 
-   Stav prostředku po testu:
+   Stav zdroje po zkoušce:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -1007,9 +1007,9 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-1. TEST 7: ZASTAVENÍ SEKUNDÁRNÍ DATABÁZE V UZLU 2
+1. TEST 7: ZASTAVENÍ SEKUNDÁRNÍ DATABÁZE NA UZLU 2
 
-   Stav prostředku před spuštěním testu:
+   Stav prostředku před zahájením testu:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -1021,18 +1021,18 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   Spusťte následující příkazy < hanasid\>ADM v Node HN1-DB-1:
+   Spusťte následující příkazy jako\><hanasid adm na uzlu hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
 
-   Pacemaker vyhledá zastavenou instanci HANA a označí prostředek jako neúspěšný na uzlu HN1-DB-1. Pacemaker by měl automaticky restartovat instanci HANA. Spuštěním následujícího příkazu vyčistěte stav selhání.
+   Kardiostimulátor detekuje zastavenou instanci HANA a označí prostředek jako neúspěšný na uzlu hn1-db-1. Kardiostimulátor by měl automaticky restartovat instanci HANA. Chcete-li vyčistit stav selhání, spusťte následující příkaz.
 
    <pre><code># run as root
    hn1-db-1:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-1
    </code></pre>
 
-   Stav prostředku po testu:
+   Stav zdroje po zkoušce:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -1044,9 +1044,9 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-1. TEST 8: ZHROUCENÍ SEKUNDÁRNÍ DATABÁZE V UZLU 2
+1. TEST 8: CRASH SEKUNDÁRNÍ DATABÁZE NA UZLU 2
 
-   Stav prostředku před spuštěním testu:
+   Stav prostředku před zahájením testu:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -1058,18 +1058,18 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   Spusťte následující příkazy < hanasid\>ADM v Node HN1-DB-1:
+   Spusťte následující příkazy jako\><hanasid adm na uzlu hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
 
-   Pacemaker vyhledá ukončenou instanci HANA a označí prostředek jako neúspěšný na uzlu HN1-DB-1. Spuštěním následujícího příkazu vyčistěte stav selhání. Pacemaker by pak měl automaticky restartovat instanci HANA.
+   Kardiostimulátor detekuje usmrcenou instanci HANA a označí prostředek jako neúspěšný na uzlu hn1-db-1. Chcete-li vyčistit stav selhání, spusťte následující příkaz. Kardiostimulátor by pak měl automaticky restartovat instanci HANA.
 
    <pre><code># run as root
    hn1-db-1:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-1
    </code></pre>
 
-   Stav prostředku po testu:
+   Stav zdroje po zkoušce:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -1081,9 +1081,9 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-1. TEST 9: UZEL SEKUNDÁRNÍ LOKALITY HAVÁRIE (UZEL 2) SE SPUŠTĚNOU SEKUNDÁRNÍ DATABÁZÍ HANA
+1. TEST 9: CRASH SEKUNDÁRNÍ UZEL LOKALITY (NODE 2) BĚŽÍ SEKUNDÁRNÍ HANA DATABÁZE
 
-   Stav prostředku před spuštěním testu:
+   Stav prostředku před zahájením testu:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -1095,14 +1095,14 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   Spusťte následující příkazy jako kořen v uzlu HN1-DB-1:
+   Spusťte následující příkazy jako root na uzlu hn1-db-1:
 
    <pre><code>hn1-db-1:~ # echo b > /proc/sysrq-trigger
    </code></pre>
 
-   Pacemaker by měl detekovat uzel ukončeného clusteru a jeho plot. Po restartování uzlu s ochranou se Pacemaker nespustí automaticky.
+   Kardiostimulátor by měl zjistit usmrcený uzel clusteru a oplotit uzel. Po restartování oploceného uzlu se kardiostimulátor nespustí automaticky.
 
-   Spuštěním následujících příkazů spusťte Pacemaker, vyčistěte zprávy SBD pro Node HN1-DB-1 a vyčistěte prostředek, který se nezdařil.
+   Spusťte následující příkazy ke spuštění kardiostimulátoru, vyčistěte zprávy SBD pro uzel hn1-db-1 a vyčistěte neúspěšný prostředek.
 
    <pre><code># run as root
    # list the SBD device(s)
@@ -1116,7 +1116,7 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
    hn1-db-1:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-1
    </code></pre>
 
-   Stav prostředku po testu:
+   Stav zdroje po zkoušce:
 
    <pre><code>Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
       Started: [ hn1-db-0 hn1-db-1 ]
@@ -1130,7 +1130,7 @@ Poznámka: následující testy jsou navrženy tak, aby byly spouštěny v pořa
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
-* [Nasazení Azure Virtual Machines pro SAP][deployment-guide]
-* [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]
+* [Plánování a implementace virtuálních počítačů Azure pro SAP][planning-guide]
+* [Nasazení virtuálních počítačů Azure pro SAP][deployment-guide]
+* [Nasazení DBMS virtuálních počítačů Azure pro SAP][dbms-guide]
 

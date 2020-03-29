@@ -1,6 +1,6 @@
 ---
-title: Přesunutí webové aplikace, která se přihlašuje uživatelům, do produkční platformy Microsoft identity | Azure
-description: Naučte se, jak vytvořit webovou aplikaci, která přihlašuje uživatele (přesunout do produkčního prostředí).
+title: Přesunutí webové aplikace, která se připočtou k uživatelům do produkčního prostředí – platforma microsoft identit | Azure
+description: Naučte se vytvářet webovou aplikaci, která se přiřazuje k uživatelům (přechod do produkčního prostředí)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,52 +15,52 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 6c486e59f32afd09a9934ae2298172ccb4ee2414
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76768106"
 ---
-# <a name="web-app-that-signs-in-users-move-to-production"></a>Webová aplikace, která přihlašuje uživatele: Přesun do produkčního prostředí
+# <a name="web-app-that-signs-in-users-move-to-production"></a>Webová aplikace, která se připisuje k uživatelům: Přechod do produkčního prostředí
 
-Když teď víte, jak získat token pro volání webových rozhraní API, přečtěte si, jak ho přesunout do produkčního prostředí.
+Teď, když víte, jak získat token pro volání webových api, naučte se, jak přesunout do produkčního prostředí.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-### <a name="same-site"></a>Stejná lokalita
+### <a name="same-site"></a>Stejný web
 
 Ujistěte se, že rozumíte možným problémům s novými verzemi prohlížeče Chrome.
 
 > [!div class="nextstepaction"]
-> [Postup zpracování změn souborů cookie SameSite v prohlížeči Chrome](howto-handle-samesite-cookie-changes-chrome-browser.md)
+> [Jak zacházet se změnami souborů cookie SameSite v prohlížeči Chrome](howto-handle-samesite-cookie-changes-chrome-browser.md)
 
-### <a name="scenario-for-calling-web-apis"></a>Scénář pro volání webových rozhraní API
+### <a name="scenario-for-calling-web-apis"></a>Scénář pro volání webových api
 
-Jakmile se webová aplikace přihlásí uživatelům, může volat webová rozhraní API jménem přihlášených uživatelů. Volání webových rozhraní API z webové aplikace je objektem následujícího scénáře:
+Poté, co se vaše webová aplikace přihlásí k uživatelům, může volat webová api jménem přihlášených uživatelů. Volání webových api z webové aplikace je objektem následujícího scénáře:
 
 > [!div class="nextstepaction"]
 > [Webová aplikace, která volá webová rozhraní API](scenario-web-app-call-api-overview.md)
 
-## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Hluboká podrobně: kurz ASP.NET Core webové aplikace
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Hloubkový ponor: ASP.NET základní kurz webové aplikace
 
-Přečtěte si o dalších způsobech, jak se přihlašovat uživatelům pomocí tohoto ASP.NET Core kurzu: 
+Přečtěte si další způsoby, jak se přihlásit k uživatelům pomocí tohoto kurzu ASP.NET Core: 
 
 > [!div class="nextstepaction"]
-> [Umožněte vašim webovým aplikacím přihlašovat uživatele a volat rozhraní API s platformou Microsoft identity pro vývojáře.](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
+> [Povolení webových aplikací k přihlašování uživatelů a volání rozhraní API pomocí platformy microsoftových identit pro vývojáře](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
 
-Tento postupný kurz obsahuje kód připravený pro produkční prostředí pro webovou aplikaci, včetně postupu přidání přihlášení pomocí účtů v nástroji:
+Tento progresivní kurz má kód připravený k produkčnímu prostředí pro webovou aplikaci, včetně toho, jak přidat přihlášení k účtům v:
 
 - Vaše organizace
 - Více organizací
 - Pracovní nebo školní účty nebo osobní účty Microsoft
 - [Azure AD B2C](https://aka.ms/aadb2c)
-- Národní cloudy
+- Národní mraky
 
-## <a name="sample-code-java-web-app"></a>Vzorový kód: webová aplikace Java
+## <a name="sample-code-java-web-app"></a>Ukázkový kód: Java webová aplikace
 
-Přečtěte si další informace o webové aplikaci Java z této ukázky na GitHubu: 
+Další informace o webové aplikaci Java najdete v této ukázce na GitHubu: 
 
 > [!div class="nextstepaction"]
-> [Webová aplikace Java, která přihlašuje uživatele pomocí platformy a volání Microsoft identity Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+> [Webová aplikace Java, která přihlašuje uživatele pomocí platformy Microsoft identit a volá Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)

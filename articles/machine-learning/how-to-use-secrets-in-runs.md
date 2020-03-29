@@ -1,7 +1,7 @@
 ---
-title: Používání tajných kódů v školicích běhůch
+title: Použití tajných kódů v tréninkových běhech
 titleSuffix: Azure Machine Learning
-description: Bezpečné předávání tajných klíčů do školicích běhů pomocí Key Vault pracovního prostoru
+description: Předávat tajemství tréninkovým spuštěním bezpečným způsobem pomocí trezoru klíčů pracovního prostoru
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,28 +11,28 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: d877794abf12b8b412cd1ecf4efd72fd1179d768
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942256"
 ---
-# <a name="use-secrets-in-training-runs"></a>Používání tajných kódů v školicích běhůch
+# <a name="use-secrets-in-training-runs"></a>Použití tajných kódů v tréninkových běhech
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak bezpečně používat tajné klíče v školicím běhu. Ověřovací údaje, jako je vaše uživatelské jméno a heslo, jsou tajné. Například pokud se připojíte k externí databázi, abyste mohli zadávat dotazy na školicí data, museli byste předat své uživatelské jméno a heslo do kontextu vzdáleného spuštění. Kódování takových hodnot do školicích skriptů v nešifrovaném textu je nezabezpečené, protože by to vystavilo tajný klíč. 
+V tomto článku se dozvíte, jak používat tajné kódy v školení běží bezpečně. Ověřovací informace, jako je vaše uživatelské jméno a heslo, jsou tajné klíče. Pokud se například připojíte k externí databázi za účelem dotazování na trénovací data, budete muset předat uživatelské jméno a heslo do kontextu vzdáleného spuštění. Kódování těchto hodnot do školicích skriptů ve prostém textu je nezabezpečené, protože by odhalilo tajný klíč. 
 
-Místo toho má váš pracovní prostor Azure Machine Learning přidružený prostředek nazvaný [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Pomocí tohoto Key Vault můžete přes sadu rozhraní API v sadě SDK pro Azure Machine Learning Python předat tajným klíčům ke vzdáleným zabezpečeným způsobem.
+Místo toho váš pracovní prostor Azure Machine Learning má přidružený prostředek s názvem [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Tento trezor klíčů slouží k předání tajných kódů vzdálenému spuštění bezpečně prostřednictvím sady api v sadě Azure Machine Learning Python SDK.
 
-Základní tok pro používání tajných klíčů je:
- 1. V místním počítači se přihlaste k Azure a připojte se k pracovnímu prostoru.
- 2. V místním počítači nastavte tajný klíč v Key Vault pracovního prostoru.
+Základní tok pro použití tajných kódů je:
+ 1. V místním počítači se přihlaste do Azure a připojte se ke svému pracovnímu prostoru.
+ 2. V místním počítači nastavte tajný klíč v trezoru klíčů pracovního prostoru.
  3. Odešlete vzdálené spuštění.
- 4. V rámci vzdáleného spuštění Získejte tajný klíč z Key Vault a použijte ho.
+ 4. V rámci vzdáleného spuštění získejte tajný klíč z trezoru klíčů a použijte jej.
 
 ## <a name="set-secrets"></a>Nastavení tajných kódů
 
-V Azure Machine Learning třída [trezoru](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py) klíčů obsahuje metody pro nastavení tajných kódů. V místní relaci Pythonu nejprve získejte odkaz na váš pracovní prostor Key Vault a pak použijte metodu [`set_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secret-name--value-) k nastavení tajného klíče podle názvu a hodnoty. Metoda __set_secret__ aktualizuje tajnou hodnotu, pokud název již existuje.
+V Azure Machine Learning, [Keyvault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py) třída obsahuje metody pro nastavení tajných kódů. V místní relaci Pythonu nejprve získejte odkaz na trezor [`set_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secret-name--value-) klíčů pracovního prostoru a potom pomocí metody nastavte tajný klíč podle názvu a hodnoty. Metoda __set_secret__ aktualizuje hodnotu tajného klíče, pokud název již existuje.
 
 ```python
 from azureml.core import Workspace
@@ -46,15 +46,15 @@ keyvault = ws.get_default_keyvault()
 keyvault.set_secret(name="mysecret", value = my_secret)
 ```
 
-Neumísťujte tajnou hodnotu do kódu Pythonu, protože je nezabezpečený pro uložení v souboru jako nešifrovaný text. Místo toho Získejte tajnou hodnotu z proměnné prostředí, například tajného kódu sestavení Azure DevOps nebo interaktivního uživatelského vstupu.
+Nevkládejte tajnou hodnotu do kódu Pythonu, protože je nejistá pro uložení do souboru jako jasný text. Místo toho získat hodnotu tajného klíče z proměnné prostředí, například Azure DevOps sestavení tajného klíče nebo z interaktivního vstupu uživatele.
 
-Pomocí metody [`list_secrets()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#list-secrets--) můžete zobrazit seznam tajných názvů a zároveň také verzi dávky,[set_secrets ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secrets-secrets-batch-) , která umožňuje nastavit více tajných klíčů současně.
+Můžete seznam tajných [`list_secrets()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#list-secrets--) názvů pomocí metody a je také dávková verze,[set_secrets(),](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secrets-secrets-batch-) který umožňuje nastavit více tajných kódů najednou.
 
-## <a name="get-secrets"></a>Získání tajných kódů
+## <a name="get-secrets"></a>Získejte tajemství
 
-V místním kódu můžete pomocí metody[`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-) získat tajnou hodnotu podle názvu.
+V místním kódu můžete použít[`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-) metodu k získání tajné hodnoty podle názvu.
 
-Pro běh odeslal [`Experiment.submit`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-) použijte metodu [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-) třídy [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) . Vzhledem k tomu, že odeslaný běh ví o svém pracovním prostoru, tato metoda vytvoří instanci pracovního prostoru a vrátí tajnou hodnotu přímo.
+Pro spuštění [`Experiment.submit`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-) odeslané [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-) , použijte [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) metodu s třídou. Vzhledem k tomu, že odeslané spuštění si je vědomo svého pracovního prostoru, tato metoda zástupce instance pracovního prostoru a vrátí hodnotu tajného klíče přímo.
 
 ```python
 # Code in submitted run
@@ -64,11 +64,11 @@ run = Run.get_context()
 secret_value = run.get_secret(name="mysecret")
 ```
 
-Dejte pozor, abyste tajnou hodnotu nezveřejnili zápisem nebo tiskem.
+Dávejte pozor, abyste neodhalili tajnou hodnotu zápisem nebo tiskem.
 
-K dispozici je také verze dávky [get_secrets ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secrets-secrets-) pro přístup k více tajným klíčům najednou.
+K dispozici je také dávková [verze, get_secrets()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secrets-secrets-) pro přístup k více tajných kódů najednou.
 
 ## <a name="next-steps"></a>Další kroky
 
- * [Zobrazit ukázkový Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/manage-azureml-service/authentication-in-azureml/authentication-in-azureml.ipynb)
- * [Přečtěte si o podnikovém zabezpečení pomocí Azure Machine Learning](concept-enterprise-security.md)
+ * [Zobrazení ukázkového poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/manage-azureml-service/authentication-in-azureml/authentication-in-azureml.ipynb)
+ * [Další informace o podnikovém zabezpečení pomocí Azure Machine Learning](concept-enterprise-security.md)

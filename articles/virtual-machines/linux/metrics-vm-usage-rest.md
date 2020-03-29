@@ -1,6 +1,6 @@
 ---
-title: Získat data o využití virtuálních počítačů Azure pomocí REST API
-description: K shromažďování metrik využití pro virtuální počítač použijte rozhraní Azure REST API.
+title: Získání dat o využití virtuálních zařízení Azure pomocí rozhraní REST API
+description: Pomocí api Azure REST ke shromažďování metrik využití virtuálního počítače.
 author: rloutlaw
 ms.service: virtual-machines
 ms.subservice: monitoring
@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944741"
 ---
-# <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Získat metriky využití virtuálních počítačů pomocí REST API
+# <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Získání metrik využití virtuálního počítače pomocí rozhraní REST API
 
-Tento příklad ukazuje, jak načíst využití CPU pro [virtuální počítač se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) pomocí [REST API Azure](/rest/api/azure/).
+Tento příklad ukazuje, jak načíst využití procesoru pro [virtuální počítač S Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) pomocí [rozhraní AZURE REST API](/rest/api/azure/).
 
-Kompletní Referenční dokumentace a další ukázky pro REST API jsou k dispozici v [Referenční příručce Azure monitor REST](/rest/api/monitor). 
+Kompletní referenční dokumentace a další ukázky pro rozhraní REST API jsou k dispozici v [odkazu Azure Monitor REST](/rest/api/monitor). 
 
 ## <a name="build-the-request"></a>Sestavení požadavku
 
-Pomocí následující žádosti GET Shromážděte [procento metriky procesoru](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines) z virtuálního počítače.
+Ke shromažďování [metriky procento procesoru](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines) z virtuálního počítače použijte následující požadavek GET
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmname}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=Percentage%20CPU&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -36,27 +36,27 @@ Jsou vyžadovány následující hlavičky:
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
 |*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Authorization:*|Povinná hodnota. Nastavte na platný `Bearer`přístupový token[ ](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Authorization:*|Povinná hodnota. Nastavte na platný  [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients)`Bearer`. |  
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-| Název | Popis |
+| Name (Název) | Popis |
 | :--- | :---------- |
-| subscriptionId | ID předplatného, které identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
-| resourceGroupName | Název skupiny prostředků Azure přidružené k prostředku. Tuto hodnotu můžete získat z rozhraní Azure Resource Manager API, CLI nebo na portálu. |
-| VMName | Název virtuálního počítače Azure. |
-| metricnames | Čárkami oddělený seznam platných [metrik Load Balancer](/azure/load-balancer/load-balancer-standard-diagnostics). |
-| api-version | Verze rozhraní API, která se má použít pro požadavek<br /><br /> Tento dokument popisuje rozhraní API-Version `2018-01-01`zahrnuté do výše uvedené adresy URL.  |
-| TimeSpan | Řetězec s následujícím formátem `startDateTime_ISO/endDateTime_ISO` definující časový rozsah vrácených metrik. Tento volitelný parametr je nastaven tak, aby v příkladu vrátil data o hodnotě dne. |
+| subscriptionId | ID předplatného, které identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si informace [o práci s více předplatnými](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| resourceGroupName | Název skupiny prostředků Azure přidružené k prostředku. Tuto hodnotu můžete získat z rozhraní API Azure Resource Manager, CLI nebo portálu. |
+| vmname | Název virtuálního počítače Azure. |
+| názvy metrik | Seznam platných [metrik vyrovnávání zatížení oddělených čárkami](/azure/load-balancer/load-balancer-standard-diagnostics). |
+| verze-api | Verze rozhraní API pro požadavek.<br /><br /> Tento dokument se `2018-01-01`vztahuje api-verze , které jsou zahrnuty ve výše uvedené URL.  |
+| Timespan | Řetězec s následujícím `startDateTime_ISO/endDateTime_ISO` formátem, který definuje časový rozsah vrácených metrik. Tento volitelný parametr je nastaven tak, aby v příkladu vracel data za den. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Text požadavku
 
-Pro tuto operaci není nutný žádný text žádosti.
+Pro tuto operaci není potřeba žádné tělo požadavku.
 
 ## <a name="handle-the-response"></a>Zpracování odpovědi
 
-Po úspěšném vrácení seznamu hodnot metriky se vrátí stavový kód 200. V [referenční dokumentaci](/rest/api/monitor/metrics/list#errorresponse)je dostupný úplný seznam chybových kódů.
+Stavový kód 200 je vrácena při úspěšném vrácení seznamu hodnot metriky. Úplný seznam kódů chyb je k dispozici v [referenční dokumentaci](/rest/api/monitor/metrics/list#errorresponse).
 
 ## <a name="example-response"></a>Příklad odpovědi 
 

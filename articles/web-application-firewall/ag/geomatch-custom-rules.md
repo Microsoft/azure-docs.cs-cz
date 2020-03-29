@@ -1,6 +1,6 @@
 ---
-title: 'Firewall webových aplikací Azure (WAF): vlastní pravidla pro inshodě'
-description: Tento článek je přehled firewallu webových aplikací (WAF), který se shoduje s vlastními pravidly pro Azure Application Gateway.
+title: Vlastní pravidla geomatch brány Azure Web Application Firewall (WAF)
+description: Tento článek je přehled vlastních pravidel geomatch webové aplikace firewall (WAF) na Azure Application Gateway.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,24 +8,24 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76961085"
 ---
-# <a name="geomatch-custom-rules-preview"></a>Vlastní pravidla pro neshodu (Preview)
+# <a name="geomatch-custom-rules-preview"></a>Vlastní pravidla geomatch (náhled)
 
-Vlastní pravidla umožňují vytvářet přizpůsobená pravidla tak, aby vyhovovala přesným potřebám vašich aplikací a zásad zabezpečení. Nyní můžete omezit přístup k vašim webovým aplikacím podle země nebo oblasti. Stejně jako u všech vlastních pravidel může být tato logika složená s jinými pravidly, aby vyhovovala potřebám vaší aplikace.
+Vlastní pravidla umožňují vytvářet přizpůsobené pravidla tak, aby vyhovovala přesným potřebám vašich aplikací a zásad zabezpečení. Nyní můžete omezit přístup k webovým aplikacím podle země nebo oblasti. Stejně jako u všech vlastních pravidel, tato logika může být umocněna dalšími pravidly tak, aby vyhovovala potřebám vaší aplikace.
 
-Pokud chcete vytvořit vlastní pravidlo geografického filtrování, stačí jako typ shody vybrat *geografickou polohu* a pak vybrat země nebo země, které chcete v aplikaci zablokovat/blokovat. Další informace najdete [v tématu Vytvoření vlastních pravidel v PowerShellu](configure-waf-custom-rules.md) a více příkladů vlastních pravidel (Create-Custom-waf-Rules.MD).
+Chcete-li vytvořit vlastní pravidlo geografického filtrování, jednoduše vyberte *geografické umístění* jako typ shody a pak vyberte zemi nebo země, které chcete povolit nebo zablokovat z aplikace. Další informace najdete v článku [jak vytvořit vlastní pravidla v prostředí Powershellu](configure-waf-custom-rules.md) a další příklady vlastních pravidel (vytvořit vlastní rules.md).
 
 > [!IMPORTANT]
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="country-codes"></a>Kódy zemí
 
-Pokud používáte operátor geografického porovnávání, mohou být selektory libovolné z následujících dvoumístné kódů zemí. 
+Pokud používáte operátor Geomatch, mohou být voliči libovolný z následujících dvoumístných kódů zemí. 
 
 |Kód země | Název země |
 | ----- | ----- |
@@ -50,8 +50,8 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | BH | Bahrajn|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Svatý Bartoloměj|
-| BN | Brunej Darussalam|
+| BL | Svatý Barthélemy|
+| BN | Sultanát Brunej|
 | BO | Bolívie|
 | BR | Brazílie|
 | BS | Bahamy|
@@ -60,7 +60,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | BY | Bělorusko|
 | BZ | Belize|
 | CA | Kanada|
-| CD | Demokratická republika Kongo|
+| CD | Konžská demokratická republika|
 | CF | Středoafrická republika|
 | CH | Švýcarsko|
 | CI | Pobřeží slonoviny|
@@ -73,7 +73,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | CV | Cabo Verde|
 | CY | Kypr|
 | CZ | Česká republika|
-| Německo | Německo|
+| DE | Německo|
 | DK | Dánsko|
 | DO | Dominikánská republika|
 | DZ | Alžírsko|
@@ -121,7 +121,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | KW | Kuvajt|
 | KY | Kajmanské ostrovy|
 | KZ | Kazachstán|
-| LATINSKÁ AMERIKA | Laoská lidově demokratická republika|
+| LA | Laoská lidově demokratická republika|
 | LB | Libanon|
 | LI | Lichtenštejnsko|
 | LK | Srí Lanka|
@@ -138,7 +138,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | ML | Mali|
 | MM | Myanmar|
 | MN | Mongolsko|
-| MO | Macao – zvláštní správní oblast|
+| MO | Macao – zvláštní administrativní oblast|
 | MQ | Martinik|
 | MR | Mauritánie|
 | MT | Malta|
@@ -147,7 +147,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | MX | Mexiko|
 | MY | Malajsie|
 | MZ | Mosambik|
-| není k dispozici | Namibie|
+| Není k dispozici | Namibie|
 | NE | Niger|
 | NG | Nigérie|
 | NI | Nikaragua|
@@ -195,7 +195,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | TZ | Sjednocená tanzanská republika|
 | UA | Ukrajina|
 | UG | Uganda|
-| Spojené státy | Spojené státy|
+| USA | Spojené státy|
 | UY | Uruguay|
 | UZ | Uzbekistán|
 | VC | Svatý Vincenc a Grenadiny|
@@ -203,10 +203,10 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | VG | Britské Panenské ostrovy|
 | VI | Americké Panenské ostrovy|
 | VN | Vietnam|
-| ZA | Jihoafrická republika|
+| ZA | Jižní Afrika|
 | ZM | Zambie|
 | ZW | Zimbabwe|
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile se seznámíte s vlastními pravidly, [vytvořte vlastní pravidla](create-custom-waf-rules.md).
+Po sešlápnout o vlastních pravidlech [vytvořte vlastní pravidla](create-custom-waf-rules.md).

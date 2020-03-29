@@ -1,6 +1,6 @@
 ---
-title: Referenční informace o nastavení roamingu pro Windows 10 – Azure Active Directory
-description: Nastavení, která budou roamingovaná nebo zálohovaná ve Windows 10 s ESR
+title: Odkaz na nastavení roamingu ve Windows 10 – Azure Active Directory
+description: Nastavení, která se budou potulovat nebo zálohovat v systému Windows 10 pomocí ESR
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,75 +12,75 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a7abc402f1fc2e449e7aac5effdb01b6b941100
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672631"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referenční informace k nastavení roamingu pro Windows 10
 
-Následuje seznam nastavení, která budou v systému Windows 10 roamingovaná nebo zálohovaná. 
+Následuje seznam nastavení, která budou přebujela nebo zálohovala v systému Windows 10. 
 
 ## <a name="devices-and-endpoints"></a>Zařízení a koncové body
 
-V následující tabulce najdete souhrn typů zařízení a účtů, které jsou podporované architekturou synchronizace, zálohování a obnovení ve Windows 10.
+V následující tabulce najdete souhrn zařízení a typů účtů, které podporuje architektura synchronizace, zálohování a obnovení v systému Windows 10.
 
-| Typ účtu a operace | Plocha | Mobilní |
+| Typ a operace účtu | Aplikace klasické pracovní plochy | Mobilní zařízení |
 | --- | --- | --- |
 | Azure Active Directory: synchronizace |Ano |Ne |
 | Azure Active Directory: zálohování a obnovení |Ne |Ne |
 | Účet Microsoft: synchronizace |Ano |Ano |
-| Účet Microsoft: zálohování a obnovení |Ne |Ano |
+| Účet Microsoft: zálohování/obnovení |Ne |Ano |
 
-## <a name="what-is-backup"></a>Co je zálohování?
+## <a name="what-is-backup"></a>Co je záloha?
 
-Nastavení Windows se standardně synchronizuje, ale některá nastavení se zálohují jenom, jako je například seznam nainstalovaných aplikací na zařízení. Zálohování je jenom pro mobilní zařízení a v současnosti není k dispozici pro Enterprise State Roaming uživatele. Zálohování používá účet Microsoft a ukládá nastavení a data aplikací do OneDrivu. Pokud uživatel na zařízení zakáže synchronizaci pomocí aplikace nastavení, data aplikace, která se normálně synchronizují, se budou zálohovat jenom. K datům zálohy se dá během prvního spuštění nového zařízení dostat jenom prostřednictvím operace obnovení. Zálohy je možné zakázat prostřednictvím nastavení zařízení a je možné je spravovat a odstraňovat prostřednictvím účtu OneDrive uživatele.
+Nastavení systému Windows se obvykle synchronizují ve výchozím nastavení, ale některá nastavení jsou pouze zálohována, například seznam nainstalovaných aplikací v zařízení. Záloha je pouze pro mobilní zařízení a momentálně není k dispozici pro uživatele podnikového programu. Zálohování používá účet Microsoft a ukládá nastavení a data aplikací na OneDrive. Pokud uživatel zakáže synchronizaci v zařízení pomocí aplikace Nastavení, data aplikace, která se normálně synchronizují, se stanou pouze zálohami. K datům zálohování lze přistupovat pouze prostřednictvím operace obnovení během prvního spuštění nového zařízení. Zálohy lze zakázat pomocí nastavení zařízení a lze je spravovat a odstraňovat prostřednictvím účtu OneDrive uživatele.
 
 ## <a name="windows-settings-overview"></a>Přehled nastavení systému Windows
 
-Pro koncové uživatele jsou k dispozici následující skupiny nastavení, které povolí nebo zakáže synchronizaci nastavení na zařízeních s Windows 10.
+Následující skupiny nastavení jsou k dispozici pro koncové uživatele, aby povolili nebo zakázali synchronizaci nastavení na zařízeních s Windows 10.
 
-* Motiv: pozadí plochy, dlaždice uživatele, pozice hlavního panelu atd. 
-* Nastavení aplikace Internet Explorer: historie procházení, typové adresy URL, oblíbené položky atd. 
-* Hesla: Správce přihlašovacích údajů systému Windows, včetně profilů sítě Wi-Fi 
-* Jazykové předvolby: slovník pravopisu, systémová nastavení jazyka 
-* Usnadnění přístupu: Předčítání, klávesnice na obrazovce, Lupa 
-* Další nastavení Windows: informace o nastavení Windows
-* Nastavení prohlížeče Microsoft Edge: oblíbené položky Microsoft Edge, seznam čtení a další nastavení
+* Téma: pozadí plochy, dlaždice uživatele, pozice na hlavním panelu atd. 
+* Nastavení aplikace Internet Explorer: historie procházení, zadané adresy URL, oblíbené položky atd. 
+* Hesla: Správce přihlašovacích údajů systému Windows, včetně profilů Wi-Fi 
+* Jazykové předvolby: slovník pravopisu, nastavení systémového jazyka 
+* Usnadnění přístupu: předčítání, klávesnice na obrazovce, lupa 
+* Další nastavení Windows: viz Podrobnosti o nastavení systému Windows
+* Nastavení prohlížeče Microsoft Edge: Oblíbené položky microsoft edge, seznam k přečtení a další nastavení
 
 ![Synchronizovat nastavení](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 > [!NOTE]
-> Tento článek se týká starší verze prohlížeče založeného na HTML v Microsoft Edge, který se spouští s Windows 10 v červenci 2015. Článek neplatí pro nový prohlížeč založený na Microsoft Edge chrom vydaný 15. ledna 2020. Další informace o chování synchronizace pro nové Microsoft Edge najdete v článku o [synchronizaci Microsoft Edge](/deployedge/microsoft-edge-enterprise-sync).
+> Tento článek se týká prohlížeče microsoft edge legacy založeného na HTML spuštěném v systému Windows 10 v červenci 2015. Tento článek se nevztahuje na nový prohlížeč založený na microsoft edge chromu vydaném 15. Další informace o chování synchronizace pro nový microsoft edge naleznete v článku [Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync).
 
-Možnost Skupina nastavení prohlížeče Microsoft Edge (oblíbené položky, seznam čtení) může povolit nebo zakázat koncovým uživatelům pomocí možnosti nabídky nastavení prohlížeče Microsoft Edge.
+Skupina nastavení prohlížeče Microsoft Edge (oblíbené položky, seznam k přečtení) může být povolena nebo zakázána koncovými uživateli prostřednictvím možnosti nabídky Nastavení prohlížeče Microsoft Edge.
 
 ![Účet](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
 
-Pro Windows 10 verze 1803 nebo novější se může synchronizace nastavení Internet Exploreru (oblíbené položky, typové adresy URL) povolit nebo zakázat pomocí možnosti nabídky nastavení aplikace Internet Explorer pro koncové uživatele. 
+Pro Windows 10 verze 1803 nebo novější může být synchronizace nastavení aplikace Internet Explorer (oblíbené položky, zadané adresy URL) povolena nebo zakázána koncovými uživateli prostřednictvím možnosti nabídky Nastavení aplikace Internet Explorer. 
 
 ![Nastavení](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
 
-## <a name="windows-settings-details"></a>Podrobnosti nastavení systému Windows
+## <a name="windows-settings-details"></a>Podrobnosti o nastavení systému Windows
 
-V následující tabulce se ve sloupci skupina nastavení zobrazí další položky nastavení, které je možné zakázat, a to tak, že v části Nastavení > účty > synchronizujete nastavení > ostatní nastavení systému Windows. 
+V následující tabulce ostatní položky ve sloupci Skupina nastavení odkazují na nastavení, která lze zakázat, přejděte do nastavení > účty > Synchronizovat nastavení > ostatní nastavení windows. 
 
-Interní položky ve sloupci skupina nastavení odkazují na nastavení a aplikace, které se můžou zakázat jenom v synchronizaci v rámci samotné aplikace, nebo vypnutím synchronizace pro celé zařízení pomocí správy mobilních zařízení (MDM) nebo nastavení Zásady skupiny.
-Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do skupiny.
+Interní položky ve sloupci Skupina nastavení odkazují na nastavení a aplikace, které lze zakázat pouze v synchronizaci v samotné aplikaci nebo zakázáním synchronizace pro celé zařízení pomocí nastavení správy mobilních zařízení (MDM) nebo zásad skupiny.
+Nastavení, která se netoulají nebo nesynchronizují, nebudou patřit do skupiny.
 
-| Nastavení | Plocha | Mobilní | Skupina |
+| Nastavení | Aplikace klasické pracovní plochy | Mobilní zařízení | Skupina |
 | --- | --- | --- | --- |
-| **Účty**: obrázek účtu |synchronizace |× |Použit |
-| **Účty**: Další nastavení účtu |× |× | |
-| **Rozšířené mobilní širokopásmové**připojení: název sítě pro sdílení připojení k Internetu (umožňuje automatické zjišťování mobilních Wi-Fi hotspotů přes Bluetooth) |× |× |Hesla |
-| **Data aplikací**: jednotlivé aplikace můžou synchronizovat data |synchronizovat zálohu |synchronizovat zálohu |vnitřních |
+| **Účty**: obrázek účtu |synchronizace |× |Motiv |
+| **Účty**: další nastavení účtu |× |× | |
+| **Pokročilé mobilní širokopásmové připojení**: Název sítě pro sdílení připojení k internetu (umožňuje automatické zjišťování mobilních Wi-Fi hotspotů přes Bluetooth) |× |× |Hesla |
+| **Data aplikací**: jednotlivé aplikace mohou synchronizovat data |synchronizace zálohy |synchronizace zálohy |internal |
 | **Seznam aplikací**: seznam nainstalovaných aplikací |× |zálohování |Ostatní |
 | **Bluetooth**: všechna nastavení Bluetooth |× |× | |
-| **Příkazový řádek**: výchozí nastavení pro příkazový řádek |synchronizace |× |vnitřních |
-| **Přihlašovací údaje**: schránka na přihlašovací údaje |synchronizace |synchronizace |heslo |
-| **Datum, čas a oblast**: Automatický čas (synchronizace v internetovém čase) |synchronizace |synchronizace |language |
-| **Datum, čas a oblast**: 24 hodin |synchronizace |× |language |
+| **Příkazový řádek**: Nastavení příkazového řádku "Výchozí" |synchronizace |× |internal |
+| **Pověření**: Schůdka pověření |synchronizace |synchronizace |heslo |
+| **Datum, čas a oblast**: automatický čas (synchronizace času v Internetu) |synchronizace |synchronizace |language |
+| **Datum, čas a oblast**: 24hodinová doba |synchronizace |× |language |
 | **Datum, čas a oblast**: datum a čas |synchronizace |× |language |
 | **Datum, čas a oblast**: časové pásmo | |× |language |
 | **Datum, čas a oblast**: letní čas |synchronizace |× |language |
@@ -90,100 +90,100 @@ Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do sk
 | **Datum, čas a oblast**: krátké datum |synchronizace |× |language |
 | **Datum, čas a oblast**: dlouhé datum |synchronizace |× |language |
 | **Datum, čas a oblast**: krátký čas |synchronizace |× |language |
-| **Datum, čas a oblast**: dlouhý čas |synchronizace |× |language |
-| **Individuální nastavení plochy**: motiv plochy (pozadí, systémová barva, výchozí systémové zvuky, šetřič obrazovky) |synchronizace |× |Použit |
-| **Individuální nastavení plochy**: Tapeta prezentace |synchronizace |× |Použit |
-| **Individuální nastavení plochy**: nastavení hlavního panelu (pozice, automatické skrývání atd.) |synchronizace |× |Použit |
-| **Individuální nastavení plochy**: rozložení úvodní obrazovky |× |zálohování | |
-| **Zařízení**: sdílené tiskárny, ke kterým jste se připojili |× |× |ostatní |
-| **Prohlížeč Microsoft Edge**: seznam pro čtení |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: oblíbené položky |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: hlavní lokality <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: typové adresy URL <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: nastavení panelu Oblíbené položky <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: zobrazí tlačítko domů <sup> [[1]](#footnote-1) .</sup> |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: blokovat automaticky otevíraná okna blokování <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: Zeptejte se, co dělat s každým stažením <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: nabídka pro ukládání hesel <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: odeslání požadavků do Not Track <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: uložit položky formuláře <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: umožňuje zobrazit hledání a návrhy webu jako typ <sup> [[1]](#footnote-1) .</sup> |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: předvolby souborů cookie <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: umožňuje webům ukládat chráněné licence na média v zařízení <sup> [[1]](#footnote-1) .</sup> |synchronizace |synchronizace |vnitřních |
-| **Prohlížeč Microsoft Edge**: nastavení čtečky obrazovky <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |vnitřních |
-| **Vysoký kontrast**: zapnuto nebo vypnuto |synchronizace |× |usnadnění přístupu |
-| **Vysoký kontrast**: nastavení motivu |synchronizace |× |usnadnění přístupu |
-| **Internet Explorer**: otevření karet (adresa URL a název) |synchronizace |synchronizace |Internet Explorer |
-| **Internet Explorer**: seznam čtení |synchronizace |synchronizace |Internet Explorer |
-| **Internet Explorer**: typové adresy URL |synchronizace |synchronizace |Internet Explorer |
+| **Datum, čas a oblast**: dlouhá doba |synchronizace |× |language |
+| **Přizpůsobení plochy**: desktop téma (pozadí, barva systému, výchozí systémové zvuky, spořič obrazovky) |synchronizace |× |Motiv |
+| **Přizpůsobení plochy**: tapeta prezentace |synchronizace |× |Motiv |
+| **Přizpůsobení plochy**: nastavení hlavního panelu (pozice, automatické skrytí atd.) |synchronizace |× |Motiv |
+| **Přizpůsobení plochy:** rozložení úvodní obrazovky |× |zálohování | |
+| **Zařízení:** sdílené tiskárny, ke kterých jste se připojili |× |× |ostatní |
+| **Prohlížeč Microsoft Edge**: seznam k přečtení |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: oblíbené položky |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: nejlepší weby <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: zadané adresy URL <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: nastavení panelu oblíbených položek <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: zobrazení domovského tlačítka <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: blokování automaticky otevíraných míst <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: zeptejte se mě, co dělat s každým <sup> [stažením [1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: nabídka ukládání hesel <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: odeslat nesledovat požadavky <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: uložení položek formuláře <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: zobrazit návrhy vyhledávání a webu při psaní <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: předvolba cookies <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: umožňuje webům ukládat licence chráněných médií na mém zařízení <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
+| **Prohlížeč Microsoft Edge**: nastavení čtečky obrazovky <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
+| **Vysoký kontrast**: Zapnutí nebo vypnutí |synchronizace |× |snadný přístup |
+| **Vysoký kontrast**: Nastavení motivu |synchronizace |× |snadný přístup |
+| **Internet Explorer**: otevřít karty (URL a název) |synchronizace |synchronizace |Internet Explorer |
+| **Internet Explorer**: seznam k přečtení |synchronizace |synchronizace |Internet Explorer |
+| **Internet Explorer**: zadané adresy URL |synchronizace |synchronizace |Internet Explorer |
 | **Internet Explorer**: historie procházení |synchronizace |synchronizace |Internet Explorer |
 | **Internet Explorer**: oblíbené položky |synchronizace |synchronizace |Internet Explorer |
 | **Internet Explorer**: vyloučené adresy URL |synchronizace |synchronizace |Internet Explorer |
 | **Internet Explorer**: domovské stránky |synchronizace |synchronizace |Internet Explorer |
-| **Internet Explorer**: návrhy domény |synchronizace |synchronizace |Internet Explorer |
-| **Klávesnice**: uživatelé můžou zapnout nebo vypnout klávesnici na obrazovce. |synchronizace |× |usnadnění přístupu |
-| **Klávesnice**: zapnout funkci Ano (ve výchozím nastavení vypnuté) |synchronizace |× |usnadnění přístupu |
-| **Klávesnice**: zapnout filtrování klíčů (ve výchozím nastavení vypnuté) |synchronizace |× |usnadnění přístupu |
-| **Klávesnice**: zapnout přepínací klávesy (ve výchozím nastavení vypnuté) |synchronizace |× |usnadnění přístupu |
-| **Internet Explorer**: jazyk domény: ČÍNŠTINA (CHS) QWERTY – povolit samoobslužné učení |synchronizace |× |Jazyk |
-| **Jazyk**: CHS QWERTY – povolit dynamické řazení kandidátů |synchronizace |× |Jazyk |
-| **Jazyk**: CHS QWERTY-char-set zjednodušená čínština |synchronizace |× |Jazyk |
-| **Jazyk**: CHS QWERTY-char-set tradiční čínština |synchronizace |× |Jazyk |
-| **Jazyk**: CHS QWERTY – přibližný pchin-jin |synchronizace |zálohování |Jazyk |
-| **Jazyk**: CHS QWERTY – páry – přibližné |synchronizace |zálohování |Jazyk |
-| **Jazyk**: CHS QWERTY – úplný pchin-jin |synchronizace |× |Jazyk |
-| **Jazyk**: CHS QWERTY – dvojitý pchin-jin |synchronizace |× |Jazyk |
-| **Jazyk**: CHS QWERTY – čtení automatických oprav |synchronizace |× |Jazyk |
-| **Jazyk**: CHS, přepínací klávesa QWERTY-C/E, SHIFT |synchronizace |× |Jazyk |
-| **Jazyk**: CHS, přepínací klávesa QWERTY-C/E, CTRL |synchronizace |× |Jazyk |
-| **Jazyk**: CHS WUBI – režim zadávání jedním znakem |synchronizace |× |Jazyk |
-| **Jazyk**: CHS WUBI – zobrazení zbývajícího kódování kandidáta |synchronizace |× |Jazyk |
-| **Jazyk**: CHS WUBI-ZvukovýSignál, když 4-kódování je neplatné. |synchronizace |× |Jazyk |
-| **Jazyk**: CHT Ču-to zahrnuje CJK-A |synchronizace |× |Jazyk |
-| **Jazyk**: japonské editor IME – prediktivní psaní a vlastní slova |synchronizace |synchronizace |Jazyk |
-| **Language**: Korejština (KOR) IME |× |× |Jazyk |
+| **Internet Explorer**: návrhy domén |synchronizace |synchronizace |Internet Explorer |
+| **Klávesnice**: uživatelé mohou zapnout/vypnout klávesnici na obrazovce |synchronizace |× |snadný přístup |
+| **Klávesnice:** zapnutí sticky ano (ve výchozím nastavení vypnuto) |synchronizace |× |snadný přístup |
+| **Klávesnice:** zapnutí kláves filtru (ve výchozím nastavení vypnuto) |synchronizace |× |snadný přístup |
+| **Klávesnice:** zapnutí přepínacích kláves (ve výchozím nastavení vypnuto) |synchronizace |× |snadný přístup |
+| **Internet Explorer**: doména Jazyk: Čínština (CHS) QWERTY - povolit samostudium |synchronizace |× |Jazyk |
+| **Jazyk**: CHS QWERTY - umožňují dynamické hodnocení kandidátů |synchronizace |× |Jazyk |
+| **Jazyk**: CHS QWERTY - znaková zjednodušená čínština |synchronizace |× |Jazyk |
+| **Jazyk**: CHS QWERTY - znaková tradiční čínština |synchronizace |× |Jazyk |
+| **Jazyk**: CHS QWERTY - fuzzy pinyin |synchronizace |zálohování |Jazyk |
+| **Jazyk**: CHS QWERTY - fuzzy páry |synchronizace |zálohování |Jazyk |
+| **Jazyk**: CHS QWERTY - plný pinyin |synchronizace |× |Jazyk |
+| **Jazyk**: CHS QWERTY - dvojitý pinyin |synchronizace |× |Jazyk |
+| **Jazyk**: CHS QWERTY - čtení automatické korekce |synchronizace |× |Jazyk |
+| **Jazyk**: CHS QWERTY - C/E přepínač, shift |synchronizace |× |Jazyk |
+| **Jazyk**: CHS QWERTY - C/E přepínač, Ctrl |synchronizace |× |Jazyk |
+| **Jazyk**: CHS WUBI - režim vstupu s jedním znakem |synchronizace |× |Jazyk |
+| **Jazyk**: CHS WUBI - zobrazit zbývající kódování kandidáta |synchronizace |× |Jazyk |
+| **Jazyk**: CHS WUBI - pípnutí, když je 4-kódování neplatné |synchronizace |× |Jazyk |
+| **Jazyk**: CHT Bopomofo - patří CJK Ext-A |synchronizace |× |Jazyk |
+| **Jazyk**: Japonský ime - prediktivní psaní a vlastní slova |synchronizace |synchronizace |Jazyk |
+| **Jazyk**: IME pro korejštinu (KOR) |× |× |Jazyk |
 | **Jazyk**: rozpoznávání rukopisu |× |× |Jazyk |
-| **Jazyk**: Profil jazyka |synchronizace |zálohování |Jazyk |
-| **Jazyk**: Kontrola pravopisu – automatické opravy a zvýraznění chybných pravopisů |synchronizace |zálohování |Jazyk |
+| **Jazyk**: jazykový profil |synchronizace |zálohování |Jazyk |
+| **Jazyk**: kontrola pravopisu - automatické opravy a zvýraznění překlepů |synchronizace |zálohování |Jazyk |
 | **Jazyk**: seznam klávesnic |synchronizace |zálohování |Jazyk |
 | **Zamykací obrazovka**: všechna nastavení zamykací obrazovky |× |× | |
-| **Lupa**: zapnuto nebo vypnuto (přepínač Master) |× |× |usnadnění přístupu |
-| **Lupa**: zapnout nebo vypnout barvu inverze (ve výchozím nastavení vypnuté) |synchronizace |× |usnadnění přístupu |
-| **Lupa**: sledování – Sledujte fokus klávesnice |synchronizace |× |usnadnění přístupu |
-| **Lupa**: sledování – následovat ukazatel myši |synchronizace |× |usnadnění přístupu |
-| **Lupa**: spustit při přihlášení uživatele (ve výchozím nastavení vypnuté) |synchronizace |× |usnadnění přístupu |
-| **Myš**: Změna velikosti kurzoru myši |synchronizace |× |ostatní |
-| **Myš**: Změna barvy kurzoru myši |synchronizace |× |ostatní |
+| **Lupa**: zapnutí nebo vypnutí (hlavní přepínač) |× |× |Usnadnění přístupu |
+| **Lupa**: zapnutí nebo vypnutí barvy inverze (ve výchozím nastavení vypnuto) |synchronizace |× |Usnadnění přístupu |
+| **Lupa**: sledování - sledujte fokus klávesnice |synchronizace |× |Usnadnění přístupu |
+| **Lupa**: sledování - postupujte podle kurzoru myši |synchronizace |× |Usnadnění přístupu |
+| **Lupa**: spustí se, když se uživatelé přihlásí (ve výchozím nastavení vypnuto) |synchronizace |× |Usnadnění přístupu |
+| **myš:** změnit velikost kurzoru myši |synchronizace |× |ostatní |
+| **myš:** změnit barvu kurzoru myši |synchronizace |× |ostatní |
 | **Myš**: všechna ostatní nastavení |× |× | |
-| **Narrator**: Snadné spuštění |synchronizace |× |usnadnění přístupu |
-| **Narrator**: uživatelé můžou měnit rozteč mluvené řeči. |synchronizace |× |usnadnění přístupu |
-| **Narrator**: uživatelé můžou zapnout nebo vypnout čtení tipů pro společné položky (ve výchozím nastavení zapnuté). |synchronizace |× |usnadnění přístupu |
-| **Narrator**: uživatelé můžou zapnout nebo vypnout, jestli můžou slyšet zadané znaky (ve výchozím nastavení zapnuté). |synchronizace |× |usnadnění přístupu |
-| **Narrator**: uživatelé můžou zapnout nebo vypnout, jestli můžou slyšet zadaná slova (ve výchozím nastavení zapnuté). |synchronizace |× |usnadnění přístupu |
-| **Narrator**(Předčítání): mít kurzor pro vložení ve výchozím nastavení. |synchronizace |× |usnadnění přístupu |
-| **Narrator**: povolení vizuálního zvýraznění kurzoru Narrator (ve výchozím nastavení zapnuté) |synchronizace |× |usnadnění přístupu |
-| **Narrator**: Přehrát zvukové signály (ve výchozím nastavení zapnuté) |synchronizace |× |usnadnění přístupu |
-| **Narrator**: aktivace kláves na dotykové klávesnici při zvedání prstu (ve výchozím nastavení vypnuté) |synchronizace |× |usnadnění přístupu |
-| **Usnadnění přístupu**: Nastavte tloušťku blikajícího kurzoru. |synchronizace |× |usnadnění přístupu |
-| **Usnadnění přístupu**: odebrání imagí na pozadí (ve výchozím nastavení vypnuté) |synchronizace |× |usnadnění přístupu |
-| **Napájení a režim spánku**: všechna nastavení |× |× | |
-| **Přizpůsobení úvodní obrazovky**: Barva zvýraznění (jenom telefon) |× |synchronizace |Použit |
+| **Předčítání**: rychlé spuštění |synchronizace |× |Usnadnění přístupu |
+| **Předčítání**: Uživatelé mohou změnit řečnickou výšku předčítání |synchronizace |× |Usnadnění přístupu |
+| **Předčítání**: Uživatelé mohou zapnout nebo vypnout rady pro čtení předčítání pro běžné položky (ve výchozím nastavení zapnuto) |synchronizace |× |Usnadnění přístupu |
+| **Předčítání**: Uživatelé mohou zapnout nebo vypnout, zda slyší zadané znaky (ve výchozím nastavení zapnuto) |synchronizace |× |Usnadnění přístupu |
+| **Předčítání**: Uživatelé mohou zapnout nebo vypnout, zda slyší zadávaná slova (ve výchozím nastavení zapnutá) |synchronizace |× |Usnadnění přístupu |
+| **Předčítání**: mají vložit kurzor za Předčítání (ve výchozím nastavení) |synchronizace |× |Usnadnění přístupu |
+| **Předčítání**: povolit vizuální zvýraznění kurzoru Předčítání (ve výchozím nastavení zapnuto) |synchronizace |× |Usnadnění přístupu |
+| **Předčítání**: přehrávání zvukových signálů (ve výchozím nastavení zapnuto) |synchronizace |× |Usnadnění přístupu |
+| **Předčítání**: aktivace kláves na dotykové klávesnici při zvednutí prstu (ve výchozím nastavení vypnutá) |synchronizace |× |Usnadnění přístupu |
+| **Usnadnění přístupu:** nastavte tloušťku blikajícího kurzoru |synchronizace |× |Usnadnění přístupu |
+| **Snadný přístup**: odstranění obrázků na pozadí (ve výchozím nastavení vypnuto) |synchronizace |× |Usnadnění přístupu |
+| **Napájení a spánek**: všechna nastavení |× |× | |
+| **Přizpůsobení úvodní obrazovky:** barva zvýraznění (pouze telefon) |× |synchronizace |Motiv |
 | **Psaní**: slovník pravopisu |synchronizace |zálohování |Jazyk |
-| **Psaní**: Automatické opravy chybně napsaného slova |synchronizace |zálohování |Jazyk |
-| **Psaní**: zvýraznit slova s chybami pravopisu |synchronizace |zálohování |Jazyk |
-| **Psaní**: Zobrazit návrhy textu při psaní |synchronizace |zálohování |Jazyk |
-| **Psaní**: přidat mezeru po výběru návrhu textu |synchronizace |zálohování |Jazyk |
-| **Psaní**: Přidání tečky po dvojitém klepnutí na mezerník |synchronizace |zálohování |Jazyk |
-| **Psaní**: velká písmena prvního písmene každé věty |synchronizace |zálohování |Jazyk |
-| **Psaní**: při dvojitém kliknutí na klávesu SHIFT používejte všechna velká písmena |synchronizace |zálohování |Jazyk |
-| **Psaní**: přehrání klíčových zvuků při psaní |synchronizace |zálohování |Jazyk |
-| **Psaní**: data individuálního nastavení pro dotykovou klávesnici |synchronizace |zálohování |Jazyk |
-| **Wi-Fi**: profily sítě Wi-Fi (jenom WPA) |synchronizace |synchronizace |Hesla |
+| **Psaní**: automatické opravy chybně napsané slovo |synchronizace |zálohování |Jazyk |
+| **Psaní**: zvýraznění chybně napsaných slov |synchronizace |zálohování |Jazyk |
+| **Psaní**: zobrazení textových návrhů při psaní |synchronizace |zálohování |Jazyk |
+| **Psaní**: přidání mezery po výběru návrhu textu |synchronizace |zálohování |Jazyk |
+| **Psaní**: přidejte tečku po poklepání na mezerník |synchronizace |zálohování |Jazyk |
+| **Psaní na stroji**: první písmeno každé věty |synchronizace |zálohování |Jazyk |
+| **Psaní**: Při poklepání na klávesu Shift použijte všechna velká písmena |synchronizace |zálohování |Jazyk |
+| **Psaní**: přehrání zvuků kláves při psaní |synchronizace |zálohování |Jazyk |
+| **Psaní**: data přizpůsobení pro dotykovou klávesnici |synchronizace |zálohování |Jazyk |
+| **Wi-Fi**: Profily Wi-Fi (pouze WPA) |synchronizace |synchronizace |Hesla |
 
 ###### <a name="footnote-1"></a>Poznámka pod čarou 1
 
-Minimální podporovaná verze operačního systému pro Windows Creators Update (Build 15063). 
+Minimální podporovaná verze operačního systému Windows Creators Update (Sestavení 15063). 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přehled najdete v tématu [Přehled služby Enterprise State Roaming](enterprise-state-roaming-overview.md).
+Přehled najdete v tématu [Přehled podnikového státního roamingu](enterprise-state-roaming-overview.md).

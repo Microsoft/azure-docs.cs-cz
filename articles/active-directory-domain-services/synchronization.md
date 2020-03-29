@@ -1,6 +1,6 @@
 ---
-title: Jak funguje synchronizace v Azure AD Domain Services | Microsoft Docs
-description: Přečtěte si, jak proces synchronizace funguje pro objekty a přihlašovací údaje z tenanta Azure AD nebo místního prostředí Active Directory Domain Services do Azure Active Directory Domain Services spravované domény.
+title: Jak synchronizace funguje ve službě Azure AD Domain Services | Dokumenty společnosti Microsoft
+description: Zjistěte, jak funguje proces synchronizace pro objekty a přihlašovací údaje z klienta Azure AD nebo místního prostředí služby Active Directory Domain Services do spravované domény služby Azure Active Directory Domain Services.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,134 +12,134 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
 ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944420"
 ---
-# <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Způsob synchronizace objektů a přihlašovacích údajů ve spravované doméně Azure AD Domain Services
+# <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Synchronizace objektů a přihlašovacích údajů ve spravované doméně služby Azure AD Domain Services
 
-Objekty a přihlašovací údaje v spravované doméně Azure Active Directory Domain Services (služba AD DS) se dají buď místně vytvořit v doméně, nebo synchronizovat z klienta služby Azure Active Directory (Azure AD). Při prvním nasazení služby Azure služba AD DS se konfiguruje Automatická Jednosměrná synchronizace, která se spustí pro replikaci objektů z Azure AD. Tato Jednosměrná synchronizace dál běží na pozadí, aby se zajistila aktuálnost spravované domény Azure služba AD DS se všemi změnami ze služby Azure AD. Z Azure služba AD DS zpět do Azure AD nedochází k žádné synchronizaci.
+Objekty a přihlašovací údaje ve spravované doméně služby Azure Active Directory Domain Services (AD DS) lze vytvořit místně v rámci domény nebo synchronizovat z klienta Azure Active Directory (Azure AD). Při prvním nasazení Služby Azure AD DS se nakonfiguruje automatická jednosměrná synchronizace a spustí se replikace objektů z Azure AD. Tato jednosměrná synchronizace nadále běží na pozadí, aby byla spravovaná doména Azure AD DS aktuální s případnými změnami ze služby Azure AD. Žádná synchronizace dochází z Azure AD DS zpět do Služby Azure AD.
 
-V hybridním prostředí se můžou objekty a přihlašovací údaje z místní služba AD DS domény synchronizovat s Azure AD pomocí Azure AD Connect. Jakmile jsou tyto objekty úspěšně synchronizovány do Azure AD, automatické synchronizace na pozadí pak tyto objekty a přihlašovací údaje zpřístupní aplikacím pomocí spravované domény Azure služba AD DS.
+V hybridním prostředí lze objekty a přihlašovací údaje z místní domény služby AD DS synchronizovat do služby Azure AD pomocí služby Azure AD Connect. Jakmile jsou tyto objekty úspěšně synchronizovány do Služby Azure AD, automatická synchronizace na pozadí pak zpřístupní tyto objekty a přihlašovací údaje aplikacím pomocí spravované domény Azure AD DS.
 
-Následující diagram znázorňuje, jak synchronizace funguje mezi Azure služba AD DS, Azure AD a volitelným místním prostředím služba AD DS:
+Následující diagram znázorňuje, jak funguje synchronizace mezi Azure AD DS, Azure AD a volitelným místním prostředím služby AD DS:
 
-![Přehled synchronizace pro Azure AD Domain Services spravovanou doménu](./media/active-directory-domain-services-design-guide/sync-topology.png)
+![Přehled synchronizace pro spravovanou doménu služby Azure AD Domain Services](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
-## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Synchronizace z Azure AD do Azure služba AD DS
+## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Synchronizace z Azure AD na Azure AD DS
 
-Uživatelské účty, členství ve skupinách a hodnoty hash přihlašovacích údajů se synchronizují jedním ze způsobů z Azure AD až do Azure služba AD DS. Tento proces synchronizace je automatický. Tento proces synchronizace nemusíte konfigurovat, monitorovat ani spravovat. Počáteční synchronizace může trvat několik hodin, a to v závislosti na počtu objektů v adresáři služby Azure AD. Po dokončení počáteční synchronizace se změny provedené ve službě Azure AD, jako je třeba heslo nebo atributy, automaticky synchronizují do Azure služba AD DS.
+Uživatelské účty, členství ve skupinách a hash přihlašovacích údajů jsou synchronizovány jedním způsobem z Azure AD do Azure AD DS. Tento proces synchronizace je automatický. Tento proces synchronizace není nutné konfigurovat, monitorovat ani spravovat. Počáteční synchronizace může trvat několik hodin na několik dní, v závislosti na počtu objektů v adresáři Azure AD. Po dokončení počáteční synchronizace se změny provedené ve službě Azure AD, jako jsou změny hesla nebo atributů, automaticky synchronizují do služby Azure AD DS.
 
-Proces synchronizace je jedním ze způsobů a jednosměrný podle návrhu. Z Azure služba AD DS zpátky do Azure AD se nevrátí žádná zpětná synchronizace změn. Spravovaná doména Azure služba AD DS je převážně jen pro čtení s výjimkou vlastních organizačních jednotek, které můžete vytvořit. V rámci spravované domény Azure služba AD DS nemůžete měnit atributy uživatele, hesla uživatelů ani členství ve skupinách.
+Proces synchronizace je jedním ze způsobů / jednosměrný podle návrhu. Neexistuje žádná zpětná synchronizace změn z Azure AD DS zpět do Služby Azure AD. Spravovaná doména Azure AD DS je do značné míry jen pro čtení s výjimkou vlastních vou, které můžete vytvořit. V rámci spravované domény Azure AD DS nelze provádět změny atributů uživatelů, uživatelských hesel nebo členství ve skupinách.
 
-## <a name="attribute-synchronization-and-mapping-to-azure-ad-ds"></a>Synchronizace atributů a mapování na Azure služba AD DS
+## <a name="attribute-synchronization-and-mapping-to-azure-ad-ds"></a>Synchronizace a mapování atributů do služby Azure AD DS
 
-Následující tabulka uvádí některé běžné atributy a způsob jejich synchronizace s služba AD DS Azure.
+V následující tabulce jsou uvedeny některé běžné atributy a způsob jejich synchronizace s Azure AD DS.
 
-| Atribut v Azure služba AD DS | Zdroj | Poznámky: |
+| Atribut ve službě Azure AD DS | Zdroj | Poznámky |
 |:--- |:--- |:--- |
-| HLAVNÍ NÁZEV UŽIVATELE | Atribut *hlavního názvu uživatele (UPN)* v TENANTOVI Azure AD | Atribut UPN z tenanta Azure AD se synchronizuje se službou Azure služba AD DS. Nejspolehlivějším způsobem, jak se přihlásit ke spravované doméně Azure služba AD DS, je používání hlavního názvu uživatele (UPN). |
-| SAMAccountName | Uživatelský atribut *mailNickname* v TENANTOVI Azure AD nebo se automaticky vygeneroval. | Atribut *sAMAccountName* je od atributu *MailNickname* v tenantovi Azure AD zdrojový. Pokud má více uživatelských účtů stejný atribut *mailNickname* , pak se účet *sAMAccountName* automaticky vygeneruje. Pokud je předpona *mailNickname* nebo *hlavního názvu uživatele (UPN)* delší než 20 znaků, hodnota *sAMAccountName* se automaticky vygeneruje tak, aby splňovala omezení 20 znaků u atributů *sAMAccountName* . |
-| Hesla | Heslo uživatele z tenanta Azure AD | Starší hodnoty hash hesel vyžadované pro ověřování protokolem NTLM nebo Kerberos se synchronizují z tenanta Azure AD. Pokud je tenant Azure AD nakonfigurovaný pro hybridní synchronizaci pomocí Azure AD Connect, hodnoty hash hesel se naúčtují z místního prostředí služba AD DS. |
-| Identifikátor SID primárního uživatele/skupiny | Automaticky generované | Primární identifikátor SID pro účty uživatele nebo skupiny se automaticky vygeneruje v Azure služba AD DS. Tento atribut se neshoduje s identifikátorem SID primárního uživatele nebo skupiny objektu v místním služba AD DSovém prostředí. Neshoda je, protože spravovaná doména Azure služba AD DS má jiný obor názvů SID než místní doména služba AD DS. |
-| Historie identifikátorů SID pro uživatele a skupiny | Identifikátor SID místního primárního uživatele a skupiny | Atribut *SIDHistory* pro uživatele a skupiny v Azure služba AD DS je nastavený tak, aby odpovídal PŘÍSLUŠNÉmu identifikátoru SID primárního uživatele nebo skupiny v místním prostředí služba AD DS. Tato funkce pomáhá zajistit přezvednutí místních aplikací do Azure služba AD DS, protože nemusíte znovu vytvářet prostředky ACL. |
+| UPN | Atribut *UPN* uživatele v tenantu Azure AD | Atribut UPN z klienta Azure AD se synchronizuje jako je do Služby Azure AD DS. Nejspolehlivější způsob, jak se přihlásit ke spravované doméně Azure AD DS, je použití hlavního názvu domény. |
+| Samaccountname | Atribut *mailNickname* uživatele v tenantu Azure AD nebo automaticky vygenerovaný | Atribut *SAMAccountName* pochází z atributu *mailNickname* v tenantovi Azure AD. Pokud více uživatelských účtů má stejný atribut *mailNickname,* je automaticky vygenerován *název SAMAccountName.* Pokud je *předpona e-mailu uživatelePřezdívka* nebo *UPN* delší než 20 znaků, je *název SAMAccountName* automaticky vygenerován tak, aby splňoval limit 20 znaků atributů *SAMAccountName.* |
+| Hesla | Heslo uživatele z klienta Azure AD | Starší hodnotu hashe hesla vyžadovaná pro ověřování NTLM nebo Kerberos jsou synchronizovány z klienta Azure AD. Pokud je klient Azure AD nakonfigurovaný pro hybridní synchronizaci pomocí služby Azure AD Connect, tyto hodnoty hashe hesla jsou získávány z místního prostředí služby AD DS. |
+| Sid primárního uživatele/skupiny | Automaticky generované | Primární SID pro účty uživatelů/skupin se automaticky generuje ve službě Azure AD DS. Tento atribut neodpovídá primárnímu identifikátoru SID uživatele nebo skupiny objektu v místním prostředí služby AD DS. Tento nesoulad je, protože spravovaná doména Azure AD DS má jiný obor názvů SID než místní doména služby AD DS. |
+| Historie SID pro uživatele a skupiny | Místní primární uživatel a sid skupiny | Atribut *SidHistory* pro uživatele a skupiny ve službě Azure AD DS je nastaven tak, aby odpovídal odpovídajícímu primárnímu identifikátoru SID uživatele nebo skupiny v místním prostředí služby AD DS. Tato funkce pomáhá usnadnit zvedací a přesun místních aplikací do služby Azure AD DS, protože není nutné znovu prostředky acl. |
 
 > [!TIP]
-> **Přihlaste se ke spravované doméně pomocí formátu UPN** . U některých uživatelských účtů ve spravované doméně Azure služba AD DS se může automaticky generovat atribut *sAMAccountName* , například `AADDSCONTOSO\driley`. Automaticky generovaná hodnota *sAMAccountName* uživatele se může lišit od PŘEDPONY názvu UPN, takže není vždy spolehlivým způsobem, jak se přihlásit.
+> **Přihlášení ke spravované doméně pomocí formátu UPN** Atribut *SAMAccountName,* například `AADDSCONTOSO\driley`, může být automaticky generován pro některé uživatelské účty ve spravované doméně Azure AD DS. Automaticky generovaný *název SAMAccountName* uživatelů se může lišit od předpony UPN, takže není vždy spolehlivý způsob přihlášení.
 >
-> Například pokud má více uživatelů stejný atribut *mailNickname* nebo mají více uživatelů delší předpony hlavního názvu uživatele (UPN), mohou být pro tyto uživatele automaticky vygenerovány hodnoty *sAMAccountName* pro tyto uživatele. K spolehlivému přihlášení ke spravované doméně Azure služba AD DS použijte formát UPN, například `driley@aaddscontoso.com`.
+> Například pokud více uživatelů má stejný *mailNickname* atribut nebo uživatelé mají příliš dlouhé UPN předpony, *SAMAccountName* pro tyto uživatele může být automaticky generovány. Pomocí formátu HLAVNÍHO názvu `driley@aaddscontoso.com`domény, jako je například , spolehlivé přihlášení ke spravované doméně Azure AD DS.
 
-### <a name="attribute-mapping-for-user-accounts"></a>Mapování atributů uživatelských účtů
+### <a name="attribute-mapping-for-user-accounts"></a>Mapování atributů pro uživatelské účty
 
-Následující tabulka ukazuje, jak se konkrétní atributy pro uživatelské objekty ve službě Azure AD synchronizují s odpovídajícími atributy v Azure služba AD DS.
+Následující tabulka ukazuje, jak se synchronizují konkrétní atributy pro uživatelské objekty ve službě Azure AD s odpovídajícími atributy ve službě Azure AD DS.
 
-| Atribut uživatele v Azure AD | Atribut uživatele v Azure služba AD DS |
+| Atribut uživatele ve službě Azure AD | Atribut uživatele ve službě Azure AD DS |
 |:--- |:--- |
-| accountEnabled |stav skupiny (nastavení nebo vymazání bitu ACCOUNT_DISABLED) |
+| účetPovolený |userAccountControl (nastaví nebo vymaže ACCOUNT_DISABLED bit) |
 | city |l |
-| krajin |co |
+| country |Co |
 | Oddělení |Oddělení |
 | displayName |displayName |
-| facsimileTelephoneNumber |facsimileTelephoneNumber |
+| facsimileČíslo telefonu |facsimileČíslo telefonu |
 | givenName |givenName |
-| pracovní funkce |Název |
+| název úlohy |title |
 | pošta |pošta |
-| mailNickname |msDS-AzureADMailNickname |
-| mailNickname |SAMAccountName (někdy může být generováno automaticky) |
-| Mobilní zařízení |Mobilní zařízení |
-| objektu |msDS-AzureADObjectId |
-| onPremiseSecurityIdentifier |Čísel |
-| passwordPolicies |stav skupiny (nastavení nebo vymazání bitu DONT_EXPIRE_PASSWORD) |
+| přezdívka |přezdívka msDS-AzureADMail |
+| přezdívka |SAMAccountName (může být někdy automaticky generován) |
+| mobil |mobil |
+| Objectid |msDS-AzureADObjectId |
+| onPremiseSecurityIdentifier |Sidhistory |
+| zásady hesel |userAccountControl (nastaví nebo vymaže DONT_EXPIRE_PASSWORD bit) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
-| PSČ |PSČ |
+| Postalcode |Postalcode |
 | preferredLanguage |preferredLanguage |
-| state |St |
-| streetAddress |streetAddress |
-| Příjmení |sériové číslo |
-| telephoneNumber |telephoneNumber |
+| state |st |
+| Streetaddress |Streetaddress |
+| surname |sn |
+| phoneČíslo |phoneČíslo |
 | userPrincipalName (Hlavní název uživatele) |userPrincipalName (Hlavní název uživatele) |
 
 ### <a name="attribute-mapping-for-groups"></a>Mapování atributů pro skupiny
 
-Následující tabulka ukazuje, jak se konkrétní atributy pro objekty skupin v Azure AD synchronizují s odpovídajícími atributy v Azure služba AD DS.
+Následující tabulka ukazuje, jak se synchronizují konkrétní atributy pro objekty skupiny ve službě Azure AD s odpovídajícími atributy ve službě Azure AD DS.
 
-| Atribut Group v Azure AD | Atribut Group v Azure služba AD DS |
+| Atribut skupiny ve službě Azure AD | Atribut skupiny ve službě Azure AD DS |
 |:--- |:--- |
 | displayName |displayName |
-| displayName |SAMAccountName (někdy může být generováno automaticky) |
+| displayName |SAMAccountName (může být někdy automaticky generován) |
 | pošta |pošta |
-| mailNickname |msDS-AzureADMailNickname |
-| objektu |msDS-AzureADObjectId |
-| onPremiseSecurityIdentifier |Čísel |
+| přezdívka |přezdívka msDS-AzureADMail |
+| Objectid |msDS-AzureADObjectId |
+| onPremiseSecurityIdentifier |Sidhistory |
 | securityEnabled |groupType |
 
-## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>Synchronizace z místního služba AD DS do Azure AD a Azure služba AD DS
+## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>Synchronizace z místníslužby AD DS do Azure AD a Azure AD DS
 
-Azure AD Connect slouží k synchronizaci uživatelských účtů, členství ve skupinách a hodnot hash přihlašovacích údajů z místního prostředí služba AD DS do Azure AD. Jsou synchronizovány atributy uživatelských účtů, například hlavní název uživatele (UPN) a místní identifikátor zabezpečení (SID). Pokud se chcete přihlásit pomocí služba AD DS Azure, synchronizují se starší hodnoty hash hesel vyžadované pro ověřování protokolem NTLM a Kerberos taky do Azure AD.
+Azure AD Connect se používá k synchronizaci uživatelských účtů, členství ve skupinách a hash přihlašovacích údajů z místního prostředí služby AD DS do služby Azure AD. Jsou synchronizovány atributy uživatelských účtů, jako je hlavní název uživatele a místní identifikátor zabezpečení (SID). Chcete-li se přihlásit pomocí Služby Azure AD DS, starší nastavení hash hesel vyžadovaná pro ověřování NTLM a Kerberos jsou také synchronizovány do Služby Azure AD.
 
 > [!IMPORTANT]
-> Azure AD Connect by měl být nainstalovaný a nakonfigurovaný jenom pro synchronizaci s místními služba AD DS prostředími. Pro synchronizaci objektů zpět do Azure AD se nepodporuje instalace Azure AD Connect ve spravované doméně Azure služba AD DS.
+> Azure AD Connect by se měl nainstalovat a nakonfiguroval jenom pro synchronizaci s místními prostředími služby AD DS. Není podporováno instalace Azure AD Connect ve spravované doméně Azure AD DS k synchronizaci objektů zpět do Azure AD.
 
-Pokud nakonfigurujete zpětný zápis, změny z Azure AD se synchronizují zpátky do místního prostředí služba AD DS. Pokud uživatel například změní heslo pomocí samoobslužné správy hesel služby Azure AD, heslo se aktualizuje zpátky v místním prostředí služba AD DS.
+Pokud nakonfigurujete zpětný zápis, změny z Azure AD jsou synchronizovány zpět do místního prostředí služby AD DS. Například pokud uživatel změní své heslo pomocí samoobslužné správy hesel Azure AD, heslo se aktualizuje zpět v místním prostředí služby AD DS.
 
 > [!NOTE]
-> Vždy používejte nejnovější verzi Azure AD Connect, abyste měli jistotu, že máte opravy pro všechny známé chyby.
+> Vždy používejte nejnovější verzi Azure AD Connect, abyste zajistili, že máte opravy pro všechny známé chyby.
 
 ### <a name="synchronization-from-a-multi-forest-on-premises-environment"></a>Synchronizace z místního prostředí s více doménovými strukturami
 
-Mnoho organizací má poměrně komplexní místní služba AD DS prostředí, které zahrnuje několik doménových struktur. Azure AD Connect podporuje synchronizaci uživatelů, skupin a hodnot hash přihlašovacích údajů z prostředí s více doménovými strukturami do Azure AD.
+Mnoho organizací má poměrně složité místní prostředí ad ds, které zahrnuje více doménových struktur. Azure AD Connect podporuje synchronizaci uživatelů, skupin a hodnot hash pověření z prostředí s více doménovými strukturami do Azure AD.
 
-Azure AD má mnohem jednodušší a plochý obor názvů. Aby uživatelé mohli spolehlivě přistupovat k aplikacím zabezpečeným službou Azure AD, vyřešte konflikty hlavního názvu uživatele v různých uživatelských účtech v různých doménových strukturách. Spravované domény Azure služba AD DS používají strukturu ploché organizační jednotky, která je podobná službě Azure AD. Všechny uživatelské účty a skupiny se ukládají v kontejneru *AADDC Users* , i když se synchronizují z různých místních domén nebo doménových struktur, i když jste místně nakonfigurovali hierarchickou strukturu organizačních jednotek. Azure služba AD DS spravovaná doména sloučí všechny hierarchické struktury organizační jednotky.
+Azure AD má mnohem jednodušší a plochý obor názvů. Chcete-li uživatelům umožnit spolehlivý přístup k aplikacím zabezpečeným službou Azure AD, vyřešte konflikty upn napříč uživatelskými účty v různých doménových strukturách. Spravované domény Azure AD DS používají strukturu ploché ou, podobně jako Azure AD. Všechny uživatelské účty a skupiny jsou uloženy v kontejneru *AADDC Users,* přestože jsou synchronizovány z různých místních domén nebo doménových struktur, i když jste nakonfigurovali hierarchickou strukturu ou místně. Spravovaná doména Azure AD DS sloučí všechny hierarchické struktury ou.
 
-Jak už bylo popsáno dříve, neexistuje žádná synchronizace z Azure služba AD DS zpět do Azure AD. V Azure můžete [vytvořit vlastní organizační jednotku (OU)](create-ou.md) služba AD DS a pak uživatelé, skupiny nebo účty služeb v těchto vlastních organizačních jednotkách. Žádný z objektů vytvořených ve vlastních organizačních jednotkách se nesynchronizuje zpátky do Azure AD. Tyto objekty jsou k dispozici pouze v rámci spravované domény Azure služba AD DS a nejsou viditelné pomocí rutin Azure AD PowerShellu, Microsoft Graph rozhraní API nebo pomocí uživatelského rozhraní pro správu služby Azure AD.
+Jak již bylo podrobně popsáno, neexistuje žádná synchronizace z Azure AD DS zpět do Služby Azure AD. Můžete [vytvořit vlastní organizační jednotky (OU)](create-ou.md) v Azure AD DS a potom uživatelé, skupiny nebo účty služeb v rámci těchto vlastních organizačních jednotek. Žádný z objektů vytvořených ve vlastních operačních službách jsou synchronizovány zpět do služby Azure AD. Tyto objekty jsou dostupné jenom v rámci spravované domény Azure AD DS a nejsou viditelné pomocí rutin prostředí Azure AD PowerShell, rozhraní Microsoft Graph API nebo pomocí ustálené oblasti správy Azure AD.
 
-## <a name="what-isnt-synchronized-to-azure-ad-ds"></a>Co se nesynchronizuje do Azure služba AD DS
+## <a name="what-isnt-synchronized-to-azure-ad-ds"></a>Co není synchronizované s Azure AD DS
 
-Následující objekty nebo atributy nejsou synchronizované z místního prostředí služba AD DS do služby Azure AD nebo Azure služba AD DS:
+Následující objekty nebo atributy nejsou synchronizovány z místního prostředí služby AD DS do služby Azure AD nebo Azure AD DS:
 
-* **Vyloučené atributy:** Můžete vyloučit určité atributy z synchronizace do Azure AD z místního prostředí služba AD DS pomocí Azure AD Connect. Tyto vyloučené atributy nejsou pak dostupné v Azure služba AD DS.
-* **Zásady skupiny:** Zásady skupiny nakonfigurované v místních služba AD DS prostředí se nesynchronizují do Azure služba AD DS.
-* **Složka SYSVOL:** Obsah složky *SYSVOL* v místním služba AD DSovém prostředí se nesynchronizuje do Azure služba AD DS.
-* **Objekty počítače:** Objekty počítačů pro počítače připojené k místnímu služba AD DS prostředí nejsou synchronizované s Azure služba AD DS. Tyto počítače nemají vztah důvěryhodnosti se spravovanou doménou Azure služba AD DS a patří do nich jenom místní služba AD DS prostředí. V Azure služba AD DS se zobrazují jenom objekty počítačů pro počítače, které mají explicitně připojené domény ke spravované doméně.
-* **Atributy SIDHistory pro uživatele a skupiny:** Identifikátory SID primárních uživatelů a primární skupiny z místního prostředí služba AD DS se synchronizují do Azure služba AD DS. Stávající atributy *SIDHistory* pro uživatele a skupiny se ale nesynchronizují z místního prostředí služba AD DS do Azure služba AD DS.
-* **Struktury organizačních jednotek (OU):** Organizační jednotky definované v místních služba AD DS prostředí se nesynchronizují se službou Azure služba AD DS. V Azure jsou k dispozici dvě integrované organizační jednotky, služba AD DS – jeden pro uživatele a jeden pro počítače. Spravovaná doména Azure služba AD DS má strukturu ploché organizační jednotky. [Ve spravované doméně se můžete rozhodnout vytvořit vlastní organizační jednotku](create-ou.md).
+* **Vyloučené atributy:** Můžete vyloučit určité atributy ze synchronizace na Azure AD z místního prostředí Služby AD DS pomocí Azure AD Connect. Tyto vyloučené atributy pak nejsou k dispozici ve službě Azure AD DS.
+* **Zásady skupiny:** Zásady skupiny nakonfigurované v místním prostředí služby AD DS nejsou synchronizovány s Azure AD DS.
+* **Sysvol složka:** Obsah složky *Sysvol* v místním prostředí služby AD DS není synchronizován se službou Azure AD DS.
+* **Počítačové objekty:** Počítačové objekty pro počítače spojené s místním prostředím služby AD DS nejsou synchronizovány s Azure AD DS. Tyto počítače nemají vztah důvěryhodnosti se spravovanou doménou Azure AD DS a patří jenom do místního prostředí služby AD DS. Ve službě Azure AD DS se zobrazí pouze počítačové objekty pro počítače, které mají explicitně doménové připojení ke spravované doméně.
+* **Atributy SidHistory pro uživatele a skupiny:** Primární uživatel a primární skupiny SID z místního prostředí služby AD DS jsou synchronizovány do služby Azure AD DS. Existující atributy *SidHistory* pro uživatele a skupiny se však nesynchronizují z místního prostředí služby AD DS do služby Azure AD DS.
+* **Struktury organizačních jednotek (OU):** Organizační jednotky definované v místním prostředí služby AD DS se nesynchronizují s Azure AD DS. Ve službě Azure AD DS jsou dvě předdefinované hlavní sady – jedna pro uživatele a jedna pro počítače. Spravovaná doména Azure AD DS má strukturu ploché ou. Můžete vytvořit [vlastní individuální oužinu ve spravované doméně](create-ou.md).
 
-## <a name="password-hash-synchronization-and-security-considerations"></a>Synchronizace hodnoty hash hesel a posouzení zabezpečení
+## <a name="password-hash-synchronization-and-security-considerations"></a>Synchronizace hodnot hash hesel a důležité informace o zabezpečení
 
-Když povolíte Azure služba AD DS, vyžaduje se starší hodnoty hash hesla pro ověřování NTLM a Kerberos. Služba Azure AD neukládá hesla k nešifrovaným textům, takže tyto hodnoty hash není možné automaticky vygenerovat pro existující uživatelské účty. Po vygenerování a uložení se hodnoty hash hesla kompatibilní s protokolem NTLM a Kerberos vždycky ukládají šifrovaným způsobem ve službě Azure AD.
+Když povolíte Azure AD DS, jsou vyžadovány starší nastavení hash hesla pro ověřování NTLM + Kerberos. Azure AD neukládá hesla ve stavu prostého textu, takže tyto hashe nelze automaticky generovat pro existující uživatelské účty. Po vygenerování a uložení jsou hashe kompatibilní s ntlm a kerberos hesla vždy uloženy šifrovaným způsobem ve službě Azure AD.
 
-Šifrovací klíče jsou pro každého tenanta Azure AD jedinečné. Tyto hodnoty hash jsou šifrované, takže přístup k dešifrovacím klíčům má jenom Azure služba AD DS. Žádná jiná služba ani součást ve službě Azure AD nemá přístup k dešifrovacím klíčům.
+Šifrovací klíče jsou jedinečné pro každého klienta Azure AD. Tyto hashes jsou šifrovány tak, že pouze Azure AD DS má přístup k dešifrovací klíče. Žádná jiná služba nebo součást ve službě Azure AD nemá přístup k dešifrovacím klíčům.
 
-Starší hodnoty hash hesel se pak synchronizují z Azure AD do řadičů domény pro spravovanou doménu Azure služba AD DS. Disky pro tyto spravované řadiče domény v Azure služba AD DS jsou zašifrované v klidovém stavu. Tyto hodnoty hash hesla se ukládají a zabezpečují na těchto řadičích domény podobně jako při ukládání a zabezpečení hesel v místním služba AD DS prostředí.
+Starší nastavení hashe hesla se pak synchronizují ze služby Azure AD do řadičů domény pro spravovanou doménu Azure AD DS. Disky pro tyto spravované řadiče domény ve službě Azure AD DS jsou šifrované v klidovém stavu. Tato hash hesel jsou uložena a zabezpečena v těchto řadičích domény podobná způsobu ukládání a zabezpečení hesel v místním prostředí služby AD DS.
 
-Pro cloudová prostředí Azure AD [musí uživatelé resetovat nebo změnit heslo](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , aby se vygenerovaly a uložily hodnoty hash hesel v Azure AD. Pro všechny cloudové uživatelské účty vytvořené v Azure AD po povolení Azure AD Domain Services se generují hodnoty hash hesel a ukládají se do formátů kompatibilních s protokolem NTLM a Kerberos. Tyto nové účty nemusejí resetovat ani měnit heslo generují starší hodnoty hash hesel.
+Pro prostředí Azure AD pouze pro cloud [uživatelé musí resetovat nebo změnit své heslo,](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) aby se požadované zabezpečení hesel vygenerovalo a ukládaly ve službě Azure AD. Pro všechny cloudové uživatelské účet vytvořený ve službě Azure AD po povolení služby Azure AD Domain Services se vygenerují a ukládají ve formátech kompatibilních s protokoly NTLM a Kerberos. Tyto nové účty není nutné resetovat nebo měnit své heslo generovat starší heslo hashe.
 
-U hybridních uživatelských účtů synchronizovaných z místního prostředí služba AD DS pomocí Azure AD Connect musíte [nakonfigurovat Azure AD Connect pro synchronizaci hodnot hash hesel ve formátech kompatibilních s protokoly NTLM a Kerberos](tutorial-configure-password-hash-sync.md).
+Pro hybridní uživatelské účty synchronizované z místního prostředí služby AD DS pomocí služby Azure AD Connect je nutné [nakonfigurovat službu Azure AD Connect tak, aby synchronizovala hodnothasy hesel ve formátech kompatibilních s protokoly NTLM a Kerberos](tutorial-configure-password-hash-sync.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o konkrétních informacích o synchronizaci hesel najdete v tématu [Jak funguje synchronizace hodnot hash hesel s Azure AD Connect](../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context).
+Další informace o specifikách synchronizace hesel najdete v tématu [Jak funguje synchronizace hash hesel s Azure AD Connect](../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context).
 
-Pokud chcete začít s Azure služba AD DS, [vytvořte spravovanou doménu](tutorial-create-instance.md).
+Pokud chcete začít s Azure AD DS, [vytvořte spravovanou doménu](tutorial-create-instance.md).

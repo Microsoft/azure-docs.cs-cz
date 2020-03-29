@@ -1,6 +1,6 @@
 ---
-title: Odeslání zpráv zabezpečení Azure Security Center pro IoT | Microsoft Docs
-description: Naučte se odesílat zprávy zabezpečení pomocí Azure Security Center pro IoT.
+title: Odeslání zpráv zabezpečení do Centra zabezpečení Azure pro IoT| Dokumenty společnosti Microsoft
+description: Přečtěte si, jak posílat zprávy zabezpečení pomocí Azure Security Center pro IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,50 +16,50 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 8bbbd8248c7418b667e34389cb47bd3f6b4f06ab
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963814"
 ---
-# <a name="send-security-messages-sdk"></a>Odeslat sadu SDK pro zprávy zabezpečení
+# <a name="send-security-messages-sdk"></a>Odeslání zpráv zabezpečení sady SDK
 
-Tato příručka vysvětluje Azure Security Center možnosti služby IoT, když se rozhodnete shromažďovat a odesílat zprávy o zabezpečení zařízení bez použití Azure Security Center pro agenta IoT a vysvětluje, jak to udělat.  
+Tento návod vysvětluje možnosti Služby Azure Security Center pro služby IoT, když se rozhodnete shromažďovat a odesílat zprávy zabezpečení zařízení bez použití agenta Azure Security Center pro IoT a vysvětluje, jak to udělat.  
 
 V této příručce se naučíte: 
 > [!div class="checklist"]
-> * Posílání zpráv o zabezpečení pomocí sady Azure IoT C SDK
-> * Posílání zpráv o zabezpečení pomocí sady C# Azure IoT SDK
-> * Posílání zpráv o zabezpečení pomocí sady SDK Azure IoT Python
-> * Posílání zpráv o zabezpečení pomocí sady Azure IoT Node. js SDK
-> * Posílání zpráv o zabezpečení pomocí sady Azure IoT Java SDK
+> * Odesílání zpráv zabezpečení pomocí sady Azure IoT C SDK
+> * Odesílání zpráv zabezpečení pomocí sady Azure IoT C# SDK
+> * Odesílání zpráv zabezpečení pomocí sady Azure IoT Python SDK
+> * Odesílání zpráv zabezpečení pomocí sady Azure IoT Node.js SDK
+> * Odesílání zpráv zabezpečení pomocí sady Azure IoT Java SDK
 
 
-## <a name="azure-security-center-for-iot-capabilities"></a>Azure Security Center pro možnosti IoT
+## <a name="azure-security-center-for-iot-capabilities"></a>Azure Security Center pro funkce IoT
 
-Azure Security Center pro IoT může zpracovávat a analyzovat jakýkoli druh dat zprávy zabezpečení, pokud se odesílají data v souladu se [schématem Azure Security Center pro IoT](https://aka.ms/iot-security-schemas) a zpráva je nastavena jako bezpečnostní zpráva.
+Azure Security Center pro IoT můžete zpracovat a analyzovat jakýkoli druh dat zpráv zabezpečení tak dlouho, dokud data odeslaná odpovídá [Azure Security Center pro ioT schéma](https://aka.ms/iot-security-schemas) a zpráva je nastavena jako zpráva zabezpečení.
 
 ## <a name="security-message"></a>Zpráva zabezpečení
 
-Azure Security Center pro IoT definuje bezpečnostní zprávu pomocí následujících kritérií:
+Azure Security Center pro IoT definuje zprávu zabezpečení pomocí následujících kritérií:
 - Pokud byla zpráva odeslána pomocí sady Azure IoT SDK
 - Pokud zpráva odpovídá [schématu zprávy zabezpečení](https://aka.ms/iot-security-schemas)
-- Pokud byla zpráva před odesláním nastavena jako bezpečnostní zpráva
+- Pokud byla zpráva před odesláním nastavena jako zpráva zabezpečení
 
-Každá zpráva zabezpečení obsahuje metadata odesílatele, například `AgentId`, `AgentVersion`, `MessageSchemaVersion` a seznam událostí zabezpečení.
-Schéma definuje platné a požadované vlastnosti zprávy zabezpečení, včetně typů událostí.
-
->[!Note]
-> Zprávy odeslané v nedodržení schématu jsou ignorovány. Před zahájením odesílání dat Nezapomeňte ověřit schéma, protože ignorované zprávy se momentálně neukládají. 
+Každá zpráva zabezpečení obsahuje metadata odesílatele, `AgentVersion` `MessageSchemaVersion` například `AgentId`, a seznam událostí zabezpečení.
+Schéma definuje platné a požadované vlastnosti zprávy zabezpečení včetně typů událostí.
 
 >[!Note]
-> Zprávy odeslané jako bezpečnostní zpráva s použitím sady Azure IoT SDK nebudou směrovány do Azure Security Center pro kanál IoT.
+> Odeslané zprávy, které nejsou v souladu se schématem, jsou ignorovány. Před zahájením odesílání dat nezapomeňte ověřit schéma, protože ignorované zprávy nejsou aktuálně uloženy. 
 
-## <a name="valid-message-example"></a>Příklad platné zprávy
+>[!Note]
+> Odeslané zprávy, které nebyly nastaveny jako zpráva zabezpečení pomocí sady Azure IoT SDK, nebudou směrovány do kanálu Centra zabezpečení Azure pro IoT.
 
-Následující příklad ukazuje platný objekt zprávy zabezpečení. Příklad obsahuje metadata zprávy a jednu `ProcessCreate` událost zabezpečení.
+## <a name="valid-message-example"></a>Platný příklad zprávy
 
-Po nastavení zprávy o zabezpečení a odeslání bude tato zpráva zpracována Azure Security Center pro IoT.
+Následující příklad ukazuje platný objekt zprávy zabezpečení. Příklad obsahuje metadata zprávy `ProcessCreate` a jednu událost zabezpečení.
+
+Po nastavení jako zpráva zabezpečení a odeslané, tato zpráva bude zpracována Azure Security Center pro IoT.
 
 ```json
 "AgentVersion": "0.0.1",
@@ -89,17 +89,17 @@ Po nastavení zprávy o zabezpečení a odeslání bude tato zpráva zpracována
 ]
 ```
 
-## <a name="send-security-messages"></a>Odeslat zprávy zabezpečení 
+## <a name="send-security-messages"></a>Odesílání zpráv zabezpečení 
 
-Posílat zprávy zabezpečení *bez* použití Azure Security Center pro agenta IoT pomocí [sady SDK pro zařízení Azure IoT C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), sady SDK pro [ C# zařízení Azure](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)IoT, Azure IoT [Node. js SDK](https://github.com/Azure/azure-iot-sdk-node), [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)nebo [Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java).
+Posílejte zprávy o zabezpečení *bez* použití Azure Security Center pro agenta IoT, pomocí [sady Azure IoT C device SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), Azure [IoT C# device SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), [Azure IoT Node.js SDK](https://github.com/Azure/azure-iot-sdk-node), [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)nebo [Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java).
 
-Pokud chcete odesílat data zařízení z vašich zařízení ke zpracování Azure Security Center pro IoT, použijte jedno z následujících rozhraní API k označení zpráv pro správné směrování do Azure Security Center kanálu zpracování IoT. 
+Pokud chcete odeslat data zařízení ze svých zařízení ke zpracování pomocí Azure Security Center pro IoT, použijte jedno z následujících rozhraní API k označení zpráv pro správné směrování do kanálu pro zpracování IoT centra zabezpečení Azure. 
 
-Všechna data, která jsou odeslána, i když jsou označena správnou hlavičkou, musí také vyhovovat [Azure Security Center schématu zpráv IoT](https://aka.ms/iot-security-schemas). 
+Všechna data, která jsou odeslána, i když jsou označena správnou hlavičkou, musí být také v souladu se [schématem zpráv Centra zabezpečení Azure pro IoT](https://aka.ms/iot-security-schemas). 
 
-### <a name="send-security-message-api"></a>Poslat rozhraní API pro zprávy zabezpečení 
+### <a name="send-security-message-api"></a>Odeslat rozhraní API zprávy zabezpečení 
 
-Rozhraní API pro **posílání zpráv zabezpečení** je aktuálně k dispozici v jazycích C a C#, Python, Node. js a Java.  
+Rozhraní **API odesílání zpráv zabezpečení** je aktuálně k dispozici v jazycích C a C#, Pythonu, Node.js a jazyce Java.  
 
 #### <a name="c-api"></a>C API
 
@@ -157,7 +157,7 @@ private static async Task SendSecurityMessageAsync(string messageContent)
     await client.SendEventAsync(securityMessage);
 }
 ```
-#### <a name="nodejs-api"></a>Rozhraní API pro Node. js
+#### <a name="nodejs-api"></a>Node.js API
 
 ```typescript
 var Protocol = require('azure-iot-device-mqtt').Mqtt
@@ -192,9 +192,9 @@ function SendSecurityMessage(messageContent)
 
 #### <a name="python-api"></a>Rozhraní API pro Python
 
-Pokud chcete použít rozhraní Python API, musíte si nainstalovat balíček [Azure-IoT-Device](https://pypi.org/project/azure-iot-device/).
+Chcete-li použít rozhraní API Pythonu, musíte nainstalovat balíček [azure-iot-device](https://pypi.org/project/azure-iot-device/).
 
-Při použití rozhraní Python API můžete buď Odeslat zprávu o zabezpečení prostřednictvím modulu nebo prostřednictvím zařízení pomocí jedinečného připojovacího řetězce zařízení nebo modulu. Při použití následujícího příkladu skriptu Pythonu se zařízením použijte **IoTHubDeviceClient**a s modulem použijte **IoTHubModuleClient**. 
+Při použití rozhraní Python API můžete zprávu zabezpečení odeslat prostřednictvím modulu nebo prostřednictvím zařízení pomocí jedinečného připojovacího řetězce zařízení nebo modulu. Při použití následujícího příkladu skriptu Pythonu se zařízením použijte **IoTHubDeviceClient**a s modulem použijte **IoTHubModuleClient**. 
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
@@ -226,10 +226,10 @@ public void SendSecurityMessage(string message)
 
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si [Přehled](overview.md) služby Azure Security Center for IoT.
-- Další informace o [architektuře](architecture.md) Azure Security Center pro IoT
+- Přečtěte si [přehled](overview.md) služby Azure Security Center for IoT
+- Další informace o Azure Security Center pro [architekturu](architecture.md) IoT
 - Povolení [služby](quickstart-onboard-iot-hub.md)
-- Přečtěte si [Nejčastější dotazy](resources-frequently-asked-questions.md) .
-- Přečtěte si, jak získat přístup k [nezpracovaným datům zabezpečení](how-to-security-data-access.md)
-- Vysvětlení [doporučení](concept-recommendations.md)
-- Vysvětlení [výstrah](concept-security-alerts.md)
+- Přečtěte si [nejčastější dotazy](resources-frequently-asked-questions.md)
+- Zjistěte, jak získat přístup k [nezpracovaným bezpečnostním datům](how-to-security-data-access.md)
+- Principy [doporučení](concept-recommendations.md)
+- Principy [výstrah](concept-security-alerts.md)

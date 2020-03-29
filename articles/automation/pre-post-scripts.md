@@ -1,88 +1,88 @@
 ---
-title: Konfigurace předzálohovacích skriptů v nasazení Update Management v Azure a jejich následné spouštění
-description: Tento článek popisuje, jak nakonfigurovat a spravovat předzálohovací skripty a následné skripty pro nasazení aktualizací.
+title: Konfigurace předa po skriptech v nasazení správy aktualizací v Azure
+description: Tento článek popisuje, jak konfigurovat a spravovat předběžné skripty a postskripty pro nasazení aktualizací.
 services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75417800"
 ---
-# <a name="manage-pre-and-post-scripts"></a>Správa předzálohovacích a pozálohovacích skriptů
+# <a name="manage-pre-and-post-scripts"></a>Správa předa skriptů a po skriptech
 
-Předzálohovací a pozálohovací skripty umožňují spouštět Runbooky PowerShellu v účtu Azure Automation před (před úlohou) a po (po dokončení) nasazení aktualizace. Předzálohovací a pozálohovací skripty běží v kontextu Azure, ne místně. Předzálohovací skripty běží na začátku nasazení aktualizace. Následné skripty se spouští na konci nasazení a po všech nakonfigurovaných restartováních.
+Předskripty a postskripty umožňují spouštět runbooky PowerShellu ve vašem účtu Azure Automation před (před úlohou) a po nasazení (po úkolu) nasazení mažete. Před a po skripty spustit v kontextu Azure, nikoli místně. Předběžné skripty jsou spuštěny na začátku nasazení aktualizace. Post-skripty spustit na konci nasazení a po všech restartování, které jsou nakonfigurovány.
 
-## <a name="runbook-requirements"></a>Požadavky na Runbook
+## <a name="runbook-requirements"></a>Požadavky sady Runbook
 
-Aby se sada Runbook mohla použít jako předzálohovací nebo pozálohovací skript, musí být sada Runbook naimportována do vašeho účtu Automation a publikována. Další informace o tomto procesu najdete v tématu [publikování Runbooku](manage-runbooks.md#publish-a-runbook).
+Aby se runbook použil jako před nebo po skriptu, musí být runbook importován do vašeho účtu Automation a publikován. Další informace o tomto procesu najdete [v tématu Publikování runbooku](manage-runbooks.md#publish-a-runbook).
 
-## <a name="using-a-pre-script-or-post-script"></a>Použití předzálohovacího skriptu nebo pozálohovacího skriptu
+## <a name="using-a-pre-script-or-post-script"></a>Použití předskriptu nebo postskriptu
 
-Pokud chcete použít předzálohovací skript nebo pozálohovací skript v nasazení aktualizace, začněte tím, že vytvoříte nasazení aktualizace. Vyberte **pre-Scripts + post-Scripts**. Tato akce otevře stránku **Vybrat před skripty a po skriptu** .
+Chcete-li použít předskript nebo post-script v nasazení aktualizace, začněte vytvořením nasazení aktualizace. Vyberte **možnost Předběžné skripty + Post-Skripty**. Tato akce otevře stránku **Vybrat předběžné skripty + Post-skripty.**
 
-![Vybrat skripty](./media/pre-post-scripts/select-scripts.png)
+![Výběr skriptů](./media/pre-post-scripts/select-scripts.png)
 
-Vyberte skript, který chcete použít. V tomto příkladu používáme sadu Runbook **UpdateManagement-TurnOnVms** . Když vyberete Runbook, otevře se stránka **Konfigurace skriptu** . Vyberte možnost **před skriptem**a pak vyberte **OK**.
+Vyberte skript, který chcete použít. V tomto příkladu používáme **updateManagement-TurnOnVms** runbook. Když vyberete runbook, otevře se stránka **Konfigurovat skript.** Vyberte **Možnost Předskriptování**a pak vyberte **OK**.
 
-Tento postup opakujte pro skript **UpdateManagement-TurnOffVms** . Když ale zvolíte **typ skriptu**, vyberte **pozálohovací skript**.
+Tento postup opakujte pro skript **UpdateManagement-TurnOffVms.** Ale když zvolíte **typ skriptu**, vyberte **Post-Script**.
 
-V části **vybrané položky** se teď zobrazují oba vybrané skripty. Jeden je předzálohovací skript a druhý je po skriptu:
+V části **Vybrané položky** se nyní zobrazí oba vybrané skripty. Jeden je pre-script a druhý je post-skript:
 
 ![Vybrané položky](./media/pre-post-scripts/selected-items.png)
 
 Dokončete konfiguraci nasazení aktualizace.
 
-Po dokončení nasazení aktualizace můžete zobrazit výsledky tak, že přejdete na **nasazení aktualizací** . Jak vidíte, stav je k dispozici pro předzálohovací a pozálohovací skript:
+Po dokončení nasazení aktualizace můžete přejít na **aktualizace nasazení** zobrazíte výsledky. Jak můžete vidět, stav je k dispozici pro pre-script a post-script:
 
 ![Aktualizovat výsledky](./media/pre-post-scripts/update-results.png)
 
-Když vyberete nasazení aktualizace, zobrazí se další podrobnosti ke skriptům pre a post. K dispozici je odkaz na zdroj skriptu v době běhu.
+Výběrem spuštění nasazení aktualizace se zobrazí další podrobnosti o předa po skriptech. Je k dispozici odkaz na zdroj skriptu v době spuštění.
 
 ![Výsledky spuštění nasazení](./media/pre-post-scripts/deployment-run.png)
 
 ## <a name="passing-parameters"></a>Předávání parametrů
 
-Když nakonfigurujete předběžné a následné skripty, můžete předat parametry stejně jako při plánování Runbooku. Parametry jsou definovány v době vytváření nasazení aktualizace. Předběžné a následné skripty podporují následující typy:
+Při konfiguraci před a po skripty, můžete předat parametry, stejně jako plánování runbook. Parametry jsou definovány v době vytvoření nasazení aktualizace. Předa po skripty podporují následující typy:
 
-* char
-* bytové
-* hmot
-* dlouhou
-* notaci
-* konkrétní
-* klepat
-* Hodnotu
-* řetezce
+* To je v pořádku.
+* [bajt]
+* [int]
+* To je v pořádku.
+* [desetinná]
+* [svobodná]
+* To je v pořádku.
+* [DateTime]
+* [řetězec]
 
-Pokud potřebujete jiný typ objektu, můžete ho přetypovat na jiný typ s vlastní logikou v sadě Runbook.
+Pokud potřebujete jiný typ objektu, můžete jej přetypovat na jiný typ s vlastní logikou v runbooku.
 
-Kromě standardních parametrů Runbooku je k dispozici další parametr: **SoftwareUpdateConfigurationRunContext**
+Kromě standardních parametrů sady Runbook je k dispozici další parametr: **SoftwareUpdateConfigurationRunContext**
 
-Tento parametr je řetězec JSON, a pokud definujete parametr v předzálohovacím nebo pozálohovacím skriptu, automaticky se předává v nasazení aktualizace. Parametr obsahuje informace o nasazení aktualizace, což je podmnožina informací vrácených [rozhraním API SoftwareUpdateconfigurations](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration). 
+Tento parametr je řetězec JSON a pokud definujete parametr v před nebo post-script, je automaticky předán nasazení aktualizace. Parametr obsahuje informace o nasazení aktualizace, což je podmnožina informací vrácených [rozhraním API SoftwareUpdateconfigurations .](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) 
 
 V následující tabulce jsou uvedeny vlastnosti, které jsou k dispozici v proměnné.
 
-### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext properties
+### <a name="softwareupdateconfigurationruncontext-properties"></a>Vlastnosti SoftwareUpdateConfigurationRunContext
 
 |Vlastnost  |Popis  |
 |---------|---------|
-|SoftwareUpdateConfigurationName     | Název konfigurace aktualizace softwaru.        |
-|SoftwareUpdateConfigurationRunId     | Jedinečné ID pro běh.        |
+|Název konfigurace aktualizace softwaru     | Název konfigurace aktualizace softwaru.        |
+|SoftwareUpdateConfigurationRunId     | Jedinečné ID pro spuštění.        |
 |SoftwareUpdateConfigurationSettings     | Kolekce vlastností souvisejících s konfigurací aktualizace softwaru.         |
-|SoftwareUpdateConfigurationSettings.operatingSystem     | Operační systémy cílené pro nasazení aktualizace.         |
-|SoftwareUpdateConfigurationSettings.duration     | Maximální trvání nasazení aktualizace spouštěné jako `PT[n]H[n]M[n]S` podle ISO8601; nazývá se také časový *interval pro správu a údržbu*.          |
+|SoftwareUpdateConfigurationSettings.operatingSystem     | Operační systémy určené pro nasazení aktualizace.         |
+|SoftwareUpdateConfigurationSettings.duration     | Maximální doba nasazení aktualizace bude `PT[n]H[n]M[n]S` spuštěna podle ISO8601; také nazývá *okno údržby*.          |
 |SoftwareUpdateConfigurationSettings.Windows     | Kolekce vlastností souvisejících s počítači se systémem Windows.         |
-|SoftwareUpdateConfigurationSettings.Windows.excludedKbNumbers     | Seznam aktualizací KB, které jsou vyloučené z nasazení aktualizace.        |
-|SoftwareUpdateConfigurationSettings.Windows.includedUpdateClassifications     | Klasifikace aktualizací vybrané pro nasazení aktualizace        |
+|SoftwareUpdateConfigurationSettings.Windows.excludedKbNumbers     | Seznam kbs, které jsou vyloučeny z nasazení aktualizace.        |
+|SoftwareUpdateConfigurationSettings.Windows.includedAktualizace     | Aktualizace klasifikace vybrané pro nasazení aktualizace.        |
 |SoftwareUpdateConfigurationSettings.Windows.rebootSetting     | Nastavení restartování pro nasazení aktualizace.        |
-|azureVirtualMachines     | Seznam resourceId pro virtuální počítače Azure v nasazení aktualizace.        |
-|nonAzureComputerNames|Seznam plně kvalifikovaných názvů domén počítačů mimo Azure v nasazení aktualizace.|
+|azureVirtualMachines     | Seznam resourceIds pro virtuální počítače Azure v nasazení aktualizace.        |
+|názvy počítačů bez Azure|Seznam nepočítačů Azure v oblasti virtuálních hedn v nasazení aktualizace.|
 
-V následujícím příkladu je řetězec formátu JSON předaný parametru **SoftwareUpdateConfigurationRunContext** :
+Následující příklad je řetězec JSON předaný parametru **SoftwareUpdateConfigurationRunContext:**
 
 ```json
 "SoftwareUpdateConfigurationRunContext":{
@@ -112,15 +112,15 @@ V následujícím příkladu je řetězec formátu JSON předaný parametru **So
    }
 ```
 
-Úplný příklad se všemi vlastnostmi najdete v: [získání konfigurace aktualizace softwaru podle názvu](/rest/api/automation/softwareupdateconfigurations/getbyname#examples).
+Úplný příklad se všemi vlastnostmi naleznete na adrese: [Získat konfiguraci aktualizace softwaru podle názvu](/rest/api/automation/softwareupdateconfigurations/getbyname#examples).
 
 > [!NOTE]
-> Objekt `SoftwareUpdateConfigurationRunContext` může obsahovat duplicitní položky pro počítače. To může způsobit, že se ve stejném počítači několikrát spustí předběžná a pozálohovací skript. Pokud chcete toto chování obejít, použijte `Sort-Object -Unique` k výběru jenom jedinečných názvů virtuálních počítačů ve vašem skriptu.
+> Objekt `SoftwareUpdateConfigurationRunContext` může obsahovat duplicitní položky pro počítače. To může způsobit, že před a po skripty spustit vícekrát na stejném počítači. Chcete-li toto `Sort-Object -Unique` chování obejít, použijte k výběru pouze jedinečné názvy virtuálních počítačů ve skriptu.
 
 
 ## <a name="stopping-a-deployment"></a>Zastavení nasazení
 
-Pokud chcete zastavit nasazení na základě předzálohovacího skriptu, je nutné [vyvolat](automation-runbook-execution.md#throw) výjimku. Pokud to neuděláte, nasazení a pozálohovací skript se pořád spustí. Následující fragment kódu ukazuje, jak vyvolat výjimku.
+Pokud chcete zastavit nasazení na základě předběžného skriptu, musíte [vyvolat](automation-runbook-execution.md#throw) výjimku. Pokud tak neučiníte, nasazení a post-script bude stále spuštěna. Následující fragment kódu ukazuje, jak vyvolat výjimku.
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -137,22 +137,22 @@ foreach($summary in $finalStatus)
 
 ## <a name="samples"></a>ukázky
 
-Ukázky pro předzálohovací a pozálohovací skripty najdete v [galerii Center skriptů](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell) a v [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22), nebo je můžete importovat pomocí Azure Portal. Uděláte to tak, že v účtu Automation v části **Automatizace procesu**vyberete **Galerie runbooků**. Pro filtr použijte **Update Management** .
+Ukázky pro předa po skripty najdete v [Galerii Centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell) a [PowerShell Galerie](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22), nebo je můžete importovat prostřednictvím portálu Azure. Chcete-li to provést, vyberte v části **Automatizace procesů**v části Automatizace procesů **v galerii sad Runbook**. Pro filtr použijte **správu aktualizací.**
 
-![Seznam galerie](./media/pre-post-scripts/runbook-gallery.png)
+![Seznam galerií](./media/pre-post-scripts/runbook-gallery.png)
 
-Můžete je také vyhledat podle názvu skriptu, jak je znázorněno v následujícím seznamu:
+Nebo je můžete vyhledat podle názvu skriptu, jak je znázorněno v následujícím seznamu:
 
-* Update Management – zapnout virtuální počítače
-* Update Management – vypnutí virtuálních počítačů
-* Update Management – spustit skript místně
-* Update Management – šablona pro skripty před/po
-* Update Management – spuštění skriptu pomocí příkazu Run
+* Správa aktualizací – zapnutí virtuálních počítačů
+* Správa aktualizací – vypnutí virtuálních měn
+* Správa aktualizací – spuštění skriptu místně
+* Správa aktualizací – šablona pro skripty před/po
+* Správa aktualizací – spuštění skriptu pomocí příkazu Spustit
 
 > [!IMPORTANT]
-> Po importu runbooků je musíte publikovat, aby bylo možné je použít. Provedete to tak, že v účtu Automation vyhledáte Runbook, vyberete **Upravit**a pak vyberete **publikovat**.
+> Po importu sad Runbook je nutné je před použitím publikovat. Chcete-li to provést, vyhledejte runbook v účtu Automation, vyberte **Upravit**a pak vyberte **Publikovat**.
 
-Ukázky jsou všechny na základě základní šablony, která je definována v následujícím příkladu. Tato šablona se dá použít k vytvoření vlastní sady Runbook pro použití s předběžnými a následnými skripty. K dispozici je nezbytná logika pro ověřování pomocí Azure a zpracování parametru `SoftwareUpdateConfigurationRunContext`.
+Ukázky jsou založeny na základní šabloně, která je definována v následujícím příkladu. Tuto šablonu lze použít k vytvoření vlastní runbook pro použití s pre a post-skripty. Obsahuje se potřeba logika pro ověřování `SoftwareUpdateConfigurationRunContext` pomocí Azure a zpracování parametru.
 
 ```powershell
 <#
@@ -205,33 +205,33 @@ $variable = Get-AutomationVariable -Name $runId
 #>
 ```
 
-## <a name="interacting-with-machines"></a>Interakce s počítači
+## <a name="interacting-with-machines"></a>Interakce se stroji
 
-Předběžná a následná úloha se spouští jako sada Runbook v účtu Automation a ne přímo na počítačích ve vašem nasazení. Předběžné a následné úkoly se také spouštějí v kontextu Azure a nemají přístup k počítačům mimo Azure. V následujících částech se dozvíte, jak můžete s počítači pracovat přímo, ať už jde o virtuální počítače Azure nebo počítače mimo Azure.
+Předa po úlohy spustit jako runbook ve vašem účtu automatizace a ne přímo na počítačích ve vašem nasazení. Předa po úkolech se taky spouštějí v kontextu Azure a nemají přístup k počítačům, které nejsou azure. Následující části ukazují, jak můžete pracovat s počítači přímo, ať už jsou to virtuální počítače Azure nebo počítače než Azure.
 
-### <a name="interacting-with-azure-machines"></a>Interakce s počítači s Azure
+### <a name="interacting-with-azure-machines"></a>Interakce s počítači Azure
 
-Předběžné a následné úkoly se spouštějí jako Runbooky a nativně se nespouštějí na virtuálních počítačích Azure ve vašem nasazení. Abyste mohli pracovat s virtuálními počítači Azure, musíte mít následující položky:
+Předa po úlohy se spouštějí jako runbooky a nespouštějí se nativně na virtuálních počítačích Azure ve vašem nasazení. Chcete-li pracovat s virtuálními počítači Azure, musíte mít následující položky:
 
 * Účet Spustit jako
 * Runbook, který chcete spustit
 
-Pro interakci s počítači s Azure byste měli použít rutinu [Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) k interakci s virtuálními počítači Azure. Příklad toho, jak to udělat, najdete v ukázce Runbooku [Update Management – spuštění skriptu pomocí příkazu Run](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc).
+Chcete-li pracovat s počítači Azure, měli byste použít rutinu [Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) k interakci s virtuálními počítači Azure. Příklad, jak to provést, naleznete v příkladu sady Runbook [Update Management – spuštění skriptu s příkazem Spustit](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc).
 
-### <a name="interacting-with-non-azure-machines"></a>Interakce s počítači mimo Azure
+### <a name="interacting-with-non-azure-machines"></a>Interakce s počítači, které nejsou azure
 
-Předběžná a následná úloha běží v kontextu Azure a nemají přístup k počítačům mimo Azure. Abyste mohli pracovat s počítači mimo Azure, musíte mít následující položky:
+Předa po úkolech se spouštějí v kontextu Azure a nemají přístup k počítačům, které nejsou azure. Chcete-li pracovat s počítači, které nejsou Azure, musíte mít následující položky:
 
 * Účet Spustit jako
-* Hybrid Runbook Worker nainstalované v počítači
-* Sada Runbook, kterou chcete spustit místně
-* Nadřazený Runbook
+* Hybridní pracovník runbooku nainstalovaný v počítači
+* Runbook, který chcete spustit místně
+* Nadřazená runbook
 
-Aby bylo možné pracovat s počítači mimo Azure, je spuštěn nadřazený Runbook v kontextu Azure. Tato sada runbook volá podřízený Runbook pomocí rutiny [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) . Je nutné zadat parametr `-RunOn` a zadat název Hybrid Runbook Worker, na kterém se má skript spustit. Další informace naleznete v ukázce Runbooku [Update Management – spusťte skript místně](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
+Pro interakci s počítači, které nejsou azure, se nadřazený runbook spouštěný v kontextu Azure. Tato runbook volá podřízený runbook s rutinou [Start-AzureRmAutomationRunbook.](/powershell/module/azurerm.automation/start-azurermautomationrunbook) Je nutné `-RunOn` zadat parametr a zadat název hybridního pracovníka runbooku, na který má být skript spuštěn. Další informace najdete v tématu runbook příklad [Update Management – spusťte skript místně](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
 
-## <a name="abort-patch-deployment"></a>Přerušit nasazení opravy
+## <a name="abort-patch-deployment"></a>Přerušit nasazení oprav
 
-Pokud předzálohovací skript vrátí chybu, může být vhodné zrušit nasazení. Abyste to mohli udělat, musíte ve svém skriptu [vyvolat](/powershell/module/microsoft.powershell.core/about/about_throw) chybu pro všechny logiky, které by představovaly selhání.
+Pokud předskript vrátí chybu, můžete přerušit nasazení. Chcete-li to provést, je nutné [vyvolat](/powershell/module/microsoft.powershell.core/about/about_throw) chybu ve skriptu pro všechny logiky, které by představovaly selhání.
 
 ```powershell
 if (<My custom error logic>)
@@ -243,11 +243,11 @@ if (<My custom error logic>)
 
 ## <a name="known-issues"></a>Známé problémy
 
-* Pokud používáte předběžné a následné skripty, nelze do parametrů předat logické hodnoty, objekty ani pole. Pokud to uděláte, sada Runbook se nezdařila. Úplný seznam podporovaných typů naleznete v tématu [předávání parametrů](#passing-parameters).
+* Při použití předa postskriptů nelze předat logickým hodnotám, objektům nebo polím parametrům. Pokud tak učiníte, runbook se nezdaří. Úplný seznam podporovaných typů naleznete v tématu [Předávání parametrů](#passing-parameters).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět, jak spravovat aktualizace pro virtuální počítače s Windows, Projděte si následující kurz:
+Přejděte k následujícímu kurzu, kde se dozvíte, jak spravovat aktualizace pro virtuální počítače s Windows:
 
 > [!div class="nextstepaction"]
 > [Správa aktualizací a oprav pro virtuální počítače Azure s Windows](automation-tutorial-update-management.md)

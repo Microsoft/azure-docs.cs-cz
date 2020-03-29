@@ -1,6 +1,6 @@
 ---
-title: Safelist adresy URL Azure Portal v bráně firewall nebo proxy server
-description: Přidejte tyto adresy URL, aby bylo možné proxy server nepoužívat ke komunikaci s Azure Portal a jeho službami.
+title: Safelist adresy URL portálu Azure na firewallu nebo proxy serveru
+description: Přidání těchto adres URL do obejít proxy server pro komunikaci s portálem Azure a jeho službami
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -10,23 +10,23 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900658"
 ---
-# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist adresy URL Azure Portal v bráně firewall nebo proxy server
+# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist adresy URL portálu Azure na firewallu nebo proxy serveru
 
-Můžete nakonfigurovat místní zařízení zabezpečení a obejít omezení zabezpečení pro Azure Portal adresy URL. Tato konfigurace může zlepšit výkon a konektivitu mezi vaší místní sítí a cloudem Azure.
+Místní zabezpečovací zařízení můžete nakonfigurovat tak, aby obcovala omezení zabezpečení adres URL portálu Azure. Tato konfigurace může zlepšit výkon a připojení mezi místní nebo širokoplošnou sítí a cloudem Azure.
 
-Správci sítě často nasazují proxy servery, brány firewall nebo jiná zařízení. Tato zařízení vám pomůžou zabezpečit a poskytovat kontrolu nad tím, jak uživatelé přistupují k Internetu. Pravidla určená k ochraně uživatelů můžou někdy blokovat nebo zpomalit legitimní internetový provoz související s firmou. Tento provoz zahrnuje komunikaci mezi vámi a Azure. K optimalizaci připojení mezi vaší sítí a Azure Portal a jejími službami doporučujeme přidat do svého Safelist Azure Portal adresy URL.
+Správci sítě často nasazují proxy servery, brány firewall nebo jiná zařízení. Tato zařízení pomáhají zabezpečit a dát kontrolu nad tím, jak uživatelé přistupují k internetu. Pravidla určená k ochraně uživatelů mohou někdy blokovat nebo zpomalovat legitimní internetový provoz související s podnikáním. Tento provoz zahrnuje komunikaci mezi vámi a Azure. Chcete-li optimalizovat připojení mezi vaší sítí a portálem Azure a jeho službami, doporučujeme přidat adresy URL portálu Azure do seznamu bezpečných adres.
 
-## <a name="azure-portal-urls-for-proxy-bypass"></a>Azure Portal adresy URL pro obejití proxy serveru
+## <a name="azure-portal-urls-for-proxy-bypass"></a>Adresy URL portálu Azure pro obejít proxy server
 
-Koncové body adresy URL, které se Safelist pro Azure Portal, jsou specifické pro cloud Azure, ve kterém je vaše organizace nasazená. Pokud chcete, aby síťový provoz do těchto koncových bodů mohl obejít omezení, vyberte svůj Cloud. Pak přidejte seznam adres URL do proxy server nebo brány firewall.
+Koncové body adresy URL do seznamu safelist pro portál Azure jsou specifické pro cloud Azure, kde se vaše organizace nasadí. Chcete-li povolit síťový provoz do těchto koncových bodů obejít omezení, vyberte cloud. Pak přidejte seznam adres URL na proxy server nebo bránu firewall.
 
-#### <a name="public-cloudtabpublic-cloud"></a>[Veřejný cloud](#tab/public-cloud)
+#### <a name="public-cloud"></a>[Veřejný cloud](#tab/public-cloud)
 
 ```
 *.aadcdn.microsoftonline-p.com
@@ -50,7 +50,7 @@ Koncové body adresy URL, které se Safelist pro Azure Portal, jsou specifické 
 *.windows-int.net
 ```
 
-#### <a name="us-government-cloudtabus-government-cloud"></a>[Cloud pro státní správu USA](#tab/us-government-cloud)
+#### <a name="us-government-cloud"></a>[Americký vládní cloud](#tab/us-government-cloud)
 
 ```
 *.azure.us
@@ -63,7 +63,7 @@ Koncové body adresy URL, které se Safelist pro Azure Portal, jsou specifické 
 *.windowsazure.us
 ```
 
-#### <a name="china-government-cloudtabchina-government-cloud"></a>[Čína – Cloud pro státní správu](#tab/china-government-cloud)
+#### <a name="china-government-cloud"></a>[Čína vláda Cloud](#tab/china-government-cloud)
 
 ```
 *.azure.cn
@@ -77,16 +77,16 @@ Koncové body adresy URL, které se Safelist pro Azure Portal, jsou specifické 
 ---
 
 > [!NOTE]
-> Provoz do těchto koncových bodů používá standardní porty TCP pro protokol HTTP (80) a HTTPS (443).
+> Přenosy do těchto koncových bodů používají standardní porty TCP pro http (80) a HTTPS (443).
 >
 >
 ## <a name="next-steps"></a>Další kroky
 
-Potřebujete Safelist IP adresy? Stáhněte si seznam rozsahů IP adres datového centra Microsoft Azure pro svůj Cloud:
+Potřebujete safelist IP adresy? Stáhněte si seznam rozsahů IP adres datového centra Microsoft Azure pro váš cloud:
 
-* [Po celém světě](https://www.microsoft.com/download/details.aspx?id=56519)
-* [Státní správa USA](https://www.microsoft.com/download/details.aspx?id=57063)
+* [Celosvětově](https://www.microsoft.com/download/details.aspx?id=56519)
+* [Vláda USA](https://www.microsoft.com/download/details.aspx?id=57063)
 * [Německo](https://www.microsoft.com/download/details.aspx?id=57064)
 * [Čína](https://www.microsoft.com/download/details.aspx?id=57062)
 
-Další služby Microsoftu používají pro připojení další adresy URL a IP adresy. Informace o optimalizaci síťového připojení pro Microsoft 365 Services najdete v tématu [nastavení sítě pro Office 365](/office365/enterprise/set-up-network-for-office-365).
+Jiné služby společnosti Microsoft používají pro připojení další adresy URL a adresy IP. Informace o optimalizaci připojení k síti pro služby Microsoft 365 najdete v tématu [Nastavení sítě pro Office 365](/office365/enterprise/set-up-network-for-office-365).

@@ -9,54 +9,54 @@ ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: d848b92da5d4181832adff8499b3531d020c30c9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78155390"
 ---
-Dočasné disky s operačním systémem se vytvářejí na místním úložišti virtuálních počítačů a neukládají se do vzdáleného Azure Storage. Dočasné disky s operačním systémem fungují pro bezstavové úlohy, kde jsou aplikace odolné proti selhání jednotlivých virtuálních počítačů, ale mají vyšší vliv na dobu nasazení virtuálních počítačů nebo obnovování imagí jednotlivých instancí virtuálních počítačů. S dočasným diskem s operačním systémem získáte nižší latenci čtení a zápisu na disk s operačním systémem a rychlejší přebitovou kopii virtuálního počítače. 
+Dočasné disky operačního systému se vytvářejí v místním úložišti virtuálních počítačů a nejsou uloženy do vzdáleného úložiště Azure. Dočasné disky operačního systému fungují dobře pro bezstavové úlohy, kde jsou aplikace tolerantní k jednotlivým selháním virtuálních počítačů, ale jsou více ovlivněny časem nasazení virtuálního počítače nebo reimagingem jednotlivých instancí virtuálních počítačů. S dočasným diskem operačního systému získáte nižší latenci čtení a zápisu na disk operačního systému a rychlejší reimage virtuálního počítače. 
  
-Klíčové funkce dočasných disků: 
+Klíčové vlastnosti dočasných disků jsou: 
 - Ideální pro bezstavové aplikace.
-- Je možné je používat s Marketplace i s vlastními imagemi.
-- Možnost rychlého resetování a obnovení imagí virtuálních počítačů a škálování instancí sad na původní stav spouštění.  
+- Lze je použít s marketplace i s vlastními obrázky.
+- Možnost rychlého resetování nebo reimage virtuálních mích a škálovací sady instancí do původního spouštěcího stavu.  
 - Nižší latence, podobně jako dočasný disk. 
-- Dočasné disky s operačním systémem jsou bezplatné, neúčtují se žádné náklady na úložiště pro disk s operačním systémem.
-- Jsou k dispozici ve všech oblastech Azure. 
-- [Galerie sdílených imagí](/azure/virtual-machines/linux/shared-image-galleries)podporuje dočasný disk s operačním systémem. 
+- Dočasné disky operačního systému jsou zdarma, nevznikají vám žádné náklady na úložiště pro disk operačního systému.
+- Jsou dostupné ve všech oblastech Azure. 
+- Dočasný disk operačního systému je podporován [galerií sdílených obrázků](/azure/virtual-machines/linux/shared-image-galleries). 
  
 
  
-Klíčové rozdíly mezi trvalými a dočasnými disky s operačním systémem:
+Klíčové rozdíly mezi trvalými a dočasnými disky operačního systému:
 
-|                             | Trvalý disk s operačním systémem                          | Dočasný disk s operačním systémem                              |    |
+|                             | Trvalý disk operačního systému                          | Dočasný disk s operačním systémem                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| Omezení velikosti pro disk s operačním systémem      | 2 TiB                                                                                        | Velikost mezipaměti pro velikost virtuálního počítače nebo 2TiB, podle toho, která hodnota je menší. **Velikost mezipaměti v GIB najdete v**tématu [DS](../articles/virtual-machines/linux/sizes-general.md), [ES](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md)a [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series) .              |
-| Podporované velikosti virtuálních počítačů          | Vše                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
-| Podpora typů disků           | Spravovaný a nespravovaný disk s operačním systémem                                                                | Jenom spravovaný disk s operačním systémem                                                               |
-| Podpora oblastí              | Všechny oblasti                                                                                  | Všechny oblasti                              |
-| Trvalost dat            | Data disku s operačním systémem zapsaná na disk s operačním systémem se ukládají v Azure Storage                                  | Data zapsaná na disk s operačním systémem se ukládají do místního úložiště virtuálního počítače a neukládají se do Azure Storage. |
-| Stav zastavení a zrušení přidělení      | Virtuální počítače a instance sady škálování se dají zastavit – zrušit přidělení a restartovat ze stavu Zastaveno (přidělení). | Virtuální počítače a instance sady škálování nelze zastavit – zrušit přidělení                                  |
-| Specializovaná podpora disků s operačním systémem | Ano                                                                                          | Ne                                                                                 |
-| Změna velikosti disku s operačním systémem              | Podporováno během vytváření virtuálních počítačů a po zastavení virtuálního počítače – zrušení přidělení                                | Podporováno pouze během vytváření virtuálních počítačů                                                  |
-| Změna velikosti nového virtuálního počítače   | Data disku operačního systému se zachovají.                                                                    | Data na disku s operačním systémem se odstraní, operační systém se znovu zřídí.                                      |
+| Limit velikosti disku operačního systému      | 2 TB                                                                                        | Velikost mezipaměti pro velikost virtuálního počítače nebo 2TiB, podle toho, co je menší. Velikost **mezipaměti v GiB**naleznete v [tématech DS](../articles/virtual-machines/linux/sizes-general.md), [ES](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md)a [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
+| Podporované velikosti virtuálních míchana          | Všechny                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
+| Podpora typu disku           | Spravovaný a nespravovaný disk operačního systému                                                                | Pouze spravovaný disk operačního systému                                                               |
+| Podpora regionu              | Všechny regiony                                                                                  | Všechny regiony                              |
+| Trvalost dat            | Data disku operačního systému zapsaná na disk operačního systému jsou uložena v úložišti Azure Storage                                  | Data zapsaná na disk operačního systému se ukládají do místního úložiště virtuálních počítačů a nejsou trvalá ve službě Azure Storage. |
+| Stav stop-deallocated      | Virtuální chody a instance škálovací sady lze zastavit a restartovat ze stavu stop-deallocated | Virtuální aplikace a instance škálovací sady nelze zastavit deallocated                                  |
+| Podpora specializovaného disku operačního systému | Ano                                                                                          | Ne                                                                                 |
+| Změna velikosti disku operačního systému              | Podporované během vytváření virtuálních mísa a po virtuálním virtuálním ms se zastaví                                | Podporované pouze při vytváření virtuálních modulů                                                  |
+| Změna velikosti na novou velikost virtuálního počítače   | Data disku operačního systému jsou zachována                                                                    | Data na disku s os jsou smazána, operační systém je znovu zřízen                                      |
 
 ## <a name="size-requirements"></a>Požadavky na velikost
 
-Můžete nasadit image virtuálních počítačů a instancí až do velikosti mezipaměti virtuálních počítačů. Například standardní image Windows serveru z webu Marketplace mají přibližně 127 GiB, což znamená, že potřebujete velikost virtuálního počítače, která má mezipaměť větší než 127 GiB. V takovém případě má [Standard_DS2_v2](~/articles/virtual-machines/dv2-dsv2-series.md) velikost mezipaměti 86 GIB, což není dostatečně velké. Standard_DS3_v2 má velikost mezipaměti 172 GiB, která je dostatečně velká. V tomto případě je Standard_DS3_v2 nejmenší velikost v řadě DSv2, kterou můžete použít s tímto obrázkem. Image základního systému Linux na webu Marketplace a imagí Windows serveru, které jsou označeny `[smallsize]`, mají asi 30 GiB a můžou využívat většinu dostupných velikostí virtuálních počítačů.
+Můžete nasadit image virtuálních počítače a instancí až do velikosti mezipaměti virtuálních počítače. Například standardní windows server image z trhu jsou asi 127 GiB, což znamená, že potřebujete velikost virtuálního počítače, který má cache větší než 127 GiB. V tomto případě [má Standard_DS2_v2](~/articles/virtual-machines/dv2-dsv2-series.md) velikost mezipaměti 86 GiB, což není dostatečně velké. Standard_DS3_v2 má velikost mezipaměti 172 GiB, což je dostatečně velké. V tomto případě je Standard_DS3_v2 nejmenší velikost řady DSv2, kterou můžete použít s tímto obrázkem. Základní linuxové image na Marketplace a Windows `[smallsize]` Server image, které jsou označeny mají tendenci být kolem 30 GiB a můžete použít většinu dostupných velikostí virtuálních počítačových aplikací.
 
-Dočasné disky také vyžadují, aby velikost virtuálního počítače podporovala službu Premium Storage. Velikosti obvykle mají `s` v názvu, jako je například DSv2 a EsV3. Další informace najdete v tématu [velikosti virtuálních počítačů Azure](../articles/virtual-machines/linux/sizes.md) pro podrobnosti o tom, které velikosti podporují Premium Storage.
+Dočasné disky také vyžadují, aby velikost virtuálního počítače podporovala úložiště Premium. Velikosti obvykle (ale ne vždy) mají `s` v názvu, jako DSv2 a EsV3. Další informace najdete v [tématu velikosti virtuálních počítačů Azure](../articles/virtual-machines/linux/sizes.md) podrobnosti o tom, které velikosti podporují úložiště Premium.
 
 ## <a name="powershell"></a>PowerShell
 
-Pokud chcete pro nasazení virtuálního počítače PowerShell použít dočasný disk, použijte rutinu [set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) v konfiguraci virtuálního počítače. Nastavte `-DiffDiskSetting` na `Local` a `-Caching` na `ReadOnly`.     
+Pokud chcete použít dočasný disk pro nasazení virtuálního počítače powershellu, použijte v konfiguraci virtuálního počítače [set-azVMOSDisk.](/powershell/module/az.compute/set-azvmosdisk) Nastavte `-DiffDiskSetting` na `Local` `-Caching` a `ReadOnly`na .     
 
 ```powershell
 Set-AzVMOSDisk -DiffDiskSetting Local -Caching ReadOnly
 ```
 
-V případě nasazení sady škálování použijte v konfiguraci rutinu [set-AzVmssStorageProfile](/powershell/module/az.compute/set-azvmssstorageprofile) . Nastavte `-DiffDiskSetting` na `Local` a `-Caching` na `ReadOnly`.
+Pro nasazení škálovací sady použijte rutinu [Set-AzVmssStorageProfile](/powershell/module/az.compute/set-azvmssstorageprofile) ve vaší konfiguraci. Nastavte `-DiffDiskSetting` na `Local` `-Caching` a `ReadOnly`na .
 
 
 ```powershell
@@ -65,7 +65,7 @@ Set-AzVmssStorageProfile -DiffDiskSetting Local -OsDiskCaching ReadOnly
 
 ## <a name="cli"></a>Rozhraní příkazového řádku
 
-Pokud chcete pro nasazení virtuálního počítače CLI použít dočasný disk, nastavte parametr `--ephemeral-os-disk` v části [AZ VM Create](/cli/azure/vm#az-vm-create) to `true` a parametr `--os-disk-caching` na `ReadOnly`.
+Chcete-li použít dočasný disk pro nasazení virtuálního počítače `--ephemeral-os-disk` rozhraní CLI, nastavte `true` parametr `--os-disk-caching` v `ReadOnly` [az vm create](/cli/azure/vm#az-vm-create) to a parametr na .
 
 ```azurecli-interactive
 az vm create \
@@ -78,22 +78,22 @@ az vm create \
   --generate-ssh-keys
 ```
 
-U sady škálování použijte stejný parametr `--ephemeral-os-disk true` pro [AZ-VMSS-Create](/cli/azure/vmss#az-vmss-create) a nastavte parametr `--os-disk-caching` na `ReadOnly`.
+Pro škálovací sady `--ephemeral-os-disk true` použijete stejný parametr pro vytvoření [az-vmss](/cli/azure/vmss#az-vmss-create) a nastavíte `--os-disk-caching` parametr na `ReadOnly`.
 
 ## <a name="portal"></a>Portál   
 
-V Azure Portal můžete při nasazení virtuálního počítače použít dočasné disky otevřením části **Upřesnit** na kartě **disky** . Pro možnost **použít dočasný disk s operačním systémem** vyberte **Ano**.
+Na webu Azure Portal můžete při nasazování virtuálního počítače použít dočasné disky otevřením části **Upřesnit** na kartě **Disky.** V **části Použití dočasného disku operačního systému** vyberte **Ano**.
 
-![Snímek obrazovky znázorňující přepínač pro výběr použití dočasného disku s operačním systémem](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
+![Snímek obrazovky s přepínatým tlačítkem pro výběr dočasného disku operačního systému](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
 
-Pokud je možnost použít dočasný disk šedá, možná jste vybrali velikost virtuálního počítače, která nemá větší velikost mezipaměti než bitová kopie operačního systému nebo nepodporuje službu Premium Storage. Vraťte se na stránku **základy** a zkuste zvolit jinou velikost virtuálního počítače.
+Pokud je možnost použití dočasného disku zašedlá, je možné, že jste vybrali velikost virtuálního počítače, která nemá velikost mezipaměti větší než bitová kopie operačního systému nebo která nepodporuje úložiště Premium. Vraťte se na stránku **Základy** a zkuste vybrat jinou velikost virtuálního počítače.
 
-Pomocí portálu můžete také vytvořit škálované sady s dočasnými disky s operačním systémem. Jenom se ujistěte, že jste vybrali velikost virtuálního počítače, která má dostatečnou velikost mezipaměti, a pak v rámečku **použít dočasný disk s operačním systémem** vyberte **Ano**.
+Pomocí portálu můžete také vytvářet škálovací sady s dočasnými disky operačního systému. Jen se ujistěte, že jste vybrali velikost virtuálního počítače s dostatečně velkou velikostí mezipaměti a pak v **části Použít dočasný disk operačního systému** vyberte **Ano**.
 
-![Snímek obrazovky znázorňující přepínač pro výběr použití dočasného disku s operačním systémem pro sadu škálování](./media/virtual-machines-common-ephemeral/scale-set.png)
+![Snímek obrazovky s přepínacím tlačítkem pro výběr dočasného disku operačního systému pro škálovací sadu](./media/virtual-machines-common-ephemeral/scale-set.png)
 
-## <a name="scale-set-template-deployment"></a>Nasazování šablony sady škálování  
-Proces vytvoření sady škálování, která používá dočasný disk s operačním systémem, je přidání vlastnosti `diffDiskSettings` do typu prostředku `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` v šabloně. Zásady ukládání do mezipaměti musí být také nastavené na `ReadOnly` pro dočasný disk s operačním systémem. 
+## <a name="scale-set-template-deployment"></a>Nasazení šablony škálovací sady  
+Proces vytvoření škálovací sady, která používá dočasný disk operačního `diffDiskSettings` systému, `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` je přidání vlastnosti k typu prostředku v šabloně. Zásady ukládání do mezipaměti musí `ReadOnly` být také nastaveny na dočasný disk operačního systému. 
 
 
 ```json
@@ -137,7 +137,7 @@ Proces vytvoření sady škálování, která používá dočasný disk s opera�
 ```
 
 ## <a name="vm-template-deployment"></a>Nasazení šablony virtuálního počítače 
-Pomocí šablony můžete nasadit virtuální počítač s dočasným diskem s operačním systémem. Proces vytvoření virtuálního počítače, který používá dočasné disky s operačním systémem, je přidání vlastnosti `diffDiskSettings` do typu prostředku Microsoft. COMPUTE/virtualMachines v šabloně. Zásady ukládání do mezipaměti musí být také nastavené na `ReadOnly` pro dočasný disk s operačním systémem. 
+Virtuální modul můžete nasadit s dočasným diskem operačního systému pomocí šablony. Proces vytvoření virtuálního počítače, který používá dočasné disky operačního `diffDiskSettings` systému, je přidání vlastnosti do typu prostředku Microsoft.Compute/virtualMachines v šabloně. Zásady ukládání do mezipaměti musí `ReadOnly` být také nastaveny na dočasný disk operačního systému. 
 
 ```json
 { 
@@ -174,8 +174,8 @@ Pomocí šablony můžete nasadit virtuální počítač s dočasným diskem s o
 ```
 
 
-## <a name="reimage-a-vm-using-rest"></a>Obnovení virtuálního počítače z Image pomocí REST
-Můžete obnovit instanci virtuálního počítače s dočasným diskem s operačním systémem pomocí REST API, jak je popsáno níže, a prostřednictvím webu Azure Portal, a to tak, že se zobrazí okno s přehledem virtuálního počítače. Pro sady škálování je už obnovení imagí dostupné prostřednictvím PowerShellu, CLI a portálu.
+## <a name="reimage-a-vm-using-rest"></a>Opětovné zobrazení virtuálního virtuálního virtuálního montovapomocí rest
+Můžete reimage instance virtuálního počítače s dočasným diskem operačního systému pomocí rozhraní REST API, jak je popsáno níže a prostřednictvím portálu Azure portal tím, že přejdete do podokna Přehled virtuálního počítače. Pro škálovací sady je reimaging již k dispozici prostřednictvím prostředí Powershell, CLI a portálu.
 
 ```
 POST https://management.azure.com/subscriptions/{sub-
@@ -184,40 +184,40 @@ id}/resourceGroups/{rgName}/providers/Microsoft.Compute/VirtualMachines/{vmName}
  
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Otázka: jaká je velikost místních disků s operačním systémem?**
+**Otázka: Jaká je velikost místních disků operačního systému?**
 
-Odpověď: podporujeme platformu a vlastní image, až do velikosti mezipaměti virtuálních počítačů, kde všechny čtení a zápisy na disk s operačním systémem budou místní na stejném uzlu jako virtuální počítač. 
+A: Podporujeme platformu a vlastní image, až do velikosti mezipaměti virtuálního počítače, kde všechny čtení a zápisy na disk operačního systému bude místní na stejném uzlu jako virtuální počítač. 
 
-**Otázka: může být změněna velikost dočasného disku s operačním systémem?**
+**Otázka: Lze velikost dočasného disku operačního systému?**
 
-Odpověď: Ne, jakmile se zřídí dočasný disk s operačním systémem, nelze změnit velikost disku s operačním systémem. 
+A: Ne, po zřízení dočasný disk operačního systému, disk operačního systému nelze velikost. 
 
-**Otázka: mohu připojit Managed Disks k dočasnému virtuálnímu počítači?**
+**Otázka: Můžu připojit spravované disky k dočasnému virtuálnímu virtuálnímu počítače?**
 
-Odpověď: Ano, můžete připojit spravovaný datový disk k virtuálnímu počítači, který používá dočasný disk s operačním systémem. 
+Odpověď: Ano, můžete připojit spravovaný datový disk k virtuálnímu počítače, který používá dočasný disk operačního systému. 
 
-**Otázka: budou pro dočasné disky s operačním systémem podporovány všechny velikosti virtuálních počítačů?**
+**Otázka: Budou podporovány všechny velikosti virtuálních počítačů pro dočasné disky operačního systému?**
 
-Odpověď: Ne, podporují se všechny velikosti Premium Storage virtuálních počítačů (DS, ES, FS, GS a M) s výjimkou velikostí B-Series, N-Series a H-Series.  
+A: Ne, všechny velikosti virtuálních zařízení úložiště Premium jsou podporovány (DS, ES, FS, GS a M) s výjimkou velikosti řady B, Řady N a H.  
  
-**Otázka: je možné použít dočasný disk s operačním systémem pro existující virtuální počítače a sady škálování?**
+**Otázka: Lze dočasný disk operačního systému použít na existující virtuální počítače a škálovací sady?**
 
-Odpověď: Ne, dočasný disk s operačním systémem se dá použít jenom během vytváření virtuálního počítače a sady škálování. 
+A: Ne, dočasný disk operačního systému lze použít pouze během vytvoření virtuálního počítače a škálovací sady. 
 
-**Otázka: je možné kombinovat dočasné a běžné disky s operačním systémem v sadě škálování?**
+**Otázka: Můžete kombinovat dočasné a normální disky operačního systému v škálovací sadě?**
 
-Odpověď: Ne, nemůžete mít kombinaci dočasných a trvalých diskových instancí operačního systému v rámci stejné sady škálování. 
+A: Ne, nemůžete mít kombinaci dočasných a trvalých instancí disku operačního systému ve stejné škálovací sadě. 
 
-**Otázka: je možné vytvořit dočasný disk s operačním systémem pomocí PowerShellu nebo rozhraní příkazového řádku?**
+**Otázka: Lze dočasný disk operačního systému vytvořit pomocí prostředí Powershell nebo CLI?**
 
-Odpověď: Ano, můžete vytvořit virtuální počítače s dočasným diskem s operačním systémem pomocí REST, šablon, PowerShellu a rozhraní příkazového řádku.
+A: Ano, můžete vytvořit virtuální počítače s dočasným diskem operačního systému pomocí REST, šablony, PowerShell a CLI.
 
-**Otázka: Jaké funkce nejsou pro dočasný disk s operačním systémem podporované?**
+**Otázka: Jaké funkce nejsou podporovány s dočasným diskem operačního systému?**
 
-Odpověď: dočasné disky nepodporují:
-- Zachytávání imagí virtuálních počítačů
+A: Dočasné disky nepodporují:
+- Zachycení obrazů virtuálních mitek
 - Snímky disků 
 - Azure Disk Encryption 
 - Azure Backup
 - Azure Site Recovery  
-- Prohození disku s operačním systémem 
+- Prohození disku operačního systému 
