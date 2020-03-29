@@ -1,6 +1,6 @@
 ---
-title: Komunitní nástroje – přesunutí klasických prostředků do Azure Resource Manager
-description: Tento článek obsahuje katalog nástrojů poskytovaných komunitou, které vám pomůžou migrovat prostředky IaaS z modelu nasazení Classic na model nasazení Azure Resource Manager.
+title: Nástroje komunity – přesunutí klasických prostředků do Správce prostředků Azure
+description: Tento článek katalogy nástroje, které byly poskytnuty komunitou pomoci migrovat prostředky IaaS z klasické ho do modelu nasazení Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: tanmaygore
@@ -15,47 +15,47 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: f4298af05f021f0a9579a9837308be5d15a3c14f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77915397"
 ---
-# <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>Komunitní nástroje pro migraci prostředků IaaS z modelu Classic na Azure Resource Manager
+# <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>Nástroje komunity pro migraci prostředků IaaS z klasických do Správce prostředků Azure
 
 > [!IMPORTANT]
-> V dnešní době se o 90% virtuálních počítačů IaaS používají [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Od 28. února 2020 se klasické virtuální počítače zastaraly a budou plně vyřazeny od 1. března 2023. [Přečtěte si další informace]( https://aka.ms/classicvmretirement) o této zastaralosti a [o tom, jak vás to ovlivní](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).
+> Dnes asi 90 % virtuálních počítačích IaaS používá [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). února 2020, klasické virtuální počítačky byly zastaralé a budou plně vyřazeny v březnu 1, 2023. [Další informace]( https://aka.ms/classicvmretirement) o tomto vyřazení a [o tom, jak vás ovlivňuje](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).
 
-Tento článek obsahuje katalog nástrojů poskytovaných komunitou pro pomoc s migrací prostředků IaaS z modelu Classic na model nasazení Azure Resource Manager.
+Tento článek katalogy nástroje, které byly poskytnuty komunitou na pomoc s migrací prostředků IaaS z klasické na model nasazení Azure Resource Manager.
 
 > [!NOTE]
-> Podpora Microsoftu tyto nástroje oficiálně nepodporují. Proto jsou otevřené na GitHubu a máme rádi přijmout PR pro opravy nebo další scénáře. K nahlášení problému použijte funkci problémů GitHubu.
+> Tyto nástroje nejsou oficiálně podporovány podporou společnosti Microsoft. Proto jsou open sourced na GitHubu a my jsme rádi, že přijímat PR pro opravy nebo další scénáře. Chcete-li nahlásit problém, použijte funkci problémů GitHubu.
 > 
-> Migrace pomocí těchto nástrojů způsobí výpadek pro klasický virtuální počítač. Pokud hledáte migraci podporovanou platformou, navštivte 
+> Migrace s těmito nástroji způsobí prostoje klasického virtuálního počítače. Pokud hledáte migraci podporovanou platformou, navštivte 
 > 
->   * [Podporovaná platforma migrace prostředků IaaS z modelu Classic na Azure Resource Manager Stack](migration-classic-resource-manager-overview.md)
->   * [Migrace s technickou hloubkovou Podrobněou na platformě podporovanou migrací z klasického na Azure Resource Manager](migration-classic-resource-manager-deep-dive.md)
->   * [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí Azure PowerShell](migration-classic-resource-manager-ps.md)
+>   * [Platforma podporovaná migrace prostředků IaaS z klasického zásobníku Azure Resource Manager](migration-classic-resource-manager-overview.md)
+>   * [Migrace z Classicu na Azure Resource Manager podporuje podrobné informace o platformě](migration-classic-resource-manager-deep-dive.md)
+>   * [Migrace prostředků IaaS z Klasické ho do Azure Resource Managerpomocí Azure PowerShellu](migration-classic-resource-manager-ps.md)
 > 
 > 
 
 ## <a name="asmmetadataparser"></a>AsmMetadataParser
-Jedná se o kolekci pomocných nástrojů vytvořených v rámci migrace Enterprise z Azure Service Management na Azure Resource Manager. Tento nástroj umožňuje replikovat infrastrukturu do jiného předplatného, které se dá použít k testování migrace a odstranění potíží před spuštěním migrace v produkčním předplatném.
+Toto je kolekce pomocných nástrojů vytvořených jako součást podnikových migrací ze správy služeb Azure do Správce prostředků Azure. Tento nástroj umožňuje replikovat infrastrukturu do jiného předplatného, které lze použít k testování migrace a vyžehlení všech problémů před spuštěním migrace na produkční předplatné.
 
 [Odkaz na dokumentaci k nástroji](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
 ## <a name="migaz"></a>migAz
-migAz je další možnost migrace kompletní sady klasických prostředků IaaS na prostředky Azure Resource Manager IaaS. K migraci může dojít v rámci stejného předplatného nebo mezi různými předplatnými a typy předplatného (např.: předplatná CSP).
+migAz je další možnost migrovat kompletní sadu klasických prostředků IaaS do prostředků Azure Resource Manager IaaS. K migraci může dojít v rámci stejného předplatného nebo mezi různými předplatnými a typy předplatného (například odběry CSP).
 
 [Odkaz na dokumentaci k nástroji](https://github.com/Azure/migAz)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Přehled migrace prostředků IaaS podporovaných platformou z klasického do Správce prostředků Azure](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Použití PowerShellu k migraci prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Migrace prostředků IaaS z klasického do Správce prostředků Azure pomocí PowerShellu](migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Použití příkazového příkazového příkazu k migraci prostředků IaaS z klasických do Správce prostředků Azure](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Běžné chyby při migraci](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Přečtěte si nejčastější dotazy týkající se migrace prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Projděte si nejčastější dotazy týkající se migrace prostředků IaaS z klasického na Azure Resource Manager.](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

@@ -1,142 +1,142 @@
 ---
-title: Připojení brány virtuální sítě k virtuální síti WAN Azure | Microsoft Docs
-description: Tento článek vám pomůže připojit bránu virtuální sítě Azure k bráně VPN Azure Virtual WAN.
+title: Připojení brány virtuální sítě k virtuální síti Azure
+description: Tento článek vám pomůže připojit bránu virtuální sítě Azure k bráně Azure Virtual WAN VPN.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1f8e0db9921c305edd2ee34efad22cdcf568f8df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 688183bc07aa14d5e5df182d7de0897cec93f0b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514950"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066235"
 ---
-# <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Připojit VPN Gateway (bránu virtuální sítě) k virtuální síti WAN
+# <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Připojení brány VPN (brána virtuální sítě) k virtuální síti WAN
 
-Tento článek vám pomůže nastavit připojení z Azure VPN Gateway (bránu virtuální sítě) na virtuální síť WAN Azure (VPN Gateway). Vytvoření připojení z VPN Gateway (Brána virtuální sítě) k virtuální síti WAN (Brána sítě VPN) se podobá nastavení připojení k virtuální síti WAN z lokalit sítě VPN.
+Tento článek vám pomůže nastavit připojení z brány Azure VPN (brána virtuální sítě) do virtuální sítě Azure (brána VPN). Vytvoření připojení z brány VPN (brána virtuální sítě) k virtuální síti WAN (brána VPN) je podobné nastavení připojení k virtuální síti WAN z lokalit VPN pobočky.
 
-Aby nedošlo k nejasnostem mezi dvěma funkcemi, vytvoříme bránu s názvem funkce, na kterou odkazujeme. Například VPN Gateway bránu virtuální sítě a bránu VPN Virtual WAN.
+Abychom minimalizovali možné nejasnosti mezi dvěma funkcemi, předvedeme bránu s názvem funkce, na kterou odkazujeme. Například brána virtuální sítě VPN gateway a brána Virtuální SÍTĚ WAN.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Než začnete, vytvořte následující prostředky:
+Než začnete, vytvořte následující zdroje:
 
-Azure Virtual WAN
+Informace o službě Azure Virtual WAN
 
-* [Vytvořte virtuální síť WAN](virtual-wan-site-to-site-portal.md#openvwan).
-* [Vytvořte centrum](virtual-wan-site-to-site-portal.md#hub). Virtuální rozbočovač obsahuje virtuální síť WAN VPN Gateway.
+* [Vytvořte virtuální wan](virtual-wan-site-to-site-portal.md#openvwan).
+* [Vytvořte rozbočovač](virtual-wan-site-to-site-portal.md#hub). Virtuální rozbočovač obsahuje bránu Virtuální SÍTĚ VPN.
 
 Azure Virtual Network
 
-* Vytvořte virtuální síť bez bran virtuální sítě. Ověřte, že se žádná z podsítí místních sítí nepřekrývá s virtuálními sítěmi, ke kterým se chcete připojit. Pokud chcete vytvořit virtuální síť v Azure Portal, přečtěte si [rychlý Start](../virtual-network/quick-create-portal.md).
+* Vytvořte virtuální síť bez bran virtuální sítě. Ověřte, zda se žádná z podsítí místních sítí nepřekrývá s virtuálními sítěmi, ke kterým se chcete připojit. Pokud chcete vytvořit virtuální síť na webu Azure Portal, přečtěte si [úvodní příručku](../virtual-network/quick-create-portal.md).
 
-## <a name="vnetgw"></a>1. Vytvoření brány virtuální sítě Azure
+## <a name="1-create-an-azure-virtual-network-gateway"></a><a name="vnetgw"></a>1. Vytvoření brány virtuální sítě Azure
 
-Vytvořte bránu virtuální sítě VPN Gateway pro virtuální síť v režimu aktivní-aktivní pro vaši virtuální síť. Když vytvoříte bránu, můžete použít stávající veřejné IP adresy pro tyto dvě instance brány nebo můžete vytvořit nové veřejné IP adresy. Tyto veřejné IP adresy použijete při nastavování virtuálních sítí WAN. Další informace o režimu aktivní-aktivní najdete v tématu [Konfigurace připojení aktivní-aktivní](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway).
+Vytvořte bránu virtuální sítě brány brány brány VPN gateway pro vaši virtuální síť v aktivním aktivním režimu pro vaši virtuální síť. Při vytváření brány můžete buď použít existující veřejné IP adresy pro dvě instance brány, nebo můžete vytvořit nové veřejné IP adresy. Tyto veřejné IP adresy se používají při nastavování virtuálních sítí WAN. Další informace o aktivním aktivním režimu naleznete v [tématu Konfigurace připojení aktivní aktivní](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway).
 
-### <a name="active-active"></a>Nastavení režimu aktivní – aktivní
+### <a name="active-active-mode-setting"></a><a name="active-active"></a>Nastavení aktivního aktivního režimu
 
-![aktivní – aktivní](./media/connect-virtual-network-gateway-vwan/active.png "aktivní-aktivní")
+![aktivní-aktivní](./media/connect-virtual-network-gateway-vwan/active.png "aktivní-aktivní")
 
-### <a name="BGP"></a>Nastavení protokolu BGP
+### <a name="bgp-setting"></a><a name="BGP"></a>Nastavení Protokolu BGP
 
-ASN protokolu BGP nemůže být 65515. 66515 bude využívat Azure Virtual WAN.
+Protokol ASN protokolu BGP nemůže být 65515. 66515 bude používat Virtuální WAN Azure.
 
-![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "#a0")
+![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "Bgp")
 
-### <a name="pip"></a>Veřejné IP adresy
+### <a name="public-ip-addresses"></a><a name="pip"></a>Veřejné IP adresy
 
-Po vytvoření brány přejděte na stránku **vlastností** . Vlastnosti a nastavení konfigurace budou podobné jako v následujícím příkladu. Všimněte si dvou veřejných IP adres, které se používají pro bránu.
+Po vytvoření brány přejděte na stránku **Vlastnosti.** Vlastnosti a nastavení konfigurace budou podobné následujícímu příkladu. Všimněte si dvou veřejných IP adres, které se používají pro bránu.
 
-![vlastnosti](./media/connect-virtual-network-gateway-vwan/publicip.png "properties")
+![Vlastnosti](./media/connect-virtual-network-gateway-vwan/publicip.png "properties")
 
-## <a name="vwansite"></a>2. Vytvoření virtuálních sítí VPN sítě WAN
+## <a name="2-create-virtual-wan-vpn-sites"></a><a name="vwansite"></a>2. Vytvořte virtuální sítě WAN VPN
 
-Pokud chcete vytvořit virtuální sítě sítě VPN, přejděte k virtuální síti WAN a v části **připojení**vyberte **sítě VPN**. V této části vytvoříte dvě virtuální sítě VPN sítě WAN, které odpovídají branám virtuální sítě, které jste vytvořili v předchozí části.
+Chcete-li vytvořit weby virtuální sítě VPN, přejděte na virtuální síť WAN a v části **Připojení**vyberte **servery VPN**. V této části vytvoříte dvě virtuální sítě VPN, které odpovídají bránám virtuální sítě, které jste vytvořili v předchozí části.
 
-1. Vyberte **+ vytvořit web**.
-2. Na stránce **vytvořit weby sítě VPN** zadejte následující hodnoty:
+1. Vyberte **možnost +Vytvořit web**.
+2. Na stránce **Vytvořit weby VPN** zadejte následující hodnoty:
 
-   * **Oblast** – (stejná oblast jako Brána virtuální sítě Azure VPN Gateway)
+   * **Region** – (stejná oblast jako brána virtuální sítě Azure VPN Gateway)
    * **Dodavatel zařízení** – zadejte dodavatele zařízení (libovolný název).
-   * **Privátní adresní prostor** – (zadejte hodnotu nebo ponechte prázdné, pokud je povoleno BGP)
-   * **Border Gateway Protocol** – (nastaveno na **Povolit** , pokud má brána virtuální sítě Azure VPN Gateway povolenou BGP)
-   * **Připojte se k rozbočovačům** (Vyberte centrum, které jste vytvořili v části požadavky z rozevíracího seznamu).
-3. V části **odkazy**zadejte následující hodnoty:
+   * **Soukromý adresní prostor** - (Zadejte hodnotu, nebo ponechat prázdné, pokud je povoleno BGP)
+   * **Border Gateway Protocol** – (Nastavit **povolení,** pokud má brána BGP brány Azure VPN Gateway povolenou protokol BGP)
+   * **Připojení k rozbočovačům** (Vyberte rozbočovač, který jste vytvořili v požadavcích z rozevíracího portálu)
+3. V části **Odkazy**zadejte tyto hodnoty:
 
-   * **Název poskytovatele** – zadejte název odkazu a název poskytovatele (libovolný název).
-   * **Rychlost** (libovolné číslo)
-   * **IP adresa** – zadejte IP adresu (totéž jako první veřejná IP adresa zobrazená ve vlastnostech brány virtuální sítě (VPN Gateway)).
-   * **Adresa BGP** a **ASN** -adresa BGP a ASN. Musí se shodovat s jednou z IP adres partnerských uzlů BGP a číslem ASN z brány VPN Gateway virtuální sítě, kterou jste nakonfigurovali v [kroku 1](#vnetgw).
-4. Zkontrolujte a vyberte **Potvrdit** pro vytvoření webu.
-5. Zopakováním předchozích kroků vytvořte druhou lokalitu, která bude odpovídat druhé instanci VPN Gateway brány virtuální sítě. Zachováte stejné nastavení, s výjimkou druhé veřejné IP adresy a druhé IP adresy partnerského uzlu protokolu BGP z konfigurace VPN Gateway.
-6. Nyní máte úspěšné zřízení dvou webů a můžete přejít k další části stažení konfiguračních souborů.
+   * **Název zprostředkovatele** – zadejte název odkazu a název zprostředkovatele (libovolný název)
+   * **Rychlost** - rychlost (libovolné číslo)
+   * **IP adresa** - Zadejte IP adresu (stejně jako první veřejná IP adresa zobrazená pod vlastnostmi brány virtuální sítě (VPN Gateway)IP Address - Enter IP address (same as the first public IP address shown under the (VPN Gateway) virtual network gateway properties)
+   * **Adresa Protokolu BGP** a **adresa ASN** – adresa protokolu BGP a asn. Ty musí být stejné jako jedna z IP adres druhé strany Protokolu BGP a ASN z brány virtuální sítě brány VPN Gateway, kterou jste nakonfigurovali v [kroku 1](#vnetgw).
+4. Chcete-li vytvořit web, zkontrolujte a vyberte **Potvrdit.**
+5. Opakováním předchozích kroků vytvořte druhou lokalitu tak, aby odpovídala druhé instanci brány virtuální sítě brány brány VPN Gateway. Budete mít stejné nastavení, s výjimkou použití druhé veřejné IP adresy a druhé IP adresy BGP z konfigurace BRÁNY VPN.
+6. Nyní máte dva weby úspěšně zřízené a můžete přejít k další části ke stažení konfiguračních souborů.
 
-## <a name="downloadconfig"></a>3. Stáhněte si konfigurační soubory sítě VPN.
+## <a name="3-download-the-vpn-configuration-files"></a><a name="downloadconfig"></a>3. Stáhněte si konfigurační soubory VPN
 
-V této části si stáhnete konfigurační soubor sítě VPN pro každý z webů, které jste vytvořili v předchozí části.
+V této části stáhnete konfigurační soubor VPN pro každý web, který jste vytvořili v předchozí části.
 
-1. V horní části stránky **sítě VPN** virtuálních sítí WAN vyberte **lokalitu**a pak vyberte možnost **Stáhnout konfiguraci sítě VPN typu Site-to-site**. Azure vytvoří konfigurační soubor s nastavením.
+1. V horní části stránky Virtuální síť **VPN** vyberte **web**a pak vyberte **možnost Stáhnout konfiguraci VPN mezi lokalitami**. Azure vytvoří konfigurační soubor s nastavením.
 
-   ![stažení konfiguračního souboru](./media/connect-virtual-network-gateway-vwan/download.png "download")
+   ![stáhnout konfigurační soubor](./media/connect-virtual-network-gateway-vwan/download.png "stáhnout")
 2. Stáhněte a otevřete konfigurační soubor.
-3. Opakujte tento postup pro druhý Web. Jakmile budete mít oba konfigurační soubory otevřené, můžete přejít k další části.
+3. Opakujte tyto kroky pro druhý web. Jakmile budete mít oba konfigurační soubory otevřené, můžete přejít k další části.
 
-## <a name="createlocalgateways"></a>4. vytvoření bran místní sítě
+## <a name="4-create-the-local-network-gateways"></a><a name="createlocalgateways"></a>4. Vytvoření brány místní sítě
 
-V této části vytvoříte dvě brány místní sítě Azure VPN Gateway. Konfigurační soubory z předchozího kroku obsahují nastavení konfigurace brány. Pomocí těchto nastavení můžete vytvořit a nakonfigurovat brány místní sítě Azure VPN Gateway.
+V této části vytvoříte dvě místní síťové brány Azure VPN Gateway. Konfigurační soubory z předchozího kroku obsahují nastavení konfigurace brány. Tato nastavení slouží k vytvoření a konfiguraci místních síťových bran azure brány VPN Gateway.
 
-1. Pomocí těchto nastavení vytvořte bránu místní sítě. Informace o tom, jak vytvořit VPN Gateway bránu místní sítě, najdete v článku VPN Gateway [Vytvoření brány místní sítě](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway).
+1. Pomocí těchto nastavení vytvořte bránu místní sítě. Informace o vytvoření brány místní sítě brány VPN gateway naleznete v článku [Vytvoření brány místní sítě](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway).
 
-   * **IP adresa** – použijte IP adresu Instance0 zobrazenou pro *gatewayconfiguration* z konfiguračního souboru.
-   * **BGP** – Pokud je připojení přes protokol BGP, vyberte **Konfigurovat nastavení protokolu BGP** a zadejte číslo ASN ' 65515 '. Zadejte IP adresu partnerského uzlu protokolu BGP. Pro *gatewayconfiguration* z konfiguračního souboru použijte Instance0 BgpPeeringAddresses.
-   * **Předplatné, skupina prostředků a umístění** jsou stejné jako pro virtuální síť WAN.
+   * **IP adresa** – Použijte ip adresu Instance0 zobrazenou pro *konfiguraci brány* z konfiguračního souboru.
+   * **Protokol BGP** – Pokud je připojení přes protokol BGP, vyberte **konfigurovat nastavení protokolu BGP** a zadejte asn '65515'. Zadejte IP adresu partnerské strany Protokolu BGP. Pro *konfiguraci brány* z konfiguračního souboru použijte adresu Instance0 BgpPeeringAddresses.
+   * **Předplatné, skupina prostředků a umístění** jsou stejné jako pro centrum Virtuální WAN.
 2. Zkontrolujte a vytvořte bránu místní sítě. Brána místní sítě by měla vypadat podobně jako v tomto příkladu.
 
-   ![stažení konfiguračního souboru](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
-3. Zopakováním těchto kroků vytvořte jinou bránu místní sítě, ale tentokrát použijte hodnoty ' položku instance1 ' namísto hodnot ' Instance0 ' z konfiguračního souboru.
+   ![stáhnout konfigurační soubor](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
+3. Opakujte tyto kroky k vytvoření jiné brány místní sítě, ale tentokrát použijte hodnoty Instance1 namísto hodnot Instance0 z konfiguračního souboru.
 
-   ![stažení konfiguračního souboru](./media/connect-virtual-network-gateway-vwan/lng2.png "položku instance1")
+   ![stáhnout konfigurační soubor](./media/connect-virtual-network-gateway-vwan/lng2.png "instance1")
 
-## <a name="createlocalgateways"></a>5. vytvoření připojení
+## <a name="5-create-connections"></a><a name="createlocalgateways"></a>5. Vytvoření připojení
 
-V této části vytvoříte připojení mezi VPN Gateway brány místní sítě a bránu virtuální sítě. Postup vytvoření připojení VPN Gateway najdete v tématu [Konfigurace připojení](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection).
+V této části vytvoříte připojení mezi bránou místní sítě brány VPN a bránou virtuální sítě. Postup vytvoření připojení brány VPN naleznete v [tématu Konfigurace připojení](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection).
 
-1. Na portálu přejděte na bránu virtuální sítě a klikněte na **připojení**. V horní části okna Připojení klikněte na **+ Přidat** a otevřete stránku **Přidat připojení**.
+1. Na portálu přejděte na bránu virtuální sítě a klikněte na **Připojení**. V horní části okna Připojení klikněte na **+ Přidat** a otevřete stránku **Přidat připojení**.
 2. Na stránce **Přidat připojení** nakonfigurujte pro připojení následující hodnoty:
 
    * **Název**: Zadejte název připojení.
-   * **Typ připojení:** Vyberte **site-to-Site (IPSec)** .
+   * **Typ připojení:** Vybrat **možnost Site-to-site (IPSec)**
    * **Brána virtuální sítě**: Tato hodnota je pevně daná, protože se připojujete z této brány.
-   * **Brána místní sítě:** Toto připojení připojí bránu virtuální sítě k bráně místní sítě. Vyberte jednu z bran místní sítě, kterou jste vytvořili dříve.
+   * **Brána místní sítě:** Toto připojení připojí bránu virtuální sítě k bráně místní sítě. Zvolte jednu z bran místní sítě, které jste vytvořili dříve.
    * **Sdílený klíč:** Zadejte sdílený klíč.
-   * **Protokol IKE:** Vyberte protokol IKE.
-   * Protokol **BGP:** Pokud je připojení přes protokol BGP, vyberte **Povolit protokol BGP** .
+   * **Protokol IKE:** Zvolte protokol IKE.
+   * **Protokol BGP:** Zvolte **Povolit protokol BGP,** pokud je připojení přes BGP.
 3. Vytvořte připojení kliknutím na **OK**.
 4. Připojení si můžete zobrazit na stránce **Připojení** brány virtuální sítě.
 
-   ![Vázán](./media/connect-virtual-network-gateway-vwan/connect.png "připojení")
-5. Zopakováním předchozích kroků vytvořte druhé připojení. Pro druhé připojení vyberte jinou bránu místní sítě, kterou jste vytvořili.
+   ![Připojení](./media/connect-virtual-network-gateway-vwan/connect.png "připojení")
+5. Opakováním předchozích kroků vytvořte druhé připojení. Pro druhé připojení vyberte jinou bránu místní sítě, kterou jste vytvořili.
 
-## <a name="test"></a>6. testování připojení
+## <a name="6-test-connections"></a><a name="test"></a>6. Zkušební spojení
 
-Připojení můžete otestovat tak, že vytvoříte dva virtuální počítače, jednu na straně VPN Gateway brány virtuální sítě a jednu ve virtuální síti pro virtuální síť WAN a pak otestujete oba virtuální počítače.
+Připojení můžete otestovat vytvořením dvou virtuálních počítačů, jednoho na straně brány virtuální sítě brány VPN Gateway a jednoho ve virtuální síti pro virtuální síť WAN a následným příkazem ping na dva virtuální počítače.
 
 1. Vytvořte virtuální počítač ve virtuální síti (Test1-VNet) pro Azure VPN Gateway (Test1-VNG). Nevytvářejte virtuální počítač v GatewaySubnet.
-2. Vytvořte další virtuální síť pro připojení k virtuální síti WAN. Vytvoří virtuální počítač v podsíti této virtuální sítě. Tato virtuální síť nemůže obsahovat žádné brány virtuální sítě. Virtuální síť můžete rychle vytvořit pomocí kroků PowerShellu v článku [připojení typu Site-to-site](virtual-wan-site-to-site-portal.md#vnet) . Nezapomeňte změnit hodnoty před spuštěním rutin.
-3. Připojte virtuální síť k virtuálnímu centru WAN. Na stránce pro virtuální síť WAN vyberte připojení k **virtuální síti**a potom **+ Přidat připojení**. Na stránce **Add connection** (Přidat připojení) zadejte údaje do následujících polí:
+2. Vytvořte jinou virtuální síť pro připojení k virtuální síti WAN. Vytvořte virtuální počítač v podsíti této virtuální sítě. Tato virtuální síť nemůže obsahovat žádné brány virtuální sítě. Virtuální síť můžete rychle vytvořit pomocí kroků prostředí PowerShell v článku [o připojení mezi lokalitami.](virtual-wan-site-to-site-portal.md#vnet) Nezapomeňte změnit hodnoty před spuštěním rutiny.
+3. Připojte virtuální síť k rozbočovači Virtuální WAN. Na stránce virtuální sítě WAN vyberte **Připojení virtuální sítě**a potom **+Přidat připojení**. Na stránce **Add connection** (Přidat připojení) zadejte údaje do následujících polí:
 
     * **Connection name** (Název připojení) – zadejte název připojení.
     * **Hubs** (Rozbočovače) – vyberte rozbočovač, který chcete k tomuto připojení přidružit.
     * **Subscription** (Předplatné) – ověřte předplatné.
     * **Virtual network** (Virtuální síť) – vyberte virtuální síť, kterou chcete připojit k tomuto rozbočovači. Virtuální síť nesmí mít existující bránu virtuální sítě.
-4. Kliknutím na tlačítko **OK** vytvořte připojení k virtuální síti.
-5. Připojení se teď nastavuje mezi virtuálními počítači. Měli byste být schopni testovat jeden virtuální počítač z druhé, pokud neexistují žádné brány firewall nebo jiné zásady, které tuto komunikaci blokují.
+4. Chcete-li vytvořit připojení k virtuální síti, klepněte na tlačítko **OK.**
+5. Připojení je teď nastavené mezi virtuálními zařízeními. Měli byste být schopni ping jeden virtuální počítače z druhého, pokud neexistují žádné brány firewall nebo jiné zásady, které blokují komunikaci.
 
 ## <a name="next-steps"></a>Další kroky
 
-Postup konfigurace vlastní zásady protokolu IPsec najdete v tématu [Konfigurace vlastní zásady IPSec pro virtuální síť WAN](virtual-wan-custom-ipsec-portal.md).
-Další informace o virtuální síti WAN najdete v tématu [o Azure Virtual WAN](virtual-wan-about.md) a [nejčastějších dotazech k Azure Virtual WAN](virtual-wan-faq.md).
+Postup konfigurace vlastní chod ipsec, najdete v [tématu Konfigurace vlastní zásady Protokolu IPsec pro virtuální síť WAN](virtual-wan-custom-ipsec-portal.md).
+Další informace o virtuální wan, najdete [v tématu o Azure Virtual WAN](virtual-wan-about.md) a Azure Virtual WAN [FAQ](virtual-wan-faq.md).

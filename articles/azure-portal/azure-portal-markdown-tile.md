@@ -1,6 +1,6 @@
 ---
-title: Použití vlastní dlaždice Markdownu na řídicích panelech Azure
-description: Přečtěte si, jak přidat dlaždici Markdownu na řídicí panel Azure pro zobrazení statického obsahu.
+title: Použití vlastní dlaždice markdownu na řídicích panelech Azure
+description: Přečtěte si, jak přidat dlaždici markdown na řídicí panel Azure pro zobrazení statického obsahu.
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -10,57 +10,57 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 74102423461a56bb6fc19c2eb9874f96a76e34e0
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310709"
 ---
-# <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Použití dlaždice Markdownu na řídicích panelech Azure pro zobrazení vlastního obsahu
+# <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Zobrazení vlastního obsahu pomocí dlaždice markdownu na řídicích panelech Azure
 
-Dlaždici Markdownu můžete přidat do řídicích panelů Azure a zobrazit tak vlastní, statický obsah. Můžete například zobrazit základní pokyny, obrázek nebo sadu hypertextových odkazů na dlaždici Markdownu.
+Do řídicích panelů Azure můžete přidat dlaždici markdown, která zobrazí vlastní statický obsah. Můžete například zobrazit základní pokyny, obrázek nebo sadu hypertextových odkazů na dlaždici značky.
 
-## <a name="add-a-markdown-tile-to-your-dashboard"></a>Přidání dlaždice Markdownu do řídicího panelu
+## <a name="add-a-markdown-tile-to-your-dashboard"></a>Přidání dlaždice markdown na řídicí panel
 
-1. Vyberte **řídicí panel** na bočním panelu Azure Portal.
+1. Na postranním panelu portálu Azure vyberte **řídicí panel.**
 
    ![Snímek obrazovky s postranním panelem portálu](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
-1. Pokud jste vytvořili nějaké vlastní řídicí panely, v zobrazení řídicího panelu použijte rozevírací seznam a vyberte řídicí panel, ve kterém se má vlastní dlaždice Markdownu zobrazit. Výběrem ikony Upravit otevřete **galerii dlaždic**.
+1. Pokud jste vytvořili vlastní řídicí panely, v zobrazení řídicího panelu vyberte pomocí rozevíracího panelu řídicí panel, kde by se měla zobrazit vlastní dlaždice značky. Vyberte ikonu úprav a otevřete **Galerii dlaždic**.
 
-   ![Snímek obrazovky zobrazující zobrazení pro úpravy řídicího panelu](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
+   ![Snímek obrazovky s zobrazením úprav řídicího panelu](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
-1. V **galerii dlaždic**Najděte dlaždici s názvem **Markdownu** a vyberte **Přidat**. Dlaždice se přidá na řídicí panel a otevře se podokno **Upravit Markdownu** .
+1. V **Galerii dlaždic**vyhledejte dlaždici nazvanou **Markdown** a vyberte **Přidat**. Dlaždice se přidá na řídicí panel a otevře se podokno **Upravit značky.**
 
-1. Zadejte hodnoty pro **název** a **podnadpis**, které se zobrazí na dlaždici po přesunu do jiného pole.
+1. Zadejte hodnoty pro **Název** a **Titulky**, které se zobrazí na dlaždici po přesunutí do jiného pole.
 
-   ![Snímek obrazovky s výsledky vstupu nadpisu a podnadpisu](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
+   ![Snímek obrazovky s výsledky zadávání nadpisu a titulků](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
 
-1. Vyberte jednu z možností pro zahrnutí obsahu Markdownu: **vložené úpravy** nebo **vložení obsahu pomocí adresy URL**.
+1. Vyberte jednu z možností zahrnutí obsahu značky: **Vložené úpravy** nebo **vložení obsahu pomocí adresy URL**.
 
-   - Pokud chcete zadat Markdownu přímo, vyberte **vložené úpravy** .
+   - Vyberte **Vstřikovací úpravy,** pokud chcete zadat markdown přímo.
 
-      ![Snímek obrazovky zobrazující vložení vloženého obsahu](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-inline-content.png)
+      ![Snímek obrazovky s zadáváním vobsahového obsahu](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-inline-content.png)
 
-   - Pokud chcete používat stávající Markdownu obsah, který je hostovaný online, vyberte **Vložit obsah pomocí adresy URL** .
+   - Pokud chcete použít existující obsah značky hostovaný online, vyberte **Vložit obsah pomocí adresy URL.**
 
-      ![Snímek obrazovky ukazující zadání adresy URL](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
+      ![Snímek obrazovky s adresou URL pro zadání](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > Pro zvýšení zabezpečení můžete vytvořit soubor Markdownu a uložit ho do [objektu BLOB účtu úložiště Azure, kde je šifrování povolené](../storage/common/storage-service-encryption.md), a pak na soubor odkazovat pomocí možnosti adresa URL. Obsah Markdownu je zašifrovaný prostřednictvím možností šifrování účtu úložiště. Obsah Markdownu na řídicím panelu můžou zobrazit jenom uživatelé s oprávněními k tomuto souboru.
+      > Pro zvýšení zabezpečení můžete vytvořit soubor markdown a uložit jej do [objektu blob účtu úložiště Azure, kde je povoleno šifrování](../storage/common/storage-service-encryption.md), a pak na soubor přejděte pomocí možnosti URL. Obsah značky je šifrován prostřednictvím možností šifrování účtu úložiště. Obsah značky na řídicím panelu mohou zobrazit pouze uživatelé s oprávněními k souboru.
 
-1. Výběrem **Hotovo** zavřete podokno **Upravit Markdownu** . Obsah se zobrazí na dlaždici Markdownu, kterou můžete změnit přetažením úchytu v pravém dolním rohu.
+1. Výběrem **možnosti Hotovo** zavřete podokno **Upravit značky.** Váš obsah se zobrazí na dlaždici Markdown, kterou můžete změnit přetažením úchytu v pravém dolním rohu.
 
-   ![Snímek obrazovky zobrazující vlastní dlaždici Markdownu](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
+   ![Snímek obrazovky s vlastní dlaždicí markdown](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 
-## <a name="markdown-content-capabilities-and-limitations"></a>Markdownu možnosti obsahu a omezení
+## <a name="markdown-content-capabilities-and-limitations"></a>Funkce a omezení obsahu značky
 
-Na dlaždici Markdownu můžete použít libovolnou kombinaci prostého textu, syntaxe Markdownu a obsahu HTML. Azure Portal používá open source knihovnu s názvem _označenou_ k transformaci vašeho obsahu na HTML, který se zobrazí na dlaždici. KÓD HTML vytvořený pomocí _označení_ je před jeho vykreslením předem zpracován portálem. Tento krok vám pomůže zajistit, aby vaše přizpůsobení neovlivnilo zabezpečení nebo rozložení portálu. Během tohoto předběžného zpracování se odeberou všechny součásti HTML, které představují potenciální hrozbu. Portál nepovoluje následující typy obsahu:
+Na dlaždici markdown umíte libovolnou kombinaci prostého textu, syntaxe Markdownu a obsahu HTML. Portál Azure používá knihovnu s otevřeným zdrojovým kódem _označenou_ k transformaci obsahu do html, který se zobrazuje na dlaždici. Kód HTML vytvořený _označeným je_ před vykreslením předem zpracován portálem. Tento krok pomáhá zajistit, aby vaše vlastní nastavení neovlivnilo zabezpečení nebo rozložení portálu. Během tohoto předběžného zpracování bude odebrána jakákoli část kódu HTML, která představuje potenciální hrozbu. Portál nepovoluje následující typy obsahu:
 
-* JavaScript – `<script>` značky a vložená hodnocení JavaScriptu se odeberou.
-* prvky IFrame – značky `<iframe>` budou odebrány.
-* Styly – `<style>` značky budou odebrány. Vložené atributy stylu u elementů HTML nejsou oficiálně podporovány. Může dojít k tomu, že některé vložené prvky stylu fungují za vás, ale pokud jsou v konfliktu s rozložením portálu, mohou přestat fungovat kdykoli. Dlaždice Markdownu je určená pro základní a statický obsah, který používá výchozí styly portálu.
+* JavaScript `<script>` – budou odstraněny značky a inline vyhodnocení JavaScriptu.
+* iframe `<iframe>` - značky budou odstraněny.
+* Styl `<style>` - značky budou odstraněny. Atributy vložených stylů u prvků HTML nejsou oficiálně podporovány. Možná zjistíte, že některé prvky inline stylu pracují za vás, ale pokud narušují rozložení portálu, mohou kdykoli přestat pracovat. Dlaždice Markdown je určena pro základní statický obsah, který používá výchozí styly portálu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete vytvořit vlastní řídicí panel, přečtěte si téma [Vytvoření a sdílení řídicích panelů v Azure Portal](../azure-portal/azure-portal-dashboards.md) .
+* Pokud chcete vytvořit vlastní řídicí panel, přečtěte si část [Vytvoření a sdílení řídicích panelů na webu Azure Portal.](../azure-portal/azure-portal-dashboards.md)

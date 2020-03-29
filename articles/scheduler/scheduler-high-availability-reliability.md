@@ -1,6 +1,6 @@
 ---
 title: Vysoká dostupnost a spolehlivost
-description: Informace o vysoké dostupnosti a spolehlivosti v Azure Scheduleru
+description: Informace o vysoké dostupnosti a spolehlivosti v Plánovači Azure
 services: scheduler
 ms.service: scheduler
 author: derek1ee
@@ -9,67 +9,67 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
 ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898567"
 ---
-# <a name="high-availability-and-reliability-for-azure-scheduler"></a>Vysoká dostupnost a spolehlivost pro Azure Scheduler
+# <a name="high-availability-and-reliability-for-azure-scheduler"></a>Vysoká dostupnost a spolehlivost pro Plánovač Azure
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve. 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje Azure Scheduler, který [je vyřazen .](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) Pokud chcete pokračovat v práci s úlohami, které jste nastavili v Plánovači, [migrujte co](../scheduler/migrate-from-scheduler-to-logic-apps.md) nejdříve do Azure Logic Apps. 
 >
-> Plánovač již není v Azure Portal k dispozici, ale [rutiny prostředí PowerShell](scheduler-powershell-reference.md) [REST API](/rest/api/scheduler) a Azure Scheduler jsou v tuto chvíli dostupné, abyste mohli spravovat úlohy a kolekce úloh.
+> Plánovač už není k dispozici na webu Azure Portal, ale rutiny [ROZHRANÍ REST API](/rest/api/scheduler) a Azure [Scheduler PowerShell](scheduler-powershell-reference.md) zůstávají k dispozici v tuto chvíli, takže můžete spravovat své úlohy a kolekce úloh.
 
-Azure Scheduler nabízí [vysokou dostupnost](https://docs.microsoft.com/azure/architecture/framework/#resiliency) a spolehlivost pro vaše úlohy. Další informace najdete v tématu [SLA pro Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
+Azure Scheduler poskytuje [vysokou dostupnost](https://docs.microsoft.com/azure/architecture/framework/#resiliency) a spolehlivost pro vaše úlohy. Další informace naleznete v tématu [SLA for Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
 
 ## <a name="high-availability"></a>Vysoká dostupnost
 
-Služba Azure Scheduler je [vysoce dostupná] a používá replikaci geograficky redundantního nasazení služby i geograficky regionální úlohy.
+Plánovač Azure je [vysoce dostupný] a používá geograficky redundantní nasazení služby a geograficky regionální replikaci úloh.
 
 ### <a name="geo-redundant-service-deployment"></a>Geograficky redundantní nasazení služby
 
-Služba Azure Scheduler je dostupná napříč skoro [všemi geografickými oblastmi, které Azure ještě dnes podporuje](https://azure.microsoft.com/global-infrastructure/regions/#services). Takže pokud se datacentrum Azure v hostované oblasti nebude k dispozici, můžete i nadále používat Azure Scheduler, protože možnosti převzetí služeb při selhání služby zpřístupňují Plánovač z jiného datového centra.
+Azure Scheduler je dostupný téměř ve [všech geografických oblastech podporovaných Azure dnes](https://azure.microsoft.com/global-infrastructure/regions/#services). Takže pokud datové centrum Azure v hostované oblasti přestane být k dispozici, můžete stále používat Azure Scheduler, protože možnosti převzetí služeb převzetí služeb zpřístupňují Scheduler z jiného datového centra.
 
-### <a name="geo-regional-job-replication"></a>Replikace geograficky regionálních úloh
+### <a name="geo-regional-job-replication"></a>Geograficky regionální replikace úloh
 
-Vaše vlastní úlohy v Azure Scheduleru se replikují napříč oblastmi Azure. Takže pokud dojde k výpadku jedné oblasti, služba Azure Scheduler převezme služby při selhání a zajistí, aby se vaše úloha spouštěla z jiného datového centra v spárované geografické oblasti.
+Vaše vlastní úlohy v Azure Scheduler se replikují napříč oblastmi Azure. Takže pokud jedna oblast má výpadek, Azure Scheduler převzetí selhání a zajišťuje, že vaše úloha běží z jiného datového centra ve spárované geografické oblasti.
 
-Pokud například v Střed USA – jih vytvoříte úlohu, služba Azure Scheduler tuto úlohu automaticky replikuje v Střed USA – sever. Pokud v Střed USA – jih dojde k selhání, služba Azure Scheduler úlohu spustí v Střed USA – sever. 
+Pokud například vytvoříte úlohu v usa – střed usa, Plánovač Azure tuto úlohu automaticky replikuje v severním centru USA. Pokud dojde k selhání v jižní centrální USA, Azure Scheduler spustí úlohu v severní centrální USA. 
 
-![Replikace geograficky regionálních úloh](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png)
+![Geograficky regionální replikace úloh](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png)
 
-Azure Scheduler taky zajišťuje, aby vaše data zůstala v rámci stejné, ale širší geografické oblasti, a to jenom v případě, že v Azure dojde k selhání. Takže nemusíte duplikovat úlohy, pokud chcete jenom vysokou dostupnost. Azure Scheduler automaticky poskytuje vysokou dostupnost pro vaše úlohy.
+Azure Scheduler také zajišťuje, že vaše data zůstanou ve stejné, ale širší geografické oblasti, jen pro případ, že dojde k selhání v Azure. Takže nemusíte duplikovat své úlohy, když chcete jen vysokou dostupnost. Azure Scheduler automaticky poskytuje vysokou dostupnost pro vaše úlohy.
 
 ## <a name="reliability"></a>Spolehlivost
 
-Azure Scheduler garantuje vlastní vysokou dostupnost, ale pro úlohy vytvořené uživatelem potřebuje jiný přístup. Předpokládejme například, že vaše úloha vyvolá koncový bod HTTP, který není k dispozici. Služba Azure Scheduler se stále snaží úspěšně spustit úlohu tím, že vám poskytne alternativní možnosti pro zpracování selhání: 
+Azure Scheduler zaručuje vlastní vysokou dostupnost, ale má jiný přístup k úlohám vytvořeným uživateli. Předpokládejme například, že vaše úloha vyvolá koncový bod HTTP, který není k dispozici. Azure Scheduler se stále pokouší úspěšně spustit vaši úlohu tím, že vám poskytne alternativní způsoby zpracování chyb: 
 
 * Nastavte zásady opakování.
-* Nastavení alternativních koncových bodů.
+* Nastavte alternativní koncové body.
 
 <a name="retry-policies"></a>
 
 ### <a name="retry-policies"></a>Zásady opakování
 
-Azure Scheduler umožňuje nastavit zásady opakování. Pokud se úloha nezdařila, bude ve výchozím nastavení služba Scheduler opakuje úlohu čtyřikrát dvakrát v intervalu 30 sekund. Tuto zásadu opakování můžete nastavit tak, aby se lépe agresivní, například 10 časů v intervalech 30 sekund, nebo méně agresivní, například dvakrát v denních intervalech.
+Azure Scheduler umožňuje nastavit zásady opakování. Pokud úloha selže, pak ve výchozím nastavení Plánovač opakuje úlohu ještě čtyřikrát v intervalech 30 sekund. Tuto zásadu opakování můžete provést agresivnější, například 10krát v 30sekundových intervalech nebo méně agresivní, například dvakrát v denních intervalech.
 
-Předpokládejme například, že vytvoříte týdenní úlohu, která volá koncový bod HTTP. Pokud se koncový bod HTTP po spuštění úlohy stane nedostupným, nebudete pravděpodobně chtít počkat jiný týden, než se úloha spustí znovu, což nastane, protože výchozí zásada opakování nebude v tomto případě fungovat. To znamená, že budete chtít změnit standardní zásady opakování, aby se opakování provádělo například každé tři hodiny, a ne každých 30 sekund. 
+Předpokládejme například, že vytvoříte týdenní úlohu, která volá koncový bod HTTP. Pokud koncový bod HTTP přestane být k dispozici po dobu několika hodin při spuštění úlohy, pravděpodobně nebudete chtít čekat další týden na úlohu znovu spustit, což se stane, protože výchozí zásady opakování nebude fungovat v tomto případě. Takže můžete chtít změnit standardní zásady opakování tak, aby opakování dojít, například každé tři hodiny, nikoli každých 30 sekund. 
 
-Informace o tom, jak nastavit zásady opakování, najdete v tématu [retryPolicy](scheduler-concepts-terms.md#retrypolicy).
+Informace o tom, jak nastavit zásadu opakování, naleznete [v tématu retryPolicy](scheduler-concepts-terms.md#retrypolicy).
 
 ### <a name="alternate-endpoints"></a>Alternativní koncové body
 
-Pokud vaše úloha Azure Scheduleru volá koncový bod, který je nedosažitelný, a to i po provedení zásady opakování, se Plánovač vrátí do alternativního koncového bodu, který může tyto chyby zpracovat. Takže pokud nastavíte tento koncový bod, Plánovač volání tohoto koncového bodu, který způsobí, že vaše vlastní úlohy budou vysoce dostupné, když dojde k selhání.
+Pokud vaše úloha Plánovač Azure volá koncový bod, který je nedostupný, i po dodržování zásad opakování, Plánovač přejde zpět do alternativního koncového bodu, který může tyto chyby zpracovat. Takže pokud nastavíte tento koncový bod, Plánovač volá tento koncový bod, který umožňuje vlastní úlohy vysoce dostupné, když dojde k selhání.
 
-Tento diagram například ukazuje, jak Plánovač sleduje zásady opakování při volání webové služby v New Yorku. Pokud se opakované pokusy nezdaří, Scheduler vyhledá alternativní koncový bod. Pokud koncový bod existuje, Plánovač spustí odesílání požadavků do alternativního koncového bodu. Stejné zásady opakování platí i pro původní akci i pro alternativní akci.
+Tento diagram například ukazuje, jak Plánovač dodržuje zásady opakování při volání webové služby v New Yorku. Pokud opakování nezdaří, Plánovač zkontroluje alternativní koncový bod. Pokud koncový bod existuje, Plánovač začne odesílat požadavky na alternativní koncový bod. Stejná zásada opakování platí pro původní i alternativní akci.
 
-![Chování Scheduleru se zásadami opakování a alternativním koncovým bodem](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png)
+![Chování plánovače s zásadou opakování a alternativním koncovým bodem](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png)
 
-Typ akce alternativní akce se může lišit od původní akce. I když původní akce například volá koncový bod HTTP, může alternativní akce protokolovat chyby pomocí fronty úložiště, Service Bus fronty nebo akce v Service Bus tématu.
+Typ akce pro alternativní akci se může lišit od původní akce. Například i když původní akce volá koncový bod HTTP, alternativní akce může protokolovat chyby pomocí fronty úložiště, fronty service bus nebo akce tématu Service Bus.
 
-Další informace o nastavení alternativního koncového bodu najdete v tématu [errorAction](scheduler-concepts-terms.md#error-action).
+Chcete-li se dozvědět, jak nastavit alternativní koncový bod, naleznete [v tématu errorAction](scheduler-concepts-terms.md#error-action).
 
 ## <a name="next-steps"></a>Další kroky
 

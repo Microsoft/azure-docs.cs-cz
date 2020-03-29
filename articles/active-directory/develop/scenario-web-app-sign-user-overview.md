@@ -1,6 +1,6 @@
 ---
-title: Přihlaste se k uživatelům z webové aplikace – Microsoft Identity Platform | Azure
-description: Naučte se vytvářet webové aplikace, které se přihlásí uživatelům (přehled).
+title: Přihlášení uživatelů z webové aplikace – platforma identit Microsoftu | Azure
+description: Přečtěte si, jak vytvořit webovou aplikaci, která se přihlásí k uživatelům (přehled)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,15 +15,15 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 403f589702fd7142f0515a3b6f19ee1b9bbb6420
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701548"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>Scénář: webová aplikace, která se přihlásí uživatelům
+# <a name="scenario-web-app-that-signs-in-users"></a>Scénář: Webová aplikace, která se připisuje k uživatelům
 
-Seznamte se s tím, co potřebujete k vytvoření webové aplikace, která používá Microsoft Identity Platform k přihlašování uživatelů.
+Přečtěte si vše, co potřebujete k vytvoření webové aplikace, která k přihlašování uživatelů používá platformu identit Microsoftu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,73 +31,73 @@ Seznamte se s tím, co potřebujete k vytvoření webové aplikace, která použ
 
 ## <a name="getting-started"></a>Začínáme
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Pokud chcete vytvořit první přenosnou webovou aplikaci (ASP.NET Core), která se přihlašuje uživatelům, postupujte podle tohoto rychlého startu:
-
-> [!div class="nextstepaction"]
-> [Rychlý Start: ASP.NET Core webovou aplikaci, která se přihlásí uživatelům](quickstart-v2-aspnet-core-webapp.md)
-
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
-
-Pokud chcete pochopit, jak přidat přihlášení do existující webové aplikace ASP.NET, vyzkoušejte následující rychlý Start:
+Pokud chcete vytvořit první přenosnou (ASP.NET základní) webovou aplikaci, která se přihlásí k uživatelům, postupujte podle tohoto rychlého startu:
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: ASP.NET webová aplikace, která přihlásí uživatele](quickstart-v2-aspnet-webapp.md)
+> [Úvodní příručka: ASP.NET základní webová aplikace, která připisuje uživatele](quickstart-v2-aspnet-core-webapp.md)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Pokud jste vývojářem Java, zkuste následující rychlý Start:
-
-> [!div class="nextstepaction"]
-> [Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu](quickstart-v2-java-webapp.md)
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-Pokud vyvíjíte pomocí Pythonu, zkuste následující rychlý Start:
+Pokud chcete pochopit, jak přidat přihlášení k existující ASP.NET webové aplikace, vyzkoušejte následující rychlý start:
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu](quickstart-v2-python-webapp.md)
+> [Úvodní příručka: ASP.NET webová aplikace, která se připisuje uživatelům](quickstart-v2-aspnet-webapp.md)
+
+# <a name="java"></a>[Java](#tab/java)
+
+Pokud jste vývojář v Jazyce Java, vyzkoušejte následující rychlý start:
+
+> [!div class="nextstepaction"]
+> [Úvodní příručka: Přidání přihlášení s Microsoftem do webové aplikace Java](quickstart-v2-java-webapp.md)
+
+# <a name="python"></a>[Python](#tab/python)
+
+Pokud vyvíjíte s Pythonem, zkuste následující rychlý start:
+
+> [!div class="nextstepaction"]
+> [Úvodní příručka: Přidání přihlášení s Microsoftem do webové aplikace Pythonu](quickstart-v2-python-webapp.md)
 
 ---
 
 ## <a name="overview"></a>Přehled
 
-Do své webové aplikace můžete přidat ověřování, aby se mohli přihlašovat uživatelům. Přidání ověřování umožní vaší webové aplikaci získat přístup k informacím o omezených profilech, aby bylo možné přizpůsobit prostředí pro uživatele. 
+Do webové aplikace přidáte ověřování, aby se mohla přihlašovat k uživatelům. Přidání ověřování umožňuje webové aplikaci přístup k omezeným informacím o profilu za účelem přizpůsobení prostředí pro uživatele. 
 
-Webové aplikace ověřují uživatele ve webovém prohlížeči. V tomto scénáři webová aplikace přesměruje prohlížeč uživatele, aby je přihlásil k Azure Active Directory (Azure AD). Azure AD vrátí odpověď pro přihlášení prostřednictvím prohlížeče uživatele, který obsahuje deklarace identity uživatele v tokenu zabezpečení. Přihlášení uživatelé využívají standardní protokol [Open ID Connect](./v2-protocols-oidc.md) , který je zjednodušený pomocí [knihoven](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps)middlewaru.
+Webové aplikace ověřují uživatele ve webovém prohlížeči. V tomto scénáři webová aplikace přesměruje prohlížeč uživatele k jejich přihlášení do služby Azure Active Directory (Azure AD). Azure AD vrátí odpověď přihlášení prostřednictvím prohlížeče uživatele, který obsahuje deklarace identity o uživateli v tokenu zabezpečení. Přihlašování uživatelů využívá standardní protokol [Open ID Connect,](./v2-protocols-oidc.md) který je zjednodušen použitím [middlewarových knihoven](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps).
 
-![Přihlašování uživatelů k webové aplikaci](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
+![Přihlášení webové aplikace k uživatelům](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
 
-V druhé fázi můžete aplikaci povolit, aby vyvolala webová rozhraní API jménem přihlášeného uživatele. Tato další fáze je jiný scénář, který najdete ve [webové aplikaci, která volá webová rozhraní API](scenario-web-app-call-api-overview.md).
+Jako druhou fázi můžete povolit aplikaci volat webová rozhraní API jménem přihlášeného uživatele. Tato další fáze je jiný scénář, který najdete ve [webové aplikaci, která volá webová api](scenario-web-app-call-api-overview.md).
 
 > [!NOTE]
-> Přidání přihlašování do webové aplikace se týká ochrany webové aplikace a ověření tokenu uživatele, který se nachází v knihovnách **middlewaru** . V případě .NET tento scénář ještě nevyžaduje knihovnu Microsoft Authentication Library (MSAL), která má za následek získání tokenu pro volání chráněných rozhraní API. Knihovny pro ověřování budou zavedeny do následného scénáře, pokud webová aplikace potřebuje volat webová rozhraní API.
+> Přidání přihlášení do webové aplikace je o ochraně webové aplikace a ověření uživatelského tokenu, což je to, co **middleware** knihovny dělají. V případě rozhraní .NET tento scénář ještě nevyžaduje Knihovnu ověřování společnosti Microsoft (MSAL), která je o získání tokenu pro volání chráněných rozhraní API. Ověřovací knihovny budou zavedeny v následném scénáři, kdy webová aplikace potřebuje volat webová api.
 
 ## <a name="specifics"></a>Specifika
 
-- Při registraci aplikace budete muset zadat jednu nebo několik (Pokud aplikaci nasadíte do několika umístění) identifikátorů URI odpovědi. V některých případech (ASP.NET a ASP.NET Core) budete muset token ID povolit. Nakonec budete chtít nastavit identifikátor URI pro odhlášení, aby se vaše aplikace znovu přihlásila k uživatelům, kteří se odhlásí.
-- V kódu vaší aplikace budete muset zadat autoritu, které vaše webová aplikace deleguje přihlašování. Můžete chtít přizpůsobit ověření tokenu (zejména v partnerských scénářích).
-- Webové aplikace podporují všechny typy účtů. Další informace najdete v tématu [podporované typy účtů](v2-supported-account-types.md).
+- Během registrace aplikace budete muset zadat jednu nebo několik (pokud aplikaci nasadíte do několika umístění) odpovědi URI. V některých případech (ASP.NET a ASP.NET Core) budete muset povolit token ID. Nakonec budete chtít nastavit přihlašovací identifikátor URI tak, aby vaše aplikace reagovala na odhlášení uživatelů.
+- V kódu pro vaši aplikaci budete muset poskytnout oprávnění, ke kterému vaše webová aplikace deleguje přihlášení. Můžete chtít přizpůsobit ověření tokenu (zejména v partnerských scénářích).
+- Webové aplikace podporují všechny typy účtů. Další informace naleznete v tématu [Podporované typy účtů](v2-supported-account-types.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
 > [Registrace aplikace](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore)
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
 > [Registrace aplikace](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnet)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
 > [Registrace aplikace](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=java)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
 > [Registrace aplikace](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=python)

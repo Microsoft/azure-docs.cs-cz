@@ -1,6 +1,6 @@
 ---
-title: Ukončení používání rozšíření spravovaného virtuálního počítače identity – Azure AD
-description: Podrobné pokyny k zastavení používání rozšíření virtuálních počítačů a zahájení používání Azure Instance Metadata Service (IMDS) pro ověřování.
+title: Ukončení používání rozšíření virtuálního počítače spravované identity – Azure AD
+description: Krok za krokem přestat používat rozšíření virtuálního počítače a začít používat službu metadat instance Azure (IMDS) pro ověřování.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 3440713c287967655678e1cde2c000a6ed28b900
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 01b8e1dbc290bed86ccfc3c7016e8bd9168e427a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183955"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049071"
 ---
-# <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Jak ukončit používání rozšíření spravované identity virtuálních počítačů a začít používat Azure Instance Metadata Service
+# <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Jak přestat používat rozšíření spravovaných identit virtuálního počítače a začít používat službu metadat instance Azure
 
 ## <a name="virtual-machine-extension-for-managed-identities"></a>Rozšíření virtuálního počítače pro spravované identity
 
 Rozšíření virtuálního počítače pro spravované identity se používá k vyžádání tokenů pro spravovanou identitu v rámci virtuálního počítače. Pracovní postup se skládá z následujících kroků:
 
-1. Nejprve zatížení v rámci prostředku zavolá `http://localhost/oauth2/token` místního koncového bodu, aby vyžádala přístupový token.
-2. Rozšíření virtuálního počítače pak pomocí přihlašovacích údajů pro spravovanou identitu vyžádá přístupový token ze služby Azure AD. 
-3. Přístupový token se vrátí volajícímu a dá se použít k ověření služeb, které podporují ověřování Azure AD, jako je Azure Key Vault nebo Azure Storage.
+1. Nejprve zatížení v rámci prostředku volá `http://localhost/oauth2/token` místní koncový bod požádat o přístupový token.
+2. Rozšíření virtuálního počítače pak používá přihlašovací údaje pro spravovanou identitu, chcete-li požádat o přístupový token z Azure AD.. 
+3. Přístupový token se vrátí volajícímu a lze jej použít k ověření služeb, které podporují ověřování Azure AD, jako je Azure Key Vault nebo Azure Storage.
 
-Kvůli několika omezením, které jsou uvedené v následující části, se rozšíření virtuálního počítače spravované identity už nepoužívá v rámci používání ekvivalentního koncového bodu v Azure Instance Metadata Service (IMDS).
+Vzhledem k několika omezením popsaným v další části se rozšíření virtuálního počítače spravované identity zastaralo ve prospěch použití ekvivalentního koncového bodu ve službě Metadatazure instance (IMDS).
 
-### <a name="provision-the-extension"></a>Zřídit rozšíření 
+### <a name="provision-the-extension"></a>Ustanovení o prodloužení 
 
-Když nakonfigurujete virtuální počítač nebo sadu škálování virtuálního počítače tak, aby měly spravovanou identitu, můžete se případně rozhodnout zřídit rozšíření spravované identity pro prostředky Azure Resources pomocí parametru `-Type` v rutině [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) . V závislosti na typu virtuálního počítače můžete předat buď `ManagedIdentityExtensionForWindows`, nebo `ManagedIdentityExtensionForLinux`a pojmenovat ho pomocí parametru `-Name`. Parametr `-Settings` Určuje port používaný koncovým bodem tokenu OAuth pro získání tokenu:
+Když nakonfigurujete škálovací sadu virtuálního počítače nebo virtuálního počítače tak, aby měla spravovanou `-Type` identitu, můžete volitelně zvolit zřídit spravované identity pro rozšíření virtuálního počítače prostředků Azure pomocí parametru na rutině [Set-AzVMExtension.](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) Můžete předat `ManagedIdentityExtensionForWindows` buď `ManagedIdentityExtensionForLinux`nebo , v závislosti na typu virtuálního počítače a pojmenujte jej pomocí parametru. `-Name` Parametr `-Settings` určuje port používaný koncovým bodem tokenu OAuth pro získání tokenu:
 
 ```powershell
    $settings = @{ "port" = 50342 }
    Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
 ```
 
-Pomocí šablony nasazení Azure Resource Manager můžete taky zřídit rozšíření virtuálního počítače tak, že do šablony přidáte následující JSON do části `resources` (použijte `ManagedIdentityExtensionForLinux` pro název a elementy typu pro verzi pro Linux).
+Šablonu nasazení Azure Resource Manageru můžete taky použít ke zřízení rozšíření virtuálního `resources` počítače přidáním `ManagedIdentityExtensionForLinux` následujícího jsondo do části do šablony (použijte pro název a typ elementy pro verzi Linuxu).
 
     ```json
     {
@@ -66,14 +66,14 @@ Pomocí šablony nasazení Azure Resource Manager můžete taky zřídit rozší
     ```
     
     
-Pokud pracujete se sadami škálování virtuálních počítačů, můžete taky zřídit spravované identity pro rozšíření Azure Resource Scale set pomocí rutiny [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) . V závislosti na typu sady škálování virtuálního počítače můžete předat buď `ManagedIdentityExtensionForWindows` nebo `ManagedIdentityExtensionForLinux`, a pojmenovat ho pomocí parametru `-Name`. Parametr `-Settings` Určuje port používaný koncovým bodem tokenu OAuth pro získání tokenu:
+Pokud pracujete s škálovacími sadami virtuálních strojů, můžete také zřídit spravované identity pro rozšíření škálovací sady virtuálních strojů Azure pomocí rutiny [Add-AzVmssExtension.](/powershell/module/az.compute/add-azvmssextension) Můžete předat `ManagedIdentityExtensionForWindows` buď `ManagedIdentityExtensionForLinux`nebo , v závislosti na typu škálovací `-Name` sady virtuálního počítače a pojmenujte ji pomocí parametru. Parametr `-Settings` určuje port používaný koncovým bodem tokenu OAuth pro získání tokenu:
 
    ```powershell
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
    Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
-Pokud chcete pomocí šablony nasazení Azure Resource Manager zřídit rozšíření pro sadu škálování virtuálního počítače, přidejte následující JSON do části `extensionpProfile` do šablony (použijte `ManagedIdentityExtensionForLinux` pro název a prvky typu pro verzi pro Linux).
+Chcete-li zřídit rozšíření škálovací sady virtuálních strojů pomocí šablony nasazení `extensionpProfile` Azure Resource Manager, přidejte do části do šablony následující JSON (použijte `ManagedIdentityExtensionForLinux` pro prvky názvu a typu pro verzi Linuxu).
 
     ```json
     "extensionProfile": {
@@ -93,10 +93,10 @@ Pokud chcete pomocí šablony nasazení Azure Resource Manager zřídit rozší�
             }
     ```
 
-Zřizování rozšíření virtuálního počítače může selhat z důvodu selhání vyhledávání DNS. Pokud k tomu dojde, restartujte virtuální počítač a zkuste to znovu. 
+Zřizování rozšíření virtuálního počítače může selhat z důvodu selhání vyhledávání DNS. Pokud k tomu dojde, restartujte virtuální počítač a akci opakujte. 
 
 ### <a name="remove-the-extension"></a>Odebrání rozšíření 
-Pokud chcete rozšíření odebrat, použijte `-n ManagedIdentityExtensionForWindows` nebo `-n ManagedIdentityExtensionForLinux` přepínač (v závislosti na typu virtuálního počítače) pomocí [AZ VM Extension Delete](https://docs.microsoft.com/cli/azure/vm/)nebo [AZ VMSS Extension Delete](https://docs.microsoft.com/cli/azure/vmss) pro Virtual Machine Scale Sets pomocí Azure CLI nebo `Remove-AzVMExtension` pro PowerShell:
+Pokud chcete rozšíření `-n ManagedIdentityExtensionForWindows` odebrat, použijte `-n ManagedIdentityExtensionForLinux` nebo přepněte (v závislosti na typu virtuálního počítače) s [odstraněním rozšíření AZ VM](https://docs.microsoft.com/cli/azure/vm/)nebo [odstraněním rozšíření AZ VMSS](https://docs.microsoft.com/cli/azure/vmss) pro škálovací sady virtuálních strojů pomocí azure cli nebo `Remove-AzVMExtension` pro Powershell:
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -112,24 +112,24 @@ Remove-AzVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityEx
 
 ### <a name="acquire-a-token-using-the-virtual-machine-extension"></a>Získání tokenu pomocí rozšíření virtuálního počítače
 
-Následuje ukázkový požadavek pomocí spravované identity pro koncový bod rozšíření virtuálních počítačů Azure Resources:
+Následuje ukázkový požadavek pomocí spravovaných identit pro koncový bod rozšíření virtuálního počítače Azure:
 
 ```
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
 Metadata: true
 ```
 
-| Prvek | Popis |
+| Element | Popis |
 | ------- | ----------- |
-| `GET` | Příkaz HTTP, který indikuje, že chcete načíst data z koncového bodu. V tomto případě se jedná o přístupový token OAuth. | 
-| `http://localhost:50342/oauth2/token` | Spravované identity pro koncové body prostředků Azure, kde 50342 je výchozí port a dá se konfigurovat. |
-| `resource` | Parametr řetězce dotazu, který označuje identifikátor URI ID aplikace cílového prostředku. Také se zobrazí v deklaraci identity `aud` (cílová skupina) vydaného tokenu. Tento příklad vyžaduje token pro přístup k Azure Resource Manager, která má identifikátor URI ID aplikace https://management.azure.com/. |
-| `Metadata` | Pole hlavičky požadavku HTTP, které vyžadují spravované identity prostředků Azure jako zmírnění útoků na straně serveru (SSRF). Tato hodnota musí být nastavená na "true", a to u všech malých písmen.|
-| `object_id` | Volitelné Parametr řetězce dotazu, který označuje object_id spravované identity, pro kterou chcete vytvořit token. Vyžaduje se, pokud má váš virtuální počítač více spravovaných identit přiřazených uživatelem.|
-| `client_id` | Volitelné Parametr řetězce dotazu, který označuje client_id spravované identity, pro kterou chcete vytvořit token. Vyžaduje se, pokud má váš virtuální počítač více spravovaných identit přiřazených uživatelem.|
+| `GET` | Sloveso HTTP označující, že chcete načíst data z koncového bodu. V tomto případě přístupový token OAuth. | 
+| `http://localhost:50342/oauth2/token` | Spravované identity pro koncový bod prostředků Azure, kde 50342 je výchozí port a je konfigurovatelný. |
+| `resource` | Parametr řetězce dotazu označující identifikátor URI ID aplikace cílového prostředku. Zobrazí se také `aud` v deklaraci (publika) vydaného tokenu. Tento příklad požaduje token pro přístup ke Správci prostředků Azure, který má identifikátor URI ID aplikace `https://management.azure.com/`. |
+| `Metadata` | Pole hlavičky požadavku HTTP, které vyžadují spravované identity pro prostředky Azure jako zmírnění útoku na vyžádání na straně serveru (SSRF). Tato hodnota musí být nastavena na "true", ve všech malá písmena.|
+| `object_id` | (Nepovinné) Parametr řetězce dotazu označující object_id spravované identity, pro kterou chcete token. Povinné, pokud váš virtuální počítač má více uživatelem přiřazené spravované identity.|
+| `client_id` | (Nepovinné) Parametr řetězce dotazu označující client_id spravované identity, pro kterou chcete token. Povinné, pokud váš virtuální počítač má více uživatelem přiřazené spravované identity.|
 
 
-Ukázková odpověď:
+Odpověď vzorku:
 
 ```
 HTTP/1.1 200 OK
@@ -145,71 +145,71 @@ Content-Type: application/json
 }
 ```
 
-| Prvek | Popis |
+| Element | Popis |
 | ------- | ----------- |
-| `access_token` | Požadovaný přístupový token Při volání zabezpečeného REST API se token vloží do pole hlavička žádosti `Authorization` jako "nosič", což umožňuje rozhraní API ověřit volajícího. | 
-| `refresh_token` | Nepoužívá se spravovanými identitami pro prostředky Azure. |
-| `expires_in` | Doba v sekundách, po kterou je přístupový token nadále platný, před vypršením platnosti, od doby vystavení. Čas vystavení najdete v deklaraci identity `iat` tokenu. |
-| `expires_on` | Časový interval pro přístup k vypršení platnosti přístupového tokenu Datum se reprezentuje jako počet sekund od "1970-01-01T0:0: 0Z UTC" (odpovídá deklaraci identity `exp` tokenu). |
-| `not_before` | Časové rozpětí, kdy se přístupový token projeví a lze jej přijmout. Datum se reprezentuje jako počet sekund od "1970-01-01T0:0: 0Z UTC" (odpovídá deklaraci identity `nbf` tokenu). |
-| `resource` | Prostředek, pro který byl požadován přístupový token, který se shoduje s parametrem řetězce dotazu `resource` požadavku. |
-| `token_type` | Typ tokenu, což je přístupový token "nosiče", což znamená, že prostředek může udělit přístup k nosiči tohoto tokenu. |
+| `access_token` | Požadovaný přístupový token. Při volání zabezpečené rozhraní REST API je `Authorization` token vložen do pole hlavičky požadavku jako token "nosiče", což umožňuje rozhraní API k ověření volajícího. | 
+| `refresh_token` | Nepoužívají spravované identity pro prostředky Azure. |
+| `expires_in` | Počet sekund, po které je přístupový token i nadále platný před vypršením platnosti, od doby vydání. Čas vydání lze nalézt v `iat` deklaraci tokenu. |
+| `expires_on` | Časový rozsah při vypršení platnosti přístupového tokenu. Datum je reprezentováno jako počet sekund od "1970-01-01T0:0:0Z UTC" `exp` (odpovídá deklaraci tokenu). |
+| `not_before` | Časový rozsah, kdy se projeví přístupový token a může být přijat. Datum je reprezentováno jako počet sekund od "1970-01-01T0:0:0Z UTC" `nbf` (odpovídá deklaraci tokenu). |
+| `resource` | Prostředek, pro který byl požadován přístupový token, který odpovídá parametru `resource` řetězce dotazu požadavku. |
+| `token_type` | Typ tokenu, což je přístupový token "Nosič", což znamená, že prostředek může poskytnout přístup k nositeli tohoto tokenu. |
 
 
-### <a name="troubleshoot-the-virtual-machine-extension"></a>Řešení potíží s rozšířením virtuálního počítače 
+### <a name="troubleshoot-the-virtual-machine-extension"></a>Poradce při potížích s rozšířením virtuálního počítače 
 
-#### <a name="restart-the-virtual-machine-extension-after-a-failure"></a>Po selhání restartovat rozšíření virtuálního počítače
+#### <a name="restart-the-virtual-machine-extension-after-a-failure"></a>Restartování rozšíření virtuálního počítače po selhání
 
-Pokud se rozšíření zastaví na Windows a určitých verzích Linux, dá se k ručnímu restartování použít následující rutina:
+V systému Windows a některých verzích Linuxu, pokud se rozšíření zastaví, může být k ručnímu restartování použita následující rutina:
 
 ```powershell
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
 Kde: 
-- Název a typ rozšíření pro Windows je: `ManagedIdentityExtensionForWindows`
-- Název a typ rozšíření pro Linux: `ManagedIdentityExtensionForLinux`
+- Název a typ rozšíření systému Windows je:`ManagedIdentityExtensionForWindows`
+- Název a typ rozšíření pro Linux je:`ManagedIdentityExtensionForLinux`
 
-#### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>Při pokusu o export schématu pro spravované identity pro rozšíření prostředků Azure dojde k chybě skriptu služby Automation.
+#### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>"Automatizační skript" se nezdaří při pokusu o export schématu pro spravované identity pro rozšíření prostředků Azure
 
-Pokud jsou na virtuálním počítači povolené spravované identity prostředků Azure, při pokusu o použití funkce skript Automation pro virtuální počítač nebo skupinu prostředků se zobrazí následující chyba:
+Když jsou spravované identity pro prostředky Azure povolené ve virtuálním počítači, zobrazí se při pokusu o použití funkce "Automatizační skript" pro virtuální počítač nebo jeho skupinu prostředků následující chyba:
 
-![Spravované identity pro Azure Resources Automation – chyba exportu skriptu](./media/howto-migrate-vm-extension/automation-script-export-error.png)
+![Chyby exportu skriptu pro spravované identity pro automatizační skripty azure](./media/howto-migrate-vm-extension/automation-script-export-error.png)
 
-Spravované identity pro prostředky Azure pro rozšíření virtuálních počítačů momentálně nepodporují možnost exportu schématu do šablony skupiny prostředků. V důsledku toho vygenerovaná šablona nezobrazuje parametry konfigurace umožňující spravované identity prostředků Azure v prostředku. Tyto oddíly můžete přidat ručně podle příkladů v části [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablon](qs-configure-template-windows-vm.md).
+Spravované identity pro rozšíření virtuálního počítače prostředků Azure aktuálně nepodporují možnost exportu jeho schématu do šablony skupiny prostředků. V důsledku toho vygenerovaná šablona nezobrazuje parametry konfigurace, které by umožnily spravované identity pro prostředky Azure v prostředku. Tyto oddíly lze přidat ručně podle příkladů v [konfigurovat spravované identity pro prostředky Azure na virtuálním počítači Azure pomocí šablon](qs-configure-template-windows-vm.md).
 
-Jakmile budou k dispozici funkce exportu schématu pro rozšíření virtuálních počítačů Azure pro prostředky Azure (plánované pro vyřazení do ledna 2019), bude se zobrazovat v části [Export skupin prostředků, které obsahují rozšíření virtuálních počítačů](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
+Když bude funkce exportu schématu dostupná pro spravované identity pro rozšíření virtuálního počítače prostředků Azure (plánované na vyřazení v lednu 2019), bude uvedená v [exportu skupin prostředků, které obsahují rozšíření virtuálních aplikací](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
 
 ## <a name="limitations-of-the-virtual-machine-extension"></a>Omezení rozšíření virtuálního počítače 
 
-Pro používání rozšíření virtuálního počítače je k dispozici několik hlavních omezení. 
+Existuje několik hlavních omezení použití rozšíření virtuálního počítače. 
 
- * Nejzávažnějším omezením je skutečnost, že přihlašovací údaje použité k vyžádání tokenů jsou uložené ve virtuálním počítači. Útočník, který úspěšně narušuje virtuální počítač, může exfiltrovat přihlašovací údaje. 
- * Kromě toho se rozšíření virtuálních počítačů stále nepodporuje u několika distribucí systému Linux, přičemž náklady na vývoj můžete upravit, sestavit a otestovat v každé z těchto distribucí. V současné době jsou podporovány pouze následující distribuce systému Linux: 
+ * Nejzávažnější omezení je skutečnost, že pověření použitá k vyžádání tokenů jsou uloženy ve virtuálním počítači. Útočník, který úspěšně poruší virtuální počítač, může pověření exfiltrovat. 
+ * Rozšíření virtuálního počítače navíc stále není podporováno několika distribucemi Linuxu, s obrovskými náklady na vývoj, které upravují, vytvářejí a testují rozšíření na každé z těchto distribucí. V současné době jsou podporovány pouze následující distribuce Linuxu: 
     * CoreOS stabilní
-    * CentOS 7.1 
-    * Red Hat 7,2 
+    * Centos 7,1 
+    * Červený klobouk 7,2 
     * Ubuntu 15.04 
     * Ubuntu 16.04
- * Nasazení virtuálních počítačů se spravovanými identitami má dopad na výkon, protože je taky potřeba zřídit rozšíření virtuálního počítače. 
- * Nakonec může rozšíření virtuálního počítače podporovat jenom 32 uživatelem přiřazených spravovaných identit na virtuální počítač. 
+ * Nasazení virtuálních počítačů se spravovanými identitami má dopad na výkon, protože rozšíření virtuálního počítače musí být také zřízené. 
+ * Nakonec rozšíření virtuálního počítače může podporovat pouze 32 uživatelem přiřazených spravovaných identit na virtuální počítač. 
 
-## <a name="azure-instance-metadata-service"></a>Instance Metadata Service Azure
+## <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
-[Azure instance metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) je koncový bod REST, který poskytuje informace o spuštěných instancích virtuálních počítačů, které se dají použít ke správě a konfiguraci virtuálních počítačů. Koncový bod je k dispozici na dobře známé IP adrese, která není směrovatelný (`169.254.169.254`), ke které se dá získat přístup jenom z virtuálního počítače.
+[Služba metadat instance Azure (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) je koncový bod REST, který poskytuje informace o spuštěných instancích virtuálních počítačů, které se dá použít ke správě a konfiguraci vašich virtuálních počítačů. Koncový bod je k dispozici na známé nesměrovatelné`169.254.169.254`IP adrese ( ), ke které lze přistupovat pouze z virtuálního počítače.
 
-Použití Azure IMDS k vyžádání tokenů má několik výhod. 
+Existuje několik výhod použití Azure IMDS požadovat tokeny. 
 
-1. Služba je pro virtuální počítač externě, takže přihlašovací údaje používané spravovanými identitami již nejsou na virtuálním počítači přítomny. Místo toho jsou hostované a zabezpečené na hostitelském počítači virtuálního počítače Azure.   
+1. Služba je externí než virtuální počítač, proto přihlašovací údaje používané spravované identity již nejsou k dispozici na virtuálním počítači. Místo toho jsou hostované a zabezpečené na hostitelském počítači virtuálního počítače Azure.   
 2. Všechny operační systémy Windows a Linux podporované v Azure IaaS můžou používat spravované identity.
-3. Nasazení je rychlejší a jednodušší, protože rozšíření virtuálního počítače už není potřeba zřizovat.
-4. Pomocí koncového bodu IMDS je možné přiřadit k jednomu virtuálnímu počítači až 1000 spravovaných identit přiřazených uživateli.
-5. Neexistují žádné významné změny požadavků, které používají IMDS, na rozdíl od těch, které používají rozšíření virtuálního počítače. proto je poměrně jednoduché přenášet přes existující nasazení, která aktuálně používají rozšíření virtuálního počítače.
+3. Nasazení je rychlejší a jednodušší, protože rozšíření virtuálního počítače už není potřeba zřídit.
+4. S koncovým bodem IMDS lze jednomu virtuálnímu počítači přiřadit až 1000 spravovaných identit přiřazených uživatelem.
+5. Neexistuje žádná významná změna požadavků pomocí IMDS na rozdíl od těch, kteří používají rozšíření virtuálního počítače, proto je poměrně jednoduché portovat přes stávající nasazení, která aktuálně používají rozšíření virtuálního počítače.
 
-Z těchto důvodů bude služba Azure IMDS ze seznamu odebraná způsob, jak vyžádat tokeny, jakmile je rozšíření virtuálního počítače zastaralé. 
+Z těchto důvodů bude služba Azure IMDS defacto způsob, jak požádat o tokeny, jakmile se rozšíření virtuálního počítače zastaralo. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure k získání přístupového tokenu](how-to-use-vm-token.md)
-* [Instance Metadata Service Azure](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+* [Jak používat spravované identity pro prostředky Azure na virtuálním počítači Azure k získání přístupového tokenu](how-to-use-vm-token.md)
+* [Služba metadat instance Azure](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)

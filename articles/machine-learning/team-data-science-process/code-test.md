@@ -1,6 +1,6 @@
 ---
-title: Testování kódu vědy data se službami Azure DevOps – vědecké zpracování týmových dat
-description: Data science kód testování na Azure s využitím dospělé příjem UCI předpovědi datovou sadu s vědecké zpracování týmových dat a služeb Azure DevOps
+title: Testování kódu datové vědy pomocí služeb Azure DevOps – proces týmové datové vědy
+description: Testování kódu datové vědy v Azure pomocí datové sady predikce příjmů dospělých UCI s procesem vědecké ho procesu týmových dat a službami Azure DevOps Services
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,29 +12,29 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721958"
 ---
-# <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Data science kód testování na Azure s využitím vědecké zpracování týmových dat a služeb Azure DevOps
-Tento článek obsahuje pokyny pro předběžné pro testování kódu v pracovní postup datových věd. Testování poskytuje datovým vědcům systematicky a efektivní způsob, jak zkontrolovat kvality a očekávaný výsledek svůj kód. Používáme projekt vědeckého zpracování týmových dat (TDSP) [, který používá datovou sadu pro příjem dat z Ski dospělé](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , kterou jsme publikovali dříve, a ukazuje, jak se dá provést testování kódu. 
+# <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Testování kódu datové vědy v Azure pomocí procesu vědecké ho procesu týmových dat a služeb Azure DevOps Services
+Tento článek obsahuje předběžné pokyny pro testování kódu v pracovním postupu datové vědy. Toto testování poskytuje datovým vědcům systematický a efektivní způsob, jak zkontrolovat kvalitu a očekávaný výsledek jejich kódu. Používáme projekt TDSP (Team Data Science Process), [který používá datovou sadu UCI Adult Income,](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) kterou jsme publikovali dříve, aby ukázal, jak lze provést testování kódu. 
 
-## <a name="introduction-on-code-testing"></a>Úvod k testování kódu
-"Testování částí" je dlouhodobě postupem pro vývoj softwaru. Pro datové vědy ale často není jasné, co znamená jednotkové testování, a způsob, jakým byste měli testovat kód pro různé fáze životního cyklu datové vědy, jako je například:
+## <a name="introduction-on-code-testing"></a>Úvod do testování kódu
+"Testování částí" je dlouhodobá praxe pro vývoj softwaru. Ale pro datové vědy, to často není jasné, co "testování částí" znamená a jak byste měli testovat kód pro různé fáze životního cyklu datové vědy, jako například:
 
 * Příprava dat
-* Zkoumání dat kvality
+* Kontrola kvality údajů
 * Modelování
 * Nasazení modelu 
 
-Tento článek nahradí termín "unit testing" s "testování kódu." Odkazuje na testování jako funkce, které pomáhají vyhodnotit, jestli kód pro krok životního cyklu datové vědy je vytváření výsledků "podle očekávání." Osoba, která zapisuje testu definuje, co je "podle očekávání," v závislosti na výsledek funkce – například, kontrola kvality dat nebo modelování.
+Tento článek nahrazuje termín "testování částí" "testování kódu." Odkazuje na testování jako funkce, které pomáhají posoudit, zda kód pro určitý krok životního cyklu datové vědy vytváří výsledky "podle očekávání". Osoba, která píše test definuje, co je "podle očekávání", v závislosti na výsledku funkce – například kontrola kvality dat nebo modelování.
 
-Tento článek obsahuje odkazy na jako užitečné zdroje informací.
+Tento článek obsahuje odkazy jako užitečné prostředky.
 
-## <a name="azure-devops-for-the-testing-framework"></a>Azure DevOps pro testovací rozhraní
-Tento článek popisuje, jak provádět a automatizovat testování s použitím Azure DevOps. Můžete se rozhodnout používat alternativní nástroje. Také vám ukážeme, jak nastavit automatické sestavení s použitím Azure DevOps a agenty sestavení. Agenti sestavení se používá Azure virtuální počítače pro datové vědy (datové).
+## <a name="azure-devops-for-the-testing-framework"></a>Azure DevOps pro testovací architekturu
+Tento článek popisuje, jak provádět a automatizovat testování pomocí Azure DevOps. Můžete se rozhodnout použít alternativní nástroje. Ukazujeme také, jak nastavit automatické sestavení pomocí Azure DevOps a agenti sestavení. Pro agenty sestavení používáme virtuální počítače Azure Data Science (DSVMs).
 
 ## <a name="flow-of-code-testing"></a>Tok testování kódu
 Celkový pracovní postup testování kódu v projektu datové vědy vypadá takto: 
@@ -44,118 +44,118 @@ Celkový pracovní postup testování kódu v projektu datové vědy vypadá tak
     
 ## <a name="detailed-steps"></a>Podrobné kroky
 
-Nastavení a spuštění kódu, testování a automatizované sestavování s využitím Azure DevOps a agenta sestavení, postupujte následovně:
+Pomocí následujících kroků můžete nastavit a spustit testování kódu a automatické sestavení pomocí agenta sestavení a Azure DevOps:
 
-1. Vytvořte projekt aplikace klasické pracovní plochy Visual Studio:
+1. Vytvoření projektu v desktopové aplikaci Visual Studio:
 
-    !["Vytvořit nový projekt" obrazovky v aplikaci Visual Studio](./media/code-test/create_project.PNG)
+    ![Obrazovka "Vytvořit nový projekt" v sadě Visual Studio](./media/code-test/create_project.PNG)
 
-   Po vytvoření projektu, najdete ho v Průzkumníku řešení v pravém podokně:
+   Po vytvoření projektu ho najdete v Průzkumníku řešení v pravém podokně:
     
     ![Kroky pro vytvoření projektu](./media/code-test/create_python_project_in_vs.PNG)
 
     ![Průzkumník řešení](./media/code-test/solution_explorer_in_vs.PNG)
 
-1. Informační kanál projekt kódu do úložiště Azure DevOps project kódu: 
+1. Naváděte kód projektu do úložiště kódu projektu Azure DevOps: 
 
     ![Úložiště kódu projektu](./media/code-test/create_repo.PNG)
 
-1. Předpokládejme, že jste provedli některé práci na přípravě dat, jako je příjem dat, vytváření funkcí a vytváření sloupce popisek. Chcete zajistit, aby že váš kód generuje výsledky, které jste očekávali. Zde je kód, který můžete použít k ověření, zda správnou funkci kódu zpracování dat:
+1. Předpokládejme, že jste provedli některé práce na přípravě dat, jako je například ingestování dat, vytváření inženýrských sítí a vytváření sloupců popisků. Chcete se ujistit, že váš kód generuje výsledky, které očekáváte. Tady je nějaký kód, který můžete použít k testování, zda kód zpracování dat funguje správně:
 
-    * Zkontrolujte, že názvy sloupců jsou nejvhodnější:
+    * Zkontrolujte, zda jsou názvy sloupců správné:
     
       ![Kód pro odpovídající názvy sloupců](./media/code-test/check_column_names.PNG)
 
-    * Zkontrolujte, že jsou správné odpovědi úrovně:
+    * Zkontrolujte, zda jsou úrovně odezvy správné:
 
       ![Kód pro odpovídající úrovně](./media/code-test/check_response_levels.PNG)
 
-    * Zkontrolujte, že je přijatelné procento odpovědí:
+    * Zkontrolujte, zda je procento odpovědí přiměřené:
 
-      ![Kód pro procento odpovědí](./media/code-test/check_response_percentage.PNG)
+      ![Kód pro procento odpovědi](./media/code-test/check_response_percentage.PNG)
 
-    * Chybějící míru každého sloupce v datech zkontrolujte:
+    * Zkontrolujte chybějící rychlost každého sloupce v datech:
     
-      ![Kód pro chybějící kurz](./media/code-test/check_missing_rate.PNG)
+      ![Kód pro chybějící sazbu](./media/code-test/check_missing_rate.PNG)
 
 
-1. Poté, co jste provedli zpracovávaných dat a technické práce na funkcích a natrénovali dobrý model, ujistěte se, že model, který jste školení může správně skóre nové datové sady. Ke kontrole úrovně předpovědi a distribuci hodnot popisek můžete použít následující dva testy:
+1. Po dokončení zpracování dat a inženýrské práce funkcí a vyškolení dobrého modelu se ujistěte, že model, který jste trénovali, dokáže správně získat nové datové sady. Následující dva testy můžete použít ke kontrole úrovně předpovědi a rozložení hodnot popisků:
 
-    * Zkontrolujte předpovědi úrovně:
+    * Zkontrolujte úrovně predikce:
     
-      ![Kód pro kontrolu úrovně predikcí](./media/code-test/check_prediction_levels.PNG)
+      ![Kód pro kontrolu úrovní předpovědi](./media/code-test/check_prediction_levels.PNG)
 
-    * Zkontrolujte distribuci předpovědi hodnot:
+    * Zkontrolujte rozložení predikčních hodnot:
 
-      ![Kód pro kontrolu hodnoty predikcí](./media/code-test/check_prediction_values.PNG)
+      ![Kód pro kontrolu hodnot předpovědi](./media/code-test/check_prediction_values.PNG)
 
-1. Všechny testovací funkce vložte do skriptu Pythonu s názvem **test_funcs. py**:
+1. Vložte všechny testovací funkce do skriptu Pythonu s názvem **test_funcs.py**:
 
-    ![Skript v jazyce Python pro testování funkcí](./media/code-test/create_file_test_func.PNG)
+    ![Skript Pythonu pro testovací funkce](./media/code-test/create_file_test_func.PNG)
 
 
-1. Po testu kódy jsou připravené, můžete nastavit testovací prostředí v sadě Visual Studio.
+1. Po připravené testovací kódy, můžete nastavit testovací prostředí v sadě Visual Studio.
 
-   Vytvořte soubor Pythonu s názvem **test1.py**. V tomto souboru vytvořte třídu, která obsahuje všechny testy, které chcete provést. Následující příklad ukazuje šest testy připravit:
+   Vytvořte soubor Pythonu s názvem **test1.py**. V tomto souboru vytvořte třídu, která obsahuje všechny testy, které chcete provést. Následující příklad ukazuje šest připravených testů:
     
-    ![Soubor se seznamem testů ve třídě v jazyce Python](./media/code-test/create_file_test1_class.PNG)
+    ![Soubor Pythonu se seznamem testů ve třídě](./media/code-test/create_file_test1_class.PNG)
 
-1. Tyto testy mohou být automaticky zjišťovány, pokud jako název třídy vložíte **codetest. testovací případ** . Otevřete Průzkumník testů v pravém podokně a vyberte možnost **Spustit vše**. Všechny testy se spouští sekvenčně a dozvíte se, pokud test je úspěšný, nebo ne.
+1. Tyto testy mohou být automaticky zjištěny, pokud dáte **codetest.testCase** za název třídy. V pravém podokně otevřete Průzkumníka testů a vyberte **Spustit vše**. Všechny testy budou spuštěny postupně a řeknou vám, zda je test úspěšný nebo ne.
 
     ![Spuštění testů](./media/code-test/run_tests.PNG)
 
-1. Vrácení kódu se změnami do úložiště projektu pomocí příkazů Gitu. Nejnovější práce se projeví za chvíli v Azure DevOps.
+1. Pomocí příkazů Git ubytovejte kód do úložiště projektu. Vaše nejnovější práce se brzy projeví v Azure DevOps.
 
-    ![Příkazy Gitu pro vrácení kódu se změnami](./media/code-test/git_check_in.PNG)
+    ![Příkazy Git pro vrácení kódu se změnami](./media/code-test/git_check_in.PNG)
 
     ![Nejnovější práce v Azure DevOps](./media/code-test/git_check_in_most_recent_work.PNG)
 
-1. Nastavení automatické sestavení a testování v Azure DevOps:
+1. Nastavení automatického sestavení a testování v Azure DevOps:
 
-    a. V úložišti projektu vyberte **sestavení a vydání**a potom vyberte **+ Nový** pro vytvoření nového procesu sestavení.
+    a. V úložišti projektu vyberte **Sestavit a uvolnit**a pak vyberte **+Nový,** chcete-li vytvořit nový proces sestavení.
 
     ![Výběry pro spuštění nového procesu sestavení](./media/code-test/create_new_build.PNG)
 
-    b. Postupujte podle výzev a vyberte umístění zdrojového kódu, název projektu, úložiště a větve informace.
+    b. Podle pokynů vyberte umístění zdrojového kódu, název projektu, úložiště a informace o větvi.
     
     ![Informace o zdroji, názvu, úložišti a větvi](./media/code-test/fill_in_build_info.PNG)
 
-    c. Vyberte šablonu. Vzhledem k tomu, že neexistuje žádná šablona projektu v Pythonu, Začněte výběrem možnosti **prázdný proces**. 
+    c. Vyberte šablonu. Vzhledem k tomu, že neexistuje žádná šablona projektu Pythonu, začněte výběrem **prázdného procesu**. 
 
-    ![Seznam šablon a tlačítko "prázdný proces"](./media/code-test/start_empty_process_template.PNG)
+    ![Seznam šablon a tlačítko "Prázdný proces"](./media/code-test/start_empty_process_template.PNG)
 
-    d. Název sestavení a vyberte agenta. Můžete zvolit výchozí, pokud chcete použít DSVM k dokončení procesu sestavení. Další informace o nastavení agentů najdete v tématu [agenti sestavení a vydání](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
+    d. Pojmenujte sestavení a vyberte agenta. Zde můžete zvolit výchozí nastavení, pokud chcete k dokončení procesu sestavení použít dsvm. Další informace o nastavení agentů naleznete v [tématu Sestavení a uvolnění agentů](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
     
-    ![Sestavení a výběr agentů](./media/code-test/select_agent.PNG)
+    ![Výběr sestavení a agentů](./media/code-test/select_agent.PNG)
 
-    e. V levém podokně vyberte **+** pro přidání úlohy pro tuto fázi sestavení. Vzhledem k tomu, že spustíme skript Pythonu **test1.py** pro dokončení všech kontrol, tato úloha používá příkaz prostředí PowerShell ke spouštění kódu Pythonu.
+    e. Výběrem **+** v levém podokně přidáte úlohu pro tuto fázi sestavení. Vzhledem k tomu, že spustíme skript Pythonu **test1.py** k dokončení všech kontrol, tato úloha používá příkaz PowerShell ke spuštění kódu Pythonu.
     
-    ![Podokno přidat úkoly s vybraným prostředím PowerShell](./media/code-test/add_task_powershell.PNG)
+    ![Podokno Přidat úkoly s vybraným PowerShellem](./media/code-test/add_task_powershell.PNG)
 
-    f. V podrobnostech o prostředí PowerShell zadejte požadované informace, jako jsou název a verze prostředí PowerShell. Jako typ vyberte **vložený skript** . 
+    f. V podrobnostech prostředí PowerShell vyplňte požadované informace, jako je název a verze Prostředí PowerShell. Jako typ zvolte **Vřádkový skript.** 
     
-    Do pole v části **vložený skript**můžete zadat **Python test1.py**. Ujistěte se, že je správně nastavená proměnná prostředí pro Python. Pokud potřebujete jinou verzi nebo jádro Pythonu, můžete explicitně zadat cestu, jak je znázorněno na obrázku: 
+    Do pole v části **Inline Script**můžete zadat **python test1.py**. Ujistěte se, že proměnná prostředí je správně nastavena pro Python. Pokud potřebujete jinou verzi nebo jádro Pythonu, můžete explicitně určit cestu, jak je znázorněno na obrázku: 
     
-    ![Podrobnosti PowerShellu](./media/code-test/powershell_scripts.PNG)
+    ![Podrobnosti o Prostředí PowerShell](./media/code-test/powershell_scripts.PNG)
 
-    g. Pokud chcete dokončit proces kanálu sestavení, vyberte **uložit & frontu** .
+    g. Chcete-li dokončit proces kanálu sestavení, vyberte **uložit & fronty.**
 
-    ![Tlačítko "Uložit & front"](./media/code-test/save_and_queue_build_definition.PNG)
+    ![Tlačítko Uložit & fronty](./media/code-test/save_and_queue_build_definition.PNG)
 
-Nyní pokaždé, když nové potvrzení se vloží do úložiště kódu, proces sestavení se spustí automaticky. (Zde používáme jako úložiště hlavní server, ale můžete definovat libovolnou větev.) Proces spustí soubor **test1.py** v počítači agenta, aby bylo zajištěno, že vše definované v kódu bude spuštěno správně. 
+Nyní pokaždé, když je nová revize zatlačena do úložiště kódu, proces sestavení se spustí automaticky. (Zde používáme master jako úložiště, ale můžete definovat libovolnou větev.) Proces spustí **soubor test1.py** v počítači agenta a ujistěte se, že vše definované v kódu běží správně. 
 
-Pokud výstrahy nejsou nastaveny správně, budete upozorněni v e-mailu po dokončení sestavení. Můžete také zkontrolovat stav sestavení v Azure DevOps. Pokud selže, můžete zkontrolovat informace o sestavení a zjistit, jaký je poškozený.
+Pokud jsou výstrahy nastaveny správně, budete po dokončení sestavení upozorněni e-mailem. Můžete také zkontrolovat stav sestavení v Azure DevOps. Pokud se nezdaří, můžete zkontrolovat podrobnosti sestavení a zjistit, který kus je přerušený.
 
-![E-mailové oznámení úspěch sestavení](./media/code-test/email_build_succeed.PNG)
+![E-mailové oznámení o úspěchu sestavení](./media/code-test/email_build_succeed.PNG)
 
-![Oznámení Azure DevOps úspěch sestavení](./media/code-test/vs_online_build_succeed.PNG)
+![Oznámení Azure DevOps o úspěchu sestavení](./media/code-test/vs_online_build_succeed.PNG)
 
 ## <a name="next-steps"></a>Další kroky
-* V tématu věnovaném testování částí v případě scénářů pro datové vědy si prohlédněte [úložiště předpovědi pro předpověď výnosů](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) .
-* Postupujte podle předchozích osnovy a příklady z scénáře UCI příjem předpovědi ve své vlastní projekty datových věd.
+* Konkrétní příklady testů částí pro scénáře datové vědy najdete v [úložišti předpovědi příjmů UCI.](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)
+* Postupujte podle předchozí osnovy a příklady ze scénáře předpovědi příjmů UCI ve vlastních projektech datové vědy.
 
 ## <a name="references"></a>Odkazy
 * [Vědecké zpracování týmových dat](https://aka.ms/tdsp)
 * [Testovací nástroje sady Visual Studio](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Prostředky testování Azure DevOps](https://www.visualstudio.com/team-services/)
-* [Virtual Machines pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)
+* [Data Science Virtual Machine](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

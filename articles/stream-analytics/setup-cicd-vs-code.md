@@ -1,6 +1,6 @@
 ---
 title: Nasazení úlohy Azure Stream Analytics pomocí balíčku CI/CD npm
-description: Tento článek popisuje, jak pomocí Azure Stream Analytics balíčku CI/CD npm nastavit proces průběžné integrace a nasazování.
+description: Tento článek popisuje, jak pomocí balíčku Azure Stream Analytics CI/CD npm nastavit proces průběžné integrace a nasazování.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -9,35 +9,35 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: deb6c2439cc84f196b7f42fd9f49d3ebfd057cbb
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76962155"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>Nasazení úlohy Azure Stream Analytics pomocí balíčku CI/CD npm 
 
-Pomocí balíčku Azure Stream Analytics CI/CD npm můžete nastavit průběžnou integraci a proces nasazení pro úlohy Stream Analytics. Tento článek popisuje, jak obecně používat balíček npm s jakýmkoli systémem CI/CD a také s konkrétními pokyny pro nasazení s Azure Pipelines.
+Balíček UK/CD nPM služby Azure Stream Analytics můžete použít k nastavení procesu průběžné integrace a nasazení úloh Služby Stream Analytics. Tento článek popisuje, jak používat balíček npm obecně s jakýmkoli systémem CI/CD, stejně jako konkrétní pokyny pro nasazení s Azure Pipelines.
 
-Další informace o nasazení pomocí PowerShellu najdete v tématu [nasazení pomocí souboru šablony Správce prostředků a Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Můžete si taky přečíst další informace o tom [, jak objekt použít jako parametr v šabloně správce prostředků](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Další informace o nasazení v Powershellu najdete [v tématu nasazení se souborem šablony Správce prostředků a Azure PowerShellem](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Další informace o použití [objektu jako parametru](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)naleznete v šabloně Správce prostředků .
 
 ## <a name="build-the-vs-code-project"></a>Sestavení projektu VS Code
 
-Můžete povolit průběžnou integraci a nasazení pro Azure Stream Analytics úlohy pomocí balíčku npm **ASA-streamanalytics-cicd** . Balíček npm poskytuje nástroje pro generování Azure Resource Manager šablon [Stream Analytics projektů Visual Studio Code](quick-create-vs-code.md). Dá se použít na Windows, macOS a Linux bez instalace Visual Studio Code.
+Můžete povolit průběžnou integraci a nasazení pro úlohy Azure Stream Analytics pomocí balíčku **asa-streamanalytics-cicd** npm. Balíček npm obsahuje nástroje pro generování šablon Azure Resource Manager [projektů Stream Analytics Visual Studio Code](quick-create-vs-code.md). Lze jej použít ve Windows, macOS a Linuxu bez instalace kódu Visual Studia.
 
-Balíček si můžete [Stáhnout](https://www.npmjs.com/package/azure-streamanalytics-cicd) přímo nebo ho nainstalovat [globálně](https://docs.npmjs.com/downloading-and-installing-packages-globally) pomocí příkazu `npm install -g azure-streamanalytics-cicd`. Toto je doporučený postup, který se dá použít taky v úloze skriptu PowerShellu nebo Azure CLI kanálu sestavení v **Azure Pipelines**.
+[Balíček si](https://www.npmjs.com/package/azure-streamanalytics-cicd) můžete stáhnout přímo nebo jej `npm install -g azure-streamanalytics-cicd` nainstalovat [globálně](https://docs.npmjs.com/downloading-and-installing-packages-globally) pomocí příkazu. Toto je doporučený přístup, který lze také použít v powershellu nebo azure cli skript úlohy kanálu sestavení v **Azure Pipelines**.
 
-Po instalaci balíčku použijte následující příkaz pro výstup šablon Azure Resource Manager. Argument **ScriptPath** je absolutní cesta k souboru **asaql** v projektu. Ujistěte se, že soubory asaproj. JSON a JobConfig. JSON jsou ve stejné složce se souborem skriptu. Pokud není zadán parametr **outputPath** , šablony budou umístěny do složky **Deploy** ve složce **bin** projektu.
+Po instalaci balíčku použijte následující příkaz k výstupu šablon Azure Resource Manager. Argument **scriptPath** je absolutní cesta k souboru **asaql** v projektu. Ujistěte se, že soubory asaproj.json a JobConfig.json jsou ve stejné složce se souborem skriptu. Pokud není zadán **outputPath,** šablony budou umístěny do složky **Deploy** ve složce **přihrádky** projektu.
 
 ```powershell
 azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
 ```
-Příklad (na macOS)
+Příklad (v macOS)
 ```powershell
 azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/script.asaql" 
 ```
 
-Po úspěšném sestavení Stream Analytics Visual Studio Code vygeneruje následující dva Azure Resource Manager soubory šablon ve složce **bin/[Debug/Retail]/Deploy** : 
+Když se projekt kódu Vizuální studio Stream Analytics úspěšně vytvoří, vygeneruje následující dva soubory šablon Azure Resource Manager u složky bin/[Debug/Retail]:When a Stream Analytics Visual Studio Code project successfulls, it generates the following two Azure Resource Manager template files under the **bin/[Debug/Retail]/Deploy** folder: 
 
 *  Soubor šablony Správce prostředků
 
@@ -47,10 +47,10 @@ Po úspěšném sestavení Stream Analytics Visual Studio Code vygeneruje násle
 
        [ProjectName].JobTemplate.parameters.json   
 
-Výchozí parametry v souboru Parameters. JSON jsou z nastavení v projektu Visual Studio Code. Pokud chcete nasazení nasadit do jiného prostředí, nahraďte příslušné parametry odpovídajícím způsobem.
+Výchozí parametry v souboru parameters.json jsou z nastavení v projektu kódu sady Visual Studio. Pokud chcete nasadit do jiného prostředí, odpovídajícím způsobem nahraďte parametry.
 
 > [!NOTE]
-> U všech přihlašovacích údajů jsou výchozí hodnoty nastavené na hodnotu null. Před nasazením do cloudu je **nutné** nastavit hodnoty.
+> Pro všechna pověření jsou výchozí hodnoty nastaveny na hodnotu null. Před nasazením do cloudu je **nutné** nastavit hodnoty.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -58,31 +58,31 @@ Výchozí parametry v souboru Parameters. JSON jsou z nastavení v projektu Visu
     },
 ```
 
-## <a name="deploy-with-azure-pipelines"></a>Nasazení pomocí Azure Pipelines
+## <a name="deploy-with-azure-pipelines"></a>Nasazení s využitím Azure Pipelines
 
-Tato část popisuje, jak vytvořit Azure Pipelines kanály [sestavení](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) a [vydání](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) pomocí npm.
+Tato část podrobně popisuje, jak vytvořit Azure Pipelines [sestavení](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) a [uvolnění](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) kanály pomocí npm.
 
-Otevřete webový prohlížeč a přejděte do projektu Azure Stream Analytics Visual Studio Code.
+Otevřete webový prohlížeč a přejděte do projektu Kódu Visual Studia Azure Stream Analytics.
 
-1. V části **kanály** v levé navigační nabídce vyberte **sestavení**. Pak vyberte **Nový kanál** .
+1. V části **Potrubí** v levé navigační nabídce vyberte **Builds**. Pak vyberte **Nový kanál**
 
-   ![Vytvořit nový kanál Azure](./media/setup-cicd-vs-code/new-pipeline.png)
+   ![Vytvoření nového kanálu Azure](./media/setup-cicd-vs-code/new-pipeline.png)
 
-2. Pokud chcete vytvořit kanál bez YAML, vyberte **použít klasický Editor** .
+2. Vyberte **Použít klasický editor** k vytvoření kanálu bez YAML.
 
-3. Vyberte zdrojový typ, týmový projekt a úložiště. Potom vyberte **Pokračovat**.
+3. Vyberte typ zdroje, týmový projekt a úložiště. Potom vyberte **Pokračovat**.
 
-   ![Vybrat Azure Stream Analytics projekt](./media/setup-cicd-vs-code/select-repo.png)
+   ![Výběr projektu Azure Stream Analytics](./media/setup-cicd-vs-code/select-repo.png)
 
-4. Na stránce **Zvolit šablonu** vyberte **prázdná úloha**.
+4. Na stránce **Vybrat předlohu** vyberte **Prázdná úloha**.
 
-### <a name="add-npm-task"></a>Přidat úlohu npm
+### <a name="add-npm-task"></a>Přidat úkol npm
 
-1. Na stránce **úlohy** vyberte znaménko plus vedle **úlohy agenta 1**. Do hledání úloh zadejte "npm" a vyberte **npm**.
+1. Na stránce **Úkoly** vyberte znaménko plus vedle **úlohy agenta 1**. Zadejte "npm" do hledání úlohy a vyberte **npm**.
 
-   ![Vybrat úlohu npm](./media/setup-cicd-vs-code/search-npm.png)
+   ![Vybrat úkol npm](./media/setup-cicd-vs-code/search-npm.png)
 
-2. Zadejte **Zobrazovaný název**úkolu. Změňte možnost **příkazu** na *Custom* a v **příkazu a argumentech**zadejte následující příkaz. Ponechte zbývající výchozí možnosti.
+2. Přidejte úkolu **zobrazovaný název**. Změňte možnost **Příkaz** na *vlastní* a zadejte následující příkaz v **příkazu a argumentech**. Ponechte zbývající výchozí možnosti.
 
    ```cmd
    install -g azure-streamanalytics-cicd
@@ -90,60 +90,60 @@ Otevřete webový prohlížeč a přejděte do projektu Azure Stream Analytics V
 
    ![Zadání konfigurací pro úlohu npm](./media/setup-cicd-vs-code/npm-config.png)
 
-### <a name="add-command-line-task"></a>Přidat úlohu příkazového řádku
+### <a name="add-command-line-task"></a>Přidat úkol příkazového řádku
 
-1. Na stránce **úlohy** vyberte znaménko plus vedle **úlohy agenta 1**. Vyhledejte **příkazový řádek**.
+1. Na stránce **Úkoly** vyberte znaménko plus vedle **úlohy agenta 1**. Vyhledejte **příkazový řádek**.
 
-2. Poskytněte **zobrazovanému názvu úlohy zobrazovaný název** a zadejte následující skript. Upravte skript s názvem úložiště a názvem projektu.
+2. Pojmenujte úkol **zobrazovaným názvem** a zadejte následující skript. Upravte skript s názvem úložiště a názvem projektu.
 
    ```cmd
    azure-streamanalytics-cicd build -scriptPath $(Build.SourcesDirectory)/myASAProject/myASAProj.asaql
    ```
 
-   ![Zadejte konfigurace pro úlohu příkazového řádku](./media/setup-cicd-vs-code/commandline-config.png)
+   ![Zadání konfigurací úlohy příkazového řádku](./media/setup-cicd-vs-code/commandline-config.png)
 
-### <a name="add-copy-files-task"></a>Úloha přidání souborů ke kopírování
+### <a name="add-copy-files-task"></a>Úloha přidat soubory kopírování
 
-1. Na stránce **úlohy** vyberte znaménko plus vedle **úlohy agenta 1**. Vyhledejte **soubory pro kopírování**. Pak zadejte následující konfigurace.
+1. Na stránce **Úkoly** vyberte znaménko plus vedle **úlohy agenta 1**. Vyhledejte **soubory kopírovat**. Poté zadejte následující konfigurace.
 
    |Parametr|Vstup|
    |-|-|
-   |Zobrazované jméno|Kopírovat soubory do: $ (Build. artifactstagingdirectory)|
+   |Zobrazované jméno|Kopírovat soubory do: $(build.artifactstagingdirectory)|
    |Zdrojová složka|`$(system.defaultworkingdirectory)`| 
    |Obsah| `**\Deploy\**` |
    |Cílová složka| `$(build.artifactstagingdirectory)`|
 
-   ![Zadejte konfigurace pro úlohu kopírování](./media/setup-cicd-vs-code/copy-config.png)
+   ![Zadání konfigurací pro úlohu kopírování](./media/setup-cicd-vs-code/copy-config.png)
 
-### <a name="add-publish-build-artifacts-task"></a>Přidat úlohu artefaktů sestavení pro publikování
+### <a name="add-publish-build-artifacts-task"></a>Přidat úlohu Publikovat artefakty sestavení
 
-1. Na stránce **úlohy** vyberte znaménko plus vedle **úlohy agenta 1**. Vyhledejte **artefakty sestavení pro publikování** a vyberte možnost s ikonou černé šipky. 
+1. Na stránce **Úkoly** vyberte znaménko plus vedle **úlohy agenta 1**. Vyhledejte **artefakty sestavení publikování** a vyberte možnost s ikonou černé šipky. 
 
-2. Neměňte žádnou z výchozích konfigurací.
+2. Neměňte žádnou výchozí konfiguraci.
 
 ### <a name="save-and-run"></a>Uložit a spustit
 
-Až dokončíte přidávání úloh NPM, příkazového řádku, kopírování souborů a publikování artefaktů sestavení, vyberte **uložit & Queue**. Po zobrazení výzvy zadejte komentář Uložit a vyberte **Uložit a spustit**.
+Po přidání příkazového řádku npm, příkazového řádku, kopírování souborů a publikování úloh artefaktů sestavení vyberte **možnost Uložit & fronty**. Po zobrazení výzvy zadejte uložit komentář a vyberte **Uložit a spustit**.
 
-## <a name="release-with-azure-pipelines"></a>Vydání pomocí Azure Pipelines
+## <a name="release-with-azure-pipelines"></a>Vydání s Azure Pipelines
 
-Otevřete webový prohlížeč a přejděte do projektu Azure Stream Analytics Visual Studio Code.
+Otevřete webový prohlížeč a přejděte do projektu Kódu Visual Studia Azure Stream Analytics.
 
-1. V části **kanály** v levé navigační nabídce vyberte **verze**. Pak vyberte **Nový kanál**.
+1. V části **Potrubí** v levé navigační nabídce vyberte **Zprávy**. Pak vyberte **Nový kanál**.
 
-2. Vyberte možnost **začít s prázdnou úlohou**.
+2. Vyberte **možnost Začít s prázdnou úlohou**.
 
-3. V poli **artefakty** vyberte **+ Přidat artefakt**. V části **zdroj**vyberte kanál sestavení, který jste právě vytvořili, a vyberte **Přidat**.
+3. V poli **Artefakty** vyberte **+ Přidat artefakt**. V části **Zdroj**vyberte právě vytvořený kanál sestavení a vyberte **Přidat**.
 
-   ![Zadat artefakt kanálu sestavení](./media/setup-cicd-vs-code/build-artifact.png)
+   ![Zadejte artefakt kanálu sestavení](./media/setup-cicd-vs-code/build-artifact.png)
 
-4. Změňte název **fáze 1** pro **nasazení úlohy do testovacího prostředí**.
+4. Změňte název **fáze 1** na Nasazení **úlohy do testovacího prostředí**.
 
-5. Přidejte novou fázi a pojmenujte **úlohu nasadit do provozního prostředí**.
+5. Přidejte novou fázi a pojmenujte ji **Nasadit úlohu do produkčního prostředí**.
 
-### <a name="add-tasks"></a>Přidat úlohy
+### <a name="add-tasks"></a>Přidání úkolů
 
-1. V rozevíracím seznamu úlohy vyberte **nasadit úlohu do testovacího prostředí**. 
+1. V rozevíracím seznamu úloh vyberte **Nasadit úlohu k testování prostředí**. 
 
 2. Vyberte **+** vedle **úlohy agenta** a vyhledejte *nasazení skupiny prostředků Azure*. Zadejte následující parametry:
 
@@ -151,16 +151,16 @@ Otevřete webový prohlížeč a přejděte do projektu Azure Stream Analytics V
    |-|-|
    |Zobrazované jméno| *Nasazení myASAJob*|
    |Předplatné Azure| Zvolte vaše předplatné.|
-   |Akce| *Vytvořit nebo aktualizovat skupinu prostředků*|
-   |Skupina prostředků| Vyberte název testovací skupiny prostředků, která bude obsahovat vaši úlohu Stream Analytics.|
-   |Umístění|Vyberte umístění testovací skupiny prostředků.|
+   |Akce| *Vytvoření nebo aktualizace skupiny prostředků*|
+   |Skupina prostředků| Zvolte název pro testovací skupinu prostředků, která bude obsahovat úlohu Stream Analytics.|
+   |Umístění|Zvolte umístění testovací skupiny prostředků.|
    |Umístění šablony| *Propojený artefakt*|
-   |Šablona| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
-   |Parametry šablony|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
-   |Přepsání parametrů šablony|-Input_IoTHub1_iotHubNamespace $ (test_eventhubname)|
-   |Režim nasazení|Pořadové|
+   |Šablona| $(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.json |
+   |Parametry šablony|($(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.parameters.json|
+   |Přepsání parametrů šablony|-Input_IoTHub1_iotHubNamespace $(test_eventhubname)|
+   |Režim nasazení|Přírůstkový|
 
-3. V rozevíracím seznamu úlohy vyberte **nasadit úlohu do provozního prostředí**.
+3. V rozevíracím seznamu úloh vyberte **Nasadit úlohu do produkčního prostředí**.
 
 4. Vyberte **+** vedle **úlohy agenta** a vyhledejte *nasazení skupiny prostředků Azure*. Zadejte následující parametry:
 
@@ -168,28 +168,28 @@ Otevřete webový prohlížeč a přejděte do projektu Azure Stream Analytics V
    |-|-|
    |Zobrazované jméno| *Nasazení myASAJob*|
    |Předplatné Azure| Zvolte vaše předplatné.|
-   |Akce| *Vytvořit nebo aktualizovat skupinu prostředků*|
-   |Skupina prostředků| Vyberte název skupiny prostředků výroby, která bude obsahovat vaši úlohu Stream Analytics.|
-   |Umístění|Vyberte umístění skupiny prostředků výroby.|
+   |Akce| *Vytvoření nebo aktualizace skupiny prostředků*|
+   |Skupina prostředků| Zvolte název pro skupinu produkčních prostředků, která bude obsahovat úlohu Stream Analytics.|
+   |Umístění|Zvolte umístění skupiny produkčních prostředků.|
    |Umístění šablony| *Propojený artefakt*|
-   |Šablona| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
-   |Parametry šablony|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
-   |Přepsání parametrů šablony|-Input_IoTHub1_iotHubNamespace $ (eventhubname)|
-   |Režim nasazení|Pořadové|
+   |Šablona| $(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.json |
+   |Parametry šablony|($(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.parameters.json|
+   |Přepsání parametrů šablony|-Input_IoTHub1_iotHubNamespace $(eventhubname)|
+   |Režim nasazení|Přírůstkový|
 
-### <a name="create-release"></a>Vytvořit vydanou verzi
+### <a name="create-release"></a>Vytvořit verzi
 
-Pokud chcete vytvořit vydanou verzi, vyberte **vytvořit vydání** v pravém horním rohu.
+Chcete-li vytvořit verzi, vyberte **Vytvořit vydání** v pravém horním rohu.
 
-![Vytvoření vydání pomocí Azure Pipelines](./media/setup-cicd-vs-code/create-release.png)
+![Vytvoření verze pomocí Azure Pipelines](./media/setup-cicd-vs-code/create-release.png)
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
-Pokud chcete použít spravovanou identitu pro Azure Data Lake Store Gen1 jako výstupní jímku, musíte před nasazením do Azure poskytnout přístup k instančnímu objektu pomocí PowerShellu. Přečtěte si další informace o [nasazení adls Gen1 se správou identity pomocí šablony Správce prostředků](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
+Chcete-li použít spravovanou identitu pro Azure Data Lake Store Gen1 jako výstupní jímku, musíte před nasazením do Azure poskytnout přístup k instančnímu objektu pomocí PowerShellu pomocí PowerShellu. Přečtěte si další informace o tom, jak [nasadit ADLS Gen1 pomocí spravované identity se šablonou Správce prostředků](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rychlý Start: vytvoření cloudové úlohy Azure Stream Analytics v Visual Studio Code (Preview)](quick-create-vs-code.md)
-* [Test Stream Analytics dotazy místně pomocí Visual Studio Code (Preview)](visual-studio-code-local-run.md)
-* [Prozkoumat Azure Stream Analytics s využitím Visual Studio Code (Preview)](visual-studio-code-explore-jobs.md)
+* [Úvodní příručka: Vytvoření cloudové úlohy Azure Stream Analytics v kódu Visual Studia (preview)](quick-create-vs-code.md)
+* [Test Stream Analytics dotazy místně s Visual Studio Code (Preview)](visual-studio-code-local-run.md)
+* [Prozkoumejte Azure Stream Analytics pomocí kódu Visual Studia (preview)](visual-studio-code-explore-jobs.md)

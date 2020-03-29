@@ -1,42 +1,42 @@
 ---
-title: Použití svazku založeného na souborech Azure v aplikaci Service Fabricové sítě
-description: Naučte se ukládat stav do aplikace sítě Azure Service Fabric pomocí rozhraní příkazového řádku Azure CLI připojením svazku založeného na službě Azure Files v rámci služby.
+title: Použití svazku založeného na souborech Azure v aplikaci Service Fabric Mesh
+description: Zjistěte, jak ukládat stav v aplikaci Azure Service Fabric Mesh připojením svazku založeného na Azure Files uvnitř služby pomocí azure cli.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76718816"
 ---
-# <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Připojení svazku založeného na souborech Azure v aplikaci Service Fabric sítě 
+# <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Připojení svazku založeného na souborech Azure v aplikaci Service Fabric Mesh 
 
-Tento článek popisuje, jak připojit svazek založený na souborech Azure ve službě Service Fabric aplikace sítě.  Ovladač svazku souborů Azure je ovladač svazku Docker, který se používá k připojení sdílené složky Azure Files do kontejneru, který používáte k trvalému stavu služby. Svazky poskytují úložiště souborů pro obecné účely a umožňují čtení a zápis souborů pomocí normálních rozhraní API v/v souborů na disku.  Pokud se chcete dozvědět víc o svazcích a možnostech pro ukládání dat aplikací, přečtěte si téma [uložení stavu](service-fabric-mesh-storing-state.md).
+Tento článek popisuje, jak připojit svazek založený na souborech Azure ve službě aplikace Service Fabric Mesh.  Ovladač svazku Soubory Azure je ovladač svazku Dockeru, který se používá k připojení sdílené složky Souborů Azure do kontejneru, který používáte k zachování stavu služby. Svazky umožňují ukládání souborů pro obecné účely a umožňují čtení a zápis souborů pomocí běžných souborů V/O disku.  Další informace o svazcích a možnostech ukládání dat aplikací najdete ve [stavu ukládání](service-fabric-mesh-storing-state.md).
 
-Pokud chcete připojit svazek ve službě, vytvořte v aplikaci Service Fabric sítě prostředek svazku a pak na tento svazek odkázat v rámci služby.  Deklarace prostředku svazku a odkazování na něj v prostředku služby se dá provést buď v [souborech prostředků založených na YAML](#declare-a-volume-resource-and-update-the-service-resource-yaml) , nebo v [šabloně nasazení založené na JSON](#declare-a-volume-resource-and-update-the-service-resource-json). Před připojením svazku nejdřív vytvořte účet úložiště Azure a [sdílenou složku ve službě soubory Azure](/azure/storage/files/storage-how-to-create-file-share).
+Chcete-li připojit svazek ve službě, vytvořte prostředek svazku v aplikaci Service Fabric Mesh a potom na tento svazek ve službě.  Deklarování prostředku svazku a jeho odkazování v prostředku služby lze provést buď v [souborech prostředků založených na YAML,](#declare-a-volume-resource-and-update-the-service-resource-yaml) nebo v [šabloně nasazení založené na JSON](#declare-a-volume-resource-and-update-the-service-resource-json). Před připojením svazku nejprve vytvořte účet úložiště Azure a [sdílenou složku v Azure Files](/azure/storage/files/storage-how-to-create-file-share).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 > [!NOTE]
-> **Známý problém s nasazením na vývojovém počítači s Windows RS5:** K dispozici je otevřená chyba rutiny prostředí PowerShell New-SmbGlobalMapping na počítačích s Windows RS5, které zabraňují připojení svazků Azurefile. Níže je uvedená ukázková chyba, ke které došlo při připojení svazku založeného na AzureFile do místního vývojového počítače.
+> **Známý problém s nasazením ve vývojovém počítači se systémem Windows RS5:** Na počítačích s RS5 Windows je otevřená chyba s rutinou Powershellu New-SmbGlobalMapping, která brání připojení svazků souborů AzureFile. Níže je ukázková chyba, ke které dochází při připojení svazku založeného na AzureFile v místním vývojovém počítači.
 ```
 Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterService:EntryPoint:131884291000691067'.
 There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)
 Failed to start Container. ContainerName=sf-2-63fc668f-362d-4220-873d-85abaaacc83e_6d6879cf-dd43-4092-887d-17d23ed9cc78, ApplicationId=SingleInstance_0_App2, ApplicationName=fabric:/counterApp. DockerRequest returned StatusCode=InternalServerError with ResponseBody={"message":"error while mounting volume '': mount failed"}
 ```
-Alternativní řešení problému je 1) spustit pod příkazem jako správce PowerShellu a 2) restartovat počítač.
+Řešení problému je 1) Spustit pod příkazem jako správce prostředí Powershell a 2) Restartujte počítač.
 ```powershell
 PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
 ```
 
-K dokončení tohoto článku můžete použít Azure Cloud Shell nebo místní instalaci rozhraní příkazového řádku Azure. 
+K dokončení tohoto článku můžete použít Azure Cloud Shell nebo místní instalaci vázací mise Azure. 
 
-Pokud chcete používat rozhraní příkazového řádku Azure v místním prostředí s tímto článkem, ujistěte se, že `az --version` vrátí aspoň `azure-cli (2.0.43)`.  Pomocí těchto [pokynů](service-fabric-mesh-howto-setup-cli.md)nainstalujte (nebo aktualizujte) modul rozšíření CLI pro Azure Service Fabric.
+Chcete-li použít Azure CLI místně s `az --version` tímto `azure-cli (2.0.43)`článkem, ujistěte se, že vrátí alespoň .  Nainstalujte (nebo aktualizujte) rozšiřující modul rozšíření Azure Service Fabric Mesh CLI podle následujících [pokynů](service-fabric-mesh-howto-setup-cli.md).
 
-Přihlaste se k Azure a nastavte své předplatné:
+Přihlášení k Azure a nastavení předplatného:
 
 ```azurecli
 az login
@@ -44,7 +44,7 @@ az account set --subscription "<subscriptionID>"
 ```
 
 ## <a name="create-a-storage-account-and-file-share-optional"></a>Vytvoření účtu úložiště a sdílené složky (volitelné)
-Připojení svazku souborů Azure vyžaduje účet úložiště a sdílení souborů.  Můžete použít existující účet úložiště Azure a sdílenou složku nebo vytvořit prostředky:
+Připojení svazku souborů Azure vyžaduje účet úložiště a sdílenou složku.  Můžete použít existující účet úložiště Azure a sdílenou složku nebo vytvořit prostředky:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -57,35 +57,35 @@ az storage share create --name myshare --quota 2048 --connection-string $current
 ```
 
 ## <a name="get-the-storage-account-name-and-key-and-the-file-share-name"></a>Získání názvu a klíče účtu úložiště a názvu sdílené složky
-Název účtu úložiště, klíč účtu úložiště a název sdílené složky se v následujících částech odkazují jako `<storageAccountName>`, `<storageAccountKey>`a `<fileShareName>`. 
+Název účtu úložiště, klíč účtu úložiště a název sdílené `<storageAccountName>` `<storageAccountKey>`složky `<fileShareName>` jsou odkazovány jako , a v následujících částech. 
 
-Zobrazte seznam účtů úložiště a získejte název účtu úložiště se sdílenou složkou, kterou chcete použít:
+Uveďte své účty úložiště a získejte název účtu úložiště pomocí sdílené složky, kterou chcete použít:
 ```azurecli-interactive
 az storage account list
 ```
 
-Získání názvu sdílené složky:
+Získejte název sdílené složky:
 ```azurecli-interactive
 az storage share list --account-name <storageAccountName>
 ```
 
-Získání klíče účtu úložiště (klíč1):
+Získejte klíč účtu úložiště ("key1"):
 ```azurecli-interactive
 az storage account keys list --account-name <storageAccountName> --query "[?keyName=='key1'].value"
 ```
 
-Tyto hodnoty můžete najít také v [Azure Portal](https://portal.azure.com):
-* `<storageAccountName>` – v části **účty úložiště**název účtu úložiště, který jste použili k vytvoření sdílené složky.
-* `<storageAccountKey>` – vyberte účet úložiště v části **účty úložiště** a pak vyberte **přístupové klíče** a použijte hodnotu pod **klíč1**.
-* `<fileShareName>` – v části **účty úložiště** vyberte svůj účet úložiště a pak vyberte **soubory**. Název, který se má použít, je název sdílené složky, kterou jste vytvořili.
+Tyto hodnoty najdete taky na [webu Azure Portal](https://portal.azure.com):
+* `<storageAccountName>`- V části **Účty úložiště**se název účtu úložiště, který slouží k vytvoření sdílené složky.
+* `<storageAccountKey>`- Vyberte svůj účet úložiště v části **Účty úložiště** a pak vyberte **přístupové klávesy** a použijte hodnotu pod **key1**.
+* `<fileShareName>`- Vyberte svůj účet úložiště v části **Účty úložiště** a pak vyberte **Soubory**. Název, který chcete použít, je název sdílené složky, kterou jste vytvořili.
 
-## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Deklarace prostředku svazku a aktualizace prostředku služby (JSON)
+## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Deklarovat prostředek svazku a aktualizovat prostředek služby (JSON)
 
-Přidejte parametry pro `<fileShareName>`, `<storageAccountName>`a `<storageAccountKey>` hodnoty, které jste našli v předchozím kroku. 
+Přidejte parametry `<fileShareName>` `<storageAccountName>`pro `<storageAccountKey>` , a hodnoty, které jste našli v předchozím kroku. 
 
-Vytvořte prostředek svazku jako partnerský uzel prostředku aplikace. Zadejte název a poskytovatele ("SFAzureFile" pro použití svazku založeného na službě Azure Files). V `azureFileParameters`zadejte parametry pro `<fileShareName>`, `<storageAccountName>`a hodnoty `<storageAccountKey>`, které jste našli v předchozím kroku.
+Vytvořte prostředek svazku jako partnera prostředku aplikace. Zadejte název a zprostředkovatele ("SFAzureFile" pro použití svazku založeného na souborech Azure). V `azureFileParameters`oblasti zadejte parametry `<storageAccountName>`pro `<storageAccountKey>` `<fileShareName>`, a hodnoty, které jste našli v předchozím kroku.
 
-Pokud chcete připojit svazek ve službě, přidejte `volumeRefs` do `codePackages` elementu služby.  `name` je ID prostředku pro svazek (nebo parametr šablony nasazení pro prostředek svazku) a název svazku deklarovaného v souboru prostředků Volume. yaml.  `destinationPath` je místní adresář, ke kterému bude svazek připojen.
+Chcete-li připojit svazek ve `volumeRefs` službě, přidejte a k `codePackages` prvku služby.  `name`je ID prostředku pro svazek (nebo parametr šablony nasazení pro prostředek svazku) a název svazku deklarovaného v souboru prostředků volume.yaml.  `destinationPath`je místní adresář, ke kterému bude svazek připojen.
 
 ```json
 {
@@ -193,9 +193,9 @@ Pokud chcete připojit svazek ve službě, přidejte `volumeRefs` do `codePackag
 }
 ```
 
-## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>Deklarace prostředku svazku a aktualizace prostředku služby (YAML)
+## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>Deklarovat prostředek svazku a aktualizovat prostředek služby (YAML)
 
-Přidejte nový soubor *Volume. yaml* do adresáře *prostředků aplikace* pro vaši aplikaci.  Zadejte název a poskytovatele ("SFAzureFile" pro použití svazku založeného na službě Azure Files). `<fileShareName>`, `<storageAccountName>`a `<storageAccountKey>` jsou hodnoty, které jste našli v předchozím kroku.
+Přidejte nový soubor *volume.yaml* do *adresáře prostředků aplikace* pro vaši aplikaci.  Zadejte název a zprostředkovatele ("SFAzureFile" pro použití svazku založeného na souborech Azure). `<fileShareName>`a `<storageAccountName>` `<storageAccountKey>` jsou hodnoty nalezené v předchozím kroku.
 
 ```yaml
 volume:
@@ -210,7 +210,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-Pokud chcete připojit svazek ve službě, aktualizujte soubor *Service. yaml* v adresáři *prostředků služby* .  Přidejte prvek `volumeRefs` do prvku `codePackages`.  `name` je ID prostředku pro svazek (nebo parametr šablony nasazení pro prostředek svazku) a název svazku deklarovaného v souboru prostředků Volume. yaml.  `destinationPath` je místní adresář, ke kterému bude svazek připojen.
+Aktualizujte soubor *service.yaml* v adresáři *Zdroje služby a* připojte svazek do služby.  Přidejte `volumeRefs` prvek `codePackages` do prvku.  `name`je ID prostředku pro svazek (nebo parametr šablony nasazení pro prostředek svazku) a název svazku deklarovaného v souboru prostředků volume.yaml.  `destinationPath`je místní adresář, ke kterému bude svazek připojen.
 
 ```yaml
 ## Service definition ##
@@ -248,6 +248,6 @@ application:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na ukázkovou aplikaci svazku soubory Azure na [GitHubu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
+- Zobrazení ukázkové aplikace svazku souborů Azure na [GitHubu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
 - Další informace o modelu prostředků Service Fabric najdete v článku o [modelu prostředků Service Fabric Mesh](service-fabric-mesh-service-fabric-resources.md).
 - Další informace o službě Service Fabric Mesh najdete v článku s [přehledem služby Service Fabric Mesh](service-fabric-mesh-overview.md).

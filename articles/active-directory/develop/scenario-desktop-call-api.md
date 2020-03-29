@@ -1,6 +1,6 @@
 ---
-title: Volání webových rozhraní API z desktopové aplikace – Microsoft Identity Platform | Azure
-description: Informace o tom, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API
+title: Volání webových rozhraní API z desktopové aplikace – platforma identit Microsoftu | Azure
+description: Přečtěte si, jak vytvořit desktopovou aplikaci, která volá webová api
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,26 +15,26 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 2b3d9fdc163d0661670f3d0cf6e6a276c8b691bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76702160"
 ---
-# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: volání webového rozhraní API
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Desktopová aplikace, která volá webová rozhraní API: Volání webového rozhraní API
 
-Teď, když máte token, můžete zavolat chráněné webové rozhraní API.
+Teď, když máte token, můžete volat chráněné webové rozhraní API.
 
 ## <a name="call-a-web-api"></a>Volání webového rozhraní API
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
 <!--
 More includes will come later for Python and Java
 -->
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 endpoint = "url to the API"
@@ -44,7 +44,7 @@ http_headers = {'Authorization': 'Bearer ' + result['access_token'],
 data = requests.get(endpoint, headers=http_headers, stream=False).json()
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -63,11 +63,11 @@ if(responseCode != HttpURLConnection.HTTP_OK) {
 JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[Macos](#tab/macOS)
 
 ## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Volání webového rozhraní API v MSAL pro iOS a macOS
 
-Metody získání tokenů vrací objekt `MSALResult`. `MSALResult` zpřístupňuje vlastnost `accessToken`, která se dá použít k volání webového rozhraní API. Než provedete volání pro přístup k chráněnému webovému rozhraní API, přidejte přístupový token do hlavičky autorizace protokolu HTTP.
+Metody pro získání tokenů `MSALResult` vrátí objekt. `MSALResult`zpřístupňuje `accessToken` vlastnost, která lze použít k volání webové rozhraní API. Před voláním pro přístup k chráněnému webovému rozhraní API přidejte přístupový token do hlavičky autorizace protokolu HTTP.
 
 Cíl-C:
 
@@ -95,9 +95,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Volání několika rozhraní API: přírůstkový souhlas a podmíněný přístup
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Volání několika api: Přírůstkový souhlas a podmíněný přístup
 
-Chcete-li volat několik rozhraní API pro stejného uživatele, poté, co získáte token pro první rozhraní API, zavolejte `AcquireTokenSilent`. Token pro ostatní rozhraní API bude v tichosti většinou.
+Chcete-li volat několik rozhraní API pro stejného uživatele, po `AcquireTokenSilent`získání tokenu pro první rozhraní API volejte . Většinu času získáte token pro ostatní api tiše.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -107,10 +107,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-Interakce je povinná v těchto případech:
+Interakce je vyžadována, pokud:
 
-- Uživatel souhlasil s prvním rozhraním API, ale teď musí souhlasit s více obory. Tento druh souhlasu se označuje jako přírůstkový souhlas.
-- První rozhraní API nevyžadovalo vícefaktorové ověřování, ale ten další.
+- Uživatel souhlasil s prvním rozhraním API, ale nyní musí souhlasit s více obory. Tento druh souhlasu se označuje jako přírůstkový souhlas.
+- První rozhraní API nevyžadovalo vícefaktorové ověřování, ale další ano.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -133,4 +133,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přesunout do produkčního prostředí](scenario-desktop-production.md)
+> [Přechod k produkčnímu prostředí](scenario-desktop-production.md)

@@ -1,56 +1,56 @@
 ---
-title: Pravidla brány firewall – Citus (-Scale) – Azure Database for PostgreSQL
-description: Tento článek popisuje pravidla brány firewall pro Azure Database for PostgreSQL – Citus (škálování).
+title: Pravidla brány firewall – hyperškálování (Citus) – databáze Azure pro PostgreSQL
+description: Tento článek popisuje pravidla brány firewall pro Azure Database for PostgreSQL – Hyperscale (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
 ms.openlocfilehash: b843cd1528630a21255053f623356a0379daacf6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975563"
 ---
-# <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Pravidla brány firewall v Azure Database for PostgreSQL – Citus (škálování)
-Brána firewall serveru Azure Database for PostgreSQL zabraňuje všem přístupům k uzlu koordinátora Citus), dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru na základě zdrojové IP adresy jednotlivých požadavků.
+# <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Pravidla brány firewall v databázi Azure pro PostgreSQL – hyperškálování (Citus)
+Brána firewall serveru Azure Database for PostgreSQL zabrání veškerému přístupu k uzlu koordinátora Hyperscale (Citus), dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru na základě původní adresy IP každého požadavku.
 Bránu firewall nakonfigurujete tak, že vytvoříte pravidla brány firewall určující rozsahy přípustných IP adres. Pravidla brány firewall můžete vytvořit na úrovni serveru.
 
-**Pravidla brány firewall:** Tato pravidla umožňují klientům přístup k uzlu koordinátora Citus (), tedy ke všem databázím v rámci stejného logického serveru. Pravidla brány firewall na úrovni serveru se dají nakonfigurovat pomocí Azure Portal. Chcete-li vytvořit pravidla brány firewall na úrovni serveru, musíte být vlastníkem předplatného nebo přispěvatelem předplatného.
+**Pravidla brány firewall:** Tato pravidla umožňují klientům přístup k uzlu koordinátora Hyperscale (Citus), to znamená, že všechny databáze v rámci stejného logického serveru. Pravidla brány firewall na úrovni serveru lze nakonfigurovat pomocí portálu Azure. Chcete-li vytvořit pravidla brány firewall na úrovni serveru, musíte být vlastníkem předplatného nebo přispěvatelem předplatného.
 
 ## <a name="firewall-overview"></a>Přehled brány firewall
-Všechna přístupová práva k vašemu uzlu koordinátora jsou ve výchozím nastavení blokována branou firewall. Pokud chcete začít používat server z jiného počítače, musíte zadat jedno nebo více pravidel brány firewall na úrovni serveru, abyste mohli povolit přístup k vašemu serveru. Pomocí pravidel brány firewall určete, které rozsahy IP adres z Internetu mají být povoleny. Přístup k samotnému webu Azure Portal nemá vliv na pravidla brány firewall.
-Pokusy o připojení z Internetu a Azure musí nejdřív projít přes bránu firewall, aby se mohli připojit k databázi PostgreSQL, jak je znázorněno v následujícím diagramu:
+Veškerý přístup k databázi k uzlu koordinátora je ve výchozím nastavení blokován bránou firewall. Chcete-li začít používat server z jiného počítače, je třeba zadat jedno nebo více pravidel brány firewall na úrovni serveru, aby byl povolen přístup k serveru. Pomocí pravidel brány firewall určete, které adresy IP se pohybují od Internetu, aby je bylo možné povolit. Samotná pravidla brány firewall nemají vliv na přístup k samotnému webu portálu Azure.
+Pokusy o připojení z Internetu a Azure musí nejprve projít bránou firewall, než se dostanou do vaší databáze PostgreSQL, jak je znázorněno na následujícím diagramu:
 
 ![Příklad toku fungování brány firewall](media/concepts-hyperscale-firewall-rules/1-firewall-concept.png)
 
 ## <a name="connecting-from-the-internet-and-from-azure"></a>Připojení z Internetu a z Azure
 
-Brána firewall skupiny serverů Citus () určuje, kdo se může připojit k uzlu koordinátora skupiny. Brána firewall určí přístup tím, že se pojednáním s konfigurovatelným seznamem pravidel. Každé pravidlo je IP adresa nebo rozsah adres, které jsou povoleny v.
+Brána firewall skupiny serverů Hyperscale (Citus) řídí, kdo se může připojit k uzlu koordinátora skupiny. Brána firewall určuje přístup nahlédnutím do konfigurovatelného seznamu pravidel. Každé pravidlo je IP adresa nebo rozsah adres, které jsou povoleny v.
 
-Když brána firewall blokuje připojení, může způsobit chyby aplikace. Použití ovladače PostgreSQL JDBC například vyvolá chybu podobnou této:
+Když brána firewall blokuje připojení, může způsobit chyby aplikace. Pomocí ovladače PostgreSQL JDBC, například vyvolává chybu, jako je tento:
 
-> Java. util. souběžné. ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: ZÁVAŽNá: No pg\_HBA. conf pro hostitele "123.45.67.890", User "citus", Database "citus", SSL
+> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: FATAL: no pg\_hba.conf entry for host "123.45.67.890", user "citus", database "citus", SSL
 
-Informace o tom, jak jsou pravidla definovaná, najdete v tématu [Vytvoření a Správa pravidel brány firewall](howto-hyperscale-manage-firewall-using-portal.md) .
+Informace o tom, jak jsou pravidla definována, naleznete v tématu [Vytvoření a správa pravidel brány firewall.](howto-hyperscale-manage-firewall-using-portal.md)
 
-## <a name="troubleshooting-the-database-server-firewall"></a>Řešení potíží s bránou firewall databázového serveru
-Když se přístup k Microsoft Azure databázi pro službu PostgreSQL-Citus () nechová podle očekávání, zvažte tyto body:
+## <a name="troubleshooting-the-database-server-firewall"></a>Poradce při potížích s bránou firewall databázového serveru
+Pokud se přístup ke službě Microsoft Azure Database for PostgreSQL – Hyperscale (Citus) nechová tak, jak očekáváte, zvažte tyto body:
 
-* **Změny v seznamu povolených se zatím neprojevily:** Může trvat až pět minut, než se změny konfigurace brány firewall Citus () projeví.
+* **Změny seznamu povolených položek se dosud neprojevily:** Změny konfigurace brány firewall Hyperscale (Citus) se projeví až o pět minut.
 
-* **Uživatel nemá oprávnění nebo se použilo nesprávné heslo:** Pokud uživatel nemá na serveru oprávnění nebo je použité heslo nesprávné, připojení k serveru je odepřené. Při vytváření nastavení brány firewall jsou jenom klienti s příležitostí k pokusu o připojení k vašemu serveru. Každý klient musí stále zadat potřebná zabezpečovací pověření.
+* **Uživatel není autorizován nebo bylo použito nesprávné heslo:** Pokud uživatel nemá oprávnění na serveru nebo použité heslo je nesprávné, připojení k serveru je odepřeno. Vytvoření nastavení brány firewall poskytuje klientům pouze možnost pokusit se připojit k serveru. každý klient musí stále poskytnout potřebná pověření zabezpečení.
 
 Například pomocí klienta JDBC se může zobrazit následující chyba.
-> Java. util. souběžné. ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: ZÁVAŽNá: ověřování hesla pro uživatele "uživatelské_jméno" se nezdařilo.
+> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: FATAL: ověřování hesla se nezdařilo pro uživatele "yourusername"
 
 * **Dynamická IP adresa:** Pokud vaše internetové připojení používá dynamické přidělování IP adres a máte problémy dostat se přes bránu firewall, můžete zkusit jedno z následujících řešení:
 
-* Zeptejte se poskytovatele internetových služeb (ISP) na rozsah IP adres přiřazený ke klientským počítačům, které přistupují k uzlu koordinátora Citus (webscale), a pak přidejte rozsah IP adres jako pravidlo brány firewall.
+* Požádejte svého poskytovatele služeb Internetu (ISP) o rozsah IP adres přiřazený klientským počítačům, které přistupují k uzlu koordinátora Hyperscale (Citus), a poté přidejte rozsah IP adres jako pravidlo brány firewall.
 
-* Místo toho Získejte statické IP adresy pro klientské počítače a pak přidejte statickou IP adresu jako pravidlo brány firewall.
+* Místo toho získejte statické adresování IP pro klientské počítače a přidejte statickou adresu IP jako pravidlo brány firewall.
 
 ## <a name="next-steps"></a>Další kroky
-Články o vytváření pravidel brány firewall na úrovni serveru a databáze najdete v těchto tématech:
-* [Vytváření a Správa Azure Database for PostgreSQL pravidel brány firewall pomocí Azure Portal](howto-hyperscale-manage-firewall-using-portal.md)
+Články o vytváření pravidel brány firewall na úrovni serveru a databáze naleznete v tématu:
+* [Vytváření a správa pravidel brány firewall Azure Database for PostgreSQL pomocí portálu Azure](howto-hyperscale-manage-firewall-using-portal.md)

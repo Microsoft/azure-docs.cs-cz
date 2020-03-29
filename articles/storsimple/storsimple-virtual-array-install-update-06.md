@@ -1,6 +1,6 @@
 ---
-title: Instalace aktualizace 0.6 na StorSimple Virtual Array | Dokumentace Microsoftu
-description: Popisuje způsob použití StorSimple Virtual Array webového uživatelského rozhraní aktualizací pomocí Azure portal a opravy hotfix – metoda
+title: Instalace aktualizace 0.6 na virtuálním poli StorSimple | Dokumenty společnosti Microsoft
+description: Popisuje, jak pomocí webového uživatelského uživatelského prostředí StorSimple Virtual Array použít aktualizace pomocí portálu Azure a metody opravy hotfix.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,115 +15,115 @@ ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
 ms.openlocfilehash: 5f0be5d8378cd1640d3052f2e56c8161e2c0b203
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62116887"
 ---
-# <a name="install-update-06-on-your-storsimple-virtual-array"></a>Instalace aktualizace 0.6 na StorSimple Virtual Array
+# <a name="install-update-06-on-your-storsimple-virtual-array"></a>Instalace aktualizace 0.6 na virtuální morovém poli StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Tento článek popisuje kroky potřebné k instalaci aktualizace 0.6 StorSimple Virtual Array prostřednictvím místního webového uživatelského rozhraní a prostřednictvím webu Azure portal. Použití aktualizací softwaru nebo oprav hotfix k udržování aktuálnosti StorSimple Virtual Array.
+Tento článek popisuje kroky potřebné k instalaci aktualizace 0.6 na virtuální pole StorSimple prostřednictvím místního webového uživatelského prostředí a prostřednictvím portálu Azure. Aktualizace softwaru nebo opravy hotfix použijete, aby vaše virtuální pole StorSimple bylo aktuální.
 
-Před instalací aktualizace, doporučujeme vám věnovat svazky nebo sdílené složky offline na hostiteli první a pak zařízení. Minimalizuje se tak možnost poškození dat. Jakmile svazky nebo sdílené složky jsou offline, byste měli také provést ruční zálohování zařízení.
+Před aktualizací doporučujeme nejprve převzít svazky nebo sdílené složky do offline na hostiteli a potom na zařízení. Minimalizuje se tak možnost poškození dat. Po offline svazky nebo sdílené složky byste měli také provést ruční zálohování zařízení.
 
 > [!IMPORTANT]
-> - Aktualizace 0.6 odpovídá **10.0.10293.0** verze softwaru na vašem zařízení. Informace o novinkách v této aktualizaci najdete v části [zpráva k vydání verze pro aktualizace 0.6](storsimple-virtual-array-update-06-release-notes.md).
+> - Aktualizace 0.6 odpovídá verzi softwaru **10.0.10293.0** v zařízení. Informace o novince v této aktualizaci naleznete v [poznámkách k verzi aktualizace 0.6](storsimple-virtual-array-update-06-release-notes.md).
 >
-> - Pokud používáte aktualizace 0.2 nebo později, doporučujeme nainstalovat aktualizace přes Azure portal. Pokud používáte aktualizace 0.1 nebo verze GA softwaru, musíte použít opravu hotfix metodu prostřednictvím místního webového uživatelského rozhraní instalace aktualizace 0.6.
+> - Pokud používáte aktualizaci 0.2 nebo novější, doporučujeme nainstalovat aktualizace přes portál Azure. Pokud používáte verzi softwaru Aktualizace 0.1 nebo GA, je nutné k instalaci aktualizace 0.6 použít metodu opravy hotfix prostřednictvím místního webového uživatelského prostředí.
 >
-> - Mějte na paměti, který instaluje aktualizaci nebo opravu hotfix restartuje vaše zařízení. Vzhledem k tomu, že StorSimple Virtual Array se zařízením s jedním uzlem, naruší se všechny vstupně-výstupních operací v průběhu a vaše zařízení dojde k výpadku.
+> - Nezapomeňte, že instalace aktualizace nebo opravy hotfix restartuje zařízení. Vzhledem k tomu, že virtuální pole StorSimple je zařízení s jedním uzly, je přerušeno jakékoli probíhající vstupně-up a prostoje zařízení.
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-Pokud aktualizace s 0,2 nebo novějším, doporučujeme, abyste instalaci aktualizace na webu Azure portal. Portálu postup vyžaduje, aby uživatel kontrolovat, stáhněte si a nainstalujte aktualizace. Tento postup trvá asi 7 minut na dokončení. Proveďte následující kroky k instalaci, aktualizaci nebo opravu hotfix.
+Pokud se sem schovali aktualizace 0.2 a novější, doporučujeme nainstalovat aktualizace prostřednictvím portálu Azure. Postup portálu vyžaduje, aby uživatel prohledává, stahuje a poté aktualizuje aktualizace. Tento postup trvá přibližně 7 minut. Chcete-li nainstalovat aktualizaci nebo opravu hotfix, proveďte následující kroky.
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-04.md)]
 
-Po dokončení instalace přejděte do služby Správce zařízení StorSimple. Vyberte **zařízení** a potom klikněte na zařízení, které jste právě aktualizovali. Přejděte na **Nastavení > Správa > aktualizace zařízení**. Zobrazené software verze by měla být **10.0.10293.0**.
+Po dokončení instalace přejděte do služby Správce zařízení StorSimple. Vyberte **Zařízení** a pak vyberte a klikněte na zařízení, které jste právě aktualizovali. Přejděte **na nastavení > Správa aktualizací > zařízení**. Zobrazená verze softwaru by měla být **10.0.10293.0**.
 
-## <a name="use-the-local-web-ui"></a>Použití místního webového uživatelského rozhraní
+## <a name="use-the-local-web-ui"></a>Použití místního webového uživatelského prostředí
 
-Existují dva kroky, při použití místního webového uživatelského rozhraní:
+Při použití místního webového uživatelského prostředí existují dva kroky:
 
-* Stáhnout aktualizaci nebo opravu hotfix
-* Nainstalujte aktualizaci nebo opravu hotfix
+* Stažení aktualizace nebo opravy hotfix
+* Instalace aktualizace nebo opravy hotfix
 
-### <a name="download-the-update-or-the-hotfix"></a>Stáhnout aktualizaci nebo opravu hotfix
+### <a name="download-the-update-or-the-hotfix"></a>Stažení aktualizace nebo opravy hotfix
 
 Provedením následujících kroků si stáhněte aktualizace softwaru z Katalogu služby Microsoft Update.
 
-#### <a name="to-download-the-update-or-the-hotfix"></a>Chcete-li stáhnout aktualizace nebo opravy hotfix
+#### <a name="to-download-the-update-or-the-hotfix"></a>Stažení aktualizace nebo opravy hotfix
 
-1. Spustit aplikaci Internet Explorer a přejděte do [ https://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
+1. Spusťte aplikaci [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)Internet Explorer a přejděte na .
 
-2. Pokud používáte katalog služby Microsoft Update na tomto počítači poprvé, klikněte na tlačítko **nainstalovat** po zobrazení výzvy k instalaci doplňku katalog služby Microsoft Update.
+2. Pokud v tomto počítači používáte katalog Microsoft Update poprvé, klepněte po zobrazení výzvy k instalaci doplňku Katalogu microsoft update na **tlačítko Nainstalovat.**
 
-3. Do vyhledávacího pole katalogu služby Microsoft Update zadejte číslo znalostní báze Knowledge Base (KB) opravy hotfix, které chcete stáhnout. Zadejte **4023268** aktualizace 0.6 a potom klikněte na tlačítko **hledání**.
+3. Do vyhledávacího pole katalogu Microsoft Update zadejte číslo opravy hotfix, kterou chcete stáhnout, do znalostní báze Knowledge Base (KB). Zadejte **hodnotu 4023268** pro aktualizaci 0.6 a klepněte na tlačítko **Hledat**.
    
-    Zobrazí se výpis opravy hotfix, například **StorSimple Virtual Array aktualizace 0.6**.
+    Zobrazí se výpis opravy hotfix, například **Aktualizace virtuálního pole StorSimple 0.6**.
    
     ![Prohledávání katalogu](./media/storsimple-virtual-array-install-update-06/download1.png)
 
-4. Klikněte na tlačítko **Stáhnout**.
+4. Klepněte na tlačítko **Stáhnout**.
 
 5. Měli byste vidět pět souborů ke stažení. Stáhněte si každý z těchto souborů do složky. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
 
-6. Otevřete složku, ve kterém se soubory nacházejí.
+6. Otevřete složku, ve které jsou soubory umístěny.
     ![Soubory v balíčku](./media/storsimple-virtual-array-install-update-06/update06folder.png)
 
     Zobrazí se následující:
-    -  Microsoft Update samostatného balíčku souboru `WindowsTH-KB3011067-x64`. Tento soubor slouží k aktualizaci softwaru zařízení.
-    - Soubor balíčku agenta monitorování Geneva `GenevaMonitoringAgentPackageInstaller`. Tento soubor slouží k aktualizaci agenta monitorování a Diagnostika služby (MDS). Poklikejte na soubor cab. A _MSI_ se zobrazí. Vyberte soubor, klikněte pravým tlačítkem a pak **extrahovat** souboru. Můžete použít _MSI_ souboru aktualizace agenta.
+    -  Soubor `WindowsTH-KB3011067-x64`samostatného balíčku společnosti Microsoft Update . Tento soubor se používá k aktualizaci softwaru zařízení.
+    - Ženeva Monitoring `GenevaMonitoringAgentPackageInstaller`Agent package file . Tento soubor se používá k aktualizaci agenta služby Monitorování a diagnostika (MDS). Poklepejte na soubor kabiny. Zobrazí se _soubor MSI._ Vyberte soubor, klikněte pravým tlačítkem myši a potom soubor **extrahujte.** Soubor _MSI_ slouží k aktualizaci agenta.
 
-        ![Extrahujte soubor aktualizace pro agenta služby MDS](./media/storsimple-virtual-array-install-update-06/extract-geneva-monitoring-agent-installer.png)
+        ![Extrahovat soubor aktualizace agenta MDS](./media/storsimple-virtual-array-install-update-06/extract-geneva-monitoring-agent-installer.png)
 
         > [!IMPORTANT]
-        > Není nutné aktualizovat agenta služby MDS, pokud používáte verzi StorSimple Update 0,5 (0.0.10293.0).
+        > Není nutné aktualizovat agenta MDS, pokud používáte StorSimple Update 0.5 (0.0.10293.0).
 
-    - Tři soubory, které obsahují důležité aktualizace zabezpečení Windows `windows8.1-kb4012213-x64`,`windows8.1-kb3205400-x64`, a `windows8.1-kb4019213-x64`.
+    - Tři soubory, které obsahují `windows8.1-kb4012213-x64`důležité`windows8.1-kb3205400-x64`aktualizace `windows8.1-kb4019213-x64`zabezpečení systému Windows , a .
 
 
-### <a name="install-the-update-or-the-hotfix"></a>Nainstalujte aktualizaci nebo opravu hotfix
+### <a name="install-the-update-or-the-hotfix"></a>Instalace aktualizace nebo opravy hotfix
 
-Před instalací aktualizace nebo opravy hotfix Přesvědčte se, že máte aktualizaci nebo opravu hotfix stažené buď místně na vašem hostiteli nebo přístupné přes síťové sdílené složky.
+Před instalací aktualizace nebo opravy hotfix se ujistěte, že je aktualizace nebo oprava hotfix stažena místně na hostiteli nebo dostupná prostřednictvím sdílené síťové složky.
 
-Tuto metodu použijte k instalaci aktualizací do zařízení se systémem GA nebo aktualizace 0.1 verze softwaru. Tento postup trvá přibližně 12 minut. Proveďte následující kroky k instalaci, aktualizaci nebo opravu hotfix.
+Tuto metodu použijte k instalaci aktualizací do zařízení se systémem GA nebo Update 0.1 verze softwaru. Tento postup trvá přibližně 12 minut. Chcete-li nainstalovat aktualizaci nebo opravu hotfix, proveďte následující kroky.
 
-#### <a name="to-install-the-update-or-the-hotfix"></a>K instalaci aktualizace nebo opravy hotfix
+#### <a name="to-install-the-update-or-the-hotfix"></a>Instalace aktualizace nebo opravy hotfix
 
-1. V místním webovém uživatelském rozhraní, přejděte na **údržby** > **aktualizace softwaru**. Poznamenejte si verzi softwaru, kterou používáte. Pokud používáte **10.0.10290.0**, není potřeba aktualizovat agenta služby MDS v kroku 6.
+1. V místním webovém uživatelském prostředí přejděte na**stránku Aktualizace softwaru** **údržby** > . Poznamenejte si verzi softwaru, kterou používáte. Pokud používáte **10.0.10290.0**, není nutné aktualizovat agenta MDS v kroku 6.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. V **cesta k souboru aktualizace**, zadejte název souboru pro aktualizaci nebo opravu hotfix. Můžete také přejít k instalačnímu souboru aktualizace nebo opravy hotfix Pokud umístěn ve sdílené síťové složce. Klikněte na tlačítko **Použít**.
+2. V **části Aktualizovat cestu k souboru**zadejte název souboru aktualizace nebo opravy hotfix. Můžete také přejít na instalační soubor aktualizace nebo opravy hotfix, pokud je umístěn do sdílené síťové složky. Klikněte na **Použít**.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
-3. Zobrazí se upozornění. Poté, co tuto aktualizaci nenainstalujete, zařízení se restartuje a nedochází k výpadkům je uvedený virtuální pole zařízením s jedním uzlem. Kliknutím na ikonu zaškrtnutí.
+3. Zobrazí se upozornění. Vzhledem k tomu, virtuální pole je jeden uzel zařízení, po instalaci aktualizace, zařízení restartuje a je prostoje. Klikněte na ikonu šeku.
    
    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
-4. Spustí se aktualizace. Po úspěšné aktualizaci zařízení restartuje. Místní uživatelské rozhraní není dostupný v této hodnotě duration.
+4. Aktualizace se spustí. Po úspěšné aktualizaci zařízení se restartuje. Místní uI není přístupné v této době trvání.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Po dokončení restartování, budete přesměrováni na **přihlášení** stránky. Chcete-li ověřit, že zařízení má aktualizovat, v místním webovém uživatelském rozhraní, přejděte na **údržby** > **aktualizace softwaru**. Zobrazené software verze by měla být **10.0.0.0.0.10293** aktualizace 0.6.
+5. Po dokončení restartování se dostanete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, přejděte v místním webovém uživatelském rozhraní na**stránku** **Maintenance** > Software Update . Zobrazená verze softwaru by měla být **10.0.0.0.0.10293** pro aktualizaci 0.6.
    
    > [!NOTE]
-   > V trochu jinak v místním webovém uživatelském rozhraní a webu Azure portal vytvoříme sestavy verzí softwaru. Například místního webového uživatelského rozhraní sestavy **10.0.0.0.0.10293** a Azure portal sestavy **10.0.10293.0** pro stejnou verzi.
+   > Verze softwaru hlásíme trochu jiným způsobem v místním webovém uživatelském prostředí a na portálu Azure. Například místní webové uživatelské prostředí hlásí **10.0.0.0.10293** a portál Azure hlásí **10.0.10293.0** pro stejnou verzi.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-06/update6m.png)
 
-6. Tento krok přeskočte, pokud jste používali StorSimple Virtual Array aktualizace 0.5 (**10.0.10290.0**) před použitím této aktualizace. Jste si poznamenali verze softwaru v kroku 1 předtím, než začal aktualizovat. Pokud jste používali aktualizace 0.5, agenta služby MDS už je aktuální.
+6. Tento krok přeskočte, pokud jste před použitím této aktualizace spouštěli aktualizaci StorSimple Virtual Array Update 0.5 **(10.0.10290.0).** Před zahájením aktualizace jste si v kroku 1 poznamenejte verzi softwaru. Pokud jste spouštěli aktualizaci 0.5, je váš agent MDS již aktuální .
 
-    Pokud používáte verzi softwaru před aktualizací 0,5, dalším krokem pro vás je aktualizace agenta služby MDS. V **aktualizace softwaru** stránky, přejděte na **cesta k souboru aktualizace** a přejděte do `GenevaMonitoringAgentPackageInstaller.msi` souboru. Opakujte kroky 2 až 4. Po restartování virtuálního pole přihlášení do místního webového uživatelského rozhraní.
+    Pokud používáte verzi softwaru před aktualizací 0.5, dalším krokem je aktualizace agenta MDS. Na stránce **Aktualizace softwaru** přejděte na cestu k `GenevaMonitoringAgentPackageInstaller.msi` **aktualizaci souboru** a vyhledejte soubor. Opakujte kroky 2-4. Po restartování virtuálního pole se přihlaste do místního webového uživatelského prostředí.
 
-7. Opakujte krok 2 – 4 k instalaci Windows zabezpečení řeší pomocí souborů `windows8.1-kb4012213-x64`,`windows8.1-kb3205400-x64`, a `windows8.1-kb4019213-x64`. Po každé instalaci restartuje virtuální pole a potřebujete se přihlásit do místního webového uživatelského rozhraní.
+7. Opakováním kroku 2-4 nainstalujte opravy `windows8.1-kb4012213-x64``windows8.1-kb3205400-x64`zabezpečení `windows8.1-kb4019213-x64`systému Windows pomocí souborů , a . Virtuální pole se restartuje po každé instalaci a je třeba se přihlásit do místního webového uživatelského prostředí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o [Správa StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+Další informace o [správě virtuálního pole StorSimple](storsimple-ova-web-ui-admin.md).
 

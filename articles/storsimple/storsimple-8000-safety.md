@@ -1,6 +1,6 @@
 ---
-title: Bezpečný přístup z více zařízení StorSimple | Dokumentace Microsoftu
-description: Popisuje konvence bezpečnost, pokyny a důležité informace a vysvětluje, jak bezpečně instalaci a provozování zařízení StorSimple.
+title: Bezpečnost pro vaše zařízení StorSimple | Dokumenty společnosti Microsoft
+description: Popisuje bezpečnostní konvence, pokyny a důležité informace a vysvětluje, jak bezpečně nainstalovat a provozovat zařízení StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,141 +15,141 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 66b881ab13e27ee457af4fa1bafb82ad14e9674d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60631616"
 ---
-# <a name="safely-install-and-operate-your-storsimple-device"></a>Bezpečně instalaci a provozování zařízení StorSimple
-![Ikona upozornění](./media/storsimple-safety/IC740879.png)
-![čtení bezpečnosti Všimněte si, že ikona](./media/storsimple-safety/IC740885.png) **čtení bezpečnosti a informace o stavu**
+# <a name="safely-install-and-operate-your-storsimple-device"></a>Bezpečně nainstalujte a ovládejte zařízení StorSimple
+![Ikona](./media/storsimple-safety/IC740879.png)
+![upozornění Číst](./media/storsimple-safety/IC740885.png) ikona upozornění na bezpečnost **přečtěte si informace o bezpečnosti a ochraně zdraví**
 
-Číst všechny bezpečnosti a stavu informace v tomto článku, který se vztahuje na zařízení Microsoft Azure StorSimple. Zachovejte vytištěné vodítka dodané se zařízením StorSimple pro budoucí použití. Nepodařilo se postupujte podle pokynů a správně nastavit, použití a péče pro tento produkt může zvýšit riziko vážným nebo smrti nebo poškození na zařízení. A [verzi ke stažení této příručky](https://www.microsoft.com/download/details.aspx?id=44233) je také k dispozici.
+Přečtěte si všechny informace o bezpečnosti a ochraně zdraví v tomto článku, které se vztahují k vašemu zařízení Microsoft Azure StorSimple. Uchovávejte všechny tištěné příručky dodávané se zařízením StorSimple pro budoucí použití. Nedodržení pokynů a správné nastavení, používání a péče o tento výrobek může zvýšit riziko vážného zranění nebo smrti nebo poškození zařízení nebo zařízení. Ke [stažení verze této příručky](https://www.microsoft.com/download/details.aspx?id=44233) je také k dispozici.
 
-## <a name="safety-icon-conventions"></a>Bezpečný přístup z více ikonu konvence
-Tady jsou ikony, které zjistíte, když zkontrolujete bezpečnostní opatření, která má být dodržen po nastavení a spuštění zařízení Microsoft Azure StorSimple.
+## <a name="safety-icon-conventions"></a>Konvence bezpečnostních ikon
+Tady jsou ikony, které najdete při kontrole bezpečnostních opatření, která je třeba dodržovat při nastavování a spouštění zařízení Microsoft Azure StorSimple.
 
 | Ikona | Popis |
 |:--- |:--- |
-| ![Ikona nebezpečí](./media/storsimple-safety/IC740879.png) **nebezpečí!** |Označuje nebezpečné situace, která, pokud není vyhnout, bude výsledkem úmrtí nebo vážným. Toto slovo signálu je omezená na v nejextrémnějších případech. |
-| ![Ikona upozornění](./media/storsimple-safety/IC740879.png) **upozornění!** |Označuje nebezpečné situace, která, pokud není vyhnout, může způsobit úmrtí nebo vážným. |
-| ![Ikona upozornění](./media/storsimple-safety/IC740879.png) **OPATRNĚ!** |Označuje nebezpečné situace, která, pokud není vyhnout, by mohlo způsobit vedlejší nebo střední škody. |
-| ![Všimněte si ikony](./media/storsimple-safety/IC740881.png) **oznámení:** |Označuje informace, které jsou považovány za důležité, ale ne související nebezpečí. |
-| ![Ikona k elektrické Otřást](./media/storsimple-safety/IC740882.png) **nebezpečí k elektrické Otřást** |Snímač napětí vysoké |
-| ![Tučná tloušťka ikonu](./media/storsimple-safety/IC740883.png) **Tučná tloušťka** | |
-| ![Žádný uživatel možnost změny části ikonu](./media/storsimple-safety/IC740879.png) **žádné části možnost změny uživatele** |K přístup, pokud správně školení. |
-| ![Přečtěte si všimněte si, že ikona bezpečný přístup z více](./media/storsimple-safety/IC740885.png)**nejprve přečíst všechny pokyny** | |
-| ![Ikona nebezpečí tipu](./media/storsimple-safety/IC740886.png) **Tip ohrožení** | |
+| ![Nebezpečí](./media/storsimple-safety/IC740879.png) Ikona **NEBEZPEČÍ!** |Označuje nebezpečnou situaci, která, pokud se jí nevyhnete, bude mít za následek smrt nebo vážné zranění. Toto signální slovo má být omezeno na nejextrémnější situace. |
+| ![Upozornění](./media/storsimple-safety/IC740879.png) na ikonu **VAROVÁNÍ!** |Označuje nebezpečnou situaci, která, pokud se jí nevyhnete, může mít za následek smrt nebo vážné zranění. |
+| ![Upozornění](./media/storsimple-safety/IC740879.png) na ikonu **POZOR!** |Označuje nebezpečnou situaci, která, pokud se jí nevyhnete, může vést k menšímu nebo střednímu zranění. |
+| ![Upozornění](./media/storsimple-safety/IC740881.png) na **ikonu:** |Označuje informace považované za důležité, ale ne související s nebezpečím. |
+| ![Ikona elektrického šoku](./media/storsimple-safety/IC740882.png) **Nebezpečí úrazu elektrickým proudem** |Vysoké napětí |
+| ![Těžká váha](./media/storsimple-safety/IC740883.png) Ikona **těžká váha** | |
+| ![Žádná ikona](./media/storsimple-safety/IC740879.png) uživatelských opravitelných dílů **Žádná uživatelská servisovatelná součásti** |Nevstupte do funkce, pokud není řádně vyškolen. |
+| ![Přečtěte si ikonu bezpečnostního upozornění](./media/storsimple-safety/IC740885.png)**Přečtěte si nejprve všechny pokyny** | |
+| ![Tip Nebezpečí](./media/storsimple-safety/IC740886.png) Ikona **Tip Nebezpečí Nebezpečí Nebezpečí Nebezpečí** | |
 
-## <a name="handling-precautions"></a>Zpracování opatření
-![Ikona upozornění](./media/storsimple-safety/IC740879.png) ![Tučná tloušťka ikonu](./media/storsimple-safety/IC740883.png) **upozornění!** 
+## <a name="handling-precautions"></a>Bezpečnostní opatření pro manipulaci
+![Upozornění](./media/storsimple-safety/IC740879.png) ![Ikona těžké](./media/storsimple-safety/IC740883.png) váhy **Upozornění!** 
 
-Aby se snížilo riziko poškození:
+Chcete-li snížit riziko zranění:
 
-* Plně nakonfigurovaného skříně můžete naváží až 32 kg (70 lbs); Nepokoušejte se přenést sami.
-* Před přechodem skříň, vždy ujistěte se, že dva lidé jsou k dispozici pro zpracování váhu. Mějte na paměti, že udržet schopnost se zranit při pokusu o zrušení této váha osob.
-* Není lift přílohu pomocí obslužné rutiny na napájení a chlazení moduly (PCMs) nachází na zadní jednotky. Ty nejsou navržené tak, aby váhu.
+* Plně nakonfigurovaná skříň může vážit až 32 kg( 70 lbs); nepokoušejte se jej zvedat sami.
+* Před přemístěním krytu se vždy ujistěte, že jsou k dispozici dvě osoby, které zvládnou hmotnost. Uvědomte si, že jedna osoba, která se pokouší zvednout tuto váhu, může utrpět zranění.
+* Nezvedejte kryt za rukojeti na napájecích a chladicích modulech (PCM) umístěných v zadní části jednotky. Ty nejsou navrženy tak, aby hmotnost.
 
-## <a name="connection-precautions"></a>Opatření připojení
-![Ikona upozornění](./media/storsimple-safety/IC740879.png) ![ikonu k elektrické Otřást](./media/storsimple-safety/IC740882.png) **upozornění!**
+## <a name="connection-precautions"></a>Bezpečnostní opatření pro připojení
+![Výstražná](./media/storsimple-safety/IC740879.png) ![ikona Ikona](./media/storsimple-safety/IC740882.png) elektrického šoku **VAROVÁNÍ!**
 
-Chcete-li snížit pravděpodobnost, že smrti, elektrické otřást nebo zranění:
+Chcete-li snížit pravděpodobnost zranění, úrazu elektrickým proudem nebo smrti:
 
-* Při napájení z více zdrojů AC, odpojte všechny dodávek energie pro naprosté izolaci.
-* Trvale Odpojte jednotku před přesunutím nebo pokud si myslíte, že je poškozená žádným způsobem.
-* Poskytují bezpečné elektrické earth připojení k dodání napájecích. Ověřte, že seznámíte s obecnými přílohu splňuje požadavky státní a místní před použitím napájení.
-* Ujistěte se, že je připojení power vždy odpojen před odebráním PCM od skříně.
-* Vzhledem k tomu, že moduly na napájecí kabel napájení je hlavním odpojení zařízení, ujistěte se, že výstupy soketu se nacházejí v zařízení a jsou snadno dostupné.
+* Při napájení z více zdrojů střídavého proudu odpojte veškerý napájecí zdroj pro úplnou izolaci.
+* Před pohybem přístroje trvale odpojte přístroj ze zásuvky nebo pokud se domníváte, že je jakkoli poškozen.
+* Zajistěte bezpečné elektrické uzemnění s napájecími kabely. Před použitím napájení ověřte, zda uzemnění krytu splňuje národní a místní požadavky.
+* Před vyjmutím PCM z krytu se ujistěte, že je připojení napájení vždy odpojeno.
+* Vzhledem k tomu, že zástrčka na napájecím kabelu je hlavním odpojovacím zařízením, ujistěte se, že zásuvky jsou umístěny v blízkosti zařízení a jsou snadno přístupné.
 
-![Ikona upozornění](./media/storsimple-safety/IC740879.png) ![ikonu k elektrické Otřást](./media/storsimple-safety/IC740882.png) **upozornění!**
+![Výstražná](./media/storsimple-safety/IC740879.png) ![ikona Ikona](./media/storsimple-safety/IC740882.png) elektrického šoku **VAROVÁNÍ!**
 
-Snížit pravděpodobnost, že přehřívání nebo vyvolat z elektrické připojení:
+Chcete-li snížit pravděpodobnost přehřátí nebo požáru z elektrických připojení:
 
-* Zdroj napájení vhodné poskytněte elektrické přetížení ochranu splňovat požadavky popsané v technické specifikace.
-* Nepoužívejte napájecích kabelů bifurcated ("Y" zájemci).
-* Pro dosažení souladu s příslušné bezpečnost, emisí a teplotní požadavky, by měly být odstraněny žádné pozadí a všechny pozice musí být naplněn moduly plug-in nebo jednotka prázdné hodnoty.
-* Ujistěte se, že zařízení používá způsobem podle výrobce. Pokud se toto zařízení používá způsobem, který není zadán výrobcem, může dojít k přerušení protection poskytované službou zařízení.
+* Zajistěte vhodný zdroj energie s ochranou proti elektrickému přetížení, který splňuje požadavky uvedené v technické specifikaci.
+* Nepoužívejte rozdvojené napájecí kabely ("Y" kabely).
+* Aby byly splněny příslušné požadavky na bezpečnost, emise a teplo, neměly by být odstraněny žádné kryty a všechny pozice musí být naplněny zásuvnými moduly nebo diskovými polotovary.
+* Ujistěte se, že zařízení je používáno způsobem stanoveným výrobcem. Je-li toto zařízení používáno způsobem, který výrobce nespecifikuje, může dojít k narušení ochrany poskytované zařízením.
 
-![Všimněte si ikony](./media/storsimple-safety/IC740881.png) **oznámení:**
+![Upozornění](./media/storsimple-safety/IC740881.png) na **ikonu:**
 
-Pro správný provoz vašeho zařízení a zabránit poškození produktu:
+Pro správnou funkci vašeho zařízení a pro zabránění poškození výrobku:
 
-* Porty RJ45 zádi zařízení jsou pro připojení sítě Ethernet. Tyto nesmí být připojené k síti telekomunikačními operátory.
-* Nezapomeňte nainstalovat zařízení do racku, který zvládne chladicí návrhu zepředu dozadu.
-* Všechny zásuvné moduly a prázdné talířů jsou součástí systému. Musí být odstraněny pouze při můžou nahradit aktuální soubor je možné okamžitě přidat. Systém nemůže spustit bez všechny moduly nebo prázdné hodnoty na místě.
+* Porty RJ45 na zadní straně zařízení jsou určeny pouze pro ethernetové připojení. Tyto sítě nesmí být připojeny k telekomunikační síti.
+* Nezapomeňte zařízení nainstalovat do stojanu, který může být vhodný pro chlazení zepředu dozadu.
+* Součástí skříně systému jsou všechny zásuvné moduly a prázdné desky. Ty musí být odstraněny pouze v případě, že lze okamžitě přidat náhradu. Systém nesmí být spuštěn bez všech modulů nebo polotovarů na místě.
 
-## <a name="rack-system-precautions"></a>Opatření rack systému
-Následující bezpečnostní požadavky je potřeba zvážit při připojení zařízení do racku CAB.
+## <a name="rack-system-precautions"></a>Bezpečnostní opatření pro regálový systém
+Při montáži zařízení do rozvaděče je třeba vzít v úvahu následující bezpečnostní požadavky.
 
-![Ikona upozornění](./media/storsimple-safety/IC740879.png) ![nebezpečí ikona tipu](./media/storsimple-safety/IC740886.png) **upozornění!**
+![Upozornění](./media/storsimple-safety/IC740879.png) ![Ikona nebezpečí](./media/storsimple-safety/IC740886.png) hrotu ikony **VAROVÁNÍ!**
 
-Ke snížení pravděpodobnosti škod od tip přes:
+Chcete-li snížit pravděpodobnost zranění z převrácení:
 
-* Návrh rack by měly podporovat Celková váha nainstalovaných skříně a by měla zahrnovat stabilizační funkce vhodné racku zabránit v ukládání nebo stisknuté přes během instalace nebo normální použití.
-* Při načítání stojanu, vyplnit rack zdola nahoru a prázdný shora dolů.
-* Postupně, aby se zabránilo ohrožení-of-rack toppling snímku není více než jednu přílohu z racku.
+* Konstrukce stojanu by měla podporovat celkovou hmotnost instalovaných skříní a měla by obsahovat stabilizační prvky vhodné k zabránění převrácení stojanu nebo jeho převrácení během instalace nebo běžného používání.
+* Při nakládání stojanu naplňte stojan zdola nahoru a vyprázdněte jej shora dolů.
+* Nevysuňte ze stojanu více než jeden kryt, aby nedošlo k nebezpečí převrácení stojanu.
 
-![Ikona upozornění](./media/storsimple-safety/IC740879.png) ![ikonu k elektrické Otřást](./media/storsimple-safety/IC740882.png) **upozornění!**
+![Výstražná](./media/storsimple-safety/IC740879.png) ![ikona Ikona](./media/storsimple-safety/IC740882.png) elektrického šoku **VAROVÁNÍ!**
 
-Chcete-li snížit pravděpodobnost, že smrti, elektrické otřást nebo zranění:
+Chcete-li snížit pravděpodobnost zranění, úrazu elektrickým proudem nebo smrti:
 
-* Racku by měl mít systém bezpečné elektrické distribuce. Musíte zadat navýšení aktuální ochranu pro přílohu a nesmí být přetíženy podle celkový počet skříní nainstalované. Hodnocení spotřeby elektrické energie na jmenovka by měl.
-* Systém elektrické distribuce musí poskytují spolehlivé základu pro každou skříň v racku.
-* Návrh systému elektrické distribuce musí vzít v úvahu úniku celkový základu aktuální ze všech napájení všechny skříně. Všimněte si, že každý zdroj napájení v každém zařízení má aktuální úniku základu 1.0 mA maximální na 60 Hz 264 intenzita. Racku může vyžadovat značení s "vysoká ÚNIKU aktuální. Připojení základu (země) je nezbytné před připojením dodávky."
-* Stojan, když je nakonfigurována s skříně, musí splňovat požadavky zabezpečení UL 60950-1 a IEC 60950-1/EN 60950-1.
+* Stojan by měl mít bezpečný elektrický rozvod. Musí poskytovat ochranu proti proudu skříně a nesmí být přetížena celkovým počtem instalovaných skříní. Je třeba dodržovat jmenovitou spotřebu elektrické energie uvedenou na typovém štítku.
+* Elektrický rozvod musí poskytovat spolehlivou půdu pro každý kryt ve stojanu.
+* Konstrukce elektrického rozvodného systému musí brát v úvahu celkový proud uzemnění ze všech napájecích zdrojů ve všech skříních. Všimněte si, že každý napájecí zdroj v každém krytu má maximální přívod země 1,0 mA při 60 Hz, 264 V. Stojan může vyžadovat označení "HIGH Leakage CURRENT. Pozemní (zemní) připojení je nezbytné před připojením napájení."
+* Rack, je-li konfigurován s kryty, musí splňovat bezpečnostní požadavky UL 60950-1 a IEC 60950-1/EN 60950-1.
 
-![Všimněte si ikony](./media/storsimple-safety/IC740881.png) **oznámení:**
+![Upozornění](./media/storsimple-safety/IC740881.png) na **ikonu:**
 
-Pro správné chlazení systému rack:
+Pro správné chlazení vašeho rackového systému:
 
-* Ujistěte se, že návrh rack vezme v úvahu maximální skříň provozní okolní teploty 35 stupních Celsia (95 stupních Fahrenheita).
-* Systém je provozována Nízkotlaké, zadní výfukového instalaci (protitlak vytvořené dveře do racku a překážky, která nepřekročí 5 Pascal [0,5 mm vody měřidla]).
+* Ujistěte se, že konstrukce stojanu bere v úvahu maximální teplotu okolí 35 stupňů Celsia (95 stupňů Fahrenheita).
+* Systém je provozován s nízkotlakou instalací zadního výfuku (protitlak vytvářený dveřmi do regálu a překážkami nepřesahujícími 5 Pascal [0,5 mm vodoměr]).
 
-## <a name="power-cooling-module-pcm-precautions"></a>Opatření Power chlazení modulu (PCM)
-Zařízení je navržený pro použití dvou PCMs. Každý z PCMs má zdroj napájení a ventilátor duální osu. Během kritického stavu systému umožňuje selhání jednoho napájení přitom normálního provozu. Dvě PCMs (a tedy napájení) musí být vždy nainstalovaná. Jeden PCM neposkytuje redundantní napájení. Proto může způsobit výpadek nebo ke ztrátě selhání i jenom jednu PCM.
+## <a name="power-cooling-module-pcm-precautions"></a>Bezpečnostní opatření modulu pro elektrické chlazení (PCM)
+Zařízení je navrženo pro provoz se dvěma PCM. Každý z PCM má napájecí zdroj a dvouosý ventilátor. Během kritického stavu systém umožňuje selhání jednoho napájecího zdroje při pokračování normálního provozu. Vždy musí být nainstalovány dva PCM (a tedy i napájecí zdroje). Jeden PCM neposkytuje redundantní napájení. Proto selhání i jednoho PCM může mít za následek výpadky nebo možné ztráty dat.
 
-![Ikona upozornění](./media/storsimple-safety/IC740879.png) ![ikonu k elektrické Otřást](./media/storsimple-safety/IC740882.png) **upozornění!**
+![Výstražná](./media/storsimple-safety/IC740879.png) ![ikona Ikona](./media/storsimple-safety/IC740882.png) elektrického šoku **VAROVÁNÍ!**
 
-Chcete-li snížit pravděpodobnost, že smrti, elektrické otřást nebo zranění:
+Chcete-li snížit pravděpodobnost zranění, úrazu elektrickým proudem nebo smrti:
 
-* Neodstraňujte z PCM na pozadí. Je-li riziko electric otřást uvnitř. Získat náhradu, a vrátí PCM [obraťte se na Microsoft Support](storsimple-contact-microsoft-support.md).
+* Neodstraňujte kryty z PCM. Uvnitř hrozí nebezpečí úrazu elektrickým proudem. Chcete-li vrátit pcm a získat náhradu, [obraťte se na podporu společnosti Microsoft](storsimple-contact-microsoft-support.md).
 
-![Všimněte si ikony](./media/storsimple-safety/IC740881.png) **oznámení:**
+![Upozornění](./media/storsimple-safety/IC740881.png) na **ikonu:**
 
-Pro správný provoz vašeho zařízení a zabránit poškození produktu:
+Pro správnou funkci vašeho zařízení a pro zabránění poškození výrobku:
 
-* Je třeba nahradit neúspěšné PCM během 24 hodin. Po odebrání PCM určena k nahrazení nahrazení musí dokončit během 10 minut po odebrání.
-* Neodebírejte PCM, pokud můžou nahradit aktuální soubor lze nainstalovat hned. Přílohu nesmí být provozována bez všechny moduly v místě.
+* Neúspěšný počítač PCM je nutné vyměnit do 24 hodin. Po odebrání PCM za výměnu musí být výměna dokončena do 10 minut po vyjmutí.
+* Neodstraňujte PCM, pokud nelze okamžitě nainstalovat výměnu. Skříň nesmí být provozována bez všech modulů na místě.
 
-## <a name="electrostatic-discharge-esd-precautions"></a>Opatření elektrostatické výbojem
-![Všimněte si ikony](./media/storsimple-safety/IC740881.png) **oznámení:**
+## <a name="electrostatic-discharge-esd-precautions"></a>Opatření pro elektrostatický výboj (ESD)
+![Upozornění](./media/storsimple-safety/IC740881.png) na **ikonu:**
 
-Prohlédněte si následující ESD související upozornění.
+Dodržujte následující bezpečnostní opatření související s ESD.
 
-* Ujistěte se, že máte nainstalované a zaškrtnutí vhodný antistatická zápěstí nebo kotníkových popruh.
-* Sledujte všechny konvenční ESD opatření při zpracování moduly a komponenty.
-* Vyhněte se v kontaktu s propojovací rozhraní komponenty a konektory modulu.
-* Poškození ESD není předmětem záruky.
+* Ujistěte se, že jste nainstalovali a zkontrolovali vhodný antistatický pásek na zápěstí nebo kotníku.
+* Při manipulaci s moduly a součástmi dodržujte všechna běžná bezpečnostní opatření esd.
+* Vyhněte se kontaktu s komponentami pro zadní rovinu a konektory modulů.
+* Na poškození ESD se nevztahuje záruka.
 
-## <a name="battery-disposal-precautions"></a>Vyřazení opatření baterie
-Napájení používá k ochraně obsahu paměti během výpadků napájení dočasné, krátkodobé speciální baterie. Baterie sedí v PCM. Mějte tyto informace o baterie.
+## <a name="battery-disposal-precautions"></a>Bezpečnostní opatření proti likvidaci baterií
+Napájecí zdroj používá speciální baterii k ochraně obsahu paměti během dočasných krátkodobých výpadků napájení. Baterie je usazena v PCM. Mějte na paměti následující informace o baterii.
 
-![Ikona upozornění](./media/storsimple-safety/IC740879.png) **upozornění!**
+![Upozornění](./media/storsimple-safety/IC740879.png) na ikonu **VAROVÁNÍ!**
 
-Aby se snížilo riziko šortky, fire, rozbalení, škod nebo smrti:
+Chcete-li snížit riziko šortky, požár, výbuch, zranění, nebo smrt:
 
-* Odstranění použitých baterie v souladu s předpisy státní nebo místní.
-* Převod ze strojového kódu, překonání, nebo zahřívá vyšší než 60 stupňů Celsia (140 stupních Fahrenheita) ani spalování. Baterie PCM nahraďte pouze zadaný baterie. Použití jiného baterie může představovat riziko fire nebo výbuchu.
-* Použijte ochranné zakončení na baterie, pokud tyto jsou odebrány z napájení.
+* Použité baterie likvidujte v souladu s národními/regionálními předpisy.
+* Nerozebírejte, nedrťte ani nezahřívejte nad 60 stupňů Celsia (140 stupňů Fahrenheita) ani nespalujte. Vyměňte baterii PCM pouze za dodanou baterii. Použití jiné baterie může představovat riziko požáru nebo výbuchu.
+* Pokud jsou baterie vyjmuty ze zdroje napájení, používejte na baterie ochranné koncovky.
 
-![Všimněte si ikony](./media/storsimple-safety/IC740881.png) **oznámení:**
+![Upozornění](./media/storsimple-safety/IC740881.png) na **ikonu:**
 
-Při přesouvání nebo jinak přenos baterie ve vzduchu, postupovat podle pokynů k dispozici na IATA Lithium baterie pokyny dokumentu [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+Při přepravě nebo jiné přepravě baterií letecky postupujte podle pokynů pro lithiovou baterii IATA, která je k dispozici na adrese[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
-Po zkontrolování těchto oznámení o bezpečnost, jsou tyto další kroky k jeho usazení do racku a zapojení kabeláže zařízení.
+Po projetí těchto bezpečnostních upozornění je dalším krokem rozbalení, rozbalení, stojanu a kabelu zařízení.
 
-## <a name="next-steps"></a>Další postup
-* Zařízení 8100, přejděte na [instalaci zařízení StorSimple 8100](storsimple-8100-hardware-installation.md).
-* Zařízení 8600, přejděte na [instalaci zařízení StorSimple 8600](storsimple-8600-hardware-installation.md).
+## <a name="next-steps"></a>Další kroky
+* Zařízení 8100 najdete v [části Instalace zařízení StorSimple 8100](storsimple-8100-hardware-installation.md).
+* Zařízení 8600 najdete v [části Instalace zařízení StorSimple 8600](storsimple-8600-hardware-installation.md).
 

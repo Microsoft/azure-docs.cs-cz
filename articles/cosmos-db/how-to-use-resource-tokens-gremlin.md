@@ -1,6 +1,6 @@
 ---
-title: Použití Azure Cosmos DBch tokenů prostředků v sadě SDK pro Gremlin
-description: Naučte se vytvářet tokeny prostředků a používat je pro přístup k databázi grafu.
+title: Použití tokenů prostředků Azure Cosmos DB se sadou Gremlin SDK
+description: Zjistěte, jak vytvořit tokeny prostředků a použít je pro přístup k databázi grafu.
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
@@ -8,29 +8,29 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78897852"
 ---
-# <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Použití Azure Cosmos DBch tokenů prostředků v sadě SDK pro Gremlin
+# <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Použití tokenů prostředků Azure Cosmos DB se sadou Gremlin SDK
 
-Tento článek vysvětluje, jak používat [tokeny prostředků Azure Cosmos DB](secure-access-to-data.md) pro přístup k databázi grafu prostřednictvím sady SDK pro Gremlin.
+Tento článek vysvětluje, jak používat [tokeny prostředků Azure Cosmos DB](secure-access-to-data.md) pro přístup k databázi graphu prostřednictvím sady Gremlin SDK.
 
 ## <a name="create-a-resource-token"></a>Vytvoření tokenu prostředku
 
-Sada Apache TinkerPop Gremlin SDK nemá rozhraní API, které by bylo možné použít k vytváření tokenů prostředků. Pojem *token prostředku* je Azure Cosmos DB koncept. Pokud chcete vytvořit tokeny prostředků, Stáhněte si [sadu Azure Cosmos DB SDK](sql-api-sdk-dotnet.md). Pokud vaše aplikace potřebuje vytvořit tokeny prostředků a používat je pro přístup k databázi grafu, vyžaduje dvě samostatné sady SDK.
+Sada Apache TinkerPop Gremlin SDK nemá rozhraní API, které by bylo třeba použít k vytvoření tokenů prostředků. Token *termínu prostředek* je koncept Azure Cosmos DB. Chcete-li vytvořit tokeny prostředků, stáhněte si [sadu Azure Cosmos DB SDK](sql-api-sdk-dotnet.md). Pokud vaše aplikace potřebuje vytvořit tokeny prostředků a použít je pro přístup k databázi grafu, vyžaduje dvě samostatné sady SDK.
 
-Hierarchie objektového modelu nad tokeny prostředků je znázorněná v následujícím přehledu:
+Hierarchie objektového modelu nad tokeny prostředků je znázorněna v následujícím přehledu:
 
-- **Azure Cosmos DB účet** – entita nejvyšší úrovně, která má k sobě PŘIDRUŽENOU službu DNS (například `contoso.gremlin.cosmos.azure.com`).
-  - **Azure Cosmos DB databáze**
-    - **Uživatelský**
-      - **Udělen**
-        - **Token** – vlastnost objektu oprávnění, která označuje, které akce jsou povoleny nebo odepřeny.
+- **Účet Azure Cosmos DB** – entita nejvyšší úrovně, ke `contoso.gremlin.cosmos.azure.com`které je přidružena služba DNS (například ).
+  - **Databáze Azure Cosmos DB**
+    - **Uživatel**
+      - **Oprávnění**
+        - **Token** - Vlastnost objektu Permission, která označuje, jaké akce jsou povoleny nebo odepřeny.
 
-Token prostředku používá následující formát: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Tento řetězec je neprůhledný pro klienty a měl by se používat tak, jak je, bez úprav nebo výkladu.
+Token prostředku používá následující `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`formát: . Tento řetězec je neprůhledný pro klienty a měl by být používán tak, jak je, bez úprav nebo interpretace.
 
 ```csharp
 // Notice that document client is created against .NET SDK endpoint, rather than Gremlin.
@@ -54,8 +54,8 @@ DocumentClient client = new DocumentClient(
 }
 ```
 
-## <a name="use-a-resource-token"></a>Použít token prostředku
-Tokeny prostředků můžete použít přímo jako vlastnost "Password" při vytváření třídy GremlinServer.
+## <a name="use-a-resource-token"></a>Použití tokenu prostředku
+Tokeny prostředků můžete použít přímo jako vlastnost "heslo" při vytváření třídy GremlinServer.
 
 ```csharp
 // The Gremlin application needs to be given a resource token. It can't discover the token on its own.
@@ -78,7 +78,7 @@ GremlinServer server = new GremlinServer(
   }
 ```
 
-Stejný přístup funguje ve všech sadách SDK TinkerPop Gremlin.
+Stejný přístup funguje ve všech sadách TinkerPop Gremlin SDK.
 
 ```java
 Cluster.Builder builder = Cluster.build();
@@ -95,12 +95,12 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>Omezení
 
-S jedním účtem Gremlin můžete vystavit neomezený počet tokenů. V průběhu jedné hodiny ale můžete použít až 100 tokenů současně. Pokud aplikace překročí limit tokenu za hodinu, je žádost o ověření zamítnutá a zobrazí se následující chybová zpráva: "překročení povoleného limitu tokenu prostředku 100, který se dá použít souběžně." Nefunguje na ukončení aktivních připojení, která používají konkrétní tokeny k uvolnění slotů pro nové tokeny. Databázový stroj Azure Cosmos DB Gremlin sleduje jedinečné tokeny během hodiny bezprostředně před požadavkem na ověření.
+S jedním účtem Gremlin můžete vydat neomezený počet žetonů. Můžete však použít pouze až 100 tokenů současně během 1 hodiny. Pokud aplikace překročí limit tokenu za hodinu, je požadavek na ověření odepřen a zobrazí se následující chybová zpráva: "Překročen limit tokenu prostředků 100, který lze použít současně." Nefunguje zavřít aktivní připojení, které používají konkrétní tokeny k uvolnění slotů pro nové tokeny. Databázový stroj Azure Cosmos DB Gremlin sleduje jedinečné tokeny během hodiny bezprostředně před požadavkem na ověření.
 
 ## <a name="permission"></a>Oprávnění
 
-Častá chyba, kterou aplikace, ke kterým dochází, když používají tokeny prostředků, jsou v autorizační hlavičce pro odpovídající požadavek nedostatečná oprávnění. Zkuste to prosím znovu s jinou autorizační hlavičkou. " Tato chyba se vrátí, když se Gremlin přecházení pokusí zapsat Edge nebo vrchol, ale token prostředku uděluje pouze oprávnění *ke čtení* . Zkontrolujte svůj průchod, abyste viděli, zda obsahuje některý z následujících kroků: *. addV ()* , *. addE ()* , *. drop ()* nebo *. Property ()* .
+Obvyklá chyba, že aplikace dojít při jejich použití tokeny prostředků je "Nedostatečná oprávnění k dispozici v hlavičce autorizace pro odpovídající požadavek. Opakujte akci s jinou hlavičkou autorizace." Tato chyba je vrácena, když gremlin traversal pokusí o zápis hrany nebo vrcholu, ale token prostředku uděluje pouze oprávnění *ke čtení.* Zkontrolujte, zda prochází, zda obsahuje některý z následujících kroků: *.addV()*, *.addE()*, *.drop()* nebo *.property()*.
 
 ## <a name="next-steps"></a>Další kroky
-* [Řízení přístupu na základě role](role-based-access-control.md) v Azure Cosmos DB
-* [Naučte se zabezpečit přístup k datům](secure-access-to-data.md) v Azure Cosmos DB
+* [Řízení přístupu na základě rolí](role-based-access-control.md) v Azure Cosmos DB
+* [Zjistěte, jak zabezpečit přístup k datům](secure-access-to-data.md) v Azure Cosmos DB

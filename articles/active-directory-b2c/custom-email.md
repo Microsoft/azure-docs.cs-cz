@@ -1,7 +1,7 @@
 ---
-title: Vlastní ověřování e-mailů
+title: Vlastní ověření e-mailu
 titleSuffix: Azure AD B2C
-description: Naučte se, jak přizpůsobit ověřovací e-mail odesílaný zákazníkům při registraci k používání aplikací s podporou Azure AD B2C.
+description: Přečtěte si, jak přizpůsobit ověřovací e-mail odeslaný zákazníkům, když se zaregistrují k používání aplikací podporujících Azure AD B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,50 +12,50 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6cc0508a63f26b955ac5e0ebf3ef58a184a35997
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671633"
 ---
-# <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Ověření vlastního e-mailu v Azure Active Directory B2C
+# <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Vlastní ověření e-mailu ve službě Azure Active Directory B2C
 
-Pomocí vlastního e-mailu v Azure Active Directory B2C (Azure AD B2C) můžete posílat přizpůsobené e-maily uživatelům, kteří se zaregistrují k používání vašich aplikací. Pomocí [DisplayControls](display-controls.md) (aktuálně ve verzi Preview) a poskytovatele e-mailu jiného výrobce můžete použít vlastní e-mailovou šablonu a z těchto umístění *:* adresa a předmět, stejně jako možnost lokalizace a vlastní nastavení JEDNORÁZOVého hesla (jednorázové heslo).
+Pomocí vlastního e-mailu ve službě Azure Active Directory B2C (Azure AD B2C) můžete odesílat přizpůsobené e-maily uživatelům, kteří se zaregistrují k používání vašich aplikací. Pomocí [Ovládacích prvků DisplayControls](display-controls.md) (aktuálně ve verzi preview) a poskytovatele e-mailu třetí strany můžete použít vlastní šablonu e-mailu a *od:* adresu a předmět, stejně jako podporu lokalizace a vlastní nastavení jednorázového hesla (OTP).
 
-Vlastní ověřování e-mailu vyžaduje použití poskytovatele e-mailu jiného výrobce, jako je [SendGrid](https://sendgrid.com) nebo [SparkPost](https://sparkpost.com), vlastní REST API nebo libovolného poskytovatele e-mailu založeného na protokolu HTTP (včetně vaší vlastní). Tento článek popisuje nastavení řešení, které používá SendGrid.
+Vlastní ověření e-mailu vyžaduje použití poskytovatele e-mailu třetí strany, jako je [SendGrid](https://sendgrid.com) nebo [SparkPost](https://sparkpost.com), vlastní rozhraní REST API nebo jakýkoli poskytovatel e-mailu založený na protokolu HTTP (včetně vašeho vlastního). Tento článek popisuje nastavení řešení, které používá SendGrid.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu SendGrid
 
-Pokud ho ještě nemáte, začněte nastavením účtu SendGrid (zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mailů). Pokyny k instalaci najdete v části [Vytvoření účtu SendGrid](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account) tématu [Jak odesílat e-maily pomocí SendGrid s Azure](../sendgrid-dotnet-how-to-send-email.md).
+Pokud ještě nemáte, začněte nastavením účtu SendGrid (zákazníci Azure můžou každý měsíc odemknout 25 000 e-mailů zdarma). Pokyny k nastavení najdete v části [Vytvoření účtu SendGrid](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account) v části [Jak odesílat e-maily pomocí SendGrid s Azure](../sendgrid-dotnet-how-to-send-email.md).
 
-Ujistěte se, že jste dokončili oddíl, ve kterém [vytvoříte klíč rozhraní SendGrid API](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key). Zaznamenejte klíč rozhraní API pro použití v pozdějším kroku.
+Nezapomeňte dokončit oddíl, ve kterém [vytvoříte klíč rozhraní API SendGrid](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key). Zaznamenejte klíč rozhraní API pro použití v pozdějším kroku.
 
-## <a name="create-azure-ad-b2c-policy-key"></a>Vytvořit klíč zásad Azure AD B2C
+## <a name="create-azure-ad-b2c-policy-key"></a>Vytvoření klíče zásad Azure AD B2C
 
-V dalším kroku uložte klíč rozhraní API SendGrid do klíče zásad Azure AD B2C, aby se zásady odkazovaly na.
+Dále uložte klíč rozhraní API SendGrid v klíči zásad Azure AD B2C, na který mají vaše zásady odkazovat.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář Azure AD B2C.
-1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
-1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
-1. Pro **Možnosti**vyberte možnost `Manual`.
-1. Zadejte **název** klíče zásad. například `SendGridSecret`. `B2C_1A_` předpony se automaticky přidají do názvu vašeho klíče.
-1. Do **tajného klíče**zadejte tajný klíč klienta, který jste předtím nahráli.
-1. Pro **použití klíče**vyberte `Signature`.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD B2C. V horní nabídce vyberte filtr **Directory + předplatné** a zvolte adresář Azure AD B2C.
+1. V levém horním rohu portálu Azure zvolte **Všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+1. Na stránce Přehled vyberte **rozhraní Identity Experience Framework**.
+1. Vyberte **klávesy zásad** a pak vyberte **Přidat**.
+1. V části `Manual` **Možnosti**zvolte .
+1. Zadejte **název** klíče zásady. Například, `SendGridSecret`. Předpona `B2C_1A_` se automaticky přidá k názvu klíče.
+1. V **poli Tajné**zadejte tajný klíč klienta, který jste dříve zaznamenali.
+1. V případě použití `Signature` **klíče**vyberte .
 1. Vyberte **Vytvořit**.
 
 ## <a name="create-sendgrid-template"></a>Vytvořit šablonu SendGrid
 
-Když jste vytvořili účet SendGrid a klíč rozhraní SendGrid API uložený v klíči zásad Azure AD B2C, vytvořte [šablonu dynamické transakce](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)SendGrid.
+S vytvořeným účtem SendGrid a klíčem rozhraní API SendGrid uloženým v klíči zásad Azure AD B2C vytvořte [dynamickou transakční šablonu](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)SendGrid .
 
-1. Na webu SendGrid otevřete stránku [transakční šablony](https://sendgrid.com/dynamic_templates) a vyberte **vytvořit šablonu**.
-1. Zadejte jedinečný název šablony, například `Verification email`, a pak vyberte **Uložit**.
-1. Pokud chcete začít upravovat novou šablonu, vyberte **Přidat verzi**.
-1. Vyberte **Editor kódu** a pak **pokračovat**.
-1. V editoru HTML vložte následující šablonu HTML nebo použijte vlastní. Parametry `{{otp}}` a `{{email}}` budou dynamicky nahrazeny hodnotou jednorázového hesla a e-mailovou adresou uživatele.
+1. Na webu SendGrid otevřete stránku [transakčních šablon](https://sendgrid.com/dynamic_templates) a vyberte **Vytvořit šablonu**.
+1. Zadejte jedinečný název `Verification email` šablony jako like a pak vyberte **Uložit**.
+1. Chcete-li začít upravovat novou šablonu, vyberte **Přidat verzi**.
+1. Vyberte **Editor kódu** a **pokračujte**.
+1. V editoru HTML vložte následující šablonu HTML nebo použijte vlastní. `{{otp}}` Parametry `{{email}}` a budou dynamicky nahrazeny jednorázovou hodnotou hesla a e-mailovou adresou uživatele.
 
     ```HTML
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -151,16 +151,16 @@ Když jste vytvořili účet SendGrid a klíč rozhraní SendGrid API uložený 
     </html>
     ```
 
-1. Rozbalte **Nastavení** vlevo a pro **Předmět e-mailu**zadejte `{{subject}}`.
+1. Rozbalte **nastavení** vlevo a v tématu **Předmět e-mailu**zadejte `{{subject}}`.
 1. Vyberte **Uložit šablonu**.
-1. Vraťte se na stránku **transakční šablony** výběrem šipky zpět.
-1. Poznamenejte si **ID** šablony, kterou jste vytvořili pro použití v pozdějším kroku. například `d-989077fbba9746e89f3f6411f596fb96`. Toto ID můžete zadat při [přidávání transformace deklarací identity](#add-the-claims-transformation).
+1. Vraťte se na stránku Transakční šablony výběrem **šipky** zpět.
+1. Zaznamenejte **ID** šablony, kterou jste vytvořili pro pozdější krok. Například, `d-989077fbba9746e89f3f6411f596fb96`. Toto ID zadáte při [přidání transformace deklarací identity](#add-the-claims-transformation).
 
-## <a name="add-azure-ad-b2c-claim-types"></a>Přidat Azure AD B2C typy deklarací identity
+## <a name="add-azure-ad-b2c-claim-types"></a>Přidání typů deklarací deklarací Azure AD B2C
 
-V zásadách přidejte následující typy deklarací identity do prvku `<ClaimsSchema>` v rámci `<BuildingBlocks>`.
+V zásadách přidejte následující typy `<ClaimsSchema>` deklarací do prvku v rámci `<BuildingBlocks>`aplikace .
 
-Tyto typy deklarací identity jsou nezbytné k vygenerování a ověření e-mailové adresy pomocí kódu jednorázového hesla (jednorázového hesla).
+Tyto typy deklarací jsou nezbytné ke generování a ověření e-mailové adresy pomocí jednorázového hesla (OTP) kódu.
 
 ```XML
 <ClaimType Id="Otp">
@@ -181,15 +181,15 @@ Tyto typy deklarací identity jsou nezbytné k vygenerování a ověření e-mai
 
 ## <a name="add-the-claims-transformation"></a>Přidání transformace deklarací identity
 
-V dalším kroku budete potřebovat transformaci deklarací identity pro výstup deklarace řetězce JSON, který bude podléhat textu žádosti odeslané do SendGrid.
+Dále potřebujete transformace deklarací pro výstup deklarace řetězce JSON, která bude tělem požadavku odeslaného sendgridu.
 
-Struktura objektu JSON je definována ID v desítkovém zápisu vstupními parametry a TransformationClaimTypesem InputClaims. Čísla v zápisu teček implikují pole. Hodnoty pocházejí z hodnot InputClaims a vstupní hodnoty vlastností value. Další informace o transformacích deklarací JSON najdete v tématu [transformace deklarací JSON](json-transformations.md).
+Struktura objektu JSON je definována ID v dot notaci InputParameters a TransformationClaimTypes InputClaims. Čísla v dot notaci implikují pole. Hodnoty pocházejí z inputclaims 'hodnoty a InputParameters '"Hodnota" vlastnosti. Další informace o transformace nároky JSON naleznete v tématu [JSON nároky transformace](json-transformations.md).
 
-Přidejte následující transformaci deklarací identity do prvku `<ClaimsTransformations>` v rámci `<BuildingBlocks>`. Proveďte následující aktualizace XML transformace deklarací identity:
+Přidejte následující deklarace `<ClaimsTransformations>` transformace `<BuildingBlocks>`prvek v rámci . Proveďte následující aktualizace xml transformace deklarací identity:
 
-* Aktualizujte hodnotu `template_id` InputParameter s ID transakční šablony SendGrid, kterou jste vytvořili dříve v části [vytvořit šablonu SendGrid](#create-sendgrid-template).
-* Aktualizujte hodnotu `from.email` adresy. Pomocí platné e-mailové adresy můžete zabránit tomu, aby byl ověřovací e-mail označený jako spam.
-* Aktualizujte hodnotu vstupního parametru řádku `personalizations.0.dynamic_template_data.subject` předmětu na řádek předmětu, který je vhodný pro vaši organizaci.
+* Aktualizujte `template_id` hodnotu InputParameter iD transakční šablony SendGrid, kterou jste vytvořili dříve v [šabloně Create SendGrid](#create-sendgrid-template).
+* Aktualizujte `from.email` hodnotu adresy. Použijte platnou e-mailovou adresu, abyste zabránili označení ověřovacího e-mailu jako spamu.
+* Aktualizujte hodnotu `personalizations.0.dynamic_template_data.subject` vstupního parametru řádku předmětu řádkem předmětu odpovídajícím vaší organizaci.
 
 ```XML
 <ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
@@ -211,9 +211,9 @@ Přidejte následující transformaci deklarací identity do prvku `<ClaimsTrans
 </ClaimsTransformation>
 ```
 
-## <a name="add-datauri-content-definition"></a>Přidat definici obsahu DataUri
+## <a name="add-datauri-content-definition"></a>Přidání definice obsahu DataUri
 
-Pod transformacemi deklarací v rámci `<BuildingBlocks>`přidejte následující [ContentDefinition](contentdefinitions.md) , které odkazují na identifikátor URI dat 2.0.0 verze:
+Pod transformace deklarací `<BuildingBlocks>`v rámci přidejte následující [ContentDefinition](contentdefinitions.md) odkazna verzi 2.0.0 data URI:
 
 ```XML
 <ContentDefinitions>
@@ -223,20 +223,20 @@ Pod transformacemi deklarací v rámci `<BuildingBlocks>`přidejte následujíc�
 </ContentDefinitions>
 ```
 
-## <a name="create-a-displaycontrol"></a>Vytvoření zobrazitelné ovládací prvek
+## <a name="create-a-displaycontrol"></a>Vytvoření ovládacího prvku DisplayControl
 
-K ověření e-mailové adresy s ověřovacím kódem, který se pošle uživateli, se použije ovládací prvek zobrazení ověřování.
+Ovládací prvek zobrazení ověření se používá k ověření e-mailové adresy pomocí ověřovacího kódu, který je odeslán uživateli.
 
-Tento příklad ovládacího prvku zobrazení je nakonfigurován na:
+Tento příklad ovládacího prvku zobrazení je nakonfigurován tak, aby:
 
-1. Shromažďovat typ deklarace `email` adres od uživatele
-1. Počkejte, až uživatel poskytne typ deklarace `verificationCode` s kódem, který se pošle uživateli.
-1. Vraťte `email` zpět do technického profilu s vlastním uplatněním, který obsahuje odkaz na tento ovládací prvek zobrazení.
-1. Pomocí akce `SendCode` vygenerujte kód pro jednorázové heslo a odešlete e-mail s kódem jednorázového hesla uživateli.
+1. Shromážděte `email` typ deklarace adresy od uživatele.
+1. Počkejte, až uživatel `verificationCode` poskytne typ deklarace s kódem odeslaným uživateli.
+1. Vraťte `email` zpět do samoobslužného technického profilu, který má odkaz na tento ovládací prvek zobrazení.
+1. Pomocí `SendCode` akce vygenerujte kód OTP a odešlete uživateli e-mail s kódem OTP.
 
-![Akce poslat e-mail s ověřovacím kódem](media/custom-email/display-control-verification-email-action-01.png)
+![Akce e-mailu odeslat ověřovací kód](media/custom-email/display-control-verification-email-action-01.png)
 
-V části definice obsahu dál v `<BuildingBlocks>`přidejte do zásady následující [ovládací prvek](display-controls.md) [VerificationControl](display-control-verification.md) typu.
+V části definice obsahu, stále v rámci `<BuildingBlocks>`, přidejte do zásad následující Ovládací prvek [DisplayControl](display-controls.md) typu [VerificationControl.](display-control-verification.md)
 
 ```XML
 <DisplayControls>
@@ -265,11 +265,11 @@ V části definice obsahu dál v `<BuildingBlocks>`přidejte do zásady následu
 </DisplayControls>
 ```
 
-## <a name="add-otp-technical-profiles"></a>Přidat technické profily jednorázového hesla
+## <a name="add-otp-technical-profiles"></a>Přidání technických profilů OTP
 
-`GenerateOtp` technický profil vygeneruje kód pro e-mailovou adresu. `VerifyOtp` Technical profil ověří kód přidružený k e-mailové adrese. Můžete změnit konfiguraci formátu a vypršení platnosti jednorázového hesla. Další informace o technických profilech pro jednorázové heslo najdete v tématu [definice technického profilu s](one-time-password-technical-profile.md)jednorázovým heslem.
+Technický `GenerateOtp` profil vygeneruje kód pro e-mailovou adresu. Technický `VerifyOtp` profil ověří kód přidružený k e-mailové adrese. Můžete změnit konfiguraci formátu a vypršení platnosti jednorázového hesla. Další informace o technických profilech OTP naleznete [v tématu Definování jednorázového technického profilu hesla](one-time-password-technical-profile.md).
 
-Přidejte následující technické profily do prvku `<ClaimsProviders>`.
+Přidejte do prvku `<ClaimsProviders>` následující technické profily.
 
 ```XML
 <ClaimsProvider>
@@ -309,11 +309,11 @@ Přidejte následující technické profily do prvku `<ClaimsProviders>`.
 </ClaimsProvider>
 ```
 
-## <a name="add-a-rest-api-technical-profile"></a>Přidat profil REST API Technical
+## <a name="add-a-rest-api-technical-profile"></a>Přidání technického profilu rozhraní REST API
 
-Tento REST API technický profil generuje obsah e-mailu (pomocí formátu SendGrid). Další informace o technických profilech RESTful najdete v tématu [definice technického profilu RESTful](restful-technical-profile.md).
+Tento technický profil rozhraní REST API generuje obsah e-mailu (pomocí formátu SendGrid). Další informace o technických profilech RESTful naleznete [v tématu Definování technického profilu RESTful](restful-technical-profile.md).
 
-Stejně jako v technických profilech pro jednorázové heslo přidejte do elementu `<ClaimsProviders>` následující technické profily.
+Stejně jako u technických profilů OTP `<ClaimsProviders>` přidejte k prvku následující technické profily.
 
 ```XML
 <ClaimsProvider>
@@ -342,11 +342,11 @@ Stejně jako v technických profilech pro jednorázové heslo přidejte do eleme
 </ClaimsProvider>
 ```
 
-## <a name="make-a-reference-to-the-displaycontrol"></a>Vytvořit odkaz na ovládací prvek zobrazit
+## <a name="make-a-reference-to-the-displaycontrol"></a>Odkaz na ovládací prvek DisplayControl
 
-V posledním kroku přidejte odkaz na ovládací prvek, který jste vytvořili. Pokud jste použili starší verzi Azure AD B2C zásad, nahraďte stávající technický profil `LocalAccountSignUpWithLogonEmail` vlastním uplatněním. Tento technický profil používá `DisplayClaims` s odkazem na ovládací prvek zobrazit.
+V posledním kroku přidejte odkaz na DisplayControl, který jste vytvořili. Pokud jste `LocalAccountSignUpWithLogonEmail` použili starší verzi zásad Azure AD B2C, nahraďte svůj stávající vlastní technický profil následujícím. Tento technický `DisplayClaims` profil používá s odkazem na DisplayControl.
 
-Další informace najdete v tématu [technický profil s vlastním kontrolním](restful-technical-profile.md) výrazem a [Zobrazit](display-controls.md).
+Další informace naleznete [v tématech Vlastní-tvrdil technický profil](restful-technical-profile.md) a [DisplayControl](display-controls.md).
 
 ```XML
 <ClaimsProvider>
@@ -393,14 +393,14 @@ Další informace najdete v tématu [technický profil s vlastním kontrolním](
 </ClaimsProvider>
 ```
 
-## <a name="optional-localize-your-email"></a>Volitelné Lokalizace e-mailu
+## <a name="optional-localize-your-email"></a>[Nepovinné] Lokalizovat e-mail
 
-Chcete-li lokalizovat e-mail, je nutné odeslat lokalizované řetězce do SendGrid nebo poskytovatele e-mailu. Například pro lokalizaci předmětu e-mailu, textu, zprávy kódu nebo podpisu e-mailu. K tomu můžete použít transformaci deklarací [GetLocalizedStringsTransformation](string-transformations.md) ke kopírování lokalizovaných řetězců do typů deklarací. V `GenerateSendGridRequestBody` transformaci deklarací identity, která generuje datovou část JSON, používá vstupní deklarace identity, které obsahují lokalizované řetězce.
+Chcete-li lokalizovat e-mail, musíte odeslat lokalizované řetězce SendGrid nebo poskytovateli e-mailu. Například lokalizovat předmět e-mailu, text, kódovou zprávu nebo podpis e-mailu. Chcete-li tak učinit, můžete použít [GetLocalizedStringsTransformation nároky](string-transformations.md) transformace ke kopírování lokalizovaných řetězců do typů deklarací. V `GenerateSendGridRequestBody` transformaci deklarací identity, která generuje datovou část JSON, používá vstupní deklarace, které obsahují lokalizované řetězce.
 
-1. V zásadách definujte následující deklarace řetězců: předmět, zpráva, codeIntro a podpis.
-1. Definujte transformaci deklarací [GetLocalizedStringsTransformation](string-transformations.md) k nahrazení lokalizovaných hodnot řetězce v deklaracích z kroku 1.
-1. Změňte transformaci `GenerateSendGridRequestBody` deklarací identity na použití vstupních deklarací s následujícím fragmentem kódu XML.
-1. Aktualizujte šablonu SendGrind tak, aby používala dynamické parametry místo všech řetězců, které budou lokalizovány Azure AD B2C.
+1. Ve vaší politice definujte následující řetězcové deklarace: předmět, zprávu, codeIntro a podpis.
+1. Definujte [GetLocalizedStringsTransformation nároky](string-transformations.md) transformace nahradit lokalizované řetězcové hodnoty do deklarací z kroku 1.
+1. Změňte `GenerateSendGridRequestBody` transformaci deklarací tak, aby používala vstupní deklarace s následujícím fragmentem XML.
+1. Aktualizujte šablonu SendGrind tak, aby místo všech řetězců, které budou lokalizovány azure AD B2C, používaly dynamické parametry.
 
 ```XML
 <ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
@@ -425,8 +425,8 @@ Chcete-li lokalizovat e-mail, je nutné odeslat lokalizované řetězce do SendG
 
 ## <a name="next-steps"></a>Další kroky
 
-Příklad vlastní zásady ověřování e-mailu najdete na GitHubu:
+Příklad vlastní zásady pro ověření e-mailu najdete na GitHubu:
 
-[Ověření vlastního e-mailu – DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
+[Vlastní ověření e-mailu - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 
-Informace o použití vlastního REST API nebo kteréhokoli poskytovatele e-mailové adresy SMTP založeného na protokolu HTTP najdete v tématu [definice RESTful Technical Profile ve vlastních zásadách Azure AD B2C](restful-technical-profile.md).
+Informace o použití vlastního rozhraní REST API nebo libovolného poskytovatele e-mailu smtp založeného na protokolu HTTP najdete [v tématu Definování technického profilu RESTful v zásadách vlastních zásad Azure AD B2C](restful-technical-profile.md).

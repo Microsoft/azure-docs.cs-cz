@@ -1,6 +1,6 @@
 ---
 title: Použití možností vykreslování – Azure Batch
-description: Jak používat možnosti vykreslování Azure Batch. Zkuste použít aplikaci Batch Explorer, a to buď přímo, nebo vyvolanou z modulu plug-in klientské aplikace.
+description: Jak používat možnosti vykreslování Azure Batch. Zkuste použít aplikaci Batch Explorer, přímo nebo naváděnou z modulu plug-in klientské aplikace.
 services: batch
 ms.service: batch
 author: mscurrell
@@ -8,64 +8,64 @@ ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: f3b2e641ab187514a7900b2ab7cc75068df00252
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672013"
 ---
 # <a name="using-azure-batch-rendering"></a>Použití vykreslování Azure Batch
 
-K dispozici je několik způsobů, jak Azure Batch vykreslování použít:
+Existuje několik způsobů, jak používat vykreslování Azure Batch:
 
-* Třídy
-  * Pište kód pomocí kterékoli z rozhraní API pro Batch.  Vývojáři mohou integrovat Azure Batch možností do svých stávajících aplikací nebo pracovních postupů, ať už v cloudu, nebo na základě místního prostředí.
+* Rozhraní API:
+  * Napište kód pomocí libovolného dávkového souboru API.  Vývojáři můžou integrovat funkce Azure Batch do svých stávajících aplikací nebo pracovních postupů, ať už cloudových nebo založených na místním prostředí.
 * Nástroje příkazového řádku:
-  * Ke skriptování dávkového použití můžete použít [příkazový řádek Azure](https://docs.microsoft.com/cli/azure/) nebo [PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
-  * Konkrétně [Podpora šablon Batch CLI](https://docs.microsoft.com/azure/batch/batch-cli-templates) zjednodušuje vytváření fondů a odesílání úloh.
-* Batch Explorer uživatelské rozhraní:
-  * [Batch Explorer](https://github.com/Azure/BatchLabs) je klientský nástroj pro různé platformy, který umožňuje spravovat a monitorovat účty Batch.
-  * Pro každou aplikaci vykreslování je k dispozici řada šablon fondů a úloh, které lze použít ke snadnému vytváření fondů a odesílání úloh.  Sada šablon je uvedena v uživatelském rozhraní aplikace s soubory šablon, ke kterým se přistupoval z GitHubu.
-  * Vlastní šablony můžete vytvářet úplně od začátku nebo můžete zkopírovat a upravit dodávané šablony z GitHubu.
-* Moduly plug-in klientské aplikace:
-  * K dispozici jsou moduly plug-in, které umožňují použití dávkového vykreslování přímo v rámci aplikace návrh a modelování klienta.  Moduly plug-in hlavně vyvolají aplikaci Batch Explorer s kontextové informace o aktuálním 3D model a obsahuje funkce, které vám pomůžou se správou prostředků.
+  * [Příkazový řádek Azure](https://docs.microsoft.com/cli/azure/) nebo [PowerShell](https://docs.microsoft.com/powershell/azure/overview) lze použít k skriptování dávkové použití.
+  * Podpora šablony [dávkového uživatelského nastavení](https://docs.microsoft.com/azure/batch/batch-cli-templates) zejména usnadňuje vytváření fondů a odesílání úloh.
+* Ui aplikace Batch Explorer:
+  * [Batch Explorer](https://github.com/Azure/BatchLabs) je klientský nástroj pro různé platformy, který také umožňuje spravovat a monitorovat účty Batch.
+  * Pro každou z vykreslovacích aplikací je k dispozici řada šablon fondu a úloh, které lze použít ke snadnému vytváření fondů a odesílání úloh.  Sada šablon je uvedena v uživatelském rozhraní aplikace, se soubory šablon, které jsou přístupné z GitHubu.
+  * Vlastní šablony lze vytvořit od začátku nebo dodané šablony z GitHubu lze kopírovat a upravovat.
+* Moduly plug-in klientských aplikací:
+  * K dispozici jsou moduly plug-in, které umožňují použití dávkového vykreslování přímo v aplikacích návrhu a modelování klienta.  Moduly plug-in vyvolávají především aplikaci Batch Explorer s kontextovými informacemi o aktuálním 3D modelu a obsahují funkce, které pomáhají spravovat datové zdroje.
 
-Nejlepším způsobem, jak vyzkoušení Azure Batch pro koncové uživatele, kteří nejsou vývojáři a kteří nejsou odborníky na Azure, je použití aplikace Batch Explorer, a to buď přímo, nebo vyvolanou z modulu plug-in klientské aplikace.
+Nejlepší způsob, jak vyzkoušet vykreslování Azure Batch a nejjednodušší způsob pro koncové uživatele, kteří nejsou vývojáři a ne odborníci na Azure, je použít aplikaci Batch Explorer, buď přímo, nebo vyvolána z modulu plug-in klientské aplikace.
 
-## <a name="using-batch-explorer"></a>Použití Batch Explorer
+## <a name="using-batch-explorer"></a>Použití Průzkumníka dávek
 
-Podrobný kurz pro použití Batch Explorer k provedení vykreslování najdete v [kurzu Blendu](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender).
+Podrobný návod k použití Aplikace Batch Explorer k vykreslování naleznete v [kurzu Blender .](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
 
-### <a name="download-and-install"></a>Stáhnout a nainstalovat
+### <a name="download-and-install"></a>Stažení a instalace
 
-Batch Explorer [ke stažení jsou k dispozici](https://azure.github.io/BatchExplorer/) pro Windows, OSX a Linux.
+Dávkové explorer [ke stažení jsou k dispozici](https://azure.github.io/BatchExplorer/) pro Windows, OSX a Linux.
 
-### <a name="using-templates-to-create-pools-and-run-jobs"></a>Používání šablon k vytváření fondů a spouštění úloh
+### <a name="using-templates-to-create-pools-and-run-jobs"></a>Použití šablon k vytváření fondů a spouštění úloh
 
-K dispozici je kompletní sada šablon pro použití s Batch Explorer, která usnadňuje vytváření fondů a odesílání úloh pro různé aplikace pro vykreslování bez nutnosti zadání všech vlastností potřebných k vytváření fondů, úloh a úkolů přímo s Partie.  Šablony, které jsou dostupné v Batch Explorer, se ukládají a zobrazují v [úložišti GitHub](https://github.com/Azure/BatchExplorer-data/tree/master/ncj).
+Komplexní sada šablon je k dispozici pro použití s Aplikacemi Batch Explorer, která usnadňuje vytváření fondů a odesílání úloh pro různé vykreslovací aplikace, aniž byste museli specifikovat všechny vlastnosti potřebné k vytváření fondů, úloh a úloh přímo pomocí Dávkové.  Šablony dostupné v Aplikaci Batch Explorer jsou uloženy a viditelné v [úložišti GitHub](https://github.com/Azure/BatchExplorer-data/tree/master/ncj).
 
-![Galerie Batch Explorer](./media/batch-rendering-using/batch-explorer-gallery.png)
+![Galerie dávkového průzkumníka](./media/batch-rendering-using/batch-explorer-gallery.png)
 
-K dispozici jsou šablony pro všechny aplikace, které jsou k dispozici na webu Marketplace pro vykreslování imagí virtuálních počítačů.  Pro každou aplikaci existuje více šablon, včetně šablon fondů do služby stravování pro PROCESORy a fondy GPU, Windows a Linux. šablony úlohy zahrnují kompletní nebo dlaždici vykreslování blendů a distribuované vykreslování V-Ray. Sada dodaných šablon se v průběhu času rozbalí pro další možnosti služby Batch, jako je automatické škálování fondu.
+Šablony jsou k dispozici, které obstarávají všechny aplikace přítomné na marketplace vykreslování image virtuálních počítačových.  Pro každou aplikaci existuje více šablon, včetně šablon fondu, které se starají o fondy CPU a GPU, fondy Windows a Linux; šablony úloh zahrnují vykreslování s plným rámem nebo kachlovým vykreslováním Blenderu a distribuované vykreslování V-Ray. Sada dodaných šablon bude v průběhu času rozšířena tak, aby vyhovovala dalším funkcím dávky, jako je automatické škálování fondu.
 
-Je také možné vytvářet vlastní šablony, od začátku nebo úpravou dodaných šablon. Vlastní šablony se dají použít tak, že vyberete položku místní šablony v části galerie v Batch Explorer.
+Je také možné, aby byly vytvořeny vlastní šablony, od začátku nebo úpravou dodaných šablon. Vlastní šablony lze použít výběrem položky Místní šablony v části Galerie v Průzkumníku dávek.
 
-### <a name="file-system-and-data-movement"></a>Pohyb systému souborů a přesun dat
+### <a name="file-system-and-data-movement"></a>Systém souborů a přesun dat
 
-Oddíl data v Batch Explorer umožňuje kopírování souborů mezi místními systémy souborů a účty Azure Storage.
+Část Data v Průzkumníkovi dávek umožňuje kopírování souborů mezi místním systémem souborů a účty Azure Storage.
 
-## <a name="client-application-plug-ins"></a>Moduly plug-in klientské aplikace
+## <a name="client-application-plug-ins"></a>Moduly plug-in klientských aplikací
 
-Moduly plug-in jsou k dispozici pro některé klientské aplikace.  Moduly plug-in umožňují vytvořit fondy a úlohy přímo z aplikace nebo vyvolat Batch Explorer.
+Moduly plug-in jsou k dispozici pro některé klientské aplikace.  Moduly plug-in umožňují vytváření fondů a úloh přímo z aplikace nebo vyvolání Průzkumníka dávek.
 
-* [Blend – 2,79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
-* [Blends 2.8 +](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
+* [Mixér 2,79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Mixér 2.8+](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 
 ## <a name="next-steps"></a>Další kroky
 
-Příklady dávkového vykreslování si můžete vyzkoušet v těchto dvou kurzech:
+Příklady dávkového vykreslování vyzkoušejte dva kurzy:
 
-* [Vykreslování pomocí Azure CLI](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Vykreslování pomocí Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Vykreslování pomocí azure cli](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Vykreslování scén s využitím Batch Exploreru](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)

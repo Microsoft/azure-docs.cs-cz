@@ -1,6 +1,6 @@
 ---
-title: Principy restartování systému pro virtuální počítač Azure | Microsoft Docs
-description: Zobrazí události, které můžou způsobit restartování virtuálního počítače.
+title: Principy restartování systému pro virtuální počítač Azure | Dokumenty společnosti Microsoft
+description: Uvádí události, které mohou způsobit restartování virtuálního počítače.
 services: virtual-machines
 documentationcenter: ''
 author: genlin
@@ -14,109 +14,109 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919409"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Principy restartování systému pro virtuální počítač Azure
 
-Virtuální počítače Azure se někdy můžou restartovat bez zjevné příčiny, aniž by bylo nutné, abyste operaci restartování zahájili. V tomto článku jsou uvedené akce a události, které můžou způsobit restart virtuálních počítačů, a poskytuje přehled o tom, jak se vyhnout neočekávaným potížím s restartováním nebo jak snížit dopad těchto problémů.
+Virtuální počítače Azure (VM) může někdy restartovat bez zjevného důvodu, bez důkazů o vaší zahájení operace restartování. Tento článek uvádí akce a události, které mohou způsobit restartování virtuálních počítačů a poskytuje přehled o tom, jak se vyhnout neočekávaným problémům s restartováním nebo snížit dopad těchto problémů.
 
-## <a name="configure-the-vms-for-high-availability"></a>Konfigurace virtuálních počítačů pro zajištění vysoké dostupnosti
+## <a name="configure-the-vms-for-high-availability"></a>Konfigurace virtuálních počítače pro vysokou dostupnost
 
-Nejlepším způsobem, jak chránit aplikaci běžící v Azure proti restartování virtuálních počítačů a výpadkům, je konfigurace virtuálních počítačů pro zajištění vysoké dostupnosti.
+Nejlepší způsob, jak chránit aplikaci, která běží v Azure proti restartování virtuálních počítačů a prostojům, je konfigurace virtuálních počítačů pro vysokou dostupnost.
 
-Pro zajištění této úrovně redundance vaší aplikace doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Tato konfigurace zajišťuje, že během plánované nebo neplánované události údržby je k dispozici alespoň jeden virtuální počítač, který splňuje 99,95% [smlouvu SLA pro Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/).
+Chcete-li poskytnout tuto úroveň redundance pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů v sadě dostupnosti. Tato konfigurace zajišťuje, že během plánované nebo neplánované události údržby je k dispozici alespoň jeden virtuální počítač, který splňuje 99,95% [azure sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/).
 
-Další informace o skupinách dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů](../windows/manage-availability.md) .
+Další informace o sadách dostupnosti najdete [v tématu Správa dostupnosti virtuálních aplikací.](../windows/manage-availability.md)
 
-## <a name="resource-health-information"></a>Resource Health informace
+## <a name="resource-health-information"></a>Informace o stavu zdrojů
 
-Azure Resource Health je služba, která zveřejňuje stav jednotlivých prostředků Azure a poskytuje užitečné pokyny pro řešení problémů. V cloudovém prostředí, kde není možné získat přímý přístup k serverům nebo prvkům infrastruktury, je cílem Resource Health zkrátit dobu, po kterou strávíte při řešení potíží. Konkrétně je potřeba zkrátit dobu, kterou strávíte tím, že se rozhodnete, jestli je kořen problému v aplikaci nebo v události v rámci platformy Azure. Další informace najdete v tématu [pochopení a použití Resource Health](../../resource-health/resource-health-overview.md).
+Azure Resource Health je služba, která zveřejňuje stav jednotlivých prostředků Azure a poskytuje užitečné pokyny pro řešení problémů. V cloudovém prostředí, kde není možné přímo přistupovat k serverům nebo prvkům infrastruktury, je cílem služby Resource Health zkrátit čas, který strávíte řešením potíží. Cílem je zejména zkrátit čas, který strávíte určením, zda kořen problému spočívá v aplikaci nebo v události uvnitř platformy Azure. Další informace naleznete v [tématu Understand and Use Resource Health](../../resource-health/resource-health-overview.md).
 
-## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>Akce a události, které můžou způsobit, že se virtuální počítač restartuje
+## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>Akce a události, které můžou způsobit restartování virtuálního počítače
 
 ### <a name="planned-maintenance"></a>Plánovaná údržba
 
-Microsoft Azure pravidelně provádí aktualizace po celém světě, aby se zlepšila spolehlivost, výkon a zabezpečení hostitelské infrastruktury, která je na virtuálních počítačích. Mnohé z těchto aktualizací, včetně řešení pro zachování paměti, jsou prováděny bez jakéhokoli dopadu na virtuální počítače nebo cloudové služby.
+Microsoft Azure pravidelně provádí aktualizace po celém světě, aby zlepšil spolehlivost, výkon a zabezpečení hostitelské infrastruktury, která je základem virtuálních počítačích. Mnohé z těchto aktualizací, včetně aktualizací zachování paměti, se provádějí bez jakéhokoli dopadu na vaše virtuální počítače nebo cloudové služby.
 
-Některé aktualizace ale vyžadují restart. V takových případech jsou virtuální počítače při opravě infrastruktury vypnuté a virtuální počítače se restartují.
+Některé aktualizace však vyžadují restartování. V takových případech virtuálních disekonů se vypnou, zatímco my oprava infrastruktury a pak virtuální chody restartování.
 
-Informace o tom, co je plánovaná údržba Azure a jak může ovlivnit dostupnost virtuálních počítačů se systémem Linux, najdete v článcích uvedených zde. Tyto články poskytují základní informace o procesu plánované údržby Azure a postupu při plánování plánované údržby pro další omezení jejího dopadu.
+Informace o tom, co je plánovaná údržba Azure a jak může ovlivnit dostupnost virtuálních počítačů s Linuxem, najdete v článcích uvedených tady. Tyto články poskytují základní informace o procesu plánované údržby Azure a postupu při plánování plánované údržby pro další omezení jejího dopadu.
 
 - [Plánovaná údržba pro virtuální počítače v Azure](../windows/planned-maintenance.md)
 - [Postup při plánování plánované údržby na virtuálních počítačích Azure](../windows/classic/planned-maintenance-schedule.md)
 
 ### <a name="memory-preserving-updates"></a>Aktualizace zachovávající paměť
 
-Pro tuto třídu aktualizací v Microsoft Azure nemá uživatel vliv na spuštěné virtuální počítače. Mnoho takových aktualizací se týká komponent nebo služeb, které je možné aktualizovat bez zásahů do běžící instance. Některé jsou aktualizace infrastruktury platforem v hostitelském operačním systému, které je možné použít bez restartování virtuálních počítačů.
+Pro tuto třídu aktualizací v Microsoft Azure uživatelé zaznamenat žádný vliv na jejich spuštěné virtuální počítače. Mnoho takových aktualizací se týká komponent nebo služeb, které je možné aktualizovat bez zásahů do běžící instance. Některé z těchto aktualizací infrastruktury platformy v hostitelském operačním systému, které lze použít bez restartování virtuálních počítačů.
 
-Takové aktualizace zachovávající paměť jsou možné díky technologii umožňující místní migraci za chodu. Po aktualizaci se virtuální počítač umístí do *pozastaveného* stavu. Tento stav zachová paměť v paměti RAM, zatímco základní hostitelský operační systém obdrží potřebné aktualizace a opravy. Virtuální počítač se obnoví během 30 sekund od pozastavení. Jakmile se virtuální počítač obnoví, jeho hodiny se automaticky synchronizují.
+Takové aktualizace zachovávající paměť jsou možné díky technologii umožňující místní migraci za chodu. Když se aktualizuje, virtuální počítač je umístěn v *pozastaveném* stavu. Tento stav zachová paměť v paměti RAM, zatímco základní hostitelský operační systém obdrží potřebné aktualizace a opravy. Virtuální počítač se obnoví během 30 sekund od pozastavení. Jakmile se virtuální počítač obnoví, jeho hodiny se automaticky synchronizují.
 
-Kvůli krátké době pozastavení nasazování aktualizací prostřednictvím tohoto mechanismu významně snižuje dopad na virtuální počítače. Tímto způsobem ale nemůžete nasadit všechny aktualizace. 
+Z důvodu krátké období pozastavení nasazení aktualizací prostřednictvím tohoto mechanismu výrazně snižuje dopad na virtuální počítače. Tímto způsobem však nelze nasadit všechny aktualizace. 
 
 Aktualizace více instancí (pro virtuální počítače ve skupině dostupnosti) se instalují vždy jenom v jedné aktualizační doméně.
 
 > [!NOTE]
-> Počítače se systémem Linux, ve kterých jsou staré verze jádra, jsou při této metodě aktualizace ovlivněny nouzovým jádrem jádra. Chcete-li se tomuto problému vyhnout, aktualizujte na jádro verze 3.10.0-327.10.1 nebo novější. Další informace najdete v tématu [virtuální počítač Azure Linux v jádru založeném na 3,10, který se od upgradu uzlu hostitele nejedná](https://support.microsoft.com/help/3212236).
+> Linuxové počítače, které mají staré verze jádra, jsou během této metody aktualizace ovlivněny panikou jádra. Chcete-li se tomuto problému vyhnout, aktualizujte na verzi jádra 3.10.0-327.10.1 nebo novější. Další informace najdete [v tématu Azure Linux VM na 3.10-založené jádro paniky po upgradu uzlu hostitele](https://support.microsoft.com/help/3212236).
 
-### <a name="user-initiated-reboot-or-shutdown-actions"></a>Uživatelem iniciované akce restartování nebo vypnutí
+### <a name="user-initiated-reboot-or-shutdown-actions"></a>Akce restartování nebo vypnutí zahájené uživatelem
 
-Pokud provedete restartování z Azure Portal, Azure PowerShell, rozhraní příkazového řádku nebo REST API, můžete najít událost v [protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md).
+Pokud provedete restartování z webu Azure Portal, Azure PowerShell, rozhraní příkazového řádku nebo rozhraní REST API, můžete událost najít v [protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md).
 
-Pokud provedete akci z operačního systému virtuálního počítače, můžete najít událost v systémových protokolech.
+Pokud provedete akci z operačního systému virtuálního soudu, můžete najít událost v protokolech systému.
 
-Další scénáře, které obvykle způsobí, že se virtuální počítač restartuje, zahrnuje několik akcí změny konfigurace. Obvykle se zobrazí varovná zpráva oznamující, že provedení konkrétní akce způsobí restartování virtuálního počítače. Příkladem může být jakákoli operace změny velikosti virtuálního počítače, změna hesla účtu správce a nastavení statické IP adresy.
+Další scénáře, které obvykle způsobí restartování virtuálního počítače, zahrnují více akcí změny konfigurace. Obvykle se zobrazí varovná zpráva označující, že provedení určité akce bude mít za následek restartování virtuálního počítače. Mezi příklady patří všechny operace změny velikosti virtuálního počítače, změna hesla účtu pro správu a nastavení statické ADRESY IP.
 
-### <a name="azure-security-center-and-windows-update"></a>Azure Security Center a web Windows Update
+### <a name="azure-security-center-and-windows-update"></a>Azure Security Center a Windows Update
 
-Azure Security Center monitoruje každodenní virtuální počítače se systémem Windows a Linux pro chybějící aktualizace operačního systému. Security Center načte seznam dostupných aktualizací zabezpečení a kritické aktualizace od web Windows Update nebo Windows Server Update Services (WSUS) podle toho, která služba je nakonfigurovaná na virtuálním počítači s Windows. Security Center také kontroluje nejnovější aktualizace pro systémy Linux. Pokud ve vašem VIRTUÁLNÍm počítači chybí aktualizace systému, Security Center doporučuje, abyste použili aktualizace systému. Použití těchto aktualizací systému se řídí Security Center v Azure Portal. Po použití některých aktualizací se může vyžadovat restartování virtuálního počítače. Další informace najdete v tématu věnovaném [použití aktualizací systému v Azure Security Center](../../security-center/security-center-apply-system-updates.md).
+Azure Security Center monitoruje každodenní virtuální počítače s Windows a Linuxem, aby nechyběly aktualizace operačního systému. Security Center načte seznam dostupných aktualizací zabezpečení a důležitých aktualizací ze služby Windows Update nebo Služby WSUS (Windows Server Update Services) v závislosti na tom, která služba je nakonfigurována na virtuálním počítači se systémem Windows. Security Center také kontroluje nejnovější aktualizace pro systémy Linux. Pokud ve vašem virtuálním počítači chybí aktualizace systému, Security Center doporučuje použít aktualizace systému. Aplikace těchto aktualizací systému se řídí prostřednictvím Centra zabezpečení na webu Azure Portal. Po instalaci některých aktualizací může být nutné restartovat virtuální počítač. Další informace najdete [v tématu Apply system updates in Azure Security Center](../../security-center/security-center-apply-system-updates.md).
 
-Podobně jako na místních serverech nenabízí Azure aktualizace z web Windows Update na virtuální počítače s Windows, protože tyto počítače mají být spravované svými uživateli. Ale doporučujeme ponechat nastavení automatického web Windows Update povolené. Automatická instalace aktualizací z web Windows Update může také způsobit restartování po použití aktualizací. Další informace najdete v tématu [web Windows Update nejčastější dotazy](https://support.microsoft.com/help/12373/windows-update-faq).
+Stejně jako místní servery Azure nenabízené aktualizace ze služby Windows Update na virtuální počítače se systémem Windows, protože tyto počítače jsou určeny ke spravované jejich uživateli. Doporučujeme však ponechat automatické nastavení služby Windows Update povolené. Automatická instalace aktualizací ze služby Windows Update může také způsobit restartování po instalaci aktualizací. Další informace naleznete v [nejčastějších dotazech ke službě Windows Update](https://support.microsoft.com/help/12373/windows-update-faq).
 
 ### <a name="other-situations-affecting-the-availability-of-your-vm"></a>Další situace ovlivňující dostupnost vašeho virtuálního počítače
 
-V některých případech může Azure aktivně pozastavit použití virtuálního počítače. Před provedením této akce obdržíte e-mailová oznámení, takže budete mít možnost vyřešit základní problémy. Příklady problémů, které mají vliv na dostupnost virtuálních počítačů, zahrnují porušení zabezpečení a dobu platnosti platebních metod.
+Existují i jiné případy, ve kterých Azure může aktivně pozastavit používání virtuálního počítače. Před touto akcí obdržíte e-mailová oznámení, takže budete mít možnost vyřešit základní problémy. Mezi příklady problémů, které ovlivňují dostupnost virtuálních zařízení, patří porušení zabezpečení a vypršení platnosti platebních metod.
 
 ### <a name="host-server-faults"></a>Chyby hostitelského serveru
 
-Virtuální počítač je hostovaný na fyzickém serveru, který běží v datovém centru Azure. Fyzický server používá kromě několika dalších součástí Azure agenta označovaného jako hostitelský agent. Pokud tyto součásti softwaru Azure na fyzickém serveru přestanou reagovat, systém monitorování spustí restart hostitelského serveru, aby se pokusil o obnovení. Virtuální počítač je obvykle k dispozici znovu během pěti minut a pokračuje v provozu na stejném hostiteli jako dříve.
+Virtuální počítač je hostovaný na fyzickém serveru, který běží uvnitř datového centra Azure. Fyzický server spustí agenta s názvem Host Agent kromě několika dalších součástí Azure. Když tyto softwarové součásti Azure na fyzickém serveru přestanou reagovat, monitorovací systém spustí restartování hostitelského serveru a pokusí se o obnovení. Virtuální počítač je obvykle k dispozici znovu během pěti minut a nadále žít na stejném hostiteli jako dříve.
 
-Chyby serveru jsou obvykle způsobeny selháním hardwaru, například selháním pevného disku nebo jednotky SSD (Solid-State). Azure průběžně monitoruje tyto výskyty, identifikuje základní chyby a shrnuje aktualizace po implementaci a testování zmírnění rizik.
+Chyby serveru jsou obvykle způsobeny selháním hardwaru, například selháním pevného disku nebo jednotky SSD. Azure průběžně monitoruje tyto výskyty, identifikuje základní chyby a zavádí aktualizace po implementaci a testování zmírnění.
 
-Vzhledem k tomu, že některé chyby hostitelského serveru můžou být pro tento server specifické, může se zlepšit opakovaný restart virtuálního počítače tak, že ručně znovu nasadí virtuální počítač na jiný hostitelský server. Tuto operaci lze aktivovat pomocí možnosti **znovu nasadit** na stránce s podrobnostmi virtuálního počítače nebo zastavením a RESTARTOVÁNÍM virtuálního počítače v Azure Portal.
+Vzhledem k tomu, že některé chyby hostitelského serveru mohou být specifické pro tento server, může být situace restartování opakovaného virtuálního počítače vylepšena ručním opětovným nasazením virtuálního počítače na jiný hostitelský server. Tato operace se dá aktivovat pomocí možnosti **opětovného nasazení** na stránce podrobností virtuálního počítače nebo zastavením a restartováním virtuálního počítače na webu Azure Portal.
 
 ### <a name="auto-recovery"></a>Automatické obnovení
 
-Pokud se hostitelský server nemůže z nějakého důvodu restartovat, platforma Azure zahájí akci automatického obnovení, která bude mít k disdobu nepoškozený hostitelský server pro další šetření. 
+Pokud hostitelský server nelze restartovat z nějakého důvodu, platforma Azure zahájí akci automatického obnovení, aby vadný hostitelský server z rotace pro další šetření. 
 
-Všechny virtuální počítače na tomto hostiteli se automaticky přemístě na jiný hostitelský server v pořádku. Tento proces je obvykle dokončen do 15 minut. Další informace o procesu automatického obnovení najdete v tématu [Automatické obnovení virtuálních počítačů](https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines).
+Všechny virtuální servery na tomto hostiteli jsou automaticky přemístěny na jiný hostitelský server v pořádku. Tento proces je obvykle dokončen do 15 minut. Další informace o procesu automatického obnovení najdete v [tématu Automatické obnovení virtuálních vod](https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines).
 
 ### <a name="unplanned-maintenance"></a>Neplánovaná údržba
 
-Ve výjimečných případech může tým provozu Azure potřebovat aktivity údržby, aby zajistil celkový stav platformy Azure. Toto chování může mít vliv na dostupnost virtuálního počítače a obvykle má za následek stejnou akci automatického obnovení, jak je popsáno výše.  
+Ve výjimečných případech může provozní tým Azure potřebovat provádět aktivity údržby, aby zajistil celkový stav platformy Azure. Toto chování může ovlivnit dostupnost virtuálního počítače a obvykle vede ke stejné akci automatického obnovení, jak je popsáno výše.  
 
 Neplánovaná údržba zahrnuje následující:
 
-- Defragmentace naléhavých uzlů
-- Aktualizace naléhavých síťových přepínačů
+- Urgentní defragmentace uzlu
+- Naléhavé aktualizace síťových přepínačů
 
-### <a name="vm-crashes"></a>Selhání virtuálních počítačů
+### <a name="vm-crashes"></a>Selhání virtuálního virtuálního aplikace
 
-Virtuální počítače se můžou restartovat kvůli problémům v samotném virtuálním počítači. Zatížení nebo role, která běží na virtuálním počítači, může aktivovat kontrolu chyb v hostovaném operačním systému. Nápovědu k určení příčiny selhání najdete v protokolech systému a aplikací pro virtuální počítače s Windows a v protokolech sériového systému Linux.
+Virtuální počítače může restartovat z důvodu problémů v rámci samotného virtuálního počítače. Úloha nebo role, která běží na virtuálním počítači, může spustit kontrolu chyb v rámci hostovaného operačního systému. Pro určení důvodu selhání, zobrazení protokolů systému a aplikací pro virtuální počítače se systémem Windows a sériové protokoly pro virtuální počítače s Linuxem.
 
 ### <a name="storage-related-forced-shutdowns"></a>Vynucená vypnutí související s úložištěm
 
-Virtuální počítače v Azure spoléhají na virtuální disky pro operační systém a úložiště dat hostované v infrastruktuře Azure Storage. Kdykoliv se dostupnost nebo připojení mezi virtuálním počítačem a přidruženými virtuálními disky projeví déle než 120 sekund, platforma Azure provede vynucené vypnutí virtuálních počítačů, aby se předešlo poškození dat. Po obnovení připojení úložiště se virtuální počítače automaticky zapněte. 
+Virtuální počítače v Azure spoléhají na virtuální disky pro operační systém a úložiště dat, které je hostované na infrastruktuře Azure Storage. Kdykoli je dostupnost nebo připojení mezi virtuálním počítačem a přidruženými virtuálními disky ovlivněna po dobu delší než 120 sekund, platforma Azure provede vynucené vypnutí virtuálních počítačů, aby se zabránilo poškození dat. Virtuální počítačse po obnovení připojení k úložišti automaticky znovu zapne. 
 
-Doba vypnutí může být kratší než pět minut, ale může být výrazně delší. Následuje jeden z konkrétních případů, které jsou spojeny s vynuceným vypnutím souvisejícím s úložištěm: 
+Doba vypnutí může být až pět minut, ale může být výrazně delší. Následuje jeden z konkrétních případů, které jsou spojeny s vynucenými vypnutími souvisejícími s úložištěm: 
 
-**Překročení limitů v/v**
+**Překročení limitů vi**
 
-Virtuální počítače se můžou dočasně vypnout, I když jsou požadavky na vstupně-výstupní operace konzistentně omezené, protože objem vstupně-výstupních operací za sekundu (IOPS) překračuje limity vstupně-výstupních operací disku. (Standardní diskové úložiště je omezeno na 500 IOPS.) Pokud chcete tento problém zmírnit, použijte diskové svazky nebo nakonfigurujte prostor úložiště uvnitř virtuálního počítače hosta v závislosti na zatížení. Podrobnosti najdete v tématu [Konfigurace virtuálních počítačů Azure pro zajištění optimálního výkonu úložiště](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
+Virtuální počítače může být dočasně vypnuty, když jsou požadavky na vstupně-v.i., protože objem vstupně-no operací za sekundu (VOPS) překračuje limity vstupně-va pro disk. (Standardní diskové úložiště je omezeno na 500 viops.) Chcete-li tento problém zmírnit, použijte prokládání disku nebo nakonfigurujte úložný prostor uvnitř hostovaného virtuálního počítače, v závislosti na zatížení. Podrobnosti najdete [v tématu Konfigurace virtuálních počítačích Azure pro optimální výkon úložiště](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
 
 ### <a name="other-incidents"></a>Další incidenty
 
-Ve výjimečných případech může rozšířený problém ovlivnit více serverů v datovém centru Azure. Pokud k tomuto problému dojde, tým Azure pošle e-mailová oznámení ovlivněným předplatným. Na [řídicím panelu Azure Service Health](https://azure.microsoft.com/status/) a Azure Portal můžete zjistit stav trvalých incidentů a minulých incidentů.
+Ve výjimečných případech může rozšířený problém ovlivnit více serverů v datovém centru Azure. Pokud k tomuto problému dojde, tým Azure odešle e-mailová oznámení do ohrožených předplatných. Můžete zkontrolovat [azure service health řídicí panel](https://azure.microsoft.com/status/) a portál Azure pro stav probíhajících výpadků a minulých incidentů.

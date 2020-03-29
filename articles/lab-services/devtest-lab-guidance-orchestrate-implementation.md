@@ -1,6 +1,6 @@
 ---
-title: Orchestrace provádění Azure DevTest Labs
-description: Tento článek obsahuje pokyny pro implementaci orchestrací Azure DevTest Labs ve vaší organizaci.
+title: Orchestrace implementace Azure DevTest Labs
+description: Tento článek obsahuje pokyny pro orchestraci implementace Azure DevTest Labs ve vaší organizaci.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,51 +14,51 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62127340"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Orchestrace implementace Azure DevTest Labs
-Tento článek poskytuje doporučený postup pro rychlé nasazení a implementaci služby Azure DevTest Labs. Následující obrázek zdůrazňuje celkový proces jako doporučený postup při sledování flexibilitu pro podporu různých oborovými požadavky a scénáře.
+Tento článek obsahuje doporučený přístup pro rychlé nasazení a implementaci Azure DevTest Labs. Následující obrázek zdůrazňuje celkový proces jako normativní pokyny při zachování flexibility pro podporu různých oborových požadavků a scénářů.
 
-![Kroky pro implementaci Azure DevTest Labs](./media/devtest-lab-guidance-orchestrate-implementation/implementation-steps.png)
+![Postup implementace laboratoří Azure DevTest Labs](./media/devtest-lab-guidance-orchestrate-implementation/implementation-steps.png)
 
 ## <a name="assumptions"></a>Předpoklady
-Tento článek předpokládá, že máte následující položky na místě před implementací DevTest Labs pilotní nasazení:
+Tento článek předpokládá, že máte následující položky na místě před implementací DevTest Labs pilot:
 
-- **Předplatné Azure**: Pilotní tým má přístup k nasazení prostředků do předplatného Azure. Pokud úlohy jsou pouze vývoj a testování, doporučujeme vybrat nabídku Enterprise DevTest dalších dostupných imagí a nižší sazby na virtuálních počítačích Windows.
-- **Přístup k místnímu**: V případě potřeby přístup k místnímu je už nakonfigurovaná. Přístup k místnímu se dá udělat přes připojení sítě Site-to-site VPN nebo přes Express Route. Připojení přes Express Route může obvykle trvat mnoho týdnů k navázání, doporučuje se mít Express Route na místě před zahájením projektu.
-- **Pilotní týmy**: Týmy původního vývojového projektu, které používá DevTest Labs byla zjištěna spolu s použitelné vývojové nebo testovací aktivity a stanovit požadavky nebo cíle/cíle pro tyto týmy.
+- **Předplatné Azure**: Pilotní tým má přístup k nasazení prostředků do předplatného Azure. Pokud jsou úlohy jenom vývoj a testování, doporučujeme vybrat nabídku Enterprise DevTest pro další dostupné image a nižší sazby na virtuálních počítačích s Windows.
+- **Místní přístup**: V případě potřeby již byl nakonfigurován místní přístup. Místní přístup lze provést prostřednictvím připojení VPN site-to-site nebo prostřednictvím expresní trasy. Připojení přes expresní trasu může obvykle trvat mnoho týdnů, doporučuje se mít expresní trasu na místě před zahájením projektu.
+- **Pilotní týmy**: Počáteční vývojový projektový tým(y), který používá DevTest Labs, byl identifikován spolu s příslušnými vývojovými nebo testovacími aktivitami a stanovil požadavky/cíle/cíle pro tyto týmy.
 
-## <a name="milestone-1-establish-initial-network-topology-and-design"></a>Milník 1: Vytvořte počáteční síťové topologie a návrh
-První oblast fokus při nasazení řešení Azure DevTest Labs je k vytvoření plánované připojení pro virtuální počítače. Následující kroky popisují nezbytné postupy:
+## <a name="milestone-1-establish-initial-network-topology-and-design"></a>Milník 1: Vytvoření počáteční topologie sítě a návrhu
+První oblastí zaměření při nasazování řešení Azure DevTest Labs je vytvořit plánované připojení pro virtuální počítače. Následující kroky popisují nezbytné postupy:
 
-1. Definování **počáteční rozsahy IP adres** , které jsou přiřazeny k předplatnému Azure DevTest Labs. Tento krok vyžaduje, Prognózování stanovili v počtu virtuálních počítačů tak, že zadáte dostatečně velký blok pro budoucí rozšíření.
-2. Identifikujte **metody požadovaný přístup** ve službě DevTest Lab (například externí / interní přístup). Zásadním aspektem v tomto kroku je určit, jestli virtuální počítače mají veřejné IP adresy (to znamená, přístupné z Internetu přímo).
-3. Určení a vytvořit **metody připojení** s využitím rest Azure cloudové prostředí a místní. Pokud je povolené vynucené směrování s Expressroute, je pravděpodobné, že je nutné virtuální počítače proxy příslušné konfigurace, které procházejí podniková brána firewall.
-4. Pokud virtuální počítače mají být **připojených k doméně**, určete, zda bylo připojit ke cloudové doméně (adresáře služby AAD pro příklad) nebo místní doméně. Pro místní určete, které organizační jednotce (OU) v rámci služby active directory, který se připojí virtuální počítače. Kromě toho ověřte, že uživatelé mají přístup k připojení (nebo vytvořit účet služby, který má schopnost vytvářet záznamy počítače v doméně)
+1. Definujte **rozsahy počátečních IP adres,** které jsou přiřazeny k předplatnému DevTest Labs v Azure. Tento krok vyžaduje prognózu očekávané využití v počtu virtuálních počítače, takže můžete poskytnout dostatečně velký blok pro budoucí rozšíření.
+2. Identifikujte **metody požadovaného přístupu** do devTest Labs (například externí / interní přístup). Klíčovým bodem v tomto kroku je zjistit, zda virtuální počítače mají veřejné IP adresy (to znamená, že přístupné z Internetu přímo).
+3. Identifikujte a zaváděte **metody připojení** se zbytkem cloudového prostředí Azure a místně. Pokud je povoleno vynucené směrování s express route, je pravděpodobné, že virtuální počítače potřebují odpovídající konfigurace proxy pro procházení podnikové brány firewall.
+4. Pokud mají být **virtuální servery připojeny k doméně**, zjistěte, zda se připojují k cloudové doméně (například adresářové službě AAD) nebo místní doméně. Pro místní určete, která organizační jednotka (OU) v rámci aktivního adresáře, ke které se virtuální počítače připojí. Kromě toho potvrďte, že uživatelé mají přístup k připojení (nebo vytvořit účet služby, který má možnost vytvářet záznamy počítače v doméně)
 
-## <a name="milestone-2-deploy-the-pilot-lab"></a>Milník 2: Nasazení pilotního nasazení testovacího prostředí
-Jakmile se topologie sítě je na místě, první/pilotního nasazení testovacího prostředí lze vytvořit pomocí následujících kroků:
+## <a name="milestone-2-deploy-the-pilot-lab"></a>Milník 2: Nasazení pilotní laboratoře
+Jakmile je topologie sítě na místě, první/pilotní laboratoř může být vytvořena pomocí následujících kroků:
 
-1. Vytvoření prostředí DevTest Labs počáteční (podrobné pokyny najdete [tady](https://github.com/Azure/fta-devops/blob/master/devtest-labs/articles/devtest-labs-walkthrough-it.md))
-2. Určení povolených imagí virtuálních počítačů a velikosti pro použití s nástrojem lab. Rozhodněte, zda vlastní Image se dají nahrát do Azure pro použití s DevTest Labs.
-3. Zabezpečený přístup k testovacím prostředí tak, že vytvoříte počáteční základní přístupu Role ovládacích prvků (RBAC) pro testovací prostředí (uživatelé testovacího prostředí a vlastníků testovacího prostředí). Doporučujeme použít účty active directory synchronizované se službou Azure Active Directory pro identitu s DevTest Labs.
-4. Nakonfigurujte DevTest Labs můžete pomocí zásad, jako je například plány cost management, nárokovatelných virtuálních počítačů, vlastní Image nebo vzorce.
-5. Vytvořte je online úložiště, jako je například úložiště/Git v Azure.
-6. Při rozhodování o použití veřejného nebo privátního úložiště nebo kombinaci obojího. Pro nasazení a dlouhodobé sustainment uspořádání šablony JSON.
-7. V případě potřeby při vytváření vlastních artefaktů. Tento krok je volitelný. 
+1. Vytvořte počáteční prostředí DevTest Labs (podrobné pokyny naleznete [zde)](https://github.com/Azure/fta-devops/blob/master/devtest-labs/articles/devtest-labs-walkthrough-it.md)
+2. Určete povolené image virtuálních počítače a velikosti pro použití s testovacím prostředím. Rozhodněte se, jestli se vlastní image můžou nahrát do Azure pro použití s DevTest Labs.
+3. Zabezpečený přístup k testovacímu prostředí vytvořením počáteční role základní řízení přístupu (RBAC) pro testovací prostředí (vlastníci testovacího prostředí a uživatelé testovacího prostředí). Doporučujeme používat synchronizované účty active directory s Azure Active Directory pro identitu s DevTest Labs.
+4. Nakonfigurujte devTest Labs tak, aby používaly zásady, jako jsou plány, správa nákladů, nárokovatelné virtuální počítače, vlastní image nebo vzorce.
+5. Vytvořte online úložiště, jako je Azure Repos/Git.
+6. Rozhodněte o použití veřejných nebo soukromých úložišť nebo o kombinaci obou. Uspořádejte šablony JSON pro nasazení a dlouhodobou udržitelnost.
+7. V případě potřeby vytvořte vlastní artefakty. Tento krok je volitelný. 
 
-## <a name="milestone-3-documentation-support-learn-and-improve"></a>Milník 3: Dokumentaci, podporu, přečtěte si a zlepšit
-Počáteční pilotní týmy můžou vyžadovat podrobné podporu pro zahájení práce. Pomocí možnosti zajistit potřebná dokumentace byla k podporu a podporu na místě pro další zavádění služby Azure DevTest Labs.
+## <a name="milestone-3-documentation-support-learn-and-improve"></a>Milník 3: Dokumentace, podpora, učení a zlepšení
+Počáteční pilotní týmy mohou vyžadovat hloubkovou podporu pro zahájení. Využijte jejich prostředí k zajištění správné dokumentace a podpory pro další zavádění Azure DevTest Labs.
 
-1. Pilotní týmy představí jejich nové prostředky DevTest Labs (ukázky, dokumentace)
-2. Podle prostředí pro pilotní týmy, plánování a podle potřeby poskytovat dokumentace
-3. Formalizujte proces registrace nové týmy (vytváření a konfiguraci testovacích prostředí, poskytují přístup, atd.)
-4. Podle počáteční příjmu, ověřte, že původní odhad adresní prostor IP adres je stále přiměřené a přesné
-5. Zkontrolujte dokončili příslušné kontroly dodržování předpisů a zabezpečení
+1. Představte pilotní týmy s jejich novými zdroji DevTest Labs (ukázky, dokumentace)
+2. Na základě zkušeností pilotních týmů naplánujte a dodáte dokumentaci podle potřeby
+3. Formalizovat proces pro zařazování nových týmů (vytváření a konfigurace testovacích prostředí, poskytování přístupu atd.)
+4. Na základě počátečního příjmu ověřte, zda je původní prognóza adresního prostoru IP stále přiměřená a přesná
+5. Zajistit, aby byly dokončeny příslušné kontroly dodržování předpisů a zabezpečení
 
-## <a name="next-steps"></a>Další postup
-Zobrazit další článek v této sérii: [Zásady správného řízení infrastruktury Azure DevTest Labs](devtest-lab-guidance-governance-resources.md)
+## <a name="next-steps"></a>Další kroky
+Podívejte se na další článek v této sérii: [Zásady správného řízení infrastruktury Azure DevTest Labs](devtest-lab-guidance-governance-resources.md)

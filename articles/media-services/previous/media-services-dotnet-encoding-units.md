@@ -1,6 +1,6 @@
 ---
-title: Škálování zpracování médií přidáním jednotek kódování – Azure |  Microsoft Docs
-description: Tento článek ukazuje, jak přidat jednotky kódování pomocí Azure Media Services .NET.
+title: Škálování zpracování médií přidáním jednotek kódování - Azure |  Dokumenty společnosti Microsoft
+description: Tento článek ukazuje, jak přidat jednotky kódování s Azure Media Services .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -16,17 +16,17 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milangada
 ms.openlocfilehash: 86fd923c121b9d46109529f75bc3d0d040f1a7a9
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74887268"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>Jak škálovat kódování pomocí sady .NET SDK
 > [!div class="op_single_selector"]
-> * [Azure Portal](media-services-portal-scale-media-processing.md)
+> * [Portál](media-services-portal-scale-media-processing.md)
 > * [.NET](media-services-dotnet-encoding-units.md)
-> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
+> * [Odpočinku](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
@@ -34,11 +34,11 @@ ms.locfileid: "74887268"
 
 ## <a name="overview"></a>Přehled
 > [!IMPORTANT]
-> Nezapomeňte si projít [Přehled](media-services-scale-media-processing-overview.md) a získat další informace o škálování zpracování multimédií.
+> Chcete-li získat další informace o škálování médií, zkontrolujte [přehled.](media-services-scale-media-processing-overview.md)
 > 
 > 
 
-Pokud chcete změnit typ rezervované jednotky a počet jednotek rezervovaných pro kódování pomocí sady .NET SDK, udělejte toto:
+Chcete-li změnit typ rezervované jednotky a počet rezervovaných jednotek kódování pomocí sady .NET SDK, postupujte takto:
 
     IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
     encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
@@ -52,11 +52,11 @@ Pokud chcete změnit typ rezervované jednotky a počet jednotek rezervovaných 
 
 ## <a name="opening-a-support-ticket"></a>Otevření lístku podpory
 
-Ve výchozím nastavení se každý účet Media Services může škálovat až na 10 jednotek nebo jednotek rezervovaných pro média (MRUs) nebo na 25 S1 MRUs a na jednotky rezervované pro streamování na vyžádání. Vyšší limit si můžete vyžádat otevřením lístku podpory.
+Ve výchozím nastavení může každý účet mediálních služeb škálovat až na 10 rezervovaných jednotek médií S2 nebo S3 (MRU) nebo 25 jednotek MRU S1 a 5 rezervovaných jednotek streamování na vyžádání. Můžete požádat o vyšší limit otevřením lístku podpory.
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

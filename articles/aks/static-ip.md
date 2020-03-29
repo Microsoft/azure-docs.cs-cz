@@ -1,33 +1,33 @@
 ---
-title: Použití statické IP adresy a popisku DNS ve službě Azure Kubernetes Service (AKS) Load Balancer
-description: Naučte se, jak vytvořit a používat statickou IP adresu pomocí nástroje pro vyrovnávání zatížení AKS (Azure Kubernetes Service).
+title: Použití statické IP adresy a popisku DNS s balancerem služby Azure Kubernetes Service (AKS)
+description: Zjistěte, jak vytvořit a používat statickou IP adresu pomocí služby Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: 32889dbbcafd9510f8d04cb9c602d4802c6d1a1a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 6c219976db21fb05ea1ad313b4effdf95906f986
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943569"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047953"
 ---
-# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Použití statické veřejné IP adresy a popisku DNS pomocí nástroje pro vyrovnávání zatížení AKS (Azure Kubernetes Service)
+# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Použití statické veřejné IP adresy a popisku DNS s balancerem služby Azure Kubernetes Service (AKS)
 
-Ve výchozím nastavení je veřejná IP adresa přiřazená k prostředku nástroje pro vyrovnávání zatížení vytvořenému clusterem AKS platná jenom pro životnost tohoto prostředku. Při odstranění služby Kubernetes se odstraní také přidružená služba Vyrovnávání zatížení a IP adresa. Pokud chcete přiřadit konkrétní IP adresu nebo ponechat IP adresu pro znovu nasazené služby Kubernetes, můžete vytvořit a používat statickou veřejnou IP adresu.
+Ve výchozím nastavení je veřejná IP adresa přiřazená prostředku vykladače zatížení vytvořenému clusterem AKS platná pouze po dobu životnosti tohoto prostředku. Pokud odstraníte službu Kubernetes, odstraní se také přidružený systém vyrovnávání zatížení a adresa IP. Pokud chcete přiřadit určitou IP adresu nebo zachovat IP adresu pro přesazené služby Kubernetes, můžete vytvořit a použít statickou veřejnou IP adresu.
 
-V tomto článku se dozvíte, jak vytvořit statickou veřejnou IP adresu a přiřadit ji ke službě Kubernetes.
+Tento článek ukazuje, jak vytvořit statickou veřejnou IP adresu a přiřadit ji k vaší službě Kubernetes.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, podívejte se na aks rychlý start [pomocí Azure CLI][aks-quickstart-cli] nebo [pomocí portálu Azure][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované verze Azure CLI verze 2.0.59 nebo novější. Spuštěním `az --version` najděte verzi. Pokud potřebujete nainstalovat nebo upgradovat, přečtěte si informace [o instalaci příkazového příkazového příkazu k webu Azure][install-azure-cli].
 
-Tento článek se věnuje použití *standardní* IP adresy SKU s nástrojem pro vyrovnávání zatížení *Standard* SKU. Další informace najdete v tématu [typy IP adres a metody přidělování v Azure][ip-sku].
+Tento článek popisuje použití *standardní* sku IP se *standardním* vyrovnáváním zatížení skladové položky. Další informace najdete v tématu [typy IP adres a metody přidělení v Azure][ip-sku].
 
-## <a name="create-a-static-ip-address"></a>Vytvořit statickou IP adresu
+## <a name="create-a-static-ip-address"></a>Vytvoření statické adresy IP
 
-Pomocí příkazu [AZ Network Public IP Create][az-network-public-ip-create] vytvořte STATICKOU veřejnou IP adresu. V následujícím seznamu se vytvoří prostředek statických IP adres s názvem *myAKSPublicIP* ve skupině prostředků *myResourceGroup* :
+Vytvořte statickou veřejnou IP adresu pomocí příkazu [az network public ip create.][az-network-public-ip-create] Následující vytvoří statický prostředek IP s názvem *myAKSPublicIP* ve skupině prostředků *myResourceGroup:*
 
 ```azurecli-interactive
 az network public-ip create \
@@ -38,9 +38,9 @@ az network public-ip create \
 ```
 
 > [!NOTE]
-> Pokud používáte nástroj pro vyrovnávání zatížení *Basic* SKU v clusteru AKS, použijte při definování veřejné IP adresy hodnotu *Basic* pro parametr *SKU* . Pouze *základní* IP adresy SKU pracují s nástrojem pro vyrovnávání zatížení *Basic* SKU a pouze *standardní* IP adresa SKU fungují s nástroji pro vyrovnávání zatížení *standardních* SKU. 
+> Pokud používáte *základní* vyrovnávání zatížení skladové položky v clusteru AKS, použijte *basic* pro *sku* parametr při definování veřejné IP. Pouze *základní* ip adresy skladových sku pracují se *základním* účetním vytížením skladových položk a pouze *standardní* ip adresy skladových položk pracují se *standardními* výčitek zatížení skladových položk. 
 
-Zobrazí se IP adresa, jak je znázorněno v následujícím zhuštěném příkladu výstupu:
+Zobrazí se IP adresa, jak je znázorněno na následujícím kondenzovaném příkladu výstupu:
 
 ```json
 {
@@ -52,7 +52,7 @@ Zobrazí se IP adresa, jak je znázorněno v následujícím zhuštěném přík
 }
 ```
 
-Veřejnou IP adresu můžete získat později pomocí příkazu [AZ Network Public-IP list][az-network-public-ip-list] . Zadejte název skupiny prostředků uzlu a veřejnou IP adresu, kterou jste vytvořili, a dotaz na adresu *ipAddress* , jak je znázorněno v následujícím příkladu:
+Později můžete získat veřejnou IP adresu pomocí příkazu [az network public-ip list.][az-network-public-ip-list] Zadejte název skupiny prostředků uzlu a veřejnou IP adresu, kterou jste vytvořili, a dotaz na *adresu IPAddress,* jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicIP --query ipAddress --output tsv
@@ -60,9 +60,9 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 40.121.183.52
 ```
 
-## <a name="create-a-service-using-the-static-ip-address"></a>Vytvoření služby pomocí statické IP adresy
+## <a name="create-a-service-using-the-static-ip-address"></a>Vytvoření služby pomocí statické adresy IP
 
-Než začnete vytvářet službu, ujistěte se, že instanční objekt používaný clusterem AKS má delegovaná oprávnění k jiné skupině prostředků. Příklad:
+Před vytvořením služby zajistěte, aby instanční objekt používaný clusterem AKS delegoval oprávnění k jiné skupině prostředků. Například:
 
 ```azurecli-interactive
 az role assignment create \
@@ -71,7 +71,9 @@ az role assignment create \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-Chcete-li vytvořit službu *Vyrovnávání zatížení* se STATICKOU veřejnou IP adresou, přidejte do manifestu YAML vlastnost `loadBalancerIP` a hodnotu statické veřejné IP adresy. Vytvořte soubor s názvem `load-balancer-service.yaml` a zkopírujte následující YAML. Zadejte vlastní veřejnou IP adresu vytvořenou v předchozím kroku. Následující příklad také nastaví anotaci na skupinu prostředků s názvem *myResourceGroup*. Zadejte název vlastní skupiny prostředků.
+Případně můžete použít systém přiřazenou spravovanou identitu pro oprávnění namísto instančního objektu. Další informace naleznete v tématu [Použití spravovaných identit](use-managed-identity.md).
+
+Chcete-li vytvořit službu *LoadBalancer* se statickou veřejnou IP adresou, přidejte `loadBalancerIP` vlastnost a hodnotu statické veřejné IP adresy do manifestu YAML. Vytvořte soubor `load-balancer-service.yaml` s názvem a zkopírujte v následujícím yaml. Zadejte vlastní veřejnou IP adresu vytvořenou v předchozím kroku. Následující příklad také nastaví poznámku ke skupině prostředků s názvem *myResourceGroup*. Zadejte svůj vlastní název skupiny prostředků.
 
 ```yaml
 apiVersion: v1
@@ -89,7 +91,7 @@ spec:
     app: azure-load-balancer
 ```
 
-Pomocí příkazu `kubectl apply` vytvořte službu a nasazení.
+Vytvořte službu a `kubectl apply` nasazení pomocí příkazu.
 
 ```console
 kubectl apply -f load-balancer-service.yaml
@@ -97,9 +99,9 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="apply-a-dns-label-to-the-service"></a>Použití popisku DNS u služby
 
-Pokud vaše služba používá dynamickou nebo statickou veřejnou IP adresu, můžete použít `service.beta.kubernetes.io/azure-dns-label-name` anotace služby k nastavení popisku DNS s veřejným přístupem. Tím se publikuje plně kvalifikovaný název domény pro vaši službu pomocí veřejných serverů DNS Azure a domény nejvyšší úrovně. Hodnota anotace musí být jedinečná v rámci umístění Azure, proto se doporučuje použít dostatečně kvalifikovaný popisek.   
+Pokud vaše služba používá dynamickou nebo statickou veřejnou IP `service.beta.kubernetes.io/azure-dns-label-name` adresu, můžete pomocí anotace služby nastavit veřejný popisek DNS. Tím se publikuje plně kvalifikovaný název domény pro vaši službu pomocí veřejných serverů DNS Azure a domény nejvyšší úrovně. Hodnota poznámky musí být v umístění Azure jedinečná, takže doporučujeme použít dostatečně kvalifikovaný popisek.   
 
-Azure pak automaticky připojí výchozí podsíť, jako je například `<location>.cloudapp.azure.com` (kde umístění je oblast, kterou jste vybrali), k zadání názvu, který zadáte, k vytvoření plně kvalifikovaného názvu DNS. Příklad:
+Azure pak automaticky připojí výchozí podsíť, `<location>.cloudapp.azure.com` například (kde umístění je oblast, kterou jste vybrali), k názvu, který zadáte, k vytvoření plně kvalifikovaného názvu DNS. Například:
 
 ```yaml
 apiVersion: v1
@@ -117,17 +119,17 @@ spec:
 ```
 
 > [!NOTE] 
-> Pokud chcete publikovat službu ve vlastní doméně, přečtěte si téma [Azure DNS][azure-dns-zone] a Project [External-DNS][external-dns] .
+> Pokud chcete publikovat službu ve vlastní doméně, přečtěte si informace o [Azure DNS][azure-dns-zone] a projektu [externího DNS.][external-dns]
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud statická IP adresa definovaná ve vlastnosti *loadBalancerIP* manifestu služby Kubernetes neexistuje nebo se nevytvořila v rámci skupiny prostředků uzlu a nejsou nakonfigurované žádné další delegování, vytvoření služby Vyrovnávání zatížení se nepovede. Pokud chcete řešit potíže, Projděte si události vytvoření služby pomocí příkazu [kubectl popsat][kubectl-describe] . Zadejte název služby, jak je uvedeno v manifestu YAML, jak je znázorněno v následujícím příkladu:
+Pokud statická adresa IP definovaná ve vlastnosti *loadBalancerIP* manifestu služby Kubernetes neexistuje nebo nebyla vytvořena ve skupině prostředků uzlu a nejsou nakonfigurována žádná další delegace, vytvoření služby vyrovnávání zatížení se nezdaří. Chcete-li vyřešit potíže, zkontrolujte události vytvoření služby pomocí [příkazu kubectl describe.][kubectl-describe] Zadejte název služby, jak je uvedeno v manifestu YAML, jak je znázorněno v následujícím příkladu:
 
 ```console
 kubectl describe service azure-load-balancer
 ```
 
-Zobrazí se informace o prostředku služby Kubernetes. *Události* na konci následujícího ukázkového výstupu označují, že se *nenašla IP adresa zadaná uživatelem*. V těchto scénářích ověřte, že jste ve skupině prostředků uzlu vytvořili statickou veřejnou IP adresu a že IP adresa zadaná v manifestu služby Kubernetes je správná.
+Zobrazí se informace o prostředku služby Kubernetes. *Události* na konci následujícího příkladu výstupu označují, že *uživatel zadaný IP adresa nebyla nalezena*. V těchto scénářích ověřte, zda jste vytvořili statickou veřejnou IP adresu ve skupině prostředků uzlu a zda je adresa IP zadaná v manifestu služby Kubernetes správná.
 
 ```
 Name:                     azure-load-balancer
@@ -153,7 +155,7 @@ Events:
 
 ## <a name="next-steps"></a>Další kroky
 
-Pro lepší kontrolu nad síťovým přenosem do aplikací můžete místo toho [vytvořit kontroler příchozího][aks-ingress-basic]přenosu dat. Můžete také [vytvořit kontroler příchozího přenosu dat se statickou veřejnou IP adresou][aks-static-ingress].
+Chcete-li získat další kontrolu nad síťovým provozem aplikací, můžete místo toho [vytvořit řadič příchozího přenosu dat][aks-ingress-basic]. Můžete také [vytvořit řadič příchozího přenosu dat se statickou veřejnou IP adresou][aks-static-ingress].
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

@@ -1,6 +1,6 @@
 ---
-title: Tým vědecké zpracování dat role a úlohy
-description: Osnova klíčových komponent, rolí personálu a přidružených úloh pro skupinu pro datové vědy.
+title: Role a úkoly procesu vědeckého procesu týmových dat
+description: Přehled klíčových součástí, rolí personálu a přidružených úkolů pro skupinu datových věd.
 author: marktab
 manager: marktab
 editor: marktab
@@ -12,124 +12,124 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720006"
 ---
-# <a name="team-data-science-process-roles-and-tasks"></a>Tým vědecké zpracování dat role a úlohy
+# <a name="team-data-science-process-roles-and-tasks"></a>Role a úkoly procesu vědeckého procesu týmových dat
 
-Vědecké zpracování týmových dat (TDSP) je architektura vyvinutá Microsoftem, která poskytuje strukturovanou metodologii pro efektivní vytváření řešení prediktivní analýzy a inteligentních aplikací. Tento článek popisuje klíčové role personálu a související úlohy pro tým datových věd, který se v tomto procesu standardizace.
+Team Data Science Process (TDSP) je framework vyvinutý společností Microsoft, který poskytuje strukturovanou metodiku pro efektivní vytváření prediktivních analytických řešení a inteligentních aplikací. Tento článek popisuje klíčové role personálu a přidružené úkoly pro tým datové vědy standardizující tento proces.
 
-Tento úvodní článek obsahuje odkazy na kurzy týkající se nastavení prostředí TDSP. Kurzy poskytují podrobné pokyny k používání Azure DevOps Projects, Azure Repos úložišť a Azure Boards.  Cíl motivace se přesouvá z konceptu prostřednictvím modelování a nasazení.
+Tento úvodní článek odkazuje na návody na nastavení prostředí TDSP. Kurzy poskytují podrobné pokyny pro použití projektů Azure DevOps, úložišť Azure Repos a Azure Boards.  Motivujícím cílem je přechod od konceptu přes modelování a do nasazení.
 
-Kurzy využívají Azure DevOps, protože to je způsob implementace TDSP v Microsoftu. Azure DevOps usnadňuje spolupráci díky integraci zabezpečení založeného na rolích, správy a sledování pracovních položek a hostování kódu, sdílení a správy zdrojového kódu. Kurzy také používají [Data Science Virtual Machine](https://aka.ms/dsvm) Azure (DSVM) jako Desktop Analytics, který obsahuje několik oblíbených nástrojů pro datové vědy, které jsou předem nakonfigurované a integrované se softwarem Microsoftu a službami Azure. 
+Kurzy používají Azure DevOps, protože to je, jak implementovat TDSP v Microsoftu. Azure DevOps usnadňuje spolupráci integrací zabezpečení na základě rolí, správy pracovních položek a sledování a hostování kódu, sdílení a správy zdrojového kódu. Kurzy také používají [virtuální počítač](https://aka.ms/dsvm) Azure Data Science (DSVM) jako pracovní plochu analytics, která má několik oblíbených nástrojů pro datové vědy předem nakonfigurovaných a integrovaných se softwarem Microsoftu a službami Azure. 
 
-Můžete použít kurzy k implementaci TDSP pomocí jiných nástrojů pro hostování kódu, agilního plánování a vývojářských nástrojů a prostředí, ale některé funkce nemusí být k dispozici.
+Kurzy můžete použít k implementaci TDSP pomocí jiných kódhosting, agilní plánování a vývojové nástroje a prostředí, ale některé funkce nemusí být k dispozici.
 
-## <a name="structure-of-data-science-groups-and-teams"></a>Struktura skupin a týmů pro datové vědy
+## <a name="structure-of-data-science-groups-and-teams"></a>Struktura skupin a týmů datových věd
 
-Funkce pro datové vědy v podnicích jsou často organizovány v následující hierarchii:
+Funkce datové vědy v podnicích jsou často uspořádány v následující hierarchii:
 
-- Skupina pro datové vědy
-  - Tým pro datové vědy/s v rámci skupiny
+- Skupina datových věd
+  - Tým pro datové vědy v rámci skupiny
 
-V takové struktuře jsou k dispozici skupiny vedoucí a vedoucí týmu. Projekt pro datové vědy se obvykle provádí týmem pro datové vědy. Týmy pro datové vědy mají vedoucí projektu na řízení projektů a úkoly zásad správného řízení a jednotlivé odborníky na data a inženýrské specialisty na zpracování datových věd a inženýrů dat v projektu. Úvodní nastavení projektu a zásady správného řízení provádí vedoucí skupiny, týmu nebo projektu.
+V takové struktuře jsou skupinové zájemce a týmové zájemce. Projekt datové vědy se obvykle provádí týmem datové vědy. Týmy pro datové vědy mají vedoucí projektů pro projektové řízení a úkoly řízení a jednotlivé datové vědce a inženýry, kteří provádějí části projektu pro datové vědy a datové inženýrství. Počáteční nastavení projektu a zásadsprávné hodlají skupina, tým nebo zájemci projektu.
 
 ## <a name="definition-and-tasks-for-the-four-tdsp-roles"></a>Definice a úkoly pro čtyři role TDSP
-S předpokladem, že se jednotka pro datové vědy skládá z týmů v rámci skupiny, existují čtyři samostatné role pro zaměstnance TDSP:
+S předpokladem, že jednotka datové vědy se skládá z týmů v rámci skupiny, existují čtyři odlišné role pro pracovníky TDSP:
 
-1. **Správce skupin**: spravuje celou jednotku datových věd v podniku. Datové vědy jednotky může mít několik týmů, z nichž každý pracuje na více projekty datových věd jednotlivou obchodní vertikálně. Správce skupiny může delegovat úkoly na náhradu, ale neměňte úloh přidružených k roli.
+1. **Správce skupiny**: Spravuje celou jednotku datové vědy v rozlehlé síti. Jednotka datové vědy může mít více týmů, z nichž každý pracuje na více projektech datové vědy v různých obchodních vertikálách. Správce skupiny může delegovat své úkoly na náhradníka, ale úkoly spojené s rolí se nemění.
    
-2. **Vedoucí týmu**: spravuje tým v jednotce datové vědy podniku. Tým se skládá z několika odborníci přes data. V případě malých jednotek pro datové vědy může být správce skupin a vedoucí týmu stejnou osobou.
+2. **Vedoucí týmu**: Spravuje tým v jednotce datové vědy podniku. Tým se skládá z více datových vědců. Pro malé jednotky datové vědy může být správce skupiny a vedoucí týmu stejná osoba.
    
-3. **Vedoucí projektu**: spravuje každodenní činnosti jednotlivých vědeckých pracovníků dat pro konkrétní projekt vědeckého zpracování dat.
+3. **Vedoucí projektu**: Řídí každodenní aktivity jednotlivých datových vědců na konkrétním projektu datové vědy.
    
-4. **Jednotlivé přispěvatelé projektu**: odborníci na data, obchodní analytici, technici na data, architekti a další uživatelé, kteří provádějí projekt pro datové vědy.
+4. **Jednotliví přispěvatelé projektu**: Datoví vědci, obchodní analytici, datoví inženýři, architekti a další, kteří realizují projekt datové vědy.
 
 > [!NOTE]
-> V závislosti na struktuře a velikosti podniku může jedna osoba hrát více než jednu roli nebo může vyplnit roli více než jedna osoba.
+> V závislosti na struktuře a velikosti podniku může jedna osoba hrát více než jednu roli nebo více než jedna osoba může tuto roli obsadit.
 
 ### <a name="tasks-to-be-completed-by-the-four-roles"></a>Úkoly, které mají být dokončeny čtyřmi rolemi
 
-Následující diagram znázorňuje úkoly nejvyšší úrovně pro každou roli vědeckého procesu týmového zpracování dat. Toto schéma a následující, podrobnější přehled úloh pro každou roli TDSP vám pomůžou vybrat kurz, který potřebujete, podle svých povinností.
+Následující diagram znázorňuje úkoly nejvyšší úrovně pro každou roli procesu vědecké ho procesu týmových dat. Toto schéma a následující, podrobnější přehled úkolů pro každou roli TDSP vám může pomoci vybrat kurz, který potřebujete na základě vašich povinností.
 
-![Přehled role a úlohy](./media/roles-tasks/overview-tdsp-top-level.png)
+![Přehled rolí a úkolů](./media/roles-tasks/overview-tdsp-top-level.png)
 
-## <a name="group-manager-tasks"></a>Správce skupiny úloh
+## <a name="group-manager-tasks"></a>Úkoly správce skupiny
 
-Správce skupin nebo určený správce systému TDSP dokončí následující úkoly pro přijetí TDSP:
+Správce skupiny nebo určený správce systému TDSP dokončí následující úkoly, aby přijal tdsp:
 
-- Vytvoří **organizaci** Azure DevOps a projekt skupiny v rámci organizace. 
-- Vytvoří **úložiště šablony projektu** v projektu skupiny Azure DevOps a vysemení ho z úložiště šablony projektu vyvinuté týmem Microsoft TDSP. Úložiště šablon projektu Microsoft TDSP poskytuje:
+- Vytvoří **organizaci** Azure DevOps a skupinový projekt v rámci organizace. 
+- Vytvoří **úložiště šablon projektu** v projektu skupiny Azure DevOps a semínky z úložiště šablony projektu vyvinuté týmem Microsoft TDSP. Úložiště šablon projektu Microsoft TDSP poskytuje:
   - **Standardizovaná adresářová struktura**, včetně adresářů pro data, kód a dokumenty.
-  - Sada **standardizovaných šablon dokumentů** , které vám pomohou zefektivnit proces vědeckého zpracování dat.
-- Vytvoří **úložiště nástrojů**a vysemení ho z úložiště nástrojů vyvinutého týmem Microsoft TDSPe. Úložiště nástrojů TDSP od Microsoftu poskytuje sadu užitečných nástrojů, které zajistí efektivnější práci s daty. Úložiště nástrojů společnosti Microsoft obsahuje nástroje pro interaktivní zkoumání dat, analýzu, generování sestav a modelování a vytváření sestav podle směrného plánu.
+  - Sada **standardizovaných šablon dokumentů, které** řídí efektivní proces datové vědy.
+- Vytvoří **úložiště nástrojů**a vytvoří jeho ostřikované úložiště z úložiště nástrojů vyvinutého týmem Microsoft TDSP. Úložiště nástrojů TDSP od společnosti Microsoft poskytuje sadu užitečných nástrojů, které zefektivninují práci datového vědce. Úložiště nástrojů společnosti Microsoft obsahuje nástroje pro interaktivní zkoumání dat, analýzu, vytváření sestav a základní modelování a vytváření sestav.
 - Nastaví **zásady řízení zabezpečení** pro účet organizace.
 
-Podrobné pokyny najdete v tématu [úlohy správce skupin pro tým pro datové vědy](group-manager-tasks.md).
+Podrobné pokyny naleznete v tématu [Úlohy správce skupiny pro tým datových věd](group-manager-tasks.md).
 
-## <a name="team-lead-tasks"></a>Úkoly vedoucí týmu
+## <a name="team-lead-tasks"></a>Úkoly vedoucího týmu
 
-Vedoucí týmu nebo určený správce projektu dokončí následující úkoly pro přijetí TDSP:
+Vedoucí týmu nebo určený správce projektu dokončí následující úkoly, aby přijal tdsp:
 
 - Vytvoří týmový **projekt** v organizaci Azure DevOps ve skupině.
-- Vytvoří v projektu **úložiště šablon projektů** a vysemení ho z úložiště šablony projektu skupiny, které je nastaveno správcem skupiny nebo delegátem.
-- Vytvoří **úložiště nástroje týmu**, vysemení ho z úložiště nástrojů skupiny a přidá nástroje pro konkrétní tým do úložiště.
-- Volitelně vytvoří službu [Azure File Storage](https://azure.microsoft.com/services/storage/files/) pro ukládání užitečných datových assetů pro tým. Ostatní členové týmu můžou připojit toto cloudové sdílené úložiště souborů na jejich ploše analytics.
-- Volitelně připojí službu Azure File Storage na **DSVM** týmu a přidá do ní datové prostředky týmu.
-- Nastaví **řízení zabezpečení** přidáním členů týmu a konfigurací jejich oprávnění.
+- Vytvoří **úložiště šablony projektu** v projektu a zasadí ho z úložiště šablony projektu skupiny nastavené správcem skupiny nebo delegátem.
+- Vytvoří **úložiště nástrojů týmu**, semínky z úložiště nástrojů skupiny a přidá nástroje specifické pro tým do úložiště.
+- Volitelně vytvoří [úložiště souborů Azure](https://azure.microsoft.com/services/storage/files/) pro ukládání užitečných datových prostředků pro tým. Ostatní členové týmu mohou připojit toto sdílené úložiště souborů cloud na svých analytických plochách.
+- Volitelně připojí úložiště souborů Azure na **dsvm** týmu a přidá k němu datové prostředky týmu.
+- Nastaví **ovládací prvek zabezpečení** přidáním členů týmu a konfigurací jejich oprávnění.
 
-Podrobné pokyny najdete v tématu [úkoly vedoucí týmu pro tým pro datové vědy](team-lead-tasks.md).
+Podrobné pokyny naleznete v [tématu Team Lead úkoly pro tým datové vědy](team-lead-tasks.md).
 
 
-## <a name="project-lead-tasks"></a>Úkoly vedoucí projektu
+## <a name="project-lead-tasks"></a>Úkoly zájemce o projekt
 
-Vedoucí projektu dokončí následující úkoly pro přijetí TDSP:
+Vedoucí projektu dokončí následující úkoly, aby přijal tdsp:
 
-- Vytvoří v týmovém projektu **úložiště projektu** a vysemení ho z úložiště šablony projektu.
-- Volitelně vytvoří službu **Azure File Storage** pro uložení datových assetů projektu.
-- Volitelně připojí službu Azure File Storage k **DSVM** a přidá do ní assety dat projektu.
-- Nastaví **řízení zabezpečení** přidáním členů projektu a konfigurací jejich oprávnění.
+- Vytvoří **úložiště projektu** v týmovém projektu a začlení jej z úložiště šablony projektu.
+- Volitelně vytvoří **úložiště souborů Azure** pro uložení datových prostředků projektu.
+- Volitelně připojí úložiště souborů Azure k **DSVM** a přidá do něj datové prostředky projektu.
+- Nastaví **ovládací prvek zabezpečení** přidáním členů projektu a konfigurací jejich oprávnění.
 
-Podrobné pokyny najdete v tématu [úkoly vedoucích týmu pro datové vědy](project-lead-tasks.md).
+Podrobné pokyny naleznete v [tématu Projekt vedoucí úkoly pro tým datové vědy](project-lead-tasks.md).
 
-## <a name="project-individual-contributor-tasks"></a>Úkoly jednotlivý Přispěvatel projektu
+## <a name="project-individual-contributor-tasks"></a>Úkoly jednotlivého přispěvatele projektu
 
-Jednotliví Přispěvatel projektu, obvykle datový vědecký, provádí následující úlohy pomocí TDSP:
+Individuální přispěvatel projektu, obvykle datový vědec, provádí pomocí tdsp následující úkoly:
 
-- Naklonuje **úložiště projektu** nastavené vedoucím projektu.
-- Volitelně připojí sdílený tým a službu **Azure File Storage** na jejich **Data Science Virtual Machine** (DSVM).
-- Spustí projekt.
+- Klonuje **úložiště projektu** nastavené vedoucím projektu.
+- Volitelně připojí sdílený tým a projekt **úložiště souborů Azure** na jejich virtuální **medailon pro datové vědy** (DSVM).
+- Provede projekt.
 
-Podrobné pokyny pro připojování k projektu naleznete v tématu [Project pro jednotlivé úkoly přispěvatelů pro tým pro datové vědy](project-ic-tasks.md).
+Podrobné pokyny pro připojení k projektu najdete v [tématu Úkoly jednotlivých přispěvatelů projektu pro tým pro datové vědy](project-ic-tasks.md).
 
-## <a name="data-science-project-execution-workflow"></a>Pracovní postup spuštění projektu pro datové vědy
+## <a name="data-science-project-execution-workflow"></a>Pracovní postup provádění projektu datové vědy
 
-Podle příslušných kurzů, vědeckých pracovníků, vedoucích projektů a vedoucí týmu mohou vytvářet pracovní položky pro sledování všech úkolů a fází pro projekt od začátku do konce. Použití Azure Repos propaguje spolupráci mezi odborníky přes data a zajišťuje, aby artefakty vygenerované během provádění projektu byly řízené verzí a sdíleny všemi členy projektu. Azure DevOps umožňuje propojit pracovní položky Azure Boards s vašimi větvemi úložiště Azure Repos a snadno sledovat, co bylo provedeno pro pracovní položku.
+Podle následujících příslušných kurzů mohou datoví vědci, vedoucí projektu a vedoucí týmu vytvářet pracovní položky pro sledování všech úkolů a fází projektu od začátku do konce. Pomocí Azure Repos podporuje spolupráci mezi datovými vědci a zajišťuje, že artefakty generované během provádění projektu jsou řízeny verzí a sdíleny všemi členy projektu. Azure DevOps umožňuje propojit pracovní položky Azure Boards s větvemi úložiště Azure Repos a snadno sledovat, co se stalo pro pracovní položku.
 
-Následující obrázek popisuje pracovní postup TDSP pro provedení projektu:
+Následující obrázek popisuje pracovní postup TDSP pro provádění projektu:
 
-![Pracovní postup typického projektu pro datové vědy](./media/roles-tasks/overview-project-execute.png)
+![Typický pracovní postup projektu datové vědy](./media/roles-tasks/overview-project-execute.png)
 
-Kroky pracovního postupu můžete seskupit do tří aktivit:
+Kroky pracovního postupu lze seskupit do tří aktivit:
 
-- Vedoucí projektu provádějí plánování sprintů
-- Odborníci na data vyvíjejí artefakty v `git` větvích k řešení pracovních položek
-- Vedoucí projektu nebo jiní členové týmu dělají revize kódu a sloučí pracovní větve do hlavní větve.
+- Vedoucí projektu provádějí plánování sprintu
+- Data Vědci vyvíjejí artefakty na `git` větvích k řešení pracovních položek
+- Vedoucí projektu nebo jiní členové týmu provedou revize kódu a sloučí pracovní větve do hlavní větve
 
-Podrobné pokyny k pracovnímu postupu provádění projektu naleznete v tématu [agilní vývoj projektů pro datové vědy](agile-development.md).
+Podrobné pokyny k pracovnímu postupu provádění projektů naleznete [v tématu Agile development of data science projects](agile-development.md).
 
-## <a name="tdsp-project-template-repository"></a>Úložiště šablon projektů TDSP
+## <a name="tdsp-project-template-repository"></a>Úložiště šablon projektu TDSP
 
-Použijte [úložiště šablon projektů](https://github.com/Azure/Azure-TDSP-ProjectTemplate) v týmu Microsoft TDSP pro podporu efektivního spouštění a spolupráce projektů. Úložiště poskytuje standardizovanou adresářovou strukturu a šablony dokumentů, které můžete použít pro vlastní projekty TDSP.
+Pomocí [úložiště šablon projektu](https://github.com/Azure/Azure-TDSP-ProjectTemplate) týmu Microsoft TDSP můžete podporovat efektivní provádění projektů a spolupráci. Úložiště poskytuje standardizovanou adresářovou strukturu a šablony dokumentů, které můžete použít pro vlastní projekty TDSP.
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte podrobnější popis role a úlohy určené vědecké zpracování týmových dat:
+Prozkoumejte podrobnější popisrolí a úkolů definovaných procesem vědecké vědy o týmových datech:
 
-- [Úlohy správce skupin pro tým pro datové vědy](group-manager-tasks.md)
-- [Úkoly vedoucí týmu pro tým pro datové vědy](team-lead-tasks.md)
-- [Úkoly vedoucího projektu pro tým pro datové vědy](project-lead-tasks.md)
-- [Jednotlivé úkoly přispěvatele projektu pro tým pro datové vědy](project-ic-tasks.md)
+- [Úlohy správce skupiny pro tým datových věd](group-manager-tasks.md)
+- [Úkoly vedoucího týmu pro tým datové vědy](team-lead-tasks.md)
+- [Úkoly vedoucího projektu pro tým datové vědy](project-lead-tasks.md)
+- [Projekt ové úkoly jednotlivých přispěvatelů pro tým pro datové vědy](project-ic-tasks.md)

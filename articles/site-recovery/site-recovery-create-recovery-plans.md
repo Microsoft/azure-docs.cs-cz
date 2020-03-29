@@ -1,84 +1,84 @@
 ---
 title: Vytvoření nebo přizpůsobení plánů obnovení v Azure Site Recovery
-description: Naučte se vytvářet a přizpůsobovat plány obnovení pro zotavení po havárii pomocí služby Azure Site Recovery.
+description: Zjistěte, jak vytvořit a přizpůsobit plány obnovení pro zotavení po havárii pomocí služby Azure Site Recovery.
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 6540317324a9f0d9bccc046ecf95824d4128bd09
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705832"
 ---
-# <a name="create-and-customize-recovery-plans"></a>Vytváření a přizpůsobení plánů obnovení
+# <a name="create-and-customize-recovery-plans"></a>Vytvoření a přizpůsobení plánů obnovení
 
-Tento článek popisuje, jak vytvořit a přizpůsobit plán obnovení pro převzetí služeb při selhání v [Azure Site Recovery](site-recovery-overview.md). Než začnete, [Přečtěte si další informace](recovery-plan-overview.md) o plánech obnovení.
+Tento článek popisuje, jak vytvořit a přizpůsobit plán obnovení pro převzetí služeb při selhání v [azure site recovery](site-recovery-overview.md). Než začnete, [přečtěte si další informace](recovery-plan-overview.md) o plánech obnovení.
 
 ## <a name="create-a-recovery-plan"></a>Vytvoření plánu obnovení
 
-1. V Recovery Services trezoru vyberte **plány obnovení (Site Recovery)**  >  **+ plán obnovení**.
-2. V části **vytvořit plán obnovení**zadejte název plánu.
-3. Zvolte zdroj a cíl na základě počítačů v plánu a vyberte **Správce prostředků** pro model nasazení. Zdrojové umístění musí mít počítače, u kterých je povolené převzetí služeb při selhání a obnovení. 
+1. V trezoru služby Recovery Services vyberte **plány obnovení (obnovení webu)** > **+ plán obnovení**.
+2. V **části Vytvořit plán obnovení**zadejte název plánu.
+3. Vyberte zdroj a cíl na základě počítačů v plánu a vyberte **Správce prostředků** pro model nasazení. Zdrojové umístění musí mít počítače, které jsou povoleny pro převzetí služeb při selhání a obnovení. 
 
-    **Převzetí služeb při selhání** | **Zdroj** | **Cíl** 
+    **Zabezpečení před selháním** | **Zdroj** | **Cíl** 
    --- | --- | ---
-   Azure do Azure | Výběr oblasti Azure | Výběr oblasti Azure
-   Z VMware do Azure | Vyberte konfigurační server. | Vybrat Azure
-   Fyzické počítače do Azure | Vyberte konfigurační server. | Vybrat Azure   
-   Z Hyper-V do Azure | Vyberte název lokality Hyper-V. | Vybrat Azure
-   Technologie Hyper-V (spravovaná nástrojem VMM) do Azure  | Vybrat server VMM | Vybrat Azure
+   Azure do Azure | Vyberte oblast Azure | Vyberte oblast Azure
+   VMware do Azure | Výběr konfiguračního serveru | Vybrat Azure
+   Fyzické počítače do Azure | Výběr konfiguračního serveru | Vybrat Azure   
+   Z Hyper-V do Azure | Výběr názvu webu Technologie Hyper-V | Vybrat Azure
+   Hyper-V (spravovaný VMM) do Azure  | Výběr serveru VMM | Vybrat Azure
   
     Je třeba počítat s následujícím:
-    -  Pro převzetí služeb při selhání můžete použít jenom plán obnovení ze zdrojového umístění do Azure. Nemůžete použít plán obnovení pro navrácení služeb po obnovení z Azure.
-    - Zdrojové umístění musí mít počítače, u kterých je povolené převzetí služeb při selhání a obnovení. 
+    -  Plán obnovení lze použít jenom pro převzetí služeb při selhání ze zdrojového umístění do Azure. Pro navrácení služeb po obnovení z Azure nelze použít plán obnovení.
+    - Zdrojové umístění musí mít počítače, které jsou povoleny pro převzetí služeb při selhání a obnovení. 
     - Plán obnovení může obsahovat počítače se stejným zdrojem a cílem. 
-    - Ve stejném plánu můžete zahrnout virtuální počítače VMware a virtuální počítače Hyper-V spravované nástrojem VMM.
-    - Virtuální počítače VMware a fyzické servery můžou být ve stejném plánu.
+    - Virtuální mandy VMware a virtuální zařízení Hyper-V spravované vmm em it můžete zahrnout do stejného plánu.
+    - Virtuální zařízení VMware a fyzické servery mohou být ve stejném plánu.
 
-4. V části **Vybrat položky virtuálních počítačů**vyberte počítače (nebo replikační skupinu), které chcete přidat do plánu. Pak klikněte na **OK**.
-    - Počítače se přidají do plánu do výchozí skupiny (skupina 1). Po převzetí služeb při selhání se všechny počítače v této skupině spustí ve stejnou dobu.
-    - V zadaných zdrojových a cílových umístěních můžete vybrat jenom počítače. 
-5. Kliknutím na tlačítko **OK** vytvořte plán.
+4. V **části Vybrat položky virtuálních počítačů**vyberte počítače (nebo replikační skupinu), které chcete přidat do plánu. Pak klikněte na **OK**.
+    - Počítače jsou přidány výchozí skupiny (Skupina 1) v plánu. Po převzetí služeb při selhání všechny počítače v této skupině spustit ve stejnou dobu.
+    - Můžete vybrat pouze stroje jsou ve zdrojových a cílových umístěních, které jste zadali. 
+5. Chcete-li plán vytvořit, klepněte na tlačítko **OK.**
 
 ## <a name="add-a-group-to-a-plan"></a>Přidání skupiny do plánu
 
-Vytvoříte další skupiny a přidáte počítače do různých skupin, abyste mohli určit různé chování na základě skupin. Můžete například určit, kdy se mají počítače ve skupině spouštět po převzetí služeb při selhání, nebo zadat přizpůsobené akce na skupinu.
+Můžete vytvořit další skupiny a přidat počítače do různých skupin, takže můžete zadat různé chování na základě skupiny po skupině. Můžete například určit, kdy mají počítače ve skupině začít po převzetí služeb při selhání, nebo zadat vlastní akce pro skupinu.
 
-1. V části **plány obnovení**klikněte pravým tlačítkem na plán > **přizpůsobit**. Ve výchozím nastavení platí, že po vytvoření plánu jsou všechny počítače, které jste do něho přidali, umístěny ve výchozí skupině 1.
-2. Klikněte na **+ Skupina**. Ve výchozím nastavení je nová skupina očíslována v pořadí, ve kterém je přidána. Můžete mít až sedm skupin.
-3. Vyberte počítač, který chcete přesunout do nové skupiny, klikněte na **změnit skupinu**a potom vyberte novou skupinu. Případně můžete kliknout pravým tlačítkem myši na název skupiny > **chráněná položka**a přidat počítače do skupiny. Počítač nebo replikační skupina můžou patřit do jedné skupiny v rámci plánu obnovení.
+1. V **plánu obnovení**klepněte pravým tlačítkem myši na plán > **Přizpůsobit**. Ve výchozím nastavení jsou po vytvoření plánu všechny počítače, které jste do něj přidali, umístěny ve výchozí skupině 1.
+2. Klepněte na tlačítko **+Skupina**. Ve výchozím nastavení je nová skupina očíslonována v pořadí, ve kterém je přidána. Můžete mít až sedm skupin.
+3. Vyberte počítač, který chcete přesunout do nové skupiny, klikněte na **Změnit skupinu**a vyberte novou skupinu. Případně klepněte pravým tlačítkem myši na název skupiny > **Chráněná položka**a přidejte do skupiny počítače. Počítač nebo replikační skupina může patřit pouze do jedné skupiny v plánu obnovení.
 
 
 ## <a name="add-a-script-or-manual-action"></a>Přidání skriptu nebo ruční akce
 
 Plán obnovení můžete přizpůsobit přidáním skriptu nebo ruční akce. Poznámky:
 
-- Pokud provádíte replikaci do Azure, můžete do plánu obnovení integrovat Runbooky Azure Automation. [Další informace](site-recovery-runbook-automation.md).
-- Pokud provádíte replikaci virtuálních počítačů Hyper-V, které spravuje System Center VMM, můžete vytvořit skript na místním serveru VMM a zahrnout ho do plánu obnovení.
-- Když přidáte skript, přidá novou sadu akcí pro skupinu. Například sada předběžných kroků pro skupinu 1 se vytvoří se *skupinou název 1: předběžné kroky*. Všechny předběžné kroky jsou uvedeny v této sadě. Skript můžete do primární lokality přidat jenom v případě, že máte nasazený server VMM.
-- Pokud přidáte ruční akci, při spuštění plánu obnovení se zastaví v okamžiku, kdy jste vložili ruční akci. Zobrazí se dialogové okno s výzvou, abyste určili, že ruční akce byla dokončena.
+- Pokud se replikujete do Azure, můžete do plánu obnovení integrovat runbooky azure automation. [Další informace](site-recovery-runbook-automation.md).
+- Pokud replikujete virtuální počítače Hyper-V spravované systémem VMM, můžete vytvořit skript na místním serveru VMM a zahrnout ho do plánu obnovení.
+- Když přidáte skript, přidá novou sadu akcí pro skupinu. Například sada předkroků pro skupinu 1 je vytvořena s názvem *Skupina 1: předkroky*. Všechny předběžné kroky jsou uvedeny v této sadě. Skript můžete přidat do primární lokality pouze v případě, že máte nasazený server VMM.
+- Pokud přidáte ruční akci, při spuštění plánu obnovení se zastaví v místě, ve kterém jste vložili ruční akci. Dialogové okno vás vyzve k zadání, že ruční akce byla dokončena.
 - Chcete-li vytvořit skript na serveru VMM, postupujte podle pokynů v [tomto článku](hyper-v-vmm-recovery-script.md).
-- Skripty lze použít během převzetí služeb při selhání do sekundární lokality a během navrácení služeb po obnovení ze sekundární lokality na primární. Podpora závisí na vašem scénáři replikace:
+- Skripty lze použít během převzetí služeb při selhání do sekundární lokality a během navrácení služeb po selhání ze sekundární lokality na primární. Podpora závisí na scénáři replikace:
     
-    **Scénář** | **Převzetí služeb při selhání** | **Navrácení služeb po obnovení**
+    **Scénář** | **Zabezpečení před selháním** | **Navrácení služeb po selhání**
     --- | --- | --- 
     Azure do Azure  | Runbook | Runbook
-    Z VMware do Azure | Runbook | není k dispozici 
-    Hyper-V s VMM do Azure | Runbook | Skript
-    Z webu Hyper-V do Azure | Runbook | není k dispozici
-    VMM do sekundárního VMM | Skript | Skript
+    Z VMware do Azure | Runbook | Není k dispozici 
+    Technologie Hyper-V s VMM do Azure | Runbook | Skript
+    Z lokality Hyper-V do Azure | Runbook | Není k dispozici
+    VMM sekundární VMM | Skript | Skript
 
-1. V plánu obnovení klikněte na krok, ke kterému má být akce přidána, a určete, kdy má být provedena akce:
-    1. Pokud chcete, aby tato akce proběhla před spuštěním počítačů ve skupině po převzetí služeb při selhání, vyberte **přidat akci před**.
-    1. Pokud chcete, aby se akce po převzetí služeb při selhání spouštěla po počítačích ve skupině, vyberte **přidat akci post**. Chcete-li přesunout pozici akce, vyberte tlačítko **nahoru** **nebo dolů** .
-2. V možnosti **Vložit akci**vyberte **skript** nebo **Ruční akce**.
-3. Pokud chcete přidat ruční akci, udělejte toto:
-    1. Zadejte název akce a zadejte pokyny pro akci. Uživatel, který spustí převzetí služeb při selhání, uvidí tyto pokyny.
-    1. Určete, jestli chcete přidat ruční akci pro všechny typy převzetí služeb při selhání (test, převzetí služeb při selhání, plánované převzetí služeb při selhání (Pokud je relevantní)). Pak klikněte na **OK**.
-4. Pokud chcete přidat skript, udělejte toto:
-    1. Pokud přidáváte skript VMM, vyberte **převzetí služeb při selhání do skriptu VMM**a v **cestě ke skriptu** zadejte relativní cestu ke sdílené složce. Pokud je například sdílená složka umístěná na adrese \\\<Názevserveruvmm > \MSSCVMMLibrary\RPScripts, zadejte cestu: \RPScripts\RPScript.PS1.
-    1. Pokud přidáváte knihu Azure Automation Run, určete **účet Azure Automation** , ve kterém se sada Runbook nachází, a vyberte příslušný **skript Runbooku Azure**.
-5. Spusťte testovací převzetí služeb při selhání plánu obnovení, aby se zajistilo, že skript funguje podle očekávání.
+1. V plánu obnovení klepněte na krok, ke kterému má být akce přidána, a určete, kdy má akce nastat:
+    1. Pokud chcete, aby k akci došlo před spuštěním počítačů ve skupině po převzetí služeb při selhání, vyberte **přidat předběžnou akci**.
+    1. Pokud chcete, aby k akci došlo po spuštění počítačů ve skupině po převzetí služeb při selhání, vyberte **Přidat akci příspěvku**. Chcete-li přesunout pozici akce, vyberte tlačítka **Přesunout nahoru** nebo **Přesunout dolů.**
+2. V **akci Vložit**vyberte **Skript** nebo Ruční **akce**.
+3. Pokud chcete přidat ruční akci, postupujte takto:
+    1. Zadejte název akce a zadejte pokyny pro akci. Osoba, která spouštěla převzetí služeb při selhání, uvidí tyto pokyny.
+    1. Určete, zda chcete přidat ruční akci pro všechny typy převzetí služeb při selhání (Test, Převzetí služeb při selhání, Plánované převzetí služeb při selhání (pokud je to relevantní)). Pak klikněte na **OK**.
+4. Chcete-li přidat skript, postupujte takto:
+    1. Pokud přidáváte skript VMM, vyberte **převzetí služeb při selhání skriptu VMM**a v cestě **skriptu** zadejte relativní cestu ke sdílené položce. Pokud je například sdílená \\ \<složky umístěna na adrese VMMServerName>\MSSCVMMLibrary\RPScripts, zadejte cestu: \RPScripts\RPScript.PS1.
+    1. Pokud přidáváte knihu spuštění automatizace Azure, zadejte **účet Azure Automation,** ve kterém se nachází runbook, a vyberte příslušný **skript Azure Runbook Script**.
+5. Spusťte zkušební převzetí služeb při selhání plánu obnovení, abyste zajistili, že skript funguje podle očekávání.
 
 ## <a name="watch-a-video"></a>Podívejte se na video
 
@@ -89,6 +89,6 @@ Podívejte se na video, které ukazuje, jak vytvořit plán obnovení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [spuštění převzetí služeb při selhání](site-recovery-failover.md).  
+Další informace o [spuštění převzetí služeb při selhání](site-recovery-failover.md).  
 
     

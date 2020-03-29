@@ -1,6 +1,6 @@
 ---
-title: Poznámky k verzi StorSimple Virtual Array aktualizace | Dokumentace Microsoftu
-description: Pro StorSimple Virtual Array spuštění aktualizace 0.2 a 0.1 popisuje důležité otevřených problémů a jejich řešení.
+title: Poznámky k verzi aktualizace aktualizace StorSimple Virtual Array Updates| Dokumenty společnosti Microsoft
+description: Popisuje kritické otevřené problémy a řešení pro virtuální pole StorSimple se spuštěnou aktualizací 0.2 a 0.1.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,73 +15,73 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: aad60024187ca180c002f119f4b975e8f69796e5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60629284"
 ---
-# <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>Poznámky k verzi StorSimple Virtual Array aktualizace 0.2 a 0.1
+# <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array Update 0.2 a 0.1 poznámky k verzi
 ## <a name="overview"></a>Přehled
-Následující zpráva k vydání verze Identifikujte kritické otevřené problémy a vyřešené problémy pro Microsoft Azure StorSimple Virtual Array aktualizace. (Microsoft Azure StorSimple Virtual Array je označované také jako virtuální zařízení StorSimple v místním nebo virtuálním zařízením StorSimple.) 
+Následující poznámky k verzi identifikují důležité problémy s otevřením a vyřešené problémy pro aktualizace virtuálního pole Microsoft Azure StorSimple. (Virtuální pole Microsoft Azure StorSimple se také označuje jako místní virtuální zařízení StorSimple nebo Virtuální zařízení StorSimple.) 
 
-Zpráva k vydání verze se průběžně aktualizuje, a při zjištění zásadních problémů vyžadujících alternativní řešení, se přidají. Než nasadíte virtuální zařízení StorSimple, pečlivě si prostudujte informace obsažené v poznámkách k verzi.
+Poznámky k verzi jsou průběžně aktualizovány a jako kritické problémy, které vyžadují řešení jsou zjištěny, jsou přidány. Před nasazením virtuálního zařízení StorSimple pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
-Aktualizace 0.2 odpovídá verzi softwaru **10.0.10280.0**; Je verzi aktualizace 0.1 **10.0.10279.0**. Níže uvedených částech najdete seznam změn pro každou aktualizaci. 
+Aktualizace 0.2 odpovídá verzi softwaru **10.0.10280.0**; Aktualizace 0.1 je verze **10.0.10279.0**. V následujících částech jsou uvedeny změny pro každou aktualizaci. 
 
 > [!NOTE]
-> Aktualizace se jedná o narušující a restartuje vaše zařízení. Pokud probíhají vstupně-výstupních operací, zařízení budou účtovat za výpadky.
+> Aktualizace jsou rušivé a restartují zařízení. Pokud vstupně-in/o probíhá, zařízení bude mít za následek prostoje.
 > 
 > 
 
-## <a name="issues-fixed-in-the-update-02"></a>Chyby opravené v aktualizace 0.2
+## <a name="issues-fixed-in-the-update-02"></a>Problémy opravené v aktualizaci 0.2
 Aktualizace 0.2 obsahuje všechny změny z aktualizace 0.1 kromě opravy popsané v následující tabulce:
 
 | Funkce | Problém |
 | --- | --- |
-| Aktualizace |V poslední verzi nebyly zjištěny aktualizace automaticky na portálu Azure classic, takže jste museli instalace aktualizací pomocí místního webového uživatelského rozhraní. Tento problém je vyřešen v této verzi. Budoucí aktualizace pomocí portálu Azure classic můžete nainstalovat po instalaci aktualizace 0.2. |
+| Aktualizace |V poslední verzi aktualizace nebyly zjištěny automaticky na klasickém portálu Azure, takže jste museli použít místní webové uživatelské prostředí k instalaci aktualizací. Tento problém je vyřešen v této verzi. Po instalaci aktualizace 0.2 můžete nainstalovat budoucí aktualizace pomocí klasického portálu Azure. |
 
 ## <a name="whats-new-in-the-update-01"></a>Co je nového v aktualizaci 0.1
-Aktualizace 0.1 obsahuje následující opravy chyb a vylepšení. 
+Aktualizace 0.1 obsahuje následující opravy a vylepšení chyb. 
 
-* **Lepší odolnost proti chybám nedošlo k výpadku cloudu**: Tato verze má několik oprav chyb po zotavení po havárii, zálohování, obnovení a ovládání datových vrstev v případě přerušení připojení cloudu. 
-* **Vylepšení výkonu obnovení**: Tato verze obsahuje opravy chyb, které mají výrazně zkrátit čas dokončení úlohy obnovení.
-* **Automatické optimalizace recyklace místa**: Při odstranění dat na dynamicky zřizované svazky bloky nevyužité úložiště je potřeba uvolnit. Tato verze přináší Vylepšená procesu recyklace místa z cloudu, což vede k nevyužité místo stále k dispozici rychleji v porovnání s předchozími verzemi.
-* **Nové Image virtuálního disku**: Nový virtuální pevný disk VHDX a VMDK jsou teď dostupné prostřednictvím portálu Azure classic. Tyto Image zřizovat nové aktualizace 0.1 zařízení si můžete stáhnout.
-* **Zlepšení přesnosti stav úlohy na portálu**: V dřívější verzi softwaru nebyl detailní stav úlohy vytváření sestav na portálu. Tento problém je vyřešen v této verzi.
-* **Prostředí pro připojení k doméně**: Opravy chyb souvisejících s připojení k doméně a přejmenování zařízení.
+* **Vylepšená odolnost proti chybám pro výpadky cloudu**: Tato verze obsahuje několik oprav chyb kolem zotavení po havárii, zálohování, obnovení a vrstvení v případě přerušení připojení ke cloudu. 
+* **Zlepšený výkon obnovení**: Tato verze obsahuje opravy chyb, které výrazně zkrátily dobu dokončení úloh obnovení.
+* **Automatická optimalizace rekultivace místa**: Při odstranění dat na tence zřízených svazcích je třeba uvolnit nepoužívané bloky úložiště. Tato verze vylepšila proces rekultivace prostoru z cloudu, což má za následek rychlejší dostupnost nevyužitého místa ve srovnání s předchozími verzemi.
+* **Nové image virtuálních disků:** Nové virtuální pevné disky, VHDX a VMDK jsou teď dostupné přes klasický portál Azure. Tyto obrázky si můžete stáhnout a zřídit nová zařízení aktualizace 0.1.
+* **Zlepšení přesnosti stavu úloh na portálu**: V dřívější verzi softwaru nebylo vykazování stavu úlohy na portálu podrobné. Tento problém je vyřešen v této verzi.
+* **Zkušenosti s připojením k doméně**: Opravy chyb související s připojením k doméně a přejmenováním zařízení.
 
-## <a name="issues-fixed-in-the-update-01"></a>Chyby opravené v této aktualizace 0.1
-Následující tabulka obsahuje souhrn chyby opravené v této verzi.
+## <a name="issues-fixed-in-the-update-01"></a>Problémy opravené v aktualizaci 0.1
+Následující tabulka obsahuje souhrn problémů opravených v této verzi.
 
 | Ne. | Funkce | Problém |
 | --- | --- | --- |
-| 1 |VMDK |V některých verzích VMware disk s operačním systémem viděla jako zhuštěné způsobí upozornění a přerušení běžného provozu. Tato chyba byla opravena v této verzi. |
-| 2 |iSCSI server |V poslední verzi uživatele bylo nutné určit bránu pro každé rozhraní povolené síťové virtuální zařízení StorSimple. Toto chování se změnilo v této verzi tak, aby uživatel měl nakonfigurovat aspoň jednu bránu pro všechny povolené síťové rozhraní. |
-| 3 |Balíček pro podporu. |Ve starší verzi softwaru podporují kolekci balíčku selhalo při velikosti balíčku byly větší než 1 GB. Tento problém je vyřešen v této verzi. |
-| 4 |Přístup pro cloud |V poslední verzi StorSimple Virtual Array nemá připojení k síti a byl restartován, by místního uživatelského rozhraní máte potíže s připojením. Tento problém je vyřešen v této verzi. |
-| 5 |Grafy monitorování |V předchozí verzi, po převzetí služeb zařízení grafy využití kapacity cloudu zobrazují nesprávné hodnoty na portálu Azure classic. Tento problém je vyřešený v aktuální verzi. |
+| 1 |Vmdk |V některých verzích vmware byl disk operačního systému považován za řídké, což způsobuje výstrahy a narušuje normální operace. To to bylo opraveno v této verzi. |
+| 2 |Server iSCSI |V poslední verzi byl uživatel povinen zadat bránu pro každé povolené síťové rozhraní virtuálního zařízení StorSimple. Toto chování se v této verzi změní tak, aby uživatel musel nakonfigurovat alespoň jednu bránu pro všechna povolená síťová rozhraní. |
+| 3 |Balíček podpory |V dřívější verzi softwaru kolekce balíčků podpory se nezdařila, pokud byly velikosti balíčků větší než 1 GB. Tento problém je vyřešen v této verzi. |
+| 4 |Přístup ke cloudu |V poslední verzi, pokud StorSimple Virtual Array neměl připojení k síti a byl restartován, místní uI bude mít problémy s připojením. Tento problém je vyřešen v této verzi. |
+| 5 |Monitorovací grafy |V předchozí verzi po převzetí služeb při selhání zařízení grafy využití kapacity cloudu zobrazí nesprávné hodnoty na klasickém portálu Azure. To je opraveno v aktuální verzi. |
 
-## <a name="known-issues-in-the-update-01"></a>Známé problémy v aktualizace 0.1
-Následující tabulka obsahuje souhrn známé problémy pro StorSimple Virtual Array a problémy uvedené verze z předchozích verzí. **Verze problémy uvedené v této verzi jsou označeny hvězdičkou. Téměř všechny problémy v tomto seznamu mají přeneseny z verze GA StorSimple Virtual Array.**
+## <a name="known-issues-in-the-update-01"></a>Známé problémy v aktualizaci 0.1
+Následující tabulka obsahuje souhrn známých problémů pro virtuální pole StorSimple a obsahuje problémy s poznámkou k vydání z předchozích verzí. **Vydání problémů uvedené v této verzi jsou označeny hvězdičkou. Téměř všechny problémy v tomto seznamu se přenesly z ga verze StorSimple Virtual Array.**
 
-| Ne. | Funkce | Problém | Alternativní řešení a poznámky |
+| Ne. | Funkce | Problém | Řešení/komentáře |
 | --- | --- | --- | --- |
-| **1.** |Aktualizace |Virtuální zařízení, vytvořené ve verzi preview, nejde aktualizovat na podporovanou verzi obecné dostupnosti. |Tato virtuální zařízení musí být převzetí služeb při selhání pro všeobecně dostupné verze pomocí pracovního postupu zotavení po havárii. |
-| **2.** |Zřízené datového disku |Po zřízení některých zadané velikosti datového disku a vytvoří odpovídající virtuální zařízení StorSimple, nesmí zvětšení nebo zmenšení datový disk. To pokusíte, bude mít za následek ztrátu všech dat v místních vrstvách zařízení. | |
-| **3.** |Zásady skupiny |Když je zařízení připojené k doméně, použití zásad skupiny nepříznivě ovlivnit operace zařízení. |Ujistěte se, že vaše virtuální pole je ve vlastní organizační jednotka (OU) služby Active Directory a žádné objekty zásad skupiny (GPO) se použijí k němu. |
-| **4.** |Místního webového uživatelského rozhraní |Pokud jsou povolené rozšířené funkce zabezpečení v aplikaci Internet Explorer (IE ESC), některé místního webového uživatelského rozhraní stránky jako je například Poradce při potížích nebo údržby nemusí fungovat správně. Tlačítka na těchto stránkách nemusí fungovat. |Vypněte rozšířené funkce zabezpečení v Internet Exploreru. |
-| **5.** |Místního webového uživatelského rozhraní |Ve virtuálním počítači Hyper-V síťová rozhraní ve webovém uživatelském rozhraní se zobrazují jako 10 GB/s rozhraní. |Toto chování je odraz technologie Hyper-V. Technologie Hyper-V vždy zobrazovat 10 GB/s pro virtuální síťové adaptéry. |
-| **6.** |Vrstvené svazky nebo sdílené složky |Rozsah bajtů uzamčení pro aplikace, které využívají StorSimple vrstvených svazků se nepodporuje. Pokud je povolený zámek rozsah bajtů, StorSimple ovládání datových vrstev nebude fungovat. |Doporučené opatření patří: <br></br>Vypněte rozsah bajtů zamykání v logice aplikace.<br></br>Tlačítko Vložit data pro tuto aplikaci místně připojené svazky na rozdíl od vrstvených svazků.<br></br>*Výstražné*: Pokud je povolený zámek rozsah bajtů pomocí místně připojené svazky, mějte na paměti, že místně vázaný svazek může být online, ještě než se obnovení dokončí. V takových případech Pokud obnovení probíhá, pak je musí počkat na dokončení obnovení. |
-| **7.** |Vrstvené sdílené složky |Práce s velkými soubory by mohlo způsobit zmenšení pomalé vrstvy. |Při práci s velkými soubory, doporučujeme vám, že je největší soubor menší než velikost sdílené složky % 3. |
-| **8.** |Použít kapacity pro sdílené složky |Může se zobrazit sdílet spotřeby neexistují žádná data ve sdílené složce. Je to proto, že zahrnuje jejich metadata použitá kapacita pro sdílené složky. | |
-| **9.** |Zotavení po havárii |Lze provést pouze zotavení po havárii souborového serveru ke stejné doméně jako zdrojové zařízení. V této verzi nepodporuje zotavení po havárii do cílové zařízení v jiné doméně. |To se provádí v novější verzi. |
-| **10.** |Azure PowerShell |Virtuální zařízení StorSimple nejde spravovat prostřednictvím Azure Powershellu v této verzi. |Veškerá Správa virtuálního zařízení se provádí prostřednictvím portálu Azure classic a místního webového uživatelského rozhraní. |
-| **11.** |Změna hesla |Zařízení konzoly virtuálního pole přijímá pouze vstup ve formátu klávesnice en US. | |
-| **12.** |CHAP |Přihlašovací údaje protokolu CHAP po vytvoření nelze odebrat. Kromě toho pokud změníte přihlašovací údaje protokolu CHAP, musíte převést svazky do režimu offline a pak přiřaďte je online se změna projevila. |Toto bude vyřešen v pozdější verzi. |
-| **13.** |iSCSI server |"Použili úložiště" zobrazí u svazku iSCSI, může být jiný ve službě StorSimple Manager a iSCSI hostitele. |Zobrazení systému souborů má hostitel iSCSI.<br></br>Zařízení se zobrazí bloky přidělí, když objem byl při maximální velikosti. |
-| **14.** |Soubor serveru * |Pokud má soubor ve složce alternativní datový Stream (reklamy) s ním spojená, reklamy nejsou zálohovány ani obnoveny prostřednictvím zotavení po havárii, klonování a obnovení na úrovni položek. | |
+| **1.** |Aktualizace |Virtuální zařízení vytvořená ve verzi preview nelze aktualizovat na podporovanou verzi obecné dostupnosti. |Tato virtuální zařízení musí být převzetí služeb při selhání pro vydání obecné dostupnosti pomocí pracovního postupu zotavení po havárii (DR). |
+| **2.** |Zřízený datový disk |Jakmile zřídíte datový disk určité zadané velikosti a vytvoříte odpovídající virtuální zařízení StorSimple, nesmíte datový disk rozbalit ani zmenšit. Pokud se o to pokusíte, dojde ke ztrátě všech dat v místních vrstvách zařízení. | |
+| **3.** |Zásady skupiny |Pokud je zařízení připojeno k doméně, použití zásad skupiny může nepříznivě ovlivnit provoz zařízení. |Ujistěte se, že vaše virtuální pole je ve své vlastní organizační jednotce (OU) pro službu Active Directory a nejsou na něj použity žádné objekty zásad skupiny (GPO). |
+| **4.** |Místní webové uživatelské prostředí |Pokud jsou v aplikaci Internet Explorer (IE ESC) povoleny rozšířené funkce zabezpečení, nemusí některé místní webové stránky uživatelského rozhraní, například Poradce při potížích nebo údržba, pracovat správně. Tlačítka na těchto stránkách také nemusí fungovat. |Vypněte rozšířené funkce zabezpečení v aplikaci Internet Explorer. |
+| **5.** |Místní webové uživatelské prostředí |Ve virtuálním počítači Hyper-V jsou síťová rozhraní ve webovém uživatelském rozhraní zobrazena jako rozhraní 10 Gb/s. |Toto chování je odrazem Hyper-V. Technologie Hyper-V vždy zobrazuje 10 Gb/s pro virtuální síťové adaptéry. |
+| **6.** |Vrstvené svazky nebo sdílené složky |Uzamčení rozsahu bajtů pro aplikace, které pracují s vrstvenými svazky StorSimple, není podporováno. Pokud je povoleno uzamčení rozsahu bajtů, storSimple vrstvení nebude fungovat. |Mezi doporučená opatření patří: <br></br>Vypněte uzamčení rozsahu bajtů v logice aplikace.<br></br>Zvolte, zda chcete umístit data pro tuto aplikaci do místně vázaných svazků na rozdíl od vrstvených svazků.<br></br>*Upozornění:* Pokud je povoleno použití místně vázaných svazků a zamykání rozsahu bajtů, uvědomte si, že místně vázaný svazek může být online ještě před dokončením obnovení. V takových případech pokud probíhá obnovení, musíte počkat na dokončení obnovení. |
+| **7.** |Vrstvené sdílené složky |Práce s velkými soubory může mít za následek pomalé vrstvy ven. |Při práci s velkými soubory doporučujeme, aby největší soubor byl menší než 3 % velikosti sdílené složky. |
+| **8.** |Použitá kapacita pro sdílené složky |Spotřeba sdílení se může zobrazit v případě, že neexistují žádná data o sdílené složce. Důvodem je, že použitá kapacita pro sdílené složky obsahuje metadata. | |
+| **9.** |Zotavení po havárii |Zotavení po havárii souborového serveru lze provést pouze ve stejné doméně jako zdrojové zařízení. Zotavení po havárii na cílové zařízení v jiné doméně není v této verzi podporováno. |To bude implementováno v novější verzi. |
+| **10.** |Azure PowerShell |Virtuální zařízení StorSimple nelze spravovat prostřednictvím Azure PowerShell v této verzi. |Veškerá správa virtuálních zařízení by měla být provedena prostřednictvím klasického portálu Azure a místního webového uživatelského prostředí. |
+| **11.** |Změna hesla |Konzola zařízení virtuálního pole přijímá vstup pouze ve formátu klávesnice en-US. | |
+| **12.** |CHAP |Pověření chap po vytvoření nelze odebrat. Navíc pokud změníte pověření chap, budete muset převést svazky do režimu offline a převést je do režimu online pro změnu se projeví. |Ty budou řešeny v pozdější verzi. |
+| **13.** |Server iSCSI |Použité úložiště zobrazené pro svazek iSCSI se může lišit ve službě StorSimple Manager a v hostiteli iSCSI. |Hostitel iSCSI má zobrazení souborového systému.<br></br>Zařízení vidí bloky přidělené, když byl svazek v maximální velikosti. |
+| **14.** |Souborový server* |Pokud je k souboru ve složce přidružen alternativní datový proud (ADS), není služba ADS zálohována ani obnovena prostřednictvím zotavení po havárii, klonování a obnovení úrovně položky. | |
 
 ## <a name="next-step"></a>Další krok
-[Instalace aktualizací](storsimple-ova-install-update-01.md) na StorSimple Virtual Array.
+[Nainstalujte aktualizace](storsimple-ova-install-update-01.md) do virtuálního pole StorSimple.
 

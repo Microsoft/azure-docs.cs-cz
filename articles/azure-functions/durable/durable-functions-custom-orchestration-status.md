@@ -1,30 +1,30 @@
 ---
-title: Stav vlastní orchestrace v Durable Functions – Azure
-description: Naučte se konfigurovat a používat vlastní stav orchestrace pro Durable Functions.
+title: Stav vlastní orchestrace v trvalých funkcích – Azure
+description: Zjistěte, jak nakonfigurovat a používat vlastní stav orchestrace pro trvalé funkce.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76766274"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stav vlastní orchestrace v Durable Functions (Azure Functions)
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stav vlastní orchestrace v trvalých funkcích (Funkce Azure)
 
-Vlastní stav orchestrace umožňuje nastavit vlastní hodnotu stavu pro funkci Orchestrator. Tento stav je k dispozici prostřednictvím [rozhraní API GetStatus API](durable-functions-http-api.md#get-instance-status) nebo rozhraní [`GetStatusAsync` API](durable-functions-instance-management.md#query-instances) v klientovi Orchestration.
+Vlastní stav orchestrace umožňuje nastavit vlastní hodnotu stavu pro funkci orchestratoru. Tento stav je k dispozici prostřednictvím [rozhraní HTTP GetStatus API](durable-functions-http-api.md#get-instance-status) nebo [ `GetStatusAsync` rozhraní API](durable-functions-instance-management.md#query-instances) v klientovi orchestrace.
 
-## <a name="sample-use-cases"></a>Příklady případů použití
+## <a name="sample-use-cases"></a>Případy použití vzorku
 
 > [!NOTE]
-> Následující ukázky ukazují, jak používat vlastní stav funkce v C# a JavaScriptu. C# Příklady jsou napsány pro Durable Functions 2. x a nejsou kompatibilní s Durable Functions 1. x. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Následující ukázky ukazují, jak používat vlastní funkci stavu v jazyce C# a JavaScriptu. Příklady jazyka C# jsou napsány pro trvalé funkce 2.x a nejsou kompatibilní s trvanlivé funkce 1.x. Další informace o rozdílech mezi verzemi naleznete v článku [verze durable functions.](durable-functions-versions.md)
 
 ### <a name="visualize-progress"></a>Vizualizace průběhu
 
-Klienti mohou dotazovat koncový bod stavu a zobrazit uživatelské rozhraní průběhu, které vizualizuje aktuální fázi provádění. Následující příklad znázorňuje sdílení průběhu:
+Klienti mohou dotazování koncový bod stavu a zobrazit ugresní usměrnění, které vizualizuje aktuální fázi provádění. Následující ukázka ukazuje sdílení průběhu:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -51,9 +51,9 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-`E1_HelloSequence` funkce Orchestrator:
+`E1_HelloSequence`funkce orchestrátoru:
 
 ```javascript
 const df = require("durable-functions");
@@ -73,7 +73,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-funkce aktivity `E1_SayHello`:
+`E1_SayHello`funkce činnosti:
 
 ```javascript
 module.exports = async function(context, name) {
@@ -83,9 +83,9 @@ module.exports = async function(context, name) {
 
 ---
 
-A pak klient obdrží výstup orchestrace pouze tehdy, když je `CustomStatus` pole nastaveno na London:
+A pak klient obdrží výstup orchestrace pouze `CustomStatus` v případě, že pole je nastavena na "Londýn":
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -118,7 +118,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -148,15 +148,15 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> V jazyce JavaScript se pole `customStatus` nastaví při plánování další `yield` nebo `return` akce.
+> V Jazyce `customStatus` JavaScript bude pole `yield` nastaveno při plánování další akce nebo `return` akce.
 
 ---
 
-### <a name="output-customization"></a>Vlastní nastavení výstupu
+### <a name="output-customization"></a>Přizpůsobení výstupu
 
-Dalším zajímavým scénářem je segmentování uživatelů tím, že vrací přizpůsobený výstup na základě jedinečných vlastností nebo interakcí. Pomocí vlastního stavu orchestrace zůstane kód na straně klienta obecný. Všechny hlavní úpravy se projeví na straně serveru, jak je znázorněno v následující ukázce:
+Dalším zajímavým scénářem je segmentace uživatelů vrácením přizpůsobený výstup na základě jedinečných vlastností nebo interakcí. S pomocí vlastního stavu orchestrace kód na straně klienta zůstane obecný. Všechny hlavní změny se budou provádět na straně serveru, jak je znázorněno v následující ukázce:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -194,7 +194,7 @@ public static void Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -231,9 +231,9 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="instruction-specification"></a>Specifikace instrukce
 
-Nástroj Orchestrator může poskytovat jedinečné pokyny pro klienty prostřednictvím vlastního stavu. Vlastní pokyny ke stavu budou mapovány na kroky v kódu orchestrace:
+Orchestrator může poskytnout jedinečné pokyny klientům prostřednictvím vlastního stavu. Vlastní pokyny pro stav budou mapovány na kroky v kódu orchestrace:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -261,7 +261,7 @@ public static async Task<bool> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -292,9 +292,9 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="sample"></a>Ukázka
 
-V následující ukázce je nastaven vlastní stav jako první.
+V následující ukázce je nejprve nastaven vlastní stav;
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
@@ -309,7 +309,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -327,13 +327,13 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-I když je orchestrace spuštěná, externí klienti mohou načíst tento vlastní stav:
+Zatímco je orchestrace spuštěna, externí klienti mohou načíst tento vlastní stav:
 
 ```http
 GET /runtime/webhooks/durabletask/instances/instance123
 ```
 
-Klienti získají následující odpověď:
+Klienti obdrží následující odpověď:
 
 ```json
 {
@@ -347,9 +347,9 @@ Klienti získají následující odpověď:
 ```
 
 > [!WARNING]
-> Vlastní datová část stavu je omezená na 16 KB textu JSON ve formátu UTF-16, protože musí být schopná se umístit do sloupce Azure Table Storage. Pokud potřebujete větší datovou část, doporučujeme použít externí úložiště.
+> Vlastní datová část stavu je omezena na 16 KB textu UTF-16 JSON, protože musí být možné vejít do sloupce Azure Table Storage. Doporučujeme použít externí úložiště, pokud potřebujete větší datovou část.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o trvalých časovačích](durable-functions-timers.md)
+> [Další informace o odolných časovačích](durable-functions-timers.md)

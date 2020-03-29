@@ -1,6 +1,6 @@
 ---
-title: Cluster SAP ASCS/SCS ve službě WSFC s použitím sdílené složky v Azure | Microsoft Docs
-description: Naučte se, jak clusterovat instanci SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdílené složky v Azure.
+title: Cluster SAP ASCS/SCS na WSFC pomocí sdílené složky v Azure | Dokumenty společnosti Microsoft
+description: Zjistěte, jak clusterovat instanci SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky v Azure.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -17,10 +17,10 @@ ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 545bcd1fa521b945d822b7eb69945cf381bf480a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918661"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -90,7 +90,7 @@ ms.locfileid: "77918661"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfigurace s vysokou dostupností pro SAP multi-SID)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfigurace sap multi-SID s vysokou dostupností)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -203,155 +203,155 @@ ms.locfileid: "77918661"
 
 [1869038]:https://launchpad.support.sap.com/#/notes/1869038 
 
-# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdílené složky v Azure
+# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Cluster instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky v Azure
 
 > ![Windows][Logo_Windows] Windows
 >
 
-Clustering s podporou převzetí služeb při selhání ve Windows serveru je základem instalace ASCS/SCS SAP s vysokou dostupností a DBMS ve Windows.
+Clustering s podporou převzetí služeb při selhání systému Windows Server je základem instalace SAP ASCS/SCS s vysokou dostupností a systému DBMS v systému Windows.
 
-Cluster s podporou převzetí služeb při selhání je skupina s 1 + n nezávislými servery (uzly), které vzájemně spolupracují za účelem zvýšení dostupnosti aplikací a služeb. Pokud dojde k selhání uzlu, clustering s podporou převzetí služeb při selhání ve Windows serveru vypočítá počet selhání, ke kterým může dojít, a udržujte cluster v pořádku, aby poskytoval aplikace a služby. Pro zajištění clusteringu s podporou převzetí služeb při selhání můžete vybrat z různých režimů kvora.
+Cluster s podporou převzetí služeb při selhání je skupina 1+n nezávislých serverů (uzlů), které spolupracují na zvýšení dostupnosti aplikací a služeb. Pokud dojde k selhání uzlu, clustering s podporou převzetí služeb při selhání systému Windows Server vypočítá počet selhání, ke kterým může dojít, a stále udržuje cluster v pořádku za účelem poskytování aplikací a služeb. Můžete si vybrat z různých režimů kvora k dosažení clustering převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Předpoklady
-Než začnete s úkoly popsanými v tomto článku, přečtěte si tento článek:
+## <a name="prerequisites"></a>Požadavky
+Než začnete úkoly popsané v tomto článku, přečtěte si tento článek:
 
-* [Architektura a scénáře s vysokou dostupností pro Azure Virtual Machines pro SAP NetWeaver][sap-high-availability-architecture-scenarios]
+* [Architektura a scénáře azure virtuálních počítačů a scénáře pro SAP NetWeaver][sap-high-availability-architecture-scenarios]
 
 > [!IMPORTANT]
-> Clustering SAP ASCS/SCS Instances pomocí sdílené složky se podporuje pro SAP NetWeaver 7,40 (a novější) pomocí SAP kernel 7,49 (a novější).
+> Clustering instance SAP ASCS/SCS pomocí sdílené složky je podporován pro SAP NetWeaver 7.40 (a novější), s jádrem SAP 7.49 (a novější).
 >
 
 
-## <a name="windows-server-failover-clustering-in-azure"></a>Clustering s podporou převzetí služeb při selhání Windows serveru v Azure
+## <a name="windows-server-failover-clustering-in-azure"></a>Clustering s podporou převzetí služeb při selhání windows serveru v Azure
 
-V porovnání s nasazením z holého nebo privátního cloudu vyžaduje Azure Virtual Machines další kroky ke konfiguraci clusteringu s podporou převzetí služeb při selhání Windows serveru. Při sestavování clusteru je potřeba nastavit několik IP adres a názvy virtuálních hostitelů pro instanci SAP ASCS/SCS.
+Ve srovnání s nasazením úplného nebo privátního cloudu vyžadují virtuální počítače Azure další kroky ke konfiguraci clusteru s podporou převzetí služeb při selhání windows serveru. Při vytváření clusteru je třeba nastavit několik IP adres a názvů virtuálních hostitelů pro instanci SAP ASCS/SCS.
 
 ### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Překlad názvů v Azure a název virtuálního hostitele clusteru
 
-Cloudová platforma Azure nenabízí možnost konfigurace virtuálních IP adres, jako jsou například plovoucí IP adresy. K nastavení virtuální IP adresy pro dosažení prostředku clusteru v cloudu potřebujete alternativní řešení. 
+Cloudová platforma Azure nenabízí možnost konfigurace virtuálních IP adres, jako jsou plovoucí IP adresy. Potřebujete alternativní řešení pro nastavení virtuální IP adresy pro dosažení prostředku clusteru v cloudu. 
 
-Služba Azure Load Balancer poskytuje *interní nástroj pro vyrovnávání zatížení* pro Azure. S interním nástrojem pro vyrovnávání zatížení klienti dosáhnou clusteru přes virtuální IP adresu clusteru. 
+Služba Azure Load Balancer poskytuje *interní vyrovnávání zatížení* pro Azure. S interním nástrojem pro vyrovnávání zatížení se klienti dostanou do clusteru přes virtuální IP adresu clusteru. 
 
-Nasaďte interní nástroj pro vyrovnávání zatížení ve skupině prostředků, která obsahuje uzly clusteru. Pak nakonfigurujte všechna nezbytná pravidla předávání portů pomocí portů sondy interního nástroje pro vyrovnávání zatížení. Klienti se mohou připojit prostřednictvím názvu virtuálního hostitele. Server DNS přeloží IP adresu clusteru. Interní nástroj pro vyrovnávání zatížení zpracovává přesměrování portu na aktivní uzel clusteru.
+Nasaďte interní vynakladač zatížení ve skupině prostředků, která obsahuje uzly clusteru. Potom nakonfigurujte všechna potřebná pravidla předávání portů pomocí portů sondy interního systému vyrovnávání zatížení. Klienti se mohou připojit prostřednictvím názvu virtuálního hostitele. Server DNS řeší adresu IP clusteru. Interní správce zatížení zpracovává předávání portů do aktivního uzlu clusteru.
 
-![Obrázek 1: Konfigurace clusteringu s podporou převzetí služeb při selhání Windows serveru v Azure bez sdíleného disku][sap-ha-guide-figure-1001]
+![Obrázek 1: Konfigurace clusteru s podporou převzetí služeb při selhání windows serveru v Azure bez sdíleného disku][sap-ha-guide-figure-1001]
 
-_**Obrázek 1:** Konfigurace clusteringu s podporou převzetí služeb při selhání Windows serveru v Azure bez sdíleného disku_
+_**Obrázek 1:** Konfigurace clusteru s podporou převzetí služeb při selhání systému Windows Server v Azure bez sdíleného disku_
 
 ## <a name="sap-ascsscs-ha-with-file-share"></a>SAP ASCS/SCS HA se sdílením souborů
 
-SAP vyvinul nový přístup a alternativu ke sdíleným diskům clusteru pro clustering instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows. Místo používání sdílených disků clusteru můžete použít sdílenou složku SMB k nasazení souborů globálního hostitele SAP.
+Společnost SAP vyvinula nový přístup a alternativu ke sdíleným diskům clusteru pro clusterování instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows. Namísto použití sdílených disků clusteru můžete použít sdílenou složku SMB k nasazení globálních hostitelských souborů SAP.
 
 > [!NOTE]
-> Sdílená složka SMB je alternativou k použití sdílených disků clusteru ke clusteringu instancí SAP ASCS/SCS.  
+> Sdílená složka SMB je alternativou k použití sdílených disků clusteru pro clusterování instancí SAP ASCS/SCS.  
 >
 
-Tato architektura je specifická v následujících ohledech:
+Tato architektura je specifická následujícími způsoby:
 
-* Služby SAP Central Services (s vlastní strukturou souborů a procesy zpráv a zařazování do fronty) jsou oddělené od globálních hostitelských souborů SAP.
-* Služby SAP Central Services běží pod instancí SAP ASCS/SCS.
-* Instance SAP ASCS/SCS je clusterovaná a je přístupná \<pomocí názvu virtuálního hostitele ASCS/SCS\> název virtuálního hostitele.
-* Globální soubory SAP jsou umístěné ve sdílené složce SMB a jsou k nim přistupované pomocí \<SAP Global Host\> název hostitele: \\\\&lt;SAP Global Host&gt;\sapmnt\\&lt;SID&gt;\SYS\...
-* Instance SAP ASCS/SCS je nainstalovaná na místním disku na obou uzlech clusteru.
-* Název virtuálního hostitele \<ASCS/SCS\> název sítě se liší od &lt;globálního hostitele SAP&gt;.
+* Centrální služby SAP (s vlastní strukturou souborů a procesy zpráv a zařazení do fronty) jsou odděleny od globálních hostitelských souborů SAP.
+* Centrální služby SAP běží pod instancí SAP ASCS/SCS.
+* Instance SAP ASCS/SCS je clusterovaná a \<je přístupná pomocí\> názvu virtuálního hostitele ASCS/SCS.
+* Globální soubory SAP jsou umístěny ve sdílené složce \<SMB\> a jsou \\ \\ &lt;přístupné&gt;pomocí názvu globálního\\&lt;hostitele&gt;SAP:\.GLOBÁLNÍ HOSTITEL SAP \sapmnt SID \SYS ..
+* Instance SAP ASCS/SCS je nainstalována na místním disku v obou uzlech clusteru.
+* Název \<sítě virtuálního\> hostitele ASCS/SCS &lt;se&gt;liší od globálního hostitele SAP .
 
-![Obrázek 2: architektura SAP ASCS/SCS HA se sdílenou složkou SMB][sap-ha-guide-figure-8004]
+![Obrázek 2: Architektura SAP ASCS/SCS HA se sdílenou složkou SMB][sap-ha-guide-figure-8004]
 
 _**Obrázek 2:** Nová architektura SAP ASCS/SCS HA se sdílenou složkou SMB_
 
-Předpoklady pro sdílenou složku SMB:
+Požadavky na sdílenou složku SMB:
 
-* Protokol SMB 3,0 (nebo novější).
-* Možnost nastavit seznamy řízení přístupu (ACL) služby Active Directory pro skupiny uživatelů služby Active Directory a objekt počítače `computer$`.
-* Sdílená složka musí mít povolený HA:
+* Protokol SMB 3.0 (nebo novější).
+* Možnost nastavení seznamů řízení přístupu služby Active Directory (ACL) pro skupiny uživatelů služby Active Directory a objekt `computer$` počítače.
+* Sdílená složka musí mít povolenou technologii HA:
     * Disky používané k ukládání souborů nesmí být jediným bodem selhání.
-    * Výpadky serveru nebo virtuálního počítače nezpůsobí výpadkům sdílené složky.
+    * Prostoje serveru nebo virtuálního počítače nezpůsobí prostoje ve sdílené složce.
 
-Role clusteru SAP \<SID\> neobsahuje sdílené disky clusteru ani obecné prostředky clusteru sdílené složky souborů.
-
-
-![Obrázek 3: SAP \<SID\> prostředků clusterových rolí pro použití sdílené složky][sap-ha-guide-figure-8005]
-
-_**Obrázek 3:** SAP &lt;SID&gt; prostředků role clusteru pro použití sdílené složky_
+Role \<clusteru\> SAP SID neobsahuje sdílené disky clusteru ani obecný prostředek clusteru pro sdílení souborů.
 
 
-## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>Sdílené složky se škálováním na více instancí s Prostory úložiště s přímým přístupem v Azure jako sdílená složka SAPMNT
+![Obrázek 3: Prostředky role clusteru SAP \<SID\> pro použití sdílené složky][sap-ha-guide-figure-8005]
 
-Sdílenou složku se škálováním na více instancí můžete použít k hostování a ochraně globálních hostitelských souborů SAP. Sdílená složka se škálováním na více instancí nabízí také vysoce dostupnou službu sdílení souborů SAPMNT.
+_**Obrázek 3:** Prostředky &lt;role&gt; clusteru SAP SID pro použití sdílené složky_
 
-![Obrázek 4: sdílená složka se škálováním na více instancí používaná k ochraně souborů globálního hostitele SAP][sap-ha-guide-figure-8006]
 
-_**Obrázek 4:** Sdílená složka se škálováním na víc instancí, která se používá k ochraně globálních hostitelských souborů SAP_
+## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>Horizontální navýšení kapacity sdílených složek s storage spaces direct v Azure jako sdílená složka SAPMNT
+
+Pomocí sdílené složky s horizontálním navýšením kapacity můžete hostovat a chránit globální hostitelské soubory SAP. Horizontální navýšení kapacity sdílené složky také nabízí vysoce dostupné SAPMNT sdílení souborů služby.
+
+![Obrázek 4: Sdílení souborů s horizontálním navýšením kapacity používané k ochraně globálních hostitelských souborů SAP][sap-ha-guide-figure-8006]
+
+_**Obrázek 4:** Sdílená složka s horizontálním navýšením kapacity používaná k ochraně globálních hostitelských souborů SAP_
 
 > [!IMPORTANT]
-> Sdílené složky se škálováním na více instancí jsou plně podporované v Microsoft Azure cloudu a v místních prostředích.
+> Sdílené složky s horizontálním navýšením kapacity jsou plně podporované v cloudu Microsoft Azure a v místních prostředích.
 >
 
-Sdílená složka se škálováním na více instancí nabízí vysoce dostupnou a horizontálně škálovatelnou sdílenou složku SAPMNT.
+Sdílená složka s horizontálním navýšením kapacity nabízí vysoce dostupnou a horizontálně škálovatelnou sdílenou složku SAPMNT.
 
-Prostory úložiště s přímým přístupem se používá jako sdílený disk pro sdílenou složku se škálováním na víc instancí. Prostory úložiště s přímým přístupem můžete použít k vytvoření vysoce dostupného a škálovatelného úložiště pomocí serverů s místním úložištěm. Sdílené úložiště, které se používá pro sdílenou složku se škálováním na více instancí, například pro soubory globálního hostitele SAP, není jediným bodem selhání.
+Storage Spaces Direct se používá jako sdílený disk pro sdílenou složku s horizontálním navýšením kapacity. Storage Spaces Direct můžete použít k vytvoření vysoce dostupného a škálovatelného úložiště pomocí serverů s místním úložištěm. Sdílené úložiště, které se používá pro sdílenou složku s horizontálním navýšením kapacity, například pro globální hostitelské soubory SAP, není jediným bodem selhání.
 
-Při volbě Prostory úložiště s přímým přístupem zvažte tyto případy použití:
+Při výběru úložiště prostory direct, zvažte tyto případy použití:
 
-- Virtuální počítače, které se používají k sestavení Prostory úložiště s přímým přístupem clusteru, se musí nasadit v sadě dostupnosti Azure.
-- Pro zotavení po havárii Prostory úložiště s přímým přístupem clusteru můžete použít [služby Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage).
-- Roztažení clusteru prostorů úložiště s přímým přístupem v různých Zóny dostupnosti Azurech se nepodporuje.
+- Virtuální počítače používané k vytvoření clusteru Storage Spaces Direct je třeba nasadit v azure dostupnosti.
+- Pro zotavení po havárii přímého clusteru prostorů úložiště můžete použít [služby Azure Site Recovery Services](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage).
+- Není podporováno roztažení clusteru Direct prostoru úložiště na příčku různých zón dostupnosti Azure.
 
-### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Požadavky SAP pro sdílené složky se škálováním na více instancí v Azure
+### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Sap předpoklady pro horizontální navýšení kapacity sdílené složky v Azure
 
-Chcete-li použít sdílenou složku se škálováním na více systémů, musí systém splňovat následující požadavky:
+Chcete-li použít sdílenou složku s horizontálním navýšením kapacity, musí systém splňovat následující požadavky:
 
-* Alespoň dva uzly clusteru pro sdílenou složku se škálováním na více instancí.
+* Nejméně dva uzly clusteru pro sdílenou složku s horizontálním navýšením kapacity.
 * Každý uzel musí mít alespoň dva místní disky.
-* Z důvodu výkonu je nutné použít odolnost proti chybám *zrcadlení*:
-    * Obousměrné zrcadlení pro sdílenou složku se škálováním na více instancí se dvěma uzly clusteru.
-    * Třícestný zrcadlení pro sdílenou složku se škálováním na více instancí se třemi (nebo více) uzly clusteru.
-* Pro sdílenou složku se škálováním na více instancí doporučujeme tři (nebo víc) uzly clusteru s třícestným zrcadlením.
-    Tato instalace nabízí větší škálovatelnost a větší odolnost úložiště než nastavení sdílené složky se škálováním na více instancí se dvěma uzly clusteru a obousměrným zrcadlením.
-* Musíte použít prémiové disky Azure.
-* Doporučujeme, abyste používali Azure Managed Disks.
+* Z důvodu výkonu je nutné použít *zrcadlení odolnosti :*
+    * Obousměrné zrcadlení pro sdílenou složku s horizontálním navýšením kapacity se dvěma uzly clusteru.
+    * Třícestné zrcadlení pro sdílenou složku s horizontálním navýšením kapacity se třemi (nebo více) uzly clusteru.
+* Doporučujeme tři (nebo více) uzlů clusteru pro sdílenou složku s horizontálním navýšením kapacity s třícestným zrcadlením.
+    Toto nastavení nabízí větší škálovatelnost a větší odolnost úložiště než nastavení sdílené složky na horizontální navýšení kapacity se dvěma uzly clusteru a obousměrným zrcadlením.
+* Disky Azure Premium je nutné použít.
+* Doporučujeme používat spravované disky Azure.
 * Doporučujeme formátovat svazky pomocí odolného systému souborů (ReFS).
-    * Další informace najdete v tématu [SAP Note 1869038 – podpora SAP pro systém souborů ReFs][1869038] a [Výběr části systém souborů][planning-volumes-s2d-choosing-filesystem] v článku plánování svazků v prostory úložiště s přímým přístupem.
-    * Ujistěte se, že jste nainstalovali [kumulativní aktualizaci Microsoft KB4025334][kb4025334].
-* Můžete použít velikosti virtuálních počítačů Azure řady DS-Series nebo DSv2-Series.
-* Pro dobrý výkon sítě mezi virtuálními počítači, který je potřeba pro Prostory úložiště s přímým přístupem synchronizaci disku, použijte typ virtuálního počítače, který má alespoň vysokou šířku pásma sítě.
-    Další informace najdete v tématu Specifikace [DSv2-Series][dv2-series] a [DS-Series][ds-series] .
-* Doporučujeme, abyste si vyhradi nějakou nepřidělenou kapacitu ve fondu úložiště. Když ponecháte nějakou nepřidělenou kapacitu ve fondu úložiště, zajistíte místo na disku možnost opravit, pokud dojde k chybě jednotky. Tím se zlepší zabezpečení a výkon dat.  Další informace najdete v tématu [Volba velikosti svazku][choosing-the-size-of-volumes-s2d].
-* Nemusíte konfigurovat interní nástroj pro vyrovnávání zatížení Azure pro síťový název sdílené složky se škálováním na více instancí, jako je třeba pro \<\>globálního hostitele SAP. To se provádí pro \<název virtuálního hostitele ASCS/SCS\> instance SAP ASCS/SCS nebo v systému DBMS. Sdílená složka se škálováním na více instancí škáluje zatížení na všech uzlech clusteru. Služba \<SAP Global Host\> používá místní IP adresu pro všechny uzly clusteru.
+    * Další informace naleznete v [tématu SAP Note 1869038 – podpora SAP pro souborový systém REFs][1869038] a v kapitole [Výběr systému souborů][planning-volumes-s2d-choosing-filesystem] v článku Plánování svazků v úložišti Direct.
+    * Ujistěte se, že nainstalujete [kumulativní aktualizaci Microsoft KB4025334][kb4025334].
+* Můžete použít velikosti virtuálních počítačů Azure řady DSnebo DSv2.
+* Pro dobrý výkon sítě mezi virtuálními počítačemi, který je potřeba pro synchronizaci disku Storage Spaces Direct, použijte typ virtuálního počítače, který má alespoň "vysokou" šířku pásma sítě.
+    Další informace naleznete ve specifikacích [řady DSv2][dv2-series] a [DS-Series.][ds-series]
+* Doporučujeme rezervovat některé nepřidělené kapacity ve fondu úložiště. Ponechání některé nepřidělené kapacity ve fondu úložiště poskytuje svazky prostor pro opravu "na místě", pokud dojde k selhání jednotky. To zlepšuje bezpečnost dat a výkon.  Další informace naleznete v [tématu Výběr velikosti svazku][choosing-the-size-of-volumes-s2d].
+* Není nutné konfigurovat Azure interní vyrovnávání zatížení pro horizontální navýšení kapacity název \<sítě sdílení\>souborů, například pro globálního hostitele SAP . To se provádí \<pro název\> virtuálního hostitele ASCS/SCS instance SAP ASCS/SCS nebo pro DBMS. Horizontální navýšení kapacity sdílené složky škáluje zatížení ve všech uzlech clusteru. \<Globální hostitel\> SAP používá místní IP adresu pro všechny uzly clusteru.
 
 
 > [!IMPORTANT]
-> Nemůžete přejmenovat sdílenou složku SAPMNT, která odkazuje na \<globálního hostitele SAP\>. SAP podporuje pouze název sdílené složky "sapmnt".
+> Sdílenou složku SAPMNT nelze přejmenovat, \<což\>ukazuje na globálního hostitele SAP . SAP podporuje pouze název sdílené položky "sapmnt."
 >
-> Další informace najdete v tématu [SAP Note 2492395 – můžete změnit název sdílené složky sapmnt?][2492395]
+> Další informace naleznete v [tématu SAP Note 2492395 - Lze změnit název sdílené položky sapmnt?][2492395]
 
-### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Konfigurace instancí SAP ASCS/SCS a sdílené složky se škálováním na více systémů ve dvou clusterech
+### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Konfigurace instancí SAP ASCS/SCS a sdílené složky s horizontálním navýšením kapacity ve dvou clusterech
 
-Instance SAP ASCS/SCS můžete nasadit v jednom clusteru s vlastní rolí clusteru SAP \<SID\>. V takovém případě nakonfigurujete sdílenou složku se škálováním na více instancí v jiném clusteru s jinou rolí clusteru.
+Instance SAP ASCS/SCS můžete nasadit v jednom \<clusteru\> s vlastní rolí clusteru SAP SID. V takovém případě nakonfigurujete sdílenou složku horizontálního navýšení kapacity v jiném clusteru s jinou rolí clusteru.
 
 > [!IMPORTANT]
->V tomto scénáři je instance SAP ASCS/SCS nakonfigurovaná pro přístup k globálnímu hostiteli SAP pomocí cesty UNC \\\\&lt;SAP Global Host&gt;\sapmnt\\&lt;SID&gt;\SYS\.
+>V tomto scénáři je instance SAP ASCS/SCS nakonfigurována pro \\ \\ &lt;přístup&gt;ke globálnímu\\&lt;hostiteli&gt;SAP pomocí globálního hostitele SAP cesty SAP \sapmnt SID \SYS\.
 >
 
-![Obrázek 5: instance SAP ASCS/SCS a sdílená složka se škálováním na více systémů nasazená ve dvou clusterech][sap-ha-guide-figure-8007]
+![Obrázek 5: Instance SAP ASCS/SCS a sdílená složka s horizontálním navýšením kapacity nasazené ve dvou clusterech][sap-ha-guide-figure-8007]
 
-_**Obrázek 5:** Instance SAP ASCS/SCS a sdílená složka se škálováním na více systémů nasazená ve dvou clusterech_
+_**Obrázek 5:** Instance SAP ASCS/SCS a sdílená složka s horizontálním navýšením kapacity nasazené ve dvou clusterech_
 
 > [!IMPORTANT]
-> V cloudu Azure musí být každý cluster, který se používá pro SAP a sdílené složky se škálováním na více instancí, nasazený ve vlastní skupině dostupnosti Azure nebo v rámci Zóny dostupnosti Azure. Tím se zajistí distribuované umístění virtuálních počítačů clusteru v rámci příslušné infrastruktury Azure. Tato technologie podporuje nasazení zón dostupnosti.
+> V cloudu Azure musí být každý cluster, který se používá pro SAP a sdílené složky s horizontálním navýšením kapacity, nasazený ve vlastní sadě dostupnosti Azure nebo napříč zónami dostupnosti Azure. Tím zajistíte distribuované umístění virtuálních počítačích clusteru napříč základní infrastrukturou Azure. Tato technologie podporuje nasazení zóny dostupnosti.
 >
 
-## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>Obecná sdílená složka s úložištěm datakeep jako se sdílenými disky clusteru
+## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>Obecná sdílená složka se službou SIOS DataKeeper jako sdílené disky clusteru
 
 
-Obecná sdílená složka je další možnost pro dosažení sdílené složky s vysokou dostupností.
+Obecná sdílená složka je další možností pro dosažení vysoce dostupné sdílené složky.
 
-V takovém případě můžete jako sdílený disk clusteru použít řešení jiného výrobce.
+V takovém případě můžete použít řešení SIOS jiného výrobce jako sdílený disk clusteru.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Příprava infrastruktury Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instanci SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-file-share]
-* [Instalace SAP NetWeaver HA do clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instanci SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk]
-* [Nasazení Prostory úložiště s přímým přístupem souborového serveru se škálováním na více uzlů pro úložiště UPD v Azure][deploy-sofs-s2d-in-azure]
-* [Prostory úložiště s přímým přístupem ve Windows serveru 2016][s2d-in-win-2016]
-* [Hluboká podrobně: svazky v Prostory úložiště s přímým přístupem][deep-dive-volumes-in-s2d]
+* [Instalace sap netweaveru HA do clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instanci SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk]
+* [Nasazení souborového serveru s horizontálním navýšením kapacity úložiště se dvěma uzny pro úložiště UPD v Azure][deploy-sofs-s2d-in-azure]
+* [Prostory úložiště s přímým přístupem ve Windows Serveru 2016][s2d-in-win-2016]
+* [Hloubkové prosazení: Svazky v úložných prostorech Direct][deep-dive-volumes-in-s2d]

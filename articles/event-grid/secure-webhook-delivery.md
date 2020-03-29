@@ -1,6 +1,6 @@
 ---
-title: Zabezpečené doručování webhooků pomocí Azure AD v Azure Event Grid
-description: Popisuje, jak doručovat události do koncových bodů HTTPS chráněných pomocí Azure Active Directory pomocí Azure Event Grid
+title: Zabezpečené doručování WebHooku pomocí Azure AD v Azure Event Grid
+description: Popisuje, jak doručit události do koncových bodů HTTPS chráněných službou Azure Active Directory pomocí služby Azure Event Grid.
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,34 +8,34 @@ ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
 ms.openlocfilehash: 074378668b0516936e11968ea8c800d3daa667bb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931540"
 ---
-# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Publikovat události do Azure Active Directory chráněných koncových bodů
+# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Publikování událostí do koncových bodů chráněných službou Azure Active Directory
 
-Tento článek popisuje, jak využít Azure Active Directory k zabezpečení připojení mezi odběrem událostí a vaším koncovým bodem Webhooku. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
+Tento článek popisuje, jak využít azure active directory k zabezpečení připojení mezi odběr událostí a koncový bod webhooku. Přehled aplikací Azure AD a instancí najdete v tématu [Microsoft identity platformy (v2.0) přehled](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
 
-Tento článek používá Azure Portal k ukázce, ale funkci lze také povolit pomocí rozhraní příkazového řádku, PowerShellu nebo sad SDK.
+Tento článek používá portál Azure pro demonstraci, ale funkce může být také povolena pomocí rozhraní příkazového příkazu, prostředí PowerShell nebo sad SDK.
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="create-an-azure-ad-application"></a>Vytvoření aplikace Azure AD
 
-Začněte vytvořením aplikace Azure AD pro chráněný koncový bod. Viz https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
-    - Nakonfigurujte chráněné rozhraní API, které bude volat aplikace typu démon.
+Začněte vytvořením aplikace Azure AD pro váš chráněný koncový bod. Viz třída https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
+    - Nakonfigurujte chráněné rozhraní API tak, aby bylo voláno aplikací pro daemon.
     
-## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Povolení Event Grid používání aplikace Azure AD
+## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Povolení funkce Event Grid k používání aplikace Azure AD
 
-K vytvoření principu role a služby ve vaší aplikaci Azure AD použijte níže uvedený skript prostředí PowerShell. Budete potřebovat ID tenanta a ID objektu z vaší aplikace Azure AD:
+Pomocí skriptu Prostředí PowerShell níže k vytvoření role a princip utržení služby ve vaší aplikaci Azure AD. Budete potřebovat ID klienta a ID objektu z vaší aplikace Azure AD:
 
     > [!NOTE]
     > You must be a member of the [Azure AD Application Administrator role](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) to execute this script.
     
-1. Upravte $myTenantId skriptu PowerShellu tak, aby používal vaše ID tenanta Azure AD.
-1. Upravte $myAzureADApplicationObjectId skriptu PowerShellu tak, aby používal ID objektu vaší aplikace Azure AD.
+1. Upravte $myTenantId skriptu PowerShellu tak, aby používali ID klienta Azure AD.
+1. Úprava $myAzureADApplicationObjectId skriptu PowerShellu tak, aby používali ID objektu aplikace Azure AD
 1. Spusťte upravený skript.
 
 ```PowerShell
@@ -110,21 +110,21 @@ Write-Host "My Azure AD Application's Roles"
 Write-Host $myApp.AppRoles
 ```
     
-## <a name="configure-the-event-subscription"></a>Konfigurace odběru událostí
+## <a name="configure-the-event-subscription"></a>Konfigurace předplatného události
 
-V toku vytváření předplatného události vyberte koncový bod typ Webhook. Po předanému identifikátoru URI koncového bodu klikněte na kartu Další funkce v horní části okna vytvořit odběry událostí.
+V toku vytváření pro odběr událostí vyberte typ koncového bodu 'Web Hook'. Jakmile zadáte identifikátor URI koncového bodu, klikněte na kartu Další funkce v horní části okna vytvořit odběry událostí.
 
-![Výběr typu koncového bodu Webhook](./media/secure-webhook-delivery/select-webhook.png)
+![Vybrat webhook u koncového bodu](./media/secure-webhook-delivery/select-webhook.png)
 
-Na kartě Další funkce zaškrtněte políčko použít ověřování AAD a nakonfigurujte ID tenanta a ID aplikace:
+Na kartě Další funkce zaškrtněte políčko Použít ověřování AAD a nakonfigurujte ID klienta a ID aplikace:
 
-* Zkopírujte ID tenanta Azure AD z výstupu skriptu a zadejte ho do pole ID tenanta AAD.
+* Zkopírujte ID klienta Azure AD z výstupu skriptu a zadejte ho do pole ID klienta AAD.
 * Zkopírujte ID aplikace Azure AD z výstupu skriptu a zadejte ho do pole ID aplikace AAD.
 
-    ![Akce zabezpečení Webhooku](./media/secure-webhook-delivery/aad-configuration.png)
+    ![Akce Zabezpečené webové háky](./media/secure-webhook-delivery/aad-configuration.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o sledování doručení událostí najdete v tématu [monitorování Event Grid doručování zpráv](monitor-event-delivery.md).
-* Další informace o ověřovacím klíči najdete v tématu [Event Grid Security and Authentication](security-authentication.md).
-* Další informace o vytváření předplatného Azure Event Grid najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md).
+* Informace o dodávkách událostí monitorování naleznete v [tématu Sledování doručování zpráv v programu Event Grid](monitor-event-delivery.md).
+* Další informace o ověřovacím klíči naleznete v tématu [Zabezpečení a ověřování mřížky událostí](security-authentication.md).
+* Další informace o vytvoření předplatného Služby Azure Event Grid najdete v [tématu schéma předplatného služby Event Grid](subscription-creation-schema.md).

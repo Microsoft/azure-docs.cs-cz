@@ -1,6 +1,6 @@
 ---
-title: Instalace MySQL na virtuálním počítači s OpenSUSE v Azure
-description: Naučte se instalovat MySQL na virtuální počítač s OpenSUSE Linux v Azure.
+title: Instalace MySQL na virtuální počítač OpenSUSE v Azure
+description: Naučte se instalovat MySQL na virtuální mašitu OpenSUSE Linux v Azure.
 services: virtual-machines-linux
 author: cynthn
 ms.service: virtual-machines-linux
@@ -11,28 +11,28 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
 ms.openlocfilehash: 0d3f0a61da3654c31c99cfac43c86b081876f700
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944578"
 ---
-# <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Instalace MySQL na virtuálním počítači se systémem OpenSUSE Linux v Azure
+# <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Instalace MySQL na virtuální stroj s OpenSUSE Linuxem v Azure
 
-[MySQL](https://www.mysql.com) je oblíbená otevřená zdrojová databáze SQL. V tomto kurzu se dozvíte, jak vytvořit virtuální počítač s operačním systémem OpenSUSE Linux, a pak nainstalujte MySQL.
+[MySQL](https://www.mysql.com) je populární, open-source SQL databáze. Tento výukový program vám ukáže, jak vytvořit virtuální stroj se systémem OpenSUSE Linux, pak nainstalovat MySQL.
 
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-virtual-machine-running-opensuse-linux"></a>Vytvoření virtuálního počítače se systémem OpenSUSE Linux
+## <a name="create-a-virtual-machine-running-opensuse-linux"></a>Vytvoření virtuálního počítače s OpenSUSE Linuxem
 
-Nejdřív vytvořte skupinu prostředků. V tomto příkladu má skupina prostředků název *mySQSUSEResourceGroup* a je vytvořená v oblasti *východní USA* .
+Nejprve vytvořte skupinu prostředků. V tomto příkladu je skupina prostředků s názvem *mySQSUSEResourceGroup* a je vytvořena v oblasti *USA – východ.*
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Vytvořte virtuální počítač. V tomto příkladu je virtuální počítač pojmenovaný *myVM* a velikost virtuálního počítače je *Standard_D2s_v3*, ale měli byste si vybrat [Velikost virtuálního počítače](sizes.md) , kterou považujete za nejvhodnější pro vaše zatížení.
+Vytvořte virtuální hod. V tomto příkladu virtuální ho s názvem *myVM* a velikost virtuálního počítače je *Standard_D2s_v3*, ale měli byste zvolit [velikost virtuálního počítače](sizes.md) si myslíte, že je nejvhodnější pro vaše úlohy.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -42,7 +42,7 @@ az vm create --resource-group mySQLSUSEResourceGroup \
    --generate-ssh-keys
 ```
 
-Také je nutné přidat do skupiny zabezpečení sítě pravidlo pro povolení provozu přes port 3306 pro MySQL.
+Musíte také přidat pravidlo do skupiny zabezpečení sítě povolit provoz přes port 3306 pro MySQL.
 
 ```azurecli-interactive
 az vm open-port --port 3306 --resource-group mySQLSUSEResourceGroup --name myVM
@@ -50,16 +50,16 @@ az vm open-port --port 3306 --resource-group mySQLSUSEResourceGroup --name myVM
 
 ## <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
 
-K připojení k virtuálnímu počítači budete používat SSH. V tomto příkladu je veřejná IP adresa virtuálního počítače *10.111.112.113*. Po vytvoření virtuálního počítače můžete zobrazit IP adresu ve výstupu.
+Budete používat SSH pro připojení k virtuálnímu provozu. V tomto příkladu je veřejná IP adresa virtuálního počítačů *10.111.112.113*. Při vytváření virtuálního počítačů se ve výstupu zobrazí ip adresa.
 
 ```azurecli-interactive  
 ssh 10.111.112.113
 ```
 
  
-## <a name="update-the-vm"></a>Aktualizace virtuálního počítače
+## <a name="update-the-vm"></a>Aktualizace virtuálního virtuálního mísy
  
-Až budete připojeni k virtuálnímu počítači, nainstalujte aktualizace systému a opravy. 
+Po připojení k virtuálnímu virtuálnímu zařízení nainstalujte aktualizace systému a opravy. 
    
 ```bash
 sudo zypper update
@@ -70,24 +70,24 @@ Podle pokynů aktualizujte virtuální počítač.
 ## <a name="install-mysql"></a>Instalace MySQL 
 
 
-Nainstalujte si MySQL do virtuálního počítače přes SSH. Podle potřeby odpovězte na výzvy.
+Nainstalujte MySQL ve Virtuálním mísu přes SSH. Podle potřeby odpovídejte na výzvy.
 
 ```bash
 sudo zypper install mysql
 ```
  
-Nastavte MySQL tak, aby se spouštěl při spuštění systému. 
+Nastavte MySQL spustit, když se systém spustí. 
 
 ```bash
 sudo systemctl enable mysql
 ```
-Ověřte, jestli je MySQL povolený.
+Ověřte, zda je mysql povoleno.
 
 ```bash
 systemctl is-enabled mysql
 ```
 
-Mělo by se vrátit: Enabled.
+To by se mělo vrátit: povoleno.
 
 Restartujte server.
 
@@ -96,11 +96,11 @@ sudo reboot
 ```
 
 
-## <a name="mysql-password"></a>Heslo MySQL
+## <a name="mysql-password"></a>MySQL heslo
 
-Po instalaci je kořenové heslo MySQL ve výchozím nastavení prázdné. Spusťte **instalační skript zabezpečeného\_mysql\_** a zabezpečte MySQL. Skript vás vyzve ke změně kořenového hesla MySQL, odebrání anonymních uživatelských účtů, zakázání vzdáleného kořenového přihlášení, odebrání testovacích databází a načtení tabulky oprávnění. 
+Po instalaci je kořenové heslo MySQL ve výchozím nastavení prázdné. Spusťte **mysql\_bezpečné\_instalační** skript pro zabezpečení MySQL. Skript vás vyzve ke změně hesla ke kořenovému adresáři MySQL, odebrání anonymních uživatelských účtů, zakázání vzdáleného přihlášení kořenového adresáře, odebrání testovacích databází a opětovnénačtení tabulky oprávnění. 
 
-Po restartování serveru se znovu připojte k virtuálnímu počítači přes SSH.
+Po restartování serveru znovu ssh na virtuální počítač.
 
 ```azurecli-interactive  
 ssh 10.111.112.113
@@ -112,14 +112,14 @@ ssh 10.111.112.113
 mysql_secure_installation
 ```
 
-## <a name="sign-in-to-mysql"></a>Přihlásit se k MySQL
+## <a name="sign-in-to-mysql"></a>Přihlaste se k MySQL
 
-Nyní se můžete přihlásit a zadat dotaz MySQL.
+Nyní se můžete přihlásit a zadat výzvu MySQL.
 
 ```bash  
 mysql -u root -p
 ```
-Tím se přepnete na výzvu MySQL, kde můžete vystavit příkazy SQL pro interakci s databází.
+Tím se přepnete na výzvu MySQL, kde můžete vydávat příkazy SQL pro interakci s databází.
 
 Nyní vytvořte nového uživatele MySQL.
 
@@ -127,22 +127,22 @@ Nyní vytvořte nového uživatele MySQL.
 CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
-Střední dvojtečka (;) na konci řádku je rozhodující pro ukončení příkazu.
+Středník (;) na konci řádku je rozhodující pro ukončení příkazu.
 
 
 ## <a name="create-a-database"></a>Vytvoření databáze
 
 
-Vytvořte databázi a udělte jim `mysqluser` uživatelská oprávnění.
+Vytvořte databázi `mysqluser` a udělte uživateli oprávnění.
 
 ```sql
 CREATE DATABASE testdatabase;
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
-Uživatelská jména a hesla databáze jsou používány pouze skripty připojujícími se k databázi.  Názvy uživatelských účtů databáze nutně nepředstavuje skutečné uživatelské účty v systému.
+Uživatelská jména a hesla databáze jsou používány pouze skripty, které se připojují k databázi.  Názvy uživatelských účtů databáze nemusí nutně představovat skutečné uživatelské účty v systému.
 
-Povolit přihlášení z jiného počítače. V tomto příkladu se IP adresa počítače, ze kterého se povoluje přihlášení, *10.112.113.114*.
+Povolte přihlášení z jiného počítače. V tomto příkladu je ip adresa počítače povolit přihlášení z *10.112.113.114*.
 
 ```sql
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';
@@ -156,7 +156,7 @@ quit
 
 
 ## <a name="next-steps"></a>Další kroky
-Podrobnosti o MySQL najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc).
+Podrobnosti o MySQL naleznete v [dokumentaci MySQL](https://dev.mysql.com/doc).
 
 
 

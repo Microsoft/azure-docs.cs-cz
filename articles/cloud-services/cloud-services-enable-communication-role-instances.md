@@ -1,6 +1,6 @@
 ---
-title: Komunikace pro role v Cloud Services | Microsoft Docs
-description: Instance rolí v Cloud Services můžou mít pro ně definované koncové body (http, https, TCP, UDP), které komunikují s vnějším nebo mezi ostatními instancemi role.
+title: Komunikace o rolích v cloudových službách | Dokumenty společnosti Microsoft
+description: Instance rolí v cloudových službách mohou mít koncové body (http, https, tcp, udp) definované pro ně, které komunikují s vnějším i vnějšími instancemi role.
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -10,21 +10,21 @@ ms.topic: article
 ms.date: 12/14/2016
 ms.author: tagore
 ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386336"
 ---
-# <a name="enable-communication-for-role-instances-in-azure"></a>Povolení komunikace pro instance rolí v Azure
-Role cloudových služeb komunikují prostřednictvím interních a externích připojení. Externím připojením se říká **vstupní koncové body** , zatímco interní připojení se nazývají **interní koncové body**. Toto téma popisuje, jak upravit [definici služby](cloud-services-model-and-package.md#csdef) pro vytváření koncových bodů.
+# <a name="enable-communication-for-role-instances-in-azure"></a>Povolení komunikace pro instance rolí v azure
+Role cloudových služeb komunikují prostřednictvím interních a externích připojení. Externí připojení se nazývají **vstupní koncové body,** zatímco interní připojení se nazývají **interní koncové body**. Toto téma popisuje, jak upravit [definici služby](cloud-services-model-and-package.md#csdef) k vytvoření koncových bodů.
 
 ## <a name="input-endpoint"></a>Vstupní koncový bod
-Vstupní koncový bod se používá, když chcete port vystavit vně. Zadejte typ protokolu a port koncového bodu, který pak platí pro externí i interní porty pro koncový bod. Pokud chcete, můžete pro koncový bod zadat jiný interní port s atributem [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) .
+Vstupní koncový bod se používá, pokud chcete vystavit port na vnější straně. Zadáte typ protokolu a port koncového bodu, který pak platí pro externí i vnitřní porty pro koncový bod. Pokud chcete, můžete zadat jiný vnitřní port pro koncový bod s atributem [localPort.](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint)
 
-Vstupní koncový bod může používat tyto protokoly: **http, https, TCP, UDP**.
+Vstupní koncový bod může používat následující protokoly: **http, https, tcp, udp**.
 
-Chcete-li vytvořit vstupní koncový bod, přidejte podřízený element **InputEndpoint** do elementu **Endpoints** v rámci webové role nebo role pracovního procesu.
+Chcete-li vytvořit vstupní koncový bod, přidejte podřízený prvek **InputEndpoint** do prvku **Endpoints** webové nebo pracovní role.
 
 ```xml
 <Endpoints>
@@ -32,12 +32,12 @@ Chcete-li vytvořit vstupní koncový bod, přidejte podřízený element **Inpu
 </Endpoints> 
 ```
 
-## <a name="instance-input-endpoint"></a>Vstupní koncový bod instance
-Vstupní koncové body instance jsou podobné vstupním koncovým bodům, ale umožňují mapovat konkrétní veřejné porty pro jednotlivé instance role pomocí přesměrování portů v nástroji pro vyrovnávání zatížení. Můžete zadat jeden veřejný port nebo rozsah portů.
+## <a name="instance-input-endpoint"></a>Koncový bod vstupní instance
+Koncové body vstupu instance jsou podobné vstupním koncovým bodům, ale umožňují mapovat konkrétní veřejné porty pro každou jednotlivou instanci role pomocí předávání portů v systému vyrovnávání zatížení. Můžete určit jeden veřejný port nebo rozsah portů.
 
-Vstupní koncový bod instance může jako protokol používat jenom **TCP** nebo **UDP** .
+Koncový bod vstupní instance může jako protokol používat pouze **protokol tcp** nebo **udp.**
 
-Chcete-li vytvořit vstupní koncový bod instance, přidejte podřízený element **InstanceInputEndpoint** do elementu **Endpoints** v rámci webové role nebo role pracovního procesu.
+Chcete-li vytvořit koncový bod vstupu instance, přidejte podřízený prvek **InstanceInputEndpoint** do elementu **Endpoints** webové nebo pracovní role.
 
 ```xml
 <Endpoints>
@@ -50,11 +50,11 @@ Chcete-li vytvořit vstupní koncový bod instance, přidejte podřízený eleme
 ```
 
 ## <a name="internal-endpoint"></a>Interní koncový bod
-Vnitřní koncové body jsou k dispozici pro komunikaci mezi instancemi. Port je nepovinný a je-li tento parametr vynechán, je k koncovému bodu přiřazen dynamický port. Lze použít rozsah portů. Pro každou roli je povolený limit pěti interních koncových bodů.
+Interní koncové body jsou k dispozici pro komunikaci mezi instancemi. Port je volitelný a pokud je vynechán, dynamický port je přiřazen ke koncovému bodu. Lze použít rozsah portů. Existuje limit pěti interních koncových bodů na roli.
 
-Interní koncový bod může používat následující protokoly: **http, TCP, UDP, any**.
+Interní koncový bod může používat následující protokoly: **http, tcp, udp, any**.
 
-Chcete-li vytvořit interní vstupní koncový bod, přidejte podřízený element **InternalEndpoint** do elementu **Endpoints** v rámci webové role nebo role pracovního procesu.
+Chcete-li vytvořit vnitřní vstupní koncový bod, přidejte podřízený prvek **InternalEndpoint** do prvku **Endpoints** webové nebo pracovní role.
 
 ```xml
 <Endpoints>
@@ -74,7 +74,7 @@ Můžete také použít rozsah portů.
 
 
 ## <a name="worker-roles-vs-web-roles"></a>Role pracovního procesu vs. webové role
-Při práci s rolemi Worker i web je jeden malý rozdíl s koncovými body. Webová role musí mít minimálně jeden vstupní koncový bod pomocí protokolu **http** .
+Existuje jeden menší rozdíl s koncovými body při práci s pracovními a webovými rolemi. Webová role musí mít minimálně jeden vstupní koncový bod pomocí protokolu **HTTP.**
 
 ```xml
 <Endpoints>
@@ -84,31 +84,31 @@ Při práci s rolemi Worker i web je jeden malý rozdíl s koncovými body. Webo
 ```
 
 ## <a name="using-the-net-sdk-to-access-an-endpoint"></a>Použití sady .NET SDK pro přístup ke koncovému bodu
-Spravovaná knihovna Azure poskytuje metody pro komunikaci instancí rolí za běhu. Z kódu spuštěného v instanci role můžete načíst informace o existenci ostatních instancí rolí a jejich koncových bodech a také informace o aktuální instanci role.
+Správa Azure poskytuje metody pro instance rolí pro komunikaci za běhu. Z kódu spuštěného v instanci role můžete načíst informace o existenci dalších instancí rolí a jejich koncových bodů, stejně jako informace o aktuální instanci role.
 
 > [!NOTE]
-> Můžete načíst jenom informace o instancích rolí, které běží v cloudové službě, a které definují aspoň jeden interní koncový bod. Nemůžete získat data o instancích rolí spuštěných v jiné službě.
+> Můžete načíst pouze informace o instancích rolí, které jsou spuštěny ve vaší cloudové službě a které definují alespoň jeden interní koncový bod. Nelze získat data o instancích rolí spuštěných v jiné službě.
 > 
 > 
 
-K načtení instancí role můžete použít vlastnost [Instances](/previous-versions/azure/reference/ee741904(v=azure.100)) . Nejprve použijte [CurrentRoleInstance](/previous-versions/azure/reference/ee741907(v=azure.100)) a vraťte odkaz na aktuální instanci role a potom pomocí vlastnosti [role](/previous-versions/azure/reference/ee741918(v=azure.100)) vraťte odkaz na samotnou roli.
+Vlastnost [Instances](/previous-versions/azure/reference/ee741904(v=azure.100)) můžete použít k načtení instancí role. Nejprve použijte [CurrentRoleInstance](/previous-versions/azure/reference/ee741907(v=azure.100)) vrátit odkaz na aktuální instanci role a potom použijte [Role](/previous-versions/azure/reference/ee741918(v=azure.100)) vlastnost vrátit odkaz na samotnou roli.
 
-Pokud se k instanci role připojíte programově prostřednictvím .NET SDK, je poměrně snadné získat přístup k informacím o koncových bodech. Například po připojení ke konkrétnímu prostředí role můžete získat port konkrétního koncového bodu s tímto kódem:
+Když se k instanci role připojíte programově prostřednictvím sady .NET SDK, je relativně snadný přístup k informacím o koncovém bodu. Například poté, co jste již připojeni k určitému prostředí role, můžete získat port konkrétního koncového bodu s tímto kódem:
 
 ```csharp
 int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].IPEndpoint.Port;
 ```
 
-Vlastnost **Instances** vrátí kolekci objektů **RoleInstance** . Tato kolekce vždy obsahuje aktuální instanci. Pokud role nedefinuje interní koncový bod, kolekce zahrnuje aktuální instanci, ale ne jiné instance. Počet instancí rolí v kolekci bude vždycky 1 v případě, že pro danou roli není definovaný žádný interní koncový bod. Pokud role definuje interní koncový bod, jeho instance jsou zjistitelné za běhu a počet instancí v kolekci bude odpovídat počtu instancí zadaných pro roli v konfiguračním souboru služby.
+Vlastnost **Instancevrátí** kolekci objektů **InstanceInstance.** Tato kolekce vždy obsahuje aktuální instanci. Pokud role nedefinuje vnitřní koncový bod, kolekce obsahuje aktuální instanci, ale žádné jiné instance. Počet instancí role v kolekci bude vždy 1 v případě, kdy je pro roli definován žádný vnitřní koncový bod. Pokud role definuje vnitřní koncový bod, jeho instance jsou zjistitelné za běhu a počet instancí v kolekci bude odpovídat počtu instancí určených pro roli v konfiguračním souboru služby.
 
 > [!NOTE]
-> Spravovaná knihovna Azure neposkytuje způsob, jak určit stav ostatních instancí rolí, ale pokud vaše služba potřebuje tuto funkci, můžete tuto posouzení implementovat sami. Pomocí [Azure Diagnostics](cloud-services-dotnet-diagnostics.md) můžete získat informace o spuštěných instancích rolí.
+> Správa Azure neposkytuje prostředky k určení stavu jiných instancí role, ale můžete implementovat tato posouzení stavu sami, pokud vaše služba potřebuje tuto funkci. [Diagnostika Azure](cloud-services-dotnet-diagnostics.md) můžete použít k získání informací o spuštění instancí rolí.
 > 
 > 
 
-Chcete-li zjistit číslo portu pro interní koncový bod instance role, můžete použít vlastnost [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) k vrácení objektu Dictionary, který obsahuje názvy koncových bodů a jejich odpovídajících IP adres a portů. Vlastnost [IPEndPoint](/previous-versions/azure/reference/ee741919(v=azure.100)) vrací IP adresu a port pro zadaný koncový bod. Vlastnost **PublicIPEndpoint** vrací port pro koncový bod s vyrovnáváním zatížení. Část IP adresy vlastnosti **PublicIPEndpoint** se nepoužívá.
+Chcete-li určit číslo portu pro interní koncový bod v instanci role, můžete použít vlastnost [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) k vrácení objektu Dictionary, který obsahuje názvy koncových bodů a jejich odpovídající adresy IP a porty. Vlastnost [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) vrátí adresu IP a port pro zadaný koncový bod. Vlastnost **PublicIPEndpoint** vrátí port pro koncový bod s vyrovnáváním zatížení. Část ip adresy vlastnosti **PublicIPEndpoint** se nepoužívá.
 
-Tady je příklad, který prochází instance rolí.
+Zde je příklad, který itezuje instance rolí.
 
 ```csharp
 foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Instances)
@@ -121,10 +121,10 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 }
 ```
 
-Tady je příklad role pracovního procesu, která načte koncový bod vystavený prostřednictvím definice služby a začne naslouchat připojení.
+Zde je příklad role pracovního procesu, který získá koncový bod vystavené prostřednictvím definice služby a začne naslouchat připojení.
 
 > [!WARNING]
-> Tento kód bude fungovat jenom u nasazené služby. Při spuštění v emulátoru služby výpočty Azure se prvky konfigurace služby, které vytvářejí přímé koncové body portů (**InstanceInputEndpoint** elementy), ignorují.
+> Tento kód bude fungovat pouze pro nasazenou službu. Při spuštění v Azure Compute Emulator, prvky konfigurace služby, které vytvářejí cílové body portu **(InstanceInputEndpoint** prvky) jsou ignorovány.
 > 
 > 
 
@@ -212,12 +212,12 @@ namespace WorkerRole1
 }
 ```
 
-## <a name="network-traffic-rules-to-control-role-communication"></a>Pravidla síťového přenosu pro řízení komunikace mezi rolemi
-Po definování vnitřních koncových bodů můžete přidat pravidla síťových přenosů (na základě koncových bodů, které jste vytvořili) a určit tak, jak mohou instance rolí vzájemně komunikovat. Následující diagram znázorňuje některé běžné scénáře pro řízení komunikace role:
+## <a name="network-traffic-rules-to-control-role-communication"></a>Pravidla síťového provozu pro řízení komunikace rolí
+Po definování interních koncových bodů můžete přidat pravidla síťového provozu (na základě koncových bodů, které jste vytvořili) a řídit tak, jak mohou instance rolí vzájemně komunikovat. Následující diagram znázorňuje některé běžné scénáře pro řízení komunikace rolí:
 
-![Scénáře pravidel přenosů sítě](./media/cloud-services-enable-communication-role-instances/scenarios.png "Scénáře pravidel přenosů sítě")
+![Scénáře pravidel síťového provozu](./media/cloud-services-enable-communication-role-instances/scenarios.png "Scénáře pravidel síťového provozu")
 
-Následující příklad kódu ukazuje definice rolí pro role zobrazené v předchozím diagramu. Každá definice role zahrnuje aspoň jeden definovaný interní koncový bod:
+Následující příklad kódu ukazuje definice rolí zobrazených v předchozím diagramu. Každá definice role obsahuje alespoň jeden vnitřní koncový bod definovaný:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -249,14 +249,14 @@ Následující příklad kódu ukazuje definice rolí pro role zobrazené v pře
 ```
 
 > [!NOTE]
-> Omezení komunikace mezi rolemi se může vyskytnout s interními koncovými body pevných i automaticky přiřazených portů.
+> Omezení komunikace mezi rolemi může nastat s interními koncovými body pevných i automaticky přiřazených portů.
 > 
 > 
 
-Ve výchozím nastavení platí, že po definování interního koncového bodu může komunikace směrovat z jakékoli role do interního koncového bodu role bez jakýchkoli omezení. Chcete-li omezit komunikaci, je nutné přidat element **NetworkTrafficRules** do elementu **ServiceDefinition** v souboru definice služby.
+Ve výchozím nastavení po definování vnitřní koncový bod komunikace může tok z libovolné role do vnitřníkoncový bod role bez omezení. Chcete-li omezit komunikaci, je nutné přidat prvek **NetworkTrafficRules** do prvku **ServiceDefinition** v souboru definice služby.
 
 ### <a name="scenario-1"></a>Scénář 1
-Povolte síťový provoz jenom z **WebRole1** do **WorkerRole1**.
+Povolit pouze síťový provoz z **WebRole1** **workerrole1**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -275,7 +275,7 @@ Povolte síťový provoz jenom z **WebRole1** do **WorkerRole1**.
 ```
 
 ### <a name="scenario-2"></a>Scénář 2
-Povoluje jenom síťový provoz z **WebRole1** do **WorkerRole1** a **WorkerRole2**.
+Umožňuje pouze síťový provoz z **WebRole1** **workerrole1** a **WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -294,7 +294,7 @@ Povoluje jenom síťový provoz z **WebRole1** do **WorkerRole1** a **WorkerRole
 ```
 
 ### <a name="scenario-3"></a>Scénář 3
-Povoluje jenom síťový provoz z **WebRole1** do **WorkerRole1**a **WorkerRole1** až **WorkerRole2**.
+Umožňuje pouze síťový provoz z **WebRole1** **workerrole1**a **WorkerRole1** **workerrole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -323,7 +323,7 @@ Povoluje jenom síťový provoz z **WebRole1** do **WorkerRole1**a **WorkerRole1
 ```
 
 ### <a name="scenario-4"></a>Scénář 4
-Povoluje jenom síťový provoz od **WebRole1** do **WorkerRole1**, **WebRole1** do **WorkerRole2**a **WorkerRole1** až **WorkerRole2**.
+Umožňuje pouze síťový provoz z **WebRole1** **workerrole1**, **WebRole1** **workerrole2**a **WorkerRole1** **workerrole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -363,10 +363,10 @@ Povoluje jenom síťový provoz od **WebRole1** do **WorkerRole1**, **WebRole1**
 </ServiceDefinition>
 ```
 
-Odkaz na schéma XML pro výše použité prvky lze nalézt [zde](/previous-versions/azure/reference/gg557551(v=azure.100)).
+Odkaz na schéma XML pro výše použité prvky naleznete [zde](/previous-versions/azure/reference/gg557551(v=azure.100)).
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o [modelu](cloud-services-model-and-package.md)cloudové služby.
+Přečtěte si další informace o [modelu](cloud-services-model-and-package.md)cloudové služby .
 
 
 

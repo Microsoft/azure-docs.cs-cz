@@ -1,43 +1,43 @@
 ---
-title: Centra úloh v Durable Functions – Azure
-description: Zjistěte, co je centrum úloh v rozšíření Durable Functions pro Azure Functions. Naučte se konfigurovat centra úloh.
+title: Centra úloh v odolných funkcích – Azure
+description: Zjistěte, co je centrum úloh v rozšíření Durable Functions pro funkce Azure. Přečtěte si, jak nakonfigurovat centra úloh.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76262482"
 ---
-# <a name="task-hubs-in-durable-functions-azure-functions"></a>Centra úloh v Durable Functions (Azure Functions)
+# <a name="task-hubs-in-durable-functions-azure-functions"></a>Centra úloh v odolných funkcích (funkce Azure)
 
-*Centrum úloh* v [Durable Functions](durable-functions-overview.md) je logický kontejner pro Azure Storage prostředky, které se používají pro orchestrace. Funkce Orchestrator a Activity můžou vzájemně fungovat, když patří do stejného centra úloh.
+*Centrum úloh* v oblasti [Trvalé funkce](durable-functions-overview.md) je logický kontejner pro prostředky Azure Storage, které se používají pro orchestrations. Funkce Orchestrator a aktivity mohou vzájemně komunikovat pouze v případě, že patří do stejného centra úloh.
 
-Pokud účet úložiště sdílí víc aplikací funkcí, *musí* být každá aplikace Function App nakonfigurovaná s názvem samostatného centra úloh. Účet úložiště může obsahovat několik Center úloh. Následující diagram znázorňuje jedno centrum úloh na aplikaci Function App ve sdílených a vyhrazených účtech úložiště.
+Pokud více funkčních aplikací sdílí účet úložiště, *musí* být každá aplikace funkce nakonfigurována se samostatným názvem centra úloh. Účet úložiště může obsahovat více rozbočovačů úloh. Následující diagram znázorňuje jedno centrum úloh na aplikaci funkce ve sdílených a vyhrazených účtech úložiště.
 
-![Diagram znázorňující sdílené a vyhrazené účty úložiště](./media/durable-functions-task-hubs/task-hubs-storage.png)
+![Diagram znázorňující sdílené a vyhrazené účty úložiště.](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
 ## <a name="azure-storage-resources"></a>Prostředky Azure Storage
 
 Centrum úloh se skládá z následujících prostředků úložiště:
 
-* Jedna nebo více front ovládacích prvků.
+* Jedna nebo více kontrolních front.
 * Jedna fronta pracovních položek.
-* Jedna tabulka historie.
-* Jedna instance tabulky
-* Jeden kontejner úložiště obsahující jeden nebo více objektů BLOB zapůjčení
-* Kontejner úložiště obsahující velkou datovou část zprávy (je-li k dispozici).
+* Jeden historický stůl.
+* Tabulka jednu instancí.
+* Jeden kontejner úložiště obsahující jeden nebo více objektů BLOB zapůjčení.
+* Kontejner úložiště obsahující velké datové části zpráv, pokud je to možné.
 
-Všechny tyto prostředky se vytvoří automaticky ve výchozím účtu Azure Storage, když se spustí funkce Orchestrator, entita nebo aktivita, nebo se naplánuje jejich spuštění. Článek o [výkonu a škálování](durable-functions-perf-and-scale.md) vysvětluje, jak se tyto prostředky používají.
+Všechny tyto prostředky se vytvoří automaticky ve výchozím účtu Úložiště Azure, když se spustí nebo se mají spustit funkce orchestrátoru, entity nebo aktivity. [Výkon a škálování](durable-functions-perf-and-scale.md) článek vysvětluje, jak se používají tyto prostředky.
 
-## <a name="task-hub-names"></a>Názvy centra úloh
+## <a name="task-hub-names"></a>Názvy rozbočovačů úloh
 
-Centra úloh jsou identifikována názvem, který je deklarován v souboru *Host. JSON* , jak je znázorněno v následujícím příkladu:
+Centra úloh jsou označena názvem, který je deklarován v souboru *host.json,* jak je znázorněno v následujícím příkladu:
 
-### <a name="hostjson-functions-20"></a>Host. JSON (funkce 2,0)
+### <a name="hostjson-functions-20"></a>host.json (Funkce 2.0)
 
 ```json
 {
@@ -50,7 +50,7 @@ Centra úloh jsou identifikována názvem, který je deklarován v souboru *Host
 }
 ```
 
-### <a name="hostjson-functions-1x"></a>Host. JSON (funkce 1. x)
+### <a name="hostjson-functions-1x"></a>host.json (Funkce 1.x)
 
 ```json
 {
@@ -60,9 +60,9 @@ Centra úloh jsou identifikována názvem, který je deklarován v souboru *Host
 }
 ```
 
-Centra úloh je také možné konfigurovat pomocí nastavení aplikace, jak je znázorněno v následujícím souboru `host.json` příkladu:
+Centra úloh lze také nakonfigurovat pomocí nastavení aplikace, jak je znázorněno v následujícím `host.json` ukázkovém souboru:
 
-### <a name="hostjson-functions-10"></a>Host. JSON (funkce 1,0)
+### <a name="hostjson-functions-10"></a>host.json (Funkce 1.0)
 
 ```json
 {
@@ -72,7 +72,7 @@ Centra úloh je také možné konfigurovat pomocí nastavení aplikace, jak je z
 }
 ```
 
-### <a name="hostjson-functions-20"></a>Host. JSON (funkce 2,0)
+### <a name="hostjson-functions-20"></a>host.json (Funkce 2.0)
 
 ```json
 {
@@ -85,7 +85,7 @@ Centra úloh je také možné konfigurovat pomocí nastavení aplikace, jak je z
 }
 ```
 
-Název centra úloh se nastaví na hodnotu nastavení aplikace `MyTaskHub`. Následující `local.settings.json` ukazuje, jak definovat `MyTaskHub` nastavení jako `samplehubname`:
+Název centra úloh bude nastaven na `MyTaskHub` hodnotu nastavení aplikace. Následující `local.settings.json` ukazuje, jak definovat `MyTaskHub` nastavení `samplehubname`jako :
 
 ```json
 {
@@ -96,9 +96,9 @@ Název centra úloh se nastaví na hodnotu nastavení aplikace `MyTaskHub`. Nás
 }
 ```
 
-Následující kód ukazuje, jak napsat funkci, která používá [vazbu klienta Orchestration](durable-functions-bindings.md#orchestration-client) pro práci s centrem úloh, které je nakonfigurováno jako nastavení aplikace:
+Následující kód ukazuje, jak napsat funkci, která používá [vazbu klienta orchestrace](durable-functions-bindings.md#orchestration-client) pro práci s centrem úloh, které je nakonfigurováno jako nastavení aplikace:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -119,11 +119,11 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> Předchozí C# příklad je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklad Jazyka C# je pro trvalé funkce 2.x. Pro trvalé funkce 1.x, `DurableOrchestrationContext` musíte `IDurableOrchestrationContext`použít místo . Další informace o rozdílech mezi verzemi naleznete v článku [verze durable functions.](durable-functions-versions.md)
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Vlastnost centra úloh v souboru `function.json` se nastavuje prostřednictvím nastavení aplikace:
+Vlastnost centra úloh `function.json` v souboru je nastavena pomocí nastavení aplikace:
 
 ```json
 {
@@ -136,19 +136,19 @@ Vlastnost centra úloh v souboru `function.json` se nastavuje prostřednictvím 
 
 ---
 
-Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a číslice. Pokud tento parametr nezadáte, použije se výchozí název centra úloh, jak je znázorněno v následující tabulce:
+Názvy rozbočovačů úloh musí začínat písmenem a skládat pouze z písmen a číslic. Pokud není zadán, bude použit výchozí název rozbočovače úloh, jak je znázorněno v následující tabulce:
 
-| Trvalá verze rozšíření | Výchozí název centra úloh |
+| Odolná verze rozšíření | Výchozí název centra úloh |
 | - | - |
-| 2.x | Při nasazení v Azure je název centra úloh odvozený od názvu _aplikace Function App_. Při spuštění mimo Azure se výchozí název centra úloh `TestHubName`. |
-| verze | Výchozí název centra úloh pro všechna prostředí se `DurableFunctionsHub`. |
+| 2.x | Při nasazení v Azure se název centra úloh odvozuje z názvu _aplikace funkce_. Když běží mimo Azure, výchozí název `TestHubName`centra úloh je . |
+| 1.x | Výchozí název centra úloh pro `DurableFunctionsHub`všechna prostředí je . |
 
-Další informace o rozdílech mezi verzemi rozšíření naleznete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+Další informace o rozdílech mezi verzemi rozšíření naleznete v článku [verze durable functions.](durable-functions-versions.md)
 
 > [!NOTE]
-> Název se odlišuje od jednoho centra úkolů v případě, že je ve sdíleném účtu úložiště víc Center úkolů. Pokud máte více aplikací Function App sdílejících sdílený účet úložiště, je nutné explicitně nakonfigurovat různé názvy pro každé centrum úloh v souborech *Host. JSON* . V opačném případě budou aplikace s více aplikacemi vzájemně soutěžit na zprávy, což by mohlo vést k nedefinovanému chování, včetně orchestrace neočekávaně zablokování ve `Pending` nebo `Running`m stavu.
+> Název je to, co odlišuje jeden rozbočovač úloh od druhého, když existuje více center úloh v účtu sdíleného úložiště. Pokud máte více aplikací funkcí, které sdílejí účet sdíleného úložiště, musíte explicitně nakonfigurovat různé názvy pro každé centrum úloh v souborech *host.json.* V opačném případě více funkcí aplikace bude soutěžit mezi sebou pro zprávy, což by mohlo mít `Pending` `Running` za následek nedefinované chování, včetně orchestrace získání neočekávaně "zaseknutý" v nebo stavu.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Naučte se zvládnout správu verzí orchestrace.](durable-functions-versioning.md)
+> [Naučte se zpracovat správu verzí orchestrace](durable-functions-versioning.md)

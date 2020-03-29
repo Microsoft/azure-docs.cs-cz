@@ -1,6 +1,6 @@
 ---
-title: Použití vlastních tras Azure k povolení aktivace prostřednictvím služby správy klíčů s vynuceným tunelovým propojením | Microsoft Docs
-description: Ukazuje, jak pomocí vlastních tras Azure povolit aktivaci pomocí služby správy klíčů při vynuceném tunelování v Azure.
+title: Pomocí vlastních tras Azure povolte aktivaci KMS s vynuceným tunelovým propojením | Dokumenty společnosti Microsoft
+description: Ukazuje, jak používat vlastní trasy Azure k povolení aktivace KMS při použití vynuceného tunelového propojení v Azure.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -14,48 +14,48 @@ ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
 ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920157"
 ---
-# <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Aktivace systému Windows ve scénáři vynuceného tunelování se nezdařila
+# <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Aktivace systému Windows se nezdaří v případě vynuceného tunelového propojení
 
-Tento článek popisuje, jak vyřešit potíže s aktivací služby správy klíčů, ke kterým může dojít při povolování vynuceného tunelového propojení v rámci připojení VPN typu Site-to-site nebo v ExpressRoute scénářích.
+Tento článek popisuje, jak vyřešit problém aktivace služby KMS, ke kterému může dojít při povolení vynuceného tunelování v připojení VPN mezi lokalitami nebo ve scénářích ExpressRoute.
 
 ## <a name="symptom"></a>Příznak
 
-V podsítích Azure Virtual Network povolíte [vynucené tunelování](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) , které směruje veškerý internetový provoz zpátky do vaší místní sítě. V tomto scénáři se virtuální počítače Azure se systémem Windows nepodaří aktivovat systém Windows.
+Vynucené [tunelové propojení](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) v podsítích virtuálnísítě Azure umožníte tak, že přesměrujete veškerý internetový provoz zpět do místní sítě. V tomto scénáři virtuální počítače Azure (VM), které běží windows nezdaří aktivovat Windows.
 
 ## <a name="cause"></a>Příčina
 
-Virtuální počítače Azure s Windows se musí připojit k serveru služby správy klíčů Azure pro aktivaci Windows. Aktivace vyžaduje, aby žádost o aktivaci pocházela z veřejné IP adresy Azure. Ve scénáři vynucené tunelování se aktivace nezdařila, protože požadavek na aktivaci pochází z místní sítě, nikoli z veřejné IP adresy Azure.
+Virtuální počítače Azure pro Windows se musí připojit k serveru Azure KMS pro aktivaci Windows. Aktivace vyžaduje, aby žádost o aktivaci pocházet z veřejné IP adresy Azure. V případě vynuceného tunelového propojení se aktivace nezdaří, protože požadavek na aktivaci pochází z místní sítě namísto z veřejné IP adresy Azure.
 
 ## <a name="solution"></a>Řešení
 
-Pokud chcete tento problém vyřešit, použijte vlastní trasu Azure pro směrování aktivačních dat do serveru služby Azure KMS.
+Chcete-li tento problém vyřešit, použijte vlastní trasu Azure k směrování aktivační provoz na server Azure KMS.
 
-IP adresa serveru služby správy klíčů pro globální cloud Azure je 23.102.135.246. Název DNS je kms.core.windows.net. Pokud používáte jiné platformy Azure, jako je Azure Německo, musíte použít IP adresu odpovídajícího serveru služby správy klíčů. Další informace najdete v následující tabulce:
+IP adresa serveru KMS pro globální cloud Azure je 23.102.135.246. Jeho název DNS je kms.core.windows.net. Pokud používáte jiné platformy Azure, jako je Azure Germany, musíte použít IP adresu odpovídajícího serveru KMS. Další informace naleznete v následující tabulce:
 
-|Platforma| KMS DNS|IP ADRESA SLUŽBY SPRÁVY KLÍČŮ|
+|Platforma| KMS DNS|KMS IP|
 |------|-------|-------|
-|Globální Azure|kms.core.windows.net|23.102.135.246|
+|Azure Globální|kms.core.windows.net|23.102.135.246|
 |Azure Germany|kms.core.cloudapi.de|51.4.143.248|
 |Azure US Government|kms.core.usgovcloudapi.net|23.97.0.13|
 |Azure China 21Vianet|kms.core.chinacloudapi.cn|42.159.7.249|
 
 
-K přidání vlastní trasy použijte následující postup:
+Chcete-li přidat vlastní trasu, postupujte takto:
 
-### <a name="for-resource-manager-vms"></a>Pro Správce prostředků virtuální počítače
+### <a name="for-resource-manager-vms"></a>Pro virtuální aplikace Správce prostředků
 
  
 
 > [!NOTE] 
-> Aktivace používá veřejné IP adresy a bude mít vliv na standardní SKU Load Balancer konfiguraci. Zkontrolujte pečlivě [odchozí připojení v Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) , abyste se dozvěděli o požadavcích.
+> Aktivace používá veřejné IP adresy a bude ovlivněna konfigurací standardního nástroje pro vyrovnávání zatížení skladových položk. Pečlivě zkontrolujte [odchozí připojení v Azure,](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) abyste se dozvěděli o požadavcích.
 
-1. Otevřete Azure PowerShell a [Přihlaste se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Otevřete Azure PowerShell a pak [se přihlaste k předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Spusťte následující příkazy:
 
     ```powershell
@@ -77,17 +77,17 @@ K přidání vlastní trasy použijte následující postup:
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. Přejít na virtuální počítač, který obsahuje problémy s aktivací. Použijte [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) k otestování, jestli se může připojit k serveru služby správy klíčů:
+3. Přejděte na virtuální počítače, který má problémy s aktivací. Pomocí [příkazu PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) otestujte, zda se může dostat na server SLUŽBY SPRÁVY KLÍČŮ:
 
         psping kms.core.windows.net:1688
 
-4. Zkuste aktivovat Windows a podívejte se, jestli se problém vyřeší.
+4. Pokuste se aktivovat systém Windows a zjistěte, zda je problém vyřešen.
 
-### <a name="for-classic-vms"></a>Pro klasické virtuální počítače
+### <a name="for-classic-vms"></a>Pro klasické virtuální měsíčové
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-1. Otevřete Azure PowerShell a [Přihlaste se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Otevřete Azure PowerShell a pak [se přihlaste k předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Spusťte následující příkazy:
 
     ```powershell
@@ -105,15 +105,15 @@ K přidání vlastní trasy použijte následující postup:
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. Přejít na virtuální počítač, který obsahuje problémy s aktivací. Použijte [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) k otestování, jestli se může připojit k serveru služby správy klíčů:
+3. Přejděte na virtuální počítače, který má problémy s aktivací. Pomocí [příkazu PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) otestujte, zda se může dostat na server SLUŽBY SPRÁVY KLÍČŮ:
 
         psping kms.core.windows.net:1688
 
-4. Zkuste aktivovat Windows a podívejte se, jestli se problém vyřeší.
+4. Pokuste se aktivovat systém Windows a zjistěte, zda je problém vyřešen.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Instalační klíče klienta služby správy klíčů](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
 )
-- [Kontrola a výběr metod aktivace](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
+- [Zkontrolovat a vybrat metody aktivace](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
 )

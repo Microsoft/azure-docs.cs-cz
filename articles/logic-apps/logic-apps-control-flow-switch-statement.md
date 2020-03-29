@@ -1,85 +1,85 @@
 ---
-title: Přidání příkazů Switch do pracovních postupů
-description: Jak vytvořit příkazy Switch, které řídí akce pracovního postupu na základě konkrétních hodnot v Azure Logic Apps
+title: Přidání příkazů switch do pracovních postupů
+description: Jak vytvořit příkazy přepínače, které řídí akce pracovního postupu na základě konkrétních hodnot v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 5c40feec2dca65e4bc9617a71a6d0a8e4c872a3a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74793230"
 ---
-# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Vytvořte příkazy Switch, které spouštějí akce pracovního postupu na základě konkrétních hodnot v Azure Logic Apps
+# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Vytvoření příkazů přepínačů, které spouštějí akce pracovního postupu na základě konkrétních hodnot v Azure Logic Apps
 
-Chcete-li spustit konkrétní akce založené na hodnotách objektů, výrazů nebo tokenů, přidejte příkaz *Switch* . Tato struktura vyhodnocuje objekt, výraz nebo token, zvolí případ, který odpovídá výsledku, a spustí konkrétní akce pouze pro tento případ. Při spuštění příkazu switch by byl výsledek odpovídat pouze jednomu případu.
+Chcete-li spustit určité akce založené na hodnotách objektů, výrazů nebo tokenů, přidejte příkaz *switch.* Tato struktura vyhodnotí objekt, výraz nebo token, vybere případ, který odpovídá výsledku, a spustí určité akce pouze pro tento případ. Při spuštění příkazu switch by měl výsledek odpovídat pouze jeden případ.
 
-Předpokládejme například, že chcete, aby aplikace logiky, která provede různé kroky, byla založena na možnosti vybrané v e-mailu. V tomto příkladu aplikace logiky kontroluje nový obsah v informačním kanálu RSS webu. Když se v informačním kanálu RSS objeví nová položka, aplikace logiky pošle e-mail schvalovateli. V závislosti na tom, jestli schvalovatel vybere "schválit" nebo "zamítnout", aplikace logiky provede jiný postup.
+Předpokládejme například, že chcete aplikaci logiky, která provede různé kroky na základě možnosti vybrané v e-mailu. V tomto příkladu aplikace logiky zkontroluje web rss informační kanál pro nový obsah. Když se v informačním kanálu RSS zobrazí nová položka, aplikace logiky odešle e-mail schvalovatelovi. Na základě toho, zda schvalovatel vybere "Schválit" nebo "Odmítnout", aplikace logiky postupují podle různých kroků.
 
 > [!TIP]
-> Podobně jako u všech programovacích jazyků podporují příkazy Switch jenom operátory rovnosti. Pokud potřebujete jiné relační operátory, například "větší než", použijte [podmíněný příkaz](../logic-apps/logic-apps-control-flow-conditional-statement.md).
-> Aby bylo zajištěno deterministické chování při spuštění, musí být v případech jedinečné a statické hodnoty namísto dynamických tokenů nebo výrazů.
+> Stejně jako všechny programovací jazyky, příkazy přepínače podporují pouze operátory rovnosti. Pokud potřebujete další relační operátory, například "větší než", použijte [podmíněný příkaz](../logic-apps/logic-apps-control-flow-conditional-statement.md).
+> Chcete-li zajistit deterministické provádění chování, případy musí obsahovat jedinečnou a statickou hodnotu namísto dynamické tokeny nebo výrazy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Pokud chcete postupovat podle příkladu v tomto článku, [vytvořte tuto ukázkovou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) s účtem Outlook.com nebo Office 365 Outlook.
+* Chcete-li postupovat podle příkladu v tomto článku, [vytvořte tuto ukázkovou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) s Outlook.com nebo účet Outlooku Office 365.
 
-  1. Když přidáte akci pro odeslání e-mailu, najděte a vyberte tuto akci, ale **odešlete e-mail pro schválení** .
+  1. Když přidáte akci pro odeslání e-mailu, vyhledání a výběr této akce místo toho: **Odeslat schvalovací e-mail**
 
-     ![Vyberte Odeslat e-mail pro schválení.](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
+     ![Vyberte možnost Odeslat schvalovací e-mail.](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
-  1. Zadejte požadovaná pole, jako je e-mailová adresa osoby, která získá schvalovací e-mail. 
-  V části **Možnosti uživatele**zadejte "schválit, odmítnout".
+  1. Zadejte požadovaná pole, například e-mailovou adresu osoby, která dostane schvalovací e-mail. 
+  V části **Možnosti uživatele**zadejte "Schválit, Odmítnout".
 
-     ![Zadat podrobnosti e-mailu](./media/logic-apps-control-flow-switch-statement/send-approval-email-details.png)
+     ![Zadání podrobností o e-mailu](./media/logic-apps-control-flow-switch-statement/send-approval-email-details.png)
 
 ## <a name="add-switch-statement"></a>Přidat příkaz switch
 
-1. V tomto příkladu přidejte příkaz switch na konci ukázkového pracovního postupu. Po posledním kroku vyberte **Nový krok**.
+1. V tomto příkladu přidejte příkaz switch na konci ukázkového pracovního postupu. Po posledním kroku zvolte **Nový krok**.
 
-   Chcete-li přidat příkaz switch mezi kroky, přesuňte ukazatel myši na šipku, kam chcete přidat příkaz switch. Zvolte znaménko **plus** ( **+** ), které se zobrazí, a pak zvolte **přidat akci**.
+   Pokud chcete přidat příkaz switch mezi kroky, přesuňte ukazatel myši na šipku, kam chcete přidat příkaz switch. Zvolte **znaménko plus** (**+**), které se zobrazí, a pak zvolte Přidat **akci**.
 
-1. Do vyhledávacího pole zadejte jako filtr "Switch". Vyberte tuto akci: **ovládací prvek Switch**
+1. Do vyhledávacího pole zadejte jako filtr "switch". Vyberte tuto akci: **Přepnout – ovládat**
 
    ![Přidat přepínač](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 
    Příkaz switch se zobrazí s jedním případem a výchozím případem. 
-   Ve výchozím nastavení příkaz switch vyžaduje aspoň jeden případ Plus výchozí případ. 
+   Ve výchozím nastavení příkaz switch vyžaduje alespoň jeden případ plus výchozí případ. 
 
-   ![Prázdný výchozí příkaz switch](./media/logic-apps-control-flow-switch-statement/empty-switch.png)
+   ![Prázdný výchozí příkaz přepínače](./media/logic-apps-control-flow-switch-statement/empty-switch.png)
 
-1. Klikněte do pole **zapnuto** , aby se zobrazil seznam dynamického obsahu. V tomto seznamu vyberte pole **SelectedOption** , jehož výstup Určuje akci, která má být provedena. 
+1. Klikněte do pole **Zapnuto,** aby se zobrazil seznam dynamického obsahu. V tomto seznamu vyberte pole **SelectedOption,** jehož výstup určuje akci, kterou chcete provést. 
 
    ![Vyberte "SelectedOption"](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
-1. Chcete-li zpracovat případy, kdy schvalovatel vybere `Approve` nebo `Reject`, přidejte další případ mezi **případ** a **výchozí**. 
+1. Chcete-li zpracovat případy, `Approve` kdy `Reject`schvalovatel vybere nebo , přidat další případ mezi **případ** a **výchozí**. 
 
    ![Přidat další případ](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
 
 1. Přidejte tyto akce do odpovídajících případů:
 
-   | Tom # | **SelectedOption** | Akce |
+   | Případě # | **SelectedOption** | Akce |
    |--------|--------------------|--------|
-   | Případ 1 | **Potvrzení** | Přidání **e-mailové akce Odeslat e-mail** pro odeslání podrobností o položce RSS pouze v případě, že schvalovatel zvolil **schválení**. |
-   | Případ 2 | **Schvalovatel** | Přidání **e-mailové akce Odeslat e-mail** pro upozorňování dalších schvalovatelů, že položka RSS byla odmítnuta. |
-   | Výchozí | Žádné | Není nutná žádná akce. V tomto příkladu je **výchozí** případ prázdný, protože **SelectedOption** má jenom dvě možnosti. |
+   | Případ 1 | **Schválení** | Přidejte akci **Odeslat e-mail ovou** aplikaci Outlook pro odeslání podrobností o položce RSS pouze v případě, že schvalovatel vybraný **schválit**. |
+   | Případ 2 | **Odmítnout** | Přidejte akci **Odeslat e-mail ovou** aplikaci Outlook, která upozorní ostatní schvalovatele, že položka RSS byla odmítnuta. |
+   | Výchozí | Žádný | Žádná akce není nutná. V tomto příkladu je **výchozí** případ prázdný, protože **SelectedOption** má pouze dvě možnosti. |
    |||
 
-   ![Dokončený příkaz switch](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
+   ![Příkaz dokončeného přepínače](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
 
 1. Uložte svou aplikaci logiky. 
 
-   Pokud chcete tento příklad otestovat ručně, klikněte na tlačítko **Spustit** , dokud aplikace logiky nenajde novou položku RSS a odešle e-mail pro schválení. 
-   Vyberte **schválit** a sledujte výsledky.
+   Chcete-li tento příklad otestovat ručně, zvolte **Spustit,** dokud aplikace logiky nenajde novou položku RSS a neodešle schvalovací e-mail. 
+   Chcete-li sledovat výsledky, vyberte **možnost Schválit.**
 
 ## <a name="json-definition"></a>Definice JSON
 
-Teď, když jste vytvořili aplikaci logiky pomocí příkazu switch, se podívejme na definici kódu na nejvyšší úrovni za příkazem Switch.
+Teď, když jste vytvořili aplikaci logiky pomocí příkazu switch, podívejme se na definici kódu vysoké úrovně za příkazem switch.
 
 ``` json
 "Switch": {
@@ -110,23 +110,23 @@ Teď, když jste vytvořili aplikaci logiky pomocí příkazu switch, se podíve
 }
 ```
 
-| Štítek | Popis |
+| Popisek | Popis |
 |-------|-------------|
-| `"Switch"`         | Název příkazu switch, který lze přejmenovat pro čitelnost |
-| `"type": "Switch"` | Určuje, že akce je příkaz switch. |
-| `"expression"`     | V tomto příkladu určuje možnost schvalovatele, která se vyhodnocuje pro každý případ deklarovaný později v definici. |
-| `"cases"` | Definuje libovolný počet případů. U každého případu je `"Case_*"` výchozím názvem pro tento případ, který můžete přejmenovat pro čitelnost. |
-| `"case"` | Určuje hodnotu případu, která musí být konstantou a jedinečnou hodnotou, kterou příkaz switch používá pro porovnání. Pokud se neshodují žádné případy s výsledkem výrazu Switch, jsou spouštěny akce v části `"default"`. | 
+| `"Switch"`         | Název příkazu switch, který můžete přejmenovat pro čitelnost |
+| `"type": "Switch"` | Určuje, že akce je příkaz přepínače. |
+| `"expression"`     | V tomto příkladu určuje vybranou možnost schvalovatele, která je vyhodnocena proti každému případu, jak je deklarováno dále v definici. |
+| `"cases"` | Definuje libovolný počet případů. Pro každý `"Case_*"` případ je výchozí název pro tento případ, který můžete přejmenovat pro čitelnost |
+| `"case"` | Určuje hodnotu případu, která musí být konstantní a jedinečná hodnota, kterou příkaz switch používá pro porovnání. Pokud žádné případy odpovídají výsledku výrazu `"default"` přepínače, jsou spuštěny akce v oddílu. | 
 | | | 
 
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Chcete-li odeslat nebo hlasovat o funkcích nebo návrzích, navštivte [web Azure Logic Apps pro zpětnou vazbu uživatelů](https://aka.ms/logicapps-wish).
+* Pokud chcete odeslat nebo hlasovat o funkcích nebo návrzích, navštivte [web pro zpětnou vazbu uživatelů Azure Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Spuštění kroků na základě podmínky (podmíněné příkazy)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [Spuštění a opakování kroků (cykly)](../logic-apps/logic-apps-control-flow-loops.md)
-* [Spustit nebo sloučit paralelní kroky (větve)](../logic-apps/logic-apps-control-flow-branches.md)
-* [Spuštění kroků na základě seskupeného stavu akce (obory)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [Spuštění a opakování kroků (smyček)](../logic-apps/logic-apps-control-flow-loops.md)
+* [Spuštění nebo sloučení paralelních kroků (větví)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Spustit kroky na základě stavu seskupené akce (obory)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

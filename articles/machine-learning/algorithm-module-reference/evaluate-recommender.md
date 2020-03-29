@@ -1,7 +1,7 @@
 ---
-title: 'Vyhodnotit doporučeného: odkaz na modul'
+title: 'Vyhodnotit doporučující: Odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul vyhodnocení doporučení v Azure Machine Learning k vyhodnocení přesnosti doporučení předpovědi modelů.
+description: Zjistěte, jak použít modul Evaluate Recommender v Azure Machine Learning k vyhodnocení přesnosti předpovědí modelu doporučení.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,83 +9,83 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 0890e13acbba8dae31de28d7c78a81bd9b516853
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76312256"
 ---
 # <a name="evaluate-recommender"></a>Vyhodnocení doporučovacího systému
 
-Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul pro vyhodnocení doporučených postupů. Cílem je změřit přesnost předpovědi, kterou vytvořil model doporučení. Pomocí tohoto modulu můžete vyhodnotit různé druhy doporučení:  
+Tento článek popisuje, jak používat modul Vyhodnotit doporučení v návrháři Azure Machine Learning (preview). Cílem je měřit přesnost předpovědi, které model doporučení učinil. Pomocí tohoto modulu můžete vyhodnotit různé druhy doporučení:  
   
--   Odhad hodnocení pro uživatele a položku    
--   Položky, které se doporučují pro uživatele  
+-   Hodnocení předpovídaná pro uživatele a položku    
+-   Položky doporučené pro uživatele  
   
-Při vytváření předpovědi pomocí modelu doporučení se pro každý z těchto podporovaných typů předpověď vrátí mírně odlišné výsledky. Modul hodnocení vyhodnocení je odvozený druh předpovědi z formátu sloupce pro datovou sadu s skóre. Například datová sada s skóre může obsahovat:
+Při vytváření předpovědi pomocí modelu doporučení mírně odlišné výsledky jsou vráceny pro každý z těchto typů podporovaných předpověď. Modul Evaluate Recommender odvoduje druh předpovědi z formátu sloupce datové sady s končivou. Datová sada s konstatováno může například obsahovat:
 
-- Tři položky hodnocení uživatelem
-- Uživatelé a jejich Doporučené položky
+- Trojčata hodnocení uživatelských položek
+- Uživatelé a jejich doporučené položky
 
-Modul také aplikuje příslušné metriky výkonu na základě typu předpovědi, kterou provedete. 
+Modul také použije příslušné metriky výkonu na základě typu predikce. 
 
   
-## <a name="how-to-configure-evaluate-recommender"></a>Jak konfigurovat doporučení pro vyhodnocení
+## <a name="how-to-configure-evaluate-recommender"></a>Jak nakonfigurovat hodnotit doporučující
 
-Modul hodnocení odhadu porovnává výstup předpovědi pomocí modelu doporučení s odpovídajícími daty "uzemnění". Například [doporučený modul SVD skóre](score-svd-recommender.md) vytváří datové sady s skóre, které můžete analyzovat pomocí nástroje Evaluate doporučit.
+Modul Evaluate Recommender porovnává výstup předpovědi pomocí modelu doporučení s odpovídajícími daty "ground truth". Například [modul Score SVD Recommender](score-svd-recommender.md) vytváří datové sady s hodnocením, které můžete analyzovat pomocí funkce Vyhodnotit doporučení.
 
 ### <a name="requirements"></a>Požadavky
 
-Vyhodnocení doporučení vyžaduje jako vstup následující datové sady. 
+Vyhodnocení recommender vyžaduje následující datové sady jako vstup. 
   
 #### <a name="test-dataset"></a>Testovací datová sada
 
-Testovací datová sada obsahuje "základní" data ve formě trojí pro hodnocení položek.  
+Testovací datová sada obsahuje data "základní pravdy" ve formě trojčat hodnocení uživatelských položek.  
 
-#### <a name="scored-dataset"></a>Datová sada s skóre
+#### <a name="scored-dataset"></a>Datová sada se skóre
 
-Datová sada s skóre obsahuje předpovědi, který model doporučení vygeneroval.  
+Datová sada s konzetí obsahuje předpovědi, které model doporučení vygeneroval.  
   
-Sloupce v této druhé datové sadě závisí na druhu předpovědi, kterou jste provedli během procesu bodování. Například datová sada s skóre může obsahovat jednu z následujících hodnot:
+Sloupce v této druhé datové sady závisí na druhu předpověď, kterou jste provedli během procesu vyhodnocování. Datová sada s konstatováno může například obsahovat některou z následujících položek:
 
-- Uživatelé, položky a hodnocení, které by mohl uživatel pro položku přidělit
-- Seznam uživatelů a položek, které jsou pro ně doporučeny 
+- Uživatelé, položky a hodnocení, která by uživatel pravděpodobně poskytl pro položku
+- Seznam uživatelů a položek doporučených pro ně 
 
 ### <a name="metrics"></a>Metriky
 
-Metriky výkonu pro model jsou generovány na základě typu vstupu. Následující části obsahují podrobné informace.
+Metriky výkonu pro model jsou generovány na základě typu vstupu. V následujících částech jsou uvedeny podrobnosti.
 
-## <a name="evaluate-predicted-ratings"></a>Vyhodnotit předpokládaná hodnocení  
+## <a name="evaluate-predicted-ratings"></a>Vyhodnocení předpovídaných hodnocení  
 
-Při vyhodnocování předpokládaných hodnocení musí datová sada s hodnocením (druhý vstup pro vyhodnocení doporučení) obsahovat tři troje ohodnocené uživatelem, které splňují tyto požadavky:
+Při vyhodnocování předpovídaných hodnocení musí datová sada s hodnocením (druhý vstup pro vyhodnocení doporučujícího zařízení) obsahovat trojčata hodnocení uživatelských položek, která splňují tyto požadavky:
   
--   První sloupec datové sady obsahuje identifikátory uživatelů.    
+-   První sloupec datové sady obsahuje identifikátory uživatele.    
 -   Druhý sloupec obsahuje identifikátory položek.  
--   Třetí sloupec obsahuje odpovídající hodnocení položky uživatele.  
+-   Třetí sloupec obsahuje odpovídající hodnocení uživatelských položek.  
   
 > [!IMPORTANT] 
-> Aby bylo vyhodnocení úspěšné, musí být názvy sloupců `User`, `Item`a `Rating`, v uvedeném pořadí.  
+> Aby bylo vyhodnocení úspěšné, musí `User` `Item`být `Rating`názvy sloupců , , a , v uvedeném pořadí.  
   
-Vyhodnotit doporučený postup porovná hodnocení v datové sadě "uzemnění" s předpokládaným hodnocením datové sady s skóre. Pak vypočítá střední absolutní chybu (MAE) a hlavní střední chybu (RMSE).
+Vyhodnocení doporučující porovná hodnocení v datové sadě "ground truth" s předpovídanými hodnoceními skórované datové sady. Poté vypočítá střední absolutní chybu (MAE) a střední kvadratou chybu (RMSE) kořenové (Kvadratý).
 
 
 
-## <a name="evaluate-item-recommendations"></a>Vyhodnotit doporučení pro položky
+## <a name="evaluate-item-recommendations"></a>Vyhodnotit doporučení položek
 
-Když vyhodnocujete doporučení pro položky, použijte datovou sadu s skóre, která zahrnuje Doporučené položky pro každého uživatele:
+Při vyhodnocování doporučení položek použijte datovou sadu s hodnocením, která obsahuje doporučené položky pro každého uživatele:
   
 -   První sloupec datové sady musí obsahovat identifikátor uživatele.    
--   Všechny následující sloupce by měly obsahovat odpovídající Doporučené identifikátory položek seřazených podle toho, jak je relevantní položka uživateli. 
+-   Všechny následující sloupce by měly obsahovat odpovídající doporučené identifikátory položek seřazené podle toho, jak je položka pro uživatele relevantní. 
 
-Než tuto datovou sadu připojíte, doporučujeme, abyste datovou sadu seřadili tak, aby se nejdůležitější položky nacházely jako první.  
+Před připojením této datové sady doporučujeme seřadit datovou sadu tak, aby nejrelevantnější položky byly na prvním místě.  
 
 > [!IMPORTANT] 
-> Aby bylo možné vyhodnotit vhodné fungování, musí být názvy sloupců `User`, `Item 1`, `Item 2``Item 3` a tak dále.  
+> Aby funkce Vyhodnocení doporučujícího funkce fungovala, musí být `User`názvy sloupců , `Item 1`, `Item 2` `Item 3` a tak dále.  
   
-Vyhodnotit doporučený modul vypočítá průměrně Kumulovaný kumulativní nárůst (NDCG) a vrátí ho do výstupní datové sady.  
+Vyhodnocení Recommender vypočítá průměrný normalizovaný diskontovaný kumulativní zisk (NDCG) a vrátí jej ve výstupní datové sadě.  
   
-Vzhledem k tomu, že není možné znát skutečné "uzemněné pravdivosti" pro doporučené položky, vyhodnoťte doporučuje použití hodnocení položek uživatele v testovací sadě jako nárůsty při výpočtu NDCG. Aby bylo možné vyhodnotit, modul pro vyhodnocování doporučení musí pro položky s hodnocením "uzemnění" vydávat jenom doporučení (v testovací sadě dat).  
+Vzhledem k tomu, že není možné znát skutečnou "základní pravdu" pro doporučené položky, vyhodnotit doporučení používá hodnocení uživatelských položek v testovací datové sadě jako zisky ve výpočtu NDCG. Chcete-li vyhodnotit, modul hodnocení doporučující musí pouze vytvářet doporučení pro položky s hodnocením "základní pravdy" (v testovací datové sadě).  
   
 
 ## <a name="next-steps"></a>Další kroky

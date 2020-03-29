@@ -1,6 +1,6 @@
 ---
-title: Volání webového rozhraní API z webové aplikace – Microsoft Identity Platform | Azure
-description: Naučte se, jak vytvořit webovou aplikaci, která volá webová rozhraní API (volání chráněného webového rozhraní API).
+title: Volání webového rozhraní API z webové aplikace – platforma identit Microsoftu | Azure
+description: Zjistěte, jak vytvořit webovou aplikaci, která volá webová rozhraní API (volání chráněného webového rozhraní API).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,19 +15,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758967"
 ---
-# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webová aplikace, která volá webová rozhraní API: volá webové rozhraní API.
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webová aplikace, která volá webová rozhraní API: Volání webového rozhraní API
 
-Teď, když máte token, můžete zavolat chráněné webové rozhraní API.
+Teď, když máte token, můžete volat chráněné webové rozhraní API.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Zde je zjednodušený kód pro akci `HomeController`. Tento kód získá token pro volání Microsoft Graph. Byl přidán kód, který ukazuje, jak volat Microsoft Graph jako REST API. Adresa URL pro rozhraní API pro Microsoft Graph je k dispozici v souboru appSettings. JSON a je čtena v proměnné s názvem `webOptions`:
+Zde je zjednodušený kód pro `HomeController`akci . Tento kód získá token pro volání Microsoft Graph. Byl přidán kód, který ukazuje, jak volat Microsoft Graph jako rozhraní REST API. Adresa URL rozhraní Microsoft Graph API je k dispozici v souboru appsettings.json a čte se v proměnné s názvem `webOptions`:
 
 ```JSon
 {
@@ -82,11 +82,11 @@ public async Task<IActionResult> Profile()
 ```
 
 > [!NOTE]
-> Stejný princip můžete použít pro volání libovolného webového rozhraní API.
+> Stejný princip můžete použít k volání libovolného webového rozhraní API.
 >
-> Většina webových rozhraní API Azure poskytuje sadu SDK, která zjednodušuje volání rozhraní API. To platí také Microsoft Graph. V dalším článku se naučíte, jak najít kurz, který ilustruje použití rozhraní API.
+> Většina webových rozhraní API Azure poskytuje sdk, který zjednodušuje volání rozhraní API. To platí i pro Microsoft Graph. V dalším článku se dozvíte, kde najít kurz, který ilustruje použití rozhraní API.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 private String getUserInfoFromGraph(String accessToken) throws Exception {
@@ -112,7 +112,7 @@ private String getUserInfoFromGraph(String accessToken) throws Exception {
 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 @app.route("/graphcall")
@@ -132,4 +132,4 @@ def graphcall():
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přesunout do produkčního prostředí](scenario-web-app-call-api-production.md)
+> [Přechod k produkčnímu prostředí](scenario-web-app-call-api-production.md)

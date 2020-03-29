@@ -1,203 +1,202 @@
 ---
-title: SaaS vzory pro více tenantů
-description: Přečtěte si o požadavcích a vzorech architektury Common data Database pro víceklientské aplikace SaaS (software jako služba), které běží v cloudovém prostředí Azure.
+title: Víceklientské vzory SaaS
+description: Seznamte se s požadavky a běžnými vzory datové architektury databázových aplikací s více klienty jako služby (SaaS), které běží v cloudovém prostředí Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: seoapril2019
-ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: ad7bd660ee685b490fb79c7e63fd3c5fce557977
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.custom: seoapril2019
+ms.openlocfilehash: 956d74467c69d9924d26f9cae8d902a6ddd84496
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822062"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067488"
 ---
-# <a name="multi-tenant-saas-database-tenancy-patterns"></a>Modely tenantů SaaS Database pro více tenantů
+# <a name="multi-tenant-saas-database-tenancy-patterns"></a>Víceklientské vzory pronájmu databáze SaaS
 
-Tento článek popisuje různé modely tenantů dostupné pro více tenantů aplikací SaaS.
+Tento článek popisuje různé modely nájmu, které jsou k dispozici pro víceklientské aplikace SaaS.
 
-Při navrhování aplikace SaaS pro více tenantů musíte pečlivě vybrat model architektury, který nejlépe vyhovuje potřebám vaší aplikace.  Model tenantů určuje, jak jsou data každého klienta namapována na úložiště.  Váš výběr modelu architektury ovlivňuje návrh a správu aplikací.  Pozdější přepnutí na jiný model je někdy nákladné.
+Při navrhování víceklientské aplikace SaaS je nutné pečlivě zvolit model nájmu, který nejlépe vyhovuje potřebám vaší aplikace.  Model klienta určuje, jak jsou data každého klienta mapována do úložiště.  Váš výběr nájemního modelu má vliv na návrh a správu aplikací.  Přechod na jiný model později je někdy nákladné.
 
-## <a name="a-saas-concepts-and-terminology"></a>A. Koncepty a terminologie SaaS
+## <a name="a-saas-concepts-and-terminology"></a>A. SaaS pojmy a terminologie
 
-V modelu software jako služba (SaaS) vaše společnost neprodává *licence* k vašemu softwaru. Místo toho jednotliví zákazníci propůjčují platby do vaší společnosti, takže každý z nich bude mít *tenanta* vaší společnosti.
+V modelu Software as a Service (SaaS) vaše společnost neprodává *licence* k vašemu softwaru. Místo toho každý zákazník provádí platby nájemného vaší společnosti, takže každý zákazník je *nájemcem* vaší společnosti.
 
-Při návratu k placenému pronajmutí každý tenant získá přístup k komponentám vaší aplikace SaaS a jeho data jsou uložená v SaaS systému.
+Výměnou za placení nájemného získá každý klient přístup k vašim součástem aplikace SaaS a má svá data uložená v systému SaaS.
 
-Pojem *model tenantů* odkazuje na uspořádání uložených dat v klientech:
+Termín *nájemní model* odkazuje na způsob uspořádání uložených dat klientů:
 
-- *Jedna z tenantů:* &nbsp; každá databáze uchovává data jenom z jednoho tenanta.
-- Víceklientská architektura *:* &nbsp; každá databáze uchovává data z několika samostatných klientů (s mechanismy ochrany ochrany osobních údajů).
-- K dispozici jsou také modely hybridních tenantů.
+- *Jednoklient:* &nbsp; Každá databáze ukládá data pouze z jednoho klienta.
+- *Víceklientské:* &nbsp; Každá databáze ukládá data z více samostatných klientů (s mechanismy pro ochranu osobních údajů).
+- K dispozici jsou také modely hybridního pronájmu.
 
-## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. Jak zvolit vhodný model architektury
+## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. Jak si vybrat vhodný model nájmu
 
-Obecně platí, že model architektury nemá vliv na funkci aplikace, ale může to mít vliv na jiné aspekty celkového řešení.  Následující kritéria slouží k vyhodnocení každého modelu:
+Obecně platí, že model nájmu nemá vliv na funkci aplikace, ale pravděpodobně ovlivňuje další aspekty celkového řešení.  Pro posouzení každého z modelů se používají tato kritéria:
 
 - **Škálovatelnost:**
-    - Počet tenantů.
-    - Úložiště pro každého tenanta.
-    - Úložiště je agregované.
-    - Úlohy.
+    - Počet nájemníků.
+    - Úložiště na tenanta.
+    - Skladování v souhrnu.
+    - Pracovního vytížení.
 
-- **Izolace tenanta:** &nbsp; izolaci a výkonu dat (ať už jeden z úloh tenanta má vliv na ostatní).
+- **Izolace tenanta:** &nbsp; Izolace dat a výkon (ať už úloha jednoho klienta ovlivňuje ostatní).
 
-- **Náklady na tenanta:** &nbsp; náklady na databázi.
+- **Náklady na klienta:** &nbsp; Náklady na databázi.
 
 - **Složitost vývoje:**
     - Změny schématu.
     - Změny dotazů (vyžadované vzorem).
 
 - **Provozní složitost:**
-    - Monitorování a Správa výkonu.
+    - Monitorování a správa výkonu.
     - Správa schématu.
-    - Obnovuje se tenant.
+    - Obnovení klienta.
     - Zotavení po havárii.
 
-- Přizpůsobení **:** &nbsp; usnadnit podporu přizpůsobení schématu, která je specifická pro konkrétního tenanta nebo pro třídu tenanta.
+- **Přizpůsobitelnost:** &nbsp; Usnadnění podpory přizpůsobení schématu, které jsou specifické pro klienta nebo specifické pro třídu klienta.
 
-Diskuze tenantů se zaměřuje na *datovou* vrstvu.  Ale vezměte v úvahu okamžik *aplikační* vrstvy.  Aplikační vrstva je považována za entitu monolitické.  Pokud rozdělíte aplikaci na mnoho malých komponent, může se změnit zvolený model architektury.  Můžete nakládat s některými komponentami, které se týkají i architektury i technologie úložiště nebo používané platformy.
+Diskuse o nájmu je zaměřena na *datovou* vrstvu.  Ale zvažte na chvíli *aplikační* vrstvu.  Aplikační vrstva je považována za monolitickou entitu.  Pokud aplikaci rozdělíte na mnoho malých součástí, může se změnit váš výběr modelu nájmu.  S některými součástmi byste mohli zacházet jinak než s jinými, pokud jde o nájem i použitou technologii úložiště nebo platformu.
 
-## <a name="c-standalone-single-tenant-app-with-single-tenant-database"></a>C. Samostatná aplikace pro jednoho tenanta s databází s jedním tenanta
+## <a name="c-standalone-single-tenant-app-with-single-tenant-database"></a>C. Samostatná aplikace s jedním klientem s databází s jedním klientem
 
 #### <a name="application-level-isolation"></a>Izolace na úrovni aplikace
 
-V tomto modelu je celá aplikace nainstalována opakovaně, jednou pro každého tenanta.  Každá instance aplikace je samostatnou instancí, takže nikdy nekomunikuje s jinou samostatnou instancí.  Každá instance aplikace má pouze jednoho tenanta, a proto potřebuje pouze jednu databázi.  Tenant má tuto databázi na sebe samu.
+V tomto modelu je opakovaně nainstalována celá aplikace, jednou pro každého klienta.  Každá instance aplikace je samostatná instance, takže nikdy nespolupracuje s žádnou jinou samostatnou instancí.  Každá instance aplikace má pouze jednoho klienta, a proto potřebuje pouze jednu databázi.  Tenant má databázi pro sebe.
 
-![Návrh samostatné aplikace s právě jednou databází s jedním klientem.][image-standalone-app-st-db-111a]
+![Návrh samostatné aplikace s přesně jednou databází jednoho klienta.][image-standalone-app-st-db-111a]
 
-Každá instance aplikace se nainstaluje do samostatné skupiny prostředků Azure.  Skupina prostředků může patřit k předplatnému, které vlastní dodavatel softwaru nebo tenant.  V obou případech může dodavatel spravovat software pro tenanta.  Každá instance aplikace je nakonfigurovaná tak, aby se připojovala k příslušné databázi.
+Každá instance aplikace se nainstaluje do samostatné skupiny prostředků Azure.  Skupina prostředků může patřit do předplatného, které je vlastněno dodavatelem softwaru nebo tenantem.  V obou případech může dodavatel spravovat software pro klienta.  Každá instance aplikace je nakonfigurována pro připojení k odpovídající databázi.
 
-Každá databáze tenanta je nasazena jako jediná databáze.  Tento model poskytuje největší izolaci databáze.  Tato izolace ale vyžaduje, aby se pro každou databázi přidělily dostatečné prostředky pro zpracování zátěže ve špičce.  Tady je důležité, aby elastické fondy nemohly být používány pro databáze nasazené v různých skupinách prostředků nebo v různých předplatných.  Toto omezení usnadňuje, aby tato samostatná aplikace pro jednoho tenanta byla nejdražším řešením z celkové perspektivy nákladů na databázi.
+Každá databáze klienta se nasadí jako jedna databáze.  Tento model poskytuje největší izolaci databáze.  Ale izolace vyžaduje, aby byly přiděleny dostatečné prostředky pro každou databázi pro zpracování jeho zatížení ve špičce.  Zde záleží na tom, že elastické fondy nelze použít pro databáze nasazené v různých skupinách prostředků nebo do různých předplatných.  Toto omezení umožňuje tento samostatný model aplikace s jedním tenantem nejdražší řešení z hlediska celkových nákladů databáze.
 
 #### <a name="vendor-management"></a>Správa dodavatelů
 
-Dodavatel má přístup ke všem databázím ve všech samostatných instancích aplikace, a to i v případě, že instance aplikace jsou nainstalované v různých předplatných tenantů.  Přístup se dosahuje prostřednictvím připojení SQL.  Tento přístup mezi instancemi může dodavatel umožnit centralizaci správy schématu a databázového dotazu pro účely vytváření sestav a analýzy.  Pokud je žádoucí tento druh centralizované správy, je nutné nasadit katalog, který mapuje identifikátory klientů na identifikátory URI databáze.  Azure SQL Database poskytuje knihovnu horizontálního dělení, která se používá společně se službou SQL Database k poskytování katalogu.  Knihovna horizontálního dělení je formálně pojmenována jako [Klientská knihovna elastic Database][docu-elastic-db-client-library-536r].
+Dodavatel může přistupovat ke všem databázím ve všech instancích samostatné aplikace, i když jsou instance aplikace nainstalované v různých předplatných tenanta.  Přístup je dosaženo prostřednictvím připojení SQL.  Tento přístup mezi instancemi může umožnit dodavateli centralizovat správu schématu a dotaz mezi databázemi pro účely vytváření sestav nebo analýzy.  Pokud je tento druh centralizované správy žádoucí, musí být nasazen katalog, který mapuje identifikátory klienta na identifikátory databáze URI.  Azure SQL Database poskytuje knihovnu s ráždí, která se používá společně s databází SQL k poskytnutí katalogu.  Knihovna srážlivosti je formálně pojmenována [Klientská knihovna elastické databáze][docu-elastic-db-client-library-536r].
 
-## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D. Víceklientská aplikace s databází – na tenanta
+## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D. Víceklientské aplikace s databází na klienta
 
-Tento další vzor používá aplikaci s více klienty s mnoha databázemi, přičemž všechny jsou databáze jediného tenanta.  Pro každého nového tenanta se zřídí nová databáze.  Aplikační vrstva *se vertikálně* škáluje přidáním dalších prostředků na jeden uzel.  Nebo se *aplikace vodorovně* škáluje přidáním dalších uzlů.  Škálování je založené na zatížení a je nezávislé na počtu nebo rozsahu jednotlivých databází.
+Tento další vzor používá víceklientské aplikace s mnoha databázemi, všechny jsou databáze jednoho klienta.  Pro každého nového klienta je zřízena nová databáze.  Aplikační vrstva je vertikálně *škálovat* přidáním dalších prostředků na uzel.  Nebo se aplikace *škáluje* vodorovně přidáním dalších uzlů.  Škálování je založena na zatížení a je nezávislá na počtu nebo škálování jednotlivých databází.
 
-![Návrh aplikace s více klienty s databází na tenanta.][image-mt-app-db-per-tenant-132d]
+![Návrh víceklientské aplikace s databází na tenanta.][image-mt-app-db-per-tenant-132d]
 
 #### <a name="customize-for-a-tenant"></a>Přizpůsobení pro tenanta
 
-Podobně jako u samostatného vzoru aplikace poskytuje použití jednoho tenanta databáze silnou izolaci klientů.  V libovolné aplikaci, jejíž model určuje jenom databáze s jedním klientem, se dá schéma pro každou databázi přizpůsobit a optimalizovat pro svého tenanta.  Toto vlastní nastavení nemá vliv na ostatní klienty v aplikaci. Možná může klient potřebovat data nad rámec základních datových polí, která potřebují všichni klienti.  Kromě toho je možné, že pole další data bude potřebovat index.
+Stejně jako vzor samostatné aplikace, použití databází jednoho tenanta poskytuje silné izolace tenanta.  V libovolné aplikaci, jejíž model určuje pouze databáze jednoho klienta, lze schéma pro libovolnou databázi přizpůsobit a optimalizovat pro svého klienta.  Toto přizpůsobení nemá vliv na ostatní klienty v aplikaci. Možná, že klient může potřebovat data nad rámec základních datových polí, které potřebují všichni klienti.  Další pole extra může potřebovat index.
 
-S databází pro každého tenanta je přizpůsobení schématu pro jedno nebo více jednotlivých tenantů jednoduché.  Dodavatel aplikace musí navrhovat postupy pro pečlivou správu přizpůsobení schématu ve velkém měřítku.
+S databáze na tenanta, přizpůsobení schématu pro jednoho nebo více jednotlivých klientů je snadné dosáhnout.  Dodavatel aplikace musí navrhnout postupy pro pečlivě spravovat vlastní nastavení schématu ve velkém měřítku.
 
 #### <a name="elastic-pools"></a>Elastické fondy
 
-Když jsou databáze nasazené ve stejné skupině prostředků, dají se seskupit do elastických fondů.  Fondy poskytují nákladově efektivní způsob sdílení prostředků napříč mnoha databázemi.  Možnost fondu je levnější, než vyžaduje, aby byla každá databáze dostatečně velká, aby se vešla do špičky využití, ke kterým dojde.  I když databáze ve fondu sdílejí přístup k prostředkům, můžou stále dosáhnout vysoké úrovně izolace výkonu.
+Když jsou databáze nasazeny ve stejné skupině prostředků, mohou být seskupeny do elastických fondů.  Fondy poskytují nákladově efektivní způsob sdílení prostředků v mnoha databázích.  Tato možnost fondu je levnější než vyžadování, aby každá databáze byla dostatečně velká, aby vyhovovala špičkám využití, které zažívá.  I v případě, že sdružené databáze sdílejí přístup k prostředkům, které mohou stále dosáhnout vysokého stupně izolace výkonu.
 
-![Návrh aplikace s více klienty pomocí databáze-na tenanta pomocí elastického fondu.][image-mt-app-db-per-tenant-pool-153p]
+![Návrh víceklientské aplikace s databází na tenanta pomocí elastického fondu.][image-mt-app-db-per-tenant-pool-153p]
 
-Azure SQL Database poskytuje nástroje potřebné ke konfiguraci, monitorování a správě sdílení.  Metriky výkonu na úrovni fondu i databáze jsou k dispozici v Azure Portal a prostřednictvím protokolů Azure Monitor.  Metriky můžou poskytovat skvělé přehledy jak pro agregovanou, tak pro konkrétního tenanta.  Jednotlivé databáze lze přesunout mezi fondy a poskytnout tak rezervované prostředky konkrétnímu klientovi.  Tyto nástroje vám umožňují zajistit dobrý výkon za cenu.
+Azure SQL Database poskytuje nástroje potřebné ke konfiguraci, monitorování a správě sdílení.  Metriky výkonu na úrovni fondu i databáze jsou dostupné na webu Azure Portal a prostřednictvím protokolů Azure Monitoru.  Metriky mohou poskytnout skvělé přehledy o agregovaném výkonu i výkonu specifickém pro klienta.  Jednotlivé databáze lze přesouvat mezi fondy a poskytovat rezervované prostředky konkrétnímu tenantovi.  Tyto nástroje umožňují zajistit dobrý výkon nákladově efektivním způsobem.
 
-#### <a name="operations-scale-for-database-per-tenant"></a>Škálování operací pro databáze na tenanta
+#### <a name="operations-scale-for-database-per-tenant"></a>Provozní škálování pro databázi na klienta
 
-Platforma Azure SQL Database má mnoho funkcí pro správu, které jsou navržené pro správu velkého počtu databází ve velkém měřítku, jako je třeba i více než 100 000 databází.  Tyto funkce vytvářejí vzor databáze pro plausible.
+Platforma Azure SQL Database má mnoho funkcí pro správu navržených pro správu velkého počtu databází ve velkém měřítku, například více než 100 000 databází.  Tyto funkce, aby databáze na tenanta vzor věrohodné.
 
-Předpokládejme například, že systém má jako jedinou databázi 1000 databázi tenanta.  Databáze může mít 20 indexů.  Pokud systém převede na 1000 databází s jedním tenantům, množství indexů se zvýší na 20 000.  V SQL Database jako součást [automatického ladění][docu-sql-db-automatic-tuning-771a]jsou funkce automatického indexování standardně povolené.  Automatické indexování je spravováno pro všechny indexy 20 000 a jejich probíhající optimalizace vytváření a vypuštění.  K těmto automatickým akcím dochází v rámci jednotlivé databáze a nejsou koordinovány nebo omezeny podobnými akcemi v jiných databázích.  Automatické indexování zpracovává indexy odlišně v zaneprázdněné databázi než v méně vytížené databázi.  Tento typ přizpůsobení správy indexů by byl nepraktický v škálování databáze na tenanta, pokud by bylo potřeba tuto velkou úlohu správy provést ručně.
+Předpokládejme například, že systém má databázi 1000 tenantů jako jedinou databázi.  Databáze může mít 20 indexů.  Pokud systém převede na 1000 databází jednoho klienta, množství indexů se zvýší na 20 000.  V databázi SQL jako součást [automatického ladění][docu-sql-db-automatic-tuning-771a]jsou funkce automatického indexování ve výchozím nastavení povoleny.  Automatické indexování spravuje pro vás všech 20 000 indexů a jejich průběžné optimalizace vytváření a přetažení.  Tyto automatizované akce se vyskytují v rámci jednotlivé databáze a nejsou koordinovány nebo omezeny podobnými akcemi v jiných databázích.  Automatické indexování zachází indexy odlišně v obsazené databázi než v méně zaneprázdněné databázi.  Tento typ přizpůsobení správy indexu by bylo nepraktické v databázi na tenanta škálování, pokud tento obrovský úkol správy musel být provedeno ručně.
 
-Mezi další funkce pro správu, které je vhodné škálovat, patří následující:
+Mezi další funkce správy, které dobře škálují, patří následující:
 
-- Předdefinované zálohy.
+- Vestavěné zálohy.
 - Vysoká dostupnost
 - Šifrování na disku.
 - Telemetrie výkonu.
 
 #### <a name="automation"></a>Automatizace
 
-Operace správy se dají skriptovat a nabízet prostřednictvím modelu [DevOps][http-visual-studio-devops-485m] .  Operace může být dokonce i automatizovaná a zveřejněná v aplikaci.
+Operace správy lze skriptovat a nabídnout prostřednictvím modelu [devops.][http-visual-studio-devops-485m]  Operace mohou být dokonce automatizovány a vystaveny v aplikaci.
 
-Například můžete automatizovat obnovení jednoho tenanta do dřívějšího bodu v čase.  Obnovení stačí pouze obnovit jednu databázi s jedním klientem, která ukládá klienta.  Tato operace obnovení nemá žádný vliv na ostatní klienty, což potvrzuje, že operace správy jsou na jemně detailní úrovni každého tenanta.
+Můžete například automatizovat obnovení jednoho klienta do dřívějšího bodu v čase.  Obnovení pouze potřebuje k obnovení databáze jednoho klienta, který ukládá klienta.  Toto obnovení nemá žádný vliv na ostatní klienty, což potvrzuje, že operace správy jsou na jemně podrobné úrovni každého jednotlivého klienta.
 
-## <a name="e-multi-tenant-app-with-multi-tenant-databases"></a>E. Víceklientská aplikace s více tenantů databází
+## <a name="e-multi-tenant-app-with-multi-tenant-databases"></a>E. Aplikace pro více klientů s víceklientské databáze
 
-Dalším dostupným vzorem je uložení mnoha tenantů do víceklientské databáze.  Instance aplikace může mít libovolný počet databází s více klienty.  Schéma víceklientské databáze musí mít jeden nebo více sloupců identifikátorů tenanta, aby bylo možné selektivně načíst data z libovolného daného tenanta.  Dále schéma může vyžadovat několik tabulek nebo sloupců, které jsou používány pouze podmnožinou klientů.  Statický kód a referenční data jsou však uloženy pouze jednou a jsou sdíleny všemi klienty.
+Dalším dostupným vzorem je uložení mnoha klientů v databázi s více tenanty.  Instance aplikace může mít libovolný počet databází s více klienty.  Schéma databáze s více klienty musí mít jeden nebo více sloupců identifikátoru klienta, aby bylo možné selektivně načíst data z libovolného klienta.  Schéma může dále vyžadovat několik tabulek nebo sloupců, které používají pouze podmnožina klientů.  Statický kód a referenční data jsou však uloženy pouze jednou a jsou sdíleny všemi klienty.
 
-#### <a name="tenant-isolation-is-sacrificed"></a>Izolace tenanta je usmrcena.
+#### <a name="tenant-isolation-is-sacrificed"></a>Izolace nájemníka je obětována
 
-*Data:* &nbsp; databáze s více klienty nutně zabere izolaci klientů.  Data více tenantů jsou uložena společně v jedné databázi.  Během vývoje zajistěte, aby dotazy nikdy nezveřejnily data z více než jednoho tenanta.  SQL Database podporuje [zabezpečení na úrovni řádků][docu-sql-svr-db-row-level-security-947w], které může vyhovět tomu, že data vrácená z dotazu mají rozsah pro jednoho tenanta.
+*Data:* &nbsp; Víceklientská databáze nutně obětuje izolaci klienta.  Data více klientů je uložena společně v jedné databázi.  Během vývoje zajistěte, aby dotazy nikdy nezpřístupní data z více než jednoho klienta.  SQL Database podporuje [zabezpečení na úrovni řádků][docu-sql-svr-db-row-level-security-947w], které může vynutit, že data vrácená z dotazu být vymezeny na jednoho klienta.
 
-*Zpracování:* &nbsp; více tenantů databáze sdílí výpočetní a úložné prostředky ve všech svých klientech.  Tuto databázi je možné monitorovat, aby se zajistilo jejich přijetí.  Systém Azure ale nemá žádný vestavěný způsob, jak tyto prostředky monitorovat nebo spravovat pomocí individuálního tenanta.  Proto má víceklientské databáze zvýšené riziko, že dojde k dosažení sousedů s vysokou zátěží, přičemž zatížení jednoho přečinného tenanta má vliv na výkon jiných tenantů ve stejné databázi.  Další monitorování na úrovni aplikace by mohlo monitorovat výkon na úrovni tenanta.
+*Zpracování:* &nbsp; Víceklientská databáze sdílí výpočetní prostředky a prostředky úložiště napříč všemi jeho tenanty.  Databázi jako celek lze sledovat, aby bylo zajištěno, že funguje přijatelně.  Systém Azure však nemá žádný předdefinovaný způsob, jak monitorovat nebo spravovat použití těchto prostředků jednotlivými tenanty.  Proto víceklientské databáze nese zvýšené riziko výskytu hlučné sousedy, kde zatížení jednoho hyperaktivního klienta ovlivňuje zkušenosti s výkonem jiných klientů ve stejné databázi.  Další monitorování na úrovni aplikace může sledovat výkon na úrovni klienta.
 
 #### <a name="lower-cost"></a>Nižší náklady
 
-Obecně platí, že databáze s více klienty mají nejnižší náklady na tenanta.  Náklady na prostředky pro izolovanou databázi jsou nižší než u srovnatelného elastického fondu.  Kromě toho pro scénáře, kdy klienti potřebují jenom omezené úložiště, můžou být potenciálně miliony klientů uložené v jediné databázi.  Žádný elastický fond nemůže obsahovat miliony databází.  Řešení, které obsahuje 1000 databází pro každý fond, s 1000 fondy, ale může dosáhnout škály milionů s riziky, která by se stala nepraktickýou správou.
+Obecně platí, že databáze s více tenanty mají nejnižší náklady na klienta.  Náklady na prostředky pro jednu databázi jsou nižší než pro ekvivalentní velikosti elastického fondu.  Kromě toho pro scénáře, kde klienti potřebují pouze omezené úložiště, potenciálně miliony klientů mohou být uloženy v jedné databázi.  Žádný elastický fond může obsahovat miliony databází.  Řešení obsahující 1000 databází na fond s 1000 fondy by však mohlo dosáhnout rozsahu milionů na riziko, že se stane těžkopádným.
 
-V následující části jsou popsány dvě varianty modelu databáze s více klienty, přičemž model horizontálně dělené multi-tenant je nejpružnější a škálovatelný.
+Dvě varianty víceklientského databázového modelu jsou popsány v následujícím, přičemž horizontální ho víceklientský model je nejflexibilnější a škálovatelný.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>FJ. Aplikace pro více tenantů s jedinou databází s více klienty
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Aplikace pro více klientů s jednou databází s více klienty
 
-Nejjednodušší model víceklientské databáze používá jedinou databázi pro hostování dat pro všechny klienty.  Po přidání dalších tenantů se databáze škáluje s větším úložištěm a výpočetními prostředky.  Toto horizontální navýšení kapacity může být nezbytné, i když je vždy limit maximálního měřítka.  Nicméně dlouho před dosažením tohoto limitu se databáze bude nepraktický spravovat.
+Nejjednodušší víceklientský databázový vzor používá jednu databázi k hostování dat pro všechny klienty.  Jako další klienty jsou přidány, databáze je navertteničně navertovat s více prostředků úložiště a výpočetní prostředky.  Toto škálování může být vše, co je potřeba, i když je vždy konečný limit měřítka.  Však dlouho před dosažením tohoto limitu databáze stane těžkopádný spravovat.
 
-Operace správy, které jsou zaměřené na jednotlivé klienty, jsou složitější pro implementaci ve více tenantů databázích.  A ve velkém měřítku tyto operace se mohou stát nepřijatelně pomalu.  Jedním z příkladů je obnovení dat k určitému bodu v čase pouze pro jednoho tenanta.
+Operace správy, které jsou zaměřeny na jednotlivé klienty jsou složitější implementovat v databázi s více klienty.  A ve velkém měřítku by se tyto operace mohly stát nepřijatelně pomalými.  Jedním z příkladů je obnovení dat v čase pro jednoho klienta.
 
-## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>Věcn. Víceklientská aplikace s horizontálně dělené databázemi s více klienty
+## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>G. Aplikace s více klienty s databázemi s více klienty s oddíly
 
-Většina aplikací SaaS přistupuje pouze k datům v jednom klientovi.  Tento vzor přístupu umožňuje distribuci dat tenanta napříč více databázemi nebo horizontálních oddílů, kde všechna data pro každého tenanta jsou obsažená v jednom horizontálních oddílů.  V kombinaci se vzorem víceklientské databáze umožňuje model horizontálně dělené skoro neomezené škálování.
+Většina aplikací SaaS přístup k datům pouze jednoho klienta najednou.  Tento přístup vzor umožňuje data klienta distribuovat mezi více databází nebo střepů, kde všechna data pro jednoho klienta je obsažena v jednom střepu.  V kombinaci se vzorem databáze s více tenanty umožňuje horizontálně dělený model téměř neomezené škálování.
 
-![Návrh aplikace s více klienty s horizontálně dělené databázemi s více klienty.][image-mt-app-sharded-mt-db-174s]
+![Návrh víceklientské aplikace s vrstvenými databázemi s více klienty.][image-mt-app-sharded-mt-db-174s]
 
-#### <a name="manage-shards"></a>Správa horizontálních oddílů
+#### <a name="manage-shards"></a>Správa úlomků
 
-Horizontálního dělení zvyšuje složitost jak pro návrh, tak pro provozní správu.  Pro udržování mapování mezi klienty a databázemi je vyžadován katalog.  Kromě toho jsou pro správu horizontálních oddílů a naplnění tenanta vyžadovány postupy správy.  Například procedury musí být navrženy pro přidávání a odebírání horizontálních oddílů a přesouvání dat klientů mezi horizontálních oddílů.  Jedním ze způsobů, jak škálovat, je přidání nového horizontálních oddílů a jeho naplnění novými klienty.  V jinou dobu můžete rozdělit hustě naplněný horizontálních oddílů na dvě méně husté horizontálních oddílůně naplněné.  Po přesunutí nebo ukončení několika tenantů můžete sloučit zhuštěně naplněné horizontálních oddílů dohromady.  Sloučení by vedlo k efektivnějšímu využití prostředků.  Klienti můžou být taky přesunuti mezi horizontálních oddílů a vyrovnávat zatížení.
+Sharding zvyšuje složitost návrhu i provozní správy.  Je vyžadován katalog, ve kterém chcete udržovat mapování mezi klienty a databázemi.  Kromě toho jsou nutné postupy správy pro správu střepů a populace klienta.  Například postupy musí být navrženy pro přidání a odebrání štrůdků a přesunout data klienta mezi oddíly štrůdků.  Jedním ze způsobů škálování je přidáním nového horizontálního oddílu a jeho vyplněním novými tenanty.  Jindy můžete rozdělit hustě obydlený oddíl oddílu na dva méně hustě osídlené oddíly.  Po několika tenantů byly přesunuty nebo ukončeny, můžete sloučit řídce osídlené oddíly společně.  Sloučení by mělo za následek nákladově efektivnější využití prostředků.  Klienti mohou být také přesunuty mezi úlomky k vyrovnání úloh.
 
-SQL Database poskytuje nástroj pro dělení a slučování, který funguje ve spojení s knihovnou horizontálního dělení a databází katalogu.  Zadaná aplikace může rozdělit a sloučit horizontálních oddílů a může přesouvat data klienta mezi horizontálních oddílů.  Aplikace také udržuje katalog během těchto operací a před jejich přesunutím označuje ovlivněné klienty jako offline.  Po přesunu aplikace znovu aktualizuje katalog s novým mapováním a označí klienta jako zpět online.
+SQL Database poskytuje nástroj rozdělení/sloučení, který pracuje ve spojení s knihovnou srážlivých prvků a databázi katalogu.  Poskytnutá aplikace můžete rozdělit a sloučit úlomky a můžete přesunout data klienta mezi oddíly.  Aplikace také udržuje katalog během těchto operací, označení postižených klientů jako offline před jejich přesunutím.  Po přesunutí aplikace aktualizuje katalog znovu s novým mapováním a označení klienta jako zpět online.
 
-#### <a name="smaller-databases-more-easily-managed"></a>Jednodušší správa menších databází
+#### <a name="smaller-databases-more-easily-managed"></a>Menší databáze snadněji spravovatelné
 
-Díky distribuci klientů napříč více databázemi horizontálně dělené řešení pro více tenantů vede k menšímu počtu databází, které jsou snadněji spravované.  Například obnovení konkrétního klienta na předchozí bod v čase nyní zahrnuje obnovení jedné menší databáze ze zálohy, nikoli větší databáze, která obsahuje všechny klienty. Velikost databáze a počet klientů na databázi lze zvolit pro vyrovnávání zatížení a úsilí v rámci správy.
+Distribucí klientů napříč více databázemi, rozdělení řešení s více klienty má za následek menší databáze, které jsou snadněji spravovatelné.  Například obnovení konkrétního klienta do předchozího bodu v čase nyní zahrnuje obnovení jedné menší databáze ze zálohy, nikoli větší databáze, která obsahuje všechny klienty. Velikost databáze a počet klientů na databázi, lze zvolit k vyrovnání pracovního vytížení a úsilí o správu.
 
-#### <a name="tenant-identifier-in-the-schema"></a>Identifikátor tenanta ve schématu
+#### <a name="tenant-identifier-in-the-schema"></a>Identifikátor klienta ve schématu
 
-V závislosti na použitém přístupu k horizontálního dělení můžou být do schématu databáze zavedena další omezení.  Aplikace SQL Database rozdělit/sloučit vyžaduje, aby schéma zahrnovalo klíč horizontálního dělení, který obvykle je identifikátorem tenanta.  Identifikátor tenanta je předním prvkem v primárním klíči všech tabulek horizontálně dělené.  Identifikátor tenanta umožňuje aplikaci rozdělené/sloučení rychle vyhledat a přesunout data přidružená k určitému klientovi.
+V závislosti na přístupu k řícení použít další omezení mohou být uloženy na schéma databáze.  Aplikace sql database rozdělení a sloučení vyžaduje, aby schéma obsahuje klíč rozdělení, který je obvykle identifikátor klienta.  Identifikátor klienta je úvodní prvek v primárním klíči všech oddílových tabulek.  Identifikátor klienta umožňuje aplikaci rozdělení/sloučení rychle vyhledat a přesunout data přidružená k určitému klientovi.
 
-#### <a name="elastic-pool-for-shards"></a>Elastický fond pro horizontálních oddílů
+#### <a name="elastic-pool-for-shards"></a>Elastický bazén pro úlomky
 
-Databáze horizontálně dělené s více klienty lze umístit do elastických fondů.  Obecně platí, že je velký počet databází s jednou tenantů ve fondu, což je cenově výhodné, protože má mnoho tenantů v několika databázích s více klienty.  Víceklientské databáze jsou výhodné, pokud existuje velký počet relativně neaktivních klientů.
+Vrstvené víceklientské databáze lze umístit do elastických fondů.  Obecně platí, že mít mnoho databází s jedním tenantem ve fondu je stejně efektivní jako mít mnoho klientů v několika databázích s více klienty.  Víceklientské databáze jsou výhodné, pokud existuje velký počet relativně neaktivních klientů.
 
-## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>y. Model hybridního víceklientské databáze horizontálně dělené
+## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>H. Hybridní oborový model databáze s více klienty
 
-V hybridním modelu mají všechny databáze ve svém schématu identifikátor tenanta.  Databáze jsou schopné uložit více než jednoho tenanta a databáze mohou být horizontálně dělené.  Takže ve smyslu schématu jsou to všechny víceklientské databáze.  V praxi některé z těchto databází ještě obsahují jenom jednoho tenanta.  Bez ohledu na to, že počet klientů uložených v dané databázi nemá žádný vliv na schéma databáze.
+V hybridním modelu mají všechny databáze identifikátor klienta ve schématu.  Databáze jsou všechny schopné ukládání více než jednoho klienta a databáze mohou být oddíly.  Takže ve smyslu schématu jsou všechny víceklientské databáze.  Přesto v praxi některé z těchto databází obsahují pouze jednoho klienta.  Bez ohledu na to, množství klientů uložených v dané databázi nemá žádný vliv na schéma databáze.
 
-#### <a name="move-tenants-around"></a>Přesunout klienty kolem
+#### <a name="move-tenants-around"></a>Přesun klientů
 
-Konkrétního tenanta můžete kdykoli přesunout do své vlastní databáze s více klienty.  A kdykoli můžete změnit svoje rozhodnutí a přesunout klienta zpět do databáze, která obsahuje více tenantů.  Při zřizování nové databáze můžete také klienta přiřadit k novému jedinému tenantovi databáze.
+Kdykoli můžete přesunout konkrétního klienta do jeho vlastní databáze s více tenanty.  A kdykoli můžete změnit názor a přesunout klienta zpět do databáze, která obsahuje více klientů.  Můžete také přiřadit klienta k nové databázi jednoho klienta při zřizování nové databáze.
 
-Hybridní model se vydává v případě rozsáhlých rozdílů mezi potřebou prostředků zjistitelných skupin klientů.  Předpokládejme například, že klienti účastnící se bezplatné zkušební verze nemají zaručenou stejnou vysokou úroveň výkonu, který je předplatitelem klienta.  Zásady můžou být pro klienty v bezplatné zkušební fázi, aby se uložily do víceklientské databáze, která je sdílená mezi všemi klienty bezplatné zkušební verze.  Když se tenant bezplatné zkušební verze přihlásí ke službě Basic úrovně služby, může se klient přesunout do jiné databáze s více klienty, která může mít méně tenantů.  Předplatitel, který platí pro úroveň Premium Service, se může přesunout do své vlastní nové databáze s jedním tenanta.
+Hybridní model svítí, když existují velké rozdíly mezi potřebami prostředků identifikovatelných skupin klientů.  Předpokládejme například, že klienti, kteří se účastní bezplatné zkušební verze, nemají zaručenou stejně vysokou úroveň výkonu jako přihlášení k odběru klientů.  Zásada může být pro klienty ve fázi bezplatné zkušební verze, které mají být uloženy v databázi více klientů, která je sdílena mezi všemi klienty zkušební verze.  Když se bezplatný zkušební klient přihlásí k odběru základní úrovně služeb, klienta můžete přesunout do jiné databáze více klientů, která může mít méně klientů.  Odběratel, který platí za úroveň služby premium, může být přesunut do vlastní nové databáze s jedním tenantem.
 
 #### <a name="pools"></a>Fondy
 
-V tomto hybridním modelu je možné umístit databáze jednoho tenanta pro klienty předplatitele do fondů zdrojů, aby se snížily náklady databáze na tenanta.  To se provádí taky v modelu databáze pro jednotlivé klienty.
+V tomto hybridním modelu mohou být databáze s jedním klientem pro klienty odběratelů umístěny do fondů prostředků, aby se snížily náklady na databázi na klienta.  To se také provádí v modelu databáze na tenanta.
 
-## <a name="i-tenancy-models-compared"></a>I. Porovnání modelů architektury
+## <a name="i-tenancy-models-compared"></a>I. Nájemní modely ve srovnání
 
-Následující tabulka shrnuje rozdíly mezi hlavními modely tenantů.
+Následující tabulka shrnuje rozdíly mezi hlavními modely nájmu.
 
-| Měření | Samostatná aplikace | Databáze – na tenanta | Horizontálně dělené více tenantů |
+| Měření | Samostatná aplikace | Databáze na klienta | Víceklient s pevnými vrstvami |
 | :---------- | :------------- | :------------------ | :------------------- |
-| Měřítko | Střednědobé používání<br />1 – 100 | Velmi vysoké<br />1 – 100, tisících | Unlimited<br />1 – 1, 000, tisících |
-| Izolace tenanta | Velmi vysoké | Vysoký | Slab s výjimkou jednoho tenanta (který je samostatně v MT DB). |
-| Náklady na databázi na tenanta | Maximální má velikost pro špičky. | Slab používané fondy. | Nejnižší pro malé klienty v MT databáze. |
-| Sledování a Správa výkonu | Jenom pro tenanta | Agregovaná + pro každého tenanta | Souhrnné i když je jeden tenant jenom pro jednoduchou. |
-| Složitost vývoje | Nízká | Nízká | Úrovně kvůli horizontálního dělení. |
-| Provozní složitost | Nízká-vysoká. Samostatně jednoduché, složité ve velkém měřítku. | Nízká – střední. Vzory řeší složitost v rozsahu. | Nízká-vysoká. Správa jednotlivých klientů je složitá. |
+| Škálování | Střednědobé používání<br />1-100s | Velmi vysoká<br />1-100 000s | Unlimited<br />1-1 000 000 |
+| Izolace tenanta | Velmi vysoká | Vysoká | Nízká; s výjimkou jednoho klienta (který je sám v MT db). |
+| Náklady na databázi na klienta | Vysoká; je dimenzována pro špičky. | Nízká; použitých bazénů. | Nejnižší, pro malé nájemníky v MT DBs. |
+| Sledování a řízení výkonu | Pouze pro klienta | Agregovat + na klienta | Agregace; i když je na nájemce pouze pro jednotlivce. |
+| Složitost vývoje | Nízká | Nízká | Střední; v důsledku střepů. |
+| Provozní složitost | Nízko-vysoko. Individuálně jednoduché, složité ve velkém měřítku. | Nízká-Střední. Vzory řeší složitost ve velkém měřítku. | Nízko-vysoko. Správa jednotlivých klientů je složitá. |
 | &nbsp; ||||
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nasazení a zkoumání víceklientské aplikace Wingtip, která používá model SaaS pro jednotlivé klienty – Azure SQL Database][docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]
+- [Nasazení a prozkoumání víceklientské aplikace Wingtip, která používá model SaaS pro jednotlivé databáze – Azure SQL Database][docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]
 
-- [Vítá vás ukázková lístky Wingtip SaaS Azure SQL Database aplikace tenantů][docu-saas-tenancy-welcome-wingtip-tickets-app-384w]
+- [Vítá vás ukázková aplikace pro pronájem sazure azure databáze SaaS Azure][docu-saas-tenancy-welcome-wingtip-tickets-app-384w]
 
 
 <!--  Article link references.  -->
@@ -214,11 +213,11 @@ Následující tabulka shrnuje rozdíly mezi hlavními modely tenantů.
 
 <!--  Image references.  -->
 
-[image-standalone-app-st-db-111a]: media/saas-tenancy-app-design-patterns/saas-standalone-app-single-tenant-database-11.png "Návrh samostatné aplikace s právě jednou databází s jedním klientem."
+[image-standalone-app-st-db-111a]: media/saas-tenancy-app-design-patterns/saas-standalone-app-single-tenant-database-11.png "Návrh samostatné aplikace s přesně jednou databází jednoho klienta."
 
-[image-mt-app-db-per-tenant-132d]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-13.png "Návrh aplikace s více klienty s databází na tenanta."
+[image-mt-app-db-per-tenant-132d]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-13.png "Návrh víceklientské aplikace s databází na tenanta."
 
-[image-mt-app-db-per-tenant-pool-153p]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-pool-15.png "Návrh aplikace s více klienty pomocí databáze-na tenanta pomocí elastického fondu."
+[image-mt-app-db-per-tenant-pool-153p]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-pool-15.png "Návrh víceklientské aplikace s databází na tenanta pomocí elastického fondu."
 
-[image-mt-app-sharded-mt-db-174s]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-sharded-multi-tenant-databases-17.png "Návrh aplikace s více klienty s horizontálně dělené databázemi s více klienty."
+[image-mt-app-sharded-mt-db-174s]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-sharded-multi-tenant-databases-17.png "Návrh víceklientské aplikace s vrstvenými databázemi s více klienty."
 

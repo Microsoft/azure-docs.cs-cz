@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s nasazením OpenShift Container Platform 3,11 v Azure
-description: Řešení potíží s nasazením OpenShift Container Platform 3,11 v Azure
+title: Poradce při potížích s nasazením platformy OpenShift Container Platform 3.11 v Azure
+description: Poradce při potížích s nasazením platformy OpenShift Container Platform 3.11 v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 1915cce1878b9b7ec058c13167e03c3c318f3668
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bd83a1ca731d81edb76a3c1bc07113ce96adb9ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035487"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066588"
 ---
-# <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Řešení potíží s nasazením OpenShift Container Platform 3,11 v Azure
+# <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Poradce při potížích s nasazením platformy OpenShift Container Platform 3.11 v Azure
 
-Pokud se OpenShift cluster neúspěšně nasadí, bude se v Azure Portal zaslat chybový výstup. Výstup může být obtížně čitelný, což ztěžuje identifikaci problému. Tento výstup můžete rychle vyhledat pro ukončovací kód 3, 4 nebo 5. Následující informace obsahují informace o těchto třech ukončovacích kódech:
+Pokud se cluster OpenShift nenasadí úspěšně, portál Azure bude poskytovat výstup chyby. Výstup může být obtížné číst, což ztěžuje identifikaci problému. Rychle naskenujte tento výstup pro výstupní kód 3, 4 nebo 5. Následující informace o těchto třech výstupních kódech:
 
-- Ukončovací kód 3: uživatelské jméno/heslo předplatného Red Hat nebo ID nebo aktivační klíč organizace nejsou správné.
-- Ukončovací kód 4: vaše ID fondu Red Hat je nesprávné nebo nejsou k dispozici žádná oprávnění.
-- Ukončovací kód 5: nelze zřídit svazek Docker tenkých fondů
+- Ukončovací kód 3: Uživatelské jméno / heslo nebo ID organizace / aktivační klíč předplatného Red Hat je nesprávné
+- Kód ukončení 4: ID fondu Red Hat je nesprávné nebo nejsou k dispozici žádné nároky
+- Ukončovací kód 5: Nelze zřídit svazek tenkého fondu Dockeru
 
-Pro všechny ostatní ukončovací kódy se připojte k hostitelům přes protokol SSH, aby se zobrazily soubory protokolu.
+Pro všechny ostatní ukončovací kódy se připojte k hostitelům přes ssh a zobrazte soubory protokolu.
 
-**OpenShift kontejnerová platforma 3,11**
+**OpenShift Container Platform 3.11**
 
-SSH pro hostitele Ansible PlayBook. Pro šablonu nebo nabídku Marketplace použijte hostitele bastionu. Z bastionu můžete SSH pro všechny ostatní uzly v clusteru (hlavní, infračervená, CNS, COMPUTE). Aby bylo možné zobrazit soubory protokolu, bude nutné, abyste byli kořen. Kořen je ve výchozím nastavení zakázán pro přístup SSH, takže nelze použít root pro SSH pro jiné uzly.
+SSH na ansible playbook hostitele. Pro šablonu nebo nabídku Marketplace použijte hostitele bašty. Z bašty můžete SSH do všech ostatních uzlů v clusteru (master, infra, CNS, compute). Chcete-li zobrazit soubory protokolu, musíte být kořenové. Root je ve výchozím nastavení zakázán pro přístup SSH, takže nepoužívejte root na SSH do jiných uzlů.
 
 **OKD**
 
-SSH pro hostitele Ansible PlayBook. Pro šablonu OKD (verze 3,9 a starší) použijte hostitele hlavní-0. Pro šablonu OKD (verze 3,10 a novější) použijte hostitele bastionu. Z hostitele Ansible PlayBook můžete SSH pro všechny ostatní uzly v clusteru (hlavní, infračervená, CNS, COMPUTE). Chcete-li zobrazit soubory protokolu, bude nutné, abyste byli kořen (sudo SU-). Kořen je ve výchozím nastavení zakázán pro přístup SSH, takže nelze použít root pro SSH pro jiné uzly.
+SSH na ansible playbook hostitele. Pro šablonu OKD (verze 3.9 a starší) použijte hostitele master-0. Pro šablonu OKD (verze 3.10 a novější) použijte hostitele bastionu. Z ansible playbook hostitele, můžete SSH do všech ostatních uzlů v clusteru (master, infra, CNS, compute). Budete muset být root (sudo su -) pro zobrazení souborů protokolu. Root je ve výchozím nastavení zakázán pro přístup SSH, takže nepoužívejte root na SSH do jiných uzlů.
 
 ## <a name="log-files"></a>Soubory protokolu
 
-Soubory protokolu (stderr a STDOUT) pro skripty přípravy hostitele jsou umístěné v `/var/lib/waagent/custom-script/download/0` na všech hostitelích. Pokud během přípravy hostitele došlo k chybě, Projděte si tyto soubory protokolů a určete chybu.
+Soubory protokolu (stderr a stdout) pro skripty `/var/lib/waagent/custom-script/download/0` přípravy hostitele jsou umístěny na všech hostitelích. Pokud došlo k chybě během přípravy hostitele, zobrazte tyto soubory protokolu k určení chyby.
 
-Pokud se přípravné skripty úspěšně spustily, bude nutné prozkoumat soubory protokolu v adresáři `/var/lib/waagent/custom-script/download/1` PlayBook hostitele Ansible. Pokud k chybě došlo při vlastní instalaci OpenShift, zobrazí se v souboru stdout chyba. Pomocí těchto informací můžete kontaktovat podporu a požádat o další pomoc.
+Pokud byly přípravné skripty úspěšně spuštěny, `/var/lib/waagent/custom-script/download/1` bude nutné prozkoumat soubory protokolu v adresáři hostitele rezervovatelného adresáře. Pokud došlo k chybě během skutečné instalace OpenShift, soubor stdout zobrazí chybu. Pomocí těchto informací můžete kontaktovat podporu a požádat o další pomoc.
 
 Příklad výstupu
 
@@ -83,40 +83,40 @@ Failure summary:
      Message:  Failed without returning a message.
 ```
 
-Nejběžnější chyby při instalaci:
+Nejčastější chyby během instalace jsou:
 
-1. Privátní klíč má přístupové heslo.
-2. Tajný kód trezoru klíčů s privátním klíčem nebyl správně vytvořen.
-3. Přihlašovací údaje instančního objektu byly zadány nesprávně.
+1. Soukromý klíč má přístupové heslo
+2. Tajný klíč trezoru klíčů se soukromým klíčem nebyl vytvořen správně.
+3. Pověření instančního objektu byla zadána nesprávně.
 4. Instanční objekt nemá přístup přispěvatele ke skupině prostředků.
 
-### <a name="private-key-has-a-passphrase"></a>Privátní klíč má přístupové heslo.
+### <a name="private-key-has-a-passphrase"></a>Soukromý klíč má přístupové heslo
 
-Zobrazí se chyba, že oprávnění pro SSH bylo zamítnuto. SSH pro hostitele PlayBook Ansible pro kontrolu hesla na privátním klíči.
+Zobrazí se chyba, že oprávnění bylo odepřeno pro ssh. ssh na ansible playbook hostitele zkontrolovat přístupové heslo na soukromém klíči.
 
-### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Tajný kód trezoru klíčů s privátním klíčem nebyl správně vytvořen.
+### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Tajný klíč trezoru klíčů se soukromým klíčem nebyl vytvořen správně.
 
-Privátní klíč se zkopíruje do hostitele PlayBook Ansible-~/.ssh/id_rsa. Potvrďte, že je tento soubor správný. Otestujte otevřením relace SSH na jednom z uzlů clusteru z PlayBook hostitele Ansible.
+Soukromý klíč je zkopírován do hostitele ansible playbook - ~/.ssh/id_rsa. Zkontrolujte, zda je tento soubor správný. Vyzkoušejte otevřením relace SSH do jednoho z uzlů clusteru z hostitele ansible playbook.
 
-### <a name="service-principal-credentials-were-entered-incorrectly"></a>Přihlašovací údaje instančního objektu byly zadány nesprávně.
+### <a name="service-principal-credentials-were-entered-incorrectly"></a>Pověření instančního objektu byla zadána nesprávně.
 
-Když zadáte vstup do šablony nebo nabídky Marketplace, zadali jste nesprávné informace. Ujistěte se, že jste pro instanční objekt používali správné appId (clientId) a Password (clientSecret). Ověřte vyvoláním následujícího příkazu rozhraní příkazového řádku Azure CLI.
+Při poskytování vstup do šablony nebo marketplace nabídky, byly poskytnuty nesprávné informace. Ujistěte se, že používáte správné appId (clientId) a heslo (clientSecret) pro instanční objekt. Ověřte vydáním následujícího příkazu azure cli.
 
-```bash
+```azurecli
 az login --service-principal -u <client id> -p <client secret> -t <tenant id>
 ```
 
 ### <a name="service-principal-doesnt-have-contributor-access-to-the-resource-group"></a>Instanční objekt nemá přístup přispěvatele ke skupině prostředků.
 
-Pokud je poskytovatel cloudového Azure povolený, použitý instanční objekt musí mít přístup přispěvatele k této skupině prostředků. Ověřte vyvoláním následujícího příkazu rozhraní příkazového řádku Azure CLI.
+Pokud je poskytovatel cloudu Azure povolen, musí mít použitý instanční objekt přístup k skupině prostředků. Ověřte vydáním následujícího příkazu azure cli.
 
-```bash
+```azurecli
 az group update -g <openshift resource group> --set tags.sptest=test
 ```
 
 ## <a name="additional-tools"></a>Další nástroje
 
-V případě některých chyb můžete k získání dalších informací použít také následující příkazy:
+U některých chyb můžete také získat další informace pomocí následujících příkazů:
 
-1. Služba stavu systemctl \<>
-2. journalctl – XE
+1. > stavové \<služby systemCTL
+2. deníkctl -xe

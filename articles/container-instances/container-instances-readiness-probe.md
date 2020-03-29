@@ -1,29 +1,29 @@
 ---
-title: Nastavení testu připravenosti na instanci kontejneru
-description: Naučte se konfigurovat sondu, aby kontejnery v Azure Container Instances přijímaly požadavky pouze v případě, že jsou připravené.
+title: Nastavit sondu připravenosti na instanci kontejneru
+description: Zjistěte, jak nakonfigurovat sondu, která zajistí, že kontejnery v instanci azure kontejneru přijímají požadavky, pouze když jsou připravené
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76935682"
 ---
 # <a name="configure-readiness-probes"></a>Konfigurace testů připravenosti
 
-U kontejnerových aplikací, které obsluhují provoz, můžete chtít ověřit, že je váš kontejner připravený na zpracování příchozích požadavků. Azure Container Instances podporuje testy připravenosti k zahrnutí konfigurací, aby ke kontejneru za určitých podmínek nezískal přístup. Test připravenosti se chová jako [test připravenosti na Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/). Aplikace kontejneru může například potřebovat načíst velkou datovou sadu při spuštění a nechcete, aby během této doby přijímala žádosti.
+U kontejnerizovaných aplikací, které obsluhují provoz, můžete ověřit, zda je váš kontejner připraven ke zpracování příchozích požadavků. Azure Container Instances podporuje sondy připravenosti zahrnout konfigurace tak, aby váš kontejner nelze přistupovat za určitých podmínek. Sonda připravenosti se chová jako [sonda připravenosti Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/). Aplikace kontejneru může například potřebovat načíst velkou sadu dat během spuštění a nechcete, aby během této doby přijímali požadavky.
 
-Tento článek vysvětluje, jak nasadit skupinu kontejnerů, která zahrnuje test připravenosti, aby kontejner přijímal jenom provoz, když je test úspěšný.
+Tento článek vysvětluje, jak nasadit skupinu kontejnerů, která obsahuje sondu připravenosti, takže kontejner přijímá pouze provoz, když sonda uspěje.
 
-Azure Container Instances podporuje také [sondy živého provozu](container-instances-liveness-probe.md), které můžete nakonfigurovat tak, aby způsobily, že se automaticky restartuje kontejner, který není v pořádku.
+Azure Container Instances také podporuje [sondy liveness](container-instances-liveness-probe.md), které můžete nakonfigurovat tak, aby způsobily automatické restartování kontejneru není v pořádku.
 
 > [!NOTE]
-> V současné době nemůžete použít test připravenosti ve skupině kontejnerů nasazených do virtuální sítě.
+> V současné době nelze použít sondu připravenosti ve skupině kontejnerů nasazené do virtuální sítě.
 
 ## <a name="yaml-configuration"></a>Konfigurace YAML
 
-Jako příklad vytvořte soubor `readiness-probe.yaml` s následujícím fragmentem kódu, který obsahuje test připravenosti. Tento soubor definuje skupinu kontejnerů, která se skládá z kontejneru, na kterém běží malá webová aplikace. Aplikace je nasazená z veřejné `mcr.microsoft.com/azuredocs/aci-helloworld` image. Tato kontejnerová aplikace je také znázorněna v [části nasazení instance kontejneru v Azure pomocí rozhraní příkazového řádku Azure](container-instances-quickstart.md) a dalších rychlých startů.
+Jako příklad vytvořte `readiness-probe.yaml` soubor s následujícím výstřižkem, který obsahuje sondu připravenosti. Tento soubor definuje skupinu kontejnerů, která se skládá z kontejneru s malou webovou aplikací. Aplikace se nasadí `mcr.microsoft.com/azuredocs/aci-helloworld` z veřejné image. Tato kontejnerizovaná aplikace je taky demonstrovaná v [instanci nasazení kontejneru v Azure pomocí Azure CLI](container-instances-quickstart.md) a dalších rychlých startů.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -61,27 +61,27 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-### <a name="start-command"></a>Spustit příkaz
+### <a name="start-command"></a>Spustit – příkaz
 
-Nasazení zahrnuje vlastnost `command` definující počáteční příkaz, který se spustí při prvním spuštění kontejneru. Tato vlastnost přijímá pole řetězců. Tento příkaz simuluje čas, kdy webová aplikace běží, ale kontejner není připravený. 
+Nasazení obsahuje `command` vlastnost definující počáteční příkaz, který se spustí při prvním spuštění kontejneru. Tato vlastnost přijímá pole řetězců. Tento příkaz simuluje čas, kdy se webová aplikace spustí, ale kontejner není připraven. 
 
-Nejprve spustí relaci prostředí a spustí příkaz `node`, který spustí webovou aplikaci. Také spustí příkaz do režimu spánku po 240 sekund, po jehož uplynutí vytvoří soubor s názvem `ready` v adresáři `/tmp`:
+Nejprve spustí relaci prostředí a `node` spustí příkaz ke spuštění webové aplikace. Spustí také příkaz do režimu spánku po dobu 240 `ready` sekund, po kterém vytvoří soubor volaný v adresáři: `/tmp`
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
 ```
 
-### <a name="readiness-command"></a>Připravenost – příkaz
+### <a name="readiness-command"></a>Připravenost, příkaz
 
-Tento soubor YAML definuje `readinessProbe`, který podporuje příkaz `exec` připravenosti, který funguje jako kontrolu připravenosti. V tomto příkladu se testuje příkazy připravenosti pro existenci souboru `ready` v adresáři `/tmp`.
+Tento soubor YAML `readinessProbe` definuje, `exec` který podporuje příkaz připravenosti, který funguje jako kontrola připravenosti. Tento příklad připravenosti příkaz testy `ready` pro existenci `/tmp` souboru v adresáři.
 
-Pokud soubor `ready` neexistuje, příkaz připravenosti se ukončí s nenulovou hodnotou; kontejner pokračuje v běhu, ale není k němu mít k dispozici. Po úspěšném ukončení příkazu s ukončovacím kódem 0 je kontejner připravený k otevření. 
+Pokud `ready` soubor neexistuje, příkaz připravenosti se ukončí s nenulovou hodnotou. kontejner pokračuje v běhu, ale nelze získat přístup. Když příkaz úspěšně ukončí s ukončovací kód 0, kontejner je připraven k přístupu. 
 
-Vlastnost `periodSeconds` označuje, že příkaz připravenosti by se měl provádět každých 5 sekund. Test připravenosti se spustí po dobu života skupiny kontejnerů.
+Vlastnost `periodSeconds` určuje připravenost příkaz by měl spustit každých 5 sekund. Sonda připravenosti běží po dobu životnosti skupiny kontejnerů.
 
 ## <a name="example-deployment"></a>Příklad nasazení
 
-Spuštěním následujícího příkazu nasaďte skupinu kontejnerů s předchozí konfigurací YAML:
+Spusťte následující příkaz pro nasazení skupiny kontejnerů s předchozí konfigurací YAML:
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --file readiness-probe.yaml
@@ -89,27 +89,27 @@ az container create --resource-group myResourceGroup --file readiness-probe.yaml
 
 ## <a name="view-readiness-checks"></a>Zobrazit kontroly připravenosti
 
-V tomto příkladu se během prvních 240 sekund příkaz Readiness (připravenost) po kontrole existence souboru `ready` nezdařil. Stavový kód vrátil signál, že kontejner není připravený.
+V tomto příkladu během prvních 240 sekund příkaz připravenosti `ready` selže při kontrole existence souboru. Stavový kód vrátil signály, že kontejner není připraven.
 
-Tyto události se dají zobrazit z Azure Portal nebo pomocí Azure CLI. Například portál zobrazuje události typu `Unhealthy` jsou aktivovány při selhání příkazu Readiness. 
+Tyto události lze zobrazit z portálu Azure nebo Azure CLI. Portál například zobrazuje události `Unhealthy` typu jsou spuštěny při selhání příkazu připravenosti. 
 
-![Událost chybného portálu][portal-unhealthy]
+![Událost Není v pořádku portálu][portal-unhealthy]
 
-## <a name="verify-container-readiness"></a>Ověřit připravenost kontejneru
+## <a name="verify-container-readiness"></a>Ověření připravenosti kontejneru
 
-Po spuštění kontejneru můžete ověřit, že není na začátku přístupný. Po zřízení Získejte IP adresu skupiny kontejnerů:
+Po spuštění kontejneru můžete ověřit, že není zpočátku přístupný. Po zřizování získáte IP adresu skupiny kontejnerů:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name readinesstest --query "ipAddress.ip" --out tsv
 ```
 
-Pokus o přístup k webu v době, kdy test připravenosti selhává:
+Pokuste se o přístup k webu, zatímco sonda připravenosti selže:
 
 ```bash
 wget <ipAddress>
 ```
 
-Výstup ukazuje, že web není přístupný zpočátku:
+Výstup ukazuje, že web není zpočátku přístupný:
 ```
 $ wget 192.0.2.1
 --2019-10-15 16:46:02--  http://192.0.2.1/
@@ -117,7 +117,7 @@ Connecting to 192.0.2.1... connected.
 HTTP request sent, awaiting response... 
 ```
 
-Po 240 sekundách se příkaz připravenosti úspěšně dokončí a signálem kontejneru je připravený. Když teď spustíte příkaz `wget`, proběhne úspěšně:
+Po 240 sekundách se příkaz připravenosti uspěje a signalizuje, že kontejner je připraven. Nyní při spuštění `wget` příkazu, uspěje:
 
 ```
 $ wget 192.0.2.1
@@ -132,15 +132,15 @@ index.html.1                       100%[========================================
 2019-10-15 16:49:38 (113 MB/s) - ‘index.html.1’ saved [1663/1663] 
 ```
 
-Až bude kontejner připravený, můžete k webové aplikaci přejít také tak, že přejdete na IP adresu pomocí webového prohlížeče.
+Když je kontejner připraven, můžete také přistupovat k webové aplikaci procházením IP adresy pomocí webového prohlížeče.
 
 > [!NOTE]
-> Test připravenosti bude i nadále běžet po dobu životnosti skupiny kontejnerů. Pokud se příkaz Readiness v pozdější době nepovede, kontejner se znovu nezpřístupní. 
+> Sonda připravenosti nadále spuštěna po dobu životnosti skupiny kontejnerů. Pokud příkaz připravenosti selže později, kontejner se opět stane nepřístupným. 
 > 
 
 ## <a name="next-steps"></a>Další kroky
 
-Test připravenosti může být užitečný ve scénářích, které se týkají skupin více kontejnerů, které se skládají z závislých kontejnerů. Další informace o scénářích s více kontejnery najdete v tématu [skupiny kontejnerů v Azure Container Instances](container-instances-container-groups.md).
+Sonda připravenosti může být užitečná ve scénářích zahrnujících skupiny s více kontejnery, které se skládají ze závislých kontejnerů. Další informace o scénářích s více kontejnery najdete [v tématu Skupiny kontejnerů v instancích kontejnerů Azure](container-instances-container-groups.md).
 
 <!-- IMAGES -->
 [portal-unhealthy]: ./media/container-instances-readiness-probe/readiness-probe-failed.png

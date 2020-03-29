@@ -1,6 +1,6 @@
 ---
-title: Shluky B-Series – Azure Virtual Machines
-description: Popisuje B-série velikostí virtuálních počítačů Azure
+title: Roztržení řady B – virtuální počítače Azure
+description: Popisuje řady B burstable velikosti virtuálních počítačových virtuálních počítače Azure.
 services: virtual-machines
 author: ayshakeen
 manager: gwallace
@@ -9,56 +9,56 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: ayshak
 ms.openlocfilehash: 5121ef8eb3123d830233e91968c69b331d255bd0
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78161076"
 ---
-# <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
+# <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních strojů řady B
 
-Virtuální počítače řady B-Series jsou ideální pro úlohy, které nepotřebují průběžný výkon procesoru, jako jsou webové servery, prokázání konceptů, malých databází a prostředí pro vývoj sestavení. Tyto úlohy mají typicky požadavky na výkon při roztržení. Řada B-Series nabízí možnost zakoupit si velikost virtuálního počítače s využitím základního výkonu a instance virtuálního počítače vytvoří kredity, pokud používá méně než svůj směrný plán. Když se na virtuálním počítači nashromáždil kredit, může se virtuální počítač zvýšit nad základnu, a to díky až 100% vCPU, pokud vaše aplikace vyžaduje vyšší výkon procesoru.
+Virtuální počítače řady B jsou ideální pro úlohy, které nepotřebují plný výkon procesoru nepřetržitě, jako jsou webové servery, doklady o konceptech, malé databáze a vývojová prostředí sestavení. Tyto úlohy mají obvykle sknutelné požadavky na výkon. Řada B poskytuje možnost zakoupit velikost virtuálního počítače s výkonem podle směrného plánu a instance virtuálního počítače vytváří kredity, když používá méně než jeho směrný plán. Když virtuální počítač nahromaděný kredit, virtuální počítač může prasknout nad směrný plán pomocí až 100 % virtuálního procesoru, když vaše aplikace vyžaduje vyšší výkon procesoru.
 
-Řada B-obsahuje následující velikosti virtuálních počítačů:
+Řada B se dodává v následujících velikostech virtuálních počítače:
 
-Premium Storage: podporováno
+Úložiště Premium: Podporováno
 
-Ukládání Premium Storage do mezipaměti: nepodporováno
+Ukládání do mezipaměti úložiště Premium: Není podporováno
 
-Migrace za provozu: podporováno
+Migrace za provozu: Podporováno
 
-Aktualizace pro zachování paměti: podporováno
+Aktualizace pro zachování paměti: Podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Základní výkon procesoru virtuálního počítače | Maximální výkon procesoru virtuálního počítače | Počáteční kredity | Kredity v bance za hodinu | Maximální počet bank kreditů | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Základní procesor Perf virtuálního počítače | Maximální cpu Perf virtuálního počítače | Počáteční kredity | Uklápěné kredity za hodinu | Maximální bankovní úvěry | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasná propustnost úložiště: IOPS/MBps | Maximální propustnost disku bez mezipaměti: IOPS/MBps | Maximální počet síťových karet |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Standard_B1ls<sup>1</sup> | 1  | 0,5 | 4   | 5 %   | 100 %  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 2  |
-| Standard_B1s              | 1  | 1   | 4   | 10 %  | 100 %  | 30  | 6   | 144  | 2  | 400/10    | 320/10    | 2  |
-| Standard_B1ms             | 1  | 2   | 4   | 20 %  | 100 %  | 30  | 12  | 288  | 2  | 800/10    | 640/10    | 2  |
-| Standard_B2s              | 2  | 4   | 8   | 40 %  | 200%  | 60  | 24  | 576  | 4  | 1600/15   | 1280/15   | 3  |
-| Standard_B2ms             | 2  | 8   | 16  | 60 %  | 200%  | 60  | 36  | 864  | 4  | 2400/22.5 | 1920 – 22.5 | 3  |
-| Standard_B4ms             | 4  | 16  | 32  | 90%  | 400%  | 120 | 54  | 1296 | 8  | 3600/35   | 2880/35   | 4  |
+| Standard_B1ls<sup>1</sup> | 1  | 0,5 | 4   | 5 %   | 100 %  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 2  |
+| Standard_B1s              | 1  | 1   | 4   | 10 %  | 100 %  | 30  | 6   | 144  | 2  | 400/10    | 320/10    | 2  |
+| Standard_B1ms             | 1  | 2   | 4   | 20 %  | 100 %  | 30  | 12  | 288  | 2  | 800/10    | 640/10    | 2  |
+| Standard_B2s              | 2  | 4   | 8   | 40 %  | 200 %  | 60  | 24  | 576  | 4  | 1600/15   | 1280/15   | 3  |
+| Standard_B2ms             | 2  | 8   | 16  | 60 %  | 200 %  | 60  | 36  | 864  | 4  | 2400/22.5 | 1920/22.5 | 3  |
+| Standard_B4ms             | 4  | 16  | 32  | 90 %  | 400%  | 120 | 54  | 1296 | 8  | 3600/35   | 2880/35   | 4  |
 | Standard_B8ms             | 8  | 32  | 64  | 135% | 800%  | 240 | 81  | 1944 | 16 | 4320/50   | 4320/50   | 4  |
 | Standard_B12ms            | 12 | 48  | 96  | 202% | 1200% | 360 | 121 | 2909 | 16 | 6480/75   | 4320/50   | 6  |
 | Standard_B16ms            | 16 | 64  | 128 | 270% | 1600% | 480 | 162 | 3888 | 32 | 8640/100  | 4320/50   | 8  |
-| Standard_B20ms            | 20 | 80  | 160 | 337% | 2000% | 600 | 203 | 4860 | 32 | 10800/125 | 4320/50   | 8  |
+| Standard_B20ms            | 20 | 80  | 160 | 337% | 2 000 % | 600 | 203 | 4860 | 32 | 10800/125 | 4320/50   | 8  |
 
-<sup>1</sup> B1ls se podporuje jenom na Linux.
+<sup>1</sup> B1ls je podporován pouze na Linuxu
 
-## <a name="workload-example"></a>Příklad úlohy
+## <a name="workload-example"></a>Příklad pracovnízátěže
 
-Vezměte v úvahu aplikaci Office pro vrácení se změnami/výstup. Aplikace potřebuje v pracovní době nárůst počtu PROCESORů, ale ne spoustu výpočetní síly v době mimo špičku. V tomto příkladu zatížení vyžaduje 16vCPU virtuální počítač s 64GiB paměti RAM, aby bylo možné efektivně pracovat.
+Zvažte aplikaci pro vrácení se změnami v kanceláři. Aplikace potřebuje shluky procesoru během pracovní doby, ale ne mnoho výpočetního výkonu během mimo pracovní dobu. V tomto příkladu zatížení vyžaduje 16vCPU virtuální počítač s 64GiB paměti RAM pracovat efektivně.
 
-Tabulka zobrazuje data o hodinách přenosů a graf je vizuální reprezentace tohoto provozu.
+V tabulce jsou uvedeny hodinové údaje o provozu a graf představuje vizuální znázornění tohoto provozu.
 
-Charakteristiky B16:
+B16 charakteristiky:
 
-Maximální výkon procesoru: 16vCPU × 100% = 1600%
+Maximální výkon procesoru: 16vCPU * 100% = 1600%
 
-Směrný plán: 270%
+Výchozí hodnota: 270 %
 
-![Graf dat hodinových přenosů](./media/b-series-burstable/office-workload.png)
+![Graf hodinových provozních dat](./media/b-series-burstable/office-workload.png)
 
-| Scénář | Čas | Využití CPU (%) | Shromážděné kredity<sup>1</sup> | Dostupné kredity |
+| Scénář | Time | Využití procesoru (%) | Nahromaděné kredity<sup>1</sup> | Dostupné kredity |
 | --- | --- | --- | --- | --- |
 | Nasazení B16ms | Nasazení | Nasazení  | 480 (počáteční kredity) | 480 |
 | Žádný provoz | 0:00 | 0 | 162 | 642 |
@@ -67,73 +67,73 @@ Směrný plán: 270%
 | Žádný provoz | 3:00 | 0 | 162 | 1128 |
 | Žádný provoz | 4:00 | 0 | 162 | 1290 |
 | Žádný provoz | 5:00 | 0 | 162 | 1452 |
-| Nízká přenosová data | 6:00 | 270 | 0 | 1452 |
-| Zaměstnanci přicházejí do Office (aplikace potřebuje 80% vCPU). | 7:00 | 1280 | -606 | 846 |
-| Zaměstnanci pokračují v kanceláři (potřebuje aplikace 80% vCPU). | 8:00 | 1280 | -606 | 240 |
-| Nízká přenosová data | 9:00 | 270 | 0 | 240 |
-| Nízká přenosová data | 10:00 | 100 | 102 | 342 |
-| Nízká přenosová data | 11:00 | 50 | 132 | 474 |
-| Nízká přenosová data | 12:00 | 100 | 102 | 576 |
-| Nízká přenosová data | 13:00 | 100 | 102 | 678 |
-| Nízká přenosová data | 14:00 | 50 | 132 | 810 |
-| Nízká přenosová data | 15:00 | 100 | 102 | 912 |
-| Nízká přenosová data | 16:00 | 100 | 102 | 1014 |
-| Zaměstnanci, kteří si rezervovali (požadavky aplikace 100% vCPU) | 17:00 | 1600 | -798 | 216 |
-| Nízká přenosová data | 18:00 | 270 | 0 | 216 |
-| Nízká přenosová data | 19:00 | 270 | 0 | 216 |
-| Nízká přenosová data | 20:00 | 50 | 132 | 348 |
-| Nízká přenosová data | 21:00 | 50 | 132 | 480 |
+| Nízký provoz | 6:00 | 270 | 0 | 1452 |
+| Zaměstnanci přicházejí do kanceláře (aplikace potřebuje 80% vCPU) | 7:00 | 1280 | -606 | 846 |
+| Zaměstnanci i nadále přicházejí do kanceláře (aplikace potřebuje 80% vCPU) | 8:00 | 1280 | -606 | 240 |
+| Nízký provoz | 9:00 | 270 | 0 | 240 |
+| Nízký provoz | 10:00 | 100 | 102 | 342 |
+| Nízký provoz | 11:00 | 50 | 132 | 474 |
+| Nízký provoz | 12:00 | 100 | 102 | 576 |
+| Nízký provoz | 13:00 | 100 | 102 | 678 |
+| Nízký provoz | 14:00 | 50 | 132 | 810 |
+| Nízký provoz | 15:00 | 100 | 102 | 912 |
+| Nízký provoz | 16:00 | 100 | 102 | 1014 |
+| Zaměstnanci odhlášení (aplikace potřebuje 100% vCPU) | 17:00 | 1600 | -798 | 216 |
+| Nízký provoz | 18:00 | 270 | 0 | 216 |
+| Nízký provoz | 19:00 | 270 | 0 | 216 |
+| Nízký provoz | 20:00 | 50 | 132 | 348 |
+| Nízký provoz | 21:00 | 50 | 132 | 480 |
 | Žádný provoz | 22:00 | 0 | 162 | 642 |
 | Žádný provoz | 23:00 | 0 | 162 | 804 |
 
-<sup>1</sup> kumulovaná kredity/kredity použité za hodinu jsou ekvivalentní: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`.  
+<sup>1</sup> Nasbíraných kreditů/kreditů použitých za hodinu odpovídá: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`.  
 
-V případě D16s_v3, který má 16 vCPU a 64 GiB paměti, je hodinová sazba $0,936 za hodinu (měsíční $673,92) a pro B16ms s 16 vCPU a 64 GiB paměti je sazba $0,794 za hodinu (měsíční $547,86). <b>Výsledkem je 15% úspora!</b>
+Pro D16s_v3, která má 16 virtuálních procesorů a 64 GiB paměti, je hodinová sazba $0.936 za hodinu (měsíční $673.92) a pro B16ms s 16 virtuálními procesory a 64 GiB paměti je sazba $0.794 za hodinu (měsíční $547.86). <b>To má za následek 15% úspory!</b>
 
-## <a name="q--a"></a>Dotazy a odpovědi
+## <a name="q--a"></a>Otázky a odpovědi
 
-### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>Otázka: jak získáte 135% výkonnost směrného plánu z virtuálního počítače?
+### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>Otázka: Jak získat 135 % základní výkon z virtuálního virtuálního virtuálního mě?
 
-Odpověď **: 135**% se sdílí mezi 8 vCPU a tvoří velikost virtuálního počítače. Například pokud vaše aplikace používá 4 až 8 jader pracujících na dávkovém zpracování a každý z těchto 4 vCPU běží na 30% využití, celková velikost výkonu procesoru virtuálního počítače by byla rovna 120%.  To znamená, že váš virtuální počítač bude sestavovat kredit na základě 15% rozdílu od vašeho směrného výkonu.  Ale také to znamená, že pokud máte k dispozici kredity, může stejný virtuální počítač použít 100% ze všech 8 vCPUů, takže virtuální počítač má maximální výkon procesoru 800%.
+**A:** 135 % je sdíleno mezi 8 virtuálních procesorů, které tvoří velikost virtuálního počítače. Například pokud vaše aplikace používá 4 z 8 jader pracujících na dávkové zpracování a každý z těchto 4 virtuálních procesorů běží na 30 % využití celkové množství výkonu procesoru virtuálního počítače by se rovnalo 120 %.  To znamená, že váš virtuální počítač bude vytvářet čas kreditu na základě 15% rozdílu od výkonu podle směrného plánu.  Ale také to znamená, že když máte k dispozici kredity, že stejný virtuální počítače můžete použít 100 % všech 8 virtuálních procesorů, které dávají tomuto virtuálnímu virtuálnímu počítače maximální výkon procesoru 800 %.
 
 
-### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>Otázka: Jak můžu monitorovat zůstatek a spotřebu svého kreditu
+### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>Otázka: Jak mohu sledovat zůstatek a spotřebu kreditu
 
-Odpověď **: budeme**zavádět dvě nové metriky v nadcházejících týdnech, metrika **kreditu** vám umožní zobrazit, kolik kreditů má váš virtuální počítač v bance, a metrika **CONSUMEDCREDIT** zobrazí počet KREDITů procesoru, které váš virtuální počítač využil z banky.    Tyto metriky budete moct zobrazit z podokna metrik na portálu nebo programově prostřednictvím rozhraní Azure Monitor API.
+**A:** Budeme zavedení 2 nové metriky v nadcházejících týdnech, **kreditní** metrika vám umožní zobrazit, kolik kreditů váš virtuální počítač uložila a **ConsumedCredit** metrika ukáže, kolik kreditů CPU váš virtuální počítač spotřebovává z banky.    Tyto metriky budete moct zobrazit z podokna metrik na portálu nebo programově prostřednictvím api azure monitoru.
 
-Další informace o tom, jak získat přístup k datům metrik pro Azure, najdete v tématu [Přehled metrik v Microsoft Azure](../azure-monitor/platform/data-platform.md).
+Další informace o tom, jak získat přístup k datům metrik pro Azure, najdete [v tématu Přehled metrik v Microsoft Azure](../azure-monitor/platform/data-platform.md).
 
-### <a name="q-how-are-credits-accumulated"></a>Otázka: jak se počítají kredity?
+### <a name="q-how-are-credits-accumulated"></a>Otázka: Jak se kredity akumulují?
 
-Odpověď: míra akumulace a spotřeby virtuálních počítačů je nastavená **tak,** že virtuální počítač, na kterém běží přesně jeho základní úroveň výkonu, nebude ani kumulace ani spotřeba kreditů.  Virtuální počítač bude mít čisté zvýšení kreditů vždy, když je spuštěný pod základní úrovní výkonu a bude mít čistý pokles v kreditech, kdykoli virtuální počítač využívá procesor větší, než je základní úroveň výkonu.
+**A**: Akumulace virtuálních her a spotřeba sazby jsou nastaveny tak, že virtuální ms běží přesně na jeho základní úroveň výkonu nebude mít ani čisté akumulace nebo spotřeby roztržení kreditů.  Virtuální počítače bude mít čisté zvýšení kreditů vždy, když běží pod jeho základní úroveň výkonu a bude mít čistý pokles kreditů vždy, když virtuální počítače využívá procesor u vyšší než jeho základní úroveň výkonu.
 
-**Příklad**: nasadím virtuální počítač s využitím B1msé velikosti pro moji malou dobu a aplikaci pro databázi docházky. Tato velikost umožňuje, aby moje aplikace používala až 20% vCPU jako můj směrný plán, což je 0,2 kreditů za minutu, které můžu použít nebo banku.
+**Příklad**: Nasadím virtuální ho s využitím velikosti B1ms pro svou databázovou aplikaci s malým časem a docházkou. Tato velikost umožňuje mé žádosti používat až 20% virtuálního procesoru jako můj směrný plán, což je 0,2 kreditů za minutu, kterou mohu použít nebo banku.
 
-Moje aplikace je zaneprázdněna na začátku a konci mého pracovního dne zaměstnanců, mezi 7:00-9:00 a 4:00-6:13:00. V průběhu dalších 20 hodin dne je moje aplikace obvykle při nečinnosti, a to pouze pomocí 10% vCPU. V době mimo špičku získáme 0,2 kreditů za minutu, ale spotřebujete jenom 0. l kredity za minutu, takže můj virtuální počítač bude bankou 0,1 x 60 = 6 kreditů za hodinu.  Po dobu 20 hodin, u kterých jsem mimo špičku, budu k dis120 kredity bank.  
+Moje aplikace je zaneprázdněna na začátku a na konci pracovního dne mých zaměstnanců, mezi 7:00-9:00 a 4:00 - 18:00. Během dalších 20 hodin dne je moje aplikace obvykle nečinná, pouze pomocí 10 % virtuálního procesoru. V době mimo špičku získávám 0,2 kreditů za minutu, ale spotřebovávají pouze 0,l kreditů za minutu, takže můj virtuální virtuální virtuální ms bude bankovat 0,1 x 60 = 6 kreditů za hodinu.  Za 20 hodin, kdy jsem mimo špičku, si dám 120 kreditů.  
 
-Během špičky moje aplikace průměrně 60% využití vCPU, přebírám 0,2 kreditů za minutu, ale 0,6 spotřebovávám kreditů za minutu, a za čistých nákladů 0,4 na 0,4 kreditů za minutu a za hodinu. Počet hodin využití ve špičce je 4 hodiny, takže náklady 4 × 24 = 96 se za využití ve špičce zadarmo.
+Během špičky moje aplikace v průměru 60% využití virtuálních procesorů, stále jsem vydělávat 0,2 kreditů za minutu, ale sním 0,6 kreditů za minutu, za čisté náklady na 0,4 kreditů za minutu nebo 0,4 x 60 = 24 kreditů za hodinu. Mám 4 hodiny za den špičkového využití, takže to stojí 4 x 24 = 96 kreditů za mé špičkové využití.
 
-Pokud mám vynásobené kredity 120, které jsem vybral mimo špičku, a 96 odečíst kredity, které jsme využívali ve špičkách, mám banku dalších 24 kreditů za den, kterou můžu použít pro jiné shluky aktivity.
+Pokud si vezmu 120 kreditů, které jsem získal mimo špičku, a odečtou 96 kreditů, které jsem použil pro své špičky, mohu využít dalších 24 kreditů za den, které mohu použít pro další výbuchy aktivity.
 
-### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>Otázka: Jak mohu vypočítat nahromaděné a využité kredity?
+### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>Otázka: Jak mohu vypočítat nahromaděné a použité kredity?
 
-Odpověď: můžete použít následující **vzorec:**
+**A**: Můžete použít následující vzorec:
 
-(Základní PROCESORový výkon virtuálního počítače – využití procesoru)/100 = banka kreditů nebo použití za minutu
+(Základní cpu perf virtuálního počítače - využití procesoru) / 100 = Kredity banky nebo použití za minutu
 
-například ve výše uvedeném případě je váš směrný plán 20% a pokud využijete 10% procesoru, který shromažďujete (20%-10%)/100 = 0,1 kredit za minutu.
+například ve výše uvedeném případě je váš směrný plán 20 % a pokud používáte 10 % procesoru, který hromadíte (20%-10%)/100 = 0,1 kreditu za minutu.
 
-### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>Otázka: podporuje B-Series Premium Storage datové disky?
+### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>Otázka: Podporuje b-series datové disky úložiště Premium?
 
-Odpověď **: Ano**, všechny velikosti řady B-Series podporují Premium Storage datových disků.
+**A:** Ano, všechny velikosti řady B podporují datové disky úložiště Premium.
 
-### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>Otázka: Proč je můj zbývající kredit nastavený na 0 po opětovném nasazení nebo zastavení/spuštění?
+### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>Otázka: Proč je můj zbývající kredit nastaven na 0 po opětovném nasazení nebo zastavení/spuštění?
 
-Odpověď **: když** je virtuální počítač "REDPLOYED" a virtuální počítač se přesune do jiného uzlu, kumulovaný kredit se ztratí. Pokud je virtuální počítač zastavený nebo spuštěný, ale zůstává ve stejném uzlu, si virtuální počítač zachová Kumulovaný kredit. Pokaždé, když se virtuální počítač na uzlu spustí znovu, získá počáteční kredit Standard_B8ms je 240 minut.
+**A** : Když je virtuální virtuální město "REDPLOYED" a virtuální ho přesunout do jiného uzlu, nahromaděný kredit je ztracena. Pokud je virtuální počítač zastavený nebo spuštěný, ale zůstane ve stejném uzlu, zachová se nahromaděný kredit. Kdykoli virtuální počítač začne znovu na uzlu, získá počáteční kredit, pro Standard_B8ms je to 240 minut.
 
-### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>Otázka: co se stane, když nasadím nepodporovanou bitovou kopii operačního systému na B1ls?
+### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>Otázka: Co se stane, když nasadím nepodporovanou bitovou kopii operačního systému na B1ls?
 
-Odpověď **: B1ls** podporuje pouze systémy Linux a pokud nasazujete jinou bitovou kopii operačního systému, nebudete mít nejlepší prostředí pro zákazníky.
+**A** : B1ls podporuje pouze linuxové image a pokud nasadíte jinou bitovou kopii operačního systému, nemusíte získat nejlepší zákaznickou zkušenost.
 
 ## <a name="other-sizes"></a>Jiné velikosti
 
@@ -146,4 +146,4 @@ Odpověď **: B1ls** podporuje pouze systémy Linux a pokud nasazujete jinou bit
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám můžou pomoct porovnat výpočetní výkon napříč virtuálními jednotkami Azure.

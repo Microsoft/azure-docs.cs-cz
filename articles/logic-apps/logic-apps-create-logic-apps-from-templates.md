@@ -1,6 +1,6 @@
 ---
-title: Rychlejší vytváření pracovních postupů aplikací logiky pomocí předem připravených šablon
-description: Rychlé vytváření pracovních postupů aplikací logiky pomocí předem připravených šablon poskytovaných Azure Logic Apps
+title: Rychlejší vytváření pracovních postupů aplikace logiky pomocí předem sestavených šablon
+description: Rychlé vytváření pracovních postupů aplikace logiky pomocí předem vytvořených šablon poskytovaných aplikacemi Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -9,34 +9,34 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905110"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Vytváření pracovních postupů aplikací logiky z předem připravených šablon
 
-Pokud chcete začít vytvářet pracovní postupy rychleji, Logic Apps poskytuje šablony, které jsou předem připravené Logic Apps, které následují běžně používané vzory. Použijte tyto šablony, které jsou k dispozici, nebo je upravte tak, aby vyhovovaly vašemu scénáři.
+Chcete-li začít vytvářet pracovní postupy rychleji, Logic Apps poskytuje šablony, které jsou předem vytvořené aplikace logiky, které se řídí běžně používanými vzory. Použijte tyto šablony, jak je k dispozici, nebo je upravte tak, aby vyhovovaly vašemu scénáři.
 
-Tady je několik kategorií šablon:
+Zde jsou některé kategorie šablon:
 
 | Typ šablony | Popis | 
 | ------------- | ----------- | 
-| Šablony podnikového cloudu | Pro integraci Azure Blob, Dynamics CRM, Salesforce, box a zahrnutí dalších konektorů pro potřeby podnikového cloudu. Tyto šablony můžete například použít k organizování obchodních zájemců nebo zálohování dat podnikových souborů. | 
-| Osobní šablony produktivity | Zvýšení osobní produktivity nastavením každodenních připomenutí, zapnutím důležitých pracovních položek do seznamů úkolů a automatizací zdlouhavých úloh do jednoho kroku schválení uživatele. | 
-| Šablony cloudu pro spotřebitele | Pro integraci sociálních mediálních služeb, jako jsou Twitter, časová rezerva a e-mail. Užitečné pro posílení marketingových iniciativ na sociálních médiích. Tyto šablony také obsahují úlohy, jako je kopírování do cloudu, což zvyšuje produktivitu tím, že šetří čas u tradičně opakujících se úloh. | 
-| Šablony podnikového integračního balíčku | Pro konfiguraci kanálů VETER (ověření, extrakce, transformace, obohacení, směrování), přijímání X12 EDI dokumentu nad AS2 a transformaci do XML a zpracování zpráv X12, EDIFACT a AS2. | 
-| Šablony vzorů protokolů | Pro implementaci vzorů protokolů, jako je požadavek-odpověď přes protokol HTTP a integrace přes FTP a SFTP. Použijte tyto šablony, které jsou k dispozici, nebo je Sestavte pro složité vzory protokolu. | 
+| Šablony podnikového cloudu | Pro integraci azure blob, Dynamics CRM, Salesforce, Box a obsahuje další konektory pro potřeby podnikového cloudu. Tyto šablony můžete například použít k uspořádání obchodních zájemců nebo k zálohování podnikových dat souborů. | 
+| Šablony osobní produktivity | Zvyšte osobní produktivitu nastavením denních připomenutí, přeměnou důležitých pracovních položek na seznamy úkolů a automatizací zdlouhavých úkolů až do jednoho kroku schválení uživatelem. | 
+| Šablony spotřebitelského cloudu | Pro integraci služeb sociálních médií, jako je Twitter, Slack a e-mail. Užitečné pro posílení marketingových iniciativ sociálních médií. Tyto šablony také zahrnují úkoly, jako je kopírování v cloudu, což zvyšuje produktivitu tím, že šetří čas na tradičně opakujících se úlohách. | 
+| Šablony podnikových integračních balíčků | Pro konfiguraci kanálů VETER (ověření, extrakce, transformace, obohacení, směrování), přijetí dokumentu X12 EDI přes AS2 a transformace na XML a zpracování zpráv X12, EDIFACT a AS2. | 
+| Šablony vzorů protokolu | Pro implementaci vzorů protokolu, jako je například odpověď na požadavek přes protokol HTTP a integrace přes FTP a SFTP. Použijte tyto šablony, jak je k dispozici, nebo na nich sestavte pro složité vzory protokolů. | 
 ||| 
 
-Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete. Další informace o vytváření aplikace logiky najdete v tématu [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete. Další informace o vytváření aplikace logiky najdete v [tématu vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-logic-apps-from-templates"></a>Vytváření aplikací logiky ze šablon
+## <a name="create-logic-apps-from-templates"></a>Vytvoření aplikací logiky ze šablon
 
-1. Pokud jste to ještě neudělali, přihlaste se k [Azure Portal](https://portal.azure.com "Portál Azure").
+1. Pokud jste to ještě neudělali, přihlaste se na [portál Azure](https://portal.azure.com "portál Azure").
 
-2. V hlavní nabídce Azure zvolte **Vytvořit prostředek** > **Podniková integrace** > **Aplikace logiky**.
+2. V hlavní nabídce Azure zvolte **Vytvořit prostředek** > **Enterprise Integration** > **Logic App**.
 
    ![Azure Portal, Nový, Podniková integrace, Aplikace logiky](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 
@@ -48,9 +48,9 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
    | ------- | ----- | ----------- | 
    | **Název** | *název_vaší_aplikace_logiky* | Zadejte jedinečný název aplikace logiky. | 
    | **Předplatné** | *název_vašeho_předplatného_Azure* | Vyberte předplatné Azure, které chcete použít. | 
-   | **Skupina prostředků** | *název_vaší_skupiny_prostředků_Azure* | Vytvořte nebo vyberte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pro tuto aplikaci logiky a uspořádejte všechny prostředky přidružené k této aplikaci. | 
+   | **Skupina prostředků** | *název_vaší_skupiny_prostředků_Azure* | Vytvořte nebo vyberte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pro tuto aplikaci logiky a uspořádat všechny prostředky přidružené k této aplikaci. | 
    | **Umístění** | *oblast_vašeho_datového_centra_Azure* | Vyberte oblast datového centra pro nasazení aplikace logiky, například USA – západ. | 
-   | **Log Analytics** | **Vypnuto** (výchozí) nebo **zapnuto** | Pomocí [protokolů Azure monitor](../log-analytics/log-analytics-overview.md)nastavte [protokolování diagnostiky](../logic-apps/monitor-logic-apps-log-analytics.md) pro vaši aplikaci logiky. Vyžaduje, abyste již Log Analytics pracovní prostor. | 
+   | **Log Analytics** | **Vypnuto** (výchozí) nebo **Zapnuto** | Nastavte [protokolování diagnostiky](../logic-apps/monitor-logic-apps-log-analytics.md) pro aplikaci logiky pomocí [protokolů Azure Monitor](../log-analytics/log-analytics-overview.md). Vyžaduje, abyste již měli pracovní prostor Analýzy protokolů. | 
    |||| 
 
 4. Až budete připraveni, vyberte **Připnout na řídicí panel**. Aplikace logiky se tak automaticky zobrazí na řídicím panelu Azure a po nasazení se automaticky otevře. Zvolte **Vytvořit**.
@@ -61,84 +61,84 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
    Jakmile Azure nasadí vaši aplikaci logiky, otevře se Návrhář pro Logic Apps se zobrazenou stránkou s úvodním videem. 
    Pod videem najdete šablony pro běžné vzory aplikací logiky. 
 
-5. Posuňte se za úvodní video a běžné aktivační události do **šablon**. Vyberte předem vytvořenou šablonu. Příklad:
+5. Přejděte za úvodní video a běžné aktivační události na **šablony**. Zvolte předem sestavenou šablonu. Například:
 
    ![Výběr šablony aplikace logiky](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
    > [!TIP]
-   > Pokud chcete vytvořit aplikaci logiky od začátku, klikněte na **prázdná aplikace logiky**.
+   > Chcete-li vytvořit aplikaci logiky od začátku, zvolte **Blank Logic App**.
 
-   Když vyberete předem vytvořenou šablonu, můžete zobrazit další informace o této šabloně. 
-   Příklad:
+   Když vyberete předem sestavenou šablonu, můžete zobrazit další informace o této šabloně. 
+   Například:
 
-   ![Zvolit předem vytvořenou šablonu](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
+   ![Výběr předem sestavené šablony](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
-6. Chcete-li pokračovat s vybranou šablonou, vyberte možnost **použít tuto šablonu**. 
+6. Chcete-li pokračovat ve vybrané šabloně, zvolte **Použít tuto šablonu**. 
 
-7. Na základě konektorů v šabloně se zobrazí výzva, abyste provedli některý z těchto kroků:
+7. Na základě konektorů v šabloně budete vyzváni k provedení některého z těchto kroků:
 
-   * Přihlaste se pomocí svých přihlašovacích údajů na systémy nebo služby, na které se odkazuje šablona.
+   * Přihlaste se pomocí přihlašovacích údajů k systémům nebo službám, na které šablona odkazuje.
 
-   * Vytvořte připojení pro všechny služby nebo systémy, na které odkazuje šablona. Chcete-li vytvořit připojení, zadejte název připojení a v případě potřeby vyberte prostředek, který chcete použít. 
+   * Vytvořte připojení pro všechny služby nebo systémy, na které šablona odkazuje. Chcete-li vytvořit připojení, zadejte název připojení a v případě potřeby vyberte prostředek, který chcete použít. 
 
-   * Pokud jste již nastavili tato připojení, klikněte na tlačítko **pokračovat**.
+   * Pokud jste tato připojení již nastavili, zvolte **Pokračovat**.
 
-   Příklad:
+   Například:
 
-   ![Vytvořit připojení](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
+   ![Vytvoření připojení](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
-   Jakmile budete hotovi, otevře se aplikace logiky a zobrazí se v Návrháři Logic Apps.
+   Až budete hotovi, aplikace logiky se otevře a zobrazí se v Návrháři logických aplikací.
 
    > [!TIP]
-   > Chcete-li se vrátit do prohlížeče šablon, klikněte na tlačítko **šablony** na panelu nástrojů návrháře. Tato akce zahodí všechny neuložené změny, takže se zobrazí zpráva upozorňující na potvrzení vaší žádosti.
+   > Chcete-li se vrátit do prohlížeče šablon, zvolte **Šablony** na panelu nástrojů návrháře. Tato akce zahodí všechny neuložené změny, takže se zobrazí varovná zpráva potvrzující váš požadavek.
 
-8. Pokračujte v sestavování aplikace logiky.
+8. Pokračujte v vytváření aplikace logiky.
 
    > [!NOTE] 
-   > Mnoho šablon obsahuje konektory, které již mohou mít předem vyplněné požadované vlastnosti. Některé šablony však stále vyžadují, abyste zadali hodnoty před tím, než bude možné správně nasadit aplikaci logiky. Pokud se pokusíte nasadit bez vyplnění polí chybějících vlastností, zobrazí se chybová zpráva. 
+   > Mnoho šablon obsahuje konektory, které již mohou mít předem vyplněné požadované vlastnosti. Některé šablony však může stále vyžadovat, abyste zadali hodnoty před správně nasadit aplikaci logiky. Pokud se pokusíte nasadit bez dokončení chybějící pole vlastností, zobrazí se chybová zpráva. 
 
-## <a name="update-logic-apps-with-templates"></a>Aktualizace Logic Apps pomocí šablon
+## <a name="update-logic-apps-with-templates"></a>Aktualizace aplikací logiky pomocí šablon
 
-1. V [Azure Portal](https://portal.azure.com "Portál Azure")vyhledejte a otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Na [webu Azure Portal](https://portal.azure.com "portál Azure")najděte a otevřete aplikaci logiky v návrháři aplikace logiky.
 
-2. Na panelu nástrojů návrháře vyberte **šablony**. Tato akce zahodí všechny neuložené změny, takže se zobrazí varovná zpráva, abyste mohli potvrdit, že chcete pokračovat. Pro potvrzení klikněte na **tlačítko OK**. Příklad:
+2. Na panelu nástrojů návrháře zvolte **Šablony**. Tato akce zahodí všechny neuložené změny, takže se zobrazí varovná zpráva, abyste mohli potvrdit, že chcete pokračovat. Chcete-li potvrdit, zvolte **OK**. Například:
 
-   ![Zvolit šablony](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
+   ![Zvolte "Šablony"](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
 
-3. Posuňte se za úvodní video a běžné aktivační události do **šablon**. Vyberte předem vytvořenou šablonu. Příklad:
+3. Přejděte za úvodní video a běžné aktivační události na **šablony**. Zvolte předem sestavenou šablonu. Například:
 
    ![Výběr šablony aplikace logiky](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
-   Když vyberete předem vytvořenou šablonu, můžete zobrazit další informace o této šabloně. 
-   Příklad:
+   Když vyberete předem sestavenou šablonu, můžete zobrazit další informace o této šabloně. 
+   Například:
 
-   ![Zvolit předem vytvořenou šablonu](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
+   ![Výběr předem sestavené šablony](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
-4. Chcete-li pokračovat s vybranou šablonou, vyberte možnost **použít tuto šablonu**. 
+4. Chcete-li pokračovat ve vybrané šabloně, zvolte **Použít tuto šablonu**. 
 
-5. Na základě konektorů v šabloně se zobrazí výzva, abyste provedli některý z těchto kroků:
+5. Na základě konektorů v šabloně budete vyzváni k provedení některého z těchto kroků:
 
-   * Přihlaste se pomocí svých přihlašovacích údajů na systémy nebo služby, na které se odkazuje šablona.
+   * Přihlaste se pomocí přihlašovacích údajů k systémům nebo službám, na které šablona odkazuje.
 
-   * Vytvořte připojení pro všechny služby nebo systémy, na které odkazuje šablona. Chcete-li vytvořit připojení, zadejte název připojení a v případě potřeby vyberte prostředek, který chcete použít. 
+   * Vytvořte připojení pro všechny služby nebo systémy, na které šablona odkazuje. Chcete-li vytvořit připojení, zadejte název připojení a v případě potřeby vyberte prostředek, který chcete použít. 
 
-   * Pokud jste již nastavili tato připojení, klikněte na tlačítko **pokračovat**.
+   * Pokud jste tato připojení již nastavili, zvolte **Pokračovat**.
 
-   ![Vytvořit připojení](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
+   ![Vytvoření připojení](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
-   Vaše aplikace logiky se teď otevře a zobrazí se v Návrháři Logic Apps.
+   Vaše aplikace logiky se teď otevře a zobrazí se v Návrháři aplikací logiky.
 
-8. Pokračujte v sestavování aplikace logiky. 
+8. Pokračujte v vytváření aplikace logiky. 
 
    > [!TIP]
-   > Pokud jste změny neuložili, můžete svou práci zrušit a vrátit se k předchozí aplikaci logiky. Na panelu nástrojů návrháře klikněte na **Zrušit**.
+   > Pokud jste změny neuložili, můžete svou práci zahodit a vrátit se k předchozí aplikaci logiky. Na panelu nástrojů návrháře zvolte **Zahodit**.
 
 > [!NOTE] 
-> Mnoho šablon obsahuje konektory, které mohou mít již předem vyplněné požadované vlastnosti. Některé šablony však stále vyžadují, abyste zadali hodnoty před tím, než bude možné správně nasadit aplikaci logiky. Pokud se pokusíte nasadit bez vyplnění polí chybějících vlastností, zobrazí se chybová zpráva.
+> Mnoho šablon obsahuje konektory, které již mohou mít předem vyplněné požadované vlastnosti. Některé šablony však může stále vyžadovat, abyste zadali hodnoty před správně nasadit aplikaci logiky. Pokud se pokusíte nasadit bez dokončení chybějící pole vlastností, zobrazí se chybová zpráva.
 
-## <a name="deploy-logic-apps-built-from-templates"></a>Nasazení Logic Apps sestavené ze šablon
+## <a name="deploy-logic-apps-built-from-templates"></a>Nasazení aplikací logiky vytvořených ze šablon
 
-Po provedení změn v šabloně můžete změny uložit. Tato akce také automaticky publikuje vaši aplikaci logiky.
+Po provedeném provádění změn v šabloně můžete změny uložit. Tato akce také automaticky publikuje aplikaci logiky.
 
 Na panelu nástrojů návrháře zvolte **Uložit**.
 
@@ -151,7 +151,7 @@ Na panelu nástrojů návrháře zvolte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se sestavovat aplikace logiky prostřednictvím příkladů, scénářů, zákaznických scénářů a návodů.
+Další informace o vytváření aplikací logiky prostřednictvím příkladů, scénářů, příběhů zákazníků a návodů.
 
 > [!div class="nextstepaction"]
-> [Kontrola příkladů, scénářů a názorných postupů aplikace logiky](../logic-apps/logic-apps-examples-and-scenarios.md)
+> [Kontrola příkladů aplikací logiky, scénářů a návodů](../logic-apps/logic-apps-examples-and-scenarios.md)

@@ -1,6 +1,6 @@
 ---
-title: Nasazení vnořených prostředí šablon v Azure DevTest Labs
-description: Naučte se nasazovat vnořené Azure Resource Manager šablony, které poskytují prostředí s Azure DevTest Labs.
+title: Nasazení vnořených prostředí šablon v laboratořích Azure DevTest Labs
+description: Zjistěte, jak nasadit vnořené šablony Azure Resource Manageru, aby poskytovaly prostředí pomocí Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,22 +13,22 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: e83bc4e77a44f20d55fa3b56bc81aefd1d25bb03
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76168827"
 ---
-# <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Nasazení vnořených Azure Resource Manager šablon pro testovací prostředí
-Vnořené nasazení umožňuje spouštět jiné šablony Azure Resource Manager v rámci hlavní Správce prostředků šablony. Umožňuje rozložit nasazení do sady cílových šablon a specifických pro účel. Poskytuje výhody v souvislosti s testováním, opětovným používáním a čitelností. Článek [použití propojených šablon při nasazení prostředků Azure](../azure-resource-manager/templates/linked-templates.md) poskytuje dobrý přehled tohoto řešení s několika ukázkami kódu. Tento článek poskytuje příklad, který je specifický pro Azure DevTest Labs. 
+# <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Nasazení vnořených šablon Azure Resource Managerpro testovací prostředí
+Vnořené nasazení umožňuje spouštět další šablony Azure Resource Manager z v rámci hlavní šablony Správce prostředků. Umožňuje rozložit nasazení do sady cílových a účelově specifických šablon. Poskytuje výhody, pokud jde o testování, opakované použití a čitelnost. Článek [Použití propojených šablon při nasazování prostředků Azure](../azure-resource-manager/templates/linked-templates.md) poskytuje dobrý přehled o tomto řešení s několika ukázkami kódu. Tento článek obsahuje příklad, který je specifický pro Azure DevTest Labs. 
 
-## <a name="key-parameters"></a>Parametry klíče
-I když můžete vytvořit vlastní šablonu Správce prostředků od začátku, doporučujeme použít [projekt skupiny prostředků Azure](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) v aplikaci Visual Studio, který usnadňuje vývoj a ladění šablon. Když přidáte vnořený prostředek nasazení do azuredeploy. JSON, Visual Studio přidá několik položek, aby bylo možné šablonu pružnější. Tyto položky zahrnují podsložku se sekundární šablonou a souborem parametrů, názvy proměnných v rámci hlavního souboru šablony a dva parametry pro umístění úložiště pro nové soubory. **_ArtifactsLocation** a **_artifactsLocationSasToken** jsou klíčové parametry, které používá DevTest Labs. 
+## <a name="key-parameters"></a>Klíčové parametry
+Zatímco můžete vytvořit vlastní šablonu Správce prostředků od začátku, doporučujeme použít [projekt Skupiny prostředků Azure](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) v sadě Visual Studio, což usnadňuje vývoj a ladění šablon. Když přidáte vnořený prostředek nasazení do azuredeploy.json, Visual Studio přidá několik položek, aby šablona byla flexibilnější. Tyto položky zahrnují podsložku se sekundární šablonou a souborem parametrů, názvy proměnných v hlavním souboru šablony a dva parametry pro umístění úložiště pro nové soubory. _artifactsLocation **_artifactsLocation** a **_artifactsLocationSasToken** jsou klíčové parametry, které devTest Labs používá. 
 
-Pokud nejste obeznámeni s tím, jak DevTest Labs pracuje s prostředími, přečtěte si téma [vytvoření prostředí s více virtuálními počítači a prostředků PaaS pomocí šablon Azure Resource Manager](devtest-lab-create-environment-from-arm.md). Vaše šablony jsou uložené v úložišti propojeném s testovacím prostředím v DevTest Labs. Když vytvoříte nové prostředí s těmito šablonami, soubory se přesunou do kontejneru Azure Storage v testovacím prostředí. Aby bylo možné identifikovat a kopírovat vnořené soubory, DevTest Labs identifikuje parametry _artifactsLocation a _artifactsLocationSasToken a kopíruje podsložky až do kontejneru úložiště. Pak automaticky vloží do parametrů umístění a token sdíleného přístupového podpisu (SaS). 
+Pokud nejste obeznámeni s tím, jak DevTest Labs funguje s prostředími, najdete v tématu [Vytváření prostředí s více virtuálními počítači a prostředků PaaS pomocí šablon Azure Resource Manager](devtest-lab-create-environment-from-arm.md). Vaše šablony jsou uloženy v úložišti propojeném s testovacím prostředím v devTest Labs. Když vytvoříte nové prostředí s těmito šablonami, soubory se přesunou do kontejneru úložiště Azure v testovacím prostředí. Aby bylo možné identifikovat a zkopírovat vnořené soubory, DevTest Labs identifikuje _artifactsLocation a _artifactsLocationSasToken parametry a zkopíruje podsložky až do kontejneru úložiště. Poté automaticky vloží umístění a token sdíleného přístupového podpisu (SaS) do parametrů. 
 
 ## <a name="nested-deployment-example"></a>Příklad vnořeného nasazení
-Tady je jednoduchý příklad vnořeného nasazení:
+Zde je jednoduchý příklad vnořeného nasazení:
 
 ```json
 
@@ -66,17 +66,17 @@ Tady je jednoduchý příklad vnořeného nasazení:
 "outputs": {}
 ```
 
-Složka v úložišti, která obsahuje tuto šablonu, má `nestedtemplates` podsložek soubory **NestOne. JSON** a **NestOne. Parameters. JSON**. V souboru **azuredeploy. JSON**je identifikátor URI pro šablonu sestaven pomocí umístění artefaktů, vnořené složky šablony, názvu vnořeného souboru šablony. Podobně identifikátor URI pro parametry je sestaven pomocí umístění artefaktů, vnořené složky šablony a souboru parametrů pro vnořenou šablonu. 
+Složka v úložišti obsahující mj. `nestedtemplates` **NestOne.json** **NestOne.parameters.json** V **souboru azuredeploy.json**je identifikátor URI pro šablonu vytvořen pomocí umístění artefaktů, vnořené složky šablony, názvu souboru vnořené šablony. Podobně identifikátor URI pro parametry je sestaven pomocí umístění artefaktů, vnořené složky šablony a souboru parametrů pro vnořenou šablonu. 
 
-Zde je obrázek stejné struktury projektu v aplikaci Visual Studio: 
+Tady je obrázek stejné struktury projektu v sadě Visual Studio: 
 
-![Struktura projektu v aplikaci Visual Studio](./media/deploy-nested-template-environments/visual-studio-project-structure.png)
+![Struktura projektu v sadě Visual Studio](./media/deploy-nested-template-environments/visual-studio-project-structure.png)
 
-Do primární složky můžete přidat další složky, ale ne všechny hlubší než jenom jednu úroveň. 
+Do primární složky můžete přidat další složky, ale ne hlouběji než jedna úroveň. 
 
 ## <a name="next-steps"></a>Další kroky
-Podrobnosti o prostředích najdete v následujících článcích: 
+Podrobnosti o prostředích naleznete v následujících článcích: 
 
 - [Vytvoření prostředí více virtuálních počítačů a prostředků PaaS pomocí šablony Azure Resource Manageru](devtest-lab-create-environment-from-arm.md)
-- [Konfigurace a použití veřejných prostředí v Azure DevTest Labs](devtest-lab-configure-use-public-environments.md)
-- [Připojte prostředí k virtuální síti testovacího prostředí v Azure DevTest Labs](connect-environment-lab-virtual-network.md)
+- [Konfigurace a používání veřejných prostředí v laboratořích Azure DevTest Labs](devtest-lab-configure-use-public-environments.md)
+- [Připojení prostředí k virtuální síti testovacího prostředí v laboratořích Azure DevTest Labs](connect-environment-lab-virtual-network.md)

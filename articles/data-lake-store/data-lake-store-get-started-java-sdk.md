@@ -1,6 +1,6 @@
 ---
-title: 'Java SDK: Operace systému souborů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
-description: Použití Azure Data Lake Storage Gen1 Java SDK k provádění operací systému souborů v Data Lake Storage Gen1, jako je vytváření složek atd.
+title: 'Java SDK: Operace souborového systému na Azure Data Lake Storage Gen1 | Dokumenty společnosti Microsoft'
+description: Azure Data Lake Storage Gen1 Java SDK slouží k provádění operací souborového systému na webu Data Lake Storage Gen1, jako je vytváření složek atd.
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,28 +13,28 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60877460"
 ---
-# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Operace systému souborů v Azure Data Lake Storage Gen1 pomocí sady Java SDK
+# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Operace souborového systému na Azure Data Lake Storage Gen1 pomocí sady Java SDK
 > [!div class="op_single_selector"]
-> * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
+> * [Sada SDK rozhraní .NET](data-lake-store-data-operations-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
-> * [REST API](data-lake-store-data-operations-rest-api.md)
+> * [ROZHRANÍ API PRO ODPOČINEK](data-lake-store-data-operations-rest-api.md)
 > * [Python](data-lake-store-data-operations-python.md)
 >
 > 
 
-Další informace o použití Azure Data Lake Storage Gen1 Java SDK k provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů atd. Další informace o Data Lake Storage Gen1 najdete v tématu [Azure Data Lake Storage Gen1](data-lake-store-overview.md).
+Naučte se používat Azure Data Lake Storage Gen1 Java SDK k provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů atd. Další informace o data lake storage gen1, najdete [v tématu Azure Data Lake Storage Gen1](data-lake-store-overview.md).
 
-Přistupujete k dokumentaci rozhraní API sady Java SDK pro Data Lake Storage Gen1 na [Java API služby Azure Data Lake Storage Gen1 dokumentace](https://azure.github.io/azure-data-lake-store-java/javadoc/).
+Dokumenty java sdk api pro úložiště datových jezer Gen1 můžete přistupovat na [Azure Data Lake Storage Gen1 Java API docs](https://azure.github.io/azure-data-lake-store-java/javadoc/).
 
 ## <a name="prerequisites"></a>Požadavky
 * Java Development Kit (JDK 7 nebo vyšší s využitím Java verze 1.7 nebo vyšší)
-* Účet data Lake Storage Gen1. Postupujte podle pokynů na adrese [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure portal](data-lake-store-get-started-portal.md).
+* Účet Data Lake Storage Gen1. Postupujte podle pokynů na [webu Začínáme s Azure Data Lake Storage Gen1 pomocí portálu Azure](data-lake-store-get-started-portal.md).
 * [Maven](https://maven.apache.org/install.html). V tomto kurzu se používá Maven pro závislosti sestavení a projektu. I když je možné sestavení vytvářet bez použití systému pro sestavení, jako je Maven a Gradle, tyto systémy podstatně usnadňují správu závislostí.
 * (Volitelné) Rozhraní IDE, jako je například [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) nebo [Eclipse](https://www.eclipse.org/downloads/) nebo podobné.
 
@@ -43,7 +43,7 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://azure.microsoft.com/do
 
 1. Vytvořte projekt Maven pomocí příkazu [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) z příkazového řádku nebo pomocí integrovaného vývojového rozhraní (IDE). Pokyny k vytvoření projektu jazyka Java s použitím IntelliJ najdete [zde](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). Pokyny k vytvoření projektu s použitím Eclipse najdete [zde](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm). 
 
-2. Přidejte k souboru Maven **pom.xml** následující závislosti. Před značku **\</project>** přidejte následující fragment kódu:
+2. Přidejte k souboru Maven **pom.xml** následující závislosti. Před značku ** \</project>** přidejte následující úryvek:
    
         <dependencies>
           <dependency>
@@ -58,7 +58,7 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://azure.microsoft.com/do
           </dependency>
         </dependencies>
    
-    První závislostí je použití sady SDK pro Data Lake Storage Gen1 (`azure-data-lake-store-sdk`) z úložiště maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Používá sadu SDK pro Data Lake Storage Gen1 [slf4j](https://www.slf4j.org/) průčelí protokolování, které umožňuje vybrat z řady oblíbených protokolovacích rozhraní, jako je log4j, Java, logback atd., protokolování nebo žádné protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](https://www.slf4j.org/manual.html#projectDep).
+    První závislost je použití data lake storage Gen1`azure-data-lake-store-sdk`SDK ( ) z úložiště maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Data Lake Storage Gen1 SDK používá [slf4j](https://www.slf4j.org/) protokolování fasády, která vám umožní vybrat si z řady populárních protokolování rámců, jako je log4j, Java protokolování, přihlášení, atd., nebo žádné protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](https://www.slf4j.org/manual.html#projectDep).
 
 3. Přidejte do své aplikace následující příkazy pro import.
 
@@ -73,22 +73,22 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://azure.microsoft.com/do
         import java.util.Arrays;
         import java.util.List;
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
-* Své aplikaci ověřování koncového uživatele, najdete v části [koncového uživatele ověřování-s Data Lake Storage Gen1 pomocí Javy](data-lake-store-end-user-authenticate-java-sdk.md).
-* Své aplikaci ověřování služba služba, naleznete v tématu [ověřování služba služba s Data Lake Storage Gen1 s využitím Javy](data-lake-store-service-to-service-authenticate-java.md).
+* Ověření pro vaši aplikaci koncovým uživatelem najdete [v tématu Ověřování koncových uživatelů pomocí data lake storage gen1 pomocí javy](data-lake-store-end-user-authenticate-java-sdk.md).
+* Ověřování mezi službami pro vaši aplikaci najdete v [tématu Ověřování mezi službami pomocí data lake storage gen1 pomocí jazyka Java](data-lake-store-service-to-service-authenticate-java.md).
 
-## <a name="create-a-data-lake-storage-gen1-client"></a>Vytvoření klienta Data Lake Storage Gen1
-Vytváření [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) objekt je potřeba zadat název účtu Data Lake Storage Gen1 a poskytovatele tokenu, kterého jste vygenerovali při ověření pomocí služby Data Lake Storage Gen1 (viz [ověřování](#authentication) části). Název účtu Data Lake Storage Gen1 musí být použitím plně kvalifikovaného názvu domény. Nahraďte třeba **Fill-in-HERE** nahraďte něčím jako **mydatalakestoragegen1.azuredatalakestore.net**.
+## <a name="create-a-data-lake-storage-gen1-client"></a>Vytvoření klienta Gen1 úložiště datového jezera
+Vytvoření objektu [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) vyžaduje zadání názvu účtu Data Lake Storage Gen1 a poskytovatele tokenu, který jste vygenerovali při ověřování pomocí data lake storage gen1 (viz část [Ověřování).](#authentication) Název účtu Data Lake Storage Gen1 musí být plně kvalifikovaný název domény. Například nahraďte **FILL-IN-ZDE** něčím jako **mydatalakestoragegen1.azuredatalakestore.net**.
 
     private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
     ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
 
-Fragmenty kódu v následujících částech obsahují příklady některých běžných operací systému souborů. Můžete se podívat na kompletní [dokumentace rozhraní Data Lake Storage Gen1 Java SDK API](https://azure.github.io/azure-data-lake-store-java/javadoc/) z **ADLStoreClient** objekt můžete zobrazit další operace.
+Fragmenty kódu v následujících částech obsahují příklady některých běžných operací systému souborů. Můžete se podívat na úplné [data Lake Storage Gen1 Java SDK API dokumenty](https://azure.github.io/azure-data-lake-store-java/javadoc/) objektu **ADLStoreClient** zobrazíte další operace.
 
 ## <a name="create-a-directory"></a>Vytvoření adresáře
 
-Následující fragment kódu vytvoří adresářovou strukturu v kořenovém adresáři účtu Data Lake Storage Gen1, který jste zadali.
+Následující úryvek vytvoří adresářovou strukturu v kořenovém adresáři účtu Gen1 úložiště datového jezera, který jste zadali.
 
     // create directory
     client.createDirectory("/a/b/w");
@@ -134,7 +134,7 @@ Definice funkce `getSampleContent` použité v předchozím fragmentu kódu je k
 
 ## <a name="read-a-file"></a>Čtení souboru
 
-Následující fragment kódu přečte obsah souboru v účtu Data Lake Storage Gen1.
+Následující úryvek čte obsah ze souboru v účtu Data Lake Storage Gen1.
 
     // Read File
     InputStream in = client.getReadStream(filename);
@@ -149,7 +149,7 @@ Následující fragment kódu přečte obsah souboru v účtu Data Lake Storage 
 
 ## <a name="concatenate-files"></a>Řetězení souborů
 
-Následující fragment kódu zřetězí dva soubory v účtu Data Lake Storage Gen1. V případě úspěchu se dva existující soubory nahradí zřetězeným souborem.
+Následující úryvek zřetězí dva soubory v účtu Data Lake Storage Gen1. V případě úspěchu se dva existující soubory nahradí zřetězeným souborem.
 
     // concatenate the two files into one
     List<String> fileList = Arrays.asList("/a/b/c.txt", "/a/b/d.txt");
@@ -158,7 +158,7 @@ Následující fragment kódu zřetězí dva soubory v účtu Data Lake Storage 
 
 ## <a name="rename-a-file"></a>Přejmenování souboru
 
-Následující fragment kódu přejmenuje soubor v účtu Data Lake Storage Gen1.
+Následující úryvek přejmenuje soubor v účtu Data Lake Storage Gen1.
 
     //rename the file
     client.rename("/a/b/f.txt", "/a/b/g.txt");
@@ -166,7 +166,7 @@ Následující fragment kódu přejmenuje soubor v účtu Data Lake Storage Gen1
 
 ## <a name="get-metadata-for-a-file"></a>Získání metadat souboru
 
-Následující fragment kódu načte metadata souboru v účtu Data Lake Storage Gen1.
+Následující úryvek načte metadata souboru v účtu Data Lake Storage Gen1.
 
     // get file metadata
     DirectoryEntry ent = client.getDirectoryEntry(filename);
@@ -197,7 +197,7 @@ Definice funkce `printDirectoryInfo` použité v předchozím fragmentu kódu je
 
 ## <a name="delete-files-and-folders"></a>Odstranění souborů a složek
 
-Následující fragment kódu odstraní zadané soubory a složky v účtu Data Lake Storage Gen1 rekurzivně.
+Následující úryvek odstraní zadané soubory a složky v účtu Data Lake Storage Gen1 rekurzivně.
 
     // delete directory along with all the subdirectories and files in it
     client.deleteRecursive("/a");
@@ -206,9 +206,9 @@ Následující fragment kódu odstraní zadané soubory a složky v účtu Data 
 
 ## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 1. Pokud chcete aplikaci spustit z rozhraní IDE, stiskněte tlačítko **Spustit**. Pokud ji chcete spustit z Mavenu, použijte příkaz [exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html).
-2. Jestliže chcete vytvořit samostatný soubor jar, který budete moct spustit z příkazového řádku, vytvořte ho se všemi závislostmi s použitím [modulu plug-in sestavení Maven](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html). Soubor pom.xml v [ukázkovém zdrojovém kódu na Githubu](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) obsahuje příklad.
+2. Jestliže chcete vytvořit samostatný soubor jar, který budete moct spustit z příkazového řádku, vytvořte ho se všemi závislostmi s použitím [modulu plug-in sestavení Maven](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html). Příklad má pom.xml v [ukázkovém zdrojovém kódu na GitHubu.](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Prozkoumání JavaDoc k sadě Java SDK](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 * [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
 

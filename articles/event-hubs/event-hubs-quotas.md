@@ -1,6 +1,6 @@
 ---
-title: Kvóty a omezení – Azure Event Hubs | Dokumentace Microsoftu
-description: Tento článek poskytuje omezení a kvóty pro Azure Event Hubs. Například počet oborů názvů na předplatné, počet Center událostí na obor názvů.
+title: Kvóty a limity – Azure Event Hubs | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje omezení a kvóty pro Centra událostí Azure. Například počet oborů názvů na odběr, počet center událostí na obor názvů.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: bbe747228fa2f587bc1369c3cb1fbbc91d1817e2
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76309536"
 ---
-# <a name="azure-event-hubs-quotas-and-limits"></a>Azure Event Hubs kvóty a omezení
+# <a name="azure-event-hubs-quotas-and-limits"></a>Kvóty a omezení služby Azure Event Hubs
 
-Tato část obsahuje základní kvóty a omezení služby Azure Event Hubs.
+V této části jsou uvedeny základní kvóty a limity v Azure Event Hubs.
 
 [!INCLUDE [event-hubs-limits](../../includes/event-hubs-limits.md)]
 
@@ -32,6 +32,6 @@ Tato část obsahuje základní kvóty a omezení služby Azure Event Hubs.
 
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
-* [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Event Hubs automatické rozšiřování](event-hubs-auto-inflate.md)
+* [Přehled centra událostí](event-hubs-what-is-event-hubs.md)
+* [Automatické nafouknutí rozbočovačů událostí](event-hubs-auto-inflate.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

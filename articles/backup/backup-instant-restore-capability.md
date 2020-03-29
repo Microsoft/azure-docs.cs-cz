@@ -1,74 +1,74 @@
 ---
-title: Možnost okamžitého obnovení Azure
-description: Možnosti a nejčastější dotazy ke službě Azure Instant Restore pro zásobník zálohování virtuálních počítačů, model nasazení Správce prostředků
+title: Funkce okamžitého obnovení Azure
+description: Funkce okamžitého obnovení Azure a nejčastější dotazy pro zásobník zálohování virtuálních počítačů, model nasazení Správce prostředků
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 7cf437c6b20ea6b688e8e93e401cf71ef0260888
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705424"
 ---
-# <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Zlepšení výkonu zálohování a obnovení pomocí funkce Azure Backup pro okamžité obnovení
+# <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Lepší výkon zálohování a obnovení díky funkci okamžitého obnovení zálohování azure
 
 > [!NOTE]
-> Na základě zpětné vazby od uživatelů přejmenováváme **zásobník záloh virtuálních počítačů v2** na **okamžité obnovení** , aby se snížila nejasnosti s funkcemi Azure Stack.
-> Všichni uživatelé Azure Backup se teď upgradují na **okamžité obnovení**.
+> Na základě zpětné vazby od uživatelů přejmenováváme **zásobník zálohování virtuálních počítačů V2** na **okamžité obnovení,** abychom snížili nejasnosti s funkcemi Azure Stack.
+> Všichni uživatelé zálohování Azure byly nyní upgradovány na **okamžité obnovení**.
 
-Nový model pro okamžité obnovení nabízí následující vylepšení funkcí:
+Nový model pro okamžité obnovení poskytuje následující vylepšení funkcí:
 
-* Možnost používat snímky provedené jako součást úlohy zálohování, která je k dispozici pro obnovení bez čekání na dokončení přenosu dat do trezoru. Před aktivací obnovení zkracuje dobu čekání na kopírování snímků do trezoru.
-* Omezí časy zálohování a obnovení tím, že se snímky ponechají místně, a to ve výchozím nastavení po dobu dvou dnů. Tato výchozí hodnota uchování snímku se dá nakonfigurovat na libovolnou hodnotu od 1 do 5 dní.
-* Podporuje velikosti disků až do 32 TB. Změna velikosti disků se Azure Backup nedoporučuje.
-* Podporuje SSD úrovně Standard disky spolu s HDD úrovně Standard disky a SSD úrovně Premium disky.
-* Možnost při obnovení použít pro původní účty úložiště (na disk) nespravované virtuální počítače Tato možnost je k dispozici i v případě, že virtuální počítač obsahuje disky distribuované mezi účty úložiště. Zrychluje operace obnovení pro širokou škálu konfigurací virtuálních počítačů.
-* Pro zálohování virtuálních počítačů, které používají Prémiové úložiště, s okamžitým obnovením doporučujeme přidělit *50%* volného místa celkového přiděleného prostoru úložiště, který se vyžaduje **jenom** pro první zálohování. 50% volného místa není požadavkem na zálohování po dokončení prvního zálohování.
+* Možnost použití snímků pořízených jako součást úlohy zálohování, která je k dispozici pro obnovení bez čekání na dokončení přenosu dat do úložiště. Zkracuje dobu čekání pro snímky zkopírovat do úložiště před aktivací obnovení.
+* Zkracuje dobu zálohování a obnovení tím, že uchovává snímky místně, ve výchozím nastavení po dobu dvou dnů. Tato výchozí hodnota uchovávání snímků je konfigurovatelná na libovolnou hodnotu od 1 do 5 dnů.
+* Podporuje velikostdisku až 32 TB. Změna velikosti disků není doporučeno Azure Backup.
+* Podporuje standardní Disky SSD spolu se standardními disky HDD a disky Premium SSD.
+* Možnost používat nespravované účty úložiště virtuálních počítačů (na disk) při obnovení. Tato možnost existuje i v případě, že virtuální modul má disky, které jsou distribuovány mezi účty úložiště. Urychluje operace obnovení pro širokou škálu konfigurací virtuálních počítačů.
+* Pro zálohování virtuálních zařízení, které používají úložiště premium, s okamžitým obnovením doporučujeme přidělit *50 %* volného místa z celkového přiděleného úložného prostoru, který je vyžadován **pouze** pro první zálohu. 50 % volného místa není po dokončení první zálohy podmínkou pro zálohování.
 
-## <a name="whats-new-in-this-feature"></a>Co je nového v této funkci
+## <a name="whats-new-in-this-feature"></a>Co je v této funkci nového
 
 V současné době se úloha zálohování skládá ze dvou fází:
 
-1. Pořizuje se snímek virtuálního počítače.
+1. Pořízení snímku virtuálního počítače.
 2. Přenos snímku virtuálního počítače do trezoru služby Azure Recovery Services.
 
-Bod obnovení se považuje za vytvořený až po ukončení fází 1 a 2. V rámci tohoto upgradu je vytvořen bod obnovení hned po dokončení snímku a tento bod obnovení typu snímku lze použít k provedení obnovení pomocí stejného toku obnovení. Tento bod obnovení v Azure Portal můžete určit pomocí "snapshot" jako typ bodu obnovení a po přenosu snímku do trezoru se typ bodu obnovení změní na "Snapshot and trezor".
+Bod obnovení se považuje za vytvořený až po dokončení fází 1 a 2. Jako součást tohoto upgradu bod obnovení je vytvořen, jakmile snímek je dokončena a tento bod obnovení typu snímku lze použít k provedení obnovení pomocí stejného toku obnovení. Tento bod obnovení na webu Azure Portal můžete identifikovat pomocí "snímek" jako typu bodu obnovení a po přenosu snímku do trezoru se typ bodu obnovení změní na "snímek a trezor".
 
-![Úloha zálohování v zásobníku zálohování virtuálních počítačů Správce prostředků modelu nasazení – úložiště a trezor](./media/backup-azure-vms/instant-rp-flow.png)
+![Úloha zálohování v modelu nasazení zásobníku zálohování virtuálních zařízení Resource Manager – úložiště a trezor](./media/backup-azure-vms/instant-rp-flow.png)
 
-Ve výchozím nastavení se snímky uchovávají po dobu dvou dnů. Tato funkce umožňuje operaci obnovení z těchto snímků vyjmutím doby obnovení. Zkracuje dobu potřebnou k transformaci a zkopírování dat zpět z trezoru.
+Ve výchozím nastavení jsou snímky zachovány po dobu dvou dnů. Tato funkce umožňuje obnovení operace z těchto snímků tam snížením doby obnovení. Zkracuje čas potřebný k transformaci a kopírování dat zpět z úložiště.
 
-## <a name="feature-considerations"></a>Požadavky na funkce
+## <a name="feature-considerations"></a>Důležité informace o funkcích
 
-* Snímky jsou uloženy spolu s disky pro zvýšení vytvoření bodu obnovení a urychlení operací obnovení. V důsledku toho se zobrazí náklady na úložiště, které odpovídají snímkům provedeným během tohoto období.
-* Přírůstkové snímky se ukládají jako objekty blob stránky. Pro všechny uživatele, kteří používají nespravované disky, se účtují snímky uložené v místním účtu úložiště. Vzhledem k tomu, že kolekce bodů obnovení používané zálohami spravovaného virtuálního počítače používají snímky objektů blob na základní úrovni úložiště, budou se u spravovaných disků zobrazovat náklady odpovídající ceně snímku objektu BLOB a přírůstkové.
-* Pro účty Premium Storage se snímky pořízené pro rychlé body obnovení počítají do limitu 10 TB přiděleného místa.
-* Získáte možnost konfigurovat uchovávání snímků na základě potřeb obnovení. V závislosti na požadavku můžete nastavit uchování snímků na minimálně jeden den v okně zásady zálohování, jak je popsáno níže. To vám pomůže ušetřit náklady pro uchování snímků, pokud neprovádíte obnovení často.
-* Po upgradu na okamžité obnovení se jedná o jeden směrový upgrade, který se nedá vrátit zpět.
+* Snímky jsou uloženy spolu s disky pro zvýšení vytváření bodů obnovení a urychlit operace obnovení. V důsledku toho uvidíte náklady na úložiště, které odpovídají snímky pořízené během tohoto období.
+* Přírůstkové snímky jsou uloženy jako objekty BLOB stránky. Všichni uživatelé, kteří používají nespravované disky, se účtují za snímky uložené v jejich účtu místního úložiště. Vzhledem k tomu, že kolekce bodů obnovení používané zálohami spravovaného virtuálního počítače používají snímky objektů blob na základní úrovni úložiště, u spravovaných disků se zobrazí náklady odpovídající cenám snímků objektů blob a jsou přírůstkové.
+* U účtů úložiště premium se snímky pořízené pro body okamžitého obnovení započítávají do limitu 10 TB přiděleného místa.
+* Získáte možnost konfigurovat uchovávání snímků na základě potřeb obnovení. V závislosti na požadavku můžete nastavit uchovávání snímků na minimálně jeden den v okně zásad zálohování, jak je vysvětleno níže. To vám pomůže ušetřit náklady na uchovávání snímků, pokud neprovádíte obnovení často.
+* Jedná se o jednosměrný upgrade, po upgradu na okamžité obnovení se nemůžete vrátit.
 
 >[!NOTE]
->U tohoto upgradu okamžitého obnovení bude doba uchování snímku všech zákazníků (**zahrnutá v seznamu nová i existující**) nastavená na výchozí hodnotu dva dny. Můžete ale nastavit dobu trvání podle vašeho požadavku na libovolnou hodnotu od 1 do 5 dní.
+>Při tomto okamžitém obnovení upgradu bude doba uchovávání snímků všech zákazníků **(nových i stávajících zahrnutých)** nastavena na výchozí hodnotu dvou dnů. Dobu trvání však můžete nastavit podle požadavku na libovolnou hodnotu od 1 do 5 dnů.
 
 ## <a name="cost-impact"></a>Dopad na náklady
 
-Přírůstkové snímky se ukládají v účtu úložiště virtuálního počítače, který se používá pro okamžité obnovení. Přírůstkový snímek znamená, že místo obsazené snímkem je rovné místo obsazené stránkami, které jsou zapsány po vytvoření snímku. Fakturuje se pořád za využité místo na GB využité snímkem a cena za GB je stejná, jak je uvedeno na [stránce s cenami](https://azure.microsoft.com/pricing/details/managed-disks/). Pro virtuální počítače, které používají nespravované disky, se snímky můžou zobrazit v nabídce pro soubor VHD každého disku. U spravovaných disků se snímky ukládají v prostředku kolekce bodů obnovení v určené skupině prostředků a samotné snímky nejsou přímo viditelné.
+Přírůstkové snímky se ukládají v účtu úložiště virtuálního počítače, který se používá pro okamžité obnovení. Přírůstkový snímek znamená, že místo obsazené snímek se rovná místo obsazené stránky, které jsou zapsány po snímek byl vytvořen. Fakturace je stále pro za GB využité místo obsazené snímek a cena za GB je stejná jako je uvedeno na [stránce ceny](https://azure.microsoft.com/pricing/details/managed-disks/). U virtuálních počítačů, které používají nespravované disky, snímky lze zobrazit v nabídce pro soubor Virtuálního pevného disku každého disku. Pro spravované disky jsou snímky uloženy v prostředku kolekce bodů obnovení v určené skupině prostředků a samotné snímky nejsou přímo viditelné.
 
 >[!NOTE]
-> Pro týdenní zásady je doba uchování snímku pevně nastavená na 5 dní.
+> Uchovávání snímků je pro týdenní zásady fixováno na 5 dní.
 
 ## <a name="configure-snapshot-retention"></a>Konfigurace uchovávání snímků
 
-### <a name="using-azure-portal"></a>Použití webu Azure Portal
+### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
 
-V Azure Portal uvidíte pole přidané v okně **zásady zálohování virtuálního počítače** v části **okamžité obnovení** . Dobu uchování snímku můžete změnit v okně **zásady zálohování virtuálního počítače** pro všechny virtuální počítače přidružené ke konkrétním zásadám zálohování.
+Na webu Azure Portal se v okně Zásad zálohování virtuálních zařízení v části **Okamžité obnovení** zobrazí pole přidané v okně **Zásady zálohování virtuálních** zařízení. Dobu uchovávání snímků můžete změnit z okna **Zásad zálohování virtuálních zařízení** pro všechny virtuální počítače přidružené k konkrétní zásadě zálohování.
 
 ![Možnost okamžitého obnovení](./media/backup-azure-vms/instant-restore-capability.png)
 
-### <a name="using-powershell"></a>Použití PowerShellu
+### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
 >[!NOTE]
-> Z AZ PowerShell verze 1.6.0 a vyšší můžete aktualizovat dobu uchování snímku okamžitého obnovení v zásadách pomocí PowerShellu.
+> Od prostředí Az PowerShell verze 1.6.0 můžete aktualizovat dobu okamžitého obnovení snímku v zásadách pomocí prostředí PowerShell
 
 ```powershell
 $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
@@ -76,49 +76,49 @@ $bkpPol.SnapshotRetentionInDays=5
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 
-Výchozí uchování snímku pro každou zásadu je nastavené na dva dny. Uživatel může hodnotu změnit na minimálně 1 a maximálně na pět dní. Pro týdenní zásady je uchování snímku pevně nastavené na pět dní.
+Výchozí uchovávání snímků pro každou zásadu je nastavena na dva dny. Uživatel může změnit hodnotu na minimálně 1 a maximálně pět dní. Pro týdenní zásady uchovávání snímků je stanovena na pět dní.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="what-are-the-cost-implications-of-instant-restore"></a>Jaké jsou náklady na okamžité obnovení?
+### <a name="what-are-the-cost-implications-of-instant-restore"></a>Jaké jsou náklady důsledky okamžité obnovení?
 
-Snímky se ukládají společně s disky pro urychlení operací vytváření a obnovení bodů obnovení. V důsledku toho se zobrazí náklady na úložiště, které odpovídají uchování snímku vybranému jako součást zásad zálohování virtuálních počítačů.
+Snímky jsou uloženy spolu s disky, aby se urychlilo vytváření bodů obnovení a obnovení operací. V důsledku toho uvidíte náklady na úložiště, které odpovídají uchovávání snímků vybrané jako součást zásad zálohování virtuálních počítače.
 
-### <a name="in-premium-storage-accounts-do-the-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>U Premium Storage účtů mají snímky provedené pro rychlý bod obnovení zabírat limit snímku o velikosti 10 TB?
+### <a name="in-premium-storage-accounts-do-the-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>V účtech úložiště Premium zabírají snímky pořízené pro bod okamžitého obnovení limit snímků 10 TB?
 
-Ano, pro účty Premium Storage se snímky pořízené pro rychlý bod obnovení zabírají 10 TB přiděleného místa snímku.
+Ano, pro účty úložiště premium snímky pořízené pro bod okamžité obnovení zabírají 10 TB přiděleného místa snímku.
 
-### <a name="how-does-the-snapshot-retention-work-during-the-five-day-period"></a>Jak funguje uchovávání snímků během pětiletého období?
+### <a name="how-does-the-snapshot-retention-work-during-the-five-day-period"></a>Jak funguje uchovávání snímků během pětidenního období?
 
-Každý den se vytvoří nový snímek a pak existuje pět jednotlivých přírůstkových snímků. Velikost snímku závisí na četnosti změn dat, které jsou ve většině případů přibližně 2% až 7%.
+Každý den je pořízen nový snímek, pak existuje pět jednotlivých přírůstkové snímky. Velikost snímku závisí na konve dat, které jsou ve většině případů kolem 2%-7%.
 
-### <a name="is-an-instant-restore-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Je snímek okamžitého obnovení přírůstkovým nebo úplným snímkem?
+### <a name="is-an-instant-restore-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Je snímek okamžitého obnovení přírůstkový snímek nebo úplný snímek?
 
-Snímky, které se považují za součást možností okamžitého obnovení, jsou přírůstkové snímky.
+Snímky pořízené jako součást funkce okamžitého obnovení jsou přírůstkové snímky.
 
-### <a name="how-can-i-calculate-the-approximate-cost-increase-due-to-instant-restore-feature"></a>Jak mohu vypočítat přibližné náklady zvýšené z důvodu funkce okamžitého obnovení?
+### <a name="how-can-i-calculate-the-approximate-cost-increase-due-to-instant-restore-feature"></a>Jak lze vypočítat přibližné zvýšení nákladů v důsledku funkce okamžitého obnovení?
 
-Záleží na tom, jak virtuální počítač funguje. V stabilním stavu můžete předpokládat zvýšení nákladů, protože doba uchování snímku je denní Poměrová cena za úložiště na jeden virtuální počítač za GB.
+Záleží na konve virtuálního počítači. V ustáleném stavu můžete předpokládat, že zvýšení nákladů je = doba uchovávání snímků denní konve na náklady na úložiště virtuálního počítače za GB.
 
-### <a name="if-the-recovery-type-for-a-restore-point-is-snapshot-and-vault-and-i-perform-a-restore-operation-which-recovery-type-will-be-used"></a>Pokud je typ obnovení pro bod obnovení "Snímke and trezor" a provádím operaci obnovení, který typ obnovení bude použit?
+### <a name="if-the-recovery-type-for-a-restore-point-is-snapshot-and-vault-and-i-perform-a-restore-operation-which-recovery-type-will-be-used"></a>Pokud je typ obnovení pro bod obnovení "Snímek a trezor" a provést operaci obnovení, který typ obnovení se použije?
 
-Pokud je typ obnovení "snímke and trezor", obnoví se automaticky z místního snímku, což bude v porovnání s obnovením z trezoru mnohem rychlejší.
+Pokud je typ obnovení "snímek a trezor", obnovení se automaticky provede z místního snímku, který bude mnohem rychlejší ve srovnání s obnovením provedeném z úložiště.
 
-### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-the-snapshot-tier1-retention-period"></a>Co se stane, když vyberu dobu uchování bodu obnovení (vrstva 2) menší než doba uchování snímku (Tier1)?
+### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-the-snapshot-tier1-retention-period"></a>Co se stane, když zvolím dobu uchování bodu obnovení (úroveň 2) menší než doba uchování snímku (Tier1)?
 
-Nový model nepovoluje odstranění bodu obnovení (2), pokud se neodstraní snímek (Tier1). Doporučujeme, abyste naplánujete dobu uchování bodu obnovení (2), která je delší než doba uchování snímku.
+Nový model neumožňuje odstranění bodu obnovení (Tier2), pokud snímek (Tier1) je odstraněn. Doporučujeme naplánovat bod obnovení (Tier2) retenční období větší než období uchování snímku.
 
-### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Proč je můj snímek existující i po nastavení Doba uchování v zásadách zálohování?
+### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Proč můj snímek existuje i po nastavené retenční období v zásadách zálohování?
 
-Pokud má bod obnovení snímek, který je nejnovějším dostupným RP, bude uchován až do doby, kdy bude k dispozici další úspěšná záloha. Toto je podle navržených zásad uvolňování paměti (GC) ještě dnes, že pro případ, že se na virtuálním počítači poběží všechny zálohy, musí mít vždycky k dispozici alespoň jeden nejnovější RP. V normálních scénářích se RPs vyčistí po dobu jejich vypršení platnosti po dobu 24 hodin.
+Pokud bod obnovení má snímek a to je nejnovější RP k dispozici, je zachována až do doby, kdy je další úspěšné zálohování. To je podle navržených zásad "uvolňování paměti" (GC) dnes, která nařizuje alespoň jeden nejnovější RP být vždy přítomen v případě, že všechny zálohy dále na selhání z důvodu problému ve virtuálním počítači. V normálních případech jsou rps vyčištěny maximálně 24 hodin po vypršení jejich platnosti.
 
-### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Nepotřebuji funkci okamžitého obnovení. Je možné ho zakázat?
+### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Nepotřebuji funkci okamžitého obnovení. Může být zakázán?
 
-Funkce okamžitého obnovení je povolená pro všechny uživatele a nedá se zakázat. Uchování snímku můžete snížit minimálně na jeden den.
+Funkce okamžitého obnovení je povolena pro všechny a nelze ji zakázat. Můžete snížit uchovávání snímků na minimálně jeden den.
 
 >[!NOTE]
-> **Azure Backup teď podporuje zálohování a obnovení selektivního disku pomocí řešení zálohování virtuálních počítačů Azure.**
+> **Azure Backup teď podporuje selektivní zálohování a obnovení disku pomocí řešení zálohování virtuálního počítače Azure.**
 >
->V současné době Azure Backup podporuje zálohování všech disků (operačního systému a dat) na virtuálním počítači společně s využitím řešení zálohování virtuálních počítačů. Díky funkci vyloučení disku získáte možnost zálohovat jeden nebo několik datových disků ve virtuálním počítači. To poskytuje efektivní a nákladově efektivní řešení pro potřeby zálohování a obnovení. Každý bod obnovení obsahuje data disků zahrnutých v operaci zálohování, která dále umožňuje mít v průběhu operace obnovení podmnožinu disků obnovených z daného bodu obnovení. To platí pro obnovení ze snímku i z trezoru.
+>Azure Backup dnes podporuje zálohování všech disků (operačního systému a dat) ve virtuálním počítači společně pomocí řešení zálohování virtuálního počítače. S funkcí vyloučit disk, získáte možnost zálohovat jeden nebo několik z mnoha datových disků ve virtuálním počítače. To poskytuje efektivní a nákladově efektivní řešení pro potřeby zálohování a obnovení. Každý bod obnovení obsahuje data disků zahrnutých do operace zálohování, což dále umožňuje obnovit podmnožinu disků z daného bodu obnovení během operace obnovení. To platí pro obnovení ze snímku a úložiště.
 >
->**Pokud si chcete zaregistrovat verzi Preview, napište nám na AskAzureBackupTeam@microsoft.com**
+>**Chcete-li se zaregistrovat do náhledu, napište nám naAskAzureBackupTeam@microsoft.com**

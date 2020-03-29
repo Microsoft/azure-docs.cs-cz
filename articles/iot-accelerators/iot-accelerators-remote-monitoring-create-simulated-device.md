@@ -1,6 +1,6 @@
 ---
-title: Simulace zařízení pomocí vzdáleného monitorování IoT – Azure | Microsoft Docs
-description: V této příručce se dozvíte, jak používat simulátor zařízení s akcelerátorem řešení vzdáleného monitorování.
+title: Simulace zařízení pomocí vzdáleného monitorování IoT – Azure | Dokumenty společnosti Microsoft
+description: Tento návod ukazuje, jak používat simulátor zařízení s akcelerátorem řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,139 +9,139 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943056"
 ---
-# <a name="create-and-test-a-new-simulated-device"></a>Vytvoření a otestování nového simulovaného zařízení
+# <a name="create-and-test-a-new-simulated-device"></a>Vytvoření a testování nového simulovaného zařízení
 
-Akcelerátor řešení vzdáleného monitorování umožňuje definovat vlastní simulovaná zařízení. V tomto článku se dozvíte, jak definovat nové simulované zařízení žárovky a pak ho místně otestovat. Akcelerátor řešení zahrnuje simulovaná zařízení, jako jsou chlazení a nákladní automobily. Můžete ale definovat vlastní simulovaná zařízení k testování řešení IoT ještě před nasazením reálných zařízení.
+Akcelerátor řešení vzdáleného monitorování umožňuje definovat vlastní simulovaná zařízení. Tento článek ukazuje, jak definovat nové simulované zařízení žárovky a pak jej otestovat místně. Akcelerátor řešení zahrnuje simulovaná zařízení, jako jsou chladiče a nákladní automobily. Můžete však definovat vlastní simulovaná zařízení k testování řešení IoT před nasazením skutečných zařízení.
 
 > [!NOTE]
-> Tento článek popisuje, jak používat simulovaná zařízení hostovaná ve službě simulace zařízení. Pokud chcete vytvořit reálné zařízení, přečtěte si téma [připojení zařízení k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
+> Tento článek popisuje, jak používat simulovaná zařízení hostovaná ve službě simulace zařízení. Pokud chcete vytvořit skutečné zařízení, přečtěte si informace [o připojení zařízení k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
 
-V této příručce se dozvíte, jak přizpůsobit mikroslužbu simulace zařízení. Tato mikroslužba je součástí akcelerátoru řešení vzdáleného monitorování. Chcete-li zobrazit možnosti simulace zařízení, tato příručka používá dva scénáře v aplikaci společnosti Contoso IoT:
+Tento návod ukazuje, jak přizpůsobit mikroslužbu simulace zařízení. Tato mikroslužba je součástí akcelerátoru řešení vzdáleného monitorování. Chcete-li zobrazit možnosti simulace zařízení, tento návod používá dva scénáře v aplikaci Contoso IoT:
 
-V prvním scénáři přidáte nový typ telemetrie do stávajícího typu zařízení **chladicího** zařízení společnosti Contoso.
+V prvním scénáři přidáte nový typ telemetrie do existujícího typu zařízení **Contoso chiller.**
 
-Ve druhém scénáři chce contoso otestovat nové zařízení inteligentního žárovky. Chcete-li spustit testy, vytvořte nové simulované zařízení s následujícími charakteristikami:
+Ve druhém scénáři chce společnost Contoso otestovat nové zařízení inteligentní žárovky. Chcete-li spustit testy, vytvořte nové simulované zařízení s následujícími charakteristikami:
 
 *Vlastnosti*
 
-| Název                     | Hodnoty                      |
+| Name (Název)                     | Hodnoty                      |
 | ------------------------ | --------------------------- |
-| Barva                    | Bílá, červená, modrá            |
-| Světlost               | 0 až 100                    |
-| Odhad zbývající životnost | Odpočítávání z 10 000 hodin |
+| Barvy                    | Bílá, Červená, Modrá            |
+| Jas               | 0 až 100                    |
+| Odhadovaná zbývající životnost | Odpočítávání od 10 000 hodin |
 
 *Telemetrie*
 
-V následující tabulce jsou uvedena data, která žárovky do cloudu, jako datový proud:
+V následující tabulce jsou uvedena data, která žárovka hlásí cloudu jako datový proud:
 
-| Název   | Hodnoty      |
+| Name (Název)   | Hodnoty      |
 | ------ | ----------- |
 | Status | "zapnuto", "vypnuto" |
 | Teplota | Stupně F |
-| Online | Hodnota TRUE, false |
+| online | pravda, nepravdivé |
 
 > [!NOTE]
-> Hodnota **online** telemetrie je povinná pro všechny simulované typy.
+> Online **online** telemetrická hodnota je povinná pro všechny simulované typy.
 
-*Způsobů*
+*Metody*
 
-Následující tabulka uvádí akce, které nové zařízení podporuje:
+V následující tabulce jsou uvedeny akce, které nové zařízení podporuje:
 
-| Název        |
+| Name (Název)        |
 | ----------- |
-| Přepnout na   |
-| Přepnout  |
+| Zapnutí   |
+| Vypněte  |
 
 *Počáteční stav*
 
 V následující tabulce je uveden počáteční stav zařízení:
 
-| Název                     | Hodnoty |
+| Name (Název)                     | Hodnoty |
 | ------------------------ | -------|
 | Počáteční barva            | White  |
 | Počáteční jas       | 75     |
 | Počáteční zbývající životnost   | 10 000 |
-| Stav počáteční telemetrie | pnete   |
+| Počáteční stav telemetrie | "zapnuto"   |
 | Počáteční teplota telemetrie | 200   |
 
-K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
+K dokončení kroků v tomto návodu, budete potřebovat aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete postupovat podle tohoto návodu, budete potřebovat:
+Chcete-li postupovat podle tohoto návodu, potřebujete:
 
-* Visual Studio Code. Můžete [si stáhnout Visual Studio Code pro Mac, Linux a Windows](https://code.visualstudio.com/download).
-* .NET Core. Můžete stáhnout [.NET Core pro Mac, Linux a Windows](https://www.microsoft.com/net/download).
+* Visual Studio Code. Můžete [si stáhnout Visual Studio Code for Mac, Linux a Windows](https://code.visualstudio.com/download).
+* Jádro .NET. Zde si můžete stáhnout [.NET Core pro Mac, Linux a Windows](https://www.microsoft.com/net/download).
 * [C# pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* Postman. Můžete si stáhnout [pro Mac, Windows nebo Linux](https://www.getpostman.com/apps).
-* [Centrum IoT nasazené ve vašem předplatném Azure](../../articles/iot-hub/iot-hub-create-through-portal.md). K dokončení kroků v této příručce potřebujete připojovací řetězec centra IoT. Připojovací řetězec můžete získat z Azure Portal.
-* Cosmos DB databáze, která používá rozhraní SQL API a která je nakonfigurovaná pro [silnou konzistenci](../../articles/cosmos-db/how-to-manage-database-account.md). K dokončení kroků v této příručce potřebujete připojovací řetězec databáze Cosmos DB. Připojovací řetězec můžete získat z Azure Portal.
+* Pošťák. Můžete si stáhnout [Postman pro Mac, Windows nebo Linux](https://www.getpostman.com/apps).
+* [Centrum IoT nasazené do vašeho předplatného Azure](../../articles/iot-hub/iot-hub-create-through-portal.md). K dokončení kroků v této příručce potřebujete připojovací řetězec centra IoT hub. Připojovací řetězec můžete získat z webu Azure Portal.
+* Databáze Cosmos DB, která používá rozhraní SQL API a která je nakonfigurována pro [silnou konzistenci](../../articles/cosmos-db/how-to-manage-database-account.md). K dokončení kroků v této příručce potřebujete připojovací řetězec databáze Cosmos DB. Připojovací řetězec můžete získat z webu Azure Portal.
 
 ## <a name="prepare-your-development-environment"></a>Příprava vývojového prostředí
 
-Při přípravě vývojového prostředí dokončete následující úlohy:
+Pro přípravu vývojového prostředí proveďte následující úkoly:
 
 * Stáhněte si zdroj pro mikroslužbu simulace zařízení.
-* Stáhněte si zdroj pro mikroslužbu adaptéru úložiště.
+* Stáhněte zdroj mikroslužby adaptéru úložiště.
 * Spusťte mikroslužbu adaptéru úložiště místně.
 
-Pokyny v tomto článku předpokládají, že používáte systém Windows. Pokud používáte jiný operační systém, možná budete muset upravit některé cesty k souboru a příkazy tak, aby vyhovovaly vašemu prostředí.
+Pokyny v tomto článku předpokládají, že používáte systém Windows. Pokud používáte jiný operační systém, bude pravděpodobně nutné upravit některé cesty a příkazy souborů tak, aby vyhovovaly vašemu prostředí.
 
 ### <a name="download-the-microservices"></a>Stažení mikroslužeb
 
-Stáhněte a rozbalte [mikroslužby vzdáleného monitorování](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) z GitHubu do vhodného umístění v místním počítači. Článek předpokládá, že název této složky je **vzdálené monitorování-služby-dotnet-Master**.
+Stáhněte a rozbalte [mikroslužby vzdáleného monitorování](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) z GitHubu do vhodného umístění v místním počítači. Článek předpokládá, že název této složky je **vzdálené monitorování služeb-dotnet-master**.
 
-Stáhněte a rozbalte [mikroslužbu simulace zařízení](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) z GitHubu do vhodného umístění v místním počítači. Článek předpokládá, že název této složky je **Device-simulace-dotnet-Master**.
+Stáhněte a rozbalte [mikroslužbu simulace zařízení](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) z GitHubu na vhodné místo v místním počítači. Článek předpokládá, že název této složky je **device-simulation-dotnet-master**.
 
 ### <a name="run-the-storage-adapter-microservice"></a>Spuštění mikroslužby adaptéru úložiště
 
-Otevřete složku **Remote-Monitoring-Services-dotnet-master\storage-Adapter** v Visual Studio Code. Kliknutím na jakékoli tlačítko **obnovit** opravíte nevyřešené závislosti.
+Otevřete složku **vzdáleného monitorování služeb-dotnet-master\storage-adapter** v kódu sady Visual Studio. Chcete-li opravit všechny nevyřešené závislosti, klepněte na ně tlačítka **obnovení.**
 
-Otevřete soubor **Storage-Adapter/WebService/appSettings. ini** a přiřaďte připojovací řetězec Cosmos DB k proměnné **documentDBConnectionString** .
+Otevřete soubor **storage-adapter/WebService/appsettings.ini** a přiřaďte připojovací řetězec Cosmos DB proměnné **documentDBConnectionString.**
 
-Pokud chcete spustit mikroslužbu místně, klikněte na **ladění > spustit ladění**.
+Chcete-li spustit mikroslužbu místně, klepněte na **tlačítko Ladění > Spustit ladění**.
 
-Okno **terminálu** v Visual Studio Code zobrazuje výstup z běžící mikroslužby včetně adresy URL pro kontrolu stavu webové služby: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status). Při přechodu na tuto adresu by měl být ve stavu "OK: Alive" a dobře ".
+Okno **Terminál** v kódu sady Visual Studio zobrazuje výstup ze spuštěné mikroslužby včetně adresy URL pro kontrolu stavu webové služby: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status). Při přechodu na tuto adresu by měl být stav "OK: Alive and well".
 
-Ponechte mikroslužbu adaptéru úložiště spuštěnou v této instanci Visual Studio Code při dokončení dalších kroků.
+Ponechte mikroslužbu adaptéru úložiště spuštěnou v této instanci kódu sady Visual Studio a dokončete další kroky.
 
-## <a name="modify-the-chiller"></a>Změnit chladicíer
+## <a name="modify-the-chiller"></a>Upravte chladič
 
-V této části přidáte nový typ telemetrie **vnitřních teplot** na existující typ zařízení **chladicího** zařízení:
+V této části přidáte nový typ telemetrie **vnitřní teploty** do existujícího typu **zařízení chladiče:**
 
-1. Na místním počítači vytvořte novou složku **C:\temp\devicemodels** .
+1. Vytvořte novou složku **C:\temp\devicemodels** v místním počítači.
 
 1. Zkopírujte následující soubory do nové složky ze stažené kopie mikroslužby simulace zařízení:
 
     | Zdroj | Cíl |
     | ------ | ----------- |
-    | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
+    | Služby\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
     | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
     | Services\data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
     | Services\data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
     | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
-    | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
+    | Služby\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
-1. Otevřete soubor **C:\temp\devicemodels\chiller-01.JSON** .
+1. Otevřete soubor **C:\temp\devicemodels\chiller-01.json.**
 
-1. V části **initialState** přidejte následující dvě definice:
+1. V části **InitialState** přidejte následující dvě definice:
 
     ```json
     "internal_temperature": 65.0,
     "internal_temperature_unit": "F",
     ```
 
-1. Do pole **telemetrie** přidejte následující definici:
+1. Do pole **Telemetrie** přidejte následující definici:
 
     ```json
     {
@@ -158,18 +158,18 @@ V této části přidáte nový typ telemetrie **vnitřních teplot** na existuj
     },
     ```
 
-1. Uložte soubor **C:\temp\devicemodels\chiller-01.JSON** .
+1. Uložte soubor **C:\temp\devicemodels\chiller-01.json.**
 
-1. Otevřete soubor **C:\temp\devicemodels\scripts\chiller-01-State.js** .
+1. Otevřete soubor **C:\temp\devicemodels\scripts\chiller-01-state.js.**
 
-1. Do proměnné **State** přidejte následující pole:
+1. Do proměnné **stavu** přidejte následující pole:
 
     ```js
     internal_temperature: 65.0,
     internal_temperature_unit: "F",
     ```
 
-1. Aktualizujte **Hlavní** funkci následujícím způsobem:
+1. Aktualizujte **hlavní** funkci takto:
 
     ```js
     function main(context, previousState, previousProperties) {
@@ -201,13 +201,13 @@ V této části přidáte nový typ telemetrie **vnitřních teplot** na existuj
     }
     ```
 
-1. Uložte soubor **C:\temp\devicemodels\scripts\chiller-01-State.js** .
+1. Uložte soubor **C:\temp\devicemodels\scripts\chiller-01-state.js.**
 
-## <a name="create-the-lightbulb"></a>Vytvoření žárovky
+## <a name="create-the-lightbulb"></a>Vytvořte žárovku
 
-V této části definujete nový typ zařízení **žárovky** :
+V této části definujete nový typ **zařízení žárovky:**
 
-1. Vytvořte soubor **C:\temp\devicemodels\lightbulb-01.JSON** a přidejte následující obsah:
+1. Vytvořte soubor **C:\temp\devicemodels\lightbulb-01.json** a přidejte následující obsah:
 
     ```json
     {
@@ -271,9 +271,9 @@ V této části definujete nový typ zařízení **žárovky** :
     }
     ```
 
-    Uložte změny do **C:\temp\devicemodels\lightbulb-01.JSON**.
+    Uložte změny do **c:\temp\devicemodels\lightbulb-01.json**.
 
-1. Vytvořte soubor **C:\temp\devicemodels\scripts\lightbulb-01-State.js** a přidejte následující obsah:
+1. Vytvořte soubor **C:\temp\devicemodels\scripts\lightbulb-01-state.js** a přidejte následující obsah:
 
     ```javascript
     "use strict";
@@ -360,9 +360,9 @@ V této části definujete nový typ zařízení **žárovky** :
     }
     ```
 
-    Uložte změny do **C:\temp\devicemodels\scripts\lightbulb-01-State.js**.
+    Uložte změny do **souboru C:\temp\devicemodels\scripts\lightbulb-01-state.js**.
 
-1. Vytvořte soubor **C:\temp\devicemodels\scripts\SwitchOn-Method.js** a přidejte následující obsah:
+1. Vytvořte soubor **C:\temp\devicemodels\scripts\SwitchOn-method.js** a přidejte následující obsah:
 
     ```javascript
     "use strict";
@@ -386,9 +386,9 @@ V této části definujete nový typ zařízení **žárovky** :
     }
     ```
 
-    Uložte změny do **C:\temp\devicemodels\scripts\SwitchOn-Method.js**.
+    Uložte změny do **souboru C:\temp\devicemodels\scripts\SwitchOn-method.js**.
 
-1. Vytvořte soubor **C:\temp\devicemodels\scripts\SwitchOff-Method.js** a přidejte následující obsah:
+1. Vytvořte soubor **C:\temp\devicemodels\scripts\SwitchOff-method.js** a přidejte následující obsah:
 
     ```javascript
     "use strict";
@@ -412,19 +412,19 @@ V této části definujete nový typ zařízení **žárovky** :
     }
     ```
 
-    Uložte změny do **C:\temp\devicemodels\scripts\SwitchOff-Method.js**.
+    Uložte změny do **souboru C:\temp\devicemodels\scripts\SwitchOff-method.js**.
 
-Nyní jste vytvořili přizpůsobenou verzi typu **chladicího** zařízení a vytvořili jste nový typ zařízení **žárovky** .
+Nyní jste vytvořili přizpůsobenou verzi typu **zařízení Chladič e-li** a vytvořili jste nový typ **zařízení žárovky.**
 
-## <a name="test-the-devices"></a>Testování zařízení
+## <a name="test-the-devices"></a>Otestujte zařízení
 
 V této části otestujete typy zařízení, které jste vytvořili v předchozích částech místně.
 
 ### <a name="run-the-device-simulation-microservice"></a>Spuštění mikroslužby simulace zařízení
 
-Otevřete složku **Device-simulace-dotnet-Master** , kterou jste stáhli z GitHubu, do nové instance Visual Studio Code. Kliknutím na jakékoli tlačítko **obnovit** opravíte nevyřešené závislosti.
+Otevřete složku **device-simulation-dotnet-master,** kterou jste stáhli z GitHubu v nové instanci kódu Visual Studia. Chcete-li opravit všechny nevyřešené závislosti, klepněte na ně tlačítka **obnovení.**
 
-Otevřete soubor **WebService/appSettings. ini** a přiřaďte Cosmos DB řetězec připojení k proměnné **documentdb_connstring** a upravte nastavení následujícím způsobem:
+Otevřete soubor **WebService/appsettings.ini** a přiřaďte připojovací řetězec Cosmos DB proměnné **documentdb_connstring** a také upravte nastavení následujícím způsobem:
 
 ```ini
 device_models_folder = C:\temp\devicemodels\
@@ -432,17 +432,17 @@ device_models_folder = C:\temp\devicemodels\
 device_models_scripts_folder = C:\temp\devicemodels\scripts\
 ```
 
-Pokud chcete spustit mikroslužbu místně, klikněte na **ladění > spustit ladění**.
+Chcete-li spustit mikroslužbu místně, klepněte na **tlačítko Ladění > Spustit ladění**.
 
-Okno **terminálu** v Visual Studio Code zobrazuje výstup z běžící mikroslužby.
+Okno **Terminálv** kódu sady Visual Studio zobrazuje výstup z běžící mikroslužby.
 
-Ponechte mikroslužbu simulace zařízení spuštěnou v této instanci Visual Studio Code během provádění dalších kroků.
+Ponechte mikroslužbu simulace zařízení spuštěnou v této instanci kódu sady Visual Studio a dokončete další kroky.
 
-### <a name="set-up-a-monitor-for-device-events"></a>Nastavení monitorování pro události zařízení
+### <a name="set-up-a-monitor-for-device-events"></a>Nastavení monitoru pro události zařízení
 
-V této části použijete rozhraní příkazového řádku Azure CLI k nastavení monitorování událostí pro zobrazení telemetrie odesílané ze zařízení připojených ke službě IoT Hub.
+V této části použijete azure CLI k nastavení monitorování událostí k zobrazení telemetrie odeslané ze zařízení připojených k centru IoT.
 
-Následující skript předpokládá, že název vašeho centra IoT je typu **zařízení-simulace-test**.
+Následující skript předpokládá, že název vašeho centra IoT hub je **test simulace zařízení**.
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
@@ -452,54 +452,54 @@ az extension add --name azure-iot
 az iot hub monitor-events --hub-name device-simulation-test
 ```
 
-Při testování simulovaných zařízení nechte monitorování událostí spuštěné.
+Při testování simulovaných zařízení ponechte monitor událostí spuštěný.
 
-### <a name="create-a-simulation-with-the-updated-chiller-device-type"></a>Vytvořit simulaci s aktualizovaným typem zařízení chlazení
+### <a name="create-a-simulation-with-the-updated-chiller-device-type"></a>Vytvoření simulace s aktualizovaným typem chladicího zařízení
 
-V této části vyžádáte pomocí nástroje pro simulaci simulaci zařízení, aby spouštěla simulaci pomocí aktualizovaného typu zařízení chladicího zařízení. Post je nástroj, který umožňuje odesílat žádosti REST do webové služby. Konfigurační soubory, které potřebujete, jsou v místní kopii úložiště **typu zařízení-simulace-dotnet** .
+V této části použijete nástroj Postman k vyžádání mikroslužby simulace zařízení ke spuštění simulace pomocí aktualizovaného typu chladicího zařízení. Pošťák je nástroj, který umožňuje odesílat požadavky REST webové službě. Konfigurační soubory Postman, které potřebujete, jsou v místní kopii úložiště **device-simulation-dotnet.**
 
-Nastavení post:
+Nastavení pošťáka:
 
-1. Otevřete post na místním počítači.
+1. Otevřete pošťáka na místním počítači.
 
-1. Klikněte na **soubor > importovat**. Pak klikněte na **zvolit soubory**.
+1. Klepněte na **položku Soubor > import .** Pak klepněte na **tlačítko Vybrat soubory**.
 
-1. Přejděte do složky **Device-simulace-dotnet-Master/docs/post** . Vyberte **akcelerátor řešení simulace zařízení Azure IoT. postman_collection** a **akcelerátor řešení pro simulaci zařízení azure IoT. postman_environment** a klikněte na **otevřít**.
+1. Přejděte do složky **device-simulation-dotnet-master/docs/postman.** Vyberte **akcelerátor řešení Azure IoT Device Simulation.postman_collection** a **Azure IoT Device Simulation solution accelerator.postman_environment** a klikněte na **Otevřít**.
 
-1. Rozšiřte **akcelerátor řešení pro simulaci zařízení Azure IoT** na požadavky, které můžete odeslat.
+1. Rozbalte **akcelerátor řešení Simulace zařízení Azure IoT** na požadavky, které můžete odeslat.
 
-1. Klikněte na **žádné prostředí** a vyberte **akcelerátor řešení pro simulaci zařízení Azure IoT**.
+1. Klikněte na **Žádné prostředí** a vyberte **akcelerátor řešení Simulace zařízení Azure IoT**.
 
-Nyní máte v pracovním prostoru pro práci vytvořenou kolekci a prostředí, kterou můžete použít k interakci s mikroslužbou simulace zařízení.
+Nyní máte kolekci a prostředí načtené v pracovním prostoru Postman, který můžete použít k interakci s mikroslužbou simulace zařízení.
 
 Konfigurace a spuštění simulace:
 
-1. V kolekci post vyberte **vytvořit upravenou simulaci chlazení** a klikněte na **Odeslat**. Tento požadavek vytvoří čtyři instance simulovaného typu zařízení chladicího zařízení.
+1. V kolekci Pošťák vyberte **Vytvořit upravenou simulaci chladiče** a klepněte na tlačítko **Odeslat**. Tento požadavek vytvoří čtyři instance simulovaného typu chladicího zařízení.
 
-1. Výstup sledování událostí v okně Azure CLI zobrazuje telemetrii ze simulovaných zařízení, včetně nových hodnot **internal_temperature** .
+1. Výstup monitorování událostí v okně Azure CLI zobrazuje telemetrii ze simulovaných zařízení, včetně nových **internal_temperature** hodnot.
 
-Chcete-li zastavit simulaci, vyberte možnost **zastavit simulaci** v příspěvku a klikněte na **Odeslat**.
+Chcete-li simulaci zastavit, vyberte v pořštěnu požadavek **na zastavení simulace** a klepněte na tlačítko **Odeslat**.
 
 ### <a name="create-a-simulation-with-the-lightbulb-device-type"></a>Vytvoření simulace s typem zařízení žárovky
 
-V této části vyžádáte pomocí nástroje pro simulaci, aby služba simulace zařízení spustila simulaci pomocí typu zařízení žárovky. Post je nástroj, který umožňuje odesílat žádosti REST do webové služby.
+V této části použijete nástroj Postman k vyžádání mikroslužby simulace zařízení ke spuštění simulace pomocí typu zařízení žárovky. Pošťák je nástroj, který umožňuje odesílat požadavky REST webové službě.
 
 Konfigurace a spuštění simulace:
 
-1. V kolekci post vyberte **vytvořit simulaci žárovky** a klikněte na **Odeslat**. Tento požadavek vytvoří dvě instance simulovaného typu zařízení žárovky.
+1. V kolekci Pošťák vyberte **Vytvořit simulaci žárovky** a klepněte na **odeslat**. Tento požadavek vytvoří dvě instance typu zařízení simulované žárovky.
 
-1. Výstup sledování událostí v okně Azure CLI zobrazuje telemetrii z simulovaných lightbulbs.
+1. Výstup monitorování událostí v okně Azure CLI zobrazuje telemetrii ze simulovaných žárovek.
 
-Chcete-li zastavit simulaci, vyberte možnost **zastavit simulaci** v příspěvku a klikněte na **Odeslat**.
+Chcete-li simulaci zastavit, vyberte v pořštěnu požadavek **na zastavení simulace** a klepněte na tlačítko **Odeslat**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V jejich instancích Visual Studio Code můžete zastavit dvě místně běžící mikroslužby (**ladění > zastavit ladění**).
+Můžete zastavit dvě místně spuštěné mikroslužby v jejich instancích kódu sady Visual Studio **(ladění > zastavení ladění).**
 
-Pokud už nepotřebujete instance IoT Hub a Cosmos DB, odstraňte je z předplatného Azure, abyste se vyhnuli zbytečným poplatkům.
+Pokud už nepotřebujete instance Služby IoT Hub a Cosmos DB, odstraňte je z předplatného Azure, abyste se vyhnuli zbytečným poplatkům.
 
 ## <a name="next-steps"></a>Další kroky
 
-V této příručce se naučíte, jak vytvořit vlastní simulované typy zařízení a testovat je spuštěním mikroslužby simulace zařízení v místním prostředí.
+Tato příručka vám ukázala, jak vytvořit vlastní simulované typy zařízení a otestovat je spuštěním mikroslužby simulace zařízení místně.
 
-Navržený další krok se naučíte, jak nasadit vlastní simulované typy zařízení do [akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-deploy-simulated-device.md).
+Dalším navrhovaným krokem je naučit se nasadit vlastní typy simulovaných zařízení do [akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-deploy-simulated-device.md).

@@ -1,6 +1,6 @@
 ---
-title: Import prostředí post pro Azure Media Services volání REST
-description: Toto téma poskytuje definici předzálohovacího prostředí pro Azure Media Services volání REST.
+title: Import postman prostředí pro azure media services volání REST
+description: Toto téma obsahuje definici postman prostředí pro azure media services rest volání.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78926713"
 ---
-# <a name="import-the-postman-environment"></a>Import prostředí post  
+# <a name="import-the-postman-environment"></a>Import prostředí Pošťáka  
 
-Tento článek obsahuje definici proměnných prostředí **post** , které používají [kolekci post](postman-collection.md) , která obsahuje seskupené požadavky HTTP, které volají Media Services rozhraní REST API. Soubory prostředí a kolekcí používá kurz [Konfigurace post pro Media Services REST API volání](media-rest-apis-with-postman.md) .
+Tento článek obsahuje definici proměnných prostředí **Postman,** které se používají [Postman kolekce,](postman-collection.md) která obsahuje seskupené požadavky HTTP, které volají media services REST API. Soubory prostředí a kolekce jsou používány [konfigurovat Postman pro media services volání rozhraní REST API](media-rest-apis-with-postman.md) kurzu.
 
 > [!NOTE]
-> Hodnota `AzureADSTSEndpoint ` = `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`. Pokud chcete získat ID tenanta, můžete ukazatel myši umístit na své uživatelské jméno na portálu (v pravém horním rohu) a bude v adresáři "adresář: Microsoft ({{TENANTID}}).
+> Hodnota . `AzureADSTSEndpoint `  =  `https://login.microsoftonline.com/{{TenantId}}/oauth2/token` Chcete-li získat id klienta, můžete na jevmyši myši na uživatelské jméno na portálu (v pravém horním rohu) a bude v "Adresář: Microsoft ( {{TENANTID}} .
 
 ```
 {

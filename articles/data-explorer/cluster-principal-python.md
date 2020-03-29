@@ -1,6 +1,6 @@
 ---
-title: Přidání objektů zabezpečení clusteru pro Azure Průzkumník dat pomocí Pythonu
-description: V tomto článku se dozvíte, jak přidat objekty zabezpečení clusteru pro Azure Průzkumník dat pomocí Pythonu.
+title: Přidání objektů zabezpečení clusteru pro Azure Data Explorer pomocí Pythonu
+description: V tomto článku se dozvíte, jak přidat objekty zabezpečení clusteru pro Azure Data Explorer pomocí Pythonu.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,29 +8,29 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 637efdfe31d1f2eb0eaa5dd532dd9e9e67de5ce2
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965135"
 ---
-# <a name="add-cluster-principals-for-azure-data-explorer-by-using-python"></a>Přidání objektů zabezpečení clusteru pro Azure Průzkumník dat pomocí Pythonu
+# <a name="add-cluster-principals-for-azure-data-explorer-by-using-python"></a>Přidání objektů zabezpečení clusteru pro Azure Data Explorer pomocí Pythonu
 
 > [!div class="op_single_selector"]
-> * [C#](cluster-principal-csharp.md)
+> * [C #](cluster-principal-csharp.md)
 > * [Python](cluster-principal-python.md)
 > * [Šablona Azure Resource Manageru](cluster-principal-resource-manager.md)
 
-Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. V tomto článku přidáte objekty zabezpečení clusteru pro Azure Průzkumník dat pomocí Pythonu.
+Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. V tomto článku přidáte objekty zabezpečení clusteru pro Azure Data Explorer pomocí Pythonu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Vytvořte cluster](create-cluster-database-python.md).
 
-## <a name="install-python-package"></a>Instalovat balíček Pythonu
+## <a name="install-python-package"></a>Instalace balíčku Pythonu
 
-Pro instalaci balíčku Pythonu pro Azure Průzkumník dat (Kusto) otevřete příkazový řádek, který má v cestě Python. Spusťte tento příkaz:
+Chcete-li nainstalovat balíček Pythonu pro Průzkumníka dat Azure (Kusto), otevřete příkazový řádek, který má Python v cestě. Spusťte tento příkaz:
 
 ```
 pip install azure-common
@@ -39,9 +39,9 @@ pip install azure-mgmt-kusto
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-a-cluster-principal"></a>Přidat objekt zabezpečení clusteru
+## <a name="add-a-cluster-principal"></a>Přidání objektu zabezpečení clusteru
 
-Následující příklad ukazuje, jak programově přidat objekt clusteru.
+Následující příklad ukazuje, jak přidat hlavní objekt clusteru programově.
 
 ```Python
 from azure.mgmt.kusto import KustoManagementClient
@@ -80,18 +80,18 @@ poller = kusto_management_client.cluster_principal_assignments.create_or_update(
 
 |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
 |---|---|---|
-| tenant_id | *XXXXXXXX-xxxxx-xxxx-xxxx-XXXXXXXXX* | Vaše ID tenanta. Označuje se také jako ID adresáře.|
-| subscription_id | *XXXXXXXX-xxxxx-xxxx-xxxx-XXXXXXXXX* | ID předplatného, které používáte pro vytváření prostředků.|
-| client_id | *XXXXXXXX-xxxxx-xxxx-xxxx-XXXXXXXXX* | ID klienta aplikace, která má přístup k prostředkům ve vašem tenantovi.|
-| client_secret | *xxxxxxxxxxxxxx* | Tajný klíč klienta aplikace, který má přístup k prostředkům ve vašem tenantovi. |
-| resource_group_name | *testrg* | Název skupiny prostředků, která obsahuje váš cluster.|
-| cluster_name | *mykustocluster* | Název vašeho clusteru.|
-| principal_assignment_name | *clusterPrincipalAssignment1* | Název prostředku objektu zabezpečení clusteru.|
-| principal_id | *XXXXXXXX-xxxxx-xxxx-xxxx-XXXXXXXXX* | ID objektu zabezpečení, které může být e-mailem uživatele, ID aplikace nebo názvem skupiny zabezpečení.|
-| roles | *AllDatabasesAdmin* | Role objektu zabezpečení clusteru, který může být "AllDatabasesAdmin' nebo" AllDatabasesViewer ".|
-| tenant_id_for_principal | *XXXXXXXX-xxxxx-xxxx-xxxx-XXXXXXXXX* | ID tenanta objektu zabezpečení|
-| principal_type | *Aplikace* | Typ objektu zabezpečení, který může být "User", "App" nebo "Group"|
+| tenant_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Vaše tenantské ID. Označuje se také jako ID adresáře.|
+| subscription_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | ID předplatného, které používáte pro vytvoření prostředků.|
+| client_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | ID klienta aplikace, která má přístup k prostředkům ve vašem tenantovi.|
+| client_secret | *xxxxxxxxxxxxxx* | Tajný klíč klienta aplikace, která může přistupovat k prostředkům ve vašem tenantovi. |
+| resource_group_name | *testrg* | Název skupiny prostředků obsahující váš cluster.|
+| cluster_name | *mykustocluster* | Název clusteru.|
+| principal_assignment_name | *clusterPrincipalAssignment1* | Název hlavního prostředku clusteru.|
+| Principal_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | ID objektu zabezpečení, kterým může být e-mail uživatele, ID aplikace nebo název skupiny zabezpečení.|
+| role | *AllDatabasesAdmin* | Role objektu zabezpečení clusteru, který může být "AllDatabasesAdmin" nebo AllDatabasesViewer.|
+| tenant_id_for_principal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | ID klienta hlavního povinného.|
+| principal_type | *Aplikace* | Typ objektu zabezpečení, který může být "Uživatel", "App" nebo "Skupina"|
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přidat objekty zabezpečení databáze](database-principal-python.md)
+* [Přidání objektů zabezpečení databáze](database-principal-python.md)

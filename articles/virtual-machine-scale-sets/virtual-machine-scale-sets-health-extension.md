@@ -1,6 +1,6 @@
 ---
-title: Použití rozšíření pro stav aplikací se službou Azure Virtual Machine Scale Sets
-description: Naučte se používat rozšíření pro stav aplikací ke sledování stavu aplikací nasazených ve službě Virtual Machine Scale Sets.
+title: Použití rozšíření Stav aplikace se škálovacími sadami virtuálních strojů Azure
+description: Zjistěte, jak pomocí rozšíření Stav aplikace sledovat stav vašich aplikací nasazených ve škálovacích sadách virtuálních strojů.
 author: mayanknayar
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
 ms.openlocfilehash: 37d93b04e6755512eac6c2a168bd2a04f8ac298f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275880"
 ---
-# <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Používání rozšíření pro stav aplikací s využitím Virtual Machine Scale Sets
-Monitorování stavu vaší aplikace je důležitým signálem pro správu a upgrade nasazení. Azure Virtual Machine Scale Sets poskytují podporu pro průběžné [upgrady](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) včetně [automatických upgradů BITOVÝCH kopií operačního systému](virtual-machine-scale-sets-automatic-upgrade.md), které jsou závislé na monitorování stavu jednotlivých instancí při upgradu vašeho nasazení.
+# <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Použití rozšíření Stav aplikace se škálovacími sadami virtuálních počítačů
+Sledování stavu aplikace je důležitým signálem pro správu a upgrade nasazení. Škálovací sady virtuálních strojů Azure poskytují podporu pro [postupné upgrady](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) včetně [automatických upgradů image operačního systému](virtual-machine-scale-sets-automatic-upgrade.md), které při upgradu nasazení spoléhají na monitorování stavu jednotlivých instancí.
 
-Tento článek popisuje, jak můžete pomocí rozšíření pro stav aplikace monitorovat stav aplikací nasazených ve službě Virtual Machine Scale Sets.
+Tento článek popisuje, jak můžete použít rozšíření Stav aplikace ke sledování stavu vašich aplikací nasazených ve škálovacích sadách virtuálních strojů.
 
 ## <a name="prerequisites"></a>Požadavky
-V tomto článku se předpokládá, že máte zkušenosti s nástrojem:
--   [Rozšíření](../virtual-machines/extensions/overview.md) virtuálních počítačů Azure
--   [Úprava](virtual-machine-scale-sets-upgrade-scale-set.md) virtuálních počítačů Scale Sets
+Tento článek předpokládá, že jste obeznámeni s:
+-   [Rozšíření virtuálních](../virtual-machines/extensions/overview.md) strojů Azure
+-   [Úprava škálovacích](virtual-machine-scale-sets-upgrade-scale-set.md) sad virtuálních strojů
 
-## <a name="when-to-use-the-application-health-extension"></a>Kdy použít rozšíření pro stav aplikace
-Rozšíření pro stav aplikace se nasadí do instance sady škálování virtuálních počítačů a sestavuje zprávy o stavu virtuálního počítače v rámci instance sady škálování. Můžete nakonfigurovat rozšíření na testování koncového bodu aplikace a aktualizovat stav aplikace v této instanci. Tento stav instance kontroluje Azure, aby zjistil, jestli je instance způsobilá pro operace upgradu.
+## <a name="when-to-use-the-application-health-extension"></a>Kdy použít rozšíření Stav aplikace
+Rozšíření Stav aplikace se nasadí uvnitř instance škálovací sady virtuálních strojů a hlásí stav virtuálního počítače z instance škálovací sady. Můžete nakonfigurovat rozšíření pro sondování na koncovém bodu aplikace a aktualizovat stav aplikace v této instanci. Tento stav instance je kontrolována Azure k určení, zda instance je způsobilá pro operace upgradu.
 
-Jelikož rozšíření hlásí stav z virtuálního počítače, dá se použít v situacích, kdy nejde použít externí testy, jako je třeba sondy stavu aplikací (které využívají vlastní [testy](../load-balancer/load-balancer-custom-probe-overview.md)Azure Load Balancer).
+Jako rozšíření hlásí stav z v rámci virtuálního počítače, rozšíření lze použít v situacích, kdy externí sondy, jako jsou sondy stavu aplikace (které využívají vlastní azure nástroje pro vyrovnávání zatížení [sondy](../load-balancer/load-balancer-custom-probe-overview.md)) nelze použít.
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující JSON zobrazuje schéma pro rozšíření pro stav aplikace. Přípona vyžaduje minimálně požadavek TCP nebo http s přiřazeným portem nebo cestou k požadavku.
+Následující JSON ukazuje schéma pro rozšíření stav aplikace. Rozšíření vyžaduje minimálně požadavek "tcp" nebo "http" s přidruženým portem nebo cestou požadavku.
 
 ```json
 {
@@ -55,27 +55,27 @@ Následující JSON zobrazuje schéma pro rozšíření pro stav aplikace. Pří
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name (Název) | Hodnota / příklad | Typ dat
+| Name (Název) | Hodnota / Příklad | Typ dat
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| publisher | `Microsoft.ManagedServices` | string |
-| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
+| vydavatel | `Microsoft.ManagedServices` | řetězec |
+| type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | řetězec |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Nastavení
 
-| Name (Název) | Hodnota / příklad | Typ dat
+| Name (Název) | Hodnota / Příklad | Typ dat
 | ---- | ---- | ----
-| protocol | `http` nebo `tcp` | string |
-| port | Volitelné, pokud je protokol `http`, povinné, když je protokol `tcp` | int |
-| requestPath | Povinné, pokud je protokol `http`, není povolený, pokud je protokol `tcp` | string |
+| Protokol | `http` nebo `tcp` | řetězec |
+| port | Nepovinné, `http`pokud je protokol , povinný, pokud je protokol`tcp` | int |
+| requestPath | Povinné, pokud `http`protokol není povolen, pokud je protokol`tcp` | řetězec |
 
-## <a name="deploy-the-application-health-extension"></a>Nasazení rozšíření stavu aplikace
-Rozšíření pro stav aplikace můžete nasadit do sady škálování, jak je popsáno níže v následujících příkladech.
+## <a name="deploy-the-application-health-extension"></a>Nasazení rozšíření Stav aplikace
+Existuje několik způsobů nasazení rozšíření Stav aplikace pro škálovací sady, jak je podrobně popsáno v následujících příkladech.
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
-Následující příklad přidá rozšíření stavu aplikace (s názvem myHealthExtension) do extensionProfile v modelu sady škálování sady Windows se škálováním na více systémů.
+Následující příklad přidá rozšíření Stav aplikace (s názvem myHealthExtension) do rozšířeníProfil v modelu škálovací sady škálovací sady systému Windows.
 
 ```
 PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/myHealthExtension?api-version=2018-10-01`
@@ -97,13 +97,13 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
   }
 }
 ```
-Pro úpravu již nasazené přípony použijte `PATCH`.
+Slouží `PATCH` k úpravě již nasazeného rozšíření.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Pomocí rutiny [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) přidejte rozšíření pro stav aplikace do definice modelu sady škálování.
+Pomocí rutiny [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) přidejte rozšíření Stavu aplikace do definice modelu škálovací sady.
 
-Následující příklad přidá rozšíření stavu aplikace do `extensionProfile` v modelu sady škálování založeném na systému Windows. V příkladu se používá nový modul AZ PowerShell.
+Následující příklad přidá rozšíření Stav `extensionProfile` aplikace do modelu škálovací sady škálovací sady systému Windows. Příklad používá nový modul Az PowerShell.
 
 ```azurepowershell-interactive
 # Define the scale set variables
@@ -139,9 +139,9 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Pomocí [AZ VMSS Extension set](/cli/azure/vmss/extension#az-vmss-extension-set) přidejte rozšíření pro stav aplikace do definice modelu sady škálování.
+Pomocí [sady rozšíření az vmss](/cli/azure/vmss/extension#az-vmss-extension-set) přidejte rozšíření Stavu aplikace do definice modelu škálovací sady.
 
-Následující příklad přidá rozšíření stavu aplikace do modelu škálované sady pro sadu škálování na bázi systému Linux.
+Následující příklad přidá rozšíření Stav aplikace do modelu škálovací sady škálovací sady škálovací sady založené na Linuxu.
 
 ```azurecli-interactive
 az vmss extension set \
@@ -152,7 +152,7 @@ az vmss extension set \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
 ```
-Obsah souboru extension. JSON.
+Obsah souboru.json.
 
 ```json
 {
@@ -164,7 +164,7 @@ Obsah souboru extension. JSON.
 
 
 ## <a name="troubleshoot"></a>Řešení potíží
-Výstup spuštění rozšíření se protokoluje do souborů, které se nacházejí v následujících adresářích:
+Výstup spuštění rozšíření je zaznamenán do souborů nalezených v následujících adresářích:
 
 ```Windows
 C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\<version>\
@@ -177,4 +177,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 Protokoly také pravidelně zaznamenávají stav aplikace.
 
 ## <a name="next-steps"></a>Další kroky
-Naučte se, jak [nasadit vaši aplikaci do služby](virtual-machine-scale-sets-deploy-app.md) Virtual Machine Scale Sets.
+Zjistěte, jak [nasadit aplikaci](virtual-machine-scale-sets-deploy-app.md) na škálovací sady virtuálních strojů.

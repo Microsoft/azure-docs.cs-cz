@@ -1,6 +1,6 @@
 ---
-title: Upsert dat do Azure Cosmos DB Cassandra API z aplikace Spark
-description: Tento článek podrobně popisuje postupy upsert do tabulek v Azure Cosmos DB Cassandra API z aplikace Spark
+title: Upsert data do rozhraní API Azure Cosmos DB Cassandra od Spark
+description: Tento článek podrobně popisuje, jak upsert do tabulek v Azure Cosmos DB Cassandra API od Spark
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 7770e7fbe846defc865b3fcc702fcb00bae1b73c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60893396"
 ---
-# <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Upsert dat do Azure Cosmos DB Cassandra API z aplikace Spark
+# <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Upsert data do rozhraní API Azure Cosmos DB Cassandra od Spark
 
-Tento článek popisuje, jak upsert data do Azure Cosmos DB Cassandra API z aplikace Spark.
+Tento článek popisuje, jak upsert data do rozhraní API Azure Cosmos DB Cassandra ze Spark.
 
-## <a name="cassandra-api-configuration"></a>Konfigurace rozhraní Cassandra API
+## <a name="cassandra-api-configuration"></a>Konfigurace rozhraní API Cassandra
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -46,9 +46,9 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="dataframe-api"></a>Datový rámec rozhraní API
+## <a name="dataframe-api"></a>Rozhraní API datového rámce
 
-### <a name="create-a-dataframe"></a>Vytvořte datový rámec 
+### <a name="create-a-dataframe"></a>Vytvoření datového rámce 
 
 ```scala
 // (1) Update: Changing author name to include prefix of "Sir"
@@ -83,14 +83,14 @@ booksUpsertDF.write
 cdbConnector.withSessionDo(session => session.execute("update books_ks.books set book_price=99.33 where book_id ='b00300';"))
 ```
 
-## <a name="rdd-api"></a>ROZHRANÍ API RDD
+## <a name="rdd-api"></a>RDD API
 > [!NOTE]
-> Je stejná jako u operace vytvoření Upsert z rozhraní API RDD 
+> Upsert z ROZHRANÍ RDD API je stejný jako operace vytvoření 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokračujte k provádění jiných operací s daty uloženými v Azure Cosmos DB Cassandra API tabulky v následujících článcích:
+Pokračujte v následujících článcích a proveďte další operace s daty uloženými v tabulkách rozhraní API Azure Cosmos DB Cassandra:
  
-* [Operace odstranění](cassandra-spark-delete-ops.md)
+* [Odstranit operace](cassandra-spark-delete-ops.md)
 * [Agregační operace](cassandra-spark-aggregation-ops.md)
 * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)

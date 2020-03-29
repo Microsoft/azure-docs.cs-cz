@@ -1,6 +1,6 @@
 ---
-title: Výjimky pro Azure Event Hubs – Správce prostředků | Microsoft Docs
-description: Seznam výjimek Event Hubs Azure, které jsou Surface Azure Resource Manager a navrhovaných akcí
+title: Azure Event Hubs – výjimky správce prostředků | Dokumenty společnosti Microsoft
+description: Seznam výjimek Azure Event Hubs, které se objevily ve Správci prostředků Azure a navrhovaných akcích.
 services: service-bus-messaging
 documentationcenter: na
 author: spelluru
@@ -13,52 +13,52 @@ ms.workload: na
 ms.date: 12/08/2019
 ms.author: spelluru
 ms.openlocfilehash: e6ee1137fce97cbe5a64aa5287223f6ba09dcf47
-ms.sourcegitcommit: 6e42ce0ca0a7ac572398e9d024fcf69906670d74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74936084"
 ---
-# <a name="azure-event-hubs---resource-manager-exceptions"></a>Výjimky pro Azure Event Hubs – Správce prostředků
-Tento článek uvádí výjimky vygenerované při interakci s Azure Event Hubs s využitím šablon nebo přímých volání prostřednictvím šablon Azure Resource Manager.
+# <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure Event Hubs – výjimky správce prostředků
+Tento článek uvádí výjimky generované při interakci s Azure Event Hubs pomocí Azure Resource Manager – prostřednictvím šablon nebo přímých volání.
 
 > [!IMPORTANT]
-> Tento dokument se často aktualizuje. Vraťte se prosím na aktualizace.
+> Tento dokument je často aktualizován. Zkontrolujte, zda neobsahuje aktualizace.
 
-V následujících oddílech jsou uvedeny různé výjimky a chyby, které jsou surfované prostřednictvím Azure Resource Manager.
+Následující části obsahují různé výjimky nebo chyby, které se objevují prostřednictvím Správce prostředků Azure.
 
-## <a name="error-code-conflict"></a>Kód chyby: konflikt
+## <a name="error-code-conflict"></a>Kód chyby: Konflikt
 
-| Kód chyby | Chybový kód | Chybová zpráva | Popis | Doporučení |
+| Kód chyby | Přivrácený kód došlo k chybě. | Chybová zpráva | Popis | Doporučení |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Konflikt | 40300 | Byl dosažen nebo překročen maximální počet prostředků typu EventHub. Skutečný: #, max. povoleno: # | Obor názvů dosáhl své [kvóty](event-hubs-quotas.md) pro počet Event Hubs, které může obsahovat. | Odstraňte z oboru názvů všechna nepoužívaná nebo nadbytečná centra událostí nebo zvažte upgrade na [vyhrazený cluster](event-hubs-dedicated-overview.md). |
-| Konflikt | Žádná | Konfiguraci zotavení po havárii (DR) nelze odstranit, protože probíhá replikace. Před pokusem o odstranění konfigurace DR došlo k převzetí služeb při selhání nebo přerušení. | Probíhá [replikace GeoDR](event-hubs-geo-dr.md) , takže tuto konfiguraci nejde v tuto chvíli odstranit. | Chcete-li odblokovat odstranění konfigurace, buď počkejte na dokončení replikace, aktivujte převzetí služeb při selhání nebo přerušit párování GeoDR. |
-| Konflikt | Žádná | Aktualizace oboru názvů se nezdařila kvůli konfliktu v back-endu. | V tomto oboru názvů se právě provádí jiná operace. | Počkejte, než se aktuální operace dokončí, a pak to zkuste znovu. |
+| Konflikt | 40300 | Maximální počet prostředků typu EventHub bylo dosaženo nebo překročeno. Aktuální: #, Max povoleno: # | Obor názvů dosáhl [své kvóty](event-hubs-quotas.md) pro počet center událostí, které může obsahovat. | Odstraňte všechna nepoužívaná nebo nadřazená centra událostí z oboru názvů nebo zvažte upgrade na [vyhrazený cluster](event-hubs-dedicated-overview.md). |
+| Konflikt | Žádná | Konfiguraci zotavení po havárii (DR) nelze odstranit, protože probíhá replikace. Převzetí služeb při selhání nebo přerušení párování před pokusem o odstranění konfigurace zotavení po Havárii. | [Probíhá geografická replikace,](event-hubs-geo-dr.md) takže konfiguraci nelze v tuto chvíli odstranit. | Chcete-li odblokovat odstranění konfigurace, počkejte, dokud nebude replikace dokončena, aktivujte převzetí služeb při selhání nebo přerušte párování geodr. |
+| Konflikt | Žádná | Aktualizace oboru názvů se nezdařila s konfliktem v back-endu. | V tomto oboru názvů se právě provádí jiná operace. | Počkejte, až se aktuální operace dokončí, a potom akci opakujte. |
 
 ## <a name="error-code-429"></a>Kód chyby: 429
 
-| Kód chyby | Chybový kód | Chybová zpráva | Popis | Doporučení |
+| Kód chyby | Přivrácený kód došlo k chybě. | Chybová zpráva | Popis | Doporučení |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| 429 | Žádná | Zřizování oboru názvů v přechodu | V tomto oboru názvů se právě provádí jiná operace. | Počkejte, než se aktuální operace dokončí, a pak to zkuste znovu. |
-| 429 | Žádná | Probíhá operace zotavení po havárii. | V tomto oboru názvů nebo párování se právě provádí operace [GeoDR](event-hubs-geo-dr.md) . | Počkejte, dokud se aktuální operace GeoDR nedokončí, a pak to zkuste znovu. |
+| 429 | Žádná | Zřizování oboru názvů v přechodu | V tomto oboru názvů se právě provádí jiná operace. | Počkejte, až se aktuální operace dokončí, a potom akci opakujte. |
+| 429 | Žádná | Probíhá operace zotavení po havárii. | V tomto oboru názvů nebo párování se právě provádí operace [GeoDR.](event-hubs-geo-dr.md) | Počkejte na dokončení aktuální operace GeoDR a akci opakujte. |
 
-## <a name="error-code-badrequest"></a>Kód chyby: důvodu chybného požadavku
+## <a name="error-code-badrequest"></a>Kód chyby: BadRequest
 
-| Kód chyby | Chybový kód | Chybová zpráva | Popis | Doporučení |
+| Kód chyby | Přivrácený kód došlo k chybě. | Chybová zpráva | Popis | Doporučení |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Důvodu chybného požadavku | 40000 | PartitionCount se nedá změnit v centru událostí. | Úroveň Basic nebo Standard služby Azure Event Hubs nepodporuje změnu oddílů. | Vytvořte nové centrum událostí s požadovaným počtem oddílů v oboru názvů úrovně Basic nebo Standard. Škálování oddílu na více instancí se podporuje u [vyhrazených clusterů](event-hubs-dedicated-overview.md). |
-| Důvodu chybného požadavku | 40000 | Hodnota ' # ' pro MessageRetentionInDays není platná pro úroveň Basic. hodnota nemůže být delší než 1 den. | Obory názvů úrovně Basic Event Hubs podporují pouze uchovávání zpráv po dobu až 1 dne. | Pokud je žádoucí více než jeden den uchovávání zpráv, [vytvořte obor názvů standard Event Hubs](event-hubs-create.md). | 
-| Důvodu chybného požadavku | Žádná | Zadaný název není k dispozici. | Názvy oborů názvů musí být jedinečné a zadaný název je již obsazen. | Pokud jste vlastníkem stávajícího oboru názvů se zadaným názvem, můžete ho odstranit, což způsobí ztrátu dat. Pak to zkuste znovu se stejným názvem. Pokud obor názvů není bezpečné odstranit (nebo nejste vlastníkem), vyberte jiný název oboru názvů. |
-| Důvodu chybného požadavku | Žádná | Zadané předplatné dosáhlo kvóty oborů názvů. | Vaše předplatné dosáhlo [kvóty](event-hubs-quotas.md) pro počet oborů názvů, které může uchovávat. | Zvažte možnost Odstranit nepoužívané obory názvů v tomto předplatném, vytvořit jiné předplatné nebo upgradovat na [vyhrazený cluster](event-hubs-dedicated-overview.md). |
-| Důvodu chybného požadavku | Žádná | Nejde aktualizovat obor názvů, který je sekundární. | Obor názvů se nedá aktualizovat, protože se jedná o sekundární obor názvů ve [párování GeoDR](event-hubs-geo-dr.md). | V případě potřeby proveďte změnu na primární obor názvů v tomto párování. Jinak přerušte párování GeoDR, aby se změna provedla. |
-| Důvodu chybného požadavku | Žádná | Nejde nastavit automatické rozploché v základní skladové jednotce (SKU). | Automatické vystavení nelze povolit na úrovni Basic Event Hubs obory názvů. | Pokud chcete [Povolit automatické rozplochení](event-hubs-auto-inflate.md) v oboru názvů, ujistěte se, že je na úrovni Standard. |
-| Důvodu chybného požadavku | Žádná | Pro vytvoření oboru názvů není k dispozici dostatek kapacity. Obraťte se na správce Event Hubs. | Vybraná oblast má kapacitu a další obory názvů nelze vytvořit. | Vyberte jinou oblast, do které se má obor názvů zahouse. |
-| Důvodu chybného požadavku | Žádná | Operaci nejde u typu entity ' Consumer ' provést, protože obor názvů ' název oboru názvů ' používá ' základní ' úroveň.  | Obory názvů úrovně Basic Event Hubs mají [kvóta] ((Event-hub-quotes. MD # Event-hub-Basic-a-Standard---kvóty-a-Limits) jedné skupiny příjemců (výchozí). Vytváření více skupin uživatelů se nepodporuje. | Pokračujte v používání výchozí skupiny uživatelů ($Default), nebo pokud je potřeba víc, zvažte místo toho použití Event Hubs oboru názvů úrovně Standard. | 
-| Důvodu chybného požadavku | Žádná | Obor názvů "název oboru názvů" neexistuje. | Zadaný obor názvů nebyl nalezen. | Dvakrát ověřte, že je název oboru názvů správný a najdete ho v předplatném. Pokud ne, [vytvořte obor názvů Event Hubs](event-hubs-create.md). | 
-| Důvodu chybného požadavku | Žádná | Vlastnost Location prostředku se neshoduje s oborem názvů, který ho obsahuje. | Vytvoření centra událostí v konkrétní oblasti se nezdařilo, protože se neshodovalo s oblastí oboru názvů. | Zkuste vytvořit centrum událostí ve stejné oblasti jako obor názvů. | 
+| Chybný požadavek | 40000 | PartitionCount nelze změnit pro centrum událostí. | Základní nebo standardní úroveň Azure Event Hubs nepodporuje změnu oddílů. | Vytvořte nové centrum událostí s hledaným počtem oddílů v základním nebo standardním oboru názvů vrstvy. Horizontální navýšení kapacity oddílů je podporováno pro [vyhrazené clustery](event-hubs-dedicated-overview.md). |
+| Chybný požadavek | 40000 | Hodnota #pro MessageRetentionInDays není platná pro úroveň Basic. hodnota nesmí překročit "1" den (dny). | Obory názvů Centra událostí základní vrstvy podporují pouze uchovávání zpráv až 1 den. | Pokud je žádoucí více než jeden den uchovávání zpráv, [vytvořte standardní obor názvů Event Hubs](event-hubs-create.md). | 
+| Chybný požadavek | Žádná | Zadaný název není k dispozici. | Názvy oborů názvů musí být jedinečné a zadaný název je již přijat. | Pokud jste vlastníkem existujícího oboru názvů se zadaným názvem, můžete jej odstranit, což způsobí ztrátu dat. Potom akci opakujte se stejným názvem. Pokud není bezpečné obor názvů odstranit (nebo nejste vlastníkem), zvolte jiný název oboru názvů. |
+| Chybný požadavek | Žádná | Zadané předplatné dosáhlo své kvóty oborů názvů. | Vaše předplatné dosáhlo [kvóty](event-hubs-quotas.md) pro počet oborů názvů, které může obsahovat. | Zvažte odstranění nepoužívaných oborů názvů v tomto předplatném, vytvoření jiného předplatného nebo upgrade na [vyhrazený cluster](event-hubs-dedicated-overview.md). |
+| Chybný požadavek | Žádná | Nelze aktualizovat obor názvů, který je sekundární | Obor názvů nelze aktualizovat, protože se jedná o sekundární obor názvů v [geodr párování](event-hubs-geo-dr.md). | V případě potřeby proveďte změnu primárního oboru názvů v tomto párování. V opačném případě přerušíte párování GeoDR, abyste změnu vytvořili. |
+| Chybný požadavek | Žádná | Nelze nastavit automatické nafukování v základní skladové jednotce | Automatické nafouknutí nelze povolit v oborech názvů centra událostí základní vrstvy. | Chcete-li [povolit automatické nafukování](event-hubs-auto-inflate.md) v oboru názvů, ujistěte se, že je standardní vrstvy. |
+| Chybný požadavek | Žádná | K vytvoření oboru názvů není dostatečná kapacita. Obraťte se na správce centra událostí. | Vybraná oblast je na kapacitě a nelze vytvořit více oborů názvů. | Vyberte jinou oblast, ve které se bude ubytovávat obor názvů. |
+| Chybný požadavek | Žádná | Operaci nelze provést u typu entity ConsumerGroup, protože obor názvů "název oboru názvů" používá úroveň Basic.  | Obory názvů Centra událostí základní vrstvy mají [quota]((event-hubs-quotas.md#event-hubs-basic-and-standard---quotas-and-limits) jedné skupiny spotřebitelů (výchozí). Vytváření dalších skupin spotřebitelů není podporováno. | Pokračujte v používání výchozí skupiny spotřebitelů ($Default) nebo pokud je potřeba další, zvažte místo toho použití oboru názvů Centra událostí úrovně standardu. | 
+| Chybný požadavek | Žádná | Název oboru názvů neexistuje. | Zadaný obor názvů nebyl nalezen. | Zkontrolujte, zda je název oboru názvů správný a zda je k dispozici ve vašem předplatném. Pokud tomu tak není, [vytvořte obor názvů Event Hubs](event-hubs-create.md). | 
+| Chybný požadavek | Žádná | Vlastnost umístění prostředku neodpovídá jeho obsahující obor názvů. | Vytvoření centra událostí v určité oblasti se nezdařilo, protože neodpovídá oblasti oboru názvů. | Zkuste vytvořit centrum událostí ve stejné oblasti jako obor názvů. | 
 
-## <a name="error-code-internal-server-error"></a>Kód chyby: interní chyba serveru
+## <a name="error-code-internal-server-error"></a>Kód chyby: Vnitřní chyba serveru
 
-| Kód chyby | Chybový kód | Chybová zpráva | Popis | Doporučení |
+| Kód chyby | Přivrácený kód došlo k chybě. | Chybová zpráva | Popis | Doporučení |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Vnitřní chyba serveru | Žádná | Došlo k vnitřní chybě serveru. | Došlo k vnitřní chybě služby Event Hubs. | Opakujte operaci, která selhala. Pokud se operace stále nedaří, obraťte se na podporu. |
+| Vnitřní chyba serveru | Žádná | Vnitřní chyba serveru. | Služba Event Hubs měla vnitřní chybu. | Opakujte selhání operace. Pokud operace nadále selhat, obraťte se na podporu. |

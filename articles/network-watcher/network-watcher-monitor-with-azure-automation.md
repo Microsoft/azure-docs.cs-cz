@@ -1,7 +1,7 @@
 ---
-title: Řešení potíží a monitorování bran sítě VPN – Azure Automation
+title: Poradce při potížích a monitorování bran VPN – Azure Automation
 titleSuffix: Azure Network Watcher
-description: Tento článek popisuje, jak diagnostikovat místní připojení pomocí Azure Automation a Network Watcher
+description: Tento článek popisuje, jak diagnostikovat místní připojení s Azure Automation a Network Watcher
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,75 +13,75 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 74c9f44ff5fbbbb50bba1594d371633fd49857eb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845039"
 ---
-# <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Monitorování bran VPN pomocí Network Watcher řešení potíží
+# <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Sledování bran VPN pomocí odstraňování potíží s sledováním sítě
 
-Získání podrobných přehledů o výkonu vaší sítě je důležité pro poskytování spolehlivých služeb zákazníkům. Proto je důležité zjistit stav výpadku sítě rychle a provést nápravná opatření ke zmírnění stavu výpadku. Azure Automation umožňuje implementovat a spustit úlohu programovým způsobem prostřednictvím runbooků. Použití Azure Automation vytvoří dokonalý recept pro průběžné a proaktivní monitorování sítě a výstrahy.
+Získání podrobného přehledu o výkonu sítě je důležité pro poskytování spolehlivých služeb zákazníkům. Je proto důležité rychle zjistit podmínky výpadku sítě a přijmout nápravná opatření ke zmírnění stavu výpadku. Azure Automation umožňuje implementovat a spustit úlohu programmaticky prostřednictvím runbooků. Pomocí Azure Automation vytvoří dokonalý recept pro provádění nepřetržitého a proaktivního monitorování sítě a upozorňování.
 
 ## <a name="scenario"></a>Scénář
 
-Scénář na následujícím obrázku je Vícevrstvá aplikace s místním připojením vytvořeným pomocí VPN Gateway a tunelového propojení. Zajištění, že je VPN Gateway v provozu, je pro výkon aplikací zásadní.
+Scénář v následující bitové kopii je vícevrstvá aplikace, s místní připojení vytvořené pomocí brány VPN a tunelového propojení. Zajištění provozu brány VPN je důležité pro výkon aplikací.
 
-Vytvoří se sada Runbook se skriptem, který kontroluje stav připojení tunelu VPN, a to pomocí rozhraní API pro řešení potíží s prostředky pro kontrolu stavu tunelového připojení. Pokud stav není v pořádku, pošle se správci e-mail Trigger.
+Runbook je vytvořen se skriptem pro kontrolu stavu připojení tunelového propojení VPN pomocí rozhraní RESOURCE Troubleshooting API ke kontrole stavu tunelového propojení připojení. Pokud stav není v pořádku, je správcům odeslána aktivační událost e-mailu.
 
 ![Příklad scénáře][scenario]
 
 Tento scénář bude:
 
-- Vytvoření Runbooku voláním rutiny `Start-AzureRmNetworkWatcherResourceTroubleshooting` pro řešení potíží se stavem připojení
-- Propojit plán s runbookm
+- Vytvoření runbooku `Start-AzureRmNetworkWatcherResourceTroubleshooting` volajícího rutinu k řešení potíží se stavem připojení
+- Propojení plánu s runbookem
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Než začnete tento scénář, musíte mít následující požadavky:
+Před zahájením tohoto scénáře musíte mít následující předpoklady:
 
-- Účet Azure Automation v Azure. Ujistěte se, že účet Automation má nejnovější moduly a má také modul AzureRM. Network. Modul AzureRM. Network je dostupný v galerii modulů, pokud ho potřebujete přidat do svého účtu Automation.
-- Musíte mít v Azure Automation nakonfigurovanou sadu přihlašovacích údajů. Další informace o [Azure Automation zabezpečení](../automation/automation-security-overview.md)
-- Platný server SMTP (Office 365, váš místní e-mail nebo jiný) a přihlašovací údaje definované v Azure Automation
-- Nakonfigurovaná Virtual Network brána v Azure.
-- Existující účet úložiště s existujícím kontejnerem pro ukládání protokolů.
+- Účet azure automatizace v Azure. Ujistěte se, že účet automatizace má nejnovější moduly a má také modul AzureRM.Network. Modul AzureRM.Network je k dispozici v galerii modulů, pokud ho potřebujete přidat do svého účtu automatizace.
+- Musíte mít sadu přihlašovacích údajů nakonfigurovat v Azure Automation. Další informace o [zabezpečení Azure Automation](../automation/automation-security-overview.md)
+- Platný server SMTP (Office 365, místní e-mail nebo jiný) a přihlašovací údaje definované v Azure Automation
+- Nakonfigurovaná brána virtuální sítě v Azure.
+- Existující účet úložiště s existujícím kontejnerem pro uložení protokolů.
 
 > [!NOTE]
-> Infrastruktura znázorněná na předchozím obrázku je určena pro ilustraci a není vytvořena postupem uvedeným v tomto článku.
+> Infrastruktura zobrazená na předchozím obrázku je pro ilustrační účely a nejsou vytvořeny pomocí kroků obsažených v tomto článku.
 
-### <a name="create-the-runbook"></a>Vytvoření Runbooku
+### <a name="create-the-runbook"></a>Vytvoření runbooku
 
-Prvním krokem ke konfiguraci příkladu je vytvoření Runbooku. V tomto příkladu se používá účet Spustit jako. Další informace o účtech Spustit jako najdete v webu [ověřování runbooků pomocí účtu Spustit jako pro Azure](../automation/automation-create-runas-account.md) .
+Prvním krokem ke konfiguraci příkladu je vytvoření runbooku. Tento příklad používá účet run-as. Další informace o účtech run-as najdete v části [Ověření runbooků s účtem Azure Run As.](../automation/automation-create-runas-account.md)
 
 ### <a name="step-1"></a>Krok 1
 
-V [Azure Portal](https://portal.azure.com) přejděte na Azure Automation a klikněte na **Runbooky** .
+Přejděte na Azure Automation na [portálu Azure](https://portal.azure.com) a klikněte na **Runbooky.**
 
-![Přehled účtu Automation][1]
+![přehled účtu automatizace][1]
 
 ### <a name="step-2"></a>Krok 2
 
-Kliknutím na **Přidat Runbook** zahajte proces vytváření sady Runbook.
+Kliknutím **na Přidat runbook** spusťte proces vytváření runbooku.
 
-![okno Runbooky][2]
+![runbookblade][2]
 
 ### <a name="step-3"></a>Krok 3
 
-V části **rychlé vytvoření**klikněte na **vytvořit novou sadu Runbook** a vytvořte sadu Runbook.
+V části **Rychlé vytvoření**klikněte na Vytvořit **novou runbook** a vytvořte runbook.
 
-![Přidat okno Runbooku][3]
+![přidání okna runbooku][3]
 
 ### <a name="step-4"></a>Krok 4
 
-V tomto kroku poskytneme Runbooku název, v příkladu se nazývá **Get-VPNGatewayStatus**. Je důležité poskytnout Runbooku popisný název a doporučuje se mu dát název, který bude postupovat podle standardních standardů pojmenovávání PowerShellu. Typ Runbooku pro tento příklad je **PowerShell**, ostatní možnosti jsou grafické, powershellový pracovní postup a grafický pracovní postup PowerShellu.
+V tomto kroku dáváme runbook jméno, v příkladu se nazývá **Get-VPNGatewayStatus**. Je důležité dát runbookpopisný název a doporučuje dát mu název, který se řídí standardními standardy pojmenování Prostředí PowerShell. Typ sady Runbook pro tento příklad je **PowerShell**, další možnosti jsou Graphical, Pracovní postup prostředí PowerShell a Grafický pracovní postup Prostředí PowerShell.
 
-![okno Runbooku][4]
+![runbook blade][4]
 
 ### <a name="step-5"></a>Krok 5
 
-V tomto kroku je vytvořen Runbook, následující příklad kódu poskytuje veškerý kód potřebný pro příklad. Položky v kódu, které obsahují \<Value\> je nutné nahradit hodnotami z vašeho předplatného.
+V tomto kroku je vytvořen runbook, následující příklad kódu obsahuje veškerý kód potřebný pro příklad. Položky v kódu, \<\> které obsahují hodnotu je třeba nahradit hodnoty z vašeho předplatného.
 
-Jako tlačítko **Uložit** použijte následující kód.
+Pomocí následujícího kódu klikněte na **Uložit.**
 
 ```powershell
 # Set these variables to the proper values for your environment
@@ -145,47 +145,47 @@ else
 
 ### <a name="step-6"></a>Krok 6
 
-Po uložení Runbooku se na něj musí navzájem propojit plán, který automatizuje spuštění Runbooku. Chcete-li spustit proces, klikněte na tlačítko **naplánovat**.
+Po uložení runbooku musí být propojován plán, aby bylo možné automatizovat spuštění runbooku. Proces zahájíte klepnutím na tlačítko **Naplánovat**.
 
 ![Krok 6][6]
 
-## <a name="link-a-schedule-to-the-runbook"></a>Propojit plán s runbookm
+## <a name="link-a-schedule-to-the-runbook"></a>Propojení plánu s runbookem
 
-Je nutné vytvořit nový plán. Klikněte na **připojit plán k sadě Runbook**.
+Musí být vytvořen nový plán. Klikněte **na Propojit plán se souborem Runbook**.
 
 ![Krok 7][7]
 
 ### <a name="step-1"></a>Krok 1
 
-V okně **plán** klikněte na **vytvořit nový plán** .
+V okně **Plán** klikněte na **Vytvořit nový plán.**
 
 ![Krok 8][8]
 
 ### <a name="step-2"></a>Krok 2
 
-V okně **Nový plán** vyplňte informace o plánu. Hodnoty, které lze nastavit, jsou uvedeny v následujícím seznamu:
+V okně **Nový plán** vyplňte informace o plánu. Hodnoty, které lze nastavit, jsou v následujícím seznamu:
 
-- **Název** – popisný název plánu.
-- **Popis** – popis plánu.
-- **Start** – tato hodnota je kombinací data, času a časového pásma, které tvoří čas triggeru plánu.
-- **Opakování** – tato hodnota určuje opakování plánu.  Platné hodnoty jsou **jednou** nebo **opakované**.
-- **Opakuje každý** – interval opakování plánu v hodinách, dnech, týdnech nebo měsících.
-- **Nastavit vypršení platnosti** – hodnota určuje, jestli má plán vypršet, nebo ne. Dá se nastavit na **Ano** nebo **ne**. Pokud je zvolena možnost Ano, je nutné zadat platné datum a čas.
+- **Název** - Popisný název plánu.
+- **Popis** - Popis plánu.
+- **Spustí** - Tato hodnota je kombinací data, času a časového pásma, které tvoří čas, který plán aktivuje.
+- **Opakování** - Tato hodnota určuje opakování plánů.  Platné hodnoty jsou **Once** nebo **Recurring**.
+- **Opakování každé** – interval opakování plánu v hodinách, dnech, týdnech nebo měsících.
+- **Nastavit vypršení platnosti** - Hodnota určuje, zda má platnost plánu vypršet nebo ne. Lze nastavit na **ano** nebo **ne**. Pokud je zvoleno ano, je třeba uvést platné datum a čas.
 
 > [!NOTE]
-> Pokud potřebujete, aby sada Runbook běžela častěji než každou hodinu, je třeba vytvořit více plánů v různých intervalech (tj. 15, 30 až 45 minut po hodině).
+> Pokud potřebujete spustit runbook častěji než každou hodinu, musí být v různých intervalech vytvořeno více plánů (to znamená 15, 30, 45 minut po hodině)
 
 ![Krok 9][9]
 
 ### <a name="step-3"></a>Krok 3
 
-Kliknutím na Uložit uložte plán do Runbooku.
+Kliknutím na Uložit plán uložíte do runbooku.
 
 ![Krok 10][10]
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se seznámili s tím, jak integrovat Network Watcher řešení potíží s Azure Automation, se naučíte, jak aktivovat zachycení paketů při výstrahách virtuálních počítačů návštěvou [Vytvoření výstrahy aktivované zachycením paketů s Azure Network Watcher](network-watcher-alert-triggered-packet-capture.md).
+Teď, když máte pochopení, jak integrovat řešení potíží sledování sítě s Azure Automation, zjistěte, jak aktivovat zachycení paketů na výstrahách virtuálních počítačí, a to tak, že najdete v [přehledu vytvoření výstrahy s aktivovaného paketu pomocí služby Azure Network Watcher](network-watcher-alert-triggered-packet-capture.md).
 
 <!-- images -->
 [scenario]: ./media/network-watcher-monitor-with-azure-automation/scenario.png

@@ -1,64 +1,64 @@
 ---
 title: Konfigurace ověřování společnosti Microsoft
-description: Naučte se nakonfigurovat ověřování účtu Microsoft jako zprostředkovatele identity pro vaši aplikaci App Service.
+description: Přečtěte si, jak nakonfigurovat ověřování účtu Microsoft jako poskytovatele identity pro vaši aplikaci App Service.
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 95c603d4a10eb0e4d0817e20755c0f9b36baa96f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842329"
 ---
-# <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Konfigurace aplikace App Service pro používání přihlášení k účtu Microsoft
+# <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Konfigurace aplikace App Service tak, aby používala přihlášení k účtu Microsoft
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service k používání AAD k podpoře přihlašovacích údajů osobního účet Microsoft.
+Toto téma ukazuje, jak nakonfigurovat službu Azure App Service tak, aby používala AAD k podpoře osobních přihlášení k účtu Microsoft.
 
 > [!NOTE]
-> Poskytovatel identity AAD používají osobní účty Microsoft i účty organizace. V tuto chvíli není možné nakonfigurovat tohoto zprostředkovatele identity tak, aby podporoval oba typy protokolů.
+> Osobní účty Microsoft i účty organizace používají zprostředkovatele identity AAD. V současné době není možné nakonfigurovat tohoto zprostředkovatele identity tak, aby podporoval oba typy přihlášení.
 
-## <a name="register-microsoft-account"> </a>Registrace aplikace pomocí účtu Microsoft
+## <a name="register-your-app-with-microsoft-account"></a><a name="register-microsoft-account"> </a>Registrace aplikace pomocí účtu Microsoft
 
-1. V Azure Portal přejít na [**Registrace aplikací**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) . V případě potřeby se přihlaste pomocí účet Microsoft.
-1. Vyberte **Nová registrace**a pak zadejte název aplikace.
-1. V části **podporované typy účtů**vyberte **účty v jakémkoli adresáři organizace (libovolný adresář Azure AD – víceklientské) a osobní účty Microsoft (např. Skype, Xbox)** .
-1. V v **identifikátorech URI pro přesměrování**vyberte **Web**a pak zadejte `https://<app-domain-name>/.auth/login/aad/callback`. Nahraďte *\<App-Domain-name >* názvem domény vaší aplikace.  Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Nezapomeňte použít schéma HTTPS v adrese URL.
+1. Přejděte na [**registrace aplikací**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) na webu Azure Portal. V případě potřeby se přihlaste pomocí svého účtu Microsoft.
+1. Vyberte **Nová registrace**a zadejte název aplikace.
+1. V části **Podporované typy účtů**vyberte Účty v **libovolném organizačním adresáři (libovolný adresář Azure AD – víceklientů) a osobní účty Microsoft (například Skype, Xbox).**
+1. V **příkazu Přesměrování identifikátorů URI** `https://<app-domain-name>/.auth/login/aad/callback`vyberte možnost **Web**a zadejte . Nahraďte * \<název domény aplikace>* názvem domény aplikace.  Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Nezapomeňte použít schéma HTTPS v adrese URL.
 
 1. Vyberte **Zaregistrovat**.
-1. Zkopírujte **ID aplikace (klienta)** . Budete ho potřebovat později.
-1. V levém podokně vyberte **certifikáty & tajných klíčů** > **nový tajný klíč klienta**. Zadejte popis, vyberte dobu platnosti a vyberte **Přidat**.
-1. Zkopírujte hodnotu, která se zobrazí na stránce **certifikáty & tajných** kódů. Po opuštění stránky se znovu nezobrazí.
+1. Zkopírujte **ID aplikace (klienta).** Budete ho potřebovat později.
+1. V levém podokně vyberte **možnost Certifikáty & tajných kódů** > **Nový tajný klíč klienta**. Zadejte popis, vyberte dobu platnosti a vyberte **Přidat**.
+1. Zkopírujte hodnotu, která se zobrazí na stránce **Tajné klíče certifikáty certifikáty &.** Po opuštění stránky se znovu nezobrazí.
 
     > [!IMPORTANT]
-    > Hodnota tajného klíče klienta (heslo) je důležité bezpečnostní pověření. Nesdílejte heslo s kýmkoli ani ho distribuujte v klientské aplikaci.
+    > Hodnota tajného klíče klienta (heslo) je důležité pověření zabezpečení. Nesdílejte heslo s nikým ani jej nedistribuujte v rámci klientské aplikace.
 
-## <a name="secrets"> </a>Přidání informací o účtu Microsoft do aplikace App Service
+## <a name="add-microsoft-account-information-to-your-app-service-application"></a><a name="secrets"> </a>Přidání informací o účtu Microsoft do aplikace App Service
 
-1. V [Azure Portal]přejdete do své aplikace.
-1. Vyberte **nastavení** > **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
-1. V části **Zprostředkovatelé ověřování**vyberte **Azure Active Directory**. V části **režim správy**vyberte **Upřesnit** . Vložte do ID aplikace (klienta) a tajného klíče klienta, který jste získali dříve. Pro pole **Adresa URL vystavitele** použijte **https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0** .
+1. Přejděte do vaší aplikace na [webu Azure Portal].
+1. Vyberte **Nastavení** > **ověřování / autorizace**a ujistěte se, že je **zapnuté ověřování služby App Service** . **On**
+1. V části **Zprostředkovatelé ověřování**vyberte **službu Azure Active Directory**. V **režimu správy**vyberte **Upřesnit** . Vložte do ID aplikace (klienta) a tajný klíč klienta, který jste získali dříve. Používá **https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0** se pro pole **Adresa URL vystavitče.**
 1. Vyberte **OK**.
 
-   App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Musíte autorizovat uživatele v kódu vaší aplikace.
+   Služba App Service poskytuje ověřování, ale neomezuje oprávněný přístup k obsahu webu a souborům API. V kódu aplikace musíte autorizovat uživatele.
 
-1. Volitelné Pokud chcete omezit přístup k účet Microsoft uživatelům, nastavte **akci, která se má provést, když se žádost neověřuje** , aby se **přihlásila pomocí Azure Active Directory**. Když nastavíte tuto funkci, aplikace vyžaduje ověření všech požadavků. Také přesměruje všechny neověřené požadavky na použití AAD pro ověřování. Všimněte si, že protože jste **adresu URL vystavitele** nakonfigurovali tak, aby používala tenanta účtu Microsoft, úspěšně se ověří jenom Personal acccounts.
+1. (Nepovinné) Chcete-li omezit přístup k uživatelům účtu Microsoft, nastavte **akci, která má být v případě, že požadavek není ověřen, přihlaste** se **pomocí služby Azure Active Directory**. Když nastavíte tuto funkci, vaše aplikace vyžaduje, aby byly ověřeny všechny požadavky. Také přesměruje všechny neověřené požadavky na použití aad pro ověřování. Všimněte si, že vzhledem k tomu, že jste nakonfigurovali **adresu URL vystavitče** tak, aby používala klienta účtu Microsoft, bude úspěšně ověřen pouze osobní účet.
 
    > [!CAUTION]
-   > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. Pro takové aplikace může být vhodnější použití **anonymních požadavků (žádná akce)** , aby aplikace ručně spouštěla ověřování. Další informace najdete v tématu [tok ověřování](overview-authentication-authorization.md#authentication-flow).
+   > Omezení přístupu tímto způsobem platí pro všechna volání do vaší aplikace, což nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, jako v mnoha jednostránkových aplikacích. Pro takové aplikace **povolit anonymní požadavky (žádná akce)** může být upřednostňována tak, aby aplikace ručně spustí ověřování sám. Další informace naleznete v [tématu Ověřování toku](overview-authentication-authorization.md#authentication-flow).
 
 1. Vyberte **Uložit**.
 
-Nyní jste připraveni použít účet Microsoft k ověřování ve vaší aplikaci.
+Nyní jste připraveni používat účet Microsoft pro ověřování ve vaší aplikaci.
 
-## <a name="related-content"> </a>Další kroky
+## <a name="next-steps"></a><a name="related-content"> </a>Další kroky
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure Portal]: https://portal.azure.com/
+[Portál Azure]: https://portal.azure.com/

@@ -1,6 +1,6 @@
 ---
 title: Kopírování dat z webové tabulky pomocí Azure Data Factory
-description: Přečtěte si o konektoru webových tabulek Azure Data Factory, který umožňuje kopírovat data z webové tabulky do úložišť dat podporovaných Data Factory jako jímky.
+description: Další informace o konektoru webové tabulky azure data factory, který vám umožní kopírovat data z webové tabulky do datových úložišť podporovaných Data Factory jako jímky.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,56 +12,56 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 76f0dbb48ca5e250a383e8427ce2dd0c9dd618c9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930936"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopírování dat z webové tabulky pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-web-table-connector.md)
 > * [Aktuální verze](connector-web-table.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z databáze webové tabulky. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí kopírovat aktivitu v Azure Data Factory ke kopírování dat z databáze webové tabulky. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
 
-Rozdíl mezi tímto konektorem webové tabulky, [konektorem REST](connector-rest.md) a [konektorem http](connector-http.md) :
+Rozdíl mezi tímto konektorem webové tabulky, [konektorem REST](connector-rest.md) a [konektorem HTTP](connector-http.md) jsou:
 
 - **Konektor webové tabulky** extrahuje obsah tabulky z webové stránky HTML.
-- **Konektor REST** podporuje zejména kopírování dat z rozhraní API RESTful.
-- **Konektor http** je obecný k načtení dat z libovolného koncového bodu http, třeba ke stažení souboru. 
+- **REST konektor** konkrétně podporují kopírování dat z ROZHRANÍ API RESTful.
+- **Http konektor** je obecný pro načtení dat z libovolného koncového bodu HTTP, například ke stažení souboru. 
 
-## <a name="supported-capabilities"></a>Podporované funkce
+## <a name="supported-capabilities"></a>Podporované možnosti
 
-Tento konektor webové tabulky se podporuje pro následující činnosti:
+Tento konektor webové tabulky je podporován pro následující aktivity:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
-- [Aktivita Lookup](control-flow-lookup-activity.md)
+- [Kopírování aktivity](copy-activity-overview.md) s [podporovanou maticí zdrojového/jímky](copy-activity-overview.md)
+- [Vyhledávací aktivita](control-flow-lookup-activity.md)
 
-Data z databáze webové tabulky můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data z databáze webové tabulky můžete zkopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitou kopírování, naleznete v tabulce [Podporovaná úložiště dat.](copy-activity-overview.md#supported-data-stores-and-formats)
 
-Konkrétně tento konektor webové tabulky podporuje **extrakci obsahu tabulky ze stránky HTML**.
+Konkrétně tento konektor webové tabulky podporuje **extrahování obsahu tabulky ze stránky HTML**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Chcete-li použít tento konektor webové tabulky, je třeba nastavit Integration Runtime v místním prostředí. Zobrazit [modul Integration Runtime](create-self-hosted-integration-runtime.md) , kde najdete podrobnosti.
+Chcete-li použít tento konektor webové tabulky, je třeba nastavit prostředí Runtime integrace s vlastním hostitelem. Podrobnosti najdete v článku [runtime integrace s vlastním hostitelem.](create-self-hosted-integration-runtime.md)
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro konektor webové tabulky.
+V následujících částech jsou uvedeny podrobnosti o vlastnostech, které se používají k definování entit Data Factory specifických pro konektor webové tabulky.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
 
-Pro propojenou službu webové tabulky jsou podporovány následující vlastnosti:
+Pro webovou tabulkovou propojenou službu jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **Web** . |Ano |
+| type | Vlastnost type musí být nastavena na: **Web** |Ano |
 | url | Adresa URL webového zdroje |Ano |
-| authenticationType. | Povolená hodnota je: **anonymní**. |Ano |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
+| authenticationType | Povolená hodnota je: **Anonymní**. |Ano |
+| connectVia | [Prostředí Integrace Runtime,](concepts-integration-runtime.md) které se má použít k připojení k úložišti dat. Runtime integrace hostované samostatně je vyžadován, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
 **Příklad:**
 
@@ -84,15 +84,15 @@ Pro propojenou službu webové tabulky jsou podporovány následující vlastnos
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných datovou sadou webových tabulek.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datových sad.](concepts-datasets-linked-services.md) Tato část obsahuje seznam vlastností podporovaných datovou sadou webové tabulky.
 
-Chcete-li kopírovat data z webové tabulky, nastavte vlastnost typ datové sady na **webtable**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z webové tabulky, nastavte vlastnost type datové sady na **WebTable**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **webtable** . | Ano |
-| Cesta |Relativní adresa URL k prostředku, který obsahuje tabulku. |Ne. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. |
-| index |Index tabulky v prostředku Postup pro získání indexu tabulky na stránce HTML najdete v části [získání indexu tabulky v oddílu stránky HTML](#get-index-of-a-table-in-an-html-page) . |Ano |
+| type | Vlastnost type datové sady musí být nastavena na: **WebTable.** | Ano |
+| cesta |Relativní adresa URL prostředku, který obsahuje tabulku. |Ne. Pokud cesta není zadána, je použita pouze adresa URL zadaná v definici propojené služby. |
+| index |Index tabulky v prostředku. Postup získání indexu tabulky na stránce HTML [najdete v tématu Získání indexu tabulky na](#get-index-of-a-table-in-an-html-page) stránce HTML. |Ano |
 
 **Příklad:**
 
@@ -116,11 +116,11 @@ Chcete-li kopírovat data z webové tabulky, nastavte vlastnost typ datové sady
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. V této části najdete seznam vlastností podporovaných zdrojem webové tabulky.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných zdrojem webové tabulky.
 
 ### <a name="web-table-as-source"></a>Webová tabulka jako zdroj
 
-Pokud chcete kopírovat data z webové tabulky, nastavte typ zdroje v aktivitě kopírování na **websource**, žádné další vlastnosti se nepodporují.
+Chcete-li kopírovat data z webové tabulky, nastavte typ zdroje v aktivitě kopírování na **websource**, nejsou podporovány žádné další vlastnosti.
 
 **Příklad:**
 
@@ -153,38 +153,38 @@ Pokud chcete kopírovat data z webové tabulky, nastavte typ zdroje v aktivitě 
 ]
 ```
 
-## <a name="get-index-of-a-table-in-an-html-page"></a>Získat index tabulky na stránce HTML
+## <a name="get-index-of-a-table-in-an-html-page"></a>Získání indexu tabulky na stránce HTML
 
-Chcete-li získat index tabulky, kterou potřebujete nakonfigurovat ve [vlastnostech datové sady](#dataset-properties), můžete jako nástroj použít například Excel 2016, a to následujícím způsobem:
+Chcete-li získat index tabulky, kterou je třeba nakonfigurovat ve [vlastnostech datové sady](#dataset-properties), můžete použít například Excel 2016 jako nástroj následujícím způsobem:
 
-1. Spusťte **Excel 2016** a přepněte na kartu **data** .
-2. Na panelu nástrojů klikněte na **Nový dotaz** , přejděte na **z jiných zdrojů** a klikněte na **z webu**.
+1. Spusťte **Excel 2016** a přepněte na kartu **Data.**
+2. Klepněte na tlačítko **Nový dotaz** na panelu nástrojů, přejděte na **položku Z jiných zdrojů** a klepněte na příkaz Z **webu**.
 
     ![Nabídka Power Query](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. V dialogovém okně **z webu** zadejte **adresu URL** , kterou použijete v kódu JSON propojené služby (například: https://en.wikipedia.org/wiki/) společně s cestou, kterou jste zadali pro datovou sadu (například: AFI% 27s_100_Years... 100_Movies) a klikněte na **OK**.
+3. V dialogovém **okně Z webu** zadejte adresu **URL,** kterou byste https://en.wikipedia.org/wiki/) použili v propojené službě JSON (například: spolu s cestou, kterou byste zadali pro datovou sadu (například AFI%27s_100_Years... 100_Movies) a klepněte na tlačítko **OK**.
 
-    ![Z dialogového okna Web](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
+    ![Z webového dialogového okna](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
-    Adresa URL použitá v tomto příkladu: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. Pokud se zobrazí dialogové okno **přístup k webovému obsahu** , vyberte správnou **adresu URL**, **ověřování**a klikněte na **připojit**.
+    Adresa URL použitá v tomto příkladu:https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+4. Pokud se zobrazí dialogové okno **Webový obsah aplikace Access,** vyberte správnou **adresu URL**, **ověřování**a klepněte na tlačítko **Připojit**.
 
-   ![Přístup k webovému obsahu – dialogové okno](./media/copy-data-from-web-table/AccessWebContentDialog.png)
-5. Kliknutím na položku **tabulky** ve stromovém zobrazení zobrazíte obsah z tabulky a potom v dolní části kliknete na tlačítko **Upravit** .  
+   ![Dialogové okno Přístup k webovému obsahu](./media/copy-data-from-web-table/AccessWebContentDialog.png)
+5. Kliknutím na položku **tabulky** ve stromovém zobrazení zobrazíte obsah z tabulky a v dolní části klikněte na **tlačítko Upravit.**  
 
    ![Dialogové okno Navigátor](./media/copy-data-from-web-table/Navigator-DialogBox.png)
-6. V okně **Editor dotazů** klikněte na panelu nástrojů na tlačítko **Rozšířený editor** .
+6. V okně **Editor dotazů** klepněte na tlačítko **Rozšířený editor** na panelu nástrojů.
 
-    ![Rozšířený editor – tlačítko](./media/copy-data-from-web-table/QueryEditor-AdvancedEditorButton.png)
-7. V dialogovém okně Rozšířený editor je číslo vedle možnosti "zdroj" index.
+    ![Tlačítko Rozšířený editor](./media/copy-data-from-web-table/QueryEditor-AdvancedEditorButton.png)
+7. V dialogovém okně Rozšířený editor je číslo vedle "Zdroj" index.
 
-    ![Rozšířený editor – index](./media/copy-data-from-web-table/AdvancedEditor-Index.png)
+    ![Rozšířený editor - index](./media/copy-data-from-web-table/AdvancedEditor-Index.png)
 
-Pokud používáte Excel 2013, použijte k získání indexu [Microsoft Power Query pro Excel](https://www.microsoft.com/download/details.aspx?id=39379) . Podrobnosti najdete v článku [připojení k webové stránce](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) . Postup je podobný, pokud používáte [Microsoft Power BI pro Desktop](https://powerbi.microsoft.com/desktop/).
+Pokud používáte Excel 2013, použijte k získání indexu [Microsoft Power Query pro Excel.](https://www.microsoft.com/download/details.aspx?id=39379) Podrobnosti najdete v článku [Připojení k webové stránce.](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) Postup je podobný, pokud používáte [Microsoft Power BI pro stolní počítače](https://powerbi.microsoft.com/desktop/).
 
 
-## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
 
-Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a propady aktivitou kopírování v Azure Data Factory najdete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

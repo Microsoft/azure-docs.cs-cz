@@ -1,6 +1,6 @@
 ---
 title: Obnovení certifikátu Azure Application Gateway
-description: Naučte se obnovit certifikát přidružený k naslouchací službě Application Gateway.
+description: Přečtěte si, jak obnovit certifikát přidružený k naslouchací proces brány aplikace.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,31 +8,31 @@ ms.topic: article
 ms.date: 8/15/2018
 ms.author: victorh
 ms.openlocfilehash: c7c27f00b9f8b4fdcd8f735f842edb8f66803c6a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278000"
 ---
-# <a name="renew-application-gateway-certificates"></a>Prodloužit platnost Application Gatewaych certifikátů
+# <a name="renew-application-gateway-certificates"></a>Obnovení certifikátů aplikační brány
 
-V určitém okamžiku budete muset prodloužit platnost certifikátů, pokud jste nakonfigurovali aplikační bránu pro šifrování SSL.
+V určitém okamžiku budete muset obnovit certifikáty, pokud jste nakonfigurovali aplikační bránu pro šifrování SSL.
 
-Certifikát přidružený k naslouchacímu procesu můžete obnovit pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure:
+Certifikát přidružený k naslouchací proces můžete obnovit pomocí portálu Azure, Azure PowerShellu nebo azure cli:
 
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>portál Azure
 
-Pokud chcete obnovit certifikát naslouchacího procesu z portálu, přejděte na naslouchací procesy služby Application Gateway. Klikněte na naslouchací proces s certifikátem, který je třeba obnovit, a potom klikněte na tlačítko **obnovit nebo upravit vybraný certifikát**.
+Chcete-li obnovit certifikát posluchače z portálu, přejděte na posluchače aplikační brány. Klepněte na naslouchací proces s certifikátem, který je třeba obnovit, a potom klepněte na tlačítko **Obnovit nebo upravit vybraný certifikát**.
 
-![Prodloužit platnost certifikátu](media/renew-certificate/ssl-cert.png)
+![Obnovit certifikát](media/renew-certificate/ssl-cert.png)
 
-Nahrajte nový certifikát PFX, zadejte jeho název, zadejte heslo a klikněte na **Uložit**.
+Nahrajte nový certifikát PFX, pojmenujte jej, zadejte heslo a klikněte na **Uložit**.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-K obnovení certifikátu pomocí Azure PowerShell použijte následující skript:
+Chcete-li obnovit certifikát pomocí Azure PowerShellu, použijte následující skript:
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -62,4 +62,4 @@ az network application-gateway ssl-cert update \
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak nakonfigurovat snižování zátěže SSL pomocí Azure Application Gateway, najdete v tématu [konfigurace přesměrování zpracování SSL](application-gateway-ssl-portal.md) .
+Informace o konfiguraci snižování zátěže SSL pomocí brány aplikace Azure najdete v [tématu Konfigurace snižování zátěže protokolu SSL.](application-gateway-ssl-portal.md)

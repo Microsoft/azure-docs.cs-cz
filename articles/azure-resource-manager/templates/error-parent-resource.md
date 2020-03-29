@@ -1,22 +1,22 @@
 ---
-title: Chyby nadřazeného prostředku
+title: Nadřazené chyby prostředků
 description: Popisuje, jak vyřešit chyby při práci s nadřazeným prostředkem v šabloně Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.openlocfilehash: f1847389d60ddf3c6abc70bc3309940c2246084e
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76154036"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>Řešení chyb pro nadřazené prostředky
 
-Tento článek popisuje chyby, ke kterým může dojít při nasazování prostředku, který je závislý na nadřazeném prostředku.
+Tento článek popisuje chyby, které se mohou stát při nasazování prostředku, který je závislý na nadřazeném prostředku.
 
 ## <a name="symptom"></a>Příznak
 
-Při nasazování prostředku, který je podřízený jinému prostředku, se může zobrazit následující chyba:
+Při nasazování prostředku, který je podřízený do jiného prostředku, se může zobrazit následující chyba:
 
 ```
 Code=ParentResourceNotFound;
@@ -25,7 +25,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 ## <a name="cause"></a>Příčina
 
-Pokud je jeden prostředek podřízený jinému prostředku, musí před vytvořením podřízeného prostředku existovat nadřazený prostředek. Název podřízeného prostředku definuje připojení s nadřazeným prostředkem. Název podřízeného prostředku je ve formátu `<parent-resource-name>/<child-resource-name>`. SQL Database například může být definován jako:
+Pokud je jeden prostředek podřízeným prostředkem jiného prostředku, nadřazený prostředek musí existovat před vytvořením podřízeného prostředku. Název podřízeného prostředku definuje připojení k nadřazenému prostředku. Název podřízeného prostředku je `<parent-resource-name>/<child-resource-name>`ve formátu . Databáze SQL může být například definována jako:
 
 ```json
 {
@@ -34,13 +34,13 @@ Pokud je jeden prostředek podřízený jinému prostředku, musí před vytvoř
   ...
 ```
 
-Pokud nasadíte Server i databázi do stejné šablony, ale nezadáte závislost na serveru, může se nasazení databáze spustit před nasazením serveru.
+Pokud nasadíte server i databázi ve stejné šabloně, ale nezadejte závislost na serveru, může být nasazení databáze možné spustit před nasazením serveru.
 
-Pokud nadřazený prostředek už existuje a není nasazený ve stejné šabloně, zobrazí se tato chyba, když Správce prostředků nemůže přidružit podřízený prostředek k nadřazenému. K této chybě může dojít, když podřízený prostředek není ve správném formátu nebo je podřízený prostředek nasazený do skupiny prostředků, která se liší od skupiny prostředků pro nadřazený prostředek.
+Pokud nadřazený prostředek již existuje a není nasazen ve stejné šabloně, zobrazí se tato chyba, když Správce prostředků nemůže přidružit podřízený prostředek k nadřazenému prostředku. K této chybě může dojít, pokud podřízený prostředek není ve správném formátu nebo podřízený prostředek je nasazen do skupiny prostředků, která se liší od skupiny prostředků pro nadřazený prostředek.
 
 ## <a name="solution"></a>Řešení
 
-Chcete-li tuto chybu vyřešit při nasazení nadřazených a podřízených prostředků do stejné šablony, zahrňte závislost.
+Chcete-li tuto chybu vyřešit při nadřazené a podřízené prostředky jsou nasazeny ve stejné šabloně, zahrnout závislost.
 
 ```json
 "dependsOn": [
@@ -48,7 +48,7 @@ Chcete-li tuto chybu vyřešit při nasazení nadřazených a podřízených pro
 ]
 ```
 
-Chcete-li tuto chybu vyřešit, pokud byl nadřazený prostředek dříve nasazen v jiné šabloně, nenastavíte závislost. Místo toho nasaďte podřízenou položku do stejné skupiny prostředků a zadejte název nadřazeného prostředku.
+Chcete-li tuto chybu vyřešit, když byl nadřazený prostředek dříve nasazen v jiné šabloně, nenastavíte závislost. Místo toho nasadit podřízené do stejné skupiny prostředků a zadejte název nadřazeného prostředku.
 
 ```json
 {
@@ -78,4 +78,4 @@ Chcete-li tuto chybu vyřešit, pokud byl nadřazený prostředek dříve nasaze
 }
 ```
 
-Další informace najdete v tématu [Definování pořadí pro nasazení prostředků v šablonách Azure Resource Manager](define-resource-dependency.md).
+Další informace najdete [v tématu Definování pořadí pro nasazení prostředků v šablonách Azure Resource Manager .](define-resource-dependency.md)
