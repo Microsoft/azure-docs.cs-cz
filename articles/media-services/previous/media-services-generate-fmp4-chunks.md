@@ -1,6 +1,6 @@
 ---
-title: Vytvořit úlohu kódování Azure Media Services, která generuje bloky fMP4 | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak vytvořit úlohu kódování, která generuje bloky fMP4. Když tato úloha je používána pomocí kodéru Media Encoder Standard nebo kodéru Media Encoder Premium Workflow, bude obsahovat výstupní asset bloky fMP4 místo souborů ISO MP4.
+title: Vytvoření úlohy kódování mediální služby Azure, která generuje bloky dat fMP4 | Dokumenty společnosti Microsoft
+description: Toto téma ukazuje, jak vytvořit úlohu kódování, která generuje bloky fMP4. Pokud je tato úloha použita s kodérem Media Encoder Standard nebo Media Encoder Premium Workflow Encoder, bude výstupní datový zdroj obsahovat bloky fMP4 namísto souborů ISO MP4.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463835"
 ---
-#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Vytvořit úlohu kódování, která generuje bloky fMP4
+#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Vytvoření úlohy kódování, která generuje bloky fMP4
 
 ## <a name="overview"></a>Přehled
 
-Tento článek popisuje, jak vytvořit úlohu kódování, který generuje fragmentovaného MP4 bloky (fMP4) místo souborů ISO MP4. Chcete-li generovat bloky fMP4, použijte **kodéru Media Encoder Standard** nebo **pracovní postup kodéru Media Encoder Premium** kodér vytvořit úlohu kódování a také určit **AssetFormatOption.AdaptiveStreaming**  možnosti, jak je znázorněno v tomto fragmentu kódu:  
+Tento článek ukazuje, jak vytvořit úlohu kódování, která generuje fragmentované bloky MP4 (fMP4) namísto souborů ISO MP4. Chcete-li generovat bloky bitových blocích fMP4, použijte k vytvoření úlohy kódování pomocí kodéru Standard pro kodéru pro kodéru kodéru kanedu Media **Encoder Standard** nebo **Kodéru elektronického pracovního postupu** pro kódování a také zadejte možnost **AssetFormatOption.AdaptiveStreaming,** jak je znázorněno v tomto fragmentu kódu:  
     
 ```csharp
     task.OutputAssets.AddNew(@"Output Asset containing fMP4 chunks", 
@@ -32,22 +32,22 @@ Tento článek popisuje, jak vytvořit úlohu kódování, který generuje fragm
             formatOption: AssetFormatOption.AdaptiveStreaming);
 ```
 
-## <a id="encoding_with_dotnet"></a>Kódování pomocí Media Services .NET SDK
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Kódování pomocí sady Media Services .NET SDK
 
-Následující příklad kódu používá sadu Media Services .NET SDK k provádění následujících úloh:
+Následující příklad kódu používá k provádění následujících úloh sad Media Services .NET SDK následující úkoly:
 
 - Vytvořte úlohu kódování.
-- Získání odkazu na **kodéru Media Encoder Standard** kodér.
-- Přidat úlohu kódování do projektu a nastavení, aby používal **adaptivní streamování** předvolby. 
-- Vytvoření výstupní asset, který bude obsahovat bloky fMP4 a soubor .ism.
-- Přidáte obslužnou rutinu události chcete zkontrolovat průběh úlohy.
-- Odeslání úlohy.
+- Získejte odkaz na standardní kodér **mediálního kodéru.**
+- Přidejte úlohu kódování do úlohy a určete, aby se používalo přednastavení **Adaptivní streamování.** 
+- Vytvořte výstupní datový zdroj, který bude obsahovat bloky fMP4 a soubor ISM.
+- Přidejte obslužnou rutinu události pro kontrolu průběhu úlohy.
+- Odešlete práci.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```csharp
 using System;
@@ -170,12 +170,12 @@ namespace AdaptiveStreaming
 }
 ```
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Media Services kódování – přehled](media-services-encode-asset.md)
+[Přehled kódování mediálních služeb](media-services-encode-asset.md)
 

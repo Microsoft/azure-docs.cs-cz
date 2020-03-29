@@ -1,7 +1,7 @@
 ---
 title: Získat & odebrat účty z mezipaměti tokenů (MSAL4j) | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si, jak zobrazit a odebrat účty z mezipaměti tokenů pomocí knihovny Microsoft Authentication Library pro Java.
+description: Přečtěte si, jak zobrazit a odebrat účty z mezipaměti tokenů pomocí Knihovny microsoft authentication library pro Jazyk Java.
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -14,19 +14,19 @@ ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.openlocfilehash: 2b138678b186cc41b76254658ad604c2da2d76c1
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696193"
 ---
-# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Získání a odebrání účtů z mezipaměti tokenů pomocí MSAL pro jazyk Java
+# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Získání a odebrání účtů z mezipaměti tokenů pomocí msal pro Javu
 
-MSAL for Java poskytuje standardně mezipaměť tokenů v paměti. Mezipaměť tokenů v paměti vydrží dobu trvání instance aplikace.
+MSAL pro Jazyk Java poskytuje ve výchozím nastavení mezipaměť tokenů v paměti. Mezipaměť tokenů v paměti trvá dobu trvání instance aplikace.
 
-## <a name="see-which-accounts-are-in-the-cache"></a>Podívejte se, které účty jsou v mezipaměti.
+## <a name="see-which-accounts-are-in-the-cache"></a>Zobrazení účtů, které jsou v mezipaměti
 
-Můžete zjistit, které účty jsou v mezipaměti, voláním `PublicClientApplication.getAccounts()`, jak je znázorněno v následujícím příkladu:
+Můžete zkontrolovat, jaké účty jsou `PublicClientApplication.getAccounts()` v mezipaměti voláním, jak je znázorněno v následujícím příkladu:
 
 ```java
 PublicClientApplication pca = new PublicClientApplication.Builder(
@@ -39,7 +39,7 @@ Set<IAccount> accounts = pca.getAccounts().join();
 
 ## <a name="remove-accounts-from-the-cache"></a>Odebrání účtů z mezipaměti
 
-Chcete-li odebrat účet z mezipaměti, vyhledejte účet, který je třeba odebrat, a poté zavolejte `PublicClientApplicatoin.removeAccount()`, jak je znázorněno v následujícím příkladu:
+Chcete-li odebrat účet z mezipaměti, vyhledejte účet, který je třeba odebrat, a pak volejte, `PublicClientApplicatoin.removeAccount()` jak je znázorněno v následujícím příkladu:
 
 ```java
 Set<IAccount> accounts = pca.getAccounts().join();
@@ -53,4 +53,4 @@ pca.removeAccount(accountToBeRemoved).join();
 
 ## <a name="learn-more"></a>Další informace
 
-Pokud používáte MSAL for Java, přečtěte si informace o [serializaci mezipaměti vlastního tokenu v MSAL pro Java](msal-java-token-cache-serialization.md).
+Pokud používáte MSAL pro Jazyk Java, přečtěte si informace o [vlastní serializaci mezipaměti tokenů v MSAL pro Javu](msal-java-token-cache-serialization.md).

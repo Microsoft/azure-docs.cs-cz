@@ -1,35 +1,35 @@
 ---
-title: Přidání datových sad do existující sdílené složky Azure
-description: Naučte se, jak přidat datové sady do existující sdílené složky v Azure Data Share a sdílet se stejnými příjemci.
+title: Přidání datových sad do existující sdílené složky dat Azure
+description: Zjistěte, jak přidat datové sady do existující sdílené složky dat ve sdílené složce Azure a sdílet je se stejnými příjemci.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 00c96950565b077e65f84e2d8b4977092df5e317
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73490549"
 ---
-# <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Postup přidání datových sad do existující sdílené složky v Azure Data Share
+# <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Jak přidat datové sady do existující sdílené složky ve sdílené složce Azure
 
-Tento článek vysvětluje, jak přidat datové sady do již existující sdílené složky pomocí sdílené složky Azure. Díky tomu můžete sdílet více dat se stejnými příjemci, aniž byste museli vytvářet novou sdílenou složku.
+Tento článek vysvětluje, jak přidat datové sady do již existující sdílené složky dat pomocí služby Azure Data Share. To umožňuje sdílet více dat se stejnými příjemci, aniž byste museli vytvářet novou sdílenou složku.
 
-Informace o tom, jak přidat datové sady při vytváření sdílené složky, najdete v kurzu [sdílení dat](share-your-data.md) .
+Informace o tom, jak přidat datové sady při vytváření sdílené složky, najdete v tématu [Sdílení dat](share-your-data.md) kurzu.
 
-## <a name="navigate-to-a-sent-data-share"></a>Přejít na sdílenou složku odeslaných dat
+## <a name="navigate-to-a-sent-data-share"></a>Přechod na odeslanou sdílenou složku dat
 
-V části sdílená složka Azure přejděte do odeslané sdílené složky a vyberte kartu datové **sady** . Kliknutím na tlačítko **+ přidat datové sady** přidejte více datových sad.
+Ve službě Azure Data Share přejděte na odeslanou **+ Add Datasets** sdílenou složku a vyberte kartu **Datové sady.**
 
 ![Přidat datové sady](./media/how-to/how-to-add-datasets/add-datasets.png)
 
-V panelu na pravé straně vyberte typ datové sady, který chcete přidat, a potom klikněte na **Další**. Vyberte předplatné a skupinu prostředků dat, která chcete přidat. Pomocí šipek rozevíracího seznamu vyhledejte a zaškrtněte políčko vedle dat, která chcete přidat.
+V panelu vpravo vyberte typ datové sady, který chcete přidat, a klepněte na tlačítko **Další**. Vyberte odběr a skupinu prostředků dat, která chcete přidat. Pomocí rozbalovacích šipek vyhledejte a zaškrtněte políčko vedle dat, která chcete přidat.
 
 ![Přidat datové sady](./media/how-to/how-to-add-datasets/add-datasets-side.png)
 
-Po kliknutí na možnost **přidat datové sady**budou datové sady přidány do sdílené složky. Poznámka: abyste mohli zobrazit nové datové sady, musí se snímek aktivovat vašimi příjemci. Pokud je nakonfigurované nastavení snímku, příjemci uvidí nové datové sady po dokončení dalšího naplánovaného snímku. Pokud není nakonfigurované nastavení snímku, příjemce musí ručně aktivovat úplnou nebo přírůstkovou kopii dat, aby mohla aktualizace přijímat. Další informace o snímcích najdete v tématu [snímky](terminology.md).
+Po klepnutí na **tlačítko Přidat datové sady**budou datové sady přidány do sdílené složky. Poznámka: Snímek musí být spuštěn vašimi spotřebiteli, aby mohli zobrazit nové datové sady. Pokud jsou nakonfigurována nastavení snímku, spotřebitelé uvidí nové datové sady po dokončení další naplánovaný snímek. Bez nakonfigurované nastavení snímku musí příjemce ručně aktivovat úplnou nebo přírůstkovou kopii dat, aby mohl přijímat aktualizace. Další informace o snímky naleznete v tématu [snímky](terminology.md).
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o tom, jak [Přidat příjemce do existující sdílené složky dat](how-to-add-recipients.md).
+Přečtěte si další informace o tom, jak [přidat příjemce do existující sdílené složky dat](how-to-add-recipients.md).

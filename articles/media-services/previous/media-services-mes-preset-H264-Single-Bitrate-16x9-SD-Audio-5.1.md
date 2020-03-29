@@ -1,6 +1,6 @@
 ---
-title: Předvolby H264 Jeden s přenosovou rychlostí 16 x 9 SD zvuku 5.1 | Dokumentace Microsoftu
-description: Téma s přehledem **H264 s jednou přenosovou rychlostí 16 x 9 SD zvuk 5.1** přednastavení úloh.
+title: H264 Jeden bitový tok 16x9 SD Audio 5.1 | Dokumenty společnosti Microsoft
+description: Toto téma poskytuje přehled přednastavení **úlohy H264 Single Bitrate 16x9 SD Audio 5.1.**
 author: Juliako
 manager: femila
 editor: ''
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 730854f572e1e2ab21140f53d59b7593ad26cb05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463595"
 ---
 # <a name="h264-single-bitrate-16x9-sd-audio-51"></a>H264 Single Bitrate 16x9 SD Audio 5.1
-`Media Encoder Standard` definuje sadu kódování přednastavení, která můžete použít při vytváření úloh kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo XML na základě předvoleb (pomocí kódování UTF-8 nebo UTF-16. By pak úspěšně prošel zpracováním vlastní přednastaveny tak, aby kodér. Seznam přednastavených názvy všech podporovaných touto `Media Encoder Standard` kodér, naleznete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definuje sadu přednastavení kódování, které můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, do kterého chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16. Vlastní přednastavení byste pak předali kodéru. Seznam všech přednastavených názvů podporovaných `Media Encoder Standard` tímto kodérem naleznete [v tématu Přednastavení úloh pro standard kodéru médií](media-services-mes-presets-overview.md).  
   
- Toto téma ukazuje, `H264 Single Bitrate 16x9 SD Audio 5.1` přednastavení ve formátu XML a JSON.  
+ Toto téma `H264 Single Bitrate 16x9 SD Audio 5.1` zobrazuje přednastavení ve formátu XML a JSON.  
   
- Tato předvolba vytváří jeden soubor MP4 s přenosovou rychlostí 2 200 kb/s a zvuku AAC 5.1. Podrobné informace o profilech s přenosovou rychlostí, vzorkování rychlost atd. to přednastavení, zkontrolujte XML nebo JSON, definovaná níže. Vysvětlení znamená, co každý prvek a platné hodnoty pro každý prvek, najdete v článku [schéma Media Encoderu Standard](media-services-mes-schema.md).  
+ Toto přednastavení vytváří jeden soubor MP4 s přenosovou rychlostí 2200 kbps a zvuk AAC 5.1. Podrobné informace o profilu, přenosovérychlosti, vzorkovací frekvenci atd. Vysvětlení, co každý prvek znamená, a platné hodnoty pro každý prvek naleznete schéma [Standard kodéru médií](media-services-mes-schema.md).  
   
  XML  
   

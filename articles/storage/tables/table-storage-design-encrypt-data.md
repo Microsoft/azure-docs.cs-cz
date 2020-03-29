@@ -1,6 +1,6 @@
 ---
-title: Šifrování dat tabulky Azure storage | Dokumentace Microsoftu
-description: Další informace o šifrování dat tabulky ve službě Azure storage.
+title: Šifrování dat tabulky úložiště Azure | Dokumenty společnosti Microsoft
+description: Přečtěte si o šifrování dat tabulky v úložišti Azure.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -9,26 +9,26 @@ ms.date: 04/11/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: f56946702011968a0fcb31f6fbecbaacdc89ea42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60325999"
 ---
 # <a name="encrypt-table-data"></a>Šifrování dat tabulky
-Klientská knihovna .NET Azure Storage podporuje šifrování vlastností entity řetězce pro vložení a nahrazovat operace. Šifrované řetězce jsou uložené ve službě jako binární vlastnosti a jsou převedeny na řetězce zpět po dešifrování.    
+Klientská knihovna úložiště .NET Azure podporuje šifrování vlastností entit řetězce pro operace vložení a nahrazení. Šifrované řetězce jsou uloženy ve službě jako binární vlastnosti a jsou převedeny zpět na řetězce po dešifrování.    
 
-Pro tabulky, vedle zásady šifrování musí uživatelé zadat vlastnosti, které mají být šifrována. To lze provést zadáním buď atribut [EncryptProperty] \(pro entity objektů POCO, které jsou odvozeny od TableEntity) nebo šifrování překladač v žádosti o možnostech. Překladač šifrování je delegát, který má klíč oddílu, klíč řádku a název vlastnosti a vrátí logickou hodnotu, která určuje, jestli by měl být šifrovaná tuto vlastnost. Během šifrování se knihovna klienta používá tyto informace se rozhodnout, jestli chcete šifrovat vlastnost při zápisu lince. Delegát také poskytuje možnost logiky po tom, jak jsou zašifrované vlastnosti. (Například, pokud X, pak šifrování vlastnost A; v opačném případě šifrování vlastnosti A a B.) Není nutné poskytnout tyto informace při čtení nebo dotazování entit.
+U tabulek musí uživatelé kromě zásad šifrování zadat vlastnosti, které mají být šifrovány. To lze provést zadáním atributu [EncryptProperty] (pro entity POCO, které jsou odvozeny z TableEntity) nebo překládáním šifrování v možnostech požadavku. Překládání šifrování je delegát, který přebírá klíč oddílu, klíč řádku a název vlastnosti a vrátí logickou hodnotu, která označuje, zda má být tato vlastnost zašifrována. Během šifrování klientská knihovna používá tyto informace k rozhodnutí, zda chcete šifrovat vlastnost při zápisu do drátu. Delegát také poskytuje možnost logiky kolem jak jsou zašifrovány vlastnosti. (Například pokud X, pak šifrovat vlastnost A; jinak šifrovat vlastnosti A a B.) Není nutné poskytovat tyto informace při čtení nebo dotazování entit.
 
-## <a name="merge-support"></a>Sloučit podpory
+## <a name="merge-support"></a>Podpora pro sloučení
 
-Sloučení se momentálně nepodporuje. Protože podmnožinu vlastností mohou byla zašifrována pomocí dříve za jiný klíč, jednoduše slučování nové vlastnosti a metadata aktualizace za následek ztrátu dat. Slučují se buď vyžaduje, aby volání další služby do existující entity načíst ze služby nebo pomocí nového klíče pro jednu vlastnost, které nejsou vhodné z důvodů výkonu.     
+Sloučení není aktuálně podporováno. Vzhledem k tomu, že podmnožina vlastností mohla být dříve zašifrována pomocí jiného klíče, může dojít ke sloučení nových vlastností a aktualizaci metadat ke ztrátě dat. Sloučení buď vyžaduje provedení volání další služby ke čtení již existující entity ze služby nebo pomocí nového klíče na vlastnost, z nichž oba nejsou vhodné z důvodů výkonu.     
 
-Informace o šifrování dat tabulky najdete v tématu [šifrování na straně klienta a služby Azure Key Vault pro Microsoft Azure Storage](../common/storage-client-side-encryption.md).  
+Informace o šifrování dat tabulky najdete v [tématu Šifrování na straně klienta a Azure Key Vault pro úložiště Microsoft Azure](../common/storage-client-side-encryption.md).  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Vzory návrhu tabulky](table-storage-design-patterns.md)
-- [Modelování vztahů](table-storage-design-modeling.md)
-- [Modelování vztahů](table-storage-design-modeling.md)
+- [Návrhové vzory tabulky](table-storage-design-patterns.md)
+- [Modelování relací](table-storage-design-modeling.md)
+- [Modelování relací](table-storage-design-modeling.md)
 - [Návrh pro úpravu dat](table-storage-design-for-modification.md)

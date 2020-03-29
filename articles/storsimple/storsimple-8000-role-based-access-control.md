@@ -1,6 +1,6 @@
 ---
-title: Použití řízení přístupu na základě rolí pro StorSimple | Dokumentace Microsoftu
-description: Popisuje způsob použití řízení přístupu na základě Role v Azure (RBAC) v kontextu StorSimple.
+title: Použít řízení přístupu na základě rolí pro StorSimple | Dokumenty společnosti Microsoft
+description: Popisuje, jak používat řízení přístupu na základě rolí Azure (RBAC) v kontextu StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,34 +15,34 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66159131"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Řízení přístupu na základě rolí pro StorSimple
 
-Tento článek obsahuje stručný popis použití řízení přístupu v Azure Role-Based (RBAC) pro zařízení StorSimple. RBAC poskytuje propracovanou správu přístupu pro Azure. Použijte pro udělení, že ideální úroveň přístupu ke službě StorSimple uživatelů vykonávat svoji práci místo všem neomezený přístup. Další informace o základní správu přístupu v Azure najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure portal](../role-based-access-control/overview.md).
+Tento článek obsahuje stručný popis toho, jak azure řízení přístupu na základě rolí (RBAC) lze použít pro vaše zařízení StorSimple. RBAC nabízí jemně odstupňovanou správu přístupu pro Azure. Pomocí RBAC udělit správné množství přístupu k uživatelům StorSimple dělat svou práci namísto poskytování všichni neomezený přístup. Další informace o základech správy přístupu v Azure najdete [v tématu Začínáme s řízením přístupu na základě rolí na webu Azure Portal](../role-based-access-control/overview.md).
 
-Tento článek se týká do zařízení řady StorSimple 8000 Update 3.0 nebo později na webu Azure portal.
+Tento článek se vztahuje na zařízení řady StorSimple 8000 se spuštěním aktualizace 3.0 nebo novější na webu Azure Portal.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="rbac-roles-for-storsimple"></a>Role RBAC pro StorSimple
 
-RBAC je možné přiřadit na základě rolí. Role zajištění určité úrovně oprávnění na základě dostupných prostředků v prostředí. Existují dva typy rolí, které StorSimple uživatelé můžou vybírat: vestavěná nebo vlastní.
+RBAC lze přiřadit na základě rolí. Role zajišťují určité úrovně oprávnění na základě dostupných prostředků v prostředí. Existují dva typy rolí, které si mohou uživatelé StorSimple vybrat: předdefinované nebo vlastní.
 
-* **Předdefinované role** – předdefinované role může být vlastníkem, přispěvatelem, čtečky nebo správce přístupu uživatelů. Další informace najdete v tématu [předdefinované role pro řízení přístupu na základě Role v Azure](../role-based-access-control/built-in-roles.md).
+* **Předdefinované role** – předdefinované role mohou být vlastníkem, přispěvatelem, čtečkou nebo správcem přístupu uživatelů. Další informace najdete [v tématu předdefinované role pro řízení přístupu na základě rolí Azure](../role-based-access-control/built-in-roles.md).
 
-* **Vlastní role** – Pokud předdefinované role nevyhovují vašim potřebám, můžete vytvořit vlastní role RBAC pro StorSimple. Chcete-li vytvořit vlastní roli RBAC, začněte s předdefinovanou roli, upravovat a importujte ji zpět do prostředí. Stažení a nahrání role se spravují pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure. Další informace najdete v tématu [vytváření vlastních rolí pro řízení přístupu na základě Role](../role-based-access-control/custom-roles.md).
+* **Vlastní role** – Pokud předdefinované role nevyhovují vašim potřebám, můžete vytvořit vlastní role RBAC pro StorSimple. Chcete-li vytvořit vlastní roli RBAC, začněte s předdefinovanou rolí, upravte ji a importujte ji zpět do prostředí. Stahování a nahrávání role se spravují buď pomocí Azure PowerShellu nebo rozhraní příkazového příkazu k onomu Azure. Další informace naleznete v [tématu Vytvoření vlastních rolí pro řízení přístupu založené na rolích](../role-based-access-control/custom-roles.md).
 
-Chcete-li zobrazit různé role, které jsou k dispozici pro uživatele zařízení StorSimple na webu Azure Portal, přejděte do služby Správce zařízení StorSimple a potom přejděte ke **řízení přístupu (IAM) > role**.
+Chcete-li zobrazit různé role, které jsou k dispozici pro uživatele zařízení StorSimple na webu Azure Portal, přejděte na službu Správce zařízení StorSimple a potom přejděte na **> rolích řízení přístupu (IAM).**
 
 
-## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>Vytvořit vlastní roli správce infrastruktury pro StorSimple
+## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>Vytvoření vlastní role pro správce infrastruktury StorSimple
 
-V následujícím příkladu Začneme s předdefinovanou roli **čtečky** , který umožňuje uživatelům Chcete-li zobrazit všechny obory prostředků, ale ne upravovat nebo vytvářet nové. Rozšiřujeme pak této roli k vytvoření nové vlastní role správce StorSimple infrastruktury. Tato role je přiřazená k uživatelům, kteří můžou spravovat infrastrukturu pro zařízení StorSimple.
+V následujícím příkladu začneme s předdefinovanou **čtečkou** rolí, která uživatelům umožňuje zobrazit všechny obory prostředků, ale ne je upravovat ani vytvářet nové. Tuto roli pak rozšíříme a vytvoříme novou vlastní roli správce infrastruktury StorSimple. Tato role je přiřazena uživatelům, kteří mohou spravovat infrastrukturu pro zařízení StorSimple.
 
 1. Spusťte prostředí Windows PowerShell jako správce.
 
@@ -50,7 +50,7 @@ V následujícím příkladu Začneme s předdefinovanou roli **čtečky** , kte
 
     `Connect-AzAccount`
 
-3. Role Čtenář exportujte jako šablonu JSON ve vašem počítači.
+3. Exportujte roli čtečky jako šablonu JSON v počítači.
 
     ```powershell
     Get-AzRoleDefinition -Name "Reader"
@@ -58,21 +58,21 @@ V následujícím příkladu Začneme s předdefinovanou roli **čtečky** , kte
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. Otevřete soubor JSON v sadě Visual Studio. Uvidíte, že typické role RBAC se skládá ze tří hlavních částí **akce**, **NotActions**, a **AssignableScopes**.
+4. Otevřete soubor JSON v sadě Visual Studio. Uvidíte, že typická role RBAC se skládá ze tří hlavních částí **Akce**, **NotActions**a **AssignableScopes**.
 
-    V **akce** oddíl, všechny povolené operace pro tuto roli patří. Každá akce se přiřadí od zprostředkovatele prostředků. Pro správce StorSimple infrastruktury, použijte `Microsoft.StorSimple` poskytovatele prostředků.
+    V části **Akce** jsou uvedeny všechny povolené operace pro tuto roli. Každá akce je přiřazena od poskytovatele prostředků. Pro správce infrastruktury StorSimple `Microsoft.StorSimple` použijte poskytovatele prostředků.
 
-    Chcete-li zobrazit všechny poskytovatele prostředků k dispozici a registrovaný ve vašem předplatném pomocí Powershellu.
+    Pomocí PowerShellu můžete zobrazit všechny poskytovatele prostředků, kteří jsou k dispozici a zaregistrováni ve vašem předplatném.
 
     `Get-AzResourceProvider`
 
-    Můžete také vyhledat všechny dostupné rutiny prostředí PowerShell můžete spravovat poskytovatele prostředků.
+    Můžete také zkontrolovat všechny dostupné rutiny prostředí PowerShell pro správu poskytovatelů prostředků.
 
-    V **NotActions** části, jsou uvedené akce s omezeným přístupem pro určité role RBAC. V tomto příkladu nejsou žádné akce s omezeným přístupem.
+    V části **NotActions** jsou uvedeny všechny akce s omezeným přístupem pro určitou roli RBAC. V tomto příkladu nejsou omezeny žádné akce.
     
-    V části **AssignableScopes**, jsou uvedeny ID předplatného. Ujistěte se, že RBAC role obsahuje ID explicitní předplatného, ve kterém se používá. Pokud není zadané ID správné předplatné, nemáte oprávnění importovat roli v rámci vašeho předplatného.
+    V části **AssignableScopes**jsou uvedena ID předplatného. Ujistěte se, že role RBAC obsahuje explicitní ID předplatného, kde se používá. Pokud není zadáno správné ID předplatného, není povoleno importovat roli ve vašem předplatném.
 
-    Upravte soubor dodržujte při tom předchozím důležité informace.
+    Upravte soubor s ohledem na předchozí aspekty.
 
     ```json
     {
@@ -107,11 +107,11 @@ V následujícím příkladu Začneme s předdefinovanou roli **čtečky** , kte
     `New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"`
 
 
-Tato role by se měla objevit v seznamu rolí v **řízení přístupu** okno.
+Tato role by se nyní měla zobrazit v seznamu rolí v okně **řízení aplikace Access.**
 
 ![Zobrazit role RBAC](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
-Další informace najdete v části [vlastní role](../role-based-access-control/custom-roles.md).
+Další informace naleznete v části [Vlastní role](../role-based-access-control/custom-roles.md).
 
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>Ukázkový výstup pro vytvoření vlastní role pomocí prostředí PowerShell
 
@@ -163,37 +163,37 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 ## <a name="add-users-to-the-custom-role"></a>Přidání uživatelů do vlastní role
 
-Přístup se uděluje z prostředku, skupiny prostředků nebo předplatného, které je v rozsahu platnosti přiřazení role. Při poskytování přístupu, berte v úvahu, že podřízené zdědí přístup na nadřazený uzel. Další informace najdete v části [řízení přístupu na základě rolí](../role-based-access-control/overview.md).
+Přístup se uděluje z prostředku, skupiny prostředků nebo předplatného, které je v rozsahu platnosti přiřazení role. Při poskytování přístupu mějte na paměti, že přístup udělený v nadřazeném uzlu je zděděn podřízeným. Další informace naleznete v části [řízení přístupu na základě rolí](../role-based-access-control/overview.md).
 
-1. Přejděte na **řízení přístupu (IAM)** . Klikněte na tlačítko **+ přidat** v okně řízení přístupu.
+1. Přejděte na **řízení přístupu (IAM)**. Klepněte na **tlačítko + Přidat** v okně řízení přístupu.
 
-    ![Přidat přístup k roli RBAC](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
+    ![Přidání přístupu k roli RBAC](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
-2. Vyberte roli, kterou chcete přiřadit, v tomto případě je **správce infrastruktury StorSimple**.
+2. Vyberte roli, kterou chcete přiřadit, v tomto případě je **To StorSimple Infrastructure Admin**.
 
 3. Ve svém adresáři vyberte uživatele, skupinu nebo aplikaci, kterým chcete přiřadit přístup. V adresáři můžete vyhledávat pomocí zobrazovaných názvů, e-mailových adres a identifikátorů objektů.
 
-4. Vyberte **Uložit** k vytvoření tohoto přiřazení.
+4. Chcete-li vytvořit přiřazení, vyberte **uložit.**
 
-    ![Přidejte oprávnění do RBAC role](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
+    ![Přidání oprávnění k roli RBAC](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
 
-**Přidává se uživatel** oznámení sleduje průběh. Po úspěšném přidání uživatele, se aktualizuje seznam uživatelů v řízení přístupu.
+**Přidání oznámení uživatele** sleduje průběh. Po úspěšném přidání uživatele se aktualizuje seznam uživatelů v řízení přístupu.
 
-## <a name="view-permissions-for-the-custom-role"></a>Zobrazit oprávnění pro vlastní role
+## <a name="view-permissions-for-the-custom-role"></a>Zobrazit oprávnění pro vlastní roli
 
-Po vytvoření této role se zobrazí oprávnění spojená s touto rolí na portálu Azure portal.
+Po vytvoření této role můžete zobrazit oprávnění přidružená k této roli na webu Azure Portal.
 
-1. Chcete-li zobrazit oprávnění spojená s touto rolí, přejděte na **řízení přístupu (IAM) > role > Správce infrastruktury StorSimple**. Zobrazí se seznam uživatelů v této roli.
+1. Chcete-li zobrazit oprávnění přidružená k této roli, přejděte na **téma Řízení přístupu (IAM) > role > správce infrastruktury StorSimple**. Zobrazí se seznam uživatelů v této roli.
 
-2. Vyberte uživatele správce infrastruktury StorSimple a klikněte na tlačítko **oprávnění**.
+2. Vyberte uživatele správce infrastruktury StorSimple a klepněte na tlačítko **Oprávnění**.
 
     ![Zobrazit oprávnění pro roli správce Infra StorSimple](./media/storsimple-8000-role-based-access-control/rbac-roles-view-permissions.png)
 
-3. Oprávnění přidružené k této roli jsou zobrazena.
+3. Zobrazí se oprávnění přidružená k této roli.
 
     ![Zobrazit uživatele v roli správce Infra StorSimple](./media/storsimple-8000-role-based-access-control/rbac-infra-admin-permissions1.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak [přiřazení vlastních rolí pro interní a externí uživatele](../role-based-access-control/role-assignments-external-users.md).
+Přečtěte [si, jak přiřadit vlastní role interním a externím uživatelům](../role-based-access-control/role-assignments-external-users.md).

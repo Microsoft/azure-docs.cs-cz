@@ -1,5 +1,5 @@
 ---
-title: Nasazení IBM Db2 Azure Virtual Machines DBMS pro úlohy SAP | Microsoft Docs
+title: Nasazení DBMS PRO VIRTUÁLNÍ POČÍTAČE IBM Db2 pro úlohy SAP | Dokumenty společnosti Microsoft
 description: Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 679e033418fba34eddddd21ddca66b1d9bb2fd48
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645884"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP
@@ -33,12 +33,12 @@ ms.locfileid: "75645884"
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
-[1409604]: https://launchpad.support.sap.com/#/notes/1409604
+[1409604]:https://launchpad.support.sap.com/#/notes/1409604
 [1558958]:https://launchpad.support.sap.com/#/notes/1558958
 [1585981]:https://launchpad.support.sap.com/#/notes/1585981
 [1588316]:https://launchpad.support.sap.com/#/notes/1588316
 [1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]: https://launchpad.support.sap.com/#/notes/1597355
+[1597355]:https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
@@ -54,23 +54,23 @@ ms.locfileid: "75645884"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
 [2039619]:https://launchpad.support.sap.com/#/notes/2039619
 [2069760]:https://launchpad.support.sap.com/#/notes/2069760
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
 [2171857]:https://launchpad.support.sap.com/#/notes/2171857
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2233094]: https://launchpad.support.sap.com/#/notes/2233094
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2233094]:https://launchpad.support.sap.com/#/notes/2233094
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
@@ -309,98 +309,98 @@ ms.locfileid: "75645884"
 
 
 
-Pomocí Microsoft Azure můžete migrovat stávající aplikaci SAP běžící v IBM Db2 pro Linux, UNIX a Windows (LUW) na virtuální počítače Azure. Díky SAP v IBM Db2 pro LUW můžou správci a vývojáři dál používat stejné nástroje pro vývoj a správu, které jsou k dispozici místně.
-Obecné informace o spuštění SAP Business Suite na IBM Db2 pro LUW najdete v části síť komunity SAP (SCN) na adrese <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>.
+S Microsoft Azure můžete migrovat stávající aplikaci SAP spuštěnou na IBM Db2 pro Linux, UNIX a Windows (LUW) do virtuálních počítačů Azure. Se sapem na IBM Db2 pro LUW mohou správci a vývojáři stále používat stejné nástroje pro vývoj a správu, které jsou k dispozici místně.
+Obecné informace o spuštění sady SAP Business Suite v ibm Db2 for LUW <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>naleznete v síti SAP Community Network (SCN) na adrese .
 
-Další informace a aktualizace SAP v Db2 pro LUW v Azure najdete v článku SAP Note [2233094]. 
+Další informace a aktualizace o SAP na Db2 pro LUW v Azure, najdete v sap poznámka [2233094]. 
 
-V této části najdete různé články o úlohách SAP v Azure, které jsou vydány.  Doporučuje se začít pracovat s [úlohami SAP v Azure – Začínáme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) a pak vybrat oblast zájmů.
+Jsou různé články o zatížení SAP v Azure vydané.  Doporučujeme začít v zatížení SAP v [Azure – začínáme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) a pak vybrat oblast zájmů
 
-Následující poznámky SAP se týkají SAP v Azure, které se týkají oblasti popsané v tomto dokumentu:
+Následující poznámky SAP se vztahují k SAP v Azure, pokud jde o oblast, na kterou se vztahuje tento dokument:
 
 | Číslo poznámky | Nadpis |
 | --- | --- |
-| [1928533] |Aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure |
-| [2015553] |SAP v Microsoft Azure: požadavky na podporu |
-| [1999351] |Řešení potíží s vylepšeným monitorováním Azure pro SAP |
+| [1928533] |Aplikace SAP v Azure: Podporované produkty a typy virtuálních počítačů Azure |
+| [2015553] |SAP v Microsoft Azure: Požadavky podpory |
+| [1999351] |Poradce při potížích s rozšířeným monitorováním Azure pro SAP |
 | [2178632] |Klíčové metriky monitorování pro SAP v Microsoft Azure |
-| [1409604] |Virtualizace ve Windows: rozšířené monitorování |
-| [2191498] |SAP v systému Linux s Azure: rozšířené monitorování |
-| [2233094] |DB6: aplikace SAP v Azure s využitím IBM DB2 pro Linux, UNIX a Windows – Další informace |
-| [2243692] |Virtuální počítač se systémem Linux na Microsoft Azure (IaaS): problémy s licencí SAP |
-| [1984787] |SUSE LINUX Enterprise Server 12: poznámky k instalaci |
-| [2002167] |Red Hat Enterprise Linux 7. x: instalace a upgrade |
-| [1597355] |Doporučení pro zaměněné místo pro Linux |
+| [1409604] |Virtualizace ve Windows: Rozšířené monitorování |
+| [2191498] |SAP na Linuxu s Azure: Vylepšené monitorování |
+| [2233094] |DB6: Aplikace SAP v Azure pomocí IBM DB2 pro Linux, UNIX a Windows – další informace |
+| [2243692] |Linux na virtuálním počítači Microsoft Azure (IaaS): Problémy s licencí SAP |
+| [1984787] |SUSE LINUX Enterprise Server 12: Poznámky k instalaci |
+| [2002167] |Red Hat Enterprise Linux 7.x: Instalace a upgrade |
+| [1597355] |Doporučení pro swap-space pro Linux |
 
-Jako žádost o přijetí změn v tomto dokumentu byste si měli přečíst informace v dokumentu [pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) a také další příručky v [dokumentaci ke službě SAP v dokumentaci k Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+Jako pr-read k tomuto dokumentu, měli byste si přečíst dokument [Aspekty pro nasazení Azure Virtuální počítače DBMS pro úlohy SAP,](dbms_guide_general.md) stejně jako další průvodci v [zatížení SAP v dokumentaci Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
 
 
-## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>Podpora IBM Db2 pro Linux, UNIX a Windows verze
-SAP v IBM Db2 pro LUW na Microsoft Azure služby virtuálních počítačů se podporuje od verze Db2 10,5.
+## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>Ibm Db2 pro podporu linuxových, unixových a verzí systému Windows
+SAP na IBM Db2 pro LUW na Microsoft Azure Virtual Machine Services je podporována od Db2 verze 10.5.
 
-Informace o podporovaných produktech SAP a typech virtuálních počítačů Azure najdete v tématu SAP Note [1928533].
+Informace o podporovaných produktech SAP a typech virtuálních počítačů Azure najdete v poznámce SAP [1928533].
 
-## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny pro konfiguraci IBM Db2 pro Linux, UNIX a Windows pro instalace SAP na virtuálních počítačích Azure
+## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny pro konfiguraci IBM Db2 pro Linux, UNIX a Windows pro instalace SAP v virtuálních počítačích Azure
 ### <a name="storage-configuration"></a>Konfigurace úložiště
-Všechny soubory databáze musí být uložené v systému souborů NTFS na základě přímo připojených disků. Tyto disky jsou připojené k virtuálnímu počítači Azure a jsou založené na Azure Page BLOB Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) nebo Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Pro soubory databáze nejsou podporované žádné síťové jednotky nebo vzdálené sdílené složky, **jako jsou následující** souborové služby Azure: 
+Všechny databázové soubory musí být uloženy v systému souborů NTFS na základě přímo připojených disků. Tyto disky se připojují k virtuálnímu počítači<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>Azure a jsou<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>založené na úložišti BLOB stránky Azure ( ) nebo spravovaných discích ( ). Všechny typy síťových jednotek nebo vzdálených sdílených složek, jako jsou následující souborové služby **Azure, nejsou** pro databázové soubory podporovány: 
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
 
-Pomocí disků založených na službě Azure Page Storage nebo Managed Disks se příkazy provedené v části [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) vztahují i na nasazení s využitím Db2 DBMS.
+Pomocí disků založených na azure page blob storage nebo spravovaných discích se příkazy provedené v [části Důležité informace o nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) vztahují i na nasazení s DB2 DBMS.
 
-Jak je vysvětleno výše v obecné části dokumentu, existují kvóty pro propustnost IOPS pro disky Azure. Přesné kvóty závisí na použitém typu virtuálního počítače. Seznam typů virtuálních počítačů s jejich kvótami najdete [tady (Linux)][virtual-machines-sizes-linux] a [tady (Windows)][virtual-machines-sizes-windows].
+Jak je vysvětleno dříve v obecné části dokumentu, kvóty na propustnost VOPS pro disky Azure existují. Přesné kvóty závisí na použitém typu virtuálního počítači. Seznam typů virtuálních počítačů s jejich kvótami najdete [zde (Linux)][virtual-machines-sizes-linux] a [zde (Windows)][virtual-machines-sizes-windows].
 
-Pokud je aktuální kvóta IOPS na disk dostačující, je možné uložit všechny soubory databáze na jeden připojený disk. Vzhledem k tomu, že vždy byste měli oddělit datové soubory a soubory protokolů transakcí na různých discích a virtuálních pevných discích.
+Dokud je dostatečná aktuální kvóta VOPS na disk, je možné uložit všechny databázové soubory na jeden připojený disk. Vzhledem k tomu, že vždy byste měli oddělit datové soubory a soubory protokolu transakcí na různých discích / VD.
 
-Informace o výkonu najdete také v části "informace o zabezpečení a výkonu dat pro databázové adresáře" v tématu instalační příručky SAP.
+Důležité informace o výkonu naleznete také v kapitole "Aspekty bezpečnosti dat a výkonu pro adresáře databáze" v instalačních příručkách SAP.
 
-Alternativně můžete použít fondy úložiště Windows (k dispozici jenom ve Windows Serveru 2012 a novějších), jako jsou popsané [předpoklady pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) k vytvoření jednoho velkého logického zařízení na více discích.
+Případně můžete použít fondy úložiště Windows (dostupné jenom v Systému Windows Server 2012 a vyšší), jak je popsáno [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) k vytvoření jednoho velkého logického zařízení na více discích.
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-Pro disky obsahující cesty úložiště Db2 pro adresáře sapdata a saptmp je nutné zadat velikost sektoru fyzického disku 512 KB. Při používání fondů úložiště Windows je potřeba vytvořit fondy úložiště ručně prostřednictvím rozhraní příkazového řádku pomocí parametru `-LogicalSectorSizeDefault`. Další informace naleznete v tématu <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+Pro disky obsahující cesty úložiště Db2 pro vaše sapdata a saptmp adresáře, je nutné zadat velikost fyzického sektoru disku 512 KB. Při použití fondů úložiště systému Windows je nutné vytvořit fondy `-LogicalSectorSizeDefault`úložiště ručně prostřednictvím rozhraní příkazového řádku pomocí parametru . Další informace naleznete v tématu <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
-U virtuálních počítačů Azure řady M-Series se při použití Azure Akcelerátor zápisu můžou latence zápisu do protokolů transakcí snížit podle faktorů v porovnání s výkonem Azure Premium Storage. Proto byste měli nasadit Azure Akcelerátor zápisu pro virtuální pevné disky, které tvoří svazek pro protokoly transakcí Db2. Podrobnosti lze přečíst v dokumentu [akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
+U virtuálního počítače Azure řady M může být latence zápisu do protokolů transakcí snížena o faktory ve srovnání s výkonem úložiště Azure Premium při použití akcelerátoru zápisu Azure. Proto byste měli nasadit Azure Write Accelerator pro virtuální pevné disky, které tvoří svazek pro protokoly transakcí Db2. Podrobnosti si můžete přečíst v dokumentu [Akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
 
 ### <a name="backuprestore"></a>Zálohování a obnovení
-Funkce zálohování a obnovení pro IBM Db2 pro LUW se podporuje stejným způsobem jako u standardních operačních systémů Windows Server a Hyper-V.
+Funkce zálohování/obnovení pro IBM Db2 for LUW je podporována stejným způsobem jako ve standardních operačních systémech Windows Server a Technologie Hyper-V.
 
-Musíte se ujistit, že máte zavedenou platnou strategii zálohování databáze. 
+Musíte se ujistit, že máte platnou strategii zálohování databáze na místě. 
 
-Stejně jako v případě nasazení v holém prostředí závisí výkon zálohování a obnovení na tom, kolik svazků je možné paralelně číst a co může být propustnost těchto svazků. Navíc spotřeba procesoru využitá kompresí zálohování může hrát významnou roli na virtuálních počítačích s až osmi vlákny procesoru. Proto může jeden předpokládat:
+Stejně jako u nasazení holého kovu závisí výkon zálohování a obnovení na tom, kolik svazků lze číst paralelně a jaká může být propustnost těchto svazků. Kromě toho spotřeba procesoru používané kompresi záloh může hrát významnou roli na virtuálních počítačích s až osmi podprocesů procesoru. Proto lze předpokládat:
 
-* Čím méně je počet disků, který se používá k uložení databázových zařízení, tím menší je celková propustnost při čtení.
-* Menší počet PROCESORových vláken ve virtuálním počítači, což je závažnější z vlivu komprimace zálohy
-* Čím méně cílů (prokládané adresáře, disky) k zápisu zálohy do, tím nižší propustnost
+* Čím méně disků používaných k ukládání databázových zařízení, tím menší je celková propustnost při čtení
+* Čím menší je počet podprocesů procesoru ve virtuálním počítače, tím závažnější je dopad komprese záloh
+* Čím méně cílů (prokládané adresáře, disky) pro zápis zálohy, tím nižší je propustnost
 
-Pokud chcete zvýšit počet cílů, na které se má zapisovat, můžete v závislosti na svých potřebách použít nebo kombinovat dvě možnosti:
+Chcete-li zvýšit počet cílů, do kterých se má zapisovat, lze v závislosti na vašich potřebách použít dvě možnosti:
 
-* Prokládání cílového svazku zálohování na více discích za účelem zlepšení propustnosti IOPS na tomto prokládaném svazku
-* Použití více než jednoho cílového adresáře pro zápis zálohy do
+* Prokládání cílového svazku zálohy na více disků za účelem zlepšení propustnosti VOPS na tomto prokládaného svazku
+* Použití více než jednoho cílového adresáře k zápisu zálohy
 
 >[!NOTE]
->Db2 ve Windows nepodporuje technologii Windows VSS. V důsledku toho není možné využít zálohu služby Azure Backup pro virtuální počítače konzistentní s aplikacemi pro virtuální počítače, ve kterých je nasazený systém Db2 DBMS.
+>Db2 v systému Windows nepodporuje technologii Windows VSS. V důsledku toho nelze využít zálohu služby Azure Backup Service konzistentní v aplikacích pro virtuální počítače, ve kterých se nasazuje DB2 DBMS.
 
 ### <a name="high-availability-and-disaster-recovery"></a>Vysoká dostupnost a obnovení po havárii
-Server Microsoft Clustering (MSCS) není podporován.
+Server Microsoft Cluster (MSCS) není podporován.
 
-Podporuje se zotavení po havárii Db2 s vysokou dostupností (HADR). Pokud virtuální počítače konfigurace HA obsahují překlad IP adres, nastavení v Azure se neliší od žádného nastavení, které se provádí v místním prostředí. Nedoporučuje se spoléhat jenom na rozlišení IP.
+Db2 vysoké dostupnosti zotavení po havárii (HADR) je podporována. Pokud virtuální počítače konfigurace HA mají pracovní překlad názvů, nastavení v Azure se neliší od žádné nastavení, které se provádí v místním prostředí. Nedoporučuje se spoléhat pouze na rozlišení IP.
 
-Nepoužívejte geografickou replikaci pro účty úložiště, které ukládají databázové disky. Další informace najdete v dokumentu věnovaném [nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). 
+Nepoužívejte geografickou replikaci pro účty úložiště, které ukládají databázové disky. Další informace najdete v dokumentu [Aspekty pro nasazení AZURE Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). 
 
 ### <a name="accelerated-networking"></a>Akcelerované síťové služby
-Pro nasazení Db2 ve Windows se důrazně doporučuje používat funkce Azure pro urychlené síťové služby, jak je popsáno v dokumentu [urychlené síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Zvažte také doporučení týkající se [nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). 
+Pro nasazení Db2 v systému Windows se důrazně doporučuje používat funkce Azure akcelerované sítě, jak je popsáno v dokumentu [Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Zvažte také doporučení uvedená v [úvahách o nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md). 
 
 
-### <a name="specifics-for-linux-deployments"></a>Specifické pro nasazení Linux
-Pokud je aktuální kvóta IOPS na disk dostačující, je možné uložit všechny soubory databáze na jednom disku. Vzhledem k tomu, že vždy byste měli oddělit datové soubory a soubory protokolů transakcí na různých discích a virtuálních pevných discích.
+### <a name="specifics-for-linux-deployments"></a>Specifika pro nasazení Linuxu
+Dokud je aktuální kvóta VOPS na disk dostatečná, je možné uložit všechny databázové soubory na jeden disk. Vzhledem k tomu, že vždy byste měli oddělit datové soubory a soubory protokolu transakcí na různých discích / VD.
 
-Případně, pokud nestačí propustnost vstupně-výstupních operací nebo vstupně-výstupních operací s jedním virtuálním pevným diskem Azure, můžete použít LVM (Správce logických svazků) nebo MDADM, jak je popsáno v dokumentu [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) a vytvořit jedno velké logické zařízení na více discích.
-Pro disky obsahující cesty úložiště Db2 pro adresáře sapdata a saptmp je nutné zadat velikost sektoru fyzického disku 512 KB.
+Případně pokud propustnost VOPS nebo V/V jednoho virtuálního pevného disku Azure není dostatečná, můžete použít LVM (Logický správce svazků) nebo MDADM, jak je popsáno v dokumentu [Aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) k vytvoření jednoho velkého logického zařízení přes více disků.
+Pro disky obsahující cesty úložiště Db2 pro vaše sapdata a saptmp adresáře, je nutné zadat velikost fyzického sektoru disku 512 KB.
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Jiné
-Všechny ostatní obecné oblasti, jako jsou skupiny dostupnosti Azure nebo monitorování SAP, jsou popsané v dokumentu [týkajícím se nasazení azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) pro nasazení virtuálních počítačů s využitím i databáze IBM.
+### <a name="other"></a>Ostatní
+Všechny ostatní obecné oblasti, jako jsou azure dostupnost sady nebo monitorování SAP platí, jak je popsáno v dokumentu [Aspekty pro nasazení Azure Virtuální počítače DBMS pro úlohy SAP](dbms_guide_general.md) pro nasazení virtuálních počítačů s databází IBM také.

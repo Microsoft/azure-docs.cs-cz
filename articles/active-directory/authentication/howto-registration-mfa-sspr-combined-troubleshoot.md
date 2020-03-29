@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží v kombinované registraci – Azure Active Directory
-description: Řešení potíží se službou Azure AD Multi-Factor Authentication a samoobslužnou registrací pro resetování hesel (Preview)
+title: Poradce při potížích s kombinovanou registrací – Služba Azure Active Directory
+description: Poradce při potížích s vícefaktorovým ověřováním Azure AD a samoobslužnou kombinovanou registrací hesla (preview)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,78 +12,78 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74847384"
 ---
-# <a name="troubleshooting-combined-security-information-registration-preview"></a>Řešení potíží se kombinovanou registrací zabezpečení informací (Preview)
+# <a name="troubleshooting-combined-security-information-registration-preview"></a>Poradce při potížích s kombinovanou registrací bezpečnostních informací (preview)
 
-Informace v tomto článku se týkají správců, kteří řeší problémy nahlášené uživateli kombinovaného prostředí registrace.
+Informace v tomto článku jsou určeny k průvodcování správci, kteří řeší problémy hlášené uživateli kombinované registrace.
 
 |     |
 | --- |
-| Souhrnná registrace informací o zabezpečení pro Azure Multi-Factor Authentication a Azure Active Directory (Azure AD) Samoobslužné resetování hesla je funkce Public Preview služby Azure AD. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Kombinovaná registrace informací o zabezpečení pro azure multi-factor authentication a samoobslužné resetování hesla Azure Active Directory (Azure AD) je veřejná funkce preview Azure AD. Další informace o náhledech najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
-Události protokolované pro kombinovanou registraci jsou v kategorii metody ověřování v protokolech auditu Azure AD.
+Události protokolované pro kombinovanou registraci jsou v kategorii Metody ověřování v protokolech auditu služby Azure AD.
 
 ![Rozhraní protokolů auditu Azure AD zobrazující události registrace](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
 V následující tabulce jsou uvedeny všechny události auditu generované kombinovanou registrací:
 
-| Aktivita | Stav | Důvod | Popis |
+| Aktivita | Status | Důvod | Popis |
 | --- | --- | --- | --- |
-| Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Úspěch | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Tato událost nastane, pokud uživatel úspěšně dokončil registraci.|
-| Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Selhání | Uživatel zrušil registraci bezpečnostních údajů. | K této události dojde, když uživatel zruší registraci z režimu přerušení.|
-| Uživatel zaregistroval informace o zabezpečení | Úspěch | *Metoda*registrovaná uživatelem | Tato událost nastane, když uživatel zaregistruje jednotlivou metodu. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.| 
-| Uživatel zkontroloval bezpečnostní informace. | Úspěch | Uživatel úspěšně zkontroloval informace o zabezpečení. | K této události dojde, když uživatel vybere na stránce Kontrola bezpečnostních údajů **dobrý tvar** .|
-| Uživatel zkontroloval bezpečnostní informace. | Selhání | Uživateli se nepodařilo zkontrolovat informace o zabezpečení. | K této události dojde, když uživatel vybere na stránce Kontrola bezpečnostních údajů **dobrý tvar** , ale v back-endu dojde k nějakému problému.|
-| Uživatel odstranil informace o zabezpečení. | Úspěch | Uživatel odstranil *metodu*. | Tato událost nastane, když uživatel odstraní jednotlivou metodu. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.|
-| Uživatel odstranil informace o zabezpečení. | Selhání | Uživateli se nepovedlo odstranit *metodu*. | K této události dojde, když se uživatel pokusí odstranit metodu, ale pokus z nějakého důvodu se nezdařil. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.|
-| Uživatel změnil výchozí bezpečnostní údaje. | Úspěch | Uživatel změnil výchozí bezpečnostní údaje pro *metodu*. | K této události dojde, když uživatel změní výchozí metodu. *Metoda* může být oznamování ověřovací aplikace, kód z aplikace ověřovatele nebo tokenu, zavolat + x XXXXXXXXXX, text a kód na + X XXXXXXXXX a tak dále.|
-| Uživatel změnil výchozí bezpečnostní údaje. | Selhání | Uživateli se nepodařilo změnit výchozí bezpečnostní údaje pro *metodu*. | K této události dojde, když se uživatel pokusí změnit výchozí metodu, ale pokus z nějakého důvodu se nezdaří. *Metoda* může být oznamování ověřovací aplikace, kód z aplikace ověřovatele nebo tokenu, zavolat + x XXXXXXXXXX, text a kód na + X XXXXXXXXX a tak dále.|
+| Uživatel zaregistroval všechny požadované bezpečnostní údaje | Úspěch | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | K této události dochází, když uživatel úspěšně dokončil registraci.|
+| Uživatel zaregistroval všechny požadované bezpečnostní údaje | Selhání | Uživatel zrušil registraci bezpečnostních údajů. | K této události dochází, když uživatel zruší registraci z režimu přerušení.|
+| Uživatel registrované bezpečnostní údaje | Úspěch | Uživatel registrovaná *metoda*. | K této události dochází, když uživatel zaregistruje individuální metodu. *Metoda* může být aplikace Authenticator, telefon, e-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.| 
+| Uživatel zkontroloval bezpečnostní údaje | Úspěch | Uživatel úspěšně zkontroloval bezpečnostní údaje. | K této události dojde, když uživatel vybere na stránce kontroly bezpečnostních **údajů.**|
+| Uživatel zkontroloval bezpečnostní údaje | Selhání | Uživateli se nepodařilo zkontrolovat bezpečnostní údaje. | K této události dojde, když uživatel vybere **vypadá dobře** na stránce kontroly bezpečnostních údajů, ale něco selže na back-endu.|
+| Uživatel odstranil bezpečnostní údaje | Úspěch | Metoda odstraněna *uživatelem*. | K této události dochází, když uživatel odstraní jednotlivé metody. *Metoda* může být aplikace Authenticator, telefon, e-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.|
+| Uživatel odstranil bezpečnostní údaje | Selhání | Uživateli se nepodařilo odstranit *metodu*. | K této události dochází, když se uživatel pokusí odstranit metodu, ale pokus se z nějakého důvodu nezdaří. *Metoda* může být aplikace Authenticator, telefon, e-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.|
+| Uživatel změnil výchozí bezpečnostní údaje | Úspěch | Uživatel změnil výchozí bezpečnostní údaje pro *metodu*. | K této události dochází, když uživatel změní výchozí metodu. *Metoda* může být Oznámení aplikace Authenticator, Kód z mé ověřovací aplikace nebo tokenu, Call +X XXXXXXXXXX, Text kód +X XXXXXXXXX a tak dále.|
+| Uživatel změnil výchozí bezpečnostní údaje | Selhání | Uživateli se nepodařilo změnit výchozí informace o zabezpečení *metody*. | K této události dochází, když se uživatel pokusí změnit výchozí metodu, ale pokus se z nějakého důvodu nezdaří. *Metoda* může být Oznámení aplikace Authenticator, Kód z mé ověřovací aplikace nebo tokenu, Call +X XXXXXXXXXX, Text kód +X XXXXXXXXX a tak dále.|
 
-## <a name="troubleshooting-interrupt-mode"></a>Řešení potíží s režimem přerušení
-
-| Příznak | Postup při řešení potíží |
-| --- | --- |
-| Nezobrazuje se očekávané metody, které je třeba zobrazit. | 1. Ověřte, jestli má uživatel roli správce Azure AD. Pokud ano, podívejte se na rozdíly v zásadách správce SSPR. <br> 2. Zjistěte, jestli je uživatel přerušený kvůli Multi-Factor Authentication vynucení registrace nebo vynucení registrace SSPR. Informace o tom, které metody se mají zobrazit, najdete v tématu [vývojový diagram](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes) v části kombinované režimy registrace. <br> 3. Zjistěte, jak nedávno došlo ke změně zásad Multi-Factor Authentication nebo SSPR. Pokud byla změna poslední, může trvat nějakou dobu, než se aktualizované zásady rozšíří.|
-
-## <a name="troubleshooting-manage-mode"></a>Řešení potíží s režimem správy
+## <a name="troubleshooting-interrupt-mode"></a>Poradce při potížích s režimem přerušení
 
 | Příznak | Postup při řešení potíží |
 | --- | --- |
-| Nemám možnost přidat konkrétní metodu. | 1. Zjistěte, jestli je metoda povolená pro Multi-Factor Authentication nebo pro SSPR. <br> 2. Pokud je metoda povolená, uložte zásady znovu a počkejte 1-2 hodin před testováním. <br> 3. Pokud je tato metoda povolená, ujistěte se, že uživatel už nevytvořil maximální počet metod, které mají povoleno nastavení.|
+| Nevidím metody, které jsem očekával. | 1. Zkontrolujte, jestli má uživatel roli správce Azure AD. Pokud ano, zobrazte rozdíly zásad správce sspr. <br> 2. Zjistěte, zda je uživatel přerušen z důvodu vynucení registrace vícefaktorového ověřování nebo vynucení registrace snop. Viz [vývojový diagram](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes) v části "Kombinované registrační režimy" určit, které metody by měly být zobrazeny. <br> 3. Určete, jak nedávno byla změněna zásada vícefaktorového ověřování nebo samodotykového ověřování. Pokud byla změna nedávná, může chvíli trvat, než se aktuagovaná zásada rozšíří.|
+
+## <a name="troubleshooting-manage-mode"></a>Poradce při potížích se správou režimu
+
+| Příznak | Postup při řešení potíží |
+| --- | --- |
+| Nemám možnost přidat konkrétní metodu. | 1. Zjistěte, zda je metoda povolena pro vícefaktorové ověřování nebo pro samodotykové ověřování. <br> 2. Pokud je metoda povolena, uložte zásady znovu a počkejte 1-2 hodiny před testováním znovu. <br> 3. Pokud je metoda povolena, ujistěte se, že uživatel ještě nenastavil maximální počet této metody, kterou může nastavit.|
 
 ## <a name="disable-combined-registration"></a>Zakázat kombinovanou registraci
 
-Když uživatel zaregistruje telefonní číslo nebo mobilní aplikaci v novém kombinovaném prostředí, doplní naše služba sadu příznaků (StrongAuthenticationMethods) pro tyto metody tohoto uživatele. Tato funkce umožňuje uživateli provádět Multi-Factor Authentication s těmito metodami, kdykoli je to nutné Multi-Factor Authentication.
+Když uživatel zaregistruje telefonní číslo nebo mobilní aplikaci v novém kombinovaném prostředí, naše služba označí sadu příznaků (StrongAuthenticationMethods) pro tyto metody pro tohoto uživatele. Tato funkce umožňuje uživateli provádět vícefaktorové ověřování s těmito metodami vždy, když je vyžadováno vícefaktorové ověřování.
 
-Pokud správce povolí verzi Preview, uživatelé se budou registrovat prostřednictvím nového prostředí a potom správce zakáže verzi Preview, uživatelé se můžou nevědomě zaregistrovat pro Multi-Factor Authentication taky.
+Pokud správce povolí náhled, uživatelé se zaregistrují prostřednictvím nového prostředí a pak správce zakáže náhled, uživatelé mohou nevědomky být registrováni také pro vícefaktorové ověřování.
 
-Pokud uživatel, který dokončil kombinovanou registraci, přejde na stránku pro registraci samoobslužného resetování hesla (SSPR) na adrese [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup), zobrazí se uživateli výzva k provedení Multi-Factor Authentication předtím, než bude mít přístup k této stránce. Tento krok se očekává z technického hlediska, ale pro uživatele, kteří se dřív zaregistrovali jenom pro SSPR, je nový. I když tento dodatečný krok vylepšuje stav zabezpečení uživatele tím, že poskytuje další úroveň zabezpečení, správci můžou chtít vrátit zpátky své uživatele, aby už nemohli provádět Multi-Factor Authentication.  
+Pokud uživatel, který dokončil kombinovanou registraci, přejde na aktuální stránku [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)registrace samoobslužného hesla (SSPR) na adrese , bude uživatel před přístupem k této stránce vyzván k provedení vícefaktorového ověřování. Tento krok se očekává z technického hlediska, ale je nový pro uživatele, kteří byli dříve registrováni pouze pro sspr. I když tento další krok vylepšuje stav zabezpečení uživatele tím, že poskytuje další úroveň zabezpečení, správci mohou chtít vrátit zpět své uživatele, aby již nemohli provádět vícefaktorové ověřování.  
 
-### <a name="how-to-roll-back-users"></a>Vrácení uživatelů zpět
+### <a name="how-to-roll-back-users"></a>Jak vrátit zpět uživatele
 
-Pokud jako správce chcete resetovat nastavení Multi-Factor Authentication uživatele, můžete použít skript prostředí PowerShell, který je k dispozici v následující části. Skript vymaže vlastnost StrongAuthenticationMethods pro mobilní aplikaci nebo telefonní číslo uživatele. Pokud tento skript spustíte pro uživatele, bude nutné ho znovu zaregistrovat pro Multi-Factor Authentication, pokud ho potřebují. Před vrácením všech ovlivněných uživatelů doporučujeme otestovat vrácení zpět s jedním nebo dvěma uživateli.
+Pokud jako správce chcete obnovit nastavení vícefaktorového ověřování uživatele, můžete použít skript Prostředí PowerShell uvedený v další části. Skript vymaže vlastnost StrongAuthenticationMethods pro mobilní aplikaci nebo telefonní číslo uživatele. Pokud spustíte tento skript pro uživatele, budou muset znovu zaregistrovat pro vícefaktorové ověřování, pokud ho potřebují. Doporučujeme testování vrácení zpět s jedním nebo dvěma uživateli před vrácením zpět všechny ovlivněné uživatele.
 
-Následující kroky vám pomůžou vrátit uživatele nebo skupinu uživatelů.
+Následující kroky vám pomohou vrátit zpět uživatele nebo skupinu uživatelů.
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
-1. Nainstalujte příslušné moduly Azure AD PowerShellu. V okně PowerShellu spusťte tyto příkazy a nainstalujte moduly:
+1. Nainstalujte příslušné moduly Prostředí Azure AD PowerShell. V okně Prostředí PowerShell spusťte tyto příkazy k instalaci modulů:
 
    ```powershell
    Install-Module -Name MSOnline
    Import-Module MSOnline
    ```
 
-1. Uložte seznam ovlivněných ID objektů uživatele do vašeho počítače jako textový soubor s jedním ID na řádek. Poznamenejte si umístění souboru.
-1. Do počítače uložte následující skript a poznamenejte si umístění skriptu:
+1. Uložte seznam ID ovlivněných objektů uživatele do počítače jako textový soubor s jedním ID na řádek. Poznamenejte si umístění souboru.
+1. Uložte následující skript do počítače a poznamenejte si umístění skriptu:
 
    ```powershell
    <# 
@@ -146,20 +146,20 @@ Následující kroky vám pomůžou vrátit uživatele nebo skupinu uživatelů.
 
 #### <a name="rollback"></a>Vrácení zpět
 
-V okně PowerShellu spusťte následující příkaz, který zadává skript a umístění souborů uživatele. Po zobrazení výzvy zadejte přihlašovací údaje globálního správce. Skript vypíše výstup každé operace aktualizace uživatele.
+V okně Prostředí PowerShell spusťte následující příkaz a zařazuj umístění skriptů a uživatelských souborů. Po zobrazení výzvy zadejte pověření globálního správce. Skript bude výstup výsledek každé operace aktualizace uživatele.
 
 `<script location> -path <user file location>`
 
-### <a name="disable-the-preview-experience"></a>Zakázat prostředí verze Preview
+### <a name="disable-the-preview-experience"></a>Zakázání náhledu
 
-Chcete-li zakázat prostředí Preview pro uživatele, proveďte tyto kroky:
+Chcete-li uživatelům zakázat prostředí náhledu, proveďte následující kroky:
 
-1. Přihlaste se k Azure Portal jako správce uživatele.
-2. Přejděte na **Azure Active Directory** > **nastavení uživatele** > **Spravovat nastavení pro přístupové panely funkce verze Preview**.
-3. V části **Uživatelé můžou používat funkce verze Preview k registraci a správě bezpečnostních údajů**, nastavit selektor na **žádný**a pak vybrat **Uložit**.
+1. Přihlaste se k portálu Azure jako správce uživatele.
+2. Přejděte na nastavení uživatele **služby Azure Active** > **Directory:** > **Správa nastavení funkcí náhledu přístupového panelu**.
+3. V části **Uživatelé mohou používat funkce náhledu pro registraci a správu bezpečnostních údajů**, nastavte volič na **žádný**a pak vyberte **Uložit**.
 
-Uživatelé už nebudou vyzváni k registraci pomocí prostředí Preview.
+Uživatelé již nebudou vyzváni k registraci pomocí prostředí náhledu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si další informace o veřejné verzi Preview kombinované registrace pro Samoobslužné resetování hesla a službu Azure Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)
+* [Další informace o verzi Public Preview kombinované registrace pro samoobslužné resetování hesla a azure multifaktorové ověřování](concept-registration-mfa-sspr-combined.md)

@@ -1,6 +1,6 @@
 ---
 title: Povolení a zobrazení diagnostických protokolů pro Azure Data Lake Analytics
-description: Naučte se nastavit a získat přístup k protokolům diagnostiky pro Azure Data Lake Analytics
+description: Pochopit, jak nastavit diagnostické protokoly pro Azure Data Lake Analytics a získat k nim přístup
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
@@ -9,56 +9,56 @@ ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60616487"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Přístup k protokolům diagnostiky pro Azure Data Lake Analytics
 
-Protokolování diagnostiky umožňuje shromažďovat záznamy pro audit dat přístup. Tyto protokoly obsahují informace jako například:
+Diagnostické protokolování umožňuje shromažďovat stopy auditu přístupu k datům. Tyto protokoly poskytují informace, jako jsou:
 
-* Seznam uživatelů, kteří používaná data.
-* Jak často data potřebujete.
-* Jak velký objem dat uložený v účtu.
+* Seznam uživatelů, kteří přistupovali k datům.
+* Jak často jsou data přístupná.
+* Kolik dat je uloženo v účtu.
 
 ## <a name="enable-logging"></a>Povolit protokolování
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 
-2. Otevřete svůj účet Data Lake Analytics a vyberte **diagnostické protokoly** z __monitorování__ oddílu. V dalším kroku vyberte __zapnout diagnostiku__.
+2. Otevřete svůj účet Data Lake Analytics a v části __Monitor__ vyberte **Diagnostické protokoly.** Dále vyberte __Zapnout diagnostiku__.
 
-    ![Zapnout diagnostiku shromažďovat auditu a vyžádat protokoly](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
+    ![Zapnutí diagnostiky pro shromažďování protokolů auditu a požadavků](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
-3. Z __nastavení diagnostiky__, zadejte __název__ pro tuto konfiguraci protokolování a pak vyberte protokolování.
+3. V __části Nastavení diagnostiky__zadejte __název__ pro tuto konfiguraci protokolování a vyberte možnosti protokolování.
 
-    ![Zapnout diagnostiku shromažďovat auditu a žádat o protokoly](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "povolení diagnostických protokolů")
+    ![Zapnutí diagnostiky pro shromažďování protokolů auditu a požadavků](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "Povolení diagnostických protokolů")
 
-   * Můžete se k obchodu a zpracovávat je třemi různými způsoby.
+   * Můžete se rozhodnout ukládat/zpracovávat data třemi různými způsoby.
 
-     * Vyberte __archivovat do účtu úložiště__ k ukládání protokolů v účtu služby Azure storage. Tuto možnost použijte, pokud chcete archivovat data. Pokud vyberete tuto možnost, musíte zadat účet služby Azure storage k uložení protokolů k.
+     * Vyberte __Archivovat do účtu úložiště__ pro ukládání protokolů v účtu úložiště Azure. Tuto možnost použijte, pokud chcete data archivovat. Pokud vyberete tuto možnost, musíte zadat účet úložiště Azure pro uložení protokolů.
 
-     * Vyberte **Stream do centra událostí** data protokolu Streamovat do centra událostí Azure. Tuto možnost použijte, pokud máte kanál zpracování příjmu dat, který analyzuje příchozí protokoly v reálném čase. Pokud vyberete tuto možnost, musíte zadat podrobnosti pro Azure Event Hubs, kterou chcete použít.
+     * Vyberte **Stream do centra událostí,** chcete-li streamovat data protokolu do Centra událostí Azure. Tuto možnost použijte, pokud máte kanál následného zpracování, který analyzuje příchozí protokoly v reálném čase. Pokud vyberete tuto možnost, musíte zadat podrobnosti pro Azure Event Hub, který chcete použít.
 
-     * Vyberte __odesílat do Log Analytics__ odesílat data do služby Azure Monitor. Tuto možnost použijte, pokud budete chtít používat protokoly Azure monitoru ke shromažďování a analýza protokolů.
-   * Určete, jestli chcete získat protokoly auditu nebo žádost o protokoly nebo obojí.  Požadavek protokolu zaznamená každého požadavku rozhraní API. Protokol auditu zaznamenává všechny operace, které jsou aktivovány tuto žádost rozhraní API.
+     * Chcete-li odeslat data do služby Azure Monitor, vyberte __odeslat do analýzy protokolů.__ Tuto možnost použijte, pokud chcete použít protokoly Azure Monitor ke shromažďování a analýze protokolů.
+   * Určete, zda chcete získat protokoly auditu nebo protokoly požadavků nebo obojí.  Protokol požadavků zachytí každý požadavek rozhraní API. Protokol auditu zaznamenává všechny operace, které jsou spuštěny tímto požadavkem rozhraní API.
 
-   * Pro __archivovat do účtu úložiště__, zadejte počet dnů uchování data.
+   * V __poli Archivovat do účtu úložiště__zadejte počet dní, po které mají být data uchována.
 
    * Klikněte na __Uložit__.
 
         > [!NOTE]
-        > Musíte vybrat buď __archivovat do účtu úložiště__, __Stream do centra událostí__ nebo __odesílat do Log Analytics__ před kliknutím na tlačítko __Uložit__ tlačítko.
+        > Před kliknutím na tlačítko __Uložit__ je musíte vybrat buď __Archivovat do účtu úložiště__, __Streamovat do centra událostí__ nebo __Odeslat do analýzy protokolů.__
 
-### <a name="use-the-azure-storage-account-that-contains-log-data"></a>Použijte účet služby Azure Storage, který obsahuje data protokolu
+### <a name="use-the-azure-storage-account-that-contains-log-data"></a>Použití účtu Azure Storage, který obsahuje data protokolu
 
-1. Kontejnery objektů blob, které obsahují data protokolování zobrazíte otevřít účet úložiště Azure používané pro Data Lake Analytics pro protokolování a pak klikněte na tlačítko __objekty BLOB__.
+1. Pokud chcete zobrazit kontejnery objektů blob, které uchovávají data protokolování, otevřete účet Azure Storage používaný pro Analýzu datového jezera pro protokolování a klikněte na __objekty BLOB__.
 
-   * Kontejner **insights – protokoly auditu** obsahuje protokoly auditu.
-   * Kontejner **insights protokoly žádosti** obsahuje protokoly požadavku.
+   * Kontejner **insights-protokoly-audit** obsahuje protokoly auditu.
+   * Kontejner **insights protokoly protokoly** obsahuje protokoly požadavků.
 
-2. V rámci kontejnerů protokoly se budou ukládat v rámci následující strukturu souborů:
+2. V kontejnerech jsou protokoly uloženy pod následující strukturou souborů:
 
         resourceId=/
           SUBSCRIPTIONS/
@@ -77,23 +77,23 @@ Protokolování diagnostiky umožňuje shromažďovat záznamy pro audit dat př
                                     PT1H.json
 
    > [!NOTE]
-   > `##` Položky v cestě obsahují rok, měsíc, den a hodina, ve kterém byla vytvořena v protokolu. Data Lake Analytics vytvoří jeden soubor každou hodinu, takže `m=` vždy obsahuje hodnotu `00`.
+   > Položky `##` v cestě obsahují rok, měsíc, den a hodinu, ve kterých byl protokol vytvořen. Data Lake Analytics vytváří jeden `m=` soubor každou hodinu, takže vždy obsahuje hodnotu `00`.
 
     Jako příklad může být úplná cesta k protokolu auditu:
 
         https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json
 
-    Podobně může být úplná cesta k požadavku protokolu:
+    Podobně úplná cesta k protokolu požadavků může být:
 
         https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json
 
 ## <a name="log-structure"></a>Struktura protokolu
 
-Protokoly auditu a požadavek se předává ve strukturovaném formátu JSON.
+Protokoly auditu a požadavků jsou ve strukturovaném formátu JSON.
 
-### <a name="request-logs"></a>Vyžádat protokoly
+### <a name="request-logs"></a>Protokoly požadavků
 
-Zde je vstup vzorového v protokol žádosti ve formátu JSON. Každý objekt blob má jeden kořenový objekt volána **záznamy** , která obsahuje pole objektů protokolu.
+Zde je ukázková položka v protokolu požadavků ve formátu JSON. Každý objekt blob má jeden kořenový objekt nazývaný **záznamy,** který obsahuje pole objektů protokolu.
 
     {
     "records":
@@ -123,34 +123,34 @@ Zde je vstup vzorového v protokol žádosti ve formátu JSON. Každý objekt bl
       ]
     }
 
-#### <a name="request-log-schema"></a>Schéma požadavku protokolu
+#### <a name="request-log-schema"></a>Vyžádat schéma protokolu
 
-| Název | Typ | Popis |
+| Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| time |String |Časové razítko (ve standardu UTC) v protokolu |
-| resourceId |String |Identifikátor prostředku, který operace trvalo umístit na |
-| category |String |Kategorie protokolu. Například **požadavky**. |
-| operationName |String |Název operace, která je zaznamenána. Například GetAggregatedJobHistory. |
-| resultType |String |Stav operace, například 200. |
-| callerIpAddress |String |IP adresu klientovi provádějícímu žádost |
-| correlationId |String |Identifikátor protokolu. Tato hodnota slouží k seskupení sady položek protokolu související. |
-| identity |Object |Identita, která vygeneruje protokol |
-| properties |JSON |Viz následující část (schéma vlastnosti požadavku protokolu) podrobnosti |
+| time |Řetězec |Časové razítko (v UTC) protokolu |
+| resourceId |Řetězec |Identifikátor zdroje, na který se operace uskutečnila |
+| category |Řetězec |Kategorie protokolu. Například **Požadavky**. |
+| operationName |Řetězec |Název operace, která je protokolována. Například GetAggregatedJobHistory. |
+| resultType |Řetězec |Stav operace, například 200. |
+| callerIpAddress |Řetězec |IP adresa klienta, který žádost poslaje |
+| correlationId |Řetězec |Identifikátor protokolu. Tuto hodnotu lze použít k seskupení sady souvisejících položek protokolu. |
+| identity |Objekt |Identita, která vygenerovala protokol |
+| properties |JSON |Podrobnosti naleznete v další části (Schéma vlastností protokolu požadavku) |
 
-#### <a name="request-log-properties-schema"></a>Požadavek protokolu vlastnosti schématu
+#### <a name="request-log-properties-schema"></a>Vyžádat schéma vlastností protokolu
 
-| Název | Typ | Popis |
+| Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| HttpMethod |String |Metoda protokolu HTTP se používá pro operaci. Třeba získáte. |
-| `Path` |String |Cesta operaci byla provedena |
-| RequestContentLength |int |Délka obsahu žádosti HTTP |
-| ClientRequestId |String |Identifikátor, který jednoznačně identifikuje tento požadavek |
-| StartTime |String |Čas, kdy server přijal požadavek |
-| EndTime |String |Čas, odeslání odpovědi serveru |
+| Metoda http |Řetězec |Metoda HTTP použitá pro operaci. Například GET. |
+| Cesta |Řetězec |Cesta, po které byla operace provedena |
+| Délka obsahu požadavku |int |Délka obsahu požadavku HTTP |
+| Id klienta |Řetězec |Identifikátor, který jednoznačně identifikuje tento požadavek |
+| StartTime |Řetězec |Čas, kdy server obdržel požadavek |
+| EndTime |Řetězec |Čas, kdy server odeslal odpověď |
 
 ### <a name="audit-logs"></a>Protokoly auditu
 
-Tady je vstup vzorového v protokolu auditu ve formátu JSON. Každý objekt blob má jeden kořenový objekt volána **záznamy** , která obsahuje pole objektů protokolu.
+Tady je ukázková položka v protokolu auditu ve formátu JSON. Každý objekt blob má jeden kořenový objekt nazývaný **záznamy,** který obsahuje pole objektů protokolu.
 
     {
     "records":
@@ -177,40 +177,40 @@ Tady je vstup vzorového v protokolu auditu ve formátu JSON. Každý objekt blo
 
 #### <a name="audit-log-schema"></a>Schéma protokolu auditu
 
-| Name | Typ | Popis |
+| Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| time |String |Časové razítko (ve standardu UTC) v protokolu |
-| resourceId |String |Identifikátor prostředku, který operace trvalo umístit na |
-| category |String |Kategorie protokolu. Například **auditu**. |
-| operationName |String |Název operace, která je zaznamenána. Například JobSubmitted. |
-| resultType |String |Podřízený stav pro stav úlohy (operationName). |
-| resultSignature |String |Další podrobnosti o stavu úlohy (operationName). |
-| identity |String |Uživatel, který požadované operace. Například, susan@contoso.com. |
-| properties |JSON |Viz následující část (schéma vlastnosti protokolu auditu) podrobnosti |
+| time |Řetězec |Časové razítko (v UTC) protokolu |
+| resourceId |Řetězec |Identifikátor zdroje, na který se operace uskutečnila |
+| category |Řetězec |Kategorie protokolu. Například **Audit**. |
+| operationName |Řetězec |Název operace, která je protokolována. Například JobSubmitted. |
+| resultType |Řetězec |Dílčí stav stavu úlohy (operationName). |
+| resultSignature |Řetězec |Další podrobnosti o stavu úlohy (operationName). |
+| identity |Řetězec |Uživatel, který požádal o operaci. Například, susan@contoso.com. |
+| properties |JSON |Podrobnosti naleznete v další části (Schéma vlastností protokolu auditu). |
 
 > [!NOTE]
-> **Hodnota resultType** a **resultSignature** poskytují informace o výsledku operace a obsahovat pouze hodnotu, pokud je operace dokončená. Například pouze obsahovat hodnotu při **operationName** obsahuje hodnotu **JobStarted** nebo **JobEnded**.
+> **resultType** a **resultSignature** poskytují informace o výsledku operace a obsahují hodnotu pouze v případě, že byla operace dokončena. Například obsahují hodnotu pouze v **případě, že operationName** obsahuje hodnotu **JobStarted** nebo **JobEnded**.
 >
 >
 
-#### <a name="audit-log-properties-schema"></a>Schéma vlastnosti protokolu auditu
+#### <a name="audit-log-properties-schema"></a>Schéma vlastností protokolu auditování
 
-| Název | Typ | Popis |
+| Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| JobId |String |ID přiřazených k úloze |
-| Název úlohy |String |Název, který byl k dispozici pro úlohu |
-| JobRunTime |String |Modul runtime používaný ke zpracování úlohy. |
-| SubmitTime |String |Čas (v UTC), který úloha byla odeslána. |
-| StartTime |String |Při spuštění úlohy spuštění po odeslání (ve standardu UTC) |
-| EndTime |String |Čas ukončení úlohy |
-| Paralelismus |String |Počet jednotek Data Lake Analytics požadovaná pro tuto úlohu během odesílání |
+| JobId |Řetězec |ID přiřazené k úloze |
+| Název_pracovní pozice |Řetězec |Název, který byl poskytnut pro úlohu |
+| JobRunTime |Řetězec |Doba běhu použitá ke zpracování úlohy |
+| OdeslatČas |Řetězec |Čas (v UTC), kdy byla úloha odeslána |
+| StartTime |Řetězec |Čas spuštění úlohy po odeslání (v utc) |
+| EndTime |Řetězec |Čas ukončení úlohy |
+| Paralelnost |Řetězec |Počet jednotek Data Lake Analytics požadovaných pro tuto úlohu během odesílání |
 
 > [!NOTE]
-> **SubmitTime**, **StartTime**, **EndTime**, a **paralelismu** poskytují informace o operaci. Tyto položky pouze obsahovat hodnotu, pokud, které operace má zahájena nebo dokončena. Například **SubmitTime** obsahuje pouze hodnotu po **operationName** má hodnotu **JobSubmitted**.
+> **SubmitTime**, **StartTime**, **EndTime**a **Parallelism** poskytují informace o operaci. Tyto položky obsahují hodnotu pouze v případě, že tato operace byla zahájena nebo dokončena. Například **SubmitTime** obsahuje pouze hodnotu po **operationName** má hodnotu **JobSubmitted**.
 
 ## <a name="process-the-log-data"></a>Zpracování dat protokolu
 
-Azure Data Lake Analytics najdete vzorový o tom, jak zpracovávat a analyzovat data protokolů. Můžete najít ukázce kódu na [ https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample ](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
+Azure Data Lake Analytics poskytuje ukázku zpracování a analýzy dat protokolu. Vzorek najdete na [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)adrese .
 
-## <a name="next-steps"></a>Další postup
-* [Přehled služby Azure Data Lake Analytics](data-lake-analytics-overview.md)
+## <a name="next-steps"></a>Další kroky
+* [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md)

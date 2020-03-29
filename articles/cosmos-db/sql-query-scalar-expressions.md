@@ -1,21 +1,21 @@
 ---
-title: Skalární výrazy v Azure Cosmos DBch dotazech SQL
-description: Seznamte se s syntaxí skalárního výrazu SQL pro Azure Cosmos DB. Tento článek také popisuje, jak kombinovat skalární výrazy do složitých výrazů pomocí operátorů.
+title: Skalární výrazy v dotazech SQL Azure Cosmos DB
+description: Přečtěte si o syntaxi skalárního výrazu SQL pro Azure Cosmos DB. Tento článek také popisuje, jak kombinovat skalární výrazy do složitých výrazů pomocí operátorů.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74870730"
 ---
-# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skalární výrazy v Azure Cosmos DBch dotazech SQL
+# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skalární výrazy v dotazech SQL Azure Cosmos DB
 
-[Klauzule SELECT](sql-query-select.md) podporuje skalární výrazy. Skalární výraz, který je kombinací symbolů a operátorů, které lze vyhodnotit na získání jedné hodnoty. Příklady skalárních výrazů: konstanty, odkazy na vlastnosti, odkazy na prvky pole, odkazy na aliasy nebo volání funkcí. Skalární výrazy lze kombinovat do složitých výrazů pomocí operátorů.
+Klauzule [SELECT](sql-query-select.md) podporuje skalární výrazy. Skalární výraz je kombinace symbolů a operátorů, které lze vyhodnotit získat jednu hodnotu. Příklady skalárních výrazů: konstanty, odkazy na vlastnosti, odkazy na prvky pole, odkazy na alias nebo volání funkcí. Skalární výrazy lze kombinovat do složitých výrazů pomocí operátorů.
 
 ## <a name="syntax"></a>Syntaxe
   
@@ -50,60 +50,60 @@ ms.locfileid: "74870730"
   
 - `<constant>`  
   
-   Reprezentuje hodnotu konstanty. Zobrazit [konstanty](sql-query-constants.md) podrobné informace.  
+   Představuje konstantní hodnotu. Podrobnosti naleznete v části [Konstanty.](sql-query-constants.md)  
   
 - `input_alias`  
   
-   Představuje hodnoty definované `input_alias` zavedený `FROM` klauzuli.  
-  Tato hodnota je zaručeno, že nebudou **nedefinované** –**nedefinované** hodnoty ve vstupu se přeskočí.  
+   Představuje hodnotu definovanou `input_alias` zavedenou `FROM` v klauzuli.  
+  Tato hodnota je zaručeno, že není **definována** –**nedefinované** hodnoty ve vstupu jsou přeskočeny.  
   
 - `<scalar_expression>.property_name`  
   
-   Reprezentuje hodnotu vlastnosti objektu. Pokud vlastnost neexistuje nebo se na vlastnost odkazuje na hodnotu, která není objekt, je výraz vyhodnocen jako **nedefinovaná** hodnota.  
+   Představuje hodnotu vlastnosti objektu. Pokud vlastnost neexistuje nebo vlastnost je odkazována na hodnotu, která není objektem, pak výraz vyhodnotí **na nedefinovanou** hodnotu.  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Představuje hodnotu vlastnosti s názvem `property_name` nebo element pole s indexovým `array_index` pole. Pokud vlastnost nebo pole index neexistuje nebo index vlastnost nebo pole se odkazuje na hodnotu, která není objekt nebo pole a pak je výraz vyhodnocen nedefinovaná hodnota.  
+   Představuje hodnotu vlastnosti `property_name` s name nebo `array_index` element pole s indexem pole. Pokud index vlastnosti/pole neexistuje nebo je index vlastnosti/pole odkazován na hodnotu, která není objektem nebo polem, vyhodnotí se výraz na nedefinovanou hodnotu.  
   
 - `unary_operator <scalar_expression>`  
   
-   Představuje operátor, který se použije na jednu hodnotu. Zobrazit [operátory](sql-query-operators.md) podrobné informace.  
+   Představuje operátor, který je použit pro jednu hodnotu. Podrobnosti najdete v části [Operátoři.](sql-query-operators.md)  
   
 - `<scalar_expression> binary_operator <scalar_expression>`  
   
-   Představuje operátor, který se použije na dvě hodnoty. Zobrazit [operátory](sql-query-operators.md) podrobné informace.  
+   Představuje operátor, který je použit na dvě hodnoty. Podrobnosti najdete v části [Operátoři.](sql-query-operators.md)  
   
 - `<scalar_function_expression>`  
   
-   Představuje hodnou definovanou ve výsledku volání funkce.  
+   Představuje hodnotu definovanou výsledkem volání funkce.  
   
 - `udf_scalar_function`  
   
-   Název definovaný uživatelem skalární funkci.  
+   Název uživatelem definované skalární funkce.  
   
 - `builtin_scalar_function`  
   
-   Název integrovanou skalární funkci.  
+   Název vestavěné skalární funkce.  
   
 - `<create_object_expression>`  
   
-   Představuje hodnotu získat tak, že vytvoříte nový objekt v zadaných vlastností a jejich hodnoty.  
+   Představuje hodnotu získanou vytvořením nového objektu se zadanými vlastnostmi a jejich hodnotami.  
   
 - `<create_array_expression>`  
   
-   Reprezentuje hodnotu získala při vytváření nové pole pomocí zadaných hodnot jako prvky  
+   Představuje hodnotu získanou vytvořením nového pole se zadanými hodnotami jako prvky.  
   
 - `parameter_name`  
   
-   Reprezentuje hodnotu zadaný název parametru. Názvy parametrů musí mít jeden \@ jako první znak.  
+   Představuje hodnotu zadaného názvu parametru. Názvy parametrů musí \@ mít jeden jako první znak.  
   
 ## <a name="remarks"></a>Poznámky
   
-  Při volání předdefinované nebo uživatelsky definované skalární funkce musí být definovány všechny argumenty. Pokud některý z argumentů není definován, nebude volána funkce a bude výsledek nedefinovaný.  
+  Při volání vestavěné nebo uživatelem definované skalární funkce musí být definovány všechny argumenty. Pokud některý z argumentů není definován, funkce nebude volána a výsledek nebude definován.  
   
-  Při vytvoření objektu, bude přeskočen a není součástí vytvořený objekt jakákoli vlastnost, která je přiřazena hodnota undefined.  
+  Při vytváření objektu bude jakákoli vlastnost, které je přiřazena nedefinovaná hodnota, přeskočena a nebude zahrnuta do vytvořeného objektu.  
   
-  Při vytváření pole, libovolný element, který je přiřazen **nedefinované** hodnota bude přeskočen a není součástí vytvořený objekt. To způsobí, že další definovaný prvek k provedení jeho tak, že vytvořené pole nebude přeskočena indexy.  
+  Při vytváření pole bude jakákoli hodnota prvku, které je **přiřazena nedefinovaná** hodnota, přeskočena a nebude zahrnuta do vytvořeného objektu. To způsobí, že další definovaný prvek zaujmout své místo takovým způsobem, že vytvořené pole nebude mít přeskočené indexy.  
 
 ## <a name="examples"></a>Příklady
 
@@ -142,5 +142,5 @@ Výsledky jsou následující:
 ## <a name="next-steps"></a>Další kroky
 
 - [Úvod do Azure Cosmos DB](introduction.md)
-- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Poddotazy](sql-query-subquery.md)
+- [Ukázky služby Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Poddotazů](sql-query-subquery.md)

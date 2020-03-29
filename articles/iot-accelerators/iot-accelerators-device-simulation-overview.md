@@ -1,6 +1,6 @@
 ---
-title: Přehled simulace zařízení – Azure | Dokumentace Microsoftu
-description: Popis akcelerátor řešení simulace zařízení a její možnosti.
+title: Přehled simulace zařízení – Azure | Dokumenty společnosti Microsoft
+description: Popis akcelerátoru řešení Simulace zařízení a jeho schopností.
 author: dominicbetts
 manager: philmea
 ms.service: iot-accelerators
@@ -10,57 +10,57 @@ ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
 ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65464874"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Přehled akcelerátorů řešení simulace zařízení
 
-V cloudové řešení IoT vaše zařízení připojit k koncového bodu cloudu k odesílání telemetrických dat, jako je například teploty, umístění a stav. Řešení využívá tato telemetrie, umožňuje provádět akce a vyvoďte z něj.
+V cloudovém řešení IoT se vaše zařízení připojují ke koncovému bodu cloudu a odesílají telemetrii, jako je teplota, umístění a stav. Vaše řešení spotřebovává tuto telemetrická data, což vám umožní provést akce nebo odvodit poznatky z něj.
 
-Při vývoji řešení IoT, experimentování a testování se základními postupy procesu. Simulace je důležitý nástroj během tohoto procesu. Simulace zařízení vám umožňuje:
+Při vývoji řešení IoT jsou experimentování a testování základní součástí tohoto procesu. Simulace je důležitým nástrojem v průběhu tohoto procesu. Pomocí simulace zařízení můžete:
 
-* Rychlé zprovoznění prototypu a potom iterovat úpravou simulované zařízení chování v reálném čase. Tento postup umožňuje prokázat si myšlenkou před investic do hardwaru nákladné. Můžete vytvořit vlastní zařízení prostřednictvím webového uživatelského rozhraní k vygenerování prototypu zařízení v řádu sekund.
-* Proveďte simulaci chování skutečných zařízení a ověřte, že celé řešení funguje podle očekávání. Můžete používat skripty pro chování komplexní zařízení pomocí JavaScriptu ke generování realistické Simulovaná telemetrická data.
-* Škálování otestování řešení simulace ve špičce normální a za podmínek zatížení ve špičce. Testy škálování také vám pomůže s správné velikosti prostředků Azure potřebných ke spuštění vašeho řešení.
+* Rychle zprovoznit prototyp a poté iterovat úpravou simulované chování zařízení za běhu. Tento proces vám umožní prokázat myšlenku před investováním do nákladného hardwaru. Můžete vytvořit vlastní zařízení prostřednictvím webového uživatelského rozhraní pro generování prototypu zařízení během několika sekund.
+* Ověření řešení funguje podle očekávání ze zařízení na řešení simulací chování zařízení v reálném světě. Můžete skriptovat složité chování zařízení pomocí JavaScriptu pro generování realistické simulované telemetrie.
+* Škálovací test vašeho řešení simulací normálního, špičkového a přesahujícího podmínky špičkového zatížení. Škálovací testy vám taky pomůžou správně zvětšit prostředky Azure potřebné ke spuštění vašeho řešení.
 
-![Ukázka dronu simulace](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
+![Ukázková simulace dronů](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
 
-Pomocí simulace zařízení můžete definovat modely zařízení pro simulaci skutečných zařízení. Tento model zahrnuje formáty zpráv, dvojčete vlastnosti a metody. Můžete také simulovat chování komplexní zařízení pomocí JavaScriptu.
+Pomocí simulace zařízení můžete definovat modely zařízení pro simulaci skutečných zařízení. Tento model obsahuje formáty zpráv, vlastnosti dvojčete a metody. Můžete také simulovat složité chování zařízení pomocí JavaScriptu.
 
-Můžete spouštět simulace pro tisíce zařízení připojující se k libovolné službě IoT hub. Abyste s testováním, Volitelně můžete nasadit službu IoT hub společně s simulace zařízení pro samostatné prostředí.
+Můžete spustit simulace pro jedno až tisíce zařízení, která se připojují k libovolnému centru IoT hub. Chcete-li pomoci s testováním, můžete volitelně nasadit centrum IoT spolu se simulací zařízení pro samostatné prostředí.
 
-Simulace zařízení je zdarma. Simulace zařízení se ale nasadí do vašeho předplatného Azure v cloudu a využívat prostředky Azure. Pokud simulace zařízení nevyhovuje vašim požadavkům [zdrojový kód je také k dispozici na Githubu](https://github.com/Azure/device-simulation-dotnet) můžete zkopírovat a upravit.
+Simulace zařízení je zdarma. Simulace zařízení se však nasadí do vašeho předplatného Azure v cloudu a spotřebovává prostředky Azure. Pokud simulace zařízení nesplňuje vaše požadavky, [zdrojový kód je také k dispozici na GitHubu,](https://github.com/Azure/device-simulation-dotnet) který můžete kopírovat a upravovat.
 
-## <a name="sample-simulations"></a>Ukázka simulace
+## <a name="sample-simulations"></a>Ukázkové simulace
 
-Při nasazení simulace zařízení získáte některé ukázkové simulace a ukázková zařízení. Tyto ukázky můžete použít pro další informace o použití simulaci zařízení. Pokud chcete začít, spusťte [ukázkový simulace, která simuluje 10 trucks](quickstart-device-simulation-deploy.md). Můžete také [vytvořit vlastní simulaci pomocí jednoho z mnoha ukázková zařízení, které jsou k dispozici](iot-accelerators-device-simulation-create-simulation.md).
+Při nasazení simulace zařízení získáte několik ukázkových simulací a ukázkových zařízení. Tyto ukázky můžete použít k tomu, abyste se dozvěděli, jak používat simulaci zařízení. Chcete-li začít, spusťte [ukázkovou simulaci, která simuluje 10 nákladních vozidel](quickstart-device-simulation-deploy.md). Můžete také [vytvořit vlastní simulaci pomocí jednoho z mnoha ukázkových zařízení .](iot-accelerators-device-simulation-create-simulation.md)
 
 ![Konfigurace simulace](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
-## <a name="custom-simulated-devices"></a>Vlastní simulovaných zařízení
+## <a name="custom-simulated-devices"></a>Vlastní simulovaná zařízení
 
-Můžete použít k simulaci zařízení [vytvářet vlastní modely](iot-accelerators-device-simulation-create-custom-device.md) pro použití v simulace. Můžete například definovat nový model zařízení lednice, která odesílá telemetrické údaje teploty a vlhkosti. Vlastní Simulovaná zařízení jsou ideální pro jednoduché zařízení chování se náhodný zvyšování hodnoty nebo dekrementace telemetrická data.
+Pomocí simulace zařízení můžete [vytvořit vlastní modely zařízení,](iot-accelerators-device-simulation-create-custom-device.md) které se budou používat v simulacích. Můžete například definovat nový model zařízení chladničky, který odesílá telemetrii teploty a vlhkosti. Vlastní simulovaná zařízení jsou ideální pro jednoduché chování zařízení s náhodnými, přírůstkovými nebo dekrementačními hodnotami telemetrie.
 
 ![Vytvoření modelu zařízení](media/iot-accelerators-device-simulation-overview/adddevicemodel.png)
 
-## <a name="advanced-simulated-devices"></a>Pokročilé simulovaných zařízení
+## <a name="advanced-simulated-devices"></a>Pokročilá simulovaná zařízení
 
-Pokud potřebujete větší kontrolu nad telemetrické hodnoty, které zařízení odesílá, můžete použít model pokročilé zařízení. Modely pokročilé zařízení povolit podporu jazyka JavaScript pro manipulaci s hodnotami odeslané telemetrie. Například může simulovat vnitřní teploty zaparkovaný automobilu, na horké Optimistický – jako nárůst teploty vnější, vnitřní teploty exponenciálně zvyšuje.
+Když potřebujete větší kontrolu nad hodnotami telemetrie, které zařízení odesílá, můžete použít pokročilý model zařízení. Pokročilé modely zařízení umožňují podporu JavaScriptu pro manipulaci s odeslanými hodnotami telemetrie. Například byste mohli simulovat vnitřní teplotu zaparkovaného auta za horkého slunečného dne - jak se zvyšuje vnější teplota, vnitřní teplota exponenciálně stoupá.
 
-Modely pokročilé zařízení umožňují [vytváříte a nahráváte vlastní modely zařízení](iot-accelerators-device-simulation-advanced-device.md) , které se skládají z definice JSON zařízení souboru a odpovídající soubory jazyka JavaScript.
+Pokročilé modely zařízení umožňují [vytvářet a nahrávat vlastní modely zařízení,](iot-accelerators-device-simulation-advanced-device.md) které se skládají z definičního souboru zařízení JSON a odpovídajících souborů JavaScriptu.
 
-Modely pokročilé zařízení vám umožní:
+Pokročilé modely zařízení umožňují:
 
-* Zadejte formát zprávy odeslané ze zařízení společně s typy telemetrie.
-* Vlastní skripty slouží k vytvoření hodnoty telemetrie, které se údržba stavu zařízení v průběhu času.
-* Pomocí vlastních skriptů můžete určit, jak v simulovaném zařízení reaguje na metody.
+* Zadejte formát zprávy odeslaný ze zařízení spolu s typy telemetrie.
+* Vlastní skriptování slouží ke generování telemetrických hodnot, které udržují stav zařízení v průběhu času.
+* Pomocí vlastního skriptování určete, jak simulované zařízení reaguje na metody.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o akcelerátor řešení simulace zařízení a její možnosti. Abyste mohli začít používat akcelerátor řešení, pokračujte k rychlému startu:
+V tomto článku jste se dozvěděli o akcelerátoru řešení Simulace zařízení a jeho možnostech. Chcete-li začít používat akcelerátor řešení, pokračujte na rychlý start:
 
 > [!div class="nextstepaction"]
-> [Nasadit a spustit simulaci zařízení IoT v Azure](quickstart-device-simulation-deploy.md)
+> [Nasazení a spuštění simulace zařízení IoT v Azure](quickstart-device-simulation-deploy.md)

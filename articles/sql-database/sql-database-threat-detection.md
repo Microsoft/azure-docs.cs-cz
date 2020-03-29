@@ -1,6 +1,6 @@
 ---
-title: Konfigurace rozšířené ochrany před internetovými útoky
-description: Rozšířená ochrana před internetovými útoky detekuje neobvyklé databázové aktivity, které indikují potenciální bezpečnostní hrozby pro databázi v jedné databázi nebo elastickém fondu.
+title: Konfigurace Rozšířené ochrany před internetovými útoky
+description: Pokročilá ochrana před internetovými hrozbami detekuje neobvyklé databázové aktivity označující potenciální ohrožení zabezpečení databáze v jedné databázi nebo elastickém fondu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,43 +11,43 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
 ms.openlocfilehash: 8eb8e4fccc17fe31def671cf6e8edb19d867b244
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822512"
 ---
-# <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>Azure SQL Database rozšířené ochrany před internetovými útoky pro databáze s jednou nebo ve fondu
+# <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>Azure SQL Database Advanced Threat Protection pro jednu nebo sdruženou databázi
 
-[Rozšířená ochrana před internetovými útoky](sql-database-threat-detection-overview.md) pro databáze s jednou a fondem detekuje aktivity neobvyklé ukazující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití. Rozšířená ochrana před internetovými útoky může identifikovat **potenciální INJEKTÁŽE SQL**, **přístup z neobvyklého umístění nebo datového centra**, **získat přístup z neznámého objektu zabezpečení nebo potenciálně škodlivé aplikace a získat** **pověření hrubou silou SQL** – viz Další podrobnosti najdete v podrobnostech [rozšířené ochrany před hrozbami](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
+[Pokročilá ochrana před internetovými hrozbami](sql-database-threat-detection-overview.md) pro jednu a sdruženou databázi detekuje neobvyklé aktivity indikující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití. Pokročilá ochrana před internetovými útoky může identifikovat **potenciální injektáž SQL**, **přístup z neobvyklého umístění nebo datového centra**, přístup z neznámé **holokaustu nebo potenciálně škodlivé aplikace**a pověření SQL hrubé **síly** - další podrobnosti naleznete v [výstrahách Advanced Threat Protection .](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)
 
-Můžete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mailových oznámení](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) nebo [Azure Portal](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)
+Oznámení o zjištěných hrozbách můžete dostávat prostřednictvím [e-mailových oznámení](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) nebo [portálu Azure](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)
 
-[Rozšířená ochrana před internetovými útoky](sql-database-threat-detection-overview.md) je součástí nabídky [Rozšířené služby Data Security](sql-database-advanced-data-security.md) (ADS), což je jednotný balíček pro pokročilé funkce zabezpečení SQL. Rozšířená ochrana před internetovými útoky je dostupná a spravovaná prostřednictvím centrálního portálu SQL ADS.
+[Advanced Threat Protection](sql-database-threat-detection-overview.md) je součástí [rozšířené nabídky zabezpečení dat](sql-database-advanced-data-security.md) (ADS), což je jednotný balíček pro pokročilé možnosti zabezpečení SQL. Správa Advanced Threat Protection je dostupná prostřednictvím centrálního portálu SQL ADS.
 
-## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>Nastavení rozšířené ochrany před internetovými útoky v Azure Portal
+## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>Nastavení rozšířené ochrany před internetovými hrozbami na webu Azure Portal
 
-1. [https://portal.azure.com](https://portal.azure.com)spusťte Azure Portal.
-2. Přejděte na stránku konfigurace serveru Azure SQL Database, který chcete chránit. V nastavení zabezpečení vyberte **Upřesnit zabezpečení dat**.
-3. Na stránce konfigurace **rozšířeného zabezpečení dat** :
+1. Spusťte portál [https://portal.azure.com](https://portal.azure.com)Azure na webu .
+2. Přejděte na konfigurační stránku serveru Azure SQL Database, který chcete chránit. V nastavení zabezpečení vyberte **rozšířené zabezpečení dat**.
+3. Na stránce konfigurace **rozšířeného zabezpečení dat:**
 
-   - Povolit pokročilé zabezpečení dat na serveru.
-   - V části **Upřesnit nastavení ochrany před internetovými útoky**zadejte do textového pole **Odeslat výstrahy do** seznam e-mailů, které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
+   - Povolte rozšířené zabezpečení dat na serveru.
+   - V **rozšířené nastavení ochrany před internetovými zprávami**, v poli **Odeslat výstrahy do** textového pole, zadejte seznam e-mailů pro příjem výstrah zabezpečení při zjišťování neobvyklých databázových aktivit.
   
-   ![Nastavení rozšířené ochrany před internetovými útoky](./media/sql-database-threat-detection/set_up_threat_detection.png)
+   ![Nastavení rozšířené ochrany před hrozbami](./media/sql-database-threat-detection/set_up_threat_detection.png)
 
    > [!NOTE]
-   > Ceny na snímcích obrazovky vždy neodpovídají aktuální ceně a jsou příkladem.
+   > Ceny na snímcích obrazovky ne vždy odrážejí aktuální cenu a jsou příkladem.
 
-## <a name="set-up-advanced-threat-protection-using-powershell"></a>Nastavení rozšířené ochrany před internetovými útoky pomocí PowerShellu
+## <a name="set-up-advanced-threat-protection-using-powershell"></a>Nastavení Advanced Threat Protection s využitím PowerShellu
 
-Příklad skriptu najdete v tématu [Konfigurace auditování a rozšířené ochrany před internetovými útoky pomocí prostředí PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
+Příklad skriptu [najdete v tématu Konfigurace auditování a rozšířené ochrany před hrozbami pomocí prostředí PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [Rozšířené ochraně před internetovými útoky](sql-database-threat-detection-overview.md).
-- Přečtěte si víc o [Rozšířené ochraně před internetovými útoky ve spravované instanci](sql-database-managed-instance-threat-detection.md).  
+- Další informace o [rozšířené ochraně před internetovými hrozbami](sql-database-threat-detection-overview.md).
+- Další informace o [rozšířené ochraně před internetovými hrozbami ve spravované instanci](sql-database-managed-instance-threat-detection.md).  
 - Přečtěte si další informace o [pokročilém zabezpečení dat](sql-database-advanced-data-security.md).
 - Další informace o [auditování](sql-database-auditing.md)
-- Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- Další informace o cenách najdete na stránce s [cenami SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) .  
+- Další informace o [Centru zabezpečení Azure](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Další informace o cenách najdete na [stránce s cenami databáze SQL.](https://azure.microsoft.com/pricing/details/sql-database/)  

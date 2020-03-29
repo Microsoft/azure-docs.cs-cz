@@ -1,25 +1,25 @@
 ---
-title: Klauzule GROUP BY v Azure Cosmos DB
-description: Seznamte se s klauzulí GROUP BY pro Azure Cosmos DB.
+title: Klauzule GROUP BY v Db Služby Azure Cosmos
+description: Další informace o klauzuli GROUP BY pro Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: tisande
 ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73819106"
 ---
-# <a name="group-by-clause-in-azure-cosmos-db"></a>Klauzule GROUP BY v Azure Cosmos DB
+# <a name="group-by-clause-in-azure-cosmos-db"></a>Klauzule GROUP BY v Db Služby Azure Cosmos
 
 Klauzule GROUP BY rozděluje výsledky dotazu podle hodnot jedné nebo více zadaných vlastností.
 
 > [!NOTE]
-> Azure Cosmos DB aktuálně podporuje GROUP BY v sadě .NET SDK 3,3 a vyšší a také v sadě JavaScript SDK 3,4 a vyšší.
-> Podpora pro jinou jazykovou sadu SDK není aktuálně k dispozici, ale je plánována.
+> Azure Cosmos DB aktuálně podporuje GROUP BY v .NET SDK 3.3 a vyšší, stejně jako JavaScript SDK 3.4 a vyšší.
+> Podpora pro jiné jazyky sady SDK není v současné době k dispozici, ale je plánována.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -39,25 +39,25 @@ Klauzule GROUP BY rozděluje výsledky dotazu podle hodnot jedné nebo více zad
 
 - `<scalar_expression>`
   
-   Jakýkoli skalární výraz je povolen s výjimkou skalárních poddotazů a skalárních agregací. Každý skalární výraz musí obsahovat alespoň jeden odkaz na vlastnost. Neexistuje žádné omezení počtu jednotlivých výrazů nebo mohutnosti každého výrazu.
+   Každý skalární výraz je povolen s výjimkou skalárních poddotazů a skalárních agregací. Každý skalární výraz musí obsahovat alespoň jeden odkaz na vlastnost. Neexistuje žádné omezení počtu jednotlivých výrazů nebo mohutnost každého výrazu.
 
 ## <a name="remarks"></a>Poznámky
   
-  Pokud dotaz používá klauzuli GROUP BY, klauzule SELECT může obsahovat pouze podmnožinu vlastností a systémových funkcí obsažených v klauzuli GROUP BY. Jedna výjimka je [agregovaná systémová funkce](sql-query-aggregates.md), která se může objevit v klauzuli SELECT bez zahrnutí v klauzuli Group by. Do klauzule SELECT můžete také vždy zahrnout hodnoty literálu.
+  Pokud dotaz používá klauzuli GROUP BY, klauzule SELECT může obsahovat pouze podmnožinu vlastností a systémových funkcí zahrnutých v klauzuli GROUP BY. Jednou výjimkou jsou [agregační systémové funkce](sql-query-aggregates.md), které se mohou objevit v klauzuli SELECT, aniž by byly zahrnuty do klauzule GROUP BY. Do klauzule SELECT můžete také vždy zahrnout hodnoty literálu.
 
-  Klauzule GROUP BY musí být za klauzulí SELECT, FROM a WHERE a před klauzulí LIMITu POSUNu. V tuto chvíli nemůžete použít klauzuli GROUP BY s klauzulí ORDER BY, ale to je plánováno.
+  Klauzule GROUP BY musí být za klauzulí SELECT, FROM a WHERE a před klauzulí OFFSET LIMIT. V současné době nelze použít GROUP BY s klauzulí ORDER BY, ale je plánováno.
 
-  Klauzule GROUP BY nepovoluje žádnou z následujících možností:
+  Klauzule GROUP BY neumožňuje žádné z následujících položek:
   
-- Vlastnosti aliasů nebo funkce systému vytváření aliasů (aliasy jsou pořád povolené v rámci klauzule SELECT)
-- Poddotazy
-- Agregační systémové funkce (jsou povolené jenom v klauzuli SELECT)
+- Vlastnosti aliasingu nebo systémové funkce aliasingu (aliasing je stále povolen v klauzuli SELECT)
+- Poddotazů
+- Agregační systémové funkce (ty jsou povoleny pouze v klauzuli SELECT)
 
 ## <a name="examples"></a>Příklady
 
-Tyto příklady používají sadu nutričních dat, která je dostupná prostřednictvím [Azure Cosmos DB testovací prostředí dotazů](https://www.documentdb.com/sql/demo).
+Tyto příklady používají sadu dat o výživě, která je k dispozici prostřednictvím [hřiště pro dotazy Azure Cosmos DB .](https://www.documentdb.com/sql/demo)
 
-Tady je například dotaz, který vrátí celkový počet položek v každé ze všech jídel:
+Například zde je dotaz, který vrací celkový počet položek v každé foodGroup:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup
@@ -65,7 +65,7 @@ FROM Food f
 GROUP BY f.foodGroup
 ```
 
-Některé výsledky jsou (klíčové slovo TOP slouží k omezení výsledků):
+Některé výsledky jsou (TOP klíčové slovo se používá k omezení výsledků):
 
 ```json
 [{
@@ -86,7 +86,7 @@ Některé výsledky jsou (klíčové slovo TOP slouží k omezení výsledků):
 }]
 ```
 
-Tento dotaz má dva výrazy, které slouží k rozdělení výsledků:
+Tento dotaz má dva výrazy používané k rozdělení výsledků:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup, f.version
@@ -94,7 +94,7 @@ FROM Food f
 GROUP BY f.foodGroup, f.version
 ```
 
-Mezi výsledky patří:
+Některé výsledky jsou:
 
 ```json
 [{
@@ -119,7 +119,7 @@ Mezi výsledky patří:
 }]
 ```
 
-Tento dotaz obsahuje systémovou funkci v klauzuli GROUP BY:
+Tento dotaz má systémovou funkci v klauzuli GROUP BY:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, UPPER(f.foodGroup) AS upperFoodGroup
@@ -127,7 +127,7 @@ FROM Food f
 GROUP BY UPPER(f.foodGroup)
 ```
 
-Mezi výsledky patří:
+Některé výsledky jsou:
 
 ```json
 [{
@@ -148,7 +148,7 @@ Mezi výsledky patří:
 }]
 ```
 
-Tento dotaz ve výrazu vlastnosti Item používá jak klíčová slova, tak systémové funkce:
+Tento dotaz používá klíčová slova i systémové funkce ve výrazu vlastnosti položky:
 
 ```sql
 SELECT COUNT(1) AS foodGroupCount, ARRAY_CONTAINS(f.tags, {name: 'orange'}) AS containsOrangeTag,  f.version BETWEEN 0 AND 2 AS correctVersion
@@ -156,7 +156,7 @@ FROM Food f
 GROUP BY ARRAY_CONTAINS(f.tags, {name: 'orange'}), f.version BETWEEN 0 AND 2
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
 [{

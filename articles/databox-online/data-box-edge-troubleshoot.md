@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s Azure Data Box Edge pomocí webu Azure portal | Dokumentace Microsoftu
-description: Popisuje postup řešení potíží s Azure Data Box Edge.
+title: Řešení potíží s Azure Data Box Edge pomocí portálu Azure Portal | Dokumenty společnosti Microsoft
+description: Popisuje, jak řešit problémy Azure Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 3a8d1f93930d2b298eeb7d10a73624b9a19bcc0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60756155"
 ---
-# <a name="troubleshoot-your-azure-data-box-edge-issues"></a>Řešení problémů Azure Data Box Edge 
+# <a name="troubleshoot-your-azure-data-box-edge-issues"></a>Řešení potíží s Azure Data Box Edge 
 
-Tento článek popisuje postup řešení potíží na hranici vaší Azure Data Box. 
+Tento článek popisuje, jak řešit problémy na Azure Data Box Edge. 
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -33,15 +33,15 @@ Pokud chcete diagnostikovat a vyřešit potíže s libovolnými chybami zaříze
 
 1. V místním webovém uživatelském rozhraní přejděte na **Řešení potíží > Diagnostické testy**. Vyberte test, který chcete spustit a klikněte na tlačítko **Spustit test**. Tím se spustí testy, které provedou diagnostiku všech možných problémů se sítí, zařízením, webovým proxy serverem, časem nebo nastavením cloudu. Na spuštěné testy v zařízení budete upozorněni.
 
-    ![Vyberte testy](media/data-box-edge-troubleshoot/run-diag-1.png)
+    ![Vybrat testy](media/data-box-edge-troubleshoot/run-diag-1.png)
  
 2. Po dokončení testů se zobrazí výsledky. 
 
-    ![Kontrola výsledků testu](media/data-box-edge-troubleshoot/run-diag-2.png)
+    ![Zkontrolovat výsledky testů](media/data-box-edge-troubleshoot/run-diag-2.png)
 
     Pokud bude test neúspěšný, zobrazí se adresa URL s doporučenou akcí. Můžete na adresu URL kliknout a doporučenou akci zobrazit.
  
-    ![Zkontrolujte varování pro neúspěšné testy](media/data-box-edge-troubleshoot/run-diag-3.png)
+    ![Kontrola upozornění na neúspěšné testy](media/data-box-edge-troubleshoot/run-diag-3.png)
 
 
 ## <a name="collect-support-package"></a>Shromáždění balíčku pro podporu
@@ -64,9 +64,9 @@ Veškeré chyby, ke kterým během procesu nahrávání a aktualizace došlo, bu
 
 1. Pokud chcete chybové soubory zobrazit, přejděte do sdílené složky a kliknutím na ni obsah zobrazte. 
 
-      ![Připojte se k a zobrazit obsah sdílené složky](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
+      ![Připojení k obsahu sdílené položky a zobrazení obsahu sdílené položky](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. Klikněte na tlačítko _složce Microsoft Data Box Edge_. Tato složka obsahuje dvě podsložky:
+2. Klepněte na _složku Microsoft Data Box Edge_. Tato složka obsahuje dvě podsložky:
 
     - Složku nahrávání, která obsahuje soubory protokolů s chybami nahrávání.
     - Složku aktualizací s chybami, ke kterým došlo během aktualizace.
@@ -84,6 +84,6 @@ Veškeré chyby, ke kterým během procesu nahrávání a aktualizace došlo, bu
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o [známých potížích v této verzi](data-box-gateway-release-notes.md).

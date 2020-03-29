@@ -1,7 +1,7 @@
 ---
-title: Zprostředkované ověřování v Androidu | Azure
+title: Zprostředkované ověřování v systému Android | Azure
 titlesuffix: Microsoft identity platform
-description: Přehled zprostředkovaných ověření & autorizaci pro Android na platformě Microsoft Identity Platform
+description: Přehled zprostředkovaného ověřování & autorizaci pro Android v platformě microsoft identity
 services: active-directory
 author: shoatman
 manager: CelesteDG
@@ -14,71 +14,71 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76697893"
 ---
-# <a name="brokered-authentication-in-android"></a>Zprostředkované ověřování v Androidu
+# <a name="brokered-authentication-in-android"></a>Zprostředkované ověřování v systému Android
 
-Abyste se mohli zapojit do jednotného přihlašování (SSO) v jednotném zařízení, musíte použít jednoho z zprostředkovatelů ověřování od Microsoftu a vyhovět zásadám podmíněného přístupu na úrovni organizace. Integrace se zprostředkovatelem přináší následující výhody:
+K účasti v jednotném přihlašování (SSO) pro celé zařízení a ke splnění zásad podmíněného přístupu organizace je nutné použít jednoho z zprostředkovatelů ověřování společnosti Microsoft. Integrace s makléřem poskytuje následující výhody:
 
 - Jednotné přihlašování zařízení
 - Podmíněný přístup pro:
   - Intune App Protection
-  - Registrace zařízení (Workplace Join)
+  - Registrace zařízení (připojení k pracovišti)
   - Správa mobilních zařízení
-- Správa účtů na úrovni zařízení
-  -  přes Android ke správci účtů & nastavení účtu
-  - Pracovní účet – vlastní typ účtu
+- Správa účtů pro celé zařízení
+  -  přes Android AccountManager & nastavení účtu
+  - "Pracovní účet" - vlastní typ účtu
 
-V Androidu je zprostředkovatel ověřování Microsoft součástí, která je součástí [Microsoft Authenticator aplikace](https://play.google.com/store/apps/details?id=com.azure.authenticator) a [portál společnosti Intune](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)
+V systému Android je Zprostředkovatel ověřování Microsoftu součástí, která je součástí [aplikace Microsoft Authenticator App](https://play.google.com/store/apps/details?id=com.azure.authenticator) a [portálu společnosti Intune](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)
 
 > [!TIP]
-> Pouze jedna aplikace, která je hostitelem zprostředkovatele, bude v jednom okamžiku aktivní jako zprostředkovatel. Která aplikace je aktivní jako zprostředkovatel, je určena podle pořadí instalace na zařízení. První instalace nebo poslední přítomná v zařízení se stal aktivním zprostředkovatelem.
+> Pouze jedna aplikace, která hostuje makléře, bude aktivní jako makléř najednou. Která aplikace je aktivní jako zprostředkovatel je určena pořadí instalace na zařízení. První, který má být nainstalován, nebo poslední dárek v zařízení, se stane aktivním zprostředkovatelem.
 
-Následující diagram znázorňuje vztah mezi vaší aplikací, Microsoft Authentication Library (MSAL) a zprostředkovateli ověřování od Microsoftu.
+Následující diagram znázorňuje vztah mezi vaší aplikací, Knihovnou ověřování Microsoftu (MSAL) a zprostředkovateli ověřování společnosti Microsoft.
 
 ![Diagram nasazení zprostředkovatele](./media/brokered-auth/brokered-deployment-diagram.png)
 
-## <a name="installing-apps-that-host-a-broker"></a>Instalace aplikací, které hostují zprostředkovatele
+## <a name="installing-apps-that-host-a-broker"></a>Instalace aplikací, které jsou hostitelem brokera
 
-Služby pro hostování aplikací můžou instalovat vlastník zařízení z jejich App Storu (obvykle Obchod Google Play). Některá rozhraní API (prostředky) jsou ale chráněná zásadami podmíněného přístupu, které vyžadují, aby byla zařízení:
+Aplikace pro hostování makléřů může vlastník zařízení kdykoli nainstalovat z obchodu s aplikacemi (obvykle Obchod Google Play). Některá pravidla api (prostředky) jsou však chráněny zásadami podmíněného přístupu, které vyžadují, aby zařízení byla:
 
-- Registrováno (připojeno k pracovišti) a/nebo
+- Registrovaní (připojeni k pracovišti) a/nebo
 - Zaregistrováno ve správě zařízení nebo
-- Zaregistrováno v Intune App Protection
+- Registrace v ochraně aplikací Intune
 
-Pokud na zařízení ještě není nainstalovaná aplikace zprostředkovatele, MSAL uživateli pokyn, aby ho nainstaloval hned, jakmile se aplikace pokusí o interaktivní získání tokenu. V takovém případě bude muset uživatel provést kroky, aby zařízení dodržovalo požadované zásady.
+Pokud zařízení ještě nemá nainstalovanou aplikaci broker, MSAL pokyn uživateli k instalaci, jakmile se aplikace pokusí získat token interaktivně. Aplikace pak bude muset vést uživatele prostřednictvím kroků, aby zařízení kompatibilní s požadovanou zásadou.
 
-## <a name="effects-of-installing-and-uninstalling-a-broker"></a>Účinky instalace a odinstalace zprostředkovatele
+## <a name="effects-of-installing-and-uninstalling-a-broker"></a>Účinky instalace a odinstalování makléře
 
-### <a name="when-a-broker-is-installed"></a>Při instalaci zprostředkovatele
+### <a name="when-a-broker-is-installed"></a>Při instalaci makléře
 
-Když je v zařízení nainstalován zprostředkovatel, budou všechny následné požadavky na interaktivní tokeny (volání do `acquireToken()`) zpracovávány zprostředkovatelem spíše než místně pomocí MSAL. Pro zprostředkovatele není k dispozici jakýkoli stav jednotného přihlašování, který je dřív dostupný pro MSAL. V důsledku toho se uživatel bude muset znovu ověřit nebo vybrat účet ze stávajícího seznamu účtů, které zařízení zná.
+Když je zprostředkovatel nainstalován na zařízení, všechny následné požadavky `acquireToken()`na interaktivní tokeny (volání) jsou zpracovány zprostředkovatelem spíše než místně MSAL. Jakýkoli stav služby SSO dříve k dispozici MSAL není k dispozici zprostředkovatele. V důsledku toho bude uživatel muset znovu ověřit nebo vybrat účet z existujícího seznamu účtů známých zařízení.
 
-Instalace zprostředkovatele nepožaduje, aby se uživatel znovu přihlásil. Pouze v případě, že uživatel potřebuje vyřešit `MsalUiRequiredException` bude další požadavek přejít do služby Broker. `MsalUiRequiredException` se vyvolal z několika důvodů a musí se přeložit interaktivně. Jedná se o některé běžné důvody:
+Instalace zprostředkovatele nevyžaduje, aby se uživatel znovu přihlásil. Pouze v případě, že `MsalUiRequiredException` uživatel potřebuje vyřešit bude další požadavek přejít na zprostředkovatele. `MsalUiRequiredException`je vyvolána z mnoha důvodů a je třeba ji vyřešit interaktivně. To to jsou některé běžné důvody:
 
-- Uživatel změnil heslo přidružené k účtu.
-- Uživatelský účet už nesplňuje zásady podmíněného přístupu.
-- Uživatel odvolal svůj souhlas s tím, že aplikace bude přidružená ke svému účtu.
+- Uživatel změnil heslo přidružené k jejich účtu.
+- Uživatelský účet již nesplňuje zásady podmíněného přístupu.
+- Uživatel odvolal svůj souhlas s tím, aby byla aplikace přidružena k jeho účtu.
 
-### <a name="when-a-broker-is-uninstalled"></a>Při odinstalaci zprostředkovatele
+### <a name="when-a-broker-is-uninstalled"></a>Když je makléř odinstalován
 
-Pokud je nainstalovaná jenom jedna hostující aplikace zprostředkovatele a odebere se, bude se muset uživatel znovu přihlásit. Odinstalace aktivního zprostředkovatele odebere účet a přidružené tokeny ze zařízení.
+Pokud je nainstalována pouze jedna hostitelská aplikace brokera a je odebrána, uživatel se bude muset znovu přihlásit. Odinstalování aktivního zprostředkovatele odebere účet a přidružené tokeny ze zařízení.
 
-Pokud je nainstalovaná služba Portál společnosti Intune a pracuje jako aktivní zprostředkovatel a Microsoft Authenticator je taky nainstalovaná, pak se při odinstalaci Portál společnosti Intune (aktivní zprostředkovatel) uživatel bude muset znovu přihlásit. Po opětovném přihlášení se aplikace Microsoft Authenticator stala aktivním zprostředkovatelem.
+Pokud je portál společnosti Intune nainstalovaný a funguje jako aktivní zprostředkovatel a nainstaluje se také Microsoft Authenticator, pak pokud je odinstalován portál společnosti Intune (aktivní zprostředkovatel), uživatel se bude muset znovu přihlásit. Jakmile se znovu přihlásí, aplikace Microsoft Authenticator se stane aktivním zprostředkovatelem.
 
-## <a name="integrating-with-a-broker"></a>Integrace s zprostředkovatelem
+## <a name="integrating-with-a-broker"></a>Integrace s makléřem
 
 ### <a name="generating-a-redirect-uri-for-a-broker"></a>Generování identifikátoru URI přesměrování pro zprostředkovatele
 
-Je nutné zaregistrovat identifikátor URI pro přesměrování, který je kompatibilní se zprostředkovatelem. Identifikátor URI přesměrování pro zprostředkovatele musí zahrnovat název balíčku vaší aplikace, stejně jako reprezentace signatury vaší aplikace v kódování Base64.
+Je nutné zaregistrovat identifikátor URI přesměrování, který je kompatibilní s zprostředkovatelem. Identifikátor URI přesměrování pro zprostředkovatele musí obsahovat název balíčku vaší aplikace a také reprezentaci podpisu aplikace zakódovanou 64.
 
-Formát identifikátoru URI přesměrování je: `msauth://<yourpackagename>/<base64urlencodedsignature>`
+Formát identifikátoru URI přesměrování je:`msauth://<yourpackagename>/<base64urlencodedsignature>`
 
-Vygenerujte podpis kódovaný v adrese URL Base64 pomocí podpisových klíčů vaší aplikace. Tady je několik příkladů příkazů, které používají vaše podpisové klíče pro ladění:
+Vygenerujte svůj podpis s kódovaným iurlovou adresou Base64 pomocí podpisových klíčů aplikace. Zde je několik příkladů příkazů, které používají ladicí podpisové klíče:
 
 #### <a name="macos"></a>macOS
 
@@ -92,14 +92,14 @@ keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore |
 keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
 ```
 
-Informace o podepsání aplikace najdete v tématu o [podepsání aplikace](https://developer.android.com/studio/publish/app-signing) .
+Informace o podepisování aplikace najdete v tématu [Podepisování](https://developer.android.com/studio/publish/app-signing) aplikace.
 
 > [!IMPORTANT]
-> Pro produkční verzi vaší aplikace použijte svůj produkční podpisový klíč.
+> Použijte produkční podpisový klíč pro produkční verzi aplikace.
 
-### <a name="configure-msal-to-use-a-broker"></a>Konfigurace MSAL pro použití zprostředkovatele
+### <a name="configure-msal-to-use-a-broker"></a>Konfigurace služby MSAL pro použití zprostředkovatele
 
-Pokud chcete ve své aplikaci použít zprostředkovatele, musíte ověřit, že jste nakonfigurovali přesměrování zprostředkovatele. Můžete například zahrnout jak identifikátor URI přesměrování s povoleným zprostředkovatelem, tak i to, že jste ho zaregistrovali – zahrnutím následujících do konfiguračního souboru MSAL:
+Chcete-li použít zprostředkovatele ve vaší aplikaci, musíte dosvědčit, že jste nakonfigurovali přesměrování zprostředkovatele. Zahrňte například identifikátor URI s povoleným přesměrováním zprostředkovatele a označte, že jste jej zaregistrovali, a to zahrnutím následujících položek do konfiguračního souboru Služby MSAL:
 
 ```javascript
 "redirect_uri" : "<yourbrokerredirecturi>",
@@ -107,18 +107,18 @@ Pokud chcete ve své aplikaci použít zprostředkovatele, musíte ověřit, že
 ```
 
 > [!TIP]
-> Nové uživatelské rozhraní pro registraci aplikace Azure Portal vám pomůže vygenerovat identifikátor URI přesměrování zprostředkovatele. Pokud jste vaši aplikaci zaregistrovali pomocí staršího prostředí nebo jste používali portál pro registraci aplikací Microsoftu, možná budete muset vygenerovat identifikátor URI pro přesměrování a aktualizovat seznam identifikátorů URI pro přesměrování na portálu ručně.
+> Nové rozhraní registrace aplikace portálu Azure vám pomůže generovat identifikátor URI přesměrování zprostředkovatele. Pokud jste aplikaci zaregistrovali pomocí staršího prostředí nebo jste tak učinili pomocí portálu pro registraci aplikací Microsoftu, možná budete muset vygenerovat identifikátor URI přesměrování a aktualizovat seznam identifikátorů URI přesměrování na portálu ručně.
 
-### <a name="broker-related-exceptions"></a>Výjimky související se zprostředkovatelem
+### <a name="broker-related-exceptions"></a>Výjimky související s makléřem
 
-MSAL komunikuje se zprostředkovatelem dvěma způsoby:
+MSAL komunikuje s makléřem dvěma způsoby:
 
 - Služba vázaná na zprostředkovatele
-- Android ke správci účtů
+- Správce účtů Android
 
-MSAL nejprve používá službu přivázané na zprostředkovatele, protože volání této služby nevyžaduje žádná oprávnění Androidu. Pokud se vazba na vázanou službu nezdaří, MSAL použije rozhraní Android ke správci účtů API. MSAL to dělá pouze v případě, že aplikace již byla udělena oprávnění `"READ_CONTACTS"`.
+MSAL nejprve používá službu vázanou na zprostředkovatele, protože volání této služby nevyžaduje žádná oprávnění Android. Pokud vazba na vázanou službu selže, msal bude používat rozhraní API Android AccountManager. MSAL to pouze v případě, že `"READ_CONTACTS"` vaše aplikace již bylo uděleno oprávnění.
 
-Pokud se zobrazí `MsalClientException` s kódem chyby `"BROKER_BIND_FAILURE"`, jsou k dispozici dvě možnosti:
+Pokud se `MsalClientException` zobrazí kód `"BROKER_BIND_FAILURE"`chyby , pak existují dvě možnosti:
 
-- Požádejte uživatele, aby zakázal optimalizaci výkonu pro aplikaci Microsoft Authenticator a Portál společnosti Intune.
-- Požádejte uživatele, aby udělil oprávnění `"READ_CONTACTS"`.
+- Požádejte uživatele, aby zakázal optimalizaci napájení pro aplikaci Microsoft Authenticator a portál společnosti Intune.
+- Požádejte uživatele o `"READ_CONTACTS"` udělení oprávnění.

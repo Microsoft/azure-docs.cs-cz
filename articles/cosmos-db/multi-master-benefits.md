@@ -1,31 +1,31 @@
 ---
-title: Azure Cosmos DB výhod s více hlavními servery
-description: Seznamte se s výhodami více hlavních míst v Azure Cosmos DB, porovnáním požadavků na latenci a smlouvu SLA v jednom a několika umístěních pro zápis.
+title: Výhody více hlavních hlavních bodů Azure Cosmos DB
+description: Seznamte se s výhodami více hlavních serverů v Azure Cosmos DB, porovnáním požadavků na latenci a sla v jednom a více umístěních pro zápis.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: b21b6ba82ba1ada0103501b8beeca270df86abd9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74872005"
 ---
-# <a name="understand-multi-master-benefits-in-azure-cosmos-db"></a>Pochopení výhod s více hlavními servery v Azure Cosmos DB
+# <a name="understand-multi-master-benefits-in-azure-cosmos-db"></a>Principy výhod více hlavních v Azure Cosmos DB
 
-Operátoři Cosmos DB účtu by si měli zvolit odpovídající globální konfiguraci distribuce, aby se zajistila latence, dostupnost a RTO požadavků na jejich aplikace. Účty Azure Cosmos nakonfigurované s více umístěními pro zápis nabízí významné výhody pro účty s jedním umístěním pro zápis, včetně 99,999% dostupností smlouvy SLA pro zápis, < 10 99 pro latenci zápisu na percentil a RTO = 0 v oblasti regionální havárie.
+Provozovatelé účtů Cosmos DB by měli zvolit vhodnou konfiguraci globální distribuce, aby zajistili požadavky na latenci, dostupnost a RTO pro své aplikace. Účty Azure Cosmos nakonfigurované s více umístěními zápisu nabízejí významné výhody oproti účtům s jedním umístěním zápisu, včetně 99,999% dostupnosti zápisu SLA, <10 ms latence zápisu sla na 99 percentilu a RTO = 0 v regionální havárii.
 
 ## <a name="comparison-of-features"></a>Porovnání funkcí
 
-|Požadavek na aplikaci|Více umístění pro zápis|Jedno umístění pro zápis|Poznámka|
+|Požadavek na aplikaci|Více umístění zápisu|Umístění jednoho zápisu|Poznámka|
 |---|---|---|---|
-|Smlouva SLA o latenci zápisu < 10ms na p99|**Ano**|Ne|Účty s jedním umístěním pro zápis mají u každého zápisu za následek další latenci sítě mezi oblastmi.|
-|SLA pro čtení < 10ms na p99 na latenci|**Ano**|Ano| |
-|Zápis SLA pro 99,999%|**Ano**|Ne|Účty s zaručenou smlouvou SLA o úrovni jednoho zápisu 99,99%|
-|RTO = 0|**Ano**|Ne|Nulová doba pro zápisy v případě regionálních katastrof. Účty s jedním umístěním pro zápis mají RTO 15 minut.|
+|Zapsat latenci SLA <10ms na P99|**Ano**|Ne|Účty s umístěním jednoho zápisu vznikají další latence sítě mezi oblastmi pro každý zápis.|
+|Čtení latence SLA <10ms na P99|**Ano**|Ano| |
+|Napište SLA 99.999%|**Ano**|Ne|Účty se zárukou s jednou lokací zápisu ve výši 99,99 %|
+|RTO = 0|**Ano**|Ne|Nulová prostoje pro zápisy v případě regionálních katastrof. Účty s jedním umístěním zápisu mají RTO 15 min.|
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete v účtu Azure Cosmos dál zakázat EnableMultipleWriteLocations, [otevřete prosím lístek podpory](https://azure.microsoft.com/support/create-ticket/).
+Pokud chcete stále zakázat EnableMultipleWriteLocations ve vašem účtu Azure Cosmos, [otevřete lístek podpory](https://azure.microsoft.com/support/create-ticket/).

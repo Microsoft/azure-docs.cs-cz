@@ -1,50 +1,50 @@
 ---
 title: Získání změn prostředků
-description: Pochopte, jak zjistit, kdy byl prostředek změněn, získat seznam vlastností, které se změnily, a vyhodnotit rozdíly.
+description: Zjistěte, jak najít, kdy byl prostředek změněn, získat seznam vlastností, které se změnily a vyhodnotit rozdíly.
 ms.date: 10/09/2019
 ms.topic: how-to
 ms.openlocfilehash: 9504ac77fc4a3b03434912cc65284e2001df6e03
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873025"
 ---
 # <a name="get-resource-changes"></a>Získání změn prostředků
 
-Prostředky se mění v průběhu denního využití, z důvodu změny konfigurace nebo dokonce změny nasazení.
-Změna může pocházet z individuálního nebo automatizovaného procesu. Většina změn je záměrné, ale někdy ne. V posledních 14 dnech historie změn vám Azure Resource Graph umožní:
+Zdroje se mění v průběhu každodenního používání, rekonfigurace a dokonce i opětovného nasazení.
+Změna může pocházet od jednotlivce nebo automatizovaným procesem. Většina změn je záměrná, ale někdy není. Díky historii změn za posledních 14 dní umožňuje Azure Resource Graph:
 
-- Najde, kdy se u vlastnosti Azure Resource Manager zjistily změny.
-- Informace o jednotlivých změnách prostředků najdete v tématu podrobnosti o změně vlastnosti.
+- Zjištění, kdy byly zjištěny změny ve vlastnosti Azure Resource Manager
+- Pro každou změnu prostředků, viz podrobnosti o změně vlastnosti
 - Zobrazit úplné porovnání prostředku před a po zjištěné změně
 
-Zjišťování změn a podrobnosti jsou užitečné v následujících ukázkových scénářích:
+Zjišťování změn a podrobnosti jsou cenné pro následující ukázkové scénáře:
 
-- Během správy incidentů získat informace o _potenciálně_ souvisejících změnách. Dotaz na události změny během konkrétního časového období a vyhodnocení podrobností o změně.
-- Udržování databáze správy konfigurace označované jako CMDB, aktuální. Místo aktualizace všech prostředků a jejich úplných vlastností u naplánované četnosti Získejte jenom to, co se změnilo.
-- Informace o tom, jaké další vlastnosti se mohly změnit, když prostředek změnil stav dodržování předpisů. Vyhodnocení těchto dalších vlastností může poskytnout přehled o dalších vlastnostech, které mohou být nutné ke správě pomocí definice Azure Policy.
+- Během správy incidentů pochopit _potenciálně_ související změny. Dotaz na události změny během určitého časového období a vyhodnotit podrobnosti o změně.
+- Udržování databáze správy konfigurace, známé jako CMDB, aktuální. Namísto aktualizace všech prostředků a jejich úplné sady vlastností na naplánované frekvenci, jen získat to, co se změnilo.
+- Pochopení, jaké další vlastnosti mohly být změněny, když prostředek změnil stav dodržování předpisů. Vyhodnocení těchto dalších vlastností může poskytnout přehled o dalších vlastnostech, které může být nutné spravovat pomocí definice zásad Azure.
 
-Tento článek ukazuje, jak shromáždit tyto informace prostřednictvím sady SDK pro graf prostředků. Pokud chcete zobrazit tyto informace v Azure Portal, přečtěte si téma historie [změn](../../policy/how-to/determine-non-compliance.md#change-history-preview) v Azure Policy nebo [historie změn protokolu aktivit](../../../azure-monitor/platform/activity-log-view.md#azure-portal)Azure.
-Podrobnosti o změnách vašich aplikací z infrastruktury do nasazení aplikace najdete v tématu [použití analýzy změn aplikace (Preview)](../../../azure-monitor/app/change-analysis.md) v Azure monitor.
+Tento článek ukazuje, jak shromažďovat tyto informace prostřednictvím sady SDK graph prostředků. Tyto informace najdete na webu Azure Portal najdete v tématu [Historie změn](../../policy/how-to/determine-non-compliance.md#change-history-preview) zásad Azure nebo [Historie změn](../../../azure-monitor/platform/activity-log-view.md#azure-portal)protokolu aktivit Azure .
+Podrobnosti o změnách vašich aplikací z vrstvy infrastruktury až po nasazení aplikací najdete v tématu [Použití analýzy změn aplikací (preview)](../../../azure-monitor/app/change-analysis.md) v Azure Monitoru.
 
 > [!NOTE]
-> Podrobnosti o změně v grafu prostředků jsou pro Správce prostředků vlastnosti. Informace o sledování změn v rámci virtuálního počítače Azure Automation najdete v tématu Konfigurace služby [Change Tracking](../../../automation/automation-change-tracking.md) nebo [Host Azure Policy na virtuálních](../../policy/concepts/guest-configuration.md)počítačích.
+> Podrobnosti o změně v grafu prostředků jsou určeny pro vlastnosti Správce prostředků. Sledování změn uvnitř virtuálního počítače najdete v tématu Azure Automation [sledování změn](../../../automation/automation-change-tracking.md) nebo [konfigurace hosta](../../policy/concepts/guest-configuration.md)zásad Azure pro virtuální počítače .
 
 > [!IMPORTANT]
-> Historie změn v grafu prostředků Azure je Public Preview.
+> Historie změn v Azure Resource Graph je ve veřejné verzi Preview.
 
-## <a name="find-detected-change-events-and-view-change-details"></a>Najít zjištěné události změny a zobrazit podrobnosti o změně
+## <a name="find-detected-change-events-and-view-change-details"></a>Vyhledání zjištěných událostí změn a zobrazení podrobností o změně
 
-Prvním krokem při zobrazení toho, co se změnilo u prostředku, je najít události změny týkající se tohoto prostředku v časovém intervalu. Každá událost změny také obsahuje podrobnosti o tom, co se u prostředku změnilo. Tento krok se provádí prostřednictvím koncového bodu **resourceChanges** REST.
+Prvním krokem při zobrazení změny na prostředku je najít události změny související s tímto zdrojem v časovém období. Každá událost změny také obsahuje podrobnosti o tom, co se změnilo na prostředku. Tento krok se provádí prostřednictvím **resourceChanges** REST koncový bod.
 
-Koncový bod **resourceChanges** akceptuje v textu požadavku následující parametry:
+Koncový bod **resourceChanges** přijímá následující parametry v těle požadavku:
 
-- **resourceId** \[požadované\]: prostředek Azure, ve kterém se mají hledat změny.
-- **interval** \[požadovaných\]: vlastnost s _počátečním_ a _koncovým_ datem, kdy se má kontrolovat událost změny pomocí **Zulu časového pásma (Z)** .
-- **fetchPropertyChanges** (volitelné): logická vlastnost, která nastavuje, zda objekt Response obsahuje změny vlastností.
+- **resourceId** \[\]povinné : Prostředek Azure hledat změny na.
+- **interval** \[Požadovaný\]interval : Vlastnost s _počátečním_ a _koncovým_ datem, kdy se má zkontrolovat událost změny pomocí **časového pásma Zulu (Z)**.
+- **fetchPropertyChanges** (volitelné): Logická vlastnost, která nastaví, pokud objekt odpovědi obsahuje změny vlastností.
 
-Text požadavku příkladu:
+Příklad textu požadavku:
 
 ```json
 {
@@ -57,7 +57,7 @@ Text požadavku příkladu:
 }
 ```
 
-S výše uvedeným textem žádosti je REST API identifikátor URI pro **resourceChanges** :
+S výše uvedené tělo požadavku ROZHRANÍ REST API pro **resourceChanges** je:
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChanges?api-version=2018-09-01-preview
@@ -140,30 +140,30 @@ Odpověď vypadá podobně jako v tomto příkladu:
 }
 ```
 
-Každá zjištěná událost změny pro **ResourceID** má následující vlastnosti:
+Každá zjištěná událost změny pro **id resourceId** má následující vlastnosti:
 
-- **changeId** – tato hodnota je pro tento prostředek jedinečná. I když řetězec **changeId** může někdy obsahovat jiné vlastnosti, je zaručený pouze jedinečný.
-- **beforeSnapshot** – obsahuje **snapshotId** a **časové razítko** snímku prostředku, který byl proveden před zjištěním změny.
-- **afterSnapshot** – obsahuje **snapshotId** a **časové razítko** snímku prostředku, který byl proveden po zjištění změny.
-- **ChangeType** – popisuje typ změny zjištěné u celého záznamu změny mezi **beforeSnapshot** a **afterSnapshot**. Hodnoty jsou: _vytvořit_, _aktualizovat_a _Odstranit_. Pole vlastností **propertyChanged** je zahrnuto pouze v případě, že je nastavena _aktualizace_ **ChangeType** .
-- **propertyChanged** – toto pole vlastností podrobně popisuje všechny vlastnosti prostředku, které byly aktualizovány mezi **beforeSnapshot** a **afterSnapshot**:
-  - **PropertyName** – název vlastnosti prostředku, která byla změněna.
-  - **changeCategory** – popisuje, co změna provedla. Hodnoty jsou: _systém_ a _uživatel_.
-  - **ChangeType** – popisuje typ změny zjištěné u jednotlivých vlastností prostředku.
-    Hodnoty jsou: _INSERT_, _Update_, _Remove_.
-  - **beforeValue** – hodnota vlastnosti prostředku v **beforeSnapshot**. Není zobrazeno, když je _vloženo_ **ChangeType** .
-  - **afterValue** – hodnota vlastnosti prostředku v **afterSnapshot**. Se nezobrazí, pokud je _odebráno_ **ChangeType** .
+- **changeId** - Tato hodnota je jedinečná pro tento prostředek. Zatímco **řetězec changeId** může někdy obsahovat jiné vlastnosti, je pouze zaručeno, že je jedinečný.
+- **beforeSnapshot** - Obsahuje **snapshotId** a **časové razítko** snímku prostředku, který byl pořízen před zjištěním změny.
+- **afterSnapshot** - Obsahuje **snapshotId** a **časové razítko** snímku prostředku, který byl pořízen po zjištění změny.
+- **changeType** - Popisuje typ změny zjištěna pro celý záznam změny mezi **beforeSnapshot** a **afterSnapshot**. Hodnoty jsou: _Vytvořit_, _Aktualizovat_a _Odstranit_. Pole vlastnosti **propertyChanges** je zahrnuto pouze v **případě, že changeType** je _Update_.
+- **propertyChanges** - Toto pole vlastností podrobně popisuje všechny vlastnosti prostředku, které byly aktualizovány mezi **beforeSnapshot** a **afterSnapshot**:
+  - **propertyName** - Název vlastnosti prostředku, která byla změněna.
+  - **changeCategory** - Popisuje, co provedlzměnu. Hodnoty jsou: _Systém_ a _uživatel_.
+  - **changeType** - Popisuje typ změny zjištěné pro jednotlivé vlastnosti prostředku.
+    Hodnoty jsou: _Vložit_, _Aktualizovat_, _Odebrat_.
+  - **beforeValue** - Hodnota vlastnosti prostředku v **beforeSnapshot**. Nezobrazí se, když je **changeType** _Insert_.
+  - **afterValue** - Hodnota vlastnosti prostředku v **afterSnapshot**. Nezobrazí se, když je **changeType** _Odebrat_.
 
-## <a name="compare-resource-changes"></a>Porovnání změn prostředků
+## <a name="compare-resource-changes"></a>Porovnat změny zdrojů
 
-Pomocí **changeId** z koncového bodu **resourceChanges** se pak koncový bod **resourceChangeDetails** REST používá k získání před a po snímkům prostředku, který se změnil.
+S **changeId** z **resourceChanges** koncového **bodu, prostředekChangeDetails** REST koncový bod se pak používá k získání před a po snímky prostředku, který byl změněn.
 
-Koncový bod **resourceChangeDetails** vyžaduje v textu žádosti dva parametry:
+Koncový bod **resourceChangeDetails** vyžaduje dva parametry v těle požadavku:
 
-- **ResourceID**: prostředek Azure pro porovnání změn v.
-- **changeId**: jedinečná událost změny pro ID služby **ResourceID** shromážděná z **resourceChanges**.
+- **resourceId**: Prostředek Azure porovnat změny na.
+- **changeId**: Jedinečná událost změny pro **resourceId** shromážděné z **resourceChanges**.
 
-Text požadavku příkladu:
+Příklad textu požadavku:
 
 ```json
 {
@@ -172,7 +172,7 @@ Text požadavku příkladu:
 }
 ```
 
-S výše uvedeným textem žádosti je REST API identifikátor URI pro **resourceChangeDetails** :
+S výše uvedeným tělem požadavku je identifikátor URI rozhraní REST API pro **resourceChangeDetails:**
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChangeDetails?api-version=2018-09-01-preview
@@ -280,12 +280,12 @@ Odpověď vypadá podobně jako v tomto příkladu:
 }
 ```
 
-**beforeSnapshot** a **afterSnapshot** každý z nich poskytují čas pořízení snímku a vlastnosti v daném čase. Změna nastala v určitém bodě mezi těmito snímky. V předchozím příkladu vidíte, že vlastnost, která se změnila, byla **supportsHttpsTrafficOnly**.
+**beforeSnapshot** a **afterSnapshot** každý dát čas snímek byl pořízen a vlastnosti v té době. Ke změně došlo v určitém okamžiku mezi těmito snímky. Při pohledu na výše uvedený příklad můžeme vidět, že vlastnost, která se změnila byla **supportsHttpsTrafficOnly**.
 
-Pro porovnání výsledků buď použijte vlastnost **changess** v **resourceChanges** nebo vyhodnoťte část **obsahu** každého snímku v **resourceChangeDetails** , abyste zjistili rozdíl. Pokud porovnáte snímky, **časové razítko** se vždycky zobrazí jako rozdíl, i když se očekává.
+Chcete-li porovnat výsledky, použijte **vlastnost changes** v **resourceChanges** nebo vyhodnoťte **obsahovou** část každého snímku v **resourceChangeDetails** k určení rozdílu. Pokud porovnáte snímky, **časové razítko** se vždy zobrazí jako rozdíl, přestože se očekává.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na jazyk používaný v [počátečních dotazech](../samples/starter.md).
-- Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md).
-- Přečtěte si další informace o tom, jak [prozkoumat prostředky](../concepts/explore-resources.md).
+- Podívejte se na jazyk, který se používá v [dotazech Starter](../samples/starter.md).
+- Zobrazení pokročilých použití v [rozšířených dotazech](../samples/advanced.md).
+- Přečtěte si další informace o tom, jak [prozkoumat zdroje](../concepts/explore-resources.md).

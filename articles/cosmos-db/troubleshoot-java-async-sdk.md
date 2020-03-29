@@ -1,6 +1,6 @@
 ---
-title: Diagnostika a řešení potíží s Azure Cosmos DB Java asynchronní SDK
-description: Použití funkcí, jako je protokolování na straně klienta a další nástroje třetích stran k identifikaci, diagnostice a řešení potíží s Azure Cosmos DB.
+title: Diagnostika a řešení potíží s azure cosmos DB Java Async SDK
+description: Pomocí funkcí, jako je protokolování na straně klienta a další nástroje třetích stran k identifikaci, diagnostiku a řešení problémů Azure Cosmos DB.
 author: moderakh
 ms.service: cosmos-db
 ms.date: 04/30/2019
@@ -10,76 +10,76 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65519981"
 ---
-# <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Řešení potíží při použití sady Java SDK asynchronní s účty SQL API služby Azure Cosmos DB
-Tento článek popisuje běžné problémy, alternativní řešení, kroky pro diagnostiku a nástroje, při použití [sady Java SDK pro asynchronní](sql-api-sdk-async-java.md) s účty SQL API služby Azure Cosmos DB.
-Asynchronní sady Java SDK poskytuje logickou reprezentaci na straně klienta pro přístup k SQL API služby Azure Cosmos DB. Tento článek popisuje nástroje a přístupy k vám, pokud narazíte na případné problémy.
+# <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Řešení potíží při používání sady Java Async SDK s účty rozhraní SQL API služby Azure Cosmos DB
+Tento článek popisuje běžné problémy, řešení, diagnostické kroky a nástroje při použití [java asynchronní sady SDK](sql-api-sdk-async-java.md) s účty Azure Cosmos DB SQL API.
+Sada Java Async SDK představuje logickou reprezentaci přístupu k rozhraní SQL API služby Azure Cosmos DB na straně klienta. Tento článek popisuje nástroje a přístupy, které vám pomůžou v případě jakýchkoli problémů.
 
 Začněte s tímto seznamem:
 
-* Podívejte se na [Běžné problémy a řešení] části v tomto článku.
-* Podívejte se na sadu SDK, která je k dispozici [open source na Githubu](https://github.com/Azure/azure-cosmosdb-java). Má [vydá části](https://github.com/Azure/azure-cosmosdb-java/issues) , která je aktivně sledována. Zaškrtněte, pokud chcete zobrazit, pokud všechny podobné potíže s řešením je již zařazen.
-* Zkontrolujte [tipy ke zvýšení výkonu](performance-tips-async-java.md)a dodržujte doporučené postupy zabezpečení.
-* Nenašli jste řešení pro čtení zbývajících částí tohoto článku. K souboru [problém Githubu](https://github.com/Azure/azure-cosmosdb-java/issues).
+* Podívejte se na [běžné problémy a řešení] části v tomto článku.
+* Podívejte se na SDK, který je k dispozici [open source na GitHub](https://github.com/Azure/azure-cosmosdb-java). Má [sekci problémů,](https://github.com/Azure/azure-cosmosdb-java/issues) která je aktivně sledována. Zkontrolujte, zda je podobný problém s tímto zástupným tématem již podán.
+* Projděte si tipy pro [výkon](performance-tips-async-java.md)a postupujte podle doporučených postupů.
+* Přečtěte si zbytek tohoto článku, pokud jste nenašli řešení. Pak soubor [GitHub problém](https://github.com/Azure/azure-cosmosdb-java/issues).
 
-## <a name="common-issues-workarounds"></a>Běžné problémy a řešení
+## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Běžné problémy a alternativní řešení
 
-### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>Problémů, se sítí Netty čtení vypršení časového limitu selhání, Nízká propustnost, vysoká latence
+### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>Problémy se sítí, selhání časového času čtení Netty, nízká propustnost, vysoká latence
 
-#### <a name="general-suggestions"></a>Obecná doporučení
+#### <a name="general-suggestions"></a>Obecné návrhy
 * Ujistěte se, že aplikace běží ve stejné oblasti jako váš účet Azure Cosmos DB. 
-* Zkontrolujte využití procesoru na hostiteli, kde je aplikace spuštěna. Pokud je využití procesoru 90 % nebo víc, spusťte aplikaci na hostitele s vyšší konfigurace. Nebo můžete distribuovat zatížení na více počítačích.
+* Zkontrolujte využití procesoru na hostiteli, kde je aplikace spuštěna. Pokud je využití procesoru 90 procent nebo více, spusťte aplikaci na hostiteli s vyšší konfigurací. Nebo můžete rozdělit zatížení na více strojů.
 
-#### <a name="connection-throttling"></a>Omezení šířky pásma připojení
-Omezení šířky pásma připojení může dojít, protože buď [Limit připojení na hostitelském počítači] nebo [Vyčerpání portů Azure SNAT PAT].
+#### <a name="connection-throttling"></a>Omezení připojení
+Omezení připojení může dojít z důvodu [omezení připojení na hostitelském počítači] nebo [vyčerpání portu Azure SNAT (PAT).]
 
-##### <a name="connection-limit-on-host"></a>Limit připojení na hostitelském počítači
-Některé systémy Linux, jako je Red Hat, nemají horní omezení celkového počtu otevřených souborů. Sokety v systému Linux jsou implementovány jako soubory, tak toto číslo omezí celkový počet připojení, příliš.
+##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>Limit připojení k hostitelskému počítači
+Některé linuxové systémy, například Red Hat, mají horní limit celkového počtu otevřených souborů. Sokety v Linuxu jsou implementovány jako soubory, takže toto číslo omezuje celkový počet připojení.
 Spusťte následující příkaz.
 
 ```bash
 ulimit -a
 ```
-Počet maximální počet povolených otevřených souborů, které jsou označeny jako "nofile", musí být aspoň double velikost fondu připojení. Další informace najdete v tématu [tipy ke zvýšení výkonu](performance-tips-async-java.md).
+Počet maximální povolené otevřené soubory, které jsou označeny jako "nofile", musí být alespoň dvojnásobek velikosti fondu připojení. Další informace naleznete v [tématu Tipy pro výkon](performance-tips-async-java.md).
 
-##### <a name="snat"></a>Vyčerpání portů Azure SNAT PAT
+##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Vyčerpání portu Azure SNAT (PAT)
 
-Pokud vaše aplikace je nasazená ve službě Azure Virtual Machines bez veřejné IP adresy, ve výchozím nastavení [porty Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) k navázání spojení s libovolný koncový bod mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu služby Azure Cosmos DB je omezena [konfigurace Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
+Pokud se vaše aplikace nasadí na virtuálních počítačích Azure bez veřejné IP adresy, ve výchozím nastavení navazují [porty Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) připojení k libovolnému koncovému bodu mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu Azure Cosmos DB je omezen [konfigurací Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
 
- Azure SNAT porty se používají pouze v případě, že váš virtuální počítač má privátní IP adresu a proces z virtuálního počítače se pokusí připojit k veřejné IP adresy. Existují dvě alternativní řešení, aby se zabránilo Azure SNAT omezení:
+ Porty Azure SNAT se používají jenom v případě, že váš virtuální počítač má privátní IP adresu a proces z virtuálního počítače se pokusí připojit k veřejné IP adrese. Existují dvě řešení, jak se vyhnout omezení Azure SNAT:
 
-* Přidáte koncový bod služby Azure Cosmos DB k podsíti virtuální sítě Azure Virtual Machines. Další informace najdete v tématu [koncové body služeb virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
+* Přidejte koncový bod služby Azure Cosmos DB do podsítě virtuální sítě Virtuálních počítačů Azure. Další informace najdete v tématu [koncové body služby Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
 
-    Když je povolený koncový bod služby, žádosti už odesílají z veřejnou IP adresu do služby Azure Cosmos DB. Místo toho jsou odeslány virtuální síť a podsíť identity. Tato změna může vést drops brány firewall, pokud pouze veřejné IP adresy jsou povoleny. Pokud používáte bránu firewall, při povolení koncového bodu služby, přidejte podsíť brány firewall pomocí [virtuální sítě ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).
-* Přiřadíte veřejnou IP adresu svého virtuálního počítače Azure.
+    Pokud je koncový bod služby povolen, požadavky se už neodesílají z veřejné IP adresy do Azure Cosmos DB. Místo toho jsou odesílány virtuální sítě a identity podsítě. Tato změna může způsobit, že brána firewall klesne, pokud jsou povoleny pouze veřejné IP adresy. Pokud používáte bránu firewall, při povolení koncového bodu služby přidejte podsíť do brány firewall pomocí [seznamů ACL virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).
+* Přiřaďte k virtuálnímu počítači Azure veřejnou IP adresu.
 
-##### <a name="cant-connect"></a>Nelze kontaktovat službu – brány firewall
-``ConnectTimeoutException`` Označuje, že sady SDK nelze kontaktovat službu.
-Při použití přímý režim, může získat selhání podobný následujícímu:
+##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Nelze dosáhnout služby - firewall
+``ConnectTimeoutException``označuje, že sada SDK nemůže dosáhnout služby.
+Při použití přímého režimu se může stát selhání podobné následujícímu:
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
 ```
 
-Pokud máte bránu firewall, spuštěn v počítači aplikace, otevřete port rozsahu 10000 až 20 000 které používá přímý režim.
-Navíc dodržíte [limitu připojení na hostitelském počítači](#connection-limit-on-host).
+Pokud máte na počítači s aplikacemi spuštěný firewall, otevřete rozsah portů 10 000 až 20 000, které jsou používány v přímém režimu.
+Postupujte také podle [limitu připojení na hostitelském počítači](#connection-limit-on-host).
 
-#### <a name="http-proxy"></a>HTTP proxy
+#### <a name="http-proxy"></a>Proxy server HTTP
 
-Pokud používáte proxy server HTTP, ujistěte se, že počet připojení nakonfigurovaná v sadě SDK, které může podporovat `ConnectionPolicy`.
-Jinak kterými se setkáváte problémy s připojením.
+Pokud používáte proxy server HTTP, ujistěte se, že podporuje `ConnectionPolicy`počet připojení nakonfigurovaných v sadě SDK .
+V opačném případě budete čelit problémům s připojením.
 
-#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Neplatný vzor pro psaní kódu: Blokování vlákna Netty vstupně-výstupních operací
+#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Neplatný vzor kódování: Blokování vlákna Netty IO
 
-Sada SDK používá [Netty](https://netty.io/) vstupně-výstupních operací knihovny ke komunikaci s Azure Cosmos DB. Sada SDK má asynchronní rozhraní API a používá neblokující vstupně-výstupní operace rozhraní API Netty. Vstupně-výstupních operací pracovního sadě SDK se provádí na vstupně-výstupních operací Netty vlákna. Počet vláken vstupně-výstupních operací Netty byl nakonfigurován jako stejný jako počet jader procesoru počítače aplikace. 
+Sada SDK používá knihovnu [Netty](https://netty.io/) IO ke komunikaci s Azure Cosmos DB. Sada SDK má asynchronní rozhraní API a používá neblokující rozhraní API io netty. Vi práce sady SDK se provádí na vláknech IO Netty. Počet vláken IO Netty je nakonfigurován tak, aby byl stejný jako počet jader procesoru v zařízení aplikace. 
 
-Vlákna Netty vstupně-výstupní operace jsou určeny pro použití pouze pro práci bez blokování Netty vstupně-výstupních operací. Sady SDK do kódu aplikace vrátí výsledek volání rozhraní API na jedno z vláken Netty vstupně-výstupních operací. Pokud aplikace provádí operace dlouhodobých až dostane od výsledků na Netty vlákna, sady SDK nemusí mít dostatek vláken vstupně-výstupní operace k provedení své práce interní vstupně-výstupních operací. Takové aplikace kódování může vést k Nízká propustnost, vysoká latence a `io.netty.handler.timeout.ReadTimeoutException` selhání. Alternativním řešením je přepnout vlákno, když víte, že operace trvá určitou dobu.
+Netty IO vlákna jsou určeny k použití pouze pro neblokující Netty IO práce. Sada SDK vrátí výsledek vyvolání rozhraní API na jednom z vláken Netty IO do kódu aplikace. Pokud aplikace provádí dlouhotrvající operaci poté, co obdrží výsledky ve vlákně Netty, sada SDK nemusí mít dostatek vláken vi k provedení své interní viv práce. Takové kódování aplikace může mít za následek nízkou `io.netty.handler.timeout.ReadTimeoutException` propustnost, vysokou latenci a selhání. Řešení je přepnout vlákno, když víte, že operace nějakou dobu trvá.
 
-Příklad může posloužit podívejte se na následující fragment kódu. Můžete provést dlouhodobých práce, která přijímá více než několik milisekund, než na Netty vlákna. Pokud ano, případně můžete získat do stavu, kde je k dispozici pro zpracování prací vstupně-výstupní operace žádné vlákno Netty vstupně-výstupních operací. Díky tomu získáte ReadTimeoutException selhání.
+Podívejte se například na následující fragment kódu. Můžete provádět dlouhotrvající práci, která trvá více než několik milisekund ve vlákně Netty. Pokud ano, nakonec se můžete dostat do stavu, kde není k dispozici žádné vlákno Netty IO pro zpracování práce vi. V důsledku toho získáte readtimeoutexception selhání.
 ```java
 @Test
 public void badCodeWithReadTimeoutException() throws Exception {
@@ -131,13 +131,13 @@ public void badCodeWithReadTimeoutException() throws Exception {
     assertThat(failureCount.get()).isGreaterThan(0);
 }
 ```
-   Alternativním řešením je změnit vlákno, na kterém provádíte práci, kterou trvá určitou dobu. Definování typu singleton instance plánovače pro vaši aplikaci.
+   Řešení je změnit vlákno, na kterém provádíte práci, která vyžaduje čas. Definujte instanci singletonu plánovače pro vaši aplikaci.
    ```java
 // Have a singleton instance of an executor and a scheduler.
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
    ```
-   Můžete potřebovat pro práci, že trvá čas, například blokující v/v nebo výpočetně náročné práce. V takovém případě přepnout vlákno k pracovnímu procesu poskytované vaší `customScheduler` pomocí `.observeOn(customScheduler)` rozhraní API.
+   Možná budete muset udělat práci, která vyžaduje čas, například, výpočtově náročnou práci nebo blokování vi. V takovém případě přepněte vlákno na pracovníka poskytované ho `customScheduler` pomocí `.observeOn(customScheduler)` rozhraní API.
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);
@@ -148,36 +148,36 @@ createObservable
             // ...
         );
 ```
-S použitím `observeOn(customScheduler)`, uvolnit vlákno Netty vstupně-výstupní operace a přepněte se na vlastní vlastní vlákno, které poskytuje vlastní plánovač. Tato změna řeší problém. Nezískáte `io.netty.handler.timeout.ReadTimeoutException` už selhání.
+Pomocí `observeOn(customScheduler)`aplikace uvolníte vlákno Netty IO a přepnete na vlastní podproces poskytovaný vlastním plánovačem. Tato změna problém vyřešila. Už nebudeš mít `io.netty.handler.timeout.ReadTimeoutException` neúspěch.
 
 ### <a name="connection-pool-exhausted-issue"></a>Problém vyčerpání fondu připojení
 
-`PoolExhaustedException` je selhání na straně klienta. Tato chyba znamená, že vašich úloh aplikace vyšší, než co může sloužit fondu připojení SDK. Zvětšit velikost fondu připojení nebo distribuovat zatížení na více aplikací.
+`PoolExhaustedException`je selhání na straně klienta. Tato chyba označuje, že vaše úlohy aplikace je vyšší než co fond připojení sady SDK může sloužit. Zvětšete velikost fondu připojení nebo distribuujte zatížení více aplikací.
 
-### <a name="request-rate-too-large"></a>Frekvence požadavků, které jsou moc velká
-Tato chyba je selhání na straně serveru. Znamená to, že spotřebované zřízené propustnosti. Zkuste to znovu později. Pokud se zobrazí tato chyba často, zvažte zvýšení propustnosti kolekce.
+### <a name="request-rate-too-large"></a>Příliš velká míra požadavků
+Tato chyba je selhání na straně serveru. Označuje, že jste spotřebovávají zřízenou propustnost. Opakujte akci později. Pokud se často dostanete toto selhání, zvažte zvýšení propustnost kolekce.
 
-### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Neúspěšné připojení k emulátoru služby Azure Cosmos DB
+### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Selhání připojení k emulátoru Azure Cosmos DB
 
-Certifikát HTTPS emulátor služby Azure Cosmos DB je podepsaný svým držitelem. Sady SDK pracovat s emulátorem importujte certifikát emulátor do Java TrustStore. Další informace najdete v tématu [certifikátů emulátoru Export služby Azure Cosmos DB](local-emulator-export-ssl-certificates.md).
+Certifikát HTTPS emulátoru Azure Cosmos DB je podepsaný svým držitelem. Chcete-li, aby sada SDK fungovala s emulátorem, importujte certifikát emulátoru do úložiště Java TrustStore. Další informace naleznete [v tématu Export certifikátů emulátoru Azure Cosmos DB](local-emulator-export-ssl-certificates.md).
 
-### <a name="dependency-conflict-issues"></a>Problémy s konflikt závislostí
+### <a name="dependency-conflict-issues"></a>Problémy s konfliktem závislostí
 
 ```console
 Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
 ```
 
-Výše uvedené výjimce naznačuje, že jsou závislé na starší verzi RxJava lib (například 1.2.2). Naše sada SDK spoléhá na RxJava 1.3.8, který má rozhraní API není k dispozici v předchozích verzích RxJava. 
+Výše uvedená výjimka naznačuje, že máte závislost na starší verzi RxJava lib (např. 1.2.2). Naše sada SDK se spoléhá na rxJava 1.3.8, která má rozhraní API, která nejsou k dispozici v dřívější verzi RxJava. 
 
-Alternativním řešením je takové issuses k identifikaci které závislosti přináší RxJava 1.2.2 vyloučit tranzitivní závislost na RxJava 1.2.2 a povolit služby cosmos DB SDK přenést na novější verzi.
+Řešení pro tyto issuses je určit, které další závislost přináší v RxJava-1.2.2 a vyloučit přenosnou závislost na RxJava-1.2.2, a povolit CosmosDB SDK přinést novější verzi.
 
-Chcete-li určit, která knihovna přináší RxJava-1.2.2 vedle souboru projektu pom.xml spuštěním následujícího příkazu:
+Chcete-li zjistit, která knihovna přináší do RxJava-1.2.2, spusťte vedle souboru pom.xml projektu následující příkaz:
 ```bash
 mvn dependency:tree
 ```
-Další informace najdete v tématu [maven závislost stromu Průvodce](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html).
+Další informace naleznete v [průvodci stromem závislostí maven](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html).
 
-Jakmile identifikujete RxJava 1.2.2 je tranzitivní závislost jaké další závislosti projektu můžete upravit závislost na lib v souboru pom a vyloučit RxJava přechodné závislosti:
+Jakmile zjistíte, RxJava-1.2.2 je přenosná závislost, které další závislost vašeho projektu, můžete upravit závislost na tomto lib v souboru pom a vyloučit RxJava přenositelné závislosti to:
 
 ```xml
 <dependency>
@@ -193,14 +193,14 @@ Jakmile identifikujete RxJava 1.2.2 je tranzitivní závislost jaké další zá
 </dependency>
 ```
 
-Další informace najdete v tématu [vyloučit přechodné závislosti průvodce](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html).
+Další informace naleznete v [průvodci vyloučit přenositené závislosti](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html).
 
 
-## <a name="enable-client-sice-logging"></a>Povolení protokolování sady SDK klienta
+## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>Povolení protokolování sady SDK klienta
 
-Použití sady Java SDK pro asynchronní SLF4j jako adaptační vrstva protokolování, která podporuje protokolování do oblíbených protokolovacích rozhraní, jako je log4j a logback.
+Java Async SDK používá SLF4j jako fasádu protokolování, která podporuje přihlášení do populární chod protokolování, jako je log4j a logback.
 
-Například pokud chcete použít log4j jako protokolovacího rozhraní, přidejte následující knihovny v vaše cesta třídy Java.
+Například pokud chcete použít log4j jako rámec protokolování, přidejte následující libs v java cesta třídy.
 
 ```xml
 <dependency>
@@ -215,7 +215,7 @@ Například pokud chcete použít log4j jako protokolovacího rozhraní, přidej
 </dependency>
 ```
 
-Přidejte také log4j config.
+Přidejte také konfiguraci log4j.
 ```
 # this is a sample log4j configuration
 
@@ -233,25 +233,25 @@ log4j.appender.A1.layout=org.apache.log4j.PatternLayout
 log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 ```
 
-Další informace najdete v tématu [sfl4j protokolování ruční](https://www.slf4j.org/manual.html).
+Další informace naleznete v [příručce k protokolování sfl4j](https://www.slf4j.org/manual.html).
 
-## <a name="netstats"></a>Statistika sítě operačního systému
-Spusťte příkaz netstat získat představu o tom, kolik připojení jsou ve stavu, jako `ESTABLISHED` a `CLOSE_WAIT`.
+## <a name="os-network-statistics"></a><a name="netstats"></a>Statistiky sítě operačního spoje
+Spusťte příkaz netstat, abyste získali představu o `ESTABLISHED` `CLOSE_WAIT`tom, kolik připojení je ve stavech, jako jsou například a .
 
-V systému Linux můžete spustit následující příkaz.
+V Linuxu můžete spustit následující příkaz.
 ```bash
 netstat -nap
 ```
-Filtrovat výsledek, který má jenom připojení ke koncovému bodu služby Azure Cosmos DB.
+Filtrujte výsledek pouze na připojení ke koncovému bodu Azure Cosmos DB.
 
-Počet připojení ke koncovému bodu služby Azure Cosmos DB v `ESTABLISHED` stavu nemůže být větší než velikost fondu nakonfigurované připojení.
+Počet připojení ke koncovému bodu Azure Cosmos DB ve `ESTABLISHED` stavu nemůže být větší než nakonfigurovaná velikost fondu připojení.
 
-Počet připojení ke koncovému bodu služby Azure Cosmos DB je možné `CLOSE_WAIT` stavu. Může existovat více než 1 000. To vysoké číslo označuje, že připojení jsou vytvářena a rychle protržen. Tato situace potenciálně způsobuje problémy. Další informace najdete v tématu [Běžné problémy a řešení] oddílu.
+Mnoho připojení ke koncovému bodu Azure Cosmos DB může být ve `CLOSE_WAIT` stavu. Může jich být víc než 1000. Číslo, které vysoké označuje, že připojení jsou navázány a rychle strženy. Tato situace potenciálně způsobuje problémy. Další informace naleznete v části [Běžné problémy a řešení.]
 
  <!--Anchors-->
-[Běžné problémy a řešení]: #common-issues-workarounds
+[Běžné problémy a alternativní řešení]: #common-issues-workarounds
 [Enable client SDK logging]: #enable-client-sice-logging
-[Limit připojení na hostitelském počítači]: #connection-limit-on-host
-[Vyčerpání portů Azure SNAT PAT]: #snat
+[Limit připojení k hostitelskému počítači]: #connection-limit-on-host
+[Vyčerpání portu Azure SNAT (PAT)]: #snat
 
 

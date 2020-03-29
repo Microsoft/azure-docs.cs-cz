@@ -1,6 +1,6 @@
 ---
-title: Provozní kontinuita virtuální sítě | Microsoft Docs
-description: Přečtěte si, co dělat v případě výpadku služby Azure s dopadem na virtuální sítě Azure.
+title: Kontinuita provozu virtuální sítě | Dokumenty společnosti Microsoft
+description: Přečtěte si, co dělat v případě přerušení služby Azure, které má dopad na virtuální sítě Azure.
 services: virtual-network
 documentationcenter: ''
 author: NarayanAnnamalai
@@ -16,38 +16,38 @@ ms.date: 05/16/2016
 ms.author: narayan
 ms.reviewer: aglick
 ms.openlocfilehash: 3f91d24bff0bec540ff0e7964f21c2f47c03638c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67876172"
 ---
-# <a name="virtual-network--business-continuity"></a>Virtual Network – provozní kontinuita
+# <a name="virtual-network--business-continuity"></a>Virtuální síť – kontinuita provozu
 
 ## <a name="overview"></a>Přehled
-Virtual Network (VNet) je logická reprezentace vaší sítě v cloudu. Umožňuje vám definovat vlastní privátní adresní prostor IP adres a segmentovat síť do podsítí. Virtuální sítě slouží jako hranice důvěry pro hostování výpočetních prostředků, jako je Azure Virtual Machines a Cloud Services (Web/role pracovního procesu). Virtuální síť umožňuje přímou komunikaci privátních IP adres mezi prostředky, které jsou v ní hostované. Virtuální síť můžete propojit s místní sítí pomocí VPN Gateway nebo ExpressRoute.
+Virtuální síť (VNet) je logická reprezentace vaší sítě v cloudu. Umožňuje definovat vlastní privátní adresní prostor IP a segmentovat síť do podsítí. Virtuální sítě slouží jako hranice důvěryhodnosti pro hostování výpočetních prostředků, jako jsou virtuální počítače Azure a cloudové služby (role web/pracovní proces). Virtuální síť umožňuje přímou privátní IP komunikaci mezi prostředky hostované v něm. Virtuální síť můžete propojit s místní sítí prostřednictvím brány VPN nebo ExpressRoute.
 
-Virtuální síť se vytvoří v rámci rozsahu oblasti. Můžete *vytvořit* virtuální sítě se stejným adresním prostorem ve dvou různých oblastech (například USA – východ a USA – západ), protože mají stejný adresní prostor, nemůžete je propojit dohromady. 
+Virtuální síť se vytvoří v rámci oblasti. Virtuální sítě se stejným adresním prostorem můžete *vytvořit* ve dvou různých oblastech (například US East a US West), ale protože mají stejný adresní prostor, nemůžete je propojit. 
 
 ## <a name="business-continuity"></a>Kontinuita podnikových procesů
 
-Může dojít k několika různým způsobům, které by mohlo dojít k přerušení vaší aplikace. Oblast může být zcela vyjmuta z důvodu přirozené havárie nebo částečné havárie z důvodu selhání více zařízení nebo služeb. Dopad na službu VNet se v každé z těchto situací liší.
+Může existovat několik různých způsobů, které by mohly být narušeny. Oblast by mohla být zcela odříznuta v důsledku přírodní katastrofy nebo částečné katastrofy v důsledku selhání více zařízení nebo služeb. Dopad na službu virtuální sítě se liší v každé z těchto situací.
 
-**Otázka: Co dělat v případě, že dojde k výpadku pro celou oblast? Například pokud je oblast zcela vyjmuta z důvodu přirozené havárie? Co se stane s virtuálními sítěmi hostovanými v dané oblasti?**
+**Otázka: Pokud dojde k výpadku pro celou oblast, co mám dělat? Například, pokud je region zcela odříznut kvůli přírodní katastrofě? Co se stane s virtuálními sítěmi hostovanými v oblasti?**
 
-Odpověď: Virtuální síť a prostředky v ovlivněné oblasti zůstanou v době přerušení služby nedostupné.
+A: Virtuální síť a prostředky v postižené oblasti zůstane nepřístupné v době přerušení služby.
 
-![Diagram jednoduchého Virtual Network](./media/virtual-network-disaster-recovery-guidance/vnet.png)
+![Jednoduchý diagram virtuální sítě](./media/virtual-network-disaster-recovery-guidance/vnet.png)
 
-**Otázka: Jak mohu znovu vytvořit stejnou virtuální síť v jiné oblasti?**
+**Otázka: Co mám udělat znovu vytvořit stejnou virtuální síť v jiné oblasti?**
 
-Odpověď: Virtuální sítě jsou poměrně odlehčené prostředky. Můžete vyvolat rozhraní API Azure a vytvořit virtuální síť se stejným adresním prostorem v jiné oblasti. Pokud chcete znovu vytvořit stejné prostředí, které se nacházelo v zasažené oblasti, můžete volat rozhraní API k opětovnému nasazení Cloud Services webových rolí a rolí pracovních procesů a virtuálních počítačů, které jste měli. Pokud máte místní připojení, například při hybridním nasazení, musíte nasadit novou VPN Gateway a připojit se k místní síti.
+A: Virtuální sítě jsou poměrně lehké prostředky. Můžete vyvolat Azure API k vytvoření virtuální sítě se stejným adresním prostorem v jiné oblasti. Chcete-li znovu vytvořit stejné prostředí, které bylo k dispozici v ohrožené oblasti, provedete volání rozhraní API k opětovnému nasazení webových a pracovních rolí cloudových služeb a virtuálních počítačů, které jste měli. Pokud máte místní připojení, například v hybridním nasazení, musíte nasadit novou bránu VPN a připojit se k místní síti.
 
-Informace o vytvoření virtuální sítě najdete v tématu [vytvoření virtuální sítě](manage-virtual-network.md#create-a-virtual-network).
+Pokud chcete vytvořit virtuální síť, [přečtěte si tématu Vytvoření virtuální sítě](manage-virtual-network.md#create-a-virtual-network).
 
-**Otázka: Může být replika virtuální sítě v dané oblasti znovu vytvořená v jiné oblasti před časem?**
+**Otázka: Může být replika virtuální sítě v dané oblasti znovu vytvořena v jiné oblasti předem?**
 
-Odpověď: Ano, můžete vytvořit dvě virtuální sítě pomocí stejného privátního adresního prostoru IP adres a prostředků ve dvou různých oblastech předem. Pokud ve virtuální síti používáte internetové služby, můžete nastavit Traffic Manager provoz geografického směrování na oblast, která je aktivní. Nemůžete ale propojit dvě virtuální sítě se stejným adresním prostorem do místní sítě, protože by to mohlo způsobovat problémy s směrováním. V době havárie a ztráty virtuální sítě v jedné oblasti můžete připojit druhou virtuální síť v oblasti k dispozici s adresním prostorem pro místní síť.
+A: Ano, můžete vytvořit dvě virtuální sítě pomocí stejného privátního adresního prostoru IP a prostředky ve dvou různých oblastech předem. Pokud hostujete internetové služby ve virtuální síti, můžete nastavit Traffic Manager pro geografickou trasu provozu do oblasti, která je aktivní. Však nelze připojit dvě virtuální sítě se stejným adresním prostorem k místní síti, protože by to způsobit problémy se směrováním. V době havárie a ztráty virtuální sítě v jedné oblasti můžete připojit druhou virtuální síť v dostupné oblasti s odpovídajícím adresním prostorem k místní síti.
 
-Informace o vytvoření virtuální sítě najdete v tématu [vytvoření virtuální sítě](manage-virtual-network.md#create-a-virtual-network).
+Pokud chcete vytvořit virtuální síť, [přečtěte si tématu Vytvoření virtuální sítě](manage-virtual-network.md#create-a-virtual-network).
 

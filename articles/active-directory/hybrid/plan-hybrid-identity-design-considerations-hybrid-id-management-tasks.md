@@ -1,6 +1,6 @@
 ---
-title: Úloh správy návrhu hybridní identity – Azure | Dokumentace Microsoftu
-description: Pomocí řízení podmíněného přístupu Azure Active Directory ověří zvláštní podmínky, kterou vyberete při ověřování uživatele a před povolením přístupu k aplikaci. Po splnění těchto podmínek, uživatel ověří a povolí se přístup k aplikaci.
+title: Návrh hybridní identity – úlohy správy Azure | Dokumenty společnosti Microsoft
+description: Pomocí řízení podmíněného přístupu služba Azure Active Directory zkontroluje konkrétní podmínky, které vyberete při ověřování uživatele a před povolením přístupu k aplikaci. Jakmile jsou tyto podmínky splněny, uživatel je ověřen a povolen přístup k aplikaci.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,57 +18,57 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109385"
 ---
-# <a name="plan-for-hybrid-identity-lifecycle"></a>Plánování životního cyklu hybridní Identity
-Identita je jedním ze základů strategii enterprise mobility a aplikaci přístup. Jestli se přihlašujete vaše mobilní zařízení nebo aplikaci SaaS, vaše identita je klíčem k získání přístupu ke všemu, co. Na nejvyšší úrovni řešení pro správu identit zahrnuje sjednocení a synchronizaci mezi vaší identity úložišť, což zahrnuje automatizuje a centralizuje proces zřizování prostředků. Řešení identit by měl být centralizované identitou napříč místním i cloudovým a zároveň použít určitou formu federace identit pro zachovat centralizované ověřování a bezpečně sdílet a spolupracovat s externími uživateli a firmy. Prostředky v rozsahu od operačních systémů a aplikací na osoby ve ani pod něj nespadá s organizací. Organizační struktura může být upraven, aby odpovídal zřizování zásad a postupů.
+# <a name="plan-for-hybrid-identity-lifecycle"></a>Plán pro životní cyklus hybridní identity
+Identita je jedním ze základů vaší strategie podnikové mobility a přístupu k aplikacím. Ať už se přihlašujete k mobilnímu zařízení nebo aplikaci SaaS, vaše identita je klíčem k získání přístupu ke všemu. Na nejvyšší úrovni řešení správy identit zahrnuje sjednocení a synchronizaci mezi úložišti identit, což zahrnuje automatizaci a centralizaci procesu zřizování prostředků. Řešení identit by mělo být centralizovanou identitou napříč místním i cloudem a také používat nějakou formu federace identit k udržování centralizovaného ověřování a bezpečnému sdílení a spolupráci s externími uživateli a firmami. Zdroje sahají od operačních systémů a aplikací až po lidi v organizaci nebo s ní spojenou. Organizační strukturu lze změnit tak, aby vyhovovala zásadám a postupům zřizování.
 
-Je také důležité, aby byly přizpůsobeny Zlepšete možnosti svých uživatelů a poskytovat jim samoobslužné možnosti zajistit produktivitu řešení identitám. Řešení identity je výkonnější, že pokud to umožňuje jednotné přihlašování pro uživatele přes všechny prostředky, které potřebují přístup. Správci na všech úrovních standardizované postupy můžete použít ke správě přihlašovacích údajů uživatele. Některé úrovní správy lze omezit nebo vyloučit, podle toho, kontejnerových nástrojů zřizování řešení pro správu. Kromě toho můžete bezpečně distribuovat možností správy, ručně nebo automaticky, mezi různými organizacemi. Správce domény může například sloužit pouze lidé a prostředky v této doméně. Tento uživatel může provádět úkoly správy a zřizování, ale nemá oprávnění k provádění úloh konfigurace, jako je například vytváření pracovních postupů.
+Je také důležité mít řešení identity zaměřené na posílení postavení vašich uživatelů tím, že jim poskytuje samoobslužné prostředí, aby byli produktivní. Vaše řešení identit y je robustnější, pokud umožňuje jednotné přihlašování pro uživatele ve všech prostředcích, které potřebují přístup. Správci na všech úrovních mohou používat standardizované postupy pro správu pověření uživatelů. Některé úrovně správy lze snížit nebo odstranit, v závislosti na šíři řešení správy zřizování. Kromě toho můžete bezpečně distribuovat možnosti správy, ručně nebo automaticky, mezi různé organizace. Správce domény může například obsluhovat pouze osoby a prostředky v této doméně. Tento uživatel může dělat úlohy správy a zřizování, ale není oprávněn k provádění úloh konfigurace, jako je například vytváření pracovních postupů.
 
-## <a name="determine-hybrid-identity-management-tasks"></a>Určení úloh správy hybridní Identity
-Distribuce úloh správy ve vaší organizaci zlepšuje přesnost a efektivitu správy a vyrovnávání zatížení v organizaci. Následující části jsou pivoty, které definují systému správy identit v robustní.
+## <a name="determine-hybrid-identity-management-tasks"></a>Určení úloh správy hybridní identity
+Distribuce administrativních úkolů ve vaší organizaci zvyšuje přesnost a efektivitu správy a zlepšuje rovnováhu pracovního vytížení organizace. Následují pivoty, které definují robustní systém správy identit.
 
- ![aspekty správy identit](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
+ ![Aspekty správy identit](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
 
-Chcete-li definovat úkoly správy hybridní identity, musíte pochopit některé základní vlastnosti organizace, která bude přijímat hybridní identita. Je důležité, abyste pochopili aktuální úložišť se používají pro identitu zdroje. Musíte znát tyto základní prvky, bude mít základní požadavky a na základě, že budete muset klást podrobnější otázky, které vás přesměruje lepší rozhodnutí o návrhu pro vaše řešení identit.  
+Chcete-li definovat úlohy správy hybridní identity, musíte pochopit některé základní charakteristiky organizace, která bude přijímat hybridní identitu. Je důležité porozumět aktuálním úložištím, které se používají pro zdroje identit. Znalostí těchto základních prvků budete mít základní požadavky a na základě toho budete muset položit podrobnější otázky, které vás povedou k lepšímu rozhodnutí o návrhu pro vaše řešení identity.  
 
-Při definování těchto požadavků, ujistěte se, že alespoň na následující otázky jsou zodpovězeny.
+Při definování těchto požadavků zajistěte, aby byly zodpovězeny alespoň následující otázky
 
 * Možnosti zřizování: 
   
-  * Podporuje řešení hybridní identity účtu robustní správu přístupu a zřizování systému?
-  * Jak se uživatelé, skupiny a hesla, které pokud chcete spravovat?
-  * Správa životního cyklu identit je responzivní? 
-    * Jak dlouho pozastavení účtu aktualizace hesla trvá?
+  * Podporuje řešení hybridní identity robustní systém správy přístupu k účtu a zřizování?
+  * Jak budou uživatelé, skupiny a hesla spravováni?
+  * Odpovídá správa životního cyklu identity? 
+    * Jak dlouho trvá pozastavení platnosti účtu aktualizací hesla?
 * Správa licencí: 
   
-  * Nemá licenci správy hybridních identit řešení popisovačů?
-    * Pokud ano, jaké možnosti jsou k dispozici?
-  * Řešení postupovat při správě na základě skupin licencí? 
+  * Zpracovává řešení hybridní identity správu licencí?
+    * Pokud ano, jaké funkce jsou k dispozici?
+  * Zpracovává řešení správu licencí založenou na skupině? 
   
-    * Pokud ano, je možné přiřadit skupinu zabezpečení? 
-    * Pokud ano, cloudovým adresářem automaticky přiřadí licence všem členům skupiny? 
-    * Co se stane, pokud uživatel je následně přidány do nebo ze skupiny odebrány, se licence se automaticky přiřazovat a odebírat podle potřeby? 
-* Integrace s ostatními zprostředkovateli identity třetí strany:
-  * Je možné integrovat toto hybridní řešení pomocí poskytovatelů identit třetích stran k implementaci jednotného přihlašování?
-  * Je možné sjednocení všech zprostředkovatelů jinou identitou systém získá na ucelenosti identity?
-  * Pokud ano, jak a které jsou, a jaké možnosti jsou k dispozici?
+    * Pokud ano, je možné k ní přiřadit skupinu zabezpečení? 
+    * Pokud ano, bude adresář cloudu automaticky přiřazovat licence všem členům skupiny? 
+    * Co se stane, pokud je uživatel následně přidán do skupiny nebo odebrán ze skupiny, bude licence automaticky přiřazena nebo odebrána podle potřeby? 
+* Integrace s dalšími poskytovateli identit třetích stran:
+  * Může být toto hybridní řešení integrováno s poskytovateli identit třetích stran pro implementaci jednotného přihlášení?
+  * Je možné sjednotit všechny různé poskytovatele identity do soudržného systému identit?
+  * Pokud ano, jak a jaké jsou a jaké schopnosti jsou k dispozici?
 
 ## <a name="synchronization-management"></a>Správa synchronizace
-Jedním z cílů identity Manageru, abyste mohli přenést všechny poskytovatele identit a zajistěte jejich synchronizaci. Zachovat synchronizaci dat založené na zprostředkovateli autoritativní hlavní identity. V hybridním scénáři identity, s modelem synchronizované správy spravovat všechny identity uživatelů a zařízení v místním serveru a synchronizujte účty a volitelně hesel do cloudu. Uživatel zadá stejné heslo místní dělají v cloudu, a při přihlášení, ověření hesla podle řešení identit. Tento model používá nástroje pro synchronizaci adresáře.
+Jedním z cílů správce identit, aby bylo možné přenést všechny zprostředkovatele identity a udržovat je synchronizované. Data jsou synchronizována na základě autoritativního hlavního zprostředkovatele identity. Ve scénáři hybridní identity se synchronizovaným modelem správy spravujete všechny identity uživatelů a zařízení na místním serveru a synchronizujete účty a volitelně hesla do cloudu. Uživatel zadá stejné heslo místně jako v cloudu a při přihlášení je heslo ověřeno řešením identit. Tento model používá nástroj pro synchronizaci adresářů.
 
-![synchronizace adresářů](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) správné návrhu synchronizace hybridní řešení identit Ujistěte se, že jsou odpovědi na následující otázky:
-*    Co jsou k dispozici pro hybridní řešení identit synchronizace řešení?
-*    Jaké jsou dostupné možnosti jednotného přihlašování?
-*    Jaké jsou možnosti pro federaci mezi B2B a B2C?
+![synchronizace](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) adresářů: Chcete-li správně navrhnout synchronizaci řešení hybridní identity, zajistěte, aby byly zodpovězeny následující otázky:
+*    Jaká synchronizační řešení jsou k dispozici pro řešení hybridní identity?
+*    Jaké jsou funkce jednotného přihlášení k dispozici?
+*    Jaké jsou možnosti federace identit mezi B2B a B2C?
 
-## <a name="next-steps"></a>Další postup
-[Určení strategie přijetí správy hybridní identity](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
+## <a name="next-steps"></a>Další kroky
+[Určit strategii přijetí hybridní správy identit](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
 
 ## <a name="see-also"></a>Viz také
-[Přehled aspektů návrhu](plan-hybrid-identity-design-considerations-overview.md)
+[Přehled aspekty návrhu](plan-hybrid-identity-design-considerations-overview.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Omezení obsahu Azure CDN podle země nebo oblasti | Dokumentace Microsoftu
-description: Zjistěte, jak omezit přístup k vašemu obsahu Azure CDN pomocí funkce geografické filtrování podle země nebo oblasti.
+title: Omezení obsahu Azure CDN podle země nebo oblasti | Dokumenty společnosti Microsoft
+description: Zjistěte, jak omezit přístup podle země nebo oblasti k obsahu Azure CDN pomocí funkce geografického filtrování.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,100 +15,100 @@ ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
 ms.openlocfilehash: 75c422d456f2509ce478e2609a6509f78a6eb31e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593433"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Omezení obsahu Azure CDN podle země nebo oblasti
 
 ## <a name="overview"></a>Přehled
-Když si uživatel vyžádá obsah, ve výchozím nastavení, obsah obsluhuje bez ohledu na umístění uživatele, který zadal žádost. Ale v některých případech může chtít omezit přístup k vašemu obsahu podle země nebo oblasti. S *geografické filtrování* funkce, můžete vytvořit pravidla na konkrétních cestách vašeho koncového bodu CDN povolit nebo blokovat obsah ve vybraných zemích nebo oblastech.
+Když uživatel požaduje váš obsah, ve výchozím nastavení je obsah doručen bez ohledu na umístění uživatele, který žádost podává. V některých případech však můžete chtít omezit přístup k obsahu podle země nebo oblasti. Pomocí funkce *geografického filtrování* můžete vytvořit pravidla pro konkrétní cesty v koncovém bodě CDN a povolit nebo blokovat obsah ve vybraných zemích nebo oblastech.
 
 > [!IMPORTANT]
-> **Azure CDN Standard od společnosti Microsoft** profily založené na cestě geografické filtrování nepodporují.
+> **Azure CDN Standard od Microsoftu** profily nepodporují geografické filtrování založené na cestě.
 > 
 
 ## <a name="standard-profiles"></a>Standardní profily
-Postupy v této části jsou určené pro **Azure CDN Standard od Akamai** a **Azure CDN Standard od Verizonu** pouze profily. 
+Postupy v této části jsou určeny pro **Azure CDN Standard od Akamai** a **Azure CDN Standard od Verizon** pouze profily. 
 
-Pro **Azure CDN Premium od Verizonu** profily, je nutné použít **spravovat** portál a aktivovat geografické filtrování. Další informace najdete v tématu [Azure CDN Premium od Verizonu profily](#azure-cdn-premium-from-verizon-profiles).
+Pro **profily Azure CDN Premium od verizonu** musíte k aktivaci geografického filtrování použít portál **pro správu.** Další informace najdete [v tématu Azure CDN Premium od Verizon profily](#azure-cdn-premium-from-verizon-profiles).
 
-### <a name="define-the-directory-path"></a>Definovat cesty k adresáři
-Pro přístup k funkci geografické filtrování, vyberte koncový bod CDN na portálu a potom vyberte **geografické filtrování** podle nastavení v nabídce vlevo. 
+### <a name="define-the-directory-path"></a>Definování cesty k adresáři
+Chcete-li získat přístup k funkci geografického filtrování, vyberte koncový bod CDN na portálu a v levé nabídce vyberte **možnost Geografické filtrování** v části NASTAVENÍ. 
 
-![Geografické filtrování standard](./media/cdn-filtering/cdn-geo-filtering-standard.png)
+![Standard geografického filtrování](./media/cdn-filtering/cdn-geo-filtering-standard.png)
 
-Z **cesta** zadejte relativní cestu k umístění, do které se uživatelům povoluje nebo odepírá přístup. 
+V poli **CESTA** zadejte relativní cestu k umístění, ke kterému bude uživatelům povolen nebo odepřen přístup. 
 
-Můžete provést geografické filtrování pro všechny soubory s předání lomítko (/) nebo vybrat konkrétní složky zadáním cesty k adresářům (například */obrazky/* ). Můžete také provést geografické filtrování u jednoho souboru (například */pictures/city.png*). Více pravidel jsou povoleny. Po zadání pravidlo, zobrazí se prázdný řádek můžete zadat další pravidla.
+Můžete použít geografické filtrování pro všechny soubory s lomítkem (/) nebo vybrat konkrétní složky zadáním cest adresáře (například */pictures/*). Můžete také použít geografické filtrování na jeden soubor (například */pictures/city.png).* Je povoleno více pravidel; Po zadání pravidla se zobrazí prázdný řádek, který můžete zadat další pravidlo.
 
-Například všechny následující filtry cesta adresáře jsou platné:   
+Například všechny následující filtry cest adresáře jsou platné:   
 */*                                 
-*/Photos/*      
-*/Photos/Štrasburku /*      
-*/Photos/Strasbourg/city.png*
+*/Fotografie/*     
+*/Fotografie/Štrasburk/*     
+*/Fotografie/Štrasburk/město.png*
 
-### <a name="define-the-type-of-action"></a>Definování typ akce
+### <a name="define-the-type-of-action"></a>Definovat typ akce
 
-Z **akce** seznamu vyberte **povolit** nebo **bloku**: 
+V seznamu **AKCE** vyberte **Povolit** nebo **Blokovat**: 
 
-- **Povolit**: Přístup k prostředkům vyžádaný z cesty rekurzivní mohou pouze uživatelé z zadanou zemí nebo oblastí.
+- **Povolit**: Pouze uživatelé z určených zemí nebo oblastí mají povolen přístup k prostředkům požadovaným z rekurzivní cesty.
 
-- **Blok**: Uživatelé z zadanou zemí nebo oblastí mají odepřený přístup k prostředkům vyžádané rekurzivní cesta. Pokud pro toto umístění nebyly nakonfigurovány žádné jiné země/oblast možnosti filtrování, pak všichni ostatní uživatelé budou mít přístup povolený.
+- **Blok**: Uživatelům ze zadaných zemí nebo oblastí je odepřen přístup k prostředkům požadovaným z rekurzivní cesty. Pokud pro toto umístění nebyly nakonfigurovány žádné jiné možnosti filtrování zemí nebo oblastí, bude přístup povolen všem ostatním uživatelům.
 
-Například geografické filtrování pravidla pro blokování cestu */fotografie/Štrasburku/* filtry pro následující soubory:     
-*http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
-*http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
+Například pravidlo geografického filtrování pro blokování cesty */Photos/Strasbourg/* filtruje následující soubory:     
+*\//http:\<koncový bod>.azureedge.net/Photos/Strasbourg/1000.jpg*
+*http:\//\<koncový bod>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
-### <a name="define-the-countriesregions"></a>Definovat zemí/oblastí
-Z **kódy zemí** vyberte u zemí nebo oblastí, které chcete blokovat nebo povolit pro danou cestu. 
+### <a name="define-the-countriesregions"></a>Definování zemí nebo oblastí
+V seznamu **KÓDY ZEMÍ** vyberte země nebo oblasti, které chcete zablokovat, nebo povolit cestu. 
 
-Po dokončení výběru země nebo oblasti, vyberte **Uložit** k aktivaci nové geografické filtrování pravidlo. 
+Po dokončení výběru zemí nebo oblastí vyberte **Uložit,** chcete-li aktivovat nové pravidlo geografického filtrování. 
 
-![Pravidla pro geografické filtrování](./media/cdn-filtering/cdn-geo-filtering-rules.png)
+![Pravidla geografického filtrování](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud chcete odstranit pravidlo, vyberte ho ze seznamu na **geografické filtrování** stránce a pak zvolte **odstranit**.
+Chcete-li pravidlo odstranit, vyberte ho ze seznamu na stránce **Geografické filtrování** a pak zvolte **Odstranit**.
 
-## <a name="azure-cdn-premium-from-verizon-profiles"></a>Azure CDN Premium od Verizonu profily
-Pro **pro Azure CDN Premium od Verizonu** profily, uživatelské rozhraní pro vytvoření pravidla pro geografické filtrování se liší:
+## <a name="azure-cdn-premium-from-verizon-profiles"></a>Profily Azure CDN Premium od společnosti Verizon
+Pro **azure cdn premium od** verizonprofily, uživatelské rozhraní pro vytvoření geografické filtrování pravidlo se liší:
 
-1. V horní nabídce ve vašem profilu Azure CDN, vyberte **spravovat**.
+1. V horní nabídce profilu Azure CDN vyberte **Spravovat**.
 
-2. Z portálu společnosti Verizon vyberte **HTTP velké**a pak vyberte **filtrování podle země**.
+2. Na portálu Verizon vyberte **možnost HTTP Large**a potom vyberte Filtrování **zemí**.
 
-    ![Geografické filtrování standard](./media/cdn-filtering/cdn-geo-filtering-premium.png)
+    ![Standard geografického filtrování](./media/cdn-filtering/cdn-geo-filtering-premium.png)
 
-3. Vyberte **přidat filtr země**.
+3. Vyberte **Přidat filtr země**.
 
-    **Jeden krok:** se zobrazí stránka.
+    Zobrazí se stránka **Step One:** .
 
-4. Zadejte cestu k adresáři, vyberte **bloku** nebo **přidat**a pak vyberte **Další**.
+4. Zadejte cestu k adresáři, vyberte **Blokovat** nebo **Přidat**a pak vyberte **Další**.
 
-    **Kroku dvě:** se zobrazí stránka. 
+    Zobrazí se **stránka Krok dva:** 
 
-5. Vyberte jeden nebo více zemích nebo oblastech ze seznamu a potom vyberte **Dokončit** aktivovat pravidlo. 
+5. Vyberte ze seznamu jednu nebo více zemí nebo oblastí a pak vyberte **Dokončit,** chcete-li pravidlo aktivovat. 
     
-    Nové pravidlo se zobrazí v tabulce na **filtrování podle země** stránky.
+    Nové pravidlo se zobrazí v tabulce na stránce **Filtrování zemí.**
 
-    ![Pravidla pro geografické filtrování](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
+    ![Pravidla geografického filtrování](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
-V tabulce Země/oblast filtrování pravidla vyberte ikonu Odstranit vedle pravidlo odstranit nebo na ikonu úprav ho upravit.
+V tabulce pravidel filtrování zemí nebo oblastí vyberte ikonu odstranění vedle pravidla, kterou chcete odstranit, nebo ji upravit.
 
 ## <a name="considerations"></a>Požadavky
-* Změny konfigurace geografické filtrování neprojevila okamžitě:
-   * Šíření profilů **Azure CDN Standard od Microsoftu** trvá většinou 10 minut. 
+* Změny konfigurace geografického filtrování se neprojeví okamžitě:
+   * U profilů **Azure CDN Standard od Microsoftu** trvá šíření většinou 10 minut. 
    * V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
    * V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 10 minut. 
  
 * Tato funkce nepodporuje zástupné znaky (například *).
 
-* Konfigurace geografické filtrování spojené s relativní cestou je aplikována rekurzivně na tuto cestu.
+* Konfigurace geografického filtrování přidružená k relativní cestě je na tuto cestu použita rekurzivně.
 
-* Na stejné relativní cesty lze použít pouze jedno pravidlo. To znamená nelze vytvořit více filtrů země/oblast, které odkazují na stejné relativní cesty. Ale protože filtry Země/oblast je rekurzivní, složky může mít několik filtrů země/oblast. Jinými slovy podsložka dříve konfigurované složky je možné přiřadit jinou zemi či oblast filtru.
+* Na stejnou relativní cestu lze použít pouze jedno pravidlo. To znamená, že nelze vytvořit více filtrů země nebo oblasti, které odkazují na stejnou relativní cestu. Protože jsou však filtry země nebo oblasti rekurzivní, může mít složka více filtrů země nebo oblasti. Jinými slovy podsložce dříve nakonfigurované složky lze přiřadit jiný filtr země nebo oblasti.
 
-* Funkce geografického filtrování používá k definování země nebo oblasti, ze kterých se žádost o povolená nebo zablokovaná pro zabezpečený adresář kódy zemí. Přestože společností Akamai a Verizon profily podporují většinu stejné kódy zemí, existuje několik rozdílů. Další informace najdete v tématu [kódy zemí Azure CDN](/previous-versions/azure/mt761717(v=azure.100)). 
+* Funkce geografického filtrování používá kódy zemí k definování zemí nebo oblastí, ze kterých je požadavek povolen nebo blokován pro zabezpečený adresář. Přestože profily Akamai a Verizon podporují většinu stejných kódů zemí, existuje několik rozdílů. Další informace naleznete v [tématu Azure CDN kódy zemí](/previous-versions/azure/mt761717(v=azure.100)). 
 

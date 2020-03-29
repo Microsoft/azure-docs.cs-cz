@@ -1,6 +1,6 @@
 ---
-title: Zřídit Enterprise Edition pro Azure-SSIS Integration Runtime
-description: Tento článek popisuje funkce edice Enterprise pro Azure-SSIS Integration Runtime a jejich zřízení.
+title: Zřízení edice Enterprise pro runtime integrace Azure-SSIS
+description: Tento článek popisuje funkce Enterprise Edition pro Azure-SSIS Integration Runtime a jak ji zřídit
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,34 +11,34 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: 8096da955da0266f3727197f21d67c33d099aa4f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74922645"
 ---
-# <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Zřídit Enterprise Edition pro Azure-SSIS Integration Runtime
+# <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Zřízení edice Enterprise pro runtime integrace Azure-SSIS
 
-Edice Enterprise sady Azure-SSIS Integration Runtime vám umožňuje používat následující funkce Advanced a Premium:
--   Součásti Change Data Capture (CDC)
+Enterprise Edition prostředí Azure-SSIS Integration Runtime umožňuje používat následující pokročilé a prémiové funkce:
+-   Změnit součásti sběru dat (CDC)
 -   Konektory Oracle, Teradata a SAP BW
--   Konektory a transformace v SQL Server Analysis Services (SSAS) a Azure Analysis Services (AAS)
--   Fuzzy seskupení a transformace vyhledávání s fuzzy logikou
--   Extrakce termínů a transformace termínu vyhledávání
+-   Konektory a transformace služby SQL Server Analysis Services (SSAS) a Služby Azure Analysis Services (AAS)
+-   Transformace fuzzy seskupení a fuzzy vyhledávání
+-   Transformace extrakce termínu a vyhledávání termínů
 
-Některé z těchto funkcí vyžadují instalaci dalších komponent pro přizpůsobení Azure-SSIS IR. Další informace o tom, jak nainstalovat další součásti, najdete v tématu [vlastní nastavení pro prostředí Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
+Některé z těchto funkcí vyžadují instalaci dalších součástí pro přizpůsobení azure-SSIS IR. Další informace o instalaci dalších součástí najdete [v tématu Vlastní nastavení pro prostředí integrace Azure-SSIS](how-to-configure-azure-ssis-ir-custom-setup.md).
 
-## <a name="enterprise-features"></a>Podnikové funkce
+## <a name="enterprise-features"></a>Funkce Enterprise
 
-| **Podnikové funkce** | **Označení** |
+| **Podnikové funkce** | **Popisy** |
 |---|---|
-| Komponenty CDC | V edici Azure-SSIS IR Enterprise je předinstalována předinstalace zdroje CDC, kontrolní úkol a rozdělovací transformace. Abyste se mohli připojit k Oracle, musíte taky nainstalovat návrháře a službu CDC v jiném počítači. |
-| Konektory Oracle | Správce připojení Oracle, zdroj a cíl jsou předem nainstalovány v edici Azure-SSIS IR Enterprise. Je také potřeba nainstalovat ovladač Oracle Call Interface (OCI) a v případě potřeby nakonfigurovat TNS (Oracle Transport Network substrát) na Azure-SSIS IR. Další informace najdete v tématu [Vlastní nastavení pro prostředí Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
-| Konektory Teradata | V edici Azure-SSIS IR Enterprise je nutné nainstalovat Správce připojení Teradata, zdroj a cíl i rozhraní API Teradata Parallel Transporter (TPT) a Teradata ODBC Driver. Další informace najdete v tématu [Vlastní nastavení pro prostředí Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
-| Konektory SAP BW | SAP BW Správce připojení, zdroj a cíl jsou předem nainstalovány v Azure-SSIS IR Enterprise Edition. Také je nutné na Azure-SSIS IR nainstalovat ovladač SAP BW. Tyto konektory podporují SAP BW 7,0 nebo starší verze. Pokud se chcete připojit k novějším verzím SAP BW nebo jiným produktům SAP, můžete si v Azure-SSIS IR koupit a nainstalovat konektory SAP od jiných nezávislých výrobců softwaru. Další informace o tom, jak nainstalovat další součásti, najdete v tématu [vlastní nastavení pro prostředí Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
-| Analysis Services komponenty               | Verze školení modelu dolování dat, cíl zpracování dimenze a cíl zpracování oddílu a také transformace dotazu dolování dat jsou předem nainstalovány v edici Azure-SSIS IR Enterprise. Všechny tyto komponenty podporují SQL Server Analysis Services (SSAS), ale pouze cíl zpracování oddílu podporuje Azure Analysis Services (AAS). Pokud se chcete připojit k SSAS, musíte taky [nakonfigurovat přihlašovací údaje pro ověřování Windows v SSISDB](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). Kromě těchto součástí jsou také předinstalovány úlohy Analysis Services spustit DDL, úloha zpracování Analysis Services a úloha dotaz dolování dat, a to i v edici Azure-SSIS IR Standard/Enterprise. |
-| Fuzzy seskupení a transformace vyhledávání s fuzzy logikou  | Nepřibližná seskupení a transformace pro vyhledávání s fuzzy logikou jsou předem nainstalovány v edici Azure-SSIS IR Enterprise. Tyto komponenty podporují SQL Server i Azure SQL Database pro ukládání referenčních dat. |
-| Extrakce termínů a transformace termínu vyhledávání | V Azure-SSIS IR Enterprise Edition jsou předem nainstalovány výrazy pro extrakci a vyhledávání termínů. Tyto komponenty podporují SQL Server i Azure SQL Database pro ukládání referenčních dat. |
+| Komponenty CDC | Zdroj CDC, řídicí úloha a transformace splitteru jsou předinstalovány v počítačích Azure-SSIS IR Enterprise Edition. Chcete-li se připojit k řešení Oracle, je také nutné nainstalovat návrháře a službu CDC do jiného počítače. |
+| Konektory Oracle | Oracle Connection Manager, Source a Destination jsou předinstalovány v azure-SSIS IR Enterprise Edition. Je také nutné nainstalovat ovladač Oracle Call Interface (OCI) a v případě potřeby nakonfigurovat substrát oracle transportové sítě (TNS) v zařízení Azure-SSIS IR. Další informace najdete v tématu [Vlastní nastavení pro prostředí Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
+| Teradata konektory | Je třeba nainstalovat Teradata Connection Manager, zdroj a cíl, stejně jako Teradata Parallel Transporter (TPT) API a Teradata ODBC ovladač, na Azure-SSIS IR Enterprise Edition. Další informace najdete v tématu [Vlastní nastavení pro prostředí Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
+| Konektory SAP BW | Sap BW Connection Manager, source a destination jsou předinstalovány na Azure-SSIS IR Enterprise Edition. Je také nutné nainstalovat ovladač SAP BW na Azure-SSIS IR. Tyto konektory podporují SAP BW 7.0 nebo starší verze. Chcete-li se připojit k novějším verzím SAP BW nebo jiných produktů SAP, můžete zakoupit a nainstalovat konektory SAP od neinstalačních techniků třetích stran na infračerveném zařízení Azure-SSIS. Další informace o instalaci dalších součástí najdete [v tématu Vlastní nastavení pro prostředí integrace Azure-SSIS](how-to-configure-azure-ssis-ir-custom-setup.md). |
+| Součásti analysis services               | Cíl školení modelu dolování dat, cíl zpracování dimenze a cíl zpracování oddílu, stejně jako transformace dotazu dolování dat, jsou předinstalovány na Azure-SSIS IR Enterprise Edition. Všechny tyto součásti podporují sql server analysis services (SSAS), ale pouze cíl zpracování oddílu podporuje Služby Azure Analysis Services (AAS). Chcete-li se připojit k systému SSAS, je také nutné [nakonfigurovat pověření ověřování systému Windows v databázi SSISDB](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). Kromě těchto součástí jsou úloha DDL služby Analysis Services, úloha zpracování služby Analysis Services a úloha dotazu dolování dat také předinstalovány v azure-SSIS IR Standard/Enterprise Edition. |
+| Transformace fuzzy seskupení a fuzzy vyhledávání  | Transformace fuzzy seskupení a fuzzy vyhledávání jsou předinstalovány v Azure-SSIS IR Enterprise Edition. Tyto součásti podporují SQL Server a Azure SQL Database pro ukládání referenčních dat. |
+| Transformace extrakce termínu a vyhledávání termínů | Transformace extrakce termínu a vyhledávání termínů jsou předinstalovány v azure-Ssis IR Enterprise Edition. Tyto součásti podporují SQL Server a Azure SQL Database pro ukládání referenčních dat. |
 
 ## <a name="instructions"></a>Pokyny
 
@@ -46,7 +46,7 @@ Některé z těchto funkcí vyžadují instalaci dalších komponent pro přizp�
 
 1.  Stáhněte a nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps).
 
-2.  Při zřizování nebo překonfigurování Azure-SSIS IR pomocí prostředí PowerShell spusťte před spuštěním Azure-SSIS IR `Set-AzDataFactoryV2IntegrationRuntime` s parametrem **Enterprise** jako hodnotu parametru **Edition** . Tady je ukázkový skript:
+2.  Když zřídíte nebo překonfigurujete infračervený přenos Azure-SSIS pomocí prostředí PowerShell, spusťte `Set-AzDataFactoryV2IntegrationRuntime` **enterprise** jako hodnotu parametru **Edition** před spuštěním infračerveného serveru Azure-SSIS. Zde je ukázkový skript:
 
     ```powershell
     $MyAzureSsisIrEdition = "Enterprise"
@@ -63,6 +63,6 @@ Některé z těchto funkcí vyžadují instalaci dalších komponent pro přizp�
 
 ## <a name="next-steps"></a>Další kroky
 
--   [Vlastní nastavení pro prostředí Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md)
+-   [Vlastní nastavení pro runtime integrace Azure-SSIS](how-to-configure-azure-ssis-ir-custom-setup.md)
 
--   [Jak vyvíjet placené nebo licencované vlastní komponenty pro prostředí Azure-SSIS Integration runtime](how-to-develop-azure-ssis-ir-licensed-components.md)
+-   [Jak vyvíjet placené nebo licencované vlastní komponenty pro runtime integrace Azure-SSIS](how-to-develop-azure-ssis-ir-licensed-components.md)

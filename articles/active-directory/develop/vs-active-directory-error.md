@@ -1,6 +1,6 @@
 ---
-title: Diagnostika chyb pomocí služby připojené k Azure AD (Visual Studio)
-description: Služba Active Directory Connect zjistila nekompatibilní typ ověřování.
+title: Diagnostika chyb pomocí připojené služby Azure AD (Visual Studio)
+description: Služba připojená k aktivnímu zpoza služby zjistila nekompatibilní typ ověřování
 author: ghogen
 manager: jillfra
 ms.assetid: dd89ea63-4e45-4da1-9642-645b9309670a
@@ -12,34 +12,34 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: a6ec31f0d60c7f6e3737dc4042b05a6d8bf3dd5e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76699967"
 ---
-# <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Diagnostikování chyb pomocí Azure Active Directory připojené služby
+# <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Diagnostika chyb pomocí připojené služby Azure Active Directory
 
-Při zjišťování dřívějšího ověřovacího kódu zjistila Azure Active Directory připojená služba nekompatibilní typ ověřování.
+Při zjišťování předchozího ověřovacího kódu zjistila připojená služba Azure Active Directory nekompatibilní typ ověřování.
 
-Aby bylo možné správně zjistit předchozí ověřovací kód v projektu, je nutné projekt znovu sestavit. Pokud se zobrazí tato chyba a v projektu nemáte předchozí ověřovací kód, znovu ho Sestavte a zkuste to znovu.
+Chcete-li správně zjistit předchozí ověřovací kód v projektu, projekt musí být znovu sestaven. Pokud se zobrazí tato chyba a nemáte předchozí ověřovací kód v projektu, znovu sestavit a zkuste to znovu.
 
 ## <a name="project-types"></a>Typy projektů
 
-Připojená služba kontroluje typ projektu, který vyvíjíte, aby mohl vložit správnou logiku ověřování do projektu. Pokud existuje nějaký kontroler, který je odvozen od `ApiController` v projektu, projekt se považuje za projekt WebAPI. Pokud jsou v projektu pouze řadiče odvozené z `MVC.Controller`, projekt se považuje za projekt MVC. Připojená služba nepodporuje žádný jiný typ projektu.
+Připojená služba kontroluje typ projektu, který vyvíjíte, aby mohla do projektu vložit správnou logiku ověřování. Pokud existuje řadič, který je `ApiController` odvozen z v projektu, projekt je považován za projekt WebAPI. Pokud existují pouze řadiče, `MVC.Controller` které jsou odvozeny z v projektu, projekt je považován za projekt MVC. Připojená služba nepodporuje žádný jiný typ projektu.
 
 ## <a name="compatible-authentication-code"></a>Kompatibilní ověřovací kód
 
-Připojená služba také kontroluje nastavení ověřování, která byla dříve nakonfigurovaná nebo jsou kompatibilní se službou. Pokud jsou všechna nastavení přítomná, považuje se za případ, že se to bude opakovat a připojená služba otevře zobrazení nastavení.  Pokud jsou k dispozici pouze některá z těchto nastavení, je považována za případ chyby.
+Připojená služba také kontroluje nastavení ověřování, která byla dříve nakonfigurována nebo jsou kompatibilní se službou. Pokud jsou k dispozici všechna nastavení, je to považováno za případ opětovného účastníka a připojená služba se otevře zobrazí nastavení.  Pokud jsou k dispozici pouze některá nastavení, považuje se za chybový případ.
 
-V projektu MVC připojená služba kontroluje všechna následující nastavení, která jsou výsledkem předchozího použití služby:
+V projektu MVC související služba zkontroluje libovolné z následujících nastavení, které vyplývají z předchozího použití služby:
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />
     <add key="ida:AADInstance" value="" />
     <add key="ida:PostLogoutRedirectUri" value="" />
 
-Připojená služba také kontroluje jakékoli z následujících nastavení v projektu webového rozhraní API, které je výsledkem předchozího použití služby:
+Připojená služba také kontroluje některá z následujících nastavení v projektu webového rozhraní API, která jsou výsledkem předchozího použití služby:
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />
@@ -47,13 +47,13 @@ Připojená služba také kontroluje jakékoli z následujících nastavení v p
 
 ## <a name="incompatible-authentication-code"></a>Nekompatibilní ověřovací kód
 
-Nakonec se připojená služba pokusí zjistit verze ověřovacího kódu, který byl nakonfigurován s předchozími verzemi sady Visual Studio. Pokud se tato chyba zobrazila, znamená to, že váš projekt obsahuje nekompatibilní typ ověřování. Připojená služba detekuje následující typy ověřování z předchozích verzí sady Visual Studio:
+Nakonec se připojená služba pokusí zjistit verze ověřovacího kódu, které byly nakonfigurovány s předchozími verzemi sady Visual Studio. Pokud jste obdrželi tuto chybu, znamená to, že projekt obsahuje nekompatibilní typ ověřování. Připojená služba detekuje následující typy ověřování z předchozích verzí sady Visual Studio:
 
 * Ověřování systému Windows
 * Jednotlivé uživatelské účty
-* Účty organizace
+* Organizační účty
 
-K detekci ověřování systému Windows v projektu MVC je připojení vyhledáno elementu `authentication` v souboru `web.config`.
+Chcete-li zjistit ověřování systému Windows v projektu `authentication` MVC, připojené hledá prvek v `web.config` souboru.
 
 ```xml
 <configuration>
@@ -63,7 +63,7 @@ K detekci ověřování systému Windows v projektu MVC je připojení vyhledán
 </configuration>
 ```
 
-K detekci ověřování systému Windows v projektu webového rozhraní API je připojená služba Hledat element `IISExpressWindowsAuthentication` v souboru `.csproj` projektu:
+Chcete-li zjistit ověřování systému Windows v projektu `IISExpressWindowsAuthentication` webového rozhraní `.csproj` API, propojená služba hledá prvek v souboru projektu:
 
 ```xml
 <Project>
@@ -73,7 +73,7 @@ K detekci ověřování systému Windows v projektu webového rozhraní API je p
 </Project>
 ```
 
-Aby bylo možné detekovat individuální ověřování uživatelských účtů, bude připojená služba hledat prvek balíčku v souboru `packages.config`.
+Chcete-li zjistit ověřování jednotlivých uživatelských účtů, `packages.config` hledá připojená služba prvek balíčku v souboru.
 
 ```xml
 <packages>
@@ -81,7 +81,7 @@ Aby bylo možné detekovat individuální ověřování uživatelských účtů,
 </packages>
 ```
 
-Pokud chcete zjistit starou formu ověřování účtu organizace, bude připojená služba Hledat následující prvek v`web.config`:
+Chcete-li zjistit starou formu ověřování účtu organizace, propojená`web.config`služba hledá následující prvek v aplikaci :
 
 ```xml
 <configuration>
@@ -91,6 +91,6 @@ Pokud chcete zjistit starou formu ověřování účtu organizace, bude připoje
 </configuration>
 ```
 
-Chcete-li změnit typ ověřování, odeberte nekompatibilní typ ověřování a pokuste se přidat připojenou službu znovu.
+Chcete-li změnit typ ověřování, odeberte nekompatibilní typ ověřování a zkuste přidat připojenou službu znovu.
 
-Další informace najdete v tématu [scénáře ověřování pro Azure AD](authentication-scenarios.md).
+Další informace naleznete v [tématu Scénáře ověřování pro Azure AD](authentication-scenarios.md).

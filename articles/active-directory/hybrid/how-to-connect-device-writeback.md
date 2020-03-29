@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Povolení zpětného zápisu zařízení | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Povolení zpětného zápisu zařízení | Dokumenty společnosti Microsoft'
 description: Tento dokument podrobně popisuje, jak povolit zpětný zápis zařízení pomocí služby Azure AD Connect
 services: active-directory
 documentationcenter: ''
@@ -17,118 +17,118 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 632f6f80184c6ba3409bd30ae070cbaefc77f036
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109504"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Povolení zpětného zápisu zařízení
 > [!NOTE]
-> Předplatné služby Azure AD Premium je vyžadován pro zpětný zápis zařízení.
+> Předplatné Azure AD Premium je vyžadováno pro zpětný zápis zařízení.
 > 
 > 
 
-Následující dokumentace obsahuje informace o tom, jak povolit funkci zpětného zápisu zařízení ve službě Azure AD Connect. Zpětný zápis zařízení se používá v následujících scénářích:
+Následující dokumentace obsahuje informace o tom, jak povolit funkci zpětného zápisu zařízení v Azure AD Connect. Zpětný zápis zařízení se používá v následujících scénářích:
 
-* Povolit [Windows Hello pro firmy pomocí hybridní nasazení důvěryhodných certifikátů](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
-* Zapnout zásady podmíněného přístupu podle zařízení do služby AD FS (2012 R2 nebo vyšší) chráněné aplikace (vztahy důvěryhodnosti předávající strany).
+* Povolení [windows hello pro firmy pomocí nasazení vztahu důvěryhodnosti hybridních certifikátů](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
+* Povolte podmíněný přístup na základě zařízení do aplikací chráněných službou ADFS (2012 R2 nebo vyšší) (vztahy důvěryhodnosti předávající strany).
 
-To poskytuje dodatečné zabezpečení a záruky, které je udělen přístup k aplikacím jenom pro důvěryhodná zařízení. Další informace o podmíněném přístupu najdete v tématu [řízením rizik pomocí podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) a [nastavení místního podmíněného přístupu pomocí Azure Active Directory Device Registration](../../active-directory/active-directory-device-registration-on-premises-setup.md).
+To poskytuje další zabezpečení a jistotu, že přístup k aplikacím je uděloven pouze důvěryhodným zařízením. Další informace o podmíněném přístupu najdete [v tématu Správa rizik pomocí podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) a [nastavení místního podmíněného přístupu pomocí registrace zařízení Azure Active Directory](../../active-directory/active-directory-device-registration-on-premises-setup.md).
 
 > [!IMPORTANT]
-> <li>Zařízení se musí nacházet ve stejné doménové struktuře jako uživatelé. Vzhledem k tomu, že zařízení je možné zpětně zapsat do jedné doménové struktury, tato funkce aktuálně nepodporují nasazení s více doménovými strukturami uživatele.</li>
-> <li>Objekt konfigurace registrace pouze jedno zařízení můžete přidat do místní doménové struktuře služby Active Directory. Tato funkce není kompatibilní s topologií, kde se v místní službě Active Directory synchronizuje s více adresářů Azure AD.</li>
+> <li>Zařízení musí být umístěna ve stejné doménové struktuře jako uživatelé. Vzhledem k tomu, že zařízení musí být zapsána zpět do jedné doménové struktury, tato funkce v současné době nepodporuje nasazení s více uživatelskými doménovými strukturami.</li>
+> <li>Do místní doménové struktury služby Active Directory lze přidat pouze jeden objekt konfigurace registrace zařízení. Tato funkce není kompatibilní s topologii, kde je místní služba Active Directory synchronizována s více adresáři Azure AD.</li>
 
 ## <a name="part-1-install-azure-ad-connect"></a>Část 1: Instalace služby Azure AD Connect
-Nainstalujte Azure AD Connect s použitím vlastní nebo expresní nastavení. Společnost Microsoft doporučuje začít s všichni uživatelé a skupiny se úspěšně synchronizovaly před povolení zpětného zápisu zařízení.
+Nainstalujte Azure AD Connect pomocí vlastního nebo expresního nastavení. Společnost Microsoft doporučuje začít se všemi uživateli a skupinami úspěšně synchronizovány před povolením zpětného zápisu zařízení.
 
 ## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>Část 2: Povolení zpětného zápisu zařízení ve službě Azure AD Connect
-1. Znovu spusťte Průvodce instalací. Vyberte **konfigurovat možnosti zařízení** z další úkoly stránky a klikněte na tlačítko **Další**. 
+1. Spusťte průvodce instalací znovu. Na stránce Další úkoly vyberte **Konfigurovat možnosti zařízení** a klepněte na tlačítko **Další**. 
 
-    ![Konfigurovat možnosti zařízení](./media/how-to-connect-device-writeback/deviceoptions.png)
+    ![Konfigurace možností zařízení](./media/how-to-connect-device-writeback/deviceoptions.png)
 
     >[!NOTE]
-    > K dispozici pouze ve verzi 1.1.819.0 a novějších verzí se nakonfigurovat možnosti zařízení.
+    > Nové možnosti konfigurovat zařízení je k dispozici pouze ve verzi 1.1.819.0 a novější.
 
-2. Na stránce Možnosti zařízení vyberte **nakonfigurovat zpětný zápis zařízení**. Možnost **zakázat zpětný zápis zařízení** nebude k dispozici, dokud nebude povolen zpětný zápis zařízení. Klikněte na **Další** přesunout na další stránku průvodce.
-    ![Zvolit operaci zařízení](./media/how-to-connect-device-writeback/configuredevicewriteback1.png)
+2. Na stránce možností zařízení vyberte **Konfigurovat zpětný zápis zařízení**. Možnost **zakázat zpětný zápis zařízení** nebude k dispozici, dokud nebude povolen zpětný zápis zařízení. Kliknutím na **Tlačítko Další** přejděte na další stránku průvodce.
+    ![Zvolit provoz zařízení](./media/how-to-connect-device-writeback/configuredevicewriteback1.png)
 
-3. Na stránce zpětný zápis se zobrazí zadané domény jako doménová struktura zpětný zápis zařízení výchozí.
-   ![Vlastní instalace zařízení zpětný zápis cílové doménové struktuře](./media/how-to-connect-device-writeback/writebackforest.png)
+3. Na stránce zpětného zápisu uvidíte zadanou doménu jako výchozí doménovou strukturu zpětného zápisu zařízení.
+   ![Cílová doménová struktura zpětného zápisu vlastní instalace zařízení](./media/how-to-connect-device-writeback/writebackforest.png)
 
-4. **Kontejner zařízení** stránka poskytuje možnost přípravy služby active directory pomocí jedné z dostupných možností:
+4. **Stránka kontejneru zařízení** poskytuje možnost přípravy aktivního adresáře pomocí jedné ze dvou dostupných možností:
 
-    a. **Zadání podnikových přihlašovacích údajů správce**: Pokud přihlašovací údaje podnikového správce pro doménovou strukturu, kdy je potřeba zpětný zápis zařízení jsou služby Azure AD Connect se připravit doménovou strukturu automaticky během konfigurace zpětného zápisu zařízení.
+    a. **Zadejte pověření správce rozlehlé sítě**: Pokud jsou k dispozici pověření podnikového správce pro doménovou strukturu, kde je potřeba zařízení odepsat zpět, Azure AD Connect připraví doménovou strukturu automaticky během konfigurace zpětného zápisu zařízení.
 
-    b. **Stáhnout Poweshellový skript**: Azure AD Connect automaticky vygeneruje skript Powershellu, který může připravit služby active directory pro zpětný zápis zařízení. V případě, že přihlašovací údaje podnikového správce nelze zadat ve službě Azure AD Connect, doporučuje se stáhnout skript prostředí PowerShell. Zadejte staženého skriptu prostředí PowerShell **CreateDeviceContainer.psq** do doménové struktury, ve kterém zařízení se zapíšou zpátky do správce rozlehlé sítě.
-    ![Příprava doménové struktury služby active directory](./media/how-to-connect-device-writeback/devicecontainercreds.png)
+    b. **Stáhnout skript PowerShellu**: Azure AD Connect automaticky generuje skript Prostředí PowerShell, který může připravit službu Active Directory na zpětný zápis zařízení. V případě, že pověření podnikového správce nelze poskytnout v Azure AD Connect, doporučujeme stáhnout skript PowerShellu. Zadejte stažený skript Prostředí PowerShell **CreateDeviceContainer.psq** podnikovému správci doménové struktury, do které budou zařízení zapsána zpět.
+    ![Příprava doménové struktury služby Active Directory](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
-    Tyto operace jsou prováděny při přípravě doménové struktury služby active directory:
-    * Pokud již neexistuje, vytvoří a nakonfiguruje nové kontejnery a objekty v rámci CN = Device Registration Configuration, CN = Services, CN = Configuration, [rozlišující název doménové struktury].
-    * Pokud již neexistuje, vytvoří a nakonfiguruje nové kontejnery a objekty v rámci CN = RegisteredDevices, [rozlišující název domény]. Objekty zařízení se vytvoří v tomto kontejneru.
-    * Nastaví potřebná oprávnění pro účet konektoru služby Azure AD, ke správě zařízení ve službě Active Directory.
-    * Musí spustit jen v jedné doménové struktuře, i v případě, že probíhá instalace služby Azure AD Connect ve více doménových strukturách.
+    Pro přípravu doménové struktury služby Active Directory se provádějí následující operace:
+    * Pokud ještě neexistují, vytvoří a nakonfiguruje nové kontejnery a objekty v rámci CN=Konfigurace registrace zařízení,CN=Services,CN=Configuration,[forest-dn].
+    * Pokud ještě neexistují, vytvoří a nakonfiguruje nové kontejnery a objekty v rámci CN=RegisteredDevices,[domain-dn]. Objekty zařízení budou vytvořeny v tomto kontejneru.
+    * Nastaví potřebná oprávnění pro účet Konektor Azure AD pro správu zařízení ve službě Active Directory.
+    * Jenom jepotřeba spustit v jedné doménové struktuře, i v případě, že Azure AD Connect se instaluje na více doménových struktur.
 
-## <a name="verify-devices-are-synchronized-to-active-directory"></a>Ověřte, že zařízení se synchronizují do služby Active Directory
-Zpětný zápis zařízení by měl nyní pracuje správně. Mějte na paměti, že může trvat až 3 hodiny objektů zařízení, aby byly zapsány zpět do služby AD.  Pokud chcete ověřit, že vaše zařízení se synchronizuje správně, postupujte takto po dokončení synchronizační pravidla:
+## <a name="verify-devices-are-synchronized-to-active-directory"></a>Ověření synchronizace zařízení se službou Active Directory
+Zpětný zápis zařízení by nyní měl pracovat správně. Uvědomte si, že může trvat až 3 hodiny pro objekty zařízení, které mají být zapsány zpět do ad.  Chcete-li ověřit, zda jsou vaše zařízení správně synchronizována, postupujte po dokončení pravidel synchronizace následujícím postupem:
 
 1. Spusťte Centrum správy služby Active Directory.
-2. Rozbalte RegisteredDevices v doméně, která je Federovaná.
+2. Rozbalte RegisteredDevices v rámci domény, která je federována.
 
-   ![Centrum správy služby Active Directory zaregistrované zařízení](./media/how-to-connect-device-writeback/devicewriteback5.png)
+   ![Registrovaná zařízení Centra pro správu služby Active Directory](./media/how-to-connect-device-writeback/devicewriteback5.png)
 
-3. Aktuální registrovaná zařízení budou uvedeny zde.
+3. Zde budou uvedena aktuální registrovaná zařízení.
 
-   ![Centrum správy služby Active Directory zaregistrované seznam zařízení](./media/how-to-connect-device-writeback/devicewriteback6.png)
+   ![Seznam registrovaných zařízení Centra pro správu služby Active Directory](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
-## <a name="enable-conditional-access"></a>Zapnout zásady podmíněného přístupu
-Podrobné pokyny, jak povolit tento scénář jsou dostupné v rámci [nastavení místního podmíněného přístupu pomocí Azure Active Directory Device Registration](../../active-directory/active-directory-device-registration-on-premises-setup.md).
+## <a name="enable-conditional-access"></a>Povolení podmíněného přístupu
+Podrobné pokyny k povolení tohoto scénáře jsou k dispozici v části [Nastavení místního podmíněného přístupu pomocí registrace zařízení Azure Active Directory](../../active-directory/active-directory-device-registration-on-premises-setup.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
-### <a name="the-writeback-checkbox-is-still-disabled"></a>Zpětný zápis zaškrtávací políčko je stále zakázáno
-Pokud zaškrtávací políčko pro zpětný zápis zařízení není povolené, i když jste postupovali podle výše uvedených kroků, následující postup vám pomohou co Průvodce instalací ověřuje před povolením pole.
+### <a name="the-writeback-checkbox-is-still-disabled"></a>Zaškrtávací políčko zpětného zápisu je stále zakázáno.
+Pokud zaškrtávací políčko pro zpětný zápis zařízení není povoleno, i když jste postupovali podle výše uvedených kroků, následující kroky vás provedou tím, co průvodce instalací ověřuje před povolením pole.
 
-Nejdřív to nejdůležitější první:
+První věc, první:
 
-* Doménová struktura, kde jsou k dispozici zařízení musí mít schéma doménové struktury upgradovat na úroveň Windows 2012 R2 tak, že objekt zařízení a přidružených atributů jsou k dispozici.
-* Pokud Průvodce instalací je již spuštěna, nebudou zjištěna žádné změny. V tomto případě dokončit Průvodce instalací a potom ho spusťte znovu.
-* Ujistěte se, že účet, který jste zadali v inicializačního skriptu je ve skutečnosti správné uživatelské používají konektor služby Active Directory. Chcete-li to ověřit, postupujte takto:
-  * Z nabídky start otevřít **synchronizační služba**.
-  * Otevřít **konektory** kartu.
-  * Najít požadovaný konektor s typem Active Directory Domain Services a vyberte ji.
-  * V části **akce**vyberte **vlastnosti**.
-  * Přejděte na **připojit k doménové struktuře služby Active Directory**. Ověřte, že doména a uživatelské jméno na této obrazovce shodu určen účet, který jste ke skriptu.
-    ![Účet správce služeb synchronizace v konektoru](./media/how-to-connect-device-writeback/connectoraccount.png)
+* Doménová struktura, ve které jsou zařízení přítomna, musí mít schéma doménové struktury upgradované na úroveň Windows 2012 R2 tak, aby byl přítomen objekt zařízení a přidružené atributy .
+* Pokud je průvodce instalací již spuštěn, nebudou zjištěny žádné změny. V takovém případě dokončete průvodce instalací a spusťte jej znovu.
+* Ujistěte se, že účet, který zadáte ve skriptu inicializace, je ve skutečnosti správným uživatelem používaným konektorem služby Active Directory. Chcete-li to ověřit, postupujte takto:
+  * V nabídce Start otevřete **položku Synchronizační služba**.
+  * Otevřete kartu **Konektory.**
+  * Vyhledejte konektor s typem Služby Domény služby Active Directory a vyberte jej.
+  * V části **Akce**vyberte **Vlastnosti**.
+  * Přejděte na **odkaz Připojit k doménové struktuře služby Active Directory**. Ověřte, zda doména a uživatelské jméno zadané na této obrazovce odpovídají účtu poskytnutému skriptu.
+    ![Účet konektoru ve Správci synchronizačních služeb](./media/how-to-connect-device-writeback/connectoraccount.png)
 
-Ověření konfigurace ve službě Active Directory:
+Ověřte konfiguraci ve službě Active Directory:
 
-* Ověřte, že službu Device Registration Service nachází v následujícím umístění (CN DeviceRegistrationService, CN = = služby registrace zařízení, CN = Device Registration Configuration, CN = Services, CN = Configuration) v názvovém kontextu konfigurace.
+* Ověřte, zda je služba registrace zařízení umístěna v níže uvedeném umístění (CN=DeviceRegistrationService,CN=Device Registration Services,CN=Device Registration Configuration,CN=Services,CN=Configuration) v kontextu pojmenování konfigurace.
 
-![Řešení potíží s DeviceRegistrationService v oboru názvů configuration](./media/how-to-connect-device-writeback/troubleshoot1.png)
+![Poradce při potížích, DeviceRegistrationService v oboru názvů konfigurace](./media/how-to-connect-device-writeback/troubleshoot1.png)
 
-* Ověřte, že existuje pouze jeden objekt konfigurace tak, že konfigurace oboru názvů. Pokud existuje více než jeden, odstraňte duplicitní.
+* Prohledávat obor názvů konfigurace ověřte, zda existuje pouze jeden konfigurační objekt. Pokud existuje více než jeden, odstraňte duplikát.
 
-![Řešení potíží, vyhledejte je duplicitní](./media/how-to-connect-device-writeback/troubleshoot2.png)
+![Poradce při potížích, hledání duplicitních objektů](./media/how-to-connect-device-writeback/troubleshoot2.png)
 
-* U objektu Device Registration Service Ujistěte se, že atribut msDS-DeviceLocation je k dispozici a hodnotu. Vyhledávání toto umístění a ujistěte se, že je k dispozici s objectType msDS-DeviceContainer.
+* V objektu Služba registrace zařízení zkontrolujte, zda je atribut msDS-DeviceLocation přítomen a má hodnotu. Vyhledejte toto umístění a ujistěte se, že je k dispozici s objectType msDS-DeviceContainer.
 
-![Řešení potíží s msDS-DeviceLocation](./media/how-to-connect-device-writeback/troubleshoot3.png)
+![Poradce při potížích, msDS-DeviceLocation](./media/how-to-connect-device-writeback/troubleshoot3.png)
 
-![Řešení potíží s RegisteredDevices třídy objektu](./media/how-to-connect-device-writeback/troubleshoot4.png)
+![Poradce při potížích, třída objektů RegisteredDevices](./media/how-to-connect-device-writeback/troubleshoot4.png)
 
-* Ověřte, že má účet používaný službou konektoru služby Active Directory má požadovaná oprávnění ke kontejneru registrovaná zařízení, zjištěných aplikací v předchozím kroku. Toto je očekávané oprávnění k tomuto kontejneru:
+* Ověřte, zda účet používaný konektorem služby Active Directory má požadovaná oprávnění pro kontejner Registrovaných zařízení nalezený v předchozím kroku. Toto je očekávaná oprávnění pro tento kontejner:
 
-![Řešení potíží, ověřte oprávnění pro kontejner](./media/how-to-connect-device-writeback/troubleshoot5.png)
+![Poradce při potížích, ověření oprávnění ke kontejneru](./media/how-to-connect-device-writeback/troubleshoot5.png)
 
-* Ověřte účet služby Active Directory má oprávnění na CN = Device Registration Configuration, CN = Services, CN = objekt konfigurace.
+* Ověřte, zda má účet Služby Active Directory oprávnění k objektu CN=Device Registration Configuration,CN=Services,CN=Configuration.
 
-![Řešení potíží, ověřte oprávnění pro konfiguraci registrace zařízení](./media/how-to-connect-device-writeback/troubleshoot6.png)
+![Poradce při potížích, ověření oprávnění v konfiguraci registrace zařízení](./media/how-to-connect-device-writeback/troubleshoot6.png)
 
 ## <a name="additional-information"></a>Další informace
-* [Řízení rizik pomocí podmíněného přístupu](../active-directory-conditional-access-azure-portal.md)
-* [Nastavení místního podmíněného přístupu pomocí Azure Active Directory Device Registration](../../active-directory/active-directory-device-registration-on-premises-setup.md)
+* [Řízení rizik s podmíněným přístupem](../active-directory-conditional-access-azure-portal.md)
+* [Nastavení místního podmíněného přístupu pomocí registrace zařízení Azure Active Directory](../../active-directory/active-directory-device-registration-on-premises-setup.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).
 

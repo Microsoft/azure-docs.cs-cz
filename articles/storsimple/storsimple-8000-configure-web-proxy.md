@@ -1,6 +1,6 @@
 ---
-title: Nastavení webového proxy serveru pro zařízení StorSimple řady 8000 | Dokumentace Microsoftu
-description: Zjistěte, jak pomocí prostředí Windows PowerShell pro StorSimple můžete nakonfigurovat nastavení webového proxy serveru pro zařízení StorSimple.
+title: Nastavení webového proxy serveru pro zařízení řady StorSimple 8000 | Dokumenty společnosti Microsoft
+description: Naučte se, jak pomocí prostředí Windows PowerShell pro StorSimple nakonfigurovat nastavení webového proxy serveru pro vaše zařízení StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,145 +15,145 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65204254"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurace webového proxy serveru pro zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz popisuje, jak pomocí prostředí Windows PowerShell pro StorSimple ke konfiguraci a zobrazení nastavení webového proxy serveru pro zařízení StorSimple. Nastavení webového proxy serveru využívají zařízení StorSimple při komunikaci s cloudem. Webový proxy server se používá k přidání další vrstvu zabezpečení, filtrování obsahu mezipaměti, aby se požadavky na šířku pásma snadné nebo dokonce pomoc s analýzou.
+Tento kurz popisuje, jak pomocí prostředí Windows PowerShell pro StorSimple konfigurovat a zobrazit nastavení webového proxy serveru pro vaše zařízení StorSimple. Nastavení webového proxy serveru používá zařízení StorSimple při komunikaci s cloudem. Webový proxy server se používá k přidání další vrstvy zabezpečení, obsahu filtru, mezipaměti pro usnadnění požadavků na šířku pásma nebo dokonce pomoci s analýzou.
 
-Pokyny v tomto kurzu platí pouze pro fyzická zařízení řady StorSimple 8000. Cloudové zařízení StorSimple (8010 a 8020) nepodporuje konfigurace webového proxy serveru.
+Pokyny v tomto kurzu platí pouze pro fyziomská zařízení řady StorSimple 8000. Konfigurace webového proxy serveru není podporována na zařízení StorSimple Cloud Appliance (8010 a 8020).
 
-Webový proxy server je _volitelné_ konfigurace pro zařízení StorSimple. Můžete nakonfigurovat webový proxy server jenom přes Windows PowerShell pro StorSimple. Konfigurace je dvoustupňový proces následujícím způsobem:
+Webový proxy server je _volitelná_ konfigurace pro vaše zařízení StorSimple. Webový proxy server můžete konfigurovat pouze prostřednictvím prostředí Windows PowerShell pro službu StorSimple. Konfigurace je dvoustupňový proces následujícím způsobem:
 
-1. Nejprve nakonfigurujte nastavení webového proxy serveru pomocí Průvodce instalací nebo prostředí Windows PowerShell pro StorSimple rutiny.
-2. Pak povolte nastavení nakonfigurované webového proxy serveru pomocí Windows Powershellu pro StorSimple rutiny.
+1. Nejprve nakonfigurujete nastavení webového proxy serveru pomocí průvodce instalací nebo prostředí Windows PowerShell pro rutiny StorSimple.
+2. Potom povolit nakonfigurované nastavení webového proxy serveru prostřednictvím prostředí Windows PowerShell pro rutiny StorSimple.
 
-Po dokončení konfigurace webového proxy serveru můžete zobrazit nastavení nakonfigurované webového proxy serveru ve službě Microsoft Azure StorSimple Device Manager a prostředí Windows PowerShell pro StorSimple.
+Po dokončení konfigurace webového proxy serveru můžete zobrazit nakonfigurované nastavení webového proxy serveru ve službě Microsoft Azure StorSimple Device Manager a prostředí Windows PowerShell for StorSimple.
 
-Po přečtení tohoto kurzu, budete moct:
+Po přečtení tohoto výukového programu, budete moci:
 
-* Konfigurace webového proxy serveru pomocí Průvodce instalací a rutin.
+* Nakonfigurujte webový proxy server pomocí průvodce nastavením a rutin.
 * Povolte webový proxy server pomocí rutin.
 * Zobrazení nastavení webového proxy serveru na webu Azure Portal.
-* Řešení chyb během konfigurace webového proxy serveru.
+* Poradce při potížích při konfiguraci webového proxy serveru.
 
 
-## <a name="configure-web-proxy-via-windows-powershell-for-storsimple"></a>Konfigurace webového proxy serveru pomocí Windows Powershellu pro StorSimple
+## <a name="configure-web-proxy-via-windows-powershell-for-storsimple"></a>Konfigurace webového proxy serveru prostřednictvím prostředí Windows PowerShell pro StorSimple
 
-Ke konfiguraci nastavení webového proxy serveru použijte jednu z následujících:
+Ke konfiguraci nastavení webového proxy serveru slouží některá z následujících možností:
 
-* Průvodce instalací a provede vás provede kroky konfigurace.
+* Průvodce instalací, který vás provede kroky konfigurace.
 * Rutiny v prostředí Windows PowerShell pro StorSimple.
 
-Každá z těchto metod jsou popsány v následujících částech.
+Každá z těchto metod je popsána v následujících částech.
 
-## <a name="configure-web-proxy-via-the-setup-wizard"></a>Konfigurace webového proxy serveru pomocí Průvodce instalací
+## <a name="configure-web-proxy-via-the-setup-wizard"></a>Konfigurace webového proxy serveru pomocí průvodce nastavením
 
-Pomocí Průvodce instalací a provede vás provede kroky pro konfigurace webového proxy serveru. Proveďte následující postup pro konfiguraci webového proxy serveru na vašem zařízení.
+Pomocí průvodce nastavením vás provedete kroky konfigurace webového proxy serveru. Chcete-li nakonfigurovat webový proxy server v zařízení, proveďte následující kroky.
 
-#### <a name="to-configure-web-proxy-via-the-setup-wizard"></a>Konfigurace webového proxy serveru pomocí Průvodce instalací
+#### <a name="to-configure-web-proxy-via-the-setup-wizard"></a>Konfigurace webového proxy serveru pomocí průvodce nastavením
 
-1. V nabídce konzoly sériového portu, vyberte možnost 1, **přihlášení pomocí úplný přístup** a poskytnout **hesla správce zařízení**. Zadejte následující příkaz pro spuštění relace Průvodce instalací:
+1. V nabídce sériové konzole zvolte možnost 1, **Přihlaste se s úplným přístupem** a zadejte **heslo správce zařízení**. Chcete-li spustit relaci průvodce instalací, zadejte následující příkaz:
    
     `Invoke-HcsSetupWizard`
-2. Pokud to je poprvé, kdy používáte Průvodce instalací pro registraci zařízení, budete muset konfigurovat všechna potřebná nastavení sítě, dokud se nedostanete konfigurace webového proxy serveru. Pokud vaše zařízení je už zaregistrovaný, přijměte všechny nakonfigurovaná nastavení sítě, dokud nedosáhnete konfigurace webového proxy serveru. V Průvodci instalací po zobrazení výzvy ke konfiguraci nastavení webového proxy serveru, zadejte **Ano**.
-3. Pro **adresy URL webového proxy serveru**, zadejte IP adresu nebo název plně kvalifikované domény (FQDN) webového proxy serveru a číslo portu TCP, které chcete použít při komunikaci se službami pro cloudové zařízení. Použijte následující formát:
+2. Pokud je to poprvé, co jste použili průvodce nastavením pro registraci zařízení, je třeba nakonfigurovat všechna požadovaná nastavení sítě, dokud nedosáhnete konfigurace webového proxy serveru. Pokud je vaše zařízení již zaregistrováno, přijměte všechna nakonfigurovaná nastavení sítě, dokud nedosáhnete konfigurace webového proxy serveru. Po zobrazení výzvy ke konfiguraci nastavení webového proxy serveru zadejte v průvodci instalací příkaz **Ano**.
+3. Pro **adresu URL webového proxy serveru**zadejte adresu IP nebo plně kvalifikovaný název domény (FQDN) webového proxy serveru a číslo portu TCP, které má vaše zařízení používat při komunikaci s cloudem. Použijte tento formát:
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
-    Ve výchozím nastavení je zadán TCP port číslo 8080.
-4. Zvolte typ ověřování jako **NTLM**, **základní**, nebo **žádný**. Základní je nejméně bezpečná ověřování pro konfiguraci proxy serveru. NT LAN Manager (NTLM) je vysoce zabezpečené a komplexní ověřovací protokol, který používá třícestné systému zasílání zpráv (někdy čtyři Pokud je potřeba další integrity) k ověření uživatele. Výchozí ověřování je NTLM. Další informace najdete v tématu [základní](https://hc.apache.org/httpclient-3.x/authentication.html) a [ověřování protokolem NTLM](https://hc.apache.org/httpclient-3.x/authentication.html). 
+    Ve výchozím nastavení je zadán port TCP číslo 8080.
+4. Zvolte typ ověřování jako **NTLM**, **Basic**nebo **None**. Základní je nejméně zabezpečené ověřování pro konfiguraci serveru proxy. NT LAN Manager (NTLM) je vysoce zabezpečený a složitý ověřovací protokol, který k ověření uživatele používá třícestný systém zasílání zpráv (někdy čtyři, pokud je vyžadována další integrita). Výchozí ověřování je NTLM. Další informace naleznete [v tématu Basic](https://hc.apache.org/httpclient-3.x/authentication.html) a [NTLM authentication](https://hc.apache.org/httpclient-3.x/authentication.html). 
    
    > [!IMPORTANT]
-   > **Ve službě Správce zařízení StorSimple grafy monitorování zařízení, nebudou fungovat Basic nebo v konfiguraci proxy serveru pro toto zařízení je povolené ověřování NTLM. Monitorování grafy pro práci budete muset zajistit, že ověřování je nastavena na hodnotu NONE.**
+   > **Ve službě StorSimple Device Manager nefungují grafy monitorování zařízení, pokud je v konfiguraci proxy serveru pro zařízení povoleno ověřování Basic nebo NTLM. Aby monitorovací grafy fungovaly, je třeba zajistit, aby ověřování bylo nastaveno na MOŽNOST ŽÁDNÉ.**
   
-5. Pokud jste povolili ověřování, zadejte **uživatelské jméno Proxy webové** a **heslo webového proxy serveru**. Je také potřeba Potvrdit heslo.
+5. Pokud jste ověření povolili, zadej **uživatelské jméno webového proxy serveru** a heslo **webového proxy serveru**. Musíte také potvrdit heslo.
    
-    ![Konfigurace webového proxy serveru na StorSimple zařízení1](./media/storsimple-configure-web-proxy/IC751830.png)
+    ![Konfigurace webového proxy serveru na zařízení StorSimple1](./media/storsimple-configure-web-proxy/IC751830.png)
 
-Pokud registrujete zařízení poprvé, pokračujte registraci. Pokud vaše zařízení se už zaregistrovali, průvodce se ukončí. Nakonfigurovaná nastavení se ukládají.
+Pokud zařízení registrujete poprvé, pokračujte v registraci. Pokud již bylo zařízení zaregistrováno, průvodce program ukončí. Nakonfigurovaná nastavení se uloží.
 
-Webový proxy server je nyní zapnuta. Můžete přeskočit [povolit webový proxy server](#enable-web-proxy) krok a přejděte přímo na [zobrazení nastavení webového proxy serveru na webu Azure Portal](#view-web-proxy-settings-in-the-azure-portal).
+Webový proxy server je nyní povolen. Krok [Povolit webový proxy server](#enable-web-proxy) můžete přeskočit a přejít přímo na [Zobrazit nastavení webového proxy serveru na webu Azure Portal](#view-web-proxy-settings-in-the-azure-portal).
 
-## <a name="configure-web-proxy-via-windows-powershell-for-storsimple-cmdlets"></a>Konfigurace webového proxy serveru pomocí Windows Powershellu pro StorSimple rutiny
+## <a name="configure-web-proxy-via-windows-powershell-for-storsimple-cmdlets"></a>Konfigurace webového proxy serveru prostřednictvím prostředí Windows PowerShell pro rutiny StorSimple
 
-Alternativní způsob konfigurace nastavení webového proxy serveru je přes Windows PowerShell pro StorSimple rutiny. Proveďte následující postup pro konfiguraci webového proxy serveru.
+Alternativní způsob konfigurace nastavení webového proxy serveru je prostřednictvím prostředí Windows PowerShell pro rutiny StorSimple. Chcete-li nakonfigurovat webový proxy server, proveďte následující kroky.
 
-#### <a name="to-configure-web-proxy-via-cmdlets"></a>Konfigurace webového proxy serveru pomocí rutiny
-1. V nabídce konzoly sériového portu, vyberte možnost 1, **přihlášení pomocí úplný přístup**. Po zobrazení výzvy zadejte **hesla správce zařízení**. Výchozí heslo je `Password1`.
+#### <a name="to-configure-web-proxy-via-cmdlets"></a>Konfigurace webového proxy serveru pomocí rutin
+1. V nabídce sériové konzole zvolte možnost 1, **Přihlaste se s úplným přístupem**. Po zobrazení výzvy zadejte **heslo správce zařízení**. Výchozí heslo `Password1`je .
 2. Na příkazovém řádku zadejte:
    
     `Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
    
-    Zadejte a potvrďte heslo po zobrazení výzvy.
+    Po zobrazení výzvy zadejte a potvrďte heslo.
    
-    ![Konfigurace webového proxy serveru na StorSimple Device3](./media/storsimple-configure-web-proxy/IC751831.png)
+    ![Konfigurace webového proxy serveru na zařízení StorSimple3](./media/storsimple-configure-web-proxy/IC751831.png)
 
-Webový proxy server je teď nakonfigurovaná a je potřeba povolit.
+Webový proxy server je nyní nakonfigurován a je třeba jej povolit.
 
-## <a name="enable-web-proxy"></a>Povolit webový proxy server
+## <a name="enable-web-proxy"></a>Povolení webového proxy serveru
 
-Webový proxy server je ve výchozím nastavení zakázána. Po nakonfigurování nastavení webového proxy serveru na zařízení StorSimple pomocí prostředí Windows PowerShell pro StorSimple můžete povolit nastavení webového proxy serveru.
+Webový proxy server je ve výchozím nastavení zakázán. Po konfiguraci nastavení webového proxy serveru na zařízení StorSimple povolte nastavení webového proxy serveru pomocí prostředí Windows PowerShell pro StorSimple.
 
 > [!NOTE]
-> **Tento krok není povinný, pokud jste použili Průvodce instalací do konfigurace webového proxy serveru. Webový proxy server je automaticky povolené ve výchozím nastavení po relaci Průvodce instalací.**
+> **Tento krok není nutný, pokud jste ke konfiguraci webového proxy serveru použili průvodce nastavením. Webový proxy server je po relaci průvodce instalací automaticky povolen ve výchozím nastavení.**
 
 
-V prostředí Windows PowerShell pro StorSimple umožňující webového proxy serveru na vašem zařízení postupujte takto:
+Chcete-li v zařízení povolit webový proxy server, proveďte v prostředí Windows PowerShell pro Službu StorSimple následující kroky:
 
-#### <a name="to-enable-web-proxy"></a>Povolit webový proxy server
-1. V nabídce konzoly sériového portu, vyberte možnost 1, **přihlášení pomocí úplný přístup**. Po zobrazení výzvy zadejte **hesla správce zařízení**. Výchozí heslo je `Password1`.
+#### <a name="to-enable-web-proxy"></a>Povolení webového proxy serveru
+1. V nabídce sériové konzole zvolte možnost 1, **Přihlaste se s úplným přístupem**. Po zobrazení výzvy zadejte **heslo správce zařízení**. Výchozí heslo `Password1`je .
 2. Na příkazovém řádku zadejte:
    
     `Enable-HcsWebProxy`
    
-    Nyní jste povolili konfigurace webového proxy serveru na vašem zařízení StorSimple.
+    Nyní jste povolili konfiguraci webového proxy serveru na zařízení StorSimple.
    
-    ![Konfigurace webového proxy serveru na StorSimple Device4](./media/storsimple-configure-web-proxy/IC751832.png)
+    ![Konfigurace webového proxy serveru na zařízení StorSimple4](./media/storsimple-configure-web-proxy/IC751832.png)
 
 ## <a name="view-web-proxy-settings-in-the-azure-portal"></a>Zobrazení nastavení webového proxy serveru na webu Azure Portal
 
-Nastavení webového proxy serveru jsou konfigurovány pomocí rozhraní Windows PowerShell a nejde změnit z v rámci portálu. Ale zobrazí se nastavení nakonfigurované na portálu. Proveďte následující kroky, chcete-li zobrazit webový proxy server.
+Nastavení webového proxy serveru je konfigurováno prostřednictvím rozhraní prostředí Windows PowerShell a nelze je změnit z portálu. Tato nakonfigurovaná nastavení však můžete zobrazit na portálu. Chcete-li zobrazit webový proxy server, proveďte následující kroky.
 
-#### <a name="to-view-web-proxy-settings"></a>Chcete-li zobrazit nastavení webového proxy serveru
-1. Přejděte do **služby Správce zařízení StorSimple > zařízení**. Vyberte a klikněte na zařízení a potom přejděte k **nastavení zařízení > sítě**.
+#### <a name="to-view-web-proxy-settings"></a>Zobrazení nastavení webového proxy serveru
+1. Přejděte na **službu Správce zařízení StorSimple > zařízení**. Vyberte zařízení a klepněte na něj a přejděte na **nastavení zařízení > síť**.
 
-    ![Klikněte na síť](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
+    ![Klikněte na Síť.](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
 
-2. V **nastavení sítě** okna, klikněte na tlačítko **webového proxy serveru** dlaždici.
+2. V okně **Nastavení sítě** klepněte na dlaždici **webového proxy** serveru.
 
-    ![Klikněte na webový proxy server](./media/storsimple-8000-configure-web-proxy/view-web-proxy-2.png)
+    ![Klikněte na webový proxy server.](./media/storsimple-8000-configure-web-proxy/view-web-proxy-2.png)
 
-3. V **webového proxy serveru** okno, projděte si nastavení nakonfigurované webového proxy serveru na vašem zařízení StorSimple.
+3. V okně **webového proxy** serveru zkontrolujte nakonfigurované nastavení webového proxy serveru na zařízení StorSimple.
    
     ![Zobrazení nastavení webového proxy serveru](./media/storsimple-8000-configure-web-proxy/view-web-proxy-3.png)
 
 
 ## <a name="errors-during-web-proxy-configuration"></a>Chyby během konfigurace webového proxy serveru
 
-Pokud nastavení webového proxy serveru jsou nesprávně nakonfigurované, se zobrazí chybové zprávy pro uživatele v prostředí Windows PowerShell pro StorSimple. Následující tabulka popisuje některé z těchto chybových zpráv, jejich možných příčin a doporučené akce.
+Pokud je nastavení webového proxy serveru nakonfigurováno nesprávně, zobrazí se uživateli v prostředí Windows PowerShell pro StorSimple chybové zprávy. Následující tabulka vysvětluje některé z těchto chybových zpráv, jejich pravděpodobné příčiny a doporučené akce.
 
-| Sériové č. | Chyba HRESULT kódu | Možnou hlavní příčinou | Doporučená akce |
+| Sériové číslo | Kód chyby HRESULT | Možná hlavní příčina | Doporučená akce |
 |:--- |:--- |:--- |:--- |
-| 1. |0x80070001 |Příkaz spustí z pasivní kontroler a není schopen komunikovat s aktivním řadiči. |Spusťte příkaz na aktivním řadiči. Ke spuštění příkazu z pasivního kontroleru, je nutné opravit připojení z pasivního na aktivním řadiči. Microsoft Support musí zapojit, pokud tyto možnosti připojení bylo přerušeno. |
-| 2. |0x800710dd - identifikátor operace není platná |Nastavení proxy serveru nejsou podporovány v řešení StorSimple Cloud Appliance. |Nastavení proxy serveru nejsou podporovány v řešení StorSimple Cloud Appliance. Dají se nakonfigurovat jenom na fyzickém zařízení StorSimple. |
-| 3. |0x80070057 – neplatný parametr |Jeden z parametrů stanovených nastavení proxy serveru není platný. |Není k dispozici identifikátor URI ve správném formátu. Použijte následující formát: `http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
-| 4. |0x800706ba - server RPC není k dispozici |Hlavní příčinou je jeden z následujících akcí:</br></br>Clusteru není zapnutý. </br></br>DataPath služba není spuštěná.</br></br>Nastavení se příkaz spustí z pasivní kontroler a není schopen komunikovat s aktivním řadiči. |Zapojení Microsoft Support zajistit, že cluster běží a je spuštěná služba datapath.</br></br>Spusťte příkaz z aktivního kontroleru. Pokud chcete spustit příkaz z pasivní kontroler, ujistěte se, že pasivní kontroler může komunikovat s aktivním řadiči. Microsoft Support musí zapojit, pokud tyto možnosti připojení bylo přerušeno. |
-| 5. |0X800706be - RPC volání se nezdařilo. |Clusteru je mimo provoz. |Zapojení Microsoft Support zajistit, že cluster běží. |
-| 6. |0x8007138f - nebyl nalezen prostředek clusteru |Prostředek clusteru služby platformy nebyl nalezen. To může nastat při instalaci nebyla správná. |Budete muset provést na vašem zařízení obnovit tovární nastavení. Budete muset vytvořit prostředek platformy. O dalších krocích se poraďte s podporou Microsoftu. |
-| 7. |0x8007138c - prostředek clusteru není online |Platforma nebo datapath prostředků clusteru nejsou online. |Obraťte se na Microsoft Support pomáhá zajistit, že prostředek služby datapath a platforma jsou online. |
+| 1. |0x80070001 |Příkaz je spuštěn z pasivního řadiče a není schopen komunikovat s aktivním řadičem. |Spusťte příkaz na aktivním řadiči. Chcete-li spustit příkaz z pasivního řadiče, musíte opravit připojení z pasivního na aktivní řadič. Pokud je toto připojení přerušeno, je nutné zapojit podporu společnosti Microsoft. |
+| 2. |0x800710dd - Identifikátor operace není platný. |Nastavení proxy serveru nejsou podporovány na StorSimple Cloud Appliance. |Nastavení proxy serveru nejsou podporovány na StorSimple Cloud Appliance. Ty lze nakonfigurovat pouze na fyzickém zařízení StorSimple. |
+| 3. |0x80070057 - Neplatný parametr |Jeden z parametrů poskytnutých pro nastavení proxy serveru není platný. |Identifikátor URI není k dispozici ve správném formátu. Použijte následující formát:`http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
+| 4. |0x800706ba - RPC server není k dispozici |Hlavní příčinou je jedna z následujících příčin:</br></br>Cluster není nahoře. </br></br>Služba Datapath není spuštěna.</br></br>Příkaz je spuštěn z pasivního řadiče a není schopen komunikovat s aktivním řadičem. |Zapojte podporu Microsoftu, abyste zajistili, že cluster je v provozu a je spuštěna služba datapath.</br></br>Spusťte příkaz z aktivního řadiče. Pokud chcete spustit příkaz z pasivního řadiče, musíte zajistit, aby pasivní řadič mohl komunikovat s aktivním řadičem. Pokud je toto připojení přerušeno, je nutné zapojit podporu společnosti Microsoft. |
+| 5. |0x800706be - volání vzdáleného volání se nezdařilo. |Cluster nese. |Zapojte podporu Microsoftu, abyste zajistili, že cluster je nahoře. |
+| 6. |0x8007138f - Prostředek clusteru nebyl nalezen. |Prostředek clusteru služby platformy nebyl nalezen. K tomu může dojít, když instalace nebyla správná. |V zařízení může být nutné provést obnovení továrního nastavení. Možná budete muset vytvořit prostředek platformy. O dalších krocích se poraďte s podporou Microsoftu. |
+| 7. |0x8007138c - Prostředek clusteru není online |Prostředky clusteru platformy nebo datové cesty nejsou online. |Obraťte se na podporu společnosti Microsoft a otekvěte, zda jsou datové cesty a prostředky služby platformy online. |
 
 > [!NOTE]
-> * Nad seznamem chybových zpráv není vyčerpávající.
-> * Chyby související nastavení webového proxy serveru se nezobrazí na portálu Azure ve službě Správce zařízení StorSimple. Pokud se vyskytl problém s proxy serverem, webovou po dokončení konfigurace, stav zařízení se změní na **Offline** na portálu classic. |
+> * Výše uvedený seznam chybových zpráv není vyčerpávající.
+> * Chyby související s nastavením webového proxy serveru se nezobrazí na webu Azure Portal ve službě Správce zařízení StorSimple. Pokud se po dokončení konfigurace objeví problém s webovým serverem proxy, stav zařízení se na klasickém portálu změní na **Offline.|**
 
 ## <a name="next-steps"></a>Další kroky
-* Pokud zaznamenáte problémy při nasazení zařízení nebo konfigurace nastavení webového proxy serveru, podívejte se na [odstranění problémů s nasazením zařízení StorSimple](storsimple-troubleshoot-deployment.md).
-* Další informace o použití služby Správce zařízení StorSimple, přejděte na [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Pokud při nasazování zařízení nebo konfiguraci nastavení webového proxy serveru narazíte na potíže [s nasazením zařízení StorSimple](storsimple-troubleshoot-deployment.md).
+* Chcete-li se dozvědět, jak používat službu StorSimple Device Manager, přejděte [ke správě zařízení StorSimple pomocí služby StorSimple Device Manager](storsimple-8000-manager-service-administration.md).
 

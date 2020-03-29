@@ -1,6 +1,6 @@
 ---
-title: Doprovodné materiály k licencování pro spolupráci B2B – Azure Active Directory | Microsoft Docs
-description: Azure Active Directory spolupráce B2B nevyžaduje placené licence Azure AD, ale můžete také získat placené funkce pro uživatele typu Host B2B.
+title: Pokyny k licencování pro spolupráci na b2B – Služba Azure Active Directory | Dokumenty společnosti Microsoft
+description: Spolupráce Azure Active Directory B2B nevyžaduje placené licence Azure AD, ale můžete také získat placené funkce pro uživatele typu Host B2B
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,33 +12,33 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28d02160163da4081ad8adbe233b27fee970a0df
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74868843"
 ---
-# <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Doprovodné materiály k licencování spolupráce Azure Active Directory s B2B
+# <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Pokyny k licencování služby Azure Active Directory B2B
 
-Díky spolupráci B2B (Business-to-Business) Azure Active Directory (Azure AD) můžete pozvat externí uživatele (neboli uživatele typu Host), aby mohli používat placené služby Azure AD. Některé funkce jsou bezplatné, ale u všech placených funkcí Azure AD můžete pozvat až pět uživatelů typu Host pro každou licenci Azure AD, kterou vlastníte pro zaměstnance nebo uživatele, který není Host, ve vašem tenantovi.
+Díky spolupráci mezi podniky azure active directory (Azure AD) můžete pozvat externí uživatele (nebo "uživatele typu hosta), aby používali placené služby Azure AD. Některé funkce jsou zdarma, ale pro všechny placené funkce Azure AD můžete pozvat až pět uživatelů typu Host pro každou licenci edice Azure AD, kterou vlastníte pro zaměstnance nebo uživatele, který není hostem ve vašem tenantovi.
 
 > [!NOTE]
-> Podrobnosti o cenách služby Azure AD a funkcích spolupráce B2B najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/) .
+> Podrobnosti [Azure Active Directory pricing](https://azure.microsoft.com/pricing/details/active-directory/) o cenách Azure AD a funkcích spolupráce B2B najdete v informacích o cenách Služby Azure AD.
 
-Licence uživatelů hosta B2B se automaticky vypočítávají a nahlásí na základě poměru 1:5. 
+Licence pro uživatele typu Host B2B se automaticky vypočítávají a vykazují na základě poměru 1:5. 
 
-Uživatelé typu Host můžou taky používat bezplatné funkce Azure AD bez dalších licenčních požadavků. Uživatelé typu Host mají přístup k bezplatným funkcím služby Azure AD, a to i v případě, že nemáte žádné placené licence Azure AD. 
+Uživatelé typu Host navíc můžou používat bezplatné funkce Azure AD bez dalších licenčních požadavků. Uživatelé typu Host mají přístup k bezplatným funkcím Azure AD, i když nemáte žádné placené licence Azure AD. 
 
-## <a name="examples-calculating-guest-user-licenses"></a>Příklady: výpočet uživatelských licencí typu Host
-Jakmile určíte, kolik uživatelů typu Host potřebuje získat přístup k placeným službám Azure AD, ujistěte se, že máte dostatek placené licence Azure AD, aby pokryly uživatele typu Host v požadovaném poměru 1:5. Zde je několik příkladů:
+## <a name="examples-calculating-guest-user-licenses"></a>Příklady: Výpočet licencí pro uživatele typu Host
+Jakmile určíte, kolik uživatelů typu Host potřebuje přístup k placeným službám Azure AD, ujistěte se, že máte dostatek placených licencí Azure AD, které pokryjí uživatele typu Host v požadovaném poměru 1:5. Zde je několik příkladů:
 
-- Chcete pozvat 100 uživatelů typu host na vaše aplikace nebo služby Azure AD a zajistit správu a zřizování přístupu. Pro 50 těchto uživatelů typu Host budete také chtít vyžadovat MFA a podmíněný přístup, takže pro tyto funkce budete potřebovat 10 Azure AD Premiumch licencí P1. Pokud plánujete použití funkcí ochrany identit u uživatelů typu Host, budete potřebovat Azure AD Premium licence P2 ve stejném poměru 1:5, aby pokryly uživatele typu Host.
-- Chcete pozvat 60 uživatelů typu Host, kteří požadují MFA, takže musíte mít minimálně 12 Azure AD Premium licencí P1. Máte 10 zaměstnanců s licencemi Azure AD Premium P1, což by umožnilo 50 uživatelům typu Host v rámci licenčního poměru 1:5. Abyste pokryli 10 dalších uživatelů typu Host, budete si muset koupit dvě další licence Premium P1.
+- Chcete pozvat 100 uživatelů typu Host do aplikací nebo služeb Azure AD a zajistit správu přístupu a zřizování. Pro 50 těchto uživatelů typu Host chcete také vyžadovat vícefaktorové a podmíněný přístup, takže pro tyto funkce budete potřebovat 10 licencí Azure AD Premium P1. Pokud plánujete používat funkce Identity Protection s uživateli typu Host, budete potřebovat licence Azure AD Premium P2 ve stejném poměru 1:5, abyste pokryli uživatele typu Host.
+- Chcete pozvat 60 uživatelů typu Host, kteří všichni vyžadují vícefaktorové povolení, takže musíte mít alespoň 12 licencí Azure AD Premium P1. Máte 10 zaměstnanců s licencemi Azure AD Premium P1, což by umožnilo až 50 uživatelů typu Host v rámci poměru licencí 1:5. Budete si muset zakoupit další dvě licence Premium P1, aby pokryli 10 dalších uživatelů typu Host.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na následující zdroje informací o spolupráci Azure AD B2B:
+Podívejte se na následující prostředky na Azure AD B2B spolupráce:
 
-* [Ceny Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Ceny služby Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
 * [Nejčastější dotazy týkající se spolupráce Azure Active Directory s B2B](faq.md)

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456607"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Použití Storage Exploreru se službou Azure File Storage
@@ -31,7 +31,7 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 
 - [Stažení a instalace Průzkumníka služby Storage](https://www.storageexplorer.com/)
 
-- [Připojení k účtu služby Azure storage nebo service](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [Připojení k účtu úložiště nebo službě Azure](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>Vytvoření sdílené složky
 
@@ -203,7 +203,7 @@ Následující postup ukazuje, jak spravovat soubory (a složky) v rámci sdíle
 
         ![Nahrání souborů](media/vs-azure-tools-storage-explorer-files/image18.png)
         
-        b. V dialogovém okně **Nahrát soubory** vyberte tlačítko se třemi tečkami ( **...** ) na pravé straně textového pole **Soubory** a vyberte soubory, které chcete nahrát.
+        b. V dialogovém okně **Nahrát soubory** vyberte tlačítko se třemi tečkami (**...**) na pravé straně textového pole **Soubory** a vyberte soubory, které chcete nahrát.
 
         ![Přidání souborů](media/vs-azure-tools-storage-explorer-files/image19.png)
 
@@ -215,7 +215,7 @@ Následující postup ukazuje, jak spravovat soubory (a složky) v rámci sdíle
 
         ![Nabídka Nahrát složku](media/vs-azure-tools-storage-explorer-files/image20.png)
 
-        b. V dialogovém okně **Nahrát složku** vyberte tlačítko se třemi tečkami ( **...** ) na pravé straně textového pole **Složka** a vyberte složku, jejíž obsah chcete nahrát.
+        b. V dialogovém okně **Nahrát složku** vyberte tlačítko se třemi tečkami (**...**) na pravé straně textového pole **Složka** a vyberte složku, jejíž obsah chcete nahrát.
 
         c. Volitelně můžete zadat cílovou složku, do které se obsah vybrané složky nahraje. Pokud cílová složka neexistuje, vytvoří se.
 
@@ -257,7 +257,7 @@ Následující postup ukazuje, jak spravovat soubory (a složky) v rámci sdíle
 
         c. V potvrzovacím dialogovém okně klikněte na **Ano**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Podívejte se na [nejnovější poznámky k verzi a videa pro Průzkumníka služby Storage](https://www.storageexplorer.com/).
 

@@ -1,22 +1,22 @@
 ---
-title: Element uživatelského rozhraní pro nahrání souborů
-description: Popisuje prvek uživatelského rozhraní Microsoft. Common. upload pro Azure Portal. Umožňuje uživatelům při nasazování spravované aplikace nahrávat soubory.
+title: Element ui fileupload
+description: Popisuje prvek ui rozhraní Microsoft.Common.FileUpload pro portál Azure. Umožňuje uživatelům odesílat soubory při nasazování spravované aplikace.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: 61e1c9fe07fdd29ebc00e7e3491472d073bc4e5d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652486"
 ---
-# <a name="microsoftcommonfileupload-ui-element"></a>Microsoft. Common. upload – element uživatelského rozhraní
+# <a name="microsoftcommonfileupload-ui-element"></a>Element ui rozhraní Microsoft.Common.FileUpload
 
-Ovládací prvek, který umožňuje uživateli určit jeden nebo více souborů k nahrání.
+Ovládací prvek, který umožňuje uživateli zadat jeden nebo více souborů k nahrání.
 
-## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
+## <a name="ui-sample"></a>Ukázka ui
 
 ![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
 
@@ -44,13 +44,13 @@ Ovládací prvek, který umožňuje uživateli určit jeden nebo více souborů 
 
 ## <a name="sample-output"></a>Ukázkový výstup
 
-Pokud options. Multiple je false a Options. uploadMode je soubor, pak výstup obsahuje obsah souboru jako řetězec JSON:
+Pokud options.multiple je false a options.uploadMode je soubor, pak výstup má obsah souboru jako řetězec JSON:
 
 ```json
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 ```
 
-Pokud options. Multiple je true and'options. uploadMode je soubor, pak výstup obsahuje obsah souborů jako pole JSON:
+Pokud options.multiple je true and'options.uploadMode je soubor, pak výstup má obsah souborů jako pole JSON:
 
 ```json
 [
@@ -61,13 +61,13 @@ Pokud options. Multiple je true and'options. uploadMode je soubor, pak výstup o
 ]
 ```
 
-Pokud options. Multiple je false a Options. uploadMode je adresa URL, pak výstup má adresu URL jako řetězec JSON:
+Pokud options.multiple je false a options.uploadMode je url, pak výstup má adresu URL jako řetězec JSON:
 
 ```json
 "https://myaccount.blob.core.windows.net/pictures/profile.jpg?sv=2013-08-15&st=2013-08-16&se=2013-08-17&sr=c&sp=r&rscd=file;%20attachment&rsct=binary &sig=YWJjZGVmZw%3d%3d&sig=a39%2BYozJhGp6miujGymjRpN8tsrQfLo9Z3i8IRyIpnQ%3d"
 ```
 
-Pokud options. Multiple je true a Options. uploadMode je adresa URL, pak výstup obsahuje seznam adres URL jako pole JSON:
+Pokud options.multiple je true a options.uploadMode je url, pak výstup má seznam adres URL jako pole JSON:
 ```json
 [
   "https://myaccount.blob.core.windows.net/pictures/profile1.jpg?sv=2013-08-15&st=2013-08-16&se=2013-08-17&sr=c&sp=r&rscd=file;%20attachment&rsct=binary &sig=YWJjZGVmZw%3d%3d&sig=a39%2BYozJhGp6miujGymjRpN8tsrQfLo9Z3i8IRyIpnQ%3d",
@@ -76,19 +76,19 @@ Pokud options. Multiple je true a Options. uploadMode je adresa URL, pak výstup
 ]
 ```
 
-Při testování CreateUiDefinition některé prohlížeče (jako Google Chrome) zkrátí adresy URL generované elementem Microsoft. Common. upload v konzole prohlížeče. Je možné, že budete muset kliknout pravým tlačítkem na jednotlivé odkazy a zkopírovat tak úplné adresy URL.
+Při testování createuidefinition některé prohlížeče (například Google Chrome) zkrátit adresy URL generované Microsoft.Common.FileUpload prvek v konzole prohlížeče. Chcete-li zkopírovat úplné adresy URL, může být nutné klepnout pravým tlačítkem myši na jednotlivé odkazy.
 
 ## <a name="remarks"></a>Poznámky
 
-- `constraints.accept` určuje typy souborů, které se zobrazí v dialogovém okně souboru prohlížeče. Povolené hodnoty najdete v tématu [specifikace HTML5](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) . Výchozí hodnota je **null**.
-- Pokud je `options.multiple` nastavené na **hodnotu true**, může uživatel v dialogovém okně souboru prohlížeče vybrat více než jeden soubor. Výchozí hodnota je **false**.
-- Tento prvek podporuje nahrávání souborů ve dvou režimech na základě hodnoty `options.uploadMode`. Je-li zadán **soubor** , výstup obsahuje obsah souboru jako objekt BLOB. Pokud zadáte **adresu URL** , soubor se nahraje do dočasného umístění a výstup má adresu URL objektu BLOB. Dočasné objekty blob budou vymazány po 24 hodinách. Výchozí hodnota je **File (soubor**).
-- Nahraný soubor je chráněný. Výstupní adresa URL obsahuje [token SAS](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) pro přístup k souboru během nasazování.
-- Hodnota `options.openMode` určuje, jak je soubor čten. Pokud by měl být soubor prostým textem, zadejte **text**; v opačném případě zadejte **Binary**. Výchozí hodnota je **text**.
-- Pokud je `options.uploadMode` nastaveno na **soubor** a `options.openMode` je nastavená na **binární**, výstup je kódovaný v kódování Base64.
-- `options.encoding` určuje kódování, které se má použít při čtení souboru. Výchozí hodnota je **UTF-8**a používá se pouze v případě, že je `options.openMode` nastaveno na **text**.
+- `constraints.accept`určuje typy souborů, které jsou zobrazeny v dialogovém okně souboru prohlížeče. Povolené hodnoty naleznete ve [specifikaci HTML5.](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) Výchozí hodnota je **null**.
+- Pokud `options.multiple` je nastavena hodnota **true**, uživatel může vybrat více než jeden soubor v dialogovém okně souboru prohlížeče. Výchozí hodnota je **false** (nepravda).
+- Tento prvek podporuje nahrávání souborů ve dvou `options.uploadMode`režimech na základě hodnoty aplikace . Pokud je **zadán soubor,** výstup má obsah souboru jako objekt blob. Pokud je **zadána adresa URL,** soubor se nahraje do dočasného umístění a výstup má adresu URL objektu blob. Dočasné objekty BLOB budou po 24 hodinách vymazány. Výchozí hodnota je **soubor**.
+- Nahraný soubor je chráněn. Výstupní adresa URL obsahuje [token SAS](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) pro přístup k souboru během nasazení.
+- Hodnota určuje `options.openMode` způsob čtení souboru. Pokud se očekává, že soubor bude prostý montovna, zadejte **text**; jinak, zadejte **binární**. Výchozí hodnota je **text**.
+- Pokud `options.uploadMode` je **file** nastavena `options.openMode` na soubor a je nastavena na **binární**, výstup je base64-kódované.
+- `options.encoding`určuje kódování, které se má použít při čtení souboru. Výchozí hodnota je **UTF-8**a používá `options.openMode` se pouze v případě, že je nastavena na **text**.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).
+* Úvod k vytváření definic ui naleznete [v tématu Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v [tématu CreateUiDefinition elements](create-uidefinition-elements.md).

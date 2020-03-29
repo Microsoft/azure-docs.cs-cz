@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity Platform Authentication Protocols | Microsoft Docs
-description: Přehled ověřovacích protokolů podporovaných platformou Microsoft identity
+title: Ověřovací protokoly platformy Microsoft pro identity | Dokumenty společnosti Microsoft
+description: Přehled ověřovacích protokolů podporovaných platformou microsoft identity
 author: rwike77
 services: active-directory
 manager: CelesteDG
@@ -14,27 +14,27 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 43168ec7217d8f016857ba6dc54ca30bce2dd594
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76699287"
 ---
-# <a name="microsoft-identity-platform-authentication-protocols"></a>Protokoly ověřování platformy Microsoft identity
+# <a name="microsoft-identity-platform-authentication-protocols"></a>Ověřovací protokoly platformy microsoftu pro identity
 
-Platforma Microsoft Identity Platform podporuje několik nejčastěji používaných ověřovacích a autorizačních protokolů. Témata v této části popisují podporované protokoly a jejich implementaci na platformě Microsoft identity. Témata obsahovaly kontrolu podporovaných typů deklarací identity, Úvod k použití federačních metadat, podrobných OAuth 2,0. a referenční dokumentace k protokolům SAML 2,0 a část řešení potíží.
+Platforma identit společnosti Microsoft podporuje několik nejpoužívanějších ověřovacích a autorizačních protokolů. Témata v této části popisují podporované protokoly a jejich implementaci v platformě identit microsoftu. Témata zahrnovala přehled podporovaných typů deklarací, úvod do používání metadat federace, podrobný OAuth 2.0. a referenční dokumentace protokolu SAML 2.0 a část pro řešení potíží.
 
-## <a name="authentication-protocols-articles-and-reference"></a>Články a referenční informace k ověřovacím protokolům
+## <a name="authentication-protocols-articles-and-reference"></a>Články a odkazy na ověřovací protokoly
 
-* [Důležité informace o výměně klíčů při výměně na platformě Microsoft Identity](active-directory-signing-key-rollover.md) – Přečtěte si informace o změně podpisového klíče platformy Microsoft Identity Platform tempo, změnách, které můžete provést při automatickém aktualizování klíče, a diskuzi o tom, jak aktualizovat nejběžnější scénáře aplikací.
-* [Podporované typy tokenů a deklarací](id-tokens.md) – Přečtěte si o deklaracích v tokenech, které Microsoft Identity Platform řeší.
-* [Oauth 2,0 na platformě Microsoft Identity](v2-oauth2-auth-code-flow.md) – Přečtěte si o implementaci OAuth 2,0 na platformě Microsoft identity.
-* [OpenID Connect 1,0](v2-protocols-oidc.md) – Naučte se používat ověřovací protokol OAuth 2,0 pro ověřování.
-* [Volání služeb s přihlašovacími údaji klienta](v2-oauth2-client-creds-grant-flow.md) – Zjistěte, jak pomocí přihlašovacích údajů klienta OAuth 2,0 udělit tok pro volání služeb.
-* Obsluha [volání služby s](v2-oauth2-on-behalf-of-flow.md) využitím toku – Naučte se, jak používat službu OAuth 2,0 za běhu za účelem obsluhy volání služeb.
-* [Odkaz na protokol SAML](active-directory-saml-protocol-reference.md) – informace o jednotném přihlašování a jednom z profilů SAML platformy Microsoft Identity Platform
+* [Důležité informace o podepisování klíče rollover v platformě identit Microsoft](active-directory-signing-key-rollover.md) – Další informace o microsoft identity platformy podpisový klíč rollover kadence, změny, které můžete provést aktualizovat klíč automaticky a diskuse o tom, jak aktualizovat nejběžnější scénáře aplikací.
+* [Podporované typy tokenů a deklarací](id-tokens.md) – informace o deklaracích v tokenech, které má platforma identity Microsoftu problémy.
+* [OAuth 2.0 v platformě microsoft identity](v2-oauth2-auth-code-flow.md) – Další informace o implementaci OAuth 2.0 v platformě identit Microsoftu.
+* [OpenID Connect 1.0](v2-protocols-oidc.md) - Naučte se používat OAuth 2.0, autorizační protokol, pro ověřování.
+* [Volání služby s pověřeními klienta](v2-oauth2-client-creds-grant-flow.md) – zjistěte, jak používat pověření klienta OAuth 2.0 udělovat tok pro volání služby.
+* [Služba servisníhovory s On-Behalf-Of Flow](v2-oauth2-on-behalf-of-flow.md) - Přečtěte si, jak používat OAuth 2.0 On-Behalf-Of toku pro služby servisní hovory.
+* [Odkaz na protokol SAML](active-directory-saml-protocol-reference.md) – informace o profilech SAML jednotného přihlášení a jednotného přihlášení na platformě identit microsoftu.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-* [Přehled platformy Microsoft identity](v2-overview.md)
+* [Přehled platformy identit Microsoftu](v2-overview.md)
 * [Ukázky kódu služby Active Directory](sample-v2-code.md)

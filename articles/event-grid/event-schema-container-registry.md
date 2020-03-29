@@ -1,6 +1,6 @@
 ---
-title: Schéma událostí služby Azure Event Grid Container Registry
-description: Popisuje vlastnosti, které jsou k dispozici pro události Container Registry pomocí Azure Event gridu
+title: Schéma události registru kontejneru sítě událostí Azure
+description: Popisuje vlastnosti, které jsou k dispozici pro události registru kontejneru s Azure Event Grid
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,30 +9,30 @@ ms.topic: reference
 ms.date: 03/12/2019
 ms.author: spelluru
 ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345460"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Schéma událostí Azure Event Grid pro registr kontejneru
+# <a name="azure-event-grid-event-schema-for-container-registry"></a>Schéma událostí sítě Azure pro registr kontejnerů
 
-Tento článek obsahuje vlastnosti a schéma pro události Container Registry. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma pro události registru kontejnerů.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
 
-## <a name="available-event-types"></a>Typy událostí k dispozici
+## <a name="available-event-types"></a>Dostupné typy událostí
 
-Služba Azure Container Registry generuje následující typy událostí:
+Azure Container Registry vydává následující typy událostí:
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.ContainerRegistry.ImagePushed | Vyvoláno, když se vloží bitovou kopii. |
-| Microsoft.ContainerRegistry.ImageDeleted | Vyvoláno, když se odstraní image. |
-| Microsoft.ContainerRegistry.ChartPushed | Vyvoláno, když se vloží Digram helmu. |
-| Microsoft.ContainerRegistry.ChartDeleted | Vyvolá se při odstranění Digram helmu. |
+| Microsoft.ContainerRegistry.ImagePushed | Je aktivována při stisknutí obrázku. |
+| Microsoft.ContainerRegistry.ImageDeleted | Je aktivována při odstranění obrázku. |
+| Microsoft.ContainerRegistry.ChartPushed | Je aktivována při stisknutí grafu Helm. |
+| Microsoft.ContainerRegistry.ChartDeleted | Je aktivována při odstranění grafu Helm. |
 
 ## <a name="example-event"></a>Příklad události
 
-Následující příklad ukazuje schématu bitovou kopii vložena událost: 
+Následující příklad ukazuje schéma události posunuté obrázkem: 
 
 ```json
 [{
@@ -65,7 +65,7 @@ Následující příklad ukazuje schématu bitovou kopii vložena událost:
 }]
 ```
 
-Schéma událostí odstranit bitové kopie je podobné:
+Schéma události odstraněného obrázku je podobné:
 
 ```json
 [{
@@ -95,7 +95,7 @@ Schéma událostí odstranit bitové kopie je podobné:
 }]
 ```
 
-Schéma grafu vložena událost je podobný schéma vytvořenými bitovými kopiemi vložené události, ale neobsahuje objekt žádosti:
+Schéma události push grafu je podobné schématu pro událost s obrázkovou posunutou, ale neobsahuje objekt požadavku:
 
 ```json
 [{
@@ -123,7 +123,7 @@ Schéma grafu vložena událost je podobný schéma vytvořenými bitovými kopi
 }]
 ```
 
-Schéma grafu odstranit události je podobný schéma pro vytvořenými bitovými kopiemi pro odstraněnou událost, ale neobsahuje objekt žádosti:
+Schéma pro událost odstraněné grafem je podobné schématu pro odstraněnou událost s obrázkem, ale neobsahuje objekt požadavku:
 
 ```json
 [{
@@ -153,53 +153,53 @@ Schéma grafu odstranit události je podobný schéma pro vytvořenými bitovým
 
 ## <a name="event-properties"></a>Vlastnosti události
 
-Událost má následující dat nejvyšší úrovně:
+Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| subject | string | Vydavatel definované cesta předmět události. |
-| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
-| id | string | Jedinečný identifikátor pro událost. |
-| data | object | Data události úložiště objektů BLOB. |
-| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| téma | řetězec | Úplná cesta k prostředku ke zdroji události. Toto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| Předmět | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| Eventtype | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy je událost generována na základě času UTC zprostředkovatele. |
+| id | řetězec | Jedinečný identifikátor události |
+| data | objekt | Data událostí úložiště objektů blob. |
+| dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
+| metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| id | string | ID události. |
-| timestamp | string | Čas, kdy došlo k události. |
-| action | string | Akce, která zahrnuje zadané události. |
-| target | object | Cíl události. |
-| request | object | Požadavek, který událost vyvolal. |
+| id | řetězec | ID události. |
+| časové razítko | řetězec | Čas, kdy k události došlo. |
+| action | řetězec | Akce, která zahrnuje zapředpokladu událost. |
+| Cíl | objekt | Cíl události. |
+| Požadavek | objekt | Požadavek, který vygeneroval událost. |
 
 Cílový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| mediaType | string | Typ MIME odkazovaného objektu. |
-| size | integer | Počet bajtů obsahu. Stejné jako délku pole. |
-| digest | string | Přehled obsahu, jak je definováno ve specifikaci protokolu HTTP rozhraní API V2 registru. |
-| length | integer | Počet bajtů obsahu. Stejná jako velikost pole. |
-| repository | string | Název úložiště. |
-| tag | string | Název značky. |
-| name | string | Název grafu. |
-| version | string | Verze grafu. |
+| Mediatype | řetězec | Typ MIME odkazovaného objektu. |
+| velikost | celé číslo | Počet bajtů obsahu. Stejné jako pole Length. |
+| digest | řetězec | Digest obsahu, jak je definováno v registru V2 HTTP API specifikace. |
+| length | celé číslo | Počet bajtů obsahu. Stejné jako pole Velikost. |
+| úložiště | řetězec | Název úložiště. |
+| značka | řetězec | Název značky. |
+| jméno | řetězec | Název grafu. |
+| version | řetězec | Verze grafu. |
 
-Objekt žádosti má následující vlastnosti:
+Objekt požadavku má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| id | string | ID požadavku, který spustil danou událost. |
-| addr | string | IP nebo název hostitele a pravděpodobně port připojení klienta, který spustil danou událost. Tato hodnota je RemoteAddr z požadavku standardní http. |
-| host | string | Zvenku přístupný název hostitele instance registru, jak je uvedeno v http hlavičce hostitele na příchozí požadavky. |
-| method | string | Metoda žádosti, které vygenerovalo událost. |
-| useragent | string | Hlavičky uživatelského agenta žádosti. |
+| id | řetězec | ID požadavku, který inicioval událost. |
+| Addr | řetězec | Název IP nebo hostitele a případně port připojení klienta, který událost inicioval. Tato hodnota je RemoteAddr ze standardního požadavku http. |
+| host | řetězec | Externě přístupný název hostitele instance registru, jak je určeno hlavičkou hostitele http na příchozí požadavky. |
+| method | řetězec | Metoda požadavku, která vygenerovala událost. |
+| Useragent | řetězec | Hlavička uživatelského agenta požadavku. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Úvod do služby Azure Event Grid najdete v tématu [novinky služby Event Grid?](overview.md)
-* Další informace o vytváření předplatného služby Azure Event Grid najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Úvod do Služby Azure Event Grid najdete v tématu [Co je event grid?](overview.md)
+* Další informace o vytvoření předplatného Služby Azure Event Grid najdete v [tématu schéma předplatného služby Event Grid](subscription-creation-schema.md).

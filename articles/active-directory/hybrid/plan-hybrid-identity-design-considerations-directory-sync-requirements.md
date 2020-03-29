@@ -1,6 +1,6 @@
 ---
-title: Hybridní identita návrh – požadavky na synchronizaci adresářů Azure | Dokumentace Microsoftu
-description: Určit, jaké požadavky jsou nezbytné k synchronizaci všech uživatelů mezi = v místním prostředí a cloudu pro podniky.
+title: Návrh hybridní identity – požadavky na synchronizaci adresářů Azure | Dokumenty společnosti Microsoft
+description: Určete, jaké požadavky jsou potřeba pro synchronizaci všech uživatelů mezi on=premises a cloudem pro podnik.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,63 +18,63 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381157"
 ---
-# <a name="determine-directory-synchronization-requirements"></a>Určete požadavky na synchronizaci adresáře
-Synchronizace se točí kolem identity v cloudu na základě jejich identity v místním, že uživatel. Jestli použijí synchronizované účet pro ověřování nebo federovaného ověřování, uživatelé stále musíte nastavit identitu, která v cloudu.  Tato identita bude muset udržované a pravidelně aktualizuje.  Aktualizace mohou mít mnoho forem, od změn názvu pro změny hesla.  
+# <a name="determine-directory-synchronization-requirements"></a>Určení požadavků na synchronizaci adresářů
+Synchronizace je především o poskytování uživatelům identitu v cloudu na základě jejich místní identity. Bez ohledu na to, zda budou používat synchronizovaný účet pro ověřování nebo federované ověřování, uživatelé budou stále potřebovat identitu v cloudu.  Tuto identitu bude nutné pravidelně udržovat a aktualizovat.  Aktualizace mohou mít mnoho podob, od změn názvu až po změny hesla.  
 
-Začněte tím, že vaše rozhodnutí vyzkoušet organizace místní požadavky na řešení a uživatele identit. Toto testování je důležité definovat technické požadavky pro způsob vytváření a v cloudu udržuje identity uživatelů.  Pro většinu organizací Active Directory je místní a v místním adresáři, který uživatelé se tak synchronizovány z, ale v některých případech to nebude tento případ.  
+Začněte vyhodnocením místního řešení identit organizace a požadavků uživatelů. Toto hodnocení je důležité definovat technické požadavky na způsob, jakým budou vytvářeny a udržovány identity uživatelů v cloudu.  Pro většinu organizací je služba Active Directory místní a bude místním adresářem, ze kterého budou uživatelé synchronizováni, ale v některých případech tomu tak nebude.  
 
-Ujistěte se, že odpovědět na následující otázky:
+Ujistěte se, že jste odpověděli na následující otázky:
 
-* Máte jednu doménovou strukturu AD, více nebo žádná?
+* Máte jednu doménovou strukturu služby AD, více nebo žádnou?
   
-  * Je počet adresářů služby Azure AD se nesynchronizuje do?
+  * Kolik adresářů Azure AD budete synchronizovat?
     
     1. Používáte filtrování?
-    2. Máte víc serverů služby Azure AD Connect plánovaná?
-* Nyní máte synchronizace nástroje místní?
+    2. Máte naplánované několik serverů Azure AD Connect?
+* Máte aktuálně aktuálně aktuálně místní synchronizační nástroj?
   
-  * Pokud ano, se uživatelům, pokud mají uživatelé virtuální adresář/integrace identit?
-* Máte k dispozici žádné další místní adresáře, které se mají synchronizovat (například adresář LDAP, databáze HR, etc)?
-  * Chystáte se provádět jakékoli GALSync?
-  * Co je aktuální stav UPN ve vaší organizaci? 
-  * Máte jiný adresář, který uživatelé ověřovat vůči?
+  * Pokud ano, mají uživatelé, pokud mají uživatelé virtuální adresář / integraci identit?
+* Máte jiný místní adresář, který chcete synchronizovat (např. adresář LDAP, databáze lidských zdrojů atd.)?
+  * Budete dělat nějaké GALSync?
+  * Jaký je aktuální stav upn ve vaší organizaci? 
+  * Máte jiný adresář, který uživatelé ověřit proti?
   * Používá vaše společnost Microsoft Exchange?
-    * Jejich plán s hybridního nasazení exchange?
+    * Mají v plánu mít hybridní exchange nasazení?
 
-Teď, když máte představu o synchronizačních požadavcích, je nutné určit, který nástroj je tu správnou budou odpovídat vašim požadavkům.  Společnost Microsoft poskytuje několik nástrojů k provedení integrace adresáře a synchronizací.  Zobrazit [hybridní identita adresář integrace nástroje srovnávací tabulka](plan-hybrid-identity-design-considerations-tools-comparison.md) Další informace. 
+Nyní, když máte představu o požadavcích na synchronizaci, musíte určit, který nástroj je správný, aby tyto požadavky splňovaly.  Společnost Microsoft poskytuje několik nástrojů k provedení integrace a synchronizace adresářů.  Další informace naleznete v [tabulce porovnání nástrojů pro integraci adresářů hybridní identity.](plan-hybrid-identity-design-considerations-tools-comparison.md) 
 
-Teď, když máte vaše požadavky na synchronizaci a nástroj, který bude dosáhnout vaší společnosti, budete muset vyhodnotit aplikací, které používají tyto služby adresáře. Toto testování je důležité definovat technické požadavky, můžete integrovat tyto aplikace do cloudu. Ujistěte se, že odpovědět na následující otázky:
+Nyní, když máte požadavky na synchronizaci a nástroj, který bude provádět tuto pro vaši společnost, je třeba vyhodnotit aplikace, které používají tyto adresářové služby. Toto hodnocení je důležité definovat technické požadavky na integraci těchto aplikací do cloudu. Ujistěte se, že jste odpověděli na následující otázky:
 
-* Tyto aplikace se přesune do cloudu a používat adresář?
-* Existují speciální atributy, které je potřeba se synchronizují do cloudu, aby tyto aplikace mohly úspěšně používat?
-* Tyto aplikace potřebovat k zapsání znovu využít výhod cloudové ověřování?
-* Tyto aplikace nadále live místní, zatímco uživatelé přístup k jejich použití cloudové identitě?
+* Budou tyto aplikace přesunuty do cloudu a používat adresář?
+* Existují speciální atributy, které je třeba synchronizovat s cloudem, aby je tyto aplikace mohly úspěšně používat?
+* Budou tyto aplikace muset být přepsány, aby bylo možné využívat cloudové auth?
+* Budou tyto aplikace nadále žít místně, zatímco k nim uživatelé přistupují pomocí cloudové identity?
 
-Musíte také určit zabezpečení synchronizace adresářů požadavky a omezení. Toto testování je potřeba získat seznam všech požadavků, které se mají provést, aby bylo možné vytvářet a spravovat identity uživatele v cloudu. Ujistěte se, že odpovědět na následující otázky:
+Je také třeba určit požadavky na zabezpečení a synchronizaci adresářů omezení. Toto hodnocení je důležité získat seznam požadavků, které budou potřebné k vytvoření a údržbě identit uživatele v cloudu. Ujistěte se, že jste odpověděli na následující otázky:
 
-* Pokud serveru pro synchronizaci se umístí?
-* Stane se připojené k doméně?
-* Server umístí na síť s omezeným přístupem za bránou firewall, například hraniční sítě?
-  * Budete moci otevřít porty brány firewall požadovaná pro podporu synchronizace?
-* Máte v plánu zotavení po havárii pro server synchronizace?
-* Máte účet se správnými oprávněními pro všechny doménové struktury, že který chcete synchronizovat s?
-  * Pokud vaše společnost nebude vědět i odpověď na tuto otázku, projděte si část "Oprávnění pro synchronizaci hesel" v článku [nainstalovat službu Azure Active Directory Sync](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) a určit, pokud již máte účet s těmito oprávněními nebo pokud je potřeba ho vytvořit.
-* Pokud máte třeba doménovými strukturami synchronizace je synchronizační server získají pro každou doménovou strukturu?
+* Kde bude synchronizační server umístěn?
+* Bude se k ní připojit doména?
+* Bude server umístěn v omezené síti za bránou firewall, například v souboru DMZ?
+  * Budete moci otevřít požadované porty brány firewall pro podporu synchronizace?
+* Máte plán zotavení po havárii pro synchronizační server?
+* Máte účet se správnými oprávněními pro všechny doménové struktury, se kterými chcete synchronizovat?
+  * Pokud vaše společnost nezná odpověď na tuto otázku, přečtěte si část "Oprávnění pro synchronizaci hesel" v článku [Nainstalujte službu Azure Active Directory Sync service](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) a zjistěte, zda již máte účet s těmito oprávněními nebo pokud ho potřebujete vytvořit.
+* Pokud máte synchronizaci mutli-forest, je synchronizační server schopen se dostat do každé doménové struktury?
 
 > [!NOTE]
-> Ujistěte se, že každá odpověď a pochopení odůvodnění odpověď. [Určení požadavků na reakce na incidenty](plan-hybrid-identity-design-considerations-incident-response-requirements.md) se přenášejí prostřednictvím možnosti, které jsou k dispozici. Po zodpovězení těchto otázek, které vyberete která možnost nejlépe vyhovuje stylu vaší firmě potřebuje.
+> Každou odpověď si poznamenejte a ujistěte se, že dobře chápete důvody, které vás k ní vedly. [Určit požadavky na reakci na incident](plan-hybrid-identity-design-considerations-incident-response-requirements.md) y naleznete možnosti, které jsou k dispozici. Tím, že odpověděl na tyto otázky, budete vybírat, která možnost nejlépe vyhovuje vašim obchodním potřebám.
 > 
 > 
 
-## <a name="next-steps"></a>Další postup
-[Určení požadavků na ověření službou Multi-Factor Authentication](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+## <a name="next-steps"></a>Další kroky
+[Určení vícefaktorových požadavků na ověřování](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
-[Přehled aspektů návrhu](plan-hybrid-identity-design-considerations-overview.md)
+## <a name="see-also"></a>Viz také
+[Přehled aspekty návrhu](plan-hybrid-identity-design-considerations-overview.md)
 

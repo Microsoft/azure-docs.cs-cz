@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Synchronizovat instance služby | Dokumentace Microsoftu'
-description: Tato stránka dokumenty speciální aspekty pro instance služby Azure AD.
+title: 'Azure AD Connect: Synchronizace instancí služeb | Dokumenty společnosti Microsoft'
+description: Na této stránce jsou popsány zvláštní aspekty pro instance Azure AD.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,55 +17,55 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66298817"
 ---
-# <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Speciální aspekty pro instance
-Azure AD Connect je nejčastěji používaná celosvětové instance služby Azure AD a Office 365. Ale existují také jiné instance a ty mají různé požadavky na adresy URL a další důležité.
+# <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Zvláštní důležité informace pro instance
+Azure AD Connect se nejčastěji používá s celorozšířenou instancí Azure AD a Office 365. Existují však i další instance a ty mají různé požadavky na adresy URL a další zvláštní aspekty.
 
-## <a name="microsoft-cloud-germany"></a>Microsoft Cloud Germany
-[Microsoft Cloud Germany](https://www.microsoft.de/cloud-deutschland) je suverénních cloudů, kterou provozuje společnost dat pro Německo.
+## <a name="microsoft-cloud-germany"></a>Microsoft Cloud Německo
+[Microsoft Cloud Germany](https://www.microsoft.de/cloud-deutschland) je suverénní cloud provozovaný německým datovým správcem.
 
-| Adresy URL pro otevření v proxy serveru |
+| Adresy URL, které se mají otevřít na proxy serveru |
 | --- |
 | \*.microsoftonline.de |
-| \*. windows.net |
-| \+ Seznamy odvolaných certifikátů |
+| \*.windows.net |
+| +Seznamy odvolaných certifikátů |
 
-Při přihlášení k tenantovi Azure AD, musíte použít účet v doméně onmicrosoft.de.
+Když se přihlásíte ke svému tenantovi Azure AD, musíte použít účet v doméně onmicrosoft.de.
 
-Funkce aktuálně není k dispozici v Microsoft cloudu Německo:
+Funkce, které se v současné době nevyskytují v microsoft cloudu v Německu:
 
-* **Zpětný zápis hesla** dostupná ve verzi preview služby Azure AD Connect verze 1.1.570.0 a po.
-* Další služby Azure AD Premium nejsou k dispozici.
+* **Zpětný zápis hesla** je k dispozici pro náhled s Azure AD Connect verze 1.1.570.0 a po.
+* Ostatní služby Azure AD Premium nejsou k dispozici.
 
 ## <a name="microsoft-azure-government"></a>Microsoft Azure Government
-[Cloudu Microsoft Azure Government](https://azure.microsoft.com/features/gov/) je cloud určený pro státní správu USA.
+[Cloud Microsoft Azure Government](https://azure.microsoft.com/features/gov/) je cloud pro vládu USA.
 
-Tento cloud má byla podporuje starší verze nástroje DirSync. Z buildu 1.1.180 služby Azure AD Connect se podporuje další generaci cloudu. Tato generace používá pouze pro USA založené na koncových bodech a mít různé seznamy adres URL pro otevření v proxy serveru.
+Tento cloud byl podporován dřívějšími verzemi DirSync. Z sestavení 1.1.180 Azure AD Connect je podporovaná další generace cloudu. Tato generace používá koncové body založené pouze na USA a mají jiný seznam adres URL otevřít na serveru proxy.
 
-| Adresy URL pro otevření v proxy serveru |
+| Adresy URL, které se mají otevřít na proxy serveru |
 | --- |
 | \*.microsoftonline.com |
 | \*.microsoftonline.us |
-| \*. windows.net (vyžadováno pro automatické zjišťování tenanta Azure Government) |
+| \*.windows.net (Povinné pro automatickou detekci tenanta Azure Government) |
 | \*.gov.us.microsoftonline.com |
-| \+ Seznamy odvolaných certifikátů |
+| +Seznamy odvolaných certifikátů |
 
 > [!NOTE]
-> Od Azure AD Connect verze 1.1.647.0, nastavení AzureInstance hodnoty v registru se už nevyžaduje za předpokladu, že *. windows.net je otevřený na vašich serverech proxy serveru. Však pro zákazníky, které neumožňují připojení k Internetu z jejich serverech Azure AD Connect, následující ruční konfigurace můžete použít.
+> Od Azure AD Connect verze 1.1.647.0 nastavení azureinstance hodnotu v registru již není nutné za předpokladu, že *.windows.net je otevřena na proxy serverech. Pro zákazníky, kteří nepovolují připojení k Internetu ze svých serverů Azure AD Connect, však lze použít následující ruční konfiguraci.
 
 ### <a name="manual-configuration"></a>Ruční konfigurace
 
-Následující postup ruční konfigurace se používají k zajištění, že použije koncových bodů Azure Government synchronizace Azure AD Connect.
+Následující kroky ruční konfigurace se používají k zajištění Azure AD Connect používá koncové body synchronizace Azure Government.
 
-1. Spusťte instalaci Azure AD Connect.
-2. Když se zobrazí první stránka, kde máte smlouvy EULA, nepokračujte dál, ale ponechte spuštění Průvodce instalací.
-3. Spustit program regedit a změňte klíč registru `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` hodnotě `4`.
-4. Přejděte zpět do Průvodce Azure AD Connect, přijměte smlouvu EULA a pokračovat. Během instalace, je nutné použít **vlastní konfigurace** instalační cesty (a není Expresní instalace), pak pokračovat v instalaci jako obvykle.
+1. Spusťte instalaci Služby Azure AD Connect.
+2. Když se zobrazí první stránka, na které máte přijmout eula, nepokračujte, ale nechte průvodce instalací spuštěn.
+3. Spusťte regedit a `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` změňte `4`klíč registru na hodnotu .
+4. Vraťte se k průvodci instalací služby Azure AD Connect, přijměte eula a pokračujte. Během instalace se ujistěte, že používáte vlastní instalační cestu **konfigurace** (a ne expresní instalaci), a pak pokračujte v instalaci obvyklým způsobem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

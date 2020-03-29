@@ -1,6 +1,6 @@
 ---
-title: Upravit DATA 0 nastavení na zařízení StorSimple řady 8000 | Dokumentace Microsoftu
-description: Zjistěte, jak změnit konfiguraci síťové rozhraní DATA 0 v zařízení StorSimple pomocí prostředí Windows PowerShell pro StorSimple.
+title: Změnit nastavení DATA 0 na zařízení řady StorSimple 8000 | Dokumenty společnosti Microsoft
+description: Naučte se, jak pomocí prostředí Windows PowerShell pro StorSimple překonfigurovat síťové rozhraní DATA 0 na vašem zařízení StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,58 +15,58 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 3cf136c5ddec8f4998d15c597914e1f806453945
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60631579"
 ---
-# <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>Úprava nastavení DATA 0 síťového rozhraní na zařízení StorSimple 8000 series
+# <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>Změna nastavení síťového rozhraní DATA 0 na zařízení řady StorSimple 8000
 
 ## <a name="overview"></a>Přehled
 
-Microsoft Azure StorSimple zařízení má šest síťových rozhraní, z dat 0 až DATA 5. DATA 0 rozhraní se vždy konfiguruje prostřednictvím rozhraní Windows Powershellu nebo konzoly sériového portu a je automaticky povolenou podporu cloudu. Všimněte si, že nemůžete nakonfigurovat síťového rozhraní DATA 0 na webu Azure portal.
+Vaše zařízení Microsoft Azure StorSimple má šest síťových rozhraní, od DATA 0 po DATA 5. Rozhraní DATA 0 je vždy konfigurováno prostřednictvím rozhraní prostředí Windows PowerShell nebo sériové konzole a je automaticky povoleno v cloudu. Všimněte si, že nelze konfigurovat datové 0 síťové rozhraní prostřednictvím portálu Azure.
 
-DATA 0 rozhraní je nejprve nakonfigurovat prostřednictvím Průvodce instalací během počáteční nasazení zařízení StorSimple. Když je zařízení v provozním režimu, je nutné překonfigurovat DATA 0 nastavení. Tento kurz obsahuje dvě metody pro změny dat 0 síťových nastavení, i přes Windows PowerShell pro StorSimple.
+Rozhraní DATA 0 je nejprve konfigurováno pomocí průvodce instalací během počátečního nasazení zařízení StorSimple. Pokud je zařízení v provozním režimu, bude pravděpodobně nutné změnit konfiguraci nastavení DATA 0. Tento kurz obsahuje dvě metody pro úpravu nastavení sítě DATA 0, a to jak prostřednictvím prostředí Windows PowerShell pro StorSimple.
 
-Po přečtení tohoto kurzu, budete moct:
+Po přečtení tohoto výukového programu, budete moci:
 
-* Upravit DATA 0 nastavení prostřednictvím Průvodce nastavením sítě
-* Úprava nastavení DATA 0 sítě prostřednictvím `Set-HcsNetInterface` rutiny
+* Úprava nastavení sítě DATA 0 pomocí průvodce nastavením
+* Změna nastavení sítě DATA `Set-HcsNetInterface` 0 pomocí rutiny
 
-## <a name="modify-data-0-network-settings-through-setup-wizard"></a>Úprava nastavení DATA 0 sítě pomocí Průvodce instalací
-Nastavení DATA 0 sítě můžete překonfigurovat tak, že připojení k rozhraní Windows PowerShell vašeho zařízení StorSimple a spuštění relace Průvodce instalací. Proveďte následující kroky a upravovat DATA 0 nastavení:
+## <a name="modify-data-0-network-settings-through-setup-wizard"></a>Změna nastavení sítě DATA 0 pomocí průvodce instalací
+Nastavení sítě DATA 0 můžete překonfigurovat připojením k rozhraní prostředí Windows PowerShell zařízení StorSimple a spuštěním relace průvodce instalací. Chcete-li upravit nastavení DATA 0, proveďte následující kroky:
 
-#### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>Chcete-li změnit nastavení DATA 0 sítě pomocí Průvodce instalací
-1. V nabídce konzoly sériového portu, vyberte možnost 1, **přihlášení pomocí úplný přístup**. Po zobrazení výzvy zadejte **hesla správce zařízení**. Výchozí heslo je `Password1`.
+#### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>Změna nastavení sítě DATA 0 pomocí Průvodce instalací
+1. V nabídce sériové konzole zvolte možnost 1, **Přihlaste se s úplným přístupem**. Po zobrazení výzvy zadejte **heslo správce zařízení**. Výchozí heslo `Password1`je .
 2. Na příkazovém řádku zadejte:
    
     `Invoke-HcsSetupWizard`
-3. Pomoc s konfigurací DATA 0 se zobrazí Průvodce instalací rozhraní vašeho zařízení. Zadejte nové hodnoty pro IP adresu, brány a síťovou masku.
+3. Zobrazí se průvodce nastavením, který vám pomůže nakonfigurovat rozhraní DATA 0 vašeho zařízení. Zadejte nové hodnoty pro adresu IP, bránu a masku sítě.
 
 > [!NOTE]
-> Kontrolery pevné IP adresy se bude třeba překonfigurovat prostřednictvím **nastavení sítě** okno zařízení StorSimple na webu Azure Portal. Další informace najdete v části [změnit síťová rozhraní](storsimple-8000-modify-device-config.md#modify-network-interfaces).
+> Ip adresy pevných řadičů bude nutné překonfigurovat prostřednictvím okna **nastavení sítě** zařízení StorSimple na webu Azure Portal. Další informace naleznete v [souboru Modify network interfaces](storsimple-8000-modify-device-config.md#modify-network-interfaces).
 
-## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>Úprava nastavení DATA 0 sítě pomocí rutiny Set-HcsNetInterface
-Existuje alternativní způsob překonfigurovat DATA 0 je síťové rozhraní prostřednictvím `Set-HcsNetInterface` rutiny. Rutina se spustí z rozhraní Windows PowerShell vašeho zařízení StorSimple. Při použití tohoto postupu, pevné IP adresy řadiče lze také nastavit tady. Proveďte následující kroky, chcete-li změnit údaj 0 nastavení: 
+## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>Změna nastavení sítě DATA 0 pomocí rutiny Set-HcsNetInterface
+Alternativní způsob, jak překonfigurovat datové rozhraní 0 `Set-HcsNetInterface` sítě je pomocí rutiny. Rutina je spuštěna z rozhraní prostředí Windows PowerShell vašeho zařízení StorSimple. Při použití tohoto postupu lze zde také nakonfigurovat pevné IP adresy řadiče. Chcete-li upravit nastavení DATA 0, proveďte následující kroky: 
 
-#### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>Chcete-li změnit nastavení DATA 0 sítě pomocí rutiny Set-HcsNetInterface
-1. V nabídce konzoly sériového portu, vyberte možnost 1, **přihlášení pomocí úplný přístup**. Po zobrazení výzvy zadejte heslo správce zařízení. Výchozí heslo je `Password1`.
+#### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>Změna nastavení sítě DATA 0 pomocí rutiny Set-HcsNetInterface
+1. V nabídce sériové konzole zvolte možnost 1, **Přihlaste se s úplným přístupem**. Po zobrazení výzvy zadejte heslo správce zařízení. Výchozí heslo `Password1`je .
 2. Na příkazovém řádku zadejte:
    
     `Set-HCSNetInterface -InterfaceAlias Data0 -IPv4Address <> -IPv4Netmask <> -IPv4Gateway <> -Controller0IPv4Address <> -Controller1IPv4Address <> -IsiScsiEnabled 1 -IsCloudEnabled 1`
    
-    V ostrými závorkami zadejte následující hodnoty pro DATA 0:
+    Do šikmých závorek zadejte pro DATA 0 následující hodnoty:
    
    * Adresa protokolu IPv4
    * Brána IPv4
-   * Maskou podsítě typu IPv4
-   * Oprava IPv4 adresu pro řadič 0
-   * Oprava IPv4 adresu pro řadič 1
+   * Maska podsítě IPv4
+   * Pevná Adresa IPv4 pro řadič 0
+   * Pevná Adresa IPv4 pro řadič 1
      
-     Další informace o použití této rutiny najdete v části [prostředí Windows PowerShell pro StorSimple Reference k rutinám](https://technet.microsoft.com/library/dn688161.aspx).
+     Další informace o použití této rutiny naleznete v [prostředí Windows PowerShell for StorSimple cmdlet reference](https://technet.microsoft.com/library/dn688161.aspx).
 
-## <a name="next-steps"></a>Další postup
-* Ke konfiguraci síťových rozhraní než DATA 0, můžete použít [konfigurace nastavení sítě na webu Azure Portal](storsimple-8000-modify-device-config.md). 
-* Pokud zaznamenáte problémy při konfiguraci síťových rozhraní, podívejte se na [řešení problémů s nasazením](storsimple-troubleshoot-deployment.md).
+## <a name="next-steps"></a>Další kroky
+* Chcete-li konfigurovat jiná síťová rozhraní než DATA 0, můžete použít [konfigurovat nastavení sítě na webu Azure Portal](storsimple-8000-modify-device-config.md). 
+* Pokud při konfiguraci síťových rozhraní narazíte na nějaké problémy, přečtěte [si článek Řešení potíží s nasazením](storsimple-troubleshoot-deployment.md).
 

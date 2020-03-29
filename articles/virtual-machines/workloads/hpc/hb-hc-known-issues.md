@@ -1,6 +1,6 @@
 ---
-title: Známé problémy s HB-series a virtuální počítače řady hybridní připojení - Azure Virtual Machines | Dokumentace Microsoftu
-description: Přečtěte si o známých problémech s velikostí HB-series virtuálních počítačů v Azure.
+title: Známé problémy s virtuálními počítači řady HB a HC - virtuální počítače Azure | Dokumenty společnosti Microsoft
+description: Přečtěte si o známých problémech s velikostmi virtuálních zařízení řady HB v Azure.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,35 +13,35 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707780"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>Známé problémy s virtuálními počítači řady HB a HC
 
-Tento článek obsahuje nejčastější problémy a řešení při použití HB-series a virtuální počítače řady hybridní připojení.
+Tento článek obsahuje nejběžnější problémy a řešení při použití hb-series a HC-series virtuálních počítačů.
 
-## <a name="dram-on-hb-series"></a>DRAM na HB-series
+## <a name="dram-on-hb-series"></a>DRAM na HB-série
 
-Virtuální počítače řady HB mohou vystavit pouze 228 GB paměti RAM pro virtuální počítače hostované v tuto chvíli. Příčinou je známé omezení Azure hypervisor zabránit stránek přidělení místní paměti DRAM z AMD CCX společnosti (NUMA domény) vyhrazené pro hosta virtuálního počítače.
+Virtuální počítače řady HB můžou v tuto chvíli zpřístupnit pouze 228 GB paměti RAM hostovanému virtuálním počítači. Důvodem je známé omezení hypervisoru Azure, aby se zabránilo přiřazení stránek k místní paměti DRAM domény AMD CCX (domény NUMA) vyhrazené pro hostovaný virtuální počítač.
 
 ## <a name="accelerated-networking"></a>Akcelerované síťové služby
 
-Akcelerované síťové služby Azure není v tuto chvíli povoleno, ale bude jako jsme průběhu období Preview. Když tuto funkci podporuje budeme informovat zákazníky.
+Azure Accelerated Networking není povolena v tomto okamžiku, ale bude, jak budeme postupovat přes období náhledu. Budeme zákazníky upozorňovat, pokud je tato funkce podporována.
 
-## <a name="qp0-access-restriction"></a>qp0 Access Restriction
+## <a name="qp0-access-restriction"></a>qp0 Omezení přístupu
 
-Aby se zabránilo hardwaru nižší úrovně přístupu, který může vést k ohrožení zabezpečení, dvojice front není přístupná virtuálních počítačů hosta 0. To ovlivňuje pouze akce obvykle spojené se správou síťové karty ConnectX-5 a spouštění diagnostiky některé InfiniBand jako ibdiagnet, ale ne koncový uživatel aplikace sami.
+Chcete-li zabránit přístupu k hardwaru nižší úrovně, který může mít za následek ohrožení zabezpečení, dvojice fronty 0 není přístupná pro hostované virtuální chody. To by mělo mít vliv pouze na akce obvykle spojené se správou síťové adaptéru ConnectX-5 a spuštění některých diagnostik InfiniBand, jako je ibdiagnet, ale ne samotné aplikace koncových uživatelů.
 
-## <a name="ud-transport"></a>UD přenosu
+## <a name="ud-transport"></a>UD doprava
 
-Při spuštění nepodporují řady hybridní připojení a HB dynamicky připojený přenos (DCT). Podpora pro DCT budou prováděny v čase. Jsou podporovány spolehlivé přenosy tohoto připojení (RC) a Datagram nespolehlivých (UD).
+Při uvedení na trh nepodporují řady HB- a HC dynamicky připojené ho transporty (DCT). Podpora DCT bude realizována v průběhu času. Jsou podporovány přenosy spolehlivého připojení (RC) a nespolehlivého datagramu (UD).
 
 ## <a name="gss-proxy"></a>GSS Proxy
 
-GSS Proxy má známého problému v 7.5 CentOS/RHEL, který může manifestovat jako výkonu a snížení rychlosti odezvy při použití s systému souborů NFS. To můžete řešit s využitím:
+GSS Proxy má známou chybu v CentOS / RHEL 7.5, která se může projevit jako významný výkon a snížení rychlosti při použití s NFS. To lze zmírnit pomocí:
 
 ```console
 sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
@@ -49,11 +49,11 @@ sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
 
 ## <a name="cache-cleaning"></a>Čištění mezipaměti
 
-V systémech prostředí HPC často je užitečné pro vyčištění paměti po dokončení úlohy před dalšího uživatele je přiřazen stejný uzel. Po spuštění aplikace v Linuxu možná zjistíte, že dostupná paměť snižuje při vaší zvýšení paměti vyrovnávací paměti, bez ohledu na neběží. všechny aplikace.
+V systémech HPC je často užitečné vyčistit paměť po dokončení úlohy před tím, než je dalšímu uživateli přiřazen stejný uzel. Po spuštění aplikací v Systému Linux můžete zjistit, že dostupná paměť se snižuje, zatímco paměť vyrovnávací paměti se zvyšuje, přestože neběží žádné aplikace.
 
-![Snímek obrazovky z příkazového řádku](./media/known-issues/cache-cleaning-1.png)
+![Snímek obrazovky s příkazovým řádku](./media/known-issues/cache-cleaning-1.png)
 
-Pomocí `numactl -H` zobrazí které NUMAnode(s) paměť ukládány do vyrovnávací paměti s (případně všem). V systému Linux, můžete uživatele vyčištění mezipaměti do tří způsobů, jak vrátit ukládány do vyrovnávací paměti nebo ukládání do mezipaměti paměti "free". Budete muset být kořenové nebo mít oprávnění sudo.
+Pomocí `numactl -H` ukáže, které NUMAnode (y) paměti je do vyrovnávací paměti s (případně všechny). V Linuxu mohou uživatelé čistit mezipaměti třemi způsoby, jak vrátit paměť ve vyrovnávací paměti nebo paměť uloženou do mezipaměti do "volného". Musíte být kořen nebo mít oprávnění sudo.
 
 ```console
 echo 1 > /proc/sys/vm/drop_caches [frees page-cache]
@@ -61,11 +61,11 @@ echo 2 > /proc/sys/vm/drop_caches [frees slab objects e.g. dentries, inodes]
 echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 ```
 
-![Snímek obrazovky z příkazového řádku](./media/known-issues/cache-cleaning-2.png)
+![Snímek obrazovky s příkazovým řádku](./media/known-issues/cache-cleaning-2.png)
 
 ## <a name="kernel-warnings"></a>Upozornění jádra
 
-Při spouštění HB řady virtuálního počítače v systému Linux, mohou se zobrazit následující zprávy upozornění jádra.
+Při zavádění virtuálního počítače řady HB pod Linuxem se mohou zobrazit následující varovné zprávy jádra.
 
 ```console
 [  0.004000] WARNING: CPU: 4 PID: 0 at arch/x86/kernel/smpboot.c:376 topology_sane.isra.3+0x80/0x90
@@ -85,8 +85,8 @@ Při spouštění HB řady virtuálního počítače v systému Linux, mohou se 
 [  0.004000] ---[ end trace 73fc0e0825d4ca1f ]---
 ```
 
-Toto upozornění můžete ignorovat. Příčinou je známé omezení Azure hypervisoru, který bude vyřešen v čase.
+Toto upozornění můžete ignorovat. To je způsobeno známé omezení hypervisoru Azure, který bude vyřešen v průběhu času.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o [vysokovýkonného výpočetního prostředí](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) v Azure.
+Přečtěte si další informace o [vysoce výkonném výpočetním prostředí](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) v Azure.

@@ -1,6 +1,6 @@
 ---
-title: Publikování aplikací pro Azure HDInsight
-description: Zjistěte, jak vytvořit aplikaci HDInsight a potom ji publikovat na webu Azure Marketplace.
+title: Publikování aplikací Azure HDInsight
+description: Přečtěte si, jak vytvořit aplikaci HDInsight a pak ji publikovat na Azure Marketplace.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,29 +9,29 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64685322"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publikování aplikace HDInsight na Azure Marketplace
-Aplikace Azure HDInsight můžete nainstalovat na clusteru HDInsight se systémem Linux. V tomto článku se dozvíte, jak k publikování aplikace HDInsight na Azure Marketplace. Obecné informace o publikování na webu Azure Marketplace najdete v tématu [publikování nabídky na webu Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
+Aplikaci Azure HDInsight můžete nainstalovat do clusteru HDInsight založeného na Linuxu. V tomto článku se dozvíte, jak publikovat aplikaci HDInsight na Azure Marketplace. Obecné informace o publikování na Azure Marketplace najdete v [tématu Publikování nabídky na Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
 
-HDInsight aplikace používají *používání vlastní licence (BYOL)* modelu. Ve scénáři BYOL poskytovatele aplikace zodpovídá za licencování aplikace pro uživatele aplikace. Uživatelé aplikace se účtují jenom za prostředky Azure, který vytvoří, jako je například HDInsight cluster a virtuální počítače cluster a uzly. Fakturace za samotné aplikace se v současné době nedojde v Azure.
+Aplikace HDInsight používají model *Bring Your Own License (BYOL).* Ve scénáři BYOL je poskytovatel aplikace zodpovědný za licencování aplikace uživatelům aplikace. Uživatelé aplikací se účtují jenom za prostředky Azure, které vytvářejí, jako je cluster HDInsight a virtuální počítače a uzly clusteru. V současné době fakturace pro samotnou aplikaci nedochází v Azure.
 
-Další informace najdete v těchto článcích týkající se aplikací HDInsight:
+Další informace naleznete v těchto článcích týkajících se aplikací HDInsight:
 
-* [Instalace aplikací HDInsight](hdinsight-apps-install-applications.md). Zjistěte, jak nainstalovat aplikaci HDInsight v clusterech služby.
-* [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md). Naučte se instalovat a testovat vlastní aplikace HDInsight.
+* [Instalace aplikací HDInsight](hdinsight-apps-install-applications.md). Přečtěte si, jak nainstalovat do clusterů aplikaci HDInsight.
+* [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md). Přečtěte si, jak nainstalovat a otestovat vlastní aplikace HDInsight.
 
 ## <a name="prerequisites"></a>Požadavky
-Odeslat vlastní aplikace na webu Marketplace, nejprve [vytvářet a testovat vlastní aplikace](hdinsight-apps-install-custom-applications.md).
+Chcete-li odeslat vlastní aplikaci na marketplace, nejprve [vytvořte a otestujte vlastní aplikaci](hdinsight-apps-install-custom-applications.md).
 
-Také musíte zaregistrovat vývojářský účet. Další informace najdete v tématu [publikování nabídky na webu Azure Marketplace](../marketplace/marketplace-publishers-guide.md) a [vytvoření účtu Microsoft Developer](../marketplace/marketplace-publishers-guide.md).
+Musíte také zaregistrovat svůj vývojářský účet. Další informace najdete [v tématu Publikování nabídky na Azure Marketplace](../marketplace/marketplace-publishers-guide.md) a Vytvoření účtu Microsoft [Developer](../marketplace/marketplace-publishers-guide.md).
 
 ## <a name="define-the-application"></a>Definování aplikace
-Dva kroky jsou součástí publikování aplikací na webu Marketplace. Nejprve definujte *createUiDef.json* souboru. Soubor createUiDef.json označuje, které clustery je kompatibilní s vaší aplikace. Pak publikujte šablonu z webu Azure portal. Tady je ukázkový soubor createUiDef.json:
+Dva kroky se týkají publikování aplikací na webu Marketplace. Nejprve definujte soubor *createUiDef.json.* Soubor createUiDef.json označuje, se kterými clustery je aplikace kompatibilní. Potom publikujte šablonu z webu Azure Portal. Zde je ukázka souboru createUiDef.json:
 
 ```json
 {
@@ -46,60 +46,60 @@ Dva kroky jsou součástí publikování aplikací na webu Marketplace. Nejprve 
 
 | Pole | Popis | Možné hodnoty |
 | --- | --- | --- |
-| typy |Typy clusterů, se kterými je aplikace kompatibilní. |Hadoop, HBase, Storm, Spark (nebo libovolnou kombinaci těchto) |
+| typy |Typy clusterů, se kterými je aplikace kompatibilní. |Hadoop, HBase, Storm, Spark (nebo jejich kombinace) |
 | verze |Typy clusterů HDInsight, se kterými je aplikace kompatibilní. |3.4 |
 
-## <a name="application-installation-script"></a>Skript instalace aplikace
-Když v clusteru (buď v existujícím clusteru nebo na nový) je nainstalovaná určitá aplikace, vytvoří se hraniční uzel. Skript instalace aplikace běží na hraničním uzlu.
+## <a name="application-installation-script"></a>Instalační skript aplikace
+Pokud je aplikace nainstalována v clusteru (buď v existujícím clusteru, nebo v novém), vytvoří se hraniční uzel. Instalační skript aplikace je spuštěn na hraničním uzlu.
 
   > [!IMPORTANT]  
-  > Název skriptu instalace aplikace musí být jedinečné pro konkrétní cluster. Název skriptu musí mít následující formát:
+  > Název instalačního skriptu aplikace musí být jedinečný pro konkrétní cluster. Název skriptu musí mít následující formát:
   > 
-  > "name": "[concat (" hue-install-v0 ','-', uniquestring('applicationName')] "
+  > "name": "[concat('hue-install-v0','-' ,uniquestring('applicationName')]"
   > 
   > Název skriptu má tři části:
   > 
-  > * Předpona názvu skriptu, který musí obsahovat název aplikace nebo název relevantní pro aplikaci.
-  > * Pomlčkou, pro lepší čitelnost.
-  > * Jedinečnou funkci řetězce, s názvem aplikace jako parametr.
+  > * Předpona názvu skriptu, která musí obsahovat název aplikace nebo název relevantní pro aplikaci.
+  > * Pomlčka, pro čitelnost.
+  > * Jedinečná funkce řetězce s názvem aplikace jako parametrem.
   > 
-  > V seznamu akcí trvalého skriptu, zobrazí se v předchozím příkladu jako **hue-install-v0-4wkahss55hlas**. Najdete v článku [ukázkovou datovou část JSON](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
+  > V seznamu trvalých akcí skriptu je předchozí příklad zobrazen jako **hue-install-v0-4wkahss55hlas**. Podívejte se na [ukázku datové části JSON](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
   > 
 
-Instalační skript, musí mít následující vlastnosti:
-* Skript je idempotentní. Několik volání skriptu přinesou stejný výsledek.
-* Skript je správně označené verzí. Používejte jiné umístění pro skript, když se upgrade nebo testování změn. Tím se zajistí, že zákazníci, kteří instalují aplikace nejsou ovlivněná vaše aktualizace nebo testování. 
-* Tento skript má odpovídající protokolování v každém bodu. Protokoly skriptu jsou obvykle jediný způsob, jak ladit problémy s instalací aplikace.
-* Volání k externím službám nebo zdrojům mít odpovídající opakování, aby instalace není ovlivněn přechodných síťových problémů.
-* Pokud se skript spustí služby na uzlech, služby jsou sledovány a nakonfigurovat tak, aby se spouštěla automaticky, pokud dojde k restartování uzlu.
+Instalační skript musí mít následující vlastnosti:
+* Scénář je idempotentní. Více volání skriptu vytvořit stejný výsledek.
+* Skript je správně verzí. Při upgradu nebo testování změn použijte pro skript jiné umístění. Tím je zajištěno, že zákazníci, kteří instalují aplikaci, nebudou vašimi aktualizacemi nebo testováním ovlivněny. 
+* Skript má odpovídající protokolování v každém bodě. Protokoly skriptů jsou obvykle jediným způsobem, jak ladit problémy s instalací aplikace.
+* Volání externích služeb nebo prostředků mají odpovídající opakování tak, aby instalace není ovlivněna přechodnými problémy se sítí.
+* Pokud skript spustí služby na uzlech, služby jsou sledovány a konfigurovány tak, aby se spouštěly automaticky, pokud dojde k restartování uzlu.
 
-## <a name="package-the-application"></a>Balíček aplikace
-Vytvořte soubor .zip, který obsahuje všechny soubory, které jsou nutné k instalaci aplikace HDInsight. Publikování aplikace pomocí souboru ZIP. Soubor ZIP obsahuje následující soubory:
+## <a name="package-the-application"></a>Zabalte aplikaci
+Vytvořte soubor ZIP, který obsahuje všechny soubory potřebné k instalaci aplikace HDInsight. K publikování aplikace se používá soubor ZIP. Soubor ZIP obsahuje následující soubory:
 
 * createUiDefinition.json
-* mainTemplate.json (ukázku najdete v tématu [instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).)
+* mainTemplate.json (Ukázka najdete v tématu [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).)
 * Všechny požadované skripty
 
 > [!NOTE]  
-> Soubory aplikace (včetně všech souborů webové aplikace), můžete hostovat na jakémkoli veřejně přístupném koncovém bodu.
+> Soubory aplikace (včetně všech souborů webové aplikace) můžete hostovat na libovolném veřejně přístupném koncovém bodu.
 
 ## <a name="publish-the-application"></a>Publikování aplikace
-Chcete-li publikovat aplikace HDInsight:
+Publikování aplikace HDInsight:
 
-1. Přihlaste se k [publikování Azure](https://publish.windowsazure.com/).
-2. V nabídce vlevo vyberte **šablony řešení**.
-3. Zadejte název a potom vyberte **vytvořit novou šablonu řešení**.
-4. Pokud jste ještě nezaregistrovali vaší organizaci, vyberte **účtu centra vývojářů pro vytvoření a zapojte se do programu Azure**.  Další informace najdete v tématu [vytvoření účtu Microsoft Developer](../marketplace/marketplace-publishers-guide.md).
-5. Vyberte **definovat některé topologie, abyste mohli začít**. Šablona řešení je "nadřazený objekt" všem svým topologiím. V jedné šabloně nabídky nebo řešení můžete definovat více topologií. Když se nabídka převede do přípravy, převede se se svým topologiím. 
-6. Zadejte název topologie a potom vyberte **+** .
-7. Zadejte novou verzi a pak vyberte **+** .
+1. Přihlaste se k [Azure Publishing](https://publish.windowsazure.com/).
+2. V levé nabídce vyberte **Šablony řešení**.
+3. Zadejte název a pak vyberte **Vytvořit novou šablonu řešení**.
+4. Pokud jste ještě nezaregistrovali svou organizaci, vyberte **Vytvořit účet Dev Center a připojte se k programu Azure**.  Další informace naleznete [v tématu Vytvoření účtu Microsoft Developer](../marketplace/marketplace-publishers-guide.md).
+5. Chcete-li **začít, vyberte možnost Definovat některé topologie**. Šablona řešení je "nadřazený" pro všechny jeho topologie. V jedné nabídce nebo šabloně řešení můžete definovat více topologie. Když je nabídka posunuta do pracovní fáze, je posunuta se všemi jejími topologiemi. 
+6. Zadejte název topologie a **+** vyberte .
+7. Zadejte novou verzi a **+** vyberte položku .
 8. Nahrajte soubor ZIP, který jste vytvořili při balení aplikace.  
-9. Vyberte **žádost o certifikaci**. Tým certifikace společnosti Microsoft soubory zkontroluje a topologii certifikuje.
+9. Vyberte **možnost Požádat o certifikaci**. Certifikační tým společnosti Microsoft zkontroluje soubory a certifikuje topologii.
 
-## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [instalovat aplikace HDInsight](hdinsight-apps-install-applications.md) ve vašich clusterů.
-* Zjistěte, jak [instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md) a nasazovat nepublikované aplikace HDInsight do HDInsight.
-* Zjistěte, jak [přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md) a přidat další aplikace. 
-* Zjistěte, jak [vytvářet clustery založené na Linuxu Apache Hadoop v HDInsight pomocí šablon Azure Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
-* Zjistěte, jak [použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md) pro přístup k clusterů HDInsight, testovat aplikace HDInsight a hostovat aplikace HDInsight.
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si, jak [nainstalovat aplikace HDInsight](hdinsight-apps-install-applications.md) do clusterů.
+* Přečtěte si, jak [nainstalovat vlastní aplikace HDInsight](hdinsight-apps-install-custom-applications.md) a nasadit nepublikovanou aplikaci HDInsight do HDInsightu.
+* Přečtěte si, jak [pomocí akce Skript přizpůsobit clustery HDInsight založených na Linuxu](hdinsight-hadoop-customize-cluster-linux.md) a přidat další aplikace. 
+* Naučte se [vytvářet linuxové clustery Apache Hadoop ve službě HDInsight pomocí šablon Azure Resource Manager .](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+* Přečtěte si, jak [používat prázdný uzel okraje v HDInsightu](hdinsight-apps-use-edge-node.md) pro přístup ke clusterům HDInsight, testování aplikací HDInsight a hostování aplikací HDInsight.
 

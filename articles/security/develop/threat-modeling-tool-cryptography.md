@@ -1,6 +1,6 @@
 ---
-title: Kryptografie-Microsoft Threat Modeling Tool – Azure | Microsoft Docs
-description: zmírnění rizik pro ohrožené hrozby v Threat Modeling Tool
+title: Kryptografie – Nástroj pro modelování hrozeb společnosti Microsoft – Azure | Dokumenty společnosti Microsoft
+description: zmírnění hrozeb vystavených v nástroji pro modelování hrozeb
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,166 +16,166 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: c9116472af5b400ded0fea24f98b07bad9d9039b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68728192"
 ---
-# <a name="security-frame-cryptography--mitigations"></a>Rámec zabezpečení: Kryptografie | Hrozeb 
+# <a name="security-frame-cryptography--mitigations"></a>Bezpečnostní rámec: Kryptografie | Skutečnosti snižující závažnost rizika 
 
-| Produkt nebo službu | Článek |
+| Produkt/služba | Článek |
 | --------------- | ------- |
-| **Webová aplikace** | <ul><li>[Používejte jenom schválené symetrické blokové šifry a délky klíčů.](#cipher-length)</li><li>[Použít schválené režimy kódování bloku a inicializační vektory pro symetrické šifry](#vector-ciphers)</li><li>[Použití schválených asymetrických algoritmů, délek klíčů a odsazení](#padding)</li><li>[Použít schválené generátory náhodných čísel](#numgen)</li><li>[Nepoužívejte šifry symetrického streamu.](#stream-ciphers)</li><li>[Použijte schválené algoritmy hash MAC/HMAC/klíčů.](#mac-hash)</li><li>[Používejte jenom schválené kryptografické funkce hash.](#hash-functions)</li></ul> |
-| **Database** | <ul><li>[Použití algoritmu silného šifrování k šifrování dat v databázi](#strong-db)</li><li>[Balíčky SSIS by měly být šifrované a digitálně podepsané](#ssis-signed)</li><li>[Přidat digitální podpis do důležitých zabezpečených databází](#securables-db)</li><li>[Použití SQL serveru EKM k ochraně šifrovacích klíčů](#ekm-keys)</li><li>[Použít funkci AlwaysEncrypted, pokud by se šifrovací klíče neměly vyvažovat do databázového stroje](#keys-engine)</li></ul> |
+| **Webová aplikace** | <ul><li>[Používejte pouze schválené symetrické blokové šifry a délky klíčů](#cipher-length)</li><li>[Použití schválených režimů blokové šifry a inicializačních vektorů pro symetrické šifry](#vector-ciphers)</li><li>[Použití schválených asymetrických algoritmů, délek klíčů a odsazení](#padding)</li><li>[Použití schválených generátorů náhodných čísel](#numgen)</li><li>[Nepoužívejte šifry symetrického proudu](#stream-ciphers)</li><li>[Použití schválených algoritmů hash MAC/HMAC/keyed](#mac-hash)</li><li>[Používejte pouze schválené kryptografické funkce hash](#hash-functions)</li></ul> |
+| **Databáze** | <ul><li>[Použití silných šifrovacích algoritmů k šifrování dat v databázi](#strong-db)</li><li>[Balíčky SSIS by měly být šifrovány a digitálně](#ssis-signed)</li><li>[Přidání digitálního podpisu do důležitých databázových seřizovatelných](#securables-db)</li><li>[Použití SQL server EKM k ochraně šifrovacích klíčů](#ekm-keys)</li><li>[Funkce AlwaysEncrypted použijte, pokud by šifrovací klíče neměly být zjevovány databázovému stroji.](#keys-engine)</li></ul> |
 | **Zařízení IoT** | <ul><li>[Bezpečné ukládání kryptografických klíčů na zařízení IoT](#keys-iot)</li></ul> | 
-| **IoT Cloud Gateway** | <ul><li>[Vygenerujte náhodný symetrický klíč dostatečné délky pro ověřování IoT Hub](#random-hub)</li></ul> | 
-| **Mobilní klient Dynamics CRM** | <ul><li>[Ujistěte se, že zásady správy zařízení jsou zavedeny, které vyžadují použití PIN a umožňují vzdálené vymazání.](#pin-remote)</li></ul> | 
-| **Klient Dynamics CRM pro Outlook** | <ul><li>[Zajistěte, aby byly nastavené zásady správy zařízení, které vyžadují PIN/heslo nebo automatické uzamčení a šifrují všechna data (např. BitLocker).](#bitlocker)</li></ul> | 
-| **Server identit** | <ul><li>[Zajistěte, aby se při použití serveru identity převzaly podpisové klíče.](#rolled-server)</li><li>[Ujistěte se, že kryptograficky silné ID klienta se používá na serveru identity.](#client-server)</li></ul> | 
+| **Cloudová brána IoT** | <ul><li>[Generovat náhodný symetrický klíč dostatečné délky pro ověřování do služby IoT Hub](#random-hub)</li></ul> | 
+| **Mobilní klient Aplikace Dynamics CRM** | <ul><li>[Ujistěte se, že jsou zavedeny zásady správy zařízení, které vyžadují použití kódu PIN a umožňují vzdálené vymazání](#pin-remote)</li></ul> | 
+| **Klient aplikace Dynamics CRM Outlook** | <ul><li>[Ujistěte se, že jsou zavedeny zásady správy zařízení, které vyžadují zámek PIN/heslo/auto, a šifruje všechna data (např.](#bitlocker)</li></ul> | 
+| **Server identit** | <ul><li>[Ujistěte se, že podpisové klíče jsou převráceny při použití serveru identity](#rolled-server)</li><li>[Ujistěte se, že kryptograficky silné ID klienta, tajný klíč klienta se používají v Identity Server](#client-server)</li></ul> | 
 
-## <a id="cipher-length"></a>Používejte jenom schválené symetrické blokové šifry a délky klíčů.
+## <a name="use-only-approved-symmetric-block-ciphers-and-key-lengths"></a><a id="cipher-length"></a>Používejte pouze schválené symetrické blokové šifry a délky klíčů
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Produkty musí používat pouze ta symetrická bloková šifra a přidružené délky klíčů, které byly explicitně schváleny kryptografickým poradcem ve vaší organizaci. Mezi schválené symetrické algoritmy v Microsoftu patří následující blokové šifry:</p><ul><li>Pro nový kód AES-128, AES-192 a AES-256 jsou přijatelné.</li><li>Z důvodu zpětné kompatibility se stávajícím kódem je přijatelné tři klíče 3DES.</li><li>Pro produkty používající symetrické blokové šifry:<ul><li>Pro nový kód se vyžaduje standard AES (Advanced Encryption Standard) (AES).</li><li>Algoritmus 3DES (Triple Data Encryption Standard) se třemi klíči je přípustný v existujícím kódu pro zpětnou kompatibilitu.</li><li>Všechna ostatní bloková šifra, včetně RC2, DES, 2 klíče 3DES, DESX a SkipJack, se dají použít jenom k dešifrování starých dat a musí se nahradit, pokud se používá pro šifrování.</li></ul></li><li>Pro algoritmy šifrování symetrického bloku se vyžaduje minimální délka klíče 128 bitů. Jediný blokový šifrovací algoritmus doporučený pro nový kód je AES (AES-128, AES-192 a AES-256 jsou všechny přijatelné)</li><li>Pokud se už v existujícím kódu používá, je použit algoritmus 3DES se třemi klíči. Přechod na AES je doporučený. Šifrování DES, DESX, RC2 a SkipJack se již nepovažují za bezpečné. Tyto algoritmy se dají použít jenom k dešifrování stávajících dat z důvodu zpětné kompatibility a data by se měla znovu šifrovat pomocí Doporučené blokové šifry.</li></ul><p>Všimněte si, že všechny šifry symetrického bloku musí být použity s schváleným režimem šifry, který vyžaduje použití příslušného inicializačního vektoru (IV). Vhodným IV, je obvykle náhodné číslo a nikdy konstantní hodnota.</p><p>Použití starších nebo jiných neschválených šifrovacích algoritmů a kratších délek klíčů pro čtení stávajících dat (na rozdíl od psaní nových dat) může být po kontrole šifrovacích panelů vaší organizace povolené. Před tímto požadavkem však musíte soubor pro výjimku. V podnikových nasazeních by se navíc měly zvážit správci upozornění, když se ke čtení dat používá slabé šifrování. Taková upozornění by měla být vysvětlující a jednat. V některých případech může být vhodné, aby Zásady skupiny řídit použití slabého šifrování.</p><p>Povolené algoritmy .NET pro flexibilitu spravovaného šifrování (v upřednostňovaném pořadí)</p><ul><li>AesCng (kompatibilní se standardem FIPS)</li><li>AuthenticatedAesCng (kompatibilní se standardem FIPS)</li><li>AESCryptoServiceProvider (kompatibilní se standardem FIPS)</li><li>AESManaged (není kompatibilní se standardem FIPS)</li></ul><p>Všimněte si, že žádný z těchto algoritmů nelze zadat prostřednictvím `SymmetricAlgorithm.Create` metod `CryptoConfig.CreateFromName` nebo bez provedení změn v souboru Machine. config. Všimněte si také, že AES ve verzích .NET předcházejících .NET 3,5 se nazývá `RijndaelManaged`a `AesCng` a `AuthenticatedAesCng` jsou > k dispozici prostřednictvím CodePlex a vyžádání CNG v podkladovém operačním systému.</p>
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | <p>Produkty musí používat pouze ty symetrické blokové šifry a související délky klíčů, které byly explicitně schváleny Crypto Advisorem ve vaší organizaci. Schválené symetrické algoritmy společnosti Microsoft zahrnují následující blokové šifry:</p><ul><li>Pro nový kód AES-128, AES-192 a AES-256 jsou přijatelné</li><li>Pro zpětnou kompatibilitu s existujícím kódem je</li><li>Pro produkty používající symetrické blokové šifry:<ul><li>Pro nový kód je vyžadován pokročilý standard šifrování (AES).</li><li>Tříklíčný trojitý standard šifrování dat (3DES) je přípustný ve stávajícím kódu pro zpětnou kompatibilitu</li><li>Všechny ostatní blokové šifry, včetně RC2, DES, 2 Key 3DES, DESX a Skipjack, mohou být použity pouze pro dešifrování starých dat a musí být nahrazeny, pokud jsou použity pro šifrování</li></ul></li><li>Pro symetrické blokové šifrovací algoritmy je vyžadována minimální délka klíče 128 bitů. Jediný blokový šifrovací algoritmus doporučený pro nový kód je AES (AES-128, AES-192 a AES-256 jsou přijatelné)</li><li>Tříklíčná 3DES je v současné době přijatelná, pokud je již používána ve stávajícím kódu; přechod na AES. DES, DESX, RC2 a Skipjack již nejsou považovány za bezpečné. Tyto algoritmy mohou být použity pouze pro dešifrování existujících dat z důvodu zpětné kompatibility a data by měla být znovu zašifrována pomocí doporučené blokové šifry.</li></ul><p>Vezměte prosím na vědomí, že všechny symetrické blokové šifry musí být použity se schváleným šifrovacím režimem, který vyžaduje použití vhodného inicializačního vektoru (IV). Vhodné IV, je obvykle náhodné číslo a nikdy konstantní hodnota</p><p>Použití starších nebo jinak neschválených kryptografických algoritmů a menších délek klíčů pro čtení existujících dat (na rozdíl od zápisu nových dat) může být povoleno po kontrole Crypto Board vaší organizace. Je však nutné soubor pro výjimku proti tomuto požadavku. Kromě toho v podnikovém nasazení by produkty měly zvážit upozornění správců při použití slabého šifrování ke čtení dat. Tato varování by měla být vysvětlující a žalovatelná. V některých případech může být vhodné, aby zásady skupiny kontrolovaly používání slabých</p><p>Povolené algoritmy .NET pro spravovanou kryptografickou agilitu (v pořadí podle priority)</p><ul><li>AesCng (kompatibilní s FIPS)</li><li>AuthenticatedAesCng (kompatibilní s FIPS)</li><li>AESCryptoServiceProvider (kompatibilní s FIPS)</li><li>AESManaged (nekompatibilní s FIPS)</li></ul><p>Vezměte prosím na vědomí, že žádný `SymmetricAlgorithm.Create` z `CryptoConfig.CreateFromName` těchto algoritmů nelze zadat pomocí nebo metody bez provedení změn v souboru machine.config. Všimněte si také, že AES ve verzích rozhraní .NET `AesCng` před `AuthenticatedAesCng` rozhraním .NET 3.5 je pojmenována `RijndaelManaged`a a jsou >k dispozici prostřednictvím CodePlex a vyžadují CNG v základním operačním systému</p>
 
-## <a id="vector-ciphers"></a>Použít schválené režimy kódování bloku a inicializační vektory pro symetrické šifry
+## <a name="use-approved-block-cipher-modes-and-initialization-vectors-for-symmetric-ciphers"></a><a id="vector-ciphers"></a>Použití schválených režimů blokové šifry a inicializačních vektorů pro symetrické šifry
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | Všechny šifry symetrického bloku musí být použity s schváleným režimem symetrické šifry. Jediným schváleným režimem jsou CBC a CTS. Zejména je třeba zabránit režimu operace elektronického kódu v knize (ECB); použití ECB vyžaduje kontrolu šifrovacích Board vaší organizace. Veškeré využití OFB, CFB, centra, CCM a GCM nebo jakéhokoli jiného režimu šifrování musí být zkontrolováno pomocí kryptografické desky vaší organizace. Opětovné použití stejného inicializačního vektoru (IV) s blokujícími šiframi v režimech šifry streamování, jako je například centrum, může způsobit zobrazení šifrovaných dat. Všechna symetrická bloková šifra musí být také použita s vhodným inicializačním vektorem (IV). Vhodným IV je kryptograficky silné, náhodné číslo a nikdy konstantní hodnota. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Všechny symetrické blokové šifry musí být použity ve schváleném režimu symetrické šifry. Jedinými schválenými režimy jsou CBC a CTS. Zejména je třeba se vyhnout způsobu fungování elektronického kódového knihy (ECB); použití ECB vyžaduje kontrolu kryptorady vaší organizace. Veškeré použití OFB, CFB, CTR, CCM a GCM nebo jiného režimu šifrování musí být přezkoumáno crypto boardem vaší organizace. Opětovné použití stejného inicializačního vektoru (IV) s blokovými šiframi v režimech "streamování šifrovacích zařízení", jako je CTR, může způsobit odhalení šifrovaných dat. Všechny symetrické blokové šifry musí být také použity s vhodným inicializačním vektorem (IV). Vhodné IV je kryptograficky silné, náhodné číslo a nikdy konstantní hodnota. |
 
-## <a id="padding"></a>Použití schválených asymetrických algoritmů, délek klíčů a odsazení
+## <a name="use-approved-asymmetric-algorithms-key-lengths-and-padding"></a><a id="padding"></a>Použití schválených asymetrických algoritmů, délek klíčů a odsazení
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Použití zakázaných kryptografických algoritmů přináší významné riziko pro zabezpečení produktu a je třeba se jim vyhnout. Produkty musí používat jenom ty kryptografické algoritmy a přidružené délky klíčů a jejich odsazení, které byly explicitně schválené kryptografickým panelem vaší organizace.</p><ul><li>**RSA –** může být používán k šifrování, výměně klíčů a podpisu. Šifrování RSA musí používat pouze režimy vyplňování výplně OAEP nebo RSA-KEM. Existující kód může používat pouze režim odsazení PKCS #1 v 1.5 pouze pro kompatibilitu. Použití odsazení null je explicitně zakázáno. Pro nový kód se vyžadují klíče > = 2048 bitů. Existující kód může podporovat klíče < 2048 bitů jenom pro zpětnou kompatibilitu po kontrole pomocí kryptografické karty vaší organizace. Klíče < 1024 bity se dají použít jenom k dešifrování/ověřování starých dat a musí se nahradit, pokud se použijí pro operace šifrování nebo podepisování.</li><li>**ECDSA –** lze použít pouze pro podpis. Pro nový kód je vyžadován ECDSA s > = 256 bitových klíčů. Signatury založené na ECDSA musí používat jednu ze tří NIST schválených křivek (P-256, P-384 nebo P521). Křivky, které byly důkladně analyzovány, mohou být použity pouze po kontrole pomocí kryptografické karty vaší organizace.</li><li>**ECDH** se dá použít jenom pro výměnu klíčů. Pro nový kód je vyžadován ECDH s > = 256 bitových klíčů. Výměna klíčů na bázi ECDH musí používat jednu ze tří NIST schválených křivek (P-256, P-384 nebo P521). Křivky, které byly důkladně analyzovány, mohou být použity pouze po kontrole pomocí kryptografické karty vaší organizace.</li><li>**DSA –** může být přijatelné po kontrole a schvalování z kryptografické karty vaší organizace. Pokud chcete naplánovat kontrolu šifrovacích panelů vaší organizace, obraťte se na svého bezpečnostního poradce. Pokud je vaše používání služby DSA schváleno, je třeba zakázat použití klíčů kratších než 2048 bitů. CNG podporuje 2048 a větší délky klíčů pro systém Windows 8.</li><li>**Diffie-Hellman** se dá použít jenom pro správu klíčů relace. Pro nový kód se vyžaduje délka klíče > = 2048 bitů. Existující kód může podporovat délky klíčů < 2048 bitů jenom pro zpětnou kompatibilitu po kontrole pomocí kryptografické karty vaší organizace. Klíče < 1024 bity se nedají použít.</li><ul>
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | <p>Používání zakázaných kryptografických algoritmů představuje významné riziko pro bezpečnost produktů a je třeba se mu vyhnout. Produkty musí používat pouze ty kryptografické algoritmy a přidružené délky klíčů a odsazení, které byly explicitně schváleny crypto boardem vaší organizace.</p><ul><li>**RSA-** mohou být použity pro šifrování, výměnu klíčů a podpis. Šifrování RSA musí používat pouze režimy odsazení OAEP nebo RSA-KEM. Existující kód může používat pkcs #1 v1.5 režim odsazení pouze pro kompatibilitu. Použití odsazení null je explicitně zakázáno. Klíče >= 2048 bitů je vyžadovánpro nový kód. Existující kód může podporovat klíče < 2048 bitů pouze pro zpětnou kompatibilitu po kontrole crypto board vaší organizace. Klíče < 1024 bitů lze použít pouze k dešifrování/ověření starých dat a musí být nahrazeny, pokud jsou použity pro operace šifrování nebo podepisování.</li><li>**ECDSA-** lze použít pouze k podpisu. ECDSA s >= 256bitové klíče je vyžadovánpro nový kód. Podpisy založené na ECDSA musí používat jednu ze tří křivek schválených NIST (P-256, P-384 nebo P521). Křivky, které byly důkladně analyzovány, mohou být použity pouze po kontrole s crypto boardem vaší organizace.</li><li>**ECDH-** lze použít pouze pro výměnu klíčů. ECDH s >= 256bitové klíče je vyžadováno pro nový kód. Výměna klíčů založená na ECDH musí používat jednu ze tří křivek schválených NIST (P-256, P-384 nebo P521). Křivky, které byly důkladně analyzovány, mohou být použity pouze po kontrole s crypto boardem vaší organizace.</li><li>**DSA-** může být přijatelné po přezkoumání a schválení od vaší organizace Crypto Board. Obraťte se na svého bezpečnostního poradce a naplánujte kontrolu kryptografické rady vaší organizace. Pokud je vaše používání DSA schváleno, vezměte na vědomí, že budete muset zakázat používání klíčů kratších než 2048 bitů. CNG podporuje 2048bitové a větší délky klíčů od Windows 8.</li><li>**Diffie-Hellman-** lze použít pouze pro správu klíčů relace. Délka klíče >= 2048 bitů je vyžadována pro nový kód. Existující kód může podporovat délky klíčů < 2048 bitů pouze pro zpětnou kompatibilitu po kontrole crypto board vaší organizace. Klíče < 1024 bitů nelze použít.</li><ul>
 
-## <a id="numgen"></a>Použít schválené generátory náhodných čísel
+## <a name="use-approved-random-number-generators"></a><a id="numgen"></a>Použití schválených generátorů náhodných čísel
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Produkty musí používat schválené generátory náhodných čísel. Pseudonáhodných funkce, jako je funkce modulu runtime jazyka C Rand, .NET Framework třídy System. Random nebo funkce systému, jako je například funkce GetTickCount, proto musí být v takovém kódu nikdy použity. Použití algoritmu DUAL_EC_DRBG (dualed Curve generátor náhodných čísel) je zakázané.</p><ul><li>**CNG –** BCryptGenRandom (použití příznaku BCRYPT_USE_SYSTEM_PREFERRED_RNG se doporučuje, pokud volající nemůžete spustit na jakékoli úrovni IRQL větší než 0 [to znamená PASSIVE_LEVEL])</li><li>**CAPI –** cryptGenRandom</li><li>**Win32/64 –** RtlGenRandom (nové implementace by měly používat BCryptGenRandom nebo CryptGenRandom) * rand_s * SystemPrng (pro režim jádra)</li><li>**. NET-** RNGCryptoServiceProvider nebo RNGCng</li><li>**Aplikace pro Windows Store –** Windows. Security. Cryptography. CryptographicBuffer. GenerateRandom nebo. GenerateRandomNumber</li><li>**Apple OS X (10.7 +)/iOS. (2.0 +) –** int SecRandomCopyBytes (SecRandomRef Random, size_t Count, uint8_t \*bytes)</li><li>**Apple OS X (< 10.7) –** Načtení náhodných čísel pomocí/dev/random</li><li>**Java (včetně kódu Google Android Java) –** Třída Java. Security. SecureRandom Upozorňujeme, že pro Android 4,3 (želé Bob) musí vývojáři postupovat podle doporučeného alternativního řešení pro Android a aktualizovat své aplikace tak, aby explicitně inicializoval PRNG s entropií z/dev/urandom nebo/dev/random.</li></ul>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | <p>Výrobky musí používat schválené generátory náhodných čísel. Pseudonáhodné funkce, jako je například rand funkce runtime Jazyka C, třída .NET Framework System.Random nebo systémové funkce, jako je Například GetTickCount, proto musí být nikdy použity v takovém kódu. Použití algoritmu generátoru náhodných čísel (DUAL_EC_DRBG) s dvojitou eliptickou křivkou je zakázáno</p><ul><li>**CNG-** BCryptGenRandom(použití příznaku BCRYPT_USE_SYSTEM_PREFERRED_RNG doporučenou, pokud volající může spustit na jakékoli IRQL větší než 0 [to je, PASSIVE_LEVEL])</li><li>**CAPI-** kryptaGenRandom</li><li>**Win32/64, 2.** RtlGenRandom (nové implementace by měly používat BCryptGenRandom nebo CryptGenRandom) * rand_s * SystemPrng (pro režim jádra)</li><li>**. NET-** RNGCryptoServiceProvider nebo RNGCng</li><li>**Aplikace pro Windows Store-** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom nebo . GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS (2.0+)-** int SecRandomCopyBytes (SecRandomRef náhodné, size_t počet, uint8_t \*bajty)</li><li>**Apple OS X (<10.7)-** Použití /dev/random k načtení náhodných čísel</li><li>**Java (včetně google android java kód) -** java.security.SecureRandom třídy. Všimněte si, že pro Android 4.3 (Jelly Bean), vývojáři musí dodržovat android doporučené řešení a aktualizovat své aplikace explicitně inicializovat PRNG s entropie z /dev/urandom nebo /dev/random</li></ul>|
 
-## <a id="stream-ciphers"></a>Nepoužívejte šifry symetrického streamu.
+## <a name="do-not-use-symmetric-stream-ciphers"></a><a id="stream-ciphers"></a>Nepoužívejte šifry symetrického proudu
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | Šifry symetrických datových proudů, jako je například RC4, nesmí být použity. Místo šifry symetrických streamů by produkty měly používat blokové šifry, konkrétně AES s délkou klíče minimálně 128 bitů. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Šifry symetrického proudu, například RC4, se nesmí používat. Namísto šifer symetrického proudu by produkty měly používat blokovou šifru, konkrétně AES s délkou klíče nejméně 128 bitů. |
 
-## <a id="mac-hash"></a>Použijte schválené algoritmy hash MAC/HMAC/klíčů.
+## <a name="use-approved-machmackeyed-hash-algorithms"></a><a id="mac-hash"></a>Použití schválených algoritmů hash MAC/HMAC/keyed
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Produkty musí používat pouze schválené algoritmy MAC (Message Authentication Code) nebo HMAC (hash-based Message Authentication Code).</p><p>Ověřovací kód zprávy (MAC) je informační zpráva připojená ke zprávě, která umožňuje jejímu příjemci ověřit pravost odesílatele a integritu zprávy pomocí tajného klíče. Použití rozhraní MAC (HMAC) založeného na algoritmu hash ([HMAC](https://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) nebo systému [Mac založeného na bloku](https://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) šifrování je přípustné, pokud jsou také schváleny všechny základní algoritmy hash nebo symetrické šifrování. v současné době zahrnuje funkce HMAC-SHA2 (HMAC-SHA256, HMAC-SHA384 a HMAC-SHA512) a Mac/CMAC a OMAC1 Block-based šifry (jsou založené na standardu AES).</p><p>Pro kompatibilitu platforem může být povoleno použití algoritmu HMAC-SHA1, ale pro tento postup bude nutné zadat výjimku a podstoupit kontrolu šifrování vaší organizace. Zkrácení HMAC na méně než 128 bitů není povoleno. Použití zákaznických metod k vytvoření hodnoty hash klíče a dat není schváleno a před použitím se musí projít kontrolou šifrovacích Board vaší organizace.</p>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | <p>Produkty musí používat pouze schválené ověřovací kód zprávy (MAC) nebo algoritmy ověřování zpráv založených na algoritmu hash (HMAC).</p><p>Ověřovací kód zprávy (MAC) je informace připojená ke zprávě, která umožňuje příjemci ověřit pravost odesílatele i integritu zprávy pomocí tajného klíče. Použití MAC ( HMAC ) založeného na hash ([HMAC](https://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) nebo [MAC založeného na blokové šifrě](https://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) je přípustné, pokud jsou všechny základní algoritmy hash nebo symetrického šifrování také schváleny pro použití; v současné době to zahrnuje funkce HMAC-SHA2 (HMAC-SHA256, HMAC-SHA384 a HMAC-SHA512) a cmac/OMAC1 a blokové macs založené na blokové šifrované (ty jsou založeny na AES).</p><p>Použití HMAC-SHA1 může být přípustné pro kompatibilitu platformy, ale budete muset podat výjimku z tohoto postupu a podstoupit kontrolu kryptografických údajů vaší organizace. Zkrácení hcc na méně než 128 bitů není povoleno. Použití zákaznických metod k hash klíče a dat není schváleno a musí před použitím projít kontrolou Crypto Board vaší organizace.</p>|
 
-## <a id="hash-functions"></a>Používejte jenom schválené kryptografické funkce hash.
+## <a name="use-only-approved-cryptographic-hash-functions"></a><a id="hash-functions"></a>Používejte pouze schválené kryptografické funkce hash
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Produkty musí používat rodinu SHA-2 algoritmů hash (SHA256, SHA384 a SHA512). Pokud je potřeba kratší hodnota hash, jako je například 128 délka výstupu, aby odpovídala datové struktuře, která je navržena kratší hodnotou hash MD5, může tým produktů zkrátit jednu z hodnot hash SHA2 (obvykle SHA256). Všimněte si, že SHA384 je zkrácená verze SHA512. Zkrácení kryptografických hodnot hash pro účely zabezpečení na méně než 128 bitů není povoleno. Nový kód nesmí používat algoritmy hash MD2, MD4, MD5, SHA-0, SHA-1 nebo RIPEMD. Kolize algoritmu hash jsou pro tyto algoritmy prakticky proveditelné, což je efektivně rozdělené.</p><p>Povolené algoritmy hash .NET pro flexibilitu spravovaného kryptografie (v pořadí podle priority):</p><ul><li>SHA512Cng (kompatibilní se standardem FIPS)</li><li>SHA384Cng (kompatibilní se standardem FIPS)</li><li>SHA256Cng (kompatibilní se standardem FIPS)</li><li>SHA512Managed (nekompatibilní se standardem FIPS) (jako název algoritmu použijte SHA512 při voláních HashAlgorithm. Create nebo objektu CryptoConfig. CreateFromName)</li><li>SHA384Managed (nekompatibilní se standardem FIPS) (jako název algoritmu použijte SHA384 při voláních HashAlgorithm. Create nebo objektu CryptoConfig. CreateFromName)</li><li>SHA256Managed (nekompatibilní se standardem FIPS) (jako název algoritmu použijte SHA256 při voláních HashAlgorithm. Create nebo objektu CryptoConfig. CreateFromName)</li><li>SHA512CryptoServiceProvider (kompatibilní se standardem FIPS)</li><li>SHA256CryptoServiceProvider (kompatibilní se standardem FIPS)</li><li>SHA384CryptoServiceProvider (kompatibilní se standardem FIPS)</li></ul>| 
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | <p>Produkty musí používat sha-2 řady algoritmů hash (SHA256, SHA384 a SHA512). Pokud je potřeba kratší hash, jako je například 128bitová délka výstupu, aby se vešla do datové struktury navržené s ohledem na kratší hash MD5, mohou týmy produktů zkrátit jeden z hash SHA2 (obvykle SHA256). Všimněte si, že SHA384 je zkrácená verze SHA512. Zkrácení kryptografických hash z bezpečnostních důvodů na méně než 128 bitů není povoleno. Nový kód nesmí používat algoritmy hash MD2, MD4, MD5, SHA-0, SHA-1 nebo RIPEMD. Kolize hash jsou pro tyto algoritmy výpočtově proveditelné, což je účinně přeruší.</p><p>Povolené algoritmy hash rozhraní .NET pro spravovanou kryptografickou agilitu (v pořadí podle priority):</p><ul><li>SHA512Cng (kompatibilní s FIPS)</li><li>SHA384Cng (kompatibilní s FIPS)</li><li>SHA256Cng (kompatibilní s FIPS)</li><li>SHA512Managed (nekompatibilní s FIPS) (použijte SHA512 jako název algoritmu při volání HashAlgorithm.Create nebo CryptoConfig.CreateFromName)</li><li>SHA384Managed (nekompatibilní s FIPS) (použijte SHA384 jako název algoritmu při volání HashAlgorithm.Create nebo CryptoConfig.CreateFromName)</li><li>SHA256Managed (nekompatibilní s FIPS) (použijte SHA256 jako název algoritmu při volání HashAlgorithm.Create nebo CryptoConfig.CreateFromName)</li><li>SHA512CryptoServiceProvider (kompatibilní s FIPS)</li><li>SHA256CryptoServiceProvider (kompatibilní s FIPS)</li><li>SHA384CryptoServiceProvider (kompatibilní s FIPS)</li></ul>| 
 
-## <a id="strong-db"></a>Použití algoritmu silného šifrování k šifrování dat v databázi
+## <a name="use-strong-encryption-algorithms-to-encrypt-data-in-the-database"></a><a id="strong-db"></a>Použití silných šifrovacích algoritmů k šifrování dat v databázi
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
+| **Atributy**              | Není dostupné.  |
 | **Odkazy**              | [Výběr šifrovacího algoritmu](https://technet.microsoft.com/library/ms345262(v=sql.130).aspx) |
-| **Kroky** | Algoritmy šifrování definují transformace dat, které nelze snadno vrátit neoprávněnými uživateli. SQL Server umožňuje správcům a vývojářům vybírat mezi několika algoritmy, včetně DES, Triple DES, TRIPLE_DES_3KEY, RC2, RC4, 128-bit RC4, DESX, 128 AES, 192-bit AES 256 a 16bitový AES. |
+| **Kroky** | Šifrovací algoritmy definují transformace dat, které nelze snadno vrátit neoprávněnými uživateli. SQL Server umožňuje správcům a vývojářům vybrat si z několika algoritmů, včetně DES, Triple DES, TRIPLE_DES_3KEY, RC2, RC4, 128-bit RC4, DESX, 128-bit AES, 192-bit AES, a 256-bit AES |
 
-## <a id="ssis-signed"></a>Balíčky SSIS by měly být šifrované a digitálně podepsané
+## <a name="ssis-packages-should-be-encrypted-and-digitally-signed"></a><a id="ssis-signed"></a>Balíčky SSIS by měly být šifrovány a digitálně
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | [Identifikace zdroje balíčků s digitálními podpisy](https://msdn.microsoft.com/library/ms141174.aspx), [zmírnění hrozeb a ohrožení zabezpečení (integrační služby)](https://msdn.microsoft.com/library/bb522559.aspx) |
-| **Kroky** | Zdroj balíčku je jednotlivec nebo organizace, které balíček vytvořily. Spuštění balíčku z neznámého nebo nedůvěryhodného zdroje může být riskantní. Aby se zabránilo neoprávněné manipulaci s balíčky SSIS, měli byste použít digitální podpisy. Aby bylo zajištěno utajení balíčků během úložiště nebo přenosu, musí být balíčky SSIS zašifrované |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Identifikace zdroje balíčků s digitálními podpisy](https://msdn.microsoft.com/library/ms141174.aspx), [ohrožení a zmírnění zranitelnosti (Integrační služby)](https://msdn.microsoft.com/library/bb522559.aspx) |
+| **Kroky** | Zdrojem balíčku je jednotlivec nebo organizace, která balíček vytvořila. Spuštění balíčku z neznámého nebo nedůvěryhodného zdroje může být riskantní. Aby se zabránilo neoprávněné neoprávněné manipulaci s balíčky SSIS, měly by být použity digitální podpisy. Aby byla zajištěna důvěrnost balíků během skladování/přepravy, musí být balíky SSIS šifrovány |
 
-## <a id="securables-db"></a>Přidat digitální podpis do důležitých zabezpečených databází
+## <a name="add-digital-signature-to-critical-database-securables"></a><a id="securables-db"></a>Přidání digitálního podpisu do důležitých databázových seřizovatelných
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | [PŘIDAT podpis (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
-| **Kroky** | V případech, kdy je nutné ověřit integritu důležité databáze, je třeba použít digitální podpisy. Zabezpečitelné databáze, jako je uložená procedura, funkce, sestavení nebo Trigger, mohou být digitálně podepsány. Níže je uveden příklad, kdy může být užitečné: Dejte nám k dispozici software ISV (nezávislý dodavatel softwaru), který poskytuje podporu softwaru poskytovaného jednomu ze svých zákazníků. Před poskytnutím podpory by ISV chtěla zajistit, že databáze zabezpečená v softwaru nebyla úmyslně poškozená ani omylem nebo škodlivým pokusem. Pokud je zabezpečitelný podpis digitálně podepsaný, ISV může ověřit jeho digitální podpis a ověřit jeho integritu.| 
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [PŘIDAT PODPIS (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
+| **Kroky** | V případech, kdy musí být ověřena integrita kritické databáze, by měly být použity digitální podpisy. Databáze securables, jako je například uložená procedura, funkce, sestavení nebo aktivační událost mohou být digitálně podepsány. Níže je uveden příklad, kdy to může být užitečné: Řekněme, že nezávislý dodavatel softwaru (ISV) poskytl podporu softwaru dodaného jednomu z jejich zákazníků. Před poskytnutím podpory by isv chtít zajistit, aby databáze sevyléčitelná v softwaru nebyla zfalšována omylem nebo škodlivým pokusem. Pokud je sekuritivitelný digitálně podepsán, může isv ověřit svůj digitální podpis a ověřit jeho integritu.| 
 
-## <a id="ekm-keys"></a>Použití SQL serveru EKM k ochraně šifrovacích klíčů
+## <a name="use-sql-server-ekm-to-protect-encryption-keys"></a><a id="ekm-keys"></a>Použití SQL server EKM k ochraně šifrovacích klíčů
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | [SQL Server Extensible Key Management (EKM)](https://msdn.microsoft.com/library/bb895340), [rozšiřitelná správa klíčů pomocí Azure Key Vault (SQL Server)](https://msdn.microsoft.com/library/dn198405) |
-| **Kroky** | SQL Server rozšiřitelná Správa klíčů umožňuje šifrovací klíče, které chrání soubory databáze, aby byly uložené v nechráněném zařízení, jako je čipová karta, zařízení USB nebo modul EKM/HSM. Tato možnost také umožňuje ochranu dat od správců databáze (s výjimkou členů skupiny sysadmin). Data je možné šifrovat pomocí šifrovacích klíčů, ke kterým má přístup jenom uživatel databáze, k externímu modulu EKM/HSM. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Rozšiřitelná správa klíčů SQL Serveru (EKM)](https://msdn.microsoft.com/library/bb895340), [rozšiřitelná správa klíčů pomocí trezoru klíčů Azure (SQL Server)](https://msdn.microsoft.com/library/dn198405) |
+| **Kroky** | Rozšiřitelná správa klíčů sql serveru umožňuje ukládání šifrovacích klíčů, které chrání databázové soubory, v off-boxovém zařízení, jako je karta SmartCard, zařízení USB nebo modul EKM/HSM. To také umožňuje ochranu dat před správci databáze (s výjimkou členů skupiny sysadmin). Data lze šifrovat pomocí šifrovacích klíčů, ke kterým má přístup pouze uživatel databáze v externím modulu EKM/HSM. |
 
-## <a id="keys-engine"></a>Použít funkci AlwaysEncrypted, pokud by se šifrovací klíče neměly vyvažovat do databázového stroje
+## <a name="use-alwaysencrypted-feature-if-encryption-keys-should-not-be-revealed-to-database-engine"></a><a id="keys-engine"></a>Funkce AlwaysEncrypted použijte, pokud by šifrovací klíče neměly být zjevovány databázovému stroji.
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | SQL Azure, OnPrem |
-| **Atributy**              | SQL verze – V12, MsSQL2016 |
-| **Odkazy**              | [Always Encrypted (databázový stroj)](https://msdn.microsoft.com/library/mt163865) |
-| **Kroky** | Always Encrypted je funkce navržená tak, aby chránila citlivá data, jako jsou čísla kreditních karet nebo národní identifikační čísla (např. čísla sociálního pojištění USA) uložená v databázích Azure SQL Database nebo SQL Server. Always Encrypted umožňuje klientům šifrovat citlivá data v klientských aplikacích a nikdy Neodhalovat šifrovací klíče databázovému stroji (SQL Database nebo SQL Server). V důsledku toho Always Encrypted poskytuje oddělení mezi osobami, které data vlastní (a můžou zobrazit), a osobami, které data spravují (ale nemají přístup). |
+| **Atributy**              | VERZE SQL - V12, MsSQL2016 |
+| **Odkazy**              | [Vždy šifrované (databázový stroj)](https://msdn.microsoft.com/library/mt163865) |
+| **Kroky** | Vždy šifrované je funkce určená k ochraně citlivých dat, jako jsou čísla kreditních karet nebo národní identifikační čísla (např. čísla sociálního pojištění v USA), uložená v databázích Azure SQL Database nebo SQL Server. Vždy šifrované umožňuje klientům šifrovat citlivá data uvnitř klientských aplikací a nikdy odhalit šifrovací klíče databázového stroje (SQL Database nebo SQL Server). V důsledku toho vždy šifrované poskytuje oddělení mezi těmi, kteří vlastní data (a mohou je zobrazit) a těmi, kteří spravují data (ale neměli by mít přístup) |
 
-## <a id="keys-iot"></a>Bezpečné ukládání kryptografických klíčů na zařízení IoT
+## <a name="store-cryptographic-keys-securely-on-iot-device"></a><a id="keys-iot"></a>Bezpečné ukládání kryptografických klíčů na zařízení IoT
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Zařízení IoT | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Operační systém zařízení – Windows IoT Core, připojení zařízení – sady SDK pro zařízení Azure IoT |
-| **Odkazy**              | [TPM ve Windows IoT Core](https://developer.microsoft.com/windows/iot/docs/tpm), [Nastavení čipu TPM v systému Windows IoT Core](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm), [čip TPM sady SDK pro zařízení Azure IoT](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
-| **Kroky** | Symetrický nebo soukromý klíč certifikátu je bezpečně v úložišti chráněném hardwarem, jako je čip TPM nebo čipy čipových karet. Windows 10 IoT Core podporuje uživatele TPM a existuje několik kompatibilních čipy TPM, které je možné použít: https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm. Doporučuje se použít firmware nebo diskrétní čip TPM. ČIP TPM softwaru by se měl používat jenom pro účely vývoje a testování. Jakmile bude čip TPM k dispozici a klíče jsou v něm zřízeny, kód, který vygeneruje token, by měl být napsán bez pevného kódování jakýchkoli citlivých informací. | 
+| **Atributy**              | Operační systém zařízení – jádro Windows IoT Core, připojení zařízení – sady SDK pro zařízení Azure IoT |
+| **Odkazy**              | [Čip TPM v jádru Windows IoT](https://developer.microsoft.com/windows/iot/docs/tpm), [Nastavení čipu TPM na jádru Windows IoT Core](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm), [Čip TPM sady Azure IoT Device SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
+| **Kroky** | Symetrické klíče nebo soukromé klíče certifikátu bezpečně v hardwarově chráněném úložišti, jako jsou čipy TPM nebo Čipové karty. Windows 10 IoT Core podporuje uživatele čipu TPM a existuje několik kompatibilních tpms, které lze použít: https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm. Doporučujeme používat firmware nebo diskrétní čip TPM. Čip TPM softwaru by měl být používán pouze pro účely vývoje a testování. Jakmile je čip TPM k dispozici a klíče jsou v něm zřízeny, kód, který generuje token by měl být zapsán bez pevného kódování žádné citlivé informace v něm. | 
 
 ### <a name="example"></a>Příklad
 ```
@@ -187,59 +187,59 @@ string sasToken = myDevice.GetSASToken();
 
 var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. CreateAuthenticationWithToken(deviceId, sasToken), TransportType.Amqp); 
 ```
-Jak vidíte, primární klíč zařízení není v kódu přítomen. Místo toho je uložen v čipu TPM na pozici 0. Zařízení TPM generuje krátkodobý token SAS, který se pak použije pro připojení k IoT Hub. 
+Jak je vidět, primární klíč zařízení není k dispozici v kódu. Místo toho je uložen v čipu TPM na slotu 0. Zařízení TPM generuje krátkodobý token SAS, který se pak používá k připojení k centru IoT Hub. 
 
-## <a id="random-hub"></a>Vygenerujte náhodný symetrický klíč dostatečné délky pro ověřování IoT Hub
+## <a name="generate-a-random-symmetric-key-of-sufficient-length-for-authentication-to-iot-hub"></a><a id="random-hub"></a>Generovat náhodný symetrický klíč dostatečné délky pro ověřování do služby IoT Hub
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | IoT Cloud Gateway | 
+| **Komponenta**               | Cloudová brána IoT | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Volba brány – Azure IoT Hub |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | IoT Hub obsahuje registr identit zařízení a při zřizování zařízení automaticky generuje náhodný symetrický klíč. K vygenerování klíče používaného pro ověřování se doporučuje použít tuto funkci registru Azure IoT Hub identity. IoT Hub také umožňuje zadat klíč při vytváření zařízení. Pokud se klíč generuje mimo IoT Hub během zřizování zařízení, doporučuje se vytvořit náhodný symetrický klíč nebo aspoň 256 bitů. |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | IoT Hub obsahuje registr identit zařízení a při zřizování zařízení automaticky generuje náhodný symetrický klíč. Doporučujeme použít tuto funkci registru identit služby Azure IoT Hub ke generování klíče používaného k ověřování. IoT Hub také umožňuje zadat klíč při vytváření zařízení. Pokud je klíč generován mimo IoT Hub během zřizování zařízení, doporučuje se vytvořit náhodný symetrický klíč nebo alespoň 256 bitů. |
 
-## <a id="pin-remote"></a>Ujistěte se, že zásady správy zařízení jsou zavedeny, které vyžadují použití PIN a umožňují vzdálené vymazání.
+## <a name="ensure-a-device-management-policy-is-in-place-that-requires-a-use-pin-and-allows-remote-wiping"></a><a id="pin-remote"></a>Ujistěte se, že jsou zavedeny zásady správy zařízení, které vyžadují použití kódu PIN a umožňují vzdálené vymazání
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Mobilní klient Dynamics CRM | 
+| **Komponenta**               | Mobilní klient Aplikace Dynamics CRM | 
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | Ujistěte se, že zásady správy zařízení jsou zavedeny, které vyžadují použití PIN a umožňují vzdálené vymazání. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Ujistěte se, že jsou zavedeny zásady správy zařízení, které vyžadují použití kódu PIN a umožňují vzdálené vymazání |
 
-## <a id="bitlocker"></a>Zajistěte, aby byly nastavené zásady správy zařízení, které vyžadují PIN/heslo nebo automatické uzamčení a šifrují všechna data (např. BitLocker).
+## <a name="ensure-a-device-management-policy-is-in-place-that-requires-a-pinpasswordauto-lock-and-encrypts-all-data-eg-bitlocker"></a><a id="bitlocker"></a>Ujistěte se, že jsou zavedeny zásady správy zařízení, které vyžadují zámek PIN/heslo/auto, a šifruje všechna data (např.
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Klient Dynamics CRM pro Outlook | 
+| **Komponenta**               | Klient aplikace Dynamics CRM Outlook | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | Zajistěte, aby byly nastavené zásady správy zařízení, které vyžadují PIN/heslo nebo automatické uzamčení a šifrují všechna data (např. BitLocker). |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Ujistěte se, že jsou zavedeny zásady správy zařízení, které vyžadují zámek PIN/heslo/auto, a šifruje všechna data (např. |
 
-## <a id="rolled-server"></a>Zajistěte, aby se při použití serveru identity převzaly podpisové klíče.
+## <a name="ensure-that-signing-keys-are-rolled-over-when-using-identity-server"></a><a id="rolled-server"></a>Ujistěte se, že podpisové klíče jsou převráceny při použití serveru identity
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Server identit | 
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | [Server identity – klíče, podpisy a kryptografie](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) |
-| **Kroky** | Zajistěte, aby se při použití serveru identity převzaly podpisové klíče. Odkaz v části odkazy vysvětluje, jak by se to mělo naplánovat, aniž by to mělo za následek výpadkům aplikací, které se spoléhají na server identit. |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Identity Server - klíče, podpisy a kryptografie](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) |
+| **Kroky** | Ujistěte se, že podpisové klíče jsou vráceny při použití serveru identity. Odkaz v části odkazy vysvětluje, jak by to mělo být plánováno, aniž by došlo k výpadkům aplikací mj. |
 
-## <a id="client-server"></a>Ujistěte se, že kryptograficky silné ID klienta se používá na serveru identity.
+## <a name="ensure-that-cryptographically-strong-client-id-client-secret-are-used-in-identity-server"></a><a id="client-server"></a>Ujistěte se, že kryptograficky silné ID klienta, tajný klíč klienta se používají v Identity Server
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Server identit | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Ujistěte se, že kryptograficky silné ID klienta se používá na serveru identit. Při generování ID klienta a tajného klíče byste měli použít následující pokyny:</p><ul><li>Vygenerovat náhodný identifikátor GUID jako ID klienta</li><li>Generovat kryptograficky náhodný 256 bitový klíč jako tajný kód</li></ul>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | <p>Ujistěte se, že kryptograficky silné ID klienta, tajný klíč klienta se používají v Identity Server. Při generování ID klienta a tajného klíče by měly být použity následující pokyny:</p><ul><li>Generovat náhodný identifikátor GUID jako ID klienta</li><li>Generovat kryptograficky náhodný 256bitový klíč jako tajný klíč</li></ul>|

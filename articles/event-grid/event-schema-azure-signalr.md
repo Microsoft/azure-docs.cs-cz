@@ -1,6 +1,6 @@
 ---
-title: Schéma událostí služby Azure Event Grid Azure SignalR
-description: Popisuje vlastnosti, které jsou k dispozici pro Azure SignalR událostí pomocí služby Azure Event Grid
+title: Schéma událostí Azure SignalR Azure
+description: Popisuje vlastnosti, které jsou k dispozici pro události Azure SignalR s Azure Event Grid
 services: event-grid
 author: chenyl
 ms.service: event-grid
@@ -8,29 +8,29 @@ ms.topic: reference
 ms.date: 06/11/2019
 ms.author: chenyl
 ms.openlocfilehash: 3b072ff2b680ad6d144c7441190ab2df9870f5d0
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67789069"
 ---
-# <a name="azure-event-grid-event-schema-for-signalr-service"></a>Schéma událostí Azure Event Grid pro služby SignalR
+# <a name="azure-event-grid-event-schema-for-signalr-service"></a>Schéma událostí Azure Event Grid pro službu SignalR
 
-Tento článek obsahuje vlastnosti a schéma pro události služby SignalR. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma událostí služby SignalR.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
 
 
-## <a name="available-event-types"></a>Typy událostí k dispozici
+## <a name="available-event-types"></a>Dostupné typy událostí
 
-Služba SignalR generuje následující typy událostí:
+Služba SignalR vydává následující typy událostí:
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.SignalRService.ClientConnectionConnected | Vyvolá se při připojení klienta. |
-| Microsoft.SignalRService.ClientConnectionDisconnected | Vyvolá se při odpojení připojení klienta. |
+| Připojení Microsoft.SignalRService.ClientConnection | Je aktivována při připojení klienta. |
+| Microsoft.SignalRService.ClientConnectionOdpojeno | Je aktivována při odpojení připojení klienta. |
 
 ## <a name="example-event"></a>Příklad události
 
-Následující příklad ukazuje schématu klienta připojení připojené události: 
+Následující příklad ukazuje schéma události připojeného k připojení klienta: 
 
 ```json
 [{
@@ -50,7 +50,7 @@ Následující příklad ukazuje schématu klienta připojení připojené udál
 }]
 ```
 
-Schéma pro událost odpojené připojení klienta je podobné: 
+Schéma pro událost odpojeného připojení klienta je podobné: 
 
 ```json
 [{
@@ -73,30 +73,30 @@ Schéma pro událost odpojené připojení klienta je podobné:
 
 ## <a name="event-properties"></a>Vlastnosti události
 
-Událost má následující dat nejvyšší úrovně:
+Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| topic | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| subject | řetězec | Vydavatel definované cesta předmět události. |
-| eventType | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
-| eventTime | řetězec | Vygenerování události podle času UTC poskytovatele. |
-| id | řetězec | Jedinečný identifikátor pro událost. |
-| data | objekt | Data události služby SignalR. |
-| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel Určuje verzi schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události. Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| téma | řetězec | Úplná cesta k prostředku ke zdroji události. Toto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| Předmět | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| Eventtype | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy je událost generována na základě času UTC zprostředkovatele. |
+| id | řetězec | Jedinečný identifikátor události |
+| data | objekt | Data událostí signalr service. |
+| dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
+| metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| timestamp | řetězec | Vygenerování události podle času UTC poskytovatele. |
-| hubName | řetězec | Rozbočovač, který patří připojení klienta. |
+| časové razítko | řetězec | Čas, kdy je událost generována na základě času UTC zprostředkovatele. |
+| název hubu | řetězec | Rozbočovač, ke kterému patří připojení klienta. |
 | connectionId | řetězec | Jedinečný identifikátor pro připojení klienta. |
-| userId | řetězec | Identifikátor uživatele podle deklarací identity. |
-| errorMessage | řetězec | Chyba, která způsobí odpojení připojení. |
+| userId | řetězec | Identifikátor uživatele definovaný v deklaraci. |
+| Errormessage | řetězec | Chyba, která způsobuje odpojení připojení. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Úvod do služby Azure Event Grid najdete v tématu [novinky služby Event Grid?](overview.md)
-* Další informace o vytváření předplatného služby Azure Event Grid najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Úvod do Služby Azure Event Grid najdete v tématu [Co je event grid?](overview.md)
+* Další informace o vytvoření předplatného Služby Azure Event Grid najdete v [tématu schéma předplatného služby Event Grid](subscription-creation-schema.md).

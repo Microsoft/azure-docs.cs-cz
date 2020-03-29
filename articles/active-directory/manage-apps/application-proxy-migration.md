@@ -1,6 +1,6 @@
 ---
-title: Upgrade na Azure AD Application Proxy | Dokumentace Microsoftu
-description: Vyberte řešení, které proxy je vhodná, pokud provádíte upgrade z Microsoft Forefront nebo sjednocené brány přístup.
+title: Upgrade na proxy aplikace Azure AD | Dokumenty společnosti Microsoft
+description: Zvolte, které proxy řešení je nejlepší, pokud upgradujete z Microsoft Forefront nebo Unified Access Gateway.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,51 +17,51 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4790dc7ebeeee3407e89bcf38d7e3f25699ed328
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67108414"
 ---
 # <a name="compare-remote-access-solutions"></a>Porovnání řešení vzdáleného přístupu
 
-Azure Active Directory Application Proxy je jednou ze dvou řešení vzdáleného přístupu, které nabízí Microsoft. Druhá je Proxy webových aplikací, na místní verzi. Tyto dvě řešení nahradit starší produkty, které Microsoft nabízí: Microsoft Forefront Threat Management Gateway (TMG) a jednotný přístup brány (UAG). Pomocí tohoto článku můžete pochopit, jak porovnat tyto čtyři řešení k sobě navzájem. Pro ty z vás pořád používá zastaralý TMG nebo UAG řešení použijte tento článek abyste mohli naplánovat vaši migraci do jednoho proxy aplikací. 
+Azure Active Directory Application Proxy je jedním ze dvou řešení vzdáleného přístupu, které Microsoft nabízí. Druhý je proxy webové aplikace, místní verze. Tato dvě řešení nahrazují dřívější produkty, které společnost Microsoft nabízela: Microsoft Forefront Threat Management Gateway (TMG) a Unified Access Gateway (UAG). Pomocí tohoto článku pochopit, jak tyto čtyři řešení ve vzájemném porovnání. Pro ty z vás, kteří stále používají zastaralé řešení TMG nebo UAG, použijte tento článek, který vám pomůže naplánovat migraci na jeden z proxy aplikací. 
 
 
 ## <a name="feature-comparison"></a>Porovnání funkcí
 
-Tato tabulka slouží k pochopení, jak porovnat Threat Management Gateway (TMG), sjednocené brány přístup (UAG), Proxy webových aplikací (WAP) a Azure AD Application proxy server (AP) k sobě navzájem.
+V této tabulce můžete pochopit, jak se brána pro správu hrozeb (TMG), sjednocená přístupová brána (UAG), proxy webové aplikace (WAP) a proxy aplikace Azure AD (AP) vzájemně porovnávají.
 
-| Funkce | TMG | UAG | WAP | AP |
+| Funkce | Tmg | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
-| Ověřování certifikátem | Ano | Ano | - | - |
-| Selektivně publikovat prohlížečových aplikací | Ano | Ano | Ano | Ano |
+| Ověření certifikátu | Ano | Ano | - | - |
+| Selektivně publikovat aplikace prohlížeče | Ano | Ano | Ano | Ano |
 | Předběžné ověřování a jednotné přihlašování | Ano | Ano | Ano | Ano | 
-| Vrstvy 2 nebo 3 brány firewall | Ano | Ano | - | - |
-| Předat možnosti proxy | Ano | - | - | - |
-| Funkce sítě VPN | Ano | Ano | - | - |
-| Podpora bohaté možnosti protokolu | - | Ano | Ano, pokud spuštění přes protokol HTTP | Ano, pokud používáte přes protokol HTTP nebo prostřednictvím brány vzdálené plochy |
-| Slouží jako server proxy služby ADFS | - | Ano | Ano | - |
-| Jeden portál pro přístup k aplikaci | - | Ano | - | Ano |
-| Překlad odkazu tělo odpovědi | Ano | Ano | - | Ano | 
-| Ověřování pomocí hlavičky | - | Ano | - | Ano, pingaccessu | 
+| Brána firewall vrstvy 2/3 | Ano | Ano | - | - |
+| Možnosti předávání proxy serveru | Ano | - | - | - |
+| Možnosti sítě VPN | Ano | Ano | - | - |
+| Podpora bohatého protokolu | - | Ano | Ano, pokud běží přes HTTP | Ano, pokud běžíte přes protokol HTTP nebo přes bránu vzdálené plochy |
+| Slouží jako proxy server ADFS | - | Ano | Ano | - |
+| Jeden portál pro přístup k aplikacím | - | Ano | - | Ano |
+| Překlad odkazu na tělo odpovědi | Ano | Ano | - | Ano | 
+| Ověřování pomocí záhlaví | - | Ano | - | Ano, s pingaccessem | 
 | Zabezpečení v cloudovém měřítku | - | - | - | Ano | 
 | Podmíněný přístup | - | Ano | - | Ano |
-| Žádné součásti v demilitarizovaná zóna (DMZ) | - | - | - | Ano |
+| Žádné součásti v demilitarizované zóně (DMZ) | - | - | - | Ano |
 | Žádná příchozí připojení | - | - | - | Ano |
 
-Pro většinu scénářů doporučujeme jako moderní řešení Azure AD Application Proxy. Proxy webových aplikací je pouze upřednostňované ve scénářích, které vyžadují proxy server pro službu AD FS a nemůžete použít vlastní domény ve službě Azure Active Directory. 
+Pro většinu scénářů doporučujeme jako moderní řešení proxy aplikace Azure AD. Proxy webové aplikace je upřednostňovaný jenom ve scénářích, které vyžadují proxy server pro službu AD FS, a vlastní domény ve službě Azure Active Directory nelze používat. 
 
-Proxy aplikací Azure AD nabízí jedinečné výhody ve srovnání s podobné produkty Microsoftu, včetně:
+Azure AD Application Proxy nabízí jedinečné výhody ve srovnání s podobnými produkty, včetně:
 
-- Rozšíření Azure AD a místní prostředky
-   - Zabezpečení cloudových a ochrany
-   - Funkce, jako je podmíněný přístup a vícefaktorového ověřování se dají snadno povolit
-- Žádné součásti v demilitarizovaná zóna
-- Žádná příchozí připojení vyžaduje
-- Jeden přístupovém panelu, že vaši uživatelé lze použít pro všechny své aplikace, včetně O365, aplikacím SaaS integrované služby Azure AD a místní webové aplikace. 
+- Rozšíření Azure AD na místní prostředky
+   - Zabezpečení a ochrana v cloudovém měřítku
+   - Funkce, jako je podmíněný přístup a vícefaktorové ověřování, lze snadno povolit
+- Žádné součásti v demilitarizované zóně
+- Není vyžadováno žádné příchozí připojení.
+- Jeden přístupový panel, na který můžou uživatelé přejít pro všechny své aplikace, včetně O365, integrovaných aplikací SaaS azure a místních webových aplikací. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Pomocí aplikace Azure AD poskytovat zabezpečený vzdálený přístup k místním aplikacím](application-proxy.md)
+- [Použití aplikace Azure AD k zajištění zabezpečeného vzdáleného přístupu k místním aplikacím](application-proxy.md)

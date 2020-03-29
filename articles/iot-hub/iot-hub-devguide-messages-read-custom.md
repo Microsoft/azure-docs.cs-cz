@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení vlastní koncové body služby Azure IoT Hub | Dokumentace Microsoftu
-description: Příručka pro vývojáře – použití směrování dotazů pro směrování zpráv typu zařízení cloud do vlastní koncové body.
+title: Principy vlastních koncových bodů služby Azure IoT Hub | Dokumenty společnosti Microsoft
+description: Průvodce pro vývojáře – pomocí směrovacích dotazů směrovat zprávy mezi zařízeními cloud do vlastních koncových bodů.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,53 +9,53 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61244340"
 ---
-# <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Použití vlastních koncových bodů a směrování zpráv pro zprávy typu zařízení cloud
+# <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Použití tras zpráv a vlastních koncových bodů pro zprávy mezi zařízeními a cloudy
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT Hub [směrování zpráv](iot-hub-devguide-routing-query-syntax.md) umožňuje uživatelům pro směrování zpráv typu zařízení cloud do koncových bodů služby přístupem. Směrování umožňuje dotazování funkce k filtrování dat před směrování do koncových bodů. Každý směrování dotazů, které nakonfigurujete má následující vlastnosti:
+Směrování zpráv [služby](iot-hub-devguide-routing-query-syntax.md) IoT Hub umožňuje uživatelům směrovat zprávy mezi zařízeními do cloudu do koncových bodů orientovaných na služby. Směrování také poskytuje možnost dotazování filtrovat data před směrováním do koncových bodů. Každý nakonfigurovaní směrovací dotaz má následující vlastnosti:
 
 | Vlastnost      | Popis |
 | ------------- | ----------- |
-| **Název**      | Jedinečný název, který identifikuje dotazu. |
-| **Zdroj**    | Původ datového streamu do reagovali na ni. Například telemetrii zařízení. |
-| **Podmínka** | Výraz dotazu pro směrování dotaz, který se spustí aplikace vlastnosti zprávy, vlastnosti systému, text zprávy, značky dvojčat zařízení a vlastnosti dvojčete zařízení k určení, zda je shoda pro koncový bod. Další informace o vytváření dotazu, najdete v části Viz [zprávy syntaxi dotazů směrování](iot-hub-devguide-routing-query-syntax.md) |
-| **Koncový bod**  | Název koncového bodu, kde služby IoT Hub odesílá zprávy, které odpovídají dotazu. Doporučujeme, abyste zvolili koncový bod ve stejné oblasti jako váš IoT hub. |
+| **Název**      | Jedinečný název, který identifikuje dotaz. |
+| **Zdroj**    | Původ datového toku, který má být řešen. Například telemetrie zařízení. |
+| **Podmínka** | Výraz dotazu pro směrovací dotaz, který je spuštěn proti vlastnostem aplikace zprávy, vlastnostem systému, textu zprávy, značky dvojčete zařízení a vlastnostem dvojčete zařízení, chcete-li zjistit, zda se shoduje s koncovým bodem. Další informace o vytvoření dotazu naleznete v tématu [syntaxe směrovacího dotazu zpráv](iot-hub-devguide-routing-query-syntax.md) |
+| **Koncový bod**  | Název koncového bodu, kde IoT Hub odesílá zprávy, které odpovídají dotazu. Doporučujeme zvolit koncový bod ve stejné oblasti jako vaše centrum IoT. |
 
-Jedna zpráva může odpovídat podmínku pro více směrování dotazů, ve kterých případu služby IoT Hub doručí do koncového bodu spojených s každou odpovídající dotaz. IoT Hub také automaticky deduplicates doručení zpráv, takže pokud zpráva odpovídá více dotazů, které mají stejný cíl, to je zapsat pouze jednou do tohoto cíle.
+Jedna zpráva může odpovídat podmínku na více směrovacích dotazů, v takovém případě Služba IoT Hub doručuje zprávu do koncového bodu přidruženého ke každému spárovanému dotazu. IoT Hub také automaticky deduplikuje doručení zpráv, takže pokud zpráva odpovídá více dotazů, které mají stejný cíl, je zapsán pouze jednou do tohoto cíle.
 
 ## <a name="endpoints-and-routing"></a>Koncové body a směrování
 
-Služby IoT hub má výchozí [integrovaný koncový bod](iot-hub-devguide-messages-read-builtin.md). Můžete vytvořit vlastní koncové body pro směrování zpráv propojením dalších služeb v rámci vašeho předplatného k rozbočovači. IoT Hub aktuálně podporuje kontejnery služby Azure Storage, služby Event Hubs, fronty Service Bus a témat Service Bus jako vlastní koncové body.
+Centrum IoT má výchozí [předdefinovaný koncový bod](iot-hub-devguide-messages-read-builtin.md). Můžete vytvořit vlastní koncové body pro směrování zpráv pomocí propojení jiných služeb ve vašem předplatném do centra. Služba IoT Hub aktuálně podporuje kontejnery úložiště Azure, centra událostí, fronty service bus a témata služby Service Bus jako vlastní koncové body.
 
-Při použití směrování a vlastní koncové body zprávy pouze doručovaly do integrovaného koncového bodu pokud neodpovídají žádné dotazu. Doručení zprávy integrovaný koncový bod stejně jako vlastní koncový bod, přidejte trasu, která odesílá zprávy do vestavěné **události** koncového bodu.
+Při použití směrování a vlastní koncové body, zprávy jsou doručovány pouze do předdefinovaného koncového bodu, pokud se neshodují žádný dotaz. Chcete-li doručit zprávy do předdefinovaného koncového bodu i do vlastního koncového bodu, přidejte trasu, která odesílá zprávy do předdefinovaného koncového bodu **událostí.**
 
 > [!NOTE]
-> * Zápis dat do služby Azure Storage kontejnery jako objekty BLOB podporuje pouze službu IoT Hub.
-> * Fronty služby Service Bus a témat s **relace** nebo **duplicit** povoleny nejsou podporovány jako vlastní koncové body.
+> * Služba IoT Hub podporuje jenom zápis dat do kontejnerů Služby Azure Storage jako objekty BLOB.
+> * Fronty a témata služby Service Bus s povolenými **relacemi** nebo **zjišťováním duplicit** nejsou podporovány jako vlastní koncové body.
 
-Další informace o vytváření vlastních koncových bodů ve službě IoT Hub najdete v tématu [koncové body IoT Hubu](iot-hub-devguide-endpoints.md).
+Další informace o vytváření vlastních koncových bodů v centru IoT Hub najdete v tématu [koncové body centra IoT](iot-hub-devguide-endpoints.md).
 
-Další informace o čtení z vlastní koncové body naleznete v tématu:
+Další informace o čtení z vlastních koncových bodů najdete v tématu:
 
-* Čtení z [kontejnery služby Azure Storage](../storage/blobs/storage-blobs-introduction.md).
+* Čtení z [kontejnerů úložiště Azure](../storage/blobs/storage-blobs-introduction.md).
 
-* Čtení z [služby Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
+* Čtení z [centra událostí](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
 
-* Čtení z [fronty služby Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+* Čtení z [front služby Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
-* Čtení z [témat sběrnice Service Bus](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md).
+* Čtení z [témat služby Service Bus](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o koncových bodech služby IoT Hub najdete v tématu [koncové body IoT Hubu](iot-hub-devguide-endpoints.md).
+* Další informace o koncových bodech centra IoT Hub najdete v tématu [koncové body centra IoT](iot-hub-devguide-endpoints.md).
 
-* Další informace o dotazovací jazyk, která slouží k definování směrování dotazů najdete v tématu [syntaxi dotazů směrování zpráv](iot-hub-devguide-routing-query-syntax.md).
+* Další informace o jazyce dotazů, který používáte k definování směrovacích dotazů, naleznete [v tématu Syntaxe dotazu směrovacího dotazu zpráv](iot-hub-devguide-routing-query-syntax.md).
 
-* [Zpráv typu zařízení cloud procesu IoT Hubu pomocí tras](tutorial-routing.md) kurzu se dozvíte, jak pomocí směrování dotazů a vlastní koncové body.
+* Proces [IoT Hub zařízení cloud zprávy pomocí trasy](tutorial-routing.md) kurz ukazuje, jak používat směrovací dotazy a vlastní koncové body.

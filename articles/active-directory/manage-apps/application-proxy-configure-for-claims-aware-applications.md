@@ -1,6 +1,6 @@
 ---
-title: S deklaracemi identity aplikace – Proxy aplikací Azure AD | Dokumentace Microsoftu
-description: Jak publikovat místní aplikace ASP.NET, které přijímají deklarací služby AD FS pro zabezpečený vzdálený přístup vašich uživatelů.
+title: Aplikace podporující deklarace identity – proxy aplikace Azure AD | Dokumenty společnosti Microsoft
+description: Jak publikovat místní ASP.NET aplikace, které přijímají deklarace identity Služby ADFS pro zabezpečený vzdálený přístup uživatelů.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,46 +16,46 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbc5c356ea5a542fdc12b11aff236c56b146b3d5
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68477239"
 ---
-# <a name="working-with-claims-aware-apps-in-application-proxy"></a>Práce s deklaracemi identity aplikace v Proxy aplikací
-[S deklaracemi identity aplikace](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) provést přesměrování do tokenů zabezpečení služby (STS). Služba tokenů zabezpečení přihlašovacích údajů požádá uživatele výměnou za token a pak přesměruje uživatele k aplikaci. Existuje několik způsobů, jak povolit Proxy aplikace pro práci s těmito přesměrování. Tento článek slouží ke konfiguraci svého nasazení s deklaracemi identity aplikace. 
+# <a name="working-with-claims-aware-apps-in-application-proxy"></a>Práce s aplikacemi pracujícími s deklaracemi v proxy aplikaci
+[Aplikace podporující deklarace identity](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) provádějí přesměrování na službu tokenů zabezpečení (STS). STS požaduje pověření od uživatele výměnou za token a potom přesměruje uživatele do aplikace. Existuje několik způsobů, jak povolit proxy aplikace pro práci s těmito přesměrováními. Tento článek slouží ke konfiguraci nasazení pro aplikace podporující deklarace identity. 
 
 ## <a name="prerequisites"></a>Požadavky
-Ujistěte se, že je služba tokenů zabezpečení, které s deklaracemi identity aplikace přesměruje na mimo místní síť k dispozici. Můžete zpřístupnit služby STS zveřejnění prostřednictvím proxy serveru nebo tím, že externí připojení. 
+Ujistěte se, že STS, které aplikace podporující deklarace identity přesměruje na je k dispozici mimo místní síť. Můžete zpřístupnit STS vystavením prostřednictvím proxy serveru nebo povolením externích připojení. 
 
 ## <a name="publish-your-application"></a>Publikování aplikace
 
-1. Publikování aplikace podle pokynů v tématu [publikování aplikací pomocí Proxy aplikace](application-proxy-add-on-premises-application.md).
-2. Přejděte na stránku aplikace v portálu a vyberte **jednotného přihlašování**.
-3. Pokud jste zvolili **Azure Active Directory** jako vaše **metoda předběžného ověření**vyberte **Azure AD jednotné přihlašování zakázáno** jako vaše **interní Metoda ověřování**. Pokud jste zvolili **průchozí** jako vaše **metoda předběžného ověření**, nemusíte nic měnit.
+1. Publikujte svou žádost podle pokynů popsaných v části [Publikovat aplikace pomocí proxy aplikace](application-proxy-add-on-premises-application.md).
+2. Přejděte na stránku aplikace na portálu a vyberte **Možnost Jednotné přihlašování**.
+3. Pokud jste jako **metodu předběžného ověřování** **zvolili Službu Azure Active Directory** , vyberte možnost Jednotné **přihlašování Azure AD jako zakázaná** jako **metoda interního ověřování**. Pokud jste jako **metodu předběžného ověřování**zvolili **passthrough** , nemusíte nic měnit.
 
-## <a name="configure-adfs"></a>Konfigurace služby AD FS
+## <a name="configure-adfs"></a>Konfigurace služby ADF
 
-Konfigurace služby AD FS pro deklaracemi identity aplikace v jednom ze dvou způsobů. První je pomocí vlastních domén. Druhou je použití WS-Federation. 
+Službu ADFS pro aplikace podporující deklarace identity můžete nakonfigurovat jedním ze dvou způsobů. První je pomocí vlastních domén. Druhý je s WS-Federation. 
 
 ### <a name="option-1-custom-domains"></a>Možnost 1: Vlastní domény
 
-Pokud všechny interní adresy URL pro vaše aplikace jsou plně kvalifikované názvy domény (FQDN), pak můžete nakonfigurovat [vlastních domén](application-proxy-configure-custom-domain.md) pro vaše aplikace. Použijte vlastní domény k vytvoření externí adresy URL, které jsou stejné jako interní adresy URL. Když externí adresy URL odpovídají interní adresy URL, přesměrování služby tokenů zabezpečení fungovat, jestli vaši uživatelé jsou místní nebo vzdálené. 
+Pokud jsou všechny interní adresy URL pro vaše aplikace plně kvalifikované názvy domén (Plně kvalifikované domény), můžete pro své aplikace nakonfigurovat [vlastní domény.](application-proxy-configure-custom-domain.md) Vlastní domény slouží k vytváření externích adres URL, které jsou stejné jako interní adresy URL. Pokud se externí adresy URL shodují s interními adresami URL, přesměrování STS fungují bez ohledu na to, zda jsou uživatelé místní nebo vzdálení. 
 
-### <a name="option-2-ws-federation"></a>Možnost 2: WS-Federation
+### <a name="option-2-ws-federation"></a>Možnost 2: WS-Federace
 
-1. Otevřete správu služby AD FS.
-2. Přejděte na **vztahy důvěryhodnosti předávající strany**, klikněte pravým tlačítkem na aplikaci, které publikujete pomocí Proxy aplikace a zvolte **vlastnosti**.  
+1. Otevřete správu adfs.
+2. Přejděte na **seznam důvěryhodných certifikátů předávající strany**, klikněte pravým tlačítkem myši na aplikaci, kterou publikujete pomocí proxy aplikace, a zvolte **Vlastnosti**.  
 
-   ![Vztahy důvěryhodnosti předávající strany, klikněte pravým tlačítkem na název aplikace – snímek obrazovky](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
+   ![Předávající strana trusty pravým tlačítkem myši na název aplikace - snímek obrazovky](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
 
-3. Na **koncové body** ve skupině **typ koncového bodu**vyberte **WS-Federation**.
-4. V části **důvěryhodné adresy URL**, zadejte adresu URL, které jste zadali v Proxy aplikací v rámci **externí adresa URL** a klikněte na tlačítko **OK**.  
+3. Na kartě **Koncové body** v části **Typ koncového bodu**vyberte **ws-federation**.
+4. V části **Důvěryhodná adresa URL**zadejte adresu URL, kterou jste zadali do proxy aplikace v části **Externí adresa URL,** a klepněte na **tlačítko OK**.  
 
-   ![Přidání koncového bodu - nastavit hodnotu adresy URL důvěryhodných – snímek obrazovky](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
+   ![Přidání koncového bodu – nastavit hodnotu důvěryhodné adresy URL – snímek obrazovky](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
-## <a name="next-steps"></a>Další postup
-* [Povolení jednoduchého přihlášení na](configure-single-sign-on-non-gallery-applications.md) pro aplikace, které nejsou s deklaracemi identity
-* [Povolit nativní klientské aplikace pro interakci s proxy aplikací](application-proxy-configure-native-client-application.md)
+## <a name="next-steps"></a>Další kroky
+* [Povolení jednotného přihlášení](configure-single-sign-on-non-gallery-applications.md) pro aplikace, které neupozorní na deklarace identity
+* [Povolení interakce s aplikacemi proxy nativními klientskými aplikacemi](application-proxy-configure-native-client-application.md)
 
 

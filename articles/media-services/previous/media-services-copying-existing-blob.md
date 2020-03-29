@@ -1,6 +1,6 @@
 ---
-title: Kopírování objektů blob z účtu úložiště do prostředku Azure Media Services | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak zkopírovat existující objekt blob do prostředku služby Media. V příkladu se používá rozšíření Azure Media Services .NET SDK.
+title: Kopírování objektů BLOB z účtu úložiště do datového zdroje Azure Media Services | Dokumenty společnosti Microsoft
+description: Toto téma ukazuje, jak zkopírovat existující objekt blob do datového zdroje mediálních služeb. Příklad používá rozšíření Azure Media Services .NET SDK.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,45 +14,45 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: a1da207a295b40f8d455635d687083bf69e90fdf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67068894"
 ---
-# <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopírování existujících objektů BLOB do k Assetu Media Services
+# <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopírování existujících objektů BLOB do datového zdroje mediálních služeb
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
-Tento článek popisuje, jak kopírovat objekt BLOB z účtu úložiště do nového prostředku Azure Media Services (AMS) pomocí [rozšíření Azure Media Services .NET SDK](https://github.com/Azure/azure-sdk-for-media-services-extensions/).
+Tento článek ukazuje, jak zkopírovat objekty BLOB z účtu úložiště do nového datového zdroje Azure Media Services (AMS) pomocí [rozšíření Azure Media Services .NET SDK .](https://github.com/Azure/azure-sdk-for-media-services-extensions/)
 
-By se neměly pokoušet ke změně obsahu kontejnery objektů blob, které byly generovány službou Media Services bez použití rozhraní API služby Media.
+Neměli byste se pokoušet změnit obsah kontejnerů objektů blob, které byly generovány službou Media Services bez použití souborů API služby Media Service.
 
-Rozšiřující metody pracovat:
+Metody rozšíření pracují s:
 
-- Pravidelné prostředky.
-- Živý archív prostředky (FragBlob formátu).
-- Zdrojové a cílové prostředky, které patří do různých účtů Media Services (i v různých datových centrech). Může však být poplatky tímto způsobem. Další informace o cenách najdete v tématu [přenosy dat](https://azure.microsoft.com/pricing/#header-11).
+- Běžná aktiva.
+- Živé archivní prostředky (formát FragBlob).
+- Zdrojové a cílové datové zdroje, které patří k různým účtům Mediálních služeb (i v různých datových centrech). Mohou však být účtovány poplatky. Další informace o cenách naleznete v [tématu Přenosy dat](https://azure.microsoft.com/pricing/#header-11).
 
-Tento článek ukazuje dva příklady:
+Článek ukazuje dva ukázky kódu:
 
-1. Kopírovat objekt BLOB z prostředku v jednom účtu AMS do nového prostředku do jiného účtu AMS.
-2. Kopírovat objekt BLOB z některých účtu úložiště do nového prostředku do účtu AMS.
+1. Kopírování objektů BLOB z datového zdroje v jednom účtu AMS do nového datového zdroje v jiném účtu AMS.
+2. Zkopírujte objekty BLOB z některého účtu úložiště do nového datového zdroje v účtu AMS.
 
-## <a name="copy-blobs-between-two-ams-accounts"></a>Kopírování objektů BLOB mezi dva účty AMS  
+## <a name="copy-blobs-between-two-ams-accounts"></a>Kopírování objektů BLOB mezi dvěma účty AMS  
 
 ### <a name="prerequisites"></a>Požadavky
 
-Dva účty Media Services. Přečtěte si článek [postup vytvoření účtu Media Services](media-services-portal-create-account.md).
+Dva účty Mediálních služeb. V článku [Jak vytvořit účet mediálních služeb](media-services-portal-create-account.md).
 
 ### <a name="download-sample"></a>Stažení ukázky
-Můžete postupovat podle kroků v tomto článku nebo si můžete stáhnout ukázku, která obsahuje kód popsaný v tomto článku si [tady](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/).
+Můžete postupovat podle kroků v tomto článku nebo si můžete stáhnout ukázku, která obsahuje kód popsaný v tomto článku [zde](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/).
 
 ### <a name="set-up-your-project"></a>Nastavení projektu
 
-1. Nastavení vývojového prostředí, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
-2. Přidejte oddíl appSettings souboru .config a aktualizujte hodnoty na základě vašich účtů Media Services, cílový účet úložiště a ID zdroje asset.  
+1. Nastavte vývojové prostředí, jak je popsáno ve [vývoji mediálních služeb pomocí rozhraní .NET](media-services-dotnet-how-to-use.md). 
+2. Přidejte oddíl appSettings do souboru .config a aktualizujte hodnoty na základě účtů Mediálních služeb, cílového účtu úložiště a ID zdrojového prostředku.  
 
 ```xml
 <appSettings>
@@ -76,9 +76,9 @@ Můžete postupovat podle kroků v tomto článku nebo si můžete stáhnout uk�
 </appSettings>
 ```
 
-### <a name="copy-blobs-from-an-asset-in-one-ams-account-into-an-asset-in-another-ams-account"></a>Kopírovat objekt BLOB z prostředku v jednom účtu AMS do prostředku do jiného účtu AMS
+### <a name="copy-blobs-from-an-asset-in-one-ams-account-into-an-asset-in-another-ams-account"></a>Kopírování objektů BLOB z datového zdroje v jednom účtu AMS do datového zdroje v jiném účtu AMS
 
-Následující kód používá rozšíření **IAsset.Copy** zkopírujte všechny soubory v prostředku zdrojového do cílového prostředku pomocí jednu rozšiřující metodu.
+Následující kód používá metodu rozšíření **IAsset.Copy** ke kopírování všech souborů ve zdrojovém majetku do cílového datového zdroje pomocí jediné přípony.
 
 ```csharp
 using System;
@@ -158,17 +158,17 @@ namespace CopyExistingBlobsIntoAsset
 }
 ```
 
-## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>Kopírovat objekt BLOB z účtu úložiště do účtu AMS 
+## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>Kopírování objektů BLOB z účtu úložiště do účtu AMS 
 
 ### <a name="prerequisites"></a>Požadavky
 
-- Jeden účet úložiště, ze kterého chcete zkopírovat objekty BLOB.
-- Jeden účet AMS, do kterého chcete zkopírovat objekty BLOB.
+- Jeden účet úložiště, ze kterého chcete kopírovat objekty BLOB.
+- Jeden účet AMS, do kterého chcete kopírovat objekty BLOB.
 
 ### <a name="set-up-your-project"></a>Nastavení projektu
 
-1. Nastavení vývojového prostředí, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
-2. Přidejte oddíl appSettings souboru .config a aktualizujte hodnoty na základě vašeho zdrojového úložiště a cílový účtů AMS.
+1. Nastavte vývojové prostředí, jak je popsáno ve [vývoji mediálních služeb pomocí rozhraní .NET](media-services-dotnet-how-to-use.md). 
+2. Přidejte oddíl appSettings do souboru .config a aktualizujte hodnoty na základě zdrojového úložiště a cílových účtů AMS.
 
 ```xml
 <appSettings>
@@ -185,12 +185,12 @@ namespace CopyExistingBlobsIntoAsset
 </appSettings>
 ```
 
-### <a name="copy-blobs-from-some-storage-account-into-a-new-asset-in-an-ams-account"></a>Kopírovat objekt BLOB z některých účtu úložiště do nového prostředku do účtu AMS
+### <a name="copy-blobs-from-some-storage-account-into-a-new-asset-in-an-ams-account"></a>Kopírování objektů BLOB z některého účtu úložiště do nového datového zdroje v účtu AMS
 
-Následující kód zkopíruje objekty BLOB z účtu úložiště do prostředku služby Media Services. 
+Následující kód zkopíruje objekty BLOB z účtu úložiště do datového zdroje Služby Media Services. 
 
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace naleznete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 
 ```csharp
 using System;
@@ -375,13 +375,13 @@ namespace CopyExistingBlobsIntoAsset
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nyní můžete kódovat nahrané assety. Další informace najdete v tématu [Kódování assetů](media-services-portal-encode.md).
 
 Můžete také použít službu Azure Functions k aktivaci úlohy kódování při příchodu souboru do nakonfigurovaného kontejneru. Další informace najdete v [této ukázce](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby

@@ -1,6 +1,6 @@
 ---
-title: Stránka aplikace se nezobrazuje správně pro aplikaci proxy aplikace | Microsoft Docs
-description: Pokyny, když stránka se nezobrazuje správně v aplikačního proxy serveru mají integrované s Azure AD
+title: Stránka aplikace se nezobrazuje správně pro aplikaci Proxy aplikace | Dokumenty společnosti Microsoft
+description: Navádění, když se stránka nezobrazuje správně v aplikaci proxy aplikace, kterou jste integrovali s Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,28 +16,28 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13e73f0ed56648ce162f00d6df5e7b86a922ca01
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68381425"
 ---
-# <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Stránka aplikace se nezobrazuje správně pro aplikaci Proxy aplikací
+# <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Stránka aplikace se nezobrazuje správně pro aplikaci Proxy aplikace
 
-Tento článek pomůže při odstraňování problémů s aplikacemi Azure Active Directory Application Proxy, když přejdete na stránku, ale něco na stránce asi nebude správné.
+Tento článek vám pomůže vyřešit problémy s aplikacemi proxy aplikací služby Azure Active Directory při přechodu na stránku, ale něco na stránce nevypadá správně.
 
 ## <a name="overview"></a>Přehled
-Když publikujete aplikaci Proxy aplikací, jsou přístupné pouze stránky v kořenovém adresáři, při přístupu k aplikaci. Pokud na stránce se nezobrazuje správně, kořenové interní adresa URL pro aplikaci můžou chybět některé prostředky stránky. Pokud chcete vyřešit, ujistěte se, že jste publikovali *všechny* prostředky pro stránku v rámci vaší aplikace.
+Když publikujete aplikaci Proxy aplikace, jsou při přístupu k aplikaci přístupné pouze stránky pod kořenem. Pokud se stránka nezobrazuje správně, kořenová interní adresa URL použitá pro aplikaci pravděpodobně postrádá některé prostředky stránky. Chcete-li vyřešit, ujistěte se, že jste publikovali *všechny* prostředky pro stránku jako součást aplikace.
 
-Můžete ověřit, jestli se u chybějících prostředků jedná o problém, a to tak, že otevřete sledování sítě (například Fiddler nebo nástroje F12 v aplikaci Internet Explorer/Microsoft Edge), nanačítáte stránku a vyhledáte chyby 404. Který určuje současné době nelze najít a je potřeba publikovat je.
+Můžete ověřit, zda chybějící prostředky je problém otevřením nástroje sítě (například Šumař nebo F12 nástroje v aplikaci Internet Explorer/Microsoft Edge), načítání stránky a hledá 404 chyb. To znamená, že stránky, které jsou aktuálně nalezeny, nelze najít a že je nutné je publikovat.
 
-Jako příklad tento případ, se předpokládá jste publikovali aplikaci výdaje pomocí interní adresy URL `http://myapps/expenses`, ale aplikace používá šablony stylů `http://myapps/style.css`. V takovém případě šablony stylů není publikována ve vaší aplikaci, tak načítání aplikace výdaje vyvolat chybu 404 při pokusu o načtení style.css. V tomto příkladu se problém nevyřeší a publikujte aplikace s interní adresa URL `http://myapp/`.
+Jako příklad tohoto případu předpokládejme, že jste publikovali aplikaci pro výdaje pomocí interní adresy URL `http://myapps/expenses`, ale aplikace používá šablonu stylů `http://myapps/style.css`. V tomto případě šablona stylů není publikována ve vaší aplikaci, takže načítání aplikace výdaje vyvolat chybu 404 při pokusu o načtení style.css. V tomto příkladu je problém vyřešen publikováním `http://myapp/`aplikace s interní adresou URL .
 
-## <a name="problems-with-publishing-as-one-application"></a>Problémy s publikování jako jedna aplikace
+## <a name="problems-with-publishing-as-one-application"></a>Problémy s publikováním jako jedna aplikace
 
-Pokud není možné publikovat všechny prostředky v rámci stejné aplikaci, musíte publikovat více aplikací a povolit propojení mezi nimi.
+Pokud není možné publikovat všechny prostředky v rámci stejné aplikace, je třeba publikovat více aplikací a povolit propojení mezi nimi.
 
-Proto doporučujeme použít [vlastních domén](application-proxy-configure-custom-domain.md) řešení. Toto řešení vyžaduje však, že vlastní certifikát pro vaši doménu a vaše aplikace používat plně kvalifikované názvy domény (FQDN). Další možnosti najdete v článku [Poradce při potížích s nefunkční odkazy dokumentaci](application-proxy-page-links-broken-problem.md).
+Chcete-li tak učinit, doporučujeme použít řešení [vlastní domény.](application-proxy-configure-custom-domain.md) Toto řešení však vyžaduje, abyste certifikát pro vaši doménu vlastnili a aplikace používaly plně kvalifikované názvy domén (FQDN). Další možnosti naleznete v [dokumentaci k odstraňování nefunkčních odkazů](application-proxy-page-links-broken-problem.md).
 
-## <a name="next-steps"></a>Další postup
-[Publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md)
+## <a name="next-steps"></a>Další kroky
+[Publikování aplikací pomocí proxy aplikace služby Azure AD](application-proxy-add-on-premises-application.md)

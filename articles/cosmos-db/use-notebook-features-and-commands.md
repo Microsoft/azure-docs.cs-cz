@@ -1,45 +1,45 @@
 ---
-title: Použití integrovaných příkazů a funkcí poznámkového bloku v Azure Cosmos DB (Preview)
-description: Naučte se používat integrované příkazy a funkce k provádění běžných operací pomocí integrovaných poznámkových bloků Azure Cosmos DB.
+title: Použití integrovaných příkazů a funkcí poznámkového bloku v Azure Cosmos DB (preview)
+description: Zjistěte, jak používat integrované příkazy a funkce k běžným operacím pomocí integrovaných poznámkových bloků Azure Cosmos DB.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: dech
 ms.openlocfilehash: 61d46bbf0ccdeb5cd2e95e36e19f1aa81cfeeb48
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513395"
 ---
-# <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-preview"></a>Použití integrovaných příkazů a funkcí poznámkového bloku v Azure Cosmos DB (Preview)
+# <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-preview"></a>Použití integrovaných příkazů a funkcí poznámkového bloku v Azure Cosmos DB (preview)
 
-Integrované poznámkové bloky Jupyter v Azure Cosmos DB umožňují analyzovat a vizualizovat data z Azure Portal. Tento článek popisuje, jak provádět běžné operace s využitím integrovaných příkazů a funkcí poznámkového bloku.
+Integrované poznámkové bloky Jupyter v Azure Cosmos DB vám umožní analyzovat a vizualizovat data z webu Azure Portal. Tento článek popisuje, jak provádět běžné operace s využitím integrovaných příkazů a funkcí poznámkového bloku.
 
-## <a name="install-a-new-package"></a>Nainstalovat nový balíček
-Po povolení podpory poznámkových bloků pro účty Azure Cosmos můžete otevřít nový Poznámkový blok a nainstalovat balíček.
+## <a name="install-a-new-package"></a>Instalace nového balíčku
+Po povolení podpory poznámkových bloků pro vaše účty Azure Cosmos můžete otevřít nový poznámkový blok a nainstalovat balíček.
 
-Do nové buňky kódu vložte a spusťte následující kód nahrazující ``PackageToBeInstalled`` s požadovaným balíčkem Pythonu.
+V nové buňce kódu vložte a ``PackageToBeInstalled`` spusťte následující kód a nahraďte požadovaný balíček Pythonu.
 ```python
 import sys
 !{sys.executable} -m pip install PackageToBeInstalled –user
 ```
-Tento balíček bude k dispozici pro použití z libovolného poznámkového bloku v pracovním prostoru účet Azure Cosmos. 
+Tento balíček bude k dispozici pro použití z libovolného poznámkového bloku v pracovním prostoru účtu Azure Cosmos. 
 
 > [!TIP]
-> Pokud váš Poznámkový blok vyžaduje vlastní balíček, doporučujeme přidat do svého poznámkového bloku buňku pro instalaci balíčku, protože balíčky se odeberou, když [pracovní prostor resetujete](#reset-notebooks-workspace).  
+> Pokud poznámkový blok vyžaduje vlastní balíček, doporučujeme přidat do poznámkového bloku buňku pro instalaci balíčku, protože balíčky budou odebrány při [resetování pracovního prostoru](#reset-notebooks-workspace).  
 
-## <a name="run-a-sql-query"></a>Spustit dotaz SQL
+## <a name="run-a-sql-query"></a>Spuštění dotazu SQL
 
-Pomocí příkazu ``%%sql`` Magic můžete spustit [dotaz SQL](sql-query-getting-started.md) pro libovolný kontejner ve vašem účtu. Použijte syntaxi:
+Pomocí příkazu ``%%sql`` magic můžete spustit [dotaz SQL](sql-query-getting-started.md) proti libovolnému kontejneru ve vašem účtu. Použijte syntaxi:
 
 ```bash
 %%sql --database {database_id} --container {container_id}
 {Query text}
 ```
 
-- Nahraďte ``{database_id}`` a ``{container_id}`` názvem databáze a kontejneru v účtu Cosmos. Pokud nejsou zadány argumenty ``--database`` a ``--container``, dotaz bude proveden ve [výchozí databázi a kontejneru](#set-default-database-for-queries).
+- Nahraďte ``{database_id}`` a ``{container_id}`` s názvem databáze a kontejneru v účtu Cosmos. Pokud ``--database`` argumenty a ``--container`` nejsou k dispozici, dotaz bude proveden na [výchozí databázi a kontejneru](#set-default-database-for-queries).
 - Můžete spustit libovolný dotaz SQL, který je platný v Azure Cosmos DB. Text dotazu musí být na novém řádku.
 
 Například: 
@@ -47,18 +47,18 @@ Například:
 %%sql --database RetailDemo --container WebsiteData
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 ```
-Spuštěním ```%%sql?``` v buňce zobrazíte nápovědu k příkazu SQL Magic v poznámkovém bloku.
+Spuštěním ```%%sql?``` v buňce zobrazíte dokumentaci nápovědy pro příkaz SQL Magic v poznámkovém bloku.
 
-## <a name="run-a-sql-query-and-output-to-a-pandas-dataframe"></a>Spuštění dotazu a výstupu SQL do PANDAS dataframe
+## <a name="run-a-sql-query-and-output-to-a-pandas-dataframe"></a>Spuštění dotazu SQL a výstupu do datového rámce Pandas
 
-Výsledky ``%%sql``ho dotazu můžete vyvýstupovat do [PANDAS dataframe](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe). Použijte syntaxi: 
+Výsledky dotazu ``%%sql`` můžete vyvýstupu do [datového rámce Pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe). Použijte syntaxi: 
 
 ```bash
 %%sql --database {database_id} --container {container_id} --output {outputDataFrameVar}
 {Query text}
 ```
-- Nahraďte ``{database_id}`` a ``{container_id}`` názvem databáze a kontejneru v účtu Cosmos. Pokud nejsou zadány argumenty ``--database`` a ``--container``, dotaz bude proveden ve [výchozí databázi a kontejneru](#set-default-database-for-queries).
-- Nahraďte ``{outputDataFrameVar}`` názvem proměnné dataframe, která bude obsahovat výsledky.
+- Nahraďte ``{database_id}`` a ``{container_id}`` s názvem databáze a kontejneru v účtu Cosmos. Pokud ``--database`` argumenty a ``--container`` nejsou k dispozici, dotaz bude proveden na [výchozí databázi a kontejneru](#set-default-database-for-queries).
+- Nahraďte ``{outputDataFrameVar}`` názvem proměnné DataFrame, která bude obsahovat výsledky.
 - Můžete spustit libovolný dotaz SQL, který je platný v Azure Cosmos DB. Text dotazu musí být na novém řádku. 
 
 Například:
@@ -83,14 +83,14 @@ df_cosmos.head(10)
 9   Viewed  14.00   Cape Verde  Flip Flop Shoes
 ```
 ## <a name="upload-json-items-to-a-container"></a>Nahrání položek JSON do kontejneru
-K nahrání dat ze souboru JSON do zadaného kontejneru Azure Cosmos můžete použít příkaz ``%%upload`` Magic. Následující příkaz slouží k nahrání položek:
+Příkaz ``%%upload`` magic můžete použít k nahrání dat ze souboru JSON do zadaného kontejneru Azure Cosmos. K nahrání položek použijte následující příkaz:
 
 ```bash
 %%upload --databaseName {database_id} --containerName {container_id} --url {url_location_of_file}
 ```
 
-- Nahraďte ``{database_id}`` a ``{container_id}`` názvem databáze a kontejneru v účtu Azure Cosmos. Pokud nejsou zadány argumenty ``--database`` a ``--container``, dotaz bude proveden ve [výchozí databázi a kontejneru](#set-default-database-for-queries).
-- Nahraďte ``{url_location_of_file}`` umístěním souboru JSON. Tento soubor musí být pole platných objektů JSON a měl by být přístupný prostřednictvím veřejného Internetu.
+- Nahraďte ``{database_id}`` a ``{container_id}`` s názvem databáze a kontejneru ve vašem účtu Azure Cosmos. Pokud ``--database`` argumenty a ``--container`` nejsou k dispozici, dotaz bude proveden na [výchozí databázi a kontejneru](#set-default-database-for-queries).
+- Nahraďte ``{url_location_of_file}`` umístěním souboru JSON. Soubor musí být pole platných objektů JSON a měl by být přístupný prostřednictvím veřejného Internetu.
 
 Například:
 
@@ -104,26 +104,26 @@ Total number of documents imported : 2654
 Total time taken : 00:00:38.1228087 hours
 Total RUs consumed : 25022.58
 ```
-S využitím výstupních statistik můžete vypočítat efektivní RU/s, který se použije k nahrání položek. Například pokud 25 000 ru bylo spotřebováno více než 38 sekund, efektivní RU/s je 25 000 ru/38 sekund = 658 RU/s.
+Pomocí výstupních statistik můžete vypočítat efektivní RU/s použité k nahrání položek. Například pokud 25 000 RU bylo spotřebováno během 38 sekund, efektivní RU/s je 25 000 RU / 38 sekund = 658 RU/s.
 
-## <a name="set-default-database-for-queries"></a>Nastavit výchozí databázi pro dotazy
-Můžete nastavit výchozí příkazy databáze ```%%sql``` budou použity pro Poznámkový blok. Nahraďte ```{database_id}``` názvem vaší databáze.
+## <a name="set-default-database-for-queries"></a>Nastavení výchozí databáze pro dotazy
+Můžete nastavit výchozí ```%%sql``` databázové příkazy, které budou pro poznámkový blok používat. Nahraďte ```{database_id}``` se názvem databáze.
 
 ```bash
 %database {database_id}
 ```
-Pokud chcete zobrazit dokumentaci v poznámkovém bloku, spusťte ```%database?``` v buňce.
+Spuštěním ```%database?``` v buňce zobrazíte dokumentaci v poznámkovém bloku.
 
 ## <a name="set-default-container-for-queries"></a>Nastavení výchozího kontejneru pro dotazy
-Můžete nastavit výchozí kontejner ```%%sql``` příkazy budou použity pro Poznámkový blok. Nahraďte ```{container_id}``` názvem vašeho kontejneru.
+Můžete nastavit výchozí ```%%sql``` příkazy kontejneru, které budou pro poznámkový blok používat. Nahraďte ```{container_id}``` název kontejneru.
 
 ```bash
 %container {container_id}
 ```
-Pokud chcete zobrazit dokumentaci v poznámkovém bloku, spusťte ```%container?``` v buňce.
+Spuštěním ```%container?``` v buňce zobrazíte dokumentaci v poznámkovém bloku.
 
-## <a name="use-built-in-nteract-data-explorer"></a>Použití integrovaného Průzkumníka dat nteract
-Pomocí integrovaného [Průzkumníka dat nteract](https://blog.nteract.io/designing-the-nteract-data-explorer-f4476d53f897) můžete filtrovat a vizualizovat datový rámec. Pokud chcete tuto funkci povolit, nastavte možnost ``pd.options.display.html.table_schema`` na ``True`` a ``pd.options.display.max_rows`` na požadovanou hodnotu (můžete nastavit ``pd.options.display.max_rows`` ``None`` k zobrazení všech výsledků).
+## <a name="use-built-in-nteract-data-explorer"></a>Použití integrovaného průzkumníka dat nteract
+Vestavěný [průzkumník dat nteract](https://blog.nteract.io/designing-the-nteract-data-explorer-f4476d53f897) můžete filtrovat a vizualizovat datový rámec. Chcete-li tuto funkci ``pd.options.display.html.table_schema`` povolit, nastavte možnost ``True`` na požadovanou hodnotu (můžete ``pd.options.display.max_rows`` nastavit tak, ``pd.options.display.max_rows`` aby ``None`` zobrazovala všechny výsledky).
 
 ```python
 import pandas as pd
@@ -132,12 +132,12 @@ pd.options.display.max_rows = None
 
 df_cosmos.groupby("Item").size()
 ```
-![Průzkumník dat nteract](media/use-notebook-features-and-commands/nteract-built-in-chart.png)
+![průzkumník dat nteract](media/use-notebook-features-and-commands/nteract-built-in-chart.png)
 
-## <a name="use-the-built-in-python-sdk"></a>Použití integrované sady Python SDK
-V prostředí poznámkového bloku pro účet Azure Cosmos je nainstalovaná verze 4 sady [Azure Cosmos DB Python SDK pro SQL API](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) .
+## <a name="use-the-built-in-python-sdk"></a>Použití předdefinované sady Python SDK
+Verze 4 [sady Azure Cosmos DB Python SDK pro rozhraní SQL API](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) je nainstalovaná a zahrnutá v prostředí poznámkového bloku pro účet Azure Cosmos.
 
-Pro spuštění jakékoli operace sady SDK použijte integrovanou instanci ``cosmos_client``. 
+Pomocí předdefinované ``cosmos_client`` instance spusťte libovolnou operaci sady SDK. 
 
 Například:
 
@@ -154,15 +154,15 @@ container = database.create_container_if_not_exists(id='WebsiteData', partition_
 Viz [ukázky sady Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos/samples). 
 
 > [!IMPORTANT]
-> Integrovaná sada Python SDK je podporována pouze pro účty rozhraní SQL (Core) API. U jiných rozhraní API budete muset [nainstalovat příslušný ovladač Pythonu](#install-a-new-package) , který odpovídá rozhraní API. 
+> Integrovaná sada Python SDK je podporována pouze pro účty rozhraní API SQL (Core). Pro ostatní rozhraní API budete muset [nainstalovat příslušný ovladač Pythonu,](#install-a-new-package) který odpovídá rozhraní API. 
 
-## <a name="create-a-custom-instance-of-cosmos_client"></a>Vytvoření vlastní instance ``cosmos_client``
-Pro větší flexibilitu můžete vytvořit vlastní instanci ``cosmos_client``, aby bylo možné:
+## <a name="create-a-custom-instance-of-cosmos_client"></a>Vytvoření vlastní instance``cosmos_client``
+Pro větší flexibilitu můžete vytvořit vlastní ``cosmos_client`` instanci, aby:
 
 - Přizpůsobení [zásad připojení](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview)
-- Spuštění operací s jiným účtem Azure Cosmos, než v jakém jste
+- Spouštění operací s jiným účtem Azure Cosmos, než ve které se nacházejíte
 
-K připojovacímu řetězci a primárnímu klíči aktuálního účtu můžete přistupovat pomocí [proměnných prostředí](#access-the-account-endpoint-and-primary-key-env-variables). 
+Přístup k připojovacímu řetězci a primárnímu klíči běžného účtu můžete přistupovat prostřednictvím [proměnných prostředí](#access-the-account-endpoint-and-primary-key-env-variables). 
 
 ```python
 import os
@@ -179,7 +179,7 @@ custom_connection_policy.PreferredLocations = [region_1, region_2] # Set the ord
 # Create a new instance of CosmosClient, getting the endpoint and key from the environment variables
 custom_client = cosmos.CosmosClient(url=os.environ["COSMOS_ENDPOINT"], credential=os.environ["COSMOS_KEY"], connection_policy=custom_connection_policy)
 ```
-## <a name="access-the-account-endpoint-and-primary-key-env-variables"></a>Přístup ke koncovému bodu účtu a k proměnným ENV klíče primárního klíče
+## <a name="access-the-account-endpoint-and-primary-key-env-variables"></a>Přístup ke koncovým bodům účtu a proměnným env primárního klíče
 ```python
 import os
 
@@ -187,14 +187,14 @@ endpoint = os.environ["COSMOS_ENDPOINT"]
 primary_key = os.environ["COSMOS_KEY"]
 ```
 > [!IMPORTANT]
-> Proměnné prostředí ``COSMOS_ENDPOINT`` a ``COSMOS_KEY`` se vztahují pouze na rozhraní SQL API. V případě jiných rozhraní API Najděte koncový bod a klíč v okně **připojovací řetězce** nebo **klíče** v účtu Azure Cosmos.  
+> Proměnné ``COSMOS_ENDPOINT`` ``COSMOS_KEY`` a prostředí jsou použitelné pouze pro rozhraní SQL API. Pro ostatní api najděte koncový bod a klíč v okně **připojovací řetězce** nebo **klíče** ve vašem účtu Azure Cosmos.  
 
-## <a name="reset-notebooks-workspace"></a>Resetovat pracovní prostor poznámkových bloků
-Pokud chcete resetovat pracovní prostor poznámkových bloků na výchozí nastavení, na panelu příkazů vyberte **resetovat pracovní prostor** . Tím se odeberou všechny vlastní nainstalované balíčky a restartuje se server Jupyter. Vaše poznámkové bloky, soubory a prostředky Azure Cosmos nebudou ovlivněny.  
+## <a name="reset-notebooks-workspace"></a>Obnovení pracovního prostoru poznámkových bloků
+Pokud chcete pracovní prostor poznámkových bloků obnovit na výchozí nastavení, vyberte na panelu příkazů **obnovit pracovní plochu.** Tím odeberete všechny vlastní nainstalované balíčky a restartujte server Jupyter. Vaše poznámkové bloky, soubory a prostředky Azure Cosmos nebudou ovlivněny.  
 
-![Resetovat pracovní prostor poznámkových bloků](media/use-notebook-features-and-commands/reset-workspace.png)
+![Obnovení pracovního prostoru poznámkových bloků](media/use-notebook-features-and-commands/reset-workspace.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o výhodách [Azure Cosmos DB poznámkových blocích Jupyter](cosmosdb-jupyter-notebooks.md)
-- Další informace o sadě [Azure Cosmos DB Python SDK pro SQL API](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)
+- Informace o výhodách [notebooků Azure Cosmos DB Jupyter](cosmosdb-jupyter-notebooks.md)
+- Informace o [azure cosmos DB Python SDK pro SQL API](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)

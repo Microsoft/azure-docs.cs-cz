@@ -1,6 +1,6 @@
 ---
-title: Začínáme – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
-description: Toto je hlubší přehled, který zvýrazňuje Threat Modeling Tool v akci.
+title: Začínáme – Nástroj pro modelování hrozeb Microsoft – Azure | Dokumenty společnosti Microsoft
+description: Toto je hlubší přehled, který zvýrazňuje nástroj pro modelování hrozeb v akci.
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,132 +16,132 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
 ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68728302"
 ---
-# <a name="getting-started-with-the-threat-modeling-tool"></a>Začínáme s Threat Modeling Tool
+# <a name="getting-started-with-the-threat-modeling-tool"></a>Začínáme s nástrojem pro modelování hrozeb
 
-Microsoft Threat Modeling Tool 2018 byla vydána jako GA v září 2018 jako bezplatný soubor **[ke stažení](https://aka.ms/threatmodelingtool)** . Mechanismus změny v doručení nám umožňuje nabízet nejnovější vylepšení a opravy chyb zákazníkům pokaždé, když tento nástroj otevřou, což usnadňuje údržbu a používání.
-Tento článek vás provede procesem Začínáme s řešením Microsoft SDL Threat Modeling a ukazuje, jak používat nástroj k vývoji skvělých modelů hrozeb jako páteře procesu zabezpečení.
+Microsoft Threat Modeling Tool 2018 byl vydán jako GA v září 2018 jako bezplatný **[click-to-download](https://aka.ms/threatmodelingtool)**. Změna mechanismu doručování nám umožňuje tlačit nejnovější vylepšení a opravy chyb zákazníkům při každém otevření nástroje, což usnadňuje údržbu a používání.
+Tento článek vás provede procesem začínáme s přístupem modelování hrozeb Microsoft SDL a ukazuje, jak pomocí nástroje vyvíjet velké modely hrozeb jako páteř procesu zabezpečení.
 
-Tento článek se sestavuje s existujícím vědomím přístupu k modelování hrozeb v SDL. V případě rychlé kontroly se podívejte na **[webové aplikace modelování hrozeb](https://msdn.microsoft.com/library/ms978516.aspx)** a Archivovaná verze řešení chyb **[zabezpečení na základě přístupu k](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** článku věnovaném webu MSDN publikovaném v 2006.
+Tento článek vychází z existující znalosti přístupu modelování hrozeb SDL. Stručný přehled naleznete v **[článku Threat Modeling Web Applications](https://msdn.microsoft.com/library/ms978516.aspx)** a archivované verzi aplikace **[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** MSDN article published in 2006.
 
-K rychlému sumarizaci je potřeba, abyste vytvořili diagram, identifikovali hrozby, zmírnili je a vyhodnotili případné zmírnění. Zde je diagram, který zvýrazní tento proces:
+Chcete-li rychle shrnout, přístup zahrnuje vytvoření diagramu, identifikaci hrozeb, jejich zmírnění a ověření každé zmírnění. Zde je diagram, který zvýrazňuje tento proces:
 
 ![Proces SDL](./media/threat-modeling-tool-getting-started/sdlapproach.png)
 
-## <a name="starting-the-threat-modeling-process"></a>Spouští se proces modelování hrozeb.
+## <a name="starting-the-threat-modeling-process"></a>Spuštění procesu modelování hrozeb
 
-Když spustíte Threat Modeling Tool, všimnete si pár věcí, jak je vidět na obrázku:
+Když spustíte nástroj pro modelování hrozeb, všimnete si několika věcí, jak je vidět na obrázku:
 
 ![Prázdná úvodní stránka](./media/threat-modeling-tool-feature-overview/tmtstart.png)
 
-### <a name="threat-model-section"></a>Oddíl modelu hrozeb
+### <a name="threat-model-section"></a>Oddíl modelu hrozby
 
 | Komponenta                                   | Podrobnosti                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Názory, tlačítko návrhy a problémy** | Přejdete na **[Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** pro všechny věci SDL. Nabízí vám možnost si přečíst si, co dělají jiní uživatelé, spolu s alternativními řešeními a doporučeními. Pokud stále nemůžete najít, co hledáte, pošlete nám tmtextsupport@microsoft.com e-mail pro náš tým podpory, který vám může pomoci                                                                                                                            |
-| **Vytvoření modelu**                          | Otevře prázdné plátno pro vykreslení diagramu. Ujistěte se, že jste vybrali šablonu, kterou chcete použít pro váš model.                                                                                                                                                                                                                                                                                                                                                                       |
-| **Šablona pro nové modely**                 | Před vytvořením modelu je nutné vybrat šablonu, kterou chcete použít. Naší hlavní šablonou je šablona modelu Azure Threat, která obsahuje vzorníky specifické pro Azure, hrozby a omezení rizik. V případě obecných modelů vyberte v rozevírací nabídce možnost znalostní báze SDL TM. Chcete vytvořit vlastní šablonu nebo Odeslat novou pro všechny uživatele? Další informace najdete na naší stránce GitHubu **[úložiště šablon](https://github.com/Microsoft/threat-modeling-templates)** .                              |
-| **Otevření modelu**                            | <p>Otevře dříve uložené modely hrozeb. Funkce nedávno otevřených modelů je skvělé, pokud potřebujete otevřít nejaktuálnější soubory. Když najedete myší na výběr, najdete dva způsoby otevření modelů:</p><p><ul><li>Otevřít z tohoto počítače – klasický způsob otevření souboru pomocí místního úložiště</li><li>Otevřené z OneDrivu – týmy můžou používat složky na OneDrivu k ukládání a sdílení všech jejich modelů hrozeb na jednom místě, které vám pomůžou zvýšit produktivitu a spolupráci.</li></ul></p> |
-| **Průvodce Začínáme**                   | Otevře hlavní stránku **[Microsoft Threat Modeling Tool](threat-modeling-tool.md)** .                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Tlačítko Zpětná vazba, návrhy a problémy** | Vezme si **[MSDN fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** pro všechny věci SDL. To vám dává možnost přečíst si, co ostatní uživatelé dělají, spolu s řešeními a doporučeními. Pokud stále nemůžete najít to, co hledáte, pošlete e-mail tmtextsupport@microsoft.com našemu týmu podpory, který vám pomůže                                                                                                                            |
+| **Vytvoření modelu**                          | Otevře prázdné plátno, ve které můžete nakreslit diagram. Ujistěte se, že jste vybrali šablonu, kterou chcete pro model použít.                                                                                                                                                                                                                                                                                                                                                                       |
+| **Šablona pro nové modely**                 | Před vytvořením modelu je nutné vybrat šablonu, která se má použít. Naší hlavní šablonou je šablona modelu hrozeb Azure, která obsahuje vzorníky, hrozby a skutečnosti snižující závažnost rizika specifické pro Azure. U obecných modelů vyberte znalostní bázi SDL TM z rozevírací nabídky. Chcete si vytvořit vlastní šablonu nebo odeslat novou šablonu pro všechny uživatele? Další informace najdete na stránce GitHub, kde se můžete dozvědět více **[o úložišti šablon](https://github.com/Microsoft/threat-modeling-templates)**                              |
+| **Otevření modelu**                            | <p>Otevře dříve uložené modely hrozeb. Funkce Naposledy otevřené modely je skvělá, pokud potřebujete otevřít nejnovější soubory. Když na výběr najedete, najdete dva způsoby, jak modely otevřít:</p><p><ul><li>Otevřít z tohoto počítače – klasický způsob otevírání souboru pomocí místního úložiště</li><li>Otevření z OneDrivu – týmy můžou pomocí složek na OneDrivu ukládat a sdílet všechny modely hrozeb na jednom místě, aby zvýšily produktivitu a spolupráci.</li></ul></p> |
+| **Příručka Začínáme**                   | Otevře hlavní stránku **[nástroje Microsoft Threat Modeling Tool.](threat-modeling-tool.md)**                                                                                                                                                                                                                                                                                                                                                                                            |
 
-### <a name="template-section"></a>Oddíl Template
+### <a name="template-section"></a>Oddíl Šablona
 
 | Komponenta               | Podrobnosti                                                                                                                                                          |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Vytvořit novou šablonu** | Otevře prázdnou šablonu, na kterou se má vytvořit. Pokud nemáte rozsáhlé znalosti při vytváření šablon od začátku, doporučujeme, abyste si vytvořili z existujících. |
-| **Otevřít šablonu**       | Otevře existující šablony, abyste mohli provádět změny.                                                                                                              |
+| **Vytvořit novou šablonu** | Otevře prázdnou šablonu, na které můžete stavět. Pokud nemáte rozsáhlé znalosti v oblasti vytváření šablon od nuly, doporučujeme stavět ze stávajících |
+| **Otevřít šablonu**       | Otevře existující šablony, které můžete provést změny                                                                                                              |
 
-Tým Threat Modeling Tool stále pracuje na vylepšení funkcí a zkušeností nástrojů. V průběhu roku může probíhat několik menších změn, ale všechny významné změny vyžadují přepis v průvodci. Přečtěte si často, abyste měli jistotu, že získáte nejnovější oznámení.
+Tým nástrojů pro modelování hrozeb neustále pracuje na zlepšení funkčnosti a zkušeností nástrojů. Několik drobných změn může dojít v průběhu roku, ale všechny hlavní změny vyžadují přepsání v příručce. Často na něj překažte, abyste se ujistili, že dostanete nejnovější oznámení.
 
 ## <a name="building-a-model"></a>Vytvoření modelu
 
-V této části budeme postupovat takto:
+V této sekci sledujeme:
 
 - Cristina (vývojář)
-- Ricardo (Správce programů) a
+- Ricardo (programový manažer) a
 - Ashish (tester)
 
-Procházejí procesem vývoje prvního modelu hrozeb.
+Procházejí procesem vývoje svého prvního modelu hrozeb.
 
-> Ricardo: Dobrý Cristina, pracovali na diagramu modelu hrozeb a chtěli byste se ujistit, že jsme získali podrobnosti. Můžu se mi lépe podívat na to?
-> Cristina: Jistě. Pojďme se na to podívat.
-> Ricardo otevře nástroj a nasdílí jeho obrazovku s Cristina.
+> Ricardo: Ahoj Cristina, pracoval jsem na diagramu modelu hrozby a chtěl jsem se ujistit, že máme správné detaily. Pomůžeš mi to pohlédnout?
+> Cristina: Rozhodně. Pojďme se na to podívat.
+> Ricardo otevře nástroj a sdílí svou obrazovku s Cristinou.
 
-![Model Basic Threat](./media/threat-modeling-tool-feature-overview/basictmt.png)
+![Základní model ohrožení](./media/threat-modeling-tool-feature-overview/basictmt.png)
 
-> Cristina: OK, vypadá to jednoduše, ale dá se vám to provést?
-> Ricardo: Opravdu! Toto je rozpis:
-> - Náš lidský uživatel je vykreslen jako externí entita – čtverec
-> - Odesílají příkazy na náš webový server – kruh
-> - Webový server je v konzultační databázi (dva paralelní čáry).
+> Cristina: Ok, vypadá přímočaře, ale můžete mi to projít?
+> Ricardo: Jistě! Zde je rozpis:
+> - Náš lidský uživatel je vykreslen jako vnější entita – čtverec
+> - Posílají příkazy na náš webový server – kruh
+> - Webový server konzultuje databázi (dvě paralelní čáry)
 
-Jaký Ricardo se právě ukázal jako Cristina, je **[diagram toku dat](https://en.wikipedia.org/wiki/Data_flow_diagram)** krátký. Threat Modeling Tool umožňuje uživatelům zadat hranice důvěry, které označují červeně tečkované řádky, k zobrazení, kde jsou různé entity v ovládacím prvku. Správci IT například vyžadují pro účely ověřování systém Active Directory, takže služba Active Directory je mimo svůj ovládací prvek.
+Co Ricardo právě ukázal Cristina je DFD, **[zkratka](https://en.wikipedia.org/wiki/Data_flow_diagram)** pro data Flow Diagram . Nástroj pro modelování hrozeb umožňuje uživatelům určit hranice důvěryhodnosti označené červenými tečkovanými čarami, aby ukázali, kde mají kontrolu různé entity. Správci IT například vyžadují pro účely ověřování systém služby Active Directory, takže služba Active Directory je mimo jejich kontrolu.
 
-> Cristina: Vypadá hned po mně. Co jsou hrozby?
-> Ricardo: Pojďme mi ukázat.
+> Cristina: Mně to připadá správné. A co ty výhružky?
+> Dovolte mi, abych vám to ukázal.
 
 ## <a name="analyzing-threats"></a>Analýza hrozeb
 
-Jakmile kliknete na zobrazení analýzy z výběru nabídky ikony (soubor se zvětšováním skla), převezme se seznam generovaných hrozeb Threat Modeling Tool nalezené na základě výchozí šablony, která používá přístup SDL s názvem **[Rozteč (falšování identity, manipulace s přístupem). Zpřístupnění informací, odmítnutí, odmítnutí služby a zvýšení úrovně oprávnění)](https://en.wikipedia.org/wiki/STRIDE_(security))** . Účelem je, aby se software objevil v předvídatelné sadě hrozeb, které se dají najít pomocí těchto 6 kategorií.
+Jakmile klikne na pohled analýzy z výběru nabídky ikon (soubor s lupou), je převelen do seznamu generovaných hrozeb, které nástroj pro modelování hrozeb nachází na základě výchozí šablony, která používá přístup SDL s názvem **[STRIDE (Falzení, Falkování, Zveřejnění informací, Odmítnutí, Odmítnutí služby a Zvýšení oprávnění)](https://en.wikipedia.org/wiki/STRIDE_(security))**. Myšlenka spočívá v tom, že software spadá pod předvídatelnou sadu hrozeb, které lze nalézt pomocí těchto 6 kategorií.
 
-Tento přístup se podobá zabezpečení vaší domu tím, že před přidáním poplašného systému nebo dohledávání po moci zloděj zajistíte, aby jednotlivé dveře a okna byly na svém místě blokovacího mechanismu.
+Tento přístup je jako zajištění vašeho domu tím, že zajistí, že každé dveře a okno má blokovací mechanismus na místě před přidáním poplašného systému nebo honí za zlodějem.
 
 ![Základní hrozby](./media/threat-modeling-tool-getting-started/basicthreats.png)
 
-Ricardo začíná výběrem první položky v seznamu. Co se stane:
+Ricardo začíná výběrem první položky v seznamu. Zde je to, co se stane:
 
-Za prvé je vylepšená interakce mezi těmito dvěma vzorníky.
+Za prvé, interakce mezi těmito dvěma vzorníky je posílena
 
 ![Interakce](./media/threat-modeling-tool-getting-started/interaction.png)
 
-Za druhé se zobrazí další informace týkající se hrozby okno Vlastnosti
+Za druhé, další informace o hrozbě se zobrazí v okně Vlastnosti hrozby
 
 ![Informace o interakci](./media/threat-modeling-tool-getting-started/interactioninfo.png)
 
-Vygenerovaná hrozba pomáhá pochopit možné nedostatky v návrhu. Kategorizace v ROZTEČi poskytuje představu o potenciálních způsobech útoku, zatímco další popis přesně informuje o tom, co je špatně, a také potenciální způsoby, jak to zmírnit. Může použít upravitelná pole k zápisu poznámek v podrobnostech odůvodnění nebo změnu hodnocení priority v závislosti na panelu chyb ve své organizaci.
+Vytvořená hrozba mu pomáhá pochopit potenciální konstrukční nedostatky. Kategorizace STRIDE mu dává představu o potenciálních útočných vektorech, zatímco další popis mu přesně říká, co je špatně, spolu s možnými způsoby, jak to zmírnit. Pomocí upravitelných polí může psát poznámky do podrobností odůvodnění nebo měnit hodnocení priorit v závislosti na panelu chyb jeho organizace.
 
-Šablony Azure obsahují další podrobnosti, které uživatelům pomohou pochopit nejen to, co je špatně, ale také jak je opravit přidáním popisů, příkladů a hypertextových odkazů do dokumentace ke službě Azure specifické pro Azure.
+Šablony Azure obsahují další podrobnosti, které uživatelům pomáhají pochopit nejen to, co je špatně, ale také jak to opravit přidáním popisů, příkladů a hypertextových odkazů do dokumentace specifické pro Azure.
 
-Popis má za to důležitost přidání mechanismu ověřování, který uživatelům brání v falšování identity, což odhalí první hrozbu, na které se má pracovat. Několik minut do diskuze s Cristina se rozumí důležitosti při implementaci řízení přístupu a rolí. Ricardo vyplnili některé rychlé poznámky, abyste se ujistili, že byly implementovány.
+Popis ho přiměl uvědomit si, že je důležité přidat ověřovací mechanismus, který zabrání tomu, aby uživatelé byli podivíni, a odhalil i první hrozbu, na které se pracuje. Několik minut po diskusi s Cristinou pochopili, jak je důležité implementovat řízení přístupu a role. Ricardo vyplnil několik rychlých poznámek, aby se ujistil, že byly implementovány.
 
-Protože Ricardo došlo k hrozbám v oblasti zpřístupnění informací, vytvořil plán řízení přístupu pro audit a generování sestav některé účty jen pro čtení. Přemýšleli, jestli by se jednalo o novou hrozbu, ale jejich zmírnění bylo stejné, a proto si ji poznamenali.
-Mysleli jsme také o zpřístupnění informací o větším a realizovaném, že záložní pásky budou potřebovat šifrování, což je úloha pro provozní tým.
+Když Ricardo vstoupil do hrozeb v rámci informací o zpřístupnění, uvědomil si, že plán kontroly přístupu vyžaduje některé účty jen pro čtení pro audit a generování zpráv. Přemýšlel, zda by to měla být nová hrozba, ale zmírnění bylo stejné, a tak si všiml hrozby odpovídajícím způsobem.
+Také přemýšlel o zpřístupnění informací trochu víc a uvědomil si, že záložní pásky budou potřebovat šifrování, práci pro operační tým.
 
-V rozevíracím seznamu stav můžete změnit hrozby, které se nevztahují na návrh z důvodu stávajících rizik nebo záruk zabezpečení. Existují tři další možnosti: Nezahájeno – výchozí výběr, vyžaduje šetření – používá se k tomu, aby se sledovaly položky a zmírnily – Jakmile je plně fungovalo.
+Hrozby, které se nevztahují na návrh z důvodu stávajících zmírnění rizik nebo záruk zabezpečení, lze z rozevíracího přehledu Stav změnit na "Nepoužít". Existují tři další možnosti: Nezahájeno – výchozí výběr, potřeby šetření – slouží k sledování položek a zmírnění – jakmile je plně zpracována.
 
 ## <a name="reports--sharing"></a>Sestavy & sdílení
 
-Jakmile Ricardo projde seznamem s Cristina a přidá důležité poznámky, zmírnění a odůvodnění, priority a změny stavu, vybere sestavy – > vytvořit úplnou sestavu > Uložit sestavu, která pro ni bude vytištěna dobrá zpráva, aby procházela s kolegy. aby byla zajištěna správná práce se zabezpečením.
+Jakmile Ricardo projde seznam s Cristinou a přidá důležité poznámky, zmírnění / odůvodnění, priority a změny stavu, vybere zprávy -> Vytvořit úplnou zprávu -> Uložit report, který vytiskne pěknou zprávu, kterou má projít s kolegy, aby zajistil správnou bezpečnostní práci.
 
 ![Informace o interakci](./media/threat-modeling-tool-feature-overview/report.png)
 
-Pokud místo toho chce Ricardo sdílet soubor, může to udělat tak, že se uloží na účet OneDrive jeho organizace. Jakmile to provede, může zkopírovat odkaz na dokument a sdílet ho s kolegy. 
+Pokud chce Ricardo soubor místo toho sdílet, může to snadno provést uložením do účtu OneDrive své organizace. Jakmile to udělá, může zkopírovat odkaz na dokument a sdílet jej se svými kolegy. 
 
 ## <a name="threat-modeling-meetings"></a>Schůzky modelování hrozeb
 
-Když Ricardo poslal svůj model hrozeb svému kolegovi přes OneDrive, Ashish, Tester underwhelmed. Zdálo se, že Ricardo a Cristina neúplně ještě několik důležitých rohových případů, které by bylo možné snadno ohrozit. Jeho skepticismus je doplňkem k modelům hrozeb.
+Když Ricardo poslal svůj model hrozby svému kolegovi pomocí OneDrive, Ashish, tester, byl ohromen. Zdálo se, že Ricardo a Cristina vynechali několik důležitých rohových případů, které by mohly být snadno ohroženy. Jeho skepse je doplňkem modelů hrozeb.
 
-V tomto scénáři poté, co Ashish převzala přes model hrozeb, zavolat na dvě schůzky modelování hrozeb: jednu schůzku pro synchronizaci na procesu a Projděte si diagramy a pak druhou schůzku pro kontrolu a odhlášení hrozby.
+V tomto scénáři poté, co Ashish převzal model hrozeb, vyzval ke dvěma schůzkám modelování hrozeb: jedné schůzce, která se synchronizuje v procesu a prochází diagramy a pak druhá schůzka pro kontrolu a odhlášení hrozeb.
 
-V první schůzce Ashish vyčerpáno 10 minut, aby všichni prošli procesem modelování hrozeb v SDL. Pak sestaví diagram modelu hrozeb a začne ho vysvětlit podrobněji. Během pěti minut bylo zjištěno důležité chybějící součásti.
+Na prvním setkání, Ashish strávil 10 minut procházky všichni přes proces modelování hrozeb SDL. Poté vytáhl diagram modelu hrozby a začal ho podrobně vysvětlovat. Během pěti minut byla identifikována důležitá chybějící součástka.
 
-Několik minut později, Ashish a Ricardo, dostali se do rozšířené diskuze o tom, jak byl webový server sestaven. Nejednalo se o ideální způsob, jak pokračovat v konání schůzky, ale všichni nakonec souhlasili s tím, že v budoucnu budou ušetřit čas v budoucnosti.
+O několik minut později, Ashish a Ricardo dostal do rozšířené diskuse o tom, jak byl vytvořen webový server. Nebylo to ideální způsob, jak pokračovat v jednání, ale všichni se nakonec shodli na tom, že včasné odhalení nesrovnalosti jim ušetří čas v budoucnu.
 
-V druhé schůzce tým vás provedl přes hrozby, projednali si některé způsoby, jak je vyřešit, a odhlásili se v modelu hrozeb. Kontrolovaly dokument do správy zdrojového kódu a pokračuje ve vývoji.
+Na druhém setkání tým prošel hrozbami, projednal některé způsoby, jak je řešit, a podepsal model hrozeb. Zkontrolovali dokument do správy zdrojového kódu a pokračovali ve vývoji.
 
-## <a name="thinking-about-assets"></a>Uvažujete o prostředcích
+## <a name="thinking-about-assets"></a>Přemýšlení o aktivech
 
-Někteří čtenáři, kteří mají model hrozeb, si můžou všimnout, že jsme ještě nemluvilii o prostředcích. Zjistili jsme, že velký počet softwarových inženýrů rozumí jejich softwaru lépe než porozumění konceptu prostředků a k jakým prostředkům by útočník mohl zajímat.
+Někteří čtenáři, kteří mají hrozbu modelován si mohou všimnout, že jsme nemluvili o majetku vůbec. Zjistili jsme, že mnoho softwarových inženýrů rozumí svému softwaru lépe než konceptu datových zdrojů a o to, jaký majetek by útočník mohl zajímat.
 
-Pokud se chystáte o hrozby, můžete začít myslet o své rodině, nenahraditelných fotografiích nebo cenném kresbě. Možná budete chtít začít tím, kdo může přerušit a aktuální systém zabezpečení. Nebo můžete začít zvážením fyzických funkcí, jako je fond nebo front-Porch. Jedná se o analogické informace o prostředcích, útočníkech nebo návrhu softwaru. Každý z těchto tří přístupů funguje.
+Pokud se chystáte vyhrožovat model domu, můžete začít tím, že přemýšlíte o své rodině, nenahraditelných fotografiích nebo cenných uměleckých dílech. Možná byste mohl začít tím, že přemýšlíte o tom, kdo by se mohl vloupat dovnitř a současný bezpečnostní systém. Nebo můžete začít tím, že zvážífyzické rysy, jako je bazén nebo přední veranda. Ty jsou obdobou přemýšlení o datových zdrojech, útočnících nebo návrhu softwaru. Některý z těchto tří přístupů funguje.
 
-Přístup k modelování hrozeb, který jsme tady provedli, je podstatně jednodušší než to, co Microsoft v minulosti udělal. Zjistili jsme, že přístup k návrhu softwaru funguje dobře pro mnoho týmů. Doufáme, že to bude obsahovat.
+Přístup k modelování hrozeb, který jsme zde prezentovali, je podstatně jednodušší než to, co společnost Microsoft udělala v minulosti. Zjistili jsme, že přístup k návrhu softwaru funguje dobře pro mnoho týmů. Doufáme, že to bude zahrnovat i to vaše.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pošlete své dotazy, komentáře a obavy do tmtextsupport@microsoft.com. Začněte **[stažením](https://aka.ms/threatmodelingtool)** Threat Modeling Tool.
+Své dotazy, připomínky tmtextsupport@microsoft.coma připomínky zasílejte společnosti . **[Stáhněte si](https://aka.ms/threatmodelingtool)** nástroj pro modelování hrozeb a můžete začít.

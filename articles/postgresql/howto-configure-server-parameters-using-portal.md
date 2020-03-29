@@ -1,49 +1,49 @@
 ---
-title: Konfigurace parametrů serveru-Azure Portal-Azure Database for PostgreSQL-Single server
-description: Tento článek popisuje, jak nakonfigurovat parametry Postgres v Azure Database for PostgreSQL prostřednictvím Azure Portal.
+title: Konfigurace parametrů serveru – portál Azure – databáze Azure pro PostgreSQL – jeden server
+description: Tento článek popisuje, jak nakonfigurovat parametry Postgres v Azure Database for PostgreSQL prostřednictvím portálu Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: a9d078fe9aab12b9044733d17a1437801d5130a4
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74763670"
 ---
-# <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>Konfigurace parametrů serveru v Azure Database for PostgreSQL-Single server přes Azure Portal 
-Pomocí Azure Portal můžete vypsat, zobrazit a aktualizovat parametry konfigurace Azure Database for PostgreSQL serveru.
+# <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>Konfigurace parametrů serveru v Databázi Azure pro PostgreSQL – jeden server prostřednictvím portálu Azure 
+Můžete seznam, zobrazit a aktualizovat parametry konfigurace pro Azure Database for PostgreSQL server prostřednictvím portálu Azure.
 
-## <a name="prerequisites"></a>Předpoklady
-Postup pro krokování tohoto postupu vám pomůže:
-- [Server Azure Database for PostgreSQL](quickstart-create-server-database-portal.md)
+## <a name="prerequisites"></a>Požadavky
+Chcete-li projít tento návod, který potřebujete:
+- [Databáze Azure pro postgreSQL server](quickstart-create-server-database-portal.md)
 
-## <a name="viewing-and-editing-parameters"></a>Zobrazení a úprava parametrů
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+## <a name="viewing-and-editing-parameters"></a>Zobrazení a úpravy parametrů
+1. Otevřete [portál Azure](https://portal.azure.com).
 
 2. Vyberte svůj server Azure Database for PostgreSQL.
 
-3. V části **Nastavení** vyberte **parametry serveru**. Stránka zobrazuje seznam parametrů, jejich hodnoty a popisy.
-Stránka s přehledem ![pro parametry](./media/howto-configure-server-parameters-in-portal/3-overview-of-parameters.png)
+3. V části **NASTAVENÍ** vyberte **parametry serveru**. Na stránce se zobrazí seznam parametrů, jejich hodnot a popisů.
+![Stránka přehledu pro parametry](./media/howto-configure-server-parameters-in-portal/3-overview-of-parameters.png)
 
-4. Kliknutím na tlačítko **rozevíracího** seznamu zobrazíte možné hodnoty pro parametry výčtového typu, jako je client_min_messages.
-](./media/howto-configure-server-parameters-in-portal/4-enum-drop-down.png) rozevírací seznam ![výčtu
+4. Výběrem **rozevíracího** tlačítka zobrazíte možné hodnoty parametrů výčtového typu, jako je client_min_messages.
+![Rozevírací vypočet](./media/howto-configure-server-parameters-in-portal/4-enum-drop-down.png)
 
-5. Vyberte nebo najeďte myší na tlačítko **i** (informace), abyste viděli rozsah možných hodnot číselných parametrů, jako je cpu_index_tuple_cost.
-tlačítko informace o ![](./media/howto-configure-server-parameters-in-portal/4-information-button.png)
+5. Výběrem tlačítka **i** (informace) nebo na něj najedete na tlačítko i(informace) zobrazíte rozsah možných hodnot pro číselné parametry, jako je cpu_index_tuple_cost.
+![informační tlačítko](./media/howto-configure-server-parameters-in-portal/4-information-button.png)
 
-6. V případě potřeby pomocí **vyhledávacího pole** upřesněte konkrétní parametr. Hledání je podle názvu a popisu parametrů.
-![výsledků hledání](./media/howto-configure-server-parameters-in-portal/5-search.png)
+6. V případě potřeby se **pomocí vyhledávacího pole** zúžit na konkrétní parametr. Hledání je na název a popis parametrů.
+![Výsledky hledání](./media/howto-configure-server-parameters-in-portal/5-search.png)
 
-7. Změňte hodnoty parametrů, které chcete upravit. Všechny změny, které provedete v relaci, jsou zvýrazněné fialově. Po změně hodnot můžete vybrat **Uložit**. Nebo můžete změny **Zrušit** .
+7. Změňte hodnoty parametrů, které chcete upravit. Všechny změny provedené v relaci jsou zvýrazněny fialovou barvou. Po změně hodnot můžete vybrat **uložit**. Nebo můžete **zahodit** změny.
 ![Uložit nebo zahodit změny](./media/howto-configure-server-parameters-in-portal/6-save-and-discard-buttons.png)
 
-8. Pokud jste uložili nové hodnoty pro parametry, můžete kdykoli vrátit zpět všechny výchozí hodnoty výběrem možnosti **Obnovit vše na výchozí**.
-![obnovit výchozí](./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png)
+8. Pokud jste uložili nové hodnoty parametrů, můžete vždy vrátit vše zpět na výchozí hodnoty výběrem **možnosti Obnovit vše na výchozí**.
+![Obnovit výchozí hodnotu](./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png)
 
 ## <a name="next-steps"></a>Další kroky
-Další informace:
-- [Přehled parametrů serveru v Azure Database for PostgreSQL](concepts-servers.md)
+Projdeme si tyto možnosti:
+- [Přehled parametrů serveru v Azure Database pro PostgreSQL](concepts-servers.md)
 - [Konfigurace parametrů pomocí rozhraní příkazového řádku Azure](howto-configure-server-parameters-using-cli.md)

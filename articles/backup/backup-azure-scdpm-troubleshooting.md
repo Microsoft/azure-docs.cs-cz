@@ -1,93 +1,93 @@
 ---
 title: Řešení potíží se System Center Data Protection Managerem
-description: V tomto článku zjistíte řešení problémů, se kterými se můžete setkat při používání nástroje System Center Data Protection Manager.
+description: V tomto článku zjišťujte řešení problémů, se kterými se můžete setkat při používání Správce ochrany dat system center.
 ms.topic: troubleshooting
 ms.date: 01/30/2019
 ms.openlocfilehash: bcb30fa7eb3e05099761fc751b09a9fb16134e34
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75664750"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>Řešení potíží se System Center Data Protection Managerem
 
-Tento článek popisuje řešení problémů, se kterými se můžete setkat při používání Data Protection Manager.
+Tento článek popisuje řešení problémů, se kterými se můžete setkat při používání Správce ochrany dat.
 
-Nejnovější poznámky k verzi pro System Center Data Protection Manager najdete v dokumentaci k produktu [System Center](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016). Další informace o podpoře pro Data Protection Manager najdete v [této matrici](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016).
+Nejnovější poznámky k verzi pro Správce ochrany dat centra systému naleznete v [dokumentaci k centru systému](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016). Další informace o podpoře správce ochrany dat naleznete v [této matici](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016).
 
-## <a name="error-replica-is-inconsistent"></a>Chyba: replika je nekonzistentní.
+## <a name="error-replica-is-inconsistent"></a>Chyba: Replika je nekonzistentní.
 
 Replika může být nekonzistentní z následujících důvodů:
 
-- Úloha vytvoření repliky se nezdařila.
-- Deník změn obsahuje problémy.
-- Bitmapa filtru na úrovni svazku obsahuje chyby.
-- Zdrojový počítač se neočekávaně ukončí.
-- Přetečení protokolu synchronizace.
-- Replika je skutečně nekonzistentní.
+- Úloha vytvoření repliky se nezdaří.
+- Existují problémy s deníkem změn.
+- Bitmapa filtru na úrovni hlasitosti obsahuje chyby.
+- Zdrojový počítač se neočekávaně vypne.
+- Protokol synchronizace přeteče.
+- Replika je opravdu nekonzistentní.
 
-Chcete-li vyřešit tento problém, proveďte následující akce:
+Chcete-li tento problém vyřešit, proveďte následující akce:
 
-- Chcete-li odebrat nekonzistentní stav, spusťte kontrolu konzistence ručně nebo naplánujte každodenní kontrolu konzistence.
-- Ujistěte se, že používáte nejnovější verzi Microsoft Azure Backup serveru a Data Protection Manager.
-- Ujistěte se, že je povolené nastavení **Automatické konzistence** .
-- Zkuste restartovat služby z příkazového řádku. Použijte příkaz `net stop dpmra` následovaný `net start dpmra`.
-- Ujistěte se, že splňujete síťové připojení a požadavky na šířku pásma.
-- Ověřte, zda byl zdrojový počítač neočekávaně vypnut.
-- Ujistěte se, že je disk v pořádku a že je k dispozici dostatek místa pro repliku.
-- Zajistěte, aby nedocházelo k duplicitním úlohám zálohování spuštěným současně.
+- Chcete-li odebrat nekonzistentní stav, spusťte kontrolu konzistence ručně nebo naplánujte denní kontrolu konzistence.
+- Ujistěte se, že používáte nejnovější verzi Microsoft Azure Backup Server a Správce ochrany dat.
+- Ujistěte se, že je povoleno nastavení **Automatická konzistence.**
+- Pokuste se restartovat služby z příkazového řádku. Použijte `net stop dpmra` příkaz následovaný `net start dpmra`.
+- Ujistěte se, že splňujete požadavky na připojení k síti a šířku pásma.
+- Zkontrolujte, zda byl zdrojový počítač neočekávaně vypnut.
+- Ujistěte se, že disk je v pořádku a že je dostatek místa pro repliku.
+- Ujistěte se, že neexistují žádné duplicitní úlohy zálohování, které jsou spuštěny současně.
 
-## <a name="error-online-recovery-point-creation-failed"></a>Chyba: Vytvoření bodu obnovení online se nezdařilo
+## <a name="error-online-recovery-point-creation-failed"></a>Chyba: Vytvoření bodu obnovení online se nezdařilo.
 
-Chcete-li vyřešit tento problém, proveďte následující akce:
+Chcete-li tento problém vyřešit, proveďte následující akce:
 
 - Ujistěte se, že používáte nejnovější verzi agenta Azure Backup.
-- Zkuste ručně vytvořit bod obnovení v oblasti úloh ochrana.
-- Ujistěte se, že jste spustili kontrolu konzistence pro zdroj dat.
-- Ujistěte se, že splňujete síťové připojení a požadavky na šířku pásma.
+- Pokuste se ručně vytvořit bod obnovení v oblasti úlohy ochrany.
+- Ujistěte se, že spustíte kontrolu konzistence zdroje dat.
+- Ujistěte se, že splňujete požadavky na připojení k síti a šířku pásma.
 - Pokud jsou data repliky v nekonzistentním stavu, vytvořte bod obnovení disku tohoto zdroje dat.
-- Zajistěte, aby byla replika přítomna a nebyla nalezena.
-- Ujistěte se, že má replika dostatek místa pro vytvoření deníku USN (Update Sequence Number).
+- Ujistěte se, že replika je k dispozici a nechybí.
+- Ujistěte se, že replika má dostatek místa k vytvoření deníku pořadové číslo aktualizace (USN).
 
-## <a name="error-unable-to-configure-protection"></a>Chyba: nepovedlo se nakonfigurovat ochranu.
+## <a name="error-unable-to-configure-protection"></a>Chyba: Ochranu nelze nakonfigurovat.
 
-K této chybě dojde, když Data Protection Manager Server nemůže kontaktovat chráněný Server.
+K této chybě dochází, když server Správce ochrany dat nemůže kontaktovat chráněný server.
 
-Chcete-li vyřešit tento problém, proveďte následující akce:
+Chcete-li tento problém vyřešit, proveďte následující akce:
 
 - Ujistěte se, že používáte nejnovější verzi agenta Azure Backup.
-- Ujistěte se, že mezi serverem Data Protection Manager a chráněným serverem je připojení (síť/brána firewall/proxy server).
-- Pokud chráníte SQL Server, ujistěte se, že **Vlastnosti přihlášení** > **NT AUTHORITY\SYSTEM** mají povolené nastavení **sysadmin** .
+- Ujistěte se, že existuje připojení (síť/firewall/proxy server) mezi serverem Data Protection Manager a chráněným serverem.
+- Pokud chráníte server SQL, ujistěte se, že vlastnost **Vlastnosti** > přihlášení**NT AUTHORITY\SYSTEM** zobrazuje povolené nastavení **sysadmin.**
 
-## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>Chyba: Server není zaregistrován tak, jak je uveden v souboru přihlašovacích údajů trezoru.
+## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>Chyba: Server není registrován tak, jak je určeno v souboru pověření úschovny.
 
-K této chybě dojde během procesu obnovení pro data serveru Data Protection Manager/Azure Backup. Soubor s přihlašovacími údaji úložiště, který se používá v procesu obnovení, nepatří do trezoru Recovery Services pro Server Data Protection Manager nebo Azure Backup.
+K této chybě dochází během procesu obnovení dat Správce ochrany dat nebo Azure Backup server data. Soubor přihlašovacích údajů trezoru, který se používá v procesu obnovení, nepatří do trezoru služby Recovery Services pro server Správce ochrany dat nebo Azure Backup.
 
-Chcete-li tento problém vyřešit, proveďte tyto kroky:
+Chcete-li tento problém vyřešit, proveďte následující kroky:
 
-1. Stáhněte si soubor s přihlašovacími údaji trezoru z Recovery Services trezoru, do kterého je Server Data Protection Manager nebo Azure Backup zaregistrován.
-2. Zkuste zaregistrovat server k trezoru pomocí posledního staženého souboru s přihlašovacími údaji trezoru.
+1. Stáhněte si soubor přihlašovacích údajů trezoru z trezoru služby Recovery Services, do kterého je zaregistrován server Správce ochrany dat nebo Azure Backup.
+2. Pokuste se zaregistrovat server v úschovně pomocí naposledy staženého souboru přihlašovacích údajů úschovny.
 
-## <a name="error-no-recoverable-data-or-selected-server-not-a-data-protection-manager-server"></a>Chyba: žádná obnovitelná data nebo vybraný server není Data Protection Manager serverem.
+## <a name="error-no-recoverable-data-or-selected-server-not-a-data-protection-manager-server"></a>Chyba: Žádná obnovitelná data nebo vybraný server není server správce maskérové ochrany dat.
 
 K této chybě dochází z následujících důvodů:
 
-- Žádné další servery Data Protection Manager/Azure Backup nejsou registrovány do trezoru Recovery Services.
-- Servery ještě neodeslaly metadata.
-- Vybraný server není Server Data Protection Manager/Azure Backup.
+- Do trezoru služby Recovery Services nejsou registrovány žádné jiné servery Správce ochrany dat nebo Azure Backup.
+- Servery dosud nenahrály metadata.
+- Vybraný server není server správce mašity dat/Azure Backup.
 
-Pokud jsou jiné servery Data Protection Manager/Azure Backup zaregistrovány do trezoru Recovery Services, proveďte tyto kroky a problém vyřešte:
+Když jsou v trezoru služby Recovery Services zaregistrovány jiné servery Správce ochrany dat nebo Služby Azure Pro zálohování, proveďte tento krok k vyřešení problému:
 
-1. Ujistěte se, že je nainstalovaný nejnovější agent Azure Backup.
-2. Až zajistěte, aby byl nainstalován nejnovější agent, počkejte jeden den před zahájením procesu obnovení. Úloha nočního zálohování nahrává metadata pro všechna chráněná zálohování do cloudu. Zálohovaná data jsou pak k dispozici pro obnovení.
+1. Ujistěte se, že je nainstalován nejnovější agent Azure Backup.
+2. Po zajištění, že je nainstalován nejnovější agent, počkejte jeden den před zahájením procesu obnovení. Úloha nočního zálohování nahraje metadata pro všechny chráněné zálohy do cloudu. Záložní data jsou pak k dispozici pro obnovení.
 
-## <a name="error-provided-encryption-passphrase-doesnt-match-passphrase-for-server"></a>Chyba: zadané šifrovací heslo neodpovídá přístupovému heslu pro server.
+## <a name="error-provided-encryption-passphrase-doesnt-match-passphrase-for-server"></a>Chyba: Za předpokladu, že heslo pro šifrování neodpovídá přístupové frázi pro server.
 
-K této chybě dojde během procesu šifrování při obnovování dat serveru Data Protection Manager/Azure Backup. Šifrovací heslo, které se používá v procesu obnovení, se neshoduje s šifrovacím heslem serveru. V důsledku toho Agent nemůže data dešifrovat a obnovení nebude úspěšné.
+K této chybě dochází během procesu šifrování při obnovení dat správce ochrany dat nebo Azure Backup server data. Heslo pro šifrování, které se používá v procesu obnovení, neodpovídá přístupové frázi pro šifrování serveru. V důsledku toho agent nemůže dešifrovat data a obnovení se nezdaří.
 
 > [!IMPORTANT]
-> Pokud šifrovací heslo zapomenete nebo ztratíte, neexistují žádné další metody pro obnovu dat. Jedinou možností je znovu vygenerovat heslo. Použijte nové heslo k šifrování budoucích zálohovaných dat.
+> Pokud zapomenete nebo ztratíte heslo pro šifrování, neexistují žádné jiné metody pro obnovení dat. Jedinou možností je regenerovat přístupové heslo. Nové přístupové heslo použijte k šifrování budoucích záložních dat.
 >
-> Při obnovování dat vždy poskytněte stejné šifrovací heslo, které je přidružené k serveru Data Protection Manager/Azure Backup.
+> Při obnovení dat vždy zadejte stejné šifrovací heslo, které je přidruženo k serveru Data Protection Manager/Azure Backup.
 >

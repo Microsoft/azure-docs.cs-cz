@@ -1,6 +1,6 @@
 ---
-title: Použití zařízení StorSimple řady 8000 souhrn | Dokumentace Microsoftu
-description: Popisuje přehledu zařízení služby Správce zařízení StorSimple a jak ji používat k zobrazení metrik storage a propojené iniciátory a vyhledat sériové číslo a název IQN.
+title: Použití souhrnu zařízení řady StorSimple 8000 | Dokumenty společnosti Microsoft
+description: Popisuje souhrn servisního zařízení Správce zařízení StorSimple a způsob jeho použití k zobrazení metrik úložiště a připojených iniciátorů a k nalezení sériového čísla a čísla IQN.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,85 +15,85 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 1d88af2c0739c30b2562bad7660015b890e8159c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60578224"
 ---
-# <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Použití přehledu služby Správce zařízení StorSimple zařízení
+# <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Použití souhrnu zařízení ve službě Správce zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
-Okně s přehledem zařízení StorSimple poskytuje přehled o informace pro konkrétní zařízení StorSimple, na rozdíl od okně přehledu služby, která poskytuje informace o všech zařízeních, které jsou součástí řešení Microsoft Azure StorSimple.
+Okno souhrnu zařízení StorSimple poskytuje přehled informací pro konkrétní zařízení StorSimple, na rozdíl od okna souhrnu služby, který poskytuje informace o všech zařízeních zahrnutých v řešení Microsoft Azure StorSimple.
 
-Okně s přehledem zařízení poskytuje přehled o zařízení řady StorSimple 8000, která je registrována s danou StorSimple Device Manager, zvýraznění problémy zařízení, které vyžadují pozornost. správce systému. Tento kurz představuje okně s přehledem zařízení, vysvětluje obsah a funkce a popisuje úlohy, které můžete provádět z tohoto okna.
+Okno souhrnu zařízení poskytuje souhrnné zobrazení zařízení řady StorSimple 8000, které je registrováno v daném Správci zařízení StorSimple, a upozorňuje na problémy se zařízením, které vyžadují pozornost správce systému. Tento kurz představuje okno souhrnu zařízení, vysvětluje obsah a funkce a popisuje úkoly, které můžete provádět z tohoto okna.
 
-Okně s přehledem zařízení zobrazí následující informace:
+V souhrnném okně zařízení se zobrazí následující informace:
 
-![Okno souhrn zařízení](./media/storsimple-8000-device-dashboard/device-summary1.png)
+![Souhrnný nůž zařízení](./media/storsimple-8000-device-dashboard/device-summary1.png)
 
-## <a name="management-command-bar"></a>Panel příkazů správy
+## <a name="management-command-bar"></a>Panel příkazů Správa
 
-V okně zařízení StorSimple zobrazí se možnosti pro správu zařízení StorSimple. Příkazy pro správu se zobrazí v horní části okna a na levé straně. Pomocí těchto možností můžete přidat sdílené složky nebo svazky, aktualizovat nebo převzetí služeb při selhání zařízení.
+V okně zařízení StorSimple se zobrazí možnosti správy zařízení StorSimple. Zobrazí se příkazy pro správu v horní části okna a na levé straně. Pomocí těchto možností můžete přidat sdílené složky nebo svazky nebo aktualizovat zařízení nebo je přepojit na po selhání.
 
-![Panel příkazů správy](./media/storsimple-8000-device-dashboard/device-summary2.png)
+![Panel příkazů Správa](./media/storsimple-8000-device-dashboard/device-summary2.png)
 
 ## <a name="essentials"></a>Základy
 
-Oblasti essentials pojednává o některých důležitých vlastností, jako, stav, modelu, cílové IQN a verze softwaru. 
+Oblast essentials zachycuje některé důležité vlastnosti, jako je stav, model, cílové IQN a verze softwaru. 
 
-![Základy zařízení](./media/storsimple-8000-device-dashboard/device-summary3.png)
+![Základní informace o zařízení](./media/storsimple-8000-device-dashboard/device-summary3.png)
 
 ## <a name="monitoring"></a>Monitorování
 
-* **Výstrahy** dlaždice poskytuje snímek všechny aktivní výstrahy pro vaše zařízení, seskupené podle závažnosti výstrahy.
+* Dlaždice **Výstrahy** poskytuje snímek všech aktivních výstrah pro vaše zařízení seskupených podle závažnosti výstrahy.
 
-    ![Dlaždice výstrah](./media/storsimple-8000-device-dashboard/device-summary4.png)
+    ![Dlaždice výstrahy](./media/storsimple-8000-device-dashboard/device-summary4.png)
 
-    Kliknutím na dlaždici otevřít **výstrahy** okno a potom klikněte na jednotlivé výstrahy zobrazíte další podrobnosti o této výstraze, včetně všech doporučené akce. Výstrahy můžete také zrušit, pokud byl problém vyřešen.
+    Kliknutím na dlaždici otevřete okno **Výstrahy** a kliknutím na jednotlivou výstrahu zobrazíte další podrobnosti o této výstraze, včetně doporučených akcí. Výstrahu můžete také vymazat, pokud byl problém vyřešen.
 
-    ![Kliknutím na dlaždici upozornění](./media/storsimple-8000-device-dashboard/device-summary10.png)
+    ![Klikněte na dlaždici upozornění.](./media/storsimple-8000-device-dashboard/device-summary10.png)
 
-* **Stav** dlaždice poskytuje přehled o stavu komponenty hardwaru pro zařízení i stav zařízení. Stav zařízení může být offline, online, Deaktivované nebo připraveno k nastavení.
+* Dlaždice **Stav a stav** poskytuje přehled o stavu hardwarové součásti pro zařízení včetně stavu zařízení. Stav zařízení může být offline, online, deaktivován nebo připraven k nastavení.
 
     ![Dlaždice stavu a stavu](./media/storsimple-8000-device-dashboard/device-summary5.png)
 
-* **Svazky** dlaždice obsahuje souhrn počtu svazků v zařízení seskupených podle stavu.
+* Dlaždice **Objemy** obsahuje souhrn počtu svazků v zařízení seskupených podle stavu.
 
-    ![Dlaždice svazky](./media/storsimple-8000-device-dashboard/device-summary6.png)
+    ![Dlaždice Objemy](./media/storsimple-8000-device-dashboard/device-summary6.png)
 
-    Kliknutím na dlaždici otevřít **svazky** seznamu okno a potom klikněte na jednom svazku lze zobrazit nebo upravit její vlastnosti.
+    Kliknutím na dlaždici otevřete okno seznamu **Svazky** a kliknutím na jednotlivý svazek zobrazte nebo upravte jeho vlastnosti.
     
-    ![Kliknutím na dlaždici svazky](./media/storsimple-8000-device-dashboard/device-summary9.png)
+    ![Klikněte na dlaždici svazků](./media/storsimple-8000-device-dashboard/device-summary9.png)
     
-    Další informace najdete v tématu Jak [Správa svazků](storsimple-8000-manage-volumes-u2.md).
+    Další informace naleznete v tématu [správa svazků](storsimple-8000-manage-volumes-u2.md).
 
-* V **využití** grafu, můžete zobrazit z primárního úložiště použít v rámci vašeho zařízení a cloudové úložiště spotřebované za posledních 7 dnů, výchozí časové období.
+* V grafu **Využití** můžete zobrazit primární úložiště používané v celém zařízení a cloudové úložiště spotřebované za posledních 7 dní, což je výchozí časové období.
 
-     ![Dlaždice využití](./media/storsimple-8000-device-dashboard/device-summary7.png)
+     ![Dlaždice použití](./media/storsimple-8000-device-dashboard/device-summary7.png)
     
-     Chcete-li vybrat různé časové měřítko, použijte **upravit** možnost v pravém horním rohu grafu.
+     Chcete-li zvolit jiné časové měřítko, použijte volbu **Upravit** v pravém horním rohu grafu.
 
      ![Upravit graf využití](./media/storsimple-8000-device-dashboard/device-summary12.png)
 
-     V tomto grafu můžete zobrazit metriky pro celkový počet primární úložiště (množství dat zapsaných hostiteli vaše zařízení) a celkový počet cloudové úložiště spotřebovávané zařízení po určitou dobu.
+     V tomto grafu můžete zobrazit metriky pro celkové primární úložiště (množství dat napsaných hostiteli do vašeho zařízení) a celkové cloudové úložiště spotřebované zařízením po určitou dobu.
   
-     V tomto kontextu *primárního úložiště* odkazuje na celkové množství dat zapsaných hostitele a je možné rozdělit podle typu svazku: *primární vrstvené úložiště* obsahuje jak místně uložená data a data Vrstvená do v cloudu. *Primární místně připojené úložiště* obsahuje pouze data uložená místně. *Cloudové úložiště*, na druhé straně je měření celkové množství dat uložených v cloudu. Toto úložiště zahrnuje Vrstvená data a zálohy. Data uložená v cloudu se odstraňují duplicity a komprimovaný, zatímco primární úložiště označuje velikost úložiště využitá předtím, než je s odstraněním duplicitních dat a komprimovaná data. (Můžete porovnat tato dvě čísla, kde získáte představu míry komprese.) Pro obě primární a cloudového úložiště, zobrazené částky jsou založeny na frekvenci sledování nakonfigurujete. Například pokud se rozhodnete frekvenci jeden týden, pak graf zobrazuje data za každý den předchozího týdne.
+     V tomto kontextu *primární úložiště* odkazuje na celkové množství dat zapsaných hostitelem a lze rozdělit podle typu svazku: *primární vrstvené úložiště* zahrnuje místně uložená data a data vrstvená do cloudu. *Primární místně připnuté úložiště* zahrnuje pouze data uložená místně. *Cloudové úložiště*je na druhé straně měření celkového množství dat uložených v cloudu. Toto úložiště zahrnuje vrstvená data a zálohy. Data uložená v cloudu jsou deduplikována a komprimována, zatímco primární úložiště označuje velikost úložiště použitého před odstraněním duplicit a komprimací dat. (Můžete porovnat tyto dvě čísla získat představu o kompresní rychlost.) Pro primární i cloudové úložiště jsou zobrazené částky založeny na frekvenci sledování, kterou nakonfigurujete. Pokud například zvolíte frekvenci jednoho týdne, graf zobrazí data pro každý den v předchozím týdnu.
 
-     Pokud chcete zobrazit množství cloudové úložiště spotřebované v čase, vyberte **CLOUDOVÉ úložiště používat** možnost. Pokud chcete zobrazit celkový úložiště, které jsou napsány hostitele, vyberte **primární VRSTVENÉ úložiště použít** a **primární MÍSTNĚ připojené úložiště použít** možnosti. 
-     Další informace najdete v tématu [použít k monitorování zařízení StorSimple ve službě Správce zařízení StorSimple](storsimple-monitor-device.md).
-
-
-* **Kapacity** dlaždici se zobrazuje primární úložiště, která je zřízená a zbývající zařízení vzhledem k celkový úložiště k dispozici pro stejné. **Zřízení** odkazuje na velikost úložiště, který je připravený a přidělené, **zbývající** odkazuje na zbývající kapacitu, kterou je možné zřídit přes toto zařízení. 
-
-    ![Dlaždice využití](./media/storsimple-8000-device-dashboard/device-summary8.png)
-
-    Klikněte na tuto dlaždici zobrazíte, jak je zřízené kapacity ve místně připnuté a vrstvené svazky. **Zbývající Vrstvená** kapacita je k dispozici kapacita, která se dá zřídit včetně cloudu, zatímco **zbývající místní** je kapacita zbývající na disky připojené k tomuto zařízení.
-
-    ![Klikněte na graf využití](./media/storsimple-8000-device-dashboard/device-summary13.png)
+     Chcete-li zobrazit množství cloudového úložiště spotřebovaného v průběhu času, vyberte možnost **POUŽITÉ CLOUDOVÉ ÚLOŽIŠTĚ.** Chcete-li zobrazit celkové úložiště, které bylo napsáno hostitelem, vyberte **primární vrstvené úložiště použité** a primární místně **připnuté úložiště použité** možnosti. 
+     Další informace naleznete [v tématu Sledování zařízení StorSimple Device Manager pomocí služby StorSimple](storsimple-monitor-device.md)Device Manager .
 
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [okno s přehledem služby StorSimple](storsimple-8000-service-dashboard.md).
-* Další informace o [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* **Dlaždice Kapacita** zobrazuje primární úložiště, které je zřízeno a zůstává v celém zařízení vzhledem k celkovému dostupnému úložišti pro stejné. **Zřízené** odkazuje na množství úložiště, které je připravena a přidělena pro použití, **Zbývající** odkazuje na zbývající kapacitu, která může být zřízena v rámci tohoto zařízení. 
+
+    ![Dlaždice použití](./media/storsimple-8000-device-dashboard/device-summary8.png)
+
+    Kliknutím na tuto dlaždici zobrazíte, jak se kapacita zřápá napříč vrstvené a místně vázaných svazků. **Zbývající vrstvené kapacity** je dostupná kapacita, která může být zřízena, včetně cloudu, zatímco **zbývající místní** je kapacita zbývající na discích připojených k tomuto zařízení.
+
+    ![Klikněte na graf využití.](./media/storsimple-8000-device-dashboard/device-summary13.png)
+
+
+## <a name="next-steps"></a>Další kroky
+* Další informace o [okně souhrnu služby StorSimple](storsimple-8000-service-dashboard.md).
+* Další informace o [správě zařízení StorSimple Device Manager pomocí služby StorSimple](storsimple-8000-manager-service-administration.md).
 

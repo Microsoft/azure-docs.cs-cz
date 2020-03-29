@@ -1,6 +1,6 @@
 ---
-title: Aplikace Proxy aplikací trvá příliš dlouho | Dokumentace Microsoftu
-description: Řešení problémů s výkonem načítání stránky s Azure AD Application Proxy
+title: Načtení aplikace Proxy aplikace trvá příliš dlouho | Dokumenty společnosti Microsoft
+description: Poradce při potížích s výkonem načítání stránky pomocí proxy aplikace Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,27 +17,27 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ac1182d719d7c90129115e1fadf94f4f86a28e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65782653"
 ---
-# <a name="an-application-proxy-application-takes-too-long-to-load"></a>Aplikace Proxy aplikací trvá příliš dlouho
+# <a name="an-application-proxy-application-takes-too-long-to-load"></a>Načtení aplikace Proxy aplikace trvá příliš dlouho.
 
-Tento článek pomůže pochopit, proč Azure AD Application Proxy aplikace může trvat dlouhou dobu načtení. Také vysvětluje, co můžete udělat, abyste tento problém vyřešit.
+Tento článek vám pomůže pochopit, proč aplikace proxy aplikace Azure AD může trvat dlouhou dobu načíst. Vysvětluje také, co můžete udělat pro vyřešení tohoto problému.
 
 ## <a name="overview"></a>Přehled
-I když vaše aplikace pracují, budou mít dlouhé latence. Pravděpodobně došlo k vylepšení topologie sítě, které můžete použít ke zlepšení rychlosti. Vyhodnocení různých topologií, najdete v článku [dokumentu důležité informace o síti](application-proxy-network-topology.md).
+I když vaše aplikace pracují, mohou zaznamenat dlouhou latenci. Mohou existovat vylepšení topologie sítě, které můžete provést pro zlepšení rychlosti. Hodnocení různých topologií naleznete v [dokumentu o aspektech sítě](application-proxy-network-topology.md).
 
-Kromě topologie sítě nejsou momentálně žádné další doporučení pro optimalizaci výkonu. Jako Proxy aplikací, které rozšiřuje služba by mohl pocházet do datového centra, který je fyzicky blíž. Těsné blízkosti vám můžou pomoct s latencí. Seznam datových center Azure, najdete v článku [latence zkušební stránku](http://www.azurespeed.com/Azure/Latency). 
+Kromě topologie sítě v současné době neexistují žádná další doporučení pro ladění výkonu. Jak se služba Proxy aplikace rozšiřuje, může se dostat do datového centra, které je fyzicky blíže. Bližší blízkost může pomoci s latencí. Seznam datových center Azure najdete na [stránce testu latence](http://www.azurespeed.com/Azure/Latency). 
 
-Součástí datových center se službou Proxy aplikací [nástroj pro testování konektoru porty](https://aadap-portcheck.connectorporttest.msappproxy.net/). 
+Datová centra se službou Proxy aplikace lze nalézt pomocí [nástroje Test Connector Ports](https://aadap-portcheck.connectorporttest.msappproxy.net/). 
 
-## <a name="feedback-on-application-proxy-data-center-locations"></a>Názor na aplikaci Proxy datacentrum v umístění 
-Můžou existovat datových center Azure, které není dosud zahrnují Proxy aplikací, ale by vedly k vylepšení skvělé latenci za vás. Odeslat data center umístění aadapfeedback@microsoft.com. Společnost Microsoft používá vaše zpětná vazba pro rozšíření plány.
+## <a name="feedback-on-application-proxy-data-center-locations"></a>Zpětná vazba k umístění mno žití o aplikačním proxy centru 
+Mohou existovat datová centra Azure, která ještě neobsahují proxy aplikace, ale vedla by k velkému zlepšení latence. Odešlete umístění aadapfeedback@microsoft.comdatového centra do aplikace . Společnost Microsoft používá vaši zpětnou vazbu pro plány rozšíření.
 
-Microsoft pracuje na dalších možností do Zlepšete latenci. Jakmile tato vylepšení jsou k dispozici, budou aktualizovány v dokumentaci.
+Společnost Microsoft pracuje na dalších funkcích ke zlepšení latence. Jakmile budou tato vylepšení k dispozici, bude dokumentace aktualizována.
 
-## <a name="next-steps"></a>Další postup
-[Práce s existující místní proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
+## <a name="next-steps"></a>Další kroky
+[Práce s existujícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)

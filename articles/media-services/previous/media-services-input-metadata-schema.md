@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services schéma metadat vstupu | Microsoft Docs
-description: Tento článek obsahuje přehled Azure Media Services schématu vstupních metadat.
+title: Schéma vstupních metadat služby Azure Media Services | Dokumenty společnosti Microsoft
+description: Tento článek poskytuje přehled schématu vstupních metadat Služby Azure Media Services.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,205 +14,205 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: a81d6edfd887dc935a53742b7bc1492651c9bda5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74887114"
 ---
 # <a name="input-metadata"></a>Vstupní metadata 
 
-Úloha kódování je přidružená ke vstupnímu assetu (nebo assetům), na kterém chcete provést některé úlohy kódování.  Po dokončení úlohy se vytvoří výstupní Asset.  Výstupní Asset obsahuje video, zvuk, miniatury, manifest atd. Výstupní Asset obsahuje také soubor s metadaty o vstupním prostředku. Název souboru XML metadat má následující formát: &lt;asset_id&gt;_metadata. XML (například 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata. XML), kde &lt;asset_id&gt; je AssetId hodnota vstupního assetu.  
+Úloha kódování je přidružena ke vstupnímu prostředku (nebo datovým zdrojům), na kterém chcete provést některé úlohy kódování.  Po dokončení úkolu je vytvořen výstupní majetek.  Výstupní aktivum obsahuje video, zvuk, miniatury, manifest atd. Výstupní datový zdroj také obsahuje soubor s metadaty o vstupním datovém zdroji. Název souboru XML metadat má následující &lt;formát: asset_id&gt;_metadata.xml (například 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml), kde &lt;asset_id&gt; je hodnota AssetId vstupního datového zdroje.  
 
-Media Services nesálu kontrolu vstupních assetů za účelem generování metadat. Vstupní metadata se generují jako artefakt, když se v úloze zpracuje vstupní Asset. Proto je tento artefakt zapsán do výstupního prostředku. Pro generování metadat pro vstupní prostředky a výstupní prostředky se používají různé nástroje. Vstupní metadata proto mají trochu jiné schéma než výstupní metadata.
+Služba Media Services nepreventivně neprohledá vstupní datové zdroje a nevygeneruje metadata. Vstupní metadata jsou generována pouze jako artefakt při zpracování vstupního datového zdroje v úloze. Proto je tento artefakt zapsán do výstupního assetu. Různé nástroje se používají ke generování metadat pro vstupní datové zdroje a výstupní datové zdroje. Vstupní metadata proto má mírně odlišné schéma než výstupní metadata.
 
-Pokud chcete prošetřit soubor metadat, můžete vytvořit Lokátor **SAS** a stáhnout soubor do místního počítače. Můžete najít příklad, jak vytvořit Lokátor SAS a stáhnout soubor [pomocí rozšíření Media Services .NET SDK](media-services-dotnet-get-started.md).  
+Chcete-li soubor metadat prozkoumat, můžete vytvořit lokátor **SAS** a stáhnout soubor do místního počítače. Najdete příklad, jak vytvořit lokátor SAS a stáhnout soubor [pomocí rozšíření Media Services .NET SDK Extensions](media-services-dotnet-get-started.md).  
 
-Tento článek pojednává o prvcích a typech schématu XML, na kterém je založen vstupní metada (&lt;asset_id&gt;_metadata. XML).  Informace o souboru, který obsahuje metadata o výstupním prostředku, najdete v tématu [výstupní metadata](media-services-output-metadata-schema.md).  
+Tento článek popisuje prvky a typy schématu XML, na kterém&lt;je&gt;založena vstupní metada ( asset_id _metadata.xml).  Informace o souboru, který obsahuje metadata o výstupním datovém zdroji, naleznete v [tématu Výstupní metadata](media-services-output-metadata-schema.md).  
 
-[Kód schématu](media-services-input-metadata-schema.md#code) na konci tohoto článku najdete jako [příklad XML](media-services-input-metadata-schema.md#xml) .  
+Na konci tohoto článku můžete najít [příklad schema](media-services-input-metadata-schema.md#code) [xml.](media-services-input-metadata-schema.md#xml)  
  
 
-## <a name="AssetFiles"></a>AssetFiles – element (kořenový element)
+## <a name="assetfiles-element-root-element"></a><a name="AssetFiles"></a>AssetFiles element (kořenový prvek)
 Obsahuje kolekci [AssetFile element](media-services-input-metadata-schema.md#AssetFile)s pro úlohu kódování.  
 
-Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-services-input-metadata-schema.md#xml).  
+Viz příklad XML na konci tohoto článku: [Příklad XML](media-services-input-metadata-schema.md#xml).  
 
 | Name (Název) | Popis |
 | --- | --- |
-| **AssetFile**<br /><br /> minOccurs="1" maxOccurs="unbounded" |Jeden podřízený element. Další informace naleznete v tématu [AssetFile element](media-services-input-metadata-schema.md#AssetFile). |
+| **Soubor majetku**<br /><br /> minOccurs="1" maxOccurs="bez meze" |Jeden podřízený prvek. Další informace naleznete v [tématu AssetFile element](media-services-input-metadata-schema.md#AssetFile). |
 
-## <a name="AssetFile"></a>Element AssetFile
- Obsahuje atributy a prvky, které popisují soubor assetu.  
+## <a name="assetfile-element"></a><a name="AssetFile"></a>Element AssetFile
+ Obsahuje atributy a prvky, které popisují soubor majetku.  
 
- Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-services-input-metadata-schema.md#xml).  
+ Viz příklad XML na konci tohoto článku: [Příklad XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Název**<br /><br /> Požaduje se |**xs: String** |Název souboru assetu. |
-| **Velikost**<br /><br /> Požaduje se |**xs: Long** |Velikost souboru prostředků v bajtech |
-| **Doba trvání**<br /><br /> Požaduje se |**xs: Duration** |Doba přehrávání obsahu Příklad: Duration = "PT25M 37.757 S". |
-| **NumberOfStreams**<br /><br /> Požaduje se |**xs: int** |Počet datových proudů v souboru prostředků. |
-| **FormatNames**<br /><br /> Požaduje se |**xs: String** |Názvy formátů. |
-| **FormatVerboseNames**<br /><br /> Požaduje se |**xs: String** |Formátování podrobných názvů. |
-| **startTime** |**xs: Duration** |Čas zahájení obsahu Příklad: Čas_spuštění = "PT 2.669 S". |
-| **OverallBitRate** |**xs: int** |Průměrná přenosová rychlost souboru prostředků v KB/s. |
+| **Název**<br /><br /> Požaduje se |**xs:řetězec** |Název souboru datového zdroje. |
+| **Velikost**<br /><br /> Požaduje se |**xs:dlouhé** |Velikost souboru datového zdroje v bajtech. |
+| **Doba trvání**<br /><br /> Požaduje se |**xs:doba trvání** |Doba přehrávání obsahu. Příklad: duration="PT25M37.757S". |
+| **Početofstreamů**<br /><br /> Požaduje se |**xs:int** |Počet datových proudů v souboru datového zdroje. |
+| **Formátnázvů**<br /><br /> Požaduje se |**xs: řetězec** |Formátovat názvy. |
+| **FormatVerboseNames**<br /><br /> Požaduje se |**xs: řetězec** |Naformátujte podrobné názvy. |
+| **Starttime** |**xs:doba trvání** |Čas zahájení obsahu. Příklad: StartTime="PT2.669S". |
+| **Celková bitová míra** |**xs: int** |Průměrná přenosová rychlost souboru datového zdroje v kbps. |
 
 > [!NOTE]
-> Následující čtyři podřízené elementy se musí objevit v sekvenci.  
+> Následující čtyři podřízené prvky se musí objevit v pořadí.  
 > 
 > 
 
 ### <a name="child-elements"></a>Podřízené prvky
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Programy**<br /><br /> minOccurs="0" | |Kolekce prvků všechny [programy](media-services-input-metadata-schema.md#Programs) , pokud je soubor prostředků ve formátu MPEG-TS. |
-| **VideoTracks**<br /><br /> minOccurs="0" | |Každý soubor fyzického majetku může obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. Tento prvek obsahuje kolekci všech [VideoTracks](media-services-input-metadata-schema.md#VideoTracks) , které jsou součástí souboru prostředků. |
-| **AudioTracks**<br /><br /> minOccurs="0" | |Každý fyzický soubor prostředků může obsahovat nula nebo více zvukových stop, které se pronechají v příslušném formátu kontejneru. Tento prvek obsahuje kolekci všech [AudioTracks](media-services-input-metadata-schema.md#AudioTracks) , které jsou součástí souboru prostředků. |
-| **Metadata**<br /><br /> minOccurs = "0" maxOccurs = "Unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Metadata souboru prostředků reprezentovaná jako key\value řetězce. Například:<br /><br /> **&lt;klíč metadat = "jazyk" value = "ENG"/&gt;** |
+| **Programy**<br /><br /> minOccurs="0" | |Kolekce všech [programů prvek,](media-services-input-metadata-schema.md#Programs) když soubor datových zdrojů je ve formátu MPEG-TS. |
+| **VideoSkladby**<br /><br /> minOccurs="0" | |Každý soubor fyzického majetku může obsahovat nula nebo více videí prokládáných do příslušného formátu kontejneru. Tento prvek obsahuje kolekci všech [VideoTracks,](media-services-input-metadata-schema.md#VideoTracks) které jsou součástí souboru majetku. |
+| **Zvukové stopy**<br /><br /> minOccurs="0" | |Každý soubor fyzického majetku může obsahovat nula nebo více zvukových stop prokládáných do příslušného formátu kontejneru. Tento prvek obsahuje kolekci všech [AudioTracks,](media-services-input-metadata-schema.md#AudioTracks) které jsou součástí souboru datového zdroje. |
+| **Metadata**<br /><br /> minOccurs="0" maxOccurs="bez meze" |[Typ metadat](media-services-input-metadata-schema.md#MetadataType) |Metadata souboru majetku reprezentovaná jako řetězce key\value. Například:<br /><br /> **&lt;Metadata key="language" value="eng" /&gt;** |
 
-## <a name="TrackType"></a>TrackType
-Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-services-input-metadata-schema.md#xml).  
+## <a name="tracktype"></a><a name="TrackType"></a>TrackType
+Viz příklad XML na konci tohoto článku: [Příklad XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **ID**<br /><br /> Požaduje se |**xs: int** |Index s nulovým základem tohoto zvukového zvuku nebo stopy videa<br /><br /> To neznamená, že TrackID, jak se používá v souboru MP4. |
-| **Kodek** |**xs: String** |Řetězec kodeku pro sledování videa |
-| **CodecLongName** |**xs: String** |Dlouhý název kodeku zvuk nebo video stop |
-| **TimeBase**<br /><br /> Požaduje se |**xs: String** |Časová základna Příklad: základ času = "1/48000" |
-| **NumberOfFrames** |**xs: int** |Počet snímků (přítomných pro stopy videa). |
-| **startTime** |**xs: Duration** |Čas zahájení sledování Příklad: Čas_spuštění = "PT 2.669 S" |
-| **Doba trvání** |**xs: Duration** |Doba trvání sledování Příklad: Duration = "PTSampleFormat M 37.757 S". |
+| **ID**<br /><br /> Požaduje se |**xs:int** |Nulový index této zvukové stopy nebo videostopy.<br /><br /> To není nutně, že TrackID, jak je použito v souboru MP4. |
+| **Kodek** |**xs:řetězec** |Řetězec kodeku sledování videa. |
+| **Název CodecLongName** |**xs: řetězec** |Dlouhý název kodeku zvukové stopy nebo videa. |
+| **Časová základna**<br /><br /> Požaduje se |**xs:řetězec** |Časová základna. Příklad: TimeBase="1/48000" |
+| **Počet rámců** |**xs:int** |Počet snímků (k dispozici pro video stopy). |
+| **Starttime** |**xs: doba trvání** |Čas zahájení sledování. Příklad: StartTime="PT2.669S" |
+| **Doba trvání** |**xs:doba trvání** |Doba trvání sledování. Příklad: duration="PTSampleFormat M37.757S". |
 
 > [!NOTE]
-> Následující dva podřízené elementy se musí objevit v sekvenci.  
+> Následující dva podřízené prvky se musí objevit v pořadí.  
 > 
 > 
 
 ### <a name="child-elements"></a>Podřízené prvky
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Akcí**<br /><br /> minOccurs = "0" maxOccurs = "1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Obsahuje informace o prezentaci (například o tom, zda je konkrétní zvuková stopa určena pro vizuálně postižené diváky). |
-| **Metadata**<br /><br /> minOccurs = "0" maxOccurs = "Unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Obecné řetězce klíč/hodnota, které lze použít k uložení nejrůznějších informací. Například Key = "jazyk", a value = "ENG". |
+| **Dispozice**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Obsahuje informace o prezentaci (například zda je určitá zvuková stopa pro zrakově postižené prohlížeče). |
+| **Metadata**<br /><br /> minOccurs="0" maxOccurs="bez meze" |[Typ metadat](media-services-input-metadata-schema.md#MetadataType) |Obecné řetězce klíč/hodnota, které lze použít k uložení různých informací. Například key="language" a value="eng". |
 
-## <a name="AudioTrackType"></a>AudioTrackType (dědí z TrackType)
+## <a name="audiotracktype-inherits-from-tracktype"></a><a name="AudioTrackType"></a>AudioTrackType (dědí z TrackType)
  **AudioTrackType** je globální komplexní typ, který dědí z [TrackType](media-services-input-metadata-schema.md#TrackType).  
 
- Typ představuje konkrétní zvukovou stopu v souboru prostředků.  
+ Typ představuje konkrétní zvukovou stopu v souboru datového zdroje.  
 
- Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-services-input-metadata-schema.md#xml).  
+ Viz příklad XML na konci tohoto článku: [Příklad XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **SampleFormat** |**xs: String** |Vzorový formát |
-| **ChannelLayout** |**xs: String** |Rozložení kanálu. |
-| **Kanály**<br /><br /> Požaduje se |**xs: int** |Číslo (0 nebo více) zvukových kanálů. |
-| **SamplingRate**<br /><br /> Požaduje se |**xs: int** |Vzorkovací frekvence zvuku v ukázkách/s nebo Hz. |
-| **Rychlostí** |**xs: int** |Průměrná rychlost zvukového bitu v bitech za sekundu, jak je vypočítána ze souboru assetu. Počítá se pouze část základního datového proudu a režie balení není v tomto počtu zahrnutá. |
-| **BitsPerSample** |**xs: int** |Bity na vzorek pro typ formátu wFormatTag |
+| **Ukázkový formát** |**xs:řetězec** |Ukázkový formát. |
+| **Rozložení kanálu** |**xs: řetězec** |Rozložení kanálu. |
+| **Kanály**<br /><br /> Požaduje se |**xs:int** |Číslo (0 nebo více) zvukových kanálů. |
+| **Vzorkovací míra**<br /><br /> Požaduje se |**xs:int** |Vzorkovací frekvence zvuku ve vzorcích/s nebo Hz. |
+| **Datový tok** |**xs:int** |Průměrná přenosová rychlost zvuku v bitech za sekundu vypočtená ze souboru datových zdrojů. Počítá se pouze datová část elementárního datového proudu a režie balení není zahrnuta v tomto počtu. |
+| **BitsPerSample** |**xs:int** |Bity na ukázku pro typ formátu wFormatTag. |
 
-## <a name="VideoTrackType"></a>VideoTrackType (dědí z TrackType)
+## <a name="videotracktype-inherits-from-tracktype"></a><a name="VideoTrackType"></a>VideoTrackType (dědí z TrackType)
 **VideoTrackType** je globální komplexní typ, který dědí z [TrackType](media-services-input-metadata-schema.md#TrackType).  
 
-Typ představuje konkrétní stopu videa v souboru prostředků.  
+Typ představuje konkrétní stopu videa v souboru datového zdroje.  
 
-Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-services-input-metadata-schema.md#xml).  
-
-### <a name="attributes"></a>Atributy
-| Name (Název) | Typ | Popis |
-| --- | --- | --- |
-| **FourCC**<br /><br /> Požaduje se |**xs: String** |FourCCový kodek pro video. |
-| **Profil** |**xs: String** |Profil stopy videa. |
-| **Úroveň** |**xs: String** |Úroveň stopy videa |
-| **PixelFormat** |**xs: String** |Formát pixelu stopy videa |
-| **Délk**<br /><br /> Požaduje se |**xs: int** |Zakódovaná Šířka videa v pixelech |
-| **Výška**<br /><br /> Požaduje se |**xs: int** |Výška kódovaného videa v pixelech |
-| **DisplayAspectRatioNumerator**<br /><br /> Požaduje se |**xs: Double** |Čítač zobrazení poměru stran videa |
-| **DisplayAspectRatioDenominator**<br /><br /> Požaduje se |**xs: Double** |Jmenovatel poměru stran zobrazení videa |
-| **DisplayAspectRatioDenominator**<br /><br /> Požaduje se |**xs: Double** |Ukázka poměru stran videa – čitatel. |
-| **SampleAspectRatioNumerator** |**xs: Double** |Ukázka poměru stran videa – čitatel. |
-| **SampleAspectRatioNumerator** |**xs: Double** |Jmenovatel poměru stran vzorku videa |
-| **Snímků**<br /><br /> Požaduje se |**xs: Decimal** |Měřená snímková frekvence videa ve formátu. 3F. |
-| **Rychlostí** |**xs: int** |Průměrná přenosová rychlost videa v kilobitech za sekundu, jak je vypočítána ze souboru assetu Počítá se pouze část základního datového proudu a režijní náklady na balení nejsou zahrnuty. |
-| **MaxGOPBitrate** |**xs: int** |Maximální přenosová rychlost skupinu GOP pro tuto stopu videa v kilobitech za sekundu |
-| **HasBFrames** |**xs: int** |Video sleduje počet snímků B. |
-
-## <a name="MetadataType"></a> MetadataType
-**MetadataType** je globální komplexní typ, který popisuje metadata souboru assetu jako řetězce klíč/hodnota. Například Key = "jazyk", a value = "ENG".  
-
-Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-services-input-metadata-schema.md#xml).  
+Viz příklad XML na konci tohoto článku: [Příklad XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **key**<br /><br /> Požaduje se |**xs: String** |Klíč v páru klíč/hodnota. |
-| **value**<br /><br /> Požaduje se |**xs: String** |Hodnota v páru klíč/hodnota. |
+| **Fourcc**<br /><br /> Požaduje se |**xs:řetězec** |Video kodek FourCC kód. |
+| **Profil** |**xs: řetězec** |Profil videostopy. |
+| **Úroveň** |**xs: řetězec** |Úroveň videostopy. |
+| **Pixelformat** |**xs: řetězec** |Formát obrazových bodů videostopy. |
+| **impulzu**<br /><br /> Požaduje se |**xs:int** |Zakódovaná šířka videa v pixelech. |
+| **Height**<br /><br /> Požaduje se |**xs:int** |Zakódovaná výška videa v pixelech. |
+| **Čítač DisplayAspectRatioNumerator**<br /><br /> Požaduje se |**xs: dvojité** |Čitateč poměru stran zobrazení videa. |
+| **ZobrazitRatioRatioJmenovatel**<br /><br /> Požaduje se |**xs:dvojitá** |Jmenovatel poměru stran zobrazení videa. |
+| **ZobrazitRatioRatioJmenovatel**<br /><br /> Požaduje se |**xs: dvojité** |Video ukázkový poměr stran čitatel. |
+| **SampleAspectRatioNumerator** |**xs: dvojité** |Video ukázkový poměr stran čitatel. |
+| **SampleAspectRatioNumerator** |**xs:dvojitá** |Jmenovatel poměru stran vzorku videa. |
+| **Framerate**<br /><br /> Požaduje se |**xs:desetinné** |Naměřená kmitočet snímků videa ve formátu .3f. |
+| **Datový tok** |**xs:int** |Průměrná přenosová rychlost videa v kilobitech za sekundu, jak je vypočtena ze souboru majetku. Počítá se pouze datová část elementárního datového proudu a režie balení není zahrnuta. |
+| **MaxGOPBitrate** |**xs: int** |Maximální gop průměrný přenosový tok pro tuto video stopu v kilobitech za sekundu. |
+| **Rámce HasBFrames** |**xs:int** |Počet snímků B sledování videa. |
 
-## <a name="ProgramType"></a> ProgramType
+## <a name="metadatatype"></a><a name="MetadataType"></a>Typ metadat
+**MetadataType** je globální komplexní typ, který popisuje metadata souboru datového zdroje jako řetězce klíč/hodnota. Například key="language" a value="eng".  
+
+Viz příklad XML na konci tohoto článku: [Příklad XML](media-services-input-metadata-schema.md#xml).  
+
+### <a name="attributes"></a>Atributy
+| Name (Název) | Typ | Popis |
+| --- | --- | --- |
+| **key**<br /><br /> Požaduje se |**xs:řetězec** |Klíč v páru klíč/hodnota. |
+| **value**<br /><br /> Požaduje se |**xs:řetězec** |Hodnota v páru klíč/hodnota. |
+
+## <a name="programtype"></a><a name="ProgramType"></a>Typ programu
 **ProgramType** je globální komplexní typ, který popisuje program.  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **ProgramId**<br /><br /> Požaduje se |**xs: int** |ID programu |
-| **NumberOfPrograms**<br /><br /> Požaduje se |**xs: int** |Počet programů. |
-| **PmtPid**<br /><br /> Požaduje se |**xs: int** |Tabulky map programu (PMTs) obsahují informace o programech.  Další informace najdete v tématu [splátka](https://en.wikipedia.org/wiki/MPEG_transport_stream#PMT). |
-| **PcrPid**<br /><br /> Požaduje se |**xs: int** |Používá se dekodérem. Další informace najdete v tématu [PCR](https://en.wikipedia.org/wiki/MPEG_transport_stream#PCR) . |
-| **StartPTS** |**xs: Long** |Spouští se časové razítko prezentace. |
-| **EndPTS** |**xs: Long** |Časové razítko ukončení prezentace. |
+| **Id programu**<br /><br /> Požaduje se |**xs:int** |ID programu |
+| **Počet programů**<br /><br /> Požaduje se |**xs:int** |Počet programů. |
+| **PmtPid**<br /><br /> Požaduje se |**xs:int** |Tabulky map programů (PMT) obsahují informace o programech.  Další informace naleznete v tématu [PMt](https://en.wikipedia.org/wiki/MPEG_transport_stream#PMT). |
+| **PcrPid**<br /><br /> Požaduje se |**xs: int** |Používá se dekodérem. Další informace naleznete v tématu [PCR](https://en.wikipedia.org/wiki/MPEG_transport_stream#PCR) |
+| **StartPTS** |**xs: dlouhé** |Počáteční časové razítko prezentace. |
+| **EndPTS** |**xs: dlouhé** |Ukončení časového razítka prezentace. |
 
-## <a name="StreamDispositionType"></a>StreamDispositionType
+## <a name="streamdispositiontype"></a><a name="StreamDispositionType"></a>StreamDispositionType
 **StreamDispositionType** je globální komplexní typ, který popisuje datový proud.  
 
-Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-services-input-metadata-schema.md#xml).  
+Viz příklad XML na konci tohoto článku: [Příklad XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Výchozí**<br /><br /> Požaduje se |**xs: int** |Nastavením tohoto atributu na hodnotu 1 označíte, že se jedná o výchozí prezentaci. |
-| **Dub**<br /><br /> Požaduje se |**xs: int** |Nastavením tohoto atributu na hodnotu 1 označíte, že se jedná o dubbed prezentaci. |
-| **Původně**<br /><br /> Požaduje se |**xs: int** |Nastavením tohoto atributu na hodnotu 1 označíte, že se jedná o původní prezentaci. |
-| **Komentování**<br /><br /> Požaduje se |**xs: int** |Nastavením tohoto atributu na hodnotu 1 označíte, že stopa obsahuje komentář. |
-| **Texty**<br /><br /> Požaduje se |**xs: int** |Nastavením tohoto atributu na hodnotu 1 označíte, že stopa obsahuje texty. |
-| **Karaoke**<br /><br /> Požaduje se |**xs: int** |Nastavte tento atribut na hodnotu 1, chcete-li indikovat, že představuje stopu karaoke (hudba na pozadí, ne vocals). |
-| **Korek**<br /><br /> Požaduje se |**xs: int** |Nastavením tohoto atributu na hodnotu 1 označíte, že se jedná o vynucenou prezentaci. |
-| **HearingImpaired**<br /><br /> Požaduje se |**xs: int** |Nastavte tento atribut na hodnotu 1, pokud chcete, aby Tato stopa byla pro lidi, kteří jsou sluchově postiženi. |
-| **VisualImpaired**<br /><br /> Požaduje se |**xs: int** |Nastavte tento atribut na hodnotu 1, pokud chcete, aby Tato stopa byla označena jako vizuálně poškozená. |
-| **CleanEffects**<br /><br /> Požaduje se |**xs: int** |Nastavením tohoto atributu na hodnotu 1 označíte, že tato stopa má čisté efekty. |
-| **AttachedPic**<br /><br /> Požaduje se |**xs: int** |Nastavte tento atribut na hodnotu 1, pokud chcete, aby Tato stopa měla obrázky. |
+| **Výchozí**<br /><br /> Požaduje se |**xs: int** |Nastavte tento atribut na hodnotu 1, která označuje, že se jedná o výchozí prezentaci. |
+| **Dub**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut na 1, který označuje, že se jedná o dubbovní prezentaci. |
+| **Původní**<br /><br /> Požaduje se |**xs: int** |Nastavte tento atribut na 1, který označuje, že se jedná o původní prezentaci. |
+| **Komentář**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut na 1, který označuje, že tato stopa obsahuje komentář. |
+| **Texty**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut na 1, který označuje, že tato stopa obsahuje texty. |
+| **Karaoke**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut na 1, který označuje, že se jedná o karaoke skladbu (hudba na pozadí, bez vokálů). |
+| **Nucené**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut na 1, který označuje, že se jedná o vynucenou prezentaci. |
+| **Sluchově postižené**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut na 1, který označuje, že tato stopa je pro uživatele, kteří jsou nedoslýchaví. |
+| **Zrakově postižené**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut na 1, který označuje, že tato stopa je pro zrakově postižené. |
+| **Čisté efekty**<br /><br /> Požaduje se |**xs: int** |Nastavte tento atribut na hodnotu 1, která označuje, že tato stopa má čisté účinky. |
+| **AttachedPic**<br /><br /> Požaduje se |**xs: int** |Nastavte tento atribut na 1, který označuje, že tato stopa má obrázky. |
 
-## <a name="Programs"></a>Program – element
-Prvek obálky, který uchovává více prvků **programu** .  
-
-### <a name="child-elements"></a>Podřízené prvky
-| Name (Název) | Typ | Popis |
-| --- | --- | --- |
-| **Program**<br /><br /> minOccurs = "0" maxOccurs = "Unbounded" |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |Pro soubory prostředků, které jsou ve formátu MPEG-TS, obsahují informace o programech v souboru prostředků. |
-
-## <a name="VideoTracks"></a>Element VideoTracks
- Element obálky, který uchovává více elementů **VideoTrack** .  
-
- Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-services-input-metadata-schema.md#xml).  
+## <a name="programs-element"></a><a name="Programs"></a>Prvek Programy
+Prvek obálky, který obsahuje více prvků **programu.**  
 
 ### <a name="child-elements"></a>Podřízené prvky
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **VideoTrack**<br /><br /> minOccurs = "0" maxOccurs = "Unbounded" |[VideoTrackType (dědí z TrackType)](media-services-input-metadata-schema.md#VideoTrackType) |Obsahuje informace o stopách videa v souboru prostředků. |
+| **Program**<br /><br /> minOccurs="0" maxOccurs="bez meze" |[Typ programu](media-services-input-metadata-schema.md#ProgramType) |Pro soubory datových zdrojů, které jsou ve formátu MPEG-TS, obsahuje informace o programech v souboru datových zdrojů. |
 
-## <a name="AudioTracks"></a>Element AudioTracks
- Element obálky, který uchovává více elementů **AudioTrack** .  
+## <a name="videotracks-element"></a><a name="VideoTracks"></a>VideoTracks prvek
+ Element obálky, který obsahuje více prvků **VideoTrack.**  
 
- Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-services-input-metadata-schema.md#xml).  
+ Viz příklad XML na konci tohoto článku: [Příklad XML](media-services-input-metadata-schema.md#xml).  
+
+### <a name="child-elements"></a>Podřízené prvky
+| Name (Název) | Typ | Popis |
+| --- | --- | --- |
+| **VideoTrack**<br /><br /> minOccurs="0" maxOccurs="bez meze" |[VideoTrackType (dědí z TrackType)](media-services-input-metadata-schema.md#VideoTrackType) |Obsahuje informace o stopách videa v souboru datových zdrojů. |
+
+## <a name="audiotracks-element"></a><a name="AudioTracks"></a>Prvek AudioTracks
+ Element obálky, který obsahuje více prvků **AudioTrack.**  
+
+ Viz příklad XML na konci tohoto článku: [Příklad XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="elements"></a>elementy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **AudioTrack**<br /><br /> minOccurs = "0" maxOccurs = "Unbounded" |[AudioTrackType (dědí z TrackType)](media-services-input-metadata-schema.md#AudioTrackType) |Obsahuje informace o zvukových stopách v souboru prostředků. |
+| **AudioTrack**<br /><br /> minOccurs="0" maxOccurs="bez meze" |[AudioTrackType (dědí z TrackType)](media-services-input-metadata-schema.md#AudioTrackType) |Obsahuje informace o zvukových stopách v souboru datových zdrojů. |
 
-## <a name="code"></a>Kód schématu
+## <a name="schema-code"></a><a name="code"></a>Kód schématu
     <?xml version="1.0" encoding="utf-8"?>  
     <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.0"  
                xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata"  
@@ -611,8 +611,8 @@ Prvek obálky, který uchovává více prvků **programu** .
     </xs:schema>  
 
 
-## <a name="xml"></a>Příklad XML
-Následuje příklad souboru s metadaty vstupu.  
+## <a name="xml-example"></a><a name="xml"></a>Příklad XML
+Následuje příklad souboru vstupních metadat.  
 
     <?xml version="1.0" encoding="utf-8"?>  
     <AssetFiles xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata">  
@@ -644,6 +644,6 @@ Následuje příklad souboru s metadaty vstupu.
 ## <a name="next-steps"></a>Další kroky
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

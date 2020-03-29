@@ -1,6 +1,6 @@
 ---
-title: Výměna PCM na vašem zařízení řady StorSimple 8000 | Dokumentace Microsoftu
-description: Vysvětluje, jak odstranit a nahradit napájení a chlazení modulu (PCM) na zařízení StorSimple
+title: Výměna PCM na zařízení řady StorSimple 8000 | Dokumenty společnosti Microsoft
+description: Vysvětluje, jak odstranit a vyměnit napájecí a chladicí modul (PCM) na zařízení StorSimple
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,130 +15,130 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 42561570e24aec5edd33248ef1738e53175e480e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60632416"
 ---
-# <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Nahraďte napájení a chlazení modulu zařízení StorSimple
+# <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Výměna napájecího a chladicího modulu na zařízení StorSimple
 ## <a name="overview"></a>Přehled
-Napájení a chlazení modulu (PCM) v Microsoft Azure StorSimple zařízení se skládá z ke zdroji napájení a chladicí ventilátory, které jsou ovládaná primárním serverem a EBOD skříně. Existuje pouze jeden model PCM, který má certifikaci pro každou skříň. Primární zařízení má certifikaci pro 764 W PCM a skříně EBOD má certifikaci pro 580 W PCM. I když PCMs pro primární skříň a skříně EBOD se liší, nahrazení postup se shoduje.
+Modul napájení a chlazení (PCM) ve vašem zařízení Microsoft Azure StorSimple se skládá z napájecích a chladicích ventilátorů, které jsou řízeny prostřednictvím primárních skříní a skříní EBOD. Existuje pouze jeden model PCM, který je certifikován pro každou skříň. Primární skříň je certifikována pro PCM o 764 W a skříň EBOD je certifikována pro PCM o 580 W. Přestože pcms pro primární skříň a skříň EBOD se liší, postup nahrazení je totožný.
 
 Tento kurz vysvětluje následující postupy:
 
-* Odebrat PCM
-* Instalace náhradního PCM
+* Odebrání pcm
+* Instalace náhradního pcm
 
 > [!IMPORTANT]
-> Před odebírání a nahrazování PCM, přečtěte si informace bezpečnost v [StorSimple hardwarové komponenty nahrazení](storsimple-8000-hardware-component-replacement.md).
+> Před odebráním a výměnou pcm zkontrolujte bezpečnostní informace v [nahrazení hardwarové součásti StorSimple](storsimple-8000-hardware-component-replacement.md).
 
 
-## <a name="before-you-replace-a-pcm"></a>Před nahrazením PCM
-Mějte na paměti následující důležité problémy před nahrazením vaše PCM:
+## <a name="before-you-replace-a-pcm"></a>Před výměnou PCM
+Než počítač PCM nahradíte, mějte na paměti následující důležité problémy:
 
-* Pokud selže napájení PCM, ponechte vadným modul nainstalovaný, ale odebrat napájecí kabel. Ventilátor nadále přijímat power od skříně a nadále poskytovat správné chlazení. Pokud se nezdaří ventilátor PCM potřebuje vyměnit okamžitě.
-* Před odebráním PCM, odpojte napájení PCM vypnutím hlavní přepínač (je-li k dispozici) nebo fyzickým odebráním napájecí kabel. To poskytuje upozornění do vašeho systému, hrozí vypnutí napájení.
-* Ujistěte se, že je funkční pro operace pokračování systému před výměnou vadných PCM PCM. Chybný PCM se musí nahradit odpovídajícími plně funkční PCM co nejdříve.
-* Nahrazení modulu PCM trvá jenom několik minut, ale je potřeba udělat do 10 minut odebrání neúspěšné PCM, aby nedocházelo k přehřívání.
-* Všimněte si, že nahrazení 764 W PCM moduly z objekt pro vytváření neobsahují modulu záložní baterie. Je potřeba odebrat z vadné PCM baterie a vložte ji do modulu nahrazení před provedením nahrazení. Další informace najdete v tématu Jak [odstranit a Vložit modul záložní baterie](storsimple-8000-battery-replacement.md).
+* Pokud dojde k výpadku napájení pcm, nechte vadný modul nainstalovaný, ale vyjměte napájecí kabel. Ventilátor bude i nadále přijímat energii z krytu a nadále zajišťovat správné chlazení. Pokud ventilátor selže, pcm je třeba okamžitě vyměnit.
+* Před vyjmutím PCM odpojte napájení od PCM vypnutím hlavního vypínače (pokud je k dispozici) nebo fyzickým vyjmutím napájecího kabelu. To poskytuje upozornění pro váš systém, že vypnutí napájení je bezprostřední.
+* Před výměnou vadného pcm se ujistěte, že je druhý pcm funkční pro pokračování v provozu systému. Vadný PCM musí být co nejdříve nahrazen plně funkčním PCM.
+* Výměna modulu PCM trvá jen několik minut, ale musí být dokončena do 10 minut od odstranění neúspěšného PCM, aby se zabránilo přehřátí.
+* Všimněte si, že náhradní 764 W PCM moduly dodávané z továrny neobsahují záložní bateriový modul. Před provedením výměny budete muset vyjmout baterii z vadného pcm a poté ji vložit do náhradního modulu. Další informace naleznete v tématu [jak vyjmout a vložit záložní bateriový modul](storsimple-8000-battery-replacement.md).
 
-## <a name="remove-a-pcm"></a>Odebrat PCM
-Až budete připravení k odebrání napájení a chlazení modulu (PCM) ze zařízení s Microsoft Azure StorSimple, postupujte podle těchto pokynů.
+## <a name="remove-a-pcm"></a>Odebrání pcm
+Až budete připraveni odebrat power and cooling module (PCM) ze zařízení Microsoft Azure StorSimple, postupujte podle těchto pokynů.
 
 > [!NOTE]
-> Před odebráním vaše PCM, ověřte, že máte správný náhradní (764 W pro primární skříň) nebo 580 W pro EBOD skříň.
+> Před odebráním pcm ověřte, zda máte správnou náhradu (764 W pro primární skříň nebo 580 W pro skříň EBOD).
 
-#### <a name="to-remove-a-pcm"></a>Chcete-li odebrat PCM
-1. Na portálu Azure classic klikněte na tlačítko **Nastavení > Sledování > Stav hardwaru**. Kontrola stavu součásti PCM pod **sdílené komponenty** tím určíte, které PCM se nezdařilo:
+#### <a name="to-remove-a-pcm"></a>Odebrání pcm
+1. Na klasickém portálu Azure klikněte na **Nastavení > monitorování > stavu hardwaru**. Zkontrolujte stav součástí PCM v části **Sdílené součásti** a zjistěte, které pcm selhaly:
    
-   * Pokud má napájení v PCM 0 nepovedlo, stav **napájení v PCM 0** bude mít červenou.
-   * Zda napájení v PCM 1 selhala, stav **napájení v PCM 1** bude mít červenou.
-   * Pokud ventilátor v PCM 1 selhala, stav buď **chlazení v PCM 0 0** nebo **1 chlazení v PCM 0** bude mít červenou.
-2. Vyhledejte neúspěšné PCM na zadní straně primární skříň. Pokud používáte modelu 8600, identifikujte primární skříň pohledem na přední panel LED zobrazení systému jednotky identifikační číslo. Výchozí hodnota je ID jednotky na primární zařízení **00**, že výchozí hodnota je ID jednotky na skříň EBOD **01**. Následující diagram a tabulka vysvětluje přední panel zobrazovat Indikátor.
+   * Pokud došlo k selhání napájení v počítači PCM 0, bude stav **napájení v počítači PCM 0** červený.
+   * Pokud došlo k selhání napájení v počítači PCM 1, bude stav **napájení v pcm 1** červený.
+   * Pokud ventilátor v PCM 1 selhal, stav **chlazení 0 pro PCM 0** nebo Chlazení 1 pro **PCM 0** bude červený.
+2. Vyhledejte neúspěšný počítač PCM na zadní straně primární skříně. Pokud používáte model 8600, identifikujte primární skříň podle identifikačního čísla systémové jednotky zobrazeného na LED displeji na předním panelu. Výchozí ID jednotky zobrazené v primární skříni je **00**, zatímco výchozí ID jednotky zobrazené ve skříni EBOD je **01**. Následující schéma a tabulka vysvětlují přední panel LED displeje.
    
-    ![ID systému na přední panel OPS](./media/storsimple-power-cooling-module-replacement/IC740991.png)
+    ![ID systému na předním panelu OPS](./media/storsimple-power-cooling-module-replacement/IC740991.png)
    
-     **Obrázek 1** přední panel ovládacího prvku zařízení  
+     **Obrázek 1** Přední panel zařízení  
    
-   | Štítek | Popis |
+   | Popisek | Popis |
    |:--- |:--- |
-   | 1 |Ztlumit tlačítko |
+   | 1 |Tlačítko Ztlumit |
    | 2 |Napájení systému |
-   | 3 |Chyby modulu |
-   | 4 |Logické chyby |
+   | 3 |Porucha modulu |
+   | 4 |Logická chyba |
    | 5 |Zobrazení ID jednotky |
-3. Monitorování indikátorů LED zadní primární skříň lze také identifikovat vadným PCM. Viz následující diagram a tabulce zjistíte, jak najít vadným PCM pomocí indikátorů LED. Například pokud odpovídající LED pro **ventilátor selhání** je lit, ventilátor se nezdařilo. Podobně pokud odpovídající LED pro **AC selhání** je lit, napájení se nezdařilo. 
+3. Indikátorledy monitorování v zadní části primárního krytu lze také použít k identifikaci vadného PCM. Informace o tom, jak pomocí LED diod najít vadný PCM, naleznete v následujícím diagramu a tabulce. Pokud například rozsvítí led dioda odpovídající **selhání ventilátoru,** ventilátor selhal. Podobně platí, že pokud svítí LED dioda odpovídající **ac fail,** napájení selhalo. 
    
-    ![Propojovací rozhraní systému zařízení PCM monitorování indikátorů LED](./media/storsimple-power-cooling-module-replacement/IC740992.png)
+    ![Zadní rovina indikátoru monitorování PCM zařízení LED](./media/storsimple-power-cooling-module-replacement/IC740992.png)
    
-     **Obrázek 2** PCM of zpět pomocí indikátorů LED
+     **Obrázek 2** Zadní část PCM s indikátorovými LED diodami
    
-   | Štítek | Popis |
+   | Popisek | Popis |
    |:--- |:--- |
-   | 1 |Výpadku napájení AC. |
-   | 2 |Chyba větráku |
-   | 3 |Selhání baterie |
-   | 4 |PCM OK |
-   | 5 |Výpadku napájení řadiče domény |
-   | 6 |Baterie v pořádku |
-4. Prohlédněte si následující diagram pozadí zařízení StorSimple k vyhledání PCM modulu se nezdařilo. PCM 0 je na levé straně a PCM 1 je na pravé straně. Následující tabulka vysvětluje moduly.
+   | 1 |Výpadku napájení střídavého proudu |
+   | 2 |Selhání ventilátoru |
+   | 3 |Porucha baterie |
+   | 4 |PCM je v pořádku |
+   | 5 |Selhání napájení stejnosměrného proudu |
+   | 6 |Baterie zdravá |
+4. Vyhledejte vadný modul PCM na zadní straně zadní části zařízení StorSimple. PCM 0 je vlevo a PCM 1 je vpravo. Následující tabulka vysvětluje moduly.
    
-     ![Propojovací rozhraní modulů primární skříň zařízení](./media/storsimple-power-cooling-module-replacement/IC740994.png)
+     ![Zadní rovina primárních modulů skříně zařízení](./media/storsimple-power-cooling-module-replacement/IC740994.png)
    
-     **Obrázek 3** zadní zařízení s moduly plug-in 
+     **Obrázek 3** Zadní část zařízení se zásuvnými moduly 
    
-   | Štítek | Popis |
+   | Popisek | Popis |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
    | 3 |Kontroler 0 |
    | 4 |Kontroler 1 |
-5. Vypněte vadným PCM a odpojit napájecí kabel dodávek. Teď můžete odebrat PCM.
-6. Pochopit její podstatu zámek a na straně popisovač PCM mezi thumb a ukazováčkem a vměstnat je dohromady tak, aby popisovač.
+5. Vypněte vadný PCM a odpojte napájecí kabel. Nyní můžete odebrat PCM.
+6. Uchopte západku a stranu rukojeti PCM mezi palcem a ukazováčkem a stlačte je k sobě, abyste ji otevřeli.
    
-    ![Otevírání PCM popisovače](./media/storsimple-power-cooling-module-replacement/IC740995.png)
+    ![Otevření rukojeti PCM](./media/storsimple-power-cooling-module-replacement/IC740995.png)
    
-    **Obrázek 4** otevírání PCM popisovače
-7. Uchopitelný popisovač a odeberte PCM.
+    **Obrázek 4** Otevření rukojeti PCM
+7. Uchopte rukojeť a vyjměte PCM.
    
-    ![Odebrání zařízení PCM](./media/storsimple-power-cooling-module-replacement/IC740996.png)
+    ![Odebrání pcm zařízení](./media/storsimple-power-cooling-module-replacement/IC740996.png)
    
-    **Obrázek 5** odebrání PCM
+    **Obrázek 5** Odebrání PCM
 
-## <a name="install-a-replacement-pcm"></a>Instalace náhradního PCM
-Postupujte podle těchto pokynů k instalaci PCM v zařízení StorSimple. Ujistěte se, že jste tam vložili modulu záložní baterie před instalací nahrazení PCM (týká se pouze 764 W PCMs). Další informace najdete v tématu Jak [odstranit a Vložit modul záložní baterie](storsimple-8000-battery-replacement.md).
+## <a name="install-a-replacement-pcm"></a>Instalace náhradního pcm
+Podle těchto pokynů nainstalujte pcm do zařízení StorSimple. Před instalací náhradního pcm (platí pouze pro pcm s výkonem 764 W) se ujistěte, že jste vložili záložní bateriový modul. Další informace naleznete v tématu [jak vyjmout a vložit záložní bateriový modul](storsimple-8000-battery-replacement.md).
 
-#### <a name="to-install-a-pcm"></a>Chcete-li nainstalovat PCM
-1. Ověřte, že máte správný náhradní PCM pro toto zařízení. Primární zařízení musí 764 W PCM a skříně EBOD musí 580 W PCM. By se neměly pokoušet použít 580 PCM W ve primárního skříň nebo 764 PCM W ve skříni EBOD. Následující obrázek ukazuje, kde k identifikaci informací na popisek, který je opatřit PCM.
+#### <a name="to-install-a-pcm"></a>Instalace pcm
+1. Ověřte, zda máte pro tuto přílohu správný náhradní počítač PCM. Primární skříň potřebuje 764 W PCM a skříň EBOD potřebuje 580 W PCM. Neměli byste se pokoušet použít 580 W PCM v primární skříni nebo 764 W PCM ve skříni EBOD. Následující obrázek ukazuje, kde identifikovat tyto informace na štítku, který je připojen k PCM.
    
     ![Popisek PCM zařízení](./media/storsimple-power-cooling-module-replacement/IC740973.png)
    
-    **Obrázek 6** PCM popisek
-2. Vyhledejte poškození skříň, věnujte zvláštní pozornost konektory. 
+    **Obrázek 6** Popisek PCM
+2. Zkontrolujte, zda není poškozen a nevěnuje se zejména konektorům. 
    
    > [!NOTE]
-   > **Pokud jsou všechny pinů ohnuty není nainstalovaný modul.**
+   > **Neinstalujte modul, pokud jsou ohnuté kolíky konektorů.**
    > 
    > 
-3. S popisovačem PCM na pozici, otevřít potáhněte modulu do prostoru.
+3. S rukojetí PCM v otevřené poloze zasuňte modul do krytu.
    
-    ![Instalace zařízení PCM](./media/storsimple-power-cooling-module-replacement/IC740975.png)
+    ![Instalace pcm zařízení](./media/storsimple-power-cooling-module-replacement/IC740975.png)
    
-    **Obrázek 7** instalace PCM
-4. Ruční zavření PCM popisovač. Kliknutím by měl poslechněte si, jak zaujme zámek popisovače.
-   
-   > [!NOTE]
-   > Pokud chcete mít jistotu, že máte zapojení konektor PIN kódy, vám může jemně tug na popisovač bez uvolnění zámek. Pokud PCM snímky navýšení kapacity, znamená, že zámek se zavřel před zapojení konektory.
-   
-5. Zdroj napájení a PCM, připojte napájecích kabelů.
-6. Kmen zabezpečení pomáhajících balíků.
-7. Zapněte PCM.
-8. Ověřte, že nahrazení proběhlo úspěšně: na webu Azure portal služby StorSimple Device Manager přejděte do svého zařízení a potom do **Nastavení > Sledování > Stav hardwaru**. V části **sdílené komponenty**, stav PCM by měl být zelená.
+    **Obrázek 7** Instalace PCM
+4. Ručně zavřete úchyt PCM. Měli byste slyšet cvaknutí, jak se západka rukojeti zapíná.
    
    > [!NOTE]
-   > Může trvat několik minut, než nahrazení PCM zcela inicializace.
+   > Chcete-li zajistit, aby se kolíky konektoru zatáhly, můžete jemně tahat za rukojeť bez uvolnění západky. Pokud pcm vyklouzne, znamená to, že západka byla uzavřena před zapojením konektorů.
+   
+5. Připojte napájecí kabely ke zdroji napájení a k PCM.
+6. Zajistěte balíky odlehčení tahu.
+7. Zapněte pcm.
+8. Ověřte, zda byla výměna úspěšná: na portálu Azure služby StorSimple Device Manager přejděte do zařízení a potom do **nastavení > monitorování > stavu hardwaru**. V části **Sdílené součásti**by měl být stav PCM zelený.
+   
+   > [!NOTE]
+   > Může trvat několik minut, než se náhradní pcm zcela inicializuje.
 
-## <a name="next-steps"></a>Další postup
-Další informace o [StorSimple hardwarové komponenty nahrazení](storsimple-8000-hardware-component-replacement.md).
+## <a name="next-steps"></a>Další kroky
+Další informace o [výměně hardwarových komponent StorSimple](storsimple-8000-hardware-component-replacement.md).
 

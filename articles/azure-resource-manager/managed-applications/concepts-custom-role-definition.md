@@ -1,32 +1,32 @@
 ---
-title: Přehled definic vlastních rolí
-description: Popisuje koncept vytváření definic vlastních rolí pro spravované aplikace.
+title: Přehled vlastních definic rolí
+description: Popisuje koncept vytváření vlastních definic rolí pro spravované aplikace.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
 ms.openlocfilehash: 88e42fd9626276f6c77b46b33c138407f91d06ca
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650757"
 ---
-# <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Artefakt definice vlastní role v Azure Managed Applications
+# <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Artefakt vlastní definice role ve spravovaných aplikacích Azure
 
-Definice vlastní role je volitelný artefakt ve spravovaných aplikacích. Slouží k určení oprávnění, která spravovaná aplikace potřebuje k provedení svých funkcí.
+Vlastní definice role je volitelný artefakt ve spravovaných aplikacích. Používá se k určení, jaká oprávnění spravovaná aplikace potřebuje k provádění svých funkcí.
 
-Tento článek poskytuje přehled o artefaktu definice vlastní role a jeho schopnostech.
+Tento článek obsahuje přehled artefaktu vlastní definice role a jeho možností.
 
-## <a name="custom-role-definition-artifact"></a>Artefakt definice vlastní role
+## <a name="custom-role-definition-artifact"></a>Artefakt vlastní definice role
 
-Je nutné pojmenovat artefakt definice vlastní role customRoleDefinition. JSON. Umístěte ho do stejné úrovně jako createUiDefinition. JSON a mainTemplate. JSON v balíčku. zip, který vytvoří definici spravované aplikace. Informace o vytvoření balíčku. zip a publikování definice spravované aplikace najdete v tématu [publikování definice spravované aplikace.](publish-managed-app-definition-quickstart.md)
+Je třeba pojmenovat vlastní artefakt definice role customRoleDefinition.json. Umístěte jej na stejnou úroveň jako createUiDefinition.json a mainTemplate.json v balíčku .zip, který vytvoří definici spravované aplikace. Informace o tom, jak vytvořit balíček ZIP a publikovat definici spravované aplikace, najdete v [tématu Publikování definice spravované aplikace.](publish-managed-app-definition-quickstart.md)
 
-## <a name="custom-role-definition-schema"></a>Schéma definice vlastní role
+## <a name="custom-role-definition-schema"></a>Schéma vlastní definice role
 
-Soubor customRoleDefinition. JSON má vlastnost `roles` nejvyšší úrovně, která je polem rolí. Tyto role jsou oprávnění, která spravovaná aplikace potřebuje k fungování. V současné době jsou povoleny pouze předdefinované role, ale můžete zadat více rolí. Role může být odkazována podle ID definice role nebo podle názvu role.
+Soubor customRoleDefinition.json má vlastnost `roles` nejvyšší úrovně, která je pole rolí. Tyto role jsou oprávnění, která musí spravovat aplikace fungovat. V současné době jsou povoleny pouze předdefinované role, ale můžete zadat více rolí. Na roli lze odkazovat id definice role nebo název role.
 
-Ukázkový JSON pro definici vlastní role:
+Ukázka json pro vlastní definici role:
 
 ```json
 {
@@ -49,7 +49,7 @@ Ukázkový JSON pro definici vlastní role:
 
 ## <a name="roles"></a>Role
 
-Role se skládá buď z `$.properties.roleName`, nebo `id`:
+Role se skládá buď `$.properties.roleName` z `id`a nebo a :
 
 ```json
 {
@@ -61,9 +61,9 @@ Role se skládá buď z `$.properties.roleName`, nebo `id`:
 ```
 
 > [!NOTE]
-> Můžete použít buď pole `id` nebo `roleName`. Je vyžadována pouze jedna z nich. Tato pole se používají k vyhledání definice role, která se má použít. Pokud jsou zadány obě, použije se pole `id`.
+> Můžete použít pole `id` `roleName` nebo. Je vyžadován pouze jeden. Tato pole se používají k vyhledat definici role, která by měla být použita. Pokud jsou zadány `id` obě, bude použito toto pole.
 
 |Vlastnost|Povinné?|Popis|
 |---------|---------|---------|
-|id|Ano|ID předdefinované role. Můžete použít úplné ID nebo jenom identifikátor GUID.|
-|roleName|Ano|Název předdefinované role|
+|id|Ano|ID předdefinované role. Můžete použít celé ID nebo jen IDENTIFIKÁTOR.|
+|Rolename|Ano|Název předdefinované role.|

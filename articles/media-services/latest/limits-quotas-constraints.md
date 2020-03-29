@@ -1,6 +1,6 @@
 ---
-title: Kvóty a omezení v Azure Media Services V3 | Microsoft Docs
-description: Toto téma popisuje kvóty a omezení v Microsoft Azure Media Services V3.
+title: Kvóty a omezení ve službě Azure Media Services v3 | Dokumenty společnosti Microsoft
+description: Toto téma popisuje kvóty a omezení ve službě Microsoft Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,63 +12,63 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.openlocfilehash: 5a4f7e31cb17f47e8796ab99c1f8a089339903df
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74888423"
 ---
-# <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóty a omezení v Azure Media Services V3
+# <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóty a omezení ve službě Azure Media Services v3
 
-Tento článek popisuje kvóty a omezení v Azure Media Services V3.
+Tento článek popisuje kvóty a omezení ve službě Azure Media Services v3.
 
 | Prostředek | Výchozí omezení | 
 | --- | --- | 
 | Prostředky na účet Azure Media Services | 1 000 000|
 | Filtry dynamických manifestů|100|
-| JobInputs na úlohu | 50 (fixní)|
-| JobOutputs na úlohu | 20 (fixní) |
-| TransformOutputs v transformaci | 20 (fixní) |
-| Soubory na JobInput|10 (pevné)|
-| Velikost souboru| V některých scénářích je omezení maximální velikosti souboru podporovanou pro zpracování v Media Services. <sup>(1)</sup> |
-| Počet úloh na účet Media Services | 500 000 <sup>(2)</sup> (fixní)|
+| JobInputs na úlohu | 50 (pevná)|
+| JobOutputs na úlohu | 20 (pevná) |
+| Transformoutputs v transformaci | 20 (pevná) |
+| Soubory na JobInput|10 (pevná)|
+| Velikost souboru| V některých případech je maximální velikost souboru podporovaná pro zpracování ve službě Media Services omezena. <sup>(1)</sup> |
+| Úlohy na účet mediálních služeb | 500 000 <sup>(2)</sup> (pevná)|
 | Živé události na účet Media Services |5|
-| Účty Media Services v jednom předplatném | 25 (pevné) |
+| Účty mediálních služeb v jednom předplatném | 25 (pevné) |
 | Živé výstupy na živou událost |3 <sup>(3)</sup> |
 | Maximální doba trvání živého výstupu | 25 hodin |
-| Účty úložiště | 100<sup>(4)</sup> (fixní) |
-| Koncové body streamování (zastavené nebo spuštěné) na účet Media Services|2 (pevné)|
+| Účty úložiště | 100<sup>(4)</sup> (pevná) |
+| Streamování koncových bodů (zastaveno nebo spuštěno) na účet Mediální služby|2 (pevná)|
 | Zásady streamování | 100 <sup>(5)</sup> |
-| Transformuje účet za Media Services. | 100 (fixní)|
-| Jedinečné Lokátory streamování přidružené k prostředku v jednom okamžiku | 100<sup>(6)</sup> (fixní) |
-| Možnosti pro zásady klíče obsahu |30 | 
-| Licence za měsíc pro každý typ DRM při Media Services Služba doručení klíčů na účet|1 000 000|
+| Transformace na účet mediálních služeb | 100 (pevná)|
+| Jedinečné lokátory streamování přidružené k datovému zdroji najednou | 100<sup>(6)</sup> (pevná) |
+| Možnosti podle zásad klíče obsahu |30 | 
+| Licence za měsíc pro každý typ DRM v doručovací službě media services na účet|1 000 000|
 
-<sup>1</sup> maximální velikost podporovaná pro jeden objekt BLOB je v Azure Blob Storage v současnosti až o 5 TB. V Media Services na základě velikostí virtuálních počítačů, které služba používá, platí další omezení. Omezení velikosti se vztahuje na soubory, které nahráváte, a také soubory, které se generují v důsledku zpracování Media Services (kódování nebo analýza). Pokud je zdrojový soubor větší než 260 GB, bude pravděpodobně selhání úlohy. 
+<sup>1</sup> Maximální velikost podporovaná pro jeden objekt blob je aktuálně až 5 TB v úložišti objektů blob Azure. Další omezení platí ve službách Media Services na základě velikostí virtuálních počítače, které služba používá. Omezení velikosti platí pro soubory, které nahrajete, a také na soubory, které se generují v důsledku zpracování mediálních služeb (kódování nebo analýza). Pokud je zdrojový soubor větší než 260 GB, úloha pravděpodobně selže. 
 
-V následující tabulce jsou uvedena omezení pro rezervované jednotky médií S1, S2 a S3. Pokud je zdrojový soubor větší než omezení definovaná v tabulce, vaše úloha kódování se nezdařila. Pokud kódujete zdroje 4K rozlišení dlouhé doby trvání, budete muset použít jednotky rezervované pro médium S3 k dosažení potřebného výkonu. Pokud jste 4K obsah, který je větší než limit 260 GB na rezervované jednotky médií S3, otevřete lístek podpory.
+V následující tabulce jsou uvedena omezení rezervovaných médií Jednotek S1, S2 a S3. Pokud je zdrojový soubor větší než limity definované v tabulce, úloha kódování se nezdaří. Pokud kódujete zdroje rozlišení 4K s dlouhou dobou trvání, musíte k dosažení potřebného výkonu použít rezervované jednotky médií S3. Pokud máte obsah 4K, který je větší než limit 260 GB na rezervovaných jednotkách médií S3, otevřete lístek podpory.
 
-|Typ rezervované jednotky médií   |Maximální velikost vstupu (GB)|
+|Typ rezervované jednotky média   |Maximální vstupní velikost (GB)|
 |---|---|
 |S1 |   26|
 |S2 | 60|
 |S3 |260|
 
-<sup>2</sup> toto číslo zahrnuje úlohy ve frontě, dokončených, aktivních a zrušených úlohách. Nezahrnuje odstraněné úlohy. 
+<sup>2</sup> Toto číslo zahrnuje úlohy zařazené do fronty, dokončené, aktivní a zrušené. Nezahrnuje odstraněné úlohy. 
 
-Všechny záznamy úloh ve vašem účtu starším než 90 dnů budou automaticky odstraněny, i když celkový počet záznamů je nižší než maximální kvóta. 
+Všechny záznamy úloh y ve vašem účtu starší než 90 dní budou automaticky odstraněny, a to i v případě, že celkový počet záznamů je nižší než maximální kvóta. 
 
-<sup>3</sup> živé výstupy začínají při vytváření a při odstranění se zastaví.
+<sup>3</sup> Živé výstupy se spustí při vytváření a zastaví se při odstranění.
 
-<sup>4</sup> účty úložiště musí být ze stejného předplatného Azure.
+<sup>4</sup> Účty úložiště musí být ze stejného předplatného Azure.
 
-<sup>5</sup> Pokud používáte vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), měli byste navrhnout určitou sadu takových zásad pro svůj účet Media Service a znovu je použít pro své StreamingLocators, kdykoli budete potřebovat stejné možnosti šifrování a protokoly. Pro každý Lokátor streamování byste neměli vytvářet nové zásady streamování.
+<sup>5</sup> Při použití [vlastních zásad streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies)byste měli pro svůj účet služby Media Service navrhnout omezenou sadu těchto zásad a znovu je použít pro streamovací lokátory, kdykoli jsou potřeba stejné možnosti šifrování a protokoly. Pro každý lokátor streamování byste neměli vytvářet nové zásady streamování.
 
-<sup>6</sup> lokátorů streamování není navržené pro správu řízení přístupu pro jednotlivé uživatele. Pokud chcete konkrétním uživatelům poskytnout různá přístupová práva, použijte řešení pro správu digitálních práv (DRM).
+<sup>6</sup> Lokátory streamování nejsou určeny pro správu řízení přístupu pro jednotlivé uživatele. Pokud chcete konkrétním uživatelům poskytnout různá přístupová práva, použijte řešení pro správu digitálních práv (DRM).
 
 ## <a name="support-ticket"></a>Lístek podpory
 
-U nevyřešených prostředků můžete požádat o aktivaci kvót otevřením [lístku podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Do žádosti uveďte podrobné informace o požadovaných změnách kvóty, případech použití a požadovaných oblastech. <br/>**Nevytvářejte** další účty služby Azure Media Services ve snaze zajistit vyšší limity.
+U prostředků, které nejsou pevné, můžete požádat o zvýšení kvót otevřením [lístku podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Do požadavku uveďte podrobné informace o požadovaných změnách kvót, scénářích případu použití a požadovaných oblastech. <br/>**Nevytvářejte** další účty služby Azure Media Services ve snaze zajistit vyšší limity.
 
 ## <a name="next-steps"></a>Další kroky
 

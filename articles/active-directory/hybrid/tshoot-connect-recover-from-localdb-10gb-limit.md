@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Jak provést obnovení LocalDB 10 GB limitu problém | Dokumentace Microsoftu'
-description: Toto téma popisuje, jak služba Azure AD Connect synchronizaci obnovit, pokud se setká s LocalDB 10GB limit problém.
+title: 'Azure AD Connect: Jak se zotavit z problému omezení LocalDB 10GB | Dokumenty společnosti Microsoft'
+description: Toto téma popisuje, jak obnovit službu synchronizace připojení Azure AD, když narazí na problém omezení LocalDB 10GB.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,91 +17,91 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d420c64c5834f7d3cb11d2f5f59e3ed85a54891
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60386920"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Jak provést obnovení při dosažení 10GB limitu pro LocalDB
-Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Můžete použít buď výchozí databázi SQL Server 2012 Express LocalDB nainstalovanou se službou Azure AD Connect, nebo vlastní plnou verzi SQL. SQL Server Express má omezení velikosti 10 GB. Pokud při použití LocalDB dosáhnete tohoto limitu, synchronizační služba Azure AD Connect se už nemůže spustit ani správně synchronizovat. Tento článek popisuje kroky obnovení.
+Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Můžete použít buď výchozí databázi SQL Server 2012 Express LocalDB nainstalovanou se službou Azure AD Connect, nebo vlastní plnou verzi SQL. SQL Server Express má omezení velikosti 10 GB. Pokud při použití LocalDB dosáhnete tohoto limitu, synchronizační služba Azure AD Connect se už nemůže spustit ani správně synchronizovat. Tento článek obsahuje kroky obnovení.
 
 ## <a name="symptoms"></a>Příznaky
 Existují dva běžné příznaky:
 
-* Služba Azure AD Connect synchronizaci **běží** , ale selže na synchronizaci s *"zastavena database zaplnění disku"* chyby.
+* Služba synchronizace připojení Azure AD **je spuštěná,** ale nedaří se synchronizovat s *chybou "zastaveno-databáze-disk-full".*
 
-* Služba Azure AD Connect synchronizaci **nelze spustit**. Při pokusu o spuštění služby nezdaří s chybové zprávy a události 6323 *"na serveru došlo k chybě systému SQL Server je nedostatek místa na disku."*
+* Služba synchronizace připojení Azure AD **nelze spustit**. Při pokusu o spuštění služby se nezdaří s událostí 6323 a chybovou *zprávou "Server zjistil chybu, protože SQL Server není na disku."*
 
-## <a name="short-term-recovery-steps"></a>Postup krátkodobé obnovení
-Tato část vysvětluje, jak uvolněním místa v databázi požadované pro službu Azure AD Connect synchronizaci k obnovení. Zahrnuje následující kroky:
-1. [Zjistit stav služby synchronizace](#determine-the-synchronization-service-status)
-2. [Zmenšit databázi](#shrink-the-database)
-3. [Odstranění dat historie spuštění](#delete-run-history-data)
-4. [Zkraťte dobu uchování dat historie spuštění](#shorten-retention-period-for-run-history-data)
+## <a name="short-term-recovery-steps"></a>Krátkodobé kroky obnovy
+Tato část obsahuje postup, jak uvolnit místo v DB potřebné pro obnovení provozu služby Azure AD Connect Synchronizační služba. Tyto kroky zahrnují:
+1. [Určení stavu služby synchronizace](#determine-the-synchronization-service-status)
+2. [Zmenšení databáze](#shrink-the-database)
+3. [Odstranit data historie spuštění](#delete-run-history-data)
+4. [Zkrácení doby uchování dat historie spuštění](#shorten-retention-period-for-run-history-data)
 
-### <a name="determine-the-synchronization-service-status"></a>Zjistit stav služby synchronizace
-Nejprve určete, zda synchronizační služba je stále spuštěný:
+### <a name="determine-the-synchronization-service-status"></a>Určení stavu služby synchronizace
+Nejprve určete, zda je služba synchronizace stále spuštěna nebo ne:
 
 1. Přihlaste se k serveru Azure AD Connect jako správce.
 
-2. Přejděte na **správce řízení služeb**.
+2. Přejděte do **správce řízení služeb**.
 
 3. Zkontrolujte stav **Microsoft Azure AD Sync**.
 
 
-4. Pokud je spuštěná, zastavte nebo restartujte službu. Přeskočit [zmenšit databázi](#shrink-the-database) krok a přejděte na [dat historie spuštění odstranění](#delete-run-history-data) kroku.
+4. Pokud je spuštěna, nezastavujte ani nerestartujte službu. Přeskočit [Zmenšit](#shrink-the-database) krok databáze a přejít na Odstranit krok [dat historie spuštění.](#delete-run-history-data)
 
-5. Pokud není spuštěný, pokuste se spustit službu. Pokud úspěšně spustí službu přeskočit [zmenšit databázi](#shrink-the-database) krok a přejděte na [dat historie spuštění odstranění](#delete-run-history-data) kroku. V opačném případě pokračujte [zmenšit databázi](#shrink-the-database) kroku.
+5. Pokud není spuštěna, zkuste spustit službu. Pokud se služba úspěšně spustí, [přeskočte zmenšit](#shrink-the-database) krok databáze a přejděte na Odstranit krok [dat historie spuštění.](#delete-run-history-data) V opačném případě [pokračujte zmenšit](#shrink-the-database) krok databáze.
 
-### <a name="shrink-the-database"></a>Zmenšit databázi
-Pomocí operace zmenšení můžete uvolnit tak dostatek místa v databázi spustit službu synchronizace. To uvolní místa v databázi tak, že odeberete obsahovat jenom prázdné znaky v databázi. Tento krok je best effort, protože není zaručeno, že vždy můžete obnovit místa. Další informace o operaci zmenšení, přečtěte si tento článek [zmenšit databázi](https://msdn.microsoft.com/library/ms189035.aspx).
+### <a name="shrink-the-database"></a>Zmenšení databáze
+Pomocí operace Zmenšit uvolněte dostatek místa v DB pro spuštění synchronizační služby. Uvolní místo db odebráním mezery v databázi. Tento krok je nejlepší úsilí, protože není zaručeno, že můžete vždy obnovit prostor. Další informace o operaci zmenšit, přečtěte si tento článek [Zmenšit databázi](https://msdn.microsoft.com/library/ms189035.aspx).
 
 > [!IMPORTANT]
-> Tento krok přeskočte, pokud se zobrazí se synchronizační služba ke spuštění. Není doporučeno zmenšit databázi SQL, protože to může vést ke špatnému výkonu z důvodu zvýšení fragmentace.
+> Tento krok přeskočte, pokud lze spustit synchronizační službu. Nedoporučuje se zmenšit SQL DB, protože může vést ke snížení výkonu z důvodu zvýšené fragmentace.
 
-Název databáze vytvořené pro Azure AD Connect je **ADSync**. K provedení operace zmenšení, musíte se přihlásit jako správce nebo vlastníka databáze. Během instalace služby Azure AD Connect následující účty jsou udělena práva správce systému:
+Název databáze vytvořené pro Azure AD Connect je **ADSync**. Chcete-li provést operaci Shrink, musíte se přihlásit buď jako sysadmin nebo DBO databáze. Během instalace služby Azure AD Connect jsou udělena práva sysadmin následující účty:
 * Místní správci
-* Uživatelský účet, který byl použit ke spuštění instalace služby Azure AD Connect.
-* Účet synchronizační služby, který se používá jako provozní kontext služba Azure AD Connect synchronizaci.
-* Místní skupině ADSyncAdmins, který byl vytvořen během instalace.
+* Uživatelský účet, který byl použit ke spuštění instalace Služby Azure AD Connect.
+* Účet služby Synchronizace, který se používá jako provozní kontext služby synchronizace připojení Azure AD.
+* Místní skupina ADSyncAdmins, která byla vytvořena během instalace.
 
-1. Zálohování databáze tak, že zkopírujete **ADSync.mdf** a **ADSync_log.ldf** soubory jsou umístěné v části `%ProgramFiles%\Microsoft Azure AD Sync\Data` na bezpečné místo.
+1. Zálohujte databázi zkopírováním souborů **ADSync.mdf** a `%ProgramFiles%\Microsoft Azure AD Sync\Data` **ADSync_log.ldf** umístěných pod bezpečným umístěním.
 
-2. Spusťte novou relaci Powershellu.
+2. Spusťte novou relaci PowerShellu.
 
-3. Přejděte do složky `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn`.
+3. Přejděte `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn`do složky .
 
-4. Spustit **sqlcmd** nástroj spuštěním příkazu `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>`, pomocí přihlašovacích údajů správce systému nebo databáze DBO.
+4. Spusťte **sqlcmd** nástroj `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>`spuštěním příkazu , pomocí pověření sysadmin nebo databáze DBO.
 
-5. Zmenšení databáze do příkazového řádku sqlcmd (1 >), zadejte `DBCC Shrinkdatabase(ADSync,1);`následovaný `GO` na dalším řádku.
+5. Chcete-li zmenšit databázi, na sqlcmd prompt (1>), zadejte `DBCC Shrinkdatabase(ADSync,1);`, následovaný `GO` v dalším řádku.
 
-6. Pokud je operace úspěšná, zkuste spustit synchronizační službu znovu. Pokud můžete spustit synchronizační službu, přejděte na [dat historie spuštění odstranění](#delete-run-history-data) kroku. Pokud ne, obraťte se na podporu.
+6. Pokud je operace úspěšná, zkuste znovu spustit synchronizační službu. Pokud můžete spustit službu synchronizace, přejděte na [krok Odstranit data historie spuštění.](#delete-run-history-data) Pokud ne, obraťte se na podporu.
 
-### <a name="delete-run-history-data"></a>Odstranění dat historie spuštění
-Ve výchozím nastavení služby Azure AD Connect zachová až do data historie spuštění za sedm dní. V tomto kroku odstraníme dat historie spouštění a uvolněním místa v databázi tak, aby služba Azure AD Connect synchronizaci můžete provést synchronizaci znovu.
+### <a name="delete-run-history-data"></a>Odstranit data historie spuštění
+Ve výchozím nastavení azure ad connect uchovává až sedm dní historie dat spuštění. V tomto kroku odstraníme data historie spuštění, abychom uvolnili místo v DB, aby služba synchronizace Azure AD Connect mohla znovu spustit synchronizaci.
 
-1. Spustit **Synchronization Service Manager** tak, že přejdete na ZAČÁTKU → synchronizační služba.
+1. **Spusťte Správce synchronizačních služeb** tak, že přejdete na start → Služba synchronizace.
 
-2. Přejděte **operace** kartu.
+2. Přejděte na kartu **Operace.**
 
-3. V části **akce**vyberte **vymazat spuštění**...
+3. V části **Akce**vyberte **Vymazat spuštění**...
 
-4. Můžete si vybrat **zrušte všechna spuštění** nebo **vymazat spuštěn dříve, než... \<datum >** možnost. Doporučujeme začít tím, že zrušíte spustit data historie, která jsou starší než dvou dnů. Pokud narazíte na problém velikost databáze, klikněte na tlačítko **zrušte všechna spuštění** možnost.
+4. Můžete buď zvolit **Vymazat všechny spuštění** nebo Vymazat spuštění **před... \<** možnost>datum. Doporučujeme začít vymazáním dat historie spuštění, která jsou starší než dva dny. Pokud budete pokračovat v běhu na problém velikosti DB, pak zvolte **vymazat všechny spuštění** možnost.
 
-### <a name="shorten-retention-period-for-run-history-data"></a>Zkraťte dobu uchování dat historie spuštění
-Tento krok je snížit pravděpodobnost, že narazíte na problém 10 GB limitu po několik synchronizačních cyklů.
+### <a name="shorten-retention-period-for-run-history-data"></a>Zkrácení doby uchování dat historie spuštění
+Tento krok je snížit pravděpodobnost spuštění do 10 GB limit problém po více cyklech synchronizace.
 
-1. Otevřete novou relaci Powershellu.
+1. Otevřete novou relaci PowerShellu.
 
-2. Spustit `Get-ADSyncScheduler` a poznamenejte si vlastnost PurgeRunHistoryInterval, která určuje aktuální dobu uchovávání.
+2. Spusťte `Get-ADSyncScheduler` a poznamenejte si vlastnost PurgeRunHistoryInterval, která určuje aktuální dobu uchovávání.
 
-3. Spustit `Set-ADSyncScheduler -PurgeRunHistoryInterval 2.00:00:00` nastavit dobu uchování na dva dny. Upravte dobu uchovávání informací podle potřeby.
+3. Spuštěním `Set-ADSyncScheduler -PurgeRunHistoryInterval 2.00:00:00` nastavte dobu uchovávání na dva dny. Podle potřeby upravte dobu uchovávání.
 
-## <a name="long-term-solution--migrate-to-full-sql"></a>Dlouhodobým řešením – migrace na SQL
-Problém je většinou naznačuje, že velikost 10 GB databáze již není dostatečné pro Azure AD Connect pro synchronizaci vaší místní služby Active Directory do služby Azure AD. Doporučuje se, že přejdete na používání plnou verzi systému SQL server. Nemůžete LocalDB existujícího nasazení Azure AD Connect přímo nahradit databází plné verze SQL. Místo toho je nutné nasadit nový server Azure AD Connect s plnou verzí SQL. Doporučuje se provést postupnou migraci, kdy se nový server Azure AD Connect (s databází SQL) nasadí jako pracovní server vedle existujícího serveru Azure AD Connect (s LocalDB). 
+## <a name="long-term-solution--migrate-to-full-sql"></a>Dlouhodobé řešení – migrace na úplné SQL
+Obecně platí, že problém naznačuje, že velikost databáze 10 GB již není dostatečná pro Azure AD Connect k synchronizaci místní služby Active Directory do služby Azure AD. Doporučujeme přepnout na plnou verzi serveru SQL. Nemůžete LocalDB existujícího nasazení Azure AD Connect přímo nahradit databází plné verze SQL. Místo toho je nutné nasadit nový server Azure AD Connect s plnou verzí SQL. Doporučuje se provést postupnou migraci, kdy se nový server Azure AD Connect (s databází SQL) nasadí jako pracovní server vedle existujícího serveru Azure AD Connect (s LocalDB). 
 * Pokyny ke konfiguraci vzdáleného SQL se službou Azure AD Connect najdete v článku s popisem [vlastní instalace Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom).
 * Pokyny k postupné migraci kvůli upgradu Azure AD Connect najdete v článku [Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

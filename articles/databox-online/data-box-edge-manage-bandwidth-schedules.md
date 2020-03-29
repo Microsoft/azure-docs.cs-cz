@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Edge Spravovat plány šířky pásma | Dokumentace Microsoftu
-description: Popisuje, jak pomocí webu Azure portal ke správě plánů šířky pásma na hranici vaší Azure Data Box.
+title: Azure Data Box Edge spravuje plány šířky pásma | Dokumenty společnosti Microsoft
+description: Popisuje, jak používat portál Azure ke správě plánů šířky pásma na azure data boxu Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
 ms.openlocfilehash: f7b762d5502986c306de240519688aa639f58445
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60756800"
 ---
-# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-edge"></a>Pomocí webu Azure portal ke správě plánů šířky pásma na hranici vaší Azure Data Box  
+# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-edge"></a>Správa plánů šířky pásma na Azure Data Box Edge pomocí portálu Azure Portal  
 
-Tento článek popisuje, jak spravovat uživatele na hranici vaší Azure Data Box. Plány služby Bandwidth vám umožňují nakonfigurovat využití šířky pásma sítě pro více denních plánů. Tyto plány lze použít k operacím nahrávání a stahování ze zařízení do cloudu a naopak.
+Tento článek popisuje, jak spravovat uživatele na Azure Data Box Edge. Plány služby Bandwidth vám umožňují nakonfigurovat využití šířky pásma sítě pro více denních plánů. Tyto plány lze použít k operacím nahrávání a stahování ze zařízení do cloudu a naopak.
 
-Můžete přidat, upravit nebo odstranit plány šířky pásma pro vaše Data pole hraničních zařízení prostřednictvím webu Azure portal.
+Plány šířky pásma pro oblast Data Box Edge můžete přidat, upravit nebo odstranit prostřednictvím portálu Azure.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -31,18 +31,18 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="add-a-schedule"></a>Přidání plánu
 
-Proveďte následující kroky na webu Azure Portal přidat plán.
+Postupujte podle následujících kroků na webu Azure Portal a přidejte plán.
 
-1. Na portálu Azure pro prostředek okraj pole dat, přejděte na **šířky pásma**.
-2. V pravém podokně vyberte **+ přidat plán**.
+1. Na webu Azure Portal pro prostředek Data Box Edge přejděte na **Šířka pásma**.
+2. V pravém podokně vyberte **+ Přidat plán**.
 
-    ![Vyberte šířku pásma](media/data-box-edge-manage-bandwidth-schedules/add-schedule-1.png)
+    ![Vybrat šířku pásma](media/data-box-edge-manage-bandwidth-schedules/add-schedule-1.png)
 
 3. V části **Přidání plánu**: 
 
    1. Zadejte **den spuštění**, **den ukončení**, **čas spuštění** a **čas ukončení** plánu.
-   2. Zkontrolujte, **celý den** Pokud tento plán by měl spustit celý den.
-   3. **Rychlost šířky pásma** je šířka pásma v megabitech za sekundu (Mb/s), používaná vašim zařízením při operacích zahrnujících cloud (nahrávání i stahování). Zadejte číslo v rozsahu od 20 a 1,000,000,007 pro toto pole.
+   2. Zaškrtněte možnost **Celý den,** pokud by tento plán měl běžet celý den.
+   3. **Rychlost šířky pásma** je šířka pásma v megabitech za sekundu (Mb/s), používaná vašim zařízením při operacích zahrnujících cloud (nahrávání i stahování). Zajistěte číslo mezi 20 a 1 000 000 007 pro toto pole.
    4. Pokud nechcete omezit nahrávání a stahování dat, zaškrtněte možnost **Neomezená šířka pásma**.
    5. Vyberte **Přidat**.
 
@@ -56,9 +56,9 @@ Proveďte následující kroky na webu Azure Portal přidat plán.
 
 Chcete-li upravit plán služby Bandwidth, postupujte následovně.
 
-1. Na webu Azure Portal, přejděte na váš prostředek okraj pole Data a potom přejděte ke **šířky pásma**. 
-2. V seznamu plánů šířky pásma vyberte a vyberte plán, který chcete upravit.
-    ![Vybrat plán, šířky pásma](media/data-box-edge-manage-bandwidth-schedules/modify-schedule-1.png)
+1. Na webu Azure Portal přejděte na prostředek Data Box Edge a pak přejděte na **Šířku pásma**. 
+2. Ze seznamu plánů šířky pásma vyberte a vyberte plán, který chcete upravit.
+    ![Vybrat plán šířky pásma](media/data-box-edge-manage-bandwidth-schedules/modify-schedule-1.png)
 
 3. Proveďte požadované změny a uložte je.
 
@@ -71,17 +71,17 @@ Chcete-li upravit plán služby Bandwidth, postupujte následovně.
 
 ## <a name="delete-a-schedule"></a>Odstranění plánu
 
-Proveďte následující kroky k odstranění plánu šířky pásma spojené s vaším zařízením Data Box Edge.
+Chcete-li odstranit plán šířky pásma přidružený k zařízení Data Box Edge, postupujte podle následujících kroků.
 
-1. Na webu Azure Portal, přejděte na váš prostředek okraj pole Data a potom přejděte ke **šířky pásma**.  
+1. Na webu Azure Portal přejděte na prostředek Data Box Edge a pak přejděte na **Šířku pásma**.  
 
-2. V seznamu plánů služby Bandwidth vyberte a klikněte na plán, který chcete odstranit. V **upravit plán**vyberte **odstranit**. Po zobrazení výzvy k potvrzení, vyberte **Ano**.
+2. V seznamu plánů služby Bandwidth vyberte a klikněte na plán, který chcete odstranit. V **plánu úprav**vyberte **Odstranit**. Po zobrazení výzvy k potvrzení vyberte **možnost Ano**.
 
    ![Odstranění uživatele](media/data-box-edge-manage-bandwidth-schedules/delete-schedule-2.png)
 
 3. Po odstranění plánu se aktualizuje seznam plánů.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak [spravovat sdílené složky](data-box-edge-manage-shares.md).
+- Přečtěte si, jak [spravovat sdílené složky](data-box-edge-manage-shares.md).

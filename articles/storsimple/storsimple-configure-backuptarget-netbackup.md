@@ -1,6 +1,6 @@
 ---
-title: Řady StorSimple 8000 jako cíl zálohování s NetBackup | Microsoft Docs
-description: Popisuje konfiguraci cíle zálohování StorSimple pomocí programu VERITAS NetBackup.
+title: StorSimple 8000 série jako cíl zálohování s NetBackup | Dokumenty společnosti Microsoft
+description: Popisuje konfiguraci cíle zálohování StorSimple pomocí programu Veritas NetBackup.
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -15,484 +15,484 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67876212"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple jako cíl zálohování s NetBackup
 
 ## <a name="overview"></a>Přehled
 
-Azure StorSimple je řešení hybridního cloudového úložiště od Microsoftu. StorSimple řeší složitosti exponenciálního nárůstu dat pomocí účtu Azure Storage jako rozšíření místního řešení a automaticky přenáší data napříč místním úložištěm a cloudovým úložištěm.
+Azure StorSimple je řešení hybridního cloudového úložiště od Microsoftu. StorSimple řeší složitosti exponenciálního růstu dat pomocí účtu úložiště Azure jako rozšíření místního řešení a automatického vrstvení dat napříč místním úložištěm a cloudovým úložištěm.
 
-V tomto článku probereme integraci StorSimple s VERITAS NetBackup a osvědčenými postupy pro integraci obou řešení. Poskytujeme také doporučení, jak nastavit VERITAS NetBackup, aby se co nejlépe integroval s StorSimple. Od společnosti Veritas osvědčené postupy, architekti zálohování a správců odložíme nejlepší způsob, jak nastavit VERITAS NetBackup tak, aby splňovaly jednotlivé požadavky na zálohování a smlouvy o úrovni služeb (SLA).
+V tomto článku budeme diskutovat O integraci StorSimple s Veritas NetBackup a osvědčené postupy pro integraci obou řešení. Také jsme doporučení, jak nastavit Veritas NetBackup pro nejlepší integraci s StorSimple. Doporučujeme osvědčeným postupům společnosti Veritas, architektům zálohování a správcům, abychom měli nejlepší způsob, jak nastavit aplikaci Veritas NetBackup tak, aby splňovala individuální požadavky na zálohování a smlouvy o úrovni služeb (SLA).
 
-I když ilustrují konfigurační kroky a klíčové koncepty, Tento článek není nijak podrobných konfigurací nebo Průvodce instalací nástroje. Předpokládáme, že základní komponenty a infrastruktura jsou v pracovním řádu a připravené k podpoře konceptů, které popisujeme.
+I když ilustrujeme kroky konfigurace a klíčové koncepty, tento článek není v žádném případě podrobným průvodcem konfigurací nebo instalací. Předpokládáme, že základní komponenty a infrastruktura jsou v provozuschopném stavu a jsou připraveny podporovat koncepty, které popisujeme.
 
-### <a name="who-should-read-this"></a>Kdo by se měl číst?
+### <a name="who-should-read-this"></a>Kdo by to měl číst?
 
-Informace v tomto článku budou nejužitečnější pro správce zálohování, Správce úložiště a architekty úložiště, kteří mají zkušenosti s úložištěm, Windows Server 2012 R2, Ethernet, Cloud Services a VERITAS NetBackup.
+Informace v tomto článku budou velmi užitečné pro správce záloh, správce úložišť a architekty úložišť, kteří mají znalosti úložiště, Windows Server 2012 R2, Ethernet, cloudové služby a Veritas NetBackup.
 
 ### <a name="supported-versions"></a>Podporované verze
 
--   NetBackup 7.7. x a novější verze
+-   NetBackup 7.7.x a novější verze
 -   [StorSimple Update 3 a novější verze](storsimple-overview.md#storsimple-workload-summary)
 
 
 ## <a name="why-storsimple-as-a-backup-target"></a>Proč StorSimple jako cíl zálohování?
 
-StorSimple je vhodná volba pro cíl zálohování z těchto důvodů:
+StorSimple je dobrou volbou pro cíl zálohování, protože:
 
--   Poskytuje standardní místní úložiště pro aplikace pro zálohování, které se mají použít jako cíl pro rychlé zálohování, a to bez jakýchkoli změn. StorSimple můžete použít také pro rychlé obnovení nedávných záloh.
--   Jeho vrstva cloudu se bezproblémově integruje s účtem cloudového úložiště Azure, aby bylo možné využívat nákladově efektivní Azure Storage.
--   Pro zotavení po havárii automaticky zajišťuje ukládání mimo lokalitu.
+-   Poskytuje standardní místní úložiště pro zálohovací aplikace, které lze použít jako cíl rychlého zálohování bez jakýchkoli změn. Můžete také použít StorSimple pro rychlé obnovení posledních záloh.
+-   Jeho vrstvení cloudu je bezproblémově integrované s účtem cloudového úložiště Azure, aby bylo možné využívat cenově výhodné úložiště Azure.
+-   Automaticky poskytuje úložiště mimo lokalitu pro zotavení po havárii.
 
 ## <a name="key-concepts"></a>Klíčové koncepty
 
-Stejně jako u jakéhokoli řešení úložiště je velmi důležité vyhodnotit výkon úložiště, SLA, rychlost změny a potřeby růstu kapacity. Hlavním nápadem je to, že když zavedete cloudovou vrstvu, vaše doba přístupu a propustnost do cloudu hrají základní roli, která může StorSimple provádět jeho úlohu.
+Stejně jako u všech řešení úložiště je pro úspěch rozhodující pečlivé posouzení výkonu úložiště, sla, rychlosti změn a potřeb růstu kapacity. Hlavní myšlenkou je, že zavedením cloudové vrstvy hrají vaše časy přístupu a propustnosti do cloudu zásadní roli ve schopnosti StorSimple dělat svou práci.
 
-StorSimple je navržený tak, aby poskytoval úložiště pro aplikace, které pracují s dobře definovanou pracovní sadou dat (Hot data). V tomto modelu se pracovní sada dat ukládá v místních vrstvách a zbývající nepracovní/studená a archivní sada dat je vrstvená do cloudu. Tento model je reprezentován na následujícím obrázku. Skoro plochá zelená čára představuje data uložená v místních vrstvách zařízení StorSimple. Červená čára představuje celkové množství dat uložených v řešení StorSimple napříč všemi úrovněmi. Prostor mezi plochou zelenou čárou a exponenciální červenou křivkou představuje celkové množství dat uložených v cloudu.
+StorSimple je navržen tak, aby poskytoval úložiště aplikacím, které pracují s dobře definovanou pracovní sadou dat (hot data). V tomto modelu je pracovní sada dat uložena na místních úrovních a zbývající nepracovní/studená/archivovaná sada dat je vrstvena do cloudu. Tento model je znázorněn na následujícím obrázku. Téměř plochá zelená čára představuje data uložená na místních úrovních zařízení StorSimple. Červená čára představuje celkové množství dat uložených v řešení StorSimple napříč všemi vrstvami. Mezera mezi plochou zelenou čárou a exponenciální červenou křivkou představuje celkové množství dat uložených v cloudu.
 
-**StorSimple vrstvení**
-![Diagram vrstvení StorSimple vrstev StorSimple](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
+**StorSimple stupňovitý**
+![StorSimple vrstvení diagram](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
 
-V této architektuře se dozvíte, že StorSimple je ideálním řešením pro provoz jako cíl zálohování. StorSimple můžete použít k těmto akcím:
+S ohledem na tuto architekturu zjistíte, že StorSimple je ideální pro funkci jako cíl zálohování. StorSimple můžete použít k:
 -   Proveďte nejčastější obnovení z místní pracovní sady dat.
--   Využijte Cloud pro zotavení po havárii mimo lokalitu a starší data, kde obnovení je méně časté.
+-   Cloud použijte pro zotavení po havárii mimo lokalitu a starší data, kde jsou obnovení méně častá.
 
-## <a name="storsimple-benefits"></a>Výhody StorSimple
+## <a name="storsimple-benefits"></a>StorSimple výhody
 
-StorSimple poskytuje místní řešení, které se bez problémů integruje s Microsoft Azure díky využití bezproblémového přístupu k místnímu a cloudovém úložišti.
+StorSimple poskytuje místní řešení, které je bezproblémově integrované s Microsoft Azure, a to díky využití bezproblémového přístupu k místnímu a cloudovému úložišti.
 
-StorSimple využívá automatické vrstvení mezi místním zařízením, které má úložiště SSD (Solid-State Device) a SAS (Serial-Attached SCSI), a Azure Storage. Automatické vrstvení uchovává často používaná data na úrovních SSD a SAS. Přesune zřídka používaná data na Azure Storage.
+StorSimple používá automatické vrstvení mezi místním zařízením, které má zařízení SSD (SSD) a sériově připojené úložiště SCSI (SAS) a Azure Storage. Automatické vrstvení udržuje často přistupovat k datům místní, na úrovních SSD a SAS. Přesouvá zřídka přístupná data do Služby Azure Storage.
 
 StorSimple nabízí tyto výhody:
 
--   Jedinečné algoritmy pro odstranění duplicit a kompresi, které využívají Cloud k dosažení nepředchozích úrovní odstranění duplicit
+-   Jedinečné algoritmy odstranění duplicit a komprese, které používají cloud k dosažení bezprecedentních úrovní odstranění duplicit
 -   Vysoká dostupnost
 -   Geografická replikace pomocí geografické replikace Azure
 -   Integrace Azure
 -   Šifrování dat v cloudu
 -   Lepší zotavení po havárii a dodržování předpisů
 
-I když StorSimple představuje dva hlavní scénáře nasazení (primární cíl zálohování a sekundární cíl zálohování), v podstatě je to jednoduché, blokové úložné zařízení. StorSimple provádí všechna komprimaci a odstraňování duplicitních dat. Bez problémů odesílá a načítá data mezi cloudem a systémem souborů a aplikací.
+Přestože StorSimple představuje dva hlavní scénáře nasazení (primární cíl zálohování a sekundární cíl zálohování), v podstatě je to prosté, blokové úložné zařízení. StorSimple provádí všechny komprese a deduplikace. Hladce odesílá a načítá data mezi cloudem a aplikací a souborovým systémem.
 
-Další informace o StorSimple naleznete v tématu [StorSimple 8000 series: Řešení](storsimple-overview.md)hybridního cloudového úložiště Můžete si také projít specifikacemi [řady Technical StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
+Další informace o StorSimple naleznete v [tématu StorSimple 8000 series: Hybridní řešení cloudového úložiště](storsimple-overview.md). Také si můžete prohlédnout [technické specifikace řady StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
-> Použití zařízení StorSimple jako cíle zálohování je podporované jenom pro StorSimple 8000 Update 3 a novější verze.
+> Použití zařízení StorSimple jako cíle zálohování je podporováno pouze pro aktualizaci StorSimple 8000 Update 3 a novější verze.
 
 ## <a name="architecture-overview"></a>Přehled architektury
 
-V následujících tabulkách jsou uvedeny úvodní pokyny k modelům zařízení-architektura.
+V následujících tabulkách jsou uvedeny počáteční pokyny modelu zařízení k architektuře.
 
-**StorSimple kapacity pro místní a cloudové úložiště**
+**StorJednoduché kapacity pro místní a cloudové úložiště**
 
 | Kapacita úložiště       | 8100          | 8600            |
 |------------------------|---------------|-----------------|
-| Kapacita místního úložiště | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
-| Kapacita cloudového úložiště | &gt; 200 TiB\* | &gt; 500 TiB\* |
+| Kapacita místního úložiště | &lt;10 TiB\*  | &lt;20 TiB\*  |
+| Kapacita cloudového úložiště | &gt;200 TiB\* | &gt;500 TiB\* |
 
-\*Velikost úložiště nepředpokládá žádné odstranění duplicit ani kompresi.
+\*Velikost úložiště předpokládá žádné odstranění duplicit nebo komprese.
 
-**StorSimple kapacity pro primární a sekundární zálohy**
+**StorJednoduché kapacity pro primární a sekundární zálohování**
 
 | Scénář zálohování  | Kapacita místního úložiště  | Kapacita cloudového úložiště  |
 |---|---|---|
-| Primární záloha  | Poslední zálohy uložené v místním úložišti pro rychlé obnovení, aby splňovaly cíl bodu obnovení (RPO) | Historie zálohování (RPO) se vejde do kapacity cloudu |
-| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | Není k dispozici  |
+| Primární zálohování  | Nedávné zálohy uložené v místním úložišti pro rychlé obnovení, aby bylo splněno cíl bodu obnovení (RPO) | Historie zálohování (RPO) se vejde do kapacity cloudu |
+| Sekundární zálohování | Sekundární kopii záložních dat lze uložit v kapacitě cloudu  | Není dostupné.  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple jako primární cíl zálohování
 
-V tomto scénáři se StorSimple svazky prezentují do zálohovací aplikace jako jediné úložiště pro zálohy. Následující obrázek ukazuje architekturu řešení, ve které všechny zálohy používají StorSimple vrstvené svazky pro zálohování a obnovení.
+V tomto scénáři StorSimple svazky jsou prezentovány do zálohovací aplikace jako jediné úložiště pro zálohování. Následující obrázek znázorňuje architekturu řešení, ve které všechny zálohy používají vrstvené svazky StorSimple pro zálohování a obnovení.
 
-![StorSimple jako primární Logický diagram cíle zálohování](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetlogicaldiagram.png)
+![StorSimple jako primární cílový diagram zálohování](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetlogicaldiagram.png)
 
-### <a name="primary-target-backup-logical-steps"></a>Logické kroky zálohování primárního cíle
+### <a name="primary-target-backup-logical-steps"></a>Logické kroky primární cílové zálohy
 
-1.  Záložní server kontaktuje cílového agenta Zálohování a Agent zálohování přenáší data na záložní server.
-2.  Záložní server zapisuje data do vrstvených svazků StorSimple.
-3.  Záložní server aktualizuje databázi katalogu a pak dokončí úlohu zálohování.
-4.  Skript snímku spustí StorSimple Snapshot Manager (spustit nebo odstranit).
-5.  Záložní server odstraní zálohy s vypršenou platností na základě zásad uchovávání informací.
+1.  Záložní server kontaktuje cílového agenta zálohování a záložní agent přenáší data na záložní server.
+2.  Záložní server zapisuje data do svazků storsimple vrstvených.
+3.  Záložní server aktualizuje databázi katalogu a potom dokončí úlohu zálohování.
+4.  Skript snímku aktivuje správce snímků StorSimple (spuštění nebo odstranění).
+5.  Záložní server odstraní zálohy, jejichž platnost vypršela na základě zásad uchovávání informací.
 
 ### <a name="primary-target-restore-logical-steps"></a>Logické kroky obnovení primárního cíle
 
-1.  Záložní server začne obnovovat vhodná data z úložiště úložiště.
-2.  Agent zálohování obdrží data ze záložního serveru.
-3.  Záložní server dokončí úlohu obnovení.
+1.  Záložní server spustí obnovení příslušných dat z úložiště úložiště.
+2.  Záložní agent obdrží data ze záložního serveru.
+3.  Zálohovací server dokončí úlohu obnovení.
 
-## <a name="storsimple-as-a-secondary-backup-target"></a>StorSimple jako cíl sekundárního zálohování
+## <a name="storsimple-as-a-secondary-backup-target"></a>StorSimple jako sekundární cíl zálohování
 
-V tomto scénáři se StorSimple svazky primárně používají k dlouhodobému uchovávání nebo archivaci.
+V tomto scénáři StorSimple svazky primárně se používají pro dlouhodobé uchovávání nebo archivaci.
 
-Následující obrázek ukazuje architekturu, ve které počáteční zálohy a obnovení cílí na svazek s vysokým výkonem. Tyto zálohy se zkopírují a archivují na StorSimple vrstvený svazek podle nastaveného plánu.
+Následující obrázek znázorňuje architekturu, ve které počáteční zálohy a obnovení cílí na vysoce výkonný svazek. Tyto zálohy jsou zkopírovány a archivovány na vrstvený svazek StorSimple podle nastaveného plánu.
 
-Je důležité mít velikost vysoce výkonného svazku, aby mohla zvládnout požadavky na kapacitu a výkon zásad uchovávání informací.
+Je důležité zvětšit objem s vysokým výkonem, aby mohl zpracovat vaše požadavky na kapacitu a výkon zásad uchovávání informací.
 
-![Logický diagram StorSimple jako sekundární cíl zálohování](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
+![StorSimple jako sekundární záložní cílový diagram](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
 
-### <a name="secondary-target-backup-logical-steps"></a>Logické kroky zálohování sekundárního cíle
+### <a name="secondary-target-backup-logical-steps"></a>Logické kroky sekundární hotřské zálohy
 
-1.  Záložní server kontaktuje cílového agenta Zálohování a Agent zálohování přenáší data na záložní server.
-2.  Záložní server zapisuje data do úložiště s vysokým výkonem.
-3.  Záložní server aktualizuje databázi katalogu a pak dokončí úlohu zálohování.
-4.  Záložní server kopíruje zálohy do StorSimple na základě zásad uchovávání informací.
-5.  Skript snímku spustí StorSimple Snapshot Manager (spustit nebo odstranit).
-6.  Záložní server odstraní zálohy s vypršenou platností na základě zásad uchovávání informací.
+1.  Záložní server kontaktuje cílového agenta zálohování a záložní agent přenáší data na záložní server.
+2.  Záložní server zapisuje data do vysoce výkonného úložiště.
+3.  Záložní server aktualizuje databázi katalogu a potom dokončí úlohu zálohování.
+4.  Záložní server zkopíruje zálohy na StorSimple na základě zásad uchovávání informací.
+5.  Skript snímku aktivuje správce snímků StorSimple (spuštění nebo odstranění).
+6.  Záložní server odstraní zálohy, jejichž platnost vypršela, na základě zásad uchovávání informací.
 
 ### <a name="secondary-target-restore-logical-steps"></a>Logické kroky obnovení sekundárního cíle
 
-1.  Záložní server začne obnovovat vhodná data z úložiště úložiště.
-2.  Agent zálohování obdrží data ze záložního serveru.
-3.  Záložní server dokončí úlohu obnovení.
+1.  Záložní server spustí obnovení příslušných dat z úložiště úložiště.
+2.  Záložní agent obdrží data ze záložního serveru.
+3.  Zálohovací server dokončí úlohu obnovení.
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
 Nasazení tohoto řešení vyžaduje tři kroky:
 1. Připravte síťovou infrastrukturu.
 2. Nasaďte zařízení StorSimple jako cíl zálohování.
-3. Nasaďte VERITAS NetBackup.
+3. Nasazení aplikace Veritas NetBackup.
 
-Jednotlivé kroky jsou podrobně popsány v následujících částech.
+Každý krok je podrobně popsán v následujících částech.
 
 ### <a name="set-up-the-network"></a>Nastavit síť
 
-Vzhledem k tomu, že StorSimple je řešení, které je integrované s cloudem Azure, vyžaduje StorSimple aktivní a funkční připojení ke cloudu Azure. Toto připojení se používá pro operace, jako jsou cloudové snímky, Správa dat a přenos metadat, a to na úrovni starších a méně využitých dat do cloudového úložiště Azure.
+Vzhledem k tomu, že StorSimple je řešení, které je integrované s cloudem Azure, StorSimple vyžaduje aktivní a pracovní připojení ke cloudu Azure. Toto připojení se používá pro operace, jako jsou cloudové snímky, správa dat a přenos metadat, a na úroveň starších, méně přístupných dat do cloudového úložiště Azure.
 
-Aby se řešení provádělo optimálně, doporučujeme dodržovat tyto osvědčené postupy sítě:
+Aby řešení fungovalo optimálně, doporučujeme dodržovat tyto doporučené postupy pro vytváření sítí:
 
--   Odkaz, který připojuje vrstvu StorSimple do Azure, musí splňovat požadavky na šířku pásma. Chcete-li toho dosáhnout, použijte správnou úroveň QoS (Quality of Service) na přepínače infrastruktury, aby odpovídaly cíli RPO a času obnovení (RTO) SLA.
+-   Propojení, které spojuje vrstvení StorSimple s Azure musí splňovat vaše požadavky na šířku pásma. Chcete-li toho dosáhnout, použijte správnou úroveň kvality služby (QoS) na přepínače infrastruktury tak, aby odpovídaly vašim službám SLA cíle RPO a času obnovení (RTO).
 
--   Maximální počet latencí přístupu k úložišti objektů BLOB v Azure by měl být okolo 80 MS.
+-   Maximální latence přístupu k úložišti azure blob by měla být kolem 80 ms.
 
 ### <a name="deploy-storsimple"></a>Nasazení StorSimple
 
-Podrobné pokyny k nasazení StorSimple najdete v tématu [nasazení místního zařízení StorSimple](storsimple-deployment-walkthrough-u2.md).
+Podrobné pokyny pro nasazení StorSimple najdete v tématu [Nasazení místního zařízení StorSimple](storsimple-deployment-walkthrough-u2.md).
 
-### <a name="deploy-netbackup"></a>Nasazení NetBackup
+### <a name="deploy-netbackup"></a>Nasazení programu NetBackup
 
-Podrobné pokyny k nasazení NetBackup 7.7. x najdete v [dokumentaci k NetBackup 7.7. x](http://www.veritas.com/docs/000094423).
+Podrobné pokyny k nasazení programu NetBackup 7.7.x naleznete v dokumentaci k [programu NetBackup 7.7.x](http://www.veritas.com/docs/000094423).
 
 ## <a name="set-up-the-solution"></a>Nastavení řešení
 
-V této části předvádíme některé příklady konfigurace. Následující příklady a doporučení znázorňují základní a základní implementaci. Tato implementace se nemusí vztahovat přímo na vaše konkrétní požadavky na zálohování.
+V této části předvedeme některé příklady konfigurace. Následující příklady a doporučení ilustrují nejzákladnější a nejzákladnější implementaci. Tato implementace nemusí platit přímo pro vaše konkrétní požadavky na zálohování.
 
-### <a name="set-up-storsimple"></a>Nastavení StorSimple
+### <a name="set-up-storsimple"></a>Nastavit StorSimple
 
-| StorSimple úlohy nasazení  | Další komentáře |
+| Úlohy nasazení StorSimple  | Další komentáře |
 |---|---|
-| Nasaďte vaše místní zařízení StorSimple. | Podporované verze: Aktualizujte 3 a novější verze. |
-| Zapněte cíl zálohování. | Pomocí těchto příkazů můžete zapnout nebo vypnout režim cíle zálohování a získat stav. Další informace najdete v tématu [vzdálené připojení k zařízení StorSimple](storsimple-remote-connect.md).</br> Zapnutí režimu zálohování: `Set-HCSBackupApplianceMode -enable`. </br> Vypnutí režimu zálohování: `Set-HCSBackupApplianceMode -disable` </br> Získání aktuálního stavu nastavení režimu zálohování: `Get-HCSBackupApplianceMode`. |
-| Vytvořte pro svazek společný kontejner svazků, ve kterém jsou uložena data záloh. Všechna data v kontejneru svazků mají za následek odstranění duplicitních dat. | Kontejnery svazků StorSimple definují domény odstranění duplicit.  |
-| Vytvořte StorSimple svazky. | Vytvářejte svazky s velikostí co nejblíže předpokládanému využití, protože velikost svazku ovlivňuje dobu trvání snímku cloudu. Informace o tom, jak velikost svazku získat, najdete v tématu o [zásadách uchovávání informací](#retention-policies).</br> </br> Použijte StorSimple vrstvené svazky a zaškrtněte políčko **použít tento svazek pro archivní data, ke kterým se přistupuje méně často** . </br> Použití pouze místně připojených svazků není podporováno. |
-| Vytvořte jedinečné zásady zálohování StorSimple pro všechny cílové svazky zálohy. | Zásada zálohování StorSimple definuje skupinu konzistence svazku. |
-| Zakažte plán jako vypršení platnosti snímků. | Snímky se spouštějí jako operace následného zpracování. |
+| Nasaďte místní zařízení StorSimple. | Podporované verze: Aktualizace 3 a novější verze. |
+| Zapněte cíl zálohování. | Pomocí těchto příkazů můžete zapnout nebo vypnout režim cíle zálohování a získat stav. Další informace naleznete v [tématu Vzdálené připojení k zařízení StorSimple](storsimple-remote-connect.md).</br> Zapnutí režimu zálohování: `Set-HCSBackupApplianceMode -enable`. </br> Vypnutí režimu zálohování: `Set-HCSBackupApplianceMode -disable`. </br> Chcete-li získat aktuální stav `Get-HCSBackupApplianceMode`nastavení režimu zálohování: . |
+| Vytvořte společný kontejner svazku pro svazek, který ukládá záložní data. Všechna data v kontejneru svazku jsou deduplikována. | Kontejnery svazků StorSimple definují domény deduplikace.  |
+| Vytvořte svazky StorSimple. | Vytvořte svazky s velikostmi co nejblíže očekávanému využití, protože velikost svazku ovlivňuje dobu trvání snímku cloudu. Informace o velikosti svazku naleznete v [zásadách uchovávání informací](#retention-policies).</br> </br> Použijte vrstvené svazky StorSimple a zaškrtněte políčko **Použít tento svazek pro méně často přistupující archivní data.** </br> Použití pouze místně vázaných svazků není podporováno. |
+| Vytvořte jedinečnou zásadu zálohování StorSimple pro všechny cílové svazky zálohování. | Zásada zálohování StorSimple definuje skupinu konzistence svazku. |
+| Zakažte plán jako snímky vyprší. | Snímky jsou spuštěny jako operace následnézpracování. |
 
-### <a name="set-up-the-host-backup-server-storage"></a>Nastavení úložiště záložního serveru hostitele
+### <a name="set-up-the-host-backup-server-storage"></a>Nastavení úložiště hostitelského záložního serveru
 
-Nastavte úložiště záložního serveru hostitele podle těchto pokynů:  
+Nastavte úložiště hostitelského záložního serveru podle těchto pokynů:  
 
-- Nepoužívat rozložené svazky (vytvořené nástrojem Správa disků systému Windows); rozložené svazky se nepodporují.
-- Naformátujte svazky pomocí systému souborů NTFS s velikostí alokace 64 – KB.
-- Namapujte StorSimple svazky přímo na server NetBackup.
-    - Pro fyzické servery použijte iSCSI.
-    - Používejte průchozí disky pro virtuální servery.
+- Nepoužívejte rozložené svazky (vytvořené programem Windows Disk Management); rozložené svazky nejsou podporovány.
+- Naformátujte svazky pomocí systému souborů NTFS s velikostí přidělení 64 KB.
+- Namapujte svazky StorSimple přímo na server NetBackup.
+    - Použijte iSCSI pro fyzické servery.
+    - Pro virtuální servery používejte předávací disky.
 
 
-## <a name="best-practices-for-storsimple-and-netbackup"></a>Osvědčené postupy pro StorSimple a NetBackup
+## <a name="best-practices-for-storsimple-and-netbackup"></a>Doporučené postupy pro StorSimple a NetBackup
 
-Nastavte své řešení podle pokynů v následujících částech.
+Nastavte řešení podle pokynů v následujících několika částech.
 
-### <a name="operating-system-best-practices"></a>Osvědčené postupy pro operační systém
+### <a name="operating-system-best-practices"></a>Osvědčené postupy operačního systému
 
-- Zakažte šifrování a odstranění duplicitních dat Windows serveru pro systém souborů NTFS.
-- Zakažte defragmentaci Windows serveru na svazcích StorSimple.
-- Zakažte indexování Windows serveru na svazcích StorSimple.
-- Spusťte kontrolu antivirové ochrany na zdrojovém hostiteli (nikoli na svazcích StorSimple).
-- Vypněte výchozí [údržbu Windows serveru](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) ve Správci úloh. Udělejte to jedním z následujících způsobů:
-  - Vypněte Konfigurátor údržby ve Windows Plánovač úloh.
-  - Stáhněte si [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) ze systému Windows Sysinternals. Po stažení PsExec spusťte Windows PowerShell jako správce a zadejte:
+- Zakažte šifrování a odstranění duplicit systému Souborů Systému souborů Windows Server.
+- Zakažte defragmentaci systému Windows Server na svazcích StorSimple.
+- Zakažte indexování systému Windows Server na svazcích StorSimple.
+- Spusťte antivirovou kontrolu u zdrojového hostitele (nikoli proti svazkům StorSimple).
+- Vypněte výchozí [údržbu systému Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) ve Správci úloh. Udělejte to jedním z následujících způsobů:
+  - Vypněte konfigurátor Údržba v Plánovači úloh systému Windows.
+  - Stáhnout [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) z Windows Sysinternals. Po stažení programu PsExec spusťte prostředí Windows PowerShell jako správce a zadejte:
     ```powershell
     psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
     ```
 
-### <a name="storsimple-best-practices"></a>Osvědčené postupy pro StorSimple
+### <a name="storsimple-best-practices"></a>StorSimple osvědčené postupy
 
--   Ujistěte se, že se zařízení StorSimple aktualizovalo na [aktualizaci 3 nebo novější](storsimple-install-update-3.md).
--   Izolujte provoz iSCSI a Cloud. Pro přenosy mezi StorSimple a záložním serverem používejte vyhrazená připojení iSCSI.
--   Ujistěte se, že vaše zařízení StorSimple je vyhrazený cíl zálohování. Smíšené úlohy se nepodporují, protože mají vliv na RTO a RPO.
+-   Ujistěte se, že zařízení StorSimple je aktualizováno na [aktualizaci 3 nebo novější](storsimple-install-update-3.md).
+-   Izolujte iSCSI a cloudový provoz. Pro přenosmezi StorSimple a záložním serverem použijte vyhrazená připojení iSCSI.
+-   Ujistěte se, že vaše zařízení StorSimple je vyhrazený cíl zálohování. Smíšené úlohy nejsou podporovány, protože ovlivňují vaše RTO a RPO.
 
-### <a name="netbackup-best-practices"></a>Osvědčené postupy pro NetBackup
+### <a name="netbackup-best-practices"></a>Osvědčené postupy programu NetBackup
 
--   Databáze NetBackup by měla být místní pro server a nesmí se nacházet na svazku StorSimple.
--   V případě zotavení po havárii zálohujte databázi NetBackup na svazku StorSimple.
--   Pro toto řešení podporujeme NetBackup úplné a přírůstkové zálohování (označované také jako rozdílové přírůstkové zálohování v NetBackup). Doporučujeme nepoužívat syntetické a kumulativní přírůstkové zálohování.
--   Soubory dat zálohy by měly obsahovat pouze data pro konkrétní úlohu. Například připojení k médiím v různých úlohách není povoleno.
+-   Databáze NetBackup by měla být místní na serveru a neměla by být umístěna na svazku StorSimple.
+-   Obnovení po havárii zálohujte databázi netbackup na svazku StorSimple.
+-   Podporujeme NetBackup úplné a přírůstkové zálohy (označované také jako rozdílové přírůstkové zálohy v NetBackup) pro toto řešení. Doporučujeme nepoužívat syntetické a kumulativní přírůstkové zálohy.
+-   Záložní datové soubory by měly obsahovat pouze data pro určitou úlohu. Například nejsou povoleny žádné připojení médií mezi různými úlohami.
 
-Nejnovější nastavení NetBackup a osvědčené postupy pro implementaci těchto požadavků naleznete v dokumentaci NetBackup na adrese [www.Veritas.com](https://www.veritas.com).
+Nejnovější nastavení programu NetBackup a doporučené postupy pro implementaci těchto požadavků naleznete v dokumentaci k programu NetBackup na [adrese www.veritas.com](https://www.veritas.com).
 
 
 ## <a name="retention-policies"></a>Zásady uchovávání informací
 
-Jedním z nejběžnějších typů zásad uchovávání záloh je zásada dědečka, otce a syn (GFS). V zásadách GFS se provádí přírůstkové zálohování každý den a úplné zálohování se provádí týdně a měsíčně. Výsledkem této zásady jsou šest StorSimple vrstvených svazků: jeden svazek obsahuje týdenní, měsíční a roční úplné zálohování. druhými pěti svazky se ukládají každodenní přírůstkové zálohování.
+Jedním z nejběžnějších typů zásad uchovávání záloh je zásada Dědeček, Otec a Syn (GFS). V zásadách GFS se přírůstkové zálohování provádí denně a úplné zálohy se provádějí týdně a měsíčně. Výsledkem této zásady je šest vrstvených svazků StorSimple: jeden svazek obsahuje týdenní, měsíční a roční úplné zálohy. zbylých pět svazků ukládá denní přírůstkové zálohy.
 
-V následujícím příkladu používáme GFS otočení. Příklad předpokládá následující:
+V následujícím příkladu používáme rotaci GFS. Příklad předpokládá následující:
 
--   Používají se neodstranění duplicit nebo komprimovaná data.
--   Úplné zálohy jsou 1 TiB.
--   Každodenní přírůstkové zálohování je 500 GiB.
--   Čtyři týdenní zálohy se uchovávají po dobu měsíce.
--   12 měsíčních záloh se uchovává po dobu roku.
--   Jedna roční záloha se uchovává po dobu 10 let.
+-   Používají se nedeedovaná nebo komprimovaná data.
+-   Úplné zálohy jsou 1 TiB každý.
+-   Denní přírůstkové zálohy jsou 500 GiB každý.
+-   Čtyři týdenní zálohy jsou uchovávány po dobu jednoho měsíce.
+-   Dvanáct měsíčnízálohy jsou uchovávány po dobu jednoho roku.
+-   Jedna roční záloha je uchovávána po dobu 10 let.
 
-Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svazek pro měsíční a roční úplný počet záloh. Vytvořte TiB StorSimple vrstvený svazek pro každé přírůstkové denní zálohování.
+Na základě předchozích předpokladů vytvořte 26-TiB StorSimple vrstvený svazek pro měsíční a roční úplné zálohy. Vytvořte 5-TiB StorSimple vrstvený svazek pro každou přírůstkovou denní zálohy.
 
-| Uchování typu zálohování | Velikost (TiB) | Multiplikátor GFS\* | Celková kapacita (TiB)  |
+| Uchovávání typu zálohy | Velikost (TiB) | Multiplikátor GFS\* | Celková kapacita (TiB)  |
 |---|---|---|---|
-| Týdně úplné | 1 | 4  | 4 |
-| Denní přírůstkový | 0,5 | 20 (počet cyklů s rovným počtem týdnů za měsíc) | 12 (2 pro další kvótu) |
-| Úplně měsíčně | 1 | 12 | 12 |
-| Celý rok na celé | 1  | 10 | 10 |
+| Týdenní plný | 1 | 4  | 4 |
+| Denní přírůstkové | 0,5 | 20 (cykly stejný počet týdnů za měsíc) | 12 (2 pro dodatečnou kvótu) |
+| Měsíčně plný | 1 | 12 | 12 |
+| Ročně plné | 1  | 10 | 10 |
 | Požadavek GFS |   | 38 |   |
-| Dodatečná kvóta  | 4  |   | 42 celková GFS požadavek  |
+| Dodatečná kvóta  | 4  |   | 42 celkový požadavek gfs  |
 
-\*Multiplikátor GFS je počet kopií, které je třeba chránit a které je potřeba zachovat, aby splňovaly požadavky zásad zálohování.
+\*Multiplikátor GFS je počet kopií, které potřebujete chránit a uchovávat, aby splňovaly vaše požadavky na zásady zálohování.
 
 ## <a name="set-up-netbackup-storage"></a>Nastavení úložiště NetBackup
 
 ### <a name="to-set-up-netbackup-storage"></a>Nastavení úložiště NetBackup
 
-1.  V konzole pro správu NetBackup vyberte **média a** > **zařízení** > Správa zařízení**fondy disků**. V Průvodci konfigurací fondu disků vyberte typ serveru úložiště **AdvancedDisk**a pak vyberte **Další**.
+1.  V konzole pro správu programu NetBackup vyberte**Devices** > **fondy disků** **media a zařízení pro správu.** >  V Průvodci konfigurací diskového fondu vyberte typ serveru úložiště **AdvancedDisk**a pak vyberte **další**.
 
-    ![Konzola pro správu NetBackup, Průvodce konfigurací fondu disků](./media/storsimple-configure-backup-target-using-netbackup/nbimage1.png)
+    ![Konzola pro správu netbackup, Průvodce konfigurací fondu disků](./media/storsimple-configure-backup-target-using-netbackup/nbimage1.png)
 
 2.  Vyberte server a pak vyberte **Další**.
 
-    ![NetBackup konzoly pro správu vyberte server](./media/storsimple-configure-backup-target-using-netbackup/nbimage2.png)
+    ![Konzola pro správu netzálohování, vyberte server](./media/storsimple-configure-backup-target-using-netbackup/nbimage2.png)
 
-3.  Vyberte StorSimple svazek.
+3.  Vyberte hlasitost StorSimple.
 
-    ![NetBackup konzoly pro správu vyberte disk s svazkem StorSimple](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
+    ![Konzola pro správu netbackup, vyberte disk svazku StorSimple](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
 
-4.  Zadejte název cíle zálohování a pak kliknutím na **Další** > **Další** dokončete průvodce.
+4.  Zadejte název cíle zálohování a průvodce dokončete výběrem možnosti **Další** > **další.**
 
 5.  Zkontrolujte nastavení a pak vyberte **Dokončit**.
 
-6.  Na konci každého přiřazení svazku změňte nastavení zařízení úložiště tak, aby se shodovalo s doporučenými [postupy pro StorSimple a NetBackup](#best-practices-for-storsimple-and-netbackup).
+6.  Na konci každého přiřazení svazku změňte nastavení zařízení úložiště tak, aby odpovídalo nastavení doporučenému v [části Doporučené postupy pro aplikace StorSimple a NetBackup](#best-practices-for-storsimple-and-netbackup).
 
-7. Opakujte kroky 1-6, dokud nedokončíte přiřazování svazků StorSimple.
+7. Opakujte kroky 1-6, dokud nedokončíte přiřazení svazků StorSimple.
 
-    ![Konzola pro správu NetBackup, konfigurace disku](./media/storsimple-configure-backup-target-using-netbackup/nbimage5.png)
+    ![Konzola pro správu netbackup, konfigurace disku](./media/storsimple-configure-backup-target-using-netbackup/nbimage5.png)
 
-## <a name="set-up-storsimple-as-a-primary-backup-target"></a>Nastavte StorSimple jako primární cíl zálohování.
+## <a name="set-up-storsimple-as-a-primary-backup-target"></a>Nastavení StorSimple jako primárního cíle zálohování
 
 > [!NOTE]
-> Data se obnoví ze zálohy, která byla vrstvená do cloudu, při rychlosti cloudu.
+> Obnovení dat ze zálohy, která byla vrstvena do cloudu dochází rychlostí cloudu.
 
-Následující obrázek ukazuje mapování typického svazku na úlohu zálohování. V tomto případě se všechny týdenní zálohy mapují na celý disk v sobotu a přírůstkové zálohy se mapují na přírůstkové disky v pondělí až pátek. Všechny zálohy a obnovení jsou ze StorSimple vrstveného svazku.
+Následující obrázek znázorňuje mapování typického svazku na záložní úlohu. V tomto případě všechny týdenní zálohy mapovat na celý disk v sobotu a přírůstkové zálohy mapovat na pondělí až pátek přírůstkové disky. Všechny zálohy a obnovení jsou z vrstveného svazku StorSimple.
 
-![Logický diagram primární konfigurace cíle zálohování](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
+![Logický diagram konfigurace primárního cíle zálohy](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
 
-### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>Příklad plánu StorSimple jako primární cíl zálohování GFS
+### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>Příklad plánu GFS jako primární hod ovacího systému zálohování
 
-Tady je příklad plánu GFS rotace na čtyři týdny, měsíčně a ročně:
+Zde je příklad plánu rotace GFS na čtyři týdny, měsíčně a ročně:
 
-| Frekvence/typ zálohování | Úplný | Přírůstkové (dny 1-5)  |   
+| Typ frekvence/zálohování | Do bloku | Přírůstkové (dny 1-5)  |   
 |---|---|---|
-| Týdně (týdny 1-4) | Sobota | Pondělí – pátek |
-| Měsíční  | Sobota  |   |
-| Ročně | Sobota  |   |
+| Týdně (týdny 1-4) | Sobota | Pondělí až pátek |
+| měsíčně  | Sobota  |   |
+| Roční | Sobota  |   |
 
-## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>Přiřazení svazků StorSimple k úloze zálohování NetBackup
+## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>Přiřazení svazků StorSimple k úloze zálohování netbackup
 
-Následující sekvence předpokládá, že NetBackup a cílový hostitel jsou nakonfigurovány v souladu s pokyny pro agenta NetBackup.
+Následující pořadí předpokládá, že netbackup a cílový hostitel jsou konfigurovány v souladu s pokyny agenta NetBackup.
 
-### <a name="to-assign-storsimple-volumes-to-a-netbackup-backup-job"></a>Přiřazení svazků StorSimple do úlohy zálohování NetBackup
+### <a name="to-assign-storsimple-volumes-to-a-netbackup-backup-job"></a>Přiřazení svazků StorSimple k úloze zálohování programu NetBackup
 
-1. V konzole pro správu NetBackup vyberte **Správa NetBackup**, klikněte pravým tlačítkem na **zásady**a pak vyberte **Nová zásada**.
+1. V konzoli pro správu programu NetBackup vyberte **položku NetBackup Management**, klepněte pravým tlačítkem myši na **položku Zásady**a potom vyberte **příkaz Nová zásada**.
 
-   ![Konzola pro správu NetBackup, vytvoření nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
+   ![Konzola pro správu netbackup, vytvoření nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2. V dialogovém okně **Přidat novou zásadu** zadejte název zásady a potom zaškrtněte políčko **použít Průvodce konfigurací zásad** . Vyberte **OK**.
+2. V **dialogovém** okně Přidat novou zásadu zadejte název zásady a zaškrtněte políčko **Použít Průvodce konfigurací zásad.** Vyberte **OK**.
 
-   ![Konzola pro správu NetBackup, dialogové okno Přidat novou zásadu](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
+   ![Konzola pro správu netzálohování, dialogové okno Přidat novou zásadu](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
-3. V Průvodci konfigurací zásady zálohování zvolte požadovaný typ zálohování a pak vyberte **Další**.
+3. V Průvodci konfigurací zásad zálohování zvolte požadovaný typ zálohy a pak vyberte **další**.
 
-   ![NetBackup konzoly pro správu, vyberte typ zálohování.](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
+   ![Konzola pro správu netbackup, výběr typu zálohování](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
 
-4. Chcete-li nastavit typ zásady, vyberte možnost **standardní**a potom vyberte možnost **Další**.
+4. Chcete-li nastavit typ zásady, vyberte **možnost Standardní**a pak vyberte **Další**.
 
-   ![Konzola pro správu NetBackup, výběr typu zásad](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
+   ![Konzola pro správu netbackup, výběr typu zásad](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5. Vyberte hostitele, zaškrtněte políčko **rozpoznat klientský operační systém** a potom vyberte **Přidat**. Vyberte **Další**.
+5. Vyberte hostitele, zaškrtněte políčko **Rozpoznat operační systém klienta** a pak vyberte **Přidat**. Vyberte **další**.
 
-   ![Konzola pro správu NetBackup, seznam klientů v nové zásadě](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
+   ![Konzola pro správu netbackup, seznam klientů v nové zásadě](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
 6. Vyberte jednotky, které chcete zálohovat.
 
-   ![Konzola pro správu NetBackup, výběry zálohování pro nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage11.png)
+   ![Konzola pro správu netbackup, výběry záloh pro novou zásadu](./media/storsimple-configure-backup-target-using-netbackup/nbimage11.png)
 
-7. Vyberte četnost a hodnoty uchování, které splňují vaše požadavky na rotaci zálohování.
+7. Vyberte hodnoty frekvence a uchovávání, které splňují požadavky na střídání záloh.
 
-   ![Konzola pro správu NetBackup, četnost zálohování a rotace pro nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
+   ![Konzola pro správu netbackup, frekvence zálohování a rotace pro novou zásadu](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8. Vyberte **Další** > Další > **dokončení**.  Po vytvoření zásady můžete plán upravit.
+8. Vyberte **další** > **další** > **dokončení**.  Po vytvoření zásady můžete upravit plán.
 
-9. Tuto možnost vyberte, pokud chcete rozšířit zásadu, kterou jste právě vytvořili, a pak vyberte **plány**.
+9. Výběrem této možnosti rozbalte zásadu, kterou jste právě vytvořili, a pak vyberte **možnost Plány**.
 
-   ![NetBackup konzoly pro správu a plánuje nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
+   ![NetBackup Administrační konzole, plány pro novou zásadu](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
 
-10. Klikněte pravým tlačítkem na možnost **diferenciál – Inc**, vyberte možnost **Kopírovat do nového**a pak vyberte **OK**.
+10. Klepněte pravým tlačítkem myši na **položku Differential-Inc**, vyberte **možnost Kopírovat do nové**a pak vyberte **ok**.
 
-    ![Konzola pro správu NetBackup, kopírování plánu do nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage14.png)
+    ![Konzola pro správu netbackup, kopírování plánu do nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage14.png)
 
-11. Klikněte pravým tlačítkem na nově vytvořený plán a pak vyberte **změnit**.
+11. Klikněte pravým tlačítkem myši na nově vytvořený plán a potom vyberte **změnit**.
 
-12. Na kartě **atributy** zaškrtněte políčko pro **Výběr úložiště zásad přepsání** a potom vyberte svazek, ve kterém pondělí přírůstkové zálohy projdou.
+12. Na kartě **Atributy** zaškrtněte políčko **Přepsat výběr úložiště zásad** a pak vyberte svazek, na kterém přejít přírůstkové zálohy v pondělí.
 
-    ![Konzola pro správu NetBackup, změna plánu](./media/storsimple-configure-backup-target-using-netbackup/nbimage15.png)
+    ![Konzola pro správu netbackup, plán změn](./media/storsimple-configure-backup-target-using-netbackup/nbimage15.png)
 
-13. Na kartě **Start okna** vyberte časový interval pro zálohování.
+13. Na kartě **Počáteční okno** vyberte časové okno pro zálohy.
 
-    ![Konzola pro správu NetBackup, změna okna Start](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
+    ![Konzola pro správu netbackup, změna úvodního okna](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
 
 14. Vyberte **OK**.
 
-15. Opakujte kroky 10-14 pro každé přírůstkové zálohování. Vyberte příslušný svazek a plán pro každou vytvořenou zálohu.
+15. Opakujte kroky 10-14 pro každou přírůstkovou zálohu. Vyberte příslušný svazek a plán pro každou zálohu, kterou vytvoříte.
 
-16. Klikněte pravým tlačítkem na plán **diferenciál-Inc** a odstraňte ho.
+16. Klikněte pravým tlačítkem myši na plán **Differential-Inc** a potom jej odstraňte.
 
-17. Upravte úplný plán tak, aby vyhovoval vašim potřebám zálohování.
+17. Upravte celý plán tak, aby vyhovoval vašim potřebám zálohování.
 
-    ![Konzola pro správu NetBackup, změna úplného plánu](./media/storsimple-configure-backup-target-using-netbackup/nbimage17.png)
+    ![Konzola pro správu netbackup, změna úplného plánu](./media/storsimple-configure-backup-target-using-netbackup/nbimage17.png)
 
 18. Změňte počáteční okno.
 
-    ![Konzola pro správu NetBackup, Změna počátečního okna](./media/storsimple-configure-backup-target-using-netbackup/nbimage18.png)
+    ![Konzola pro správu netzálohování, změna počátečního okna](./media/storsimple-configure-backup-target-using-netbackup/nbimage18.png)
 
 19. Konečný plán vypadá takto:
 
-    ![Konzola pro správu NetBackup, konečný plán](./media/storsimple-configure-backup-target-using-netbackup/nbimage19.png)
+    ![Konzola pro správu netbackup, konečný plán](./media/storsimple-configure-backup-target-using-netbackup/nbimage19.png)
 
 ## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>Nastavení StorSimple jako sekundárního cíle zálohování
 
 > [!NOTE]
->Data se obnoví ze zálohy, která byla vrstvená do cloudu, při rychlosti cloudu.
+>Obnovení dat ze zálohy, která byla vrstvena do cloudu dochází rychlostí cloudu.
 
-V tomto modelu musíte mít úložné médium (jiné než StorSimple), které slouží jako dočasnou mezipaměť. Můžete například použít redundantní pole svazku RAID (RAID) k umístění, vstupu a výstupu (I/O) a šířce pásma. Doporučujeme použít RAID 5, 50 a 10.
+V tomto modelu musíte mít paměťové médium (jiné než StorSimple) sloužit jako dočasné mezipaměti. Můžete například použít redundantní pole svazku nezávislých disků (RAID) pro umístění místa, vstupu/výstupu (I/O) a šířky pásma. Doporučujeme používat RAID 5, 50 a 10.
 
-Následující obrázek ukazuje typické krátkodobé uchovávání místního úložiště (na server) a svazky pro dlouhodobé uchovávání. V tomto scénáři se všechny zálohy spouštějí na místním svazku (na serveru) RAID. Tyto zálohy jsou pravidelně duplikovány a archivovány do svazku archivu. Je důležité nastavit velikost místního svazku (na server) RAID tak, aby mohla zvládnout vaše krátkodobé kapacity uchovávání a požadavky na výkon.
+Následující obrázek znázorňuje typické místní svazky krátkodobého uchovávání (na server) a svazky archivů dlouhodobého uchovávání. V tomto scénáři všechny zálohy spustit na místním svazku (na server) RAID. Tyto zálohy jsou pravidelně duplikovány a archivovány do svazku archivů. Je důležité velikost místního (na server) raid svazek tak, aby mohl zvládnout krátkodobé retenční kapacity a požadavky na výkon.
 
-### <a name="storsimple-as-a-secondary-backup-target-gfs-example"></a>StorSimple jako sekundární cíl zálohování – příklad GFS
+### <a name="storsimple-as-a-secondary-backup-target-gfs-example"></a>StorSimple jako sekundární záložní cíl GFS příklad
 
-![Logický diagram StorSimple jako sekundární cíl zálohování](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetdiagram.png)
+![StorSimple jako sekundární záložní cílový diagram](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetdiagram.png)
 
-Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na místních a StorSimple discích. Zahrnuje individuální a celkové požadavky na kapacitu.
+Následující tabulka ukazuje, jak nastavit zálohy pro spuštění na místních a StorSimple disky. Zahrnuje individuální a celkové požadavky na kapacitu.
 
-### <a name="backup-configuration-and-capacity-requirements"></a>Požadavky na konfiguraci a kapacitu zálohování
+### <a name="backup-configuration-and-capacity-requirements"></a>Konfigurace zálohování a požadavky na kapacitu
 
-| Typ a uchování zálohy | Nakonfigurované úložiště | Velikost (TiB) | Multiplikátor GFS | Celková kapacita\* (TIB) |
+| Typ zálohy a uchovávání informací | Nakonfigurované úložiště | Velikost (TiB) | Multiplikátor GFS | Celková\* kapacita (TiB) |
 |---|---|---|---|---|
-| Týden 1 (úplný a přírůstkový) |Místní disk (krátkodobý)| 1 | 1 | 1 |
-| StorSimple týdny 2-4 |StorSimple disk (dlouhodobě) | 1 | 4 | 4 |
-| Úplně měsíčně |StorSimple disk (dlouhodobě) | 1 | 12 | 12 |
-| Celý rok na celé |StorSimple disk (dlouhodobě) | 1 | 1 | 1 |
-|Požadavek na velikost svazků GFS |  |  |  | 18*|
+| Týden 1 (plný a přírůstkový) |Místní disk (krátkodobý)| 1 | 1 | 1 |
+| StorJednoduché týdny 2-4 |StorSimple disk (dlouhodobý) | 1 | 4 | 4 |
+| Měsíčně plný |StorSimple disk (dlouhodobý) | 1 | 12 | 12 |
+| Ročně plné |StorSimple disk (dlouhodobý) | 1 | 1 | 1 |
+|Požadavek na velikost objemů GFS |  |  |  | 18*|
 
 \*Celková kapacita zahrnuje 17 TiB disků StorSimple a 1 TiB místního svazku RAID.
 
 
-### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS příklad plánu: GFS rotace týdně, měsíčně a ročního plánu
+### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>Příklad plánu GFS: Týdenní, měsíční a roční rozvrh GFS
 
-| Týden | Úplný | Přírůstkový den 1 | Přírůstkový den 2 | Přírůstkový den 3 | Přírůstkový den 4 | Přírůstkový den 5 |
+| Týden | Do bloku | Přírůstkový den 1 | Přírůstkový den 2 | Přírůstkový den 3 | Přírůstkový den 4 | Přírůstkový den 5 |
 |---|---|---|---|---|---|---|
 | Týden 1 | Místní svazek RAID  | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID |
-| Týden 2 | StorSimple týdny 2-4 |   |   |   |   |   |
-| Týden 3 | StorSimple týdny 2-4 |   |   |   |   |   |
-| Týden 4 | StorSimple týdny 2-4 |   |   |   |   |   |
-| Měsíční | StorSimple měsíčně |   |   |   |   |   |
-| Ročně | StorSimple ročně  |   |   |   |   |   |
+| Týden 2 | StorJednoduché týdny 2-4 |   |   |   |   |   |
+| Týden 3 | StorJednoduché týdny 2-4 |   |   |   |   |   |
+| Týden 4 | StorJednoduché týdny 2-4 |   |   |   |   |   |
+| měsíčně | StorJednoduché měsíčně |   |   |   |   |   |
+| Roční | StorSimple ročně  |   |   |   |   |   |
 
 
-## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Přiřazení svazků StorSimple k úloze archivace a duplikování NetBackup
+## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Přiřazení svazků StorSimple k úloze archivu a duplikace aplikace NetBackup
 
-Vzhledem k tomu, že NetBackup nabízí celou řadu možností pro správu úložiště a médií, doporučujeme vám poradit s Veritas nebo architektem NetBackup, abyste správně vyhodnotili požadavky na zásady životního cyklu úložiště (SLP).
+Vzhledem k tomu, že program NetBackup nabízí širokou škálu možností pro správu úložišť a médií, doporučujeme konzultovat se společností Veritas nebo architektem programu NetBackup, abyste správně posoudili požadavky na zásady životního cyklu úložiště (SLP).
 
-Po definování počátečních fondů disků musíte definovat tři další zásady životního cyklu úložiště, celkem tedy čtyři zásady:
-* LocalRAIDVolume
-* StorSimpleWeek2-4
-* StorSimpleMonthlyFulls
+Po definování počátečních fondů disků je třeba definovat tři další zásady životního cyklu úložiště, celkem pro čtyři zásady:
+* Místní RAIDVolume
+* StorSimpleTýden2-4
+* StorSimpleMěsíční syty
 * StorSimpleYearlyFulls
 
-### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Přiřazení svazků StorSimple k úloze archivace a duplikování NetBackup
+### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Přiřazení svazků StorSimple k úloze archivu programu NetBackup a duplikace
 
-1. V konzole pro správu NetBackup vyberte**zásady** > životního cyklu úložiště **úložiště** > **nové zásady životního cyklu úložiště**.
+1. V konzole pro správu netzálohování vyberte**zásady** > životního cyklu **úložiště** > **Nové zásady životního cyklu úložiště**.
 
-   ![Konzola pro správu NetBackup, nová zásada životního cyklu úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
+   ![Konzola pro správu netbackup, nové zásady životního cyklu úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
 2. Zadejte název snímku a pak vyberte **Přidat**.
 
-3. V dialogovém okně **Nová operace** na kartě **vlastnosti** pro **operace**vyberte možnost **zálohování**. Vyberte hodnoty, které chcete pro **cílové úložiště**, **typ uchování**a **dobu uchování**. Vyberte **OK**.
+3. V dialogovém okně **Nová operace** na kartě **Vlastnosti** v části **Operace**vyberte **možnost Zálohovat**. Vyberte požadované hodnoty pro **cílové úložiště**, **typ uchování**a **dobu uchovávání**. Vyberte **OK**.
 
-   ![Konzola pro správu NetBackup, dialogové okno Nová operace](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
+   ![Konzola pro správu netbackup, dialogové okno Nová operace](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 
-   Tím se definuje první operace zálohování a úložiště.
+   Definuje první operaci zálohování a úložiště.
 
-4. Výběrem této možnost zvýrazníte předchozí operaci a pak vyberete **Přidat**. V dialogovém okně **změnit operaci úložiště** vyberte požadované hodnoty pro **cílové úložiště**, **typ uchování**a **dobu uchování**.
+4. Výběrem zvýrazněte předchozí operaci a pak vyberte **Přidat**. V dialogovém okně **Změnit operaci úložiště** vyberte hodnoty, které chcete pro cílové **úložiště**, **typ uchování**a **dobu uchování**.
 
-   ![Konzola pro správu NetBackup, dialogové okno změnit operaci úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
+   ![Konzola pro správu netzálohování,Dialogové okno Změnit provoz úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
 
-5. Výběrem této možnost zvýrazníte předchozí operaci a pak vyberete **Přidat**. V dialogovém okně **nové zásady životního cyklu úložiště** přidejte měsíční zálohy za rok.
+5. Výběrem zvýrazněte předchozí operaci a pak vyberte **Přidat**. V dialogovém okně **Zásady životního cyklu nového úložiště** přidejte měsíční zálohy na jeden rok.
 
-   ![Konzola pro správu NetBackup, dialogové okno nové zásady životního cyklu úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
+   ![Konzola pro správu netbackup, dialogové okno Zásady životního cyklu nového úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
 
-6. Opakujte kroky 4-5, dokud nevytvoříte komplexní zásadu uchovávání SLP, kterou potřebujete.
+6. Opakujte kroky 4-5, dokud nevytvoříte komplexní zásady uchovávání informací SLP, které potřebujete.
 
-   ![Konzola pro správu NetBackup, přidání zásad v dialogovém okně nové zásady životního cyklu úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
+   ![Konzola pro správu netzálohování, přidání zásad v dialogovém okně Zásady životního cyklu nového úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
 
-7. Až dokončíte definování zásad uchovávání SLP, v části **zásady**Definujte zásadu zálohování podle kroků popsaných v části [přiřazení svazků StorSimple k úloze zálohování NetBackup](#assigning-storsimple-volumes-to-a-netbackup-backup-job).
+7. Po dokončení definování zásad uchovávání informací slp definujte v části **Zásady**zásady zálohování podle kroků popsaných v [části Přiřazení svazků StorSimple k úloze zálohování programu NetBackup](#assigning-storsimple-volumes-to-a-netbackup-backup-job).
 
-8. V části **plány**v dialogovém okně **změnit plán** klikněte pravým tlačítkem na **úplný**a pak vyberte **změnit**.
+8. V části **Plány**klikněte v dialogovém okně **Změnit plán** pravým tlačítkem myši na **příkaz Úplné**a potom vyberte **změnit**.
 
-   ![Konzola pro správu NetBackup, dialogové okno změnit plán](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
+   ![Konzola pro správu netzálohování, dialogové okno Změnit plán](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
 
-9. Zaškrtněte políčko **přepsat výběr úložiště zásad** a potom vyberte zásady uchovávání SLP, které jste vytvořili v krocích 1-6.
+9. Zaškrtněte políčko **Přepsat výběr úložiště zásad** a pak vyberte zásady uchovávání informací SLP, které jste vytvořili v krocích 1-6.
 
-   ![Konzola pro správu NetBackup, přepsání výběru úložiště zásad](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
+   ![Konzola pro správu netbackup, volba přepsání úložiště zásad](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
 
-10. Vyberte **OK**a opakujte postup pro plán přírůstkového zálohování.
+10. Vyberte **OK**a opakujte pro plán přírůstkového zálohování.
 
-    ![Konzola pro správu NetBackup, dialogové okno změnit plán pro přírůstkové zálohování](./media/storsimple-configure-backup-target-using-netbackup/nbimage28.png)
+    ![Konzola pro správu netzálohování, dialogové okno Změnit plán pro přírůstkové zálohy](./media/storsimple-configure-backup-target-using-netbackup/nbimage28.png)
 
 
-| Uchování typu zálohování | Velikost (TiB) | Multiplikátor GFS\* | Celková kapacita (TiB)  |
+| Uchovávání typu zálohy | Velikost (TiB) | Multiplikátor GFS\* | Celková kapacita (TiB)  |
 |---|---|---|---|
-| Týdně úplné |  1  |  4 | 4  |
-| Denní přírůstkový  | 0,5  | 20 (počet cyklů se rovná počtu týdnů za měsíc) | 12 (2 pro další kvótu) |
-| Úplně měsíčně  | 1 | 12 | 12 |
-| Celý rok na celé | 1  | 10 | 10 |
+| Týdenní plný |  1  |  4 | 4  |
+| Denní přírůstkové  | 0,5  | 20 (cykly se rovnají počtu týdnů za měsíc) | 12 (2 pro dodatečnou kvótu) |
+| Měsíčně plný  | 1 | 12 | 12 |
+| Ročně plné | 1  | 10 | 10 |
 | Požadavek GFS  |     |     | 38 |
-| Dodatečná kvóta  | 4  |    | 42 celková GFS požadavek |
+| Dodatečná kvóta  | 4  |    | 42 celkový požadavek gfs |
 
-\*Multiplikátor GFS je počet kopií, které je třeba chránit a které je potřeba zachovat, aby splňovaly požadavky zásad zálohování.
+\*Multiplikátor GFS je počet kopií, které potřebujete chránit a uchovávat, aby splňovaly vaše požadavky na zásady zálohování.
 
-## <a name="storsimple-cloud-snapshots"></a>StorSimple cloudové snímky
+## <a name="storsimple-cloud-snapshots"></a>Snímky cloudu StorSimple
 
-StorSimple cloudové snímky chrání data, která se nachází ve vašem zařízení StorSimple. Vytvoření snímku v cloudu je ekvivalentní k přenosu pásek místních záloh do zařízení mimo pracoviště. Pokud používáte geograficky redundantní úložiště Azure, vytvoření snímku v cloudu je ekvivalentní k přenosu pásek zálohování na více lokalit. Pokud po havárii potřebujete zařízení obnovit, můžete jiné zařízení StorSimple převést do online režimu a provést převzetí služeb při selhání. Po převzetí služeb při selhání byste měli získat přístup k datům (s rychlostí cloudu) z posledního snímku cloudu.
+Snímky cloudu StorSimple chrání data, která se nacházejí ve vašem zařízení StorSimple. Vytvoření cloudového snímku je ekvivalentní k odesílání místních záložních pásek do zařízení mimo lokalitu. Pokud používáte geograficky redundantní úložiště Azure, vytvoření cloudového snímku se rovná odesílání záložních pásek do více lokalit. Pokud potřebujete obnovit zařízení po havárii, můžete převést další zařízení StorSimple online a provést převzetí služeb při selhání. Po převzetí služeb při selhání budete mít přístup k datům (rychlostí cloudu) z nejnovějšího snímku cloudu.
 
-Následující část popisuje, jak vytvořit krátký skript pro spuštění a odstranění snímků StorSimple cloudu během následného zpracování zálohy.
-
-> [!NOTE]
-> Ručně nebo programově vytvořené snímky nedodržují zásady vypršení platnosti snímku StorSimple. Tyto snímky je nutné ručně nebo programově odstranit.
-
-### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>Spuštění a odstranění cloudových snímků pomocí skriptu
+Následující část popisuje, jak vytvořit krátký skript pro spuštění a odstranění snímků cloudu StorSimple během zálohování po zpracování.
 
 > [!NOTE]
-> Před odstraněním snímku StorSimple pečlivě vyhodnoťte dodržování předpisů a uchování dat. Další informace o spuštění následného zálohovacího skriptu najdete v [dokumentaci k NetBackup](http://www.veritas.com/docs/000094423).
+> Snímky, které jsou ručně nebo programově vytvořené nedodržují zásady vypršení platnosti snímku StorSimple. Tyto snímky musí být ručně nebo programově odstraněny.
+
+### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>Spuštění a odstranění snímků cloudu pomocí skriptu
+
+> [!NOTE]
+> Pečlivě vyhodnoťte požadavky na dodržování předpisů a uchovávání dat před odstraněním snímku StorSimple. Další informace o spuštění skriptu po zálohování naleznete v [dokumentaci k programu NetBackup](http://www.veritas.com/docs/000094423).
 
 ### <a name="backup-lifecycle"></a>Životní cyklus zálohování
 
@@ -500,51 +500,51 @@ Následující část popisuje, jak vytvořit krátký skript pro spuštění a 
 
 ### <a name="requirements"></a>Požadavky
 
--   Server, na kterém je spuštěný skript, musí mít přístup k prostředkům cloudu Azure.
+-   Server, který spouští skript, musí mít přístup ke cloudovým prostředkům Azure.
 -   Uživatelský účet musí mít potřebná oprávnění.
--   Zásady zálohování StorSimple s přidruženými svazky StorSimple musí být nastavené, ale nejsou zapnuté.
+-   Zásady zálohování StorSimple s přidruženými svazky StorSimple musí být nastaveny, ale nejsou zapnuty.
 -   Budete potřebovat název prostředku StorSimple, registrační klíč, název zařízení a ID zásad zálohování.
 
-### <a name="to-start-or-delete-a-cloud-snapshot"></a>Spuštění nebo odstranění snímku v cloudu
+### <a name="to-start-or-delete-a-cloud-snapshot"></a>Spuštění nebo odstranění snímku cloudu
 
-1. [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
-2. Stáhněte a nastavte skript prostředí PowerShell [Manage-CloudSnapshots. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) .
-3. Na serveru, na kterém je spuštěný skript, spusťte PowerShell jako správce. Ujistěte se, že spouštíte skript `-WhatIf $true` s nástrojem, kde zjistíte, jaké změny bude skript provádět. Až se ověření dokončí, předejte `-WhatIf $false`. Spusťte následující příkaz:
+1. [Nainstalujte Azure PowerShell](/powershell/azure/overview).
+2. Stažení a nastavení [skriptu PowerShell u služby Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1)
+3. Na serveru, na který je skript spuštěn, spusťte PowerShell jako správce. Ujistěte se, že `-WhatIf $true` spustíte skript s chcete-li zjistit, jaké změny skript provede. Po dokončení ověření předavte . `-WhatIf $false` Spusťte níže uvedený příkaz:
    ```powershell
    .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
    ```
-4. Přidejte skript do úlohy zálohování v NetBackup. Provedete to tak, že upravíte příkazy pro předběžné zpracování a následné zpracování úloh NetBackup.
+4. Přidejte skript do zálohovací úlohy v programu NetBackup. Chcete-li to provést, upravte příkazy předběžného zpracování a následného zpracování možností úlohy netbackup.
 
 > [!NOTE]
-> Doporučujeme, abyste na konci každodenní úlohy zálohování spustili zásadu zálohování snímku StorSimple cloudu jako skript po zpracování. Další informace o tom, jak zálohovat a obnovit zálohovací prostředí aplikace, aby vám pomohly splnit požadavky RPO a RTO, najdete v rámci svého architekta zálohování.
+> Doporučujeme spustit zásady zálohování cloudových snímků StorSimple jako skript po zpracování na konci denní úlohy zálohování. Další informace o zálohování a obnovení prostředí zálohovací aplikace, které vám pomohou splnit váš RPO a RTO, obraťte se na svého architekta zálohování.
 
 ## <a name="storsimple-as-a-restore-source"></a>StorSimple jako zdroj obnovení
 
-Obnovení ze zařízení StorSimple funguje jako obnovení ze všech zařízení blokového úložiště. Obnovení dat, která jsou vrstvená do cloudu, probíhá při rychlosti cloudu. Pro místní data dojde k obnovení při rychlosti místního disku zařízení. Informace o tom, jak provést obnovení, najdete v [dokumentaci k NetBackup](http://www.veritas.com/docs/000094423). Doporučujeme, abyste dodržovali osvědčené postupy pro obnovení NetBackup.
+Obnoví z zařízení StorSimple pracovat jako obnovení z libovolného bloku paměťového zařízení. Obnovení dat, která je vrstvené do cloudu dochází při rychlostech cloudu. U místních dat dochází k obnovení při místní rychlosti disku zařízení. Informace o tom, jak provést obnovení, naleznete v [dokumentaci k programu NetBackup](http://www.veritas.com/docs/000094423). Doporučujeme, abyste vyhověli doporučeným postupům obnovení programu NetBackup.
 
-## <a name="storsimple-failover-and-disaster-recovery"></a>StorSimple převzetí služeb při selhání a zotavení po havárii
+## <a name="storsimple-failover-and-disaster-recovery"></a>StorJednoduché převzetí služeb při selhání a zotavení po havárii
 
 > [!NOTE]
-> U scénářů cíle zálohování se StorSimple Cloud Appliance nepodporuje jako cíl obnovení.
+> Pro scénáře cíle zálohování StorSimple Cloud Appliance není podporován jako cíl obnovení.
 
-Havárie může být způsobeno nejrůznějšími faktory. V následující tabulce je uveden seznam běžných scénářů zotavení po havárii.
+Katastrofa může být způsobena řadou faktorů. V následující tabulce jsou uvedeny běžné scénáře zotavení po havárii.
 
-| Scénář | Dopad | Postup obnovení | Poznámky |
+| Scénář | Dopad | Jak obnovit | Poznámky |
 |---|---|---|---|
-| Selhání zařízení StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nahraďte neúspěšné zařízení a proveďte [převzetí služeb při selhání StorSimple a zotavení po havárii](storsimple-device-failover-disaster-recovery.md). | Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se načítají z cloudu do nového zařízení. Všechny operace jsou v cloudových rychlostech. Proces opakovaného prohledání indexu a katalogu může způsobit, že se všechny zálohovací sklady kontrolují a nastavují z vrstvy cloudu na úroveň místního zařízení, což může být časově náročný proces. |
-| Selhání serveru NetBackup | Operace zálohování a obnovení jsou přerušeny. | Znovu sestavte záložní server a proveďte obnovení databáze. | Server NetBackup je nutné znovu sestavit nebo obnovit na webu pro zotavení po havárii. Obnovte databázi do nejnovějšího bodu. Pokud obnovená databáze NetBackup není synchronizovaná s nejnovějšími úlohami zálohování, je nutné indexování a vytváření katalogu. Tento index a proces opětovného prohledání katalogu může způsobit, že se všechny zálohovací sklady prohledají a nastavují z vrstvy cloudu na úroveň místního zařízení. Díky tomu je tato operace časově náročná. |
-| Selhání lokality, které vede ke ztrátě záložního serveru i StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nejprve obnovte StorSimple a pak obnovte NetBackup. | Nejprve obnovte StorSimple a pak obnovte NetBackup. Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se z cloudu načtou do nového zařízení. Všechny operace jsou v cloudových rychlostech. |
+| Selhání zařízení StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nahraďte neúspěšné zařízení a proveďte [storsimple převzetí služeb při selhání a zotavení po havárii](storsimple-device-failover-disaster-recovery.md). | Pokud potřebujete provést obnovení po obnovení zařízení, úplné pracovní sady dat se načtou z cloudu do nového zařízení. Všechny operace jsou v cloudu rychlostí. Proces opětovného prohledávání indexu a katalogu může způsobit, že všechny zálohovací sady budou zkontrolovány a vytaženy z cloudové vrstvy na místní úroveň zařízení, což může být časově náročný proces. |
+| Selhání serveru NetBackup | Operace zálohování a obnovení jsou přerušeny. | Znovu sestavte záložní server a proveďte obnovení databáze. | Server NetBackup je nutné znovu vytvořit nebo obnovit v lokalitě pro zotavení po havárii. Obnovte databázi do nejnovějšího bodu. Pokud obnovená databáze NetBackup není synchronizována s nejnovějšími úlohami zálohování, je vyžadováno indexování a katalogizování. Tento proces opětovného prohledávání indexu a katalogu může způsobit, že všechny zálohovací sady budou zkontrolovány a staženy z cloudové vrstvy na místní úroveň zařízení. Díky tomu je to další časově náročné. |
+| Selhání webu, které má za následek ztrátu záložního serveru a StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nejprve obnovte StorSimple a potom obnovte program NetBackup. | Nejprve obnovte StorSimple a potom obnovte program NetBackup. Pokud potřebujete provést obnovení po obnovení zařízení, úplné pracovní sady dat se načtou z cloudu do nového zařízení. Všechny operace jsou v cloudu rychlostí. |
 
 ## <a name="references"></a>Odkazy
 
-Následující dokumenty byly odkazovány na tento článek:
+Pro tento článek byly uvedeny následující dokumenty:
 
-- [StorSimple instalaci funkce Multipath I/O](storsimple-configure-mpio-windows-server.md)
-- [Scénáře úložiště: Dynamické zajišťování](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [StorJednoduché nastavení vícecestvých vstupně-nos](storsimple-configure-mpio-windows-server.md)
+- [Scénáře úložiště: Tenké zřizování](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Použití jednotek GPT](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Nastavení stínových kopií pro sdílené složky](https://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o tom, jak [obnovit ze zálohovacího skladu](storsimple-restore-from-backup-set-u2.md).
-- Další informace o tom, jak provést [převzetí služeb při selhání a zotavení po havárii zařízení](storsimple-device-failover-disaster-recovery.md).
+- Další informace o [obnovení ze zálohovací sady](storsimple-restore-from-backup-set-u2.md).
+- Další informace o tom, jak provést [převzetí služeb při selhání zařízení a zotavení po havárii](storsimple-device-failover-disaster-recovery.md).

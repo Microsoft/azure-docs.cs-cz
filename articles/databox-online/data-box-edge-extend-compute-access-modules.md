@@ -1,6 +1,6 @@
 ---
-title: Spravovat výpočetní sítě v Azure Data Box Edge k modulům přístupu | Dokumentace Microsoftu
-description: Popisuje, jak rozšířit síť výpočetní prostředky na vaší hraničními zařízeními pole Data a přistupovat k modulům přes externí IP adresa.
+title: Správa výpočetní sítě na Azure Data Box Edge pro přístup k modulům| Dokumenty společnosti Microsoft
+description: Popisuje, jak rozšířit výpočetní síť na vašem Data Box Edge pro přístup k modulům přes externí IP.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,61 +9,61 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 907647725dd6795b3b6482476de7442fbbf66114
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65917232"
 ---
-# <a name="enable-compute-network-on-your-azure-data-box-edge"></a>Povolit network výpočetní prostředky na hranici vaší Azure Data Box
+# <a name="enable-compute-network-on-your-azure-data-box-edge"></a>Povolení výpočetní sítě na Azure Data Box Edge
 
-Tento článek popisuje, jak moduly, které běží na hranici vaší Azure Data Box můžete přístup k síti výpočetní prostředky na zařízení povolená.
+Tento článek popisuje, jak moduly spuštěné na Azure Data Box Edge přístup výpočetní sítě povolené na zařízení.
 
-Ke konfiguraci sítě, provedete následující kroky:
+Chcete-li síť nakonfigurovat, provedete následující kroky:
 
-- Povolení síťového rozhraní na zařízení Data Box Edge pro výpočetní prostředky
-- Přidat modul do sítě výpočetní přístup na hranici vaší datové pole
-- Ověřte, zda modul můžete získat přístup k povolené síťové rozhraní
+- Povolení síťového rozhraní na zařízení Data Box Edge pro výpočetní výkon
+- Přidání modulu pro přístup k výpočetní síti na okraji datové schránky
+- Ověřte, zda má modul přístup k povolenému síťovému rozhraní.
 
-V tomto kurzu použijete modul webovým serverem aplikace předvádí scénář.
+V tomto kurzu budete používat modul aplikace webového serveru k předvedení scénáře.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete potřebovat:
 
-- Zařízení Data Box Edge s dokončit nastavení zařízení.
-- Dokončili jste **konfigurace výpočtů** kroku, jak je uvedeno [kurzu: Transformace dat pomocí Azure Data Box Edge](data-box-edge-deploy-configure-compute-advanced.md#configure-compute) na vašem zařízení. Vaše zařízení by mělo mít přidružený prostředek služby IoT Hub, zařízení IoT a zařízení IoT Edge.
+- Zařízení Data Box Edge s dokončeným nastavením zařízení.
+- Krok Konfigurace **výpočetního výkonu** jste dokončili podle [kurzu: Transformace dat pomocí Azure Data Box Edge](data-box-edge-deploy-configure-compute-advanced.md#configure-compute) na vašem zařízení. Vaše zařízení by mělo mít přidružený prostředek služby IoT Hub, zařízení IoT a zařízení IoT Edge.
 
-## <a name="enable-network-interface-for-compute"></a>Povolení síťového rozhraní pro službu compute
+## <a name="enable-network-interface-for-compute"></a>Povolení síťového rozhraní pro výpočetní výkon
 
-Pro přístup k modulů spuštěných ve vašem zařízení prostřednictvím externí síť, musíte přiřadit IP adresu do síťového rozhraní na zařízení. Můžete spravovat tyto compute nastavení z vašeho místního webového uživatelského rozhraní.
+Chcete-li získat přístup k modulům spuštěným v zařízení prostřednictvím externí sítě, budete muset přiřadit IP adresu síťovému rozhraní v zařízení. Tato nastavení výpočetních prostředků můžete spravovat z místního webového uživatelského prostředí.
 
-Proveďte následující kroky na vaší místního webového uživatelského rozhraní a zadejte nastavení výpočetní prostředky.
+Chcete-li nakonfigurovat nastavení výpočetních prostředků, postupujte v místním webovém uživatelském rozhraní následujícím postupem.
 
-1. V místním webovém uživatelském rozhraní, přejděte na **konfigurace > Compute nastavení**.  
+1. V místním webovém uživatelském prostředí přejděte na **nastavení konfigurace > výpočetních prostředků**.  
 
-2. **Povolit** síťové rozhraní, které chcete použít pro připojení k výpočetní modul, který je potřeba spustit na zařízení.
+2. **Povolte** síťové rozhraní, které chcete použít k připojení k výpočetnímu modulu, který budete na zařízení spouštět.
 
-    - Pokud používáte statické IP adresy, zadejte IP adresu pro síťové rozhraní.
-    - Pokud používáte DHCP, se automaticky přiřadí IP adresy. Tento příklad používá protokol DHCP.
+    - Pokud používáte statické adresy IP, zadejte adresu IP pro síťové rozhraní.
+    - Pokud používáte službu DHCP, jsou adresy IP přiřazeny automaticky. Tento příklad používá dhcp.
 
-    ![Povolení nastavení výpočetní 1](media/data-box-edge-extend-compute-access-modules/enable-compute-setting-1.png)
+    ![Povolení nastavení výpočetních prostředků 1](media/data-box-edge-extend-compute-access-modules/enable-compute-setting-1.png)
 
-3. Vyberte **použít** aplikaci nastavení. Poznamenejte si IP adresy přiřazené k síťovému rozhraní, pokud používáte DHCP.
+3. Vyberte **Použít,** chcete-li použít nastavení. Poznamenejte si adresu IP přiřazenou síťovému rozhraní, pokud používáte službu DHCP.
 
-    ![Povolení nastavení výpočetní prostředky](media/data-box-edge-extend-compute-access-modules/enable-compute-setting-2.png)
+    ![Povolení nastavení výpočetních prostředků](media/data-box-edge-extend-compute-access-modules/enable-compute-setting-2.png)
 
-## <a name="add-webserver-app-module"></a>Přidat modul webového serveru aplikace
+## <a name="add-webserver-app-module"></a>Přidat modul aplikace webového serveru
 
-Proveďte následující kroky k přidání modulu aplikace webového serveru na vašem zařízení Data Box Edge.
+Následujícím postupem přidejte do zařízení Data Box Edge modul aplikace webového serveru.
 
-1. Přejít k prostředku služby IoT Hub spojené s vaším zařízením Data Box Edge a pak vyberte **zařízení IoT Edge**.
-2. Vyberte zařízení IoT Edge, které jsou spojené s vaším zařízením Data Box Edge. Na **podrobnosti o zařízení**vyberte **nastavit moduly**. Na **přidat moduly**vyberte **+ přidat** a pak vyberte **modul IoT Edge**.
-3. V **vlastní moduly IoT Edge** okno:
+1. Přejděte na prostředek služby IoT Hub přidružený k zařízení Data Box Edge a vyberte **zařízení IoT Edge**.
+2. Vyberte zařízení IoT Edge přidružené k vašemu zařízení Data Box Edge. V části **Podrobnosti o zařízení**vyberte **Nastavit moduly**. V **možnosti Přidat moduly**vyberte **+ Přidat** a pak vyberte Modul **IoT Edge .**
+3. V okně **vlastních modulů IoT Edge:**
 
-    1. Zadejte **název** pro modul aplikace webového serveru, který chcete nasadit.
-    2. Poskytují **identifikátor URI Image** pro bitové kopie modulu. Je načten modul odpovídající zadaný název a značky. V takovém případě `nginx:stable` přetáhne image s stabilní nginx (označené jako stabilní verze) před veřejností [úložiště Dockeru](https://hub.docker.com/_/nginx/).
-    3. V **možnosti vytvoření kontejneru**, vložte následující vzorový kód:  
+    1. Zadejte **název** modulu aplikace webového serveru, který chcete nasadit.
+    2. Zadejte **identifikátor URI obrázku** pro bitovou kopii modulu. Je načten modul odpovídající zadaný název a značky. V takovém `nginx:stable` případě vytáhne stabilní obrázek nginx (označený jako stabilní) z veřejného [úložiště Dockeru](https://hub.docker.com/_/nginx/).
+    3. V **možnostech vytvoření kontejneru**vložte následující ukázkový kód:  
 
         ```
         {
@@ -79,23 +79,23 @@ Proveďte následující kroky k přidání modulu aplikace webového serveru na
         }
         ```
 
-        Tato konfigurace vám umožní přístup k modulu s použitím IP network výpočetní přes *http* na TCP port 8080 (s webovým serverem výchozí port je 80).
+        Tato konfigurace umožňuje přístup k modulu pomocí ip výpočetní sítě přes *http* na portu TCP 8080 (s výchozím portem webového serveru je 80).
 
-        ![Zadejte informace o portu v okně vlastní modul IoT Edge](media/data-box-edge-extend-compute-access-modules/module-information.png)
+        ![Zadání informací o portu ve vlastním modulu IoT Edge](media/data-box-edge-extend-compute-access-modules/module-information.png)
 
     4. Vyberte **Uložit**.
 
-## <a name="verify-module-access"></a>Ověření přístupu pro modul
+## <a name="verify-module-access"></a>Ověření přístupu k modulu
 
-1. Ověřte v modulu je úspěšně nasazená a běží. Na **podrobnosti o zařízení** na stránce **moduly** karty, by měla být stav modulu runtime **systémem**.  
-2. Připojte se k aplikaci modulu webového serveru. Otevřete okno prohlížeče a zadejte:
+1. Ověřte, zda je modul úspěšně nasazen a je spuštěn. Na stránce **Podrobnosti o zařízení** by měl být na kartě **Moduly** **spuštěn**stav modulu za běhu .  
+2. Připojte se k modulu aplikace webového serveru. Otevřete okno prohlížeče a zadejte:
 
     `http://<compute-network-IP-address>:8080`
 
-    Měli byste vidět, že je spuštěna aplikace webového serveru.
+    Měli byste vidět, že aplikace webového serveru je spuštěna.
 
     ![Ověření připojení k modulu přes zadaný port](media/data-box-edge-extend-compute-access-modules/verify-connect-module-1.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si, jak [spravovat uživatele pomocí webu Azure Portal](data-box-edge-manage-users.md).

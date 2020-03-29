@@ -1,6 +1,6 @@
 ---
-title: Proxy aplikací Azure Active Directory a tableau. představují | Dokumentace Microsoftu
-description: Další informace o použití Proxy aplikace Azure Active Directory (Azure AD) pro zajištění vzdáleného přístupu pro vaše nasazení Tableau.
+title: Proxy a tableau aplikace služby Azure Active Directory | Dokumenty společnosti Microsoft
+description: Zjistěte, jak používat proxy aplikace Azure Active Directory (Azure AD) k poskytování vzdáleného přístupu pro nasazení tableau.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -14,73 +14,73 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1aa99e7e71ad78a62c1a9da303b2ecc8347ebeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65783852"
 ---
-# <a name="azure-active-directory-application-proxy-and-tableau"></a>Proxy aplikací Azure Active Directory a tableau. představují 
+# <a name="azure-active-directory-application-proxy-and-tableau"></a>Proxy a tableau aplikace služby Azure Active Directory 
 
-Azure Active Directory Application Proxy a tableau. představují uzavřeli partnerství s cílem zajistit, že můžete snadno provádět využití Proxy aplikace k zajištění vzdáleného přístupu pro vaše nasazení Tableau. Tento článek vysvětluje postup konfigurace tohoto scénáře.  
+Proxy aplikace Azure Active Directory a Tableau se spojily, aby zajistily, že budete moci snadno použít proxy aplikace k poskytování vzdáleného přístupu pro nasazení Tableau. Tento článek vysvětluje, jak nakonfigurovat tento scénář.  
 
 ## <a name="prerequisites"></a>Požadavky 
 
-Scénář v tomto článku se předpokládá, že máte:
+Scénář v tomto článku předpokládá, že máte:
 
-- [Tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) nakonfigurované. 
+- [Tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) nakonfigurován. 
 
-- [Konektor Proxy aplikací](application-proxy-add-on-premises-application.md) nainstalované. 
+- Nainstalován [konektor proxy aplikace.](application-proxy-add-on-premises-application.md) 
 
  
-## <a name="enabling-application-proxy-for-tableau"></a>Povolení Proxy aplikace u Tableau 
+## <a name="enabling-application-proxy-for-tableau"></a>Povolení proxy aplikace pro tableau 
 
-Proxy aplikací podporuje OAuth 2.0 tok udělování, které jsou požadovány pro Tableau fungovala správně. To znamená, že již neexistují žádné speciální kroky potřebné k povolení této aplikace, než je konfigurace podle pokynů pro publikování níže.
+Proxy aplikace podporuje Grant Flow OAuth 2.0, který je nutný pro správnou funkci Tableau. To znamená, že již nejsou nutné žádné zvláštní kroky potřebné k povolení této aplikace, kromě konfigurace pomocí následujících kroků publikování.
 
 
 ## <a name="publish-your-applications-in-azure"></a>Publikování aplikací v Azure 
 
-Pokud chcete publikovat Tableau, je třeba publikovat aplikaci na webu Azure Portal.
+Pokud chcete publikovat Tableau, musíte publikovat aplikaci na webu Azure Portal.
 
 Pro:
 
-- Podrobné pokyny z kroků 1-8, viz [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md). 
-- Informace o tom, jak najít tableau. představují hodnoty pro pole Proxy aplikací naleznete v dokumentaci Tableau.  
+- Podrobné pokyny k krokům 1-8 najdete v [tématu Publikování aplikací pomocí proxy aplikace Azure AD](application-proxy-add-on-premises-application.md). 
+- Informace o tom, jak najít hodnoty Tableau pro pole Proxy aplikace, naleznete v dokumentaci tableau.  
 
-**K publikování aplikace**: 
+**Jak publikovat aplikaci**: 
 
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce aplikací. 
+1. Přihlaste se k [portálu Azure](https://portal.azure.com) jako správce aplikací. 
 
-2. Vyberte **Azure Active Directory > podnikové aplikace**. 
+2. Vyberte **azure active directory > podnikové aplikace**. 
 
-3. Vyberte **přidat** v horní části okna. 
+3. V horní části nože vyberte **Přidat.** 
 
-4. Vyberte **On-premises application**. 
+4. Vyberte **místní aplikaci**. 
 
-5. Vyplňte požadovaná pole s informacemi o novou aplikaci. Použijte následující pokyny pro nastavení: 
+5. Vyplňte požadovaná pole s informacemi o nové aplikaci. Pro nastavení použijte následující pokyny: 
 
-    - **Interní adresa URL**: Tato aplikace by měla mít interní adresa URL adresy URL Tableau samotné. Například, `https://adventure-works.tableau.com`. 
+    - **Interní adresa URL**: Tato aplikace by měla mít interní adresu URL, která je samotná adresa URL Tableau. Například, `https://adventure-works.tableau.com`. 
 
-    - **Metoda předběžného ověřování služby**: Azure Active Directory (doporučené, ale nevyžaduje). 
+    - **Metoda předběžného ověřování:** Služba Azure Active Directory (doporučeno, ale není vyžadováno). 
 
-6. Vyberte **přidat** v horní části okna. Přidá se vaše aplikace a otevře se nabídka rychlý start. 
+6. V horní části nože vyberte **Přidat.** Aplikace je přidána a otevře se nabídka rychlého spuštění. 
 
-7. V nabídce rychlý start vyberte **přiřadit uživatele pro testování**, a přidejte aspoň jednoho uživatele k aplikaci. Ujistěte se, že testovacího účtu má přístup k místní aplikaci. 
+7. V nabídce Rychlý start vyberte **Přiřadit uživatele k testování**a přidejte do aplikace alespoň jednoho uživatele. Ujistěte se, že tento testovací účet má přístup k místní aplikaci. 
 
-8. Vyberte **přiřadit** se uložit přiřazení uživatelských testu. 
+8. Vyberte **Přiřadit,** chcete-li uložit přiřazení testovacího uživatele. 
 
-9. (Volitelné) Na stránce Správa aplikací vyberte **jednotného přihlašování**. Zvolte **integrované ověřování Windows** z rozevírací nabídky a zadejte požadovaná pole na základě vaší konfigurace Tableau. Vyberte **Uložit**. 
+9. (Nepovinné) Na stránce správa aplikací vyberte **Jednotné přihlašování**. Z rozevírací nabídky zvolte **Integrované ověřování systému Windows** a vyplňte požadovaná pole na základě konfigurace Tableau. Vyberte **Uložit**. 
 
  
 
 ## <a name="testing"></a>Testování 
 
-Vaše aplikace je teď připravený k testování. Na externí adresu URL jste použili k publikování Tableau, a přihlaste se jako uživatel přiřazený na obě aplikace.
+Aplikace je nyní připravena k testování. Získejte přístup k externí adrese URL, kterou jste použili k publikování tableau, a přihlaste se jako uživatel přiřazený k oběma aplikacím.
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o Proxy aplikací Azure AD najdete v tématu [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](application-proxy.md).
+Další informace o proxy aplikací azure ad najdete v [tématu Jak zajistit zabezpečený vzdálený přístup k místním aplikacím](application-proxy.md).
 

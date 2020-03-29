@@ -1,6 +1,6 @@
 ---
-title: Vlastní sestavy od Verizonu | Dokumentace Microsoftu
-description: 'Vzorce používání vaší sítě CDN můžete zobrazit pomocí následující sestavy: Přenesená Data šířky pásma, přístupy, stavy mezipaměti, poměr, přenesená Data IPV4/IPV6 přístupů do mezipaměti.'
+title: Vlastní sestavy společnosti Verizon | Dokumenty společnosti Microsoft
+description: 'Vzorce využití sítě CDN můžete zobrazit pomocí následujících sestav: Šířka pásma, Přenesená data, Přístupové požadavky, Stavy mezipaměti, Poměr přístupů do mezipaměti, IpV4/IPV6 Data Transferred.'
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,78 +15,78 @@ ms.topic: article
 ms.date: 10/11/2017
 ms.author: magattus
 ms.openlocfilehash: 15f17ac6556c4ff731372dc7f738d0f58bdc3e31
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593294"
 ---
-# <a name="custom-reports-from-verizon"></a>Vlastní sestavy od Verizonu
+# <a name="custom-reports-from-verizon"></a>Vlastní sestavy od společnosti Verizon
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Pomocí sestav vlastní Verizon prostřednictvím portálu spravovat pro Verizon profily můžete definovat typ jde data shromažďovat pro sestavy edge záznamů CNAME.
+Pomocí vlastních sestav Verizon prostřednictvím portálu Správa pro profily Verizon můžete definovat typ dat, která mají být shromažďována pro sestavy hraničních CNAMEs.
 
 
-## <a name="accessing-verizon-custom-reports"></a>Přístup k vlastní Verizon sestavy
-1. Z okna profil CDN, klikněte na tlačítko **spravovat** tlačítko.
+## <a name="accessing-verizon-custom-reports"></a>Přístup k vlastním sestavům společnosti Verizon
+1. V okně profilu CDN klepněte na tlačítko **Spravovat.**
    
     ![Tlačítko Spravovat profil CDN](./media/cdn-reports/cdn-manage-btn.png)
    
-    Otevře se na portálu pro správu CDN.
-2. Najeďte myší **Analytics** kartu a pak najeďte myší **vlastní sestavy** Kontextová nabídka. Klikněte na tlačítko **hraniční záznamů CNAME**.
+    Otevře se portál pro správu CDN.
+2. Najeďte na kartu **Analytics** a najeďte na informační rámeček **Vlastní přehledy.** Klepněte na **okraj cnames**.
    
-    ![Portál pro správu CDN – vlastní sestavy nabídky](./media/cdn-reports/cdn-custom-reports.png)
+    ![Portál pro správu CDN - Nabídka Vlastní sestavy](./media/cdn-reports/cdn-custom-reports.png)
 
-## <a name="edge-cnames-custom-report"></a>Sestava vlastní záznamy CNAME Edge
-Záznamy CNAME Edge vlastní sestava obsahuje přístupů a statistiky přenosu dat pro edge záznamů CNAME, na které bylo povoleno protokolování vlastní sestavy. Záznamy CNAME Edge se skládá z koncového bodu Azure CDN názvy hostitelů a žádný název hostitele vlastní domény přidružené. 
+## <a name="edge-cnames-custom-report"></a>Vlastní sestava CNAMES okrajů
+Vlastní sestava Edge CNAMES poskytuje požadavky na server a statistiky přenesené daty pro hraniční CNAMEs, na kterých bylo povoleno vlastní protokolování sestav. Edge CNAMEs se skládají z názvů hostitelů koncového bodu Azure CDN a všech přidružených názvů hostitelů vlastních domén. 
 
-Vlastní sestavu protokolování dat začíná hodinu potom, co povolíte vlastní možnosti vytváření sestav edge CNAME. Data sestavy můžete zobrazit tak generuje sestavu Edge záznamů CNAME pro konkrétní platformy nebo pro všechny platformy. Pokrytí této sestavy je omezená na edge záznamů CNAME, pro které byl shromážděn vlastní sestavu dat během zadaného časového období. Okraje sestavy záznamy CNAME se skládá z graf a datovou tabulku pro horní okraj 10 záznamů CNAME podle metrika definovaná ve variantě pro metriky. 
+Protokolování vlastních dat sestavy začíná jednu hodinu po povolení funkce vlastního vytváření sestav CNAME. Data sestavy můžete zobrazit generováním sestavy Edge CNAMEs pro konkrétní platformu nebo pro všechny platformy. Pokrytí pro tuto sestavu je omezeno na hraniční CNAMEs, pro které byla během zadaného časového období shromážděna vlastní data sestavy. Sestava hraničních CNAMse se skládá z grafu a tabulky dat pro 10 okrajových cnamů podle metriky definované v možnosti Metriky. 
 
-Generovat vlastní sestavy tak, že definujete následující možnosti sestavy:
+Vygenerujte vlastní sestavu definováním následujících možností sestavy:
 
-- Metriky: Podporovány jsou následující možnosti:
+- Metriky: Jsou podporovány následující možnosti:
 
-   - Počet přístupů: Určuje celkový počet požadavků, které jsou směrované na edge CNAME, na kterých je povoleno vlastní možnosti vytváření sestav. Tato metrika nezahrnuje stavový kód, který je vrácen do klienta.
+   - Požadavky na server: Označuje celkový počet požadavků, které jsou směrovány na okraj CNAME, na kterém je povolena vlastní schopnost vytváření sestav. Tato metrika nezahrnuje stavový kód vrácený klientovi.
 
-   - Přenesená data: Určuje celkové množství dat přenášených ze serverů edge klientům protokolu HTTP (například webové prohlížeče) pro požadavky, které jsou směrované na edge CNAME, na kterých je povoleno vlastní možnosti vytváření sestav. Objem přenesených dat se vypočte tak přidání hlavičky odpovědi do těla odpovědi. V důsledku toho objemu dat přenesených pro každý prostředek je větší než skutečná velikost.
+   - Přenesená data: Označuje celkové množství dat přenesených z hraničních serverů klientům HTTP (například webovým prohlížečům) pro požadavky, které jsou směrovány na hraniční cname, na kterém je povolena vlastní funkce vykazování. Množství přenesených dat se vypočítá přidáním hlaviček odpovědi HTTP do těla odpovědi. V důsledku toho je množství dat přenesených pro každý datový zdroj větší než jeho skutečná velikost souboru.
 
-- Seskupení: Určuje typ statistické údaje, které jsou uvedeny níže pruhový graf. Podporovány jsou následující možnosti:
+- Seskupení: Určuje typ statistiky, které jsou zobrazeny pod pruhovým grafem. Podporovány jsou následující možnosti:
 
-   - Kódy odpovědí protokolu HTTP: Uspořádá statistické údaje podle kódu odpovědi HTTP (například 200, 403, atd.) vrácen do klienta. 
+   - Kódy odpovědí HTTP: Uspořádá statistiky podle kódu odpovědi HTTP (například 200, 403 atd.) vrácených klientovi. 
 
-   - Stav mezipaměti: Uspořádá statistické údaje podle stavu mezipaměti.
+   - Stav mezipaměti: Uspořádá statistiky podle stavu mezipaměti.
 
 
-Nastavit rozsah dat pro sestavy, můžete vybrat předem definovaný rozsah, jako například **Dnes** nebo **tento týden**, z rozevíracího seznamu nebo můžete vybrat **vlastní** a ručně zadejte rozsah dat kliknutím na ikonu kalendáře. 
+Chcete-li nastavit rozsah dat sestavy, můžete buď vybrat předdefinovaný rozsah dat, například **Dnes** nebo **Tento týden**, z rozevíracího seznamu nebo můžete vybrat **Vlastní** a ručně zadat časové období klepnutím na ikony kalendáře. 
 
-Jakmile vyberete rozsah dat, klikněte na tlačítko **Přejít** generování sestav.
+Po výběru období vygenerujte sestavu klepnutím na **tlačítko Přejít.**
 
-Kliknutím na symbol Excel napravo od můžete exportovat data ve formátu aplikace Excel **Přejít** tlačítko.
+Data můžete exportovat ve formátu Excelu kliknutím na symbol Aplikace Excel vpravo od tlačítka **Přejít.**
 
-![Záznamy CNAME sestavy](./media/cdn-reports/cdn-cnames-report.png)
+![Zpráva CNAMEs](./media/cdn-reports/cdn-cnames-report.png)
 
-## <a name="edge-cnames-custom-report-fields"></a>Pole vlastní sestavy záznamů CNAME Edge
+## <a name="edge-cnames-custom-report-fields"></a>Vlastní pole sestavy Hraniční názvy CNAMES
 
 | Pole                     | Popis   |
 |---------------------------|---------------|
-| 2xx                       | Určuje celkový počet požadavků nebo přenesená data (MB) pro edge CNAME, jejímž výsledkem stavový kód HTTP 2xx (například 200 OK). |
-| 3xx                       | Určuje celkový počet požadavků nebo přenesená data (MB) pro edge CNAME, jejímž výsledkem stavový kód HTTP 3xx (například 302 najít nebo 304 nedojde ke změně. |
-| 4xx                       | Určuje celkový počet požadavků nebo přenesená data (MB) pro edge CNAME, jejímž výsledkem stavový kód HTTP 4xx (například 400 o neplatném požadavku, 403 Zakázáno nebo 404 Nenalezeno). |
-| 5xx                       | Určuje celkový počet požadavků nebo přenesená data (MB) pro edge CNAME, jejímž výsledkem kód stavu HTTP 5xx (například 500 – Interní chyba serveru nebo 502 – Chybná brána). |
-| Procento vstupů do mezipaměti               | Informuje o procentu možné ukládat do mezipaměti požadavky, které byly žadateli obsluhovat přímo z mezipaměti. |
-| Přístupy do mezipaměti                | Určuje celkový počet požadavků nebo přenesená data (MB) pro edge CNAME, který má za následek přístup do mezipaměti (například TCP_EXPIRED_HIT, TCP_HIT nebo TCP_PARTIAL_HIT). Přístup do mezipaměti dojde k verzi v mezipaměti požadovaný obsah nachází. |
-| Přenesená data (MB)     | Určuje celkové množství přenesených dat (MB) ze serverů edge klientům protokolu HTTP (webové prohlížeče) pro edge CNAME. Objem přenesených dat se vypočte tak přidání hlavičky odpovědi do těla odpovědi. V důsledku toho objemu dat přenesených pro každý prostředek je větší než skutečná velikost. |
-| Popis               | Identifikuje okraj CNAME podle jeho názvu hostitele |
-| Počet přístupů                      | Určuje celkový počet požadavků na hraničních zařízeních CNAME |
-| Neúspěšné přístupy do                    | Určuje celkový počet požadavků nebo přenesená data (MB) pro edge CNAME, který má za následek Neúspěšné přístupy mezipaměti do (například TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS nebo TCP_MISS). Neúspěšný přístup do mezipaměti nastane, pokud požadovaný obsah nebyl uložen do mezipaměti na hraničním serveru, neuplatňují požadavku. | 
-| Žádná mezipaměť                  | Určuje celkový počet požadavků nebo přenesená data (MB) pro záznam CNAME, jejímž výsledkem stavový kód CONFIG_NOCACHE mezipaměti na hraničních zařízeních.  |
-| Ostatní                     | Určuje celkový počet požadavků nebo údaje přenesené (MB) pro edge CNAME, jehož výsledkem stavový kód HTTP, který spadá mimo 2xx – rozsahu 5xx. |
-| Platforma                  | Určuje platformu, která zpracovává přenosy edge CNAME. |
-| Nepřiřazené               | Určuje celkový počet požadavků nebo přenesená data (MB) pro CNAME edge, pro které mezipaměti stavový kód nebo kód stavu HTTP nebyla protokolována informace.  |
-| Uncacheable               | Určuje celkový počet požadavků nebo přenesená data (MB) pro záznam CNAME, který vede stavový kód UNCACHEABLE mezipaměti na hraničních zařízeních.  |
+| 2xx                       | Označuje celkový počet požadavků nebo dat přenesených (MB) pro hraniční CNAME, jehož výsledkem je stavový kód 2xx HTTP (například 200 OK). |
+| 3xx                       | Označuje celkový počet požadavků nebo dat přenesených (MB) pro okraj CNAME, jehož výsledkem je stavový kód 3xx HTTP (například 302 Nalezeno nebo 304 Nezměněno. |
+| 4xx                       | Označuje celkový počet požadavků nebo dat přenesených (MB) pro okraj CNAME, jehož výsledkem je 4xx HTTP stavový kód (například 400 chybný požadavek, 403 zakázáno nebo 404 nebyl nalezen). |
+| 5xx                       | Označuje celkový počet požadavků nebo dat přenesených (MB) pro hraniční CNAME, jehož výsledkem je stavový kód 5xx HTTP (například 500 Vnitřní chyba serveru nebo 502 Chybná brána). |
+| Počet přístupů do mezipaměti %               | Označuje procento požadavků, které lze uložit do mezipaměti a které byly doručeny přímo z mezipaměti žadateli. |
+| Přístupy do mezipaměti                | Označuje celkový počet požadavků nebo přenesených dat (MB) pro hraniční CNAME, který má za následek přístup do mezipaměti (například TCP_EXPIRED_HIT, TCP_HIT nebo TCP_PARTIAL_HIT). K přístupu do mezipaměti dochází při nalezení verze požadovaného obsahu uložené v mezipaměti. |
+| Přenesená data (MB)     | Označuje celkové množství dat přenesených (MB) z hraničních serverů do klientů HTTP (webových prohlížečů) pro hraniční cname. Množství přenesených dat se vypočítá přidáním hlaviček odpovědi HTTP do těla odpovědi. V důsledku toho je množství dat přenesených pro každý datový zdroj větší než jeho skutečná velikost souboru. |
+| Popis               | Identifikuje okraj CNAME podle názvu hostitele. |
+| Hits                      | Označuje celkový počet požadavků na okraj CNAME. |
+| Chybí                    | Označuje celkový počet požadavků nebo dat přenesených (MB) pro hraniční CNAME, což má za následek chybě v mezipaměti (například TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS nebo TCP_MISS). K chybě mezipaměti dojde, když požadovaný obsah nebyl uložen do mezipaměti na hraničním serveru, který požadavek dodržel. | 
+| Žádná mezipaměť                  | Označuje celkový počet požadavků nebo dat přenesených (MB) pro hraniční CNAME, což má za následek CONFIG_NOCACHE stavový kód mezipaměti.  |
+| Ostatní                     | Označuje celkový počet požadavků nebo dat přenesených (MB) pro okraj CNAME uvedeno, že výsledkem je stavový kód HTTP, který spadá mimo rozsah 2xx - 5xx. |
+| Platforma                  | Označuje platformu, která zpracovává provoz hrany CNAME. |
+| Unassigned               | Označuje celkový počet požadavků nebo dat přenesených (MB) pro hraniční CNAME, pro který nebyl zaznamenán stavový kód mezipaměti nebo informace o stavu HTTP.  |
+| Neuložit do mezipaměti               | Označuje celkový počet požadavků nebo dat přenesených (MB) pro hraniční CNAME, což má za následek stavový kód mezipaměti UNCACHEABLE.  |
 
 
 ## <a name="considerations"></a>Požadavky
-Sestavy se můžou generovat jenom během posledních 18 měsíců.
+Sestavy lze generovat pouze během posledních 18 měsíců.
 

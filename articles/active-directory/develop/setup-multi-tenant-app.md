@@ -1,6 +1,6 @@
 ---
-title: Konfigurace nové aplikace s více klienty | Microsoft Docs
-description: Naučte se konfigurovat aplikaci jako více tenantů a jak pracují víceklientské aplikace.
+title: Konfigurace nové aplikace pro více klientů | Dokumenty společnosti Microsoft
+description: Zjistěte, jak nakonfigurovat aplikaci jako víceklientské aplikace a jak fungují víceklientské aplikace
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -16,20 +16,20 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: ae5f0f0cd42c4b734e14a66bc7ba9cf5bbfe61a4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701480"
 ---
-# <a name="how-to-configure-a-new-multi-tenant-application"></a>Jak nakonfigurovat novou aplikaci pro více tenantů
+# <a name="how-to-configure-a-new-multi-tenant-application"></a>Jak nakonfigurovat novou víceklientské aplikace
 
-Tady je seznam doporučených témat, kde najdete další informace o víceklientské aplikacích:
+Zde je seznam doporučených témat, kde se dozvíte více o víceklientských aplikacích:
 
-- Získejte Obecné informace o [tom, co znamená](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#multi-tenant-application) , že se jedná o víceklientské aplikace.
-- Získejte Obecné informace o [tom, jak nakonfigurovat aplikaci pro více tenantů](https://docs.microsoft.com/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant) .
-- Podrobné informace o [tom, jak se používá rozhraní pro vyjádření souhlasu Azure AD k implementaci souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications), který je vyžadován pro víceklientské aplikace
-- Podrobnější informace najdete v tématu [Konfigurace a kódování aplikace pro více tenantů](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview), včetně postupu registrace, použití "běžného" koncového bodu, implementace souhlasu "User" a "admin", jak implementovat pokročilejší scénáře s více vrstvami.
+- Získejte obecné znalosti o [tom, co to znamená být víceklientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#multi-tenant-application)
+- Obecné znalosti o [tom, jak nakonfigurovat aplikaci jako víceklientské](https://docs.microsoft.com/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant)
+- Získejte podrobný přehled o tom, [jak se používá architektura souhlasu Azure AD k implementaci souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications), který je vyžadován pro víceklientské aplikace
+- Pro větší hloubku se dozvíte, [jak je aplikace s více klienty nakonfigurována a kódována od konce do konce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview), včetně toho, jak se zaregistrovat, použít "společný" koncový bod, implementovat souhlas uživatele a "správce", jak implementovat pokročilejší vícevrstvé scénáře
 
 ## <a name="next-steps"></a>Další kroky
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Přetečení zásobníku AzureAD](https://stackoverflow.com/questions/tagged/azure-active-directory)
