@@ -1,7 +1,7 @@
 ---
-title: Řídicí panel – Language Understanding – LUIS
+title: Řídicí panel – jazykové znalosti – LUIS
 titleSuffix: Azure Cognitive Services
-description: Opravte záměry a entity pomocí řídicího panelu vaší školené aplikace. Řídicí panel zobrazuje celkové informace o aplikaci s příklady záměrů, které by se měly opravit.
+description: Opravte záměry a entity pomocí řídicího panelu trénované aplikace. Řídicí panel zobrazuje celkové informace o aplikaci s nejdůležitějšími záměry, které by měly být opraveny.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,162 +12,162 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: d9ae126753f55349f9bf3eefd20bc4d222866af1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73888198"
 ---
-# <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Vylepšení aplikace pomocí řídicího panelu
+# <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Jak vylepšit aplikaci pomocí řídicího panelu
 
-Vyhledejte a opravte problémy s záměry školené aplikace, když používáte příklad projevy. Řídicí panel zobrazuje celkové informace o aplikaci s příklady záměrů, které by se měly opravit. 
+Vyhledejte a opravte problémy se záměry trénované aplikace, když používáte ukázkové projevy. Řídicí panel zobrazuje celkové informace o aplikaci s nejdůležitějšími záměry, které by měly být opraveny. 
 
-Kontrola analýzy řídicího panelu je iterativní proces, který se opakuje při změně a vylepšení modelu.
+Kontrola analýzy řídicího panelu je iterativní proces, opakujte při změně a vylepšování modelu.
 
-Tato stránka nebude mít relevantní analýzu pro aplikace, které nemají žádný příklad projevy v úmyslech, označované jako aplikace _jenom pro vzorky_ . 
+Tato stránka nebude mít relevantní analýzu pro aplikace, které nemají žádné příklad projevy v záměry, označované jako pouze _vzor_ aplikace. 
 
-## <a name="what-issues-can-be-fixed-from-dashboard"></a>Jaké problémy můžete z řídicího panelu opravit?
+## <a name="what-issues-can-be-fixed-from-dashboard"></a>Jaké problémy lze opravit z řídicího panelu?
 
-Tři problémy řešené na řídicím panelu jsou:
+Tři problémy řešené v řídicím panelu jsou:
 
 |Problém|Barva grafu|Vysvětlení|
 |--|--|--|
-|Nevyrovnanost dat|-|K tomu dochází, když se množství příkladů projevy významně liší. Všechny záměry musí mít _zhruba_ stejný počet příkladů projevy – s výjimkou záměru None. Mělo by to mít jenom 10%-15% celkového počtu projevy v aplikaci.<br><br> Pokud jsou data nevyvážená, ale přesnost záměru je nad určitou prahovou hodnotou, tato nerovnováha není hlášena jako problém.<br><br>**Začněte s tímto problémem – může to být hlavní příčina dalších problémů.**|
-|Zrušit zaškrtnutí předpovědi|Orange|K tomu dojde v případě, že je přední záměr a skóre dalšího záměru dostatečně blízko, že se mohou vrátit k dalšímu školení, z důvodu [negativního vzorkování](luis-how-to-train.md#train-with-all-data) nebo více příkladů projevy přidaných do záměru. |
-|Nesprávné předpovědi|Červená|K tomu dochází, když se příklad utterance nepředpokládá pro označení záměru (záměr je v rámci).|
+|Nevyváženost údajů|-|K tomu dochází, když množství příklad projevy výrazně liší. Všechny záměry musí mít _zhruba_ stejný počet příklad projevy – s výjimkou None záměr. By měl mít pouze 10%-15% z celkového množství projevy v aplikaci.<br><br> Pokud jsou data nevyvážená, ale přesnost záměru je nad určitou prahovou hodnotou, tato nerovnováha není hlášena jako problém.<br><br>**Začněte s tímto problémem - to může být hlavní příčinou dalších problémů.**|
+|Nejasné předpovědi|Orange|K tomu dochází, když hlavní záměr a další záměr skóre jsou dostatečně blízko, že mohou překlopit na další školení, z důvodu [negativní vzorkování](luis-how-to-train.md#train-with-all-data) nebo další příklad projevy přidány k záměru. |
+|Nesprávné předpovědi|Červený|K tomu dochází, když příklad utterance není předpovědět pro popisek záměru (záměr je v).|
 
-Správné předpovědi jsou reprezentovány barvou modrá.
+Správné předpovědi jsou reprezentovány modrou barvou.
 
-Na řídicím panelu se tyto problémy zobrazí a dozvíte se, které záměry jsou ovlivněné a navrhuje, co byste měli udělat ke zlepšení aplikace. 
+Řídicí panel zobrazuje tyto problémy a informuje vás, které záměry jsou ovlivněny, a navrhne, co byste měli udělat pro zlepšení aplikace. 
 
-## <a name="before-app-is-trained"></a>Před školením aplikace 
+## <a name="before-app-is-trained"></a>Před vyškolením aplikace 
 
-Než aplikaci provedete, řídicí panel neobsahuje žádné návrhy na opravy. Výuku aplikace vám umožní zobrazit tyto návrhy.  
+Před trénování aplikace, řídicí panel neobsahuje žádné návrhy na opravy. Vyškolte svou aplikaci, abyste viděli tyto návrhy.  
 
-## <a name="check-your-publishing-status"></a>Zkontroluje stav publikování.
+## <a name="check-your-publishing-status"></a>Kontrola stavu publikování
 
-**Stavová karta publikování** obsahuje informace o posledním publikování aktivní verze. 
+**Stavová** karta Publikování obsahuje informace o posledním publikování aktivní verze. 
 
-Ověřte, že aktivní verze je verze, kterou chcete opravit. 
+Zkontrolujte, zda je aktivní verze verzí, kterou chcete opravit. 
 
-![Řídicí panel zobrazuje externí služby, publikované oblasti a naagregované přístupy koncového bodu aplikace.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
+![Řídicí panel zobrazuje externí služby aplikace, publikované oblasti a agregované požadavky na koncový bod.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
 
-Zobrazí se také všechny externí služby, publikované oblasti a přístupy do agregovaného koncového bodu. 
+To také zobrazuje všechny externí služby, publikované oblasti a agregované přístupů koncového bodu. 
 
-## <a name="review-training-evaluation"></a>Kontrola vyhodnocení školení
+## <a name="review-training-evaluation"></a>Přezkoumat hodnocení školení
 
-Karta **hodnocení školení** obsahuje agregovaný souhrn celkové přesnosti vaší aplikace podle oblasti. Skóre indikuje kvalitu záměru. 
+Karta **hodnocení školení** obsahuje souhrnný souhrn celkové přesnosti aplikace podle oblasti. Skóre označuje kvalitu záměru. 
 
-![Karta hodnocení školení obsahuje první oblast informací o celkové přesnosti vaší aplikace.](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
+![Karta hodnocení školení obsahuje první oblast informací o celkové přesnosti aplikace.](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
 
-Graf indikuje správné předpovězené záměry a problematické oblasti s různými barvami. Při vylepšování aplikace pomocí návrhů se toto skóre zvyšuje. 
+Graf označuje správně předpovídané záměry a problémové oblasti s různými barvami. Jak si vylepšit aplikaci s návrhy, toto skóre se zvyšuje. 
 
-Navrhované opravy jsou oddělené podle typu problému a jsou pro vaši aplikaci nejvýznamnější. Pokud budete chtít zkontrolovat a opravit problémy na záměr, použijte kartu **[záměry s chybami](#intents-with-errors)** v dolní části stránky. 
+Navrhované opravy jsou odděleny podle typu problému a jsou nejdůležitější pro vaši aplikaci. Pokud dáváte přednost kontrole a opravě problémů podle záměru, použijte kartu **[Záměry s chybami](#intents-with-errors)** v dolní části stránky. 
 
-Každá problematická oblast má záměry, které je třeba opravit. Když vyberete název záměru, otevře se stránka **záměr** s filtrem použitým pro projevy. Tento filtr vám umožní soustředit se na projevy, které způsobují problém.
+Každá problémová oblast má záměry, které je třeba opravit. Když vyberete název záměru, otevře se stránka **Záměr** s filtrem použitým na projevy. Tento filtr umožňuje zaměřit se na projevy, které jsou příčinou problému.
 
 ### <a name="compare-changes-across-versions"></a>Porovnání změn ve verzích
 
-Před provedením změn v aplikaci vytvořte novou verzi. V nové verzi proveďte navrhované změny v příkladu projevy záměru a potom znovu spusťte vlak. Na kartě **zkušební vyhodnocení školení** stránky řídicího panelu použijte příkaz **Zobrazit změnu z vyučené verze** k porovnání změn. 
+Před provedením změn v aplikaci vytvořte novou verzi. V nové verzi proveďte navrhované změny v příkladu projevy záměru a pak znovu trénovat. Na stránce Řídicí panel **školení hodnocení** karty, použijte **Zobrazit změnu z trénované verze** porovnat změny. 
 
 ![Porovnání změn ve verzích](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
 
-### <a name="fix-version-by-adding-or-editing-example-utterances-and-retraining"></a>Oprava verze přidáním nebo úpravou příkladu projevy a retraining
+### <a name="fix-version-by-adding-or-editing-example-utterances-and-retraining"></a>Oprava verze přidáním nebo úpravou ukázkových promluv a rekvalifikací
 
-Primární metodou opravy vaší aplikace bude přidání nebo úprava příkladu projevy a revlak. Nové nebo změněné projevy musí postupovat podle pokynů pro [různé projevy](luis-concept-utterance.md).
+Primární metodou opravy aplikace bude přidání nebo úprava ukázkových promluv a přeškolení. Nové nebo změněné projevy je třeba dodržovat pokyny pro [různé projevy](luis-concept-utterance.md).
 
-Přidání příkladu projevy by mělo dělat osoba, která:
+Přidání příklad projevy by měl y provádět někdo, kdo:
 
-* má vysoký stupeň porozumění, co projevy jsou v různých záměrech.
-* ví, jak může být projevy v jednom záměru zaměňovat s jiným záměrem.
-* je možné rozhodnout, zda dva záměry, které jsou často zaměňovány, by měly být sbaleny do jediného záměru. V takovém případě musí být různá data vydaná s entitami.
+* má vysoký stupeň pochopení toho, co projevy jsou v různých záměrech.
+* ví, jak projevy v jednom záměru může být zaměňována s jiným záměrem.
+* je schopen rozhodnout, zda dva záměry, které jsou často zaměňovány mezi sebou, by měly být sbaleny do jednoho záměru. V takovém případě musí být různá data vytažena s entitami.
 
-### <a name="patterns-and-phrase-lists"></a>Seznamy vzorů a frází
+### <a name="patterns-and-phrase-lists"></a>Vzory a seznamy frází
 
-Stránka Analytics neindikuje, kdy použít [vzory](luis-concept-patterns.md) nebo [seznamy frází](luis-concept-feature.md). Pokud je přidáte, může vám pomáhat s nesprávnými nebo nejasnými předpovědimi, ale neumožňuje nerovnováhu mezi daty. 
+Stránka analýzy neoznačuje, kdy použít [vzorky](luis-concept-patterns.md) nebo [seznamy frází](luis-concept-feature.md). Pokud je přidáte, může pomoci s nesprávnými nebo nejasnými předpověďmi, ale nepomůže s nerovnováhou dat. 
 
 ### <a name="review-data-imbalance"></a>Kontrola nerovnováhy dat
 
-Začněte s tímto problémem – může to být hlavní příčina dalších problémů.
+Začněte s tímto problémem - to může být hlavní příčinou dalších problémů.
 
-Seznam záměrů **nevyrovnanosti dat** zobrazuje záměry, které vyžadují více projevy, aby bylo možné opravit nerovnováhu mezi daty. 
+Seznam **záměru nerovnováhy dat** zobrazuje záměry, které potřebují více projevy, aby bylo možné opravit nerovnováhu dat. 
 
-**Chcete-li tento problém vyřešit**:
+**Chcete-li tento problém vyřešit:**
 
-* Přidejte k záměru další projevy a potom znovu spusťte vlak. 
+* Přidejte další projevy záměru a pak trénovat znovu. 
 
-Nepřidávejte projevy do záměru None pouze v případě, že to není navrženo na řídicím panelu.
+Nepřidávejte projevy none záměru, pokud je navrženna na řídicím panelu.
 
 > [!Tip]
-> Použijte třetí část na stránce, **projevy na záměr** s nastavením **projevy (číslo)** jako rychlý vizuální průvodce, který potřebuje další projevy.  
-    ![použít projevy (číslo) k nalezení záměrů s nevyrovnanou datovou nerovnováhuí.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
+> Použijte třetí část na stránce **Utterances per intent** s **utterances (číslo)** nastavení, jako rychlé vizuální vodítko, které záměry potřebují více projevy.  
+    ![Použití 'Utterances (číslo)' najít záměry s nerovnováhou dat.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
 
-### <a name="review-incorrect-predictions"></a>Kontrola nesprávných předpovědi
+### <a name="review-incorrect-predictions"></a>Zkontrolujte nesprávné předpovědi
 
-**Nesprávný** seznam záměrů předpovědi zobrazuje záměry, které mají projevy, které se používají jako příklady pro určitý záměr, ale jsou předpovězeny pro různé záměry. 
+Seznam **záměru nesprávné předpovědi** zobrazuje záměry, které mají projevy, které se používají jako příklady pro konkrétní záměr, ale jsou předpovězeny pro různé záměry. 
 
-**Chcete-li tento problém vyřešit**:
+**Chcete-li tento problém vyřešit:**
 
-* Upravte projevy tak, aby byly pro záměr a vlaky konkrétnější.
-* Zkombinujte záměry, pokud je projevy příliš úzce zarovnané a znovu spusťte vlak.
+* Upravte projevy, aby byly konkrétnější pro záměr a znovu trénovat.
+* Kombinovat záměry, pokud projevy jsou příliš úzce zarovnané a trénování znovu.
 
-### <a name="review-unclear-predictions"></a>Kontrola nejasného předpovědiu
+### <a name="review-unclear-predictions"></a>Přezkoumat nejasné předpovědi
 
-Seznam **nejasných** záměrů předpovědi ukazuje záměry s projevy s skóre předpovědi, která nejsou dostatečně velká z nejbližších rival, že se nejvyšší záměr utterance může u dalšího školení změnit z důvodu [negativního vzorkování](luis-how-to-train.md#train-with-all-data).
+**Nejasné předpověď** záměr seznam zobrazuje záměry s projevy s předpověď skóre, které nejsou dostatečně daleko od svého nejbližšího soupeře, že nejvyšší záměr pro utterance může změnit na další školení, z důvodu [negativní vzorkování](luis-how-to-train.md#train-with-all-data).
 
 **Chcete-li tento problém vyřešit**;
 
-* Upravte projevy tak, aby byly pro záměr a vlaky konkrétnější.
-* Zkombinujte záměry, pokud je projevy příliš úzce zarovnané a znovu spusťte vlak.
+* Upravte projevy, aby byly konkrétnější pro záměr a znovu trénovat.
+* Kombinovat záměry, pokud projevy jsou příliš úzce zarovnané a trénování znovu.
 
 ## <a name="utterances-per-intent"></a>Projevy na záměr
 
-Tato karta zobrazuje celkový stav aplikace napříč záměry. Při opravování a přeučení se na této kartě budou zobrazovat problémy.
+Tato karta zobrazuje celkový stav aplikace v rámci záměrů. Při opravě záměrů a přeškolení, pokračovat v pohledu na tuto kartu pro problémy.
 
-Následující graf znázorňuje dobře vyváženou aplikaci s téměř žádnými problémy, které je potřeba opravit.
+Následující graf ukazuje vyváženou aplikaci, která nemá téměř žádné problémy, které by bylo možné opravit.
 
-![Následující graf znázorňuje dobře vyváženou aplikaci s téměř žádnými problémy, které je potřeba opravit.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-balance.png)
+![Následující graf ukazuje vyváženou aplikaci, která nemá téměř žádné problémy, které by bylo možné opravit.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-balance.png)
 
-Následující graf zobrazuje nedostatečně vyváženou aplikaci s mnoha problémy, které je potřeba opravit.
+Následující graf ukazuje špatně vyváženou aplikaci s mnoha problémy, které je třeba opravit.
 
-![Následující graf znázorňuje dobře vyváženou aplikaci s téměř žádnými problémy, které je potřeba opravit.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
+![Následující graf ukazuje vyváženou aplikaci, která nemá téměř žádné problémy, které by bylo možné opravit.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
-Najeďte myší na panel jednotlivých záměrů, abyste získali informace o záměru. 
+Najeďte nad každým indikátorem záměru, abyste získali informace o záměru. 
 
-![Následující graf znázorňuje dobře vyváženou aplikaci s téměř žádnými problémy, které je potřeba opravit.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
+![Následující graf ukazuje vyváženou aplikaci, která nemá téměř žádné problémy, které by bylo možné opravit.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
-K uspořádání záměrů podle typu problému použijte funkci **Seřadit podle** , abyste se mohli soustředit na nejvíce problematické záměry s tímto problémem. 
+Pomocí funkce **Seřadit** podle uspořádat záměry podle typu problému, takže se můžete zaměřit na nejproblematičtější záměry s tímto problémem. 
 
 ## <a name="intents-with-errors"></a>Záměry s chybami
 
-Tato karta vám umožní zkontrolovat problémy konkrétního záměru. Výchozí zobrazení této karty je nejvíce problematické záměry, abyste věděli, kde se zaměřujete na své úsilí.
+Tato karta umožňuje zkontrolovat problémy pro konkrétní záměr. Výchozí zobrazení této karty je nejproblematičtější záměry, takže víte, kam zaměřit své úsilí.
 
-![Karta záměry s chybami vám umožní zkontrolovat problémy s konkrétním záměrem. Tato karta je ve výchozím nastavení filtrovaná na nejvíce problematické záměry, takže víte, kde se zaměřujete na své úsilí.](./media/luis-how-to-use-dashboard/most-problematic-intents-with-errors.png)
+![Záměry s chybami karta umožňuje zkontrolovat problémy pro konkrétní záměr. Karta je filtrována na nejproblematičtější záměry, ve výchozím nastavení, takže víte, kam se zaměřit své úsilí.](./media/luis-how-to-use-dashboard/most-problematic-intents-with-errors.png)
 
-Horní prstencový graf znázorňuje problémy s záměrem v rámci tří typů problémů. Pokud se vyskytnou problémy se třemi typy problémů, každý z nich má svůj vlastní graf spolu s případnými rival záměry. 
+Horní donut graf zobrazuje problémy se záměrem přes tři typy problémů. Pokud existují problémy ve třech typech problémů, každý typ má svůj vlastní graf níže, spolu s všechny konkurenční záměry. 
 
-### <a name="filter-intents-by-issue-and-percentage"></a>Filtrovat záměry podle problému a procenta
+### <a name="filter-intents-by-issue-and-percentage"></a>Filtrování záměrů podle problému a procenta
 
-Tato část karty vám umožní najít příklady projevy, které jsou na něm mimo prahovou hodnotu chyby. V ideálním případě je vhodné, aby bylo správné předpovědi důležité. Toto procento je obchodní a řízené zákazníky. 
+Tato část karty umožňuje najít příklad projevy, které spadají mimo prahovou hodnotu chyby. V ideálním případě chcete správné předpovědi být významné. Toto procento je řízeno obchodem a zákazníkem. 
 
-Určete procentuální prahové hodnoty, které vám vyhovuje pro vaši firmu. 
+Určete prahová procenta, která jsou pro vaši firmu spokojená. 
 
-Filtr vám umožní najít záměry s konkrétním problémem:
+Filtr umožňuje najít záměry s konkrétním problémem:
 
 |Filtr|Navrhované procento|Účel|
 |--|--|--|
-|Nejvíce problematických záměrů|-|**Začněte tady** – oprava projevy v tomto záměru vylepšuje aplikaci více než jiné opravy.|
-|Opravit předpovědi níže|60 %|Toto je procento projevy ve vybraném záměru, které jsou správné, ale mají pod prahovou hodnotou hodnocení spolehlivosti. |
-|Zrušit zaškrtnutí předpovědi nad|15 %|Toto je procentuální podíl projevy ve zvoleném záměru, který se zaměňuje s nejbližším záměrem Rival.|
-|Nesprávná předpovědi nad|15 %|Toto je procento projevy ve vybraném záměru, které jsou nesprávně předpovězené. |
+|Nejproblematičtější záměry|-|**Začněte zde** – oprava projevy v tomto záměru zlepší aplikace více než jiné opravy.|
+|Správné předpovědi níže|60 %|Toto je procento projevy ve vybraném záměru, které jsou správné, ale mají skóre spolehlivosti pod prahovou hodnotou. |
+|Nejasné předpovědi výše|15 %|Toto je procento projevy ve vybraném záměru, které jsou zaměňovány s nejbližší mnoství soupeře.|
+|Nesprávné předpovědi výše|15 %|Toto je procento projevy ve vybraném záměru, které jsou nesprávně předpovědět. |
 
 ### <a name="correct-prediction-threshold"></a>Správná prahová hodnota předpovědi
 
-Co je důležité skóre pro předpověď spolehlivosti? Na začátku vývoje aplikace může být 60% vaší cíli. Pomocí **správného předpovědi uvedeného níže** s procentem 60% Najděte libovolný projevy ve vybraném záměru, který je potřeba opravit.
+Co je sebevědomá předpověď skóre důvěry pro vás? Na začátku vývoje aplikací může být vaším cílem 60 %. Pomocí **správné předpovědi níže** s procentem 60 % najít všechny projevy ve vybraném záměru, které je třeba opravit.
 
-### <a name="unclear-or-incorrect-prediction-threshold"></a>Nejasná nebo nesprávná prahová hodnota předpovědi
+### <a name="unclear-or-incorrect-prediction-threshold"></a>Nejasná nebo nesprávná prahová hodnota predikce
 
-Tyto dva filtry umožňují najít projevy na vybraném záměru nad rámec vaší prahové hodnoty. Tyto dva procentní podíly si můžete představit jako procento chyb. Pokud jste spokojeni s 10-15% chybou pro předpovědi, nastavte prahovou hodnotu pro filtr na 15% a vyhledejte všechny projevy nad touto hodnotou. 
+Tyto dva filtry umožňují najít projevy ve vybraném záměru mimo prahovou hodnotu. Tato dvě procenta si můžete myslet jako procenta chyb. Pokud jste spokojeni s 10-15% chybovost pro předpovědi, nastavte prahovou hodnotu filtru na 15 % najít všechny projevy nad tuto hodnotu. 
 
 ## <a name="next-steps"></a>Další kroky
 

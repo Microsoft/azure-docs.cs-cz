@@ -1,83 +1,85 @@
 ---
-title: Služba pro převod textu na řeč
+title: Převod textu na řeč - Řečová služba
 titleSuffix: Azure Cognitive Services
-description: Funkce převodu textu na řeč ve službě rozpoznávání řeči umožňuje vašim aplikacím, nástrojům a zařízením převádět text na přirozeného mluveného slova přirozeného lidského typu. Vyberte přednastavené hlasy nebo vytvořte vlastní hlas.
+description: Funkce převodu textu na řeč ve službě Řeč umožňuje aplikacím, nástrojům nebo zařízením převést text na přirozenou syntetizovanou řeč. Zvolte přednastavené hlasy nebo si vytvořte vlastní hlas.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.author: erhopf
-ms.openlocfilehash: f939619cbbc69e9fc9cdbc4b2085a0b9d805511d
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.date: 03/23/2020
+ms.author: dapine
+ms.openlocfilehash: 7c7574ee4e9f75b9b650ff63a10666c5e379fca8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79371201"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131569"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
-Převod textu na řeč od služby pro rozpoznávání řeči umožňuje vašim aplikacím, nástrojům a zařízením převádět text na syntetizované rozpoznávání řeči od člověka. Vyberte si ze standardních nebo neuronové hlasů nebo vytvořte vlastní hlas jedinečný pro svůj produkt nebo značku. 75 a standardní hlasy jsou k dispozici ve více než 45 jazycích a národních prostředích a 5 neuronové hlasy jsou k dispozici v rámci výběru počtu jazyků a národních prostředí. Úplný seznam podporovaných hlasů, jazyků a národních prostředí najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+
+Převod textu na řeč ze služby Řeč umožňuje aplikacím, nástrojům nebo zařízením převést text na syntetizovanou řeč podobné člověku. Vyberte si ze standardních a neurálních hlasů nebo vytvořte vlastní hlas, který je jedinečný pro váš produkt nebo značku. Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a národních prostředích a 5 neurálních hlasů je k dispozici ve vybraném počtu jazyků a národních prostředí. Úplný seznam podporovaných hlasů, jazyků a národních prostředí naleznete v [tématu podporované jazyky](language-support.md#text-to-speech).
 
 > [!NOTE]
-> Zpracování řeči Bingu byl vyvyřazen z 15. října 2019. Pokud vaše aplikace, nástroje nebo produkty používají Zpracování řeči Bingu rozhraní API nebo Custom Speech, vytvořili jsme příručky, které vám pomůžou s migrací na službu Speech.
-> - [Migrace z Zpracování řeči Bingu do služby pro rozpoznávání řeči](how-to-migrate-from-bing-speech.md)
+> 15. října 2019 byla vyřazena z provozu proslov Bing. Pokud vaše aplikace, nástroje nebo produkty používají řešení API pro rozpoznávání řeči Bingu nebo vlastní řeč, vytvořili jsme průvodce, které vám pomohou migrovat do služby Řeč.
+> - [Migrace z řeči Bingu do služby Řeč](how-to-migrate-from-bing-speech.md)
 
-## <a name="core-features"></a>Základní funkce 
+## <a name="core-features"></a>Základní funkce
 
-* Syntéza řeči – pomocí [sady Speech SDK](quickstarts/text-to-speech-audio-file.md) nebo [REST API](rest-text-to-speech.md) můžete převést převod textu na řeč pomocí standardních, neuronové nebo vlastních hlasů.
+* Syntéza řeči – pomocí [rozhraní Speech SDK](quickstarts/text-to-speech-audio-file.md) nebo [ROZHRANÍ REST API](rest-text-to-speech.md) můžete převést text na řeč pomocí standardních, neurálních nebo vlastních hlasů.
 
-* Asynchronní syntéza dlouhého zvuku – používá [rozhraní API dlouhého zvukového rozhraní](long-audio-api.md) k asynchronnímu syntetizování souborů přemluveného textu na řeč delší než 10 minut (například zvukové knihy nebo přednášky). Na rozdíl od syntézy prováděné pomocí sady Speech SDK nebo řeči-text REST API nevrátí odpovědi v reálném čase. Očekává se, že se požadavky odesílají asynchronně, odpovědi se dotazují na a že se při zpřístupnění ze služby stáhne syntetizované zvuky. Jsou podporovány pouze hlasy neuronové.
+* Asynchronní syntéza dlouhého zvuku – Pomocí [rozhraní Long Audio API](long-audio-api.md) můžete asynchronně syntetizovat soubory převodu textu na řeč delší než 10 minut (například zvukové knihy nebo přednášky). Na rozdíl od syntézy prováděné pomocí sady REST K sady Speech SDK nebo rozhraní REST API převodu řeči na text nejsou odpovědi vráceny v reálném čase. Očekává se, že požadavky jsou odesílány asynchronně, odpovědi jsou dotazovány a syntetizovaný zvuk je stažen, když je k dispozici ze služby. Podporovány jsou pouze vlastní neurální hlasy.
 
-* Standardní hlasy – vytvořené pomocí metod syntézy statistických ukazatelů nebo sloučení zřetězení. Tyto hlasy jsou vysoce srozumitelnější a zdravé přirozené. Můžete snadno povolit vašim aplikacím mluvit ve více než 45 jazycích, a to s využitím široké škály možností hlasu. Tyto hlasy poskytují přesnost na vysokou výslovnost, včetně podpory zkratek, rozšíření akronymů, výkladů data a času, telefonů a dalších. Úplný seznam standardních hlasů najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
+* Standardní hlasy - Vytvořeno pomocí statistických metod parametrické syntézy a/nebo syntézy zřetězení. Tyto hlasy jsou vysoce srozumitelné a zvuk přirozené. Můžete snadno povolit, aby vaše aplikace mohly mluvit ve více než 45 jazycích, s širokou škálou hlasových možností. Tyto hlasy poskytují vysokou přesnost výslovnosti, včetně podpory zkratek, rozšíření zkratek, interpretací data a času, polyfonů a dalších. Úplný seznam standardních hlasů naleznete v [části Podporované jazyky](language-support.md#text-to-speech).
 
-* Neuronové hlasy – špičkové sítě neuronové se používají k překonání omezení tradiční syntézy řeči s ohledem na zátěž a nevýbušnost v mluveném jazyce. Prosody předpověď a Hlasová syntéza se provádí současně, což vede k více kapalinovým a přirozeným výstupům. Hlasy neuronové se dají použít k zajištění většího přirozeného a poutavého působení chatovacích robotů o a hlasových asistentů, převodu digitálních textů, jako jsou například e-knihy na audiobooks, a k vylepšení navigačních systémů v klecích. V případě přirozeného Prosody jako přirozeného a jasného kloubování slov, neuronové hlasy významně omezují naslouchat únavu při interakci se systémy AI. Úplný seznam hlasů pro neuronové najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
+* Nervové hlasy - Hluboké neuronové sítě se používají k překonání mezí tradiční syntézy řeči s ohledem na stres a intonaci v mluveném jazyce. Prosody predikce a syntéza hlasu jsou prováděny současně, což má za následek více tekutin a přirozeně znějící výstupy. Neurální hlasy lze použít k tomu, aby interakce s chatboty a hlasovými asistenty byly přirozenější a poutavější, převáděly digitální texty, jako jsou e-knihy, do audioknih a vylepšovaly navigační systémy v autě. S lidskou přirozenou prozodomií a jasnou artikulací slov nervové hlasy výrazně snižují únavu z poslechu při interakci se systémy AI. Úplný seznam neurálních hlasů naleznete v [části Podporované jazyky](language-support.md#text-to-speech).
 
-* SSML (Speech syntézy Language) – značkovací jazyk založený na jazyce XML, který slouží k přizpůsobení výstupů řeči na text. Pomocí SSML můžete upravit rozteč, přidat pauzy, zlepšit výslovnost, zrychlit nebo zpomalit rychlost řeči, zvýšit nebo snížit objem a zadat u jednoho dokumentu více hlasů. Viz [SSML](speech-synthesis-markup.md).
+* Jazyk značek syntézy řeči (SSML) – značkovací jazyk založený na jazyce XML, který slouží k přizpůsobení výstupů řeči na text. Pomocí SSML můžete upravit výšku, přidat pauzy, zlepšit výslovnost, zrychlit nebo zpomalit rychlost mluvení, zvýšit nebo snížit hlasitost a přiřadit více hlasů do jednoho dokumentu. Viz [SSML](speech-synthesis-markup.md).
 
 ## <a name="get-started"></a>Začínáme
 
-Služba převod textu na řeč je k dispozici prostřednictvím [sady Speech SDK](speech-sdk.md). V různých jazycích a platformách je k dispozici několik běžných scénářů jako rychlé starty:
+Služba převodu textu na řeč je k dispozici prostřednictvím [sady Speech SDK](speech-sdk.md). Existuje několik běžných scénářů, které jsou k dispozici jako rychlé starty v různých jazycích a platformách:
 
-* [Vysyntetizovat řeč do zvukového souboru](quickstarts/text-to-speech-audio-file.md)
-* [Vysyntetizátorování řeči na mluvčím](quickstarts/text-to-speech.md)
-* [Naformátování dlouhého zvuku z asynchronního syntetizu](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+* [Syntéza řeči do zvukového souboru](quickstarts/text-to-speech-audio-file.md)
+* [Syntéza řeči do reproduktoru](quickstarts/text-to-speech.md)
+* [Asynchronně syntetizovat zvuk dlouhého tvaru](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 
-Pokud dáváte přednost, je služba pro převod textu na řeč přístupná přes [REST](rest-text-to-speech.md).
+Pokud dáváte přednost, služba převodu textu na řeč je přístupná prostřednictvím [REST](rest-text-to-speech.md).
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Vzorový kód pro převod textu na řeč je k dispozici na GitHubu. Tyto ukázky překrývají převod textu na řeč v nejoblíbenějších programovacích jazycích.
+Ukázkový kód pro převod textu na řeč je k dispozici na GitHubu. Tyto ukázky zahrnují převod převodu převodu převodu převodu převodu převodu převodu převodu převodu převodu převodu na řeč v nejpopulárnějších programovacích jazycích.
 
 - [Ukázky převodu textu na řeč (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [Ukázky převodu textu na řeč (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
-## <a name="customization"></a>Přizpůsobení 
+## <a name="customization"></a>Přizpůsobení
 
-Kromě standardních a neuronové hlasů můžete vytvářet a doladit vlastní hlasy, které jsou pro váš produkt nebo značku jedinečné. Vše, co vše trvá, je několik zvukových souborů a přidružených přepisů. Další informace najdete v tématu [Začínáme s vlastním hlasem](how-to-custom-voice.md) .
+Kromě standardních a neurálních hlasů můžete vytvářet a dolaďovat vlastní hlasy jedinečné pro váš produkt nebo značku. Stačí začít, je několik zvukových souborů a související přepisy. Další informace [najdete v tématu Začínáme s vlastním hlasem](how-to-custom-voice.md)
 
-## <a name="pricing-note"></a>Poznámka k ceně
+## <a name="pricing-note"></a>Cenová poznámka
 
-Při použití služby převod textu na řeč se vám bude účtovat každý znak, který se převede na řeč, včetně interpunkce. I když samotný dokument SSML není fakturovatelný, volitelné prvky, které slouží k úpravě způsobu převodu textu na řeč, jako je fonémy a rozteč, se počítají jako Fakturovatelné znaky. Tady je seznam toho, co je Fakturovatelné:
+Při použití služby převodu textu na řeč se vám bude účtovat každý znak, který je převeden na řeč, včetně interpunkce. Zatímco samotný dokument SSML není fakturovatelný, volitelné prvky, které se používají k úpravě způsobu převodu textu na řeč, jako jsou fonémy a rozteč, se počítají jako fakturovatelné znaky. Zde je seznam toho, co je fakturovatelné:
 
-- Text předaný do služby převodu textu na řeč v SSML textu žádosti
-- Všechny značky v textovém poli textu žádosti ve formátu SSML s výjimkou značek `<speak>` a `<voice>`
-- Písmena, interpunkční znaménka, mezery, tabulátory, značky a všechny prázdné znaky
-- Každý bod kódu definovaný v kódování Unicode
+- Text předaný službě převodu textu na řeč v těle SSML požadavku
+- Všechny značky v textovém poli těla požadavku ve formátu `<speak>` `<voice>` SSML, s výjimkou a značek
+- Písmena, interpunkce, mezery, tabulátory, značky a všechny prázdné znaky
+- Každý bod kódu definovaný v Unicode
 
-Podrobné informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+Podrobné informace naleznete v [tématu Ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 > [!IMPORTANT]
-> Každý čínský, japonský a korejský znak jazyka se počítá jako dva znaky pro účely fakturace.
+> Každý znak čínštiny, japonštiny a korejštiny se počítá jako dva znaky pro fakturaci.
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
 - [Speech SDK](speech-sdk.md)
-- [REST API: převod textu na řeč](rest-text-to-speech.md)
+- [ROZHRANÍ REST API: Převod textu na řeč](rest-text-to-speech.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Získat bezplatné předplatné služby Speech](get-started.md)
-- [Získat sadu Speech SDK](speech-sdk.md)
+- [Získejte předplatné služby free speech](get-started.md)
+- [Získání sady SDK pro rozpoznávání řeči](speech-sdk.md)

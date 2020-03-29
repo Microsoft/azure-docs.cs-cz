@@ -1,5 +1,5 @@
 ---
-title: Odesílání požadavků hledání do rozhraní API Bingu pro vyhledávání entit
+title: Odesílání požadavků na vyhledávání do rozhraní API pro vyhledávání entit Bingu
 titleSuffix: Azure cognitive Services
 description: Rozhraní API Bingu pro vyhledávání entit odešle vyhledávací dotaz do Bingu a načte výsledky, které zahrnují entity a místa.
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: f68429a75ddb141c9e42babde3faa9f93fe949cc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072685"
 ---
-# <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Odesílání požadavků hledání do rozhraní API Bingu pro vyhledávání entit
+# <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Odesílání požadavků na vyhledávání do rozhraní API pro vyhledávání entit Bingu
 
-Rozhraní API Bingu pro vyhledávání entit odešle vyhledávací dotaz do Bingu a načte výsledky, které zahrnují entity a místa. Mezi místa patří například restaurace, hotely nebo jiné místní firmy. U míst může dotaz obsahovat název místní firmy nebo může žádat o seznam (například restaurants near me). Mezi výsledky entit patří osoby, místa nebo věci. Místo v tomto kontextu jsou turistické attractions, státy, země/oblasti atd.
+Rozhraní API Bingu pro vyhledávání entit odešle vyhledávací dotaz do Bingu a načte výsledky, které zahrnují entity a místa. Mezi místa patří například restaurace, hotely nebo jiné místní firmy. U míst může dotaz obsahovat název místní firmy nebo může žádat o seznam (například restaurants near me). Mezi výsledky entit patří osoby, místa nebo věci. Místo v této souvislosti je turistické atrakce, státy, země / regiony, atd.
 
 ## <a name="the-endpoint"></a>Koncový bod
 
@@ -48,7 +48,7 @@ Adresa IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého 
 
 Seznam všech hlaviček žádostí a odpovědí najdete v části s [hlavičkami](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers).
 
-## <a name="the-request"></a>Žádost
+## <a name="the-request"></a>Požadavek
 
 Následuje ukázka požadavku na entity, která obsahuje všechny navrhované parametry a hlavičky dotazu. 
 
@@ -135,4 +135,4 @@ BingAPIs-Market: en-US
 ## <a name="next-steps"></a>Další kroky
 
 * [Hledání entit pomocí rozhraní API entity Bingu](search-for-entities.md)
-* [Požadavky na používání a zobrazení rozhraní API Bingu](../use-display-requirements.md)
+* [Požadavky na použití rozhraní API bingu a zobrazení](../use-display-requirements.md)

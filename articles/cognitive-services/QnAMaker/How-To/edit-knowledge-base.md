@@ -1,109 +1,79 @@
 ---
 title: Úprava znalostní báze – QnA Maker
-titleSuffix: Azure Cognitive Services
-description: Nástroj QnA Maker umožňuje spravovat obsah znalostní báze tím, že poskytuje editační rozhraní snadným ovládáním.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+description: QnA Maker umožňuje spravovat obsah vaší znalostní báze tím, že poskytuje snadno použitelné editační prostředí.
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: b5ee7f60eab0349378767473c9c80f035a65c9a5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/19/2020
+ms.openlocfilehash: 223ad3a607adc20bbe608598da9742d56788b2c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79220729"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131658"
 ---
-# <a name="edit-a-knowledge-base-in-qna-maker"></a>Úprava znalostní báze v nástroje QnA Maker
+# <a name="edit-qna-sets-in-your-knowledge-base"></a>Úprava sad QnA ve znalostní bázi
 
-Nástroj QnA Maker umožňuje spravovat obsah znalostní báze tím, že poskytuje editační rozhraní snadným ovládáním.
+QnA Maker umožňuje spravovat obsah vaší znalostní báze tím, že poskytuje snadno použitelné editační prostředí.
 
-<a name="add-datasource"></a>
+QnA sady jsou přidány ze zdroje dat, jako je například soubor nebo adresa URL, nebo přidány jako redakční zdroj. Redakční zdroj označuje, že sada QnA byla přidána na portál QnA ručně. Všechny sady QnA jsou k dispozici pro úpravy.
 
-## <a name="edit-your-knowledge-base-content"></a>Upravit obsah znalostní báze
+## <a name="add-an-editorial-qna-set"></a>Přidání redakční sady QnA
+1. Přihlaste se k [portálu QnA](https://www.qnamaker.ai/)a vyberte znalostní bázi, do které chcete přidat nastavenou hodnotu QnA.
+1. Na stránce **EDIT** znalostní báze vyberte **Přidat sadu QnA a** přidejte novou sadu QnA.
 
-1.  V horním navigačním panelu vyberte **Moje znalostní** báze. 
+1. Do nového řádku sady QnA přidejte požadovaná pole **Otázky** a **Odpověď.** Ostatní pole jsou nepovinná. Všechna pole lze kdykoli změnit.
 
-    Všechny služby, které jste vytvořili nebo sdíleli s vámi, můžete zobrazit v sestupném pořadí podle data **Poslední úpravy** .
+1. Volitelně můžete přidat **alternativní formulace**. Alternativní formulace je jakákoli forma otázky, která se výrazně liší od původní otázky, ale měla by poskytnout stejnou odpověď.
 
-    ![Moje znalostních bází](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+    Když je vaše znalostní báze publikována a máte zapnuté aktivní učení, QnA Maker shromažďuje alternativní možnosti formulací, které můžete přijmout. Tyto volby jsou vybrány za účelem zvýšení přesnosti předpovědi.
 
-1. Vyberte konkrétní znalostní bázi, provádět úpravy.
- 
-1. Vyberte **Nastavení**. Tady můžete upravit povinného pole název služby.
-  
-    |Cíl|Akce|
-    |--|--|
-    |Přidat adresu URL|Kliknutím na **Spravovat znalostní bázi > + přidat adresu URL** můžete přidat nové adresy URL a přidat tak nový obsah nejčastějších dotazů do znalostní báze.|
-    |Odstranit adresu URL|Existující adresy URL můžete odstranit tak, že vyberete ikonu odstranit, můžete do koše.|
-    |Aktualizovat obsah|Pokud chcete, aby znalostní báze procházela nejnovější obsah existujících adres URL, zaškrtněte políčko **aktualizovat** . Tím se aktualizuje znalostní báze s nejnovějším obsahem adresy URL. Tato možnost nenastavuje pravidelný plán aktualizací.|
-    |Přidat soubor|Podporovaný dokument, který je součástí znalostní báze, můžete přidat tak, že vyberete **Spravovat znalostní bázi**a pak vyberete **+ Přidat soubor** .|
-    |Importovat|Stávající znalostní bázi můžete také importovat výběrem tlačítka **importovat znalostní bázi** . |
-    |Aktualizovat|Aktualizace znalostní báze závisí na **cenové úrovni správy** používané při vytváření QnA maker služby přidružené k vaší znalostní bázi. V případě potřeby můžete také aktualizovat úroveň správy z webu Azure portal.
+1. Volitelně můžete přidat **metadata**. Chcete-li zobrazit metadata, vyberte **Zobrazit možnosti** v místní nabídce. Metadata poskytuje filtry na odpovědi, které poskytuje klientská aplikace, jako je například chatovací robot.
 
-1. Až provedete změny ve znalostní bázi, vyberte **Uložit a vytvořit vlak** v pravém horním rohu stránky, aby se změny zachovaly.    
+1. Volitelně můžete přidat **výzvy k zpracování**. Výzvy ke zpracování poskytují další cesty konverzace do klientské aplikace prezentovat uživateli.
 
-    ![Uložit a jejich trénování](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+1. Chcete-li zobrazit předpovědi včetně nové sady QnA, vyberte možnost **Uložit a trénovat.**
 
-    >[!CAUTION]
-    >Pokud ponecháte stránku před výběrem možnosti **Uložit a výuka**, ztratí se všechny změny.
+## <a name="edit-a-qna-set"></a>Úprava sady QnA
 
-## <a name="add-a-qna-pair"></a>Přidání páru otázky a odpovědi
+Libovolné pole v libovolné sadě QnA lze upravit bez ohledu na původní zdroj dat. Některá pole nemusí být viditelná z důvodu aktuálního nastavení **možností zobrazení,** které se nachází v panelu nástrojů kontextu.
 
-Na stránce **Upravit** vyberte **Přidat dvojici QnA** a přidejte nový řádek do tabulky znalostní báze.
+## <a name="delete-a-qna-set"></a>Odstranění sady QnA
 
-![Přidat dvojici QnA](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
+Chcete-li odstranit QnA, klikněte na ikonu **odstranění** zcela vpravo od řádku QnA. Jedná se o trvalou operaci. Nedá se to vrátit. Před odstraněním sad zvažte export kb ze stránky **Publikovat.**
 
-## <a name="delete-a-qna-pair"></a>Odstranit pár QnA
+![Odstranit sadu QnA](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
-Pokud chcete odstranit QnA, klikněte na ikonu **Odstranit** na pravé straně řádku QnA. Toto je nevratná operace. Nedá se vrátit zpět. Než budete páry odstranit, zvažte možnost exportovat si KB ze stránky **publikování** . 
+## <a name="find-the-qna-set-id"></a>Vyhledání ID sady QnA
 
-![Odstranit QnA pár](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+Pokud potřebujete najít ID sady QnA, najdete ho na dvou místech:
 
-## <a name="add-alternate-questions"></a>Přidat alternativní otázky
+* Najeďte na ikonu odstranění na řádku sady QnA, který vás zajímá. Text při hvrhu obsahuje ID sady QnA.
+* Exportujte znalostní bázi. Každá sada QnA ve znalostní bázi obsahuje ID sady QnA.
 
-Přidáte alternativní dotazy na existující dvojice QnA ke zlepšení pravděpodobnost, že shoda pro uživatelský dotaz.
+## <a name="add-alternate-questions"></a>Přidání alternativních otázek
+
+Přidejte alternativní otázky do existující sady QnA, abyste zvýšili pravděpodobnost shody s uživatelským dotazem.
 
 ![Přidat alternativní otázky](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
+## <a name="linking-qna-sets"></a>Propojení sad QnA
+
+Propojení sad QnA je opatřeno [výzvami pro zpracování](multiturn-conversation.md). Jedná se o logické spojení mezi sadami QnA, které jsou spravovány na úrovni znalostní báze. Na portálu QnA Maker můžete upravit výzvy pro zpracování.
+
+V metadatech odpovědi nelze propojit sady QnA.
+
 ## <a name="add-metadata"></a>Přidání metadat
 
-Přidejte páry metadat tak, že nejprve vyberete **Možnosti zobrazení**a pak vyberete **zobrazit metadata**. Tím se zobrazí sloupec metadata. Pak vyberte znaménko **+** a přidejte dvojici metadat. Tento pár se skládá z jednoho klíče a jedné hodnoty.
+Přidejte sady metadat tak, že nejprve vyberete **možnosti zobrazení**a potom vyberete **Zobrazit metadata**. Zobrazí se sloupec metadat. Dále vyberte **+** znaménko pro přidání sady metadat. Tato sada se skládá z jednoho klíče a jedné hodnoty.
 
-![Přidání metadat](../media/qnamaker-how-to-edit-kb/add-metadata.png)
+## <a name="save-changes-to-the-qna-sets"></a>Uložení změn do sad QnA
 
-> [!TIP]
-> Ujistěte se, že pravidelně ukládat a trénování znalostní báze po provedení úprav, abyste se vyhnuli ztrátě změny.
+Pravidelně vyberte **uložit a trénovat** po provedení úprav, aby nedošlo ke ztrátě změn.
 
-## <a name="manage-large-knowledge-bases"></a>Správa velkých znalostních bází
-
-* **Skupiny zdrojů dat**: QnAs jsou seskupeny podle zdroje dat, ze kterého byly extrahovány. Můžete rozbalit nebo sbalit zdroj dat.
-
-    ![Pro sbalení a rozbalení otázek a odpovědí zdrojů dat použijte panel zdroje dat QnA Maker.](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
-
-* **Hledání ve znalostní bázi**: znalostní báze můžete vyhledat zadáním do textového pole v horní části tabulky znalostní báze. Chcete-li vyhledat obsah dotaz, odpověď nebo metadata, klikněte na enter. Klikněte na ikonu X odebrat vyhledávací filtr.
-
-    ![Pomocí vyhledávacího pole QnA Maker nad dotazy a odpovědi zmenšíte zobrazení jenom na položky, které odpovídají filtrům.](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
-
-* **Stránkování**: rychlé přesunutí ze zdrojů dat za účelem správy rozsáhlých základů znalostní báze
-
-    ![Procházení stránek otázek a odpovědí pomocí funkcí QnA Maker stránkování nad rámec otázek a odpovědí](../media/qnamaker-how-to-edit-kb/pagination.png)
-
-## <a name="delete-knowledge-bases"></a>Odstranit znalostních bází
-
-Odstraňuje se znalostní bázi (KB) je nevratná operace. Nedá se vrátit zpět. Před odstraněním znalostní báze byste měli znalostní bázi exportovat ze stránky **Nastavení** na portálu QnA maker. 
-
-Pokud sdílíte své prostředí s [spolupracovníky](collaborate-knowledge-base.md) a potom je odstraníte, všichni ztratí přístup k KB. 
-
-## <a name="delete-azure-resources"></a>Odstranění prostředků Azure 
-
-Pokud odstraníte všechny prostředky Azure používané pro vaše nástroje QnA Maker znalostních bází, znalostních bází nebude fungovat. Před odstraněním jakýchkoli prostředků se ujistěte, že vaše znalostní báze vyexportujete ze stránky **Nastavení** . 
+![Přidat metadata](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Spolupráce na znalostní bázi](./collaborate-knowledge-base.md)
+
+* [Správa prostředků Azure používaných qnA makerem](set-up-qnamaker-service-azure.md)

@@ -9,91 +9,91 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77086907"
 ---
-## <a name="personal-information-entity-types"></a>Typy entit osobních informací:
+## <a name="personal-information-entity-types"></a>Typy subjektů osobních údajů:
 
 ### <a name="person"></a>Person (Osoba)
-Rozpoznat jména osob v textu.
+Rozpoznání jmen osob v textu.
 
 Jazyky:
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                                               | K dispozici počínaje verzí modelu |
 |--------------|-----------------------------------------------------------|----------------------------------------|
-| Není k dispozici          | Rozpoznané názvy, například `Bill Gates`, `Marie Curie` | `2020-02-01`                           |
+| Není dostupné.          | Rozpoznané názvy, například `Bill Gates`,`Marie Curie` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Organizace  
 
-Rozpoznávání organizací, firem, organizací, společností, klubů a dalších skupin lidí
+Uznat organizace, korporace, agentury, společnosti, kluby a další skupiny lidí.
 
 Jazyky: 
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                                                                                       | K dispozici počínaje verzí modelu|
 |--------------|---------------------------------------------------------------------------------------------------|--------------|
-| Není k dispozici          | organizace, například `Microsoft``NASA``National Oceanic and Atmospheric Administration` | `2020-02-01` |
+| Není dostupné.          | organizace, například `Microsoft` `NASA`,`National Oceanic and Atmospheric Administration` | `2020-02-01` |
 
 ### <a name="phone-number"></a>Telefonní číslo
 
-Telefonní čísla (jenom telefonní čísla USA). 
+Telefonní čísla (pouze telefonní čísla USA). 
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                                    | K dispozici počínaje verzí modelu |
 |--------------|------------------------------------------------|----------------------------------------|
-| Není k dispozici          | Telefonní čísla USA, například `(312) 555-0176` | `2020-02-01`                           |
+| Není dostupné.          | Telefonní čísla v USA, například`(312) 555-0176` | `2020-02-01`                           |
 
-### <a name="email"></a>Email
+### <a name="email"></a>E-mail
 
-E-mailovou adresu. 
+E-mailovou adresu 
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                                      | K dispozici počínaje verzí modelu |
 |--------------|--------------------------------------------------|----------------------------------------|
-| Není k dispozici          | E-mailová adresa, například `support@contoso.com` | `2020-02-01`                           |
+| Není dostupné.          | E-mailová adresa, například`support@contoso.com` | `2020-02-01`                           |
 
-### <a name="url"></a>Adresa URL
+### <a name="url"></a>zprostředkovatele identity
 
-Internetové adresy URL.
+Adresy URL internetu.
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                                          | K dispozici počínaje verzí modelu |
 |--------------|------------------------------------------------------|----------------------------------------|
-| Není k dispozici          | Adresy URL webů, například `https://www.bing.com` | `2020-02-01`                           |
+| Není dostupné.          | Adresy URL pro webové stránky, například`https://www.bing.com` | `2020-02-01`                           |
 
 ### <a name="ip-address"></a>IP adresa
 
-Adresa Internet Protocol
+Adresa internetového protokolu
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                              | K dispozici počínaje verzí modelu |
 |--------------|------------------------------------------|----------------------------------------|
-| Není k dispozici          | Síťová adresa například `10.0.0.101` | `2020-02-01`                           |
+| Není dostupné.          | Síťová adresa například`10.0.0.101` | `2020-02-01`                           |
 
 ### <a name="quantity"></a>Množství 
 
-Číselné množství
+Číselná množství
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                   | K dispozici počínaje verzí modelu |
 |--------------|-------------------------------|----------------------------------------|
@@ -105,228 +105,228 @@ Entity data a času
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                   | K dispozici počínaje verzí modelu |
 |--------------|-------------------------------|----------------------------------------|
 | Datum         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
 
-### <a name="eu-gps-coordinates"></a>Evropské unie GPS – souřadnice
+### <a name="eu-gps-coordinates"></a>GPS souřadnice EU
 
- Souřadnice GPS pro umístění v rámci Evropské unie. 
+ GPS souřadnice pro místa v rámci Evropské unie. 
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu | Popis                               | K dispozici počínaje verzí modelu |
 |--------------|-------------------------------------------|----------------------------------------|
-| Není k dispozici          | Souřadnice GPS v rámci Evropské unie | `2019-10-01`                           |
+| Není dostupné.          | GPS souřadnice v rámci Evropské unie | `2019-10-01`                           |
 
 ### <a name="azure-information"></a>Informace o Azure
 
 Identifikovatelné informace Azure včetně ověřovacích informací a připojovacích řetězců. 
 
-* K dispozici počínaje verzí modelu `2019-10-01`.
+* K dispozici počínaje `2019-10-01`verzí modelu .
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 | Název podtypu                          | Popis                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
-| Klíč ověření Azure DocumentDB             | Autorizační klíč pro server Azure DocumentDB                           |
-| Připojovací řetězec databáze Azure IAAS | Připojovací řetězec pro databázi infrastruktury Azure jako služby (IaaS). |
-| Připojovací řetězec SQL Azure           | Připojovací řetězec pro databázi SQL Azure.                                |
-| Připojovací řetězec Azure IoT           | Připojovací řetězec pro Azure Internet věcí (IoT)                        |
-| Heslo pro nastavení publikování v Azure        | Heslo pro nastavení publikování v Azure                                        |
-| Připojovací řetězec Azure Redis Cache   | Připojovací řetězec pro službu Azure cache pro Redis.                             |
-| Azure SAS                             | Připojovací řetězec pro službu Azure software as a Service (SAS).                     |
-| Připojovací řetězec Azure Service Bus   | Připojovací řetězec pro službu Azure Service Bus.                                |
-| Klíč účtu Azure Storage             | Klíč účtu pro účet služby Azure Storage.                                   |
-| Klíč účtu Azure Storage (Obecné)   | Klíč obecného účtu pro účet služby Azure Storage.                           |
-| Připojovací řetězec SQL Server          | Připojovací řetězec pro systém SQL Server.                                         |
+| Auth klíč Azure DocumentDB             | Autorizační klíč pro server Azure DocumentDB.                           |
+| Připojovací řetězec databáze Azure IAAS | Připojovací řetězec pro databázi Infrastruktury Azure jako služby (IaaS). |
+| Připojovací řetězec Azure SQL           | Připojovací řetězec pro databázi Azure SQL.                                |
+| Připojovací řetězec Azure IoT           | Připojovací řetězec pro Azure Internet věcí (IoT).                        |
+| Heslo pro nastavení publikování Azure        | Heslo pro nastavení publikování Azure.                                        |
+| Připojovací řetězec mezipaměti Azure Redis   | Připojovací řetězec pro azure mezipaměť pro Redis.                             |
+| Azure SAS                             | Připojovací řetězec pro Software Azure jako služba (SAS).                     |
+| Řetězec připojení azure service bus   | Připojovací řetězec pro servisní sběrnici Azure.                                |
+| Klíč účtu úložiště Azure             | Klíč účtu pro účet úložiště Azure.                                   |
+| Klíč účtu úložiště Azure (obecný)   | Obecný klíč účtu pro účet úložiště Azure.                           |
+| Připojovací řetězec serveru SQL Server          | Připojovací řetězec pro sql server.                                         |
 
 ### <a name="identification"></a>Identifikace
 
-* K dispozici počínaje verzí modelu `2019-10-01`.
+* K dispozici počínaje `2019-10-01`verzí modelu .
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Veřejná verze preview:`English`
 
 #### <a name="financial-account-identification"></a>Identifikace finančního účtu
 
 | Název podtypu               | Popis                                                                |
 |----------------------------|----------------------------------------------------------------------------|
-| ABA čísla směrování        | Směrovací čísla asociace (ABA) pro americký bankový přenos                  |
-| Kód SWIFT                 | Kódy SWIFT pro informace o platebních pokynech.                           |
-| Platební karta                | Čísla platebních karet                                                       |
-| Kód IBAN                  | Kódy IBAN pro informace o platebních pokynech.                            |
+| Směrovací čísla ABA        | Čísla tranzitních tras American Banker Association (ABA).                  |
+| Kód SWIFT                 | SWIFT kódy pro informace o příkazech k platbě.                           |
+| Platební karta                | Čísla kreditních karet.                                                       |
+| Kód IBAN                  | Kódy IBAN pro informace o příkazech k platbě.                            |
 
-#### <a name="government-and-country-specific-identification"></a>Identifikace specifická pro státní správu a zemi
+#### <a name="government-and-country-specific-identification"></a>Identifikace pro jednotlivé vlády a země
 
-Níže uvedené entity jsou seskupené podle země:
+Níže uvedené subjekty jsou seskupeny a uvedeny podle zemí:
 
 Argentina
 * Číslo národní identity (DNI)
 
 Austrálie
 * Číslo daňového souboru 
-* ID licence ovladače
-* ID služby Passport
-* Zdravotní číslo účtu
-* čísla bankovních účtů (například kontrola, úspory a debetní účty)
+* ID řidičského průkazu
+* ID pasu
+* Číslo lékařského účtu
+* čísla bankovních účtů (například šekové, spořicí a debetní účty)
 
 Belgie
 * Národní číslo
 
 Brazílie
-* Číslo právní entity (CNPJ)
-* CPF číslo
-* Karta National ID (RG)
+* Číslo právnické osoby (CNPJ)
+* Číslo CPF
+* Národní průkaz (RG)
 
 Kanada
-* ID služby Passport
-* ID licence ovladače
-* Číslo pojištění stavu
-* Číslo ID osobního stavu (PHIN)
+* ID pasu
+* ID řidičského průkazu
+* Číslo zdravotního pojištění
+* Id osobního zdraví (PHIN)
 * Číslo sociálního pojištění
-* čísla bankovních účtů (například kontrola, úspory a debetní účty)
+* čísla bankovních účtů (například šekové, spořicí a debetní účty)
 
 Chile
-* Číslo karty identity 
+* Číslo průkazu totožnosti 
 
 Čína
-* Číslo karty identity
-* Číslo rezidentního ID karty (ČLR)
+* Číslo průkazu totožnosti
+* Číslo rezidentního průkazu (ČLR)
 
 Chorvatsko
-* Číslo karty ID
-* Číslo osobního ID (OIB)
+* Číslo průkazu
+* Číslo osobního id (OIB)
 
 Česká republika
-* Číslo karty národního ID
+* Číslo průkazu občana
 
 Dánsko
-* Číslo osobního ID
+* Osobní číslo
 
-Evropské unie (EU)
-* Národní identifikační číslo
-* ID služby Passport
-* ID licence ovladače
-* Číslo sociálního pojištění (SSN) nebo ekvivalentní ID
-* Daňové identifikační číslo (DIČ) EU
-* Číslo debetní karty v EU
+Evropská unie (EU)
+* Národní id číslo
+* ID pasu
+* ID řidičského průkazu
+* Číslo sociálního zabezpečení (SSN) nebo ekvivalentní ID
+* Daňové identifikační číslo EU (DIČ)
+* Číslo debetní karty EU
 
 Finsko
-* Národní identifikační číslo
-* ID služby Passport
+* Národní id číslo
+* ID pasu
 
 Francie
-* Karta National ID (CNI)
+* Národní průkaz (CNI)
 * Číslo sociálního pojištění (INSEE)
-* ID služby Passport
-* ID licence ovladače
+* ID pasu
+* ID řidičského průkazu
 
 Německo
-* Číslo karty ID
-* ID služby Passport
-* ID licence ovladače
+* Číslo průkazu
+* ID pasu
+* ID řidičského průkazu
 
 Řecko 
-* Číslo karty národního ID
+* Číslo průkazu občana
 
 Hongkong
-* Číslo karty ID (HKID)
+* Číslo průkazu (HKID)
 
 Indie
-* Trvalé číslo účtu (PAN)
+* Číslo trvalého účtu (PAN)
 * Číslo jedinečného ID (Aadhaar)
 
 Indonésie
-* Číslo karty ID (KTP)
+* Číslo průkazu (KTP)
 
 Irsko
 * Číslo osobní veřejné služby (PPS)
 
 Izrael
 * Národní ID
-* čísla bankovních účtů (například kontrola, úspory a debetní účty)
+* čísla bankovních účtů (například šekové, spořicí a debetní účty)
 
 Itálie
-* ID licence ovladače
+* ID řidičského průkazu
 
 Japonsko
-* Registrační číslo rezidentu
-* Číslo karty pro pobyt
-* ID licence ovladače
+* Rezidentní registrační číslo
+* Číslo pobytové karty
+* ID řidičského průkazu
 * Číslo sociálního pojištění (SIN)
-* ID služby Passport
-* čísla bankovních účtů (například kontrola, úspory a debetní účty)
+* ID pasu
+* čísla bankovních účtů (například šekové, spořicí a debetní účty)
 
 Malajsie
-* Číslo karty ID
+* Číslo průkazu
 
 Nizozemsko
 * Číslo služby občana (BSN)
 
 Nový Zéland
-* Ministerstvo číslo zdravotního stavu
+* Číslo ministerstva zdravotnictví
 
 Norsko
-* Číslo karty ID
+* Číslo průkazu
 
 Filipíny
-* Jednotné ID pro více účelů
+* Jednotné víceúčelové číslo ID
 
 Polsko
-* Číslo karty ID
+* Číslo průkazu
 * Národní ID (PESEL)
-* ID služby Passport
+* ID pasu
 
 Portugalsko 
-* Číslo karty občana
+* Číslo občanské karty
 
 Saúdská Arábie
 * Národní ID
 
 Singapur
-* Číslo karty národního registračního ID (NRIC)
+* Číslo národního registračního průkazu (NRIC)
 
-Jihoafrická republika
-* Číslo ID
-* Registrační číslo rezidentu
+Jižní Afrika
+* ID číslo
+* Rezidentní registrační číslo
 
 Jižní Korea
-* Registrační číslo rezidentu
+* Rezidentní registrační číslo
 
 Španělsko 
-* Rodné číslo (sociální zabezpečení)
+* Číslo sociálního pojištění (SSN)
 
 Švédsko
 * Národní ID
-* ID služby Passport
+* ID pasu
 
 Tchaj-wan 
 * Národní ID
 * Číslo rezidentního certifikátu (ARC/TARC)
-* ID služby Passport
+* ID pasu
 
 Thajsko
 * Identifikační kód populace
 
 Spojené království
-* ID služby Passport
-* ID licence ovladače
-* Národní pojišťovací číslo (NINO)
-* Národní číslo Health Service (NHS)
+* ID pasu
+* ID řidičského průkazu
+* Číslo národního pojištění (NINO)
+* Číslo Národní zdravotní služby (NHS)
 
 Spojené státy
-* Rodné číslo (sociální zabezpečení)
-* ID licence ovladače
-* ID služby Passport
-* Číslo Shrnutí
-* Individuální daňové identifikační číslo (ITIN)
-* Číslo v úřadu pro vynucování drog (DEA)
-* čísla bankovních účtů (například kontrola, úspory a debetní účty)
+* Číslo sociálního pojištění (SSN)
+* ID řidičského průkazu
+* ID pasu
+* Číslo seznamu voličů
+* Individuální dIČ (ITIN)
+* Číslo Protidrogové agentury (DEA)
+* čísla bankovních účtů (například šekové, spořicí a debetní účty)

@@ -1,7 +1,7 @@
 ---
-title: Doporučení pro pole mikrofonu v sadě Speech Devices SDK
+title: Doporučení pro pole mikrofonu sady SDK pro řeč
 titleSuffix: Azure Cognitive Services
-description: Speech Devices SDK doporučení pole mikrofonu. Tato pole geometrií se doporučují pro použití s Microsoft audio stackem.
+description: Doporučení pole mikrofonu SDK pro řečová zařízení. Tyto geometrie pole jsou doporučeny pro použití s Microsoft Audio Stack.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,105 +11,105 @@ ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
 ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77168143"
 ---
-# <a name="speech-devices-sdk-microphone-array-recommendations"></a>Doporučení pro pole mikrofonu v sadě Speech Devices SDK
+# <a name="speech-devices-sdk-microphone-array-recommendations"></a>Doporučení pole s mikrofonem s řeči mise SDK
 
-V tomto článku se dozvíte, jak navrhnout pole mikrofonu pro sadu Speech Devices SDK.
+V tomto článku se dozvíte, jak navrhnout pole mikrofonu pro sady SDK řečových zařízení.
 
-Sada Speech Devices SDK nejlépe funguje s polem mikrofonu navrženým podle následujících pokynů, včetně geometrie mikrofonu a výběru komponent. Doprovodné materiály jsou také k disfaktorům pro integraci a elektroinstalace.
+Sada Speech Devices SDK funguje nejlépe s mikrofonním polem, které bylo navrženo podle následujících pokynů, včetně geometrie mikrofonu a výběru součástí. Pokyny jsou rovněž uvedeny v otázkách integrace a elektrických úvah.
 
 ## <a name="microphone-geometry"></a>Geometrie mikrofonu
 
-Pro použití s Microsoft audio stackem se doporučuje následující geometrií pole. Umístění zvukových zdrojů a odmítnutí okolního hluku je vylepšeno s větším počtem mikrotelefonů se závislostmi na konkrétních aplikacích, uživatelských scénářích a faktoru formuláře zařízení.
+Následující geometrie pole jsou doporučeny pro použití s Microsoft Audio Stack. Umístění zdrojů zvuku a odmítnutí okolního hluku je vylepšeno s větším počtem mikrofonů se závislostmi na konkrétních aplikacích, uživatelských scénářích a tvarovém faktoru zařízení.
 
 |     | Kruhové pole |     | Lineární pole |     |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
-| \# mics | 7 | 4 | 4 | 2 |
-| Geometrie | 6 vnější, 1 střed, poloměr = 42,5 mm, rovnoměrně rozmístěný | 3 vnější, 1 střed, poloměr = 42,5 mm, rovnoměrně rozmístěný | Délka = 120 mm, mezery = 40 mm | Mezery = 40 mm |
+| \#Mikrofony | 7 | 4 | 4 | 2 |
+| Geometrie | 6 Vnější, 1 střed, Poloměr = 42,5 mm, Rovnoměrně rozložený | 3 Vnější, 1 střed, Poloměr = 42,5 mm, Rovnoměrně rozložený | Délka = 120 mm, rozteč = 40 mm | Rozteč = 40 mm |
 
-Kanály mikrofonu by se měly seřadit podle číslování zobrazeného pro každé pole, které se zvýší z 0. Aby bylo možné provést zrušení ozvěny, bude zvukový zásobník Microsoftu vyžadovat další referenční datový proud zvukového přehrávání.
+Mikrofonní kanály by měly být seřazeny podle číslování znázorněného pro každé výše uvedené pole, které se zvyšuje od 0. Microsoft Audio Stack bude vyžadovat další referenční proud přehrávání zvuku k provedení zrušení ozvěny.
 
-## <a name="component-selection"></a>Výběr součásti
+## <a name="component-selection"></a>Výběr komponenty
 
-Pro přesný reprodukování signálu bez rušivého hluku a narušení by měly být vybrány součásti mikrofonu.
+Součásti mikrofonu by měly být vybrány tak, aby přesně reprodukovaly signál bez šumu a zkreslení.
 
-Doporučené vlastnosti při výběru mikrofonu jsou:
+Doporučené vlastnosti při výběru mikrofonů jsou:
 
 | Parametr | Doporučené |
 | --------- | ----------- |
-| SNR | \>= 65 dB (1 kHz signálu 94 dBSPL, s váženým hlukem) |
-| Porovnání amplitudy | ± 1 dB @ 1 kHz |
-| Porovnání fáze | ± 2 ° @ 1 kHz |
-| Akustický bod přetížení (AOP) | \>= 120 dBSPL (THD = 10%) |
-| Přenosová rychlost | Minimální verze 24 bitů |
+| Snr | \>= 65 dB (signál 1 kHz 94 dBSPL, hluk vážený A) |
+| Párování amplitudy | ± 1 dB při 1 kHz |
+| Párování fází | ± 2° při 1 kHz |
+| Bod akustického přetížení (AOP) | \>= 120 dBSPL (THD = 10 %) |
+| Přenosová rychlost | Minimální 24bitový |
 | Vzorkovací frekvence | Minimálně 16 kHz\* |
-| Frekvence – odezva | ± 3 dB, 200-8000 Hz plovoucí maska\* |
-| Spolehlivost | Rozsah teploty úložiště – 40 °C až 70 oC<br />Rozsah provozních teplot – 20 oC až 55 °C |
+| Frekvenční | ± 3 dB, plovoucí maska 200-8000 Hz\* |
+| Spolehlivost | Rozsah skladovací teploty -40°C až 70°C<br />Rozsah provozních teplot -20°C až 55°C |
 
-_pro aplikace VoIP (High-Quality Communication) můžou být potřeba \*vyšší vzorkovací frekvence nebo širší rozsah frekvencí_ .
+\*_Vyšší vzorkovací frekvence nebo "širší" frekvenční rozsahy mohou být nezbytné pro vysoce kvalitní komunikační aplikace (VoIP)_
 
-Dobrým výběrem komponenty musí být párována s dobrou integrací electroacoustic, aby nedošlo k narušení výkonu používaných komponent. Jedinečné případy použití mohou také vyžadovat další požadavky (například: rozsahy provozních teplot).
+Dobrá volba součásti musí být spárována s dobrou elektroakustickou integrací, aby nedošlo k narušení výkonu použitých součástí. Jedinečné případy použití mohou také vyžadovat další požadavky (například: rozsahy provozních teplot).
 
-## <a name="microphone-array-integration"></a>Integrace pole mikrofonu
+## <a name="microphone-array-integration"></a>Integrace mikrofonního pole
 
-Výkon pole mikrofonu, když se integruje do zařízení, se liší od specifikace součásti. Je důležité zajistit, aby se mikrofony po integraci dobře shodovaly. Proto by výkon zařízení měřený po jakémkoli dlouhodobém získání nebo EQ měl splňovat následující doporučení:
+Výkon pole mikrofonu při integraci do zařízení se bude lišit od specifikace součásti. Je důležité zajistit, aby mikrofony byly po integraci dobře sladěny. Proto by výkon zařízení měřený po jakémkoli pevném zesílení nebo Ekvalizu ma, měl splňovat následující doporučení:
 
 | Parametr          | Doporučené                                        |
 | ------------------ | -------------------------------------------------- |
-| SNR                | \> 63 dB (1 kHz signálu 94 dBSPL, s váženým hlukem) |
-| Citlivost výstupu | -26 dBFS/PA @ 1 kHz (doporučeno)                  |
-| Porovnání amplitudy | ± 2 dB, 200-8000 Hz                                |
-| THD%\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, 5.5. obj.             |
-| Frekvence – odezva | ± 6 dB, 200-8000 Hz plovoucí maska\*\*              |
+| Snr                | \>63 dB (signál 1 kHz 94 dBSPL, hluk vážený A) |
+| Výstupní citlivost | -26 dBFS/Pa @ 1 kHz (doporučeno)                  |
+| Párování amplitudy | ± 2 dB, 200-8000 Hz                                |
+| THD%\*             | ≤ 1 %, 200-8000 Hz, 94 dBSPL, 5.             |
+| Frekvenční | ± 6 dB, plovoucí maska 200-8000 Hz\*\*              |
 
-_pro měření THD se vyžaduje \*\*reproduktory s malým zkreslením (např. Neumann KH120)_ .
+\*\*_Pro měření THD je nutný reproduktor s nízkým zkreslením (např._
 
-_pro aplikace VoIP (High-Quality Communication) můžou být potřebné frekvenční rozsahy_ \*\*širší.
+\*\*_"Širší" frekvenční rozsahy mohou být nezbytné pro vysoce kvalitní komunikační aplikace (VoIP)_
 
 ## <a name="speaker-integration-recommendations"></a>Doporučení pro integraci mluvčího
 
-Pro zařízení rozpoznávání řeči, která obsahují reproduktory, je třeba zrušení ozvěny k dispozici pro výběr mluvčího a integraci dalších doporučení.
+Vzhledem k tomu, že zrušení ozvěny je nezbytné pro zařízení pro rozpoznávání řeči, která obsahují reproduktory, jsou k dispozici další doporučení pro výběr reproduktorů a integraci.
 
 | Parametr | Doporučené |
 | --------- | ----------- |
-| Otázky linearity | Žádné nelineární zpracování po odkazech na mluvčí, jinak se vyžaduje hardwarový Stream reference zpětné smyčky. |
-| Smyčka mluvčího | Poskytuje se prostřednictvím WASAPI, privátních rozhraní API, vlastního modulu plug-in ALSA (Linux) nebo poskytovaných prostřednictvím kanálu firmwaru. |
-| THD% | 3 Octave pásma minimální než 5.70 dBA, dBA přehrávání @ 0,8 m ≤ 6,3%, 315-500 Hz ≤ 5%, 630-5000 Hz |
-| Navýšení vazby na mikrofony | \>-10 dB TCLw pomocí standardu ITU-T G. 122 (normalizované metodou mic na úroveň MIC)<br />TCLw = TCLwmeasured \+ (měřená citlivost výstupu cíle na úrovni)<br />TCLw = TCLwmeasured \+ (měřená úroveň-(-26)) |
+| Důležité informace o linearitě | Žádné nelineární zpracování po odkazu na reproduktor, jinak je vyžadován referenční datový proud zpětné smyčky založený na hardwaru. |
+| Zpětná smyčka reproduktoru | Poskytované prostřednictvím WASAPI, privátních rozhraní API, vlastního modulu plug-in ALSA (Linux) nebo prostřednictvím kanálu firmwaru |
+| THD% | 3. Oktávová pásma minimálně 5. |
+| Echo připojení k mikrofonům | \>-10 dB TCLw metodou ITU-T G.122 podle přílohy B.4 normalizované na úroveň mikrofonu<br />TCLw = TCLwmeasured \+ (měřená úroveň - citlivost cílového výstupu)<br />TCLw = TCLwmeasured \+ (Měřená úroveň - (-26)) |
 
-## <a name="integration-design-architecture"></a>Architektura návrhu integrace
+## <a name="integration-design-architecture"></a>Architektura integračního návrhu
 
-Při integraci mikrotelefonů do zařízení jsou nutné následující pokyny pro architekturu:
+Při integraci mikrofonů do zařízení jsou nezbytné následující pokyny pro architekturu:
 
 | Parametr | Doporučení |
 | --------- | -------------- |
-| Podobnost portů na mikrofonu | Všechny porty mikrofonu mají v poli stejnou délku. |
-| Rozměry portů MIC | Velikost portu ř. 0,8 – 1,0 mm. Délka portu/průměr portu \< 2 |
-| Zapečetění mikrofonu         | Zapečetění gaskets se stejnoměrně implementuje v zásobníku. Doporučuje se \> 70% kompresní poměr pro pěnu gaskets |
-| Spolehlivost mikrofonu     | Síť by se měla použít k zamezení prachu a vstupu (mezi PCB pro nejnižší přenosová čísla a uzavírání Gasket/horního krytu). |
-| Izolace mikrofonu       | Pryžové gaskets a vibrace odpojuje se strukturou, zejména pro izolaci všech cest vibrací z důvodu integrovaných mluvčích. |
-| Vzorkování – hodiny      | Zvuk zařízení musí být bez kolísání a poklesu s nízkým posunem. |
-| Možnost záznamu   | Zařízení musí být schopné nahrávat nezpracované proudy jednotlivých kanálů současně. |
-| USB                 | Všechna zařízení se zvukovým vstupem USB musí nastavit popisovače podle [specifikace USB audio Devices Rev3](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) . |
-| Geometrie mikrofonu | Ovladače musí správně implementovat [popisovače geometrie pro pole mikrofonu](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) . |
-| Zjistitelnost     | Zařízení nesmí mít žádný z nezjištěného nebo neovladatelného hardwaru, firmwaru nebo softwaru od jiných výrobců, než je nelineární zpracování zvuku, do/ze zařízení. |
-| Formát zachycení      | Formáty zachycení musí používat minimální vzorkovací frekvenci o 16 kHz a doporučenou 16bitovou hloubku. |
+| Podobnost portu mikrofonu | Všechny mikrofonní porty mají stejnou délku v poli |
+| Rozměry portu mikrofonu | Velikost portu Ø0.8-1.0 mm. Délka portu \< / průměr portu 2 |
+| Mic těsnění         | Těsnění rovnoměrně implementována v zásobníku. Doporučujeme \> 70% kompresní poměr pro pěnová těsnění |
+| Spolehlivost mikrofonu     | Síť by měla být použita, aby se zabránilo vniknutí prachu a vniknutí (mezi PCB pro spodní portované mikrofony a těsnicí těsnění / horní kryt) |
+| Izolace mikrofonu       | Pryžová těsnění a oddělování vibrací skrz strukturu, zejména pro izolaci jakýchkoli vibračních dcest díky integrovaným reproduktorům |
+| Vzorkovací hodiny      | Zvuk zařízení musí být bez chvění a výpadků s nízkým posunem |
+| Schopnost záznamu   | Zařízení musí být schopno nahrávat jednotlivé kanálové nezpracované proudy současně |
+| USB                 | Všechna usb audio vstupní zařízení musí nastavit popisovače podle [USB audio zařízení Rev3 Spec](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) |
+| Geometrie mikrofonu | Ovladače musí správně implementovat [popisovače geometrie pole mikrofonu.](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) |
+| Zjistitelnost     | Zařízení nesmí mít žádné nezjistitelné nebo nekontrolovatelné hardwarové, firmware nebo nelineární algoritmy zpracování zvuku založené na softwaru třetích stran do zařízení nebo ze zařízení. |
+| Formát zachycení      | Formáty sběru musí používat minimální vzorkovací frekvenci 16 kHz a doporučenou 24bitovou hloubku |
 
-## <a name="electrical-architecture-considerations"></a>Předpoklady elektrické architektury
+## <a name="electrical-architecture-considerations"></a>Důležité informace o elektrické architektuře
 
-V případě potřeby můžou být pole připojená k hostiteli USB (například SoC, který spouští Microsoft audio Stack) a rozhraní pro služby řeči nebo jiné aplikace.
+V případě potřeby mohou být pole připojena k hostiteli USB (například k soc, který spouští zásobník zvuku společnosti Microsoft) a rozhraní se službami řeči nebo jinými aplikacemi.
 
-Hardwarové součásti, jako je třeba konverze PDM-to-TDM, by měly zajistit, aby se dynamický rozsah a SNR mikrotelefonů zachovaly v rámci opakovaných vzorkovačů.
+Hardwarové součásti, jako je konverze PDM-TDM, by měly zajistit, aby byl dynamický rozsah a SNR mikrofonů zachovány v rámci převzorkovačů.
 
-Vysoká rychlost zvukového rozhraní USB 2,0 by měla být podporovaná v jakémkoli zvukovém mikrokontrolery, aby se zajistila potřebná šířka pásma až pro sedm kanálů s vyššími vzorkovacími sazbami a bitovými hloubkami.
+Vysokorychlostní usb audio třída 2.0 by měla být podporována v rámci všech zvukových MCU, aby byla zajištěna potřebná šířka pásma až pro sedm kanálů při vyšších vzorkovacích frekvencích a bitových hloubkách.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o sadě Speech SDK pro zařízení](speech-devices-sdk.md)
+> [Další informace o sadě SDK pro zařízení pro rozpoznávání řeči](speech-devices-sdk.md)

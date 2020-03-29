@@ -1,7 +1,7 @@
 ---
-title: Vytvoření zvukového obsahu – služba pro rozpoznávání řeči
+title: Tvorba zvukového obsahu - služba řeči
 titleSuffix: Azure Cognitive Services
-description: Vytváření zvukového obsahu je online nástroj, který umožňuje přizpůsobit a vyladit výstup převodu textu na řeč od Microsoftu pro vaše aplikace a produkty.
+description: Vytváření zvukového obsahu je online nástroj, který umožňuje přizpůsobit a doladit výstup společnosti Microsoft pro převod textu na řeč pro vaše aplikace a produkty.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,65 +11,65 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: dapine
 ms.openlocfilehash: ab0d2b8d95b4cb5996dd93fa0bb24085c9de26d5
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78331532"
 ---
-# <a name="improve-synthesis-with-audio-content-creation"></a>Vylepšení syntézy pomocí vytváření zvukového obsahu
+# <a name="improve-synthesis-with-audio-content-creation"></a>Zlepšete syntézu pomocí vytváření zvukového obsahu
 
-[Vytváření zvukového obsahu](https://aka.ms/audiocontentcreation) je online nástroj, který umožňuje přizpůsobit a vyladit výstup převodu textu na řeč od Microsoftu pro vaše aplikace a produkty. Pomocí tohoto nástroje můžete vyladit veřejné a vlastní hlasy pro přesnější přirozené výrazy a spravovat výstup v cloudu.
+[Vytváření zvukového obsahu](https://aka.ms/audiocontentcreation) je online nástroj, který umožňuje přizpůsobit a doladit výstup společnosti Microsoft pro převod textu na řeč pro vaše aplikace a produkty. Pomocí tohoto nástroje můžete doladit veřejné a vlastní hlasy pro přesnější přirozené výrazy a spravovat výstup v cloudu.
 
-Nástroj pro vytváření zvukového obsahu je založený na [jazyce SSML (Speech syntézy)](speech-synthesis-markup.md). Pro zjednodušení přizpůsobení a optimalizace vám vytvoření zvukového obsahu umožňuje vizuálně kontrolovat výstupy textu na řeč v reálném čase.
+Nástroj pro vytváření zvukového obsahu je založen na [jazyce SSML (Speech Synthesis Markup Language).](speech-synthesis-markup.md) Pro zjednodušení přizpůsobení a ladění umožňuje vytváření zvukového obsahu vizuálně kontrolovat výstupy převodu textu na řeč v reálném čase.
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
-Tento diagram znázorňuje kroky potřebné k vyladění a exportu přizpůsobených výstupů řeči na text. Pomocí odkazů níže můžete získat další informace o jednotlivých krocích.
+Tento diagram znázorňuje kroky, které je třeba vyladit a exportovat vlastní výstupy řeči na text. Další informace o jednotlivých krocích najdete v následujících odkazech.
 
 ![](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
-1. Prvním krokem je [Vytvoření účtu Azure, registrace prostředku řeči a získání klíče předplatného](#create-a-speech-resource). Jakmile budete mít klíč předplatného, můžete ho použít k volání služby pro rozpoznávání řeči a k [Vytvoření zvukového obsahu](https://aka.ms/audiocontentcreation).
-2. [Vytvořte soubor pro optimalizaci zvuku](#create-an-audio-tuning-file) pomocí prostého textu nebo SSML.
-3. Vyberte hlas a jazyk, který chcete ladit. Vytváření zvukového obsahu zahrnuje všechny [hlasy od společnosti Microsoft pro převod textu na řeč](language-support.md#text-to-speech). Můžete použít standardní, neuronové nebo vlastní hlas.
+1. Prvním krokem je [vytvoření účtu Azure, registrace prostředku řeči a získání klíče předplatného](#create-a-speech-resource). Po vytvoření klíče předplatného jej můžete použít k volání služby Řeč a k přístupu k [vytváření zvukového obsahu](https://aka.ms/audiocontentcreation).
+2. [Vytvořte soubor optimalizace zvuku](#create-an-audio-tuning-file) pomocí prostého textu nebo SSML.
+3. Vyberte hlas a jazyk, který chcete naladit. Vytváření zvukového obsahu zahrnuje všechny [hlasy společnosti Microsoft pro převod textu na řeč](language-support.md#text-to-speech). Můžete použít standardní, neurální, nebo svůj vlastní hlas.
    >[!NOTE]
-   > Gated Access je k dispozici pro vlastní hlasy neuronové, díky kterým můžete vytvářet hlasy s vysokou definicí podobnou přirozenému zvuku řeči. Další podrobnosti najdete v tématu [proces uzavírání](https://aka.ms/ignite2019/speech/ethics).
+   > Gated přístup je k dispozici pro vlastní neurální hlasy, které vám umožní vytvořit hlasy s vysokým rozlišením podobné přirozeně znějící řeči. Další podrobnosti naleznete v tématu [Gating process](https://aka.ms/ignite2019/speech/ethics).
 
-4. Zkontrolujte výchozí výsledek. Pak pomocí nástroje pro vyladění upravte výslovnost, rozteč, rychlost, výbuchy, styl hlasu a další. Úplný seznam možností najdete v tématu [jazyk značek pro rozpoznávání řeči](speech-synthesis-markup.md).
-5. Uložte a [exportujte vyladěné zvuky](#export-tuned-audio). Když v systému uložíte stopu ladění, můžete pokračovat v práci a iterovat na výstupu. Až budete s výstupem spokojeni, můžete vytvořit úlohu vytvoření zvuku pomocí funkce exportu. Můžete sledovat stav úlohy exportu a stáhnout výstup pro použití s aplikacemi a produkty.
-6. Posledním krokem je použití vlastního laděného hlasu v aplikacích a produktech.
+4. Zkontrolujte výchozí výsledek. Pak pomocí nástroje pro ladění upravte výslovnost, výšku, rychlost, intonaci, hlasový styl a další. Úplný seznam možností naleznete v tématu [Speech Synthesis Markup Language](speech-synthesis-markup.md).
+5. Uložte a [exportujte naladěný zvuk](#export-tuned-audio). Když uložíte ladicí stopu do systému, můžete pokračovat v práci a itéru na výstupu. Když jste s výstupem spokojeni, můžete pomocí funkce exportu vytvořit úlohu vytváření zvuku. Můžete sledovat stav úlohy exportu a stáhnout výstup pro použití s aplikacemi a produkty.
+6. Posledním krokem je použití vlastního vyladěného hlasu ve vašich aplikacích a produktech.
 
-## <a name="create-a-speech-resource"></a>Vytvoření prostředku pro rozpoznávání řeči
+## <a name="create-a-speech-resource"></a>Vytvoření prostředku řeči
 
-Pomocí těchto kroků vytvořte prostředek pro rozpoznávání řeči a připojte ho ke službě Speech Studio.
+Podle těchto kroků vytvořte prostředek řeči a propojte jej se studiem Speech Studio.
 
-1. Podle těchto pokynů si můžete [zaregistrovat účet Azure](get-started.md#new-resource) a [vytvořit prostředek pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource). Ujistěte se, že vaše cenová úroveň je nastavená na **S0**. Pokud používáte některý z hlasů neuronové, ujistěte se, že jste vytvořili prostředek v [podporované oblasti](regions.md#standard-and-neural-voices).
+1. Podle těchto pokynů [se zaregistrujte k účtu Azure](get-started.md#new-resource) a [vytvořte prostředek řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource). Ujistěte se, že vaše cenová úroveň je nastavena na **S0**. Pokud používáte jeden z neurální hlasy, ujistěte se, že vytvoříte prostředek v [podporované oblasti](regions.md#standard-and-neural-voices).
 2. Přihlaste se k [vytváření zvukového obsahu](https://aka.ms/audiocontentcreation).
-3. Vyberte existující projekt nebo klikněte na **vytvořit nový**.
-4. Předplatné můžete kdykoli upravit pomocí možnosti **Nastavení** , která se nachází v horním navigačním panelu.
+3. Vyberte existující projekt nebo klepněte na **vytvořit nový**.
+4. Předplatné můžete kdykoli upravit pomocí možnosti **Nastavení,** která se nachází v horní nánosy.
 
-## <a name="create-an-audio-tuning-file"></a>Vytvořit soubor pro optimalizaci zvukového souboru
+## <a name="create-an-audio-tuning-file"></a>Vytvoření souboru optimalizace zvuku
 
-Existují dva způsoby, jak získat obsah do nástroje pro tvorbu zvukového obsahu.
+Existují dva způsoby, jak dostat obsah do nástroje pro vytváření zvukového obsahu.
 
 **Možnost 1:**
 
-1. Až se přihlásíte k [Vytvoření zvukového obsahu](https://aka.ms/audiocontentcreation), klikněte na **ladění zvuku** a vytvořte nový soubor pro optimalizaci zvuku.
-2. Až se zobrazí okno pro úpravy, můžete zadat až 10 000 znaků.
-3. Nezapomeňte uložit.
+1. Po přihlášení k [vytváření zvukového obsahu](https://aka.ms/audiocontentcreation)vytvořte nový soubor optimalizace zvuku klepnutím na **možnost Optimalizace zvuku.**
+2. Po otevření okna pro úpravy můžete zadat až 10 000 znaků.
+3. Nezapomeň zachránit.
 
-**Možnost 2:**
+**Možnost č. 2:**
 
-1. Až se přihlásíte k [Vytvoření zvukového obsahu](https://aka.ms/audiocontentcreation), klikněte na **nahrát** a naimportujte jeden nebo víc textových souborů. Podporuje se prostý text i SSML.
-2. Když nahráváte textové soubory, ujistěte se, že obsah splňuje tyto požadavky.
+1. Po přihlášení k [vytváření zvukového obsahu](https://aka.ms/audiocontentcreation)klepněte na **tlačítko Nahrát** a importujte jeden nebo více textových souborů. Je podporován prostý text i SSML.
+2. Při nahrávání textových souborů se ujistěte, že obsah tyto požadavky splňuje.
 
-   | Vlastnost | Hodnota/poznámky |
+   | Vlastnost | Hodnota / poznámky |
    |----------|---------------|
-   | Formát souboru | Prostý text (. txt)<br/> Text SSML (. txt)<br/> Soubory zip nejsou podporovány |
+   | Formát souboru | Prostý text (.txt)<br/> Text SSML (.txt)<br/> Soubory ZIP nejsou podporovány. |
    | Formát kódování | UTF-8 |
-   | Název souboru | Každý soubor musí mít jedinečný název. Duplicity nejsou podporovány. |
+   | Název souboru | Každý soubor musí mít jedinečný název. Duplikáty nejsou podporovány. |
    | Délka textu | Textové soubory nesmí přesáhnout 10 000 znaků. |
-   | Omezení SSML | Každý soubor SSML může obsahovat pouze jednu část SSML. |
+   | Omezení SSML | Každý soubor SSML může obsahovat pouze jeden kus SSML. |
 
 ### <a name="plain-text-example"></a>Příklad prostého textu
 
@@ -87,28 +87,28 @@ Welcome to use Audio Content Creation to customize audio output for your product
 </speak>
 ```
 
-## <a name="export-tuned-audio"></a>Exportovat laděný zvuk
+## <a name="export-tuned-audio"></a>Export vyladěného zvuku
 
-Po kontrole zvukového výstupu a splnění jeho optimalizace a úprav můžete zvuk exportovat.
+Po kontrole zvukového výstupu a spokojenosti s laděním a úpravou můžete zvuk exportovat.
 
-1. V nástroji pro [tvorbu zvukového obsahu](https://aka.ms/audiocontentcreation) klikněte na **exportovat** a vytvořte úlohu vytváření zvuku.
-2. Vyberte formát výstupu pro vyladěný zvuk. Seznam podporovaných formátů a vzorkovacích sazeb je k dispozici níže.
-3. Stav úlohy můžete zobrazit na kartě **úloha exportu** . Pokud se úloha nezdařila, přejděte na stránku podrobné informace pro celou sestavu.
-4. Po dokončení úlohy je váš zvuk k dispozici ke stažení na kartě **Knihovna zvukového** prostředí.
-5. Klikněte na **Stáhnout**. Teď jste připraveni používat vlastní laděný zvuk ve vašich aplikacích nebo produktech.
+1. V nástroji [pro vytváření zvukového obsahu](https://aka.ms/audiocontentcreation) klikněte na **Exportovat** a vytvořte úlohu vytváření zvuku.
+2. Zvolte výstupní formát naladěného zvuku. Seznam podporovaných formátů a vzorkovacích rychlostí je k dispozici níže.
+3. Stav úkolu můžete zobrazit na kartě **Exportovat úkol.** Pokud se úkol nezdaří, podívejte se na stránku s podrobnými informacemi o úplné sestavě.
+4. Po dokončení úkolu je zvuk k dispozici ke stažení na kartě **Knihovna zvuku.**
+5. Klepněte na tlačítko **Stáhnout**. Nyní jste připraveni používat vlastní vyladěný zvuk ve svých aplikacích nebo produktech.
 
-### <a name="supported-audio-formats"></a>Podporované formáty zvuku
+### <a name="supported-audio-formats"></a>Podporované zvukové formáty
 
-| Formát | vzorkovací frekvence 16 kHz | frekvence vzorků 24 kHz |
+| Formát | Vzorkovací frekvence 16 kHz | Vzorkovací frekvence 24 kHz |
 |--------|--------------------|--------------------|
-| buď | RIFF-16khz-16bitový-mono-PCM | RIFF-24khz-16bitový-mono-PCM |
-| MP3 | Audio-16khz-128kbitrate-mono-MP3 | Audio-24khz-160kbitrate-mono-MP3 |
+| Wav | riff-16khz-16bit-mono-pcm | riff-24khz-16bit-mono-pcm |
+| Mp3 | audio-16khz-128kbitrate-mono-mp3 | audio-24khz-160kbitrate-mono-mp3 |
 
 ## <a name="see-also"></a>Viz také
 
-* [Rozhraní API pro dlouhé zvukové zařízení](https://aka.ms/long-audio-api)
+* [Dlouhé zvukové rozhraní API](https://aka.ms/long-audio-api)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Studio Speech](https://speech.microsoft.com)
+> [Řečové studio](https://speech.microsoft.com)

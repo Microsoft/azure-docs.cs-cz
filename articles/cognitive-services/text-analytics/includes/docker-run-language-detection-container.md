@@ -1,7 +1,7 @@
 ---
-title: Příklad spuštění kontejneru příkazu Docker run
+title: Spustit příklad kontejneru příkazu spuštění dockeru
 titleSuffix: Azure Cognitive Services
-description: Příkaz pro spuštění Docker pro kontejner Rozpoznávání jazyka
+description: Příkaz Spuštění Dockeru pro kontejner Zjišťování jazyka
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: d2818336de2b3d4d810932cefb21edd95b8cf733
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70966696"
 ---
-Chcete-li spustit kontejner *rozpoznávání jazyka* , spusťte následující `docker run` příkaz.
+Chcete-li spustit kontejner zjišťování `docker run` *jazyka,* proveďte následující příkaz.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -28,7 +28,7 @@ ApiKey={API_KEY}
 
 Tento příkaz:
 
-* Spustí kontejner *rozpoznávání jazyka* z image kontejneru.
-* Přiděluje jedno PROCESORové jádro a 4 gigabajty (GB) paměti.
-* Zpřístupňuje TCP port 5000 a přiděluje pseudo-TTY pro kontejner
-* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+* Spustí kontejner *rozpoznávání jazyka* z bitové kopie kontejneru.
+* Přiděluje jedno jádro procesoru a 4 gigabajty (GB) paměti.
+* Zpřístupní port TCP 5000 a přidělí pseudo-TTY pro kontejner
+* Automaticky odebere kontejner po jeho ukončení. Bitová kopie kontejneru je stále k dispozici v hostitelském počítači.

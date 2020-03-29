@@ -1,5 +1,5 @@
 ---
-title: Omezení požadavků – rozhraní API Bingu pro vyhledávání na webu
+title: Požadavky na omezení – rozhraní API pro vyhledávání na webu Bingu
 titleSuffix: Azure Cognitive Services
 description: Služba a typ vašeho předplatného určuje počet dotazů, které můžete provést za sekundu (QPS).
 services: cognitive-services
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 5d97cac09291c5ca734eeafe329f08361a712579
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74111386"
 ---
-# <a name="throttling-requests-to-the-bing-web-search-api"></a>Omezování požadavků na rozhraní API Bingu pro vyhledávání na webu
+# <a name="throttling-requests-to-the-bing-web-search-api"></a>Omezení požadavků na rozhraní API pro vyhledávání na webu Bingu
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Odkaz na rozhraní API Bingu pro vyhledávání na webu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
+* [Odkaz na rozhraní API webového vyhledávání Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

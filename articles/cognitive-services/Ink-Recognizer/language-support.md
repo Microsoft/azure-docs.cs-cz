@@ -1,7 +1,7 @@
 ---
-title: Podpora jazyka a oblasti pro rozhraní API pro rozpoznávání rukopisu
+title: Jazyková a regionální podpora rozhraní API pro rozpoznávání rukopisu
 titleSuffix: Azure Cognitive Services
-description: Seznam přirozeného jazyka, které jsou podporovány v rozhraní API pro rozpoznávání rukopisu.
+description: Seznam přirozených jazyků podporovaných rozhraním API pro rozpoznávání rukopisu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
 ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67721737"
 ---
-# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Podpora jazyka a oblasti pro rozhraní API pro rozpoznávání rukopisu
+# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Jazyková a regionální podpora rozhraní API pro rozpoznávání rukopisu
 
-Tento článek vysvětluje, jaké jazyky jsou podporovány pro rozhraní API pro rozpoznávání rukopisu. Digitální inkoust obsah zapsaný v následujících jazycích můžete interpretovat a zpracovaných rozhraním API.
+Tento článek vysvětluje, které jazyky jsou podporovány pro rozhraní API rozpoznávání rukopisu. Obsah digitálního inkoustu napsaný v následujících jazycích může api interpretovat a zpracovávat.
 
 ## <a name="supported-languages"></a>Podporované jazyky
 
@@ -32,64 +32,64 @@ Tento článek vysvětluje, jaké jazyky jsou podporovány pro rozhraní API pro
 | Katalánština                                    |     `ca-ES`     |
 | Čínština (zjednodušená, Čína)                |     `zh-CN`     |
 | Čínština (tradiční, Tchaj-wan)              |     `zh-TW`     |
-| Chorvatština (Chorvatsko)                         |     `hr-HR`     |
+| chorvatština (Chorvatsko)                         |     `hr-HR`     |
 | Čeština                                      |     `cs-CZ`     |
-| dánština                                     |     `da-DK`     |
-| Holandština (Belgie)                            |     `nl-BE`     |
-| Nizozemština (Nizozemsko)                        |     `nl-NL`     |
-| angličtina (Austrálie)                        |     `en-AU`     |
-| angličtina (Kanada)                           |     `en-CA`     |
+| Dánština                                     |     `da-DK`     |
+| Nizozemština (Belgie)                            |     `nl-BE`     |
+| nizozemština (Nizozemsko)                        |     `nl-NL`     |
+| Angličtina (Austrálie)                        |     `en-AU`     |
+| Angličtina (Kanada)                           |     `en-CA`     |
 | Angličtina (Spojené království)                   |     `en-GB`     |
-| English (India)                            |     `en-IN`     |
+| Angličtina (Indie)                            |     `en-IN`     |
 | Angličtina (Spojené státy)                    |     `en-US`     |
 | Finština                                    |     `fi-FI`     |
-| Francouzština (Francie)                            |     `fr-FR`     |
+| francouzština (Francie)                            |     `fr-FR`     |
 | Galicijština                                   |     `gl-ES`     |
 | Němčina (Švýcarsko)                      |     `de-CH`     |
-| Němčina (Německo)                           |     `de-DE`     |
+| němčina (Německo)                           |     `de-DE`     |
 | Řečtina                                      |     `el-GR`     |
 | Hindština                                      |     `hi-IN`     |
 | Indonéština                                 |     `id-ID`     |
 | Irština                                      |     `ga-IE`     |
-| Italština (Itálie)                            |     `it-IT`     |
+| italština (Itálie)                            |     `it-IT`     |
 | Japonština                                   |     `ja-JP`     |
 | Kinyarwanda                                |     `rw-RW`     |
-| Svahilština (Keňa)                          |     `sw-KE`     |
+| Kiswahili (Keňa)                          |     `sw-KE`     |
 | Korejština                                     |     `ko-KR`     |
 | Lucemburština                              |     `lb-LU`     |
-| Malajština (Sultanát Brunej)                  |     `ms-BN`     |
-| Malajština (Malajsie)                           |     `ms-MY`     |
-| Maori                                      |     `mi-NZ`     |
+| Malajský (Brunej Darussalam)                  |     `ms-BN`     |
+| malajština (Malajsie)                           |     `ms-MY`     |
+| Maorština                                      |     `mi-NZ`     |
 | Norština (Bokmal)                         |     `nb-NO`     |
 | Norština (Nynorsk)                        |     `nn-NO`     |
-| polština                                     |     `pl-PL`     |
+| Polština                                     |     `pl-PL`     |
 | Portugalština (Brazílie)                        |     `pt-BR`     |
-| Portugalština (Portugalsko)                      |     `pt-PT`     |
+| portugalština (Portugalsko)                      |     `pt-PT`     |
 | Románština                                    |     `rm-CH`     |
 | Rumunština                                   |     `ro-RO`     |
-| ruština                                    |     `ru-RU`     |
-| Scottish Gaelic                            |     `gd-GB`     |
-| Severní sotština                           |    `nso-ZA`     |
+| Ruština                                    |     `ru-RU`     |
+| Skotská gaelština                            |     `gd-GB`     |
+| Sesotho sa Leboa                           |    `nso-ZA`     |
 | Srbština (cyrilice, Bosna a Hercegovina) |  `sr-Cyrl-BA`   |
-| Serbian (Cyrillic, Montenegro)             |  `sr-Cyrl-ME`   |
-| Srbština (cyrilice, Srbsko)                 |  `sr-Cyrl-RS`   |
+| Srbština (cyrilice, Černá Hora)             |  `sr-Cyrl-ME`   |
+| srbština (cyrilice, Srbsko)                 |  `sr-Cyrl-RS`   |
 | Srbština (latinka, Bosna a Hercegovina)    |  `sr-Latn-BA`   |
-| Serbian (Latin, Montenegro)                |  `sr-Latn-ME`   |
-| Srbština (latinka, Srbsko)                    |  `sr-Latn-RS`   |
-| Čvanština (Jižní Afrika)                    |     `tn-ZA`     |
+| Srbština (latinka, Černá Hora)                |  `sr-Latn-ME`   |
+| srbština (latinka, Srbsko)                    |  `sr-Latn-RS`   |
+| Setswana (Jihoafrická republika)                    |     `tn-ZA`     |
 | Slovenština                                     |     `sk-SK`     |
 | Slovinština                                  |     `sl-SI`     |
 | Španělština (Argentina)                        |     `es-AR`     |
 | Španělština (Španělsko)                            |     `es-ES`     |
 | Španělština (Mexiko)                           |     `es-MX`     |
-| Švédština (Švédsko)                           |     `sv-SE`     |
-| turečtina                                    |     `tr-TR`     |
+| švédština (Švédsko)                           |     `sv-SE`     |
+| Turečtina                                    |     `tr-TR`     |
 | Velština                                      |     `cy-GB`     |
-| Wolof                                      |     `wo-SN`     |
-| Xhosa                                      |     `xh-ZA`     |
-| Zulu                                       |     `zu-ZA`     |
+| Wolof (Wolof)                                      |     `wo-SN`     |
+| Xhoština                                      |     `xh-ZA`     |
+| Zulština                                       |     `zu-ZA`     |
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Co je rozhraní API pro rozpoznávání rukopisu?](overview.md)
-* [Odesílání do rozhraní API pro rozpoznávání rukopisu digitální inkoustových tahů](concepts/send-ink-data.md)
+* [Odesílání tahů digitálního inkoustu do rozhraní API rozpoznávání rukopisu](concepts/send-ink-data.md)

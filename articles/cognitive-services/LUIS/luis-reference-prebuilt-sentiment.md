@@ -1,7 +1,7 @@
 ---
-title: Analýza mínění – LUIS
+title: Analýza mínění - LUIS
 titleSuffix: Azure Cognitive Services
-description: Pokud je nakonfigurovaná analýza mínění, LUIS odpověď json zahrnuje analýzu subjektivního hodnocení.
+description: Pokud je nakonfigurována analýza mínění, odpověď LUIS json zahrnuje analýzu mínění.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,23 +12,23 @@ ms.topic: reference
 ms.date: 10/22/2019
 ms.author: diberry
 ms.openlocfilehash: dee07859da97f76d9a2db3ccbb71ae74d8ff4846
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270425"
 ---
 # <a name="sentiment-analysis"></a>Analýza mínění
-Pokud je nakonfigurovaná analýza mínění, LUIS odpověď json zahrnuje analýzu subjektivního hodnocení. Další informace o analýze mínění najdete v dokumentaci k [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) .
+Pokud je nakonfigurována analýza mínění, odpověď LUIS json zahrnuje analýzu mínění. Další informace o analýze mínění najdete v dokumentaci [k Analýze textu.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)
 
 
-## <a name="resolution-for-sentiment"></a>Řešení pro mínění
+## <a name="resolution-for-sentiment"></a>Rozlišení pro sentiment
 
-Je skóre mezi 1 a 0 označující pozitivní mínění data (blíže 1) ani na zápornou (blíže 0) mínění data.
+Data mínění je skóre mezi 1 a 0 označující kladné (blíže k 1) nebo negativní (blíže k 0) mínění dat.
 
 #### <a name="english-language"></a>[Anglický jazyk](#tab/english)
 
-Když je jazyková verze `en-us`, odpověď je:
+Pokud je `en-us`jazyková verze , odpověď je:
 
 ```JSON
 "sentimentAnalysis": {
@@ -37,9 +37,9 @@ Když je jazyková verze `en-us`, odpověď je:
 }
 ```
 
-#### <a name="other-languages"></a>[Jiné jazyky](#tab/other-languages)
+#### <a name="other-languages"></a>[Další jazyky](#tab/other-languages)
 
-Pro všechny jiné jazykové verze odpověď je:
+Pro všechny ostatní kultury je odpověď:
 
 ```JSON
 "sentimentAnalysis": {
@@ -50,5 +50,5 @@ Pro všechny jiné jazykové verze odpověď je:
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
 
