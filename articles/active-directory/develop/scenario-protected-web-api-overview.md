@@ -1,7 +1,7 @@
 ---
-title: Chráněné webové rozhraní API – přehled
+title: Chráněné webové rozhraní API - přehled
 titleSuffix: Microsoft identity platform
-description: Naučte se vytvářet chráněné webové rozhraní API (přehled).
+description: Zjistěte, jak vytvořit chráněné webové rozhraní API (přehled).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,17 +16,17 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: abe4ecf77e7a65251830ff822b15f79291471202
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773342"
 ---
-# <a name="scenario-protected-web-api"></a>Scénář: chráněné webové rozhraní API
+# <a name="scenario-protected-web-api"></a>Scénář: Chráněné webové rozhraní API
 
-V tomto scénáři se dozvíte, jak vystavit webové rozhraní API. Naučíte se také, jak chránit webové rozhraní API, aby k němu měli přístup jenom ověření uživatelé.
+V tomto scénáři se dozvíte, jak vystavit webové rozhraní API. Dozvíte se také, jak chránit webové rozhraní API tak, aby k němu měli přístup pouze ověření uživatelé.
 
-Pokud chcete používat webové rozhraní API, musíte povolit ověřené uživatele s pracovními a školními účty, nebo povolit osobní účty Microsoft.
+Chcete-li používat webové rozhraní API, musíte buď povolit ověřené uživatele s pracovními i školními účty, nebo povolit osobní účty Microsoft.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,10 +34,10 @@ Pokud chcete používat webové rozhraní API, musíte povolit ověřené uživa
 
 ## <a name="specifics"></a>Specifika
 
-Tady jsou konkrétní informace, které potřebujete znát k ochraně webových rozhraní API:
+Zde jsou konkrétní informace, které potřebujete vědět k ochraně webových api:
 
-- Registrace vaší aplikace musí zveřejnit aspoň jeden obor. Verze tokenu přijatá webovým rozhraním API závisí na tom, jakou cílovou skupinu přihlašujete.
-- Konfigurace kódu pro webové rozhraní API musí ověřit token použitý při volání webového rozhraní API.
+- Registrace aplikace musí vystavit alespoň jeden obor. Verze tokenu přijatá vaším webovým rozhraním API závisí na přihlašovací matné skupině.
+- Konfigurace kódu pro webové rozhraní API musí ověřit token používaný při volání webového rozhraní API.
 
 ## <a name="next-steps"></a>Další kroky
 

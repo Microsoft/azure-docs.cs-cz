@@ -1,5 +1,5 @@
 ---
-title: Správa uživatelů Azure Data Box Gateway | Microsoftu Docs
+title: Správa uživatelů Azure Data Box Gateway | Microsoft Docs
 description: Popisuje používání webu Azure Portal ke správě uživatelů ve službě Azure Data Box Gateway.
 services: databox
 author: alkohli
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 60fd5476d687d9f44aec885cdf888572e8e523a4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78946124"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Použití webu Azure Portal ke správě uživatelů ve službě Azure Data Box Gateway
@@ -33,7 +33,7 @@ Uživatelé můžou být typu jen pro čtení, nebo s úplnými oprávněními. 
  - **Uživatel s úplnými oprávněními** – místní uživatele s úplným přístupem.
  - **Uživatel jen pro čtení** –místní uživatel s přístupem jen pro čtení. Tito uživatelé jsou přidruženi ke sdíleným složkám, které umožňují operace jen pro čtení.
 
-Oprávnění uživatele jsou definována při vytváření uživatele během vytváření sdílené složky. Úprava oprávnění na úrovni sdílené složky se v tuto chvíli nepodporuje.
+Oprávnění uživatele jsou definována při vytváření uživatele během vytváření sdílené složky. Úprava oprávnění na úrovni sdílené složky není aktuálně podporována.
 
 ## <a name="add-a-user"></a>Přidání uživatele
 
@@ -41,11 +41,11 @@ Pokud chcete přidat uživatele, proveďte na webu Azure Portal následující k
 
 1. Na webu Azure Portal přejděte k prostředku Data Box Gateway a pak přejděte na **Přehled**. Klikněte na tlačítko **+ Přidat uživatele** na panelu příkazů.
 
-    ![Klikněte na Přidat uživatele](media/data-box-gateway-manage-users/add-user-1.png)
+    ![Přidání uživatele kliknutím](media/data-box-gateway-manage-users/add-user-1.png)
 
 2. Zadejte uživatelské jméno a heslo pro uživatele, kterého chcete přidat. Potvrďte heslo a klikněte na **Přidat**.
 
-    ![Klikněte na Přidat uživatele](media/data-box-gateway-manage-users/add-user-2.png)
+    ![Přidání uživatele kliknutím](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
     > Tito uživatelé jsou rezervováni systémem a není možné je používat: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  

@@ -1,6 +1,6 @@
 ---
-title: Začínáme s centrem Azure pro rychlé zprovoznění
-description: Začněte s Azure pomocí Průvodce rychlým startem pro Azure. Naučte se nastavovat, migrovat a inovovat.
+title: Začínáme s Centrem rychlých startů Azure
+description: Začněte s Azure pomocí centra Azure. Naučte se nastavit, migrovat a inovovat.
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -10,40 +10,40 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 21dd43b5179d0752699bb56b51a2c08976aa037b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900689"
 ---
-# <a name="get-started-with-the-azure-quickstart-center"></a>Začínáme s centrem Azure pro rychlé zprovoznění
+# <a name="get-started-with-the-azure-quickstart-center"></a>Začínáme s Centrem rychlých startů Azure
 
-Centrum rychlý Start Azure je průvodcem, který je v Azure Portal dostupný všem, kdo chce zlepšit znalosti Azure. Pro organizace, které jsou v Azure nové, je to nejrychlejší způsob zprovoznění a nastavení cloudového prostředí.
+Azure Quickstart Center je řízené prostředí na webu Azure Portal, které je k dispozici každému, kdo chce zlepšit své znalosti O Azure. Pro organizace, které jsou v Azure nové, je to nejrychlejší způsob, jak se nalodit a nastavit cloudové prostředí.
 
 ## <a name="overview"></a>Přehled
 
-Centrum rychlý Start pro Azure má tři možnosti, jak začít:
+Azure Quickstart Center má tři možnosti, jak začít:
 
-* **Příručky k instalaci**: navržené pro správce IT a cloudového architekta, naše příručky představují klíčové koncepty pro přijetí Azure. Strukturované kroky vám pomůžou s tím, jak se naučíte, používat Doporučené osvědčené postupy od Microsoftu. Průvodce migrací vám pomůže vyhodnotit připravenost a plán při přípravě na přesun do Azure.
+* **Průvodce nastavením**: Naši průvodci, navržení pro správce IT a cloudového architekta, představují klíčové koncepty pro přijetí Azure. Strukturované kroky vám pomohou provést akci, jak se naučíte, s použitím doporučených doporučených postupů společnosti Microsoft. Průvodce migrací vám pomůže posoudit připravenost a plán při přípravě na přechod na Azure.
 
-* **Spuštění projektu**: Pokud jste připraveni vytvořit prostředek, v této části se dozvíte víc o vašich volbách ještě předtím, než se zařadíte k možnosti služby. Získáte další informace o službě a o tom, proč byste ji měli používat, prozkoumejte náklady a Identifikujte požadované součásti. Po výběru můžete přejít přímo na vytvořit.
+* **Zahájení projektu**: Pokud jste připraveni vytvořit zdroj, tato část vám umožní získat další informace o volbách před potvrzením možnosti služby. Dozvíte se více o službě a proč byste ji měli používat, prozkoumejte náklady a identifikujete požadavky. Po provedení vašeho výběru, můžete jít přímo k vytvoření.
 
-* **Online učení**: Tato část centra rychlý Start Azure zvýrazňuje bezplatné úvodní moduly kurzu od Microsoft Learn. Výběrem dlaždice spustíte kurz a získáte další informace o cloudových konceptech a správě prostředků v Azure.
+* **Online výuka**: Tato část Centra rychlého startu Azure upozorňuje na bezplatné moduly úvodních kurzů od Microsoft Learn. Vyberte dlaždici, na které můžete spustit kurz a získat další informace o konceptech cloudu a správě prostředků v Azure.
 
-## <a name="how-to-use-azure-quickstart-center"></a>Jak používat centrum rychlý Start Azure
+## <a name="how-to-use-azure-quickstart-center"></a>Jak používat Azure Quickstart Center
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 
-1. V nabídce Azure Portal vyberte **všechny služby** .
+1. Z nabídky portálu Azure vyberte **Všechny služby.**
 
-1. Vyberte **obecné** > **Center pro rychlé**zprovoznění.
+1. Vyberte **obecné** > **centrum rychlého startu**.
 
-Podrobné informace o tom, co vám centrum rychlého startu Azure může za vás udělat, najdete v tomto videu:
+Podrobné informace o tom, co pro vás centrum Azure QuickStart Center může udělat, najdete v tomto videu:
 > [!VIDEO https://www.youtube.com/embed/0bSA7RXrbAg]
 
-[Úvod do centra rychlý Start pro Azure](https://www.youtube.com/watch?v=0bSA7RXrbAg)
+[Úvod do Centra rychlých startů Azure](https://www.youtube.com/watch?v=0bSA7RXrbAg)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o nastavení a migraci Azure v [rozhraní Microsoft Cloud pro přijetí pro Azure](/azure/architecture/cloud-adoption/).
-* Využijte své cloudové dovednosti s dalšími kurzy od [Microsoft Learn](/learn/azure/).
+* Další informace o nastavení a migraci Azure najdete v [rámci Microsoft Cloud Adoption Framework for Azure](/azure/architecture/cloud-adoption/).
+* Odemkněte své dovednosti v cloudu pomocí dalších kurzů od [Microsoft Learn](/learn/azure/).

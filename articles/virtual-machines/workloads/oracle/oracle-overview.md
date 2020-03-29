@@ -1,6 +1,6 @@
 ---
-title: Řešení Oracle v Microsoft Azure | Microsoft Docs
-description: Přečtěte si o možnostech nasazení aplikací a řešení Oracle na Microsoft Azure, včetně spuštění výhradně v infrastruktuře Azure nebo při použití připojení mezi cloudy pomocí Oracle cloudové infrastruktury (OCI).
+title: Řešení Oracle v Microsoft Azure | Dokumenty společnosti Microsoft
+description: Přečtěte si o možnostech nasazení aplikací a řešení Oracle v Microsoft Azure, včetně úplného spuštění v infrastruktuře Azure nebo využití připojení napříč cloudy pomocí řešení Oracle Cloud Infrastructure (OCI).
 services: virtual-machines-linux
 documentationcenter: ''
 author: romitgirdhar
@@ -14,82 +14,82 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.openlocfilehash: 6ab41182d59f8c96edfca4854aad5f9a13f53436
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74806605"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Přehled aplikací a řešení Oracle v Azure
 
-V tomto článku se seznámíte s možnostmi spouštění řešení Oracle pomocí infrastruktury Azure. Přečtěte si také podrobné informace o dostupných [imagích virtuálních počítačů Oracle](oracle-vm-solutions.md) v Azure Marketplace a možnosti verze Preview pro [propojení Azure se službou Oracle Cloud Infrastructure (OCI)](oracle-oci-overview.md).
+Tento článek představuje funkce pro spouštění řešení Oracle pomocí infrastruktury Azure. Podívejte se také na podrobné úvody dostupných [ibi obrazů virtuálních virtuálních zařízení Oracle](oracle-vm-solutions.md) na Azure Marketplace a možnost i možnost i ve verzi Preview [pro propojení Azure s infrastrukturou Oracle Cloud Infrastructure (OCI).](oracle-oci-overview.md)
 
-## <a name="oracle-databases-on-azure-infrastructure"></a>Databáze Oracle v infrastruktuře Azure
+## <a name="oracle-databases-on-azure-infrastructure"></a>Databáze Oracle o infrastruktuře Azure
 
-Spouštějte databáze Oracle v infrastruktuře Azure pomocí Oracle Database v Oracle Linux imagí dostupných v Azure Marketplace:
+Spouštění databází Oracle v infrastruktuře Azure pomocí databáze Oracle database na ibi on-Linux, které jsou dostupné na Azure Marketplace:
 
-* Oracle Database 12,1, 12,2 a 18,3 Enterprise Edition 
+* Oracle Database 12.1, 12.2 a 18.3 Enterprise Edition 
 
-* Oracle Database 12,1, 12,2 a 18,3 Standard Edition 
+* Oracle Database 12.1, 12.2 a 18.3 Standard Edition 
 
-Můžete se také rozhodnout nastavit Oracle Database na neOracle Linux image dostupné v Azure. řešení můžete založit na vlastní imagi, kterou vytvoříte úplně od začátku v Azure, nebo nahrát vlastní image z místního prostředí.
+Můžete se také rozhodnout nastavit databázi Oracle Database na bitovou kopii jiného než Oracle Linux, která je dostupná v Azure, založit řešení na vlastní image, kterou vytvoříte od začátku v Azure, nebo nahrát vlastní bitovou kopii z místního prostředí.
 
-Volitelně můžete nakonfigurovat s více připojenými disky a zvýšit výkon databáze tím, že nainstalujete systém Oracle Automated Storage Management (ASM).
+Volitelně můžete nakonfigurovat pomocí více připojených disků a zlepšit výkon databáze instalací nástroje Oracle Automated Storage Management (ASM).
 
-## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Aplikace na Oracle Linux a WebLogic Server
+## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Aplikace na oracle linuxu a weblogickém serveru
 
-Spouštějte podnikové aplikace v Azure v podporovaných operačních systémech Oracle. Následující obrázky jsou k dispozici v Azure Marketplace:
+Spouštět podnikové aplikace v Azure na podporovaných operačních systémech Oracle. Na Azure Marketplace jsou k dispozici následující obrázky:
 
-* Oracle WebLogic server 12.1.2
+* Server Oracle WebLogic 12.1.2
 
-* Oracle Linux s neUEKm podnikovým jádrem () 6,8, 6,9, 6,10, 7,3, 7,4, 7,5 a 7,6 
+* Oracle Linux s nerozbitným podnikovým jádrem (UEK) 6.8, 6.9, 6.10, 7.3, 7.4, 7.5 a 7.6 
 
-## <a name="high-availability-and-disaster-recovery-options"></a>Možnosti vysoké dostupnosti a zotavení po havárii
+## <a name="high-availability-and-disaster-recovery-options"></a>Vysoká dostupnost a možnosti zotavení po havárii
 
-* Nakonfiguruje [Oracle data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956), [aktivní ochranu dat pomocí FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [horizontálního dělení](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) nebo [zlaté brány](https://www.oracle.com/middleware/technologies/goldengate.html) v infrastruktuře Azure společně s [zóny dostupnosti](../../../availability-zones/az-overview.md) pro zajištění vysoké dostupnosti v oblasti. Pro přidání dostupnosti a zotavení po havárii můžete také nastavit tyto konfigurace napříč několika oblastmi Azure.
+* Konfigurace [oracle data guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956), active data guard s [FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [Sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) nebo [Golden Gate](https://www.oracle.com/middleware/technologies/goldengate.html) na infrastruktuře Azure ve spojení s [dostupnostzóny](../../../availability-zones/az-overview.md) pro vysokou dostupnost v oblasti. Můžete také nastavit tyto konfigurace ve více oblastech Azure pro větší dostupnost a zotavení po havárii.
 
-* Pomocí [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) můžete orchestrovat a spravovat zotavení po havárii pro vaše Oracle Linux virtuální počítače v Azure a vašich místních nebo fyzických serverech. 
+* Azure [Site Recovery](../../../site-recovery/site-recovery-overview.md) můžete spravovat a spravovat zotavení po havárii pro virtuální počítače Oracle Linux v Azure a místní nebo fyzické servery. 
 
-* Pomocí [Řešení Azure VMware](https://docs.azure.cloudsimple.com/oracle-rac/) nebo [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)povolte v Azure reálné aplikační clustery (RAC).
+* Povolte clustery Oracle Real Application Clusters (RAC) v Azure pomocí [řešení Azure VMWare solution](https://docs.azure.cloudsimple.com/oracle-rac/) nebo [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/).
 
 ## <a name="backup-oracle-workloads"></a>Zálohování úloh Oracle
 
-* Zálohování virtuálních počítačů Oracle pomocí [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)
+* Zálohování virtuálních počítačů Oracle pomocí [služby Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)
 
-* Pomocí RMANu Oracle zálohujte svůj Oracle Database a volitelně pomocí služby [Azure Blob pojistky](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) připojte [vysoce redudant účet Azure Blob Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy) a zapište do něj zálohy rman pro zvýšení odolnosti.
+* Zálohujte databázi Oracle pomocí oracle rman a volitelně použijte [Azure Blob Fuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) k připojení [vysoce redudant Azure Blob Storage účet](https://docs.microsoft.com/azure/storage/common/storage-redundancy) a zapište své zálohy RMAN k němu pro větší odolnost.
 
-## <a name="integration-of-azure-with-oci-preview"></a>Integrace Azure s OCI (Preview)
+## <a name="integration-of-azure-with-oci-preview"></a>Integrace Azure s OCI (preview)
 
-Spouštějte aplikace Oracle v infrastruktuře Azure, připojené k back-endu databází v Oracle Cloud Infrastructure (OCI). Toto řešení používá následující funkce: 
+Spouštět aplikace Oracle v infrastruktuře Azure, připojené k back-endovým databázím v infrastruktuře Oracle Cloud Infrastructure (OCI). Toto řešení využívá následující funkce: 
 
-* **Cloudové sítě** – pomocí přímého propojení dostupného mezi Azure ExpressRoute a Oracle FastConnect můžete navázat připojení s vysokou šířkou pásma, privátní a nízkou latencí mezi aplikací a databázovou vrstvou.
-* **Integrovaná identita** – nastavení federované identity mezi Azure AD a Oracle IDCS pro vytvoření jediného zdroje identity pro řešení. Povolte jednotné přihlašování pro správu prostředků napříč systémem OCI a Azure.
+* **Sítě mezi cloudy** – pomocí přímého propojení dostupného mezi Azure ExpressRoute a Oracle FastConnect navážete mezi aplikací a databázovou vrstvou připojení s vysokou šířkou pásma, privátní a s nízkou latencí.
+* **Integrovaná identita** – Nastavte federované identity mezi Azure AD a Oracle IDCS vytvořit jeden zdroj identity pro řešení. Povolte jednotné přihlašování ke správě prostředků napříč OCI a Azure.
 
 ### <a name="deploy-oracle-applications-on-azure"></a>Nasazení aplikací Oracle v Azure
 
-Použití šablon Terraformu k nastavení infrastruktury Azure a instalaci aplikací Oracle ověřovaných a podporovaných pro spuštění v konfiguraci mezi cloudy:
+Pomocí šablon Terraform můžete nastavit infrastrukturu Azure a nainstalovat oracle aplikace ověřené a podporované pro spuštění v konfiguraci napříč cloudy:
 
-* Sada E-Business
+* E-Business Suite
 * JD Edwards EnterpriseOne
-* PeopleSoft
+* Peoplesoft
 * Maloobchodní aplikace Oracle
-* Hyperion finanční správa Oracle
+* Oracle Hyperion Financial Management
 
-Nasaďte také vlastní aplikace v Azure, které se připojují k OCI a dalším službám Azure.
+Nasadit také vlastní aplikace v Azure, které se připojují k OCI a dalším službám Azure.
 
 ### <a name="set-up-oracle-databases-in-oci"></a>Nastavení databází Oracle v OCI
 
-V kombinaci s aplikacemi Oracle běžícími v Azure použijte Oracle Database Cloud Services (autonomní databáze, RAC, Exadata, DBaaS, jeden uzel). Přečtěte si další informace o [možnostech databáze OCI](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
+Používejte cloudové služby Oracle Database Cloud Services (Autonomní databáze, RAC, Exadata, DBaaS, jeden uzel) ve spojení s aplikacemi Oracle spuštěnými v Azure. Další informace o [možnostech databáze OCI](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
-## <a name="licensing"></a>Správa licencí
+## <a name="licensing"></a>Licencování
 
-Nasazení aplikací Oracle v Azure je založené na modelu "Přineste si vlastní licenci". Předpokládáte, že máte řádně licenci na používání softwaru Oracle a máte k dispozici aktuální smlouvu o podpoře pro Oracle. Oracle garantuje mobilitu licencí z místního prostředí do Azure. Podívejte se na [Nejčastější dotazy](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)k Oracle-Azure.
+Nasazení aplikací Oracle v Azure je založené na modelu "přineste si vlastní licenci". Předpokládá se, že máte řádnou licenci k používání softwaru Oracle a že máte aktuální smlouvu o podpoře se společností Oracle. Společnost Oracle má zaručenou mobilitu licencí z místního do Azure. Podívejte se na [nejčastější dotazy](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)k řešení Oracle-Azure .
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o nasazování [imagí virtuálních počítačů Oracle](oracle-vm-solutions.md) v infrastruktuře Azure.
+* Přečtěte si další informace o nasazení [ibi virtuálních počítačích Oracle](oracle-vm-solutions.md) v infrastruktuře Azure.
 
-* Přečtěte si další informace o tom, jak [propojit Azure s OCI](oracle-oci-overview.md).
+* Přečtěte si další informace o [propojení Azure s OCI](oracle-oci-overview.md).
 
-* Podívejte se na [Přehled relace Oracle v Azure](https://myignite.techcommunity.microsoft.com/sessions/82915) z Ignite 2019. 
+* Podívejte se [na přehledovou relaci Oracle on Azure](https://myignite.techcommunity.microsoft.com/sessions/82915) z Ignite 2019. 

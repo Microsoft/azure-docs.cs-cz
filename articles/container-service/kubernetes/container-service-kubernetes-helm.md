@@ -1,6 +1,6 @@
 ---
-title: ZASTARALÉ Nasazení kontejnerů pomocí Helm v Azure Kubernetes
-description: Nasazení kontejnerů v clusteru Kubernetes v Azure Container Service pomocí nástroje pro vytváření balíčků Helm
+title: (ZASTARALÉ) Nasazení kontejnerů s helmou v Azure Kubernetes
+description: Použití nástroje pro balení Helmu k nasazení kontejnerů v clusteru Kubernetes ve službě Azure Container Service
 author: sauryadas
 ms.service: container-service
 ms.topic: conceptual
@@ -8,111 +8,111 @@ ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76271087"
 ---
-# <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>ZASTARALÉ Nasazení kontejnerů v clusteru Kubernetes pomocí Helm
+# <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>(ZASTARALÉ) Nasazení kontejnerů v clusteru Kubernetes pomocí helmu
 
 > [!TIP]
-> Aktualizovanou verzi tohoto článku, který používá službu Azure Kubernetes, najdete v tématu [instalace aplikací pomocí Helm ve službě Azure Kubernetes Service (AKS)](../../aks/kubernetes-helm.md).
+> Aktualizovanou verzi tohoto článku, který používá službu Azure Kubernetes, najdete v článku [Instalace aplikací s helmou ve službě Azure Kubernetes Service (AKS).](../../aks/kubernetes-helm.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-[Helm](https://github.com/kubernetes/helm/) je open source nástroj pro balení, který vám pomůže s instalací a správou životního cyklu aplikací Kubernetes. Podobně jako správci balíčků pro Linux, jako jsou apt-get a Yumu, se Helm používá ke správě Kubernetes grafů, což jsou balíčky předkonfigurovaných prostředků Kubernetes. V tomto článku se dozvíte, jak pracovat s Helm v clusteru Kubernetes nasazeném v Azure Container Service.
+[Helm](https://github.com/kubernetes/helm/) je open source obalový nástroj, který vám pomůže nainstalovat a spravovat životní cyklus aplikací Kubernetes. Podobně jako linuxoví manažeři balíčků, jako jsou Apt-get a Yum, helm se používá ke správě Kubernetesových grafů, což jsou balíčky předkonfigurovaných zdrojů Kubernetes. Tento článek ukazuje, jak pracovat s Helmem v clusteru Kubernetes nasazeném ve službě Azure Container Service.
 
-Helm má dvě komponenty: 
-* **Helm CLI** je klient, který běží na vašem počítači místně nebo v cloudu.  
+Kormidlo má dvě složky: 
+* **Helm CLI** je klient, který běží na vašem počítači místně nebo v cloudu  
 
-* **Je server, který běží v** clusteru Kubernetes a spravuje životní cyklus vašich aplikací Kubernetes. 
+* **Tiller** je server, který běží v clusteru Kubernetes a spravuje životní cyklus vašich aplikací Kubernetes 
  
 ## <a name="prerequisites"></a>Požadavky
 
-* [Vytvoření clusteru Kubernetes](container-service-kubernetes-walkthrough.md) v Azure Container Service
+* [Vytvoření clusteru Kubernetes](container-service-kubernetes-walkthrough.md) ve službě Azure Container Service
 
-* [Instalace a konfigurace `kubectl`](../container-service-connect.md) v místním počítači
+* [Instalace a `kubectl` konfigurace](../container-service-connect.md) v místním počítači
 
-* [Instalace Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md) na místní počítač
+* [Instalace helmu](https://github.com/kubernetes/helm/blob/master/docs/install.md) do místního počítače
 
-## <a name="helm-basics"></a>Základy Helm 
+## <a name="helm-basics"></a>Základy kormidla 
 
-Chcete-li zobrazit informace o clusteru Kubernetes, do kterého instalujete, a nasazovat aplikace do, zadejte následující příkaz:
+Chcete-li zobrazit informace o clusteru Kubernetes, do kterého instalujete tiller a nasazujete aplikace, zadejte následující příkaz:
 
 ```bash
 kubectl cluster-info 
 ```
-![kubectl cluster – informace](./media/container-service-kubernetes-helm/clusterinfo.png)
+![kubectl cluster-info](./media/container-service-kubernetes-helm/clusterinfo.png)
  
-Po instalaci Helm nainstalujte do clusteru Kubernetes zadáním následujícího příkazu:
+Po instalaci helmu nainstalujte kormidlo do clusteru Kubernetes zadáním následujícího příkazu:
 
 ```bash
 helm init --upgrade
 ```
-Po úspěšném dokončení se zobrazí výstup podobný následujícímu:
+Po úspěšném dokončení se zobrazí výstup jako následující:
 
-![Instalace do pokladny](./media/container-service-kubernetes-helm/tiller-install.png)
+![Instalace kultivátoru](./media/container-service-kubernetes-helm/tiller-install.png)
  
  
  
  
-Pokud chcete zobrazit všechny Helm grafy, které jsou k dispozici v úložišti, zadejte následující příkaz:
+Chcete-li zobrazit všechny grafy helmu, které jsou k dispozici v úložišti, zadejte následující příkaz:
 
 ```bash 
 helm search 
 ```
 
-Zobrazí se výstup podobný následujícímu:
+Výstup se zobrazí jako následující:
 
-![Helm vyhledávání](./media/container-service-kubernetes-helm/helm-search.png)
+![Vyhledávání helmu](./media/container-service-kubernetes-helm/helm-search.png)
  
-Pokud chcete grafy aktualizovat tak, aby získaly nejnovější verze, zadejte:
+Chcete-li grafy aktualizovat, abyste získali nejnovější verze, zadejte:
 
 ```bash 
 helm repo update 
 ```
-## <a name="deploy-an-nginx-ingress-controller-chart"></a>Nasazení grafu kontroleru Nginx příchozího přenosu dat 
+## <a name="deploy-an-nginx-ingress-controller-chart"></a>Nasazení grafu řadiče příchozího přenosu dat Nginx 
  
-Pokud chcete nasadit graf Nginx příchozího adaptéru, zadejte jeden příkaz:
+Chcete-li nasadit graf řadiče příchozího přenosu dat Nginx, zadejte jeden příkaz:
 
 ```bash
 helm install stable/nginx-ingress 
 ```
-![Nasazení řadiče pro příchozí přenosy](./media/container-service-kubernetes-helm/nginx-ingress.png)
+![Nasazení řadiče příchozího přenosu dat](./media/container-service-kubernetes-helm/nginx-ingress.png)
 
-Pokud zadáte `kubectl get svc` pro zobrazení všech služeb, které běží na clusteru, uvidíte, že je IP adresa přiřazená k řadiči příchozího přenosu dat. (V průběhu přiřazování se zobrazí `<pending>`. Dokončení trvá několik minut.) 
+Pokud zadáte `kubectl get svc` zobrazit všechny služby, které jsou spuštěny v clusteru, uvidíte, že IP adresa je přiřazena k řadiči příchozího přenosu dat. (Během probíhá ní, zobrazí `<pending>`se . Dokončení trvá několik minut.) 
 
-Po přiřazení IP adresy přejděte k hodnotě externí IP adresa a podívejte se na běžící Nginx back-end. 
+Po přiřazení ip adresy přejděte na hodnotu externí IP adresy a zjisti, že je spuštěn back-end Nginx. 
  
-![IP adresa příchozího přenosu dat](./media/container-service-kubernetes-helm/ingress-ip-address.png)
+![Ip adresa příchozího přenosu dat](./media/container-service-kubernetes-helm/ingress-ip-address.png)
 
 
-Pokud chcete zobrazit seznam grafů nainstalovaných v clusteru, zadejte:
+Chcete-li zobrazit seznam grafů nainstalovaných v clusteru, zadejte:
 
 ```bash
 helm list 
 ```
 
-Můžete zkrátit příkaz na `helm ls`.
+Příkaz můžete zkrátit na `helm ls`.
  
  
  
  
 ## <a name="deploy-a-mariadb-chart-and-client"></a>Nasazení grafu MariaDB a klienta
 
-Teď nasaďte graf MariaDB a klienta MariaDB pro připojení k databázi.
+Nyní nasaďte graf MariaDB a klienta MariaDB pro připojení k databázi.
 
-K nasazení grafu MariaDB zadejte následující příkaz:
+Chcete-li nasadit tabulku MariaDB, zadejte následující příkaz:
 
 ```bash
 helm install --name v1 stable/mariadb
 ```
 
-kde `--name` je značka použitá pro vydání.
+kde `--name` je značka používaná pro vydání.
 
 > [!TIP]
-> V případě neúspěšného nasazení spusťte `helm repo update` a zkuste to znovu.
+> Pokud se nasazení `helm repo update` nezdaří, spusťte a akci opakujte.
 >
  
  
@@ -122,32 +122,32 @@ Chcete-li zobrazit všechny grafy nasazené v clusteru, zadejte:
 helm list
 ```
  
-Pokud chcete zobrazit všechna nasazení spuštěná v clusteru, zadejte:
+Chcete-li zobrazit všechna nasazení spuštěná v clusteru, zadejte:
 
 ```bash
 kubectl get deployments 
 ``` 
  
  
-Nakonec, pokud chcete pro přístup k klientovi spustit pod, typ:
+Nakonec chcete-li spustit pod pro přístup ke klientovi, zadejte:
 
 ```bash
 kubectl run v1-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- bash  
 ``` 
  
  
-Pokud se chcete připojit ke klientovi, zadejte následující příkaz a nahraďte `v1-mariadb` názvem vašeho nasazení:
+Chcete-li se připojit ke klientovi, `v1-mariadb` zadejte následující příkaz, který nahradí názvem nasazení:
 
 ```bash
 sudo mysql –h v1-mariadb
 ```
  
  
-Nyní můžete použít standardní příkazy SQL pro vytváření databází, tabulek atd. Například `Create DATABASE testdb1;` vytvoří prázdnou databázi. 
+Nyní můžete použít standardní příkazy SQL k vytváření databází, tabulek atd. Například `Create DATABASE testdb1;` vytvoří prázdnou databázi. 
  
  
  
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o správě Kubernetes grafů najdete v [dokumentaci k Helm](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
+* Další informace o správě Kubernetesových grafů naleznete v [dokumentaci k helmu](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
 

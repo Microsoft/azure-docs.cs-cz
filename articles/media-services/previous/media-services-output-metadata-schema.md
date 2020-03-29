@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services schéma metadat pro výstup | Microsoft Docs
-description: Tento článek obsahuje přehled schématu Azure Media Services výstupní metadata.
+title: Schéma výstupních metadat Azure Media Services | Dokumenty společnosti Microsoft
+description: Tento článek poskytuje přehled schématu výstupních metadat Azure Media Services.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,150 +15,150 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 3f0c6b60e2be625d1f869c3eda4acb9dfd3c6e9e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74886808"
 ---
 # <a name="output-metadata"></a>Výstupní metadata
 ## <a name="overview"></a>Přehled
-Úloha kódování je přidružená ke vstupnímu assetu (nebo assetům), na kterém chcete provést některé úlohy kódování. Například kódování souboru MP4 do H. 264 datových sad MP4 s adaptivní přenosovou rychlostí; Vytvořte miniaturu. Vytvořte překryvy. Po dokončení úlohy se vytvoří výstupní Asset.  Výstupní Asset obsahuje video, zvuk, miniatury atd. Výstupní Asset obsahuje také soubor s metadaty o výstupním prostředku. Název souboru XML s metadaty má následující formát: &lt;source_file_name&gt;_manifest. XML (například BigBuckBunny_manifest. XML).  
+Úloha kódování je přidružena ke vstupnímu prostředku (nebo datovým zdrojům), na kterém chcete provést některé úlohy kódování. Můžete například zakódovat soubor MP4 do adaptivních datových tokových sad H.264 MP4; vytvořit miniaturu; vytvářet překryvy. Po dokončení úkolu je vytvořen výstupní majetek.  Výstupní datový zdroj obsahuje video, zvuk, miniatury atd. Výstupní datový zdroj také obsahuje soubor s metadaty o výstupním datovém zdroji. Název souboru XML metadat má následující &lt;formát: source_file_name&gt;_manifest.xml (například BigBuckBunny_manifest.xml).  
 
-Media Services nesálu kontrolu vstupních assetů za účelem generování metadat. Vstupní metadata se generují jako artefakt, když se v úloze zpracuje vstupní Asset. Proto je tento artefakt zapsán do výstupního prostředku. Pro generování metadat pro vstupní prostředky a výstupní prostředky se používají různé nástroje. Vstupní metadata proto mají trochu jiné schéma než výstupní metadata.
+Služba Media Services nepreventivně neprohledá vstupní datové zdroje a nevygeneruje metadata. Vstupní metadata jsou generována pouze jako artefakt při zpracování vstupního datového zdroje v úloze. Proto je tento artefakt zapsán do výstupního assetu. Různé nástroje se používají ke generování metadat pro vstupní datové zdroje a výstupní datové zdroje. Vstupní metadata proto má mírně odlišné schéma než výstupní metadata.
 
-Pokud chcete prošetřit soubor metadat, můžete vytvořit Lokátor **SAS** a stáhnout soubor do místního počítače.  
+Chcete-li soubor metadat prozkoumat, můžete vytvořit lokátor **SAS** a stáhnout soubor do místního počítače.  
 
-Tento článek pojednává o prvcích a typech schématu XML, na kterém je založen výstup metada (&lt;source_file_name&gt;_manifest. XML). Informace o souboru, který obsahuje metadata o vstupním assetu, naleznete v tématu Input metadata.  
+Tento článek popisuje prvky a typy schématu XML, na kterém&lt;je&gt;založen výstup metada ( source_file_name _manifest.xml). Informace o souboru, který obsahuje metadata o vstupním datovém zdroji, naleznete v tématu Vstupní metadata.  
 
 Úplný kód schématu a příklad XML najdete na konci tohoto článku.  
 
-## <a name="AssetFiles"></a>Kořenový element AssetFiles
-Kolekce záznamů AssetFile pro úlohu kódování.  
+## <a name="assetfiles-root-element"></a><a name="AssetFiles"></a>Kořenový prvek AssetFiles
+Kolekce položek AssetFile pro úlohu kódování.  
 
 ### <a name="child-elements"></a>Podřízené prvky
 | Name (Název) | Popis |
 | --- | --- |
-| **AssetFile**<br/><br/> minOccurs = "0" maxOccurs = "1" |Element AssetFile, který je součástí kolekce AssetFiles. |
+| **Soubor majetku**<br/><br/> minOccurs="0" maxOccurs="1" |AssetFile prvek, který je součástí AssetFiles kolekce. |
 
-## <a name="AssetFile"></a>Element AssetFile
-Příklad XML příklad XML najdete v [příkladu.](#xml)  
+## <a name="assetfile-element"></a><a name="AssetFile"></a>Element AssetFile
+Můžete najít příklad [XML XML příklad](#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Název**<br/><br/> Požaduje se |**xs: String** |Název souboru mediálního prostředku |
-| **Velikost**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: Long** |Velikost souboru prostředků v bajtech |
-| **Doba trvání**<br/><br/> Požaduje se |**xs: Duration** |Doba přehrávání obsahu |
+| **Název**<br/><br/> Požaduje se |**xs:řetězec** |Název souboru mediálního datového zdroje. |
+| **Velikost**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:dlouhé** |Velikost souboru datového zdroje v bajtech. |
+| **Doba trvání**<br/><br/> Požaduje se |**xs:doba trvání** |Doba přehrávání obsahu. |
 
 ### <a name="child-elements"></a>Podřízené prvky
 | Name (Název) | Popis |
 | --- | --- |
-| **Prostředky** |Kolekce vstupních/zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto AssetFile. Další informace naleznete v tématu Source element. |
-| **VideoTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. Další informace naleznete v tématu VideoTracks element. |
-| **AudioTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Každý fyzický AssetFile může v něm obsahovat nula nebo více zvukových stop, které se pronechají v příslušném formátu kontejneru. Toto je kolekce všech těchto zvukových stop. Další informace naleznete v tématu AudioTracks element. |
+| **Zdrojů** |Kolekce vstupních a zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto souboru AssetFile. Další informace naleznete v tématu Source element. |
+| **VideoSkladby**<br/><br/> minOccurs="0" maxOccurs="1" |Každý fyzický AssetFile může obsahovat v něm nula nebo více videí sleduje prokládány do příslušného formátu kontejneru. Další informace naleznete v tématu VideoTracks element. |
+| **Zvukové stopy**<br/><br/> minOccurs="0" maxOccurs="1" |Každý fyzický AssetFile může obsahovat v něm nula nebo více zvukových stop prokládány do příslušného formátu kontejneru. Tohle je sbírka všech těch zvukových stop. Další informace naleznete v tématu AudioTracks element. |
 
-## <a name="Sources"></a>Sources – element
-Kolekce vstupních/zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto AssetFile.  
+## <a name="sources-element"></a><a name="Sources"></a>Zdrojový prvek
+Kolekce vstupních a zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto souboru AssetFile.  
 
-Příklad XML příklad XML najdete v [příkladu.](#xml)  
+Můžete najít příklad [XML XML příklad](#xml).  
 
 ### <a name="child-elements"></a>Podřízené prvky
 | Name (Název) | Popis |
 | --- | --- |
-| **Zdroj**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Vstupní a zdrojový soubor, který se používá při generování tohoto prostředku. Další informace naleznete v tématu Source element. |
+| **Zdroj**<br/><br/> minOccurs="1" maxOccurs="bez meze" |Vstupní/zdrojový soubor použitý při generování tohoto datového zdroje. Další informace naleznete v tématu Source element. |
 
-## <a name="Source"></a>Zdrojový element
-Vstupní a zdrojový soubor, který se používá při generování tohoto prostředku.  
+## <a name="source-element"></a><a name="Source"></a>Zdrojový prvek
+Vstupní/zdrojový soubor použitý při generování tohoto datového zdroje.  
 
-Příklad XML příklad XML najdete v [příkladu.](#xml)  
+Můžete najít příklad [XML XML příklad](#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Název**<br/><br/> Požaduje se |**xs: String** |Název vstupního zdrojového souboru |
+| **Název**<br/><br/> Požaduje se |**xs:řetězec** |Název vstupního zdrojového souboru. |
 
-## <a name="VideoTracks"></a>Element VideoTracks
-Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. Element **VideoTracks** reprezentuje kolekci všech stop videa.  
+## <a name="videotracks-element"></a><a name="VideoTracks"></a>VideoTracks prvek
+Každý fyzický AssetFile může obsahovat v něm nula nebo více videí sleduje prokládány do příslušného formátu kontejneru. **VideoTracks** Prvek představuje kolekci všech stop videa.  
 
-Příklad XML příklad XML najdete v [příkladu.](#xml)  
-
-### <a name="child-elements"></a>Podřízené prvky
-| Name (Název) | Popis |
-| --- | --- |
-| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Konkrétní stopa videa v nadřazené AssetFile Další informace naleznete v tématu VideoTrack element. |
-
-## <a name="VideoTrack"></a>Element VideoTrack
-Konkrétní stopa videa v nadřazené AssetFile  
-
-Příklad XML příklad XML najdete v [příkladu.](#xml)  
-
-### <a name="attributes"></a>Atributy
-| Name (Název) | Typ | Popis |
-| --- | --- | --- |
-| **ID**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: int** |Index tohoto videa na základě nuly **Poznámka:**  Toto **ID** nemusí nutně být TrackID, jak se používá v souboru MP4. |
-| **FourCC**<br/><br/> Požaduje se |**xs: String** |FourCCový kodek pro video. |
-| **Profil** |**xs: String** |Profil H264 (platí jenom pro kodek H264). |
-| **Úroveň** |**xs: String** |Úroveň H264 (platí pouze pro kodek H264). |
-| **Délk**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: int** |Zakódovaná Šířka videa v pixelech |
-| **Výška**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: int** |Výška kódovaného videa v pixelech |
-| **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: Double** |Čítač zobrazení poměru stran videa |
-| **DisplayAspectRatioDenominator**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: Double** |Jmenovatel poměru stran zobrazení videa |
-| **Snímků**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: Decimal** |Měřená snímková frekvence videa ve formátu. 3F. |
-| **TargetFramerate**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: Decimal** |V formátu. 3F se přednastavená míra snímků cíle videa. |
-| **Rychlostí**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: int** |Průměrná přenosová rychlost videa v kilobitech za sekundu, jak se počítá z AssetFile. Počítá jenom základní datovou část datového proudu a nezahrnuje režijní náklady na balení. |
-| **TargetBitrate**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: int** |Průměrná přenosová rychlost pro tuto stopu videa, jak je požadováno prostřednictvím předvolby kódování v kilobitech za sekundu. |
-| **MaxGOPBitrate**<br/><br/> minInclusive = "0" |**xs: int** |Maximální přenosová rychlost skupinu GOP pro tuto stopu videa v kilobitech za sekundu |
-
-## <a name="AudioTracks"></a>Element AudioTracks
-Každý fyzický AssetFile může v něm obsahovat nula nebo více zvukových stop, které se pronechají v příslušném formátu kontejneru. Element **AudioTracks** reprezentuje kolekci všech těchto zvukových stop.  
-
-Příklad XML příklad XML najdete v [příkladu.](#xml)  
+Můžete najít příklad [XML XML příklad](#xml).  
 
 ### <a name="child-elements"></a>Podřízené prvky
 | Name (Název) | Popis |
 | --- | --- |
-| **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Konkrétní záznam zvuku v nadřazené AssetFile. Další informace naleznete v tématu AudioTrack element. |
+| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="bez meze" |Konkrétní stopa videa v nadřazeném souboru AssetFile. Další informace naleznete v tématu VideoTrack element. |
 
-## <a name="AudioTrack"></a>Element AudioTrack
-Konkrétní záznam zvuku v nadřazené AssetFile.  
+## <a name="videotrack-element"></a><a name="VideoTrack"></a>VideoTrack prvek
+Konkrétní stopa videa v nadřazeném souboru AssetFile.  
 
-Příklad XML příklad XML najdete v [příkladu.](#xml)  
+Můžete najít příklad [XML XML příklad](#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **ID**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: int** |Index této zvukové stopy založený na nule. **Poznámka:**  To není nutně TrackID, jak se používá v souboru MP4. |
-| **Kodek** |**xs: String** |Řetězec kodeku zvukového záznamu |
-| **EncoderVersion** |**xs: String** |Volitelný řetězec verze kodéru vyžadovaný pro EAC3. |
-| **Kanály**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: int** |Počet zvukových kanálů. |
-| **SamplingRate**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: int** |Vzorkovací frekvence zvuku v ukázkách/s nebo Hz. |
-| **Rychlostí**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: int** |Průměrná rychlost zvukového bitu v bitech za sekundu, jak se počítá z AssetFile. Počítá jenom základní datovou část datového proudu a nezahrnuje režijní náklady na balení. |
-| **BitsPerSample**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs: int** |Bity na vzorek pro typ formátu wFormatTag |
+| **ID**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:int** |Nulový index této video stopy. **Poznámka:**  Toto **ID** není nutně TrackID, jak je použito v souboru MP4. |
+| **Fourcc**<br/><br/> Požaduje se |**xs:řetězec** |Video kodek FourCC kód. |
+| **Profil** |**xs:řetězec** |Profil H264 (vztahuje se pouze na kodek H264). |
+| **Úroveň** |**xs:řetězec** |Úroveň H264 (vztahuje se pouze na kodek H264). |
+| **impulzu**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:int** |Zakódovaná šířka videa v pixelech. |
+| **Height**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:int** |Zakódovaná výška videa v pixelech. |
+| **Čítač DisplayAspectRatioNumerator**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:dvojitá** |Čitateč poměru stran zobrazení videa. |
+| **ZobrazitRatioRatioJmenovatel**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:dvojitá** |Jmenovatel poměru stran zobrazení videa. |
+| **Framerate**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:desetinné** |Naměřená kmitočet snímků videa ve formátu .3f. |
+| **Cílová míra rychlosti snímků**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:desetinné** |Přednastavená cílová kmitočet snímků videa ve formátu .3f. |
+| **Datový tok**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:int** |Průměrná přenosová rychlost videa v kilobitech za sekundu, jak je vypočítáno z AssetFile. Počítá pouze datové části elementárnídatový proud a nezahrnuje zatížení obalu. |
+| **Cílová bitová rychlost**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:int** |Cílový průměrný přenosový tok pro tuto stopu videa, jak je požadováno prostřednictvím přednastavení kódování, v kilobitech za sekundu. |
+| **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Maximální gop průměrný přenosový tok pro tuto video stopu v kilobitech za sekundu. |
+
+## <a name="audiotracks-element"></a><a name="AudioTracks"></a>Prvek AudioTracks
+Každý fyzický AssetFile může obsahovat v něm nula nebo více zvukových stop prokládány do příslušného formátu kontejneru. Prvek **AudioTracks** představuje kolekci všech těchto zvukových stop.  
+
+Můžete najít příklad [XML XML příklad](#xml).  
 
 ### <a name="child-elements"></a>Podřízené prvky
 | Name (Název) | Popis |
 | --- | --- |
-| **LoudnessMeteringResultParameters**<br/><br/> minOccurs = "0" maxOccurs = "1" |Parametry výsledku měření nahlasu. Další informace naleznete v tématu LoudnessMeteringResultParameters element. |
+| **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="bez meze" |Konkrétní zvuková stopa v nadřazeném souboru AssetFile. Další informace naleznete v tématu AudioTrack element. |
 
-## <a name="LoudnessMeteringResultParameters"></a>Element LoudnessMeteringResultParameters
-Parametry výsledku měření nahlasu.  
+## <a name="audiotrack-element"></a><a name="AudioTrack"></a>Prvek AudioTrack
+Konkrétní zvuková stopa v nadřazeném souboru AssetFile.  
 
-Příklad XML příklad XML najdete v [příkladu.](#xml)  
+Můžete najít příklad [XML XML příklad](#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **DPLMVersionInformation** |**xs: String** |Verze vývojové sady pro měření formátu **Dolby** Professional |
-| **DialogNormalization**<br/><br/> minInclusive = "-31" maxInclusive = "-1"<br/><br/> Požaduje se |**xs: int** |DialogNormalization generované prostřednictvím DPLM, pokud je nastavená LoudnessMetering |
-| **IntegratedLoudness**<br/><br/> minInclusive = "-70" maxInclusive = "10"<br/><br/> Požaduje se |**xs: float** |Integrovaná hlasitost |
-| **IntegratedLoudnessUnit**<br/><br/> Požaduje se |**xs: String** |Integrovaná jednotka hlasitého navýšení. |
-| **IntegratedLoudnessGatingMethod**<br/><br/> Požaduje se |**xs: String** |Identifikátor pro vyuzavírání |
-| **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive = "0" maxInclusive = "100" |**xs: float** |Nahlaste obsah přes program jako procento. |
-| **SamplePeak**<br/><br/> Požaduje se |**xs: float** |Špička absolutní ukázkové hodnoty, od resetu nebo od posledního vymazání podle kanálu.  Jednotky jsou dBFS. |
-| **SamplePeakUnit**<br/><br/> fixed="dBFS"<br/><br/> Požaduje se |**xs: anySimpleType** |Ukázková jednotka špičky. |
-| **TruePeak**<br/><br/> Požaduje se |**xs: float** |Maximální hodnota skutečné špičky, která je podle ITU-R BS. 1770-2, od resetu nebo od posledního vymazání za kanál. Jednotky jsou dBTP. |
-| **TruePeakUnit**<br/><br/> fixed="dBTP"<br/><br/> Požaduje se |**xs: anySimpleType** |True jednotka špičky. |
+| **ID**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:int** |Nulový index této zvukové stopy. **Poznámka:**  To to není nutně TrackID, jak je použito v souboru MP4. |
+| **Kodek** |**xs:řetězec** |Zvukový kód trackového kodeku. |
+| **Verze kodéru** |**xs:řetězec** |Volitelný řetězec verze kodéru, povinný pro EAC3. |
+| **Kanály**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:int** |Počet zvukových kanálů. |
+| **Vzorkovací míra**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:int** |Vzorkovací frekvence zvuku ve vzorcích/s nebo Hz. |
+| **Datový tok**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:int** |Průměrná přenosová rychlost zvuku v bitech za sekundu, jak je vypočtena z AssetFile. Počítá pouze datové části elementárnídatový proud a nezahrnuje zatížení obalu. |
+| **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> Požaduje se |**xs:int** |Bity na ukázku pro typ formátu wFormatTag. |
+
+### <a name="child-elements"></a>Podřízené prvky
+| Name (Název) | Popis |
+| --- | --- |
+| **Parametry Parametry Citostiměřiče Výsledků**<br/><br/> minOccurs="0" maxOccurs="1" |Parametry výsledku měření hlasitosti. Další informace naleznete v tématu LoudnessMeteringResultParameters element. |
+
+## <a name="loudnessmeteringresultparameters-element"></a><a name="LoudnessMeteringResultParameters"></a>Prvek LoudnessMeteringResultParameters
+Parametry výsledku měření hlasitosti.  
+
+Můžete najít příklad [XML XML příklad](#xml).  
+
+### <a name="attributes"></a>Atributy
+| Name (Název) | Typ | Popis |
+| --- | --- | --- |
+| **DPLMVersionInformace** |**xs:řetězec** |**Dolby** profesionální hlasitost měření vývoj kit verze. |
+| **DialogNormalizace**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> Požaduje se |**xs:int** |DialogNormalizace generované prostřednictvím DPLM, vyžadováno při nastavení hlasitostiMěření |
+| **Integrovaná hlasitost**<br/><br/> minInclusive="-70" maxInclusive="10"<br/><br/> Požaduje se |**xs:plovoucí** |Integrovaná hlasitost |
+| **IntegratedLoudnessUnit**<br/><br/> Požaduje se |**xs:řetězec** |Integrovaná jednotka hlasitosti. |
+| **Integrovaná metoda volání**<br/><br/> Požaduje se |**xs:řetězec** |Identifikátor gatingu |
+| **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive ="0" maxInclusive="100" |**xs:plovoucí** |Obsah řeči nad programem v procentech. |
+| **SamplePeak**<br/><br/> Požaduje se |**xs:plovoucí** |Maximální absolutní hodnota vzorku od resetování nebo od posledního vymazání na kanál.  Jednotky jsou dBFS. |
+| **SamplePeakUnit**<br/><br/> fixed="dBFS"<br/><br/> Požaduje se |**xs:anySimpleType** |Jednotka píku vzorku. |
+| **TruePeak**<br/><br/> Požaduje se |**xs:plovoucí** |Maximální hodnota skutečného vrcholu podle ITU-R BS.1770-2 od resetování nebo od posledního vymazání na kanál. Jednotky jsou dBTP. |
+| **Jednotka TruePeak**<br/><br/> fixed="dBTP"<br/><br/> Požaduje se |**xs:anySimpleType** |Skutečná špičková jednotka. |
 
 ## <a name="schema-code"></a>Kód schématu
     <?xml version="1.0" encoding="utf-8"?>  
@@ -509,9 +509,9 @@ Příklad XML příklad XML najdete v [příkladu.](#xml)
 
 
 
-## <a name="xml"></a>Příklad XML
+## <a name="xml-example"></a><a name="xml"></a>Příklad XML
 
-Následující kód XML je příkladem výstupního souboru s metadaty.  
+Následující kód XML je příkladem souboru výstupních metadat.  
 
     <AssetFiles xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema"   
                 xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata">  
@@ -602,5 +602,5 @@ Následující kód XML je příkladem výstupního souboru s metadaty.
 ## <a name="next-steps"></a>Další kroky
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

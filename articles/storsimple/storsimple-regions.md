@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
 ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275112"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Dostupné oblasti pro váš StorSimple
@@ -19,51 +19,51 @@ ms.locfileid: "76275112"
 
 ## <a name="overview"></a>Přehled
 
-Datacentra Azure pracují v různých geografických oblastech po celém světě, aby splňovala požadavky zákazníků na výkon, požadavky a preference týkající se umístění dat. Zeměpisná oblast Azure je definovaná oblast světa, která obsahuje alespoň jednu oblast Azure. Oblast Azure je oblast v rámci geografické oblasti, která obsahuje jedno nebo více datových center.
+Datová centra Azure fungují v několika zeměpisných oblastech po celém světě, aby splňovala požadavky zákazníků na výkon, požadavky a preference týkající se umístění dat. Azure geografie je definovaná oblast světa, která obsahuje alespoň jednu oblast Azure. Oblast Azure je oblast v rámci zeměpisné oblasti, obsahující jedno nebo více datových center.
 
-Výběr oblasti Azure je velmi důležitý a volba oblasti je ovlivněna činiteli, jako je třeba umístění a svrchovanost dat, dostupnost služeb, výkon, náklady a redundance. Další informace o tom, jak zvolit oblast, najdete v článku o tom, [která oblast Azure je pro mě ta pravá?](https://azure.microsoft.com/overview/datacenters/how-to-choose/)
+Výběr oblasti Azure je velmi důležité a výběr oblasti je ovlivněnfaktory, jako je rezidence dat a suverenity, dostupnost služeb, výkon, náklady a redundance. Další informace o tom, jak si vybrat oblast, najdete v [tématu Která oblast Azure je pro mě ta pravá?](https://azure.microsoft.com/overview/datacenters/how-to-choose/)
 
-V případě řešení StorSimple je volba oblasti určena konkrétně následujícími faktory:
+Pro řešení StorSimple je volba oblasti specificky určena následujícími faktory:
 
-- Oblasti, ve kterých je dostupná služba StorSimple Device Manager.
-- Země nebo oblasti, kde je k dispozici fyzický, Cloud nebo virtuální zařízení StorSimple.
-- Pro optimální výkon by měly být umístěny oblasti, ve kterých jsou uloženy účty úložiště s StorSimple daty.
+- Oblasti, kde je k dispozici služba StorSimple Device Manager.
+- Země nebo oblasti, kde je k dispozici fyzické, cloudové nebo virtuální zařízení StorSimple.
+- Oblasti, kde účty úložiště, které ukládají data StorSimple by měla být umístěna pro optimální výkon.
 
-Tento kurz popisuje dostupnost oblasti pro službu StorSimple Device Manager, místní fyzické a cloudová zařízení. Informace obsažené v tomto článku se vztahují na zařízení StorSimple 8000 a 1200 Series.
+Tento kurz popisuje dostupnost oblasti pro službu StorSimple Device Manager, místní fyzické a cloudová zařízení. Informace obsažené v tomto článku je použitelná pro zařízení řady StorSimple 8000 a 1200.
 
 ## <a name="region-availability-for-storsimple-device-manager-service"></a>Dostupnost oblasti pro službu StorSimple Device Manager
 
-Služba StorSimple Device Manager se v současné době podporuje ve 12 veřejných oblastech a 2 Azure Government oblastech.
+Služba StorSimple Device Manager je momentálně podporovaná ve 12 veřejných oblastech a ve 2 oblastech Azure Government.
 
-Oblast nebo umístění definujete při prvním vytvoření služby StorSimple Device Manager. Obecně se volí umístění nejbližší k geografické oblasti, kde je zařízení nasazené. Zařízení a služba se ale dají nasadit i v různých umístěních.
+Při prvním vytvoření služby StorSimple Device Manager definujete oblast nebo umístění. Obecně je vybráno umístění, které je nejblíže zeměpisné oblasti, kde je zařízení nasazeno. Ale zařízení a služba mohou být také nasazeny na různých místech.
 
-Tady je seznam oblastí, kde je služba StorSimple Device Manager pro veřejný cloud Azure dostupná a dá se nasadit.
+Tady je seznam oblastí, kde je služba StorSimple Device Manager dostupná pro veřejný cloud Azure a dá se nasadit.
 
 ![storsimple-device-manager-service-regions](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
-Pro Azure Government Cloud je služba Device Manager StorSimple dostupná v datových centrech US Gov – Iowa a US Gov – Virginie.
+Pro cloud Azure Government je služba StorSimple Device Manager dostupná v datových centrech US Gov Iowa a US Gov Virginia.
 
-## <a name="region-availability-for-data-stored-in-storsimple"></a>Dostupnost oblastí pro data uložená v StorSimple
+## <a name="region-availability-for-data-stored-in-storsimple"></a>Dostupnost oblasti pro data uložená v StorSimple
 
-Data StorSimple se fyzicky ukládají v účtech Azure Storage a tyto účty jsou dostupné ve všech oblastech Azure. Když vytvoříte účet úložiště Azure, vybere se primární umístění účtu úložiště a určí se oblast, kde se data nacházejí.
+Data StorSimple se fyzicky ukládají v účtech úložiště Azure a tyto účty jsou dostupné ve všech oblastech Azure. Když vytvoříte účet úložiště Azure, vybere se primární umístění účtu úložiště, které určuje oblast, kde se data nacházejí.
 
-Když poprvé vytvoříte službu StorSimple Device Manager a přidružíte k ní účet úložiště, vaše služba StorSimple Device Manager a Azure Storage můžou být ve dvou různých umístěních. V takovém případě je nutné vytvořit Správce zařízení StorSimple a účet úložiště Azure odděleně.
+Při prvním vytvoření služby StorSimple Device Manager a přidružit účet úložiště s ním, vaše služba StorSimple Device Manager a úložiště Azure může být ve dvou samostatných umístěních. V takovém případě je nutné vytvořit Správce zařízení StorSimple a účet úložiště Azure odděleně.
 
-V části Obecné vyberte do služby pro svůj účet úložiště nejbližší oblast. Nejbližší Microsoft Azure oblast ale nemusí být ve skutečnosti oblastí s nejnižší latencí. Jedná se o latenci, která určuje výkon síťové služby, a to i výkon řešení. Takže pokud zvolíte účet úložiště v jiné oblasti, je důležité znát, co jsou latence mezi vaší službou a oblastí přidruženou k vašemu účtu úložiště.
+Obecně zvolte nejbližší oblast služby pro váš účet úložiště. Nejbližší oblast Microsoft Azure však nemusí být ve skutečnosti oblast s nejnižší latencí. Je latence, která určuje výkon síťové služby a tedy výkon řešení. Pokud tedy vybíráte účet úložiště v jiné oblasti, je důležité vědět, jaké jsou latence mezi vaší službou a oblastí přidruženou k vašemu účtu úložiště.
 
-Pokud používáte StorSimple Cloud Appliance, doporučujeme, aby služba a přidružený účet úložiště byly ve stejné oblasti. Účty úložiště v jiné oblasti můžou mít za následek špatný výkon.
+Pokud používáte StorSimple Cloud Appliance, pak doporučujeme, aby služba a přidružený účet úložiště jsou ve stejné oblasti. Účty úložiště v jiné oblasti může mít za následek nízký výkon.
 
 ## <a name="availability-of-storsimple-device"></a>Dostupnost zařízení StorSimple
 
-V závislosti na modelu mohou být zařízení StorSimple k dispozici v různých geografických oblastech nebo zemích nebo oblastech.
+V závislosti na modelu mohou být zařízení StorSimple k dispozici v různých zeměpisných oblastech nebo zemích nebo oblastech.
 
-### <a name="storsimple-physical-device-models-81008600"></a>StorSimple fyzické zařízení (modely 8100/8600)
+### <a name="storsimple-physical-device-models-81008600"></a>StorJednoduché fyzické zařízení (modely 8100/8600)
 
-Pokud používáte fyzické zařízení s StorSimple 8100 nebo 8600, je zařízení dostupné v následujících zemích nebo oblastech.
+Pokud používáte fyzické zařízení StorSimple 8100 nebo 8600, je zařízení k dispozici v následujících zemích nebo oblastech.
 
-| #  | Země/oblast        | #  | Země/oblast     | #  | Země/oblast      | #  | Země/oblast             |
+| #  | Země/region        | #  | Země/region     | #  | Země/region      | #  | Země/region             |
 |----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
-| 1\. místo  | Austrálie             | 16 | Hongkong – zvláštní správní oblast      | 31 | Nový Zéland         | 46 | Jihoafrická republika               |
+| 1  | Austrálie             | 16 | Hongkong – zvláštní správní oblast      | 31 | Nový Zéland         | 46 | Jižní Afrika               |
 | 2  | Rakousko               | 17 | Maďarsko            | 32 | Nigérie             | 47 | Jižní Korea                |
 | 3  | Bahrajn               | 18 | Island            | 33 | Norsko              | 48 | Španělsko                      |
 | 4  | Belgie               | 19 | Indie              | 34 | Peru                | 49 | Srí Lanka                  |
@@ -79,25 +79,25 @@ Pokud používáte fyzické zařízení s StorSimple 8100 nebo 8600, je zaříze
 | 14 | Německo               | 29 | Mexiko             | 44 | Slovensko            | 59 | Vietnam                    |
 | 15 | Řecko                | 30 | Nizozemsko        | 45 | Slovinsko            | 60 | Chorvatsko                    |
 
-Tento seznam se změní při přidání dalších zemí nebo oblastí. Nejaktuálnější seznam geografických oblastí najdete v dodatku k podmínkám pole úložiště v části s [podmínkami produktu](https://www.microsoft.com/en-us/licensing/product-licensing/products).
+Tento seznam se mění s přidáním dalších zemí nebo oblastí. Nejaktuálnější seznam zeměpisných oblastí naleznete v dodatku podmínek pole úložiště v [podmínkách produktu](https://www.microsoft.com/en-us/licensing/product-licensing/products).
 
-Společnost Microsoft může dodávat fyzický hardware a dodávat náhradní součásti hardwaru pro StorSimple do geografických oblastí v předchozím seznamu.
+Společnost Microsoft může doručovat fyzický hardware a poskytnout náhradu náhradních dílů pro náhradní díly Pro StorSimple do zeměpisných oblastí v předchozím seznamu.
 
 > [!IMPORTANT]
-> StorSimple fyzické zařízení neumísťujte do oblasti, kde není podporována StorSimple. Společnost Microsoft nebude schopna dodávat žádné náhradní části do zemí nebo oblastí, kde StorSimple není podporováno.
+> Neumisťuj fyzické zařízení StorSimple do oblasti, kde není podporováno StorSimple. Společnost Microsoft nebude moci odesílat žádné náhradní díly do zemí nebo oblastí, kde není podporována služba StorSimple.
 
 ### <a name="storsimple-cloud-appliance-models-80108020"></a>StorSimple Cloud Appliance (modely 8010/8020)
 
-Pokud používáte StorSimple Cloud Appliance 8010 nebo 8020, bude zařízení podporované a dostupné ve všech oblastech, kde je podporovaný příslušný virtuální počítač. 8010 používá virtuální počítač _Standard_A3_ , který je podporovaný ve všech oblastech Azure.
+Pokud používáte StorSimple Cloud Appliance 8010 nebo 8020, pak zařízení je podporované a dostupné ve všech oblastech, kde je podporován základní virtuální modul. 8010 používá _virtuální počítač Standard_A3,_ který je podporovaný ve všech oblastech Azure.
 
-8020 používá úložiště Premium a _Standard_DS3_ virtuální počítač k vytvoření cloudového zařízení. 8020 se podporuje v oblastech Azure, které podporují Premium Storage a _Standard_DS3_ virtuálních počítačů Azure. Použijte [tento seznam](https://azure.microsoft.com/regions/services/), abyste zjistili, jestli jsou ve vaší oblasti dostupné obě možnosti **Virtuální počítače > DS-series** a **Úložiště > Diskové úložiště**.
+8020 využívá prvotřídní úložiště a Standard_DS3 virtuálním _zařízení_ k vytvoření cloudového zařízení. 8020 je podporovaná v oblastech Azure, které podporují úložiště Premium a _Standard_DS3_ virtuálních počítačích Azure. Použijte [tento seznam](https://azure.microsoft.com/regions/services/), abyste zjistili, jestli jsou ve vaší oblasti dostupné obě možnosti **Virtuální počítače > DS-series** a **Úložiště > Diskové úložiště**.
 
-### <a name="storsimple-virtual-array-model-1200"></a>Virtuální pole StorSimple (model 1200)
+### <a name="storsimple-virtual-array-model-1200"></a>StorSimple Virtuální pole (Model 1200)
 
-Pokud používáte virtuální pole řady 1200 Series StorSimple, je image virtuálního disku podporovaná ve všech oblastech Azure.
+Pokud používáte 1200 řady StorSimple Virtual Array, pak image virtuálního disku je podporována ve všech oblastech Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [cenách různých modelů StorSimple](https://azure.microsoft.com/pricing/calculator/#storsimple2).
+* Další informace o [cenách pro různé modely StorSimple](https://azure.microsoft.com/pricing/calculator/#storsimple2).
 * Přečtěte si další informace o [správě účtu úložiště StorSimple](storsimple-8000-manage-storage-accounts.md).
-* Přečtěte si další informace o tom, jak [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Další informace o tom, jak [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).

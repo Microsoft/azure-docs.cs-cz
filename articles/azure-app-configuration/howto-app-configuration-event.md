@@ -1,6 +1,6 @@
 ---
 title: Odeslání událostí do webového koncového bodu pomocí konfigurace aplikace Azure
-description: Naučte se používat odběry událostí Azure App Configuration k odesílání událostí úprav klíč-hodnota do webového koncového bodu.
+description: Naučte se používat odběry událostí konfigurace aplikace Azure k odesílání událostí změny hodnoty klíče do webového koncového bodu
 services: azure-app-configuration
 author: lisaguthrie
 ms.assetid: ''
@@ -10,23 +10,23 @@ ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: da64f22981cc33772783093cfe75daa3eac5cef1
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672143"
 ---
-# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Směrování událostí konfigurace aplikace Azure do webového koncového bodu pomocí Azure CLI
+# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Směrování událostí konfigurace aplikací Azure do webového koncového bodu pomocí azure cli
 
-V tomto článku se dozvíte, jak nastavit odběry událostí konfigurace aplikací Azure pro odesílání událostí úprav klíč-hodnota do webového koncového bodu. Uživatelé Azure App Configuration se můžou přihlásit k odběru událostí emitovaných při změně klíčových hodnot. Tyto události mohou aktivovat Webhooky, Azure Functions, Azure Storage fronty nebo jakékoli jiné obslužné rutiny událostí, které Azure Event Grid podporuje. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
+V tomto článku se dozvíte, jak nastavit odběry událostí konfigurace aplikace Azure k odeslání událostí změny hodnoty klíče do webového koncového bodu. Uživatelé konfigurace aplikace Azure se můžou přihlásit k odběru událostí vyzařovaných při každé změně hodnot klíče. Tyto události můžou aktivovat webové háčky, funkce Azure, fronty úložiště Azure nebo jakoukoli jinou obslužnou rutinu událostí, kterou podporuje Azure Event Grid. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/). Volitelně můžete použít Azure Cloud Shell.
+- Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/). Azure Cloud Shell můžete volitelně použít.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou nejnovější verzi rozhraní příkazového řádku Azure CLI (2.0.70 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat příkazcli místně, tento článek vyžaduje, abyste spouštěli nejnovější verzi Azure CLI (2.0.70 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 Pokud nepoužíváte Cloud Shell, musíte se nejprve přihlásit pomocí příkazu `az login`.
 
@@ -36,15 +36,15 @@ Témata služby Event Grid jsou prostředky Azure a musí být umístěné ve sk
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). 
 
-Následující příklad vytvoří skupinu prostředků s názvem `<resource_group_name>` v umístění *westus* .  Nahraďte `<resource_group_name>` jedinečným názvem vaší skupiny prostředků.
+Následující příklad vytvoří skupinu `<resource_group_name>` prostředků s názvem v umístění *westus.*  Nahraďte `<resource_group_name>` jedinečným názvem vaší skupiny prostředků.
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westus
 ```
 
-## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
+## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikací
 
-Nahraďte `<appconfig_name>` jedinečným názvem pro úložiště konfigurace a `<resource_group_name>` se skupinou prostředků, kterou jste vytvořili dříve. Název musí být jedinečný, protože se používá jako název DNS.
+Nahraďte `<appconfig_name>` jedinečnýnázev úložiště konfigurace `<resource_group_name>` a skupinu prostředků, kterou jste vytvořili dříve. Název musí být jedinečný, protože se používá jako název DNS.
 
 ```azurecli-interactive
 az appconfig create \
@@ -75,9 +75,9 @@ Měli byste vidět web aktuálně bez zobrazených zpráv.
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-your-app-configuration-store"></a>Přihlášení k odběru úložiště konfigurace aplikace
+## <a name="subscribe-to-your-app-configuration-store"></a>Přihlásit se k odběru obchodu konfigurace aplikací
 
-K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat a kam má tyto události odesílat. V následujícím příkladu se přihlásí k odběru konfigurace aplikace, kterou jste vytvořili, a předá adresu URL z vaší webové aplikace jako koncový bod pro oznamování událostí. Nahraďte řetězec `<event_subscription_name>` názvem odběru události. Místo `<resource_group_name>` a `<appconfig_name>` použijte hodnoty názvu skupiny prostředků a názvu účtu úložiště, které jste vytvořili dříve.
+K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat a kam má tyto události odesílat. Následující příklad se přihlásí k konfiguraci aplikace, kterou jste vytvořili, a předá adresu URL z webové aplikace jako koncový bod pro oznámení události. Nahraďte řetězec `<event_subscription_name>` názvem odběru události. Místo `<resource_group_name>` a `<appconfig_name>` použijte hodnoty názvu skupiny prostředků a názvu účtu úložiště, které jste vytvořili dříve.
 
 Koncový bod pro webovou aplikaci musí obsahovat příponu `/api/updates/`.
 
@@ -95,9 +95,9 @@ Podívejte se na webovou aplikaci znovu a všimněte si, že do ní byla odeslá
 
 ![Zobrazení události odběru](./media/quickstarts/event-grid/view-subscription-event.png)
 
-## <a name="trigger-an-app-configuration-event"></a>Aktivace události konfigurace aplikace
+## <a name="trigger-an-app-configuration-event"></a>Aktivace události Konfigurace aplikace
 
-Nyní aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. Vytvořte klíčovou hodnotu pomocí `<appconfig_name>` ze starší verze.
+Nyní aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. Vytvořte hodnotu klíče `<appconfig_name>` pomocí z dříve.
 
 ```azurecli-interactive
 az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
@@ -122,7 +122,7 @@ Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncov
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud chcete pokračovat v práci s touto konfigurací aplikace a odběrem událostí, neprovádějte čištění prostředků vytvořených v tomto článku. Pokud pokračovat nechcete, pomocí následujícího příkazu odstraňte prostředky, které jste v rámci tohoto článku vytvořili.
+Pokud máte v plánu pokračovat v práci s touto konfigurací aplikace a odběr událostí, nečistěte prostředky vytvořené v tomto článku. Pokud pokračovat nechcete, pomocí následujícího příkazu odstraňte prostředky, které jste v rámci tohoto článku vytvořili.
 
 Nahraďte `<resource_group_name>` názvem skupiny prostředků, kterou jste vytvořili výše.
 
@@ -132,8 +132,8 @@ az group delete --name <resource_group_name>
 
 ## <a name="next-steps"></a>Další kroky
 
-Když teď víte, jak vytvářet témata a odběry událostí, přečtěte si další informace o událostech klíč-hodnota a o tom, co Event Grid vám může pomáhat:
+Teď, když víte, jak vytvářet témata a odběry událostí, přečtěte si další informace o událostech s klíčovou hodnotou a o tom, co vám aplikace Event Grid může pomoci:
 
-- [Reakce na události klíč-hodnota](concept-app-configuration-event.md)
+- [Reakce na události mezi klíčem a hodnotou](concept-app-configuration-event.md)
 - [Informace o službě Event Grid](../event-grid/overview.md)
-- [Obslužné rutiny Azure Event Grid](../event-grid/event-handlers.md)
+- [Obslužné rutiny azure event gridu](../event-grid/event-handlers.md)

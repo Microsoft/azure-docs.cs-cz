@@ -1,31 +1,31 @@
 ---
-title: Konfigurace a čtení protokolů pomocí Azure Functions triggeru pro Cosmos DB
-description: Naučte se, jak vystavit protokoly do kanálu protokolování Azure Functions při použití triggeru Azure Functions pro Cosmos DB
+title: Konfigurace a čtení protokolů pomocí aktivační události Azure Functions pro Cosmos DB
+description: Zjistěte, jak zpřístupnit protokoly kanálu protokolování funkcí Azure při použití aktivační události Azure pro Cosmos DB
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.openlocfilehash: 5ff747b225f8984bcaafd80015e85a9f014bdb50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441832"
 ---
-# <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>Jak nakonfigurovat a číst protokoly při použití triggeru Azure Functions pro Cosmos DB
+# <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>Jak nakonfigurovat a číst protokoly při použití aktivační události Azure funkce pro Cosmos DB
 
-Tento článek popisuje, jak můžete nakonfigurovat prostředí Azure Functions k odeslání triggeru Azure Functions pro Cosmos DB protokolů do nakonfigurovaného [řešení monitorování](../azure-functions/functions-monitoring.md).
+Tento článek popisuje, jak můžete nakonfigurovat prostředí Azure Functions tak, aby odesílalo aktivační událost Azure Functions pro protokoly Cosmos DB do vašeho nakonfigurovaného [řešení monitorování](../azure-functions/functions-monitoring.md).
 
 ## <a name="included-logs"></a>Zahrnuté protokoly
 
-Aktivační událost Azure Functions pro Cosmos DB používá interní [knihovnu Change feed Processor](./change-feed-processor.md) a knihovna generuje sadu protokolů o stavu, které lze použít k monitorování interních operací pro [účely řešení potíží](./troubleshoot-changefeed-functions.md).
+Aktivační událost Funkce Azure pro Cosmos DB používá [knihovnu kanálu změn interně](./change-feed-processor.md) a knihovna generuje sadu protokolů stavu, které lze použít ke sledování interních operací pro [účely řešení potíží](./troubleshoot-changefeed-functions.md).
 
-Protokoly o stavu popisují, jak Azure Functions Trigger pro Cosmos DB při pokusu o provedení operací při vyrovnávání zatížení nebo při inicializaci chovat.
+Protokoly stavu popisují, jak se aktivační událost Azure Functions pro Cosmos DB chová při pokusu o operace během scénářů vyrovnávání zatížení nebo inicializace.
 
 ## <a name="enabling-logging"></a>Povolení protokolování
 
-Pokud chcete povolit protokolování při použití triggeru Azure Functions pro Cosmos DB, vyhledejte soubor `host.json` v projektu Azure Functions nebo v Azure Functions aplikaci a [nakonfigurujte úroveň požadovaného protokolování](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). Je nutné povolit trasování pro `Host.Triggers.CosmosDB`, jak je znázorněno v následující ukázce:
+Chcete-li povolit protokolování při použití aktivační `host.json` události Azure pro Cosmos DB, vyhledejte soubor v projektu Azure Functions nebo Aplikaci Azure Functions a [nakonfigurujte úroveň požadovaného protokolování](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). Musíte povolit trasování, `Host.Triggers.CosmosDB` jak je znázorněno v následujícím vzorku:
 
 ```js
 {
@@ -39,11 +39,11 @@ Pokud chcete povolit protokolování při použití triggeru Azure Functions pro
 }
 ```
 
-Po nasazení funkce Azure Functions s aktualizovanou konfigurací se v rámci trasování zobrazí Trigger Azure Functions pro Cosmos DB protokoly. Protokoly můžete zobrazit v nakonfigurovaném zprostředkovateli protokolování pod *kategorií* `Host.Triggers.CosmosDB`.
+Po nasazení funkce Azure s aktualizovanou konfigurací se jako součást trasování zobrazí aktivační událost Funkce Azure pro protokoly Cosmos DB. Protokoly v nakonfigurovaném poskytovateli protokolování můžete zobrazit v kategorii *.* `Host.Triggers.CosmosDB`
 
-## <a name="query-the-logs"></a>Dotazování protokolů
+## <a name="query-the-logs"></a>Dotaz na protokoly
 
-Spusťte následující dotaz pro dotazování protokolů generovaných triggerem Azure Functions pro Cosmos DB ve [službě Azure Application Insights Analytics](../azure-monitor/app/analytics.md):
+Spusťte následující dotaz k dotazování protokolů generovaných aktivační událostí Azure pro Cosmos DB v [Azure Application Insights ' Analytics](../azure-monitor/app/analytics.md):
 
 ```sql
 traces
@@ -52,5 +52,5 @@ traces
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Povolte monitorování](../azure-functions/functions-monitoring.md) v aplikacích Azure Functions.
-* Naučte se [diagnostikovat a řešit běžné problémy](./troubleshoot-changefeed-functions.md) při použití triggeru Azure Functions pro Cosmos DB.
+* [Povolte monitorování](../azure-functions/functions-monitoring.md) ve svých aplikacích Azure Functions.
+* Zjistěte, jak [diagnostikovat a řešit běžné problémy](./troubleshoot-changefeed-functions.md) při použití aktivační události Azure Funkce pro Cosmos DB.

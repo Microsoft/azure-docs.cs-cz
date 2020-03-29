@@ -1,6 +1,6 @@
 ---
-title: Vytvoření privátního koncového bodu Azure pomocí Azure PowerShell | Microsoft Docs
-description: Informace o privátním propojení Azure
+title: Vytvoření privátního koncového bodu Azure pomocí Azure PowerShellu| Dokumenty společnosti Microsoft
+description: Další informace o privátním propojení Azure
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430348"
 ---
-# <a name="create-a-private-endpoint-using-azure-powershell"></a>Vytvoření privátního koncového bodu pomocí Azure PowerShell
-Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení. 
+# <a name="create-a-private-endpoint-using-azure-powershell"></a>Vytvoření privátního koncového bodu pomocí Azure PowerShellu
+Privátní koncový bod je základní stavební blok pro privátní propojení v Azure. Umožňuje prostředky Azure, jako jsou virtuální počítače (VM), soukromě komunikovat s prostředky privátní ho propojení. 
 
-V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač v Virtual Network Azure, SQL Database Server s privátním koncovým bodem Azure pomocí Azure PowerShell. Pak můžete z virtuálního počítače bezpečně přistupovat k serveru SQL Database.
+V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač ve virtuální síti Azure, sql database server s privátním koncovým bodem Azure pomocí Azure PowerShellu. Potom můžete bezpečně přistupovat k databázovému serveru SQL z virtuálního účtu.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Než budete moci vytvořit prostředky, je nutné vytvořit skupinu prostředků, která hostuje Virtual Network a soukromý koncový bod pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *WestUS* :
+Před vytvořením prostředků je nutné vytvořit skupinu prostředků, která je hostitelem virtuální sítě a privátního koncového bodu s [new-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *WestUS:*
 
 ```azurepowershell
 
@@ -33,11 +33,11 @@ New-AzResourceGroup `
 ```
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-V této části vytvoříte virtuální síť a podsíť. Potom přidružíte podsíť k vašemu Virtual Network.
+V této části vytvoříte virtuální síť a podsíť. Dále přidružíte podsíť k virtuální síti.
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvořte virtuální síť pro privátní koncový bod pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří Virtual Network s názvem *MyVirtualNetwork*:
+Vytvořte virtuální síť pro svůj soukromý koncový bod pomocí [new-azvirtualnetwork](/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem *MyVirtualNetwork*:
  
 ```azurepowershell
 
@@ -48,9 +48,9 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-### <a name="add-a-subnet"></a>Přidat podsíť
+### <a name="add-a-subnet"></a>Přidání podsítě
 
-Azure nasadí prostředky do podsítě v rámci Virtual Network, takže je potřeba vytvořit podsíť. Vytvořte konfiguraci podsítě s názvem *mySubnet* pomocí [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig). Následující příklad vytvoří podsíť s názvem *mySubnet* s příznakem zásady sítě privátního koncového bodu nastavenou na **disabled (zakázáno**).
+Azure nasazuje prostředky do podsítě v rámci virtuální sítě, takže je potřeba vytvořit podsíť. Vytvořte konfiguraci podsítě s názvem *mySubnet* pomocí [funkce Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig). Následující příklad vytvoří podsíť s názvem *mySubnet* s příznakem zásad sítě privátního koncového bodu nastaveným na **Zakázáno**.
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -61,19 +61,19 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 ```
 
 > [!CAUTION]
-> Je snadné Zaměňujte parametr `PrivateEndpointNetworkPoliciesFlag` s jiným přístupným příznakem, `PrivateLinkServiceNetworkPoliciesFlag`, protože jsou to dlouhá slova a mají podobný vzhled.  Ujistěte se, že používáte tu správnou `PrivateEndpointNetworkPoliciesFlag`.
+> Je snadné zaměnit parametr `PrivateEndpointNetworkPoliciesFlag` s jiným příznakem k dispozici , `PrivateLinkServiceNetworkPoliciesFlag`protože jsou obě dlouhá slova a mají podobný vzhled.  Ujistěte se, že používáte ten správný, `PrivateEndpointNetworkPoliciesFlag`.
 
-### <a name="associate-the-subnet-to-the-virtual-network"></a>Přidružte podsíť k Virtual Network
+### <a name="associate-the-subnet-to-the-virtual-network"></a>Přidružení podsítě k virtuální síti
 
-Konfiguraci podsítě můžete zapsat do Virtual Network pomocí [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork). Tento příkaz vytvoří podsíť:
+Konfiguraci podsítě můžete zapsat do virtuální sítě pomocí [programu Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork). Tento příkaz vytvoří podsíť:
 
 ```azurepowershell
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
+## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač v Virtual Network pomocí [New-AzVM](/powershell/module/az.compute/new-azvm). Po spuštění dalšího příkazu budete vyzváni k zadání přihlašovacích údajů. Zadejte uživatelské jméno a heslo pro virtuální počítač:
+Vytvořte virtuální počítač ve virtuální síti s [New-AzVM](/powershell/module/az.compute/new-azvm). Při spuštění dalšího příkazu budete vyzváni k zadání pověření. Zadejte uživatelské jméno a heslo pro virtuální počítače:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -88,9 +88,9 @@ New-AzVm `
     -AsJob  
 ```
 
-Možnost `-AsJob` vytvoří virtuální počítač na pozadí. Můžete pokračovat k dalšímu kroku.
+Tato `-AsJob` možnost vytvoří virtuální ho svitek na pozadí. Můžete pokračovat dalším krokem.
 
-Když Azure začne vytvářet virtuální počítač na pozadí, získáte něco podobného:
+Když Azure začne vytvářet virtuální počítač na pozadí, dostanete něco takového zpět:
 
 ```powershell
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
@@ -98,9 +98,9 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
 ```
 
-## <a name="create-a-sql-database-server"></a>Vytvoření serveru SQL Database 
+## <a name="create-a-sql-database-server"></a>Vytvoření databázového serveru SQL 
 
-Vytvořte SQL Database Server pomocí příkazu New-AzSqlServer. Pamatujte, že název vašeho serveru SQL Database musí být v rámci Azure jedinečný, proto nahraďte hodnotu zástupného symbolu v závorkách vlastní jedinečnou hodnotou:
+Vytvořte databázový server SQL pomocí příkazu New-AzSqlServer. Nezapomeňte, že název serveru SQL Database musí být v azure jedinečný, proto zástupnou hodnotu v závorkách nahraďte vlastní jedinečnou hodnotou:
 
 ```azurepowershell-interactive
 $adminSqlLogin = "SqlAdmin"
@@ -120,7 +120,7 @@ New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
 
 ## <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
 
-Soukromý koncový bod pro server SQL Database v Virtual Network pomocí [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection): 
+Privátní koncový bod pro databázový server SQL ve virtuální síti s [připojením New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection): 
 
 ```azurepowershell
 
@@ -141,8 +141,8 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
   -PrivateLinkServiceConnection $privateEndpointConnection
 ``` 
 
-## <a name="configure-the-private-dns-zone"></a>Konfigurovat zónu Privátní DNS 
-Vytvořte privátní zónu DNS pro doménu serveru SQL Database a vytvořte propojení přidružení s virtuální sítí: 
+## <a name="configure-the-private-dns-zone"></a>Konfigurace privátní zóny DNS 
+Vytvořte privátní zónu DNS pro doménu databázového serveru SQL a vytvořte asociační propojení s virtuální sítí: 
 
 ```azurepowershell
 
@@ -170,7 +170,7 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 
-K vrácení veřejné IP adresy virtuálního počítače použijte [příkaz Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) . Tento příklad vrátí veřejnou IP adresu virtuálního počítače *myVM* :
+Pomocí [get-azPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) vrátit veřejnou IP adresu virtuálního počítačů. Tento příklad vrátí veřejnou IP adresu virtuálního virtuálního měna *myVM:*
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -178,11 +178,11 @@ Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress 
 ```  
-Otevřete příkazový řádek na místním počítači. Spusťte příkaz mstsc. Nahraďte <publicIpAddress> veřejnou IP adresou vrácenou z posledního kroku: 
+Otevřete příkazový řádek v místním počítači. Spusťte příkaz mstsc. Nahradit <publicIpAddress> veřejnou IP adresou vrácenou z posledního kroku: 
 
 
 > [!NOTE]
-> Pokud jste tyto příkazy spustili z příkazového řádku PowerShellu v místním počítači a používáte modul AZ PowerShell verze 1,0 nebo novější, můžete v tomto rozhraní pokračovat.
+> Pokud jste tyto příkazy spouštěli z výzvy prostředí PowerShell v místním počítači a používáte modul Az PowerShell verze 1.0 nebo novější, můžete v tomto rozhraní pokračovat.
 ```
 mstsc /v:<publicIpAddress>
 ```
@@ -190,14 +190,14 @@ mstsc /v:<publicIpAddress>
 1. Pokud se zobrazí výzva, vyberte **Připojit**. 
 2. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
   > [!NOTE]
-  > Možná budete muset vybrat další volby > použít jiný účet a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače. 
+  > Možná budete muset vybrat další volby > Použijte jiný účet, chcete-li zadat pověření, která jste zadali při vytváření virtuálního účtu. 
   
 3. Vyberte **OK**. 
-4. Může se zobrazit upozornění certifikátu. Pokud ano, vyberte **Ano** nebo **pokračovat**. 
+4. Může se zobrazit upozornění na certifikát. Pokud tak učiníte, vyberte **Ano** nebo **Pokračovat**. 
 
-## <a name="access-sql-database-server-privately-from-the-vm"></a>Přístup k serveru SQL Database soukromě z virtuálního počítače
+## <a name="access-sql-database-server-privately-from-the-vm"></a>Přístup k databázovému serveru SQL soukromě z virtuálního serveru
 
-1. Ve vzdálené ploše myVM otevřete PowerShell.
+1. Na vzdálené ploše myVM otevřete PowerShell.
 2. Zadejte `nslookup myserver.database.windows.net`. 
 
     Zobrazí se zpráva podobná této:
@@ -209,18 +209,18 @@ mstsc /v:<publicIpAddress>
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
     ```
-3. Nainstalovat SQL Server Management Studio
-4. V připojení k serveru zadejte nebo vyberte tyto informace: nastavení typu hodnoty serveru vyberte možnost databázový stroj.
-      Název serveru vyberte myserver.database.windows.net uživatelské jméno zadejte uživatelské jméno zadané během vytváření.
-      Heslo zadejte heslo, které jste zadali při vytváření.
-      Zapamatování hesla vyberte Ano.
-5. Vyberte připojit.
-6. Procházet databáze z levé nabídky 
-7. Volitelně Vytvoření nebo dotazování informací z MyDatabase
-8. Zavřete připojení ke vzdálené ploše pro *myVM*. 
+3. Instalace aplikace SQL Server Management Studio
+4. V pole Připojit k serveru zadejte nebo vyberte tyto informace: Nastavení typu hodnotového serveru Select Database Engine.
+      Název serveru Vyberte myserver.database.windows.net Uživatelské jméno Zadejte uživatelské jméno poskytnuté při vytváření.
+      Heslo: Zadejte heslo poskytnuté při vytváření.
+      Zapamatovat heslo Vyberte Ano.
+5. Vyberte Connect (Připojit).
+6. Procházet databáze z levé nabídky. 
+7. (Volitelně) Vytvoření nebo dotazování informací z databáze
+8. Zavřete připojení ke vzdálené ploše *myVM*. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
-Po dokončení používání privátního koncového bodu, SQL Database serveru a virtuálního počítače, použijte [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) a odeberte skupinu prostředků a všechny prostředky, které obsahuje:
+Po dokončení používání privátního koncového bodu, databázového serveru SQL a virtuálního serveru [odeberte](/powershell/module/az.resources/remove-azresourcegroup) skupinu prostředků a všechny prostředky, které má:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

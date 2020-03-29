@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s virtuálními počítači Azure pomocí nástrojů Remote Tools | Microsoft Docs
+title: Řešení problémů s virtuálním počítačem Azure pomocí vzdálených nástrojů | Dokumenty společnosti Microsoft
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,51 +15,51 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: b86b1a2d8a49554cc3df99e0a32a2c0ccaacb560
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920004"
 ---
-# <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Řešení potíží s virtuálními počítači Azure pomocí nástrojů Remote Tools
+# <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Řešení problémů s virtuálním počítačem Azure pomocí vzdálených nástrojů
 
-Při řešení problémů na virtuálním počítači Azure se můžete připojit k virtuálnímu počítači pomocí nástrojů Remote Tools popsaných v tomto článku místo použití protokol RDP (Remote Desktop Protocol) (RDP).
+Při řešení problémů na virtuálním počítači (VM) Azure se můžete připojit k virtuálnímu počítači pomocí vzdálených nástrojů, které jsou popsány v tomto článku namísto použití protokolu RDP (RdP).
 
 ## <a name="serial-console"></a>Konzola sériového portu
 
-Pomocí [sériové konzoly pro Azure Virtual Machines](serial-console-windows.md) spusťte příkazy na VZDÁLENÉm virtuálním počítači Azure.
+Ke spouštění příkazů na vzdáleném virtuálním počítači Azure použijte [sériovou konzolu pro virtuální počítače Azure.](serial-console-windows.md)
 
 ## <a name="remote-cmd"></a>Vzdálený CMD
 
-Stáhněte si [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec). Připojte se k virtuálnímu počítači spuštěním následujícího příkazu:
+Stáhnout [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec). Připojte se k virtuálnímu virtuálnímu provozu spuštěním následujícího příkazu:
 
 ```cmd
 psexec \\<computer>-u user -s cmd
 ```
 
 >[!NOTE]
->* Příkaz musí být spuštěný na počítači, který je ve stejné virtuální síti.
->* K nahrazení \<počítačovým > lze použít DIP nebo název hostitele.
->* Parametr-s zajistí, že se příkaz vyvolá pomocí systémového účtu (oprávnění správce).
->* PsExec používá porty TCP 135 a 445. V důsledku toho musí být oba porty otevřeny v bráně firewall.
+>* Příkaz musí být spuštěn v počítači, který je ve stejné virtuální síti.
+>* Dip nebo HostName lze \<nahradit> počítače.
+>* Parametr -s zajišťuje, že je příkaz vyvolán pomocí systémového účtu (oprávnění správce).
+>* PsExec používá tcp porty 135 a 445. V důsledku toho musí být oba porty otevřeny na bráně firewall.
 
-## <a name="run-command"></a>Spustit příkaz
+## <a name="run-command"></a>Spusťte příkaz .
 
-Další informace o tom, jak používat funkci Run Command ke spouštění skriptů na virtuálním počítači, najdete v tématu [spuštění skriptů PowerShellu na virtuálním počítači s Windows pomocí příkazu Spustit](../windows/run-command.md).
+Další informace o použití funkce příkazu spustit ke spouštění skriptů na virtuálním počítači najdete v tématu [Spuštění skriptů prostředí PowerShell v virtuálním počítači systému Windows pomocí příkazu spustit](../windows/run-command.md).
 
 ## <a name="custom-script-extension"></a>Rozšíření vlastních skriptů
 
-Pomocí funkce rozšíření vlastních skriptů můžete na cílovém virtuálním počítači spustit vlastní skript. Chcete-li použít tuto funkci, musí být splněny následující podmínky:
+Pomocí funkce Rozšíření vlastního skriptu můžete spustit vlastní skript na cílovém virtuálním počítači. Chcete-li tuto funkci použít, musí být splněny následující podmínky:
 
-* Virtuální počítač má připojení.
-* Agent virtuálního počítače Azure je nainstalovaný a na VIRTUÁLNÍm počítači funguje podle očekávání.
-* Rozšíření se dřív na virtuálním počítači nenainstalovalo.
+* Virtuální připojení má připojení.
+* Azure Virtual Machine Agent je nainstalovaný a funguje podle očekávání na virtuálním počítači.
+* Rozšíření nebyl dříve nainstalován na virtuálním počítači.
  
-  Rozšíření vloží skript pouze při prvním použití. Pokud tuto funkci použijete později, rozšíření rozpozná, že už je použité, a neodešle nový skript.
+  Rozšíření vloží skript pouze při prvním použití. Pokud tuto funkci použijete později, rozšíření rozpozná, že již bylo použito, a nenahraje nový skript.
 
-Nahrajte svůj skript do účtu úložiště a vygenerujte svůj vlastní kontejner. Pak na počítači, který má připojení k VIRTUÁLNÍmu počítači, spusťte následující skript Azure PowerShell.
+Nahrajte skript do účtu úložiště a vygenerujte vlastní kontejner. Potom spusťte následující skript v Azure PowerShell u počítače, který má připojení k virtuálnímu počítači.
 
-### <a name="for-classic-deployment-model-vms"></a>Pro virtuální počítače s modelem nasazení Classic
+### <a name="for-classic-deployment-model-vms"></a>Pro klasické virtuální počítače nasazení
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
@@ -90,7 +90,7 @@ $vm = Get-AzureVM -ServiceName $vmCloudService -Name $vmName
 Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName | Update-AzureVM
 ```
 
-### <a name="for-azure-resource-manager-vms"></a>Pro Azure Resource Manager virtuální počítače
+### <a name="for-azure-resource-manager-vms"></a>Pro virtuální počítače Azure Resource Manager
 
  
 
@@ -123,17 +123,17 @@ Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $
 ## <a name="remote-powershell"></a>Vzdálené prostředí PowerShell
 
 >[!NOTE]
->Aby bylo možné použít tuto možnost, musí být spuštěný port TCP 5986 (HTTPS).
+>Tcp Port 5986 (HTTPS) musí být otevřený, abyste mohli použít tuto možnost.
 >
->U Azure Resource Manager virtuálních počítačů musíte otevřít port 5986 ve skupině zabezpečení sítě (NSG). Další informace najdete v tématu skupiny zabezpečení. 
+>Pro virtuální počítače Azure Resource Manager je nutné otevřít port 5986 ve skupině zabezpečení sítě (NSG). Další informace naleznete v tématu Skupiny zabezpečení. 
 >
->U virtuálních počítačů RDFE musíte mít koncový bod, který má privátní port (5986) a veřejný port. Pak je také nutné otevřít tento veřejně přístupný port na NSG.
+>Pro virtuální zařízení RDFE musíte mít koncový bod, který má soukromý port (5986) a veřejný port. Potom budete muset také otevřít, že veřejný port na nsg.
 
 ### <a name="set-up-the-client-computer"></a>Nastavení klientského počítače
 
-Pokud chcete použít PowerShell pro vzdálené připojení k VIRTUÁLNÍmu počítači, musíte nejdřív nastavit klientský počítač, aby připojení bylo povolené. Pokud to chcete provést, přidejte virtuální počítač do seznamu důvěryhodných hostitelů PowerShellu tak, že podle potřeby spustíte následující příkaz.
+Chcete-li použít Prostředí PowerShell pro vzdálené připojení k virtuálnímu počítači, musíte nejprve nastavit klientský počítač, aby bylo připojení povoleno. Chcete-li to provést, přidejte virtuální ho do seznamu důvěryhodných hostitelů prostředí PowerShell spuštěním následujícího příkazu, podle potřeby.
 
-Postup přidání jednoho virtuálního počítače do seznamu důvěryhodných hostitelů:
+Přidání jednoho virtuálního virtuálního zařízení do seznamu důvěryhodných hostitelů:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName>
@@ -145,15 +145,15 @@ Přidání více virtuálních počítačů do seznamu důvěryhodných hostitel
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName1>,<ComputerName2>
 ```
 
-Chcete-li přidat všechny počítače do seznamu důvěryhodných hostitelů:
+Přidání všech počítačů do seznamu důvěryhodných hostitelů:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value *
 ```
 
-### <a name="enable-remoteps-on-the-vm"></a>Povolení RemotePS na virtuálním počítači
+### <a name="enable-remoteps-on-the-vm"></a>Povolení vzdáleného ps na virtuálním počítači
 
-Pro virtuální počítače vytvořené pomocí modelu nasazení Classic použijte rozšíření vlastních skriptů a spusťte následující skript:
+Pro virtuální počítače vytvořené pomocí klasického modelu nasazení spusťte pomocí rozšíření Vlastní skript k spuštění následujícího skriptu:
 
 ```powershell
 Enable-PSRemoting -Force
@@ -163,9 +163,9 @@ $command = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostn
 cmd.exe /C $command
 ```
 
-U Azure Resource Managerch virtuálních počítačů použijte příkazy spustit z portálu ke spuštění skriptu EnableRemotePS:
+Pro virtuální počítače Azure Resource Manager, použijte spustit příkazy z portálu ke spuštění enableRemotePS skript:
 
-![Spustit příkaz](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
+![Spusťte příkaz .](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
 
 ### <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
 
@@ -173,21 +173,21 @@ Spusťte následující příkaz založený na umístění klientského počíta
 
 * Mimo virtuální síť nebo nasazení
 
-  * U virtuálního počítače vytvořeného pomocí modelu nasazení Classic spusťte následující příkaz:
+  * Pro virtuální počítače vytvořené pomocí modelu klasického nasazení spusťte následující příkaz:
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * Pro Azure Resource Manager virtuální počítač přidejte do veřejné IP adresy název DNS. Podrobný postup najdete v tématu [Vytvoření plně kvalifikovaného názvu domény v Azure Portal pro virtuální počítač s Windows](../windows/portal-create-fqdn.md). Pak spusťte následující příkaz:
+  * Pro virtuální počítač Azure Resource Manager nejprve přidejte název DNS na veřejnou IP adresu. Podrobné kroky najdete [v tématu Vytvoření plně kvalifikovaného názvu domény na portálu Azure pro virtuální počítač s Windows](../windows/portal-create-fqdn.md). Pak spusťte následující příkaz:
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName "<<DNSname.DataCenter.cloudapp.azure.com>>" -port "5986" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-* V rámci virtuální sítě nebo nasazení spusťte následující příkaz:
+* Uvnitř virtuální sítě nebo nasazení spusťte následující příkaz:
   
   ```powershell
   $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -195,9 +195,9 @@ Spusťte následující příkaz založený na umístění klientského počíta
   ```
 
 >[!NOTE] 
->Nastavení příznaku SkipCaCheck obchází požadavek na Import certifikátu do virtuálního počítače při spuštění relace.
+>Nastavení příznaku SkipCaCheck obchází požadavek na import certifikátu do virtuálního soudu při spuštění relace.
 
-Můžete také použít rutinu Invoke-Command ke vzdálenému spuštění skriptu na virtuálním počítači.
+Rutina Invoke-Command můžete také použít ke vzdálenému spuštění skriptu na virtuálním počítači.
 
 ```powershell
 Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
@@ -206,54 +206,54 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 ## <a name="remote-registry"></a>Vzdálený registr
 
 >[!NOTE]
->Aby bylo možné použít tuto možnost, musí být spuštěný port TCP 135 nebo 445.
+>Aby bylo možné tuto možnost použít, musí být otevřený port TCP 135 nebo 445.
 >
->V případě Azure Resource Manager virtuálních počítačů je nutné na NSG otevřít port 5986. Další informace najdete v tématu skupiny zabezpečení. 
+>Pro virtuální počítače Azure Resource Manager, musíte otevřít port 5986 na nsg. Další informace naleznete v tématu Skupiny zabezpečení. 
 >
->U virtuálních počítačů RDFE musíte mít koncový bod s privátním portem 5986 a veřejným portem. Také je nutné otevřít tento veřejně přístupný port na NSG.
+>Pro virtuální připojení RDFE musíte mít koncový bod, který má soukromý port 5986 a veřejný port. Musíte také otevřít veřejný přístav na nsg.
 
-1. Z jiného virtuálního počítače ve stejné virtuální síti otevřete Editor registru (Regedit. exe).
+1. Z jiného virtuálního počítače ve stejné virtuální síti otevřete editor registru (regedit.exe).
 
-2. Vyberte **soubor** > **připojit síťový registr**.
+2. Vyberte **položku Registr** > připojení souborů **.**
 
    ![Editor registru](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
-3. Vyhledejte cílový virtuální počítač podle **názvu hostitele** nebo **dynamického protokolu IP** (vhodnější) tak, že ho zadáte do pole **Zadejte název objektu k výběru** .
+3. Locate the target VM by **host name** or **dynamic IP** (preferable) by entering it in the **Enter the object name to select** box.
 
-   ![Zadejte název objektu k výběru.](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
+   ![Zadejte pole s názvem objektu, který chcete vybrat.](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
  
-4. Zadejte přihlašovací údaje pro cílový virtuální počítač.
+4. Zadejte přihlašovací údaje pro cílový virtuální virtuální soud.
 
-5. Proveďte potřebné změny registru.
+5. Proveďte nezbytné změny registru.
 
 ## <a name="remote-services-console"></a>Konzola vzdálených služeb
 
 >[!NOTE]
->Aby bylo možné použít tuto možnost, musí být otevřeno porty TCP 135 nebo 445.
+>Aby bylo možné tuto možnost použít, musí být otevřeny porty TCP 135 nebo 445.
 >
->V případě Azure Resource Manager virtuálních počítačů je nutné na NSG otevřít port 5986. Další informace najdete v tématu skupiny zabezpečení. 
+>Pro virtuální počítače Azure Resource Manager, musíte otevřít port 5986 na nsg. Další informace naleznete v tématu Skupiny zabezpečení. 
 >
->U virtuálních počítačů RDFE musíte mít koncový bod s privátním portem 5986 a veřejným portem. Také je nutné otevřít tento veřejně přístupný port na NSG.
+>Pro virtuální připojení RDFE musíte mít koncový bod, který má soukromý port 5986 a veřejný port. Musíte také otevřít veřejný přístav na nsg.
 
-1. Z jiného virtuálního počítače ve stejné virtuální síti otevřete instanci **služby Services. msc**.
+1. Z jiného virtuálního počítače ve stejné virtuální síti otevřete instanci **Services.msc**.
 
-2. Klikněte pravým tlačítkem na **služby (místní)** .
+2. Klepněte pravým tlačítkem myši na **položku Služby (Místní).**
 
-3. Vyberte **připojit k jinému počítači**.
+3. Vyberte **Připojit k jinému počítači**.
 
    ![Vzdálená služba](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
 
-4. Zadejte dynamickou IP adresu cílového virtuálního počítače.
+4. Zadejte dynamickou IP adresu cílového virtuálního počítačů.
 
    ![Vstupní dynamická IP adresa](./media/remote-tools-troubleshoot-azure-vm-issues/input-ip-address.png)
 
-5. Proveďte potřebné změny služeb.
+5. Proveďte nezbytné změny služeb.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o rutině Enter-PSSession naleznete v tématu [Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx).
-- Další informace o rozšíření vlastních skriptů pro Windows s použitím modelu nasazení Classic najdete v tématu [rozšíření vlastních skriptů pro Windows](../extensions/custom-script-classic.md).
-- PsExec je součástí [sady nástroj PsTools](https://download.sysinternals.com/files/PSTools.zip).
-- Další informace o sadě nástroj PsTools naleznete v tématu [Nástroj PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
+- Další informace o rutině Enter-PSSession naleznete [v tématu Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx).
+- Další informace o vlastní aplikaci Script Extension pro Windows pomocí klasického modelu nasazení naleznete v [tématu Custom Script Extension for Windows](../extensions/custom-script-classic.md).
+- PsExec je součástí [sady PSTools Suite](https://download.sysinternals.com/files/PSTools.zip).
+- Další informace o sadě PSTools Suite naleznete v tématu [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
 
 

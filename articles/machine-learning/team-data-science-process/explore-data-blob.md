@@ -1,6 +1,6 @@
 ---
-title: Zkoumání dat ve službě Azure blob storage pomocí knihovny pandas - vědecké zpracování týmových dat
-description: Popisuje, jak zkoumat data, která je uložená v kontejneru objektů blob v Azure pomocí Pythonu balíčku pandas.
+title: Prozkoumejte data v úložišti objektů blob Azure pomocí pand – proces vědecké ho služky
+description: Jak prozkoumat data uložená v kontejneru objektů blob Azure pomocí balíčku pandas Python.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,28 +12,28 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 29011760a94a05020150ceddeba4303b87c2f610
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722182"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat ve službě Azure blob storage pomocí knihovny pandas
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Prozkoumejte data v úložišti objektů blob Azure pomocí pand
 
-Tento článek popisuje, jak prozkoumat data uložená v kontejneru objektů BLOB v Azure pomocí balíčku Pythonu [PANDAS](https://pandas.pydata.org/) .
+Tento článek popisuje, jak prozkoumat data, která je uložená v kontejneru objektů blob Azure pomocí [balíčku pandas](https://pandas.pydata.org/) Python.
 
-Tento úkol je krok v rámci [vědeckého procesu týmového zpracování dat](overview.md).
+Tento úkol je krokem v [procesu vědecké vědy o týmových datech](overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že máte:
 
-* Vytvoření účtu služby Azure storage. Pokud potřebujete pokyny, přečtěte si téma [Vytvoření účtu Azure Storage](../../storage/common/storage-account-create.md) .
-* Vaše data uložená v účtu úložiště objektů blob v Azure. Pokud potřebujete pokyny, přečtěte si téma [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md)
+* Vytvořil účet úložiště Azure. Pokud potřebujete pokyny, přečtěte [si tématy Vytvoření účtu Azure Storage.](../../storage/common/storage-account-create.md)
+* Uložená data v účtu úložiště objektů blob Azure. Pokud potřebujete pokyny, přečtěte si informace [o přesunu dat do a z Azure Storage.](../../storage/common/storage-moving-data.md)
 
-## <a name="load-the-data-into-a-pandas-dataframe"></a>Načtení dat do pandas DataFrame
-K prozkoumání a manipulaci s datovou sadu, ho musíte nejprve stáhnout na zdroj objektu blob do místního souboru, který lze načíst v pandas DataFrame. Tady jsou kroky pro tento postup:
+## <a name="load-the-data-into-a-pandas-dataframe"></a>Načtení dat do datového rámce pand
+Chcete-li prozkoumat a manipulovat s datovou sadou, musí být nejprve stažena ze zdroje objektů blob do místního souboru, který pak lze načíst do datového rámce pandas. Zde jsou kroky, které je třeba pro tento postup postupovat:
 
-1. Stáhněte si data z objektu blob Azure s následující ukázkou kódu Pythonu pomocí Blob service. Nahraďte konkrétní hodnoty proměnné v následujícím kódu:
+1. Stáhněte si data z objektu blob Azure s následující ukázkou kódu Pythonu pomocí služby Blob. Nahraďte proměnnou v následujícím kódu konkrétními hodnotami:
 
 ```python
 from azure.storage.blob import BlockBlobService
@@ -53,17 +53,17 @@ t2=time.time()
 print(("It takes %s seconds to download "+blobname) % (t2 - t1))
 ```
 
-1. Načtení dat do pandas DataFrame ze staženého souboru.
+1. Přečtěte si data do pandas DataFrame ze staženého souboru.
 
 ```python
 # LOCALFILE is the file path
 dataframe_blobdata = pd.read_csv(LOCALFILE)
 ```
 
-Nyní jste připraveni na zkoumání dat a generovat funkce pro tuto datovou sadu.
+Nyní jste připraveni prozkoumat data a generovat funkce v této datové sadě.
 
-## <a name="blob-dataexploration"></a>Příklady průzkumu dat pomocí PANDAS
-Tady je pár příkladů, jak zkoumat data pomocí pandas:
+## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>Příklady zkoumání dat pomocí pand
+Zde je několik příkladů způsobů, jak prozkoumat data pomocí pand:
 
 1. Kontrola **počtu řádků a sloupců**
 
@@ -71,7 +71,7 @@ Tady je pár příkladů, jak zkoumat data pomocí pandas:
 print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 ```
 
-1. **Zkontrolujte** první nebo poslední **řádky** v následující datové sadě:
+1. **Zkontrolujte** první nebo posledních několik **řádků** v následující datové sadě:
 
 ```python
 dataframe_blobdata.head(10)
@@ -79,47 +79,47 @@ dataframe_blobdata.head(10)
 dataframe_blobdata.tail(10)
 ```
 
-1. Ověřte, že se **datový typ** každého sloupce importoval pomocí následujícího ukázkového kódu.
+1. Zkontrolujte **datový typ,** který byl importován každý sloupec, jako použití následujícího ukázkového kódu.
 
 ```python
 for col in dataframe_blobdata.columns:
     print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
 ```
 
-1. Ověřte **základní statistiky** pro sloupce v sadě dat následujícím způsobem.
+1. Podívejte se na **základní statistiky** sloupců v datové sadě takto
 
 ```python
 dataframe_blobdata.describe()
 ```
 
-1. Podívejte se na počet položek pro každou hodnotu sloupce, které následujícím způsobem
+1. Podívejte se na počet položek pro každou hodnotu sloupce následujícím způsobem
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts()
 ```
 
-1. **Počítat chybějící hodnoty** oproti skutečnému počtu položek v každém sloupci pomocí následujícího ukázkového kódu
+1. **Počet chybějících hodnot** ve skutečném počtu položek v každém sloupci pomocí následujícího ukázkového kódu
 
 ```python
 miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
 print miss_num
 ```
 
-1. Pokud v datech **chybí hodnoty** pro určitý sloupec, můžete je odstranit takto:
+1. Pokud v datech **chybí hodnoty** pro určitý sloupec, můžete je vynechat následujícím způsobem:
 
 ```python
 dataframe_blobdata_noNA = dataframe_blobdata.dropna()
 dataframe_blobdata_noNA.shape
 ```
 
-Dalším způsobem, jak nahradit chybějících hodnot je ve funkci režimu:
+Dalším způsobem, jak nahradit chybějící hodnoty, je funkce režimu:
 
 ```python
 dataframe_blobdata_mode = dataframe_blobdata.fillna(
     {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
 ```
 
-1. Vytvoření grafu **histogramu** pomocí proměnlivého počtu přihrádek k vykreslení distribuce proměnné
+1. Vytvoření obrázku **histogramu** pomocí proměnného počtu přihrádek k vykreslení rozdělení proměnné
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
@@ -127,7 +127,7 @@ dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
 np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
 ```
 
-1. Podívejte se na **korelace** mezi proměnnými pomocí scatterplot nebo pomocí integrované funkce Correlation.
+1. Podívejte se na **korelace** mezi proměnnými pomocí scatterplot nebo pomocí vestavěné korelační funkce
 
 ```python
 # relationship between column_a and column_b using scatter plot

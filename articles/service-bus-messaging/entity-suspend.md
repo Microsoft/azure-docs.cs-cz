@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus – pozastavení entit zasílání zpráv
-description: Tento článek vysvětluje, jak dočasně pozastavit a znovu aktivovat entity Azure Service Bus zpráv (fronty, témata a odběry).
+title: Azure Service Bus – pozastavit zasílání zpráv entity
+description: Tento článek vysvětluje, jak dočasně pozastavit a znovu aktivovat entity zpráv Azure Service Bus (fronty, témata a předplatná).
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,40 +14,40 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 7386932f19eee064926184eb17f5e92e30add98e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760381"
 ---
-# <a name="suspend-and-reactivate-messaging-entities-disable"></a>Pozastavení a opětovná aktivace entit zasílání zpráv (zakázat)
+# <a name="suspend-and-reactivate-messaging-entities-disable"></a>Pozastavit a znovu aktivovat entity zasílání zpráv (zakázat)
 
-Fronty, témata a odběry je možné dočasně pozastavit. Pozastavení vloží entitu do zakázaného stavu, ve kterém jsou všechny zprávy udržovány v úložišti. Zprávy však nelze odebrat ani přidat a příslušné operace protokolu zanášejí chyby.
+Fronty, témata a odběry mohou být dočasně pozastaveny. Pozastavení umístí entitu do zakázaného stavu, ve kterém jsou všechny zprávy udržovány v úložišti. Zprávy však nelze odebrat ani přidat a příslušné operace protokolu poskytují chyby.
 
-Pozastavení entity se obvykle provádí z naléhavých důvodů správy. Jedním z scénářů je nasazení vadného přijímače, který přebírá zprávy z fronty, selhává při zpracování a ještě nesprávně dokončuje zprávy a odebírá je. Pokud je toto chování diagnostikováno, může být fronta zakázána pro příjem, dokud není nasazen opravný kód a nebudete moci zabránit úniku dat z důvodu chybného kódu.
+Pozastavení entity se obvykle provádí z naléhavých administrativních důvodů. Jedním scénářem je nasazení vadného příjemce, který přijímá zprávy z fronty, selže zpracování a přesto nesprávně dokončí zprávy a odebere je. Pokud je toto chování diagnostikováno, fronta může být zakázána pro příjem, dokud je nasazen opravený kód a další ztrátě dat způsobené chybný kód může být zabráněno.
 
-Přerušení nebo opětovnou aktivaci může provést buď uživatel, nebo systém. Systém pozastavuje jenom entity z důvodu neznačných administrativních důvodů, jako je například dosažení limitu útraty pro předplatné. Uživatelem zakázané entity nelze znovu aktivovat, ale budou obnoveny, pokud byla příčina pozastavení vyřešena.
+Pozastavení nebo opětovnou aktivaci může provést uživatel nebo systém. Systém pozastaví pouze entity z vážných administrativních důvodů, jako je dosažení limitu útraty předplatného. Systémové zakázané entity nelze znovu aktivovat uživatelem, ale jsou obnoveny, pokud byla vyřešena příčina pozastavení.
 
-Na portálu umožňuje oddíl **vlastnosti** příslušné entity změnit stav; na následujícím snímku obrazovky vidíte přepínač pro frontu:
+Na portálu umožňuje oddíl **Vlastnosti** pro příslušnou entitu změnu stavu. následující snímek obrazovky ukazuje přepínač fronty:
 
 ![][1]
 
-Portál povoluje pouze úplné zakazování front. Operace odesílání a přijímání můžete také zakázat samostatně pomocí Service Bus rozhraní API [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) v sadě .NET Framework SDK nebo se šablonou Azure Resource Manager prostřednictvím Azure CLI nebo Azure PowerShell.
+Portál povoluje pouze zcela zakázání front. Operace odesílání a přijímání můžete také zakázat samostatně pomocí rozhraní API Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) v sdk .NET Framework nebo pomocí šablony Azure Resource Manager prostřednictvím rozhraní API Azure nebo Azure PowerShell.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="suspension-states"></a>Stavy pozastavení
 
-Stavy, které lze nastavit pro frontu, jsou:
+Stavy, které lze nastavit pro frontu jsou:
 
--   **Aktivní**: fronta je aktivní.
--   **Zakázáno**: fronta je pozastavena.
--   **SendDisabled**: fronta je částečně pozastavena s povoleným přijetím.
--   **ReceiveDisabled**: fronta je částečně pozastavena s povoleným odesláním.
+-   **Aktivní**: Fronta je aktivní.
+-   **Zakázáno**: Fronta je pozastavena.
+-   **SendDisabled**: Fronta je částečně pozastavena, přičemž příjem je povolen.
+-   **ReceiveDisabled**: Fronta je částečně pozastavena, přičemž odesílání je povoleno.
 
-Pro předplatná a témata je možné nastavit pouze **aktivní** a **zakázané** .
+U předplatných a témat lze nastavit pouze **aktivní** a **zakázané.**
 
-Výčet [EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) také definuje sadu přechodných stavů, které lze nastavit pouze systémem. V následujícím příkladu se zobrazí příkaz prostředí PowerShell pro zakázání fronty. Příkaz reaktivace je ekvivalentní, nastavení `Status` na **aktivní**.
+[EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) výčtu také definuje sadu přechodných stavů, které lze nastavit pouze v systému. Příkaz Prostředí PowerShell pro zakázání fronty je uveden v následujícím příkladu. Příkaz pro opětovnou aktivaci je ekvivalentní, nastavení `Status` na **Aktivní**.
 
 ```powershell
 $q = Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue
@@ -59,7 +59,7 @@ Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueu
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
+Další informace o zasílání zpráv služby Service Bus najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
