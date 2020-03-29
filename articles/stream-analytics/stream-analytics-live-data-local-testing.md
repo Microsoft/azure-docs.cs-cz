@@ -1,6 +1,6 @@
 ---
-title: Test živých dat pomocí služby Azure Stream Analytics pro Visual Studio
-description: Zjistěte, jak k otestování místně pomocí dynamických streamovaných dat úlohy Azure Stream Analytics.
+title: Testování živých dat pomocí Azure Stream Analytics pro Visual Studio
+description: Přečtěte si, jak otestovat úlohu Azure Stream Analytics místně pomocí živých streamovaných dat.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,60 +9,60 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840481"
 ---
-# <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Živá data test místně pomocí nástroje Azure Stream Analytics pro Visual Studio (Preview)
+# <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Testování živých dat místně pomocí nástrojů Azure Stream Analytics pro Visual Studio (Preview)
 
-Nástroje Azure Stream Analytics pro Visual Studio umožňuje testovat úloh místně z integrovaného vývojového prostředí pomocí datové proudy živé události z Azure Event Hub, IoT Hub a Blob Storage. Živá data nelze nahradit místní testování [testování výkonu a škálovatelnosti](stream-analytics-streaming-unit-consumption.md) můžete provádět v cloudu, ale můžete ušetřit čas při testování funkčnosti tím, že pro odeslání do cloudu pokaždé, když chcete testovat váš Stream Úlohy analýzy. Tato funkce je ve verzi preview a neměl by se používat pro produkční úlohy.
+Nástroje Azure Stream Analytics pro Visual Studio umožňují testovat úlohy místně z ide pomocí živých datových proudů událostí z Azure Event Hub, IoT Hub a Blob Storage. Místní testování živých dat nemůže nahradit [testování výkonu a škálovatelnosti,](stream-analytics-streaming-unit-consumption.md) které můžete provádět v cloudu, ale můžete ušetřit čas během funkčního testování tím, že nebudete muset odesílat do cloudu pokaždé, když chcete otestovat úlohu Stream Analytics. Tato funkce je ve verzi Preview a neměla by se používat pro produkční úlohy.
 
 ## <a name="testing-options"></a>Možnosti testování
 
-Podporovány jsou následující možnosti místního testování:
+Jsou podporovány následující místní možnosti testování:
 
-|**Input** (Vstup)  |**Výstup**  |**Typ úlohy**  |
+|**Vstup**  |**Výstup**  |**Typ úlohy**  |
 |---------|---------|---------|
-|Statická místní data   |  Statická místní data   |   Cloud/Edge |
-|Za vstupní data   |  Statická místní data   |   Cloud |
-|Za vstupní data   |  Za výstupní data   |   Cloud |
+|Místní statická data   |  Místní statická data   |   Oblačnost/hrana |
+|Živá vstupní data   |  Místní statická data   |   Cloud |
+|Živá vstupní data   |  Živá výstupní data   |   Cloud |
 
-## <a name="local-testing-with-live-data"></a>Místní testování s dynamickými daty
+## <a name="local-testing-with-live-data"></a>Místní testování s živými daty
 
-1. Po vytvoření [projekt cloudové Azure Stream Analytics v sadě Visual Studio](stream-analytics-quick-create-vs.md), otevřete **script.asaql**. Místní testování používá místní vstup a výstup místní ve výchozím nastavení.
+1. Po vytvoření [cloudového projektu Azure Stream Analytics ve Visual Studiu](stream-analytics-quick-create-vs.md)otevřete **soubor script.asaql**. Místní testování používá místní vstup a místní výstup ve výchozím nastavení.
 
-   ![Azure Stream Analytics Visual Studio místní vstup a výstup místní](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
+   ![Azure Stream Analytics Visual Studio místní vstup a místní výstup](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
 
-2. Chcete-li otestovat dynamických dat, zvolte **použití cloudu vstup** v rozevíracím.
+2. Chcete-li testovat živá data, zvolte **Použít cloudový vstup** z rozevíracího pole.
 
-   ![Vstup za cloud Azure Stream Analytics Visual Studio](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
+   ![Přímý vstup živého cloudu ve Visual Studiu Azure Stream Analytics](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
 
-3. Nastavte **čas zahájení** k definování, kdy úloha spustí zpracování vstupní data. Úloha může potřebovat číst vstupní data předem, aby přesné výsledky. Výchozí doba je nastavena na 30 minut před aktuálním časem.
+3. Nastavte **počáteční čas,** který definuje, kdy úloha začne zpracovávat vstupní data. Úloha může být nutné číst vstupní data předem, aby bylo zajištěno přesné výsledky. Výchozí čas je nastaven na 30 minut před aktuálním časem.
 
-   ![Čas zahájení dynamických dat v Azure Stream Analytics Visual Studio](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
+   ![Čas zahájení živého spuštění dat ve Visual Studiu Azure Stream Analytics](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
 
-4. Klikněte na tlačítko **místní spuštění**. Okna konzoly se zobrazí s běžící metriky průběh a úlohy. Pokud chcete zastavit proces, lze provést ručně. 
+4. Klepněte na **tlačítko Spustit místně**. Zobrazí se okno konzoly s metrikami průběhu běhu a úlohy. Pokud chcete proces zastavit, můžete tak učinit ručně. 
 
-   ![Okno procesu živá data Azure Stream Analytics Visual Studio](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
+   ![Okno živého datového procesu Azure Stream Analytics Visual Studia](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
 
-   Výstupní výsledky se aktualizují s první řádky 500 výstup v okně výsledků místního spuštění každé tři sekundy a výstupní soubory jsou umístěny v cestě projektu **ASALocalRun** složky. Výstupní soubory můžete otevřít také kliknutím **otevřít složku výsledků** tlačítka v okně výsledků místního spuštění.
+   Výsledky výstupu jsou aktualizovány každé tři sekundy s prvními 500 výstupních řádků v okně výsledek místní spuštění a výstupní soubory jsou umístěny v cestě projektu **ASALocalRun** složky. Výstupní soubory můžete také otevřít klepnutím na tlačítko **Otevřít složku výsledků** v okně výsledků místního spuštění.
 
-   ![Živá data v Azure Stream Analytics Visual Studio otevřete složku výsledků](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-open-results-folder.png)
+   ![Azure Stream Analytics Visual Studio živé výsledky dat](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-open-results-folder.png)
 
-5. Pokud chcete k vypsání výsledků do výstupní jímky váš cloud, zvolte **výstup do cloudu** z druhého rozevíracího seznamu pole. Power BI a Azure Data Lake Storage nejsou podporované výstupní jímky.
+5. Pokud chcete výstup výsledků do vašeho cloudu výstup propady, zvolte **Výstup do cloudu** z druhého rozevíracího pole. Power BI a Azure Data Lake Storage nejsou podporované jímky pro výstupy.
 
-   ![Azure Stream Analytics Visual Studio živá data výstup do cloudu](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-output.png)
+   ![Výstup živých dat Azure Stream Analytics Visual Studio do cloudu](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-output.png)
  
 ## <a name="limitations"></a>Omezení
 
-* Power BI a Azure Data Lake Storage nejsou podporované výstupních jímek z důvodu omezení ověření modelu.
+* Power BI a Azure Data Lake Storage nejsou podporované výstupní propady z důvodu omezení modelu ověřování.
 
-* Mít pouze vstupní možnosti cloudu [čas zásady](stream-analytics-out-of-order-and-late-events.md) podporují, zatímco místní možnosti vstupu, tomu tak není.
+* Pouze možnosti vstupu do cloudu mají podporu [zásad času,](stream-analytics-out-of-order-and-late-events.md) zatímco místní vstupní možnosti nemají.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření úlohy Stream Analytics pomocí Azure Stream Analytics tools for Visual Studio](stream-analytics-quick-create-vs.md)
-* [Testování dotazů Stream Analytics místně pomocí sady Visual Studio](stream-analytics-vs-tools-local-run.md)
-* [Chcete-li zobrazit úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-vs-tools.md)
+* [Vytvoření úlohy Stream Analytics pomocí nástrojů Azure Stream Analytics pro Visual Studio](stream-analytics-quick-create-vs.md)
+* [Test Stream Analytics dotazy místně s Visual Studio](stream-analytics-vs-tools-local-run.md)
+* [Zobrazení úloh Azure Stream Analytics pomocí Visual Studia](stream-analytics-vs-tools.md)

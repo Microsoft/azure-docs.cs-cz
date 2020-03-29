@@ -1,6 +1,6 @@
 ---
-title: Přístup k Azure Cosmos DB Cassandra API z Azure Databricks
-description: Tento článek popisuje, jak pracovat s Azure Cosmos DB Cassandra API z Azure Databricks.
+title: Přístup k rozhraní API Azure Cosmos DB Cassandra z Azure Databricks
+description: Tento článek popisuje, jak pracovat s rozhraním API Azure Cosmos DB Cassandra z Azure Databricks.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,31 +9,31 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 37a06b19285c1196b5d87830ea176d4bd0d4eade
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60894007"
 ---
-# <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Přístup k datům Azure Cosmos DB Cassandra API z Azure Databricks
+# <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Přístup k datům rozhraní API Azure Cosmos DB Cassandra z Azure Databricks
 
-Tento článek podrobně popisuje postupy workwith Azure Cosmos DB Cassandra API z aplikace Spark na [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks).
+Tento článek podrobně popisuje, jak pracovat s rozhraním API Azure Cosmos DB Cassandra ze Spark na [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Zřídit účet Azure Cosmos DB Cassandra API](create-cassandra-dotnet.md#create-a-database-account)
+* [Zřízení účtu rozhraní API Azure Cosmos DB Cassandra](create-cassandra-dotnet.md#create-a-database-account)
 
-* [Přečtěte si základní informace o připojení k Azure Cosmos DB Cassandra API](cassandra-spark-generic.md)
+* [Projděte si základy připojení k rozhraní API Azure Cosmos DB Cassandra](cassandra-spark-generic.md)
 
-* [Zřízení clusteru služby Azure Databricks](../azure-databricks/quickstart-create-databricks-workspace-portal.md)
+* [Zřízení clusteru Azure Databricks](../azure-databricks/quickstart-create-databricks-workspace-portal.md)
 
-* [Projděte si ukázky kódu pro práci s rozhraním Cassandra API](cassandra-spark-generic.md#next-steps)
+* [Zkontrolujte ukázky kódu pro práci s rozhraním CASSANDRA API](cassandra-spark-generic.md#next-steps)
 
-* [Pokud tedy chcete používat cqlsh pro ověření](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
+* [Použijte cqlsh pro ověření, pokud dáváte přednost](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
-* **Konfigurace instance rozhraní Cassandra API pro konektor Cassandra:**
+* **Konfigurace instance rozhraní CASSANDRA API pro konektor Cassandra:**
 
-  Konektor pro Apache Cassandra API vyžaduje podrobnosti připojení Cassandra nutné jej inicializovat jako součást kontextu spark. Při spuštění poznámkového bloku Databricks již byl inicializován kontext spark a není vhodné k zastavení a inicializujte ho znovu. Jedním řešením je přidání konfigurace instance rozhraní Cassandra API na úrovni clusteru, v konfiguraci clusteru spark. Toto je jednorázovou aktivitou za cluster. Přidejte následující kód do konfigurace Spark jako mezerou oddělený pár klíč-hodnota:
+  Konektor pro rozhraní API Cassandra vyžaduje podrobnosti o připojení Cassandra, které mají být inicializovány jako součást kontextu jiskry. Když spustíte poznámkový blok Databricks, kontext jiskry je již inicializován a není vhodné jej zastavit a znovu inicializovat. Jedním z řešení je přidání konfigurace instance rozhraní CASSANDRA API na úrovni clusteru v konfiguraci jiskry clusteru. Jedná se o jednorázovou aktivitu na cluster. Přidejte do konfigurace Spark následující kód jako dvojici hodnot klíče oddělených prostory:
  
   ```scala
   spark.cassandra.connection.host YOUR_COSMOSDB_ACCOUNT_NAME.cassandra.cosmosdb.azure.com
@@ -45,25 +45,25 @@ Tento článek podrobně popisuje postupy workwith Azure Cosmos DB Cassandra API
 
 ## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 
-* **Konektor Cassandra Spark:** – Pokud chcete integrovat Azure Cosmos DB Cassandra API s využitím rozhraní Cassandra konektoru je třeba připojit k Azure Databricks pro cluster Spark. Připojení ke clusteru:
+* **Konektor Cassandra Spark:** – K integraci rozhraní API Azure Cosmos DB Cassandra se Sparkem by měl být konektor Cassandra připojený ke clusteru Azure Databricks. Připojení clusteru:
 
-  * Zkontrolujte verzi modulu runtime Databricks verze Sparku. Vyhledejte [souřadnice maven](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) , které jsou kompatibilní s konektor Cassandra Spark a připojte ho ke clusteru. V tématu ["Nahrát Maven balíček nebo balíček Spark"](https://docs.databricks.com/user-guide/libraries.html) článku knihovna konektorů připojit ke clusteru. Například souřadnice maven pro "Modul Databricks Runtime verze 4.3", "Spark 2.3.1" a "je Scala 2.11" `spark-cassandra-connector_2.11-2.3.1`
+  * Zkontrolujte verzi za běhu Databricks, verzi Spark. Pak najděte [maven souřadnice,](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) které jsou kompatibilní s konektorem Cassandra Spark a připojte jej ke clusteru. Viz ["Nahrát balíček Maven nebo balíček Spark"](https://docs.databricks.com/user-guide/libraries.html) článek připojit knihovnu konektorů ke clusteru. Například maven souřadnice pro "Databricks Runtime verze 4.3", "Spark 2.3.1" a "Scala 2.11" je`spark-cassandra-connector_2.11-2.3.1`
 
-* **Azure Cosmos DB Cassandra API konkrétní knihovnu:** – objekt pro vytváření vlastní připojení je potřeba ke konfiguraci zásady opakování z konektoru Cassandra Spark k rozhraní Cassandra API služby Azure Cosmos DB. Přidat `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0` [souřadnice maven](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) připojení knihovny ke clusteru.
+* **Azure Cosmos DB Cassandra api specifické knihovny:** - vlastní vytvoření připojení je nutné nakonfigurovat zásady opakování z konektoru Cassandra Spark na Azure Cosmos DB Cassandra rozhraní API. `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`Přidejte [maven souřadnice](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) připojit knihovnu ke clusteru.
 
 ## <a name="sample-notebooks"></a>Ukázkové poznámkové bloky
 
-Seznam Azure Databricks [ukázkové poznámkové bloky](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala) jsou k dispozici v úložišti GitHub si můžete stáhnout. Tyto ukázky zahrnují postup připojení k Azure Cosmos DB Cassandra API z aplikace Spark a provádění různých operací CRUD u data. Můžete také [import všech poznámkových bloků](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc) do vaší Databricks clusteru pracovního prostoru a spustíme ji. 
+Seznam [ukázkových poznámkových bloků](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala) Azure Databricks je k dispozici v úložišti GitHub, které si můžete stáhnout. Tyto ukázky zahrnují, jak se připojit k rozhraní API Azure Cosmos DB Cassandra ze Sparku a provádět různé operace CRUD s daty. Můžete také [importovat všechny poznámkové bloky](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc) do pracovního prostoru clusteru Databricks a spustit jej. 
 
-## <a name="accessing-azure-cosmos-db-cassandra-api-from-spark-scala-programs"></a>Přístup k rozhraní Cassandra API služby Azure Cosmos DB z aplikací Spark Scala
+## <a name="accessing-azure-cosmos-db-cassandra-api-from-spark-scala-programs"></a>Přístup k rozhraní API Azure Cosmos DB Cassandra z programů Spark Scala
 
-Programy Spark ke spuštění jako automatizované procesy v Azure Databricks jsou odeslána do clusteru s použitím [skriptu spark-submit](https://spark.apache.org/docs/latest/submitting-applications.html)) a naplánované na spuštění úlohy Azure Databricks.
+Spark programy, které mají být spuštěny jako automatizované procesy na Azure Databricks se odesílají do clusteru pomocí [spark-submit](https://spark.apache.org/docs/latest/submitting-applications.html)) a naplánované spuštění úloh Azure Databricks.
 
-Níže jsou uvedeny odkazy vám pomůžou začít vytvářet aplikace Spark Scala pro interakci s Azure Cosmos DB Cassandra API.
-* [Jak se připojit k Azure Cosmos DB Cassandra API z aplikace Spark Scala](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
-* [Spuštění programu v jazyce Spark Scala jako automatizované úlohy v Azure Databricks](https://docs.azuredatabricks.net/user-guide/jobs.html)
-* [Úplný seznam všech ukázek kódu pro práci s rozhraním Cassandra API](cassandra-spark-generic.md#next-steps)
+Následují odkazy, které vám pomůžou začít vytvářet programy Spark Scala pro interakci s rozhraním API Azure Cosmos DB Cassandra.
+* [Jak se připojit k rozhraní AZURE Cosmos DB Cassandra API z programu Spark Scala](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
+* [Jak spustit program Spark Scala jako automatizovanou úlohu na Azure Databricks](https://docs.azuredatabricks.net/user-guide/jobs.html)
+* [Kompletní seznam ukázek kódu pro práci s rozhraním CASSANDRA API](cassandra-spark-generic.md#next-steps)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Začněte [vytvořením účtu rozhraní API Cassandra, databáze a tabulky](create-cassandra-api-account-java.md) pomocí aplikace v Javě.
+Můžete začít s [vytvářením účtu, databáze a tabulky Cassandra API](create-cassandra-api-account-java.md) pomocí aplikace Java.

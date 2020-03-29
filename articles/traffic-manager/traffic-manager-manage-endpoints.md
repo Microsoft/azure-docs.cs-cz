@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: rohink
 ms.openlocfilehash: 2aee4282fe6a66151ea39018f0d6c0db51f2c027
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76939137"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Přidávání, zakazování, povolování nebo odstraňování koncových bodů
@@ -71,12 +71,12 @@ Můžete také zakázat jednotlivé koncové body, které jsou součástí profi
 2. Na panelu hledání na portálu vyhledejte název **profilu služby Traffic Manager**, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
 3. V okně **Profil služby Traffic Manager** v části **Nastavení** klikněte na **Koncové body**. 
 4. Klikněte na koncový bod, který chcete odstranit.
-5. V okně **koncový bod** klikněte na **Odstranit** .
+5. V okně **Koncový bod** klikněte na **Odstranit.**
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa profilů Traffic Manager](traffic-manager-manage-profiles.md)
+* [Správa profilů traffic manageru](traffic-manager-manage-profiles.md)
 * [Konfigurace metod směrování](traffic-manager-configure-routing-method.md)
 * [Řešení potíží při sníženém výkonu Traffic Manageru](traffic-manager-troubleshooting-degraded.md)
 * [Důležité informace o výkonu nástroje Traffic Manager](traffic-manager-performance-considerations.md)

@@ -1,75 +1,75 @@
 ---
-title: Trvalé omezení kódu Orchestrator – Azure Functions
-description: Opětovné přehrání a omezení kódu funkce orchestrace pro Azure Durable Functions.
+title: Trvalá omezení kódu orchestratoru – Funkce Azure
+description: Opětovné přehrání funkce orchestrace a omezení kódu pro funkce Azure Durable.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562135"
 ---
-# <a name="orchestrator-function-code-constraints"></a>Omezení kódu funkce nástroje Orchestrator
+# <a name="orchestrator-function-code-constraints"></a>Omezení kódu funkce Orchestrator
 
-Durable Functions je rozšíření [Azure Functions](../functions-overview.md) , které umožňuje sestavovat stavové aplikace. [Funkci Orchestrator](durable-functions-orchestrations.md) můžete použít k orchestraci provádění dalších trvalých funkcí v rámci aplikace Function App. Funkce nástroje Orchestrator jsou stavová, spolehlivá a potenciálně dlouhodobě spuštěná.
+Durable Functions je rozšíření [funkcí Azure,](../functions-overview.md) které vám umožní vytvářet stavové aplikace. [Funkci orchestrator](durable-functions-orchestrations.md) můžete použít k orchestraci provádění dalších trvalých funkcí v rámci aplikace funkce. Funkce orchestratoru jsou stavové, spolehlivé a potenciálně dlouhotrvající.
 
 ## <a name="orchestrator-code-constraints"></a>Omezení kódu orchestrátoru
 
-Funkce Orchestrator používají k zajištění spolehlivého provádění a zachování stavu místní proměnné použití [zdroje událostí](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) . Chování při opětovném [přehrání](durable-functions-orchestrations.md#reliability) kódu Orchestrator vytvoří omezení pro typ kódu, který můžete zapsat do funkce Orchestrator. Například funkce Orchestrator musí být *deterministické*: funkce Orchestrator bude opakovaně přehrána několikrát a ta musí mít stejný výsledek pokaždé.
+Funkce Orchestrator používají [zdroje událostí](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) k zajištění spolehlivého provádění a k udržení stavu místní proměnné. [Chování přehrání](durable-functions-orchestrations.md#reliability) kódu orchestratoru vytváří omezení typu kódu, který můžete napsat ve funkci orchestrator. Například funkce orchestrator musí být *deterministické*: funkce orchestrator bude přehrána vícekrát a musí pokaždé vytvořit stejný výsledek.
 
-### <a name="using-deterministic-apis"></a>Použití deterministického rozhraní API
+### <a name="using-deterministic-apis"></a>Použití deterministických api
 
-V této části najdete některé jednoduché pokyny, které vám pomohou zajistit, aby byl kód deterministický.
+Tato část obsahuje několik jednoduchých pokynů, které pomáhají zajistit, že váš kód je deterministický.
 
-Funkce Orchestrator mohou volat libovolné rozhraní API v jejich cílových jazycích. Je však důležité, aby funkce nástroje Orchestrator volaly pouze deterministické rozhraní API. *Deterministické rozhraní API* je rozhraní API, které vždycky vrací stejnou hodnotu pro stejný vstup, bez ohledu na to, kdy nebo jak často je volána.
+Funkce Orchestrator můžete volat libovolné rozhraní API v jejich cílových jazycích. Je však důležité, aby funkce orchestrator volání pouze deterministické API. *Deterministické rozhraní API* je rozhraní API, které vždy vrací stejnou hodnotu za stejný vstup, bez ohledu na to, kdy a jak často se nazývá.
 
-V následující tabulce jsou uvedeny příklady rozhraní API, se kterými byste se měli vyhnout, protože *nejsou deterministické.* Tato omezení platí pouze pro funkce nástroje Orchestrator. Jiné typy funkcí nemají taková omezení.
+V následující tabulce jsou uvedeny příklady řešení API, kterým byste se měli vyhnout, protože *nejsou* deterministická. Tato omezení platí pouze pro funkce orchestrator. Jiné typy funkcí nemají taková omezení.
 
 | Kategorie rozhraní API | Důvod | Alternativní řešení |
 | ------------ | ------ | ---------- |
-| Data a časy  | Rozhraní API, která vrací aktuální datum nebo čas, jsou nedeterministické, protože vrácená hodnota je pro každé přehrání jiná. | Použijte rozhraní API`CurrentUtcDateTime` v rozhraní .NET nebo rozhraní API `currentUtcDateTime` v JavaScriptu, které je bezpečné pro opětovné přehrání. |
-| GUID a identifikátory UUID  | Rozhraní API, která vracejí náhodný identifikátor GUID nebo UUID, jsou nedeterministické, protože vygenerovaná hodnota se pro každé přehrání liší. | Pomocí `NewGuid` v rozhraní .NET nebo v `newGuid` v jazyce JavaScript bezpečně vygenerujte náhodné identifikátory GUID. |
-| Náhodná čísla | Rozhraní API, která vrací náhodná čísla, jsou nedeterministické, protože vygenerovaná hodnota se pro každé přehrání liší. | Použijte funkci aktivity k vrácení náhodných čísel do orchestrace. Vrácené hodnoty funkcí aktivity jsou pro opětovné přehrání vždy bezpečné. |
-| Vazby | Vstupní a výstupní vazby obvykle dělají vstupně-výstupní operace a jsou nedeterministické. Funkce Orchestrator nesmí přímo používat ani [klient orchestrace](durable-functions-bindings.md#orchestration-client) a vazby [klienta entit](durable-functions-bindings.md#entity-client) . | Použijte vstupní a výstupní vazby v rámci funkcí klienta nebo aktivity. |
-| Síť | Síťová volání zahrnují externí systémy a nedeterministické. | K zajištění síťových volání použijte funkce aktivity. Pokud potřebujete provést volání HTTP z funkce Orchestrator, můžete použít také [trvalá rozhraní API http](durable-functions-http-features.md#consuming-http-apis). |
-| Blokující rozhraní API | Blokování rozhraní API jako `Thread.Sleep` v rozhraní .NET a podobných rozhraní API mohou způsobit problémy s výkonem a škálováním pro funkce nástroje Orchestrator a měly by se jim vyhnout. V plánu Azure Functions spotřeby můžou dokonce vést k zbytečným poplatkům za modul runtime. | Používejte alternativy k blokování rozhraní API, když jsou k dispozici. Například použijte `CreateTimer` k zavedení zpoždění při provádění orchestrace. [Trvalá zpoždění časovače](durable-functions-timers.md) se nepočítají směrem k době provádění funkce Orchestrator. |
-| Asynchronní rozhraní API | Kód Orchestrator nesmí spustit žádnou asynchronní operaci s výjimkou rozhraní `IDurableOrchestrationContext` API nebo rozhraní API `context.df`ho objektu. Například nemůžete použít `Task.Run`, `Task.Delay`a `HttpClient.SendAsync` v rozhraní .NET nebo `setTimeout` a `setInterval` v JavaScriptu. Prostředí trvalého zpracování úloh spouští kód Orchestrator v jednom vlákně. Nemůže komunikovat s jinými vlákny, které by mohly být volány jinými asynchronními rozhraními API. | Funkce Orchestrator by měla dělat jenom trvalá asynchronní volání. Funkce aktivity by měly provádět jakákoli další asynchronní volání rozhraní API. |
-| Asynchronní funkce JavaScriptu | Funkce nástroje JavaScript Orchestrator nemůžete deklarovat jako `async`, protože modul runtime Node. js nezaručuje, že asynchronní funkce jsou deterministické. | Deklarujete funkce nástroje JavaScript Orchestrator jako synchronní funkce generátoru. |
-| Rozhraní API pro dělení na vlákna | Prostředí trvalého zpracování úloh spouští kód Orchestrator v jednom vlákně a nemůže pracovat s jinými vlákny. Zavedení nových vláken do provádění orchestrace může vést k nedeterministickému spuštění nebo zablokování. | Funkce Orchestrator by téměř nikdy neměly používat rozhraní API pro dělení na vlákna. Například v rozhraní .NET Vyhněte se použití `ConfigureAwait(continueOnCapturedContext: false)`; Tím se zajistí, že se pokračování úlohy spouští na původním `SynchronizationContext`funkce Orchestrator. Pokud jsou taková rozhraní API nezbytná, omezte jejich použití jenom na funkce aktivity. |
-| Statické proměnné | Nepoužívejte nekonstantní statické proměnné ve funkcích nástroje Orchestrator, protože jejich hodnoty se mohou v průběhu času měnit, což vede k nedeterministickému chování za běhu. | Použijte konstanty nebo omezte použití statických proměnných na funkce aktivity. |
-| Proměnné prostředí | Nepoužívejte proměnné prostředí ve funkcích nástroje Orchestrator. Jejich hodnoty se můžou v průběhu času měnit, což vede k nedeterministickému chování za běhu. | Na proměnné prostředí se musí odkazovat jenom v rámci funkcí klienta nebo funkcí aktivity. |
-| Nekonečné smyčky | Vyhněte se nekonečným smyčkám ve funkcích nástroje Orchestrator. Vzhledem k tomu, že architektura trvalého úlohy ukládá historii spouštění, protože funkce orchestrace pokračuje, nekonečná smyčka může způsobit nedostatek paměti z důvodu instance nástroje Orchestrator. | V případě scénářů nekonečné smyčky použijte rozhraní API, jako je například `ContinueAsNew` v rozhraní .NET nebo `continueAsNew` v JavaScriptu pro restartování funkce a zahození předchozí historie spouštění. |
+| Data a časy  | Api, které vracejí aktuální datum nebo čas, jsou nedeterministické, protože vrácená hodnota se liší pro každé přehrání. | Použijte`CurrentUtcDateTime` rozhraní API v `currentUtcDateTime` rozhraní .NET nebo rozhraní API v Jazyce JavaScript, které jsou bezpečné pro přehrávání. |
+| Identifikátory GUID a UUID  | Rozhraní API, která vracejí náhodný identifikátor GUID nebo UUID, jsou nedeterministická, protože vygenerovaná hodnota se pro každé přehrání liší. | Používá `NewGuid` se v `newGuid` rozhraní .NET nebo v jazyce JavaScript k bezpečnému generování náhodných identifikátorů GUID. |
+| Náhodná čísla | Api, které vracejí náhodná čísla, jsou nedeterministická, protože generovaná hodnota se pro každé přehrání liší. | Pomocí funkce aktivity vraťte náhodná čísla do orchestraci. Vrácené hodnoty funkcí aktivity jsou vždy bezpečné pro přehrání. |
+| Vazby | Vstupní a výstupní vazby obvykle vstupně-výstupní a jsou nedeterministické. Funkce orchestrator nesmí přímo používat ani [orchestraci klienta](durable-functions-bindings.md#orchestration-client) a [entity vazby klienta.](durable-functions-bindings.md#entity-client) | Použijte vstupní a výstupní vazby uvnitř klienta nebo funkce aktivity. |
+| Network (Síť) | Síťová volání zahrnují externí systémy a jsou nedeterministická. | Pomocí funkcí aktivity uskutečujte síťová volání. Pokud potřebujete provést volání HTTP z funkce orchestrator, můžete také použít [trvalá http api](durable-functions-http-features.md#consuming-http-apis). |
+| Blokování přístupů api | Blokování rozhraní `Thread.Sleep` API, jako je v rozhraní .NET a podobná rozhraní API, může způsobit problémy s výkonem a škálování funkcí orchestratoru a je třeba se jim vyhnout. V plánu Azure Functions Consumption můžou dokonce vést ke zbytečným runtime poplatkům. | Použijte alternativy k blokování rozhraní API, pokud jsou k dispozici. Například použít `CreateTimer` k zavedení zpoždění při provádění orchestrace. [Trvalé zpoždění časovače](durable-functions-timers.md) se nezapočítávají do doby provádění funkce orchestratoru. |
+| Asynchronní api | Orchestrator kód nesmí nikdy spustit žádnou `IDurableOrchestrationContext` asynchronní `context.df` operaci s výjimkou pomocí rozhraní API nebo rozhraní API objektu. Nelze `Task.Run`například použít , `Task.Delay`a `HttpClient.SendAsync` v rozhraní `setTimeout` .NET nebo a `setInterval` v jazyce JavaScript. Rozhraní Durable Task Framework spouští kód orchestrator v jednom vlákně. Nemůže pracovat s jinými vlákny, která mohou být volána jinými asynchronními rozhraními API. | Funkce orchestrator by měla provádět pouze trvalé asynchronní volání. Funkce aktivity by měly provádět všechna další asynchronní volání rozhraní API. |
+| Asynchronní funkce JavaScriptu | Nelze deklarovat javascriptové orchestrátory funkce jako `async` proto, že modul runtime node.js nezaručuje, že asynchronní funkce jsou deterministické. | Deklarovat JavaScript orchestrator funguje jako synchronní generátor funkce. |
+| Rozhraní API pro zřetězení | Architektura durable task framework spouští kód orchestrator v jednom vlákně a nemůže pracovat s jinými vlákny. Zavedení nových podprocesů do provádění orchestrace může mít za následek nedeterministické spuštění nebo zablokování. | Funkce orchestratoru by téměř nikdy neměly používat rozhraní API pro zřetězení. Například v rozhraní .NET `ConfigureAwait(continueOnCapturedContext: false)`se vyhněte použití ; Tím je zajištěno pokračování úlohy spustit na původní `SynchronizationContext`funkci orchestrator . Pokud jsou taková api nezbytná, omezte jejich použití pouze na funkce aktivity. |
+| Statické proměnné | Vyhněte se použití nekonstantní statické proměnné v orchestrátoru funkce, protože jejich hodnoty se mohou měnit v průběhu času, výsledkem je nedeterministické chování za běhu. | Použijte konstanty nebo omezte použití statických proměnných na funkce aktivity. |
+| Proměnné prostředí | Nepoužívejte proměnné prostředí ve funkcích orchestratoru. Jejich hodnoty se mohou v průběhu času měnit, což vede k nedeterministickému chování za běhu. | Proměnné prostředí musí být odkazovány pouze z funkce klienta nebo funkce aktivity. |
+| Nekonečné smyčky | Vyhněte se nekonečné smyčky v orchestrátoru funkcí. Vzhledem k tomu, že architektura durable task framework ukládá historii provádění jako postupovací funkce orchestrace, nekonečná smyčka může způsobit, že instance orchestratoru bude spuštěna bez paměti. | Pro scénáře nekonečné smyčky použijte `ContinueAsNew` rozhraní API `continueAsNew` jako v rozhraní .NET nebo v jazyce JavaScript k restartování spuštění funkce a k zahození předchozí historie spuštění. |
 
-I když použití těchto omezení může být v prvé době obtížné, v praxi je budete moct snadno sledovat.
+I když použití těchto omezení se může zdát obtížné na první, v praxi jsou snadno sledovat.
 
-Prostředí trvalého úkolu se pokusí zjistit porušení předchozích pravidel. Pokud zjistí porušení, rozhraní vyvolá výjimku **NonDeterministicOrchestrationException** . Toto chování při detekci ale nezpůsobí zachycení všech porušení a neměli byste na ní záviset.
+Rámec trvalých úloh se pokusí zjistit porušení předchozích pravidel. Pokud zjistí porušení, rozhraní filtru vyvolá **Výjimku UnDeterministicOrchestraationException.** Toto chování zjišťování však nezachytí všechna porušení a nemělo by na něm záviset.
 
 ## <a name="versioning"></a>Správa verzí
 
-Trvalá orchestrace může běžet nepřetržitě pro dny, měsíce, roky nebo dokonce [eternally](durable-functions-eternal-orchestrations.md). Jakékoli aktualizace kódu provedené v aplikacích Durable Functions, které ovlivňují nedokončené orchestraci, můžou poškodit chování při opětovném přehrání Orchestration. To je důvod, proč je důležité při provádění aktualizací kódu pečlivě naplánovat. Podrobnější popis způsobu verze kódu naleznete v [článku Správa verzí](durable-functions-versioning.md).
+Trvalá orchestrace může běžet nepřetržitě dny, měsíce, roky nebo dokonce [věčně](durable-functions-eternal-orchestrations.md). Všechny aktualizace kódu provedené v aplikacích Durable Functions, které ovlivňují nedokončené orchestrace, mohou přerušit chování orchestrations při přehrávání. To je důvod, proč je důležité pečlivě plánovat při provádění aktualizací kódu. Podrobnější popis, jak vytvořit verzi kódu, naleznete v [článku správy verzí](durable-functions-versioning.md).
 
 ## <a name="durable-tasks"></a>Trvalé úkoly
 
 > [!NOTE]
-> Tato část popisuje interní implementace podrobností o trvalém rozhraní úlohy. Nemusíte-li znát tyto informace, můžete použít trvalé funkce. Je určena jenom k tomu, aby vám pomohla pochopit chování při přehrávání.
+> Tato část popisuje podrobnosti interní implementace rámce trvalých úloh. Můžete použít trvalé funkce bez znalosti těchto informací. Je určen pouze k pochopení chování přehrání.
 
-Úlohy, které můžou bezpečně čekat na funkce nástroje Orchestrator, se občas označují jako *odolné úkoly*. Rozhraní odolné úlohy vytváří a spravuje tyto úlohy. Příklady jsou úlohy vracené **CallActivityAsync**, **WaitForExternalEvent**a **CreateTimer** ve funkcích .NET Orchestrator.
+Úkoly, které mohou bezpečně čekat ve funkcích orchestrátoru, jsou občas označovány jako *trvalé úkoly*. Rámec truživých úloh vytváří a spravuje tyto úkoly. Příklady jsou úkoly vrácené **funkcemi CallActivityAsync**, **WaitForExternalEvent**a **CreateTimer** ve funkcích orchestrátoru .NET.
 
-Tyto odolné úkoly jsou interně spravovány seznamem objektů `TaskCompletionSource` v rozhraní .NET. Během opakovaného přehrávání se tyto úkoly vytvoří v rámci provádění kódu Orchestrator. Jsou dokončeny, protože dispečer vytvoří výčet odpovídajících událostí historie.
+Tyto trvalé úkoly jsou interně `TaskCompletionSource` spravovány seznamem objektů v rozhraní .NET. Během přehrávání jsou tyto úkoly vytvořeny jako součást spuštění kódu orchestrator. Jsou hotové jako dispečer vyjmenovává odpovídající události historie.
 
-Úkoly jsou spouštěny synchronně pomocí jednoho vlákna, dokud se veškerá historie znovu nepřehraje. Trvalé úkoly, které nejsou dokončeny na konci historie, mají provedeny příslušné akce. Například zpráva může být zařazena do fronty pro volání funkce aktivity.
+Úlohy jsou prováděny synchronně pomocí jednoho vlákna, dokud nebude přehrána celá historie. Trvalé úkoly, které nejsou dokončeny do konce historie replay mají příslušné akce provedeny. Například zpráva může být zařazena do fronty pro volání funkce aktivity.
 
-Popis tohoto oddílu chování za běhu by vám měl porozumět tomu, proč funkce Orchestrator nemůže použít `await` nebo `yield` v netrvalé úloze. Existují dva důvody: dispečerský podproces nemůže počkat na dokončení úlohy a jakékoli zpětné volání této úlohy může poškodit stav sledování funkce Orchestrator. K detekci těchto porušení jsou k dismístě některé kontroly za běhu.
+Popis chování za běhu v této části by vám měl pomoci pochopit, proč funkci orchestratoru nelze použít `await` nebo `yield` v trvalé úloze. Existují dva důvody: dispečer vlákno nemůže čekat na dokončení úkolu a jakékoli zpětné volání podle této úlohy může potenciálně poškodit stav sledování funkce orchestrator. Některé kontroly za běhu jsou zavedeny, aby pomohly zjistit tato porušení.
 
-Další informace o tom, jak prostředí trvalé úlohy spouští funkce nástroje Orchestrator, najdete v článku [trvalý zdrojový kód úlohy na GitHubu](https://github.com/Azure/durabletask). Zejména viz [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) a [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
+Další informace o tom, jak architektura durable task framework provádí funkce orchestratoru, naleznete ve [zdrojovém kódu trvanlivé úlohy na GitHubu](https://github.com/Azure/durabletask). Viz zejména [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) a [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Naučte se volat dílčí orchestrace.](durable-functions-sub-orchestrations.md)
+> [Naučte se vyvolat podorchestrations](durable-functions-sub-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [Informace o tom, jak zpracovávat správu verzí](durable-functions-versioning.md)
+> [Přečtěte si, jak zpracovat správu verzí](durable-functions-versioning.md)

@@ -1,8 +1,8 @@
 ---
-title: Ochrana osobních údajů uživatelů a Azure AD bezproblémové jednotné přihlašování | Dokumentace Microsoftu
-description: Tento článek se zabývá bezproblémového jednotného přihlašování Azure Active Directory (Azure AD) a nařízení GDPR dodržování předpisů.
+title: Ochrana osobních údajů uživatelů a bezproblémové jednotné přihlašování azure a služby Azure AD | Dokumenty společnosti Microsoft
+description: Tento článek se zabývá Azure Active Directory (Azure AD) bezproblémové jednotné přihlašovač a dodržování GDPR.
 services: active-directory
-keywords: Co je Azure AD Connect, nařízení GDPR, povinné součásti pro službu Azure AD, jednotné přihlašování, jednotné přihlašování
+keywords: co je Azure AD Connect, GDPR, požadované komponenty pro Azure AD, Jednotné přihlašování, jednotné přihlašování
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,38 +17,38 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9311c1060b953e87f163cb482db14cdd43f50d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60242108"
 ---
-# <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Ochrana osobních údajů uživatelů a Azure AD bezproblémové jednotné přihlašování
+# <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Ochrana osobních údajů uživatelů a bezproblémové jednotné přihlašování Azure AD
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview"></a>Přehled
 
 
-Azure bezproblémového jednotného přihlašování AD vytvoří následující typ protokolu, který může obsahovat osobní údaje: 
+Azure AD Bezproblémové jednotné přihlašování vytvoří následující typ protokolu, který může obsahovat osobní data: 
 
-- Soubory protokolu trasování Azure AD Connect.
+- Soubory protokolu trasování služby Azure AD Connect.
 
-Vylepšení ochrany osobních údajů uživatele pro bezproblémové jednotné přihlašování dvěma způsoby:
+Zlepšete ochranu osobních údajů uživatelů pro bezproblémové jednotné přihlašování dvěma způsoby:
 
-1.  Na vyžádání extrahovat data pro osobu a odstranění dat z této osoby ze zařízení.
-2.  Ujistěte se, že žádná data se uchovávají za 48 hodin.
+1.  Na požádání extrahujte data pro osobu a odstraňte data z této osoby z zařízení.
+2.  Ujistěte se, že žádná data nejsou uchovávána po 48 hodinách.
 
-Důrazně doporučujeme druhou možnost, jak usnadňuje implementaci a údržbu. Viz následující pokyny pro jednotlivé typy protokolů:
+Důrazně doporučujeme druhou možnost, protože je snadnější implementovat a udržovat. Viz následující pokyny pro každý typ protokolu:
 
-### <a name="delete-azure-ad-connect-trace-log-files"></a>Odstranit soubory protokolu trasování služby Azure AD Connect
+### <a name="delete-azure-ad-connect-trace-log-files"></a>Odstranění souborů protokolu trasování služby Azure AD Connect
 
-Zkontrolujte obsah **%ProgramData%\AADConnect** složku a odstraňte trasování protokolu obsah (**trasování -\*.log** soubory) této složky do 48 hodin od instalace nebo upgrade služby Azure AD Connect nebo změna konfigurace bezproblémového jednotného přihlašování, jako tuto akci mohou vytvořit data vztahuje nařízení GDPR.
+Zkontrolujte obsah složky **%ProgramData%\AADConnect** a odstraňte obsah protokolu trasování **(trace-\*.log** files) této složky do 48 hodin od instalace nebo upgradu služby Azure AD Connect nebo po úpravě bezproblémové konfigurace jednotného přihlašování, protože tato akce může vytvářet data pokrytá nařízením GDPR.
 
 >[!IMPORTANT]
->Neodstraňovat **PersistedState.xml** soubor v této složce, a tento soubor se používá k uchování stavu předchozí instalace služby Azure AD Connect se používá, když se provádí upgrade instalace. Tento soubor, nikdy neobsahuje žádná data o osobě a měl by být nikdy odstraněn.
+>Neodstraňujte soubor **PersistedState.xml** v této složce, protože tento soubor se používá k udržení stavu předchozí instalace služby Azure AD Connect a používá se při dokončení instalace upgradu. Tento soubor nikdy nebude obsahovat žádná data o osobě a nikdy by neměl být odstraněn.
 
-Můžete zkontrolovat a odstranit tyto soubory protokolu trasování pomocí Průzkumníka Windows, nebo můžete použít následující skript prostředí PowerShell provádět potřebné akce:
+Tyto soubory protokolu trasování můžete zkontrolovat a odstranit pomocí Průzkumníka Windows nebo můžete k provedení nezbytných akcí použít následující skript prostředí PowerShell:
 
 ```powershell
 $Files = ((Get-Item -Path "$env:programdata\aadconnect\trace-*.log").VersionInfo).FileName 
@@ -58,16 +58,16 @@ Foreach ($file in $Files) {
 }
 ```
 
-Uložte skript v souboru se ". PS1 "rozšíření. Spusťte tento skript podle potřeby.
+Uložte skript do souboru s ". PS1" rozšíření. Podle potřeby spusťte tento skript.
 
-Další informace o souvisejících požadavky GDPR připojení Azure AD, najdete v článku [v tomto článku](reference-connect-user-privacy.md).
+Další informace o souvisejících požadavcích gdpr azure a apřipojení na jdete v [tomto článku](reference-connect-user-privacy.md).
 
-### <a name="note-about-domain-controller-logs"></a>Mějte na paměti o protokolech řadiče domény
+### <a name="note-about-domain-controller-logs"></a>Poznámka k protokolům řadiče domény
 
-Pokud je povoleno protokolování auditu, tento produkt může generovat protokoly zabezpečení pro řadiče domény. Další informace o konfiguraci zásad auditu, najdete v tomto [článku](https://technet.microsoft.com/library/dd277403.aspx).
+Pokud je protokolování auditu povoleno, může tento produkt generovat protokoly zabezpečení pro řadiče domény. Další informace o konfiguraci zásad auditu naleznete v tomto [článku](https://technet.microsoft.com/library/dd277403.aspx).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Projděte si zásady Microsoft Privacy Trust Center](https://www.microsoft.com/trustcenter)
-  - [**Řešení potíží s** ](tshoot-connect-sso.md) – zjistěte, jak vyřešit běžné problémy s funkcí.
-  - [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – k podání žádostí o nové funkce.
+* [Projděte si zásady ochrany osobních údajů společnosti Microsoft v Centru zabezpečení](https://www.microsoft.com/trustcenter)
+  - [**Poradce při potížích**](tshoot-connect-sso.md) – Přečtěte si, jak vyřešit běžné problémy s funkcí.
+  - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - Pro podání nových žádostí o funkce.

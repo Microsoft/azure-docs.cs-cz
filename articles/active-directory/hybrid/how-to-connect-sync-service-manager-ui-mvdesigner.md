@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect MV návrháře | Dokumentace Microsoftu
-description: Vysvětlení kartu Návrhář Metaverse v Synchronization Service Manager pro Azure AD Connect.
+title: Návrhář MV služby Azure AD Connect | Dokumenty společnosti Microsoft
+description: Seznamte se s kartou Metaverse Designer ve Správci synchronizačních služeb pro Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,19 +18,19 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d08454a0ad87adb97037517579f11ab976280425
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381307"
 ---
-# <a name="sync-service-manager-metaverse-designer"></a>Návrhář Metaverse Sync Service Manageru
+# <a name="sync-service-manager-metaverse-designer"></a>Návrhář Metaverse správce synchronizačních služeb
 
-![Správce synchronizace služby](./media/how-to-connect-sync-service-manager-ui-mvdesigner/mvdesigner.png)
+![Správce synchronizačních služeb](./media/how-to-connect-sync-service-manager-ui-mvdesigner/mvdesigner.png)
 
-Pro většinu zákazníků není nic ke konfiguraci sem.
+Pro většinu zákazníků zde není nic konfigurovat.
 
-## <a name="next-steps"></a>Další postup
-Další informace o [synchronizace Azure AD Connect](how-to-connect-sync-whatis.md) konfigurace.
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o konfiguraci [synchronizace Azure AD Connect.](how-to-connect-sync-whatis.md)
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

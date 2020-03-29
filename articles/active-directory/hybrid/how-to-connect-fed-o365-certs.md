@@ -1,6 +1,6 @@
 ---
-title: Certifikát obnovení pro uživatele Office 365 a Azure AD | Dokumentace Microsoftu
-description: Tento článek vysvětluje uživatelům Office 365, jak řešit problémy s e-mailů, které je informovat o obnovení certifikátu.
+title: Obnovení certifikátu pro uživatele Office 365 a Azure AD | Dokumenty společnosti Microsoft
+description: Tento článek vysvětluje uživatelům Office 365, jak řešit problémy s e-maily, které je upozorňují na obnovení certifikátu.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,167 +17,167 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60244850"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Obnovení federačních certifikátů pro Office 365 a Azure Active Directory
 ## <a name="overview"></a>Přehled
-Pro úspěšné federace mezi službami Azure Active Directory (Azure AD) a Active Directory Federation Services (AD FS) by měl odpovídat certifikáty používané službou AD FS k podepisování tokenů zabezpečení do služby Azure AD, co je nakonfigurováno ve službě Azure AD. Jakákoli neshoda může vést k porušení vztahu důvěryhodnosti. Azure AD zajišťuje, že tyto informace je udržovat synchronizované při nasazování služby AD FS a Proxy webových aplikací (pro přístup z extranetu).
+Pro úspěšnou federaci mezi Azure Active Directory (Azure AD) a AD FS (AD FS) by certifikáty používané službou AD FS k podepisování tokenů zabezpečení do Azure AD měly odpovídat tomu, co je nakonfigurované ve službě Azure AD. Jakýkoli nesoulad může vést k nepřerušené důvěře. Azure AD zajišťuje, že tyto informace jsou synchronizovány při nasazení Služby AD FS a proxy webových aplikací (pro extranet přístup).
 
-Tento článek obsahuje další informace o správě podpisové certifikáty tokenu a udržovat synchronizované s Azure AD v následujících případech:
+Tento článek obsahuje další informace pro správu certifikátů podpisu tokenů a jejich synchronizaci s Azure AD, v následujících případech:
 
-* Nenasazujete Proxy webových aplikací, a proto není k dispozici v extranetu federačních metadat.
-* Nepoužíváte výchozí konfiguraci služby AD FS pro podpisové certifikáty tokenu.
-* Jsou pomocí zprostředkovatele identity třetí strany.
+* Nenasazujete proxy webové aplikace, a proto nejsou metadata federace k dispozici v extranetu.
+* Nepoužíváte výchozí konfiguraci služby AD FS pro podpisové certifikáty tokenů.
+* Používáte zprostředkovatele identity jiného výrobce.
 
-## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Výchozí konfigurace služby AD FS pro podpisové certifikáty tokenu
-Podpisové a dešifrovací certifikáty tokenu jsou obvykle certifikáty podepsané svým držitelem a jsou vhodné pro jeden rok. Standardně služba AD FS obsahuje tzv. automatické obnovení **AutoCertificateRollover**. Pokud používáte službu AD FS 2.0 nebo novější, Office 365 a Azure AD automaticky aktualizujte před vypršením platnosti vašeho certifikátu.
+## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Výchozí konfigurace služby AD FS pro podpisové certifikáty tokenů
+Certifikáty pro podepisování tokenů a dešifrování tokenů jsou obvykle certifikáty podepsané svým držitelem a jsou vhodné po dobu jednoho roku. Ve výchozím nastavení zahrnuje službu AD FS proces automatického obnovení nazvaný **AutoCertificateRollover**. Pokud používáte službu AD FS 2.0 nebo novější, Office 365 a Azure AD automaticky aktualizují váš certifikát před vypršením jeho platnosti.
 
-### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Obnovení oznámení z centra pro správu služeb Microsoft 365 nebo e-mailu
+### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Oznámení o obnovení z Centra pro správu Microsoftu 365 nebo e-mailu
 > [!NOTE]
-> Pokud jste dostali e-mailu nebo oznámení na portálu s výzvou k obnovení certifikátu pro Office naleznete v tématu [správou změn podpisové certifikáty tokenů](#managecerts) ke kontrole, pokud je potřeba provádět žádnou akci. Microsoft si uvědomuje možný problém, který může mít za následek oznámení o obnovení certifikátu, které jsou odesílány, i když není vyžadována žádná akce.
+> Pokud jste obdrželi e-mail nebo oznámení portálu s žádostí o obnovení certifikátu pro Office, přečtěte si informace o tom, zda je třeba provést nějakou akci, najdete v [tématu Správa změn podpisových certifikátů tokenů.](#managecerts) Společnost Microsoft si je vědoma možného problému, který může vést k odeslání oznámení o obnovení certifikátu, a to i v případě, že není vyžadována žádná akce.
 >
 >
 
-Azure AD se pokusí federačních metadat. monitorování a aktualizace je určeno tato metadata podpisových certifikátů tokenu. 30 dní před vypršením platnosti tokenu podpisové certifikáty, Azure AD ověří, pokud nové certifikáty jsou k dispozici pomocí cyklického dotazování federačních metadat.
+Azure AD se pokusí sledovat metadata federace a aktualizovat podpisové certifikáty tokenu, jak je uvedeno v těchto metadatech. 30 dní před vypršením platnosti podpisových certifikátů tokenu Azure AD zkontroluje, jestli jsou nové certifikáty dostupné dotazem na metadata federace.
 
-* Pokud může úspěšně dotazování federačních metadat a načíst nové certifikáty, objeví se žádné e-mailových oznámení nebo upozornění v Centru pro správu služeb Microsoft 365 uživateli.
-* Pokud nemůže získat nový token podpisové certifikáty, buď protože federačních metadat je nedostupná nebo není povoleno automatické certifikáty vyměnit, Azure AD vydá e-mailové oznámení a upozornění v Centru pro správu Microsoftu 365.
+* Pokud se mu podaří úspěšně zostřit metadata federace a načíst nové certifikáty, uživateli se nezobrazí žádné e-mailové oznámení ani upozornění v Centru pro správu Microsoftu 365.
+* Pokud nemůže načíst nové podpisové certifikáty tokenů, protože metadata federace nejsou dostupná nebo automatické převrácení certifikátu není povoleno, Azure AD vydá e-mailové oznámení a upozornění v Centru pro správu Microsoftu 365.
 
-![Oznámení na portálu Office 365](./media/how-to-connect-fed-o365-certs/notification.png)
+![Oznámení portálu Office 365](./media/how-to-connect-fed-o365-certs/notification.png)
 
 > [!IMPORTANT]
-> Pokud používáte službu AD FS, zajištění kontinuity obchodních procesů, ověřte prosím, že vaše servery mají následující aktualizace tak, aby se nevyskytují chyby ověřování známých problémů. To snižuje riziko zneužití známých problémů služby AD FS proxy serveru pro toto obnovení a budoucí obnovování:
+> Chcete-li zajistit kontinuitu provozu, ověřte, zda servery mají následující aktualizace, aby nedošlo k selhání ověřování u známých problémů. To zmírňuje známé problémy proxy serveru služby AD FS pro toto obnovení a budoucí období obnovení:
 >
-> Server 2012 R2 - [Windows serveru. května 2014 souhrn](https://support.microsoft.com/kb/2955164)
+> Server 2012 R2 – [souhrn windows serveru květen 2014](https://support.microsoft.com/kb/2955164)
 >
-> Server 2008 R2 a 2012 - [ověřování přes proxy server selže v systému Windows Server 2012 nebo Windows 2008 R2 SP1](https://support.microsoft.com/kb/3094446)
+> Server 2008 R2 a 2012 – [ověřování prostřednictvím serveru proxy se nezdaří v systému Windows Server 2012 nebo Windows 2008 R2 SP1](https://support.microsoft.com/kb/3094446)
 >
 >
 
-## Zaškrtněte, pokud je nutné aktualizovat certifikáty <a name="managecerts"></a>
-### <a name="step-1-check-the-autocertificaterollover-state"></a>Krok 1: Zkontrolujte stav AutoCertificateRollover
-Na serveru služby AD FS otevřete prostředí PowerShell. Zkontrolujte, jestli je hodnota AutoCertificateRollover nastavena na hodnotu True.
+## <a name="check-if-the-certificates-need-to-be-updated"></a>Zkontrolujte, zda je třeba certifikáty aktualizovat<a name="managecerts"></a>
+### <a name="step-1-check-the-autocertificaterollover-state"></a>Krok 1: Kontrola stavu AutoCertificateRollover
+Na serveru služby AD FS otevřete powershell. Zkontrolujte, zda je hodnota AutoCertificateRollover nastavena na hodnotu True.
 
     Get-Adfsproperties
 
-![AutoCertificateRollover](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
+![Automatický převrácení certifikátů](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
 >[!NOTE] 
->Pokud používáte službu AD FS 2.0, nejprve spusťte Add-Pssnapin Microsoft.Adfs.Powershell.
+>Pokud používáte službu AD FS 2.0, spusťte nejprve add-pssnapin microsoft.adfs.powershell.
 
-### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>Krok 2: Ověřte, zda jsou synchronizace služby AD FS a Azure AD
-Na serveru služby AD FS otevřete příkazový řádek MSOnline Powershellu a připojení k Azure AD.
+### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>Krok 2: Potvrzení synchronizace služby AD FS a Azure AD
+Na serveru služby AD FS otevřete výzvu prostředí MSOnline PowerShell a připojte se ke službě Azure AD.
 
 > [!NOTE]
-> Rutiny MSOL jsou součástí modulu MSOnline Powershellu.
-> Modul MSOnline Powershellu si můžete stáhnout přímo z Galerie prostředí PowerShell.
+> Rutiny MSOL jsou součástí modulu MSOnline PowerShell.
+> Modul Prostředí MSOnline PowerShell si můžete stáhnout přímo z Galerie prostředí PowerShell.
 > 
 >
 
     Install-Module MSOnline
 
-Připojení k Azure AD pomocí prostředí PowerShell – modul MSOnline.
+Připojte se k Azure AD pomocí modulu MSOnline PowerShell.
 
     Import-Module MSOnline
     Connect-MsolService
 
-Zkontrolujte nakonfigurovaných ve službě AD FS a Azure AD, vlastnosti pro zadanou doménu vztahu důvěryhodnosti certifikátů.
+Zkontrolujte certifikáty nakonfigurované ve službách AD FS a Azure AD vztah důvěryhodnosti vlastnosti pro zadanou doménu.
 
     Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
 
 ![Get-MsolFederationProperty](./media/how-to-connect-fed-o365-certs/certsync.png)
 
-Pokud odpovídají kryptografickým otiskům v obou výstupy certifikáty jsou synchronizované s Azure AD.
+Pokud kryptografické otisky v obou výstupech odpovídají, vaše certifikáty jsou synchronizovány s Azure AD.
 
-### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>Krok 3: Zkontrolujte, jestli je váš certifikát vyprší
-Ve výstupu příkazu Get-MsolFederationProperty nebo Get-AdfsCertificate zkontrolujte datum v části "Ne po." Pokud je datum méně než 30 dnů, byste měli provést akci.
+### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>Krok 3: Zkontrolujte, jestli platnost certifikátu brzy vyprší
+Ve výstupu Get-MsolFederationProperty nebo Get-AdfsCertificate zkontrolujte datum v části "Not After". Pokud je datum kratší než 30 dní, měli byste provést akci.
 
-| AutoCertificateRollover | Certifikáty, které jsou synchronizované s Azure AD | Federační metadata je veřejně dostupná | Platnost | Akce |
+| Automatický převrácení certifikátů | Synchronizované certifikáty se službou Azure AD | Metadata federace jsou veřejně přístupná. | Platnost | Akce |
 |:---:|:---:|:---:|:---:|:---:|
-| Ano |Ano |Ano |- |Není nutná žádná akce. Zobrazit [obnovit token podepisování certifikátu automaticky](#autorenew). |
-| Ano |Ne |- |Méně než 15 dnů |Prodlužte platnost okamžitě. Zobrazit [podepisování obnovit certifikát ručně](#manualrenew). |
-| Ne |- |- |Méně než 30 dní |Prodlužte platnost okamžitě. Zobrazit [podepisování obnovit certifikát ručně](#manualrenew). |
+| Ano |Ano |Ano |- |Není vyžadována žádná akce. Viz [Obnovit podpisový certifikát tokenu automaticky](#autorenew). |
+| Ano |Ne |- |Méně než 15 dní |Okamžitě obnovte. [Viz Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
+| Ne |- |- |Méně než 30 dní |Okamžitě obnovte. [Viz Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
 
-\[-] Nezáleží.
+\[-] Nezáleží na tom
 
-## Obnovit automaticky podpisový certifikát tokenu (doporučeno) <a name="autorenew"></a>
-Není nutné provádět jakékoli ruční kroky, pokud jsou splněny obě z následujících akcí:
+## <a name="renew-the-token-signing-certificate-automatically-recommended"></a>Automatické obnovení podpisového certifikátu tokenu (doporučeno)<a name="autorenew"></a>
+Pokud jsou splněny obě následující skutečnosti, nemusíte provádět žádné ruční kroky:
 
-* Jste nasadili Proxy webových aplikací, které zajišťují přístup k metadatům federace z extranetu.
-* Používáte výchozí konfiguraci služby AD FS (AutoCertificateRollover povoleno).
+* Nasadili jste proxy webové aplikace, které umožňují přístup k metadatům federace z extranetu.
+* Používáte výchozí konfiguraci služby AD FS (funkce AutoCertificateRollover je povolena).
 
-Zkontrolujte následující pro potvrzení, že certifikát je automaticky aktualizovat.
+Zkontrolujte následující, abyste potvrdili, že certifikát lze automaticky aktualizovat.
 
-**1. Vlastnost služby AD FS AutoCertificateRollover musí být nastavena na hodnotu True.** To znamená, že služba AD FS bude automaticky vygenerovat nový token podepisování a dešifrování tokenů, certifikáty, před starého těch, které jsou vyprší.
+**1. Vlastnost AD FS AutoCertificateRollover musí být nastavena na True.** To znamená, že služba AD FS automaticky vygeneruje nové certifikáty pro podepisování tokenů a dešifrování tokenů, než vyprší platnost starých certifikátů.
 
-**2. Metadata federování služby AD FS je veřejně dostupná.** Zkontrolujte, jestli je váš federační metadata veřejně přístupná tak, že přejdete na následující adresu URL z počítače na veřejném Internetu (mimo firemní síť):
+**2. Metadata federace služby AD FS jsou veřejně přístupná.** Zkontrolujte, zda jsou metadata federace veřejně přístupná, a to tak, že přejdete na následující adresu URL z počítače na veřejném internetu (mimo podnikovou síť):
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-kde `(your_FS_name)` nahradí název federační služby hostitele, vaše organizace používá, třeba fs.contoso.com.  Pokud máte možnost ověřit oba z těchto nastavení úspěšně, není nutné dělat nic dalšího.  
+kde `(your_FS_name)` je nahrazen názvem hostitele federační služby, který vaše organizace používá, například fs.contoso.com.  Pokud jste schopni ověřit obě tato nastavení úspěšně, není třeba dělat nic jiného.  
 
 Příklad: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
-## Obnovit ručně podpisový certifikát tokenu <a name="manualrenew"></a>
-Můžete se rozhodnout obnovit ručně podpisových certifikátů tokenu. Například následující scénáře verzování mohou vyhovovat více Ruční prodloužení platnosti:
+## <a name="renew-the-token-signing-certificate-manually"></a>Ruční obnovení podpisového certifikátu tokenu<a name="manualrenew"></a>
+Můžete se rozhodnout obnovit podpisové certifikáty tokenu ručně. Následující scénáře mohou například fungovat lépe pro ruční obnovení:
 
-* Token, podpisové certifikáty není certifikáty podepsané svým držitelem. Nejčastější příčinou je, že vaše organizace spravuje certifikáty služby AD FS zapsané od organizace certifikační autority.
-* Zabezpečení sítě nepovoluje federačních metadat veřejně dostupná.
+* Podpisové certifikáty tokenů nejsou certifikáty podepsané svým držitelem. Nejčastějším důvodem je, že vaše organizace spravuje certifikáty služby AD FS zaregistrované z certifikační autority organizace.
+* Zabezpečení sítě neumožňuje, aby metadata federace byla veřejně dostupná.
 
-V těchto scénářích při každé aktualizaci tokenu podpisové certifikáty, je nutné také aktualizovat vaši doménu Office 365 pomocí příkazu Powershellu Update-MsolFederatedDomain.
+V těchto scénářích je nutné při každé aktualizaci podpisových certifikátů tokenů aktualizovat doménu Office 365 také pomocí příkazu PowerShell Update-MsolFederatedDomain.
 
-### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>Krok 1: Zajistěte, aby služba AD FS nové podpisové certifikáty tokenu
-**Jiné než výchozí konfigurace**
+### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>Krok 1: Ujistěte se, že služby AD FS mají nové podpisové certifikáty tokenů.
+**Nevýchozí konfigurace**
 
-Pokud používáte jiné než výchozí konfiguraci služby AD FS (kde **AutoCertificateRollover** je nastavena na **False**), pravděpodobně používáte vlastní certifikáty (ne s podpisem držitele). Další informace o tom, jak obnovit podpisových certifikátů tokenu služby AD FS, najdete v části [pokyny pro zákazníky bez použití služby AD FS podepsané svým držitelem certifikáty](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert).
+Pokud používáte nevýchozí konfiguraci služby AD FS (kde je **funkce AutoCertificateRollover** nastavena na **hodnotu False**), pravděpodobně používáte vlastní certifikáty (nikoli podepsané svým držitelem). Další informace o obnovení podpisových certifikátů tokenů služby AD FS naleznete v [tématu Pokyny pro zákazníky, kteří nepoužívají certifikáty podepsané samořízenými certifikáty služby AD FS](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert).
 
-**Není veřejně dostupných federačních metadat**
+**Metadata federace nejsou veřejně dostupná.**
 
-Na druhé straně Pokud **AutoCertificateRollover** je nastavena na **True**, ale není veřejně přístupná federačních metadat, nejprve se ujistěte, že byly vytvořeny nové podpisové certifikáty tokenů službou AD FS. Ověřte, že máte nový token podpisových certifikátů pomocí následujících kroků:
+Na druhou stranu pokud **AutoCertificateRollover** je nastavena na **True**, ale vaše federace metadata není veřejně přístupné, nejprve se ujistěte, že nové podpisové certifikáty tokenu byly generovány službou AD FS. Potvrďte, že máte nové podpisové certifikáty tokenů, a to provedením následujících kroků:
 
-1. Ověřte, že jste přihlášeni na primární server služby AD FS.
-2. Zkontrolujte aktuální podpisové certifikáty ve službě AD FS tak, že otevřete příkazové okno prostředí PowerShell a spuštěním následujícího příkazu:
+1. Ověřte, zda jste přihlášeni k primárnímu serveru služby AD FS.
+2. Otevřete příkazové okno Prostředí PowerShell a spouštějte následující příkazy, zkontrolujte aktuální podpisové certifikáty ve službě AD FS:
 
-    PS C:\>Get-ADFSCertificate – CertificateType podpisové
+    PS C:\>Get-ADFSCertificate –Podpis tokenu Typu certificateType
 
    > [!NOTE]
-   > Pokud používáte službu AD FS 2.0, měli byste nejprve spustit Add-Pssnapin Microsoft.Adfs.Powershell.
+   > Pokud používáte službu AD FS 2.0, měli byste nejprve spustit aplikaci Add-Pssnapin Microsoft.Adfs.Powershell.
    >
    >
-3. Podívejte se na výstup tohoto příkazu v žádné certifikáty. Pokud službu AD FS vygeneruje nový certifikát, měli byste vidět dva certifikáty ve výstupu: pro který **IsPrimary** hodnotu **True** a **NotAfter** datum je do 5 dnů a pro který **IsPrimary** je **False** a **NotAfter** spočívá v roce v budoucnu.
-4. Pokud se zobrazí jenom jeden certifikát a **NotAfter** datum je do 5 dnů, budete muset vygenerovat nový certifikát.
-5. Pokud chcete vygenerovat nový certifikát, spusťte následující příkaz na příkazovém řádku prostředí PowerShell: `PS C:\>Update-ADFSCertificate –CertificateType token-signing`.
-6. Ověřte aktualizace opětovným spuštěním následujícího příkazu: PS C:\>Get-ADFSCertificate – CertificateType podpisové
+3. Podívejte se na výstup příkazu na všechny uvedené certifikáty. Pokud AD FS vygenerovala nový certifikát, měli byste vidět dva certifikáty ve výstupu: jeden, pro který **isPrimary** hodnota je **true** a **NotAfter** datum je do 5 dnů a jeden, pro který **IsPrimary** je **False** a **NotAfter** je asi rok v budoucnu.
+4. Pokud se zobrazí pouze jeden certifikát a **Datum NotAfter** je do 5 dnů, je třeba vygenerovat nový certifikát.
+5. Chcete-li vygenerovat nový certifikát, proveďte na `PS C:\>Update-ADFSCertificate –CertificateType token-signing`příkazovém řádku prostředí PowerShell následující příkaz: .
+6. Ověřte aktualizaci znovu spuštěním následujícího příkazu: PS C:\>Get-ADFSCertificate –CertificateType token-signing
 
-Dva certifikáty by měly být uvedeny nyní, z nichž jeden je **NotAfter** datum v budoucnosti přibližně jeden rok a pro které **IsPrimary** hodnotu **False**.
+Dva certifikáty by měly být uvedeny nyní, z nichž jeden má **NotAfter** datum přibližně jeden rok v budoucnosti a pro které **IsPrimary** hodnota je **False**.
 
-### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>Krok 2: Aktualizujte nové podpisové certifikáty pro vztah důvěryhodnosti služeb Office 365
-Aktualizujte Office 365 nový token podpisové certifikáty, které má být použit pro vztah důvěryhodnosti, následujícím způsobem.
+### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>Krok 2: Aktualizace nových podpisových certifikátů tokenů pro důvěryhodnost Office 365
+Aktualizujte Office 365 s novými podpisovými certifikáty tokenů, které se mají použít pro vztah důvěryhodnosti, následujícím způsobem.
 
-1. Otevřete modul Microsoft Azure Active Directory pro prostředí Windows PowerShell.
-2. Run $cred=Get-Credential. Když tato rutina vás vyzve k zadání přihlašovacích údajů, zadejte přihlašovací údaje účtu správce cloudových služeb.
-3. Spustit Connect-MsolService – $cred přihlašovacích údajů. Tato rutina vás připojí ke cloudové službě. Vytvoření kontextu, který vás připojí ke cloudové službě je potřeba před spuštěním další rutiny nainstalované pomocí nástroje.
-4. Pokud se spuštění těchto příkazů na počítači, který není primární federační server AD FS, spusťte Set-MSOLAdfscontext-počítače &lt;primární server AD FS&gt;, kde &lt;primární server AD FS&gt; je interní plně kvalifikovaný název domény název primárního serveru AD FS. Tato rutina vytvoří kontext, který slouží jako propojení se službou AD FS.
-5. Spustit Update-MSOLFederatedDomain-DomainName &lt;domény&gt;. Tato rutina aktualizuje nastavení ze služby AD FS do cloudové služby a nakonfiguruje vztah důvěryhodnosti mezi nimi.
+1. Otevřete modul Microsoft Azure Active Directory module pro prostředí Windows PowerShell.
+2. Spustit $cred=Získat pověření. Když vás tato rutina vyzve k zadání přihlašovacích údajů, zadejte přihlašovací údaje účtu správce cloudových služeb.
+3. Spusťte Connect-MsolService – $cred pověření. Tato rutina vás připojí ke cloudové službě. Vytvoření kontextu, který vás připojí ke cloudové službě, je nutné před spuštěním některé z dalších rutin nainstalovaných nástrojem.
+4. Pokud tyto příkazy používáte v počítači, který není primárním federačním serverem služby &lt;AD FS, spusťte primární server&gt;Set-MSOLAdfscontext -Computer AD FS , kde &lt;primární server&gt; služby AD FS je interní název fqdn primárního serveru Služby AD FS. Tato rutina vytvoří kontext, který vás spojí se službou AD FS.
+5. Spusťte update-MSOLFederatedDomain &lt;&gt;– doménu DomainName . Tato rutina aktualizuje nastavení ze služby AD FS do cloudové služby a konfiguruje vztah důvěryhodnosti mezi těmito dvěma.
 
 > [!NOTE]
-> Pokud potřebujete podporu více domén nejvyšší úrovně, jako je například contoso.com a fabrikam.com, je nutné použít **SupportMultipleDomain** přepínat pomocí libovolné rutiny. Další informace najdete v tématu [podpora více domén nejvyšší úrovně](how-to-connect-install-multiple-domains.md).
+> Pokud potřebujete podporovat více domén nejvyšší úrovně, jako je například contoso.com a fabrikam.com, musíte použít přepínač **SupportMultipleDomain** s libovolnými rutinami. Další informace naleznete v [tématu Podpora více domén nejvyšší úrovně](how-to-connect-install-multiple-domains.md).
 >
 
 
-## Oprava důvěryhodnosti Azure AD pomocí služby Azure AD Connect <a name="connectrenew"></a>
-Pokud jste nakonfigurovali farma služby AD FS a vztah důvěryhodnosti Azure AD pomocí služby Azure AD Connect, můžete zjistit, pokud je potřeba provádět žádnou akci pro podpisové certifikáty tokenu Azure AD Connect. Pokud je potřeba obnovit certifikáty, můžete k tomu Azure AD Connect.
+## <a name="repair-azure-ad-trust-by-using-azure-ad-connect"></a>Oprava vztahu důvěryhodnosti Azure AD pomocí služby Azure AD Connect<a name="connectrenew"></a>
+Pokud jste nakonfigurovali farmu služby AD FS a vztah důvěryhodnosti Azure AD pomocí Azure AD Connect, můžete pomocí Služby Azure AD Connect zjistit, jestli potřebujete provést jakoukoli akci pro vaše podpisové certifikáty tokenů. Pokud potřebujete obnovit certifikáty, můžete k tomu použít Azure AD Connect.
 
-Další informace najdete v tématu [opravu vztahu důvěryhodnosti](how-to-connect-fed-management.md).
+Další informace naleznete [v tématu Oprava vztahu důvěryhodnosti](how-to-connect-fed-management.md).
 
-## <a name="ad-fs-and-azure-ad-certificate-update-steps"></a>Postup aktualizace certifikátů služby AD FS a Azure AD
-Token, podpisové certifikáty jsou standardní X509 certifikáty, které se používají k bezpečně podepisování všech tokenů, které vystavuje federační server. Dešifrování tokenů certifikáty jsou standardní X509 certifikáty, které se používají k dešifrování veškerých příchozích tokenů. 
+## <a name="ad-fs-and-azure-ad-certificate-update-steps"></a>Kroky aktualizace certifikátu Služby AD FS a Certifikátu Azure AD
+Podpisové certifikáty tokenů jsou standardní certifikáty X509, které se používají k bezpečnému podepisování všech tokenů, které federační server vydává. Dešifrovací certifikáty tokenů jsou standardní certifikáty X509, které se používají k dešifrování všech příchozích tokenů. 
 
-Ve výchozím nastavení je služba AD FS nakonfigurováno pro generování podepisování a dešifrování tokenů certifikáty automaticky, v době počáteční konfiguraci a pokud certifikáty jsou blížícím se datem vypršení platnosti.
+Ve výchozím nastavení je služba AD FS nakonfigurována tak, aby automaticky generovala podpisové certifikáty tokenů a dešifrování tokenů, a to jak v počáteční době konfigurace, tak v době, kdy se certifikáty blíží k datu vypršení platnosti.
 
-Azure AD, pokusí se načíst nový certifikát z vaší federační služby metadata 30 dní před vypršením platnosti aktuálního certifikátu. V případě, že v tuto chvíli není k dispozici nový certifikát, Azure AD bude nadále monitorovat metadata v pravidelných intervalech denně. Poté, co je k dispozici v metadatech nový certifikát, nastavení federace domény se aktualizují pomocí nové informace o certifikátu. Můžete použít `Get-MsolDomainFederationSettings` k ověření, pokud se zobrazí nový certifikát v NextSigningCertificate / SigningCertificate.
+Azure AD se pokusí načíst nový certifikát z metadat federační služby 30 dní před vypršením platnosti aktuálního certifikátu. V případě, že nový certifikát není k dispozici v té době, Azure AD bude nadále sledovat metadata v pravidelných denních intervalech. Jakmile je nový certifikát k dispozici v metadatech, nastavení federace pro doménu se aktualizují o nové informace o certifikátu. Můžete použít `Get-MsolDomainFederationSettings` k ověření, zda se zobrazí nový certifikát v NextSigningCertificate / SigningCertificate.
 
-Další informace o podepisování tokenů certifikáty ve službě AD FS najdete v části [získat a nakonfigurovat podpisové a dešifrovací certifikáty tokenů pro službu AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)
+Další informace o certifikátech pro podepisování tokenů ve službě AD FS naleznete v [tématu Získání a konfigurace certifikátů pro podepisování tokenů a dešifrování tokenů pro službu AD FS.](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)

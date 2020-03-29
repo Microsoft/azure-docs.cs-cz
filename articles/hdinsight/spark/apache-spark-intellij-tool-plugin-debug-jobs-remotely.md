@@ -1,6 +1,6 @@
 ---
-title: 'Sada Azure Toolkit: Vzdálená aplikace pro Apache Spark ladění – Azure HDInsight'
-description: Naučte se používat nástroje HDInsight v Azure Toolkit for IntelliJ pro vzdálené ladění aplikací Spark, které běží na clusterech HDInsight prostřednictvím sítě VPN.
+title: 'Azure Toolkit: Vzdálené ladění aplikací Apache Spark – Azure HDInsight'
+description: Naučte se používat nástroje HDInsight v Sadě nástrojů Azure pro IntelliJ ke vzdálenému ladění aplikací Spark, které běží na clusterech HDInsight prostřednictvím sítě VPN.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,69 +9,69 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.openlocfilehash: 393356bd8604f6e7622acd778817681aad31f1f9
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76935025"
 ---
-# <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně ve službě HDInsight prostřednictvím sítě VPN
+# <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Použití sady Azure Toolkit for IntelliJ k vzdálenému ladění aplikací Apache Spark v HDInsightu prostřednictvím sítě VPN
 
-Doporučujeme ladit [Apache Spark](https://spark.apache.org/) aplikace vzdáleně prostřednictvím SSH. Pokyny najdete v tématu [vzdálené ladění Apache Spark aplikací v clusteru HDInsight s Azure Toolkit for IntelliJ prostřednictvím SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
+Doporučujeme ladit aplikace [Apache Spark](https://spark.apache.org/) na dálku přes SSH. Pokyny najdete v [tématu Vzdálené ladění aplikací Apache Spark v clusteru HDInsight pomocí Sady nástrojů Azure pro IntelliJ až SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
 
-Tento článek poskytuje podrobné pokyny k používání nástrojů HDInsight v Azure Toolkit for IntelliJ k odeslání úlohy Sparku do clusteru HDInsight Spark a jejich vzdálené ladění z stolního počítače. K dokončení těchto úloh je nutné provést následující kroky vysoké úrovně:
+Tento článek obsahuje podrobné pokyny, jak používat nástroje HDInsight v sadě nástrojů Azure pro IntelliJ k odeslání úlohy Spark v clusteru HDInsight Spark a pak ji vzdáleně ladit z vašeho stolního počítače. Chcete-li tyto úkoly dokončit, je nutné provést následující kroky vysoké úrovně:
 
-1. Vytvořte virtuální síť Azure typu Site-to-site nebo Point-to-site. U kroků v tomto dokumentu se předpokládá, že používáte síť Site-to-site.
-1. Vytvořte v HDInsight cluster Spark, který je součástí virtuální sítě Site-to-site.
-1. Ověřte připojení mezi hlavním uzlem clusteru a vaší plochou.
-1. Vytvořte v IntelliJ nápad aplikaci Scala a nakonfigurujte ji pro vzdálené ladění.
-1. Spusťte a ladění aplikace.
+1. Vytvořte virtuální síť Azure od lokality k webu nebo na místo. Kroky v tomto dokumentu předpokládají, že používáte síť mezi lokalitami.
+1. Vytvořte cluster Spark ve službě HDInsight, který je součástí virtuální sítě mezi lokalitami.
+1. Ověřte připojení mezi hlavním uzlem clusteru a plochou.
+1. Vytvořte aplikaci Scala v Aplikaci IntelliJ IDEA a pak ji nakonfigurujte pro vzdálené ladění.
+1. Spusťte a laděte aplikaci.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Další informace najdete v tématu [získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Cluster Apache Spark v HDInsight**. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* **Sada Oracle Java Development Kit**. Můžete ji nainstalovat z [webu Oracle](https://aka.ms/azure-jdks).
-* **INTELLIJ nápad**. Tento článek používá verzi 2017,1. Můžete ji nainstalovat z [webu JetBrains](https://www.jetbrains.com/idea/download/).
-* **Nástroje HDInsight v Azure Toolkit for IntelliJ**. Nástroje HDInsight pro IntelliJ jsou k dispozici jako součást Azure Toolkit for IntelliJ. Pokyny k instalaci sady Azure Toolkit najdete v tématu [install Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation).
-* **Přihlaste se k předplatnému Azure z INTELLIJ nápadu**. Postupujte podle pokynů v tématu [použití Azure Toolkit for IntelliJ k vytvoření Apache Spark aplikací pro cluster HDInsight](apache-spark-intellij-tool-plugin.md).
-* **Alternativní řešení výjimky**. Při spuštění aplikace Spark Scala pro vzdálené ladění v počítači se systémem Windows může dojít k výjimce. Tato výjimka je vysvětlena v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) a nastane v důsledku chybějícího souboru WinUtils. exe v systému Windows. Chcete-li tuto chybu vyřešit, je třeba stáhnout [Winutils. exe](https://github.com/steveloughran/winutils) do umístění, jako je například **C:\WinUtils\bin**. Přidejte **HADOOP_HOME** proměnnou prostředí a pak nastavte hodnotu proměnné na **C\WinUtils**.
+* **Předplatné Azure**. Další informace najdete [v tématu Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* **Cluster Apache Spark v HDInsightu**. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+* **Oracle Java development kit**. Můžete jej nainstalovat z [webu oracle](https://aka.ms/azure-jdks).
+* **IntelliJ IDEA**. Tento článek používá verzi 2017.1. Můžete jej nainstalovat z [webových stránek JetBrains](https://www.jetbrains.com/idea/download/).
+* **Nástroje HDInsight v sadě nástrojů Azure pro IntelliJ**. Nástroje HDInsight pro IntelliJ jsou k dispozici jako součást sady Nástrojů Azure pro IntelliJ. Pokyny k instalaci sady Azure Toolkit najdete [v tématu Instalace sady Nástrojů Azure pro IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation).
+* **Přihlaste se ke svému předplatnému Azure z IntelliJ IDEA**. Postupujte podle pokynů v [části Azure Toolkit pro IntelliJ k vytvoření aplikací Apache Spark pro cluster HDInsight](apache-spark-intellij-tool-plugin.md).
+* **Řešení výjimky**. Při spuštění aplikace Spark Scala pro vzdálené ladění v počítači se systémem Windows se může stát výjimka. Tato výjimka je vysvětlena v [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) a dochází z důvodu chybějícího souboru WinUtils.exe v systému Windows. Chcete-li tuto chybu vyřešit, je nutné stáhnout soubor [Winutils.exe](https://github.com/steveloughran/winutils) do umístění, například **C:\WinUtils\bin**. Přidejte **proměnnou prostředí HADOOP_HOME** a nastavte hodnotu proměnné na **hodnotu C\WinUtils**.
 
-## <a name="step-1-create-an-azure-virtual-network"></a>Krok 1: vytvoření virtuální sítě Azure
+## <a name="step-1-create-an-azure-virtual-network"></a>Krok 1: Vytvoření virtuální sítě Azure
 
-Podle pokynů z následujících odkazů vytvořte virtuální síť Azure a pak ověřte připojení mezi stolním počítačem a virtuální sítí:
+Podle pokynů z následujících odkazů vytvořte virtuální síť Azure a ověřte připojení mezi stolním počítačem a virtuální sítí:
 
-* [Vytvoření virtuální sítě s připojením VPN typu Site-to-site pomocí Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-* [Vytvoření virtuální sítě s připojením VPN typu Site-to-site pomocí PowerShellu](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
-* [Konfigurace připojení typu Point-to-site k virtuální síti pomocí PowerShellu](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Vytvoření virtuální sítě s připojením VPN mezi lokalitami pomocí portálu Azure](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Vytvoření virtuální sítě s připojením VPN mezi lokalitami pomocí Prostředí PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+* [Konfigurace připojení z bodu na místo k virtuální síti pomocí prostředí PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ## <a name="step-2-create-an-hdinsight-spark-cluster"></a>Krok 2: Vytvoření clusteru HDInsight Spark
 
-Doporučujeme také vytvořit cluster Apache Spark ve službě Azure HDInsight, který je součástí virtuální sítě Azure, kterou jste vytvořili. Použijte informace dostupné v části [vytváření clusterů se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Jako součást volitelné konfigurace vyberte virtuální síť Azure, kterou jste vytvořili v předchozím kroku.
+Doporučujeme také vytvořit cluster Apache Spark v Azure HDInsight, který je součástí virtuální sítě Azure, kterou jste vytvořili. Použijte informace dostupné v [clusterech založených na Linuxu v HDInsightu](../hdinsight-hadoop-provision-linux-clusters.md). Jako součást volitelné konfigurace vyberte virtuální síť Azure, kterou jste vytvořili v předchozím kroku.
 
-## <a name="step-3-verify-the-connectivity-between-the-cluster-head-node-and-your-desktop"></a>Krok 3: ověření připojení mezi hlavním uzlem clusteru a vaší plochou
+## <a name="step-3-verify-the-connectivity-between-the-cluster-head-node-and-your-desktop"></a>Krok 3: Ověření připojení mezi hlavním uzlem clusteru a plochou
 
-1. Získejte IP adresu hlavního uzlu. Otevřete uživatelské rozhraní Ambari pro cluster. V okně clusteru vyberte **řídicí panel**.
+1. Získejte IP adresu hlavního uzlu. Otevřete umulovní hostova. V okně clusteru vyberte **řídicí panel**.
 
-    ![Výběr řídicího panelu v Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png)
+    ![Vybrat řídicí panel v Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png)
 
-1. V uživatelském rozhraní Ambari vyberte **hostitelé**.
+1. V uzu Ambari vyberte **možnost Hostitelé**.
 
-    ![Výběr hostitelů v Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
+    ![Vybrat hostitele v Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. Zobrazí se seznam hlavních uzlů, pracovních uzlů a uzlů Zookeeper. Hlavní uzly mají předponu **HN**\*. Vyberte první hlavní uzel.
+1. Zobrazí se seznam uzly vedoucí, uzly pracovníka a zookeeper uzly. Hlavní uzly mají předponu **hn***. Vyberte první hlavní uzel.
 
-    ![Najděte hlavní uzel v Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
+    ![Najít hlavní uzel v Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
-1. V podokně **Souhrn** v dolní části stránky, která se otevře, zkopírujte **IP adresu** hlavního uzlu a **názvu hostitele**.
+1. Z podokna **Souhrn** v dolní části stránky, která se otevře, zkopírujte **adresu IP** hlavního uzlu a **název hostitele**.
 
-    ![Vyhledání IP adresy v Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
+    ![Najít IP adresu v Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
 
-1. Přidejte IP adresu a název hlavního uzlu do souboru **hosts** v počítači, na kterém chcete spustit, a vzdáleně ladit úlohu Spark. To vám umožní komunikovat s hlavním uzlem pomocí IP adresy a názvu hostitele.
+1. Přidejte IP adresu a název hostitele hlavního uzlu do souboru **hosts** v počítači, kde chcete spustit, a vzdáleně laděte úlohu Spark. To umožňuje komunikovat s hlavním uzlem pomocí IP adresy, stejně jako název hostitele.
 
-   a. Otevřete soubor poznámkového bloku se zvýšenými oprávněními. V nabídce **soubor** vyberte možnost **otevřít**a poté vyhledejte umístění souboru Hosts. V počítači s Windows se umístění **C:\Windows\System32\Drivers\etc\hosts**.
+   a. Otevřete soubor poznámkového bloku se zvýšenými oprávněními. V nabídce **Soubor** vyberte **Otevřít**a najděte umístění souboru hosts. V počítači se systémem Windows je umístění **C:\Windows\System32\Drivers\etc\hosts**.
 
-   b. Do souboru **hostitelů** přidejte následující informace:
+   b. Do souboru **hosts** přidejte následující informace:
 
     ```
     # For headnode0
@@ -83,73 +83,73 @@ Doporučujeme také vytvořit cluster Apache Spark ve službě Azure HDInsight, 
     192.xxx.xx.xx nitinp.lhwwghjkpqejawpqbwcdyp3.gx.internal.cloudapp.net
     ```
 
-1. Z počítače, ke kterému jste připojeni ke službě Azure Virtual Network, kterou používá cluster HDInsight, ověřte, že je možné pomocí adresy IP a názvu hostitele odeslat příkaz k otestování hlavního uzlu.
+1. Z počítače, který jste připojili k virtuální síti Azure, která používá cluster HDInsight, ověřte, zda můžete ping hlavní uzly pomocí IP adresy, stejně jako název hostitele.
 
-1. Pomocí SSH se připojte k hlavnímu uzlu clusteru podle pokynů v tématu [připojení ke clusteru HDInsight pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). Z hlavního uzlu clusteru otestujte IP adresu stolního počítače. Otestujte připojení ke všem IP adresám, které jsou přiřazeny k počítači:
+1. Pomocí SSH se můžete připojit k hlavnímu uzlu clusteru podle pokynů v části [Připojit ke clusteru HDInsight pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). Z hlavního uzlu clusteru příkazem ping na ip adresu stolního počítače. Otestujte připojení k oběma adresám IP přiřazeným počítači:
 
-    - Jedno pro síťové připojení
-    - Jedna pro virtuální síť Azure
+    - Jeden pro připojení k síti
+    - Jeden pro virtuální síť Azure
 
 1. Opakujte kroky pro druhý hlavní uzel.
 
-## <a name="step-4-create-an-apache-spark-scala-application-by-using-hdinsight-tools-in-azure-toolkit-for-intellij-and-configure-it-for-remote-debugging"></a>Krok 4: Vytvoření aplikace Apache Spark Scala pomocí nástrojů služby HDInsight v Azure Toolkit for IntelliJ a její konfigurace pro vzdálené ladění
+## <a name="step-4-create-an-apache-spark-scala-application-by-using-hdinsight-tools-in-azure-toolkit-for-intellij-and-configure-it-for-remote-debugging"></a>Krok 4: Vytvoření aplikace Apache Spark Scala pomocí nástrojů HDInsight v Azure Toolkit pro IntelliJ a nakonfigurujte ji pro vzdálené ladění
 
-1. Otevřete IntelliJ nápad a vytvořte nový projekt. V dialogovém okně **New Project** (Nový projekt) proveďte následující kroky:
+1. Otevřete IntelliJ IDEA a vytvořte nový projekt. V dialogovém okně **New Project** (Nový projekt) proveďte následující kroky:
 
-    ![Výběr nové šablony projektu v IntelliJ NÁPADu](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
+    ![Vyberte novou šablonu projektu v aplikaci IntelliJ IDEA](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
 
-    a. Vyberte **HDInsight** > **Spark on HDInsight (Scala)** (Spark v HDInsight (Scala)).
+    a. Vyberte **HDInsight** > **Spark na HDInsight (Scala)**.
 
-    b. Vyberte **Next** (Další).
-1. V dalším dialogovém okně **Nový projekt** proveďte následující a potom vyberte **Dokončit**:
+    b. Vyberte **další**.
+1. V dalším dialogovém okně **Nový projekt** postupujte takto a pak vyberte **Dokončit**:
 
     - Zadejte název a umístění projektu.
 
     - V rozevíracím seznamu **Project SDK** (SDK projektu) vyberte **Java 1.8** pro cluster Spark 2.x, nebo vyberte **Java 1.7** pro cluster Spark 1.x.
 
-    - V rozevíracím seznamu **verze Sparku** Průvodce vytvořením projektu Scala integruje správnou verzi sady Spark SDK a sady Scala SDK. Pokud je verze clusteru Spark nižší než 2.0, vyberte **Spark 1.x**. V opačném případě vyberte **Spark 2.x**. V tomto příkladu se používá **Spark 2.0.2 (Scala 2.11.8)** .
+    - V rozevíracím seznamu **verzí Spark** integruje Průvodce vytvořením projektu Scala správnou verzi pro Spark SDK a Scala SDK. Pokud je verze clusteru Spark nižší než 2.0, vyberte **Spark 1.x**. V opačném případě vyberte **Spark 2.x**. V tomto příkladu se používá **Spark 2.0.2 (Scala 2.11.8)**.
   
-   ![Výběr projektové sady SDK a verze Sparku](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
+   ![Výběr verze sady SDK a Spark projektu](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
   
-1. Projekt Spark automaticky vytvoří artefakt za vás. Chcete-li zobrazit artefakt, postupujte následovně:
+1. Projekt Spark automaticky vytvoří artefakt pro vás. Chcete-li artefakt zobrazit, postupujte takto:
 
     a. V nabídce **File** (Soubor) vyberte **Project Structure** (Struktura projektu).
 
-    b. V dialogovém okně **struktura projektu** vyberte **artefakty** a zobrazte tak výchozí artefakt, který se vytvoří. Svůj vlastní artefakt můžete vytvořit také tak, že vyberete znaménko plus ( **+** ).
+    b. V dialogovém okně **Struktura projektu** vyberte **artefakty,** chcete-li zobrazit výchozí artefakt, který je vytvořen. Můžete také vytvořit svůj vlastní artefakt výběrem**+** znaménko plus ( ).
 
-   ![IntelliJy nápadů vytvoření jar](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png)
+   ![IntelliJ IDEA artefakty vytvořit jar](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png)
 
-1. Přidejte knihovny do projektu. Chcete-li přidat knihovnu, postupujte následovně:
+1. Přidejte do projektu knihovny. Chcete-li přidat knihovnu, postupujte takto:
 
-    a. Ve stromové struktuře projektu klikněte pravým tlačítkem myši na název projektu a pak vyberte **Otevřít nastavení modulu**.
+    a. Klepněte pravým tlačítkem myši na název projektu ve stromu projektu a potom vyberte **příkaz Otevřít nastavení modulu**.
 
-    b. V dialogovém okně **struktura projektu** vyberte možnost **knihovny**, vyberte symbol ( **+** ) a pak vyberte možnost **z Maven**.
+    b. V dialogovém okně **Struktura projektu** vyberte**+** **Knihovny**, vyberte symbol ( ) a pak vyberte Z **Maven**.
 
-    ![Knihovna stažení NÁPADu pro IntelliJ](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
+    ![Knihovna ke stažení IntelliJ IDEA](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
 
-    c. V dialogovém okně **stáhnout knihovnu z úložiště Maven** vyhledejte a přidejte následující knihovny:
+    c. V dialogovém **okně Stáhnout knihovnu z úložiště Maven** vyhledejte a přidejte následující knihovny:
 
    * `org.scalatest:scalatest_2.10:2.2.1`
    * `org.apache.hadoop:hadoop-azure:2.7.1`
 
-1. Zkopírujte `yarn-site.xml` a `core-site.xml` z hlavního uzlu clusteru a přidejte je do projektu. K kopírování souborů použijte následující příkazy. Pomocí [Cygwin](https://cygwin.com/install.html) můžete spustit následující příkazy `scp` ke zkopírování souborů z hlavních uzlů clusteru:
+1. `yarn-site.xml` Zkopírujte `core-site.xml` a z hlavního uzlu clusteru a přidejte je do projektu. Ke kopírování souborů použijte následující příkazy. [Cygwin](https://cygwin.com/install.html) můžete použít ke `scp` spuštění následujících příkazů ke kopírování souborů z hlavníu uzlu clusteru:
 
     ```bash
     scp <ssh user name>@<headnode IP address or host name>://etc/hadoop/conf/core-site.xml .
     ```
 
-    Vzhledem k tomu, že jsme už přidali IP adresu hlavního uzlu clusteru a názvy hostitelů pro soubor hostitelů na ploše, můžeme použít příkazy `scp` následujícím způsobem:
+    Vzhledem k tomu, že jsme již přidali IP adresu hlavního uzlu `scp` clusteru a názvy hostitelů pro soubor hosts na ploše, můžeme použít příkazy následujícím způsobem:
 
     ```bash
     scp sshuser@nitinp:/etc/hadoop/conf/core-site.xml .
     scp sshuser@nitinp:/etc/hadoop/conf/yarn-site.xml .
     ```
 
-    Chcete-li přidat tyto soubory do projektu, zkopírujte je do složky **/Src** ve stromu projektu, například `<your project directory>\src`.
+    Chcete-li tyto soubory přidat do projektu, zkopírujte je do složky **/src** ve stromu projektu, například `<your project directory>\src`.
 
-1. Aktualizujte soubor `core-site.xml`, abyste provedli následující změny:
+1. Chcete-li provést následující změny, `core-site.xml` aktualizujte soubor:
 
-   a. Nahraďte zašifrovaný klíč. Soubor `core-site.xml` obsahuje zašifrovaný klíč k účtu úložiště přidruženému ke clusteru. V souboru `core-site.xml`, který jste přidali do projektu, nahraďte zašifrovaný klíč skutečným klíčem úložiště přidruženým k výchozímu účtu úložiště. Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
+   a. Nahraďte šifrovaný klíč. Soubor `core-site.xml` obsahuje šifrovaný klíč k účtu úložiště přidruženému ke clusteru. V `core-site.xml` souboru, který jste přidali do projektu, nahraďte šifrovaný klíč skutečným klíčem úložiště přidruženým k výchozímu účtu úložiště. Další informace naleznete v [tématu Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
 
     ```xml
     <property>
@@ -158,7 +158,7 @@ Doporučujeme také vytvořit cluster Apache Spark ve službě Azure HDInsight, 
     </property>
     ```
 
-   b. Z `core-site.xml`odeberte následující položky:
+   b. Odeberte z `core-site.xml`následujících položek následující položky z :
 
     ```xml
     <property>
@@ -179,15 +179,15 @@ Doporučujeme také vytvořit cluster Apache Spark ve službě Azure HDInsight, 
 
    c. Uložte soubor.
 
-1. Přidejte do své aplikace hlavní třídu. V **Průzkumníku projektu**klikněte pravým tlačítkem myši **na src**, přejděte na **Nový**a pak vyberte **Třída Scala**.
+1. Přidejte hlavní třídu pro vaši aplikaci. V **Průzkumníku projektu**klepněte pravým tlačítkem myši na **src**, přejděte na **Nový**a vyberte **třídu Scala**.
 
-    ![IntelliJ nápad vybrat hlavní třídu](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
+    ![IntelliJ IDEA Vyberte hlavní třídu](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
 
-1. V dialogovém okně **vytvořit novou třídu Scala** zadejte název, vyberte **objekt** v poli **druh** a pak vyberte **OK**.
+1. V dialogovém okně **Vytvořit novou třídu Scaly** zadejte název, vpoli **Typ** vyberte **Objekt** a pak vyberte **OK**.
 
-    ![IntelliJ nápad vytvořit novou třídu Scala](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
+    ![IntelliJ IDEA Vytvoření nové třídy Scala](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
 
-1. Do `MyClusterAppMain.scala` souboru vložte následující kód. Tento kód vytvoří kontext Spark a otevře `executeJob` metodu z objektu `SparkSample`.
+1. Do `MyClusterAppMain.scala` souboru vložte následující kód. Tento kód vytvoří kontext Spark `executeJob` a `SparkSample` otevře metodu z objektu.
 
     ```scala
     import org.apache.spark.{SparkConf, SparkContext}
@@ -205,7 +205,7 @@ Doporučujeme také vytvořit cluster Apache Spark ve službě Azure HDInsight, 
     }
     ```
 
-1. Opakujte kroky 8 a 9 pro přidání nového objektu Scala s názvem `*SparkSample`. Do této třídy přidejte následující kód. Tento kód načte data z TVK. CSV (k dispozici ve všech clusterech HDInsight Spark). Načte řádky, které mají jenom jednu číslici v sedmé sloupci v souboru CSV, a pak zapíše výstup do **/HVACOut** do výchozího kontejneru úložiště pro cluster.
+1. Opakováním kroků 8 a 9 přidejte `*SparkSample`nový objekt Scala s názvem . Do této třídy přidejte následující kód. Tento kód čte data z HVAC.csv (k dispozici ve všech clusterech HDInsight Spark). Načte řádky, které mají pouze jednu číslici v sedmém sloupci v souboru CSV a pak zapíše výstup **/HVACOut** pod výchozí kontejner úložiště pro cluster.
 
     ```scala
     import org.apache.spark.SparkContext
@@ -226,7 +226,7 @@ Doporučujeme také vytvořit cluster Apache Spark ve službě Azure HDInsight, 
     }
     ```
 
-1. Zopakováním kroků 8 a 9 přidejte novou třídu s názvem `RemoteClusterDebugging`. Tato třída implementuje testovací rozhraní Spark, které se používá k ladění aplikací. Do `RemoteClusterDebugging` třídy přidejte následující kód:
+1. Opakováním kroků 8 a 9 `RemoteClusterDebugging`přidejte novou třídu nazvanou . Tato třída implementuje rozhraní testování Spark, který se používá k ladění aplikací. Do `RemoteClusterDebugging` třídy přidejte následující kód:
 
     ```scala
         import org.apache.spark.{SparkConf, SparkContext}
@@ -250,87 +250,87 @@ Doporučujeme také vytvořit cluster Apache Spark ve službě Azure HDInsight, 
         }
     ```
 
-     Je potřeba si uvědomit několik důležitých věcí:
+     Existuje několik důležitých věcí, které je třeba poznamenat:
 
-      * V případě `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")`se ujistěte, že je v úložišti clusteru v zadané cestě k dispozici JAR pro sestavení Spark.
-      * Pro `setJars`zadejte umístění, kde se vytvoří JAR artefaktů. Obvykle je `<Your IntelliJ project directory>\out\<project name>_DefaultArtifact\default_artifact.jar`.
+      * Pro `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")`, ujistěte se, že sestavení Spark JAR je k dispozici v úložišti clusteru na zadané cestě.
+      * V `setJars`aplikaci zadejte umístění, kde je vytvořen artefakt JAR. Obvykle je `<Your IntelliJ project directory>\out\<project name>_DefaultArtifact\default_artifact.jar`.
 
-1. Ve třídě`*RemoteClusterDebugging` klikněte pravým tlačítkem na klíčové slovo `test` a pak vyberte **vytvořit konfiguraci RemoteClusterDebugging**.
+1. Ve`*RemoteClusterDebugging` třídě klepněte pravým `test` tlačítkem myši na klíčové slovo a vyberte **příkaz Vytvořit konfiguraci ladění vzdáleného clusteru**.
 
-    ![IntelliJ nápad vytvořit vzdálenou konfiguraci](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
+    ![IntelliJ IDEA Vytvoření vzdálené konfigurace](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
 
-1. V dialogovém okně **vytvořit konfiguraci RemoteClusterDebugging** zadejte název konfigurace a pak jako **název testu**vyberte **Typ testu** . U všech ostatních hodnot ponechte výchozí nastavení. Vyberte **Apply** (Použít) a pak vyberte **OK**.
+1. V dialogovém okně **Vytvořit konfiguraci** vzdáleného clusteru Ladění zadejte název konfigurace a pak vyberte **typ test** jako název **testu**. Všechny ostatní hodnoty ponechejte jako výchozí nastavení. Vyberte **Apply** (Použít) a pak vyberte **OK**.
 
-    ![Vytvořit konfiguraci RemoteClusterDebugging](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
+    ![Vytvořit konfiguraci vzdáleného clusteru ladění](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
 
-1. V řádku nabídek by se teď měl zobrazit rozevírací seznam konfigurace **vzdáleného spuštění** .
+1. Nyní byste měli vidět v rozevíracím seznamu Konfigurace **vzdáleného spuštění** v řádku nabídek.
 
-    ![IntelliJ rozevírací seznam vzdáleného spuštění](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png)
+    ![IntelliJ Rozevírací seznam vzdáleného spuštění](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png)
 
-## <a name="step-5-run-the-application-in-debug-mode"></a>Krok 5: spuštění aplikace v režimu ladění
+## <a name="step-5-run-the-application-in-debug-mode"></a>Krok 5: Spuštění aplikace v režimu ladění
 
-1. V projektu NÁPADu IntelliJ otevřete `SparkSample.scala` a vytvořte zarážku vedle `val rdd1`. V místní nabídce **vytvořit zarážku pro** vyberte **řádek ve funkci executeJob**.
+1. V projektu IntelliJ IDEA `SparkSample.scala` otevřete a vytvořte zarážku vedle . `val rdd1` V místní nabídce **Vytvořit zarážku vyberte** **řádek ve funkci executeJob**.
 
-    ![IntelliJ nápad přidat zarážku](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
+    ![IntelliJ IDEA Přidání zarážky](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
 
-1. Chcete-li spustit aplikaci, vyberte tlačítko **Spustit ladění** vedle rozevíracího seznamu konfigurace **vzdáleného spuštění** .
+1. Chcete-li aplikaci spustit, vyberte tlačítko **Ladění spustit** vedle rozevíracího seznamu Konfigurace **vzdáleného spuštění.**
 
-    ![IntelliJ nápad vyberte tlačítko Spustit ladění](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png)
+    ![IntelliJ IDEA Vyberte tlačítko Ladění spustit](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png)
 
-1. Když se program dorazí na zarážku, v dolním podokně se zobrazí karta **ladicí program** .
+1. Když spuštění programu dosáhne zarážky, zobrazí se karta **Debugger** v dolním podokně.
 
-    ![IntelliJ nápad zobrazit kartu ladicího programu](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
+    ![IntelliJ IDEA Zobrazení karty Debugger](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
 
-1. Chcete-li přidat kukátko, vyberte ikonu ( **+** ).
+1. Chcete-li přidat hodinky, vyberte ikonu (**+**).
 
-    ![IntelliJ Debug-Add-Watch-Variable](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
+    ![IntelliJ ladění-add-watch-proměnná](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
 
-    V tomto příkladu aplikace podařilo přerušit před vytvořením proměnné `rdd1`. Pomocí tohoto kukátka vidíte prvních pět řádků v proměnné `rdd`. Stiskněte **Enter**.
+    V tomto příkladu se aplikace `rdd1` přerušila před vytvořením proměnné. Pomocí těchto hodinek můžeme vidět prvních pět `rdd`řádků v proměnné . Vyberte **Enter**.
 
-    ![IntelliJ spustit program v režimu ladění](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
+    ![IntelliJ Spuštění programu v režimu ladění](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
 
-    To, co vidíte na předchozím obrázku, je, že za běhu můžete zadávat dotazy na terabajty dat a ladit, jak vaše aplikace pokračuje. Například ve výstupu zobrazeném na předchozím obrázku vidíte, že první řádek výstupu je záhlaví. Na základě tohoto výstupu můžete upravit kód aplikace, aby v případě potřeby přeskočil řádek záhlaví.
+    Co vidíte v předchozí bitové kopii je, že za běhu, můžete dotaz terabajty dat a ladění, jak vaše aplikace postupuje. Například ve výstupu zobrazeném na předchozím obrázku můžete vidět, že první řádek výstupu je záhlaví. Na základě tohoto výstupu můžete upravit kód aplikace a v případě potřeby přeskočit řádek záhlaví.
 
-1. Nyní můžete vybrat ikonu **pokračovat v programu** a pokračovat ve spuštění aplikace.
+1. Nyní můžete vybrat ikonu **Pokračovat v programu,** abyste mohli pokračovat ve spuštění aplikace.
 
-    ![IntelliJ nápad vybrat pokračovat v programu](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png)
+    ![IntelliJ IDEA Vybrat pokračovat v programu](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png)
 
-1. Pokud se aplikace úspěšně dokončí, měl by se zobrazit výstup podobný následujícímu:
+1. Pokud aplikace dokončí úspěšně, měli byste vidět výstup jako následující:
 
-    ![Výstup konzoly IntelliJ NÁPADu pro ladění](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png)
+    ![Výstup ladicího konzoly IntelliJ IDEA](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png)
 
-## <a name="seealso"></a>Další kroky
+## <a name="next-steps"></a><a name="seealso"></a>Další kroky
 
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="demo"></a>Ukázka
 
-* Vytvořit projekt Scala (video): [vytváření Apache Sparkch Scala aplikací](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Vzdálené ladění (video): [použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně na clusteru HDInsight](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Vytvoření projektu Scala (video): [Vytvoření aplikací Apache Spark Scala](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
+* Vzdálené ladění (video): [Pomocí sady Azure Toolkit pro IntelliJ můžete vzdáleně ladit aplikace Apache Spark v clusteru HDInsight.](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Scénáře
 
-* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku ve službě HDInsight s nástroji BI.](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
-* [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Spark v HDInsightu s nástroji BI](apache-spark-use-bi-tools.md)
+* [Apache Spark se strojovým učením: Pomocí Spark v HDInsightu můžete analyzovat teplotu budov pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s machine learningem: Využijte Spark v HDInsightu k předvídání výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Analýza protokolu webových stránek pomocí Apache Spark v HDInsight](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
 
 * [Vytvoření samostatné aplikace pomocí Scala](../hdinsight-apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Apache Spark s využitím Apache Livy](apache-spark-livy-rest-interface.md)
+* [Spouštění úloh na dálku v clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 
-* [Použití Azure Toolkit for IntelliJ k vytvoření Apache Spark aplikací pro cluster HDInsight](apache-spark-intellij-tool-plugin.md)
-* [Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně prostřednictvím SSH](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Použití nástrojů HDInsight v Azure Toolkit for Eclipse k vytváření Apache Sparkch aplikací](../hdinsight-apache-spark-eclipse-tool-plugin.md)
-* [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
+* [Použití sady Nástrojů Azure pro IntelliJ k vytváření aplikací Apache Spark pro cluster HDInsight](apache-spark-intellij-tool-plugin.md)
+* [Použití sady Azure Toolkit for IntelliJ k vzdálenému ladění aplikací Apache Spark prostřednictvím SSH](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Vytváření aplikací Apache Spark pomocí nástrojů HDInsight v sadě nástrojů Azure pro Eclipse](../hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [Používejte notebooky Apache Zeppelin s clusterem Apache Spark v HDInsightu](apache-spark-zeppelin-notebook.md)
+* [Jádra dostupná pro poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Správa prostředků
 
 * [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
-* [Sledování a ladění úloh, které běží na clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)
+* [Sledování a ladění úloh, které běží v clusteru Apache Spark v HDInsightu](apache-spark-job-debugging.md)

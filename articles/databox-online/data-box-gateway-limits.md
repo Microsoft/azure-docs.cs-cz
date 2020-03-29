@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box brány omezí | Dokumentace Microsoftu
-description: Popisuje omezení systému a doporučené velikosti pro Microsoft Azure Data Box Gateway.
+title: Limity brány Azure Data Box Gateway | Dokumenty společnosti Microsoft
+description: Popisuje systémová omezení a doporučené velikosti brány datové schránky Microsoft Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,48 +9,48 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: e80b03f696a78887676e9f16750055a4dcfac230
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60755194"
 ---
-# <a name="azure-data-box-gateway-limits"></a>Omezení služby Azure Data Box brány
+# <a name="azure-data-box-gateway-limits"></a>Limity brány datové schránky Azure
 
-Jak nasadit a provozovat řešení Microsoft Azure Data Box brány vezměte v úvahu tyto limity. 
+Zvažte tato omezení při nasazování a provozu řešení brány Microsoft Azure Data Box Gateway. 
 
 
-## <a name="data-box-gateway-service-limits"></a>Omezení služby data Box brány
+## <a name="data-box-gateway-service-limits"></a>Limity služeb brány datové schránky
 
 [!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
-## <a name="data-box-gateway-device-limits"></a>Omezení zařízení data Box Gateway
+## <a name="data-box-gateway-device-limits"></a>Limity zařízení brány datové schránky
 
-Následující tabulka popisuje omezení pro zařízení Data Box brány.
+Následující tabulka popisuje omezení pro zařízení Brány datové schránky.
 
 | Popis | Hodnota |
 |---|---|
-|Ne. souborů na zařízení |100 milionů <br> Limit je přibližně 25 milionů souborů pro každé 2 TB místa na disku s maximální limit na 100 milionů |
+|Ne. souborů na zařízení |100 milionů <br> Limit je ~ 25 milionů souborů za každé 2 TB místa na disku s maximálním limitem na 100 milionů |
 |Ne. sdílených složek na zařízení |24 |
-|Ne. sdílených složek za kontejner úložiště Azure |1 |
-|Maximální velikost souboru zapsána do sdílené složky|Maximální velikost souboru je 2 TB virtuální zařízení, 500 GB. <br> Maximální velikost souboru se zvyšuje s velikost datového disku v předchozím poměr, dokud nedosáhne maximálně 5 TB. |
+|Ne. sdílených složek na kontejner úložiště Azure |1 |
+|Maximální velikost souboru zapsaná do sdílené složky|U virtuálního zařízení o velikosti 2 TB je maximální velikost souboru 500 GB. <br> Maximální velikost souboru se zvětší s velikostí datového disku v předchozím poměru, dokud nedosáhne maximálně 5 TB. |
 
-## <a name="azure-storage-limits"></a>Omezení služby Azure storage
+## <a name="azure-storage-limits"></a>Limity úložiště Azure
 
 [!INCLUDE [data-box-edge-gateway-storage-limits](../../includes/data-box-edge-gateway-storage-limits.md)]
 
-## <a name="data-upload-caveats"></a>Odesílání dat upozornění
+## <a name="data-upload-caveats"></a>Výhody a rizika nahrávání dat
 
 [!INCLUDE [data-box-edge-gateway-storage-data-upload-caveats](../../includes/data-box-edge-gateway-storage-data-upload-caveats.md)]
 
-## <a name="azure-storage-account-size-and-object-size-limits"></a>Omezení velikosti účtu úložiště Azure a objekt velikosti
+## <a name="azure-storage-account-size-and-object-size-limits"></a>Omezení velikosti účtu úložiště Azure a omezení velikosti objektů
 
 [!INCLUDE [data-box-edge-gateway-storage-acct-limits](../../includes/data-box-edge-gateway-storage-acct-limits.md)]
 
-## <a name="azure-object-size-limits"></a>Omezení velikosti objektu Azure
+## <a name="azure-object-size-limits"></a>Omezení velikosti objektů Azure
 
 [!INCLUDE [data-box-edge-gateway-storage-object-limits](../../includes/data-box-edge-gateway-storage-object-limits.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Příprava k nasazení služby Azure Data Box Gateway](data-box-gateway-deploy-prep.md)

@@ -1,6 +1,6 @@
 ---
-title: Změnit heslo účtu konektoru Azure AD | Dokumentace Microsoftu
-description: Toto téma popisuje postup při obnovení účtu Azure AD Connector.
+title: Změna hesla účtu konektoru Azure AD | Dokumenty společnosti Microsoft
+description: Toto téma dokumentuje, jak obnovit účet Konektor Azure AD.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,41 +17,41 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ea151ee79fccd66f1d9422744d8f57829677ec0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67204536"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Změna hesla účtu konektoru služby Azure AD
-Účet Azure AD Connector by měla být služba zdarma. Pokud potřebujete resetovat svoje přihlašovací údaje, toto téma je za vás. Například pokud je globální správce omylem resetovat heslo k účtu pomocí Powershellu.
+Účet Azure AD Connector má být bez služby. Pokud potřebujete obnovit jeho pověření, pak je toto téma pro vás. Například pokud globální správce omylem obnovit heslo k účtu pomocí prostředí PowerShell.
 
-## <a name="reset-the-credentials"></a>Resetovat přihlašovací údaje
-Pokud účet Azure AD Connector nemůže kontaktovat kvůli potížím s ověřováním Azure AD, můžete resetovat heslo.
+## <a name="reset-the-credentials"></a>Obnovení přihlašovacích údajů
+Pokud účet Konektor Azure AD nemůže kontaktovat Azure AD z důvodu problémů s ověřováním, heslo lze obnovit.
 
-1. Přihlaste se k serveru synchronizace Azure AD Connect a spusťte prostředí PowerShell.
+1. Přihlaste se k synchronizačnímu serveru Azure AD Connect a spusťte PowerShell.
 2. Spusťte `Add-ADSyncAADServiceAccount`.  
-   ![Addadsyncaadserviceaccount rutiny prostředí PowerShell](./media/how-to-connect-azureadaccount/addadsyncaadserviceaccount.png)
-3. Zadejte přihlašovací údaje globálního správce Azure AD.
+   ![Rutina prostředí PowerShell addadsyncaadserviceaccount](./media/how-to-connect-azureadaccount/addadsyncaadserviceaccount.png)
+3. Poskytněte přihlašovací údaje správce Azure AD Global.
 
-Tato rutina resetuje heslo pro účet služby a aktualizovat ho ve službě Azure AD i v modulu synchronizace.
+Tato rutina resetuje heslo pro účet služby a aktualizovat jej ve službě Azure AD a v synchronizačním modulu.
 
-## <a name="known-issues-these-steps-can-solve"></a>Známé problémy můžete vyřešit tyto kroky
-Tato část se seznam chyb hlášených zákazníky, které byly odstraněny pověření obnovit do účtu Azure AD Connector.
+## <a name="known-issues-these-steps-can-solve"></a>Známé problémy, které tyto kroky mohou vyřešit
+Tato část je seznam chyb hlášených zákazníky, které byly opraveny obnovení přihlašovacích údajů na účtu Azure AD Connector.
 
 ---
 Událost 6900  
-Na serveru došlo k neočekávané chybě při zpracování oznámení o změně hesla:  
-AADSTS70002: Chyba ověřování přihlašovacích údajů. AADSTS50054: K ověřování se používá staré heslo.
+Server zjistil neočekávanou chybu při zpracování oznámení o změně hesla:  
+AADSTS70002: Chyba ověřování přihlašovacích údajů. AADSTS50054: Staré heslo se používá pro ověřování.
 
 ---
 Událost 659  
-Chyba při načítání konfigurace synchronizace zásad hesel. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
-AADSTS70002: Chyba ověřování přihlašovacích údajů. AADSTS50054: K ověřování se používá staré heslo.
+Při načítání konfigurace synchronizace zásad hesla došlo k chybě. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
+AADSTS70002: Chyba ověřování přihlašovacích údajů. AADSTS50054: Staré heslo se používá pro ověřování.
 
-## <a name="next-steps"></a>Další postup
-**Témata s přehledem**
+## <a name="next-steps"></a>Další kroky
+**Přehledná témata**
 
-* [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Synchronizace služby Azure AD Connect: Principy a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Komplexní ingestování objektů blob do Azure Průzkumník dat prostřednictvímC#
-description: V tomto článku se dozvíte, jak ingestovat objekty blob do Azure Průzkumník dat s kompletním příkladem, který C#používá.
+title: 'Komplexní přiřazování objektů blob do Průzkumníka dat Azure až c #'
+description: V tomto článku se dozvíte, jak ingestovat objekty BLOB do Průzkumníka dat Azure s příkladem konce na konec, který používá C#.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,34 +8,34 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 0711484c4fff24c5dcd3c18effce596a92bc30c3
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964511"
 ---
-# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>Komplexní ingestování objektů blob do Azure Průzkumník dat prostřednictvímC#
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>Komplexní přiřazování objektů blob do Průzkumníka dat Azure až c #
 
 > [!div class="op_single_selector"]
-> * [C#](end-to-end-csharp.md)
+> * [C #](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
 >
 
-Azure Průzkumník dat je rychlá a škálovatelná služba pro zkoumání dat pro data protokolů a telemetrie. Tento článek vám poskytne ucelený příklad postupu ingestování dat z úložiště objektů BLOB v Azure do Azure Průzkumník dat. 
+Azure Data Explorer je rychlá a škálovatelná služba pro zkoumání dat pro data protokolu a telemetrie. Tento článek vám poskytuje komplexní příklad, jak ingestovat data z úložiště objektů blob Azure do Průzkumníka dat Azure. 
 
-Naučíte se, jak programově vytvořit skupinu prostředků, účet úložiště a kontejner, centrum událostí a cluster a databázi Azure Průzkumník dat. Naučíte se také, jak programově nakonfigurovat službu Azure Průzkumník dat k ingestování dat z nového účtu úložiště.
+Dozvíte se, jak programově vytvořit skupinu prostředků, účet úložiště a kontejner, centrum událostí a cluster a databázi Azure Data Explorer. Dozvíte se také, jak programově nakonfigurovat Azure Data Explorer na ingestování dat z nového účtu úložiště.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="install-c-nuget"></a>Nainstalovat C# NuGet
+## <a name="install-c-nuget"></a>Instalace jazyka C# NuGet
 
-* Nainstalujte [Microsoft. Azure. Management. kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Nainstalujte [Microsoft. Azure. Management. ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).
-* Nainstalujte [Microsoft. Azure. Management. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/).
-* Nainstalujte [Microsoft. Azure. Storage. blob](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/).
-* Nainstalujte [Microsoft. REST. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) pro ověřování.
+* Nainstalujte [soubor Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Nainstalujte [Microsoft.Azure.Management.ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).
+* Nainstalujte [microsoft.azure.management.eventgrid](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/).
+* Nainstalujte [objekt Blob microsoft.azure.storage.](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+* K ověřování nainstalujte [microsoft.rest.clientruntime.Azure.Authentication.](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
@@ -43,9 +43,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 
 ## <a name="code-example"></a>Příklad kódu 
 
-Následující příklad kódu poskytuje podrobný proces, který vede k příjmu dat do Azure Průzkumník dat. 
+Následující příklad kódu vám dává podrobný proces, který vede k ingestování dat do Průzkumníka dat Azure. 
 
-Nejprve vytvoříte skupinu prostředků. Také vytvoříte prostředky Azure, jako je účet úložiště a kontejner, centrum událostí a cluster Azure Průzkumník dat a databáze, a přidáte objekty zabezpečení. Pak vytvoříte předplatné Azure Event Grid společně s mapováním tabulek a sloupců v databázi Azure Průzkumník dat. Nakonec vytvoříte datové připojení a nakonfigurujete službu Azure Průzkumník dat k ingestování dat z nového účtu úložiště. 
+Nejprve vytvoříte skupinu prostředků. Můžete také vytvořit prostředky Azure, jako je účet úložiště a kontejner, centrum událostí a cluster a databáze Azure Data Explorer a přidat objekty zabezpečení. Potom vytvoříte předplatné Azure Event Grid spolu s mapováním tabulek a sloupců v databázi Průzkumníka dat Azure. Nakonec vytvoříte datové připojení pro konfiguraci Průzkumníka dat Azure tak, aby ingestoval data z nového účtu úložiště. 
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -176,12 +176,12 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 ```
 | **Nastavení** | **Popis pole** |
 |---|---|---|
-| tenantId | Vaše ID tenanta. Označuje se taky jako ID adresáře.|
-| subscriptionId | ID předplatného, které používáte pro vytváření prostředků.|
+| tenantId | Vaše tenantské ID. To je také známé jako ID adresáře.|
+| subscriptionId | ID předplatného, které používáte pro vytvoření prostředků.|
 | clientId | ID klienta aplikace, která má přístup k prostředkům ve vašem tenantovi.|
-| clientSecret | Tajný klíč klienta aplikace, který má přístup k prostředkům ve vašem tenantovi. |
+| clientSecret | Tajný klíč klienta aplikace, která může přistupovat k prostředkům ve vašem tenantovi. |
 
-## <a name="test-the-code-example"></a>Testování příkladu kódu
+## <a name="test-the-code-example"></a>Otestujte příklad kódu
 
 1. Nahrajte soubor do účtu úložiště.
 
@@ -199,7 +199,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
     |---|---|---|
     | storageConnectionString | Připojovací řetězec programově vytvořeného účtu úložiště.|
 
-2. Spusťte testovací dotaz v Azure Průzkumník dat.
+2. Spusťte testovací dotaz v Průzkumníku dat Azure.
 
     ```csharp
     var kustoUri = $"https://{kustoClusterName}.{locationSmallCase}.kusto.windows.net";
@@ -226,7 +226,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete odstranit skupinu prostředků a vyčistit prostředky, použijte následující příkaz:
+Chcete-li odstranit skupinu prostředků a vyčistit prostředky, použijte následující příkaz:
 
 ```csharp
 await resourceManagementClient.ResourceGroups.DeleteAsync(resourceGroupName);
@@ -234,7 +234,7 @@ await resourceManagementClient.ResourceGroups.DeleteAsync(resourceGroupName);
 
 ## <a name="next-steps"></a>Další kroky
 
-*  Další informace o dalších způsobech vytvoření clusteru a databáze najdete v tématu [Vytvoření clusteru a databáze Azure Průzkumník dat](create-cluster-database-csharp.md).
-* Další informace o metodách přijímání najdete v tématu ingestování [dat v Azure Průzkumník dat](ingest-data-overview.md).
-* Další informace o webové aplikaci najdete v tématu [rychlý Start: dotazování dat ve webovém uživatelském rozhraní služby Azure Průzkumník dat](web-query-data.md).
-* [Zápis dotazů](write-queries.md) pomocí dotazovacího jazyka Kusto
+*  Další informace o dalších způsobech vytvoření clusteru a databáze najdete [v tématu Vytvoření clusteru a databáze Průzkumníka dat Azure](create-cluster-database-csharp.md).
+* Další informace o metodách ingestování najdete v [tématu Přijím](ingest-data-overview.md)dat v Azure Data Explorer .
+* Další informace o webové aplikaci najdete v [tématu Úvodní příručka: Dotazujte se na data ve webovém uživatelském rozhraní Aplikace Azure Data Explorer](web-query-data.md).
+* [Napište dotazy](write-queries.md) pomocí kusto dotazovacího jazyka.

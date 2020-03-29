@@ -1,6 +1,6 @@
 ---
-title: Předvolby H264 Multiple Bitrate 4 x 3 pro iOS | Dokumentace Microsoftu
-description: Téma s přehledem **H264 Multiple Bitrate 4 x 3 pro iOS** přednastavení úloh.
+title: H264 Vícenásobný přenosový tok 4x3 pro iOS | Dokumenty společnosti Microsoft
+description: Toto téma poskytuje přehled přednastavení **úlohh H264 Multiple Bitrate 4x3 pro iOS.**
 author: Juliako
 manager: femila
 editor: ''
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 45dbaea4e2c6f8cdbe3d33df5d3b82b9df519ff2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463646"
 ---
 # <a name="h264-multiple-bitrate-4x3-for-ios"></a>H264 Multiple Bitrate 4x3 for iOS
-`Media Encoder Standard` definuje sadu kódování přednastavení, která můžete použít při vytváření úloh kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo XML na základě předvoleb (pomocí kódování UTF-8 nebo UTF-16. By pak úspěšně prošel zpracováním vlastní přednastaveny tak, aby kodér. Seznam přednastavených názvy všech podporovaných touto `Media Encoder Standard` kodér, naleznete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definuje sadu přednastavení kódování, které můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, do kterého chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16. Vlastní přednastavení byste pak předali kodéru. Seznam všech přednastavených názvů podporovaných `Media Encoder Standard` tímto kodérem naleznete [v tématu Přednastavení úloh pro standard kodéru médií](media-services-mes-presets-overview.md).  
   
- Toto téma ukazuje, `H264 Multiple Bitrate 4x3 for iOS` přednastavení ve formátu XML a JSON.  
+ Toto téma `H264 Multiple Bitrate 4x3 for iOS` zobrazuje přednastavení ve formátu XML a JSON.  
   
- Tato předvolba vytvoří sadu 8 soubory MP4 zarovnaný GOP od 8500 kb/s až 200 kb/s a stereo AAC zvuku. Podrobné informace o profilech s přenosovou rychlostí, vzorkování rychlost atd. to přednastavení, zkontrolujte XML nebo JSON, definovaná níže. Vysvětlení co každý prvek v tyto prostředky přednastavení a platné hodnoty pro každý prvek, najdete v článku [schéma Media Encoderu Standard](media-services-mes-schema.md) tématu.  
+ Toto přednastavení vytváří sadu 8 souborů MP4 zarovnaných do GOP, od 8500 kbps do 200 kbps a stereo AAC audio. Podrobné informace o profilu, přenosovérychlosti, vzorkovací frekvenci atd. Vysvětlení, co jednotlivé prvky v těchto přednastaveních znamenají, a platné hodnoty pro každý prvek naleznete v tématu [standardního schématu kodéru médií.](media-services-mes-schema.md)  
   
 > [!NOTE]
->  Při úpravě `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, poměr stran zůstala konzistentní vzhledem k aplikacím. Příklad: 1920x1080, 1280x720, 1080x576, 640x360. Neměli byste používat kombinaci poměry stran, jako například: 1280x720, 720x480, 640x360.  
+>  Při úpravách `Width` `Height` hodnot a napříč vrstvami se ujistěte, že poměr stran zůstává konzistentní. Například: 1920x1080, 1280x720, 1080x576, 640x360. Neměli byste používat směs poměrů stran, například: 1280x720, 720x480, 640x360.  
   
  XML  
   

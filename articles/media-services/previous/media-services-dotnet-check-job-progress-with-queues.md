@@ -1,6 +1,6 @@
 ---
-title: Pomocí Azure Queue storage pro monitorování oznámení úloh pro Media Services s .NET | Dokumentace Microsoftu
-description: Zjistěte, jak pomocí Azure Queue storage pro monitorování oznámení úloh pro Media Services. Ukázka kódu je napsána v C# a využívá Media Services SDK pro .NET.
+title: Použití úložiště fronty Azure ke sledování oznámení o úlohách Mediálních služeb pomocí rozhraní .NET | Dokumenty společnosti Microsoft
+description: Zjistěte, jak pomocí úložiště fronty Azure monitorovat oznámení o úlohách Mediálních služeb. Ukázka kódu je zapsána v c# a používá sadku Media Services SDK pro rozhraní .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,63 +15,63 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2a7f15eb7e90ba4dec9bc614a45d2de46c07bdfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64868110"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Pomocí Azure Queue storage pro monitorování oznámení úloh pro Media Services s .NET 
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Použití úložiště fronty Azure ke sledování oznámení o úlohách Mediálních služeb pomocí rozhraní .NET 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
-Při spuštění úloh kódování, často vyžadují způsob, jak sledovat průběh úlohy. Můžete nakonfigurovat Media Services k poskytování oznámení [Azure Queue storage](../../storage/storage-dotnet-how-to-use-queues.md). Průběh úlohy můžete sledovat oznámení s informacemi z Queue storage. 
+Při spuštění úlohkódování často vyžadujete způsob, jak sledovat průběh úlohy. Služby Media Services můžete nakonfigurovat tak, aby doručovaly oznámení do [úložiště Fronty Azure](../../storage/storage-dotnet-how-to-use-queues.md). Průběh úlohy můžete sledovat získáním oznámení z úložiště fronty. 
 
-Doručování zpráv do fronty úložiště můžete přistupovat z kdekoli na světě. Architektura zasílání zpráv fronty úložiště je spolehlivé a vysoce škálovatelné. Dotazování úložiště fronty zpráv se doporučuje oproti použití jiných metod.
+Ke zprávám doručovaným do úložiště fronty se dostanete z libovolného místa na světě. Architektura zasílání zpráv úložiště fronty je spolehlivá a vysoce škálovatelná. Úložiště fronty dotazování pro zprávy se doporučuje více než pomocí jiných metod.
 
-Jeden běžný scénář pro příjem oznámení služby Media Services je, že pokud vyvíjíte systém správy obsahu, kterou je potřeba provést některé další úlohy po dokončení úlohy kódování (třeba k aktivační události na další krok v pracovním postupu, nebo k publikování obsah).
+Jedním z běžných scénářů pro naslouchání oznámením služby Media Services je, pokud vyvíjíte systém pro správu obsahu, který potřebuje provést nějakou další úlohu po dokončení úlohy kódování (například k aktivaci dalšího kroku v pracovním postupu nebo k publikování obsahu).
 
-Tento článek ukazuje, jak získat oznamovací zprávy z fronty úložiště.  
+Tento článek ukazuje, jak získat oznámení z úložiště fronty.  
 
 ## <a name="considerations"></a>Požadavky
-Při vývoji aplikací Media Services, které používají fronty úložiště, zvažte následující:
+Při vývoji aplikací služby Media Services, které používají úložiště front, zvažte následující skutečnosti:
 
-* Queue storage neposkytuje se zárukou first-in-first-out (FIFO) objednané dodání. Další informace najdete v tématu [front Azure a Azure Service Bus fronty porovnání a Contrasted](https://msdn.microsoft.com/library/azure/hh767287.aspx).
-* Fronty úložiště není služba nabízených oznámení. Je třeba dotazovat fronty.
-* Můžete mít libovolný počet front. Další informace najdete v tématu [rozhraní REST API služby Queue](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
-* Fronta úložiště má určitá omezení a specifika je potřeba vědět. Tyto možnosti jsou popsány v [front Azure a Azure Service Bus fronty porovnání a Contrasted](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
+* Úložiště fronty neposkytuje záruku prvního doručení v prvním ven (FIFO). Další informace najdete v tématu [Fronty Azure a fronty služby Azure Service Bus porovnání a kontrastní](https://msdn.microsoft.com/library/azure/hh767287.aspx).
+* Úložiště fronty není nabízená služba. Musíte se zřadit do fronty.
+* Můžete mít libovolný počet front. Další informace naleznete v [tématu Front Service REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
+* Úložiště front má některá omezení a specifika, která je třeba znát. Ty jsou popsané v [Azure fronty a fronty azure service bus porovnání a kontrastní](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
 
-## <a name="net-code-example"></a>Příklad kódu .NET
+## <a name="net-code-example"></a>Příklad kódu rozhraní .NET
 
-Příklad kódu v této části provede následující akce:
+Příklad kódu v této části provádí následující:
 
-1. Definuje **EncodingJobMessage** třídu, která se mapuje na formát zprávy oznámení. Kód deserializuje zprávy z fronty přijal do objektů **EncodingJobMessage** typu.
-2. Načte informace účtu Media Services a úložiště ze souboru app.config. Příklad kódu používá tyto informace k vytvoření **CloudMediaContext** a **CloudQueue** objekty.
-3. Vytvoří frontu, která přijímá zprávy s oznámením o úlohy kódování.
-4. Vytvoří koncový bod oznámení, který je namapovaný na frontě.
-5. Připojí koncový bod oznámení pro úlohu a odešle úlohy kódování. Může mít několik koncových bodů oznámení připojen k úloze.
-6. Předá **NotificationJobState.FinalStatesOnly** k **AddNew** metody. (V tomto příkladu nás zajímají pouze konečný stav zpracování úlohy.)
+1. Definuje **třídu EncodingJobMessage,** která se mapuje na formát oznámení. Kód deserializuje zprávy přijaté z fronty do objektů typu **EncodingJobMessage.**
+2. Načte informace o účtu Media Services a Storage ze souboru app.config. Příklad kódu používá tyto informace k vytvoření **objektů CloudMediaContext** a **CloudQueue.**
+3. Vytvoří frontu, která přijímá oznámení o úloze kódování.
+4. Vytvoří koncový bod oznámení, který je mapován do fronty.
+5. Připojí koncový bod oznámení k úloze a odešle úlohu kódování. K úloze může být připojeno více koncových bodů oznámení.
+6. Předá **NotificationJobState.FinalStatesOnly** na **AddNew** metoda. (V tomto příkladu se zajímáme pouze o konečné stavy zpracování úloh.)
 
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
-7. Pokud předáte **NotificationJobState.All**, získáte následující oznámení o změně stavu: zařazených do fronty, naplánované, zpracování a dokončení. Ale jak bylo uvedeno dříve, Queue storage nezaručuje doručení. Řazení zpráv, použijte **časové razítko** vlastnosti (definovaná v **EncodingJobMessage** typu v následujícím příkladu). Duplicitní zprávy jsou možné. Ke kontrole duplicitních položek, použijte **vlastnost ETag** (definované na **EncodingJobMessage** typu). Je také možné, že některá oznámení změn stavu získat přeskočeno.
-8. Úlohy zobrazíte na konečném stavu tak, že zkontrolujete fronty každých 10 sekund čeká. Odstraní zprávy po jejich zpracování.
-9. Odstraní fronty a koncový bod oznámení.
+7. Pokud předáte **NotificationJobState.All**, dostanete všechny následující oznámení o změně stavu: zařazené do fronty, naplánované, zpracování a dokončení. Však jak již bylo uvedeno dříve, queue storage nezaručuje objednané doručení. Chcete-li objednat zprávy, použijte vlastnost **Timestamp** (definovanou na typu **EncodingJobMessage** v níže uvedeném příkladu). Duplicitní zprávy jsou možné. Chcete-li zkontrolovat duplicity, použijte **vlastnost ETag** (definovanou na typu **EncodingJobMessage).** Je také možné, že některé oznámení o změně stavu získat přeskočen.
+8. Čeká na úlohu dostat do dokončeného stavu kontrolou fronty každých 10 sekund. Odstraní zprávy po jejich zpracování.
+9. Odstraní frontu a koncový bod oznámení.
 
 > [!NOTE]
-> Doporučeným způsobem, jak sledovat stav úlohy je prostřednictvím naslouchání zpráv s oznámením, jak je znázorněno v následujícím příkladu:
+> Doporučený způsob sledování stavu úlohy je naslouchání oznámení, jak je znázorněno v následujícím příkladu:
 >
-> Alternativně můžete zkontrolovat stav úlohy s použitím **IJob.State** vlastnost.  Oznámení o dokončení úlohy může doručení před stavu na **IJob** je nastavena na **dokončeno**. **IJob.State** vlastnost odráží přesné stavu se dojde k mírnému zpoždění.
+> Případně můžete zkontrolovat stav úlohy pomocí vlastnosti **IJob.State.**  Oznámení o dokončení úlohy může být doručena před stav na **IJob** je nastavena na **dokončeno**. **Vlastnost IJob.State** odráží přesný stav s mírným zpožděním.
 >
 >
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
 1. Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
-2. Vytvořte novou složku (složka může být kdekoli na místním disku) a zkopírujte obsah souboru MP4, který chcete kódovat a Streamovat nebo progresivně stahovat. V tomto příkladu je použita cesta "C:\Media".
-3. Přidejte odkaz na **System.Runtime.Serialization** knihovny.
+2. Vytvořte novou složku (složka může být kdekoli na místním disku) a zkopírujte soubor MP4, který chcete zakódovat a streamovat nebo postupně stahovat. V tomto příkladu se používá cesta "C:\Media".
+3. Přidejte odkaz na knihovnu **System.Runtime.Serialization.**
 
-### <a name="code"></a>Kód
+### <a name="code"></a>kód
 
 ```csharp
 using System;
@@ -342,7 +342,7 @@ namespace JobNotification
 }
 ```
 
-Předchozí příklad vytváří následující výstup: Vaše hodnoty se budou lišit.
+V předchozím příkladu byl vytvořen následující výstup: Hodnoty se budou lišit.
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

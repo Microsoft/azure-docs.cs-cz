@@ -1,19 +1,19 @@
 ---
 title: Azure Service Fabric – konfigurace přihlašovacích údajů úložiště kontejnerů
-description: Konfigurace přihlašovacích údajů úložiště pro stahování imagí z registru kontejnerů
+description: Konfigurace pověření úložiště pro stahování bitových kopií z registru kontejnerů
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934980"
 ---
-# <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Konfigurace přihlašovacích údajů úložiště pro vaši aplikaci ke stažení imagí kontejneru
+# <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Konfigurace přihlašovacích údajů úložiště pro vaši aplikaci ke stažení iobrazů kontejnerů
 
-Nakonfigurujte ověřování pomocí registru kontejnerů přidáním `RepositoryCredentials` do části `ContainerHostPolicies` manifestu aplikace. Přidejte účet a heslo pro registr kontejneru (*myregistry.azurecr.IO* v následujícím příkladu), což službě umožňuje stáhnout image kontejneru z úložiště.
+Nakonfigurujte `RepositoryCredentials` ověřování `ContainerHostPolicies` registru kontejnerů přidáním do části manifestu aplikace. Přidejte účet a heslo pro registr kontejnerů *(myregistry.azurecr.io* v příkladu níže), který umožňuje službě stáhnout image kontejneru z úložiště.
 
 ```xml
 <ServiceManifestImport>
@@ -28,14 +28,14 @@ Nakonfigurujte ověřování pomocí registru kontejnerů přidáním `Repositor
 </ServiceManifestImport>
 ```
 
-Doporučuje se šifrovat heslo úložiště pomocí certifikátu zašifrování, který je nasazený na všech uzlech clusteru. Když Service Fabric nasadí balíček služby do clusteru, certifikát šifrování se použije k dešifrování šifrovaného textu. Rutina Invoke-ServiceFabricEncryptText se používá k vytvoření šifrovaného textu pro heslo, který se přidá do souboru ApplicationManifest.xml.
-Další informace o certifikátech a sémantikě šifrování najdete v tématu [Správa tajných klíčů](service-fabric-application-secret-management.md) .
+Doporučujeme zašifrovat heslo úložiště pomocí certifikátu šifrování, který je nasazen do všech uzlů clusteru. Když Service Fabric nasadí balíček služby do clusteru, certifikát šifrování se použije k dešifrování šifrovaného textu. Rutina Invoke-ServiceFabricEncryptText se používá k vytvoření šifrovaného textu pro heslo, který se přidá do souboru ApplicationManifest.xml.
+Další informace o certifikátech a sémantiku šifrování najdete v tématu [Správa tajných](service-fabric-application-secret-management.md) klíčů.
 
-## <a name="configure-cluster-wide-credentials"></a>Konfigurace přihlašovacích údajů na úrovni clusteru
+## <a name="configure-cluster-wide-credentials"></a>Konfigurace pověření pro celý cluster
 
-Service Fabric vám umožní nakonfigurovat přihlašovací údaje pro všechny clustery, které se dají použít jako výchozí přihlašovací údaje úložiště aplikacemi.
+Service Fabric umožňuje konfigurovat pověření pro celý cluster, která lze použít jako výchozí pověření úložiště aplikacemi.
 
-Tuto funkci lze povolit nebo zakázat přidáním atributu `UseDefaultRepositoryCredentials` pro `ContainerHostPolicies` v souboru souboru ApplicationManifest. XML s hodnotou `true` nebo `false`.
+Tuto funkci lze povolit nebo `UseDefaultRepositoryCredentials` zakázat přidáním atributu do `ContainerHostPolicies` souboru ApplicationManifest.xml s hodnotou a `true` nebo. `false`
 
 ```xml
 <ServiceManifestImport>
@@ -49,14 +49,14 @@ Tuto funkci lze povolit nebo zakázat přidáním atributu `UseDefaultRepository
 </ServiceManifestImport>
 ```
 
-Service Fabric pak použije výchozí přihlašovací údaje úložiště, které se dají zadat v manifestem clusteru pod oddílem `Hosting`.  Pokud je `UseDefaultRepositoryCredentials` `true`, Service Fabric přečte následující hodnoty z manifestem clusteru:
+Service Fabric pak používá výchozí pověření úložiště, které lze zadat `Hosting` v ClusterManifest v části.  Pokud `UseDefaultRepositoryCredentials` `true`je , Service Fabric čte následující hodnoty z ClusterManifest:
 
 * DefaultContainerRepositoryAccountName (řetězec)
 * DefaultContainerRepositoryPassword (řetězec)
 * IsDefaultContainerRepositoryPasswordEncrypted (bool)
 * DefaultContainerRepositoryPasswordType (řetězec)
 
-Tady je příklad toho, co je možné přidat do oddílu `Hosting` v souboru ClusterManifestTemplate. JSON. Oddíl `Hosting` lze přidat při vytváření clusteru nebo později v upgradu konfigurace. Další informace najdete v tématu [Změna nastavení clusteru azure Service Fabric](service-fabric-cluster-fabric-settings.md) a [Správa tajných klíčů aplikací Azure Service Fabric](service-fabric-application-secret-management.md) .
+Zde je příklad toho, co `Hosting` lze přidat do oddílu v souboru ClusterManifestTemplate.json. Oddíl `Hosting` lze přidat při vytvoření clusteru nebo později při upgradu konfigurace. Další informace najdete [v tématu Změna nastavení clusteru Azure Service Fabric](service-fabric-cluster-fabric-settings.md) a Správa [tajných kódů aplikací Azure Service Fabric](service-fabric-application-secret-management.md)
 
 ```json
 "fabricSettings": [
@@ -89,19 +89,19 @@ Tady je příklad toho, co je možné přidat do oddílu `Hosting` v souboru Clu
 ]
 ```
 
-## <a name="use-tokens-as-registry-credentials"></a>Použití tokenů jako přihlašovacích údajů registru
+## <a name="use-tokens-as-registry-credentials"></a>Použití tokenů jako pověření registru
 
-Service Fabric podporuje použití tokenů jako přihlašovacích údajů ke stažení imagí pro vaše kontejnery.  Tato funkce využívá *spravovanou identitu* základní sady pro škálování virtuálního počítače k ověření v registru a eliminuje nutnost spravovat přihlašovací údaje uživatele.  Další informace najdete v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) .  Použití této funkce vyžaduje následující kroky:
+Service Fabric podporuje použití tokenů jako přihlašovacích údajů ke stažení obrázků pro vaše kontejnery.  Tato funkce využívá *spravovanou identitu* základní škálovací sady virtuálních počítačů k ověření do registru, což eliminuje potřebu správy uživatelských pověření.  Další informace najdete [v tématu Spravované identity pro prostředky Azure.](../active-directory/managed-identities-azure-resources/overview.md)  Použití této funkce vyžaduje následující kroky:
 
-1. Ujistěte se, že je pro virtuální počítač povolená *spravovaná identita přiřazená systémem* .
+1. Ujistěte se, že je pro virtuální hod *povolena spravovaná identita přiřazená k systému.*
 
-    ![Azure Portal: možnost vytvořit identitu sady škálování virtuálního počítače](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+    ![Portál Azure: Možnost vytvoření škálovací sady virtuálních strojů](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
 
-2. Udělte oprávnění k sadě škálování virtuálního počítače pro načtení a čtení imagí z registru. V okně Access Control (IAM) Azure Container Registry v Azure Portal přidejte *přiřazení role* pro virtuální počítač:
+2. Udělte oprávnění škálovací sadě virtuálních strojů pro vyžádat nebo číst obrázky z registru. Z okna Řízení přístupu (IAM) vašeho registru kontejnerů Azure na webu Azure Portal přidejte *přiřazení role* pro váš virtuální počítač:
 
-    ![Přidat objekt zabezpečení virtuálního počítače do ACR](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
+    ![Přidání jistiny virtuálního virtuálního objektu do ACR](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
 
-3. Dále upravte manifest aplikace. V části `ContainerHostPolicies` přidejte `‘UseTokenAuthenticationCredentials=”true”`atributu.
+3. Dále upravte manifest aplikace. V `ContainerHostPolicies` části přidejte `‘UseTokenAuthenticationCredentials=”true”`atribut .
 
     ```xml
       <ServiceManifestImport>
@@ -116,8 +116,8 @@ Service Fabric podporuje použití tokenů jako přihlašovacích údajů ke sta
     ```
 
     > [!NOTE]
-    > Příznak `UseDefaultRepositoryCredentials` nastaven na hodnotu true, zatímco `UseTokenAuthenticationCredentials` hodnota true způsobí chybu během nasazování.
+    > Příznak `UseDefaultRepositoryCredentials` nastavený na `UseTokenAuthenticationCredentials` hodnotu true, zatímco je true způsobí chybu během nasazení.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [ověřování registrů kontejnerů](../container-registry/container-registry-authentication.md).
+* Další informace o [ověřování registru kontejneru](../container-registry/container-registry-authentication.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure data přenášet do střední šířka pásma sítě možnosti pro malé datové sady s nízkými | Dokumentace Microsoftu
-description: Zjistěte, jak zvolit řešení Azure pro přenos dat při budete muset nízké střední šířka pásma sítě ve vašem prostředí a plánujete přenést malé datové sady.
+title: Možnosti přenosu dat Azure pro malé datové sady s nízkou až střední šířkou pásma sítě| Dokumenty společnosti Microsoft
+description: Zjistěte, jak zvolit řešení Azure pro přenos dat, když máte nízkou až střední šířku pásma sítě ve vašem prostředí a plánujete přenos malých datových sad.
 services: storage
 author: alkohli
 ms.service: storage
@@ -9,60 +9,60 @@ ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60397273"
 ---
-# <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Přenos dat pro malé datové sady s nízkými do střední šířka pásma sítě
+# <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Přenos dat malých datových sad s malou až střední šířkou pásma sítě
  
-Tento článek obsahuje přehled o přenos dat při budete muset nízké střední šířka pásma sítě ve vašem prostředí a plánujete přenést malé datové sady řešení. Tento článek také popisuje možnosti převodu doporučené dat a odpovídajících klíčová dovednost matice pro tento scénář.
+Tento článek poskytuje přehled řešení přenosu dat, pokud máte nízkou až střední šířku pásma sítě ve vašem prostředí a plánujete přenos malých datových sad. Článek také popisuje doporučené možnosti přenosu dat a matice příslušných klíčových schopností pro tento scénář.
 
-Přehled o všech pochopit přenos možnosti dostupných dat, přejděte na [volba řešení přenosu dat Azure](storage-choose-data-transfer-solution.md).
+Pokud chcete pochopit přehled všech dostupných možností přenosu dat, přejděte na [výběr řešení pro přenos dat Azure](storage-choose-data-transfer-solution.md).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-Malé datové sady odkazují na velikosti dat v pořadí podle GB na několik TB. S nízkou až střední šířka pásma sítě znamená 45 MB/s (T3 připojení v datovém centru) na 1 GB/s.
+Malé datové sady odkazují na velikosti dat v pořadí GBs na několik TBs. Nízká až střední šířka pásma sítě znamená 45 Mb/s (připojení T3 v datovém centru) až 1 Gb/s.
 
-- Pokud přenášíte pouze na několik souborů a není nutné k automatizaci přenos dat, zvažte nástroje s grafickým rozhraním.
-- Pokud jste obeznámeni s správu systému, zvažte možnost příkazového řádku nebo nástroje pro programové/skriptování.
+- Pokud přenášíte pouze několik souborů a nepotřebujete automatizovat přenos dat, zvažte nástroje s grafickým rozhraním.
+- Pokud jste spokojeni se správou systému, zvažte příkazový řádek nebo programové/skriptovací nástroje.
 
 ## <a name="recommended-options"></a>Doporučené možnosti
 
-Možnosti doporučení v tomto scénáři jsou:
+Možnosti doporučené v tomto scénáři jsou:
 
-- **Nástroje grafického rozhraní** jako je Průzkumník služby Azure Storage a Azure Storage na webu Azure portal. Ty umožňují snadno zobrazit vaše data a rychle přenést několik souborů.
+- **Nástroje grafického rozhraní,** jako je Azure Storage Explorer a Azure Storage na webu Azure Portal. Ty poskytují snadný způsob zobrazení dat a rychlé přenos několika souborů.
 
-    - **Průzkumník služby Azure Storage** – tento nástroj pro různé platformy vám umožní spravovat obsah z vašich účtů úložiště Azure. Umožňuje vám odesílat, stáhněte si a spravovat objekty BLOB, soubory, fronty, tabulky a entity Azure Cosmos DB. Použití úložiště objektů Blob Správa objektů BLOB a složek, a také nahrávat a stahovat objekty BLOB mezi místním systému souborů a úložištěm objektů Blob, nebo mezi účty úložiště.
-    - **Azure portal** – Azure Storage na webu Azure portal poskytuje webové rozhraní pro zkoumání souborů a nahrávání nových souborů postupně po jednom. Toto je dobrou volbou, pokud nechcete nainstalovat žádné nástroje nebo vydávat příkazy, jak rychle prozkoumat soubory nebo stačí nahrát několik nových struktur.
+    - **Azure Storage Explorer** – tento nástroj pro různé platformy umožňuje spravovat obsah vašich účtů úložiště Azure. Umožňuje odesílat, stahovat a spravovat objekty BLOB, soubory, fronty, tabulky a entity Azure Cosmos DB. Použijte ho s úložištěm objektů Blob ke správě objektů BLOB a složek a také k odesílání a stahování objektů BLOB mezi místním systémem souborů a úložištěm objektů blob nebo mezi účty úložiště.
+    - **Azure Portal** – Azure Storage na azure portálu poskytuje webové rozhraní prozkoumat soubory a nahrát nové soubory jeden po druhém. To je dobrá volba, pokud nechcete instalovat žádné nástroje nebo vydávat příkazy, abyste rychle prozkoumali soubory nebo jednoduše nahráli několik nových.
 
-- **Nástroje pro skriptování programový** například rozhraní příkazového řádku AzCopy/PowerShell/Azure a REST API služby Azure Storage.
+- **Skriptovací/programové nástroje,** jako je AzCopy/PowerShell/Azure CLI a Azure Storage REST API.
 
-    - **AzCopy** – snadno kopírovat data do a z Azure BLOB, soubory, pomocí tohoto nástroje příkazového řádku a Table storage poskytovaly optimální výkon. AzCopy podporuje souběžnost a paralelismu a možnost obnovit operace kopírování, když k přerušení.
-    - **Prostředí Azure PowerShell** – Uživatelé zvyklí správu systému, použít modul Azure Storage v prostředí Azure PowerShell k přenosu dat.
-    - **Azure CLI** – pomocí tohoto nástroje více platforem zajišťující správu služeb Azure a nahrání dat do služby Azure Storage.
-    - **Azure Storage REST API a sad SDK** – při vytváření aplikace, můžete vyvíjet aplikace pro Azure Storage REST API a sad SDK a použití klientské knihovny Azure nabízí v různých jazycích.
+    - **AzCopy** – Pomocí tohoto nástroje příkazového řádku můžete snadno kopírovat data do a z Azure Blobs, Files a Table storage s optimálním výkonem. AzCopy podporuje souběžnost a paralelismus a schopnost pokračovat v operacích kopírování při přerušení.
+    - **Azure PowerShell** – pro uživatele, kteří mají pohodlí se správou systému, použijte k přenosu dat modul Azure Storage v Azure PowerShellu.
+    - **Azure CLI** – pomocí tohoto nástroje pro různé platformy můžete spravovat služby Azure a nahrávat data do Azure Storage.
+    - **Azure Storage REST API nebo SDKs** – Při vytváření aplikace, můžete vyvinout aplikaci proti Azure Storage REST API/SDKa a používat klientské knihovny Azure nabízené ve více jazycích.
 
 
-## <a name="comparison-of-key-capabilities"></a>Porovnání klíčových funkcí
+## <a name="comparison-of-key-capabilities"></a>Porovnání klíčových schopností
 
-Následující tabulka shrnuje rozdíly mezi klíčové funkce.
+Následující tabulka shrnuje rozdíly v klíčových možnostech.
 
-| Funkce | Azure Storage Explorer | portál Azure | AzCopy<br>Azure PowerShell<br>Azure CLI | Rozhraní REST API služby Azure Storage nebo sady SDK |
+| Funkce | Azure Storage Explorer | portál Azure | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST API nebo SDKs |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
-| Dostupnost | Stažení a instalace <br>Samostatný nástroj | Nástroje na prozkoumávání založeného na webu na webu Azure portal | Nástroj příkazového řádku |Programovatelný rozhraní v rozhraní .NET, Java, Python, JavaScript, C++, Go, Ruby a PHP |
+| Dostupnost | Stažení a instalace <br>Samostatný nástroj | Webové nástroje průzkumu na webu Azure Portal | Nástroj příkazového řádku |Programovatelná rozhraní v .NET, Java, Pythonu, JavaScriptu, C++, Go, Ruby a PHP |
 | Grafické rozhraní | Ano | Ano | Ne | Ne |
-| Podporované platformy | Windows, Mac, Linux | Webové |Windows, Mac, Linux |Všechny platformy |
-| Povolené operace úložiště objektů Blob<br>pro objekty BLOB a složek | Nahrávání<br>Ke stažení<br>Spravovat | Nahrávání<br>Ke stažení<br>Spravovat |Nahrávání<br>Ke stažení<br>Spravovat | Ano, přizpůsobitelné |
-| Povolené úložiště Data Lake Gen1<br>operace pro soubory a složky | Nahrávání<br>Ke stažení<br>Spravovat | Ne |Nahrávání<br>Ke stažení<br>Spravovat                   | Ne |
-| Povolené operace služby File storage<br>pro soubory a adresáře | Nahrávání<br>Ke stažení<br>Spravovat | Nahrávání<br>Ke stažení<br>Spravovat   |Nahrávání<br>Ke stažení<br>Spravovat | Ano, přizpůsobitelné |
-| Povolená operace s tabulkou úložiště<br>pro tabulky |Spravovat | Ne |Podpora tabulek v AzCopy v7 |Ano, přizpůsobitelné|
-| Povolené Queue storage | Spravovat | Ne  |Ne | Ano, je přizpůsobitelný|
+| Podporované platformy | Windows, Mac, Linux | Webové stránky |Windows, Mac, Linux |Všechny platformy |
+| Povolené operace úložiště objektů Blob<br>pro objekty BLOB a složky | Odeslat<br>Stáhnout<br>Správa | Odeslat<br>Stáhnout<br>Správa |Odeslat<br>Stáhnout<br>Správa | Ano, přizpůsobitelné |
+| Povolené úložiště Data Lake Gen1<br>operace pro soubory a složky | Odeslat<br>Stáhnout<br>Správa | Ne |Odeslat<br>Stáhnout<br>Správa                   | Ne |
+| Povolené operace ukládání souborů<br>pro soubory a adresáře | Odeslat<br>Stáhnout<br>Správa | Odeslat<br>Stáhnout<br>Správa   |Odeslat<br>Stáhnout<br>Správa | Ano, přizpůsobitelné |
+| Povolené operace úložiště tabulky<br>pro tabulky |Správa | Ne |Podpora tabulek v AzCopy v7 |Ano, přizpůsobitelné|
+| Povolené úložiště fronty | Správa | Ne  |Ne | Ano, je přizpůsobitelné|
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak [přenos dat pomocí Průzkumníka služby Azure Storage](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer).
+- Přečtěte si, jak [přenášet data pomocí Průzkumníka úložiště Azure](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer).
 - [Přenos dat pomocí nástroje AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
 

@@ -1,6 +1,6 @@
 ---
-title: Zřízení zařízení pro vzdálené monitorování v Node.js – Azure | Dokumentace Microsoftu
-description: Popisuje postup připojení zařízení k akcelerátoru řešení vzdáleného monitorování, který se pomocí aplikace napsané v Node.js.
+title: Zřízení zařízení ke vzdálenému monitorování v souboru Node.js – Azure | Dokumenty společnosti Microsoft
+description: Popisuje, jak připojit zařízení k akcelerátoru řešení vzdáleného monitorování pomocí aplikace napsané v souboru Node.js.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: fdb2bed76a8e23a6034a57b3a5f1358c26e9e990
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61450261"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojení zařízení k akcelerátor řešení vzdálené monitorování (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojení zařízení k akcelerátoru řešení vzdáleného monitorování (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-V tomto kurzu se dozvíte, jak se připojit skutečné zařízení k akcelerátoru řešení vzdáleného monitorování. V tomto kurzu použijete Node.js, který je vhodný pro prostředí s minimálním prostředkům.
+V tomto kurzu se můžete připojit skutečné zařízení k akcelerátoru řešení vzdáleného monitorování. V tomto kurzu použijete Node.js, což je dobrá volba pro prostředí s minimálními omezeními prostředků.
 
-Pokud chcete simulovat zařízení, přečtěte si téma [vytvoření a testování nového simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md).
+Pokud dáváte přednost simulaci zařízení, přečtěte si informace [o vytvoření a testování nového simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
-## <a name="create-a-nodejs-solution"></a>Vytvořte řešení pro Node.js
+## <a name="create-a-nodejs-solution"></a>Vytvoření řešení Node.js
 
-Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější nainstalován na vývojovém počítači. Můžete spustit `node --version` příkazového řádku, pokud chcete zkontrolovat verzi.
+Ujistěte se, že je ve vývojovém počítači nainstalován soubor [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější. Můžete spustit `node --version` na příkazovém řádku a zkontrolovat verzi.
 
-1. Vytvořte složku s názvem `remotemonitoring` na vývojovém počítači. Přejděte do této složky ve vašem prostředí příkazového řádku.
+1. Vytvořte složku `remotemonitoring` volanou ve vývojovém počítači. Přejděte do této složky v prostředí příkazového řádku.
 
-1. Pokud chcete stáhnout a nainstalovat balíčky, které potřebujete k dokončení ukázkové aplikace, spusťte následující příkazy:
+1. Chcete-li stáhnout a nainstalovat balíčky, které potřebujete k dokončení ukázkové aplikace, spusťte následující příkazy:
 
     ```cmd/sh
     npm init
     npm install async azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. V `remotemonitoring` složce vytvořte soubor s názvem **remote_monitoring.js**. Otevřete tento soubor v textovém editoru.
+1. Ve `remotemonitoring` složce vytvořte soubor s názvem **remote_monitoring.js**. Otevřete tento soubor v textovém editoru.
 
-1. V **remote_monitoring.js** soubor, přidejte následující `require` příkazy:
+1. Do souboru **remote_monitoring.js** přidejte následující `require` příkazy:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -47,13 +47,13 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější nai
     var async = require('async');
     ```
 
-1. Přidejte následující deklarace proměnných za příkazy `require`. Nahraďte hodnotu zástupného symbolu `{device connection string}` s hodnotou, kterou jste si poznamenali u zařízení jste zřídili v řešení vzdáleného monitorování:
+1. Přidejte následující deklarace proměnných za příkazy `require`. Nahraďte zástupnou hodnotu `{device connection string}` hodnotou, kterou jste si poznamenali pro zařízení, které jste zřídit v řešení vzdáleného monitorování:
 
     ```javascript
     var connectionString = '{device connection string}';
     ```
 
-1. Pokud chcete definovat některé základní telemetrická data, přidejte následující proměnné:
+1. Chcete-li definovat některá základní telemetrická data, přidejte následující proměnné:
 
     ```javascript
     var temperature = 50;
@@ -64,7 +64,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější nai
     var pressureUnit = 'psig';
     ```
 
-1. Pokud chcete definovat některé hodnoty vlastností, přidejte následující proměnné:
+1. Chcete-li definovat některé hodnoty vlastností, přidejte následující proměnné:
 
     ```javascript
     var schema = "real-chiller;v1";
@@ -77,7 +77,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější nai
     var deviceOnline = true;
     ```
 
-1. Přidejte následující proměnné k definování ohlášené vlastnosti k odeslání do řešení. Tyto vlastnosti zahrnují metadata pro zobrazení v webového uživatelského rozhraní:
+1. Přidejte následující proměnnou k definování ohlášených vlastností, které mají být odeslány do řešení. Tyto vlastnosti zahrnují metadata, která se mají zobrazit ve webovém uživatelském rozhraní:
 
     ```javascript
     var reportedProperties = {
@@ -95,7 +95,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější nai
     }
     ```
 
-1. Chcete-li vytisknout výsledky operace, přidejte následující funkci pomocné rutiny:
+1. Chcete-li vytisknout výsledky operace, přidejte následující pomocnou funkci:
 
     ```javascript
     function printErrorFor(op) {
@@ -105,7 +105,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější nai
     }
     ```
 
-1. Přidejte následující pomocnou funkci používat k náhodné hodnoty telemetrie:
+1. Přidejte následující pomocnou funkci, která se použije k náhodnému použití hodnot telemetrie:
 
      ```javascript
      function generateRandomIncrement() {
@@ -113,7 +113,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější nai
      }
      ```
 
-1. Přidejte následující obecné funkci ke zpracování volání přímé metody v řešení. Funkce zobrazí informace o přímé metody, která byla vyvolána, ale v této ukázce neupravuje zařízení žádným způsobem. Toto řešení využívá přímé metody tak, aby fungoval na zařízeních:
+1. Přidejte následující obecnou funkci pro zpracování přímých volání metod z řešení. Funkce zobrazí informace o přímé metodě, která byla vyvolána, ale v této ukázce žádným způsobem neupravuje zařízení. Řešení používá přímé metody k jednání na zařízeních:
 
      ```javascript
      function onDirectMethod(request, response) {
@@ -128,7 +128,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější nai
      }
      ```
 
-1. Přidejte následující funkci pro zpracování **FirmwareUpdate** přímé volání metod z řešení. Funkce ověřuje parametry předané v datové části přímé metody a pak asynchronně spustí simulace aktualizace firmwaru:
+1. Přidejte následující funkci pro zpracování volání přímé metody **FirmwareUpdate** z řešení. Funkce ověří parametry předané v přímé datové části metody a poté asynchronně spustí simulaci aktualizace firmwaru:
 
      ```javascript
      function onFirmwareUpdate(request, response) {
@@ -157,7 +157,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější nai
      }
      ```
 
-1. Přidejte následující funkci, která simuluje dlouho běžící aktualizace toku firmwaru, která hlásí průběh zpět do řešení:
+1. Přidejte následující funkci pro simulaci dlouhotrvajícího toku aktualizace firmwaru, který hlásí průběh zpět do řešení:
 
      ```javascript
      // Simulated firmwareUpdate flow
@@ -235,7 +235,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější nai
      }
      ```
 
-1. Přidejte následující kód k odesílání telemetrických dat do řešení. Klientská aplikace přidá do zprávy k identifikaci zprávy schéma vlastnosti:
+1. Přidejte následující kód pro odesílání telemetrických dat do řešení. Klientská aplikace přidá do zprávy vlastnosti k identifikaci schématu zprávy:
 
      ```javascript
      function sendTelemetry(data, schema) {
@@ -254,19 +254,19 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější nai
      }
      ```
 
-1. Přidejte následující kód k vytvoření instance klienta:
+1. Přidejte následující kód pro vytvoření instance klienta:
 
      ```javascript
      var client = Client.fromConnectionString(connectionString, Protocol);
      ```
 
-1. Přidejte následující kód do:
+1. Do této oblasti přidejte následující kód:
 
-    * Otevření připojení.
+    * Otevřete připojení.
     * Nastavte obslužnou rutinu pro požadované vlastnosti.
-    * Odešlete ohlášené vlastnosti.
-    * Zaregistrujte obslužné rutiny pro přímé metody. Ukázka používá samostatné obslužné rutiny pro přímé metody aktualizace firmwaru.
-    * Začalo odesílat telemetrii.
+    * Odeslat ohlášené vlastnosti.
+    * Zaregistrujte obslužné rutiny pro přímé metody. Ukázka používá samostatnou obslužnou rutinu pro metodu přímé aktualizace firmwaru.
+    * Začněte posílat telemetrii.
 
       ```javascript
       client.open(function (err) {
@@ -328,9 +328,9 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější nai
       });
       ```
 
-1. Uložit změny **remote_monitoring.js** souboru.
+1. Uložte změny do souboru **remote_monitoring.js.**
 
-1. Spuštění ukázkové aplikace, spusťte následující příkaz z příkazového řádku:
+1. Chcete-li spustit ukázkovou aplikaci, spusťte na příkazovém řádku následující příkaz:
 
      ```cmd/sh
      node remote_monitoring.js

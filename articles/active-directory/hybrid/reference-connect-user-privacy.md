@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect a uživatelské ochrany osobních údajů | Dokumentace Microsoftu
-description: Tento dokument popisuje, jak získat dodržování předpisů GDPR u služby Azure AD Connect.
+title: Azure AD Connect a ochrana osobních údajů uživatelů | Dokumenty společnosti Microsoft
+description: Tento dokument popisuje, jak získat kompatibilitu GDPR s Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60455758"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Ochrana osobních údajů uživatelů a Azure AD Connect 
@@ -27,33 +27,33 @@ ms.locfileid: "60455758"
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
->Tento článek se zabývá Azure AD Connect a uživatelské ochrany osobních údajů.  Informace o službě Azure AD Connect Health a uživatele o ochraně osobních údajů najdete v článku [tady](reference-connect-health-user-privacy.md).
+>Tento článek se zabývá Azure AD Connect a soukromí uživatelů.  Informace o azure ad připojení stavu a soukromí uživatelů naleznete v článku [zde](reference-connect-health-user-privacy.md).
 
-Vylepšení ochrany osobních údajů uživatele pro zařízení Azure AD Connect dvěma způsoby:
+Zlepšení ochrany osobních údajů uživatelů pro instalace Azure AD Connect dvěma způsoby:
 
-1.  Na vyžádání extrahovat data pro osobu a odstranění dat z této osoby ze zařízení
-2.  Ujistěte se, že žádná data se uchovávají za 48 hodin.
+1.  Na požádání extrahujte údaje o osobě a odstraňte z ní údaje ze zařízení
+2.  Ujistěte se, že žádná data nejsou uchovávána po 48 hodinách.
 
-Tým služby Azure AD Connect doporučí druhou možnost vzhledem k tomu je mnohem jednodušší implementaci a údržbu.
+Tým Azure AD Connect doporučuje druhou možnost, protože je mnohem jednodušší implementovat a udržovat.
 
-Server synchronizace služby Azure AD Connect obsahuje následující data o ochraně osobních údajů uživatele:
-1.  Data o osoba **databáze služby Azure AD Connect**
-2.  Data v **protokolu událostí Windows** soubory, které mohou obsahovat informace o osobě
-3.  Data v **protokolové soubory instalace služby Azure AD Connect** o osobě, která může obsahovat
+Synchronizační server Azure AD Connect ukládá následující data o ochraně osobních údajů uživatelů:
+1.  Data o osobě v **databázi Azure AD Connect**
+2.  Data v souborech **protokolu událostí systému Windows,** která mohou obsahovat informace o osobě
+3.  Data v **souborech protokolu instalace Azure AD Connect,** které mohou obsahovat informace o osobě
 
-Zákazníci Azure AD Connect používejte následující pokyny při odebírání uživatelská data:
-1.  Odstraňte obsah složky, která obsahuje soubory protokolu instalace služby Azure AD Connect v pravidelných intervalech – nejméně každých 48 hodin
-2.  Tento produkt může také vytvořit protokoly událostí.  Další informace o protokolech protokoly událostí, najdete v tématu [dokumentaci](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx).
+Zákazníci Azure AD Connect by měli při odebírání uživatelských dat používat následující pokyny:
+1.  Pravidelně odstraňujte obsah složky, která obsahuje soubory protokolu instalace služby Azure AD Connect – alespoň každých 48 hodin
+2.  Tento produkt může také vytvořit protokoly událostí.  Další informace o protokolech protokolů protokolů událostí naleznete v [dokumentaci zde](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx).
 
-Data o osobě se tato osoba data se odeberou ze zdrojového systému, odkud pochází z automaticky odebere z databáze služby Azure AD Connect. Žádná konkrétní akce před správci musí být v souladu s nařízením GDPR.  Vyžaduje však, že data služby Azure AD Connect je synchronizovaný s zdroje dat nejméně každé dva dny.
+Data o osobě se automaticky odeberou z databáze Azure AD Connect, když se data této osoby odeberou ze zdrojového systému, odkud pochází. Žádná konkrétní akce ze strany správců nemusí být v souladu s GDPR.  Však vyžaduje, aby azure ad připojení data se synchronizuje se zdrojem dat alespoň každé dva dny.
 
-## <a name="delete-the-azure-ad-connect-installation-log-file-folder-contents"></a>Odstraňte obsah složky souboru protokolu instalace služby Azure AD Connect
-Pravidelně kontrolovat a odstraňte její obsah **c:\programdata\aadconnect** složka – s výjimkou **PersistedState.Xml** souboru. Tento soubor udržuje stav předchozí instalace aplikace Azure A připojit a používá se při upgradu instalace je provedena. Tento soubor neobsahuje žádná data o osobě a by neměl být odstraněn.
+## <a name="delete-the-azure-ad-connect-installation-log-file-folder-contents"></a>Odstranění obsahu složky souboru protokolu instalace služby Azure AD Connect
+Pravidelně kontrolujte a odstraňujte obsah složky **c:\programdata\aadconnect** – s výjimkou souboru **PersistedState.Xml.** Tento soubor udržuje stav předchozí instalace Azure A Connect a používá se při provádění instalace upgradu. Tento soubor neobsahuje žádná data o osobě a neměl by být odstraněn.
 
 >[!IMPORTANT]
->Neodstraňujte PersistedState.xml souboru.  Tento soubor neobsahuje žádné informace o uživateli a udržuje stav předchozí instalace.
+>Neodstraňujte soubor PersistedState.xml.  Tento soubor neobsahuje žádné informace o uživateli a udržuje stav předchozí instalace.
 
-Můžete zkontrolovat a odstranit tyto soubory pomocí Průzkumníka Windows, nebo můžete použít skript následujícím postupem provádět potřebné akce:
+Tyto soubory můžete zkontrolovat a odstranit pomocí Průzkumníka Windows nebo můžete k provedení nezbytných akcí použít skript, jako je následující:
 
 
 ```
@@ -64,24 +64,24 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
     } 
 ```
 
-### <a name="schedule-this-script-to-run-every-48-hours"></a>Naplánujte tento skript ke spuštění každých 48 hodin
-Použijte následující kroky plánování skript ke spuštění každých 48 hodin.
+### <a name="schedule-this-script-to-run-every-48-hours"></a>Naplánujte spuštění tohoto skriptu každých 48 hodin
+Pomocí následujících kroků naplánujte spuštění skriptu každých 48 hodin.
 
-1.  Uložte skript v souboru s příponou  **&#46;PS1**, otevřete ovládací Panel a klikněte na **systémy a zabezpečení**.
+1.  Uložte skript do souboru s příponou **&#46;PS1**, otevřete Ovládací panely a klikněte na **systém a zabezpečení**.
     ![Systém](./media/reference-connect-user-privacy/gdpr2.png)
 
-2.  V části nástroje pro správu, klikněte na **plánovat úkoly**.
-    ![Úloha](./media/reference-connect-user-privacy/gdpr3.png)
-3.  V Plánovači úloh, klikněte pravým tlačítkem na **knihovna plán úloh** a klikněte na **vytvořit základní úlohy...**
-4.  Zadejte název pro novou úlohu a klikněte na tlačítko **Další**.
-5.  Vyberte **denní** pro aktivační událost úlohy a klikněte na kartu **Další**.
-6.  Nastavení opakování **2 dny** a klikněte na tlačítko **Další**.
-7.  Vyberte **spustit program** jako akce a klikněte na kartu **Další**.
-8.  Typ **PowerShell** pole u programu nebo skriptu a v poli označeném **argumenty (volitelné) přidejte**, zadejte úplnou cestu ke skriptu, který jste vytvořili dříve a pak klikněte na tlačítko **Další**.
-9.  Na další obrazovce zobrazuje souhrn úlohy, kterou se chystáte vytvořit. Ověřte hodnoty a klikněte na tlačítko **Dokončit** vytvořte úkol.
+2.  V záhlaví Nástroje pro správu klikněte na **položku Naplánovat úkoly**.
+    ![Úkol](./media/reference-connect-user-privacy/gdpr3.png)
+3.  V Plánovači úloh klikněte pravým tlačítkem myši na **knihovnu plánu úloh** a klikněte na **Vytvořit základní úkol...**
+4.  Zadejte název nového úkolu a klepněte na tlačítko **Další**.
+5.  Vyberte **denní** pro aktivační událost úkolu a klepněte na **tlačítko Další**.
+6.  Nastavte opakování na **2 dny** a klepněte na tlačítko **Další**.
+7.  Vyberte **Spustit program** jako akci a klepněte na **tlačítko Další**.
+8.  Do pole Programu/skriptu zadejte **PowerShell** a do pole s popiskem **Přidat argumenty (volitelné)** zadejte úplnou cestu ke skriptu, který jste vytvořili dříve, a klepněte na tlačítko **Další**.
+9.  Na další obrazovce se zobrazí souhrn úkolu, který se chystáte vytvořit. Ověřte hodnoty a klepnutím na **tlačítko Dokončit** vytvořte úkol.
 
 
 
-## <a name="next-steps"></a>Další postup
-* [Projděte si zásady Microsoft Privacy Trust Center](https://www.microsoft.com/trustcenter)
-* [Azure AD Connect Health a ochrana osobních údajů uživatele](reference-connect-health-user-privacy.md)
+## <a name="next-steps"></a>Další kroky
+* [Projděte si zásady ochrany osobních údajů společnosti Microsoft v Centru zabezpečení](https://www.microsoft.com/trustcenter)
+* [Azure AD Connect stav a ochrana osobních údajů uživatelů](reference-connect-health-user-privacy.md)

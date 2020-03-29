@@ -1,6 +1,6 @@
 ---
-title: Hromadně zaregistrujete virtuální počítače SQL v Azure pomocí poskytovatele prostředků virtuálních počítačů SQL | Microsoft Docs
-description: Pro zlepšení spravovatelnosti hromadně Zaregistrujte SQL Server virtuálních počítačů pomocí poskytovatele prostředků virtuálního počítače SQL.
+title: Hromadná registrace virtuálních počítačů SQL v Azure u poskytovatele prostředků virtuálního počítače SQL | Dokumenty společnosti Microsoft
+description: Hromadná registrace virtuálních operátorů SQL Server u poskytovatele prostředků virtuálního virtuálního připojení SQL pro zlepšení správy.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -14,44 +14,44 @@ ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 015aa4c209a99921a930a51b15c3d0230722519a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75353892"
 ---
-# <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Hromadné registraci virtuálních počítačů SQL v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
+# <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Hromadná registrace virtuálních počítačů SQL v Azure s poskytovatelem prostředků virtuálních počítačů SQL
 
-Tento článek popisuje, jak hromadně zaregistrovat SQL Server virtuální počítač v Azure pomocí poskytovatele prostředků virtuálního počítače SQL pomocí rutiny prostředí PowerShell `Register-SqlVMs`.
+Tento článek popisuje, jak hromadně zaregistrovat virtuální počítač SQL Server (VM) `Register-SqlVMs` v Azure s poskytovatelem prostředků virtuálního počítače SQL pomocí rutiny Prostředí PowerShell.
 
-Rutina `Register-SqlVMs` se dá použít k registraci všech virtuálních počítačů v daném seznamu předplatných, skupin prostředků nebo seznamu konkrétních virtuálních počítačů. Rutina zaregistruje virtuální počítače v režimu _prosté_ správy a pak vygeneruje [sestavu i soubor protokolu](#output-description). 
+Rutinu `Register-SqlVMs` lze použít k registraci všech virtuálních počítačů v daném seznamu předplatných, skupin prostředků nebo seznamu konkrétních virtuálních počítačů. Rutina zaregistruje virtuální počítače v _režimu zjednodušené_ správy a potom vygeneruje [sestavu i soubor protokolu](#output-description). 
 
-Proces registrace nevede k žádnému riziku bez výpadků a nerestartuje SQL Server ani virtuální počítač. 
+Proces registrace nese žádné riziko, nemá žádné prostoje a nebude restartovat SQL Server nebo virtuální počítač. 
 
-Další informace o poskytovateli prostředků najdete v tématu [poskytovatel prostředků virtuálního počítače SQL](virtual-machines-windows-sql-register-with-resource-provider.md). 
+Další informace o poskytovateli prostředků naleznete v tématu [ZPROSTŘEDKOVATEL Prostředků virtuálního virtuálního připojení SQL](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, budete potřebovat následující: 
+Chcete-li zaregistrovat virtuální počítač SQL Server u poskytovatele prostředků, budete potřebovat následující: 
 
-- [Předplatné Azure](https://azure.microsoft.com/free/) , které je [zaregistrované u poskytovatele prostředků](virtual-machines-windows-sql-register-with-resource-provider.md#register-subscription-with-rp) a obsahuje neregistrované virtuální počítače SQL Server. 
-- Pověření klienta používaná k registraci virtuálních počítačů existují v kterékoli z následujících rolí RBAC: přispěvatel, **Přispěvatel**nebo **vlastník** **virtuálního počítače**. 
-- Nejnovější verzi [AZ PowerShellu](/powershell/azure/new-azureps-module-az) 
-- Nejnovější verzi [AZ. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0).
+- [Předplatné Azure,](https://azure.microsoft.com/free/) které bylo [zaregistrováno u poskytovatele prostředků](virtual-machines-windows-sql-register-with-resource-provider.md#register-subscription-with-rp) a obsahuje neregistrované virtuální počítače SQL Serveru. 
+- Pověření klienta použitá k registraci virtuálních počítačů existují v některé z následujících rolí RBAC: **přispěvatel virtuálního počítače**, **přispěvatel**nebo **vlastník**. 
+- Nejnovější verze [prostředí Az PowerShell](/powershell/azure/new-azureps-module-az). 
+- Nejnovější verze [aplikace Az.SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0).
 
 ## <a name="getting-started"></a>Začínáme
 
-Než budete pokračovat, musíte nejdřív vytvořit místní kopii skriptu, importovat ji jako modul prostředí PowerShell a připojit se k Azure. 
+Než budete pokračovat, musíte nejprve vytvořit místní kopii skriptu, importovat jej jako modul PowerShellu a připojit se k Azure. 
 
 ### <a name="create-script"></a>Vytvořit skript
 
-Chcete-li vytvořit skript, zkopírujte [celý skript](#full-script) na konci tohoto článku a uložte jej místně jako `RegisterSqlVMs.psm1`. 
+Chcete-li skript vytvořit, zkopírujte [celý skript](#full-script) z konce tohoto `RegisterSqlVMs.psm1`článku a uložte jej místně jako . 
 
 ### <a name="import-script"></a>Importovat skript
 
-Po vytvoření skriptu ho můžete importovat jako modul v terminálu PowerShellu. 
+Po vytvoření skriptu jej můžete importovat jako modul v terminálu Powershellu. 
 
-Otevřete okno pro správu terminálu PowerShellu a přejděte do umístění, kam jste uložili soubor `RegisterSqlVMs.psm1`. Pak spusťte následující rutinu PowerShellu a naimportujte skript jako modul: 
+Otevřete terminál prostředí PowerShell pro správu a přejděte na místo, kam jste soubor uložili. `RegisterSqlVMs.psm1` Potom spusťte následující rutinu prostředí PowerShell importovat skript jako modul: 
 
 ```powershell-interactive
 Import-Module .\RegisterSqlVMs.psm1
@@ -59,16 +59,16 @@ Import-Module .\RegisterSqlVMs.psm1
 
 ### <a name="connect-to-azure"></a>Připojení k Azure
 
-K připojení k Azure použijte následující rutinu PowerShellu:
+K Azure se můžete připojit pomocí následující rutiny Prostředí PowerShell:
 
 ```powershell-interactive
 Connect-AzAccount
 ```
 
 
-## <a name="all-vms-in-list-of-subscriptions"></a>Všechny virtuální počítače v seznamu předplatných 
+## <a name="all-vms-in-list-of-subscriptions"></a>Všechny virtuální jevy v seznamu předplatných 
 
-K registraci všech SQL Serverch virtuálních počítačů v seznamu předplatných použijte následující rutinu:
+Pomocí následující rutiny můžete zaregistrovat všechny virtuální počítače SQL Serveru v seznamu předplatných:
 
 ```powershell-interactive
 Register-SqlVMs -SubscriptionList SubscriptionId1,SubscriptionId2
@@ -90,9 +90,9 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-a-single-subscription"></a>Všechny virtuální počítače v jednom předplatném
+## <a name="all-vms-in-a-single-subscription"></a>Všechny virtuální hody v jednom předplatném
 
-K registraci všech SQL Server virtuálních počítačů v rámci jednoho předplatného použijte následující rutinu: 
+Pomocí následující rutiny zaregistrujte všechny virtuální počítače SQL Server v jednom předplatném: 
 
 ```powershell-interactive
 Register-SqlVMs -Subscription SubscriptionId1
@@ -112,9 +112,9 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-multiple-resource-groups"></a>Všechny virtuální počítače ve více skupinách prostředků
+## <a name="all-vms-in-multiple-resource-groups"></a>Všechny virtuální uživatele ve více skupinách prostředků
 
-K registraci všech SQL Server virtuálních počítačů ve více skupinách prostředků v rámci jednoho předplatného použijte následující rutinu:
+Pomocí následující rutiny můžete zaregistrovat všechny virtuální počítače SQL Serveru ve více skupinách prostředků v rámci jednoho předplatného:
 
 ```powershell-interactive
 Register-SqlVMs -Subscription SubscriptionId1 -ResourceGroupList ResourceGroup1,ResourceGroup2
@@ -133,9 +133,9 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-a-resource-group"></a>Všechny virtuální počítače ve skupině prostředků
+## <a name="all-vms-in-a-resource-group"></a>Všechny virtuální hody ve skupině prostředků
 
-K registraci všech SQL Server virtuálních počítačů do jedné skupiny prostředků použijte následující rutinu: 
+Pomocí následující rutiny můžete zaregistrovat všechny virtuální počítače SQL Serveru v jedné skupině prostředků: 
 
 ```powershell-interactive
 Register-SqlVMs -Subscription SubscriptionId1 -ResourceGroupName ResourceGroup1
@@ -154,9 +154,9 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="specific-vms-in-single-resource-group"></a>Konkrétní virtuální počítače v jedné skupině prostředků
+## <a name="specific-vms-in-single-resource-group"></a>Konkrétní virtuální virtuální společnosti v jedné skupině prostředků
 
-K registraci konkrétních SQL Server virtuálních počítačů v rámci jedné skupiny prostředků použijte následující rutinu:
+Následující rutina slouží k registraci konkrétních virtuálních počítačů SQL Serveru v rámci jedné skupiny prostředků:
 
 ```powershell-interactive
 Register-SqlVMs -Subscription SubscriptionId1 -ResourceGroupName ResourceGroup1 -VmList VM1,VM2,VM3
@@ -175,9 +175,9 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="specific-vm"></a>Konkrétní virtuální počítač
+## <a name="specific-vm"></a>Konkrétní virtuální virtuální ms
 
-K registraci konkrétního SQL Server virtuálního počítače použijte následující rutinu: 
+Pomocí následující rutiny zaregistrujte konkrétní virtuální počítač SQL Server: 
 
 ```powershell-interactive
 Register-SqlVMs -Subscription SubscriptionId1 -ResourceGroupName ResourceGroup1 -Name VM1
@@ -196,40 +196,40 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 
 ## <a name="output-description"></a>Popis výstupu
 
-Při každém použití rutiny `Register-SqlVMs` se vygeneruje sestava i soubor protokolu. 
+Při každém použití rutiny `Register-SqlVMs` je generována sestava i soubor protokolu. 
 
-### <a name="report"></a>Zpráva
+### <a name="report"></a>Sestava
 
-Sestava je vygenerována jako `.txt` soubor s názvem `RegisterSqlVMScriptReport<Timestamp>.txt`, kde časové razítko je čas spuštění rutiny. V sestavě jsou uvedeny následující podrobnosti:
+Sestava je generována `.txt` jako `RegisterSqlVMScriptReport<Timestamp>.txt` soubor s názvem, kde časové razítko je čas, kdy byla rutina spuštěna. V sestavě jsou uvedeny následující podrobnosti:
 
 | **Výstupní hodnota** | **Popis** |
 | :--------------  | :-------------- | 
-| Počet registrací předplatných se nezdařil, protože nemáte přístup nebo jsou pověření nesprávná. | Tím zobrazíte počet a seznam předplatných, u kterých došlo k problémům se zadaným ověřením. Podrobnou chybu najdete v protokolu hledáním ID předplatného. | 
-| Počet předplatných, která se nedala zkusit provést, protože nejsou zaregistrovaná na RP | Tato část obsahuje počet a seznam předplatných, která nejsou zaregistrovaná u poskytovatele prostředků virtuálního počítače SQL. |
-| Celkový počet nalezených virtuálních počítačů | Počet virtuálních počítačů, které byly nalezeny v rozsahu parametrů předaných do rutiny. | 
-| Virtuální počítače jsou už zaregistrované. | Počet virtuálních počítačů, které byly přeskočeny, protože byly již registrovány u poskytovatele prostředků. |
-| Počet úspěšně zaregistrovaných virtuálních počítačů | Počet virtuálních počítačů, které byly úspěšně registrovány po spuštění rutiny. Zobrazí seznam registrovaných virtuálních počítačů ve formátu `SubscriptionID, Resource Group, Virtual Machine`. | 
-| Kvůli chybě se nepovedlo zaregistrovat počet virtuálních počítačů. | Počet virtuálních počítačů, jejichž registrace se nezdařila z důvodu chyby. Podrobnosti o chybě najdete v souboru protokolu. | 
-| Počet virtuálních počítačů vynechaných jako virtuální počítač nebo agent nárazová větru na virtuálním počítači není spuštěný. | Počet a seznam virtuálních počítačů, které se nepovedlo zaregistrovat, protože virtuální počítač nebo Agent hosta na virtuálním počítači neběží. Tato možnost se dá opakovat, jakmile se spustí virtuální počítač nebo Agent hosta. Podrobnosti najdete v souboru protokolu. |
-| Počet vynechaných virtuálních počítačů, protože neběží SQL Server ve Windows | Počet virtuálních počítačů, které byly přeskočeny, protože neběží SQL Server nebo se nejedná o virtuální počítač s Windows. Virtuální počítače jsou uvedené ve formátu `SubscriptionID, Resource Group, Virtual Machine`. | 
+| Počet registrací odběrů se nezdařil, protože nemáte přístup nebo jsou nesprávná pověření. | To poskytuje počet a seznam odběrů, které měly problémy s poskytnutým ověřováním. Podrobnou chybu naleznete v protokolu vyhledáním ID předplatného. | 
+| Počet odběrů, které nelze vyzkoušet, protože nejsou registrovány na RP | Tato část obsahuje počet a seznam odběrů, které nebyly zaregistrovány u poskytovatele prostředků virtuálního virtuálního připojení SQL. |
+| Celkový počet nalezených virtuálních mispozií | Počet virtuálních počítačů, které byly nalezeny v rozsahu parametrů předaných rutiny. | 
+| Virtuální virtuální společnosti už registrované | Počet virtuálních počítačů, které byly přeskočeny, protože již byly zaregistrovány u poskytovatele prostředků. |
+| Počet úspěšně registrovaných virtuálních mandů | Počet virtuálních počítačů, které byly úspěšně registrovány po spuštění rutiny. Zobrazí seznam registrovaných virtuálních počítačů ve formátu `SubscriptionID, Resource Group, Virtual Machine`. | 
+| Počet virtuálních dispozičních společností se nepodařilo zaregistrovat z důvodu chyby. | Počet virtuálních počítačů, které se nepodařilo zaregistrovat z důvodu nějaké chyby. Podrobnosti o chybě lze nalézt v souboru protokolu. | 
+| Počet virtuálních počítačích přeskočených jako virtuální počítač nebo agent gust na virtuálním počítači není spuštěn | Počet a seznam virtuálních počítačů, které nelze zaregistrovat jako virtuální počítač nebo agenta hosta ve virtuálním počítači, nebyly spuštěny. Ty lze zopakovat po spuštění virtuálního počítače nebo agenta hosta. Podrobnosti naleznete v souboru protokolu. |
+| Počet přeskočených virtuálních počítačích, protože v systému Windows neběží SQL Server | Počet virtuálních počítačů, které byly přeskočeny, protože nejsou spuštěny SQL Server nebo nejsou virtuální počítač windows. Virtuální počítače jsou uvedeny `SubscriptionID, Resource Group, Virtual Machine`ve formátu . | 
 | &nbsp; | &nbsp; |
 
 ### <a name="log"></a>Protokol 
 
-Chyby se zaznamenávají do souboru protokolu s názvem `VMsNotRegisteredDueToError<Timestamp>.log`, kde časové razítko je čas spuštění skriptu. Pokud je chyba na úrovni předplatného, protokol obsahuje seznam SubscriptionID oddělený čárkami a chybovou zprávu. Pokud se jedná o chybu s registrací virtuálního počítače, protokol obsahuje ID předplatného, název skupiny prostředků, název virtuálního počítače, kód chyby a zprávu oddělený čárkami. 
+Chyby jsou zaznamenány v `VMsNotRegisteredDueToError<Timestamp>.log` souboru protokolu s názvem kde časové razítko je čas, kdy byl skript spuštěn. Pokud je chyba na úrovni předplatného, protokol obsahuje OdběrID oddělené čárkami a chybová zpráva. Pokud je chyba s registrací virtuálního počítače, protokol obsahuje ID předplatného, název skupiny prostředků, název virtuálního počítače, kód chyby a zprávy oddělené čárkami. 
 
 ## <a name="remarks"></a>Poznámky
 
-Při registraci SQL Server virtuálních počítačů pomocí poskytovatele prostředků pomocí poskytnutého skriptu Vezměte v úvahu následující skutečnosti:
+Při registraci virtuálních připojení SQL Server u poskytovatele prostředků pomocí zadaný skript, zvažte následující:
 
-- Registrace u poskytovatele prostředků vyžaduje, aby na virtuálním počítači s SQL Server spuštěný Agent hosta. Image Windows serveru 2008 nemají agenta hosta, takže tyto virtuální počítače selžou a musí být zaregistrované ručně pomocí [režimu správy Neagentů](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes).
-- K překonání transparentních chyb je integrovaná logika opakování. Pokud je virtuální počítač úspěšně zaregistrován, jedná se o rychlou operaci. Pokud se ale registrace nezdaří, bude se každý virtuální počítač opakovat.  V takovém případě byste měli pro dokončení procesu registrace poskytnout značnou dobu – i když je požadavek na skutečný čas závislý na typu a počtu chyb. 
+- Registrace u poskytovatele prostředků vyžaduje agenta hosta spuštěného na virtuálním počítači SQL Server. Bitové kopie systému Windows Server 2008 nemají agenta hosta, takže tyto virtuální počítače se nezdaří a musí být registrovány ručně pomocí [režimu správy NoAgent](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes).
+- K dispozici je logika opakování integrované k překonání transparentní chyby. Pokud je virtuální počítač úspěšně zaregistrován, pak se jedná o rychlou operaci. Pokud se však registrace nezdaří, bude každý virtuální počítač opakován.  Jako takový byste měli povolit významný čas na dokončení procesu registrace - i když skutečný časový požadavek závisí na typu a počtu chyb. 
 
 ## <a name="full-script"></a>Celý skript
 
-Úplný skript na GitHubu najdete v tématu [hromadné registraci virtuálních počítačů SQL pomocí AZ PowerShell](https://github.com/Azure/azure-docs-powershell-samples/blob/master/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1). 
+Úplný skript na GitHubu najdete [v tématu Hromadné registrace virtuálních počítačů SQL pomocí prostředí Az PowerShell](https://github.com/Azure/azure-docs-powershell-samples/blob/master/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1). 
 
-Zkopírujte celý skript a uložte ho jako `RegisterSqLVMs.psm1`.
+Zkopírujte celý skript a `RegisterSqLVMs.psm1`uložte jej jako .
 
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1 "Bulk register SQL Server virtual machines")]
 
@@ -237,7 +237,7 @@ Zkopírujte celý skript a uložte ho jako `RegisterSqLVMs.psm1`.
 
 Další informace najdete v těchto článcích: 
 
-* [Přehled SQL Server na virtuálním počítači s Windows](virtual-machines-windows-sql-server-iaas-overview.md)
-* [Nejčastější dotazy k SQL Server na virtuálním počítači s Windows](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Doprovodné materiály k cenách pro SQL Server na virtuálním počítači s Windows](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [Poznámky k verzi pro SQL Server na virtuálním počítači s Windows](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Přehled sql serveru na virtuálním počítači se systémem Windows](virtual-machines-windows-sql-server-iaas-overview.md)
+* [Nejčastější dotazy pro SQL Server na virtuálním počítači se systémem Windows](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Pokyny k cenovým hodnotě pro SQL Server na virtuálním počítači se systémem Windows](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [Poznámky k verzi pro SQL Server na virtuálním počítači se systémem Windows](virtual-machines-windows-sql-server-iaas-release-notes.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Table API pro Node.js
-description: Další informace o Azure Cosmos DB Table API včetně data vydání, vyřazení dat a změny provedené mezi jednotlivými verzemi.
+title: Rozhraní API tabulky Azure Cosmos DB pro soubor Node.js
+description: Přečtěte si vše o rozhraní Azure Cosmos DB Table API, včetně dat vydání, dat vyřazení a změn provedených mezi jednotlivými verzemi.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
@@ -9,13 +9,13 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 0f94ae4a4b5ad7806658c4ae54146d4ac940750e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76771299"
 ---
-# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB Table API pro Node.js: poznámky k verzi a prostředky
+# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Rozhraní API tabulky Azure Cosmos DB pro soubor Node.js: Poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -26,9 +26,9 @@ ms.locfileid: "76771299"
 
 |   |   |
 |---|---|
-|**Stažení sady SDK**|[NPM](https://www.npmjs.com/package/azure-storage)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní API Node.js](https://azure.github.io/azure-storage-node/)|
-|**Přispívat k sadě SDK**|[GitHub](https://github.com/Azure/azure-storage-node#contribute)|
+|**SDK ke stažení**|[NPM](https://www.npmjs.com/package/azure-storage)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní Node.js API](https://azure.github.io/azure-storage-node/)|
+|**Přispívat do sady SDK**|[GitHub](https://github.com/Azure/azure-storage-node#contribute)|
 
 > [!IMPORTANT]
 > Pokud jste vytvořili účet Table API během období Preview, vytvořte [nový účet Table API](create-table-dotnet.md#create-a-database-account) pro práci s obecně dostupnými sadami Table API SDK.
@@ -36,21 +36,21 @@ ms.locfileid: "76771299"
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* Verzi všeobecné dostupnosti
+### <a name="100"></a><a name="1.0.0"/>1.0.0
+* Verze obecné dostupnosti
 
-## <a name="release-and-retirement-dates"></a>Datum vydání verze a vyřazení z provozu
-Microsoft bude poskytovat oznámení alespoň **12 měsíců** před vyřazením z provozu sady SDK ulehčení přechodu na verzi novější nebo podporované.
+## <a name="release-and-retirement-dates"></a>Datum uvolnění a odchodu do důchodu
+Společnost Microsoft bude poskytovat oznámení nejméně **12 měsíců** před vyřazením sady SDK za účelem hladkého přechodu na novější/podporovanou verzi.
 
-Nové funkce a funkce a optimalizace jsou přidány pouze aktuální sadu SDK, proto se doporučuje, vždy upgradovat na nejnovější SDK verzi co možná nejdříve. 
+Nové funkce a funkce a optimalizace jsou přidány pouze do aktuální sady SDK, jako takové se doporučuje vždy upgradovat na nejnovější verzi sady SDK co nejdříve. 
 
-| Verze | Datum vydání | Datum vyřazení z provozu |
+| Version | Datum vydání | Datum odchodu do důchodu |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |15. listopadu 2017 |--- |
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Další informace najdete v tématech
-Další informace o službě Cosmos DB najdete v tématu [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby. 
+## <a name="see-also"></a>Viz také
+Další informace o Službě Cosmos DB najdete na stránce [služby Microsoft Azure Cosmos DB.](https://azure.microsoft.com/services/cosmos-db/) 
 

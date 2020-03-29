@@ -1,6 +1,6 @@
 ---
-title: Možnosti pro velké datové sady s nízkým nebo žádné šířky pásma sítě pro přenos dat Azure | Dokumentace Microsoftu
-description: Zjistěte, jak zvolit řešení Azure pro přenos dat, když máte omezený na žádný šířky pásma sítě ve vašem prostředí a máte v úmyslu přenosu velkých datových sad.
+title: Možnosti přenosu dat Azure pro velké datové sady s nízkou nebo žádnou šířkou pásma sítě| Dokumenty společnosti Microsoft
+description: Zjistěte, jak zvolit řešení Azure pro přenos dat, když máte omezenou šířku pásma sítě ve vašem prostředí a plánujete přenos velkých datových sad.
 services: storage
 author: alkohli
 ms.service: storage
@@ -9,63 +9,63 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 4c4ac9489b9613b2eeaf26a3df9f4cbc664a1026
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60730686"
 ---
-# <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Přenos dat pro rozsáhlé datové sady s nízkým nebo žádné šířky pásma sítě
+# <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Přenos dat rozsáhlých datových sad s malou nebo žádnou šířkou pásma sítě
  
-Tento článek obsahuje přehled přenosu dat ve vašem prostředí, máte omezenou na žádné šířky pásma sítě a máte v úmyslu přenosu velkých datových sad řešení. Tento článek také popisuje možnosti převodu doporučené dat a odpovídajících klíčová dovednost matice pro tento scénář.
+Tento článek poskytuje přehled řešení přenosu dat, pokud máte omezeno na žádnou šířku pásma sítě ve vašem prostředí a plánujete přenos velkých datových sad. Článek také popisuje doporučené možnosti přenosu dat a matice příslušných klíčových schopností pro tento scénář.
 
-Přehled o všech pochopit přenos možnosti dostupných dat, přejděte na [volba řešení přenosu dat Azure](storage-choose-data-transfer-solution.md).
+Pokud chcete pochopit přehled všech dostupných možností přenosu dat, přejděte na [výběr řešení pro přenos dat Azure](storage-choose-data-transfer-solution.md).
 
-## <a name="offline-transfer-or-network-transfer"></a>Offline převodu přenos nebo síť
+## <a name="offline-transfer-or-network-transfer"></a>Offline přenos nebo síťový přenos
 
-Velké datové sady znamenají, že máte několik TB na několik PBs data. Máte omezený na žádný šířky pásma sítě, je pomalé síti nebo nespolehlivá. Navíc:
+Velké datové sady naznačují, že máte málo TBs na několik PBs dat. Máte omezeno na žádnou šířku pásma sítě, síť je pomalá nebo je nespolehlivá. Navíc:
 
-- Od vašich poskytovatelů služeb Internetu (ISP) se uplatňuje limit vycházející náklady na přenos v síti.
-- Zabezpečení nebo zásady organizace neumožňují odchozí připojení při práci s důvěrnými osobními údaji.
+- Jste omezeni náklady na přenos sítě od poskytovatelů internetových služeb (ISP).
+- Zásady zabezpečení nebo organizace neumožňují odchozí připojení při práci s citlivými daty.
 
-Ve všech výše uvedených instancích proveďte jednorázově přenosu dat pomocí fyzického zařízení. Vyberte si z disku Data Box, zařízení Data Box Data Box náročné zařízení, které jsou poskytovány společností Microsoft nebo Import/Export pomocí vlastní disky.
+Ve všech výše uvedených případech použijte fyzické zařízení k jednorázovému hromadnému přenosu dat. Vyberte si z disků s datovou schránkou, datových schránka, zařízení Data Box Heavy dodávaných společností Microsoft nebo importujte/exportujte pomocí vlastních disků.
 
-Abyste se ujistili, zda fyzického zařízení té správné volby, použijte následující tabulku. Zobrazuje plánovaný čas pro přenos dat sítě, pro různé dostupné šířky pásma (za předpokladu, že 90 % využití). Pokud je přenos v síti plánovaných příliš pomalý, měli byste použít fyzické zařízení.  
+Chcete-li ověřit, zda je fyzické zařízení správnou volbou, použijte následující tabulku. Zobrazuje předpokládaný čas pro přenos síťových dat pro různé dostupné šířky pásma (za předpokladu 90% využití). Pokud je přenos sítě promítnut jako příliš pomalý, měli byste použít fyzické zařízení.  
 
-![Přenos v síti nebo offline převodu](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
+![Síťový přenos nebo offline přenos](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
 
 ## <a name="recommended-options"></a>Doporučené možnosti
 
-Možnosti dostupné v tomto scénáři jsou zařízení pro zařízení Azure Data Box offline převod nebo Azure Import/Export.
+Možnosti, které jsou k dispozici v tomto scénáři jsou zařízení pro přenos Azure Data Box offline nebo Azure Import/Export.
 
-- **Azure Data Box řady pro offline převody** – použít k přesunu velkých objemů dat do Azure při co vás omezuje čas dostupnosti sítě a náklady na zařízení ze zařízení Data Box dodané společností Microsoft. Kopírování místních dat pomocí nástrojů, jako je například Robocopy. V závislosti na velikost dat určená pro přenos můžete vybrat z disku Data Box, zařízení Data Box nebo Data Box náročné.
-- **Azure Import/Export** – použijte Azure Import/Export služby přenosem diskových jednotek bezpečně Import velkých objemů dat do úložiště objektů Blob v Azure a službou soubory Azure. Tato služba také umožňuje přenášet data z úložiště objektů Blob Azure do diskové jednotky a odešlete ji do vašich místních lokalit.
+- **Azure Data Box řady pro offline přenosy** – Pomocí zařízení ze zařízení Data Box dodané Microsoft přesunout velké množství dat do Azure, když jste omezeni časem, dostupnost sítě nebo náklady. Kopírování místních dat pomocí nástrojů, jako je Robocopy. V závislosti na velikosti dat určených k přenosu si můžete vybrat z disků datové schránky, datové schránky nebo datové schránky Heavy.
+- **Import a export Azure** – Pomocí služby Import/Export Azure odesláním vlastních diskových jednotek můžete bezpečně importovat velké objemy dat do úložiště objektů Blob Azure a souborů Azure. Tuto službu lze také použít k přenosu dat z úložiště objektů Blob Azure na diskové jednotky a dodávat do místních webů.
 
-## <a name="comparison-of-key-capabilities"></a>Porovnání klíčových funkcí
+## <a name="comparison-of-key-capabilities"></a>Porovnání klíčových schopností
 
-Následující tabulka shrnuje rozdíly mezi klíčové funkce.
+Následující tabulka shrnuje rozdíly v klíčových možnostech.
 
 |                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    Import/export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
-|    Velikost dat                        |    Až 35 TB                 |    Až 80 TB za zařízení                       |    Až 800 TB na zařízení               |    Proměnná                            |
-|    Typ dat                        |    Azure Blobs                  |    Azure Blobs<br>Soubory Azure                    |    Azure Blobs<br>Soubory Azure            |    Azure Blobs<br>Soubory Azure          |
-|    Uspořádání formuláře                      |    5 SSD disků na pořadí             |    1 × 50-lbs. velikost plochy zařízení podle pořadí    |    1 X ~500-lbs. velká zařízení podle pořadí    |    Až 10 pevné disky nebo disky SSD jednu objednávku        |
-|    Počáteční instalace               |    Nízká <br>(15 minut)            |    S nízkou až střední <br> (< 30 minut)               |    Střední<br>(1 – 2 hodiny)               |    Střední na složité<br>(proměnné) |
+|    Velikost dat                        |    Až 35 tis                 |    Až 80 TBs na zařízení                       |    Až 800 TB na jedno zařízení               |    Proměnná                            |
+|    Datový typ                        |    Objekty blob Azure                  |    Objekty blob Azure<br>Soubory Azure                    |    Objekty blob Azure<br>Soubory Azure            |    Objekty blob Azure<br>Soubory Azure          |
+|    Tvarový faktor                      |    5 SSD na objednávku             |    1 x 50 liber. zařízení velikosti plochy na jednu objednávku    |    1 X ~ 500-lbs. velké zařízení na objednávku    |    Až 10 pevných disků/SSD na jednu objednávku        |
+|    Počáteční čas nastavení               |    Nízká <br>(15 min)            |    Nízká až střední <br> (<30 min)               |    Střední<br>(1-2 hodiny)               |    Střední až obtížné<br>(variabilní) |
 |    Odesílání dat do Azure               |    Ano                          |    Ano                                           |    Ano                                   |    Ano                                 |
 |    Export dat z Azure           |    Ne                           |    Ne                                            |    Ne                                    |    Ano                                 |
-|    Šifrování                       |    AES 128-bit                  |    AES 256-bit                                   |    AES 256-bit                           |    AES 128-bit                         |
-|    Hardware                         |     Microsoft zadaný          |    Microsoft zadaný                            |    Microsoft zadaný                    |    Zákazníka                   |
+|    Šifrování                       |    AES 128bitová                  |    AES 256bitový                                   |    AES 256bitový                           |    AES 128bitová                         |
+|    Hardware                         |     Společnost Microsoft dodala          |    Společnost Microsoft dodala                            |    Společnost Microsoft dodala                    |    Zákazník dodán                   |
 |    Síťové rozhraní                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
-|    Integrace partnerských řešení              |    Některé                         |    [Vysoká](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Vysoká](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Některé                                |
-|    Přesouvání                         |    Spravovaná Microsoftem            |    Spravovaná Microsoftem                             |    Spravovaná Microsoftem                     |    Spravovaná zákazníkem                    |
-| Použijte v případě přesunu dat         |V rámci obchodní oblasti|V rámci obchodní oblasti|V rámci obchodní oblasti|Přes geografické hranice, například nám EU|
+|    Integrace partnerských řešení              |    Některé                         |    [Vysoké](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Vysoké](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Některé                                |
+|    Shipping                         |    Microsoft se podařilo            |    Microsoft se podařilo                             |    Microsoft se podařilo                     |    Zákazník řízený                    |
+| Použít při přesunu dat         |V rámci hranice obchodu|V rámci hranice obchodu|V rámci hranice obchodu|Přes zeměpisné hranice, např.|
 |    Ceny                          |    [Ceny](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Ceny](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Pochopit postup
+- Pochopit, jak
 
-    - [Přenos dat pomocí disku Data Box](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal).
-    - [Přenos dat pomocí zařízení Data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
-    - [Přenos dat pomocí importu/exportu](/azure/storage/common/storage-import-export-data-to-blobs).
+    - [Přenos dat pomocí disku datové schránky](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal).
+    - [Přenos dat pomocí datové schránky](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
+    - [Přenos dat pomocí importu nebo exportu](/azure/storage/common/storage-import-export-data-to-blobs).

@@ -1,5 +1,5 @@
 ---
-title: Správa webového uživatelského rozhraní pro virtuální pole StorSimple | Microsoft Docs
+title: Správa webového uživatelského uživatelského prostředí storSimple Virtual Array | Dokumenty společnosti Microsoft
 description: Popisuje, jak provádět základní úlohy správy zařízení prostřednictvím webového uživatelského rozhraní StorSimple Virtual Array.
 services: storsimple
 documentationcenter: NA
@@ -15,100 +15,100 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254726"
 ---
-# <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Správa virtuálního pole StorSimple pomocí webového uživatelského rozhraní
-![průběh procesu nastavení](./media/storsimple-ova-web-ui-admin/manage4.png)
+# <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Správa virtuálního pole StorSimple pomocí webového uživatelského prostředí
+![tok procesu nastavení](./media/storsimple-ova-web-ui-admin/manage4.png)
 
 ## <a name="overview"></a>Přehled
-Kurzy v tomto článku se vztahují na Microsoft Azure StorSimple virtuální pole (označované také jako místní virtuální zařízení StorSimple) s vydáním obecné dostupnosti (GA) od března 2016. Tento článek popisuje některé komplexní pracovní postupy a úlohy správy, které lze provést ve virtuálním poli StorSimple. Virtuální pole StorSimple můžete spravovat pomocí uživatelského rozhraní služby StorSimple Manager (označované jako uživatelské rozhraní portálu) a místního webového uživatelského rozhraní pro dané zařízení. Tento článek se zaměřuje na úlohy, které můžete provádět pomocí webového uživatelského rozhraní.
+Kurzy v tomto článku platí pro Virtuální pole Microsoft Azure StorSimple (označované také jako místní virtuální zařízení StorSimple) se spuštěním verze obecné dostupnosti (GA) z března 2016. Tento článek popisuje některé složité pracovní postupy a úlohy správy, které lze provádět na virtuálním poli StorSimple. Virtuální pole StorSimple můžete spravovat pomocí uživatelského rozhraní služby StorSimple Manager (označované jako uživatelské rozhraní portálu) a místního webového uživatelského rozhraní pro zařízení. Tento článek se zaměřuje na úkoly, které můžete provádět pomocí webového uživatelského uživatelského panelu.
 
 Tento článek obsahuje následující návody:
 
-* Získat šifrovací klíč dat služby
-* Řešení chyb při instalaci webového uživatelského rozhraní
-* Generování balíčku protokolu
+* Získání šifrovacího klíče dat služby
+* Poradce při potížích s chybami nastavení webového uživatelského portálu
+* Generovat balíček protokolu
 * Vypnutí nebo restartování zařízení
 
-## <a name="get-the-service-data-encryption-key"></a>Získat šifrovací klíč dat služby
-Šifrovací klíč dat služby se vygeneruje při registraci prvního zařízení ve službě StorSimple Manager. Tento klíč se pak vyžaduje s registračním klíčem služby k registraci dalších zařízení ve službě StorSimple Manager.
+## <a name="get-the-service-data-encryption-key"></a>Získání šifrovacího klíče dat služby
+Šifrovací klíč dat služby je generován při registraci prvního zařízení pomocí služby StorSimple Manager. Tento klíč je pak vyžadován s registračním klíčem služby pro registraci dalších zařízení se službou StorSimple Manager.
 
-Pokud jste svůj šifrovací klíč dat služby nastavili a potřebujete ho načíst, proveďte následující kroky v místním webovém uživatelském rozhraní zařízení zaregistrovaného ve vaší službě.
+Pokud jste nesprávně umístili šifrovací klíč dat služby a potřebujete jej načíst, proveďte následující kroky v místním webovém uživatelském rozhraní zařízení registrovaného ve vaší službě.
 
 #### <a name="to-get-the-service-data-encryption-key"></a>Získání šifrovacího klíče dat služby
-1. Připojte se k místnímu webovému uživatelskému rozhraní. Přejít na nastavení konfigurace **cloudu** > .
-2. V dolní části stránky klikněte na **získat šifrovací klíč dat služby**. Zobrazí se klíč. Zkopírujte a uložte tento klíč.
+1. Připojte se k místnímu webovému uživatelskému uživatelskému prostředí. Přejděte na **Nastavení konfiguračního** > **cloudu**.
+2. V dolní části stránky klikněte na **Získat šifrovací klíč dat služby**. Zobrazí se klíč. Zkopírujte a uložte tento klíč.
    
-    ![získat šifrovací klíč dat služby 1](./media/storsimple-ova-web-ui-admin/image27.png)
+    ![získání šifrovacího klíče dat služby 1](./media/storsimple-ova-web-ui-admin/image27.png)
 
-## <a name="troubleshoot-web-ui-setup-errors"></a>Řešení chyb při instalaci webového uživatelského rozhraní
-V některých případech, kdy nakonfigurujete zařízení prostřednictvím místního webového uživatelského rozhraní, může dojít k chybám. Chcete-li diagnostikovat a řešit tyto chyby, můžete spustit diagnostické testy.
+## <a name="troubleshoot-web-ui-setup-errors"></a>Poradce při potížích s chybami nastavení webového uživatelského portálu
+V některých případech při konfiguraci zařízení prostřednictvím místního webového uživatelského rozhraní může dojít k chybám. Chcete-li diagnostikovat a řešit tyto chyby, můžete spustit diagnostické testy.
 
 #### <a name="to-run-the-diagnostic-tests"></a>Spuštění diagnostických testů
-1. V místním webovém uživatelském rozhraní si přečtěte > **Poradce při potížích s** **diagnostickými testy**.
+1. V místním webovém uživatelském rozhraní přejděte na **řešení potíží s diagnostickými** > **testy**.
    
     ![spustit diagnostiku 1](./media/storsimple-ova-web-ui-admin/image29.png)
-2. V dolní části stránky klikněte na **Spustit diagnostické testy**. Tím se zahájí testy pro diagnostiku všech možných problémů se sítí, zařízením, webovým proxy serverem, časem nebo nastavením cloudu. Budete upozorněni na to, že zařízení spouští testy.
-3. Po dokončení testů se zobrazí výsledky. Následující příklad ukazuje výsledky diagnostických testů. Všimněte si, že nastavení webového proxy serveru není na tomto zařízení nakonfigurované, a proto se test webového proxy serveru nespustil. Všechny ostatní testy nastavení sítě, serveru DNS a času byly úspěšné.
+2. V dolní části stránky klepněte na tlačítko **Spustit diagnostické testy**. Tím zahájíte testy pro diagnostiku možných problémů s nastavením sítě, zařízení, webového proxy serveru, času nebo cloudu. Budete upozorněni, že zařízení spouštějí testy.
+3. Po dokončení testů se zobrazí výsledky. Následující příklad ukazuje výsledky diagnostických testů. Všimněte si, že nastavení webového proxy serveru nebyly nakonfigurovány v tomto zařízení, a proto nebyl spuštěn test webového proxy serveru. Všechny ostatní testy nastavení sítě, serveru DNS a nastavení času byly úspěšné.
    
     ![spustit diagnostiku 2](./media/storsimple-ova-web-ui-admin/image30.png)
 
-## <a name="generate-a-log-package"></a>Generování balíčku protokolu
-Balíček protokolu se skládá ze všech relevantních protokolů, které vám můžou pomoct podpora Microsoftu s řešením potíží s problémy v zařízeních. V této verzi se dá balíček protokolu vygenerovat prostřednictvím místního webového uživatelského rozhraní.
+## <a name="generate-a-log-package"></a>Generovat balíček protokolu
+Balíček protokolu se skládá ze všech příslušných protokolů, které mohou pomoci podpoře společnosti Microsoft při řešení problémů se zařízením. V této verzi lze vygenerovat balíček protokolu prostřednictvím místního webového uživatelského prostředí.
 
-#### <a name="to-generate-the-log-package"></a>Vygenerování balíčku protokolu
-1. V místním webovém uživatelském rozhraní si přečtěte **Poradce při potížích** > **systémových protokolech**.
+#### <a name="to-generate-the-log-package"></a>Generování balíčku protokolu
+1. V místním webovém uživatelském prostředí přejděte na**protokoly** **systému řešení** > potíží .
    
-    ![generovat protokolový balíček 1](./media/storsimple-ova-web-ui-admin/image31.png)
-2. V dolní části stránky klikněte na **vytvořit balíček protokolu**. Vytvoří se balíček systémových protokolů. Tato akce bude trvat několik minut.
+    ![generovat balíček protokolu 1](./media/storsimple-ova-web-ui-admin/image31.png)
+2. V dolní části stránky klikněte na **Vytvořit balíček protokolu**. Bude vytvořen balíček systémových protokolů. Bude to trvat pár minut.
    
-    ![generovat protokolový balíček 2](./media/storsimple-ova-web-ui-admin/image32.png)
+    ![generovat balíček protokolu 2](./media/storsimple-ova-web-ui-admin/image32.png)
    
-    Po úspěšném vytvoření balíčku budete upozorněni a stránka bude aktualizována, aby označovala datum a čas vytvoření balíčku.
+    Budete upozorněni po úspěšném vytvoření balíčku a stránka bude aktualizována tak, aby označovala čas a datum, kdy byl balíček vytvořen.
    
-    ![generovat protokolový balíček 3](./media/storsimple-ova-web-ui-admin/image33.png)
-3. Klikněte na **Stáhnout balíček protokolu**. V systému bude stažen balíček zip.
+    ![generovat balíček protokolu 3](./media/storsimple-ova-web-ui-admin/image33.png)
+3. Klepněte na tlačítko **Stáhnout balíček protokolu**. Zip balíček bude stažen do vašeho systému.
    
-    ![generovat protokolový balíček 4](./media/storsimple-ova-web-ui-admin/image34.png)
-4. Stažený balíček protokolu můžete rozbalit a zobrazit soubory systémových protokolů.
+    ![generovat balíček protokolu 4](./media/storsimple-ova-web-ui-admin/image34.png)
+4. Můžete rozbalit stažený balíček protokolu a zobrazit soubory protokolu systému.
 
 ## <a name="shut-down-and-restart-your-device"></a>Vypnutí a restartování zařízení
-Virtuální zařízení můžete vypnout nebo restartovat pomocí místního webového uživatelského rozhraní. Doporučujeme, abyste před restartováním převedli svazky nebo sdílené složky do režimu offline na hostiteli a pak na zařízení. Tím se minimalizuje jakákoli možnost poškození dat. 
+Virtuální zařízení můžete vypnout nebo restartovat pomocí místního webového uživatelského rozhraní. Doporučujeme, abyste před restartováním přepáčili svazky nebo sdílené složky do offline na hostiteli a potom na zařízení. Tím se minimalizuje možnost poškození dat. 
 
 #### <a name="to-shut-down-your-virtual-device"></a>Vypnutí virtuálního zařízení
-1. V místním webovém uživatelském rozhraní přejdete do části **údržba** > **nastavení napájení**.
-2. V dolní části stránky klikněte na tlačítko **vypnout**.
+1. V místním webovém uživatelském prostředí přejděte na nastavení **údržby** > **.**
+2. V dolní části stránky klepněte na **tlačítko Vypnout**.
    
     ![vypnutí zařízení 1](./media/storsimple-ova-web-ui-admin/image36.png)
-3. Zobrazí se upozornění s informacemi o tom, že vypnutí zařízení přeruší všechny vstupně-výstupní operace, což vede k výpadku. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-ova-web-ui-admin/image3.png).
+3. Zobrazí se upozornění, že vypnutí zařízení přeruší všechny vi, které byly v průběhu, což má za následek prostoje. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-ova-web-ui-admin/image3.png).
    
-    ![Upozornění na vypnutí zařízení](./media/storsimple-ova-web-ui-admin/image37.png)
+    ![upozornění na vypnutí zařízení](./media/storsimple-ova-web-ui-admin/image37.png)
    
-    Budete upozorněni, že bylo iniciováno vypnutí.
+    Budete upozorněni, že vypnutí bylo zahájeno.
    
-    ![vypnutí zařízení bylo spuštěno.](./media/storsimple-ova-web-ui-admin/image38.png)
+    ![vypnutí zařízení bylo spuštěno](./media/storsimple-ova-web-ui-admin/image38.png)
    
-    Zařízení se teď vypne. Pokud chcete zařízení spustit, budete ho muset udělat přes Správce technologie Hyper-V.
+    Zařízení se nyní vypne. Pokud chcete zařízení spustit, budete to muset udělat prostřednictvím Správce technologie Hyper-V.
 
 #### <a name="to-restart-your-virtual-device"></a>Restartování virtuálního zařízení
-1. V místním webovém uživatelském rozhraní přejdete do části **údržba** > **nastavení napájení**.
-2. V dolní části stránky klikněte na **restartovat**.
+1. V místním webovém uživatelském prostředí přejděte na nastavení **údržby** > **.**
+2. V dolní části stránky klepněte na **tlačítko Restartovat**.
    
-    ![restartování zařízení](./media/storsimple-ova-web-ui-admin/image36.png)
-3. Zobrazí se upozornění oznamující, že restartování zařízení bude přerušit všechny probíhající IOs, což vedlo k výpadku. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-ova-web-ui-admin/image3.png).
+    ![restart zařízení](./media/storsimple-ova-web-ui-admin/image36.png)
+3. Zobrazí se upozornění, že restartování zařízení přeruší všechny probíhající vi, což vede k prostojům. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-ova-web-ui-admin/image3.png).
    
-    ![Upozornění na restartování](./media/storsimple-ova-web-ui-admin/image37.png)
+    ![upozornění na restartování](./media/storsimple-ova-web-ui-admin/image37.png)
    
-    Zobrazí se oznámení o zahájení restartování.
+    Budete upozorněni, že restartování bylo zahájeno.
    
-    ![restart inicializován](./media/storsimple-ova-web-ui-admin/image39.png)
+    ![restartovat počítač zahájen](./media/storsimple-ova-web-ui-admin/image39.png)
    
-    V průběhu restartování dojde ke ztrátě připojení k uživatelskému rozhraní. Restartování můžete monitorovat pravidelným obnovením uživatelského rozhraní. Případně můžete monitorovat stav restartování zařízení pomocí Správce technologie Hyper-V.
+    Během restartování dojde ke ztrátě připojení k umělá a umělá a ustálená. Restartování můžete sledovat pravidelným obnovením uhlavního počítače. Případně můžete sledovat stav restartování zařízení prostřednictvím Správce technologie Hyper-V.
 
 ## <a name="next-steps"></a>Další kroky
-Naučte se [používat službu StorSimple Manager ke správě zařízení](storsimple-virtual-array-manager-service-administration.md).
+Přečtěte si, jak [používat službu StorSimple Manager ke správě zařízení](storsimple-virtual-array-manager-service-administration.md).
 

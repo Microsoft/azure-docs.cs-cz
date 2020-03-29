@@ -1,6 +1,6 @@
 ---
-title: Okno s přehledem zařízení StorSimple Virtual Array | Dokumentace Microsoftu
-description: Popisuje okně s přehledem zařízení pro správce zařízení StorSimple a vysvětluje, jak použít ho k monitorování stavu StorSimple Virtual Array.
+title: Souhrnný list zařízení StorSimple Virtual Array | Dokumenty společnosti Microsoft
+description: Popisuje okno souhrnu zařízení pro Správce zařízení StorSimple a vysvětluje, jak jej použít ke sledování stavu vašeho virtuálního pole StorSimple.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 9edc0b552f5c2f38e646bc4b44dd8df5c16b0457
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61408476"
 ---
-# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Použití okně s přehledem zařízení pro správce zařízení StorSimple připojené k StorSimple Virtual Array
+# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Použití souhrnného okna zařízení pro Správce zařízení StorSimple připojeného k virtuálnímu poli StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Zařízení okna Správce zařízení StorSimple poskytuje přehled o StorSimple Virtual Array, který je registrován s danou StorSimple Device Manager, zvýraznění problémy zařízení, které vyžadují pozornost. správce systému. Tento kurz představuje okně s přehledem zařízení, vysvětluje obsah a funkce a popisuje úlohy, které můžete provádět z tohoto okna.
+Okno Zařízení Správce zařízení StorSimple poskytuje souhrnné zobrazení virtuálního pole StorSimple, které je registrováno v daném Správci zařízení StorSimple, a upozorňuje na problémy se zařízením, které vyžadují pozornost správce systému. Tento kurz představuje okno souhrnu zařízení, vysvětluje obsah a funkce a popisuje úkoly, které můžete provádět z tohoto okna.
 
-Okně s přehledem zařízení zobrazí následující informace:
+V souhrnném okně zařízení se zobrazí následující informace:
 
 ![Řídicí panel zařízení](./media/storsimple-virtual-array-device-summary/device-blade.png)
 
@@ -35,25 +35,25 @@ Okně s přehledem zařízení zobrazí následující informace:
 
 ## <a name="management"></a>Správa
 
-V okně zařízení StorSimple zobrazí se možnosti pro správu zařízení StorSimple. Příkazy pro správu se zobrazí v horní části okna a na levé straně. Pomocí těchto možností můžete přidat sdílené složky nebo svazky, aktualizovat nebo převzetí služeb při selhání vaše virtuální pole.
+V okně zařízení StorSimple se zobrazí možnosti správy zařízení StorSimple. Zobrazí se příkazy pro správu v horní části okna a na levé straně. Pomocí těchto možností můžete přidat sdílené složky nebo svazky nebo aktualizovat virtuální pole nebo je převést přes převzetí služeb při selhání.
 
-Oblasti essentials pojednává o některých důležité vlastnosti, například stav, modelu, verzi softwaru, jakož i odkaz **webového uživatelského rozhraní** pole. Pokud jste v interní síti, můžete přímo spustit [místního webového uživatelského rozhraní](storsimple-ova-web-ui-admin.md) spravovat vaše virtuální pole.
+Oblast essentials zachycuje některé důležité vlastnosti, jako je stav, model, verze softwaru a také odkaz na **webové uživatelské rozhraní** pole. Pokud jste v interní síti, můžete přímo spustit [místní webové uživatelské prostředí](storsimple-ova-web-ui-admin.md) pro správu virtuálního pole.
 
-![Základy zařízení](./media/storsimple-virtual-array-device-summary/device-essentials.png)
+![Základní informace o zařízení](./media/storsimple-virtual-array-device-summary/device-essentials.png)
 
-## <a name="storsimple-device-summary"></a>Přehledu zařízení StorSimple
+## <a name="storsimple-device-summary"></a>StorSimple shrnutí zařízení
 
-* **Výstrahy** dlaždice poskytuje snímek všechny aktivní výstrahy pro vaše virtuální pole, seskupené podle závažnosti výstrahy. Kliknutím na dlaždici otevřít **výstrahy** okno a potom klikněte na jednotlivé výstrahy zobrazíte další podrobnosti o této výstraze, včetně všech doporučené akce. Výstrahy můžete také zrušit, pokud byl problém vyřešen.
+* Dlaždice **Výstrahy** poskytuje snímek všech aktivních výstrah pro vaše virtuální pole seskupené podle závažnosti výstrahy. Kliknutím na dlaždici otevřete okno **Výstrahy** a kliknutím na jednotlivou výstrahu zobrazíte další podrobnosti o této výstraze, včetně doporučených akcí. Výstrahu můžete také vymazat, pokud byl problém vyřešen.
 
-* **Kapacity** dlaždici se zobrazuje primární úložiště, která je zřízená a zbývající virtuální zařízení vzhledem k celkový úložiště k dispozici pro stejné. **Zřízení** odkazuje na velikost úložiště, který je připravený a přidělené, **zbývající** odkazuje na zbývající kapacitu, kterou je možné zřídit přes toto zařízení. **Zbývající Vrstvená** kapacita je k dispozici kapacita, která se dá zřídit včetně cloudu, zatímco **zbývající místní** je na disky připojené k této virtuální pole zbývající kapacity.
+* **Dlaždice Kapacita** zobrazuje primární úložiště, které je zřízeno a zůstává napříč virtuálním zařízením vzhledem k celkovému dostupnému úložišti pro stejné. **Zřízené** odkazuje na množství úložiště, které je připravena a přidělena pro použití, **Zbývající** odkazuje na zbývající kapacitu, která může být zřízena v rámci tohoto zařízení. **Zbývající vrstvené kapacity** je dostupná kapacita, která může být zřízena, včetně cloudu, zatímco **zbývající místní** je kapacita zbývající na discích připojených k tomuto virtuálnímu poli.
 
-* V **využití** grafu, můžete zobrazit primární úložiště používat v rámci celého vaše virtuální pole, stejně jako cloudové úložiště spotřebované za posledních 7 dnů, výchozí časové období. Použití **upravit** možnost v pravém horním rohu grafu vyberte jiné časové měřítko.
+* V grafu **Využití** můžete zobrazit primární úložiště používané ve virtuálním poli, stejně jako cloudové úložiště spotřebované za posledních 7 dní, což je výchozí časové období. Pomocí volby **Upravit** v pravém horním rohu grafu zvolte jiné časové měřítko.
 
-* **Sdílené složky** nebo **svazky** dlaždice obsahuje souhrn počtu sdílených složek nebo svazků v zařízení seskupených podle stavu. Kliknutím na dlaždici otevřít **sdílené složky** nebo **svazky** seznamu okně a klikněte na jednotlivé sdílené složky nebo svazku lze zobrazit nebo upravit její vlastnosti. Další informace najdete v tématu Jak [spravovat sdílené složky](storsimple-virtual-array-manage-shares.md) nebo [Správa svazků](storsimple-virtual-array-manage-volumes.md).
+* Dlaždice **Sdílené složky** nebo **svazky** obsahuje souhrn počtu sdílených složek nebo svazků v zařízení seskupených podle stavu. Kliknutím na dlaždici otevřete okno seznamu **Sdílené složky** nebo **svazky** a kliknutím na jednotlivou sdílenou složku nebo svazek zobrazte nebo upravte jeho vlastnosti. Další informace naleznete v tématu [Správa sdílených složek](storsimple-virtual-array-manage-shares.md) nebo [správa svazků](storsimple-virtual-array-manage-volumes.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Naučte se:
-- [Správa sdílených složek na StorSimple Virtual Array](storsimple-virtual-array-manage-shares.md)
+- [Správa sdílených složek ve virtuálním poli StorSimple](storsimple-virtual-array-manage-shares.md)
     
-- [Správa svazků na StorSimple Virtual Array](storsimple-virtual-array-manage-volumes.md)
+- [Správa svazků ve virtuálním poli StorSimple](storsimple-virtual-array-manage-volumes.md)
 

@@ -1,6 +1,6 @@
 ---
-title: StorSimple Virtual Array aktualizace 0.4 poznámky k verzi | Dokumentace Microsoftu
-description: Pro StorSimple Virtual Array spuštění aktualizace 0.4 popisuje důležité otevřených problémů a jejich řešení.
+title: StorSimple Virtual Array Update 0.4 poznámky k verzi | Dokumenty společnosti Microsoft
+description: Popisuje kritické otevřené problémy a řešení pro virtuální pole StorSimple se spuštěnou aktualizací 0.4.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,82 +15,82 @@ ms.workload: NA
 ms.date: 04/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 06a3469507631d032535bce62b01d964e99dc603
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60334790"
 ---
-# <a name="storsimple-virtual-array-update-04-release-notes"></a>StorSimple Virtual Array aktualizace 0.4 poznámky
+# <a name="storsimple-virtual-array-update-04-release-notes"></a>StorSimple Virtual Array Update 0,4 poznámky k verzi
 
 ## <a name="overview"></a>Přehled
 
-Následující zpráva k vydání verze Identifikujte kritické otevřené problémy a vyřešené problémy pro Microsoft Azure StorSimple Virtual Array aktualizace.
+Následující poznámky k verzi identifikují důležité problémy s otevřením a vyřešené problémy pro aktualizace virtuálního pole Microsoft Azure StorSimple.
 
-Zpráva k vydání verze se průběžně aktualizuje, a při zjištění zásadních problémů vyžadujících alternativní řešení, se přidají. Před nasazením StorSimple Virtual Array, pečlivě si prostudujte informace obsažené v poznámkách k verzi.
+Poznámky k verzi jsou průběžně aktualizovány a jako kritické problémy, které vyžadují řešení jsou zjištěny, jsou přidány. Před nasazením virtuálního pole StorSimple pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
 Aktualizace 0.4 odpovídá verzi softwaru **10.0.10289.0**.
 
 > [!NOTE]
-> Aktualizace se jedná o narušující a restartujte zařízení. Pokud probíhají vstupně-výstupních operací, zařízení způsobí výpadek.
+> Aktualizace jsou rušivé a restartujte zařízení. Pokud vstupně-in/o probíhá, zařízení dojde k prostojům.
 
 
-## <a name="whats-new-in-the-update-04"></a>Co je nového v aktualizace 0.4
-Aktualizace 0.4 je primárně oprava chyby sestavení s velkou provázaností několik vylepšení. V této verzi byla vyřešili několik chyb, což vede k selhání zálohování v předchozí verzi. Hlavní vylepšení a opravy chyb jsou takto:
+## <a name="whats-new-in-the-update-04"></a>Co je nového v aktualizaci 0.4
+Aktualizace 0.4 je především bug-fix sestavení spolu s několika vylepšeními. V této verzi bylo vyřešeno několik chyb, které vedly k selhání zálohování v předchozí verzi. Hlavní vylepšení a opravy chyb jsou následující:
 
-- **Vylepšení výkonu zálohování** – tato verze má provedeno několik klíčových vylepšení ke zlepšení výkonu zálohování. V důsledku toho zálohy, které se týkají velký počet souborů naleznete v tématu k výraznému snížení času k dokončení úplné a přírůstkové zálohování.
+- **Vylepšení výkonu zálohování** – tato verze provedla několik klíčových vylepšení pro zlepšení výkonu zálohování. V důsledku toho zálohy, které zahrnují velký počet souborů vidět významné snížení času na dokončení, pro úplné a přírůstkové zálohy.
 
-- **Vylepšený výkon obnovení** – tato verze obsahuje vylepšení, která výrazně zlepšit výkon obnovení při použití velkého počtu souborů. Pokud používáte 2 – 4 miliony souborů, doporučujeme, že zřídíte virtuální pole s 16 GB paměti RAM zobrazíte vylepšení. Při použití souborů menší než 2 miliony, minimální požadavek pro virtuální počítač nadále 8 GB paměti RAM.
+- **Vylepšený výkon obnovení** – tato verze obsahuje vylepšení, která výrazně zlepšují výkon obnovení při použití velkého počtu souborů. Pokud používáte 2 až 4 miliony souborů, doporučujeme zřídit virtuální pole s 16 GB RAM, abyste viděli vylepšení. Při použití méně než 2 miliony souborů, minimální požadavek pro virtuální počítač i nadále 8 GB RAM.
 
-- **Vylepšení balíček pro podporu** – vylepšení zahrnují protokolování statistiky týkající se disku, využití procesoru, paměti, sítě a cloudu do balíčku pro podporu; tím se zvýší proces Diagnostika a ladění problémů se zařízením.
+- **Vylepšení balíčku podpory** – vylepšení zahrnují protokolování statistik y pro disk, procesor, paměť, síť a cloud do balíčku podpory a tím zlepšit proces diagnostiky nebo ladění problémů zařízení.
 
-- **Limit místně připojené svazky iSCSI až 200 GB** – místně vázaných svazků, doporučujeme omezit na svazek iSCSI 200 GB na StorSimple Virtual Array. Místní rezervace pro vrstvené svazky i nadále 10 % velikosti zřízeného svazku, ale je omezené na 200 GB. 
+- **Omezte místně připnuté svazky iSCSI na 200 GB** – u místně vázaných svazků doporučujeme omezit na 200 GB svazku iSCSI ve virtuálním poli StorSimple. Místní rezervace pro vrstvené svazky je i nadále 10 % zřízenévelikosti svazku, ale je omezena na 200 GB. 
 
-- **Opravy chyb spojených s** – v předchozích verzích softwaru, byly nějaké problémy související s zálohy, které by mohly způsobit selhání zálohování. Tyto chyby vyřešeny byly v této verzi.
+- **Opravy chyb související se zálohováním** – v předchozích verzích softwaru došlo k problémům souvisejícím se zálohováním, které by způsobovaly selhání zálohování. Tyto chyby byly řešeny v této verzi.
 
 
-## <a name="issues-fixed-in-the-update-04"></a>Chyby opravené v této aktualizace 0.4
+## <a name="issues-fixed-in-the-update-04"></a>Problémy opravené v aktualizaci 0.4
 
-Následující tabulka obsahuje souhrn chyby opravené v této verzi.
+Následující tabulka obsahuje souhrn problémů opravených v této verzi.
 
 | Ne. | Funkce | Problém |
 | --- | --- | --- |
-| 1 |Výkon zálohování|V dřívějších verzích zálohy zahrnující velkého počtu souborů by trvalo dlouhou dobu pro dokončení (v pořadí podle dní). V této verzi najdete v úplných a přírůstkových záloh k výraznému snížení čas na dokončení. |
-| 2 |Balíček pro podporu.|Disk, procesoru, paměti, sítě a cloudové statistiky jsou nyní přihlášeni do protokolů podpory vytváření velmi efektivní s řešením problémů zařízení podpůrných balíčků.|
-| 3 |Backup |V dřívějších verzích dlouho trvající záloh může vést zpracujte místo na zařízení, což vede k selhání zálohování. Tato chyba opravená tím, že více než 5 záloh do fronty v jednom okamžiku v této verzi.|
-| 4 |iSCSI | V dřívějších verzích byla místní rezervace pro vrstvené nebo místně připojené svazky 10 % velikosti zřízeného svazku. V této verzi je omezené na 10 % s délkou maximálně 200 GB (pro vrstvené svazky větší než 2 TB) místní rezervace pro všechny svazky iSCSI (místně připnuté nebo vrstvené) a tím uvolnění další místo na místním disku. Doporučujeme vám, že místně připojené svazky v této verzi omezena na 200 GB.|
+| 1 |Výkon zálohování|V dřívějších verzích zálohy zahrnující velký počet souborů bude trvat dlouhou dobu k dokončení (v pořadí dnů). V této verzi úplné i přírůstkové zálohy vidět významné snížení doby do dokončení. |
+| 2 |Balíček podpory|Disk, procesor, paměť, síť a cloud statistiky jsou nyní přihlášeni k protokolům podpory, takže balíčky podpory jsou velmi efektivní při řešení problémů se zařízeními.|
+| 3 |Zálohování |V dřívějších verzích může mít dlouhotrvající zálohování za následek mezeru v zařízení, což by mělo za následek selhání zálohování. Tato chyba je řešena v této verzi tím, že umožňuje více než 5 záloh do fronty najednou.|
+| 4 |iSCSI | V dřívějších verzích byla místní rezervace pro vrstvené nebo místně vázaných svazků 10 % velikosti zřízeného svazku. V této verzi je místní rezervace pro všechny svazky iSCSI (místně připnutá nebo vrstvená) omezena na 10 % s maximálně 200 GB (pro vrstvené svazky větší než 2 TB), čímž se uvolní více místa na místním disku. Doporučujeme, aby místně vázaných svazků v této verzi být omezena na 200 GB.|
 
 
-## <a name="known-issues-in-the-update-04"></a>Známé problémy v aktualizace 0.4
+## <a name="known-issues-in-the-update-04"></a>Známé problémy v aktualizaci 0.4
 
-Následující tabulka obsahuje souhrn známé problémy pro StorSimple Virtual Array a problémy uvedené verze z předchozích verzí. 
+Následující tabulka obsahuje souhrn známých problémů pro virtuální pole StorSimple a obsahuje problémy s poznámkou k vydání z předchozích verzí. 
 
-| Ne. | Funkce | Problém | Alternativní řešení a poznámky |
+| Ne. | Funkce | Problém | Řešení/komentáře |
 | --- | --- | --- | --- |
-| **1.** |Aktualizace |Virtuální zařízení, vytvořené ve verzi preview, nejde aktualizovat na podporovanou verzi obecné dostupnosti. |Tato virtuální zařízení musí být převzetí služeb při selhání pro všeobecně dostupné verze pomocí pracovního postupu zotavení po havárii. |
-| **2.** |Zřízené datového disku |Po zřízení některých zadané velikosti datového disku a vytvoří odpovídající virtuální zařízení StorSimple, nesmí zvětšení nebo zmenšení datový disk. Pokus výsledky za následek ztrátu všech dat v místních vrstvách zařízení. | |
-| **3.** |Zásady skupiny |Když je zařízení připojené k doméně, použití zásad skupiny nepříznivě ovlivnit operace zařízení. |Ujistěte se, že vaše virtuální pole je ve vlastní organizační jednotka (OU) služby Active Directory a žádné objekty zásad skupiny (GPO) se použijí k němu. |
-| **4.** |Místního webového uživatelského rozhraní |Pokud jsou povolené rozšířené funkce zabezpečení v aplikaci Internet Explorer (IE ESC), některé místního webového uživatelského rozhraní stránky jako je například Poradce při potížích nebo údržby nemusí fungovat správně. Tlačítka na těchto stránkách nemusí fungovat. |Vypněte rozšířené funkce zabezpečení v Internet Exploreru. |
-| **5.** |Místního webového uživatelského rozhraní |Ve virtuálním počítači Hyper-V síťová rozhraní ve webovém uživatelském rozhraní se zobrazují jako 10 GB/s rozhraní. |Toto chování je odraz technologie Hyper-V. Technologie Hyper-V vždy zobrazovat 10 GB/s pro virtuální síťové adaptéry. |
-| **6.** |Vrstvené svazky nebo sdílené složky |Rozsah bajtů uzamčení pro aplikace, které využívají StorSimple vrstvených svazků se nepodporuje. Pokud je povolený zámek rozsah bajtů, StorSimple ovládání datových vrstev nebude fungovat. |Doporučené opatření patří: <br></br>Vypněte rozsah bajtů zamykání v logice aplikace.<br></br>Tlačítko Vložit data pro tuto aplikaci místně připojené svazky na rozdíl od vrstvených svazků.<br></br>*Výstražné*: Když je povolený zámek rozsah bajtů pomocí místně připojené svazky, místně vázaný svazek může být online, ještě předtím, než se obnovení dokončí. V takových případech Pokud obnovení probíhá, pak je musí počkat na dokončení obnovení. |
-| **7.** |Vrstvené sdílené složky |Práce s velkými soubory by mohlo způsobit zmenšení pomalé vrstvy. |Při práci s velkými soubory, doporučujeme vám, že je největší soubor menší než velikost sdílené složky % 3. |
-| **8.** |Použít kapacity pro sdílené složky |Může se zobrazit sdílet spotřeby, když nejsou žádná data ve sdílené složce. Je to proto, že zahrnuje jejich metadata použitá kapacita pro sdílené složky. | |
-| **9.** |Zotavení po havárii |Lze provést pouze zotavení po havárii souborového serveru ke stejné doméně jako zdrojové zařízení. V této verzi nepodporuje zotavení po havárii do cílové zařízení v jiné doméně. |To je implementováno v novější verzi. |
-| **10.** |Azure PowerShell |Virtuální zařízení StorSimple nejde spravovat prostřednictvím Azure Powershellu v této verzi. |Veškerá Správa virtuálního zařízení se provádí prostřednictvím portálu Azure classic a místního webového uživatelského rozhraní. |
-| **11.** |Změna hesla |Zařízení konzoly virtuálního pole přijímá pouze vstup ve formátu klávesnice en US. | |
-| **12.** |CHAP |Přihlašovací údaje protokolu CHAP po vytvoření nelze odebrat. Kromě toho pokud změníte přihlašovací údaje protokolu CHAP, musíte převést svazky do režimu offline a pak přiřaďte je online se změna projevila. |Tento problém je vyřešen v pozdější verzi. |
-| **13.** |iSCSI server |"Použili úložiště" zobrazí u svazku iSCSI, může být jiný ve službě StorSimple Manager a iSCSI hostitele. |Zobrazení systému souborů má hostitel iSCSI.<br></br>Zařízení se zobrazí bloky přidělí, když objem byl při maximální velikosti. |
-| **14.** |Souborový server |Pokud má soubor ve složce alternativní datový Stream (reklamy) s ním spojená, reklamy nejsou zálohovány ani obnoveny prostřednictvím zotavení po havárii, klonování a obnovení na úrovni položek. | |
+| **1.** |Aktualizace |Virtuální zařízení vytvořená ve verzi preview nelze aktualizovat na podporovanou verzi obecné dostupnosti. |Tato virtuální zařízení musí být převzetí služeb při selhání pro vydání obecné dostupnosti pomocí pracovního postupu zotavení po havárii (DR). |
+| **2.** |Zřízený datový disk |Jakmile zřídíte datový disk určité zadané velikosti a vytvoříte odpovídající virtuální zařízení StorSimple, nesmíte datový disk rozbalit ani zmenšit. Pokus o to má za následek ztrátu všech dat v místních vrstvách zařízení. | |
+| **3.** |Zásady skupiny |Pokud je zařízení připojeno k doméně, použití zásad skupiny může nepříznivě ovlivnit provoz zařízení. |Ujistěte se, že vaše virtuální pole je ve své vlastní organizační jednotce (OU) pro službu Active Directory a nejsou na něj použity žádné objekty zásad skupiny (GPO). |
+| **4.** |Místní webové uživatelské prostředí |Pokud jsou v aplikaci Internet Explorer (IE ESC) povoleny rozšířené funkce zabezpečení, nemusí některé místní webové stránky uživatelského rozhraní, například Poradce při potížích nebo údržba, pracovat správně. Tlačítka na těchto stránkách také nemusí fungovat. |Vypněte rozšířené funkce zabezpečení v aplikaci Internet Explorer. |
+| **5.** |Místní webové uživatelské prostředí |Ve virtuálním počítači Hyper-V jsou síťová rozhraní ve webovém uživatelském rozhraní zobrazena jako rozhraní 10 Gb/s. |Toto chování je odrazem Hyper-V. Technologie Hyper-V vždy zobrazuje 10 Gb/s pro virtuální síťové adaptéry. |
+| **6.** |Vrstvené svazky nebo sdílené složky |Uzamčení rozsahu bajtů pro aplikace, které pracují s vrstvenými svazky StorSimple, není podporováno. Pokud je povoleno uzamčení rozsahu bajtů, StorSimple vrstvení nefunguje. |Mezi doporučená opatření patří: <br></br>Vypněte uzamčení rozsahu bajtů v logice aplikace.<br></br>Zvolte, zda chcete umístit data pro tuto aplikaci do místně vázaných svazků na rozdíl od vrstvených svazků.<br></br>*Upozornění:* Pokud je povoleno použití místně vázaných svazků a zamykání rozsahu bajtů, místně vázaný svazek může být online ještě před dokončením obnovení. V takových případech pokud probíhá obnovení, musíte počkat na dokončení obnovení. |
+| **7.** |Vrstvené sdílené složky |Práce s velkými soubory může mít za následek pomalé vrstvy ven. |Při práci s velkými soubory doporučujeme, aby největší soubor byl menší než 3 % velikosti sdílené složky. |
+| **8.** |Použitá kapacita pro sdílené složky |Spotřeba sdílení se může zobrazit, pokud ve sdílené složce nejsou žádná data. Důvodem je, že použitá kapacita pro sdílené složky obsahuje metadata. | |
+| **9.** |Zotavení po havárii |Zotavení po havárii souborového serveru lze provést pouze ve stejné doméně jako zdrojové zařízení. Zotavení po havárii na cílové zařízení v jiné doméně není v této verzi podporováno. |To je implementováno v novější verzi. |
+| **10.** |Azure PowerShell |Virtuální zařízení StorSimple nelze spravovat prostřednictvím Azure PowerShell v této verzi. |Veškerá správa virtuálních zařízení by měla být provedena prostřednictvím klasického portálu Azure a místního webového uživatelského prostředí. |
+| **11.** |Změna hesla |Konzola zařízení virtuálního pole přijímá vstup pouze ve formátu klávesnice en-US. | |
+| **12.** |CHAP |Pověření chap po vytvoření nelze odebrat. Navíc pokud změníte pověření CHAP, je třeba převést svazky do režimu offline a převést je do režimu online, aby se změna projevila. |Tento problém je vyřešen v novější verzi. |
+| **13.** |Server iSCSI |Použité úložiště zobrazené pro svazek iSCSI se může lišit ve službě StorSimple Manager a v hostiteli iSCSI. |Hostitel iSCSI má zobrazení souborového systému.<br></br>Zařízení vidí bloky přidělené, když byl svazek v maximální velikosti. |
+| **14.** |Souborový server |Pokud je k souboru ve složce přidružen alternativní datový proud (ADS), není služba ADS zálohována ani obnovena prostřednictvím zotavení po havárii, klonování a obnovení úrovně položky. | |
 | **15.** |Souborový server |Symbolické odkazy nejsou podporovány. | |
-| **16.** |Souborový server |Soubory chráněné službou Windows systém (ENCRYPTING File) po zkopírování přes nebo uložený na výsledek StorSimple Virtual Array souboru server má nepodporovanou konfiguraci.  | |
+| **16.** |Souborový server |Soubory chráněné systémem SOUBORŮ EFS systému Windows při kopírování nebo ukládání na souborovém serveru StorSimple Virtual Array mají za následek nepodporovanou konfiguraci.  | |
 
 ## <a name="next-step"></a>Další krok
-[Instalace aktualizace 0.4](storsimple-virtual-array-install-update-04.md) na StorSimple Virtual Array.
+[Nainstalujte aktualizaci 0.4](storsimple-virtual-array-install-update-04.md) do virtuálního pole StorSimple.
 
 ## <a name="references"></a>Odkazy
-Hledáte starší poznámku k verzi? Přejít na: 
+Hledáte starší poznámku k vydání? Přejít na: 
 
-* [StorSimple Virtual Array Update 0.3 poznámky](storsimple-ova-update-03-release-notes.md)
-* [Poznámky k verzi StorSimple Virtual Array Update 0.1 a 0.2](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Virtual Array obecné dostupnosti zpráva k vydání verze](storsimple-ova-pp-release-notes.md)
+* [Aktualizace virtuálního pole StorSimple 0.3 Poznámky k verzi](storsimple-ova-update-03-release-notes.md)
+* [Aktualizace virtuálního pole StorSimple 0.1 a 0.2 Poznámky k verzi](storsimple-ova-update-01-release-notes.md)
+* [Poznámky k verzi pro všeobecné dostupnosti storSimple Virtual Array](storsimple-ova-pp-release-notes.md)
 

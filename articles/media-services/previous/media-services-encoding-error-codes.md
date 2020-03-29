@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services encoding kódy chyb | Dokumentace Microsoftu
-description: Toto téma uvádí kódy chyb, které může být vrácen v případě, že při kódování provádění úlohy došlo k chybě...
+title: Kódy chyb kódování Mediální služby Azure | Dokumenty společnosti Microsoft
+description: Toto téma obsahuje seznam kódů chyb, které by mohly být vráceny v případě, že došlo k chybě během provádění úlohkódování..
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,39 +15,39 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64709524"
 ---
 # <a name="encoding-error-codes"></a>Kódy chyb kódování
 
-Následující tabulka uvádí chybové kódy, které může být vrácen v případě, že při kódování provádění úlohy došlo k chybě.  Chcete-li získat podrobné informace o chybě ve vašem kódu .NET, použijte [ErrorDetails](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) třídy. Chcete-li získat podrobnosti o chybě ve vašem kódu REST, použijte [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) rozhraní REST API.
+V následující tabulce jsou uvedeny kódy chyb, které by mohly být vráceny v případě, že došlo k chybě během provádění úlohkódování.  Chcete-li získat podrobnosti o chybě v kódu .NET, použijte třídu [ErrorDetails.](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) Chcete-li získat podrobnosti o chybě v kódu REST, použijte [rozhraní ERRORDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API.
 
 | ErrorDetail.Code | Možné příčiny chyby |
 | --- | --- |
-| Neznámé |Neznámá chyba při provádění úlohy |
-| ErrorDownloadingInputAssetMalformedContent |Kategorie chyby, která obsahuje chyby při stahování vstupní asset, jako jsou názvy souborů, soubory nulovou délku, nesprávné formátuje a tak dále. |
-| ErrorDownloadingInputAssetServiceFailure |Kategorie chyby, které pokrývá problémy na straně služby – chyby sítě nebo úložiště příklad při stahování. |
-| ErrorParsingConfiguration |Kategorie chyb, kde úloha \<naleznete v tématu cref="MediaTask.PrivateData"/ > (konfigurace) není platná, například konfigurace není platný systém přednastavení nebo obsahuje neplatný kód XML. |
-| ErrorExecutingTaskMalformedContent |Kategorie chyby během provádění úlohy, ve kterém problémy uvnitř vstupními multimediálními soubory způsobit selhání. |
-| ErrorExecutingTaskUnsupportedFormat |Kategorie chyby, pokud procesor médií nemůže zpracovat soubory k dispozici – formát multimédií není podporován nebo se neshoduje s nastavením. Například pokusu vygenerovat pouze se zvukem výstup z prostředku, který má pouze video |
-| ErrorProcessingTask |Kategorie jiné chyby, které procesor médií, zaznamená během zpracování úlohy, které nesouvisí s obsahem. |
-| ErrorUploadingOutputAsset |Kategorie chyby při nahrávání výstupního prostředku |
-| ErrorCancelingTask |Kategorie chyby pro selhání při pokusu o zrušení úlohy |
-| TransientError |Kategorie chyby pro pokrytí přechodné problémy (např.) dočasné síťové potíže se službou Azure Storage) |
+| Není známo |Neznámá chyba při provádění úlohy |
+| ErrorDownloadingInputAssetMalformedContent |Kategorie chyb, která zahrnuje chyby při stahování vstupního datového zdroje, jako jsou chybné názvy souborů, soubory nulové délky, nesprávné formáty a tak dále. |
+| ChybaStahováníSlužby InputAssetService |Kategorie chyb, která se týká problémů na straně služby - například chyby sítě nebo úložiště při stahování. |
+| Chybová konfigurace |Kategorie chyb, kde \<úkol viz cref="MediaTask.PrivateData"/> (konfigurace) není platný, například konfigurace není platný systém přednastavení nebo obsahuje neplatný XML. |
+| ErrorExecutingTaskMalformedContent |Kategorie chyb během provádění úlohy, kde problémy uvnitř vstupních mediálních souborů způsobit selhání. |
+| ChybaProvádění úlohNepodporovaný formát |Kategorie chyb, kdy mediální procesor nemůže zpracovat zadané soubory - formát média není podporován nebo neodpovídá konfiguraci. Například při pokusu o vytvoření zvukového výstupu z datového zdroje, který má pouze video |
+| ChybaProcessingTask |Kategorie dalších chyb, které procesor médií narazí při zpracování úlohy, které nesouvisejí s obsahem. |
+| ErrorUploadingOutputAsset |Kategorie chyb při nahrávání výstupního datového zdroje |
+| ChybaZrušení úlohy |Kategorie chyb, které mají pokrýt chyby při pokusu o zrušení úlohy |
+| Chyba přechodu |Kategorie chyb, které pokrývají přechodné problémy (např. dočasné problémy se sítí s Azure Storage) |
 
-Pokud chcete získat pomoc od **Media Services** týmu, otevřete [lístek podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Chcete-li získat pomoc od týmu **Media Services,** otevřete [lístek podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Související články
-* [Pokročilé kódovací úlohy provést pomocí přizpůsobení předvoleb Media Encoderu Standard](media-services-custom-mes-presets-with-dotnet.md)
+* [Provádění pokročilých úloh kódování přizpůsobením standardních přednastavení kodéru médií](media-services-custom-mes-presets-with-dotnet.md)
 * [Kvóty a omezení](media-services-quotas-and-limitations.md)
 
 <!--Reference links in article-->

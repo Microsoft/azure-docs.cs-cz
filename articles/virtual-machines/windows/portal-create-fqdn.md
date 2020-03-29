@@ -1,6 +1,6 @@
 ---
-title: Vytvoření plně kvalifikovaného názvu domény pro virtuální počítač s Windows v Azure Portal
-description: Naučte se vytvořit plně kvalifikovaný název domény nebo plně kvalifikovaný název domény pro virtuální počítač založený na Správce prostředků v Azure Portal.
+title: Vytvoření hlavního virtuálního dna pro virtuální počítač s Windows na webu Azure Portal
+description: Zjistěte, jak vytvořit plně kvalifikovaný název domény neboli úplný název domény pro virtuální počítač založený na Správci prostředků na webu Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -16,25 +16,25 @@ ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fa4e4bd7561a7a745e6eb0b70016144b9fb57998
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75371271"
 ---
-# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Vytvoření plně kvalifikovaného názvu domény v Azure Portal pro virtuální počítač s Windows
+# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Vytvoření plně kvalifikovaného názvu domény na webu Azure Portal pro virtuální počítač s Windows
 
-Když v [Azure Portal](https://portal.azure.com)vytvoříte virtuální počítač, automaticky se vytvoří prostředek veřejné IP adresy pro virtuální počítač. Tuto IP adresu použijete pro vzdálený přístup k virtuálnímu počítači. I když portál nevytváří [plně kvalifikovaný název domény](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)nebo plně kvalifikovaný název domény, můžete ho vytvořit, až se virtuální počítač vytvoří. Tento článek popisuje postup vytvoření názvu DNS nebo plně kvalifikovaného názvu domény.
+Když na [webu Azure Portal](https://portal.azure.com)vytvoříte virtuální počítač (VM), automaticky se vytvoří veřejný IP prostředek pro virtuální počítač. Tuto IP adresu použijete ke vzdálenému přístupu k virtuálnímu virtuálnímu počítačům. Přestože portál nevytváří [plně kvalifikovaný název domény](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)nebo plně kvalifikovaný název domény, můžete jej vytvořit po vytvoření virtuálního virtuálního soudu. Tento článek ukazuje kroky k vytvoření názvu DNS nebo fQDN.
 
-## <a name="create-a-fqdn"></a>Vytvoření plně kvalifikovaného názvu domény
-V tomto článku se předpokládá, že jste už vytvořili virtuální počítač. V případě potřeby můžete [vytvořit virtuální počítač na portálu](quick-create-portal.md) nebo [pomocí Azure PowerShell](quick-create-powershell.md). Když je virtuální počítač v provozu a spuštěný, postupujte podle těchto kroků:
+## <a name="create-a-fqdn"></a>Vytvoření víceneživého nového než vinná na kvo
+Tento článek předpokládá, že jste již vytvořili virtuální ho. V případě potřeby můžete [vytvořit virtuální počítač na portálu](quick-create-portal.md) nebo pomocí Azure [PowerShellu](quick-create-powershell.md). Po spuštění virtuálního počítače postupujte takto:
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-Nyní se můžete vzdáleně připojit k virtuálnímu počítači pomocí tohoto názvu DNS, například pro protokol RDP (Remote Desktop Protocol) (RDP).
+Nyní se můžete vzdáleně připojit k virtuálnímu počítači pomocí tohoto názvu DNS, například pro protokol RDP (RdP).
 
 ## <a name="next-steps"></a>Další kroky
-Když teď váš virtuální počítač má veřejnou IP adresu a název DNS, můžete nasadit společné aplikační architektury nebo služby, jako je IIS, SQL nebo SharePoint.
+Teď, když má váš virtuální počítač veřejný název IP a DNS, můžete nasadit běžné aplikační architektury nebo služby, jako je Služba IIS, SQL nebo SharePoint.
 
-Můžete si také přečíst další informace o [použití Správce prostředků](../../azure-resource-manager/management/overview.md) pro tipy k vytváření nasazení Azure.
+Další informace o [používání Správce prostředků](../../azure-resource-manager/management/overview.md) pro tipy na vytváření nasazení Azure.
 

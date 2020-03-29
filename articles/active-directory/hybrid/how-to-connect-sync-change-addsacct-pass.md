@@ -1,8 +1,8 @@
 ---
-title: 'Synchronizace Azure AD Connect:  Změna hesla účtu služby AD DS | Dokumentace Microsoftu'
-description: Tento dokument téma popisuje postup aktualizace služby Azure AD Connect po změně hesla účtu služby AD DS.
+title: 'Synchronizace služby Azure AD Connect: Změna hesla účtu služby AD DS | Dokumenty společnosti Microsoft'
+description: Toto téma dokument popisuje, jak aktualizovat Azure AD Connect po změně hesla účtu služby AD DS.
 services: active-directory
-keywords: Účet AD DS, účet služby Active Directory, hesla
+keywords: Účet Služby AD DS, účet služby Active Directory, heslo
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -18,43 +18,43 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60241594"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Změna hesla účtu služby AD DS
-Účet služby AD DS odkazuje na uživatelský účet, který používá Azure AD Connect ke komunikaci s místní služby Active Directory. Pokud změníte heslo účtu služby AD DS, je nutné aktualizovat službu Azure AD Connect synchronizaci s novým heslem. V opačném případě synchronizace můžete už správně synchronizovat s místní Active Directory a dojde k následujícím chybám:
+Účet služby AD DS odkazuje na uživatelský účet používaný službou Azure AD Connect ke komunikaci s místní službou Active Directory. Pokud změníte heslo účtu služby AD DS, je nutné aktualizovat službu synchronizace azure a připojení pomocí nového hesla. V opačném případě již synchronizace nemůže správně synchronizovat s místní službou Active Directory a dojde k následujícím chybám:
 
-* V operaci Synchronization Service Manager, všechny importu nebo exportu v místním AD selže s **přihlašovací údaje bez zahájení** chyby.
+* Ve Správci synchronizačních služeb se nezdaří všechny operace importu nebo exportu s místním službou AD s **chybou bez spuštění pověření.**
 
-* V prohlížeči událostí pro Windows, protokolu událostí aplikace obsahuje chybu s **6000 ID události** a zpráva **'agenta pro správu "contoso.com" se nepodařilo spustit, protože pověření je neplatné'** .
+* V prohlížeči událostí systému Windows obsahuje protokol událostí aplikace chybu s **ID události 6000** a zprávu **"Agent pro správu contoso.com" se nepodařilo spustit, protože pověření byla neplatná**.
 
 
-## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>Jak aktualizovat službu synchronizace s nové heslo pro účet služby AD DS
-Jak aktualizovat službu synchronizace pomocí nového hesla:
+## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>Jak aktualizovat synchronizační službu novým heslem pro účet služby AD DS
+Aktualizace služby synchronizace novým heslem:
 
-1. Spusťte Synchronization Service Manager (Služba synchronizace → START).
-</br>![Správce synchronizace služby](./media/how-to-connect-sync-change-addsacct-pass/startmenu.png)  
+1. Spusťte Správce synchronizačních služeb (START → Služba synchronizace).
+</br>![Správce synchronizačních služeb](./media/how-to-connect-sync-change-addsacct-pass/startmenu.png)  
 
-2. Přejděte **konektory** kartu.
+2. Přejděte na kartu **Konektory.**
 
-3. Vyberte **AD Connector** odpovídající účet služby AD DS, pro který se změnil heslo.
+3. Vyberte **konektor ad,** který odpovídá účtu ad ds, pro který bylo změněno jeho heslo.
 
-4. V části **akce**vyberte **vlastnosti**.
+4. V části **Akce**vyberte **Vlastnosti**.
 
-5. V místním dialogovém okně vyberte **připojit k doménové struktuře služby Active Directory**:
+5. V rozbalovacím dialogovém okně vyberte **Připojit k doménové struktuře služby Active Directory**:
 
-6. Zadejte nové heslo účtu služby AD DS **heslo** textového pole.
+6. Do textového pole **Heslo** zadejte nové heslo účtu ad ds.
 
-7. Klikněte na tlačítko **OK** nové heslo uložte a zavřete dialogové okno místní.
+7. Klepnutím na **tlačítko OK** uložte nové heslo a zavřete rozbalovací dialogové okno.
 
-8. Restartování služby Azure AD Connect synchronizační služba v rámci správce řízení služeb Windows. Tím je zajištěno, že se z mezipaměti odebere všechny odkazy na staré heslo.
+8. Restartujte synchronizační službu Azure AD Connect ve Správci řízení služeb systému Windows. Tím je zajištěno, že všechny odkazy na staré heslo je odebrán z mezipaměti paměti.
 
-## <a name="next-steps"></a>Další postup
-**Témata s přehledem**
+## <a name="next-steps"></a>Další kroky
+**Přehledná témata**
 
-* [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Synchronizace služby Azure AD Connect: Principy a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

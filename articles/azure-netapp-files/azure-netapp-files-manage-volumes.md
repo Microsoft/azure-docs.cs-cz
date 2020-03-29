@@ -1,6 +1,6 @@
 ---
-title: Správa svazků s použitím souborů NetApp Azure | Dokumentace Microsoftu
-description: Popisuje, jak Správa svazků s použitím služby soubory Azure NetApp.
+title: Správa svazků pomocí souborů Azure NetApp | Dokumenty společnosti Microsoft
+description: Popisuje, jak spravovat svazky pomocí služby Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,23 +15,23 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: c8ac14f11d7f2eeed050997de42da4f512b46bc5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60254747"
 ---
-# <a name="manage-volumes-by-using-azure-netapp-files"></a>Správa svazků s použitím Azure souborů NetApp
-Svazku můžete spravovat pomocí zobrazení, aktualizaci nebo odstraňování svazku. 
+# <a name="manage-volumes-by-using-azure-netapp-files"></a>Správa svazků pomocí souborů Azure NetApp
+Svazek můžete spravovat zobrazením, aktualizací nebo odstraněním svazku. 
 
-Pokud chcete odstranit svazek, musíte nejprve odstranit všechny dílčí objekty svazku. 
+Chcete-li svazek odstranit, musíte nejprve odstranit všechny dílčí objekty svazku. 
 
 1.  Klikněte na okno **Svazky** v okně Spravovat fondy kapacity. 
-2.  Použití **procházet svazky** zobrazení vůči zobrazení, aktualizovat nebo odstranit existující svazky. 
+2.  Pomocí zobrazení, aktualizace nebo odstranění **existujících svazků** použijte zobrazení, aktualizaci nebo odstranění existujících svazků. 
 
 
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 
 * [Připojování nebo odpojování svazku pro virtuální počítače](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Správa snímků](azure-netapp-files-manage-snapshots.md)

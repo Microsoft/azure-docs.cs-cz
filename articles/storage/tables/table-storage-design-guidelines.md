@@ -1,6 +1,6 @@
 ---
-title: Návrh tabulky pokyny pro úložiště Azure | Dokumentace Microsoftu
-description: Navrhněte svoji službu Azure table pro efektivní podporovat operace čtení.
+title: Pokyny pro návrh tabulky úložiště Azure | Dokumenty společnosti Microsoft
+description: Navrhněte si službu azure table service tak, aby efektivně podporovala operace čtení.
 services: storage
 author: SnehaGunda
 ms.service: storage
@@ -9,37 +9,37 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: d056d29469ad9a60fceeee307aca3c0e1319283c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61269829"
 ---
 # <a name="guidelines-for-table-design"></a>Pokyny pro návrh tabulek
 
-Navrhování tabulek pro použití se službou Azure storage tabulky se velmi liší od aspekty návrhu pro relační databáze. Tento článek popisuje pokyny k návrhu řešení pro službu tabulky efektivní číst a zapisovat efektivní.
+Navrhování tabulek pro použití se službou tabulky úložiště Azure se velmi liší od aspekty návrhu pro relační databázi. Tento článek popisuje pokyny pro navrhování řešení služby Table service pro efektivní čtení a zápis efektivní.
 
-## <a name="design-your-table-service-solution-to-be-read-efficient"></a>Navrhněte řešení služby tabulky účinný pro čtení
+## <a name="design-your-table-service-solution-to-be-read-efficient"></a>Navrhněte řešení table service tak, aby bylo efektivní pro čtení
 
-* ***Návrh pro dotazování aplikace náročné na čtení.*** Při návrhu tabulek, rozmyslete si dotazy (zejména latence citlivé ty), které budou spouštět předtím, než si myslíte o tom, jak budete aktualizovat entity. Obvykle v důsledku efektivní a výkonné řešení.  
-* ***Zadejte PartitionKey a rowkey používají v dotazech.*** *Bod dotazy* jako jedná se o nejúčinnější dotazy table service.  
-* ***Zvažte uložení duplicitní kopie entity.*** Table storage je levné proto zvažte uložení stejná entita více než jednou (s různými klíči) umožňující účinnější dotazy.  
-* ***Vezměte v úvahu denormalizing vaše data.*** Table storage je levné proto zvažte denormalizing vaše data. Například ukládat souhrn entit, aby se dotazy pro agregovaná data, která stačí pro přístup k jedné entity.  
-* ***Použijte složené klíčové hodnoty.*** Jsou jenom klíče máte **PartitionKey** a **RowKey**. Například použijte složené klíčové hodnoty a povolit alternativní s klíči přístup cesty k entitám.  
-* ***Použijte dotaz projekce.*** Můžete snížit množství dat, která přenos přes síť pomocí dotazů, které vybírají pouze pole, které potřebujete.  
+* ***Návrh pro dotazování v aplikacích s vysokým i pro čtení.*** Při navrhování tabulek přemýšlejte o dotazech (zejména těch citlivých na latenci), které provedete, než začnete přemýšlet o tom, jak budete aktualizovat entity. To obvykle vede k efektivní a výkonné řešení.  
+* ***Zadejte partitionkey a RowKey v dotazech.*** *Bodové dotazy,* jako jsou tyto, jsou nejúčinnější dotazy na služby tabulky.  
+* ***Zvažte uložení duplicitních kopií entit.*** Úložiště tabulek je levné, takže zvažte uložení stejné entity vícekrát (s různými klíči), abyste povolili efektivnější dotazy.  
+* ***Zvažte denormalizaci dat.*** Ukládání stolů je levné, takže zvažte denormalizaci dat. Například uložte souhrnné entity tak, aby dotazy na agregovaná data potřebovaly pouze pro přístup k jedné entitě.  
+* ***Použijte hodnoty složeného klíče.*** Jediné klíče, které máte, jsou **PartitionKey** a **RowKey**. Pomocí hodnot složených klíčů můžete například povolit alternativní přístupové cesty s klíčem k entitám.  
+* ***Použijte projekci dotazu.*** Množství dat, která přenášíte po síti, můžete snížit pomocí dotazů, které vyberou pouze pole, která potřebujete.  
 
-## <a name="design-your-table-service-solution-to-be-write-efficient"></a>Navrhněte řešení služby tabulky účinný zápisu  
+## <a name="design-your-table-service-solution-to-be-write-efficient"></a>Navrhněte řešení table service tak, aby bylo efektivní pro zápis  
 
-* ***Nevytvářejte aktivních oddílů.*** Zvolte klíče, které vám umožní rozdělit mezi několik oddílů v některém okamžiku vašich požadavků.  
-* ***Vyhněte se špičkám provozu.*** Provoz uhladil určité přiměřené době a vyhnout se špičkám provozu.
-* ***Není nutně vytvořit samostatnou tabulku pro každý typ entity.*** Pokud požadujete atomické transakce mezi typy entit, můžete uložit tyto několik typů entit ve stejném oddílu ve stejné tabulce.
-* ***Vezměte v úvahu maximální propustnost, kterou musí dosáhnout.*** Musí být vědomi cíle škálovatelnosti pro služby Table service a ujistěte se, že váš návrh nezpůsobí překročíte je.  
+* ***Nevytvářejte horké oddíly.*** Vyberte klíče, které vám umožní rozložit požadavky na více oddílů v libovolném okamžiku.  
+* ***Vyhněte se špičkám v provozu.*** Vyhlaďte provoz po přiměřenou dobu a vyhněte se špičkám v provozu.
+* ***Nemusí nutně vytvořit samostatnou tabulku pro každý typ entity.*** Pokud požadujete atomické transakce napříč typy entit, můžete uložit tyto typy více entit ve stejném oddílu ve stejné tabulce.
+* ***Zvažte maximální propustnost, které musíte dosáhnout.*** Musíte si být vědomi cílů škálovatelnosti pro službu Table service a ujistěte se, že váš návrh nezpůsobí jejich překročení.  
 
-Jak si ji přečtete, zobrazí se příklady, které všechny tyto zásady vložit do praxe. 
+Při čtení této příručky uvidíte příklady, které všechny tyto zásady uvedou do praxe. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Vzory návrhu tabulky](table-storage-design-patterns.md)
+- [Způsoby návrhu tabulek](table-storage-design-patterns.md)
 - [Návrh pro dotazování](table-storage-design-for-query.md)
 - [Šifrování dat tabulky](table-storage-design-encrypt-data.md)
 - [Návrh pro úpravu dat](table-storage-design-for-modification.md)

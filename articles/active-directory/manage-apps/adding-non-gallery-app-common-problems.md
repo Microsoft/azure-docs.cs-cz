@@ -1,6 +1,6 @@
 ---
-title: Potíže při přidávání aplikace mimo Galerii | Dokumentace Microsoftu
-description: Vysvětlení tváří lidí běžné problémy při přidávání vlastní aplikace mimo Galerii
+title: Problém s přidáním aplikace mimo galerii | Dokumenty společnosti Microsoft
+description: Principy běžných problémů, kterým lidé čelí při přidávání vlastních aplikací mimo galerii
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,118 +16,118 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38a9ef04389318d3588649117c930ff6efa3fe4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784480"
 ---
-# <a name="problem-adding-a-non-gallery-application"></a>Potíže při přidávání aplikace mimo Galerii
+# <a name="problem-adding-a-non-gallery-application"></a>Problém s přidáním aplikace bez galerie
 
-Tento článek vám pomůže pochopit běžné tváří lidí problémy při přidávání **vlastní aplikace mimo galerii** a co můžete udělat, abyste je vyřešit. 
+Tento článek vám pomůže pochopit běžné problémy, kterým lidé čelí při přidávání **vlastních aplikací mimo galerii,** a co můžete udělat pro jejich vyřešení. 
 
-## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Po klepnutí na tlačítko "Přidat" a Moje aplikace trvalo dlouhou dobu zobrazovat
+## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Kliknul jsem na tlačítko "Přidat" a aplikace trvala dlouho, než se objevila
 
-Za určitých okolností může trvat 1 – 2 minutách (a někdy delší) pro aplikace se zobrazí po jeho přidání do vašeho adresáře. Normální očekávaný výkon tak není, zobrazí se přidání aplikace se po kliknutí na **oznámení** v pravém horním rohu ikonu (zvonek) [webu Azure portal](https://portal.azure.com/) a vyhledávání pro **probíhá** nebo **dokončeno** oznámení s názvem **vytvořit aplikaci**.
+Za určitých okolností může trvat 1-2 minuty (a někdy i déle), než se aplikace zobrazí po přidání do adresáře. I když se nejedná o normální očekávaný výkon, můžete vidět, že přidání aplikace probíhá kliknutím na ikonu **Oznámení** (zvonek) v pravém horním části [portálu Azure](https://portal.azure.com/) a hledáním **probíhajícího** nebo **dokončeného** oznámení **označeného Vytvořit aplikaci**.
 
-Pokud vaše aplikace se nikdy nepřidávali nebo dojde k chybě při kliknutí **přidat** tlačítko, zobrazí se vám **oznámení** v **chyba** stavu. Pokud chcete podrobnosti o této chybě Další informace o nebo sdílet s pracovníkem technické podpory, zobrazí se další informace o chybě pomocí následujících kroků v [jak zobrazit podrobnosti o oznámení na portálu](#how-to-see-the-details-of-a-portal-notification) oddílu.
+Pokud vaše aplikace není nikdy přidána nebo se při kliknutí na tlačítko **Přidat** vyskytne chyba, zobrazí se **oznámení** ve stavu **Chybová.** Pokud chcete další podrobnosti o chybě získat další informace nebo sdílet s pracovníkem podpory, můžete zobrazit další informace o chybě podle pokynů v části Jak zobrazit podrobnosti o [portálu oznámení.](#how-to-see-the-details-of-a-portal-notification)
 
-## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Po klepnutí na tlačítko "Přidat" a nezobrazilo Moje aplikace
+## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Po kliknutí na tlačítko Přidat se aplikace neobjevila
 
-V některých případech kvůli přechodným problémům, problémy se sítí nebo chybu, přidáte selhání aplikace. Poznáte to se stane, když kliknete **oznámení** ikonu (zvonek) v pravém horním rohu webu Azure portal a můžete zobrazit ikonou červené (!) vedle vašeho **vytvořit aplikaci** oznámení. To znamená, že došlo k chybě při vytváření aplikace.
+Někdy z důvodu přechodných problémů, problémů se sítí nebo chyby se přidání aplikace nezdaří. Můžete říct, že k tomu dojde, když kliknete na ikonu **Oznámení** (zvonek) v pravém horním části portálu Azure a zobrazí se červená ikona (!) vedle oznámení **vytvořit aplikaci.** To znamená, že při vytváření aplikace došlo k chybě.
 
-Pokud narazíte na chybu při kliknutí **přidat** tlačítko, zobrazí se vám **oznámení** v **chyba** stavu. Pokud chcete podrobnosti o této chybě Další informace o nebo sdílet s pracovníkem technické podpory, zobrazí se další informace o chybě pomocí následujících kroků v [jak zobrazit podrobnosti o oznámení na portálu](#how-to-see-the-details-of-a-portal-notification) oddílu.
+Pokud při klepnutí na tlačítko **Přidat** narazíte na chybu, zobrazí se **oznámení** v **chybovém** stavu. Pokud chcete další podrobnosti o chybě získat další informace nebo sdílet s pracovníkem podpory, můžete zobrazit další informace o chybě podle pokynů v části Jak zobrazit podrobnosti o [portálu oznámení.](#how-to-see-the-details-of-a-portal-notification)
 
-## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nevím, jak nastavit Moje aplikace až po jeho přidání
+## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nevím, jak nastavit přihlášku, jakmile ji přidám
 
-Pokud potřebujete pomoc, další informace o vlastních aplikací [knihovny dokumentů aplikace služby Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) vám pomůže dozvědět další informace o jednotné přihlašování s Azure AD a jak to funguje.
+Pokud potřebujete pomoc se učením o vlastních aplikacích, [knihovna dokumentů Aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) vám pomůže získat další informace o jednotném přihlašování pomocí Azure AD a o tom, jak funguje.
 
-## <a name="how-to-see-the-details-of-a-portal-notification"></a>Jak zobrazit podrobnosti o oznámení na portálu
+## <a name="how-to-see-the-details-of-a-portal-notification"></a>Jak zobrazit podrobnosti oznámení portálu
 
-Můžete zobrazit podrobnosti o oznámení portálu podle následujících kroků:
+Podrobnosti o každém oznámení portálu můžete zobrazit podle následujících kroků:
 
-1. Klikněte na tlačítko **oznámení** ikonu (zvonek) v pravém horním rohu webu Azure portal
+1. Klikněte na ikonu **Oznámení** (zvonek) v pravém horním maši na portálu Azure
 
-2. Vyberte všechna oznámení v **chyba** stavu (ty s červenou (!) vedle sebe).
+2. Vyberte libovolné oznámení v **chybovém** stavu (ty s červenou (!) vedle nich).
 
    >[!NOTE]
-   >Nelze klikněte na oznámení v **úspěšné** nebo **probíhá** stavu.
+   >Nelze klepnout na oznámení ve stavu **Úspěšné** nebo **Probíhá.**
    >
    >
 
-4. Použijte informace v části **podrobnosti oznámení** pochopit podrobnosti o problému.
+4. Další podrobnosti o problému naleznete v části **Podrobnosti o oznámení.**
 
-5. Pokud stále potřebujete pomoc, můžete také sdílet tyto informace s pracovníkem technické podpory nebo produktovou skupinou účelem vyřešení vašeho problému.
+5. Pokud stále potřebujete pomoc, můžete tyto informace sdílet také s pracovníkem podpory nebo skupinou produktů a získat pomoc s problémem.
 
-6. Klikněte na tlačítko **ikonu kopírování** napravo od **Kopírovat chybu** textového pole zkopírujte všechny podrobnosti oznámení sdílet s pracovníkem skupiny podpory nebo produktu.
+6. Kliknutím na **ikonu kopírování** vpravo od textového pole **chyby Kopírovat** zkopírujte všechny podrobnosti oznámení, které chcete sdílet s pracovníkem podpory nebo pracovníkem skupiny produktů.
 
-## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Jak získat nápovědu odesláním oznámení podrobnosti pro pracovníka podpory
+## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Jak získat pomoc odesláním podrobností oznámení pracovníkovi podpory
 
-Je velmi důležité, jakým sdílíte **níže uvedených údajů** s pracovníkem technické podpory Pokud potřebujete pomoc, aby se vám může pomoct rychle. Můžete udělat jednoduše podle **snímek,** nebo kliknutím **ikona chyby kopírování**napravo od byl nalezen **Kopírovat chybu** textového pole.
+Je velmi důležité, abyste sdíleli **všechny níže uvedené údaje** s pracovníkem podpory, pokud potřebujete pomoc, aby vám mohli rychle pomoci. Můžete to udělat snadno **pořízením snímku obrazovky** nebo kliknutím na **ikonu chyby Kopírovat**, která se nachází vpravo od textového pole **chyby kopírovat.**
 
-## <a name="notification-details-explained"></a>Vysvětlení podrobnosti o oznámení
+## <a name="notification-details-explained"></a>Podrobnosti oznámení vysvětleny
 
-Přečtěte si následující popisy pro další podrobnosti o oznámení.
+Další podrobnosti o oznámeních naleznete v následujících popisech.
 
-### <a name="essential-notification-items"></a>Základní oznámení položky
+### <a name="essential-notification-items"></a>Základní položky oznámení
 
 - **Název** – popisný název oznámení
-  *  Příklad – **nastavení proxy aplikace.**
+  *  Příklad – **Nastavení proxy serveru aplikace**
 
-- **Popis** – popis, k čemu došlo v důsledku operace
+- **Popis** – popis toho, co se stalo v důsledku operace
 
-  *  Příklad – **zadanou vnitřní adresu url se už používá jiná aplikace**
+  *  Příklad – **Zadaná interní adresa URL je již používána jinou aplikací.**
 
 - **ID oznámení** – jedinečné ID oznámení
 
   *  Příklad – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
-- **ID žádosti klienta** – ID konkrétní žádosti od prohlížeče
+- **ID žádosti o klienta** – konkrétní ID žádosti provedené vaším prohlížečem
 
   *  Příklad – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
-- **Časové razítko UTC** – časové razítko, během které oznámení došlo k chybě, ve standardu UTC
+- **Časové razítko UTC** – časové razítko, během kterého došlo k oznámení, v UTC
 
   *  Příklad – **2017-03-23T19:50:43.7583681Z**
 
-- **Interní ID transakce** – interní ID můžeme použít k vyhledání Chyba v našem systému
+- **Interní ID transakce** - interní ID, které můžeme použít k vyhlédnutí chyby v našich systémech
 
   *  Příklad – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
-- **Hlavní název uživatele** – uživatel, který provedl operaci
+- **HLAVNÍ uživatel** – uživatel, který operaci provedl
 
   *  Příklad – **tperkins\@f128.info**
 
-- **ID tenanta** – jedinečné ID tenanta, který byl členem skupiny uživatele, který provedl operaci
+- **ID klienta** – jedinečné ID klienta, který byl uživatel, který operaci provedl, byl členem
 
   *  Příklad – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
-- **ID objektu uživatele** – jedinečné ID uživatele, který provedl operaci
+- **ID objektu uživatele** – jedinečné ID uživatele, který operaci provedl
 
   *  Příklad – **17f84be4-51f8-483a-b533-383791227a99**
 
-### <a name="detailed-notification-items"></a>Podrobný oznamovací položky
+### <a name="detailed-notification-items"></a>Podrobné položky oznámení
 
-- **Zobrazovaný název** – **(může být prázdné)** podrobnější zobrazovaný název pro chybu
+- **Zobrazovaný název** – **(může být prázdný)** podrobnější zobrazovaný název chyby
 
-  *  Příklad – **nastavení proxy aplikace.**
+  *  Příklad – **Nastavení proxy serveru aplikace**
 
-- **Stav** – konkrétní stavové oznámení
+- **Status** – specifický stav oznámení
 
-  *  Příklad – **se nezdařilo**
+  *  Příklad – **nezdařilo se**
 
-- **ID objektu** – **(může být prázdné)** ID objektu, proti kterému byla provedena operace
+- **ID objektu** – **(může být prázdný)** ID objektu, proti kterému byla operace provedena
 
   *  Příklad – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
-- **Podrobnosti o** – podrobný popis, k čemu došlo v důsledku operace
+- **Podrobnosti** – podrobný popis toho, co se stalo v důsledku operace
 
-  *  Příklad – **interní adresa url `https://bing.com/` je neplatná, protože se už používá**
+  *  Příklad – **Interní adresa URL `https://bing.com/` je neplatná, protože je již používána.**
 
-- **Chyba při kopírování** – klikněte na tlačítko **ikonu kopírování** napravo od **Kopírovat chybu** textového pole zkopírujte všechny podrobnosti oznámení ke sdílení se skupinou pro podporu nebo produktu 
+- **Chyba kopírování** – Kliknutím na **ikonu kopie** vpravo od textového pole **Chyby kopírování** zkopírujete všechny podrobnosti oznámení, které chcete sdílet s podporou nebo skupinou produktů. 
 - engineer (technik)
 
-  *  Příklad ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+  *  Příklad```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 
 

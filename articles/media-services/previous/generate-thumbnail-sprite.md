@@ -1,6 +1,6 @@
 ---
-title: Generování miniatur sprite pomocí Azure Media Services | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak generovat miniatury sprite pomocí Azure Media Services.
+title: Generování miniatur pomocí Mediálních služeb Azure | Dokumenty společnosti Microsoft
+description: Toto téma ukazuje, jak generovat miniatury sprite s Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,26 +12,26 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61229046"
 ---
 # <a name="generate-a-thumbnail-sprite"></a>Vytvoření spritu miniatury  
 
-Media Encoder Standard můžete použít ke generování miniatur sprite, což je soubor ve formátu JPEG, který obsahuje více miniatur malé rozlišení spojených dohromady do jedné image (velké) společně s VTT souboru. Tento soubor VTT Určuje časový rozsah v vstupního videa, která představuje jednotlivé miniatury, společně s velikostí a souřadnice této miniaturu v rámci velkých souborů ve formátu JPEG. Přehrávačů videa pomocí image Souborová služba a sprite VTT zobrazit "visual" seekbar prohlížeč zobrazovaly vizuální zpětnou vazbu, když scrubbingu zpět a vpřed podél časové osy videa.
+Pomocí standardu kodéru médií můžete použít ke generování miniatur, což je soubor JPEG, který obsahuje více malých miniatur rozlišení sešitých do jednoho (velkého) obrazu spolu se souborem VTT. Tento soubor VTT určuje časový rozsah ve vstupním videu, které představuje každá miniatura, spolu s velikostí a souřadnicemi této miniatury ve velkém souboru JPEG. Přehrávače videa používají soubor VTT a obrázek sprite k zobrazení "vizuálního" seekbaru, který poskytuje divákovi vizuální zpětnou vazbu při drhnutí zpět a vpřed podél časové osy videa.
 
-Chcete-li použít k vygenerování Thumbnail Sprite, přednastavený kontext kodéru Media Encoder Standard:
+Chcete-li ke generování miniatursprite použít standard kodéru médií, přednastavení:
 
-1. Musíte použít formát JPG obrázek miniatury
-2. Musíte zadat Start/krok/rozsah hodnot jako buď časová razítka nebo hodnoty % (a ne počty rámce) 
+1. Musí používat formát miniatury JPG
+2. Musí určit hodnoty Start/Krok/Rozsah jako časová razítka nebo % hodnoty (a ne počty snímků) 
     
-    1. Je možné kombinovat časová razítka a % hodnoty
+    1. Je v pořádku kombinovat časová razítka a hodnoty %
 
-3. Musí mít hodnotu SpriteColumn jako nezáporné číslo větší než nebo rovno 1
+3. Musí mít hodnotu SpriteColumn jako nezáporné číslo větší nebo rovné 1.
 
-    1. Pokud SpriteColumn nastavená na M > = 1, obdélník se sloupci M je výstupní image. Pokud počet miniatur vygenerovanou přes #2 není násobkem M, poslední řádek bude nekompletní a levém s černým pixelů.  
+    1. Pokud je SpriteColumn nastaven na M >= 1, výstupní obraz je obdélník se sloupci M. Pokud počet miniatur generovaných pomocí #2 není přesnýnásobek M, bude poslední řádek neúplný a zůstane s černými pixely.  
 
 Zde naleznete příklad:
 
@@ -68,10 +68,10 @@ Zde naleznete příklad:
 
 ## <a name="known-issues"></a>Známé problémy
 
-1.  Není možné vygenerovat sprite image s jeden řádek obrázků (SpriteColumn = 1 výsledky do image s jedním sloupcem).
-2.  Bloků sprite imagí do středně velkých obrázků JPEG se ještě nepodporuje. Proto musí být věnovat pozornost omezit počet miniatur a jejich velikost tak, aby výsledný stitched Sprite miniaturu po 8 pixelech M nebo i rychleji.
-3.  Azure Media Player podporuje prvky, které budou v prohlížeči Microsoft Edge, Chrome a Firefox. Analýza VTT není podporována v IE11.
+1.  Není možné generovat obrázek pohyblivého symbolu s jedním řádkem obrázků (SpriteColumn = 1 má za následek obrázek s jedním sloupcem).
+2.  Nabloky obrazů pohyblivých symbolů do středně velkých obrazů JPEG ještě nejsou podporovány. Proto je třeba dbát na to, aby byl omezen počet miniatur a jejich velikost, aby výsledný sešívaný miniaturový skřítek byl kolem 8M pixelů nebo méně.
+3.  Azure Media Player podporuje skřítky v prohlížečích Microsoft Edge, Chrome a Firefox. Analýza VTT není v ie11 podporována.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Kódování obsahu](media-services-encode-asset.md)

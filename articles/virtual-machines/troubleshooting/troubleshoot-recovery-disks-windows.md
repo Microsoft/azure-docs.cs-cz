@@ -1,6 +1,6 @@
 ---
-title: Použití virtuálního počítače pro řešení potíží s Windows s Azure PowerShell | Microsoft Docs
-description: Naučte se řešit problémy s virtuálními počítači s Windows v Azure připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure PowerShell
+title: Použití virtuálního počítače pro řešení potíží s Windows s Azure PowerShellem | Dokumenty společnosti Microsoft
+description: Zjistěte, jak řešit problémy s virtuálními počítači s Windows v Azure připojením disku operačního systému k virtuálnímu počítači pro obnovení pomocí Azure PowerShellu
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,36 +13,36 @@ ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
 ms.openlocfilehash: 66cda98f272e7353b620059a731972714db585ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75374128"
 ---
-# <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Řešení potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure PowerShell
-Pokud váš virtuální počítač s Windows v Azure najde chybu spuštění nebo disku, možná budete muset provést kroky pro řešení potíží na samotném disku. Běžným příkladem může být neúspěšná aktualizace aplikace, která brání úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí Azure PowerShell připojit disk k jinému virtuálnímu počítači s Windows a opravit případné chyby a pak opravit původní virtuální počítač. 
+# <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Poradce při potížích s virtuálním počítačem s Windows připojením disku operačního systému k virtuálnímu počítači pro obnovení pomocí Azure PowerShellu
+Pokud váš virtuální počítač (VM) windows v Azure narazí na chybu při spuštění nebo disku, budete muset provést kroky řešení potíží na samotném disku. Běžným příkladem by mohla být neúspěšná aktualizace aplikace, která brání úspěšnému spuštění virtuálního virtuálního movitého virtuálního movitého virtuálního softwaru. Tento článek podrobně popisuje, jak pomocí Azure PowerShellu připojit disk k jinému virtuálnímu počítači windows opravit případné chyby a pak opravit původní virtuální počítač. 
 
 > [!Important]
-> Skripty v tomto článku se vztahují pouze na virtuální počítače, které používají [spravovaný disk](../windows/managed-disks-overview.md). 
+> Skripty v tomto článku platí jenom pro virtuální počítače, které používají [spravovaný disk](../windows/managed-disks-overview.md). 
 
  
 
 ## <a name="recovery-process-overview"></a>Přehled procesu obnovení
-Nyní můžeme pomocí Azure PowerShell změnit disk s operačním systémem pro virtuální počítač. Už nepotřebujeme virtuální počítač odstranit a znovu vytvořit.
+Teď můžeme použít Azure PowerShell ke změně disku operačního systému pro virtuální počítač. Už nepotřebujeme odstranit a znovu vytvořit virtuální ho.
 
 Proces řešení potíží je následující:
 
-1. Zastavte ovlivněný virtuální počítač.
-2. Vytvořte snímek z disku s operačním systémem virtuálního počítače.
-3. Vytvořte disk ze snímku disku s operačním systémem.
-4. Připojte disk jako datový disk k virtuálnímu počítači pro obnovení.
-5. Připojte se k virtuálnímu počítači pro obnovení. Upravte soubory nebo spusťte libovolné nástroje, abyste opravili problémy s kopírovaným diskem s operačním systémem.
-6. Odpojte a odpojte disk z virtuálního počítače pro obnovení.
-7. Změňte disk s operačním systémem pro ovlivněný virtuální počítač.
+1. Zastavte ovlivněný virtuální virtuální ms.
+2. Vytvořte snímek z disku operačního systému virtuálního počítače.
+3. Vytvořte disk ze snímku disku operačního systému.
+4. Připojte disk jako datový disk k virtuálnímu virtuálnímu počítače pro obnovení.
+5. Připojte se k virtuálnímu virtuálnímu virtuálnímu zařízení pro obnovení. Upravte soubory nebo spusťte libovolné nástroje k opravě problémů na zkopírovaném disku operačního systému.
+6. Odpojte a odpojte disk od virtuálního počítače pro obnovení.
+7. Změňte disk operačního systému pro ovlivněný virtuální modul.
 
-Pomocí příkazů pro opravu virtuálního počítače můžete automatizovat kroky 1, 2, 3, 4, 6 a 7. Další dokumentaci a pokyny najdete v tématu [Oprava virtuálního počítače s Windows pomocí příkazů pro opravu virtuálního počítače Azure](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Příkazy pro opravu virtuálních mís můžete použít k automatizaci kroků 1, 2, 3, 4, 6 a 7. Další dokumentaci a pokyny najdete [v tématu Oprava virtuálního počítače s Windows pomocí příkazů pro opravu virtuálního počítače Azure](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Ujistěte se, že máte nainstalovanou [nejnovější Azure PowerShell](/powershell/azure/overview) a že jste se přihlásili ke svému předplatnému:
+Ujistěte se, že máte nainstalovaný a přihlášený [nejnovější Azure PowerShell:](/powershell/azure/overview)
 
 ```powershell
 Connect-AzAccount
@@ -50,30 +50,30 @@ Connect-AzAccount
 
 V následujících příkladech nahraďte názvy parametrů vlastními hodnotami. 
 
-## <a name="determine-boot-issues"></a>Určení problémů se spouštěním
-Můžete si Zobrazit snímek obrazovky virtuálního počítače v Azure, který vám umožní řešit problémy se spouštěním. Tento snímek obrazovky vám může přispět k identifikaci příčin, proč se virtuální počítač nepodaří spustit. Následující příklad získá snímek obrazovky z virtuálního počítače s Windows s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+## <a name="determine-boot-issues"></a>Určení problémů se spuštěním
+Můžete zobrazit snímek obrazovky s virtuálním počítačem v Azure, který vám pomůže vyřešit problémy se spuštěním. Tento snímek obrazovky může pomoci určit, proč se nespustí virtuální hod. Následující příklad získá snímek obrazovky z `myVM` virtuálního aplikace `myResourceGroup`Windows s názvem ve skupině prostředků s názvem :
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
     -Name myVM -Windows -LocalPath C:\Users\ops\
 ```
 
-Zkontrolujte snímek obrazovky, abyste zjistili, proč se virtuální počítač nedaří spustit. Poznamenejte si všechny konkrétní chybové zprávy nebo kódy chyb.
+Zkontrolujte snímek obrazovky a zjistěte, proč se virtuální mu nedaří spustit. Poznamenejte si všechny konkrétní chybové zprávy nebo chybové kódy.
 
 ## <a name="stop-the-vm"></a>Zastavení virtuálního počítače
 
-Následující příklad zastaví virtuální počítač s názvem `myVM` ze skupiny prostředků s názvem `myResourceGroup`:
+Následující příklad zastaví virtuální `myVM` hod pojmenovaný `myResourceGroup`ze skupiny prostředků s názvem :
 
 ```powershell
 Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ```
 
-Počkejte, než se virtuální počítač dokončí a teprve potom proveďte zpracování na další krok.
+Počkejte, dokud virtuální hod dokončí odstranění před zpracováním k dalšímu kroku.
 
 
-## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>Vytvoření snímku z disku s operačním systémem virtuálního počítače
+## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>Vytvoření snímku z disku operačního systému virtuálního počítače
 
-Následující příklad vytvoří snímek s názvem `mySnapshot` z disku s operačním systémem virtuálního počítače s názvem ' myVM '. 
+Následující příklad vytvoří snímek `mySnapshot` s názvem z disku operačního systému virtuálního počítače s názvem myVM. 
 
 ```powershell
 $resourceGroupName = 'myResourceGroup' 
@@ -99,7 +99,7 @@ New-AzSnapshot `
    -ResourceGroupName $resourceGroupName 
 ```
 
-Snímek je plná kopie VHD, která je jen pro čtení. Nedá se připojit k virtuálnímu počítači. V dalším kroku vytvoříme z tohoto snímku disk.
+Snímek je úplná kopie virtuálního pevného disku jen pro čtení. Nelze jej připojit k virtuálnímu virtuálnímu ms. V dalším kroku vytvoříme disk z tohoto snímku.
 
 ## <a name="create-a-disk-from-the-snapshot"></a>Vytvoření disku ze snímku
 
@@ -140,14 +140,14 @@ $diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -Cr
  
 New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
 ```
-Teď máte kopii původního disku s operačním systémem. Tento disk můžete připojit k jinému virtuálnímu počítači s Windows pro účely řešení potíží.
+Nyní máte kopii původního disku operačního systému. Tento disk můžete připojit k jinému virtuálnímu počítače se systémem Windows pro účely řešení potíží.
 
-## <a name="attach-the-disk-to-another-windows-vm-for-troubleshooting"></a>Připojte disk k jinému virtuálnímu počítači s Windows pro řešení potíží.
+## <a name="attach-the-disk-to-another-windows-vm-for-troubleshooting"></a>Připojení disku k jinému virtuálnímu virtuálnímu počítače se systémem Windows pro řešení potíží
 
-Nyní připojíme kopii původního disku s operačním systémem k virtuálnímu počítači jako datový disk. Tento proces umožňuje opravit chyby v konfiguraci nebo zkontrolovat soubory protokolů aplikace nebo systému na disku. Následující příklad připojí disk s názvem `newOSDisk` k virtuálnímu počítači s názvem `RecoveryVM`.
+Teď připojíme kopii původního disku operačního systému k virtuálnímu počítače jako datový disk. Tento proces umožňuje opravit chyby konfigurace nebo zkontrolovat další soubory protokolu aplikace nebo systému na disku. Následující příklad připojí disk `newOSDisk` s názvem virtuálního počítače s názvem `RecoveryVM`.
 
 > [!NOTE]
-> Aby bylo možné připojit disk, kopie původního disku s operačním systémem a virtuálního počítače pro obnovení musí být ve stejném umístění.
+> Chcete-li připojit disk, kopie původního disku operačního systému a virtuální ho virtuálního počítače pro obnovení musí být ve stejném umístění.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -163,22 +163,22 @@ $vm = Add-AzVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>Připojte se k virtuálnímu počítači pro obnovení a opravte problémy s připojeným diskem.
+## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>Připojení k virtuálnímu počítači pro obnovení a oprava problémů na připojeném disku
 
-1. RDP na virtuální počítač pro obnovení pomocí příslušných přihlašovacích údajů. Následující příklad stáhne soubor připojení RDP pro virtuální počítač s názvem `RecoveryVM` ve skupině prostředků s názvem `myResourceGroup`a stáhne ho do `C:\Users\ops\Documents`"
+1. RDP k virtuálnímu počítači pro obnovení pomocí příslušných pověření. Následující příklad stáhne soubor připojení RDP pro `RecoveryVM` virtuální ho `myResourceGroup`s lokator `C:\Users\ops\Documents`s názvem a stáhne jej do "
 
     ```powershell
     Get-AzRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "RecoveryVM" `
         -LocalPath "C:\Users\ops\Documents\myVMRecovery.rdp"
     ```
 
-2. Datový disk by měl být automaticky rozpoznán a připojen. Zobrazte seznam připojených svazků a určete písmeno jednotky následujícím způsobem:
+2. Datový disk by měl být automaticky rozpoznán a připojen. Zobrazení seznamu připojených svazků k určení písmene jednotky postupujte takto:
 
     ```powershell
     Get-Disk
     ```
 
-    Následující příklad výstupu ukazuje disk připojený k disku **2**. (K zobrazení písmene jednotky můžete použít taky `Get-Volume`):
+    Následující ukázkový výstup ukazuje disk připojený k disku **2**. (Můžete také `Get-Volume` zobrazit písmeno jednotky):
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -189,18 +189,18 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
     2        newOSDisk                                  Healthy             Online       127 GB MBR
     ```
 
-Po připojení kopie původního disku s operačním systémem můžete podle potřeby provádět libovolné kroky údržby a řešení potíží. Jakmile vyřešíte problémy, pokračujte následujícími kroky.
+Po namontování kopie původního disku operačního systému můžete podle potřeby provést všechny kroky údržby a řešení potíží. Jakmile vyřešíte problémy, pokračujte následujícími kroky.
 
-## <a name="unmount-and-detach-original-os-disk"></a>Odpojte a odpojte původní disk s operačním systémem
-Po vyřešení chyb odpojte a odpojte stávající disk od virtuálního počítače pro obnovení. Disk nemůžete použít s žádným jiným virtuálním počítačem, dokud se neuvolní zapůjčení disku k virtuálnímu počítači pro obnovení.
+## <a name="unmount-and-detach-original-os-disk"></a>Odpojení a odpojení původního disku operačního systému
+Jakmile jsou chyby vyřešeny, odpojíte a odpojíte existující disk od virtuálního počítače pro obnovení. Disk nelze použít s žádným jiným virtuálním počítačem, dokud není uvolněna zapůjčení připojující disk k virtuálnímu počítači pro obnovení.
 
-1. V rámci relace RDP odpojte datový disk na VIRTUÁLNÍm počítači pro obnovení. Z předchozí rutiny `Get-Disk` budete potřebovat číslo disku. Pak použijte `Set-Disk` k nastavení disku jako offline:
+1. Z relace RDP odpojte datový disk na virtuálním počítači pro obnovení. Potřebujete číslo disku z `Get-Disk` předchozí rutiny. Potom použijte `Set-Disk` k nastavení disku jako offline:
 
     ```powershell
     Set-Disk -Number 2 -IsOffline $True
     ```
 
-    Potvrďte, že je disk teď nastavený jako offline pomocí `Get-Disk` znovu. Následující příklad výstupu ukazuje, že disk je nyní nastaven jako offline:
+    Potvrďte, že disk je `Get-Disk` nyní nastaven jako offline pomocí znovu. Následující ukázkový výstup ukazuje, že disk je nyní nastaven jako offline:
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -211,7 +211,7 @@ Po vyřešení chyb odpojte a odpojte stávající disk od virtuálního počít
     2        Msft Virtu...                                  Healthy             Offline      127 GB MBR
     ```
 
-2. Ukončete relaci protokolu RDP. Z relace Azure PowerShell odeberte z virtuálního počítače s názvem ' RecoveryVM ' disk s názvem `newOSDisk`.
+2. Ukončete relaci RDP. Z relace Azure PowerShell, odeberte disk s názvem `newOSDisk` z virtuálního počítače s názvem RecoveryVM.
 
     ```powershell
     $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "RecoveryVM"
@@ -219,11 +219,11 @@ Po vyřešení chyb odpojte a odpojte stávající disk od virtuálního počít
     Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
     ```
 
-## <a name="change-the-os-disk-for-the-affected-vm"></a>Změna disku operačního systému pro ovlivněný virtuální počítač
+## <a name="change-the-os-disk-for-the-affected-vm"></a>Změna disku operačního systému pro ohrožený virtuální modul
 
-K prohození disků s operačním systémem můžete použít Azure PowerShell. Nemusíte odstranit a znovu vytvořit virtuální počítač.
+Azure PowerShell můžete použít k výměně disků operačního systému. Není nutné odstranit a znovu vytvořit virtuální ho.
 
-Tento příklad zastaví virtuální počítač s názvem `myVM` a přiřadí disk s názvem `newOSDisk` jako nový disk s operačním systémem. 
+Tento příklad zastaví název `myVM` virtuálního počítače `newOSDisk` a přiřadí disk pojmenovaný jako nový disk operačního systému. 
 
 ```powershell
 # Get the VM 
@@ -247,7 +247,7 @@ Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>Ověření a povolení diagnostiky spouštění
 
-Následující příklad aktivuje diagnostické rozšíření na virtuálním počítači s názvem `myVMDeployed` ve skupině prostředků s názvem `myResourceGroup`:
+Následující příklad umožňuje diagnostické rozšíření na `myVMDeployed` virtuálním počítači `myResourceGroup`pojmenované ve skupině prostředků s názvem :
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"
@@ -256,6 +256,6 @@ Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači, přečtěte si téma [řešení potíží s připojením RDP k virtuálnímu počítači Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Problémy s přístupem k aplikacím běžícím na vašem VIRTUÁLNÍm počítači najdete v tématu [řešení potíží s připojením aplikací na virtuálním počítači s Windows](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Pokud máte problémy s připojením k virtuálnímu počítači, [přečtěte si článek Poradce při potížích s připojením RDP k virtuálnímu počítači Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Problémy s přístupem k aplikacím spuštěným na vašem virtuálním počítači najdete [v tématu Řešení problémů s připojením aplikací na virtuálním počítači se systémem Windows](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Další informace o použití Správce prostředků naleznete v tématu [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md).
+Další informace o používání Správce prostředků najdete v [tématu Přehled Správce prostředků Azure](../../azure-resource-manager/management/overview.md).

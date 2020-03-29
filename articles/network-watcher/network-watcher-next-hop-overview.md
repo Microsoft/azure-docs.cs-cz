@@ -1,6 +1,6 @@
 ---
-title: Seznámení s dalším segmentem směrování v Azure Network Watcher | Microsoft Docs
-description: Tento článek poskytuje přehled Network Watcher možnosti dalšího směrování.
+title: Úvod k dalšímu směrování v Azure Network Watcher | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje přehled funkce dalšího směrování sledování sítě.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 33c22b5b68b6677e8cf271dc185007316ec44500
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844054"
 ---
-# <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Použití dalšího směrování k diagnostice problémů s směrováním virtuálních počítačů
+# <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Diagnostikovat problémy se směrováním virtuálních strojů pomocí dalšího směrování
 
-Provoz z virtuálního počítače se pošle do cíle na základě efektivních tras přidružených k síťovému rozhraní (NIC). Další segment směrování Získá typ dalšího segmentu směrování a IP adresu paketu z konkrétního virtuálního počítače a síťové karty. Znalost dalšího směrování vám pomůže určit, jestli se má provoz směrovat do zamýšleného cíle, nebo jestli se provoz posílá nikde. Nesprávná konfigurace tras, kde je přenos směrován do místního umístění nebo virtuální zařízení, může vést k problémům s připojením. Další segment směrování také vrátí směrovací tabulku přidruženou k dalšímu segmentu směrování. Pokud je trasa definovaná jako trasa definovaná uživatelem, tato trasa se vrátí. V opačném případě funkce Next Hop vrátí **systémovou trasu**.
+Provoz z virtuálního počítače (VM) se odesílá do cíle na základě efektivních tras spojených se síťovým rozhraním (NIC). Další směrování získá další typ směrování a IP adresu paketu z konkrétního virtuálního počítačů a nic. Znalost dalšího směrování vám pomůže určit, zda je provoz směrován do zamýšleného cíle nebo zda je provoz odesílán nikam. Nesprávná konfigurace tras, kde je provoz směrován do místního umístění nebo virtuálního zařízení, může vést k problémům s připojením. Další směrování také vrátí směrovací tabulku přidruženou k dalšímu směrování. Pokud je trasa definována jako uživatelem definovaná trasa, je tato trasa vrácena. V opačném případě vrátí další funkce směrování **systémovou trasu**.
 
-![Přehled dalšího segmentu směrování](./media/network-watcher-next-hop-overview/figure1.png)
+![další přehled směrování](./media/network-watcher-next-hop-overview/figure1.png)
 
-Další segmenty, které může vrátit funkce dalšího směrování, jsou následující:
+Další směrování, které může být vráceno další možností směrování, je následující:
 
 * Internet
 * VirtualAppliance
@@ -34,10 +34,10 @@ Další segmenty, které může vrátit funkce dalšího směrování, jsou nás
 * VirtualNetworkPeering
 * VirtualNetworkServiceEndpoint 
 * MicrosoftEdge
-* Žádné
+* Žádný
 
-Další informace o jednotlivých typech dalších segmentů směrování najdete v tématu [Přehled směrování](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+Další informace o jednotlivých typech směrování naleznete v [tématu Přehled směrování](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak pomocí dalšího směrování diagnostikovat problémy se směrováním sítě virtuálních počítačů, najdete v tématu Diagnostika problémů s směrováním sítě virtuálních počítačů pomocí [Azure Portal](diagnose-vm-network-routing-problem.md), [PowerShellu](diagnose-vm-network-routing-problem-powershell.md)nebo rozhraní příkazového [řádku Azure](diagnose-vm-network-routing-problem-cli.md).
+To learn how to use next hop to diagnose VM network routing problems, see Diagnose VM network routing problems using the [Azure portal](diagnose-vm-network-routing-problem.md), [PowerShell](diagnose-vm-network-routing-problem-powershell.md), or the [Azure CLI](diagnose-vm-network-routing-problem-cli.md).

@@ -1,7 +1,7 @@
 ---
-title: Zabezpečte rozhraní API pomocí ověřování klientského certifikátu v API Management
+title: Zabezpečená rozhraní API pomocí ověřování klientského certifikátu ve správě rozhraní API
 titleSuffix: Azure API Management
-description: Naučte se zabezpečit přístup k rozhraním API pomocí klientských certifikátů.
+description: Zjistěte, jak zabezpečit přístup k možnostem API pomocí klientských certifikátů
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,31 +14,31 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76713146"
 ---
-# <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Jak zabezpečit rozhraní API pomocí ověřování klientského certifikátu v API Management
+# <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Postup zabezpečení rozhraní API s využitím ověřování pomocí klientských certifikátů ve službě API Management
 
-API Management poskytuje možnost zabezpečení přístupu k rozhraním API (například klienta k API Management) pomocí klientských certifikátů. Příchozí certifikát a kontrolu vlastností certifikátu můžete ověřit podle požadovaných hodnot pomocí výrazů zásad.
+Správa rozhraní API umožňuje zabezpečit přístup k rozhraním API (tj. klientke správě rozhraní API) pomocí klientských certifikátů. Můžete ověřit příchozí certifikát a zkontrolovat vlastnosti certifikátu proti požadovaným hodnotám pomocí výrazů zásad.
 
-Informace o zabezpečení přístupu k back-endové službě rozhraní API pomocí klientských certifikátů (tj. API Management do back-endu) najdete v tématu [zabezpečení back-endové služby pomocí ověřování klientských certifikátů](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates) .
+Informace o zabezpečení přístupu k back-endové službě rozhraní API pomocí klientských certifikátů (tj. správa rozhraní API pro back-end) naleznete v [tématu Zabezpečení back-endových služeb pomocí ověřování klientských certifikátů](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
 
 > [!IMPORTANT]
-> Pokud chcete přijímat a ověřovat klientské certifikáty přes HTTP/2 na úrovních pro vývojáře, Basic, Standard nebo Premium, musíte v okně vlastní domény zapnout nastavení vyjednávat klientský certifikát, jak je znázorněno níže.
+> Chcete-li přijímat a ověřovat klientské certifikáty přes HTTP/2 na úrovních Vývojář, Basic, Standard nebo Premium, musíte zapnout nastavení "Vyjednat klientský certifikát" v okně "Vlastní domény", jak je znázorněno níže.
 
 ![Vyjednat klientský certifikát](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
 > [!IMPORTANT]
-> Pokud chcete přijímat a ověřovat klientské certifikáty ve vrstvě spotřeby, musíte zapnout nastavení "požadovat certifikát klienta" v okně vlastní domény, jak je znázorněno níže.
+> Chcete-li přijímat a ověřovat klientské certifikáty na úrovni Spotřeba, musíte zapnout nastavení "Požádat o klientský certifikát" v okně "Vlastní domény", jak je znázorněno níže.
 
-![Požádat o certifikát klienta](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
+![Požádat o klientský certifikát](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
-## <a name="checking-the-issuer-and-subject"></a>Kontroluje se Vydavatel a předmět.
+## <a name="checking-the-issuer-and-subject"></a>Kontrola vystavitho a předmětu
 
-Níže uvedené zásady je možné nakonfigurovat tak, aby kontrolovaly vystavitele a předmět klientského certifikátu:
+Níže uvedené zásady lze nakonfigurovat tak, aby kontrolovaly vystavitele a předmět klientského certifikátu:
 
 ```xml
 <choose>
@@ -51,12 +51,12 @@ Níže uvedené zásady je možné nakonfigurovat tak, aby kontrolovaly vystavit
 ```
 
 > [!NOTE]
-> Pokud chcete zakázat kontrolu seznamu odvolaných certifikátů, použijte `context.Request.Certificate.VerifyNoRevocation()` místo `context.Request.Certificate.Verify()`.
-> Pokud je klientský certifikát podepsaný svým držitelem, musí se napřed API Management [, aby se](api-management-howto-ca-certificates.md) `context.Request.Certificate.Verify()` a `context.Request.Certificate.VerifyNoRevocation()` fungoval.
+> Chcete-li zakázat kontrolu `context.Request.Certificate.VerifyNoRevocation()` seznamu `context.Request.Certificate.Verify()`odvolaných certifikátů, použijte místo .
+> Pokud je klientský certifikát podepsaný svým držitelem, je nutné do správy rozhraní `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` API [odeslat](api-management-howto-ca-certificates.md) kořenové (nebo zprostředkující) certifikáty certifikační autority.
 
 ## <a name="checking-the-thumbprint"></a>Kontrola kryptografického otisku
 
-Níže uvedené zásady se dají nakonfigurovat tak, aby kontrolovaly kryptografický otisk klientského certifikátu:
+Níže uvedené zásady lze nakonfigurovat tak, aby kontrolovaly kryptografický otisk klientského certifikátu:
 
 ```xml
 <choose>
@@ -69,12 +69,12 @@ Níže uvedené zásady se dají nakonfigurovat tak, aby kontrolovaly kryptograf
 ```
 
 > [!NOTE]
-> Pokud chcete zakázat kontrolu seznamu odvolaných certifikátů, použijte `context.Request.Certificate.VerifyNoRevocation()` místo `context.Request.Certificate.Verify()`.
-> Pokud je klientský certifikát podepsaný svým držitelem, musí se napřed API Management [, aby se](api-management-howto-ca-certificates.md) `context.Request.Certificate.Verify()` a `context.Request.Certificate.VerifyNoRevocation()` fungoval.
+> Chcete-li zakázat kontrolu `context.Request.Certificate.VerifyNoRevocation()` seznamu `context.Request.Certificate.Verify()`odvolaných certifikátů, použijte místo .
+> Pokud je klientský certifikát podepsaný svým držitelem, je nutné do správy rozhraní `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` API [odeslat](api-management-howto-ca-certificates.md) kořenové (nebo zprostředkující) certifikáty certifikační autority.
 
-## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Kontrola kryptografického otisku proti certifikátům odeslaným do API Management
+## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Kontrola kryptografických otisků certifikátů nahraných do správy rozhraní API
 
-Následující příklad ukazuje, jak kontrolovat kryptografický otisk certifikátu klienta proti certifikátům odeslaným do API Management:
+Následující příklad ukazuje, jak zkontrolovat kryptografický otisk klientského certifikátu proti certifikátům odeslaným do správy rozhraní API:
 
 ```xml
 <choose>
@@ -88,16 +88,16 @@ Následující příklad ukazuje, jak kontrolovat kryptografický otisk certifik
 ```
 
 > [!NOTE]
-> Pokud chcete zakázat kontrolu seznamu odvolaných certifikátů, použijte `context.Request.Certificate.VerifyNoRevocation()` místo `context.Request.Certificate.Verify()`.
-> Pokud je klientský certifikát podepsaný svým držitelem, musí se napřed API Management [, aby se](api-management-howto-ca-certificates.md) `context.Request.Certificate.Verify()` a `context.Request.Certificate.VerifyNoRevocation()` fungoval.
+> Chcete-li zakázat kontrolu `context.Request.Certificate.VerifyNoRevocation()` seznamu `context.Request.Certificate.Verify()`odvolaných certifikátů, použijte místo .
+> Pokud je klientský certifikát podepsaný svým držitelem, je nutné do správy rozhraní `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` API [odeslat](api-management-howto-ca-certificates.md) kořenové (nebo zprostředkující) certifikáty certifikační autority.
 
 > [!TIP]
-> Problém zablokování klientského certifikátu, který je popsaný v tomto [článku](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) , se může projevit několika způsoby, třeba když jsou požadavky zablokované, `403 Forbidden` stavového kódu po vypršení časového limitu `context.Request.Certificate` je `null`. K tomuto problému obvykle dochází `POST` a `PUT` požadavků s délkou obsahu přibližně 60KB nebo větší.
-> Aby nedošlo k tomuto problému, zapněte nastavení vyjednávat klientský certifikát pro požadované názvy hostitelů v okně vlastní domény, jak je znázorněno níže. Tato funkce není k dispozici na úrovni spotřeby.
+> Problém zablokování klientského certifikátu popsaný v tomto [článku](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) se může projevit několika způsoby, například požadavky zmrazit, požadavky za následek `403 Forbidden` stavový kód po vypršení časového limitu, `context.Request.Certificate` je `null`. Tento problém `POST` obvykle `PUT` ovlivňuje a požadavky s délkou obsahu přibližně 60 kB nebo větší.
+> Chcete-li zabránit tomuto problému dochází, zapněte nastavení "Vyjednat klientský certifikát" pro požadované názvy hostitelů v okně "Vlastní domény", jak je znázorněno níže. Tato funkce není k dispozici ve vrstvě Spotřeba.
 
 ![Vyjednat klientský certifikát](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
 ## <a name="next-steps"></a>Další kroky
 
--   [Postup zabezpečení back-endové služby pomocí ověřování klientských certifikátů](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
--   [Postup nahrání certifikátů](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [Zabezpečení back-endových služeb pomocí ověřování klientských certifikátů](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [Jak nahrát certifikáty](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)

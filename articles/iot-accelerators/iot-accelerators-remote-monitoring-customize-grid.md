@@ -1,6 +1,6 @@
 ---
-title: Přidat mřížku řešením vzdáleného monitorování uživatelské rozhraní – Azure | Dokumentace Microsoftu
-description: Tento článek ukazuje, jak přidat nové ID skupiny na stránce v vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní.
+title: Přidání mřížky do uživatelského uživatelského režimu řešení vzdáleného monitorování – Azure | Dokumenty společnosti Microsoft
+description: Tento článek ukazuje, jak přidat nový gid na stránce ve webovém uživatelském uživatelském počítači akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,42 +9,42 @@ services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447093"
 ---
-# <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní mřížky do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní
+# <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidání vlastní mřížky do webového uživatelského uživatelského uživatelského nastavení akcelerátoru řešení vzdáleného monitorování
 
-V tomto článku se dozvíte, jak přidat nové mřížky na stránku ve vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní. Tento článek popisuje:
+Tento článek ukazuje, jak přidat novou mřížku na stránku ve webovém uživatelském uživatelském počítači akcelerátoru řešení vzdáleného monitorování. Článek popisuje:
 
-- Jak připravit místní vývojové prostředí.
-- Postup přidání nové mřížky na stránku ve webovém uživatelském rozhraní.
+- Jak připravit prostředí místního rozvoje.
+- Jak přidat novou mřížku na stránku ve webovém uživatelském uživatelském tlačítko.
 
-Příklad tabulky v tomto článku se zobrazí data ze služby, který [přidat vlastní službu vzdáleného monitorování řešení akcelerátoru uživatelské rozhraní](iot-accelerators-remote-monitoring-customize-service.md) článek ukazuje, jak přidat.
+Ukázková mřížka v tomto článku zobrazuje data ze služby, kterou doplněk Přidat vlastní službu do článku s postupem webového uživatelského panelu webového uživatelského [panelu akcelerátoru řešení vzdáleného monitorování,](iot-accelerators-remote-monitoring-customize-service.md) ukazuje, jak přidat.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v této příručce s postupy, musíte na svém místním vývojovém počítači nainstalovaný následující software:
+Chcete-li provést kroky v tomto návodu, potřebujete v místním vývojovém počítači nainstalovaný následující software:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Než začnete
 
-Než budete pokračovat, by měl proveďte kroky v následujících článcích:
+Než budete pokračovat, měli byste provést kroky v následujících článcích:
 
-- [Přidat vlastní stránky pro vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-page.md).
-- [Přidat vlastní služby do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-service.md)
+- [Přidejte vlastní stránku do webového uživatelského uživatelského uživatelského uživatelského nastavení akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-customize-page.md).
+- [Přidání vlastní služby do webového uživatelského uživatelského uživatelského nastavení akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-customize-service.md)
 
 ## <a name="add-a-grid"></a>Přidat mřížku
 
-Pokud chcete přidat do mřížky do ve webovém uživatelském rozhraní, budete muset přidat zdrojové soubory, které definují mřížky a změnit některé existující soubory ve webovém uživatelském rozhraní používající nové komponenty.
+Chcete-li přidat mřížku do webového uživatelského uživatelského nastavení, je třeba přidat zdrojové soubory, které definují mřížku, a upravit některé existující soubory tak, aby webové uživatelské uživatelské uživatelské nastavení bylo informováno o nové součásti.
 
-### <a name="add-the-new-files-that-define-the-grid"></a>Přidat nové soubory, které definují mřížky
+### <a name="add-the-new-files-that-define-the-grid"></a>Přidání nových souborů, které definují mřížku
 
-Abyste mohli začít, **src/návod/součásti/stránek/pageWithGrid/exampleGrid** složka obsahuje soubory, které definují mřížky:
+Chcete-li začít, složka **src/walkthrough/components/pages/pageWithGrid/exampleGrid** obsahuje soubory, které definují mřížku:
 
 **exampleGrid.js**
 
@@ -54,11 +54,11 @@ Abyste mohli začít, **src/návod/součásti/stránek/pageWithGrid/exampleGrid*
 
 [!code-javascript[Example grid configuration](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGridConfig.js?name=gridconfig "Example grid configuration")]
 
-Kopírovat **src/návod/součásti/stránek/pageWithGrid/exampleGrid** složku **src/součásti/stránek/příklad** složky.
+Zkopírujte složku **src/walkthrough/components/pages/pageWithGrid/exampleGrid** do složky **src/components/pages/example.**
 
-### <a name="add-the-grid-to-the-page"></a>Přidat na stránku mřížky
+### <a name="add-the-grid-to-the-page"></a>Přidání mřížky na stránku
 
-Upravit **src/components/pages/example/basicPage.container.js** takto k importu definic služeb:
+Chcete-li importovat definice služby, upravte soubor **src/components/pages/example/basicPage.container.js** následujícím způsobem:
 
 ```js
 import { connect } from 'react-redux';
@@ -89,7 +89,7 @@ const mapDispatchToProps = dispatch => ({
 export const BasicPageContainer = translate()(connect(mapStateToProps, mapDispatchToProps)(BasicPage));
 ```
 
-Upravit **src/components/pages/example/basicPage.js** následovně Chcete-li přidat mřížky:
+Chcete-li přidat mřížku, upravte **soubor src/components/pages/example/basicPage.js** následujícím způsobem:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -144,7 +144,7 @@ export class BasicPage extends Component {
 }
 ```
 
-Upravit **src/components/pages/example/basicPage.test.js** následujícím způsobem se aktualizovat testy:
+Chcete-li aktualizovat testy, upravte **soubor src/components/pages/example/basicPage.test.js** následujícím způsobem:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -176,23 +176,23 @@ describe('BasicPage Component', () => {
 
 ## <a name="test-the-grid"></a>Testování mřížky
 
-Pokud webové uživatelské rozhraní není spuštěná místně, spusťte následující příkaz v kořenové složce místní kopie úložiště:
+Pokud webové uživatelské uživatelské prostředí ještě není spuštěno místně, spusťte v kořenovém adresáři místní kopie úložiště následující příkaz:
 
 ```cmd/sh
 npm start
 ```
 
-Předchozí příkaz se spustí místně na uživatelské rozhraní [ http://localhost:3000/dashboard ](http://localhost:3000/dashboard). Přejděte **příklad** stránku, abyste zobrazili mřížky zobrazit data ze služby.
+Předchozí příkaz spustí ui místně [http://localhost:3000/dashboard](http://localhost:3000/dashboard)na . Přejděte na stránku **Příklad** a zobrazte data mřížky ze služby.
 
-## <a name="select-rows"></a>Výběr řádků
+## <a name="select-rows"></a>Vybrat řádky
 
-Existují dvě možnosti pro povolení uživatele pro výběr řádků v tabulce:
+Existují dvě možnosti, jak uživateli umožnit výběr řádků v mřížce:
 
-### <a name="hard-select-rows"></a>Pevné vyberte řádky
+### <a name="hard-select-rows"></a>Řádky s tvrdým výběrem
 
-Když uživatel potřebuje k práci s více řádky ve stejnou dobu, pomocí zaškrtávacích políček na řádky:
+Pokud uživatel potřebuje jednat na více řádků najednou, použijte zaškrtávací políčka na řádcích:
 
-1. Povolit pevný výběr řádků tak, že přidáte **checkboxColumn** k **columnDefs** k dispozici do mřížky. **checkboxColumn** je definována v **/src/components/shared/pcsGrid/pcsGrid.js**:
+1. Povolte pevný výběr řádků přidáním **zaškrtávacího políčkaSloupec** do sloupceDefs dosítěné do **mřížky.** **zaškrtávací políčkoSloupec** je definováno v **souboru /src/components/shared/pcsGrid/pcsGrid.js**:
 
     ```js
     this.columnDefs = [
@@ -202,7 +202,7 @@ Když uživatel potřebuje k práci s více řádky ve stejnou dobu, pomocí za�
     ];
     ```
 
-1. Pro přístup k vybrané položky, získejte odkaz na rozhraní API pro interní tabulky:
+1. Pro přístup k vybraným položkám získáte odkaz na interní mřížkové rozhraní API:
 
     ```js
     onGridReady = gridReadyEvent => {
@@ -214,7 +214,7 @@ Když uživatel potřebuje k práci s více řádky ve stejnou dobu, pomocí za�
     };
     ```
 
-1. Poskytnout kontext tlačítka na stránku při řádek v tabulce je obtížné vybrán:
+1. Poskytněte stránce tlačítka kontextu, když je pevně vybraný řádek v mřížce:
 
     ```js
     this.contextBtns = [
@@ -234,7 +234,7 @@ Když uživatel potřebuje k práci s více řádky ve stejnou dobu, pomocí za�
     }
     ```
 
-1. Po kliknutí na tlačítko kontextové získáte pevné vybrané položky k provedení práce na:
+1. Po klepnutí na tlačítko kontextu získáte pevně vybrané položky, na kterých můžete pracovat:
 
     ```js
     doSomething = () => {
@@ -243,11 +243,11 @@ Když uživatel potřebuje k práci s více řádky ve stejnou dobu, pomocí za�
     };
     ```
 
-### <a name="soft-select-rows"></a>Konfigurace soft výběr řádků
+### <a name="soft-select-rows"></a>Řádky s měkkým výběrem
 
-Pokud uživatel se musí jednat o jeden řádek, konfigurace soft vyberte odkaz pro jeden nebo více sloupců v **columnDefs**.
+Pokud uživatel potřebuje pouze na jeden řádek, nakonfigurujte odkaz pro měkký výběr pro jeden nebo více sloupců ve **sloupciDefs**.
 
-1. V **exampleGridConfig.js**, přidejte **SoftSelectLinkRenderer** jako **cellRendererFramework** pro **columnDef**.
+1. V **souboru exampleGridConfig.js**přidejte **softselectlinkrenderer** jako **cellRendererFramework** pro **columnDef**.
 
     ```js
     export const exampleColumnDefs = {
@@ -260,7 +260,7 @@ Pokud uživatel se musí jednat o jeden řádek, konfigurace soft vyberte odkaz 
     };
     ```
 
-1. Když dojde ke kliknutí na odkaz Konfigurace soft-select, aktivuje **onSoftSelectChange** událostí. Provedení libovolné akce je požadován pro tento řádek, jako je například otevřít podrobnosti vyskakovacího informačního rámečku. Tento příklad jednoduše zapisuje do konzoly:
+1. Po klepnutí na odkaz pro měkký výběr spustí událost **onSoftSelectChange.** Proveďte jakoukoli akci, která je pro tento řádek žádoucí, například otevření informačního rámečku podrobností. Tento příklad jednoduše zapíše do konzoly:
 
     ```js
     onSoftSelectChange = (rowId, rowData) => {
@@ -277,10 +277,10 @@ Pokud uživatel se musí jednat o jeden řádek, konfigurace soft vyberte odkaz 
     }
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o prostředky dostupné pro přidání nebo přizpůsobit stránky ve webovém uživatelském rozhraní v akcelerátoru řešení vzdáleného monitorování.
+V tomto článku jste se dozvěděli o dostupných prostředcích, které vám pomohou přidat nebo přizpůsobit stránky ve webovém uživatelském rozhraní v akcelerátoru řešení vzdáleného monitorování.
 
-Nyní jste definovali mřížky, dalším krokem je [přidat vlastní rozevírací nabídka pro vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-flyout.md) , který se zobrazí na příkladu stránky.
+Nyní jste definovali mřížku, dalším krokem je [přidání vlastního informačního rámečku do webového uživatelského uživatelského uživatelského nastavení akcelerátoru řešení vzdáleného monitorování,](iot-accelerators-remote-monitoring-customize-flyout.md) které se zobrazí na ukázkové stránce.
 
-Další koncepční informace o akcelerátoru řešení vzdáleného monitorování najdete v tématu [architektura vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Další rámcové informace o akcelerátoru řešení vzdáleného monitorování naleznete v [tématu Architektura vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md).

@@ -1,6 +1,6 @@
 ---
-title: Postup přiřazení uživatelů k aplikacím | Dokumentace Microsoftu
-description: Vysvětlení, jak přiřadit uživatele k aplikaci ve vašem tenantovi
+title: Jak přiřadit uživatele k aplikacím | Dokumenty společnosti Microsoft
+description: Zjistěte, jak se uživatelé přiřazují k aplikaci ve vašem tenantovi.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,49 +16,49 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b818fe1d8b6bbc9d2d8c5b460b4d71dccdd39366
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65825977"
 ---
-# <a name="how-to-assign-users-to-applications"></a>Přiřazení uživatelů k aplikacím
+# <a name="how-to-assign-users-to-applications"></a>Jak přiřadit uživatele k aplikacím
 
-Tento článek pomůže pochopit, jak přiřadit uživatele k aplikaci ve vašem tenantovi.
+Tento článek vám pomůže pochopit, jak se uživatelé přiřazují k aplikaci ve vašem tenantovi.
 
-## <a name="how-do-users-get-assigned-to-an-application-in-azure-ad"></a>Jak uživatelé získat přidružených k aplikaci ve službě Azure AD?
+## <a name="how-do-users-get-assigned-to-an-application-in-azure-ad"></a>Jak se uživatelé přiřadí k aplikaci ve službě Azure AD?
 
-Pro uživatele pro přístup k aplikaci je třeba nejprve je přiřadit k ní nějakým způsobem. Přiřazení může provést správce, obchodní delegáta nebo v některých případech uživatel sami. Níže popisuje způsoby, které uživatelé mohou přiřadit k aplikacím:
+Aby měl uživatel přístup k aplikaci, musí k ní být nejprve nějakým způsobem přiřazen. Přiřazení může provádět správce, obchodní delegát nebo někdy i samotný uživatel. Níže je popsáno, jak mohou být uživatelé přiřazeni k aplikacím:
 
-1.  Správce [přiřadí uživateli](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) přímo do aplikace
+1.  Správce [přiřadí uživatele](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) k aplikaci přímo
 
-2.  Správce [přiřadí skupinu](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) , že uživatel je členem skupiny k aplikaci, včetně:
+2.  Správce [přiřadí do aplikace skupinu,](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) jejíž je uživatel členem, včetně:
 
-    * Skupiny, které se synchronizovaly z místní
+    * Skupina synchronizovaná z místního prostředí
 
-    * Skupiny zabezpečení statické se vytvářejí v cloudu
+    * Skupina statického zabezpečení vytvořená v cloudu
 
-    * A [dynamické zabezpečení skupiny](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal) se vytvářejí v cloudu
+    * [Dynamická skupina zabezpečení](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal) vytvořená v cloudu
 
-    * Skupiny Office 365 se vytvářejí v cloudu
+    * Skupina Office 365 vytvořená v cloudu
 
-    * [Všichni uživatelé](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) skupiny
+    * Skupina [Všichni uživatelé](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)
 
-3.  Správce povolí [samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) umožňující uživateli přidat aplikace pomocí [přístupového panelu aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **přidat aplikaci** funkce **bez schválení**
+3.  Správce povolí [samoobslužný přístup k aplikacím,](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) aby uživatel mohl přidat aplikaci pomocí funkce Přidat aplikaci pomocí **panelu** Application Access App **bez souhlasu** [firmy.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
-4.  Správce povolí [samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) umožňující uživateli přidat aplikace pomocí [přístupového panelu aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **přidat aplikaci** funkce, ale pouze w**i-tý předchozí schválení od vybraná sada firemními schvalovateli**
+4.  Správce povolí [samoobslužný přístup k aplikacím,](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) aby uživatelmohl přidat aplikaci pomocí funkce Přidat aplikaci pomocí panelu Application Access [Panel,](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **Add App** ale pouze s**předchozím schválením od vybrané sady obchodních schvalovatelů**
 
-5.  Správce povolí [Samoobslužná správa skupiny](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) umožňující uživateli připojení ke skupině, která je přiřazena aplikace **bez schválení**
+5.  Správce umožňuje [samoobslužné správě skupiny](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) umožnit uživateli připojit se ke skupině, ke které je aplikace přiřazena **bez souhlasu firmy.**
 
-6.  Správce povolí [Samoobslužná správa skupiny](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) umožňující uživateli připojení ke skupině přiřazené aplikaci položky, ale pouze **s předchozí schválení od vybraná sada firemními schvalovateli**
+6.  Správce umožňuje [samoobslužné správě skupiny](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) umožnit uživateli připojit se ke skupině, ke které je aplikace přiřazena, ale pouze **s předchozím souhlasem vybrané skupiny obchodních schvalovatelů.**
 
-7.  Správce přiřadí licenci pro uživatele přímo v aplikaci první strany, jako je třeba [Microsoft Office 365](https://products.office.com/)
+7.  Správce přiřadí uživateli licenci přímo k aplikaci první strany, například [Microsoft Office 365](https://products.office.com/)
 
-8.  Správce přiřadí licenci ke skupině, že uživatel je členem k první aplikaci stran, jako je třeba [Microsoft Office 365](https://products.office.com/)
+8.  Správce přiřadí licenci skupině, jejíž je uživatel členem, k aplikaci první strany, například [Microsoft Office 365.](https://products.office.com/)
 
-9.  [Správce vyjádří souhlas aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) využívat všichni uživatelé a pak uživatel přihlásí k aplikaci
+9.  [Správce souhlasí s tím, aby aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) byla používána všemi uživateli, a poté se uživatel přihlásí k aplikaci.
 
-10. Uživatel [vyjádří souhlas aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) sami přihlášením k aplikaci
+10. Uživatel [souhlasí s aplikací](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) sám přihlášením k aplikaci
 
-## <a name="next-steps"></a>Další postup
-[Správa aplikací pomocí Azure Active Directory](what-is-application-management.md)
+## <a name="next-steps"></a>Další kroky
+[Správa aplikací pomocí služby Azure Active Directory](what-is-application-management.md)

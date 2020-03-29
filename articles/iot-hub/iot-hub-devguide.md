@@ -1,6 +1,6 @@
 ---
-title: Příručka pro vývojáře pro službu Azure IoT Hub | Dokumentace Microsoftu
-description: Příručka pro vývojáře Azure IoT Hub obsahuje diskuse o koncové body, zabezpečení, registr identit, správy zařízení, přímé metody, dvojčata zařízení, nahrávání souborů, úlohy, dotazovací jazyk služby IoT Hub a zasílání zpráv.
+title: Průvodce pro vývojáře pro Azure IoT Hub | Dokumenty společnosti Microsoft
+description: Průvodce vývojáři centra Azure IoT Hub zahrnuje diskuse o koncových bodech, zabezpečení, registru identit, správě zařízení, přímých metodách, dvojčatech zařízení, nahrávání souborů, úlohách, dotazovacím jazyce IoT Hub a zasílání zpráv.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,70 +9,70 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 1ff7d430edd3f638ad5efcc5a89604e4ed732211
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60400146"
 ---
-# <a name="azure-iot-hub-developer-guide"></a>Příručka pro vývojáře Azure IoT Hub
+# <a name="azure-iot-hub-developer-guide"></a>Průvodce vývojáři azure ioT hubu
 
-Azure IoT Hub je plně spravovaná služba, která pomáhá povolit spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-endu řešení.
+Azure IoT Hub je plně spravovaná služba, která pomáhá umožnit spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-endem řešení.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Azure IoT Hub vám nabízí:
+Azure IoT Hub vám poskytuje:
 
-* Zabezpečená komunikace s použitím přihlašovacích údajů na zařízení zabezpečení a řízení přístupu.
+* Zabezpečte komunikaci pomocí přihlašovacích údajů zabezpečení pro zařízení a řízení přístupu.
 
-* Několik možností komunikace typu zařízení cloud a cloud zařízení velkém měřítku.
+* Několik možností hyperškálování zařízení do cloudu a cloud-to-device.
 
-* Dotazovatelné úložiště pro informace o stavu jednotlivých zařízení a metadata.
+* Dotazovatelné ukládání informací o stavu zařízení a metadat.
 
-* Připojení zařízení snadno knihovny zařízení pro Nejoblíbenější jazyky a platformy.
+* Snadné připojení zařízení s knihovnami zařízení pro nejoblíbenější jazyky a platformy.
 
-Tato příručka pro vývojáře IoT Hub obsahuje následující články:
+Tento průvodce vývojáři služby IoT Hub obsahuje následující články:
 
-* [Pokyny k komunikace typu zařízení cloud](iot-hub-devguide-d2c-guidance.md) umožňuje výběr mezi zprávy typu zařízení cloud, ohlášené vlastnosti dvojčete zařízení a odesílání souborů.
+* [Pokyny pro komunikaci mezi zařízeními](iot-hub-devguide-d2c-guidance.md) a cloudem vám pomohou vybrat mezi zprávami mezi zařízeními a cloudy, ohlášenými vlastnostmi dvojčete zařízení a nahráváním souborů.
 
-* [Pokyny k komunikaci typu cloud zařízení](iot-hub-devguide-c2d-guidance.md) pomáhá vybrat mezi přímé metody, dvojče zařízení požadované vlastnosti a zprávy typu cloud zařízení.
+* [Pokyny ke komunikaci](iot-hub-devguide-c2d-guidance.md) mezi cloudem a zařízeními vám pomohou vybrat si mezi přímými metodami, požadovanými vlastnostmi dvojčete zařízení a zprávami mezi cloudy.
 
-* [Typu zařízení cloud a cloud zařízení zasílání zpráv pomocí služby IoT Hub](iot-hub-devguide-messaging.md) popisuje funkce zasílání zpráv (typu zařízení cloud a cloud zařízení), které služba IoT Hub zpřístupní.
+* Zasílání zpráv mezi [zařízeními a cloud-to-device pomocí služby IoT Hub](iot-hub-devguide-messaging.md) popisuje funkce zasílání zpráv (zařízení ke cloudu a cloud-to-device), které služba IoT Hub poskytuje.
 
-  * [Odesílání zpráv typu zařízení cloud do služby IoT Hub](iot-hub-devguide-messages-d2c.md).
+  * [Odesílejte zprávy mezi zařízeními a cloudy do služby IoT Hub](iot-hub-devguide-messages-d2c.md).
 
-  * [Čtení zpráv typu zařízení cloud z integrovaného koncového bodu](iot-hub-devguide-messages-read-builtin.md).
+  * [Čtení zpráv mezi zařízeními a cloudy z integrovaného koncového bodu](iot-hub-devguide-messages-read-builtin.md).
 
-  * [Použití vlastních koncových bodů a pravidel směrování pro zprávy typu zařízení cloud](iot-hub-devguide-messages-read-custom.md).
+  * [Pro zprávy mezi zařízeními a cloudem použijte vlastní koncové body a pravidla směrování](iot-hub-devguide-messages-read-custom.md).
 
-  * [Odesílat zprávy typu cloud zařízení ze služby IoT Hub](iot-hub-devguide-messages-c2d.md).
+  * [Odesílejte zprávy z cloudu na zařízení z ioT hubu](iot-hub-devguide-messages-c2d.md).
 
-  * [Vytvoření a čtení zpráv IoT Hubu](iot-hub-devguide-messages-construct.md).
+  * [Vytvářejte a čtu zprávy centra IoT Hub](iot-hub-devguide-messages-construct.md).
 
-* [Nahrání souborů ze zařízení](iot-hub-devguide-file-upload.md) popisuje, jak můžete nahrát soubory ze zařízení. Článek obsahuje také informace o tématech, jako je oznámení, že proces nahrávání můžete odesílat.
+* [Nahrávání souborů ze zařízení](iot-hub-devguide-file-upload.md) popisuje, jak můžete nahrávat soubory ze zařízení. Článek také obsahuje informace o tématech, jako jsou oznámení, která může proces nahrávání odeslat.
 
-* [Správa identit zařízení ve službě IoT Hub](iot-hub-devguide-identity-registry.md)popisuje, jaké informace úložiště registru identit IoT hub. Tento článek také popisuje, jak můžete používat a upravte ho.
+* [Správa identit zařízení v centru IoT Hub](iot-hub-devguide-identity-registry.md)popisuje, jaké informace každý adresář registru identit služby IoT hub ukládá. Článek také popisuje, jak k němu můžete přistupovat a upravovat jej.
 
-* [Řízení přístupu ke službě IoT Hub](iot-hub-devguide-security.md) popisuje model zabezpečení umožňuje udělit přístup k funkcím služby IoT Hub pro obě zařízení a cloudové komponenty. Tento článek obsahuje informace o používání tokeny a podrobnosti, které můžete udělit oprávnění a certifikáty X.509.
+* [Řízení přístupu k ioT hubu](iot-hub-devguide-security.md) popisuje model zabezpečení používaný k udělení přístupu k funkcím služby IoT Hub pro zařízení i cloudové komponenty. Článek obsahuje informace o používání tokenů a certifikátů X.509 a podrobnosti o oprávněních, která můžete udělit.
 
-* [Použití dvojčat zařízení k synchronizaci stavu a konfigurace](iot-hub-devguide-device-twins.md) popisuje *dvojče zařízení* koncept. Tento článek také popisuje funkce zařízení, které dvojčat zpřístupnit, například synchronizace zařízení s jeho dvojče zařízení. Tento článek obsahuje informace o data uložená ve dvojčeti zařízení.
+* [Pomocí dvojčat zařízení synchronizujte stav a konfigurace](iot-hub-devguide-device-twins.md) popisují koncept *dvojčete zařízení.* Článek také popisuje dvojčata zařízení funkce vystavit, jako je například synchronizace zařízení s jeho dvojče zařízení. Článek obsahuje informace o datech uložených v dvojčeti zařízení.
 
-* [Vyvolání přímé metody v zařízení](iot-hub-devguide-direct-methods.md) popisuje životní cyklus přímé metody. Tento článek popisuje, jak vyvolávat metody v zařízení v back endové aplikace a zpracovávají přímé metody v zařízení.
+* [Vyvolat přímou metodu na zařízení](iot-hub-devguide-direct-methods.md) popisuje životní cyklus přímé metody. Článek popisuje, jak vyvolat metody na zařízení z back-endové aplikace a zpracovat přímou metodu na vašem zařízení.
 
-* [Plánování úloh na několika zařízeních](iot-hub-devguide-jobs.md) popisuje, jak můžete plánovat úlohy na několika zařízeních. Tento článek popisuje, jak odesílat úlohy, které provádějí úlohy jako přímé metody, aktualizace zařízení, dvojče zařízení pomocí provádí. Také popisuje, jak zadávat dotazy na stav úlohy.
+* [Plánování úloh na více zařízeních](iot-hub-devguide-jobs.md) popisuje, jak můžete naplánovat úlohy na více zařízeních. Článek popisuje, jak odeslat úlohy, které provádějí úlohy jako provádění přímé metody, aktualizace zařízení pomocí dvojčete zařízení. Také popisuje, jak dotaz na stav úlohy.
 
-* [Odkaz – volba komunikačního protokolu](iot-hub-devguide-protocols.md) popisuje komunikační protokoly, že podporuje pro komunikaci služby IoT Hub a uvádí porty, které by se mělo otevřít.
+* [Reference – zvolte komunikační protokol](iot-hub-devguide-protocols.md) popisuje komunikační protokoly, které podporuje služby IoT Hub pro komunikaci zařízení a uvádí porty, které by měly být otevřené.
 
-* [Reference – koncové body IoT Hubu](iot-hub-devguide-endpoints.md) popisuje různé koncové body, které každý IoT hub zpřístupní pro operace modulu runtime a správy. Tento článek také popisuje, jak můžete vytvořit další koncové body služby IoT hub a jak používat hraniční brána umožňuje připojení ke koncovým bodům vaší služby IoT Hub v nestandardních situacích.
+* [Reference – koncové body centra IoT hub](iot-hub-devguide-endpoints.md) popisuje různé koncové body, které každý ioT hub zveřejňuje pro operace runtime a správy. Článek také popisuje, jak můžete vytvořit další koncové body ve vašem centru IoT hub a jak pomocí brány pole povolit připojení k koncovým bodům služby IoT Hub v nestandardních scénářích.
 
-* [Reference – dotazovací jazyk služby IoT Hub pro dvojčata zařízení, úlohy a směrování zpráv](iot-hub-devguide-query-language.md) popisuje tento dotazovací jazyk služby IoT, který vám umožňuje načíst informace z vašeho centra o dvojčata zařízení a úlohy.
+* [Reference – Dotazovací jazyk služby IoT Hub pro dvojčata zařízení, úlohy a směrování zpráv](iot-hub-devguide-query-language.md) popisuje tento dotazovací jazyk služby IoT Hub, který umožňuje načítat informace z centra o dvojčatech a úlohách vašeho zařízení.
 
-* [Reference – kvót a omezování](iot-hub-devguide-quotas-throttling.md) shrnuje kvóty nastavit ve službě IoT Hub a omezení šířky pásma, které nastane při překročení kvóty.
+* [Odkaz – kvóty a omezení](iot-hub-devguide-quotas-throttling.md) shrnuje kvóty nastavené ve službě IoT Hub a omezení, ke kterému dochází při překročení kvóty.
 
-* [Odkaz – ceny](iot-hub-devguide-pricing.md) obsahuje obecné informace o různých SKU a ceny služby IoT Hub a podrobnosti o tom, jak se měří různým funkcím služby IoT Hub jako zprávy ve službě IoT Hub.
+* [Reference – ceny](iot-hub-devguide-pricing.md) poskytují obecné informace o různých skum a ceny pro IoT Hub a podrobnosti o tom, jak se různé funkce ioT hubu měří jako zprávy pomocí IoT Hub.
 
-* [Reference – zařízením a službou SDK](iot-hub-devguide-sdks.md) obsahuje seznam sad SDK Azure IoT pro vývoj aplikací pro zařízení a služby, které komunikují s centrem IoT. Tento článek obsahuje odkazy na online dokumentaci k rozhraní API.
+* [Reference – sady SDK pro zařízení a služby](iot-hub-devguide-sdks.md) uvádí sady Azure IoT SDK pro vývoj aplikací pro zařízení a služby, které interagují s vaším centrem IoT. Článek obsahuje odkazy na dokumentaci online rozhraní API.
 
-* [Reference – podpora IoT Hub MQTT](iot-hub-mqtt-support.md) poskytuje podrobné informace o tom, jak služby IoT Hub podporuje protokolu MQTT. Tento článek popisuje podporu pro protokol MQTT integrované do sady SDK Azure IoT a poskytuje informace o přímo pomocí protokolu MQTT.
+* [Reference – podpora Služby IoT Hub MQTT](iot-hub-mqtt-support.md) poskytuje podrobné informace o tom, jak služba IoT Hub podporuje protokol MQTT. Článek popisuje podporu protokolu MQTT integrované ho sady Azure IoT SDK a poskytuje informace o použití protokolu MQTT přímo.
 
-* [Glosář](iot-hub-devguide-glossary.md) seznam běžných termínů souvisejících se službou IoT Hub.
+* [Glosář](iot-hub-devguide-glossary.md) seznam běžných termínů souvisejících s centrem IoT.

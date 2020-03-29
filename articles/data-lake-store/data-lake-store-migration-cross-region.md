@@ -1,6 +1,6 @@
 ---
-title: Migrace mezi oblastmi Azure Data Lake Storage Gen1 | Dokumentace Microsoftu
-description: Přečtěte si o Azure Data Lake Storage Gen1 migrace mezi oblastmi.
+title: Migrace mezi oblastmi úložiště datového jezera Azure | Dokumenty společnosti Microsoft
+description: Přečtěte si o migraci mezi oblastmi pro Azure Data Lake Storage Gen1.
 services: data-lake-store
 documentationcenter: ''
 author: swums
@@ -13,42 +13,42 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
 ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60518469"
 ---
-# <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Migrace mezi oblastmi Azure Data Lake Storage Gen1
+# <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Migrace Azure Data Lake Storage Gen1 napříč oblastmi
 
-Jak Azure Data Lake Storage Gen1 přestane být k dispozici v nové oblasti, můžete provést jednorázovou migraci, abyste mohli využívat nové oblasti. Zjistěte, co vzít v úvahu při plánování a provedení migrace.
+Jako Azure Data Lake Storage Gen1 bude k dispozici v nových oblastech, můžete se rozhodnout provést jednorázovou migraci, využít výhod nové oblasti. Přečtěte si, co je třeba vzít v úvahu při plánování a dokončení migrace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Další informace najdete v tématu [vytvořte si bezplatný účet Azure ještě dnes](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Data Lake Storage Gen1 ve dvou různých oblastech**. Další informace najdete v tématu [Začínáme s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
+* **Předplatné Azure**. Další informace najdete v [tématu Vytvoření bezplatného účtu Azure ještě dnes](https://azure.microsoft.com/pricing/free-trial/).
+* **Účet Data Lake Storage Gen1 ve dvou různých oblastech**. Další informace najdete [v tématu Začínáme s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
 * **Azure Data Factory**. Další informace najdete v tématu [Úvod do Azure Data Factory](../data-factory/introduction.md).
 
 
 ## <a name="migration-considerations"></a>Požadavky na migraci
 
-Nejprve určete, která je nejvhodnější pro vaše aplikace, která zapíše čte a zpracovává data v Data Lake Storage Gen1 strategie migrace. Při výběru strategie, zvažte požadavky na dostupnost vaší aplikace a výpadků, ke které dojde během migrace. Například může být nejjednodušším přístupem k použití modelu migrace "lift and shift" cloud. V takovém případě aplikaci pozastavíte ve vaší existující oblasti při všechna data zkopírována do nové oblasti. Po dokončení kopírování obnovení aplikace v nové oblasti a pak odstraňte starý účet Data Lake Storage Gen1. Prostoje během migrace je povinný.
+Nejprve určete strategii migrace, která nejlépe vyhovuje vaší aplikaci, která zapisuje, čte nebo zpracovává data v úložišti Data Lake Storage Gen1. Při výběru strategie zvažte požadavky na dostupnost aplikace a prostoje, ke kterým dochází během migrace. Nejjednodušším přístupem může být například použití modelu migrace do cloudu "lift-and-shift". V tomto přístupu pozastavíte aplikaci v existující oblasti, zatímco všechna data se zkopírují do nové oblasti. Po dokončení procesu kopírování obnovíte aplikaci v nové oblasti a potom odstraníte starý účet Data Lake Storage Gen1. Je vyžadována prostoj během migrace.
 
-K omezení prostojů, můžete okamžitě začít ingestování nových dat v nové oblasti. Až budete mít minimum dat potřebných, spusťte aplikaci v nové oblasti. Na pozadí nadále kopírovat existující účet Data Lake Storage Gen1 starší data do nového účtu Data Lake Storage Gen1 v nové oblasti. Pomocí tohoto přístupu můžete provést přepínač nové oblasti s malý výpadek. Pokud všechny starší data zkopírovala, odstraňte starý účet Data Lake Storage Gen1.
+Chcete-li zkrátit prostoje, můžete okamžitě začít ingestovat nová data v nové oblasti. Pokud máte minimální potřebná data, spusťte aplikaci v nové oblasti. Na pozadí pokračujte v kopírování starších dat z existujícího účtu Data Lake Storage Gen1 do nového účtu Data Lake Storage Gen1 v nové oblasti. Pomocí tohoto přístupu můžete přejít do nové oblasti s malými prostoji. Po zkopírování všech starších dat odstraňte starý účet Data Lake Storage Gen1.
 
-Další důležité podrobnosti, které je třeba zvážit při plánování migrace jsou:
+Další důležité podrobnosti, které je třeba zvážit při plánování migrace, jsou:
 
-* **Objem dat**. Objem dat (v gigabajtech, počet soubory a složky a tak dále) má vliv na čas a prostředky, které potřebujete pro migraci.
+* **Objem dat**. Objem dat (v gigabajtů, počet souborů a složek a tak dále) ovlivňuje čas a prostředky, které potřebujete pro migraci.
 
-* **Název účtu data Lake Storage Gen1**. Název nového účtu v nové oblasti musí být globálně jedinečný. Název účtu Data Lake Storage Gen1 staré v oblasti východní USA 2, například může být contosoeastus2.azuredatalakestore.net. Můžete pojmenovat nového účtu Data Lake Storage Gen1 v contosonortheu.azuredatalakestore.net Evropa – sever.
+* **Název účtu Data Lake Storage Gen1**. Nový název účtu v nové oblasti musí být globálně jedinečný. Například název starého účtu Data Lake Storage Gen1 v usa – východ 2 může být contosoeastus2.azuredatalakestore.net. Nový účet Data Lake Storage Gen1 můžete pojmenovat v severní contosonortheu.azuredatalakestore.net EU.
 
-* **Nástroje**. Doporučujeme použít [aktivita služby Azure Data Factory kopírování](../data-factory/connector-azure-data-lake-store.md) kopírování souborů Data Lake Storage Gen1. Data Factory podporuje přesun dat s vysokým výkonem a spolehlivostí. Uvědomte si, že Data Factory kopíruje hierarchii složek a obsah souborů. Budete muset ručně použít libovolné seznamech (ACL), které můžete použít starý účet do nového účtu. Další informace, včetně cíle výkonnosti pro nejlepší scénáře, naleznete v tématu [Průvodce laděním a výkonem aktivity kopírování](../data-factory/copy-activity-performance.md). Pokud chcete data zkopírovat rychleji, potřebujete použít další jednotek pohybu dat v cloudu. Některé nástroje, jako je AdlCopy, nepodporují kopírování dat mezi oblastmi.  
+* **Nástroje**. Doporučujeme použít [aktivitu kopírování Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) ke kopírování souborů Data Lake Storage Gen1. Data Factory podporuje pohyb dat s vysokým výkonem a spolehlivostí. Mějte na paměti, že Data Factory zkopíruje pouze hierarchii složek a obsah souborů. Je třeba ručně použít všechny seznamy řízení přístupu (ACLs), které používáte ve starém účtu na nový účet. Další informace, včetně cílů výkonu pro nejlepší scénáře, naleznete v [tématu Kopírovat aktivitu výkonu a optimalizace průvodce](../data-factory/copy-activity-performance.md). Pokud chcete data zkopírovat rychleji, možná budete muset použít další jednotky cloudového pohybu dat. Některé další nástroje, například AdlCopy, nepodporují kopírování dat mezi oblastmi.  
 
-* **Poplatky za šířku pásma**. [Poplatky za šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/) použít, protože data se přenáší z oblasti Azure.
+* **Poplatky za šířku pásma**. [Poplatky za šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/) platí, protože data se přenášejí z oblasti Azure.
 
-* **Seznamy ACL v data**. Zabezpečení dat v nové oblasti s použitím seznamů řízení přístupu k souborům a složkám. Další informace najdete v tématu [zabezpečení dat uložených v Azure Data Lake Storage Gen1](data-lake-store-secure-data.md). Doporučujeme použít migraci k aktualizaci a upravit vaše seznamy ACL. Můžete chtít použít nastavení podobný aktuální nastavení. Můžete zobrazit seznamy ACL, které se použijí k jakémukoli souboru pomocí webu Azure portal, [rutin prostředí PowerShell](/powershell/module/az.datalakestore/get-azdatalakestoreitempermission), nebo sad SDK.  
+* **acl na vašich datech**. Zabezpečte data v nové oblasti použitím seznamů AC na soubory a složky. Další informace najdete [v tématu Zabezpečení dat uložených v Azure Data Lake Storage Gen1](data-lake-store-secure-data.md). Doporučujeme použít migraci k aktualizaci a úpravě aloků. Možná budete chtít použít nastavení podobná aktuálnímu nastavení. Acls, které jsou použity pro libovolný soubor pomocí portálu Azure, [rutin prostředí PowerShell](/powershell/module/az.datalakestore/get-azdatalakestoreitempermission)nebo sad SDK.  
 
-* **Umístění služby analýzy**. Pro zajištění nejlepšího výkonu analytickými službami, jako je Azure Data Lake Analytics nebo Azure HDInsight, by měl být ve stejné oblasti jako vaše data.  
+* **Umístění analytických služeb**. Chcete-li dosáhnout nejlepšího výkonu, vaše analytické služby, jako je Azure Data Lake Analytics nebo Azure HDInsight, by měly být ve stejné oblasti jako vaše data.  
 
-## <a name="next-steps"></a>Další postup
-* [Přehled služby Azure Data Lake Storage Gen1](data-lake-store-overview.md)
+## <a name="next-steps"></a>Další kroky
+* [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)

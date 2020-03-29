@@ -1,36 +1,36 @@
 ---
-title: Použití Azure Automation Runbook ke správě zařízení StorSimple
-description: Naučte se používat sadu Runbook Azure Automation k automatizaci úloh StorSimple.
+title: Správa zařízení StorSimple pomocí sady Azure Automation Runbook
+description: Naučte se, jak pomocí sady Azure Automation Runbook automatizovat úlohy StorSimple
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 727bebe0c190ed4dff4408884c45fe166ad541a9
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76276976"
 ---
-# <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Použití Azure Automation Runbooky ke správě zařízení StorSimple
+# <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Správa zařízení StorSimple pomocí runbooků Azure Automation
 
-Tento článek popisuje, jak se Azure Automation Runbooky používají ke správě zařízení řady StorSimple 8000 v Azure Portal. K dispozici je ukázková sada Runbook, která vás provede jednotlivými kroky konfigurace prostředí pro spuštění této sady Runbook.
+Tento článek popisuje, jak se runbooky Azure Automation používají ke správě zařízení řady StorSimple 8000 na webu Azure Portal. Součástí ukázkového seznamu runbooků jsou kroky konfigurace prostředí pro spuštění tohoto seznamu runbook.
 
 
-## <a name="configure-add-and-run-azure-runbook"></a>Konfigurace, přidání a spuštění Runbooku Azure
+## <a name="configure-add-and-run-azure-runbook"></a>Konfigurace, přidání a spuštění sady Runbook Azure
 
-V této části najdete příklad skriptu Windows PowerShellu pro StorSimple a podrobnosti o různých krocích potřebných k importu skriptu do sady Runbook a následném publikování a spuštění sady Runbook.
+Tato část má příklad skriptu prostředí Windows PowerShell pro StorSimple a podrobně popisuje různé kroky potřebné k importu skriptu do sady Runbook a následnépublikování a spuštění sady Runbook.
 
 ### <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že máte následující:
+Než začnete, ujistěte se, že máte:
 
-* aktivní předplatné Azure přidružené k vaší službě StorSimple Device Manager zaregistrovanou pomocí zařízení řady StorSimple 8000.
+* aktivní předplatné Azure přidružené k vaší službě StorSimple Device Manager registrované na zařízení řady StorSimple 8000.
 
-* Prostředí Windows PowerShell 5,0 nainstalované na vašem počítači (nebo hostitele Windows serveru pro StorSimple, pokud ho používáte).
+* V počítači je nainstalováno prostředí Windows PowerShell 5.0 (Nebo hostitel systému Windows Server pro váš StorSimple, pokud jej používáte).
 
-### <a name="create-automation-runbook-module-in-windows-powershell"></a>Vytvoření modulu Automation Runbook v prostředí Windows PowerShell
+### <a name="create-automation-runbook-module-in-windows-powershell"></a>Vytvoření modulu runbook automatizace v prostředí Windows PowerShell
 
 Chcete-li vytvořit modul automatizace pro správu zařízení řady StorSimple 8000, proveďte následující kroky:
 
@@ -41,15 +41,15 @@ Chcete-li vytvořit modul automatizace pro správu zařízení řady StorSimple 
         cd C:\scripts\StorSimpleSDKTools
     ```
 
-2. [Stáhněte si NUGET CLI](https://www.nuget.org/downloads) do složky vytvořené v předchozím kroku. Existují různé verze _NuGet. exe_. Vyberte verzi odpovídající vaší sadě SDK. Každý odkaz ke stažení odkazuje přímo na soubor _. exe_ . Ujistěte se, že kliknete pravým tlačítkem a uložíte soubor do počítače, ale nebudete ho spouštět z prohlížeče.
+2. [Stáhněte si rozhraní se zástupcem vazby NuGet](https://www.nuget.org/downloads) pod složku vytvořenou v předchozím kroku. Existují různé verze _nuget.exe_. Zvolte verzi odpovídající vaší sadě SDK. Každý odkaz ke stažení odkazuje přímo na soubor _EXE._ Nezapomeňte soubor klepnout pravým tlačítkem myši a uložit jej do počítače, nikoli jej spustit z prohlížeče.
 
-    Spuštěním následujícího příkazu můžete také stáhnout a uložit skript ve stejné složce, kterou jste vytvořili dříve.
+    Můžete také spustit následující příkaz ke stažení a uložení skriptu ve stejné složce, kterou jste vytvořili dříve.
 
     ```
         wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -Out C:\scripts\StorSimpleSDKTools\nuget.exe
     ```
 
-3. Stáhněte si závislou sadu SDK.
+3. Stáhněte závislou sadu SDK.
 
     ```
         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.Azure.Management.Storsimple8000series
@@ -63,7 +63,7 @@ Chcete-li vytvořit modul automatizace pro správu zařízení řady StorSimple 
         wget https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Monitor-Backups.ps1 -Out Monitor-Backups.ps1
     ```
 
-5. Vytvořte Azure Automation modul Runbooku pro správu zařízení řady StorSimple 8000. V okně prostředí Windows PowerShell zadejte následující příkazy:
+5. Vytvořte modul runbooku Azure Automation pro správu zařízení řady StorSimple 8000. V okně Windows Powershell zadejte následující příkazy:
 
     ```powershell
         # set path variables
@@ -83,11 +83,11 @@ Chcete-li vytvořit modul automatizace pro správu zařízení řady StorSimple 
         compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
     ```
 
-6. Ověřte, zda je v `C:\scripts\StorSimpleSDKTools`vytvořen soubor zip modulu automatizace.
+6. Ověřte, zda je v `C:\scripts\StorSimpleSDKTools`aplikaci vytvořen soubor zip modulu automatizace.
 
-    ![ověření – automatizace-modul](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
+    ![ověřit-automatizace-modul](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
 
-7. Následující výstup se zobrazí, když se modul automatizace vytvoří pomocí prostředí Windows PowerShell.
+7. Následující výstup je uveden při vytvoření modulu automatizace prostřednictvím prostředí Windows PowerShell.
 
     ```powershell
     mkdir C:\scripts\StorSimpleSDKTools
@@ -169,51 +169,51 @@ Chcete-li vytvořit modul automatizace pro správu zařízení řady StorSimple 
     compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
     ```
 
-### <a name="import-publish-and-run-automation-runbook"></a>Import, publikování a spuštění Runbooku služby Automation
+### <a name="import-publish-and-run-automation-runbook"></a>Import, publikování a spuštění runbooku Automation
 
-1. Vytvořte v Azure Portal účet služby Automation spustit jako pro Azure. Provedete to tak, že přejdete na **Azure marketplace > vše** a pak vyhledáte **Automation**. Vyberte **účty Automation**.
+1. Vytvořte účet Azure Run As automation na webu Azure Portal. Chcete-li tak učinit, přejděte na **Azure marketplace > Všechno** a **vyhledejte automatizaci**. Vyberte **automatizační účty**.
 
-    ![hledání – automatizace](./media/storsimple-8000-automation-azurerm-runbook/automation1.png)
+    ![automatizace vyhledávání](./media/storsimple-8000-automation-azurerm-runbook/automation1.png)
 
-2. V okně **Přidat účet Automation** :
+2. V okně **Přidat účet automatizace:**
 
-   1. Zadejte **název** svého účtu Automation.
-   2. Vyberte **předplatné** propojené s vaší službou StorSimple Device Manager.
-   3. Vytvořte novou skupinu prostředků nebo vyberte některou z existujících skupin prostředků.
-   4. Vyberte **umístění** (Pokud je to možné stejné jako v případě, kde je služba spuštěná).
-   5. Ponechte vybranou možnost výchozí **účet Spustit jako** .
-   6. Volitelně můžete zaškrtnout **Připnout na řídicí panel**. Klikněte na **Vytvořit**.
+   1. Zadejte **název** účtu Automation.
+   2. Vyberte **předplatné** spojené se službou StorSimple Device Manager.
+   3. Vytvořte novou skupinu prostředků nebo vyberte z existující skupiny prostředků.
+   4. Vyberte **umístění** (pokud možno stejné jako místo, kde je spuštěna vaše služba).
+   5. Ponechte vybranou výchozí možnost **Vytvořit spustit jako účet.**
+   6. Volitelně **zaškrtněte políčko Připnout k řídicímu panelu**. Klikněte na **Vytvořit**.
 
-       ![create-automation-account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
+       ![vytvořit-automatizace-účet](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
-      Po úspěšném vytvoření účtu Automation budete upozorněni. Další informace o tom, jak vytvořit účet Automation, najdete v tématu [Vytvoření účtu Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+      Po úspěšném vytvoření účtu automatizace budete upozorněni. Další informace o tom, jak vytvořit účet automatizace, naleznete v najdete v na [jet spustit jako účet](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
 
-3. Abyste zajistili, že vytvořený účet Automation bude mít přístup ke službě StorSimple Device Manager, je potřeba přiřadit příslušné oprávnění k účtu Automation. Přejděte na **řízení přístupu** ve službě StorSimple Device Manager. Klikněte na **+ Přidat** a zadejte název účtu Azure Automation. **Uložte** nastavení.
+3. Chcete-li zajistit, aby vytvořený účet automatizace měl přístup ke službě StorSimple Device Manager, je třeba přiřadit účtu automatizace příslušná oprávnění. Přejděte do **řízení přístupu** ve službě Správce zařízení StorSimple. Klikněte na **+ Přidat** a zadejte název účtu Azure Automation. **Uložte** nastavení.
 
     ![add-permissions-automation-account](./media/storsimple-8000-automation-azurerm-runbook/goto-add-roles.png)
 
-4. V nově vytvořeném účtu přejděte na **sdílené prostředky > moduly** a klikněte na **+ Přidat modul**.
+4. V nově vytvořeném účtu přejděte na **sdílené prostředky > moduly** a klepněte na tlačítko **+ Přidat modul**.
 
-5. V okně **Přidat modul** přejděte do umístění modulu zip a vyberte a otevřete modul. Klikněte na **OK**.
+5. V okně **Přidat modul** vyhledejte umístění modulu zip a vyberte a otevřete modul. Klikněte na tlačítko **OK**.
 
     ![přidat modul](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. Přejděte na **proces automatizace automatizace > Runbooky a klikněte na + Přidat Runbook**. V okně **Přidat Runbook** klikněte na **importovat existující Runbook**. Přejděte na soubor skriptu prostředí Windows PowerShell pro **soubor sady Runbook**. Typ Runbooku se vybere automaticky. Zadejte název a nepovinný popis Runbooku. Klikněte na **Vytvořit**.
+6. Přejděte na **> runbooky automatizace procesů a klikněte na + Přidat runbook**. V okně **Přidat runbook** klepněte na **importovat existující runbook**. Přejděte na soubor skriptu prostředí Windows PowerShell pro **soubor runbooku**. Automaticky se vybere typ knihy Runbook. Zadejte název a volitelný popis runbooku. Klikněte na **Vytvořit**.
 
     ![přidat modul](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 
-7. Runbook se přidá do seznamu runbooků. Vyberte tuto sadu Runbook a klikněte na ni.
+7. Runbook je přidán do seznamu runbooků. Vyberte a klikněte na tento soubor Runbook.
 
     ![click-new-runbook](./media/storsimple-8000-automation-azurerm-runbook/verify-runbook-created.png)
 
-8. Upravte Runbook a klikněte na **testovací podokno**. Zadejte parametry, jako je název služby StorSimple Device Manager, název zařízení StorSimple a předplatné. **Spusťte** test. Sestava je generována po dokončení spuštění. Další informace najdete v tématu [Postup testování Runbooku](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook).
+8. Upravte runbook a klepněte na **podokno Test**. Zadejte parametry, jako je název služby Správce zařízení StorSimple, název zařízení StorSimple a předplatné. **Spusťte** test. Sestava je generována po dokončení spuštění. Další informace naleznete v [otestovaném runbooku](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook).
 
-    ![test – Runbook](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
+    ![testovací runbook](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 
-9. Zkontrolujte výstup Runbooku v podokně test. V případě splnění zavřete podokno. Klikněte na **publikovat** a po zobrazení výzvy k potvrzení, potvrzení a publikování Runbooku.
+9. Zkontrolujte výstup z runbooku v testovacím podokně. Pokud je splněna, zavřete podokno. Klikněte na **Publikovat** a po zobrazení výzvy k potvrzení, potvrzení a publikování runbooku.
 
-    ![publikování – Runbook](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
+    ![publish-runbook](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Ke správě zařízení StorSimple použijte službu StorSimple Device Manager](storsimple-8000-manager-service-administration.md).
+[Ke správě zařízení StorSimple použijte službu StorSimple](storsimple-8000-manager-service-administration.md)Device Manager .

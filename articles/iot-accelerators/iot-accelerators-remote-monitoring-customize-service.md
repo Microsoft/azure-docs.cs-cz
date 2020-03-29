@@ -1,6 +1,6 @@
 ---
-title: Přidat službu do řešení vzdálené monitorování uživatelské rozhraní – Azure | Dokumentace Microsoftu
-description: Tento článek ukazuje, jak přidat nové služby do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní.
+title: Přidání služby do uživatelského uživatelského režimu řešení vzdáleného monitorování – Azure | Dokumenty společnosti Microsoft
+description: Tento článek ukazuje, jak přidat novou službu do webového uživatelského uživatelského uživatelského uživatelského uživatelského uživatelského zařízení akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,81 +9,81 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447042"
 ---
-# <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní služby do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní
+# <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidání vlastní služby do webového uživatelského uživatelského uživatelského nastavení akcelerátoru řešení vzdáleného monitorování
 
-Tento článek ukazuje, jak přidat nové služby do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní. Tento článek popisuje:
+Tento článek ukazuje, jak přidat novou službu do webového uživatelského uživatelského uživatelského uživatelského uživatelského uživatelského zařízení akcelerátoru řešení vzdáleného monitorování. Článek popisuje:
 
-- Jak připravit místní vývojové prostředí.
-- Postup přidání nové služby do webového uživatelského rozhraní.
+- Jak připravit prostředí místního rozvoje.
+- Jak přidat novou službu do webového uživatelského uživatelského uživatelského prohlášení.
 
-Příklad služby v tomto článku poskytuje data pro mřížky, která [přidat vlastní mřížky do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-grid.md) článek ukazuje, jak přidat.
+Ukázková služba v tomto článku poskytuje data pro mřížku, která přidat vlastní mřížku do článku s postupem webového uživatelského [panelu akcelerátoru řešení vzdáleného monitorování,](iot-accelerators-remote-monitoring-customize-grid.md) vám ukáže, jak přidat.
 
-V aplikaci React služba obvykle komunikuje s back-end služby. Příklady v akcelerátoru řešení vzdáleného monitorování zahrnují služby, které pracují s IoT hub správci a konfigurací mikroslužeb.
+V aplikaci React služba obvykle spolupracuje s back-endovou službou. Příklady v akcelerátoru řešení vzdáleného monitorování zahrnují služby, které interagují se správcem služby IoT hub a konfiguračními mikroslužbami.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v této příručce s postupy, musíte na svém místním vývojovém počítači nainstalovaný následující software:
+Chcete-li provést kroky v tomto návodu, potřebujete v místním vývojovém počítači nainstalovaný následující software:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Než začnete
 
-By se měla dokončit kroky v [přidat vlastní stránky pro vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-page.md) článek než budete pokračovat.
+Měli byste dokončit kroky v [přidat vlastní stránku na vzdálené monitorování řešení akcelerátoru webového](iot-accelerators-remote-monitoring-customize-page.md) uživatelského panelu, než budete pokračovat.
 
 ## <a name="add-a-service"></a>Přidat službu
 
-Pokud chcete přidat službu do webového uživatelského rozhraní, budete muset přidat zdrojové soubory, které definují služby a změnit některé existující soubory ve webovém uživatelském rozhraní používající nové služby.
+Chcete-li přidat službu do webového uživatelského uživatelského nastavení, je třeba přidat zdrojové soubory, které definují službu, a upravit některé existující soubory tak, aby webové uživatelské uživatelské uživatelské nastavení bylo informováno o nové službě.
 
-### <a name="add-the-new-files-that-define-the-service"></a>Přidat nové soubory, které definují služby
+### <a name="add-the-new-files-that-define-the-service"></a>Přidání nových souborů, které definují službu
 
-Abyste mohli začít, **src/návod/služby** složka obsahuje soubory, které definují jednoduché služby:
+Chcete-li začít, složka **src/návod/služby** obsahuje soubory, které definují jednoduchou službu:
 
 **exampleService.js**
 
 [!code-javascript[Example service](~/remote-monitoring-webui/src/walkthrough/services/exampleService.js?name=service "Example service")]
 
-Další informace o tom, jak se implementují služby najdete v tématu [Úvod do reaktivního programování jste dosud chyběla](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
+Další informace o implementaci služeb najdete v [tématu Úvod do reaktivního programování, které vám chybělo](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
 
 **model/exampleModels.js**
 
 [!code-javascript[Example model](~/remote-monitoring-webui/src/walkthrough/services/models/exampleModels.js?name=models "Example model")]
 
-Kopírování **exampleService.js** k **src/služby** složku a Kopírovat **exampleModels.js** k **src/services/modely** složky.
+Zkopírujte **exampleService.js** do složky **src/services** a zkopírujte **exampleModels.js** do složky **src/services/models.**
 
-Aktualizace **index.js** ve **src/služby** složku pro export nové služby:
+Chcete-li exportovat novou službu, aktualizujte soubor **index.js** ve složce **src/services:**
 
 ```js
 export * from './exampleService';
 ```
 
-Aktualizace **index.js** soubor **src/services/modely** složku, kterou chcete exportovat nový model:
+Chcete-li exportovat nový model, aktualizujte soubor **index.js** ve složce **src/services/models:**
 
 ```js
 export * from './exampleModels';
 ```
 
-### <a name="set-up-the-calls-to-the-service-from-the-store"></a>Nastavit volání ke službě z úložiště
+### <a name="set-up-the-calls-to-the-service-from-the-store"></a>Nastavení volání služby z úložiště
 
-Jak začít, **src/návod/store/reduktorů** složka obsahuje redukční funkci vzorku:
+Chcete-li začít, složka **src/walk/store/reducers** obsahuje ukázkový reduktor:
 
 **exampleReducer.js**
 
 [!code-javascript[Example reducer](~/remote-monitoring-webui/src/walkthrough/store/reducers/exampleReducer.js?name=reducer "Example reducer")]
 
-Kopírování **exampleReducer.js** k **src/store/reduktorů** složky.
+Zkopírujte **exampleReducer.js** do složky **src/store/reducers.**
 
-Další informace o redukční funkci a **náměty**, naleznete v tématu [redux pozorovat](https://redux-observable.js.org/).
+Další informace o reduktoru a **eposu**najdete v [tématu redux-observable](https://redux-observable.js.org/).
 
-### <a name="configure-the-middleware"></a>Nakonfigurujte middleware
+### <a name="configure-the-middleware"></a>Konfigurace middlewaru
 
-Pro konfiguraci middlewaru, přidejte redukční funkci k **rootReducer.js** soubor **src/úložiště** složky:
+Chcete-li nakonfigurovat middleware, přidejte reduktor do souboru **rootReducer.js** ve složce **src/store:**
 
 ```js
 import { reducer as exampleReducer } from './reducers/exampleReducer';
@@ -97,7 +97,7 @@ const rootReducer = combineReducers({
 });
 ```
 
-Přidat náměty k **rootEpics.js** soubor **src/store** složky:
+Přidejte eposy do souboru **rootEpics.js** ve složce **src/store:**
 
 ```js
 import { epics as exampleEpics } from './reducers/exampleReducer';
@@ -112,10 +112,10 @@ const epics = [
 ];
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o prostředky dostupné pro umožňují přidat nebo upravit služby ve webovém uživatelském rozhraní v akcelerátoru řešení vzdáleného monitorování.
+V tomto článku jste se dozvěděli o dostupných prostředcích, které vám pomohou přidat nebo přizpůsobit služby ve webovém uživatelském rozhraní v akcelerátoru řešení vzdáleného monitorování.
 
-Nyní jste definovali služby, dalším krokem je [přidat vlastní mřížky do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-grid.md) , která zobrazuje data vrácené službou.
+Nyní jste definovali službu, dalším krokem je [přidání vlastní mřížky do webového uživatelského uživatelského uživatelského nastavení akcelerátoru řešení vzdáleného monitorování,](iot-accelerators-remote-monitoring-customize-grid.md) které zobrazuje data vrácená službou.
 
-Další koncepční informace o akcelerátoru řešení vzdáleného monitorování najdete v tématu [architektura vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Další rámcové informace o akcelerátoru řešení vzdáleného monitorování naleznete v [tématu Architektura vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md).

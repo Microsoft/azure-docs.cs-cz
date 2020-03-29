@@ -1,6 +1,6 @@
 ---
-title: Použití Azure DevTest Labs pro vývojáře | Microsoft Docs
-description: Seznamte se s Azure DevTest Labs funkcemi, které se dají použít k splnění požadavků na vývojáře a podrobných kroků, které můžete provést při nastavení testovacího prostředí.
+title: Použití azure devtest labs pro vývojáře | Dokumenty společnosti Microsoft
+description: Seznamte se s funkcemi Azure DevTest Labs, které se můžou použít ke splnění požadavků vývojářů, a podrobných krocích, které můžete použít k nastavení testovacího prostředí.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,124 +15,124 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: ae44696f62a085bf1e798f0915e2bd1e27c3a78f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760143"
 ---
-# <a name="use-azure-devtest-labs-for-developers"></a>Použití Azure DevTest Labs pro vývojáře
+# <a name="use-azure-devtest-labs-for-developers"></a>Použití azure devtest labs pro vývojáře
 Azure DevTest Labs lze použít k implementaci mnoha klíčových scénářů. Jedním z nejzákladnějších je hostování počítačů pro vývojáře. V tomto scénáři poskytuje služba DevTest Labs následující výhody:
 
-- Vývojáři můžou rychle zřídit své vývojové počítače na vyžádání.
+- Vývojáři mohou rychle zřídit své vývojové počítače na vyžádání.
 - Vývojáři si můžou počítače pro vývoj kdykoli snadno přizpůsobit.
-- Správci mohou řídit náklady tím, že zajistí, že:
-  - Vývojáři nemohou získat více virtuálních počítačů, než potřebují pro vývoj.
-  - Virtuální počítače jsou vypnuté, když se nepoužívají. 
+- Správci mohou řídit náklady tím, že zajistí, aby:
+  - Vývojáři nemohou získat více virtuálních aplikací, než potřebují pro vývoj.
+  - Virtuální virtuální mích se vypínají, když se nepoužívají. 
 
 ![Použití DevTest Labs pro školení](./media/devtest-lab-developer-lab/devtest-lab-developer-lab.png)
 
-V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se dají použít ke splnění požadavků na vývojáře a podrobných kroků, které můžete provést při nastavování testovacího prostředí.
+V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které lze použít ke splnění požadavků pro vývojáře a podrobné kroky, které můžete postupovat při nastavení testovacího prostředí.
 
 ## <a name="implementing-developer-environments-with-azure-devtest-labs"></a>Implementace vývojářských prostředí pomocí Azure DevTest Labs
 1. **Vytvoření testovacího prostředí** 
    
-    Laboratoře jsou výchozím bodem v Azure DevTest Labs. Po vytvoření testovacího prostředí můžete provádět úlohy, jako je přidání uživatelů (vývojářů) do testovacího prostředí, nastavení zásad pro řízení nákladů a definování imagí virtuálních počítačů, které můžou rychle vytvořit a další.  
+    Testovací prostředí jsou výchozím bodem v azure devtest labs. Po vytvoření testovacího prostředí můžete provádět úkoly, jako je přidávání uživatelů (vývojářů) do testovacího prostředí, nastavení zásad pro řízení nákladů, definování ibi obrazových kopií virtuálních počítačů, které lze rychle vytvořit, a další.  
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
    | Úkol | Co se naučíte |
    | --- | --- |
-   | [Vytvoření testovacího prostředí v Azure DevTest Labs](devtest-lab-create-lab.md) |Naučte se, jak vytvořit testovací prostředí v Azure DevTest Labs Azure Portal. |
-2. **Vytváření virtuálních počítačů během několika minut pomocí připravených imagí a vlastních imagí z Marketplace** 
+   | [Vytvoření testovacího prostředí v Azure DevTest Labs](devtest-lab-create-lab.md) |Zjistěte, jak vytvořit testovací prostředí v Azure DevTest Labs na webu Azure Portal. |
+2. **Vytváření virtuálních měn během několika minut pomocí hotových obrázků na trhu a vlastních bitových kopií** 
    
-    V Azure Marketplace si můžete vybrat připravené image z nejrůznějších imagí a zpřístupnit je v testovacím prostředí. Pokud připravené image nesplňují vaše požadavky, můžete vytvořit vlastní image vytvořením testovacího virtuálního počítače pomocí předem připraveného obrázku z Azure Marketplace, instalací veškerého softwaru, který potřebujete, a uložením virtuálního počítače jako vlastního obrazu v testovacím prostředí.
+    Můžete si vybrat hotové image z široké škály ibi na Azure Marketplace a zpřístupnit je v testovacím prostředí. Pokud hotové image nesplňují vaše požadavky, můžete vytvořit vlastní image vytvořením virtuálního počítače testovacího prostředí pomocí hotové image z Azure Marketplace, instalací veškerého softwaru, který potřebujete, a uložením virtuálního počítače jako vlastní image v testovacím prostředí.
 
-    Pokud budete používat vlastní image, zvažte vytvoření a distribuci imagí pomocí objektu pro vytváření imagí. Objekt pro vytváření imagí je řešení pro konfiguraci, které pravidelně vytváří a distribuuje nakonfigurované image automaticky. Tím ušetříte čas potřebný k ruční konfiguraci systému po vytvoření virtuálního počítače se základním operačním systémem.
+    Pokud budete používat vlastní obrázky, zvažte použití továrny obrázků k vytvoření a distribuci obrázků. Továrna bitových kopií je řešení konfigurace jako kódu, které pravidelně sestavuje a distribuuje nakonfigurované bitové kopie automaticky. To šetří čas potřebný k ruční konfiguraci systému po vytvoření virtuálního počítače se základním osem.
   
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
    | Úkol | Co se naučíte |
    | --- | --- |
-   | [Konfigurace Azure Marketplacech imagí](devtest-lab-configure-marketplace-images.md) |Naučte se, jak můžete přizpůsobovat Azure Marketplace imagí, a zpřístupnit je pro výběr jenom těch imagí, které pro vývojáře potřebujete.|
-   | [Vytvoření vlastní image](devtest-lab-create-template.md) |Vytvořte vlastní image předinstalací softwaru, který potřebujete, aby mohli vývojáři rychle vytvořit virtuální počítač s použitím vlastní image.|
-   | [Informace o objektu pro vytváření imagí](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |Podívejte se na video, které popisuje, jak nastavit a použít objekt pro vytváření imagí.|
+   | [Konfigurace imagí na Azure Marketplace](devtest-lab-configure-marketplace-images.md) |Zjistěte, jak můžete whitelist Image Azure Marketplace, takže k dispozici pro výběr pouze image, které chcete pro vývojáře.|
+   | [Vytvoření vlastní image](devtest-lab-create-template.md) |Vytvořte vlastní bitovou kopii předinstalací softwaru, který potřebujete, aby vývojáři mohli rychle vytvořit virtuální hod pomocí vlastní image.|
+   | [Další informace o továrně obrázků](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |Podívejte se na video, které popisuje, jak nastavit a používat továrnu na obrázky.|
 
 3. **Vytváření opakovaně použitelných šablon pro vývojářské počítače** 
    
-    Vzorec v Azure DevTest Labs je seznam výchozích hodnot vlastností, které se používají k vytvoření virtuálního počítače. Vzorec můžete v testovacím prostředí vytvořit tak, že vybíráte image, velikost virtuálního počítače (kombinaci procesoru a paměti RAM) a virtuální síť. Každý vývojář může zobrazit vzorec v testovacím prostředí a použít ho k vytvoření virtuálního počítače. 
+    Vzorec v Azure DevTest Labs je seznam výchozích hodnot vlastností, které se používají k vytvoření virtuálního počítače. Vzorec můžete vytvořit v testovacím prostředí výběrem bitové kopie, velikosti virtuálního počítače (kombinace procesoru a paměti RAM) a virtuální sítě. Každý vývojář může zobrazit vzorec v testovacím prostředí a použít ho k vytvoření virtuálního virtuálního soudu. 
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
    | Úkol | Co se naučíte |
    | --- | --- |
-   | [Správa vzorců DevTest Labs pro vytváření virtuálních počítačů](devtest-lab-manage-formulas.md) |Zjistěte, jak můžete vytvořit vzorec vyzvednutím image, velikosti virtuálního počítače (kombinace CPU a paměti RAM) a virtuální sítě.|
+   | [Správa vzorců DevTest Labs za účelem vytvoření virtuálních měn](devtest-lab-manage-formulas.md) |Zjistěte, jak můžete vytvořit vzorec tak, že zvednete bitovou kopii, velikost virtuálního počítače (kombinaci procesoru a paměti RAM) a virtuální síť.|
 
-4. **Vytvoření artefaktů pro povolení flexibilního přizpůsobení virtuálního počítače**
+4. **Vytvoření artefaktů umožňujících flexibilní přizpůsobení virtuálních počítačů**
 
-   Artefakty slouží k nasazení a konfiguraci aplikace po zřízení virtuálního počítače. Artefakty mohou být:
+   Artefakty se používají k nasazení a konfiguraci aplikace po zřízení virtuálního počítače. Artefakty mohou být:
 
-   - Nástroje, které chcete na virtuálním počítači nainstalovat – například agenti, Fiddler a Visual Studio.
-   - Akce, které chcete na virtuálním počítači spustit – například klonování úložiště.
-   - Aplikace, které chcete otestovat
+   - Nástroje, které chcete nainstalovat na virtuální počítač – například agenti, šumava a Visual Studio.
+   - Akce, které chcete spustit na virtuálním počítači – například klonování repo.
+   - Aplikace, které chcete testovat.
 
-   Mnoho artefaktů je již k dispozici předem. Můžete vytvořit vlastní artefakty, pokud chcete další přizpůsobení pro konkrétní potřeby.
+   Mnoho artefaktů je již k dispozici iout-of-the-box. Pokud chcete více přizpůsobení pro vaše specifické potřeby, můžete vytvořit vlastní artefakty.
 
    Další informace získáte kliknutím na odkazy v následující tabulce:
    
    | Úkol | Co se naučíte |
    | --- | --- |
-   | [Vytvoření vlastních artefaktů pro virtuální počítač s DevTest Labs](devtest-lab-artifact-author.md) |Vytvořte vlastní artefakty pro virtuální počítače v testovacím prostředí.|
-   | [Přidání úložiště Git pro ukládání vlastních artefaktů a šablon Azure Resource Manager pro použití v Azure DevTest Labs](devtest-lab-add-artifact-repo.md) |Naučte se ukládat vlastní artefakty ve vlastním privátním úložišti Git.|
+   | [Vytvoření vlastních artefaktů pro váš virtuální počítač DevTest Labs](devtest-lab-artifact-author.md) |Vytvořte si vlastní artefakty pro virtuální počítače ve vašem testovacím prostředí.|
+   | [Přidání úložiště Git pro ukládání vlastních artefaktů a šablon Azure Resource Managerpro použití v laboratořích Azure DevTest Labs](devtest-lab-add-artifact-repo.md) |Přečtěte si, jak ukládat vlastní artefakty do vlastního úložiště Git.|
 
 5. **Náklady na kontrolu**
    
-    Azure DevTest Labs umožňuje nastavit v testovacím prostředí zásadu, která určuje maximální počet virtuálních počítačů, které může vývojář v testovacím prostředí vytvořit. 
+    Azure DevTest Labs umožňuje nastavit zásady v testovacím prostředí k určení maximální počet virtuálních počítačů, které mohou být vytvořeny vývojářv testovacím prostředí. 
    
-    Pokud má váš tým pro vývojáře nastavený pracovní plán a chcete zastavit všechny virtuální počítače v konkrétní denní době a pak je automaticky restartovat v následujícím dni, můžete to provést tak, že nastavíte automatické vypínání a automaticky spouštěné zásady v testovacím prostředí. 
+    Pokud váš vývojářský tým má nastavený pracovní plán a chcete zastavit všechny virtuální počítače v určitou denní dobu a pak je automaticky restartovat následující den, můžete to snadno provést nastavením zásad automatického vypnutí a automatického spuštění v testovacím prostředí. 
    
-    Nakonec, až se vývoj aplikací dokončí, můžete odstranit všechny virtuální počítače najednou spuštěním jednoho skriptu PowerShellu. 
+    Nakonec po dokončení vývoje aplikací můžete odstranit všechny virtuální aplikace najednou spuštěním jednoho skriptu prostředí PowerShell. 
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
    | Úkol | Co se naučíte |
    | --- | --- |
-   | [Definice zásad testovacího prostředí](devtest-lab-set-lab-policy.md) |Řízení nákladů pomocí nastavení zásad v testovacím prostředí. |
-   | [Odstranění všech virtuálních počítačů testovacího prostředí pomocí skriptu PowerShellu](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Až se vývoj dokončí, odstraňte všechny cvičení v jedné operaci.|
+   | [Definice zásad testovacího prostředí](devtest-lab-set-lab-policy.md) |Řízení nákladů nastavením zásad v testovacím prostředí. |
+   | [Odstranění všech virtuálních proudů testovacího prostředí pomocí skriptu PowerShellu](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Po dokončení vývoje odstraňte všechna testovací prostředí v jedné operaci.|
 
 1. **Přidání virtuální sítě k virtuálnímu počítači** 
    
-    DevTest Labs vytváří novou virtuální síť (VNET) při každém vytvoření testovacího prostředí. Pokud jste si nakonfigurovali vlastní virtuální síť – třeba pomocí ExpressRoute nebo VPN typu Site-to-site – můžete tuto virtuální síť přidat do nastavení virtuální sítě v testovacím prostředí, aby byla dostupná při vytváření virtuálních počítačů.
+    DevTest Labs vytvoří novou virtuální síť (VNET) při každém vytvoření testovacího prostředí. Pokud jste nakonfigurovali vlastní virtuální síť – například pomocí ExpressRoute nebo VPN site-to-site – můžete tuto virtuální síť přidat do nastavení virtuální sítě testovacího prostředí tak, aby byla dostupná při vytváření virtuálních počítačů.
 
-    Kromě toho je k dispozici artefakt služby Azure Active Directory k připojení k doméně, který se připojí k virtuálnímu počítači k doméně při vytváření virtuálního počítače. 
+    Kromě toho je k dispozici artefakt spojení domény Azure Active Directory, který připojí virtuální počítač k doméně při vytváření virtuálního počítače. 
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
    | Úkol | Co se naučíte |
    | --- | --- |
-   | [Konfigurace virtuální sítě v Azure DevTest Labs](devtest-lab-configure-vnet.md) |Naučte se konfigurovat virtuální síť v Azure DevTest Labs pomocí Azure Portal.|
+   | [Konfigurace virtuální sítě v Azure DevTest Labs](devtest-lab-configure-vnet.md) |Zjistěte, jak nakonfigurovat virtuální síť v Azure DevTest Labs pomocí portálu Azure.|
 
-6. **Sdílejte testovací prostředí s každým vývojářem**
+6. **Sdílení testovacího prostředí s každým vývojářem**
    
-    K testovacím prostředím se dá přímo získat přímý odkaz pomocí odkazu, který sdílíte s vývojáři. Nemusí mít ani účet Azure, pokud mají [účet Microsoft](devtest-lab-faq.md#what-is-a-microsoft-account). Vývojáři nemohou zobrazit virtuální počítače vytvořené jinými vývojáři.  
+    K testovacím prostředím lze přistupovat přímo pomocí odkazu, který sdílíte s vývojáři. Ani nemusí mít účet Azure, pokud mají [účet Microsoft](devtest-lab-faq.md#what-is-a-microsoft-account). Vývojáři nemohou zobrazit virtuální chod vytvořené jinými vývojáři.  
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
    | Úkol | Co se naučíte |
    | --- | --- |
-   | [Přidání vývojáře do testovacího prostředí v Azure DevTest Labs](devtest-lab-add-devtest-user.md) |K přidání vývojářů do testovacího prostředí použijte Azure Portal.|
-   | [Přidání vývojářů do testovacího prostředí pomocí skriptu PowerShellu](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |K automatizaci přidávání vývojářů do testovacího prostředí použijte PowerShell. |
-   | [Získat odkaz na testovací prostředí](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Přečtěte si, jak můžou vývojáři získat přímý přístup k testovacímu prostředí prostřednictvím hypertextového odkazu.|
+   | [Přidání vývojáře do testovacího prostředí v Azure DevTest Labs](devtest-lab-add-devtest-user.md) |Pomocí portálu Azure přidejte vývojáře do testovacího prostředí.|
+   | [Přidání vývojářů do testovacího prostředí pomocí skriptu PowerShellu](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Pomocí Prostředí PowerShell můžete automatizovat přidávání vývojářů do testovacího prostředí. |
+   | [Získání odkazu na laboratoř](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Zjistěte, jak mohou vývojáři přímo přistupovat k testovacímu prostředí prostřednictvím hypertextového odkazu.|
 
-7. **Automatizace vytváření testovacího prostředí pro více týmů** 
+7. **Automatizace vytváření testovacích prostředí pro další týmy** 
    
-    Vytváření testovacích prostředí, včetně vlastních nastavení, můžete automatizovat vytvořením šablony Správce prostředků a jejím použitím pro opětovné vytvoření identické laboratoře. 
+    Vytvoření testovacího prostředí, včetně vlastních nastavení, můžete automatizovat vytvořením šablony Správce prostředků a jejím použitím k vytváření identických testovacích prostředí znovu a znovu. 
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
    | Úkol | Co se naučíte |
    | --- | --- |
-   | [Vytvoření testovacího prostředí pomocí šablony Správce prostředků](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Pomocí šablon Správce prostředků vytvořte cvičení v Azure DevTest Labs. |
+   | [Vytvoření testovacího prostředí pomocí šablony Správce prostředků](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Vytvářejte testovací prostředí v laboratořích Azure DevTest Labs pomocí šablon Správce prostředků. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

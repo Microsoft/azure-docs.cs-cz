@@ -1,28 +1,28 @@
 ---
-title: Témata rozšířeného upgradu aplikací
-description: Tento článek se věnuje několika pokročilým tématům, která se týkají upgradu aplikace Service Fabric.
+title: Rozšířená témata upgradu aplikací
+description: Tento článek popisuje některá pokročilá témata týkající se upgradu aplikace Service Fabric.
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.openlocfilehash: 09f3fdf1f26a13c6722eb039e132256f33be38ff
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845431"
 ---
-# <a name="service-fabric-application-upgrade-advanced-topics"></a>Upgrade Service Fabric aplikace: Pokročilá témata
+# <a name="service-fabric-application-upgrade-advanced-topics"></a>Upgrade aplikace Service Fabric: Pokročilá témata
 
 ## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>Přidání nebo odebrání typů služeb během upgradu aplikace
 
-Pokud se do publikované aplikace v rámci upgradu přidá nový typ služby, do nasazené aplikace se přidá nový typ služby. Takový upgrade nemá vliv na žádné instance služby, které již jsou součástí aplikace, ale je nutné vytvořit instanci přidaného typu, aby byl nový typ služby aktivní (viz [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
+Pokud je nový typ služby přidán do publikované aplikace jako součást upgradu, bude nový typ služby přidán do nasazené aplikace. Takový upgrade nemá vliv na žádné instance služby, které již byly součástí aplikace, ale instance typu služby, která byla přidána, musí být vytvořena, aby byl nový typ služby aktivní (viz [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
 
-Podobně lze typy služeb odebrat z aplikace jako součást upgradu. Před pokračováním v upgradu je ale nutné odebrat všechny instance služby, které mají být odebrány. (viz [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
+Podobně typy služeb lze odebrat z aplikace jako součást upgradu. Všechny instance služby typu služby, které mají být odebrány, však musí být před pokračováním v upgradu odebrány (viz [Odebrání služby ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
 
-## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Vyhněte se výpadkům připojení během plánovaného výpadku nestavové služby (Preview)
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Vyhněte se výpadkům připojení během plánovaných výpadků služby bez stavů (náhled)
 
-U plánovaných výpadků bezstavových instancí, jako je například upgrade aplikace nebo clusteru nebo deaktivace uzlu, je připojení možné vyřadit z důvodu nedostatku vystaveného koncového bodu po jeho výpadku.
+Pro plánované prostojů bezstavové instance, jako je například upgrade aplikace/clusteru nebo deaktivace uzlu, může být připojení zrušena z důvodu odebrání exponovaného koncového bodu po jeho ukončení.
 
-Pokud tomu chcete předejít, nakonfigurujte funkci *RequestDrain* (Preview) přidáním instance repliky *doba ukončení zpoždění* v konfiguraci služby. Tím se zajistí, že se koncový bod inzerovaný bezstavovou instancí odebere *před tím, než* se spustí časovač zpoždění pro uzavření instance. Tato prodleva umožní řádný odtok stávajících požadavků předtím, než se instance skutečně ukončí. Klienti jsou upozorněni na změnu koncového bodu funkcí zpětného volání, takže mohou znovu přeložit koncový bod a vyhnout se odesílání nových požadavků do instance.
+Chcete-li tomu zabránit, nakonfigurujte funkci *RequestDrain* (preview) přidáním *doby trvání zpoždění instance repliky* v konfiguraci služby. Tím je zajištěno, že koncový bod inzerovaný bezstavovou instancí je odebrán *před* spuštěním časovače zpoždění pro zavření instance. Toto zpoždění umožňuje existující požadavky řádně vyprázdnit před instance skutečně přejde dolů. Klienti jsou upozorněni na změnu koncového bodu pomocí funkce zpětného volání, takže mohou znovu vyřešit koncový bod a vyhnout se odesílání nových požadavků na instanci, která se chystá dolů.
 
 ### <a name="service-configuration"></a>Konfigurace služby
 
@@ -34,7 +34,7 @@ Existuje několik způsobů, jak nakonfigurovat zpoždění na straně služby.
     New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
     ```
 
- * **Při definování služby v oddílu výchozí v manifestu aplikace**přiřaďte vlastnost `InstanceCloseDelayDurationSeconds`:
+ * **Při definování služby v části výchozí v manifestu aplikace**přiřaďte `InstanceCloseDelayDurationSeconds` vlastnost:
 
     ```xml
           <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
@@ -50,7 +50,7 @@ Existuje několik způsobů, jak nakonfigurovat zpoždění na straně služby.
 
 ### <a name="client-configuration"></a>Konfigurace klienta
 
-Aby klienti mohli dostávat oznámení, když se změní koncový bod, můžou zaregistrovat zpětné volání (`ServiceManager_ServiceNotificationFilterMatched`) takto: 
+Chcete-li dostávat oznámení při změně koncového bodu, klienti mohou zaregistrovat zpětné volání (`ServiceManager_ServiceNotificationFilterMatched`) takto: 
 
 ```csharp
     var filterDescription = new ServiceNotificationFilterDescription
@@ -67,11 +67,11 @@ private static void ServiceManager_ServiceNotificationFilterMatched(object sende
 }
 ```
 
-Oznámení o změně je indikaci, že se koncové body změnily, klient by měl tyto koncové body znovu přeložit a nesmí používat koncové body, které už nejsou inzerované, protože budou brzy pokračovat.
+Oznámení o změně je známkou toho, že se změnily koncové body, klient by měl znovu vyřešit koncové body a nepoužívat koncové body, které již nejsou inzerovány, protože brzy přejdou dolů.
 
-### <a name="optional-upgrade-overrides"></a>Volitelné přepsání upgradu
+### <a name="optional-upgrade-overrides"></a>Volitelná přepsání upgradu
 
-Kromě nastavení výchozích dob trvání zpoždění na službu můžete také přepsat zpoždění během upgradu aplikace nebo clusteru pomocí stejné možnosti (`InstanceCloseDelayDurationSec`):
+Kromě nastavení výchozí doby zpoždění na službu můžete také přepsat zpoždění během upgradu`InstanceCloseDelayDurationSec`aplikace/clusteru pomocí stejné možnosti ( ) :
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
@@ -79,36 +79,36 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-Doba trvání prodlevy se vztahuje pouze na vyvolanou instanci upgradu a jinak nemění konfigurace zpoždění jednotlivých služeb. Můžete například použít k zadání zpoždění `0`, aby se přeskočila jakákoli předkonfigurovaná zpoždění upgradu.
+Doba trvání zpoždění se vztahuje pouze na instanci vyvoláné upgradu a jinak nezmění jednotlivé konfigurace zpoždění služby. Můžete ji například použít k určení `0` zpoždění, aby bylo možné přeskočit všechna předkonfigurovaná zpoždění upgradu.
 
 ## <a name="manual-upgrade-mode"></a>Režim ručního upgradu
 
 > [!NOTE]
-> Režim *monitorovaného* upgradu je doporučen pro všechny upgrady Service Fabric.
-> Režim upgradu *UnmonitoredManual* by se měl považovat jenom za neúspěšné nebo pozastavené upgrady. 
+> *Režim sledovaného* upgradu je doporučen pro všechny upgrady service fabric.
+> Režim upgradu *UnmonitoredManual* by měl být považován pouze za neúspěšné nebo pozastavené inovace. 
 >
 >
 
-V *monitorovaném* režimu Service Fabric používá zásady stavu, aby se zajistilo, že bude aplikace v pořádku, jak probíhá upgrade. Pokud dojde k porušení zásad stavu, upgrade se buď pozastaví, nebo se automaticky vrátí zpátky v závislosti na zadaném *FailureAction*.
+Ve *sledovaném* režimu Service Fabric použije zásady stavu k zajištění, že aplikace je v pořádku, jak probíhá upgrade. Pokud jsou porušeny zásady stavu, upgrade je pozastavena nebo automaticky vrácena zpět v závislosti na zadané *akce Selhání*.
 
-V režimu *UnmonitoredManual* má správce aplikace celkovou kontrolu nad průběhem upgradu. Tento režim je užitečný při použití vlastních zásad hodnocení stavu nebo provádění nekonvenčních upgradů, které mají zcela obejít monitorování stavu (například aplikace je již v případě ztráty dat). Upgrade běžící v tomto režimu se sám po dokončení každého UD zastaví a musí se explicitně obnovit pomocí operace [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps). V případě, že je upgrade pozastaven a je připraven k obnovení uživatelem, zobrazí se stav upgradu *RollforwardPending* (viz [UpgradeState](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)).
+V režimu *UnmonitoredManual* má správce aplikace úplnou kontrolu nad průběhem upgradu. Tento režim je užitečný při použití vlastních zásad hodnocení stavu nebo provádění nekonvenčních upgradů, aby se úplně obešla monitorování stavu (např. aplikace je již ve ztrátě dat). Upgrade spuštěný v tomto režimu se po dokončení každého ud pozastaví a musí být explicitně obnoven pomocí [resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps). Pokud je upgrade pozastaven a připraven k obnovení uživatelem, jeho stav upgradu se zobrazí *RollforwardPending* (viz [UpgradeState](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)).
 
-*UnmonitoredAuto* režim je vhodný pro provádění iterací rychlého upgradu během vývoje nebo testování služby, protože není nutný žádný vstup uživatele a nejsou vyhodnoceny žádné zásady stavu aplikace.
+Nakonec je režim *UnmonitoredAuto* užitečný pro provádění iterací rychlého upgradu během vývoje nebo testování služby, protože není vyžadován žádný vstup uživatele a nejsou vyhodnocovány žádné zásady stavu aplikace.
 
-## <a name="upgrade-with-a-diff-package"></a>Upgrade s rozdílovým balíčkem
+## <a name="upgrade-with-a-diff-package"></a>Upgrade pomocí rozdílového balíčku
 
-Místo zřízení kompletního balíčku aplikace je možné upgrady provádět taky pomocí zřizovacích balíčků, které obsahují jenom aktualizované balíčky Code/config/data, a to společně s úplným manifestem aplikace a kompletními manifesty služby. Kompletní balíčky aplikací jsou nutné pouze pro počáteční instalaci aplikace do clusteru. Další upgrady můžou být buď z kompletních balíčků aplikací, nebo rozdílných balíčků.  
+Namísto zřizování kompletní balíček aplikace upgrady lze také provést zřizováním rozdílové balíčky, které obsahují pouze aktualizovaný kód/config/data balíčky spolu s kompletní manifest aplikace a kompletní služby manifesty. Kompletní balíčky aplikací jsou vyžadovány pouze pro počáteční instalaci aplikace do clusteru. Následné inovace mohou být buď z kompletní balíčky aplikací nebo diff balíčky.  
 
-Jakýkoli odkaz v manifestu aplikace nebo manifestech služby rozdílového balíčku, který se nedá najít v balíčku aplikace, se automaticky nahradí aktuálně zřízenou verzí.
+Jakýkoli odkaz v manifestu aplikace nebo manifesty služby rozdílový balíček, který nelze nalézt v balíčku aplikace je automaticky nahrazen aktuálně zřízenou verzi.
 
-Scénáře použití rozdílového balíčku:
+Scénáře pro použití rozdílového balíčku jsou:
 
-* Máte-li velký balíček aplikace, který odkazuje na několik souborů manifestu služby a/nebo několik balíčků kódu, konfigurační balíčky nebo datové balíčky.
-* Pokud máte systém nasazení, který generuje rozložení sestavení přímo z procesu sestavení vaší aplikace. V tomto případě, i když se kód nezměnil, nově vytvořená sestavení získají jiný kontrolní součet. Použití úplného balíčku aplikace by vyžadovalo aktualizaci verze u všech balíčků kódu. Pomocí rozdílového balíčku zadejte jenom soubory, které se změnily, a soubory manifestu, ve kterých se verze změnila.
+* Pokud máte velký balíček aplikace, který odkazuje na několik souborů manifestu služby nebo několik balíčků kódu, balíčky konfigurace nebo datové balíčky.
+* Pokud máte systém nasazení, který generuje rozložení sestavení přímo z procesu sestavení aplikace. V tomto případě, i když se kód nezměnil, nově vytvořená sestavení získají jiný kontrolní součet. Použití úplného balíčku aplikace by vyžadovalo aktualizaci verze na všech balíčcích kódu. Pomocí balíčku diff poskytujete pouze soubory, které se změnily, a soubory manifestu, kde byla změněna verze.
 
-Při upgradu aplikace pomocí sady Visual Studio je automaticky publikován rozdílový balíček. Chcete-li vytvořit rozdílový balíček ručně, musí být aktualizován manifest aplikace a manifesty služby, ale do finálního balíčku aplikace by měly být zahrnuty pouze změněné balíčky.
+Při upgradu aplikace pomocí sady Visual Studio je automaticky publikován balíček rozdíl. Chcete-li vytvořit diff balíček ručně, manifest aplikace a manifesty služby musí být aktualizovány, ale pouze změněné balíčky by měly být zahrnuty v konečné balíčku aplikace.
 
-Řekněme například, že začneme s následující aplikací (čísla verzí, která jsou poskytována pro snazší porozumění):
+Začněme například s následující aplikací (čísla verzí jsou k dispozici pro snadné pochopení):
 
 ```text
 app1           1.0.0
@@ -120,7 +120,7 @@ app1           1.0.0
     config     1.0.0
 ```
 
-Předpokládejme, že jste chtěli aktualizovat pouze balíček kódu Service1 pomocí rozdílového balíčku. Aktualizovaná aplikace má následující změny verze:
+Předpokládejme, že jste chtěli aktualizovat pouze balíček kódu service1 pomocí balíčku diff. Aktualizovaná aplikace má následující změny verze:
 
 ```text
 app1           2.0.0      <-- new version
@@ -132,7 +132,7 @@ app1           2.0.0      <-- new version
     config     1.0.0
 ```
 
-V tomto případě aktualizujete manifest aplikace na 2.0.0 a manifest služby pro Service1 tak, aby odrážel aktualizaci balíčku kódu. Složka pro váš balíček aplikace by měla mít následující strukturu:
+V takovém případě aktualizujete manifest aplikace na 2.0.0 a manifest služby pro service1 tak, aby odrážely aktualizaci balíčku kódu. Složka pro váš balíček aplikace bude mít následující strukturu:
 
 ```text
 app1/
@@ -140,11 +140,11 @@ app1/
     code/
 ```
 
-Jinými slovy, vytvořit kompletní balíček aplikace normálně a pak odebrat všechny složky Code/config/data Package, pro které se verze nezměnila.
+Jinými slovy, vytvořte kompletní balíček aplikace normálně, pak odeberte všechny složky code/config/data package, u kterých se verze nezměnila.
 
-## <a name="upgrade-application-parameters-independently-of-version"></a>Upgradovat parametry aplikace nezávisle na verzi
+## <a name="upgrade-application-parameters-independently-of-version"></a>Upgrade parametrů aplikace nezávisle na verzi
 
-V některých případech je žádoucí změnit parametry Service Fabric aplikace beze změny verze manifestu. To lze provést pohodlně pomocí příznaku **-ApplicationParameter** s rutinou **Start-ServiceFabricApplicationUpgrade** Azure Service Fabric PowerShellu. Předpokládejme Service Fabric aplikaci s následujícími vlastnostmi:
+Někdy je žádoucí změnit parametry aplikace Service Fabric beze změny verze manifestu. To lze provést pohodlně pomocí příznaku **-ApplicationParameter** s rutinou **Start-ServiceFabricApplicationUpgrade** Azure Service Fabric PowerShell. Předpokládejme aplikaci Service Fabric s následujícími vlastnostmi:
 
 ```PowerShell
 PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
@@ -157,7 +157,7 @@ HealthState            : Ok
 ApplicationParameters  : { "ImportantParameter" = "1"; "NewParameter" = "testBefore" }
 ```
 
-Nyní upgradujte aplikaci pomocí rutiny **Start-ServiceFabricApplicationUpgrade** . Tento příklad ukazuje monitorovaný upgrade, ale lze použít také nemonitorovaný upgrade. Úplný popis příznaků přijatých touto rutinou najdete v tématu [Přehled modulu Azure Service Fabric PowerShell](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters) .
+Nyní upgradujte aplikaci pomocí rutiny **Start-ServiceFabricApplicationUpgrade.** Tento příklad ukazuje monitorovaný upgrade, ale lze také použít nemonitorovaný upgrade. Úplný popis příznaků přijatých touto rutinou najdete v [tématu odkaz na modul PowerShell azure service fabric](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters)
 
 ```PowerShell
 PS C:\> $appParams = @{ "ImportantParameter" = "2"; "NewParameter" = "testAfter"}
@@ -167,7 +167,7 @@ ion 1.0.0 -ApplicationParameter $appParams -Monitored
 
 ```
 
-Po upgradu ověřte, zda má aplikace aktualizované parametry a stejnou verzi:
+Po upgradu zkontrolujte, zda má aplikace aktualizované parametry a stejnou verzi:
 
 ```PowerShell
 PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
@@ -180,21 +180,21 @@ HealthState            : Ok
 ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAfter" }
 ```
 
-## <a name="roll-back-application-upgrades"></a>Vrácení upgradů aplikací zpátky
+## <a name="roll-back-application-upgrades"></a>Vrácení upgradů aplikací zpět
 
-I když se upgrady dají převádět v jednom ze tří režimů (*monitorované*, *UnmonitoredAuto*nebo *UnmonitoredManual*), dají se vrátit zpátky buď v režimu *UnmonitoredAuto* , nebo *UnmonitoredManual* . Vracení zpět v režimu *UnmonitoredAuto* funguje stejným způsobem jako při vracení s výjimkou, že výchozí hodnota *UpgradeReplicaSetCheckTimeout* je odlišná – viz [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md). Vracení zpět v režimu *UnmonitoredManual* funguje stejně jako postupné dopředné – vrácení zpět se po dokončení každého ud odblokuje a musí se explicitně obnovit pomocí funkce [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) , aby bylo možné pokračovat v vracení zpět.
+Zatímco upgrady lze vrátit vpřed v jednom ze tří režimů *(Monitored*, *UnmonitoredAuto*, nebo *UnmonitoredManual),* mohou být vráceny zpět pouze v režimu *UnmonitoredAuto* nebo *UnmonitoredManual.* Vrácení zpět v režimu *UnmonitoredAuto* funguje stejným způsobem jako postupvpřed s výjimkou, že výchozí hodnota *UpgradeReplicaSetCheckTimeout* se liší - viz [Parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md). Vrácení zpět v režimu *UnmonitoredManual* funguje stejným způsobem jako postupné vpřed - vrácení zpět se pozastaví po dokončení každého UD a musí být explicitně obnovena pomocí [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) pokračovat s vrácení zpět.
 
-Vrácení zpět se dá spustit automaticky, když se naruší zásady stavu upgradu v *monitorovaném* režimu s *FailureActionem* *vrácení zpět* (viz [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md)) nebo explicitně pomocí [Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
+Vrácení zpět lze spustit automaticky, když jsou porušeny zásady stavu upgradu ve *sledovaném* režimu s *akcí failureaction* *vrácení zpět* (viz [Parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md)) nebo explicitně pomocí [Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
 
-Během vracení zpět lze hodnotu *UpgradeReplicaSetCheckTimeout* a režim kdykoli změnit pomocí funkce [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps).
+Během vrácení zpět, hodnota *UpgradeReplicaSetCheckTimeout* a režim lze kdykoli změnit pomocí [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps).
 
 ## <a name="next-steps"></a>Další kroky
-[Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgradem aplikace pomocí sady Visual Studio.
+[Inovace aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgradem aplikace pomocí sady Visual Studio.
 
-[Upgrade aplikace pomocí PowerShellu](service-fabric-application-upgrade-tutorial-powershell.md) vás provede upgradem aplikace pomocí PowerShellu.
+[Upgrade aplikace pomocí powershellu](service-fabric-application-upgrade-tutorial-powershell.md) vás provede upgradem aplikace pomocí PowerShellu.
 
-Pomocí [parametrů upgradu](service-fabric-application-upgrade-parameters.md)lze řídit, jak se vaše aplikace upgradují.
+Pomocí funkce [Parametry upgradu](service-fabric-application-upgrade-parameters.md)můžete řídit způsob upgradu aplikace .
 
-Vyjistěte, aby byly upgrady aplikací kompatibilní, pomocí učení, jak používat [serializaci dat](service-fabric-application-upgrade-data-serialization.md).
+Pomocí aplikace můžete upgrady aplikací provést tak, že se naučíte používat [serializaci dat](service-fabric-application-upgrade-data-serialization.md).
 
-Pomocí postupu v části [řešení potíží s upgrady aplikací](service-fabric-application-upgrade-troubleshooting.md)můžete opravit běžné problémy s upgrady aplikací.
+Běžné problémy při upgradu aplikací opravíte odkazem na kroky při [řešení potíží s inovacemi aplikací](service-fabric-application-upgrade-troubleshooting.md).

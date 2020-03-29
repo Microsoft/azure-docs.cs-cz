@@ -1,6 +1,6 @@
 ---
-title: Prvky B2B pozvánky e-mailu – Azure Active Directory | Dokumentace Microsoftu
-description: Azure Active Directory s B2B spolupráce pozvánky e-mailová šablona
+title: Prvky e-mailu s pozvánkou B2B – Azure Active Directory | Dokumenty společnosti Microsoft
+description: Šablona e-mailu s pozvánkou na spolupráci služby Azure Active Directory B2B
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,80 +13,80 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65768373"
 ---
-# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky B2B spolupráce e-mailová pozvánka – Azure Active Directory
+# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky e-mailu s pozvánkou na spolupráci B2B – Azure Active Directory
 
-E-mailových pozvánek jsou zásadní pro partnery na palubě jako uživatele spolupráce B2B Azure AD. Můžete využít ke zvýšení důvěryhodnosti příjemce. můžete přidat legitimitu a vyhovuje výběr z reálného prostředí k e-mailu, abyste měli jistotu, příjemce, jako **Začínáme** tlačítko k přijetí pozvánky. Tento vztah důvěryhodnosti je, že klíč znamená, že omezíte třecí plochy sdílení. A budete chtít také zajistit e-mailu vypadají skvěle!
+Pozvánky e-maily jsou důležitou součástí, aby partnery na palubě jako uživatelé spolupráce B2B ve službě Azure AD. Můžete je použít ke zvýšení důvěryhodnosti příjemce. do e-mailu můžete přidat legitimaci a sociální důkaz, abyste se ujistili, že se příjemce cítí pohodlně s výběrem tlačítka **Začínáme** pro přijetí pozvánky. Tato důvěra je klíčovým prostředkem ke snížení tření sdílení. A také chcete, aby e-mail vypadal skvěle!
 
-![Snímek obrazovky s e-mailová pozvánka B2B](media/invitation-email-elements/invitation-email.png)
+![Snímek obrazovky s e-mailem s pozvánkou B2B](media/invitation-email-elements/invitation-email.png)
 
-## <a name="explaining-the-email"></a>S vysvětlením, e-mailu
-Podívejme se na několik elementů e-mailu, abyste věděli, jak nejlépe používat jejich funkce.
+## <a name="explaining-the-email"></a>Vysvětlení e-mailu
+Podívejme se na několik prvků e-mailu, abyste věděli, jak nejlépe využít jejich schopnosti.
 
-### <a name="subject"></a>Subject
-Předmět e-mailu odpovídá následujícímu vzoru: Zveme vás k &lt;tenantname&gt; organizace
+### <a name="subject"></a>Subjekt
+Předmět e-mailu se řídí následujícím vzorem: Jste &lt;pozváni&gt; do organizace název tenanta
 
 ### <a name="from-address"></a>Z adresy
-Používáme vzor LinkedIn jako adresa odesílatele.  By měl být jasné, kdo je odesílatel pozvánky a ze společnosti a i vyjasnit, e-mailu přichází z Microsoftu e-mailovou adresu. Formát je: Microsoft Invitations <invites@microsoft.com> nebo &lt;zobrazované jméno odesílatele pozvánky&gt; z &lt;tenantname&gt; (přes Microsoft) <invites@microsoft.com>.
+Pro adresu Od používáme vzor podobný LinkedIn.  Měli byste si ujasnit, kdo je pozvaný uživatel a ze které společnosti, a také objasnit, že e-mail pochází z e-mailové adresy společnosti Microsoft. Formát je: Pozvánky <invites@microsoft.com> &lt;společnosti Microsoft nebo&gt; &lt;zobrazované&gt; jméno pozvaného uživatele z názvu klienta (přes Microsoft). <invites@microsoft.com>
 
-### <a name="reply-to"></a>Odpovědět
-Odpovědi e-mailu je nastavena k e-mailu odesílatel pozvánky, pokud je k dispozici, takže odpovídání na e-mailu odešle e-mailu zpět odesílatel pozvánky.
+### <a name="reply-to"></a>Odpovědět na
+E-mail s odpovědí je nastaven na e-mail pozvaných, pokud je k dispozici, takže odpověď na e-mail odešle e-mail zpět pozvaku.
 
 ### <a name="branding"></a>Branding
-E-mailových pozvánek z vašeho tenanta používání firemní branding, které jste nastavil pro vašeho tenanta. Pokud chcete využít výhod této funkce, které [tady](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) jsou uvedené podrobnosti o tom, jak ho nakonfigurovat. Banner s logem se zobrazí v e-mailu. Velikost bitové kopie postupujte podle pokynů kvality a [tady](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) pro dosažení co nejlepších výsledků. Kromě toho název společnosti také se zobrazí při volání akce.
+E-maily s pozvánkami od vašeho tenanta používají firemní značku, kterou jste pro svého tenanta nastavili. Pokud chcete tuto možnost využít, [zde](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) jsou podrobnosti o tom, jak ji nakonfigurovat. V e-mailu se zobrazí logo banneru. Postupujte podle velikosti obrazu a kvality [pokyny zde](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) pro dosažení nejlepších výsledků. Kromě toho se název společnosti také zobrazuje ve výzvě k akci.
 
 ### <a name="call-to-action"></a>Výzva k akci
-Výzvou k akci se skládá ze dvou částí: s vysvětlením, proč příjemce obdrží e-mailu a co příjemce je požádaná, jak je řešit.
-- V části "Proč" se dají řešit pomocí následujícímu vzoru: Dostali jste pozvání k přístupu k aplikacím v &lt;tenantname&gt; organizace
+Výzva k akci se skládá ze dvou částí: vysvětlení, proč příjemce obdržel poštu a co je příjemce požádán, aby s tím udělal.
+- Část "proč" lze řešit pomocí následujícího vzoru: Byli jste pozváni &lt;k&gt; přístupu k aplikacím v organizaci název tenanta
 
-- A "co zobrazí se výzva provedete" oddíl je označen přítomnost **Začínáme** tlačítko. Po přidání příjemce bez nutnosti pozvánky, nebude se zobrazí toto tlačítko.
+- A část "k čemu jste požádáni" je označena přítomností tlačítka **Začínáme.** Pokud byl příjemce přidán bez nutnosti pozvánek, toto tlačítko se nezobrazí.
 
-### <a name="inviters-information"></a>Informace odesílatele pozvánky.
-Odesílatel pozvánky pro zobrazovaný název je součástí e-mailu. A kromě toho, pokud jste nastavili profilový obrázek pro váš účet Azure AD, pozval e-mail bude obsahovat daný obrázek i. Oba jsou určení ke zvýšení spolehlivosti vaší příjemce e-mailu.
+### <a name="inviters-information"></a>Informace pozvaného uživatele
+Zobrazované jméno pozvatele je součástí e-mailu. A navíc pokud jste nastavili profilový obrázek pro svůj účet Azure AD, bude zvoucí e-mail obsahovat i tento obrázek. Obě jsou určeny ke zvýšení důvěry příjemce v e-mail.
 
-Pokud ještě jste nenastavili profilový obrázek, zobrazí se ikona s iniciály odesílatel pozvánky místo na obrázku:
+Pokud jste ještě nenastavili profilový obrázek, zobrazí se místo obrázku ikona s iniciálami pozvaného uživatele:
 
-  ![Snímek obrazovky s e-mailové pozvánce s odesílatel pozvánky iniciály zobrazí](media/invitation-email-elements/inviters-initials.png)
+  ![Snímek obrazovky s pozvánkou se zobrazenými iniciálami pozvaného](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>Tělo
-Text obsahuje zprávu, že odesílatel pozvánky kontextovému při [pozvání uživatelů typu Host do adresáře, skupiny nebo aplikace](add-users-administrator.md) nebo [pomocí e-mailové pozvánce API](customize-invitation-api.md). Takže nezpracovává značky HTML z bezpečnostních důvodů je textová oblast.
+Text obsahuje zprávu, kterou pozvaný uživatel vytvoří při [pozvání uživatele typu Host do adresáře, skupiny nebo aplikace nebo](add-users-administrator.md) pomocí rozhraní API pro [pozvání](customize-invitation-api.md). Jedná se o textovou oblast, takže z bezpečnostních důvodů nezpracovává značky HTML.
 
-  ![Snímek obrazovky zobrazující tělo e-mailová pozvánka](media/invitation-email-elements/invitation-email-body.png)
+  ![Snímek obrazovky s textem e-mailu s pozvánkou](media/invitation-email-elements/invitation-email-body.png)
 
-### <a name="footer-section"></a>Zápatí
-Zápatí obsahuje značky společnosti Microsoft a umožní příjemce vědět, pokud byla odeslána e-mailu byla odeslaná z nemonitorovaného aliasu. 
+### <a name="footer-section"></a>Zápatí sekce
+Zápatí obsahuje značku společnosti Microsoft a umožňuje příjemci zjistit, zda byl e-mail odeslán z nemonitorovaného aliasu. 
 
 Zvláštní případy:
 
-- Odesílající uživatel nemá e-mailovou adresu ve zvoucí tenantů
+- Pozvač nemá e-mailovou adresu v zvoucí mši.
 
-  ![Snímek obrazovky, když odesílající uživatel nemá e-mailu ve zvoucí tenantů](media/invitation-email-elements/inviter-no-email.png)
+  ![Snímek obrazovky, když pozvaný nemá e-mail v zvoucí mši](media/invitation-email-elements/inviter-no-email.png)
 
 
-- Příjemce nemusí uplatnění pozvání
+- Příjemce nemusí pozvánku uplatnit.
 
-  ![Snímek obrazovky, když příjemce nemusí uplatnění pozvánky](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
+  ![Snímek obrazovky, když příjemce nepotřebuje pozvánku uplatnit](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
-## <a name="how-the-language-is-determined"></a>Jak se určuje jazyk
-Jazyk, budou zobrazovat uživateli guest v e-mailová pozvánka se určuje podle následující nastavení. Tato nastavení jsou uvedeny v pořadí podle priority. Pokud nastavení není nakonfigurované, určuje další nastavení v seznamu jazyk. 
-- **MessageLanguage** vlastnost [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) objektu, pokud se použije Pozvánka vytvořit rozhraní API
--   **PreferredLanguage** zadána vlastnost na hostu [objekt uživatele](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)
--   **Jazyk oznámení** nastavte ve vlastnostech domovském tenantovi uživatele typu Host (pro pouze klienty Azure AD)
--   **Jazyk oznámení** nastavte ve vlastnostech prostředku tenanta
+## <a name="how-the-language-is-determined"></a>Jak je jazyk určen
+Jazyk prezentovaný uživateli typu Host v e-mailu s pozvánkou je určen následujícím nastavením. Tato nastavení jsou uvedena v pořadí podle priority. Pokud nastavení není nakonfigurováno, určuje jazyk další nastavení v seznamu. 
+- Vlastnost **messageLanguage** pozvaného objektu [UserMessageInfo,](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) pokud se používá rozhraní API vytvořit pozvánku
+-   Vlastnost **preferredLanguage** zadaná v [objektu uživatele hosta](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)
+-   **Jazyk oznámení** nastavený ve vlastnostech domovského klienta uživatele hosta (jenom pro klienty Azure AD)
+-   **Jazyk oznámení** nastavený ve vlastnostech klienta prostředku
 
-Pokud žádná z těchto nastavení nejsou nakonfigurována, výchozí hodnota je jazyk na angličtinu (US).
+Pokud žádné z těchto nastavení nejsou nakonfigurovány, výchozí jazyk je angličtina (US).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Na spolupráce B2B ve službě Azure AD najdete v následujících článcích:
+Podívejte se na následující články o spolupráci Azure AD B2B:
 
-- [Co je spolupráce B2B ve službě Azure AD](what-is-b2b.md)
-- [Jak správci služby Azure Active Directory přidat uživatele spolupráce B2B?](add-users-administrator.md)
-- [Jak informačních pracovníků vynutit přidat uživatele spolupráce B2B?](add-users-information-worker.md)
-- [Uplatnění pozvání spolupráce B2B](redemption-experience.md)
-- [Přidat uživatele spolupráce B2B bez pozvánky](add-user-without-invite.md)
+- [Co je spolupráce Azure AD B2B](what-is-b2b.md)
+- [Jak správci Služby Azure AD přidávají uživatele spolupráce B2B?](add-users-administrator.md)
+- [Jak pracovníci informací přidávají uživatele spolupráce B2B?](add-users-information-worker.md)
+- [Uplatnění pozvánky na spolupráci B2B](redemption-experience.md)
+- [Přidání uživatelů spolupráce B2B bez pozvání](add-user-without-invite.md)

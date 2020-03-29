@@ -1,70 +1,70 @@
 ---
-title: Povolit spravovanou identitu ve skupině kontejnerů
-description: Naučte se, jak v Azure Container Instances povolit spravovanou identitu, která se dá ověřit u jiných služeb Azure.
+title: Povolení spravované identity ve skupině kontejnerů
+description: Zjistěte, jak povolit spravovanou identitu v instanci kontejneru Azure, které se můžou ověřovat pomocí jiných služeb Azure.
 ms.topic: article
 ms.date: 01/29/2020
 ms.openlocfilehash: 003055d5021dd8ad7c3bab6d2900298ffd13b222
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76901926"
 ---
-# <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Použití spravovaných identit s Azure Container Instances
+# <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Jak používat spravované identity s instancemi kontejneru Azure
 
-Pomocí [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) spustíte kód v Azure Container Instances, který komunikuje s ostatními službami Azure – bez zachování tajných kódů nebo přihlašovacích údajů v kódu. Tato funkce poskytuje Azure Container Instances nasazení s automaticky spravovanou identitou v Azure Active Directory.
+Ke spouštění kódu v instanci azure kontejnerů, které interagují s jinými službami Azure, použijte [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) – bez údržby tajných kódů nebo přihlašovacích údajů v kódu. Tato funkce poskytuje nasazení instancí kontejnerů Azure s automaticky spravovanou identitou ve službě Azure Active Directory.
 
-V tomto článku se dozvíte víc o spravovaných identitách v Azure Container Instances a:
+V tomto článku se dozvíte další informace o spravovaných identitách v instancích kontejnerů Azure a:
 
 > [!div class="checklist"]
-> * Povolení uživatelsky přiřazené identity nebo identity přiřazené systémem ve skupině kontejnerů
-> * Udělení identity přístupu k trezoru klíčů Azure
+> * Povolení identity přiřazené uživatelem nebo systémově přiřazené ve skupině kontejnerů
+> * Udělení přístupu k identitě trezoru klíčů Azure
 > * Použití spravované identity pro přístup k trezoru klíčů ze spuštěného kontejneru
 
-Přizpůsobte si příklady a povolte a používejte identity v Azure Container Instances pro přístup k dalším službám Azure. Tyto příklady jsou interaktivní. Nicméně v praxi by image kontejneru spouštěly kód pro přístup ke službám Azure.
+Přizpůsobte příklady pro povolení a použití identit v Azure Container Instances pro přístup k dalším službám Azure. Tyto příklady jsou interaktivní. V praxi by však vaše image kontejneru spouštět kód pro přístup ke službám Azure.
 
 > [!NOTE]
-> V tuto chvíli nemůžete použít spravovanou identitu ve skupině kontejnerů nasazené do virtuální sítě.
+> V současné době nelze použít spravovanou identitu ve skupině kontejnerů nasazené do virtuální sítě.
 
 ## <a name="why-use-a-managed-identity"></a>Proč používat spravovanou identitu?
 
-Pomocí spravované identity ve spuštěném kontejneru proveďte ověření u libovolné [služby, která podporuje ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) bez nutnosti spravovat přihlašovací údaje v kódu kontejneru. Pro služby, které nepodporují ověřování AD, můžete tajné klíče ukládat do trezoru klíčů Azure a pomocí spravované identity získat přístup k trezoru klíčů a načíst přihlašovací údaje. Další informace o použití spravované identity najdete v tématu [co jsou spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md)
+Pomocí spravované identity ve spuštěném kontejneru se můžete ověřit na libovolné [službě, která podporuje ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) bez správy přihlašovacích údajů v kódu kontejneru. U služeb, které nepodporují ověřování ve službě AD, můžete ukládat tajné klíče do trezoru klíčů Azure a použít spravovanou identitu pro přístup k trezoru klíčů k načtení přihlašovacích údajů. Další informace o používání spravované identity najdete v tématu [Co je spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit. V současné době se spravované identity v Azure Container Instances podporují jenom s kontejnery Linux a ještě nejsou s kontejnery Windows.
+> Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit. V současné době spravované identity v instanci kontejnerů Azure jsou podporovány jenom s linuxovými kontejnery a ještě ne s kontejnery Windows.
 >  
 
 ### <a name="enable-a-managed-identity"></a>Povolení spravované identity
 
- V Azure Container Instances se spravované identity pro prostředky Azure podporují od REST API verze 2018-10-01 a odpovídajících sad SDK a nástrojů. Když vytváříte skupinu kontejnerů, povolte jednu nebo více spravovaných identit nastavením vlastnosti [ContainerGroupIdentity](/rest/api/container-instances/containergroups/createorupdate#containergroupidentity) . Spravované identity můžete povolit nebo aktualizovat i po spuštění skupiny kontejnerů – akce způsobí restartování skupiny kontejnerů. Pokud chcete nastavit identity pro novou nebo existující skupinu kontejnerů, použijte Azure CLI, šablonu Správce prostředků nebo soubor YAML. 
+ V Azure Container Instances spravované identity pro prostředky Azure jsou podporované od REST API verze 2018-10-01 a odpovídající sady SDK a nástroje. Při vytváření skupiny kontejnerů povolte jednu nebo více spravovaných identit nastavením [vlastnosti ContainerGroupIdentity.](/rest/api/container-instances/containergroups/createorupdate#containergroupidentity) Spravované identity můžete také povolit nebo aktualizovat po spuštění skupiny kontejnerů – buď akce způsobí restartování skupiny kontejnerů. Chcete-li nastavit identity na nové nebo existující skupiny kontejnerů, použijte Azure CLI, šablonu Správce prostředků nebo soubor YAML. 
 
-Azure Container Instances podporuje oba typy spravovaných identit Azure: přiřazeno uživatelem a systémem. Ve skupině kontejnerů můžete povolit identitu přiřazenou systémem, jednu nebo více uživatelsky přiřazených identit nebo oba typy identit. 
+Azure Container Instances podporuje oba typy spravovaných identit Azure: uživatelem přiřazené a přiřazené k systému. Ve skupině kontejnerů můžete povolit systémem přiřazenou identitu, jednu nebo více identit přiřazených uživatelem nebo oba typy identit. 
 
-* **Uživatelem přiřazená** identita se vytvoří jako samostatný prostředek Azure v TENANTOVI Azure AD, který je důvěryhodný pro používané předplatné. Po vytvoření identity je možné identitu přiřadit k jednomu nebo několika prostředkům Azure (v Azure Container Instances nebo jiných službách Azure). Životní cyklus uživatelsky přiřazené identity se spravuje nezávisle na životním cyklu skupin kontejnerů nebo jiných prostředků služby, ke kterým je přiřazený. Toto chování je užitečné hlavně v Azure Container Instances. Vzhledem k tomu, že identita přesahuje dobu života skupiny kontejnerů, můžete ji znovu použít spolu s dalšími standardními nastaveními, aby bylo možné nasazení skupin kontejnerů vysoce opakovat.
+* Uživatelem **přiřazená spravovaná** identita se vytvoří jako samostatný prostředek Azure v tenantu Azure AD, který je důvěryhodný pro použití předplatného. Po vytvoření identity se identita dá přiřadit k jednomu nebo více prostředkům Azure (v instancích Azure Container Instance nebo jiných službách Azure). Životní cyklus uživatelem přiřazené identity je spravován odděleně od životního cyklu skupin kontejnerů nebo jiných prostředků služby, ke kterým je přiřazena. Toto chování je užitečné zejména v Azure Container Instances. Vzhledem k tomu, že identita přesahuje životnost skupiny kontejnerů, můžete ji znovu použít spolu s dalšími standardními nastaveními, aby nasazení skupiny kontejnerů byla vysoce opakovatelná.
 
-* Spravovaná identita **přiřazená systémem** je povolena přímo ve skupině kontejnerů v Azure Container Instances. Když je tato možnost povolená, Azure vytvoří identitu pro skupinu v tenantovi Azure AD, která je důvěryhodná pro předplatné instance. Po vytvoření identity se přihlašovací údaje zřídí v každém kontejneru ve skupině kontejnerů. Životní cyklus identity přiřazené systémem je přímo vázaný na skupinu kontejnerů, na které je povolený. Při odstranění skupiny Azure automaticky vyčistí přihlašovací údaje a identitu ve službě Azure AD.
+* **Systémem přiřazená spravovaná** identita je povolena přímo ve skupině kontejnerů v instanci kontejneru Azure. Když je povolená, Azure vytvoří identitu pro skupinu v tenantovi Azure AD, který je důvěryhodný podle předplatného instance. Po vytvoření identity jsou pověření zřízena v každém kontejneru ve skupině kontejnerů. Životní cyklus systémově přiřazené identity je přímo vázán na skupinu kontejnerů, ve které je povolena. Když se odstraní skupina, Azure automaticky vyčistí přihlašovací údaje a identitu ve službě Azure AD.
 
 ### <a name="use-a-managed-identity"></a>Použití spravované identity
 
-Aby bylo možné používat spravovanou identitu, musí nejdřív být identitě udělen přístup k jednomu nebo několika prostředkům služby Azure (například k webové aplikaci, trezoru klíčů nebo účtu úložiště) v předplatném. Pokud chcete získat přístup k prostředkům Azure ze spuštěného kontejneru, váš kód musí získat *přístupový token* z koncového bodu Azure AD. Potom váš kód odešle přístupový token při volání služby, která podporuje ověřování Azure AD. 
+Aby bylo možné používat spravovanou identitu, musí být identitě nejprve udělen přístup k jednomu nebo více prostředkům služby Azure (například k webové aplikaci, trezoru klíčů nebo účtu úložiště) v předplatném. Přístup k prostředkům Azure z spuštěného kontejneru, váš kód musí získat *přístupový token* z koncového bodu Azure AD. Potom váš kód odešle přístupový token na volání služby, která podporuje ověřování Azure AD. 
 
-Použití spravované identity v běžícím kontejneru je v podstatě totéž jako použití identity na virtuálním počítači Azure. Podívejte se na pokyny k VIRTUÁLNÍm počítačům pro použití [tokenu](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md), [Azure POWERSHELL nebo Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)nebo [sad Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md).
+Použití spravované identity ve spuštěném kontejneru je v podstatě stejné jako použití identity ve virtuálním počítači Azure. Přečtěte si pokyny k virtuálnímu počítači pro použití [tokenu](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md), [Azure PowerShell nebo Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)nebo [Sady Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.49 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat příkaz cli místně, tento článek vyžaduje, abyste spouštěli Azure CLI verze 2.0.49 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-an-azure-key-vault"></a>Vytvoření trezoru klíčů Azure
 
-Příklady v tomto článku používají spravovanou identitu v Azure Container Instances pro přístup k tajnému kódu trezoru klíčů Azure. 
+Příklady v tomto článku používají spravovanou identitu v instanci kontejneru Azure pro přístup k tajnému klíči trezoru Azure. 
 
-Nejdřív vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* pomocí následujícího příkazu [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) :
+Nejprve pomocí následujícího příkazu [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create)vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Pomocí příkazu [AZ datatrezor Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) vytvořte Trezor klíčů. Nezapomeňte zadat jedinečný název trezoru klíčů. 
+K vytvoření trezoru klíčů použijte příkaz [az keyvault](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) create. Nezapomeňte zadat jedinečný název trezoru klíčů. 
 
 ```azurecli-interactive
 az keyvault create \
@@ -73,7 +73,7 @@ az keyvault create \
   --location eastus
 ```
 
-Pomocí příkazu [AZ Key trezor tajné sady](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) uložte ukázkový tajný klíč do trezoru klíčů:
+Uložit ukázkový tajný klíč do trezoru klíčů pomocí příkazu [az keyvault secret set:](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set)
 
 ```azurecli-interactive
 az keyvault secret set \
@@ -82,13 +82,13 @@ az keyvault secret set \
   --description ACIsecret --vault-name mykeyvault
 ```
 
-Pokračujte následujícími příklady pro přístup k trezoru klíčů s použitím spravované identity přiřazené uživatelem nebo systémem v Azure Container Instances.
+Pokračujte v následujících příkladech pro přístup k trezoru klíčů pomocí spravované identity přiřazené uživatelem nebo systémem v instanci kontejneru Azure.
 
-## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Příklad 1: použití identity přiřazené uživatelem pro přístup k trezoru klíčů Azure
+## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Příklad 1: Použití identity přiřazené uživateli pro přístup k trezoru klíčů Azure
 
 ### <a name="create-an-identity"></a>Vytvoření identity
 
-Nejdřív v předplatném vytvořte identitu pomocí příkazu [AZ identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) . Můžete použít stejnou skupinu prostředků, která se používá k vytvoření trezoru klíčů, nebo použít jinou.
+Nejprve vytvořte identitu ve vašem předplatném pomocí příkazu [az identity create.](/cli/azure/identity?view=azure-cli-latest#az-identity-create) Můžete použít stejnou skupinu prostředků, která se používá k vytvoření trezoru klíčů, nebo použít jinou skupinu.
 
 ```azurecli-interactive
 az identity create \
@@ -96,7 +96,7 @@ az identity create \
   --name myACIId
 ```
 
-Pokud chcete použít identitu v následujících krocích, pomocí příkazu [AZ identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) uložte ID instančního objektu identity a ID prostředku do proměnných.
+Chcete-li použít identitu v následujících krocích, použijte příkaz [az identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) k uložení ID instancí instancí identity a ID prostředku v proměnných.
 
 ```azurecli-interactive
 # Get service principal ID of the user-assigned identity
@@ -106,11 +106,11 @@ spID=$(az identity show --resource-group myResourceGroup --name myACIId --query 
 resourceID=$(az identity show --resource-group myResourceGroup --name myACIId --query id --output tsv)
 ```
 
-### <a name="enable-a-user-assigned-identity-on-a-container-group"></a>Povolení uživatelsky přiřazené identity ve skupině kontejnerů
+### <a name="enable-a-user-assigned-identity-on-a-container-group"></a>Povolení identity přiřazené uživateli ve skupině kontejnerů
 
-Spuštěním následujícího příkazu [AZ Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) vytvořte instanci kontejneru založenou na `azure-cli` imagi od Microsoftu. Tento příklad poskytuje skupinu s jedním kontejnerem, kterou můžete použít interaktivně, aby bylo možné spustit Azure CLI pro přístup k dalším službám Azure. V této části se používá jenom základní operační systém Ubuntu. 
+Spusťte následující příkaz [az kontejner vytvořit](/cli/azure/container?view=azure-cli-latest#az-container-create) vytvořit instanci kontejneru na základě image společnosti `azure-cli` Microsoft. Tento příklad poskytuje skupinu s jedním kontejnerem, kterou můžete interaktivně použít ke spuštění příkazového příkazového příkazu Azure pro přístup k dalším službám Azure. V této části se používá pouze základní operační systém Ubuntu. 
 
-Parametr `--assign-identity` předá uživatelem přiřazenou spravovanou identitu do skupiny. Dlouho běžící příkaz udržuje kontejner spuštěný. Tento příklad používá stejnou skupinu prostředků, která se používá k vytvoření trezoru klíčů, ale můžete zadat jiný.
+Parametr `--assign-identity` předá skupině spravovanou identitu přiřazenou uživatelem. Příkaz pro dlouhotrvající spuštění udržuje kontejner spuštěn. Tento příklad používá stejnou skupinu prostředků, která slouží k vytvoření trezoru klíčů, ale můžete zadat jinou skupinu.
 
 ```azurecli-interactive
 az container create \
@@ -121,7 +121,7 @@ az container create \
   --command-line "tail -f /dev/null"
 ```
 
-Během několika sekund byste měli dostat odpověď z rozhraní příkazového řádku Azure oznamující, že nasazení bylo dokončeno. Pomocí příkazu [AZ Container show](/cli/azure/container?view=azure-cli-latest#az-container-show) ověřte jeho stav.
+Během několika sekund byste měli dostat odpověď z rozhraní příkazového řádku Azure oznamující, že nasazení bylo dokončeno. Zkontrolujte jeho stav pomocí příkazu [az container show.](/cli/azure/container?view=azure-cli-latest#az-container-show)
 
 ```azurecli-interactive
 az container show \
@@ -129,7 +129,7 @@ az container show \
   --name mycontainer
 ```
 
-Oddíl `identity` ve výstupu vypadá podobně jako v následujícím příkladu, který zobrazuje identitu nastavenou ve skupině kontejnerů. `principalID` v části `userAssignedIdentities` je instanční objekt identity, kterou jste vytvořili v Azure Active Directory:
+Oddíl `identity` ve výstupu vypadá podobně jako následující, zobrazující identitu je nastavena ve skupině kontejnerů. Pod `principalID` `userAssignedIdentities` je instanční objekt identity, kterou jste vytvořili ve službě Azure Active Directory:
 
 ```console
 [...]
@@ -147,9 +147,9 @@ Oddíl `identity` ve výstupu vypadá podobně jako v následujícím příkladu
 [...]
 ```
 
-### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Udělení přístupu k trezoru klíčů uživatelem přiřazeným identitám
+### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Udělit uživateli přiřazený přístup k identitě trezoru klíčů
 
-Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následující příkaz [AZ Key trezor set-Policy](/cli/azure/keyvault?view=azure-cli-latest) . Následující příklad umožňuje uživateli přiřazenou identitu k získání tajných kódů z trezoru klíčů:
+Spusťte následující příkaz [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) a nastavte zásady přístupu v trezoru klíčů. Následující příklad umožňuje uživateli přiřazenou identitu získat tajné klíče z trezoru klíčů:
 
 ```azurecli-interactive
  az keyvault set-policy \
@@ -159,9 +159,9 @@ Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následuj
     --secret-permissions get
 ```
 
-### <a name="use-user-assigned-identity-to-get-secret-from-key-vault"></a>Použití uživatelsky přiřazené identity k získání tajného klíče z trezoru klíčů
+### <a name="use-user-assigned-identity-to-get-secret-from-key-vault"></a>Použití identity přiřazené uživateli k získání tajného klíče z trezoru klíčů
 
-Nyní můžete použít spravovanou identitu v rámci spuštěné instance kontejneru pro přístup k trezoru klíčů. Nejdřív spusťte prostředí bash v kontejneru:
+Nyní můžete použít spravovanou identitu v rámci spuštěné instance kontejneru pro přístup k trezoru klíčů. První spuštění bash shell v kontejneru:
 
 ```azurecli-interactive
 az container exec \
@@ -170,7 +170,7 @@ az container exec \
   --exec-command "/bin/bash"
 ```
 
-Spusťte následující příkazy v prostředí bash v kontejneru. Pokud chcete získat přístupový token pro použití Azure Active Directory k ověření v trezoru klíčů, spusťte následující příkaz:
+Spusťte následující příkazy v prostředí bash v kontejneru. Pokud chcete získat přístupový token pro ověřování v trezoru klíčů pomocí služby Azure Active Directory, spusťte následující příkaz:
 
 ```bash
 curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true -s
@@ -182,32 +182,32 @@ Výstup:
 {"access_token":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9......xxxxxxxxxxxxxxxxx","refresh_token":"","expires_in":"28799","expires_on":"1539927532","not_before":"1539898432","resource":"https://vault.azure.net/","token_type":"Bearer"}
 ```
 
-Pro uložení přístupového tokenu do proměnné pro použití v dalších příkazech k ověření spusťte následující příkaz:
+Chcete-li ukládat přístupový token do proměnné pro použití v následujících příkazech k ověření, spusťte následující příkaz:
 
 ```bash
 token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true | jq -r '.access_token')
 
 ```
 
-Nyní pomocí přístupového tokenu ověřte v trezoru klíčů a přečtěte si tajný klíč. Nezapomeňte nahradit název trezoru klíčů v adrese URL ( *https://mykeyvault.vault.azure.net/...* ):
+Nyní použijte přístupový token k ověření trezoru klíčů a čtení tajného klíče. Nezapomeňte nahradit název trezoru klíčů v adrese URL (*https://mykeyvault.vault.azure.net/...*):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
 ```
 
-Odpověď vypadá podobně jako v následujícím příkladu, který zobrazuje tajný klíč. V kódu byste tento výstup mohli analyzovat a získat tak tajný klíč. Pak použijte tajný klíč v následné operaci pro přístup k jinému prostředku Azure.
+Odpověď vypadá podobně jako následující a zobrazuje tajemství. V kódu by analyzovat tento výstup k získání tajného klíče. Potom použijte tajný klíč v následné operaci pro přístup k jinému prostředku Azure.
 
 ```bash
 {"value":"Hello Container Instances","contentType":"ACIsecret","id":"https://mykeyvault.vault.azure.net/secrets/SampleSecret/xxxxxxxxxxxxxxxxxxxx","attributes":{"enabled":true,"created":1539965967,"updated":1539965967,"recoveryLevel":"Purgeable"},"tags":{"file-encoding":"utf-8"}}
 ```
 
-## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Příklad 2: použití identity přiřazené systémem pro přístup k trezoru klíčů Azure
+## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Příklad 2: Použití systémem přiřazené identity pro přístup k trezoru klíčů Azure
 
-### <a name="enable-a-system-assigned-identity-on-a-container-group"></a>Povolení identity přiřazené systémem ve skupině kontejnerů
+### <a name="enable-a-system-assigned-identity-on-a-container-group"></a>Povolení systémově přiřazené identity ve skupině kontejnerů
 
-Spuštěním následujícího příkazu [AZ Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) vytvořte instanci kontejneru založenou na `azure-cli` imagi od Microsoftu. Tento příklad poskytuje skupinu s jedním kontejnerem, kterou můžete použít interaktivně, aby bylo možné spustit Azure CLI pro přístup k dalším službám Azure. 
+Spusťte následující příkaz [az kontejner vytvořit](/cli/azure/container?view=azure-cli-latest#az-container-create) vytvořit instanci kontejneru na základě image společnosti `azure-cli` Microsoft. Tento příklad poskytuje skupinu s jedním kontejnerem, kterou můžete interaktivně použít ke spuštění příkazového příkazového příkazu Azure pro přístup k dalším službám Azure. 
 
-Parametr `--assign-identity` bez další hodnoty umožňuje ve skupině spravovanou identitu přiřazenou systémem. Identita je vymezena pro skupinu prostředků ve skupině kontejnerů. Dlouho běžící příkaz udržuje kontejner spuštěný. Tento příklad používá stejnou skupinu prostředků, která se používá k vytvoření trezoru klíčů, ale můžete zadat jiný.
+Parametr `--assign-identity` bez další hodnoty umožňuje systémem přiřazenou spravovanou identitu ve skupině. Identita je vymezena na skupinu prostředků skupiny kontejnerů. Příkaz pro dlouhotrvající spuštění udržuje kontejner spuštěn. Tento příklad používá stejnou skupinu prostředků, která slouží k vytvoření trezoru klíčů, ale můžete zadat jinou skupinu.
 
 ```azurecli-interactive
 # Get the resource ID of the resource group
@@ -222,7 +222,7 @@ az container create \
   --command-line "tail -f /dev/null"
 ```
 
-Během několika sekund byste měli dostat odpověď z rozhraní příkazového řádku Azure oznamující, že nasazení bylo dokončeno. Pomocí příkazu [AZ Container show](/cli/azure/container?view=azure-cli-latest#az-container-show) ověřte jeho stav.
+Během několika sekund byste měli dostat odpověď z rozhraní příkazového řádku Azure oznamující, že nasazení bylo dokončeno. Zkontrolujte jeho stav pomocí příkazu [az container show.](/cli/azure/container?view=azure-cli-latest#az-container-show)
 
 ```azurecli-interactive
 az container show \
@@ -230,7 +230,7 @@ az container show \
   --name mycontainer
 ```
 
-Část `identity` ve výstupu vypadá podobně jako v následujícím příkladu, který ukazuje, že se v Azure Active Directory vytvoří identita přiřazená systémem:
+Oddíl `identity` ve výstupu vypadá podobně jako následující a ukazuje, že se ve službě Azure Active Directory vytvoří systémově přiřazená identita:
 
 ```console
 [...]
@@ -243,15 +243,15 @@ az container show \
 [...]
 ```
 
-Nastavte proměnnou na hodnotu `principalId` (ID instančního objektu) identity, která se použije v pozdějších krocích.
+Nastavte proměnnou na `principalId` hodnotu (ID instančního objektu) identity, která se má použít v pozdějších krocích.
 
 ```azurecli-interactive
 spID=$(az container show --resource-group myResourceGroup --name mycontainer --query identity.principalId --out tsv)
 ```
 
-### <a name="grant-container-group-access-to-the-key-vault"></a>Udělení přístupu k trezoru klíčů skupině kontejnerů
+### <a name="grant-container-group-access-to-the-key-vault"></a>Udělit skupině kontejnerů přístup k trezoru klíčů
 
-Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následující příkaz [AZ Key trezor set-Policy](/cli/azure/keyvault?view=azure-cli-latest) . Následující příklad umožňuje, aby identita spravovaná systémem získala tajné kódy z trezoru klíčů:
+Spusťte následující příkaz [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) a nastavte zásady přístupu v trezoru klíčů. Následující příklad umožňuje identity spravované systémem získat tajné klíče z trezoru klíčů:
 
 ```azurecli-interactive
  az keyvault set-policy \
@@ -263,7 +263,7 @@ Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následuj
 
 ### <a name="use-container-group-identity-to-get-secret-from-key-vault"></a>Použití identity skupiny kontejnerů k získání tajného klíče z trezoru klíčů
 
-Nyní můžete použít spravovanou identitu pro přístup k trezoru klíčů v rámci spuštěné instance kontejneru. Nejdřív spusťte prostředí bash v kontejneru:
+Nyní můžete použít spravovanou identitu pro přístup k trezoru klíčů v rámci spuštěné instance kontejneru. První spuštění bash shell v kontejneru:
 
 ```azurecli-interactive
 az container exec \
@@ -272,13 +272,13 @@ az container exec \
   --exec-command "/bin/bash"
 ```
 
-Spusťte následující příkazy v prostředí bash v kontejneru. Nejdřív se přihlaste k Azure CLI pomocí spravované identity:
+Spusťte následující příkazy v prostředí bash v kontejneru. Nejprve se přihlaste k azure cli pomocí spravované identity:
 
 ```bash
 az login --identity
 ```
 
-Z běžícího kontejneru načtěte tajný klíč z trezoru klíčů:
+Ze spuštěného kontejneru načtěte tajný klíč z trezoru klíčů:
 
 ```bash
 az keyvault secret show \
@@ -286,7 +286,7 @@ az keyvault secret show \
   --vault-name mykeyvault --query value
 ```
 
-Načte se hodnota tajného klíče:
+Hodnota tajného klíče je načtena:
 
 ```bash
 "Hello Container Instances"
@@ -294,17 +294,17 @@ Načte se hodnota tajného klíče:
 
 ## <a name="enable-managed-identity-using-resource-manager-template"></a>Povolení spravované identity pomocí šablony Správce prostředků
 
-Pokud chcete ve skupině kontejnerů povolit spravovanou identitu pomocí [šablony Správce prostředků](container-instances-multi-container-group.md), nastavte vlastnost `identity` objektu `Microsoft.ContainerInstance/containerGroups` s objektem `ContainerGroupIdentity`. Následující fragmenty kódu ukazují vlastnost `identity` nakonfigurovaná pro různé scénáře. Viz [odkaz na šablonu správce prostředků](/azure/templates/microsoft.containerinstance/containergroups). Zadejte minimální `apiVersion` `2018-10-01`.
+Chcete-li povolit spravovanou identitu ve skupině `identity` kontejnerů `Microsoft.ContainerInstance/containerGroups` pomocí šablony `ContainerGroupIdentity` [Správce prostředků](container-instances-multi-container-group.md), nastavte vlastnost objektu pomocí objektu. Následující výstřižky `identity` zobrazují vlastnost nakonfigurovanou pro různé scénáře. Viz [odkaz na šablonu Správce prostředků](/azure/templates/microsoft.containerinstance/containergroups). Zadejte `apiVersion` minimum `2018-10-01`.
 
 ### <a name="user-assigned-identity"></a>Identita přiřazená uživatelem
 
-Identita přiřazená uživatelem je ID prostředku ve formátu:
+Identita přiřazená uživatelem je ID prostředku formuláře:
 
 ```
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}"
 ``` 
 
-Můžete povolit jednu nebo více uživatelsky přiřazených identit.
+Můžete povolit jednu nebo více identit přiřazených uživatelem.
 
 ```json
 "identity": {
@@ -316,7 +316,7 @@ Můžete povolit jednu nebo více uživatelsky přiřazených identit.
     }
 ```
 
-### <a name="system-assigned-identity"></a>Identita přiřazená systémem
+### <a name="system-assigned-identity"></a>Systémem přiřazená identita
 
 ```json
 "identity": {
@@ -324,9 +324,9 @@ Můžete povolit jednu nebo více uživatelsky přiřazených identit.
     }
 ```
 
-### <a name="system--and-user-assigned-identities"></a>Identity přiřazené systémem a uživatelem
+### <a name="system--and-user-assigned-identities"></a>Identity přiřazené systémem a uživateli
 
-Ve skupině kontejnerů můžete povolit identitu přiřazenou systémem i jednu nebo více uživatelsky přiřazených identit.
+Ve skupině kontejnerů můžete povolit systémově přiřazenou identitu i jednu nebo více identit přiřazených uživatelem.
 
 ```json
 "identity": {
@@ -341,18 +341,18 @@ Ve skupině kontejnerů můžete povolit identitu přiřazenou systémem i jednu
 
 ## <a name="enable-managed-identity-using-yaml-file"></a>Povolení spravované identity pomocí souboru YAML
 
-Pokud chcete ve skupině kontejnerů nasazenou pomocí [souboru YAML](container-instances-multi-container-yaml.md)povolit spravovanou identitu, zahrňte následující YAML.
-Zadejte minimální `apiVersion` `2018-10-01`.
+Chcete-li povolit spravovanou identitu ve skupině kontejnerů nasazené pomocí [souboru YAML](container-instances-multi-container-yaml.md), zahrňte následující yaml.
+Zadejte `apiVersion` minimum `2018-10-01`.
 
 ### <a name="user-assigned-identity"></a>Identita přiřazená uživatelem
 
-Identita přiřazená uživatelem je ID prostředku ve formátu. 
+Identita přiřazená uživatelem je ID prostředku formuláře. 
 
 ```
 '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'
 ```
 
-Můžete povolit jednu nebo více uživatelsky přiřazených identit.
+Můžete povolit jednu nebo více identit přiřazených uživatelem.
 
 ```YAML
 identity:
@@ -361,16 +361,16 @@ identity:
     {'myResourceID1':{}}
 ```
 
-### <a name="system-assigned-identity"></a>Identita přiřazená systémem
+### <a name="system-assigned-identity"></a>Systémem přiřazená identita
 
 ```YAML
 identity:
   type: SystemAssigned
 ```
 
-### <a name="system--and-user-assigned-identities"></a>Identity přiřazené systémem a uživatelem
+### <a name="system--and-user-assigned-identities"></a>Identity přiřazené systémem a uživateli
 
-Ve skupině kontejnerů můžete povolit identitu přiřazenou systémem i jednu nebo více uživatelsky přiřazených identit.
+Ve skupině kontejnerů můžete povolit systémově přiřazenou identitu i jednu nebo více identit přiřazených uživatelem.
 
 ```YAML
 identity:
@@ -381,13 +381,13 @@ identity:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se seznámili se spravovanými identitami v Azure Container Instances a postupy:
+V tomto článku jste se dozvěděli o spravovaných identitách v Azure Container Instances a o tom, jak:
 
 > [!div class="checklist"]
-> * Povolení uživatelsky přiřazené identity nebo identity přiřazené systémem ve skupině kontejnerů
-> * Udělení identity přístupu k trezoru klíčů Azure
+> * Povolení identity přiřazené uživatelem nebo systémově přiřazené ve skupině kontejnerů
+> * Udělení přístupu k identitě trezoru klíčů Azure
 > * Použití spravované identity pro přístup k trezoru klíčů ze spuštěného kontejneru
 
 * Přečtěte si další informace o [spravovaných identitách pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/).
 
-* Příklad použití spravované identity pro přístup k trezoru klíčů z Azure Container Instances najdete v tématu [Azure SDK SDK](https://medium.com/@samkreter/c98911206328) .
+* Podívejte se na [příklad Azure Go SDK příklad](https://medium.com/@samkreter/c98911206328) použití spravované identity pro přístup k trezoru klíčů z Azure Container Instances.

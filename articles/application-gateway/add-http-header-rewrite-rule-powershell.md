@@ -1,6 +1,6 @@
 ---
-title: Přepsání hlavičky protokolu HTTP ve službě Azure Application Gateway
-description: Tento článek obsahuje informace o tom, jak přepsat hlavičky protokolu HTTP ve službě Azure Application Gateway pomocí Azure Powershellu
+title: Přepsání hlaviček HTTP v bráně Azure Application Gateway
+description: Tento článek obsahuje informace o tom, jak přepsat hlavičky HTTP v Azure Application Gateway pomocí Azure PowerShellu
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
@@ -8,61 +8,61 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: absha
 ms.openlocfilehash: 47fe6a5247622e3ad3b3720955068580e0329913
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64947188"
 ---
-# <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Přepište hlaviček žádostí a odpovědí HTTP pomocí Azure Application Gateway – Azure PowerShell
+# <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Přepisování hlaviček požadavků HTTP a odpovědí pomocí Azure Application Gateway – Azure PowerShell
 
-Tento článek popisuje, jak pomocí Azure Powershellu ke konfiguraci [SKU v2 Application Gateway](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) instance přepsání hlavičky protokolu HTTP v požadavky a odpovědi.
+Tento článek popisuje, jak pomocí Azure PowerShellu nakonfigurovat instanci [sku soupoložkou aplikační brány v2](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) k přepsání hlaviček HTTP v požadavcích a odpovědích.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-- Budete muset spustit prostředí Azure PowerShell místně, k dokončení kroků v tomto článku. Budete také potřebovat Az modulu verze 1.0.0 nebo novější. Spustit `Import-Module Az` a potom `Get-Module Az` určit verzi, kterou jste nainstalovali. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
-- Musíte mít instanci SKU v2 Application Gateway. Přepsání hlavičky se nepodporuje v v1 SKU. Pokud nemáte k dispozici v2 SKU, vytvořte [SKU v2 Application Gateway](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) instance před zahájením.
+- K dokončení kroků v tomto článku je potřeba spustit Azure PowerShell místně. Musíte mít také nainstalován modul Az verze 1.0.0 nebo novější. `Import-Module Az` Spusťte `Get-Module Az` a potom určete verzi, kterou jste nainstalovali. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
+- Musíte mít instanci sku brány aplikace v2. Přepisování záhlaví není podporováno ve skladové jednotce v1. Pokud nemáte skladovou položku v2, vytvořte před zahájením instanci [sku brány aplikace v2.](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps)
 
 ## <a name="create-required-objects"></a>Vytvoření požadovaných objektů
 
-Pokud chcete nakonfigurovat přepsání hlavičky protokolu HTTP, budete muset dokončit tyto kroky.
+Chcete-li nakonfigurovat přepsání hlavičky HTTP, je třeba provést tyto kroky.
 
-1. Vytvořte objekty, které jsou požadovány pro přepsání hlavičky protokolu HTTP:
+1. Vytvořte objekty, které jsou požadovány pro přepsání hlavičky HTTP:
 
-   - **RequestHeaderConfiguration**: Slouží k určení, které chcete přepsat pole hlavičky požadavku a novou hodnotu hlavičky.
+   - **RequestHeaderConfiguration**: Slouží k určení polí hlavičky požadavku, která chcete přepsat, a nové hodnoty pro záhlaví.
 
-   - **ResponseHeaderConfiguration**: Slouží k určení, které chcete přepsat pole hlavičky odpovědi a novou hodnotu hlavičky.
+   - **ResponseHeaderConfiguration**: Slouží k určení polí hlavičky odpovědi, která chcete přepsat, a nové hodnoty záhlaví.
 
-   - **ActionSet**: Obsahuje konfigurace hlaviček žádostí a odpovědí zadali dřív.
+   - **ActionSet**: Obsahuje konfigurace hlavičky požadavku a odpovědi zadané dříve.
 
-   - **Podmínka**: Volitelná konfigurace. Přepište podmínky vyhodnotí obsahu žádosti HTTP (S) a odpovědi. Akce revize se vrátí požadavku HTTP (S) nebo odpovědi odpovídá podmínce revize.
+   - **Podmínka**: Volitelná konfigurace. Podmínky přepsání vyhodnocují obsah požadavků http(S) a odpovědí. Akce přepsání dojde, pokud požadavek HTTP(S) nebo odpověď odpovídá podmínce přepsání.
 
-     Pokud přiřadíte více než jednu podmínku akci, dojde k akci pouze v případě, že jsou splněné všechny podmínky. Operace je jinými slovy, logické a operace.
+     Pokud přidružíte více než jednu podmínku k akci, akce nastane pouze v případě, že jsou splněny všechny podmínky. Jinými slovy, operace je logická operace AND.
 
-   - **RewriteRule**: Obsahuje více akce přepsání / přepisování kombinace podmínku.
+   - **Přepsání:** Obsahuje více kombinací rewrite akce / přepsání podmínek.
 
-   - **RuleSequence**: Volitelná konfigurace, která pomáhá určit pořadí, ve kterém pravidla pro přepis adres spustit. Tato konfigurace je užitečný, pokud máte více pravidla pro přepis adres v sadě revize. Pravidlo pro přepis adres, který má menší hodnotu pořadí pravidlo spustí první. Pokud přiřadíte stejnou hodnotu pořadí pravidlo na dvě pravidla pro přepis, pořadí spouštění je Nedeterministický.
+   - **RuleSequence**: Volitelná konfigurace, která pomáhá určit pořadí, ve kterém se pravidla přepisusí spouštějí. Tato konfigurace je užitečná, pokud máte více pravidel pro přepsání v sadě přepsání. Pravidlo přepsání, které má nižší hodnotu pořadí pravidel, je spuštěno jako první. Pokud přiřadíte stejnou hodnotu pořadí pravidel dvěma pravidlům pro přepsání, pořadí provádění je nedeterministické.
 
-     Pokud nezadáte RuleSequence explicitně, je nastavena výchozí hodnota je 100.
+     Pokud explicitně nezadáte RuleSequence, je nastavena výchozí hodnota 100.
 
-   - **RewriteRuleSet**: Obsahuje více pravidla pro přepis adres, které budou přidružené pravidlo směrování požadavku.
+   - **RewriteRuleSet**: Obsahuje více pravidel přepsání, která budou přidružena k pravidlu směrování požadavku.
 
-2. Připojte RewriteRuleSet pravidel směrování. Konfigurace přepsání je připojen k zdroj naslouchací proces prostřednictvím pravidla směrování. Při použití základních pravidel směrování, konfigurace přepsání hlavičky souvisí s naslouchacím procesem zdroj a je globální záhlaví revize. Při použití pravidel směrování na základě cest, přepište Konfigurace hlavičky je definován na mapě cestu adresy URL. V takovém případě platí jenom pro konkrétní cesty oblasti lokality.
+2. Připojte rewriteRuleSet k pravidlu směrování. Konfigurace přepsání je připojena ke zdrojovému naslouchací procesu prostřednictvím pravidla směrování. Při použití základního pravidla směrování je konfigurace přepsání záhlaví přidružena ke zdrojovému naslouchací procesu a je přepsáním globální hlavičky. Při použití pravidla směrování založeného na cestě je konfigurace přepsání záhlaví definována na mapě cesty URL. V takovém případě se vztahuje pouze na konkrétní oblast cesty lokality.
 
-Můžete vytvořit více sad přepsání hlavičky protokolu HTTP a použije každé revize nastavena na víc naslouchacích procesů. Můžete ale použít pouze jeden přepsat nastavenou na konkrétní naslouchací proces.
+Můžete vytvořit více sad přepisů hlaviček PROTOKOLU HTTP a použít každou sadu přepsání na více naslouchacích procesech. Ale můžete použít pouze jeden přepsání nastavit na konkrétní naslouchací proces.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 ```azurepowershell
 Connect-AzAccount
 Select-AzSubscription -Subscription "<sub name>"
 ```
 
-## <a name="specify-the-http-header-rewrite-rule-configuration"></a>Zadejte hlavičku protokolu HTTP přepsat konfiguraci pravidel
+## <a name="specify-the-http-header-rewrite-rule-configuration"></a>Určení konfigurace pravidla přepisu záhlaví PROTOKOLU HTTP
 
-V tomto příkladu upravíme adresy URL přesměrování pomocí přepsání hlavičky location v odpovědi HTTP pokaždé, když se hlavička umístění obsahuje odkaz na azurewebsites.net. Chcete-li to provést, přidáme podmínku k vyhodnocení, jestli hlavičky location v odpovědi obsahuje azurewebsites.net. Použijeme vzor `(https?):\/\/.*azurewebsites\.net(.*)$`. Využijeme `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` jako hodnotu záhlaví. Tato hodnota nahradí *azurewebsites.net* s *contoso.com* hlavičky location.
+V tomto příkladu změníme adresu URL přesměrování přepsáním hlavičky umístění v odpovědi HTTP vždy, když záhlaví umístění obsahuje odkaz na azurewebsites.net. Chcete-li to provést, přidáme podmínku k vyhodnocení, zda záhlaví umístění v odpovědi obsahuje azurewebsites.net. Použijeme vzor. `(https?):\/\/.*azurewebsites\.net(.*)$` A použijeme `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` jako hodnotu záhlaví. Tato hodnota nahradí *azurewebsites.net* *contoso.com* v záhlaví umístění.
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"
@@ -72,19 +72,19 @@ $rewriteRule = New-AzApplicationGatewayRewriteRule -Name LocationHeader -ActionS
 $rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name LocationHeaderRewrite -RewriteRule $rewriteRule
 ```
 
-## <a name="retrieve-the-configuration-of-your-application-gateway"></a>Načtení konfigurace služby application gateway
+## <a name="retrieve-the-configuration-of-your-application-gateway"></a>Načtení konfigurace aplikační brány
 
 ```azurepowershell
 $appgw = Get-AzApplicationGateway -Name "AutoscalingAppGw" -ResourceGroupName "<rg name>"
 ```
 
-## <a name="retrieve-the-configuration-of-your-request-routing-rule"></a>Načíst konfiguraci svoje pravidlo směrování požadavku
+## <a name="retrieve-the-configuration-of-your-request-routing-rule"></a>Načtení konfigurace pravidla směrování požadavku
 
 ```azurepowershell
 $reqRoutingRule = Get-AzApplicationGatewayRequestRoutingRule -Name rule1 -ApplicationGateway $appgw
 ```
 
-## <a name="update-the-application-gateway-with-the-configuration-for-rewriting-http-headers"></a>Aktualizovat application gateway s konfigurací pro přepsání hlavičky protokolu HTTP
+## <a name="update-the-application-gateway-with-the-configuration-for-rewriting-http-headers"></a>Aktualizace aplikační brány pomocí konfigurace pro přepisování hlaviček HTTP
 
 ```azurepowershell
 Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $appgw -Name LocationHeaderRewrite -RewriteRule $rewriteRuleSet.RewriteRules
@@ -92,7 +92,7 @@ Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name rule
 Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
-## <a name="delete-a-rewrite-rule"></a>Odstranit pravidlo pro přepis adres
+## <a name="delete-a-rewrite-rule"></a>Odstranění pravidla přepisu
 
 ```azurepowershell
 $appgw = Get-AzApplicationGateway -Name "AutoscalingAppGw" -ResourceGroupName "<rg name>"
@@ -102,6 +102,6 @@ $requestroutingrule.RewriteRuleSet= $null
 set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak nastavit některé běžné případy použití, naleznete v tématu [společné hlavičky revize scénáře](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).
+Další informace o nastavení některých běžných případů použití naleznete v [běžných scénářích přepsání záhlaví](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).

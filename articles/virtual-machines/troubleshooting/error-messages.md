@@ -1,6 +1,6 @@
 ---
-title: Běžné kódy chyb virtuálních počítačů v Azure | Microsoft Docs
-description: Pochopení některých běžných kódů chyb, ke kterým došlo při zřizování a správě virtuálních počítačů v Azure
+title: Běžné kódy chyb virtuálních montovna v Azure | Dokumenty společnosti Microsoft
+description: Seznamte se s některými běžnými kódy chyb, které se vyskytly při zřizování a správě virtuálních počítačů v Azure.
 services: virtual-machines
 documentationcenter: ''
 author: xujing-ms
@@ -13,21 +13,21 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76543014"
 ---
-# <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Porozumění běžným chybovým zprávám při správě virtuálních počítačů v Azure
+# <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Vysvětlení běžných chybových zpráv při správě virtuálních počítačů v Azure
 
-Tento článek popisuje některé z nejběžnějších chybových kódů a zpráv, se kterými se můžete setkat při vytváření nebo správě virtuálních počítačů v Azure.
+Tento článek popisuje některé nejběžnější chybové kódy a zprávy, se kterými se můžete setkat při vytváření nebo správě virtuálních počítačů (VM) v Azure.
 
 >[!NOTE]
-> Komentáře můžete na této stránce ponechat pro zpětnou vazbu nebo prostřednictvím [zpětné vazby Azure](https://feedback.azure.com/forums/216843-virtual-machines) pomocí značky #azerrormessage.
+> Komentáře na této stránce můžete zanechat pro zpětnou vazbu nebo prostřednictvím [zpětné vazby Azure](https://feedback.azure.com/forums/216843-virtual-machines) se značkou #azerrormessage.
 
-## <a name="error-response-format"></a>Formát odpovědi na chyby 
-Virtuální počítače Azure používají pro chybovou odpověď následující formát JSON:
+## <a name="error-response-format"></a>Formát odpovědi na chybu 
+Virtuální počítače Azure používají následující formát JSON pro odpověď na chybu:
 
 ```json
 {
@@ -45,175 +45,175 @@ Virtuální počítače Azure používají pro chybovou odpověď následující
 }
 ```
 
-Odpověď na chybu vždy zahrnuje stavový kód a objekt chyby. Každý objekt chyby vždy obsahuje kód chyby a zprávu. Pokud se virtuální počítač vytvoří se šablonou, objekt Error obsahuje také část s podrobnostmi, která obsahuje vnitřní úroveň chybových kódů a zpráv. Obvykle je nejzákladnější vnitřní úroveň chybové zprávy kořenovou chybou.
+Odpověď na chybu vždy obsahuje stavový kód a objekt chyby. Každý objekt chyby vždy obsahuje kód chyby a zprávu. Pokud je virtuální jazyk vytvořen pomocí šablony, objekt chyby také obsahuje oddíl podrobností, který obsahuje vnitřní úroveň chybových kódů a zprávy. Za normálních okolností je nejvíce vnitřní úroveň chybové zprávy selhání kořenového adresáře.
 
 
-## <a name="common-virtual-machine-management-errors"></a>Běžné chyby správy virtuálních počítačů
+## <a name="common-virtual-machine-management-errors"></a>Běžné chyby správy virtuálních strojů
 
-V této části jsou uvedené běžné chybové zprávy, se kterými se můžete setkat při správě virtuálních počítačů:
+V této části jsou uvedeny běžné chybové zprávy, se kterými se můžete setkat při správě virtuálních měn:
 
 |  Kód chyby  |  Chybová zpráva  |  
 |  :------| :-------------|  
-|  AcquireDiskLeaseFailed  |  Nepovedlo se získat zapůjčení při vytváření disku{0}pomocí objektu BLOB s {1}m identifikátorem URI. Objekt BLOB se už používá.  |  
-|  AllocationFailed  |  Přidělení selhalo. Zkuste prosím zmenšit velikost virtuálního počítače nebo počet virtuálních počítačů, zkuste to znovu později nebo to zkuste nasadit do jiné skupiny dostupnosti nebo jiného umístění Azure.  |  
-|  AllocationFailed  |  Přidělení virtuálního počítače se nezdařilo z důvodu vnitřní chyby. Zkuste to prosím znovu později nebo to zkuste nasadit do jiného umístění.  |
-|  ArtifactNotFound  |  Rozšíření virtuálního počítače s vydavatelem '{0}' a typem '{1}' nebylo v umístění '{2}' nalezeno.  |
-|  ArtifactNotFound  |  Rozšíření s vydavatelem{0}, typu{1}a verze obslužné rutiny typu{2}se v úložišti rozšíření nepovedlo najít.  |
-|  ArtifactVersionNotFound  |  V úložišti artefaktů se nenašla žádná verze, která by splňovala požadovanou verzi{0}.  |
-|  ArtifactVersionNotFound  |  V úložišti artefaktů se nenašla žádná verze, která by splňovala požadovanou verzi{0}pro rozšíření virtuálního počítače s vydavatelem{1}a typem{2}.  |
-|  AttachDiskWhileBeingDetached  |  Datový disk '{0}' nelze připojit k virtuálnímu počítači '{1}', protože disk je právě odpojen. Počkejte prosím, než se disk úplně odpojí, a zkuste to znovu.  |
-|  Důvodu chybného požadavku  |  Zarovnané skupiny dostupnosti se zatím v této oblasti nepodporují.  |
-|  Důvodu chybného požadavku  |  Přidání virtuálního počítače se spravovanými disky do nespravované skupiny dostupnosti nebo přidání virtuálního počítače s disky založenými na objektech blob do spravované skupiny dostupnosti se nepodporuje. Vytvořte prosím skupinu dostupnosti se sadou vlastností Managed, aby se do ní přidal virtuální počítač se spravovanými disky.  |
-|  Důvodu chybného požadavku  |  Managed Disks se v této oblasti nepodporují.  |
-|  Důvodu chybného požadavku  |  Více VMExtensions na obslužnou rutinu není podporováno pro typ operačního systému{0}. VMExtension '{1}' s obslužnou rutinou '{2}' již byl přidán nebo zadán ve vstupu.  |
-|  Důvodu chybného požadavku  |  Operace '{0}' není podporována u prostředku '{1}' se službou Managed disks.  |
-|  CertificateImproperlyFormatted  |  Reprezentace JSON tajného klíče načtená z {0} má datové pole, které není správně formátovaný soubor PFX, nebo zadané heslo nekóduje soubor PFX správně.  |
-|  CertificateImproperlyFormatted  |  Data načtená z {0} nelze deserializovat do formátu JSON.  |
-|  Konflikt  |  Změna velikosti disku je povolená jenom při vytváření virtuálního počítače nebo při navráceném virtuálním počítači.  |
-|  ConflictingUserInput  |  Disk "{0}" nelze připojit, protože disk je již vlastněn VIRTUÁLNÍm počítačem "{1}".  |
-|  ConflictingUserInput  |  Zdrojové a cílové skupiny prostředků jsou stejné.  |
-|  ConflictingUserInput  |  Zdrojové a cílové účty úložiště pro {0} disku se liší.  |
-|  ContainerAlreadyOnLease  |  V kontejneru úložiště, který obsahuje objekt BLOB s identifikátorem URI {0}, už existuje zapůjčení.  |
-|  CrossSubscriptionMoveWithKeyVaultResources  |  Požadavek na přesunutí prostředků obsahuje prostředky trezoru klíčů, na které odkazuje jeden nebo více {0}s v žádosti. Tato možnost není v současné době v přesunu mezi předplatnými podporována. Podívejte se prosím na podrobnosti o chybách pro ID prostředků trezoru klíčů.  |
-|  DiagnosticsOperationInternalError  |  Při zpracování diagnostického profilu {0}virtuálních počítačů došlo k vnitřní chybě.  |
-|  DiskBlobAlreadyInUseByAnotherDisk  |  {0} objektů BLOB už používá jiný disk patřící do virtuálního počítače "{1}". Můžete kontrolovat metadata objektu BLOB pro informace o odkazech na disk.  |
-|  DiskBlobNotFound  |  Nepodařilo se najít objekt BLOB VHD s {0} identifikátorem URI pro disk "{1}".  |
-|  DiskBlobNotFound  |  Nepovedlo se najít objekt BLOB VHD s {0}m identifikátorem URI.  |
-|  DiskEncryptionKeySecretMissingTags  |  {0} tajný klíč neobsahuje značky {1}. Aktualizujte prosím tajnou verzi, přidejte požadované značky a zkuste to znovu.  |
-|  DiskEncryptionKeySecretUnwrapFailed  |  Rozbalení tajné {0} hodnoty pomocí Key {1} se nezdařilo.  |
-|  DiskImageNotReady  |  {0} image disku je ve stavu {1}. Zkuste to prosím znovu, až bude obrázek připravený.  |
-|  DiskPreparationError  |  Při přípravě disků virtuálního počítače došlo k jedné nebo více chybám. Podrobnosti najdete v tématu zobrazení instance disku.  |
-|  DiskProcessingError  |  Zpracování disku bylo zastaveno, protože virtuální počítač má jiné disky v neúspěšných discích.  |
-|  ImageBlobNotFound  |  Nepodařilo se najít objekt BLOB VHD s {0} identifikátorem URI pro disk "{1}".  |
-|  ImageBlobNotFound  |  Nepovedlo se najít objekt BLOB VHD s {0}m identifikátorem URI.  |
-|  IncorrectDiskBlobType  |  Objekty blob disku můžou být jenom typu objekt blob stránky. {0} objektů BLOB pro disk "{1}" je typu objekt blob bloku.  |
-|  IncorrectDiskBlobType  |  Objekty blob disku můžou být jenom typu objekt blob stránky. {0} objektů BLOB je typu{1}.  |
-|  IncorrectImageBlobType  |  Objekty blob disku můžou být jenom typu objekt blob stránky. {0} objektů BLOB pro disk "{1}" je typu objekt blob bloku.  |
-|  IncorrectImageBlobType  |  Objekty blob disku můžou být jenom typu objekt blob stránky. {0} objektů BLOB je typu{1}.  |
-|  InternalOperationError  |  Nepovedlo se vyhodnotit {0}účtu úložiště. Ujistěte se prosím, že se vytvořila prostřednictvím poskytovatele prostředků úložiště ve stejném umístění jako výpočetní prostředek.  |
-|  InternalOperationError  |  Nepovedlo se vyžádat úlohy {0} cíli.  |
-|  InternalOperationError  |  Při ověřování profilu sítě virtuálního počítače{0}došlo k chybě.  |
-|  InvalidAccountType  |  {0} AccountType není platný.  |
-|  InvalidParameter  |  Hodnota parametru {0} je neplatná.  |
-|  InvalidParameter  |  Zadané heslo správce není povoleno.  |
-|  InvalidParameter  |  "Zadané heslo musí být mezi {0}mi{1} znaky dlouhé a musí splňovat alespoň {2} požadavků na složitost hesla z následujících možností: <ol><li> Obsahuje znak velkými písmeny</li><li>Obsahuje malý znak</li><li>Obsahuje číselnou číslici</li><li>Obsahuje speciální znak.</li></ol>  |
-|  InvalidParameter  |  Zadané uživatelské jméno správce není povoleno.  |
-|  InvalidParameter  |  Pokud je virtuální počítač vytvořený z platformy nebo uživatelské image, nejde připojit stávající disk s operačním systémem.  |
-|  InvalidParameter  |  {0} názvu kontejneru není platný. Názvy kontejnerů musí mít délku 3-63 znaků a můžou obsahovat jenom malé alfanumerické znaky a spojovníky. Před spojovníkem musí následovat alfanumerický znak.  |
-|  InvalidParameter  |  Název kontejneru {0} v {1} adresy URL je neplatný. Názvy kontejnerů musí mít délku 3-63 znaků a můžou obsahovat jenom malé alfanumerické znaky a spojovníky. Před spojovníkem musí následovat alfanumerický znak.  |
-|  InvalidParameter  |  Název objektu BLOB v {0} URL obsahuje lomítko. To je pro disky aktuálně nepodporované.  |
-|  InvalidParameter  |  Identifikátor URI {0} nevypadá jako správný identifikátor URI objektu BLOB.  |
-|  InvalidParameter  |  Disk s názvem{0}už používá stejnou logickou jednotku (LUN): {1}.  |
-|  InvalidParameter  |  Disk s názvem{0}již existuje.  |
-|  InvalidParameter  |  Nejde zadat přepsání uživatelských imagí pro disk, který už je definovaný v zadaném odkazu na obrázek.  |
-|  InvalidParameter  |  Disk s názvem{0}už používá stejnou adresu URL VHD {1}.  |
-|  InvalidParameter  |  Zadaný počet domén selhání {0} musí klesnout do rozsahu {1} {2}.  |
-|  InvalidParameter  |  Typ licence {0} není platný. Platné typy licencí jsou: Windows_Client nebo Windows_Server, rozlišuje velká a malá písmena.  |
-|  InvalidParameter  |  Název hostitele Linux nesmí být delší než {0} znaků nebo obsahovat následující znaky: {1}.  |
-|  InvalidParameter  |  Cílová cesta pro veřejné klíče SSH je aktuálně omezená na výchozí hodnotu {0} z důvodu známého problému v agentu zřizování Linux.  |
-|  InvalidParameter  |  Disk na logické jednotce {0} již existuje.  |
-|  InvalidParameter  |  {0} předplatného žádosti se musí shodovat s {1} předplatného obsaženým v ID spravovaného disku.  |
-|  InvalidParameter  |  Vlastní data v OSProfile musí být v kódování Base64 a maximální délka {0} znaků.  |
-|  InvalidParameter  |  Název objektu BLOB v {0} URL musí končit příponou{1}.  |
-|  InvalidParameter  |  {0}' není platná Předpona názvu objektu BLOB zachyceného virtuálního pevného disku. Platná předpona odpovídá regulárnímu výrazu{1}.  |
-|  InvalidParameter  |  Pokud není zřízen agent virtuálního počítače, nelze do svého virtuálního počítače přidat certifikáty.  |
-|  InvalidParameter  |  Disk na logické jednotce {0} již existuje.  |
-|  InvalidParameter  |  Virtuální počítač se nepovedlo vytvořit, protože požadovaná velikost {0} není dostupná v clusteru, ve kterém je aktuálně přidělená Skupina dostupnosti. Dostupné velikosti jsou: {1}. Další informace o strategii změny velikosti virtuálního počítače najdete na https://aka.ms/azure-resizevm.  |
-|  InvalidParameter  |  Požadovaná velikost virtuálního počítače {0} není v aktuální oblasti k dispozici. Dostupné velikosti v aktuální oblasti jsou: {1}. Další informace o dostupných velikostech virtuálních počítačů v jednotlivých oblastech najdete na adrese https://aka.ms/azure-regions.  |
-|  InvalidParameter  |  Požadovaná velikost virtuálního počítače {0} není v aktuální oblasti k dispozici. Další informace o dostupných velikostech virtuálních počítačů v jednotlivých oblastech najdete na adrese https://aka.ms/azure-regions.  |
-|  InvalidParameter  |  Uživatelské jméno správce systému Windows nemůže být delší než {0} znaků, musí končit tečkou (.) nebo obsahovat následující znaky: {1}.  |
-|  InvalidParameter  |  Název počítače s Windows nemůže být delší než {0} znaků, musí být zcela číslice nebo obsahovat následující znaky: {1}.  |
-|  MissingMoveDependentResources  |  Požadavek na přesunutí prostředků neobsahuje všechny závislé prostředky. Zkontrolujte podrobnosti o chybě chybějících ID prostředků.  |
-|  MoveResourcesHaveInvalidState  |  Požadavek na přesunutí prostředků obsahuje virtuální počítače, které jsou přidružené k neplatným účtům úložiště. Podrobnosti o těchto ID prostředků a odkazovaných názvech účtů úložiště najdete v podrobnostech.  |
-|  MoveResourcesHavePendingOperations  |  Požadavek na přesunutí prostředků obsahuje prostředky, u kterých operace čeká na vyřízení. Zkontrolujte prosím podrobnosti těchto ID prostředků. Po dokončení probíhajících operací zkuste operaci zopakovat.  |
-|  MoveResourcesNotFound  |  Požadavek na přesunutí prostředků obsahuje prostředky, které se nenašly. Zkontrolujte prosím podrobnosti těchto ID prostředků.  |
-|  NetworkingInternalOperationError  |  Neznámá chyba přidělení sítě  |
-|  NetworkingInternalOperationError  |  Neznámá chyba přidělení sítě  |
-|  NetworkingInternalOperationError  |  Při zpracování síťového profilu virtuálního počítače došlo k vnitřní chybě.  |
-|  NotFound  |  Nepovedlo se najít skupinu dostupnosti {0}.  |
-|  NotFound  |  Zdrojový virtuální počítač{0}zadaný v žádosti v tomto umístění Azure neexistuje.  |
-|  NotFound  |  Tenant s ID {0} nebyl nalezen.  |
-|  NotFound  |  {0} image nejde najít.  |
-|  NotSupported  |  Typ licence je {0}, ale {1} objektů BLOB imagí není místní.  |
-|  OperationNotAllowed  |  {0} skupiny dostupnosti nelze odstranit. Před odstraněním skupiny dostupnosti zajistěte, aby neobsahoval žádný virtuální počítač.  |
-|  OperationNotAllowed  |  Změna SKU skupiny dostupnosti z aligned na Classic se nepovoluje.  |
-|  OperationNotAllowed  |  Pokud není virtuální počítač spuštěný, nejde ve virtuálním počítači upravovat rozšíření.  |
-|  OperationNotAllowed  |  Akce zachycení je podporována pouze ve virtuálním počítači s disky založenými na objektech blob. K vytvoření image ze spravovaného virtuálního počítače použijte prosím rozhraní API prostředků image.  |
-|  OperationNotAllowed  |  {0} prostředků nelze vytvořit z image {1}, dokud se image úspěšně nevytvořila.  |
-|  OperationNotAllowed  |  Aktualizace encryptionSettings nejsou povolené, když je virtuální počítač přidělený, zkuste to prosím znovu, až se virtuální počítač oddělí.  |
-|  OperationNotAllowed  |  Přidání spravovaného disku do virtuálního počítače s disky založenými na objektech blob se nepodporuje.  |
-|  OperationNotAllowed  |  Maximální počet datových disků, které je povoleno připojit k virtuálnímu počítači této velikosti, je {0}.  |
-|  OperationNotAllowed  |  Přidání disku založeného na objektu blob do virtuálního počítače se spravovanými disky se nepodporuje.  |
-|  OperationNotAllowed  |  Operace{0}není povolená u image{1}, protože Image je označená k odstranění. Operaci odstranění můžete opakovat jenom (nebo počkejte na dokončení probíhající operace).  |
-|  OperationNotAllowed  |  Operace{0}se u virtuálního počítače{1}nepovoluje, protože virtuální počítač je zobecněný.  |
-|  OperationNotAllowed  |  Operace '{0}' není povolena, protože kolekce bodů obnovení '{1}' je označena k odstranění.  |
-|  OperationNotAllowed  |  Operace '{0}' není povolena v rozšíření virtuálního počítače '{1}', protože je označena pro odstranění. Operaci odstranění můžete opakovat jenom (nebo počkejte na dokončení probíhající operace).  |
-|  OperationNotAllowed  |  Operace '{0}' není povolena, protože Virtual Machines '{1}' se zřizuje pomocí image '{2}'.  |
-|  OperationNotAllowed  |  Operace '{0}' není povolena, protože virtuální počítač '{1}' aktuálně používá bitovou kopii '{2}'.  |
-|  OperationNotAllowed  |  Operace{0}se u virtuálního počítače{1}nepovoluje, protože virtuální počítač je označený k odstranění. Operaci odstranění můžete opakovat jenom (nebo počkejte na dokončení probíhající operace).  |
-|  OperationNotAllowed  |  Operace '{0}' není povolena na virtuálním počítači '{1}', protože virtuální počítač je buď odstraněn, nebo je označený k uvolnění.  |
-|  OperationNotAllowed  |  Operace{0}se u virtuálního počítače{1}nepovoluje, protože virtuální počítač je spuštěný. Pro případ, že virtuální počítač vypnete uvnitř hostovaného operačního systému, vypněte prosím explicitní napájení.  |
-|  OperationNotAllowed  |  Operace{0}se u virtuálního počítače{1}nepovoluje, protože virtuální počítač není navrácený.  |
-|  OperationNotAllowed  |  Operace '{0}' není u virtuálního počítače '{1}' povolena, protože virtuální počítač má ve stavu selhání rozšíření '{2}'.  |
-|  OperationNotAllowed  |  Operace '{0}' není u virtuálního počítače '{1}' povolena, protože probíhá jiná operace.  |
-|  OperationNotAllowed  |  Operace '{0}' vyžaduje zobecnění virtuálního počítače '{1}'.  |
-|  OperationNotAllowed  |  Operace vyžaduje, aby byl virtuální počítač spuštěný (nebo nastavený jako spuštěný).  |
-|  OperationNotAllowed  |  Disk o velikosti {0}GB, který je menší než velikost {1}GB odpovídajícího disku v imagi, není povolen.  |
-|  OperationNotAllowed  |  Rozšíření obslužné rutiny{0}pro škálování virtuálního počítače se dají přidat jenom v době vytváření sady škálování virtuálního počítače.  |
-|  OperationNotAllowed  |  Rozšíření obslužné rutiny{0}pro škálování virtuálního počítače se dá odstranit jenom v době odstranění sady škálování virtuálního počítače.  |
-|  OperationNotAllowed  |  Virtuální počítač{0}už používá spravované disky.  |
-|  OperationNotAllowed  |  Virtuální počítač{0}patří do skupiny dostupnosti Classic{1}. Aktualizujte prosím skupinu dostupnosti tak, aby používala SKU zarovnaná a pak zkuste převod zopakovat.  |
-|  OperationNotAllowed  |  Virtuální počítač vytvořený z image nemůže mít disky založené na objektech blob. Všechny disky musí být spravované disky.  |
-|  OperationNotAllowed  |  Operaci zachycení nejde dokončit, protože virtuální počítač není zobecněný.  |
-|  OperationNotAllowed  |  Operace správy na virtuálním počítači{0}nejsou povolené, protože disky virtuálního počítače se převádějí na spravované disky.  |
-|  OperationNotAllowed  |  Probíhající operace mění stav napájení {0} virtuálního počítače na {1}. Po nějaké době prosím zkuste operaci provést {2}.  |
-|  OperationNotAllowed  |  Nepovedlo se přidat nebo aktualizovat virtuální počítač. Požadovaná velikost virtuálního počítače {0} možná není dostupná v existující alokační jednotce. Další informace o strategii změny velikosti virtuálního počítače najdete na https://aka.ms/azure-resizevm.  |
-|  OperationNotAllowed  |  Nepovedlo se změnit velikost virtuálního počítače, protože požadovaná velikost {0} není dostupná v clusteru, ve kterém je skupina dostupnosti aktuálně přidělená. Dostupné velikosti jsou: {1}. Další informace o strategii změny velikosti virtuálního počítače najdete na https://aka.ms/azure-resizevm.  |
-|  OperationNotAllowed  |  Nepovedlo se změnit velikost virtuálního počítače, protože požadovaná velikost {0} není dostupná v clusteru, ve kterém je virtuální počítač aktuálně přidělený. Pokud chcete změnit velikost virtuálního počítače, aby se {1}, nasaďte ho do Azure Portal a zkuste operaci změny velikosti zopakovat. Další informace o strategii změny velikosti virtuálního počítače najdete na https://aka.ms/azure-resizevm.  |
-|  OSProvisioningClientError  |  Zřizování operačního systému pro virtuální počítač{0}selhalo, protože operační systém hosta se právě zřizuje.  |
-|  OSProvisioningClientError  |  Zřizování operačního systému pro virtuální počítač{0}nebylo úspěšné. Podrobnosti o chybě: {1} Ujistěte se, že je obrázek správně připravený (zobecněný). <ul><li>Pokyny pro Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  Nepovedlo se vygenerovat klíč hostitele SSH. Podrobnosti o chybě: {0}. Chcete-li vyřešit tento problém, ověřte, zda je nainstalován agent pro Linux. <ul><li>Pokyny najdete na adrese: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
-|  OSProvisioningClientError  |  Uživatelské jméno zadané pro virtuální počítač je pro tuto distribuci systému Linux neplatné. Podrobnosti o chybě: {0}.  |
-|  OSProvisioningInternalError  |  Zřizování operačního systému se pro virtuální počítač{0}nepovedlo kvůli vnitřní chybě.  |
-|  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač{0}nebylo dokončeno v přiděleném čase. Virtuální počítač se přesto může úspěšně dokončit. Zkontrolujte prosím stav zřizování později.  |
-|  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač{0}nebylo dokončeno v přiděleném čase. Virtuální počítač se přesto může úspěšně dokončit. Zkontrolujte prosím stav zřizování později. Také se ujistěte, že je bitová kopie správně připravená (zobecněná).   <ul><li>Pokyny pro Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Pokyny pro Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
-|  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač{0}nebylo dokončeno v přiděleném čase. Agent hosta virtuálního počítače se ale zjistil jako spuštěný. To naznačuje, že hostovaný operační systém nebyl správně připravený pro použití jako image virtuálního počítače (s CreateOption = FromImage). Tento problém vyřešíte tak, že virtuální pevný disk použijete s CreateOption = připojit nebo ho Připravte správně, aby bylo možné ho použít jako obrázek:   <ul><li>Pokyny pro Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Pokyny pro Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
-|  OverConstrainedAllocationRequest  |  Požadovaná velikost virtuálního počítače není aktuálně k dispozici ve vybraném umístění.  |
-|  ResourceUpdateBlockedOnPlatformUpdate  |  Prostředek nejde v tuto chvíli aktualizovat z důvodu probíhající aktualizace platformy. Zkuste to prosím znova později.  |
-|  StorageAccountLimitation  |  Účet úložiště{0}nepodporuje objekty blob stránky, které jsou potřeba k vytváření disků.  |
-|  StorageAccountLimitation  |  Účet úložiště{0}překročil přidělenou kvótu.  |
-|  StorageAccountLocationMismatch  |  Nepovedlo se vyhodnotit {0}účtu úložiště. Ujistěte se prosím, že se vytvořila prostřednictvím poskytovatele prostředků úložiště ve stejném umístění jako výpočetní prostředek.  |
-|  StorageAccountNotFound  |  Nepovedlo se najít {0} účtu úložiště. Ujistěte se, že se účet úložiště neodstranil a že patří do stejného umístění Azure jako virtuální počítač.  |
-|  StorageAccountNotRecognized  |  Použijte prosím účet úložiště, který spravuje poskytovatel prostředků úložiště. Použití {0} se nepodporuje.  |
-|  StorageAccountOperationInternalError  |  Při přístupu k účtu úložiště {0}došlo k vnitřní chybě.  |
-|  StorageAccountSubscriptionMismatch  |  {0} účtu úložiště nepatří do {1}předplatného.  |
-|  StorageAccountTooBusy  |  Účet úložiště{0}je v tuto chvíli zaneprázdněný. Zvažte použití jiného účtu.  |
-|  StorageAccountTypeNotSupported  |  {0} disku používá {1}, což je účet úložiště BLOB. Zkuste to prosím znovu s účtem úložiště pro obecné účely.  |
-|  StorageAccountTypeNotSupported  |  {0} účtu úložiště je {1} typu. Diagnostika spouštění podporuje {2} typy účtů úložiště.  <ul><li>K této chybě dochází, pokud pro diagnostiku spouštění použijete účet Premium Storage. Další informace najdete v tématu [Jak používat diagnostiku spouštění](boot-diagnostics.md). </li></ul> |
-|  SubscriptionNotAuthorizedForImage  |  Předplatné není autorizované.  |
-|  TargetDiskBlobAlreadyExists  |  {0} objektů BLOB již existuje. Zadejte prosím jiný identifikátor URI objektu BLOB pro vytvoření nového prázdného datového disku{1}.  |
-|  TargetDiskBlobAlreadyExists  |  Operace zachycení nemůže pokračovat, protože objekt BLOB cílové image {0} již existuje a příznak pro přepsání objektů BLOB VHD není nastaven. Buď odstraňte objekt blob, nebo nastavte příznak pro přepsání objektů BLOB VHD a zkuste to znovu.  |
-|  TargetDiskBlobAlreadyExists  |  Operace zachycení nemůže pokračovat, protože objekt BLOB cílové image {0} pro něj aktivní zapůjčení.   |
-|  TargetDiskBlobAlreadyExists  |  {0} objektů BLOB již existuje. Zadejte prosím jako cíl pro disk{1}jiný identifikátor URI objektu BLOB.  |
-|  TooManyVMRedeploymentRequests  |  Pro virtuální počítač{0}nebo virtuální počítače ve stejné availabilityset s tímto virtuálním počítačem byly přijaty příliš mnoho požadavků na opětovné nasazení. Zkuste to prosím znovu později.  |
-|  VHDSizeInvalid  |  Zadaná hodnota velikosti disku {0} pro disk{1}s {2}m BLOB je neplatná. Velikost disku musí být mezi {3} a {4}.  |
-|  VMAgentStatusCommunicationError  |  Virtuální počítač{0}nenahlásil stav pro agenta nebo rozšíření virtuálního počítače. Ověřte prosím, jestli má virtuální počítač spuštěného agenta virtuálních počítačů, a může navázat odchozí připojení k úložišti Azure.  |
-|  VMArtifactRepositoryInternalError  |  Při komunikaci s úložištěm artefaktů došlo k chybě, aby bylo možné získat podrobnosti o artefaktech virtuálních počítačů.  |
-|  VMArtifactRepositoryInternalError  |  Při načítání dat artefaktů virtuálních počítačů z úložiště artefaktů došlo k vnitřní chybě.  |
-|  VMExtensionHandlerNonTransientError  |  Obslužná rutina '{0}' nahlásila selhání pro rozšíření virtuálního počítače '{1}' s kódem chyby terminálu '{2}' a chybovou zprávou: '{3}'  |
-|  VMExtensionManagementInternalError  |  Při zpracovávání rozšíření virtuálního počítače{0}došlo k vnitřní chybě.  |
-|  VMExtensionManagementInternalError  |  Při přípravě rozšíření virtuálních počítačů došlo k více chybám. Podrobnosti najdete v tématu zobrazení instance rozšíření virtuálních počítačů.  |
-|  VMExtensionProvisioningError  |  Virtuální počítač oznámil chybu při zpracování rozšíření{0}. Chybová zpráva: "{1}".  |
-|  VMExtensionProvisioningError  |  Na virtuálním počítači se nepovedlo zřídit víc rozšíření virtuálního počítače. Podrobnosti najdete v zobrazení instance rozšíření virtuálních počítačů.  |
-|  VMExtensionProvisioningTimeout  |  Při zřizování rozšíření virtuálního počítače{0}vypršel časový limit. Instalace rozšíření může trvat příliš dlouho nebo nejde získat stav rozšíření.  |
-|  VMMarketplaceInvalidInput  |  Vytvoření virtuálního počítače z image mimo Marketplace nepotřebuje informace o plánu, odeberte prosím informace plánu v žádosti. Název disku operačního systému je {0}.  |
-|  VMMarketplaceInvalidInput  |  Informace o nákupu se neshodují. Z image Marketplace nejde nasadit. Název disku operačního systému je {0}.  |
-|  VMMarketplaceInvalidInput  |  Vytvoření virtuálního počítače z image Marketplace vyžaduje informace o plánu v žádosti. Název disku operačního systému je {0}.  |
-|  VMNotFound  |  Nepovedlo se najít virtuální počítač{0}.  |
-|  VMRedeploymentFailed  |  Opětovné nasazení virtuálního počítače{0}se nezdařilo z důvodu vnitřní chyby. Zkuste to prosím znovu později.  |
-|  VMRedeploymentTimedOut  |  Opětovné nasazení virtuálního počítače{0}se nedokončilo ve vymezeném čase. Může dojít k úspěšnému dokončení v některých případě. Jinak můžete žádost opakovat.  |
-|  VMStartTimedOut  |  Virtuální počítač{0}nezačal ve vyhrazeném čase. Virtuální počítač se může pořád úspěšně spustit. Zkontrolujte prosím stav napájení později.  |
+|  AcquireDiskLeaseFailed  |  Při vytváření disku pomocí{0}objektu BLOB {1}s identifikátorem URI se nepodařilo získat zapůjčení . Objekt blob je již používán.  |  
+|  Přidělení se nezdařilo.  |  Přidělení se nezdařilo. Zkuste zmenšit velikost virtuálního počítače nebo počet virtuálních počítačích, opakujte akci později nebo zkuste nasazení do jiné sady dostupnosti nebo do jiného umístění Azure.  |  
+|  Přidělení se nezdařilo.  |  Přidělení virtuálního objektu se nezdařilo z důvodu vnitřní chyby. Zkuste to zopakovat později nebo zkuste nasazení do jiného umístění.  |
+|  Artefaktnotfound  |  Rozšíření virtuálního virtuálního{0}řezu{1}s vydavatelem ' a{2}typem ' ' nebylo nalezeno v umístění .  |
+|  Artefaktnotfound  |  Rozšíření s{0}vydavatelem '{1}', zadejte{2}' ' a verze obslužné rutiny typu ' ' nebyl nalezen v úložišti rozšíření.  |
+|  ArtefaktVersionNotFound  |  V úložišti artefaktů nebyla nalezena žádná{0}verze, která by splňovala požadovanou verzi .  |
+|  ArtefaktVersionNotFound  |  V úložišti artefaktů nebyla nalezena žádná{0}verze, která splňuje{1}požadovanou verzi{2}" ' pro rozšíření virtuálního her s vydavatelem ' a zadejte ' .  |
+|  AttachDiskWhileBeingDetached  |  Datový disk '{0}' k{1}virtuálnímu počítače ' nelze připojit, protože disk je právě odpojen. Počkejte, až bude disk zcela odpojen, a akci opakujte.  |
+|  Chybný požadavek  |  Zarovnané ' Dostupnost sady ještě nejsou podporovány v této oblasti.  |
+|  Chybný požadavek  |  Přidání virtuálního počítače se spravovanými disky do nespravované sady dostupnosti nebo přidání virtuálního počítače s disky založenými na objektech blob do spravované sady dostupnosti není podporováno. Vytvořte sadu dostupnosti se sadou vlastností "spravované", abyste do něj mohli přidat virtuální modul se spravovanými disky.  |
+|  Chybný požadavek  |  Spravované disky nejsou v této oblasti podporovány.  |
+|  Chybný požadavek  |  Více rozšíření virtuálního řezu na obslužnou rutinu není podporováno pro typ operačního systému .{0} Rozšíření vmextension '{1}{2}' s obslužnou rutinou ' ' již bylo přidáno nebo zadáno ve vstupu.  |
+|  Chybný požadavek  |  Operace{0}' ' není podporována u prostředků '{1}' se spravovanými disky.  |
+|  Certifikát nesprávně formátovaný  |  Reprezentace JSON načtená z {0} tajného klíče má datové pole, které není správně formátovaný soubor PFX, nebo zadaný hesel nedekóduje soubor PFX správně.  |
+|  Certifikát nesprávně formátovaný  |  Data načtená {0} z nelze rekonstruovat do JSON.  |
+|  Konflikt  |  Změna velikosti disku je povolená jenom při vytváření virtuálního počítače nebo při vzdáleném umístění virtuálního počítače.  |
+|  Konfliktnívstup uživatele  |  Disk{0}' ' nelze připojit, protože disk je{1}již vlastněn virtuálním počítačem .  |
+|  Konfliktnívstup uživatele  |  Skupiny zdrojových a cílových prostředků jsou stejné.  |
+|  Konfliktnívstup uživatele  |  Účty zdrojového a {0} cílového úložiště pro disk se liší.  |
+|  ContainerAlreadyOnLease  |  V kontejneru úložiště, který obsahuje objekt blob s identifikátorem URI {0}, již existuje zapůjčení .  |
+|  CrossSubscriptionMoveWithKeyVaultResources  |  Požadavek přesunout prostředky obsahuje prostředky KeyVault, {0}na které odkazuje jeden nebo více s v požadavku. To není podporováno aktuálně v křížové předplatné Přesunout. Zkontrolujte podrobnosti o chybě id prostředků KeyVault.  |
+|  DiagnosticsOperationInternalError  |  Při zpracování diagnostického profilu virtuálního {0}aplikace došlo k vnitřní chybě.  |
+|  DiskBlobAlreadyInUseByAnotherDisk  |  Objekt {0} Blob je již používán jiným diskem patřícím virtuálnímu počítače .{1} Můžete zkontrolovat metadata objektu blob pro informace reference disku.  |
+|  DiskBlobNotnebyl nalezen  |  Nelze najít objekt blob {0} virtuálního{1}pevného disku s identifikátorem URI pro disk .  |
+|  DiskBlobNotnebyl nalezen  |  Nelze najít objekt blob {0}virtuálního pevného disku s identifikátorem URI .  |
+|  DiskEncryptionKeySecretChybějícítagy  |  {0}Tajemství nemá značky. {1} Aktualizujte tajnou verzi, přidejte požadované značky a opakujte akci.  |
+|  DiskEncryptionKeySecretUnwrapFailed  |  Rozbalení tajné {0} hodnoty {1} pomocí klíče se nezdařilo.  |
+|  DiskImageNotReady  |  Obrázek {0} disku {1} je ve stavu. Opakujte akci, jakmile je obraz připraven.  |
+|  Chyba přípravy disku  |  Při přípravě disků virtuálních počítačů došlo k jedné nebo více chybám. Podrobnosti naleznete v zobrazení instance disku.  |
+|  Chyba zpracování disku  |  Zpracování disku bylo zastaveno, protože virtuální modul má další disky na neúspěšných discích.  |
+|  ImageBlobNotFound  |  Nelze najít objekt blob {0} virtuálního{1}pevného disku s identifikátorem URI pro disk .  |
+|  ImageBlobNotFound  |  Nelze najít objekt blob {0}virtuálního pevného disku s identifikátorem URI .  |
+|  Nesprávná doba blobtype  |  Objekty BLOB disku mohou být pouze typu objekt blob stránky. Objekt {0} blob{1}pro disk ' ' je typu bloku objektblob.  |
+|  Nesprávná doba blobtype  |  Objekty BLOB disku mohou být pouze typu objekt blob stránky. Objekt {0} blob je{1}typu ' '.  |
+|  NesprávněImageBlobType  |  Objekty BLOB disku mohou být pouze typu objekt blob stránky. Objekt {0} blob{1}pro disk ' ' je typu bloku objektblob.  |
+|  NesprávněImageBlobType  |  Objekty BLOB disku mohou být pouze typu objekt blob stránky. Objekt {0} blob je{1}typu ' '.  |
+|  Chyba InternalOperationError  |  Účet úložiště nelze {0}vyřešit. Ujistěte se, že byla vytvořena prostřednictvím zprostředkovatele prostředků úložiště ve stejném umístění jako výpočetní prostředek.  |
+|  Chyba InternalOperationError  |  {0}úkoly hledání cílů se nezdařily.  |
+|  Chyba InternalOperationError  |  Při ověřování síťového profilu virtuálního{0}připojení došlo k chybě.  |
+|  Neplatný typ účtu  |  AccountType {0} je neplatný.  |
+|  Parametr InvalidParameter  |  Hodnota parametru {0} je neplatná.  |
+|  Parametr InvalidParameter  |  Zadané heslo správce není povoleno.  |
+|  Parametr InvalidParameter  |  "Zadané heslo musí {0}být{1} mezi - znaky {2} dlouhé a musí splňovat alespoň požadavky na složitost hesla z následujících: <ol><li> Obsahuje znak velká písmena.</li><li>Obsahuje znak s malou písmena.</li><li>Obsahuje číselnou číslici.</li><li>Obsahuje speciální znak.</li></ol>  |
+|  Parametr InvalidParameter  |  Zadané uživatelské jméno správce není povoleno.  |
+|  Parametr InvalidParameter  |  Nelze připojit existující disk operačního systému, pokud je virtuální modul vytvořen z platformy nebo image uživatele.  |
+|  Parametr InvalidParameter  |  Název {0} kontejneru je neplatný. Názvy kontejnerů musí mít délku 3 až 63 znaků a mohou obsahovat pouze malá alfanumerická znavek a pomlčka. Před alfanumerickým znakem musí být předchází a musí za ním následovat alfanumerický znak.  |
+|  Parametr InvalidParameter  |  Název {0} kontejneru {1} v adrese URL je neplatný. Názvy kontejnerů musí mít délku 3 až 63 znaků a mohou obsahovat pouze malá alfanumerická znavek a pomlčka. Před alfanumerickým znakem musí být předchází a musí za ním následovat alfanumerický znak.  |
+|  Parametr InvalidParameter  |  Název objektu blob v adrese URL {0} obsahuje lomítko. To to není v současné době podporováno pro disky.  |
+|  Parametr InvalidParameter  |  Identifikátor {0} URI nevypadá jako správný identifikátor URI objektu BLOB.  |
+|  Parametr InvalidParameter  |  Disk s{0}názvem ' ' již {1}používá stejnou logickou jednotku: .  |
+|  Parametr InvalidParameter  |  Disk s{0}názvem ' ' již existuje.  |
+|  Parametr InvalidParameter  |  Nelze určit přepsání obrazu uživatele pro disk, který je již definován v zadaném odkazu na obrázek.  |
+|  Parametr InvalidParameter  |  Disk s{0}názvem ' ' již {1}používá stejnou adresu URL virtuálního pevného disku .  |
+|  Parametr InvalidParameter  |  Zadaný počet {0} domén selhání musí {1} {2}spadat do rozsahu do .  |
+|  Parametr InvalidParameter  |  Typ {0} licence je neplatný. Platné typy licencí jsou: Windows_Client nebo Windows_Server, rozlišují malá a velká písmena.  |
+|  Parametr InvalidParameter  |  Název hostitele Linuxu nesmí překročit {0} délku {1}znaků ani obsahovat následující znaky: .  |
+|  Parametr InvalidParameter  |  Cílová cesta pro veřejné klíče Ssh je {0} aktuálně omezena na jeho výchozí hodnotu z důvodu známého problému v agenta zřizování Linuxu.  |
+|  Parametr InvalidParameter  |  Disk na {0} logické jednotce již existuje.  |
+|  Parametr InvalidParameter  |  Odběr {0} požadavku musí odpovídat {1} předplatné obsažené v ID spravovaného disku.  |
+|  Parametr InvalidParameter  |  Vlastní data v OSProfile musí být v kódování Base64 a s maximální délkou {0} znaků.  |
+|  Parametr InvalidParameter  |  Název objektu {0} blob v{1}adrese URL musí končit příponou .  |
+|  Parametr InvalidParameter  |  {0}' není platná předpona názvu objektu blob zachyceného v rozlišení VHD. Platná předpona odpovídá{1}regulárnímu výrazu ' .  |
+|  Parametr InvalidParameter  |  Certifikáty nelze přidat do virtuálního počítače, pokud není zřízenagent virtuálního počítače.  |
+|  Parametr InvalidParameter  |  Disk na {0} logické jednotce již existuje.  |
+|  Parametr InvalidParameter  |  Nelze vytvořit virtuální ho virtuálního {0} počítače, protože požadovaná velikost není k dispozici v clusteru, kde je aktuálně přidělena sada dostupnosti. Dostupné velikosti jsou: {1}. Přečtěte si další informace o https://aka.ms/azure-resizevmstrategii pro změna velikosti virtuálních počítači na adrese .  |
+|  Parametr InvalidParameter  |  Požadovaná velikost {0} virtuálního počítače není v aktuální oblasti k dispozici. Velikosti dostupné v aktuální oblasti {1}jsou: . Další informace o dostupných velikostech virtuálních https://aka.ms/azure-regionspočítačů v jednotlivých oblastech najdete na .  |
+|  Parametr InvalidParameter  |  Požadovaná velikost {0} virtuálního počítače není v aktuální oblasti k dispozici. Další informace o dostupných velikostech virtuálních https://aka.ms/azure-regionspočítačů v jednotlivých oblastech najdete na .  |
+|  Parametr InvalidParameter  |  Uživatelské jméno správce systému {0} Windows nesmí být delší než znaky, končit {1}tečkou(.) nebo obsahovat následující znaky: .  |
+|  Parametr InvalidParameter  |  Název počítače se systémem {0} Windows nesmí být větší než počet znaků, nesmí být zcela číselný nebo obsahovat následující znaky: {1}.  |
+|  ChybějícíMoveDependentResources  |  Požadavek přesunutí prostředků neobsahuje všechny závislé prostředky. Zkontrolujte podrobnosti o chybě chybějících ID prostředků.  |
+|  MoveResourcesHaveInvalidState  |  Požadavek přesunout prostředky obsahuje virtuální servery, které jsou přidruženy k neplatným účtům úložiště. Zkontrolujte podrobnosti o těchto ID prostředků a názvy účtů s odkazem na úložiště.  |
+|  MoveResourcesHavePendingOperations  |  Požadavek na přesun prostředků obsahuje prostředky, pro které čeká na operaci. Zkontrolujte podrobnosti o těchto ID prostředků. Opakujte operaci po dokončení čekajících operací.  |
+|  MoveResourcesNotFound  |  Požadavek na přesun prostředků obsahuje prostředky, které nelze najít. Zkontrolujte podrobnosti o těchto ID prostředků.  |
+|  Chyba operace NetworkingInternalOperationError  |  Neznámá chyba přidělení sítě.  |
+|  Chyba operace NetworkingInternalOperationError  |  Neznámá chyba přidělení sítě  |
+|  Chyba operace NetworkingInternalOperationError  |  Při zpracování profilu sítě virtuálního soudu došlo k vnitřní chybě.  |
+|  NotFound  |  Sada {0} dostupnosti nebyla nalezena.  |
+|  NotFound  |  Zdrojový virtuální{0}počítač ' ' zadaný v požadavku neexistuje v tomto umístění Azure.  |
+|  NotFound  |  Tenant s {0} id nebyl nalezen.  |
+|  NotFound  |  Obrázek {0} nebyl nalezen.  |
+|  Není podporováno  |  Typ licence {0}je , ale {1} objekt blob obrázku není z místního prostředí.  |
+|  Operace není povolena.  |  Skupinu {0} dostupnosti nelze odstranit. Před odstraněním sady dostupnosti se ujistěte, že neobsahuje žádný virtuální virtuální virtuální měna.  |
+|  Operace není povolena.  |  Změna skladové položky dostupnosti ze zarovnané na klasické není povolena.  |
+|  Operace není povolena.  |  Nelze změnit rozšíření ve virtuálním provozu, pokud virtuální hod není spuštěn.  |
+|  Operace není povolena.  |  Akce Zachycení je podporovaná jenom ve virtuálním počítači s disky založenými na objektech blob. K vytvoření image ze spravovaného virtuálního počítače použijte api prostředků image image.  |
+|  Operace není povolena.  |  Prostředek {0} nelze vytvořit z {1} image, dokud image byla úspěšně vytvořena.  |
+|  Operace není povolena.  |  Aktualizace šifrováníNastavení není povoleno při přidělení virtuálního počítače, opakujte akci po přidělení virtuálního počítače  |
+|  Operace není povolena.  |  Přidání spravovaného disku do virtuálního počítače s disky založenými na objektech blob není podporováno.  |
+|  Operace není povolena.  |  Maximální počet datových disků, které mohou být připojeny {0}k virtuálnímu počítače této velikosti je .  |
+|  Operace není povolena.  |  Přidání disku založeného na objektu blob do virtuálního počítače se spravovanými disky není podporováno.  |
+|  Operace není povolena.  |  Operace{0}' ' není v{1}obrázku ' povolena, protože obrázek je označen k odstranění. Můžete pouze opakovat operaci Odstranit (nebo čekat na probíhající jeden k dokončení).  |
+|  Operace není povolena.  |  Operace{0}" " není povolena{1}na virtuálním počítači , protože virtuální počítač je generalizovaný.  |
+|  Operace není povolena.  |  Operace{0}' ' není povolena,{1}protože kolekce bodů obnovení ' je označena k odstranění.  |
+|  Operace není povolena.  |  Operace{0}' ' není povolena{1}u rozšíření virtuálního počítače , protože je označena k odstranění. Můžete pouze opakovat operaci Odstranit (nebo čekat na probíhající jeden k dokončení).  |
+|  Operace není povolena.  |  Operace{0}" " není povolena,{1}protože virtuální počítače "{2}jsou zřizovány pomocí obrázku " .  |
+|  Operace není povolena.  |  Operace{0}' ' není povolena, protože{1}sada velikosti virtuálního{2}počítače ' ' právě používá obrázek .  |
+|  Operace není povolena.  |  Operace{0}' ' není povolena{1}na virtuálním počítači ' , protože virtuální počítač je označen k odstranění. Můžete pouze opakovat operaci Odstranit (nebo čekat na probíhající jeden k dokončení).  |
+|  Operace není povolena.  |  Operace{0}" ' není povolena{1}na virtuálním počítači , protože virtuální počítač je buď vyrovnaný, nebo označený k odále.  |
+|  Operace není povolena.  |  Operace{0}' ' není povolena{1}na virtuálním počítači ' , protože je spuštěn virtuální počítač. V případě, že virtuální ho vypnete z hostovaného operačního systému, vypněte ho explicitně.  |
+|  Operace není povolena.  |  Operace{0}" ' není povolena{1}na virtuálním počítači , protože virtuální počítač není vrácen.  |
+|  Operace není povolena.  |  Operace{0}' ' není povolena{1}na virtuálním počítači , protože virtuální počítač má rozšíření '{2}' ve stavu selhání.  |
+|  Operace není povolena.  |  Operace{0}' ' není povolena{1}na virtuálním počítači , protože probíhá jiná operace.  |
+|  Operace není povolena.  |  Operace "{0}" vyžaduje generalizování virtuálního počítače .{1}  |
+|  Operace není povolena.  |  Operace vyžaduje, aby byl virtuální virtuální ms spuštěn (nebo nastaven na spuštění).  |
+|  Operace není povolena.  |  Disk s {0}velikostí GB, která {1}je menší než velikost GB odpovídajícího disku v bitové kopii, není povolen.  |
+|  Operace není povolena.  |  Rozšíření sady měřítka virtuálních{0}vod pro obslužnou rutinu " " lze přidat pouze v době vytvoření sady měřítka virtuálního měn.  |
+|  Operace není povolena.  |  Rozšíření sady měřítka virtuálního{0}měniče obslužné rutiny " lze odstranit pouze v době odstranění sady měřítka virtuálního měniče.  |
+|  Operace není povolena.  |  Virtuální počítače{0}' ' již používá spravované disky.  |
+|  Operace není povolena.  |  Virtuální ho{0}virtuálního telefonu " "{1}patří do sady dostupnosti "Classic" ". Aktualizujte sadu dostupnosti tak, aby používala skladovou položku Zarovnaná, a opakujte převod.  |
+|  Operace není povolena.  |  Virtuální počítače vytvořené z image nemůže mít disky založené na objektu blob. Všechny disky musí být spravované disky.  |
+|  Operace není povolena.  |  Operaci zachycení nelze dokončit, protože virtuální hod není generalizován.  |
+|  Operace není povolena.  |  Operace správy na{0}virtuálním počítači ' ' jsou zakázány, protože disky virtuálních počítačů se převádějí na spravované disky.  |
+|  Operace není povolena.  |  Probíhající operace mění stav napájení {0} virtuálního počítače na {1}. Prosím, {2} proveďte operaci po určité době.  |
+|  Operace není povolena.  |  Nelze přidat nebo aktualizovat virtuální ho. Požadovaná velikost {0} virtuálního počítače nemusí být k dispozici ve stávající alokační jednotce. Přečtěte si další informace o https://aka.ms/azure-resizevmstrategii pro změna velikosti virtuálních počítači na adrese .  |
+|  Operace není povolena.  |  Nelze změnit velikost virtuálního počítače, {0} protože požadovaná velikost není k dispozici v clusteru, kde je aktuálně přidělena sada dostupnosti. Dostupné velikosti jsou: {1}. Přečtěte si další informace o https://aka.ms/azure-resizevmstrategii pro změna velikosti virtuálních počítači na adrese .  |
+|  Operace není povolena.  |  Nelze změnit velikost virtuálního počítače, {0} protože požadovaná velikost není k dispozici v clusteru, kde je aktuálně přidělen virtuální ho. Chcete-li změnit velikost {1} virtuálního počítače, prosím navrátit (to je zastavit operace na webu Azure Portal) a zkuste operaci změnit velikost znovu. Přečtěte si další informace o https://aka.ms/azure-resizevmstrategii pro změna velikosti virtuálních počítači na adrese .  |
+|  Chyba klienta OSProvisioning  |  Zřizování operačního služby se nezdařilo pro virtuální hod ,{0}protože hostovaného operačního aktuálně zřizován.  |
+|  Chyba klienta OSProvisioning  |  Zřizování operačního{0}spoje pro virtuální ho virtuálního virtuálního ms se nezdařilo. Podrobnosti {1} o chybě: Zkontrolujte, zda byl obrázek správně připraven (zobecněn). <ul><li>Pokyny pro Windows:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  Chyba klienta OSProvisioning  |  Generování klíčů hostitele SSH se nezdařilo. Podrobnosti {0}o chybě: . Chcete-li tento problém vyřešit, ověřte, zda je agent Linuxsprávně nastaven. <ul><li>Pokyny si můžete ověřit na adrese:https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
+|  Chyba klienta OSProvisioning  |  Uživatelské jméno zadané pro virtuální počítač je pro tuto distribuci Linuxu neplatné. Podrobnosti {0}o chybě: .  |
+|  OSProvisioningInternalError  |  Zřizování operačního systému se nezdařilo pro virtuální hod z{0}důvodu vnitřní chyby.  |
+|  OSProvisioningTimedOut  |  Zřizování operačního{0}spoje pro virtuální virtuální mě nebylo dokončeno v přiděleném čase. Virtuální ho virtuálního ms může stále úspěšně dokončit zřizování. Zkontrolujte stav zřizování později.  |
+|  OSProvisioningTimedOut  |  Zřizování operačního{0}spoje pro virtuální virtuální mě nebylo dokončeno v přiděleném čase. Virtuální ho virtuálního ms může stále úspěšně dokončit zřizování. Zkontrolujte stav zřizování později. Také se ujistěte, že obraz byl správně připraven (generalizován).   <ul><li>Pokyny pro Windows:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Pokyny pro Linux:https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  Zřizování operačního{0}spoje pro virtuální virtuální mě nebylo dokončeno v přiděleném čase. Agent hosta virtuálního zařízení však byl zjištěn spuštěn. To naznačuje, že hostovaný operační systém nebyl správně připraven k použití jako image virtuálního zařízení (s CreateOption=FromImage). Chcete-li tento problém vyřešit, použijte virtuální pevný disk jako je s CreateOption=Attach nebo jej připravte správně pro použití jako obrázek:   <ul><li>Pokyny pro Windows:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Pokyny pro Linux:https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OverConstrainedAllocationRequest  |  Požadovaná velikost virtuálního počítače není momentálně dostupná ve vybraném umístění.  |
+|  ResourceUpdateBlockedOnPlatformUpdate  |  Prostředek nelze v tuto chvíli aktualizovat z důvodu probíhající aktualizace platformy. Zkuste to prosím znovu později.  |
+|  StorageAccountLimitation  |  Účet úložiště{0}' ' nepodporuje objekty BLOB stránky, které jsou nutné k vytvoření disků.  |
+|  StorageAccountLimitation  |  Účet úložiště{0}' ' překročil přidělenou kvótu.  |
+|  StorageAccountLocationMismatch  |  Účet úložiště nelze {0}vyřešit. Ujistěte se, že byla vytvořena prostřednictvím zprostředkovatele prostředků úložiště ve stejném umístění jako výpočetní prostředek.  |
+|  StorageAccountNotFound  |  Účet {0} úložiště nebyl nalezen. Ujistěte se, že účet úložiště není odstraněn a patří do stejného umístění Azure jako virtuální počítač.  |
+|  StorageAccountNotRecognized  |  Použijte účet úložiště spravovaný zprostředkovatelem prostředků úložiště. Použití {0} není podporováno.  |
+|  StorageAccountOperationInternalError  |  Při přístupu k účtu {0}úložiště došlo k vnitřní chybě.  |
+|  StorageAccountSubscriptionMismatch  |  Účet {0} úložiště nepatří k {1}předplatnému .  |
+|  StorageAccountTooBusy  |  Účet úložiště{0}' ' je v současné době příliš zaneprázdněn. Zvažte použití jiného účtu.  |
+|  StorageAccountTypeNotSupported  |  Disk {0} {1} používá účet úložiště objektů Blob. Opakujte akci s účtem úložiště pro obecné účely.  |
+|  StorageAccountTypeNotSupported  |  Účet {0} úložiště {1} je typu. Diagnostika spouštění podporuje {2} typy účtů úložiště.  <ul><li>K této chybě dochází, pokud použijete účet úložiště premium pro diagnostiku spouštění. Další informace naleznete v tématu [Použití diagnostiky spouštění](boot-diagnostics.md). </li></ul> |
+|  SubscriptionNotAuthorizedForImage  |  Předplatné není autorizováno.  |
+|  TargetDiskBlobAlreadyExists  |  Objekt {0} Blob již existuje. Zadejte jiný identifikátor URI objektu BLOB{1}a vytvořte nový prázdný datový disk .  |
+|  TargetDiskBlobAlreadyExists  |  Operace zachycení nemůže pokračovat, {0} protože objekt blob cílové bitové kopie již existuje a není nastaven příznak pro přepsání objektů BLOB virtuálního pevného disku. Odstraňte objekt blob nebo nastavte příznak tak, aby přepsal objekty BLOB virtuálního pevného disku a zopakujte akci.  |
+|  TargetDiskBlobAlreadyExists  |  Operace zachycení nemůže pokračovat, {0} protože objekt blob cílové bitové kopie má aktivní zapůjčení.   |
+|  TargetDiskBlobAlreadyExists  |  Objekt {0} Blob již existuje. Zadejte jiný identifikátor URI objektu{1}BLOB jako cíl pro disk .  |
+|  TooManyVMRedeploymentRequests  |  Příliš mnoho žádostí o opětovné nasazení{0}byly přijaty pro virtuální počítače ' nebo virtuálnípočítače ve stejné dostupnosti s tímto virtuálním počítačem. Opakujte akci později.  |
+|  Velikost vrozhraní VHDNeplatný  |  Zadaná hodnota {0} velikosti{1}disku pro {2} disk ' ' s objektem blob je neplatná. Velikost disku musí {3} {4}být mezi a .  |
+|  Chyba komunikace vagentstatus  |  Virtuální mkér na{0}to, že nehlásí stav agenta virtuálního virtuálního mě nebo rozšíření. Ověřte, zda má virtuální počítač spuštěného agenta virtuálního počítače a můžete navázat odchozí připojení k úložišti Azure.  |
+|  Vnitřní chyba v úložišti vúložišti v  |  Při komunikaci s úložištěm artefaktů došlo k chybě, aby se načetly podrobnosti o artefaktech virtuálního rozhraní.  |
+|  Vnitřní chyba v úložišti vúložišti v  |  Při načítání dat artefaktů virtuálního rozhraní z úložiště artefaktů došlo k vnitřní chybě.  |
+|  Chyba Nepřechodového operátora VMExtensionHandler  |  Obslužná{0}rutina '{1}' nahlásila chybu{2}pro rozšíření virtuálního zařízení ' ' s kódem chyby terminálu ' ' a chybovou zprávou: '{3}  |
+|  VMExtensionManagementInternalError  |  Při zpracování rozšíření virtuálního{0}zařízení došlo k vnitřní chybě.  |
+|  VMExtensionManagementInternalError  |  Při přípravě rozšíření virtuálního počítače došlo k několika chybám. Podrobnosti najdete v tématu zobrazení instance rozšíření virtuálního vod.  |
+|  VMExtensionProvisioningError  |  Virtuální měkce při zpracování{0}rozšíření ohlásila chyba. Chybová zpráva: "{1}".  |
+|  VMExtensionProvisioningError  |  Více rozšíření virtuálních počítačových služeb se nepodařilo zřídit na virtuálním počítači. Podrobnosti najdete v zobrazení instance rozšíření virtuálního data.  |
+|  Časový čas poskytování vdonášku v  |  Zřizování rozšíření{0}virtuálního virtuálního času ' má časový rozsah. Instalace rozšíření může trvat příliš dlouho nebo nelze získat stav rozšíření.  |
+|  VMMarketplaceInvalidInput  |  Vytvoření virtuálního počítače z image jiného než Marketplace nepotřebuje informace o plánu, odeberte informace o plánu v žádosti. Název disku operačního systému je {0}.  |
+|  VMMarketplaceInvalidInput  |  Informace o nákupu se neshodují. Nelze nasadit z image Marketplace. Název disku operačního systému je {0}.  |
+|  VMMarketplaceInvalidInput  |  Vytvoření virtuálního počítače z image Marketplace vyžaduje informace o plánu v požadavku. Název disku operačního systému je {0}.  |
+|  VMNotFound  |  Virtuální ho{0}virtuálního souboru " " nebyl nalezen.  |
+|  Obnovení nasazení virtuálních můe se nezdařilo.  |  Opětovné nasazení{0}virtuálního počítače se nezdařilo z důvodu vnitřní chyby. Opakujte akci později.  |
+|  VMRedeploymentTimedOut  |  Přeřazení virtuálního{0}počítače v přiděleném čase nebylo dokončeno. To by mohlo skončit úspěšně v někdy. Jinak můžete požadavek zopakovat.  |
+|  VMStartTimedOut  |  Virtuální měna "{0}se nespustila v přiděleném čase. Virtuální virtuální ms může stále úspěšně spustit. Zkontrolujte stav napájení později.  |
 
 
 ## <a name="next-steps"></a>Další kroky
-Pokud potřebujete další informace, můžete se obrátit na odborníky na Azure na [webu MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+Pokud potřebujete další pomoc, můžete kontaktovat odborníky azure na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Případně můžete soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat **podporu**.

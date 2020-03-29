@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Kontaktujte nás | Dokumentace Microsoftu'
-description: Kontaktováním produktového týmu služby Azure AD Domain Services
+title: 'Služba Azure Active Directory Domain Services: Kontaktujte nás | Dokumenty společnosti Microsoft'
+description: Obraťte se na produktový tým služby Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -16,29 +16,29 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: iainfou
 ms.openlocfilehash: 83d1011d28eb13ed2e45587df8d385ebf19abbd1
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67483350"
 ---
-# <a name="azure-ad-domain-services---contact-us"></a>Azure Active Directory Domain Services – kontaktujte nás
+# <a name="azure-ad-domain-services---contact-us"></a>Služby Domény Azure AD – kontaktujte nás
 
 ## <a name="feedback"></a>Váš názor
-Pokud máte nějakou zpětnou vazbu pro naši službu nebo netechnické otázky, můžete sdílet vaši žádost s produktové skupiny Azure AD Domain Services e-mailem na nás na adrese: [Azure AD Domain Services zpětnou vazbu](mailto:aaddsfb@microsoft.com). E-mailů na tuto adresu jsou kontrolovány. Členové skupiny produktu **může** reakce na vyžádání dalších informací. Požadavky na technickou podporu pro tento e-mailovou adresu nebudou zodpovězeny.
+Pokud máte zpětnou vazbu k našim službám nebo netechnické dotazy, můžete svůj požadavek sdílet se skupinou produktů služby Azure AD Domain Service e-mailem na adrese: [Azure AD Domain Services Feedback](mailto:aaddsfb@microsoft.com). E-maily na tuto adresu jsou kontrolovány. Členové skupiny výrobků **mohou** odpovědět na vyžádání dalších informací. Žádosti o technickou podporu na tuto e-mailovou adresu nebudou zodpovězeny.
 
 ## <a name="technical-assistance"></a>Technická pomoc
-Pokud máte problémy s vaší spravované domény, zkontrolujte, pokud podle kroků popsaných v [Průvodce odstraňováním potíží](troubleshoot.md) problém vyřešit. Pokud stále máte potíže, přihlaste se k webu Azure portal. Otevřít **Azure AD Domain Services** domovskou stránku a vybrat **nová žádost o podporu** z podokna akcí v rámci **podpora a řešení potíží**.
+Pokud máte problémy se spravovanou doménou, zkontrolujte, zda problém vyřeší tekrchybně [popsaný](troubleshoot.md) postup. Pokud máte pořád potíže, přihlaste se na portál Azure. Otevřete domovskou stránku **služby Azure AD Domain Services** a v podokně akcí včásti **Podpora + řešení potíží**vyberte Nový **požadavek na podporu.**
 
-![Nová žádost o podporu](./media/contact-us/supportRequest.png) 
+![nová žádost o podporu](./media/contact-us/supportRequest.png) 
 
-Každá část žádosti o podporu vyplňte co nejpřesněji. Při volbě služby, ujistěte se, vyberete **Azure Active Directory Domain Services (virtuálního počítače – řadiče domény)** směrovat do správné odborné vaši žádost.
+Vyplňte každou část žádosti o podporu co nejpřesněji. Při výběru služby se ujistěte, že jste vybrali **službu Azure Active Directory Domain Services (VM - Domain Controllers)** pro směrování vašeho požadavku na správného pracovníka podpory.
 
 > [!IMPORTANT]
-> Vyberte **Azure Active Directory adresáře, domény a objekty** ze seznamů služeb nápovědu pro ověření domény se službou Azure Active Directory.
+> Vyberte **adresáře, domény a objekty služby Služby Azure active directory,** kde například požádají o pomoc s ověřením domény pomocí služby Azure Active Directory.
 >
 > 
 
 ## <a name="feature-requests"></a>Žádosti o funkce
-Máte nápad na tom, jak můžeme vylepšit Azure Active Directory Domain Services? Rádi se dozvíme o něm. Přejít na fóra Azure zpětnou vazbu, přejděte [Domain Services](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160593) kategorie a sdílet své nápady. Členové skupiny produktu Zkontrolujte tyto požadavky.
+Máte představu o tom, jak můžeme zlepšit službu Azure Active Directory Domain Services? Rádi bychom o tom slyšeli. Přejděte do fór a fór a fóra pro zpětnou vazbu Azure, přejděte do kategorie [Domain Services](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160593) a podělte se o svůj nápad. Členové skupiny produktů tyto žádosti zkontrolují.
 

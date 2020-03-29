@@ -1,28 +1,28 @@
 ---
-title: Micro zaměření vývojových/testovacích prostředí v Azure | Dokumentace Microsoftu
-description: Změna hostitele vaše úlohy sálové počítače IBM z/OS pomocí řešení Micro fokus na Azure virtual machines (VM).
+title: Vývoj a testování prostředí micro Focus v Azure | Dokumenty společnosti Microsoft
+description: Znovu hostujte úlohy sálových počítačů IBM z/OS pomocí řešení Micro Focus na virtuálních počítačích (VM).
 author: njray
 ms.author: sread
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: d83b4c89d0f37e2217974d6d1ed32ac73d8fa4df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60498895"
 ---
-# <a name="micro-focus-devtest-environments-on-azure"></a>Micro zaměření vývojových/testovacích prostředí v Azure
+# <a name="micro-focus-devtest-environments-on-azure"></a>Vývoj a testování prostředí Micro Focus v Azure
 
-Začínáme s vývojová a testovací prostředí v Azure je skvělý způsob, jak posílit vaše úsilí o modernizaci. V Azure pomocí partnerských řešení může být rehosted mainframových aplikací, které jsou závislé na systémech starší verze, jako je například CICS IBM (systém řízení informací o zákaznících) a IMS (informace o systému pro správu).
+Začínáme s Azure s vývojovým a testovacím prostředím je skvělý způsob, jak zvýšit vaše úsilí o modernizaci. Mainframové aplikace, které jsou závislé na starších systémech, jako je IBM CICS (Customer Information Control System) a IMS (Information Management System), lze v Azure rehosted pomocí partnerských řešení.
 
-Micro fokus uzavřel partnerství s Microsoftem nabízí atraktivní mainframových nástroje pro migraci a změna hostování. Mainframových aplikací napříč vývoj, testování a produkční scénáře můžete spustit v Azure a platformu Microsoft Windows.
+Společnost Micro Focus spolupracuje se společností Microsoft, aby nabídla přesvědčivé nástroje pro migraci a rehosting u sálových počítačů. Aplikace sálových počítačů můžete spouštět napříč vývojovými, testovacími a produkčními scénáři v Azure a na platformě Microsoft Windows.
 
-Micro fokus nabízí změna hostování vývoj a testování změna hostování řešení, které rozšiřují existující COBOL a PL / můžu obchodních aplikací do Azure.
+Micro Focus nabízí vývoj rehostingu a testování rehostingových řešení, která rozšiřují stávající obchodní aplikace COBOL a PL/ I do Azure.
 
-**Další postup**
+**Další kroky**
 
-- [Instalace Micro fokus Enterprise Server 4.0 a podnikový vývojář 4.0 v Azure](./set-up-micro-focus-azure.md)
-- [Nastavit Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 v Azure](./demo.md)
-- [Spuštění serveru organizace v kontejnerech Docker v Azure](./run-enterprise-server-container.md)
+- [Instalace Micro Focus Enterprise Server 4.0 a Enterprise Developer 4.0 do Azure](./set-up-micro-focus-azure.md)
+- [Nastavení Micro Focus CICS BankDemo pro micro focus enterprise developer 4.0 v Azure](./demo.md)
+- [Spuštění podnikového serveru v kontejnerech Dockeru v Azure](./run-enterprise-server-container.md)

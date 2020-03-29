@@ -1,8 +1,8 @@
 ---
-title: Další informace o kodérech doporučených Azure Media Services | Microsoft Docs
-description: Tento článek obsahuje seznam místních kodérů doporučených pro Azure Media Services.
+title: Další informace o kodeku doporučených službou Azure Media Services | Dokumenty společnosti Microsoft
+description: V tomto článku jsou uvedeny místní kodéry doporučené službou Azure Media Services.
 services: media-services
-keywords: kódování; kodéry; média
+keywords: kódování;kodéry;média
 author: dbgeorge
 manager: johndeu
 ms.author: johndeu
@@ -10,30 +10,30 @@ ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 89b01a3fb066f181f5ec54b481b71feaa7a6ae08
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77131408"
 ---
 # <a name="recommended-on-premises-encoders"></a>Doporučené místní kodéry
 
-Když živé streamování s Azure Media Services, můžete určit, jak chcete, aby kanál dostal vstupní datový proud. Pokud se rozhodnete použít místní kodér s kanálem pro kódování v reálném čase, váš kodér by měl jako výstup nabízet vysoce kvalitní datový proud s jednou přenosovou rychlostí. Pokud se rozhodnete použít místní kodér s průchozím kanálem, měl by váš kodér nabízet datový proud s více přenosovými rychlostmi jako výstup se všemi požadovanými výstupními kvalitou. Další informace najdete v tématu [živé streamování s místními kodéry](media-services-live-streaming-with-onprem-encoders.md).
+Při živém streamování pomocí Služby Azure Media Services můžete určit, jak má váš kanál přijímat vstupní datový proud. Pokud se rozhodnete použít místní kodér s kanálem kódování živého prostředí, kodér by měl jako výstup vysunout datový proud s vysokou kvalitou s jedním datovým tokem. Pokud se rozhodnete použít místní kodér s průchodem kanálem, kodér by měl tlačit datový proud s více přenosovými rychlostmi jako výstup se všemi požadovanými výstupními vlastnostmi. Další informace naleznete v [tématu Živé streamování s místními kodéry](media-services-live-streaming-with-onprem-encoders.md).
 
-## <a name="encoder-requirements"></a>Požadavky kodéru
+## <a name="encoder-requirements"></a>Požadavky na kodér
 
-Kodéry musí podporovat protokol TLS 1,2 při použití protokolů HTTPS nebo RTMP.
+Kodéry musí podporovat TLS 1.2 při použití protokolů HTTPS nebo RTMPS.
 
-## <a name="live-encoders-that-output-rtmp"></a>Živé kodéry, které mají výstup RTMP 
+## <a name="live-encoders-that-output-rtmp"></a>Živé kodéry, které vydezkují RTMP 
 
-Azure Media Services doporučuje použít jeden z následujících živých kodérů, které mají RTMP jako výstup:
+Azure Media Services doporučuje používat jeden z následujících živých kodérů, které mají RTMP jako výstup:
 
 - Adobe Flash Media Live Encoder 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Wirecast (verze 13.0.2 nebo vyšší) z důvodu požadavku TLS 1,2)
+- Telestream Wirecast (verze 13.0.2 nebo vyšší z důvodu požadavku TLS 1.2)
 
-  Kodéry musí podporovat protokol TLS 1,2 při použití protokolů RTMP.
+  Kodéry musí při použití protokolů RTMPS podporovat protokoly TLS 1.2.
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -42,58 +42,58 @@ Azure Media Services doporučuje použít jeden z následujících živých kod�
 - xStream
 - Switcher Studio (iOS)
 
-## <a name="live-encoders-that-output-fragmented-mp4"></a>Živé kodéry, jejichž výstupem je fragment MP4 
+## <a name="live-encoders-that-output-fragmented-mp4"></a>Živé kodéry, které výstup fragmentované MP4 
 
-Azure Media Services doporučuje použít jeden z následujících živých kodérů, které mají s více přenosovými rychlostmi fragmenty-MP4 (Smooth Streaming) jako výstup:
+Azure Media Services doporučuje používat jeden z následujících živých kodérů, které mají vícebitovou rychlost fragmentované MP4 (plynulé streamování) jako výstup:
 
 - Media Excel Hero Live a Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Element-Live (verze 2.14.15 a vyšší z důvodu požadavku TLS 1,2)
+- Elementární Live (verze 2.14.15 a vyšší kvůli požadavku TLS 1.2)
 
-  Kodéry musí podporovat protokol TLS 1,2 při použití protokolů HTTPS.
+  Kodéry musí při používání protokolů HTTPS podporovat protokoly TLS 1.2.
 - Envivio 4Caster C4 Gen III
-- Představte si Communications Selenio MCP3
+- Představte si, že komunikace Selenio MCP3
 
 > [!NOTE]
-> Live Encoder může poslat datový proud s jednou přenosovou rychlostí do předávacího kanálu, ale tato konfigurace se nedoporučuje, protože nepovoluje streamování s adaptivní přenosovou rychlostí pro klienta.
+> Živý kodér může odesílat datový proud s jedním přenosovým tokem do kanálu, ale tato konfigurace se nedoporučuje, protože neumožňuje adaptivní datový tok datových proudů do klienta.
 
-## <a name="how-to-become-an-on-premises-encoder-partner"></a>Jak se stát místním partnerem kodéru
+## <a name="how-to-become-an-on-premises-encoder-partner"></a>Jak se stát partnerem místního kodéru
 
-Jako Azure Media Services v místním partnerovi kodéru Media Services propaguje svůj produkt tím, že doporučí kodér zákazníkům pro podniky. Pokud se chcete stát místním partnerem kodéru, musíte ověřit kompatibilitu místního kodéru s Media Services. Provedete to tak, že provedete následující ověření:
+Jako partner azure media services na místní kodéru, Media Services propaguje váš produkt tím, že doporučuje váš kodér pro podnikové zákazníky. Chcete-li se stát partnerem místního kodéru, musíte ověřit kompatibilitu místního kodéru se službami Media Services. Chcete-li tak učinit, proveďte následující ověření:
 
-Předávací ověřování kanálu
-1. Vytvořit nebo navštívit účet Azure Media Services
+Průchod ověřením kanálu
+1. Vytvoření nebo návštěva účtu Azure Media Services
 2. Vytvoření a spuštění **předávacího** kanálu
-3. Nakonfigurujte kodér tak, aby načetl živý datový proud s více přenosovými rychlostmi.
-4. Vytvořit publikovanou živou událost
-5. Spusťte živý kodér po dobu přibližně 10 minut.
-6. Zastavit živou událost
-7. Vytvořte, spusťte koncový bod streamování, pomocí přehrávače, jako je například [Azure Media Player](https://aka.ms/azuremediaplayer) , Sledujte archivovaný Asset, abyste zajistili, že přehrávání nemá žádné viditelné histogramu pro všechny úrovně kvality (nebo můžete sledovat a ověřovat přes adresu URL náhledu během živé relace před krokem 6).
-8. Poznamenejte si ID Assetu, publikovanou adresu URL streamování pro živý archiv a nastavení a verzi, která se používá z kodéru Live Encoder.
-9. Po vytvoření každého vzorku resetovat stav kanálu
-10. Opakujte kroky 3 až 9 pro všechny konfigurace, které kodér podporuje (s a bez něj signalizace/titulky a různé rychlosti kódování).
+3. Nakonfigurujte kodér tak, aby tlačil živý stream s více přenosovou rychlostí.
+4. Vytvoření publikované živé události
+5. Spusťte živý kodér přibližně 10 minut
+6. Zastavení živé události
+7. Vytvořit, spustit koncový bod streamování, pomocí přehrávače, jako je [Azure Media Player](https://aka.ms/azuremediaplayer) sledovat archivovaný datový zdroj, aby se zajistilo, že přehrávání nemá žádné viditelné závady pro všechny úrovně kvality (Nebo alternativně sledovat a ověřovat prostřednictvím url náhledu během živé relace před krokem 6)
+8. Zaznamenejte ID datového zdroje, publikovanou adresu URL streamování pro živý archiv a nastavení a verzi použitou z živého kodéru
+9. Obnovení stavu kanálu po vytvoření každé ukázky
+10. Opakujte kroky 3 až 9 pro všechny konfigurace podporované kodérem (s signalizací reklamy/titulky/různé rychlosti kódování)
 
-Ověřování kanálu v reálném kódování
-1. Vytvořit nebo navštívit účet Azure Media Services
-2. Vytvoření a spuštění kanálu pro **kódování v reálném čase**
-3. Nakonfigurujte kodér tak, aby načetl živý datový proud s jednou přenosovou rychlostí.
-4. Vytvořit publikovanou živou událost
-5. Spusťte živý kodér po dobu přibližně 10 minut.
-6. Zastavit živou událost
-7. Vytvořte, spusťte koncový bod streamování, pomocí přehrávače, jako je například [Azure Media Player](https://aka.ms/azuremediaplayer) , Sledujte archivovaný Asset, abyste zajistili, že přehrávání nemá žádné viditelné histogramu pro všechny úrovně kvality (nebo můžete sledovat a ověřovat přes adresu URL náhledu během živé relace před krokem 6).
-8. Poznamenejte si ID Assetu, publikovanou adresu URL streamování pro živý archiv a nastavení a verzi, která se používá z kodéru Live Encoder.
-9. Po vytvoření každého vzorku resetovat stav kanálu
-10. Opakujte kroky 3 až 9 pro všechny konfigurace podporované vaším kodérem (s a bez inzerce/titulků a s různými rychlostmi kódování).
+Ověření kanálu živého kódování
+1. Vytvoření nebo návštěva účtu Azure Media Services
+2. Vytvoření a spuštění **živého kanálu kódování**
+3. Nakonfigurujte kodér tak, aby tlačil živý datový proud s jedním datovým proudem.
+4. Vytvoření publikované živé události
+5. Spusťte živý kodér přibližně 10 minut
+6. Zastavení živé události
+7. Vytvořit, spustit koncový bod streamování, pomocí přehrávače, jako je [Azure Media Player](https://aka.ms/azuremediaplayer) sledovat archivovaný datový zdroj, aby se zajistilo, že přehrávání nemá žádné viditelné závady pro všechny úrovně kvality (Nebo alternativně sledovat a ověřovat prostřednictvím url náhledu během živé relace před krokem 6)
+8. Zaznamenejte ID datového zdroje, publikovanou adresu URL streamování pro živý archiv a nastavení a verzi použitou z živého kodéru
+9. Obnovení stavu kanálu po vytvoření každé ukázky
+10. Opakujte kroky 3 až 9 pro všechny konfigurace podporované kodérem (s a bez signálu reklamy / titulky / různé rychlosti kódování)
 
-Longevity ověřování
-1. Vytvořit nebo navštívit účet Azure Media Services
+Ověření dlouhověkosti
+1. Vytvoření nebo návštěva účtu Azure Media Services
 2. Vytvoření a spuštění **předávacího** kanálu
-3. Nakonfigurujte kodér tak, aby načetl živý datový proud s více přenosovými rychlostmi.
-4. Vytvořit publikovanou živou událost
-5. Spusťte živý kodér po dobu jednoho týdne nebo delšího.
-6. Pomocí přehrávače, jako je například [Azure Media Player](https://aka.ms/azuremediaplayer) , Sledujte živé streamování v čase (nebo archivovaný Asset), abyste zajistili, že přehrávání nemá žádné viditelné histogramu
-7. Zastavit živou událost
-8. Poznamenejte si ID Assetu, publikovanou adresu URL streamování pro živý archiv a nastavení a verzi, která se používá z kodéru Live Encoder.
+3. Nakonfigurujte kodér tak, aby tlačil živý stream s více přenosovou rychlostí.
+4. Vytvoření publikované živé události
+5. Spusťte živý kodér po dobu jednoho týdne nebo déle
+6. Pomocí přehrávače, jako je [Azure Media Player,](https://aka.ms/azuremediaplayer) můžete čas od času sledovat živé vysílání (nebo archivovaný datový zdroj), abyste zajistili, že přehrávání nebude mít žádné viditelné závady.
+7. Zastavení živé události
+8. Zaznamenejte ID datového zdroje, publikovanou adresu URL streamování pro živý archiv a nastavení a verzi použitou z živého kodéru
 
-Nakonec odešlete nahraná nastavení a parametry pro živý archiv do Media Services e-mailem amsstreaming@microsoft.com. Po přijetí Media Services provádí ověřovací testy na ukázkách z kodéru Live Encoder. Media Services můžete kontaktovat s případnými dotazy týkajícími se tohoto procesu.
+Nakonec pošlete zaznamenané nastavení a živé archivní parametry amsstreaming@microsoft.comna Media Services e-mailem . Po obdržení media services provádí ověřovací testy vzorků z vašeho živého kodéru. Jakékoli dotazy týkající se tohoto procesu vám mohou být vzneseny v případě, že se na vás obrátí mediální služby.

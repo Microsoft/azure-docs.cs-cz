@@ -1,94 +1,94 @@
 ---
-title: Nejčastější dotazy – avere vFXT pro Azure
-description: Nejčastější dotazy týkající se avere vFXT pro Azure
+title: Časté otázky – Avere vFXT pro Azure
+description: Nejčastější dotazy týkající se Avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 186b2c048a9de42318e4af287393d731a4eb16f1
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153458"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure – nejčastější dotazy
 
-V tomto článku najdete odpovědi na otázky, které vám pomůžou rozhodnout, jestli je avere vFXT pro Azure pro vaše potřeby nejvhodnější. Poskytuje základní informace o avere vFXT a vysvětluje, jak funguje s ostatními komponentami Azure a s produkty od jiných dodavatelů.
+Tento článek odpovídá na otázky, které vám můžou pomoct rozhodnout, jestli avere vFXT pro Azure je ta pravá pro vaše potřeby. Poskytuje základní informace o Avere vFXT a vysvětluje, jak funguje s jinými součástmi Azure a s produkty od externích dodavatelů.
 
 ## <a name="general"></a>Obecné
 
 ### <a name="what-is-avere-vfxt-for-azure"></a>Co je Avere vFXT for Azure?
 
-Avere vFXT for Azure je vysoce výkonný systém souborů, který ukládá do mezipaměti aktivní data v Azure COMPUTE, aby bylo možné efektivně zpracovávat kritické úlohy.
+Avere vFXT for Azure je vysoce výkonný souborový systém, který ukládá aktivní data do výpočetních prostředků Azure pro efektivní zpracování kritických úloh.
 
-### <a name="is-avere-vfxt-a-storage-solution"></a>Je avere řešení úložiště vFXT?
+### <a name="is-avere-vfxt-a-storage-solution"></a>Je Avere vFXT úložné řešení?
 
-Ne. Avere vFXT for Azure je *mezipaměť* systému souborů, která se připojuje k prostředí úložiště, jako je například vaše služba EMC nebo NetApp, nebo kontejner objektů BLOB v Azure. Avere vFXT zjednodušuje požadavky na data od klientů a ukládá do mezipaměti data, která slouží ke zvýšení výkonu ve velkém měřítku a v čase. Avere vFXT sám neukládá data. Neobsahuje žádné informace o množství dat uložených na pozadí.
+Ne. Avere vFXT pro Azure je *mezipaměti* systému souborů, která se připojuje k prostředí úložiště, jako je vaše EMC nebo NetApp NAS nebo kontejner objektů blob Azure. Avere vFXT zjednodušuje požadavky na data od klientů a ukládá data, která slouží ke zlepšení výkonu ve velkém měřítku a v průběhu času. Avere vFXT sám neukládá data. Nemá žádné informace o množství dat uložených za ním.
 
-### <a name="is-avere-vfxt-a-tiering-solution"></a>Je avere vFXT řešení?
+### <a name="is-avere-vfxt-a-tiering-solution"></a>Je Avere vFXT vrstvené řešení?
 
-Avere vFXT pro Azure neumožňuje automaticky vyvrstvit data mezi horkou a studenou úrovní.  
+Avere vFXT pro Azure automaticky nevrství data mezi horkými a chladnými vrstvami.  
 
-### <a name="how-do-i-know-if-an-environment-is-right-for-avere-vfxt"></a>Návody zjistit, jestli je prostředí pro avere vFXT správné?
+### <a name="how-do-i-know-if-an-environment-is-right-for-avere-vfxt"></a>Jak poznám, že je prostředí pro Avere vFXT to pravé?
 
-Nejlepším způsobem, jak se na tuto otázku představit, je požádat o to, aby zatížení bylo možné ukládat do mezipaměti? To znamená, že zatížení má vysoký poměr pro čtení a zápis? Příkladem je 80/20 nebo 70/30 čtení/zápisu.
+Nejlepší způsob, jak přemýšlet o této otázce, je zeptat se: "Je zatížení cacheable?" To znamená, že pracovní zátěž má vysoký poměr čtení k zápisu? Příkladem je 80/20 nebo 70/30 čtení/zápisy.
 
-Zvažte avere vFXT pro Azure, pokud máte analytický kanál založený na souborech, který běží na velkém počtu virtuálních počítačů Azure, a splňuje jednu nebo víc z těchto podmínek:
+Zvažte Avere vFXT pro Azure, pokud máte analytický kanál založený na souborech, který běží přes velký počet virtuálních počítačů Azure a splňuje jednu nebo více z následujících podmínek:
 
-* Celkový výkon je pomalý nebo nekonzistentní z důvodu dlouhé doby přístupu k souboru (desítky nebo sekundy v závislosti na požadavcích). Tato latence není pro zákazníka přijatelná.
+* Celkový výkon je pomalý nebo nekonzistentní z důvodu dlouhé doby přístupu k souborům (desítky milisekund nebo sekund, v závislosti na požadavcích). Tato latence je pro zákazníka nepřijatelná.
 
-* Data potřebná ke zpracování jsou umístěna na konci prostředí sítě WAN a tato data jsou trvale přesunuta. Data můžou být v jiné oblasti Azure nebo v datovém centru zákazníka.
+* Data potřebná pro zpracování jsou umístěna na vzdáleném konci prostředí WAN a jejich trvalé přesunutí dat je nepraktické. Data mohou být v jiné oblasti Azure nebo v datovém centru zákazníka.
 
-* Velký počet klientů požaduje data, například v clusteru HPC (High Performance Computing). Velký počet souběžných požadavků může zvýšit latenci.
+* O data žádá značný počet klientů – například v clusteru s vysoce výkonným výpočetním výkonem (HPC). Velký počet souběžných požadavků může zvýšit latenci.
 
-* Zákazník chce spustit svůj aktuální kanál "tak, jak je" ve virtuálních počítačích Azure a potřebuje k škálovatelnosti řešení sdíleného úložiště (nebo ukládání do mezipaměti) založené na POSIX. Pomocí avere vFXT pro Azure nemusíte měnit architekt pracovního kanálu, abyste mohli nativně volat do úložiště objektů BLOB v Azure.
+* Zákazník chce spustit svůj aktuální kanál "tak, jak je" ve virtuálních počítačích Azure a potřebuje řešení sdíleného úložiště (nebo ukládání do mezipaměti) založené na POSIX pro škálovatelnost. Pomocí Avere vFXT pro Azure, není potřeba přepracovat pracovní kanál pro nativní volání úložiště objektů blob Azure.
 
-* Vaše aplikace HPC je založená na klientech NFSv3. (V některých případech může použít klienty SMB 2,1, ale výkon je omezený.)
+* Vaše HPC aplikace je založena na klientech NFSv3. (V některých případech může používat klienty SMB 2.1, ale výkon je omezený.)
 
-Následující diagram vám může při odpovědi na tuto otázku odpovědět. Výše je váš pracovní postup v pravém horním rohu, což je pravděpodobnější, že řešení avere vFXT pro ukládání do mezipaměti Azure je pro vaše prostředí nejvhodnější.
+Následující diagram vám může pomoci odpovědět na tuto otázku. Čím blíže je váš pracovní postup k pravému hornímu, tím je pravděpodobnější, že řešení ukládání do mezipaměti Avere vFXT pro Azure je vhodné pro vaše prostředí.
 
-![Diagram grafu znázorňující, že se pro avere vFXT lépe hodí zátěž pro čtení s tisíci klienty.](media/avere-vfxt-fit-assessment.png)
+![Graf diagram udávající, že zatížení s tisíci klienty je vhodnější pro Avere vFXT](media/avere-vfxt-fit-assessment.png)
 
-### <a name="at-what-scale-of-clients-does-the-avere-vfxt-solution-make-the-most-sense"></a>V jakém měřítku klientů má řešení avere vFXT smysl?
+### <a name="at-what-scale-of-clients-does-the-avere-vfxt-solution-make-the-most-sense"></a>V jakém rozsahu klientů dává řešení Avere vFXT největší smysl?
 
-Řešení avere vFXT cache je postavené na zpracování stovek, tisíců nebo desítek tisíců výpočetních jader. Pokud máte několik počítačů běžících na lehké práci, avere vFXT není to správné řešení.
+Řešení mezipaměti Avere vFXT je vytvořeno tak, aby zpracovávalo stovky, tisíce nebo desítky tisíc výpočetních jader. Pokud máte několik strojů, které pracují na lehkou váhu, Avere vFXT není tím správným řešením.
 
-Běžní zákazníci avere vFXT spouštějí náročné úlohy od přibližně 1 000 jader procesoru. Tato prostředí můžou být velká až 50 000 jader nebo víc. Vzhledem k tomu, že je avere vFXT škálovatelný, můžete přidat uzly, které budou podporovat tyto úlohy, když se zvyšují tak, aby vyžadovaly vyšší propustnost nebo více IOPS.
+Typickí zákazníci Avere vFXT spouštějí náročné úlohy od přibližně 1 000 procesorových jader. Tato prostředí mohou být až 50 000 jader nebo více. Vzhledem k tomu, že Avere vFXT je škálovatelná, můžete přidat uzly pro podporu těchto úloh, jak rostou, aby vyžadovaly větší propustnost nebo více viopů.
 
-### <a name="how-much-data-can-an-avere-vfxt-environment-store"></a>Kolik dat může avere úložiště prostředí vFXT?
+### <a name="how-much-data-can-an-avere-vfxt-environment-store"></a>Kolik dat může prostředí Avere vFXT ukládat?
 
-Avere vFXT pro Azure je mezipaměť. Neukládá konkrétně data. Používá kombinaci paměti RAM a SSD k ukládání dat uložených v mezipaměti. Data se trvale ukládají do back-endového systému úložiště (například do systému NetApp NAS nebo kontejneru objektů BLOB). Systém avere vFXT neobsahuje informace o množství dat uložených za ním. Avere vFXT ukládá do mezipaměti pouze podmnožinu dat, kterou si klienti vyžádají.  
+Avere vFXT pro Azure je mezipaměť. Neukládá data konkrétně. Používá kombinaci paměti RAM a SSD pro ukládání dat uložených v mezipaměti. Data jsou trvale uložena v back-endovém úložném systému (například v systému NetApp NAS nebo v kontejneru objektů blob). Systém Avere vFXT nemá informace o množství dat uložených za ním. Avere vFXT ukládá pouze do mezipaměti podmnožinu těchto dat, které klienti požadují.  
 
-### <a name="what-regions-are-supported"></a>Které oblasti jsou podporovány?
+### <a name="what-regions-are-supported"></a>Jaké oblasti jsou podporovány?
 
-Avere vFXT pro Azure se podporuje ve všech oblastech s výjimkou oblastí svrchovan (Čína, Německo). Ujistěte se, že oblast, kterou chcete použít, může podporovat velké množství výpočetních jader a instancí virtuálních počítačů potřebných k vytvoření clusteru avere vFXT.
+Avere vFXT pro Azure se podporuje ve všech oblastech s výjimkou suverénních oblastí (Čína, Německo). Ujistěte se, že oblast, kterou chcete použít, podporuje velké množství výpočetních jader a instance virtuálních her potřebné k vytvoření clusteru Avere vFXT.
 
-### <a name="how-do-i-get-help-with-avere-vfxt"></a>Návody získat pomoc s vFXTem pro avere?
+### <a name="how-do-i-get-help-with-avere-vfxt"></a>Jak získám pomoc s Avere vFXT?
 
-Specializovaná skupina pracovníků podpory nabízí pomoc s avere vFXT pro Azure. Podle pokynů v [tématu Získejte pomoc s vaším systémem](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) a otevřete z Azure Portal lístek podpory.
+Specializovaná skupina pracovníků podpory nabízí pomoc s Avere vFXT pro Azure. Podle pokynů v [části Získání nápovědy k vašemu systému otevřete](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) lístek podpory z webu Azure Portal.
 
-### <a name="is-avere-vfxt-highly-available"></a>Je avere vFXT vysoce dostupný?
+### <a name="is-avere-vfxt-highly-available"></a>Je Avere vFXT vysoce dostupný?
 
-Ano, avere vFXT se spouští výhradně jako řešení HA.
+Ano, Avere vFXT běží výhradně jako řešení HA.
 
-### <a name="does-avere-vfxt-for-azure-also-support-other-cloud-services"></a>Podporuje avere vFXT pro Azure také další cloudové služby?
+### <a name="does-avere-vfxt-for-azure-also-support-other-cloud-services"></a>Podporuje Avere vFXT pro Azure také další cloudové služby?
 
-Ano, zákazníci můžou použít více než jednoho poskytovatele cloudu s clusterem avere vFXT. Podporuje standardní bloky AWS S3, zásobníky Google Cloud Services Standard a kontejnery objektů blob Azure.
+Ano, zákazníci mohou používat více než jednoho poskytovatele cloudu s clusterem Avere vFXT. Podporuje standardní kontejnery AWS S3, standardní kontejnery Google Cloud Services a kontejnery objektů blob Azure.
 
 > [!NOTE]
-> Poplatek za software se vztahuje na použití avere vFXT s AWS nebo Google Cloud Storage. Za použití služby Azure Blob Storage se neúčtují žádné další poplatky za software.
+> Za použití Avere vFXT s AWS nebo google cloudovým úložištěm se vztahuje softwarový poplatek. Za používání úložiště objektů blob Azure se neplatí žádný další softwarový poplatek.
 
-## <a name="technical-compute"></a>Technický: COMPUTE
+## <a name="technical-compute"></a>Technické: Výpočetní výkon
 
-### <a name="can-you-describe-what-an-avere-vfxt-environment-looks-like"></a>Můžete popište, co avere prostředí vFXT "vypadá jako"?
+### <a name="can-you-describe-what-an-avere-vfxt-environment-looks-like"></a>Můžete popsat, jak "vypadá prostředí Avere vFXT"?
 
-Avere vFXT je clusterované zařízení, které se skládá z několika virtuálních počítačů Azure. Knihovna Pythonu zpracovává vytváření, odstraňování a úpravy clusteru. Přečtěte si, [co je avere vFXT pro Azure?](avere-vfxt-overview.md) Další informace najdete v tématu.
+Avere vFXT je clusterované zařízení vyrobené z více virtuálních počítačů Azure. Knihovna Pythonu zpracovává vytváření, odstraňování a úpravy clusteru. Přečtěte [si, co je Avere vFXT pro Azure?](avere-vfxt-overview.md)
 
-### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Na jaký druh virtuálních počítačů Azure se avere vFXT spouští?  
+### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Na jakém druhu virtuálních počítačů Azure běží Avere vFXT?  
 
-Avere vFXT pro cluster Azure používá virtuální počítače E32s_v3 Microsoft Azure.
+Cluster Avere vFXT pro Azure používá microsoft azure E32s_v3 virtuální počítače.
 
 <!-- ### Can I mix and match virtual machine types for my cluster?
 
@@ -99,196 +99,196 @@ No, you must choose one virtual machine type or the other.
 Yes, there is a migration path to move from one VM type to the other. [Open a support ticket](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) to learn how.
 -->
 
-### <a name="does-the-avere-vfxt-environment-scale"></a>Je prostředí avere vFXT škálovat?
+### <a name="does-the-avere-vfxt-environment-scale"></a>Má prostředí Avere vFXT škálování?
 
-Cluster avere vFXT může být malý jako tři uzly virtuálních počítačů nebo jako 24 uzlů. Pokud se domníváte, že budete potřebovat cluster více než devět uzlů, kontaktujte technickou podporu Azure pro pomoc s plánováním. Větší počet uzlů vyžaduje větší architekturu nasazení.
+Cluster Avere vFXT může být malý jako tři uzly virtuálního počítače nebo až 24 uzlů. Pokud se domníváte, že potřebujete cluster s více než devíti uzly, obraťte se na technickou podporu Azure. Větší počet uzlů vyžaduje větší architekturu nasazení.
 
-### <a name="does-the-avere-vfxt-environment-autoscale"></a>Je prostředí avere vFXT "AutoScale"?
+### <a name="does-the-avere-vfxt-environment-autoscale"></a>Má prostředí Avere vFXT "automatické škálování"?
 
-Ne. Velikost clusteru můžete škálovat nahoru a dolů, ale přidávání nebo odebírání uzlů clusteru je ruční krok.
+Ne. Velikost clusteru můžete škálovat nahoru a dolů, ale přidání nebo odebrání uzlů clusteru je ruční krok.
 
-### <a name="can-i-run-the-avere-vfxt-cluster-as-a-virtual-machine-scale-set"></a>Můžu cluster avere vFXT spustit jako sadu škálování virtuálního počítače?
+### <a name="can-i-run-the-avere-vfxt-cluster-as-a-virtual-machine-scale-set"></a>Můžu spustit cluster Avere vFXT jako škálovací sadu virtuálních strojů?
 
-Avere vFXT nepodporuje nasazení sady škálování virtuálního počítače. Několik integrovaných mechanismů podpory dostupnosti je navrženo pouze pro atomické virtuální počítače účastnící se clusteru.  
+Avere vFXT nepodporuje nasazení škálovací sady virtuálních strojů. Několik integrované mechanismy podpory dostupnosti jsou určeny pouze pro atomické virtuální chody účastnící se clusteru.  
 
-### <a name="can-i-run-the-avere-vfxt-cluster-on-low-priority-vms"></a>Můžu cluster avere vFXT spustit na virtuálních počítačích s nízkou prioritou?
+### <a name="can-i-run-the-avere-vfxt-cluster-on-low-priority-vms"></a>Můžu spustit cluster Avere vFXT na virtuálních počítačích s nízkou prioritou?
 
 Ne, systém vyžaduje základní stabilní sadu virtuálních počítačů.
 
-### <a name="can-i-run-the-avere-vfxt-cluster-in-containers"></a>Můžu cluster avere vFXT spustit v kontejnerech?
+### <a name="can-i-run-the-avere-vfxt-cluster-in-containers"></a>Můžu spustit cluster Avere vFXT v kontejnerech?
 
-Ne, avere vFXT musí být nasazené jako nezávislá aplikace.
+Ne, Avere vFXT musí být nasazenjako nezávislá aplikace.
 
-### <a name="do-the-avere-vfxt-vms-count-against-my-compute-quota"></a>Počítá se počet virtuálních počítačů avere vFXT na moji kvótu COMPUTE?
+### <a name="do-the-avere-vfxt-vms-count-against-my-compute-quota"></a>Počítají se virtuální počítače Avere vFXT do mé výpočetní kvóty?
 
-Ano. Ujistěte se, že v oblasti pro podporu clusteru máte dostatečnou kvótu.  
+Ano. Ujistěte se, že máte dostatečnou kvótu v oblasti pro podporu clusteru.  
 
-### <a name="can-i-run-the-avere-vfxt-cluster-machines-in-different-availability-zones"></a>Můžu spouštět počítače s clustery avere vFXT v různých zónách dostupnosti?
+### <a name="can-i-run-the-avere-vfxt-cluster-machines-in-different-availability-zones"></a>Mohu spustit clusterové počítače Avere vFXT v různých zónách dostupnosti?
 
-Ne. Model vysoké dostupnosti v avere vFXT v současné době nepodporuje jednotlivé členy clusteru avere vFXT nacházející se v různých zónách dostupnosti.
+Ne. Model vysoké dostupnosti v Avere vFXT aktuálně nepodporuje jednotlivé členy clusteru Avere vFXT umístěné v různých zónách dostupnosti.
 
-### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>Můžu klonovat virtuální počítače s avere vFXT?
+### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>Mohu klonovat virtuální počítače Avere vFXT?
 
-Ne, pokud chcete přidat nebo odebrat uzly v clusteru avere vFXT, musíte použít podporovaný skript Pythonu. Další informace najdete v článku [Správa clusteru avere vFXT](avere-vfxt-manage-cluster.md).
+Ne, k přidání nebo odebrání uzlů v clusteru Avere vFXT je nutné použít podporovaný skript Pythonu. Další informace naleznete [v části Správa clusteru Avere vFXT](avere-vfxt-manage-cluster.md).
 
-### <a name="is-there-a-vm-version-of-the-software-i-can-run-in-my-own-local-environment"></a>Je k dispozici "virtuální" cloudová verze softwaru, kterou můžu spustit v mém vlastním místním prostředí?
+### <a name="is-there-a-vm-version-of-the-software-i-can-run-in-my-own-local-environment"></a>Existuje verze softwaru "VM", kterou lze spustit ve vlastním místním prostředí?
 
-Ne, systém se nabídne jako clusterované zařízení a testuje se na určitých typech virtuálních počítačů. Toto omezení pomáhá zákazníkům vyhnout se vytváření systému, který nedokáže podporovat vysoce výkonné požadavky typického pracovního postupu avere vFXT.
+Ne, systém je nabízen jako clusterované zařízení a testován na konkrétních typech virtuálních počítačů. Toto omezení pomáhá zákazníkům vyhnout se vytváření systému, který nemůže podporovat požadavky na vysoký výkon typického pracovního postupu Avere vFXT.
 
-## <a name="technical-disks"></a>Technické: disky
+## <a name="technical-disks"></a>Technické: Disky
 
-### <a name="what-types-of-disks-are-supported-for-the-azure-vms"></a>Jaké typy disků se podporují pro virtuální počítače Azure?
+### <a name="what-types-of-disks-are-supported-for-the-azure-vms"></a>Jaké typy disků jsou podporované pro virtuální počítače Azure?
 
-Avere vFXT for Azure může používat 1 TB nebo 4 TB konfigurace SSD. Konfiguraci Premium SSD můžete nasadit jako několik spravovaných disků.
+Avere vFXT pro Azure můžete použít 1 TB nebo 4 TB premium SSD konfigurace. Konfiguraci ssd premium lze nasadit jako více spravovaných disků.
 
 ### <a name="does-the-cluster-support-unmanaged-disks"></a>Podporuje cluster nespravované disky?
 
 Ne, cluster vyžaduje spravované disky.
 
-### <a name="does-the-system-support-local-attached-ssds"></a>Podporuje systém místní (připojená) SSD?
+### <a name="does-the-system-support-local-attached-ssds"></a>Podporuje systém místní (připojené) ssd disy?
 
-Avere vFXT pro Azure v současné době nepodporuje místní SSD. Disky používané pro avere vFXT musí být schopné vypnout a restartovat, ale místní připojené SSD v této konfiguraci je možné ukončit jenom.
+Avere vFXT pro Azure aktuálně nepodporuje místní ssd disy. Disky používané pro Avere vFXT musí být možné vypnout a restartovat, ale místní připojené SSD v této konfiguraci lze pouze ukončit.
 
-### <a name="does-the-system-support-ultra-ssds"></a>Podporuje systém Ultra SSD?
+### <a name="does-the-system-support-ultra-ssds"></a>Podporuje systém ultra SSD?
 
-Ne, systém podporuje jenom konfigurace SSD úrovně Premium.
+Ne, systém podporuje pouze prémiové konfigurace SSD.
 
-### <a name="can-i-detach-my-premium-ssds-and-reattach-them-later-to-preserve-cache-contents-between-use"></a>Můžu oddělit prémiové SSD a později je znovu připojit, abyste zachovali obsah mezipaměti mezi použitím?
+### <a name="can-i-detach-my-premium-ssds-and-reattach-them-later-to-preserve-cache-contents-between-use"></a>Mohu odpojit své prémiové Disky SSD a později je znovu připojit, aby se mezi použitím zachoval obsah mezipaměti?
 
-Odpojení a opětovné připojení SSD se nepodporuje. Metadata nebo obsah souboru ve zdroji se možná změnily mezi použitím, což může způsobit problémy s integritou dat.
+Odpojení a opětovné připojení ssd dispozicí není podporováno. Metadata nebo obsah souboru ve zdroji se mohly změnit mezi použitím, což může způsobit problémy s integritou dat.
 
 ### <a name="does-the-system-encrypt-the-cache"></a>Šifruje systém mezipaměť?
 
-Data jsou rozložená na disky, ale nejsou šifrovaná. Samotné disky však mohou být zašifrovány. Další informace najdete v tématu [zabezpečení a používání zásad na virtuálních počítačích v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption).
+Data jsou prokládána na discích, ale nejsou šifrována. Samotné disky však mohou být šifrovány. Další informace najdete v [tématu Zabezpečení a používání zásad na virtuálních počítačích v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption).
 
-## <a name="technical-networking"></a>Technické: sítě
+## <a name="technical-networking"></a>Technical: Networking
 
 ### <a name="what-network-is-recommended"></a>Jaká síť se doporučuje?
 
-Pokud používáte místní úložiště s avere vFXT, měli byste mít k dispozici síťové připojení 1 GB/s nebo vyšší mezi vaším úložištěm a clusterem. Pokud máte malé množství dat a jste ochotni kopírovat data do cloudu před spuštěním úloh, může stačit připojení k síti VPN.
+Pokud používáte místní úložiště s Avere vFXT, měli byste mít 1 Gb/s nebo lepší síťové připojení mezi úložištěm a clusterem. Pokud máte malé množství dat a jste ochotni zkopírovat data do cloudu před spuštěním úloh, připojení VPN může být dostačující.
 
 > [!TIP]
-> Pomaleji je síťové propojení, což povede ke zpomalení počátečního "studeného" čtení. Pomalé čtení zvyšují latenci pracovního kanálu.
+> Čím pomalejší je síťové spojení, tím pomalejší bude počáteční "studené" čtení. Pomalé čtení zvýšit latenci kanálu práce.
 
-### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>Můžu spustit avere vFXT v jiné virtuální síti než ve výpočetním clusteru?
+### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>Můžu spustit Avere vFXT v jiné virtuální síti, než je můj výpočetní cluster?
 
-Ano, avere systém vFXT můžete vytvořit v jiné virtuální síti. Podrobnosti najdete v tématu [Plánování systému avere vFXT](avere-vfxt-deploy-plan.md) .
+Ano, systém Avere vFXT můžete vytvořit v jiné virtuální síti. Podrobnosti [načlánekněte na plán systému Avere vFXT.](avere-vfxt-deploy-plan.md)
 
-### <a name="does-avere-vfxt-require-its-own-subnet"></a>Vyžaduje avere vFXT svou vlastní podsíť?
+### <a name="does-avere-vfxt-require-its-own-subnet"></a>Vyžaduje Avere vFXT vlastní podsíť?
 
-Ano. Avere vFXT běží výhradně jako cluster s vysokou dostupností (HA) a vyžaduje více IP adres pro provoz. Pokud je cluster ve vlastní podsíti, vyhnete se konfliktům IP adres, což může způsobit problémy při instalaci a normálním provozu. Podsíť clusteru může být ve virtuální síti používané jinými prostředky, pokud se nepřekrývají žádné IP adresy.
+Ano. Avere vFXT běží striktně jako cluster s vysokou dostupností (HA) a vyžaduje více IP adres pro provoz. Pokud je cluster ve vlastní podsíti, vyhnete se riziku konfliktů adres IP, což může způsobit problémy při instalaci a normálním provozu. Podsíť clusteru může být ve virtuální síti používané jinými prostředky, pokud se žádné adresy IP nepřekrývají.
 
-### <a name="can-i-run-avere-vfxt-on-infiniband"></a>Můžu spustit avere vFXT na InfiniBand?
+### <a name="can-i-run-avere-vfxt-on-infiniband"></a>Mohu spustit Avere vFXT na InfiniBandu?
 
-Ne, avere vFXT používá pouze Ethernet/IP adresu.
+Ne, Avere vFXT používá pouze Ethernet/IP.
 
-### <a name="how-do-i-access-my-on-premises-nas-environment-from-avere-vfxt"></a>Návody přístup k místnímu prostředí NAS z avere vFXT?
+### <a name="how-do-i-access-my-on-premises-nas-environment-from-avere-vfxt"></a>Jak se dostanu k místnímu prostředí NAS z Avere vFXT?
 
-Prostředí avere vFXT se podobá jakémukoli jinému virtuálnímu počítači Azure v tom, že vyžaduje směrování přístupu prostřednictvím síťové brány nebo sítě VPN do datového centra zákazníka (a zpátky). Pokud je k dispozici ve vašem prostředí, zvažte použití možnosti připojení Azure ExpressRoute.
+Prostředí Avere vFXT je jako každý jiný virtuální počítač Azure v tom, že vyžaduje směrovaný přístup přes síťovou bránu nebo VPN do zákaznického datového centra (a zpět). Zvažte použití připojení Azure ExpressRoute, pokud je k dispozici ve vašem prostředí.
 
-### <a name="what-are-the-bandwidth-requirements-for-avere-vfxt"></a>Jaké jsou požadavky na šířku pásma pro avere vFXT?
+### <a name="what-are-the-bandwidth-requirements-for-avere-vfxt"></a>Jaké jsou požadavky na šířku pásma pro Avere vFXT?
 
 Celkový požadavek na šířku pásma závisí na dvou faktorech:
 
-* Množství dat, které se požaduje ze zdroje
-* Tolerance pro latenci klientského systému při počátečním načítání dat  
+* Množství požadovaných dat od zdroje
+* Tolerance klientského systému pro latenci při počátečním načítání dat  
 
-V prostředích, která jsou citlivá na latenci, byste měli použít optické řešení s minimální rychlostí připojení 1 GB/s. Použijte ExpressRoute, pokud je k dispozici.  
+Pro prostředí citlivá na latenci byste měli použít řešení vláken s minimální rychlostí připojení 1 Gb/s. Použijte ExpressRoute, pokud je k dispozici.  
 
-### <a name="can-i-run-avere-vfxt-with-public-ip-addresses"></a>Můžu spustit avere vFXT s veřejnými IP adresami?
+### <a name="can-i-run-avere-vfxt-with-public-ip-addresses"></a>Mohu spustit Avere vFXT s veřejnými IP adresami?
 
-Ne, avere vFXT by se měla provozovat v síťovém prostředí zabezpečeném pomocí osvědčených postupů.
+Ne, Avere vFXT je určen k provozu v síťovém prostředí zabezpečeném pomocí osvědčených postupů.
 
-### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Můžu omezit přístup k Internetu z virtuální sítě v clusteru?
+### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Je možné omezit přístup k internetu z virtuální sítě clusteru?
 
-Obecně platí, že v rámci své virtuální sítě můžete podle potřeby nakonfigurovat další zabezpečení, některá omezení ale můžou narušit činnost clusteru.
+Obecně můžete nakonfigurovat další zabezpečení ve virtuální síti podle potřeby, ale některá omezení mohou narušit provoz clusteru.
 
-Například omezení odchozího internetového přístupu z vaší virtuální sítě způsobí problémy s clusterem, pokud nepřidáte pravidlo, které explicitně umožní přístup k AzureCloud. Tato situace je popsaná v [doplňkové dokumentaci k GitHubu](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
+Například omezení odchozího přístupu k internetu z vaší virtuální sítě způsobuje problémy pro cluster, pokud také nepřidáte pravidlo, které explicitně umožňuje přístup k AzureCloudu. Tato situace je popsána v [doplňkové dokumentaci na GitHubu](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
 
-Pokud chcete získat pomoc s přizpůsobeným zabezpečením, obraťte se na podporu, jak je popsáno v [tématu Získání pomoci se systémem](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)
+Chcete-li získat pomoc s přizpůsobeným zabezpečením, obraťte se na podporu, jak je popsáno v [seznamu Získat pomoc se systémem](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt).
 
-## <a name="technical-back-end-storage-core-filers"></a>Technický: back-end úložiště (základní filers)
+## <a name="technical-back-end-storage-core-filers"></a>Technické: Back-end úložiště (základní filery)
 
-### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>Kolik základních filers podporuje jedno prostředí avere vFXT?
+### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>Kolik základních filerů podporuje jedno prostředí Avere vFXT?
 
-Cluster avere vFXT podporuje až 20 základních filers.
+Cluster Avere vFXT podporuje až 20 základních filerů.
 
-### <a name="how-does-the-avere-vfxt-environment-store-data"></a>Jak se v prostředí avere vFXT ukládají data?
+### <a name="how-does-the-avere-vfxt-environment-store-data"></a>Jak prostředí Avere vFXT ukládá data?
 
-Avere vFXT není úložiště. Je to mezipaměť, která čte a zapisuje data z více cílů úložiště s názvem Core filers. Data uložená na discích SSD úrovně Premium v avere vFXT jsou přechodný a nakonec se vyprázdní pro základní souborového úložiště back-endu.
+Avere vFXT není úložiště. Je to cache, která čte a zapisuje data z více cílů úložiště nazývaných základní filery. Data uložená na prémiových ssd discích v Avere vFXT jsou přechodná a nakonec jsou vyprázdněna do úložiště souborů back-end core.
 
-### <a name="which-core-filers-does-avere-vfxt-support"></a>Jakou základní filers podporuje avere vFXT?
+### <a name="which-core-filers-does-avere-vfxt-support"></a>Které základní filery Avere vFXT podporuje?
 
-Obecně platí, že avere vFXT pro Azure podporuje následující systémy jako základní filers:
+Obecně platí, že Avere vFXT pro Azure podporuje následující systémy jako základní filery:
 
-* Dell EMC Isilon (OneFS 7,1, 7,2, 8,0 a 8,1) 
-* NetApp ONTAP (clusterový režim 9,4, 9,3, 9,2, 9.1 P1, 8.0-8.3) a (7. režim 7. *, 8.0-8.3)
+* Dell EMC Isilon (OneFS 7.1, 7.2, 8.0 a 8.1) 
+* NetApp ONTAP (clusterovaný režim 9.4, 9.3, 9.2, 9.1P1, 8.0-8.3) a (7-Mode 7.*, 8.0-8.3)
 
-* Kontejnery objektů BLOB v Azure (jenom místně redundantní úložiště)
-* Bloky AWS S3
-* Google Cloud – sady
+* Kontejnery objektů blob Azure (jenom místně redundantní úložiště)
+* AWS S3 kbelíky
+* Google Cloud kbelíky
 
-### <a name="why-doesnt-avere-vfxt-support-all-nfs-filers"></a>Proč avere vFXT podporuje všechny filers systému souborů NFS?
+### <a name="why-doesnt-avere-vfxt-support-all-nfs-filers"></a>Proč Avere vFXT nepodporuje všechny filery NFS?
 
-I když všechny platformy systému souborů NFS splňují stejné standardy IETF, v praxi Každá implementace má vlastní adaptivní. Tyto podrobnosti mají vliv na to, jak avere vFXT komunikuje s úložným systémem. Podporované systémy jsou nejčastěji používanými platformami na webu Marketplace.
+Ačkoli všechny nfs platformy splňují stejné standardy IETF, v praxi každá implementace má své vlastní vtípky. Tyto podrobnosti ovlivňují interakci Avere vFXT se systémem úložiště. Podporované systémy jsou nejpoužívanější platformy na trhu.
 
-### <a name="does-avere-vfxt-support-private-object-storage-such-as-swiftstack"></a>Podporuje avere vFXT úložiště privátních objektů (například SwiftStack)?
+### <a name="does-avere-vfxt-support-private-object-storage-such-as-swiftstack"></a>Podporuje Avere vFXT úložiště soukromých objektů (například SwiftStack)?
 
-Avere vFXT nepodporuje úložiště privátních objektů.
+Avere vFXT nepodporuje úložiště soukromých objektů.
 
-### <a name="how-can-i-get-a-specific-storage-product-under-support"></a>Jak získám podporu konkrétní produkt úložiště?
+### <a name="how-can-i-get-a-specific-storage-product-under-support"></a>Jak mohu získat konkrétní úložný produkt pod podporou?
 
-Podpora je založena na množství poptávky v poli. Pokud je pro podporu řešení NAS k dispozici dostatek požadavků na výnosy, budeme zvážit. Podávat požadavky prostřednictvím podpory Azure.
+Podpora je založena na výši poptávky v terénu. Pokud existuje dostatek požadavků na podporu řešení NAS, zvážíme to. Pořizuj si požadavky prostřednictvím podpory Azure.
 
-### <a name="can-i-use-azure-blob-storage-as-a-core-filer"></a>Můžu používat úložiště objektů BLOB v Azure jako základní souborového?
+### <a name="can-i-use-azure-blob-storage-as-a-core-filer"></a>Můžu použít azure blob úložiště jako základní filer?
 
-Ano, avere vFXT pro Azure může použít kontejner objektů blob bloku jako Cloud Core souborového.
+Ano, Avere vFXT pro Azure můžete použít kontejner blob bloku jako filer jádra cloudu.
 
-### <a name="what-are-the-storage-account-requirements-for-a-blob-core-filer"></a>Jaké jsou požadavky na účet úložiště pro objekt BLOB Core souborového?
+### <a name="what-are-the-storage-account-requirements-for-a-blob-core-filer"></a>Jaké jsou požadavky na účet úložiště pro filer jádra objektu blob?
 
-Váš účet úložiště musí být účet pro obecné účely v2 (GPv2) a nakonfigurovaný jenom pro místně redundantní úložiště. Geograficky redundantní úložiště a redundantní úložiště v zóně se nepodporují.
+Váš účet úložiště musí být účet pro obecné účely v2 (GPv2) a nakonfigurovaný pouze pro místně redundantní úložiště. Geograficky redundantní úložiště a zónově redundantní úložiště nejsou podporovány.
 
-Další podrobnosti o požadavcích na účet úložiště najdete v tématu [Azure Blob Storage Cloud Core souborového](avere-vfxt-add-storage.md#azure-blob-storage-cloud-core-filer) .
+Další informace o požadavcích na účet úložiště dat načtete v [centru cloudového úložiště Azure Blob Storage.](avere-vfxt-add-storage.md#azure-blob-storage-cloud-core-filer)
 
-### <a name="can-i-use-archive-blob-storage"></a>Můžu použít archivní úložiště objektů BLOB?
+### <a name="can-i-use-archive-blob-storage"></a>Můžu použít archivní úložiště objektů blob?
 
-Ne. Smlouva o úrovni služeb (SLA) pro úložiště archivu není kompatibilní s adresářem v reálném čase a potřebou přístupu k souborům v systému avere vFXT.
+Ne. Smlouva o úrovni služeb (SLA) pro úložiště archivu není kompatibilní s potřebami přístupu k adresářům a souborům v reálném čase v systému Avere vFXT.
 
-### <a name="can-i-use-cool-blob-storage"></a>Můžu použít studené úložiště objektů BLOB?
+### <a name="can-i-use-cool-blob-storage"></a>Můžu použít skvělé úložiště objektů blob?
 
-Pro avere vFXT pro Azure Core souborového se obvykle nedoporučuje používat úložiště objektů BLOB ve studené vrstvě. Studená úroveň nabízí nižší náklady na úložiště, ale vyšší provozní náklady. (Další podrobnosti najdete v tématu ceny za objekty [blob bloku](<https://azure.microsoft.com/pricing/details/storage/blobs/>) .) Pokud budou data k dispozici a upravována nebo odstraněna často, zvažte použití horké úrovně.
+Úložiště objektů blob úrovně cool se obvykle nedoporučuje pro avere vFXT pro základní filer Azure. Úroveň Cool nabízí nižší náklady na úložiště, ale vyšší provozní náklady. (Další podrobnosti najdete v [tématu Blokování cen objektů blob.)](<https://azure.microsoft.com/pricing/details/storage/blobs/>) Pokud budou data často upravována a upravována nebo smazána, zvažte použití horké úrovně.
 
-[Úrovně přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) poskytují další informace o tom, kdy může být vhodné používat jako vFXT Core Storage úložiště s chladnou vrstvou.
+[Úrovně přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) poskytuje další informace o tom, kdy může mít smysl používat úložiště úrovně Cool jako základní filer vFXT.
 
-### <a name="how-do-i-encrypt-the-blob-container"></a>Návody zašifrovat kontejner objektů BLOB?
+### <a name="how-do-i-encrypt-the-blob-container"></a>Jak zašifruji kontejner objektů blob?
 
-Šifrování objektů blob můžete nakonfigurovat buď v Azure (upřednostňovaná), nebo na úrovni avere vFXT Core souborového.  
+Šifrování objektů blob můžete nakonfigurovat buď v Azure (upřednostňované) nebo na úrovni základního fileru Avere vFXT.  
 
-### <a name="can-i-use-my-own-encryption-key-for-a-blob-core-filer"></a>Můžu pro objekt BLOB Core souborového použít vlastní šifrovací klíč?
+### <a name="can-i-use-my-own-encryption-key-for-a-blob-core-filer"></a>Můžu použít vlastní šifrovací klíč pro filer jádra objektu blob?
 
-Ve výchozím nastavení se data šifrují pomocí klíčů spravovaných Microsoftem pro úložiště objektů blob, tabulek a front Azure a také souborů Azure. Můžete využít vlastní klíč k šifrování pro úložiště objektů BLOB a soubory Azure. Pokud se rozhodnete použít šifrování vFXT avere, musíte použít klíč generovaný avere a uložit ho místně.
+Ve výchozím nastavení se data šifrují prostřednictvím klíčů spravovaných microsoftem pro úložiště objektů Blob, Tabulka a Fronty Azure a soubory Azure. Můžete si přinést vlastní klíč pro šifrování pro úložiště objektů Blob a soubory Azure. Pokud se rozhodnete použít šifrování Avere vFXT, musíte použít klíč generovaný Avere a uložit jej místně.
 
 ## <a name="purchasing"></a>Nákup
 
-### <a name="how-do-i-get-avere-vfxt-for-azure-licensing"></a>Návody získat licencování avere vFXT pro Azure?
+### <a name="how-do-i-get-avere-vfxt-for-azure-licensing"></a>Jak získám licencování Avere vFXT pro Azure?
 
-Získání licence avere vFXT pro Azure je snadno Azure Marketplace. Zaregistrujte si účet Azure a pak postupujte podle pokynů v tématu [nasazení clusteru avere vFXT](avere-vfxt-deploy.md) a vytvořte cluster avere vFXT.
+Získání licence Avere vFXT pro Azure je snadné prostřednictvím Azure Marketplace. Zaregistrujte si účet Azure a postupujte podle pokynů v [nasazení clusteru Avere vFXT](avere-vfxt-deploy.md) a vytvořte cluster Avere vFXT.
 
-### <a name="how-much-does-avere-vfxt-cost"></a>Kolik stojí avere vFXT?
+### <a name="how-much-does-avere-vfxt-cost"></a>Kolik stojí Avere vFXT?
 
-V Azure se pro používání clusterů avere vFXT neúčtují žádné další licenční poplatky. Zákazníci zodpovídají za úložiště a další poplatky za využití Azure.
+V Azure neexistuje žádný další licenční poplatek za použití clusterů Avere vFXT. Zákazníci jsou zodpovědní za poplatky za úložiště a další poplatky za spotřebu Azure.
 
-### <a name="can-avere-vfxt-vms-be-run-as-low-priority"></a>Můžou být virtuální počítače s avere vFXT spuštěné s nízkou prioritou?
+### <a name="can-avere-vfxt-vms-be-run-as-low-priority"></a>Lze virtuální chod Avere vFXT spustit s nízkou prioritou?
 
-Ne, clustery avere vFXT vyžadují službu Always On. Clustery je možné vypnout, pokud není potřeba.
+Ne, clustery Avere vFXT vyžadují službu "vždy zapnuto". Clustery lze vypnout, když není potřeba.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít s avere vFXT pro Azure, přečtěte si tyto články, abyste se dozvěděli, jak naplánovat a nasadit vlastní systém:
+Pokud chcete začít s Avere vFXT pro Azure, přečtěte si tyto články, kde se dozvíte, jak naplánovat a nasadit vlastní systém:
 
 * [Plánování systému Avere vFXT](avere-vfxt-deploy-plan.md)
 * [Přehled nasazení](avere-vfxt-deploy-overview.md)
-* [Příprava na vytvoření clusteru avere vFXT](avere-vfxt-prereqs.md)
+* [Příprava na vytvoření clusteru Avere vFXT](avere-vfxt-prereqs.md)
 * [Nasazení clusteru Avere vFXT](avere-vfxt-deploy.md)
 
-Další informace o možnostech a případech použití pro avere vFXT najdete v [avere vFXT pro Azure](https://azure.microsoft.com/services/storage/avere-vfxt/).
+Další informace o možnostech a případech použití pro Avere vFXT najdete na webu [Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/).

@@ -1,6 +1,6 @@
 ---
-title: Registrace aplikace pomocí Azure Active Directory | Dokumentace Microsoftu
-description: Napsané pro IT specialisty, tento článek obsahuje pokyny pro integraci aplikací Azure Active Directory.
+title: Registrace aplikace pro používání služby Azure Active Directory | Dokumenty společnosti Microsoft
+description: Tento článek, který je napsán pro IT Pro, obsahuje pokyny pro integraci aplikací Azure se službou Active Directory.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -14,66 +14,66 @@ ms.author: mimart
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ba54f8042c20a00f8d559ddce28e007a93afaace
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67108287"
 ---
-# <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Vývoj-obchodních aplikací pro Azure Active Directory
-Tato příručka obsahuje základní informace o vývoji – obchodní aplikace (LoB) pro Azure Active Directory (AD). Jeho zamýšlenou cílovou skupinou je globální správce Active Directory nebo Office 365.
+# <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Vývoj obchodních aplikací pro Azure Active Directory
+Tato příručka poskytuje přehled vývoje obchodních aplikací (LoB) pro Azure Active Directory (AD). Zamýšlenou cílovou skupinou jsou globální správci služby Active Directory/Office 365.
 
 ## <a name="overview"></a>Přehled
-Vytváření aplikací, které jsou integrované s Azure AD poskytuje uživatelům ve vaší organizaci jednotné přihlašování s Office 365. Aplikace s Azure AD získáte tak kontrolu nad zásady ověřování pro aplikaci. Další informace o podmíněný přístup a ochrana aplikací pomocí služby Multi-Factor authentication (MFA) najdete v tématu [konfigurace pravidel přístupu](../conditional-access/app-based-mfa.md).
+Vytváření aplikací integrovaných s Azure AD poskytuje uživatelům ve vaší organizaci jednotné přihlašování s Office 365. S aplikací ve službě Azure AD vám dává kontrolu nad zásady ověřování pro aplikaci. Další informace o podmíněném přístupu a o tom, jak chránit aplikace pomocí vícefaktorového ověřování (MFA), najdete [v tématu Konfigurace pravidel přístupu](../conditional-access/app-based-mfa.md).
 
-Registrace aplikace pomocí Azure Active Directory. Registruje se aplikace znamená, že vývojáři slouží k ověřování uživatelů a žádat o přístup k prostředkům uživatele, jako jsou e-maily, kalendáře a dokumenty Azure AD.
+Zaregistrujte svou aplikaci a použijte službu Azure Active Directory. Registrace aplikace znamená, že vaši vývojáři můžou používat Azure AD k ověřování uživatelů a vyžádání přístupu k uživatelským prostředkům, jako je e-mail, kalendář a dokumenty.
 
-Každý člen vašeho adresáře (ne Hosté) můžou registrovat aplikace, jinak známé jako *vytvoření objektu aplikace*.
+Každý člen vašeho adresáře (nikoli hosté) může zaregistrovat aplikaci, jinak známou jako *vytvoření aplikačního objektu*.
 
-Registrace aplikace umožňuje všem uživatelům provádět následující akce:
+Registrace aplikace umožňuje každému uživateli provést následující akce:
 
-* Získat identitu pro své aplikace, která rozpozná Azure AD
-* Získat jednu nebo více tajné klíče nebo klíče, které aplikace můžete použít ke svému ověření ke službě AD
-* Vytvoření aplikace na webu Azure Portal s vlastním názvem, loga, atd.
-* Použití funkce ověřování Azure AD do své aplikace, včetně:
+* Získání identity pro jejich aplikaci, kterou Azure AD rozpozná
+* Získejte jeden nebo více tajných kódů/klíčů, které aplikace může použít k ověření sebe sama do služby AD
+* Aplikaci označte na webu Azure Portal vlastním názvem, logem atd.
+* Použijte funkce autorizace Azure AD pro jejich aplikaci, včetně:
 
   * Řízení přístupu na základě role (RBAC)
-  * Azure Active Directory jako server autorizace oAuth (zabezpečení rozhraní API vystavené aplikace)
-* Deklarujte požadovaná oprávnění nezbytná pro aplikaci na funkci podle očekávání, včetně:
+  * Azure Active Directory jako autorizační server OAuth (zabezpečení rozhraní API vystaveného aplikací)
+* Deklarujte požadovaná oprávnění nezbytná pro to, aby aplikace fungovala podle očekávání, včetně:
 
-     - Oprávnění aplikací (jenom globální správci). Příklad: Členství v roli v jiné službě Azure AD aplikace nebo členství v rolích vzhledem k prostředku Azure, skupinu prostředků nebo předplatného
-     - Delegovaná oprávnění (všechny uživatele). Příklad: Azure AD, přihlášení a čtení profilu
+     - Oprávnění aplikací (pouze globální správci). Příklad: Členství v rolích v jiné aplikaci Azure AD nebo členství v roli vzhledem k prostředku, skupině prostředků nebo předplatnému Azure
+     - Delegovaná oprávnění (libovolný uživatel). Příklad: Azure AD, Přihlášení a profil čtení
 
 > [!NOTE]
-> Ve výchozím nastavení může každý člen zaregistrovat aplikaci. Zjistěte, jak omezit oprávnění pro registraci aplikace do konkrétních členů, najdete v článku [jak se aplikace přidávají do služby Azure AD](../develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Ve výchozím nastavení může každý člen zaregistrovat aplikaci. Informace o tom, jak omezit oprávnění pro registraci aplikací na konkrétní členy, najdete v tématu [Jak se aplikace přidávají do Služby Azure AD](../develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 >
 >
 
-Zde je, co jste globální správce, potřeba udělat, což vývojářům umožňuje vytvořit jejich aplikace připravené pro produkční prostředí:
+Zde je to, co vy, globální správce, musíte udělat, abyste pomohli vývojářům připravit jejich aplikaci pro produkční prostředí:
 
-* Konfigurace pravidel přístupu (zásad přístupu vícefaktorové ověřování)
-* Nakonfiguruje aplikaci, aby vyžadují přiřazení uživatelů a přiřazení uživatelů
-* Potlačit výchozí možnosti souhlasu uživatele
+* Konfigurace pravidel přístupu (zásady přístupu/vícefaktorové řízení)
+* Konfigurace aplikace tak, aby vyžadovala přiřazení uživatele a přiřazovala uživatele
+* Potlačit výchozí prostředí pro souhlas uživatele
 
 ## <a name="configure-access-rules"></a>Konfigurace pravidel přístupu
-Konfigurace pravidel jednotlivým aplikacím přístup k aplikacím SaaS. Můžete třeba vyžadovat vícefaktorové ověřování nebo povolení přístupu uživatelům jenom v důvěryhodných sítích. Podrobnosti k tomu jsou k dispozici v dokumentu [konfigurace pravidel přístupu](../conditional-access/app-based-mfa.md).
+Nakonfigurujte pravidla přístupu pro všechny aplikace SaaS. Můžete například vyžadovat vícefaktorové povolení nebo povolit přístup pouze uživatelům v důvěryhodných sítích. Podrobnosti jsou k dispozici v dokumentu [Konfigurace pravidel přístupu](../conditional-access/app-based-mfa.md).
 
-## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Nakonfiguruje aplikaci, aby vyžadují přiřazení uživatelů a přiřazení uživatelů
-Ve výchozím nastavení uživatelé mohou využívat aplikace bez přiřazení. Pokud aplikace jednotlivě vystavuje pro role, nebo pokud chcete, aby aplikace bude zobrazovat na přístupovém panelu uživatele, ale by měl vyžadují přiřazení uživatele.
+## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Konfigurace aplikace tak, aby vyžadovala přiřazení uživatele a přiřazovala uživatele
+Ve výchozím nastavení mohou uživatelé přistupovat k aplikacím, aniž by jim byly přiřazeny. Pokud však aplikace zpřístupňuje role nebo pokud chcete, aby se aplikace zobrazila na přístupovém panelu uživatele, měli byste vyžadovat přiřazení uživatele.
 
-Pokud jste předplatitelem Azure AD Premium nebo Enterprise Mobility Suite (EMS), důrazně doporučujeme používat skupiny. Přiřazování skupin k aplikaci umožňuje delegovat správu probíhající přístup vlastníkovi skupiny. Můžete vytvořit skupinu, nebo požádejte stran zodpovědná ve vaší organizaci vytvářet skupiny pomocí vaší skupině správy zařízení.
+Pokud jste předplatitelem Sady Azure AD Premium nebo Enterprise Mobility Suite (EMS), důrazně doporučujeme používat skupiny. Přiřazení skupin k aplikaci umožňuje delegovat průběžnou správu přístupu na vlastníka skupiny. Můžete vytvořit skupinu nebo požádat odpovědnou stranu ve vaší organizaci, aby skupinu vytvořila pomocí nástroje pro správu skupiny.
 
-[Přiřazování uživatelů a skupin k aplikaci](methods-for-assigning-users-and-groups.md)  
+[Přiřazení uživatelů a skupin k aplikaci](methods-for-assigning-users-and-groups.md)  
 
 
-## <a name="suppress-user-consent"></a>Potlačit souhlasu uživatele
-Ve výchozím nastavení každý uživatel prochází prostředí pro vyjádření souhlasu pro přihlášení. Prostředí pro vyjádření souhlasu s dotazem, uživatelům udělit oprávnění k aplikaci, může být zneklidňovat pro uživatele, kteří nejsou obeznámeni s rozhodování.
+## <a name="suppress-user-consent"></a>Potlačit souhlas uživatele
+Ve výchozím nastavení každý uživatel prochází prostředím pro přihlášení pomocí souhlasu. Prostředí souhlasu, které žádá uživatele o udělení oprávnění k aplikaci, může být znepokojující pro uživatele, kteří nejsou obeznámeni s takovými rozhodnutími.
 
-Pro aplikace, kterým důvěřujete můžete zjednodušit uživatelské prostředí tím vyjadřuje souhlas jménem svojí organizace.
+U aplikací, kterým důvěřujete, můžete zjednodušit uživatelské prostředí souhlasem s aplikací jménem vaší organizace.
 
-Další informace o souhlas uživatele a souhlasu prostředí v Azure, najdete v části [integrace aplikací s Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).
+Další informace o souhlasu uživatelů a prostředí pro souhlas v Azure najdete v [tématu Integrace aplikací se službou Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
 ## <a name="related-articles"></a>Související články
-* [Povolit zabezpečený vzdálený přístup k místním aplikacím přes Proxy aplikací Azure AD](application-proxy.md)
-* [Správa přístupu k aplikacím v Azure AD](what-is-access-management.md)
+* [Povolení zabezpečeného vzdáleného přístupu k místním aplikacím pomocí proxy aplikací Azure AD](application-proxy.md)
+* [Správa přístupu k aplikacím pomocí Azure AD](what-is-access-management.md)
 

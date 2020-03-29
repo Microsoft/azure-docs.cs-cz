@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60403090"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Vícevrstvá aplikace .NET, která používá fronty Azure Service Bus
@@ -33,7 +33,7 @@ Naučíte se:
 
 V tomto kurzu sestavíte a spustíte vícevrstvou aplikaci v cloudové službě Azure. Front-endem je webová role ASP.NET MVC a back-endem je role pracovního procesu, která používá frontu Service Bus. Můžete vytvořit stejnou vícevrstvou aplikaci s front-endem jako webový projekt, který není nasazený do cloudové služby, ale na web Azure. Taky můžete vyzkoušet kurz [Hybridní lokální/cloudová aplikace .NET](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md).
 
-Na následujícím snímku obrazovky je vidět hotová aplikace.
+Následující snímek obrazovky ukazuje dokončenou aplikaci.
 
 ![][0]
 
@@ -48,9 +48,9 @@ Service Bus nabízí dvě entity, které podporují zprostředkované zasílán�
 
 Tento komunikační mechanizmus má několik výhod oproti přímému přenosu zpráv.
 
-* **Časové oddělení**. S asynchronním vzorcem zasílání zpráv nemusí být producenti a spotřebitelé online ve stejnou dobu. Service Bus spolehlivě uchová zprávy, dokud spotřebitel nebude připravený je přijmout. Díky tomu se součásti distribuované aplikace můžou odpojit, například při údržbě nebo při selhání jedné ze součástí, a přitom to nebude mít vliv na systém jako celek. Navíc stačí, aby spotřebitelská aplikace byla online i jen v určitou dobu během dne.
-* **Vyrovnávání zátěže**. V mnoha aplikacích se zátěž na systém může postupně měnit, zatímco doba nutná ke zpracování pracovní jednotky je obvykle stálá. Propojovací producenti a spotřebitelé zpráv s frontou – to znamená, že spotřebitelskou aplikaci (pracovní proces) stačí zřídit jen na obvyklou zátěž, ne na zátěž ve špičce. S měnící se příchozí zátěží se mění hloubka fronty. To znamená přímou úsporu nákladů ve smyslu infrastruktury nutné pro zvládání zatížení aplikace.
-* **Vyrovnávání zatížení**. Když se zátěž zvyšuje, můžou se přidat další pracovní procesy, které budou číst zprávy z fronty. Každou zprávu zpracovává jen jeden pracovní proces. Toto vyrovnávání zátěže podle požadavků umožňuje optimální využívání pracovních počítačů i v případě, že se pracovní počítače liší z hlediska výkonu, protože zprávy žádaný a zpracovávají svou vlastním maximální rychlostí. Tomuto chování se často říká *konkurence mezi spotřebiteli*.
+* **Časové oddělení.** S asynchronním vzorcem zasílání zpráv nemusí být producenti a spotřebitelé online ve stejnou dobu. Service Bus spolehlivě uchová zprávy, dokud spotřebitel nebude připravený je přijmout. Díky tomu se součásti distribuované aplikace můžou odpojit, například při údržbě nebo při selhání jedné ze součástí, a přitom to nebude mít vliv na systém jako celek. Navíc stačí, aby spotřebitelská aplikace byla online i jen v určitou dobu během dne.
+* **Vyrovnávání zátěže.** V mnoha aplikacích se zátěž na systém může postupně měnit, zatímco doba nutná ke zpracování pracovní jednotky je obvykle stálá. Propojovací producenti a spotřebitelé zpráv s frontou – to znamená, že spotřebitelskou aplikaci (pracovní proces) stačí zřídit jen na obvyklou zátěž, ne na zátěž ve špičce. S měnící se příchozí zátěží se mění hloubka fronty. To znamená přímou úsporu nákladů ve smyslu infrastruktury nutné pro zvládání zatížení aplikace.
+* **Vyrovnávání zatížení.** Když se zátěž zvyšuje, můžou se přidat další pracovní procesy, které budou číst zprávy z fronty. Každou zprávu zpracovává jen jeden pracovní proces. Toto vyrovnávání zátěže podle požadavků umožňuje optimální využívání pracovních počítačů i v případě, že se pracovní počítače liší z hlediska výkonu, protože zprávy žádaný a zpracovávají svou vlastním maximální rychlostí. Tomuto chování se často říká *konkurence mezi spotřebiteli*.
   
   ![][2]
 
@@ -58,7 +58,7 @@ V následující části se probírá kód, který tuto architekturu implementuj
 
 ## <a name="create-a-namespace"></a>Vytvoření oboru názvů
 
-Prvním krokem je vytvoření *obor názvů*a získat [sdíleného přístupového podpisu (SAS)](service-bus-sas.md) klíče pro tento obor názvů. Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu Service Bus. Systém vygeneruje klíč SAS při vytvoření oboru názvů. Kombinace názvu oboru názvů a klíče SAS poskytuje přihlašovací údaje, pomocí kterých služba Service Bus ověří přístup k aplikaci.
+Prvním krokem je vytvoření *oboru názvů*a získání klíče s [sdíleným přístupovým podpisem (SAS)](service-bus-sas.md) pro tento obor názvů. Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu Service Bus. Systém vygeneruje klíč SAS při vytvoření oboru názvů. Kombinace názvu oboru názvů a klíče SAS poskytuje přihlašovací údaje, pomocí kterých služba Service Bus ověří přístup k aplikaci.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -177,7 +177,7 @@ V této části vytvoříte stránky, které vaše aplikace zobrazí.
 6. Objeví se dialogové okno pro vytvoření zobrazení. V seznamu **Šablona** vyberte **Vytvořit**. V seznamu **Třída modelu** vyberte třídu **OnlineOrder**.
    
    ![][15]
-7. Klikněte na tlačítko **Add** (Přidat).
+7. Klikněte na **Přidat**.
 8. Teď změňte zobrazený název vaší aplikace. V **Průzkumníku řešení** poklikejte na soubor **Views\Shared\\_Layout.cshtml** a otevře se v editoru Visual Studio.
 9. Všechny výskyty **My ASP.NET Application** změňte na **Northwind Traders Products**.
 10. Odstraňte odkazy **Home**, **About** a **Contact**. Odstraňte zvýrazněný uzel:
@@ -350,7 +350,7 @@ Teď vytvoříte roli pracovního procesu, která zpracuje odesílání objedná
     
     ![][20]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pokud se o službě Service Bus chcete dozvědět víc, pročtěte si následující zdroje:  
 
 * [Začínáme používat fronty služby Service Bus][sbacomqhowto]

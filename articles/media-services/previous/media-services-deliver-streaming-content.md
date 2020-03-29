@@ -1,6 +1,6 @@
 ---
-title: Publikování obsahu Azure Media Services pomocí .NET | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit, který se používá k vytvoření adresy URL streamování. Ukázky kódu jsou napsané C# a používat Media Services SDK pro .NET.
+title: Publikování obsahu Mediálních služeb Azure pomocí rozhraní .NET | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak vytvořit lokátor, který se používá k vytvoření adresy URL streamování. Ukázky kódu jsou zapsány v c# a používají sady Media Services SDK pro rozhraní .NET.
 author: juliako
 manager: femila
 editor: ''
@@ -15,48 +15,48 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b1d0c070a9196eaa9a2706a607baa9a2926e2db4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67051748"
 ---
-# <a name="publish-media-services-content-using-net"></a>Publikovat obsah služby Media Services pomocí .NET  
+# <a name="publish-media-services-content-using-net"></a>Publikování obsahu mediálních služeb pomocí rozhraní .NET  
 > [!div class="op_single_selector"]
-> * [REST](media-services-rest-deliver-streaming-content.md)
+> * [Odpočinku](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
-> * [Azure Portal](media-services-portal-publish.md)
+> * [Portál](media-services-portal-publish.md)
 > 
 > 
 
 ## <a name="overview"></a>Přehled
-Adaptivní přenosové rychlosti sady souborů MP4 vytvořením Lokátor streamování OnDemand a vytváření adresu URL streamování můžete Streamovat. [Kódování assetu](media-services-encode-asset.md) téma ukazuje, jak můžete zakódovat jako sada MP4 adaptivní přenosové rychlosti. 
+Sadu MP4 s adaptivní přenosovou rychlostí můžete streamovat vytvořením lokátoru streamování OnDemand a vytvořením adresy URL streamování. Kódování [tématu datového zdroje](media-services-encode-asset.md) ukazuje, jak zakódovat do sady MP4 s adaptivní přenosovou rychlostí. 
 
 > [!NOTE]
-> Pokud váš obsah je zašifrován, nakonfigurujte zásady doručení assetu (jak je popsáno v [to](media-services-dotnet-configure-asset-delivery-policy.md) téma) před vytvořením lokátoru. 
+> Pokud je váš obsah zašifrován, před vytvořením lokátoru nakonfigurujte zásady doručování datových zdrojů (jak je popsáno v [tomto](media-services-dotnet-configure-asset-delivery-policy.md) tématu). 
 > 
 > 
 
-Lokátor streamování OnDemand. můžete také použít pro vytvoření adres URL, které odkazují na soubory MP4, které je možné stáhnout postupně.  
+Můžete také použít ondemand streaming lokátor k vytvoření adresy URL, které odkazují na SOUBORY MP4, které lze postupně stáhnout.  
 
-Toto téma ukazuje, jak vytvořit publikovat asset a vytvořit protokol Smooth, MPEG DASH a adresy URL streamování HLS Lokátor streamování OnDemand. Také ukazuje horké pro vytvoření adres URL progresivního stahování. 
+Toto téma ukazuje, jak vytvořit lokátor streamování OnDemand pro publikování datového zdroje a vytvoření adres URL streamování Plynulý, MPEG DASH a HLS. To také ukazuje horké stavět progresivní stahování adres URL. 
 
-## <a name="create-an-ondemand-streaming-locator"></a>Vytvořit lokátor streamování OnDemand.
-Pokud chcete vytvořit lokátor streamování OnDemand a získání adres URL, musíte udělat následující věci:
+## <a name="create-an-ondemand-streaming-locator"></a>Vytvoření lokátoru streamování OnDemand
+Chcete-li vytvořit lokátor streamování OnDemand a získat adresy URL, musíte provést následující kroky:
 
-1. Pokud se obsah bude šifrovat, definujte zásady přístupu.
-2. Vytvořte Lokátor streamování OnDemand.
-3. Pokud máte v plánu stream, získáte soubor datového proudu manifest (.ism) v prostředku. 
+1. Pokud je obsah zašifrován, definujte zásady přístupu.
+2. Vytvořte lokátor streamování OnDemand.
+3. Pokud máte v plánu streamovat, získejte soubor manifestu streamování (.ism) do datového zdroje. 
    
-   Pokud budete chtít progresivně stahovat, získáte názvy souborů MP4 v prostředku.  
-4. Vytvoření adres URL k souboru manifestu nebo soubory MP4. 
+   Pokud plánujete postupné stahování, získejte názvy souborů MP4 v datovém zdroji.  
+4. Vytvořte adresy URL do souboru manifestu nebo souborů MP4. 
 
 
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Stejné ID zásad použijte, pokud vždy používáte stejné dny / přístupová oprávnění. Například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odesílání). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Použijte stejné ID zásad, pokud používáte vždy stejné dny / přístupová oprávnění. Například zásady pro lokátory, které jsou určeny k zůstat na místě po dlouhou dobu (zásady bez nahrávání). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
 
-### <a name="use-media-services-net-sdk"></a>Pomocí Media Services .NET SDK
-Vytvoření adresy URL pro streamování 
+### <a name="use-media-services-net-sdk"></a>Použití mediálních služeb .NET SDK
+Vytváření adres URL datových proudů 
 
 ```csharp
     private static void BuildStreamingURLs(IAsset asset)
@@ -108,11 +108,11 @@ Výstupy:
 
 
 > [!NOTE]
-> Také můžete Streamovat obsah pomocí připojení SSL. Chcete-li provést tento postup, ujistěte se, že spustíte adresy URL streamování pomocí protokolu HTTPS. V současné době nepodporuje AMS SSL s použitím vlastních domén.
+> Můžete také streamovat obsah přes připojení SSL. Chcete-li tento přístup provést, ujistěte se, že vaše streamované adresy URL začínají protokolem HTTPS. V současné době AMS nepodporuje SSL s vlastními doménami.
 > 
 > 
 
-Adresa URL progresivního stahování sestavení 
+Vytváření progresivních adres URL stahování 
 
 ```csharp
     private static void BuildProgressiveDownloadURLs(IAsset asset)
@@ -152,8 +152,8 @@ Výstupy:
 
     . . . 
 
-### <a name="use-media-services-net-sdk-extensions"></a>Použití rozšíření Media Services .NET SDK
-Následující kód volá metody rozšíření sady .NET SDK vytvořit Lokátor a generovat technologie Smooth Streaming, HLS a MPEG-DASH adresy URL pro adaptivní streamování.
+### <a name="use-media-services-net-sdk-extensions"></a>Použití rozšíření sady Media Services .NET SDK
+Následující kód volá metody rozšíření .NET SDK, které vytvářejí lokátor a generují adresy URL plynulého streamování, HLS a MPEG-DASH pro adaptivní streamování.
 ```csharp
     // Create a loctor.
     _context.Locators.Create(
@@ -172,13 +172,13 @@ Následující kód volá metody rozšíření sady .NET SDK vytvořit Lokátor 
     Console.WriteLine(mpegDashUri);
 ```
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>Další postup
-* [Stáhnout prostředky](media-services-deliver-asset-download.md)
-* [Konfigurace zásad doručení assetu](media-services-dotnet-configure-asset-delivery-policy.md)
+## <a name="next-steps"></a>Další kroky
+* [Stažení datových zdrojů](media-services-deliver-asset-download.md)
+* [Konfigurace zásad pro doručování majetku](media-services-dotnet-configure-asset-delivery-policy.md)
 

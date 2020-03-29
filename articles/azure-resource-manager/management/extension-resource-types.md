@@ -1,160 +1,160 @@
 ---
 title: Typy prostředků rozšíření
-description: Obsahuje seznam typů prostředků Azure, pomocí kterých se rozšiřuje schopnost dalších typů prostředků.
+description: Seznamy typů prostředků Azure se používají k rozšíření možností jiných typů prostředků.
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: c14cf6fec2da11534a7358599c79961a3258470b
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76515364"
 ---
-# <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Typy prostředků, které rozšiřuje možnosti jiných prostředků
+# <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Typy prostředků, které rozšiřují možnosti jiných prostředků
 
-Prostředek rozšíření je prostředek, který se přidává do možností jiného prostředku. Například zámek prostředku je prostředek rozšíření. Zámek prostředků můžete použít pro jiný prostředek, aby se zabránilo jeho odstranění nebo úpravě. Nedává smysl vytvořit prostředek jako zámek sám sebou. Prostředek rozšíření se vždycky použije na jiný prostředek.
+Prostředek rozšíření je prostředek, který přidává do možností jiného prostředku. Například zámek prostředků je prostředek rozšíření. Zámek prostředku použijete na jiný prostředek, abyste zabránili jeho odstranění nebo úpravám. Nemá smysl vytvořit zámek prostředků sám. Prostředek rozšíření je vždy použit a u jiného prostředku.
 
 ## <a name="extension-resource-types"></a>Typy prostředků rozšíření
 
-- Microsoft. Advisor/Configurations
-- Microsoft. Advisor/doporučení
-- Microsoft. Advisor/potlačení
-- Microsoft. AlertsManagement/Alerts
-- Microsoft. AlertsManagement/alertsSummary
-- Microsoft. Authorization/checkAccess
-- Microsoft. Authorization/denyAssignments
-- Microsoft. Authorization/findOrphanRoleAssignments
-- Microsoft. Authorization/zámky
-- Microsoft. Authorization/oprávnění
-- Microsoft. Authorization/policyAssignments
-- Microsoft. Authorization/policyDefinitions
-- Microsoft. Authorization/policySetDefinitions
-- Microsoft. Authorization/roleAssignments
-- Microsoft. Authorization/roleAssignmentsUsageMetrics
-- Microsoft. Authorization/roleDefinitions
-- Microsoft. fakturace/billingPeriods
-- Microsoft. fakturace/billingPermissions
-- Microsoft. fakturace/billingRoleAssignments
-- Microsoft. fakturace/billingRoleDefinitions
-- Microsoft. fakturace/createBillingRoleAssignment
-- Microsoft. Details/blueprintAssignments
-- Microsoft. Details/modrotisky
-- Microsoft. spotřeb/AggregatedCost
-- Microsoft. spotřeb/bilance
-- Microsoft. spotřeba/rozpočty
-- Microsoft. spotřeba/poplatky
-- Microsoft. spotřeb/CostTags
-- Microsoft. spotřeba/předpovědi
-- Microsoft. spotřeb/Marketplace
-- Microsoft. spotřeb/OperationResults
-- Microsoft. spotřeb/stav operationstatus
-- Microsoft. spotřeb/Pricesheets
-- Microsoft. spotřeb/ReservationDetails
-- Microsoft. spotřeb/ReservationRecommendations
-- Microsoft. spotřeb/ReservationSummaries
-- Microsoft. spotřeb/ReservationTransactions
-- Microsoft. spotřeba/značky
-- Microsoft. spotřeb/terms
-- Microsoft. spotřeb/UsageDetails
-- Microsoft. spotřeba/kredity
-- Microsoft. spotřeb/Events
-- Microsoft. spotřeba/šarže
-- Microsoft. spotřeba/produkty
-- Microsoft. spotřeba/klienti
-- Microsoft. ContainerInstance/serviceAssociationLinks
-- Microsoft. CostManagement/Alerts
-- Microsoft. CostManagement/rozpočty
-- Microsoft. CostManagement/Dimensions
-- Microsoft. CostManagement/EXPORTS
-- Microsoft. CostManagement/ExternalSubscriptions
-- Microsoft. CostManagement/FORECAST
-- Microsoft. CostManagement/dotaz
-- Microsoft. CostManagement/Reportconfigs
-- Microsoft. CostManagement/Reports
-- Microsoft. CostManagement/zobrazení
-- Microsoft. CostManagement/showbackRules
-- Microsoft. CustomProviders/Associations
+- Microsoft.Advisor/konfigurace
+- Microsoft.Advisor/doporučení
+- Microsoft.Advisor/potlačení
+- Microsoft.AlertsManagement/alerts
+- Microsoft.AlertsManagement/alertsSummary
+- Microsoft.Authorization/checkAccess
+- Microsoft.Authorization/denyÚlohy
+- Microsoft.Authorization/findOrphanRoleAssignments
+- Microsoft.Authorization/zámky
+- Microsoft.Autorizace/oprávnění
+- Microsoft.Authorization/policyAssignments
+- Microsoft.Authorization/policyDefinitions
+- Microsoft.Authorization/policySetDefinitions
+- Microsoft.Authorization/roleAssignments
+- Microsoft.Authorization/roleAssignmentsUsageMetrics
+- Microsoft.Authorization/roleDefinitions
+- Microsoft.Billing/billingPeriods
+- Microsoft.Billing/billingPermissions
+- Microsoft.Billing/billingRoleAssignments
+- Microsoft.Billing/billingRoleDefinitions
+- Microsoft.Billing/createBillingRoleAssignment
+- Microsoft.Blueprint/blueprintÚkoly
+- Microsoft.Blueprint/podrobné plány
+- Microsoft.Consumption/AggregatedCost
+- Microsoft.Spotřeba/zůstatky
+- Microsoft.Spotřeba/rozpočty
+- Microsoft.Spotřeba/poplatky
+- Microsoft.Spotřeba/CostTags
+- Microsoft.Spotřeba/prognózy
+- Microsoft.Consumption/Tržiště
+- Microsoft.Consumption/OperationResults
+- Microsoft.Consumption/OperationStatus
+- Microsoft.Spotřeba/Ceníky
+- Microsoft.Odběr/RezervacePodrobnosti
+- Microsoft.Consumption/ReservationRecommendations
+- Microsoft.Consumption/ReservationSummaries
+- Microsoft.Consumption/ReservationTransactions
+- Microsoft.Consumption/Tags
+- Microsoft.Consumption/Terms
+- Microsoft.Consumption/UsageDetails
+- Microsoft.Spotřeba/kredity
+- Microsoft.Spotřeba/události
+- Microsoft.Spotřeba/loty
+- Microsoft.Spotřeba/produkty
+- Microsoft.Consumption/tenants
+- Microsoft.ContainerInstance/serviceAssociationLinks
+- Microsoft.CostManagement/Alerts
+- Microsoft.CostManagement/Rozpočty
+- Microsoft.CostManagement/Dimenze
+- Microsoft.CostManagement/Exporty
+- Microsoft.CostManagement/ExternalSubscriptions
+- Microsoft.CostManagement/Prognóza
+- Microsoft.CostManagement/Dotaz
+- Microsoft.CostManagement/Reportconfigs
+- Microsoft.CostManagement/Sestavy
+- Microsoft.CostManagement/Zobrazení
+- Microsoft.CostManagement/showbackRules
+- Microsoft.CustomProviders/associations
 - Microsoft.EventGrid/eventSubscriptions
 - Microsoft.EventGrid/extensionTopics
-- Microsoft. GuestConfiguration/configurationProfileAssignments
-- Microsoft. GuestConfiguration/guestConfigurationAssignments
-- Microsoft. GuestConfiguration/software
-- Microsoft. GuestConfiguration/softwareUpdateProfile
-- Microsoft. GuestConfiguration/softwareUpdates
-- Microsoft. Insights/automatedExportSettings
-- Microsoft. Insights/směrný plán
-- Microsoft. Insights/calculatebaseline
-- Microsoft. Insights/dataCollectionRuleAssociations
-- Microsoft. Insights/diagnosticSettings
-- Microsoft. Insights/diagnosticSettingsCategories
-- Microsoft. Insights/EventTypes
-- Microsoft. Insights/extendedDiagnosticSettings
-- Microsoft. Insights/guestDiagnosticSettingsAssociation
-- Microsoft. Insights/logDefinitions
-- Microsoft. Insights/protokoly
-- Microsoft. Insights/metricDefinitions
-- Microsoft. Insights/metricNamespaces
-- Microsoft. Insights/metricbaselines
-- Microsoft. Insights/metriky
-- Microsoft. Insights/myWorkbooks
-- Microsoft. Insights/topologie
-- Microsoft. Insights/transakcí
-- Microsoft. Insights/vmInsightsOnboardingStatuses
-- Microsoft. KubernetesConfiguration/sourceControlConfigurations
-- Microsoft. Maintenance/applyUpdates
-- Microsoft. Maintenance/configurationAssignments
-- Microsoft. Maintenance/Updates
-- Microsoft. ManagedIdentity/identity
-- Microsoft. ManagedServices/registrationAssignments
-- Microsoft. ManagedServices/registrationDefinitions
-- Microsoft. OperationalInsights/storageInsightConfigs
-- Microsoft. OperationsManagement/managementassociations
-- Microsoft. PolicyInsights/policyEvents
-- Microsoft. PolicyInsights/policyStates
-- Microsoft. PolicyInsights/policyTrackedResources
-- Microsoft.PolicyInsights/remediations
-- Microsoft. RecoveryServices/backupProtectedItems
-- Microsoft. RecoveryServices/replicationEligibilityResults  
-- Microsoft. ResourceHealth/availabilityStatuses
-- Microsoft. ResourceHealth/childAvailabilityStatuses
-- Microsoft. ResourceHealth/childResources
-- Microsoft. ResourceHealth/Events
-- Microsoft. ResourceHealth/impactedResources
-- Microsoft. ResourceHealth/oznámení
-- Microsoft. Resources/odkazy
-- Microsoft. Resources/Tags
-- Microsoft. Security/dodržování předpisů
-- Microsoft. Security/InformationProtectionPolicies
-- Microsoft. Security/adaptiveNetworkHardenings
-- Microsoft. Security/advancedThreatProtectionSettings
-- Microsoft. Security/assessmentMetadata
-- Microsoft. Security/Assessments
-- Microsoft. Security/complianceResults
-- Microsoft. Security/dataCollectionAgents
-- Microsoft. Security/dataCollectionResults
-- Microsoft. Security/deviceSecurityGroups
-- Microsoft. Security/networkData
-- Microsoft. Security/serverVulnerabilityAssessments
-- Microsoft. SecurityInsights/agregace
-- Microsoft. SecurityInsights/alertRuleTemplates
-- Microsoft. SecurityInsights/alertRules
-- Microsoft. SecurityInsights/záložky
-- Microsoft. SecurityInsights/případy
-- Microsoft. SecurityInsights/dataconnects
-- Microsoft. SecurityInsights/entity
-- Microsoft. SecurityInsights/entityQueries
-- Microsoft. SecurityInsights/officeConsents
-- Microsoft. SecurityInsights/Settings
-- Microsoft. SoftwarePlan/hybridUseBenefits
-- Microsoft. Subscription/CreateSubscription
-- Microsoft. support/createsupportticket
-- Microsoft. support/supporttickets
-- Microsoft. monitor zátěže byl/– komponenty
-- Microsoft. monitor zátěže byl/monitorInstances
-- Microsoft. monitor zátěže byl/monitoruje
-- Microsoft. monitor zátěže byl/notificationSettings
+- Microsoft.GuestKonfigurace/konfiguraceProfilúlohy
+- Microsoft.GuestConfiguration/guestConfigurationAssignments
+- Microsoft.GuestKonfigurace/software
+- Microsoft.GuestKonfigurace/softwareUpdateProfile
+- Microsoft.GuestKonfigurace/softwareAktualizace
+- microsoft.insights/automatedExportSettings
+- microsoft.insights/baseline
+- Microsoft.Insights/calculatebaseline
+- Microsoft.insights/dataCollectionRuleAssociations
+- Microsoft.insights/diagnosticSettings
+- microsoft.insights/diagnosticSettingsCategories
+- microsoft.insights/eventtypes
+- Microsoft.insights/extendedDiagnosticSettings
+- Microsoft.insights/guestDiagnosticSettingsAssociation
+- Microsoft.insights/logDefinitions
+- microsoft.insights/logs
+- microsoft.insights/metricDefinitions
+- microsoft.insights/metricNamespaces
+- Microsoft.Insights/metricbaselines
+- microsoft.insights/metriky
+- microsoft.insights/myWorkbook
+- microsoft.insights/topologie
+- microsoft.insights/transactions
+- microsoft.insights/vmInsightsOnboardingStaves
+- Microsoft.KubernetesKonfigurace/sourceControlKonfigurace
+- Microsoft.Maintenance/applyUpdates
+- Microsoft.Maintenance/configurationÚkoly
+- Microsoft.Údržba/aktualizace
+- Microsoft.ManagedIdentity/Identities
+- Microsoft.ManagedServices/registrationÚkoly
+- Microsoft.ManagedServices/registrationDefinitions
+- Microsoft.OperationalInsights/storageInsightConfigs
+- Microsoft.OperationsManagement/managementassociations
+- Microsoft.PolicyInsights/policyEvents
+- Microsoft.PolicyInsights/policyStates
+- Microsoft.PolicyInsights/policyTrackedResources
+- Microsoft.PolicyInsights/náprava
+- Microsoft.RecoveryServices/backupProtectedItems
+- Microsoft.RecoveryServices/replicationEligibilityResults  
+- Microsoft.ResourceHealth/availabilityStaves
+- Microsoft.ResourceHealth/childAvailabilityStatuses
+- Microsoft.ResourceHealth/childResources
+- Microsoft.ResourceHealth/události
+- Microsoft.ResourceHealth/impactedResources
+- Microsoft.ResourceHealth/oznámení
+- Microsoft.Resources/odkazy
+- Microsoft.Resources/tags
+- Microsoft.Security/Compliances
+- Microsoft.Security/InformationProtectionPolicies
+- Microsoft.Security/adaptiveNetworkHardenings
+- Microsoft.Security/advancedThreatProtectionSettings
+- Microsoft.Security/assessmentMetadata
+- Microsoft.Security/assessments
+- Microsoft.Security/complianceResults
+- Microsoft.Security/dataCollectionAgents
+- Microsoft.Security/dataCollectionResults
+- Microsoft.Security/deviceSecurityGroups
+- Microsoft.Security/networkData
+- Microsoft.Security/serverVulnerabilityAssessments
+- Microsoft.SecurityInsights/agregace
+- Microsoft.SecurityInsights/alertRuleTemplates
+- Microsoft.SecurityInsights/alertRules
+- Microsoft.SecurityInsights/záložky
+- Microsoft.SecurityInsights/případy
+- Microsoft.SecurityInsights/dataConnectors
+- Microsoft.SecurityInsights/entity
+- Microsoft.SecurityInsights/entityDotazy
+- Microsoft.SecurityInsights/officeConsents
+- Microsoft.SecurityInsights/nastavení
+- Microsoft.SoftwarePlan/hybridUseBenefits
+- Microsoft.Subscription/CreateSubscription
+- microsoft.support/createsupportticket
+- Microsoft.support/supporttickets
+- Microsoft.WorkloadMonitor/komponenty
+- Instance Microsoft.WorkloadMonitor/monitorInstances
+- Microsoft.WorkloadMonitor/monitory
+- Microsoft.WorkloadMonitor/notificationSettings
 
 ## <a name="next-steps"></a>Další kroky
 
-- Chcete-li získat ID prostředku pro prostředek rozšíření v šabloně Azure Resource Manager, použijte [extensionResourceId](../templates/template-functions-resource.md#extensionresourceid).
-- Příklad vytvoření prostředku rozšíření v šabloně najdete v tématu [Event Grid odběry událostí](/azure/templates/microsoft.eventgrid/2019-06-01/eventsubscriptions).
+- Chcete-li získat ID prostředku pro prostředek rozšíření v šabloně Azure Resource Manager, použijte [rozšířeníResourceId](../templates/template-functions-resource.md#extensionresourceid).
+- Příklad vytvoření prostředku rozšíření v šabloně naleznete v tématu [Odběry událostí v mřížce událostí](/azure/templates/microsoft.eventgrid/2019-06-01/eventsubscriptions).

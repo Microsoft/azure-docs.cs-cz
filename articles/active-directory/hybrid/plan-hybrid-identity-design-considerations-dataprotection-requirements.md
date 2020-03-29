@@ -1,6 +1,6 @@
 ---
-title: Hybridní identita návrh – požadavky na ochranu dat Azure | Dokumentace Microsoftu
-description: Při plánování řešení hybridní identity, identifikujte požadavky na ochranu dat pro vaši firmu a jaké možnosti jsou k dispozici pro nejlepší splnění těchto požadavků.
+title: Návrh hybridní identity – požadavky na ochranu dat Azure | Dokumenty společnosti Microsoft
+description: Při plánování hybridního řešení identity určete požadavky na ochranu dat pro vaši firmu a jaké možnosti jsou k dispozici, aby tyto požadavky co nejlépe splňovaly.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,75 +18,75 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64918779"
 ---
-# <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Plán pro zlepšení zabezpečení dat prostřednictvím řešení využívá silné identity
-Prvním krokem při ochraně dat je identifikovat, kdo má přístup k těmto datům. Navíc musíte mít řešení identit, které můžete integrovat do vašeho systému pro poskytování možností ověřování a autorizace. Ověřování a autorizace se často zaměňuje za číslo mezi sebou a nesprávně pochopeny, jejich role. Ve skutečnosti jsou různé, jak je znázorněno na následujícím obrázku:
+# <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Plán pro zvýšení zabezpečení dat prostřednictvím řešení silné identity
+Prvním krokem při ochraně dat je určení, kdo má k těmto datům přístup. Také musíte mít řešení identity, které lze integrovat s vaším systémem a poskytovat možnosti ověřování a autorizace. Ověřování a autorizace jsou často zaměňovány mezi sebou a jejich role nepochopeny. Ve skutečnosti se liší, jak je znázorněno na obrázku níže:
 
-![životního cyklu mobilních zařízení](./media/plan-hybrid-identity-design-considerations/mobile-devicemgt-lifecycle.png)
+![životní cyklus mobilního zařízení](./media/plan-hybrid-identity-design-considerations/mobile-devicemgt-lifecycle.png)
 
 **Fáze životního cyklu správy mobilních zařízení**
 
-Při plánování řešení hybridní identity, je třeba pochopit, že tyto požadavky splňují požadavky na ochranu dat pro vaši firmu a jaké možnosti jsou k dispozici pro co nejlepší.
+Při plánování hybridního řešení identity musíte pochopit požadavky na ochranu dat pro vaši firmu a jaké možnosti jsou k dispozici, aby tyto požadavky co nejlépe splňovaly.
 
 > [!NOTE]
-> Jakmile dokončíte plánování zabezpečení dat, zkontrolujte [stanovit požadavky na ověřování službou Multi-Factor Authentication](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md) zajistit, že váš výběr ohledně požadavky na vícefaktorové ověřování nebyly ovlivněny rozhodnutí, která jste provedené v této části.
+> Po dokončení plánování zabezpečení dat zkontrolujte, zda [určit požadavky na vícefaktorové ověřování,](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md) abyste zajistili, že vaše výběry týkající se požadavků na vícefaktorové ověřování nebyly ovlivněny rozhodnutími, která jste provedli v této části.
 > 
 > 
 
-## <a name="determine-data-protection-requirements"></a>Určení požadavků na ochranu dat
-Ve věku mobility, většina společností má stejný cíl – umožnit: povolit jejich produktivitu uživatelů na jejich mobilních zařízeních, místně nebo vzdáleně z libovolného místa za účelem zvýšení produktivity. Společností, které mají tyto požadavky budou také mít obavy o počet hrozeb, které musí možné zmírnit, aby bylo možné zabezpečit firemní data a zachovat ochranu osobních údajů uživatelů. Každá společnost může mít různé požadavky v tomto ohledu; pravidla různých dodržování předpisů, které se budou lišit podle odvětví, které působí společnost povede k jiné rozhodnutí. 
+## <a name="determine-data-protection-requirements"></a>Určení požadavků na ochranu údajů
+Ve věku mobility má většina společností společný cíl: umožnit svým uživatelům produktivitu na svých mobilních zařízeních, zatímco místně nebo vzdáleně odkudkoli, aby zvýšili produktivitu. Společnosti, které mají takové požadavky, budou také znepokojeny počtem hrozeb, které je třeba zmírnit, aby byla data společnosti v bezpečí a soukromí uživatelů. Každá společnost může mít v tomto ohledu jiné požadavky; různá pravidla dodržování předpisů, která se budou lišit podle odvětví, které společnost jedná, povedou k různým rozhodnutím o návrhu. 
 
-Existují však některé aspekty zabezpečení, které by měl prozkoumat a ověřit, bez ohledu na odvětví.
+Existují však některé bezpečnostní aspekty, které by měly být prozkoumány a ověřeny, bez ohledu na odvětví.
 
-## <a name="data-protection-paths"></a>Cesty k datům ochrany
-![Cesty k datům ochrany](./media/plan-hybrid-identity-design-considerations/data-protection-paths.png)
+## <a name="data-protection-paths"></a>Cesty ochrany dat
+![cesty ochrany dat](./media/plan-hybrid-identity-design-considerations/data-protection-paths.png)
 
-**Cesty k datům ochrany**
+**Cesty ochrany dat**
 
-V diagramu výše bude komponentu identita první data se před přístupem k ověření. Však tato data mohou být v různých stavech dobu, kdy se použila. Každého čísla v tomto diagramu představuje cestu, ve kterém data můžou být umístěná v určitém okamžiku v čase. Tato čísla jsou vysvětleny níže:
+Ve výše uvedeném diagramu bude součást identity první, která bude ověřena před přístupem k datům. Tato data však mohou být v různých stavech během doby, kdy byla přístupná. Každé číslo v tomto diagramu představuje cestu, ve které mohou být data umístěna v určitém okamžiku v čase. Tato čísla jsou vysvětlena níže:
 
 1. Ochrana dat na úrovni zařízení.
-2. Ochrana dat při přenosu.
-3. Ochrana dat v rest místní.
-4. Ochrana dat v klidovém stavu uložených v cloudu.
+2. Ochrana údajů během přepravy.
+3. Ochrana osobních údajů v místním klidu.
+4. Ochrana dat v klidu v cloudu.
 
-Je nezbytné, aby hybridní řešení identit umožňující využití v místním a cloudovým prostředkům správy identit k identifikaci uživatele předtím, než se udělí přístup k datům. Při plánování řešení hybridní identity, ujistěte se, že podle požadavků vaší organizace jsou odpovědi na následující otázky:
+Je nezbytné, aby řešení hybridní identity je schopno využívat prostředky pro správu místníi i cloudové identity k identifikaci uživatele dříve, než udělí přístup k datům. Při plánování řešení hybridní identity se ujistěte, že jsou zodpovězeny následující otázky podle požadavků vaší organizace:
 
-## <a name="data-protection-at-rest"></a>Ochrana dat v klidovém stavu
-Bez ohledu na to, kde jsou data v klidovém stavu (zařízení, cloudové nebo místní) je potřeba provést k posouzení v tomto ohledu o potřebách organizace. Pro tuto oblast Ujistěte se, že se zobrazí výzva na následující otázky:
+## <a name="data-protection-at-rest"></a>Ochrana údajů v klidovém stavu
+Bez ohledu na to, kde jsou data v klidovém stavu (zařízení, cloud nebo místní), je důležité provést posouzení, abychom pochopili potřeby organizace v tomto ohledu. V této oblasti se ujistěte, že jsou položeny následující otázky:
 
-* Potřebuje vaše společnost k ochraně dat v klidovém stavu?
-  * Pokud ano, je řešení hybridní identity spojit s aktuální místní infrastrukturu?
-  * Pokud ano, je řešení hybridní identity schopná integrovat s vašimi úlohami umístěný v cloudu?
-* Správu cloudových identit je schopné chránit přihlašovacích údajů uživatele a další data uložená v cloudu?
+* Potřebuje vaše společnost chránit data v klidovém stavu?
+  * Pokud ano, je řešení hybridní identity schopno integrovat s vaší aktuální místní infrastrukturou?
+  * Pokud ano, je řešení hybridní identity schopné integrovat s vašimi úlohami umístěnými v cloudu?
+* Je správa cloudových identit schopná chránit přihlašovací údaje uživatele a další data uložená v cloudu?
 
-## <a name="data-protection-in-transit"></a>Ochrana dat při přenosu
-Data přenášená mezi zařízením a datového centra nebo mezi zařízením a cloudem musí být chráněny. Ale probíhá během přenosu nemusí nutně znamenat proces komunikace s komponentou mimo vaši cloudovou službu; Přesune interně, také, například mezi dvěma virtuálními sítěmi. Pro tuto oblast Ujistěte se, že se zobrazí výzva na následující otázky:
+## <a name="data-protection-in-transit"></a>Ochrana údajů při přenosu
+Data při přenosu mezi zařízením a datovým centrem nebo mezi zařízením a cloudem musí být chráněna. Být v tranzitu však nemusí nutně znamenat komunikační proces s komponentou mimo vaši cloudovou službu; přesune interně, také, například mezi dvěma virtuálními sítěmi. V této oblasti se ujistěte, že jsou položeny následující otázky:
 
-* Potřebuje vaše společnost k ochraně dat během přenosu?
-  * Pokud ano, je řešení hybridní identity spojit s zabezpečené ovládací prvky, jako je například SSL/TLS?
-* Správu cloudových identit zachovat provoz do a v rámci adresáře úložiště (v rámci a mezi datacentry) podepsané?
+* Potřebuje vaše společnost chránit data při přepravě?
+  * Pokud ano, je řešení hybridní identity schopno integrovat se zabezpečenými ovládacími prvky, jako je například SSL/TLS?
+* Udržuje správa cloudových identit provoz do úložiště adresářů a v jeho rámci (v rámci datových center a mezi nimi) podepsaný?
 
 ## <a name="compliance"></a>Dodržování předpisů
-Právní, zákony a požadavky na dodržování předpisů se liší podle odvětví, do kterého patří vaší společnosti. Správa identit obavy týkající se problémů s dodržováním předpisů musí řešit společností ve vysoce regulované odvětví. Jako Sarbanes-Oxley (SOX), údajů o zdravotním pojištění a zdravotním pojištění (HIPAA), Gramm-Leach-Bliley Act (GRAMM) a Standard odvětví platebních karet Data zabezpečení (PCI DSS) jsou striktní týkající se identit a přístupů. Řešení hybridní identity, které vaše společnost zavede musí mít základní funkce, které se bude splňovat požadavky jednoho nebo více těchto pravidel. Pro tuto oblast Ujistěte se, že se zobrazí výzva na následující otázky:
+Předpisy, zákony a požadavky na dodržování předpisů se budou lišit v závislosti na odvětví, do kterého vaše společnost patří. Společnosti ve vysoce regulovaných odvětvích se musí zabývat otázkami správy identit souvisejících s otázkami dodržování předpisů. Předpisy jako Sarbanes-Oxley (SOX), zákon o přenositelnosti a odpovědnosti zdravotního pojištění (HIPAA), gramm-leach-blileyský zákon (GLBA) a standard bezpečnosti dat v odvětví platebních karet (PCI DSS) jsou přísné, pokud jde o identitu a přístup. Řešení hybridní identity, které vaše společnost přijme, musí mít základní funkce, které budou splňovat požadavky jednoho nebo více těchto předpisů. V této oblasti se ujistěte, že jsou položeny následující otázky:
 
-* Je řešení hybridní identity splňovat zákonné požadavky pro vaši společnost?
-* Neexistuje, má integrované řešení hybridní identity 
-* Funkce, které vám umožní vaší společnosti bude kompatibilní s požadavky na dodržování legislativních? 
+* Je řešení hybridní identity v souladu s regulačními požadavky pro vaši firmu?
+* Má hybridní identity řešení vybudovala 
+* ve schopnostech, které umožní vaší společnosti, aby byly v souladu s regulačními požadavky? 
 
 > [!NOTE]
-> Ujistěte se, že každá odpověď a pochopení odůvodnění odpověď. [Definování strategie ochrany dat](plan-hybrid-identity-design-considerations-data-protection-strategy.md) možností a výhod i nevýhod každé z.  Po zodpovězení těchto otázek, které vyberete která možnost nejlépe vyhovuje stylu vaší firmě potřebuje.
+> Každou odpověď si poznamenejte a ujistěte se, že dobře chápete důvody, které vás k ní vedly. [Definovat strategii ochrany osobních údajů](plan-hybrid-identity-design-considerations-data-protection-strategy.md) půjde přes možnosti k dispozici a výhody / nevýhody každé možnosti.  Tím, že odpověděl na tyto otázky, budete vybírat, která možnost nejlépe vyhovuje vašim obchodním potřebám.
 > 
 > 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
  [Určení požadavků na správu obsahu](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)
 
 ## <a name="see-also"></a>Viz také
-[Přehled aspektů návrhu](plan-hybrid-identity-design-considerations-overview.md)
+[Přehled aspekty návrhu](plan-hybrid-identity-design-considerations-overview.md)
 

@@ -1,7 +1,7 @@
 ---
 title: Ladění a řešení potíží s kanály strojového učení v Application Insights
 titleSuffix: Azure Machine Learning
-description: Přidejte protokolování do kanálů pro vyhodnocování školení a Batch a zobrazte výsledky protokolu v Application Insights.
+description: Přidejte protokolování do svých kanálů školení a dávkového vyhodnocování a zobrazte zaznamenané výsledky v Application Insights.
 services: machine-learning
 author: aburek
 ms.author: anrode
@@ -12,34 +12,34 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 85dcd9ef98deb2ea0117f2db280e49c4a57bf00f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76776297"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>Ladění a řešení potíží s kanály strojového učení v Application Insights
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Knihovna Pythonu [OpenCensus](https://opencensus.io/quickstart/python/) se dá použít k směrování protokolů, které se Application Insights ze skriptů. Agregace protokolů z kanálu na jednom místě umožňuje vytvářet dotazy a diagnostikovat problémy. Použití Application Insights vám umožní sledovat protokoly v průběhu času a porovnat protokoly kanálu v různých spuštěních.
+[Knihovnu Pythonu OpenCensus](https://opencensus.io/quickstart/python/) lze použít ke směrování protokolů do Application Insights z vašich skriptů. Agregace protokolů z kanálu běží na jednom místě umožňuje vytvářet dotazy a diagnostikovat problémy. Použití Application Insights vám umožní sledovat protokoly v průběhu času a porovnat protokoly kanálu napříč spuštěními.
 
-V případě, že se vaše protokoly nacházejí v jednom místě, budete mít k dispozici historii výjimek a chybových zpráv. Vzhledem k tomu, že Application Insights se integruje s výstrahami Azure, můžete také vytvořit výstrahy na základě Application Insights dotazů.
+S vaše protokoly v jednou místo bude poskytovat historii výjimek a chybových zpráv. Vzhledem k tomu, že application insights integruje s Azure Alerts, můžete také vytvářet výstrahy na základě dotazů Application Insights.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Podle pokynů vytvořte pracovní prostor [Azure Machine Learning](./how-to-manage-workspace.md) a [vytvořte svůj první kanál](./how-to-create-your-first-pipeline.md) .
-* [Konfigurace vývojového prostředí](./how-to-configure-environment.md) nainstalovat sadu SDK Azure Machine Learning.
-* Místní instalace balíčku [OpenCensus Azure monitor Exportér](https://pypi.org/project/opencensus-ext-azure/) :
+* Podle pokynů vytvořte pracovní prostor [Azure Machine Learning](./how-to-manage-workspace.md) a [vytvořte svůj první kanál.](./how-to-create-your-first-pipeline.md)
+* [Nakonfigurujte vývojové prostředí](./how-to-configure-environment.md) tak, aby bylo nainstalováno sada Azure Machine Learning SDK.
+* Nainstalujte balíček [OpenCensus Azure Monitor Exporter](https://pypi.org/project/opencensus-ext-azure/) místně:
   ```python
   pip install opencensus-ext-azure
   ```
-* Vytvoření [instance Application Insights](../azure-monitor/app/opencensus-python.md) (Tento dokument obsahuje také informace o získání připojovacího řetězce pro prostředek)
+* Vytvoření [instance Application Insights](../azure-monitor/app/opencensus-python.md) (tento dokument také obsahuje informace o získání připojovacího řetězce pro prostředek)
 
-## <a name="getting-started"></a>začínáme
+## <a name="getting-started"></a>Začínáme
 
-V této části je Úvod specifický pro použití OpenCensus z kanálu Azure Machine Learning. Podrobný kurz najdete v tématu [OpenCensus Azure monitor vývozců](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure) .
+Tato část je úvod emituje specifické pro použití OpenCensus z kanálu Azure Machine Learning. Podrobný kurz najdete [v tématu OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
-Přidejte PythonScriptStep do kanálu Azure ML. Nakonfigurujte své [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) se závislostí na opencensus-EXT-Azure. Nakonfigurujte proměnnou prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING`.
+Přidejte pythonscriptstep do kanálu Azure ML. Nakonfigurujte [runconfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) se závislostí na opencensus-ext-azure. Nakonfigurujte `APPLICATIONINSIGHTS_CONNECTION_STRING` proměnnou prostředí.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -72,14 +72,14 @@ pipeline = Pipeline(workspace=ws, steps=[sample_step])
 pipeline.submit(experiment_name="Logging_Experiment")
 ```
 
-Vytvořte soubor s názvem `sample_step.py`. Importujte třídu AzureLogHandler pro směrování protokolů do Application Insights. Také budete muset importovat knihovnu protokolování Pythonu.
+Vytvořte soubor s názvem `sample_step.py`. Importujte třídu AzureLogHandler do směrování protokolů do Application Insights. Budete také muset importovat knihovnu protokolování Pythonu.
 
 ```python
 from opencensus.ext.azure.log_exporter import AzureLogHandler
 import logging
 ```
 
-Dále přidejte AzureLogHandler do protokolovacího nástroje Python.
+Dále přidejte AzureLogHandler do protokolování pythonu.
 
 ```python
 logger = logging.getLogger(__name__)
@@ -91,34 +91,34 @@ logger.addHandler(AzureLogHandler())
 logger.warning("I will be sent to Application Insights")
 ```
 
-## <a name="logging-with-custom-dimensions"></a>Protokolování s vlastními rozměry
+## <a name="logging-with-custom-dimensions"></a>Protokolování s vlastními dimenzemi
  
-Ve výchozím nastavení se protokoly předané do Application Insights nebudou mít dostatečný kontext pro trasování zpět ke spuštění nebo experimentování. Aby se protokoly daly dělat pro diagnostiku problémů, vyžadují se další pole. 
+Ve výchozím nastavení protokoly předané do Application Insights nebudou mít dostatek kontextu, aby bylo možné trasovat zpět do běhu nebo experimentu. Chcete-li protokoly žalovatelné pro diagnostiku problémů, jsou potřeba další pole. 
 
-Chcete-li přidat tato pole, lze přidat vlastní dimenze k poskytnutí kontextu zprávy protokolu. Příkladem je, že někdo chce zobrazit protokoly v rámci jednoho spuštění kanálu v několika krocích.
+Chcete-li přidat tato pole, vlastní dimenze mohou být přidány poskytnout kontext zprávy protokolu. Jedním z příkladů je, když někdo chce zobrazit protokoly přes více kroků ve stejném kanálu spustit.
 
-Vlastní dimenze tvoří slovník párů klíč-hodnota (uložený jako řetězec, řetězec). Slovník se pak pošle Application Insights a zobrazí se jako sloupec ve výsledcích dotazu. Jednotlivé dimenze lze použít jako [parametry dotazu](#additional-helpful-queries).
+Vlastní dimenze tvoří slovník párů klíč-hodnota (uložená jako řetězec, řetězec). Slovník je pak odeslán do Application Insights a zobrazí se jako sloupec ve výsledcích dotazu. Jeho jednotlivé rozměry lze použít jako [parametry dotazu](#additional-helpful-queries).
 
-### <a name="helpful-context-to-include"></a>Užitečný kontext, který se má zahrnout
+### <a name="helpful-context-to-include"></a>Užitečný kontext, který má být zahrnut
 
-| Pole                          | Důvod/příklad                                                                                                                                                                       |
+| Pole                          | Uvažování/příklad                                                                                                                                                                       |
 |--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| parent_run_id                  | Umožňuje dotazovat se na protokoly se stejnými parent_run_id pro zobrazení protokolů v čase pro všechny kroky, místo abyste museli podrobně do každého jednotlivého kroku.                                        |
-| step_id                        | Může dotazovat se na protokoly se stejnými step_id, abyste viděli, kde došlo k potížím s úzkým rozsahem pouze k jednotlivým krokům.                                                        |
-| step_name                      | Může pomocí dotazů na protokoly zobrazit krok v čase. Také pomáhá najít step_id pro poslední spuštění bez začnete do uživatelského rozhraní portálu.                                          |
-| experiment_name                | Umožňuje dotazování napříč protokoly, aby se zobrazily informace o výkonu v průběhu času. Také pomáhá najít parent_run_id nebo step_id pro poslední spuštění bez začnete do uživatelského rozhraní portálu.                   |
-| run_url                 | Může poskytnout odkaz přímo zpět ke spuštění šetření. |
+| parent_run_id                  | Může dotaz protokoly pro ty se stejným parent_run_id zobrazit protokoly v průběhu času pro všechny kroky, namísto nutnosti ponořit se do každého jednotlivého kroku                                        |
+| step_id                        | Může dotaz protokoly pro ty se stejným step_id zjistit, kde došlo k problému s úzkým rozsahem pouze jednotlivé kroky                                                        |
+| step_name                      | Může dotaz protokoly zobrazit výkon kroku v průběhu času. Také pomáhá najít step_id pro nedávné běhy bez potápění do portálu UI                                          |
+| experiment_name                | Můžete dotaz přes protokoly zobrazit výkon experimentu v průběhu času. Také pomáhá najít parent_run_id nebo step_id pro nedávné běhy bez potápění do portálu UI                   |
+| run_url                 | Může poskytnout odkaz přímo zpět na útěk u vyšetřování. |
 
 **Další užitečná pole**
 
 Tato pole mohou vyžadovat další instrumentaci kódu a nejsou poskytovány kontextem spuštění.
 
-| Pole                   | Důvod/příklad                                                                                                                                                                                                           |
+| Pole                   | Uvažování/příklad                                                                                                                                                                                                           |
 |-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| build_url/build_version | Pokud k nasazení použijete CI/CD, může toto pole koreluje s protokolem verze kódu, která poskytuje krok a logiku kanálu. Tento odkaz může další pomoc při diagnostice problémů nebo identifikaci modelů s konkrétními vlastnostmi (hodnoty protokolu/metriky). |
-| run_type                       | Může rozlišovat různé typy modelů nebo školení vs. bodování spouští. |
+| build_url/build_version | Pokud k nasazení používáte CI/CD, může toto pole korelovat protokoly s verzí kódu, která poskytla logiku kroku a kanálu. Tento odkaz může dále pomoci diagnostikovat problémy nebo identifikovat modely s určitými vlastnostmi (hodnoty protokolu/metriky) |
+| run_type                       | Dokáže rozlišovat mezi různými typy modelů nebo školením vs. spuštění majení |
 
-### <a name="creating-a-custom-dimensions-dictionary"></a>Vytvoření vlastního slovníku dimenzí
+### <a name="creating-a-custom-dimensions-dictionary"></a>Vytvoření slovníku vlastních dimenzí
 
 ```python
 from azureml.core import Run
@@ -138,33 +138,33 @@ custom_dimensions = {
 logger.info("I will be sent to Application Insights with Custom Dimensions", custom_dimensions)
 ```
 
-## <a name="opencensus-python-logging-considerations"></a>OpenCensus požadavky na protokolování Pythonu
+## <a name="opencensus-python-logging-considerations"></a>Důležité informace o protokolování pythonu OpenCensus
 
-OpenCensus AzureLogHandler se používá k směrování protokolů Pythonu do Application Insights. V důsledku toho by se mělo vzít v úvahu drobné odlišnosti protokolování v jazyce Python. Při vytvoření protokolovacího nástroje má výchozí úroveň protokolování a zobrazí protokoly, které jsou větší nebo rovny této úrovni. Dobrým odkazem na použití funkcí protokolování Pythonu je [protokolování kuchařka](https://docs.python.org/3/howto/logging-cookbook.html).
+OpenCensus AzureLogHandler se používá ke směrování protokolů Pythonu do Application Insights. V důsledku toho by měly být zváženy nuance protokolování Pythonu. Při vytvoření protokolovacího nástroje má výchozí úroveň protokolu a zobrazí protokoly větší než nebo rovno této úrovni. Dobrým referencem pro používání funkcí protokolování pythonu je [Kuchařka protokolování](https://docs.python.org/3/howto/logging-cookbook.html).
 
-Pro knihovnu OpenCensus je potřeba proměnná prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING`. Doporučujeme nastavit tuto proměnnou prostředí, abyste ji nemuseli předávat jako parametr kanálu, aby nedocházelo k předávání řetězců připojení ve formátu prostého textu.
+Proměnná `APPLICATIONINSIGHTS_CONNECTION_STRING` prostředí je potřebná pro knihovnu OpenCensus. Doporučujeme nastavit tuto proměnnou prostředí namísto předání jako parametr kanálu, aby se zabránilo předávání kolem připojovacích řetězců prostého textu.
 
-## <a name="querying-logs-in-application-insights"></a>Dotazování na protokoly v Application Insights
+## <a name="querying-logs-in-application-insights"></a>Dotazování protokolů v Přehledech aplikací
 
-Protokoly směrované do Application Insights se zobrazí pod položkou Traces nebo Exceptions. Nezapomeňte upravit svůj časový interval, aby zahrnoval váš běh kanálu.
+Protokoly směrované do Application Insights se zobrazí pod 'trasování' nebo "výjimky". Nezapomeňte upravit časové okno tak, aby zahrnovalo spuštění kanálu.
 
-![Výsledek dotazu Application Insights](./media/how-to-debug-pipelines-application-insights/traces-application-insights-query.png)
+![Výsledek dotazu na přehledy aplikací](./media/how-to-debug-pipelines-application-insights/traces-application-insights-query.png)
 
-Výsledek v Application Insights zobrazí zprávu protokolu a úroveň, cestu k souboru a číslo řádku kódu. Zobrazí se také všechny zahrnuté vlastní dimenze. V tomto obrázku customDimensions slovník zobrazuje páry klíč/hodnota z předchozí [ukázky kódu](#creating-a-custom-dimensions-dictionary).
+Výsledek v Application Insights zobrazí zprávu protokolu a úroveň, cestu k souboru a číslo řádku kódu. Zobrazí se také všechny vlastní dimenze. V tomto obrázku slovník customDimensions zobrazuje dvojice klíč/hodnota z předchozí [ukázky kódu](#creating-a-custom-dimensions-dictionary).
 
 ### <a name="additional-helpful-queries"></a>Další užitečné dotazy
 
-Některé z následujících dotazů používají ' customDimensions. Level '. Tyto úrovně závažnosti odpovídají úrovni, pomocí které byl protokol Python původně odeslán. Další informace o dotazech najdete v tématu [Azure monitor dotazů protokolu](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
+Některé z níže uvedených dotazů používají 'customDimensions.Level'. Tyto úrovně závažnosti odpovídají úrovni, se kterou byl protokol Pythonu původně odeslán. Další informace o dotazu naleznete v [tématu Dotazy protokolu sledování Azure](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
 
 | Případ použití                                                               | Dotaz                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| Výsledky protokolu pro konkrétní vlastní dimenzi, například ' parent_run_id ' | <pre>traces \| <br>where customDimensions.parent_run_id == '931024c2-3720-11ea-b247-c49deda841c1</pre> |
-| Výsledky protokolu pro všechny školicí běhy za posledních 7 dnů                     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.run_type == 'training'</pre>           |
-| Protokoluje výsledky s severityLevel chybou za posledních 7 dnů.              | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR'                     |
-| Počet výsledků protokolu s chybou severityLevel za posledních 7 dnů     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR' \| <br>summarize count()</pre> |
+| Protokolovat výsledky pro konkrétní vlastní dimenzi, například "parent_run_id" | <pre>traces \| <br>where customDimensions.parent_run_id == '931024c2-3720-11ea-b247-c49deda841c1</pre> |
+| Log výsledky pro všechny tréninkové běží za posledních 7 dní                     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.run_type == 'training'</pre>           |
+| Protokolovat výsledky s chybou závažnosti úrovně za posledních 7 dní              | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR'                     |
+| Počet výsledků protokolu s chybou závažnosti úrovně za posledních 7 dní     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR' \| <br>summarize count()</pre> |
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile budete mít v instanci Application Insights protokoly, dají se použít k nastavení [Azure monitor výstrahy](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) na základě výsledků dotazu.
+Jakmile máte protokoly v instanci Application Insights, můžete je použít k nastavení [výstrah Azure Monitor](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) na základě výsledků dotazu.
 
 Můžete také přidat výsledky z dotazů na [řídicí panel Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query) pro další přehledy.

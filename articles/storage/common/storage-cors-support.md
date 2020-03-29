@@ -1,6 +1,6 @@
 ---
-title: Podpora prostředků mezi zdroji (CORS) pro sdílení obsahu | Dokumentace Microsoftu
-description: Informace o povolení podpory CORS pro služby Microsoft Azure Storage.
+title: Podpora sdílení zdrojů napříč zdroji (CORS) | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak povolit podporu CORS pro služby Microsoft Azure Storage Services.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,48 +11,48 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: bb296db0d97382deac984369704777de5d5cb362
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65147690"
 ---
-# <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Prostředků mezi zdroji (CORS) podporu pro služby Azure Storage pro sdílení obsahu
-Od verze 2013-08-15, služby Azure storage podporu sdílení prostředků mezi zdroji (CORS) ke službám Blob, tabulky, fronty a soubor. CORS je funkce protokolu HTTP, která umožňuje webové aplikaci spuštěné v rámci jedné domény pro přístup k prostředkům v jiné doméně. Webové prohlížeče implementují bezpečnostní omezení, označované jako [zásada stejného zdroje](https://www.w3.org/Security/wiki/Same_Origin_Policy) , který chrání webovou stránku před voláním rozhraní API v jiné doméně. CORS nabízí zabezpečený způsob, jak povolit jednu doménu (zdrojová doména) pro volání rozhraní API v jiné doméně. Zobrazit [specifikace CORS](https://www.w3.org/TR/cors/) podrobnosti o CORS.
+# <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Podpora sdílení prostředků napříč zdroji (CORS) pro služby Azure Storage Services
+Počínaje verzí 2013-08-15 podporují služby úložiště Azure sdílení prostředků mezi zdroji (CORS) pro služby blob, table, queue a file. CORS je funkce HTTP, která umožňuje webové aplikaci spuštěné pod jednou doménou přístup k prostředkům v jiné doméně. Webové prohlížeče implementují omezení zabezpečení známé jako [zásady stejného původu,](https://www.w3.org/Security/wiki/Same_Origin_Policy) které brání webové stránce v volání souborů API v jiné doméně. CORS poskytuje bezpečný způsob, jak povolit jedné doméně (původní doméně) volat api v jiné doméně. Podrobnosti o CORS naleznete ve [specifikaci CORS.](https://www.w3.org/TR/cors/)
 
-Můžete nastavit pravidla CORS samostatně pro každou ze služeb úložiště voláním [nastavit vlastnosti služby Blob Service](https://msdn.microsoft.com/library/hh452235.aspx), [nastavit vlastnosti služby Queue](https://msdn.microsoft.com/library/hh452232.aspx), a [nastavit vlastnosti služby Table](https://msdn.microsoft.com/library/hh452240.aspx). Jakmile jednou nastavíte pravidla CORS pro službu, bude správně autorizované žádost na službu z jiné domény vyhodnotí k určení, zda je povoleno podle pravidel, které jste zadali.
+Pravidla CORS můžete nastavit jednotlivě pro každou službu úložiště voláním [Nastavit vlastnosti služby objektů blob](https://msdn.microsoft.com/library/hh452235.aspx), [Nastavit vlastnosti služby fronty](https://msdn.microsoft.com/library/hh452232.aspx)a Nastavit [vlastnosti služby tabulky](https://msdn.microsoft.com/library/hh452240.aspx). Jakmile nastavíte pravidla CORS pro službu, pak správně autorizovaný požadavek proti službě z jiné domény bude vyhodnocen, aby se zjistilo, zda je povoleno podle pravidel, která jste zadali.
 
 > [!NOTE]
-> Všimněte si, že CORS není mechanismus ověřování. Žádné požadavek směřovaný prostředek úložiště při zapnuté CORS musí mít podpis správné ověření, nebo musí být provedena proti prostředek veřejné.
+> Všimněte si, že CORS není mechanismus ověřování. Jakýkoli požadavek na prostředek úložiště, pokud je povolen a co je povolen, musí mít buď správný podpis ověřování, nebo musí být proveden proti veřejnému prostředku.
 > 
 > 
 
-## <a name="understanding-cors-requests"></a>Vysvětlení požadavků CORS
-Žádost CORS z zdrojová doména může skládat ze dvou samostatných požadavků:
+## <a name="understanding-cors-requests"></a>Principy požadavků CORS
+Požadavek CORS z původní domény se může skládat ze dvou samostatných požadavků:
 
-* Předběžný požadavek, který se dotazuje CORS omezeními službou. Předběžný požadavek není nutná, pokud je metoda žádosti [jednoduchý způsob](https://www.w3.org/TR/cors/), což znamená GET, HEAD nebo POST.
-* Skutečné požadavek směřovaný na požadovaný prostředek.
+* Požadavek kontroly před výstupem, který se dotazuje omezení CORS vynucených službou. Požadavek kontroly před výstupem je povinný, pokud metoda požadavku není [jednoduchou metodou](https://www.w3.org/TR/cors/), což znamená GET, HEAD nebo POST.
+* Skutečný požadavek, provedené proti požadovaný prostředek.
 
-### <a name="preflight-request"></a>Předběžný požadavek
-Dotazy předběžný požadavek CORS omezení, které byly vytvořeny pro službu storage vlastník účtu. Webový prohlížeč (nebo jiné uživatelský agent) odešle žádost možnosti, která obsahuje hlavičky požadavku, metody a původu domény. Služba úložiště vyhodnotí odpovídající operace na základě předem nakonfigurované sady pravidel CORS, které určují, které zdrojové domény, požadavek metody a hlavičky požadavku může být specifikovány u aktuálního požadavku proti prostředku úložiště.
+### <a name="preflight-request"></a>Požadavek kontroly před výstupem
+Požadavek kontroly před výstupem se dotazuje na omezení CORS, která byla vytvořena pro službu úložiště vlastníkem účtu. Webový prohlížeč (nebo jiný uživatelský agent) odešle požadavek OPTIONS, který obsahuje hlavičky požadavku, metodu a původní doménu. Služba úložiště vyhodnotí zamýšlenou operaci na základě předem nakonfigurované sady pravidel CORS, která určují, které původní domény, metody požadavků a hlavičky požadavků mohou být určeny pro skutečný požadavek na prostředek úložiště.
 
-Pokud existuje pravidlo CORS, která odpovídá předběžný požadavek CORS je povoleno pro službu, služba jako odpověď vrátí stavový kód 200 (OK) a zahrne požadované hlavičky Access-Control odpovědi.
+Pokud cors je povolena pro službu a je pravidlo CORS, který odpovídá požadavku kontroly před výstupem, služba odpoví stavový kód 200 (OK) a obsahuje požadované hlavičky řízení přístupu v odpovědi.
 
-Pokud CORS není povoleno pro službu nebo nevyhovuje žádné pravidlo CORS předběžný požadavek, odpoví služba stavový kód 403 (zakázáno).
+Pokud cors není povolena pro službu nebo žádné pravidlo CORS odpovídá požadavku před výstupem, služba odpoví stavovým kódem 403 (Zakázáno).
 
-Pokud možnosti žádosti neobsahuje povinné hlavičky CORS (záhlaví původu a Access-Control-Request-Method), bude služba odpovědět stavovým kódem 400 (Chybný požadavek).
+Pokud požadavek OPTIONS neobsahuje požadované hlavičky CORS (hlavičky Origin a Access-Control-Request-Method), služba odpoví stavovým kódem 400 (Chybný požadavek).
 
-Všimněte si, že je předběžný požadavek vyhodnocen na službu (objektu Blob, Queue a Table) a ne na požadovaný prostředek. Vlastník účtu musí povolili CORS jako součást vlastností účtu služby v pořadí pro požadavek úspěšná.
+Všimněte si, že požadavek kontroly před výstupem je vyhodnocen proti službě (blob, fronta a tabulka) a nikoli proti požadovanému prostředku. Vlastník účtu musí mít povoleno CORS jako součást vlastností služby účtu, aby požadavek úspěšný.
 
-### <a name="actual-request"></a>Skutečnou žádost
-Po přijetí předběžný požadavek a odpověď se vrátí, odešle do prohlížeče skutečnou žádost, s prostředkem úložiště. Prohlížeč odmítne skutečnou žádost o okamžitě, pokud je předběžný požadavek zamítnut.
+### <a name="actual-request"></a>Skutečný požadavek
+Jakmile je požadavek kontroly před výstupem přijat a odpověď je vrácena, prohlížeč odešle skutečný požadavek proti prostředku úložiště. Prohlížeč odmítne skutečný požadavek okamžitě, pokud je požadavek kontroly před výstupem odmítnut.
 
-Skutečné žádost se zpracuje jako normální požadavek na službu úložiště. Přítomnost hlavička počátečního označuje, že žádost je žádost CORS a služba zkontroluje odpovídající pravidla CORS. Pokud se najde shoda, záhlaví řízení přístupu přidá do odpovědi a odeslat zpět klientovi. Pokud není nalezena shoda, nebudou zobrazeny hlavičky CORS Access-Control.
+Skutečný požadavek je považován za normální požadavek proti službě úložiště. Přítomnost origin záhlaví označuje, že požadavek je požadavek CORS a služba zkontroluje odpovídající pravidla CORS. Pokud je nalezena shoda, hlavičky řízení přístupu jsou přidány do odpovědi a odeslány zpět klientovi. Pokud není nalezena shoda, nejsou vráceny hlavičky řízení přístupu CORS.
 
-## <a name="enabling-cors-for-the-azure-storage-services"></a>Povolení CORS pro služby Azure Storage
-Pravidla CORS jsou nastaveny na úrovni služby, budete potřebovat k povolení nebo zákazu sdílení CORS pro každou službu (objektu Blob, fronty a tabulky) samostatně. Ve výchozím nastavení je zakázána CORS pro každou službu. Postup pro povolení CORS, je nutné nastavit vlastnosti příslušnou službu pomocí verze 2013-08-15 nebo novější a přidejte pravidla CORS pro vlastnosti služby. Podrobnosti o tom, jak povolit nebo zakázat CORS pro služby a jak nastavit pravidla CORS, najdete [nastavit vlastnosti služby Blob Service](https://msdn.microsoft.com/library/hh452235.aspx), [nastavit vlastnosti služby Queue](https://msdn.microsoft.com/library/hh452232.aspx), a [nastavit službu Table Service Vlastnosti](https://msdn.microsoft.com/library/hh452240.aspx).
+## <a name="enabling-cors-for-the-azure-storage-services"></a>Povolení cors pro služby Azure Storage
+Pravidla CORS jsou nastavena na úrovni služby, takže je třeba povolit nebo zakázat CORS pro každou službu (objekt blob, fronta a tabulka) samostatně. Ve výchozím nastavení je CORS pro jednotlivé služby zakázáno. Chcete-li povolit CORS, je třeba nastavit příslušné vlastnosti služby pomocí verze 2013-08-15 nebo novější a přidat pravidla CORS do vlastností služby. Podrobnosti o povolení nebo zakázání cors pro službu a nastavení pravidel CORS naleznete v části [Nastavení vlastností služby objektů blob](https://msdn.microsoft.com/library/hh452235.aspx), [Nastavení vlastností služby fronty](https://msdn.microsoft.com/library/hh452232.aspx)a Nastavení [vlastností služby table service](https://msdn.microsoft.com/library/hh452240.aspx).
 
-Tady je ukázka jednoho pravidla CORS, určené pomocí operace nastavit vlastnosti služby:
+Zde je ukázka jednoho pravidla CORS určeného pomocí operace Nastavit vlastnosti služby:
 
 ```xml
 <Cors>    
@@ -66,39 +66,39 @@ Tady je ukázka jednoho pravidla CORS, určené pomocí operace nastavit vlastno
 <Cors>
 ```
 
-Níže je popsána jednotlivých prvků, součástí pravidlo CORS:
+Každý prvek obsažený v pravidle CORS je popsán níže:
 
-* **AllowedOrigins**: Zdrojové domény, které mohou vytvořit požadavek na službu úložiště přes CORS. Zdrojová doména je doména, ze které žádost pochází. Všimněte si, že počátek musí být velká a malá písmena přesně neshoduje s původ, věk uživatele odešle do služby. Můžete také použít zástupný znak "*" Povolit všechny zdrojové domény k podání žádostí o přes CORS. V příkladu výše, http domény:\//www.contoso.com a http: \/ /www.fabrikam.com mohou vytvářet požadavky na službu pomocí CORS.
-* **Hodnota AllowedMethods**: Metody (akce požadavků HTTP), které může doména zdroje použít pro žádost CORS. V předchozím příkladu jsou povoleny pouze požadavky PUT a GET.
-* **AllowedHeaders**: Hlavičky žádosti, která doména zdroje může určit v požadavku CORS. V předchozím příkladu jsou povoleny všechny hlavičky metadat od verze x-ms-meta-data, x-ms-meta cíl a x-ms-meta-abc. Všimněte si, že zástupný znak ' *' znamená, že není povoleno žádné začátek záhlaví se zadanou předponou.
-* **ExposedHeaders**: Hlavičky odpovědi, které mohou být odeslaný v odpovědi na žádost CORS a zpřístupnit v prohlížeči pro vystavitele žádosti. V předchozím příkladu je vystavit libovolné od záhlaví x-ms-meta pokyn prohlížeče.
-* **MaxAgeInSeconds**: Maximální doba, by měl prohlížeč mezipaměti předběžné požadavky OPTIONS.
+* **AllowedOrigins**: Původní domény, které jsou povoleny podat žádost proti službě úložiště prostřednictvím CORS. Původní doména je doména, ze které požadavek pochází. Všimněte si, že původ musí být přesně malá a velká písmena shoda s původem, který uživatel věk odešle do služby. Můžete také použít zástupný znak '*' povolit všechny domény původu, aby požadavky prostřednictvím CORS. Ve výše uvedeném příkladu\/domény http:\//www.contoso.com a http: /www.fabrikam.com můžete provádět požadavky proti službě pomocí CORS.
+* **AllowedMethods**: Metody (http požadavek slovesa), které původní doména může použít pro požadavek CORS. V příkladu výše jsou povoleny pouze požadavky PUT a GET.
+* **AllowedHeaders**: Hlavičky požadavku, které může původní doména zadat v požadavku CORS. Ve výše uvedeném příkladu jsou povoleny všechny hlavičky metadat začínající na x-ms-meta-data, x-ms-meta-target a x-ms-meta-abc. Všimněte si, že zástupný znak *označuje, že je povoleno libovolné záhlaví začínající zadanou předponou.
+* **ExposedHeaders**: Hlavičky odpovědí, které mohou být odeslány v odpovědi na požadavek CORS a vystaveny prohlížečem vystaviteli požadavku. Ve výše uvedeném příkladu je prohlížeč instruován vystavit všechny záhlaví začínající x-ms-meta.
+* **MaxAgeInSeconds**: Maximální doba, po kterou by měl prohlížeč ukládat požadavek options před výstupem do mezipaměti.
 
-Služby Azure storage podporují zadání záhlaví s předponou pro obě **AllowedHeaders** a **ExposedHeaders** elementy. Povolit kategorii záhlaví, můžete zadat běžnou předponu do této kategorie spadají. Například zadání *x-ms-meta** jako hlavičku předponou vytvoří pravidlo, které budou odpovídat všechny hlavičky, které začínají s x-ms-meta.
+Služba úložiště Azure podporuje určení předponou záhlaví pro **allowedheaders** a **ExposedHeaders prvky.** Chcete-li povolit kategorii záhlaví, můžete zadat společnou předponu pro tuto kategorii. Například zadání *x-ms-meta** jako hlavičky s předponou vytvoří pravidlo, které bude odpovídat všem záhlavím začínajícím x-ms-meta.
 
-Pravidla CORS se vztahují následující omezení:
+Následující omezení platí pro pravidla CORS:
 
-* Můžete zadat až pět pravidel CORS na službu úložiště (objekt Blob, tabulky a fronty).
-* Maximální velikost všech nastavení pravidel CORS v požadavku, s výjimkou značky XML nesmí být delší než 2 KB.
-* Délka povolené hlavičky, zveřejněné hlavičky nebo povolený původ by neměl být delší než 256 znaků.
-* Povolené hlavičky může být buď zveřejněné hlavičky:
-  * Záhlaví literálu, kde je přesné záhlaví je zadat název, například **x-ms-meta zpracovat**. V požadavku je možné zadat maximálně 64 záhlaví literálu.
-  * Předponu záhlaví, kterých předponu hlavičky je k dispozici, jako například **x-ms-meta-data** *. Určení předponu tímto způsobem umožňuje případně zpřístupňuje libovolné záhlaví, který začíná danou předponu. V požadavku je možné zadat maximálně dvě záhlaví označená prefixem.
-* Metody (nebo příkazy HTTP), podle **hodnota AllowedMethods** elementu musí odpovídat na metody podporované rozhraní API služby Azure storage. Podporované metody jsou DELETE, GET, HEAD, MERGE, POST, možnosti a PUT.
+* Můžete zadat až pět pravidel CORS pro službu úložiště (objekt blob, tabulka a fronta).
+* Maximální velikost všech nastavení pravidel CORS v požadavku, s výjimkou značek XML, by neměla překročit 2 KB.
+* Délka povolené hlavičky, exponované hlavičky nebo povoleného původu by neměla přesáhnout 256 znaků.
+* Povolené hlavičky a exponované hlavičky mohou být buď:
+  * Literál záhlaví, kde je k dispozici přesný název záhlaví, například **x-ms-meta-processed**. V požadavku může být zadáno maximálně 64 literálových záhlaví.
+  * Předpona záhlaví, kde je k dispozici předpona záhlaví, například **x-ms-meta-data***. Zadání předpony tímto způsobem umožňuje nebo zveřejňuje libovolné záhlaví, které začíná danou předponou. V požadavku mohou být zadány maximálně dvě hlavičky s předponou.
+* Metody (nebo http slovesa) zadané v **AllowedMethods** element musí odpovídat metody podporované rozhraní API služby úložiště Azure. Podporované metody jsou DELETE, GET, HEAD, MERGE, POST, OPTIONS a PUT.
 
-## <a name="understanding-cors-rule-evaluation-logic"></a>Principy logika vyhodnocení pravidla CORS
-Když služba úložiště obdrží žádost o předběžné nebo skutečné, je vyhodnocen jako žádosti na základě pravidel CORS, kterou jste vytvořili pro službu prostřednictvím odpovídající operace nastavení vlastností služby. Pravidla CORS se vyhodnocují v pořadí, ve kterém byly nastavené v textu požadavku operace nastavení vlastností služby.
+## <a name="understanding-cors-rule-evaluation-logic"></a>Principy logiky vyhodnocení pravidel CORS
+Když služba úložiště obdrží před letem nebo skutečný požadavek, vyhodnotí tento požadavek na základě pravidel CORS, které jste pro službu vytvořili prostřednictvím příslušné operace Nastavit vlastnosti služby. Pravidla CORS jsou vyhodnocována v pořadí, ve kterém byla nastavena v těle požadavku operace Nastavit vlastnosti služby.
 
-Pravidla CORS se vyhodnotí takto:
+Pravidla CORS jsou vyhodnocována takto:
 
-1. Nejprve zdrojová doména požadavku je porovnávána s domén pro uvedené **AllowedOrigins** elementu. Pokud se zdrojová doména je zahrnuta v seznamu, nebo jsou povoleny všechny domény se zástupným znakem "*", potom pravidla vyhodnocování pokračuje. Pokud zdrojová doména není zahrnutý, požadavek se nezdaří.
-2. V dalším kroku – metoda (nebo příkaz HTTP) žádosti je porovnávána s metod uvedených v **hodnota AllowedMethods** elementu. Metoda je zahrnutý v seznamu, pak pokračuje vyhodnocení pravidla; v opačném případě není požadavek splněn.
-3. Pokud požadavek odpovídá pravidlu v jeho zdrojová doména a její metoda, vybere se tímto pravidlem ke zpracování požadavku a žádná další pravidla se vyhodnocují. Předtím, než požadavek nezdaří, ale záhlaví v žádosti můžete zadat jsou porovnávána s uvedené v záhlaví **AllowedHeaders** elementu. Pokud hlavičky posílané neshodují povolené hlavičky, požadavek selže.
+1. Nejprve původní doména požadavku je kontrolována proti doménám uvedeným pro **allowedorigins** element. Pokud je původní doména zahrnuta do seznamu nebo jsou povoleny všechny domény se zástupným znakem *, pokračuje hodnocení pravidel. Pokud původní doména není zahrnuta, požadavek se nezdaří.
+2. Dále metoda (nebo http sloveso) požadavku je kontrolována proti metody uvedené v **AllowedMethods** element. Pokud je metoda zahrnuta do seznamu, pokračuje hodnocení pravidel; pokud ne, požadavek se nezdaří.
+3. Pokud požadavek odpovídá pravidlu v původní doméně a jeho metodě, je toto pravidlo vybráno ke zpracování požadavku a nejsou vyhodnocována žádná další pravidla. Před požadavek může být úspěšná, ale všechny hlavičky zadané v požadavku jsou kontrolovány proti záhlaví uvedená v **AllowedHeaders** element. Pokud odeslané hlavičky neodpovídají povoleným záhlavím, požadavek se nezdaří.
 
-Protože se zpracovávají v pořadí, v jakém že se vyskytují v textu požadavku, doporučujeme osvědčené postupy zadejte nejvíce omezující pravidla s ohledem na zdroje první v seznamu, tak, aby tyto jsou vyhodnoceny jako první. Zadejte pravidla, které jsou méně omezující – například pravidlo, které umožňuje všechny původy – na konci seznamu.
+Vzhledem k tomu, že pravidla jsou zpracovány v pořadí, ve kterých jsou k dispozici v textu požadavku, doporučené postupy doporučujeme zadat nejvíce omezující pravidla s ohledem na původ nejprve v seznamu tak, aby byly vyhodnoceny jako první. Zadejte pravidla, která jsou méně omezující – například pravidlo povolit všechny počátky – na konci seznamu.
 
-### <a name="example--cors-rules-evaluation"></a>Příklad: pravidla CORS pro vyhodnocení
-Následující příklad ukazuje textu částečné požadavku pro operaci k nastavení pravidel CORS pro služby storage. Naleznete v tématu [nastavit vlastnosti služby Blob Service](https://msdn.microsoft.com/library/hh452235.aspx), [nastavit vlastnosti služby Queue](https://msdn.microsoft.com/library/hh452232.aspx), a [nastavit vlastnosti tabulky služby](https://msdn.microsoft.com/library/hh452240.aspx) podrobnosti o žádosti o sestavení.
+### <a name="example--cors-rules-evaluation"></a>Příklad – vyhodnocení pravidel CORS
+Následující příklad ukazuje částečné tělo požadavku pro operaci nastavit pravidla CORS pro služby úložiště. Podrobnosti o sestavení požadavku naleznete v tématech [Nastavení vlastností služby objektů blob](https://msdn.microsoft.com/library/hh452235.aspx), [Nastavení vlastností služby fronty](https://msdn.microsoft.com/library/hh452232.aspx)a Nastavení [vlastností služby table service.](https://msdn.microsoft.com/library/hh452240.aspx)
 
 ```xml
 <Cors>
@@ -126,45 +126,45 @@ Následující příklad ukazuje textu částečné požadavku pro operaci k nas
 </Cors>
 ```
 
-Dále je třeba zvážit následující požadavků CORS:
+Dále zvažte následující požadavky CORS:
 
 | Žádost |  |  | Odpověď |  |
 | --- | --- | --- | --- | --- |
-| **– Metoda** |**Počátek** |**Hlavičky požadavku** |**Pravidlo** |**výsledek** |
-| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |První pravidlo |Úspěch |
-| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |Druhé pravidlo |Úspěch |
-| **GET** |http:\//www.contoso.com |x-ms-client-request-id |Druhé pravidlo |Selhání |
+| **Metoda** |**Zdroj** |**Hlavičky požadavku** |**Shoda pravidel** |**Výsledek** |
+| **Dát** |http:\//www.contoso.com |x-ms-blob-content-type |První pravidlo |Úspěch |
+| **Dostat** |http:\//www.contoso.com |x-ms-blob-content-type |Druhé pravidlo |Úspěch |
+| **Dostat** |http:\//www.contoso.com |x-ms-client-request-id |Druhé pravidlo |Selhání |
 
-První požadavek odpovídá první pravidlo – doména zdroje odpovídá povolené zdroje, metoda odpovídá povolené metody a záhlaví odpovídá povolené hlavičky – i tak proběhne úspěšně.
+První požadavek odpovídá prvnímu pravidlu – původní doména odpovídá povoleným počátkům, metoda odpovídá povoleným metodám a záhlaví odpovídá povoleným záhlavím – a tak se daří.
 
-Druhou žádost neodpovídá první pravidlo, protože metoda neodpovídá povolené metody. Ji, ale neodpovídá druhé pravidlo tak bude úspěšný.
+Druhý požadavek neodpovídá prvnímu pravidlu, protože metoda neodpovídá povoleným metodám. To však odpovídá druhé pravidlo, tak to uspěje.
 
-Třetí požadavek odpovídá druhé pravidlo v jeho zdrojová doména a metodu, takže žádná další pravidla se vyhodnocují. Ale *hlavičky x-ms klienta request-id* není povolena druhé pravidlo tak, že žádost selže, bez ohledu na skutečnost, že sémantika třetí pravidlo by nichž je parametr povoleno ji proběhla úspěšně.
+Třetí požadavek odpovídá druhému pravidlu v původní doméně a metodě, takže nejsou vyhodnocována žádná další pravidla. *Hlavička x-ms-client-request-id* však není povoleno druhým pravidlem, takže požadavek se nezdaří, a to navzdory skutečnosti, že sémantiku třetího pravidla by bylo povoleno úspěšné.
 
 > [!NOTE]
-> Přestože tento příklad ukazuje volnější pravidla před více omezující, obecně osvědčeným postupem je nejdřív seznam nejvíce omezující pravidel.
+> I když tento příklad ukazuje méně omezující pravidlo před více omezující, obecně je osvědčeným postupem uvést nejprve nejvíce omezující pravidla.
 > 
 > 
 
-## <a name="understanding-how-the-vary-header-is-set"></a>Vysvětlení, jak nastavit měnit hlavičky
-*Měnit* záhlaví je standardní hlavičku HTTP/1.1 skládající se z sadu pole hlavičky požadavku, které dokáží prohlížeče nebo uživatel agenta o kritérií, které byly vybrány server ke zpracování požadavku. *Měnit* záhlaví se používá hlavně pro ukládání do mezipaměti podle proxy servery, prohlížečů a CDN, které používají k určení, jak odpověď do mezipaměti. Podrobnosti najdete v tématu specifikace [hlavičce Vary](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+## <a name="understanding-how-the-vary-header-is-set"></a>Principy nastavení záhlaví Vary
+Záhlaví *Vary* je standardní hlavička HTTP/1.1, která se skládá ze sady polí hlaviček požadavku, která radí prohlížeči nebo uživatelskému agentovi o kritériích, která server vybral ke zpracování požadavku. Záhlaví *Vary* se používá hlavně pro ukládání do mezipaměti proxy servery proxy, prohlížeče a CDNs, které ji používají k určení, jak by měla být odpověď uložena do mezipaměti. Podrobnosti naleznete v specifikaci [záhlaví Vary](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 
-Pokud odpověď z požadavku CORS do mezipaměti prohlížeče nebo jiný uživatelský agent, zdrojová doména je uložené v mezipaměti jako povolený původ. Když druhou doménu vydá stejný požadavek pro prostředek úložiště mezipaměti je aktivní, uživatelský agent načte uložené v mezipaměti zdrojová doména. Druhou doménu neodpovídá domény v mezipaměti, takže žádost selže, pokud by jinak úspěšné. V některých případech, Azure Storage, nastaví na hlavičce Vary **původu** dáte pokyn, aby uživatelský agent odeslat další požadavek CORS služby, pokud žádost o domény se liší od počátku uložené v mezipaměti.
+Když prohlížeč nebo jiný uživatelský agent uloží odpověď z požadavku CORS do mezipaměti, původní doména je uložena do mezipaměti jako povolený původ. Pokud druhá doména vydá stejný požadavek na prostředek úložiště, když je mezipaměť aktivní, načte uživatelský agent původní doménu uloženou v mezipaměti. Druhá doména neodpovídá doméně uložené v mezipaměti, takže požadavek se nezdaří, pokud by jinak byl úspěšný. V některých případech Azure Storage nastaví vary záhlaví **Origin** pokyn agenta uživatele odeslat následné CORS požadavek na službu, když žádající doména se liší od původu uložené v mezipaměti.
 
-Sady Azure Storage *měnit* záhlaví **původu** pro skutečné požadavky GET a HEAD v následujících případech:
+Azure Storage nastaví záhlaví *Vary* na **Origin** pro skutečné požadavky GET/HEAD v následujících případech:
 
-* Pokud požadovaný původ přesně odpovídá povolený původ definované pravidlo CORS. Být přesná shoda, pravidlo CORS nemusí obsahovat zástupný znak "*" znak.
-* Neexistuje žádné pravidlo odpovídající požadovaný původ, ale je povolená CORS pro službu storage.
+* Pokud původ požadavku přesně odpovídá povolenému původu definovanému pravidlem CORS. Chcete-li být přesná shoda, pravidlo CORS nesmí obsahovat zástupný znak * .
+* Neexistuje žádné pravidlo odpovídající původ požadavku, ale CORS je povolena pro službu úložiště.
 
-V případě, kdy požadavek GET a HEAD odpovídá pravidlo CORS, která umožňuje všechny původy z odpovědi vyplývá, že jsou povolené všechny původy a mezipaměti uživatelského agenta vám umožní následné žádosti z jakékoli zdrojová doména, do mezipaměti je aktivní.
+V případě, kdy požadavek GET/HEAD odpovídá pravidlu CORS, které umožňuje všechny počátky, odpověď označuje, že jsou povoleny všechny počátky a mezipaměť agenta uživatele povolí následné požadavky z libovolné původní domény, když je mezipaměť aktivní.
 
-Všimněte si, že požadavky pomocí jiných metod než GET a HEAD, služeb úložiště nenastaví měnit hlavičky, protože odpovědi na tyto metody nejsou uložené v mezipaměti Uživatelští agenti.
+Všimněte si, že pro požadavky pomocí jiných metod než GET/HEAD, služby úložiště nenastaví záhlaví Vary, protože odpovědi na tyto metody nejsou ukládány do mezipaměti uživatelskými agenty.
 
-Následující tabulka uvádí, jak Azure storage bude reagovat na požadavky GET a HEAD podle výše uvedených případech:
+Následující tabulka uvádí, jak bude úložiště Azure reagovat na požadavky GET/HEAD na základě výše uvedených případů:
 
 | Žádost | Nastavení účtu a výsledek vyhodnocení pravidla |  |  | Odpověď |  |  |
 | --- | --- | --- | --- | --- | --- | --- |
-| **Hlavička počátečního k dispozici na vyžádání** |**Pravidla CORS pro zadaný pro tuto službu** |**Existuje odpovídající pravidlo, která umožňuje všechny origins(*)** |**Existuje odpovídající pravidlo pro původu přesné shody** |**Odpověď obsahuje záhlaví měnit nastavení na původní název** |**Odpověď obsahuje Access-Control-povoleno-Origin: "*"** |**Odpověď obsahuje Access-Control-vystavený-Headers** |
+| **Hlavička původu přítomná na vyžádání** |**Pravidla (pravidla) CORS určená pro tuto službu** |**Existuje pravidlo párování, které umožňuje všechny počátky(*)** |**Pro přesnou shodu původu existuje pravidlo párování.** |**Odpověď obsahuje hodnotu Vary nastavenou na Origin.** |**Odpověď zahrnuje přístup-control-allowed-Origin: "*"** |**Odpověď zahrnuje hlavičky Access-Control-Exposed-Headers** |
 | Ne |Ne |Ne |Ne |Ne |Ne |Ne |
 | Ne |Ano |Ne |Ne |Ano |Ne |Ne |
 | Ne |Ano |Ano |Ne |Ne |Ano |Ano |
@@ -173,17 +173,17 @@ Následující tabulka uvádí, jak Azure storage bude reagovat na požadavky GE
 | Ano |Ano |Ne |Ne |Ano |Ne |Ne |
 | Ano |Ano |Ano |Ne |Ne |Ano |Ano |
 
-## <a name="billing-for-cors-requests"></a>Fakturace za požadavků CORS
-Úspěšně zaregistrovat k předběžné verzi požádá, se účtují, pokud jste povolili CORS pro všechny služby úložiště pro váš účet (voláním [nastavit vlastnosti služby Blob Service](https://msdn.microsoft.com/library/hh452235.aspx), [nastavit vlastnosti služby Queue](https://msdn.microsoft.com/library/hh452232.aspx), nebo [Nastavovat vlastnosti služby Table](https://msdn.microsoft.com/library/hh452240.aspx)). Chcete-li minimalizovat náklady, zvažte nastavení **MaxAgeInSeconds** element ve vlastní CORS pravidla pro velké hodnoty tak, aby uživatelský agent ukládá do mezipaměti požadavku.
+## <a name="billing-for-cors-requests"></a>Fakturace pro požadavky CORS
+Úspěšné požadavky před výstupem se účtují, pokud jste povolili cors pro některou ze služeb úložiště pro váš účet (voláním [Nastavit vlastnosti služby blob](https://msdn.microsoft.com/library/hh452235.aspx), [Nastavit vlastnosti služby fronty](https://msdn.microsoft.com/library/hh452232.aspx)nebo Nastavit [vlastnosti služby table service](https://msdn.microsoft.com/library/hh452240.aspx)). Chcete-li minimalizovat poplatky, zvažte nastavení prvku **MaxAgeInSeconds** v pravidlech CORS na velkou hodnotu tak, aby agent uživatele ukládá požadavek do mezipaměti.
 
-Neúspěšné předběžných požadavků se nebude účtovat.
+Neúspěšné žádosti o kontrolu před výstupem nebudou účtovány.
 
-## <a name="next-steps"></a>Další postup
-[Nastavit vlastnosti služby Blob Service](https://msdn.microsoft.com/library/hh452235.aspx)
+## <a name="next-steps"></a>Další kroky
+[Nastavení vlastností služby objektů blob](https://msdn.microsoft.com/library/hh452235.aspx)
 
-[Nastavit vlastnosti služby Queue](https://msdn.microsoft.com/library/hh452232.aspx)
+[Nastavit vlastnosti služby fronty](https://msdn.microsoft.com/library/hh452232.aspx)
 
-[Nastavení vlastností služby tabulky](https://msdn.microsoft.com/library/hh452240.aspx)
+[Nastavit vlastnosti služby table service](https://msdn.microsoft.com/library/hh452240.aspx)
 
-[Specifikace sdílení prostředků různého původu W3C](https://www.w3.org/TR/cors/)
+[W3C specifikace sdílení zdrojů mezi zdroji](https://www.w3.org/TR/cors/)
 

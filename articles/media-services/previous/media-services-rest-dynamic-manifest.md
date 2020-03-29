@@ -1,6 +1,6 @@
 ---
-title: Vytváření filtrů pomocí Azure Media Services – rozhraní REST API | Dokumentace Microsoftu
-description: Toto téma popisuje, jak vytvářet filtry, takže klient může používat na určité části datový proud stream. Služba Media Services vytvoří dynamických manifestů k selektivní Streamovat.
+title: Vytváření filtrů pomocí rozhraní REST API služby Azure Media Services | Dokumenty společnosti Microsoft
+description: Toto téma popisuje, jak vytvořit filtry, aby je váš klient mohl použít k vysílání datového proudu určitých částí datového proudu. Media Services vytváří dynamické manifesty k dosažení tohoto selektivního streamování.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,27 +16,27 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
 ms.openlocfilehash: b778ad8c59cf51f92584cd3590f7d99244f37b2c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774960"
 ---
-# <a name="creating-filters-with-azure-media-services-rest-api"></a>Vytváření filtrů pomocí Azure Media Services REST API 
+# <a name="creating-filters-with-azure-media-services-rest-api"></a>Vytváření filtrů pomocí rozhraní REST služby Azure Media Services 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
-> * [REST](media-services-rest-dynamic-manifest.md)
+> * [Odpočinku](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
-Počínaje verzí 2,17 Media Services umožňuje definovat filtry pro vaše prostředky. Tyto filtry jsou pravidla na straně serveru, která zákazníkům umožňují vybrat, co dělají: přehrávání pouze části videa (místo přehrávání celého videa) nebo určení pouze podmnožiny zvukových a video verzí, které zařízení zákazníka může zpracovat (místo všechny verze, které jsou přidruženy k assetu). Toto filtrování prostředků je archivováno prostřednictvím **dynamického manifestu**s, které jsou vytvořeny na základě požadavku zákazníka o streamování videa na základě zadaného filtru (ů).
+Počínaje verzí 2.17 umožňuje služba Media Services definovat filtry pro vaše datové zdroje. Tyto filtry jsou pravidla na straně serveru, která zákazníkům umožňují zvolit si například: přehrávání pouze části videa (namísto přehrávání celého videa) nebo určení pouze podmnožinu zvukových a obrazových interpretací, které zařízení zákazníka zvládne (namísto všechny interpretace, které jsou přidruženy k prostředku). Toto filtrování vašich datových zdrojů je archivováno prostřednictvím **dynamického manifestu,** který je vytvořen na základě požadavku zákazníka na streamování videa na základě určených filtrů.
 
-Podrobnější informace týkající se filtrů a dynamického manifestu naleznete v tématu [Přehled dynamických manifestů](media-services-dynamic-manifest-overview.md).
+Podrobnější informace týkající se filtrů a dynamického manifestu naleznete [v tématu Přehled dynamických manifestů](media-services-dynamic-manifest-overview.md).
 
-Tento článek popisuje, jak pomocí rozhraní REST API vytvářet, aktualizovat a odstraňovat filtry. 
+Tento článek ukazuje, jak pomocí rest API vytvořit, aktualizovat a odstranit filtry. 
 
-## <a name="types-used-to-create-filters"></a>Typy použité k vytváření filtrů
-Při vytváření filtrů se používají tyto typy:  
+## <a name="types-used-to-create-filters"></a>Typy používané k vytváření filtrů
+Při vytváření filtrů se používají následující typy:  
 
 * [Filtr](https://docs.microsoft.com/rest/api/media/operations/filter)
 * [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
@@ -45,15 +45,15 @@ Při vytváření filtrů se používají tyto typy:
 
 > [!NOTE]
 > 
-> Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
+> Při přístupu k entitám ve službě Media Services je nutné nastavit konkrétní pole záhlaví a hodnoty v požadavcích HTTP. Další informace naleznete [v tématu Setup for Media Services REST API Development](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Připojení k Media Services
+## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
 
-Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak se připojit k rozhraní AMS API, najdete [v tématu Přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 ## <a name="create-filters"></a>Vytváření filtrů
 ### <a name="create-global-filters"></a>Vytvořit globální filtry
-Pokud chcete vytvořit globální filtr, použijte následující požadavky HTTP:  
+Chcete-li vytvořit globální filtr, použijte následující požadavky HTTP:  
 
 #### <a name="http-request"></a>Požadavek HTTP
 Hlavičky požadavku
@@ -105,8 +105,8 @@ Text požadavku
 #### <a name="http-response"></a>Odpověď HTTP
     HTTP/1.1 201 Created 
 
-### <a name="create-local-assetfilters"></a>Vytvořit místní AssetFilters
-Pokud chcete vytvořit místní AssetFilter, použijte následující požadavky HTTP:  
+### <a name="create-local-assetfilters"></a>Vytvořit místní assetfilters
+Chcete-li vytvořit místní filtr AssetFilter, použijte následující požadavky HTTP:  
 
 #### <a name="http-request"></a>Požadavek HTTP
 Hlavičky požadavku
@@ -157,9 +157,9 @@ Text požadavku
     HTTP/1.1 201 Created 
     . . . 
 
-## <a name="list-filters"></a>Seznam filtrů
-### <a name="get-all-global-filters-in-the-ams-account"></a>Načíst všechny globální **filtry**s v účtu AMS
-Chcete-li zobrazit seznam filtrů, použijte následující požadavky HTTP: 
+## <a name="list-filters"></a>Filtry seznamů
+### <a name="get-all-global-filters-in-the-ams-account"></a>Získání všech globálních **filtrů**v účtu AMS
+Chcete-li vypsat filtry, použijte následující požadavky HTTP: 
 
 #### <a name="http-request"></a>Požadavek HTTP
     GET https://media.windows.net/API/Filters HTTP/1.1 
@@ -171,7 +171,7 @@ Chcete-li zobrazit seznam filtrů, použijte následující požadavky HTTP:
     x-ms-version: 2.19 
     Host: media.windows.net 
 
-### <a name="get-assetfilters-associated-with-an-asset"></a>Získat **AssetFilter**s přidruženou k assetu
+### <a name="get-assetfilters-associated-with-an-asset"></a>Získání **assetfilteru**s přidruženým k datovému zdroji
 #### <a name="http-request"></a>Požadavek HTTP
     GET https://media.windows.net/API/Assets('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592')/AssetFilters HTTP/1.1 
     DataServiceVersion: 3.0 
@@ -183,7 +183,7 @@ Chcete-li zobrazit seznam filtrů, použijte následující požadavky HTTP:
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
-### <a name="get-an-assetfilter-based-on-its-id"></a>Získat **AssetFilter** na základě jeho ID
+### <a name="get-an-assetfilter-based-on-its-id"></a>Získání **filtru AssetFilter** na základě jeho ID
 #### <a name="http-request"></a>Požadavek HTTP
     GET https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__TestFilter') HTTP/1.1 
     DataServiceVersion: 3.0 
@@ -196,15 +196,15 @@ Chcete-li zobrazit seznam filtrů, použijte následující požadavky HTTP:
 
 
 ## <a name="update-filters"></a>Aktualizovat filtry
-Pomocí PATCH, PUT nebo MERGE můžete aktualizovat filtr o nové hodnoty vlastností.  Další informace o těchto operacích naleznete v tématu [patch, PUT, Merge](https://msdn.microsoft.com/library/dd541276.aspx).
+Pomocí funkce PATCH, PUT nebo MERGE aktualizujte filtr s novými hodnotami vlastností.  Další informace o těchto operacích naleznete v tématu [PATCH, PUT, MERGE](https://msdn.microsoft.com/library/dd541276.aspx).
 
-Pokud filtr aktualizujete, může trvat až dvě minuty, než koncový bod streamování pravidel aktualizuje pravidla. Pokud byl obsah obsluhován pomocí tohoto filtru (a ukládá do mezipaměti proxy a mezipaměti CDN), může aktualizace tohoto filtru způsobit selhání přehrávače. Po aktualizaci filtru vymažte mezipaměť. Pokud tato možnost není možná, zvažte použití jiného filtru.  
+Pokud aktualizujete filtr, může trvat až dvě minuty, než koncový bod streamování aktualizuje pravidla. Pokud byl obsah obsluhován pomocí tohoto filtru (a ukládán do mezipaměti proxy a cdn), může aktualizace tohoto filtru způsobit selhání přehrávače. Po aktualizaci filtru vymažte mezipaměť. Pokud tato možnost není možná, zvažte použití jiného filtru.  
 
 ### <a name="update-global-filters"></a>Aktualizovat globální filtry
-Pokud chcete aktualizovat globální filtr, použijte následující požadavky HTTP: 
+Chcete-li aktualizovat globální filtr, použijte následující požadavky HTTP: 
 
 #### <a name="http-request"></a>Požadavek HTTP
-Hlavičky žádosti: 
+Hlavičky požadavku: 
 
     MERGE https://media.windows.net/API/Filters('filterName') HTTP/1.1 
     DataServiceVersion:3.0 
@@ -240,11 +240,11 @@ Text požadavku:
        ] 
     } 
 
-### <a name="update-local-assetfilters"></a>Aktualizovat místní AssetFilters
-Pokud chcete aktualizovat místní filtr, použijte následující požadavky HTTP: 
+### <a name="update-local-assetfilters"></a>Aktualizace místních filtrů majetku
+Chcete-li aktualizovat místní filtr, použijte následující požadavky HTTP: 
 
 #### <a name="http-request"></a>Požadavek HTTP
-Hlavičky žádosti: 
+Hlavičky požadavku: 
 
     MERGE https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__TestFilter')  HTTP/1.1 
     DataServiceVersion: 3.0 
@@ -282,7 +282,7 @@ Text požadavku:
 
 ## <a name="delete-filters"></a>Odstranit filtry
 ### <a name="delete-global-filters"></a>Odstranit globální filtry
-Pokud chcete odstranit globální filtr, použijte následující požadavky HTTP:
+Chcete-li odstranit globální filtr, použijte následující požadavky HTTP:
 
 #### <a name="http-request"></a>Požadavek HTTP
     DELETE https://media.windows.net/api/Filters('GlobalFilter') HTTP/1.1 
@@ -295,8 +295,8 @@ Pokud chcete odstranit globální filtr, použijte následující požadavky HTT
     Host: media.windows.net 
 
 
-### <a name="delete-local-assetfilters"></a>Odstranit místní AssetFilters
-Pokud chcete odstranit místní AssetFilter, použijte následující požadavky HTTP:
+### <a name="delete-local-assetfilters"></a>Odstranit místní assetfilters
+Chcete-li odstranit místní filtr AssetFilter, použijte následující požadavky HTTP:
 
 #### <a name="http-request"></a>Požadavek HTTP
     DELETE https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__LocalFilter') HTTP/1.1 
@@ -308,24 +308,24 @@ Pokud chcete odstranit místní AssetFilter, použijte následující požadavky
     x-ms-version: 2.19 
     Host: media.windows.net 
 
-## <a name="build-streaming-urls-that-use-filters"></a>Vytváření streamování adres URL, které používají filtry
-Informace o tom, jak publikovat a doručovat vaše assety, najdete v tématu [doručování obsahu zákazníkům – přehled](media-services-deliver-content-overview.md).
+## <a name="build-streaming-urls-that-use-filters"></a>Vytváření streamovaných adres URL s použitím filtrů
+Informace o tom, jak publikovat a doručovat datové zdroje, najdete v [tématu Doručování obsahu zákazníkům Přehled](media-services-deliver-content-overview.md).
 
-Následující příklady ukazují, jak přidat filtry na adresy URL streamování.
+Následující příklady ukazují, jak přidat filtry do datových adres URL.
 
 **MPEG DASH** 
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
-**Apple HTTP Live Streaming (HLS) v4**
+**Apple HTTP Živé vysílání (HLS) V4**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
 
-**Apple HTTP Live Streaming (HLS) V3**
+**Apple HTTP Živé vysílání (HLS) V3**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 
-**Smooth Streaming**
+**Technologie Smooth Streaming**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
 
@@ -333,7 +333,7 @@ Následující příklady ukazují, jak přidat filtry na adresy URL streamován
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také

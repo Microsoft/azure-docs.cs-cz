@@ -1,6 +1,6 @@
 ---
-title: 'Synchronizace Azure AD Connect: Principy uživatelů, skupin a kontaktů | Dokumentace Microsoftu'
-description: Vysvětluje, uživatele, skupiny nebo kontakty ve službě Azure AD Connect sync.
+title: 'Synchronizace služby Azure AD Connect: Principy uživatelů, skupin a kontaktů | Dokumenty společnosti Microsoft'
+description: Vysvětluje uživatele, skupiny a kontakty v synchronizaci Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,64 +16,64 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60245481"
 ---
-# <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Synchronizace Azure AD Connect: Principy uživatelů, skupin a kontaktů
-Existuje několik různých důvodů, proč byste měli několik doménových struktur služby Active Directory a existuje několik topologií jiného nasazení. Běžné modely zahrnují při nasazování prostředků účtu a doménových struktur sync'ed GAL po fúze a akvizice. Ale i v případě, že existují čistě modely, hybridní modely jsou běžné také. Výchozí konfigurace ve službě Azure AD Connect sync nepřebírá žádné konkrétní modelu, ale v závislosti na tom, jak uživatel odpovídající byla vybrána v instalační příručce, může být dodržen jiné chování.
+# <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Synchronizace azure ad připojení: principy uživatelů, skupin a kontaktů
+Existuje několik různých důvodů, proč byste měli více doménových struktur služby Active Directory a existuje několik různých topologie nasazení. Běžné modely zahrnují nasazení prostředků účtu a hlavní hoseznamu adres v doménových strukturách po sloučení & akvizice. Ale i když existují čistě modely, hybridní modely jsou také běžné. Výchozí konfigurace v synchronizaci Azure AD Connect nepředpokládá žádný konkrétní model, ale v závislosti na tom, jak byla v průvodci instalací vybrána shoda uživatelů, lze pozorovat různé chování.
 
-V tomto tématu doporučujeme projít chování výchozí konfigurace v určitých topologiích. Provedeme konfiguraci a Editor pravidel synchronizace je možné se podívat na konfiguraci.
+V tomto tématu projdeme, jak se chová výchozí konfigurace v určitých topologii. Projdeme konfiguraci a Editor pravidel synchronizace lze použít k pohledu na konfiguraci.
 
-Existuje několik obecná pravidla, předpokládá, konfigurace:
-* Bez ohledu na pořadí naimportujeme ze zdroje Active Directory konečný výsledek musí být vždy stejné.
-* Aktivní účet bude vždy měli přispívat přihlašovací údaje, včetně **userPrincipalName** a **sourceAnchor**.
-* Zakázaný účet přispějí userPrincipalName a sourceAnchor, pokud není propojená poštovní schránka, pokud není žádný aktivní účet, která se má najít.
-* Účet s poštovní schránku propojenou se nikdy používat pro userPrincipalName a sourceAnchor. Předpokládá se, že aktivní účet bude nalezen později.
-* Objekt kontaktu může zřídit do služby Azure AD jako kontakt nebo jako uživatel. Ve skutečnosti neznáte dokud byly zpracovány všechny zdrojové doménové struktury služby Active Directory.
+Konfigurace předpokládá několik obecných pravidel:
+* Bez ohledu na to, kterou objednávku importujeme ze zdrojových aktivních adresářů, konečný výsledek by měl být vždy stejný.
+* Aktivní účet bude vždy přispívat přihlašovací informace, včetně **userPrincipalName** a **sourceAnchor**.
+* Zakázaný účet bude přispívat userPrincipalName a sourceAnchor, pokud se nejedná o propojenou poštovní schránku, pokud není nalezen žádný aktivní účet.
+* Účet s propojenou poštovní schránkou se nikdy nepoužije pro userPrincipalName a sourceAnchor. Předpokládá se, že aktivní účet bude nalezen později.
+* Objekt kontaktu může být zřízena do Služby Azure AD jako kontakt nebo jako uživatel. Ve skutečnosti nevíte, dokud nebyly zpracovány všechny doménové struktury zdrojové služby Active Directory.
 
 ## <a name="groups"></a>Skupiny
-Důležité body je potřeba vědět při synchronizaci skupin služby Active Directory do služby Azure AD:
+Důležité body, které je třeba znát při synchronizaci skupin ze služby Active Directory do služby Azure AD:
 
-* Azure AD Connect nezahrnuje integrované zabezpečení skupiny z synchronizace adresářů.
+* Azure AD Connect vylučuje předdefinované skupiny zabezpečení ze synchronizace adresářů.
 
-* Azure AD Connect nepodporuje synchronizaci [primární členství ve skupinách](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx) do služby Azure AD.
+* Azure AD Connect nepodporuje synchronizaci [členství primární skupiny](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx) do Azure AD.
 
-* Azure AD Connect nepodporuje synchronizaci [členství v dynamické skupině distribučních](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx) do služby Azure AD.
+* Azure AD Connect nepodporuje synchronizaci [členství dynamické distribuční skupiny](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx) do Azure AD.
 
-* Synchronizovat skupiny služby Active Directory k Azure AD jako poštovní skupina:
+* Synchronizace skupiny služby Active Directory do služby Azure AD jako skupiny s povolenou poštou:
 
-    * Pokud skupiny *proxyAddress* atributu je prázdný, jeho *e-mailu* atribut musí mít hodnotu.
+    * Pokud je atribut *proxyAddress* skupiny prázdný, musí mít atribut *mail* hodnotu.
 
-    * Pokud skupina *proxyAddress* atribut je prázdný, musí obsahovat alespoň jednu hodnotu adresy proxy serveru SMTP. Následuje několik příkladů:
+    * Pokud je atribut *proxyAddress* skupiny neprázdný, musí obsahovat alespoň jednu hodnotu proxy adresy SMTP. Zde je několik příkladů:
     
-      * Skupinu služby Active Directory, jehož atribut proxyAddress má hodnotu *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* nebudou poštovní ve službě Azure AD. Nemá adresu SMTP.
+      * Skupina služby Active Directory, jejíž atribut proxyAddress má hodnotu *{"X500:/0=contoso.com/ou=users/cn=testgroup"},* nebude ve službě Azure AD povolena poštou. Nemá adresu SMTP.
       
-      * Skupinu služby Active Directory, jehož atribut proxyAddress má hodnoty *{"X500:/0=contoso.com/ou=users/cn=testgroup","SMTP:johndoe\@contoso.com"}* bude Poštovní ve službě Azure AD.
+      * Skupina služby Active Directory, jejíž atribut proxyAddress obsahuje hodnoty *\@{"X500:/0=contoso.com/ou=users/cn=testgroup","SMTP:johndoe contoso.com"}* bude ve službě Azure AD povolena poštou.
       
-      * Skupinu služby Active Directory, jehož atribut proxyAddress má hodnoty *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe\@contoso.com"}* bude také povolenou poštu ve službě Azure AD.
+      * Skupina služby Active Directory, jejíž atribut proxyAddress obsahuje hodnoty *{"X500:/0=contoso.com/ou=users/cn=testgroup",\@"smtp:johndoe contoso.com"},* bude také povolena poštou ve službě Azure AD.
 
 ## <a name="contacts"></a>Kontakty
-Kontakty představující uživatele v jiné doménové struktuře, je běžné po fúze a akvizice kde GALSync řešení, je přemostění dva nebo více doménovými strukturami systému Exchange. Objekt kontaktu se vždy připojuje z prostoru konektoru do úložiště metaverse pomocí atributu e-mailu. Pokud již existuje objekt kontaktní nebo uživatel se stejnou adresou e-mailu, objekty jsou spojeny dohromady. To je nakonfigurovaný v pravidle **v ze služby AD – připojte se k kontakt**. K dispozici je také pravidlo s názvem **v ze služby AD – kontaktujte běžné** s tok atributů pro atribut úložiště metaverze **sourceObjectType** s konstanty **kontakt**. Toto pravidlo má velmi nízkou prioritu, pokud jakýkoli objekt uživatele se propojuje se na stejný objekt úložiště metaverse, bude toto pravidlo **v ze služby AD – běžné uživatele** přispějí hodnotu uživatele na tento atribut. S tímto pravidlem bude mít tento atribut hodnoty kontaktu, pokud byl připojen žádný uživatel a uživatele Pokud byl nalezen minimálně jeden uživatel.
+Mít kontakty zastupující uživatele v jiné doménové struktuře je běžné po sloučení & akvizici, kde řešení GALSync přemosťuje dvě nebo více doménových struktur exchange. Objekt kontaktu se vždy připojuje z prostoru spojnice k metaverse pomocí atributu mail. Pokud již existuje objekt kontaktu nebo objekt uživatele se stejnou e-mailovou adresou, jsou objekty spojeny dohromady. To je nakonfigurováno v pravidle **V ze seznamu AD – kontaktní spojení**. K dispozici je také pravidlo s názvem **In z AD – Kontakt Společné** s tokem atributu na atribut metaverse **sourceObjectType** s konstantní **Kontakt**. Toto pravidlo má velmi nízkou prioritu, takže pokud je libovolný objekt uživatele připojen ke stejnému metaverse objektu, pak pravidlo **In z AD – User Common** přispěje hodnotou Uživatel k tomuto atributu. S tímto pravidlem bude mít tento atribut hodnotu Kontakt, pokud nebyl připojen žádný uživatel, a hodnotu Uživatel, pokud byl nalezen alespoň jeden uživatel.
 
-Pro objekt do služby Azure AD, odchozí pravidlo zřizování **na AAD – obraťte se na připojení** vytvoří objekt kontaktu, pokud atribut úložiště metaverze **sourceObjectType** je nastavena na **kontaktovat**. Pokud tento atribut je nastaven na **uživatele**, potom pravidla **na AAD – uživatel připojit** vytvoří objekt uživatele.
-Je možné, že objekt je povýšen z kontaktu na uživatele při další zdrojové aktivního adresáře byly naimportovány a synchronizovány.
+Pro zřizování objektu do Azure AD, odchozí pravidlo **Out to AAD – Spojení kontaktu** vytvoří objekt kontaktu, pokud je atribut metaverse **sourceObjectType** nastaven na **Kontakt**. Pokud je tento atribut nastaven na **položku Uživatel**, vytvoří místo toho objekt uživatele pravidlo **Out to AAD – User Join.**
+Je možné, že objekt je povýšen z kontakt na uživatele při importu a synchronizaci více zdrojových aktivních adresářů.
 
-Například v topologii GALSync jsme najdete kontaktní objekty pro všechny uživatele v druhé doménové struktury při naimportujeme první doménovou strukturu. Tím se fáze nových kontaktů objektů v konektoru AAD. Když později importovat a synchronizovat druhé doménové struktury, budeme vyhledání skutečných uživatelů a připojte je k existující objekty úložiště metaverse. Potom jsme se odstranit objekt kontaktu v AAD a místo toho vytvořte nový objekt uživatele.
+Například v topologii GALSync najdeme kontaktní objekty pro všechny v druhé doménové struktuře při importu první doménové struktury. Tím se vytvoří nové kontaktní objekty v konektoru AAD. Když později importujeme a synchronizujeme druhou doménovou strukturu, najdeme skutečné uživatele a připojíme je k existujícím metaverse objektům. Poté odstraníme objekt kontaktu v aad a místo toho vytvoříme nový objekt uživatele.
 
-Pokud máte topologii, kde uživatelé jsou reprezentováni jako kontakty, ujistěte se, zda že jste vybrali pro vyhledání uživatelů na atribut mail v instalační příručce. Pokud vyberete jinou možnost, bude mít pořadí závislé konfigurace. Kontaktní objekty se vždy připojí u atributu mail, ale uživatelské objekty se připojí pouze u atributu mail, pokud tuto možnost jste vybrali v Průvodci instalací. Může potom skončíte se dva objekty v úložišti metaverse na stejný atribut e-mailu Pokud objekt kontaktu byl importován před objektu user. Během exportu do služby Azure AD bude vyvolána k chybě. Toto chování je záměrné a naznačují chybný data nebo, že topologie nebyla správně identifikovat během instalace.
+Pokud máte topologii, kde jsou uživatelé reprezentováni jako kontakty, ujistěte se, že vyberete tak, aby odpovídaly uživatelům na atribut pošty v instalační příručce. Pokud vyberete jinou možnost, budete mít konfiguraci závislou na objednávce. Objekty kontaktu se vždy připojí k atributu mail, ale objekty uživatele se připojí pouze k atributu mail, pokud byla tato možnost vybrána v instalační příručce. Potom můžete skončit se dvěma různými objekty v metaverse se stejným atributem mail, pokud byl objekt kontaktu importován před objektem uživatele. Během exportu do Azure AD bude vyvolána chyba. Toto chování je záměrné a označuje chybná data nebo že topologie nebyla během instalace správně identifikována.
 
 ## <a name="disabled-accounts"></a>Zakázané účty
-Zakázané účty se synchronizují také do služby Azure AD. Zakázané účty jsou společné pro reprezentaci prostředků v systému Exchange, například konferenčních místnostech dojde. Výjimkou je uživatelé s poštovní schránku propojenou; Jak už jsme zmínili tyto nikdy zřídí účet do služby Azure AD.
+Zakázané účty jsou také synchronizovány do služby Azure AD. Zakázané účty jsou společné pro reprezentaci prostředků ve Exchange, například konferenčních místností. Výjimkou jsou uživatelé s propojenou poštovní schránkou. jak již bylo zmíněno, tyto nikdy zřídit účet Azure AD.
 
-Předpokladem je, že pokud účet zakázaný uživatel se nenašel, pak jsme nenajde jiné aktivní účet později a je zajištěno objektu do služby Azure AD userPrincipalName a sourceAnchor nalezen. V případě, že jiné aktivní účet se připojí ke stejnému objektu úložiště metaverse, bude použita jeho hodnota userPrincipalName a sourceAnchor.
+Předpokladem je, že pokud je nalezen zakázaný uživatelský účet, pak nenajdeme jiný aktivní účet později a objekt je zřízena do Služby Azure AD s userPrincipalName a sourceAnchor nalezeno. V případě, že jiný aktivní účet se připojí ke stejnému metaverse objektu, pak jeho userPrincipalName a sourceAnchor bude použit.
 
 ## <a name="changing-sourceanchor"></a>Změna sourceAnchor
-Pokud objekt byly exportovány do služby Azure AD a změna sourceAnchor již není povolena. Pokud byl objekt exportovat atribut úložiště metaverze **cloudSourceAnchor** nastavená **sourceAnchor** hodnotu přijat službou Azure AD. Pokud **sourceAnchor** se změní a neodpovídá **cloudSourceAnchor**, pravidlo **na AAD – uživatel připojit** vyvolá chybu **má atribut sourceAnchor Změnit**. V takovém případě konfigurace nebo dat musí být opraveny stejné sourceAnchor je k dispozici v úložišti metaverse znovu předtím, než objekt lze znovu synchronizovat.
+Když byl objekt exportován do Azure AD pak není povoleno změnit sourceAnchor už. Po exportu objektu metaverse atribut **cloudSourceAnchor** je nastavena s **sourceAnchor** hodnotu přijatou Azure AD. Pokud **sourceAnchor** je změněn a neodpovídá **cloudSourceAnchor**, pravidlo **Out to AAD – User Join** vyvolá chyba **sourceAnchor atribut změnil**. V tomto případě musí být opravena konfigurace nebo data, aby stejný sourceAnchor je k dispozici v metaverse znovu před objekt může být znovu synchronizován.
 
-## <a name="additional-resources"></a>Další prostředky
-* [Synchronizace služby Azure AD Connect: Přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
+## <a name="additional-resources"></a>Další zdroje
+* [Synchronizace připojení Azure AD: Přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
 

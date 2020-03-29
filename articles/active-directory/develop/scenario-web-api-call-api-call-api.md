@@ -1,6 +1,6 @@
 ---
-title: Webové rozhraní API, které volá webová rozhraní API – Microsoft Identity Platform | Azure
-description: Naučte se vytvářet webové rozhraní API, které volá webová rozhraní API.
+title: Webové rozhraní API, které volá webová rozhraní API – platforma identit microsoftu | Azure
+description: Zjistěte, jak vytvořit webové rozhraní API, které volá webová rozhraní API.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,23 +15,23 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d66a08d4e84a3771d6c3fa46b96c975869435452
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76833375"
 ---
-# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webové rozhraní API, které volá webová rozhraní API: volá rozhraní API.
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webové rozhraní API, které volá webová rozhraní API: Volání rozhraní API
 
-Po vytvoření tokenu můžete zavolat chráněné webové rozhraní API. Provedete to z kontroleru vašeho webového rozhraní API.
+Poté, co máte token, můžete volat chráněné webové rozhraní API. To provést z řadiče webovérozhraní API.
 
-## <a name="controller-code"></a>Kód kontroleru
+## <a name="controller-code"></a>Kód řadiče
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Následující kód pokračuje v ukázkovém kódu, který je zobrazen ve [webovém rozhraní API, které volá webová rozhraní API: získání tokenu pro aplikaci](scenario-web-api-call-api-acquire-token.md). Kód se volá v akcích řadičů rozhraní API. Volá rozhraní API pro příjem dat s názvem *ToDoList*.
+Následující kód pokračuje v ukázkovém kódu, který je zobrazen ve [webovém rozhraní API, které volá webová rozhraní API: Získání tokenu pro aplikaci](scenario-web-api-call-api-acquire-token.md). Kód se nazývá v akcích řadičů rozhraní API. Volá downstream API s názvem *todolista*.
 
-Po získání tokenu ho použijte jako nosný token pro volání rozhraní API pro příjem dat.
+Po získání tokenu ho použijte jako nosný token k volání rozhraní API pro příjem dat.
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -59,11 +59,11 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-Následující kód pokračuje v ukázkovém kódu, který je zobrazen ve [webovém rozhraní API, které volá webová rozhraní API: získání tokenu pro aplikaci](scenario-web-api-call-api-acquire-token.md). Kód se volá v akcích řadičů rozhraní API. Volá API MS Graph pro příjem dat.
+Následující kód pokračuje v ukázkovém kódu, který je zobrazen ve [webovém rozhraní API, které volá webová rozhraní API: Získání tokenu pro aplikaci](scenario-web-api-call-api-acquire-token.md). Kód se nazývá v akcích řadičů rozhraní API. Volá následné rozhraní API MS Graph.
 
-Po získání tokenu ho použijte jako nosný token pro volání rozhraní API pro příjem dat.
+Po získání tokenu ho použijte jako nosný token k volání rozhraní API pro příjem dat.
 
 ```Java
 private String callMicrosoftGraphMeEndpoint(String accessToken){
@@ -83,12 +83,12 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
-Ukázka demonstrující tento tok pomocí MSAL Python ještě není k dispozici.
+# <a name="python"></a>[Python](#tab/python)
+Ukázka demonstrující tento tok s MSAL Python ještě není k dispozici.
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Webové rozhraní API, které volá webová rozhraní API: Přesun do produkčního prostředí](scenario-web-api-call-api-production.md)
+> [Webové rozhraní API, které volá webová rozhraní API: Přechod do produkčního prostředí](scenario-web-api-call-api-production.md)

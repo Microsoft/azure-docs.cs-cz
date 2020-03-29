@@ -1,5 +1,5 @@
 ---
-title: Jak vytvořit kanál CI/CD pro Azure Data Lake Analytics
+title: Jak nastavit kanál CI/CD pro Azure Data Lake Analytics
 description: Zjistěte, jak nastavit průběžnou integraci a průběžné nasazování pro Azure Data Lake Analytics.
 services: data-lake-analytics
 author: yanancai
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60333820"
 ---
-# <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak vytvořit kanál CI/CD pro Azure Data Lake Analytics  
+# <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak nastavit kanál CI/CD pro Azure Data Lake Analytics  
 
-V tomto článku se dozvíte, jak nastavit průběžnou integraci a nasazování (CI/CD) kanálů pro úloh U-SQL a databáze U-SQL.  
+V tomto článku se dozvíte, jak nastavit kanál průběžné integrace a nasazení (CI/CD) pro úlohy U-SQL a u-SQL databáze.  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-cicd-for-u-sql-jobs"></a>Použití CI/CD pro úlohy U-SQL
 
-Azure Data Lake Tools pro Visual Studio poskytuje typ projektu U-SQL, který vám pomůže organizovat skriptů U-SQL. Použití projekt U-SQL ke správě kódu U-SQL usnadňuje další scénáře CI/CD.
+Nástroje datového jezera Azure pro Visual Studio poskytuje typ projektu U-SQL, který vám pomůže uspořádat skripty U-SQL. Použití projektu U-SQL ke správě kódu U-SQL usnadňuje další scénáře CI/CD.
 
-## <a name="build-a-u-sql-project"></a>Sestavit projekt U-SQL
+## <a name="build-a-u-sql-project"></a>Sestavení projektu U-SQL
 
-Předáním odpovídající parametry se dají vytvářet projekt v U-SQL pomocí Microsoft Build Engine (MSBuild). Postupujte podle kroků v tomto článku nastavte proces sestavení pro projekt v U-SQL.
+U-SQL projekt lze sestavit pomocí Modulu pro sestavení Microsoft (MSBuild) předáním odpovídající parametry. Podle kroků v tomto článku nastavte proces sestavení pro projekt U-SQL.
 
 ### <a name="project-migration"></a>Migrace projektu
 
-Před nastavením úlohu sestavení pro projekt v U-SQL, ujistěte se, že máte nejnovější verzi projekt v U-SQL. Otevřete soubor projektu U-SQL ve svém editoru a ověřte, že máte tyto položky importovat:
+Před nastavením úlohy sestavení pro projekt U-SQL se ujistěte, že máte nejnovější verzi projektu U-SQL. Otevřete soubor projektu U-SQL v editoru a ověřte, zda máte tyto položky importu:
 
 ```   
 <!-- check for SDK Build target in current path then in USQLSDKPath-->
@@ -41,16 +41,16 @@ Před nastavením úlohu sestavení pro projekt v U-SQL, ujistěte se, že máte
 <Import Project="$(USQLSDKPath)\UsqlSDKBuild.targets" Condition="!Exists('UsqlSDKBuild.targets') And '$(USQLSDKPath)' != '' And Exists('$(USQLSDKPath)\UsqlSDKBuild.targets')" />
 ``` 
 
-Pokud ne, máte dvě možnosti, jak migrovat projekt:
+Pokud tomu tak není, máte dvě možnosti migrace projektu:
 
-- Option 1: Změňte staré položky importu s předchozím histogramem.
-- Option 2: Původní projekt otevřete v Azure Data Lake Tools pro Visual Studio. Použijte verzi novější než 2.3.3000.0. Starou šablonu projektu budou automaticky upgradovat na nejnovější verzi. Nové projekty vytvořené pomocí verze novější než 2.3.3000.0 pomocí nové šablony.
+- Možnost 1: Změňte starou položku importu na předchozí položku.
+- Možnost 2: Otevřete starý projekt v nástrojích Azure Data Lake Tools pro Visual Studio. Použijte novější verzi než 2.3.3000.0. Stará šablona projektu bude automaticky upgradována na nejnovější verzi. Nové projekty vytvořené s novějšími verzemi než 2.3.3000.0 používají novou šablonu.
 
-### <a name="get-nuget"></a>Get NuGet
+### <a name="get-nuget"></a>Získat NuGet
 
-Nástroj MSBuild neposkytuje integrovanou podporu pro projekty v U-SQL. Pokud chcete získat tuto podporu, budete muset přidat odkaz pro vaše řešení na [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) balíčku NuGet, který přidá službu požadovaný jazyk.
+MSBuild neposkytuje integrovanou podporu pro projekty U-SQL. Chcete-li získat tuto podporu, musíte přidat odkaz pro vaše řešení do balíčku [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet, který přidá požadovanou jazykovou službu.
 
-Chcete-li přidat odkaz na balíček NuGet, klikněte pravým tlačítkem na řešení v Průzkumníku řešení sady Visual Studio a zvolte **spravovat balíčky NuGet**. Nebo můžete přidat soubor s názvem `packages.config` ve složce řešení a vložit následující obsah do ní:
+Chcete-li přidat odkaz na balíček NuGet, klepněte pravým tlačítkem myši na řešení v Průzkumníkovi řešení sady Visual Studio a zvolte **Spravovat balíčky NuGet**. Nebo můžete přidat soubor `packages.config` snázvem ve složce řešení a dát do něj následující obsah:
 
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>
@@ -59,19 +59,19 @@ Chcete-li přidat odkaz na balíček NuGet, klikněte pravým tlačítkem na ře
 </packages>
 ``` 
 
-### <a name="manage-u-sql-database-references"></a>Spravovat odkazy na databázi U-SQL
+### <a name="manage-u-sql-database-references"></a>Správa odkazů na databázi U-SQL
 
-Skripty U-SQL v projektu U-SQL pravděpodobně příkazy dotazu pro objekty databáze U-SQL. V takovém případě budete muset odkaz odpovídající projekt databáze U-SQL, který zahrnuje definice objektů před sestavením projektu U-SQL. Příkladem je při dotazování tabulky U-SQL nebo odkazovat na sestavení. 
+Skripty U-SQL v projektu U-SQL mohou mít příkazy dotazu pro databázové objekty U-SQL. V takovém případě je třeba odkazovat na odpovídající u-SQL databázový projekt, který obsahuje definici objektů před sestavením projektu U-SQL. Příkladem je, když dotaz u-SQL tabulky nebo odkaz na sestavení. 
 
-Další informace o [projekt v U-SQL databáze](data-lake-analytics-data-lake-tools-develop-usql-database.md).
+Další informace o [projektu databáze U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md).
 
 >[!NOTE]
->Příkaz rozevírací může způsobit havárii odstranění problému. Povolit příkaz PŘETAŽENÍ, musíte explicitně zadat argumenty nástroje MSBuild. **AllowDropStatement** vám umožní nedatové související operace odstranění, jako jsou sestavení a přetažení funkce vracející tabulku. **AllowDataDropStatement** vám umožní data týkající se operace odstranění, jako jsou tabulky a přetažení schématu. Je nutné povolit AllowDropStatement před použitím AllowDataDropStatement.
+>DROP prohlášení může způsobit problém s odstraněním nehody. Chcete-li povolit příkaz DROP, musíte explicitně zadat argumenty MSBuild. **AllowDropStatement** povolí operaci DROP, která nesouvisí s daty, jako je funkce přetažení sestavení a tabulky přetažení. **AllowDataDropStatement** povolí operaci drop související s daty, jako je schéma přetažení a přetažení. Před použitím příkazu AllowDataDropStatement musíte povolit funkci AllowDropStatement.
 >
 
-### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>Projekt U-SQL pomocí příkazového řádku MSBuild sestavit
+### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>Vytvoření projektu U-SQL pomocí příkazového řádku MSBuild
 
-Nejprve projekt migrovat a získat balíček NuGet. Potom zavolejte standardní příkazového řádku MSBuild s následujícími další argumenty k sestavení projektu U-SQL: 
+Nejprve migrujte projekt a získejte balíček NuGet. Potom zavolejte standardní příkazový řádek MSBuild s následujícími dalšími argumenty pro sestavení projektu U-SQL: 
 
 ``` 
 msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime;USQLTargetType=SyntaxCheck;DataRoot=datarootfolder;/p:EnableDeployment=true
@@ -79,53 +79,53 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 Definice argumentů a hodnoty jsou následující:
 
-* **USQLSDKPath =\<balíček Nuget U-SQL > \build\runtime**. Tento parametr odkazuje na cestu instalace balíčku NuGet pro služby jazyka U-SQL.
-* **USQLTargetType=Merge or SyntaxCheck**:
-    * **Sloučit**. Sloučení režimu zkompiluje soubory kódu na pozadí. Mezi příklady patří **.cs**, **.py**, a **.r** soubory. To inlines výslednou knihovnu uživatelský kód do skriptu U-SQL. Mezi příklady patří binární soubor knihovny dll, Python nebo R kódu.
-    * **SyntaxCheck**. Režim SyntaxCheck nejprve sloučí soubory kódu na pozadí skript U-SQL. Pak zkompiluje skript U-SQL k ověření kódu.
-* **DataRoot =\<prohledá se cesta DataRoot >** . Pouze u SyntaxCheck režimu, je potřeba DataRoot. Při vytváření skriptu s režimem SyntaxCheck, zkontroluje MSBuild odkazy na objekty databáze ve skriptu. Před sestavením, nastavte odpovídající místní prostředí, který obsahuje odkazované objekty z databáze U-SQL ve složce DataRoot počítač sestavení. Můžete také spravovat tyto databáze závislostí podle [odkazování na projekt U-SQL database](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). Nástroj MSBuild zkontroluje pouze odkazy na objekty databáze, nikoli soubory.
-* **EnableDeployment = true** nebo **false**. EnableDeployment Určuje, zda je povolen nasadit odkazované databáze U-SQL během procesu sestavení. Je-li odkazovat na databázový projekt U-SQL a využívat databázových objektů ve vašem skriptu U-SQL, nastavte tento parametr na **true**.
+* **USQLSDKPath=\<Balíček U-SQL Nuget>\build\runtime**. Tento parametr odkazuje na cestu instalace balíčku NuGet pro jazykovou službu U-SQL.
+* **USQLTargetType=Sloučit nebo SyntaxCheck**:
+    * **Sloučit**. Režim sloučení zkompiluje soubory na pozadí kódu. Příkladem jsou soubory **.cs**, **.py**a **.r.** Zapisuje výslednou uživatelsky definovanou knihovnu kódu do skriptu U-SQL. Příklady jsou dll binární, Python nebo R kód.
+    * **SyntaxCheck**. Režim SyntaxCheck nejprve sloučí soubory s kódem na pozadí do skriptu U-SQL. Pak zkompiluje skript U-SQL k ověření kódu.
+* **DataRoot\<= cesta DataRoot>**. DataRoot je potřeba pouze pro režim SyntaxCheck. Když vytvoří skript s režimem SyntaxCheck, MSBuild zkontroluje odkazy na databázové objekty ve skriptu. Před sestavením nastavte odpovídající místní prostředí, které obsahuje odkazované objekty z databáze U-SQL ve složce DataRoot sestavení počítače. Tyto závislosti databáze můžete také spravovat [odkazem na databázový projekt U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). MSBuild kontroluje pouze odkazy na databázové objekty, nikoli soubory.
+* **EnableDeployment=true** nebo **false**. EnableDeployment označuje, pokud je povoleno nasadit odkazované databáze U-SQL během procesu sestavení. Pokud odkazujete na databázový projekt U-SQL a spotřebováváte databázové objekty ve skriptu U-SQL, nastavte tento parametr na **hodnotu true**.
 
-### <a name="continuous-integration-through-azure-pipelines"></a>Průběžná integrace pomocí kanálů Azure
+### <a name="continuous-integration-through-azure-pipelines"></a>Průběžná integrace prostřednictvím Azure Pipelines
 
-Kromě příkazového řádku můžete také použít Visual Studio Build nebo úlohu nástroje MSBuild k sestavení projektů U-SQL v Azure kanály. Nastavení kanálu sestavení, nezapomeňte přidat dvě úlohy v kanálu sestavení: Úloha obnovení NuGet a úlohu nástroje MSBuild.
+Kromě příkazového řádku můžete také použít visual studio sestavení nebo úlohu MSBuild k vytváření projektů U-SQL v Azure Pipelines. Chcete-li nastavit kanál sestavení, nezapomeňte přidat dva úkoly v kanálu sestavení: nuget obnovení úlohy a úlohy MSBuild.
 
-![MSBuild – úloha pro projekt v U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
+![Úkol MSBuild pro projekt U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
-1.  Přidat úlohu obnovení NuGet pro balíček NuGet odkazované řešení, zahrnující `Azure.DataLake.USQL.SDK`tak, aby MSBuild najdete cíle jazyk U-SQL. Nastavte **Upřesnit** > **cílový adresář** k `$(Build.SourcesDirectory)/packages` Pokud budete chtít použít ukázkový argumenty nástroje MSBuild přímo v kroku 2.
+1.  Přidejte úlohu obnovení NuGet získat balíček NuGet `Azure.DataLake.USQL.SDK`s odkazem na řešení, který obsahuje , aby MSBuild mohl najít cíle jazyka U-SQL. Pokud chcete použít `$(Build.SourcesDirectory)/packages` ukázku argumentů MSBuild přímo v kroku 2, nastavte adresář **Upřesnit** > **cíl** na hodnotu MSBuild.
 
-    ![Úloha obnovení NuGet pro projekt v U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
+    ![NuGet obnovení úkolu pro projekt U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
-2.  Nastavte argumenty nástroje MSBuild v nástrojích pro sestavení sady Visual Studio nebo v úkolu MSBuild, jak je znázorněno v následujícím příkladu. Nebo můžete definovat proměnné pro tyto argumenty v kanálu Azure kanály sestavení.
+2.  Nastavte argumenty MSBuild v nástrojích sestavení sady Visual Studio nebo v úloze MSBuild, jak je znázorněno v následujícím příkladu. Nebo můžete definovat proměnné pro tyto argumenty v kanálu sestavení Azure Pipelines.
 
-    ![Definujte proměnné, MSBuild CI/CD pro projekt v U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
+    ![Definování ci/CD MSBuild proměnných pro projekt U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
 
     ```
     /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime /p:USQLTargetType=SyntaxCheck /p:DataRoot=$(Build.SourcesDirectory) /p:EnableDeployment=true
     ```
 
-### <a name="u-sql-project-build-output"></a>Výstupní sestavení projektu U-SQL
+### <a name="u-sql-project-build-output"></a>Výstup sestavení projektu U-SQL
 
-Po spuštění sestavení všechny skripty v projektu U-SQL Sestavujeme a výstup do souboru zip s názvem `USQLProjectName.usqlpack`. Struktura složek ve vašem projektu, zůstane ve výstupu ZIP sestavení.
+Po spuštění sestavení jsou vytvořeny všechny skripty v projektu U-SQL a `USQLProjectName.usqlpack`výstup do souboru ZIP s názvem . Struktura složek v projektu je uložena ve výstupu sestavení zip.
 
 > [!NOTE]
 >
-> Jako příkaz vložené do skriptu sestavení výstupu se sloučí soubory kódu na pozadí pro každý skript U-SQL.
+> Soubory s kódem na pozadí pro každý skript U-SQL budou sloučeny jako vložkový příkaz do výstupu sestavení skriptu.
 >
 
 ## <a name="test-u-sql-scripts"></a>Testování skriptů U-SQL
 
-Azure Data Lake nabízí projektů testování skriptů U-SQL a C# UDO/UDAG/UDF:
-* Zjistěte, jak [přidat testovací případy pro skripty U-SQL a rozšířené kód jazyka C#](data-lake-analytics-cicd-test.md#test-u-sql-scripts).
-* Zjistěte, jak [spouštění testovacích případů v kanálech Azure](data-lake-analytics-cicd-test.md#run-test-cases-in-azure-devops).
+Azure Data Lake poskytuje testovací projekty pro u-SQL skripty a C# UDO/UDAG/UDF:
+* Zjistěte, jak [přidat testovací případy pro u-SQL skripty a rozšířený kód C#](data-lake-analytics-cicd-test.md#test-u-sql-scripts).
+* Zjistěte, jak [spustit testovací případy v Azure Pipelines](data-lake-analytics-cicd-test.md#run-test-cases-in-azure-devops).
 
 ## <a name="deploy-a-u-sql-job"></a>Nasazení úlohy U-SQL
 
-Po ověření kódu pomocí procesu sestavení a testování, je odesílání úloh U-SQL přímo z Azure kanály prostřednictvím úlohu prostředí Azure PowerShell. Skript můžete také nasadit do Azure Data Lake Store nebo Azure Blob storage a [spouštět plánované úlohy prostřednictvím Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics).
+Po ověření kódu prostřednictvím procesu sestavení a testování můžete odeslat úlohy U-SQL přímo z Azure Pipelines prostřednictvím úlohy Azure PowerShell. Skript můžete nasadit taky do Azure Data Lake Store nebo úložiště objektů blob Azure a [spustit naplánované úlohy prostřednictvím Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics).
 
-### <a name="submit-u-sql-jobs-through-azure-pipelines"></a>Odesílání úloh U-SQL pomocí Azure kanály
+### <a name="submit-u-sql-jobs-through-azure-pipelines"></a>Odeslání úloh U-SQL prostřednictvím Azure Pipelines
 
-Výstupní sestavení projektu U-SQL je soubor zip se nazývá **USQLProjectName.usqlpack**. Tento zazipovaný soubor obsahuje všechny skripty U-SQL v projektu. Můžete použít [úloh prostředí Azure PowerShell](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts) v kanálech s následující ukázkový skript prostředí PowerShell k odesílání úloh U-SQL přímo z Azure kanály.
+Výstup sestavení projektu U-SQL je soubor zip s názvem **USQLProjectName.usqlpack**. Soubor zip obsahuje všechny u-SQL skripty v projektu. [Úlohu Azure PowerShellu](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts) v kanálech můžete použít s následujícím ukázkovým skriptem PowerShellu k odeslání úloh U-SQL přímo z Azure Pipelines.
 
 ```powershell
 <#
@@ -230,11 +230,11 @@ Function Main()
 Main
 ```
 
-### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>Nasazení úloh U-SQL pomocí Azure Data Factory
+### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>Nasazení úloh U-SQL prostřednictvím Azure Data Factory
 
-Můžete odeslat úloh U-SQL přímo z Azure kanály. Nebo můžete nahrát připravených skriptů do služby Azure Data Lake Store nebo Azure Blob storage a [spouštět plánované úlohy prostřednictvím Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics).
+Můžete odeslat u-SQL úlohy přímo z Azure Pipelines. Nebo můžete nahrát vytvořené skripty do Azure Data Lake Store nebo úložiště objektů blob Azure a [spustit naplánované úlohy prostřednictvím Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics).
 
-Použití [úloh prostředí Azure PowerShell](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts) v kanálech Azure s následující ukázkový skript Powershellu pro odeslání skriptů U-SQL do účtu služby Azure Data Lake Store:
+Pomocí [úlohy Azure PowerShell](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts) u Azure Pipelines s následujícím ukázkovým skriptem PowerShellu nahrajte skripty U-SQL do účtu Azure Data Lake Store:
 
 ```powershell
 <#
@@ -294,15 +294,15 @@ UploadResources
 
 ## <a name="cicd-for-a-u-sql-database"></a>CI/CD pro databázi U-SQL
 
-Azure Data Lake Tools pro Visual Studio obsahuje šablony projektů databáze U-SQL, které vám pomůžou vývoj, Správa a nasazení databáze U-SQL. Další informace [projekt v U-SQL databáze](data-lake-analytics-data-lake-tools-develop-usql-database.md).
+Nástroje datového jezera Azure pro Visual Studio poskytují šablony projektů databáze U-SQL, které vám pomůžou vyvíjet, spravovat a nasazovat databáze U-SQL. Další informace o [databázovém projektu U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md).
 
-## <a name="build-u-sql-database-project"></a>Sestavit projekt U-SQL database
+## <a name="build-u-sql-database-project"></a>Sestavení databázového projektu U-SQL
 
-### <a name="get-the-nuget-package"></a>Získat balíček NuGet.
+### <a name="get-the-nuget-package"></a>Získání balíčku NuGet
 
-Nástroj MSBuild neposkytuje integrovanou podporu pro projekty databáze U-SQL. Pokud chcete získat tuto možnost, budete muset přidat odkaz pro řešení [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) balíčku NuGet, který přidá službu požadovaný jazyk.
+MSBuild neposkytuje integrovanou podporu pro databázové projekty U-SQL. Chcete-li získat tuto možnost, musíte přidat odkaz pro vaše řešení do balíčku [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet, který přidá požadovanou jazykovou službu.
 
-Chcete-li přidat odkaz na balíček NuGet, klikněte pravým tlačítkem na řešení v Průzkumníku řešení sady Visual Studio. Zvolte **spravovat balíčky NuGet**. Vyhledejte a nainstalujte balíček NuGet. Nebo můžete přidat soubor s názvem **souboru packages.config** ve složce řešení a vložit následující obsah do ní:
+Chcete-li přidat odkaz na balíček NuGet, klepněte pravým tlačítkem myši na řešení v Průzkumníku řešení sady Visual Studio. Zvolte **Spravovat balíčky NuGet**. Pak vyhledejte a nainstalujte balíček NuGet. Nebo můžete přidat soubor s názvem **packages.config** ve složce řešení a vložit do něj následující obsah:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -311,59 +311,59 @@ Chcete-li přidat odkaz na balíček NuGet, klikněte pravým tlačítkem na ře
 </packages>
 ```
 
-### <a name="build-u-sql-a-database-project-with-the-msbuild-command-line"></a>Sestavení projektu databáze pomocí příkazového řádku MSBuild U-SQL
+### <a name="build-u-sql-a-database-project-with-the-msbuild-command-line"></a>Vytvoření databázového projektu U-SQL pomocí příkazového řádku MSBuild
 
-K sestavení projektu U-SQL databáze, volání standardní příkazový řádek MSBuild a jako další argument se předá odkaz na balíček NuGet sady SDK pro U-SQL. Prohlédněte si následující příklad: 
+Chcete-li vytvořit databázový projekt U-SQL, zavolejte standardní příkazový řádek MSBuild a předejte odkaz na balíček U-SQL SDK NuGet jako další argument. Prohlédněte si následující příklad: 
 
 ```
 msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime
 ```
 
-Argument `USQLSDKPath=<U-SQL Nuget package>\build\runtime` odkazuje na cestu instalace balíčku NuGet pro služby jazyka U-SQL.
+Argument `USQLSDKPath=<U-SQL Nuget package>\build\runtime` odkazuje na instalační cestu balíčku NuGet pro službu jazyka U-SQL.
 
-### <a name="continuous-integration-with-azure-pipelines"></a>Průběžná integrace se sadou Azure kanály
+### <a name="continuous-integration-with-azure-pipelines"></a>Průběžná integrace s využitím Azure Pipelines
 
-Kromě příkazového řádku můžete použít Visual Studio Build nebo úlohu nástroje MSBuild k sestavení projektů U-SQL database v kanálech Azure. Pokud chcete nastavit úlohu sestavení, nezapomeňte přidat dvě úlohy v kanálu sestavení: Úloha obnovení NuGet a úlohu nástroje MSBuild.
+Kromě příkazového řádku můžete k vytváření databázových projektů U-SQL v Azure Pipelines použít visual studio build nebo úlohu MSBuild. Chcete-li nastavit úlohu sestavení, nezapomeňte přidat dva úkoly v kanálu sestavení: nuget obnovení úlohy a úlohy MSBuild.
 
-   ![Úlohy MSBuild CI/CD pro projekt v U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
+   ![CI/CD MSBuild úkol pro projekt U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
 
-1. Přidat úlohu obnovení NuGet pro balíček NuGet odkazované řešení, která zahrnuje získáte `Azure.DataLake.USQL.SDK`tak, aby MSBuild najdete cíle jazyk U-SQL. Nastavte **Upřesnit** > **cílový adresář** k `$(Build.SourcesDirectory)/packages` Pokud budete chtít použít ukázkový argumenty nástroje MSBuild přímo v kroku 2.
+1. Přidejte úlohu obnovení NuGet získat balíček NuGet `Azure.DataLake.USQL.SDK`s odkazem na řešení, který obsahuje , aby MSBuild mohl najít cíle jazyka U-SQL. Pokud chcete použít `$(Build.SourcesDirectory)/packages` ukázku argumentů MSBuild přímo v kroku 2, nastavte adresář **Upřesnit** > **cíl** na hodnotu MSBuild.
 
-   ![Úloha NuGet CI/CD pro projekt v U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
+   ![ÚKOL CI/CD NuGet pro projekt U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
-2. Nastavte argumenty nástroje MSBuild v nástrojích pro sestavení sady Visual Studio nebo v úkolu MSBuild, jak je znázorněno v následujícím příkladu. Nebo můžete definovat proměnné pro tyto argumenty v kanálu Azure kanály sestavení.
+2. Nastavte argumenty MSBuild v nástrojích sestavení sady Visual Studio nebo v úloze MSBuild, jak je znázorněno v následujícím příkladu. Nebo můžete definovat proměnné pro tyto argumenty v kanálu sestavení Azure Pipelines.
 
-   ![Definujte proměnné, MSBuild CI/CD pro projekt databáze U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
+   ![Definování ci/CD msbuild proměnných pro databázový projekt U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
 
    ```
    /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
    ```
  
-### <a name="u-sql-database-project-build-output"></a>Výstupní sestavení projektu databáze U-SQL
+### <a name="u-sql-database-project-build-output"></a>Výstup sestavení projektu databáze U-SQL
 
-Výstup pro databázový projekt U-SQL je U-SQL database balíček pro nasazení s názvem s příponou sestavení `.usqldbpack`. `.usqldbpack` Balíček je soubor zip, který obsahuje všechny příkazy DDL v jeden skript U-SQL ve složce DDL. Obsahuje všechny **knihovny DLL debuggle** a dalších souborů sestavení do dočasné složky.
+Výstup sestavení pro databázový projekt U-SQL je balíček nasazení databáze U-SQL s názvem s příponou `.usqldbpack`. Balíček `.usqldbpack` je soubor ZIP, který obsahuje všechny příkazy DDL v jednom skriptu U-SQL ve složce DDL. Obsahuje všechny **dlls** a další soubory pro sestavení v dočasné složce.
 
-## <a name="test-table-valued-functions-and-stored-procedures"></a>Testování funkce hodnot tabulky a uložené procedury
+## <a name="test-table-valued-functions-and-stored-procedures"></a>Testování funkcí s hodnotou tabulky a uložených procedur
 
-Přidávání testovacích případů pro funkce hodnot tabulky a uložené procedury přímo se momentálně nepodporuje. Jako alternativní řešení můžete vytvořit projekt U-SQL, který má skriptů U-SQL, které volání těchto funkcí a jejich zápis testovací případy. Proveďte následující kroky k nastavení testovacích případů pro funkce hodnot tabulky a uložené procedury, které jsou definované v projektu databáze U-SQL:
+Přidání testovacích případů pro funkce s hodnotou tabulky a přímo uložené procedury není aktuálně podporováno. Jako řešení můžete vytvořit projekt U-SQL, který má skripty U-SQL, které tyto funkce volají a píší pro ně testovací případy. Postupujte podle následujících kroků k nastavení testovacích případů pro funkce s hodnotou tabulky a uložené procedury definované v databázovém projektu U-SQL:
 
-1.  Vytvořte projekt U-SQL pro účely testování a psaní skriptů U-SQL, volání funkce hodnot tabulky a uložené procedury.
-2.  Přidáte databázový odkaz na projekt U-SQL. Chcete-li získat funkce vracející tabulku a definice uložené procedury, budete muset odkaz databázový projekt, který obsahuje příkaz DDL. Další informace o [databáze odkazy](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project).
-3.  Přidáte testovací případy pro skripty U-SQL, které volají funkce hodnot tabulky a uložené procedury. Zjistěte, jak [přidat testovací případy pro skripty U-SQL](data-lake-analytics-cicd-test.md#test-u-sql-scripts).
+1.  Vytvořte projekt U-SQL pro testovací účely a napište skripty U-SQL, které volají funkce s hodnotou tabulky a uložené procedury.
+2.  Přidejte odkaz na databázi projektu U-SQL. Chcete-li získat funkci s hodnotou tabulky a definici uložené procedury, musíte odkazovat na databázový projekt, který obsahuje příkaz DDL. Další informace o [odkazech na databázi](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project).
+3.  Přidejte testovací případy pro skripty U-SQL, které volají funkce s hodnotou tabulky a uložené procedury. Přečtěte si, jak [přidat testovací případy pro skripty U-SQL](data-lake-analytics-cicd-test.md#test-u-sql-scripts).
 
-## <a name="deploy-u-sql-database-through-azure-pipelines"></a>Nasazení databáze U-SQL pomocí Azure kanály
+## <a name="deploy-u-sql-database-through-azure-pipelines"></a>Nasazení databáze U-SQL prostřednictvím Azure Pipelines
 
-`PackageDeploymentTool.exe` poskytuje programování a rozhraní příkazového řádku, které pomáhají nasadit balíčky pro nasazení databáze U-SQL, **.usqldbpack**. Je součástí sady SDK [balíček NuGet sady SDK U-SQL](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), který je umístěn na **build/runtime/PackageDeploymentTool.exe**. S použitím `PackageDeploymentTool.exe`, databáze U-SQL můžete nasadit do Azure Data Lake Analytics a místními účty.
+`PackageDeploymentTool.exe`Poskytuje rozhraní pro programování a příkazový řádek, která pomáhají nasadit balíčky pro nasazení databáze U-SQL **.usqldbpack**. Sada SDK je součástí [balíčku U-SQL SDK NuGet](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), který se nachází na **adrese build/runtime/PackageDeploymentTool.exe**. Pomocí `PackageDeploymentTool.exe`aplikace můžete nasadit databáze U-SQL do Azure Data Lake Analytics i do místních účtů.
 
 > [!NOTE]
 >
-> Podporu příkazového řádku Powershellu a úkol uvolnění kanály Azure podporují pro nasazení databáze U-SQL čeká na vyřízení.
+> Podpora příkazového řádku prostředí PowerShell a podpora úloh uvolnění azure kanálu pro nasazení databáze U-SQL je aktuálně čeká na vyřízení.
 >
 
-Následujícím postupem nastavit úlohu nasazení databáze v kanálech Azure:
+Pomocí následujících kroků nastavte úlohu nasazení databáze v Azure Pipelines:
 
-1. Přidat Powershellový skript úkolu v sestavení a kanál verze a spusťte následující skript prostředí PowerShell. Umožňuje získat závislosti sady Azure SDK pro tuto úlohu `PackageDeploymentTool.exe` a `PackageDeploymentTool.exe`. Můžete nastavit **- AzureSDK** a **- DBDeploymentTool** parametry pro načtení závislostí a nástroj pro nasazení do určených složek. Předání **- AzureSDK** cestu k `PackageDeploymentTool.exe` jako **- AzureSDKPath** parametr v kroku 2. 
+1. Přidejte úlohu skriptu prostředí PowerShell do kanálu sestavení nebo vydání a spusťte následující skript Prostředí PowerShell. Tato úloha pomáhá získat závislosti sady `PackageDeploymentTool.exe` `PackageDeploymentTool.exe`Azure SDK pro a . Můžete nastavit parametry **-AzureSDK** a **-DBDeploymentTool** pro načtení závislostí a nástroje pro nasazení do konkrétních složek. Předaj cestu **-AzureSDK** jako `PackageDeploymentTool.exe` parametr **-AzureSDKPath** v kroku 2. 
 
     ```powershell
     <#
@@ -424,67 +424,67 @@ Následujícím postupem nastavit úlohu nasazení databáze v kanálech Azure:
     copy USQLSDK\build\runtime\*.* $DBDeploymentTool
     ```
 
-2. Přidat **příkazového řádku úkolu** v kanálu pro sestavování nebo vydávání a vyplňte skript voláním `PackageDeploymentTool.exe`. `PackageDeploymentTool.exe` se nachází pod definovanou **$DBDeploymentTool** složky. Ukázkový skript vypadá takto: 
+2. Přidejte **úlohu příkazového řádku** do kanálu sestavení nebo `PackageDeploymentTool.exe`vydání a vyplňte skript voláním . `PackageDeploymentTool.exe`je umístěna pod definovanou **$DBDeploymentTool** složce. Ukázkový skript je následující: 
 
-    * Nasazení databáze U-SQL místně:
+    * Místní nasazení databáze U-SQL:
 
         ```
         PackageDeploymentTool.exe deploylocal -Package <package path> -Database <database name> -DataRoot <data root path>
         ```
 
-    * Nasazení databáze U-SQL k účtu Azure Data Lake Analytics pomocí ověřování interaktivní režim:
+    * Pomocí režimu interaktivního ověřování můžete nasadit databázi U-SQL do účtu Azure Data Lake Analytics:
 
         ```
         PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -AzureSDKPath <azure sdk path> -Interactive
         ```
 
-    * Použití **secrete** ověřování nasazení databáze U-SQL k účtu Azure Data Lake Analytics:
+    * Pomocí ověřování **v ylokaka** nasadit databázi U-SQL do účtu Azure Data Lake Analytics:
 
         ```
         PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete>
         ```
 
-    * Použití **Soubor_certifikátu** ověřování nasazení databáze U-SQL k účtu Azure Data Lake Analytics:
+    * Pomocí ověřování **certFile** můžete nasadit databázi U-SQL do účtu Azure Data Lake Analytics:
 
         ```
         PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete> -CertFile <certFile>
         ```
 
-### <a name="packagedeploymenttoolexe-parameter-descriptions"></a>Popisy parametrů PackageDeploymentTool.exe
+### <a name="packagedeploymenttoolexe-parameter-descriptions"></a>Popis y parametrů PackageDeploymentTool.exe
 
-#### <a name="common-parameters"></a>Společné parametry
+#### <a name="common-parameters"></a>Běžné parametry
 
 | Parametr | Popis | Výchozí hodnota | Požaduje se |
 |---------|-----------|-------------|--------|
-|Balíček|Cesta k balíčku pro nasazení databáze U-SQL k nasazení.|Hodnotu Null|true (pravda)|
-|Databáze|Název databáze a nasazené nebo vytvořen.|master|false (nepravda)|
-|LogFile|Cestu k souboru pro protokolování. Standardní navýšení kapacity (konzola) ve výchozím nastavení.|Hodnotu Null|false (nepravda)|
-|LogLevel|Úroveň protokolu: Podrobné nastavení, Normální, upozornění nebo chyby.|LogLevel.Normal|false (nepravda)|
+|Balíček|Cesta balíčku nasazení databáze U-SQL, který má být nasazen.|null|true|
+|Databáze|Název databáze, který má být nasazen nebo vytvořen.|master|false (nepravda)|
+|Logfile|Cesta k souboru pro protokolování. Výchozí standard out (konzola).|null|false (nepravda)|
+|LogLevel|Úroveň protokolu: Podrobné, Normální, Upozornění nebo Chyba.|LogLevel.Normal|false (nepravda)|
 
-#### <a name="parameter-for-local-deployment"></a>{{Parametr pro místní nasazení
+#### <a name="parameter-for-local-deployment"></a>Parametr pro místní nasazení
 
 |Parametr|Popis|Výchozí hodnota|Požaduje se|
 |---------|-----------|-------------|--------|
-|DataRoot|Cesta kořenové složce místní data.|Hodnotu Null|true (pravda)|
+|Kořenová_složka_dat|Cesta kořenové složky místních dat.|null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Parametry pro nasazení Azure Data Lake Analytics
 
 |Parametr|Popis|Výchozí hodnota|Požaduje se|
 |---------|-----------|-------------|--------|
-|Účet|Určuje, které účtu Azure Data Lake Analytics k nasazení podle názvu účtu.|Hodnotu Null|true (pravda)|
-|ResourceGroup|Název skupiny prostředků Azure pro účet Azure Data Lake Analytics.|Hodnotu Null|true (pravda)|
-|SubscriptionId|ID předplatného Azure pro účet Azure Data Lake Analytics.|Hodnotu Null|true (pravda)|
-|Tenant|Název tenanta je název domény služby Azure Active Directory (Azure AD). Nachází se na stránku Správa předplatného na webu Azure Portal.|Hodnotu Null|true (pravda)|
-|AzureSDKPath|Cesty hledání závislých sestavení v sadě Azure SDK.|Hodnotu Null|true (pravda)|
-|Interaktivní|Jestli se mají použít interaktivní režim ověřování.|false (nepravda)|false (nepravda)|
-|ClientId|Vyžaduje se ID aplikace Azure AD pro neinteraktivní ověřování.|Hodnotu Null|Vyžaduje se pro neinteraktivní ověřování.|
-|Secrete|Secrete nebo heslo pro neinteraktivní ověřování. Byste měli použít pouze ve důvěryhodné a zabezpečené prostředí.|Hodnotu Null|Vyžaduje se pro neinteraktivní ověřování, jinak použijte SecreteFile.|
-|SecreteFile|Soubor uloží secrete nebo heslo pro neinteraktivní ověřování. Ujistěte se, že zajistit jeho číst pouze od aktuálního uživatele.|Hodnotu Null|Vyžaduje se pro neinteraktivní ověřování, jinak použijte Secrete.|
-|CertFile|Soubor uloží certifikace X.509 pro neinteraktivní ověřování. Ve výchozím nastavení je použití klienta secrete ověřování.|Hodnotu Null|false (nepravda)|
-| JobPrefix | Předpona pro nasazení databáze U-SQL DDL úlohy. | Deploy_ + DateTime.Now | false (nepravda) |
+|Účet|Určuje, do kterého účtu Azure Data Lake Analytics se má nasadit podle názvu účtu.|null|true|
+|ResourceGroup|Název skupiny prostředků Azure pro účet Azure Data Lake Analytics.|null|true|
+|SubscriptionId|ID předplatného Azure pro účet Azure Data Lake Analytics.|null|true|
+|Tenant|Název klienta je název domény Azure Active Directory (Azure AD). Najdete ji na stránce správy předplatného na webu Azure Portal.|null|true|
+|AzureSDKPath|Cesta k hledání závislých sestavení v azure sdk.|null|true|
+|Interaktivní|Určuje, zda má být k ověřování používán interaktivní režim.|false (nepravda)|false (nepravda)|
+|ClientId|ID aplikace Azure AD požadované pro neinteraktivní ověřování.|null|Vyžadováno pro neinteraktivní ověřování.|
+|Vylučují|Vykreslovač nebo heslo pro neinteraktivní ověřování. Měl by být používán pouze v důvěryhodném a zabezpečeném prostředí.|null|Vyžadováno pro neinteraktivní ověřování, jinak použijte SecreteFile.|
+|Soubor Vykreslován|Soubor uloží vykreslovače nebo heslo pro neinteraktivní ověřování. Ujistěte se, že je čitelný pouze aktuálním uživatelem.|null|Vyžadováno pro neinteraktivní ověřování, jinak použijte Vykreslovače.|
+|Soubor CertFile|Soubor ukládá certifikaci X.509 pro neinteraktivní ověřování. Ve výchozím nastavení je použití ověřování vykreslovat klienta.|null|false (nepravda)|
+| JobPrefix | Předpona pro nasazení databáze úlohy U-SQL DDL. | Deploy_ + DateTime.Now | false (nepravda) |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Tom, jak testovat kód Azure Data Lake Analytics](data-lake-analytics-cicd-test.md).
-- [Spusťte skript U-SQL na místním počítači](data-lake-analytics-data-lake-tools-local-run.md).
-- [Použít projekt databáze U-SQL pro vývoj databáze U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md).
+- [Jak otestovat kód Azure Data Lake Analytics](data-lake-analytics-cicd-test.md).
+- [Spusťte skript U-SQL v místním počítači](data-lake-analytics-data-lake-tools-local-run.md).
+- [Pomocí databázového projektu U-SQL můžete vyvinout databázi U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md).

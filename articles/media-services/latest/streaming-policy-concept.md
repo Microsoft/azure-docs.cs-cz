@@ -1,6 +1,6 @@
 ---
-title: Streamování zásady ve službě Azure Media Services | Dokumentace Microsoftu
-description: Tento článek obsahuje vysvětlení, co jsou zásady streamování a jak se používají Azure Media Services.
+title: Zásady streamování ve službě Azure Media Services | Dokumenty společnosti Microsoft
+description: Tento článek poskytuje vysvětlení, co jsou zásady streamování a jak jsou používány službou Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,29 +12,29 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66392930"
 ---
 # <a name="streaming-policies"></a>Zásady streamování
 
-V Azure Media Services v3 [streamování zásady](https://docs.microsoft.com/rest/api/media/streamingpolicies) vám umožňují definovat protokolů streamování a možnosti šifrování pro vaše [lokátory streamování](streaming-locators-concept.md). Media Services v3 poskytuje že některé předdefinované zásady streamování, tak, aby je mohli používat přímo pro zkušební verzi nebo produkční prostředí. 
+Ve službě Azure Media Services v3 umožňují [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies) definovat protokoly streamování a možnosti šifrování pro [lokátory streamování](streaming-locators-concept.md). Media Services v3 poskytuje některé předdefinované zásady streamování, takže je můžete použít přímo pro zkušební verzi nebo produkční prostředí. 
 
-Aktuálně k dispozici předdefinované zásady streamování:<br/>
-* "Predefined_DownloadOnly.
-* "Predefined_ClearStreamingOnly.
-* 'Predefined_DownloadAndClearStreaming'
-* "Predefined_ClearKey.
-* 'Predefined_MultiDrmCencStreaming' 
-* 'Predefined_MultiDrmStreaming'
+Aktuálně dostupné předdefinované zásady streamování:<br/>
+* "Predefined_DownloadOnly"
+* "Predefined_ClearStreamingOnly"
+* "Predefined_DownloadAndClearStreaming"
+* "Predefined_ClearKey"
+* "Predefined_MultiDrmCencStreaming" 
+* "Predefined_MultiDrmStreaming"
 
-Následující "rozhodovací strom" pomáhá výběru předdefinovaných datových proudů zásady pro váš scénář.
+Následující "Rozhodovací strom" vám pomůže zvolit předdefinované zásady streamování pro váš scénář.
 
 > [!IMPORTANT]
-> * Vlastnosti **streamování zásady** jsou DateTime typu jsou vždy ve formátu UTC.
-> * Navrhněte omezenou sadu zásad pro svůj účet Media Service a je znovu použít pro vaše lokátory streamování pokaždé, když jsou potřeba stejné možnosti. Další informace najdete v tématu [kvóty a omezení](limits-quotas-constraints.md).
+> * Vlastnosti **zásad streamování,** které jsou typu Datetime, jsou vždy ve formátu UTC.
+> * Měli byste navrhnout omezenou sadu zásad pro váš účet Media Service a znovu je použít pro lokátory streamování, kdykoli jsou potřeba stejné možnosti. Další informace naleznete v [tématu Kvóty a omezení](limits-quotas-constraints.md).
 
 ## <a name="decision-tree"></a>Rozhodovací strom
 
@@ -42,13 +42,13 @@ Kliknutím na obrázek zobrazíte jeho plnou velikost.
 
 <a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
 
-Pokud šifrování obsahu, je potřeba vytvořit [zásad klíče k obsahu](content-key-policy-concept.md), **zásad klíče k obsahu** není potřeba pro streamování nebo stažení. 
+Pokud šifrujete obsah, musíte vytvořit [zásady klíče obsahu](content-key-policy-concept.md), **zásady klíče obsahu** nejsou potřebné pro jasné streamování nebo stahování. 
 
-Pokud nemáte speciální požadavky (např. Pokud chcete zadat různé protokoly, potřebují používat službu vlastní doručení klíče, nebo muset použít Vymazat zvukové stopy), můžete si [vytvořit](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) vlastní zásady streamování. 
+Pokud máte zvláštní požadavky (například pokud chcete zadat různé protokoly, potřebujete použít vlastní službu doručování klíčů nebo potřebujete použít vymazat zvukovou stopu), můžete [vytvořit](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) vlastní zásady streamování. 
 
-## <a name="get-a-streaming-policy-definition"></a>Získat definici zásady streamování  
+## <a name="get-a-streaming-policy-definition"></a>Získání definice zásad streamování  
 
-Pokud chcete zobrazit definici zásady streamování, používat [získat](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) a zadejte název zásady. Příklad:
+Pokud chcete zobrazit definici zásad streamování, použijte [získat](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) a zadejte název zásady. Například:
 
 ### <a name="rest"></a>REST
 
@@ -81,10 +81,10 @@ Odpověď:
 
 ## <a name="filtering-ordering-paging"></a>Filtrování, řazení, stránkování
 
-Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities-overview.md).
+Viz [Filtrování, řazení, stránkování entit Mediálních služeb](entities-overview.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Streamování souboru](stream-files-dotnet-quickstart.md)
-* [Použití dynamického šifrování AES-128 a doručení klíče služby](protect-with-aes128.md)
-* [Pomocí DRM dynamického šifrování a licence služby pro doručování](protect-with-drm.md)
+* [Používejte dynamické šifrování AES-128 a službu doručování klíčů](protect-with-aes128.md)
+* [Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí](protect-with-drm.md)

@@ -1,20 +1,20 @@
 ---
-title: Prostředky bez omezení počtu 800
-description: Obsahuje seznam typů prostředků Azure, které můžou mít víc než 800 instancí ve skupině prostředků.
+title: Zdroje bez limitu počtu 800
+description: Uvádí typy prostředků Azure, které mohou mít více než 800 instancí ve skupině prostředků.
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76937939"
 ---
-# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky, které nejsou omezeny na 800 instancí na skupinu prostředků
+# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky nejsou omezeny na 800 instancí na skupinu prostředků
 
-Ve výchozím nastavení můžete do každé skupiny prostředků nasadit až 800 instancí typu prostředku. Některé typy prostředků jsou ale z limitu instance 800 vyloučené. V tomto článku jsou uvedené typy prostředků Azure, které můžou mít víc než 800 instancí ve skupině prostředků. Všechny ostatní typy prostředků jsou omezeny na 800 instancí.
+Ve výchozím nastavení můžete v každé skupině prostředků nasadit až 800 instancí typu prostředku. Některé typy prostředků jsou však osvobozeny od limitu instance 800. Tento článek uvádí typy prostředků Azure, které mohou mít více než 800 instancí ve skupině prostředků. Všechny ostatní typy prostředků jsou omezeny na 800 instancí.
 
-U některých typů prostředků musíte kontaktovat podporu, aby byl limit instance 800 odebraný. Tyto typy prostředků jsou uvedeny v tomto článku.
+U některých typů prostředků je třeba kontaktovat podporu, aby byl odebrán limit instance 800. Tyto typy prostředků jsou uvedeny v tomto článku.
 
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
@@ -23,18 +23,18 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
-* registrations
-* registrace/customerSubscriptions
+* Registrace
+* registrace/odběry zákazníků
 * registrace/produkty
-* verificationKeys
+* ověřovací klávesy
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
-* botServices – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
+* botServices - Ve výchozím nastavení, omezena na 800 instancí. Tento limit lze zvýšit kontaktováním podpory.
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
-* disks
+* Disky
 * images
 * snímky
 * virtualMachines
@@ -45,75 +45,75 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
-* Registry/buildTasks
-* Registry/buildTasks/listSourceRepositoryProperties
-* Registry/buildTasks/kroky
-* Registry/buildTasks/Steps/listBuildArguments
-* registries/eventGridFilters
-* registries/replications
-* registries/tasks
-* registries/webhooks
+* registry/buildTasks
+* registry/buildTasks/listSourceRepositoryProperties
+* registry/buildÚkoly/kroky
+* registry/buildTasks/steps/listBuildArguments
+* registry/eventGridFilters
+* registry/replikace
+* rejstříky/úkoly
+* registry/webhooky
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
-* servery
+* Servery
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
-* servery
+* Servery
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
-* serverGroups
-* servery
-* serversv2
+* serverové skupiny
+* Servery
+* serveryv2
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
-* Služby
+* services
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
-* clusters
-* namespaces
+* Clustery
+* Obory názvů
 
-## <a name="microsoftexperimentation"></a>Microsoft. experimentování
+## <a name="microsoftexperimentation"></a>Microsoft.Experimentování
 
-* experimentWorkspaces
+* experimentworkspaces
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 * autoManagedVmConfigurationProfiles
-* configurationProfileAssignments
+* konfiguracePřiřazení profilů
 * guestConfigurationAssignments
-* software
+* Software
 * softwareUpdateProfile
-* softwareUpdates
+* softwareAktualizace
 
 ## <a name="microsoftinsights"></a>Microsoft.Insights
 
-* metricalerts
+* upozornění na metriky
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
-* integrationAccounts
-* workflows
+* integraceÚčty
+* Pracovní postupy
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
 * netAppAccounts
 * netAppAccounts/capacityPools
-* netAppAccounts/capacityPools/svazky
-* netAppAccounts/capacityPools/svazky/mountTargets
-* netAppAccounts/capacityPools/svazky/snímky
+* netAppAccounts/capacityPool/volumes
+* netAppAccounts/capacityPools/volumes/mountTargets
+* netAppAccounts/capacityPools/volumes/snapshots netAppAccounts/capacityPools/volumes/snapshots netAppAccounts/capacityPools/volumes/snapshots netApp
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
-* applicationGatewayWebApplicationFirewallPolicies
+* aplikaceGatewayWebApplicationFirewallPolicies
 * applicationSecurityGroups
 * bastionHosts
 * ddosProtectionPlans
-* dnszones
+* dnszóny
 * dnszones/A
 * dnszones/AAAA
 * dnszones/CAA
@@ -127,8 +127,8 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 * dnszones/vše
 * dnszones/sady záznamů
 * networkIntentPolicies
-* networkInterfaces
-* privateDnsZones
+* síťová rozhraní
+* privátnídnszóny
 * privateDnsZones/A
 * privateDnsZones/AAAA
 * privateDnsZones/CNAME
@@ -141,10 +141,10 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* publicIPAddresses – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
+* publicIPAddresses - Ve výchozím nastavení je omezen na 800 instancí. Tento limit lze zvýšit kontaktováním podpory.
 * serviceEndpointPolicies
 * trafficmanagerprofiles
-* virtualNetworkTaps
+* virtualNetworkKohouty
 
 ## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 
@@ -152,11 +152,11 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
-* workspaceCollections – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
+* workspaceCollections – ve výchozím nastavení je omezen na 800 instancí. Tento limit lze zvýšit kontaktováním podpory.
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
-* namespaces
+* Obory názvů
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
@@ -164,15 +164,15 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-* namespaces
+* Obory názvů
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
-* aplikací
+* aplikace
 * containerGroups
-* brány
-* networks
-* záleží
+* Brány
+* Sítí
+* Tajemství
 * volumes
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
@@ -181,9 +181,9 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
-* apiManagementAccounts/rozhraní API
-* sites
+* apiManagementAccounts/apis
+* Stránky
 
 ## <a name="next-steps"></a>Další kroky
 
-Úplný seznam kvót a omezení najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](azure-subscription-service-limits.md).
+Úplný seznam kvót a omezení najdete v tématu [Limity předplatného azure a služby, kvóty a omezení](azure-subscription-service-limits.md).

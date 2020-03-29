@@ -1,19 +1,19 @@
 ---
-title: Reliable Actors poznámky k serializaci typu objektu actor
-description: Popisuje základní požadavky pro definování serializovatelných tříd, které lze použít k definování Service Fabric Reliable Actors stavy a rozhraní.
+title: Spolehlivé Actors poznámky o serializace typu objektu actor
+description: Popisuje základní požadavky pro definování serializovatelných tříd, které lze použít k definování stavů a rozhraní spolehlivého objektu actor service fabric
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 876c4f5f45ff6c81a53274cf32e8bebecc1acfce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75349307"
 ---
-# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Poznámky k Service Fabric Reliable Actors serializaci typu
-Argumenty všech metod, výsledné typy úloh vrácených každou metodou v rozhraní objektu actor a objekty uložené ve Správci stavu objektu actor musí být [serializovatelné kontraktu dat](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). To platí také pro argumenty metod definovaných v [rozhraních událostí objektu actor](service-fabric-reliable-actors-events.md). (Metody rozhraní události objektu actor vždy vracejí typ void.)
+# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Poznámky k serializace typu Spolehlivé objekty actor service fabric
+Argumenty všech metod, typy výsledků úloh vrácených každou metodou v rozhraní objektu actor a objekty uložené ve správci stavu objektu musí být [datová smlouva serializovatelná](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). To platí také pro argumenty metod definovaných v [rozhraní události objektu actor](service-fabric-reliable-actors-events.md). (Metody rozhraní události objektu Actor vždy vrátí neplatné.)
 
 ## <a name="custom-data-types"></a>Vlastní datové typy
 V tomto příkladu následující rozhraní objektu actor definuje metodu, která vrací vlastní datový typ s názvem `VoicemailBox`:
@@ -32,7 +32,7 @@ public interface VoiceMailBoxActor extends Actor
 }
 ```
 
-Rozhraní je implementováno objektem Actor, který používá správce stavu k uložení objektu `VoicemailBox`:
+Rozhraní je implementováno objektem actor, který `VoicemailBox` používá správce stavu k uložení objektu:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -68,12 +68,12 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 ```
 
-V tomto příkladu je objekt `VoicemailBox` serializován v těchto případech:
+V tomto příkladu `VoicemailBox` je objekt serializován, když:
 
-* Objekt je přenášen mezi instancí objektu actor a volajícím.
-* Objekt je uložen ve Správci stavu, kde je trvalý na disk a replikován do jiných uzlů.
+* Objekt je přenášen mezi instancí objektu actor a volajícího.
+* Objekt je uložen ve správci stavu, kde je trvalý na disku a replikován do jiných uzlů.
 
-Rozhraní Reliable actor používá serializaci kontraktu DataContract. Proto je nutné vlastní datové objekty a jejich členy opatřit poznámkami pomocí atributů **DataContract** a **DataMember** v uvedeném pořadí.
+Architektura Reliable Actor používá serializaci DataContract. Proto vlastní datové objekty a jejich členy musí být anotovány s **DataContract** a **DataMember** atributy, v uvedeném pořadí.
 
 ```csharp
 [DataContract]
@@ -138,8 +138,8 @@ public class VoicemailBox implements Serializable
 
 ## <a name="next-steps"></a>Další kroky
 * [Životní cyklus objektu actor a uvolňování paměti](service-fabric-reliable-actors-lifecycle.md)
-* [Časovače a připomenutí objektu actor](service-fabric-reliable-actors-timers-reminders.md)
-* [Události objektu actor](service-fabric-reliable-actors-events.md)
-* [Vícenásobný přístup objektu actor](service-fabric-reliable-actors-reentrancy.md)
-* [Polymorfismus objektu actor a objektově orientované vzory návrhu](service-fabric-reliable-actors-polymorphism.md)
-* [Monitorování diagnostiky a výkonu objektu actor](service-fabric-reliable-actors-diagnostics.md)
+* [Časovače a připomenutí herce](service-fabric-reliable-actors-timers-reminders.md)
+* [Akce herce](service-fabric-reliable-actors-events.md)
+* [Herec reentrancy](service-fabric-reliable-actors-reentrancy.md)
+* [Herec kárný polymorfismus a objektově orientované návrhové vzory](service-fabric-reliable-actors-polymorphism.md)
+* [Diagnostika a sledování výkonu actoru](service-fabric-reliable-actors-diagnostics.md)

@@ -1,6 +1,6 @@
 ---
-title: Správa zachytávání paketů pomocí Azure Network Watcher-REST API | Microsoft Docs
-description: Tato stránka vysvětluje, jak spravovat funkci zachytávání paketů Network Watcher pomocí Azure REST API
+title: Správa zachytávání paketů pomocí sledování sítě Azure – rozhraní REST API | Dokumenty společnosti Microsoft
+description: Tato stránka vysvětluje, jak spravovat funkci zachytávání paketů sledování sítě pomocí rozhraní Azure REST API
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,56 +12,56 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 5199cf95452f93db2c2dd747fcabc67a6722d31e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840889"
 ---
-# <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Správa zachytávání paketů pomocí Azure Network Watcher s využitím Azure REST API
+# <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Správa zachytávání paketů pomocí Azure Network Watcher pomocí rozhraní Azure REST API
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
+> - [Portál Azure](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
-> - [REST API Azure](network-watcher-packet-capture-manage-rest.md)
+> - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
-Network Watcher Capture paketů umožňuje vytvářet relace zachycení pro sledování provozu do a z virtuálního počítače. K dispozici jsou filtry pro relaci zachycení, aby bylo možné zachytit pouze požadovaný provoz. Zachytávání paketů pomáhá diagnostikovat anomálie sítě interaktivně a aktivně. Mezi další použití patří shromažďování statistik sítě a získání informací o neoprávněných vniknutích k síti, k ladění komunikace mezi klientem a serverem a mnohem více. Díky tomu, že je možné vzdáleně aktivovat zachycení paketů, tato schopnost usnadňuje zátěžové zachycení paketů ručně a na požadovaném počítači, který šetří cenný čas.
+Zachycení paketu Sledování sítě umožňuje vytvářet relace sběru pro sledování provozu do a z virtuálního počítače. Filtry jsou k dispozici pro relaci zachycení, které zajistí, že zachytíte pouze požadovaný provoz. Zachytávání paketů pomáhá diagnostikovat anomálie sítě reaktivně i proaktivně. Mezi další použití patří shromažďování síťových statistik, získávání informací o síťových vniknutích, ladění komunikace mezi klientem a serverem a mnoho dalšího. Tím, že je schopna vzdáleně aktivovat zachycení paketů, tato schopnost zmírňuje zátěž ručního spuštění sběru paketů a na požadovaném počítači, což šetří cenný čas.
 
-Tento článek vás provede různými úlohami správy, které jsou aktuálně k dispozici pro zachytávání paketů.
+Tento článek vás provede různými úkoly správy, které jsou aktuálně k dispozici pro sběr paketů.
 
-- [**Získání zachytávání paketů**](#get-a-packet-capture)
-- [**Vypsat všechna zachytávání paketů**](#list-all-packet-captures)
-- [**Dotaz na stav zachytávání paketů**](#query-packet-capture-status)
-- [**Spustit zachytávání paketů**](#start-packet-capture)
-- [**Zastavení zachytávání paketů**](#stop-packet-capture)
-- [**Odstranění zachytávání paketů**](#delete-packet-capture)
+- [**Získání zachycení paketu**](#get-a-packet-capture)
+- [**Vypsat všechna zachycení paketů**](#list-all-packet-captures)
+- [**Dotaz na stav sběru paketů**](#query-packet-capture-status)
+- [**Spuštění sběru paketů**](#start-packet-capture)
+- [**Zastavení sběru paketů**](#stop-packet-capture)
+- [**Odstranění zachycení paketu**](#delete-packet-capture)
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto scénáři zavoláte rozhraní Network Watcher REST API, které spustí ověřování toku IP. ARMclient se používá k volání REST API s využitím PowerShellu. ARMClient se nachází v čokoládě na [ARMClient při čokoládě](https://chocolatey.org/packages/ARMClient) .
+V tomto scénáři zavoláte rozhraní API pro sledování sítě pro spuštění ověření toku IP. ARMclient se používá k volání rozhraní REST API pomocí prostředí PowerShell. ARMClient se nachází na chocolatey na [ARMClient na Chocolatey](https://chocolatey.org/packages/ARMClient)
 
-V tomto scénáři se předpokládá, že už jste postupovali podle kroků v části [vytvoření Network Watcher](network-watcher-create.md) k vytvoření Network Watcher.
+Tento scénář předpokládá, že jste již postupovali podle kroků v [části Vytvoření sledovacího programu sítě](network-watcher-create.md) k vytvoření sledovacího programu sítě.
 
-> Zachytávání paketů vyžaduje `AzureNetworkWatcherExtension`rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md).
+> Zachytávání paketů `AzureNetworkWatcherExtension`vyžaduje rozšíření virtuálního počítače . Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, navštivte [rozšíření virtuálního počítače Azure Network Watcher Agent pro Windows](../virtual-machines/windows/extensions-nwa.md) a pro virtuální počítač SIP na stránce Rozšíření [virtuálního počítače Azure Network Watcher Agent pro Linux](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="log-in-with-armclient"></a>Přihlášení pomocí ARMClient
+## <a name="log-in-with-armclient"></a>Přihlášení pomocí klienta ARMClient
 
 ```powershell
 armclient login
 ```
 
-## <a name="retrieve-a-virtual-machine"></a>Načíst virtuální počítač
+## <a name="retrieve-a-virtual-machine"></a>Načtení virtuálního počítače
 
-Spusťte následující skript, který vrátí virtuální počítač. Tyto informace jsou potřeba ke spuštění zachytávání paketů.
+Spusťte následující skript a vraťte virtuální počítač. Tyto informace jsou potřebné pro spuštění sběru paketů.
 
-Následující kód vyžaduje proměnné:
+Následující kód potřebuje proměnné:
 
-- **SubscriptionId** – ID předplatného se dá načíst taky pomocí rutiny **Get-AzSubscription** .
-- **resourceGroupName** – název skupiny prostředků, která obsahuje virtuální počítače.
+- **subscriptionID** – id předplatného lze také načíst pomocí rutiny **Get-AzSubscription.**
+- **resourceGroupName** - Název skupiny prostředků, která obsahuje virtuální počítače.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -70,7 +70,7 @@ $resourceGroupName = "<resource group name>"
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Z následujícího výstupu se v dalším příkladu použije ID virtuálního počítače.
+Z následujícího výstupu id virtuálního počítače se používá v následujícím příkladu.
 
 ```json
 ...
@@ -86,9 +86,9 @@ Z následujícího výstupu se v dalším příkladu použije ID virtuálního p
 ```
 
 
-## <a name="get-a-packet-capture"></a>Získání zachytávání paketů
+## <a name="get-a-packet-capture"></a>Získání zachycení paketu
 
-V následujícím příkladu se načte stav jednoho zachytávání paketů.
+Následující příklad získá stav zachycení jednoho paketu
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -97,7 +97,7 @@ $networkWatcherName = "NetworkWatcher_westcentralus"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}/querystatus?api-version=2016-12-01"
 ```
 
-Následující odpovědi jsou příklady typické odpovědi vracené při dotazování na stav zachytávání paketů.
+Následující odpovědi jsou příklady typické odpovědi vrácené při dotazování na stav zachycení paketu.
 
 ```json
 {
@@ -120,7 +120,7 @@ Následující odpovědi jsou příklady typické odpovědi vracené při dotazo
 }
 ```
 
-## <a name="list-all-packet-captures"></a>Vypsat všechna zachytávání paketů
+## <a name="list-all-packet-captures"></a>Vypsat všechna zachycení paketů
 
 Následující příklad získá všechny relace zachytávání paketů v oblasti.
 
@@ -131,7 +131,7 @@ $networkWatcherName = "NetworkWatcher_westcentralus"
 armclient get "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures?api-version=2016-12-01"
 ```
 
-Následující odpověď je příkladem typické odpovědi vracené při získávání všech zachycení paketů.
+Následující odpověď je příkladem typické odpovědi vrácené při získávání všech zachycení paketů
 
 ```json
 {
@@ -194,7 +194,7 @@ ture_17_23_15_364.cap",
 }
 ```
 
-## <a name="query-packet-capture-status"></a>Stav zachytávání paketů dotazů
+## <a name="query-packet-capture-status"></a>Stav zachycení paketů dotazu
 
 Následující příklad získá všechny relace zachytávání paketů v oblasti.
 
@@ -206,7 +206,7 @@ $packetCaptureName = "TestPacketCapture5"
 armclient get "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}/querystatus?api-version=2016-12-01"
 ```
 
-Následující odpověď je příkladem typické odpovědi vracené při dotazování na stav zachytávání paketů.
+Následující odpověď je příkladem typické odpovědi vrácené při dotazování na stav sběru paketů.
 
 ```json
 {
@@ -219,9 +219,9 @@ Následující odpověď je příkladem typické odpovědi vracené při dotazov
 }
 ```
 
-## <a name="start-packet-capture"></a>Spustit zachytávání paketů
+## <a name="start-packet-capture"></a>Spustit sběr paketů
 
-Následující příklad vytvoří zachytávání paketů na virtuálním počítači.  Příklad je parametrizovaný tak, aby umožňoval flexibilitu při vytváření příkladu.
+Následující příklad vytvoří zachytávání paketů ve virtuálním počítači.  Příklad je parametrizován, aby byla umožněna flexibilita při vytváření příkladu.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -271,9 +271,9 @@ $requestBody = @"
 armclient PUT "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}?api-version=2016-07-01" $requestbody
 ```
 
-## <a name="stop-packet-capture"></a>Zastavit zachytávání paketů
+## <a name="stop-packet-capture"></a>Zastavit sběr paketů
 
-Následující příklad zastaví zachytávání paketů na virtuálním počítači.  Příklad je parametrizovaný tak, aby umožňoval flexibilitu při vytváření příkladu.
+Následující příklad zastaví sběr paketů ve virtuálním počítači.  Příklad je parametrizován, aby byla umožněna flexibilita při vytváření příkladu.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -283,9 +283,9 @@ $packetCaptureName = "TestPacketCapture5"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}/stop?api-version=2016-12-01"
 ```
 
-## <a name="delete-packet-capture"></a>Odstranit zachytávání paketů
+## <a name="delete-packet-capture"></a>Odstranit sběr paketů
 
-Následující příklad odstraní zachytávání paketů na virtuálním počítači.  Příklad je parametrizovaný tak, aby umožňoval flexibilitu při vytváření příkladu.
+Následující příklad odstraní zachycení paketů ve virtuálním počítači.  Příklad je parametrizován, aby byla umožněna flexibilita při vytváření příkladu.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -297,13 +297,13 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 ```
 
 > [!NOTE]
-> Odstraněním zachytávání paketů se soubor neodstraní v účtu úložiště.
+> Odstraněním sběru paketů neodstraníte soubor v účtu úložiště
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu [Začínáme s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Průzkumník služby Storage se dá použít jiný nástroj. Další informace o Průzkumník služby Storage najdete na následujícím odkazu: [Průzkumník služby Storage](https://storageexplorer.com/)
+Pokyny ke stahování souborů z účtů azure storage najdete v článku [Začínáme s úložištěm objektů blob Azure pomocí rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Dalším nástrojem, který lze použít, je Průzkumník úložiště. Další informace o Průzkumníku úložiště naleznete zde na následujícím odkazu: [Průzkumník úložiště](https://storageexplorer.com/)
 
-Podívejte se, jak automatizovat zachycení paketů s výstrahami virtuálních počítačů zobrazením [Vytvoření výstrahy aktivované zachytávání paketů](network-watcher-alert-triggered-packet-capture.md) .
+Zjistěte, jak automatizovat zachytávání paketů pomocí upozornění virtuálního počítače zobrazením [zobrazení vytvoření záznamu aktivovaného zachycení paketu](network-watcher-alert-triggered-packet-capture.md)
 
 
 

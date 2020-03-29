@@ -1,6 +1,6 @@
 ---
-title: Neočekávaná chyba při povolování spuštění aplikace | Dokumentace Microsoftu
-description: Tento článek popisuje chyby, které mohou nastat při vyjadřování souhlasu s aplikací a co můžete dělat o nich
+title: Neočekávaná chyba při provádění souhlasu s žádostí | Dokumenty společnosti Microsoft
+description: Popisuje chyby, ke kterým může dojít během procesu souhlasu s aplikací, a co s nimi můžete dělat.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,66 +17,66 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65824944"
 ---
-# <a name="unexpected-error-when-performing-consent-to-an-application"></a>Neočekávaná chyba při povolování spuštění aplikace
+# <a name="unexpected-error-when-performing-consent-to-an-application"></a>Neočekávaná chyba při provádění souhlasu s aplikací
 
-Tento článek popisuje chyby, které se mohou vyskytnout při vyjadřování souhlasu s aplikace. Pokud řešíte výzev k udělení souhlasu neočekávané, které neobsahují žádné chybové zprávy, přečtěte si téma [scénáře ověřování pro službu Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
+Tento článek popisuje chyby, ke kterým může dojít během procesu souhlasu s aplikací. Pokud řešíte neočekávané výzvy k souhlasu, které neobsahují žádné chybové zprávy, přečtěte si článek [Scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
 
-Mnoho aplikací, které se integrují s Azure Active Directory, vyžadují oprávnění pro přístup k dalším prostředkům mohl fungovat. Když jsou tyto prostředky také integrované s Azure Active Directory, oprávnění pro přístup k nim je často požadovaná pomocí běžné rozhraní pro udělování souhlasu. Zobrazí se výzva k povolení spuštění, který obvykle probíhá prvním spuštění aplikace se používá, ale může vyskytovat i na pozdější použití aplikace.
+Mnoho aplikací, které se integrují se službou Azure Active Directory, vyžaduje oprávnění pro přístup k jiným prostředkům, aby fungovaly. Pokud jsou tyto prostředky také integrované se službou Azure Active Directory, oprávnění k přístupu k nim se často požaduje pomocí rámce společného souhlasu. Zobrazí se výzva k souhlasu, ke které obvykle dochází při prvním použití aplikace, ale může dojít také při následném použití aplikace.
 
-Musí být splněny pro uživatele na oprávnění, která aplikace vyžaduje souhlas určité podmínky. Nejsou-li tyto podmínky splněny, může dojít k následující chybě.
+Pro uživatele musí být splněny určité podmínky, aby mohl souhlasit s oprávněními, která aplikace vyžaduje. Pokud tyto podmínky nejsou splněny, může dojít k následujícím chybám.
 
-## <a name="requesting-not-authorized-permissions-error"></a>Vyžádání chyba Neautorizováno oprávnění
-* **AADSTS90093:** &lt;clientAppDisplayName&gt; vyžaduje jeden nebo více oprávnění, ke kterým máte Neautorizováno k udělení. Obraťte se na správce, kteří můžou udělit souhlas s vaším jménem této aplikace.
+## <a name="requesting-not-authorized-permissions-error"></a>Požadavek na chybu neautorizovaných oprávnění
+* **AADSTS90093:** &lt;clientAppDisplayName&gt; požaduje jedno nebo více oprávnění, která nejste oprávněni udělit. Obraťte se na správce, který může souhlasit s touto aplikací vaším jménem.
 
-Tato chyba nastane, pokud uživatel, který není správcem společnosti se pokusí použít aplikaci, která žádá o oprávnění, která lze udělit pouze správce. Tuto chybu můžete vyřešit microsoftem nebo správcem udělení přístupu k aplikaci jménem organizace.
+K této chybě dochází, když se uživatel, který není správcem společnosti, pokusí použít aplikaci, která požaduje oprávnění, která může udělit pouze správce. Tuto chybu lze vyřešit správcem, který uděluje přístup k aplikaci jménem své organizace.
 
-## <a name="policy-prevents-granting-permissions-error"></a>Zásada zabraňuje udělení oprávnění chyba
-* **AADSTS90093:** Správce &lt;tenanta tenantDisplayName&gt; nastavil zásadu, která vám brání v poskytování &lt;název aplikace&gt; oprávnění vyžaduje. Obraťte se na správce &lt;tenanta tenantDisplayName&gt;, který můžete udělit oprávnění k této aplikaci za vás.
+## <a name="policy-prevents-granting-permissions-error"></a>Zásada zabraňuje chybě udělení oprávnění.
+* **AADSTS90093:** Správce &lt;tenantDisplayName&gt; nastavil zásadu, která zabraňuje udělení &lt;názvu&gt; aplikace oprávnění, která požaduje. Obraťte se &lt;na&gt;správce tenantdisplayname , který může udělit oprávnění k této aplikaci vaším jménem.
 
-Tato chyba nastane, pokud správce společnosti vypne možnost, aby uživatelé vyjádřili souhlas aplikacím, potom se pokusí použít aplikaci, která vyžaduje souhlas uživatele bez oprávnění správce. Tuto chybu můžete vyřešit microsoftem nebo správcem udělení přístupu k aplikaci jménem organizace.
+K této chybě dochází, když správce společnosti vypne možnost, aby uživatelé uchylovat k aplikacím, pak uživatel bez správce pokusí použít aplikaci, která vyžaduje souhlas. Tuto chybu lze vyřešit správcem, který uděluje přístup k aplikaci jménem své organizace.
 
-## <a name="intermittent-problem-error"></a>Chyba přerušovaně docházelo k problému
-* **AADSTS90090:** Vypadá to procesu přihlašování došlo k chybě občasný problém záznam jste se pokusili získat udělit oprávnění &lt;clientAppDisplayName&gt;. Zkuste to znovu později.
+## <a name="intermittent-problem-error"></a>Občasná chyba problému
+* **AADSTS90090:** Vypadá to, že proces přihlášení došlo k občasnému problému se &lt;záznamem oprávnění, která jste se pokusili udělit clientAppDisplayName&gt;. opakujte akci později.
 
-Tato chyba označuje, že má došlo k chybě na straně přerušované služby. Se dá vyřešit pokusem o souhlas s aplikací znovu.
+Tato chyba označuje, že došlo k občasnému problému na straně služby. To lze vyřešit pokusem o souhlas s aplikací znovu.
 
-## <a name="resource-not-available-error"></a>Prostředek není k dispozici – chyba
-* **AADSTS65005:** Aplikace &lt;clientAppDisplayName&gt; požadovaná oprávnění pro přístup k prostředku &lt;resourceAppDisplayName&gt; , který není k dispozici. 
+## <a name="resource-not-available-error"></a>Chyba zdroje není k dispozici
+* **AADSTS65005:** Klient &lt;aplikaceAppDisplayName&gt; si vyžádal oprávnění &lt;pro přístup&gt; k prostředku AppDisplayName, který není k dispozici. 
 
 Obraťte se na vývojáře aplikace.
 
-##  <a name="resource-not-available-in-tenant-error"></a>Prostředek není dostupný v tenantovi chyba
-* **AADSTS65005:** &lt;clientAppDisplayName&gt; žádá o přístup k prostředku &lt;resourceAppDisplayName&gt; , který není k dispozici ve vaší organizaci &lt;tenanta tenantDisplayName &gt;. 
+##  <a name="resource-not-available-in-tenant-error"></a>Prostředek není k dispozici v chybě klienta
+* **AADSTS65005:** &lt;&gt; clientAppDisplayName požaduje přístup k &lt;prostředku ProstředkuAppDisplayName,&gt; který &lt;není k&gt;dispozici ve vaší organizaci tenantDisplayName . 
 
-Zajistěte, aby byl tento prostředek k dispozici nebo se obraťte na správce &lt;tenanta tenantDisplayName&gt;.
+Ujistěte se, že tento prostředek &lt;je&gt;k dispozici, nebo obraťte se na správce tenantDisplayName .
 
-## <a name="permissions-mismatch-error"></a>Chybová zpráva o neshodě oprávnění
-* **AADSTS65005:** Požadovaná aplikace svolení k přístupu k prostředku &lt;resourceAppDisplayName&gt;. Tento požadavek se nezdařil, protože se neshoduje, jak byla předem nakonfigurované aplikace při registraci aplikace. Obraťte se na aplikace vendor.* *
+## <a name="permissions-mismatch-error"></a>Chyba neshody oprávnění
+* **AADSTS65005:** Aplikace požádala o &lt;souhlas s&gt;přístupem k prostředku ResourceDisplayName . Tento požadavek se nezdařil, protože neodpovídá tomu, jak byla aplikace předkonfigurována během registrace aplikace. Obraťte se na dodavatele aplikace.**
 
-Tyto chyby, které všechny dojít, když aplikace, kterou uživatel se pokouší o souhlas s žádá o oprávnění pro přístup k aplikaci prostředku, který nebyl nalezen v adresáři organizace (tenant). Tato situace může nastat z několika důvodů:
+Tyto chyby všechny dojít, když aplikace uživatel se snaží souhlas it žádá o oprávnění pro přístup k aplikaci prostředků, které nelze nalézt v adresáři organizace (tenanta). Tato situace může nastat z několika důvodů:
 
--   Vývojář aplikace klienta má své aplikace správně nakonfigurována, by ji požádáte o přístup k je neplatný prostředek. V takovém případě musí vývojář aplikace aktualizovat konfiguraci klientské aplikace k vyřešení tohoto problému.
+-   Vývojář klientské aplikace nakonfiguroval svou aplikaci nesprávně, což způsobilo, že požádal o přístup k neplatnému prostředku. V takovém případě musí vývojář aplikace aktualizovat konfiguraci klientské aplikace, aby tento problém vyřešil.
 
--   Instanční objekt služby představuje cílové aplikace prostředků neexistuje v organizaci, nebo existovala v minulosti, ale byla odebrána. K vyřešení tohoto problému, musí být zřízená instančního objektu pro aplikace prostředků v organizaci, aby klientská aplikace můžete požádat o oprávnění k němu. Instanční objekt služby je možné zřídit různými způsoby v závislosti na typu aplikace, včetně:
+-   Instanční objekt představující cílovou aplikaci prostředků neexistuje v organizaci nebo existoval v minulosti, ale byl odebrán. Chcete-li tento problém vyřešit, instanční objekt pro aplikaci prostředků musí být zřízena v organizaci, aby klientská aplikace může požádat o oprávnění k němu. Instanční objekt služby lze zřídit několika způsoby, v závislosti na typu aplikace, včetně:
 
-    -   Získání předplatného pro aplikace prostředků (Microsoft publikované aplikace)
+    -   Získání předplatného pro aplikaci prostředků (aplikace publikované společností Microsoft)
 
-    -   Vyjadřuje se souhlas se aplikace prostředků
+    -   Souhlas s aplikací prostředků
 
-    -   Udělení oprávnění aplikace prostřednictvím portálu Azure portal
+    -   Udělení oprávnění k aplikaci prostřednictvím portálu Azure
 
-    -   Přidání aplikace v galerii aplikací Azure AD
+    -   Přidání aplikace z Galerie aplikací Azure AD
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 
-[Aplikace, oprávnění a vyjádření souhlasu v Azure Active Directory (koncového bodu v1)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
+[Aplikace, oprávnění a souhlas ve službě Azure Active Directory (koncový bod v1)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
 
-[Rozsahy, oprávnění a vyjádření souhlasu v Azure Active Directory (koncový bod v2.0)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
+[Obory, oprávnění a souhlas ve službě Azure Active Directory (koncový bod v2.0)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
 
 

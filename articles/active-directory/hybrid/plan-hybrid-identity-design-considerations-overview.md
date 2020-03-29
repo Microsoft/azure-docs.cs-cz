@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory faktory návrhu hybridních identit – přehled | Dokumentace Microsoftu
-description: Přehled a mapa obsahu z Průvodce aspekty návrhu hybridní Identity
+title: Aspekty návrhu hybridní identity služby Azure Active Directory – přehled | Dokumenty společnosti Microsoft
+description: Přehled a mapa obsahu průvodce aspekty návrhu hybridní identity
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,52 +17,52 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381452"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Důležité informace k návrhu hybridní identity Azure Active Directory
-Zařízení se systémem příjemce se proliferating světě a se snadno přijmout cloudové aplikace software jako služba (SaaS). V důsledku toho je náročné mít pod kontrolou přístupu uživatelů aplikace mezi interní datacentry a cloudovými platformami.  
+Zařízení založená na spotřebitelích se rozrůstají v podnikovém světě a aplikace s cloudovým softwarem jako službou (SaaS) se snadno přijímají. V důsledku toho je udržování kontroly nad přístupem uživatelů k aplikacím napříč interními datovými centry a cloudovými platformami náročné.  
 
-Řešení pro správu identit od Microsoftu pokrývá místní i cloudové funkce a vytvářejí jedinou identitu uživatele pro ověřování a autorizaci u všech prostředků bez ohledu na umístění. Tento koncept se označuje jako hybridní identita. Existují různé návrhu a možnosti konfigurace pro hybridní identitu pomocí řešení Microsoftu a v některých případech může být obtížné určit, která kombinace bude nejlépe vyhovovat potřebám vaší organizace. 
+Řešení pro správu identit od Microsoftu pokrývá místní i cloudové funkce a vytvářejí jedinou identitu uživatele pro ověřování a autorizaci u všech prostředků bez ohledu na umístění. Tento koncept se označuje jako hybridní identita. Existují různé možnosti návrhu a konfigurace pro hybridní identitu pomocí řešení společnosti Microsoft a v některých případech může být obtížné určit, která kombinace nejlépe vyhovuje potřebám vaší organizace. 
 
-Tento průvodce aspekty návrhu hybridní Identity vám pomůže pochopit, jak k navržení řešení hybridní identity, která nejlíp odpovídá podnikání a technologickým požadavkům vaší organizace.  Tento průvodce Detailně popisuje sérii kroků a úloh, které můžete provést při návrhu řešení hybridní identity, který splňuje jedinečné požadavky vaší organizace. Ve všech krocích a úlohách, bude prezentovat relevantní technologie a funkce Možnosti dostupné pro organizace ke splnění funkčních a kvalitu služeb (například dostupnost, škálovatelnost, výkon, možnosti správy a zabezpečení) v příručce úroveň požadavky. 
+Tento průvodce aspekty návrhu hybridní identity vám pomůže pochopit, jak navrhnout řešení hybridní identity, které nejlépe vyhovuje obchodním a technologickým potřebám vaší organizace.  Tato příručka podrobně popisuje řadu kroků a úkolů, které můžete sledovat, aby vám pomohla navrhnout hybridní identity řešení, které splňuje jedinečné požadavky vaší organizace. V průběhu kroků a úkolů průvodce představí příslušné technologie a možnosti funkcí, které mají organizace k dispozici, aby splnily úroveň funkčnosti a kvality služeb (jako je dostupnost, škálovatelnost, výkon, možnosti správy a zabezpečení). Požadavky. 
 
-Konkrétně cílů Průvodce důležité informace o návrhu hybridní identity se odpovědět na následující otázky: 
+Konkrétně aspekty návrhu hybridní identity, které jsou vodítkem pro dosažení cílů, jsou zodpovězení následujících otázek: 
 
-* Jaké otázky potřebuji klást otázky a odpovědi k podpoře návrhu hybridní identity specifické technologii nebo doméně problému, která nejlépe splňuje mé požadavky?
-* Jakou posloupnost aktivit by se měla dokončit navrhnout řešení s hybridní identitou technologii nebo doménu problému? 
-* Jaké hybridní identity technologické a konfigurační možnosti jsou dostupné ke splnění mých požadavků? Jaké jsou kompromisy mezi těmito možnostmi tak, aby se dalo vybrat nejlepší možnost pro firmy?
+* Jaké otázky je třeba se zeptat a odpovědět na řídit hybridní identity-specifický design pro technologii nebo problém domény, která nejlépe splňuje mé požadavky?
+* Jakou posloupnost aktivit mám dokončit, abych navrhl řešení hybridní identity pro technologii nebo problémovou doménu? 
+* Jaká technologie hybridní identity a možnosti konfigurace jsou k dispozici, aby mi pomohly splnit mé požadavky? Jaké jsou kompromisy mezi těmito možnostmi, abych mohl vybrat nejlepší možnost pro své podnikání?
 
 ## <a name="who-is-this-guide-intended-for"></a>Komu je tato příručka určená?
- Doporučení, CITO, Chief Identity architekty, podnikové architekty a architekti informačních technologií zodpovědní za návrhy řešení s hybridní identitou pro střední a velké organizace.
+ CIO, CITO, Chief Identity Architects, Enterprise Architects a IT Architects zodpovědní za návrh řešení hybridní identity pro střední nebo velké organizace.
 
-## <a name="how-can-this-guide-help-you"></a>Jak vám může tento průvodce pomoct?
-Tento průvodce můžete porozumět procesu návrhu řešení hybridní identity, aby bylo možné integrovat vaše aktuální řešení identit v místním systému pro správu identit v cloudu. 
+## <a name="how-can-this-guide-help-you"></a>V čem vám může tento průvodce pomoct?
+Pomocí této příručky můžete pochopit, jak navrhnout řešení hybridní identity, které je schopno integrovat cloudový systém správy identit s aktuálním místním řešením identit. 
 
-Následující obrázek ukazuje příklad řešení s hybridní identitou, která umožňuje správcům IT spravovat jejich aktuální Windows Server Active Directory řešení, které jsou umístěny v místním integrovat Microsoft Azure Active Directory a umožníte uživatelům používat jednotné přihlašování ( Jednotné přihlašování) napříč aplikacemi, které jsou umístěné v cloudu i lokálně.
+Následující obrázek znázorňuje příklad hybridního řešení identit, které správcům IT umožňuje spravovat integraci aktuálního řešení služby Windows Server Active Directory umístěného místně se službou Microsoft Azure Active Directory, aby uživatelé mohli používat jednotné přihlašování ( SSO) napříč aplikacemi umístěnými v cloudu a místně.
 
-![Příklad:](media/plan-hybrid-identity-design-considerations/hybridID-example.png)
+![Příklad](media/plan-hybrid-identity-design-considerations/hybridID-example.png)
 
-Na obrázku výše je příkladem řešení s hybridní identitou, která se využívají cloudové služby pro integraci místních funkcí, aby bylo možné poskytovat jednotné prostředí pro proces ověřování koncového uživatele a usnadnit správu těch IT prostředky. I v tomto příkladu může být běžný scénář, bude pravděpodobně lišit od příkladu znázorněno na obrázku 1 kvůli různým požadavkům návrhu hybridní identity každý organizace. 
+Výše uvedený obrázek je příkladem řešení hybridní identity, které využívá cloudové služby k integraci s místními funkcemi, aby poskytlo jediné prostředí procesu ověřování koncovým uživatelům a usnadnilo správu IT těchto Zdroje. I když tento příklad může být běžný scénář, každý návrh hybridní identity každé organizace se pravděpodobně bude lišit od příkladu znázorněného na obrázku 1 z důvodu různých požadavků. 
 
-Tato příručka obsahuje řadu kroků a úloh, které můžete provést k navržení řešení hybridní identity, který splňuje jedinečné požadavky vaší organizace. V následujících krocích a úlohách uvádí Průvodce relevantní technologie a možnosti funkcí, které jsou k dispozici pro splnění funkčních a úrovni požadavky na kvalitu služeb pro vaši organizaci.
+Tato příručka obsahuje řadu kroků a úkolů, které můžete sledovat při návrhu řešení hybridní identity, které splňuje jedinečné požadavky vaší organizace. V následujících krocích a úkolech průvodce představuje příslušné technologie a možnosti funkcí, které máte k dispozici, abyste splnili požadavky na funkční úroveň a úroveň kvality služeb pro vaši organizaci.
 
-**Předpoklady**: Máte nějaké zkušenosti s Windows serverem, Active Directory Domain Services a Azure Active Directory. V tomto dokumentu se předpokládá, že hledáte způsob tato řešení můžete svých obchodních potřeb sami, nebo integrované řešení.
+**Předpoklady**: Máte určité zkušenosti se systémy Windows Server, Službou Active Directory Domain Services a Azure Active Directory. V tomto dokumentu se předpokládá, že hledáte, jak tato řešení mohou uspokojit vaše obchodní potřeby samostatně nebo v integrovaném řešení.
 
-## <a name="design-considerations-overview"></a>Přehled aspektů návrhu
-Tento dokument obsahuje sadu kroků a úloh, které můžete provést k navržení řešení hybridní identity, která nejlépe vyhovuje vašim požadavkům. Kroky uvádíme v seřazené posloupnosti. Aspekty návrhu, které se seznámíte v dalších krocích se může vyžadovat, budete muset změnit rozhodnutí, které jste udělali v dřívějších krocích, ale kvůli konfliktním volbám návrhu. Každý pokusu o vytvoření vás upozorní na potenciální konflikty návrhu v celém dokumentu. 
+## <a name="design-considerations-overview"></a>Přehled aspekty návrhu
+Tento dokument obsahuje sadu kroků a úkolů, které můžete sledovat při návrhu řešení hybridní identity, které nejlépe vyhovuje vašim požadavkům. Kroky uvádíme v seřazené posloupnosti. Důležité informace o návrhu, které se dozvíte v pozdějších krocích, mohou vyžadovat změnu rozhodnutí, která jste provedli v předchozích krocích, avšak kvůli protichůdným volbám návrhu. Každý pokus je upozornit na potenciální konflikty návrhu v celém dokumentu. 
 
-Dostanete se na design, která nejlépe splňuje vaše požadavky dopracujete že kroky projdete tolikrát, kolikrát podle potřeby, abyste zapracovali všechny aspekty uvedené v dokumentu. 
+K návrhu, který nejlépe vyhovuje vašim požadavkům, se dostanete až po opakování kroků tolikrát, kolikrát je to nutné k začlenění všech aspektů do dokumentu. 
 
-| Hybridní identita fáze | Seznam témat |
+| Fáze hybridní identity | Seznam témat |
 | --- | --- |
-| Určení požadavků na identitu |[Určit, potřeb firmy](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Určete požadavky na synchronizaci adresáře](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [Určení požadavků na ověření službou Multi-Factor Authentication](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [Definování strategie přijetí hybridní identity](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
-| Plán pro zlepšení zabezpečení dat prostřednictvím řešení využívá silné identity |[Určení požadavků na ochranu dat](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [Určení požadavků na správu obsahu](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [Určete požadavky na řízení přístupu](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Určení požadavků na reakce na incidenty](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Definování strategie ochrany dat](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
-| Plánování životního cyklu hybridní identity |[Určení úloh správy hybridní identity](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Správa synchronizace](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Určení strategie přijetí správy hybridní identity](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
+| Určení požadavků na identitu |[Určení obchodních potřeb](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Určení požadavků na synchronizaci adresářů](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [Určení vícefaktorových požadavků na ověřování](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [Definování strategie přechodu hybridní identity](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
+| Plán pro zvýšení zabezpečení dat prostřednictvím řešení silné identity |[Určení požadavků na ochranu údajů](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [Určení požadavků na správu obsahu](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [Určení požadavků na řízení přístupu](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Určení požadavků na reakce na incidenty](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Definování strategie ochrany údajů](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
+| Plánování životního cyklu hybridní identity |[Určení úloh správy hybridní identity](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Správa synchronizace](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Určit strategii přijetí hybridní správy identit](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 
 ## <a name="next-steps"></a>Další kroky
-[Určení požadavků na identity](plan-hybrid-identity-design-considerations-business-needs.md)
+[Určení požadavků na identitu](plan-hybrid-identity-design-considerations-business-needs.md)
 

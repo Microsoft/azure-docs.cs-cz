@@ -1,51 +1,51 @@
 ---
-title: Vytvoření zásad zálohování pomocí REST API
-description: V tomto článku se naučíte, jak vytvářet a spravovat zásady zálohování (plánování a uchovávání) pomocí REST API.
+title: Vytvoření zásad zálohování pomocí rozhraní REST API
+description: V tomto článku se dozvíte, jak vytvořit a spravovat zásady zálohování (plán a uchovávání informací) pomocí rozhraní REST API.
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963848"
 ---
-# <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Vytvoření zásad služby Azure Recovery Services Backup pomocí REST API
+# <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Vytvoření zásad zálohování služby Azure Recovery Services pomocí rozhraní REST API
 
-Postup vytvoření zásady zálohování pro trezor služby Azure Recovery Services je popsaný v [dokumentu REST API zásad](/rest/api/backup/protectionpolicies/createorupdate). Tento dokument můžeme použít jako referenci k vytvoření zásady pro zálohování virtuálních počítačů Azure.
+Kroky k vytvoření zásady zálohování pro trezor služby Azure Recovery Services jsou uvedeny v [dokumentu rozhraní REST API zásad](/rest/api/backup/protectionpolicies/createorupdate). Využijme tento dokument jako odkaz k vytvoření zásad pro zálohování virtuálních počítačů Azure.
 
-## <a name="create-or-update-a-policy"></a>Vytvořit nebo aktualizovat zásadu
+## <a name="create-or-update-a-policy"></a>Vytvoření nebo aktualizace zásady
 
-Pokud chcete vytvořit nebo aktualizovat zásady Azure Backup, použijte následující operaci *vložení* .
+Chcete-li vytvořit nebo aktualizovat zásady zálohování Azure, použijte následující operaci *PUT*
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
-`{policyName}` a `{vaultName}` jsou k dispozici v identifikátoru URI. Další informace jsou k dispozici v textu žádosti.
+A `{policyName}` `{vaultName}` jsou k dispozici v identifikátoru URI. Další informace jsou uvedeny v textu požadavku.
 
-## <a name="create-the-request-body"></a>Vytvoření textu žádosti
+## <a name="create-the-request-body"></a>Vytvoření těla požadavku
 
-Pokud například chcete vytvořit zásadu pro zálohování virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
+Chcete-li například vytvořit zásadu pro zálohování virtuálních počítačích Azure, jsou následující součásti těla požadavku.
 
 |Name (Název)  |Požaduje se  |Typ  |Popis  |
 |---------|---------|---------|---------|
-|properties     |   Pravda      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | Vlastnosti ProtectionPolicyResource        |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | Vlastnosti ProtectionPolicyResource        |
 |tags     |         | Objekt        |  Značky prostředků       |
 
-Úplný seznam definic v těle žádosti najdete v [dokumentu zásady zálohování REST API](/rest/api/backup/protectionpolicies/createorupdate).
+Úplný seznam definic v těle požadavku naleznete v [dokumentu rozhraní REST API zásad zálohování](/rest/api/backup/protectionpolicies/createorupdate).
 
-### <a name="example-request-body"></a>Příklad textu žádosti
+### <a name="example-request-body"></a>Ukázkové tělo požadavku
 
-Následující text požadavku definuje zásady zálohování pro zálohy virtuálních počítačů Azure.
+Následující tělo požadavku definuje zásady zálohování pro zálohování virtuálních počítačích Azure.
 
-Zásada uvádí:
+Politika říká:
 
-- Využijte týdenní zálohování každé pondělí, středu, čtvrtek v 10:00. tichomořského času.
-- Zachovejte zálohy každé pondělí, středu, čtvrtek po dobu jednoho týdne.
-- Zachovejte zálohy provedené v každé první středu a třetí čtvrtek v měsíci po dobu dvou měsíců (potlačí předchozí podmínky uchování, pokud existují).
-- Zachovejte zálohy ve čtvrtém pondělí a čtvrtém čtvrtek v únoru a listopadu po dobu čtyř let (potlačí předchozí podmínky uchování, pokud existují).
+- Každé pondělí, středu a čtvrtek v 10:00 tichomořského standardního času si můžete každý týden zálohovat.
+- Uchovávejte zálohy pořízené každé pondělí, středu, čtvrtek po dobu jednoho týdne.
+- Uchovávejte zálohy pořízené každou první středu a třetí čtvrtek v měsíci po dobu dvou měsíců (přepíše předchozí podmínky uchovávání, pokud existují).
+- Zachovat zálohy odebrané čtvrté pondělí a čtvrtý čtvrtek v únoru a listopadu po dobu čtyř let (přepíše předchozí podmínky uchovávání, pokud existuje).
 
 ```json
 {
@@ -129,22 +129,22 @@ Zásada uvádí:
 ```
 
 > [!IMPORTANT]
-> Formáty času pro plán a uchování podporují pouze datum a čas. Nepodporují pouze formát času.
+> Formáty času pro podporu plánu a uchovávání pouze DateTime. Nepodporují formát času sám.
 
 ## <a name="responses"></a>Odezvy
 
-Vytvoření nebo aktualizace zásad zálohování je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
+Vytvoření nebo aktualizace zásad zálohování je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která je třeba sledovat samostatně.
 
-Při vytvoření jiné operace vrátí dvě odpovědi: 202 (přijato) a po dokončení této operace pak 200 (OK).
+Vrátí dvě odpovědi: 202 (Přijato) při vytvoření jiné operace a potom 200 (OK) po dokončení této operace.
 
 |Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
-|200 OK     |    [PolicyResource ochrany](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
-|202 přijato     |         |     Přijata    |
+|200 OK     |    [Zdroj zásad ochrany](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
+|202 Přijato     |         |     Accepted    |
 
 ### <a name="example-responses"></a>Příklady odpovědí
 
-Jakmile odešlete žádost o *vložení* pro vytvoření nebo aktualizaci zásady, počáteční odpověď bude 202 (přijato) s hlavičkou umístění nebo Azure-Async-Header.
+Po odeslání *put* žádost o vytvoření nebo aktualizaci zásad, počáteční odpověď je 202 (Přijato) s hlavičkou umístění nebo Azure-async-header.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -164,13 +164,13 @@ Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation s jednoduchým příkazem *Get* .
+Potom sledujte výslednou operaci pomocí hlavičky umístění nebo hlavičky Azure-AsyncOperation pomocí jednoduchého příkazu *GET.*
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 ```
 
-Po dokončení operace vrátí 200 (OK) k obsahu zásad v těle odpovědi.
+Po dokončení operace vrátí 200 (OK) s obsahem zásad v těle odpovědi.
 
 ```json
 {
@@ -258,13 +258,13 @@ Po dokončení operace vrátí 200 (OK) k obsahu zásad v těle odpovědi.
 }
 ```
 
-Pokud se pro ochranu položky už používá zásada, bude mít jakákoli aktualizace v zásadě za následek [úpravu ochrany](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection) všech těchto přidružených položek.
+Pokud se zásada již používá k ochraně položky, všechny aktualizace v zásadách bude mít za následek [změnu ochrany](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection) pro všechny tyto přidružené položky.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Povolte ochranu pro nechráněný virtuální počítač Azure](backup-azure-arm-userestapi-backupazurevms.md).
+[Povolte ochranu nechráněného virtuálního počítače Azure](backup-azure-arm-userestapi-backupazurevms.md).
 
-Další informace o rozhraních REST API Azure Backup najdete v následujících dokumentech:
+Další informace o rozhraních API Azure Backup REST najdete v následujících dokumentech:
 
-- [Poskytovatel Azure Recovery Services REST API](/rest/api/recoveryservices/)
+- [Rozhraní REST ROZHRANÍ REST ZPROSTŘEDKOVATELE Služby Azure Recovery Services](/rest/api/recoveryservices/)
 - [Začínáme s Azure REST API](/rest/api/azure/)

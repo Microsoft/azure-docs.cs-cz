@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k Azure Traffic Analytics | Microsoft Docs
+title: Azure traffic analytics nejčastější dotazy | Dokumenty společnosti Microsoft
 description: Získejte odpovědi na některé nejčastější dotazy týkající se analýzy provozu.
 services: network-watcher
 documentationcenter: na
@@ -12,58 +12,58 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
 ms.openlocfilehash: 5e31ed905f05070c8715a63ef3386b0006df0a75
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840617"
 ---
-# <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastějších dotazech
+# <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics nejčastější dotazy
 
-Tento článek se shromažďuje na jednom místě mnoha nejčastějších dotazů týkajících se analýzy provozu v Azure Network Watcher.
+Tento článek shromažďuje na jednom místě mnoho nejčastěji kladených otázek týkajících se analýzy provozu v Azure Network Watcher.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="what-are-the-prerequisites-to-use-traffic-analytics"></a>Jaké jsou požadavky na používání analýzy provozu?
+## <a name="what-are-the-prerequisites-to-use-traffic-analytics"></a>Jaké jsou předpoklady pro použití analýzy provozu?
 
-Analýza provozu vyžaduje následující předpoklady:
+Traffic Analytics vyžaduje následující požadavky:
 
-- Network Watcher s povoleným předplatným.
-- Protokoly toku NSG (Network Security Group) jsou povolené pro skupin zabezpečení sítě, které chcete monitorovat.
-- Účet Azure Storage pro ukládání protokolů nezpracovaných toků.
+- Předplatné s povoleným sledováním sítě.
+- Protokoly toku skupiny zabezpečení sítě (NSG) jsou povoleny pro skupiny zabezpečení sítě, které chcete sledovat.
+- Účet Azure Storage pro ukládání nezpracovaných protokolů toku.
 - Pracovní prostor Azure Log Analytics s přístupem pro čtení a zápis.
 
-Aby bylo možné povolit analýzu provozu, musí váš účet splňovat jednu z následujících možností:
+Aby byla analýza provozu povolena, musí váš účet splňovat jednu z následujících možností:
 
-- Váš účet musí mít v oboru předplatného jeden z následujících rolí řízení přístupu na základě role (RBAC): vlastník, přispěvatel, čtenář nebo přispěvatel sítě.
-- Pokud váš účet není přiřazený k některé z výše uvedených rolí, musí být přiřazený k vlastní roli, která je přiřazená k následujícím akcím na úrovni předplatného.
+- Váš účet musí mít některou z následujících rolí řízení přístupu na základě rolí (RBAC) v oboru předplatného: vlastník, přispěvatel, čtenář nebo přispěvatel sítě.
+- Pokud váš účet není přiřazen k jedné z dříve uvedených rolí, musí být přiřazen k vlastní roli, která je přiřazena následující akce, na úrovni předplatného.
             
     - Microsoft.Network/applicationGateways/read
-    - Microsoft. Network/Connections/Read
-    - Microsoft.Network/loadBalancers/read 
+    - Microsoft.Network/connections/read
+    - Microsoft.Network/loadBalancers/čtení 
     - Microsoft.Network/localNetworkGateways/read 
     - Microsoft.Network/networkInterfaces/read 
     - Microsoft.Network/networkSecurityGroups/read 
-    - Microsoft.Network/publicIPAddresses/read
-    - Microsoft. Network/routeTables/Read
+    - Microsoft.Network/publicIPAdresy/čtení
+    - Microsoft.Network/routeTables/read
     - Microsoft.Network/virtualNetworkGateways/read 
     - Microsoft.Network/virtualNetworks/read
         
-Postup kontroly rolí přiřazených uživateli pro předplatné:
+Kontrola rolí přiřazených uživateli pro předplatné:
 
-1. Přihlaste se k Azure pomocí **přihlašovacích údajů-AzAccount**. 
+1. Přihlaste se k Azure pomocí **Login-AzAccount**. 
 
-2. Vyberte požadované předplatné pomocí **Select-AzSubscription**. 
+2. Vyberte požadované předplatné pomocí **select-azsubscription**. 
 
-3. Pokud chcete zobrazit seznam všech rolí, které jsou přiřazené k zadanému uživateli, použijte příkaz **Get-AzRoleAssignment-SignInName [User email]-IncludeClassicAdministrators**. 
+3. Chcete-li vypsat všechny role, které jsou přiřazeny určenému uživateli, použijte **Get-AzRoleAssignment -SignInName [user email] -IncludeClassicAdministrators**. 
 
-Pokud nevidíte žádný výstup, obraťte se na příslušného Správce předplatného a získejte přístup ke spuštění příkazů. Další podrobnosti najdete v tématu [Správa řízení přístupu na základě rolí pomocí Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+Pokud nevidíte žádný výstup, obraťte se na příslušného správce předplatného a získejte přístup ke spuštění příkazů. Další podrobnosti najdete [v tématu Správa řízení přístupu na základě rolí pomocí Azure PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 
-## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Ve kterých oblastech Azure je Analýza provozu k dispozici?
+## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Ve kterých oblastech Azure je služba Traffic Analytics dostupná?
 
-Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli z následujících podporovaných oblastí:
+Analýzy provozu pro sítě sítě nsg můžete použít v některé z následujících podporovaných oblastí:
 - Střední Kanada
 - USA – středozápad
 - USA – východ
@@ -77,19 +77,19 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 - Západní Evropa
 - Severní Evropa
 - Brazílie – jih
-- Velká Británie – západ
+- Spojené království – západ
 - Spojené království – jih
 - Austrálie – východ
 - Austrálie – jihovýchod 
 - Východní Asie
 - Jihovýchodní Asie
-- Korea – střed
-- Střední Indie
-- Jižní Indie
+- Jižní Korea – střed
+- Indie – střed
+- Indie – jih
 - Japonsko – východ
 - Japonsko – západ
-- US Gov – Virginie
-- Čína – východ 2
+- USA (Gov) – Virginia
+- Čína východ 2
 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 - Střední Kanada
@@ -104,85 +104,85 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 - Francie – střed
 - Západní Evropa
 - Severní Evropa
-- Velká Británie – západ
+- Spojené království – západ
 - Spojené království – jih
 - Austrálie – východ
 - Austrálie – jihovýchod
 - Východní Asie
 - Jihovýchodní Asie 
-- Korea – střed
-- Střední Indie
+- Jižní Korea – střed
+- Indie – střed
 - Japonsko – východ
-- US Gov – Virginie
-- Čína – východ 2
+- USA (Gov) – Virginia
+- Čína východ 2
 
-## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Může skupin zabezpečení sítě povolit protokolování toků v různých oblastech, než je můj pracovní prostor?
+## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Mohou nsGy povolit protokoly toku pro být v různých oblastech než můj pracovní prostor?
 
-Ano, tyto skupin zabezpečení sítě můžou být v různých oblastech, než je váš pracovní prostor Log Analytics.
+Ano, tyto soubory nsg mohou být v různých oblastech než váš pracovní prostor Analýzy protokolů.
 
-## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>Dá se víc skupin zabezpečení sítě nakonfigurovat v jednom pracovním prostoru?
+## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>Může být v rámci jednoho pracovního prostoru nakonfigurováno více nevládních směrovačů sítě?
 
 Ano.
 
-## <a name="can-i-use-an-existing-workspace"></a>Můžu použít stávající pracovní prostor?
+## <a name="can-i-use-an-existing-workspace"></a>Mohu použít existující pracovní prostor?
 
-Ano. Pokud vyberete existující pracovní prostor, ujistěte se, že byl migrován do nového dotazovacího jazyka. Pokud pracovní prostor nechcete upgradovat, je nutné vytvořit nový. Další informace o novém dotazovacím jazyku najdete v tématu [Azure monitor protokoluje upgrade na nové prohledávání protokolu](../log-analytics/log-analytics-log-search-upgrade.md).
+Ano. Pokud vyberete existující pracovní prostor, ujistěte se, že byl migrován do nového dotazovacího jazyka. Pokud nechcete inovovat pracovní prostor, je třeba vytvořit nový. Další informace o novém dotazovacím jazyce naleznete v [tématu Azure Monitor protokoly upgrade na nové hledání protokolu](../log-analytics/log-analytics-log-search-upgrade.md).
 
-## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Může být můj účet Azure Storage v jednom předplatném a pracovní prostor Log Analytics má v jiném předplatném?
+## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Může být můj účet úložiště Azure v jednom předplatném a můj pracovní prostor Log Analytics v jiném předplatném?
 
 Ano, váš účet Azure Storage může být v jednom předplatném a váš pracovní prostor Log Analytics může být v jiném předplatném.
 
-## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Můžu v jiném předplatném ukládat nezpracované protokoly?
+## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Mohu ukládat nezpracované protokoly v jiném předplatném?
 
-Ne. Nezpracované protokoly můžete ukládat do libovolného účtu úložiště, kde je pro protokoly toku povolený NSG. Účet úložiště i nezpracované protokoly se ale musí nacházet ve stejném předplatném a oblasti.
+Ne. Nezpracovaná protokoly můžete uložit do libovolného účtu úložiště, kde je povolena síť sítě sítě pro protokoly toku. Účet úložiště a nezpracované protokoly však musí být ve stejném předplatném a oblasti.
 
-## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Co když nemůžu nakonfigurovat NSG pro analýzu provozu z důvodu chyby "Nenalezeno"?
+## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Co když se mi nepodaří nakonfigurovat službu zabezpečení sítě pro analýzu provozu z důvodu chyby "Nenalezeno"?
 
-Vyberte podporovanou oblast. Pokud vyberete nepodporovanou oblast, zobrazí se chyba "Nenalezeno". Podporované oblasti jsou uvedeny výše v tomto článku.
+Vyberte podporovanou oblast. Pokud vyberete nepodporovanou oblast, zobrazí se chyba "Nebyla nalezena". Podporované oblasti jsou uvedeny výše v tomto článku.
 
-## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>Co když získám stav, "selhalo načtení" na stránce protokoly toku NSG?
+## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>Co když se mi pod stránkou protokolů toku nsg zobrazuje stav "Nepodařilo se načíst"?
 
-Aby protokolování toků fungovalo správně, musí být zaregistrované poskytovatel Microsoft. Insights. Pokud si nejste jistí, jestli je pro vaše předplatné zaregistrovaný poskytovatel Microsoft. Insights, nahraďte v následujícím příkazu položku *xxxxx-xxxxx-xxxxxx-xxxx* a spusťte z PowerShellu následující příkazy:
+Aby protokolování toku fungovalo správně, musí být zaregistrován poskytovatel Microsoft.Insights. Pokud si nejste jisti, zda je poskytovatel Microsoft.Insights registrovaný pro vaše předplatné, nahraďte *xxxxx-xxxxx-xxxxxx-xxxx* v následujícím příkazu a spusťte následující příkazy z prostředí PowerShell:
 
 ```powershell-interactive
 **Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
 **Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
-## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Nakonfiguroval (a) jsem řešení. Proč se na řídicím panelu nezobrazuje něco?
+## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Nakonfiguroval jsem řešení. Proč na řídicím panelu nic nevidím?
 
-První zobrazení řídicího panelu může trvat až 30 minut. Řešení musí nejdřív agregovat dostatek dat, aby bylo možné odvodit smysluplné poznatky. Pak generuje sestavy. 
+Zobrazení řídicího panelu může trvat až 30 minut, než se zobrazí poprvé. Řešení musí nejprve agregovat dostatek dat pro něj odvodit smysluplné přehledy. Pak generuje sestavy. 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Co když se zobrazí tato zpráva: v tomto pracovním prostoru jsme nenašli žádná data pro vybraný časový interval. Zkuste změnit časový interval nebo vybrat jiný pracovní prostor. "?
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Co když se zobrazí tato zpráva: "V tomto pracovním prostoru jsme pro vybraný časový interval nenašli žádná data. Zkuste změnit časový interval nebo vyberte jiný pracovní prostor."?
 
 Vyzkoušejte následující možnosti:
-- Změňte časový interval na horním panelu.
-- V horním panelu vyberte jiný pracovní prostor Log Analytics.
-- Zkuste získat přístup k analýze provozu po 30 minutách, pokud bylo nedávno povolené.
+- Změňte časový interval v horním pruhu.
+- V horním pruhu vyberte jiný pracovní prostor Log Analytics.
+- Zkuste získat přístup k analýze provozu po 30 minutách, pokud byla nedávno povolena.
     
-Pokud potíže přetrvávají, vyvolejte ve [fóru hlas uživatele](https://feedback.azure.com/forums/217313-networking?category_id=195844)obavy.
+Pokud problémy přetrvávají, vzbuzují obavy v [hlasovém fóru uživatelů](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Co když se zobrazí tato zpráva: "při prvním analyzování protokolů toku NSG. Dokončení tohoto procesu může trvat 20-30 minut. Vraťte se později. 2) Pokud výše uvedený krok nefunguje a váš pracovní prostor je pod bezplatnou SKU, zkontrolujte, jestli se tady používá pracovní prostor, abyste ověřili překročení kvóty, jinak najdete další informace v nejčastějších dotazech.
+## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Co když se mi zobrazí tato zpráva: "Analýza protokolů toku nsg poprvé. Tento proces může trvat 20-30 minut. Po nějaké době se vraťte. 2) Pokud výše uvedený krok nefunguje a váš pracovní prostor je pod volnou skladovou položkou, zkontrolujte zde využití pracovního prostoru, abyste ověřili kvótu, jinak se podívejte na časté dotazy pro další informace."?
 
 Tato zpráva se může zobrazit, protože:
-- Analýza provozu byla nedávno povolena a pravděpodobně ještě nemusela agregovat dostatek dat, aby mohla odvodit smysluplné poznatky.
-- Používáte bezplatnou verzi Log Analytics pracovního prostoru a překročili jste limity kvót. Možná budete muset použít pracovní prostor s větší kapacitou.
+- Služba Traffic Analytics byla nedávno povolena a ještě nemusela agregovat dostatek dat, aby mohla odvodit smysluplné přehledy.
+- Používáte bezplatnou verzi pracovního prostoru Log Analytics a překročila limity kvót. Možná budete muset použít pracovní prostor s větší kapacitou.
     
-Pokud potíže přetrvávají, vyvolejte ve [fóru hlas uživatele](https://feedback.azure.com/forums/217313-networking?category_id=195844)obavy.
+Pokud problémy přetrvávají, vzbuzují obavy v [hlasovém fóru uživatelů](https://feedback.azure.com/forums/217313-networking?category_id=195844).
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Co když se zobrazí tato zpráva: vypadá to, že máme data o prostředcích (topologie) a žádné informace o tocích. Mezitím kliknutím sem zobrazíte data prostředků a další informace najdete v nejčastějších dotazech.
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Co když se zobrazí tato zpráva: "Vypadá to, že máme data o zdrojích (topologie) a žádné informace o tocích. Mezitím klikněte zde pro zobrazení údajů o zdrojích a odkazovat na faq pro další informace."?
 
-Informace o prostředcích vidíte na řídicím panelu. Nicméně nejsou k dispozici žádné statistiky související s tokem. Data nemusí být k dispozici z důvodu nekomunikačních toků mezi prostředky. Počkejte na 60 minut a znovu ověřte stav. Pokud potíže potrvají a jste si jisti, že existují komunikační toky mezi prostředky, vyvolejte obavy ve [fóru hlasu uživatele](https://feedback.azure.com/forums/217313-networking?category_id=195844).
+Na řídicím panelu se zobrazují informace o zdrojích. nejsou však k dispozici žádné statistiky související s tokem. Data nemusí být k dispozici z důvodu žádné komunikační toky mezi prostředky. Počkejte 60 minut a znovu zkontrolujte stav. Pokud problém přetrvává a jste si jisti, že existují komunikační toky mezi prostředky, vzbuzte obavy ve [fóru hlasuživatelů](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Je možné nakonfigurovat analýzu provozu pomocí PowerShellu nebo šablony Azure Resource Manager nebo klienta?
+## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Můžu nakonfigurovat analýzu provozu pomocí PowerShellu nebo šablony nebo klienta Azure Resource Manageru?
 
-Analýzu provozu můžete nakonfigurovat pomocí Windows PowerShellu z verze 6.2.1 a vyšší. Pokud chcete nakonfigurovat protokolování toku a analýzu provozu pro konkrétní NSG pomocí rutiny Set, přečtěte si téma [set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). Pokud chcete získat stav protokolování toku a analýzy provozu pro konkrétní NSG, přečtěte si téma [Get-AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
+Analýzu provozu můžete konfigurovat pomocí prostředí Windows PowerShell od verze 6.2.1. Chcete-li nakonfigurovat protokolování toku a analýzu provozu pro konkrétní soubor zabezpečení sítě pomocí rutiny Set, přečtěte si informace [o nastavení azNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). Chcete-li získat stav protokolování toku a analýzy provozu pro konkrétní soubor zabezpečení sítě, přečtěte si informace [o získání azNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
 
-V současné době nemůžete použít šablonu Azure Resource Manager ke konfiguraci analýzy provozu.
+V současné době nelze použít šablonu Azure Resource Manager ke konfiguraci analýzy provozu.
 
-Pokud chcete nakonfigurovat analýzu provozu pomocí klienta Azure Resource Manager, přečtěte si následující příklady.
+Pokud chcete nakonfigurovat analýzu provozu pomocí klienta Azure Resource Manager, podívejte se na následující příklady.
 
-**Nastavit příklad rutiny:**
+**Nastavit rutinu příklad:**
 ```
 #Requestbody parameters
 $TAtargetUri ="/subscriptions/<NSG subscription id>/resourceGroups/<NSG resource group name>/providers/Microsoft.Network/networkSecurityGroups/<name of NSG>"
@@ -242,29 +242,29 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 ```
 
 
-## <a name="how-is-traffic-analytics-priced"></a>Jak se Analýza provozu cena?
+## <a name="how-is-traffic-analytics-priced"></a>Jaká je cena traffic analytics?
 
-Měření Analýza provozu. Měření vychází ze zpracování dat protokolu toku službou a ukládá výsledné rozšířené protokoly do Log Analyticsho pracovního prostoru. 
+Analýza provozu se měří. Měření je založeno na zpracování dat protokolu toku službou a ukládání výsledných rozšířených protokolů v pracovním prostoru Log Analytics. 
 
-Například podle [cenového plánu](https://azure.microsoft.com/pricing/details/network-watcher/), který zvažuje středozápadní USA oblast, pokud Flow protokoluje data uložená v účtu úložiště zpracovaném Analýza provozu je 10 GB a rozšířené protokoly ingestované v Log Analytics pracovní prostor je 1 GB, pak jsou použitelné poplatky: 10 × $2,3 + 1 × $2,76 = $25,76
+Například podle [cenového plánu](https://azure.microsoft.com/pricing/details/network-watcher/), s ohledem na oblast – střed USA – střed, pokud tok zaznamenává data uložená v účtu úložiště zpracovávaného službou Traffic Analytics 10 GB a rozšířené protokoly požité v pracovním prostoru Log Analytics je 1 GB, pak příslušné poplatky jsou: 10 x 2.3$ + 1 x 2.76$ = 25.76$
 
-## <a name="how-frequently-does-traffic-analytics-process-data"></a>Jak často Analýza provozu data procesu?
+## <a name="how-frequently-does-traffic-analytics-process-data"></a>Jak často služba Traffic Analytics zpracovává data?
 
-Viz [část agregace dat](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation) v dokumentu Analýza provozu schématu a agregace dat
+Podívejte se na [část agregace dat](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation) v dokumentu Schéma analýzy provozu a Agregace dat.
 
-## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Jak se Analýza provozu rozhodnout, že je IP adresa škodlivá? 
+## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Jak služba Traffic Analytics rozhoduje o tom, že je adresa IP škodlivá? 
 
-Analýza provozu spoléhá na interní systémy Microsoft Threat Intelligence, které považují IP adresu za škodlivou. Tyto systémy využívají různé zdroje telemetrie, jako jsou produkty a služby společnosti Microsoft, Microsoft Digital Zločins (DCU), Microsoft Security Response Center (MSRC) a externí kanály a sestavování spousty informací nad ním. Některá z těchto dat jsou interní Microsoft. Pokud je známá IP adresa označená jako škodlivá, vydejte prosím lístek podpory, abyste věděli podrobnosti.
+Traffic Analytics spoléhá na interní systémy analýzy hrozeb společnosti Microsoft, které považují IP adresu za škodlivou. Tyto systémy využívají různé telemetrické zdroje, jako jsou produkty a služby společnosti Microsoft, jednotka Microsoft Digital Crimes Unit (DCU), Microsoft Security Response Center (MSRC) a externí kanály a vytvářejí k němu spoustu informací. Některá z těchto dat je Microsoft Internal. Pokud je známá adresa IP označena jako škodlivá, požádejte o lístek podpory, abyste znali podrobnosti.
 
-## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Jak můžu nastavit výstrahy pro Analýza provozu data?
+## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Jak můžu nastavit upozornění na data Traffic Analytics?
 
-Analýza provozu nemá integrovanou podporu pro výstrahy. Vzhledem k tomu, že Analýza provozu data jsou uložená v Log Analytics můžete psát vlastní dotazy a nastavovat upozornění. Uvedené
-- Nabídne můžete použít pro Log Analytics v Analýza provozu. 
-- Pro psaní dotazů použijte [zde dokumentované schéma](traffic-analytics-schema.md) . 
-- Pokud chcete vytvořit upozornění, klikněte na nové pravidlo upozornění.
-- Informace o vytvoření výstrahy najdete v [dokumentaci k protokolům výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) .
+Traffic Analytics nemá integrovanou podporu pro výstrahy. Vzhledem k tomu, že data Traffic Analytics jsou uložena v Log Analytics, můžete na ně psát vlastní dotazy a nanět výstrahy. Kroky:
+- Zkratku pro Analýzu protokolů můžete použít v Traffic Analytics. 
+- K napsání dotazů použijte [zde zdokumentované](traffic-analytics-schema.md) schéma. 
+- Chcete-li výstrahu vytvořit, klepněte na tlačítko Nové pravidlo výstrahy.
+- Chcete-li výstrahu vytvořit, naleznete [v dokumentaci k upozorněním protokolu.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
 
-## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>Návody ověřit, které virtuální počítače přijímají většinu místních přenosů
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>Jak zkontroluji, které virtuální aplikace přijímají většinu místního provozu
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -286,9 +286,9 @@ Analýza provozu nemá integrovanou podporu pro výstrahy. Vzhledem k tomu, že 
             | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
             | render timechart
 
-Pro čas použijte formát: rrrr-mm-dd 00:00:00
+Pro čas, použijte formát : yyyy-mm-dd 00:00:00
 
-## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>Návody kontrolovat směrodatnou odchylku provozu z místních počítačů prostřednictvím virtuálních počítačů
+## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>Jak zkontrolovat směrodatnou odchylku v provozu přijatém virtuálními počítači z místních počítačů
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -309,7 +309,7 @@ Pro IP adresy:
             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
             | summarize deviation = stdev(traffic)  by IP
             
-## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>Návody ověřit, které porty jsou dostupné (nebo bocked) mezi páry IP a NSG pravidly
+## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>Jak mohu zkontrolovat, které porty jsou dosažitelné (nebo bocked) mezi páry IP s pravidly NSG
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
@@ -320,76 +320,76 @@ Pro IP adresy:
             | project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
             | summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
 
-## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Jak můžu přejít pomocí klávesnice v zobrazení geografického mapování?
+## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Jak se mohu pohybovat pomocí klávesnice v zobrazení geografické mapy?
 
-Stránka geografického mapování obsahuje dvě hlavní části:
+Stránka geografické mapy obsahuje dvě hlavní části:
     
-- **Banner**: banner v horní části geografické mapy nabízí tlačítka pro výběr filtrů distribuce provozu (například nasazení, provoz ze zemí nebo oblastí a škodlivá). Když vyberete tlačítko, příslušný filtr se použije na mapě. Například pokud vyberete aktivní tlačítko, mapa zvýrazní aktivní datová centra v nasazení.
-- **Mapa**: pod hlavičkou se v části Mapa zobrazuje distribuce provozu mezi datacentry Azure a zeměmi nebo oblastmi.
+- **Banner**: Banner v horní části geografické mapy obsahuje tlačítka pro výběr filtrů distribuce provozu (například Nasazení, Provoz ze zemí nebo oblastí a Škodlivý). Když vyberete tlačítko, příslušný filtr se použije na mapě. Pokud například vyberete tlačítko Aktivní, mapa zvýrazní aktivní datová centra ve vašem nasazení.
+- **Mapa**: Pod hlavičkou se v části mapy zobrazuje distribuce provozu mezi datovými centry Azure a zeměmi nebo oblastmi.
     
-### <a name="keyboard-navigation-on-the-banner"></a>Navigace na klávesnici na banneru
+### <a name="keyboard-navigation-on-the-banner"></a>Navigace pomocí klávesnice na banneru
     
-- Ve výchozím nastavení je výběr na stránce geografického mapování pro hlavičku "filtr Azure DCss".
-- Chcete-li přejít na jiný filtr, použijte buď `Tab`, nebo klíč `Right arrow`. Chcete-li přejít zpět, použijte buď `Shift+Tab`, nebo klíč `Left arrow`. Přední navigace je ponechána vpravo a následuje shora dolů.
-- Pokud chcete použít vybraný filtr, stiskněte `Enter` nebo klávesu se šipkou `Down`. V závislosti na výběru a nasazení filtru se zvýrazní jeden nebo víc uzlů pod sekcí map.
-- Chcete-li přepínat mezi hlavičkou a mapou, stiskněte `Ctrl+F6`.
+- Ve výchozím nastavení je výběr na stránce geografické mapy pro banner filtr "Azure DC".
+- Chcete-li přejít na `Tab` jiný `Right arrow` filtr, použijte klíč nebo. Chcete-li se posunout `Left arrow` zpět, použijte klíč `Shift+Tab` nebo. Navigace vpřed je zleva doprava, následuje shora dolů.
+- Stisknutím `Enter` nebo `Down` klávesou se šipkou použijete vybraný filtr. Na základě výběru filtru a nasazení jsou zvýrazněny jeden nebo více uzlů v části mapy.
+- Chcete-li přepínat `Ctrl+F6`mezi nápisem a mapou, stiskněte klávesu .
         
-### <a name="keyboard-navigation-on-the-map"></a>Navigace na klávesnici na mapě
+### <a name="keyboard-navigation-on-the-map"></a>Navigace pomocí klávesnice na mapě
     
-- Po výběru jakéhokoli filtru v proužku a stisknutí `Ctrl+F6`se fokus přesune na jeden ze zvýrazněných uzlů (**datacentrum Azure** nebo **země/oblast**) v zobrazení mapy.
-- Chcete-li přejít na jiné zvýrazněné uzly v mapě, použijte buď `Tab`, nebo `Right arrow` klíč pro pohyb vpřed. Pro zpětný pohyb použijte `Shift+Tab` nebo `Left arrow` klíč.
-- Chcete-li vybrat libovolný zvýrazněný uzel na mapě, použijte klíč `Enter` nebo `Down arrow`.
-- Při výběru všech takových uzlů se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko uzavřeno v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , použijte `Right arrow` a `Left arrow` klíče pro přesunutí vpřed a zpět. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko pro zaměření.
-- Když stisknete `Tab`, zatímco se fokus nachází v **poli informační nástroj**, přesune se fokus na koncové body stejného kontinentu jako vybraný uzel. K přesunu těchto koncových bodů použijte `Right arrow` a `Left arrow` klíče.
-- Pokud chcete přejít na jiné koncové body toku nebo kontinenty, použijte `Tab` pro pohyb vpřed a `Shift+Tab` pro zpětný pohyb.
-- V případě, že je fokus v **clusterech kontinentů**, zvýrazněte koncové body v rámci clusteru s kontinentem pomocí `Enter` nebo `Down` klávesy se šipkami. Chcete-li přejít mezi koncovými body a tlačítkem Zavřít v informačním okně clusteru s kontinentem, použijte buď `Right arrow`, nebo `Left arrow` klíč pro dopředu a zpětnou pohyb, v uvedeném pořadí. U libovolného koncového bodu můžete použít `Shift+L` k přepnutí na linku připojení z vybraného uzlu do koncového bodu. Můžete znovu stisknout `Shift+L` a přejít tak na vybraný koncový bod.
+- Po výběru libovolného filtru na `Ctrl+F6`banneru a stisknutí položky se fokus přesune do jednoho ze zvýrazněných uzlů **(datové centrum Azure** nebo **země/oblast)** v zobrazení mapy.
+- Chcete-li přejít na jiné zvýrazněné `Tab` uzly v mapě, použijte buď `Right arrow` klíč pro pohyb vpřed. Použijte `Shift+Tab` nebo `Left arrow` klíč pro zpětný pohyb.
+- Chcete-li vybrat libovolný zvýrazněný uzel `Enter` v `Down arrow` mapě, použijte klávesu nebo.
+- Při výběru těchto uzlů se fokus přesune do **pole informačního nástroje** pro uzel. Ve výchozím nastavení se fokus přesune na uzavřené tlačítko v **poli informačního nástroje**. Chcete-li se dále pohybovat `Left arrow` uvnitř zobrazení **boxu,** pohybujte se dopředu a dozadu pomocí `Right arrow` tlačítek. Stisknutí `Enter` má stejný účinek jako výběr zaostřeného tlačítka v **poli informačního nástroje**.
+- Když stisknete, `Tab` když je fokus na **poli informačního nástroje**, fokus se přesune do koncových bodů na stejném kontinentu jako vybraný uzel. Pomocí `Right arrow` kláves `Left arrow` a můžete procházet těmito koncovými body.
+- Chcete-li přejít na jiné koncové `Tab` body toku `Shift+Tab` nebo shluky kontinentu, použijte pro pohyb vpřed a pro pohyb dozadu.
+- Pokud je fokus na **clustery kontinentu**, použijte klávesy se šipkami `Enter` nebo `Down` zvýraznit koncové body uvnitř clusteru kontinentu. Chcete-li procházet koncovými body a tlačítkem zavřít v `Right arrow` informačním poli clusteru kontinentu, použijte buď klíč nebo `Left arrow` pro pohyb vpřed a vzad. V libovolném koncovém `Shift+L` bodě můžete přepnout na spojovací čáru z vybraného uzlu do koncového bodu. Dalším stisknutím `Shift+L` se můžete přesunout do vybraného koncového bodu.
         
-### <a name="keyboard-navigation-at-any-stage"></a>Navigace na klávesnici v libovolné fázi
+### <a name="keyboard-navigation-at-any-stage"></a>Navigace pomocí klávesnice v libovolné fázi
     
-- `Esc` sbalí rozbalený výběr.
-- Klíč `Up arrow` provádí stejnou akci jako `Esc`. Klíč `Down arrow` provádí stejnou akci jako `Enter`.
-- Použijte `Shift+Plus` k přiblížení a `Shift+Minus` k oddálení.
+- `Esc`sbalí rozšířený výběr.
+- Klíč `Up arrow` provádí stejnou akci `Esc`jako . Klíč `Down arrow` provádí stejnou akci `Enter`jako .
+- Slouží `Shift+Plus` k přiblížení `Shift+Minus` a oddálení.
 
-## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Jak můžu přejít pomocí klávesnice v zobrazení topologie virtuální sítě?
+## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Jak se dá procházet pomocí klávesnice v zobrazení topologie virtuální sítě?
 
 Stránka topologie virtuálních sítí obsahuje dvě hlavní části:
     
-- **Banner**: banner v horní části topologie virtuálních sítí nabízí tlačítka pro výběr filtrů distribuce provozu (například připojené virtuální sítě, odpojené virtuální sítě a veřejné IP adresy). Když vyberete tlačítko, příslušný filtr se aplikuje na topologii. Pokud například vyberete tlačítko aktivní, topologie zvýrazní aktivní virtuální sítě ve vašem nasazení.
-- **Topologie**: pod hlavičkou se v části topologie zobrazuje distribuce provozu mezi virtuálními sítěmi.
+- **Banner**: Banner v horní části topologie virtuálních sítí poskytuje tlačítka pro výběr filtrů distribuce provozu (například připojené virtuální sítě, odpojené virtuální sítě a veřejné IP adresy). Když vyberete tlačítko, použije se příslušný filtr na topologii. Pokud například vyberete tlačítko Aktivní, topologie zvýrazní aktivní virtuální sítě ve vašem nasazení.
+- **Topologie**: Pod hlavičkou zobrazuje sekce topologie distribuci provozu mezi virtuálními sítěmi.
     
-### <a name="keyboard-navigation-on-the-banner"></a>Navigace na klávesnici na banneru
+### <a name="keyboard-navigation-on-the-banner"></a>Navigace pomocí klávesnice na banneru
     
-- Ve výchozím nastavení je výběr na stránce topologie virtuální sítě pro tento proužek filtrem "připojené virtuální sítě".
-- Pokud se chcete přesunout na jiný filtr, můžete ho přesunout pomocí `Tab` klíč vpřed. Chcete-li přejít zpět, použijte `Shift+Tab` klíč. Přední navigace je ponechána vpravo a následuje shora dolů.
-- Zvolený filtr použijete stisknutím `Enter`. Na základě výběru a nasazení filtru se zvýrazní jeden nebo víc uzlů (virtuální síť) v části topologie.
-- Chcete-li přepínat mezi hlavičkou a topologií, stiskněte `Ctrl+F6`.
+- Ve výchozím nastavení je výběr na stránce topologie virtuálních sítí pro banner "Připojené virtuální sítě" filtr.
+- Chcete-li přejít na `Tab` jiný filtr, přesuňte se vpřed pomocí klávesy. Chcete-li se `Shift+Tab` posunout zpět, použijte klávesu. Navigace vpřed je zleva doprava, následuje shora dolů.
+- Stisknutím `Enter` tlačítka aplikujete vybraný filtr. Na základě výběru a nasazení filtru se zvýrazní jeden nebo více uzlů (virtuální síť) v části topologie.
+- Chcete-li přepnout mezi nápisem `Ctrl+F6`a toplogií, stiskněte klávesu .
         
-### <a name="keyboard-navigation-on-the-topology"></a>Navigace na klávesnici v topologii
+### <a name="keyboard-navigation-on-the-topology"></a>Navigace pomocí klávesnice v topologii
     
-- Po výběru jakéhokoli filtru v proužku a stisknutí `Ctrl+F6`se fokus přesune na jeden ze zvýrazněných uzlů v zobrazenítopologie.
-- Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, použijte klávesu `Shift+Right arrow` pro pohyb vpřed. 
-- Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , použijte `Right arrow` a `Left arrow` klávesy pro přesun vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko pro zaměření.
-- Na výběr všech takových uzlů můžete navštívit všechna jeho připojení, a to tak, že stisknete klávesu `Shift+Left arrow`. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím `Shift+Right arrow` znovu.
+- Po výběru libovolného filtru na `Ctrl+F6`banneru a stisknutí položky se fokus přesune do jednoho ze zvýrazněných uzlů (**Virtuální síť**) v zobrazení topologie.
+- Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, použijte `Shift+Right arrow` klíč pro pohyb vpřed. 
+- Ve zvýrazněných uzlech se fokus přesune do **pole informačního nástroje** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informačního nástroje**. Chcete-li se dále pohybovat `Right arrow` `Left arrow` uvnitř zobrazení **pole,** pohybujte se dopředu a dozadu pomocí kláves a. Stisknutí `Enter` má stejný účinek jako výběr zaostřeného tlačítka v **poli informačního nástroje**.
+- Při výběru těchto uzlů můžete jedním stisknutím `Shift+Left arrow` tlačítka navštívit všechna jeho připojení. Fokus se přesune do **pole informačního nástroje** tohoto připojení. V libovolném okamžiku lze fokus přesunout zpět `Shift+Right arrow` do uzlu opětovným stisknutím tlačítka.
     
 
-## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>Jak můžu přejít pomocí klávesnice v zobrazení topologie podsítě?
+## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>Jak se lze pohybovat pomocí klávesnice v zobrazení topologie podsítě?
 
-Stránka topologie virtuální podsítě obsahuje dvě hlavní části:
+Stránka topologie virtuálních podsítí obsahuje dvě hlavní části:
     
-- **Banner**: banner v horní části topologie virtuální podsítě nabízí tlačítka pro výběr filtrů distribuce přenosů (například aktivních, středních a podsítí brány). Když vyberete tlačítko, příslušný filtr se aplikuje na topologii. Pokud například vyberete aktivní tlačítko, topologie zvýrazní aktivní virtuální síť v nasazení.
-- **Topologie**: pod hlavičkou se v části topologie zobrazuje distribuce provozu mezi virtuálními podsítěmi.
+- **Banner**: Banner v horní části topologie virtuálních podsítí poskytuje tlačítka pro výběr filtrů distribuce provozu (například podsítě Aktivní, Střední a Brána). Když vyberete tlačítko, použije se příslušný filtr na topologii. Pokud například vyberete tlačítko Aktivní, topologie zvýrazní aktivní virtuální podsíť ve vašem nasazení.
+- **Topologie**: Pod hlavičkou zobrazuje topologie rozložení provozu mezi virtuální podsítěmi.
     
-### <a name="keyboard-navigation-on-the-banner"></a>Navigace na klávesnici na banneru
+### <a name="keyboard-navigation-on-the-banner"></a>Navigace pomocí klávesnice na banneru
     
-- Ve výchozím nastavení je výběr na stránce topologie virtuálních podsítí pro tento proužek filtrem "podsítě".
-- Pokud se chcete přesunout na jiný filtr, můžete ho přesunout pomocí `Tab` klíč vpřed. Chcete-li přejít zpět, použijte `Shift+Tab` klíč. Přední navigace je ponechána vpravo a následuje shora dolů.
-- Zvolený filtr použijete stisknutím `Enter`. V závislosti na výběru a nasazení filtru se zvýrazní jeden nebo víc uzlů (podsíť) v části topologie.
-- Chcete-li přepínat mezi hlavičkou a topologií, stiskněte `Ctrl+F6`.
+- Ve výchozím nastavení je výběrem na stránce topologie virtuálních podsítí pro banner filtr "Podsítě".
+- Chcete-li přejít na `Tab` jiný filtr, přesuňte se vpřed pomocí klávesy. Chcete-li se `Shift+Tab` posunout zpět, použijte klávesu. Navigace vpřed je zleva doprava, následuje shora dolů.
+- Stisknutím `Enter` tlačítka aplikujete vybraný filtr. Na základě výběru filtru a nasazení jsou zvýrazněny jeden nebo více uzlů (podsíť) v části topologie.
+- Chcete-li přepnout mezi nápisem `Ctrl+F6`a toplogií, stiskněte klávesu .
         
-### <a name="keyboard-navigation-on-the-topology"></a>Navigace na klávesnici v topologii
+### <a name="keyboard-navigation-on-the-topology"></a>Navigace pomocí klávesnice v topologii
     
-- Po výběru jakéhokoli filtru na banneru a stisknutí `Ctrl+F6`se fokus přesune do jednoho ze zvýrazněných uzlů (**podsítě**) v zobrazení topologie.
-- Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, použijte klávesu `Shift+Right arrow` pro pohyb vpřed. 
-- Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , použijte `Right arrow` a `Left arrow` klíče pro přesunutí vpřed a zpět. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko pro zaměření.
-- Po výběru všech takových uzlů můžete navštívit všechna jeho připojení, jednu po jedné, stisknutím `Shift+Left arrow` Key. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím `Shift+Right arrow` znovu.    
+- Po výběru libovolného filtru na `Ctrl+F6`banneru a stisknutí se fokus přesune do jednoho ze zvýrazněných uzlů (**podsíť**) v zobrazení topologie.
+- Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, použijte `Shift+Right arrow` klíč pro pohyb vpřed. 
+- Ve zvýrazněných uzlech se fokus přesune do **pole informačního nástroje** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informačního nástroje**. Chcete-li se dále pohybovat `Left arrow` uvnitř zobrazení **boxu,** pohybujte se dopředu a dozadu pomocí `Right arrow` tlačítek. Stisknutí `Enter` má stejný účinek jako výběr zaostřeného tlačítka v **poli informačního nástroje**.
+- Při výběru těchto uzlů můžete jedním stisknutím tlačítka `Shift+Left arrow` navštívit všechna jeho připojení, jeden po druhém. Fokus se přesune do **pole informačního nástroje** tohoto připojení. V libovolném okamžiku lze fokus přesunout zpět `Shift+Right arrow` do uzlu opětovným stisknutím tlačítka.    
 

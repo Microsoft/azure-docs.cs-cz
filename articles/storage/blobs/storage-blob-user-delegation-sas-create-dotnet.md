@@ -1,7 +1,7 @@
 ---
-title: Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí .NET
+title: Použití rozhraní .NET k vytvoření uživatelského delegování SAS pro kontejner nebo objekt blob
 titleSuffix: Azure Storage
-description: Naučte se vytvářet delegování uživatelů pomocí Azure Active Directory přihlašovacích údajů pomocí klientské knihovny .NET pro Azure Storage.
+description: Zjistěte, jak vytvořit delegování uživatele SAS s přihlašovacími údaji služby Azure Active Directory pomocí knihovny klienta .NET pro Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,31 +11,31 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: 385d2c3b88bc2e4d653dae2dc9670cb9e9388faf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75371832"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí .NET
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>Vytvoření uživatelskédelegování SAS pro kontejner nebo objekt blob s rozhraním .NET
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-V tomto článku se dozvíte, jak pomocí pověření Azure Active Directory (Azure AD) vytvořit přidružení zabezpečení delegování uživatelů pro kontejner nebo objekt BLOB pomocí Azure Storage klientské knihovny pro .NET.
+Tento článek ukazuje, jak pomocí přihlašovacích údajů služby Azure Active Directory (Azure AD) vytvořit delegování uživatele SAS pro kontejner nebo objekt blob s klientskou knihovnou Azure Storage pro .NET.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
 ## <a name="assign-rbac-roles-for-access-to-data"></a>Přiřazení rolí RBAC pro přístup k datům
 
-Když se objekt zabezpečení služby Azure AD pokusí získat přístup k datům objektu blob, musí mít tento objekt zabezpečení oprávnění k prostředku. Bez ohledu na to, jestli je objekt zabezpečení spravovaná identita v Azure nebo uživatelský účet Azure AD, který spouští kód ve vývojovém prostředí, musí být objektu zabezpečení přiřazená role RBAC, která uděluje přístup k datům objektu BLOB v Azure Storage. Informace o přiřazování oprávnění přes RBAC najdete v části s názvem **přiřazení rolí RBAC pro přístupová práva** v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
+Když se objekt zabezpečení Azure AD pokusí o přístup k datům objektů blob, tento objekt zabezpečení musí mít oprávnění k prostředku. Ať už je objekt zabezpečení spravovanou identitou v Azure nebo uživatelský účet Azure AD spuštěný kód ve vývojovém prostředí, musí být objektu zabezpečení přiřazena role RBAC, která uděluje přístup k datům objektů blob ve službě Azure Storage. Informace o přiřazování oprávnění prostřednictvím služby RBAC naleznete v části **Přiřazení rolí RBAC pro přístupová práva** v [tématu Autorizace přístupu k objektům BLOB a frontám Azure pomocí služby Azure Active Directory](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-Další informace o tom, jak ověřit pomocí klientské knihovny Azure identity z Azure Storage, najdete v části s názvem **ověřování pomocí knihovny identit Azure** v tématu [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library).
+Další informace o tom, jak se ověřovat pomocí klientské knihovny Azure Identity z Azure Storage, najdete v části **Ověření pomocí knihovny Azure Identity** v [tématu Autorizace přístupu k objektům BLOB a frontám s Azure Active Directory a spravovaným i pro prostředky Azure](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library).
 
 ## <a name="add-using-directives"></a>Přidání direktiv using
 
-Do kódu přidejte následující direktivy `using`, aby bylo možné použít klientské knihovny Azure identity a Azure Storage.
+Přidejte `using` do kódu následující direktivy, abyste použili klientské knihovny Azure Identity a Azure Storage.
 
 ```csharp
 using System;
@@ -48,11 +48,11 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 ```
 
-## <a name="get-an-authenticated-token-credential"></a>Získání přihlašovacích údajů ověřeného tokenu
+## <a name="get-an-authenticated-token-credential"></a>Získání ověřeného pověření tokenu
 
-Chcete-li získat přihlašovací údaje tokenu, které může váš kód použít k autorizaci požadavků na Azure Storage, vytvořte instanci třídy [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) .
+Chcete-li získat pověření tokenu, které váš kód můžete použít k autorizaci požadavků na Azure Storage, vytvořte instanci třídy [DefaultAzureCredential.](/dotnet/api/azure.identity.defaultazurecredential)
 
-Následující fragment kódu ukazuje, jak získat pověření ověřeného tokenu a použít ho k vytvoření klienta služby pro úložiště objektů BLOB:
+Následující fragment kódu ukazuje, jak získat pověření ověřeného tokenu a použít ho k vytvoření klienta služby pro úložiště objektů Blob:
 
 ```csharp
 // Construct the blob endpoint from the account name.
@@ -63,13 +63,13 @@ BlobServiceClient blobClient = new BlobServiceClient(new Uri(blobEndpoint),
                                                      new DefaultAzureCredential());
 ```
 
-## <a name="get-the-user-delegation-key"></a>Získat klíč delegování uživatele
+## <a name="get-the-user-delegation-key"></a>Získání klíče delegování uživatele
 
-Každé přidružení zabezpečení je podepsáno klíčem. Chcete-li vytvořit SAS delegování uživatele, je třeba nejprve požádat o klíč pro delegování uživatele, který je pak použit k podepsání SAS. Klíč pro delegování uživatelů je podobný klíči účtu, který se používá k podepsání SAS služby nebo k přidružení zabezpečení účtu, s tím rozdílem, že spoléhá na vaše přihlašovací údaje Azure AD. Když klient požádá o klíč delegování uživatele pomocí tokenu OAuth 2,0, Azure Storage vrátí klíč delegování uživatele jménem uživatele.
+Každý SAS je podepsán klíčem. Chcete-li vytvořit uživatelské delegování SAS, musíte nejprve požádat o klíč delegování uživatele, který se pak používá k podepsání SAS. Klíč delegování uživatele je obdobou klíče účtu, který se používá k podepsání služby SAS nebo s účtem SAS, s tím rozdílem, že závisí na pověření Azure AD. Když klient požádá o klíč delegování uživatele pomocí tokenu OAuth 2.0, Azure Storage vrátí klíč delegování uživatele jménem uživatele.
 
-Po získání klíče pro delegování uživatelů můžete pomocí tohoto klíče vytvořit libovolný počet sdílených přístupových podpisů uživatelů po celou dobu životnosti klíče. Klíč pro delegování uživatelů je nezávislý na tokenu OAuth 2,0, který se používá k získání, takže token není nutné obnovit, pokud je klíč stále platný. Můžete určit, že klíč je platný po dobu až 7 dnů.
+Jakmile budete mít klíč delegování uživatele, můžete tento klíč použít k vytvoření libovolného počtu podpisů sdíleného přístupu delegování uživatelů po dobu životnosti klíče. Klíč delegování uživatele je nezávislý na tokenu OAuth 2.0, který se používá k jeho získání, takže token nemusí být obnoven, dokud je klíč stále platný. Můžete určit, že klíč je platný po dobu až 7 dnů.
 
-Pro vyžádání klíče delegování uživateli použijte jednu z následujících metod:
+Pomocí jedné z následujících metod požádejte o klíč delegování uživatele:
 
 - [GetUserDelegationKey](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.getuserdelegationkey)
 - [GetUserDelegationKeyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.getuserdelegationkeyasync)
@@ -94,7 +94,7 @@ Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 
 ## <a name="create-the-sas-token"></a>Vytvoření tokenu SAS
 
-Následující fragment kódu ukazuje vytvořit novou [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) a zadat parametry pro SAS delegování uživatele. Fragment kódu pak zavolá [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) , aby získal řetězec tokenu SAS. Nakonec kód vytvoří úplný identifikátor URI, včetně adresy prostředku a tokenu SAS.
+Následující fragment kódu zobrazuje vytvořit nový [Objekt blobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) a poskytnout parametry pro delegování uživatele SAS. Úryvek pak volá [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) získat řetězec tokenu SAS. Nakonec kód vytvoří úplný identifikátor URI, včetně adresy prostředku a tokenu SAS.
 
 ```csharp
 // Create a SAS token that's valid for one hour.
@@ -123,9 +123,9 @@ UriBuilder fullUri = new UriBuilder()
 };
 ```
 
-## <a name="example-get-a-user-delegation-sas"></a>Příklad: získání SAS uživatele pro delegování
+## <a name="example-get-a-user-delegation-sas"></a>Příklad: Získání uživatelské delegace SAS
 
-Následující příklad metody ukazuje úplný kód pro ověření objektu zabezpečení a vytvoření SAS delegování uživatele:
+Následující příklad metody ukazuje kompletní kód pro ověření objektu zabezpečení a vytvoření uživatelského delegování SAS:
 
 ```csharp
 async static Task<Uri> GetUserDelegationSasBlob(string accountName, string containerName, string blobName)
@@ -183,9 +183,9 @@ async static Task<Uri> GetUserDelegationSasBlob(string accountName, string conta
 }
 ```
 
-## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>Příklad: čtení objektu BLOB s SAS delegování uživatele
+## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>Příklad: Čtení objektu blob s uživatelem delegování SAS
 
-Následující příklad testuje SAS uživatele z simulované klientské aplikace vytvořené v předchozím příkladu. Pokud je podpis SAS platný, klientská aplikace může číst obsah objektu BLOB. Pokud je SAS neplatné, například pokud platnost vypršela, Azure Storage vrátí kód chyby 403 (zakázáno).
+Následující příklad testuje delegování uživatele SAS vytvořené v předchozím příkladu ze simulované klientské aplikace. Pokud je SAS platný, klientská aplikace je schopna číst obsah objektu blob. Pokud je SAS neplatný, například pokud vypršela jeho platnost, Azure Storage vrátí kód chyby 403 (Zakázáno).
 
 ```csharp
 private static async Task ReadBlobWithSasAsync(Uri sasUri)
@@ -235,8 +235,8 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-- [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md)
+- [Udělit omezený přístup k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md)
 - [Získat operaci klíče delegování uživatele](/rest/api/storageservices/get-user-delegation-key)
-- [Vytvoření SAS delegování uživatele (REST API)](/rest/api/storageservices/create-user-delegation-sas)
+- [Vytvoření uživatelskédelegace SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas)

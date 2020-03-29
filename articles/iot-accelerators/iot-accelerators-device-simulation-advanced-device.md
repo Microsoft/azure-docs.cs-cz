@@ -1,6 +1,6 @@
 ---
-title: Vytvoření modelu pokročilé simulovaného zařízení – Azure | Dokumentace Microsoftu
-description: V této příručce s postupy se dozvíte, jak vytvořit model pokročilé zařízení pro použití s akcelerátor řešení simulaci zařízení.
+title: Vytvoření pokročilého modelu simulovaných zařízení – Azure| Dokumenty společnosti Microsoft
+description: V tomto návodu se dozvíte, jak vytvořit pokročilý model zařízení pro použití s akcelerátorem řešení Simulace zařízení.
 author: troyhopwood
 manager: timlt
 ms.service: iot-accelerators
@@ -10,21 +10,21 @@ ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
 ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61449018"
 ---
-# <a name="create-an-advanced-device-model"></a>Vytvoření modelu pokročilé zařízení
+# <a name="create-an-advanced-device-model"></a>Vytvoření pokročilého modelu zařízení
 
-Tato příručka popisuje soubory JSON a JavaScript, které definují model vlastní zařízení. Tento článek obsahuje některé ukázkové soubory definice modelu zařízení a ukazuje, jak jejich nahrávání do vaší instance simulace zařízení. Můžete vytvářet modely pokročilé zařízení pro simulaci realističtější chování jednotlivých zařízení pro testování.
+Tento návod popisuje soubory JSON a JavaScript, které definují vlastní model zařízení. Článek obsahuje některé ukázkové soubory definice modelu zařízení a ukazuje, jak je nahrát do instance Simulace zařízení. Můžete vytvořit pokročilé modely zařízení pro simulaci realističtější chování zařízení pro vaše testování.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Postupujte podle kroků v této příručce s postupy, je třeba nasazené instance simulace zařízení ve vašem předplatném Azure.
+Chcete-li postupovat podle pokynů v tomto návodu, potřebujete nasazenou instanci simulace zařízení ve vašem předplatném Azure.
 
 Pokud jste Simulaci zařízení ještě nenasadili, měli byste dokončit rychlý start [Nasazení a spuštění simulace zařízení IoT v Azure](quickstart-device-simulation-deploy.md).
 
@@ -34,39 +34,39 @@ Pokud chcete spustit Simulaci zařízení v prohlížeči, nejprve přejděte na
 
 Může se zobrazit výzva k přihlášení pomocí vašich přihlašovacích údajů k předplatnému Azure.
 
-Pak klikněte na tlačítko **spuštění** na dlaždici pro simulaci zařízení, které jste nasadili v [nasadit a spustit simulaci zařízení IoT v Azure](quickstart-device-simulation-deploy.md) rychlý start.
+Potom klikněte na **tlačítko Spustit** na dlaždici pro simulaci zařízení, kterou jste nasadili v [nasazení, a spusťte simulaci zařízení IoT v rychlém](quickstart-device-simulation-deploy.md) startu Azure.
 
 ## <a name="device-models"></a>Modely zařízení
 
-Každé simulované zařízení patří do konkrétního zařízení model, který definuje chování simulace. Toto chování zahrnuje jak často k odesílání telemetrických dat, jaký druh zprávy k odeslání a podporovaných metod.
+Každé simulované zařízení patří k určitému modelu zařízení, který definuje chování simulace. Toto chování zahrnuje, jak často odesílat telemetrie, jaký druh zpráv k odeslání a podporované metody.
 
-Můžete definovat model zařízení pomocí souboru definice JSON zařízení a sadu souborů JavaScriptu. Tyto soubory jazyka JavaScript definuje chování simulace například náhodné telemetrie a logiku metody.
+Model zařízení definujete pomocí definičního souboru zařízení JSON a sady souborů JavaScriptu. Tyto soubory JavaScriptu definují chování simulace, jako je náhodná telemetrie a logika metody.
 
-Model zařízení typické obsahuje:
+Typický model zařízení má:
 
 * Jeden soubor JSON pro každý model zařízení (například elevator.json).
-* Jeden soubor skriptu chování jazyka JavaScript pro každý model zařízení (například hodnocení state.js)
-* Jeden soubor skriptu metoda jazyka JavaScript pro každou metodu zařízení (například hodnocení go-down.js)
+* Jeden soubor skriptu chování JavaScriptu pro každý model zařízení (například elevator-state.js)
+* Jeden soubor skriptu metody JavaScript pro každou metodu zařízení (například elevator-go-down.js)
 
 > [!NOTE]
-> Ne všechny modely zařízení definovat metody. Model zařízení proto může nebo nemusí mít metoda skripty. Všechny modely zařízení ale musí mít skript chování.
+> Metody nedefinují všechny modely zařízení. Proto model zařízení může nebo nemusí mít skripty metody. Všechny modely zařízení však musí mít skript chování.
 
 ## <a name="device-definition-file"></a>Soubor definice zařízení
 
-Každý soubor s definicí zařízení obsahuje podrobné informace o modelu simulované zařízení, včetně následujících informací:
+Každý soubor definice zařízení obsahuje podrobnosti o simulovaném modelu zařízení, včetně následujících informací:
 
 * Název modelu zařízení: řetězec.
-* Protokol: AMQP | MQTT | HTTP.
+* Protokol: AMQP | MQTT | http.
 * Počáteční stav zařízení.
-* Jak často se má aktualizovat stav zařízení.
-* Jaký soubor JavaScript slouží k aktualizaci stavu zařízení.
-* Seznam telemetrické zprávy k odeslání, každý s konkrétní frekvencí.
-* Schéma telemetrických zpráv, použitá k analýze telemetrických dat přijatých back endové aplikace.
-* Seznam podporovaných metod a soubor jazyka JavaScript určený pro simulaci každé metody.
+* Jak často aktualizovat stav zařízení.
+* Který soubor JavaScriptu použít k aktualizaci stavu zařízení.
+* Seznam telemetrických zpráv k odeslání, každý s určitou frekvencí.
+* Schéma telemetrických zpráv, které používá back-endaplikace k analýzě přijaté telemetrie.
+* Seznam podporovaných metod a soubor javascriptu, který se má použít k simulaci jednotlivých metod.
 
-### <a name="file-schema"></a>Schéma souboru reklamy
+### <a name="file-schema"></a>Schéma souborů
 
-Verze schématu je vždy "1.0.0" a je specifické pro formát tohoto souboru:
+Verze schématu je vždy "1.0.0" a je specifická pro formát tohoto souboru:
 
 ```json
 "SchemaVersion": "1.0.0"
@@ -85,15 +85,15 @@ Následující vlastnosti popisují model zařízení. Každý typ má jedinečn
 
 ### <a name="iot-protocol"></a>Protokol IoT
 
-Zařízení IoT můžete připojit pomocí různých protokolů. Simulace vám umožní používat buď **AMQP**, **MQTT**, nebo **HTTP**:
+Zařízení IoT se mohou připojovat pomocí různých protokolů. Simulace umožňuje použít buď **AMQP**, **MQTT**nebo **HTTP**:
 
 ```json
 "Protocol": "AMQP"
 ```
 
-### <a name="simulated-device-state"></a>Stav simulovaného zařízení
+### <a name="simulated-device-state"></a>Simulovaný stav zařízení
 
-Každé simulované zařízení má vnitřní stav, který musí být definován. Stav také definuje vlastnosti, které mohou být zaznamenány v telemetrii. Chladič například může mít počáteční stav jako:
+Každé simulované zařízení má vnitřní stav, který musí být definován. Stav také definuje vlastnosti, které mohou být hlášeny v telemetrii. Chladič může mít například počáteční stav, například:
 
 ```json
 "InitialState": {
@@ -102,7 +102,7 @@ Každé simulované zařízení má vnitřní stav, který musí být definován
 },
 ```
 
-Přesunutí zařízení s několika senzorů může mít více vlastností, například:
+Pohybující se zařízení s několika senzory může mít více vlastností, například:
 
 ```json
 "InitialState": {
@@ -115,20 +115,20 @@ Přesunutí zařízení s několika senzorů může mít více vlastností, nap�
 }
 ```
 
-Stav zařízení je uložený v paměti službou simulace a doplníte jako vstup do funkce jazyka JavaScript. Funkce JavaScript, která může rozhodnout:
+Stav zařízení je udržován v paměti simulační službou a je poskytován jako vstup do funkce JavaScript. Funkce JavaScript uměl rozhodnout:
 
-* Chcete-li ignorovat stav a generovat náhodná data.
-* Chcete-li aktualizovat stav zařízení nějakým způsobem realistické v daném scénáři.
+* Chcete-li ignorovat stav a generovat některá náhodná data.
+* Chcete-li aktualizovat stav zařízení nějakým realistickým způsobem pro daný scénář.
 
 Funkce, která generuje stav také přijímá jako vstup:
 
 * ID zařízení.
 * Model zařízení.
-* Aktuální čas. Tato hodnota umožňuje generovat různé datové podle zařízení a podle času.
+* Aktuální čas. Tato hodnota umožňuje generovat různá data podle zařízení a podle času.
 
 ### <a name="generating-telemetry-messages"></a>Generování telemetrických zpráv
 
-Simulace service můžete odeslat několik typů telemetrie pro každé zařízení. Telemetrie obvykle zahrnuje data ze stavu zařízení. Například Simulovaná místnosti může odesílat informace o teplotě a vlhkosti každých 10 sekund. Poznámka: zástupné symboly v následujícím fragmentu kódu, které jsou automaticky nahradit hodnotami ze stavu zařízení:
+Simulační služba může odeslat několik typů telemetrie pro každé zařízení. Telemetrie obvykle zahrnuje data ze stavu zařízení. Simulovaná místnost může například každých 10 sekund odesílat informace o teplotě a vlhkosti. Všimněte si zástupných symbolů v následujícím úryvku, které jsou automaticky nahrazeny hodnotami ze stavu zařízení:
 
 ```json
 "Telemetry": [
@@ -149,27 +149,27 @@ Simulace service můžete odeslat několik typů telemetrie pro každé zaříze
 ],
 ```
 
-Zástupné symboly zvláštní syntaxí **${NAME}** kde **název** klíčem z objektu stavu zařízení, vrácený kód jazyka JavaScript je **hlavní** funkce. Řetězce by měla používat uvozovky, zatímco čísla by neměl.
+Zástupné symboly používají speciální syntaxi **${NAME},** kde **NAME** je klíč z objektu stavu zařízení vráceného **hlavní** funkcí JavaScriptu. Řetězce by měly být citovány, zatímco čísla by neměla.
 
 #### <a name="message-schema"></a>Schéma zprávy
 
-Každý typ zprávy musí být dobře definované schéma. Schéma zprávy, jsou publikované do služby IoT Hub, back endovým aplikacím můžete použít informace pro interpretaci příchozí telemetrická data.
+Každý typ zprávy musí mít dobře definované schéma. Schéma zpráv je také publikováno do služby IoT Hub, takže back-endové aplikace mohou znovu použít informace k interpretaci příchozí telemetrie.
 
-Schéma podporuje formát JSON, který umožňuje snadno analýzu, transformaci a analýzy, napříč několika služeb a systémů.
+Schéma podporuje formát JSON, který umožňuje snadnou analýzu, transformaci a analýzu v několika systémech a službách.
 
-Polí uvedených ve schématu může být z následujících typů:
+Pole uvedená ve schématu mohou být následujících typů:
 
-* Objekt - serializovat pomocí JSON
-* Binární – serializovanou ve formátu base64
+* Objekt - serializován pomocí JSON
+* Binární - serializovánpomocí base64
 * Text
-* Boolean
+* Logická hodnota
 * Integer
 * Double
 * DateTime
 
 ### <a name="supported-methods"></a>Podporované metody
 
-Simulovaná zařízení mohou také reagovat na volání metody, v takovém případě provést nějaké logiky a poskytují některé odpovědi. Podobně jako na simulaci metoda logiky je uložen v souboru jazyka JavaScript a může komunikovat s stavu zařízení. Příklad:
+Simulovaná zařízení mohou také reagovat na volání metod, v takovém případě spustí určitou logiku a poskytnou určitou odpověď. Podobně jako simulace je logika metody uložena v souboru JavaScript a může pracovat se stavem zařízení. Například:
 
 ```json
 "CloudToDeviceMethods": {
@@ -180,13 +180,13 @@ Simulovaná zařízení mohou také reagovat na volání metody, v takovém př�
 }
 ```
 
-## <a name="create-a-device-definition-file"></a>Vytvořit soubor definice zařízení
+## <a name="create-a-device-definition-file"></a>Vytvoření definičního souboru zařízení
 
-V tomto postupy-k-průvodci zjistit, jak vytvořit model zařízení pro dron. Dronu bude náhodně plout po počáteční Sada souřadnic Změna umístění a výšku.
+V tomto návodu uvidíte, jak vytvořit model zařízení pro drone. Dron bude náhodně létat kolem počáteční sady souřadnic, které mění polohu a nadmořskou výšku.
 
-Zkopírujte následující kód JSON do textového editoru a uložte ho jako **drone.json**.
+Zkopírujte následující JSON do textového editoru a uložte jej jako **drone.json**.
 
-### <a name="device-definition-json-example"></a>Příklad JSON definice zařízení
+### <a name="device-definition-json-example"></a>Příklad json definice zařízení
 
 ```json
 {
@@ -247,19 +247,19 @@ Zkopírujte následující kód JSON do textového editoru a uložte ho jako **d
 }
 ```
 
-## <a name="behavior-script-files"></a>Soubory skriptu chování
+## <a name="behavior-script-files"></a>Soubory skriptů chování
 
-Kód v souboru skriptu chování přesune dronu. Skript mění zvýšení úrovně oprávnění a umístění dronu manipulací ve stavu paměti zařízení.
+Kód v souboru skriptu chování přesune drone. Skript mění výšku a umístění drone manipulací zařízení v paměťovém stavu.
 
-Musí mít soubory jazyka JavaScript **hlavní** funkce, která přijímá dva parametry:
+Soubory JavaScriptu musí mít **hlavní** funkci, která přijímá dva parametry:
 
-* A **kontextu** objekt, který obsahuje tři vlastnosti:
-    * **aktualnicas** jako řetězec s formátem **rrrr MM-dd'T'HH:mm:sszzz**.
-    * **ID zařízení**. Například **Simulated.Elevator.123**.
-    * **deviceModel**. Například **Elevator**.
-* A **stavu** objekt, který je hodnota vrácená funkcí v předchozí volání. Tento stav zařízení je spravovaná službou simulace a sloužící ke generování telemetrie zprávy.
+* **Objekt kontextu,** který obsahuje tři vlastnosti:
+    * **currentTime** jako řetězec s formátem **yyyy-MM-dd'T'HH:mm:sszzz**.
+    * **deviceId**. Například **Simulated.Elevator.123**.
+    * **deviceModel**. Například **Výtah**.
+* Objekt **stavu,** který je hodnota vrácená funkcí v předchozím volání. Tento stav zařízení je udržován a slouží ke generování telemetrických zpráv.
 
-**Hlavní** funkce vrátí nový stav zařízení. Příklad:
+**Hlavní** funkce vrátí nový stav zařízení. Například:
 
 ```JavaScript
 function main(context, state) {
@@ -274,9 +274,9 @@ function main(context, state) {
 
 ## <a name="create-a-behavior-script-file"></a>Vytvoření souboru skriptu chování
 
-Zkopírujte následující jazyka JavaScript do textového editoru a uložte ho jako **dronu state.js**.
+Zkopírujte následující JavaScript do textového editoru a uložte jej jako **drone-state.js**.
 
-### <a name="device-model-javascript-simulation-example"></a>Příklad v jazyce JavaScript simulace zařízení modelu
+### <a name="device-model-javascript-simulation-example"></a>Příklad simulace javascriptového modelu zařízení
 
 ```JavaScript
 "use strict";
@@ -397,15 +397,15 @@ function varylocation(latitude, longitude, distance) {
 }
 ```
 
-## <a name="create-a-method-script-file"></a>Vytvoření souboru skriptu – metoda
+## <a name="create-a-method-script-file"></a>Vytvoření souboru skriptu metody
 
-Metoda skripty jsou podobné chování skripty. Definují chování zařízení při volání metody zařízení na konkrétní cloud.
+Skripty metod jsou podobné skriptům chování. Definují chování zařízení při volání konkrétní metody cloud to device.
 
-Skript pomocí dronů spojené s vracením nastaví souřadnice dronu pevnému bodu pro simulaci dronu vrácení Domů.
+Skript pro stažení dronu nastavuje souřadnice dronu do pevného bodu, aby simuloval návrat dronu domů.
 
-Zkopírujte následující jazyka JavaScript do textového editoru a uložte ho jako **droneRecall method.js**.
+Zkopírujte následující JavaScript do textového editoru a uložte jej jako **droneRecall-method.js**.
 
-### <a name="device-model-javascript-simulation-example"></a>Příklad v jazyce JavaScript simulace zařízení modelu
+### <a name="device-model-javascript-simulation-example"></a>Příklad simulace javascriptového modelu zařízení
 
 ```JavaScript
 "use strict";
@@ -467,9 +467,9 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-## <a name="debugging-script-files"></a>Ladění skriptů
+## <a name="debugging-script-files"></a>Ladění souborů skriptů
 
-Při spouštění souboru chování nelze připojit ladicí program, je možné zapsat informace o službu pomocí protokolu **protokolu** funkce. Chyby syntaxe interpretu selže a zapíše do protokolu informace o výjimce.
+I když nelze připojit ladicí program ke spuštěnému souboru chování, je možné zapisovat informace do protokolu služby pomocí funkce **protokolu.** V případě chyb syntaxe se překladač nezdaří a zapíše informace o výjimce protokolu.
 
 Příklad protokolování:
 
@@ -490,11 +490,11 @@ function main(context, state) {
 }
 ```
 
-## <a name="deploy-an-advanced-device-model"></a>Nasazení modelu pokročilé zařízení
+## <a name="deploy-an-advanced-device-model"></a>Nasazení rozšířeného modelu zařízení
 
-Nasazení modelu pokročilé zařízení, můžete odeslat soubory instanci simulace zařízení:
+Chcete-li nasadit pokročilý model zařízení, nahrajte soubory, které instanci simulace zařízení:
 
-Na řádku nabídek vyberte **Modely zařízení**. **Modely zařízení** stránce uvedeny modely zařízení, která je k dispozici v tomto případě simulace zařízení:
+Na řádku nabídek vyberte **Modely zařízení**. Stránka **Modely zařízení** obsahuje seznam modelů zařízení dostupných v této instanci simulace zařízení:
 
 ![Modely zařízení](media/iot-accelerators-device-simulation-advanced-device/devicemodelnav.png)
 
@@ -502,18 +502,18 @@ V pravém horním rohu stránky klikněte na **+ Přidat modely zařízení**:
 
 ![Přidání modelu zařízení](media/iot-accelerators-device-simulation-advanced-device/devicemodels.png)
 
-Klikněte na tlačítko **Upřesnit** otevřete kartu Upřesnit zařízení modelu:
+Kliknutím na **Upřesnit** otevřete kartu rozšířeného modelu zařízení:
 
 ![Karta Upřesnit](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
 
-Klikněte na tlačítko **Procházet** a vyberte jste vytvořili soubory JSON a JavaScript. Nezapomeňte vybrat všechny tři soubory. Pokud jakýkoli jeden soubor chybí, ověření se nezdaří:
+Klikněte na **Procházet** a vyberte soubory JSON a JavaScript, které jste vytvořili. Nezapomeňte vybrat všechny tři soubory. Pokud některý soubor chybí, ověření se nezdaří:
 
 ![Procházet soubory](media/iot-accelerators-device-simulation-advanced-device/browse.png)
 
-Pokud vaše soubory projít ověřením, klikněte na tlačítko **Uložit** a modelu zařízení je připravená k použití v simulaci. V opačném případě opravte všechny chyby a znovu nahrávat soubory:
+Pokud soubory projdou ověřením, klikněte na **Uložit** a model zařízení je připraven k použití v simulaci. V opačném případě opravte všechny chyby a znovu nahrajte soubory:
 
-![Uložení](media/iot-accelerators-device-simulation-advanced-device/validated.png)
+![Uložit](media/iot-accelerators-device-simulation-advanced-device/validated.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V této příručce s postupy jste se dozvěděli o soubory modelu zařízení používaných pro simulaci zařízení a jak vytvořit model pokročilé zařízení. V dalším kroku můžete chtít prozkoumat jak [použití Time Series Insights k vizualizaci telemetrická data odesílaná ze zařízení simulace akcelerátor řešení](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights).
+V tomto návodu jste se dozvěděli o souborech modelů zařízení používaných v simulaci zařízení a o tom, jak vytvořit pokročilý model zařízení. Dále můžete chtít prozkoumat, jak [použít Přehledy časových řad k vizualizaci telemetrie odeslané z akcelerátoru řešení Simulace zařízení](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights).

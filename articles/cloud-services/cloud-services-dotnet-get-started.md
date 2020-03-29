@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
 ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386727"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
@@ -31,8 +31,8 @@ Aplikace slouží jako vývěsní tabule pro inzerci. Uživatelé vytvářejí r
 
 Aplikace používá [způsob práce zaměřený na fronty](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), aby vyvážila práci při vytváření miniatur (která je náročná na prostředky procesoru) vůči back-endovému procesu.
 
-## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternativní architektura: App Service a WebJobs
-Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu v [Azure App Service](/azure/app-service/) a použití funkce [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které nejlépe vyhovují vašemu scénáři, najdete v tématu [porovnání Azure App Service, Cloud Services a virtuálních počítačů](/azure/architecture/guide/technology-choices/compute-decision-tree).
+## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternativní architektura: Služba app service a webjobs
+Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu ve [službě Azure App Service](/azure/app-service/) a použití funkce [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které nejlépe vyhovují vašemu scénáři, najdete v [tématu Azure App Service, Cloud Services a porovnání virtuálních počítačů](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="what-youll-learn"></a>Co se dozvíte
 * Postup zprovoznění počítače pro vývoj na platformě Azure nainstalováním sady Azure SDK.
@@ -47,7 +47,7 @@ Kurz předpokládá, že rozumíte [základnímu konceptu cloudových služeb Az
 
 Aplikaci můžete spustit místně bez předplatného Azure, ale k nasazení aplikace do cloudu budete předplatné potřebovat. Pokud nemáte účet, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) nebo [si zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
 
-Pokyny v kurzu fungují s některým z následujících produktů:
+Návod k obsluze práce s některou z následujících produktů:
 
 * Visual Studio 2013
 * Visual Studio 2015
@@ -229,10 +229,10 @@ Připojovací řetězce k účtu úložiště Azure pro projekt webové role i p
 1. V **Průzkumníku řešení** v části **Role** v projektu **ContosoAdsCloudService** klikněte pravým tlačítkem na **ContosoAdsWeb** a potom na **Vlastnosti**.
 
     ![Vlastnosti rolí](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Klikněte na kartu **Nastavení** . V rozevíracím seznamu **Konfigurace služby** vyberte **Cloud**.
+2. Klikněte na kartu **Nastavení.** V rozevíracím poli **Konfigurace služby** zvolte **Cloud**.
 
     ![Konfigurace cloudu](./media/cloud-services-dotnet-get-started/sccloud.png)
-3. Vyberte položku **StorageConnectionString** a na pravém konci řádku se zobrazí tlačítko se třemi tečkami ( **...** ) . Kliknutím na tlačítko se třemi tečkami otevřete dialogové okno **Vytvoření připojovací řetězce k účtu úložiště**.
+3. Vyberte položku **StorageConnectionString** a na pravém konci řádku se zobrazí tlačítko se třemi tečkami (**...**) . Kliknutím na tlačítko se třemi tečkami otevřete dialogové okno **Vytvoření připojovací řetězce k účtu úložiště**.
 
     ![Otevření pole Vytvoření připojovacího řetězce](./media/cloud-services-dotnet-get-started/opencscreate.png)
 4. V dialogovém okně **Vytvoření připojovacího řetězce k úložišti** klikněte na **Předplatné**, zvolte účet úložiště, které jste už dříve vytvořili, a potom klikněte na tlačítko **OK**. Pokud ještě nejste přihlášeni, budete vyzváni k zadání přihlašovacích údajů k účtu Azure.
@@ -280,7 +280,7 @@ Nastavení `<Instances>` určuje počet virtuálních počítačů, na kterých 
 ### <a name="deploy-the-project-to-azure"></a>Nasazení projektu do Azure
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na cloudový projekt **ContosoAdsCloudService** a potom vyberte **Publikovat**.
 
-   ![Nabídka Publikovat](./media/cloud-services-dotnet-get-started/pubmenu.png)
+   ![Publikování nabídky](./media/cloud-services-dotnet-get-started/pubmenu.png)
 2. V průvodci **Publikování aplikaci Azure** v kroku **Přihlásit se** klikněte na tlačítko **Další**.
 
     ![Krok Přihlásit se](./media/cloud-services-dotnet-get-started/pubsignin.png)
@@ -322,7 +322,7 @@ Po vytvoření řešení zkontrolujete kód, který je pro projekty cloudových 
 
 ### <a name="create-a-cloud-service-visual-studio-solution"></a>Vytvoření řešení cloudové služby Visual Studio
 1. Ve Visual Studiu zvolte v nabídce **Soubor** možnost **Nový projekt**.
-2. V levém podokně dialogového okna **Nový projekt** rozbalte položku **Visual C#** , vyberte šablonu **Cloud** a potom klikněte na šablonu **Cloudová služba Azure**.
+2. V levém podokně dialogového okna **Nový projekt** rozbalte položku **Visual C#**, vyberte šablonu **Cloud** a potom klikněte na šablonu **Cloudová služba Azure**.
 3. Pojmenujte projekt a řešení ContosoAdsCloudService a potom klikněte na tlačítko **OK**.
 
     ![Nový projekt](./media/cloud-services-dotnet-get-started/newproject.png)
@@ -353,7 +353,7 @@ Po vytvoření řešení zkontrolujete kód, který je pro projekty cloudových 
 6. Najděte balíček NuGet *Microsoft.WindowsAzure.ConfigurationManager* a nainstalujte ho do projektu role pracovního procesu.
 
 ### <a name="set-project-references"></a>Nastavení odkazů na projekty
-1. V projektu ContosoAdsWeb nastavte odkaz na projekt ContosoAdsCommon. Klikněte pravým tlačítkem na projekt ContosoAdsWeb a potom klikněte na **Odkazy** - **Přidat odkazy**. V dialogovém okně **Správce odkazů** vyberte v levém podokně **Řešení – projekty**, vyberte **ContosoAdsCommon** a potom klikněte na tlačítko **OK**.
+1. V projektu ContosoAdsWeb nastavte odkaz na projekt ContosoAdsCommon. Klepněte pravým tlačítkem myši na projekt ContosoAdsWeb a potom klepněte na příkaz **Reference** - **Přidat odkazy**. V dialogovém okně **Správce odkazů** vyberte v levém podokně **Řešení – projekty**, vyberte **ContosoAdsCommon** a potom klikněte na tlačítko **OK**.
 2. V projektu ContosoAdsWorker nastavte odkaz na projekt ContosoAdsCommon.
 
     ContosoAdsCommon bude obsahovat datový model a třídu kontextu Entity Framework, které použije front-end i back-end.
@@ -377,7 +377,7 @@ V této části budete konfigurovat službu Azure Storage a připojovací řet�
 3. Klikněte v projektu ContosoAdsCloudService pravým tlačítkem v části **Role** na ContosoAdsWeb a potom klikněte na **Vlastnosti**.
 
     ![Vlastnosti rolí](./media/cloud-services-dotnet-get-started/roleproperties.png)
-4. V okně vlastností **ContosoAdsWeb [role]** klikněte na kartu **Nastavení** a potom klikněte na **Přidat nastavení**.
+4. V okně vlastností **ContosoAdsWeb [Role]** klepněte na kartu **Nastavení** a potom klepněte na tlačítko **Přidat nastavení**.
 
     Možnost **Konfigurace služby** nechte nastavenou na **Všechny konfigurace**.
 5. Přidejte nastavení s názvem *StorageConnectionString*. Nastavte **Typ** na *ConnectionString* a možnost **Hodnota** nastavte na *UseDevelopmentStorage=true*.
@@ -398,7 +398,7 @@ V této části budete konfigurovat službu Azure Storage a připojovací řet�
 ### <a name="add-code-files"></a>Přidání souborů s kódy
 V této části zkopírujete soubory s kódy ze staženého řešení do nového řešení. Následující části vám ukáží a vysvětlí klíčová místa tohoto kódu.
 
-Pokud chcete přidat soubory do projektu nebo složky, klikněte pravým tlačítkem na projekt nebo složku a potom klikněte na **Přidat** - **Existující položka**. Vyberte požadované soubory a potom klikněte na tlačítko **Přidat**. Pokud se zobrazí dotaz, jestli chcete nahradit existující soubory, klikněte na **Ano**.
+Chcete-li přidat soubory do projektu nebo do složky, klepněte pravým tlačítkem myši na projekt nebo složku a klepněte na příkaz **Přidat** - **existující položku**. Vyberte požadované soubory a potom klikněte na tlačítko **Přidat**. Pokud se zobrazí dotaz, jestli chcete nahradit existující soubory, klikněte na **Ano**.
 
 1. V projektu ContosoAdsCommon odstraňte soubor *Class1.cs* a na jeho místo přidejte soubory *Ad.cs* a *ContosoAdscontext.cs* ze staženého projektu.
 2. Do projektu ContosoAdsWeb přidejte následující soubory ze staženého projektu.
@@ -650,7 +650,7 @@ Prvek `<input>` sděluje prohlížeči, aby zobrazil dialogové okno pro výběr
 <input type="file" name="imageFile" accept="image/*" class="form-control fileupload" />
 ```
 
-### <a name="contosoadsworker---workerrolecs---onstart-method"></a>ContosoAdsWorker – WorkerRole.cs – metoda OnStart
+### <a name="contosoadsworker---workerrolecs---onstart-method"></a>ContosoAdsWorker – WorkerRole.cs – metoda OnStart 
 Prostředí role pracovního procesu Azure volá metodu `OnStart` ve třídě `WorkerRole`, když se spouští role pracovního procesu, a volá metodu `Run`, když se metoda `OnStart` dokončí.
 
 Metoda `OnStart` získá připojovací řetězec databáze ze souboru *.cscfg* a předá ho do třídy DbContext v Entity Framework. Poskytovatel SQLClienta se používá ve výchozím nastavení, takže ho není nutné zadávat.
@@ -696,7 +696,7 @@ public override void Run()
 }
 ```
 
-Po každé iteraci smyčky, kdy nebyla nalezena žádná zpráva fronty, se program na sekundu uspí. Tím se roli pracovního procesu zabrání, aby nadměrně nezvyšovala náklady na čas procesoru a transakce úložiště. Poradní tým Microsoftu vypráví příběh o vývojáři, který tohle zapomněl zohlednit, nasadil kód do výroby a odjel na dovolenou. Když se vrátí zpět, jejich náklady jsou vyšší než dovolená.
+Po každé iteraci smyčky, kdy nebyla nalezena žádná zpráva fronty, se program na sekundu uspí. Tím se roli pracovního procesu zabrání, aby nadměrně nezvyšovala náklady na čas procesoru a transakce úložiště. Poradní tým Microsoftu vypráví příběh o vývojáři, který tohle zapomněl zohlednit, nasadil kód do výroby a odjel na dovolenou. Když se vrátili, jejich dohled stál víc než dovolená.
 
 Obsah zprávy fronty občas způsobí chybu při zpracování. Takové zprávě se říká *nezpracovatelná zpráva* a pokud jste právě zaprotokolovali chybu a restartovali smyčku, můžete se pokoušet o zpracování této zprávy do nekonečna.  Zachycující blok proto zahrnuje podmínku, která kontroluje, jak často se aplikace pokusila aktuální zprávu zpracovat a pokud to bylo víc než pětkrát, odstraní zprávu z fronty.
 

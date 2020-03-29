@@ -1,7 +1,7 @@
 ---
-title: Vymazat mezipaměť tokenů (MSAL.NET) | Azure
+title: Vymazání mezipaměti tokenů (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Zjistěte, jak vymazat mezipaměť tokenů pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
+description: Zjistěte, jak vymazat mezipaměť tokenů pomocí knihovny Microsoft Authentication Library for .NET (MSAL.NET).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,17 +14,17 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: a10efb5ff0a2c6a3ced3631dfe82c86e3e8a72fc
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77084768"
 ---
 # <a name="clear-the-token-cache-using-msalnet"></a>Vymazání mezipaměti tokenů pomocí MSAL.NET
 
-Při [získání přístupového tokenu](msal-acquire-cache-tokens.md) pomocí knihovny Microsoft Authentication Library pro .net (MSAL.NET) se token uloží do mezipaměti. Když aplikace potřebuje token, měla by nejdřív zavolat metodu `AcquireTokenSilent`, aby se ověřilo, jestli je v mezipaměti přijatelný token. 
+Když [získáte přístupový token](msal-acquire-cache-tokens.md) pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET), token je uložen do mezipaměti. Když aplikace potřebuje token, měla by `AcquireTokenSilent` nejprve zavolat metodu k ověření, zda je přijatelný token v mezipaměti. 
 
-Vymazání mezipaměti se dosáhne odebráním účtů z mezipaměti. Tím nedojde k odebrání souboru cookie relace, který je v prohlížeči, ale.  Následující příklad vytvoří instanci veřejné klientské aplikace, získá účty pro aplikaci a odebere účty.
+Vymazání mezipaměti je dosaženo odebráním účtů z mezipaměti. Tím se však neodstraní soubor cookie relace, který je v prohlížeči.  Následující příklad vytvoří instance aplikace veřejného klienta, získá účty pro aplikaci a odebere účty.
 
 ```csharp
 private readonly IPublicClientApplication _app;
@@ -46,4 +46,4 @@ while (accounts.Any())
 
 ```
 
-Pokud chcete získat další informace o získání a ukládání tokenů do mezipaměti, přečtěte si téma [získání přístupového tokenu](msal-acquire-cache-tokens.md).
+Další informace o získávání a ukládání tokenů do mezipaměti získáte [přístupový token](msal-acquire-cache-tokens.md).

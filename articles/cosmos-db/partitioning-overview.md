@@ -1,54 +1,54 @@
 ---
-title: Vytváření oddílů v Azure Cosmos DB
-description: Přečtěte si o dělení Azure Cosmos DB, osvědčených postupech při volbě klíče oddílu a o tom, jak spravovat logické oddíly.
+title: Dělení ve službě Azure Cosmos DB
+description: Informace o dělení v Azure Cosmos DB, osvědčené postupy při výběru klíče oddílu a jak spravovat logické oddíly
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251866"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Vytváření oddílů v Azure Cosmos DB
+# <a name="partitioning-in-azure-cosmos-db"></a>Dělení ve službě Azure Cosmos DB
 
-Azure Cosmos DB používá dělení ke škálování jednotlivých kontejnerů v databázi tak, aby splňovaly požadavky vaší aplikace na výkon. Při dělení jsou položky v kontejneru rozděleny do samostatných dílčích množin nazývaných *logické oddíly*. Logické oddíly se vytvoří na základě hodnoty *klíče oddílu* , který je spojený s každou položkou v kontejneru. Všechny položky v logickém oddílu mají stejnou hodnotu klíče oddílu.
+Azure Cosmos DB používá dělení škálování jednotlivých kontejnerů v databázi tak, aby vyhovovaly potřebám výkonu vaší aplikace. Při dělení jsou položky v kontejneru rozděleny do odlišných podmnožiny *nazývaných logické oddíly*. Logické oddíly jsou vytvořeny na základě hodnoty *klíče oddílu,* který je přidružen ke každé položce v kontejneru. Všechny položky v logickém oddílu mají stejnou hodnotu klíče oddílu.
 
-Například kontejner obsahuje položky. Každá položka má jedinečnou hodnotu pro vlastnost `UserID`. Pokud `UserID` slouží jako klíč oddílu pro položky v kontejneru a je 1 000 jedinečných `UserID`ch hodnot, pro kontejner se vytvoří logické oddíly 1 000.
+Kontejner například obsahuje položky. Každá položka má jedinečnou `UserID` hodnotu pro vlastnost. Pokud `UserID` slouží jako klíč oddílu pro položky v kontejneru `UserID` a existují 1 000 jedinečné hodnoty, 1 000 logické oddíly jsou vytvořeny pro kontejner.
 
-Kromě klíče oddílu, který určuje logický oddíl položky, každá položka v kontejneru má *ID položky* (jedinečné v rámci logického oddílu). Kombinování klíče oddílu a ID položky vytvoří *index*položky, který položku jednoznačně identifikuje.
+Kromě klíče oddílu, který určuje logický oddíl položky, má každá položka v kontejneru *ID položky* (jedinečné v rámci logického oddílu). Kombinace klíče oddílu a ID položky vytvoří *index*položky , který jednoznačně identifikuje položku.
 
-[Výběr klíče oddílu](partitioning-overview.md#choose-partitionkey) je důležité rozhodnutí, které bude mít vliv na výkon vaší aplikace.
+[Výběr klíče oddílu](partitioning-overview.md#choose-partitionkey) je důležité rozhodnutí, které ovlivní výkon vaší aplikace.
 
 ## <a name="managing-logical-partitions"></a>Správa logických oddílů
 
-Azure Cosmos DB transparentně a automaticky spravuje umístění logických oddílů na fyzických oddílech, aby bylo možné efektivně splnit požadavky na škálovatelnost a výkon kontejneru. V rámci zvýšení propustnosti a požadavků na úložiště se Azure Cosmos DB přesune logické oddíly a automaticky se rozprostře zatížení mezi větším počtem serverů. 
+Azure Cosmos DB transparentně a automaticky spravuje umístění logických oddílů na fyzické oddíly efektivně uspokojit škálovatelnost a požadavky na výkon kontejneru. Jako propustnost a požadavky na úložiště aplikace zvýšit, Azure Cosmos DB přesune logické oddíly automaticky rozložit zatížení přes větší počet serverů. 
 
-Azure Cosmos DB pro rozprostření logických oddílů mezi fyzickými oddíly používá dělení na základě hodnoty hash. Azure Cosmos DB hodnota hash hodnot klíče oddílu položky. Výsledek s hodnotou hash Určuje fyzický oddíl. Pak Azure Cosmos DB přiděluje klíčové místo hodnot hash klíče oddílu rovnoměrně napříč fyzickými oddíly.
+Azure Cosmos DB používá dělení založené na hash k rozložení logických oddílů mezi fyzické oddíly. Azure Cosmos DB hashes hodnota klíče oddílu položky. Výsledek hashed určuje fyzický oddíl. Azure Cosmos DB pak přiděluje klíčové místo klíče oddílu hashe rovnoměrně přes fyzické oddíly.
 
-Dotazy, které přistupují k datům v rámci jednoho logického oddílu, jsou cenově výhodnější než dotazy, které přistupují k více oddílům. Transakce (v uložených procedurách nebo triggerech) jsou povoleny pouze proti položkám v jednom logickém oddílu.
+Dotazy, které přistupují k datům v rámci jednoho logického oddílu, jsou nákladově efektivnější než dotazy, které přistupují k více oddílům. Transakce (v uložených procedurách nebo aktivačních událostech) jsou povoleny pouze proti položkám v jednom logickém oddílu.
 
-Další informace o tom, jak Azure Cosmos DB spravuje oddíly, najdete v tématu [logické oddíly](partition-data.md). (Není nutné porozumět interním podrobnostem pro sestavování a spouštění aplikací, ale zde jste přidaní pro čtečku zajímá.)
+Další informace o tom, jak Azure Cosmos DB spravuje oddíly, najdete [v tématu logické oddíly](partition-data.md). (Není nutné pochopit vnitřní podrobnosti pro sestavení nebo spuštění aplikací, ale přidáno zde pro zvědavé čtenáře.)
 
-## <a id="choose-partitionkey"></a>Výběr klíče oddílu
+## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Výběr klíče oddílu
 
-Následuje dobrý návod pro výběr klíče oddílu:
+Následující je vhodné pokyny pro výběr klíče oddílu:
 
 * Jeden logický oddíl má horní limit 20 GB úložiště.  
 
-* Kontejnery Azure Cosmos mají minimální propustnost 400 jednotek žádostí za sekundu (RU/s). V případě, že je v databázi zajištěna propustnost, minimální počet ru na kontejner je 100 jednotek žádostí za sekundu (RU/s). Požadavky na stejný klíč oddílu nepřesahují propustnost, která je přidělena oddílu. Pokud žádosti překročí přidělenou propustnost, požadavky jsou omezené na rychlost. Proto je důležité vybrat klíč oddílu, který v rámci aplikace nevede k "aktivním skvrnám".
+* Kontejnery Azure Cosmos mají minimální propustnost 400 jednotek požadavku za sekundu (RU/s). Když je zřízena propustnost v databázi, minimální ru na kontejner je 100 jednotek požadavku za sekundu (RU/s). Požadavky na stejný klíč oddílu nesmí překročit propustnost, která je přidělena oddílu. Pokud požadavky překročí přidělenou propustnost, požadavky jsou omezeny sazbou. Proto je důležité vybrat klíč oddílu, který nemá za následek "aktivní body" v rámci aplikace.
 
-* Vyberte klíč oddílu, který má celou řadu hodnot a vzory přístupu, které jsou rovnoměrně rozloženy mezi logické oddíly. To pomáhá rozprostřít data a aktivity ve vašem kontejneru napříč sadou logických oddílů, aby bylo možné distribuovat prostředky pro ukládání a propustnost dat napříč logickými oddíly.
+* Zvolte klíč oddílu, který má širokou škálu hodnot a vzory přístupu, které jsou rovnoměrně rozloženy mezi logické oddíly. To pomáhá šířit data a aktivity v kontejneru napříč sadou logických oddílů, takže prostředky pro ukládání dat a propustnost lze distribuovat mezi logické oddíly.
 
-* Vyberte klíč oddílu, který rovnoměrně rozšíří úlohy napříč všemi oddíly a rovnoměrně v průběhu času. Váš výběr klíče oddílu by měl vyrovnávat nutnost efektivních dotazů na oddíly a transakcí s cílem distribuovat položky mezi více oddíly, aby se dosáhlo škálovatelnosti.
+* Zvolte klíč oddílu, který rovnoměrně rozloží úlohu ve všech oddílech a rovnoměrně v průběhu času. Vaše volba klíče oddílu by měla vyvážit potřebu efektivní oddíl dotazy a transakce proti cíli distribuce položek mezi více oddílů k dosažení škálovatelnosti.
 
-* Kandidáti na klíče oddílů mohou obsahovat vlastnosti, které se často zobrazují jako filtr v dotazech. Dotazy lze efektivně směrovat zahrnutím klíče oddílu do predikátu filtru.
+* Kandidáti pro klíče oddílů může obsahovat vlastnosti, které se často zobrazují jako filtr v dotazech. Dotazy lze efektivně směrovat zahrnutím klíče oddílu do predikátu filtru.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o [dělení a horizontálním škálování v Azure Cosmos DB](partition-data.md).
-* Přečtěte si o [zřízené propustnosti v Azure Cosmos DB](request-units.md).
-* Přečtěte si o [globální distribuci v Azure Cosmos DB](distribute-data-globally.md).
+* Další informace o [dělení a horizontální škálování v Azure Cosmos DB](partition-data.md).
+* Informace o [zřízené propustnosti v Azure Cosmos DB](request-units.md).
+* Další informace o [globální distribuci v Azure Cosmos DB](distribute-data-globally.md).
