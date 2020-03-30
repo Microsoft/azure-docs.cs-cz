@@ -1,148 +1,147 @@
 ---
-title: Testovací jednotka aplikace logiky | Azure Marketplace
-description: Vysvětluje, jak sestavit testovací jednotku, která se připojuje k instanci Dynamics AX/CRM nebo jinému prostředku mimo Azure.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+title: Testovací cesta aplikace logiky | Azure Marketplace
+description: Vysvětluje, jak vytvořit jejich Testovací protokol, který se připojuje k instanci Dynamics AX/CRM nebo jakémukoli jinému prostředku mimo azure.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 87170344f7467770829cbd8ba7d8936a9e39c0cc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 766f893d71ca0830fe8b69c50145603c6544cc3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824588"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278378"
 ---
 <a name="logic-app-test-drive"></a>Testovací jednotka aplikace logiky
 ====================
 
-Tento článek se používá pro vydavatele, kteří mají svou nabídku na AppSource a chtějí sestavit svoji testovací jednotku, která se připojuje k instanci Dynamics AX/CRM nebo jinému prostředku mimo Azure.
+Tento článek je určen pro vydavatele, kteří mají svou nabídku na AppSource a chtějí vytvořit svou testovací disku, která se připojí k instanci Dynamics AX/CRM nebo jinému prostředku mimo azure.
 
-<a name="how-to-build-a-logic-app-test-drive"></a>Postup sestavení testovací jednotky aplikace logiky
+<a name="how-to-build-a-logic-app-test-drive"></a>Jak vytvořit testovací jednotku aplikace logiky
 -----------------------------------
 
-Dokumentace ke zkušební jednotce pro testovací jednotky aplikace logiky je aktuálně stále na GitHubu pro [operace](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) a [zapojení zákazníka](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app). Další informace najdete tady.
+Dokumentace k testovacím disku pro testovací jednotky aplikace logiky je momentálně stále na [GitHubu](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) for Operations and [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app), přejděte si k tomu další informace.
 
-<a name="how-to-publish-a-test-drive"></a>Postup publikování testovacího disku
+<a name="how-to-publish-a-test-drive"></a>Jak publikovat testovací jízdu
 ---------------------------
 
-Teď, když máte vytvořenou testovací jednotku, Tato část vás provede všemi poli potřebnými k úspěšnému publikování testovacích jednotek.
+Teď, když máte vytvořenou testovací jízdu, tato část provede každé z polí, které jsou pro úspěšné publikování testovací jednotky nutné.
 
-![Povolení funkce Test Drive](./media/azure-resource-manager-test-drive/howtopub1.png)
+![Povolení funkce testovací jednotky](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-Prvním a nejnejdůležitějším polem je přepnout, jestli chcete vyplnit test formuláře se všemi požadovanými poli. Když vyberete **Ne,** formulář se deaktivuje a pokud znovu publikujete s neaktivovanou testovací jednotkou, bude testovací jednotka z produkčního prostředí odebrána.
+První a nejdůležitější pole je přepnout, zda chcete Test formuláře se všemi požadovanými poli jsou uvedeny pro vás vyplnit. Když vyberete **Ne,** formulář se zakáže a pokud znovu publikujete se zakázanou testovací jednotkou, testovací jednotka se odebere z produkčního prostředí.
 
-*Poznámka*: Pokud jsou k dispozici testovací jednotky, které uživatelé aktivně používají, budou se tyto testovací jednotky spouštět až do vypršení platnosti jejich relace.
+*Poznámka:* Pokud existují testovací jednotky aktivně používané uživateli, tyto testovací jednotky budou nadále spuštěny, dokud jejich relace nevyprší.
 
 ### <a name="details"></a>Podrobnosti
 
-Další část, která se má vyplnit, jsou podrobnosti o nabídce testovacích jednotek.
+Další část, kterou chcete vyplnit, jsou podrobnosti o nabídce testovací houšti.
 
 ![Podrobnosti o testovacím ovladači](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Popis –** *[povinné pole]* sem napíšete hlavní popis toho, co je na testovacím disku. Zde se zobrazí zákazník, který si přečte scénáře, na které se vaše testovací jednotka vztahuje na váš produkt. 
+**Popis -** *[Povinné pole]* Toto je místo, kde napíšete hlavní popis o tom, co je na testovací jízdě. Zákazník si sem přijde přečíst, jaké scénáře bude vaše testovací jízda o vašem produktu zahrnovat. 
 
-**Ruční uživatel –** *[povinné pole]* Toto je podrobný návod k vašemu prostředí Test Drive. Zákazník ho otevře a bude moct procházet přesně to, co chcete dělat v rámci své testovací jednotky. Je důležité, abyste tento obsah snadno pochopili a následovali! (Musí se jednat o soubor. PDF)
+**Uživatelská příručka -** *[Povinné pole]* Toto je podrobný návod k testovací jízdě. Zákazník to otevře a může projít přesně to, co chcete, aby dělali po celou dobu jejich testovací jízdy. Je důležité, aby tento obsah byl snadno pochopitelný a sledovat! (Musí se jednat o soubor PDF)
 
-**Ukázková zkušební verze testovacího videa –** \[Doporučené\] podobně jako ruční příručka pro uživatele, je nejlepší zahrnout video kurz prostředí Test Drive. Zákazník si tento postup předá nebo během testovacích jednotek dokončí a může procházet přesně to, co chcete v rámci své zkušební jednotky provádět. Je důležité, abyste tento obsah snadno pochopili a následovali!
+**Test Drive Demo Video -** \[Doporučeno\] Podobně jako v uživatelské příručce, je nejlepší zahrnout instruktážní video o vašem zážitku z testovací jízdy. Zákazník bude sledovat to před nebo během jejich Zkušební jízdy a může projít přesně to, co chcete, aby dělali v průběhu jejich Zkušební jízdy. Je důležité, aby tento obsah byl snadno pochopitelný a sledovat!
 
 - **Název** – název videa
-- **Odkaz** – musí se jednat o VLOŽENOU adresu URL z YouTube nebo Vimeo. Příklad toho, jak získat vloženou adresu URL, je níže:
-- **Miniatura** – musí to být obrázek s vysokou kvalitou (533x324) pixelů. Doporučujeme udělat snímek obrazovky některé z možností testování testovacích jednotek.
+- **Odkaz** - Musí být vložené URL z YouTube nebo Vimeo. Příklad, jak získat vloženou adresu URL, je následující:
+- **Miniatura** – musí se jednat o obraz ve vysoké kvalitě (533 × 324) pixelů. Doporučujeme, abyste zde pořídili snímek obrazovky s některými částmi prostředí testování.
 
-Níže je uveden způsob, jakým se tato pole zobrazí pro zákazníka během používání testovacích jednotek.
+Níže je uvedeno, jak se tato pole zobrazí pro zákazníka během jeho zkušeností s testovací mitou.
 
-![Vzhled a chování polí testovacích jednotek](./media/azure-resource-manager-test-drive/howtopub4.png)
+![Testovací jednotka pole vypadat a cítit](./media/azure-resource-manager-test-drive/howtopub4.png)
 
 ### <a name="technical-configuration"></a>Technická konfigurace
 
-Další část, která se má vyplnit, je místo, kde konfigurujete svou aplikaci logiky testovacích jednotek a definujete, jak konkrétní instance testovacích jednotek fungují.
+Další část, kterou chcete vyplnit, je, kde nakonfigurujete aplikaci logiky testovací jednotky a definujete, jak konkrétně vaše instance testovací jednotky fungují.
 
-![Technická konfigurace testovacích jednotek](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
+![Technická konfigurace zkušební jízdy](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
 
-- **Oblast** -  *[povinné pole]* oblast, kterou jste vybrali, je místo, kde můžete vybrat, kde jsou nasazené prostředky aplikace logiky testu.
+- **Oblast** - *[Povinné pole]* Oblast, kterou vyberete, je místo, kde vyberete, kde se nasadí prostředky aplikace logiky testovací jednotky.
 
-    *Poznámka:* Pokud vaše aplikace logiky obsahuje nějaké vlastní prostředky, které jsou uložené v nějaké oblasti, ujistěte se, že je zde vybraná oblast. Nejlepším způsobem, jak to provést, je **plně nasadit vaši aplikaci logiky lokálně na svém předplatném Azure na portálu a ověřit, jestli funguje** ještě před jejich zápisem.
+    *Poznámka:* Pokud vaše aplikace logiky obsahuje vlastní prostředky, které jsou uloženy v oblasti, ujistěte se, že oblast je vybrána zde. Nejlepší způsob, jak to udělat, je **plně nasadit aplikaci logiky místně na vašem předplatném Azure na portálu a ověřit, že funguje** před zápisem tady.
 
-- **Maximální počet souběžných testovacích jednotek** -  *[povinné pole]* počet instancí testovacích jednotek, které jsou už nasazené a čekají na přístup pro vybranou oblast. Zákazníci můžou k těmto testovacím jednotkám okamžitě přistupovat, ale nemusíte čekat na nasazení.
+- **Maximální souběžné testovací jednotky** - *[Povinné pole]* Počet instancí testovací jednotky, které jsou již nasazeny a čekají na přístup pro vybranou oblast. Zákazníci mohou okamžitě přistupovat k této testovací jednotky, spíše než muset čekat na nasazení.
 
-    *Poznámka:* Pokud používáte webinář/Class, kde chcete, aby celý počet studentů v rámci testovacích jednotek byl stejný, doporučujeme publikovat s N počtem aktivních instancí a poté, co je třída nadlimitní, aby se znovu publikovala na běžný počet aktivních instancí.
+    *Poznámka:* Pokud používáte webinář/třídu, kde chcete, aby všichni vaši N počet studentů, aby test drive, je doporučeno publikovat s N počet Hot instance a pak po dokončení třídy znovu publikovat zpět na normální počet Hot instance.
 
-- **Doba trvání testovacích jednotek (hodiny) –** *[povinné pole]* doba trvání, jak dlouho bude testovací jednotka aktivní, v \# hodin. Testovací jednotka se po skončení tohoto časového období ukončí automaticky.
+- **Doba trvání testovací jednotky (hodiny) -** *[Povinné pole]* Doba trvání, po kterou bude testovací jízda aktivní, v \# hodinách. Testovací cesta se automaticky ukončí po uplynutí tohoto časového období.
 
-- **Název skupiny prostředků Azure –** *[povinné pole]* zapište do názvu skupiny prostředků, kde se budou ukládat testovací jednotky aplikace logiky.
+- **Název skupiny prostředků Azure –** *[povinné pole]* Zapište v názvu skupiny prostředků, kde se uloží testovací jednotky aplikace logiky.
 
-- **Přiřaďte název aplikace logiky –** *[povinné pole]* zapište do aplikace logiky, která se používá k přiřazení uživatele na testovací jednotce předtím, než ho zákazník dostane. napište sem název této aplikace logiky. Ujistěte se, že je tento soubor uložený ve skupině prostředků výše.
+- **Přiřadit název aplikace logiky -** *[povinné pole]* Zápis v aplikaci logiky, který se používá k přiřazení uživatele v testovací jízdě dříve, než ji zákazník získá, napište název této aplikace logiky zde. Zkontrolujte, zda je tento soubor uložen ve výše uvedené skupině prostředků.
 
-- **Zrušení zřízení názvu aplikace logiky –** *[povinné pole]* napište název aplikace logiky pro zrušení zřízení všech prostředků vytvořených na testovacím disku. Ujistěte se, že je tento soubor uložený ve skupině prostředků výše.
+- **Zrušení zřízení název aplikace logiky -** *[Povinné pole]* Zápis v názvu aplikace logiky pro zrušení zřízení všech prostředků vytvořených v testovací jednotce. Zkontrolujte, zda je tento soubor uložen ve výše uvedené skupině prostředků.
 
-- **Přístup k informacím –** *[povinné pole]* poté, co zákazník získá testovací verzi, zobrazí se jim informace o přístupu. Tyto pokyny jsou určeny pro sdílení užitečných výstupních parametrů z testovacích jednotek Správce prostředků šabloně. Chcete-li zahrnout výstupní parametry, použijte dvojité složené závorky (například **{{outputName}}** ) a budou vloženy do umístění správně. (Pro vykreslení v front-endu se doporučuje formátování řetězce HTML.)
+- **Přístup k informacím –** *[Povinné pole]* Poté, co zákazník získá testovací jízdu, jsou jim předloženy přístupové informace. Tyto pokyny jsou určeny ke sdílení užitečných výstupních parametrů ze šablony Správce prostředků testovací jednotky. Chcete-li zahrnout výstupní parametry, použijte dvojité složené závorky (například **{{outputname}}** a budou vloženy správně do umístění. (Zde se doporučuje formátování řetězce HTML, které se vykresluje v přední části).
 
-### <a name="test-drive-deployment-subscription-details"></a>Podrobnosti o předplatném nasazení testovacích jednotek
+### <a name="test-drive-deployment-subscription-details"></a>Podrobnosti o předplatném nasazení testovací jednotky
 
-Poslední část, která se má vyplnit, je umožnit automatické nasazení testovacích jednotek tím, že se připojíte k předplatnému Azure a Azure Active Directory (AD).
+Poslední část, kterou chcete vyplnit, je možnost nasadit testovací jednotky automaticky připojením předplatného Azure a služby Azure Active Directory (AD).
 
-![Podrobnosti o předplatném nasazení testovacích jednotek](./media/azure-resource-manager-test-drive/subdetails1.png)
+![Podrobnosti o předplatném nasazení testovací jednotky](./media/azure-resource-manager-test-drive/subdetails1.png)
 
-**ID předplatného Azure** *[povinné pole]* uděluje přístup ke službám Azure a Azure Portal. Předplatné je místo, kde se oznamuje využití prostředků, a účtují se služby. Pokud ještě nemáte **samostatné** předplatné Azure pro testovací disky, pokračujte prosím a udělejte si ho. ID předplatných Azure můžete najít tak, že se přihlásíte Azure Portal a v nabídce na levé straně přejdete k předplatným.
+**ID předplatného Azure** *[povinné pole]* To uděluje přístup ke službám Azure a portálu Azure. Předplatné je místo, kde se účtuje využití prostředků a služby se účtují. Pokud ještě nemáte **samostatné** předplatné Azure pro testovací jednotky, pokračujte a vytvořte si ho. Id předplatného Azure najdete tak, že se přihlásíte na portál Azure a přejdete na předplatná v nabídce na levé straně.
 (Příklad: "a83645ac-1234-5ab6-6789-1h234g764ghty")
 
 ![Předplatná Azure](./media/azure-resource-manager-test-drive/subdetails2.png)
 
-**ID tenanta Azure AD** *[povinné pole]* Pokud máte ID tenanta, které už máte k dispozici, najdete ho níže v části vlastnosti-\> ID adresáře.
+**ID klienta Azure AD** *[Povinné pole]* Pokud máte ID klienta,\> které je už k dispozici, najdete ho níže v ID služby Vlastnosti – adresář.
 
 ![Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails3.png)
 
-V opačném případě vytvořte nového tenanta v Azure Active Directory.
+V opačném případě vytvořte nového klienta ve službě Azure Active Directory.
 
-![Obrazovka vlastností Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails4.png)
+![Obrazovka vlastností služby Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-! Azure Active Directory] (./Media/Azure-Resource-Manager-Test-Drive/subdetails5.png)
+! Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails5.png)
 
-![Azure Active Directory tenantů](./media/azure-resource-manager-test-drive/subdetails6.png)
+![Klienti Služby Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails6.png)
 
-**Aplikace Azure AD ID** *[povinné pole]* další krok je vytvoření a registrace nové aplikace. Tuto aplikaci použijeme k provádění operací s instancí testovacích jednotek.
+**Azure AD App ID** *[Povinné pole]* Dalším krokem je vytvoření a registrace nové aplikace. Tuto aplikaci použijeme k provádění operací s instancí testovací jednotky.
 
-1. Přejděte do nově vytvořeného adresáře nebo už existujícího adresáře a v podokně filtru vyberte Azure Active Directory.
-2. Vyhledejte "Registrace aplikací" a klikněte na Přidat.
+1. Přejděte do nově vytvořeného adresáře nebo již existujícího adresáře a v podokně filtrů vyberte adresář Azure Active Directory.
+2. Hledat "Registrace aplikací" a klikněte na "Přidat"
 3. Zadejte název aplikace.
-4. Vyberte typ "webová aplikace/rozhraní API".
-5. Zadejte libovolnou hodnotu v přihlašovací adrese URL, kterou jsme vyhráli\'t toto pole používáme.
+4. Vyberte typ jako "Webová aplikace / ROZHRANÍ API"
+5. V přihlašovací adrese URL uveďte\'libovolnou hodnotu, toto pole nebudeme používat.
 6. Klikněte na vytvořit.
-7. Po vytvoření aplikace přejděte do části vlastnosti –\> nastavit aplikaci jako více tenantů a klikněte na Uložit.
+7. Po vytvoření aplikace přejděte na\> Vlastnosti – Nastavte aplikaci jako víceklientské a stiskněte tlačítko Uložit.
 
-Klikněte na Uložit. Posledním krokem je vyvýšení ID aplikace pro tuto registrovanou aplikaci a její vložení do pole testovací jednotka.
+Klikněte na Uložit. Posledním krokem je uchopit ID aplikace pro tuto registrovanou aplikaci a vložit ji do pole Test Drive zde.
 
 ![ID aplikace Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails7.png)
 
-V případě, že aplikaci používáme k nasazení do předplatného, musíme aplikaci přidat jako přispěvatele v předplatném. Pokyny k těmto akcím jsou uvedené níže:
+Vzhledem k tomu, že používáme aplikaci k nasazení do předplatného, musíme přidat aplikaci jako přispěvatele na předplatné. Pokyny pro tyto jsou následující:
 
-1. Přejděte do okna předplatná a vyberte příslušné předplatné, které používáte pouze pro testovací jednotku.
-1. Klikněte na **Řízení přístupu (IAM)** .
-1. Klikněte na kartu **přiřazení rolí** .  ![Azure Active Directory, přidání nového Access Control hlavního](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-1. Klikněte na **Přidat přiřazení role**.
-1. Nastavte roli jako **Přispěvatel**.
-1. Zadejte název aplikace Azure AD a vyberte aplikaci, pro kterou chcete roli přiřadit.
-    oprávnění Azure Active Directory ![](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Přejděte do okna Předplatná a vyberte příslušné předplatné, které používáte pouze pro testovací verzi.
+1. Klikněte na **Řízení přístupu (IAM)**.
+1. Klikněte na kartu **Přiřazení rolí.**  ![Azure Active Directory, přidání nového hlavního povinného řízení přístupu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Klepněte na tlačítko **Přidat přiřazení role**.
+1. Nastavte roli **přispěvatele**.
+1. Zadejte název aplikace Azure AD a vyberte aplikaci, která roli přiřadí.
+    ![Oprávnění služby Azure Active Directory](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
 1. Klikněte na **Uložit**.
 
-**Aplikace Azure AD Key –** *[povinné pole]* konečné pole vygeneruje ověřovací klíč. V části klíče přidejte popis klíče, nastavte dobu trvání na bez vypršení platnosti a pak vyberte Uložit. Je **důležité** , abyste se vyhnuli vypršení platnosti klíče, což způsobí přerušení testovacích jednotek v produkčním prostředí. Zkopírujte tuto hodnotu a vložte ji do pole požadované testovací jednotky.
+**Klíč aplikace Azure AD –** *[Povinné pole]* Konečné pole je generovat ověřovací klíč. V části klíče přidejte popis klíče, nastavte dobu trvání na nikdy nevyprší a vyberte uložit. Je **důležité,** aby se zabránilo mít vypršela klíč, který zlomí zkušební jízdu v produkčním prostředí. Zkopírujte tuto hodnotu a vložte ji do požadovaného pole Testovací jednotka.
 
-![Oddíl Azure Active Directory klíčů](./media/azure-resource-manager-test-drive/subdetails8.png)
+![Oddíl Klíče služby Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails8.png)
 
 > [!CAUTION]
-> Nemůžete použít Azure App Registration Preview, protože aktuálně negeneruje klíč kódovaný v kódování Base64.
+> Azure App Registration Preview nelze použít, protože aktuálně negeneruje kódovaný klíč base64.
 
 
 <a name="next-steps"></a>Další kroky
 ----------
 
-Teď, když máte vyplněná všechna pole testovacích jednotek, Projděte a **znovu publikujte** vaši nabídku. Po úspěšném dokončení testovacího procesu byste si měli projít rozsáhlé prostředí pro zákazníky ve **verzi Preview** vaší nabídky. Spusťte testovací jednotku v uživatelském rozhraní a ověřte, zda jsou vaše testovací jednotky správně nasazeny.
+Teď, když máte vyplněná všechna pole testovací jednotky, projděte a **znovu publikujte** svou nabídku. Jakmile vaše testovací verze projde certifikačním procesem, měli byste v **náhledu** nabídky projít rozsáhlým testem zkušeností zákazníků. Spusťte testovací jednotku v ui a ověřte, že vaše testovací jednotky jsou plně nasazeny správně.
 
-Je důležité si uvědomit, že neodstraníte žádnou část testovacího disku, protože jsou zřízena pro vaše zákazníky, takže služba Test Drive po dokončení práce s ním automaticky vyčistí tyto skupiny prostředků.
+Je důležité si uvědomit, že neodstraníte žádnou část testovací jednotky, protože jsou zřízeny pro vaše zákazníky, takže služba Test Drive tyto skupiny prostředků automaticky vyčistí po dokončení zákazníka.
 
-Jakmile budete mít v nabídce Preview pohodlí, teď je to čas do **Live**! Po publikování nabídky od Microsoftu probíhá finální proces kontroly, který vám umožní dvakrát zkontrolovat celý konečný zážitek. Pokud z nějakého důvodu se nabídka odmítne, pošleme oznámení technickému kontaktu pro vaši nabídku, která vysvětluje, co je potřeba k tomu, abychom mohli opravit.
+Jakmile se budete cítit pohodlně s nabídkou Náhled, nyní je čas **jít žít!** Po publikování nabídky je proveden proces závěrečné kontroly od společnosti Microsoft, aby bylo možné zkontrolovat celou dobu od začátku do konce. Pokud z nějakého důvodu bude nabídka odmítnuta, zašleme technickému kontaktu pro vaši nabídku oznámení, ve kterém vysvětlíme, co bude třeba opravit.
 
-Pokud máte více otázek, hledáte Rady pro řešení potíží nebo chcete, aby testovací verze byla více úspěšná, přejděte na [Nejčastější dotazy, řešení potíží & osvědčené postupy](./marketing-and-best-practices.md).
+Máte-li další dotazy, hledáte rady pro řešení potíží nebo chcete, aby byla vaše testovací jízda úspěšnější, přejděte na [nejčastější dotazy, řešení potíží & doporučené postupy](./marketing-and-best-practices.md).

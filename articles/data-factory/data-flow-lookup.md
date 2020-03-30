@@ -1,77 +1,93 @@
 ---
-title: Mapování transformace vyhledávání toků dat
-description: Azure Data Factory transformace vyhledávání toku dat
+title: Transformace vyhledávání v toku dat mapování
+description: Referenční data z jiného zdroje pomocí vyhledávací transformace v toku dat mapování.
 author: kromerm
+ms.reviewer: daperlov
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/26/2020
-ms.openlocfilehash: 2216e1bf058eef486dbfefba24d52bdc6bdb232f
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.date: 03/23/2020
+ms.openlocfilehash: 78c6c1363af011a90865770d88c0037e50e958c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164674"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240411"
 ---
-# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory transformace vyhledávání toku dat
+# <a name="lookup-transformation-in-mapping-data-flow"></a>Transformace vyhledávání v toku dat mapování
 
-Pomocí vyhledávání můžete přidat referenční data z jiného zdroje do toku dat. Transformace vyhledávání vyžaduje definovaný zdroj, který odkazuje na vaši referenční tabulku a odpovídá na klíčová pole.
+Transformace vyhledávání slouží k odkazování na data z jiného zdroje v datovém toku. Vyhledávací transformace připojí sloupce z odpovídajících dat ke zdrojovým datům.
+
+Transformace vyhledávání je podobná levému vnějšímu spojení. Všechny řádky z primárního datového proudu budou existovat ve výstupním datovém proudu s dalšími sloupci z vyhledávacího proudu. 
+
+## <a name="configuration"></a>Konfigurace
 
 ![Transformace vyhledávání](media/data-flow/lookup1.png "Vyhledávání")
 
-Vyberte klíčová pole, která chcete porovnat mezi poli příchozích datových proudů a poli ze zdroje odkazů. Nejdřív je potřeba vytvořit nový zdroj na plátně pro návrh toku dat, který se použije jako pravá strana pro vyhledávání.
+**Primární datový proud:** Příchozí datový proud. Tento datový proud je ekvivalentní levé straně spojení.
 
-Když se najde shody, výsledné řádky a sloupce z reference source se přidají do toku dat. Můžete zvolit, která pole zájmu chcete zahrnout do jímky na konci toku dat. Případně můžete použít transformaci SELECT po vyhledávání a vyřadit seznam polí, aby zůstala pouze pole z obou datových proudů, které chcete zachovat.
+**Vyhledávací proud:** Data, která je připojena k primárnímu datovému proudu. Která data jsou přidána, je určena podmínkami vyhledávání. Tento datový proud je ekvivalentní pravé straně spojení.
 
-Transformace vyhledávání provádí ekvivalent levého vnějšího spojení. Zobrazí se všechny řádky z levého zdroje společně s shodami z pravé strany. Pokud máte ve svém vyhledávání více hodnot, nebo pokud chcete výraz pro vyhledávání přizpůsobit, je vhodnější přepnout na transformaci spojení a použít vzájemné spojení. Tím se vyhnete případným chybám kartézském produktu při spuštění.
+**Porovná více řádků:** Pokud je povoleno, řádek s více shodami v primárním datovém proudu vrátí více řádků. V opačném případě bude vrácen pouze jeden řádek na základě podmínky "Shoda na".
 
-## <a name="match--no-match"></a>Shoda/bez shody
+**Zápas na:** Viditelné pouze v případě, že je povoleno "Porovnat více řádků". Zvolte, zda se má shodovat na libovolném řádku, první shodě nebo poslední shodě. Každý řádek se doporučuje, protože provádí nejrychlejší. Pokud je vybrán první řádek nebo poslední řádek, budete muset zadat podmínky řazení.
 
-Po transformaci vyhledávání můžete použít následnou transformaci k zkontrolování výsledků každého řádku shody pomocí funkce Expression `isMatch()` k dalšímu výběru v logice na základě toho, zda hledání vedlo ke shodě mezi řádky nebo ne.
+**Podmínky vyhledávání:** Zvolte sloupce, ve kterých se mají shodovat. Pokud je splněna podmínka rovnosti, budou řádky považovány za shodu. Najeďte přes a vyberte "Vypočítaný sloupec", chcete-li extrahovat hodnotu pomocí [jazyka toku dat](data-flow-expression-functions.md).
 
-![Vzor vyhledávání](media/data-flow/lookup111.png "Vzor vyhledávání")
+Transformace vyhledávání podporuje pouze rovnost i rovnosti shody. Chcete-li přizpůsobit vyhledávací výraz tak, aby zahrnoval další operátory, například větší než, doporučujeme použít [křížové spojení v transformaci spojení](data-flow-join.md#custom-cross-join). Křížové spojení zabrání případným kartézovým chybám při provádění.
 
-Po použití transformace vyhledávání můžete přidat transformaci s podmíněným rozdělením na funkci ```isMatch()```. V předchozím příkladu procházejí porovnávací řádky přes horní datový proud a nevyhovující tok řádků prostřednictvím ```NoMatch```ho datového proudu.
+Všechny sloupce z obou datových proudů jsou zahrnuty ve výstupních datech. Chcete-li přetáhnout duplicitní nebo nežádoucí sloupce, přidejte [vybranou transformaci](data-flow-select.md) po transformaci vyhledávání. Sloupce lze také vynechat nebo přejmenovat v transformaci jímky.
 
-## <a name="first-or-last-value"></a>První nebo poslední hodnota
+## <a name="analyzing-matched-rows"></a>Analýza odpovídajících řádků
 
-Transformace vyhledávání je implementována jako levé vnější spojení. Pokud máte více odpovídajících hodnot vyhledávání, můžete chtít snížit více odpovídajících řádků tím, že vybíráte první odpovídající řádek, poslední shodu nebo libovolný náhodný řádek.
+Po transformaci vyhledávání lze `isMatch()` funkci použít k zobrazení, zda se vyhledávání shoduje s jednotlivými řádky.
 
-### <a name="option-1"></a>možnost 1
+![Vyhledávací vzorek](media/data-flow/lookup111.png "Vyhledávací vzorek")
 
-![Vyhledávání na jednom řádku](media/data-flow/singlerowlookup.png "Vyhledávání na jednom řádku")
+Příkladem tohoto vzoru je použití podmíněné rozdělení `isMatch()` transformace rozdělit na funkci. Ve výše uvedeném příkladu odpovídající řádky projít horní datový ```NoMatch``` proud a neodpovídající řádky toku prostřednictvím datového proudu.
 
-* Porovnává více řádků: ponechte prázdné, aby se vracela jedna řádková shoda.
-* Shoda s: Vyberte první, poslední nebo libovolnou shodu.
-* Podmínky řazení: Pokud vyberete první nebo poslední, ADF vyžaduje, aby vaše data byla uspořádaná tak, aby existovala logika za první a poslední.
+## <a name="testing-lookup-conditions"></a>Testovací vyhledávací podmínky
 
-> [!NOTE]
-> V selektoru jednoho řádku použijte jenom první nebo poslední možnost, pokud potřebujete určit, která hodnota se má vrátit k vašemu vyhledávání. Použití libovolných nebo multi-row vyhledávání bude rychlejší.
+Při testování transformace vyhledávání s náhledem dat v režimu ladění použijte malou sadu známých dat. Při vzorkování řádků z velké datové sady nelze předpovědět, které řádky a klíče budou přečteny pro testování. Výsledkem je nedeterministický, což znamená, že podmínky spojení nemusí vrátit žádné shody.
 
-### <a name="option-2"></a>Možnost 2
+## <a name="broadcast-optimization"></a>Optimalizace vysílání
 
-Můžete to provést také pomocí agregované transformace po vyhledání. V tomto případě se pro výběr první hodnoty ze shod vyhledávání používá agregovaná transformace s názvem ```PickFirst```.
+V Azure Data Factory mapování toků dat spustit v prostředích škálované svižné. Pokud se vaše datová sada vejde do paměti pracovního uzlu, může být výkon vyhledávání optimalizován povolením vysílání.
 
-![Vyhledávací agregace](media/data-flow/lookup333.png "Vyhledávací agregace")
+![Spojení vysílání](media/data-flow/broadcast.png "Spojení vysílání")
 
-![Nejdříve vyhledávání](media/data-flow/lookup444.png "Nejdříve vyhledávání")
+Povolení vysílání posune celou datovou sadu do paměti. U menších datových sad obsahujících pouze několik tisíc řádků může vysílání výrazně zlepšit výkon vyhledávání. U velkých datových sad může tato možnost vést k výjimce nedostatku paměti.
 
-## <a name="optimizations"></a>Optimalizace
+## <a name="data-flow-script"></a>Skript toku dat
 
-V Data Factory jsou toky dat spouštěny v prostředích Spark s horizontálním škálováním. Pokud se vaše datová sada vejde do paměťového prostoru pracovního uzlu, můžeme optimalizovat výkon vyhledávání.
+### <a name="syntax"></a>Syntaxe
 
-![Připojení všesměrového vysílání](media/data-flow/broadcast.png "Připojení všesměrového vysílání")
+```
+<leftStream>, <rightStream>
+    lookup(
+        <lookupConditionExpression>,
+        multiple: { true | false },
+        pickup: { 'first' | 'last' | 'any' },  ## Only required if false is selected for multiple
+        { desc | asc }( <sortColumn>, { true | false }), ## Only required if 'first' or 'last' is selected. true/false determines whether to put nulls first
+        broadcast: { 'none' | 'left' | 'right' | 'both' }
+    ) ~> <lookupTransformationName>
+```
+### <a name="example"></a>Příklad
 
-### <a name="broadcast-join"></a>Připojení všesměrového vysílání
+![Transformace vyhledávání](media/data-flow/lookup-dsl-example.png "Vyhledávání")
 
-Vyberte levé nebo pravé straněné připojení všesměrového vysílání, které vyžádáte ADF a nahrajte celou datovou sadu z obou stran relace vyhledávání do paměti. U menších datových sad to může výrazně zlepšit výkon vyhledávání.
+Skript toku dat pro výše uvedenou konfiguraci vyhledávání je ve fragmentu kódu níže.
 
-### <a name="data-partitioning"></a>Dělení dat
+```
+SQLProducts, DimProd lookup(ProductID == ProductKey,
+    multiple: false,
+    pickup: 'first',
+    asc(ProductKey, true),
+    broadcast: 'none')~> LookupKeys
+```
+## 
+Další kroky
 
-Rozdělení dat můžete zadat také tak, že na kartě optimalizace v transformaci vyhledávání vyberete možnost nastavit rozdělení, aby se vytvořily sady dat, které mohou být pro jednotlivé pracovní procesy lépe přizpůsobeny paměti.
-
-## <a name="next-steps"></a>Další kroky
-
-* [](data-flow-join.md) Transformace a [Exists existují](data-flow-exists.md) podobné úkoly v toku dat mapování ADF. Podívejte se na následující transformace.
-* Rozdělení řádků na párové a neshodné hodnoty pomocí [podmíněného rozdělení](data-flow-conditional-split.md) s ```isMatch()```
+* [Spojení](data-flow-join.md) a [existuje](data-flow-exists.md) transformace, které mají více vstupů datového proudu
+* Použití [podmíněné](data-flow-conditional-split.md) rozdělení ```isMatch()``` transformace s rozdělit řádky na odpovídající a neodpovídající hodnoty

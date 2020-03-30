@@ -4,51 +4,26 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 01/07/2020
 ms.author: orspodek
-ms.openlocfilehash: 0d78e48fead7b1f53e67860e6be8fe6d77469e87
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 7f5c02c6c009e8916ed063454e0ae6049892e95c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280593"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297908"
 ---
-Azure Průzkumník dat šifruje všechna data v účtu úložiště v klidovém umístění. Ve výchozím nastavení se data šifrují pomocí klíčů spravovaných Microsoftem. Pro další kontrolu nad šifrovacími klíči můžete zadat klíče spravované zákazníkem, které budou použity k šifrování dat. Klíče spravované zákazníkem musí být uloženy v [Azure Key Vault](/azure/key-vault/key-vault-overview). Můžete vytvářet vlastní klíče a ukládat je do trezoru klíčů nebo můžete použít rozhraní Azure Key Vault API k vygenerování klíčů. Cluster Azure Průzkumník dat a trezor klíčů musí být ve stejné oblasti, ale můžou být v různých předplatných. Podrobné vysvětlení klíčů spravovaných zákazníkem najdete v tématu [klíče spravované zákazníkem pomocí Azure Key Vault](/azure/storage/common/storage-service-encryption). V tomto článku se dozvíte, jak nakonfigurovat klíče spravované zákazníkem.
+Azure Data Explorer šifruje všechna data v účtu úložiště v klidovém stavu. Ve výchozím nastavení jsou data šifrována pomocí klíčů spravovaných společností Microsoft. Pro další kontrolu nad šifrovacími klíči můžete zadat klíče spravované zákazníkem, které se použijí pro šifrování dat. 
 
-Ke konfiguraci klíčů spravovaných zákazníkem pomocí Azure Průzkumník dat musíte [nastavit dvě vlastnosti trezoru klíčů](/azure/key-vault/key-vault-ovw-soft-delete): **obnovitelné odstranění** a **Nemazat**. Tyto vlastnosti nejsou ve výchozím nastavení povolené. Pokud chcete tyto vlastnosti povolit, použijte [PowerShell](/azure/key-vault/key-vault-soft-delete-powershell) nebo [Azure CLI](/azure/key-vault/key-vault-soft-delete-cli). Podporují se jenom klíče RSA a velikost klíče 2048.
+Klíče spravované zákazníkem musí být uloženy v [trezoru klíčů Azure](/azure/key-vault/key-vault-overview). Můžete vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault ke generování klíčů. Cluster Azure Data Explorer a trezor klíčů musí být ve stejné oblasti, ale mohou být v různých předplatných. Podrobné vysvětlení klíčů spravovaných zákazníkem najdete v [tématu klíče spravované zákazníkem pomocí služby Azure Key Vault](/azure/storage/common/storage-service-encryption). 
+
+Tento článek ukazuje, jak nakonfigurovat klíče spravované zákazníkem.
+
+## <a name="configure-azure-key-vault"></a>Konfigurace Azure Key Vaultu
+
+Chcete-li nakonfigurovat klíče spravované zákazníkem pomocí Průzkumníka dat Azure, musíte [nastavit dvě vlastnosti v trezoru klíčů:](/azure/key-vault/key-vault-ovw-soft-delete) **Obnovitelné odstranění** a **Neodstraňovat**. Tyto vlastnosti nejsou ve výchozím nastavení povoleny. Chcete-li povolit tyto vlastnosti, **proveďte povolení obnovitelného odstranění** a **povolení ochrany proti vymazání** v [prostředí PowerShell](/azure/key-vault/key-vault-soft-delete-powershell) nebo [Azure CLI](/azure/key-vault/key-vault-soft-delete-cli) v novém nebo existujícím trezoru klíčů. Podporovány jsou pouze klíče RSA velikosti 2048. Další informace o klíčích naleznete v tématu [Key Vault keys](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys).
 
 > [!NOTE]
-> Šifrování dat pomocí klíčů spravovaných zákazníkem není u [vedoucích a následných clusterů](/azure/data-explorer/follower)podporováno. 
+> Šifrování dat pomocí klíčů spravovaných zákazníkem není podporováno v [clusterech vedoucích a sledujících](/azure/data-explorer/follower). 
 
 ## <a name="assign-an-identity-to-the-cluster"></a>Přiřazení identity ke clusteru
 
-Pokud chcete pro svůj cluster povolit klíče spravované zákazníkem, nejprve do clusteru přiřaďte spravovanou identitu přiřazenou systémem. Pomocí této spravované identity udělíte oprávnění clusteru přístup k trezoru klíčů. Pokud chcete konfigurovat spravované identity přiřazené systémem, přečtěte si téma [spravované identity](/azure/data-explorer/managed-identities).
-
-## <a name="create-a-new-key-vault"></a>Vytvořit nový trezor klíčů
-
-Pokud chcete vytvořit nový trezor klíčů pomocí PowerShellu, volejte rutinu [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Trezor klíčů, který použijete k uložení klíčů spravovaných zákazníkem pro šifrování Azure Průzkumník dat, musí mít povolené dvě nastavení ochrany klíčů, **obnovitelné odstranění** a **nemazatelné**. Hodnoty zástupných symbolů v závorkách nahraďte vlastními hodnotami v příkladu níže.
-
-```azurepowershell-interactive
-$keyVault = New-AzKeyVault -Name <key-vault> `
-    -ResourceGroupName <resource_group> `
-    -Location <location> `
-    -EnableSoftDelete `
-    -EnablePurgeProtection
-```
-
-## <a name="configure-the-key-vault-access-policy"></a>Konfigurace zásad přístupu trezoru klíčů
-
-Dále nakonfigurujte zásady přístupu pro Trezor klíčů, aby měl cluster oprávnění k přístupu. V tomto kroku použijete spravovanou identitu přiřazenou systémem, kterou jste předtím přiřadili ke clusteru. Pro nastavení zásad přístupu pro Trezor klíčů volejte [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy). Zástupné hodnoty v závorkách nahraďte vlastními hodnotami a použijte proměnné definované v předchozích příkladech.
-
-```azurepowershell-interactive
-Set-AzKeyVaultAccessPolicy `
-    -VaultName $keyVault.VaultName `
-    -ObjectId $cluster.Identity.PrincipalId `
-    -PermissionsToKeys wrapkey,unwrapkey,get,recover
-```
-
-## <a name="create-a-new-key"></a>Vytvořit nový klíč
-
-V dalším kroku vytvořte nový klíč v trezoru klíčů. Chcete-li vytvořit nový klíč, zavolejte [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey). Zástupné hodnoty v závorkách nahraďte vlastními hodnotami a použijte proměnné definované v předchozích příkladech.
-
-```azurepowershell-interactive
-$key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination 'Software'
-```
+Chcete-li povolit klíče spravované zákazníkem pro váš cluster, nejprve přiřaďte clusteru spravovanou identitu přiřazenou systémem. Tuto spravovanou identitu použijete k udělení oprávnění clusteru pro přístup k trezoru klíčů. Chcete-li nakonfigurovat spravované identity přiřazené systémem, přečtěte si informace [o spravovaných identitách](/azure/data-explorer/managed-identities).

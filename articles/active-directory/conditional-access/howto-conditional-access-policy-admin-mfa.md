@@ -1,80 +1,82 @@
 ---
-title: Podmíněný přístup – vyžaduje MFA pro správce – Azure Active Directory
-description: Vytvoření vlastních zásad podmíněného přístupu, které vyžadují, aby správci prováděli vícefaktorové ověřování
+title: Podmíněný přístup – vyžadovat vícefaktorové povolení pro správce – Služba Azure Active Directory
+description: Vytvoření vlastní zásady podmíněného přístupu, která vyžaduje, aby správci prováděli vícefaktorové ověřování
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb396429c95dbed090283752c5a0d9ff5cc176af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: c08c8d5d4203ae90cedd826bb5dcb01011d07afa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148194"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295267"
 ---
-# <a name="conditional-access-require-mfa-for-administrators"></a>Podmíněný přístup: vyžadovat MFA pro správce
+# <a name="conditional-access-require-mfa-for-administrators"></a>Podmíněný přístup: Vyžadovat vícefaktorové povolení pro správce
 
-Účtům, kterým jsou přiřazena práva pro správu, cílí útočníci. Vyžadování vícefaktorového ověřování (MFA) u těchto účtů představuje snadný způsob, jak snížit riziko narušení těchto účtů.
+Na účty, kterým jsou přiřazena práva správce, cílí útočníci. Vyžadování vícefaktorového ověřování (MFA) u těchto účtů je snadný způsob, jak snížit riziko ohrožení těchto účtů.
 
-Společnost Microsoft doporučuje vyžadovat vícefaktorové ověřování na následujících rolích minimálně:
+Společnost Microsoft doporučuje vyžadovat vícefaktorové informace minimálně v následujících rolích:
 
 * Správce fakturace
 * Správce podmíněného přístupu
 * Správce Exchange
 * Globální správce
-* HelpDesk (heslo) – správce
+* Správce technické podpory (heslo)
 * Správce hesel
 * Správce zabezpečení
 * Správce SharePointu
 * Správce uživatele
 
-Organizace si můžou zvolit, že se mají zahrnout nebo vyloučit role podle potřeby.
+Organizace se mohou rozhodnout zahrnout nebo vyloučit role, jak uznají za vhodné.
 
 ## <a name="user-exclusions"></a>Vyloučení uživatelů
 
-Zásady podmíněného přístupu jsou výkonné nástroje. doporučujeme, abyste z zásad vyloučili následující účty:
+Zásady podmíněného přístupu jsou výkonné nástroje, doporučujeme z vašich zásad vyloučit následující účty:
 
-* **Nouzový přístup** nebo účty pro **přerušení** , které zabrání uzamknutí účtu na úrovni tenanta. V nepravděpodobném scénáři jsou všichni správci zamčeni z vašeho tenanta, účet pro správu pro nouzový přístup se dá použít k přihlášení k tenantovi a přijímá kroky pro obnovení přístupu.
+* **Nouzové přístup** nebo **break-glass** účty, aby se zabránilo uzamčení účtu pro celý klient. V nepravděpodobném scénáři jsou všichni správci uzamčeni z vašeho tenanta, váš účet pro správu nouzového přístupu lze použít k přihlášení do klienta podniknout kroky k obnovení přístupu.
    * Další informace najdete v článku [Správa účtů pro nouzový přístup ve službě Azure AD](../users-groups-roles/directory-emergency-access.md).
-* **Účty služeb** a **instanční objekty**, jako je například účet Azure AD Connect Sync. Účty služeb jsou neinteraktivní účty, které nejsou vázány na konkrétního uživatele. Obvykle jsou používány back-end službami a umožňují programový přístup k aplikacím. Účty služby by měly být vyloučeny, protože MFA nelze dokončit programově.
-   * Pokud má vaše organizace tyto účty používané ve skriptech nebo v kódu, zvažte jejich nahrazení pomocí [spravovaných identit](../managed-identities-azure-resources/overview.md). Jako dočasné řešení můžete tyto konkrétní účty z základní zásady vyloučit.
+* **Účty služeb** a **instanční objekty**, jako je například účet synchronizace připojení Azure AD Connect. Účty služeb jsou neinteraktivní účty, které nejsou vázány na žádného konkrétního uživatele. Obvykle jsou používány back-endovými službami a umožňují programový přístup k aplikacím. Účty služeb by měly být vyloučeny, protože vícefaktorové řízení nelze dokončit programově.
+   * Pokud má vaše organizace tyto účty v provozu ve skriptech nebo kódu, zvažte jejich nahrazení [spravovanými identitami](../managed-identities-azure-resources/overview.md). Jako dočasné řešení můžete tyto konkrétní účty vyloučit ze zásady směrného plánu.
 
-## <a name="create-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
+## <a name="create-a-conditional-access-policy"></a>Vytvoření zásad podmíněného přístupu
 
-Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu, která bude vyžadovat, aby tyto přiřazené role správce prováděly službu Multi-Factor Authentication.
+Následující kroky pomohou vytvořit zásadu podmíněného přístupu, která bude vyžadovat, aby tyto přiřazené role správy prováděly vícefaktorové ověřování.
 
-1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Přejděte na **Azure Active Directory** > **zabezpečení** > **podmíněný přístup**.
+1. Přihlaste se k **portálu Azure** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přejděte na azure **active directory** > **zabezpečení** > podmíněný**přístup**.
 1. Vyberte **nové zásady**.
-1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
-1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
-   1. V části **Zahrnout**vyberte **role adresáře (Preview)** a minimálně jednu z následujících rolí:
+1. Pojmenujte svou zásadu. Doporučujeme organizacím vytvořit smysluplný standard pro názvy svých zásad.
+1. V části **Přiřazení**vyberte **Možnost I Uživatelé a skupiny.**
+   1. V části **Zahrnout**vyberte **role adresáře (náhled)** a zvolte minimálně následující role:
+      * Správce ověřování
       * Správce fakturace
       * Správce podmíněného přístupu
       * Správce Exchange
       * Globální správce
-      * Správce helpdesku
+      * Správce technické podpory
       * Správce hesel
       * Správce zabezpečení
       * Správce SharePointu
       * Správce uživatele
-   1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
+   1. V **části Vyloučit**vyberte Možnost **Uživatelé a skupiny** a zvolte nouzové přístupové nebo nerozbitné účty vaší organizace. 
    1. Vyberte **Done** (Hotovo).
-1. V části **cloudové aplikace nebo akce** > **Zahrnout**, vyberte **všechny cloudové aplikace**a vyberte **Hotovo**.
-1. V části **řízení přístupu** > **udělení**vyberte **udělit přístup**, **vyžadovat službu Multi-Factor Authentication**a vyberte **Vybrat**.
-1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
-1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
+1. V části **Cloudové aplikace nebo akce** > **Zahrnout**vyberte **Všechny cloudové aplikace**a vyberte **Hotovo**.
+1. V **části Podmínky** > **Klientské aplikace (Preview)** nastavte **Configure** to **Yes**a vyberte **Hotovo**.
+1. V části **Access controls** > **Grant**vyberte **Udělit přístup**, Vyžadovat **vícefaktorové ověřování**a vybrat **vybrat**.
+1. Potvrďte nastavení a nastavte **možnost Povolit zásady** **na Zapnuto**.
+1. Chcete-li vytvořit, vyberte **vytvořit,** chcete-li povolit zásady.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+[Podmíněné přístupové běžné zásady](concept-conditional-access-policy-common.md)
 
-[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
+[Určení dopadu pomocí režimu pouze pro sestavu podmíněného přístupu](howto-conditional-access-report-only.md)
 
-[Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
+[Simulovat chování přihlášení pomocí nástroje Co-li podmíněného přístupu](troubleshoot-conditional-access-what-if.md)

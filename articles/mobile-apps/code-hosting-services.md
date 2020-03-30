@@ -1,79 +1,79 @@
 ---
 title: Hostování zdrojového kódu mobilní aplikace v cloudu pomocí GitHubu a Azure DevOps
-description: Přečtěte si o službách pro hostování kódu mobilní aplikace v cloudu pomocí služeb Microsoftu.
-author: elamalani
+description: Přečtěte si o službách pro hostování kódu mobilní aplikace v cloudu se službami Microsoftu.
+author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-2222-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 8662b9f77614339ff514fa4fcf97dc1ee8fc7417
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 66d8980ab53010af0703d789fbe791c60a32052d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454490"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240961"
 ---
 # <a name="cloud-hosted-source-code-management-services"></a>Služby správy zdrojového kódu hostované v cloudu
-Pokud máte vývojové týmy s více členy týmu, kteří pracují na stejném základu kódu, je nutné najít vhodné místo pro hostování vašeho kódu. Ukládání dat v cloudu a používání centralizovaného úložiště umožňuje všem ukládat, upravovat a spravovat soubory s kódem. Můžou taky spolupracovat s ostatními vývojáři na projektech. Kód může být snadno přístupný bez ohledu na to, kde jste, pokud máte připojení k Internetu.
+Pokud máte vývojové týmy s více členy týmu, kteří pracují na stejném základu kódu, musíte najít vhodné místo pro hostování kódu. Ukládání dat v cloudu a centralizované úložiště umožňuje všem uživatelům nahrávat, upravovat a spravovat soubory kódu. Mohou také komunikovat s ostatními vývojáři na projektech. Kód může být snadno dostupný bez ohledu na to, kde se právě uvidíte, pokud máte připojení k internetu.
 
-Hostování cloudu je mnohem jednodušší než u místních možností. Vyžaduje méně konfigurace hardwaru a umožňuje organizacím dokončit proces implementace pružnější způsobem.
+Cloudhosting je mnohem jednodušší než místní možnosti. Vyžaduje méně hardwarové konfigurace a umožňuje organizacím dokončit proces implementace agilnějším způsobem.
 
 ## <a name="benefits-of-hosting-source-code-in-the-cloud"></a>Výhody hostování zdrojového kódu v cloudu
-- **Centralizované cloudové úložiště:** Umožňuje zobrazit a spravovat vaše data odkudkoli.
-- **Lepší spolupráce a čisticí kód:** Udržujte si přehled o kódu v rámci týmů a spravujte projekty, abyste zajistili průběžné doručování skvělého softwaru.
-- **Buďte snazší:** Snadno přispívat k vašim projektům.
-- **Rychlejší cyklus vydávání verzí:** Pracujte rychleji ve svých týmech a snadno přispívat k vašim projektům.
-- **Snižte náklady:** Nedělejte si starosti s údržbou vlastního hardwaru, serverů, sítě VPN a tak dále.
+- **Centralizované cloudové úložiště:** Zobrazení a správa dat odkudkoli.
+- **Lepší spolupráce a čistší kód:** Sledujte kód v rámci týmů a spravujte projekty, abyste zajistili nepřetržité doručování vynikajícího softwaru.
+- **Snadnější zapojení:** Snadno přispívat do vašich projektů.
+- **Rychlejší cyklus uvolňování:** Pracujte rychleji ve svých týmech a snadno přispějte do svých projektů.
+- **Snižte náklady:** Nebojte se o údržbu vlastního hardwaru, serverů, VPN a tak dále.
 
-K hostování aplikačních dat v cloudu použijte následující služby.
+K hostování dat aplikací v cloudu použijte následující služby.
 
-## <a name="github"></a>GitHubu
-[GitHub](https://github.com/) je open source hostovaná služba, která hostuje projekty zdrojového kódu v různých programovacích jazycích. GitHub sleduje různé změny provedené u každé iterace.
+## <a name="github"></a>GitHub
+[GitHub](https://github.com/) je hostingová služba s otevřeným zdrojovým kódem, která hostuje projekty zdrojového kódu v různých programovacích jazycích. GitHub sleduje různé změny provedené v každé iteraci.
 
 **Klíčové funkce**
-- Používejte hostování kódu, abyste zachovali veškerý kód na jednom místě. Úložiště privátních, veřejných a open source jsou vybavená nástroji, které vám pomůžou s hostováním, verzí a kódem verze.
-- Přečtěte si kód a používejte integrované nástroje pro kontrolu, abyste provedli zásadní část procesu týmu:
+- Použijte kód hosting, aby všechny vaše kód na jednom místě. Privátní, veřejná a open source úložiště jsou vybavena nástroji, které vám pomohou hostovat, verze a kód vydání.
+- Zkontrolujte kód a pomocí integrovaných nástrojů pro kontrolu, aby se kontrola kódu neměnná součást procesu každého týmu:
     - Chraňte pobočky, navrhujte změny a vyžádejte si recenze.
-    - Rozdíl mezi rozdíly, komentář v kontextu a získání zpětné vazby
-- Informujte se na začátku, zůstaňte zarovnané a získejte víc práce s nástroji pro správu projektu na GitHubu:
-    - Podívejte se na velký obrázek projektu.
-    - Použijte panely úloh, které jsou přímo vedle vašeho kódu v GitHubu.
-    - Přetažením karet můžete přiřadit problémy nebo žádosti o přijetí změn členům týmu.
+    - Spot rozdíly, komentář v kontextu, a získat jasnou zpětnou vazbu.
+- Koordinujte se včas, zůstaňte v souladu a zvládáte více práce s nástroji githubu pro řízení projektů:
+    - Podívejte se na celkový obraz projektu.
+    - Používejte vývěsky úloh, které jsou hned vedle vašeho kódu uvnitř GitHubu.
+    - Přetáhněte karty a přiřaďte členům týmu problémy nebo žádosti o přijetí vyžádat.
     - Nastavte milníky pro uspořádání a sledování průběhu.
-    - Poznámky k zachycení nápadů, které mohou být užitečné, ale nepatří do konkrétního problému nebo žádosti o přijetí změn.
-- Umožňuje snadno vyhledat a zvolit správné nástroje pro lepší komunikaci a automatizaci práce zakoupením aplikací z [webu GitHub Marketplace](https://github.com/marketplace).
+    - Psát poznámky zachytit nápady, které mohou být užitečné, ale nepatří k určitému problému nebo žádosti o přijetí vyžádat.
+- Snadno objevte a vyberte správné nástroje pro lepší komunikaci a automatizaci práce nákupem aplikací z [GitHub Marketplace](https://github.com/marketplace).
 - Spravujte a rozšiřujte týmy pomocí: 
-    - Role uživatelů, které vám pomůžou organizovat týmy a přístupová oprávnění
-    - Nástroje diskuzového vlákna, které vám umožní udržet si konverzace o zaměření na téma a tým.
-    - Pokyny komunity pro rychlé nastavení nových členů týmu pomocí účtu.
-- Procházejte Nejoblíbenějšími projekty a sledujte je.
-- Síť a Naučte se od ostatních v oboru.
+    - Role uživatelů, které pomáhají organizovat týmy a získat přístup k oprávněním.
+    - Nástroje diskusního vlákna, které udržují konverzace na téma a týmové zaměření.
+    - Pokyny pro komunitu pro rychlé nastavení nových členů týmu s účtem.
+- Procházejte a hvězdy populární projekty, které je následují.
+- sítě a učit se od ostatních v průmyslu.
 
 **Odkazy**
 - [GitHub](https://github.com/)
-- [Příručky pro GitHub](https://guides.github.com/)
+- [Průvodce GitHubem](https://guides.github.com/)
 - [Komunitní fórum GitHubu](https://github.community/)
-- [Tržiště GitHubu](https://github.com/marketplace)
+- [GitHub Marketplace](https://github.com/marketplace)
 
 ## <a name="azure-devops"></a>Azure DevOps
-[Azure DevOps](https://azure.microsoft.com/services/devops/) podporuje [Azure Repos](https://azure.microsoft.com/services/devops/repos/) a [Správa verzí Team Foundation (TFVC)](https://docs.microsoft.com/azure/devops/repos/tfvc/index?view=azure-devops) jako možnosti správy zdrojového kódu. Má neomezená bezplatná privátní úložiště s revizemi kódu, pokročilou správou souborů, vyhledáváním kódu a zásadami větví, abyste zajistili vysoce kvalitní kód. Azure Repos je skvělé pro malé projekty a velké organizace, které potřebují nativní Azure Active Directory podporu a pokročilé zásady.
+[Azure DevOps](https://azure.microsoft.com/services/devops/) podporuje [Azure Repos](https://azure.microsoft.com/services/devops/repos/) a [Team Foundation Version Control (TFVC)](https://docs.microsoft.com/azure/devops/repos/tfvc/index?view=azure-devops) jako možnosti správy zdrojového kódu. Má neomezené bezplatné soukromé repozitáře s kolaborativními kontrolami kódu, pokročilou správou souborů, vyhledáváním kódu a zásadami větví, které zajišťují vysoce kvalitní kód. Azure Repos je skvělý pro malé projekty a velké organizace, které potřebují nativní podporu Azure Active Directory a pokročilé zásady.
     
 **Klíčové funkce**
-- Používejte neomezené úložiště zdrojového kódu Git hostovaného v cloudu pro vaše veřejná a privátní úložiště:
-    - Získejte podporu pro všechny klienty Git.
-    - Používejte webové háky a integraci rozhraní API.
-- Vyžádejte si další Build od žádosti o získání dat:
-    - Spolupracujte a Sestavujte lepší kód pomocí diskusí s vlákny a průběžné integrace pro každou změnu.
-    - Nastavte průběžnou integraci/průběžné doručování (CI/CD), aby se při každé dokončené žádosti o přijetí změn automaticky spouštěla sestavení, testy a nasazení. Můžete použít Azure Pipelines nebo nástroje.
-    - Chraňte své kvality kódu pomocí zásad větví.
-- Udržujte centralizovanou správu verzí pomocí Správa verzí Team Foundation, která zahrnuje revizi kódu.
-- Připojte se ke svému kódu pomocí Xcode, zatmění, IntelliJ, Android Studio, Visual Studio, Visual Studio Code a dalších.
-- Používejte výkonné vyhledávání sémantických kódů.
-- Získejte výhody z funkcí připravených pro podnik. Azure DevOps má nativní integraci s Azure Active Directory, což zjednodušuje proces správy přístupu k úložištím kódu.
-- Zajistěte kvalitu kódu pomocí zásad větví, jako je například minimální počet revizí kódu, požadavky na úspěšná sestavení a vynucování strategií sloučení Git.
-- Připojte své oblíbené vývojové prostředí pro přístup k úložištím a správě práce.
+- Pro vaše veřejné a soukromé úložiště úložiště použijte neomezené úložiště zdrojového kódu Git hostované v cloudu:
+    - Získejte podporu pro každého klienta Git.
+    - Používejte webové háčky a integraci rozhraní API.
+- Nastartujte další sestavení z žádosti o přijetí na vyžádání repo:
+    - Spolupracujte na vytváření lepšího kódu pomocí diskuse pod vlákny a průběžné integrace pro každou změnu.
+    - Nastavte průběžnou integraci/průběžné doručování (CI/CD) pro automatické spouštění sestavení, testů a nasazení s každou dokončenou žádostí o přijetí vyžádat. Můžete použít Azure Pipelines nebo nástroje.
+    - Chraňte kvalitu kódu pomocí zásad větvení.
+- Udržujte centralizované řízení verzí pomocí správy verzí Team Foundation, která zahrnuje kontrolu kódu.
+- Připojte se ke kódu pomocí Xcode, Eclipse, IntelliJ, Android Studio, Visual Studio, Visual Studio Code a další.
+- Používejte výkonné vyhledávání sémantického kódu.
+- Získejte výhody z funkcí připravených pro podniky. Azure DevOps má nativní integraci s Azure Active Directory, což zjednodušuje proces správy přístupu k úložištím kódu.
+- Zajistěte kvalitu kódu pomocí zásad větve, jako je minimální počet kontrol kódu, požadavky na úspěšná sestavení a vynucení strategií sloučení Gitu.
+- Připojte své oblíbené vývojové prostředí pro přístup k repos a spravovat práci.
 
 **Odkazy**
 - [Začínáme s Azure Repos](https://azure.microsoft.com/services/devops/repos/) 
-- [Dokumentace k Azure Repos](/azure/devops/repos/?view=azure-devops)
+- [Dokumentace azure repos](/azure/devops/repos/?view=azure-devops)

@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení a používání zásad na virtuálních počítačích se systémem Linux v Azure
+title: Zásady zabezpečení a používání na virtuálních počítačích s Linuxem v Azure
 description: Přečtěte si o zabezpečení a zásadách pro Linux a virtuální počítače v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
 ms.openlocfilehash: 9cd31d39d2881aebf83d5b40aa826433de5d0993
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035063"
 ---
-# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Zabezpečení a používání zásad na virtuálních počítačích v Azure
+# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Zásady zabezpečení a používání na virtuálních počítačích v Azure
 
 [!INCLUDE [virtual-machines-security-policy](../../../includes/virtual-machines-security-policy.md)]
 

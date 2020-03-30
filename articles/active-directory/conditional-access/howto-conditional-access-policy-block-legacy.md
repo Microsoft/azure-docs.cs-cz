@@ -1,53 +1,53 @@
 ---
-title: Podmíněný přístup – blokování starších verzí ověřování – Azure Active Directory
-description: Vytvoření vlastních zásad podmíněného přístupu pro blokování starších protokolů ověřování
+title: Podmíněný přístup – blokovat starší ověřování – Služba Azure Active Directory
+description: Vytvoření vlastní zásady podmíněného přístupu pro blokování starších ověřovacích protokolů
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aca5019f4f7fca47195fb8fb821b1af1ae9ec77
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6a868c8199ac34a498a280e2522d6b1e4c7ec370
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024241"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295220"
 ---
-# <a name="conditional-access-block-legacy-authentication"></a>Podmíněný přístup: blokovat starší verze ověřování
+# <a name="conditional-access-block-legacy-authentication"></a>Podmíněný přístup: Blokovat starší verze ověřování
 
-V důsledku zvýšeného rizika spojeného se staršími protokoly pro ověřování společnost Microsoft doporučuje, aby organizace zablokovaly žádosti o ověření pomocí těchto protokolů a vyžadovala moderní ověřování.
+Vzhledem ke zvýšenému riziku spojenému se staršími ověřovacími protokoly společnost Microsoft doporučuje organizacím blokovat požadavky na ověření pomocí těchto protokolů a vyžadovat moderní ověřování.
 
-## <a name="create-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
+## <a name="create-a-conditional-access-policy"></a>Vytvoření zásad podmíněného přístupu
 
-Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu, které blokují požadavky na starší verzi ověřování.
+Následující kroky vám pomohou vytvořit zásady podmíněného přístupu pro blokování starších požadavků na ověření. Tato zásada je uvedena do [režimu pouze sestavy,](howto-conditional-access-report-only.md) aby se spustila, aby správci mohli určit dopad, který budou mít na stávající uživatele. Pokud správci jsou pohodlné, že zásady platí tak, jak mají v úmyslu, mohou přepnout **na on** nebo fázi nasazení přidáním konkrétní skupiny a vyloučení mj.
 
-1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Přejděte na **Azure Active Directory** > **zabezpečení** > **podmíněný přístup**.
+1. Přihlaste se k **portálu Azure** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přejděte na azure **active directory** > **zabezpečení** > podmíněný**přístup**.
 1. Vyberte **nové zásady**.
-1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
-1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
-   1. V části **Zahrnout**vyberte **Všichni uživatelé**.
-   1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte všechny účty, které musí udržovat možnost používat starší verze ověřování. Musíte vyloučit aspoň jeden účet, abyste mohli zabránit jeho uzamknutí. Pokud nevylučujete žádný účet, nebudete moct vytvořit tuto zásadu.
+1. Pojmenujte svou zásadu. Doporučujeme organizacím vytvořit smysluplný standard pro názvy svých zásad.
+1. V části **Přiřazení**vyberte **Možnost I Uživatelé a skupiny.**
+   1. V části **Zahrnout**vyberte **možnost Všichni uživatelé**.
+   1. V **části Vyloučit**vyberte Možnost **Uživatelé a skupiny** a zvolte všechny účty, které si musí zachovat možnost používat starší verze ověřování. Vylučte alespoň jeden účet, abyste zabránili uzamčení. Pokud nevyloučíte žádný účet, nebudete moci vytvořit tuto zásadu.
    1. Vyberte **Done** (Hotovo).
-1. V části **cloudové aplikace nebo akce** vyberte **všechny cloudové aplikace**.
+1. V části **Cloudové aplikace nebo akce**vyberte **Všechny cloudové aplikace**.
    1. Vyberte **Done** (Hotovo).
-1. V části **podmínky** > **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**.
-   1. Zaškrtněte políčka **mobilní aplikace a desktopové klienty** > **jiných klientech**.
+1. V **části Podmínky** > **Klientské aplikace (preview)** nastavte **nastavit konfigurovat** na **ano**.
+   1. Zaškrtněte pouze políčka **Mobilní aplikace a klienti** > pro stolní počítače**Ostatní klienti**.
    1. Vyberte **Done** (Hotovo).
-1. V části **řízení přístupu** > **udělení**vyberte **blokovat přístup**.
-   1. Vyberte **vyberte**.
-1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
-1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
+1. V části **Access controls** > **Grant**vyberte Blokovat **přístup**.
+   1. Vyberte **Vybrat**.
+1. Potvrďte nastavení a nastavte **možnost Povolit zásady** pouze pro **hlášení**.
+1. Chcete-li vytvořit, vyberte **vytvořit,** chcete-li povolit zásady.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+[Podmíněné přístupové běžné zásady](concept-conditional-access-policy-common.md)
 
-[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
+[Určení dopadu pomocí režimu pouze pro sestavu podmíněného přístupu](howto-conditional-access-report-only.md)
 
-[Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
+[Simulovat chování přihlášení pomocí nástroje Co-li podmíněného přístupu](troubleshoot-conditional-access-what-if.md)

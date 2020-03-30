@@ -1,44 +1,43 @@
 ---
-title: Stránka Insights pro Azure Marketplace
-description: Přehled stránky s přehledy v portál partnerů cloudu pro Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Stránka Přehledy pro Azure Marketplace
+description: Přehled stránky Přehledy na portálu cloudových partnerů pro Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/14/2018
-ms.author: pabutler
-ms.openlocfilehash: b1b8d716beec17b7da82968ede8d24ced348e04a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8002d67ebd6dbeb70282bbbae84b115a778cffaf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821521"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288865"
 ---
 # <a name="insights-page"></a>Stránka Přehledy
 
-Na stránce [**přehledy**](https://cloudpartner.azure.com/#insights) najdete následující sady řídicích panelů, které vám pomůžou pochopit a maximalizovat prodej nabídek na webu Marketplace.  Ke každému řídicímu panelu se dostanete přes kartu se stejným názvem v horní části stránky.
+Stránka [**Přehledy**](https://cloudpartner.azure.com/#insights) obsahuje následující sady řídicích panelů, které vám pomohou pochopit a maximalizovat prodej nabídek na marketplace.  Ke každému řídicímu panelu se přistupuje prostřednictvím stejnojmenné karty v horní části stránky.
 
 
-|  **Řídicí panel**    |  **Zobrazený obsah**               |
+|  **Řídicího panelu**    |  **Zobrazený obsah**               |
 |  -------------    |  ---------------------               |
-| **Souhrn**       | grafy, trendy a hodnoty agregovaných dat, která shrnují aktivitu Marketplace pro nabídky vydavatele |
-| **Platební**        | výběry a související transakce v grafickém formátu a ve formátech ke stažení |
-| **Objednávky & využití** | objednávky a informace o použití ve formátech grafického a ke stažení |
-| **Zákazníka**      | informace o zákaznících, včetně jejich nákupního profilu |
-| **Nasazení**    | informace o úspěchu a selhání nasazení v grafickém formátu i ve formátech na úrovni událostí |
-| **Soubory**     | Seznam žádostí o stažení za posledních 30 dní |
-| **Analýzy**     | Shrnutí analýzy webových analýz a analýz výkonu kampaně |
+| **Souhrn**       | grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na trhu pro nabídky vydavatele |
+| **Výplata**        | výplaty a související transakce v grafických a stahovatelných formátech |
+| **Objednávky & použití** | objednávky a informace o použití v grafických a stahovatelných formátech |
+| **Zákazník**      | informace o zákaznících, včetně jejich nákupního profilu |
+| **Nasazení**    | informace o úspěchu a neúspěchu nasazení v grafických formátech i formátech na úrovni událostí |
+| **Stažené soubory**     | seznam žádostí o stažení za posledních 30 dní |
+| **Analýza**     | přehled webové analýzy a analýzy výkonnosti kampaně |
 |  |  |
 
 
-## <a name="summary-dashboard"></a>Řídicí panel souhrnu
-Souhrnný řídicí panel je první karta a při přechodu na stránku přehledy se zobrazí výchozí karta.  Tento záměrný návrh odráží, že tento řídicí panel dává vydavatelům nejširší pohled na aktivity prodeje svých nabídek.  Poskytuje grafické reprezentace normalizovaného trendu využití. měsíční využití; využití trendů na základě zeměpisného trhu, nabídky a zákazníka; a trend výběr.  Výstup lze přizpůsobit zadáním počátečního a koncového data pro analýzu.  Následující obrázek ukazuje příklad řídicího panelu souhrnu pro společnost Contoso v červnu do srpna 2018.
+## <a name="summary-dashboard"></a>Souhrnný řídicí panel
+Řídicí panel Souhrn je první karta a je výchozí karta zobrazená při přechodu na stránku Přehledy.  Tento záměrný návrh odráží skutečnost, že tento řídicí panel poskytuje majitelům stránek nejširší pohled na prodejní aktivitu jejich nabídek.  Poskytuje grafické znázornění trendu normalizovaného použití; měsíční používání; trendové využití podle zeměpisného trhu, nabídky a zákazníka; a výplatní trend.  Výstup lze přizpůsobit zadáním počátečního a koncového data analýzy.  Následující obrázek znázorňuje ukázkový souhrnný řídicí panel pro Contoso pro červen až srpen 2018.
 
-![Souhrnný řídicí panel stránky s přehledy pro prodejce](./media/insights-page1.png)
+![Souhrnný řídicí panel stránky Přehledy prodejců](./media/insights-page1.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o používání služby Sales Insights k optimalizaci prodejů najdete v části [Začínáme s přehledem prodejců](./../../cloud-partner-portal-orig/si-getting-started.md).
+Další informace o optimalizaci prodeje pomocí přehledů prodejců naleznete v části [Začínáme s přehledy prodejců](./../../cloud-partner-portal-orig/si-getting-started.md).
 

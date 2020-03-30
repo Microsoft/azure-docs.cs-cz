@@ -1,6 +1,6 @@
 ---
-title: Přidání úložiště artefaktů do testovacího prostředí v Azure DevTest Labs | Microsoft Docs
-description: Naučte se, jak přidat úložiště artefaktů do testovacího prostředí ve službě Azure DevTest Labs.
+title: Přidání úložiště artefaktů do testovacího prostředí v laboratořích Azure DevTest Labs | Dokumenty společnosti Microsoft
+description: Zjistěte, jak přidat úložiště artefaktů do testovacího prostředí v testovacích prostředích Azure DevTest.
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -13,91 +13,91 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 28ab6ca9b87bb00cbb7b5e329b7ff08972ba370a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a0dbd92533703a56f1ec2478fab8944656129247
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979141"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295511"
 ---
-# <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v DevTest Labs
-DevTest Labs umožňuje zadat artefakt, který se má přidat k virtuálnímu počítači v době vytváření nebo po vytvoření virtuálního počítače. Tento artefakt může být nástroj nebo aplikace, kterou chcete nainstalovat na virtuální počítač. Artefakty jsou definované v souboru JSON, který se načte z GitHubu nebo z úložiště Git Azure DevOps.
+# <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v devtest labs
+DevTest Labs umožňuje zadat artefakt, který se má přidat do virtuálního virtuálního soudu v době vytvoření virtuálního virtuálního aplikace nebo po vytvoření virtuálního soudu. Tento artefakt může být nástroj nebo aplikace, kterou chcete nainstalovat na virtuální počítač. Artefakty jsou definovány v souboru JSON načtenéz githubu nebo azure devops git úložiště.
 
-[Veřejné úložiště artefaktů](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)udržované DevTest Labs poskytuje mnoho běžných nástrojů pro Windows i Linux. Odkaz na toto úložiště se automaticky přidá do vašeho testovacího prostředí. Můžete vytvořit vlastní úložiště artefaktů s konkrétními nástroji, které nejsou k dispozici ve veřejném úložišti artefaktů. Další informace o vytváření vlastních artefaktů najdete v tématu [Vytvoření vlastních artefaktů](devtest-lab-artifact-author.md).
+[Veřejné úložiště artefaktů](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), spravované devTest Labs, poskytuje mnoho běžných nástrojů pro Windows i Linux. Do testovacího prostředí se automaticky přidá odkaz na toto úložiště. Můžete vytvořit vlastní úložiště artefaktů s konkrétními nástroji, které nejsou k dispozici ve veřejném úložišti artefaktů. Další informace o vytváření vlastních artefaktů naleznete v [tématu Vytváření vlastních artefaktů](devtest-lab-artifact-author.md).
 
-Tento článek poskytuje informace o tom, jak přidat vlastní úložiště artefaktů pomocí Azure Portal, šablon správy prostředků Azure a Azure PowerShell. Pomocí skriptů PowerShellu nebo rozhraní příkazového řádku můžete automatizovat Přidání úložiště artefaktů do testovacího prostředí.
+Tento článek obsahuje informace o tom, jak přidat vlastní úložiště artefaktů pomocí portálu Azure, šablony Azure Resource Management a Azure PowerShell. Přidání úložiště artefaktů do testovacího prostředí můžete automatizovat zápisem skriptů PowerShellu nebo CLI.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud chcete do testovacího prostředí přidat úložiště, nejdřív Získejte klíčové informace z vašeho úložiště. Následující části popisují, jak získat požadované informace pro úložiště, která jsou hostovaná na **GitHubu** nebo v **Azure DevOps**.
+Chcete-li přidat úložiště do testovacího prostředí, nejprve získejte klíčové informace z úložiště. Následující části popisují, jak získat požadované informace pro úložiště, které jsou hostované na **GitHubu** nebo **Azure DevOps**.
 
-### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>Získání adresy URL pro klonování úložiště GitHub a tokenu osobního přístupu
+### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>Získání klonované adresy URL úložiště GitHub a osobního přístupového tokenu
 
-1. Přejít na domovskou stránku úložiště GitHub, které obsahuje definice artefaktů nebo Správce prostředků šablon.
+1. Přejděte na domovskou stránku úložiště GitHub, která obsahuje definice šablon artefaktů nebo Správce prostředků.
 2. Vyberte **Clone or download** (Naklonovat nebo stáhnout).
-3. Chcete-li zkopírovat adresu URL do schránky, vyberte tlačítko **Adresa URL klonování https** . Uložte adresu URL pro pozdější použití.
+3. Chcete-li adresu URL zkopírovat do schránky, vyberte tlačítko **URL klonování HTTPS.** Uložte adresu URL pro pozdější použití.
 4. V pravém horním rohu GitHubu vyberte profilový obrázek a pak vyberte **Nastavení**.
-5. V nabídce **osobní nastavení** na levé straně vyberte **Nastavení vývojáře**.
-6. V nabídce vlevo vyberte možnost **osobní přístupové tokeny** .
-7. Vyberte možnost **generovat nový token**.
-8. Na stránce **Nový token osobního přístupu** zadejte v části **Popis tokenu**popis. Přijměte výchozí položky v části **Vybrat obory**a pak vyberte **vygenerovat token**.
-9. Uložte vygenerovaný token. Token použijete později.
+5. V nabídce **Osobní nastavení** vlevo vyberte **Nastavení vývojáře**.
+6. V levé nabídce vyberte **osobní přístupové tokeny.**
+7. Vyberte **Generovat nový token**.
+8. Na stránce **Nový osobní přístupový token** zadejte v části Popis **tokenu**popis. Přijměte výchozí položky v části **Vybrat obory**a pak vyberte **Generovat token**.
+9. Uložte generovaný token. Token použijete později.
 10. Zavřete GitHub.   
 
-### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Získat adresu URL pro klonování Azure Repos a osobní přístupový token
-1. Přejít na domovskou stránku kolekce týmu (například https://contoso-web-team.visualstudio.com) a potom vyberte svůj projekt.
-2. Na domovské stránce projektu vyberte možnost **kód**.
-3. Chcete-li zobrazit adresu URL klonování, vyberte na stránce **kód** projektu možnost **klonovat**.
+### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Získání adresy URL klonování azure repos a osobnípřístupový token
+1. Přejděte na domovskou stránku kolekce `https://contoso-web-team.visualstudio.com`týmů (například) a vyberte projekt.
+2. Na domovské stránce projektu vyberte **Kód**.
+3. Chcete-li zobrazit adresu URL klonování, vyberte na stránce **Kód** projektu **možnost Klonovat**.
 4. Uložte adresu URL. Adresu URL použijete později.
-5. Pokud chcete vytvořit osobní přístupový token, v rozevírací nabídce uživatelský účet vyberte **můj profil**.
-6. Na stránce informace o profilu vyberte **zabezpečení**.
-7. Na kartě **zabezpečení** vyberte **Přidat**.
-8. Na stránce **Vytvoření osobního přístupového tokenu** :
-   1. Zadejte **Popis** tokenu.
-   2. V seznamu **vyprší platnost** vyberte **180 dnů**.
-   3. V seznamu **účty** vyberte **všechny účty k dispozici**.
-   4. Vyberte možnost **všechny obory** .
-   5. Vyberte **vytvořit token**.
-9. Nový token se zobrazí v seznamu **tokenů osobního přístupu** . Vyberte možnost **Kopírovat token**a pak hodnotu token uložte pro pozdější použití.
-10. Přejděte k části připojení laboratoře k úložišti.
+5. Chcete-li vytvořit osobní přístupový token, vyberte v rozevírací nabídce uživatelského účtu **položku Můj profil**.
+6. Na stránce s informacemi o profilu vyberte **možnost Zabezpečení**.
+7. Na kartě **Zabezpečení** vyberte **Přidat**.
+8. Na stránce **Vytvořit osobní přístupový token:**
+   1. Zadejte **popis** tokenu.
+   2. V seznamu **Platnost vyprší** vyberte **180 dní**.
+   3. V seznamu **Účty** vyberte **Všechny přístupné účty**.
+   4. Vyberte možnost **Všechny obory.**
+   5. Vyberte **Vytvořit token**.
+9. Nový token se zobrazí v seznamu **tokenů osobního přístupu.** Vyberte **Kopírovat token**a uložte hodnotu tokenu pro pozdější použití.
+10. Pokračujte do části Připojit testovací prostředí k úložišti.
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
-V této části najdete postup přidání úložiště artefaktů do testovacího prostředí v Azure Portal.
+Tato část obsahuje kroky k přidání úložiště artefaktů do testovacího prostředí na webu Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Vyberte **Další služby**a v seznamu služeb vyberte **DevTest Labs** .
-3. V seznamu cvičení vyberte testovací prostředí.
-4. V nabídce vlevo vyberte **Konfigurace a zásady** .
-5. V části **externí prostředky** v nabídce vlevo vyberte **úložiště** .
-6. Na panelu nástrojů vyberte **+ Přidat** .
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. Vyberte **Další služby**a ze seznamu služeb vyberte **DevTest Labs.**
+3. Ze seznamu testovacích prostředí vyberte testovací prostředí.
+4. V levé nabídce vyberte **Možnost Konfigurace a zásady.**
+5. V levé nabídce vyberte **Úložiště** v části **Externí zdroje.**
+6. Vyberte **+ Přidat** na panelu nástrojů.
 
     ![Tlačítko Přidat úložiště](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
-5. Na stránce **úložiště** zadejte následující informace:
+5. Na stránce **Repozitáře** zadejte následující informace:
    1. **Název**. Zadejte název úložiště.
-   2. **Adresa Url git clone** Zadejte adresu URL klonu Git HTTPS, kterou jste zkopírovali dříve z GitHubu nebo z Azure DevOps Services.
-   3. **Větev**. Pokud chcete získat definice, zadejte větev.
-   4. **Osobní přístupový token** Zadejte osobní přístupový token, který jste už dříve získali z GitHubu nebo Azure DevOps Services.
-   5. **Cesty ke složkám**. Zadejte alespoň jednu cestu ke složce vzhledem k adrese URL klonování, která obsahuje definice artefaktů nebo Správce prostředků šablon. Když zadáte podadresář, nezapomeňte v cestě ke složce zadat lomítko.
+   2. **Adresa URL klonování gitu**. Zadejte adresu URL klonování Git HTTPS, kterou jste dříve zkopírovali z GitHubu nebo služby Azure DevOps Services.
+   3. **Pobočka**. Chcete-li získat své definice, zadejte větev.
+   4. **Osobní přístupový token**. Zadejte osobní přístupový token, který jste získali dříve z GitHubu nebo Služby Azure DevOps.
+   5. **Cesty ke složkám**. Zadejte alespoň jednu cestu ke složce složky, která obsahuje definice šablon artefaktů nebo správce prostředků. Když zadáte podadresář, ujistěte se, že do cesty ke složce zahrnete lomítko.
 
-        ![Oblast úložišť](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
+        ![Oblast repozitářů](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 6. Vyberte **Uložit**.
 
-## <a name="use-azure-resource-manager-template"></a>Použití šablon Azure Resource Manageru
-Šablony správy prostředků Azure (Azure Resource Manager) jsou soubory JSON, které popisují prostředky v Azure, které chcete vytvořit. Další informace o těchto šablonách najdete v tématu [vytváření Azure Resource Manager šablon](../azure-resource-manager/templates/template-syntax.md).
+## <a name="use-azure-resource-manager-template"></a>Použití šablony Azure Resource Manager
+Šablony Azure Resource Management (Azure Resource Manager) jsou soubory JSON, které popisují prostředky v Azure, které chcete vytvořit. Další informace o těchto šablonách najdete [v tématu Vytváření šablon Azure Resource Manager .](../azure-resource-manager/templates/template-syntax.md)
 
-V této části najdete postup přidání úložiště artefaktů do testovacího prostředí pomocí šablony Azure Resource Manager.  Šablona vytvoří testovací prostředí, pokud ještě neexistuje.
+Tato část obsahuje postup přidání úložiště artefaktů do testovacího prostředí pomocí šablony Azure Resource Manager.  Šablona vytvoří testovací prostředí, pokud ještě neexistuje.
 
 ### <a name="template"></a>Šablona
-Ukázková šablona použitá v tomto článku shromažďuje následující informace prostřednictvím parametrů. Většina parametrů má inteligentní výchozí hodnoty, ale je třeba zadat několik hodnot. Je nutné zadat název testovacího prostředí, identifikátor URI pro úložiště artefaktů a token zabezpečení pro úložiště.
+Ukázková šablona použitá v tomto článku shromažďuje následující informace prostřednictvím parametrů. Většina parametrů má inteligentní výchozí hodnoty, ale existuje několik hodnot, které musí být zadány. Je nutné zadat název testovacího prostředí, identifikátor URI pro úložiště artefaktů a token zabezpečení pro úložiště.
 
-- Název testovacího prostředí.
-- Zobrazovaný název úložiště artefaktů v uživatelském rozhraní DevTest Labs Výchozí hodnota je: `Team Repository`.
-- Identifikátor URI úložiště (příklad: `https://github.com/<myteam>/<nameofrepo>.git` nebo `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.
+- Název laboratoře.
+- Zobrazovaný název úložiště artefaktů v uživatelském rozhraní DevTest Labs. Výchozí hodnota je: `Team Repository`.
+- Uri do úložiště `https://github.com/<myteam>/<nameofrepo>.git` (Příklad: `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`nebo .
 - Větev v úložišti, která obsahuje artefakty. Výchozí hodnota je: `master`.
 - Název složky, která obsahuje artefakty. Výchozí hodnota je: `/Artifacts`.
-- Typ úložiště. Povolené hodnoty jsou `VsoGit` nebo `GitHub`.
-- Přístupový token pro úložiště
+- Typ úložiště. Povolené hodnoty `VsoGit` `GitHub`jsou nebo .
+- Přístupový token pro úložiště.
 
     ```json
     {
@@ -165,22 +165,22 @@ Ukázková šablona použitá v tomto článku shromažďuje následující info
 
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
-Existuje několik způsobů, jak nasadit šablonu do Azure a vytvořit prostředek, pokud neexistuje, nebo pokud je aktualizovaný, pokud neexistuje. Podrobnosti najdete v následujících článcích:
+Existuje několik způsobů, jak nasadit šablonu do Azure a mít prostředek vytvořený, pokud neexistuje nebo aktualizován, pokud existuje. Podrobnosti naleznete v následujících článcích:
 
 - [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../azure-resource-manager/templates/deploy-powershell.md)
 - [Nasazení prostředků pomocí šablon Resource Manageru a rozhraní příkazového řádku Azure](../azure-resource-manager/templates/deploy-cli.md)
 - [Nasazení prostředků pomocí šablon Resource Manageru a webu Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 - [Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API](../azure-resource-manager/templates/deploy-rest.md)
 
-Pojďme se podívat, jak nasadit šablonu do PowerShellu. Rutiny použité k nasazení šablony jsou specifické pro kontext, takže se používá aktuální tenant a aktuální předplatné. Použijte [set-AzContext](/powershell/module/az.accounts/set-azcontext) před nasazením šablony, pokud je to potřeba, pro změnu kontextu.
+Pojďme dál a uvidíme, jak nasadit šablonu v PowerShellu. Rutiny používané k nasazení šablony jsou specifické pro kontext, takže se používá aktuální klient a aktuální předplatné. Použijte [Set-AzContext](/powershell/module/az.accounts/set-azcontext) před nasazením šablony, v případě potřeby změnit kontext.
 
-Nejdřív vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Pokud skupina prostředků, kterou chcete použít, už existuje, přeskočte tento krok.
+Nejprve vytvořte skupinu prostředků pomocí [skupiny New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Pokud skupina prostředků, kterou chcete použít, již existuje, tento krok přeskočte.
 
 ```powershell
 New-AzResourceGroup -Name MyLabResourceGroup1 -Location westus
 ```
 
-Pak vytvořte nasazení do skupiny prostředků pomocí [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Tato rutina aplikuje změny prostředků na Azure. U jakékoli skupiny prostředků je možné provést několik nasazení prostředků. Pokud nasazujete několikrát do stejné skupiny prostředků, ujistěte se, že je název každého nasazení jedinečný.
+Dále vytvořte nasazení do skupiny prostředků pomocí [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Tato rutina použije změny prostředků v Azure. Pro libovolnou skupinu prostředků lze provést několik nasazení prostředků. Pokud nasazujete několikrát do stejné skupiny prostředků, ujistěte se, že název každého nasazení je jedinečný.
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -190,15 +190,15 @@ New-AzResourceGroupDeployment `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
 
-Po úspěšném spuštění rutiny New-AzResourceGroupDeployment budou výstupy příkazu obsahovat důležité informace, jako je stav zřizování (měl by být úspěšný), a všechny výstupy pro šablonu.
+Po New-AzResourceGroupDeployment úspěšně spustit, příkaz výstupy důležité informace, jako je stav zřizování (by měla být úspěšná) a všechny výstupy pro šablonu.
 
-## <a name="use-azure-powershell"></a>Použití Azure PowerShellu
-V této části najdete ukázkový skript PowerShellu, který se dá použít k přidání úložiště artefaktů do testovacího prostředí. Pokud nemáte Azure PowerShell, přečtěte si téma [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) podrobné pokyny k jeho instalaci.
+## <a name="use-azure-powershell"></a>Použití Azure Powershell
+Tato část obsahuje ukázkový skript prostředí PowerShell, který lze použít k přidání úložiště artefaktů do testovacího prostředí. Pokud nemáte Azure PowerShell, najdete [v tématu Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) pro podrobné pokyny k jeho instalaci.
 
 ### <a name="full-script"></a>Celý skript
-Tady je úplný skript, včetně některých podrobných zpráv a komentářů:
+Zde je celý skript, včetně některých podrobných zpráv a komentářů:
 
-**New-DevTestLabArtifactRepository. ps1**:
+**New-DevTestLabArtifactRepository.ps1**:
 
 ```powershell
 
@@ -346,20 +346,20 @@ Set-AzContext -SubscriptionId <Your Azure subscription ID>
 
 
 ### <a name="parameters"></a>Parametry
-Vzorový skript PowerShellu v tomto článku má následující parametry:
+Ukázkový skript prostředí PowerShell v tomto článku má následující parametry:
 
 | Parametr | Popis |
 | --------- | ----------- |
-| LabName | Název testovacího prostředí. |
-| ArtifactRepositoryName | Název nového úložiště artefaktů. Skript vytvoří náhodný název pro úložiště, pokud není zadaný. |
-| ArtifactRepositoryDisplayName | Zobrazovaný název úložiště artefaktů Toto je název, který se zobrazí v Azure Portal (https://portal.azure.com) při zobrazení všech úložišť artefaktů pro testovací prostředí. |
-| RepositoryUri | Identifikátor URI úložiště Příklady: `https://github.com/<myteam>/<nameofrepo>.git` nebo `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.|
-| RepositoryBranch | Větev, ve které se dají najít soubory artefaktů Výchozí hodnota je "Master". |
-| FolderPath | Složka, ve které se mají najít artefakty Výchozí hodnota je '/Artifacts ' |
-| PersonalAccessToken | Token zabezpečení pro přístup k úložišti GitHub nebo VSOGit Pokyny k získání tokenu pro osobní přístup najdete v části požadavky. |
-| sourceType | Zda je artefakt VSOGit nebo GitHub. |
+| Název lab | Jméno laboratoře. |
+| Název úložiště artefaktů | Název nového úložiště artefaktů. Skript vytvoří náhodný název pro respository, pokud není zadán. |
+| Název zobrazení artifactrepositorydisplayname | Zobrazovaný název úložiště artefaktů. Toto je název, který sehttps://portal.azure.com) zobrazí na webu Azure Portal ( při zobrazení všech úložišť artefaktů pro testovací prostředí. |
+| ÚložištěUri | Uri do úložiště. Příklady: `https://github.com/<myteam>/<nameofrepo>.git` `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`nebo .|
+| Pobočka úložiště | Větev, ve které lze nalézt soubory artefaktů. Výchozí hodnota je "master". |
+| Cesta složky | Složka, pod kterou lze artefakty nalézt. Výchozí hodnoty na '/Artefakty' |
+| Token osobního přístupu | Token zabezpečení pro přístup k úložišti GitHub nebo VSOGit. Pokyny k získání tokenu osobního přístupu naleznete v části požadavky. |
+| SourceType | Ať už je artefakt úložiště VSOGit nebo GitHub. |
 
-Samotné úložiště potřebuje pro identifikaci interní název, který se liší od zobrazovaného názvu, který se zobrazuje v Azure Portal. Interní název se nezobrazuje pomocí Azure Portal, ale zobrazí se při použití rozhraní Azure REST API nebo Azure PowerShell. Skript poskytuje název, pokud ho nezadal uživatel našeho skriptu.
+Samotné úložiště potřebuje interní název pro identifikaci, což se liší od zobrazovaného názvu, který se zobrazuje na webu Azure Portal. Nevidíte interní název pomocí portálu Azure, ale uvidíte ho při použití Azure REST API nebo Azure PowerShell. Skript poskytuje název, pokud není určen uživatelem našeho skriptu.
 
 ```powershell
 #Set artifact repository name, if not set by user
@@ -372,18 +372,18 @@ if ($ArtifactRepositoryName -eq $null){
 
 | Příkaz PowerShellu | Poznámky |
 | ------------------ | ----- |
-| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Tento příkaz slouží k získání podrobných informací o testovacím prostředí, jako je jeho umístění. |
-| [New-AzResource](/powershell/module/az.resources/new-azresource) | Neexistuje žádný konkrétní příkaz pro přidání úložišť artefaktů. Obecná rutina [New-AzResource](/powershell/module/az.resources/new-azresource) úlohu provede. Tato rutina potřebuje buď dvojici **ResourceID** , nebo **Resource** a **ResourceType** , aby znala typ prostředku, který se má vytvořit. Tento ukázkový skript používá dvojici název prostředku a typ prostředku. <br/><br/>Všimněte si, že vytváříte zdroj úložiště artefaktů ve stejném umístění a ve stejné skupině prostředků jako testovací prostředí.|
+| [Get-AzZdroj](/powershell/module/az.resources/get-azresource) | Tento příkaz se používá k získání podrobností o testovacím prostředí, jako je například jeho umístění. |
+| [Nový-AzZdroj](/powershell/module/az.resources/new-azresource) | Neexistuje žádný konkrétní příkaz pro přidání úložiště artefaktů. Obecná rutina [New-AzResource](/powershell/module/az.resources/new-azresource) provádí práci. Tato rutina potřebuje buď **ResourceId** nebo **ResourceName** a **ResourceType** dvojice znát typ prostředku k vytvoření. Tento ukázkový skript používá dvojici názvu prostředku a typu prostředku. <br/><br/>Všimněte si, že vytváříte zdroj úložiště artefaktů ve stejném umístění a ve stejné skupině prostředků jako testovací prostředí.|
 
-Skript přidá nový prostředek do aktuálního předplatného. Tyto informace zobrazíte pomocí [Get-AzContext](/powershell/module/az.accounts/get-azcontext) . K nastavení aktuálního tenanta a předplatného použijte [set-AzContext](/powershell/module/az.accounts/set-azcontext) .
+Skript přidá nový prostředek k aktuálnímu předplatnému. Pomocí [funkce Get-AzContext](/powershell/module/az.accounts/get-azcontext) zobrazíte tyto informace. Pomocí [set-AzContext](/powershell/module/az.accounts/set-azcontext) nastavte aktuální ho klienta a předplatné.
 
-Nejlepším způsobem, jak zjistit název prostředku a informace o typu prostředku, je použití webu [Test Drive rozhraní Azure REST API](https://azure.github.io/projects/apis/) . Podívejte se na poskytovatele [DevTest Labs – 2016-05-15](https://aka.ms/dtlrestapis) , kde najdete dostupná rozhraní REST API pro poskytovatele DevTest Labs. Skript uživatele následující ID prostředku.
+Nejlepší způsob, jak zjistit název prostředku a informace o typu prostředku, je použít web [API Test Drive Azure REST.](https://azure.github.io/projects/apis/) Podívejte se na [devTest Labs – 2016-05-15](https://aka.ms/dtlrestapis) zprostředkovatele zobrazíte dostupné REST API pro poskytovatele DevTest Labs. Uživatelé skriptu následující ID prostředku.
 
 ```powershell
 "/subscriptions/$SubscriptionId/resourceGroups/$($LabResource.ResourceGroupName)/providers/Microsoft.DevTestLab/labs/$LabName/artifactSources/$ArtifactRepositoryName"
 ```
 
-Typ prostředku je vše, co je uvedeno po ' Providers ' v identifikátoru URI, s výjimkou položek uvedených v složených závorkách. Název prostředku je zobrazený v složených závorkách. Pokud se pro název prostředku očekává více než jedna položka, oddělte každou položku znakem lomítka.
+Typ prostředku je vše uvedené po 'zprostředkovatelů' v URI, s výjimkou položek uvedených v složené závorky. Název prostředku je vše, co je vidět v kudrnaté závorky. Pokud je pro název zdroje očekáváno více než jedna položka, oddělte každou položku lomítkem tak, jak jsme to udělali.
 
 ```powershell
 $resourcetype = 'Microsoft.DevTestLab/labs/artifactSources'
@@ -392,6 +392,6 @@ $resourceName = $LabName + '/' + $ArtifactRepositoryName
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Zadejte pro testovací prostředí povinné artefakty v Azure DevTest Labs](devtest-lab-mandatory-artifacts.md)
-- [Vytvoření vlastních artefaktů pro virtuální počítač s DevTest Labs](devtest-lab-artifact-author.md)
-- [Diagnostika selhání artefaktů v testovacím prostředí](devtest-lab-troubleshoot-artifact-failure.md)
+- [Určení povinných artefaktů pro testovací prostředí v laboratořích Azure DevTest Labs](devtest-lab-mandatory-artifacts.md)
+- [Vytvoření vlastních artefaktů pro váš virtuální počítač DevTest Labs](devtest-lab-artifact-author.md)
+- [Diagnostika selhání artefaktů v laboratoři](devtest-lab-troubleshoot-artifact-failure.md)

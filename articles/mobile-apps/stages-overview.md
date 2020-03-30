@@ -1,42 +1,42 @@
 ---
 title: Různé fáze vývoje mobilních aplikací pomocí Visual Studio App Center a služeb Azure
-description: Přečtěte si o různých fázích spojených s vývojem mobilních aplikací a o tom, jak můžou služby Microsoftu, například Visual Studio App Center, pomohou vytvořit vysokou třídu mobilní aplikace.
-author: elamalani
+description: Seznamte se s různými fázemi vývoje mobilních aplikací a o tom, jak vám služby Microsoftu, jako je Visual Studio App Center, můžou pomoct vytvořit vysoce kvalitní mobilní aplikaci.
+author: codemillmatt
 ms.assetid: 12bbb070-9b3c-1234-5678-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 2693155281c6ceb9cb737960df6d3201c0983c50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 8d0fbc12f3048b6a9c81d53c9a9cd0a1998d4f88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454381"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240057"
 ---
 # <a name="different-stages-in-mobile-application-development"></a>Různé fáze vývoje mobilních aplikací
-Sestavování mobilní aplikace zahrnuje několik fází. Můžete snadno využít výhod služeb, nástrojů a technologií Microsoftu k vytváření vysoce kvalitních mobilních aplikací.
+Vytváření mobilní aplikace zahrnuje více fází. Můžete snadno využít služeb, nástrojů a technologií společnosti Microsoft k vytváření vysoce kvalitních mobilních aplikací.
 
 ## <a name="app-development"></a>Vývoj aplikací
-Můžete vytvářet nativní klientské aplikace pro jednotlivé platformy s jazyky, jako je například cíl – C a Java. Můžete vytvářet aplikace pro různé platformy pomocí Xamarin, reakce nativních a Unity. Hybridní aplikace můžete vytvářet také pomocí Cordova. K vytváření klientských aplikací použijte editory pro IDEs a kód, jako je například Visual Studio, Visual Studio pro Mac nebo Visual Studio Code na počítačích PC a Mac.
+Můžete vytvářet nativní klientské aplikace s jednou platformou s jazyky, jako je Objective-C a Java. Můžete vytvářet aplikace pro různé platformy pomocí Xamarin, React Native a Unity. Hybridní aplikace můžete vytvářet také pomocí Cordovy. Chcete-li vytvářet klientské aplikace, využijte ide a editory kódu, jako je Visual Studio, Visual Studio pro Mac nebo Visual Studio Code na pc a Mac.
 
-## <a name="plan-and-design-with-back-end-services"></a>Plánování a návrh pomocí back-endové služby
- Microsoft poskytuje celou řadu služeb pro nastavení zabezpečeného, škálovatelného a spolehlivého back-endu pro vaši mobilní aplikaci. Můžete vytvořit rozhraní API a triggery bez serveru, aniž byste museli udržovat vlastní servery. Pomocí nabízených oznámení, offline synchronizace dat, ověřování a datových služeb můžete vytvořit komplexní a obsáhlém mobilní back-end, který podporuje nejrůznější scénáře vytváření aplikací. 
+## <a name="plan-and-design-with-back-end-services"></a>Plánování a návrh s back-endovými službami
+ Společnost Microsoft poskytuje celou řadu služeb pro nastavení zabezpečeného, škálovatelného a spolehlivého back-endu pro vaši mobilní aplikaci. Můžete vytvářet bezserverová api a aktivační události, aniž byste museli udržovat vlastní servery. Pomocí nabízených oznámení, synchronizace offline dat, ověřování a datových služeb vytvořte komplexní a rozsáhlý mobilní back-end, který podporuje celou řadu scénářů konstrukce aplikací. 
  
- Sestavení back-endové služby má mnoho požadavků. Musíte:
-   - Omezte úložiště dat na zařízení.
-   - Synchronizujte data napříč více zařízeními.
+ Budování back-end služby má mnoho požadavků. Musíte:
+   - Omezte ukládání dat v zařízení.
+   - Synchronizace dat mezi více zařízeními.
    - Ujistěte se, že aplikace běží bez připojení k síti.
-   - Odesílání oznámení uživatelům.
+   - Odesílat oznámení uživatelům.
    - Snižte spotřebu baterie.
-   - Vytvořte škálovatelný, spolehlivý a zabezpečený back-end.
+   - Vytvořte škálovatelný, spolehlivý a bezpečný back-end.
    - Automatizujte údržbu serveru.
 
-## <a name="devops-and-continuous-monitoring"></a>DevOps a nepřetržité monitorování
-Chcete-li vytvořit mobilní a cloudové aplikace zaměřené na Cloud, využijte výhod kontinuální integrace (CI), průběžné doručování (CD) a nepřetržité monitorovací služby pro vytváření nativních buildů pro všechny platformy. Můžete spouštět testy pro automatizaci uživatelského rozhraní na tisících fyzických zařízení, automatizovat jejich vydávání prostřednictvím beta zkušebních kanálů nebo nasazovat přímo do obchodů s aplikacemi. Pro své aplikace můžete také shromažďovat informace o analýze, chybách a výjimkách využití.
+## <a name="devops-and-continuous-monitoring"></a>DevOps a průběžné monitorování
+Chcete-li vytvářet mobilní a cloudové aplikace, využijte výhod průběžné integrace (CI), nepřetržitého doručování (CD) a služeb průběžného monitorování k vytváření nativních sestavení pro všechny platformy. Můžete spustit testy automatizace uživatelského rozhraní na tisících fyzických zařízení, automatizovat jejich vydání prostřednictvím kanálů testování beta nebo nasadit přímo do obchodů s aplikacemi. Můžete také shromažďovat informace o analýzách využití, selhání a výjimkách pro jejich aplikace.
 
 ## <a name="additional-services"></a>Další služby
-Mnoho služeb Azure je možné spotřebovat v závislosti na typu a charakteru sestavené aplikace:
-  - Azure Kognitivní hledání k vyhledávání všech typů interních dat s rychlým dotazování.
-  - Azure Cognitive Services pro použití umělých inteligentních funkcí ve vaší aplikaci.
-  - Signál Azure pro povolení komunikace v reálném čase ve vaší aplikaci.
+Mnoho služeb Azure se dá spotřebovávat v závislosti na typu a povaze sestavované aplikace:
+  - Azure Cognitive Search pro vyhledávání ve všech typech interních dat s rychlým dotazováním.
+  - Azure Cognitive Services používat umělou inteligenci ve vaší aplikaci.
+  - Azure SignalR pro komunikaci v reálném čase ve vaší aplikaci.

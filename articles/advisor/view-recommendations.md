@@ -1,95 +1,95 @@
 ---
-title: Podívejte se na Azure Advisor doporučení, která vás zajímají.
-description: Zobrazení a filtrování Azure Advisor doporučení pro snížení šumu
+title: Zobrazení doporučení Azure Advisor, která jsou pro vás důležitá
+description: Zobrazte a filtrujte doporučení Azure Advisorke snížení šumu.
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 10d7b16864f8e449dc51e870c5ff9f20d8c0dc87
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75422377"
 ---
-# <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>Podívejte se na Azure Advisor doporučení, která vás zajímají.
+# <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>Zobrazení doporučení Azure Advisor, která jsou pro vás důležitá
 
-Azure Advisor poskytuje doporučení, která vám pomůžou optimalizovat nasazení Azure. V rámci služby Advisor máte přístup k několika funkcím, které vám pomůžou zúžit vaše doporučení jenom na ty, které vás zajímají.
+Azure Advisor poskytuje doporučení, která vám pomůžou optimalizovat nasazení Azure. V rámci poradce máte přístup k několika funkcím, které vám pomohou zúžit doporučení pouze na ty, které jsou pro vás důležité.
 
 ## <a name="configure-subscriptions-and-resource-groups"></a>Konfigurace předplatných a skupin prostředků
 
-Advisor nabízí možnost výběru předplatných a skupin prostředků, které jsou pro vás a vaši organizaci. Zobrazí se jenom doporučení pro předplatná a skupiny prostředků, které vyberete. Ve výchozím nastavení jsou vybrány všechny. Nastavení konfigurace se vztahuje na předplatné nebo skupinu prostředků, takže stejné nastavení platí pro všechny uživatele, kteří mají přístup k tomuto předplatnému nebo skupině prostředků. Konfigurační nastavení lze změnit v Azure Portal nebo programově.
+Poradce vám dává možnost vybrat předplatná a skupiny prostředků, které jsou důležité pro vás a vaši organizaci. Zobrazí se pouze doporučení pro předplatná a skupiny prostředků, které vyberete. Ve výchozím nastavení jsou vybrány všechny. Nastavení konfigurace platí pro předplatné nebo skupinu prostředků, takže stejné nastavení platí pro všechny uživatele, kteří mají přístup k tomuto předplatnému nebo skupině prostředků. Nastavení konfigurace lze změnit na portálu Azure nebo programově.
 
-Chcete-li provést změny v Azure Portal:
+Provádění změn na webu Azure Portal:
 
-1. Otevřete [Azure Advisor](https://aka.ms/azureadvisordashboard) v Azure Portal.
+1. Otevřete [Azure Advisor](https://aka.ms/azureadvisordashboard) na webu Azure Portal.
 
-1. V nabídce vyberte **Konfigurace** .
+1. V nabídce vyberte **Konfigurace.**
 
-   ![Nabídka konfigurace Advisoru](./media/view-recommendations/configuration.png)
+   ![Nabídka konfigurace poradce](./media/view-recommendations/configuration.png)
 
-1. Zaškrtněte políčko ve sloupci **Zahrnout** pro všechna předplatná nebo skupiny prostředků pro příjem doporučení služby Advisor. Pokud je toto políčko zakázané, možná nemáte oprávnění k provedení změny konfigurace u daného předplatného nebo skupiny prostředků. Přečtěte si další informace o [oprávněních v Azure Advisor](permissions.md).
+1. Zaškrtněte políčko **zahrnout ve** sloupci Zahrnout pro všechna předplatná nebo skupiny prostředků, které chcete dostávat doporučení poradců. Pokud je pole zakázáno, pravděpodobně nemáte oprávnění k tomu, abyste u tohoto předplatného nebo skupiny prostředků změnili konfiguraci. Další informace o [oprávněních v Azure Advisoru](permissions.md).
 
-1. Po provedení změny klikněte na **použít** v dolní části.
+1. Po **provázku** klikněte dole.
 
-## <a name="filtering-your-view-in-the-azure-portal"></a>Filtrování zobrazení v Azure Portal
+## <a name="filtering-your-view-in-the-azure-portal"></a>Filtrování zobrazení na webu Azure Portal
 
-Nastavení konfigurace zůstane aktivní, dokud se nezmění. Pokud chcete omezit zobrazení doporučení pro jedno zobrazení, můžete použít rozevírací seznam, který je k dispozici v horní části panelu poradce. Na panelu přehled, vysoká dostupnost, zabezpečení, výkon, náklady a všechny panely doporučení můžete vybrat odběry, typy prostředků a stav doporučení, které chcete zobrazit.
+Nastavení konfigurace zůstávají aktivní, dokud se nezmění. Pokud chcete omezit zobrazení doporučení pro jedno zobrazení, můžete použít rozevírací přehledy uvedené v horní části panelu Poradce. Na panelech Přehled, Vysoká dostupnost, Zabezpečení, Výkon, Náklady a Všechna doporučení můžete vybrat předplatná, typy prostředků a stav doporučení, který chcete zobrazit.
 
-   ![Nabídka filtrování poradce](./media/view-recommendations/filtering.png)
+   ![Nabídka filtrování poradců](./media/view-recommendations/filtering.png)
 
-## <a name="dismissing-and-postponing-recommendations"></a>Chybějící doporučení a odložení
+## <a name="dismissing-and-postponing-recommendations"></a>Zamítnutí a odložení doporučení
 
-Azure Advisor umožňuje zrušit nebo odložit doporučení na jednom prostředku. Pokud doporučení zrušíte, neuvidíte ho znovu, pokud ho ručně neaktivujete. Odložení doporučení vám ale umožní zadat dobu trvání, po které se doporučení automaticky aktivuje. Odložení lze provést v Azure Portal nebo programově.
+Azure Advisor umožňuje zrušit nebo odložit doporučení na jeden prostředek. Pokud doporučení odmítnete, nezobrazí se znovu, dokud jej ručně neaktivujete. Odložení doporučení však umožňuje určit dobu trvání, po jejímž uplynutí je doporučení znovu automaticky aktivováno. Odložení lze provést na webu Azure Portal nebo programově.
 
-### <a name="postpone-a-single-recommendation-in-the-azure-portal"></a>Odložit jedno doporučení v Azure Portal 
+### <a name="postpone-a-single-recommendation-in-the-azure-portal"></a>Odložení jednoho doporučení na portálu Azure 
 
-1. Otevřete [Azure Advisor](https://aka.ms/azureadvisordashboard) v Azure Portal.
-1. Pokud si chcete zobrazit doporučení, vyberte kategorii doporučení.
+1. Otevřete [Azure Advisor](https://aka.ms/azureadvisordashboard) na webu Azure Portal.
+1. Výběrem kategorie doporučení zobrazíte doporučení.
+1. Výběr doporučení ze seznamu doporučení
+1. Vyberte odložit nebo odmítnout pro doporučení, které chcete odložit nebo zavřít.
+
+     ![Nabídka filtrování poradců](./media/view-recommendations/postpone-dismiss.png)
+
+### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>Odložení nebo zamítnutí několika doporučení na webu Azure Portal
+
+1. Otevřete [Azure Advisor](https://aka.ms/azureadvisordashboard) na webu Azure Portal.
+1. Vyberte kategorii doporučení a zobrazte si doporučení.
 1. Vyberte doporučení ze seznamu doporučení.
-1. Pro doporučení, které chcete odložit nebo zavřít, vyberte posunout nebo zavřít.
+1. Zaškrtněte políčko v levé části řádku pro všechny prostředky, které chcete odložit nebo zrušit doporučení.
+1. V levém horním rohu tabulky vyberte **Odložit** nebo **Zavřít.**
 
-     ![Nabídka filtrování poradce](./media/view-recommendations/postpone-dismiss.png)
-
-### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>Odložit nebo zavřít více doporučení v Azure Portal
-
-1. Otevřete [Azure Advisor](https://aka.ms/azureadvisordashboard) v Azure Portal.
-1. Pokud si chcete zobrazit doporučení, vyberte kategorii doporučení.
-1. V seznamu doporučení vyberte doporučení.
-1. Zaškrtněte políčko vlevo od řádku pro všechny prostředky, které chcete odložit, nebo toto doporučení zavřete.
-1. V levém horním rohu tabulky vyberte **Posunout** nebo **Zavřít** .
-
-     ![Nabídka filtrování poradce](./media/view-recommendations/postpone-dismiss-multiple.png)
+     ![Nabídka filtrování poradců](./media/view-recommendations/postpone-dismiss-multiple.png)
 
 > [!NOTE]
-> K zavření nebo odložení doporučení potřebujete oprávnění Přispěvatel nebo Owner. Přečtěte si další informace o oprávněních v Azure Advisor.
+> K odmítnutí nebo odložení doporučení potřebujete oprávnění přispěvatele nebo vlastníka. Další informace o oprávněních v Azure Advisoru.
 
 > [!NOTE]
-> Pokud jsou pole výběru zakázaná, může se i nadále načítat doporučení. Počkejte prosím, než se všechna doporučení načtou, než zkusíte operaci odložit nebo zavřít.
+> Pokud jsou výběrová pole zakázána, je možné, že doporučení se stále načítají. Počkejte, než se všechna doporučení načtou, než se pokusíte odložit nebo zavřít.
 
-### <a name="reactivate-a-postponed-or-dismissed-recommendation"></a>Opětovná aktivace odložených nebo neúspěšných doporučení
+### <a name="reactivate-a-postponed-or-dismissed-recommendation"></a>Opětovná aktivace odloženého nebo zamítnutého doporučení
 
-Můžete aktivovat doporučení, které bylo odloženo nebo zavřeno. Tuto akci lze provést v Azure Portal nebo programově. Na webu Azure Portal:
+Můžete aktivovat doporučení, které bylo odloženo nebo zamítnuto. Tuto akci lze provést na portálu Azure nebo programově. Na webu Azure Portal:
 
-1. Otevřete [Azure Advisor](https://aka.ms/azureadvisordashboard) v Azure Portal.
+1. Otevřete [Azure Advisor](https://aka.ms/azureadvisordashboard) na webu Azure Portal.
 
-1. Změňte filtr na panelu přehled na **odloženo**. Poradce pak zobrazí odložená nebo odložených doporučení.
+1. Změňte filtr na panelu Přehled na **Odloženo**. Poradce pak zobrazí odložená nebo zamítnutá doporučení.
 
-    ![Nabídka filtrování poradce](./media/view-recommendations/activate-postponed.png)
+    ![Nabídka filtrování poradců](./media/view-recommendations/activate-postponed.png)
 
-1. Vyberte kategorii pro zobrazení **odložených** a **chybějících** doporučení.
+1. Vyberte kategorii, chcete-li zobrazit **Odložená** a **Zamítnutá** doporučení.
 
-1. V seznamu doporučení vyberte doporučení. Tím se otevře doporučení s **odloženou &ou** , která je už vybraná, aby se zobrazily prostředky, pro které se toto doporučení odložilo nebo zrušilo.
+1. Vyberte doporučení ze seznamu doporučení. Tím se otevřou doporučení s již vybranou kartou **Odloženo &,** která zobrazuje zdroje, pro které bylo toto doporučení odloženo nebo odmítnuto.
 
-1. Na konci řádku klikněte na **aktivovat** . Po kliknutí se doporučení pro daný prostředek aktivuje a pak se z této tabulky odebere. Doporučení se teď zobrazuje na **aktivní** kartě.
+1. Klikněte na **Aktivovat** na konci řádku. Po kliknutí je doporučení aktivní pro tento prostředek a tak odebráno z této tabulky. Doporučení je nyní viditelné na kartě **Aktivní.**
  
-     ![Nabídka filtrování poradce](./media/view-recommendations/activate-postponed-2.png)
+     ![Nabídka filtrování poradců](./media/view-recommendations/activate-postponed-2.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku se dozvíte, jak můžete zobrazit doporučení, která vás zajímají v Azure Advisor. Další informace o službě Advisor najdete v těchto tématech: 
+Tento článek vysvětluje, jak můžete zobrazit doporučení, která jsou pro vás důležitá v Azure Advisor. Další informace o poradci najdete v tématu: 
 
 - [Co je Azure Advisor?](advisor-overview.md)
-- [Začínáme pomocí Poradce](advisor-get-started.md)
-- [Oprávnění v Azure Advisor](permissions.md)
+- [Začínáme s poradcem](advisor-get-started.md)
+- [Oprávnění v Azure Advisoru](permissions.md)
 
 
 

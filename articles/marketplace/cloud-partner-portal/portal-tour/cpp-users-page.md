@@ -1,20 +1,19 @@
 ---
-title: Stránka uživatelé pro Azure Marketplace
-description: Zastaralý článek v CPP, odkazoval na počítač v článku; byl Přehled stránky uživatelů v portál partnerů cloudu pro Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
+title: Stránka Uživatelé pro Azure Marketplace
+description: Zastaralé CPP článek, poukázal na PC článek; byl "Přehled stránky Uživatelé na portálu cloudových partnerů pro Azure Marketplace."
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: 8a83b5a9781c59cd4eb7b566b6f37ba044d1e6a4
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: 2c55c3bd718370a35f46f172d29d60afe632d7cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665708"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278276"
 ---
 # <a name="users-page"></a>Stránka Uživatelé
 
-Tato funkce se přesunula na [portál partnerského centra](https://partner.microsoft.com/)Microsoftu. Další informace najdete v tématu [Vytvoření účtu komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+Tato funkce byla přesunuta na portál Microsoft [Partner Center](https://partner.microsoft.com/). Další informace naleznete [v tématu Vytvoření účtu Commercial Marketplace v Centru partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).

@@ -5,22 +5,22 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: a53d2b259bc4ece12c4ccb1cf47409cd2f0af86f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175692"
 ---
-**Objective-C**:
+**Cíl C**:
 
-1. V **QSAppDelegate.m**, importujte sady iOS SDK a **QSTodoService.h**:
+1. V **souboru QSAppDelegate.m**importujte sady iOS SDK a **QSTodoService.h**:
 
     ```objc
     #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
     #import "QSTodoService.h"
     ```
 
-2. V `didFinishLaunchingWithOptions` v **QSAppDelegate.m**, vložte následující řádky bezprostředně před `return YES;`:
+2. V `didFinishLaunchingWithOptions` souboru **QSAppDelegate.m**vložte `return YES;`před následující řádky následující řádky:
 
     ```objc
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -28,7 +28,7 @@ ms.locfileid: "67175692"
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     ```
 
-3. V **QSAppDelegate.m**, přidejte následující metody obslužné rutiny. Vaše aplikace je nyní aktualizována o podporu nabízených oznámení. 
+3. V **souboru QSAppDelegate.m**přidejte následující metody obslužné rutiny. Vaše aplikace je teď aktualizována, aby podporovala nabízená oznámení. 
 
     ```objc
     // Registration with APNs is successful
@@ -97,9 +97,9 @@ ms.locfileid: "67175692"
     }
     ```
 
-**Swift**:
+**Rychlý**:
 
-1. Přidání souboru **ClientManager.swift** s následujícím obsahem. Nahraďte *AppUrl %* adresou URL back-endu mobilní aplikace Azure.
+1. Přidejte soubor **ClientManager.swift** s následujícím obsahem. Nahraďte *%AppUrl%* adresou URL back-endu mobilní aplikace Azure.
 
     ```swift
     class ClientManager {
@@ -107,13 +107,13 @@ ms.locfileid: "67175692"
     }
     ```
 
-2. V **ToDoTableViewController.swift**, nahraďte `let client` řádek, který se inicializuje `MSClient` se tento řádek:
+2. V `let client` `MSClient` **souboru ToDoTableViewController.swift**nahraďte řádek, který inicializuje, tímto řádkem:
 
     ```swift
     let client = ClientManager.sharedClient
     ```
 
-3. V **AppDelegate.swift**, nahraďte obsah metody `func application` následujícím způsobem:
+3. V **AppDelegate.swift**nahraďte `func application` tělo takto:
 
     ```swift
     func application(application: UIApplication,
@@ -126,7 +126,7 @@ ms.locfileid: "67175692"
     }
     ```
 
-4. V **AppDelegate.swift**, přidejte následující metody obslužné rutiny. Vaše aplikace je nyní aktualizována o podporu nabízených oznámení.
+4. V **souboru AppDelegate.swift**přidejte následující metody obslužné rutiny. Vaše aplikace je teď aktualizována, aby podporovala nabízená oznámení.
 
     ```swift
     func application(application: UIApplication,

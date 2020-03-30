@@ -1,32 +1,31 @@
 ---
-title: Stránka všechny nabídky pro Azure Marketplace
-description: Přehled stránky všechny nabídky v portál partnerů cloudu pro Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Stránka všech nabídek pro Azure Marketplace
+description: Přehled stránky Všechny nabídky na portálu cloudových partnerů pro Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: pabutler
-ms.openlocfilehash: cb67ac44ee73d4d8074b577b2157f5846f451210
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e4001651d422d9197a849be5e7985107f9bf43dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821589"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288984"
 ---
 # <a name="all-offers-page"></a>Stránka Všechny nabídky
 
-Stránka [**všechny nabídky**](https://cloudpartner.azure.com/#alloffers) umožňuje partnerům zobrazit seznam vytvořených nabídek, včetně jejich názvu, typu, vydavatele a aktuálního stavu.  Můžete zadat řetězec pro filtrování výsledků.   Stavová oblast v dolní části stránky zobrazuje agregace a počty stránek a umožňuje navigaci mezi stránkami seznamu. Výběrem nabídky v tomto seznamu se zobrazí nabídka v přidruženém editoru nabídek. 
+Stránka [**Všechny nabídky**](https://cloudpartner.azure.com/#alloffers) umožňuje partnerům zobrazit seznam vytvořených nabídek, včetně jejich názvu, typu, vydavatele a aktuálního stavu.  Můžete zadat řetězec pro filtrování výsledků.   Stavová oblast v dolní části stránky zobrazuje agregaci a počet stránek a umožňuje navigaci mezi stránkami seznamu. Výběr nabídky v tomto seznamu se zobrazí v přidruženém editoru nabídek. 
 
 
 ## <a name="example-page"></a>Příklad stránky
 
-Následující obrázek ukazuje stránku **všechny nabídky** , která je filtrovaná na `Contoso`řetězců.
+Na následujícím obrázku je zobrazena stránka `Contoso`Všechny **nabídky** filtrovaná na řetězci .
 
 ![Stránka Všechny nabídky](./media/all-offers-page1.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další navigační položka MenuBar zobrazí [stránku schválení](./cpp-approvals-page.md), která obsahuje seznam schválených nabídek.  Schválené nabídky už jsou publikované nebo se právě publikují.
+Další položka navigačního panelu nabídek zobrazuje [stránku Schválení](./cpp-approvals-page.md), která obsahuje seznam schválených nabídek.  Schválené nabídky jsou buď již zveřejněny, nebo se zveřejňují.

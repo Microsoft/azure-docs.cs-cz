@@ -1,118 +1,117 @@
 ---
-title: Řídicí panel zákazníka v komerčních prostředcích Marketplace na partnerském centru
-description: Naučte se, jak získat přístup k informacím o vašich zákaznících, včetně trendů růstu, pomocí řídicího panelu zákazníka na komerčním webu Marketplace.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: Řídicí panel zákazníka v analýze komerčního tržiště v Partnerském centru
+description: Zjistěte, jak získat přístup k informacím o vašich zákaznících, včetně trendů růstu, pomocí řídicího panelu zákazníků v analytice Commercial Marketplace.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: f2eaaf2ec2f3dad1da345d0cfeadf1cae223a592
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 7fe56a81bc82f9d49cf9f81b30986882b6d13cfe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264012"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286111"
 ---
-# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel zákazníka v komerčních obchodech Marketplace
+# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel zákazníků v analýze komerčního tržiště
 
-Tento článek poskytuje informace o **řídicím panelu zákazníka** v partnerském centru. Tento řídicí panel zobrazuje informace o vašich zákaznících, včetně trendů růstu, prezentovaných ve formátu grafického a ke stažení.
+Tento článek obsahuje informace o **řídicím panelu zákazníka** v Centru partnerů. Tento řídicí panel zobrazuje informace o vašich zákaznících, včetně trendů růstu, prezentovaných v grafickém formátu a formátu ke stažení.
 
-Pokud chcete získat přístup k **řídicímu panelu zákazníka**, otevřete řídicí panel **[analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v rámci komerčního tržiště.
+Chcete-li získat přístup k **řídicímu panelu Zákazník**, otevřete řídicí panel **[Analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v části Komerční tržiště.
 
 >[!NOTE]
-> Podrobné definice terminologie analýz najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).
+> Podrobné definice terminologie analýzy naleznete v [tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
 
 ## <a name="customer-dashboard"></a>Řídicí panel zákazníků
 
-**Řídicí panel zákazníka** v nabídce **analyzovat** zobrazuje data pro zákazníky, kteří získali vaše nabídky. Můžete zobrazit grafické reprezentace následujících položek:
+**Řídicí panel Zákazník** v nabídce **Analyzovat** zobrazuje data pro zákazníky, kteří získali vaše nabídky. Můžete zobrazit grafické znázornění následujících položek:
 
-- [Shrnutí zákazníka](#customer-summary)
+- [Souhrn odběratele](#customer-summary)
 - [Zákazník podle geografie](#customer-by-geography)
-- [Trendy zákazníků](#customer-trends)
+- [Zákaznické trendy](#customer-trends)
 - [Zákazníci podle objednávek a využití](#customers-by-orders-and-usage)
 - [Zákazníci podle SKU](#customers-by-skus)
-- [Objednávky a využití podle typu zákazníka](#orders-and-usage-by-customer-type)
-- [Tabulka s podrobnostmi o zákaznících](#customer-details-table)
+- [Objednávky a použití podle typu zákazníka](#orders-and-usage-by-customer-type)
+- [Tabulka podrobností o zákazníkovi](#customer-details-table)
 - [Filtry stránek zákazníka](#customer-page-filters)
 
-### <a name="customer-summary"></a>Shrnutí zákazníka
+### <a name="customer-summary"></a>Souhrn odběratele
 
-V části Customer Summary (souhrn zákazníka) se zobrazuje počet všech zákazníků, včetně nových, stávajících a nezměněných dat, ve vybraném období.
+V části Souhrn zákazníka se zobrazuje počet všech zákazníků, včetně nových, existujících a rozvířitých, během vybraného období.
 
-- Celkový počet zákazníků je definován jako počet všech zákazníků, kteří si nabídku zakoupili, a mají alespoň jednu objednávku, která nebyla zrušena.
-- Procentuální podíl růstu v porovnání s předchozím měsícem je označen číslem a zeleným indikátorem zeleného nebo klesajícího indikátoru červenou barvou.
-- Trendy růstu jsou znázorněny pomocí pruhových grafů a zobrazí hodnotu pro každý měsíc přesunutím ukazatele myši na sloupce grafu.
+- Celkový počet zákazníků je definován jako počet všech zákazníků, kteří si zakoupili vaši nabídku a mají alespoň jednu objednávku, která nebyla zrušena.
+- Procento růstu zákazníků ve srovnání s předchozím měsícem je indikováno ukazatelem počtu a vzestupu v zelené nebo klesající ukazatel červeně.
+- Trendy růstu jsou reprezentovány sloupcovými grafy a zobrazí hodnotu pro každý měsíc najetím na sloupce grafu.
 
-Existují tři **typy zákazníků**: nový, existující a změněný.
+Existují tři **typy zákazníků:** nové, existující a spálené.
 
 - Nový zákazník získal jednu nebo více vašich nabídek poprvé ve vybraném měsíci.
-- Stávající zákazník získal jednu nebo více nabídek před vybraným měsícem.
-- Změněný zákazník zrušil všechny nabídky, které jste si už koupili.
+- Stávající zákazník získal jednu nebo více vašich nabídek před vybraným měsícem.
+- Zrušený zákazník zrušil všechny dříve zakoupené nabídky.
 
 ### <a name="customer-by-geography"></a>Zákazník podle geografie
 
-Tabulka **Zákazník podle geografického** grafu zobrazuje počty všech zákazníků a zákazníků získaných během vybraného časového období a jsou namapovány na základě země zákazníka. Světlá barva světla na mapě představuje nízkou a vysokou hodnotu počtu zákazníků. Kliknutím na záznam v tabulce se přiblížíte k zemi.
+Graf **Zákazník podle zeměpisné polohy** zobrazuje počty všech zákazníků a zákazníků získaných během vybraného období a jsou mapovány na základě země zákazníka. Světlé až tmavé barvy na mapě představuje nízkou až vysokou hodnotu počtu zákazníků. Kliknutím na záznam v tabulce přiblížíte zemi.
 
-Heatmapu zobrazuje počet zákazníků a% podle země zákazníka. Mapu můžete přesunout tak, aby se zobrazilo přesné umístění a přiblížení do konkrétního umístění. Tato mapa má doplňkovou mřížku, která vám umožní zobrazit% zákazníků podle umístění a také nově přidaných zákazníků do tohoto umístění.
+Heatmap zobrazuje počet zákazníků a % podle země zákazníka. Mapu můžete přesunout a zobrazit přesnou polohu a přiblížit konkrétní místo. Tato mapa má doplňkovou mřížku, která umožňuje zobrazit % zákazníků podle lokality, stejně jako zákazníky nově přidané do tohoto umístění.
 
-### <a name="customer-trends"></a>Trendy zákazníků
+### <a name="customer-trends"></a>Zákaznické trendy
 
-Graf **trendů zákazníků** zobrazuje počet všech zákazníků, včetně nových, stávajících a nezměněných, s nárůstem trendu po měsících.
+Graf **Trendy zákazníka** zobrazuje počet všech zákazníků, včetně nových, stávajících a svíjených, s měsíčním trendem růstu.
 
-- Spojnicový graf představuje celkové procento růstu zákazníka.
-- Sloupec month (měsíc) představuje počet zákazníků vydaných novými, stávajícími a změněnými zákazníky.
-- Počet ovlivněných zákazníků se zobrazí na záporném směru osy Y.
-- Můžete vybrat konkrétní položky legendy pro zobrazení podrobnějších zobrazení. Vyberte například možnost Noví zákazníci z legendy, aby se zobrazily pouze noví zákazníci.
-- Pomocí posuvníku v horní části grafu se můžete posunout doprava a doleva na ose x a soustředit se na konkrétní datové body, které se mají zobrazit podrobněji.
-- Po najetí myší na sloupec grafu se zobrazí podrobnosti jenom pro tento měsíc.
+- Spojnicový graf představuje celkové procento růstu zákazníků.
+- Sloupec měsíc představuje počet zákazníků skládaných podle nových, existujících a rozvířitých zákazníků.
+- Počet roztlučovaných zákazníků se zobrazí v záporném směru osy Y.
+- Můžete vybrat konkrétní položky legendy, které chcete zobrazit podrobnější zobrazení. Vyberte například nové zákazníky z legendy, aby zobrazovali pouze nové zákazníky.
+- Pomocí posuvníku v horní části grafu můžete posouvat doprava a doleva na ose x a zaměřit se na konkrétní datové body, abyste je mohli zobrazit podrobněji.
+- Když najedete přes sloupec grafu, zobrazí se podrobnosti pouze pro tento měsíc.
 
 ### <a name="customers-by-orders-and-usage"></a>Zákazníci podle objednávek a využití
 
-Tabulka **zákazníci podle objednávek/používání** obsahuje tři karty, "objednávky", normalizované využití a nezpracované využití. " **Horní percentil zákazníka** se zobrazuje podél osy x podle počtu objednávek. Osa y zobrazuje počet objednávek zákazníka. Sekundární osa y (spojnicový graf) zobrazuje kumulativní procento celkového počtu objednávek. Podrobnosti můžete zobrazit tak, že najedete myší na body podél spojnicového grafu.
+Graf **Zákazníci podle objednávek/použití** má tři karty, "objednávky", "normalizované využití" a "nezpracované využití". Percentil **nejvyššího zákazníka** se zobrazí podél osy x, jak je určeno počtem objednávek. Osa y zobrazuje počet objednávek zákazníka. Sekundární osa y (spojinový graf) zobrazuje kumulativní procento z celkového počtu objednávek. Podrobnosti můžete zobrazit tak, že najedete přes body podél spojnicového grafu.
 
-Příklad najdete v následujícím grafu pro normalizované využití: horní 30. percentil zákazníků přispívá k 87% normalizovaného využití na základě součtu. 30. percentil zákazníků přispívá jenom 1 570 000 hodin využití.
+Jako příklad najdete v tabulce níže normalizované využití: Horní 30 percentil zákazníků přispívají k 87 % normalizovaného využití kumulativně. 30. percentil zákazníků přispívá pouze 1,57 milionu hodin používání.
 
 ### <a name="customers-by-skus"></a>Zákazníci podle SKU
 
-Tabulky **zákazníci podle SKU nebo využití** jsou popsány níže.
+Níže jsou **popsány grafy Zákazníci podle sku./usage.**
 
-1. Vedoucí deska zobrazuje podrobnosti o hlavních 50 zákaznících seřazených podle počtu objednávek. Po výběru zákazníka se podrobnosti o zákazníkovi zobrazí v oddílech 2, 3 a 4 tohoto vedoucího senátu.
-2. Podrobnosti o profilu zákazníka se zobrazí v tomto prostoru, když se vydavatelé přihlásí pomocí role vlastníka. Pokud jsou vydavatelé přihlášení pomocí role přispěvatele, podrobnosti v této části nebudou k dispozici.
-3. Prstencový graf ORDER by SKU zobrazuje Rozpis objednávek koupených pro skladové položky. Zobrazí se horní 5 SKU s nejvyšším počtem objednávek, zatímco zbytek objednávek je seskupený pod položkou "REST All".
-4. Prstencový graf křesla podle SKU zobrazuje rozpis míst objednaných pro skladové položky. Zobrazí se horní 5 SKU s nejvyššími místy, zatímco zbytek objednávek je seskupený pod položkou REST ALL.
+1. Žebříček představuje podrobnosti o 50 nejlepších zákaznících seřazených podle počtu objednávek. Po výběru zákazníka jsou podrobnosti o zákazníkovi uvedeny v oddílech 2, 3 a 4 tohoto žebříčku.
+2. Podrobnosti profilu zákazníka jsou zobrazeny v tomto prostoru, když jsou vydavatelé přihlášeni s rolí vlastníka. Pokud jsou vydavatelé přihlášeni s rolí přispěvatele, podrobnosti v této části nebudou k dispozici.
+3. Graf Donut Objednávky podle skutových staveb zobrazuje rozpis objednávek zakoupených pro sku. Zobrazí se 5 nejlepších skutových částek s nejvyšším počtem objednávek, zatímco ostatní objednávky jsou seskupeny pod "rest all".
+4. Graf míst podle skutnic zobrazuje rozpis sedadel objednaných pro sku. Zobrazí se 5 nejlepších skutů s nejvyššími sedadly, zatímco ostatní objednávky jsou seskupeny pod opěram.
 
-### <a name="orders-and-usage-by-customer-type"></a>Objednávky a využití podle typu zákazníka
+### <a name="orders-and-usage-by-customer-type"></a>Objednávky a použití podle typu zákazníka
 
-Graf **Order/Usage podle zákaznického typu** zobrazuje počet objednávek, normalizované využití a hodiny nezpracovaných hodin, které se rozdělí mezi nové zákazníky a stávající zákazníci. na základě výběru objednávek, normalizovaného a nezpracovaného využití v grafu.
+Graf **Objednávky/využití podle typu zákazníka** zobrazuje počet objednávek, normalizovanou spotřebu a nezpracované hodiny využití rozdělené mezi nové zákazníky a stávající zákazníky. na základě výběru objednávek, normalizované a nezpracované využití v grafu.
 
-- Nový zákazník získal jednu nebo více nabídek nebo vykázaných použití poprvé v rámci stejného kalendářního měsíce (osa y).
-- Stávající zákazník předtím získal nabídku od vás nebo oznámil použití před uvedením kalendářního měsíce (na ose y).
+- Nový zákazník získal jednu nebo více vašich nabídek nebo nahlásil využití poprvé ve stejném kalendářním měsíci (osa y).
+- Stávající zákazník od vás již dříve získal nabídku nebo ohlásil využití před oznámeným kalendářním měsícem (na ose y).
 
-### <a name="customer-details-table"></a>Tabulka s podrobnostmi o zákaznících
+### <a name="customer-details-table"></a>Tabulka podrobností o zákazníkovi
 
-Tabulka **Podrobnosti o zákazníkovi** zobrazuje číslovaný seznam prvních 1000 zákazníků seřazených podle data prvního získání jedné z vašich nabídek.
+V tabulce **Podrobnosti o zákazníkovi** se zobrazí číslovaný seznam 1000 nejlepších zákazníků seřazených podle data, kdy poprvé získali jednu z vašich nabídek.
 
-- Osobní údaje zákazníka budou k dispozici jenom v případě, že zákazník poskytl souhlas. Tyto informace můžete zobrazit pouze v případě, že jste přihlášeni s úrovní oprávnění role vlastníka. Přečtěte si další informace o uživatelských rolích a oprávněních.
-- Každý sloupec v mřížce lze seřadit.
-- Data je možné extrahovat do souboru TSV, pokud je počet záznamů menší než 1000.
-- Pokud je počet záznamů větší než 1000, exportovaná data se asynchronně nasadí na stránku ke stažení na následujících 30 dnů.
-- Filtry lze v tabulce použít k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle názvu společnosti, ID zákazníka, ID předplatného Marketplace, typu licence Azure, data získání, data ztráty, e-mailu zákazníka, země zákazníka/státu/města/PSČ, zákaznického jazyka atd.
+- Osobní údaje zákazníka budou k dispozici pouze v případě, že zákazník poskytl souhlas. Tyto informace lze zobrazit pouze v případě, že jste se přihlásili s úrovní oprávnění role vlastníka. Přečtěte si další informace o uživatelských rolích a oprávněních.
+- Každý sloupec v mřížce je seřaditelný.
+- Data lze extrahovat do souboru TSV, pokud je počet záznamů menší než 1000.
+- Pokud je číslo záznamů vyšší než 1000, exportovaná data budou asynchronně umístěna na stránce ke stažení po dobu následujících 30 dnů.
+- Filtry lze použít v tabulce, aby se zobrazila pouze data, která vás zajímají. Data lze filtrovat podle názvu společnosti, ID zákazníka, ID předplatného Marketplace, typu licence Azure, data získání, data ztráty, e-mailu zákazníka, země zákazníka/ státu / města / zipu, jazyka zákazníka atd.
 
 ### <a name="customer-page-filters"></a>Filtry stránek zákazníka
 
-Filtry **stránky Customers** jsou aplikovány na úrovni stránky Customers. Můžete vybrat více filtrů pro vykreslení grafu pro kritéria, která se rozhodnete zobrazit, a data, která chcete zobrazit v mřížce/exportu podrobných objednávek dat. Filtry se aplikují na extrahovaná data pro rozsah dat, který jste vybrali v pravém horním rohu stránky objednávky.
+Filtry **stránek Zákazníci** se použijí na úrovni stránky Zákazníci. Můžete vybrat více filtrů, které vykreslí graf pro kritéria, která chcete zobrazit, a data, která chcete zobrazit v mřížce Podrobných objednávek / exportu. Filtry se použijí na data extrahovaná pro oblast dat, kterou jste vybrali v pravém horním rohu stránky objednávky.
 
 >[!NOTE]
-> Podrobné definice pro každé pole v mřížce zákazníka, filtry stránek a jejich možné výběry se nacházejí v [nejčastějších dotazech a terminologii pro komerční analýzy na webu Marketplace](./faq-terminology.md).
+> Podrobné definice pro každé pole v mřížce Zákazník, filtry stránek a jejich možné výběry jsou umístěny v [často kladené otázky a terminologie pro komerční marketplace analytics](./faq-terminology.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled analytických sestav dostupných na obchodním tržišti partnerského centra najdete v tématu [analýzy pro komerční tržiště v partnerském centru](./analytics.md).
-- Grafy, trendy a hodnoty agregovaných dat, která shrnují aktivity Marketplace pro vaši nabídku, najdete v tématu [souhrnný řídicí panel v části komerční analýza na webu Marketplace](./summary-dashboard.md).
-- Informace o vašich objednávkách v grafickém formátu a ve formátu ke stažení najdete v tématu věnovaném [řídicímu panelu objednávky v rámci komerčních tržišť](./orders-dashboard.md).
-- U virtuálních počítačů nabízí metriky využití a měření fakturace, viz [řídicí panel využití v komerčních obchodech na webu Marketplace](./usage-dashboard.md).
-- Seznam vašich žádostí o stažení za posledních 30 dní najdete [v tématu řídicí panel ke stažení v komerčních obchodech na webu Marketplace](./downloads-dashboard.md).
-- Chcete-li zobrazit konsolidované zobrazení zpětné vazby od zákazníků pro nabídky Azure Marketplace a AppSource, přečtěte si téma [hodnocení a recenze řídicího panelu na komerčních analýzách na webu Marketplace](./ratings-reviews.md).
-- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).
+- Přehled analytických přehledů dostupných na komerčním trhu Partnerského centra najdete v [článku Analýza pro komerční tržiště v Centru partnerů](./analytics.md).
+- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Summary Dashboard in Commercial Marketplace analytics](./summary-dashboard.md).
+- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Dashboard objednávek v analýze komerčního tržiště](./orders-dashboard.md).
+- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití Řídicí panel v komerčních Marketplace analýzy](./usage-dashboard.md).
+- Seznam žádostí o stažení za posledních 30 dní najdete v článku [Panel stahování v analýze komerčního tržiště](./downloads-dashboard.md).
+- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze na řídicím panelu Commercial Marketplace analytics](./ratings-reviews.md).
+- Nejčastější dotazy týkající se analýzy na komerčním marketplace a komplexní slovník datových termínů naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).

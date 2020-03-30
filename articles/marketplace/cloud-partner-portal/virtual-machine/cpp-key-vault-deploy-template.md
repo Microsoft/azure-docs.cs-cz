@@ -1,23 +1,22 @@
 ---
-title: Šablona nasazení Azure Key Vault | Azure Marketplace
-description: Vypíše šablonu Azure Resource Manager požadovanou k nasazení nové instance Azure Key Vault.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Šablona nasazení úložiště klíčů Azure | Azure Marketplace
+description: Zobrazí seznam šablony Azure Resource Manager, která je nutná k nasazení nové instance Azure Key Vault.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: befed70b6858ebc8aaab7ebe200bb8082a430bab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 63f49946b14b003348758a5ae7ebadd7a4acf383
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824049"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277664"
 ---
 # <a name="key-vault-deployment-template"></a>Šablona nasazení trezoru klíčů
 
-Následující šablona Azure Resource Manager definuje novou instanci Azure Key Vault.  Používá se v článku [Vytvoření certifikátu trezoru klíčů](cpp-create-key-vault-cert.md). 
+Následující šablona Azure Resource Manager definuje novou instanci Azure Key Vault.  Používá se v článku [Vytvořit certifikát trezoru klíčů](cpp-create-key-vault-cert.md). 
 
 ```json
 {

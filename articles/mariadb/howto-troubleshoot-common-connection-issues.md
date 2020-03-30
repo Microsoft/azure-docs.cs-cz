@@ -1,61 +1,61 @@
 ---
-title: Řešení potíží s připojením – Azure Database for MariaDB
-description: Přečtěte si, jak řešit potíže s připojením Azure Database for MariaDB, včetně přechodných chyb, které vyžadují opakované pokusy, problémy s bránou firewall a výpadky.
+title: Řešení problémů s připojením – Databáze Azure pro MariaDB
+description: Zjistěte, jak řešit problémy s připojením k Azure Database pro MariaDB, včetně přechodných chyb vyžadujících opakování, problémy s bránou firewall a výpadky.
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 613de96ee58d37e6270266852e513e53857a441a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: d134bcd0c5f9bfde0fdb095122d54848873174be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765728"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536356"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Řešení potíží s připojením pro Azure Database for MariaDB
+# <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Řešení potíží s připojením ke službě Azure Database for MariaDB
 
-Problémy s připojením mohou být způsobeny řadou věcí, včetně:
+Problémy s připojením mohou být způsobeny různými věcmi, včetně:
 
 * Nastavení brány firewall
 * Časový limit připojení
 * Nesprávné přihlašovací údaje
-* Dosáhlo se maximálního limitu u některých prostředků Azure Database for MariaDB.
+* Maximální limit dosažený u některých prostředků Azure Database pro prostředky MariaDB
 * Problémy s infrastrukturou služby
-* Údržba prováděná ve službě
-* Přidělení výpočetních prostředků serveru se změní škálováním počtu virtuální jádra nebo přesunutím na jinou úroveň služby.
+* Údržba prováděná v provozu
+* Přidělení výpočetních prostředků serveru se změní škálováním počtu virtuálních jader nebo přesunutím na jinou úroveň služby.
 
-Obecně mohou být problémy s připojením k Azure Database for MariaDB klasifikovány takto:
+Obecně platí problémy s připojením k Azure Database pro MariaDB lze klasifikovat takto:
 
-* Přechodné chyby (krátkodobé nebo občasné)
+* Přechodné chyby (krátkodobé nebo přerušované)
 * Trvalé nebo nepřechodné chyby (chyby, které se pravidelně opakují)
 
-## <a name="troubleshoot-transient-errors"></a>Řešení přechodných chyb
+## <a name="troubleshoot-transient-errors"></a>Poradce při potížích s přechodným chybám
 
-K přechodným chybám dochází při provádění údržby, systém zaznamená chybu s hardwarem nebo softwarem nebo změníte virtuální jádra nebo úroveň služby serveru. Služba Azure Database for MariaDB má vestavěnou vysokou dostupnost a je navržena tak, aby automaticky zmírnila tyto typy problémů. Vaše aplikace však ztratí připojení k serveru po krátkou dobu obvykle méně než 60 sekund. Některé události mohou občas trvat delší dobu, například když velká transakce způsobí dlouhotrvající obnovení.
+Při provádění údržby dochází k přechodným chybám, systém narazí na chybu s hardwarem nebo softwarem nebo změníte virtuální jádra nebo úroveň služeb serveru. Služba Azure Database for MariaDB má integrovanou vysokou dostupnost a je navržena tak, aby tyto typy problémů automaticky zmírnila. Aplikace však ztratí připojení k serveru na krátkou dobu obvykle kratší než 60 sekund. Některé události může občas trvat déle zmírnit, například když velké transakce způsobí dlouhotrvající obnovení.
 
-### <a name="steps-to-resolve-transient-connectivity-issues"></a>Postup řešení potíží s přechodným připojením
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Postup řešení problémů s přechodným připojením
 
-1. Podívejte se na [řídicí panel služby Microsoft Azure](https://azure.microsoft.com/status) pro všechny známé výpadky, ke kterým došlo v době, kdy aplikace nahlásila chyby.
-2. Aplikace, které se připojují ke cloudové službě, jako je například Azure Database for MariaDB, by měly očekávat přechodné chyby a implementují logiku opakování pro zpracování těchto chyb namísto zpřístupněníí chyb aplikací uživatelům. Kontrola [nad zpracováním přechodných chyb připojení pro Azure Database for MariaDB](concepts-connectivity.md) osvědčenými postupy a pokyny pro návrh pro zpracování přechodných chyb.
-3. V případě, že se server blíží omezení prostředků, může se zdát, že chyby můžou být přechodný problém s připojením. Viz [omezení v Azure Database for MariaDB](concepts-limits.md).
-4. Pokud potíže s připojením trvají nebo pokud doba, po kterou vaše aplikace narazí na chybu, překračuje 60 sekund, nebo pokud se v daném dni zobrazí více výskytů chyby, zastavte žádost o podporu Azure výběrem možnosti **získat podporu** na webu [podpory Azure](https://azure.microsoft.com/support/options) .
+1. Zkontrolujte [řídicí panel služby Microsoft Azure](https://azure.microsoft.com/status) pro všechny známé výpadky, ke kterým došlo během doby, ve které byly hlášeny chyby aplikací.
+2. Aplikace, které se připojují ke cloudové službě, jako je například Azure Database for MariaDB, by měly očekávat přechodné chyby a implementovat logiku opakování pro zpracování těchto chyb namísto jejich zobrazení jako chyby aplikace pro uživatele. Zkontrolujte [Zpracování přechodných chyb připojení pro Azure Database for MariaDB](concepts-connectivity.md) pro osvědčené postupy a pokyny pro návrh pro zpracování přechodných chyb.
+3. Jako server blíží jeho omezení prostředků, chyby se může zdát být přechodný problém připojení. Viz [Omezení v azure databázi pro MariaDB](concepts-limits.md).
+4. Pokud problémy s připojením přetrvávají nebo pokud doba trvání, po kterou vaše aplikace narazí na chybu, překročí 60 sekund nebo pokud se v daný den zobrazí více výskytů chyby, nasuňte žádost o podporu Azure výběrem **možnosti Získat podporu** na webu [podpory Azure.](https://azure.microsoft.com/support/options)
 
-## <a name="troubleshoot-persistent-errors"></a>Řešení trvalých chyb
+## <a name="troubleshoot-persistent-errors"></a>Poradce při potížích s trvalými chybami
 
-Pokud se aplikace trvale nepřipojí k Azure Database for MariaDB, obvykle se jedná o problém s jedním z následujících způsobů:
+Pokud se aplikaci trvale nedaří připojit k Azure Database pro MariaDB, obvykle označuje problém s jedním z následujících:
 
-* Konfigurace brány firewall: Server Azure Database for MariaDB nebo brána firewall na straně klienta blokuje připojení.
-* Konfigurace sítě na straně klienta: byla přidána nová IP adresa nebo proxy server.
-* Chyba uživatele: například můžete mít chybné typové parametry připojení, jako je název serveru v připojovacím řetězci nebo chybějící přípona *\@servername* v uživatelském jménu.
+* Konfigurace brány firewall: Databáze Azure pro server MariaDB nebo brána firewall na straně klienta blokuje připojení.
+* Změna konfigurace sítě na straně klienta: Byla přidána nová adresa IP nebo proxy server.
+* Chyba uživatele: Například můžete mít chybně zadané parametry připojení, jako je například * \@* název serveru v připojovacím řetězci nebo chybějící přípona názvu serveru v uživatelském jménu.
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Postup řešení potíží s trvalým připojením
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Postup řešení přetrvávajících problémů s připojením
 
-1. Nastavte [pravidla brány firewall](howto-manage-firewall-portal.md) tak, aby povolovala IP adresu klienta. Pro účely dočasného testování nastavte pravidlo brány firewall pomocí direktivy 0.0.0.0 jako počáteční IP adresu a jako koncovou IP adresu použijte 255.255.255.255. Tím se Server otevře na všech IP adresách. Pokud dojde k vyřešení problému s připojením, odeberte toto pravidlo a vytvořte pravidlo brány firewall pro odpovídající omezené IP adresy nebo rozsah adres.
-2. U všech bran firewall mezi klientem a internetem se ujistěte, že je port 3306 otevřený pro odchozí připojení.
-3. Ověřte připojovací řetězec a další nastavení připojení. Přečtěte si, [Jak připojit aplikace k Azure Database for MariaDB](howto-connection-string.md).
-4. Projděte si stav služby na řídicím panelu. Pokud se domníváte, že se jedná o oblastní výpadky, přečtěte si téma [Přehled provozní kontinuity a Azure Database for MariaDB](concepts-business-continuity.md) kroky k obnovení do nové oblasti.
+1. Nastavte [pravidla brány firewall](howto-manage-firewall-portal.md) tak, aby umožňovala IP adresu klienta. Pouze pro dočasné testovací účely nastavte pravidlo brány firewall, které používá 0.0.0.0 jako počáteční adresu IP a jako koncovou adresu IP 255.255.255. Tím se server otevře všem IP adresám. Pokud se tím problém s připojením vyřeší, odeberte toto pravidlo a vytvořte pravidlo brány firewall pro vhodně omezenou adresu IP nebo rozsah adres.
+2. U všech bran firewall mezi klientem a Internetem zkontrolujte, zda je port 3306 otevřený pro odchozí připojení.
+3. Ověřte připojovací řetězec a další nastavení připojení. Přečtěte [si, jak připojit aplikace k Azure Database pro MariaDB](howto-connection-string.md).
+4. Zkontrolujte stav služby na řídicím panelu. Pokud si myslíte, že je místní výpadek, najdete [v tématu Přehled kontinuity podnikání s Azure Database pro MariaDB](concepts-business-continuity.md) kroky k obnovení do nové oblasti.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Manipulace s přechodnými chybami připojení pro Azure Database for MariaDB](concepts-connectivity.md)
+* [Zpracování přechodných chyb připojení pro Azure Database pro MariaDB](concepts-connectivity.md)

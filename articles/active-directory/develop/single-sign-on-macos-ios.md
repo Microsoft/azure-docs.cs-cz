@@ -1,7 +1,7 @@
 ---
-title: Konfigurace jednotného přihlašování v macOS a iOS
+title: Konfigurace automatického připojatá v macOS a iOS
 titleSuffix: Microsoft identity platform
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování (SSO) na macOS a iOS.
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování (SSO) v macOS a iOS.
 services: active-directory
 documentationcenter: dev-center-name
 author: mmacy
@@ -18,71 +18,71 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 91a55520b37c549c8f1d94ba6cf08ecd24db85b5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262448"
 ---
-# <a name="how-to-configure-sso-on-macos-and-ios"></a>Postupy: Konfigurace jednotného přihlašování v macOS a iOS
+# <a name="how-to-configure-sso-on-macos-and-ios"></a>Postup: Konfigurace přizpůsobovat služby Přikonfiguraci v macOS a iOS
 
-Knihovna Microsoft Authentication Library (MSAL) pro macOS a iOS podporuje jednotné přihlašování (SSO) mezi aplikacemi pro macOS/iOS a prohlížeči. Tento článek se zabývá následujícími scénáři jednotného přihlašování:
+Microsoft Authentication Library (MSAL) pro macOS a iOS podporuje jednotné přihlašování (SSO) mezi aplikacemi a prohlížeči macOS/iOS. Tento článek popisuje následující scénáře přispojené správě a zabezpečení:
 
-- [Tiché jednotné přihlašování mezi několika aplikacemi](#silent-sso-between-apps)
+- [Tiché přihlašovat k přihlašuji mezi více aplikacemi](#silent-sso-between-apps)
 
-Tento typ jednotného přihlašování funguje mezi několika aplikacemi distribuovanými stejným vývojářem Apple. Poskytuje bezobslužné přihlášení (to znamená, že uživatel není vyzván k zadání přihlašovacích údajů) tím, že si přečte aktualizační tokeny napsané jinými aplikacemi z řetězce klíčů a vyměňuje je pro přístupové tokeny v tichém režimu.  
+Tento typ přisychovaného zařízení funguje mezi více aplikacemi distribuovanými stejným vývojářem Apple. Poskytuje tiché sbozí (to znamená, že uživatel není vyzván k zadání přihlašovacích údajů) čtením tokenů aktualizace napsaných jinými aplikacemi z řetězce klíčů a jejich výměnou za přístupové tokeny tiše.  
 
-- [Jednotné přihlašování prostřednictvím zprostředkovatele ověřování](#sso-through-authentication-broker-on-ios)
-
-> [!IMPORTANT]
-> Tento tok není v macOS k dispozici.
-
-Společnost Microsoft poskytuje aplikace označované jako zprostředkovatelé, které umožňují jednotné přihlašování mezi aplikacemi od různých dodavatelů, pokud je mobilní zařízení zaregistrované ve službě Azure Active Directory (AAD). Tento typ jednotného přihlašování vyžaduje, aby se na zařízení uživatele nainstalovala aplikace zprostředkovatele.
-
-- **Jednotné přihlašování mezi MSAL a Safari**
-
-Jednotné přihlašování se dosahuje prostřednictvím třídy [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc) . Používá existující přihlašovací stav z jiných aplikací a prohlížeče Safari. Není omezený na aplikace distribuované stejným vývojářem Apple, ale vyžaduje nějakou interakci s uživatelem.
-
-Pokud k přihlášení uživatelů použijete výchozí webové zobrazení v aplikaci, získáte automatické jednotné přihlašování mezi MSAL aplikacemi a Safari. Další informace o webových zobrazeních, která podporuje MSAL, najdete v části [přizpůsobení prohlížečů a webových zobrazení](customize-webviews.md).
+- [Přizpůsobovat služby spoje prostřednictvím zprostředkovatele ověřování](#sso-through-authentication-broker-on-ios)
 
 > [!IMPORTANT]
-> Tento typ jednotného přihlašování není v macOS aktuálně k dispozici. MSAL on macOS podporuje jenom WKWebView, které nemají podporu jednotného přihlašování s Safari. 
+> Tento tok není k dispozici v macOS.
 
-- **Tiché jednotné přihlašování mezi aplikacemi ADAL a MSAL macOS/iOS**
+Společnost Microsoft poskytuje aplikace, nazývané zprostředkovatelé, které umožňují přihlašování k objektům zabezpečení mezi aplikacemi od různých dodavatelů, pokud je mobilní zařízení registrované ve službě Azure Active Directory (AAD). Tento typ spřihlašovacího systému vyžaduje, aby byla na zařízení uživatele nainstalována zprostředkovatelská aplikace.
 
-MSAL cíl-C podporuje migraci a jednotné přihlašování pomocí aplikací založených na knihovně ADAL pro aplikace založené na jazyce C. Aplikace musí být distribuovány stejným vývojářem Apple.
+- **SSO mezi MSAL a Safari**
 
-Pokyny pro jednotné přihlašování mezi aplikacemi v aplikacích ADAL a MSAL najdete v tématu [jednotné přihlašování mezi aplikacemi ADAL a MSAL v MacOS a iOS](sso-between-adal-msal-apps-macos-ios.md) .
+SSO je dosaženo prostřednictvím [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc) třídy. Používá existující stav přihlášení z jiných aplikací a prohlížeče Safari. Není omezena na aplikace distribuované stejným vývojářem Apple, ale vyžaduje určitou interakci uživatele.
 
-## <a name="silent-sso-between-apps"></a>Tiché jednotné přihlašování mezi aplikacemi
+Pokud k přihlašování uživatelů používáte výchozí webové zobrazení v aplikaci, získáte automatické přihlašování mezi aplikacemi založenými na MSAL a Safari. Další informace o webových zobrazeních, která aplikace MSAL podporuje, naleznete na stránce [Vlastní prohlížeče a zobrazení webu](customize-webviews.md).
 
-MSAL podporuje sdílení SSO prostřednictvím přístupových skupin řetězce pro iOS.
+> [!IMPORTANT]
+> Tento typ služby ASO není momentálně v macOS dostupný. MSAL na macOS podporuje pouze WKWebView, který nemá podporu s přihlašuje s Safari. 
 
-Pokud chcete povolit jednotné přihlašování napříč vašimi aplikacemi, musíte provést následující kroky, které jsou podrobněji vysvětleny níže:
+- **Tiché přihlašuje mezi aplikacemi ADAL a MSAL macOS/iOS**
+
+MSAL Objective-C podporuje migraci a semafory s aplikacemi založenými na ADAL Objective-C. Aplikace musí být distribuovány stejným vývojářem Apple.
+
+Pokyny pro služby SSO mezi aplikacemi [ADAL a MSAL v systému macOS a iOS](sso-between-adal-msal-apps-macos-ios.md) najdete v tématu SSO mezi aplikacemi založenými na ADAL a MSAL.
+
+## <a name="silent-sso-between-apps"></a>Tiché přihlašuje služby ASO mezi aplikacemi
+
+MSAL podporuje sdílení spřimit pomocí přístupových skupin klíčenky iOS.
+
+Chcete-li povolit přihlašování k vlastnímu přihlašování ve vašich aplikacích, budete muset provést následující kroky, které jsou vysvětleny podrobněji níže:
 
 1. Ujistěte se, že všechny vaše aplikace používají stejné ID klienta nebo ID aplikace.
-1. Zajistěte, aby všechny vaše aplikace sdílely stejný podpisový certifikát od společnosti Apple, takže můžete sdílet řetězce klíčů.
-1. Pro každou aplikaci si vyžádejte stejnou nárok na řetězec klíčů.
-1. Řekněte sadám MSAL SDK o sdíleném řetězci klíčů, které chceme použít, pokud se liší od výchozího.
+1. Ujistěte se, že všechny vaše aplikace sdílejí stejný podpisový certifikát od společnosti Apple, abyste mohli sdílet klíčenky.
+1. Vyžádejte si stejný nárok na klíčenku pro každou z vašich aplikací.
+1. Informujte sady MSAL SDK o sdílené montovny, kterou chcete použít, pokud se liší od výchozí.
 
-### <a name="use-the-same-client-id-and-application-id"></a>Použít stejné ID klienta a ID aplikace
+### <a name="use-the-same-client-id-and-application-id"></a>Použití stejného ID klienta a ID aplikace
 
-Aby mohla aplikace od Microsoftu zjistit, které aplikace můžou tyto tokeny sdílet, musí tyto aplikace sdílet stejné ID klienta nebo ID aplikace. Toto je jedinečný identifikátor, který vám byl poskytnut při registraci první aplikace na portálu.
+Aby platforma identit microsoftu věděla, které aplikace mohou sdílet tokeny, musí tyto aplikace sdílet stejné ID klienta nebo ID aplikace. Jedná se o jedinečný identifikátor, který vám byl poskytnut při registraci první aplikace na portálu.
 
-Způsob, jakým Microsoft Identity Platform oznamuje aplikacím, které používají stejné ID aplikace, je pomocí **identifikátorů URI pro přesměrování**. Každá aplikace může obsahovat více identifikátorů URI pro přesměrování v portálu pro registraci. Každá aplikace v sadě bude mít jiný identifikátor URI pro přesměrování. Příklad:
+Způsob, jakým platforma identit společnosti Microsoft říká aplikacím, které používají stejné ID aplikace, je podle jejich **identifikátorů URI přesměrování**. Každá aplikace může mít více redirect URI registrované v onboarding portálu. Každá aplikace ve vaší sadě bude mít jiný identifikátor URI přesměrování. Například:
 
-App1 URI pro přesměrování: `msauth.com.contoso.mytestapp1://auth`  
-App2 URI pro přesměrování: `msauth.com.contoso.mytestapp2://auth`  
-APP3 URI pro přesměrování: `msauth.com.contoso.mytestapp3://auth`  
+Identifikátor URI přesměrování aplikace App1:`msauth.com.contoso.mytestapp1://auth`  
+Identifikátor URI přesměrování aplikace 2:`msauth.com.contoso.mytestapp2://auth`  
+Identifikátor URI přesměrování aplikace App3:`msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
-> Formát identifikátorů URI pro přesměrování musí být kompatibilní s formátem, který podporuje MSAL, který je popsán v části [požadavky formátu identifikátoru URI přesměrování MSAL](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
+> Formát uripřesměrování musí být kompatibilní s formátem MSAL podporuje, který je dokumentován v [požadavcích formátu Uri přesměrování MSAL](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
 
-### <a name="setup-keychain-sharing-between-applications"></a>Nastavení sdílení řetězce klíčů mezi aplikacemi
+### <a name="setup-keychain-sharing-between-applications"></a>Nastavení sdílení klíčenky mezi aplikacemi
 
-Pokud chcete povolit sdílení řetězce klíčů, podívejte se do článku věnovaném [Přidání schopností](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) společnosti Apple. Důležité je, abyste se rozhodli, co chcete volat do řetězce klíčů, a přidat tuto možnost do všech aplikací, které budou součástí jednotného přihlašování.
+Pro povolení sdílení klíčenky v článku [Přidání schopností](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) společnosti Apple. Důležité je, že se rozhodnete, co chcete, aby byl váš řetězec klíčů volán, a přidejte tuto funkci do všech aplikací, které budou zapojeny do automatického přihlašování.
 
-Pokud máte oprávnění nastavené správně, zobrazí se soubor `entitlements.plist` v adresáři projektu, který obsahuje něco podobného jako v tomto příkladu:
+Pokud máte správně nastavené nároky, zobrazí `entitlements.plist` se v adresáři projektu soubor, který obsahuje něco jako v tomto příkladu:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -98,19 +98,19 @@ Pokud máte oprávnění nastavené správně, zobrazí se soubor `entitlements.
 </plist>
 ```
 
-#### <a name="add-a-new-keychain-group"></a>Přidat novou skupinu řetězce klíčů
+#### <a name="add-a-new-keychain-group"></a>Přidání nové skupiny klíčů
 
-Přidejte novou skupinu řetězce klíčů do **možností**projektu. Skupina řetězce klíčů by měla být:
-* `com.microsoft.adalcache` v iOS 
-* `com.microsoft.identity.universalstorage` v macOS.
+Přidejte novou skupinu klíčů do projektu **Capabilities**. Skupina klíčenky by měla být:
+* `com.microsoft.adalcache`o iOS 
+* `com.microsoft.identity.universalstorage`na macOS.
 
 ![příklad řetězce klíčů](media/single-sign-on-macos-ios/keychain-example.png)
 
-Další informace najdete v tématu [skupiny řetězce klíčů](howto-v2-keychain-objc.md).
+Další informace naleznete v tématu [skupiny řetězce klíčů](howto-v2-keychain-objc.md).
 
-## <a name="configure-the-application-object"></a>Konfigurace objektu aplikace
+## <a name="configure-the-application-object"></a>Konfigurace aplikačního objektu
 
-Jakmile budete mít v každé aplikaci povolený nárok na řetězce klíčů a jste připraveni použít jednotné přihlašování, nakonfigurujte `MSALPublicClientApplication` pomocí přístupové skupiny pro řetězce klíčů jako v následujícím příkladu:
+Jakmile budete mít oprávnění řetězce klíčů povolena v každé z vašich aplikací `MSALPublicClientApplication` a jste připraveni k použití přihlašování, nakonfigurujte s vaší skupiny přístupu řetězce klíčů jako v následujícím příkladu:
 
 Cíl-C:
 
@@ -137,19 +137,19 @@ do {
 ```
 
 > [!WARNING]
-> Když ve svých aplikacích sdílíte řetězce klíčů, může kterákoli aplikace odstraňovat uživatele nebo dokonce i všechny tokeny v rámci vaší aplikace.
-> To platí zejména v případě, že máte aplikace, které na tokeny spoléhají na práci na pozadí.
-> Sdílení řetězce klíčů znamená, že musíte být velmi opatrní, pokud vaše aplikace používá operace odebrání sady Microsoft Identity SDK.
+> Když sdílíte klíčenku napříč aplikacemi, každá aplikace může odstranit uživatele nebo dokonce všechny tokeny v celé vaší aplikaci.
+> To je zvláště působivý, pokud máte aplikace, které spoléhají na tokeny dělat práci na pozadí.
+> Sdílení klíčenky znamená, že musíte být velmi opatrní, když vaše aplikace používá operace odebrání identity Microsoftu.
 
-A to je vše! Sada Microsoft Identity SDK teď bude sdílet přihlašovací údaje napříč všemi vašimi aplikacemi. Seznam účtů se taky bude sdílet mezi instancemi aplikací.
+A to je vše! Sada Microsoft identity SDK bude nyní sdílet přihlašovací údaje ve všech vašich aplikacích. Seznam účtů bude také sdílen mezi instancemi aplikace.
 
-## <a name="sso-through-authentication-broker-on-ios"></a>Jednotné přihlašování prostřednictvím zprostředkovatele ověřování v iOS
+## <a name="sso-through-authentication-broker-on-ios"></a>Přizpůsobovat služby a so prostřednictvím zprostředkovatele ověřování v iOS
 
-MSAL poskytuje podporu pro zprostředkované ověřování pomocí Microsoft Authenticator. Microsoft Authenticator poskytuje jednotné přihlašování pro zařízení zaregistrovaná v AAD a také pomáhá vaší aplikaci pořídit zásady podmíněného přístupu.
+Služba MSAL poskytuje podporu pro zprostředkované ověřování pomocí aplikace Microsoft Authenticator. Microsoft Authenticator poskytuje služby SSO pro zařízení registrovaná AAD a také pomáhá vaší aplikaci dodržovat zásady podmíněného přístupu.
 
-Následující postup slouží k povolení jednotného přihlašování pomocí zprostředkovatele ověřování pro vaši aplikaci:
+Následující kroky jsou, jak povolíte přisyťující služby Přistaň pomocí zprostředkovatele ověřování pro vaši aplikaci:
 
-1. Zaregistrujte formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem pro aplikaci v souboru info. plist vaší aplikace. Formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem je `msauth.<app.bundle.id>://auth`. Nahraďte ' < App. sada. ID > ' ' s ID sady prostředků vaší aplikace. Příklad:
+1. Zaregistrujte formát IDENTIFIKÁTOR URI kompatibilní s brokerem pro aplikaci v seznamu Info.plist vaší aplikace. Formát identifikátoru URI kompatibilní `msauth.<app.bundle.id>://auth`s zprostředkovatelem je . Nahraďte<app.bundle.id>'' id sady. Například:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -158,7 +158,7 @@ Následující postup slouží k povolení jednotného přihlašování pomocí 
     </array>
     ```
 
-1. Do souboru info. plist vaší aplikace přidejte následující schémata `LSApplicationQueriesSchemes`:
+1. Přidejte do aplikace Info.plist následující `LSApplicationQueriesSchemes`schémata pod :
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -168,7 +168,7 @@ Následující postup slouží k povolení jednotného přihlašování pomocí 
     </array>
     ```
 
-1. Přidejte následující do souboru `AppDelegate.m` pro zpracování zpětných volání:
+1. Přidejte do `AppDelegate.m` souboru následující příkazy pro zpracování zpětná volání:
 
     Cíl-C:
     
@@ -187,8 +187,8 @@ Následující postup slouží k povolení jednotného přihlašování pomocí 
     }
     ```
     
-**Pokud používáte Xcode 11**, měli byste místo toho umístit MSAL zpět do souboru `SceneDelegate`.
-Pokud podporujete UISceneDelegate i UIApplicationDelegate pro zajištění kompatibility se staršími systémy iOS, je nutné MSAL zpětné volání umístit do obou souborů.
+**Pokud používáte Xcode 11**, měli byste místo `SceneDelegate` toho umístit zpětné volání MSAL do souboru.
+Pokud podporujete uISceneDelegate a UIApplicationDelegate pro kompatibilitu se starším iOS, bude nutné umístit zpětné volání MSAL do obou souborů.
 
 Cíl-C:
 

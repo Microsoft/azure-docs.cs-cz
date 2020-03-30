@@ -1,19 +1,18 @@
 ---
 title: Načíst stav nabídky | Azure Marketplace
-description: Rozhraní API načte aktuální stav nabídky.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+description: ROZHRANÍ API načte aktuální stav nabídky.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 5ce546d79497f462f6c262de738036d7e3a30226
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280503"
 ---
 <a name="retrieve-offer-status"></a>Načtení stavu nabídky 
 =====================
@@ -27,9 +26,9 @@ Načte aktuální stav nabídky.
 
 |  **Název**       |   **Popis**                            |  **Datový typ** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | Identifikátor vydavatele, například `Contoso`  |     Řetězec     |
-|  Hodnotami OfferId        | Identifikátor GUID, který jedinečně identifikuje nabídku      |     Řetězec     |
-|  verze API-Version    | Nejnovější verze rozhraní API                        |     Datum       |
+|  id vydavatele    | Identifikátor vydavatele, například`Contoso`  |     Řetězec     |
+|  offerId        | IDENTIFIKÁTOR GUID, který jednoznačně identifikuje nabídku      |     Řetězec     |
+|  verze-api    | Nejnovější verze rozhraní API                        |     Datum       |
 |  |  |
 
 
@@ -43,7 +42,7 @@ Načte aktuální stav nabídky.
 |  |  |
 
 
-<a name="body-example"></a>Příklad textu
+<a name="body-example"></a>Příklad těla
 ------------
 
 ### <a name="response"></a>Odpověď
@@ -121,33 +120,33 @@ Načte aktuální stav nabídky.
 ```
 
 
-### <a name="response-body-properties"></a>Vlastnosti textu odpovědi
+### <a name="response-body-properties"></a>Vlastnosti těla odezvy
 
 |  **Název**             |    **Popis**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
-|  status               | Stav nabídky Seznam možných hodnot najdete v tématu o [stavu nabídky](#offer-status) níže. |
-|  cloud-zařízení             | Pole zpráv přidružených k této nabídce                                                    |
-|  kroky                | Pole kroků, pomocí kterých tato nabídka projde během publikování nabídky                      |
-|  estimatedTimeFrame   | Odhad doby provedení tohoto kroku v popisném formátu                       |
+|  status               | Stav nabídky. Seznam možných hodnot naleznete níže v [tématu Stav nabídky.](#offer-status) |
+|  cloud-zařízení             | Pole zpráv přidružených k nabídce                                                    |
+|  kroky                | Pole kroků, které nabídka prochází během publikování nabídky                      |
+|  odhadTimeFrame   | Odhad času, který by trvalo dokončení tohoto kroku, v přátelském formátu                       |
 |  id                   | Identifikátor kroku                                                                         |
-|  Step             | Název kroku                                                                               |
+|  název kroku             | Název kroku                                                                               |
 |  description          | Popis kroku                                                                        |
-|  status               | Stav kroku. Seznam možných hodnot najdete v tématu [stav kroku](#step-status) níže.    |
+|  status               | Stav kroku. Seznam možných hodnot naleznete níže v [tématu Stav kroku.](#step-status)    |
 |  cloud-zařízení             | Pole zpráv souvisejících s krokem                                                          |
-|  processPercentage    | Procentuální podíl dokončení kroku                                                              |
-|  previewLinks         | *Není aktuálně implementováno*                                                                    |
-|  liveLinks            | *Není aktuálně implementováno*                                                                    |
-|  notificationEmails   | Čárkami oddělený seznam e-mailových adres, které se mají upozornit na průběh operace        |
+|  processProcento    | Procentuální dokončení kroku                                                              |
+|  náhledOdkazy         | *Není aktuálně implementováno*                                                                    |
+|  liveOdkazy            | *Není aktuálně implementováno*                                                                    |
+|  oznámeníEee   | Seznam e-mailových adres oddělených čárkami, které mají být oznámeny průběhu operace        |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Stavové kódy odpovědí
+### <a name="response-status-codes"></a>Stavové kódy odpovědi
 
-| **Znakovou** |   **Popis**                                                                                 |
+| **kód** |   **Popis**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
-|  200     |  `OK` – požadavek byl úspěšně zpracován a byl vrácen aktuální stav nabídky. |
-|  400     | `Bad/Malformed request` – tělo chybové odpovědi může obsahovat další informace.                 |
-|  404     | `Not found` – zadaná entita neexistuje.                                                |
+|  200     |  `OK`- Požadavek byl úspěšně zpracován a aktuální stav nabídky byl vrácen. |
+|  400     | `Bad/Malformed request`- Tělo odpovědi na chybu může obsahovat více informací.                 |
+|  404     | `Not found`- Zadaná entita neexistuje.                                                |
 |  |  |
 
 
@@ -155,13 +154,13 @@ Načte aktuální stav nabídky.
 
 |  **Název**                    |    **Popis**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
-|  NeverPublished              | Nabídka nebyla nikdy publikována.                          |
-|  NotStarted                  | Nabídka je nová a není spuštěná.                            |
+|  Nikdy publikováno              | Nabídka nebyla nikdy zveřejněna.                          |
+|  Notstarted                  | Nabídka je nová a není zahájena.                            |
 |  WaitingForPublisherReview   | Nabídka čeká na schválení vydavatele.                 |
-|  Spuštěno                     | Zpracovává se odeslání nabídky.                     |
-|  Úspěch                   | Bylo dokončeno zpracování příspěvku nabídky.               |
-|  Zrušeno                    | Odeslání nabídky se zrušilo.                           |
-|  Selhalo                      | Odeslání nabídky se nezdařilo.                                 |
+|  Spuštěno                     | Probíhá zpracování odesílání nabídky.                     |
+|  Úspěch                   | Odeslání nabídky bylo dokončeno zpracování.               |
+|  Zrušeno                    | Odeslání nabídky bylo zrušeno.                           |
+|  Failed                      | Odeslání nabídky se nezdařilo.                                 |
 |  |  |
 
 
@@ -169,12 +168,12 @@ Načte aktuální stav nabídky.
 
 |  **Název**                    |    **Popis**                           |
 |  -------------------------   |  ------------------------------------------  |
-|  NotStarted                  | Krok nebyl spuštěn.                        |
-|  InProgress                  | Krok je spuštěn.                             |
+|  Notstarted                  | Krok nebyl spuštěn.                        |
+|  Probíhá                  | Krok běží.                             |
 |  WaitingForPublisherReview   | Krok čeká na schválení vydavatele.      |
-|  WaitingForApproval          | Krok čeká na schválení procesu.        |
+|  Čekánína schválení          | Krok čeká na schválení procesu.        |
 |  Blokované                     | Krok je blokován.                             |
-|  Odmítnutí                    | Krok je odmítnutý.                            |
-|  Dokončit                    | Krok je dokončený.                            |
+|  Rejected                    | Krok je odmítnut.                            |
+|  Dokončit                    | Krok je dokončen.                            |
 |  Zrušeno                    | Krok byl zrušen.                           |
 |  |  |
