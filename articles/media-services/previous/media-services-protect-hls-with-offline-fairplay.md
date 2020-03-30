@@ -1,8 +1,8 @@
 ---
-title: Ochrana obsahu HLS pomocí offline Apple FairPlay – Azure | Microsoft Docs
-description: Toto téma poskytuje přehled a ukazuje, jak použít Azure Media Services k dynamickému šifrování obsahu HTTP Live Streaming (HLS) pomocí nástroje Apple FairPlay v režimu offline.
+title: Ochrana obsahu HLS pomocí offline Apple FairPlay – Azure | Dokumenty společnosti Microsoft
+description: Toto téma poskytuje přehled a ukazuje, jak pomocí Mediálních služeb Azure dynamicky šifrovat obsah http živého streamování (HLS) pomocí Apple FairPlay v offline režimu.
 services: media-services
-keywords: HLS, DRM, FairPlay streaming (FPS), offline, iOS 10
+keywords: HLS, DRM, FairPlay Streaming (FPS), Offline, iOS 10
 documentationcenter: ''
 author: willzhan
 manager: steveng
@@ -16,58 +16,58 @@ ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 1644c00aea8eefa78550c8d0238dbedab0378492
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74968693"
 ---
-# <a name="offline-fairplay-streaming-for-ios"></a>Online streamování FairPlay pro iOS 
+# <a name="offline-fairplay-streaming-for-ios"></a>Streamování FairPlay pro iOS v offline režimu 
 
-> [!div class="op_single_selector" title1="Vyberte verzi Media Services, kterou používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Media Services, kterou používáte:"]
 > * [Verze 3](../latest/offline-fairplay-for-ios.md)
 > * [Verze 2](media-services-protect-hls-with-offline-fairplay.md)
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
-Azure Media Services poskytuje sadu dobře navrhovaných [služeb ochrany obsahu](https://azure.microsoft.com/services/media-services/content-protection/) , které zahrnují:
+Azure Media Services poskytuje sadu dobře navržených [služeb ochrany obsahu,](https://azure.microsoft.com/services/media-services/content-protection/) které pokrývají:
 
 - Microsoft PlayReady
 - Google Widevine
 - Apple FairPlay
 - Šifrování AES-128
 
-Správa digitálních práv (DRM) šifrování obsahu (DRM)/Advanced Encryption Standard (DRM) se provádí dynamicky na vyžádání různých protokolů streamování. K dispozici jsou také služby doručování licencí DRM/dešifrovacího klíče AES Media Services.
+Šifrování obsahu pro správu digitálních práv (DRM) /Advanced Encryption Standard (AES) se provádí dynamicky na vyžádání pro různé protokoly streamování. Služby pro dešifrování klíčů DRM/AES jsou také poskytovány službou Media Services.
 
-Kromě ochrany obsahu pro online streamování v různých protokolech streamování je také často vyžádaná funkce offline režim pro chráněný obsah. Podpora offline režimu je nutná pro následující scénáře:
+Kromě ochrany obsahu pro online streamování přes různé streamovací protokoly je často žádanou funkcí také režim offline pro chráněný obsah. Podpora offline režimu je potřebná pro následující scénáře:
 
-* Přehrávání, pokud není k dispozici připojení k Internetu, například během cestování.
-* Někteří poskytovatelé obsahu můžou zakázat doručování licencí DRM za hranice země nebo oblasti. Pokud uživatelé chtějí sledovat obsah během cestování mimo zemi nebo oblast, je stažení offline potřeba.
-* V některých zemích a oblastech je dostupnost Internetu a/nebo šířka pásma stále omezená. Uživatelé si můžou chtít nejdřív stáhnout, aby mohli sledovat obsah v rámci řešení, které je dostatečně vysoké, aby se mohlo zobrazit uspokojivý zážitek. V takovém případě problém obvykle není dostupnost sítě, ale omezená šířka pásma sítě. Poskytovatelé OTT (OVP) s podporou převzetí služeb při prvním přístupu () s žádostí o podporu offline režimu.
+* Přehrávání, pokud není k dispozici připojení k internetu, například během cesty.
+* Někteří poskytovatelé obsahu mohou zakázat doručování licencí DRM za hranicemi země nebo oblasti. Pokud uživatelé chtějí sledovat obsah při cestování mimo zemi nebo oblast, je potřeba stáhnout offline.
+* V některých zemích nebo oblastech je dostupnost internetu a/nebo šířka pásma stále omezená. Uživatelé se mohou nejprve stáhnout, aby mohli sledovat obsah v rozlišení, které je dostatečně vysoké pro uspokojivý zážitek ze sledování. V tomto případě problém obvykle není dostupnost sítě, ale omezená šířka pásma sítě. Poskytovatelé over-the-top (OTT)/online video platformy (OVP) požadují podporu offline režimu.
 
-Tento článek popisuje podporu FairPlay streamování (FPS) v režimu offline, která cílí na zařízení se systémem iOS 10 nebo novějším. Tato funkce není podporovaná pro jiné platformy Apple, jako je watchOS, tvOS nebo Safari v macOS.
+Tento článek popisuje podporu offline režimu FairPlay Streaming (FPS), která se zaměřuje na zařízení se systémem iOS 10 nebo novějším. Tato funkce není podporována pro jiné platformy Apple, jako jsou watchOS, tvOS nebo Safari v macOS.
 
 ## <a name="preliminary-steps"></a>Předběžné kroky
-Před implementací offline DRM pro FairPlay na zařízení s iOS 10 +:
+Před implementací offline DRM pro FairPlay na zařízení se systémem iOS 10+:
 
-* Seznámení s online ochranou obsahu pro FairPlay Další informace najdete v následujících článcích a ukázkách:
+* Seznamte se s ochranou online obsahu hry FairPlay. Další informace naleznete v následujících článcích a ukázkách:
 
-    - [FairPlay streaming pro Azure Media Services je všeobecně k dispozici](https://azure.microsoft.com/blog/apple-FairPlay-streaming-for-azure-media-services-generally-available/)
-    - [Chraňte svůj HLS obsah pomocí Apple FairPlay nebo Microsoft PlayReady](https://docs.microsoft.com/azure/media-services/media-services-protect-hls-with-FairPlay)
-    - [Ukázka pro streamování online snímků](https://azure.microsoft.com/resources/samples/media-services-dotnet-dynamic-encryption-with-FairPlay/)
+    - [Streamování Apple FairPlay pro mediální služby Azure je obecně dostupné](https://azure.microsoft.com/blog/apple-FairPlay-streaming-for-azure-media-services-generally-available/)
+    - [Chraňte svůj obsah HLS pomocí Apple FairPlay nebo Microsoft PlayReady](https://docs.microsoft.com/azure/media-services/media-services-protect-hls-with-FairPlay)
+    - [Ukázka online streamování FPS](https://azure.microsoft.com/resources/samples/media-services-dotnet-dynamic-encryption-with-FairPlay/)
 
-* Získejte sadu FPS SDK ze sítě Apple Developer. Sada FPS SDK obsahuje dvě komponenty:
+* Získejte sadu FPS SDK ze sítě Apple Developer Network. Sada FPS SDK obsahuje dvě složky:
 
-    - Sada SDK serveru pro FPS, která obsahuje modul zabezpečení klíčů (KSM), ukázky klienta, specifikace a sadu testovacích vektorů.
-    - Balíček nasazení FPS, který obsahuje specifikaci funkce D, spolu s pokyny, jak vygenerovat certifikát snímků pro sbalení, soukromý klíč specifický pro zákazníka a tajný klíč aplikace. Apple vydá balíček nasazení FPS jenom pro licencované poskytovatele obsahu.
+    - Sada SDK serveru FPS, která obsahuje modul Zabezpečení klíčů (KSM), ukázky klientů, specifikaci a sadu testovacích vektorů.
+    - Sada pro nasazení FPS, která obsahuje specifikaci funkce D, spolu s pokyny, jak generovat certifikát FPS, soukromý klíč specifický pro zákazníka a tajný klíč aplikace. Společnost Apple vydává balíček pro nasazení FPS pouze poskytovatelům licencovaného obsahu.
 
-## <a name="configuration-in-media-services"></a>Konfigurace v Media Services
-Pro offline konfiguraci režimu FPS prostřednictvím [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices)použijte sadu Media Services .NET SDK 4.0.0.4 nebo novější, která poskytuje potřebné rozhraní API pro konfiguraci offline režimu FPS.
-Pracovní kód budete také potřebovat ke konfiguraci ochrany obsahu v režimu online FPS. Po získání kódu pro konfiguraci ochrany obsahu v režimu online pro FPS budete potřebovat jenom tyto dvě změny.
+## <a name="configuration-in-media-services"></a>Konfigurace v mediálních službách
+Pro konfiguraci offline režimu fps prostřednictvím sady [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices)použijte sadu Media Services .NET SDK verze 4.0.0.4 nebo novější, která poskytuje potřebné rozhraní API pro konfiguraci offline režimu FPS.
+Ke konfiguraci ochrany obsahu FPS v režimu online potřebujete také pracovní kód. Po získání kódu pro konfiguraci ochrany obsahu online režimu pro FPS, budete potřebovat pouze následující dvě změny.
 
 ## <a name="code-change-in-the-fairplay-configuration"></a>Změna kódu v konfiguraci FairPlay
-První změnou je určení logické hodnoty "Povolit offline režim", která se označuje jako objDRMSettings. EnableOfflineMode, která je pravdivá, když povolí scénář offline DRM. V závislosti na tomto indikátoru proveďte následující změnu konfigurace FairPlay:
+První změnou je definovat booleovské "povolit režim offline", který se nazývá objDRMSettings.EnableOfflineMode, to platí, když povolí offline scénář DRM. V závislosti na tomto indikátoru proveďte následující změnu konfigurace FairPlay:
 
 ```csharp
 if (objDRMSettings.EnableOfflineMode)
@@ -92,9 +92,9 @@ if (objDRMSettings.EnableOfflineMode)
     }
 ```
 
-## <a name="code-change-in-the-asset-delivery-policy-configuration"></a>Změna kódu v konfiguraci zásad doručení assetů
-Druhým změnou je přidání třetího klíče do slovníku < AssetDeliveryPolicyConfigurationKey, > řetězců.
-Přidejte AssetDeliveryPolicyConfigurationKey, jak je znázorněno zde:
+## <a name="code-change-in-the-asset-delivery-policy-configuration"></a>Změna kódu v konfiguraci zásad doručování majetku
+Druhou změnou je přidání třetího klíče do slovníku<AssetDeliveryPolicyConfigurationKey,> řetězce.
+Přidejte assetdeliverypolicyconfigurationkey, jak je znázorněno zde:
  
 ```csharp
 // FPS offline mode
@@ -112,29 +112,29 @@ Přidejte AssetDeliveryPolicyConfigurationKey, jak je znázorněno zde:
             objDictionary_AssetDeliveryPolicyConfigurationKey);
 ```
 
-Po provedení tohoto kroku budou v zásadách doručování prostředků FPS < Dictionary_AssetDeliveryPolicyConfigurationKey > řetězec, který obsahuje následující tři položky:
+Po tomto kroku obsahuje <Dictionary_AssetDeliveryPolicyConfigurationKey> řetězec v zásadách doručování majetku FPS následující tři položky:
 
-* AssetDeliveryPolicyConfigurationKey. FairPlayBaseLicenseAcquisitionUrl nebo AssetDeliveryPolicyConfigurationKey. FairPlayLicenseAcquisitionUrl, v závislosti na faktorech, jako je například použití sady FPS KSM/Key Server a zda znovu použijete stejné zásady doručování prostředků napříč několika prostředky.
+* AssetDeliveryPolicyConfigurationKey.FairPlayBaseLicenseAcquisitionUrl nebo AssetDeliveryPolicyConfigurationKey.FairPlayLicenseAcquisitionUrl, v závislosti na faktorech, jako je použitý server FPS KSM/key a zda znovu použijete stejné zásady doručování datových zdrojů ve více aktivech
 * AssetDeliveryPolicyConfigurationKey.CommonEncryptionIVForCbcs
 * AssetDeliveryPolicyConfigurationKey.AllowPersistentLicense
 
-Teď je váš účet Media Services nakonfigurovaný tak, aby poskytoval offline licence FairPlay.
+Nyní je váš účet Media Services nakonfigurován tak, aby doručoval offline licence FairPlay.
 
-## <a name="sample-ios-player"></a>Ukázkový přehrávač pro iOS
-Podpora režimu FPS v režimu offline je k dispozici pouze v iOS 10 a novějších. Sada SDK serveru FPS (verze 3,0 nebo novější) obsahuje dokument a ukázku pro offline režim FPS. Konkrétně sada SDK serveru FPS (verze 3,0 nebo novější) obsahuje následující dvě položky týkající se offline režimu:
+## <a name="sample-ios-player"></a>Ukázka přehrávače iOS
+Podpora offline režimu FPS je k dispozici pouze v systému iOS 10 a novějším. Sada SDK serveru FPS (verze 3.0 nebo novější) obsahuje dokument a ukázku pro offline režim FPS. Konkrétně sada FPS Server SDK (verze 3.0 nebo novější) obsahuje následující dvě položky související s režimem offline:
 
-* Dokument: "přehrávání offline pomocí FairPlay streaming a HTTP Live Streaming." Apple, 14. září 2016. V sadě FPS Server SDK verze 4,0 je tento dokument sloučen do hlavního dokumentu FPS.
-* Vzorový kód: Ukázka HLSCatalog pro offline režim přechodu v sadě SDK serveru \FairPlay streaming verze 3.1 \ Development\Client\ HLSCatalog_With_FPS \HLSCatalog\. V ukázkové aplikaci HLSCatalog se pro implementaci funkcí v režimu offline používá následující soubory kódu:
+* Dokument: "Přehrávání offline s FairPlay Streaming a HTTP Live Streaming." Apple, září 14, 2016. V sada 20.0 je sada SDK serveru SDK verze 4.0 sloučena do hlavního dokumentu FPS.
+* Ukázkový kód: Ukázka HLSCatalog pro offline režim FPS v souboru \FairPlay Streaming Server SDK verze 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\. V ukázkové aplikaci HLSCatalog se k implementaci funkcí offline režimu používají následující soubory kódu:
 
-    - Soubor kódu AssetPersistenceManager. SWIFT: AssetPersistenceManager je hlavní třídou v této ukázce, která ukazuje, jak:
+    - AssetPersistenceManager.swift soubor kódu: AssetPersistenceManager je hlavní třída v této ukázce, která ukazuje, jak:
 
-        - Spravujte stahování HLS datových proudů, jako jsou rozhraní API používaná ke spuštění a zrušení souborů ke stažení a odstranění existujících prostředků mimo zařízení.
+        - Spravujte stahování datových proudů HLS, jako jsou rozhraní API používaná ke spuštění a zrušení stahování a odstranění existujících datových zdrojů mimo zařízení.
         - Sledujte průběh stahování.
-    - Soubory kódu AssetListTableViewController. SWIFT a AssetListTableViewCell. SWIFT: AssetListTableViewController je hlavní rozhraní této ukázky. Poskytuje seznam assetů, které může ukázka použít k přehrání, stažení, odstranění nebo zrušení stahování. 
+    - AssetListTableViewController.swift a AssetListTableViewCell.swift kód soubory: AssetListTableViewController je hlavní rozhraní této ukázky. Obsahuje seznam datových zdrojů, které ukázka může použít k přehrání, stahování, odstraňování nebo rušení stahování. 
 
-Tyto kroky ukazují, jak nastavit běžící přehrávač pro iOS. Za předpokladu, že začínáte s HLSCatalog ukázkou v sadě FPS Server SDK verze 4.0.1, proveďte následující změny kódu:
+Tyto kroky ukazují, jak nastavit spuštěný přehrávač iOS. Za předpokladu, že začnete z ukázky HLSCatalog v sada CHOd 4.0.1 sady FPS Server SDK verze 4.0.1, proveďte následující změny kódu:
 
-V HLSCatalog\Shared\Managers\ContentKeyDelegate.swift Implementujte metodu `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` pomocí následujícího kódu. Nechejte "drmUr" proměnnou přiřazenou k adrese URL HLS.
+V souboru HLSCatalog\Shared\Managers\ContentKeyDelegate.swift `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` implementujte metodu pomocí následujícího kódu. Nechť "drmUr" je proměnná přiřazená k adrese URL HLS.
 
 ```swift
     var ckcData: Data? = nil
@@ -167,7 +167,7 @@ V HLSCatalog\Shared\Managers\ContentKeyDelegate.swift Implementujte metodu `requ
     return ckcData
 ```
 
-V HLSCatalog\Shared\Managers\ContentKeyDelegate.swift Implementujte metodu `requestApplicationCertificate()`. Tato implementace závisí na tom, jestli jste do zařízení vložili certifikát (jenom veřejný klíč), nebo hostovat certifikát na webu. Následující implementace používá certifikát hostované aplikace, který je použit v ukázkách testu. Nechte "certUrl" proměnnou, která obsahuje adresu URL certifikátu aplikace.
+V souboru HLSCatalog\Shared\Managers\ContentKeyDelegate.swift `requestApplicationCertificate()`implementujte metodu . Tato implementace závisí na tom, zda vložíte certifikát (pouze veřejný klíč) se zařízením nebo hostujete certifikát na webu. Následující implementace používá certifikát hostované aplikace použitý v testovacích vzorcích. Nechť "certUrl" je proměnná, která obsahuje adresu URL certifikátu aplikace.
 
 ```swift
 func requestApplicationCertificate() throws -> Data {
@@ -183,40 +183,40 @@ func requestApplicationCertificate() throws -> Data {
     }
 ```
 
-Pro finální integrovaný test je k dispozici adresa URL videa i adresa URL certifikátu aplikace v oddílu "Integrovaný test".
+Pro konečný integrovaný test jsou adresa URL videa i adresa URL certifikátu aplikace uvedena v části "Integrovaný test".
 
-Do HLSCatalog\Shared\Resources\Streams.plist přidejte adresu URL testovacího videa. Pro ID klíče obsahu použijte adresu URL pro získání licence FairPlay s protokolem SKD jako jedinečnou hodnotu.
+V seznamu HLSCatalog\Shared\Resources\Streams.plist přidejte adresu URL testovacího videa. Pro ID klíče obsahu použijte adresu URL pro získání licence FairPlay s protokolem skd jako jedinečnou hodnotou.
 
-![Datové proudy aplikace pro iOS v FairPlay](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-ios-app-streams.png)
+![Offline streamy aplikací FairPlay pro iOS](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-ios-app-streams.png)
 
-Použijte vlastní adresu URL testovacího videa, adresu URL pro získání licence FairPlay a adresu URL certifikátu aplikace, pokud je máte nastavené. Nebo můžete pokračovat k další části, která obsahuje ukázky testů.
+Použijte vlastní adresu URL testovacího videa, adresu URL pro získání licence FairPlay a adresu URL certifikátu aplikace, pokud je máte nastavené. Nebo můžete pokračovat do další části, která obsahuje testovací vzorky.
 
 ## <a name="integrated-test"></a>Integrovaný test
-Tři ukázkové testy v Media Services pokrývají následující tři scénáře:
+Tři testovací ukázky ve službě Media Services pokrývají následující tři scénáře:
 
-* Chráněná přes FPS s videem, zvukem a alternativním zvukovou stopou
-* Chráněná za sekundu, s videem a zvukem, ale bez alternativní zvukové stopy
-* Chráněná přes FPS jenom s videem a bez zvuku
+* Chráněno fps, s video, zvukem a alternativní zvukovou stopou
+* Fps chráněn, s videem a zvukem, ale bez alternativní zvukové stopy
+* FPS chráněno, pouze s videem a bez zvuku
 
 Tyto ukázky najdete na [tomto ukázkovém webu](https://aka.ms/poc#22)s odpovídajícím certifikátem aplikace hostovaným ve webové aplikaci Azure.
-V případě ukázky verze 3 nebo 4 sady SDK serveru FPS je v případě, že hlavní seznam testů obsahuje alternativní zvuk, v režimu offline, který přehrává jenom zvuk. Proto je potřeba obložení alternativního zvuku. Jinými slovy, druhý a třetí vzorek uvedený dříve pracuje v režimu online a offline. Ukázka uvedená jako první hraje zvuk pouze v režimu offline, zatímco online streamování funguje správně.
+S ukázkou sady FPS Server SDK verze 3 nebo verze 4, pokud hlavní seznam stop obsahuje alternativní zvuk, v režimu offline přehrává pouze zvuk. Proto je třeba odstranit alternativní zvuk. Jinými slovy, druhý a třetí ukázky uvedené dříve pracovat v režimu online a offline. Uvedená ukázka nejprve přehrává zvuk pouze v režimu offline, zatímco online streamování funguje správně.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 Následující nejčastější dotazy poskytují pomoc při řešení potíží:
 
-- **Proč se v režimu offline jenom zvuk hraje, ale ne video?** Zdá se, že se jedná o návrh ukázkové aplikace. Když je v režimu offline k dispozici alternativní zvuková stopa (což je případ pro HLS), v režimu offline se jako výchozí použije alternativní zvuková stopa v systému iOS 10 i iOS 11. Pokud chcete toto chování pro offline režim přechodu na více snímků, odeberte alternativní zvukovou stopu z datového proudu. Chcete-li to provést na Media Services, přidejte dynamický filtr manifestu "pouze" audio = false. " Jinými slovy, HLS adresa URL končí řetězcem. ISM/manifest (Format = M3U8-AAPL, audio-Only = false). 
-- **Proč I po přidání zvuku = false zůstane zvuk pouze bez videa v režimu offline?** V závislosti na návrhu klíče mezipaměti Content Delivery Network (CDN) může být obsah uložen do mezipaměti. Vyprázdnit mezipaměť.
-- **Podporuje se kromě iOS 10 offline režim FPS i v iOS 11?** Ano. Režim offline režimu FPS je podporován pro iOS 10 a iOS 11.
-- **Proč v sadě SDK serveru pro FPS nejde najít dokument "offline přehrávání pomocí FairPlay streaming a HTTP Live Streaming"?** Vzhledem k tomu, že sada FPS Server SDK verze 4, tento dokument se sloučil do Průvodce programováním pro FairPlay streaming.
-- K **čemu poslední parametr v následujícím rozhraní API pro offline režim přechodu?** 
+- **Proč se v režimu offline přehrává pouze zvuk, ale ne video?** Toto chování se zdá být záměrné ukázkové aplikace. Pokud je v režimu offline k dispozici alternativní zvuková stopa (což je případ HLS), iOS 10 i iOS 11 jsou ve výchozím nastavení na alternativní zvukovou stopu. Chcete-li kompenzovat toto chování pro režim offline FPS, odeberte alternativní zvukovou stopu z datového proudu. Chcete-li to provést ve službě Media Services, přidejte filtr dynamického manifestu "audio-only=false". Jinými slovy, adresa URL HLS končí .ism/manifest(format=m3u8-aapl,audio-only=false). 
+- **Proč se po přidání zvuku=false stále přehrává zvuk pouze bez videa v režimu offline?** V závislosti na návrhu klíče mezipaměti sítě pro doručování obsahu (CDN) může být obsah uložen do mezipaměti. Vyčistěte mezipaměť.
+- **Je režim offline FPS podporován také v systému iOS 11 kromě iOS 10?** Ano. Režim offline FPS je podporován pro iOS 10 a iOS 11.
+- **Proč nemohu najít dokument "Offline přehrávání s FairPlay Streaming a HTTP Live Streaming" v FPS Server SDK?** Od doby, kdy byla sada FPS Server SDK verze 4, byl tento dokument sloučen do průvodce programováním streamování hry FairPlay.
+- **Co znamená poslední parametr v následujícím rozhraní API pro offline režim FPS?**
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-    Dokumentaci k tomuto rozhraní API najdete v tématu [Metoda FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). Parametr představuje dobu trvání pronájmu v režimu offline, přičemž hodina jako jednotka.
-- **Jaká je struktura souborů ke stažení/offline na zařízeních s iOS?** Stažená struktura souborů na zařízení se systémem iOS vypadá jako na následujícím snímku obrazovky. Složka `_keys` ukládá stažené licence FPS s jedním souborem úložiště pro každého hostitele licenční služby. Složka `.movpkg` ukládá zvukový a video obsah. První složka s názvem, který končí spojovníkem následovaným číslem, obsahuje obsah videa. Číselná hodnota je PeakBandwidth verze videa. Druhá složka s názvem, který končí čárkou následovanou 0, obsahuje zvukový obsah. Třetí složka s názvem "data" obsahuje hlavní seznam skladeb obsahu FPS. Nakonec soubor Boot. XML poskytuje úplný popis obsahu složky `.movpkg`. 
+    Dokumentace k tomuto rozhraní API naleznete v [tématu FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration Method](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). Parametr představuje dobu trvání offline pronájmu, přičemž hodina je jednotkou.
+- **Co je stahovaná/offline struktura souborů na zařízeních se systémem iOS?** Struktura stažených souborů na iOS zařízení vypadá jako na následujícím snímku obrazovky. Složka `_keys` ukládá stažené licence FPS s jedním souborem úložiště pro každého hostitele licenční služby. Složka `.movpkg` ukládá zvukový obsah a videoobsah. První složka s názvem, který končí pomlčkou následovanou číselnou, obsahuje video obsah. Číselná hodnota je PeakBandwidth interpretací videa. Druhá složka s názvem, který končí pomlčkou následovanou 0, obsahuje zvukový obsah. Třetí složka s názvem "Data" obsahuje hlavní seznam skladeb obsahu FPS. Nakonec soubor boot.xml poskytuje úplný `.movpkg` popis obsahu složky. 
 
-![Struktura souborů ukázkové aplikace v režimu offline FairPlay iOS](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
+![Offline ukázková struktura souborů aplikace FairPlay iOS](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
 
-Vzorový soubor Boot. XML:
+Ukázkový soubor boot.xml:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
@@ -247,15 +247,15 @@ Vzorový soubor Boot. XML:
 
 ## <a name="additional-notes"></a>Další poznámky
 
-* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
+* Widevine je služba poskytovaná společností Google Inc. a podléhá podmínkám služeb a zásadám ochrany osobních údajů společnosti Google, Inc.
 
 ## <a name="summary"></a>Souhrn
-Tento dokument obsahuje následující kroky a informace, které můžete použít k implementaci režimu přechodu do režimu offline:
+Tento dokument obsahuje následující kroky a informace, které můžete použít k implementaci režimu offline systému FPS:
 
-* Media Services konfigurace ochrany obsahu prostřednictvím rozhraní API Media Services .NET nakonfiguruje dynamické šifrování FairPlay a doručování licencí FairPlay v Media Services.
-* Přehrávač iOS v závislosti na ukázce ze sady SDK serveru FPS nastaví přehrávač pro iOS, který může přehrávat obsah FPS buď v režimu online streamování, nebo v režimu offline.
-* Ukázková videa snímků za sekundu se používají k testování offline režimu a online streamování.
-* DOTAZY na dotazy týkající se režimu přechodu na více snímků.
+* Konfigurace ochrany obsahu mediálních služeb prostřednictvím rozhraní Media Services .NET API konfiguruje dynamické šifrování FairPlay a doručování licencí FairPlay v mediálních službách.
+* Přehrávač iOS založený na vzorku ze sady FPS Server SDK nastaví přehrávač iOS, který může přehrávat obsah FPS buď v režimu online streamování, nebo v režimu offline.
+* Ukázková videa FPS se používají k testování offline režimu a online streamování.
+* Nejčastější dotazy odpovídají na otázky týkající se offline režimu FPS.
 
 ## <a name="next-steps"></a>Další kroky
 

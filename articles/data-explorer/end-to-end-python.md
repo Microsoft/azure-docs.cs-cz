@@ -1,6 +1,6 @@
 ---
-title: Komplexní ingestování objektů blob do Azure Průzkumník dat prostřednictvím Pythonu
-description: V tomto článku se dozvíte, jak ingestovat objekty blob do Azure Průzkumník dat s komplexním příkladem, který používá Python.
+title: Komplexní přiřazování objektů blob do Průzkumníka dat Azure prostřednictvím Pythonu
+description: V tomto článku se dozvíte, jak ingestovat objekty BLOB do Průzkumníka dat Azure s příkladem konce, který používá Python.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,22 +8,22 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 61864c51c2ab99e5266e39f2c9a7344aaf7413c1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964292"
 ---
-# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>Komplexní ingestování objektů blob do Azure Průzkumník dat prostřednictvím Pythonu
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>Komplexní přiřazování objektů blob do Průzkumníka dat Azure prostřednictvím Pythonu
 
 > [!div class="op_single_selector"]
-> * [C#](end-to-end-csharp.md)
+> * [C #](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
 >
 
-Azure Průzkumník dat je rychlá a škálovatelná služba pro zkoumání dat pro data protokolů a telemetrie. Tento článek vám poskytne ucelený příklad postupu ingestování dat z úložiště objektů BLOB v Azure do Azure Průzkumník dat. 
+Azure Data Explorer je rychlá a škálovatelná služba pro zkoumání dat pro data protokolu a telemetrie. Tento článek vám poskytuje komplexní příklad, jak ingestovat data z úložiště objektů blob Azure do Průzkumníka dat Azure. 
 
-Naučíte se, jak programově vytvořit skupinu prostředků, účet úložiště a kontejner, centrum událostí a cluster a databázi Azure Průzkumník dat. Naučíte se také, jak programově nakonfigurovat službu Azure Průzkumník dat k ingestování dat z nového účtu úložiště.
+Dozvíte se, jak programově vytvořit skupinu prostředků, účet úložiště a kontejner, centrum událostí a cluster a databázi Azure Data Explorer. Dozvíte se také, jak programově nakonfigurovat Azure Data Explorer na ingestování dat z nového účtu úložiště.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 
 ## <a name="install-the-python-package"></a>Instalace balíčku Pythonu
 
-Pro instalaci balíčku Pythonu pro Azure Průzkumník dat (Kusto) otevřete příkazový řádek, který má v cestě Python. Spusťte tyto příkazy:
+Chcete-li nainstalovat balíček Pythonu pro Průzkumníka dat Azure (Kusto), otevřete příkazový řádek, který má Python v cestě. Spusťte tyto příkazy:
 
 ```
 pip install azure-common
@@ -47,9 +47,9 @@ pip install azure-storage-blob
 
 ## <a name="code-example"></a>Příklad kódu 
 
-Následující příklad kódu poskytuje podrobný proces, který vede k příjmu dat do Azure Průzkumník dat. 
+Následující příklad kódu vám dává podrobný proces, který vede k ingestování dat do Průzkumníka dat Azure. 
 
-Nejprve vytvoříte skupinu prostředků. Také vytvoříte prostředky Azure, jako je účet úložiště a kontejner, centrum událostí a cluster Azure Průzkumník dat a databáze, a přidáte objekty zabezpečení. Pak vytvoříte předplatné Azure Event Grid společně s mapováním tabulek a sloupců v databázi Azure Průzkumník dat. Nakonec vytvoříte datové připojení a nakonfigurujete službu Azure Průzkumník dat k ingestování dat z nového účtu úložiště.
+Nejprve vytvoříte skupinu prostředků. Můžete také vytvořit prostředky Azure, jako je účet úložiště a kontejner, centrum událostí a cluster a databáze Azure Data Explorer a přidat objekty zabezpečení. Potom vytvoříte předplatné Azure Event Grid spolu s mapováním tabulek a sloupců v databázi Průzkumníka dat Azure. Nakonec vytvoříte datové připojení pro konfiguraci Průzkumníka dat Azure tak, aby ingestoval data z nového účtu úložiště.
 
 ```python
 from azure.common.credentials import ServicePrincipalCredentials
@@ -192,12 +192,12 @@ poller.wait()
 ```
 |**Nastavení** | **Popis pole**|
 |---|---|---|
-| tenant_id | Vaše ID tenanta. Označuje se taky jako ID adresáře.|
-| subscription_id | ID předplatného, které používáte pro vytváření prostředků.|
+| tenant_id | Vaše tenantské ID. To je také známé jako ID adresáře.|
+| subscription_id | ID předplatného, které používáte pro vytvoření prostředků.|
 | client_id | ID klienta aplikace, která má přístup k prostředkům ve vašem tenantovi.|
-| client_secret | Tajný klíč klienta aplikace, který má přístup k prostředkům ve vašem tenantovi. |
+| client_secret | Tajný klíč klienta aplikace, která může přistupovat k prostředkům ve vašem tenantovi. |
 
-## <a name="test-the-code-example"></a>Testování příkladu kódu
+## <a name="test-the-code-example"></a>Otestujte příklad kódu
 
 1. Nahrajte soubor do účtu úložiště.
 
@@ -211,9 +211,9 @@ poller.wait()
     ```
     |**Nastavení** | **Popis pole**|
     |---|---|---|
-    | account_key | Přístupový klíč k vytvořenému účtu úložiště prostřednictvím kódu programu|
+    | account_key | Přístupový klíč programově vytvořeného účtu úložiště.|
 
-2. Spusťte testovací dotaz v Azure Průzkumník dat.
+2. Spusťte testovací dotaz v Průzkumníku dat Azure.
 
     ```python
     kusto_uri = "https://{}.{}.kusto.windows.net".format(kusto_cluster_name, location_small_case)
@@ -226,7 +226,7 @@ poller.wait()
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete odstranit skupinu prostředků a vyčistit prostředky, použijte následující příkaz:
+Chcete-li odstranit skupinu prostředků a vyčistit prostředky, použijte následující příkaz:
 
 ```python
 #Returns an instance of LROPoller; see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
@@ -236,7 +236,7 @@ poller.wait()
 
 ## <a name="next-steps"></a>Další kroky
 
-*  Další informace o dalších způsobech vytvoření clusteru a databáze najdete v tématu [Vytvoření clusteru a databáze Azure Průzkumník dat](create-cluster-database-python.md).
-* Další informace o metodách přijímání najdete v tématu ingestování [dat v Azure Průzkumník dat](ingest-data-overview.md).
-* Další informace o webové aplikaci najdete v tématu [rychlý Start: dotazování dat ve webovém uživatelském rozhraní služby Azure Průzkumník dat](web-query-data.md).
-* [Zápis dotazů](write-queries.md) pomocí dotazovacího jazyka Kusto
+*  Další informace o dalších způsobech vytvoření clusteru a databáze najdete [v tématu Vytvoření clusteru a databáze Průzkumníka dat Azure](create-cluster-database-python.md).
+* Další informace o metodách ingestování najdete v [tématu Přijím](ingest-data-overview.md)dat v Azure Data Explorer .
+* Další informace o webové aplikaci najdete v [tématu Úvodní příručka: Dotazujte se na data ve webovém uživatelském rozhraní Aplikace Azure Data Explorer](web-query-data.md).
+* [Napište dotazy](write-queries.md) pomocí kusto dotazovacího jazyka.

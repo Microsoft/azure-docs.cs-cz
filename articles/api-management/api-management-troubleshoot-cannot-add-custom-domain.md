@@ -1,7 +1,7 @@
 ---
-title: Nelze přidat vlastní doménu pomocí Key Vaultho certifikátu.
+title: Vlastní doménu nelze přidat pomocí certifikátu Trezoru klíčů.
 titleSuffix: Azure API Management
-description: Naučte se řešit potíže, při kterých nemůžete do Azure API Management přidat vlastní doménu pomocí certifikátu trezoru klíčů.
+description: Zjistěte, jak vyřešit problém, ve kterém nemůžete přidat vlastní doménu ve správě rozhraní Azure API pomocí certifikátu trezoru klíčů.
 services: api-management
 documentationcenter: ''
 author: genlin
@@ -14,51 +14,51 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
 ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430574"
 ---
-# <a name="failed-to-update-api-management-service-hostnames"></a>Nepovedlo se aktualizovat názvy hostitelů služby API Management.
+# <a name="failed-to-update-api-management-service-hostnames"></a>Aktualizace názvů hostitelů služby Správa rozhraní API se nezdařila.
 
-Tento článek popisuje chybu "nepovedlo se aktualizovat názvy hostitelů služby API Management), se kterými se můžete setkat při přidávání vlastní domény pro službu Azure API Management. Tento článek popisuje kroky pro řešení potíží, které vám pomůžou tento problém vyřešit.
+Tento článek popisuje chybu "Nepodařilo se aktualizovat názvy hostitelů služby API Management", ke které může dojít při přidání vlastní domény pro službu Azure API Management. Tento článek obsahuje postup řešení potíží, který vám pomůže problém vyřešit.
 
 ## <a name="symptoms"></a>Příznaky
 
-Při pokusu o přidání vlastní domény pro službu API Management pomocí certifikátu z Azure Key Vault se zobrazí následující chybová zpráva:
+Při pokusu o přidání vlastní domény pro službu api management pomocí certifikátu z trezoru klíčů Azure se zobrazí následující chybová zpráva:
 
-- Nepovedlo se aktualizovat názvy hostitelů služby API Management. Požadavek na prostředek https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0 se nezdařil s příznakem StatusCode: zakázáno pro RequestId:. Zpráva o výjimce: operace vrátila neplatný stavový kód zakázáno.
+- Aktualizace názvů hostitelů služby Správa rozhraní API se nezdařila. Požadavek nahttps://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0prostředek ' ' se nezdařil o statuscode: Zakázáno pro RequestId: . Zpráva o výjimce: Operace vrátila neplatný stavový kód Zakázáno.
 
 ## <a name="cause"></a>Příčina
 
-Služba API Management nemá oprávnění pro přístup k trezoru klíčů, který se pokoušíte použít pro vlastní doménu.
+Služba API Management nemá oprávnění k přístupu k trezoru klíčů, který se pokoušíte použít pro vlastní doménu.
 
 ## <a name="solution"></a>Řešení
 
 Pokud chcete tento problém vyřešit, postupujte následovně:
 
-1. Otevřete [Azure Portal](Https://portal.azure.com), vyberte svou instanci API Management a pak vyberte **spravované identity**. Ujistěte se, že možnost **registrovat s Azure Active Directory** je nastavená na **hodnotu Ano**. 
-    ![registraci ve službě Azure Active Director](./media/api-management-troubleshoot-cannot-add-custom-domain/register-with-aad.png)
-1. V Azure Portal otevřete službu **trezory klíčů** a vyberte Trezor klíčů, který se pokoušíte použít pro vlastní doménu.
-1. Vyberte **zásady přístupu**a ověřte, jestli existuje instanční objekt, který odpovídá názvu instance služby API Management. V takovém případě vyberte instanční objekt a ujistěte se, že má oprávnění **získat** uvedené v části **oprávnění tajného**kódu.  
-    ![přidávání zásad přístupu pro instanční objekt](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png)
-1. Pokud služba API Management není v seznamu, vyberte **Přidat zásadu přístupu**a pak vytvořte následující zásady přístupu:
-    - **Konfigurovat ze šablony**: žádné
-    - **Vyberte objekt zabezpečení**: vyhledejte název služby API Management a vyberte ji ze seznamu.
-    - **Oprávnění klíče**: žádné
-    - **Oprávnění k tajným klíčům**: získat
-    - **Oprávnění certifikátu**: žádné
-1. Vyberte **OK** a vytvořte zásady přístupu.
-1. Vyberte **Uložit** a uložte změny.
+1. Přejděte na [portál Azure](Https://portal.azure.com), vyberte instanci správy rozhraní API a pak vyberte **Spravované identity**. Ujistěte se, že je možnost **Registrovat pomocí služby Azure Active Directory** nastavená na **ano**. 
+    ![Registrace u ředitele Azure Active Director](./media/api-management-troubleshoot-cannot-add-custom-domain/register-with-aad.png)
+1. Na webu Azure Portal otevřete službu **Trezory klíčů** a vyberte trezor klíčů, který se pokoušíte použít pro vlastní doménu.
+1. Vyberte **zásady přístupu**a zkontrolujte, zda existuje instanční objekt služby, který odpovídá názvu instance služby Správa rozhraní API. Pokud existuje, vyberte instanční objekt a ujistěte se, že má **získat** oprávnění uvedené pod **tajné oprávnění**.  
+    ![Přidání zásad přístupu pro instanční objekt](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png)
+1. Pokud služba Správa rozhraní API není v seznamu, vyberte **Přidat zásady přístupu**a vytvořte následující zásady přístupu:
+    - **Konfigurovat ze šablony**: Žádné
+    - **Vyberte hlavní:** Vyhledejte název služby API Management a vyberte ji ze seznamu.
+    - **Klíčová oprávnění**: Žádná
+    - **Tajná oprávnění**: Získat
+    - **Oprávnění certifikátu**: Žádná
+1. Chcete-li vytvořit zásady přístupu, vyberte **ok.**
+1. Chcete-li změny uložit, vyberte **uložit.**
 
-Zkontrolujte, zda byl problém vyřešen. Chcete-li to provést, zkuste vytvořit vlastní doménu ve službě API Management pomocí certifikátu Key Vault.
+Zkontrolujte, zda byl problém vyřešen. Chcete-li to provést, zkuste vytvořit vlastní doménu ve službě Api Management pomocí certifikátu Trezor klíčů.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o službě API Management Service:
+Další informace o službě API Management:
 
-- Podívejte se na další [videa](https://azure.microsoft.com/documentation/videos/index/?services=api-management) o API Management.
-* Další způsoby zabezpečení back-endové služby najdete v tématu [vzájemné ověřování certifikátů](api-management-howto-mutual-certificates.md).
+- Podívejte se na další [videa](https://azure.microsoft.com/documentation/videos/index/?services=api-management) o správě rozhraní API.
+* Další způsoby zabezpečení back-endové služby naleznete v [tématu Vzájemné ověřování certifikátů](api-management-howto-mutual-certificates.md).
 
-* [Vytvořte instanci služby API Management](get-started-create-service-instance.md).
+* [Vytvořte instanci služby Správa rozhraní API](get-started-create-service-instance.md).
 * [Spravujte své první rozhraní API](import-and-publish.md).

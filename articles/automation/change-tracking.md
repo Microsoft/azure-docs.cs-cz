@@ -1,330 +1,330 @@
 ---
 title: Sledování změn pomocí Azure Automation
-description: Řešení Change Tracking vám pomůže identifikovat změny softwaru a služeb systému Windows, ke kterým dochází ve vašem prostředí.
+description: Řešení sledování změn pomáhá identifikovat změny softwaru a služby Systému Windows, ke kterým dochází ve vašem prostředí.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
 ms.openlocfilehash: 83babd65fdf22ab40b0137d93a1cbe7f1fd7ff04
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844798"
 ---
-# <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí Change Tracking řešení
+# <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Sledování změn
 
-Tento článek vám pomůže s použitím řešení Change Tracking ke snadné identifikaci změn ve vašem prostředí. Řešení sleduje následující změny konfigurace, které vám pomůžou určit provozní problémy:
+Tento článek vám pomůže použít řešení sledování změn snadno identifikovat změny ve vašem prostředí. Řešení sleduje následující změny konfigurace, které vám pomohou určit provozní problémy:
 
-- Software systému Windows
-- Software pro Linux (balíčky)
+- Software windows
+- Linux software (balíčky)
 
     >[!NOTE]
-    >Change Tracking jenom sleduje software, který je spravovaný pomocí Správce balíčků distribuce.
+    >Sledování změn sleduje pouze software, který je spravován pomocí správce balíčků distribuce.
 
-- Soubory Windows a Linux
-- Klíče registru Windows
+- Soubory systému Windows a Linux
+- Klíče registru systému Windows
 - Služby pro Windows
-- Procesy démon systému Linux
+- Linuxové daemony
 
-Změny nainstalovaného softwaru, služeb systému Windows, registru a souborů systému Windows a démonů systému Linux na monitorovaných serverech se odesílají do služby Azure Monitor v cloudu ke zpracování. Na přijatá data se aplikuje logika a cloudová služba data zaznamená. Pomocí informací na řídicím panelu Change Tracking můžete snadno zobrazit změny provedené v serverové infrastruktuře.
+Změny nainstalovaného softwaru, služeb Windows, registru a souborů systému Windows a daemonů Linuxu na monitorovaných serverech se posílají službě Azure Monitor v cloudu ke zpracování. Na přijatá data se aplikuje logika a cloudová služba data zaznamená. Pomocí informací na řídicím panelu Sledování změn můžete snadno zobrazit změny, které byly provedeny v infrastruktuře serveru.
 
 > [!NOTE]
-> Azure Automation Change Tracking sleduje změny ve virtuálních počítačích. Pokud chcete sledovat změny vlastností Azure Resource Manager, přečtěte si téma [historie změn](../governance/resource-graph/how-to/get-resource-changes.md)v grafu prostředků Azure.
+> Azure Automation Change Tracking sleduje změny ve virtuálních počítačích. Pokud chcete sledovat změny vlastností Azure Resource Manager, najdete v tématu [Historie změn](../governance/resource-graph/how-to/get-resource-changes.md)azure resource graph .
 
 ## <a name="supported-windows-operating-systems"></a>Podporované operační systémy Windows
 
-Pro agenta Windows se oficiálně podporuje následující verze operačního systému Windows:
+Pro agenta windows jsou oficiálně podporovány následující verze operačního systému Windows:
 
 * Windows Server 2008 R2 nebo novější
 
-## <a name="supported-linux-operating-systems"></a>Podporované operační systémy a Linux
+## <a name="supported-linux-operating-systems"></a>Podporované operační systémy Linux
 
-Následující distribuce systému Linux jsou oficiálně podporována. Agent pro Linux se ale může spustit i v jiných distribucích, které nejsou uvedené. Pokud není uvedeno jinak, všechny dílčí verze jsou podporovány pro každou hlavní verzi uvedenou v seznamu.
+Následující distribuce Linuxu jsou oficiálně podporovány. Agent Linuxu však může také spustit na jiných distribucích, které nejsou uvedeny. Není-li uvedeno jinak, jsou pro každou hlavní uvedenou verzi podporovány všechny dílčí verze.
 
-### <a name="64-bit"></a>64 – bit
+### <a name="64-bit"></a>64bitová
 
 * CentOS 6 a 7
 * Amazon Linux 2017.09
 * Oracle Linux 6 a 7
 * Red Hat Enterprise Linux Server 6 a 7
 * Debian GNU/Linux 8 a 9
-* Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
+* Ubuntu Linux 14.04 LTS, 16.04 LTS a 18.04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32 – bit
+### <a name="32-bit"></a>32bitová
 
-* CentOS 6
+* Centos 6
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6
 * Debian GNU/Linux 8 a 9
-* Ubuntu Linux 14,04 LTS a 16,04 LTS
+* Ubuntu Linux 14.04 LTS a 16.04 LTS
 
-## <a name="onboard"></a>Povolit Change Tracking a inventář
+## <a name="enable-change-tracking-and-inventory"></a><a name="onboard"></a>Povolit sledování změn a inventuru
 
-Chcete-li začít sledovat změny, je nutné povolit řešení Change Tracking a inventáře. Existuje mnoho způsobů, jak připojit počítače do Change Tracking a inventáře. Níže jsou uvedené doporučené a podporované způsoby připojení řešení.
+Chcete-li začít sledovat změny, musíte povolit řešení sledování změn a zásob. Existuje mnoho způsobů, jak napalubě stroje změnit sledování a zásoby. Níže jsou uvedeny doporučené a podporované způsoby, jak na palubě řešení.
 
 * [Z virtuálního počítače](automation-onboard-solutions-from-vm.md)
-* [Z prohlížení více počítačů](automation-onboard-solutions-from-browse.md)
-* [Z účtu Automation](automation-onboard-solutions-from-automation-account.md)
-* [S Azure Automation sadou Runbook](automation-onboard-solutions.md)
+* [Z procházení více strojů](automation-onboard-solutions-from-browse.md)
+* [Z vašeho účtu Automation](automation-onboard-solutions-from-automation-account.md)
+* [S runbookem Azure Automation](automation-onboard-solutions.md)
 
-## <a name="configuring-change-tracking-and-inventory"></a>Konfigurace Change Tracking a inventáře
+## <a name="configuring-change-tracking-and-inventory"></a>Konfigurace sledování změn a inventáře
 
-Informace o tom, jak připojit počítače k řešení, najdete v tématu věnovaném [řešení pro automatizaci](automation-onboard-solutions-from-automation-account.md). Po zprovoznění počítače pomocí řešení Change Tracking a inventáře můžete nakonfigurovat položky, které se mají sledovat. Když zapnete nový soubor nebo klíč registru, který se má sledovat, je povolený pro Change Tracking i pro inventář.
+Chcete-li se dozvědět, jak napalubě počítačů k řešení navštivte: [Onboarding Automation řešení](automation-onboard-solutions-from-automation-account.md). Jakmile budete mít zařízení onboarding s řešením sledování změn a zásob, můžete nakonfigurovat položky ke sledování. Pokud povolíte sledování nového souboru nebo klíče registru, je povolen pro sledování změn i inventář.
 
-Pro sledování změn v souborech v systémech Windows i Linux se používají hodnoty hash MD5 souborů. Hodnoty hash následujících se pak používají ke zjištění, zda byla od posledního inventáře provedena změna.
+Pro sledování změn v souborech v systému Windows i Linuxu se používají hashy MD5 souborů. Tyto stavy hashe se pak používají ke zjištění, zda byla od posledního skladu provedena změna.
 
-### <a name="file-integrity-monitoring-in-azure-security-center"></a>Monitorování integrity souborů v Azure Security Center
+### <a name="file-integrity-monitoring-in-azure-security-center"></a>Monitorování integrity souborů ve službě Azure Security Center
 
-Azure Security Center se přidalo monitorování integrity souborů (FIM) založené na Azure Change Tracking. I když FIM monitoruje jenom soubory a registry, kompletní řešení Change Tracking zahrnuje taky:
+Azure Security Center přidal monitorování integrity souborů (FIM) postavené na Azure Change Tracking. Zatímco FIM monitoruje pouze soubory a registry, úplné řešení sledování změn také zahrnuje:
 
 - Změny softwaru
 - Služby systému Windows
-- Procesy démon systému Linux
+- Linuxové daemony
 
-Pokud jste již vypnuli FIM a chcete vyzkoušet úplné Change Tracking řešení, je nutné provést následující kroky. Nastavení nejsou tímto procesem odebrána.
+Pokud jste již povolili FIM a chcete vyzkoušet úplné řešení sledování změn, je třeba provést následující kroky. Nastavení nejsou odebrány tímto procesem.
 
 > [!NOTE]
-> Povolení úplného řešení Change Tracking může způsobit další poplatky. Další informace najdete v tématu [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/).
+> Povolení úplného řešení sledování změn může způsobit další poplatky, další informace naleznete v [tématu Automatizace ceny](https://azure.microsoft.com/pricing/details/automation/).
 
-1. Odstraňte řešení monitorování tak, že přejdete do pracovního prostoru a vyhledáte ho v [seznamu nainstalovaných řešení monitorování](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions).
-2. Kliknutím na název řešení otevřete jeho stránku Shrnutí a pak klikněte na odstranit, jak je popsáno v části [Odebrání řešení monitorování](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution).
-3. Řešení znovu povolte tak, že přejdete do účtu Automation a vyberete **Change Tracking** z nabídky prostředků v části **Správa konfigurace**.
-4. Potvrďte podrobnosti o nastavení pracovního prostoru a klikněte na **Povolit**.
+1. Odeberte monitorovací řešení tak, že přejdete do pracovního prostoru a vyhledáte ho v [seznamu nainstalovaných řešení monitorování](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions).
+2. Kliknutím na název řešení otevřete jeho stránku souhrnu a poté klikněte na Odstranit, jak je podrobně popsáno v [části Odstranit monitorovací řešení](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution).
+3. Znovu povolte řešení přejdete na účet automatizace a **vyberete sledování změn** z nabídky prostředků v části **Správa konfigurace**.
+4. Potvrďte podrobnosti nastavení pracovního prostoru a klepněte na **tlačítko Povolit**.
 
-### <a name="configure-linux-files-to-track"></a>Konfigurace souborů systému Linux ke sledování
+### <a name="configure-linux-files-to-track"></a>Konfigurace linuxových souborů ke sledování
 
-Ke konfiguraci sledování souborů na počítačích se systémem Linux použijte následující postup:
+Ke konfiguraci sledování souborů v počítačích s Linuxem použijte následující kroky:
 
-1. Ve svém účtu Automation v části **Správa konfigurace**vyberte **Change Tracking (sledování změn** ). Klikněte na **Upravit nastavení** (symbol ozubeného kolečka).
-2. Na stránce **Change Tracking** vyberte soubory pro **Linux**a potom kliknutím na **+ Přidat** přidejte nový soubor, který chcete sledovat.
-3. Do pole **Přidat soubor pro Linux pro Change Tracking**zadejte informace o souboru nebo adresáři, který se má sledovat, a klikněte na **Uložit**.
+1. V účtu Automation vyberte v části **Správa konfigurace**možnost **Změnit sledování** . Klikněte na **Upravit nastavení** (symbol ozubeného kola).
+2. Na stránce **Sledování změn** vyberte **Linux Files**, pak kliknutím na + **Přidat** přidejte nový soubor ke sledování.
+3. V nabídce **Přidat linuxový soubor pro sledování změn**zadejte informace o souboru nebo adresáři, které chcete sledovat, a klepněte na tlačítko **Uložit**.
 
 |Vlastnost  |Popis  |
 |---------|---------|
 |Povoleno     | Určuje, zda je nastavení použito.        |
-|Název položky     | Popisný název souboru, který se má sledovat        |
-|Skupina     | Název skupiny pro logicky seskupené soubory.        |
-|Zadat cestu     | Cesta pro kontrolu souboru. Příklad: "/etc/*. conf"       |
-|Typ cesty     | Typ položky, která se má sledovat. možné hodnoty jsou File a Directory.        |
+|Název položky     | Popisný název souboru, který má být sledován.        |
+|Skupina     | Název skupiny pro logické seskupení souborů.        |
+|Zadat cestu     | Cesta ke kontrole souboru. Například: "/etc/*.conf"       |
+|Typ cesty     | Typ položky, která má být sledována, možné hodnoty jsou Soubor a adresář.        |
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Použít sudo     | Toto nastavení určuje, jestli se při kontrole položky používá sudo.         |
-|Odkazy     | Toto nastavení určuje, jak se při procházení adresářů zpracovávají symbolické odkazy.<br> **Ignore** -ignoruje symbolické odkazy a neobsahuje odkazované soubory/adresáře.<br>**Sledovat** – sleduje symbolické odkazy během rekurze a také obsahuje odkazované soubory/adresáře.<br>**Spravovat** – sleduje symbolické odkazy a umožňuje změnu vráceného obsahu.     |
+|Odkazy     | Toto nastavení určuje, jak se při procházení adresářů zpracovávají symbolické odkazy.<br> **Ignorovat** - Ignoruje symbolické odkazy a neobsahuje nazývané soubory/adresáře.<br>**Postupujte** - Sleduje symbolické odkazy během rekurze a také obsahuje soubory / adresáře odkazuje.<br>**Správa** - Sleduje symbolické odkazy a umožňuje měnit vrácený obsah.     |
 |Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
 
 > [!NOTE]
 > Možnost Spravovat se nedoporučuje. Načítání obsahu souborů se nepodporuje.
 
-### <a name="configure-windows-files-to-track"></a>Konfigurace souborů Windows ke sledování
+### <a name="configure-windows-files-to-track"></a>Konfigurace souborů systému Windows ke sledování
 
-Ke konfiguraci sledování souborů na počítačích se systémem Windows použijte následující postup:
+Ke konfiguraci sledování souborů v počítačích se systémem Windows postupujte takto:
 
-1. Ve svém účtu Automation v části **Správa konfigurace**vyberte **Change Tracking (sledování změn** ). Klikněte na **Upravit nastavení** (symbol ozubeného kolečka).
-2. Na stránce **Change Tracking** vyberte **soubory Windows**a potom kliknutím na **+ Přidat** přidejte nový soubor, který chcete sledovat.
-3. Do pole **Přidat soubor Windows pro Change Tracking**zadejte informace o souboru, který se má sledovat, a klikněte na **Uložit**.
+1. V účtu Automation vyberte v části **Správa konfigurace**možnost **Změnit sledování** . Klikněte na **Upravit nastavení** (symbol ozubeného kola).
+2. Na stránce **Sledování změn** vyberte **Soubory systému Windows**a kliknutím na + **Přidat** přidejte nový soubor ke sledování.
+3. V nabídce **Přidat soubor systému Windows pro sledování změn**zadejte informace o souboru, který chcete sledovat, a klepněte na tlačítko **Uložit**.
 
 |Vlastnost  |Popis  |
 |---------|---------|
 |Povoleno     | Určuje, zda je nastavení použito.        |
-|Název položky     | Popisný název souboru, který se má sledovat        |
-|Skupina     | Název skupiny pro logicky seskupené soubory.        |
+|Název položky     | Popisný název souboru, který má být sledován.        |
+|Skupina     | Název skupiny pro logické seskupení souborů.        |
 |Zadat cestu     | Cesta, ve které se má soubor hledat, například: c:\temp\\\*.txt.<br>Můžete použít také proměnnou prostředí, například %winDir%\System32\\\*.*.       |
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
 
-## <a name="wildcard-recursion-and-environment-settings"></a>Zástupné znaky, rekurze a nastavení prostředí
+## <a name="wildcard-recursion-and-environment-settings"></a>Nastavení zástupných symbolů, rekurzí a prostředí
 
-Rekurze umožňuje zadat zástupné znaky, které zjednodušují sledování v adresářích, a proměnné prostředí, které umožňují sledovat soubory napříč prostředími s více nebo dynamickými názvy jednotek. V následujícím seznamu jsou uvedeny běžné informace, které byste měli znát při konfiguraci rekurze:
+Rekurze umožňuje zadat zástupné znaky pro zjednodušení sledování napříč adresáři a proměnných prostředí, které umožňují sledovat soubory napříč prostředími s více nebo dynamickými názvy jednotek. V následujícím seznamu jsou uvedeny běžné informace, které byste měli znát při konfiguraci rekurze:
 
-* Pro sledování více souborů se vyžadují zástupné znaky.
-* Pokud používáte zástupné znaky, dají se použít jenom v posledním segmentu cesty. (například `c:\folder\*file*` nebo `/etc/*.conf`)
-* Pokud proměnná prostředí má neplatnou cestu, ověření proběhne úspěšně, ale tato cesta selže při spuštění inventáře.
-* Vyhněte se obecným cestám, jako je `c:\*.*` při nastavení cesty, protože by to vedlo k procházení příliš velkého počtu složek.
+* Pro sledování více souborů jsou vyžadovány zástupné znaky.
+* Pokud používáte zástupné znaky, lze je použít pouze v posledním segmentu cesty. (například `c:\folder\*file*` `/etc/*.conf`nebo )
+* Pokud proměnná prostředí má neplatnou cestu, ověření bude úspěšné, ale tato cesta se nezdaří při spuštění zásob.
+* Vyhněte se `c:\*.*` obecné cesty, například při nastavování cesty, protože by to mělo za následek příliš mnoho složek projet.
 
 ## <a name="configure-file-content-tracking"></a>Konfigurace sledování obsahu souborů
 
-Obsah můžete zobrazit před a po změně souboru s obsahem souboru Change Tracking. To je k dispozici pro soubory Windows a Linux, pro každou změnu v souboru, obsah souboru je uložen v účtu úložiště a tento soubor se zobrazí před a po změně, vložení nebo zobrazení vedle sebe. Další informace najdete v tématu [zobrazení obsahu sledovaného souboru](change-tracking-file-contents.md).
+Obsah můžete zobrazit před a po změně souboru pomocí funkce Sledování změn obsahu souboru. To je k dispozici pro soubory systému Windows a Linux, pro každou změnu souboru je obsah souboru uložen v účtu úložiště a zobrazuje soubor před a po změně, vložených nebo vedle sebe. Další informace najdete [v tématu Zobrazení obsahu sledovaného souboru](change-tracking-file-contents.md).
 
-![Zobrazit změny v souboru](./media/change-tracking-file-contents/view-file-changes.png)
+![zobrazení změn v souboru](./media/change-tracking-file-contents/view-file-changes.png)
 
-### <a name="configure-windows-registry-keys-to-track"></a>Konfigurace klíčů registru Windows ke sledování
+### <a name="configure-windows-registry-keys-to-track"></a>Konfigurace klíčů registru systému Windows ke sledování
 
-Ke konfiguraci sledování klíčů registru v počítačích se systémem Windows použijte následující postup:
+Pomocí následujících kroků nakonfigurujte sledování klíčů registru v počítačích se systémem Windows:
 
-1. Ve svém účtu Automation v části **Správa konfigurace**vyberte **Change Tracking (sledování změn** ). Klikněte na **Upravit nastavení** (symbol ozubeného kolečka).
-2. Na stránce **Change Tracking** vyberte možnost **registr systému Windows**a potom kliknutím na **+ Přidat** přidejte nový klíč registru, který chcete sledovat.
-3. Do pole **Přidat registr systému Windows pro Change Tracking**zadejte informace pro klíč, který chcete sledovat, a klikněte na **Uložit**.
+1. V účtu Automation vyberte v části **Správa konfigurace**možnost **Změnit sledování** . Klikněte na **Upravit nastavení** (symbol ozubeného kola).
+2. Na stránce **Sledování změn** vyberte **registr systému Windows**a pak klepněte na tlačítko + **Přidat** a přidejte nový klíč registru ke sledování.
+3. V doplňku **Přidat registr systému Windows pro sledování změn**zadejte informace o klíči ke sledování a klepněte na tlačítko **Uložit**.
 
 |Vlastnost  |Popis  |
 |---------|---------|
 |Povoleno     | Určuje, zda je nastavení použito.        |
-|Název položky     | Popisný název klíče registru, který se má sledovat        |
-|Skupina     | Název skupiny pro logicky seskupené klíče registru.        |
-|Klíč registru systému Windows   | Cesta pro kontrolu klíče registru. Například: "HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startuping"      |
+|Název položky     | Popisný název klíče registru, který má být sledován.        |
+|Skupina     | Název skupiny pro logické seskupení klíčů registru.        |
+|Klíč registru systému Windows   | Cesta ke kontrole klíče registru. Příklad: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ## <a name="limitations"></a>Omezení
 
-Řešení Change Tracking v současné době nepodporuje následující položky:
+Řešení sledování změn v současné době nepodporuje následující položky:
 
-* Rekurze pro sledování registru Windows
-* Síťové systémy souborů
-* Různé metody instalace nejsou sledovány.
-* soubory *. exe nejsou sledovány pro Windows.
+* Rekurze pro sledování registru systému Windows
+* Síťové souborové systémy
+* Různé metody instalace nejsou sledovány
+* Soubory *.exe nejsou sledovány pro systém Windows
 
 Další omezení:
 
-* Sloupec **maximální velikost souboru** a hodnoty jsou v aktuální implementaci nepoužitelné.
-* Pokud shromažďujete více než 2500 souborů v cyklu shromažďování v průběhu 30 minut, může být snížen výkon řešení.
-* Pokud je síťový provoz vysoký, může zobrazení změn záznamů trvat až šest hodin.
-* Pokud konfiguraci upravíte v době, kdy je počítač vypnutý, může počítač publikovat změny, které patřily do předchozí konfigurace.
+* Sloupec **Maximální velikost souboru** a hodnoty nejsou v aktuální implementaci použity.
+* Pokud shromažďujete více než 2500 souborů v 30minutovém cyklu kolekce, může dojít ke snížení výkonu řešení.
+* Pokud je síťový provoz vysoký, může zobrazení záznamů o změně trvat až šest hodin.
+* Pokud změníte konfiguraci při vypnutí počítače, může počítač účtovat změny, které patřily do předchozí konfigurace.
 
 ## <a name="known-issues"></a>Známé problémy
 
-Řešení Change Tracking v současnosti dochází k následujícím problémům:
+Řešení sledování změn se v současné době potýká s následujícími problémy:
 
-* Aktualizace oprav hotfix nejsou shromažďovány na počítačích s Windows serverem 2016 Core RS3.
-* Procesy démon systému Linux mohou zobrazovat změněný stav, i když došlo ke změně. Důvodem je způsob, jakým je zachyceno pole `SvcRunLevels`.
+* Aktualizace opravy hotfix se neshromažďují na počítačích Windows Server 2016 Core RS3.
+* Linux ové daemons mohou vykazovat změněný stav, i když nedošlo k žádné změně. To je způsobeno `SvcRunLevels` tím, jak je pole zachyceno.
 
-## <a name="change-tracking-data-collection-details"></a>Podrobnosti o Change Tracking shromažďování dat
+## <a name="change-tracking-data-collection-details"></a>Podrobnosti o shromažďování dat sledování změn
 
-V následující tabulce je uvedena frekvence sběru dat pro typy změn. U každého typu se aktualizuje taky datový snímek aktuálního stavu aspoň každých 24 hodin:
+V následující tabulce je uvedena frekvence shromažďování dat pro typy změn. Pro každý typ je také aktualizován datový snímek aktuálního stavu alespoň každých 24 hodin:
 
-| **Změnit typ** | **Frekvence** |
+| **Změnit typ** | **Frequency** |
 | --- | --- |
 | Registr systému Windows | 50 minut |
-| Soubor Windows | 30 minut |
-| Soubor Linux | 15 minut |
+| Soubor systému Windows | 30 minut |
+| Linuxový soubor | 15 minut |
 | Služby pro Windows | 10 sekund až 30 minut</br> Výchozí: 30 minut |
-| Procesy démon systému Linux | 5 minut |
-| Software systému Windows | 30 minut |
-| Software pro Linux | 5 minut |
+| Linuxové daemony | 5 minut |
+| Software windows | 30 minut |
+| Linuxsoftware | 5 minut |
 
-V následující tabulce jsou uvedené limity sledovaných položek na počítač pro Change Tracking.
+V následující tabulce jsou uvedeny limity sledovaných položek pro sledování změn na počítač.
 
-| **Prostředek** | **Omezení**| **Poznámky** |
+| **Zdrojů** | **Limit**| **Poznámky** |
 |---|---|---|
-|Soubor|500||
+|File|500||
 |Registr|250||
-|Software systému Windows|250|Neobsahuje opravy hotfix softwaru|
-|Balíčky Linux|1250||
+|Software windows|250|Neobsahuje softwarové opravy hotfix.|
+|Balíčky linuxu|1250||
 |Služby|250||
-|Proces|250||
+|Daemon|250||
 
-Průměrné využití dat Log Analytics počítači pomocí Change Tracking a inventáře je přibližně 40MB měsíčně. Tato hodnota je pouze aproximace a podléhá změnám v závislosti na vašem prostředí. Doporučujeme vám monitorovat prostředí, abyste viděli přesné využití, které máte.
+Průměrné využití dat Log Analytics pro počítač pomocí sledování změn a inventáře je přibližně 40 MB za měsíc. Tato hodnota je pouze aproximace a může se změnit na základě vašeho prostředí. Doporučujeme sledovat prostředí, abyste viděli přesné využití, které máte.
 
 ### <a name="windows-service-tracking"></a>Sledování služby systému Windows
 
-Výchozí četnost shromažďování pro služby systému Windows je 30 minut. Chcete-li nakonfigurovat četnost, použijte příkaz **Change Tracking**. V části **Upravit nastavení** na kartě **služby systému Windows** je k dispozici posuvník, který umožňuje změnit četnost shromažďování pro služby systému Windows, a to až 10 sekund až po dobu 30 minut. Přesuňte posuvník do požadované frekvence a automaticky ho uloží.
+Výchozí frekvence shromažďování služeb systému Windows je 30 minut. Chcete-li frekvenci nakonfigurovat, přejděte na **možnost Sledování změn**. V části **Upravit nastavení** na kartě **Služby systému Windows** je jezdec, který umožňuje změnit frekvenci shromažďování služeb systému Windows z až 10 sekund na až 30 minut. Přesuňte posuvník na požadovanou frekvenci a automaticky jej uloží.
 
-![Posuvník služeb systému Windows](./media/change-tracking/windowservices.png)
+![Jezdec služeb systému Windows](./media/change-tracking/windowservices.png)
 
-Agent sleduje pouze změny, optimalizuje výkon agenta. Nastavení vysoké prahové hodnoty může přijít o změny, pokud se služba vrátí do původního stavu. Nastavení četnosti na menší hodnotu umožňuje zachytit změny, které mohou být chybět jinak.
+Agent pouze sleduje změny, to optimalizuje výkon agenta. Nastavení vysoké prahové hodnoty může chybět změny, pokud služba vrátí do původního stavu. Nastavení frekvence na menší hodnotu umožňuje zachytit změny, které mohou být vynechány jinak.
 
 > [!NOTE]
-> I když může agent sledovat změny až do 10 sekund, na portálu pořád trvá několik minut, než se data zobrazí. Změny v době zobrazení na portálu jsou stále sledovány a protokolovány.
+> Zatímco agent může sledovat změny až do intervalu 10 sekund, data stále trvá několik minut, které mají být zobrazeny na portálu. Změny během doby zobrazení na portálu jsou stále sledovány a zaznamenány.
 
-### <a name="registry-key-change-tracking"></a>Sledování změn klíčů registru
+### <a name="registry-key-change-tracking"></a>Sledování změn klíče registru
 
-Účelem sledování změn klíčů registru je určit body rozšiřitelnosti, které mohou aktivovat kód a malware třetí strany. Následující seznam obsahuje seznam předem nakonfigurovaných klíčů registru. Tyto klíče jsou nakonfigurovány, ale nejsou povoleny. Chcete-li sledovat tyto klíče registru, je nutné povolit každou z nich.
+Účelem sledování změn klíčů registru je určit body rozšiřitelnosti, kde může být aktivován kód a malware třetích stran. V následujícím seznamu je uveden seznam předem nakonfigurovaných klíčů registru. Tyto klíče jsou nakonfigurovány, ale nejsou povoleny. Chcete-li sledovat tyto klíče registru, je nutné povolit každý z nich.
 
 > [!div class="mx-tdBreakAll"]
 > |Klíč registru | Účel |
 > |---------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Monitoruje běžné položky automatického spuštění, které se připojovat přímo do Průzkumníka Windows, a obvykle spouští rutiny Explorer. exe.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Monitoruje skripty spouštěné při spuštění.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Monitoruje skripty, které se spouštějí při vypnutí.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Sleduje klíče načtené před přihlášením uživatele ke svému účtu systému Windows. Klíč se používá pro 32 programy běžící na 64 počítačích.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Monitoruje běžné položky automatického spuštění, které se zavěsují přímo do průzkumníka Windows a obvykle běží v procesu pomocí programu Explorer.exe.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Monitoruje skripty, které jsou spuštěny při spuštění.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Monitoruje skripty, které běží při vypnutí.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Monitoruje klíče, které jsou načteny před přihlášením uživatele k účtu systému Windows. Klíč se používá pro 32bitové programy spuštěné v 64bitových počítačích.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Monitoruje změny nastavení aplikace.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Monitoruje běžné položky automatického spuštění, které se připojovat přímo do Průzkumníka Windows, a obvykle spouští rutiny Explorer. exe.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Monitoruje běžné položky automatického spuštění, které se připojovat přímo do Průzkumníka Windows, a obvykle spouští rutiny Explorer. exe.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitory pro registraci obslužné rutiny překrytí ikon
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitory pro registraci obslužné rutiny překrytí ikon pro 32 programy běžící na 64 počítačích.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Monitory pro nové objekty pomocníka pro prohlížeč pro Internet Explorer. Slouží k přístupu k model DOM (Document Object Model) (DOM) aktuální stránky a k ovládání navigace.
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Monitory pro nové objekty pomocníka pro prohlížeč pro Internet Explorer. Slouží k přístupu k model DOM (Document Object Model) (DOM) aktuální stránky a k řízení navigace pro 32 programy běžící na 64 počítačích.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Internet Explorer\Extensions` | Sleduje nové rozšíření aplikace Internet Explorer, například nabídky vlastních nástrojů a vlastní tlačítka panelu nástrojů.
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | Sleduje nové rozšíření aplikace Internet Explorer, například nabídky vlastních nástrojů a vlastní tlačítka panelu nástrojů pro 32 programy běžící na 64 počítačích.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | Monitoruje 32 ovladačů přidružených k wavemapper, wave1 a wave2, MSACM. imaadpcm,. msadpcm,. msgsm610 a vidc. Podobně jako v části [ovladače] v systému. Soubor INI.
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | Monitoruje 32 ovladačů přidružených k wavemapper, wave1 a wave2, MSACM. imaadpcm,. msadpcm,. msgsm610 a vidc pro 32 programy běžící na počítačích s 64-bit. Podobně jako v části [ovladače] v systému. Soubor INI.
-> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Monitoruje seznam známých nebo běžně používaných systémových knihoven DLL; Tento systém brání lidem v zneužití slabých oprávnění adresáře aplikace tím, že vyřadí verze systémových knihoven DLL pro trojského koně.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Monitoruje seznam balíčků schopných přijímat oznámení o událostech z procesu Winlogon, což je model podpory interaktivního přihlašování pro operační systém Windows.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Monitoruje běžné položky automatického spuštění, které se zavěsují přímo do průzkumníka Windows a obvykle běží v procesu pomocí programu Explorer.exe.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Monitoruje běžné položky automatického spuštění, které se zavěsují přímo do průzkumníka Windows a obvykle běží v procesu pomocí programu Explorer.exe.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitoruje registraci obslužné rutiny překrytí ikon.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitoruje registraci obslužné rutiny překrytí ikon pro 32bitové programy spuštěné v 64bitových počítačích.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Monitoruje nové moduly plug-in objektů pomocníka prohlížeče pro aplikaci Internet Explorer. Slouží k přístupu k modelu DOCUMENT Object Model (DOM) aktuální stránky a k řízení navigace.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Monitoruje nové moduly plug-in objektů pomocníka prohlížeče pro aplikaci Internet Explorer. Slouží k přístupu k modelu DOCUMENT Object Model (DOM) aktuální stránky a k řízení navigace pro 32bitové programy spuštěné v 64bitových počítačích.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Internet Explorer\Extensions` | Monitoruje nová rozšíření aplikace Internet Explorer, například vlastní nabídky nástrojů a vlastní tlačítka panelu nástrojů.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | Monitoruje nová rozšíření aplikace Internet Explorer, například vlastní nabídky nástrojů a vlastní tlačítka panelu nástrojů pro 32bitové programy spuštěné v 64bitových počítačích.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | Monitoruje 32bitové ovladače spojené s wavemapper, wave1 a wave2, msacm.imaadpcm, .msadpcm, .msgsm610 a vidc. Podobně jako v sekci [ovladače] v systému. INI.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | Monitoruje 32bitové ovladače spojené s wavemapper, wave1 a wave2, msacm.imaadpcm, .msadpcm, .msgsm610 a vidc pro 32bitové programy spuštěné na 64bitových počítačích. Podobně jako v sekci [ovladače] v systému. INI.
+> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Monitoruje seznam známých nebo běžně používaných systémových knihoven DLL. Tento systém zabraňuje lidem ve využívání slabých oprávnění adresáře aplikací tím, že upustí ve verzích trojských koní systémových knihoven DLL.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Monitoruje seznam balíčků, které mohou přijímat oznámení o událostech od společnosti Winlogon, což je model podpory interaktivního přihlášení pro operační systém Windows.
 
 ## <a name="network-requirements"></a>Síťové požadavky
 
-Následující adresy jsou vyžadovány konkrétně pro Change Tracking. Komunikace s těmito adresami se provádí přes port 443.
+Následující adresy jsou vyžadovány speciálně pro sledování změn. Komunikace s těmito adresami se provádí přes port 443.
 
-|Veřejné Azure  |Azure Government  |
+|Veřejný partnerský vztah Azure  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*. azure-automation.us|
+|*.azure-automation.net|*.azure-automation.us|
 
-## <a name="use-change-tracking"></a>Použít Change Tracking
+## <a name="use-change-tracking"></a>Použít sledování změn
 
-Po povolení řešení můžete zobrazit souhrn změn pro monitorované počítače výběrem možnosti **Change Tracking** v části **Správa konfigurace** v účtu Automation.
+Po povolení řešení můžete zobrazit souhrn změn pro monitorované počítače výběrem **funkce Sledování změn** v části Správa **konfigurace** v účtu automatizace.
 
-Můžete zobrazit změny v počítačích a pak přejít k podrobnostem pro každou událost. Rozevírací nabídky jsou v horní části grafu k dispozici pro omezení grafu a podrobné informace na základě typu změny a rozsahů času. Můžete také kliknout na graf a přetáhnout ho a vybrat vlastní časový rozsah. **Typ změny** bude jedna z následujících hodnot **událostí**, **démonů**, **souborů**, **registrů**, **softwaru**a **služeb systému Windows**. Kategorie zobrazuje typ změny a lze ji **Přidat**, **Upravit**nebo **Odebrat**.
+Můžete zobrazit změny v počítačích a potom přejít k podrobnostem pro každou událost. Rozevírací nabídky jsou k dispozici v horní části grafu, aby se graf omezil a podrobné informace založené na typu změny a časových rozsahech. Můžete také klepnout a přetáhnout v grafu a vybrat vlastní časový rozsah. **Typ změny** bude jednou z následujících hodnot **Události**, **Daemons**, **Files**, **Registry**, **Software**, **Windows Services**. Kategorie zobrazuje typ změny a lze ji **přidat**, **změnit**nebo **odebrat**.
 
-![Obrázek řídicího panelu Change Tracking](./media/change-tracking/change-tracking-dash01.png)
+![Obrázek řídicího panelu Sledování změn](./media/change-tracking/change-tracking-dash01.png)
 
-Kliknutím na změnu nebo událost zobrazíte podrobné informace o této změně. Jak vidíte z tohoto příkladu, typ spuštění služby byl změněn z ruční na auto.
+Kliknutím na změnu nebo událost se zobrazí podrobné informace o této změně. Jak můžete vidět z příkladu, typ spuštění služby byl změněn z ruční na auto.
 
-![Obrázek podrobností sledování změn](./media/change-tracking/change-tracking-details.png)
+![Obrázek podrobností o sledování změn](./media/change-tracking/change-tracking-details.png)
 
-## <a name="search-logs"></a>Hledat protokoly
+## <a name="search-logs"></a>Vyhledávací protokoly
 
-Kromě podrobností, které jsou k dispozici na portálu, lze hledání provádět v protokolech. Po otevření stránky **Change Tracking** klikněte na **Log Analytics**a otevře se stránka **protokoly** .
+Kromě podrobností, které jsou k dispozici na portálu, vyhledávání lze provést proti protokoly. Po otevření stránky **Sledování změn** klikněte na **Log Analytics**, otevře se stránka **Protokoly.**
 
 ### <a name="sample-queries"></a>Ukázkové dotazy
 
-V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy změn shromážděné tímto řešením:
+Následující tabulka obsahuje ukázkové hledání záznamů změn shromážděných tímto řešením:
 
 |Dotaz  |Popis  |
 |---------|---------|
-|ConfigurationData<br>&#124;kde ConfigDataType = = "WindowsServices" and SvcStartupType = = "auto"<br>&#124;kde SvcState = = "zastaveno"<br>&#124;Shrnutí arg_max (TimeGenerated, *) podle software ComputerName, Computer         | Zobrazuje nejaktuálnější záznamy inventáře pro služby systému Windows, které byly nastaveny na hodnotu automaticky, ale byly hlášeny jako zastavené.<br>Výsledky jsou omezené na nejnovější záznam pro daný softwarový název a počítač.      |
-|ConfigurationChange<br>&#124;kde ConfigChangeType = = "software" a ChangeCategory = = "odebráno"<br>&#124;ORDER by TimeGenerated DESC|Zobrazuje záznamy změn pro odebraný software.|
+|ConfigurationData<br>&#124; kde configDataType == "WindowsServices" a SvcStartupType == "Auto"<br>&#124; kde SvcState == "Zastaveno"<br>&#124; shrnout arg_max(TimeGenerated, *) podle SoftwareName, Počítač         | Zobrazuje nejnovější záznamy inventáře služeb systému Windows, které byly nastaveny na automaticky, ale byly vykázány jako zastavené.<br>Výsledky jsou omezeny na nejnovější záznam pro tento SoftwareName a Computer      |
+|ConfigurationChange<br>&#124; kde ConfigChangeType == "Software" a ChangeCategory == "Odstraněno"<br>&#124; pořadí podle TimeGenerated desc|Zobrazuje záznamy změn odebraný software.|
 
-## <a name="alert-on-changes"></a>Výstraha při změnách
+## <a name="alert-on-changes"></a>Upozornění na změny
 
-Klíčovou funkcí Change Tracking a inventáře je schopnost upozornit na stav konfigurace a všechny změny stavu konfigurace hybridního prostředí.
+Klíčovou funkcí sledování změn a zásob je možnost upozornit na stav konfigurace a všechny změny stavu konfigurace hybridního prostředí.
 
-V následujícím příkladu ukazuje snímek obrazovky, že soubor `C:\windows\system32\drivers\etc\hosts` byl v počítači změněn. Tento soubor je důležitý, protože soubor hostitelů používá systém Windows k překladu názvů hostitelů na IP adresy a má přednost před i DNS, což by mohlo způsobit problémy s připojením nebo přesměrování provozu na škodlivé nebo jinak nebezpečné weby.
+V následujícím příkladu snímek obrazovky `C:\windows\system32\drivers\etc\hosts` ukazuje, že soubor byl změněn v počítači. Tento soubor je důležitý, protože soubor Hosts je používán systémem Windows k překladu názvů hostitelů na adresy IP a má přednost před i DNS, což může mít za následek problémy s připojením nebo přesměrování provozu na škodlivé nebo jinak nebezpečné weby.
 
-![Graf zobrazující změnu souboru hostitelů](./media/change-tracking/changes.png)
+![Graf zobrazující změnu souboru hosts](./media/change-tracking/changes.png)
 
-Chcete-li tuto změnu dále analyzovat, přejděte na položku hledání v protokolu kliknutím na příkaz **Log Analytics**. Jednou v hledání v protokolu vyhledejte změny obsahu v souboru Hosts pomocí dotazu `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Tento dotaz vyhledá změny, které zahrnovaly změnu obsahu souborů pro soubory, jejichž plně kvalifikovaná cesta obsahuje slovo "hostitelé". Můžete také požádat o konkrétní soubor tak, že změníte část cesty na svou plně kvalifikovanou formu (například `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`).
+Chcete-li tuto změnu dále analyzovat, přejděte na položku Log search from clicking **Log Analytics**. Po přihlášení k hledání v protokolu vyhledejte změny `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`obsahu v souboru Hosts pomocí dotazu . Tento dotaz vyhledá změny, které zahrnovaly změnu obsahu souboru pro soubory, jejichž plně kvalifikovaná cesta obsahuje slovo "hosts". Můžete také požádat o konkrétní soubor změnou části cesty na `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`plně kvalifikovaný formulář (například ).
 
-Jakmile dotaz vrátí požadované výsledky, klikněte na tlačítko **nové pravidlo výstrahy** v možnosti prohledávání protokolu a otevřete stránku vytváření výstrah. Můžete také přejít k tomuto prostředí prostřednictvím **Azure monitor** v Azure Portal. V prostředí pro vytváření výstrah znovu ověřte náš dotaz a upravte logiku výstrah. V takovém případě budete chtít aktivovat výstrahu, pokud je ve všech počítačích v prostředí zjištěna i jedna změna.
+Jakmile dotaz vrátí požadované výsledky, otevřete stránku pro vytvoření výstrahklepnutím na tlačítko **Nové pravidlo výstrahy** v prostředí hledání protokolu. Můžete také přejít na toto prostředí prostřednictvím **Azure Monitor** na webu Azure Portal. V prostředí vytváření výstrah zkontrolujte náš dotaz znovu a upravte logiku výstrahy. V takovém případě chcete, aby se výstraha aktivovala, pokud je zjištěna i jedna změna ve všech počítačích v prostředí.
 
-![Obrázek znázorňující dotaz na změnu pro sledování změn v souboru hostitelů](./media/change-tracking/change-query.png)
+![Obrázek zobrazující dotaz na změnu pro sledování změn v souboru hosts](./media/change-tracking/change-query.png)
 
-Po nastavení logiky podmínky přiřaďte skupiny akcí k provádění akcí v reakci na aktivované upozornění. V tomto případě jsem nastavil e-maily, které se mají odeslat, a vytvoří se lístek ITSM.  Je možné provést i mnoho dalších užitečných akcí, například aktivovat funkci Azure Functions, Runbook služby Automation, Webhook nebo aplikaci logiky.
+Po nastavení logiky stavu přiřaďte skupiny akcí k provádění akcí v reakci na aktivaci výstrahy. V tomto případě jsem nastavil e-maily, které mají být odeslány a lístek ITSM, který má být vytvořen.  Mnoho dalších užitečných akcí lze také přijmout, jako je například spuštění funkce Azure, automatizace runbook, webhook nebo aplikace logiky.
 
-![Obrázek, který konfiguruje skupinu akcí pro upozornění na změnu](./media/change-tracking/action-groups.png)
+![Obrázek, který konfiguruje skupinu akcí tak, aby upozorňovala na změnu](./media/change-tracking/action-groups.png)
 
-Po nastavení všech parametrů a logiky můžeme tuto výstrahu použít pro prostředí.
+Po nastavení všech parametrů a logiky můžeme výstrahu použít pro prostředí.
 
 ### <a name="alert-suggestions"></a>Návrhy výstrah
 
-Při upozorňování na změny v souboru hostitelů je jedním z užitečných výstrah pro Change Tracking nebo data inventáře, existuje mnoho dalších scénářů pro upozorňování, včetně případů definovaných spolu s příklady dotazů v níže uvedené části.
+Zatímco upozornění na změny v souboru Hosts je jedna dobrá aplikace výstrah pro sledování změn nebo data inventáře, existuje mnoho dalších scénářů pro upozorňování, včetně případů definovaných spolu s jejich ukázkovými dotazy v následující části.
 
 |Dotaz  |Popis  |
 |---------|---------|
-|ConfigurationChange <br>&#124;kde ConfigChangeType = = "Files" a FileSystemPath obsahuje "c:\\Windows\\system32\\Drivers\\"|Užitečné pro sledování změn souborů důležitých pro systém|
-|ConfigurationChange <br>&#124;kde FieldsChanged obsahuje "FileContentChecksum" a FileSystemPath = = "c:\\Windows\\system32\\Drivers\\atd.\\hostitelé"|Užitečné pro sledování úprav konfiguračních souborů klíčů|
-|ConfigurationChange <br>&#124;kde ConfigChangeType = = "WindowsServices" a SvcName obsahuje "W3SVC" a SvcState = = "zastaveno"|Užitečné pro sledování změn důležitých služeb systému|
-|ConfigurationChange <br>&#124;kde ConfigChangeType = = "démoni" a SvcName obsahuje "SSH" a SvcState! = "Running"|Užitečné pro sledování změn důležitých služeb systému|
-|ConfigurationChange <br>&#124;kde ConfigChangeType = = "software" a ChangeCategory = = "přidáno"|Užitečné pro prostředí, která potřebují uzamčenou konfiguraci softwaru.|
-|ConfigurationData <br>&#124;kde software obsahuje "agent monitorování" a CurrentVersion! = "8.0.11081.0"|Užitečné pro zobrazení, které počítače mají nainstalovanou zastaralou nebo nekompatibilní verzi softwaru. Oznamuje poslední nahlášený stav konfigurace, nikoli změny.|
-|ConfigurationChange <br>&#124;kde RegistryKey = = @ "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Hodí se ke sledování změn důležitých antivirových klíčů.|
-|ConfigurationChange <br>&#124;kde RegistryKey obsahuje @ "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\parametry SharedAccess\\Parameters\\FirewallPolicy"| Užitečné pro sledování změn nastavení brány firewall|
+|ConfigurationChange <br>&#124;, kde ConfigChangeType == "Files" a\\FileSystemPath obsahuje " c: windows\\system32\\ovladače\\"|Užitečné pro sledování změn systémových kritických souborů|
+|ConfigurationChange <br>&#124;, kde FieldsChanged obsahuje "FileContentChecksum" a FileSystemPath ==\\\\"c:\\windows\\system32\\ovladače atd hostitelé"|Užitečné pro sledování změn konfiguračních souborů klíčů|
+|ConfigurationChange <br>&#124; kde ConfigChangeType == "WindowsServices" a SvcName obsahuje "w3svc" a SvcState == "Zastaveno"|Užitečné pro sledování změn systémových kritických služeb|
+|ConfigurationChange <br>&#124; kde ConfigChangeType == "Daemons" a SvcName obsahuje "ssh" a SvcState != "Spuštěno"|Užitečné pro sledování změn systémových kritických služeb|
+|ConfigurationChange <br>&#124; kde ConfigChangeType == "Software" a ChangeCategory == "Přidáno"|Užitečné pro prostředí, která potřebují uzamčenou konfiguraci softwaru|
+|ConfigurationData <br>&#124; kde SoftwareName obsahuje "Monitorovací agent" a CurrentVersion != "8.0.11081.0"|Užitečné pro zobrazení počítačů, které mají nainstalovanou zastaralou nebo nekompatibilní verzi softwaru. Hlásí poslední hlášený stav konfigurace, nikoli změny.|
+|ConfigurationChange <br>&#124; kde RegistryKey ==\\\\@"HKEY_LOCAL_MACHINE SOFTWARE Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Užitečné pro sledování změn klíčových antivirových klíčů|
+|ConfigurationChange <br>&#124;, kde registrobsahuje\\@"HKEY_LOCAL_MACHINE\\SYSTEM\\\\CurrentControlSet\\Services SharedAccess\\Parameters Firewall"| Užitečné pro sledování změn nastavení brány firewall|
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o používání řešení najdete v kurzu o Change Tracking.
+Další informace o používání řešení najdete v kurzu o sledování změn:
 
 > [!div class="nextstepaction"]
 > [Řešení potíží se změnami ve vašem prostředí](automation-tutorial-troubleshoot-changes.md)
 
-* K zobrazení podrobných dat sledování změn použijte [prohledávání protokolů v protokolu Azure monitor](../log-analytics/log-analytics-log-searches.md) .
+* Pomocí [hledání protokolů v protokolech Azure Monitor](../log-analytics/log-analytics-log-searches.md) uobrazte podrobná data sledování změn.

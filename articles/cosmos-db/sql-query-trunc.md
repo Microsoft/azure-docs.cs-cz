@@ -1,6 +1,6 @@
 ---
-title: TRUNC – v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o TRUNC – funkcí SQL systému v Azure Cosmos DB.
+title: TRUNC v dotazovacím jazyce Azure Cosmos DB
+description: Další informace o funkci systému SQL TRUNC v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8bad33f593bae2679c83d59ae4567dcab4a64809
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78304221"
 ---
-# <a name="trunc-azure-cosmos-db"></a>TRUNC – (Azure Cosmos DB)
- Vrátí číselnou hodnotu, zkrácen na nejbližší celočíselnou hodnotu.  
+# <a name="trunc-azure-cosmos-db"></a>TRUNC (Azure Cosmos DB)
+ Vrátí číselnou hodnotu zkrácenou na nejbližší hodnotu celého čísla.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -30,11 +30,11 @@ TRUNC(<numeric_expr>)
   
 ## <a name="return-types"></a>Návratové typy
   
-  Vrátí hodnotu číselného výrazu.  
+  Vrátí číselný výraz.  
   
 ## <a name="examples"></a>Příklady
   
-  V následujícím příkladu se zkrátí na následující kladná a záporná čísla na nejbližší celočíselnou hodnotu.  
+  Následující příklad zkrátí následující kladná a záporná čísla na nejbližší hodnotu celého čísla.  
   
 ```sql
 SELECT TRUNC(2.4) AS t1, TRUNC(2.6) AS t2, TRUNC(2.5) AS t3, TRUNC(-2.4) AS t4, TRUNC(-2.6) AS t5  
@@ -48,7 +48,7 @@ SELECT TRUNC(2.4) AS t1, TRUNC(2.6) AS t2, TRUNC(2.5) AS t3, TRUNC(-2.4) AS t4, 
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
+Tato systémová funkce bude mít prospěch z [indexu rozsahu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 

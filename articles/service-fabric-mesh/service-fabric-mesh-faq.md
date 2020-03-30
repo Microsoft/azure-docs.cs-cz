@@ -1,50 +1,50 @@
 ---
-title: Běžné otázky pro síť Azure Service Fabric
-description: Seznamte se s nejčastějšími dotazy a odpověďmi na Azure Service Fabric sítě.
+title: Běžné otázky pro síť Azure Service Fabric Mesh
+description: Přečtěte si o často kladených otázkách a odpovědích pro Azure Service Fabric Mesh.
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252493"
 ---
-# <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy týkající se Service Fabric sítě
+# <a name="commonly-asked-service-fabric-mesh-questions"></a>Běžně kladené otázky service fabric mesh
 
-Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Tento článek obsahuje odpovědi na nejčastější dotazy.
+Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Tento článek obsahuje odpovědi na často kladené otázky.
 
-## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Návody nahlásit problém nebo položit otázku?
+## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Jak nahlásím problém nebo položím otázku?
 
-Položte otázky, Získejte odpovědi od techniků Microsoftu a ohlaste problémy v [úložišti GitHub Service-Fabric-mřížka-Preview](https://aka.ms/sfmeshissues).
+Ptejte se, získejte odpovědi od techniků microsoftu a nahlaste problémy v [úložišti GitHub](https://aka.ms/sfmeshissues).
 
 ## <a name="quota-and-cost"></a>Kvóta a náklady
 
 ### <a name="what-is-the-cost-of-participating-in-the-preview"></a>Jaké jsou náklady na účast ve verzi Preview?
 
-V tuto chvíli nejsou žádné poplatky za nasazení aplikací nebo kontejnerů do sítě ve verzi Preview. Sledujte prosím aktualizace, které se můžou povolit pro účely fakturace. Doporučujeme však odstranit prostředky, které nasadíte, a nenechat je spuštěny, pokud je aktivně netestujete.
+V současné době nejsou žádné poplatky za nasazení aplikací nebo kontejnerů do náhledu sítě. Prosím, sledujte aktualizace v květnu pro povolení pro fakturaci. Doporučujeme vám však odstranit prostředky, které nasazujete, a nenechat je spuštěné, pokud je aktivně netestujete.
 
-### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>Je k dispozici limit kvóty počtu jader a paměti RAM?
+### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>Existuje limit kvóty počtu jader a paměti RAM?
 
 Ano. Kvóty pro každé předplatné jsou:
 
-- Počet aplikací: 5
-- Počet jader na aplikaci: 12
-- Celková velikost paměti RAM na aplikaci: 48 GB
-- Koncové body sítě a příchozího přenosu dat: 5
+- Počet žádostí: 5
+- Jader na aplikaci: 12
+- Celková ram na aplikaci: 48 GB
+- Koncových bodů sítě a příchozího přenosu dat: 5
 - Svazky Azure, které můžete připojit: 10
 - Počet replik služby: 3
-- Největší kontejner, který můžete nasadit, je omezený na 4 jádra a 16GB RAM.
-- Do kontejnerů můžete rozdělit částečné jádra v přírůstcích po 0,5 jader, až do maximálního počtu 6 jader.
+- Největší kontejner, který můžete nasadit, je omezen na 4 jádra a 16GB RAM.
+- Částečné jádra můžete přidělit kontejnerům v krocích po 0,5 jádrech, maximálně však 6 jader.
 
-### <a name="how-long-can-i-leave-my-application-deployed"></a>Jak dlouho můžu aplikaci nechat nasazenou?
+### <a name="how-long-can-i-leave-my-application-deployed"></a>Jak dlouho mohu nechat aplikaci nasazenou?
 
-V současné době jsme omezili životnost aplikace na dva dny. Je to kvůli maximalizaci používání volných jader přidělených ve verzi Preview. V důsledku toho je povoleno spouštět dané nasazení nepřetržitě po dobu 48 hodin, po uplynutí této doby bude ukončena.
+V současné době jsme omezili životnost aplikace na dva dny. To je s cílem maximalizovat využití volných jader přidělených náhledu. V důsledku toho můžete spustit pouze dané nasazení nepřetržitě po dobu 48 hodin, po které bude vypnuto.
 
-Pokud se to zobrazí, můžete ověřit, že se systém ukončí, spuštěním příkazu `az mesh app show` v rozhraní příkazového řádku Azure CLI. Zkontrolujte, jestli vrací `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Pokud se to stane, můžete ověřit, že systém `az mesh app show` jej vypnout spuštěním příkazu v nastavení příkazu Azure. Zkontrolujte, zda se vrátí`"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
-Příklad: 
+Například: 
 
 ```azurecli
 az mesh app show --resource-group myResourceGroup --name helloWorldApp
@@ -73,18 +73,18 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 }
 ```
 
-Pokud chcete odstranit skupinu prostředků, použijte příkaz `az group delete <nameOfResourceGroup>`.
+Chcete-li odstranit skupinu `az group delete <nameOfResourceGroup>` prostředků, použijte příkaz.
 
 ## <a name="deployments"></a>Nasazení
 
-### <a name="what-container-images-are-supported"></a>Jaké image kontejnerů se podporují?
+### <a name="what-container-images-are-supported"></a>Jaké image kontejnerů jsou podporovány?
 
-Pokud vyvíjíte na počítači se systémem Windows Update Creators Update (verze 1709), můžete použít pouze image Windows verze 1709 Docker.
+Pokud vyvíjíte na Windows Fall Creators Update (verze 1709) počítač, můžete použít pouze Windows verze 1709 docker image.
 
-Pokud vyvíjíte na počítači s Windows 10. dubna 2018 Update (verze 1803), můžete použít image Windows verze 1709 nebo Windows verze 1803 Docker.
+Pokud vyvíjíte na počítači s aktualizací windows 10 z dubna 2018 (verze 1803), můžete použít buď windows verze 1709 nebo windows verze 1803 docker image.
 
-K nasazení služeb je možné použít následující image operačního systému kontejnerů:
-- Windows – windowsservercore a nanoserver
+K nasazení služeb lze použít následující image operačního operačního centra kontejneru:
+- Windows - windowsservercore a nanoserver
     - Windows Server 1709
     - Windows Server 1803
     - Windows Server 1809
@@ -93,67 +93,67 @@ K nasazení služeb je možné použít následující image operačního systé
     - Žádná známá omezení
 
 > [!NOTE]
-> Nástroje sady Visual Studio pro síť ještě nepodporují nasazování do kontejnerů Windows Server 2019 a 1809.
+> Nástroje Visual Studio pro mesh zatím nepodporují nasazení do kontejnerů Windows Server 2019 a 1809.
 
-### <a name="what-types-of-applications-can-i-deploy"></a>Jaké typy aplikací můžu nasadit? 
+### <a name="what-types-of-applications-can-i-deploy"></a>Jaké typy aplikací lze nasadit? 
 
-Můžete nasadit cokoli, co běží v kontejnerech, které vyhovují omezením uvedeným v prostředku aplikace (Další informace o kvótách najdete výše). Pokud zjistíme, že používáte síť pro spouštění neplatných úloh nebo zneužití systému (například dolování), vyhrazujeme si právo ukončit vaše nasazení a seznamu blokovaných vaše předplatné na používání služby. Pokud máte nějaké dotazy ke spuštění konkrétního zatížení, obraťte se na nás. 
+Můžete nasadit cokoli, co běží v kontejnerech, které se vejdou do omezení kladenna na prostředek aplikace (viz výše další informace o kvótách). Pokud zjistíme, že používáte Mesh pro spouštění nelegálních úloh nebo zneužívání systému (tj. těžba), vyhrazujeme si právo ukončit vaše nasazení a zablokovat spuštění vašeho předplatného ve službě. Pokud máte nějaké dotazy ohledně spuštění konkrétního pracovního vytížení, obraťte se na nás. 
 
-## <a name="developer-experience-issues"></a>Problémy s vývojářským prostředím
+## <a name="developer-experience-issues"></a>Problémy s vývojářskými zkušenostmi
 
-### <a name="dns-resolution-from-a-container-doesnt-work"></a>Překlad DNS z kontejneru nefunguje
+### <a name="dns-resolution-from-a-container-doesnt-work"></a>Rozlišení DNS z kontejneru nefunguje
 
-Odchozí dotazy DNS z kontejneru do služby Service Fabric DNS za určitých okolností nemusí selhat. Probíhá šetření. Pro zmírnění:
+Odchozí dotazy DNS z kontejneru do služby DNS Service Fabric může za určitých okolností selhat. Tohle se vyšetřuje. Chcete-li zmírnit:
 
-- Použijte Windows Update Creators Update (verze 1709) nebo vyšší jako základní image kontejneru.
-- Pokud název služby samotný nefunguje, zkuste plně kvalifikovaný název: ServiceName. ApplicationName.
-- V souboru Docker pro vaši službu přidejte `EXPOSE <port>`, kde port je port, na kterém službu zveřejňujete. Příklad:
+- Jako základní bitovou kopii kontejneru použijte aktualizaci Windows Fall Creators (verze 1709) nebo vyšší.
+- Pokud samotný název služby nefunguje, zkuste plně kvalifikovaný název: ServiceName.ApplicationName.
+- V souboru Dockeru pro `EXPOSE <port>` vaši službu přidejte, kde port je port, na kterém vystavujete službu. Například:
 
 ```Dockerfile
 EXPOSE 80
 ```
 
-### <a name="dns-does-not-work-the-same-as-it-does-for-service-fabric-development-clusters-and-in-mesh"></a>Služba DNS nefunguje stejně jako u Service Fabricch vývojových clusterů a v síti.
+### <a name="dns-does-not-work-the-same-as-it-does-for-service-fabric-development-clusters-and-in-mesh"></a>Služba DNS nefunguje stejně jako u vývojových clusterů Service Fabric a v síti Mesh
 
-Možná budete muset v místním vývojovém clusteru odkázat na jiné služby než v Azure.
+Možná budete muset odkazovat na služby odlišně v clusteru místního vývoje než v Azure Mesh.
 
-V místním vývojovém clusteru použijte `{serviceName}.{applicationName}`. V Azure Service Fabric sítě použijte `{servicename}`. 
+V clusteru místního vývoje použijte `{serviceName}.{applicationName}`. V azure service fabric `{servicename}`mesh použijte . 
 
-Síť Azure v současné době nepodporuje překlad DNS napříč aplikacemi.
+Azure Mesh momentálně nepodporuje rozlišení DNS napříč aplikacemi.
 
-Další známé problémy se službou DNS při spuštění Service Fabric vývojového clusteru ve Windows 10 najdete v tématu: [ladění kontejnerů Windows](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) a [známých problémů se službou DNS](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
+Další známé problémy se službou DNS se spuštěním vývojového clusteru Service Fabric ve Windows 10 najdete v [tématu Ladění kontejnerů systému Windows](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) a [známých problémů se službou DNS](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
 
-### <a name="networking"></a>Sítě
+### <a name="networking"></a>Síťové služby
 
-NAT sítě ServiceFabric může zmizet při používání aplikace na vašem místním počítači. Chcete-li diagnostikovat, zda k tomu došlo, spusťte z příkazového řádku následující příkaz:
+ServiceFabric sítě NAT může zmizet při spuštění aplikace v místním počítači. Chcete-li diagnostikovat, zda k tomu došlo, spusťte z příkazového řádku následující:
 
-`docker network ls` a Všimněte si, zda jsou uvedeny `servicefabric_nat`.  Pokud ne, spusťte následující příkaz: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls`a všimněte si, zda `servicefabric_nat` je uveden.  Pokud ne, spusťte následující příkaz:`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
-Tím se problém vyřeší i v případě, že je aplikace už nasazená místně a ve stavu není v pořádku.
+To bude řešit problém i v případě, že aplikace je již nasazena místně a v stavu není v pořádku.
 
-### <a name="issues-running-multiple-apps"></a>Problémy s provozem více aplikací
+### <a name="issues-running-multiple-apps"></a>Problémy se spuštěním více aplikací
 
-Můžete narazit na dostupnost procesoru a omezení, které jsou ve všech aplikacích vyřešené. Pro zmírnění:
-- Vytvořte cluster s pěti uzly.
-- Snižte využití CPU ve službách napříč nasazenou aplikací. Například v souboru Service. yaml vaší služby změňte `cpu: 1.0` na `cpu: 0.5`
+Může dojít k dostupnosti procesoru a omezení jsou stanoveny ve všech aplikacích. Chcete-li zmírnit:
+- Vytvořte cluster pěti uzlů.
+- Snižte využití procesoru ve službách v celé aplikaci, která je nasazená. Například v souboru service.yaml vaší `cpu: 1.0` služby změňte na`cpu: 0.5`
 
-Do clusteru s jedním uzlem nelze nasadit více aplikací. Pro zmírnění:
+Do clusteru s jedním uzlem nelze nasadit více aplikací. Chcete-li zmírnit:
 - Při nasazování více aplikací do místního clusteru použijte cluster s pěti uzly.
-- Odeberte aplikace, které aktuálně netestujete.
+- Odeberte aplikace, které právě netestujete.
 
-### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>Nástroje VS mají omezené podpory pro kontejnery Windows.
+### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>Nástroj vs má omezenou podporu pro kontejnery systému Windows
 
-Nástroje sady Visual Studio podporují nasazení kontejnerů Windows jenom se základní verzí operačního systému Windows Server 1709 a 1803 ještě dnes. 
+Nástroje Visual Studio podporují pouze nasazení kontejnerů Windows se základní verzí operačního systému Windows Server 1709 a 1803 dnes. 
 
-## <a name="feature-gaps-and-other-known-issues"></a>Mezery funkcí a další známé problémy
+## <a name="feature-gaps-and-other-known-issues"></a>Mezery v funkcích a další známé problémy
 
-### <a name="after-deploying-my-application-the-network-resource-associated-with-it-does-not-have-an-ip-address"></a>Po nasazení aplikace není k síťovému prostředku, který je k němu přidružená, IP adresa.
+### <a name="after-deploying-my-application-the-network-resource-associated-with-it-does-not-have-an-ip-address"></a>Po nasazení aplikace nemá síťový prostředek, který je k ní přidružen, adresu IP
 
-Došlo k známému problému, při kterém se IP adresa nestane hned k dispozici. Pokud chcete zobrazit přidruženou IP adresu, zkontrolujte stav síťového prostředku během několika minut.
+Existuje známý problém, kdy ip adresa není k dispozici okamžitě. Zkontrolujte stav síťového prostředku během několika minut a zobceji přidruženou adresu IP.
 
-### <a name="my-application-fails-to-access-the-right-networkvolume-resource"></a>Aplikaci se nepodařilo získat přístup ke správnému prostředku sítě nebo svazku
+### <a name="my-application-fails-to-access-the-right-networkvolume-resource"></a>Aplikace se nezdaří přístup k správné síti /svazku prostředku
 
-V modelu aplikace použijte úplné ID prostředku pro sítě a svazky, abyste měli přístup k přidruženému prostředku. Tady je příklad z ukázky rychlého startu:
+V modelu aplikace použijte úplné ID prostředku pro sítě a svazky, abyste měli přístup k přidruženému prostředku. Zde je příklad z ukázky rychlého startu:
 
 ```json
 "networkRefs": [
@@ -163,10 +163,10 @@ V modelu aplikace použijte úplné ID prostředku pro sítě a svazky, abyste m
 ]
 ```
 
-### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>Při horizontálním navýšení kapacity budou ovlivněny všechny moje kontejnery, včetně spuštěných.
+### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>Když horizontální navýšení kapacity, všechny mé kontejnery jsou ovlivněny, včetně těch, které běží
 
 Jedná se o chybu a je implementována oprava.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Service Fabric sítě najdete v [přehledu](service-fabric-mesh-overview.md).
+Další informace o síti Service Fabric mesh naleznete v [přehledu](service-fabric-mesh-overview.md).

@@ -1,27 +1,27 @@
 ---
-title: Připojit tajný svazek ke skupině kontejnerů
-description: Naučte se připojit tajný svazek pro ukládání citlivých informací pro přístup k vašim instancím kontejnerů.
+title: Připojení tajného svazku do skupiny kontejnerů
+description: Zjistěte, jak připojit tajný svazek pro ukládání citlivých informací pro přístup k instancí kontejneru
 ms.topic: article
 ms.date: 07/19/2018
 ms.openlocfilehash: 913e3d147519bc73c3c57b8da383f9d373f3666d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78249941"
 ---
-# <a name="mount-a-secret-volume-in-azure-container-instances"></a>Připojit tajný svazek v Azure Container Instances
+# <a name="mount-a-secret-volume-in-azure-container-instances"></a>Připojení tajného svazku v instancích kontejnerů Azure
 
-Použijte *tajný* svazek k poskytnutí citlivých informací do kontejnerů ve skupině kontejnerů. *Tajný* svazek ukládá vaše tajné kódy do souborů ve svazku, které jsou přístupné pro kontejnery ve skupině kontejnerů. Uložením tajných kódů do *tajného* svazku se můžete vyhnout přidávání citlivých dat, jako jsou klíče SSH nebo pověření databáze, do kódu aplikace.
+Pomocí *tajného* svazku dodávat citlivé informace do kontejnerů ve skupině kontejnerů. Tajný *secret* svazek ukládá tajné klíče v souborech v rámci svazku, přístupné kontejnery ve skupině kontejnerů. Uložením tajných kódů v *tajném* svazku se můžete vyhnout přidávání citlivých dat, jako jsou klíče SSH nebo pověření databáze, do kódu aplikace.
 
-Všechny *tajné* svazky jsou založené na [tmpfs][tmpfs], který je zálohovaný systémem souborů RAM. jejich obsah se nikdy nezapisuje do úložiště, které není volatile.
+Všechny *tajné* svazky jsou zálohovány [tmpfs][tmpfs], souborový systém podporovaný ram; jejich obsah se nikdy nezapisuje do stálého úložiště.
 
 > [!NOTE]
-> *Tajné* svazky jsou aktuálně omezené na kontejnery Linux. Přečtěte si, jak předat bezpečnostní proměnné prostředí pro kontejnery Windows i Linux v tématu [nastavení proměnných prostředí](container-instances-environment-variables.md). Pracujeme na tom, abychom do kontejnerů Windows přenesli všechny funkce. aktuální rozdíly na platformách najdete v [přehledu](container-instances-overview.md#linux-and-windows-containers).
+> *Tajné* svazky jsou v současné době omezeny na linuxové kontejnery. Zjistěte, jak předat proměnné zabezpečeného prostředí pro kontejnery Windows i Linux v [proměnných prostředí Set](container-instances-environment-variables.md). Zatímco pracujeme na tom, aby všechny funkce do kontejnerů Windows, můžete najít aktuální rozdíly platformy v [přehledu](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="mount-secret-volume---azure-cli"></a>Připojit tajný svazek – Azure CLI
 
-Pokud chcete nasadit kontejner s jedním nebo více tajnými klíči pomocí rozhraní příkazového řádku Azure, zahrňte do příkazu [AZ Container Create][az-container-create] parametry `--secrets` a `--secrets-mount-path`. Tento příklad připojí *tajný* svazek skládající se ze dvou tajných klíčů, "mysecret1" a "mysecret2", na adrese `/mnt/secrets`:
+Chcete-li nasadit kontejner s jedním nebo více tajnými kódy pomocí rozhraní příkazového řádku Azure, zahrňte parametry `--secrets` a `--secrets-mount-path` v příkazu [az container create.][az-container-create] Tento příklad připojí *tajný* svazek skládající se ze dvou tajných kódů, `/mnt/secrets`"mysecret1" a "mysecret2", na adrese :
 
 ```azurecli-interactive
 az container create \
@@ -32,7 +32,7 @@ az container create \
     --secrets-mount-path /mnt/secrets
 ```
 
-Následující příkaz [AZ Container exec][az-container-exec] Output zobrazuje otevření prostředí v běžícím kontejneru, výpis souborů v rámci tajného svazku a zobrazování jejich obsahu:
+Následující výstup [az kontejneru exec][az-container-exec] ukazuje otevření prostředí v běžícím kontejneru, výpis souborů v tajném svazku a poté zobrazení jejich obsahu:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
@@ -50,13 +50,13 @@ My second secret BAR
 Bye.
 ```
 
-## <a name="mount-secret-volume---yaml"></a>Připojit tajný svazek – YAML
+## <a name="mount-secret-volume---yaml"></a>Připojit tajný svazek - YAML
 
-Skupiny kontejnerů můžete nasadit taky pomocí Azure CLI a [šablony YAML](container-instances-multi-container-yaml.md). Nasazení šablonou YAML je upřednostňovanou metodou při nasazování skupin kontejnerů, které se skládají z více kontejnerů.
+Skupiny kontejnerů můžete také nasadit pomocí příkazového příkazu Konto Azure a [šablony YAML](container-instances-multi-container-yaml.md). Nasazení šablonou YAML je upřednostňovanou metodou při nasazování skupin kontejnerů skládajících se z více kontejnerů.
 
-Při nasazení se šablonou YAML musí být tajné hodnoty v šabloně **zakódované v kódování Base64** . Tajné hodnoty se ale v rámci souborů v kontejneru zobrazí ve formátu prostého textu.
+Při nasazení se šablonou YAML musí být tajné hodnoty **v šabloně kódovány jako Base64.** Tajné hodnoty se však zobrazí ve formátu prostého textu v souborech v kontejneru.
 
-Následující šablona YAML definuje skupinu kontejnerů s jedním kontejnerem, který při `/mnt/secrets`připojí *tajný* svazek. Tajný svazek má dva tajné klíče, "mysecret1" a "mysecret2".
+Následující šablona YAML definuje skupinu kontejnerů s *secret* jedním `/mnt/secrets`kontejnerem, který připojí tajný svazek na . Tajný svazek má dvě tajemství, "mysecret1" a "mysecret2."
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -87,27 +87,27 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-K nasazení se šablonou YAML uložte předchozí YAML do souboru s názvem `deploy-aci.yaml`a potom spusťte příkaz [AZ Container Create][az-container-create] s parametrem `--file`:
+Chcete-li nasadit pomocí šablony YAML, uložte předchozí `deploy-aci.yaml`hodnotu YAML do souboru s názvem , poté spusťte příkaz [az container create][az-container-create] s parametrem: `--file`
 
 ```azurecli-interactive
 # Deploy with YAML template
 az container create --resource-group myResourceGroup --file deploy-aci.yaml
 ```
 
-## <a name="mount-secret-volume---resource-manager"></a>Připojit ke svazku tajného kódu – Správce prostředků
+## <a name="mount-secret-volume---resource-manager"></a>Připojit tajný svazek – Správce prostředků
 
-Kromě nasazení CLI a YAML můžete nasadit skupinu kontejnerů pomocí [šablony Azure správce prostředků](/azure/templates/microsoft.containerinstance/containergroups).
+Kromě nasazení cli a YAML můžete nasadit skupinu kontejnerů pomocí šablony Azure [Resource Manager](/azure/templates/microsoft.containerinstance/containergroups).
 
-Nejdřív naplňte pole `volumes` do části `properties` skupiny kontejnerů v šabloně. Při nasazení pomocí šablony Správce prostředků musí být tajné hodnoty v šabloně **zakódované v kódování Base64** . Tajné hodnoty se ale v rámci souborů v kontejneru zobrazí ve formátu prostého textu.
+Nejprve naplňte `volumes` pole v `properties` části skupiny kontejnerů šablony. Při nasazení pomocí šablony Správce prostředků musí být tajné hodnoty **v šabloně kódovány jako Base64.** Tajné hodnoty se však zobrazí ve formátu prostého textu v souborech v kontejneru.
 
-Pak u každého kontejneru ve skupině kontejnerů, do které chcete připojit *tajný* svazek, naplňte pole `volumeMounts` v části `properties` definice kontejneru.
+Dále pro každý kontejner ve skupině kontejnerů, ve *secret* kterém chcete připojit `volumeMounts` tajný `properties` svazek, naplňte pole v části definice kontejneru.
 
-Následující šablona Správce prostředků definuje skupinu kontejnerů s jedním kontejnerem, který při `/mnt/secrets`připojí *tajný* svazek. Tajný svazek má dva tajné klíče, "mysecret1" a "mysecret2".
+Následující šablona Správce prostředků definuje skupinu kontejnerů *secret* s jedním `/mnt/secrets`kontejnerem, který připojí tajný svazek na adrese . Tajný svazek má dvě tajemství, "mysecret1" a "mysecret2."
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-Pokud chcete nasadit šablonu Správce prostředků, uložte předchozí JSON do souboru s názvem `deploy-aci.json`a pak spusťte příkaz [AZ Group Deployment Create][az-group-deployment-create] s parametrem `--template-file`:
+Chcete-li nasadit pomocí šablony Správce prostředků, uložte `deploy-aci.json`předchozí json do souboru s `--template-file` názvem , pak spusťte příkaz create nasazení [skupiny az][az-group-deployment-create] s parametrem:
 
 ```azurecli-interactive
 # Deploy with Resource Manager template
@@ -118,15 +118,15 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 
 ### <a name="volumes"></a>Svazky
 
-Naučte se připojit další typy svazků v Azure Container Instances:
+Zjistěte, jak připojit další typy svazků v instanci kontejneru Azure:
 
 * [Připojení sdílené složky ve službě Azure Container Instances](container-instances-volume-azure-files.md)
-* [Připojení svazku emptyDir v Azure Container Instances](container-instances-volume-emptydir.md)
-* [Připojení svazku Gitrepo nepodporují v Azure Container Instances](container-instances-volume-gitrepo.md)
+* [Připojení svazku emptyDir v instancích kontejnerů Azure](container-instances-volume-emptydir.md)
+* [Připojení svazku gitRepo v instanci kontejneru Azure](container-instances-volume-gitrepo.md)
 
-### <a name="secure-environment-variables"></a>Proměnné prostředí zabezpečení
+### <a name="secure-environment-variables"></a>Proměnné bezpečného prostředí
 
-Další metodou pro poskytování citlivých informací do kontejnerů (včetně kontejnerů Windows) je použití [proměnných zabezpečeného prostředí](container-instances-environment-variables.md#secure-values).
+Další metodou pro poskytování citlivých informací kontejnerům (včetně kontejnerů systému Windows) je použití [proměnných zabezpečeného prostředí](container-instances-environment-variables.md#secure-values).
 
 <!-- LINKS - External -->
 [tmpfs]: https://wikipedia.org/wiki/Tmpfs

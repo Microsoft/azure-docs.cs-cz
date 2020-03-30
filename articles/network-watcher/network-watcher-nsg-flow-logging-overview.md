@@ -1,7 +1,7 @@
 ---
-title: Úvod do protokolování toků pro skupin zabezpečení sítě
+title: Úvod do protokolování toku pro nevládní společnosti
 titleSuffix: Azure Network Watcher
-description: Tento článek vysvětluje, jak používat funkci NSG Flow Logs v Azure Network Watcher.
+description: Tento článek vysvětluje, jak používat funkci protokolů toku nsg služby Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,96 +13,96 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: fb4a55b9757748581e26f3d6594f9be2139658cb
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78228250"
 ---
-# <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
+# <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod k protokolování toku pro skupiny zabezpečení sítě
 
-Protokoly toku NSG (Network Security Group) jsou funkce Network Watcher, které vám umožní zobrazit informace o příchozích a odchozích přenosech IP adres prostřednictvím NSG. Protokoly toků jsou napsané ve formátu JSON a zobrazují odchozí a příchozí toky na základě jednotlivých pravidel. síťové rozhraní (NIC) tok platí pro 5 – informace o toku (zdrojová nebo cílová IP adresa, zdrojový/cílový port a protokol), pokud byl provoz povolený nebo zakázaný, a ve verzi 2, informace o propustnosti (bajty a pakety).
+Protokoly toku skupiny zabezpečení sítě (NSG) představují funkci ve službě Network Watcher, která umožňuje zobrazit informace o příchozím a odchozím provozu IP přes NSG. Protokoly toku jsou ve formátu JSON a uvádějí odchozí a příchozí toky pro jednotlivá pravidla, síťové rozhraní (NIC), na které se tok vztahuje, 5člennou řazenou kolekci členů pro daný tok (zdrojová/cílová IP adresa, zdrojový/cílový port a protokol), údaj, jestli byl provoz povolený nebo odepřený, a ve verzi 2 také informace o propustnosti (bajty a pakety).
 
 
-![Přehled protokolů toků](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
+![přehled protokolů toku](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
 
-Zatímco Flow zaznamenává cílový skupin zabezpečení sítě, nezobrazí se stejně jako ostatní protokoly. Protokoly toku se ukládají jenom v rámci účtu úložiště a používají cestu k protokolování, která je znázorněná v následujícím příkladu:
+Zatímco tok protokoly cílnit skupiny nsg, nejsou zobrazeny stejné jako ostatní protokoly. Protokoly toku jsou uloženy pouze v rámci účtu úložiště a postupujte podle cesty protokolování uvedené v následujícím příkladu:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
-Můžete analyzovat protokoly toků a získat přehled o provozu v síti pomocí [analýzy provozu](traffic-analytics.md).
+Protokoly toku můžete analyzovat a získat přehled o síťovém provozu pomocí [analýzy provozu](traffic-analytics.md).
 
-Stejné zásady uchovávání informací, které se zobrazují pro jiné protokoly, se vztahují na protokoly toků. Můžete nastavit zásady uchovávání protokolů od 1 dne do 365 dnů. Pokud nejsou nastavené zásady uchovávání informací, protokoly se uchovávají trvale.
+Stejné zásady uchovávání informací pro jiné protokoly platí pro protokoly toku. Zásady uchovávání informací protokolu můžete nastavit od 1 dne do 365 dnů. Pokud zásady uchovávání informací není nastavena, protokoly jsou udržovány navždy.
 
 ## <a name="log-file"></a>Soubor protokolu
 
-Protokoly toků obsahují následující vlastnosti:
+Protokoly toku zahrnují následující vlastnosti:
 
-* **čas** , kdy se událost zaznamenala
-* **SystemId** – ID prostředku skupiny zabezpečení sítě.
-* **Category** – kategorie události. Kategorie je vždycky **NetworkSecurityGroupFlowEvent**
-* **ResourceID** – ID prostředku NSG
-* **OperationName** – vždy NetworkSecurityGroupFlowEvents
-* **vlastnosti** – kolekce vlastností toku
-    * **Verze** čísla verze schématu události protokolu toku
-    * **toky** – kolekce toků. Tato vlastnost má pro různá pravidla více záznamů.
-        * pravidlo **pravidla** , pro které jsou toky uvedené
-            * **toky** – kolekce toků
-                * **Mac** – adresa MAC síťové karty pro virtuální počítač, ve kterém se tok shromáždil
-                * **flowTuples** – řetězec, který obsahuje více vlastností pro řazenou kolekci členů toku ve formátu odděleném čárkami
-                    * **Časové razítko** – tato hodnota představuje časové razítko, kdy se tok objevil ve formátu epocha systému UNIX.
-                    * **Zdrojová IP adresa** – zdrojová IP adresa
-                    * **Cílová IP adresa** – cílová IP adresa
+* **time** - Čas, kdy byla událost zaznamenána
+* **systemId** - Id prostředku skupiny zabezpečení sítě.
+* **kategorie** - Kategorie události. Kategorie je vždy **NetworkSecurityGroupFlowEvent**
+* **resourceid** - ID prostředku skupiny nsg
+* **operationName** - Always NetworkSecurityGroupFlowEvents
+* **vlastnosti** - Kolekce vlastností toku
+    * **Verze** – číslo verze schématu událostí protokolu toku
+    * **toky** - Kolekce toků. Tato vlastnost má více položek pro různá pravidla
+        * **pravidlo** - pravidlo, pro které jsou uvedeny toky
+            * **toky** - sbírka toků
+                * **mac** – MAC adresa nic pro virtuální počítač, kde byl shromážděn tok
+                * **flowTuples** - Řetězec, který obsahuje více vlastností pro nit křísí toku ve formátu odděleném čárkou
+                    * **Časové razítko** - Tato hodnota je časové razítko, kdy došlo k toku ve formátu unixové epochy
+                    * **Zdrojová IP** adresa – zdrojová IP adresa
+                    * **Cílová IP** adresa – cílová ADRESA IP
                     * **Zdrojový port** – zdrojový port
                     * **Cílový port** – cílový port
-                    * **Protokol** – protokol toku. Platné hodnoty jsou **T** pro TCP a **u** pro UDP
-                    * **Tok přenosů** – směr toku přenosů. Platné hodnoty jsou pro **příchozí a výstupní** **hodnoty pro odchozí** .
-                    * **Rozhodnutí o provozu** – zda byl provoz povolen nebo odepřen. Platné **hodnoty jsou pro** povolené a **D** pro zamítnutí.
-                    * **Stav toku – pouze verze 2** – zachycuje stav toku. Možné stavy jsou při vytváření toku **B**: begin. Statistiky nejsou k dispozici. **C**: pokračuje se na průběžný tok. Statistika je k dispozici v intervalu 5 minut. **E**: end, když se ukončí tok. Statistiky jsou k dispozici.
-                    * **Pakety – zdrojová do cíle – jenom verze 2** Celkový počet paketů TCP nebo UDP odeslaných ze zdroje do cíle od poslední aktualizace.
-                    * **Odeslané bajty – pouze zdroj do cíle – verze 2** Celkový počet bajtů paketů TCP nebo UDP odeslaných ze zdroje do cíle od poslední aktualizace. Bajty paketů zahrnují hlavičku paketu a datovou část.
-                    * **Pakety – cíl až do source-verze 2** Celkový počet paketů TCP nebo UDP odeslaných z cíle do zdroje od poslední aktualizace.
-                    * **Odeslané bajty – cíl ke zdroji – verze 2** Celkový počet bajtů paketů TCP a UDP odeslaných z cíle do zdroje od poslední aktualizace. Bajty paketů zahrnují hlavičku paketu a datovou část.
+                    * **Protokol** - Protokol toku. Platné hodnoty jsou **T** pro TCP a **U** pro UDP
+                    * **Dopravní tok** - Směr dopravního toku. Platné hodnoty jsou **I** pro příchozí a **O** pro odchozí.
+                    * **Dopravní rozhodnutí** - Zda byl povolen nebo odepřen provoz. Platné hodnoty jsou **A** pro povoleno a **D** pro odepřeno.
+                    * **Stav toku – pouze verze 2** – zachycuje stav toku. Možné stavy jsou **B**: Begin, když je vytvořen tok. Statistiky nejsou k dispozici. **C**: Pokračování pro probíhající tok. Statistiky jsou poskytovány v 5minutových intervalech. **E**: Konec, když je tok ukončen. Statistiky jsou poskytovány.
+                    * **Pakety - Zdroj do cíle - pouze verze 2** Celkový počet paketů TCP nebo UDP odeslaných ze zdroje do cíle od poslední aktualizace.
+                    * **Odeslané bajty – Zdroj do cíle – pouze verze 2** Celkový počet bajtů paketů TCP nebo UDP odeslaných ze zdroje do cíle od poslední aktualizace. Bajty paketů zahrnují hlavičku paketu a datovou část.
+                    * **Pakety - cíl ke zdroji - pouze verze 2** Celkový počet paketů TCP nebo UDP odeslaných z cíle do zdroje od poslední aktualizace.
+                    * **Odeslané bajty – cíl ke zdroji – pouze verze 2** Celkový počet bajtů paketů TCP a UDP odeslaných z cíle ke zdroji od poslední aktualizace. Bajty paketů zahrnují hlavičku paketů a datová část.
 
-## <a name="nsg-flow-logs-version-2"></a>Protokoly toku NSG verze 2
+## <a name="nsg-flow-logs-version-2"></a>Protokoly toku nsg verze 2
 
-Verze 2 protokolů zavádí stav toku. Můžete nakonfigurovat, kterou verzi protokolů Flow obdržíte. Informace o tom, jak povolit protokoly toku, najdete v tématu [Povolení protokolování toku NSG](network-watcher-nsg-flow-logging-portal.md).
+Verze 2 protokolů zavádí stav toku. Můžete nakonfigurovat, kterou verzi protokolů toku obdržíte. Informace o povolení protokolů toku naleznete [v tématu Povolení protokolování toku toku nsg](network-watcher-nsg-flow-logging-portal.md).
 
-Stav toku *B* se zaznamenává při zahájení toku. Stav toku *C* a stav toku *E* jsou stavy, které označují pokračování toku a ukončení toku v uvedeném pořadí. Stavy *C* a *E* obsahují informace o šířce pásma provozu.
+Stav toku *B* se zaznamená při zahájení toku. Stav toku *C* a stav toku *E* jsou stavy, které označují pokračování zakončení toku a toku. Stavy *C* i *E* obsahují informace o šířce pásma provozu.
 
-**Příklad**: toky řazené kolekce členů z konverzace TCP mezi 185.170.185.105:35370 a 10.2.0.4:23:
+**Příklad**: Tok řazené kolekce členů z konverzace TCP mezi 185.170.185.105:35370 a 10.2.0.4:23:
 
-"1493763938, 185.170.185.105, 10.2.0.4, 35370, 23, T, I, A, B,,,," "1493695838, 185.170.185.105, 10.2.0.4, 35370, 23, T, I, A, C, 1021, 588096, 8005, 4610880" "1493696138, 185.170.185.105, 10.2.0.4, 35370, 23, T, I, A, E, 52, 29952, 47, 27072"
+"1493763938,185.170.185.105,10.2.0.4,35370,23,T,I,A,B,,,," "1493695838,185.170.185.105,10.2.2.0.4,35370,23,T,I,A,C,1021,588096,8005,4610880" "1493696138,185.170.185.105,10.2.0.4,35370,23,T,I,A,E,52,29952,47,27072"
 
-Pro pokračování ve stavech *C* a koncových *E* toků jsou počty bajtů a paketů agregované od času předchozího záznamu řazené kolekce členů toku. Po odkazování na předchozí příklad konverzace je celkový počet přenesených paketů 1021 + 52 + 8005 + 47 = 9125. Celkový počet přenesených bajtů je 588096 + 29952 + 4610880 + 27072 = 5256000.
+Pro pokračování *C* a konec *E* toku stavy bajtů a paketů jsou agregační počty z doby předchozího toku n-tice záznamu. Odkazující na předchozí ukázkovou konverzaci je celkový počet přenesených paketů 1021+52+8005+47 = 9125. Celkový počet převedených bajtů je 588096+29952+4610880+27072 = 5256000.
 
-Níže uvedený text je příkladem protokolu toku. Jak vidíte, existuje více záznamů, které následují seznam vlastností popsaný v předchozí části.
+Následující text je příkladem protokolu toku. Jak můžete vidět, existuje více záznamů, které následují seznam vlastností popsaný v předchozí části.
 
-## <a name="nsg-flow-logging-considerations"></a>NSG Flow – požadavky na protokolování
+## <a name="nsg-flow-logging-considerations"></a>Důležité informace o protokolování toku nksG
 
-**Požadavky na účet úložiště**: 
+**Důležité informace o účtu úložiště**: 
 
-- Umístění: použitý účet úložiště musí být ve stejné oblasti jako NSG.
-- Samoobslužná správa střídání klíčů: Pokud změníte nebo otočíte přístupové klíče k vašemu účtu úložiště, protokoly toku NSG přestanou fungovat. Chcete-li tento problém vyřešit, je nutné zakázat a znovu povolit protokoly toku NSG.
+- Umístění: Použitý účet úložiště musí být ve stejné oblasti jako nsg.
+- Vlastní správa střídání klíčů: Pokud změníte nebo otočíte přístupové klíče k účtu úložiště, protokoly toku skupiny NSG přestanou fungovat. Chcete-li tento problém vyřešit, je nutné zakázat a znovu povolit protokoly toku nsg.
 
-**Povolit protokolování toku NSG na všech skupin zabezpečení sítě připojených k prostředku**: protokolování toků v Azure je nakonfigurované na prostředku NSG. Tok bude přidružen pouze k jednomu NSG pravidlu. Ve scénářích, kdy je využíváno více skupin zabezpečení sítě, doporučujeme, aby bylo povoleno protokolování NSG Flow na všech skupin zabezpečení sítě použilicích podsíť prostředku nebo síťové rozhraní, aby se zajistilo, že bude zaznamenáván veškerý provoz. Další informace najdete v tématu [jak se vyhodnocuje provoz](../virtual-network/security-overview.md#how-traffic-is-evaluated) ve skupinách zabezpečení sítě.
+**Povolte protokolování toku nsg na všech skupinách zabezpečení sítě připojených k prostředku**: Protokolování toku v Azure je nakonfigurované na prostředku skupiny zabezpečení sítě. Tok bude přidružen pouze k jednomu pravidlu služby NSG. Ve scénářích, kde se využívá více skupin nsg, doporučujeme, aby protokolování toku skupiny zabezpečení sítě bylo povoleno na všech skupinách sítě zabezpečení, které používají podsíť nebo síťové rozhraní prostředku, aby bylo zajištěno, že se zaznamená veškerý provoz. Další informace naleznete v [tématu jak se vyhodnocuje provoz](../virtual-network/security-overview.md#how-traffic-is-evaluated) ve skupinách zabezpečení sítě.
 
-**Náklady na protokolování toků**: protokolování toku NSG se účtuje podle objemu vyprodukovaných protokolů. Velký objem přenosů může mít za následek objem protokolu velkého toku a související náklady. Ceny protokolu NSG Flow nezahrnují základní náklady na úložiště. Použití funkce zásady uchovávání informací s protokolováním toku NSG znamená, že se za delší dobu účtují samostatné náklady na úložiště. Pokud nepotřebujete funkci zásad uchovávání informací, doporučujeme nastavit tuto hodnotu na 0. Další informace najdete v tématu [Network Watcher ceny](https://azure.microsoft.com/pricing/details/network-watcher/) a [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/) pro další podrobnosti.
+**Náklady na protokolování toku:** Protokolování toku nsg se účtuje na objemu vytvořených protokolů. Vysoký objem provozu může mít za následek velký objem protokolu toku a související náklady. Ceny protokolu toku nsg nezahrnuje základní náklady na úložiště. Použití funkce zásad uchovávání informací s protokolováním toku toku nsg znamená, že vzniknou samostatné náklady na úložiště po delší dobu. Pokud nepožadujete funkci zásad uchovávání informací, doporučujeme nastavit tuto hodnotu na hodnotu 0. Další informace najdete v tématu [Network Watcher Ceny](https://azure.microsoft.com/pricing/details/network-watcher/) a ceny azure storage [pro](https://azure.microsoft.com/pricing/details/storage/) další podrobnosti.
 
-**Příchozí toky zaznamenané z internetových IP adres do virtuálních počítačů bez veřejných**IP adres: virtuální počítače, které nemají veřejnou IP adresu přiřazenou přes veřejnou IP adresu přidruženou k síťovému rozhraní jako veřejná IP adresa na úrovni instance nebo které jsou součástí základního fondu back-end služby Vyrovnávání zatížení, používají [výchozí SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) a mají IP adresu přiřazenou Azure pro usnadnění odchozího připojení. V důsledku toho může dojít k zobrazení záznamů protokolu toku pro toky z internetových IP adres, pokud je tok určen pro port v rozsahu portů přiřazených pro SNAT. I když Azure nedovolí těmto tokům VIRTUÁLNÍm počítačům, bude se zaprotokolovat a bude se zobrazovat Network Watcher v protokolu NSG toku, který navrhuje. Doporučujeme, aby nevyžádaný příchozí internetový provoz byl explicitně zablokován pomocí NSG.
+**Příchozí toky protokolované z internetových IP adres do virtuálních počítačů bez veřejných IP adres**: Virtuální počítače, které nemají veřejnou IP adresu přiřazenou přes veřejnou IP adresu přidruženou k nic nebo veřejnou IP adresu na úrovni instance nebo které jsou součástí základního back-endového fondu vyrovnávání zatížení, používají [výchozí SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) a mají IP adresu přiřazenou Azure pro usnadnění odchozího připojení. V důsledku toho se mohou zobrazit položky protokolu toku pro toky z internetových IP adres, pokud je tok určen pro port v rozsahu portů přiřazených pro SNAT. Zatímco Azure nepovolí tyto toky do virtuálního počítače, pokus se zaprotokoluje a zobrazí se v protokolu toku NSG sledovacího programu sítě podle návrhu. Doporučujeme, aby byl nevyžádaný příchozí internetový provoz explicitně blokován pomocí sítě zabezpečení sítě.
 
-**Nesprávný počet bajtů a paketů pro bezstavové toky**: [skupiny zabezpečení sítě (skupin zabezpečení sítě)](https://docs.microsoft.com/azure/virtual-network/security-overview) jsou implementované jako [stavová brána firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). Ale mnoho výchozích/interních pravidel, které řídí tok provozu, je implementováno bezstavovým způsobem. Vzhledem k omezením platformy se počty bajtů a paketů nezaznamenávají pro bezstavové toky (tj. přenosy dat procházející v rámci pravidel bez stavu), které se zaznamenávají jenom pro stavové toky. V důsledku toho by se počet bajtů a paketů hlášených v protokolech toku NSG (a Analýza provozu) lišil od skutečných toků. Toto omezení je plánováno od června 2020.
+**Nesprávný počet bajtů a paketů pro toky bezstavové**: [Skupiny zabezpečení sítě (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) jsou implementovány jako [stavová brána firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). Nicméně mnoho výchozí / vnitřní pravidla, která řídí tok provozu jsou implementovány bezstavové způsobem. Z důvodu omezení platformy bajtů a paketů počty nejsou zaznamenány pro bezstavové toky (to znamená, že toky provozu prochází bezstavová pravidla), jsou zaznamenány pouze pro stavové toky. V důsledku toho počet bajtů a paketů hlášených v protokolech toku nsg (a Traffic Analytics) se může lišit od skutečných toků. Toto omezení má být stanoveno do června 2020.
 
 ## <a name="sample-log-records"></a>Ukázkové záznamy protokolu
 
-Níže uvedený text je příkladem protokolu toku. Jak vidíte, existuje více záznamů, které následují seznam vlastností popsaný v předchozí části.
+Následující text je příkladem protokolu toku. Jak můžete vidět, existuje více záznamů, které následují seznam vlastností popsaný v předchozí části.
 
 
 > [!NOTE]
-> Hodnoty ve vlastnosti **flowTuples* jsou čárkami oddělený seznam.
+> Hodnoty ve vlastnosti **flowTuples* jsou seznam oddělený čárkou.
  
-### <a name="version-1-nsg-flow-log-format-sample"></a>Ukázka formátu protokolu toku NSG verze 1
+### <a name="version-1-nsg-flow-log-format-sample"></a>Ukázka formátu toku nsg nsg nsg
 ```json
 {
     "records": [
@@ -211,7 +211,7 @@ Níže uvedený text je příkladem protokolu toku. Jak vidíte, existuje více 
         ,
         ...
 ```
-### <a name="version-2-nsg-flow-log-format-sample"></a>Ukázka formátu protokolu toku NSG verze 2
+### <a name="version-2-nsg-flow-log-format-sample"></a>Ukázka formátu toku nsg nsg nsg
 ```json
  {
     "records": [
@@ -285,7 +285,7 @@ Níže uvedený text je příkladem protokolu toku. Jak vidíte, existuje více 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak povolit protokoly toku, najdete v tématu [Povolení protokolování toku NSG](network-watcher-nsg-flow-logging-portal.md).
-- Informace o tom, jak číst protokoly toku, najdete v tématu [Read log NSG Flow](network-watcher-read-nsg-flow-logs.md).
-- Další informace o protokolování NSG najdete v tématu [protokoly pro skupiny zabezpečení sítě (skupin zabezpečení sítě) v protokolu Azure monitor](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- Informace o tom, jestli je provoz povolený nebo zakázaný z virtuálního počítače, najdete v tématu [Diagnostika problému s filtrem provozu sítě virtuálních počítačů](diagnose-vm-network-traffic-filtering-problem.md) .
+- Informace o povolení protokolů toku naleznete [v tématu Povolení protokolování toku toku nsg](network-watcher-nsg-flow-logging-portal.md).
+- Informace o tom, jak číst protokoly toku, naleznete [v tématu Čtení protokolů toku nsg](network-watcher-read-nsg-flow-logs.md).
+- Další informace o protokolování skupiny zabezpečení sítě najdete v [tématu protokoly Azure Monitor pro skupiny zabezpečení sítě (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- Pokud chcete zjistit, jestli je provoz povolen nebo odepřen virtuálnímu virtuálnímu virtuálnímu síti nebo z ho, přečtěte si informace [o diagnostice problému s filtrem síťového provozu virtuálního měn.](diagnose-vm-network-traffic-filtering-problem.md)

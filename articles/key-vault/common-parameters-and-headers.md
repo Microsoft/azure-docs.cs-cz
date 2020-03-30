@@ -1,6 +1,6 @@
 ---
 title: Běžné parametry a záhlaví
-description: Parametry a hlavičky společné pro všechny operace, které můžete provádět v souvislosti s Key Vault prostředky.
+description: Parametry a záhlaví společné pro všechny operace, které můžete provést v souvislosti s prostředky trezoru klíčů.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d0ada9c1e6b45b1be17b15b67f67fc64fc266203
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78197585"
 ---
 # <a name="common-parameters-and-headers"></a>Běžné parametry a záhlaví
 
-Následující informace jsou společné pro všechny operace, které můžete provádět v souvislosti s Key Vault prostředky:
+Následující informace jsou společné pro všechny operace, které můžete provést v souvislosti s prostředky trezoru klíčů:
 
-- Nahraďte `{api-version}` verzí API-Version v identifikátoru URI.
-- Nahraďte `{subscription-id}` identifikátorem vašeho předplatného v identifikátoru URI.
-- Nahraďte `{resource-group-name}` skupinou prostředků. Další informace najdete v tématu použití skupin prostředků ke správě prostředků Azure.
-- V identifikátoru URI nahraďte `{vault-name}` názvem vašeho trezoru klíčů.
-- Nastavte hlavičku Content-Type na Application/JSON.
-- Nastavte hlavičkou autorizace na JSON Web Token, kterou získáte z Azure Active Directory (AAD). Další informace najdete v tématu [ověřování žádostí Azure Resource Manager](authentication-requests-and-responses.md) .
+- Nahraďte `{api-version}` verzi rozhraní API v identifikátoru URI.
+- Nahrazení `{subscription-id}` identifikátorem předplatného v identifikátoru URI
+- Nahraďte `{resource-group-name}` skupinou prostředků. Další informace najdete v článku Použití skupin prostředků ke správě prostředků Azure.
+- Nahraďte `{vault-name}` název trezoru klíčů v identifikátoru URI.
+- Nastavte hlavičku Content-Type na application/json.
+- Nastavte hlavičku autorizace na webový token JSON, který získáte z Azure Active Directory (AAD). Další informace najdete v tématu ověřování požadavků [Azure Resource Manager.](authentication-requests-and-responses.md)
 
 ## <a name="common-error-response"></a>Běžná chybová odpověď
-Služba bude používat stavové kódy HTTP k indikaci úspěchu nebo selhání. Kromě toho chyby obsahují odpověď v následujícím formátu:
+Služba použije stavové kódy HTTP k označení úspěchu nebo neúspěchu. Kromě toho chyby obsahují odpověď v následujícím formátu:
 
 ```
    {  
@@ -42,10 +42,10 @@ Služba bude používat stavové kódy HTTP k indikaci úspěchu nebo selhání.
 
 |Název elementu | Typ | Popis |
 |---|---|---|
-| code | řetězec | Typ chyby, ke které došlo.|
-| zpráva | řetězec | Popis toho, co způsobilo chybu. |
+| kód | řetězec | Typ chyby, ke které došlo.|
+| zpráva | řetězec | Popis toho, co chybu způsobilo. |
 
 
 
 ## <a name="see-also"></a>Viz také
- [Odkaz na Azure Key Vault REST API](/rest/api/keyvault/)
+ [Odkaz na rozhraní API úložiště klíčů Azure](/rest/api/keyvault/)

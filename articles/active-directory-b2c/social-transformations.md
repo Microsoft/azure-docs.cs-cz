@@ -1,7 +1,7 @@
 ---
-title: Příklady transformace deklarací účtu sociálních sítí pro vlastní zásady
+title: Sociální účet nároky transformace příklady pro vlastní zásady
 titleSuffix: Azure AD B2C
-description: Příklady transformace deklarací účtu sociálních sítí pro schéma IEF (identity Experience Framework) Azure Active Directory B2C.
+description: Účet na sociální chod nároky příklady transformace pro rozhraní Identity Experience Framework (IEF) schéma Služby Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,17 +12,17 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cb713651aca266ab2546ff26c3cd0175a4cbc289
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183750"
 ---
-# <a name="social-accounts-claims-transformations"></a>Transformace deklarací účtů sociálních sítí
+# <a name="social-accounts-claims-transformations"></a>Sociální účty tvrdí, transformace
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V Azure Active Directory B2C (Azure AD B2C) se identity sociálního účtu ukládají do atributu `userIdentities` typu deklarace identity **alternativeSecurityIdCollection** . Každá položka v **alternativeSecurityIdCollection** určuje vystavitele (název zprostředkovatele identity, jako je Facebook.com) a `issuerUserId`, což je jedinečný identifikátor uživatele pro vystavitele.
+Ve službě Azure Active Directory B2C (Azure AD B2C) jsou identity účtů na sociálních sítích uloženy v atributu `userIdentities` alternativního typu deklarace **identity SecurityIdCollection.** Každá položka v **alternativeSecurityIdCollection** určuje vystavitele (název zprostředkovatele identity, `issuerUserId`například facebook.com) a , což je jedinečný identifikátor uživatele pro vystavitele.
 
 ```JSON
 "userIdentities": [{
@@ -35,19 +35,19 @@ V Azure Active Directory B2C (Azure AD B2C) se identity sociálního účtu ukl�
   }]
 ```
 
-Tento článek popisuje příklady použití transformací v rámci schématu rozhraní identity v účtu sociální sítě v Azure AD B2C. Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
+Tento článek obsahuje příklady pro použití sociálního účtu deklarace transformace schématu identity experience framework v Azure AD B2C. Další informace naleznete v tématu [ClaimsTransformations](claimstransformations.md).
 
-## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
+## <a name="createalternativesecurityid"></a>Vytvořit možnost Vytvořit alternativní soubor Zabezpečení
 
-Vytvoří reprezentaci JSON vlastnosti alternativeSecurityId uživatele, kterou lze použít v voláních Azure Active Directory. Další informace najdete v tématu schéma [AlternativeSecurityId](https://docs.microsoft.com/graph/api/resources/alternativesecurityid) .
+Vytvoří json reprezentaci uživatele alternativeSecurityId vlastnost, která lze použít v volání služby Azure Active Directory. Další informace naleznete v tématu [Schéma AlternativeSecurityId.](https://docs.microsoft.com/graph/api/resources/alternativesecurityid)
 
-| Položka | TransformationClaimType | Typ dat | Poznámky: |
+| Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | key | řetězec | Deklarace identity, která určuje jedinečný identifikátor uživatele používaný poskytovatelem sociální identity. |
-| inputClaim | identityProvider | řetězec | Deklarace ClaimType, která určuje název zprostředkovatele identity účtu sociální sítě, například facebook.com. |
-| outputClaim | alternativeSecurityId | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání ClaimsTransformation. Obsahuje informace o identitě uživatele účtu sociální sítě. **Vystavitel** je hodnota deklarace `identityProvider`. **IssuerUserId** je hodnota deklarace identity `key` ve formátu base64. |
+| Vstupní deklarace | key | řetězec | ClaimType, který určuje jedinečný identifikátor uživatele používaný poskytovatelem sociální identity. |
+| Vstupní deklarace | identityProvider | řetězec | ClaimType, který určuje název poskytovatele identity účtu sociální sítě, například facebook.com. |
+| Výstupní nárok | alternativeSecurityId | řetězec | ClaimType, který je vytvořen po ClaimsTransformation byla vyvolána. Obsahuje informace o identitě uživatele účtu na sociální síti. **Emitent** je hodnota deklarace. `identityProvider` Číslo **issuerUserId** je hodnota `key` deklarace ve formátu base64. |
 
-Tuto transformaci deklarací identity použijte k vygenerování `alternativeSecurityId` ClaimType. Používá se u všech technických profilů zprostředkovatele sociální identity, jako je `Facebook-OAUTH`. Následující transformace deklarací identity obdrží ID účtu sociální sítě a název zprostředkovatele identity. Výstupem tohoto technického profilu je formát řetězce JSON, který se dá použít v adresářových službách Azure AD.
+Pomocí této transformace deklarací generovat `alternativeSecurityId` ClaimType. Používá se všemi technickými profily poskytovatele `Facebook-OAUTH`sociální identity, například . Následující transformace deklarací identity obdrží ID uživatelského účtu a název zprostředkovatele identity. Výstup tohoto technického profilu je formát řetězce JSON, který lze použít v adresářových službách Azure AD.
 
 ```XML
 <ClaimsTransformation Id="CreateAlternativeSecurityId" TransformationMethod="CreateAlternativeSecurityId">
@@ -63,28 +63,28 @@ Tuto transformaci deklarací identity použijte k vygenerování `alternativeSec
 
 ### <a name="example"></a>Příklad
 
-- Vstupní deklarace identity:
+- Vstupní deklarace:
     - **klíč**: 12334
     - **identityProvider**: Facebook.com
-- Deklarace výstupů:
-    - **alternativeSecurityId**: {"Issuer": "Facebook.com"; "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
+- Výstupní nároky:
+    - **alternativeSecurityId**: { "issuer": "facebook.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
 
 ## <a name="additemtoalternativesecurityidcollection"></a>AddItemToAlternativeSecurityIdCollection
 
-Přidá `AlternativeSecurityId` k deklaraci `alternativeSecurityIdCollection`.
+Přidá `AlternativeSecurityId` `alternativeSecurityIdCollection` deklaraci.
 
-| Položka | TransformationClaimType | Typ dat | Poznámky: |
+| Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | položkami | řetězec | Deklarace ClaimType, která se má přidat do výstupní deklarace |
-| inputClaim | kolekce | alternativeSecurityIdCollection | ClaimTypes, které jsou používány transformací deklarací identity, pokud jsou v zásadě k dispozici. Pokud je tato transformace k dispozici, přidá `item` na konci kolekce. |
-| outputClaim | kolekce | alternativeSecurityIdCollection | ClaimTypes, které jsou vytvářeny po vyvolání tohoto ClaimsTransformation. Nová kolekce, která obsahuje položky ze vstupních `collection` a `item`. |
+| Vstupní deklarace | položka | řetězec | ClaimType, které mají být přidány do výstupní deklarace. |
+| Vstupní deklarace |  – kolekce | alternativeSecurityIdCollection | ClaimTypes, které jsou používány transformace deklarací, pokud jsou k dispozici v zásadách. Pokud je k dispozici, `item` deklarace transformace přidá na konci kolekce. |
+| Výstupní nárok |  – kolekce | alternativeSecurityIdCollection | ClaimTypes, které jsou vytvořeny po této ClaimsTransformation byla vyvolána. Nová kolekce, která obsahuje položky ze vstupní `collection` a `item`. |
 
 Následující příklad propojuje novou sociální identitu s existujícím účtem. Propojení nové sociální identity:
-1. V technických profilech **AAD-UserReadUsingAlternativeSecurityId** a **AAD-UserReadUsingObjectId** vypíše uživatel deklaraci identity **alternativeSecurityIds** uživatele.
-1. Požádejte uživatele, aby se přihlásil pomocí některého z poskytovatelů identity, kteří nejsou přidružení k tomuto uživateli.
-1. Pomocí transformace deklarací **CreateAlternativeSecurityId** vytvořte nový typ deklarace identity **alternativeSecurityId** s názvem `AlternativeSecurityId2`
-1. Zavolejte transformaci deklarací **AddItemToAlternativeSecurityIdCollection** a přidejte tak deklaraci identity **AlternativeSecurityId2** do existující deklarace identity **AlternativeSecurityIds** .
-1. Zachovat deklaraci identity **alternativeSecurityIds** pro uživatelský účet
+1. V **aad-userReadUsingAlternativeSecurityId** a **AAD-UserReadUsingObjectId** technické profily, výstup **uživatele alternativeSecurityIds** deklarace.
+1. Požádejte uživatele, aby se přihlásil pomocí jednoho z poskytovatelů identity, kteří nejsou přidruženi k tomuto uživateli.
+1. Pomocí **transformace deklarace identity CreateAlternativeSecurityId** vytvořte nový **typ deklarace zabezpečení s** názvem`AlternativeSecurityId2`
+1. Volání **AddItemToAlternativeSecurityIdCollection** deklarace transformace přidat **AlternativeSecurityId2** deklarace existující **AlternativeSecurityIds** deklarace.
+1. Zachovat **alternativní SecurityIds** nárok na uživatelský účet
 
 ```XML
 <ClaimsTransformation Id="AddAnotherAlternativeSecurityId" TransformationMethod="AddItemToAlternativeSecurityIdCollection">
@@ -100,22 +100,22 @@ Následující příklad propojuje novou sociální identitu s existujícím ú�
 
 ### <a name="example"></a>Příklad
 
-- Vstupní deklarace identity:
-    - **položka**: {"Issuer": "Facebook.com", "issuerUserId": "MTIzNDU ="}
-    - **kolekce**: [{"Issuer": "Live.com"; "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}]
-- Deklarace výstupů:
-    - **kolekce**: [{"Issuer": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}; {"Issuer": "Facebook.com", "issuerUserId": "MTIzNDU ="}]
+- Vstupní deklarace:
+    - **položka**: { "emitent": "facebook.com", "issuerUserId": "MTIzNDU=" }
+    - **kolekce**: [ { "emitent": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
+- Výstupní nároky:
+    - **kolekce**: [ { "emitent": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "emitent": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
 
 ## <a name="getidentityprovidersfromalternativesecurityidcollectiontransformation"></a>GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation
 
-Vrátí seznam vystavitelů z deklarace **alternativeSecurityIdCollection** do nové deklarace identitycollection **řetězce** .
+Vrátí seznam vystavitelů z **alternativeSecurityIdCollection** deklarace do nové **deklarace stringCollection.**
 
-| Položka | TransformationClaimType | Typ dat | Poznámky: |
+| Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | alternativeSecurityIdCollection | alternativeSecurityIdCollection | Deklarace identity, která se má použít k získání seznamu zprostředkovatelů identity (Issuer) |
-| outputClaim | identityProvidersCollection | stringCollection | ClaimTypes, které jsou vytvářeny po vyvolání tohoto ClaimsTransformation. Seznam zprostředkovatelů identity přidružit ke vstupní deklaraci alternativeSecurityIdCollection |
+| Vstupní deklarace | alternativeSecurityIdCollection | alternativeSecurityIdCollection | ClaimType, které mají být použity k získání seznamu zprostředkovatelů identity (vystavit). |
+| Výstupní nárok | identityProvidersCollection | Stringcollection | ClaimTypes, které jsou vytvořeny po této ClaimsTransformation byla vyvolána. Seznam zprostředkovatelů identit přidružit k alternativníSecurityIdCollection vstupní deklarace |
 
-Následující transformace deklarací identity přečte deklaraci identity uživatele **alternativeSecurityIds** a extrahuje seznam názvů zprostředkovatelů identity přidružených k tomuto účtu. Pomocí výstupního **identityProvidersCollectionu** můžete zobrazit uživatele seznam zprostředkovatelů identity přidružených k tomuto účtu. Nebo na stránce Výběr zprostředkovatele identity vyfiltrujte seznam zprostředkovatelů identity na základě výstupní deklarace identity **identityProvidersCollection** . Uživatel tak může vybrat propojení nové sociální identity, která ještě není přidružená k účtu.
+Následující transformace deklarací identity přečte **deklaraci identity alternativu zabezpečení** a extrahuje seznam názvů zprostředkovatelů identity přidružených k tomuto účtu. Pomocí výstupní **identityProvidersCollection** zobrazíte uživateli seznam zprostředkovatelů identity přidružených k účtu. Nebo na stránce výběru zprostředkovatele identity filtrovat seznam zprostředkovatelů identity na základě deklarace **identityProvidersCollection** výstupu. Uživatel tak může vybrat propojení nové sociální identity, která ještě není přidružena k účtu.
 
 ```XML
 <ClaimsTransformation Id="ExtractIdentityProviders" TransformationMethod="GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation">
@@ -128,26 +128,26 @@ Následující transformace deklarací identity přečte deklaraci identity uži
 </ClaimsTransformation>
 ```
 
-- Vstupní deklarace identity:
-    - **alternativeSecurityIdCollection**: [{"Issuer": "Google.com"; "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}; {"Issuer": "Facebook.com"; "issuerUserId": "MTIzNDU ="}]
-- Deklarace výstupů:
-    - **identityProvidersCollection**: ["Facebook.com"; "Google.com"]
+- Vstupní deklarace:
+    - **alternativeSecurityIdCollection**: [ { "issuer": "google.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" ]
+- Výstupní nároky:
+    - **identityProvidersCollection**: [ "facebook.com", "google.com" ]
 
-## <a name="removealternativesecurityidbyidentityprovider"></a>RemoveAlternativeSecurityIdByIdentityProvider
+## <a name="removealternativesecurityidbyidentityprovider"></a>Odebrat alternativu SecurityIdByIdentityProvider
 
-Odebere **AlternativeSecurityId** z deklarace **alternativeSecurityIdCollection** .
+Odebere **AlternativeSecurityId** z **alternativeSecurityIdCollection** deklarace.
 
-| Položka | TransformationClaimType | Typ dat | Poznámky: |
+| Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | identityProvider | řetězec | Deklarace ClaimType obsahující název zprostředkovatele identity, který se má odebrat z kolekce. |
-| inputClaim | kolekce | alternativeSecurityIdCollection | ClaimTypes, které jsou používány transformací deklarací. Transformace deklarací odstraní identityProvider z kolekce. |
-| outputClaim | kolekce | alternativeSecurityIdCollection | ClaimTypes, které jsou vytvářeny po vyvolání tohoto ClaimsTransformation. Nová kolekce po odebrání identityProvider z kolekce. |
+| Vstupní deklarace | identityProvider | řetězec | ClaimType, který obsahuje název zprostředkovatele identity, který má být odebrán z kolekce. |
+| Vstupní deklarace |  – kolekce | alternativeSecurityIdCollection | ClaimTypes, které jsou používány transformace deklarací. Deklarace identity transformace odebere identityProvider z kolekce. |
+| Výstupní nárok |  – kolekce | alternativeSecurityIdCollection | ClaimTypes, které jsou vytvořeny po této ClaimsTransformation byla vyvolána. Nová kolekce po identityProvider odebránz kolekce. |
 
-Následující příklad odpojí jednu ze sociálních identit s existujícím účtem. Odpojení sociální identity:
-1. V technických profilech **AAD-UserReadUsingAlternativeSecurityId** a **AAD-UserReadUsingObjectId** vypíše uživatel deklaraci identity **alternativeSecurityIds** uživatele.
-2. Požádejte uživatele, aby vybral účet pro sociální sítě, který se má odebrat, ze seznamu zprostředkovatelů identity, kteří jsou přidruženi k tomuto uživateli.
-3. Zavolejte na technický profil transformace deklarací identity, který volá transformaci deklarací **RemoveAlternativeSecurityIdByIdentityProvider** , která odebrala vybranou sociální identitu pomocí názvu zprostředkovatele identity.
-4. Zachovat deklaraci identity **alternativeSecurityIds** pro uživatelský účet.
+Následující příklad odpojí jednu ze sociálníidentity s existujícím účtem. Zrušení propojení sociální identity:
+1. V **aad-userReadUsingAlternativeSecurityId** a **AAD-UserReadUsingObjectId** technické profily, výstup **uživatele alternativeSecurityIds** deklarace.
+2. Požádejte uživatele, aby vybral, který účet na sociální síti má být odebrán z poskytovatelů identit seznamu, kteří jsou přidruženi k tomuto uživateli.
+3. Volání technického profilu transformace deklarací, který volá **transformaci RemoveAlternativeSecurityIdByIdentityProvider,** která odebrala vybranou sociální identitu pomocí názvu zprostředkovatele identity.
+4. Zachovat **alternativníSecurityIds** nárok na uživatelský účet.
 
 ```XML
 <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider" TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
@@ -164,8 +164,8 @@ Následující příklad odpojí jednu ze sociálních identit s existujícím �
 
 ### <a name="example"></a>Příklad
 
-- Vstupní deklarace identity:
-    - **identityProvider**: Facebook.com
-    - **kolekce**: [{"Issuer": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}; {"Issuer": "Facebook.com", "issuerUserId": "MTIzNDU ="}]
-- Deklarace výstupů:
-    - **kolekce**: [{"Issuer": "Live.com"; "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}]
+- Vstupní deklarace:
+    - **identityProvider**: facebook.com
+    - **kolekce**: [ { "emitent": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "emitent": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
+- Výstupní nároky:
+    - **kolekce**: [ { "emitent": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]

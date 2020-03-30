@@ -1,6 +1,6 @@
 ---
 title: Kopírování dat z Xero pomocí Azure Data Factory
-description: Zjistěte, jak kopírovat data z platformy Xero úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+description: Zjistěte, jak kopírovat data z Xero do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,51 +12,51 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
 ms.openlocfilehash: 1f6404da163e075b63a99a1d8474cdba4e064b06
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930883"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopírování dat z Xero pomocí Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z platformy Xero. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat z Xero. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
 
-## <a name="supported-capabilities"></a>Podporované funkce
+## <a name="supported-capabilities"></a>Podporované možnosti
 
 Tento konektor Xero je podporován pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
-- [Aktivita Lookup](control-flow-lookup-activity.md)
+- [Kopírování aktivity](copy-activity-overview.md) s [podporovanou maticí zdrojového/jímky](copy-activity-overview.md)
+- [Vyhledávací aktivita](control-flow-lookup-activity.md)
 
-Kopírování dat z platformy Xero do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Můžete zkopírovat data z Xero do libovolného úložiště dat podporované jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitou kopírování, naleznete v tabulce [Podporovaná úložiště dat.](copy-activity-overview.md#supported-data-stores-and-formats)
 
 Konkrétně tento konektor Xero podporuje:
 
-- Xero [privátní aplikace](https://developer.xero.com/documentation/getting-started/api-application-types) , ale aplikaci není veřejné.
-- Všechny platformy Xero tabulky (koncových bodů rozhraní API) s výjimkou "Zprávy". 
+- [Soukromá aplikace](https://developer.xero.com/documentation/getting-started/api-application-types) Xero, ale ne veřejná aplikace.
+- Všechny xero tabulky (koncové body rozhraní API) s výjimkou "Sestavy". 
 
-Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
+Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, proto není nutné ručně instalovat žádný ovladač pomocí tohoto konektoru.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní platformy Xero konektoru.
+V následujících částech jsou uvedeny podrobnosti o vlastnostech, které se používají k definování entit Data Factory specifických pro konektor Xero.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
 
-Xero propojené služby jsou podporovány následující vlastnosti:
+Pro propojenou službu Xero jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Xero** | Ano |
-| hostitel | Koncový bod serveru Xero (`api.xero.com`).  | Ano |
-| consumerKey | Uživatelský klíč přidružený k aplikaci Xero. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| privateKey | Privátní klíč ze souboru .pem, který byl vygenerován pro vaši aplikaci privátní Xero, naleznete v tématu [vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Poznámka: **generovat privatekey.pem s numbits 512** pomocí `openssl genrsa -out privatekey.pem 512`; 1024 se nepodporuje. Zahrnout veškerý text z soubor .pem, včetně endings(\n) řádku Unix, najdete v ukázce níže.<br/><br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
-| useHostVerification | Určuje, zda je nutný název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
-| usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
+| type | Vlastnost type musí být nastavena na: **Xero** | Ano |
+| host | Koncový bod serveru Xero`api.xero.com`( ).  | Ano |
+| consumerKey | Klíč příjemce přidružený k aplikaci Xero. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano |
+| privátní klíč | Soukromý klíč ze souboru PEM, který byl vygenerován pro vaši soukromou aplikaci Xero, najdete [v tématu Vytvoření páru veřejného a soukromého klíče](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Poznámka: **chcete-li generovat privatekey.pem s numbits 512** pomocí `openssl genrsa -out privatekey.pem 512`; 1024 není podporován. Zahrňte veškerý text ze souboru .pem včetně zakončení unixového řádku(\n), viz ukázka níže.<br/><br/>Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano |
+| použitíEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
+| useHostVerification | Určuje, zda je v certifikátu serveru vyžadován název hostitele, aby odpovídal názvu hostitele serveru při připojování přes SSL. Výchozí hodnotou je hodnota true.  | Ne |
+| usePeerVerification | Určuje, zda se má ověřit identita serveru při připojování přes SSL. Výchozí hodnotou je hodnota true.  | Ne |
 
 **Příklad:**
 
@@ -80,9 +80,9 @@ Xero propojené služby jsou podporovány následující vlastnosti:
 }
 ```
 
-**Privátní klíče hodnota vzorku:**
+**Ukázková hodnota soukromého klíče:**
 
-Zahrnout veškerý text z soubor .pem, včetně endings(\n) řádku Unix.
+Zahrňte veškerý text ze souboru .pem včetně zakončení unixového řádku(\n).
 
 ```
 "-----BEGIN RSA PRIVATE KEY-----\nMII***************************************************P\nbu****************************************************s\nU/****************************************************B\nA*****************************************************W\njH****************************************************e\nsx*****************************************************l\nq******************************************************X\nh*****************************************************i\nd*****************************************************s\nA*****************************************************dsfb\nN*****************************************************M\np*****************************************************Ly\nK*****************************************************Y=\n-----END RSA PRIVATE KEY-----"
@@ -90,14 +90,14 @@ Zahrnout veškerý text z soubor .pem, včetně endings(\n) řádku Unix.
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje datové sady Xero.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datových sad.](concepts-datasets-linked-services.md) Tato část obsahuje seznam vlastností podporovaných datovou sadou Xero.
 
-Ke zkopírování dat z platformy Xero, nastavte vlastnost typ datové sady na **XeroObject**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z Xero, nastavte vlastnost type datové sady na **XeroObject**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **XeroObject** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "query") |
+| type | Vlastnost type datové sady musí být nastavena na: **XeroObject.** | Ano |
+| tableName | Název tabulky. | Ne (pokud je zadán "dotaz" ve zdroji aktivity) |
 
 **Příklad**
 
@@ -118,16 +118,16 @@ Ke zkopírování dat z platformy Xero, nastavte vlastnost typ datové sady na *
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem Xero.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných zdrojem Xero.
 
 ### <a name="xero-as-source"></a>Xero jako zdroj
 
-Ke zkopírování dat z platformy Xero, nastavte typ zdroje v aktivitě kopírování do **XeroSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Chcete-li kopírovat data z Xero, nastavte typ zdroje v aktivitě kopírování na **XeroSource**. V části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **XeroSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Contacts"`. | Ne (když je "tableName" v datové sadě zadán) |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavena na: **XeroSource.** | Ano |
+| query | Ke čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Contacts"`. | Ne (pokud je v datové sadě zadán "název_tabulky") |
 
 **Příklad:**
 
@@ -161,13 +161,13 @@ Ke zkopírování dat z platformy Xero, nastavte typ zdroje v aktivitě kopírov
 ]
 ```
 
-Při zadávání dotazu Xero, mějte na paměti následující:
+Při zadávání dotazu Xero si všimněte následujícího:
 
-- Tabulky s komplexnějších položek rozdělí k několika tabulkám. Bankovní transakce má například komplexní datová struktura položky "řádku", tak data bankovní transakce je namapována na tabulku `Bank_Transaction` a `Bank_Transaction_Line_Items`, s `Bank_Transaction_ID` jako cizí klíč je propojit dohromady.
+- Tabulky se složitými položkami budou rozděleny do více tabulek. Například bankovní transakce mají složitou datovou strukturu "LineItems", takže data `Bank_Transaction` `Bank_Transaction_Line_Items`bankovní `Bank_Transaction_ID` transakce jsou mapována na tabulka a jako cizí klíč, aby je spojili.
 
-- Data platformy Xero je k dispozici prostřednictvím dvou schémat: `Minimal` (výchozí) a `Complete`. Úplné schéma obsahuje požadované volání tabulek, které vyžadují další data (např. sloupec ID) před provedením požadované dotazu.
+- Data Xero jsou k dispozici prostřednictvím dvou `Minimal` `Complete`schémat: (výchozí) a . Úplné schéma obsahuje požadované tabulky volání, které vyžadují další data (např. sloupec ID) před provedením požadovaného dotazu.
 
-Následující tabulky obsahují stejné informace ve schématu minimální a kompletní. Pokud chcete snížit počet volání rozhraní API, použijte minimální schémat (výchozí).
+Následující tabulky mají stejné informace ve schématu Minimální a Dokončeno. Chcete-li snížit počet volání rozhraní API, použijte minimální schéma (výchozí).
 
 - Bank_Transactions
 - Contact_Groups 
@@ -185,40 +185,40 @@ Následující tabulky obsahují stejné informace ve schématu minimální a ko
 - Invoices_ zálohy 
 - Invoices_Overpayments 
 - Manual_Journals 
-- Přeplatků 
+- Přeplatky 
 - Overpayments_Allocations 
 - Zálohy 
 - Prepayments_Allocations 
-- Potvrzení 
+- Příjmy 
 - Receipt_Validation_Errors 
 - Tracking_Categories
 
-V následujících tabulkách se dá dotazovat jenom s kompletní schématu:
+Následující tabulky mohou být dotazovány pouze s úplným schématem:
 
-- Complete.Bank_Transaction_Line_Items 
-- Complete.Bank_Transaction_Line_Item_Tracking 
-- Complete.Contact_Group_Contacts 
+- Kompletní.Bank_Transaction_Line_Items 
+- Kompletní.Bank_Transaction_Line_Item_Tracking 
+- Kompletní.Contact_Group_Contacts 
 - Complete.Contacts_Contact_ osoby 
-- Complete.Credit_Note_Line_Items 
-- Complete.Credit_Notes_Line_Items_Tracking 
-- Complete.Expense_Claim_ platby 
-- Complete.Expense_Claim_Receipts 
-- Complete.Invoice_Line_Items 
-- Complete.Invoices_Line_Items_Tracking
-- Complete.Manual_Journal_Lines 
-- Complete.Manual_Journal_Line_Tracking 
-- Complete.Overpayment_Line_Items 
-- Complete.Overpayment_Line_Items_Tracking 
-- Complete.Prepayment_Line_Items 
-- Complete.Prepayment_Line_Item_Tracking 
-- Complete.Receipt_Line_Items 
-- Complete.Receipt_Line_Item_Tracking 
-- Complete.Tracking_Category_Options
+- Kompletní.Credit_Note_Line_Items 
+- Kompletní.Credit_Notes_Line_Items_Tracking 
+- Platby complete.Expense_Claim_ 
+- Dokončit.Expense_Claim_Receipts 
+- Kompletní.Invoice_Line_Items 
+- Kompletní.Invoices_Line_Items_Tracking
+- Kompletní.Manual_Journal_Lines 
+- Kompletní.Manual_Journal_Line_Tracking 
+- Kompletní.Overpayment_Line_Items 
+- Kompletní.Overpayment_Line_Items_Tracking 
+- Kompletní.Prepayment_Line_Items 
+- Kompletní.Prepayment_Line_Item_Tracking 
+- Kompletní.Receipt_Line_Items 
+- Kompletní.Receipt_Line_Item_Tracking 
+- Kompletní.Tracking_Category_Options
 
-## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
 
-Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných aktivitou kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam podporovaných úložišť dat podle aktivity kopírování naleznete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

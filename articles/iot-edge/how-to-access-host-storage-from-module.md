@@ -1,6 +1,6 @@
 ---
-title: Použití místního úložiště IoT Edge zařízení z modulu-Azure IoT Edge | Microsoft Docs
-description: Použijte proměnné prostředí a vytvořte možnosti, které povolí přístup k modulu IoT Edge místní úložiště zařízení.
+title: Použití místního úložiště zařízení IoT Edge z modulu – Azure IoT Edge | Dokumenty společnosti Microsoft
+description: Použijte proměnné prostředí a vytvořte možnosti, které umožní přístup modulu k místnímu úložišti zařízení IoT Edge.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,28 +9,28 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75434527"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Udělení přístupu k místnímu úložišti zařízení pro moduly
 
-Kromě ukládání dat pomocí služeb Azure Storage nebo v úložišti kontejnerů vašeho zařízení můžete také vyhradit úložiště na hostiteli IoT Edge samotném zařízení, aby se zlepšila spolehlivost, obzvláště když pracujete offline.
+Kromě ukládání dat pomocí služeb úložiště Azure nebo v úložišti kontejnerů vašeho zařízení můžete také vyhradit úložiště na samotném hostitelském zařízení IoT Edge pro lepší spolehlivost, zejména při práci offline.
 
-## <a name="link-module-storage-to-device-storage"></a>Propojení úložiště modulu s úložištěm zařízení
+## <a name="link-module-storage-to-device-storage"></a>Úložiště modulu propojení s úložištěm zařízení
 
-Pokud chcete povolit odkaz z úložiště modulu do úložiště v hostitelském systému, vytvořte pro svůj modul proměnnou prostředí, která odkazuje na složku úložiště v kontejneru. Pak použijte možnosti vytvořit pro přiřazení této složky úložiště do složky na hostitelském počítači.
+Chcete-li povolit propojení z úložiště modulu do úložiště v hostitelském systému, vytvořte proměnnou prostředí pro váš modul, která odkazuje na složku úložiště v kontejneru. Potom použijte možnosti vytvoření svázat tuto složku úložiště do složky v hostitelském počítači.
 
-Pokud byste například chtěli povolit, aby Centrum IoT Edge ukládalo zprávy do místního úložiště vašeho zařízení a načetli je později, můžete nakonfigurovat proměnné prostředí a možnosti vytváření v Azure Portal v části **nastavení modulu runtime** .
+Pokud jste například chtěli povolit centru IoT Edge ukládat zprávy do místního úložiště vašeho zařízení a později je načítat, můžete nakonfigurovat proměnné prostředí a možnosti vytvoření na portálu Azure v části **Nastavení běhu.**
 
-1. U IoT Edgeového centra i agenta IoT Edge přidejte proměnnou prostředí s názvem **storageFolder** , která odkazuje na adresář v modulu.
-1. U IoT Edgeového centra i agenta IoT Edge přidejte vazby pro připojení místního adresáře na hostitelském počítači k adresáři v modulu. Příklad:
+1. Pro centrum IoT Edge a agenta IoT Edge přidejte proměnnou prostředí nazvanou **storageFolder,** která odkazuje na adresář v modulu.
+1. Pro centrum IoT Edge a agenta IoT Edge přidejte vazby pro připojení místního adresáře na hostitelském počítači k adresáři v modulu. Například:
 
-   ![Přidání možností vytvoření a proměnných prostředí pro místní úložiště](./media/how-to-access-host-storage-from-module/offline-storage.png)
+   ![Přidání možností vytváření a proměnných prostředí pro místní úložiště](./media/how-to-access-host-storage-from-module/offline-storage.png)
 
-Nebo můžete nakonfigurovat místní úložiště přímo v manifestu nasazení. Příklad:
+Nebo můžete nakonfigurovat místní úložiště přímo v manifestu nasazení. Například:
 
 ```json
 "systemModules": {
@@ -70,19 +70,19 @@ Nebo můžete nakonfigurovat místní úložiště přímo v manifestu nasazení
 }
 ```
 
-Nahraďte `<HostStoragePath>` a `<ModuleStoragePath>` svým hostitelem a cestou úložiště modulu; obě hodnoty musí být absolutní cesta.
+Nahraďte `<HostStoragePath>` a `<ModuleStoragePath>` s hostitelem a platformou úložiště modulu; obě hodnoty musí být absolutní cestou.
 
-Například v systému Linux `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` znamená, že je adresář **/etc/iotedge/Storage** v hostitelském systému namapován na adresář **/iotedge/Storage/** v kontejneru. V systému Windows se jako jiný příklad `"Binds":["C:\\temp:C:\\contemp"]` znamená, že adresář **c:\\Temp** v hostitelském systému je namapovaný na adresář **c:\\** v tomto kontejneru.
+Například v systému `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` Linux znamená, že adresář **/etc/iotedge/storage** v hostitelském systému je mapován na adresář **/iotedge/storage/** v kontejneru. V systému Windows, jako `"Binds":["C:\\temp:C:\\contemp"]` další příklad, znamená, že adresář **C:\\temp** v hostitelském systému je mapován do adresáře **C:\\kontemp** v kontejneru.
 
-Na zařízeních se systémem Linux se navíc ujistěte, že má uživatelský profil pro váš modul potřebná oprávnění ke čtení, zápisu a spouštění pro adresář hostitelského systému. Když se vrátíte na předchozí příklad povolení IoT Edge centra pro ukládání zpráv do místního úložiště vašeho zařízení, musíte udělit oprávnění k profilu uživatele, UID 1000. (Agent IoT Edge funguje jako kořenový, takže nepotřebuje další oprávnění.) K dispozici je několik způsobů, jak spravovat oprávnění adresářů v systémech Linux, včetně použití `chown` ke změně vlastníka adresáře a následnému `chmod` ke změně oprávnění, jako například:
+Navíc na zařízeních S Linuxem se ujistěte, že profil uživatele pro váš modul má požadovaná oprávnění pro čtení, zápis a spouštění do adresáře hostitelského systému. Vrátíme-li se k předchozímu příkladu povolení služby IoT Edge hub ukládat zprávy v místním úložišti vašeho zařízení, musíte udělit oprávnění k jeho profilu uživatele, UID 1000. (Agent IoT Edge funguje jako root, takže nepotřebuje další oprávnění.) Existuje několik způsobů, jak spravovat oprávnění k `chown` adresářům v systémech `chmod` Linux, včetně použití ke změně vlastníka adresáře a následné změně oprávnění, například:
 
 ```bash
 sudo chown 1000 <HostStoragePath>
 sudo chmod 700 <HostStoragePath>
 ```
 
-Další podrobnosti o možnostech vytváření najdete v dokumentaci k [Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+Další podrobnosti o možnostech vytváření z [dock docs](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další příklad přístupu k úložišti hostitele z modulu najdete v tématu [uložení dat na hraničních zařízeních pomocí Azure Blob Storage v IoT Edge](how-to-store-data-blob.md).
+Další příklad přístupu k hostitelskému úložišti z modulu najdete v tématu [Ukládání dat na hraničních zařízeních pomocí azure blob storage na IoT Edge](how-to-store-data-blob.md).

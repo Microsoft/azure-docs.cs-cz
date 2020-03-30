@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: tomfitz
 ms.openlocfilehash: 03e4053b65cf39101e8cb5d35ce439a759ec11d6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175394"
 ---
-1. V okně Nastavení prostředku, skupiny prostředků nebo předplatného, které chcete zamknout, vyberte **uzamkne**.
+1. V okně Nastavení pro prostředek, skupinu prostředků nebo předplatné, které chcete zamknout, vyberte **Zámky**.
    
-      ![Vyberte zámek](./media/resource-manager-lock-resources/select-lock.png)
-2. Chcete-li přidat zámek, **přidat**. Pokud chcete vytvořit zámek na nadřazené úrovni, vyberte nadřazený. Aktuálně vybraný prostředek dědí z nadřazeného zámek. Například může zamknout skupinu prostředků chcete použít zámek pro všechny její prostředky.
+      ![vybrat zámek](./media/resource-manager-lock-resources/select-lock.png)
+2. Zámek přidáte výběrem tlačítka **Přidat**. Pokud chcete vytvořit zámek na nadřazené úrovni, vyberte nadřazenou položku. Aktuálně vybraný prostředek dědí zámek od nadřazeného. Můžete například uzamknout skupinu prostředků a použít zámek pro všechny její prostředky.
    
-      ![Přidat zámek](./media/resource-manager-lock-resources/add-lock.png) 
-3. Poskytněte zámek název a uzamčení úrovně. Volitelně můžete přidat poznámky, které popisují zámek.
+      ![přidat zámek](./media/resource-manager-lock-resources/add-lock.png) 
+3. Pojmenujte zámek a úroveň zámku. Volitelně můžete přidat poznámky s jeho popisem.
    
-      ![Sada zámku](./media/resource-manager-lock-resources/set-lock.png) 
-4. Pokud chcete odstranit zámek, vyberte tři tečky a **odstranit** z dostupných možností.
+      ![nastavit zámek](./media/resource-manager-lock-resources/set-lock.png) 
+4. Chcete-li zámek odstranit, vyberte z dostupných možností tři tečky a **Odstranit.**
    
-      ![Zámek proti odstranění](./media/resource-manager-lock-resources/delete-lock.png) 
+      ![odstranit zámek](./media/resource-manager-lock-resources/delete-lock.png) 
 

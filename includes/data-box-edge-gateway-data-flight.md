@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: acf1195616d45b155445604ef0204528e5f7ca03
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175644"
 ---
-Pro data na cestě:
+Pro data za letu:
 
-- Standardní protokol TLS 1.2 je používána pro data přenášená mezi zařízením a Azure. Není záložní ověřování protokolu TLS 1.1 a dříve. Komunikace agenta se zablokuje, pokud není podporován protokol TLS 1.2. Také je vyžadována pro portál a správa sady SDK TLS 1.2.
-- Když klienti přístup k vašemu zařízení prostřednictvím místního webového uživatelského rozhraní v prohlížeči, standardní TLS 1.2 slouží jako výchozí zabezpečený protokol.
+- Standardní TLS 1.2 se používá pro data, která se pohybuje mezi zařízením a Azure. Neexistuje žádný záložní TLS 1.1 a starší. Komunikace agenta bude blokována, pokud není podporován a nebude podporován a nebude podporován systém TLS 1.2. TLS 1.2 je také vyžadován pro správu portálu a sady SDK.
+- Když klienti přistupují k vašemu zařízení prostřednictvím místního webového uživatelského rozhraní prohlížeče, použije se jako výchozí zabezpečený protokol standardní protokol TLS 1.2.
 
-    - Osvědčeným postupem je prohlížeč nakonfigurovat pro použití protokolu TLS 1.2.
-    - Pokud prohlížeč nepodporuje protokol TLS 1.2, můžete použít protokol TLS 1.1 a TLS 1.0.
-- Doporučujeme použít protokol SMB 3.0 se šifrováním k ochraně dat při kopírování ze serverů se data.
+    - Osvědčeným postupem je nakonfigurovat prohlížeč tak, aby používal protokol TLS 1.2.
+    - Pokud prohlížeč nepodporuje TLS 1.2, můžete použít TLS 1.1 nebo TLS 1.0.
+- Doporučujeme používat SMB 3.0 s šifrováním k ochraně dat při kopírování z datových serverů.

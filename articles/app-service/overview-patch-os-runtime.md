@@ -1,61 +1,61 @@
 ---
-title: Tempo opravy operačního systému a modulu runtime
-description: Přečtěte si, jak Azure App Service aktualizovat operační systém a moduly runtime, jaké moduly runtime a úroveň oprav mají vaše aplikace a jak můžete dostávat oznámení o aktualizacích.
+title: Kadence oprav operačního a runtime
+description: Zjistěte, jak služba Azure App Service aktualizuje operační systém a běhové časy, jaké časy běhu a úroveň oprav vaše aplikace mají a jak můžete získat oznámení o aktualizacích.
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
 ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273626"
 ---
-# <a name="os-and-runtime-patching-in-azure-app-service"></a>Opravy operačního systému a modulu runtime v Azure App Service
+# <a name="os-and-runtime-patching-in-azure-app-service"></a>Opravy operačního a runtime ve službě Azure App Service
 
-V tomto článku se dozvíte, jak získat určité informace o verzi pro operační systém nebo software v [App Service](overview.md). 
+Tento článek ukazuje, jak získat určité informace o verzi týkající se operačního systému nebo softwaru ve [službě App Service](overview.md). 
 
-App Service je platforma jako služba, což znamená, že pro vás Azure spravuje operační systém a zásobník aplikací. Spravujte jenom svou aplikaci a její data. Větší kontrola nad operačním systémem a zásobníkem aplikací je k dispozici v [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/). V takovém případě je užitečné, abyste byli App Servicei uživateli, který vám pomůže získat další informace, například:
+Služba App Service je platforma jako služba, což znamená, že operační ho sah a zásobník aplikací spravuje za vás Azure; spravujete pouze aplikaci a její data. Větší kontrola nad os a zásobníkaplikací je k dispozici ve [virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/). S ohledem na to je pro vás jako uživatel app service užitečné znát další informace, například:
 
 -   Jak a kdy se používají aktualizace operačního systému?
--   Jak se App Serviceují opravy s významnými ohroženími zabezpečení (například Zero-Day)?
--   Které operační systémy a verze modulu runtime spouští vaše aplikace?
+-   Jak je služba App Service opravena s významnými chybami zabezpečení (například nulový den)?
+-   Které verze operačního systému a runtime spouštějí vaše aplikace?
 
-Z bezpečnostních důvodů nejsou publikované určité konkrétní informace o zabezpečení. Článek se ale zaměřuje na zmírnění obav tím, že maximalizuje transparentnost procesu a jak můžete udržovat oznámení týkající se zabezpečení nebo aktualizace za běhu.
+Z bezpečnostních důvodů nejsou zveřejňovány určité specifika informací o zabezpečení. Cílem článku je však zmírnit obavy maximalizací transparentnosti procesu a jak můžete zůstat aktuální v oznámeních souvisejících se zabezpečením nebo aktualizacích za běhu.
 
 ## <a name="how-and-when-are-os-updates-applied"></a>Jak a kdy se používají aktualizace operačního systému?
 
-Azure spravuje opravy operačního systému na dvou úrovních, fyzických serverech a hostovaných virtuálních počítačích, které spouštějí App Service prostředky. Obě aktualizace se aktualizují měsíčně, což se zarovnává s plánem úterý v rámci měsíčních [oprav](https://technet.microsoft.com/security/bulletins.aspx) . Tyto aktualizace se aplikují automaticky tak, že garantuje smlouvu SLA pro vysokou dostupnost služeb Azure. 
+Azure spravuje opravy operačního serveru na dvou úrovních, fyzické servery a hostované virtuální počítače (VM), které spouštějí prostředky služby App Service. Oba jsou aktualizovány měsíčně, což odpovídá měsíčnímu plánu [Patch Tuesday.](https://technet.microsoft.com/security/bulletins.aspx) Tyto aktualizace se použijí automaticky, a to způsobem, který zaručuje vysokou dostupnost sla služeb Azure. 
 
-Podrobné informace o tom, jak se aktualizace aplikují, najdete v tématu [Demystifying The magic App Service Updates for OS](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html).
+Podrobné informace o tom, jak se aktualizace používají, najdete [v tématu Demystifikace kouzlo aktualizace operačního systému Služby App Service](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html).
 
-## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Jak Azure pracuje s významnými ohroženími zabezpečení?
+## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Jak Azure řeší významná zranitelná místa?
 
-Pokud závažné chyby zabezpečení vyžadují okamžitou opravu, jako jsou například [slabá místa](https://wikipedia.org/wiki/Zero-day_(computing)), jsou aktualizace s vysokou prioritou zpracovávány na základě velkých a malých písmen.
+Pokud závažné chyby zabezpečení vyžadují okamžité opravy, například [chyby zabezpečení nultého dne](https://wikipedia.org/wiki/Zero-day_(computing)), jsou aktualizace s vysokou prioritou zpracovávány případ od případu.
 
-Informujte se o důležitých oznámeních o zabezpečení v Azure na [blogu zabezpečení Azure](https://azure.microsoft.com/blog/topics/security/). 
+Na blogu [azure security](https://azure.microsoft.com/blog/topics/security/)blog můžete zůstat v obraze díky důležitým oznámením o zabezpečení v Azure. 
 
-## <a name="when-are-supported-language-runtimes-updated-added-or-deprecated"></a>Kdy jsou podporované jazykové moduly runtime, které se aktualizovaly, přidávají nebo zastaralá?
+## <a name="when-are-supported-language-runtimes-updated-added-or-deprecated"></a>Kdy jsou podporované moduly runtimes jazyka aktualizovány, přidány nebo zastaralé?
 
-Nové stabilní verze podporovaných jazykových modulů runtime (hlavní, vedlejší nebo opravné) se pravidelně přidávají do instancí App Service. Některé aktualizace přepisují existující instalaci, zatímco ostatní jsou nainstalovány souběžně se stávajícími verzemi. Instalace přepsání znamená, že se vaše aplikace automaticky spustí v aktualizovaném modulu runtime. Souběžná instalace znamená, že musíte aplikaci ručně migrovat, aby bylo možné využít novou verzi modulu runtime. Další informace najdete v jednom z dílčích sekcí.
+Do instancí služby App Service se pravidelně přidávají nové stabilní verze podporovaných modulů runtimes jazyka (hlavní, vedlejší nebo oprava). Některé aktualizace přepíší existující instalaci, zatímco jiné jsou nainstalovány vedle stávajících verzí. Přepsání instalace znamená, že vaše aplikace automaticky spustí na aktualizovaném běhu. Instalace vedle sebe znamená, že je nutné ručně migrovat aplikaci, abyste využili výhod nové verze runtime. Další informace naleznete v jedné z podsekcí.
 
-Aktualizace a zastaralosti za běhu jsou oznámeny zde:
+Aktualizace a vyřazení za běhu jsou oznámeny zde:
 
 - https://azure.microsoft.com/updates/?product=app-service 
 - https://github.com/Azure/app-service-announcements/issues
 
 > [!NOTE] 
-> Zde uvedené informace platí pro jazykové moduly runtime, které jsou integrovány do aplikace App Service. Vlastní modul runtime, který nahrajete do App Service například zůstane beze změny, pokud jej ručně neprovedete.
+> Informace zde platí pro zaběhu jazyka, které jsou integrovány do aplikace App Service. Vlastní runtime, který nahrajete do služby App Service, například zůstane nezměněn, pokud ji ručně neupgradujete.
 >
 >
 
 ### <a name="new-patch-updates"></a>Nové aktualizace oprav
 
-Aktualizace aktualizací .NET, PHP, Java SDK nebo verze Tomcat/Jetty se aplikují automaticky přepsáním stávající instalace novou verzí. Aktualizace pro Node. js se instalují souběžně se stávajícími verzemi (podobně jako hlavní a dílčí verze v další části). Nové verze oprav Pythonu se dají nainstalovat ručně prostřednictvím [rozšíření lokality](https://azure.microsoft.com/blog/azure-web-sites-extensions/)vedle sebe s integrovanými instalacemi v Pythonu.
+Aktualizace oprav na verzi .NET, PHP, Java SDK nebo Tomcat/Jetty se použijí automaticky přepsáním stávající instalace novou verzí. Aktualizace oprav node.js jsou nainstalovány vedle stávajících verzí (podobně jako hlavní a dílčí verze v další části). Nové verze patchů pythonu lze instalovat ručně prostřednictvím [rozšíření lokality](https://azure.microsoft.com/blog/azure-web-sites-extensions/), bok po boku s vestavěnými instalacemi Pythonu.
 
 ### <a name="new-major-and-minor-versions"></a>Nové hlavní a dílčí verze
 
-Když se přidá nová hlavní nebo dílčí verze, nainstaluje se souběžně s existujícími verzemi. Aplikaci můžete ručně upgradovat na novou verzi. Pokud jste nakonfigurovali verzi modulu runtime v konfiguračním souboru (například `web.config` a `package.json`), musíte upgradovat se stejnou metodou. Pokud jste pro konfiguraci běhové verze použili App Service nastavení, můžete ji změnit v [Azure Portal](https://portal.azure.com) nebo spuštěním příkazu rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) v [Cloud Shell](../cloud-shell/overview.md), jak je znázorněno v následujících příkladech:
+Po přidání nové hlavní nebo dílčí verze je nainstalována vedle stávajících verzí. Aplikaci můžete upgradovat ručně na novou verzi. Pokud jste nakonfigurovali verzi runtime `web.config` `package.json`v konfiguračním souboru (například a ), je třeba provést upgrade stejnou metodou. Pokud jste ke konfiguraci runtime verze použili nastavení služby App Service, můžete ji změnit na [webu Azure Portal](https://portal.azure.com) nebo spuštěním příkazu Azure [CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) v [cloudovém prostředí](../cloud-shell/overview.md), jak je znázorněno na následujících příkladech:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -67,30 +67,30 @@ az webapp config set --java-version 1.8 --java-container Tomcat --java-container
 
 ### <a name="deprecated-versions"></a>Zastaralé verze  
 
-Je-li starší verze zastaralá, je datum odebrání oznámeno, takže můžete podle potřeby naplánovat upgrade verze modulu runtime. 
+Pokud je starší verze zastaralá, datum odebrání je oznámeno, takže můžete odpovídajícím způsobem naplánovat upgrade runtime verze. 
 
-## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Jak se můžu dotazovat na stav aktualizace operačního systému a běhu u mých instancí?  
+## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Jak se můžu dotazovat na stav aktualizace operačního systému a běhu v instancích?  
 
-I když jsou důležité informace o operačním systému uzamčené od přístupu (viz [funkce operačního systému na Azure App Service](operating-system-functionality.md)), [Konzola Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) vám umožní dotazovat se na vaši instanci App Service v souvislosti s verzí operačního systému a verzemi modulu runtime. 
+Zatímco důležité informace o operačním systému je uzamčen přístup (viz [Funkce operačního systému ve službě Azure App Service),](operating-system-functionality.md) [konzole Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) umožňuje dotaz na instanci služby App Service týkající se verze operačního systému a runtime verze. 
 
-Následující tabulka ukazuje, jak verze Windows, tak jazykového modulu runtime, ve kterém běží vaše aplikace:
+Následující tabulka ukazuje, jak se verze systému Windows a běhu jazyka, které jsou spuštěny vaše aplikace:
 
 | Informace | Kde ji najít | 
 |-|-|
-| Verze systému Windows | Viz `https://<appname>.scm.azurewebsites.net/Env.cshtml` (v části systémové informace) |
-| Verze rozhraní .NET | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
-| Verze .NET Core | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `dotnet --version` |
-| Verze PHP | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `php --version` |
-| Výchozí verze Node. js | V [Cloud Shell](../cloud-shell/overview.md)spusťte následující příkaz: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Verze Pythonu | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `python --version` |  
-| Verze Javy | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `java -version` |  
+| Verze systému Windows | Viz `https://<appname>.scm.azurewebsites.net/Env.cshtml` (v části Informace o systému) |
+| Verze rozhraní .NET | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`, spusťte v příkazovém řádku následující příkaz: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| Verze jádra rozhraní .NET | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`, spusťte v příkazovém řádku následující příkaz: <br> `dotnet --version` |
+| PHP verze | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`, spusťte v příkazovém řádku následující příkaz: <br> `php --version` |
+| Výchozí verze souboru Node.js | V [prostředí cloudu](../cloud-shell/overview.md)spusťte následující příkaz: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
+| Verze Pythonu | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`, spusťte v příkazovém řádku následující příkaz: <br> `python --version` |  
+| Java verze | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`, spusťte v příkazovém řádku následující příkaz: <br> `java -version` |  
 
 > [!NOTE]  
-> Přístup k umístění registru `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, kde jsou uložené informace o [opravách KB](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) , jsou uzamčené.
+> Přístup k `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`umístění registru , kde jsou uloženy informace o [opravách "KB",](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) je uzamčen.
 >
 >
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-[Centrum zabezpečení: zabezpečení](https://www.microsoft.com/en-us/trustcenter/security)  
-[64 bitová ASP.NET Core na Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)
+[Centrum zabezpečení: Zabezpečení](https://www.microsoft.com/en-us/trustcenter/security)  
+[64bitová ASP.NET core ve službě Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

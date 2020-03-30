@@ -1,6 +1,6 @@
 ---
-title: Modul plug-in Smooth Streaming pro open source rozhraní Media Framework
-description: Naučte se používat modul plug-in Azure Media Services Smooth Streaming pro rozhraní Adobe Open Source Media Framework.
+title: Hladký streaming Plugin pro Open Source Media Framework
+description: Přečtěte si, jak používat modul plug-in Azure Media Services Smooth Streaming pro architekturu Adobe Open Source Media Framework.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,50 +15,50 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 45a2829411ea4713df898c90be73792718160cd2
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255108"
 ---
-# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Jak používat modul plug-in Microsoft Smooth Streaming pro rozhraní Adobe Open Source Media Framework  
+# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Jak používat microsoft smooth streaming plugin pro Adobe Open Source Media Framework  
 ## <a name="overview"></a>Přehled
-Modul plug-in Microsoft Smooth Streaming pro Open Source Media Framework 2,0 (SS pro OSMF) rozšiřuje výchozí možnosti OSMF a přidá přehrávání obsahu Microsoft Smooth Streaming na nové a stávající přehrávače OSMF. Modul plug-in také přidává Smooth Streaming možnosti přehrávání do impulzu pro přehrávání médií (SMP).
+Plugin Microsoft Smooth Streaming pro Open Source Media Framework 2.0 (SS for OSMF) rozšiřuje výchozí možnosti OSMF a přidává přehrávání obsahu Microsoft Smooth Streaming novým i stávajícím přehrávačům OSMF. Plugin také přidává funkce přehrávání plynulého streamování do přehrávání médií Strobe Media (SMP).
 
-SS pro OSMF obsahuje dvě verze modulu plug-in:
+SS pro OSMF obsahuje dvě verze pluginu:
 
-* Modul plug-in statického Smooth Streaming pro OSMF (. SWC)
-* Modul plug-in Dynamic Smooth Streaming pro OSMF (. swf)
+* Statický modul pro streamování v hladkém režimu pro OSMF (.swc)
+* Modul plug-in Dynamické plynulé streamování pro OSMF (.swf)
 
-V tomto dokumentu se předpokládá, že čtenář má obecnou znalost OSMF a modulů plug-in OSMF. Další informace o OSMF najdete v dokumentaci k [oficiálnímu webu OSMF](http://osmf.org/).
+Tento dokument předpokládá, že čtenář má obecné pracovní znalosti zásuvných modulů OSMF a OSMF. Další informace o OSMF naleznete v dokumentaci na [oficiálních stránkách OSMF](http://osmf.org/).
 
-### <a name="smooth-streaming-plugin-for-osmf-20"></a>Modul plug-in Smooth Streaming pro OSMF 2,0
-Modul plug-in podporuje načítání a přehrávání obsahu Smooth Streaming na vyžádání s následujícími funkcemi:
+### <a name="smooth-streaming-plugin-for-osmf-20"></a>Hladký streaming plugin pro OSMF 2.0
+Plugin podporuje načítání a přehrávání obsahu plynulého streamování na vyžádání s následujícími funkcemi:
 
-* Přehrávání Smooth Streaming na vyžádání (přehrát, pozastavit, vyhledat, zastavit)
-* Přehrávání živě Smooth Streaming (přehrávání)
-* Živé funkce DVR (pozastavení, hledání, přehrávání záznamu a přechod na Live)
-* Podpora pro kodeky videa – H. 264
-* Podpora zvukových kodeků – AAC
-* Přepínání vícejazyčného jazyka pomocí integrovaných rozhraní API OSMF
-* Maximální velikost výběru kvality přehrávání s integrovanými rozhraními API OSMF
-* Titulky titulků na postranení s modulem plug-in OSMF titulků
-* Adobe&reg; Flash&reg; Player 11,4 nebo vyšší.
-* Tato verze podporuje pouze OSMF 2,0.
+* Plynulé přehrávání datových proudů na vyžádání (přehrávání, pozastavení, hledání, zastavení)
+* Živé přehrávání plynulého streamování (přehrávání)
+* Funkce živého záznamu (pauza, hledání, přehrávání DVR, přehrávání v přímém přenosu)
+* Podpora video kodeků - H.264
+* Podpora zvukových kodeků - AAC
+* Přepínání více zvukových jazyků pomocí integrovaných rozhraní API OSMF
+* Maximální výběr kvality přehrávání s integrovanými API OSMF
+* Sajdkařské titulky s pluginem titulků OSMF
+* Adobe&reg; &reg; Flash Player 11.4 nebo vyšší.
+* Tato verze podporuje pouze OSMF 2.0.
 
 ## <a name="supported-features-and-known-issues"></a>Podporované funkce a známé problémy
-Úplný seznam podporovaných funkcí, nepodporované funkce a známé problémy najdete v [tomto dokumentu](https://azure.microsoft.com/blog/microsoft-adaptive-streaming-plugin-for-osmf-update/).
+Úplný seznam podporovaných funkcí, nepodporovaných funkcí a známých problémů naleznete v [tomto dokumentu](https://azure.microsoft.com/blog/microsoft-adaptive-streaming-plugin-for-osmf-update/).
 
-## <a name="loading-the-plugin"></a>Načítá se modul plug-in.
-Moduly plug-in OSMF lze načíst staticky (v době kompilace) nebo dynamicky (za běhu). Modul plug-in Smooth Streaming pro stahování OSMF zahrnuje dynamickou i statickou verzi.
+## <a name="loading-the-plugin"></a>Načítání pluginu
+Moduly -2F lze načítat staticky (v době kompilace) nebo dynamicky (za běhu). Plugin Smooth Streaming pro stahování OSMF obsahuje dynamické i statické verze.
 
-* Statické načítání: pro statické načtení je vyžadován soubor statické knihovny (SWC). Statické moduly plug-in jsou přidány jako odkazy na projekty a sloučení v konečném výstupním souboru v době kompilace.
-* Dynamické načítání: pro dynamicky načtený soubor předkompilovaného (SWF) je povinný. Dynamické moduly plug-in jsou načteny do modulu runtime a nejsou zahrnuty do výstupu projektu. (Kompilovaný výstup) Dynamické moduly plug-in lze načíst pomocí protokolů HTTP a souborů.
+* Statické načítání: Chcete-li načíst staticky, je vyžadován soubor statické knihovny (SWC). Statické pluginy jsou přidány jako odkaz na projekty a sloučit uvnitř konečného výstupního souboru v době kompilace.
+* Dynamické načítání: Chcete-li načíst dynamicky, je vyžadován předkompilovaný soubor (SWF). Dynamické pluginy jsou načteny v modulu runtime a nejsou zahrnuty do výstupu projektu. (Kompilovaný výstup) Dynamické pluginy lze načítat pomocí protokolů HTTP a FILE.
 
-Další informace o statickém a dynamickém načítání najdete na stránce oficiálního [modulu plug-in OSMF](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf).
+Další informace o statickém a dynamickém načítání najdete na oficiální [stránce pluginu OSMF](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf).
 
-### <a name="ss-for-osmf-static-loading"></a>SS pro statické načtení OSMF
-Následující fragment kódu ukazuje, jak načíst modul plug-in SS pro OSMF staticky a přehrát základní video pomocí třídy OSMF MediaFactory. Před zahrnutím SS pro kód OSMF Prosím zajistěte, aby odkaz na projekt zahrnoval statický modul plug-in MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC.
+### <a name="ss-for-osmf-static-loading"></a>SS pro statické zatížení OSMF
+Níže uvedený fragment kódu ukazuje, jak načíst plugin SS pro OSMF staticky a přehrát základní video pomocí třídy OSMF MediaFactory. Před zahrnutím kódu SS pro OSMF se ujistěte, že odkaz na projekt obsahuje statický plugin "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc".
 
 ```
 package 
@@ -193,10 +193,10 @@ package
 ```
 
 
-### <a name="ss-for-osmf-dynamic-loading"></a>SS pro dynamické načítání OSMF
-Následující fragment kódu ukazuje, jak dynamicky načíst modul plug-in SS pro OSMF a přehrát základní video pomocí třídy MediaFactory OSMF. Před zahrnutím SS pro OSMF kód zkopírujte dynamický modul plug-in "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" do složky projektu, pokud chcete načíst pomocí protokolu souborů nebo zkopírovat na webovém serveru pro načtení HTTP. V odkazech na projekt není nutné zahrnout "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC".
+### <a name="ss-for-osmf-dynamic-loading"></a>SS pro dynamické zatížení OSMF
+Níže uvedený fragment kódu ukazuje, jak dynamicky načíst plugin SS pro OSMF a přehrát základní video pomocí třídy OSMF MediaFactory. Před zahrnutím kódu SS pro OSMF zkopírujte dynamický plugin "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" do složky projektu, pokud chcete načíst pomocí protokolu FILE, nebo zkopírujte pod webový server pro zatížení HTTP. Není třeba zahrnout "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" v odkazech na projekt.
 
-balíček
+balíček {
 
     import flash.display.*;
     import org.osmf.media.*;
@@ -327,15 +327,15 @@ balíček
     }
 }
 
-## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Přehrávání nevracení médií pomocí dynamického modulu plug-in ODMF SS
-Smooth Streaming pro dynamický modul plug-in OSMF je kompatibilní s [přehráváním médií (SMP)](http://osmf.org/strobe_mediaplayback.html). K přidání Smooth Streaming přehrávání obsahu do SMP můžete použít modul plug-in SS pro OSMF. Uděláte to tak, že zkopírujete soubor "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" pod webový server pro načtení HTTP pomocí následujících kroků:
+## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Přehrávání médií Stroboskopy s dynamickým pluginem SS ODMF
+Dynamický plugin Smooth Streaming for OSMF je kompatibilní s [přehráváním médií Strobe (SMP).](http://osmf.org/strobe_mediaplayback.html) Pomocí pluginu SS pro OSMF můžete přidat přehrávání obsahu Smooth Streaming do SMP. Chcete-li to provést, zkopírujte "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" pod webový server pro zatížení HTTP pomocí následujících kroků:
 
-1. Projděte si [stránku nastavení přehrávání média impulzu](http://osmf.org/dev/2.0gm/setup.html). 
-2. Nastavte src na zdroj Smooth Streaming (např. http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
-3. Proveďte požadované změny konfigurace a klikněte na náhled a aktualizovat.
+1. Prohlédněte si [stránku nastavení přehrávání médií Strobe](http://osmf.org/dev/2.0gm/setup.html). 
+2. Nastavte src na zdroj plynulého streamování (např.http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
+3. Proveďte požadované změny konfigurace a klikněte na Náhled a Aktualizovat.
    
-   **Poznámka:** Webový server obsahu potřebuje platný soubor crossdomain. XML. 
-4. Zkopírujte a vložte kód na jednoduchou stránku HTML pomocí oblíbeného textového editoru, jako je například v následujícím příkladu:
+   **Poznámka:** Webový server obsahu potřebuje platnou soubor crossdomain.xml. 
+4. Zkopírujte a vložte kód na jednoduchou stránku HTML pomocí oblíbeného textového editoru, například v následujícím příkladu:
 
         <html>
         <body>
@@ -360,7 +360,7 @@ Smooth Streaming pro dynamický modul plug-in OSMF je kompatibilní s [přehráv
 
 
 
-1. Přidejte do kódu pro vložení Smooth Streaming modul plug-in OSMF a uložte ho.
+1. Přidejte modul plug-in Smooth Streaming OSMF do kódu pro vložení a uložte jej.
    
         <html>
         <object width="920" height="640"> 
@@ -380,17 +380,17 @@ Smooth Streaming pro dynamický modul plug-in OSMF je kompatibilní s [přehráv
         </embed>
         </object>
         </html>
-2. Uložte stránku HTML a publikujte ji na webový server. Přejděte na publikovanou webovou stránku pomocí oblíbeného internetového prohlížeče, který je povolený v přehrávači Flash&reg; (Internet Explorer, Chrome, Firefox atd.).
-3. Užívejte Smooth Streaming obsahu uvnitř aplikace Adobe&reg; Flash&reg; Player.
+2. Uložte stránku HTML a publikujte na webovém serveru. Přejděte na publikovanou webovou&reg; stránku pomocí svého oblíbeného internetového prohlížeče s přehrávačem Flash Player (Internet Explorer, Chrome, Firefox atd.).
+3. Vychutnejte si obsah&reg; &reg; plynulého streamování v přehrávači Adobe Flash Player.
 
-Další informace o obecném vývoji OSMF najdete na oficiální [stránce OSMF Development](http://osmf.org/resources.html).
+Více informací o celkovém vývoji OSMF naleznete na oficiální [stránce vývoje OSMF](http://osmf.org/resources.html).
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Modul plug-in adaptivního streamování Microsoft pro OSMF Update](https://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/) 
+[Microsoft Adaptive Streaming Plugin pro aktualizaci OSMF](https://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/) 
 

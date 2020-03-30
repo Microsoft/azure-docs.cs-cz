@@ -1,6 +1,6 @@
 ---
-title: Opětovné zřízení zařízení v Azure IoT Hub Device Provisioning Service
-description: Naučte se, jak znovu zřídit zařízení pomocí instance služby Device Provisioning Service (DPS) a proč to může být nutné.
+title: Opětovné zřízení zařízení ve službě Azure IoT Hub DeviceProvisioning Service
+description: Zjistěte, jak znovu zřídit zařízení s instancí Služby zřizování zařízení (DPS) a proč to možná budete muset udělat.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,92 +8,92 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974900"
 ---
-# <a name="how-to-reprovision-devices"></a>Postup opětovného zřízení zařízení
+# <a name="how-to-reprovision-devices"></a>Jak znovu zřídit zařízení
 
-Během životního cyklu řešení IoT je běžné přesouvat zařízení mezi centra IoT. Důvody pro tento přesun můžou zahrnovat následující scénáře:
+Během životního cyklu řešení IoT je běžné přesouvat zařízení mezi centry IoT. Důvody tohoto kroku mohou zahrnovat následující scénáře:
 
-* **Geografická poloha**: když se zařízení pohybuje mezi místy, zlepšuje se latence sítě tím, že se zařízení migruje do služby IoT Hub blíž do každého umístění.
+* **Geolokace**: Jak se zařízení pohybuje mezi umístěními, latence sítě se zlepší tím, že zařízení migruje do služby IoT hub blíže ke každému umístění.
 
-* **Víceklientská architektura: zařízení**se dá používat v rámci stejného řešení IoT, ale znovu přiřazeno nebo zapůjčení novému zákazníkovi nebo webu zákazníka. Tento nový zákazník se může obsluhovat pomocí jiného centra IoT.
+* **Víceklientské :** Zařízení může být použito v rámci stejného řešení IoT, ale přeřazeno nebo pronajato novému zákazníkovi nebo webu zákazníka. Tento nový zákazník může být obsluhován pomocí jiného centra IoT hub.
 
-* **Změna řešení**: zařízení se přesunulo do nového nebo aktualizovaného řešení IoT. Tato změna přiřazení může vyžadovat, aby zařízení komunikovalo s novým službou IoT Hub, která je připojená k ostatním back-endové součásti. 
+* **Změna řešení**: Zařízení může být přesunuto do nového nebo aktualizovaného řešení IoT. Toto přeřazení může vyžadovat, aby zařízení komunikovalo s novým centrem IoT hub, který je připojený k jiným back-endovým součástem. 
 
-* **Quarantine**: podobná změně řešení. Zařízení, které je v nefunkčním stavu, ohrožení zabezpečení nebo zastaralá, může být přiřazeno ke centru IoT, kde je vše možné aktualizovat a vrátit se do dodržování předpisů. Jakmile zařízení správně funguje, migruje se zpátky do hlavního centra.
+* **Karanténa**: Podobně jako změna řešení. Zařízení, které je nefunkční, kompromitované nebo zastaralé, může být znovu přiřazeno k centru IoT hubu, kde jediné, co může udělat, je aktualizovat a vrátit se do souladu. Jakmile zařízení funguje správně, je přeneseno zpět do hlavního rozbočovače.
 
-Podrobnější přehled o opětovném zřízení najdete v tématu [IoT Hub konceptů opětovného zřízení zařízení](concepts-device-reprovision.md).
+Podrobnější přehled reprovisioningu najdete v tématu [Koncepty opětovného zřizování zařízení ioT Hub](concepts-device-reprovision.md).
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>Konfigurace zásad přidělení registrace
 
-Zásady přidělování určují, jak se zařízení přidružená k registraci přidělují nebo přiřazují do služby IoT Hub po opětovném zřízení.
+Zásady přidělení určují, jak budou zařízení přidružená k registraci přidělena nebo přiřazena k centru IoT, jakmile budou znovu zřízena.
 
-Pomocí následujících kroků můžete nakonfigurovat zásady přidělování pro registraci zařízení:
+Následující kroky nakonfigurují zásady přidělení pro registraci zařízení:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte k instanci služby Device Provisioning.
+1. Přihlaste se na [portál Azure](https://portal.azure.com) a přejděte na instanci služby zřizování zařízení.
 
-2. Klikněte na **Správa**registrací a potom klikněte na skupinu registrací nebo na jednotlivou registraci, kterou chcete nakonfigurovat pro opětovné zřízení. 
+2. Klikněte na **Spravovat registrace**a klikněte na skupinu registrace nebo na jednotlivé registrace, které chcete nakonfigurovat pro opětovné zřízení. 
 
-3. V části **Vyberte, jak chcete přiřadit zařízení k rozbočovačům**vyberte jednu z následujících zásad přidělování:
+3. V části **Vyberte způsob přiřazení zařízení k rozbočovačům**vyberte jednu z následujících zásad přidělení:
 
-    * **Nejnižší latence**: Tato zásada přiřadí zařízení k připojeným IoT Hub, což způsobí nejnižší komunikaci mezi zařízením a IoT Hub. Tato možnost umožňuje zařízení komunikovat s nejbližším službou IoT Hub na základě umístění. 
+    * **Nejnižší latence**: Tato zásada přiřazuje zařízení k propojenému centru IoT Hub, což bude mít za následek nejnižší latenci komunikace mezi zařízením a IoT Hub. Tato možnost umožňuje zařízení komunikovat s nejbližším centrem IoT hub na základě umístění. 
     
-    * **Rovnoměrně vážená distribuce**: Tato zásada distribuuje zařízení napříč propojenými centry IoT na základě váhy alokace přiřazené ke každému propojenému centru IoT. Tato zásada umožňuje vyrovnávat zatížení zařízení napříč skupinou propojených Center na základě vah přidělení nastavených na těchto centrech. Pokud zřizujete zařízení jenom pro jednu IoT Hub, doporučujeme toto nastavení. Toto nastavení je výchozí. 
+    * **Rovnoměrně vážené rozdělení**: Tato zásada distribuuje zařízení mezi propojené služby IoT Hubs na základě alokační váhy přiřazené každému propojenému centru IoT Hub. Tato zásada umožňuje vyvážit zatížení zařízení napříč skupinou propojených rozbočovačů na základě přidělení váhy nastavené na těchto rozbočovačů. Pokud zřizujete zařízení pouze do jednoho centra IoT Hub, doporučujeme toto nastavení. Toto nastavení je výchozí. 
     
-    * **Statická konfigurace**: Tato zásada vyžaduje, aby byla v položce registrace pro zařízení, které se má zřídit, uvedená požadovaná IoT Hub. Tato zásada vám umožní určit jedno konkrétní centrum IoT, ke kterému chcete přiřadit zařízení.
+    * **Statická konfigurace**: Tato zásada vyžaduje, aby požadované služby IoT Hub byly uvedeny v položce registrace pro zařízení, které má být zřízeno. Tato zásada umožňuje určit jednu konkrétní centrum IoT hub, ke kterému chcete přiřadit zařízení.
 
-4. V části **Vyberte centra IoT, ke kterým se má tato skupina přiřadit**, vyberte propojená centra IoT, která chcete zahrnout do zásad přidělování. Volitelně můžete přidat nové propojené centrum IoT pomocí tlačítka **propojit s novým IoT Hub** .
+4. V **části Vyberte centra IoT, ke kterým lze tuto skupinu přiřadit**, vyberte propojené centra IoT, které chcete zahrnout do zásad přidělení. Volitelně můžete přidat nový propojený centrum Iot pomocí tlačítka Propojit nový portál **IoT Hub.**
 
-    S nejnižší zásadou přidělení **latence** budou vybraná centra zahrnovat do vyhodnocení latence k určení nejbližšího centra pro přiřazení zařízení.
+    S nejnižší **latence zásady** přidělení, centra, které vyberete budou zahrnuty do vyhodnocení latence k určení nejbližší rozbočovač pro přiřazení zařízení.
 
-    Díky zásadám přidělování **rovnoměrně vážených distribucí** se zařízení vyrovnávají přes vybraná centra na základě jejich nakonfigurovaných vah přidělení a jejich aktuálního zatížení.
+    Díky zásadám rovnoměrně **váženého přidělení distribuce** budou zařízení vyvažována napříč rozbočovači, které vyberete, na základě jejich nakonfigurovaných hmotností přidělení a jejich aktuálního zatížení zařízení.
 
-    Pomocí zásad přidělování **statických konfigurací** vyberte Centrum IoT, ke kterému chcete přiřadit zařízení.
+    Pomocí zásad statické **konfigurace** přidělení vyberte službu IoT hub, ke které chcete zařízení přiřadit.
 
-4. Klikněte na **Uložit**nebo přejděte k další části a nastavte zásady opětovného zřizování.
+4. Klepněte na tlačítko **Uložit**nebo přejděte k další části a nastavte zásady opětovného zřízení.
 
-    ![Vyberte zásady přidělení registrace.](./media/how-to-reprovision/enrollment-allocation-policy.png)
+    ![Vybrat zásadu přidělení zápisu](./media/how-to-reprovision/enrollment-allocation-policy.png)
 
 
 
 ## <a name="set-the-reprovisioning-policy"></a>Nastavení zásad opětovného zřízení
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte k instanci služby Device Provisioning.
+1. Přihlaste se na [portál Azure](https://portal.azure.com) a přejděte na instanci služby zřizování zařízení.
 
-2. Klikněte na **Správa**registrací a potom klikněte na skupinu registrací nebo na jednotlivou registraci, kterou chcete nakonfigurovat pro opětovné zřízení.
+2. Klikněte na **Spravovat registrace**a klikněte na skupinu registrace nebo na jednotlivé registrace, které chcete nakonfigurovat pro opětovné zřízení.
 
-3. V části **Vyberte, jak chcete, aby se data zařízení při opětovném zřizování zpracovala do jiného centra IoT**, vyberte jednu z následujících zásad opětovného zřízení:
+3. V **části Vyberte, jak chcete, aby se s daty zařízení zacházelo při opětovném zřizování do jiného centra IoT hub**, zvolte jednu z následujících zásad opětovného zřízení:
 
-    * **Opětovné zřízení a migrace dat**: Tato zásada provede akci, když zařízení přidružená k položce registrace odesílají novou žádost o zřízení. V závislosti na konfiguraci položky registrace se může zařízení přiřadit k jinému centru IoT. Pokud zařízení mění centra IoT, odeberou se registrace zařízení pomocí počátečního centra IoT Hub. Všechny informace o stavu zařízení z tohoto počátečního centra IoT budou migrovány do nového centra IoT Hub. Během migrace se stav zařízení ohlásí jako **přiřazení** .
+    * **Opětovné zřizování a migrace dat**: Tato zásada provede akci, když zařízení přidružená k položce registrace odešle novou žádost o zřízení. V závislosti na konfiguraci položky registrace může být zařízení znovu přiřazeno k jinému centru IoT hub. Pokud zařízení mění centra IoT, registrace zařízení s počátečním centrem IoT hub se odebere. Všechny informace o stavu zařízení z tohoto počátečního centra IoT hub budou přeneseny do nového centra IoT hub. Během migrace bude stav zařízení nahlášen jako **Přiřazení**
 
-    * **Opětovné zřízení a resetování na počáteční konfiguraci**: Tato zásada provede akci, když zařízení přidružená k položce registrace odesílají novou žádost o zřízení. V závislosti na konfiguraci položky registrace se může zařízení přiřadit k jinému centru IoT. Pokud zařízení mění centra IoT, odeberou se registrace zařízení pomocí počátečního centra IoT Hub. K novému centru IoT Hub se poskytuje počáteční konfigurační data, která instance zřizovací služby přijatá při zřizování zařízení nabízí. Během migrace bude stav zařízení hlášeno jako **přiřazení**.
+    * **Opětovné zřizování a obnovení počáteční konfigurace**: Tato zásada provede akci, když zařízení přidružená k položce registrace odešle nový požadavek na zřizování. V závislosti na konfiguraci položky registrace může být zařízení znovu přiřazeno k jinému centru IoT hub. Pokud zařízení mění centra IoT, registrace zařízení s počátečním centrem IoT hub se odebere. Počáteční konfigurační data, která instance zřizovací služby obdržela při zřízení zařízení, jsou k dispozici do nového centra IoT Hub. Během migrace bude stav zařízení nahlášen jako **Přiřazení**.
 
-4. Kliknutím na **Uložit** povolte opětovné zřízení zařízení na základě vašich změn.
+4. Kliknutím na **Uložit** povolíte opětovné zřízení zařízení na základě vašich změn.
 
-    ![Vyberte zásady přidělení registrace.](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![Vybrat zásadu přidělení zápisu](./media/how-to-reprovision/reprovisioning-policy.png)
 
 
 
-## <a name="send-a-provisioning-request-from-the-device"></a>Odeslat žádost o zřízení ze zařízení
+## <a name="send-a-provisioning-request-from-the-device"></a>Odeslání požadavku na zřízení ze zařízení
 
-Aby se zařízení mohla znovu zřídit na základě změn konfigurace provedených v předchozích částech, musí tato zařízení požádat o opětovné zřízení. 
+Aby zařízení, která mají být znovu zřízena na základě změn konfigurace provedených v předchozích částech, tato zařízení musí požádat o opětovné zřízení. 
 
-Jak často zařízení odesílá požadavek na zřízení, závisí na scénáři. Doporučujeme ale programovat vaše zařízení, aby při restartování odeslala do instance zřizovací služby požadavek na zřízení a podporovala [metodu](../iot-hub/iot-hub-devguide-direct-methods.md) ručního spuštění zřizování na vyžádání. Zřizování se taky dá aktivovat nastavením [požadované vlastnosti](../iot-hub/iot-hub-devguide-device-twins.md#desired-property-example). 
+Jak často zařízení odešle požadavek na zřizování závisí na scénáři. Doporučuje se však naprogramovat vaše zařízení k odeslání požadavku na zřízení do instance služby zřizování při restartování a podporovat [metodu](../iot-hub/iot-hub-devguide-direct-methods.md) ruční aktivace zřizování na vyžádání. Zřizování může být také spuštěna nastavením [požadované vlastnosti](../iot-hub/iot-hub-devguide-device-twins.md#desired-property-example). 
 
-Zásady opětovného zřizování na položce registrace určují, jak instance služby Device Provisioning zpracovává tyto požadavky na zřizování, a jestli se mají při opětovném zřizování migrovat data stavu zařízení. Pro jednotlivé registrace a skupiny registrací jsou k dispozici stejné zásady:
+Zásady opětovného zřízení v položce registrace určují, jak instance služby zřizování zařízení zpracovává tyto požadavky na zřizování a zda by měla být během opětovného zřizování migrována data stavu zařízení. Stejné zásady jsou k dispozici pro jednotlivé registrace a skupiny registrací:
 
-Příklad kódu odeslání požadavků na zřizování ze zařízení během spouštěcí sekvence najdete v tématu věnovaném [automatickému zřizování simulovaného zařízení](quick-create-simulated-device.md).
+Například kód odesílání požadavků na zřizování ze zařízení během spouštěcí sekvence, naleznete [v tématu Automatické zřizování simulovaného zařízení](quick-create-simulated-device.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o opětovném zřízení najdete v tématu Koncepty opětovného [zřizování zařízení IoT Hub](concepts-device-reprovision.md) 
-- Další informace o zrušení zřízení najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) . 
+- Další informace o opětovném zřízení najdete v tématu [Koncepty opětovného zřizování zařízení centra IoT Hub](concepts-device-reprovision.md) 
+- Další informace o zrušení zřízení najdete v tématu [Jak odzřízení zařízení, která byla dříve automaticky zřízených](how-to-unprovision-devices.md) 
 
 
 

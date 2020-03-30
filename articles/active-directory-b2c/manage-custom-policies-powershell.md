@@ -1,7 +1,7 @@
 ---
 title: Správa vlastních zásad pomocí PowerShellu
 titleSuffix: Azure AD B2C
-description: Použijte rutinu prostředí PowerShell pro Azure Active Directory (Azure AD) pro programovou správu vašich Azure AD B2C vlastních zásad. Vytváření, čtení, aktualizace a odstraňování vlastních zásad pomocí prostředí PowerShell.
+description: Použijte rutinu Prostředí PowerShell azure active directory (Azure AD) pro programovou správu vlastních zásad Azure AD B2C. Vytvářejte, čtujte, aktualizujte a odstraňujte vlastní zásady pomocí PowerShellu.
 author: msmimart
 manager: celestedg
 ms.service: active-directory
@@ -11,39 +11,39 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ebf0cfffa410d8dfe2f0e0b42a0fee0c16106fde
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187402"
 ---
-# <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Správa Azure AD B2C vlastních zásad pomocí Azure PowerShell
+# <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Správa vlastních zásad Azure AD B2C pomocí Azure PowerShellu
 
-Azure PowerShell poskytuje několik rutin pro správu vlastních zásad na základě příkazového řádku a skriptu v tenantovi Azure AD B2C. Naučte se používat modul Azure AD PowerShell k těmto akcím:
+Azure PowerShell poskytuje několik rutin pro správu vlastních zásad na základě příkazového řádku a skriptu ve vašem tenantovi Azure AD B2C. Zjistěte, jak pomocí modulu Azure AD PowerShell:
 
 * Seznam vlastních zásad v tenantovi Azure AD B2C
-* Stažení zásady z klienta
-* Aktualizovat existující zásady přepsáním jejího obsahu
-* Nahrajte do svého tenanta Azure AD B2C novou zásadu.
+* Stažení zásady od tenanta
+* Aktualizace existující zásady přepsáním jejího obsahu
+* Nahrání nové zásady do klienta Azure AD B2C
 * Odstranění vlastních zásad z tenanta
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [Azure AD B2C tenant](tutorial-create-tenant.md)a přihlašovací údaje uživatele v adresáři s rolí [správce zásad IEF B2C](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)
-* [Vlastní zásady](custom-policy-get-started.md) odeslané do vašeho tenanta
-* [Azure AD PowerShell pro **modul Graph Preview**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+* [Tenant Azure AD B2C](tutorial-create-tenant.md)a přihlašovací údaje pro uživatele v adresáři s rolí [správce zásad B2C IEF](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)
+* [Vlastní zásady](custom-policy-get-started.md) nahrané do vašeho tenanta
+* [Azure AD PowerShell pro **graf preview modul**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
 
-## <a name="connect-powershell-session-to-b2c-tenant"></a>Připojení relace PowerShellu k tenantovi B2C
+## <a name="connect-powershell-session-to-b2c-tenant"></a>Připojení relace Prostředí PowerShell k tenantovi B2C
 
-Pokud chcete pracovat s vlastními zásadami ve vašem tenantovi Azure AD B2C, musíte nejdřív připojit relaci PowerShellu k tenantovi pomocí příkazu [Connect-AzureAD][Connect-AzureAD] .
+Chcete-li pracovat s vlastními zásadami v tenantovi Azure AD B2C, musíte nejprve připojit relaci PowerShellu k tenantovi pomocí příkazu [Connect-AzureAD.][Connect-AzureAD]
 
-Spusťte následující příkaz a nahraďte `{b2c-tenant-name}` názvem vašeho tenanta Azure AD B2C. Přihlaste se pomocí účtu, který má přiřazenou roli [správce zásad B2C IEF](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) v adresáři.
+Spusťte následující příkaz, který `{b2c-tenant-name}` nahrazuje název vašeho klienta Azure AD B2C. Přihlaste se pomocí účtu, kterému je přiřazena role [správce zásad B2C IEF](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) v adresáři.
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"
 ```
 
-Příklad výstupu příkazu znázorňujícího úspěšné přihlášení:
+Příklad výstupu příkazu zobrazujícího úspěšné přihlášení:
 
 ```Console
 PS C:\> Connect-AzureAD -Tenant "contosob2c.onmicrosoft.com"
@@ -53,9 +53,9 @@ Account               Environment TenantId                             TenantDom
 azureuser@contoso.com AzureCloud  00000000-0000-0000-0000-000000000000 contosob2c.onmicrosoft.com   User
 ```
 
-## <a name="list-all-custom-policies-in-the-tenant"></a>Vypsat všechny vlastní zásady v tenantovi
+## <a name="list-all-custom-policies-in-the-tenant"></a>Seznam všech vlastních zásad v tenantovi
 
-Zjišťování vlastních zásad umožňuje správci Azure AD B2C kontrolovat, spravovat a přidávat obchodní logiku do jejich operací. Pomocí příkazu [Get-AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] můžete v tenantovi Azure AD B2C vrátit seznam identifikátorů vlastních zásad.
+Zjišťování vlastních zásad umožňuje správci Azure AD B2C kontrolovat, spravovat a přidávat obchodní logiku do svých operací. Pomocí příkazu [Get-AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] vrátíte seznam ID vlastních zásad v tenantovi Azure AD B2C.
 
 ```PowerShell
 Get-AzureADMSTrustFrameworkPolicy
@@ -75,15 +75,15 @@ B2C_1A_ProfileEdit
 B2C_1A_PasswordReset
 ```
 
-## <a name="download-a-policy"></a>Stáhnout zásadu
+## <a name="download-a-policy"></a>Stažení zásad
 
-Po kontrole seznamu ID zásad můžete určit konkrétní zásadu pomocí [Get-AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] ke stažení jejího obsahu.
+Po kontrole seznamu ID zásad, můžete cílit na konkrétní zásady s [Get-AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] ke stažení jeho obsahu.
 
 ```PowerShell
 Get-AzureADMSTrustFrameworkPolicy [-Id <policyId>]
 ```
 
-V tomto příkladu se stáhla zásada s ID *B2C_1A_signup_signin* :
+V tomto příkladu se stáhne zásada s *id B2C_1A_signup_signin:*
 
 ```Console
 PS C:\> Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
@@ -112,20 +112,20 @@ PS C:\> Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
 </TrustFrameworkPolicy>
 ```
 
-Pokud chcete obsah zásady upravit místně, přesměrujte výstup příkazu do souboru s argumentem `-OutputFilePath` a pak soubor otevřete ve svém oblíbeném editoru.
+Chcete-li upravit obsah zásad místně, naložte výstup `-OutputFilePath` příkazu do souboru s argumentem a otevřete soubor v oblíbeném editoru.
 
-Příklad příkazu odeslání výstupu do souboru:
+Příklad příkazu odesílajícího výstup do souboru:
 
 ```PowerShell
 # Download and send policy output to a file
 Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -OutputFilePath C:\RPPolicy.xml
 ```
 
-## <a name="update-an-existing-policy"></a>Aktualizovat existující zásady
+## <a name="update-an-existing-policy"></a>Aktualizace existující zásady
 
-Po úpravě souboru zásad, který jste vytvořili nebo stáhli, můžete aktualizované zásady publikovat na Azure AD B2C pomocí příkazu [set-AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy] .
+Po úpravě souboru zásad, který jste vytvořili nebo stáhli, můžete publikovat aktualizovanou zásadu do Azure AD B2C pomocí příkazu [Set-AzureADMSTrustFrameworkPolicy.][Set-AzureADMSTrustFrameworkPolicy]
 
-Pokud vydáte příkaz `Set-AzureADMSTrustFrameworkPolicy` s ID zásady, která už ve vašem tenantovi Azure AD B2C existuje, obsah této zásady se přepíše.
+Pokud vydáte `Set-AzureADMSTrustFrameworkPolicy` příkaz s ID zásady, která již existuje ve vašem tenantovi Azure AD B2C, obsah této zásady je přepsán.
 
 ```PowerShell
 Set-AzureADMSTrustFrameworkPolicy [-Id <policyId>] -InputFilePath <inputpolicyfilePath> [-OutputFilePath <outputFilePath>]
@@ -138,13 +138,13 @@ Příklad příkazu:
 Set-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -InputFilePath C:\B2C_1A_signup_signin.xml
 ```
 
-Další příklady najdete v referenčních informacích k příkazu [set-AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy] .
+Další příklady naleznete v odkazu příkazu [Set-AzureADMSTrustFrameworkPolicy.][Set-AzureADMSTrustFrameworkPolicy]
 
-## <a name="upload-a-new-policy"></a>Nahrát novou zásadu
+## <a name="upload-a-new-policy"></a>Nahrání nové zásady
 
-Když provedete změnu vlastní zásady, která běží v produkčním prostředí, možná budete chtít publikovat více verzí zásad pro testovací scénáře a/B. Nebo můžete chtít vytvořit kopii existující zásady, upravit ji pomocí několika malých změn a pak ji nahrát jako novou zásadu pro použití v jiné aplikaci.
+Když provedete změnu vlastní zásady, která běží v produkčním prostředí, můžete chtít publikovat více verzí zásad pro scénáře záložního nebo ab testování. Nebo můžete chtít vytvořit kopii existující zásady, upravit ji s několika malými změnami a nahrát ji jako novou zásadu pro použití jinou aplikací.
 
-Pomocí příkazu [New-AzureADMSTrustFrameworkPolicy][New-AzureADMSTrustFrameworkPolicy] Nahrajte nové zásady:
+Pomocí příkazu [New-AzureADMSTrustFrameworkPolicy][New-AzureADMSTrustFrameworkPolicy] nahrajte novou zásadu:
 
 ```PowerShell
 New-AzureADMSTrustFrameworkPolicy -InputFilePath <inputpolicyfilePath> [-OutputFilePath <outputFilePath>]
@@ -159,9 +159,9 @@ New-AzureADMSTrustFrameworkPolicy -InputFilePath C:\SignUpOrSignInv2.xml
 
 ## <a name="delete-a-custom-policy"></a>Odstranění vlastních zásad
 
-Pokud chcete zachovat životní cyklus čistých operací, doporučujeme pravidelně odebírat nepoužívané vlastní zásady. Například můžete chtít odebrat staré verze zásad po provedení migrace na novou sadu zásad a ověření funkčnosti nové zásady. Pokud se navíc pokusíte publikovat sadu vlastních zásad a obdržíte chybu, může být vhodné odebrat zásady, které byly vytvořeny jako součást neúspěšného vydání.
+Chcete-li zachovat čistý provozní životní cyklus, doporučujeme pravidelně odebírat nepoužívané vlastní zásady. Můžete například odebrat staré verze zásad po provedení migrace na novou sadu zásad a ověření funkce nové zásady. Navíc pokud se pokusíte publikovat sadu vlastních zásad a obdržíte chybu, může mít smysl odebrat zásady, které byly vytvořeny jako součást neúspěšné verze.
 
-Pomocí příkazu [Remove-AzureADMSTrustFrameworkPolicy][Remove-AzureADMSTrustFrameworkPolicy] odstraňte zásadu z vašeho tenanta.
+Pomocí příkazu [Remove-AzureADMSTrustFrameworkPolicy][Remove-AzureADMSTrustFrameworkPolicy] odstraňte zásady z vašeho tenanta.
 
 ```PowerShell
 Remove-AzureADMSTrustFrameworkPolicy -Id <policyId>
@@ -174,11 +174,11 @@ Příklad příkazu:
 Remove-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
 ```
 
-## <a name="troubleshoot-policy-upload"></a>Řešení potíží při nahrávání zásad
+## <a name="troubleshoot-policy-upload"></a>Poradce při potížích s odesíláním zásad
 
-Když se pokusíte publikovat novou vlastní zásadu nebo aktualizovat existující zásady, nesprávné formátování XML a chyby v řetězu dědičnosti souboru zásad můžou způsobit selhání ověřování.
+Při pokusu o publikování nové vlastní zásady nebo aktualizaci existující zásady může nesprávné formátování XML a chyby v řetězci dědičnosti souboru zásad způsobit selhání ověření.
 
-Tady je například pokus o aktualizaci zásad s obsahem, který obsahuje chybně vytvořený kód XML (výstup je zkrácen pro zkrácení):
+Například je zde pokus o aktualizaci zásady s obsahem, který obsahuje poškozený XML (výstup je zkrácen pro stručnost):
 
 ```Console
 PS C:\> Set-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -InputFilePath C:\B2C_1A_signup_signin.xml
@@ -191,11 +191,11 @@ Message: Validation failed: 1 validation error(s) found in policy "B2C_1A_SIGNUP
 ...
 ```
 
-Informace o řešení potíží s vlastními zásadami najdete v tématu [řešení potíží s Azure AD B2C vlastní zásady a architektura prostředí identit](active-directory-b2c-guide-troubleshooting-custom.md).
+Informace o řešení potíží s vlastními zásadami najdete [v tématu Poradce při potížích s vlastními zásadami Azure AD B2C a rozhraním Identity Experience Framework](active-directory-b2c-guide-troubleshooting-custom.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak pomocí PowerShellu nasadit vlastní zásady v rámci kanálu průběžné integrace nebo průběžného doručování (CI/CD), najdete v tématu [nasazení vlastních zásad z kanálu Azure DevOps](deploy-custom-policies-devops.md).
+Informace o použití prostředí PowerShell k nasazení vlastních zásad jako součásti kanálu průběžné integrace/průběžného doručování (CI/CD) najdete [v tématu Nasazení vlastních zásad z kanálu Azure DevOps](deploy-custom-policies-devops.md).
 
 <!-- LINKS - External -->
 [Connect-AzureAD]: https://docs.microsoft.com/powershell/module/azuread/get-azureadmstrustframeworkpolicy

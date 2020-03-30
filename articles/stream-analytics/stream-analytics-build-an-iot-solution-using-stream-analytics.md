@@ -1,6 +1,6 @@
 ---
-title: Sestavení řešení IoT pomocí Azure Stream Analytics
-description: Úvodní kurz pro řešení Stream Analytics IoT tollbooth scénáře
+title: Vytvoření řešení IoT pomocí Azure Stream Analytics
+description: Začínáme pro řešení Stream Analytics IoT scénáře mýtného
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,132 +9,132 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426446"
 ---
-# <a name="build-an-iot-solution-by-using-stream-analytics"></a>Sestavení řešení IoT s použitím Stream Analytics
+# <a name="build-an-iot-solution-by-using-stream-analytics"></a>Vytvoření řešení IoT pomocí Stream Analytics
 
-## <a name="introduction"></a>Představení
-V tomto řešení se dozvíte, jak získat z vašich dat v reálném čase pomocí Azure Stream Analytics. Vývojářům můžete snadno kombinovat datové proudy dat, jako je například klikněte na tlačítko datové proudy, protokolů a událostí generovaných zařízením s historickými záznamy nebo referenčními daty. Chcete-li vytvořit firemní přehledy. Jako služba v reálném čase, plně spravovaný datový proud výpočet, který je hostován v Microsoft Azure Azure Stream Analytics poskytuje integrované odolnost, nízkou latenci a škálovatelnost, aby mohli vše okamžitě zprovoznit během pár minut poběží.
+## <a name="introduction"></a>Úvod
+V tomto řešení se dozvíte, jak pomocí Azure Stream Analytics získat přehledy z vašich dat v reálném čase. Vývojáři mohou snadno kombinovat datové proudy dat, jako jsou toky kliknutí, protokoly a události generované zařízením, s historickými záznamy nebo referenčními daty pro odvození obchodních přehledů. Azure Stream Analytics jako plně spravovaná výpočetní služba datových proudů v reálném čase, která je hostovaná v Microsoft Azure, poskytuje integrovanou odolnost proti chybám, nízkou latenci a škálovatelnost, abyste se během několika minut zprovoznili.
 
-Po dokončení tohoto řešení, budete moct:
+Po dokončení tohoto řešení, jste schopni:
 
 * Seznamte se s portálem Azure Stream Analytics.
 * Konfigurace a nasazení úlohy streamování.
-* Srozumitelně vysvětlit skutečné problémy a řešení s použitím dotazovací jazyk Stream Analytics.
-* Vývoj řešení pro vaše zákazníky streamování s použitím Stream Analytics s jistotou.
-* Řešení potíží pomocí sledování a protokolování prostředí.
+* Artikulujte problémy z reálného světa a vyřešte je pomocí dotazovacího jazyka Stream Analytics.
+* Vyvíjejte streamovací řešení pro své zákazníky pomocí Stream Analytics s jistotou.
+* Pomocí monitorování a protokolování zkušenosti k řešení problémů.
 
 ## <a name="prerequisites"></a>Požadavky
-Potřebujete následující požadované součásti pro dokončení tohoto řešení:
+K dokončení tohoto řešení potřebujete následující předpoklady:
 * [Předplatné Azure](https://azure.microsoft.com/pricing/free-trial/)
 
-## <a name="scenario-introduction-hello-toll"></a>Úvod scénář: "Hello, linka!"
-Stanice linka je běžné jev. Kterými je mnoho rychlostních, přemostění a tunely po celém světě. Každá stanice linka má více kabin linka. Při ruční kabin zastavíte platit linka průvodcem. Na automatické kabin prohledává senzoru na každý z mýtných bran RFID karty, který je opatřit čelního skla vaše vozidla, jak předat z mýtných bran linka. Je snadno pochopitelný průchod vozidel přes tyto stanice linka jako datového proudu událostí nad tím, které zajímavé operace lze provádět.
+## <a name="scenario-introduction-hello-toll"></a>Scénář úvod: "Dobrý den, Mýtné!"
+Mýtná stanice je běžný jev. Setkáte se s nimi na mnoha rychlostních cestách, mostech a tunelech po celém světě. Každá mýtná stanice má několik mýtných stánků. U manuálních kabin se zastavíte, abyste zaplatili mýtné obsluhě. Na automatických stáncích senzor na vrcholu každé kabiny skenuje RFID kartu, která je připevněna k čelnímu sklu vašeho vozidla, když procházíte mýtnou budkou. Je snadné vizualizovat průjezd vozidel přes tyto mýtné stanice jako událost proud, přes který lze provádět zajímavé operace.
 
-![Obrázek auta v zápočtu kabin](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
+![Obrázek aut na mýtných stáncích](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
 
 ## <a name="incoming-data"></a>Příchozí data
-Toto řešení funguje s dvěma datových proudů. Nainstalovaných ve vstupu a výstupu stanice linka vytvořit první datový proud. Druhý datový proud je datová sada statické vyhledávání, který má vozidla registrační data.
+Toto řešení pracuje se dvěma datovými proudy dat. Senzory instalované ve vchodu a výstupu z mýtných stanic produkují první proud. Druhý datový proud je datová sada statického vyhledávání, která má údaje o registraci vozidla.
 
 ### <a name="entry-data-stream"></a>Vstupní datový proud
-Vstupní datový proud obsahuje informace o automobilů při vstupu linka stanice. Data události ukončení jsou živé streamování do fronty centra událostí z webové aplikace součástí ukázkové aplikace.
+Vstupní datový proud obsahuje informace o automobilech při vstupu do mýtných stanic. Události výstupních dat se živě streamují do fronty Centra událostí z webové aplikace zahrnuté v ukázkové aplikaci.
 
-| TollID | EntryTime | LicensePlate | Stav | Vytvoření | Model | VehicleType | VehicleWeight | Linka | Tag |
+| TollID | EntryTime | Registrační značka | Stav | Značka | Model | Typ vozidla | Hmotnost vozidla | Mýtné | Značka |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1\. místo |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1\. místo |0 |7 | |
-| 1\. místo |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1\. místo |0 |4 |123456789 |
-| 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |Ford |Taurus |1\. místo |0 |5 |456789123 |
-| 2 |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Koruny |1\. místo |0 |4 | |
-| 1\. místo |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |CRV |1\. místo |0 |5 |789123456 |
-| 2 |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |1\. místo |0 |6 |321987654 |
+| 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |Crv |1 |0 |7 | |
+| 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
+| 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |Ford |Taurus |1 |0 |5 |456789123 |
+| 2 |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |1 |0 |4 | |
+| 1 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |Crv |1 |0 |5 |789123456 |
+| 2 |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |1 |0 |6 |321987654 |
 
-Tady je stručný popis sloupce:
+Zde je stručný popis sloupců:
 
-| Column | Popis |
+| Sloupec | Popis |
 | --- | --- |
-| TollID |ID linka z mýtných bran, které jednoznačně identifikuje stánku linka |
-| EntryTime |Datum a čas vstupu vozidla z mýtných bran linka ve standardu UTC |
-| LicensePlate |Registrační číslo vozidla |
-| Stav |Stav ve Spojených státech |
-| Vytvoření |Výrobce daného automobilu |
-| Model |Číslo modelu daného automobilu |
-| VehicleType |1 pro osobní vozidel či 2 pro komerční vozidla |
-| WeightType |Váha vozidla v tunách; 0 pro osobní vozidel |
-| Linka |Hodnota linka v USD |
-| Tag |E-Tag v automobilu, který automatizuje platby; prázdné, pokud způsob platby byl provést ručně |
+| TollID |ID mýtného stánku, které jednoznačně identifikuje mýtnou budku |
+| EntryTime |Datum a čas vjezdu vozidla do mýtného stánku v UTC |
+| Registrační značka |Poznávací značka vozidla |
+| Stav |Stát v Usa |
+| Značka |Výrobce automobilového |
+| Model |Číslo modelu automobilu |
+| Typ vozidla |Buď 1 pro osobní vozidla, nebo 2 pro užitková vozidla |
+| WeightType |Hmotnost vozidla v tunách; 0 pro osobní vozidla |
+| Mýtné |Hodnota mýtného v USD |
+| Značka |E-Tag na automobilu, který automatizuje platby; prázdné místo, kde byla platba provedena ručně |
 
-### <a name="exit-data-stream"></a>Konec datového proudu
-Konec datového proudu obsahuje informace o auta opuštění linka stanice. Data události ukončení jsou živé streamování do fronty centra událostí z webové aplikace součástí ukázkové aplikace.
+### <a name="exit-data-stream"></a>Ukončení datového proudu
+Výstupní datový tok obsahuje informace o automobilech opouštějících mýtnou stanici. Události výstupních dat se živě streamují do fronty Centra událostí z webové aplikace zahrnuté v ukázkové aplikaci.
 
-| **TollId** | **ExitTime** | **LicensePlate** |
+| **Id mýtného** | **Doba ukončení** | **Registrační značka** |
 | --- | --- | --- |
-| 1\. místo |2014-09-10T12:03:00.0000000 Z |JNB 7001 |
-| 1\. místo |2014-09-10T12:03:00.0000000 Z |YXZ 1001 |
-| 3 |2014-09-10T12:04:00.0000000 Z |ABC 1004 |
-| 2 |2014-09-10T12:07:00.0000000 Z |XYZ 1003 |
-| 1\. místo |2014-09-10T12:08:00.0000000 Z |BNJ 1007 |
-| 2 |2014-09-10T12:07:00.0000000 Z |CDE 1007 |
+| 1 |2014-09-10T12:03:00.0000000z |JNB 7001 |
+| 1 |2014-09-10T12:03:00.0000000z |YXZ 1001 |
+| 3 |2014-09-10T12:04:00.0000000z |ABC 1004 |
+| 2 |2014-09-10T12:07:00.0000000z |XYZ 1003 |
+| 1 |2014-09-10T12:08:00.0000000z |BNJ 1007 |
+| 2 |2014-09-10T12:07:00.0000000z |CDE 1007 |
 
-Tady je stručný popis sloupce:
+Zde je stručný popis sloupců:
 
-| Column | Popis |
+| Sloupec | Popis |
 | --- | --- |
-| TollID |ID linka z mýtných bran, které jednoznačně identifikuje stánku linka |
-| ExitTime |Datum a čas ukončení vozidla z mýtných bran linka ve standardu UTC |
-| LicensePlate |Registrační číslo vozidla |
+| TollID |ID mýtného stánku, které jednoznačně identifikuje mýtnou budku |
+| Doba ukončení |Datum a čas výstupu vozidla z mýtného boxu v UTC |
+| Registrační značka |Poznávací značka vozidla |
 
-### <a name="commercial-vehicle-registration-data"></a>Komerční vozidla registrační data
-Toto řešení využívá statické snímek komerční vozidla registrační databázi. Tato data se uloží jako soubor JSON do úložiště objektů blob v Azure, obsažené v ukázce.
+### <a name="commercial-vehicle-registration-data"></a>Údaje o registraci užitkových vozidel
+Řešení využívá statický snímek databáze registrace užitkových vozidel. Tato data se uloží jako soubor JSON do úložiště objektů blob Azure, které je součástí ukázky.
 
-| LicensePlate | RegistrationId | Platnost vypršela |
+| Registrační značka | Id registrace | Platnost vypršela |
 | --- | --- | --- |
-| SVT 6023 |285429838 |1\. místo |
+| SVT 6023 |285429838 |1 |
 | XLZ 3463 |362715656 |0 |
-| BAC 1005 |876133137 |1\. místo |
+| BAC 1005 |876133137 |1 |
 | RIV 8632 |992711956 |0 |
 | SNY 7188 |592133890 |0 |
-| ELH 9896 |678427724 |1\. místo |
+| ELH 9896 |678427724 |1 |
 
-Tady je stručný popis sloupce:
+Zde je stručný popis sloupců:
 
-| Column | Popis |
+| Sloupec | Popis |
 | --- | --- |
-| LicensePlate |Registrační číslo vozidla |
-| RegistrationId |ID registrace vozidla |
-| Platnost vypršela |Stav registrace vozidla: 0, pokud vozidla registrace je aktivní, 1, pokud vypršela platnost registrace |
+| Registrační značka |Poznávací značka vozidla |
+| Id registrace |ID registrace vozidla |
+| Platnost vypršela |Stav registrace vozidla: 0, pokud je registrace vozidla aktivní, 1, pokud vypršela platnost registrace |
 
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>Nastavení prostředí pro Azure Stream Analytics
-K dokončení tohoto řešení, budete potřebovat předplatné Microsoft Azure. Pokud nemáte účet Azure, můžete si [požádat o bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+K dokončení tohoto řešení potřebujete předplatné Microsoft Azure. Pokud nemáte účet Azure, můžete [požádat o bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
-Je potřeba, aby co nejlíp využít svůj kredit Azure lze provést, postupujte podle kroků v části "Vyčistit účtu Azure" na konci tohoto článku.
+Nezapomeňte postupovat podle kroků v části "Vyčistit účet Azure" na konci tohoto článku, abyste mohli co nejlépe využít svůj kredit Azure.
 
 ## <a name="deploy-the-sample"></a>Nasazení ukázky
-Existuje několik prostředků, které je možné snadno nasadit do skupiny prostředků spolu s několika kliknutími. Definice řešení je hostována v úložišti GitHub na [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp).
+Existuje několik prostředků, které lze snadno nasadit ve skupině prostředků spolu s několika kliknutími. Definice řešení je hostována v [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)úložišti GitHub na adrese .
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>Nasazení šablony TollApp na webu Azure Portal
-1. Nasazení TollApp prostředí do Azure, použijte tento odkaz [nasazení šablony Azure TollApp](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json).
+1. Chcete-li nasadit prostředí TollApp do Azure, použijte tento odkaz k [nasazení šablony TollApp Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json).
 
-2. Pokud se zobrazí výzva, přihlaste se k webu Azure portal.
+2. Pokud se zobrazí výzva, přihlaste se na portál Azure.
 
-3. Vyberte předplatné, ve kterém se účtují různé prostředky.
+3. Zvolte předplatné, ve kterém se účtují různé prostředky.
 
-4. Zadejte novou skupinu prostředků s jedinečným názvem, třeba `MyTollBooth`.
+4. Zadejte novou skupinu prostředků s jedinečným názvem, například `MyTollBooth`.
 
 5. Vyberte umístění Azure.
 
-6. Zadejte **Interval** jako počet sekund. Tato hodnota se používá v ukázkové webové aplikaci, jak často chcete odesílat data do centra událostí.
+6. Zadejte **interval** jako počet sekund. Tato hodnota se používá v ukázkové webové aplikaci, jak často odesílat data do Centra událostí.
 
-7. **Zkontrolujte** souhlas s podmínkami a ujednáními.
+7. **Zkontrolujte, zda** souhlasíte s podmínkami.
 
-8. Vyberte **připnout na řídicí panel** tak, že máte jednoduchý přístup k prostředkům později.
+8. Vyberte **Připnout na řídicí panel,** abyste později mohli prostředky snadno najít.
 
-9. Vyberte **nákupní** nasadit ukázkovou šablonu.
+9. Vyberte **Koupit,** chcete-li nasadit ukázkovou šablonu.
 
-10. Po chvíli, zobrazí se upozornění, potvrďte, **nasazení bylo úspěšné**.
+10. Po několika okamžicích se zobrazí oznámení potvrzující, že **nasazení proběhlo úspěšně**.
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Kontrola prostředků Azure Stream Analytics TollApp
 
@@ -142,17 +142,17 @@ Existuje několik prostředků, které je možné snadno nasadit do skupiny pros
 
 2. Vyhledejte skupinu prostředků, kterou jste pojmenovali v předchozí části.
 
-3. Ověřte, že jsou ve skupině prostředků uvedené v následujících zdrojích:
-   - Účet jeden Cosmos DB
-   - Jednu úlohu Azure Stream Analytics
+3. Ověřte, zda jsou ve skupině prostředků uvedeny následující prostředky:
+   - Jeden účet Cosmos DB
+   - Jedna úloha Azure Stream Analytics
    - Jeden účet úložiště Azure
    - Jedno Centrum událostí Azure
    - Dvě webové aplikace
 
-## <a name="examine-the-sample-tollapp-job"></a>Prozkoumat ukázkové úlohy TollApp
-1. Spouští se ze skupiny prostředků v předchozí části, vyberte streamování úlohy Stream Analytics začíná název **tollapp** (náhodných znaků jedinečný název obsahuje).
+## <a name="examine-the-sample-tollapp-job"></a>Prohlédněte si ukázkovou úlohu TollApp
+1. Počínaje skupinou prostředků v předchozí části vyberte úlohu streamování Stream Analytics začínající názvem **tollapp** (název obsahuje náhodné znaky pro jedinečnost).
 
-2. Na **přehled** stránka úlohy, Všimněte si, že **dotazu** políčko, chcete-li zobrazit syntaxi dotazu.
+2. Na stránce **Přehled** úlohy si všimněte pole **Dotaz,** kde se zobrazí syntaxe dotazu.
 
    ```sql
    SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*) AS Count
@@ -161,47 +161,47 @@ Existuje několik prostředků, které je možné snadno nasadit do skupiny pros
    GROUP BY TUMBLINGWINDOW(minute, 3), TollId
    ```
 
-   Parafrázovat záměru dotazu, Řekněme, že je potřeba vypočítat počet vozidel, které zadejte stánku linka. Protože stánku linka highway obsahuje nepřetržitý datový proud vozidel zadáte, jsou události vstupu jsou obdobou datový proud, který nikdy nezastaví. Kvantifikovat datového proudu, je nutné definovat "určitou dobu" k měření průběhu. Pojďme upřesňování, dále "kolik vozidel zadat linka stánku každé 3 minuty?" To se obvykle označuje jako aktivační událost pro přeskakující count.
+   Chcete-li parafrázovat záměr dotazu, řekněme, že je třeba počítat počet vozidel, která vstupují do mýtného stánku. Vzhledem k tomu, dálnice mýtného stánku má nepřetržitý proud vozidel vstupu, to jsou vstupní události jsou obdobou proudu, který nikdy nezastaví. Chcete-li kvantifikovat datový proud, musíte definovat "časové období" pro měření. Pojďme upřesnit otázku dále, na "Kolik vozidel vjezd mýtného stánku každé tři minuty?" To se běžně označuje jako počet omílání.
 
-   Jak je vidět, Azure Stream Analytics používá dotazovací jazyk, který je například SQL a přidává několik rozšíření k určení souvisejících s časem aspekty dotazu.  Další informace, přečtěte si informace o [Správa času](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) a [Oddílová](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) konstrukce použitý v dotazu.
+   Jak můžete vidět, Azure Stream Analytics používá dotazovací jazyk, který se podobá SQL a přidá několik rozšíření k určení časově související aspekty dotazu.  Další podrobnosti načtete o [konstrukcích Time Management](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) a [Windowing](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) použitých v dotazu.
 
-3. Zkontrolujte vstupy TollApp ukázkové úlohy. V aktuálním dotazu se používá pouze EntryStream vstup.
-   - **EntryStream** připojení k Centru událostí, který zařadí do fronty dat, která představují pokaždé, když automobilu zadá tollbooth na komunikacích se vstup. Webové aplikace, která je součástí vzorku vytváří události a je zařazeno do fronty tato data do centra událostí. Všimněte si, že tento vstup je dotazován v klauzuli FROM streamování dotazu.
-   - **ExitStream** připojení k Centru událostí, který zařadí do fronty dat, která představují pokaždé, když automobilu ukončí tollbooth na komunikacích se vstup. Tento vstup streamování se používá v pozdější variace syntaxi dotazu.
-   - **Registrace** vstup je připojení k Azure Blob storage, odkazuje na soubor statické registration.json, používá pro vyhledávání podle potřeby. Tato referenčního datového vstupu se používá v pozdější variace syntaxi dotazu.
+3. Prozkoumejte vstupy ukázkové úlohy TollApp. V aktuálním dotazu se používá pouze vstup EntryStream.
+   - **EntryStream** vstup je připojení Centra událostí, které fronty data představující pokaždé, když auto vstoupí do mýtného budky na dálnici. Webová aplikace, která je součástí ukázky, vytváří události a tato data jsou zařazena do fronty v tomto centru událostí. Všimněte si, že tento vstup je dotazován v FROM klauzule streamování dotazu.
+   - **ExitStream** vstup je připojení Centra událostí, které fronty data představující pokaždé, když auto opustí mýtnou budku na dálnici. Tento vstup streamování se používá v pozdějších variantách syntaxe dotazu.
+   - **Vstup registrace** je připojení úložiště objektů Blob Azure, odkazující na statický soubor registration.json, který se používá pro vyhledávání podle potřeby. Tento vstup referenčních dat se používá v pozdějších variantách syntaxe dotazu.
 
-4. Zkontrolujte výstupy TollApp ukázkové úlohy.
-   - **Cosmos DB** výstupem je kontejner databáze Cosmos, který přijímá výstupní události jímky. Všimněte si, že tento výstup je používán v klauzuli streamování dotazu.
+4. Prozkoumejte výstupy ukázkové úlohy TollApp.
+   - **Výstup Cosmos DB** je kontejner databáze Cosmos, který přijímá události výstupního jímky. Všimněte si, že tento výstup se používá v INTO klauzule streamování dotazu.
 
-## <a name="start-the-tollapp-streaming-job"></a>Spuštění úlohy streamování TollApp
-Postupujte podle těchto kroků ke spuštění úlohy streamování:
+## <a name="start-the-tollapp-streaming-job"></a>Spuštění úlohy streamování Aplikace TollApp
+Chcete-li spustit úlohu streamování, postupujte takto:
 
-1. Na **přehled** stránka úlohy, vyberte **Start**.
+1. Na stránce **Přehled** úlohy vyberte **Start**.
 
-2. Na **spuštění úlohy** vyberte **nyní**.
+2. V podokně **úloh Start** vyberte **Nyní**.
 
-3. Po chvíli, když úloha běží na **přehled** stránky úlohu streamování, zobrazení **monitorování** grafu. Graf by se zobrazit několik tisíc vstupních událostí a desítky výstupních událostí.
+3. Po několika okamžicích, jakmile je úloha spuštěna, na stránce **Přehled** úlohy streamování, zobrazte graf **monitorování.** Graf by měl zobrazit několik tisíc vstupních událostí a desítky výstupních událostí.
 
-## <a name="review-the-cosmosdb-output-data"></a>Zkontrolujte výstupní data služby cosmos DB
-1. Vyhledejte skupinu prostředků obsahující prostředky TollApp.
+## <a name="review-the-cosmosdb-output-data"></a>Kontrola výstupních dat CosmosDB
+1. Vyhledejte skupinu prostředků, která obsahuje prostředky TollApp.
 
-2. Vyberte účet Azure Cosmos DB s názvem vzor **tollapp\<náhodným\>-Cosmos**.
+2. Vyberte účet Azure Cosmos DB s názvem vzor **tollapp\<random\>-cosmos**.
 
-3. Vyberte **Průzkumník dat** záhlaví otevřete Průzkumníka dat stránky.
+3. Výběrem záhlaví **Průzkumníka dat** otevřete stránku Průzkumník dat.
 
-4. Rozbalte **tollAppDatabase** > **tollAppCollection** > **dokumenty**.
+4. Rozbalte **tollAppDatabase** > **tollAppCollection** > **Documents**.
 
-5. V seznamu identifikátorů se zobrazí několik dokumentace po výstup je k dispozici.
+5. V seznamu IDs, několik dokumentů jsou zobrazeny, jakmile je k dispozici výstup.
 
-6. Vyberte každé id k revizi dokumentu JSON. Všimněte si, že každý tollid windowend čas a počet aut z tohoto okna.
+6. Vyberte každé id, abyste zkontrolovali dokument JSON. Všimněte si každého tollid, windowend čas a počet vozů z tohoto okna.
 
-7. Po další tři minuty, další sadu čtyři dokumenty je k dispozici, jeden dokument za tollid.
+7. Po dalších třech minutách je k dispozici další sada čtyř dokumentů, jeden dokument na tollid.
 
 
-## <a name="report-total-time-for-each-car"></a>Celkový čas sestavy pro každé auto
-Průměrná doba potřebná pro automobilu předávání linka pomáhá vyhodnotit účinnost procesu a uživatelské prostředí.
+## <a name="report-total-time-for-each-car"></a>Nahlásit celkový čas pro každé auto
+Průměrná doba potřebná k tomu, aby auto prošlo mýtným, pomáhá posoudit efektivitu procesu a zákaznickou zkušenost.
 
-Chcete-li zjistit celkový čas, připojte se k EntryTime datového proudu pomocí služby stream ExitTime. Spojte dva proudy vstupní na stejné odpovídající TollId a LicencePlate sloupce. **Připojení** operátor vyžaduje nastavení dočasné volnost, který popisuje přijatelný časový rozdíl mezi připojeného k události. Použití **DATEDIFF** funkce určete, že se události mají více než 15 minut od sebe navzájem. Platí také **DATEDIFF** funkce ukončíte a časy vstupu pro výpočet skutečný čas automobilu stráví linka stanice. Všimněte si rozdílu použití **DATEDIFF** když se používá v **vyberte** příkaz spíše než **připojte se k** podmínku.
+Chcete-li najít celkový čas, připojte entrytime datový proud s ExitTime datového proudu. Připojte dva vstupní datové proudy na stejné odpovídající TollId a LicensePlate sloupce. Operátor **JOIN** vyžaduje zadání časové prosazení, které popisuje přijatelný časový rozdíl mezi spojenými událostmi. Pomocí funkce **DATEDIFF** určete, že události by neměly být od sebe delší než 15 minut. Také použít **funkci DATEDIFF** pro ukončení a vstup časy vypočítat skutečný čas, který auto stráví v mýtné stanici. Všimněte si rozdílu použití **DATEDIFF** při použití v **příkazu SELECT** spíše než **podmínka JOIN.**
 
 ```sql
 SELECT EntryStream.TollId, EntryStream.EntryTime, ExitStream.ExitTime, EntryStream.LicensePlate, DATEDIFF (minute, EntryStream.EntryTime, ExitStream.ExitTime) AS DurationInMinutes
@@ -212,26 +212,26 @@ ON (EntryStream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStr
 AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 ```
 
-### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>Chcete-li aktualizovat TollApp streamování syntaxe dotazu úlohy:
+### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>Aktualizace syntaxe dotazu na úlohu streamování aplikace TollApp:
 
-1. Na **přehled** stránka úlohy, vyberte **Zastavit**.
+1. Na stránce **Přehled** úlohy vyberte **Zastavit**.
 
-2. Chvíli počkejte, než pro oznámení, že úloha se zastavila.
+2. Počkejte několik okamžiků na oznámení, že úloha byla zastavena.
 
-3. V části TOPOLOGIE úlohy, vyberte **< > dotazu**
+3. Pod nadpisem TOPOLOGIE ÚLOHY vyberte **< > dotaz.**
 
-4. Vložte upravené streamování jazyka SQL.
+4. Vložte upravený dotaz SQL streamování.
 
-5. Vyberte **Uložit** Uložte dotaz. Potvrďte **Ano** a uložte změny.
+5. Chcete-li dotaz uložit, vyberte **uložit.** Potvrďte **ano,** chcete-li změny uložit.
 
-6. Na **přehled** stránka úlohy, vyberte **Start**.
+6. Na stránce **Přehled** úlohy vyberte **Start**.
 
-7. Na **spuštění úlohy** vyberte **nyní**.
+7. V podokně **úloh Start** vyberte **Nyní**.
 
-### <a name="review-the-total-time-in-the-output"></a>Zkontrolujte celkový čas ve výstupu
-Opakujte kroky v předchozí části zkontrolovat CosmosDB výstupních dat úlohy streamování. Přečtěte si nejnovější dokumenty JSON.
+### <a name="review-the-total-time-in-the-output"></a>Kontrola celkového času ve výstupu
+Opakujte kroky v předchozí části a zkontrolujte výstupní data CosmosDB z úlohy streamování. Prohlédněte si nejnovější dokumenty JSON.
 
-Například tento dokument ukazuje automobilu příklad některých registrační, času entrytime a ukončení a pole DATEDIFF vypočtená doba trvání v minutách, zobrazuje dobu trvání z mýtných bran linka jako dvě minuty:
+Tento dokument například zobrazuje ukázkové auto s určitou registrační značkou, čas emitování a čas ukončení a pole DATEDIFF vypočítané doby trvání v minutách zobrazující dobu trvání mýtného budky jako dvě minuty:
 ```JSON
 {
     "tollid": 4,
@@ -248,10 +248,10 @@ Například tento dokument ukazuje automobilu příklad některých registračn�
 }
 ```
 
-## <a name="report-vehicles-with-expired-registration"></a>Sestava vozidla s vypršenou platností registrací
-Azure Stream Analytics můžete použít snímky statická referenční data spojovat s dočasné datové proudy. Abychom si předvedli tuto funkci, použijte následující ukázkový dotaz. Vstupní pole registrace je soubor json statických objektů blob, který obsahuje seznam vypršení platnosti licence značek. Díky připojení ke službě na desce licence, referenční data porovnání s každou vozidel procházející linka obě.
+## <a name="report-vehicles-with-expired-registration"></a>Nahlásit vozidla s prošlou registrací
+Azure Stream Analytics můžete použít statické snímky referenčních dat pro připojení s časové datové proudy. Chcete-li tuto schopnost prokázat, použijte následující ukázkovou otázku. Vstup registrace je statický soubor json objektu blob, který obsahuje seznam vypršení platnosti licenčních značek. Spojením na poznávací značku se referenční údaje porovnávají s každým vozidlem, které projíždí mýtným.
 
-Pokud je komerční vozidla zaregistrován u linka společnosti, můžete předat prostřednictvím z mýtných bran linka bez zastavení pro kontrolu. Pomocí registrace vyhledávací tabulky Identifikujte všechny komerční vozidla, jejichž platnost vypršela registrace.
+Je-li užitkové vozidlo registrováno u mýtné společnosti, může projít mýtnou kabinou, aniž by bylo zastaveno pro kontrolu. Pomocí vyhledávací tabulky registrace můžete identifikovat všechna užitková vozidla, jejichž platnost vypršela.
 
 ```sql
 SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId
@@ -262,9 +262,9 @@ ON EntryStream.LicensePlate = Registration.LicensePlate
 WHERE Registration.Expired = '1'
 ```
 
-1. Opakujte kroky v předchozí části, chcete-li aktualizovat TollApp syntaxe dotazu úlohy streamování.
+1. Opakováním kroků v předchozí části aktualizujte syntaxi pracovního dotazu streamování Aplikace TollApp.
 
-2. Opakujte kroky v předchozí části zkontrolovat CosmosDB výstupních dat úlohy streamování.
+2. Opakujte kroky v předchozí části a zkontrolujte výstupní data CosmosDB z úlohy streamování.
 
 Příklad výstupu:
 ```json
@@ -282,10 +282,10 @@ Příklad výstupu:
     }
 ```
 
-## <a name="scale-out-the-job"></a>Horizontální navýšení kapacity úlohu
-Azure Stream Analytics byla navržena Elasticky škálovat tak, aby ho může zpracovávat velké objemy dat. Dotaz Azure Stream Analytics může použít klauzuli **partition by** k tomu, aby systém informoval, že tento krok se škáluje. **PartitionID** je speciální sloupec, který systém přidává, aby odpovídal ID oddílu vstupu (centra událostí).
+## <a name="scale-out-the-job"></a>Horizontální navýšení kapacity
+Azure Stream Analytics je navržen tak, aby elasticky škálovat tak, aby mohl zpracovávat velké objemy dat. Dotaz Azure Stream Analytics můžete použít **klauzuli PARTITION BY** sdělit systému, že tento krok se škáluje. **PartitionId** je speciální sloupec, který systém přidá tak, aby odpovídaly ID oddílu vstupu (centrum událostí).
 
-Pro horizontální navýšení kapacity dotazu do oddílů, upravte syntaxi dotazů k následujícím kódem:
+Chcete-li škálovat dotaz na oddíly, upravte syntaxi dotazu na následující kód:
 ```sql
 SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
 INTO CosmosDB
@@ -295,33 +295,33 @@ PARTITION BY PartitionId
 GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 ```
 
-Vertikálně navýšit kapacitu na víc jednotek streamování datové proudy úlohy:
+Chcete-li vertikálně rozšířit úlohu streamování na více jednotek streamování:
 
-1. **Zastavit** aktuální úlohu.
+1. **Zastavte** aktuální úlohu.
 
-2. Aktualizace v syntaxi dotazu **< > dotazu** stránce a uložte změny.
+2. Aktualizujte syntaxi dotazu na stránce **< > dotaz** a uložte změny.
 
-3. V části konfigurace na úlohu streamování, vyberte **škálování**.
+3. V části Konfigurace v rámci úlohy streamování vyberte **měřítko**.
 
-4. Nastavte posuvník **jednotek streamování** posuvníku z 1 až 6. Jednotky streamování definovat množství výpočetní výkon, který může přijímat úlohy. Vyberte **Uložit**.
+4. Posuňte posuvník **Jednotek streamování** z 1 na 6. Jednotky streamování definují množství výpočetního výkonu, které může úloha přijímat. Vyberte **Uložit**.
 
-5. **Spustit** úlohu streamování předvést další škálování. Azure Stream Analytics rozděluje práci mezi víc výpočetních prostředků a dosáhnout lepší propustnosti, rozdělení práce napříč prostředky pomocí sloupce určené v klauzuli PARTITION BY.
+5. **Spusťte** úlohu streamování k předvedení dalšího škálování. Azure Stream Analytics distribuuje práci napříč více výpočetními prostředky a dosáhnout lepší propustnost, rozdělení práce mezi prostředky pomocí sloupce určeného v klauzuli PARTITION BY.
 
 ## <a name="monitor-the-job"></a>Monitorování úlohy
-**Monitorování** oblasti obsahuje statistické údaje o běžící úlohu. První konfigurace je potřeba pro použití účtu úložiště ve stejné oblasti (název linka jako zbytek tohoto dokumentu).
+Oblast **MONITOR** obsahuje statistické údaje o spuštěné úloze. První konfigurace je potřeba použít účet úložiště ve stejné oblasti (název mýtného jako zbytek tohoto dokumentu).
 
-![Monitorování úloh v Azure Stream Analytics](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
+![Monitorování úloh Azure Stream Analytics](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 
-Můžete přistupovat **protokoly aktivit** z řídicího panelu úloha **nastavení** také oblast.
+K **protokolům aktivit** můžete přistupovat také z oblasti **Nastavení** řídicího panelu úlohy.
 
-## <a name="clean-up-the-tollapp-resources"></a>Vyčištění prostředků TollApp
-1. Po zastavení úlohy Stream Analytics na portálu Azure portal.
+## <a name="clean-up-the-tollapp-resources"></a>Vyčištění prostředků Společnosti TollApp
+1. Zastavte úlohu Stream Analytics na webu Azure Portal.
 
-2. Vyhledejte skupinu prostředků, který obsahuje osm prostředky vztahující se k šabloně TollApp.
+2. Vyhledejte skupinu prostředků, která obsahuje osm prostředků souvisejících se šablonou TollApp.
 
 3. Vyberte **Odstranit skupinu prostředků**. Zadejte název skupiny prostředků pro potvrzení odstranění.
 
 ## <a name="conclusion"></a>Závěr
-Toto řešení je zavedená ve službě Azure Stream Analytics. Jsme vám ukázali jak nakonfigurovat vstupy a výstupy pro úlohu Stream Analytics. Použití dat linka scénáře, řešení je vysvětleno běžné typy problémů, které vznikají v prostoru dat v pohybu a jak je možné řešit pomocí jednoduchých dotazů podobném SQL ve službě Azure Stream Analytics. Řešení popsaná konstrukce rozšíření SQL pro práci s dočasná data. To jsme si ukázali, jak propojit datových proudů, jak rozšířit datový proud s statická referenční data a jak horizontálně navyšte kapacitu dotazu, abyste dosáhli vyšší propustnosti.
+Toto řešení vás seznámilo se službou Azure Stream Analytics. To ukazuje, jak nakonfigurovat vstupy a výstupy pro úlohu Stream Analytics. Pomocí scénáře Mýtná data řešení vysvětluje běžné typy problémů, které vznikají v prostoru dat v pohybu a jak je lze vyřešit pomocí jednoduchých dotazů podobných SQL v Azure Stream Analytics. Řešení popsalo konstrukce rozšíření SQL pro práci s temporálními daty. Ukázalo se, jak připojit datové proudy, jak obohatit datový proud se statickými referenčními daty a jak horizontální navýšení kapacity dotazu k dosažení vyšší propustnosti.
 
-I když toto řešení poskytuje vhodným úvodem, není kompletní jakýmikoli prostředky. Můžete najít další vzory dotazů pomocí jazyka SAQL na [příklady pro běžné vzory využití Stream Analytics dotazů](stream-analytics-stream-analytics-query-patterns.md).
+Ačkoli toto řešení poskytuje dobrý úvod, není v žádném případě úplné. Další vzory dotazů najdete pomocí jazyka SAQL v [příkladech dotazu pro běžné vzorce využití Stream Analytics](stream-analytics-stream-analytics-query-patterns.md).

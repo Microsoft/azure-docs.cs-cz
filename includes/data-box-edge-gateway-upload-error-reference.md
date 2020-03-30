@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 05673885336dbfb9a70843bd0ccc4e700091ad7e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175676"
 ---
 |     Kód chyby     |      Popis chyby     |
@@ -34,8 +34,8 @@ ms.locfileid: "67175676"
 |    2006            | Nelze nahrát data na účet, protože účet nebo sdílená složka jsou zakázané.|
 |    2007            | Nelze se připojit ke kontejneru, protože oprávnění účtu jsou nesprávná nebo zastaralá. Zkontrolujte svůj přístup.|
 |    2008            | Nelze přidat nová data, protože kontejner je plný. Nahlédněte do specifikací Azure a ověřte podporované velikosti kontejnerů podle typu. Soubor Azure například podporuje pouze maximální velikost 5 TB.|
-|    2009            | Nebylo možné nahrát data, protože neexistuje v kontejneru přidruženého k sdílenou složku.|    
-|    2997            | Došlo k neočekávané chybě. Jde o přechodnou chybu, která se vyřeší.|
+|    2009            | Data nelze odeslat, protože kontejner přidružený ke sdílené položce neexistuje.|    
+|    2997            | Došlo k neočekávané chybě. Toto je přechodná chyba, která se vyřeší sama.|
 |    2998            | Došlo k neočekávané chybě. Chyba se může vyřešit sama, ale pokud přetrvá déle než 24 hodin, obraťte se na podporu Microsoftu.|
 |    16000           | Tento soubor nelze zpracovat.|
 |    16001           | Tento soubor nelze zpracovat, protože už v místním systému existuje.|

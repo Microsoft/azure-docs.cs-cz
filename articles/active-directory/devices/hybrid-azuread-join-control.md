@@ -1,6 +1,6 @@
 ---
-title: Řízené ověřování pro připojení k hybridní službě Azure AD – Azure AD
-description: Přečtěte si, jak provést řízené ověřování hybridního připojení ke službě Azure AD a teprve potom ho v celé organizaci povolit najednou.
+title: Řízené ověření hybridního připojení Azure AD – Azure AD
+description: Zjistěte, jak provést řízené ověření hybridního připojení Azure AD, než ho povolíte v celé organizaci najednou.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,95 +11,95 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6bb57a60b2ed3b39bf83154d3afea88071efbac
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: f43db805ccbb7d4e546c51bbe39350f4bbba2efb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672423"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049980"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Řízené ověřování hybridního připojení k Azure AD
 
-Když jsou splněné všechny požadavky, zařízení s Windows se v tenantovi Azure AD automaticky registrují jako zařízení. Stav těchto identit zařízení ve službě Azure AD se označuje jako připojení k hybridní službě Azure AD. Další informace o konceptech popsaných v tomto článku najdete v článcích [Úvod do správy zařízení v Azure Active Directory](overview.md) a [Naplánování implementace Hybrid Azure Active Directory JOIN](hybrid-azuread-join-plan.md).
+Když jsou všechny předpoklady na místě, zařízení s Windows se automaticky zaregistrují jako zařízení ve vašem tenantovi Azure AD. Stav těchto identit zařízení ve službě Azure AD se označuje jako hybridní připojení Azure AD. Další informace o konceptech uvedených v tomto článku najdete v článcích [Úvod do správy zařízení ve službě Azure Active Directory](overview.md) a plánování implementace připojení hybridní [služby Azure Active Directory](hybrid-azuread-join-plan.md).
 
-Organizace můžou chtít provést řízené ověřování pro připojení k hybridní službě Azure AD, a to ještě před tím, než je zapnete v celé organizaci najednou. V tomto článku se dozvíte, jak provést řízené ověření služby připojení k hybridní službě Azure AD.
+Organizace mohou chtít provést řízené ověření hybridního připojení Azure AD před povolením v celé organizaci najednou. Tento článek vám vysvětlí, jak provést řízené ověření hybridního připojení Azure AD.
 
-## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-current-devices"></a>Řízené ověřování služby Azure AD JOIN v současných zařízeních s Windows
+## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-current-devices"></a>Řízené ověření hybridního připojení Azure AD na aktuálních zařízeních s Windows
 
-U zařízení s desktopovým operačním systémem Windows je podporovanou verzí aktualizace pro Windows 10 pro výročí (verze 1607) nebo novější. Osvědčeným postupem je upgradovat na nejnovější verzi Windows 10.
+U zařízení s desktopovým operačním systémem Windows je podporovanou verzí aktualizace Windows 10 Anniversary Update (verze 1607) nebo novější. Osvědčeným postupem je upgrade na nejnovější verzi Windows 10.
 
-Aby bylo možné provádět řízené ověřování služby Azure AD JOIN v současných zařízeních s Windows, musíte provést tyto kroky:
+Chcete-li provést řízené ověření hybridního připojení Azure AD na aktuálních zařízeních s Windows, musíte:
 
-1. Vymažte položku bodu připojení služby (SCP) ze služby Active Directory (AD), pokud existuje.
-1. Konfigurace nastavení registru na straně klienta pro spojovací bod služby na počítačích připojených k doméně pomocí objektu Zásady skupiny (GPO)
-1. Pokud používáte AD FS, musíte taky nakonfigurovat nastavení registru na straně klienta pro spojovací bod služby na serveru AD FS pomocí objektu zásad skupiny.  
-1. Je také možné, že budete muset [přizpůsobit možnosti synchronizace](../hybrid/how-to-connect-post-installation.md#additional-tasks-available-in-azure-ad-connect) v Azure AD Connect, aby bylo možné povolit synchronizaci zařízení. 
-
-
-### <a name="clear-the-scp-from-ad"></a>Vymazání spojovacího bodu služby ve službě AD
-
-Chcete-li upravit objekty spojovacího bodu služby ve službě AD, použijte Editor rozhraní ADSI (Active Directory Services).
-
-1. Spusťte aplikaci **ADSI Edit** Desktop z nástroje a pracovní stanice pro správu nebo řadič domény jako správce podnikové sítě.
-1. Připojte se k **názvovému kontextu konfigurace** vaší domény.
-1. Přejděte na **CN = Configuration, DC = contoso, DC = com** > **CN = Services** > **CN = Konfigurace registrace zařízení**
-1. Klikněte pravým tlačítkem na listový objekt v části **CN = Konfigurace registrace zařízení** a vyberte **vlastnosti** .
-   1. V okně **Editor atributů** vyberte **klíčová slova** a klikněte na **Upravit** .
-   1. Vyberte hodnoty **azureADId** a **azureADName** (jeden po druhém) a klikněte na **Odebrat** .
-1. Zavřít **Editor ADSI**
+1. Vymazání položky spojovacího bodu (SCP) služby ze služby Active Directory (AD), pokud existuje
+1. Konfigurace nastavení registru na straně klienta pro protokol SCP v počítačích spojených s doménou pomocí objektu zásad skupiny (GPO)
+1. Pokud používáte službu AD FS, musíte také nakonfigurovat nastavení registru na straně klienta pro server SCP na serveru služby AD FS pomocí příkazu gpo  
+1. Možná budete muset [také přizpůsobit možnosti synchronizace](../hybrid/how-to-connect-post-installation.md#additional-tasks-available-in-azure-ad-connect) v Azure AD Connect, abyste povolili synchronizaci zařízení. 
 
 
-### <a name="configure-client-side-registry-setting-for-scp"></a>Konfigurace nastavení registru na straně klienta pro spojovací bod služby
+### <a name="clear-the-scp-from-ad"></a>Vymazání scp z AD
 
-Pomocí následujícího příkladu vytvořte objekt Zásady skupiny (GPO), který nasadí nastavení registru konfigurace položky SCP v registru vašich zařízení.
+Pomocí Editoru rozhraní služby Active Directory Services (ADSI Edit) můžete upravit objekty SCP ve službě AD.
 
-1. Otevřete konzolu pro správu Zásady skupiny a vytvořte nový objekt Zásady skupiny ve vaší doméně.
-   1. Zadejte název nově vytvořeného objektu zásad skupiny (například ClientSideSCP).
-1. Upravte objekt zásad skupiny a vyhledejte následující cestu: **Konfigurace počítače** > **Předvolby** > **nastavení systému Windows** > **registru**
-1. Klikněte pravým tlačítkem na registr a vyberte **nový** > **položka registru** .
+1. Spusťte pracovní stanici **ADSI Edit desktop** z pracovní stanice pro správu nebo řadič domény jako podnikový správce.
+1. Připojte se k **kontextu pojmenování konfigurace** vaší domény.
+1. Přejděte na **CN=Configuration,DC=contoso,DC=com** > **CN=Services** > **CN=Konfigurace registrace zařízení**
+1. Klikněte pravým tlačítkem myši na listový objekt **CN=62a0ff2e-97b9-4513-943f-0d221bd30080** a vyberte **Vlastnosti**
+   1. Vyberte **klíčová slova** z okna **Editor atributů** a klepněte na **Upravit.**
+   1. Vyberte hodnoty **azureADId** a **azureADName** (jeden po druhém) a klikněte na **Odebrat**
+1. Zavřít **úpravy rozhraní ADSI**
+
+
+### <a name="configure-client-side-registry-setting-for-scp"></a>Konfigurace nastavení registru na straně klienta pro SCP
+
+Následující příklad slouží k vytvoření objektu zásad skupiny (GPO) k nasazení nastavení registru, které konfiguruje položku SCP v registru vašich zařízení.
+
+1. Otevřete konzolu pro správu zásad skupiny a vytvořte ve své doméně nový objekt zásad skupiny.
+   1. Zadejte nově vytvořený seznam skupin název (například ClientSideSCP).
+1. Upravte zásady zásad skupiny a vyhledejte následující cestu:**Předvolby** >  **konfigurace** > počítače Registr**nastavení systému** > **Registry** Windows
+1. Klikněte pravým tlačítkem myši na registr a vyberte **novou** > **položku registru.**
    1. Na kartě **Obecné** nakonfigurujte následující
-      1. Akce: **aktualizace**
-      1. Podregistr: **HKEY_LOCAL_MACHINE**
-      1. Cesta ke klíči: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
+      1. Akce: **Aktualizace**
+      1. Úl: **HKEY_LOCAL_MACHINE**
+      1. Cesta klíče: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Název hodnoty: **TenantId**
       1. Typ hodnoty: **REG_SZ**
-      1. Value data: identifikátor GUID nebo **ID adresáře** vaší instance služby Azure AD (Tato hodnota je k dispozici ve složce **Azure Portal** > **Azure Active Directory** > **vlastností** **ID adresáře** > )
+      1. Data o hodnotě: Identifikátor GUID nebo **ID adresáře** instance Azure AD (tuto hodnotu najdete na **webu Azure Portal** > **Azure Active Directory** > **Properties** > **Directory Directory ID)**
    1. Klikněte na tlačítko **OK**.
-1. Klikněte pravým tlačítkem na registr a vyberte **nový** > **položka registru** .
+1. Klikněte pravým tlačítkem myši na registr a vyberte **novou** > **položku registru.**
    1. Na kartě **Obecné** nakonfigurujte následující
-      1. Akce: **aktualizace**
-      1. Podregistr: **HKEY_LOCAL_MACHINE**
-      1. Cesta ke klíči: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
-      1. Název hodnoty: **tenant**
+      1. Akce: **Aktualizace**
+      1. Úl: **HKEY_LOCAL_MACHINE**
+      1. Cesta klíče: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
+      1. Název hodnoty: **Název_tenanta**
       1. Typ hodnoty: **REG_SZ**
-      1. Údaj hodnoty: ověřený **název domény** , pokud používáte federované prostředí, například AD FS. Váš ověřený **název domény** nebo název domény onmicrosoft.com, například pokud používáte spravované prostředí, `contoso.onmicrosoft.com`.
+      1. Data hodnoty: Ověřený **název domény,** pokud používáte federované prostředí, jako je služba AD FS. Ověřený **název domény** nebo onmicrosoft.com název `contoso.onmicrosoft.com` domény, například pokud používáte spravované prostředí
    1. Klikněte na tlačítko **OK**.
-1. Zavřít editor nově vytvořeného objektu zásad skupiny
-1. Propojení nově vytvořeného objektu zásad skupiny s požadovanými organizačními jednotkami, které patří počítačům připojeným k doméně, které patří k vašemu řízenému naplnění
+1. Zavření editoru pro nově vytvořený gpo
+1. Propojte nově vytvořený soubor skupiny s požadovanou oupoložkou obsahující počítače spojené s doménou, které patří do kontrolované hospo- populace zavádění
 
-### <a name="configure-ad-fs-settings"></a>Konfigurace nastavení AD FS
+### <a name="configure-ad-fs-settings"></a>Konfigurace nastavení služby AD FS
 
-Pokud používáte AD FS, musíte nejprve nakonfigurovat spojovací bod služby na straně klienta pomocí výše uvedených pokynů, a to tak, že objekt zásad skupiny propojíte se servery AD FS. Objekt spojovacího bodu služby definuje zdroj autority pro objekty zařízení. Může to být místní nebo Azure AD. Když je spojovací bod služby na straně klienta nakonfigurovaný pro AD FS, je zdroj pro objekty zařízení vytvořený jako Azure AD.
-
-> [!NOTE]
-> Pokud se nezdařila konfigurace spojovacího bodu služby klienta na serverech AD FS, bude zdroj pro identity zařízení považován za místní. Služba AD FS pak začne odstraňovat objekty zařízení z místního adresáře po stanoveném období definovaném v atributu registrace zařízení ADFS "MaximumInactiveDays". Objekty registrace zařízení ADFS najdete pomocí [rutiny Get-AdfsDeviceRegistration](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps).
-
-## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Řízené ověřování připojení k hybridní službě Azure AD na zařízeních nižší úrovně Windows
-
-Aby bylo možné zaregistrovat zařízení Windows nižší úrovně, musí organizace nainstalovat [microsoft Workplace JOIN pro počítače s jiným systémem než Windows 10](https://www.microsoft.com/download/details.aspx?id=53554) , které jsou k dispozici na webu Microsoft Download Center.
-
-Balíček můžete nasadit pomocí systému distribuce softwaru, jako je [Microsoft Endpoint Configuration Manager](/configmgr/). Balíček podporuje standardní možnosti bezobslužné instalace s parametrem quiet. Aktuální větev Configuration Manager nabízí výhody oproti starším verzím, jako je schopnost sledovat dokončené registrace.
-
-Instalační program vytvoří v systému naplánovanou úlohu, která běží v uživatelském kontextu. Úkol se aktivuje, když se uživatel přihlásí k Windows. Úloha se tiše připojí k zařízení pomocí Azure AD s přihlašovacími údaji uživatele po ověření ve službě Azure AD.
-
-K řízení registrace zařízení byste měli nasadit balíček Instalační služba systému Windows do vaší vybrané skupiny zařízení Windows nižší úrovně.
+Pokud používáte službu AD FS, musíte nejprve nakonfigurovat server SCP na straně klienta pomocí výše uvedených pokynů propojením seznamu skupiny se servery služby AD FS. Objekt SCP definuje zdroj autority pro objekty zařízení. Může být místní nebo Azure AD. Když je scp na straně klienta nakonfigurován pro službu AD FS, zdroj pro objekty zařízení je vytvořen jako Azure AD.
 
 > [!NOTE]
-> Pokud není bod připojení služby ve službě AD nakonfigurovaný, měli byste dodržovat stejný přístup, jak je popsáno v tématu [Konfigurace nastavení registru služby SCP na straně klienta](#configure-client-side-registry-setting-for-scp), na počítačích připojených k doméně pomocí objektu Zásady skupiny (objekt zásad skupiny).
+> Pokud se vám nepodařilo nakonfigurovat server SCP na straně klienta na serverech služby AD FS, zdroj identit zařízení by byl považován za místní. Služba ADFS pak začne spouštět objekty zařízení z místního adresáře po uplynutí stanovené doby definované v atributu "MaximumInactiveDays" registrace zařízení Služby ADFS. Objekty Registrace zařízení služby ADFS lze nalézt pomocí [rutiny Get-AdfsDeviceRegistration](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps).
+
+## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Řízené ověření hybridního připojení Azure AD na zařízeních nižší úrovně Windows
+
+Chcete-li zaregistrovat zařízení systému Windows nižší úrovně, musí organizace nainstalovat [připojení k webu Microsoft Workplace Join pro počítače s jiným systémem Windows 10, které](https://www.microsoft.com/download/details.aspx?id=53554) jsou k dispozici na webu služby Stažení softwaru.
+
+Balíček můžete nasadit pomocí systému distribuce softwaru, jako je [Microsoft Endpoint Configuration Manager](/configmgr/). Balíček podporuje standardní možnosti tiché instalace s tichým parametrem. Aktuální pobočka nástroje Configuration Manager nabízí výhody oproti dřívějším verzím, například možnost sledovat dokončené registrace.
+
+Instalační program vytvoří naplánovanou úlohu v systému, která je spuštěna v uživatelském kontextu. Úloha se spustí, když se uživatel přihlásí k systému Windows. Úloha bezobslužně připojí zařízení s Azure AD s přihlašovacími údaji uživatele po ověření pomocí Azure AD.
+
+Chcete-li řídit registraci zařízení, měli byste nasadit balíček Instalační služby systému Windows do vybrané skupiny zařízení nižší úrovně systému Windows.
+
+> [!NOTE]
+> Pokud scp není nakonfigurován ve službě AD, měli byste postupovat stejným způsobem, jak je popsáno v [konfiguraci nastavení registru na straně klienta pro SCP](#configure-client-side-registry-setting-for-scp)) v počítačích spojených s doménou pomocí objektu zásad skupiny (GPO).
 
 
-Až ověříte, že vše funguje podle očekávání, můžete do služby Azure AD automaticky zaregistrovat zbývající zařízení s Windows a nižší úrovní pomocí [Konfigurace SCP pomocí Azure AD Connect](hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join).
+Po ověření, že vše funguje podle očekávání, můžete automaticky zaregistrovat zbytek vašeho Windows aktuální a nižší úrovně zařízení s Azure AD [konfigurací SCP pomocí Azure AD Connect](hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Plánování implementace služby Hybrid Azure Active Directory JOIN](hybrid-azuread-join-plan.md)
+[Plánování implementace hybridního připojení k azure active directory](hybrid-azuread-join-plan.md)

@@ -1,7 +1,7 @@
 ---
-title: Synonyma pro rozšíření dotazu přes vyhledávací index
+title: Synonyma pro rozšíření dotazu přes index vyhledávání
 titleSuffix: Azure Cognitive Search
-description: Vytvořením mapy synonym můžete rozšířit rozsah vyhledávacího dotazu na index služby Azure Kognitivní hledání. Rozsah je rozšířen tak, aby zahrnoval ekvivalentní výrazy, které zadáte v seznamu.
+description: Vytvořte mapu synonym pro rozšíření oboru vyhledávacího dotazu v indexu Azure Cognitive Search. Obor je rozšířen tak, aby zahrnoval ekvivalentní termíny, které zadáte do seznamu.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -9,47 +9,47 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: aa573e84fa9fff83bd6a894f516ce5f67b3afa79
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194338"
 ---
-# <a name="synonyms-in-azure-cognitive-search"></a>Synonyma v Azure Kognitivní hledání
+# <a name="synonyms-in-azure-cognitive-search"></a>Synonyma v Azure Cognitive Search
 
-Synonyma v vyhledávačích spojují ekvivalentní termíny, které implicitně rozšiřují rozsah dotazu, a to bez toho, aby ho uživatel skutečně neposkytoval. Například s ohledem na pojem "pes" a přidružení synonym typu "Canine" a "Puppy" budou všechny dokumenty obsahující slovo "pes", "Canine" nebo "Puppy" spadat do rozsahu dotazu.
+Synonyma ve vyhledávačích přidružit ekvivalentní termíny, které implicitně rozbalit rozsah dotazu, aniž by uživatel musí skutečně zadat termín. Například vzhledem k termínu "pes" a synonymum sdružení "psí" a "štěně", všechny dokumenty obsahující "pes", "psí" nebo "štěně" budou spadat do působnosti dotazu.
 
-V Azure Kognitivní hledání je rozšíření synonym provedeno v době dotazu. Můžete přidat mapy synonym ke službě bez přerušení pro stávající operace. Do definice pole můžete přidat vlastnost **synonymMaps** , aniž byste museli index znovu sestavit.
+V Azure Cognitive Search, synonymum rozšíření se provádí v době dotazu. Do služby můžete přidat mapy synonym bez přerušení stávajících operací. Vlastnost **synonymMapy** můžete přidat do definice pole, aniž byste museli znovu vytvořit index.
 
-## <a name="create-synonyms"></a>Vytvořit synonyma
+## <a name="create-synonyms"></a>Vytváření synonym
 
-Neexistuje žádná podpora portálu pro vytváření synonym, ale můžete použít sadu REST API nebo .NET SDK. Pokud chcete začít používat REST, doporučujeme [použít post](search-get-started-postman.md) a formulaci požadavků pomocí tohoto rozhraní API: [vytvořit mapy synonym](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Pro C# vývojáře můžete začít [přidáním synonym v Azure rozpoznávání hledání pomocí C# ](search-synonyms-tutorial-sdk.md).
+Neexistuje žádná podpora portálu pro vytváření synonym, ale můžete použít rozhraní REST API nebo .NET SDK. Chcete-li začít s REST, doporučujeme [použít Postman](search-get-started-postman.md) a formulace požadavků pomocí tohoto rozhraní API: [Vytvořit synonyma mapy](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Pro vývojáře jazyka C# můžete začít s [přidáním synonym v Azure Cognitive Searching pomocí jazyka C#](search-synonyms-tutorial-sdk.md).
 
-Pokud v případě, že používáte [klíče spravované zákazníkem](search-security-manage-encryption-keys.md) pro šifrování na straně služby, můžete použít i tuto ochranu na obsah vaší mapy synonym.
+Volitelně pokud používáte [klíče spravované zákazníkem](search-security-manage-encryption-keys.md) pro šifrování na straně služby v klidovém stavu, můžete tuto ochranu použít na obsah mapy synonym.
 
 ## <a name="use-synonyms"></a>Použití synonym
 
-V Azure Kognitivní hledání je podpora synonym založená na mapách synonym, které definujete a nahráváte do vaší služby. Tyto mapy představují nezávislý prostředek (například indexy nebo zdroje dat) a lze jej použít v jakémkoli hledaném poli libovolného indexu ve vyhledávací službě.
+V Azure Cognitive Search je podpora synonym založená na mapách synonym, které definujete a nahrajete do své služby. Tyto mapy představují nezávislý prostředek (například indexy nebo zdroje dat) a mohou být použity libovolným prohledávatelným polem v libovolném indexu ve vyhledávací službě.
 
-Mapy synonym a indexy jsou uchovávány nezávisle. Jakmile definujete mapu synonym a nahrajete ji do služby, můžete povolit funkci synonym v poli přidáním nové vlastnosti s názvem **synonymMaps** v definici pole. Vytváření, aktualizace a odstraňování mapy synonym je vždy operace celého dokumentu, což znamená, že nelze vytvořit, aktualizovat nebo odstranit části mapy synonym přírůstkově. Aktualizace dokonce jedné položky vyžaduje opětovné načtení.
+Mapy a indexy synonym jsou udržovány nezávisle. Jakmile definujete mapu synonym a nahrajete ji do služby, můžete povolit funkci synonyma v poli přidáním nové vlastnosti s názvem **synonymaMapy** v definici pole. Vytvoření, aktualizace a odstranění mapy synonym je vždy operace celého dokumentu, což znamená, že nelze vytvářet, aktualizovat nebo odstraňovat části mapy synonyma postupně. Aktualizace i jedné položky vyžaduje opětovné načtení.
 
-Zahrnutí synonym do vaší aplikace pro hledání je proces se dvěma kroky:
+Začlenění synonym do vyhledávací aplikace je dvoustupňový proces:
 
-1.  Přidejte mapu synonym do vyhledávací služby prostřednictvím následujících rozhraní API.  
+1.  Přidejte mapu synonym do vyhledávací služby prostřednictvím níže uvedených rozhraní API.  
 
-2.  Nakonfigurujte prohledávatelné pole tak, aby v definici indexu bylo použito mapování synonym.
+2.  Nakonfigurujte prohledávatelné pole tak, aby v definici indexu používalo mapu synonym.
 
-Pro vaši vyhledávací aplikaci můžete vytvořit několik map synonym (například podle jazyka, pokud vaše aplikace podporuje vícejazyčnou základnu). V současné době může pole použít pouze jeden z nich. Vlastnost synonymMaps pole můžete kdykoli aktualizovat.
+Můžete vytvořit více synonym mapy pro vyhledávací aplikace (například podle jazyka, pokud vaše aplikace podporuje vícejazyčné zákaznické základny). V současné době může pole použít pouze jedno z nich. Vlastnost synonymmapy pole můžete kdykoli aktualizovat.
 
-### <a name="synonymmaps-resource-apis"></a>Rozhraní API prostředků SynonymMaps
+### <a name="synonymmaps-resource-apis"></a>Synonyma rozhraní API prostředků
 
-#### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Přidejte nebo aktualizujte mapu synonym v rámci vaší služby pomocí POST nebo PUT.
+#### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Přidejte nebo aktualizujte mapu synonym pod vaší službou pomocí POST nebo PUT.
 
-Mapy synonym jsou odesílány do služby prostřednictvím POST nebo PUT. Každé pravidlo musí být odděleno znakem nového řádku (' \n '). Můžete definovat až 5 000 pravidel na mapování synonym v rámci bezplatné služby a 20 000 pravidel na mapu ve všech ostatních SKU. Každé pravidlo může mít až 20 rozšíření.
+Synonyma mapy jsou nahrány do služby přes POST nebo PUT. Každé pravidlo musí být odděleno novým znakem řádku (\n'). Můžete definovat až 5 000 pravidel na mapu synonym a ve volné službě a 20 000 pravidel na mapu ve všech ostatních sku. Každé pravidlo může mít až 20 rozšíření.
 
-Mapy synonym musí být ve formátu Apache Solr, který je vysvětlen níže. Pokud máte existující slovník synonym v jiném formátu a chcete ho použít přímo, dejte nám prosím na [UserVoice](https://feedback.azure.com/forums/263029-azure-search)informace.
+Synonyma mapy musí být ve formátu Apache Solr, který je vysvětlen níže. Pokud máte existující synonymní slovník v jiném formátu a chcete jej používat přímo, dejte nám prosím vědět na [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
-Novou mapu synonym můžete vytvořit pomocí HTTP POST, jak je znázorněno v následujícím příkladu:
+Můžete vytvořit novou mapu synonym pomocí HTTP POST, jako v následujícím příkladu:
 
     POST https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
@@ -62,7 +62,7 @@ Novou mapu synonym můžete vytvořit pomocí HTTP POST, jak je znázorněno v n
           Washington, Wash., WA => WA\n"
     }
 
-Alternativně můžete použít PUT a zadat název mapy synonym na identifikátoru URI. Pokud mapování synonym neexistuje, vytvoří se.
+Alternativně můžete použít PUT a zadat název mapy synonyma na URI. Pokud mapa synonym neexistuje, bude vytvořena.
 
     PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
@@ -74,38 +74,38 @@ Alternativně můžete použít PUT a zadat název mapy synonym na identifikáto
           Washington, Wash., WA => WA\n"
     }
 
-##### <a name="apache-solr-synonym-format"></a>Formát synonyma Apache Solr
+##### <a name="apache-solr-synonym-format"></a>Apache Solr synonymum formát
 
-Formát Solr podporuje mapování ekvivalentních a explicitních synonym. Pravidla mapování dodržují specifikace Open Source filtru synonym pro Apache Solr, která je popsaná v tomto dokumentu: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Níže je vzorové pravidlo pro ekvivalentní synonyma.
+Formát Solr podporuje ekvivalentní a explicitní mapování synonym. Pravidla mapování dodržují specifikaci filtru synonym a open source apache solr, popsanou v tomto dokumentu: [Synonymfilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Níže je ukázkové pravidlo pro ekvivalentní synonyma.
 ```
 USA, United States, United States of America
 ```
 
-S výše uvedeným pravidlem se vyhledávací dotaz "USA" rozšíří na "USA" nebo "USA" nebo "USA of America".
+S výše uvedeným pravidlem se vyhledávací dotaz "USA" rozšíří na "USA" NEBO "Spojené státy" nebo "Spojené státy americké".
 
-Explicitní mapování je označeno šipkou "= >". Je-li tento parametr zadán, nahradí se v pravé straně termín sekvence vyhledávacího dotazu, která odpovídá levé straně slova "= >". Podle níže uvedeného pravidla hledejte dotazy "Washington", "mycí cyklus". neboli "WA", všechna budou přepsána do "WA". Explicitní mapování platí pouze v zadaném směru a nepřepíše dotaz "WA" do "Washington" v tomto případě.
+Explicitní mapování je označeno šipkou "=>". Pokud je zadán, termín sekvence vyhledávacídotaz, který odpovídá levé straně "=>" bude nahrazen alternativami na pravé straně. Vzhledem k níže uvedenému pravidlu se vyhledávací dotazy "Washington", "Wash". nebo "WA" budou všechny přepsány na "WA". Explicitní mapování platí pouze v zadaném směru a v tomto případě nepřepíše dotaz "WA" na "Washington".
 ```
 Washington, Wash., WA => WA
 ```
 
-#### <a name="list-synonym-maps-under-your-service"></a>Vypíše mapy synonym v rámci vaší služby.
+#### <a name="list-synonym-maps-under-your-service"></a>Seznam synonym mapy pod vaší služby.
 
     GET https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
 
-#### <a name="get-a-synonym-map-under-your-service"></a>Získejte mapu synonym v rámci vaší služby.
+#### <a name="get-a-synonym-map-under-your-service"></a>Získejte mapu synonym pod vaší službou.
 
     GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
-#### <a name="delete-a-synonyms-map-under-your-service"></a>Odstraňte mapu synonym v rámci vaší služby.
+#### <a name="delete-a-synonyms-map-under-your-service"></a>Odstraňte mapu synonym pod vaší službou.
 
     DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
-### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Nakonfigurujte prohledávatelné pole tak, aby v definici indexu bylo použito mapování synonym.
+### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Nakonfigurujte prohledávatelné pole tak, aby v definici indexu používalo mapu synonym.
 
-Novou vlastnost pole **synonymMaps** lze použít k určení mapy synonym, která se má použít pro pole, které chcete prohledávat. Mapy synonym jsou prostředky na úrovni služby a můžou na ně odkazovat libovolné pole indexu v rámci služby.
+Nová vlastnost pole **synonymaMapy** lze použít k určení mapy synonympro použití pro prohledávatelné pole. Mapy synonym jsou prostředky na úrovni služby a lze na ně odkazovat podle libovolného pole indexu v rámci služby.
 
     POST https://[servicename].search.windows.net/indexes?api-version=2019-05-06
     api-key: [admin key]
@@ -139,22 +139,22 @@ Novou vlastnost pole **synonymMaps** lze použít k určení mapy synonym, kter�
        ]
     }
 
-**synonymMaps** lze zadat pro hledaná pole typu EDM. String nebo Collection (EDM. String).
+**synonymumMapy** lze zadat pro prohledávatelná pole typu Edm.String nebo Collection(Edm.String)".
 
 > [!NOTE]
-> Pro každé pole můžete mít pouze jednu mapu synonym. Pokud chcete použít více map synonym, dejte nám prosím na [UserVoice](https://feedback.azure.com/forums/263029-azure-search)informace.
+> Pro jedno pole můžete mít pouze jednu mapu synonym. Pokud chcete použít více synonymmap, dejte nám prosím vědět na [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
-## <a name="impact-of-synonyms-on-other-search-features"></a>Dopad synonym na jiné funkce hledání
+## <a name="impact-of-synonyms-on-other-search-features"></a>Dopad synonym na další funkce vyhledávání
 
-Funkce synonym přepíše původní dotaz pomocí synonym pomocí operátoru OR. Z tohoto důvodu se zvýrazňování přístupů a profily vyhodnocování považují za původní podmínky a synonyma jako ekvivalentní.
+Funkce synonym přepíše původní dotaz synonymy s operátorem OR. Z tohoto důvodu přístupů zvýraznění a bodování profily považovat původní termín a synonyma jako ekvivalentní.
 
-Funkce synonym se vztahuje na vyhledávací dotazy a nevztahuje se na filtry nebo omezující vlastnosti. Podobně se návrhy opírají jenom na původní období; shody synonym nejsou v odpovědi zobrazeny.
+Funkce synonyma se vztahuje na vyhledávací dotazy a nevztahuje se na filtry nebo omezující vlastnosti. Podobně jsou návrhy založeny pouze na původním termínu; synonyma shody se nezobrazí v odpovědi.
 
-Rozšíření synonym neplatí pro výrazy vyhledávání se zástupnými znaky; výrazy s předponou, přibližnými a regulárními výrazy nejsou rozbaleny.
+Rozšíření synonyma se nevztahují na zástupné hledané výrazy. termíny předpony, rozmazání a regulárnívýraz nejsou rozbaleny.
 
-Pokud potřebujete provést jeden dotaz, který používá rozšíření synonym a zástupné znaky, regulární výrazy nebo přibližné vyhledávání, můžete kombinovat dotazy pomocí syntaxe nebo. Pokud například chcete kombinovat synonyma se zástupnými znaky pro jednoduchou syntaxi dotazu, bude `<query> | <query>*`období.
+Pokud potřebujete provést jeden dotaz, který použije rozšíření synonyma a zástupné výrazy, regulární výraz nebo přibližné hledání, můžete kombinovat dotazy pomocí syntaxe OR. Chcete-li například kombinovat synonyma se zástupnými znaky `<query> | <query>*`pro jednoduchou syntaxi dotazu, termín by byl .
 
-Pokud máte ve vývojovém (neprodukčním) prostředí existující index, Experimentujte s malým slovníkem, abyste viděli, jak Přidání synonym mění možnosti hledání, včetně dopadu na profily vyhodnocování, zvýrazňování přístupů a návrhy.
+Pokud máte existující index ve vývojovém (neprodukčním) prostředí, experimentujte s malým slovníkem, abyste zjistili, jak přidání synonym změní prostředí vyhledávání, včetně dopadu na profily hodnocení, zvýraznění přístupů a návrhy.
 
 ## <a name="next-steps"></a>Další kroky
 

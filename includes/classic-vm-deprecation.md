@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: cynthn
 ms.openlocfilehash: 7e70b8c789dbabb9075cd9d69c44bbfed916f153
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77911780"
 ---
 > [!IMPORTANT]
-> Klasické virtuální počítače budou vyřazeny od 1. března 2023.
+> Klasické virtuální měvince budou vyřazeny 1. března 2023.
 >
-> Pokud používáte prostředky IaaS z ASM, dokončete prosím migraci do 1. března 2023. Doporučujeme, abyste tento přepínač provedli dřív, abyste mohli využít řadu vylepšení funkcí v Azure Resource Manager.
+> Pokud používáte prostředky IaaS z ASM, dokončete migraci do 1.3.2023. Doporučujeme vám provést přechod dříve a využít výhod mnoha vylepšení funkcí ve Správci prostředků Azure.
 >
-> Další informace najdete v tématu [migrace prostředků IaaS do Azure Resource Manager do 1. března 2023](../articles/virtual-machines/classic-vm-deprecation.md).
+> Další informace najdete [v tématu Migrace prostředků IaaS do Správce prostředků Azure do 1 března 2023](../articles/virtual-machines/classic-vm-deprecation.md).
 > 

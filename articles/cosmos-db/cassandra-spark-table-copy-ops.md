@@ -1,6 +1,6 @@
 ---
-title: Operace kopírování tabulky na Azure Cosmos DB rozhraní API Cassandra ze Sparku
-description: Tento článek podrobně popisuje, jak kopírovat data mezi tabulkami v Azure Cosmos DB rozhraní API Cassandra
+title: Operace kopírování tabulek v rozhraní AZURE Cosmos DB Cassandra API ze Sparku
+description: Tento článek podrobně popisuje, jak kopírovat data mezi tabulkami v rozhraní API Azure Cosmos DB Cassandra
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 32714e216e59565c787f92bf1e8da62957bc7233
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445625"
 ---
-# <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Operace kopírování tabulky na Azure Cosmos DB rozhraní API Cassandra ze Sparku
+# <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Operace kopírování tabulek v rozhraní AZURE Cosmos DB Cassandra API ze Sparku
 
-Tento článek popisuje, jak kopírovat data mezi tabulkami v Azure Cosmos DB rozhraní API Cassandra ze Sparku. Příkazy popsané v tomto článku můžete také použít ke kopírování dat z tabulek Apache Cassandra do Azure Cosmos DB rozhraní API Cassandra tabulek.
+Tento článek popisuje, jak kopírovat data mezi tabulkami v rozhraní API Azure Cosmos DB Cassandra ze Sparku. Příkazy popsané v tomto článku lze také ke kopírování dat z tabulek Apache Cassandra do tabulek rozhraní API Azure Cosmos DB Cassandra.
 
-## <a name="cassandra-api-configuration"></a>Konfigurace rozhraní Cassandra API
+## <a name="cassandra-api-configuration"></a>Konfigurace rozhraní API Cassandra
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -46,7 +46,7 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="insert-sample-data"></a>Vložit ukázková data 
+## <a name="insert-sample-data"></a>Vložení ukázkových dat 
 ```scala
 val booksDF = Seq(
    ("b00001", "Arthur Conan Doyle", "A study in scarlet", 1887,11.33),
@@ -127,7 +127,7 @@ sqlContext
   .load
   .show
 ```
-Výstup –
+Výstupní
 ```
 +-------+------------------+--------------------+----------+-------------+
 |book_id|       book_author|           book_name|book_price|book_pub_year|
@@ -146,6 +146,6 @@ newBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: stri
 
 ## <a name="next-steps"></a>Další kroky
 
- * Začněte [vytvořením účtu rozhraní API Cassandra, databáze a tabulky](create-cassandra-api-account-java.md) pomocí aplikace v Javě.
+ * Můžete začít s [vytvářením účtu, databáze a tabulky Cassandra API](create-cassandra-api-account-java.md) pomocí aplikace Java.
  * [Načtěte ukázková data do tabulky rozhraní API Cassandra](cassandra-api-load-data.md) pomocí aplikace v Javě.
  * [Zadejte dotaz na data z účtu rozhraní API Cassandra](cassandra-api-query-data.md) pomocí aplikace v Javě.

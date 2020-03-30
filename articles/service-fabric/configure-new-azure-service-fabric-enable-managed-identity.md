@@ -1,26 +1,26 @@
 ---
 title: Konfigurace podpory spravovaných identit pro nový cluster Service Fabric
-description: Tady je postup povolení podpory spravovaných identit v novém clusteru Azure Service Fabric.
+description: Tady je postup, jak povolit podporu spravovaných identit v novém clusteru Azure Service Fabric.
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 0e35d2192fdcdb294b349105f3f0158564cec86b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76930461"
 ---
-# <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster-preview"></a>Konfigurace podpory spravovaných identit pro nový cluster Service Fabric (Preview)
+# <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster-preview"></a>Konfigurace podpory spravovaných identit pro nový cluster Service Fabric (preview)
 
-Pokud chcete používat [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) ve vašich aplikacích Service Fabric, nejdřív v clusteru povolte *službu Managed identity token* . Tato služba zodpovídá za ověřování Service Fabric aplikací pomocí svých spravovaných identit a pro získání přístupových tokenů jejich jménem. Jakmile je služba povolená, můžete ji zobrazit v Service Fabric Explorer v části **systém** v levém podokně, která je spuštěná pod názvem **Fabric:/System/ManagedIdentityTokenService** vedle ostatních systémových služeb.
+Chcete-li používat [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) ve vašich aplikacích Service Fabric, povolte nejprve *službu Token spravované identity* v clusteru. Tato služba je zodpovědná za ověřování aplikací Service Fabric pomocí jejich spravovaných identit a za získání přístupových tokenů jejich jménem. Jakmile je služba povolena, můžete ji vidět v aplikaci Service Fabric Explorer v části **Systém** v levém podokně, spuštěné pod názvem **fabric:/System/ManagedIdentityTokenService** vedle jiných systémových služeb.
 
 > [!NOTE]
-> Aby bylo možné povolit **službu tokenu spravované identity**, je nutné, aby verze modulu runtime Service Fabric 6.5.658.9590 nebo novější.  
+> K povolení **služby Managed Identity Token Service Fabric**verze 6.5.658.9590 nebo vyšší je vyžadována runtime service fabric verze 6.5.658.9590 nebo vyšší .  
 
-## <a name="enable-the-managed-identity-token-service"></a>Povolení služby tokenu spravované identity
+## <a name="enable-the-managed-identity-token-service"></a>Povolení služby Token spravované identity
 
-Pokud chcete službu Managed identity token Service povolit při vytváření clusteru, přidejte do své Azure Resource Manager šablony clusteru následující fragment kódu:
+Pokud chcete povolit službu Token spravované identity v době vytvoření clusteru, přidejte do šablony Správce prostředků Azure v clusteru následující úryvek:
 
 ```json
 "fabricSettings": [
@@ -38,7 +38,7 @@ Pokud chcete službu Managed identity token Service povolit při vytváření cl
 
 ## <a name="errors"></a>chyby
 
-Pokud se nasazení v této zprávě nepovede, znamená to, že cluster není na požadované verzi Service Fabric (Minimální podporovaný modul runtime je 6,5 CU2):
+Pokud se nasazení nezdaří s touto zprávou, znamená to, že cluster není na požadované verzi Service Fabric (minimální podporovaný modul runtime je 6,5 CU2):
 
 
 ```json
@@ -50,7 +50,7 @@ Pokud se nasazení v této zprávě nepovede, znamená to, že cluster není na 
 
 ## <a name="related-articles"></a>Související články
 
-* Kontrola [podpory spravovaných identit](./concepts-managed-identity.md) v Azure Service Fabric
+* Kontrola [podpory spravovaných identit](./concepts-managed-identity.md) ve službě Azure Service Fabric
 
 * [Povolení podpory spravovaných identit v existujícím clusteru Azure Service Fabric](./configure-existing-cluster-enable-managed-identity-token-service.md)
 
@@ -58,5 +58,5 @@ Pokud se nasazení v této zprávě nepovede, znamená to, že cluster není na 
 
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Využití spravované identity Service Fabric aplikace z kódu služby](./how-to-managed-identity-service-fabric-app-code.md)
-* [Udělení přístupu k aplikacím Azure Service Fabric k ostatním prostředkům Azure](./how-to-grant-access-other-resources.md)
+* [Využití spravované identity aplikace Service Fabric z kódu služby](./how-to-managed-identity-service-fabric-app-code.md)
+* [Udělení přístupu aplikací Azure Service Fabric k dalším prostředkům Azure](./how-to-grant-access-other-resources.md)

@@ -9,17 +9,17 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: aec1faa4de1149f08fb6fbc1cc5bf3aa2ab6becd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75371768"
 ---
-Sdílený přístupový podpis (SAS) umožňuje udělit omezený přístup k kontejnerům a objektům blob ve vašem účtu úložiště. Při vytváření SAS zadáte omezení, včetně toho, ke kterým Azure Storage prostředkům má klient povolený přístup, jaká oprávnění jsou v těchto prostředcích a jak dlouho je SAS platný.
+Sdílený přístupový podpis (SAS) umožňuje udělit omezený přístup k kontejnerům a objektům BLOB v účtu úložiště. Při vytváření SAS zadáte jeho omezení, včetně prostředků Azure Storage, ke kterým má klient přístup, jaká oprávnění mají k těmto prostředkům a jak dlouho je SAS platný.
 
-Každé přidružení zabezpečení je podepsáno klíčem. SAS můžete podepsat jedním ze dvou způsobů:
+Každý SAS je podepsán klíčem. SAS můžete podepsat jedním ze dvou způsobů:
 
-- Pomocí klíče vytvořeného pomocí pověření Azure Active Directory (Azure AD). Podpis SAS podepsaný pomocí přihlašovacích údajů služby Azure AD je SAS pro *delegování uživatelů* .
-- Pomocí klíče účtu úložiště. Podpis *SAS služby* i *účtu SAS* jsou podepsané klíčem účtu úložiště.
+- S klíčem vytvořeným pomocí přihlašovacích údajů služby Azure Active Directory (Azure AD). SAS, který je podepsán přihlašovacími údaji Azure AD je *uživatelské delegování* SAS.
+- S klíčem účtu úložiště. Služba *SAS* i *účet SAS* jsou podepsány klíčem účtu úložiště.
 
-SAS delegování uživatelů nabízí nadřazené zabezpečení SAS, které je podepsáno klíčem účtu úložiště. Pokud je to možné, Microsoft doporučuje použít SAS delegování uživatele. Další informace najdete v tématu [udělení omezeného přístupu k datům pomocí sdílených přístupových podpisů (SAS)](../articles/storage/common/storage-sas-overview.md).
+Uživatelské delegování SAS nabízí vynikající zabezpečení SAS, který je podepsán klíčem účtu úložiště. Společnost Microsoft doporučuje používat uživatelské delegování SAS, pokud je to možné. Další informace naleznete v tématu [Udělení omezeného přístupu k datům se sdílenými přístupovými podpisy (SAS).](../articles/storage/common/storage-sas-overview.md)

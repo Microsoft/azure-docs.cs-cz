@@ -1,63 +1,63 @@
 ---
-title: Přesunutí aplikace Service Fabric mřížky do jiné oblasti
-description: Můžete přesunout Service Fabric prostředky sítě tak, že nasadíte kopii aktuální šablony do nové oblasti Azure.
+title: Přesunutí aplikace Service Fabric Mesh do jiné oblasti
+description: Prostředky sítě Service Fabric můžete přesunout nasazením kopie aktuální šablony do nové oblasti Azure.
 author: erikadoyle
 ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 376808a6d8f61d4dc03d17061323a473d48053a6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76908160"
 ---
-# <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Přesunutí aplikace Service Fabric sítě do jiné oblasti Azure
+# <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Přesunutí aplikace Service Fabric Mesh do jiné oblasti Azure
 
-Tento článek popisuje, jak přesunout aplikaci Service Fabric sítě a její prostředky do jiné oblasti Azure. Prostředky můžete přesunout do jiné oblasti z řady důvodů. Například v reakci na výpadky můžete získat funkce nebo služby, které jsou k dispozici pouze v konkrétních oblastech, pro splnění požadavků na požadavky na interní zásady a zásady správného řízení nebo v reakci na požadavky na plánování kapacity.
+Tento článek popisuje, jak přesunout aplikaci Service Fabric Mesh a její prostředky do jiné oblasti Azure. Prostředky můžete přesunout do jiné oblasti z mnoha důvodů. Například v reakci na výpadky, získat funkce nebo služby dostupné pouze v konkrétních regionech, splnit požadavky na vnitřní politiku a zásady správného řízení nebo v reakci na požadavky na plánování kapacity.
 
- [Service Fabricová síť](../azure-resource-manager/management/region-move-support.md#microsoftservicefabricmesh) nepodporuje možnost přímého přesouvání prostředků napříč oblastmi Azure. Prostředky je ale možné nepřímo přesunout tím, že do nové cílové oblasti nasadíte kopii aktuální Azure Resource Manager šablony a potom přesměrujete příchozí přenos dat a závislosti na nově vytvořenou aplikaci Service Fabric sítě.
+ [Service Fabric Mesh nepodporuje](../azure-resource-manager/management/region-move-support.md#microsoftservicefabricmesh) možnost přímého přesunutí prostředků napříč oblastmi Azure. Prostředky však můžete přesunout nepřímo nasazením kopie aktuální šablony Azure Resource Manager do nové cílové oblasti a pak přesměrovat příchozí přenosy a závislosti na nově vytvořenou aplikaci Service Fabric Mesh.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Řadič příchozího přenosu dat (například [Application Gateway](https://docs.microsoft.com/azure/application-gateway/)), který slouží jako prostředník pro směrování provozu mezi klienty a aplikací Service Fabric sítě
-* Dostupnost Service Fabric sítě (Preview) v cílové oblasti Azure (`westus`, `eastus`nebo `westeurope`)
+* Řadič příchozího přenosu dat (například [aplikační brána)](https://docs.microsoft.com/azure/application-gateway/)slouží jako zprostředkovatel pro směrování provozu mezi klienty a aplikací Service Fabric Mesh
+* Dostupnost sítě Service Fabric (Preview) v`westus` `eastus`cílové `westeurope`oblasti Azure ( , nebo )
 
-## <a name="prepare"></a>Připravit
+## <a name="prepare"></a>Příprava
 
-1. Vyžádejte si "snímek" aktuálního stavu aplikace Service Fabric sítě a exportujte Azure Resource Manager šablonu a parametry z nejnovějšího nasazení. Pokud to chcete provést, postupujte podle kroků v části [Export šablony po nasazení](../azure-resource-manager/templates/export-template-portal.md#export-template-after-deployment) pomocí Azure Portal. Můžete použít také rozhraní příkazového [řádku Azure CLI](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)nebo [REST API](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate).
+1. Pořiďte "snímek" aktuálního stavu aplikace Service Fabric Mesh exportem šablony Azure Resource Manager a parametrů z nejnovějšího nasazení. Chcete-li to provést, postupujte podle kroků v [šabloně Export po nasazení](../azure-resource-manager/templates/export-template-portal.md#export-template-after-deployment) pomocí portálu Azure. Můžete taky použít [Azure CLI](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)nebo [REST API](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate).
 
-2. V případě potřeby [exportujte jiné prostředky ve stejné skupině prostředků](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource-group) pro opětovné nasazení v cílové oblasti.
+2. Pokud je to možné, [exportujte další prostředky ve stejné skupině prostředků](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource-group) pro opětovné nasazení v cílové oblasti.
 
-3. Zkontrolujte (a v případě potřeby upravte) exportovanou šablonu, abyste zajistili, že existující hodnoty vlastností jsou ty, které chcete použít v cílové oblasti. Nový `location` (oblast Azure) je parametr, který budete poskytovat během opětovného nasazení.
+3. Zkontrolujte (a v případě potřeby upravte) exportovnou šablonu, abyste zajistili, že existující hodnoty vlastností jsou ty, které chcete použít v cílové oblasti. Nový `location` (oblast Azure) je parametr, který zadáte během opětovného nasazení.
 
 ## <a name="move"></a>Přesunout
 
 1. Vytvořte novou skupinu prostředků (nebo použijte existující) v cílové oblasti.
 
-2. S vaší exportovanou šablonou použijte postup v části [nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template) pomocí Azure Portal. Můžete použít také rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), [Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)nebo [REST API](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-rest).
+2. S exportovnou šablonou postupujte podle pokynů v [části Nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template) pomocí portálu Azure. Můžete taky použít [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), [Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)nebo [REST API](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-rest).
 
-3. Pokyny k přesunu souvisejících prostředků, jako jsou [účty Azure Storage](../storage/common/storage-account-move.md), najdete v pokynech k jednotlivým službám, které jsou uvedené v tématu [Přesunutí prostředků Azure do různých oblastí](../azure-resource-manager/management/move-region.md).
+3. Pokyny k přesunutí souvisejících prostředků, jako jsou [účty Azure Storage](../storage/common/storage-account-move.md), najdete v pokynech pro jednotlivé služby uvedené v tématu Přesunutí prostředků Azure [napříč oblastmi](../azure-resource-manager/management/move-region.md).
 
 ## <a name="verify"></a>Ověřit
 
-1. Po dokončení nasazení otestujte koncové body aplikace a ověřte funkčnost vaší aplikace.
+1. Po dokončení nasazení otestujte koncové body aplikace a ověřte funkčnost aplikace.
 
-2. Stav aplikace můžete také ověřit tak, že zkontrolujete stav aplikace ([AZ mřížka App show](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) a zkontrolujete protokoly aplikací a ([AZ oky Code-Package-log](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)) pomocí rozhraní příkazového [řádku Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-quickstart-deploy-container#set-up-service-fabric-mesh-cli).
+2. Stav aplikace můžete také ověřit kontrolou stavu aplikace[(az mesh app show)](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)a kontrolou protokolů aplikací a[(az mesh code-package-log)](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)pomocí [rozhraní PŘÍKAZU Azure Service Fabric Mesh CLI](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-quickstart-deploy-container#set-up-service-fabric-mesh-cli).
 
 ## <a name="commit"></a>Potvrzení
 
-Jakmile ověříte, že jsou ekvivalentní funkce aplikace Service Fabric sítě v cílové oblasti, nakonfigurujte svůj kontroler příchozího přenosu dat (například [Application Gateway](../application-gateway/redirect-overview.md)), který přesměruje provoz do nové aplikace.
+Po potvrzení ekvivalentní chod aplikace Service Fabric Mesh v cílové oblasti nakonfigurujte řadič příchozího přenosu dat (například [aplikační brána)](../application-gateway/redirect-overview.md)tak, aby přesměroval provoz do nové aplikace.
 
 ## <a name="clean-up-source-resources"></a>Vyčištění zdrojových prostředků
 
-Pokud chcete dokončit přesun aplikace Service Fabric sítě, [odstraňte zdrojovou aplikaci nebo nadřazenou skupinu prostředků](../azure-resource-manager/management/delete-resource-group.md).
+Chcete-li dokončit přesun aplikace Service Fabric Mesh, [odstraňte zdrojovou aplikaci nebo nadřazenou skupinu prostředků](../azure-resource-manager/management/delete-resource-group.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přesunutí prostředků Azure do různých oblastí](../azure-resource-manager/management/move-region.md)
-* [Podpora přesunu prostředků Azure napříč oblastmi](../azure-resource-manager/management/region-move-support.md)
+* [Přesunutí prostředků Azure napříč oblastmi](../azure-resource-manager/management/move-region.md)
+* [Podpora přesouvání prostředků Azure napříč oblastmi](../azure-resource-manager/management/region-move-support.md)
 * [Přesun prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md)
-* [Přesunout podporu operací pro prostředky](../azure-resource-manager/management/move-support-resources.md
+* [Podpora operace přesunutí pro prostředky](../azure-resource-manager/management/move-support-resources.md
 )

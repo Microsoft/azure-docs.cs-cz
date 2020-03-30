@@ -1,6 +1,6 @@
 ---
-title: Poznámky k verzi Azure Media Services Video Indexer | Microsoft Docs
-description: Pokud chcete mít přehled o nejnovějším vývoji, najdete v tomto článku nejnovější aktualizace Azure Media Services Video Indexer.
+title: Poznámky k verzi videoindexeru Azure Media Services | Dokumenty společnosti Microsoft
+description: Chcete-li zůstat aktuální s nejnovější vývoj, tento článek poskytuje nejnovější aktualizace na Azure Media Services Video Indexer.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,194 +13,194 @@ ms.topic: article
 ms.date: 01/07/2020
 ms.author: juliako
 ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76933863"
 ---
-# <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
+# <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi videoindexeru Azure Media Services
 
->Přečtěte si informace o tom, kdy se tato stránka na aktualizace znovu navštíví zkopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` do čtečky kanálů RSS.
+>Získejte upozornění, kdy se má tato stránka znovu aktualizovat zkopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` do čtečky informačních kanálů RSS.
 
-Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek poskytuje informace o:
+Chcete-li mít aktuální informace o nejnovějším vývoji, tento článek obsahuje informace o:
 
-* Nejnovější vydané verzi
+* Nejnovější verze
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
 
 ## <a name="january-2020"></a>Leden 2020
  
-### <a name="custom-language-support-for-additional-languages"></a>Podpora vlastního jazyka pro další jazyky
+### <a name="custom-language-support-for-additional-languages"></a>Vlastní jazyková podpora pro další jazyky
 
-Video Indexer teď podporuje vlastní jazykové modely pro `ar-SY`, `en-UK`a `en-AU` (jenom rozhraní API).
+Video Indexer nyní podporuje `ar-SY` vlastní `en-UK`jazykové `en-AU` modely pro , a (pouze rozhraní API).
  
 ### <a name="delete-account-timeframe-action-update"></a>Odstranit aktualizaci akce časového rámce účtu
 
-Akce Odstranit účet nyní odstraní účet do 90 dnů, nikoli do 48 hodin.
+Akce Odstranit účet nyní odstraní účet do 90 dnů namísto 48 hodin.
  
-### <a name="new-video-indexer-github-repository"></a>Nové úložiště GitHub Video Indexer
+### <a name="new-video-indexer-github-repository"></a>Nové úložiště GitHub pro indexování videa
 
-K dispozici je teď nový Video Indexer GitHub s různými projekty, příručky Začínáme a ukázky kódu: https://github.com/Azure-Samples/media-services-video-indexer
+Nový Video Indexer GitHub s různými projekty, začíná průvodce a ukázky kódu je nyní k dispozici:https://github.com/Azure-Samples/media-services-video-indexer
  
-### <a name="swagger-update"></a>Aktualizace Swagger
+### <a name="swagger-update"></a>Swagger aktualizace
 
-Video Indexer sjednocené **ověřování** a **operace** do jedné [specifikace video indexer openapi (Swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson). Develpers můžou najít rozhraní API na [portálu pro vývojáře video indexer](https://api-portal.videoindexer.ai/).
+Video Indexer jednotné **ověřování** a **operace** do jednoho [Video Indexer OpenAPI specifikace (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson). Develpers můžete najít API v [Video Indexer Developer Portal](https://api-portal.videoindexer.ai/).
 
 ## <a name="december-2019"></a>Prosinec 2019
 
 ### <a name="update-transcript-with-the-new-api"></a>Aktualizace přepisu pomocí nového rozhraní API
 
-Aktualizujte konkrétní oddíl v přepisu pomocí rozhraní API [Update-video-index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update) .
+Aktualizujte konkrétní část v přepisu pomocí [rozhraní Update-Video-Index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update) API.
 
-### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>Oprava konfigurace účtu z Video Indexerového portálu
+### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>Oprava konfigurace účtu z portálu Video Indexer
 
-Teď můžete aktualizovat konfiguraci připojení Media Services, abyste mohli sami pomáhat s problémy, jako je: 
+Nyní můžete aktualizovat konfiguraci připojení služby Media Services, abyste mohli svépomocně s problémy, jako jsou: 
 
 * nesprávný prostředek Azure Media Services
 * změny hesla
-* Mezi předplatnými se přesunuly Media Services prostředky.  
+* Prostředky mediálních služeb byly přesunuty mezi předplatnými.  
 
-Pokud chcete opravit konfiguraci účtu, přejděte na portálu Video Indexer na kartu Nastavení > účet (jako vlastník).
+Chcete-li opravit konfiguraci účtu, přejděte na portálu Video Indexer na kartu Nastavení > účet (jako vlastník).
 
-### <a name="configure-the-custom-vision-account"></a>Konfigurace účtu Custom Vision
+### <a name="configure-the-custom-vision-account"></a>Konfigurace vlastního účtu vize
 
-Nakonfigurujte si účet Custom Vision na placené účty pomocí portálu Video Indexer (dřív to podporovala jenom rozhraní API). Pokud to chcete provést, přihlaste se k portálu Video Indexer, vyberte přizpůsobení modelu > animovaných znaků > nakonfigurovat. 
+Nakonfigurujte vlastní účet vize na placených účtech pomocí portálu Video Indexer (dříve to bylo podporováno pouze rozhraním API). Chcete-li to provést, přihlaste se k portálu Video Indexer, zvolte Přizpůsobení modelu > animované postavy > Konfigurovat. 
 
-### <a name="scenes-shots-and-keyframes--now-in-one-insight-pane"></a>Scény, snímky a klíčové snímky – nyní v jednom podokně přehledu
+### <a name="scenes-shots-and-keyframes--now-in-one-insight-pane"></a>Scény, snímky a klíčové snímky – nyní v jednom podokně přehledů
 
-Scény, snímky a klíčové snímky se teď sloučí do jednoho přehledu, aby bylo snazší spotřebovat a navigovat. Když vyberete požadovanou scénu, uvidíte, ze kterých snímků a klíčových snímků se skládá. 
+Scény, snímky a klíčové snímky jsou nyní sloučeny do jednoho přehledu pro snadnější spotřebu a navigaci. Když vyberete požadovanou scénu, můžete vidět, z čeho se skládá. 
 
 ### <a name="notification-about-a-long-video-name"></a>Oznámení o dlouhém názvu videa
 
-Pokud je název videa delší než 80 znaků, Video Indexer při nahrávání zobrazovat popisnou chybu.
+Pokud je název videa delší než 80 znaků, video indexer zobrazí při nahrávání popisnou chybu.
 
-### <a name="streaming-endpoint-is-disabled-notification"></a>Oznámení o zakázaném koncovém bodu streamování
+### <a name="streaming-endpoint-is-disabled-notification"></a>Koncový bod streamování je zakázáno oznámení
 
-Pokud je koncový bod streamování zakázaný, Video Indexer se na stránce Player zobrazí popisná chyba.
+Pokud je koncový bod streamování zakázán, video indexer zobrazí na stránce přehrávače popisnou chybu.
 
-### <a name="error-handling-improvement"></a>Vylepšení zpracování chyb
+### <a name="error-handling-improvement"></a>Zlepšení při zpracování chyb
 
-Stavový kód 409 se teď vrátí z [přeindexování videa](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video? https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) a aktualizuje rozhraní API pro [video index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) pro případ, že se video aktivně indexuje, aby se zabránilo přepsání aktuálních změn v indexu omylem.
+Stavový kód 409 bude nyní vrácen z [re-index video](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) a [aktualizovat video index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) API v případě, že video je aktivně indexovány, aby se zabránilo přepsání aktuální změny přeindexování náhodou.
 
 ## <a name="november-2019"></a>Listopad 2019
  
-* Podpora jazykových modelů v korejštině
+* Podpora korejských vlastních jazykových modelů
 
-    Video indexer teď podporuje vlastní jazykové modely v korejštině (`ko-KR`) jak na rozhraní API, tak i na portálu. 
+    Indexer videa nyní podporuje vlastní`ko-KR`jazykové modely v korejštině ( ) v rozhraní API i na portálu. 
 * Nové jazyky podporované pro převod řeči na text (STT)
 
-    Rozhraní API pro Video Indexer teď podporují STT v arabštině Levantine (ar-SY), dialekt anglické Británie (en-GB) a dialektu Austrálie (EN-AU).
+    Video Indexer API nyní podporují STT v arabském Levantine (ar-SY), anglický britský dialekt (en-GB) a anglický australský dialekt (en-AU).
     
-    V případě nahrávání videa nahrazujeme zh-HANS na zh-CN, obě jsou podporované, ale doporučuje se použít zh-CN a přesnější.
+    Pro nahrávání videa jsme nahradili zh-HANS na zh-CN, oba jsou podporovány, ale zh-CN je doporučeno a přesnější.
     
 ## <a name="october-2019"></a>Říjen 2019
  
-* Hledání animovaných znaků v galerii
+* Hledání animovaných postav v galerii
 
-    Při indexování animovaných znaků je teď můžete vyhledat v zobrazení videa účtu. Další informace najdete v tématu [rozpoznávání animovaných znaků](animated-characters-recognition.md).
+    Při indexování animovaných postav je nyní můžete vyhledat ve videokuchyni účtu. Další informace naleznete v [tématu Rozpoznávání animovaných postav](animated-characters-recognition.md).
 
 ## <a name="september-2019"></a>Září 2019
  
-V daty IBC 2019 bylo oznámeno více předběžných.
+Několik vylepšení oznámených na IBC 2019:
  
-* Animované rozpoznávání znaků (Public Preview)
+* Rozpoznávání animovaných postav (public preview)
 
-    Možnost rozpoznávat znaky skupinových reklam v animovaném obsahu prostřednictvím integrace s vlastními vizemi. Další informace naleznete v tématu [animovaná detekce znaků](animated-characters-recognition.md).
-* Identifikace ve více jazycích (Public Preview)
+    Schopnost rozpoznat skupinové reklamy rozpoznat postavy v animovaném obsahu prostřednictvím integrace s vlastní vizí. Další informace naleznete v [tématu Detekce animovaných znaků](animated-characters-recognition.md).
+* Identifikace ve více jazycích (public preview)
 
-    Detekuje segmenty v různých jazycích zvukové stopy a na základě nich vytvoří vícejazyčný přepis. Počáteční podpora: angličtina, španělština, němčina a francouzština. Další informace najdete v tématu [Automatické určení a přepisovat vícejazyčného obsahu](multi-language-identification-transcription.md).
-* Extrakce pojmenovaná entita pro lidi a umístění
+    Detekujte segmenty ve více jazycích ve zvukové stopě a vytvořte na nich vícejazyčný přepis. Počáteční podpora: angličtina, španělština, němčina a francouzština. Další informace naleznete v tématu [Automaticky identifikovat a přepsat vícejazyčný obsah](multi-language-identification-transcription.md).
+* Extrakce pojmenované entity pro osoby a umístění
 
-    Extrahuje značky, umístění a lidi z mluvené řeči a vizuálního textu prostřednictvím zpracování přirozeného jazyka (NLP).
-* Klasifikace typu redakčního snímku
+    Extrahuje značky, místa a osoby z řeči a vizuálního textu prostřednictvím zpracování přirozeného jazyka (NLP).
+* Klasifikace typu redakčního záběru
 
-    Označování snímků pomocí redakčních typů, jako je uzavření, střední záběr, dva snímky, interiér, venkovní atd. Další informace najdete v tématu [zjištění typu redakčního snímku](scenes-shots-keyframes.md#editorial-shot-type-detection).
-* Inferencing vylepšení – teď pokrývání úrovně 2
+    Označování záběrů s redakčními typy, jako je zblízka, střední výstřel, dva výstřely, vnitřní, venkovní atd. Další informace naleznete [v tématu Redakční detekce typů záběrů](scenes-shots-keyframes.md#editorial-shot-type-detection).
+* Vylepšení odvození tématu – nyní pokrývá úroveň 2
     
-    V tématu Inferencing model teď podporuje hlubší členitost taxonomie IPTC. Přečtěte si úplné podrobnosti [Azure Media Services nové inovace s podporou AI](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/).
+    Model odvození tématu nyní podporuje hlubší rozlišovací schopnost taxonomie IPTC. Přečtěte si podrobné informace o [nové inovaci založené na umělou atomové technologii Azure Media Services](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/).
 
 ## <a name="august-2019"></a>Srpen 2019
  
-### <a name="video-indexer-deployed-in-uk-south"></a>Video Indexer nasazena v Velká Británie – jih
+### <a name="video-indexer-deployed-in-uk-south"></a>Video Indexer nasazený na jihu Spojeného království
 
-Nyní můžete vytvořit placený účet Video Indexer v oblasti Velká Británie – jih.
+Nyní můžete vytvořit placený účet Video Indexer v oblasti Jižní Británie.
 
-### <a name="new-editorial-shot-type-insights-available"></a>Nové informace typu redakčního snímku přehled dostupných
+### <a name="new-editorial-shot-type-insights-available"></a>K dispozici jsou nové přehledy typu Redakční shot
 
-Nové značky přidané do snímků videa poskytují redakční "typy snímků" a identifikují je pomocí běžných redakčních frází, které se používají v pracovním postupu pro vytváření obsahu, jako například: extrémní Closeup, Closeup, roztažitelné, střední, dva snímky, venkovní, interiér, levý obličej a pravý obličej (k dispozici v JSON).
+Nové značky přidané do videosnímků poskytují redakční "typy záběrů", které je identifikují běžnými redakčními frázemi používanými v pracovním postupu tvorby obsahu, jako jsou: extrémní detailní záběr, detailní záběr, široký, střední, dva výstřely, venkovní, vnitřní, levá a pravá tvář (k dispozici v JSON).
 
-### <a name="new-people-and-locations-entities-extraction-available"></a>K dispozici je extrakce nových entit pro lidi a umístění
+### <a name="new-people-and-locations-entities-extraction-available"></a>K dispozici je extrakce entit Nové osoby a umístění
 
-Video Indexer identifikuje pojmenovaná umístění a lidi prostřednictvím zpracování přirozeného jazyka (NLP) z optického rozpoznávání a přepisu videa. Video Indexer používá algoritmus strojového učení k rozpoznání, kdy konkrétní umístění (třeba věž Eiffel Tower) nebo lidi (například Jan Novák) jsou ve videu volána.
+Video Indexer identifikuje pojmenované lokality a osoby prostřednictvím zpracování přirozeného jazyka (NLP) z rozpoznávání OCR a přepisu videa. Video Indexer používá algoritmus strojového učení k rozpoznání, kdy jsou konkrétní místa (například Eiffelova věž) nebo lidé (například John Doe) voláni ve videu.
 
 ### <a name="keyframes-extraction-in-native-resolution"></a>Extrakce klíčových snímků v nativním rozlišení
 
-Klíčové snímky extrahované Video Indexer jsou k dispozici v původním rozlišení videa.
+Klíčové snímky extrahované video indexerem jsou k dispozici v původním rozlišení videa.
  
-### <a name="ga-for-training-custom-face-models-from-images"></a>GA pro školení vlastních modelů tváře z imagí
+### <a name="ga-for-training-custom-face-models-from-images"></a>GA pro školení vlastní modely obličeje z obrázků
 
-Školení ploch z imagí přesunutých z režimu náhledu do GA (k dispozici prostřednictvím rozhraní API a na portálu).
+Trénovací tváře z obrázků přesunuté z režimu náhledu do GA (k dispozici prostřednictvím rozhraní API a na portálu).
 
 > [!NOTE]
-> Neexistuje žádný dopad na ceny související s přechodem "Preview na GA".
+> Neexistuje žádný cenový dopad související s přechodem "Náhled na GA".
 
-### <a name="hide-gallery-toggle-option"></a>Skrýt přepínač galerie
+### <a name="hide-gallery-toggle-option"></a>Možnost skrytí galerie
 
-Uživatel může zvolit skrytí karty galerie z portálu (podobně jako skrytí karty ukázky).
+Uživatel může skrýt kartu galerie z portálu (podobně jako skrytí karty ukázky).
  
-### <a name="maximum-url-size-increased"></a>Zvýšila se maximální velikost adresy URL.
+### <a name="maximum-url-size-increased"></a>Maximální velikost adresy URL byla zvýšena.
 
-Podpora řetězce dotazu URL 4096 (místo 2048) při indexování videa
+Podpora pro řetězec dotazu URL 4096 (místo 2048) na indexování videa.
  
 ### <a name="support-for-multi-lingual-projects"></a>Podpora vícejazyčných projektů
 
-Projekty se teď dají vytvářet na základě videí indexovaných v různých jazycích (jenom rozhraní API).
+Projekty lze nyní vytvářet na základě videí indexovaných v různých jazycích (pouze rozhraní API).
 
 ## <a name="july-2019"></a>Červenec 2019
 
 ### <a name="editor-as-a-widget"></a>Editor jako widget
 
-Editor AI Video Indexer je teď k dispozici jako widget, který se má vložit do zákaznických aplikací.
+Video Indexer AI-editor je nyní k dispozici jako widget, který má být vložen do zákaznických aplikací.
 
-### <a name="update-custom-language-model-from-closed-caption-file-from-the-portal"></a>Aktualizace vlastního jazykového modelu z zavřeného souboru titulků z portálu
+### <a name="update-custom-language-model-from-closed-caption-file-from-the-portal"></a>Aktualizace vlastního jazykového modelu ze souboru skrytých titulků z portálu
 
-Zákazníci můžou jako vstup pro jazykové modely na stránce vlastní nastavení portálu zadat formáty souborů VTT, SRT aplikace a TTML.
+Zákazníci mohou poskytnout formáty souborů VTT, SRT a TTML jako vstup pro jazykové modely na stránce přizpůsobení portálu.
 
 ## <a name="june-2019"></a>Červen 2019
 
-### <a name="video-indexer-deployed-to-japan-east"></a>Video Indexer nasazené do Japonska – východ
+### <a name="video-indexer-deployed-to-japan-east"></a>Video Indexer nasazený na východ ě Japonska
 
 Nyní můžete vytvořit placený účet Video Indexer v oblasti Japonsko – východ.
 
-### <a name="create-and-repair-account-api-preview"></a>Vytvoření a oprava rozhraní API pro účty (Preview)
+### <a name="create-and-repair-account-api-preview"></a>Vytvoření a oprava rozhraní API účtu (preview)
 
-Přidalo se nové rozhraní API, které umožňuje [aktualizovat koncový bod nebo klíč připojení Azure Media Service](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&groupBy=tag).
+Přidáno nové rozhraní API, které umožňuje [aktualizovat koncový bod nebo klíč připojení služby Azure Media Service](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&groupBy=tag).
 
-### <a name="improve-error-handling-on-upload"></a>Zlepšení zpracování chyb při nahrávání 
+### <a name="improve-error-handling-on-upload"></a>Zlepšit zpracování chyb při nahrávání 
 
-V případě nestandardního nastavení Azure Media Services účtu se vrátí Popisná zpráva.
+V případě chybné konfigurace základního účtu Azure Media Services se vrátí popisná zpráva.
 
-### <a name="player-timeline-keyframes-preview"></a>Klíčové snímky časové osy přehrávače v Preview 
+### <a name="player-timeline-keyframes-preview"></a>Náhled klíčových snímků přehrávače 
 
-V časové ose přehrávače teď můžete zobrazit náhled obrazu pro každou časovou osu.
+Nyní můžete zobrazit náhled obrázku pro každý časnatou dobu přehrávače.
 
-### <a name="editor-semi-select"></a>Editor – poloviční výběr
+### <a name="editor-semi-select"></a>Editor semi-select
 
-Teď si můžete zobrazit náhled všech přehledů, které jsou vybrané jako výsledek výběru konkrétního období přehledu v editoru.
+Nyní můžete zobrazit náhled všech přehledů, které jsou vybrány v důsledku výběru konkrétního časového rámce přehledu v editoru.
 
 ## <a name="may-2019"></a>Květen 2019
 
-### <a name="update-custom-language-model-from-closed-caption-file"></a>Aktualizace vlastního jazykového modelu z zavřeného souboru titulků
+### <a name="update-custom-language-model-from-closed-caption-file"></a>Aktualizace vlastního jazykového modelu ze souboru skrytých titulků
 
-[Vytvoření vlastního jazykového modelu](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?&groupBy=tag) a aktualizace rozhraní API pro [vlastní jazykové modely](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Language-Model?&groupBy=tag) teď podporují formáty souborů vtt, SRT aplikace a TTML jako vstup pro jazykové modely.
+[Vytvořte vlastní jazykový model](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?&groupBy=tag) a [aktualizovat vlastní jazykové modely](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Language-Model?&groupBy=tag) rozhraní API nyní podporují formáty souborů VTT, SRT a TTML jako vstup pro jazykové modely.
 
-Při volání [rozhraní API pro přepis aktualizace videa](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Transcript?&pattern=transcript)se přepis přidá automaticky. Školicí model přidružený k videu se také aktualizuje automaticky. Informace o tom, jak přizpůsobit a naučit jazykové modely, najdete v tématu [přizpůsobení jazykového modelu pomocí video indexer](customize-language-model-overview.md).
+Při volání [aktualizace video přepis API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Transcript?&pattern=transcript), přepis je přidán automaticky. Tréninkový model přidružený k videu se také aktualizuje automaticky. Informace o přizpůsobení a trénování jazykových modelů naleznete v [tématu Přizpůsobení jazykového modelu pomocí videoindexeru](customize-language-model-overview.md).
 
-### <a name="new-download-transcript-formats--txt-and-csv"></a>Nové formáty přepisů ke stažení – TXT a CSV
+### <a name="new-download-transcript-formats--txt-and-csv"></a>Nové formáty přepisu stahování – TXT a CSV
 
-Kromě skrytého formátu titulků, který už je podporovaný (SRT aplikace, VTT a TTML), teď Video Indexer podporuje stahování přepisu ve formátech TXT a CSV.
+Kromě již podporovaného formátu skrytých titulků (SRT, VTT a TTML) video indexer nyní podporuje stahování přepisu ve formátech TXT a CSV.
 
 ## <a name="next-steps"></a>Další kroky
 

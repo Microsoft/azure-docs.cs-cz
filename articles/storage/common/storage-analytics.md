@@ -1,6 +1,6 @@
 ---
-title: Shromažďovat data o protokolech a metrikách pomocí Azure Storage Analytics | Microsoft Docs
-description: Analýza úložiště vám umožňuje sledovat data metrik pro všechny služby úložiště a shromažďovat protokoly pro objekty blob, front a Table Storage.
+title: Pomocí analýzy Azure Storage můžete shromažďovat protokoly a data metrik | Dokumenty společnosti Microsoft
+description: Storage Analytics umožňuje sledovat data metrik pro všechny služby úložiště a shromažďovat protokoly pro úložiště objektů Blob, Fronta a Tabulka.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,44 +9,44 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 86b399879807e480176ee9a3ca3feaba1ec5dd85
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250886"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
-Analýza úložiště Azure provádí protokolování a poskytuje data metrik pro účet úložiště. Tato data můžete použít k trasování požadavků, analýze trendů využití a diagnostikování problémů s účtem úložiště.
+Azure Storage Analytics provádí protokolování a poskytuje data metrik pro účet úložiště. Tato data můžete použít ke sledování požadavků, analýze trendů využití a diagnostice problémů s účtem úložiště.
 
-Chcete-li použít Analýza úložiště, je nutné ji povolit individuálně pro každou službu, kterou chcete monitorovat. Můžete ji povolit z [Azure Portal](https://portal.azure.com). Podrobnosti najdete v tématu [monitorování účtu úložiště v Azure Portal](storage-monitor-storage-account.md). Analýza úložiště můžete také povolit programově prostřednictvím REST API nebo klientské knihovny. Použijte [vlastnost nastavit službu BLOB Service](/rest/api/storageservices/set-blob-service-properties), [nastavte vlastnosti služby fronty](/rest/api/storageservices/set-queue-service-properties), [nastavte vlastnosti služby Table](/rest/api/storageservices/set-table-service-properties)a [nastavte operace vlastností souborové služby](/rest/api/storageservices/Get-File-Service-Properties) , aby bylo možné analýza úložiště pro každou službu.
+Chcete-li používat Storage Analytics, musíte ji povolit individuálně pro každou službu, kterou chcete sledovat. Můžete ji povolit z [webu Azure Portal](https://portal.azure.com). Podrobnosti najdete [v tématu Monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md). Analýzu úložiště můžete také povolit programově prostřednictvím rozhraní REST API nebo klientské knihovny. Pomocí nástrojů [Nastavit vlastnosti služby objektů blob](/rest/api/storageservices/set-blob-service-properties), [Nastavit vlastnosti služby fronty](/rest/api/storageservices/set-queue-service-properties), Nastavit [vlastnosti služby table service](/rest/api/storageservices/set-table-service-properties)a Nastavit [vlastnosti služby souboru](/rest/api/storageservices/Get-File-Service-Properties) povolte analýzu úložiště pro každou službu.
 
-Agregovaná data se ukládají do známého objektu BLOB (pro protokolování) a v známých tabulkách (pro metriky), ke kterým může být přistupovaná pomocí Blob service a Table service rozhraní API.
+Agregovaná data jsou uložena ve známém objektu blob (pro protokolování) a ve známých tabulkách (pro metriky), ke kterým lze přistupovat pomocí řešení API služby Blob a table service.
 
-U množství uložených dat, která jsou nezávislá na celkovém limitu pro váš účet úložiště, Analýza úložiště má limit 20 TB. Další informace o limitech účtu úložiště najdete v tématu [škálovatelnost a cíle výkonnosti pro účty úložiště úrovně Standard](scalability-targets-standard-account.md).
+Storage Analytics má limit 20 TB na množství uložených dat, které je nezávislé na celkovém limitu pro váš účet úložiště. Další informace o omezení účtu úložiště najdete v tématu [Škálovatelnost a cíle výkonu pro účty standardního úložiště](scalability-targets-standard-account.md).
 
-Podrobný návod k používání Analýza úložiště a dalších nástrojů k identifikaci, diagnostice a odstraňování potíží souvisejících s Azure Storage najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
+Podrobný průvodce používáním služby Storage Analytics a dalších nástrojů k identifikaci, diagnostice a řešení problémů souvisejících s úložištěm Azure najdete v tématu [Sledování, diagnostika a řešení potíží s úložištěm Microsoft Azure](storage-monitoring-diagnosing-troubleshooting.md).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="billing-for-storage-analytics"></a>Fakturace za Analýza úložiště
+## <a name="billing-for-storage-analytics"></a>Fakturace pro analýzu úložiště
 
-Všechna data metriky se zapisují službami účtu úložiště. Výsledkem je, že každá operace zápisu prováděná Analýza úložiště je fakturovatelná. Kromě toho je fakturovatelná i objem úložiště využívaného daty metrik.
+Všechna data metrik se zapisují služby účtu úložiště. V důsledku toho je každá operace zápisu provedená službou Storage Analytics fakturovatelná. Kromě toho je možné také fakturovat velikost úložiště používaného daty metrik.
 
-Následující akce prováděné Analýza úložiště jsou Fakturovatelné:
+Následující akce prováděné službou Storage Analytics jsou fakturovatelné:
 
-* Požadavky na vytvoření objektů BLOB pro protokolování
+* Požadavky na vytvoření objektů BLOB pro protokolování.
 * Požadavky na vytvoření entit tabulky pro metriky.
 
-Pokud jste nakonfigurovali zásady uchovávání dat, neúčtují se vám žádné transakce odstranění, když Analýza úložiště odstraní stará data protokolování a metrik. Transakce odstranit z klienta se ale Fakturovatelné. Další informace o zásadách uchovávání informací najdete v tématu [nastavení analýza úložiště zásady uchovávání dat](https://msdn.microsoft.com/library/azure/hh343263.aspx).
+Pokud jste nakonfigurovali zásady uchovávání dat, nebudou vám účtovány poplatky za odstranění transakcí, když Služba Storage Analytics odstraní stará data protokolování a metriky. Odstranění transakcí z klienta je však fakturovatelné. Další informace o zásadách uchovávání informací naleznete [v tématu Nastavení zásad uchovávání dat služby Storage Analytics](https://msdn.microsoft.com/library/azure/hh343263.aspx).
 
-### <a name="understanding-billable-requests"></a>Princip fakturovatelných požadavků
+### <a name="understanding-billable-requests"></a>Principy fakturovatelných požadavků
 
-Každý požadavek na službu úložiště účtu je buď fakturovatelný, nebo nefakturovatelná. Analýza úložiště protokolovat jednotlivé požadavky na službu, včetně stavové zprávy, která indikuje, jak byl požadavek zpracován. Podobně Analýza úložiště ukládá metriky pro službu i operace rozhraní API této služby, včetně procentuálních hodnot a počtu určitých stavových zpráv. Tyto funkce společně umožňují analyzovat Fakturovatelné žádosti, dělat vylepšení aplikace a diagnostikovat problémy s požadavky na vaše služby. Další informace o fakturaci najdete v tématu [principy Azure Storage fakturace – šířka pásma, transakce a kapacita](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
+Každá žádost o úložiště účtu je fakturovatelná nebo nefakturovatelná. Storage Analytics protokoluje každý jednotlivý požadavek na službu, včetně zprávy o stavu, která označuje, jak byl požadavek zpracován. Podobně Storage Analytics ukládá metriky pro službu i operace rozhraní API této služby, včetně procent a počtu určitých stavových zpráv. Tyto funkce vám společně mohou pomoci analyzovat fakturovatelné požadavky, vylepšovat aplikaci a diagnostikovat problémy s požadavky na vaše služby. Další informace o fakturaci najdete [v tématu Principy fakturace úložiště Azure – šířka pásma, transakce a kapacita](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
 
-Při prohlížení dat Analýza úložiště můžete pomocí tabulek v tématu [Analýza úložiště protokolované operace a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) určit, které požadavky budou Fakturovatelné. Pak můžete porovnat protokoly a data metrik ve stavových zprávách a zjistit, jestli jste se vám vyrovnali za konkrétní požadavek. K prozkoumání dostupnosti pro službu úložiště nebo jednotlivé operace rozhraní API můžete použít také tabulky v předchozím tématu.
+Při pohledu na data Služby Analýzy úložiště můžete pomocí tabulek v tématu [Zaznamenávat operace a stavové zprávy analýzy úložiště](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) k určení, jaké požadavky jsou fakturovatelné. Potom můžete porovnat protokoly a data metrik se stavové zprávy a zjistit, zda vám byly účtovány poplatky za konkrétní požadavek. Tabulky v předchozím tématu můžete také použít k prozkoumání dostupnosti služby úložiště nebo operace individuálního rozhraní API.
 
 ## <a name="next-steps"></a>Další kroky
 * [Monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md)
-* [Analýza úložiště metriky](storage-analytics-metrics.md)
-* [Protokolování Analýza úložiště](storage-analytics-logging.md)
+* [Metriky analýzy úložiště](storage-analytics-metrics.md)
+* [Protokolování Analýzy úložiště](storage-analytics-logging.md)

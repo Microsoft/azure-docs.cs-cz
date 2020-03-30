@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 2f27c50b1d016265c20102521a137bcbb0646115
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175225"
 ---
-Pokud budete mít adresu URL sdíleného přístupového podpisu (SAS), který uděluje přístup k prostředkům v účtu úložiště, můžete SAS v připojovacím řetězci. Protože sdíleného přístupového podpisu obsahuje informace potřebné k ověření požadavku, připojovací řetězec pomocí SAS poskytuje protokol koncového bodu služby a přihlašovací údaje potřebné pro přístup k prostředku.
+Pokud máte adresu URL sdíleného přístupového podpisu (SAS), která vám uděluje přístup k prostředkům v účtu úložiště, můžete použít SAS v připojovacím řetězci. Vzhledem k tomu, že SAS obsahuje informace potřebné k ověření požadavku, připojovací řetězec s SAS poskytuje protokol, koncový bod služby a potřebná pověření pro přístup k prostředku.
 
-Chcete-li vytvořit připojovací řetězec, který zahrnuje sdíleného přístupového podpisu, zadejte řetězec v následujícím formátu:
+Chcete-li vytvořit připojovací řetězec obsahující sdílený přístupový podpis, zadejte řetězec v následujícím formátu:
 
 ```
 BlobEndpoint=myBlobEndpoint;
@@ -23,17 +23,17 @@ FileEndpoint=myFileEndpoint;
 SharedAccessSignature=sasToken
 ```
 
-Každý koncový bod služby je volitelné, ale připojovací řetězec musí obsahovat alespoň jeden.
+Každý koncový bod služby je volitelný, i když připojovací řetězec musí obsahovat alespoň jeden.
 
 > [!NOTE]
-> Jako osvědčený postup se doporučuje pomocí protokolu HTTPS pomocí SAS.
+> Jako osvědčený postup se doporučuje používat protokol HTTPS s SAS.
 >
-> Pokud zadáváte SAS v připojovacím řetězci v konfiguračním souboru, budete muset kódovat speciální znaky v adrese URL.
+> Pokud zadáváte SAS v připojovacím řetězci v konfiguračním souboru, bude pravděpodobně nutné zakódovat speciální znaky v adrese URL.
 >
 >
 
-### <a name="service-sas-example"></a>Příklad SAS služby
-Tady je příklad připojovacího řetězce, který zahrnuje SAS služby Blob Storage:
+### <a name="service-sas-example"></a>Příklad služby SAS
+Tady je příklad připojovacího řetězce, který obsahuje službu SAS pro úložiště objektů Blob:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;
@@ -48,7 +48,7 @@ SharedAccessSignature=sv=2015-04-05&amp;sr=b&amp;si=tutorial-policy-635959936145
 ```
 
 ### <a name="account-sas-example"></a>Příklad SAS účtu
-Tady je příklad připojovacího řetězce, který zahrnuje SAS účtu úložiště objektů Blob a souborů. Všimněte si, že jsou zadané koncové body pro obě služby:
+Tady je příklad připojovacího řetězce, který obsahuje účet SAS pro úložiště objektů blob a souborů. Všimněte si, že koncové body pro obě služby jsou určeny:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;
@@ -56,7 +56,7 @@ FileEndpoint=https://storagesample.file.core.windows.net;
 SharedAccessSignature=sv=2015-07-08&sig=iCvQmdZngZNW%2F4vw43j6%2BVz6fndHF5LI639QJba4r8o%3D&spr=https&st=2016-04-12T03%3A24%3A31Z&se=2016-04-13T03%3A29%3A31Z&srt=s&ss=bf&sp=rwl
 ```
 
-A tady je příklad stejného připojovacího řetězce s kódováním adresy URL:
+A tady je příklad stejného připojovacího řetězce s kódováním URL:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;

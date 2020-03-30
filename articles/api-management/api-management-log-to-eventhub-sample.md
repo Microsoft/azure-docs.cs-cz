@@ -1,7 +1,7 @@
 ---
-title: Monitorování rozhraní API s využitím Azure API Management, Event Hubs a Moesif
+title: Monitorování rozhraní API pomocí Azure API Management, Event Hubs a Moesif
 titleSuffix: Azure API Management
-description: Ukázková aplikace, která demonstruje zásady pro přihlášení k síti pomocí připojení API Management Azure, Azure Event Hubs a Moesif pro protokolování a sledování HTTP
+description: Ukázková aplikace demonstrující zásady log-to-eventhub propojením Azure API Management, Azure Event Hubs a Moesif pro protokolování a monitorování HTTP
 services: api-management
 documentationcenter: ''
 author: darrelmiller
@@ -16,39 +16,39 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442527"
 ---
-# <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Monitorování rozhraní API pomocí API Management Azure, Event Hubs a Moesif
-[Služba API Management](api-management-key-concepts.md) poskytuje mnoho funkcí, které zvyšují zpracování požadavků HTTP odeslaných na vaše rozhraní HTTP API. Existence požadavků a odpovědí je však přechodný. Požadavek se provede a přetéká prostřednictvím služby API Management do rozhraní back-end API. Vaše rozhraní API zpracovává požadavek a odezvu zpět do příjemce rozhraní API. Služba API Management udržuje několik důležitých statistik o rozhraních API pro zobrazení na řídicím panelu Azure Portal, ale kromě toho se tyto podrobnosti odešlou.
+# <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Monitorování rozhraní API pomocí Azure API Management, Event Hubs a Moesif
+[Služba API Management](api-management-key-concepts.md) poskytuje mnoho funkcí pro zlepšení zpracování požadavků HTTP odeslaných do vašeho rozhraní HTTP API. Existence požadavků a odpovědí je však přechodné. Požadavek je a toky prostřednictvím služby API Management do back-endového rozhraní API. Vaše rozhraní API zpracuje požadavek a odpověď toky zpět do příjemce rozhraní API. Služba API Management uchovává některé důležité statistiky o rozhraních API pro zobrazení na řídicím panelu portálu Azure, ale kromě toho jsou podrobnosti pryč.
 
-Pomocí zásad přihlášení k protokolu pro protokol eventhub ve službě API Management můžete odeslat jakékoli podrobnosti z žádosti a odpovědi do [centra událostí Azure](../event-hubs/event-hubs-what-is-event-hubs.md). Existuje řada důvodů, proč můžete chtít generovat události ze zpráv HTTP odesílaných do vašich rozhraní API. Mezi příklady patří auditující záznam aktualizací, analýza využití, upozorňování na výjimky a integrace třetích stran.
+Pomocí zásad log-to-eventhub ve službě API Management můžete odeslat všechny podrobnosti z požadavku a odpovědi do [centra událostí Azure](../event-hubs/event-hubs-what-is-event-hubs.md). Existuje celá řada důvodů, proč můžete chtít generovat události ze zpráv HTTP odesílaných do vašich api. Některé příklady zahrnují auditní záznam aktualizací, analýzy využití, upozornění na výjimky a integrace třetích stran.
 
-Tento článek ukazuje, jak zachytit celou žádost HTTP a zprávu s odpovědí, odeslat ji do centra událostí a pak tuto zprávu předat službě třetí strany, která poskytuje služby protokolování a monitorování HTTP.
+Tento článek ukazuje, jak zachytit celý požadavek HTTP a odpověď zprávy, odeslat do centra událostí a potom předat tuto zprávu službě jiného výrobce, která poskytuje služby protokolování a monitorování HTTP.
 
-## <a name="why-send-from-api-management-service"></a>Proč posílat z API Management služby?
-Je možné napsat middleware HTTP, který se může připojit k rozhraní HTTP API a zachytit požadavky a odpovědi HTTP a podávat je do systémů protokolování a monitorování. Nevýhodou tohoto přístupu je, že middleware HTTP musí být integrovaná do rozhraní API back-endu a musí odpovídat platformě rozhraní API. Pokud existuje více rozhraní API, pak každý z nich musí nasadit middleware. K dispozici jsou často důvody, proč nelze aktualizovat rozhraní API back-endu.
+## <a name="why-send-from-api-management-service"></a>Proč odesílat ze služby správy rozhraní API?
+Je možné napsat http middleware, který lze připojit do http api rámců pro zachycení HTTP požadavků a odpovědí a jejich krmení do protokolovacích a monitorovacích systémů. Nevýhodou tohoto přístupu je middleware HTTP musí být integrovándo rozhraní API back-endu a musí odpovídat platformě rozhraní API. Pokud existuje více api, pak každý z nich musí nasadit middleware. Často existují důvody, proč nelze aktualizovat back-endová api.
 
-Použití služby Azure API Management k integraci s infrastrukturou protokolování poskytuje centralizované řešení a nezávislé na platformě. Je také škálovatelná, protože se jedná o možnosti [geografické replikace](api-management-howto-deploy-multi-region.md) v rámci Azure API Management.
+Použití služby Azure API Management k integraci s infrastrukturou protokolování poskytuje centralizované a platformně nezávislé řešení. Je také škálovatelná, částečně kvůli možnostem [geografické replikace](api-management-howto-deploy-multi-region.md) azure api managementu.
 
-## <a name="why-send-to-an-azure-event-hub"></a>Proč posílat do centra událostí Azure?
-Je vhodné požádat, proč vytvořit zásadu, která je specifická pro Azure Event Hubs? Je možné, že je k dispozici celá řada různých míst, kde mohu chtít protokolovat moje žádosti. Proč nestačí odeslat požadavky přímo do konečného cíle?  To je možnost. Při protokolování požadavků ze služby API Management je ale nutné zvážit, jak protokolování zpráv ovlivňuje výkon rozhraní API. Postupné zvýšení zatížení lze zpracovat zvýšením dostupných instancí systémových komponent nebo využitím geografické replikace. Krátké špičky v provozu ale můžou způsobit zpoždění požadavků v případě, že požadavky na protokolování infrastruktury začnou být při zatížení pomalé.
+## <a name="why-send-to-an-azure-event-hub"></a>Proč odesílat do Centra událostí Azure?
+Je rozumné se ptát, proč vytvářet zásady, které jsou specifické pro Azure Event Hubs? Existuje mnoho různých míst, kde bych mohl chtít přihlásit své požadavky. Proč prostě neposlat žádosti přímo do konečného cíle?  To je možnost. Při vytváření požadavků na protokolování ze služby správy rozhraní API je však nutné zvážit, jak protokolování zpráv vliv na výkon rozhraní API. Postupné zvyšování zatížení lze zpracovat zvýšením dostupných instancí systémových součástí nebo využitím geografické replikace. Krátké špičky v provozu však může způsobit požadavky, které mají být zpožděny, pokud požadavky na protokolování infrastruktury začít zpomalit při zatížení.
 
-Azure Event Hubs je navržený tak, aby se na příchozí objemy dat nastavila, s kapacitou pro práci s mnohem větším počtem událostí, než je počet požadavků HTTP nejvíce rozhraní API. Centrum událostí slouží jako typ sofistikované vyrovnávací paměti mezi vaší službou API Management a infrastrukturou, která ukládá a zpracovává zprávy. Tím se zajistí, že výkon rozhraní API nebude kvůli infrastruktuře protokolování zhoršený.
+Azure Event Hubs je navržen tak, aby příchozí obrovské objemy dat, s kapacitou pro řešení mnohem vyšší počet událostí, než je počet požadavků HTTP většina procesů API. Centrum událostí funguje jako druh sofistikované vyrovnávací paměti mezi službou správy rozhraní API a infrastrukturou, která ukládá a zpracovává zprávy. Tím zajistíte, že výkon rozhraní API nebude trpět z důvodu infrastruktury protokolování.
 
-Jakmile jsou data předána do centra událostí, je trvale zachována a budou čekat na jejich zpracování na příjemce centra událostí. Centrum událostí nezáleží na tom, jak se zpracovává, stačí jenom stojí o tom, že se zpráva úspěšně doručí.
+Jakmile jsou data předána do centra událostí, je trvalé a bude čekat na spotřebitele Event Hub zpracovat. Centrum událostí se nestará o to, jak je zpracována, jen se stará o to, aby zpráva byla úspěšně doručena.
 
-Event Hubs má možnost streamovat události do více skupin příjemců. To umožňuje zpracovávat události v různých systémech. To umožňuje podporu mnoha scénářů integrace bez nutnosti přidávat prodlevy při zpracování žádosti rozhraní API v rámci služby API Management, protože je třeba vygenerovat jenom jednu událost.
+Event Hubs má možnost streamovat události do více skupin spotřebitelů. To umožňuje události, které mají být zpracovány v různých systémech. To umožňuje podporovat mnoho scénářů integrace bez uvedení další zpoždění na zpracování požadavku rozhraní API v rámci služby api management jako pouze jednu událost musí být generovány.
 
-## <a name="a-policy-to-send-applicationhttp-messages"></a>Zásada pro posílání zpráv aplikace/http
-Centrum událostí přijímá data události jako jednoduchý řetězec. Obsah tohoto řetězce je až na vás. Aby bylo možné zabalit požadavek HTTP a poslat ho do Event Hubs, musíme řetězec naformátovat pomocí informací o požadavku nebo odpovědi. V takových situacích, pokud existuje existující formát, který můžeme znovu použít, nemusí být nutné psát náš kód pro analýzu. Zpočátku jsem považoval za použití [Har](http://www.softwareishard.com/blog/har-12-spec/) pro posílání požadavků a odpovědí HTTP. Tento formát je však optimalizován pro ukládání sekvence požadavků HTTP ve formátu založeném na formátu JSON. Obsahovala řadu povinných prvků, které přidávají zbytečné složitosti pro scénář předávání zprávy HTTP přes kabel.
+## <a name="a-policy-to-send-applicationhttp-messages"></a>Zásada odesílání zpráv aplikace nebo http
+Centrum událostí přijímá data událostí jako jednoduchý řetězec. Obsah toho řetězce je na vás. Abybylo možné zabalit požadavek HTTP a odeslat jej do centra událostí, musíme formátovat řetězec s informacemi o požadavku nebo odpovědi. V situacích, jako je tato, pokud existuje existující formát, který můžeme znovu použít, pak nemusíme psát vlastní kód analýzy. Zpočátku jsem zvažoval použití [HAR](http://www.softwareishard.com/blog/har-12-spec/) pro odesílání HTTP požadavků a odpovědí. Tento formát je však optimalizován pro ukládání posloupnosti požadavků HTTP ve formátu json. Obsahuje řadu povinných prvků, které přidaly zbytečnou složitost pro scénář předávání zprávy HTTP po drátě.
 
-Alternativní možností bylo použít `application/http` typ média, jak je popsáno v tématu specifikace HTTP [RFC 7230](https://tools.ietf.org/html/rfc7230). Tento typ média používá přesný formát, který se používá ke skutečnému posílání zpráv HTTP prostřednictvím sítě, ale celá zpráva může být vložena do těla jiné žádosti HTTP. V našem případě budeme k odeslání do Event Hubs použít text jako naši zprávu. Pohodlně existuje analyzátor, který existuje v [Microsoft ASP.NET klientské knihovny webového rozhraní API 2,2](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) , které mohou analyzovat tento formát a převést jej na nativní objekty `HttpRequestMessage` a `HttpResponseMessage`.
+Alternativní možností bylo použít `application/http` typ média, jak je popsáno ve specifikaci [HTTP RFC 7230](https://tools.ietf.org/html/rfc7230). Tento typ média používá přesně stejný formát, který se používá k skutečně odesílání zpráv HTTP po drátě, ale celá zpráva může být umístěna v těle jiného požadavku HTTP. V našem případě použijeme tělo jako zprávu, kterou pošleme do event hubů. Pohodlně existuje analyzátor, který existuje v [knihovnách Microsoft ASP.NET Web API 2.2 Client,](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) který může `HttpRequestMessage` `HttpResponseMessage` analyzovat tento formát a převést jej na nativní a objekty.
 
-Abychom mohli vytvořit tuto zprávu, musíme využít výhod C# [výrazů zásad](/azure/api-management/api-management-policy-expressions) založených na Azure API Management. Tady je zásada, která odešle zprávu požadavku HTTP do Azure Event Hubs.
+Abychom mohli vytvořit tuto zprávu, musíme využít výhod [výrazů zásad](/azure/api-management/api-management-policy-expressions) založených na C# ve správě rozhraní Azure API. Tady je zásada, která odešle zprávu o požadavku HTTP do Azure Event Hubs.
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -76,28 +76,28 @@ Abychom mohli vytvořit tuto zprávu, musíme využít výhod C# [výrazů zása
 </log-to-eventhub>
 ```
 
-### <a name="policy-declaration"></a>Deklarace zásad
-Existuje několik konkrétních věcí, které se týkají tohoto výrazu zásad. Zásada přihlášení k protokolu pro protokol eventhub má atribut nazvaný protokolovací – ID, který odkazuje na název protokolovacího nástroje, který byl vytvořen v rámci služby API Management. Podrobnosti o tom, jak nastavit protokolovací nástroj centra událostí ve službě API Management, najdete v dokumentu [Jak protokolovat události do azure Event Hubs v azure API Management](api-management-howto-log-event-hubs.md). Druhý atribut je volitelný parametr, který instruuje Event Hubs, do kterého oddílu se uloží zpráva. Event Hubs používá k zajištění škálovatelnosti oddíly a vyžaduje minimálně dvě. Seřazené doručení zpráv je zaručeno pouze v rámci oddílu. Pokud neudělíme centru událostí, ve kterém oddíl umístit zprávu, použije k distribuci zatížení algoritmus kruhového dotazování. Nicméně to může způsobit, že některé z našich zpráv budou zpracovávány mimo pořadí.
+### <a name="policy-declaration"></a>Prohlášení o zásadách
+O tomto výrazu politiky stojí za zmínku několik konkrétních věcí. Zásada log-to-eventhub má atribut s názvem logger-id, který odkazuje na název úhozu, který byl vytvořen v rámci služby API Management. Podrobnosti o tom, jak nastavit protokolovač centra událostí ve službě API Management, najdete v dokumentu [Jak protokolovat události do Center událostí Azure ve správě rozhraní Azure API](api-management-howto-log-event-hubs.md). Druhý atribut je volitelný parametr, který instruuje centra událostí, který oddíl uložit zprávu. Centra událostí používá oddíly k povolení škálovatelnosti a vyžadují minimálně dva. Objednané doručení zpráv je zaručeno pouze v rámci oddílu. Pokud nebudeme instruovat Event Hub, ve kterém oddíl umístit zprávu, používá algoritmus kruhového dotazování k distribuci zatížení. To však může způsobit, že některé naše zprávy budou zpracovány mimo provoz.
 
 ### <a name="partitions"></a>Oddíly
-Aby bylo zajištěno doručení našich zpráv spotřebitelům v daném pořadí a využití funkcí distribuce zatížení oddílů, jsem se rozhodli odeslat zprávy požadavku HTTP do jednoho oddílu a zprávy s odpovědí HTTP do druhého oddílu. Tím se zajistí rovnoměrné rozložení zatížení a můžeme zaručit, že všechny požadavky budou využity v daném pořadí a všechny odpovědi budou využity v daném pořadí. Je možné, aby odpověď byla spotřebována před odpovídajícím požadavkem, ale stejně jako to není problém, protože máme jiný mechanismus pro korelaci požadavků na odpovědi a víme, že požadavky jsou vždy před odpověďmi.
+Chcete-li zajistit, aby naše zprávy byly doručovány spotřebitelům v pořádku a využít možnosti distribuce zatížení oddílů, rozhodl jsem se odeslat zprávy o požadavcích HTTP na jeden oddíl a zprávy odpovědi HTTP do druhého oddílu. Tím je zajištěno rovnoměrné rozložení zatížení a můžeme zaručit, že všechny požadavky budou spotřebovány v pořadí a všechny odpovědi jsou spotřebovány v pořadí. Je možné, že odpověď bude spotřebována před odpovídající požadavek, ale protože to není problém, protože máme jiný mechanismus pro korelaci požadavků na odpovědi a víme, že požadavky vždy předcupují před odpovědi.
 
-### <a name="http-payloads"></a>Datové části HTTP
-Po sestavení `requestLine`zkontrolujeme, jestli by text požadavku měl být oříznutý. Text žádosti se zkrátí jenom na 1024. To se dá zvýšit, ale jednotlivé zprávy centra událostí jsou omezené na 256 KB, takže je možné, že některé tělo zprávy HTTP se nevejdou do jedné zprávy. Při protokolování a analýze významného množství informací se může odvozovat jenom z řádku požadavku HTTP a z hlavičky. Mnoho požadavků rozhraní API také vrací jenom malé body, takže ztráta hodnoty informací zkrácením velkých subjektů je poměrně minimální v porovnání s snížením nákladů na přenos, zpracování a ukládání, aby se zachoval obsah těla. První Poznámka o zpracování textu je, že musíme předat `true` metodě `As<string>()`, protože čteme obsah těla, ale měl by také jít o back-end rozhraní API, aby bylo možné tělo přečíst. Předáním hodnoty true této metodě způsobíme, že tělo bude uloženo do vyrovnávací paměti tak, aby bylo možné ho přečíst podruhé. To je důležité vědět, pokud máte rozhraní API, které odesílá velké soubory nebo používá dlouhé cyklické dotazování. V těchto případech by bylo vhodné se vyhnout čtení těla.
+### <a name="http-payloads"></a>Datové části PROTOKOLU HTTP
+Po sestavení `requestLine`, zkontrolujeme, zda tělo požadavku by měla být zkrácena. Tělo požadavku je zkráceno na pouze 1024. To může být zvýšena, ale jednotlivé zprávy Event Hub jsou omezeny na 256 KB, takže je pravděpodobné, že některá těla zpráv HTTP se nevejdou do jedné zprávy. Při provádění protokolování a analýzy lze odvodit značné množství informací pouze z řádku a záhlaví požadavků HTTP. Mnoho požadavků na úložiště api také vrací pouze malá těla, a proto je ztráta hodnoty informací zkrácením velkých těl poměrně minimální ve srovnání se snížením nákladů na přenos, zpracování a ukládání, aby byl veškerý obsah těla. Poslední poznámka o zpracování těla je, `true` že `As<string>()` musíme předat metodu, protože čteme obsah těla, ale byl také chtěl backend API, aby mohli číst tělo. Předáním true této metody způsobíme, že tělo bude uloženo do vyrovnávací paměti, aby bylo možné jej přečíst podruhé. To je důležité být vědomi, pokud máte rozhraní API, které provádí nahrávání velkých souborů nebo používá dlouhé dotazování. V těchto případech by bylo nejlepší, aby se zabránilo čtení těla vůbec.
 
-### <a name="http-headers"></a>Hlavičky protokolu HTTP
-Hlavičky HTTP se dají přenést do formátu zprávy ve formátu jednoduché dvojice klíč/hodnota. Rozhodli jsme se vykládat určitá pole citlivých na zabezpečení, aby nedocházelo k zbytečnému úniku informací o přihlašovacích údajích. Je pravděpodobné, že klíče rozhraní API a další přihlašovací údaje by se použily pro účely analýzy. Pokud chceme provést analýzu u uživatele a konkrétního produktu, který používají, pak to můžeme získat z objektu `context` a přidat ho do zprávy.
+### <a name="http-headers"></a>Hlavičky PROTOKOLU HTTP
+Hlavičky HTTP lze přenést do formátu zprávy v jednoduchém formátu páru klíč/hodnota. Rozhodli jsme se odstranit určitá bezpečnostní pole, abychom se vyhnuli zbytečnému úniku informací o pověřeních. Je nepravděpodobné, že by se klíče rozhraní API a další pověření používaly pro účely analýzy. Pokud chceme provést analýzu uživatele a konkrétního produktu, který používají, `context` pak bychom to mohli získat z objektu a přidat to do zprávy.
 
 ### <a name="message-metadata"></a>Metadata zprávy
-Při sestavování kompletní zprávy pro odeslání do centra událostí není první řádek ve skutečnosti součástí zprávy `application/http`. První řádek je další metadata, která se skládají z toho, zda se jedná o zprávu žádosti nebo odpovědi a ID zprávy, které se používá ke sladění požadavků na odpovědi. ID zprávy se vytvoří pomocí jiné zásady, která vypadá takto:
+Při vytváření úplné zprávy k odeslání do centra událostí, první `application/http` řádek není ve skutečnosti součástí zprávy. První řádek je další metadata skládající se z toho, zda zpráva je požadavek nebo odpověď zprávy a ID zprávy, který se používá ke korelaci požadavků na odpovědi. ID zprávy se vytvoří pomocí jiné zásady, která vypadá takto:
 
 ```xml
 <set-variable name="message-id" value="@(Guid.NewGuid())" />
 ```
 
-Mohli jsme vytvořit zprávu požadavku uloženou v proměnné, dokud odpověď nevrátíte, a pak žádost a odpověď odeslali jako jednu zprávu. Odesláním žádosti a odpovědi nezávisle na sobě a zadáním ID zprávy si ale ve velikosti zprávy získáte trochu flexibilitu, což umožňuje využít více oddílů při zachování pořadí zpráv a zobrazí se žádost. v našem řídicím panelu protokolování dříve. Může se taky stát, že se do centra událostí nikdy nepošle platná odpověď, možná z důvodu závažné chyby požadavku ve službě API Management, ale pořád máme záznam o žádosti.
+Mohli jsme vytvořit zprávu požadavku, uloženou v proměnné, dokud nebyla vrácena odpověď a poté odeslala požadavek a odpověď jako jednu zprávu. Nicméně odesláním požadavku a odpovědi nezávisle a pomocí id zprávy ke korelaci dvou, dostaneme trochu větší flexibilitu ve velikosti zprávy, schopnost využít více oddílů při zachování pořadí zpráv a požadavek se zobrazí v našem řídicím panelu s protokolováním dříve. Mohou také existovat některé scénáře, kde je platná odpověď nikdy odeslána do centra událostí, pravděpodobně z důvodu závažné chyby požadavku ve službě api management, ale stále máme záznam o požadavku.
 
-Zásada pro odeslání zprávy HTTP odpovědi vypadá podobně jako požadavek, takže kompletní konfigurace zásad vypadá takto:
+Zásada pro odeslání zprávy HTTP odpovědi vypadá podobně jako požadavek, a proto úplná konfigurace zásad vypadá takto:
 
 ```xml
 <policies>
@@ -157,16 +157,16 @@ Zásada pro odeslání zprávy HTTP odpovědi vypadá podobně jako požadavek, 
 </policies>
 ```
 
-Zásada `set-variable` vytvoří hodnotu, ke které má přístup zásada `log-to-eventhub` v části `<inbound>` a v části `<outbound>`.
+Zásada `set-variable` vytvoří hodnotu, která `log-to-eventhub` je přístupná zásady v `<inbound>` části a `<outbound>` části.
 
-## <a name="receiving-events-from-event-hubs"></a>Příjem událostí z Event Hubs
-Události z centra událostí Azure se přijímají pomocí [protokolu AMQP](https://www.amqp.org/). Tým Microsoft Service Bus provedl klientské knihovny, aby bylo možné snadněji spotřebovávat náročné události. Existují dva různé přístupy, jeden je *přímý spotřebitel* a druhý používá třídu `EventProcessorHost`. Příklady těchto dvou přístupů najdete v [Průvodci programováním v Event Hubs](../event-hubs/event-hubs-programming-guide.md). Krátká verze rozdílů je, `Direct Consumer` poskytuje úplnou kontrolu a `EventProcessorHost` obsahuje některé pracovní postupy, které vám pomohou s tím, jak tyto události zpracovávat.
+## <a name="receiving-events-from-event-hubs"></a>Příjem událostí z centra událostí
+Události z Centra událostí Azure jsou přijímány pomocí [protokolu AMQP](https://www.amqp.org/). Tým služby Microsoft Service Bus zpřístupnil klientské knihovny, aby usnadnil náročné události. Jsou podporovány dva různé přístupy, jeden je *přímý* `EventProcessorHost` spotřebitel a druhý používá třídu. Příklady těchto dvou přístupů naleznete v [Programovací příručce Centra událostí](../event-hubs/event-hubs-programming-guide.md). Krátká verze rozdílů je, `Direct Consumer` vám dává úplnou `EventProcessorHost` kontrolu a dělá některé instalatérské práce pro vás, ale dělá určité předpoklady o tom, jak zpracovat tyto události.
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
-V této ukázce používáme `EventProcessorHost` pro jednoduchost, ale nemusí to být nejlepší volba pro tento konkrétní scénář. `EventProcessorHost` je pevná práce, která zajistí, že se nemusíte starat o problémy s vlákny v rámci konkrétní třídy procesoru událostí. V našem scénáři ale jednoduše převádíme zprávu na jiný formát a projdeme ji do jiné služby pomocí asynchronní metody. Není potřeba aktualizovat sdílený stav, a proto nehrozí žádné riziko problémů s vlákny. Pro většinu scénářů je `EventProcessorHost` pravděpodobně nejlepší volbou a ta je určitě jednodušší.
+V této ukázce používáme `EventProcessorHost` pro jednoduchost, ale nemusí být nejlepší volbou pro tento konkrétní scénář. `EventProcessorHost`dělá těžkou práci, abyste se ujistili, že se nemusíte starat o problémy s vlákny v rámci určité třídy procesoru událostí. V našem scénáři však jednoduše převádíme zprávu do jiného formátu a předáváme ji do jiné služby pomocí asynchronní metody. Není nutné aktualizovat sdílený stav, a proto žádné riziko problémů s podprocesem. Pro většinu `EventProcessorHost` scénářů, je pravděpodobně nejlepší volbou, a to je jistě jednodušší možnost.
 
-### <a name="ieventprocessor"></a>IEventProcessor
-Centrální koncept při použití `EventProcessorHost` je vytvořit implementaci rozhraní `IEventProcessor`, která obsahuje metodu `ProcessEventAsync`. Podstata této metody je znázorněna zde:
+### <a name="ieventprocessor"></a>IEventProcesor
+Centrální koncept při `EventProcessorHost` použití je vytvořit `IEventProcessor` implementaci rozhraní, která `ProcessEventAsync`obsahuje metodu . Podstata této metody je uvedena zde:
 
 ```csharp
 async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
@@ -190,9 +190,9 @@ async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumera
 }
 ```
 
-Do metody se předává seznam objektů EventData a my se na tento seznam opakuje. Bajty každé metody jsou analyzovány do objektu HttpMessage a tento objekt je předán instanci IHttpMessageProcessor.
+Seznam EventData objekty jsou předány do metody a my iterate přes tento seznam. Bajty každé metody jsou analyzovány do objektu HttpMessage a tento objekt je předán instanci IHttpMessageProcessor.
 
-### <a name="httpmessage"></a>HttpMessage
+### <a name="httpmessage"></a>Zpráva httpmessage
 Instance `HttpMessage` obsahuje tři části dat:
 
 ```csharp
@@ -208,15 +208,15 @@ public class HttpMessage
 }
 ```
 
-Instance `HttpMessage` obsahuje identifikátor GUID `MessageId`, který nám umožňuje připojit požadavek HTTP k odpovídající odpovědi HTTP a logickou hodnotu, která identifikuje, zda objekt obsahuje instanci třídy zprávy HttpRequestMessage a HttpResponseMessage. Pomocí předdefinovaných tříd HTTP z `System.Net.Http`jsem dokázal využít `application/http` analýzy kódu, který je součástí `System.Net.Http.Formatting`.  
+Instance `HttpMessage` obsahuje `MessageId` identifikátor GUID, který nám umožňuje připojit požadavek HTTP k odpovídající odpovědi HTTP a logickou hodnotu, která identifikuje, zda objekt obsahuje instanci HttpRequestMessage a HttpResponseMessage. Pomocí předdefinované třídy HTTP `System.Net.Http`z aplikace jsem byl `application/http` schopen využít analyzační kód, který je součástí . `System.Net.Http.Formatting`  
 
-### <a name="ihttpmessageprocessor"></a>IHttpMessageProcessor
-Instance `HttpMessage` se pak přepošle na implementaci `IHttpMessageProcessor`, což je rozhraní, které jsme vytvořili pro odkládání přijímání a výkladu události z centra událostí Azure a jejich skutečné zpracování.
+### <a name="ihttpmessageprocessor"></a>IhttpMessageProcesor
+Instance `HttpMessage` je pak předána `IHttpMessageProcessor`k implementaci , což je rozhraní, které jsem vytvořil pro oddělení příjmu a interpretace události z Centra událostí Azure a její skutečné zpracování.
 
-## <a name="forwarding-the-http-message"></a>Předávání zprávy HTTP
-V této ukázce jsme se rozhodli, že byste do služby [MOESIF API Analytics](https://www.moesif.com)mohli odeslat požadavek HTTP. Moesif je cloudová služba, která se specializuje na službu HTTP Analytics a ladění. Mají bezplatnou úroveň, takže se snadno pokusíte a můžeme zobrazit požadavky HTTP v toku v reálném čase prostřednictvím naší služby API Management.
+## <a name="forwarding-the-http-message"></a>Předání zprávy HTTP
+Pro tuto ukázku jsem se rozhodl, že by bylo zajímavé, aby se zasadila http žádost se [moesif API Analytics](https://www.moesif.com). Moesif je cloudová služba, která se specializuje na analýzu http a ladění. Mají bezplatnou úroveň, takže je snadné vyzkoušet a umožňuje nám vidět požadavky HTTP v reálném čase, které procházejí naší službou API Management.
 
-Implementace `IHttpMessageProcessor` vypadá takto.
+Implementace `IHttpMessageProcessor` vypadá takto,
 
 ```csharp
 public class MoesifHttpMessageProcessor : IHttpMessageProcessor
@@ -294,26 +294,26 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-`MoesifHttpMessageProcessor` využívá [ C# knihovnu rozhraní API pro Moesif](https://www.moesif.com/docs/api?csharp#events) , která usnadňuje vložení dat událostí http do své služby. Aby bylo možné odesílat data HTTP do rozhraní API Moesif collector, potřebujete účet a ID aplikace. Zobrazí se ID aplikace Moesif vytvořením účtu na [webu Moesif](https://www.moesif.com) a potom přejděte do _pravé horní nabídky_ -> _nastavení aplikace_.
+Využívá `MoesifHttpMessageProcessor` [c# knihovny ROZHRANÍ API pro Moesif,](https://www.moesif.com/docs/api?csharp#events) která usnadňuje nabízení dat událostí HTTP do jejich služby. Chcete-li odeslat http data do rozhraní Moesif Collector API, potřebujete účet a ID aplikace. Získáte Moesif App Id vytvořením účtu na [webových stránkách Moesif](https://www.moesif.com) a pak přejděte na _pravé horní menu_ -> _App Setup_.
 
 ## <a name="complete-sample"></a>Kompletní ukázka
-[Zdrojový kód](https://github.com/dgilling/ApimEventProcessor) a testy pro ukázku jsou na GitHubu. Potřebujete [službu API Management](get-started-create-service-instance.md), [připojené centrum událostí](api-management-howto-log-event-hubs.md)a [účet úložiště](../storage/common/storage-create-storage-account.md) , abyste mohli ukázku spustit sami.   
+[Zdrojový kód](https://github.com/dgilling/ApimEventProcessor) a testy pro ukázku jsou na GitHubu. Ke spuštění ukázky pro sebe potřebujete [službu api Management Service](get-started-create-service-instance.md), připojené centrum [událostí](api-management-howto-log-event-hubs.md)a [účet úložiště.](../storage/common/storage-create-storage-account.md)   
 
-Ukázka je pouze jednoduchá Konzolová aplikace, která naslouchá událostem přicházejících z centra událostí, převádí je do Moesif `EventRequestModel` a `EventResponseModel` objektů a pak je předávají do rozhraní API kolekce Moesif.
+Ukázka je jen jednoduchá konzolová aplikace, která naslouchá událostem přicházejícím z `EventRequestModel` `EventResponseModel` Event Hubu, převádí je na Moesif a objekty a pak je předává do rozhraní Moesif Collector API.
 
-Na následujícím animovaném obrázku vidíte na portálu pro vývojáře požadavek na rozhraní API, konzolová aplikace zobrazuje zprávu, která se přijímá, zpracovává a předává, a pak požadavek a odpověď zobrazený v datovém proudu událostí.
+V následujícím animovaném obrázku se zobrazí požadavek na rozhraní API na portálu pro vývojáře, aplikace konzoly zobrazující přijatou, zpracovávanou a předávanou zprávu a potom požadavek a odpověď, které se zobrazí v datovém proudu událostí.
 
-![Ukázka přesměrovaného požadavku na Runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
+![Prokázání žádosti předávané runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
 ## <a name="summary"></a>Souhrn
-Služba Azure API Management poskytuje ideální místo pro zachycení provozu HTTP na cestách a z vašich rozhraní API. Azure Event Hubs je vysoce škálovatelné řešení s nízkými náklady pro zachytávání provozu a jejich krmení do sekundárních zpracovatelských systémů pro protokolování, monitorování a další propracované analýzy. Připojení k systémům monitorování provozu třetích stran, jako je Moesif, je jednoduché jako několik desítek řádků kódu.
+Služba Azure API Management poskytuje ideální místo pro zachycení provozu HTTP, který putuje do a z vašich rozhraní API. Azure Event Hubs je vysoce škálovatelné, nízkonákladové řešení pro zachycení tohoto provozu a jeho navádění do sekundárních systémů zpracování pro protokolování, monitorování a další sofistikované analýzy. Připojení k systémům sledování provozu třetích stran, jako je Moesif, je stejně jednoduché jako několik desítek řádků kódu.
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o Azure Event Hubs
   * [Začínáme s Azure Event Hubs](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [Přijímání zpráv pomocí EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [Přijímání zpráv pomocí třídy EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [Průvodce programováním pro službu Event Hubs](../event-hubs/event-hubs-programming-guide.md)
-* Další informace o integraci API Management a Event Hubs
-  * [Jak protokolovat události do Azure Event Hubs v Azure API Management](api-management-howto-log-event-hubs.md)
-  * [Reference k entitě protokolovacího nástroje](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [odkaz na zásady přihlášení k protokolu eventhub](/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+* Další informace o integraci služby API Management a Event Hubs
+  * [Jak protokolovat události do Azure Event Hubs ve správě Azure API](api-management-howto-log-event-hubs.md)
+  * [Odkaz na entitu loggeru](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
+  * [odkaz na zásady log-to-eventhub](/azure/api-management/api-management-advanced-policies#log-to-eventhub)

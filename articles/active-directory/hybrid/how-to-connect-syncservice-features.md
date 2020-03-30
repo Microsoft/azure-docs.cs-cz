@@ -1,6 +1,6 @@
 ---
-title: Funkce a konfigurace služby Azure AD Connect Sync | Microsoft Docs
-description: Popisuje funkce na straně služby pro službu Azure AD Connect Sync.
+title: Funkce a konfigurace synchronizační služby Azure AD Connect | Dokumenty společnosti Microsoft
+description: Popisuje funkce na straně služby pro synchronizační službu Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,102 +17,102 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300532"
 ---
-# <a name="azure-ad-connect-sync-service-features"></a>Funkce služby Azure AD Connect Sync
+# <a name="azure-ad-connect-sync-service-features"></a>Funkce synchronizační služby Azure AD Connect
 
-Funkce synchronizace Azure AD Connect má dvě komponenty:
+Funkce synchronizace služby Azure AD Connect má dvě součásti:
 
-* Místní součást s názvem **Azure AD Connect synchronizovat**, označovanou také jako **synchronizační modul**.
-* Služba, která je umístěná ve službě Azure AD, označovaná také jako **služba Azure AD Connect Sync**
+* Místní součást s názvem **Synchronizace Azure AD Connect**, označovaná také **jako synchronizační modul**.
+* Služba s bydlištěm ve službě Azure AD označovaná také jako **synchronizační služba Azure AD Connect**
 
-V tomto tématu se dozvíte, jak fungují následující funkce **služby Azure AD Connect Sync** a jak je můžete nakonfigurovat pomocí prostředí Windows PowerShell.
+Toto téma vysvětluje, jak fungují následující funkce **synchronizační služby Azure AD Connect** a jak je můžete nakonfigurovat pomocí prostředí Windows PowerShell.
 
-Tato nastavení jsou nakonfigurovaná [modulem Azure Active Directory pro Windows PowerShell](https://aka.ms/aadposh). Stáhněte si ho a nainstalujte samostatně z Azure AD Connect. Rutiny popsané v tomto tématu byly představeny v 2016. březnu vydaných [verzí (build 9031,1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Pokud nemáte rutiny popsané v tomto tématu nebo neposkytují stejný výsledek, ujistěte se, že jste spustili nejnovější verzi.
+Tato nastavení nakonfiguruje [modul Azure Active Directory Module pro prostředí Windows PowerShell](https://aka.ms/aadposh). Stáhněte si a nainstalujte ji odděleně od Azure AD Connect. Rutiny zdokumentované v tomto tématu byly představeny v [březnové verzi 2016 (build 9031.1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Pokud nemáte rutiny zdokumentované v tomto tématu nebo nevytvářejí stejný výsledek, ujistěte se, že spustíte nejnovější verzi.
 
-Pokud chcete zobrazit konfiguraci v adresáři služby Azure AD, spusťte `Get-MsolDirSyncFeatures`.  
-![](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png) výsledků Get-MsolDirSyncFeatures
+Konfiguraci v adresáři Azure AD `Get-MsolDirSyncFeatures`zobrazíte, spusťte .  
+![Get-MsolDirSyncVýsledek](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
 
-Mnohé z těchto nastavení lze změnit pouze pomocí Azure AD Connect.
+Mnoho z těchto nastavení lze změnit pouze pomocí Azure AD Connect.
 
-Pomocí `Set-MsolDirSyncFeature`lze nakonfigurovat následující nastavení:
+Následující nastavení lze konfigurovat `Set-MsolDirSyncFeature`pomocí :
 
-| DirSyncFeature | Poznámka |
+| Funkce DirSyncFeature | Poznámka |
 | --- | --- |
 | [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |Umožňuje objektům připojit se k userPrincipalName kromě primární adresy SMTP. |
-| [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |Umožňuje, aby synchronizační modul aktualizoval atribut userPrincipalName pro spravované a licencované (nefederované) uživatele. |
+| [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |Umožňuje synchronizačnímu modulu aktualizovat atribut userPrincipalName pro spravované/licencované (nefederované) uživatele. |
 
 Po povolení funkce ji nelze znovu zakázat.
 
 > [!NOTE]
-> Od 24. srpna 2016 je pro nové adresáře Azure AD ve výchozím nastavení povolená *odolnost duplicitních atributů* funkce. Tato funkce bude také zahrnuta a povolena v adresářích vytvořených před tímto datem. Když se adresář chystá získat tuto funkci, zobrazí se e-mailové oznámení.
+> srpna 24, 2016 funkce *Duplicitní atribut odolnost je* povolena ve výchozím nastavení pro nové adresáře Azure AD. Tato funkce bude také zavedena a povolena v adresářích vytvořených před tímto datem. Obdržíte e-mailové oznámení, když se váš adresář chystá tuto funkci aktivovat.
 > 
 > 
 
-Následující nastavení jsou konfigurována nástrojem Azure AD Connect a nelze je upravit pomocí `Set-MsolDirSyncFeature`:
+Následující nastavení jsou nakonfigurována službou Azure `Set-MsolDirSyncFeature`AD Connect a nelze je změnit pomocí :
 
-| DirSyncFeature | Poznámka |
+| Funkce DirSyncFeature | Poznámka |
 | --- | --- |
-| DeviceWriteback |[Azure AD Connect: povolení zpětného zápisu zařízení](how-to-connect-device-writeback.md) |
-| DirectoryExtensions |[Azure AD Connect synchronizace: přípony adresářů](how-to-connect-sync-feature-directory-extensions.md) |
-| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Umožňuje, aby byl atribut umístěn do karantény, pokud je duplicitním jiným objektem a nikoli při exportu. |
-| Synchronizace hodnoty hash hesel |[Implementace synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](how-to-connect-password-hash-synchronization.md) |
+| Zpětné zápisu zařízení |[Azure AD Connect: Povolení zpětného zápisu zařízení](how-to-connect-device-writeback.md) |
+| Rozšíření adresářů |[Synchronizace služby Azure AD Connect: Rozšíření adresáře](how-to-connect-sync-feature-directory-extensions.md) |
+| [Duplicitní proxyaddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Umožňuje atribut uřadit do karantény, pokud je duplicitní jiného objektu, nikoli selhání celého objektu během exportu. |
+| Synchronizace hodnoty hash hesel |[Implementace synchronizace hash hesel se synchronizací Azure AD Connect](how-to-connect-password-hash-synchronization.md) |
 |Předávací ověřování|[Přihlašování uživatelů s využitím předávacího ověřování služby Azure Active Directory](how-to-connect-pta.md)|
-| UnifiedGroupWriteback |[Verze Preview: zpětný zápis skupin](how-to-connect-preview.md#group-writeback) |
-| UserWriteback |Aktuálně se nepodporuje. |
+| UnifiedGroupWriteback |[Náhled: Skupinový zpětný zápis](how-to-connect-preview.md#group-writeback) |
+| Zpětné nastavení uživatele |Momentálně není podporováno. |
 
-## <a name="duplicate-attribute-resiliency"></a>Odolnost duplicitních atributů
+## <a name="duplicate-attribute-resiliency"></a>Odolnost proti chybám duplicitního atributu
 
-Namísto neúspěšného zřízení objektů s duplicitními názvy UPN/proxyAddresses je duplicitní atribut "v karanténě" a přiřadí se dočasná hodnota. Po vyřešení konfliktu se dočasné jméno UPN změní na správnou hodnotu automaticky. Další podrobnosti najdete v tématu [synchronizace identity a odolnost duplicitních atributů](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
+Namísto selhání zřídit objekty s duplicitní UPN / proxyAdresy, duplicitní atribut je "v karanténě" a je přiřazena dočasná hodnota. Po vyřešení konfliktu se dočasný hlavní upn automaticky změní na správnou hodnotu. Další podrobnosti naleznete v [tématu Synchronizace identit a odolnost proti duplicitnímu atributu](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
 
-## <a name="userprincipalname-soft-match"></a>Tichá shoda UserPrincipalName
+## <a name="userprincipalname-soft-match"></a>Měkká shoda UserPrincipalName
 
-Pokud je tato funkce povolená, je pro hlavní název uživatele (UPN) Kromě [primární adresy SMTP](https://support.microsoft.com/kb/2641663)povolená možnost bez nich, která je vždycky povolená. Pro uživatele cloudu ve službě Azure AD s místními uživateli se používá tichá shoda.
+Pokud je tato funkce povolena, je pro hlavní upn povolena také pro hlavní síť pro [obnovitelné](https://support.microsoft.com/kb/2641663)položky , která je vždy povolena. Měkká shoda se používá k přizpůsobení stávajících uživatelů cloudu ve službě Azure AD s místními uživateli.
 
-Pokud potřebujete, aby se účty místních účtů služby Active Directory shodovaly se stávajícími účty vytvořenými v cloudu a nepoužíváte Exchange Online, je tato funkce užitečná. V tomto scénáři obecně nemáte důvod k nastavení atributu SMTP v cloudu.
+Pokud potřebujete porovnat místní účty služby AD s existujícími účty vytvořenými v cloudu a nepoužíváte Exchange Online, je tato funkce užitečná. V tomto scénáři obecně nemáte důvod k nastavení atributu SMTP v cloudu.
 
-Tato funkce je ve výchozím nastavení zapnutá pro nově vytvořené adresáře Azure AD. Můžete zjistit, jestli je tato funkce povolená, když spustíte:  
+Tato funkce je ve výchozím nastavení pro nově vytvořené adresáře Azure AD. Tuto funkci můžete zjistit spuštěním:  
 
 ```powershell
 Get-MsolDirSyncFeatures -Feature EnableSoftMatchOnUpn
 ```
 
-Pokud tato funkce není pro váš adresář služby Azure AD povolená, můžete ji povolit spuštěním:  
+Pokud tato funkce není povolena pro váš adresář Azure AD, můžete ji povolit spuštěním:  
 
 ```powershell
 Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 ```
 
-## <a name="synchronize-userprincipalname-updates"></a>Synchronizovat aktualizace userPrincipalName
+## <a name="synchronize-userprincipalname-updates"></a>Synchronizace aktualizací userPrincipalName
 
-Historická aktualizace atributu UserPrincipalName pomocí synchronizační služby z místního prostředí byla zablokovaná, pokud nejsou splněné obě tyto podmínky:
+Historicky byly blokovány aktualizace atributu UserPrincipalName pomocí služby synchronizace z místního prostředí, pokud nejsou splněny obě tyto podmínky:
 
-* Uživatel je spravován (nefederované).
-* Uživateli nebyla přiřazena žádná licence.
+* Uživatel je spravován (nefederovaný).
+* Uživateli nebyla přiřazena licence.
 
-Další podrobnosti najdete v tématu [uživatelská jména v Office 365, Azure nebo Intune se neshodují s místním hlavním názvem uživatele (UPN) nebo alternativním přihlašovacím ID](https://support.microsoft.com/kb/2523192).
+Další podrobnosti najdete [v tématu Uživatelská jména v Office 365, Azure nebo Intune neodpovídají místní UPN nebo alternativní přihlašovací ID](https://support.microsoft.com/kb/2523192).
 
-Povolení této funkce umožňuje, aby synchronizační modul aktualizoval hodnotu userPrincipalName, když se změní místně a použijete synchronizaci hodnoty hash hesla nebo předávací ověřování.
+Povolení této funkce umožňuje synchronizačnímu modulu aktualizovat userPrincipalName při změně místně a použití synchronizace hash hesla nebo předávacího ověřování.
 
-Tato funkce je ve výchozím nastavení zapnutá pro nově vytvořené adresáře Azure AD. Můžete zjistit, jestli je tato funkce povolená, když spustíte:  
+Tato funkce je ve výchozím nastavení pro nově vytvořené adresáře Azure AD. Tuto funkci můžete zjistit spuštěním:  
 
 ```powershell
 Get-MsolDirSyncFeatures -Feature SynchronizeUpnForManagedUsers
 ```
 
-Pokud tato funkce není pro váš adresář služby Azure AD povolená, můžete ji povolit spuštěním:  
+Pokud tato funkce není povolena pro váš adresář Azure AD, můžete ji povolit spuštěním:  
 
 ```powershell
 Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 ```
 
-Po povolení této funkce zůstanou existující hodnoty userPrincipalName tak, jak jsou. Při další změně místního atributu userPrincipalName se normální rozdílová synchronizace u uživatelů aktualizuje hlavní název uživatele (UPN).  
+Po povolení této funkce zůstanou existující hodnoty userPrincipalName tak, jak jsou. Při další změně atributu userPrincipalName v místním prostředí aktualizuje normální synchronizace delta u uživatelů hlavní název uživatele.  
 
 ## <a name="see-also"></a>Viz také
 
-* [Synchronizace služby Azure AD Connect](how-to-connect-sync-whatis.md)
+* [Synchronizace Azure AD Connect](how-to-connect-sync-whatis.md)
 * [Integrace místních identit s Azure Active Directory](whatis-hybrid-identity.md).

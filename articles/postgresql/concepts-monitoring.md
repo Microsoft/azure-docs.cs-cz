@@ -1,82 +1,82 @@
 ---
-title: Monitorování a ladění – Azure Database for PostgreSQL – jeden server
-description: Tento článek popisuje funkce monitorování a ladění v Azure Database for PostgreSQL-jednom serveru.
+title: Monitorování a ladění – Databáze Azure pro PostgreSQL – jeden server
+description: Tento článek popisuje funkce monitorování a ladění v Azure Database for PostgreSQL – Single Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 2d2bb5440e6d23a4cb5781244ba33ab4c5be2612
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252586"
 ---
-# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Monitorování a ladění Azure Database for PostgreSQL – jeden server
-Sledování dat o vašich serverech vám pomůže při řešení potíží a optimalizaci pro vaše úlohy. Azure Database for PostgreSQL poskytuje různé možnosti monitorování, které poskytují přehled o chování serveru.
+# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Monitorování a ladění databáze Azure pro PostgreSQL – jeden server
+Monitorování dat o serverech vám pomůže řešit problémy a optimalizovat úlohu. Azure Database for PostgreSQL poskytuje různé možnosti monitorování, které poskytují přehled o chování vašeho serveru.
 
 ## <a name="metrics"></a>Metriky
-Azure Database for PostgreSQL poskytuje různé metriky, které poskytují přehled o chování prostředků, které podporují server PostgreSQL. Každá metrika je vygenerována s jednou minutovou frekvencí a má až 30 dnů od historie. Výstrahy můžete nakonfigurovat pro metriky. Podrobné pokyny najdete v tématu [jak nastavit výstrahy](howto-alert-on-metric.md). Mezi další úlohy patří nastavení automatizovaných akcí, provádění pokročilých analýz a archivace historie. Další informace najdete v tématu [Přehled metrik Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Azure Database for PostgreSQL poskytuje různé metriky, které poskytují přehled o chování prostředků podporujících postgresql server. Každá metrika je vyzařována s frekvencí jedné minuty a má až 30 dní historie. Můžete nakonfigurovat výstrahy na metriky. Pokyny krok za krokem najdete v tématu [Jak nastavit výstrahy](howto-alert-on-metric.md). Mezi další úkoly patří nastavení automatizovaných akcí, provádění pokročilých analýz a archivace historie. Další informace najdete v tématu [Přehled metrik Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 ### <a name="list-of-metrics"></a>Seznam metrik
-Tyto metriky jsou k dispozici pro Azure Database for PostgreSQL:
+Tyto metriky jsou k dispozici pro Azure Database pro PostgreSQL:
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Popis|
+|Metrika|Zobrazovaný název metriky|Jednotka|Popis|
 |---|---|---|---|
-|cpu_percent|Procento využití procesoru|Procento|Procento využití procesoru.|
-|memory_percent|Procentuální hodnota paměti|Procento|Procentuální podíl používané paměti.|
-|io_consumption_percent|V/v procenta|Procento|Procento využití v/v.|
-|storage_percent|Procento úložiště|Procento|Procento využitého limitu úložiště z maxima serveru.|
-|storage_used|Využité úložiště|B|Velikost využitého úložiště. Úložiště používané službou může zahrnovat soubory databáze, protokoly transakcí a protokoly serveru.|
-|storage_limit|Omezení úložiště|B|Maximální úložiště pro tento server.|
-|serverlog_storage_percent|Procentuální hodnota úložiště protokolu serveru|Procento|Procento využití úložiště protokolu serveru z maximálního úložiště protokolu serveru serveru.|
-|serverlog_storage_usage|Využité úložiště protokolu serveru|B|Velikost používaného úložiště protokolu serveru.|
-|serverlog_storage_limit|Limit úložiště protokolu serveru|B|Maximální úložiště protokolu serveru pro tento server.|
+|cpu_percent|Procento procesoru|Procento|Procento procesoru v provozu.|
+|memory_percent|Procento paměti|Procento|Procento paměti, která se používá.|
+|io_consumption_percent|IO procent|Procento|Procento vo v provozu.|
+|storage_percent|Procento úložiště|Procento|Procento úložiště použitého mimo maximální hodnotu serveru.|
+|storage_used|Použité úložiště|Bajty|Množství úložiště v provozu. Úložiště používané službou může zahrnovat databázové soubory, protokoly transakcí a protokoly serveru.|
+|storage_limit|Limit úložiště|Bajty|Maximální úložiště pro tento server.|
+|serverlog_storage_percent|Procento úložiště protokolu serveru|Procento|Procento úložiště protokolu serveru použitého mimo maximální úložiště protokolu serveru.|
+|serverlog_storage_usage|Použité úložiště protokolu serveru|Bajty|Velikost úložiště protokolu serveru v provozu.|
+|serverlog_storage_limit|Limit úložiště protokolu serveru|Bajty|Maximální úložiště protokolu serveru pro tento server.|
 |active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
-|connections_failed|Neúspěšná připojení|Počet|Počet neúspěšných připojení k serveru|
-|network_bytes_egress|Síťové výstupy|B|Síť vyprší napříč aktivními připojeními.|
-|network_bytes_ingress|Síťové vstupy|B|Síť v rámci aktivních připojení.|
-|backup_storage_used|Využité úložiště záloh|B|Velikost využitého úložiště záloh.|
-|pg_replica_log_delay_in_bytes|Maximální prodleva napříč replikami|B|Prodleva v bajtech mezi hlavní a nejvyšším zpožděním repliky. Tato metrika je k dispozici pouze na hlavním serveru.|
-|pg_replica_log_delay_in_seconds|Prodleva repliky|Sekundy|Čas od poslední opakované transakce. Tato metrika je k dispozici pouze pro servery repliky.|
+|connections_failed|Neúspěšná připojení|Počet|Počet neúspěšných připojení k serveru.|
+|network_bytes_egress|Síťové výstupy|Bajty|Síť vynažte přes aktivní připojení.|
+|network_bytes_ingress|Síťové vstupy|Bajty|Síť v přes aktivní připojení.|
+|backup_storage_used|Použité úložiště záloh|Bajty|Velikost použitého úložiště záloh.|
+|pg_replica_log_delay_in_bytes|Maximální zpoždění mezi replikami|Bajty|Zpoždění v bajtů mezi hlavní a nejvíce zaostávající repliky. Tato metrika je k dispozici pouze na hlavním serveru.|
+|pg_replica_log_delay_in_seconds|Zpoždění replik|Sekundy|Čas od poslední přehrané transakce. Tato metrika je k dispozici pouze pro repliky serverů.|
 
 ## <a name="server-logs"></a>Protokoly serveru
-Můžete povolit protokolování na serveru. Tyto protokoly jsou dostupné taky prostřednictvím diagnostických protokolů Azure v [Azure monitor protokoly](../azure-monitor/log-query/log-query-overview.md), Event Hubs a účet úložiště. Další informace o protokolování najdete na stránce [protokoly serveru](concepts-server-logs.md) .
+Můžete povolit protokolování na serveru. Tyto protokoly jsou taky dostupné prostřednictvím diagnostických protokolů Azure v [protokolech Azure Monitor ,](../azure-monitor/log-query/log-query-overview.md)event huby a účet úložiště. Další informace o protokolování naleznete na stránce [protokolů serveru.](concepts-server-logs.md)
 
 ## <a name="query-store"></a>Úložiště dotazů
-[Úložiště dotazů](concepts-query-store.md) udržuje přehled o výkonu dotazů v čase včetně událostí čekání na dotaz za běhu a čekacích událostí. Funkce uchovává informace o výkonu modulu runtime dotazu v systémové databázi s názvem **azure_sys** v rámci schématu query_store. Můžete řídit shromažďování a ukládání dat přes různé konfigurační ovladače.
+[Úložiště dotazů](concepts-query-store.md) sleduje výkon dotazů v průběhu času, včetně statistik y běhu dotazu a událostí čekání. Tato funkce zachová informace o výkonu za běhu dotazu v systémové databázi s názvem **azure_sys** pod schématem query_store. Sběr a ukládání dat můžete ovládat pomocí různých konfiguračních knoflíků.
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
-[Query Performance Insight](concepts-query-performance-insight.md) funguje ve spojení s úložištěm dotazů, aby poskytovala vizualizace dostupné z Azure Portal. Tyto grafy umožňují identifikovat klíčové dotazy, které mají vliv na výkon. Query Performance Insight k dispozici v části **Podpora a řešení potíží** na stránce portálu Azure Database for PostgreSQLho serveru.
+[Přehled výkonu dotazů](concepts-query-performance-insight.md) funguje ve spojení s Úložištěm dotazů a poskytuje vizualizace přístupné z webu Azure Portal. Tyto grafy umožňují identifikovat klíčové dotazy, které ovlivňují výkon. Přehled výkonu dotazu je přístupný z části **Podpora + řešení potíží** na stránce portálu serveru Azure Database for PostgreSQL.
 
 ## <a name="performance-recommendations"></a>Doporučení k výkonu
-Funkce [doporučení k výkonu](concepts-performance-recommendations.md) identifikuje příležitosti pro zlepšení výkonu úloh. Doporučení k výkonu poskytují doporučení pro vytváření nových indexů, které mají potenciál pro zlepšení výkonu vašich úloh. Pro vytvoření doporučení indexu bere Tato funkce v úvahu různé charakteristiky databáze, včetně schématu a zatížení, jak je uvedeno v úložišti dotazů. Po implementaci doporučení výkonu by zákazníci měli testovat výkon, aby vyhodnotili dopad těchto změn. 
+Funkce [Doporučení pro zvýšení výkonu](concepts-performance-recommendations.md) identifikuje příležitosti ke zlepšení výkonu pracovního vytížení. Doporučení výkonu poskytuje doporučení pro vytváření nových indexů, které mají potenciál zlepšit výkon úloh. Chcete-li vytvořit doporučení indexu, funkce bere v úvahu různé vlastnosti databáze, včetně jeho schéma a zatížení, jak je uvedeno v úložišti dotazů. Po implementaci jakékoli doporučení výkonu, zákazníci by měli otestovat výkon vyhodnotit dopad těchto změn. 
 
 ## <a name="planned-maintenance-notification"></a>Oznámení o plánované údržbě
 
-**Plánovaná oznámení o údržbě** vám umožní dostávat oznámení o nadcházející plánované údržbě na vašem serveru Azure Database for PostgreSQL. Tato oznámení jsou integrovaná s plánovanou údržbou [Service Health](../service-health/overview.md) a umožňují zobrazit veškerou plánovanou údržbu vašich předplatných na jednom místě. Pomáhá také škálovat oznámení do správných cílových skupin pro různé skupiny prostředků, protože u různých zdrojů můžete mít zodpovědné různé kontakty. Zobrazí se oznámení o nadcházející údržbě 72 hodin před událostí.
+**Plánovaná oznámení o údržbě** umožňují přijímat upozornění na nadcházející plánovanou údržbu do databáze Azure pro postgreSQL – jeden server. Tato oznámení jsou integrována s plánovanou údržbou [služby Service Health](../service-health/overview.md) a umožňují zobrazit veškerou plánovanou údržbu pro vaše předplatná na jednom místě. Pomáhá také škálovat oznámení na správné cílové skupiny pro různé skupiny prostředků, protože můžete mít různé kontakty odpovědné za různé zdroje. Oznámení o nadcházející údržbě obdržíte 72 hodin před akcí.
 
 > [!Note]
-> Povedeme všechny pokusy o poskytnutí **oznámení o plánované údržbě** 72 hodin pro všechny události. V případech kritických nebo bezpečnostních oprav ale můžou být oznámení odeslána blíže k události nebo by se měla vynechat.
+> Provedeme každý pokus o poskytnutí **oznámení o plánované údržbě** 72 hodin předem pro všechny události. V případě kritických nebo bezpečnostních záplat však mohou být oznámení odeslána blíže k události nebo mohou být vynechána.
 
-### <a name="to-receive-planned-maintenance-notification"></a>Příjem plánovaného oznámení o údržbě
+### <a name="to-receive-planned-maintenance-notification"></a>Chcete-li dostávat oznámení o plánované údržbě
 
-1. Na [portálu](https://portal.azure.com)vyberte **Service Health**.
-2. V části **výstrahy** vyberte výstrahy týkající se **stavu**.
-3. Vyberte **+ Přidat upozornění na stav služby** a vyplňte pole.
+1. Na [portálu](https://portal.azure.com)vyberte **možnost Stav služby**.
+2. V části **Výstrahy** vyberte **výstrahy stavu**.
+3. Vyberte **+ Přidat výstrahu stavu služby** a vyplňte pole.
 4. Vyplňte požadovaná pole. 
-5. Zvolte **Typ události**, vyberte **plánovaná údržba** nebo **Vybrat vše** .
-6. V části **skupiny akcí** definujte způsob, jakým chcete výstrahu přijmout (získat e-mail, aktivovat aplikaci logiky atd.).  
-7. Zajistěte, aby pravidlo Povolit při vytváření bylo nastaveno na Ano.
-8. Vyberte **vytvořit pravidlo upozornění** pro dokončení upozornění.
+5. Zvolte **typ události**, vyberte **Plánovaná údržba** nebo **Vybrat vše**
+6. Ve **skupinách akcí** definujte, jak chcete dostávat upozornění (získat e-mail, aktivovat aplikaci logiky atd.)  
+7. Ujistěte se, že pravidlo povolit při vytváření je nastaveno na ano.
+8. Chcete-li **výstrahu** dokončit, vyberte možnost Vytvořit pravidlo výstrahy.
 
-Podrobné informace o tom, jak vytvořit **výstrahy týkající se stavu služby**, najdete [v tématu vytváření výstrah protokolu aktivit u oznámení služby](../service-health/alerts-activity-log-service-notifications.md).
+Podrobné kroky k vytvoření **výstrah stavu služby**naleznete v části [Vytvoření výstrah protokolu aktivit v oznámeních služby](../service-health/alerts-activity-log-service-notifications.md).
 
 > [!IMPORTANT]
-> Plánovaná oznámení o údržbě jsou momentálně ve verzi Preview.
+> Oznámení o plánované údržbě jsou aktuálně ve verzi Preview.
 
 ## <a name="next-steps"></a>Další kroky
-- Pokyny k vytvoření výstrahy na metrikě najdete v tématu [Nastavení výstrah](howto-alert-on-metric.md) .
-- Další informace o tom, jak přistupovat k metrikám a jak je exportovat pomocí Azure Portal, REST API nebo CLI, najdete v tématu [Přehled metrik Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
-- V našem blogu najdete [osvědčené postupy pro monitorování vašeho serveru](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/).
+- Přečtěte [si, jak nastavit upozornění](howto-alert-on-metric.md) pro pokyny k vytvoření výstrahy na metriku.
+- Další informace o tom, jak získat přístup a exportovat metriky pomocí portálu Azure, rozhraní REST API nebo rozhraní příkazového příkazového příkazu, najdete v tématu [Přehled metrik Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+- Přečtěte si náš blog o [osvědčených postupech pro sledování vašeho serveru](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/).

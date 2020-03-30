@@ -1,73 +1,73 @@
 ---
-title: Mapování oblastí Azure Monitor pro kontejnery
-description: Tento článek popisuje mapování oblastí podporované mezi Azure Monitor pro kontejnery, Log Analytics pracovním prostorem a vlastními metrikami.
+title: Azure Monitor pro mapování oblastí kontejnerů
+description: Tento článek popisuje mapování oblastí podporované mezi Azure Monitor pro kontejnery, Pracovní prostor Analýzy protokolů a vlastní metriky.
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.openlocfilehash: a058f9cac987bb5c7130019f50370c6a176b09ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75403428"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Mapování oblastí podporované Azure Monitor pro kontejnery
+# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Mapování oblastí podporované službou Azure Monitor pro kontejnery
 
- Při povolování Azure Monitor pro kontejnery jsou podporovány pouze určité oblasti pro propojení pracovního prostoru Log Analytics a clusteru AKS a shromažďování vlastních metrik odeslaných do Azure Monitor.
+ Při povolení Azure Monitor pro kontejnery, jsou podporovány pouze určité oblasti pro propojení pracovního prostoru Log Analytics a clusteru AKS a shromažďování vlastnímetriky odeslané do Azure Monitoru.
 
-## <a name="log-analytics-workspace-supported-mappings"></a>Mapování podporovaná v pracovním prostoru Log Analytics
+## <a name="log-analytics-workspace-supported-mappings"></a>Mapování podporovaná službou Log Analytics
 
-Prostředky clusteru AKS nebo pracovní prostor Log Analytics můžou být v jiných oblastech a v následující tabulce jsou uvedená naše mapování.
+Prostředky clusteru AKS nebo pracovní prostor Log Analytics se mohou napěchovat v jiných oblastech a v následující tabulce jsou uvedena naše mapování.
 
-|**Oblast clusteru AKS** | **Oblast pracovního prostoru Log Analytics** |
+|**Oblast clusteru AKS** | **Oblast pracovního prostoru Analýzy protokolů** |
 |-----------------------|------------------------------------|
-|**Poskytl** | |
-|SouthAfricaNorth |WestEurope |
-|SouthAfricaWest |WestEurope |
+|**Afrika** | |
+|Jižní AfrikaSeverní |WestEurope |
+|Jižní AfrikaZápad |WestEurope |
 |**Austrálie** | |
-|AustraliaEast |AustraliaEast |
-|AustraliaCentral |AustraliaCentral |
-|AustraliaCentral2 |AustraliaCentral |
-|AustraliaEast |AustraliaEast |
+|AustrálieVýchod |AustrálieVýchod |
+|AustrálieStřední |AustrálieStřední |
+|AustrálieCentral2 |AustrálieStřední |
+|AustrálieVýchod |AustrálieVýchod |
 |**Asie a Tichomoří** | |
-|EastAsia |EastAsia |
-|SoutheastAsia |SoutheastAsia |
+|Východní Asie |Východní Asie |
+|Jihovýchodní Asie |Jihovýchodní Asie |
 |**Brazílie** | |
-|BrazilSouth | SouthCentralUS |
+|BrazílieJižní | SouthCentralUS |
 |**Kanada** ||
-|CanadaCentral |CanadaCentral |
-|CanadaEast |CanadaCentral |
+|KanadaStřední |KanadaStřední |
+|KanadaVýchod |KanadaStřední |
 |**Evropa** | |
 |FranceCentral |FranceCentral |
-|FranceSouth |FranceCentral |
-|NorthEurope |NorthEurope |
-|UKSouth |UKSouth |
-|UKWest |UKSouth |
+|FrancieJižní |FranceCentral |
+|Severní Evropa |Severní Evropa |
+|Spojené královstvíJižní |Spojené královstvíJižní |
+|UkZápad |Spojené královstvíJižní |
 |WestEurope |WestEurope |
 |**Indie** | |
-|CentralIndia |CentralIndia |
-|SouthIndia |CentralIndia |
-|WestIndia |CentralIndia |
+|Střední Indie |Střední Indie |
+|Jižní Indie |Střední Indie |
+|Západní Indie |Střední Indie |
 |**Japonsko** | |
-|JapanEast |JapanEast |
-|JapanWest |JapanEast |
+|Japonskovýchod |Japonskovýchod |
+|JaponskoZápad |Japonskovýchod |
 |**Jižní Korea** | |
-|KoreaCentral |KoreaCentral |
-|KoreaSouth |KoreaCentral |
+|KoreaStřední |KoreaStřední |
+|KoreaJižní |KoreaStřední |
 |**USA** | |
-|CentralUS |CentralUS|
-|USA – východ |USA – východ |
-|EastUS2 |EastUS2 |
-|WestUS |WestUS |
-|WestUS2 |WestUS2 |
-|WestCentralUS<sup>1</sup>|EastUS<sup>1</sup>|
-|US Gov – Virginie |US Gov – Virginie |
+|Centrální US |Centrální US|
+|Východní US |Východní US |
+|Východní US2 |Východní US2 |
+|Západní US |Západní US |
+|Západní US2 |Západní US2 |
+|WestCentralUS<sup>1</sup>|VýchodUS<sup>1</sup>|
+|USA (Gov) – Virginia |USA (Gov) – Virginia |
 
-<sup>1</sup> kvůli omezením kapacity není oblast při vytváření nových prostředků dostupná. To zahrnuje Log Analytics pracovní prostor. Stávající propojené prostředky v oblasti ale budou fungovat i nadále.
+<sup>1</sup> Z důvodu omezení kapacity není oblast k dispozici při vytváření nových prostředků. To zahrnuje pracovní prostor Analýzy protokolů. Již existující propojené zdroje v regionu by však měly pokračovat v práci.
 
-## <a name="custom-metrics-supported-regions"></a>Vlastní podporované oblasti metrik
+## <a name="custom-metrics-supported-regions"></a>Vlastní metriky podporované oblasti
 
-Shromažďování metrik z uzlů clusterů Azure Kubernetes Services (AKS) a lusky se podporují pro publikování jako vlastní metriky pouze v následujících [oblastech Azure](../platform/metrics-custom-overview.md#supported-regions).
+Shromažďování metrik z uzlů a podů služeb Azure Kubernetes Services (AKS) je podporováno pro publikování jako vlastní metriky pouze v [následujících oblastech Azure](../platform/metrics-custom-overview.md#supported-regions).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít monitorovat cluster AKS, přečtěte si, [Jak povolit Azure monitor kontejnerů](container-insights-onboard.md) pro pochopení požadavků a dostupných metod, které umožňují monitorování.  
+Chcete-li začít sledovat cluster AKS, přečtěte [si, jak povolit Azure Monitor pro kontejnery](container-insights-onboard.md) pochopit požadavky a dostupné metody povolit monitorování.  

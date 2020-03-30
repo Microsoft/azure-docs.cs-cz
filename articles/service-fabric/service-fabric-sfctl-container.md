@@ -1,81 +1,81 @@
 ---
-title: Azure Service Fabric CLI – kontejner sfctl
-description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro kontejnery.
+title: Kontejner CLI- sfcTL azure service fabric
+description: Další informace o sfctl, rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro kontejnery.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 07861e2b67eea67740b341cbea994de978973664
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906110"
 ---
 # <a name="sfctl-container"></a>sfctl container
-Spusťte příkazy související s kontejnerem na uzlu clusteru.
+Spusťte příkazy související s kontejnery v uzlu clusteru.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
-| vyvolání – rozhraní API | Vyvolá rozhraní API kontejneru na kontejneru nasazeném na Service Fabric uzlu pro daný balíček kódu. |
-| Protokoly | Získá protokoly kontejneru pro kontejner nasazený na uzlu Service Fabric. |
+| vyvolat-api | Vyvolat rozhraní API kontejneru na kontejneru nasazeném v uzlu Service Fabric pro daný balíček kódu. |
+| Protokoly | Získá protokoly kontejneru pro kontejner nasazený v uzlu Service Fabric. |
 
-## <a name="sfctl-container-invoke-api"></a>vyvolání sfctl kontejneru – rozhraní API
-Vyvolá rozhraní API kontejneru na kontejneru nasazeném na Service Fabric uzlu pro daný balíček kódu.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --ID aplikace [povinné] | Identita aplikace <br><br> Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI\:Fabric. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
-| --Code-Package-instance-ID [požadováno] | ID, které jednoznačně identifikuje instanci balíčku kódu nasazenou v uzlu Service Fabric. <br><br> Dá se načíst pomocí kódu "Service-Package-list". |
-| --Code-Package-Name [povinné] | Název balíčku kódu zadaný v manifestu služby zaregistrovaný jako součást typu aplikace v clusteru Service Fabric. |
-| --Container-API-URI-cesta [požadováno] | Cesta k identifikátoru URI REST API kontejneru, místo názvu nebo ID kontejneru použijte {ID}. |
-| --Node-Name [povinné] | Název uzlu |
-| --Service-manifest-název [povinné] | Název manifestu služby registrovaného jako součást typu aplikace v clusteru Service Fabric. |
-| --container-api-body | Text požadavku HTTP pro REST API kontejneru |
-| --container-api-content-type | Typ obsahu pro REST API kontejnerů, výchozí hodnota je Application/JSON. |
-| --container-api-http-verb | Příkaz HTTP pro REST API kontejnerů, výchozí nastavení se získá. |
-| --Timeout-t | Výchozí\: 60. |
-
-### <a name="global-arguments"></a>Globální argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
-| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
-| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
-
-## <a name="sfctl-container-logs"></a>protokoly kontejneru sfctl
-Získá protokoly kontejneru pro kontejner nasazený na uzlu Service Fabric.
+## <a name="sfctl-container-invoke-api"></a>sfctl kontejner invoke-api
+Vyvolat rozhraní API kontejneru na kontejneru nasazeném v uzlu Service Fabric pro daný balíček kódu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ID aplikace [povinné] | Identita aplikace <br><br> Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI\:Fabric. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
-| --Code-Package-instance-ID [požadováno] | ID instance balíčku kódu, kterou lze načíst pomocí příkazu Service Code-Package-list. |
-| --Code-Package-Name [povinné] | Název balíčku kódu zadaný v manifestu služby zaregistrovaný jako součást typu aplikace v clusteru Service Fabric. |
-| --Node-Name [povinné] | Název uzlu |
-| --Service-manifest-název [povinné] | Název manifestu služby registrovaného jako součást typu aplikace v clusteru Service Fabric. |
-| --konec | Počet řádků, které se mají zobrazit na konci protokolů Výchozí hodnota je 100. All pro zobrazení úplných protokolů. |
-| --Timeout-t | Výchozí\: 60. |
+| --id aplikace [Povinné] | Identita aplikace. <br><br> Obvykle se jedná o úplný název aplikace\:bez schématu IDENTIFIKÁTORURI struktury . Počínaje verzí 6.0 jsou hierarchické názvy\~odděleny znakem " " . Například pokud název aplikace je\:"fabric /myapp/app1", identita aplikace\~by "myapp app1" v 6.0+ a "myapp/app1" v předchozích verzích. |
+| --code-package-instance-id [Povinné] | ID, které jednoznačně identifikuje instanci balíčku kódu nasazenou v uzlu prostředků infrastruktury služby. <br><br> Lze načíst pomocí 'service code-package-list'. |
+| --code-package-name [Povinné] | Název balíčku kódu zadaný v manifestu služby registrovaný jako součást typu aplikace v clusteru Service Fabric. |
+| --container-api-uri-path [Povinné] | Cesta URI rozhraní API kontejneru, místo názvu/id kontejneru použijte {ID}. |
+| --název uzlu [Povinné] | Název uzlu |
+| --service-manifest-name [Povinné] | Název manifestu služby registrovaný jako součást typu aplikace v clusteru Service Fabric. |
+| --container-api-body --container-api-body --container-api-body --container | Tělo požadavku HTTP pro rozhraní REST API kontejneru. |
+| --container-api-content-type | Typ obsahu pro rozhraní REST API kontejneru, výchozí hodnota "application/json". |
+| --container-api-http-verb | HTTP sloveso pro rozhraní REST API kontejneru, výchozí hodnoty GET. |
+| --časový čas -t | Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
-| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
-| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
+| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
+| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
+| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
+| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+
+## <a name="sfctl-container-logs"></a>protokoly kontejnerů sfctl
+Získá protokoly kontejneru pro kontejner nasazený v uzlu Service Fabric.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --id aplikace [Povinné] | Identita aplikace. <br><br> Obvykle se jedná o úplný název aplikace\:bez schématu IDENTIFIKÁTORURI struktury . Počínaje verzí 6.0 jsou hierarchické názvy\~odděleny znakem " " . Například pokud název aplikace je\:"fabric /myapp/app1", identita aplikace\~by "myapp app1" v 6.0+ a "myapp/app1" v předchozích verzích. |
+| --code-package-instance-id [Povinné] | ID instance balíčku kódu, které lze načíst pomocí "seznamu balíčků balíčků služby". |
+| --code-package-name [Povinné] | Název balíčku kódu zadaný v manifestu služby registrovaný jako součást typu aplikace v clusteru Service Fabric. |
+| --název uzlu [Povinné] | Název uzlu |
+| --service-manifest-name [Povinné] | Název manifestu služby registrovaný jako součást typu aplikace v clusteru Service Fabric. |
+| --ocas | Počet řádků, které mají být zobrazovány z konce protokolů. Výchozí hodnota je 100. 'all' pro zobrazení úplných protokolů. |
+| --časový čas -t | Výchozí\: 60. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
+| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
+| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
+| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
+| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
-- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) cli service fabric.
+- Naučte se používat funkce CLI service fabric pomocí [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

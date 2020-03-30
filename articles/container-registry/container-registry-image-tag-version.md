@@ -1,71 +1,71 @@
 ---
-title: Osvědčené postupy značek obrázků
-description: Osvědčené postupy pro označování a nastavování imagí kontejnerů Docker při vkládání imagí do a načítání imagí z služby Azure Container Registry
+title: Doporučené postupy pro označení obrázku
+description: Doporučené postupy pro označování a správu verzí ibi kontejnerů Dockeru při odesílání ibi do a vytahování ibi z registru kontejnerů Azure
 author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445740"
 ---
-# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Doporučení pro označování a naznačení verzí imagí kontejneru
+# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Doporučení pro označování a správu verzí iontů kontejnerů
 
-Při doručování nasazování imagí kontejneru do registru kontejneru a jejich nasazení budete potřebovat strategii pro označování imagí a správu verzí. Tento článek popisuje dva přístupy a jejich umístění do životního cyklu kontejneru:
+Při odesílání nasazení inamh kontejneru do registru kontejneru a jejich následné nasazení potřebujete strategii pro označování bitových kopií a správu verzí. Tento článek popisuje dva přístupy a kde se každý vejde během životního cyklu kontejneru:
 
-* **Stabilní značky značek** , které můžete opakovaně používat, například k označení hlavní nebo dílčí verze, jako je například *mycontainerimage: 1.0*.
-* **Jedinečné značky** – pro každý obrázek, který zadáváte do registru, jako je například *mycontainerimage: abc123*, se jedná o jinou značku.
+* **Stabilní značky** – značky, které znovu použijete, například k označení hlavní nebo dílčí verze, například *mycontainerimage:1.0*.
+* **Jedinečné značky** – pro každou bitovou kopii, kterou předáte do registru, jiná značka, například *mycontainerimage:abc123*.
 
 ## <a name="stable-tags"></a>Stabilní značky
 
-**Doporučení**: použití stabilních značek k údržbě **základních imagí** pro sestavení kontejnerů. Vyhněte se nasazení s stabilními značkami, protože tyto značky nadále získávají aktualizace a můžou v produkčních prostředích zavádět nekonzistence.
+**Doporučení:** Pomocí stabilních značek můžete udržovat **základní image** pro sestavení kontejnerů. Vyhněte se nasazení se stabilními značkami, protože tyto značky nadále dostávají aktualizace a mohou zavádět nekonzistence v produkčním prostředí.
 
-*Stabilní značky* znamenají, že vývojář nebo systém sestavení může pokračovat v vyžádání konkrétní značky, která bude nadále získávat aktualizace. Stabilita znamená, že obsah je zmrazený. Místo toho předpokládá, že by image měla být stabilní pro záměr této verze. Aby zůstala stálá, mohla by se provozovat na použití oprav zabezpečení nebo aktualizací rozhraní.
+*Stabilní značky* znamenají, že vývojář nebo systém sestavení může pokračovat v vytahování konkrétní značky, která pokračuje v aktualizaci. Stabilní neznamená, že obsah je zmrazen. Spíše stabilní znamená, že obraz by měl být stabilní pro záměr této verze. Chcete-li zůstat "stabilní", může být obsluhována použít opravy zabezpečení nebo aktualizace architektury.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-Tým rozhraní dodává verzi 1,0. Ví, že budou dodávat aktualizace, včetně menších aktualizací. Pro podporu stabilních značek pro danou hlavní a dílčí verzi mají dvě sady stabilních značek.
+Rámcový tým dodává verze 1.0. Vědí, že budou doručovávat aktualizace, včetně menších aktualizací. Pro podporu stabilních značek pro danou hlavní a dílčí verzi mají dvě sady stabilních značek.
 
-* `:1` – stabilní značka pro hlavní verzi. `1` představuje "nejnovější" nebo "nejnovější" 1. * verzi.
-* `:1.0`– stabilní značka pro verzi 1,0, která vývojářům umožňuje vytvořit vázání na aktualizace 1,0 a nebude se předávat do 1,1 po vydání.
+* `:1`– stabilní značka pro hlavní verzi. `1`představuje "nejnovější" nebo "nejnovější" verzi 1.*.
+* `:1.0`- stabilní značka pro verzi 1.0, která umožňuje vývojáři vázat na aktualizace 1.0 a nesmí být vrácena dopředu na 1.1, když je vydána.
 
-Tým používá také značku `:latest`, která odkazuje na nejnovější stabilní značku bez ohledu na to, co je aktuální hlavní verze.
+Tým také používá `:latest` značku, která odkazuje na nejnovější stabilní značku, bez ohledu na aktuální hlavní verzi.
 
-Pokud jsou k dispozici základní aktualizace obrázků nebo jakýkoli typ servisního vydání rozhraní, bitové kopie s stabilními značkami se aktualizují na nejnovější výtah, který představuje nejaktuálnější verzi této verze.
+Pokud jsou k dispozici aktualizace základní bitové kopie nebo jakýkoli typ údržby verze rozhraní, bitové kopie se stabilní značky jsou aktualizovány na nejnovější digest, který představuje nejnovější stabilní verze této verze.
 
-V tomto případě se průběžně obsluhují hlavní i vedlejší značky. V případě základní Image to umožňuje vlastníkovi obrázku poskytovat obsluhované bitové kopie.
+V tomto případě jsou hlavní i vedlejší značky neustále servisovány. Ze scénáře základní bitové kopie to umožňuje vlastníkovi bitové kopie poskytovat obsluhované bitové kopie.
 
-### <a name="delete-untagged-manifests"></a>Odstranit netagované manifesty
+### <a name="delete-untagged-manifests"></a>Odstranění netagovaných manifestů
 
-Pokud je obrázek s stabilní značkou aktualizován, dříve označený obrázek není označený, výsledkem bude osamocený obrázek. Manifest předchozí image a jedinečná data vrstvy zůstávají v registru. Chcete-li zachovat velikost registru, můžete pravidelně odstraňovat netagované manifesty, které jsou způsobeny stabilními aktualizacemi imagí. Například [Automatické vymazání](container-registry-auto-purge.md) netagovaných manifestů, které jsou starší než zadaná doba trvání, nebo nastavte [zásady uchovávání informací](container-registry-retention-policy.md) pro netagované manifesty.
+Pokud je obraz se stabilní značkou aktualizován, dříve tagovaný obraz je netagovaný, což vede k osamocený obrázek. Data manifestu a jedinečné vrstvy předchozí bitové kopie zůstanou v registru. Chcete-li zachovat velikost registru, můžete pravidelně odstraňovat netagované manifesty vyplývající ze stabilních aktualizací obrázků. Například [automatické proplachování](container-registry-auto-purge.md) netagovaných manifestů starších než zadaná doba trvání nebo nastavení [zásad uchovávání informací](container-registry-retention-policy.md) pro netagované manifesty.
 
 ## <a name="unique-tags"></a>Jedinečné značky
 
-**Doporučení**: Používejte jedinečné značky pro **nasazení**, zejména v prostředí, které by mohlo škálovat na více uzlech. Pravděpodobně budete chtít záměrné nasazení konzistentní verze komponent. Pokud se Váš kontejner restartuje nebo Orchestrator navýší více instancí, nebudou Vaši hostitelé omylem vyčítat novější verzi, která není konzistentní s ostatními uzly.
+**Doporučení:** Používejte jedinečné **značky**pro nasazení , zejména v prostředí, které by mohlo škálovat na více uzlech. Pravděpodobně budete chtít záměrné nasazení konzistentní verze součástí. Pokud se váš kontejner restartuje nebo orchestrátor škáluje více instancí, hostitelé nebudou omylem vytáhnout novější verzi, což není konzistentní s ostatními uzly.
 
-Jedinečné označení jednoduše znamená, že každý obrázek, který byl vložen do registru, má jedinečnou značku. Značky se znovu nepoužívají. Existuje několik vzorů, které můžete použít ke generování jedinečných značek, včetně:
+Jedinečné označování jednoduše znamená, že každá bitová kopie zasazená do registru má jedinečnou značku. Značky nejsou znovu použity. Existuje několik vzorů, které můžete sledovat, abyste vytvořili jedinečné značky, včetně:
 
-* **Časové razítko** – tento přístup je poměrně společný, protože můžete jasně určit, kdy se obrázek sestavil. Ale jak ho korelovat zpátky do vašeho sestavovacího systému? Je nutné najít sestavení, které bylo dokončeno ve stejnou dobu? V jakém časovém pásmu jste? Jsou všechny vaše systémy sestavení kalibrovány do standardu UTC?
-* **Git Commit** – tento přístup funguje, dokud nezačnete podporovat základní aktualizace imagí. Pokud dojde k aktualizaci základní image, systém sestavení se zahájí se stejným potvrzením Git jako předchozí sestavení. Základní image ale obsahuje nový obsah. Obecně platí, že Git potvrzení poskytuje *částečně*stabilní značku.
-* **Výtah manifestu** – každá image kontejneru vložená do registru kontejneru je přidružená k manifestu, který je identifikovaný jedinečnou hodnotou hash SHA-256 nebo hodnotou Digest. I když je jedinečný, je výtah dlouhý, obtížně čitelný a nekoreluje s vaším prostředím sestavení.
-* **ID buildu** – Tato možnost může být nejlepší, protože je pravděpodobně přírůstková a umožňuje provést korelaci zpět k určitému sestavení a vyhledat všechny artefakty a protokoly. Podobně jako u výtahu manifestu ale může být obtížné číst člověka.
+* **Datum-čas razítko** - Tento přístup je poměrně časté, protože můžete jasně říct, kdy byl obraz postaven. Ale jak korelovat zpět do vašeho systému sestavení? Potřebujete najít sestavení, které bylo dokončeno ve stejnou dobu? V jakém jste časovém pásmu? Jsou všechny vaše systémy sestavení kalibrovány na UTC?
+* **Potvrzení Git** – Tento přístup funguje, dokud nezačnete podporovat aktualizace základní image. Pokud dojde k aktualizaci základní bitové kopie, systém sestavení se spustí se stejným potvrzením Gitu jako předchozí sestavení. Základní obrázek má však nový obsah. Obecně platí, že potvrzení Git poskytuje *polostabilní*značku.
+* **Manifest digest** - Každá bitová kopie kontejneru posunutá do registru kontejneru je přidružena k manifestu identifikovaného jedinečným haštovací sadou SHA-256 nebo digest. Zatímco jedinečný, digest je dlouhý, obtížně čitelný a nekorelované s prostředím sestavení.
+* **ID sestavení** – Tato možnost může být nejlepší, protože je pravděpodobně přírůstkové a umožňuje korelovat zpět na konkrétní sestavení najít všechny artefakty a protokoly. Nicméně, stejně jako zjevně digest, to může být obtížné pro člověka číst.
 
-  Pokud má vaše organizace několik systémů sestavení, Předpona značky s názvem systému sestavení je variací této možnosti: `<build-system>-<build-id>`. Můžete například odlišit buildy ze systému sestavení Jenkinse týmu rozhraní API a webového týmu Azure Pipelines systém sestavení.
+  Pokud má vaše organizace několik systémů sestavení, předpona značky s `<build-system>-<build-id>`názvem systému sestavení je variantou této možnosti: . Můžete například odlišit sestavení od systému sestavení Jenkinstýmu rozhraní API a systému sestavení Azure Pipelines webového týmu.
 
-### <a name="lock-deployed-image-tags"></a>Zamknout značky nasazené bitové kopie
+### <a name="lock-deployed-image-tags"></a>Zamknout nasazené značky bitových obrázků
 
-Jako osvědčený postup doporučujeme, abyste zavedli [uzamknutí](container-registry-image-lock.md) všech nasazených značek obrázků nastavením jeho `write-enabled` atributu na hodnotu `false`. Tímto postupem zabráníte nechtěnému odebrání image z registru a případnému přerušení nasazení. Krok zamykání můžete zahrnout do svého kanálu pro vydávání verzí.
+Jako osvědčený postup doporučujeme [zamknout](container-registry-image-lock.md) všechny nasazené image `write-enabled` tag, `false`nastavením atributu . Tento postup zabraňuje nechtěnému odebrání bitové kopie z registru a případnému narušení nasazení. Krok uzamčení můžete zahrnout do kanálu vydání.
 
-Uzamykání nasazené image vám pořád umožňuje odebrat jiné, nenasazené image z registru, a to pomocí funkcí Azure Container Registry k údržbě registru. Můžete například [automaticky vyprázdnit](container-registry-auto-purge.md) netagované manifesty nebo odemknuté obrázky starší než zadaná doba trvání nebo nastavit [zásady uchovávání informací](container-registry-retention-policy.md) pro netagované manifesty.
+Uzamčení nasazené bitové kopie stále umožňuje odebrat další nenasazené bitové kopie z registru pomocí funkcí registru kontejnerů Azure k údržbě registru. Například [automatické pročištění](container-registry-auto-purge.md) netagovaných manifestů nebo odemčených obrázků starších než zadaná doba trvání nebo nastavení [zásad uchovávání informací](container-registry-retention-policy.md) pro netagované manifesty.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobnější diskuzi o konceptech v tomto článku najdete v blogovém příspěvku [označení Docker: osvědčené postupy pro označování a správu verzí imagí Docker](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
+Podrobnější informace o konceptech v tomto článku najdete v příspěvku blogu [Docker Tagging: Doporučené postupy pro označování a správu verzí imitací dockeru](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
 
-V zájmu maximalizace výkonu a nákladově efektivního využívání služby Azure Container Registry si přečtěte téma [osvědčené postupy pro Azure Container Registry](container-registry-best-practices.md).
+Pokud chcete maximalizovat výkon a nákladově efektivní využití registru kontejnerů Azure, přečtěte si [informace o doporučených postupech pro Azure Container Registry](container-registry-best-practices.md).
 
 <!-- IMAGES -->
 

@@ -1,6 +1,6 @@
 ---
-title: Vývoj funkcí .NET Standard pro úlohy Azure Stream Analytics (Preview)
-description: Naučte se psát uživatelsky definované funkce v jazyce c# pro úlohy Stream Analytics.
+title: Vývoj funkcí .NET Standard pro úlohy Azure Stream Analytics (preview)
+description: Přečtěte si, jak psát uživatelem definované funkce jazyka c# pro úlohy Stream Analytics.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
 ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426319"
 ---
-# <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Vývoj .NET Standard uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics (Preview)
+# <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Vývoj uživatelem definovaných funkcí .NET Standard pro úlohy Azure Stream Analytics (preview)
 
-Azure Stream Analytics nabízí SQL jako dotazovací jazyk pro provádění transformací a výpočtů prostřednictvím datových proudů dat událostí. K dispozici je mnoho integrovaných funkcí, ale některé složité scénáře vyžadují větší flexibilitu. Pomocí .NET Standard uživatelem definované funkce (UDF), můžete vyvolat vašich vlastních funkcích napsané v libovolném jazyce .NET standard (C#, F#atd) pro rozšíření dotazovací jazyk Stream Analytics. Uživatelem definovanými funkcemi umožňují provádět složité matematické výpočty, vlastní modely ML s využitím ML.NET importovat a používat vlastní imputace logiku pro chybějící data. Funkce UDF pro úlohy Stream Analytics je momentálně ve verzi Preview a neměla by se používat v produkčních úlohách.
+Azure Stream Analytics nabízí dotazovací jazyk podobný SQL pro provádění transformací a výpočtů přes datové proudy dat událostí. Existuje mnoho vestavěných funkcí, ale některé složité scénáře vyžadují další flexibilitu. Pomocí uživatelem definovaných funkcí .NET Standard (UDF) můžete vyvolat vlastní funkce napsané v libovolném standardním jazyce .NET (C#, F#, atd.) a rozšířit tak dotazovací jazyk Stream Analytics. UDF umožňují provádět složité matematické výpočty, importovat vlastní modely ML pomocí ML.NET a používat vlastní logiku imputace pro chybějící data. Funkce UDF pro úlohy Stream Analytics je aktuálně ve verzi preview a neměla by se používat v produkčních úlohách.
 
-Uživatelem definovaná funkce .NET pro cloudové úlohy je dostupná v:
+Uživatelem definovaná funkce .NET pro cloudové úlohy je k dispozici v:
 * USA – středozápad
 * Severní Evropa
 * USA – východ
@@ -26,120 +26,120 @@ Uživatelem definovaná funkce .NET pro cloudové úlohy je dostupná v:
 * USA – východ 2
 * Západní Evropa
 
-Pokud vás zajímá použití této funkce v jakékoli jiné oblasti, můžete [požádat o přístup](https://aka.ms/ccodereqregion).
+Máte-li zájem o použití této funkce v jiné oblasti, můžete [požádat o přístup](https://aka.ms/ccodereqregion).
 
 ## <a name="overview"></a>Přehled
-Visual Studio tools pro Azure Stream Analytics usnadňuje psaní uživatelem definovanými funkcemi, testování vašich úloh místně (i offline) a publikování vaší úlohy Stream Analytics v Azure. Po publikování do Azure, můžete nasadit úlohy na zařízení IoT pomocí služby IoT Hub.
+Nástroje Visual Studia pro Azure Stream Analytics usnadňují psaní uf, testování úloh místně (i offline) a publikování úlohy Stream Analytics do Azure. Po publikování do Azure můžete nasadit úlohu do zařízení IoT pomocí služby IoT Hub.
 
-Existují tři způsoby, jak implementovat uživatelem definovanými funkcemi:
+Existují tři způsoby implementace udf:
 
-* CodeBehind soubory v projektu Azure Stream Analytics
-* UDF z místní projekt
-* Stávající balíček z účtu služby Azure storage
+* CodeBehind soubory v projektu ASA
+* UDF z místního projektu
+* Existující balíček z účtu úložiště Azure
 
 ## <a name="package-path"></a>Cesta k balíčku
 
-Formát libovolný balíček UDF má cestu `/UserCustomCode/CLR/*`. Dynamické knihovny (DLL) a prostředky jsou zkopírovány v části `/UserCustomCode/CLR/*` složku, která pomáhá izolovat uživatele knihoven DLL ze systému a knihovny DLL Azure Stream Analytics. Tato cesta balíčku se používá pro všechny funkce bez ohledu na to metoda použitá jim využívat.
+Formát libovolného balíčku UDF `/UserCustomCode/CLR/*`má cestu . Knihovny dynamických odkazů (DLL) a prostředky `/UserCustomCode/CLR/*` jsou zkopírovány do složky, což pomáhá izolovat knihovny DLL uživatelů od knihovny DLL systému a Azure Stream Analytics. Tato cesta balíčku se používá pro všechny funkce bez ohledu na metodu použitou k jejich použití.
 
 ## <a name="supported-types-and-mapping"></a>Podporované typy a mapování
 
-|**Typ systému souborů UDF (C#)**  |**Typ Azure Stream Analytics**  |
+|**Typ UDF (C#)**  |**Typ Azure Stream Analytics**  |
 |---------|---------|
-|Long  |  bigint   |
+|long  |  bigint   |
 |double  |  double   |
-|string  |  nvarchar(max)   |
-|Datum a čas  |  Datum a čas   |
-|– Struktura  |  IRecord   |
-|object  |  IRecord   |
-|Objekt\<pole >  |  IArray   |
-|Dictionary < string, object >  |  IRecord   |
+|řetězec  |  Nvarchar(max)   |
+|data a času.  |  data a času.   |
+|struct   |  IZáznam   |
+|objekt  |  IZáznam   |
+|>\<objektu pole  |  IArray   |
+|slovník<řetězec,> objektu  |  IZáznam   |
 
-## <a name="codebehind"></a>CodeBehind
-Můžete napsat uživatelsky definovaných funkcí v **Script.asql** CodeBehind. Nástroje sady Visual Studio bude automaticky kompilaci CodeBehind do souboru sestavení. Sestavení se lze zabalit jako soubor zip a nahráli do svého účtu úložiště, když odešlete úlohu do Azure. Zjistěte, jak psát UDF C# CodeBehind pomocí následujících [UDF C# pro úlohy Stream Analytics Edge](stream-analytics-edge-csharp-udf.md) kurzu. 
+## <a name="codebehind"></a>Codebehind
+Uživatelem definované funkce můžete zapisovat do codebehind **skriptu.asql.** Nástroje sady Visual Studio automaticky zkompilují soubor CodeBehind do souboru sestavení. Sestavení jsou zabaleny jako soubor zip a odeslány do vašeho účtu úložiště při odeslání úlohy do Azure. Můžete se dozvědět, jak napsat C# UDF pomocí CodeBehind podle [následujících C# UDF pro streamování Analytics Edge úlohy](stream-analytics-edge-csharp-udf.md) kurzu. 
 
 ## <a name="local-project"></a>Místní projekt
-Uživatelem definované funkce je možné psát v sestavení, která je popsána dále v dotazu Azure Stream Analytics. Tato možnost se doporučuje pro složité funkce, které vyžadují plný výkon rozhraní .NET Standard jazyka nad rámec jeho jazyk výrazů, jako je například procesní logiky nebo rekurzi. UDF z místní projektu mohou být také použity, když budete chtít sdílet logiky funkce mezi několik dotazů Azure Stream Analytics. Přidání funkcí UDF místní projekt poskytuje možnost ladit a testovat vaše funkce místně v sadě Visual Studio.
+Uživatelem definované funkce lze zapsat v sestavení, které je později odkazováno v dotazu Azure Stream Analytics. Toto je doporučená možnost pro složité funkce, které vyžadují plný výkon jazyka .NET Standard nad rámec jazyka výrazu, jako je například procedurální logika nebo rekurze. UDFz místního projektu se taky může použít, když potřebujete sdílet logiku funkce napříč několika dotazy Azure Stream Analytics. Přidání UDFs do místního projektu umožňuje ladit a testovat funkce místně z Visual Studio.
 
-Chcete-li odkazovat místní projekt:
+Odkaz na místní projekt:
 
 1. Vytvořte novou knihovnu tříd ve vašem řešení.
-2. Psát kód ve své třídě. Mějte na paměti, že třídy musí být definován jako *veřejné* a objekty musí být definován jako *statické veřejné*. 
-3. Sestavte projekt. Nástroje se balíček všechny artefakty do složky bin do souboru zip a nahrajte soubor zip do účtu úložiště. Pro externí odkazy použijte odkaz na sestavení namísto balíčku NuGet.
-4. Odkaz na novou třídu v projektu Azure Stream Analytics.
-5. Přidáte nové funkce v projektu Azure Stream Analytics.
-6. Konfigurovat cestu sestavení v konfiguračním souboru úlohy `JobConfig.json`. Nastavte cestu sestavení **odkazu na místní projekt nebo CodeBehind**.
-7. Znovu sestavte projekt functions a Azure Stream Analytics projektu.  
+2. Napište kód do třídy. Mějte na paměti, že třídy musí být definovány jako *veřejné* a objekty musí být definovány jako *statické veřejné*. 
+3. Sestavte projekt. Nástroje zabalí všechny artefakty ve složce bin do souboru ZIP a nahrají soubor ZIP do účtu úložiště. Pro externí odkazy použijte odkaz na sestavení namísto balíčku NuGet.
+4. Odkazujte na novou třídu v projektu Azure Stream Analytics.
+5. Přidejte novou funkci v projektu Azure Stream Analytics.
+6. Nakonfigurujte cestu sestavení `JobConfig.json`v konfiguračním souboru úlohy . Nastavte cestu sestavení na **odkaz na místní projekt nebo codebehind**.
+7. Znovu sestavte projekt funkce i projekt Azure Stream Analytics.  
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-V tomto příkladu je **UDFTest** projekt knihovny C# tříd a **ASAUDFDemo** je projekt Azure Stream Analytics, který bude odkazovat **UDFTest**.
+V tomto příkladu **UDFTest** je c# projekt knihovny třídy a **ASAUDFDemo** je projekt Azure Stream Analytics, který bude odkazovat **UDFTest**.
 
-![Azure Stream Analytics IoT Edge projektu v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png)
+![Projekt Azure Stream Analytics IoT Edge ve Visual Studiu](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png)
 
-1. Sestavení projektu C#, která vám umožní přidat odkaz na UDF C# z dotazu Azure Stream Analytics.
+1. Vytvořte svůj projekt C#, který vám umožní přidat odkaz na váš C# UDF z dotazu Azure Stream Analytics.
     
-   ![Vytvoření projektu aplikace Azure Stream Analytics IoT Edge v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png)
+   ![Vytvoření projektu Azure Stream Analytics IoT Edge ve Visual Studiu](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png)
 
-2. Přidejte odkaz na C# projekt v projektu ASA. Klikněte pravým tlačítkem na uzel odkazy a zvolte možnost Přidat odkaz.
+2. Přidejte odkaz na projekt Jazyka C# v projektu ASA. Klikněte pravým tlačítkem myši na uzel Odkazy a zvolte Přidat odkaz.
 
-   ![Přidání odkazu do projektu C# v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png)
+   ![Přidání odkazu na projekt jazyka C# v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png)
 
-3. Ze seznamu vyberte název projektu C#. 
+3. V seznamu zvolte název projektu Jazyka C#. 
     
-   ![Zvolte ze seznamu odkaz na název projektu C#](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-choose-project-name.png)
+   ![Zvolte název projektu jazyka C# ze seznamu odkazů.](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-choose-project-name.png)
 
-4. Měli byste vidět **UDFTest** uvedené v části **odkazy** v **Průzkumníku řešení**.
+4. Měl by se zobrazit **UDFTest** uvedený v části **Odkazy** v **Průzkumníku řešení**.
 
-   ![Zobrazit uživateli definované odkaz funkce v Průzkumníku řešení](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png)
+   ![Zobrazení uživatelem definované holce v průzkumníku řešení](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png)
 
-5. Klikněte pravým tlačítkem na **funkce** složky a vyberte **nová položka**.
+5. Klikněte pravým tlačítkem myši na složku **Funkce** a zvolte **Nová položka**.
 
-   ![Přidat novou položku do funkce v Azure Stream Analytics Edge řešení](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png)
+   ![Přidání nové položky do funkcí v řešení Azure Stream Analytics Edge](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png)
 
-6. Přidat funkci v jazyce C# **SquareFunction.json** do projektu Azure Stream Analytics.
+6. Přidejte funkci C# **SquareFunction.json** do projektu Azure Stream Analytics.
 
-   ![Vyberte funkci CSharp ze Stream Analytics Edge položky v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png)
+   ![Výběr funkce CSharp z položek Stream Analytics Edge v Visual Studiu](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png)
 
-7. Poklikejte na funkci v **Průzkumníka řešení** otevřete dialogové okno konfigurace.
+7. Poklepáním na funkci v **Průzkumníku řešení** otevřete dialogové okno konfigurace.
 
-   ![Konfigurace jazyka C sharp funkce v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png)
+   ![C ostré funkce konfigurace v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png)
 
-8. V konfiguraci funkce C#, zvolte **zatížení z odkazu na projekt Azure Stream Analytics** a související sestavení, třídy a metody názvy z rozevíracího seznamu. Chcete-li odkazovat na metody, typy a funkce v dotazu Stream Analytics, třídy musí být definovány jako *veřejné* a objekty musí být definovány jako *statické veřejné*.
+8. V konfiguraci funkce C# zvolte **Načíst z odkazu projektu ASA** a souvisejících názvů sestavení, třída a metody z rozevíracího seznamu. Chcete-li odkazovat na metody, typy a funkce v dotazu Stream Analytics, třídy musí být definovány jako *veřejné* a objekty musí být definovány jako *statické veřejné*.
 
-   ![Konfigurace Stream Analytics C sharp – funkce](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png)
+   ![Konfigurace ostré funkce Stream Analytics C](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png)
 
 ## <a name="existing-packages"></a>Existující balíčky
 
-Můžete vytvářet .NET Standard uživatelem definovanými funkcemi v jakémkoli rozhraní IDE podle svého výběru a volat z vašeho dotazu Azure Stream Analytics. Nejprve ji zkompilujte vašeho kódu a balíček všechny knihovny DLL. Formát balíčku má cestu `/UserCustomCode/CLR/*`. Potom obsah nahrajete `UserCustomCode.zip` do kořenového adresáře kontejneru v účtu úložiště Azure.
+Standardní udf .NET můžete vytvářet v libovolném rozhraní IDE podle vašeho výběru a vyvolat je z vašeho dotazu Azure Stream Analytics. Nejprve zkompilujte kód a zabalte všechny knihovny DLL. Formát balíčku má cestu `/UserCustomCode/CLR/*`. Potom nahrajte `UserCustomCode.zip` do kořenového adresáře kontejneru ve vašem účtu úložiště Azure.
 
-Po sestavení balíčků zip nahrané do účtu úložiště Azure, můžete použít funkce v Azure Stream Analytics dotazů. Vše, co potřebujete udělat, je zahrnout informace o úložišti v konfiguraci úlohy Stream Analytics. Funkci místně s touto možností nelze otestovat, protože balíček nebude stahovat nástrojů sady Visual Studio. Cesta k balíčku je analyzován přímo ke službě. 
+Po nahrání balíčků zip sestavení do vašeho účtu úložiště Azure můžete použít funkce v dotazech Azure Stream Analytics. Jediné, co musíte udělat, je zahrnout informace o úložišti do konfigurace úlohY Stream Analytics. Tuto možnost nelze testovat místně pomocí funkce, protože nástroje sady Visual Studio nebudou stahovat balíček. Cesta balíčku je analyzována přímo ke službě. 
 
-Abyste nakonfigurovali cestu sestavení v konfiguračním souboru úlohy `JobConfig.json`:
+Chcete-li nakonfigurovat cestu sestavení `JobConfig.json`v konfiguračním souboru úlohy, :
 
 Rozbalte část **Konfigurace kódu definovaného uživatelem** a vyplňte do konfigurace následující navrhované hodnoty:
 
    |**Nastavení**|**Navrhovaná hodnota**|
    |-------|---------------|
-   |Prostředek nastavení globálního úložiště|Zvolit zdroj dat z aktuálního účtu|
-   |Předplatné globálních nastavení úložiště| < vaše předplatné >|
-   |Účet úložiště nastavení globálního úložiště| < svého účtu úložiště >|
-   |Prostředek nastavení úložiště vlastního kódu|Zvolit zdroj dat z aktuálního účtu|
-   |Vlastní nastavení úložiště kódu účet úložiště|< svého účtu úložiště >|
-   |Kontejner nastavení vlastního úložiště kódu|< kontejneru úložiště >|
+   |Prostředek globálního nastavení úložiště|Zvolit zdroj dat z aktuálního účtu|
+   |Předplatné globálního nastavení úložiště| < > předplatného|
+   |Účet úložiště globálního nastavení úložiště| < > účtu úložiště|
+   |Prostředek nastavení vlastního úložiště kódu|Zvolit zdroj dat z aktuálního účtu|
+   |Účet úložiště vlastního úložiště kódu|< > účtu úložiště|
+   |Kontejner nastavení úložiště vlastního kódu|< > skladovacího kontejneru|
    |Zdroj sestavení vlastního kódu|Existující balíčky sestavení z cloudu|
-   |Zdroj sestavení vlastního kódu|UserCustomCode. zip|
+   |Zdroj sestavení vlastního kódu|UserCustomCode.zip|
 
 ## <a name="limitations"></a>Omezení
-Ve verzi preview UDF aktuálně má následující omezení:
+Náhled UDF má aktuálně následující omezení:
 
-* Standardní UDF .NET můžete pouze vytvořené v sadě Visual Studio a publikovat do Azure. V části lze zobrazit jen pro čtení verzích rozhraní .NET Standard UDF **funkce** na webu Azure Portal. Vytváření funkcí .NET Standard není podporován na webu Azure Portal.
+* Standardní u-fs .NET lze vytvořit jenom v sadě Visual Studio a publikovat do Azure. Verze rozhraní UD Standard jen pro čtení lze zobrazit v části **Funkce** na webu Azure Portal. Vytváření funkcí .NET Standard není na webu Azure Portal podporováno.
 
-* Editor dotazů Azure portal zobrazuje chybu, když pomocí .NET Standard UDF na portálu. 
+* Editor dotazů na webu Azure Portal zobrazuje chybu při použití udf rozhraní .NET Standard na portálu. 
 
-* Protože vlastní kód sdílí kontext pomocí modulu Azure Stream Analytics, vlastní kód nemůže odkazovat na cokoli, co má konfliktní obor názvů/název_dll kódem Azure Stream Analytics. Například nelze odkazovat *Newtonsoft Json*.
+* Vzhledem k tomu, že vlastní kód sdílí kontext s motorem Azure Stream Analytics, vlastní kód nemůže odkazovat na nic, co má konfliktní obor názvů nebo dll_name s kódem Azure Stream Analytics. Například, nemůžete odkazovat *Newtonsoft Json*.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Kurz: zápis C# uživatelsky definované funkce pro úlohu Azure Stream Analytics (Preview)](stream-analytics-edge-csharp-udf.md)
-* [Kurzu: Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics](stream-analytics-javascript-user-defined-functions.md)
-* [Chcete-li zobrazit úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-vs-tools.md)
+* [Kurz: Napište uživatelem definovanou funkci Jazyka C# pro úlohu Azure Stream Analytics (preview)](stream-analytics-edge-csharp-udf.md)
+* [Kurz: Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics](stream-analytics-javascript-user-defined-functions.md)
+* [Zobrazení úloh Azure Stream Analytics pomocí Visual Studia](stream-analytics-vs-tools.md)

@@ -1,7 +1,7 @@
 ---
 title: Přehled skupin zabezpečení aplikací Azure
 titlesuffix: Azure Virtual Network
-description: Seznamte se s používáním skupin zabezpečení aplikací.
+description: Přečtěte si informace o použití skupin zabezpečení aplikací.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,10 +14,10 @@ ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: 775ef92a0ca486d1f8a6c44c78a4df04cd5ef467
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78274707"
 ---
 # <a name="application-security-groups"></a>Skupiny zabezpečení aplikací

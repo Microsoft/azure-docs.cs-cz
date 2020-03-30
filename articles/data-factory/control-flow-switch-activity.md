@@ -1,6 +1,6 @@
 ---
-title: Přepnout aktivitu v Azure Data Factory
-description: Aktivita Switch umožňuje řídit tok zpracování na základě podmínky.
+title: Přepínání aktivit ve Službě Azure Data Factory
+description: Aktivita Přepínač umožňuje řídit tok zpracování na základě podmínky.
 services: data-factory
 author: djpmsft
 ms.author: daperlov
@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440383"
 ---
-# <a name="switch-activity-in-azure-data-factory"></a>Přepnout aktivitu v Azure Data Factory
+# <a name="switch-activity-in-azure-data-factory"></a>Přepínání aktivit ve Službě Azure Data Factory
 
-Aktivita Switch nabízí stejné funkce jako příkaz switch v programovacích jazycích. Vyhodnocuje sadu aktivit odpovídajících případu, který odpovídá vyhodnocení podmínky.
+Switch aktivita poskytuje stejné funkce, které příkaz switch poskytuje v programovacích jazycích. Vyhodnotí sadu aktivit odpovídající případu, který odpovídá vyhodnocení podmínky.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -67,20 +67,20 @@ Aktivita Switch nabízí stejné funkce jako příkaz switch v programovacích j
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity Switch | Řetězec | Ano
-type | Musí být nastavené na *Switch** | Řetězec | Ano
-expression | Výraz, který se musí vyhodnotit jako řetězcová hodnota | Výraz s výsledným typem String | Ano
-věcech | Sada případů, které obsahují hodnotu a sadu aktivit, které mají být provedeny, když hodnota odpovídá vyhodnocení výrazu. Musí obsahovat alespoň jeden případ. Maximální velikost je 25 případů. | Pole objektů Case | Ano
-defaultActivities | Sada aktivit, které se spustí, když se nesplní vyhodnocení výrazu. | Pole aktivit | Ano
+jméno | Název aktivity přepínače. | Řetězec | Ano
+type | Musí být nastavena na *přepínač** | Řetězec | Ano
+výraz | Výraz, který musí vyhodnotit na hodnotu řetězce | Výraz s řetězcem typu výsledek | Ano
+Případech | Sada případů, které obsahují hodnotu a sadu aktivit, které mají být provedeny, když hodnota odpovídá vyhodnocení výrazu. Musí poskytnout alespoň jeden případ. Je tu maximální limit 25 případů. | Pole objektů case | Ano
+výchozíaktivity | Sada aktivit, které jsou provedeny, když není splněno vyhodnocení výrazu. | Pole aktivit | Ano
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
-Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru kanálu: routeSelection.
+Kanál v tomto příkladu zkopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru potrubí: routeSelection.
 
 > [!NOTE]
-> Tato část poskytuje definice JSON a ukázkové příkazy PowerShellu pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření Data Factory kanálu pomocí definic Azure PowerShell a JSON najdete v tématu [kurz: vytvoření datové továrny pomocí Azure PowerShell](quickstart-create-data-factory-powershell.md).
+> Tato část obsahuje definice JSON a ukázkové příkazy prostředí PowerShell pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření kanálu Datové továrny pomocí definic Azure PowerShellu a JSON najdete [v kurzu: vytvoření datové továrny pomocí Azure PowerShellu](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Kanál s aktivitou Switch (Adfv2QuickStartPipeline. JSON)
+### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Kanál s aktivitou přepínače (Adfv2QuickStartPipeline.json)
 
 ```json
 {
@@ -228,7 +228,7 @@ Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní slož
 
 ```
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService. JSON)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService.json)
 
 ```json
 {
@@ -242,9 +242,9 @@ Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní slož
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada Azure Blob (BlobDataset. JSON)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada objektů blob Azure (BlobDataset.json)
 
-Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr **outputPath2** kanálu. 
+Kanál nastaví **folderPath** na hodnotu **parametru outputPath1** nebo **outputPath2** kanálu. 
 
 ```json
 {
@@ -270,7 +270,7 @@ Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr *
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON pro parametr kanálu (PipelineParameters. JSON)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Parametr kanálu JSON (PipelineParameters.json)
 
 ```json
 {
@@ -286,7 +286,7 @@ Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr *
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U těchto příkazů se předpokládá, že jste soubory JSON uložili do složky: C:\ADF. 
+Tyto příkazy předpokládají, že jste uložili soubory JSON do složky: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -329,11 +329,11 @@ $result.Error -join "`r`n"
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na další aktivity toku řízení podporované Data Factory: 
+Podívejte se na další aktivity toku řízení podporované factory: 
 
 - [Aktivita podmínky If](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
-- [Pro každou aktivitu](control-flow-for-each-activity.md)
-- [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
+- [Aktivita For Each](control-flow-for-each-activity.md)
+- [Získat aktivitu metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita webu](control-flow-web-activity.md)

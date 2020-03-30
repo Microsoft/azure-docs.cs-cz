@@ -9,34 +9,34 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
 ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75541800"
 ---
-1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com).
+1. Přihlaste se do [studia Azure Machine Learning Studio](https://ml.azure.com).
 
-1. Upgradujte pracovní prostor na Enterprise Edition.
+1. Upgradujte svůj pracovní prostor na edici Enterprise.
 
-    Po upgradu budou všechny experimenty vizuálního rozhraní převedeny na koncepty kanálu v návrháři.
+    Po upgradu se všechny experimenty s vizuálním rozhraním převedou na koncepty kanálu v návrháři.
     
     > [!NOTE]
-    > Nemusíte upgradovat na edici Enterprise, aby bylo možné převést webové služby vizuálního rozhraní na koncové body v reálném čase.
+    > K převodu webových služeb vizuálního rozhraní na koncové body v reálném čase není nutné upgradovat na edici Enterprise.
     
-1. Pokud chcete zobrazit seznam konceptů kanálu, vyberte v pracovním prostoru část návrháře. 
+1. Přejděte do části návrháře pracovního prostoru a zobrazte seznam konceptů kanálu. 
     
-    Převedené webové služby můžete najít tak, že přejdete do **koncových bodů** > **koncových bodů v reálném čase**.
+    Převedené webové služby lze nalézt na přechodu na **koncové body koncových bodů** > **v reálném čase**.
 
-1. Vyberte koncept kanálu, který chcete otevřít.
+1. Vyberte pracovní verzi kanálu, která ji otevře.
 
-    V případě chyby během procesu převodu se zobrazí chybová zpráva s pokyny k vyřešení problému. 
+    Pokud během procesu převodu došlo k chybě, zobrazí se chybová zpráva s pokyny k vyřešení problému. 
 
 ### <a name="known-issues"></a>Známé problémy
 
- Níže jsou známé problémy s migrací, které je potřeba řešit ručně:
+ Níže jsou uvedeny známé problémy s migrací, které je třeba řešit ručně:
 
-- **Importovat data** nebo **exportovat datové** moduly
+- **Moduly Import dat** nebo **Export dat**
         
-    Pokud v experimentu máte modul **importu dat** nebo **exportu dat** , budete muset zdroj dat aktualizovat tak, aby používal úložiště dat. Informace o tom, jak vytvořit úložiště dat, najdete v tématu [Jak získat přístup k datům ve službě Azure Storage](../articles/machine-learning/how-to-access-data.md). Informace o vašem účtu cloudového úložiště se přidaly do komentářů k vašemu usnadnění **importu dat** nebo modulu **exportu dat** . 
+    Pokud máte v experimentu modul **Import dat** nebo **Export dat,** je třeba aktualizovat zdroj dat tak, aby používal úložiště dat. Informace o tom, jak vytvořit úložiště dat, najdete v tématu [Jak přistupovat k datům ve službách úložiště Azure](../articles/machine-learning/how-to-access-data.md). Informace o účtu cloudového úložiště byly přidány do komentářů modulu **Import dat** nebo **Export dat** pro vaše pohodlí. 
       

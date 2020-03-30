@@ -1,6 +1,6 @@
 ---
-title: EXP in Azure Cosmos DB dotazovací jazyk
-description: Další informace o funkci exponent (EXP) SQL System v Azure Cosmos DB pro návrat exponenciální hodnoty zadaného číselného výrazu
+title: EXP v dotazovacím jazyce Azure Cosmos DB
+description: Informace o funkci systému Exponent (EXP) SQL v Azure Cosmos DB vrátí exponenciální hodnotu zadaného číselného výrazu
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 76d614264124e1ce4138663b702ff6d899b3aa4e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873314"
 ---
 # <a name="exp-azure-cosmos-db"></a>EXP (Azure Cosmos DB)
- Vrátí hodnotu exponenciální zadaný číselný výraz.  
+ Vrátí exponenciální hodnotu zadaného číselného výrazu.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -30,37 +30,37 @@ EXP (<numeric_expr>)
   
 ## <a name="return-types"></a>Návratové typy
   
-  Vrátí hodnotu číselného výrazu.  
+  Vrátí číselný výraz.  
   
 ## <a name="remarks"></a>Poznámky
   
-  Konstanta **e** (2.718281...), je základ přirozeného logaritmu.  
+  Konstanta **e** (2.718281...) je základem přirozených logaritmů.  
   
-  Exponent číslo je konstanta **e** umocněné na čísla. Například EXP(1.0) = e ^ 1.0 = 2.71828182845905 a EXP(10) = e ^ 10 = 22026.4657948067.  
+  Exponent čísla je konstanta **e** umocněná na mocninu čísla. Například EXP(1.0) = e^1.0 = 2.71828182845905 a EXP(10) = e^10 = 22026.4657948067.  
   
-  Exponent přirozený logaritmus čísla je číslo samotné: EXP (protokol (n).) = n. A přirozený logaritmus čísla exponenciální je číslo samotné: protokolu (EXP (n).) = n.  
+  Exponenciální přirozenélogaritu čísla je číslo samo o sobě: EXP (LOG (n)) = n. A přirozený logaritmus exponenciálního čísla je samotné číslo: LOG (EXP (n)) = n.  
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad deklaruje proměnnou a vrátí hodnotu exponenciální hodnotu zadanou proměnnou (10).  
+  Následující příklad deklaruje proměnnou a vrátí exponenciální hodnotu zadané proměnné (10).  
   
 ```sql
 SELECT EXP(10) AS exp  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{exp: 22026.465794806718}]  
 ```  
   
- Následující příklad vrátí hodnotu exponenciální natural logarithm 20 a přirozený logaritmus exponenciální 20. Protože tyto funkce jsou inverzní funkce navzájem, vrácená hodnota s zaokrouhlení s plovoucí desetinnou čárkou matematické bod v obou případech je 20.  
+ Následující příklad vrátí exponenciální hodnotu přirozeného logaritmu 20 a přirozený logaritmus exponenciál 20. Vzhledem k tomu, že tyto funkce jsou inverzní funkce navzájem, vrácená hodnota s zaokrouhlení pro matematiku s plovoucí desetinnou desetinnou desetinnou desetinnou hodnotou v obou případech je 20.  
   
 ```sql
 SELECT EXP(LOG(20)) AS exp1, LOG(EXP(20)) AS exp2  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{exp1: 19.999999999999996, exp2: 20}]  

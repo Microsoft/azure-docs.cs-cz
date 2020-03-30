@@ -1,6 +1,6 @@
 ---
 title: Kopírování souborů z několika kontejnerů
-description: Naučte se používat šablonu řešení ke kopírování souborů z více kontejnerů pomocí Azure Data Factory.
+description: Zjistěte, jak pomocí šablony řešení kopírovat soubory z více kontejnerů pomocí Azure Data Factory.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -12,62 +12,62 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
 ms.openlocfilehash: 0c4c26ba163f83483b3eb48e51d91f9a919a887c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75439763"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Kopírování souborů z více kontejnerů pomocí Azure Data Factory
 
-Tento článek popisuje šablonu řešení, kterou můžete použít ke kopírování souborů z více kontejnerů mezi úložišti souborů. Můžete ho například použít k migraci Data Lake z AWS S3 na Azure Data Lake Store. Nebo můžete použít šablonu k replikaci všeho z jednoho účtu služby Azure Blob Storage do jiného.
+Tento článek popisuje šablonu řešení, kterou můžete použít ke kopírování souborů z více kontejnerů mezi úložišti souborů. Můžete ji například použít k migraci datového jezera z AWS S3 do Azure Data Lake Store. Nebo můžete použít šablonu k replikaci všeho od jednoho účtu úložiště objektů blob Azure do jiného.
 
 > [!NOTE]
-> Pokud chcete kopírovat soubory z jednoho kontejneru, je efektivnější použít [nástroj kopírování dat](copy-data-tool.md) k vytvoření kanálu s jednou aktivitou kopírování. Šablona v tomto článku je více, než kolik jich v jednoduchém scénáři potřebujete.
+> Pokud chcete kopírovat soubory z jednoho kontejneru, je efektivnější použít [nástroj kopírovat data](copy-data-tool.md) k vytvoření kanálu s aktivitou jedné kopie. Šablona v tomto článku je více, než potřebujete pro tento jednoduchý scénář.
 
 ## <a name="about-this-solution-template"></a>O této šabloně řešení
 
-Tato šablona vytvoří výčet kontejnerů z úložiště zdrojového úložiště. Pak tyto kontejnery zkopíruje do cílového úložiště.
+Tato šablona vyjmenovává kontejnery z úložiště zdrojového úložiště. Potom zkopíruje tyto kontejnery do cílového úložiště.
 
 Šablona obsahuje tři aktivity:
-- **GetMetadata** prověří úložiště zdrojového úložiště a získá seznam kontejnerů.
-- **Foreach** získá seznam kontejnerů z aktivity **GetMetadata** a pak projde seznam a předá do aktivity kopírování každý kontejner.
-- **Kopírovat** zkopíruje každý kontejner ze zdrojového úložiště úložiště do cílového úložiště.
+- **GetMetadata** prohledá úložiště zdrojového úložiště a získá seznam kontejnerů.
+- **ForEach** získá seznam kontejnerů z **GetMetadata aktivity** a potom iterates přes seznam a předá každý kontejner copy aktivity.
+- **Zkopírujte** kopie každého kontejneru ze zdrojového úložiště do cílového úložiště.
 
 Šablona definuje následující parametry:
-- *SourceFileFolder* je cesta ke složce úložiště zdrojů dat, kde můžete získat seznam kontejnerů. Cesta je kořenový adresář, který obsahuje více složek kontejnerů. Výchozí hodnota tohoto parametru je `sourcefolder`.
-- *SourceFileDirectory* je cesta k podsložce v kořenovém adresáři úložiště zdrojů dat. Výchozí hodnota tohoto parametru je `subfolder`.
-- *DestinationFileFolder* je cesta ke složce, do které se zkopírují soubory do cílového úložiště. Výchozí hodnota tohoto parametru je `destinationfolder`.
-- *DestinationFileDirectory* je cesta k podsložce, do které se zkopírují soubory do cílového úložiště. Výchozí hodnota tohoto parametru je `subfolder`.
+- *SourceFileFolder* je cesta ke složce úložiště zdrojů dat, kde můžete získat seznam kontejnerů. Cesta je kořenový adresář, který obsahuje více složek kontejneru. Výchozí hodnota tohoto parametru je `sourcefolder`.
+- *SourceFileDirectory* je cesta podsložky pod kořenovým adresářem úložiště zdrojů dat. Výchozí hodnota tohoto parametru je `subfolder`.
+- *DestinationFileFolder* je cesta ke složce, do které budou soubory zkopírovány v cílovém úložišti. Výchozí hodnota tohoto parametru je `destinationfolder`.
+- *DestinationFileDirectory* je cesta podsložky, do které budou soubory zkopírovány v cílovém úložišti. Výchozí hodnota tohoto parametru je `subfolder`.
 
-## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
+## <a name="how-to-use-this-solution-template"></a>Použití této šablony řešení
 
-1. V šabloně **úložiště souborů vyberte kontejnery kopírovat více souborů** . Vytvořte **nové** připojení ke zdrojovému úložišti úložiště. Zdrojové úložiště úložiště, do kterého chcete kopírovat soubory z více kontejnerů.
+1. Přejděte do **šablony Kopírovat více souborů mezi šablonou Úložiště souborů.** Vytvořte **nové** připojení k úložišti zdrojového úložiště. Úložiště zdrojového úložiště je místo, odkud chcete kopírovat soubory z více kontejnerů.
 
-    ![Vytvoří nové připojení ke zdroji.](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png)
+    ![Vytvoření nového připojení ke zdroji](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png)
 
 2. Vytvořte **nové** připojení k cílovému úložišti úložiště.
 
-    ![Vytvoří nové připojení k cíli.](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
+    ![Vytvoření nového připojení k cíli](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
 3. Vyberte **Použít tuto šablonu**.
 
     ![Použít tuto šablonu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
-4. Kanál se zobrazí, jako v následujícím příkladu:
+4. Zobrazí se kanál, jako v následujícím příkladu:
 
-    ![Zobrazení kanálu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
+    ![Zobrazit potrubí](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
 
-5. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+5. Vyberte **Ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
 
     ![Spuštění kanálu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
 
 6. Zkontrolujte výsledek.
 
-    ![Kontrola výsledku](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png)
+    ![Zkontrolujte výsledek](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Hromadné kopírování z databáze pomocí řídicí tabulky s Azure Data Factory](solution-template-bulk-copy-with-control-table.md)
+- [Hromadná kopírování z databáze pomocí ovládací tabulky s Azure Data Factory](solution-template-bulk-copy-with-control-table.md)
 
 - [Kopírování souborů z více kontejnerů pomocí Azure Data Factory](solution-template-copy-files-multiple-containers.md)

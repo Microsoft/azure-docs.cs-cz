@@ -1,6 +1,6 @@
 ---
-title: Dynamické skupiny a spolupráce B2B – Azure Active Directory | Microsoft Docs
-description: Ukazuje, jak používat dynamické skupiny Azure AD s Azure Active Directory spolupráci B2B.
+title: Dynamické skupiny a spolupráce B2B – Azure Active Directory | Dokumenty společnosti Microsoft
+description: Ukazuje, jak používat dynamické skupiny Azure AD se spoluprací azure active directory B2B
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,64 +12,64 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 41e8b81bc3594c6a378757636f70058510a38cc7
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78226895"
 ---
-# <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Spolupráce s dynamickými skupinami a Azure Active Directory B2B
+# <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dynamické skupiny a spolupráce služby Azure Active Directory B2B
 
 ## <a name="what-are-dynamic-groups"></a>Co jsou dynamické skupiny?
-Dynamická konfigurace členství ve skupině zabezpečení pro Azure Active Directory (Azure AD) je dostupná v [Azure Portal](https://portal.azure.com). Správci můžou nastavit pravidla k naplnění skupin vytvořených ve službě Azure AD na základě atributů uživatele (například userType, oddělení nebo země/oblast). Členy mohou být automaticky přidány nebo odebrány ze skupiny zabezpečení na základě jejich atributů. Tyto skupiny můžou poskytovat přístup k aplikacím nebo cloudovým prostředkům (webům SharePointu, dokumentům) a přiřazování licencí členům. Přečtěte si další informace o dynamických skupinách v [vyhrazených skupinách v Azure Active Directory](../active-directory-accessmanagement-dedicated-groups.md).
+Dynamická konfigurace členství ve skupinách zabezpečení pro Azure Active Directory (Azure AD) je [dostupná na webu Azure Portal](https://portal.azure.com). Správci mohou nastavit pravidla pro naplnění skupin, které jsou vytvořené ve službě Azure AD na základě atributů uživatele (například userType, oddělení nebo země nebo oblasti. Členy lze automaticky přidat nebo odebrat ze skupiny zabezpečení na základě jejich atributů. Tyto skupiny mohou poskytovat přístup k aplikacím nebo cloudovým prostředkům (sharepointové weby, dokumenty) a přiřazovat licence členům. Přečtěte si další informace o dynamických skupinách ve [vyhrazených skupinách ve službě Azure Active Directory](../active-directory-accessmanagement-dedicated-groups.md).
 
-K vytváření a používání dynamických skupin se vyžaduje příslušné [Azure AD Premium licencování P1 nebo P2](https://azure.microsoft.com/pricing/details/active-directory/) . Další informace najdete v článku [vytváření pravidel založených na atributech pro členství v dynamické skupině v Azure Active Directory](../users-groups-roles/groups-dynamic-membership.md).
+K vytvoření a použití dynamických skupin je potřeba příslušná [licence Azure AD Premium P1 nebo P2.](https://azure.microsoft.com/pricing/details/active-directory/) Další informace najdete v článku [Vytvoření pravidel založených na atributech pro dynamické členství ve skupinách ve službě Azure Active Directory](../users-groups-roles/groups-dynamic-membership.md).
 
-## <a name="creating-an-all-users-dynamic-group"></a>Vytváří se dynamická skupina všichni uživatelé.
-Můžete vytvořit skupinu obsahující všechny uživatele v rámci tenanta pomocí pravidla členství. Když se uživatelé v budoucnu přidávají nebo odebírají z tenanta, členství ve skupině se automaticky upraví.
+## <a name="creating-an-all-users-dynamic-group"></a>Vytvoření dynamické skupiny "všichni uživatelé"
+Můžete vytvořit skupinu obsahující všechny uživatele v rámci klienta pomocí pravidla členství. Když jsou uživatelé přidáni nebo odebráni z tenanta v budoucnu, členství skupiny se automaticky upraví.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu, kterému se v tenantovi přiřadí role Globální správce nebo Správce uživatelů.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com) pomocí účtu, kterému je přiřazena role globálního správce nebo správce uživatele v tenantovi.
 1. Vyberte **Azure Active Directory**.
-2. V části **Spravovat**vyberte **skupiny**a pak vyberte **Nová skupina**.
-1. Na stránce **Nová skupina** v části **typ skupiny**vyberte **zabezpečení**. Zadejte **název skupiny** a **Popis skupiny** pro novou skupinu. 
-2. V části **typ členství**vyberte možnost **dynamický uživatel**a pak vyberte **Přidat dynamický dotaz**. 
-4. Nad textovým polem **syntaxe pravidla** vyberte **Upravit**. Na stránce **Upravit syntaxi pravidla** zadejte do textového pole následující výraz:
+2. V části **Manage**vyberte **Skupiny**a potom vyberte **Nová skupina**.
+1. Na stránce **Nová skupina** vyberte v části **Typ skupiny** **položku Zabezpečení**. Zadejte **název skupiny** a **popis skupiny** pro novou skupinu. 
+2. V části **Typ členství**vyberte **Dynamický uživatel**a pak vyberte Přidat **dynamický dotaz**. 
+4. Nad textovým polem **Syntaxe pravidla** vyberte **Upravit**. Na stránce **Upravit syntaxi pravidla** zadejte do textového pole následující výraz:
 
    ```
    user.objectId -ne null
    ```
-1. Vyberte **OK**. Pravidlo se zobrazí v poli syntaxe pravidla:
+1. Vyberte **OK**. Pravidlo se zobrazí v poli Syntaxe pravidla:
 
-   ![Syntaxe pravidla pro všechny uživatele s dynamickou skupinou](media/use-dynamic-groups/all-user-rule-syntax.png)
+   ![Syntaxe pravidla pro všechny uživatele dynamické skupiny](media/use-dynamic-groups/all-user-rule-syntax.png)
 
-1.  Vyberte **Save** (Uložit). Nová dynamická skupina teď bude zahrnovat uživatele typu Host B2B i členské uživatele.
+1.  Vyberte **Uložit**. Nová dynamická skupina bude nyní zahrnovat uživatele typu Host B2B i členské uživatele.
 
 
-1. Vyberte **vytvořit** na stránce **Nová skupina** a vytvořte skupinu.
+1. Chcete-li vytvořit skupinu, vyberte vytvořit na stránce **Nová skupina.** **Create**
 
-## <a name="creating-a-group-of-members-only"></a>Vytváření pouze skupiny členů
+## <a name="creating-a-group-of-members-only"></a>Vytvoření pouze skupiny členů
 
-Pokud chcete, aby skupina vyloučila uživatele typu Host a zahrnovala jenom členy vašeho tenanta, vytvořte dynamickou skupinu, jak je popsáno výše, ale v poli **syntaxe pravidla** zadejte následující výraz:
+Pokud chcete, aby vaše skupina vyloučila uživatele typu Host a zahrnula pouze členy vašeho tenanta, vytvořte dynamickou skupinu, jak je popsáno výše, ale do pole **Syntaxe pravidla** zadejte následující výraz:
 
 ```
 (user.objectId -ne null) and (user.userType -eq "Member")
 ```
 
-Následující obrázek ukazuje syntaxi pravidla pro dynamickou skupinu upravenou tak, aby zahrnovala pouze členy a vyloučila hosty.
+Následující obrázek znázorňuje syntaxi pravidla pro dynamickou skupinu upravenou tak, aby zahrnovala pouze členy a vyloučila hosty.
 
-![Zobrazuje pravidlo, kde typ uživatele se rovná člen](media/use-dynamic-groups/all-member-user-rule-syntax.png)
+![Zobrazuje pravidlo, kde se typ uživatele rovná členu.](media/use-dynamic-groups/all-member-user-rule-syntax.png)
 
-## <a name="creating-a-group-of-guests-only"></a>Vytváření pouze skupiny hostů
+## <a name="creating-a-group-of-guests-only"></a>Vytvoření pouze skupiny hostů
 
-Může být také užitečné vytvořit novou dynamickou skupinu, která obsahuje jenom uživatele typu Host, abyste na ně mohli uplatnit zásady (například zásady podmíněného přístupu Azure AD). Vytvořte dynamickou skupinu, jak je popsáno výše, ale v poli **syntaxe pravidla** zadejte následující výraz:
+Můžete také najít užitečné vytvořit novou dynamickou skupinu, která obsahuje pouze uživatele typu Host, takže můžete použít zásady (například zásady podmíněného přístupu Azure AD) na ně. Vytvořte dynamickou skupinu, jak je popsáno výše, ale do pole **Syntaxe pravidla** zadejte následující výraz:
 
 ```
 (user.objectId -ne null) and (user.userType -eq "Guest")
 ```
 
-Následující obrázek ukazuje syntaxi pravidla pro dynamickou skupinu upravenou tak, aby zahrnovala pouze hosty a vyloučila uživatele členů.
+Následující obrázek znázorňuje syntaxi pravidla pro dynamickou skupinu upravenou tak, aby zahrnovala pouze hosty a vyloučila členské uživatele.
 
-![Zobrazuje pravidlo, kde typ uživatele se rovná Host.](media/use-dynamic-groups/all-guest-user-rule-syntax.png)
+![Zobrazuje pravidlo, kde se typ uživatele rovná hostu.](media/use-dynamic-groups/all-guest-user-rule-syntax.png)
 
 ## <a name="next-steps"></a>Další kroky
 

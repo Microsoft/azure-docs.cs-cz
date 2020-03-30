@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e27287a414a2a4edef3e9090b7d91beb1c70f554
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897309"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Používání služby Azure AD Connect Health se službou AD DS
@@ -49,19 +49,19 @@ Tento řídicí panel zobrazuje stav replikace a topologii replikace pro řadič
 
 ![Stav replikace](./media/how-to-connect-health-adds/aadconnect-health-adds-replication.png)
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 Tato funkce zajišťuje grafické zobrazení trendů různých čítačů výkonu, které se průběžně shromažďují ze všech monitorovaných řadičů domény. Výkon řadiče domény můžete snadno porovnat se všemi ostatními monitorovanými řadiči domény v doménové struktuře. Kromě toho můžete různé čítače výkonu zobrazit vedle sebe, což je užitečné při řešení problémů ve vašem prostředí.
 
-![Sledování](./media/how-to-connect-health-adds/aadconnect-health-adds-monitoring.png)
+![Monitorování](./media/how-to-connect-health-adds/aadconnect-health-adds-monitoring.png)
 
 Ve výchozím nastavení jsme předem vybrali čtyři čítače výkonu. Kliknutím na příkaz filtru a výběrem nebo zrušením výběru libovolných požadovaných čítačů, můžete přidat nebo odebrat další čítače. Můžete také dvakrát kliknout na graf čítače výkonu. Tím otevřete nové okno, které obsahuje datové body každého monitorovaného řadiče domény.
 
 ## <a name="related-links"></a>Související odkazy
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
-* [Instalace agenta služby Azure AD Connect Health](how-to-connect-health-agent-install.md)
-* [Operace služby Azure AD Connect Health](how-to-connect-health-operations.md)
+* [Instalace agenta stavu Azure AD Connect](how-to-connect-health-agent-install.md)
+* [Operace stavu Azure AD Connect](how-to-connect-health-operations.md)
 * [Používání služby Azure AD Connect Health se službou AD FS](how-to-connect-health-adfs.md)
-* [Používání služby Azure AD Connect Health pro synchronizaci](how-to-connect-health-sync.md)
+* [Použití azure ad připojení stavu pro synchronizaci](how-to-connect-health-sync.md)
 * [Azure AD Connect Health – nejčastější dotazy](reference-connect-health-faq.md)
 * [Historie verzí služby Azure AD Connect Health](reference-connect-health-version-history.md)
 

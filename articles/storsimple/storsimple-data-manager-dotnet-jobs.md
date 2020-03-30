@@ -1,87 +1,87 @@
 ---
 title: Použití sady .NET SDK pro úlohy Microsoft Azure StorSimple Data Manager
-description: Naučte se používat sadu .NET SDK ke spouštění úloh StorSimple Data Manager.
+description: Naučte se používat stesku .NET SDK ke spuštění úloh Správce dat StorSimple
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: b7cf1d3b9d4a9d751348c4792f904062b00ac104
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76270728"
 ---
-# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Spuštění transformace dat pomocí .NET SDK
+# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Použití sady .NET SDK k zahájení transformace dat
 
 ## <a name="overview"></a>Přehled
 
-Tento článek vysvětluje, jak můžete pomocí funkce transformace dat v rámci služby StorSimple Data Manager transformovat data zařízení StorSimple. Transformovaná data pak spotřebují jiné služby Azure v cloudu.
+Tento článek vysvětluje, jak můžete použít funkci transformace dat v rámci služby StorSimple Data Manager k transformaci dat zařízení StorSimple. Transformovaná data se pak spotřebovávají jinými službami Azure v cloudu.
 
 Úlohu transformace dat můžete spustit dvěma způsoby:
 
 - Použití sady .NET SDK
-- Použití Azure Automation Runbook
+- Použití runbooku Azure Automation
  
-  Tento článek podrobně popisuje, jak vytvořit ukázkovou konzolovou aplikaci .NET pro zahájení úlohy transformace dat a pak ji sledovat pro dokončení. Další informace o tom, jak iniciovat transformaci dat pomocí automatizace, najdete v tématu [použití Azure Automation Runbook k aktivaci úloh transformace dat](storsimple-data-manager-job-using-automation.md).
+  Tento článek podrobně popisuje, jak vytvořit ukázkovou aplikaci konzoly .NET k zahájení úlohy transformace dat a sledovat ji pro dokončení. Další informace o tom, jak zahájit transformaci dat prostřednictvím automatizace, přejděte na [spuštění úloh transformace dat pomocí runbooku Azure Automation](storsimple-data-manager-job-using-automation.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že máte následující:
+Než začnete, ujistěte se, že máte:
 *   Počítač se systémem:
 
     - Visual Studio 2012, 2013, 2015 nebo 2017.
 
-    - Prostředí Azure PowerShell. [Stáhněte si Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-*   Správně nakonfigurovaná definice úlohy v StorSimple Data Manager v rámci skupiny prostředků.
-*   Všechny požadované knihovny DLL. Stáhněte si tyto knihovny DLL z [úložiště GitHub](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls).
-*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) skript z úložiště GitHub.
+    - Azure Powershell. [Stáhnout Azure Powershell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+*   Správně nakonfigurovaná definice úlohy ve Správci dat StorSimple v rámci skupiny prostředků.
+*   Všechny požadované dlls. Stáhněte si tyto dll z [úložiště GitHub](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls).
+*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)z úložiště GitHub.
 
-## <a name="step-by-step-procedure"></a>Podrobný postup
+## <a name="step-by-step-procedure"></a>Postup krok za krokem
 
-Provedením následujících kroků spusťte úlohu transformace dat pomocí rozhraní .NET.
+Pomocí spuštění úlohy transformace dat proveďte následující kroky.
 
-1. Chcete-li načíst parametry konfigurace, proveďte následující kroky:
-    1. Stáhněte `Get-ConfigurationParams.ps1` ze skriptu úložiště GitHub v umístění `C:\DataTransformation`.
-    1. Spusťte skript `Get-ConfigurationParams.ps1` z úložiště GitHub. Zadejte následující příkaz:
+1. Chcete-li načíst parametry konfigurace, postupujte takto:
+    1. Stáhněte `Get-ConfigurationParams.ps1` si skript úložiště GitHub v `C:\DataTransformation` umístění.
+    1. Spusťte `Get-ConfigurationParams.ps1` skript z úložiště GitHub. Zadejte následující příkaz:
 
         ```
         C:\DataTransformation\Get-ConfigurationParams.ps1 -SubscriptionName "AzureSubscriptionName" -ActiveDirectoryKey "AnyRandomPassword" -AppName "ApplicationName"
          ```
         Můžete předat libovolné hodnoty pro ActiveDirectoryKey a AppName.
 
-2. Tento skript vytvoří výstup následujících hodnot:
+2. Tento skript vyvodí následující hodnoty:
     * ID klienta
     * ID tenanta
-    * Klíč služby Active Directory (stejný jako ten, který jste zadali výše)
+    * Klíč služby Active Directory (stejný jako ten, který byl zadán výše)
     * ID předplatného
 
-        ![Výstup skriptu parametrů konfigurace](media/storsimple-data-manager-dotnet-jobs/get-config-parameters.png)
+        ![Výstup skriptu konfiguračních parametrů](media/storsimple-data-manager-dotnet-jobs/get-config-parameters.png)
 
-3. Pomocí sady Visual Studio 2012, 2013 nebo 2015 vytvořte konzolovou aplikaci C# .NET.
+3. Pomocí Sady Visual Studio 2012, 2013 nebo 2015 vytvořte konzolovou aplikaci C# .NET.
 
-    1. Spusťte **Visual Studio 2012/2013/2015**.
+    1. Spuštění **Sady Visual Studio 2012/2013/2015**.
     1. Vyberte **Soubor > Nový > Projekt**.
 
-        ![Vytvořit projekt 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
-    2. Vyberte **nainstalované > šablony > Konzolová aplikace Visual C# >** .
-    3. Jako **název**zadejte **DataTransformationApp** .
-    4. Jako **umístění**vyberte **C:\DataTransformation** .
-    6. Projekt vytvoříte kliknutím na **OK**.
+        ![Vytvoření projektu 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
+    2. Vyberte **nainstalované šablony > > aplikaci Visual C# > Console .**
+    3. Zadejte **DataTransformationApp** pro **název**.
+    4. Vyberte **c:\DataTransformation** pro **umístění**.
+    6. Kliknutím na tlačítko **OK** vytvořte projekt.
 
         ![Vytvoření projektu 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 
-4. Nyní přidejte všechny knihovny DLL přítomné ve [složce DLL](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) jako **odkazy** v projektu, který jste vytvořili. Chcete-li přidat soubory DLL, proveďte následující:
+4. Nyní přidejte všechny dlls přítomné ve [složce dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) jako **odkazy** v projektu, který jste vytvořili. Chcete-li přidat soubory dll, proveďte následující kroky:
 
-   1. V aplikaci Visual Studio se podívejte na **zobrazení > Průzkumník řešení**.
-   2. Klikněte na šipku nalevo od projektu aplikace transformace dat. Klikněte na **odkazy** a potom klikněte pravým tlačítkem na **Přidat odkaz**.
+   1. V sadě Visual Studio přejděte na **zobrazit > Průzkumníka řešení**.
+   2. Klikněte na šipku vlevo od projektu aplikace transformace dat. Klepněte na **odkaz a** potom klepnutím pravým tlačítkem myši **na položku Přidat odkaz**.
     
-       ![Přidat knihovny DLL 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
+       ![Přidat dlls 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
-   3. Přejděte do umístění složky balíčky, vyberte všechny knihovny DLL a klikněte na tlačítko **Přidat**a poté klikněte na tlačítko **OK**.
+   3. Přejděte do umístění složky balíčky, vyberte všechny dll s dll a klepněte na **tlačítko Přidat**a klepněte na tlačítko **OK**.
 
-       ![Přidat knihovny DLL 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
+       ![Přidat dlls 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
 5. Do zdrojového souboru (Program.cs) v projektu přidejte následující příkazy **using**.
 
@@ -94,7 +94,7 @@ Provedením následujících kroků spusťte úlohu transformace dat pomocí roz
     using Microsoft.Internal.Dms.DmsWebJob.Contracts;
     ```
     
-6. Následující kód Inicializuje instanci úlohy transformace dat. Přidejte ho do **metody Main**. Nahraďte hodnoty parametrů konfigurace, které byly získány dříve. Připojte hodnoty **název skupiny prostředků** a **resourceName**. **ResourceGroupName** je přidružená k StorSimple data Manager, na které byla definice úlohy nakonfigurovaná. **ResourceName** je název vaší služby StorSimple data Manager.
+6. Následující kód inicializuje instanci úlohy transformace dat. Přidejte tuto metodu **main .** Nahraďte hodnoty konfiguračních parametrů, jak byly získány dříve. Zapojte hodnoty **název skupiny prostředků** a **název_prostředku**. **ResourceGroupName** je přidružený správce dat StorSimple, na kterém byla nakonfigurována definice úlohy. **ResourceName** je název služby StorSimple Data Manager.
 
     ```
     // Setup the configuration parameters.
@@ -112,7 +112,7 @@ Provedením následujících kroků spusťte úlohu transformace dat pomocí roz
     DataTransformationJob dataTransformationJob = new DataTransformationJob(configParams);
     ```
    
-7. Zadejte parametry, pomocí kterých je třeba spustit definici úlohy.
+7. Zadejte parametry, se kterými má být definice úlohy spuštěna.
 
     ```
     string jobDefinitionName = "job-definition-name";
@@ -120,9 +120,9 @@ Provedením následujících kroků spusťte úlohu transformace dat pomocí roz
     DataTransformationInput dataTransformationInput = dataTransformationJob.GetJobDefinitionParameters(jobDefinitionName);
     ```
 
-    ANI
+    (NEBO)
 
-    Pokud chcete změnit parametry definice úlohy během běhu, přidejte následující kód:
+    Pokud chcete změnit parametry definice úlohy za běhu, přidejte následující kód:
 
     ```
     string jobDefinitionName = "job-definition-name";
@@ -149,7 +149,7 @@ Provedením následujících kroků spusťte úlohu transformace dat pomocí roz
     };
     ```
 
-8. Po inicializaci přidejte následující kód, který aktivuje úlohu transformace dat v definici úlohy. Připojte příslušný **název definice úlohy**.
+8. Po inicializaci přidejte následující kód, který spustí úlohu transformace dat v definici úlohy. Připojte příslušný **název definice úlohy**.
 
     ```
     // Trigger a job, retrieve the jobId and the retry interval for polling.
@@ -160,13 +160,13 @@ Provedením následujících kroků spusťte úlohu transformace dat pomocí roz
     Console.ReadLine();
 
     ```
-    Po vložení kódu Sestavte řešení. Zde je snímek obrazovky fragmentu kódu pro inicializaci instance úlohy transformace dat.
+    Po vložení kódu vytvořte řešení. Tady je snímek obrazovky fragmentu kódu pro inicializaci instance úlohy transformace dat.
 
    ![Fragment kódu pro inicializaci úlohy transformace dat](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet-1.png)
 
-9. Tato úloha transformuje data, která odpovídají kořenovým adresářům a filtrům souborů ve svazku StorSimple, a umístí je do zadaného kontejneru nebo sdílené složky souborů. Když se soubor transformuje, do fronty úložiště (ve stejném účtu úložiště jako kontejner/sdílená složka) se přidá zpráva se stejným názvem jako má definice úlohy. Tuto zprávu lze použít jako aktivační událost k zahájení dalšího zpracování souboru.
+9. Tato úloha transformuje data, která odpovídají kořenovému adresáři a filtrům souborů v rámci svazku StorSimple, a vloží je do zadané sdílené složky kontejneru nebo souboru. Při transformaci souboru je zpráva přidána do fronty úložiště (ve stejném účtu úložiště jako kontejner nebo sdílená složka) se stejným názvem jako definice úlohy. Tuto zprávu lze použít jako aktivační událost k zahájení dalšího zpracování souboru.
 
-10. Po aktivaci úlohy můžete použít následující kód ke sledování úlohy k dokončení. Pro spuštění úlohy není nutné tento kód přidat.
+10. Jakmile je úloha spuštěna, můžete použít následující kód ke sledování úlohy pro dokončení. Není nutné přidat tento kód pro spuštění úlohy.
 
     ```
     Job jobDetails = null;
@@ -188,10 +188,10 @@ Provedením následujících kroků spusťte úlohu transformace dat pomocí roz
     Console.Read();
 
     ```
-    Zde je snímek obrazovky s celou ukázkou kódu, který se používá ke spuštění úlohy pomocí .NET.
+    Zde je snímek obrazovky celé ukázky kódu, která slouží ke spuštění úlohy pomocí rozhraní .NET.
 
-    ![Úplný fragment kódu pro aktivaci úlohy .NET](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
+    ![Úplný úryvek kódu pro spuštění úlohy .NET](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-[K transformaci dat použijte StorSimple data Manager uživatelské rozhraní](storsimple-data-manager-ui.md).
+[Pomocí ui Správce dat StorSimple pro transformaci dat](storsimple-data-manager-ui.md).

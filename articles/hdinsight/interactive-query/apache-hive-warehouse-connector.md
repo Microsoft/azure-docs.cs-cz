@@ -1,6 +1,6 @@
 ---
-title: Apache Spark & – konektor pro datový sklad podregistru – Azure HDInsight
-description: Přečtěte si, jak integrovat Apache Spark a Apache Hive pomocí konektoru skladu pro podregistr v Azure HDInsight.
+title: Apache Spark & Hive – konektor pro sklad y Hive – Azure HDInsight
+description: Přečtěte si, jak integrovat Apache Spark a Apache Hive s konektorem Hive Warehouse Connector na Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
@@ -8,102 +8,102 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252406"
 ---
-# <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrace Apache Spark a Apache Hive s konektorem skladu podregistru
+# <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrace Apache Spark a Apache Hive s konektorem Hive Warehouse Connector
 
-Konektor Apache Hive Warehouse (umožní) je knihovna, která umožňuje snadněji pracovat s Apache Spark a Apache Hive tím, že podporuje úkoly, jako je přesun dat mezi datovými tabulkami Sparku a tabulkami podregistru a také nasměrování dat pro streamování Sparku do tabulek podregistru. Konektor datového skladu pro podregistr funguje jako most mezi Sparkem a podregistrem. Podporuje Scala, Java a Python pro vývoj.
+Apache Hive Warehouse Connector (HWC) je knihovna, která vám umožní snadněji pracovat s Apache Spark a Apache Hive tím, že podporuje úlohy, jako je přesouvání dat mezi tabulkami Spark DataFrames a Hive a také nasměrování streamovaných dat Spark do tabulek Hive. Hive Warehouse Connector funguje jako most mezi Spark a Hive. Podporuje Scala, Java a Python pro vývoj.
 
-Konektor skladiště pro podregistr umožňuje využívat jedinečné funkce podregistru a Sparku k vytváření výkonných aplikací pro velké objemy dat. Apache Hive nabízí podporu pro databázové transakce, které jsou atomické, konzistentní, izolované a trvalé (KYSELé). Další informace o KYSELINě a transakcích v podregistru najdete v tématu [transakce podregistru](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). Podregistr také nabízí podrobné kontrolní mechanismy zabezpečení prostřednictvím Apache Ranger a analytické zpracování s nízkou latencí, které není dostupné v Apache Spark.
+Konektor hive skladu umožňuje využívat jedinečné funkce Hive a Spark k vytváření výkonných aplikací pro velká data. Apache Hive nabízí podporu pro databázové transakce, které jsou atomic, konzistentní, izolované a trvanlivé (ACID). Další informace o ACID a transakcích v Hive naleznete v [tématu Transakce Hive](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). Hive také nabízí podrobné bezpečnostní ovládací prvky prostřednictvím Apache Ranger a analytické zpracování s nízkou latencí, které nejsou k dispozici v Apache Spark.
 
-Apache Spark má strukturované rozhraní API pro streamování, které poskytuje možnosti streamování, které nejsou dostupné v Apache Hive. Od HDInsight 4,0 Apache Spark 2.3.1 a Apache Hive 3.1.0 samostatné metaúložiště, což může zajistit obtížnou interoperabilitu. Konektor pro skladiště podregistru usnadňuje používání Sparku a úlů společně. Knihovna umožní načítá data ze LLAP démonů do paralelního vykonavatele paralelně, takže je efektivnější a škálovatelnější než použití standardního připojení JDBC z Sparku do podregistru.
+Apache Spark, má strukturované streaming API, které poskytuje možnosti streamování není k dispozici v Apache Hive. Počínaje HDInsight 4.0, Apache Spark 2.3.1 a Apache Hive 3.1.0 mají samostatné metastores, což může ztížit interoperabilitu. Konektor pro sklad Hive usnadňuje společné používání Spark a Hive. Knihovna HWC načítá data z daemonů LLAP do vykonavatelů Spark paralelně, takže je efektivnější a škálovatelnější než použití standardního připojení JDBC ze Spark u Hive.
 
-![Architektura konektoru skladu podregistru](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
+![architektura konektorů ve skladu úlu](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
-Mezi operace podporované konektorem skladu podregistru patří:
+Některé operace podporované konektorem skladu Hive jsou:
 
 * Popis tabulky
 * Vytvoření tabulky pro data ve formátu ORC
-* Výběr dat podregistru a načítání datového rámce
-* Zápis datového rámce do podregistru ve Batch
-* Spuštění příkazu aktualizace podregistru
-* Čtení dat tabulky z podregistru, transformace v Sparku a její zápis do nové tabulky podregistru
-* Zápis datového rámce nebo datového proudu Sparku do podregistru pomocí HiveStreaming
+* Výběr dat Hive a načítání datového rámce
+* Dávkové zápisu datového rámce do podregistru
+* Spuštění příkazu aktualizace Hive
+* Čtení dat tabulky z Úlu, jejich transformace v Sparku a jejich zápis do nové tabulky Hive
+* Zápis datového rámce nebo streamu Spark do Hive pomocí HiveStreamingu
 
-## <a name="hive-warehouse-connector-setup"></a>Nastavení konektoru pro skladiště v podregistru
+## <a name="hive-warehouse-connector-setup"></a>Nastavení konektoru skladu Hive
 
-Postupujte podle těchto kroků a nastavte konektor pro datový sklad mezi Sparkem a interaktivním dotazem v Azure HDInsight:
+Podle následujících kroků nastavte konektor skladu Hive mezi clusterem Spark a interactive query ve službě Azure HDInsight:
 
 ### <a name="create-clusters"></a>Vytváření clusterů
 
-1. Vytvořte cluster HDInsight Spark **4,0** s účtem úložiště a vlastní virtuální sítí Azure. Informace o vytvoření clusteru ve virtuální síti Azure najdete v tématu [Přidání HDInsight do existující virtuální sítě](../../hdinsight/hdinsight-plan-virtual-network-deployment.md#existingvnet).
+1. Vytvořte cluster HDInsight Spark **4.0** s účtem úložiště a vlastní virtuální sítí Azure. Informace o vytvoření clusteru ve virtuální síti Azure najdete v tématu [Přidání HDInsightu do existující virtuální sítě](../../hdinsight/hdinsight-plan-virtual-network-deployment.md#existingvnet).
 
-1. Vytvořte cluster HDInsight Interactive Query (LLAP) **4,0** se stejným účtem úložiště a Azure Virtual Network jako cluster Spark.
+1. Vytvořte cluster **4.0** pro interaktivní dotaz HDInsight (LLAP) se stejným účtem úložiště a virtuální sítí Azure jako cluster Spark.
 
 ### <a name="modify-hosts-file"></a>Upravit soubor hostitelů
 
-Zkopírujte informace o uzlu ze souboru `/etc/hosts` v headnode0 vašeho clusteru interaktivních dotazů a zřetězte informace do souboru `/etc/hosts` na headnode0 clusteru Spark. Tento krok umožní vašemu clusteru Spark přeložit IP adresy uzlů v clusteru interaktivních dotazů. Zobrazte obsah aktualizovaného souboru pomocí `cat /etc/hosts`. Konečný výstup by měl vypadat nějak takto, jak je znázorněno na snímku obrazovky níže.
+Zkopírujte informace o `/etc/hosts` uzlu ze souboru v clusteru interaktivních dotazů a `/etc/hosts` zřetězte je do souboru v hlavním uzlu clusteru Spark. Tento krok umožní clusteru Spark vyřešit IP adresy uzlů v clusteru interaktivních dotazů. Zobrazení obsahu aktualizovaného souboru pomocí aplikace `cat /etc/hosts`. Konečný výstup by měl vypadat podobně jako to, co je znázorněno na následujícím snímku obrazovky.
 
-![soubor hostitelů konektoru skladu podregistru](./media/apache-hive-warehouse-connector/hive-warehouse-connector-hosts-file.png)
+![konektor u jevu, který je hostitelem](./media/apache-hive-warehouse-connector/hive-warehouse-connector-hosts-file.png)
 
-### <a name="gather-preliminary-information"></a>Shromáždit předběžné informace
+### <a name="gather-preliminary-information"></a>Shromažďujte předběžné informace
 
-#### <a name="from-your-interactive-query-cluster"></a>Z vašeho clusteru interaktivních dotazů
+#### <a name="from-your-interactive-query-cluster"></a>Z clusteru interaktivních dotazů
 
-1. Přejděte na stránku s podregistrem Apache Ambari clusteru pomocí `https://LLAPCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs`, kde `LLAPCLUSTERNAME` je název vašeho clusteru interaktivních dotazů.
+1. Přejděte na stránku Apache Ambari `https://LLAPCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` Hive clusteru pomocí `LLAPCLUSTERNAME` názvu clusteru interaktivních dotazů.
 
-1. Přejděte na **Advanced** > **General** > **podregistr. metastore. URI** a poznamenejte si hodnotu. Hodnota může být podobná: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
+1. Přejděte na **soubor Advanced** > **General** > **hive.metastore.uris** a poznamenejte si hodnotu. Hodnota může být podobná: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
 
-1. Přejděte na **upřesnit** > **Rozšířený podregistr-site** > **podregistr. Zookeeper. kvorum** a poznamenejte si hodnotu. Hodnota může být podobná: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
+1. Přejděte na **stránku Advanced** > **Advanced hive-site** > **hive.zookeeper.quorum** a poznamenejte si hodnotu. Hodnota může být podobná: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
 
-#### <a name="from-your-apache-spark-cluster"></a>Z Apache Spark clusteru
+#### <a name="from-your-apache-spark-cluster"></a>Z clusteru Apache Spark
 
-1. Přejděte na stránku s podregistrem Apache Ambari clusteru pomocí `https://SPARKCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs`, kde `SPARKCLUSTERNAME` je název vašeho clusteru Apache Spark.
+1. Přejděte na stránku Apache Ambari `https://SPARKCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` Hive clusteru pomocí místa, kde `SPARKCLUSTERNAME` je název vašeho clusteru Apache Spark.
 
-1. Přejděte k části **pokročilá** > **Pokročilá interaktivita podregistru** , > **podregistr. llap. daemon. Service. Hosts** a poznamenejte si hodnotu. Hodnota může být podobná: `@llap0`.
+1. Přejděte na **soubor Advanced** > **Advanced hive-interactive-site** > **hive.llap.daemon.service.hosts** a poznamenejte si hodnotu. Hodnota může být podobná: `@llap0`.
 
 ### <a name="configure-spark-cluster-settings"></a>Konfigurace nastavení clusteru Spark
 
-Z webového uživatelského rozhraní Spark Ambari přejděte do složky **Spark2** > **config** > **Custom Spark2-Defaults**.
+Z webového uživatelského uživatelského uživatelského nastavení Spark Ambari přejděte na Výchozí hodnoty **Spark2** > **CONFIGS** > **spark2**.
 
-![Konfigurace Spark2 Apache Ambari](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
+![Konfigurace Apache Ambari Spark2](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-Vyberte **Přidat vlastnost...** podle potřeby přidejte nebo aktualizujte následující:
+Vyberte **Přidat vlastnost...** podle potřeby přidat nebo aktualizovat následující:
 
 | Klíč | Hodnota |
 |----|----|
-|`spark.hadoop.hive.llap.daemon.service.hosts`|Hodnota, kterou jste získali dříve z **podregistru. llap. démon. Service. Hosts**.|
-|`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`. Nastavte na připojovací řetězec JDBC, který se připojí k Hiveserver2 v clusteru interaktivních dotazů. NAHRAĎte `LLAPCLUSTERNAME` názvem vašeho clusteru interaktivních dotazů. Nahraďte `PWD` skutečným heslem.|
-|`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. Nastavte vhodný přípravný adresář kompatibilní s HDFS. Pokud máte dva různé clustery, pracovní adresář by měl být složka v pracovním adresáři účtu úložiště LLAP clusteru, aby k němu měl přístup HiveServer2.  Místo `STORAGE_ACCOUNT_NAME` nahraďte názvem účtu úložiště použitým clusterem a `STORAGE_CONTAINER_NAME` názvem kontejneru úložiště.|
-|`spark.datasource.hive.warehouse.metastoreUri`|Hodnota, kterou jste získali dříve z **podregistru. metastore. URI**.|
-|`spark.security.credentials.hiveserver2.enabled`|`false` pro režim nasazení klienta PŘÍZ.|
-|`spark.hadoop.hive.zookeeper.quorum`|Hodnota, kterou jste získali dříve z **podregistru. Zookeeper. kvora**.|
+|`spark.hadoop.hive.llap.daemon.service.hosts`|Hodnota, kterou jste získali dříve od **společnosti hive.llap.daemon.service.hosts**.|
+|`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`. Nastavte na připojovací řetězec JDBC, který se připojuje k Hiveserver2 v clusteru interaktivních dotazů. NAHRAĎTE `LLAPCLUSTERNAME` názvem clusteru interaktivních dotazů. Nahraďte `PWD` skutečným heslem.|
+|`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. Nastavte na vhodný pracovní adresář kompatibilní s HDFS. Pokud máte dva různé clustery, pracovní adresář by měl být složka v pracovním adresáři účtu úložiště clusteru LLAP tak, aby k němu měl přístup HiveServer2.  Nahraďte `STORAGE_ACCOUNT_NAME` název účtu úložiště používaného clusterem `STORAGE_CONTAINER_NAME` a názvem kontejneru úložiště.|
+|`spark.datasource.hive.warehouse.metastoreUri`|Hodnota, kterou jste získali dříve z **hive.metastore.uris**.|
+|`spark.security.credentials.hiveserver2.enabled`|`false`pro režim nasazení klienta YARN.|
+|`spark.hadoop.hive.zookeeper.quorum`|Hodnota, kterou jste získali dříve od **hive.zookeeper.quorum**.|
 
 Podle potřeby uložte změny a restartujte součásti.
 
-## <a name="using-the-hive-warehouse-connector"></a>Použití konektoru skladu z podregistru
+## <a name="using-the-hive-warehouse-connector"></a>Použití konektoru skladu Hive
 
 ### <a name="connecting-and-running-queries"></a>Připojení a spuštění dotazů
 
-Můžete si vybrat mezi několika různými způsoby, jak se připojit ke clusteru interaktivních dotazů a provádět dotazy pomocí konektoru skladu z podregistru. Mezi podporované metody patří následující nástroje:
+Můžete si vybrat mezi několika různými způsoby připojení ke clusteru interaktivních dotazů a spouštět dotazy pomocí konektoru skladu Hive. Podporované metody zahrnují následující nástroje:
 
-* [Spark – prostředí](../spark/apache-spark-shell.md)
-* PySpark
-* Spark – odeslání
+* [jiskra-shell](../spark/apache-spark-shell.md)
+* PySpark (PySka
+* jiskra-předložit
 * [Zeppelin](../spark/apache-spark-zeppelin-notebook.md)
 * [Livy](../spark/apache-spark-livy-rest-interface.md)
 
-Všechny příklady, které jsou uvedené v tomto článku, se spustí prostřednictvím Spark-Shell.
+Všechny příklady uvedené v tomto článku budou provedeny prostřednictvím jiskry.All examples provided in this article will be executed through spark-shell.
 
-Chcete-li spustit relaci Spark-Shell, proveďte následující kroky:
+Chcete-li zahájit relaci jiskrového prostředí, postupujte takto:
 
-1. SSH do hlavnímu uzlu pro váš cluster Apache Spark. Další informace o připojení ke clusteru pomocí SSH najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+1. SSH do headnode pro cluster Apache Spark. Další informace o připojení ke clusteru pomocí SSH najdete v [tématu Připojení k HDInsight (Apache Hadoop) pomocí SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Zadejte následující příkaz, který spustí prostředí Spark:
+1. Chcete-li spustit prostředí jiskry, zadejte následující příkaz:
 
     ```bash
     spark-shell --master yarn \
@@ -111,24 +111,24 @@ Chcete-li spustit relaci Spark-Shell, proveďte následující kroky:
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
-    Zobrazí se uvítací zpráva a výzva `scala>`, kde můžete zadat příkazy.
+    Zobrazí se uvítací zpráva `scala>` a výzva, kde můžete zadat příkazy.
 
-1. Po spuštění Spark-Shell můžete instanci konektoru skladu podregistru spustit pomocí následujících příkazů:
+1. Po spuštění jiskry-prostředí, Hive warehouse connector instance lze spustit pomocí následujících příkazů:
 
     ```scala
     import com.hortonworks.hwc.HiveWarehouseSession
     val hive = HiveWarehouseSession.session(spark).build()
     ```
 
-### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>Připojení a spuštění dotazů v clusterech Balíček zabezpečení podniku (ESP)
+### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>Připojení a spuštění dotazů v clusterech balíčků zabezpečení rozlehlé sítě (ESP)
 
-Balíček zabezpečení podniku (ESP) poskytuje podnikové funkce, jako je ověřování založené na službě Active Directory, podpora více uživatelů a řízení přístupu na základě rolí pro Apache Hadoop clustery ve službě Azure HDInsight. Další informace o protokolu ESP najdete v tématu [použití balíček zabezpečení podniku ve službě HDInsight](../domain-joined/apache-domain-joined-architecture.md).
+Balíček zabezpečení rozlehlé sítě (ESP) poskytuje funkce na podnikové úrovni, jako je ověřování na základě služby Active Directory, podpora více uživatelů a řízení přístupu na základě rolí pro clustery Apache Hadoop v Azure HDInsight. Další informace o protokolu ESP naleznete [v tématu Použití balíčku enterprise security package in HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
-1. SSH do hlavnímu uzlu pro váš cluster Apache Spark. Další informace o připojení ke clusteru pomocí SSH najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+1. SSH do headnode pro cluster Apache Spark. Další informace o připojení ke clusteru pomocí SSH najdete v [tématu Připojení k HDInsight (Apache Hadoop) pomocí SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Zadejte `kinit` a přihlaste se jako uživatel domény.
+1. Zadejte `kinit` a přihlaste se pomocí uživatele domény.
 
-1. Spusťte Spark-shell s úplným seznamem parametrů konfigurace, jak je znázorněno níže. V závislosti na vašem clusteru je nutné zadat všechny hodnoty ze všech velkých písmen mezi lomenými závorkami. Pokud potřebujete zjistit hodnoty, které se mají zadat pro některý z níže uvedených parametrů, přečtěte si část o [Nastavení konektoru ve skladu pro podregistr](#hive-warehouse-connector-setup).:
+1. Začněte jiskrovou skořepinu s úplným seznamem konfiguračních parametrů, jak je znázorněno níže. Všechny hodnoty ve všech velkých písmenmezi úhlovými závorkami musí být určeny na základě clusteru. Pokud potřebujete zjistit hodnoty, které chcete zadat pro některý z níže uvedených parametrů, podívejte se do části [nastavení konektoru skladu Hive](#hive-warehouse-connector-setup).:
 
     ```bash
     spark-shell --master yarn \
@@ -141,9 +141,9 @@ Balíček zabezpečení podniku (ESP) poskytuje podnikové funkce, jako je ově�
     --conf spark.hadoop.hive.zookeeper.quorum='<ZOOKEEPER_QUORUM>'
    ```
 
-### <a name="creating-spark-dataframes-from-hive-queries"></a>Vytváření Spark dataframes z dotazů na podregistr
+### <a name="creating-spark-dataframes-from-hive-queries"></a>Vytváření datových rámců Spark z dotazů Hive
 
-Výsledky všech dotazů využívajících knihovnu umožní jsou vráceny jako datový rámec. Následující příklady ukazují, jak vytvořit základní dotaz.
+Výsledky všech dotazů pomocí knihovny HWC jsou vráceny jako datový rámec. Následující příklady ukazují, jak vytvořit základní dotaz.
 
 ```scala
 hive.setDatabase("default")
@@ -151,66 +151,66 @@ val df = hive.executeQuery("select * from hivesampletable")
 df.filter("state = 'Colorado'").show()
 ```
 
-Výsledky dotazu jsou Spark dataframes, které lze použít s knihovnami Spark jako MLIB a SparkSQL.
+Výsledky dotazu jsou Spark DataFrames, které lze použít s knihovnami Spark, jako je MLIB a SparkSQL.
 
-### <a name="writing-out-spark-dataframes-to-hive-tables"></a>Zápis datového rámce Spark do tabulek podregistru
+### <a name="writing-out-spark-dataframes-to-hive-tables"></a>Zápis datových rámců Spark do tabulek Hive
 
-Spark nebude nativně podporovat zápis do spravovaných tabulek KYSELosti podregistru. Pomocí umožní ale můžete napsat libovolný datový rámec do tabulky podregistru. Tuto funkci můžete zobrazit v práci v následujícím příkladu:
+Spark nativně nepodporuje zápis do spravovaných tabulek ACID společnosti Hive. Pomocí HWC však můžete zapsat libovolný datový rámec do tabulky Hive. Tuto funkci můžete vidět při práci v následujícím příkladu:
 
-1. Vytvořte tabulku s názvem `sampletable_colorado` a určete její sloupce pomocí následujícího příkazu:
+1. Vytvořte tabulku `sampletable_colorado` s názvem a zadejte její sloupce pomocí následujícího příkazu:
 
     ```scala
     hive.createTable("sampletable_colorado").column("clientid","string").column("querytime","string").column("market","string").column("deviceplatform","string").column("devicemake","string").column("devicemodel","string").column("state","string").column("country","string").column("querydwelltime","double").column("sessionid","bigint").column("sessionpagevieworder","bigint").create()
     ```
 
-1. Vyfiltruje tabulku `hivesampletable`, kde sloupec `state` se rovná `Colorado`. Tento dotaz na tabulku podregistru se vrátí jako datový rámec Spark. Pak je datový rámec uložen v tabulce podregistru `sampletable_colorado` pomocí funkce `write`.
+1. Filtrujte `hivesampletable` tabulku, `state` kde `Colorado`se rovná sloupec . Tento dotaz tabulky Hive je vrácen jako datový rámec Spark. Potom je datový rámec uložen v `sampletable_colorado` tabulce `write` Hive pomocí funkce.
 
     ```scala
     hive.table("hivesampletable").filter("state = 'Colorado'").write.format(HiveWarehouseSession.HIVE_WAREHOUSE_CONNECTOR).option("table","sampletable_colorado").save()
     ```
 
-1. Výsledky zobrazíte pomocí následujícího příkazu:
+1. Výsledky můžete zobrazit pomocí následujícího příkazu:
 
     ```scala
     hive.table("sampletable_colorado").show()
     ```
 
-    ![konektor datového skladu pro zobrazení tabulky podregistru](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
+    ![konektor ve skladu úlu zobrazuje tabulku podregistru](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
 
-### <a name="structured-streaming-writes"></a>Strukturované zápisy streamování
+### <a name="structured-streaming-writes"></a>Strukturované zápisy datových proudů
 
-Pomocí konektoru Warehouse pro podregistr můžete pomocí streamování Spark zapisovat data do tabulek podregistru.
+Pomocí konektoru Hive Warehouse Connector můžete pomocí streamování Spark zapisovat data do tabulek Hive.
 
-Pomocí následujících kroků vytvořte příklad konektoru skladu s podmnožinou, který ingestuje data z datového proudu Spark na portu hostitele 9999 do tabulky podregistru.
+Podle následujících kroků vytvořte příklad konektoru skladu Hive, který ingestuje data z datového proudu Spark na portu localhost 9999 do tabulky Hive.
 
-1. Postupujte podle kroků v části [připojení a spuštění dotazů](#connecting-and-running-queries).
+1. Postupujte podle pokynů v části [Připojení a spuštění dotazů](#connecting-and-running-queries).
 
-1. Spusťte datový proud Spark pomocí následujícího příkazu:
+1. Začněte jiskřicí proud následujícím příkazem:
 
     ```scala
     val lines = spark.readStream.format("socket").option("host", "localhost").option("port",9999).load()
     ```
 
-1. Pomocí následujících kroků vygenerujte data pro datový proud Spark, který jste vytvořili:
-    1. Otevřete druhou relaci SSH na stejném clusteru Spark.
-    1. Do příkazového řádku zadejte `nc -lk 9999`. Tento příkaz používá nástroj Netcat k posílání dat z příkazového řádku na zadaný port.
+1. Vygenerujte data pro stream Spark, který jste vytvořili, a to takto:
+    1. Otevřete druhou relaci SSH ve stejném clusteru Spark.
+    1. Na příkazovém `nc -lk 9999`řádku zadejte příkaz . Tento příkaz používá nástroj netcat k odesílání dat z příkazového řádku do zadaného portu.
 
-1. Vraťte se k první relaci SSH a vytvořte novou tabulku podregistru pro ukládání dat streamování. V prostředí Spark zadejte následující příkaz:
+1. Vraťte se k první relaci SSH a vytvořte novou tabulku Hive pro uložení streamovaných dat. Na jiskrovém prostředí zadejte následující příkaz:
 
     ```scala
     hive.createTable("stream_table").column("value","string").create()
     ```
 
-1. Pak zapište streamovaná data do nově vytvořené tabulky pomocí následujícího příkazu:
+1. Potom zapište streamovaná data do nově vytvořené tabulky pomocí následujícího příkazu:
 
     ```scala
     lines.filter("value = 'HiveSpark'").writeStream.format(HiveWarehouseSession.STREAM_TO_STREAM).option("database", "default").option("table","stream_table").option("metastoreUri",spark.conf.get("spark.datasource.hive.warehouse.metastoreUri")).option("checkpointLocation","/tmp/checkpoint1").start()
     ```
 
     >[!Important]
-    > Možnosti `metastoreUri` a `database` je nyní nutné nastavit ručně z důvodu známého problému v Apache Spark. Další informace o tomto problému naleznete v [Spark-25460](https://issues.apache.org/jira/browse/SPARK-25460).
+    > `metastoreUri` Možnosti `database` a musí být aktuálně nastaveny ručně kvůli známému problému v Apache Spark. Další informace o tomto problému naleznete v tématu [SPARK-25460](https://issues.apache.org/jira/browse/SPARK-25460).
 
-1. Vraťte se k druhé relaci SSH a zadejte následující hodnoty:
+1. Vraťte se do druhé relace SSH a zadejte následující hodnoty:
 
     ```bash
     foo
@@ -218,17 +218,17 @@ Pomocí následujících kroků vytvořte příklad konektoru skladu s podmnoži
     bar
     ```
 
-1. Vraťte se k první relaci SSH a poznamenejte si stručnou aktivitu. Data zobrazíte pomocí následujícího příkazu:
+1. Vraťte se k první relaci SSH a poznamenejte si stručnou aktivitu. K zobrazení dat použijte následující příkaz:
 
     ```scala
     hive.table("stream_table").show()
     ```
 
-Pomocí **kombinace kláves CTRL + C** zastavte NetCat v druhé relaci SSH. Pomocí `:q` ukončete prostředí Spark-Shell na první relaci SSH.
+Pomocí **kombinace kláves Ctrl + C** můžete zastavit netcat v druhé relaci SSH. Slouží `:q` k ukončení jiskry-shell na první relaci SSH.
 
 ### <a name="securing-data-on-spark-esp-clusters"></a>Zabezpečení dat v clusterech Spark ESP
 
-1. Vytvořte tabulku `demo` s ukázkovými daty zadáním následujících příkazů:
+1. Vytvořte `demo` tabulku s ukázkovými daty zadáním následujících příkazů:
 
     ```scala
     create table demo (name string);
@@ -237,29 +237,29 @@ Pomocí **kombinace kláves CTRL + C** zastavte NetCat v druhé relaci SSH. Pomo
     INSERT INTO demo VALUES ('InteractiveQuery');
     ```
 
-1. Zobrazte obsah tabulky pomocí následujícího příkazu. Před použitím této zásady se v tabulce `demo` zobrazuje celý sloupec.
+1. Zobrazení obsahu tabulky pomocí následujícího příkazu. Před použitím zásady `demo` se v tabulce zobrazí celý sloupec.
 
     ```scala
     hive.executeQuery("SELECT * FROM demo").show()
     ```
 
-    ![Ukázková tabulka před použitím zásad Ranger](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png)
+    ![ukázková tabulka před použitím zásad rangeru](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png)
 
-1. Použijte zásadu maskování sloupců, která zobrazuje jenom poslední čtyři znaky sloupce.  
-    1. V `https://CLUSTERNAME.azurehdinsight.net/ranger/`otevřete uživatelské rozhraní správce Ranger.
-    1. Klikněte na podregistr Service pro váš cluster v **podregistru**.
-        ![Ranger Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
-    1. Klikněte na kartu **maskování** a pak **přidejte nové zásady** .
+1. Použijte zásadu maskování sloupců, která zobrazuje pouze poslední čtyři znaky sloupce.  
+    1. Přejděte na verzi uživatelského rozhraní správce rangeru na adrese `https://CLUSTERNAME.azurehdinsight.net/ranger/`.
+    1. Klikněte na službu Hive pro váš cluster v části **Hive**.
+        ![správce služeb ranger](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
+    1. Klikněte na kartu **Maskování** a pak **přidat nové zásady**
 
-        ![seznam zásad podregistru Ranger konektoru skladu podregistru](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+        ![seznam zásad zásad podregistrů rangerových spojů](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. Zadejte požadovaný název zásad. Vyberte databázi: **výchozí**, tabulka podregistru: **Ukázka**, sloupec podregistru: **název**, uživatel: **Rsadmin2**, typy přístupu: **Vybrat**a **částečná maska: Zobrazit poslední 4** v nabídce **možností výběru maskování** . Klikněte na **Přidat**.
-                ![vytvoření zásady](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
-1. Znovu zobrazte obsah tabulky. Po použití zásad Ranger uvidíme jenom poslední čtyři znaky sloupce.
+    a. Zadejte požadovaný název zásady. Vybrat databázi: **Výchozí**tabulka , Hive: **ukázka**, Sloupec Hive: **název**, Uživatel: **rsadmin2**, Typy přístupu: **vybrat**a **Částečná maska: zobrazit poslední 4** z nabídky Vybrat **možnost maskování.** Klikněte na **Přidat**.
+                ![vytvořit zásadu](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
+1. Znovu zobrazit obsah tabulky. Po použití zásadranger, můžeme vidět pouze poslední čtyři znaky sloupce.
 
-    ![Ukázková tabulka po použití zásad Ranger](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
+    ![demo tabulka po použití zásad ranger](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Použití Interactive Query se službou HDInsight](./apache-interactive-query-get-started.md).
-* [Příklady interakce s konektorem skladiště v podregistru pomocí Zeppelin, Livy, Spark-Submit a pyspark](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)
+* [Příklady interakce se konektorem Hive Warehouse Connector pomocí Zeppelin, Livy, spark-submit a pyspark](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

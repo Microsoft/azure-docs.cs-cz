@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174712"
 ---
 1. Spuštění UnifiedSetup.exe služby Azure Site Recovery
@@ -19,7 +19,7 @@ ms.locfileid: "67174712"
 3. V části **Podrobnosti konfiguračního serveru** zadejte IP adresu konfiguračního serveru a přístupové heslo.
 
    ![Přidání procesového serveru 2](./media/site-recovery-add-process-server/ps-page-2.png)
-4. Na stránce **Nastavení internetu** určete, jak se zprostředkovatel, který běží na konfiguračním serveru, připojí k Azure Site Recovery přes internet.
+4. V **nastavení Internetu**určete, jak se zprostředkovatel spuštěný na konfiguračním serveru připojuje k obnovení webu Azure přes Internet.
 
    ![Přidání procesového serveru 3](./media/site-recovery-add-process-server/ps-page-3.png)
 
