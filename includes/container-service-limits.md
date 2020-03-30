@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 11/22/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: ac928d9087ba5db312540b8ec542d7a2a29e2a99
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 6b4678b381e769993b01bbedd1cb4c0aeefc0cc1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77179026"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334747"
 ---
-| Prostředek | Výchozí omezení |
+| Prostředek | Omezení |
 | --- | :--- |
 | Maximální počet clusterů na předplatné | 100 |
-| Maximální počet uzlů na cluster se skupinami dostupnosti virtuálních počítačů a základní Load Balancer SKU  | 100 |
-| Maximální počet uzlů na cluster s Virtual Machine Scale Sets a [Standard Load BALANCER SKU][standard-load-balancer] | 1000 (100 uzlů na [fond uzlů][node-pool]) |
-| Maximální počet lusků na uzel: [základní sítě][basic-networking] s Kubenet | 110 |
-| Maximální počet lusků na uzel: [Pokročilé sítě][advanced-networking] s rozhraním Azure Container Networking | Nasazení Azure CLI: 30<sup>1</sup><br />Šablona Azure Resource Manager: 30<sup>1</sup><br />Nasazení na portálu: 30 |
+| Maximální počet uzlů na cluster se sadami dostupnosti virtuálních strojů a základní skladovou položkou nástroje pro vyrovnávání zatížení  | 100 |
+| Maximální počet uzlů na cluster se sadami škálování virtuálních strojů a [standardní skladovou položkou nástroje pro vyrovnávání zatížení][standard-load-balancer] | 1000 (100 uzlů na [uzel fondu)][node-pool] |
+| Maximální počet lusků na uzel: [Základní síť][basic-networking] s Kubenetem | 110 |
+| Maximální počet podů na uzel: [Pokročilá síť][advanced-networking] s rozhraním Azure Container Networking Interface | Nasazení Azure CLI: 30<sup>1</sup><br />Šablona Azure Resource Manager: 30<sup>1</sup><br />Nasazení na portálu: 30 |
 
-<sup>1</sup> Když nasadíte cluster Azure Kubernetes Service (AKS) pomocí Azure CLI nebo šablony Správce prostředků, tato hodnota se dá nakonfigurovat až na 250 lusky na jeden uzel. Po nasazení clusteru AKS nebo pokud nasazujete cluster pomocí Azure Portal, nemůžete nakonfigurovat maximální počet lusků na uzel.<br />
+<sup>1.</sup> Když nasadíte cluster služby Azure Kubernetes Service (AKS) pomocí azure CLI nebo šablony Správce prostředků, tato hodnota je konfigurovatelná až na 250 podů na uzel. Maximální počet podů na uzel nelze nakonfigurovat po nasazení clusteru AKS nebo pokud nasadíte cluster pomocí portálu Azure.<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking

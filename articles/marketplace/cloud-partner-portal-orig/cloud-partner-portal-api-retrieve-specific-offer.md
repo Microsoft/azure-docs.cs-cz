@@ -1,29 +1,28 @@
 ---
-title: Načtení konkrétního rozhraní API nabídky | Azure Marketplace
-description: Rozhraní API načte určenou nabídku v rámci oboru názvů vydavatele.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Načtení specifického rozhraní API nabídky | Azure Marketplace
+description: Rozhraní API načte zadanou nabídku v oboru názvů vydavatele.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 030fb221b9227acf9c5dcda8797b106e51f56d64
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: a83b664bb770a88f3c4c13a672655e736a46ca75
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827352"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280452"
 ---
-<a name="retrieve-a-specific-offer"></a>Načíst konkrétní nabídku
+<a name="retrieve-a-specific-offer"></a>Načtení konkrétní nabídky
 =========================
 
-Načte zadanou nabídku v rámci oboru názvů vydavatele.  
+Načte zadanou nabídku v oboru názvů vydavatele.  
 
-Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konceptu, zobrazení nebo produkčních slotech. Pokud není zadaný slot, výchozí hodnota je `draft`. Pokud se pokusíte načíst nabídku, která není předzobrazená nebo publikovaná, výsledkem bude `404 Not Found`á chyba.
+Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konceptu, zobrazení nebo produkčních slotech. Pokud není zadán a patice, výchozí je `draft`. Pokus o načtení nabídky, která nebyla zobrazena náhled `404 Not Found` nebo publikována, bude mít za následek chybu.
 
 > [!WARNING]
-> Toto rozhraní API nebude načíst tajné hodnoty pro pole tajného typu.
+> Tajné hodnoty pro pole tajného typu nebudou tímto rozhraním API načteny.
 
 ``` http
     GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31
@@ -41,25 +40,25 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konc
 
 | **Název**    | **Popis**                                                                          | **Datový typ** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | publisherId. Například contoso                                                        | Řetězec        |
-| Hodnotami OfferId     | Identifikátor GUID, který jedinečně identifikuje nabídku                                                 | Řetězec        |
-| version     | Verze získané nabídky Ve výchozím nastavení se načte nejnovější verze nabídky. | Integer       |
-| SlotId      | Slot, ze kterého má být nabídka načtena, může být jedním z těchto:      <br/>  - `Draft` (výchozí) načte verzi nabídky, která je aktuálně v konceptu.  <br/>  -  `Preview` načte verzi nabídky, která je aktuálně ve verzi Preview.     <br/>  -  `Production` načte verzi nabídky, která je aktuálně v produkčním prostředí.          |      vytváření |
-| verze API-Version | Nejnovější verze rozhraní API                                                                    | Datum          |
+| id vydavatele | publisherId. Například společnost Contoso                                                        | Řetězec        |
+| offerId     | Guid, který jednoznačně identifikuje nabídku.                                                 | Řetězec        |
+| version     | Verze nabídky, která je načítána. Ve výchozím nastavení je načtena nejnovější verze nabídky. | Integer       |
+| slotId      | Slot, ze kterého má být nabídka načtena, může být jedním z:      <br/>  - `Draft`(výchozí) načte verzi nabídky, která je aktuálně v konceptu.  <br/>  -  `Preview`načte verzi nabídky, která je aktuálně ve verzi preview.     <br/>  -  `Production`načte verzi nabídky, která je aktuálně v produkčním prostředí.          |      enum |
+| verze-api | Nejnovější verze rozhraní API                                                                    | Datum          |
 |  |  |  |
 
 
 <a name="header"></a>Hlavička
 ------
 
-|  **Název**          |   **Hodnota**            |
+|  **Název**          |   **Hodnotu**            |
 |  ---------------   |  --------------        |
 |  Typ obsahu      | `application/json`     |
 |  Autorizace     | `Bearer YOUR_TOKEN`    |
 |  |  |
 
 
-<a name="body-example"></a>Příklad textu
+<a name="body-example"></a>Příklad těla
 ------------
 
 ### <a name="response"></a>Odpověď
@@ -167,28 +166,28 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konc
 ```
 
 
-### <a name="response-body-properties"></a>Vlastnosti textu odpovědi
+### <a name="response-body-properties"></a>Vlastnosti těla odezvy
 
 |  **Název**       |   **Popis**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
-|  offerTypeId    | Identifikuje typ nabídky.                                                                                                    |
-|  publisherId    | Jedinečný identifikátor vydavatele                                                                                              |
-|  status         | Stav nabídky Seznam možných hodnot najdete v tématu o [stavu nabídky](#offer-status) níže.                                  |
-|  ID             | Identifikátor GUID, který jedinečně identifikuje nabídku                                                                                         |
-|  version        | Aktuální verze nabídky Vlastnost Version nemůže změnit klient. Po každém publikování se zvýší.    |
-|  Definition     | Skutečná definice úlohy                                                                                               |
-|  changedTime    | UTC – datum poslední změny nabídky                                                                                   |
+|  offerTypeId    | Identifikuje typ nabídky                                                                                                    |
+|  id vydavatele    | Jedinečný identifikátor vydavatele                                                                                              |
+|  status         | Stav nabídky. Seznam možných hodnot naleznete níže v [tématu Stav nabídky.](#offer-status)                                  |
+|  ID             | IDENTIFIKÁTOR GUID, který jednoznačně identifikuje nabídku                                                                                         |
+|  version        | Aktuální verze nabídky. Vlastnost version nemůže být klientem změněna. Po každém publikování se to zintáží.    |
+|  definice     | Skutečná definice pracovní zátěže                                                                                               |
+|  changedTime    | Čas data času u času u změny nabídky                                                                                   |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Stavové kódy odpovědí
+### <a name="response-status-codes"></a>Stavové kódy odpovědi
 
-| **Znakovou**  | **Popis**                                                                                                                 |
+| **kód**  | **Popis**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK` – požadavek byl úspěšně zpracován a do klienta byly vráceny všechny nabídky pod vydavatelem.               |
-|  400      | `Bad/Malformed request` – tělo chybové odpovědi může obsahovat další informace.                                                 |
-|  403      | `Forbidden` – klient nemá přístup k zadanému oboru názvů.                                                        |
-|  404      | `Not found` – zadaná entita neexistuje. Klient by měl kontrolovat publisherId, hodnotami OfferId a verzi (Pokud je zadaný).      |
+|  200      | `OK`- Požadavek byl úspěšně zpracován a všechny nabídky pod vydavatelem byly vráceny klientovi.               |
+|  400      | `Bad/Malformed request`- Tělo odpovědi na chybu může obsahovat více informací.                                                 |
+|  403      | `Forbidden`- Klient nemá přístup k zadanému oboru názvů.                                                        |
+|  404      | `Not found`- Zadaná entita neexistuje. Klient by měl zkontrolovat publisherId, offerId a verze (pokud je zadán).      |
 |  |  |
 
 
@@ -196,11 +195,11 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konc
 
 |  **Název**                   |   **Popis**                             |
 | --------------------------- |  -------------------------------------------- |
-|  NeverPublished             | Nabídka nebyla nikdy publikována.               |
-|  NotStarted                 | Nabídka je nová, ale není spuštěná.              |
+|  Nikdy publikováno             | Nabídka nebyla nikdy zveřejněna.               |
+|  Notstarted                 | Nabídka je nová, ale není spuštěna.              |
 |  WaitingForPublisherReview  | Nabídka čeká na schválení vydavatele.      |
-|  Spuštěno                    | Zpracovává se odeslání nabídky.          |
-|  Úspěch                  | Bylo dokončeno zpracování příspěvku nabídky.    |
-|  Zrušeno                   | Odeslání nabídky se zrušilo.                |
-|  Selhalo                     | Odeslání nabídky se nezdařilo.                      |
+|  Spuštěno                    | Probíhá zpracování odesílání nabídky.          |
+|  Úspěch                  | Odeslání nabídky bylo dokončeno zpracování.    |
+|  Zrušeno                   | Odeslání nabídky bylo zrušeno.                |
+|  Failed                     | Odeslání nabídky se nezdařilo.                      |
 |  |  |

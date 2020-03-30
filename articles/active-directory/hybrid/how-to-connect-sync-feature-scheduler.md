@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect synchronizace: Scheduler | Microsoft Docs'
-description: Toto téma popisuje integrovanou funkci Scheduleru v Azure AD Connect synchronizaci.
+title: 'Synchronizace služby Azure AD Connect: Plánovač | Dokumenty společnosti Microsoft'
+description: Toto téma popisuje předdefinovanou funkci plánovače v synchronizaci Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,116 +17,116 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261070"
 ---
-# <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect synchronizace: Scheduler
-Toto téma popisuje integrovaný Plánovač v Azure AD Connect Sync (synchronizační modul).
+# <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: Plánovač
+Toto téma popisuje předdefinovaný plánovač v synchronizaci Azure AD Connect (synchronizační modul).
 
-Tato funkce byla představena s 1.1.105.0EM buildu (vydáno 2016. února).
+Tato funkce byla představena s sestavením 1.1.105.0 (vydáno v únoru 2016).
 
 ## <a name="overview"></a>Přehled
-Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místním adresáři pomocí plánovače. Existují dva procesy plánovače: jeden pro synchronizaci hesla a druhý pro úlohy synchronizace objektů a atributů a údržby. Toto téma se zabývá tímto tématem.
+Synchronizace synchronizace synchronizace Azure AD Connect synchronizuje změny, ke kterým dochází v místním adresáři pomocí plánovače. Existují dva procesy plánovače, jeden pro synchronizaci hesel a druhý pro objekt/atribut synchronizace a údržby úlohy. Toto téma se týká druhé.
 
-V dřívějších verzích byl Plánovač pro objekty a atributy externě pro modul synchronizace. Pro aktivaci procesu synchronizace používala Plánovač úloh systému Windows nebo samostatnou službu systému Windows. Plánovač se nachází ve verzi 1,1, která je integrovaná do synchronizačního modulu, a umožňuje některé vlastní nastavení. Nová výchozí frekvence synchronizace je 30 minut.
+V dřívějších verzích plánovač pro objekty a atributy byl externí synchronizačního modulu. K aktivaci procesu synchronizace se používal plánovač úloh systému Windows nebo samostatná služba systému Windows. Plánovač je s 1.1 verze vestavěné do synchronizačního modulu a umožňují některé přizpůsobení. Nová výchozí frekvence synchronizace je 30 minut.
 
-Scheduler zodpovídá za dvě úlohy:
+Plánovač je zodpovědný za dva úkoly:
 
 * **Cyklus synchronizace**. Proces importu, synchronizace a exportu změn.
-* **Úlohy údržby**. Obnovení klíčů a certifikátů pro resetování hesla a službu Device Registration Service (DRS). Vyprázdnit staré položky v protokolu operací.
+* **Úlohy údržby**. Obnovte klíče a certifikáty pro službu resetování hesla a službu registrace zařízení (DRS). Vymazat staré položky v protokolu operací.
 
-Samotný Plánovač je vždycky spuštěný, ale dá se nakonfigurovat tak, aby se spouštěl jenom jeden nebo žádný z těchto úkolů. Například pokud potřebujete mít vlastní proces synchronizačního cyklu, můžete tuto úlohu v Plánovači zakázat, ale úlohu údržby pořád spustit.
+Samotný plánovač je vždy spuštěn, ale lze jej nakonfigurovat tak, aby spouštěl pouze jednu nebo žádnou z těchto úloh. Například pokud potřebujete mít vlastní proces cyklu synchronizace, můžete zakázat tuto úlohu v plánovači, ale stále spustit úlohu údržby.
 
-## <a name="scheduler-configuration"></a>Konfigurace Scheduleru
-Pokud chcete zobrazit aktuální nastavení konfigurace, přejděte do PowerShellu a spusťte `Get-ADSyncScheduler`. Zobrazuje se vám obrázek podobný tomuto:
+## <a name="scheduler-configuration"></a>Konfigurace plánovače
+Chcete-li zobrazit aktuální nastavení konfigurace, `Get-ADSyncScheduler`přejděte na PowerShell a spusťte . To vám ukáže něco jako tento obrázek:
 
 ![GetSyncScheduler](./media/how-to-connect-sync-feature-scheduler/getsynccyclesettings2016.png)
 
-Pokud se vám při spuštění této rutiny zobrazí **příkaz synchronizovat nebo rutina není dostupná** , modul PowerShellu se nenačte. K tomuto problému může dojít, když spustíte Azure AD Connect v řadiči domény nebo na serveru s vyššími úrovněmi omezení prostředí PowerShell, než je výchozí nastavení. Pokud se zobrazí tato chyba, spusťte `Import-Module ADSync`, aby byla rutina dostupná.
+Pokud se zobrazí **příkaz synchronizace nebo rutina není k dispozici** při spuštění této rutiny, pak modul Prostředí PowerShell není načten. K tomuto problému může dojít, pokud spustíte Azure AD Connect na řadiči domény nebo na serveru s vyššími úrovněmi omezení prostředí PowerShell než výchozí nastavení. Pokud se zobrazí tato `Import-Module ADSync` chyba, pak spusťte, aby byla rutina k dispozici.
 
-* **AllowedSyncCycleInterval**. Nejkratší časový interval mezi synchronizačními cykly povolenými službou Azure AD. Nemůžete synchronizovat častěji než toto nastavení a pořád se podporuje.
-* **CurrentlyEffectiveSyncCycleInterval**. Plán je aktuálně platný. Má stejnou hodnotu jako CustomizedSyncInterval (Pokud je nastaveno), pokud není častější než AllowedSyncInterval. Použijete-li sestavení před 1.1.281 a změníte CustomizedSyncCycleInterval, projeví se tato změna po příštím cyklu synchronizace. V sestavách 1.1.281 se změna projeví okamžitě.
-* **CustomizedSyncCycleInterval**. Pokud chcete, aby se Plánovač spouštěl v jakékoli jiné frekvenci, než je výchozí hodnota 30 minut, pak toto nastavení nakonfigurujete. Ve výše uvedeném obrázku byl Plánovač nastaven tak, aby se spouštěl každou hodinu. Pokud nastavíte toto nastavení na hodnotu nižší než AllowedSyncInterval, použije se druhý.
-* **NextSyncCyclePolicyType**. Buď rozdílová, nebo počáteční. Definuje, jestli má příští spuštění zpracovat jenom rozdílové změny, nebo jestli by se měl další spuštění provést jako úplný Import a synchronizace. Druhé by se taky znovu zpracovávat všechna nová nebo změněná pravidla.
-* **NextSyncCycleStartTimeInUTC**. Při příštím spuštění plánovače další cyklus synchronizace.
-* **PurgeRunHistoryInterval**. Protokoly operací času by měly být zachovány. Tyto protokoly je možné zkontrolovat v synchronizaci Service Manageru. Ve výchozím nastavení jsou tyto protokoly uchovávány po dobu 7 dní.
-* **SyncCycleEnabled**. Určuje, jestli má Plánovač v rámci své operace spouštět procesy importu, synchronizace a exportu.
-* **MaintenanceEnabled**. Ukazuje, zda je povolen proces údržby. Aktualizuje certifikáty nebo klíče a vyprázdní protokol operací.
-* **StagingModeEnabled**. Ukazuje, zda je povolen [pracovní režim](how-to-connect-sync-staging-server.md) . Pokud je toto nastavení povoleno, potlačí se exporty na spouštění, ale stále spouštějte import a synchronizaci.
-* **SchedulerSuspended**. Během upgradu nastavte připojit k dočasnému blokování spuštění plánovače.
+* **AllowedSyncCycleInterval**. Nejkratší časový interval mezi cykly synchronizace povolenými službou Azure AD. Synchronizaci nelze synchronizovat častěji než toto nastavení a stále podporovány.
+* **CurrentlyEffectiveSyncCycleInterval**. Plán, který je v současné době v platnosti. Má stejnou hodnotu jako CustomizedSyncInterval (pokud je nastaven), pokud není častější než AllowedSyncInterval. Pokud použijete sestavení před 1.1.281 a změníte CustomizedSyncCycleInterval, tato změna se projeví po dalším cyklu synchronizace. Z sestavení 1.1.281 se změna projeví okamžitě.
+* **VlastnísynchronsyncCycleInterval**. Pokud chcete, aby plánovač běžel na libovolné jiné frekvenci než výchozí 30 minut, nakonfigurujte toto nastavení. Na obrázku výše plánovač byla nastavena na spuštění každou hodinu místo. Pokud nastavíte toto nastavení na hodnotu nižší než AllowedSyncInterval, použije se tato hodnota.
+* **NextSyncCyclePolicyType**. Buď Delta nebo Initial. Definuje, zda by mělo další spuštění zpracovat pouze rozdílové změny nebo zda by mělo další spuštění provést úplný import a synchronizaci. Ten by také znovu zpracovat všechny nové nebo změněné pravidla.
+* **Další synccyclestarttimeinutc**. Příště plánovač spustí další cyklus synchronizace.
+* **Interval PurgeRunHistoryInterval**. Protokoly operací času by měly být uchovávány. Tyto protokoly lze zkontrolovat ve správci služeb synchronizace. Ve výchozím nastavení je uchovávat tyto protokoly po dobu 7 dnů.
+* **SyncCycleEnabled**. Označuje, zda plánovač spouštějí procesy importu, synchronizace a exportu v rámci své operace.
+* **MaintenanceEnabled**. Zobrazuje, zda je povolen proces údržby. Aktualizuje certifikáty/klíče a vyčistí protokol operací.
+* **Pracovní modeEnabled**. Zobrazuje, zda je povolen [pracovní režim.](how-to-connect-sync-staging-server.md) Pokud je toto nastavení povoleno, potlačí exporty ze spuštěné, ale stále spustit import a synchronizaci.
+* **SchedulerPozastavena**. Nastavit připojit během upgradu dočasně blokovat plánovače spuštění.
 
-Některá z těchto nastavení můžete změnit pomocí `Set-ADSyncScheduler`. Je možné upravit následující parametry:
+Některá z těchto nastavení `Set-ADSyncScheduler`můžete změnit pomocí aplikace . Následující parametry lze upravit:
 
-* CustomizedSyncCycleInterval
-* NextSyncCyclePolicyType
-* PurgeRunHistoryInterval
+* Přizpůsobenýinterval synchronizátoru
+* Typ nextsynccyclepolicytype
+* Interval purgeRunHistoryInterval
 * SyncCycleEnabled
 * MaintenanceEnabled
 
-V dřívějších sestaveních Azure AD Connect byl **isStagingModeEnabled** v set-ADSyncScheduler. Nastavení této vlastnosti se **nepodporuje** . Vlastnost **SchedulerSuspended** by měla být upravena pouze pomocí Connect. Toto nastavení není **podporováno** přímo v PowerShellu.
+V dřívějších sestaveních Azure AD Connect byl **isStagingModeEnabled** vystaven v Set-ADSyncScheduler. Nastavení této vlastnosti není **podporováno.** Vlastnost **SchedulerSuspended** by měla být změněna pouze connect. Není **podporováno** nastavit přímo pomocí prostředí PowerShell.
 
-Konfigurace Scheduleru je uložená v Azure AD. Pokud máte pracovní server, bude mít každá změna na primárním serveru také vliv na pracovní server (kromě IsStagingModeEnabled).
+Konfigurace plánovače se uložených ve službě Azure AD. Pokud máte pracovní server, všechny změny na primárním serveru také ovlivní pracovní server (s výjimkou IsStagingModeEnabled).
 
-### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
-Syntaxe: `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
-d-dnů, HH-hours, mm-minut, SS-sekund
+### <a name="customizedsynccycleinterval"></a>Přizpůsobenýinterval synchronizátoru
+Syntaxe:`Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
+d - dny, HH - hodiny, mm - minuty, ss - sekundy
 
 Příklad: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
-Změní Plánovač, aby se spouštěl každé 3 hodiny.
+Změní plánovač tak, aby se spouštěl každé 3 hodiny.
 
 Příklad: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0`  
-Změny změní Plánovač tak, aby běžel denně.
+Změny změní plánovač, aby se spouštěl denně.
 
-### <a name="disable-the-scheduler"></a>Zakázat Plánovač  
-Pokud potřebujete provést změny konfigurace, budete chtít Plánovač zakázat. Například při [konfiguraci filtrování](how-to-connect-sync-configure-filtering.md) nebo [provádění změn pravidel synchronizace](how-to-connect-sync-change-the-configuration.md).
+### <a name="disable-the-scheduler"></a>Zakázání plánovače  
+Pokud potřebujete provést změny konfigurace, chcete zakázat plánovač. Například při [konfiguraci filtrování](how-to-connect-sync-configure-filtering.md) nebo [provést změny pravidel synchronizace](how-to-connect-sync-change-the-configuration.md).
 
-Plánovač zakážete spuštěním `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+Plánovač zakážete `Set-ADSyncScheduler -SyncCycleEnabled $false`spuštěním programu .
 
-![Zakázat Plánovač](./media/how-to-connect-sync-feature-scheduler/schedulerdisable.png)
+![Zakázání plánovače](./media/how-to-connect-sync-feature-scheduler/schedulerdisable.png)
 
-Až provedete změny, nezapomeňte znovu povolit Plánovač s `Set-ADSyncScheduler -SyncCycleEnabled $true`.
+Po provázku nezapomeňte plánovač znovu povolit pomocí `Set-ADSyncScheduler -SyncCycleEnabled $true`aplikace .
 
-## <a name="start-the-scheduler"></a>Spustit Plánovač
-Plánovač se ve výchozím nastavení spouští každých 30 minut. V některých případech můžete chtít spustit cyklus synchronizace mezi naplánovanými cykly nebo musíte spustit jiný typ.
+## <a name="start-the-scheduler"></a>Spuštění plánovače
+Plánovač je ve výchozím nastavení spuštěn každých 30 minut. V některých případech můžete chtít spustit cyklus synchronizace mezi naplánovanými cykly nebo potřebujete spustit jiný typ.
 
-### <a name="delta-sync-cycle"></a>Cyklus rozdílové synchronizace
-Cyklus rozdílového synchronizace zahrnuje následující kroky:
+### <a name="delta-sync-cycle"></a>Cyklus synchronizace delta
+Cyklus synchronizace delta zahrnuje následující kroky:
 
 
-- Rozdílový import u všech konektorů
-- Rozdílová synchronizace u všech konektorů
-- Exportovat na všechny konektory
+- Rozdílový import na všech konektorech
+- Synchronizace delta na všech konektorech
+- Export na všechny konektory
 
-### <a name="full-sync-cycle"></a>Úplný cyklus synchronizace
+### <a name="full-sync-cycle"></a>Cyklus úplné synchronizace
 Úplný cyklus synchronizace zahrnuje následující kroky:
 
-- Úplný import na všechny konektory
+- Úplný import na všech konektorech
 - Úplná synchronizace na všech konektorech
-- Exportovat na všechny konektory
+- Export na všechny konektory
 
-Je možné, že máte naléhavou změnu, kterou je třeba synchronizovat okamžitě, což je důvod, proč je nutné ručně spustit cyklus. 
+Je možné, že máte naléhavou změnu, která musí být synchronizována okamžitě, což je důvod, proč je třeba ručně spustit cyklus. 
 
-Pokud potřebujete ručně spustit cyklus synchronizace, pak z PowerShellu spusťte `Start-ADSyncSyncCycle -PolicyType Delta`.
+Pokud potřebujete ručně spustit cyklus synchronizace, pak `Start-ADSyncSyncCycle -PolicyType Delta`z PowerShell spustit .
 
-Pokud chcete spustit úplný cyklus synchronizace, spusťte `Start-ADSyncSyncCycle -PolicyType Initial` z příkazového řádku PowerShellu.   
+Chcete-li zahájit úplný `Start-ADSyncSyncCycle -PolicyType Initial` cyklus synchronizace, spusťte z výzvy prostředí PowerShell.   
 
-Spuštění úplného cyklu synchronizace může být velmi časově náročné. Přečtěte si další část a přečtěte si, jak tento proces optimalizovat.
+Spuštění úplného cyklu synchronizace může být velmi časově náročné, přečtěte si další část, ve které si přečtěte, jak optimalizovat tento proces.
 
-### <a name="sync-steps-required-for-different-configuration-changes"></a>Kroky synchronizace vyžadované pro různé změny konfigurace
-Různé změny konfigurace vyžadují jiný postup synchronizace, aby bylo zajištěno, že se změny správně projeví u všech objektů.
+### <a name="sync-steps-required-for-different-configuration-changes"></a>Synchronizace kroků požadovaných pro různé změny konfigurace
+Různé změny konfigurace vyžadují různé kroky synchronizace, aby bylo zajištěno, že změny jsou správně použity pro všechny objekty.
 
-- Přidání dalších objektů nebo atributů, které se mají importovat ze zdrojového adresáře (přidáním nebo úpravou pravidel synchronizace)
+- Přidáno více objektů nebo atributů, které mají být importovány ze zdrojového adresáře (přidáním/úpravou pravidel synchronizace)
     - V konektoru pro daný zdrojový adresář je vyžadován úplný import.
-- Provedeny změny synchronizačních pravidel
-    - V konektoru pro změněná synchronizační pravidla se vyžaduje Úplná synchronizace.
-- Změněné [filtrování](how-to-connect-sync-configure-filtering.md) , aby bylo možné zahrnout jiný počet objektů
-    - Pokud nepoužíváte filtrování založené na atributech na základě atributů, které už jsou importované do synchronizačního modulu, vyžaduje se u konektoru pro každý konektor AD úplný import.
+- Provedené změny pravidel synchronizace
+    - Pro změněná pravidla synchronizace je vyžadována úplná synchronizace.
+- Změněno [filtrování,](how-to-connect-sync-configure-filtering.md) takže by měl být zahrnut jiný počet objektů
+    - Úplný import je vyžadován na konektoru pro každou spojnici služby AD, pokud nepoužíváte filtrování založené na atributech na základě atributů, které jsou již importovány do synchronizačního modulu
 
-### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>Přizpůsobení cyklu synchronizace spustí pravou kombinaci rozdílových a úplných kroků synchronizace.
-Abyste se vyhnuli spuštění úplného cyklu synchronizace, můžete označit konkrétní konektory a spustit úplný krok pomocí následujících rutin.
+### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>Přizpůsobení cyklu synchronizace spustit správnou kombinaci kroků synchronizace a úplné synchronizace
+Chcete-li se vyhnout spuštění úplného cyklu synchronizace, můžete označit konkrétní konektory pro spuštění úplného kroku pomocí následujících rutin.
 
 `Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullImportRequired $true`
 
@@ -134,13 +134,13 @@ Abyste se vyhnuli spuštění úplného cyklu synchronizace, můžete označit k
 
 `Get-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid>` 
 
-Příklad: Pokud jste provedli změny synchronizačních pravidel pro Connector "doménová struktura služby AD" A nevyžadují import žádné nové atributy, měli byste spustit následující rutiny pro spuštění rozdílového synchronizačního cyklu, který pro tento konektor má taky úplný krok synchronizace.
+Příklad: Pokud jste provedli změny pravidel synchronizace pro konektor "Doménová struktura služby A", které nevyžadují žádné nové atributy, které mají být importovány, spustíte následující rutiny pro spuštění cyklu synchronizace delta, který také provedl krok úplné synchronizace pro tento konektor.
 
 `Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
 
 `Start-ADSyncSyncCycle -PolicyType Delta`
 
-Příklad: Pokud jste provedli změny synchronizačních pravidel pro Connector "doménová struktura služby AD" A "tak, aby nyní vyžadovala Import nového atributu, měli byste spuštěním následujících rutin spustit rozdílový cyklus synchronizace, který má také úplný krok importu a úplné synchronizace pro tento konektor.
+Příklad: Pokud jste provedli změny pravidel synchronizace pro konektor "Doménová struktura a služby A", takže nyní vyžadují nový atribut, který má být importován, spustíte následující rutiny pro spuštění cyklu synchronizace delta, který také provedl krok úplného importu, úplné synchronizace pro tento konektor.
 
 `Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullImportRequired $true`
 
@@ -150,61 +150,61 @@ Příklad: Pokud jste provedli změny synchronizačních pravidel pro Connector 
 
 
 ## <a name="stop-the-scheduler"></a>Zastavení plánovače
-Pokud Plánovač aktuálně spouští cyklus synchronizace, může být nutné ho zastavit. Například pokud spustíte Průvodce instalací a zobrazí se tato chyba:
+Pokud plánovač aktuálně běží cyklus synchronizace, bude pravděpodobně nutné jej zastavit. Například pokud spustíte průvodce instalací a zobrazí se tato chyba:
 
-![SyncCycleRunningError](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
+![Chyba SyncCycleRunningError](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
-Když je spuštěný cyklus synchronizace, nemůžete provádět změny konfigurace. Můžete počkat, až proces plánovače proces dokončí, ale můžete ho také zastavit, aby bylo možné provést změny hned. Zastavení aktuálního cyklu není škodlivé a probíhající změny se zpracovávají při příštím spuštění.
+Pokud je spuštěn cyklus synchronizace, nelze provádět změny konfigurace. Můžete počkat, až plánovač dokončí proces, ale můžete jej také zastavit, abyste mohli okamžitě provést změny. Zastavení aktuálního cyklu není škodlivé a čekající změny jsou zpracovány při příštím spuštění.
 
-1. Začněte tím, že plánovači zastaví aktuální cyklus pomocí `Stop-ADSyncSyncCycle`rutiny PowerShellu.
-2. Pokud použijete sestavení před 1.1.281, pak zastavení plánovače nezastaví aktuální konektor z aktuální úlohy. Chcete-li vynutit zastavení konektoru, proveďte následující akce: ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
-   * Spusťte **synchronizační službu** z nabídky Start. Přejděte na **konektory**, zvýrazněte konektor se stavem **spuštěno**a vyberte možnost **zastavit** z akcí.
+1. Začněte tím, že plánovače zastavíte svůj aktuální `Stop-ADSyncSyncCycle`cyklus pomocí rutiny prostředí PowerShell .
+2. Pokud použijete sestavení před 1.1.281, zastavení plánovače nezastaví aktuální konektor z jeho aktuální úlohy. Chcete-li vynutit zastavení konektoru, provázte následující akce: ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+   * **Spusťte službu synchronizace** z nabídky Start. Přejděte na **Konektory**, zvýrazněte spojnici se stavem **Spuštěno**a z akce vyberte **Zastavit.**
 
-Plánovač je stále aktivní a při další příležitosti se znovu spustí.
+Plánovač je stále aktivní a začíná znovu při další příležitosti.
 
-## <a name="custom-scheduler"></a>Vlastní Plánovač
-Rutiny popsané v této části jsou dostupné jenom v sestavách [1.1.130.0](reference-connect-version-history.md#111300) a novějších.
+## <a name="custom-scheduler"></a>Vlastní plánovač
+Rutiny zdokumentované v této části jsou k dispozici pouze v sestavení [1.1.130.0](reference-connect-version-history.md#111300) a novější.
 
-Pokud předdefinovaný Plánovač nesplňuje vaše požadavky, můžete konektory naplánovat pomocí PowerShellu.
+Pokud předdefinovaný plánovač nesplňuje vaše požadavky, můžete naplánovat konektory pomocí prostředí PowerShell.
 
-### <a name="invoke-adsyncrunprofile"></a>Invoke – ADSyncRunProfile
+### <a name="invoke-adsyncrunprofile"></a>Vyvolat adsyncrunprofil
 Profil konektoru můžete spustit tímto způsobem:
 
 ```
 Invoke-ADSyncRunProfile -ConnectorName "name of connector" -RunProfileName "name of profile"
 ```
 
-Názvy, které se mají použít pro [názvy konektorů](how-to-connect-sync-service-manager-ui-connectors.md) a [názvy profilů spuštění](how-to-connect-sync-service-manager-ui-connectors.md#configure-run-profiles) , najdete v [uživatelském rozhraní Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md).
+Názvy, které mají být použity pro [názvy konektorů](how-to-connect-sync-service-manager-ui-connectors.md) a [spustit názvy profilů,](how-to-connect-sync-service-manager-ui-connectors.md#configure-run-profiles) naleznete v [uzlení Správce služeb synchronizace](how-to-connect-sync-service-manager-ui.md).
 
 ![Vyvolat profil spuštění](./media/how-to-connect-sync-feature-scheduler/invokerunprofile.png)  
 
-Rutina `Invoke-ADSyncRunProfile` je synchronní, to znamená, že nevrací řízení, dokud konektor nedokončí operaci, buď úspěšně, nebo s chybou.
+Rutina `Invoke-ADSyncRunProfile` je synchronní, to znamená, že nevrátí řízení, dokud konektor dokončil operaci, nebo s chybou.
 
-Při plánování konektorů je potřeba, abyste je naplánovali v následujícím pořadí:
+Při plánování konektorů doporučujeme naplánovat je v následujícím pořadí:
 
-1. (Úplné/rozdílové) Import z místních adresářů, jako je například služba Active Directory
-2. (Úplné/rozdílové) Import z Azure AD
-3. (Úplné/rozdílové) Synchronizace z místních adresářů, jako je například služba Active Directory
-4. (Úplné/rozdílové) Synchronizace z Azure AD
-5. Exportovat do Azure AD
-6. Exportovat do místních adresářů, jako je například Active Directory
+1. (Úplné/Delta) Import z místních adresářů, jako je služba Active Directory
+2. (Úplné/Delta) Import ze služby Azure AD
+3. (Úplné/Delta) Synchronizace z místních adresářů, jako je například služba Active Directory
+4. (Úplné/Delta) Synchronizace ze služby Azure AD
+5. Export do Azure AD
+6. Export do místních adresářů, například do služby Active Directory
 
-V tomto pořadí je způsob, jakým integrovaný plánovač spouští konektory.
+Toto pořadí je, jak předdefinované plánovač spustí konektory.
 
-### <a name="get-adsyncconnectorrunstatus"></a>Get-ADSyncConnectorRunStatus
-Můžete také monitorovat synchronizační modul a zjistit, jestli je zaneprázdněný nebo nečinný. Tato rutina vrátí prázdný výsledek, pokud je synchronizační modul nečinný a nespouští konektor. Pokud je konektor spuštěný, vrátí název konektoru.
+### <a name="get-adsyncconnectorrunstatus"></a>Stav rozhraní Get-AdSyncConnectorRunStatus
+Můžete také sledovat synchronizační modul a zjistit, zda je zaneprázdněn nebo nečinný. Tato rutina vrátí prázdný výsledek, pokud je synchronizační modul nečinný a nespouštějící konektor. Pokud je spuštěn konektor, vrátí název Connector.
 
 ```
 Get-ADSyncConnectorRunStatus
 ```
 
 ![Stav spuštění konektoru](./media/how-to-connect-sync-feature-scheduler/getconnectorrunstatus.png)  
-Na obrázku výše je první řádek ze stavu, ve kterém je synchronizační modul nečinný. Druhý řádek od okamžiku, kdy je spuštěn konektor Azure AD.
+Na obrázku výše první řádek je ze stavu, kde je synchronizační modul volnoběh. Druhý řádek z doby, kdy je spuštěna služba Azure AD Connector.
 
-## <a name="scheduler-and-installation-wizard"></a>Průvodce schedulerem a instalací
-Pokud spustíte Průvodce instalací nástroje, Plánovač je dočasně pozastaven. K tomuto chování dochází, protože se předpokládá, že provádíte změny konfigurace a tato nastavení nejde použít, pokud je modul synchronizace aktivně spuštěný. Z tohoto důvodu nenechávejte Průvodce instalací otevřený, protože zastaví synchronizační modul před provedením synchronizačních akcí.
+## <a name="scheduler-and-installation-wizard"></a>Průvodce plánovačem a instalací
+Pokud spustíte průvodce instalací, plánovač je dočasně pozastaven. Toto chování je proto, že se předpokládá, že provedete změny konfigurace a tato nastavení nelze použít, pokud je synchronizační modul aktivně spuštěn. Z tohoto důvodu nenechávejte průvodce instalací otevřený, protože brání synchronizačnímu modulu provádět akce synchronizace.
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o konfiguraci [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md) .
+Přečtěte si další informace o konfiguraci [synchronizace Azure AD Connect.](how-to-connect-sync-whatis.md)
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

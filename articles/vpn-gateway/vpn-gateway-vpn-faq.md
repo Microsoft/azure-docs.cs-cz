@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k Azure VPN Gateway
+title: Nejčastější dotazy k bráně Azure VPN
 description: Nejčastější dotazy k branám VPN. Nejčastější dotazy týkající se propojení Microsoft Azure Virtual Network mezi různými místy, připojení s hybridní konfigurací a bran VPN
 services: vpn-gateway
 author: yushwang
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
 ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279881"
 ---
-# <a name="vpn-gateway-faq"></a>Brána sítě VPN – nejčastější dotazy
+# <a name="vpn-gateway-faq"></a>Nejčastější dotazy k branám VPN
 
-## <a name="connecting"></a>Připojování k virtuálním sítím
+## <a name="connecting-to-virtual-networks"></a><a name="connecting"></a>Připojování k virtuálním sítím
 
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>Je možné propojit virtuální sítě v různých oblastech Azure?
 
@@ -30,11 +30,11 @@ Ano.
 
 K více serverům se lze připojovat prostřednictvím prostředí Windows PowerShell a rozhraní API REST Azure. Přečtěte si oddíl [Možnosti připojování k více serverům a připojení VNet-to-VNet](#V2VMulti) v nejčastějších dotazech.
 
-### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>Máte další náklady na nastavení brány VPN jako aktivní-aktivní?
+### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>Existují další náklady na nastavení brány VPN jako aktivní aktivní?
 
 Ne. 
 
-### <a name="what-are-my-cross-premises-connection-options"></a>Jaké jsou možnosti připojení na víc místech?
+### <a name="what-are-my-cross-premises-connection-options"></a>Jaké jsou možnosti připojení mezi různými místy?
 
 Podporovány jsou následující možnosti připojení mezi různými místy:
 
@@ -48,13 +48,13 @@ Další informace o připojeních VPN Gateway najdete v tématu [Informace o slu
 
 ### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site"></a>Jaký je rozdíl mezi připojením Site-to-Site a Point-to-Site?
 
-Konfigurace **Site-to-Site** (tunel VPN IPsec/IKE) jsou mezi místním umístěním a Azure. To znamená, že se můžete z kteréhokoli počítače ve vaší lokalitě připojit k libovolnému virtuálnímu počítači nebo instanci role ve vaší virtuální síti v závislosti na zvoleném způsobu konfigurace směrování a oprávněních. Představuje skvělou možnost připojení mezi různými místy, která je vždy k dispozici a je velmi vhodná pro hybridní konfigurace. Tento typ připojení využívá zařízení sítě VPN s protokolem IPsec (hardwarové nebo softwarové zařízení), které musí být nasazeno v hraniční části sítě. Chcete-li vytvořit tento typ připojení, musíte mít externě orientovanou adresu IPv4.
+Konfigurace **Site-to-Site** (tunel VPN IPsec/IKE) jsou mezi místním umístěním a Azure. To znamená, že se můžete z kteréhokoli počítače ve vaší lokalitě připojit k libovolnému virtuálnímu počítači nebo instanci role ve vaší virtuální síti v závislosti na zvoleném způsobu konfigurace směrování a oprávněních. Představuje skvělou možnost připojení mezi různými místy, která je vždy k dispozici a je velmi vhodná pro hybridní konfigurace. Tento typ připojení využívá zařízení sítě VPN s protokolem IPsec (hardwarové nebo softwarové zařízení), které musí být nasazeno v hraniční části sítě. Chcete-li vytvořit tento typ připojení, musíte mít externě směřující adresu IPv4.
 
 Konfigurace **Point-to-Site** (VPN přes SSTP) umožňují připojit se z jednoho počítače odkudkoli kamkoli do vaší virtuální sítě. Využívá integrovaného klienta VPN ve Windows. Jako součást konfigurace Point-to-Site nainstalujete certifikát a balíček konfigurace klienta VPN, který obsahuje nastavení umožňující vašemu počítači připojit se ke kterémukoli virtuálnímu počítači nebo instanci role v rámci virtuální sítě. Toto řešení je skvělé, pokud se chcete připojit k virtuální síti, ale nenacházíte se na příslušném místě. Je také vhodné, pokud nemáte přístup k hardwaru sítě VPN nebo adrese IPv4 přístupné zvenčí; obě tyto položky jsou pro připojení Site-to-Site vyžadovány.
 
 Virtuální síť můžete nakonfigurovat tak, aby souběžně používala připojení Site-to-Site i Point-to-Site, pokud pro bránu vytvoříte připojení Site-to-Site s použitím typu sítě VPN založeného na směrování. Typy sítí VPN založené na směrování se v modelu nasazení Classic nazývají dynamické brány.
 
-## <a name="gateways"></a>Brány virtuálních sítí
+## <a name="virtual-network-gateways"></a><a name="gateways"></a>Brány virtuálních sítí
 
 ### <a name="is-a-vpn-gateway-a-virtual-network-gateway"></a>Je brána sítě VPN bránou virtuální sítě?
 
@@ -66,17 +66,17 @@ Brány založené na zásadách implementují sítě VPN založené na zásadác
 
 ### <a name="what-is-a-route-based-dynamic-routing-gateway"></a>Co je to brána založená na směrování (s dynamickým směrováním)?
 
-Brány založené na směrování implementují sítě VPN založené na směrování. Sítě VPN založené na trasách používají ke směrování paketů do příslušných rozhraní tunelových propojení „trasy“ v tabulce předávání IP nebo směrovací tabulce IP. Rozhraní tunelového propojení potom zašifruje nebo dešifruje pakety směřující do tunelových propojení nebo z nich. Zásady nebo selektor provozu pro sítě VPN založené na směrování používají konfiguraci typu any-to-any (se zástupnými znaky).
+Brány založené na směrování implementují sítě VPN založené na směrování. Sítě VPN založené na směrování používají ke směrování paketů do příslušných rozhraní tunelových propojení „trasy“ v tabulce předávání IP nebo směrovací tabulce IP. Rozhraní tunelového propojení potom šifrují nebo dešifrují pakety směřující do tunelových propojení nebo z nich. Zásady nebo selektor provozu pro sítě VPN založené na směrování používají konfiguraci typu any-to-any (se zástupnými znaky).
 
-### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Můžu aktualizovat moji bránu VPN založenou na zásadách na základě směrování?
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Můžu aktualizovat bránu VPN založenou na zásadách na směrování?
 
-Ne. Typ brány virtuální sítě Azure se nedá změnit ze zásad, které jsou založené na směrování nebo jiným způsobem. Brána se musí odstranit a znovu vytvořit a tento proces trvá přibližně 60 minut. IP adresa brány ani předsdílený klíč (PSK) se nezachovají.
+Ne.Typ brány virtuální sítě Azure se nedá změnit z brány založené na zásadách na bránu založenou na směrování ani naopak. Brána se musí odstranit a znovu vytvořit a tento proces trvá přibližně 60 minut. IP adresa brány ani předsdílený klíč (PSK) se nezachovají.
 1. Odstraňte všechna připojení přidružená k bráně, která se má odstranit.
 1. Odstraňte bránu:
-   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Portál Azure](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-   - [Azure PowerShell – klasický](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [Vytvořte novou bránu typu, který chcete, a dokončete nastavení sítě VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
+   - [Azure PowerShell – klasika](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [Vytvořte novou bránu požadovaného typu a dokončete nastavení sítě VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Potřebuji GatewaySubnet?
 
@@ -90,15 +90,15 @@ Ne.
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>Je možné získat IP adresu brány VPN předtím, než se vytvoří?
 
-Neredundantní brány a brány oblastí (skladové položky brány, které _AZ_ v názvu) spoléhají na _standardní SKU_ prostředku veřejné IP adresy Azure. Prostředky veřejné IP adresy standardní SKU Azure musí používat metodu statického přidělení. Proto budete mít veřejnou IP adresu pro bránu VPN hned po vytvoření prostředku veřejné IP adresy standardní SKU, který pro něj máte v úmyslu použít.
+Zónově redundantní a zónové brány (skladové položky brány brány, které mají v názvu _AZ)_ spoléhají na veřejný ip prostředek Služby Azure _se standardní soupoložkou._ Veřejné prostředky IP služby Azure Standard SKU musí používat statickou metodu přidělení. Proto budete mít veřejnou IP adresu pro bránu VPN, jakmile vytvoříte standardní prostředek SKU veřejné IP, který chcete použít pro ni.
 
-Pro brány neredundantních a negeografických bran (SKU brány, které _nepoužívají_ _AZ_ v názvu) nemůžete získat IP adresu brány VPN dřív, než se vytvoří. IP adresa se změní jenom v případě, že bránu VPN odstraníte a znovu vytvoříte.
+Pro nezónově redundantní a nezónové brány (sloky brány, které _nemají_ v názvu _AZ),_ nelze získat IP adresu brány VPN před jeho vytvořením. IP adresa se změní pouze v případě, že odstraníte a znovu vytvoříte bránu VPN.
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>Je možné vyžádat si pro bránu VPN statickou veřejnou IP adresu?
 
-Jak je uvedeno výše, brány redundantní v zóně a oblasti oblastí (skladové položky brány, které _AZ_ v názvu) závisí na prostředku veřejné IP adresy _Standard SKU_ Azure. Prostředky veřejné IP adresy standardní SKU Azure musí používat metodu statického přidělení.
+Jak je uvedeno výše, zóny redundantní a zónové brány (brány skladové položky, které mají _AZ_ v názvu) oba spoléhají na prostředek veřejné IP služby _Standard SKU_ Azure. Veřejné prostředky IP služby Azure Standard SKU musí používat statickou metodu přidělení.
 
-Pro brány neredundantních a negeografických zón (SKU brány, které _nepoužívají_ _AZ_ v názvu) se podporuje jenom přiřazování dynamických IP adres. To ale neznamená, že se IP adresa po přiřazení k vaší bráně VPN bude měnit. Jediná IP adresa brány VPN se změní jenom v případě, že se brána odstraní a pak se znovu vytvoří. Veřejná IP adresa brány VPN se při změně velikosti, resetování nebo dokončení jiné interní údržby a upgradu vaší brány VPN nemění.
+Pro nezónově redundantní a nezónové brány (jednotky SKU brány, které _nemají_ v názvu _AZ),_ je podporováno pouze dynamické přiřazení IP adres. To však neznamená, že se IP adresa změní poté, co byla přiřazena k bráně VPN. Ip adresa brány VPN se změní pouze v případě, že je brána odstraněna a znovu vytvořena. Veřejná IP adresa brány VPN se nezmění, když změníte velikost, resetujete nebo dokončíte jinou interní údržbu a upgrady brány VPN.
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>Jak se tunelové připojení sítě VPN ověřuje?
 
@@ -131,17 +131,17 @@ Ano. Informace najdete v tématu [Konfigurace vynuceného tunelování](vpn-gate
 
 Ano, je možné nasazovat v Azure vlastní servery nebo brány VPN buď z webu Azure Marketplace, nebo vytvořené jako vlastní směrovače sítě VPN. Je třeba nakonfigurovat ve virtuální síti trasy definované uživatelem, aby se zajistilo správné směrování provozu mezi místními sítěmi a podsítěmi virtuálních sítí.
 
-### <a name="gatewayports"></a>Proč jsou některé porty otevřené v bráně virtuální sítě?
+### <a name="why-are-certain-ports-opened-on-my-virtual-network-gateway"></a><a name="gatewayports"></a>Proč jsou některé porty otevřené v bráně virtuální sítě?
 
 Jsou vyžadovány pro komunikaci infrastruktury Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nemohou externí entity (včetně zákazníků těchto bran) žádným způsobem ovlivnit činnost těchto koncových bodů.
 
-Brána virtuální sítě je v podstatě zařízení s více adresami v síti s jednou síťovou kartou, která se používá k privátní síti zákazníka, a jedna síťová karta směřující k veřejné síti. Entity infrastruktury Azure nemohou kvůli shodě procházet do privátních sítí zákazníků, takže je pro komunikaci infrastruktury třeba využívat veřejné koncové body. Veřejné koncové body jsou pravidelně kontrolovány auditem zabezpečení Azure.
+Brána virtuální sítě je v podstatě zařízení s více místy, s jednou sítí nic, která se napojuje na privátní síť zákazníka, a jednou sítí s výhledem na veřejnou síť. Entity infrastruktury Azure nemohou kvůli shodě procházet do privátních sítí zákazníků, takže je pro komunikaci infrastruktury třeba využívat veřejné koncové body. Veřejné koncové body jsou pravidelně kontrolovány auditem zabezpečení Azure.
 
 ### <a name="more-information-about-gateway-types-requirements-and-throughput"></a>Další informace o typech brány, požadavcích a propustnosti
 
 Další informace najdete v tématu [Informace o nastavení konfigurace služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md).
 
-## <a name="s2s"></a>Připojení typu Site-to-Site a zařízení VPN
+## <a name="site-to-site-connections-and-vpn-devices"></a><a name="s2s"></a>Připojení typu Site-to-Site a zařízení VPN
 
 ### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>Co je třeba zvážit při výběru zařízení VPN?
 
@@ -169,23 +169,23 @@ Konfigurace připojení Site-to-Site pro více míst je podporována u serverů 
 
 Jiná softwarová řešení sítě VPN by měla s naší bránou spolupracovat, pokud odpovídají implementacím protokolu IPsec podle průmyslových standardů. Ohledně pokynů ke konfiguraci a podporu se obraťte na výrobce příslušného softwaru.
 
-## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Návody změnit typ ověřování pro připojení typu Point-to-site?
+## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Jak změním typ ověřování pro připojení typu point-to-site?
 
-Metodu ověřování pro připojení Point-to-site můžete změnit tak, že přejdete na **konfigurační oddíl Point-to-site** pod VPN Gateway a zkontrolujete požadovaný přepínač. Aktuální možnosti jsou **certifikát Azure, ověřování pomocí protokolu RADIUS a Azure Active Directory**. Mějte na paměti, že aktuální klienti se po změně **nemusí moct připojit** , dokud se nový profil nestáhne a nenakonfiguroval na klientovi.
+Metodu ověřování pro připojení bodu na pracoviště můžete změnit tak, že přejdete do **části konfigurace bodu na pracoviště** pod bránou VPN a zkontrolujete požadované přepínací tlačítko. Aktuální možnosti jsou **certifikát Azure, ověřování RADIUS a Azure Active Directory**. Upozorňujeme, že stávající klienti se nemusí po změně **připojit,** dokud nebude nový profil stažen a nakonfigurován v klientovi.
 
-## <a name="P2S"></a>Point-to-Site s využitím nativního ověřování certifikátů Azure
+## <a name="point-to-site-using-native-azure-certificate-authentication"></a><a name="P2S"></a>Point-to-Site s využitím nativního ověřování certifikátů Azure
 
 Tato část se týká modelu nasazení Resource Manager.
 
 [!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="P2SRADIUS"></a>Point-to-Site s využitím ověřování pomocí protokolu RADIUS
+## <a name="point-to-site-using-radius-authentication"></a><a name="P2SRADIUS"></a>Point-to-Site s využitím ověřování pomocí protokolu RADIUS
 
 Tato část se týká modelu nasazení Resource Manager.
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
-## <a name="V2VMulti"></a>Připojení typu VNet-to-VNet a Multi-Site
+## <a name="vnet-to-vnet-and-multi-site-connections"></a><a name="V2VMulti"></a>Připojení typu VNet-to-VNet a Multi-Site
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
@@ -199,7 +199,7 @@ Provoz prostřednictvím brány VPN Azure s použitím modelu nasazení Classic 
 
 ### <a name="does-azure-generate-the-same-ipsecike-pre-shared-key-for-all-my-vpn-connections-for-the-same-virtual-network"></a>Generuje Azure stejný předsdílený klíč protokolu IPsec/IKE pro všechna připojení k síti VPN pro stejnou virtuální síť?
 
-Ne, Azure ve výchozím nastavení pro různá připojení k síti VPN generuje různé předsdílené klíče. Prostřednictvím rozhraní API REST nebo rutiny prostředí PowerShell pro nastavení předsdíleného klíče však můžete nastavit požadovanou hodnotu klíče. Klíč musí obsahovat tisknutelné znaky ASCII.
+Ne, Azure ve výchozím nastavení pro různá připojení k síti VPN generuje různé předsdílené klíče. Prostřednictvím rozhraní API REST nebo rutiny prostředí PowerShell pro nastavení předsdíleného klíče však můžete nastavit požadovanou hodnotu klíče. Klíč musí být tisknutelné znaky ASCII.
 
 ### <a name="do-i-get-more-bandwidth-with-more-site-to-site-vpns-than-for-a-single-virtual-network"></a>Je možné dosáhnout větší šířky pásma použitím několika sítí VPN Site-to-Site než v případě jedné virtuální sítě?
 
@@ -217,16 +217,16 @@ Ano, sítě VPN Point-to-Site (P2S) je možné používat spolu s bránami VPN, 
 
 Ano, tato možnost je podporována. Další informace najdete v tématu [konfigurace ExpressRoute a připojení VPN typu site-to-site, která mohou existovat vedle sebe](../expressroute/expressroute-howto-coexist-classic.md).
 
-## <a name="ipsecike"></a>Zásady IPsec/IKE
+## <a name="ipsecike-policy"></a><a name="ipsecike"></a>Zásady IPsec/IKE
 
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
 
-## <a name="bgp"></a>BGP
+## <a name="bgp"></a><a name="bgp"></a>BGP
 
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
 
-## <a name="vms"></a>Připojení mezi místními sítěmi a virtuální počítače
+## <a name="cross-premises-connectivity-and-vms"></a><a name="vms"></a>Připojení mezi místními sítěmi a virtuální počítače
 
 ### <a name="if-my-virtual-machine-is-in-a-virtual-network-and-i-have-a-cross-premises-connection-how-should-i-connect-to-the-vm"></a>Pokud se virtuální počítač nachází ve virtuální síti s propojením mezi různými místy, jak se k virtuálnímu počítači připojovat?
 
@@ -243,7 +243,7 @@ Ne. Bránou virtuální sítě prochází pouze s cílovou IP adresou uvedenou v
 [!INCLUDE [Troubleshoot VM connection](../../includes/vpn-gateway-connect-vm-troubleshoot-include.md)]
 
 
-## <a name="faq"></a>Nejčastější dotazy týkající se virtuálních sítí
+## <a name="virtual-network-faq"></a><a name="faq"></a>Nejčastější dotazy k virtuální síti
 
 Další informace o virtuálních sítích najdete v tématu [Nejčastější dotazy týkající se virtuálních sítí](../virtual-network/virtual-networks-faq.md).
 

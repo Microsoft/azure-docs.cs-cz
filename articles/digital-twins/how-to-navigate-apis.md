@@ -1,6 +1,6 @@
 ---
-title: Navigace v rozhraní API – digitální vlákna Azure | Microsoft Docs
-description: Naučte se, jak běžné vzory dotazování rozhraní API pro správu digitálních vláken Azure.
+title: Navigace v řešení API – digitální dvojčata Azure | Dokumenty společnosti Microsoft
+description: Zjistěte, jak běžné vzory dotazování Azure Digitální dvojče správu API.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,95 +9,95 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: e9cdfd40a9672d19ef32dede0baadcdd56266bab
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265165"
 ---
-# <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak používat rozhraní API pro správu digitálních vláken Azure
+# <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak používat azure digitální dvojčata správu API
 
-Rozhraní API pro správu digitálních vláken Azure poskytují výkonné funkce pro vaše aplikace IoT. V tomto článku se dozvíte, jak procházet strukturu rozhraní API.  
+Řešení API pro správu digitálních dvojčat Azure poskytují výkonné funkce pro vaše aplikace IoT. Tento článek ukazuje, jak procházet strukturu rozhraní API.  
 
 ## <a name="api-summary"></a>Souhrn rozhraní API
 
-Následující seznam obsahuje komponenty rozhraní API digitálních vláken.
+V následujícím seznamu jsou uvedeny součásti digitálních dvojčat API.
 
-* [/Spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces): Tato rozhraní API komunikují s fyzickými umístěními v nastavení. Tyto informace vám pomůžou vytvořit, odstranit a spravovat digitální mapování vašich fyzických umístění ve formě [prostorového grafu](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph).
+* [/spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces): Tato řešení API interagují s fyzickými umístěními v nastavení. Ty vám pomohou vytvořit, odstranit a spravovat digitální mapování fyzických umístění ve formě [prostorového grafu](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph).
 
-* [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices): Tato rozhraní API komunikují se zařízeními v nastavení. Tato zařízení můžou spravovat jeden nebo víc senzorů. Zařízení může být například telefon nebo senzor malinu PI nebo brána Lora vytvořené, a tak dále.
+* [/devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices): Tato řešení API interagují se zařízeními v nastavení. Tato zařízení mohou spravovat jeden nebo více senzorů. Zařízení může být například váš telefon nebo snímač Raspberry Pi nebo brána Lora a tak dále.
 
-* [/sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors): Tato rozhraní API vám pomůžou komunikovat se senzory přidruženými k vašim zařízením a vašimi fyzickými umístěními. Senzory zaznamenávají a odesílají okolní hodnoty, které se pak dají použít k manipulaci s prostorovým prostředím.  
+* [/sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors): Tato api vám pomohou komunikovat se senzory přidruženými k vašim zařízením a fyzickým umístěním. Senzory zaznamenávají a posílají okolní hodnoty, které pak mohou být použity k manipulaci s prostorovým prostředím.  
 
-* [/Resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Tato rozhraní API vám pomůžou nastavit prostředky, jako je například IoT Hub, pro instanci digitálního vlákna.
+* [/resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Tato api vám pomohou nastavit prostředky, jako je například centrum IoT hub, pro vaši instanci Digitální dvojčata.
 
-* [/Types](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types): Tato rozhraní API umožňují přidružit rozšířené typy k objektům digitálního vlákna a přidat k těmto objektům konkrétní vlastnosti. Tyto typy umožňují snadné filtrování a seskupení objektů v uživatelském rozhraní a vlastní funkce, které zpracovávají data telemetrie. Příklady rozšířených typů jsou *DeviceType*, *SensorType*, *SensorDataType*, *SpaceType*, *SpaceSubType*, *SpaceBlobType*, *SpaceResourceType*a tak dále.
+* [/types](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types): Tato řešení API umožňují přidružit rozšířené typy k objektům Digital Twins, chcete-li k těmto objektům přidat specifické charakteristiky. Tyto typy umožňují snadné filtrování a seskupování objektů v unovém počítači a vlastní funkce, které zpracovávají telemetrická data. Příklady rozšířených typů jsou *DeviceType*, *SensorType*, *SensorDataType*, *SpaceType*, *SpaceSubType*, *SpaceBlobType*, *SpaceResourceType*a tak dále.
 
-* [/ontologies](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Ontologies): Tato rozhraní API vám pomohou spravovat ontologie, což jsou kolekce rozšířených typů. Ontologie poskytují názvy pro typy objektů podle fyzického místa, které představují. Například *BACnet* Ontology poskytuje konkrétní názvy pro *typy senzorů*, *DataTypes*, *datasubtypes*a *dataunittypes*. Ontologie jsou spravované a vytvořené službou. Uživatelé můžou ontologie načíst a uvolnit. Když se načte Ontology, všechny jeho přidružené názvy typů jsou povolené a připravené ke zřízení v prostorovém grafu. 
+* [/ontologie](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Ontologies): Tato api vám pomohou spravovat ontologie, které jsou kolekce rozšířených typů. Ontologie poskytují názvy pro typy objektů podle fyzického prostoru, který představují. Například *ontologie BACnet* poskytuje specifické názvy pro *typy senzorů*, *datové typy*, *podtypy dat*a datové *jednotky*. Ontologie jsou spravovány a vytvářeny službou. Uživatelé mohou načíst a uvolnit ontologie. Při načtení ontologie jsou povoleny všechny přidružené názvy typů a připraveny k zřízení v prostorovém grafu. 
 
-* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): pomocí těchto rozhraní API můžete vytvářet vlastní vlastnosti pro *prostory*, *zařízení*, *uživatele*a *senzory*. Tyto vlastnosti jsou vytvořeny jako páry klíč/hodnota. Můžete definovat datový typ pro tyto vlastnosti nastavením jejich *PrimitiveDataType*. Můžete například definovat vlastnost s názvem *BasicTemperatureDeltaProcessingRefreshTime* typu *uint* pro vaše senzory a potom přiřadit hodnotu pro tuto vlastnost pro každé ze senzorů. Můžete také přidat omezení pro tyto hodnoty při vytváření vlastnosti, jako jsou *minimální* a *maximální* rozsahy, a také povolené hodnoty jako *ValidationData*.
+* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): Tato rozhraní API můžete použít k vytvoření vlastních vlastností pro *vaše prostory*, *zařízení*, *uživatele*a *senzory*. Tyto vlastnosti jsou vytvořeny jako dvojice klíč/hodnota. Datový typ pro tyto vlastnosti můžete definovat nastavením jejich *typu PrimitiveDataType*. Můžete například definovat vlastnost s názvem *BasicTemperatureDeltaProcessingRefreshTime* typu *uint* pro vaše senzory a pak přiřadit hodnotu pro tuto vlastnost pro každý z vašich senzorů. Můžete také přidat omezení pro tyto hodnoty při vytváření vlastnosti, například *Min* a *Max* rozsahy, stejně jako povolené hodnoty jako *ValidationData*.
 
-* [/Matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): Tato rozhraní API umožňují zadat podmínky, které chcete vyhodnotit ze svých příchozích dat zařízení. Další informace najdete v [tomto článku](concepts-user-defined-functions.md#matchers) . 
+* [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): Tato rozhraní API umožňují určit podmínky, které chcete vyhodnotit z dat příchozího zařízení. Další informace najdete v [tomto článku](concepts-user-defined-functions.md#matchers). 
 
-* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): Tato rozhraní API umožňují vytvořit, odstranit nebo aktualizovat vlastní funkci, která se spustí, když dojde k podmínkám definovaným *odpovídajícími* , ke zpracování dat přicházejících z nastavení. Další informace o těchto vlastních funkcích, označovaných také jako *uživatelsky definované funkce*, najdete v [tomto článku](concepts-user-defined-functions.md#user-defined-functions) . 
+* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): Tato rozhraní API umožňují vytvářet, odstraňovat nebo aktualizovat vlastní funkci, která se spustí, když dojde k podmínkám definovaným *matchery,* ke zpracování dat pocházejících z vašeho nastavení. Další informace o těchto vlastních funkcích, nazývaných také *uživatelem definované funkce*, naleznete v [tomto článku.](concepts-user-defined-functions.md#user-defined-functions) 
 
-* [/Endpoints](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Endpoints): Tato rozhraní API umožňují vytvářet koncové body, aby vaše digitální vlákna mohla komunikovat s dalšími službami Azure pro ukládání a analýzu dat. Další informace najdete v [tomto článku](concepts-events-routing.md) . 
+* [/koncové body:](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Endpoints)Tato api umožňují vytvářet koncové body, takže vaše řešení digitálních dvojčat může komunikovat s jinými službami Azure pro ukládání dat a analýzy. Přečtěte si [tento článek](concepts-events-routing.md) pro více informací. 
 
-* [/keyStores](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/KeyStores): Tato rozhraní API umožňují spravovat úložiště klíčů zabezpečení pro vaše prostory. Tato úložiště můžou obsahovat kolekci klíčů zabezpečení a umožňují snadno načíst nejnovější platné klíče.
+* [/keyStores](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/KeyStores): Tato api umožňují spravovat úložiště klíčů zabezpečení pro vaše prostory. Tyto obchody mohou obsahovat kolekci klíčů zabezpečení a umožňují snadno načíst nejnovější platné klíče.
 
-* [/Users](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Users): Tato rozhraní API umožňují přidružit uživatele k vašim prostorům a vyhledat tyto jednotlivce v případě potřeby. 
+* [/users](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Users): Tato řešení API umožňují přidružit uživatele k vašim prostorům a v případě potřeby tyto osoby vyhledat. 
 
-* [/](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/System): Tato rozhraní API umožňují spravovat nastavení v rámci systému, jako jsou například výchozí typy prostorů a senzorů. 
+* [/system](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/System): Tato nastavení API umožňují spravovat nastavení celého systému, například výchozí typy prostorů a senzorů. 
 
-* [/roleAssignments](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/RoleAssignments): Tato rozhraní API umožňují přidružit role k entitám, jako je ID uživatele, ID uživatelsky definované funkce atd. Každé přiřazení role zahrnuje ID entity, která se má přidružit, typ entity, ID role k přidružení, ID tenanta a cestu definující horní limit prostředku, ke kterému může entita přistupovat. Další informace najdete v [tomto článku](security-role-based-access-control.md) .
+* [/roleAssignments](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/RoleAssignments): Tato rozhraní API umožňují přidružit role k entitám, jako je ID uživatele, ID uživatelem definované funkce atd. Každé přiřazení role zahrnuje ID entity, kterou chcete přidružit, typ entity, ID role, kterou chcete přidružit, ID klienta a cestu, která definuje horní limit prostředku, ke kterému může entita přistupovat s tímto přidružením. Přečtěte si [tento článek](security-role-based-access-control.md) pro více informací.
 
 
 ## <a name="api-navigation"></a>Navigace rozhraní API
 
-Rozhraní API digitálních vláken podporují filtrování a navigaci v celém prostorovém grafu pomocí následujících parametrů:
+Rozhraní API digitálních dvojčat podporují filtrování a navigaci v celém prostorovém grafu pomocí následujících parametrů:
 
-- **spaceId**: rozhraní API bude filtrovat výsledky podle zadaného ID prostoru. Kromě toho logický příznak **useParentSpace** se vztahuje na rozhraní API [/Spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces) , což značí, že dané ID prostoru odkazuje na nadřazený prostor místo na aktuální místo. 
+- **spaceId**: Rozhraní API bude filtrovat výsledky podle daného ID místa. Kromě toho logický příznak **useParentSpace** je použitelný pro [/spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces) API, což znamená, že dané ID místa odkazuje na nadřazené místo aktuálního prostoru. 
 
-- **minLevel** a **maxLevel**: kořenové prostory se považují za úroveň 1. Mezery s nadřazeným prostorem na úrovni *n* jsou na úrovni *n + 1*. Díky nastavením těchto hodnot můžete filtrovat výsledky na určitých úrovních. Jedná se o hodnoty, když se nastaví. Zařízení, senzory a další objekty se považují za stejné úrovně jako jejich nejbližší prostor. Chcete-li získat všechny objekty na dané úrovni, nastavte **minLevel** i **maxLevel** na stejnou hodnotu.
+- **minLevel** a **maxLevel**: Kořenové prostory jsou považovány za na úrovni 1. Mezery s nadřazeným prostorem na úrovni *n* jsou na úrovni *n+1*. S těmito nastavenými hodnotami můžete filtrovat výsledky na určitých úrovních. Jedná se o včetně hodnoty při nastavení. Zařízení, senzory a další objekty jsou považovány za na stejné úrovni jako jejich nejbližší prostor. Chcete-li získat všechny objekty na dané úrovni, nastavte **minLevel** a **maxLevel** na stejnou hodnotu.
 
-- **minRelative** a **maxRelative**: když jsou tyto filtry uvedené, je odpovídající úroveň relativní vzhledem k úrovni daného ID prostoru:
-   - Relativní úroveň *0* odpovídá stejné úrovni jako dané ID prostoru.
-   - Relativní úroveň *1* představuje mezery na stejné úrovni jako podřízené objekty daného ID prostoru. Relativní úroveň *n* představuje mezery menší než zadané místo na úrovni *n* .
-   - Relativní úroveň *-1* představuje mezery na stejné úrovni jako nadřazený prostor zadaného místa.
+- **minRelative** a **maxRelative**: Pokud jsou tyto filtry uvedeny, odpovídající úroveň je relativní k úrovni dané id prostoru:
+   - Relativní úroveň *0* je stejná úroveň jako dané ID prostoru.
+   - Relativní úroveň *1* představuje mezery na stejné úrovni jako podřízené id daného prostoru. Relativní úroveň *n* představuje mezery nižší než zadaný prostor *n* úrovní.
+   - Relativní úroveň *-1* představuje mezery na stejné úrovni jako nadřazený prostor určeného prostoru.
 
-- **procházení**: umožňuje procházet v obou směrech od daného ID prostoru, jak je uvedeno v následujících hodnotách.
-   - **None**: Tato výchozí hodnota filtruje na dané ID prostoru.
-   - **Down**: Tyto filtry se nacházejí podle zadaného ID prostoru a jeho potomků. 
-   - **Up**: Tyto filtry se vyfiltrují podle zadaného ID prostoru a jeho nadřazených prvků. 
-   - **Span**: filtruje horizontální část prostorového grafu na stejné úrovni jako ID daného prostoru. K tomu je potřeba nastavit hodnotu true buď na **minRelative** , nebo na **maxRelative** . 
+- **procházet**: Umožňuje procházet v obou směrech z daného ID prostoru, jak je určeno následujícími hodnotami.
+   - **Žádné**: Tato výchozí hodnota se filtruje na dané ID místa.
+   - **Dolů**: Toto filtruje podle daného ID prostoru a jeho potomků. 
+   - **Nahoru**: Toto filtruje podle daného ID prostoru a jeho předchůdců. 
+   - **Rozsah**: Vyfiltruje se vodorovná část prostorového grafu na stejné úrovni jako dané ID prostoru. To potřebuje buď **minRelative** nebo **maxRelative,** které mají být nastaveny true. 
 
 
 ### <a name="examples"></a>Příklady
 
-V následujícím seznamu jsou uvedeny některé příklady navigace prostřednictvím rozhraní [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) API. Všimněte si, že zástupný `YOUR_MANAGEMENT_API_URL` odkazuje na identifikátor URI digitálních vláken rozhraní API ve formátu `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/`, kde `YOUR_INSTANCE_NAME` je název instance digitálního vlákna v Azure a `YOUR_LOCATION` je oblast, ve které je vaše instance hostovaná.
+Následující seznam ukazuje některé příklady navigace prostřednictvím [/devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) API. Všimněte si, `YOUR_MANAGEMENT_API_URL` že zástupný symbol odkazuje na identifikátor `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/`URI `YOUR_INSTANCE_NAME` virtuálních dvojčat API ve formátu `YOUR_LOCATION` , kde je název instance Azure Digital Twins a je oblast, kde je hostovaná vaše instance.
 
-- `YOUR_MANAGEMENT_API_URL/devices?maxLevel=1` vrátí všechna zařízení připojená ke kořenovým prostorům.
-- `YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4` vrátí všechna zařízení připojená k prostorům úrovně 2, 3 nebo 4.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId` vrátí všechna zařízení přímo připojená k mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down` vrátí všechna zařízení připojená k mySpaceId nebo k jednomu z jeho potomků.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true` vrátí všechna zařízení připojená k následníkům mySpaceId, s výjimkou mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true` vrátí všechna zařízení připojená k přímým podřízeným položkám mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Up&maxLevel=-1&maxRelative=true` vrátí všechna zařízení připojená k jednomu z nadřazených prvků mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5` vrátí všechna zařízení připojená k následníkům mySpaceId, která jsou na úrovni menší nebo rovna 5.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true` vrátí všechna zařízení připojená k mezerám, které jsou na stejné úrovni jako mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?maxLevel=1`vrátí všechna zařízení připojená ke kořenovým prostorům.
+- `YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4`vrátí všechna zařízení připojená k prostorům úrovní 2, 3 nebo 4.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId`vrátí všechna zařízení přímo připojená k mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down`vrátí všechna zařízení připojená k mySpaceId nebo jednomu z jeho potomků.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true`vrátí všechna zařízení připojená k potomkům mySpaceId, s výjimkou mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true`vrátí všechna zařízení připojená k bezprostředním dětem mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Up&maxLevel=-1&maxRelative=true`vrátí všechna zařízení připojená k jednomu z předků mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5`vrátí všechna zařízení připojená k potomkům mySpaceId, která jsou na úrovni menší nebo rovna 5.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true`vrátí všechna zařízení připojená k mezerám, které jsou na stejné úrovni jako mySpaceId.
 
 
-## <a name="odata-support"></a>Podpora OData
+## <a name="odata-support"></a>Podpora pro OData
 
-Většina rozhraní API, která vracejí kolekce, jako je například volání GET na/Spaces, podporují následující podmnožinu obecných možností dotazů systému [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) :  
+Většina api, která vracejí kolekce, jako je například volání GET na /spaces, podporuje následující podmnožinu obecných možností systémových dotazů [OData:](https://www.odata.org/getting-started/basic-tutorial/#queryData)  
 
 * **$filter**
 * **$orderby** 
 * **$top**
-* **$Skip** – Pokud máte v úmyslu zobrazit celou kolekci, měli byste ji požádat jako celek sadu v jednom volání a potom v aplikaci vytvořit stránkování. 
+* **$skip** - Pokud máte v úmyslu zobrazit celou kolekci, měli byste požádat jako celou sadu v jednom volání a potom provést stránkování v aplikaci. 
 
 > [!NOTE]
-> Některé možnosti OData (například možnosti dotazu **$Count**, **$expand**a **$Search**) nejsou aktuálně podporovány.
+> Některé možnosti OData (například možnosti dotazu **$count**, **$expand**a **$search**) nejsou v současné době podporovány.
 
 ### <a name="examples"></a>Příklady
 
@@ -112,8 +112,8 @@ Následující seznam znázorňuje několik dotazů s platnou syntaxí OData:
  
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět několik běžných vzorů dotazů rozhraní API, přečtěte si téma [Postup dotazování rozhraní API digitálních vláken Azure pro běžné úlohy](./how-to-query-common-apis.md).
+Chcete-li se dozvědět některé běžné vzory dotazů rozhraní API, přečtěte [si článek Jak se dotazovat rozhraní API azure digitálnídvojče pro běžné úkoly](./how-to-query-common-apis.md).
 
-Pokud chcete získat další informace o vašich koncových bodech rozhraní API, přečtěte si, [Jak používat digitální vlákna Swagger](./how-to-use-swagger.md).
+Další informace o koncových bodech rozhraní API najdete v článek [Použití funkce Digitální dvojčata Swagger](./how-to-use-swagger.md).
 
-Ke kontrole syntaxe OData a dostupných relačních operátorů si přečtěte [v Azure kognitivní hledání operátory porovnávání OData](../search/search-query-odata-comparison-operators.md).
+Chcete-li zkontrolovat syntaxi OData a dostupné operátory porovnání, přečtěte si [operátory porovnání OData v Azure Cognitive Search](../search/search-query-odata-comparison-operators.md).

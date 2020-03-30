@@ -1,6 +1,6 @@
 ---
-title: Vložení dat do indexu vyhledávání pomocí Data Factory
-description: Přečtěte si informace o tom, jak odeslat data do služby Azure Kognitivní hledání index pomocí Azure Data Factory.
+title: Nabízená data do indexu vyhledávání pomocí datové továrny
+description: Přečtěte si, jak nabízená data do Azure Cognitive Search Index pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,116 +13,116 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281558"
 ---
-# <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Vložení dat do indexu služby Azure Kognitivní hledání pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
+# <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Nabízení dat do indexu Azure Cognitive Search pomocí Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](data-factory-azure-search-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-azure-search.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [Azure kognitivní hledání Connector v v2](../connector-azure-search.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [Konektor Azure Cognitive Search ve verzi 2](../connector-azure-search.md).
 
-Tento článek popisuje, jak pomocí aktivity kopírování odeslat data z podporovaného zdrojového úložiště dat do indexu služby Azure Kognitivní hledání. Podporovaná zdrojová úložiště dat jsou uvedena ve sloupci Zdroj [podporovaných zdrojů a tabulky jímky](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Tento článek se týká článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , který prezentuje obecný přehled přesunu dat s aktivitou kopírování a podporovanými kombinacemi úložiště dat.
+Tento článek popisuje, jak použít aktivitu kopírování k nabízení dat z úložiště dat podporovaného zdroje do indexu Azure Cognitive Search. Podporovaná úložiště zdrojových dat jsou uvedena ve sloupci Zdroj [podporovaných zdrojů a jímek](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Tento článek vychází z článku [aktivity přesunu dat,](data-factory-data-movement-activities.md) který představuje obecný přehled přesunu dat s kombinacemi kopírování aktivity a podporovaných kombinací úložiště dat.
 
 ## <a name="enabling-connectivity"></a>Povolení připojení
-Pokud chcete Data Factory službu připojit k místnímu úložišti dat, nainstalujte Správa dat bránu do místního prostředí. Bránu můžete nainstalovat do stejného počítače, který je hostitelem zdrojového úložiště dat, nebo na samostatném počítači, abyste se vyhnuli konkurenčním prostředkům s úložištěm dat.
+Chcete-li povolit službě Data Factory připojení k místnímu úložišti dat, nainstalujte bránu pro správu dat do místního prostředí. Bránu můžete nainstalovat do stejného počítače, který je hostitelem úložiště zdrojových dat, nebo do samostatného počítače, abyste se vyhnuli konkurenci o prostředky s úložištěm dat.
 
-Brána Správa dat Gateway připojuje místní zdroje dat ke cloudovým službám zabezpečeným a spravovaným způsobem. Podrobnosti o Správa dat bráně najdete v tématu [přesun dat mezi místním a cloudovým](data-factory-move-data-between-onprem-and-cloud.md) článkem.
+Brána pro správu dat připojuje místní zdroje dat ke cloudovým službám bezpečným a spravovaným způsobem. Podrobnosti o bráně pro správu dat najdete v článku [Přesun dat mezi místními a cloudovými](data-factory-move-data-between-onprem-and-cloud.md) články.
 
 ## <a name="getting-started"></a>Začínáme
-Můžete vytvořit kanál s aktivitou kopírování, která odešle data ze zdrojového úložiště dat do indexu hledání pomocí různých nástrojů/rozhraní API.
+Můžete vytvořit kanál s aktivitou kopírování, která odesílá data ze zdrojového úložiště dat do indexu vyhledávání pomocí různých nástrojů nebo api.
 
-Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
+Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Viz [Kurz: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) pro rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat.
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete taky použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Šablona Azure Resource Manager**, Rozhraní **.NET API**a REST **API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [Kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) aktivity.
 
-Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
+Bez ohledu na to, zda používáte nástroje nebo api, provedete následující kroky k vytvoření kanálu, který přesune data ze zdrojového úložiště dat do úložiště dat jímky:
 
-1. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou.
-2. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování.
-3. Vytvořte **kanál** s aktivitou kopírování, která převezme datovou sadu jako vstup a datovou sadu jako výstup.
+1. Vytvořte **propojené služby** pro propojení vstupních a výstupních úložišť dat s vaší továrně dat.
+2. Vytvořte **datové sady** představující vstupní a výstupní data pro operaci kopírování.
+3. Vytvořte **kanál** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup.
 
-Při použití Průvodce se automaticky vytvoří definice JSON pro tyto Entity Data Factory (propojené služby, datové sady a kanál). Pokud používáte nástroje/rozhraní API (s výjimkou rozhraní .NET API), definujete tyto Data Factory entit pomocí formátu JSON.  Ukázku s definicemi JSON pro Data Factory entity, které se používají ke kopírování dat do indexu vyhledávání, najdete v tématu [JSON example: kopírování dat z místního SQL Server do indexu služby Azure kognitivní hledání](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index) v tomto článku.
+Při použití průvodce jsou automaticky vytvořeny definice JSON pro tyto entity Data Factory (propojené služby, datové sady a kanál). Při použití nástrojů nebo rozhraní API (s výjimkou rozhraní .NET API) definujete tyto entity Data Factory pomocí formátu JSON.  Ukázka s definicemi JSON pro entity Factory dat, které se používají ke kopírování dat pro index vyhledávání, najdete v [tématu JSON příklad: Kopírování dat z místního SQL Serveru do](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index) části indexu Azure Cognitive Search v tomto článku.
 
-Následující části obsahují podrobné informace o vlastnostech JSON, které se používají k definování Data Factory entit specifických pro vyhledávací index:
+V následujících částech jsou uvedeny podrobnosti o vlastnostech JSON, které se používají k definování entit Factory dat specifických pro index hledání:
 
-## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
 
-Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pro propojenou službu Azure Kognitivní hledání.
+Následující tabulka obsahuje popisy prvků JSON, které jsou specifické pro propojenou službu Azure Cognitive Search.
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 | -------- | ----------- | -------- |
-| typ | Vlastnost Type musí být nastavená na: **AzureSearch**. | Ano |
-| Adresa URL | Adresa URL služby vyhledávání | Ano |
-| key | Klíč správce pro vyhledávací službu. | Ano |
+| type | Vlastnost type musí být nastavena na: **AzureSearch**. | Ano |
+| url | Adresa URL vyhledávací služby. | Ano |
+| key | Klíč správce vyhledávací služby. | Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako jsou struktura, dostupnost a zásady pro datovou sadu JSON, jsou podobné pro všechny typy datových sad. Oddíl **typeProperties** se liší pro každý typ datové sady. Oddíl typeProperties pro datovou sadu typu **AzureSearchIndex** má následující vlastnosti:
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [Vytváření datových sad.](data-factory-create-datasets.md) Oddíly, jako je struktura, dostupnost a zásady datové sady JSON jsou podobné pro všechny typy datových sad. Oddíl **typeProperties** se liší pro každý typ datové sady. Oddíl typeProperties pro datovou sadu typu **AzureSearchIndex** má následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 | -------- | ----------- | -------- |
-| typ | Vlastnost Type musí být nastavená na **AzureSearchIndex**.| Ano |
-| indexName | Název indexu hledání Data Factory nevytváří index. Index musí existovat v Azure Kognitivní hledání. | Ano |
+| type | Vlastnost type musí být nastavena na **AzureSearchIndex**.| Ano |
+| název_indexu | Název indexu vyhledávání. Data Factory nevytvoří index. Index musí existovat v Azure Cognitive Search. | Ano |
 
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . K dispozici jsou vlastnosti, jako jsou název, popis, vstupní a výstupní tabulky a různé zásady, a to pro všechny typy aktivit. Vzhledem k tomu, že vlastnosti dostupné v části typeProperties se liší podle typu jednotlivých aktivit. U aktivity kopírování se liší v závislosti na typech zdrojů a jímky.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Vytváření kanálů.](data-factory-create-pipelines.md) Vlastnosti, jako je název, popis, vstupní a výstupní tabulky a různé zásady jsou k dispozici pro všechny typy aktivit. Vzhledem k tomu, vlastnosti, které jsou k dispozici v části typeProperties se liší s každým typem aktivity. U aktivity kopírování se liší v závislosti na typech zdrojů a propadů.
 
-V případě aktivity kopírování, pokud je jímka typu **AzureSearchIndexSink**, jsou v oddílu typeProperties k dispozici následující vlastnosti:
+Pro aktivitu kopírování, když jímka je typu **AzureSearchIndexSink**, následující vlastnosti jsou k dispozici v typeProperties části:
 
-| Vlastnost | Popis | Povolené hodnoty | Požadováno |
+| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).| Sloučení (výchozí)<br/>Nahrát| Ne |
-| WriteBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, nahraje data do indexu vyhledávání. Podrobnosti najdete ve [vlastnosti WriteBatchSize](#writebatchsize-property) . | 1 až 1 000. Výchozí hodnota je 1000. | Ne |
+| Chování zápisu | Určuje, zda má být sloučen nebo nahrazen, pokud dokument již v indexu existuje. Viz [WriteBehavior vlastnost](#writebehavior-property).| Sloučení (výchozí)<br/>Odeslat| Ne |
+| WriteBatchSize | Nahraje data do indexu vyhledávání, když velikost vyrovnávací paměti dosáhne writeBatchSize. Podrobnosti naleznete v [vlastnosti WriteBatchSize.](#writebatchsize-property) | 1 až 1 000. Výchozí hodnota je 1000. | Ne |
 
-### <a name="writebehavior-property"></a>Vlastnost WriteBehavior
-AzureSearchSink upsertuje při zápisu dat. Jinými slovy, když při psaní dokumentu už klíč dokumentu ve vyhledávacím indexu existuje, Azure Kognitivní hledání aktualizuje existující dokument, ale nevyvolává výjimku konfliktu.
+### <a name="writebehavior-property"></a>WriteBehavior, vlastnost
+AzureSearchSink upserts při zápisu dat. Jinými slovy při psaní dokumentu, pokud klíč dokumentu již existuje v indexu vyhledávání, Azure Cognitive Search aktualizuje existující dokument spíše než vyvolání výjimky konfliktu.
 
-AzureSearchSink poskytuje následující dvě chování Upsert (pomocí sady AzureSearch SDK):
+AzureSearchSink poskytuje následující dvě upsert chování (pomocí AzureSearch SDK):
 
-- **Merge**: kombinovat všechny sloupce v novém dokumentu s existujícím. U sloupců s hodnotou null v novém dokumentu je zachována hodnota existující.
-- **Nahrání**: nový dokument nahradí stávající. Pro sloupce, které nejsou zadány v novém dokumentu, je hodnota nastavena na hodnotu null, zda je v existujícím dokumentu hodnota jiná než null, nebo ne.
+- **Sloučení**: zkombinujte všechny sloupce v novém dokumentu s existujícím. Pro sloupce s hodnotou null v novém dokumentu je zachována hodnota v existujícím dokumentu.
+- **Upload**: Nový dokument nahradí stávající dokument. U sloupců, které nejsou zadány v novém dokumentu, je hodnota nastavena na hodnotu null, zda je v existujícím dokumentu hodnota nenulové nebo ne.
 
-Výchozí chování je **sloučeno**.
+Výchozí chování je **Sloučit**.
 
-### <a name="writebatchsize-property"></a>Vlastnost WriteBatchSize
-Služba Azure Kognitivní hledání podporuje zápis dokumentů jako dávky. Dávka může obsahovat 1 až 1 000 akcí. Akce zpracovává jeden dokument k provedení operace Odeslat/sloučit.
+### <a name="writebatchsize-property"></a>WriteBatchSize, vlastnost
+Služba Azure Cognitive Search podporuje psaní dokumentů jako dávkovou dávku. Dávka může obsahovat 1 až 1 000 akcí. Akce zpracovává jeden dokument k provedení operace nahrávání a sloučení.
 
-### <a name="data-type-support"></a>Podpora datových typů
-Následující tabulka určuje, jestli je datový typ Azure Kognitivní hledání podporovaný nebo ne.
+### <a name="data-type-support"></a>Podpora datového typu
+Následující tabulka určuje, jestli je datový typ Azure Cognitive Search podporovaný nebo ne.
 
-| Datový typ Azure Kognitivní hledání | Podporováno v jímky Azure Kognitivní hledání |
+| Datový typ Azure Cognitive Search | Podporované v Azure kognitivní vyhledávání jímky |
 | ---------------------- | ------------------------------ |
-| String | Ano |
-| Datový typ Int32 | Ano |
+| Řetězec | Ano |
+| Int32 | Ano |
 | Int64 | Ano |
 | Double | Ano |
 | Logická hodnota | Ano |
 | DataTimeOffset | Ano |
-| String Array | N |
-| GeographyPoint | N |
+| Pole řetězců | Ne |
+| GeografiePoint | Ne |
 
-## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>Příklad JSON: kopírování dat z místních SQL Server do Azure Kognitivní hledání index
+## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>Příklad JSON: Kopírování dat z místního SQL Serveru do indexu Azure Cognitive Search
 
-Následující příklad ukazuje:
+Následující ukázka ukazuje:
 
 1. Propojená služba typu [AzureSearch](#linked-service-properties).
 2. Propojená služba typu [OnPremisesSqlServer](data-factory-sqlserver-connector.md#linked-service-properties).
-3. Vstupní [datová sada](data-factory-create-datasets.md) typu [SQLServer](data-factory-sqlserver-connector.md#dataset-properties).
+3. Vstupní [datová sada](data-factory-create-datasets.md) typu [SqlServerTable](data-factory-sqlserver-connector.md#dataset-properties).
 4. Výstupní [datová sada](data-factory-create-datasets.md) typu [AzureSearchIndex](#dataset-properties).
-4. [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) a [AzureSearchIndexSink](#copy-activity-properties).
+4. [Kanál](data-factory-create-pipelines.md) s aktivitou Copy, která používá [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) a [AzureSearchIndexSink](#copy-activity-properties).
 
-Ukázka kopíruje data časových řad z místní databáze SQL Server do indexu vyhledávání po hodinách. Vlastnosti JSON použité v této ukázce jsou popsány v oddílech následujících po ukázkách.
+Ukázka zkopíruje data časových řad z místní databáze serveru SQL Server a vyhledává index každou hodinu. Vlastnosti JSON použité v této ukázce jsou popsány v následujících částech.
 
-Jako první krok nastavte bránu pro správu dat na místním počítači. Pokyny najdete v článku [přesun dat mezi místními umístěními a cloudem](data-factory-move-data-between-onprem-and-cloud.md) .
+Jako první krok nastavte bránu pro správu dat v místním počítači. Pokyny jsou v [přesunutí dat mezi místními umístěními a článkem cloudu.](data-factory-move-data-between-onprem-and-cloud.md)
 
-**Propojená služba Azure Kognitivní hledání:**
+**Propojená služba Azure Cognitive Search:**
 
 ```JSON
 {
@@ -152,11 +152,11 @@ Jako první krok nastavte bránu pro správu dat na místním počítači. Pokyn
 }
 ```
 
-**Vstupní datová sada SQL Server**
+**Vstupní datová sada serveru SQL Server**
 
-Ukázka předpokládá, že jste v SQL Server vytvořili tabulku "MyTable" a obsahuje sloupec s názvem "timestampcolumn" pro data časové řady. Můžete zadávat dotazy na více tabulek ve stejné databázi pomocí jedné datové sady, ale pro vlastnost tableName typeProperty datové sady se musí použít jedna tabulka.
+Ukázka předpokládá, že jste vytvořili tabulku "MyTable" v SQL Server a obsahuje sloupec s názvem "timestampcolumn" pro data časových řad. Můžete dotaz přes více tabulek v rámci stejné databáze pomocí jedné datové sady, ale jedna tabulka musí být použita pro dataset tableName typeProperty.
 
-Nastavení "externí": "true" informuje Data Factory služby, že datová sada je pro objekt pro vytváření dat externá a není vytvořená aktivitou v datové továrně.
+Nastavení "externí": "true" informuje službu Data Factory, že datová sada je externí pro datovou továrnu a není vytvářena aktivitou v datové továrně.
 
 ```JSON
 {
@@ -183,9 +183,9 @@ Nastavení "externí": "true" informuje Data Factory služby, že datová sada j
 }
 ```
 
-**Výstupní datová sada Azure Kognitivní hledání:**
+**Výstupní datová sada Azure Cognitive Search:**
 
-Ukázka kopíruje data do indexu služby Azure Kognitivní hledání s názvem **Products**. Data Factory nevytváří index. Ukázku otestujete tak, že vytvoříte index s tímto názvem. Vytvoří index vyhledávání se stejným počtem sloupců jako ve vstupní datové sadě. Nové položky jsou do indexu hledání přidány každou hodinu.
+Ukázka zkopíruje data do indexu Azure Cognitive Search s názvem **produkty**. Data Factory nevytvoří index. Chcete-li vzorek otestovat, vytvořte index s tímto názvem. Vytvořte index hledání se stejným počtem sloupců jako ve vstupní datové sadě. Nové položky jsou přidávány do indexu vyhledávání každou hodinu.
 
 ```JSON
 {
@@ -204,9 +204,9 @@ Ukázka kopíruje data do indexu služby Azure Kognitivní hledání s názvem *
 }
 ```
 
-**Aktivita kopírování v kanálu s využitím zdroje SQL a jímky indexu služby Azure Kognitivní hledání:**
+**Kopírování aktivity v kanálu se zdrojem SQL a jímkou indexu kognitivního vyhledávání Azure:**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **SqlSource** a typ **jímky** je nastavený na **AzureSearchIndexSink**. Dotaz SQL zadaný pro vlastnost **SqlReaderQuery** vybere data během uplynulé hodiny ke zkopírování.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro použití vstupních a výstupních datových sad a je naplánována na každou hodinu. V definici kanálu JSON je **typ zdroje** nastaven na **SqlSource** a typ **jímky** je nastaven na **AzureSearchIndexSink**. Dotaz SQL zadaný pro vlastnost **SqlReaderQuery** vybere data za poslední hodinu ke kopírování.
 
 ```JSON
 {
@@ -255,7 +255,7 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 }
 ```
 
-Pokud kopírujete data z cloudového úložiště dat do Azure Kognitivní hledání, je vyžadována `executionLocation` vlastnost. Následující fragment kódu JSON ukazuje změnu potřebnou v rámci aktivity kopírování `typeProperties` jako příklad. V části [Kopírovat data mezi datovými úložišti cloudu](data-factory-data-movement-activities.md#global) najdete podporované hodnoty a další podrobnosti.
+Pokud kopírujete data z cloudového úložiště `executionLocation` dat do Azure Cognitive Search, je vyžadována vlastnost. Následující úryvek JSON zobrazuje jako příklad `typeProperties` změnu potřebnou v části Kopírovat aktivitu. Zkontrolujte [Kopírovat data mezi oddíly úložiště cloudových dat,](data-factory-data-movement-activities.md#global) kde najdete podporované hodnoty a další podrobnosti.
 
 ```JSON
 "typeProperties": {
@@ -271,7 +271,7 @@ Pokud kopírujete data z cloudového úložiště dat do Azure Kognitivní hled�
 
 
 ## <a name="copy-from-a-cloud-source"></a>Kopírování ze zdroje cloudu
-Pokud kopírujete data z cloudového úložiště dat do Azure Kognitivní hledání, je vyžadována `executionLocation` vlastnost. Následující fragment kódu JSON ukazuje změnu potřebnou v rámci aktivity kopírování `typeProperties` jako příklad. V části [Kopírovat data mezi datovými úložišti cloudu](data-factory-data-movement-activities.md#global) najdete podporované hodnoty a další podrobnosti.
+Pokud kopírujete data z cloudového úložiště `executionLocation` dat do Azure Cognitive Search, je vyžadována vlastnost. Následující úryvek JSON zobrazuje jako příklad `typeProperties` změnu potřebnou v části Kopírovat aktivitu. Zkontrolujte [Kopírovat data mezi oddíly úložiště cloudových dat,](data-factory-data-movement-activities.md#global) kde najdete podporované hodnoty a další podrobnosti.
 
 ```JSON
 "typeProperties": {
@@ -285,12 +285,12 @@ Pokud kopírujete data z cloudového úložiště dat do Azure Kognitivní hled�
 }
 ```
 
-Sloupce můžete také namapovat ze zdrojové datové sady na sloupce z datové sady jímky v definici aktivity kopírování. Podrobnosti najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
+Můžete také mapovat sloupce ze zdrojové datové sady do sloupců z datové sady jímky v definici aktivity kopírování. Podrobnosti najdete [v tématu Mapování sloupců datových sad v Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
-Informace o klíčových faktorech, které mají vliv na výkon přesunu dat (aktivita kopírování) a různých způsobech jejich optimalizace, najdete v [Průvodci výkonem a optimalizací aktivity kopírování](data-factory-copy-activity-performance.md) .
+V průvodci [výkonem a laděním aktivity kopírování](data-factory-copy-activity-performance.md) najdete informace o klíčových faktorech, které ovlivňují výkon přesunu dat (aktivita kopírování) a o různých způsobech jeho optimalizace.
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-* [Kurz kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pro podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+* [Zkopírovat kurz aktivity](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pro podrobné pokyny pro vytvoření kanálu s aktivitou kopírování.

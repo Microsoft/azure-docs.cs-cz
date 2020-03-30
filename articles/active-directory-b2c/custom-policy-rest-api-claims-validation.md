@@ -1,146 +1,262 @@
 ---
-title: REST API výměny deklarací identity jako ověřování
+title: REST API deklarací exchanges jako ověření
 titleSuffix: Azure AD B2C
-description: Návod pro vytvoření Azure AD B2C cesty uživatele, která komunikuje s RESTful službami.
+description: Návod pro vytvoření cesty uživatele Azure AD B2C, která spolupracuje se službami RESTful.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7100498d99068941bcd7ca48b6cbcaa271fbb095
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a4902e96cd41a02953b6686b5d52d7912b27809f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189068"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330824"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C při ověřování vstupu uživatele
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Návod: Integrace serveru REST API pro deklarace identity v cestě uživatele Azure AD B2C k ověření vstupu uživatele
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Rozhraní identity Experience Framework (IEF), které je Azure Active Directory B2C (Azure AD B2C), umožňuje vývojářům identity integrovat interakci s rozhraním API RESTful v cestě uživatele.
+Rozhraní IEF (Identity Experience Framework), které je základem Azure Active Directory B2C (Azure AD B2C) umožňuje vývojářům identit integrovat interakci s rozhraním RESTful API v cestě uživatele.  Na konci tohoto návodu budete moci vytvořit cestu uživatele Azure AD B2C, která spolupracuje se [službami RESTful](custom-policy-rest-api-intro.md) k ověření vstupu uživatele.
 
-Na konci tohoto návodu budete moct vytvořit Azure AD B2C cestu uživatele, která komunikuje s RESTful službami.
+V tomto scénáři přidáme možnost pro uživatele zadat věrnostní číslo na stránce registrace Azure AD B2C. Ověříme, zda je tato kombinace e-mailu a věrnostního čísla mapována na propagační kód, a to odesláním těchto dat do rozhraní REST API. Pokud rozhraní REST API najde propagační kód pro tohoto uživatele, bude vrácena do Azure AD B2C. Nakonec propagační kód bude vložen do deklarací tokenu pro aplikaci využívat.
 
-IEF odesílá data v deklaracích identity a přijímá data zpět v deklaracích identity. Interakce s rozhraním API:
+Můžete také navrhnout interakci jako krok orchestrace. To je vhodné v případě, že rozhraní REST API nebude ověřování dat na obrazovce a vždy vrátit deklarace identity. Další informace naleznete [v tématu Návod: Integrace serveru deklarací rozhraní REST API v cestě uživatele Azure AD B2C jako krok orchestrace](custom-policy-rest-api-claims-exchange.md).
 
-- Dá se navrhovat jako REST API výměny deklarací identity nebo jako profil ověřování, který se nachází uvnitř kroku orchestrace.
-- Obvykle ověřuje vstup od uživatele. Pokud se hodnota od uživatele odmítne, uživatel se může pokusit znovu zadat platnou hodnotu s příležitostí k vrácení chybové zprávy.
+## <a name="prerequisites"></a>Požadavky
 
-Můžete také navrhnout interakci jako krok orchestrace. Další informace najdete v tématu [Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C jako krok orchestrace](custom-policy-rest-api-claims-exchange.md).
+- Proveďte kroky v [části Začínáme s vlastními zásadami](custom-policy-get-started.md). Měli byste mít funkční vlastní zásady pro registraci a přihlášení pomocí místních účtů.
+- Zjistěte, jak [integrovat renovovat deklarace identity rozhraní REST ve vlastních zásadách Azure AD B2C](custom-policy-rest-api-intro.md).
 
-V příkladu profilu ověřování použijeme profil upravit cestu uživatele v souboru úvodní sady ProfileEdit. XML.
+## <a name="prepare-a-rest-api-endpoint"></a>Příprava koncového bodu rozhraní REST API
 
-Můžeme ověřit, že název zadaný uživatelem v rámci úpravy profilu není součástí seznamu vyloučení.
+V tomto návodu byste měli mít rozhraní REST API, které ověřuje, zda je e-mailová adresa registrována ve vašem back-endovém systému s ID loajality. Pokud je zaregistrováno, rozhraní REST API by mělo vrátit registrační propagační kód, který může zákazník použít k nákupu zboží v rámci vaší aplikace. V opačném případě by rozhraní REST API mělo vrátit chybovou zprávu HTTP 409: "Věrnostní ID {loyalty ID}" není přidruženo k e-mailové adrese {email}.".
 
-## <a name="prerequisites"></a>Předpoklady
+Následující kód JSON ilustruje data Azure AD B2C bude odesílat do koncového bodu rozhraní REST API. 
 
-- Tenant Azure AD B2C nakonfigurovaný k dokončení registrace nebo přihlášení k místnímu účtu, jak je popsáno v tématu [Začínáme](custom-policy-get-started.md).
-- REST API koncový bod, se kterým chcete pracovat. Pro tento návod jsme nastavili ukázkový web s názvem [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) s využitím služby REST API.
-
-## <a name="step-1-prepare-the-rest-api-function"></a>Krok 1: Příprava funkce REST API
-
-> [!NOTE]
-> Instalace funkcí REST API je mimo rámec tohoto článku. [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) poskytuje vynikající sadu nástrojů pro vytváření služeb RESTful v cloudu.
-
-Vytvořili jsme funkci Azure, která obdrží deklaraci identity, kterou očekáváme jako `playerTag`. Funkce ověří, zda tato deklarace existuje. Můžete získat přístup k kompletnímu kódu funkce Azure v [GitHubu](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
-
-```csharp
-if (requestContentAsJObject.playerTag == null)
+```json
 {
-  return request.CreateResponse(HttpStatusCode.BadRequest);
+    "email": "User email address",
+    "language": "Current UI language",
+    "loyaltyId": "User loyalty ID"
 }
-
-var playerTag = ((string) requestContentAsJObject.playerTag).ToLower();
-
-if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcottonmarcus")
-{
-  return request.CreateResponse<ResponseContent>(
-    HttpStatusCode.Conflict,
-    new ResponseContent
-    {
-      version = "1.0.0",
-      status = (int) HttpStatusCode.Conflict,
-      userMessage = $"The player tag '{requestContentAsJObject.playerTag}' is already used."
-    },
-    new JsonMediaTypeFormatter(),
-    "application/json");
-}
-
-return request.CreateResponse(HttpStatusCode.OK);
 ```
 
-IEF očekává deklaraci identity `userMessage`, kterou funkce Azure vrátí. Tato deklarace identity se zobrazí jako řetězec pro uživatele, pokud se ověření nezdaří, například když se v předchozím příkladu vrátí stav konfliktu 409.
+Jakmile rozhraní REST API ověří data, musí vrátit http 200 (Ok), s následujícími daty JSON:
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>Krok 2: Konfigurace výměny deklarací identity rozhraní API RESTful jako technického profilu v souboru TrustFrameworkExtensions. XML
+```json
+{
+    "promoCode": "24534"
+}
+```
 
-Technický profil je plná konfigurace serveru Exchange, který požaduje služba RESTful. Otevřete soubor TrustFrameworkExtensions. XML a přidejte následující fragment kódu XML do prvku `<ClaimsProviders>`.
+Pokud se ověření nezdařilo, rozhraní REST API musí vrátit `userMessage` HTTP 409 (Conflict) s prvkem JSON. IEF očekává `userMessage` tvrzení, že rozhraní REST API vrátí. Tato deklarace bude prezentována jako řetězec pro uživatele, pokud se ověření nezdaří.
 
-> [!NOTE]
-> V následujícím kódu XML `Version=1.0.0.0` poskytovatel RESTful je popsán jako protokol. Berte v úvahu jako funkci, která bude komunikovat s externí službou. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
+```json
+{
+    "version": "1.0.1",
+    "status": 409,
+    "userMessage": "LoyaltyId ID '1234' is not associated with 'david@contoso.com' email address."
+}
+```
+
+Nastavení koncového bodu rozhraní REST API je mimo rozsah tohoto článku. Vytvořili jsme ukázku [funkce Azure.](https://docs.microsoft.com/azure/azure-functions/functions-reference) K kompletnímu kódu funkce Azure můžete přistupovat na [GitHubu](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function).
+
+## <a name="define-claims"></a>Definovat deklarace identity
+
+Deklarace poskytuje dočasné úložiště dat během provádění zásad Azure AD B2C. Deklarace identity můžete deklarovat v části [schématu deklarací](claimsschema.md) identity. 
+
+1. Otevřete soubor přípon zásad. Například <em> `SocialAndLocalAccounts/` </em>.
+1. Vyhledejte element [BuildingBlocks.](buildingblocks.md) Pokud prvek neexistuje, přidejte jej.
+1. Vyhledejte [ClaimsSchema](claimsschema.md) element. Pokud prvek neexistuje, přidejte jej.
+1. Přidejte následující deklarace identity do prvku **ClaimsSchema.**  
+
+```xml
+<ClaimType Id="loyaltyId">
+  <DisplayName>Your loyalty ID</DisplayName>
+  <DataType>string</DataType>
+  <UserInputType>TextBox</UserInputType>
+</ClaimType>
+<ClaimType Id="promoCode">
+  <DisplayName>Your promo code</DisplayName>
+  <DataType>string</DataType>
+  <UserInputType>Paragraph</UserInputType>
+</ClaimType>
+  <ClaimType Id="userLanguage">
+  <DisplayName>User UI language (used by REST API to return localized error messages)</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+```
+
+## <a name="configure-the-restful-api-technical-profile"></a>Konfigurace technického profilu rozhraní RESTful API 
+
+[Klidný technický profil](restful-technical-profile.md) poskytuje podporu pro propojení s vaší vlastní službou RESTful. Azure AD B2C odesílá data do služby RESTful `InputClaims` v `OutputClaims` kolekci a přijímá data zpět do kolekce. Najděte element **ClaimsProviders** a přidejte nového poskytovatele deklarací identity následujícím způsobem:
 
 ```xml
 <ClaimsProvider>
-    <DisplayName>REST APIs</DisplayName>
-    <TechnicalProfiles>
-        <TechnicalProfile Id="AzureFunctions-CheckPlayerTagWebHook">
-            <DisplayName>Check Player Tag Web Hook Azure Function</DisplayName>
-            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-            <Metadata>
-                <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
-                <Item Key="SendClaimsIn">Body</Item>
-                <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
-                <Item Key="AuthenticationType">None</Item>
-                <!-- REMOVE the following line in production environments -->
-                <Item Key="AllowInsecureAuthInProduction">true</Item>
-            </Metadata>
-            <InputClaims>
-                <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="playerTag" />
-            </InputClaims>
-            <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
-        </TechnicalProfile>
-        <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
-            <ValidationTechnicalProfiles>
-                <ValidationTechnicalProfile ReferenceId="AzureFunctions-CheckPlayerTagWebHook" />
-            </ValidationTechnicalProfiles>
-        </TechnicalProfile>
-    </TechnicalProfiles>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="REST-ValidateProfile">
+      <DisplayName>Check loyaltyId Azure Function web hook</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/ValidateProfile?code=your-code</Item>
+        <Item Key="SendClaimsIn">Body</Item>
+        <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+        <Item Key="AuthenticationType">None</Item>
+        <!-- REMOVE the following line in production environments -->
+        <Item Key="AllowInsecureAuthInProduction">true</Item>
+      </Metadata>
+      <InputClaims>
+        <!-- Claims sent to your REST API -->
+        <InputClaim ClaimTypeReferenceId="loyaltyId" />
+        <InputClaim ClaimTypeReferenceId="email" />
+        <InputClaim ClaimTypeReferenceId="userLanguage" PartnerClaimType="lang" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
+      </InputClaims>
+      <OutputClaims>
+        <!-- Claims parsed from your REST API -->
+        <OutputClaim ClaimTypeReferenceId="promoCode" />
+      </OutputClaims>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+    </TechnicalProfile>
+  </TechnicalProfiles>
 </ClaimsProvider>
 ```
 
-Element `InputClaims` definuje deklarace, které budou odeslány z IEF do služby REST. V tomto příkladu se obsah deklarace `givenName` do služby REST pošle jako `playerTag`. V tomto příkladu IEF neočekává deklarace identity zpátky. Místo toho čeká na odpověď ze služby REST a funguje na základě stavových kódů, které obdrží.
+V tomto příkladu `userLanguage` bude odeslána do `lang` služby REST jako v rámci datové části JSON. Hodnota deklarace `userLanguage` obsahuje aktuální ID uživatelského jazyka. Další informace naleznete v tématu [překládání deklarací .](claim-resolver-overview.md)
 
-Komentáře uvedené výše `AuthenticationType` a `AllowInsecureAuthInProduction` určují změny, které byste měli dělat při přesunu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API pro RESTful pro produkční prostředí, najdete v tématu [zabezpečení rozhraní API RESTful se základními ověřováním](secure-rest-api-dotnet-basic-auth.md) a [zabezpečením RESTful API pomocí ověřování certifikátů](secure-rest-api-dotnet-certificate-auth.md).
+Výše uvedené `AuthenticationType` `AllowInsecureAuthInProduction` komentáře a určit změny, které byste měli provést při přechodu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API RESTful pro produkční prostředí, naleznete [v tématu Secure RESTful API](secure-rest-api.md).
 
-## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>Krok 3: zahrňte výměnu deklarací identity služby RESTful do technického profilu s vlastním uplatněním, kde chcete ověřit vstup uživatele.
+## <a name="validate-the-user-input"></a>Ověření vstupu uživatele
 
-Nejběžnějším použitím tohoto kroku ověření je interakce s uživatelem. Všechny interakce, u kterých se očekává, že uživatel zadá vstup, jsou *technické profily s vlastním uplatněním*. V tomto příkladu přidáme ověření do technického profilu s vlastním kontrolním výrazem (ProfileUpdate). Toto je technický profil, který používá soubor zásad předávající strany (RP) `Profile Edit`.
+Chcete-li získat věrnostní číslo uživatele během registrace, musíte uživateli povolit zadání těchto dat na obrazovce. Přidejte deklaraci výstupu **loyaltyId** na stránku registrace přidáním do prvku existujícího prvku technického `OutputClaims` profilu registrace. Zadejte celý seznam výstupních deklarací pro řízení pořadí, ve které jsou deklarace uvedeny na obrazovce.  
 
-Přidání výměny deklarací identity do technického profilu s vlastním uplatněním:
+Přidejte odkaz na technický profil ověření do technického `REST-ValidateProfile`profilu registrace, který volá . Nový technický profil ověření bude přidán do `<ValidationTechnicalProfiles>` horní části kolekce definované v základní zásady. Toto chování znamená, že pouze po úspěšnéověření Azure AD B2C přesune k vytvoření účtu v adresáři.   
 
-1. Otevřete soubor TrustFrameworkBase. XML a vyhledejte `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
-2. Zkontrolujte konfiguraci tohoto technického profilu. Sledujte, jak se Exchange s uživatelem definuje jako deklarace identity, které budou požádáni o uživatele (vstupní deklarace identity) a deklarace identity, které se vrátí zpět od zprostředkovatele s vlastním uplatněním (výstupní deklarace).
-3. Vyhledejte `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`a Všimněte si, že tento profil je vyvolán jako krok Orchestration 5 `<UserJourney Id="ProfileEdit">`.
+1. Najít **ClaimsProviders** element. Přidejte nového poskytovatele deklarací identity takto:
 
-## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>Krok 4: nahrání a testování souboru zásad pro úpravu RP profilu
+    ```xml
+    <ClaimsProvider>
+      <DisplayName>Local Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true"/>
+            <OutputClaim ClaimTypeReferenceId="newPassword" Required="true"/>
+            <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true"/>
+            <OutputClaim ClaimTypeReferenceId="displayName"/>
+            <OutputClaim ClaimTypeReferenceId="givenName"/>
+            <OutputClaim ClaimTypeReferenceId="surName"/>
+            <!-- Required to present the text box to collect the data from the user -->
+            <OutputClaim ClaimTypeReferenceId="loyaltyId"/>
+            <!-- Required to pass the promoCode returned from "REST-ValidateProfile" 
+            to subsequent orchestration steps and token issuance-->
+            <OutputClaim ClaimTypeReferenceId="promoCode" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="REST-ValidateProfile" />
+          </ValidationTechnicalProfiles>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Self Asserted</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="SelfAsserted-Social">
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="email" />
+          </InputClaims>
+            <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="email" />
+            <OutputClaim ClaimTypeReferenceId="displayName"/>
+            <OutputClaim ClaimTypeReferenceId="givenName"/>
+            <OutputClaim ClaimTypeReferenceId="surname"/>
+            <!-- Required to present the text box to collect the data from the user -->
+            <OutputClaim ClaimTypeReferenceId="loyaltyId"/>
+            <!-- Required to pass the promoCode returned from "REST-ValidateProfile" 
+            to subsequent orchestration steps and token issuance-->
+            <OutputClaim ClaimTypeReferenceId="promoCode" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="REST-ValidateProfile"/>
+          </ValidationTechnicalProfiles>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
 
-1. Nahrajte novou verzi souboru TrustFrameworkExtensions. XML.
-2. Pomocí rutiny **Spustit nyní** otestujte soubor zásad pro úpravy v profilech.
-3. Otestujte ověření zadáním jednoho z existujících názvů (například mcvinny) do **daného pole název** . Pokud je všechno nastavené správně, měli byste obdržet zprávu upozorňující uživatele, že se už používá značka přehrávače.
+## <a name="include-a-claim-in-the-token"></a>Zahrnout deklaraci do tokenu 
+
+Chcete-li vrátit deklaraci kódu promo zpět do aplikace předávající strany, přidejte do souboru <em> `SocialAndLocalAccounts/` </em> výstupní deklaraci. Výstupní deklarace umožní, aby deklarace byla přidána do tokenu po úspěšné cestě uživatele, a bude odeslána do aplikace. Upravte prvek technického profilu v části `promoCode` předávající strany a přidejte jako výstupní deklaraci.
+ 
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      <OutputClaim ClaimTypeReferenceId="promoCode" DefaultValue="" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+## <a name="test-the-custom-policy"></a>Testování vlastních zásad
+
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD výběrem filtru **directory + předplatné** v horní nabídce a výběrem adresáře, který obsahuje vašeho klienta Azure AD.
+1. V levém horním rohu portálu Azure zvolte **Všechny služby** a pak **vyhledejte**a vyberte registrace aplikací .
+1. Vyberte **rozhraní Identity Experience Framework**.
+1. Vyberte **Nahrát vlastní zásady**a potom nahrajte změněné soubory zásad: *TrustFrameworkExtensions.xml*a *SignUpOrSignin.xml*. 
+1. Vyberte zásadu registrace nebo přihlášení, kterou jste nahráli, a klikněte na tlačítko **Spustit.**
+1. Měli byste být schopni se zaregistrovat pomocí e-mailové adresy.
+1. Klikněte na odkaz **Přihlásit se nyní.**
+1. V **id vaší loajality**zadejte 1234 a klepněte na tlačítko **Pokračovat**. V tomto okamžiku byste měli dostat chybovou zprávu ověření.
+1. Změňte na jinou hodnotu a klepněte na tlačítko **Pokračovat**.
+1. Token odeslaný zpět do `promoCode` vaší aplikace obsahuje deklaraci.
+
+```json
+{
+  "typ": "JWT",
+  "alg": "RS256",
+  "kid": "X5eXk4xyojNFum1kl2Ytv8dlNP4-c57dO6QGTVBwaNk"
+}.{
+  "exp": 1584295703,
+  "nbf": 1584292103,
+  "ver": "1.0",
+  "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
+  "aud": "e1d2612f-c2bc-4599-8e7b-d874eaca1ee1",
+  "acr": "b2c_1a_signup_signin",
+  "nonce": "defaultNonce",
+  "iat": 1584292103,
+  "auth_time": 1584292103,
+  "name": "Emily Smith",
+  "email": "emily@outlook.com",
+  "given_name": "Emily",
+  "family_name": "Smith",
+  "promoCode": "84362"
+  ...
+}
+```
 
 ## <a name="next-steps"></a>Další kroky
 
-[Umožňuje upravit úpravy profilu a registraci uživatelů, aby bylo možné získat další informace od uživatelů.](custom-policy-custom-attributes.md)
+Informace o zabezpečení prostředí API naleznete v následujících článcích:
 
-[Návod: integrace REST APIch výměn deklarací identity v Azure AD B2C cestě uživatele jako kroku orchestrace](custom-policy-rest-api-claims-exchange.md)
-
-[Referenční dokumentace: RESTful Technical Profile](restful-technical-profile.md)
-
-Informace o tom, jak zabezpečit rozhraní API, najdete v následujících článcích:
-
-* [Zabezpečení rozhraní API RESTful pomocí základního ověřování (uživatelské jméno a heslo)](secure-rest-api-dotnet-basic-auth.md)
-* [Zabezpečení rozhraní API RESTful pomocí klientských certifikátů](secure-rest-api-dotnet-certificate-auth.md)
+- [Návod: Integrace renomovaných deklarací rozhraní REST api v cestě uživatele Azure AD B2C jako krok orchestrace](custom-policy-rest-api-claims-exchange.md)
+- [Zabezpečte své RESTful API](secure-rest-api.md)
+- [Reference: Technický profil RESTful](restful-technical-profile.md)

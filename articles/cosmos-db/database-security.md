@@ -1,90 +1,90 @@
 ---
 title: Zabezpečení databáze – Azure Cosmos DB
-description: Zjistěte, jak službu Azure Cosmos DB poskytuje ochranu a data zabezpečení pro vaše data databáze.
+description: Zjistěte, jak Azure Cosmos DB poskytuje ochranu databáze a zabezpečení dat pro vaše data.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0c97d70ea3e5c7fdd14b0f97c5e393359f2b948e
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 30991f17970eefe1a140cdd70e1f6b305160349c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087227"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537325"
 ---
-# <a name="security-in-azure-cosmos-db---overview"></a>Zabezpečení v Azure Cosmos DB – přehled
+# <a name="security-in-azure-cosmos-db---overview"></a>Zabezpečení ve službě Azure Cosmos DB – Přehled
 
 Tento článek popisuje osvědčené postupy zabezpečení databází a klíčové funkce, které nabízí služba Azure Cosmos DB a které pomáhají s ochranou před porušeními zabezpečení databází, jejich rozpoznáváním a reakcí na ně.
 
-## <a name="whats-new-in-azure-cosmos-db-security"></a>Co je nového v Azure Cosmos DB zabezpečení
+## <a name="whats-new-in-azure-cosmos-db-security"></a>Co je nového v zabezpečení Azure Cosmos DB
 
-Šifrování v klidovém stavu je nyní k dispozici pro dokumenty a zálohy uložené ve službě Azure Cosmos DB ve všech oblastech Azure. Šifrování v klidovém stavu je automaticky použita pro nové i stávající zákazníky v těchto oblastech. Není potřeba cokoli konfigurovat získáte stejné skvělé latence, propustnosti, dostupnosti a funkce jako před s výhodou poskytovatelů znalost vašich dat je bezpečným a zabezpečeným pomocí šifrování v klidovém stavu.
+Šifrování v klidovém stavu je teď dostupné pro dokumenty a zálohy uložené v Azure Cosmos DB ve všech oblastech Azure. Šifrování v klidovém stavu se použije automaticky pro nové i stávající zákazníky v těchto oblastech. Není třeba nic konfigurovat; a získáte stejnou skvělou latenci, propustnost, dostupnost a funkčnost jako dříve s výhodou vědomí, že vaše data jsou v bezpečí díky šifrování v klidovém stavu.
 
-## <a name="how-do-i-secure-my-database"></a>Návody zabezpečení databáze
+## <a name="how-do-i-secure-my-database"></a>Jak zabezpečit svou databázi
 
-Zabezpečení dat je sdílenou odpovědnost mezi vámi, zákazníka a poskytovatele databáze. Velikost odpovědnosti, které se provádějí může lišit v závislosti na poskytovateli databáze, kterou zvolíte. Pokud vyberete možnost místního řešení, budete muset zajistí všechno, co z ochranu koncových bodů k fyzickému zabezpečení hardwaru – tedy žádná snadný úkol. Pokud se rozhodnete poskytovatele cloudové databáze PaaS jako je Azure Cosmos DB, výrazně zmenší vaší oblasti zájmu. Následující obrázek, který se vypůjčil ze [sdílených odpovědností Microsoftu za Cloud Computing](https://aka.ms/sharedresponsibility) , ukazuje, jak se vaše zodpovědnost sníží s poskytovatelem PaaS, jako Azure Cosmos DB.
+Zabezpečení dat je sdílená odpovědnost mezi vámi, zákazníkem a poskytovatelem databáze. V závislosti na zvoleném poskytovateli databáze se může množství odpovědnosti lišit. Pokud zvolíte místní řešení, musíte poskytnout vše od ochrany koncových bodů až po fyzické zabezpečení hardwaru , což není snadný úkol. Pokud zvolíte poskytovatele cloudové databáze PaaS, jako je Azure Cosmos DB, vaše oblast zájmu se značně zmenší. Následující obrázek vypůjčený z dokumentu white [paper o sdílených odpovědnostech microsoftu pro cloud computing](https://aka.ms/sharedresponsibility) ukazuje, jak se vaše odpovědnost snižuje s poskytovatelem PaaS, jako je Azure Cosmos DB.
 
-![Odpovědnosti zákazníka a databáze zprostředkovatele](./media/database-security/nosql-database-security-responsibilities.png)
+![Odpovědnosti zákazníků a poskytovatelů databází](./media/database-security/nosql-database-security-responsibilities.png)
 
-Předchozí diagram znázorňuje základní cloudovou součásti zabezpečení, ale položky, které je potřeba si dělat starosti speciálně pro vaše řešení databáze? A jak můžeme srovnávat řešení k sobě navzájem?
+Předchozí diagram zobrazuje součásti zabezpečení cloudu vysoké úrovně, ale jaké položky je třeba se obávat konkrétně pro databázové řešení? A jak můžete vzájemně porovnávat řešení?
 
-Doporučujeme následující kontrolní seznam požadavků, na kterém bude probíhat porovnávání databázové systémy:
+Doporučujeme následující kontrolní seznam požadavků, na kterých chcete porovnat databázové systémy:
 
-- Nastavení brány firewall a zabezpečení sítě
-- Ověřování uživatelů a pokud potřebujete jemněji odstupňované uživatelské ovládací prvky
-- Možnost replikovat data globálně pro selháním v dané oblasti
-- Možnost převzetí služeb při selhání z jednoho datového centra na jiný
-- Replikace místních dat v rámci datového centra
-- Automatická data zálohy
-- Obnovení odstraněných dat ze zálohy
-- Ochrana a izolovat citlivá data
-- Monitorování pro útoky
+- Nastavení zabezpečení sítě a brány firewall
+- Ověřování uživatelů a jemně odstupňované uživatelské ovládací prvky
+- Schopnost replikovat data globálně pro regionální selhání
+- Možnost převzetí služeb při selhání z jednoho datového centra do druhého
+- Replikace místních dat v datovém centru
+- Automatické zálohování dat
+- Obnovení smazaných dat ze záloh
+- Ochrana a izolování citlivých dat
+- Sledování útoků
 - Reakce na útoky
-- Možnost geo ochranná data dodržovat omezení zásad správného řízení dat
-- Fyzická ochrana servery v centrech chráněná data
+- Schopnost geo-fence data dodržovat omezení správy dat
+- Fyzická ochrana serverů v chráněných datových centrech
 - Certifikace
 
-I když se to může zdát zřejmé, nedávné nepostradatelné [porušení databáze](https://thehackernews.com/2017/01/mongodb-database-security.html) nám připomínat jednoduché, ale kritické důležitosti následujících požadavků:
+A i když se to může zdát zřejmé, nedávné [rozsáhlé narušení databáze](https://thehackernews.com/2017/01/mongodb-database-security.html) nám připomínají jednoduchý, ale kritický význam následujících požadavků:
 
-- Aktualizované servery, které jsou v aktuálním stavu
-- Protokol HTTPS pomocí šifrování výchozí/SSL
-- Účty pro správu s silná hesla
+- Opravené servery, které jsou průběžně aktuální
+- HTTPS ve výchozím nastavení/Šifrování SSL
+- Účty pro správu se silnými hesly
 
-## <a name="how-does-azure-cosmos-db-secure-my-database"></a>Jak aplikace Azure Cosmos DB zabezpečit moji databázi
+## <a name="how-does-azure-cosmos-db-secure-my-database"></a>Jak Azure Cosmos DB zabezpečuje mou databázi
 
-Pojďme se podívat zpět v předchozím seznamu – kolik tyto požadavky na zabezpečení služby Azure Cosmos DB poskytuje? Každý jeden.
+Podívejme se zpět na předchozí seznam – kolik z těchto požadavků na zabezpečení poskytuje Azure Cosmos DB? Do jednoho.
 
-Pojďme se podívat do každé z nich podrobněji.
+Pojďme se podívat do každého z nich podrobně.
 
-|Požadavek na zabezpečení|Postup zabezpečení služby Azure Cosmos DB|
+|Požadavek na zabezpečení|Přístup k zabezpečení Azure Cosmos DB|
 |---|---|
-|Zabezpečení sítě|Použití brány firewall protokolu IP je první vrstvu ochrany a zabezpečení vaší databáze. Azure Cosmos DB podporuje zásady řízení přístupu na základě IP adresy pro podporu brány firewall pro příchozí řízené. Řízení přístupu na základě IP adresy se podobá pravidlům brány firewall, která používají tradiční databázové systémy, ale rozšiřují se, aby účet databáze Azure Cosmos byl přístupný jenom ze schválené sady počítačů nebo cloudových služeb. Další informace najdete v článku o [podpoře Azure Cosmos DB brány firewall](firewall-support.md) .<br><br>Azure Cosmos DB umožňuje povolit konkrétní IP adresu (168.61.48.0), rozsah IP adres (168.61.48.0/8) a kombinace IP adresy a rozsahy adres. <br><br>Služba Azure Cosmos DB jsou blokovány všechny požadavky z počítačů mimo tento seznam povolených. Požadavky ze schválených počítače a cloudové služby pak musíte dokončit proces ověřování má být poskytnut řízení přístupu k prostředkům.<br><br> [Značky služby virtuální sítě](../virtual-network/service-tags-overview.md) můžete použít k zajištění izolace sítě a ochraně vašich Azure Cosmos DBch prostředků z obecného internetového prostředí. Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například AzureCosmosDB) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.|
-|Autorizace|Azure Cosmos DB používá ověřovací kód zprávy na základě hodnoty hash (HMAC) pro autorizaci. <br><br>Každý požadavek je zakódována pomocí tajný klíč a následné base-64 kódovaných hash posílá se každé volání do služby Azure Cosmos DB. Pro ověření žádosti, služby Azure Cosmos DB používá správný tajný klíč a vlastnosti ke generování hodnoty hash a poté porovnává hodnotu se v žádosti. Pokud tyto dvě hodnoty odpovídají, je operace úspěšná autorizace a zpracuje požadavek, jinak je chybě autorizace a žádost se zamítá.<br><br>Můžete použít buď [hlavní klíč](secure-access-to-data.md#master-keys), nebo [token prostředku](secure-access-to-data.md#resource-tokens) , který umožňuje jemně odstupňovaný přístup k prostředku, jako je například dokument.<br><br>Další informace najdete v [zabezpečení přístupu k prostředkům Azure Cosmos DB](secure-access-to-data.md).|
-|Uživatele a oprávnění|Pomocí hlavního klíče pro účet můžete vytvořit prostředky uživatelů a prostředky oprávnění na databázi. Token prostředku je přidružen k oprávnění v databázi a určuje, zda má uživatel přístup k prostředku aplikace v databázi (čtení i zápis, jen pro čtení nebo bez přístupu). Prostředky aplikace obsahují kontejneru, dokumenty, přílohy, uložené procedury, triggery a uživatelem definovanými funkcemi. Token prostředku se pak použije při ověřování zadat nebo odepřít přístup k prostředku.<br><br>Další informace najdete v [zabezpečení přístupu k prostředkům Azure Cosmos DB](secure-access-to-data.md).|
-|Integrace služby Active directory (RBAC)| Pomocí řízení přístupu (IAM) v Azure Portal můžete také poskytnout nebo omezit přístup k účtu Cosmos, databázi, kontejneru a nabídkám (propustnost). IAM poskytuje řízení přístupu na základě rolí a integruje se službou Active Directory. Můžete použít předdefinované role nebo vlastní role pro jednotlivce a skupiny. Další informace najdete v článku věnovaném [integraci služby Active Directory](role-based-access-control.md) .|
-|Globální replikace|Azure Cosmos DB nabízí globální distribuce na klíč, který umožňuje replikovat data do kterékoli z datových center Azure na celém světě s kliknutím na tlačítko. Globální replikace vám umožní škálovat globálně a zajistit přístup s nízkou latencí k datům po celém světě.<br><br>Globální replikace v kontextu zabezpečení, zajišťuje ochranu dat před selháním v dané oblasti.<br><br>Další informace najdete v článku o [globální distribuci dat](distribute-data-globally.md).|
-|Regionální převzetí služeb při selhání|Pokud máte replikuje vaše data ve více než jedno datové centrum, Azure Cosmos DB automaticky navyšování vaše operace by měla datovým centrem přejdou do režimu offline. Můžete vytvořit seznam seřazený podle priority převzetí služeb při selhání oblasti použití oblastí, ve kterých se replikuje vaše data. <br><br>Další informace najdete v oblasti [místní převzetí služeb při selhání v Azure Cosmos DB](high-availability.md).|
-|Místní replikaci|I v rámci jednoho datového centra Azure Cosmos DB automaticky replikuje data pro zajištění vysoké dostupnosti, což vám umožní vybrat si [úrovně konzistence](consistency-levels.md). Tato replikace garantuje [smlouvu SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) 99,99% dostupnosti pro všechny účty v jedné oblasti a všechny účty ve více oblastech s odlehčenou konzistencí a 99,999% dostupností pro všechny účty databáze ve více oblastech.|
-|Automatizované zálohování online|Databáze Azure Cosmos se pravidelně zálohují a ukládají se v geograficky redundantním úložišti. <br><br>Další informace najdete v [automatickém online zálohování a obnovení pomocí Azure Cosmos DB](online-backup-and-restore.md).|
-|Obnovení odstraněných dat|Automatizované zálohování online je možné obnovit data, možná jste omylem odstranili až ~ 30 dnů po skončení události. <br><br>Další informace najdete v [automatickém online zálohování a obnovení pomocí Azure Cosmos DB](online-backup-and-restore.md)|
-|Ochrana a izolovat citlivá data|Všechna data v oblastech uvedených v části Co je nového? je teď zašifrovaný v klidovém stavu.<br><br>Osobní údaje a další důvěrná data můžou být izolované na konkrétní kontejner a čtení a zápis nebo přístup jen pro čtení může být omezen na konkrétní uživatele.|
-|Monitorování pro útoky|Pomocí protokolu [auditu a protokolů aktivit](logging.md)můžete monitorovat účet pro normální a neobvyklé aktivity. Můžete zobrazit, jaké operace provedených s vašimi prostředky, kteří při operaci došlo k chybě, stav operace a mnohem více jak je znázorněno na snímku obrazovky touto tabulkou, který operaci spustil.|
-|Reakce na útoky|Jakmile máte kontaktovat podporu Azure o ohlásit možný útok, proces reakcí na incidenty krok 5 je spuštěna. Cíl 5 krocích se má obnovit normální provoz zabezpečení a operace co nejrychleji po zjištění problému a spustit šetření.<br><br>Další informace najdete v [Microsoft Azure odpovědi na zabezpečení v cloudu](https://aka.ms/securityresponsepaper).|
-|Geograficky monitorování geografických zón|Azure Cosmos DB zajišťuje řízení dat pro suverénní oblasti (například Germany, Čína, státní správy USA).|
-|Chráněné zařízení|Data ve službě Azure Cosmos DB se ukládají na jednotkách SSD v chráněných datových centrech Azure.<br><br>Další informace najdete v [globálním datacentru Microsoftu](https://www.microsoft.com/en-us/cloud-platform/global-datacenters) .|
-|Šifrování protokolu HTTPS a SSL/TLS|Všechna připojení k Azure Cosmos DB podporují protokol HTTPS. Azure Cosmos DB podporuje také protokol TLS 1,2.<br>Je možné vyhovět minimální verzi TLS na straně serveru. Pokud to chcete udělat, kontaktujte prosím [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com).|
-|Šifrování v klidovém stavu|Všechna data ukládají do služby Azure Cosmos DB se šifrují při nečinnosti. Další informace najdete v [Azure Cosmos DB šifrování v klidovém umístění](./database-encryption-at-rest.md) .|
-|Patched servery|Jako spravovanou databázovou službu Azure Cosmos DB eliminuje potřebu správu a servery, oprava, která má automaticky provede za vás.|
-|Účty pro správu s silná hesla|Je těžké si myslíte, že musíme ještě zmiňovat tento požadavek, ale na rozdíl od některých z našich konkurentů, není možné mít účet správce bez hesla ve službě Azure Cosmos DB.<br><br> Ve výchozím nastavení je těšte zabezpečení prostřednictvím protokolu SSL a HMAC tajného kódu na základě ověřování.|
-|Zabezpečení a data protection certifikace| Nejaktuálnější seznam certifikací najdete na celkovém [webu dodržování předpisů Azure](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) a v nejnovějším [dokumentu o dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) všemi certifikacemi (vyhledejte Cosmos). Další informace najdete v tématu 25. dubna 2018 post [Azure #CosmosDB: Secure, Private, splňující předpisy, která zahrnuje SOC 1/2 Type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP High a spoustu dalších.
+|Zabezpečení sítě|Použití brány firewall IP je první vrstvou ochrany pro zabezpečení databáze. Azure Cosmos DB podporuje zásady založené na ip přístupu pro příchozí podporu brány firewall. Ovládací prvky přístupu založené na protokolu IP jsou podobné pravidlům brány firewall používaným tradičními databázovými systémy, ale jsou rozbaleny tak, aby databázový účet Azure Cosmos byl přístupný jenom ze schválené sady počítačů nebo cloudových služeb. Další informace najdete v článku [o podpoře brány firewall Azure Cosmos DB.](firewall-support.md)<br><br>Azure Cosmos DB umožňuje povolit konkrétní IP adresu (168.61.48.0), rozsah IP adres (168.61.48.0/8) a kombinace IP adres a rozsahů. <br><br>Všechny požadavky pocházející z počítačů mimo tento seznam povolených jsou blokovány Službou Azure Cosmos DB. Požadavky ze schválených počítačů a cloudových služeb pak musí dokončit proces ověřování, které mají být poskytnuty řízení přístupu k prostředkům.<br><br> [Značky virtuálních síťových služeb](../virtual-network/service-tags-overview.md) můžete použít k dosažení izolace sítě a ochraně prostředků Azure Cosmos DB před obecným Internetem. Při vytváření pravidel zabezpečení používejte značky služeb místo konkrétních adres IP. Zadáním názvu značky služby (například AzureCosmosDB) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro odpovídající službu.|
+|Autorizace|Azure Cosmos DB používá pro autorizaci ověřovací kód zpráv založený na hash (HMAC). <br><br>Každý požadavek je zakódován pomocí klíče tajného účtu a následné základní-64 kódované hash je odeslána s každým voláním Do Azure Cosmos DB. K ověření požadavku používá služba Azure Cosmos DB správný tajný klíč a vlastnosti ke generování hodnoty hash, pak porovná hodnotu s hodnotou v požadavku. Pokud se obě hodnoty shodují, operace je úspěšně autorizována a požadavek je zpracován, jinak dojde k selhání autorizace a požadavek je odmítnut.<br><br>Můžete použít [hlavní klíč](secure-access-to-data.md#master-keys)nebo [token prostředku](secure-access-to-data.md#resource-tokens) umožňující jemně odstupňovaný přístup k prostředku, jako je například dokument.<br><br>Další informace najdete v [informacích zabezpečení přístupu k prostředkům Azure Cosmos DB](secure-access-to-data.md).|
+|Uživatelé a oprávnění|Pomocí hlavního klíče pro účet můžete vytvořit uživatelské prostředky a prostředky oprávnění pro databázi. Token prostředku je přidružen k oprávnění v databázi a určuje, zda má uživatel přístup (jen pro čtení, jen pro čtení nebo žádný přístup) k prostředku aplikace v databázi. Prostředky aplikace zahrnují kontejner, dokumenty, přílohy, uložené procedury, aktivační události a ufl. Token prostředku se pak používá při ověřování k poskytnutí nebo odepření přístupu k prostředku.<br><br>Další informace najdete v [informacích zabezpečení přístupu k prostředkům Azure Cosmos DB](secure-access-to-data.md).|
+|Integrace active adresáře (RBAC)| Můžete také poskytnout nebo omezit přístup k účtu Cosmos, databázi, kontejneru a nabídek (propustnost) pomocí řízení přístupu (IAM) na webu Azure Portal. IAM poskytuje řízení přístupu na základě rolí a integruje se službou Active Directory. Můžete použít integrované role nebo vlastní role pro jednotlivce a skupiny. Další informace naleznete v článku [integrace služby Active Directory.](role-based-access-control.md)|
+|Globální replikace|Azure Cosmos DB nabízí globální distribuci na klíč, která umožňuje replikovat data do některého z celosvětově datových center Azure kliknutím na tlačítko. Globální replikace umožňuje globální škálování a poskytuje přístup k datům s nízkou latencí po celém světě.<br><br>V kontextu zabezpečení globální replikace zajišťuje ochranu dat před regionálními selháními.<br><br>Další informace najdete v části [Globální distribuce dat](distribute-data-globally.md).|
+|Místní převzetí služeb při selhání|Pokud jste replikovali data ve více než jednom datovém centru, Azure Cosmos DB se automaticky převrátí přes vaše operace, pokud regionální datové centrum přejde do režimu offline. Pomocí oblastí, ve kterých jsou data replikována, můžete vytvořit seznam oblastí s prioritou převzetí služeb při selhání. <br><br>Další informace o [místních převzetích služeb při selhání v Azure Cosmos DB](high-availability.md).|
+|Místní replikace|I v rámci jednoho datového centra Azure Cosmos DB automaticky replikuje data pro vysokou dostupnost, což vám dává možnost volby [úrovní konzistence](consistency-levels.md). Tato replikace zaručuje 99,99% [dostupnost sla](https://azure.microsoft.com/support/legal/sla/cosmos-db) pro všechny účty s jednou oblastí a všechny účty s více oblastmi s uvolněnou konzistencí a 99,999% dostupnost čtení na všech databázových účtech s více oblastmi.|
+|Automatické zálohování online|Databáze Azure Cosmos se pravidelně zálohují a ukládají v geograficky redundantním úložišti. <br><br>Další informace najdete v [oblasti Automatické zálohování a obnovení online pomocí Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md).|
+|Obnovení odstraněných dat|Automatické zálohování online lze použít k obnovení dat, která jste omylem odstranili až do ~30 dnů po události. <br><br>Další informace v [oblasti Automatické zálohování a obnovení online pomocí Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)|
+|Ochrana a izolování citlivých dat|Všechna data v oblastech uvedených v části Co je nového? je nyní zašifrován v klidu.<br><br>Osobní údaje a další důvěrné údaje mohou být izolovány pro konkrétní kontejner a pro čtení a zápis nebo přístup jen pro čtení může být omezen na konkrétní uživatele.|
+|Sledování útoků|Pomocí [protokolování auditování a protokolů aktivit](logging.md)můžete sledovat, že váš účet má normální a neobvyklou aktivitu. Můžete zobrazit, jaké operace byly provedeny na vašich prostředcích, kdo operaci inicioval, kdy došlo k operaci, stav operace a mnohem více, jak je znázorněno na snímku obrazovky za touto tabulkou.|
+|Reakce na útoky|Jakmile kontaktujete podporu Azure a nahlásíte potenciální útok, zakopne se proces reakce na incidenty v 5 krocích. Cílem procesu v 5 krocích je co nejrychleji obnovit normální zabezpečení a provoz služby po zjištění problému a zahájení šetření.<br><br>Další informace najdete v [části Microsoft Azure Security Response v cloudu](https://aka.ms/securityresponsepaper).|
+|Geografické oplocení|Azure Cosmos DB zajišťuje zásady správného řízení dat pro suverénní oblasti (například Německo, Čína, USA Gov).|
+|Chráněná zařízení|Data v Azure Cosmos DB se ukládají na ssd discích v chráněných datových centrech Azure.<br><br>Další informace v [globálních datových centrech Microsoftu](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
+|Šifrování HTTPS/SSL/TLS|Všechna připojení k Azure Cosmos DB podporují protokol HTTPS. Azure Cosmos DB také podporuje TLS 1.2.<br>Je možné vynutit minimální verzi TLS na straně serveru. Chcete-li tak [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)učinit, obraťte se na společnost .|
+|Šifrování v klidovém stavu|Všechna data uložená do Azure Cosmos DB se šifrují v klidovém stavu. Další informace o [šifrování Azure Cosmos DB v klidovém stavu](./database-encryption-at-rest.md)|
+|Opravené servery|Jako spravovaná databáze Azure Cosmos DB eliminuje potřebu spravovat a opravovat servery, což se dělá za vás, automaticky.|
+|Účty pro správu se silnými hesly|Je těžké uvěřit, že je třeba dokonce zmínit tento požadavek, ale na rozdíl od některých našich konkurentů, je nemožné mít účet pro správu bez hesla v Azure Cosmos DB.<br><br> Zabezpečení prostřednictvím ověřování na základě tajných kódů SSL a HMAC je ve výchozím nastavení.|
+|Certifikace zabezpečení a ochrany dat| Nejaktuálnější seznam certifikací najdete na celkovém [webu dodržování předpisů Azure](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) a také na nejnovějším dokumentu o dodržování předpisů [Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) se všemi certifikacemi (vyhledejte Cosmos). Pro více zaměřené přečtěte si podívejte se na 25 dubna 2018 post [Azure #CosmosDB: Secure, private, kompatibilní, který zahrnuje SOCS 1/2 Typ 2, HITRUST, PCI DSS Úroveň 1, ISO 27001, HIPAA, FedRAMP High a mnoho dalších.
 
-Následující snímek obrazovky ukazuje, jak můžete pomocí protokolu auditu a protokolů aktivit monitorovat svůj účet: ![protokoly aktivit pro Azure Cosmos DB](./media/database-security/nosql-database-security-application-logging.png)
+Následující snímek obrazovky ukazuje, jak můžete ke sledování svého ![účtu pomocí protokolů protokolů auditu a protokolů aktivit: Protokoly aktivit pro Azure Cosmos DB](./media/database-security/nosql-database-security-application-logging.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o hlavních klíčích a tokenech prostředků najdete v tématu [zabezpečení přístupu k Azure Cosmos DB dat](secure-access-to-data.md).
+Další informace o hlavních klíčích a tokenech prostředků najdete [v tématu Zabezpečení přístupu k datům služby Azure Cosmos DB](secure-access-to-data.md).
 
-Další informace o protokolování auditu najdete v tématu [Azure Cosmos DB protokolování diagnostiky](logging.md).
+Další informace o protokolování auditu najdete v [tématu protokolování diagnostiky Azure Cosmos DB](logging.md).
 
-Další informace o certifikaci Microsoftu najdete v tématu [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/).
+Další informace o certifikacích Microsoftu najdete [v tématu Azure Trust Center](https://azure.microsoft.com/support/trust-center/).

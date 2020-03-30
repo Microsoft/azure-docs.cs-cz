@@ -1,78 +1,78 @@
 ---
 title: Zobrazení a správa poskytovatelů služeb
-description: Zákazníci mohou pomocí stránky poskytovatelé služeb v Azure Portal zobrazit informace o poskytovatelích služeb, nabídkách poskytovatele služeb a delegovaných prostředcích.
+description: Zákazníci můžou na stránce Poskytovatelé služeb na webu Azure Portal zobrazit informace o poskytovatelích služeb, nabídkách poskytovatelů služeb a delegovaných prostředcích.
 ms.date: 02/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: 94103c293ffa7ccfb9d7da0a237dc1b1c6540b72
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79270625"
 ---
 # <a name="view-and-manage-service-providers"></a>Zobrazení a správa poskytovatelů služeb
 
-Zákazníci mohou pomocí stránky **poskytovatelé služeb** v [Azure Portal](https://portal.azure.com) zobrazit informace o nabídkách poskytovatelů služeb a poskytovatelů služeb, delegovat konkrétní prostředky prostřednictvím [správy delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md)a nakupovat nové nabídky poskytovatelů služeb. V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které spravují víc tenantů, můžou stejný postup využít k konsolidaci prostředí pro správu.
+Zákazníci můžou pomocí stránky **Poskytovatelé služeb** na [webu Azure Portal](https://portal.azure.com) zobrazit informace o poskytovatelích služeb a nabídkách poskytovatelů služeb, delegovat konkrétní prostředky prostřednictvím správy [delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md)a nakupovat nové nabídky poskytovatelů služeb. I když budeme odkazovat na poskytovatele služeb a zákazníky zde, podniky spravující více klientů můžete použít stejný proces ke konsolidaci jejich prostředí pro správu.
 
-Pro přístup ke stránce **poskytovatelé služeb** v Azure Portal může zákazník vybrat **všechny služby**a pak vyhledat **poskytovatele služeb** a vybrat ho. Můžou je taky najít zadáním "poskytovatelé služeb" do vyhledávacího pole v horní části Azure Portal.
+Chcete-li získat přístup na stránku **Poskytovatelé služeb** na webu Azure Portal, může zákazník vybrat **všechny služby**, vyhledat **poskytovatele služeb** a vybrat je. Můžou ho taky najít zadáním "Poskytovatelé služeb" do vyhledávacího pole v horní části portálu Azure.
 
-Mějte na paměti, že na stránce **poskytovatelé služeb** se zobrazují jenom informace o poskytovatelích služeb, kteří mají přístup k předplatným zákazníků nebo ke skupinám prostředků prostřednictvím správy delegovaných prostředků Azure. Pokud zákazník spolupracuje s dalšími poskytovateli služeb, kteří k přístupu k prostředkům zákazníka nepoužívají správu delegovaných prostředků Azure, informace o těchto poskytovatelích služeb tady nejsou uvedené.
+Mějte na paměti, že stránka **Zprostředkovatelé služeb** zobrazuje pouze informace o poskytovatelích služeb, kteří mají přístup k předplatným zákazníka nebo skupinám prostředků prostřednictvím správy delegovaných prostředků Azure. Pokud zákazník spolupracuje s dalšími poskytovateli služeb, kteří nepoužívají správu delegovaných prostředků Azure pro přístup k prostředkům zákazníka, informace o těchto poskytovatelích služeb se zde nezobrazí.
 
 > [!NOTE]
-> Poskytovatelé služeb mohou zobrazit informace o svých zákaznících tak, že v Azure Portal přejdou na **Moje zákazníky** . Další informace najdete v tématu [zobrazení a Správa zákazníků a delegovaných prostředků](view-manage-customers.md).
+> Poskytovatelé služeb můžou zobrazit informace o svých zákaznících tak, že na webu Azure Portal přejdou na **Moji zákazníci.** Další informace najdete v tématu [Zobrazení a správa zákazníků a delegovaných prostředků](view-manage-customers.md).
 
 ## <a name="view-service-provider-details"></a>Zobrazit podrobnosti o poskytovateli služeb
 
-Chcete-li zobrazit informace o poskytovatelích služeb, zákazník může vybrat **nabídky poskytovatele** na levé straně stránky **poskytovatelé služeb** .
+Chcete-li zobrazit informace o poskytovatelích služeb, může zákazník vybrat **nabídky zprostředkovatelů** na levé straně stránky **Poskytovatelé služeb.**
 
-Pro každou nabídku poskytovatele služeb uvidí Zákazník název poskytovatele služeb a nabídku, která je k ní přidružená, spolu s názvem, který zákazník zadal během procesu připojování.
+Pro každou nabídku poskytovatele služeb zákazník uvidí jméno poskytovatele služeb a nabídku s ním spojenou spolu s názvem, který zákazník zadal během procesu registrace.
 
-Ve sloupci **delegování** si zákazník uvidí, kolik předplatných a skupin prostředků bylo delegováno pro poskytovatele služeb této nabídky. Poskytovatel služeb bude moci získat přístup k těmto předplatným a skupinám prostředků a spravovat je podle úrovní přístupu zadaných v nabídce.
+Ve sloupci **Delegování** zákazník vidí, kolik předplatných nebo skupin prostředků bylo delegováno na poskytovatele služeb pro tuto nabídku. Poskytovatel služeb bude mít přístup k těmto předplatným nebo skupinám prostředků a spravovat je podle úrovní přístupu uvedených v nabídce.
 
 ## <a name="delegate-resources"></a>Delegovat prostředky
 
-Předtím, než může poskytovatel služeb získat přístup k prostředkům zákazníka a spravovat je, musí být delegovaný. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí v horní části **nabídky poskytovatele** poznámku. To zákazníkovi ví, že musí provést akci předtím, než bude moci poskytovatel služeb získat přístup k některým prostředkům zákazníka.
+Předtím, než může poskytovatel služeb přistupovat k prostředkům zákazníka a spravovat je, musí být delegován. Pokud zákazník nabídku přijal, ale dosud nedelegoval žádné prostředky, zobrazí se mu poznámka v horní části sekce **Nabídky poskytovatele.** To zákazníkovi umožní zjistit, že musí provést akci předtím, než bude mít poskytovatel služeb přístup k jakémukoli zdroji zákazníka.
 
 Delegování předplatných nebo skupin prostředků:
 
-1. Zaškrtněte políčko u řádku obsahujícího poskytovatele služeb, nabídku a název. Pak vyberte **delegovat prostředky** v horní části obrazovky.
-1. V části **Podrobnosti nabídky** na stránce **delegovat prostředky** si přečtěte podrobnosti o poskytovateli služeb a nabídce. Chcete-li zkontrolovat přiřazení rolí pro nabídku, vyberte **kliknutím sem zobrazíte podrobnosti vybrané nabídky**.
-1. V části **delegáta** vyberte **delegovat odběry** nebo **delegovat skupiny prostředků**.
-1. Zvolte předplatná nebo skupiny prostředků, které chcete pro tuto nabídku delegovat, a pak vyberte **Přidat**.
-1. Zaškrtněte políčko v dolní části stránky a potvrďte, že chcete tomuto poskytovateli služeb udělit přístup k vybraným prostředkům, a pak vyberte **delegovat**.
+1. Zaškrtněte políčko pro řádek obsahující poskytovatele služeb, nabídku a název. Pak v horní části obrazovky vyberte **Delegate resources.**
+1. V části **Podrobnosti nabídky** na stránce **Prostředky delegáta** zkontrolujte podrobnosti o poskytovateli služeb a nabídce. Chcete-li zkontrolovat přiřazení rolí pro nabídku, vyberte **klepnutím sem zobrazíte podrobnosti o vybrané nabídce**.
+1. V části **Delegát** vyberte **Delegate subscriptions** nebo **Delegate resource groups**.
+1. Vyberte předplatná nebo skupiny prostředků, které chcete delegovat pro tuto nabídku, a pak vyberte **Přidat**.
+1. Zaškrtnutím políčka v dolní části stránky potvrďte, že chcete tomuto poskytovateli služeb udělit přístup k vybraným prostředkům, a pak vyberte **Delegát**.
 
-## <a name="add-or-remove-service-provider-offers"></a>Přidat nebo odebrat nabídky poskytovatele služeb
+## <a name="add-or-remove-service-provider-offers"></a>Přidání nebo odebrání nabídek poskytovatelů služeb
 
-Zákazník může přidat novou nabídku poskytovatele služeb ze stránky **nabídky poskytovatele** výběrem možnosti **přidat nabídku**. Poskytovatel služeb musí publikovat nabídku pro tohoto zákazníka. Zákazník pak může vybrat tuto nabídku z obrazovky **soukromé nabídky** a pak vybrat **vytvořit**.
+Zákazník může přidat novou nabídku poskytovatele služeb ze stránky **Nabídky poskytovatele** výběrem **možnosti Přidat nabídku**. Poskytovatel služeb musí zveřejnit nabídku pro tohoto zákazníka. Zákazník pak může vybrat tuto nabídku z obrazovky **Soukromé nabídky** a pak vybrat **Vytvořit**.
 
-Pokud chce zákazník odebrat nabídku poskytovatele služeb, může vybrat ikonu odpadkového koše na řádku této nabídky. Po potvrzení odstranění již poskytovatel služeb nebude mít přístup k zákaznickým prostředkům, které byly dříve delegovány pro tuto nabídku.
+Pokud chce zákazník odebrat nabídku poskytovatele služeb, může vybrat ikonu koše v řádku pro tuto nabídku. Po potvrzení odstranění již tento poskytovatel služeb nebude mít přístup k prostředkům zákazníků, které byly dříve delegovány pro tuto nabídku.
 
-## <a name="update-service-provider-offers"></a>Aktualizovat nabídky poskytovatele služeb
+## <a name="update-service-provider-offers"></a>Aktualizace nabídek poskytovatelů služeb
 
-Po přidání nabídky může poskytovatel služeb publikovat aktualizovanou verzi stejné nabídky, která Azure Marketplace. Například mohou chtít přidat novou definici role. Pokud byla publikována nová verze nabídky, na stránce **nabídky poskytovatele** se zobrazí ikona "aktualizace" na řádku této nabídky. Zákazník může tuto ikonu vybrat, aby se zobrazily rozdíly mezi aktuální verzí nabídky a novou.
+Po přidání nabídky zákazníkmůže poskytovatel služeb publikovat aktualizovanou verzi stejné nabídky na Azure Marketplace. Mohou například chtít přidat novou definici role. Pokud byla zveřejněna nová verze nabídky, zobrazí se na stránce **Nabídky Poskytovatele** v řádku pro tuto nabídku ikona "aktualizace". Zákazník může vybrat tuto ikonu a zobrazit rozdíly mezi aktuální verzí nabídky a novou verzí.
 
  ![Ikona nabídky aktualizace](../media/update-offer.jpg)
 
-Po kontrole změn si může zákazník vybrat, že se má aktualizovat na novou verzi. Jakmile to uděláte, autorizaci a další nastavení zadaná v nové verzi budou platit pro všechna předplatná nebo skupiny prostředků, které jsou pro tuto nabídku delegované.
+Po přezkoumání změn se zákazník může rozhodnout aktualizovat na novou verzi. Jakmile tak učiní, autorizace a další nastavení zadaná v nové verzi se budou vztahovat na všechna předplatná nebo skupiny prostředků, které byly pro danou nabídku delegovány.
 
-## <a name="view-delegations"></a>Zobrazit delegování
+## <a name="view-delegations"></a>Zobrazit delegace
 
-Delegace představují přiřazení rolí, které udělují poskytovateli služeb oprávnění k prostředkům delegovaným zákazníkem. Chcete-li zobrazit tyto informace, vyberte možnost **delegace** na levé straně stránky **poskytovatelé služeb** .
+Delegování představují přiřazení rolí, která udělují oprávnění poskytovateli služeb pro prostředky, které zákazník delegoval. Chcete-li tyto informace zobrazit, vyberte **delegování** na levé straně stránky **Poskytovatelé služeb.**
 
-Filtry v horní části stránky umožňují řadit a seskupovat informace o delegování. Můžete také filtrovat podle konkrétních zákazníků, nabídek nebo klíčových slov.
+Filtry v horní části stránky umožňují seřadit a seskupit informace o delegaci. Můžete také filtrovat podle konkrétních zákazníků, nabídek nebo klíčových slov.
 
 > [!NOTE]
-> Zákazníci neuvidí Tato přiřazení rolí ani žádné uživatele z klienta poskytovatele služeb, kterému byly tyto role uděleny při [zobrazení informací o přiřazení role pro delegovaný obor ve Azure Portal](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) nebo prostřednictvím rozhraní API.
+> Zákazníci neuvidí tato přiřazení rolí ani žádné uživatele z tenanta poskytovatele služeb, kterým byly tyto role uděleny, při [zobrazení informací o přiřazení role pro delegovaný obor na portálu Azure](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) nebo prostřednictvím rozhraní API.
 
-## <a name="audit-delegations-in-your-environment"></a>Auditovat delegování ve vašem prostředí
+## <a name="audit-delegations-in-your-environment"></a>Auditní delegování ve vašem prostředí
 
-Zákazníci můžou chtít získat přehled o předplatných nebo skupinách prostředků, které jsou delegované pro poskytovatele služeb pro [správu delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md). To je užitečné hlavně pro zákazníky, kteří mají velký počet předplatných nebo kteří mají mnoho uživatelů, kteří provádějí úlohy správy.
+Zákazníci mohou chtít získat přehled o předplatných nebo skupinách prostředků, které byly delegovány na poskytovatele služeb pro [správu delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md). To je užitečné zejména pro zákazníky s velkým počtem předplatných nebo kteří mají mnoho uživatelů, kteří provádějí úlohy správy.
 
-Poskytujeme [Azure Policy vestavěnou definici zásad](../../governance/policy/samples/built-in-policies.md#lighthouse) pro auditování delegování oborů do spravovaného tenanta. Tuto zásadu můžete přiřadit ke skupině pro správu, která zahrnuje všechna předplatná, která chcete auditovat. Když zkontrolujete dodržování předpisů pomocí této zásady, budou se všechny delegované předplatné nebo skupiny prostředků (ve skupině pro správu, ke které je zásada přiřazená) zobrazovat v nekompatibilním stavu. Potom můžete zkontrolovat výsledky a ověřit, že neexistují žádná neočekávaná delegování.
+Poskytujeme [předdefinovanou definici zásad Azure](../../governance/policy/samples/built-in-policies.md#lighthouse) pro auditování delegování oborů na spravovaného klienta. Tuto zásadu můžete přiřadit skupině pro správu, která obsahuje všechna předplatná, která chcete auditovat. Při kontrole dodržování těchto zásad budou všechna delegovaná předplatná nebo skupiny prostředků (v rámci skupiny pro správu, ke které je zásada přiřazena) zobrazena ve stavu nedodržující předpisy. Poté můžete zkontrolovat výsledky a potvrdit, že neexistují žádné neočekávané delegace.
 
-Další informace o tom, jak přiřadit zásadu a zobrazit výsledky stavu dodržování předpisů, najdete v tématu [rychlý Start: vytvoření přiřazení zásady](../../governance/policy/assign-policy-portal.md).
+Další informace o tom, jak přiřadit zásadu a zobrazit výsledky stavu dodržování předpisů, najdete v [tématu Úvodní příručka: Vytvoření přiřazení zásad](../../governance/policy/assign-policy-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
  
-- Přečtěte si další informace o [Azure Lighthouse](../overview.md).
-- Přečtěte si, jak můžou poskytovatelé služeb [Zobrazit a spravovat zákazníky](view-manage-customers.md) tak, že na Azure Portal na **moji zákazníci** .
+- Další informace o [Azure Lighthouse](../overview.md).
+- Zjistěte, jak můžou poskytovatelé služeb [zobrazit a spravovat zákazníky](view-manage-customers.md) tak, že přejdou na můj **zákazník** na webu Azure Portal.

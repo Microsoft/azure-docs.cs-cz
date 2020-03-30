@@ -1,6 +1,6 @@
 ---
-title: Přesun dat z PostgreSQL pomocí Azure Data Factory
-description: Přečtěte si informace o tom, jak přesouvat data z databáze PostgreSQL pomocí Azure Data Factory.
+title: Přesunutí dat z PostgreSQL pomocí Azure Data Factory
+description: Přečtěte si, jak přesunout data z databáze PostgreSQL pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,41 +13,41 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281233"
 ---
-# <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesun dat z PostgreSQL pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
+# <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesunutí dat z PostgreSQL pomocí Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](data-factory-onprem-postgresql-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-postgresql.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [konektor PostgreSQL v v2](../connector-postgresql.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [PostgreSQL konektor ve Verzi 2](../connector-postgresql.md).
 
 
-Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory přesouvat data z místní databáze PostgreSQL. Sestavuje se podle článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , který prezentuje obecný přehled přesunu dat s aktivitou kopírování.
+Tento článek vysvětluje, jak použít aktivitu kopírování v Azure Data Factory k přesunutí dat z místní databáze PostgreSQL. Vychází z článku [Aktivity přesunu dat,](data-factory-data-movement-activities.md) který představuje obecný přehled přesunu dat s aktivitou kopírování.
 
-Data z místního úložiště dat PostgreSQL můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako jímky aktivitou kopírování najdete v části [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory v současné době podporuje přesun dat z databáze PostgreSQL do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do databáze PostgreSQL.
+Data z místního úložiště dat PostgreSQL můžete zkopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako jímky naleznete v [tématu podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data factory v současné době podporuje přesun dat z databáze PostgreSQL do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do databáze PostgreSQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Služba Data Factory podporuje připojení k místním zdrojům PostgreSQL pomocí brány Správa dat. Další informace o Správa dat bráně a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními umístěními a v cloudovém](data-factory-move-data-between-onprem-and-cloud.md) článku.
+Služba Data Factory podporuje připojení k místním zdrojům PostgreSQL pomocí brány pro správu dat. Podívejte [se na pohybující se data mezi místními lokacemi a cloudovým](data-factory-move-data-between-onprem-and-cloud.md) článkem, kde najdete informace o bráně pro správu dat a podrobné pokyny k nastavení brány.
 
-Brána je vyžadována i v případě, že je databáze PostgreSQL hostována ve virtuálním počítači Azure IaaS. Bránu můžete nainstalovat na stejný virtuální počítač s IaaS jako úložiště dat nebo na jiný virtuální počítač, pokud se brána může připojit k databázi.
+Brána je vyžadována i v případě, že databáze PostgreSQL je hostovaná ve virtuálním počítači Azure IaaS. Bránu můžete nainstalovat na stejný virtuální počítač IaaS jako úložiště dat nebo na jiný virtuální počítač, pokud se brána může připojit k databázi.
 
 > [!NOTE]
-> Tipy k odstraňování potíží souvisejících s připojením nebo bránou najdete v tématu řešení potíží s [bránou](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .
+> Tipy týkající se řešení problémů s připojením nebo bránou najdete v [tématu Poradce při potížích](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) s bránou.
 
 ## <a name="supported-versions-and-installation"></a>Podporované verze a instalace
-Aby se Správa dat brána připojovala k databázi PostgreSQL, nainstalujte [poskytovatele dat Ngpsql pro PostgreSQL](https://go.microsoft.com/fwlink/?linkid=282716) s verzí mezi 2.0.12 a 3.1.9 ve stejném systému jako správa dat bránu. PostgreSQL verze 7,4 a vyšší je podporována.
+Pro připojení brány pro správu dat k databázi PostgreSQL nainstalujte [poskytovatele dat Ngpsql pro PostgreSQL](https://go.microsoft.com/fwlink/?linkid=282716) s verzí mezi 2.0.12 a 3.1.9 do stejného systému jako Brána pro správu dat. PostgreSQL verze 7.4 a vyšší je podporována.
 
 ## <a name="getting-started"></a>Začínáme
-Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat PostgreSQL pomocí různých nástrojů nebo rozhraní API.
+Můžete vytvořit kanál s aktivitou kopírování, která přesune data z místního úložiště dat PostgreSQL pomocí různých nástrojů nebo api.
 
-- Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
+- Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Viz [Kurz: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) pro rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat.
 - K vytvoření kanálu můžete také použít následující nástroje:
   - Visual Studio
   - Azure PowerShell
@@ -55,76 +55,76 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z m�
   - .NET API
   - REST API
 
-    Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+    Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [Kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) aktivity.
 
-Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
+Bez ohledu na to, zda používáte nástroje nebo api, provedete následující kroky k vytvoření kanálu, který přesune data ze zdrojového úložiště dat do úložiště dat jímky:
 
-1. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou.
-2. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování.
-3. Vytvořte **kanál** s aktivitou kopírování, která převezme datovou sadu jako vstup a datovou sadu jako výstup.
+1. Vytvořte **propojené služby** pro propojení vstupních a výstupních úložišť dat s vaší továrně dat.
+2. Vytvořte **datové sady** představující vstupní a výstupní data pro operaci kopírování.
+3. Vytvořte **kanál** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup.
 
-Při použití Průvodce se automaticky vytvoří definice JSON pro tyto Entity Data Factory (propojené služby, datové sady a kanál). Pokud používáte nástroje/rozhraní API (s výjimkou rozhraní .NET API), definujete tyto Data Factory entit pomocí formátu JSON. Ukázku s definicemi JSON pro Entity Data Factory, které se používají ke kopírování dat z místního úložiště dat PostgreSQL, najdete v části [JSON example: kopírování dat z PostgreSQL do objektu blob Azure](#json-example-copy-data-from-postgresql-to-azure-blob) v tomto článku.
+Při použití průvodce jsou automaticky vytvořeny definice JSON pro tyto entity Data Factory (propojené služby, datové sady a kanál). Při použití nástrojů nebo rozhraní API (s výjimkou rozhraní .NET API) definujete tyto entity Data Factory pomocí formátu JSON. Ukázka s definicemi JSON pro entity Data Factory, které se používají ke kopírování dat z místního úložiště dat PostgreSQL, najdete v [tématu JSON příklad: Kopírování dat z PostgreSQL do Azure Blob](#json-example-copy-data-from-postgresql-to-azure-blob) části tohoto článku.
 
-Následující části obsahují podrobné informace o vlastnostech JSON, které se používají k definování Data Factory entit specifických pro úložiště dat PostgreSQL:
+V následujících částech jsou uvedeny podrobnosti o vlastnostech JSON, které se používají k definování entit Factory dat specifických pro úložiště dat PostgreSQL:
 
-## <a name="linked-service-properties"></a>Vlastnosti propojené služby
-Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu PostgreSQL.
+## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
+V následující tabulce je uveden popis prvků JSON specifických pro propojenou službu PostgreSQL.
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| typ |Vlastnost Type musí být nastavená na: **OnPremisesPostgreSql** . |Ano |
-| server |Název serveru PostgreSQL. |Ano |
-| databáze |Název databáze PostgreSQL |Ano |
-| schéma |Název schématu v databázi. V názvu schématu se rozlišují velká a malá písmena. |Ne |
-| authenticationType |Typ ověřování, který se používá pro připojení k databázi PostgreSQL. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
-| username jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |Ne |
+| type |Vlastnost type musí být nastavena **na: OnPremisesPostgreSql.** |Ano |
+| server |Název postgresql serveru. |Ano |
+| database |Název databáze PostgreSQL. |Ano |
+| Schématu |Název schématu v databázi. Název schématu rozlišuje malá a velká písmena. |Ne |
+| authenticationType |Typ ověřování používaný pro připojení k databázi PostgreSQL. Možné hodnoty jsou: Anonymní, Základní a Windows. |Ano |
+| uživatelské jméno |Zadejte uživatelské jméno, pokud používáte základní ověřování nebo ověřování systému Windows. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
-| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi PostgreSQL. |Ano |
+| název brány |Název brány, kterou by měla služba Data Factory použít pro připojení k místní databázi PostgreSQL. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako jsou struktura, dostupnost a zásady pro datovou sadu JSON, jsou podobné pro všechny typy datových sad.
+Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datových sad, naleznete v článku [Vytváření datových sad.](data-factory-create-datasets.md) Oddíly, jako je struktura, dostupnost a zásady datové sady JSON jsou podobné pro všechny typy datových sad.
 
-Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu **relačních** objektů typu (což zahrnuje PostgreSQL DataSet) má následující vlastnosti:
+Sekce typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu typu **RelationalTable** (která zahrnuje datovou sadu PostgreSQL) má následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| tableName |Název tabulky instance databáze PostgreSQL, na kterou odkazuje propojená služba Vlastnost tableName rozlišuje velká a malá písmena. |Ne (Pokud je zadán **dotaz** na **RelationalSource** ) |
+| tableName |Název tabulky v instanci Databáze PostgreSQL, na kterou odkazuje propojená služba. TableName rozlišuje malá a velká písmena. |Ne (pokud je zadán **dotaz** **RelationalSource)** |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
-Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásada.
+Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivit, naleznete v článku [Vytváření kanálů.](data-factory-create-pipelines.md) Vlastnosti, jako je název, popis, vstupní a výstupní tabulky a zásady jsou k dispozici pro všechny typy aktivit.
 
-V takovém případě se vlastnosti dostupné v části typeProperties v aktivitě liší podle typu aktivity. U aktivity kopírování se liší v závislosti na typech zdrojů a jímky.
+Vzhledem k tomu, vlastnosti, které jsou k dispozici v typeProperties části aktivity se liší s každým typem aktivity. U aktivity kopírování se liší v závislosti na typech zdrojů a propadů.
 
 Pokud je zdroj typu **RelationalSource** (který zahrnuje PostgreSQL), jsou v části typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požadováno |
+| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| dotaz |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Například: `"query": "select * from \"MySchema\".\"MyTable\""`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
+| query |Ke čtení dat použijte vlastní dotaz. |Řetězec dotazu SQL. Například: `"query": "select * from \"MySchema\".\"MyTable\""`. |Ne (pokud je zadán **název tabulky** **datové sady)** |
 
 > [!NOTE]
-> V názvech schémat a tabulek se rozlišují velká a malá písmena. Uzavřete je do `""` (dvojitá uvozovky) v dotazu.
+> Názvy schémat a tabulek rozlišují malá a velká písmena. Uzavřete `""` je do (dvojité uvozovky) v dotazu.
 
 **Příklad:**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
-## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>Příklad JSON: kopírování dat z PostgreSQL do Azure Blob
-Tento příklad poskytuje ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazují, jak kopírovat data z databáze PostgreSQL do Azure Blob Storage. Data však lze zkopírovat do kterékoli z těchto umyvadel, které jsou [zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) uvedeny, pomocí aktivity kopírování v Azure Data Factory.
+## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>Příklad JSON: Kopírování dat z PostgreSQL do objektu Blob Azure
+Tento příklad obsahuje ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí [Sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo Azure [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazují, jak zkopírovat data z databáze PostgreSQL do azure blob storage. Data však můžete zkopírovat do libovolného jímky [uvedené zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.
 
 > [!IMPORTANT]
-> Tato ukázka poskytuje fragmenty kódu JSON. Nezahrnuje podrobné pokyny k vytvoření datové továrny. Podrobné pokyny najdete v článku [přesun dat mezi místními umístěními a v cloudu](data-factory-move-data-between-onprem-and-cloud.md) .
+> Tato ukázka obsahuje úryvky JSON. Neobsahuje podrobné pokyny pro vytvoření datové továrny. Podrobné pokyny najdete v článku [přesunutí dat mezi místními umístěními a článkem cloudu.](data-factory-move-data-between-onprem-and-cloud.md)
 
-Ukázka má následující Entity Data Factory:
+Ukázka má následující entity datové továrny:
 
 1. Propojená služba typu [OnPremisesPostgreSql](data-factory-onprem-postgresql-connector.md#linked-service-properties).
 2. Propojená služba typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Vstupní [datová sada](data-factory-create-datasets.md) typu [relačních](data-factory-onprem-postgresql-connector.md#dataset-properties)objektů.
-4. Výstupní [datová sada](data-factory-create-datasets.md) typu [azureblobu](data-factory-azure-blob-connector.md#dataset-properties).
-5. [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [RelationalSource](data-factory-onprem-postgresql-connector.md#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+3. Vstupní [datová sada](data-factory-create-datasets.md) typu [RelationalTable](data-factory-onprem-postgresql-connector.md#dataset-properties).
+4. Výstupní [datová sada](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [Relační zdroj](data-factory-onprem-postgresql-connector.md#copy-activity-properties) a [blobsink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Ukázka kopíruje data z výsledků dotazu v PostgreSQL databázi do objektu BLOB každou hodinu. Vlastnosti JSON použité v těchto ukázkách jsou popsány v oddílech následujících po ukázkách.
+Ukázka zkopíruje data z výsledku dotazu v databázi PostgreSQL do objektu blob každou hodinu. Vlastnosti JSON použité v těchto vzorcích jsou popsány v následujících částech.
 
-Jako první krok nastavte bránu pro správu dat. Pokyny najdete v článku [přesun dat mezi místními umístěními a cloudem](data-factory-move-data-between-onprem-and-cloud.md) .
+Jako první krok nastavte bránu pro správu dat. Pokyny jsou v [přesunutí dat mezi místními umístěními a článkem cloudu.](data-factory-move-data-between-onprem-and-cloud.md)
 
 **Propojená služba PostgreSQL:**
 
@@ -145,7 +145,7 @@ Jako první krok nastavte bránu pro správu dat. Pokyny najdete v článku [př
     }
 }
 ```
-**Propojená služba úložiště objektů BLOB v Azure:**
+**Propojená služba úložiště objektů blob Azure:**
 
 ```json
 {
@@ -160,9 +160,9 @@ Jako první krok nastavte bránu pro správu dat. Pokyny najdete v článku [př
 ```
 **Vstupní datová sada PostgreSQL:**
 
-Ukázka předpokládá, že jste v PostgreSQL vytvořili tabulku "MyTable" a obsahuje sloupec s názvem "časové razítko" pro data časových řad.
+Ukázka předpokládá, že jste vytvořili tabulku "MyTable" v PostgreSQL a obsahuje sloupec s názvem "časové razítko" pro data časových řad.
 
-Nastavení `"external": true` informuje službu Data Factory o tom, že datová sada je externí pro objekt pro vytváření dat a není vytvořená aktivitou v datové továrně.
+Nastavení `"external": true` informuje službu Data Factory, že datová sada je externí pro datovou továrnu a není vytvářena aktivitou v datové továrně.
 
 ```json
 {
@@ -187,9 +187,9 @@ Nastavení `"external": true` informuje službu Data Factory o tom, že datová 
 }
 ```
 
-**Výstupní datová sada Azure Blob:**
+**Výstupní datová sada objektu Blob Azure:**
 
-Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce a název souboru pro objekt BLOB jsou dynamicky vyhodnocovány na základě počátečního času zpracovávaného řezu. Cesta ke složce používá části rok, měsíc, den a hodiny v počátečním čase.
+Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce a název souboru pro objekt blob jsou dynamicky vyhodnocovány na základě počátečního času zpracovávaného řezu. Cesta ke složce používá části počátečního času rok, měsíc, den a hodiny.
 
 ```json
 {
@@ -249,7 +249,7 @@ Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, int
 
 **Kanál s aktivitou kopírování:**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění na každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **RelationalSource** a typ **jímky** je nastavený na **BlobSink**. Dotaz SQL zadaný pro vlastnost **dotazu** vybere data z veřejné tabulky. usstates v databázi PostgreSQL.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro použití vstupních a výstupních datových sad a je naplánováno na spouštění každou hodinu. V definici kanálu JSON je **typ zdroje** nastaven na **RelationalSource** a typ **jímky** je nastaven na **Objekt blobSink**. Dotaz SQL zadaný pro vlastnost **dotazu** vybere data z tabulky public.usstates v databázi PostgreSQL.
 
 ```json
 {
@@ -295,61 +295,61 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 }
 ```
 ## <a name="type-mapping-for-postgresql"></a>Mapování typů pro PostgreSQL
-Jak je uvedeno v článku aktivity [přesunu dat](data-factory-data-movement-activities.md) , provádí se automatické převody typů ze zdrojových typů do typů jímky s následujícím přístupem ke dvěma krokům:
+Jak je uvedeno v [aktivitách přesunu dat](data-factory-data-movement-activities.md) článek Aktivita kopírování provádí automatické převody typů z typů zdrojů na typy jímek s následujícím dvoustupňovým přístupem:
 
-1. Převod z nativních zdrojových typů na typ .NET
-2. Převést z typu .NET na nativní typ jímky
+1. Převod z nativních typů zdrojů na typ .NET
+2. Převod z typu .NET na nativní typ jímky
 
-Při přesunu dat na PostgreSQL se z typu PostgreSQL na typ .NET použijí následující mapování.
+Při přesouvání dat do PostgreSQL se používají následující mapování z typu PostgreSQL na typ .NET.
 
-| Typ databáze PostgreSQL | Aliasy PostgresSQL | Typ .NET Framework |
+| Typ databáze PostgreSQL | PostgresSQL aliasy | Typ rozhraní .NET Framework |
 | --- | --- | --- |
 | abstime | |Datum a čas |
 | bigint |int8 |Int64 |
-| bigserial |serial8 |Int64 |
-| bit [(n)] | |Byte [], řetězec |
-| bitové proměnlivost [(n)] |varbit |Byte [], řetězec |
-| Datový typ Boolean |logick |Logická hodnota |
-| Seznam | |Byte [], řetězec |
-| Byte | |Byte [], řetězec |
-| znak [(n)] |Char [(n)] |String |
-| proměnlivé znaky [(n)] |varchar [(n)] |String |
-| identifikátor | |String |
-| cidr | |String |
-| Žluté | |Byte [], řetězec |
+| bigserial |pořad8 |Int64 |
+| bit [(n)] | |Bajt[], Řetězec |
+| bit mění [ (n) ] |varbit |Bajt[], Řetězec |
+| Boolean |bool |Logická hodnota |
+| Pole | |Bajt[], Řetězec |
+| bytea | |Bajt[], Řetězec |
+| znak [(n)] |char [(n)] |Řetězec |
+| znak měnící se [(n)] |varchar [(n)] |Řetězec |
+| Cid | |Řetězec |
+| cidr | |Řetězec |
+| kruh | |Bajt[], Řetězec |
 | date | |Datum a čas |
-| DateRange | |String |
-| Dvojitá přesnost |float8 |Double |
-| inet | |Byte [], řetězec |
-| intarry | |String |
-| int4range | |String |
-| int8range | |String |
-| integer |int, int4 |Datový typ Int32 |
-| interval [pole] [(p)] | |Časový rozsah |
-| json | |String |
-| jsonb | |Byte[] |
-| čára | |Byte [], řetězec |
-| lseg | |Byte [], řetězec |
-| macaddr | |Byte [], řetězec |
-| money | |Decimal |
-| číslice [(p, s)] |Decimal [(p, s)] |Decimal |
-| numrange | |String |
-| oid | |Datový typ Int32 |
-| path | |Byte [], řetězec |
+| rozsah dat | |Řetězec |
+| dvojitá přesnost |plovoucí8 |Double |
+| inet | |Bajt[], Řetězec |
+| intarry | |Řetězec |
+| rozsah int4range | |Řetězec |
+| rozsah int8range | |Řetězec |
+| celé číslo |int, int4 |Int32 |
+| interval [pole] [(p)] | |Časový interval |
+| json | |Řetězec |
+| jsonb | |Bajt[] |
+| line | |Bajt[], Řetězec |
+| Lseg (Např. | |Bajt[], Řetězec |
+| macaddr | |Bajt[], Řetězec |
+| Peníze | |Desetinné číslo |
+| číselné [(p, s)] |desítkové [(p, s)] |Desetinné číslo |
+| rozsah numrange | |Řetězec |
+| Oid | |Int32 |
+| cesta | |Bajt[], Řetězec |
 | pg_lsn | |Int64 |
-| Vyberte | |Byte [], řetězec |
-| mnohoúhelník | |Byte [], řetězec |
-| real |float4 |Jednoduché |
+| Bod | |Bajt[], Řetězec |
+| Mnohoúhelník | |Bajt[], Řetězec |
+| reálná |plovoucí4 |Single |
 | smallint |int2 |Int16 |
-| smallserial |serial2 |Int16 |
-| sér |serial4 |Datový typ Int32 |
-| text | |String |
+| smallserial |pořad2 |Int16 |
+| Sériové |pořad4 |Int32 |
+| text | |Řetězec |
 
-## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky
-Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Mapovat zdroj pro jímací sloupce
+Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete [v tématu Mapování sloupců datových sad v Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Opakované čtení z relačních zdrojů
-Při kopírování dat z relačních úložišť dat mějte na paměti, že se vyhnete nezamýšleným výsledkům. V Azure Data Factory můžete řez znovu spustit ručně. Můžete také nakonfigurovat zásady opakování pro datovou sadu, aby se řez znovu opakoval, když dojde k selhání. Při opětovném spuštění řezu v obou případech je nutné zajistit, že stejná data budou čtena bez ohledu na to, kolikrát je řez spuštěn. Viz [opakované čtení z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Opakovatelné čtení ze relačních zdrojů
+Při kopírování dat z úložišť relačních dat mějte na paměti opakovatelnost, abyste se vyhnuli nezamýšleným výsledkům. V Azure Data Factory můžete znovu spustit řez ručně. Můžete také nakonfigurovat zásady opakování pro datovou sadu tak, aby řez je znovu spustit, když dojde k selhání. Při opětovném spuštění řezu v obou směrech je třeba se ujistit, že stejná data jsou čtena bez ohledu na to, kolikrát je řez spuštěn. Viz [Opakovatelné čtení z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Výkon a optimalizace
-Další informace o klíčových faktorech, které mají vliv na výkon přesunu dat (aktivita kopírování) v Azure Data Factory a různých způsobech jejich optimalizace, najdete v tématu [Průvodce optimalizací aktivity kopírování &](data-factory-copy-activity-performance.md) .
+## <a name="performance-and-tuning"></a>Výkon a ladění
+[V tématu Průvodce sledováním výkonu & optimalizací se](data-factory-copy-activity-performance.md) dozvíte o klíčových faktorech, které ovlivňují výkon přesunu dat (aktivita kopírování) ve Službě Azure Data Factory, a o různých způsobech jeho optimalizace.

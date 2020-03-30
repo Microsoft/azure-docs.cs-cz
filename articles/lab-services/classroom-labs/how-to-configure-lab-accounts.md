@@ -1,6 +1,6 @@
 ---
-title: Konfigurace účtů testovacího prostředí v Azure Lab Services | Microsoft Docs
-description: Tento článek popisuje, jak vytvořit účet testovacího prostředí, Zobrazit všechny účty testovacího prostředí nebo odstranit účet testovacího prostředí v Azure Lab Services.
+title: Konfigurace testovacích účtů ve službě Azure Lab Services | Dokumenty společnosti Microsoft
+description: Tento článek popisuje, jak vytvořit účet testovacího prostředí, zobrazit všechny účty testovacího prostředí nebo odstranit účet testovacího prostředí ve službě Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,49 +14,49 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: fa9dba62b3b58687ec6a2bfc29e8722f7016b679
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284301"
 ---
-# <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurace účtů testovacího prostředí v Azure Lab Services 
-V Azure Lab Services účet testovacího prostředí je kontejner pro spravované typy testovacích prostředí, jako je například učeben Labs. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytne přístup k vlastníkům testovacího prostředí, kteří můžou v účtu vytvářet Labs. 
+# <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurace testovacích účtů ve službě Azure Lab Services 
+Ve službě Azure Lab Services je testovací účet kontejner pro spravované typy testovacího prostředí, jako jsou testovací prostředí ve třídě. Správce nastaví účet testovacího prostředí pomocí služby Azure Lab Services a poskytuje přístup vlastníkům testovacího prostředí, kteří můžou v účtu vytvářet testovací prostředí. 
 
-V tomto článku se dozvíte, jak provádět následující úlohy: 
+Tento článek popisuje, jak provádět následující úkoly: 
 
-- Zadejte rozsah adres pro virtuální počítače v testovacím prostředí.
+- Zadejte rozsah adres pro virtuální chod v testovacím prostředí
 - Konfigurace automatického vypnutí virtuálních počítačů při odpojení
 
-## <a name="specify-an-address-range-for-vms-in-the-lab"></a>Zadejte rozsah adres pro virtuální počítače v testovacím prostředí.
-Následující postup obsahuje kroky k určení rozsahu adres pro virtuální počítače v testovacím prostředí. Pokud aktualizujete rozsah, který jste předtím zadali, vztahuje se upravený rozsah adres pouze na virtuální počítače, které byly vytvořeny po provedení změny. 
+## <a name="specify-an-address-range-for-vms-in-the-lab"></a>Zadejte rozsah adres pro virtuální chod v testovacím prostředí
+Následující postup má kroky k určení rozsahu adres pro virtuální chody v testovacím prostředí. Pokud aktualizujete rozsah, který jste dříve zadali, upravený rozsah adres se vztahuje pouze na virtuální chody, které jsou vytvořeny po provedené změně. 
 
-Tady jsou některá omezení, která určují rozsah adres, které byste měli mít na paměti. 
+Zde jsou některá omezení při zadávání rozsahu adres, který byste měli mít na paměti. 
 
 - Předpona musí být menší nebo rovna 23. 
-- Pokud je virtuální síť v partnerském vztahu k účtu testovacího prostředí, zadaný rozsah adres se nemůže překrývat s rozsahem adres z partnerské virtuální sítě.
+- Pokud virtuální síť je peered na účet testovacího prostředí, zadaný rozsah adres se nemůže překrývat s rozsahem adres z partnerského virtuální sítě.
 
-1. Na stránce **účet testovacího prostředí** vyberte v nabídce vlevo možnost **Nastavení Labs** .
-2. V poli **Rozsah adres** zadejte rozsah adres pro virtuální počítače, které budou vytvořeny v testovacím prostředí. Rozsah adres by měl být v notaci směrování mezi doménami (například: 10.20.0.0/23). Virtuální počítače v testovacím prostředí se vytvoří v tomto rozsahu adres.
+1. Na stránce **Účet testovacího prostředí** vyberte v levé nabídce **nastavení labs.**
+2. Pro pole **Rozsah adresy** zadejte rozsah adres pro virtuální chody, které budou vytvořeny v testovacím prostředí. Rozsah adres by měl být v zápisu beztřídního směrování mezi doménami (CIDR) (příklad: 10.20.0.0/23). Virtuální počítače v testovacím prostředí budou vytvořeny v tomto rozsahu adres.
 3. Na panelu nástrojů vyberte **Uložit**. 
 
     ![Konfigurace rozsahu adres](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)
 
 
 ## <a name="automatic-shutdown-of-vms-on-disconnect"></a>Automatické vypnutí virtuálních počítačů při odpojení
-Po odpojení připojení ke vzdálené ploše můžete povolit nebo zakázat automatické vypnutí virtuálních počítačů s Windows Lab (šablona nebo student). Můžete také určit, jak dlouho by měly virtuální počítače čekat na opětovné připojení uživatele, než se automaticky vypíná.
+Po odpojení připojení ke vzdálené ploše můžete povolit nebo zakázat automatické vypnutí virtuálních počítačů testovacího prostředí systému Windows (šablony nebo studenta). Můžete také určit, jak dlouho virtuální chody by měl čekat na uživatele znovu připojit před automatickým vypnutím.
 
-![Nastavení automatického vypnutí v účtu testovacího prostředí](../media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+![Automatické nastavení vypnutí v účtu laboratoře](../media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
 
-Toto nastavení se vztahuje na všechny laboratoře vytvořené v účtu testovacího prostředí. Vlastník testovacího prostředí může toto nastavení přepsat na úrovni testovacího prostředí. Změna tohoto nastavení v účtu testovacího prostředí bude mít vliv jenom na laboratoře, které se vytvoří po provedení změny.
+Toto nastavení platí pro všechna testovací prostředí vytvořená v účtu testovacího prostředí. Vlastník testovacího prostředí můžete přepsat toto nastavení na úrovni testovacího prostředí. Změna tohoto nastavení v účtu testovacího prostředí ovlivní pouze testovací prostředí, které jsou vytvořeny po provedené změně.
 
-Další informace o tom, jak vlastník testovacího prostředí může nakonfigurovat toto nastavení na úrovni testovacího prostředí, najdete v [tomto článku](how-to-enable-shutdown-disconnect.md) .
+Informace o tom, jak může vlastník testovacího prostředí konfigurovat toto nastavení na úrovni testovacího prostředí, naleznete v [tomto článku](how-to-enable-shutdown-disconnect.md)
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Povolí autorovi testovacího prostředí vybrat umístění testovacího prostředí.](allow-lab-creator-pick-lab-location.md)
-- [Připojení sítě testovacího prostředí k partnerské virtuální síti](how-to-connect-peer-virtual-network.md)
-- [Připojení Galerie sdílených imagí k testovacímu prostředí](how-to-attach-detach-shared-image-gallery.md)
-- [Přidat uživatele jako vlastníka testovacího prostředí](how-to-add-user-lab-owner.md)
-- [Zobrazit nastavení brány firewall pro testovací prostředí](how-to-configure-firewall-settings.md)
+- [Umožnění výběru umístění testovacího prostředí pro jeho tvůrce](allow-lab-creator-pick-lab-location.md)
+- [Propojení sítě testovacího prostředí s virtuální virtuální sítí druhé strany](how-to-connect-peer-virtual-network.md)
+- [Připojení sdílené galerie obrázků k testovacímu prostředí](how-to-attach-detach-shared-image-gallery.md)
+- [Přidání uživatele jako vlastníka testovacího prostředí](how-to-add-user-lab-owner.md)
+- [Zobrazení nastavení brány firewall pro testovací prostředí](how-to-configure-firewall-settings.md)

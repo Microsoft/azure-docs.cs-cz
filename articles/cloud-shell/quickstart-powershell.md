@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start Azure Cloud Shell – PowerShell
-description: Naučte se používat PowerShell v prohlížeči s Azure Cloud Shell.
+title: Azure Cloud Shell Úvodní – PowerShell
+description: Přečtěte si, jak používat PowerShell ve vašem prohlížeči pomocí Azure Cloud Shellu.
 author: maertendmsft
 ms.author: damaerte
 tags: azure-resource-manager
@@ -10,32 +10,32 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
 ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273004"
 ---
-# <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Rychlý Start pro PowerShell v Azure Cloud Shell
+# <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Úvodní příručka pro PowerShell v Azure Cloud Shellu
 
-Tento dokument popisuje, jak používat PowerShell v Cloud Shell v [Azure Portal](https://portal.azure.com/).
+Tento dokument podrobně popisuje, jak používat PowerShell v Cloud Shellu na [webu Azure Portal](https://portal.azure.com/).
 
 > [!NOTE]
-> K dispozici je také [bash v Azure Cloud Shell](quickstart.md) rychlý Start.
+> [Bash v Azure Cloud Shell](quickstart.md) Úvodní k dispozici je také k dispozici.
 
-## <a name="start-cloud-shell"></a>Spustit Cloud Shell
+## <a name="start-cloud-shell"></a>Spuštění Cloud Shellu
 
-1. V horním navigačním panelu Azure Portal klikněte na tlačítko **Cloud Shell**
+1. Klikněte na tlačítko **Cloud Shell** z horního navigačního panelu portálu Azure.
 
    ![](media/quickstart-powershell/shell-icon.png)
 
-2. V rozevíracím seznamu vyberte prostředí PowerShell a budete na jednotce Azure `(Azure:)`
+2. Vyberte prostředí PowerShellu z rozevíracího prostředí a budete na disku Azure`(Azure:)`
 
    ![](media/quickstart-powershell/environment-ps.png)
 
-## <a name="run-powershell-commands"></a>Spuštění příkazů PowerShellu
+## <a name="run-powershell-commands"></a>Spuštění příkazů prostředí PowerShell
 
-V Cloud Shell spouštějte běžné příkazy PowerShellu, například:
+Spouštět běžné příkazy Prostředí PowerShell v prostředí Cloud, například:
 
 ```azurepowershell-interactive
 PS Azure:\> Get-Date
@@ -53,24 +53,24 @@ MyResourceGroup         MyVM1       eastus            Standard_DS1  Windows    S
 MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    Succeeded           deallocated
 ```
 
-## <a name="navigate-azure-resources"></a>Navigace v prostředcích Azure
+## <a name="navigate-azure-resources"></a>Navigace o prostředcích Azure
 
- 1. Vypíše všechna předplatná z `Azure` jednotky.
+ 1. Seznam všech předplatných z `Azure` disku
 
     ```azurepowershell-interactive
     PS Azure:\> dir
     ```
 
- 2. `cd` pro preferované předplatné
+ 2. `cd`k vašemu preferovanému předplatnému
 
     ```azurepowershell-interactive
     PS Azure:\> cd MySubscriptionName
     PS Azure:\MySubscriptionName>
     ```
 
- 3. Zobrazit všechny prostředky Azure v rámci aktuálního předplatného
+ 3. Zobrazení všech prostředků Azure v rámci aktuálního předplatného
 
-    Zadejte `dir` pro výpis více zobrazení prostředků Azure.
+    Zadejte `dir` do seznamu více zobrazení prostředků Azure.
 
     ```azurepowershell-interactive
     PS Azure:\MySubscriptionName> dir
@@ -88,7 +88,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
 
 ### <a name="allresources-view"></a>Zobrazení AllResources
 
-Pokud chcete zobrazit prostředky Azure, zadejte v části `AllResources` Directory `dir`.
+`dir` Zadejte `AllResources` do adresáře a zobrazte prostředky Azure.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> dir AllResources
@@ -96,7 +96,7 @@ PS Azure:\MySubscriptionName> dir AllResources
 
 ### <a name="explore-resource-groups"></a>Prozkoumat skupiny prostředků
 
- Můžete přejít do adresáře `ResourceGroups` a do konkrétní skupiny prostředků, kde můžete najít virtuální počítače.
+ Můžete přejít `ResourceGroups` do adresáře a uvnitř skupiny prostředků můžete najít virtuální počítače.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> cd ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines
@@ -114,13 +114,13 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 ```
 
 > [!NOTE]
-> Můžete si všimnout, že při psaní `dir`, Cloud Shell je možné zobrazit položky mnohem rychleji.
-> Je to proto, že podřízené položky jsou ukládány do mezipaměti v paměti pro lepší činnost koncového uživatele.
-`dir -Force` ale můžete použít k získání nových dat.
+> Můžete si všimnout, že `dir`podruhé při psaní , Cloud Shell je schopen zobrazit položky mnohem rychleji.
+> Důvodem je, že podřízené položky jsou uloženy do mezipaměti v paměti pro lepší uživatelské prostředí.
+Vždy však můžete `dir -Force` použít k získání nových dat.
 
-### <a name="navigate-storage-resources"></a>Navigace v prostředcích úložiště
+### <a name="navigate-storage-resources"></a>Navigace ve zdrojích úložiště
 
-Když zadáte do adresáře `StorageAccounts`, můžete snadno procházet všechny prostředky úložiště.
+Vstupem do `StorageAccounts` adresáře můžete snadno procházet všechny prostředky úložiště
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
@@ -134,15 +134,15 @@ MyFileShare2  \\MyStorageAccountName.file.core.windows.net\MyFileShare2;AccountN
 MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountName=MyStorageAccountName AccountKey=<key>
 ```
 
-Pomocí připojovacího řetězce můžete připojit sdílenou složku souborů Azure pomocí následujícího příkazu.
+Pomocí připojovacího řetězce můžete použít následující příkaz k připojení sdílené složky Azure Files.
 
 ```azurepowershell-interactive
 net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
 ```
 
-Podrobnosti najdete v tématu [připojení sdílené složky Azure Files a přístup ke sdílené složce v systému Windows][azmount].
+Podrobnosti najdete v [tématu připojení sdílené složky Azure Files a přístup ke sdílené složce ve Windows][azmount].
 
-Adresáře ve sdílené složce služby soubory Azure můžete také procházet následujícím způsobem:
+Můžete také procházet adresáře ve sdílené složce Soubory Azure takto:
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> cd .\MyFileShare1\
@@ -156,7 +156,7 @@ Mode  Name
 
 ### <a name="interact-with-virtual-machines"></a>Interakce s virtuálními počítači
 
-Všechny virtuální počítače můžete najít v rámci aktuálního předplatného prostřednictvím adresáře `VirtualMachines`.
+Všechny virtuální počítače najdete v aktuálním předplatném prostřednictvím `VirtualMachines` adresáře.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\VirtualMachines> dir
@@ -171,19 +171,19 @@ TestVm2    MyResourceGroup1   westus    Standard_DS1_v2 Windows          jpstest
 TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest         Succeeded     running
 ```
 
-#### <a name="invoke-powershell-script-across-remote-vms"></a>Vyvolání skriptu PowerShellu napříč vzdálenými virtuálními počítači
+#### <a name="invoke-powershell-script-across-remote-vms"></a>Vyvolání skriptu Prostředí PowerShell mezi vzdálenými virtuálními aplikacemi
 
  > [!WARNING]
- > Přečtěte si prosím [řešení potíží se vzdálenou správou virtuálních počítačů Azure](troubleshooting.md#troubleshooting-remote-management-of-azure-vms).
+ > Informace o [řešení potíží se vzdálenou správou virtuálních počítačů Azure najdete v potížích](troubleshooting.md#troubleshooting-remote-management-of-azure-vms)s řešením potíží.
 
-  Za předpokladu, že máte virtuální počítač, MyVM1, použijte `Invoke-AzVMCommand` k vyvolání bloku skriptu PowerShellu na vzdáleném počítači.
+  Za předpokladu, že máte virtuální počítač MyVM1, použijeme `Invoke-AzVMCommand` k vyvolání bloku skriptu prostředí PowerShell ve vzdáleném počítači.
 
   ```azurepowershell-interactive
   Enable-AzVMPSRemoting -Name MyVM1 -ResourceGroupname MyResourceGroup
   Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
   ```
 
-  Můžete také nejprve přejít do adresáře VirtualMachines a spustit `Invoke-AzVMCommand` následujícím způsobem.
+  Můžete také přejít do adresáře `Invoke-AzVMCommand` VirtualMachines první a spustit následujícím způsobem.
 
   ```azurepowershell-interactive
   PS Azure:\> cd MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines
@@ -206,21 +206,21 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 
 #### <a name="interactively-log-on-to-a-remote-vm"></a>Interaktivní přihlášení ke vzdálenému virtuálnímu počítači
 
-`Enter-AzVM` můžete použít k interaktivnímu přihlášení k virtuálnímu počítači běžícímu v Azure.
+Můžete použít `Enter-AzVM` interaktivní přihlášení k virtuálnímu počítači spuštěného v Azure.
 
   ```azurepowershell-interactive
   PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -Credential (Get-Credential)
   ```
 
-Můžete také nejprve přejít do adresáře `VirtualMachines` a spustit `Enter-AzVM` následujícím způsobem.
+Můžete také přejít `VirtualMachines` do adresáře a spustit `Enter-AzVM` následujícím způsobem
 
   ```azurepowershell-interactive
  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
  ```
 
-### <a name="discover-webapps"></a>Zjistit WebApps
+### <a name="discover-webapps"></a>Seznamte se s webovými aplikacemi
 
-Když zadáte do adresáře `WebApps`, můžete snadno procházet prostředky webových aplikací.
+Vstupem do `WebApps` adresáře můžete snadno procházet prostředky webových aplikací
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> dir .\WebApps\
@@ -254,16 +254,16 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="ssh"></a>SSH
 
-Chcete-li provést ověření na serverech nebo virtuálních počítačích pomocí protokolu SSH, vygenerujte v Cloud Shell pár privátních klíčů a publikujte veřejný klíč do `authorized_keys` na vzdáleném počítači, například `/home/user/.ssh/authorized_keys`.
+Chcete-li se ověřit na serverech nebo virtuálních počítačích pomocí SSH, vygenerujte dvojici veřejných a soukromých klíčů v prostředí Cloud Shell a publikujte veřejný klíč ve `authorized_keys` vzdáleném počítači, například `/home/user/.ssh/authorized_keys`.
 
 > [!NOTE]
-> Privátní veřejné klíče SSH můžete vytvořit pomocí `ssh-keygen` a publikovat je `$env:USERPROFILE\.ssh` v Cloud Shell.
+> Můžete vytvořit SSH privátní veřejné klíče pomocí `ssh-keygen` a publikovat je do `$env:USERPROFILE\.ssh` cloudového prostředí.
 
 ### <a name="using-ssh"></a>Použití SSH
 
-Pokud chcete vytvořit novou konfiguraci virtuálního počítače pomocí rutin [Azure PowerShell, postupujte](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) podle pokynů.
-Před voláním do `New-AzVM` pro zahájení nasazení přidejte do konfigurace virtuálního počítače veřejný klíč SSH.
-Nově vytvořený virtuální počítač bude obsahovat veřejný klíč v umístění `~\.ssh\authorized_keys`, čímž se pro virtuální počítač zapíná relace SSH bez přihlašovacích údajů.
+Postupujte podle pokynů [zde](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) k vytvoření nové konfigurace virtuálního počítače pomocí rutin Azure PowerShell.
+Před voláním do `New-AzVM` zahájit nasazení, přidejte SSH veřejný klíč do konfigurace virtuálního počítače.
+Nově vytvořený virtuální virtuální ms bude `~\.ssh\authorized_keys` obsahovat veřejný klíč v umístění, a tím povolí relaci SSH bez pověření pro virtuální hod.
 
 ```azurepowershell-interactive
 # Create VM config object - $vmConfig using instructions on linked page above
@@ -282,33 +282,33 @@ New-AzVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmCo
 ssh azureuser@MyVM.Domain.Com
 ```
 
-## <a name="list-available-commands"></a>Zobrazit dostupné příkazy
+## <a name="list-available-commands"></a>Seznam dostupných příkazů
 
-V části `Azure` disk zadejte `Get-AzCommand`, aby se získaly příkazy Azure specifické pro kontext.
+V `Azure` části `Get-AzCommand` jednotky zadejte, chcete-li získat kontextové příkazy Azure.
 
-Alternativně můžete k získání dostupných příkazů Azure vždy použít `Get-Command *az* -Module Az.*`.
+Případně můžete vždy zjistit `Get-Command *az* -Module Az.*` dostupné příkazy Azure.
 
-## <a name="install-custom-modules"></a>Nainstalovat vlastní moduly
+## <a name="install-custom-modules"></a>Instalace vlastních modulů
 
-Můžete spustit `Install-Module` pro instalaci modulů z [Galerie prostředí PowerShell][gallery].
+Instalaci modulů můžete spustit `Install-Module` v Galerii prostředí [PowerShell][gallery].
 
-## <a name="get-help"></a>Get-Help
+## <a name="get-help"></a>Získat nápovědu
 
-Zadejte `Get-Help` pro získání informací o PowerShellu v Azure Cloud Shell.
+Pokud `Get-Help` chcete získat informace o PowerShellu v Azure Cloud Shellu, zadejte.
 
 ```azurepowershell-interactive
 Get-Help
 ```
 
-U určitého příkazu můžete dál `Get-Help` a za ním i rutina.
+U určitého příkazu můžete `Get-Help` stále následovat rutina.
 
 ```azurepowershell-interactive
 Get-Help Get-AzVM
 ```
 
-## <a name="use-azure-files-to-store-your-data"></a>Použití souborů Azure k ukládání dat
+## <a name="use-azure-files-to-store-your-data"></a>Ukládání dat pomocí souborů Azure
 
-Můžete vytvořit skript, řekněme `helloworld.ps1`a uložte ho do `clouddrive`, abyste ho mohli použít napříč relacemi prostředí.
+Můžete vytvořit skript, `helloworld.ps1`řekněme , a `clouddrive` uložit jej do vašeho použít přes relace prostředí.
 
 ```azurepowershell-interactive
 cd $HOME\clouddrive
@@ -321,18 +321,18 @@ code .\helloworld.ps1
 Hello World!
 ```
 
-Po příštím použití PowerShellu v Cloud Shell bude soubor `helloworld.ps1` existovat v adresáři `$HOME\clouddrive`, který připojuje sdílenou složku souborů Azure.
+Příště při použití PowerShellu v `helloworld.ps1` Cloud Shellu `$HOME\clouddrive` bude soubor existovat pod adresářem, který připojí vaši sdílenou složku Azure Files.
 
-## <a name="use-custom-profile"></a>Použít vlastní profil
+## <a name="use-custom-profile"></a>Použití vlastního profilu
 
-Prostředí PowerShell můžete přizpůsobit vytvořením profilů PowerShellu – `profile.ps1` (nebo `Microsoft.PowerShell_profile.ps1`).
-Uložte ji pod `$profile.CurrentUserAllHosts` (nebo `$profile.CurrentUserAllHosts`), aby se mohla načíst do každého prostředí PowerShell v Cloud Shell relaci.
+Prostředí PowerShellu můžete přizpůsobit vytvořením profilů prostředí `profile.ps1` PowerShell – (nebo). `Microsoft.PowerShell_profile.ps1`
+Uložte `$profile.CurrentUserAllHosts` ji `$profile.CurrentUserAllHosts`pod (nebo ), aby ji bylo možné načíst v každém prostředí PowerShell v relaci Cloud Shell.
 
-Informace o tom, jak vytvořit profil, najdete v tématu [o profilech][profile].
+Jak vytvořit profil, naleznete [v nazuje o profilech][profile].
 
 ## <a name="use-git"></a>Použití Gitu
 
-K naklonování úložiště Git v Cloud Shell musíte vytvořit [osobní přístupový token][githubtoken] a použít ho jako uživatelské jméno. Jakmile budete mít token, naklonujte úložiště následujícím způsobem:
+Chcete-li klonovat úložiště Git v prostředí Cloud Shell, musíte vytvořit [osobní přístupový token][githubtoken] a použít jej jako uživatelské jméno. Jakmile budete mít svůj token, klonovat úložiště takto:
 
 ```azurepowershell-interactive
   git clone https://<your-access-token>@github.com/username/repo.git
@@ -340,7 +340,7 @@ K naklonování úložiště Git v Cloud Shell musíte vytvořit [osobní přís
 
 ## <a name="exit-the-shell"></a>Opusťte prostředí
 
-Zadejte `exit` pro ukončení relace.
+Chcete-li relaci ukončit, zadejte. `exit`
 
 [bashqs]:quickstart.md
 [gallery]:https://www.powershellgallery.com/

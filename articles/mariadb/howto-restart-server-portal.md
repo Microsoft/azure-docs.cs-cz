@@ -1,51 +1,51 @@
 ---
-title: Restart serveru – Azure Portal-Azure Database for MariaDB
-description: Tento článek popisuje, jak můžete restartovat server Azure Database for MariaDB pomocí webu Azure Portal.
+title: Restartovat server – portál Azure – databáze Azure pro MariaDB
+description: Tento článek popisuje, jak můžete restartovat azure databáze pro mariadb server pomocí portálu Azure.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: fb4e56a3f40573a65b679ee026c22dfc5d6e5fa2
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: ed95304807a1a03880cc824c1a58f010203d418d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769417"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534707"
 ---
-# <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Restartování serveru Azure Database for MariaDB pomocí Azure Portal
-Toto téma popisuje, jak můžete restartovat server Azure Database for MariaDB. Možná budete muset restartovat server z důvodů údržby, což způsobí krátký výpadek, protože server tuto operaci provede.
+# <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Restartování serveru Azure Database for MariaDB pomocí portálu Azure
+Toto téma popisuje, jak můžete restartovat azure databáze pro mariadb server. Pravděpodobně bude nutné restartovat server z důvodů údržby, což způsobí krátký výpadek, protože server provádí operaci.
 
-Pokud je služba zaneprázdněná, restart serveru se zablokuje. Například služba může zpracovávat dříve požadovanou operaci, jako je například škálování virtuální jádra.
+Restartování serveru bude blokováno, pokud je služba zaneprázdněna. Služba může například zpracovávat dříve požadovanou operaci, jako je například škálování virtuálních jader.
 
-Čas potřebný k dokončení restartování závisí na procesu obnovení MariaDB. Chcete-li zkrátit dobu restartování, doporučujeme, abyste minimalizovali množství aktivity, ke kterým došlo na serveru před restartováním.
+Doba potřebná k dokončení restartování závisí na procesu obnovení MariaDB. Chcete-li zkrátit dobu restartování, doporučujeme minimalizovat množství aktivity, ke kterým na serveru dochází před restartováním.
 
-## <a name="prerequisites"></a>Předpoklady
-K dokončení tohoto průvodce budete potřebovat:
-- [Server Azure Database for MariaDB](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+## <a name="prerequisites"></a>Požadavky
+Chcete-li dokončit tento návod, potřebujete:
+- [Databáze Azure pro server MariaDB](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 
-## <a name="perform-server-restart"></a>Provést restart serveru
+## <a name="perform-server-restart"></a>Provedení restartování serveru
 
-Následující kroky restartují Server MariaDB:
+Následující kroky restartují server MariaDB:
 
-1. V Azure Portal vyberte server Azure Database for MariaDB.
+1. Na webu Azure Portal vyberte azure databázi pro server MariaDB.
 
-2. Na panelu nástrojů na stránce **Přehled** serveru klikněte na **restartovat**.
+2. Na panelu nástrojů na stránce **Přehled** serveru klepněte na **tlačítko Restartovat**.
 
-   ![Azure Database for MariaDB – přehled – tlačítko restartovat](./media/howto-restart-server-portal/2-server.png)
+   ![Databáze Azure pro MariaDB – přehled – tlačítko Restartovat](./media/howto-restart-server-portal/2-server.png)
 
-3. Kliknutím na **Ano** potvrďte restartování serveru.
+3. Klepnutím na tlačítko **Ano** potvrďte restartování serveru.
 
-   ![Azure Database for MariaDB – potvrzení restartování](./media/howto-restart-server-portal/3-restart-confirm.png)
+   ![Databáze Azure pro MariaDB – potvrzení restartování](./media/howto-restart-server-portal/3-restart-confirm.png)
 
-4. Všimněte si, že se stav serveru změní na restart.
+4. Všimněte si, že stav serveru se změní na "Restartování".
 
    ![Azure Database for MariaDB – stav restartování](./media/howto-restart-server-portal/4-restarting-status.png)
 
-5. Potvrzení restartování serveru bylo úspěšné.
+5. Potvrďte, že restartování serveru bylo úspěšné.
 
-   ![Azure Database for MariaDB – úspěšné restartování](./media/howto-restart-server-portal/5-restart-success.png)
+   ![Databáze Azure pro MariaDB – úspěšné restartování](./media/howto-restart-server-portal/5-restart-success.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Rychlý Start: vytvoření serveru Azure Database for MariaDB pomocí Azure Portal](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+[Úvodní příručka: Vytvoření azure databáze pro server MariaDB pomocí portálu Azure](./quickstart-create-mariadb-server-database-using-azure-portal.md)

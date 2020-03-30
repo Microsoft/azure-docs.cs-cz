@@ -1,138 +1,138 @@
 ---
-title: Uchovávání dat a ukládání v Azure Application Insights | Microsoft Docs
-description: Prohlášení o zásadách uchovávání a ochrany osobních údajů
+title: Uchovávání a ukládání dat v Přehledech aplikací Azure | Dokumenty společnosti Microsoft
+description: Prohlášení o zásadách uchovávání informací a ochrany osobních údajů
 ms.topic: conceptual
 ms.date: 09/29/2019
 ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275994"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchovávání a ukládání dat v Application Insights
 
-Když do své aplikace nainstalujete sadu [Azure Application Insights][start] SDK, pošle se telemetrie o vaší aplikaci do cloudu. Přirozeně informující vývojáři chtějí přesně informovat o tom, jaká data se odesílají, co se stane s daty a jak je můžou mít pod kontrolou. Konkrétně by mohla být posílána citlivá data, kde jsou uložená a jak je zabezpečená? 
+Když do aplikace [nainstalujete][start] stek Azure Application Insights SDK, odešle telemetrii o vaší aplikaci do cloudu. Samozřejmě, že odpovědní vývojáři chtějí přesně vědět, jaká data jsou odesílána, co se stane s daty a jak mohou udržet kontrolu nad tím. Zejména by mohly být odesílány citlivé údaje, kde jsou uloženy a jak bezpečné jsou? 
 
-Za prvé, krátká odpověď:
+Za prvé, stručná odpověď:
 
-* Standardní moduly telemetrie, které spouští "vycházející z boxu", nepravděpodobně posílají citlivá data službě. Telemetrie se týká metriky zatížení, výkonu a využití, sestav výjimek a dalších diagnostických dat. Hlavní data uživatele zobrazená v diagnostických sestavách jsou adresy URL; ale vaše aplikace by neměla v žádném případě vkládat citlivá data do prostého textu v adrese URL.
-* Můžete napsat kód, který odesílá další vlastní telemetrii, které vám pomůžou s diagnostikou a monitorováním využití. (Toto rozšíření je skvělou funkcí Application Insights.) Může to být omylem, aby bylo možné napsat tento kód tak, aby obsahoval osobní a další citlivá data. Pokud vaše aplikace pracuje s takovými daty, měli byste použít důkladný proces kontroly na všechen kód, který píšete.
-* Při vývoji a testování vaší aplikace je snadno možné zkontrolovat, co posílá sada SDK. Data se zobrazí v oknech výstup ladění rozhraní IDE a prohlížeče. 
-* Data jsou uložená v [Microsoft Azure](https://azure.com) serverech v USA nebo Evropě. (Ale vaše aplikace může běžet kdekoli.) Azure má [silné procesy zabezpečení a splňuje širokou škálu standardů dodržování předpisů](https://azure.microsoft.com/support/trust-center/). Pouze vy a váš určený tým mají přístup k vašim datům. Zaměstnanci Microsoftu můžou mít omezený přístup jenom za konkrétní omezené okolnosti se svým vědomím. Šifrované při přenosu a v klidovém stavu.
-*   Zkontrolujte shromážděná data, protože to může zahrnovat data, která jsou v některých případech povolena, ale ne jiné.  Dobrým příkladem je název zařízení. Název zařízení ze serveru nemá žádný vliv na ochranu osobních údajů a je užitečný, ale název zařízení z telefonu nebo přenosného počítače může mít dopad na ochranu osobních údajů a je méně užitečný. Sada SDK vyvinutá primárně pro cílové servery by ve výchozím nastavení shromáždila název zařízení a může být nutné ji přepsat v normálních událostech a výjimkách.
+* Standardní telemetrické moduly, které běží "po vybalení z krabice" je nepravděpodobné, že k odeslání citlivých dat do služby. Telemetrie se týká metrik zatížení, výkonu a využití, sestav výjimek a dalších diagnostických dat. Hlavní uživatelská data viditelná v diagnostických sestavách jsou adresy URL. ale vaše aplikace by v žádném případě neměla umístit citlivá data do prostého textu v adrese URL.
+* Můžete napsat kód, který odešle další vlastní telemetrie, které vám pomohou s diagnostikou a monitorování mů e svyužití. (Tato rozšiřitelnost je skvělou funkcí Application Insights.) Bylo by možné omylem napsat tento kód tak, aby zahrnoval osobní a jiné citlivé údaje. Pokud vaše aplikace pracuje s těmito daty, měli byste použít důkladný proces kontroly na veškerý kód, který píšete.
+* Při vývoji a testování aplikace je snadné zkontrolovat, co je odesíláno sadou SDK. Data se zobrazí ve výstupních oknech ladění ide a prohlížeče. 
+* Data se uchovává na serverech [Microsoft Azure](https://azure.com) v USA nebo Evropě. (Ale vaše aplikace může běžet kdekoli.) Azure má [silné procesy zabezpečení a splňuje širokou škálu standardů dodržování předpisů](https://azure.microsoft.com/support/trust-center/). Pouze vy a váš určený tým máte přístup k vašim údajům. Pracovníci společnosti Microsoft mohou mít omezený přístup k němu pouze za určitých omezených okolností s vašimi znalostmi. Je to zašifrované při přepravě a v klidu.
+*   Zkontrolujte shromážděná data, protože to může zahrnovat data, která jsou povolena za určitých okolností, ale ne jiné.  Dobrým příkladem je název zařízení. Název zařízení ze serveru nemá žádný dopad na ochranu osobních údajů a je užitečný, ale název zařízení z telefonu nebo přenosného počítače může mít dopad na ochranu osobních údajů a může být méně užitečný. Sada SDK vyvinutá především pro cílové servery by ve výchozím nastavení shromažďovala název zařízení a to může být nutné přepsat v běžných událostech i výjimkách.
 
-Zbývající část tohoto článku podrobněji vychází z těchto odpovědí. Je navržena tak, aby byla samostatná, takže ji můžete zobrazit kolegům, kteří nejsou součástí svého bezprostředního týmu.
+Zbytek tohoto článku podrobněji rozvádí na tyto odpovědi. Je navržen tak, aby byl soběstačný, takže jej můžete ukázat kolegům, kteří nejsou součástí vašeho bezprostředního týmu.
 
 ## <a name="what-is-application-insights"></a>Co je Application Insights?
-[Azure Application Insights][start] je služba poskytovaná Microsoftem, která pomáhá zlepšit výkon a použitelnost vaší živé aplikace. Monitoruje vaši aplikaci pokaždé, když je spuštěná, jak během testování, tak i po jeho publikování nebo nasazení. Application Insights vytvoří grafy a tabulky, které vám ukáže například dobu, po kterou se dostanete nejvíc uživatelů, jak reagovat na aplikaci a jak dobře je obsluhovaná pomocí všech externích služeb, na kterých závisí. Pokud dojde k chybám, selháním nebo problémům s výkonem, můžete prohledat data telemetrie podrobněji a diagnostikovat příčinu. A služba vám pošle e-maily, pokud dojde ke změnám v dostupnosti a výkonu vaší aplikace.
+[Azure Application Insights][start] je služba poskytovaná společností Microsoft, která vám pomůže zlepšit výkon a použitelnost vaší živé aplikace. Monitoruje vaši aplikaci po celou dobu, po kterou je spuštěna, a to jak během testování, tak po publikování nebo nasazení. Application Insights vytváří grafy a tabulky, které vám například ukazují, jaké denní doby získáte většinu uživatelů, jak je aplikace responzivní a jak dobře ji obsluhují všechny externí služby, na kterých závisí. Pokud dojde k selhání, selhání nebo problémy s výkonem, můžete prohledávat telemetrická data podrobně diagnostikovat příčinu. A služba vám bude posílat e-maily, pokud dojde ke změnám v dostupnosti a výkonu vaší aplikace.
 
-Chcete-li získat tuto funkci, nainstalujte do aplikace sadu Application Insights SDK, která se stává součástí jejího kódu. Když je vaše aplikace spuštěná, SDK monitoruje svou činnost a odesílá telemetrii do služby Application Insights. Toto je cloudová služba, jejímž hostitelem je [Microsoft Azure](https://azure.com). (Ale Application Insights funguje pro všechny aplikace, ne jenom aplikace, které jsou hostované v Azure.)
+Chcete-li získat tuto funkci, nainstalujte sady Application Insights SDK ve vaší aplikaci, která se stane součástí jeho kódu. Když je vaše aplikace spuštěná, sada SDK monitoruje svou činnost a odesílá telemetrická data do služby Application Insights. Jedná se o cloudovou službu hodnosnou v [Microsoft Azure](https://azure.com). (Ale Application Insights funguje pro všechny aplikace, ne jen aplikace, které jsou hostované v Azure.)
 
-Služba Application Insights ukládá a analyzuje telemetrii. Pokud chcete zobrazit analýzu nebo prohledat uloženou telemetrii, přihlaste se ke svému účtu Azure a otevřete Application Insights prostředek pro vaši aplikaci. Můžete také sdílet přístup k datům s ostatními členy týmu nebo se zadanými předplatiteli Azure.
+Služba Application Insights ukládá a analyzuje telemetrická data. Chcete-li zobrazit analýzu nebo prohledat uloženou telemetrii, přihlaste se ke svému účtu Azure a otevřete prostředek Application Insights pro vaši aplikaci. Přístup k datům můžete také sdílet s ostatními členy vašeho týmu nebo se zadanými předplatiteli Azure.
 
-Můžete mít data exportovaná z Application Insights služby, například do databáze nebo externích nástrojů. Každý nástroj poskytnete speciální klíč, který získáte ze služby. V případě potřeby lze klíč odvolat. 
+Data můžete exportovat ze služby Application Insights, například do databáze nebo do externích nástrojů. Každému nástroji poskytnete speciální klíč, který získáte ze služby. Klíč lze v případě potřeby odvolat. 
 
-Application Insights sady SDK jsou dostupné pro řadu typů aplikací: webové služby hostované ve vašich vlastních serverech Java EE nebo ASP.NET nebo v Azure. webové klienty – to znamená, že kód spuštěný na webové stránce; desktopové aplikace a služby; aplikace pro zařízení, jako jsou Windows Phone, iOS a Android. Všechny odesílají telemetrii do stejné služby.
+Sady SDK Application Insights jsou k dispozici pro celou řadu typů aplikací: webové služby hostované ve vašem vlastním java ee nebo ASP.NET serverech nebo v Azure. webové klienty - to znamená kód běžící na webové stránce; desktopové aplikace a služby; aplikace zařízení, jako je Windows Phone, iOS a Android. Všichni odesílají telemetrii do stejné služby.
 
-## <a name="what-data-does-it-collect"></a>Jaká data shromažďuje?
+## <a name="what-data-does-it-collect"></a>Jaké údaje shromažďuje?
 Existují tři zdroje dat:
 
-* Sada SDK, kterou můžete integrovat s aplikací buď [při vývoji](../../azure-monitor/app/asp-net.md) , nebo [v době běhu](../../azure-monitor/app/monitor-performance-live-website-now.md). Existují různé sady SDK pro různé typy aplikací. K dispozici je také [sada SDK pro webové stránky](../../azure-monitor/app/javascript.md), která se načte do prohlížeče koncového uživatele spolu se stránkou.
+* Sada SDK, kterou integrujete s aplikací ve [vývoji](../../azure-monitor/app/asp-net.md) nebo [za běhu](../../azure-monitor/app/monitor-performance-live-website-now.md). Existují různé sady SDK pro různé typy aplikací. K dispozici je také [Sada SDK pro webové stránky](../../azure-monitor/app/javascript.md), která se načte do prohlížeče koncového uživatele spolu se stránkou.
   
-  * Každá sada SDK má několik [modulů](../../azure-monitor/app/configuration-with-applicationinsights-config.md), které používají různé techniky ke shromažďování různých typů telemetrie.
-  * Pokud nainstalujete sadu SDK ve vývoji, můžete použít její rozhraní API k posílání vlastní telemetrie, a to i ke standardním modulům. Tato vlastní telemetrie může zahrnovat všechna data, která chcete odeslat.
-* Na některých webových serverech existují také agenti, kteří se spouštějí společně s aplikací, a zasílat telemetrii o procesoru, paměti a obsazení sítě. Například virtuální počítače Azure, hostitelé Docker a [servery Java EE](../../azure-monitor/app/java-agent.md) můžou mít takové agenty.
-* [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) jsou procesy spouštěné Microsoftem, které odesílají požadavky do vaší webové aplikace v pravidelných intervalech. Výsledky se odesílají do služby Application Insights.
+  * Každá sada SDK má řadu [modulů](../../azure-monitor/app/configuration-with-applicationinsights-config.md), které používají různé techniky ke shromažďování různých typů telemetrie.
+  * Pokud nainstalujete sdk ve vývoji, můžete použít jeho rozhraní API k odeslání vlastní telemetrie, kromě standardních modulů. Tato vlastní telemetrie může obsahovat všechna data, která chcete odeslat.
+* V některých webových serverech existují také agenti, kteří běží vedle aplikace a odesílají telemetrii o procesoru, paměti a obsazenosti sítě. Například virtuální počítače Azure, hostitelé Dockeru a [servery EE v Jazyce Java](../../azure-monitor/app/java-agent.md) mohou mít takové agenty.
+* [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) jsou procesy provozované společností Microsoft, které v pravidelných intervalech odesílají požadavky do vaší webové aplikace. Výsledky jsou odeslány do služby Application Insights.
 
-### <a name="what-kinds-of-data-are-collected"></a>Jaké druhy dat se shromažďují?
-Hlavní kategorie jsou:
+### <a name="what-kinds-of-data-are-collected"></a>Jaké druhy údajů jsou shromažďovány?
+Hlavními kategoriemi jsou:
 
-* [Telemetrie webového serveru](../../azure-monitor/app/asp-net.md) – požadavky HTTP.  Identifikátor URI, čas potřebný ke zpracování žádosti, kód odpovědi, IP adresa klienta. `Session id`.
-* [Webové stránky](../../azure-monitor/app/javascript.md) – počty stránek, uživatelů a relací. Doba načítání stránky Výjimky. Volání AJAX.
-* Čítače výkonu – paměť, procesor, vstup/výstup, obsazenost sítě.
-* Kontext klienta a serveru – operační systém, národní prostředí, typ zařízení, prohlížeč a rozlišení obrazovky.
-* [Výjimky](../../azure-monitor/app/asp-net-exceptions.md) a havárie – **výpisy zásobníku**, `build id`, typ procesoru. 
-* [Závislosti](../../azure-monitor/app/asp-net-dependencies.md) – volání externích služeb, jako jsou REST, SQL a AJAX. Identifikátor URI nebo připojovací řetězec, doba trvání, úspěch, příkaz
-* [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) – doba trvání testu a kroky, odpovědi.
-* [Protokoly trasování](../../azure-monitor/app/asp-net-trace-logs.md) a [vlastní telemetrie](../../azure-monitor/app/api-custom-events-metrics.md) - **vše, co kódujete do protokolů nebo telemetrie**.
+* [Telemetrie webového serveru](../../azure-monitor/app/asp-net.md) – požadavky HTTP.  Uri, doba, která byla časem zpracování požadavku, kódodpovědi, IP adresa klienta. `Session id`.
+* [Webové stránky](../../azure-monitor/app/javascript.md) - Počet stránek, uživatelů a relací. Časy načítání stránky. Výjimky. Volá Ajax.
+* Čítače výkonu - paměť, procesor, io, obsazenost sítě.
+* Kontext klienta a serveru - Operační systém, národní prostředí, typ zařízení, prohlížeč, rozlišení obrazovky.
+* [Výjimky](../../azure-monitor/app/asp-net-exceptions.md) a selhání - **výpisy zásobníku**, `build id`, typ procesoru. 
+* [Závislosti -](../../azure-monitor/app/asp-net-dependencies.md) volání externích služeb, jako je REST, SQL, AJAX. Identifikátor URI nebo připojovací řetězec, doba trvání, úspěch, příkaz.
+* [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) - doba trvání testu a kroků, odpovědi.
+* [Trasování protokoly](../../azure-monitor/app/asp-net-trace-logs.md) a [vlastní telemetrie](../../azure-monitor/app/api-custom-events-metrics.md) - **cokoli, co kód do protokolů nebo telemetrie**.
 
-[Další podrobnosti](#data-sent-by-application-insights).
+[Více podrobností](#data-sent-by-application-insights).
 
-## <a name="how-can-i-verify-whats-being-collected"></a>Jak můžu ověřit, co se shromažďuje?
-Pokud vyvíjíte aplikaci pomocí sady Visual Studio, spusťte aplikaci v režimu ladění (F5). Telemetrie se zobrazí v okně výstup. Odtud ji můžete zkopírovat a naformátovat jako JSON pro snadnější kontrolu. 
+## <a name="how-can-i-verify-whats-being-collected"></a>Jak mohu ověřit, co se shromažďuje?
+Pokud vyvíjíte aplikaci pomocí Visual Studia, spusťte aplikaci v režimu ladění (F5). Telemetrie se zobrazí v okně Výstup. Odtud jej můžete zkopírovat a naformátovat jako JSON pro snadnou kontrolu. 
 
 ![](./media/data-retention-privacy/06-vs.png)
 
-V okně diagnostiky je také přehlednější zobrazení.
+K dispozici je také čitelnější zobrazení v okně Diagnostika.
 
-V případě webových stránek otevřete okno ladění v prohlížeči.
+U webových stránek otevřete okno ladění prohlížeče.
 
-![Stiskněte klávesu F12 a otevřete kartu síť.](./media/data-retention-privacy/08-browser.png)
+![Stiskněte klávesu F12 a otevřete kartu Síť.](./media/data-retention-privacy/08-browser.png)
 
-### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>Můžu napsat kód pro filtrování telemetrie před odesláním?
-To je možné tím, že napíšete [modul plug-in procesoru telemetrie](../../azure-monitor/app/api-filtering-sampling.md).
+### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>Je možné napsat kód pro filtrování telemetrie před odesláním?
+To by bylo možné napsáním [modulu plug-in telemetrického procesoru](../../azure-monitor/app/api-filtering-sampling.md).
 
-## <a name="how-long-is-the-data-kept"></a>Jak dlouho se data uchovávají?
-Nezpracované datové body (tj. položky, které se dají dotazovat v analýze a prohledávat ve vyhledávání) jsou zachované až 730 dnů. Můžete [vybrat dobu uchovávání dat](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period) 30, 60, 90, 120, 180, 270, 365, 550 nebo 730 dnů. Pokud potřebujete zachovat data déle než 730 dní, můžete pomocí [průběžného exportu](../../azure-monitor/app/export-telemetry.md) ji během příjmu dat zkopírovat do účtu úložiště. 
+## <a name="how-long-is-the-data-kept"></a>Jak dlouho jsou data uchovávána?
+Nezpracovaná data body (tj. položky, na které se můžete dotazovat v Analytics a kontrolovat ve vyhledávání) jsou uchovávány po dobu až 730 dnů. Můžete [vybrat dobu uchovávání](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period) 30, 60, 90, 120, 180, 270, 365, 550 nebo 730 dní. Pokud potřebujete uchovávat data delší než 730 dní, můžete je během ingestování dat zkopírovat do účtu úložiště pomocí [průběžného exportu.](../../azure-monitor/app/export-telemetry.md) 
 
-Data uchovávaná déle než 90 dnů se účtují za přidání poplatků. Přečtěte si další informace o Application Insights cenách na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
+Za data uchovávaná déle než 90 dní se účtují poplatky. Další informace o cenách Application Insights najdete na [stránce s cenami azure monitoru](https://azure.microsoft.com/pricing/details/monitor/).
 
-Agregovaná data (tj. počty, průměry a další statistická data, která vidíte v Průzkumníkovi metrik) se uchovávají po dobu 1 minuty po 90 dnech.
+Agregovaná data (tj. počty, průměry a další statistická data zobrazená v Průzkumníku metrik) se uchovávají v zrnku 1 minuty po dobu 90 dnů.
 
-[Snímky ladění](../../azure-monitor/app/snapshot-debugger.md) se ukládají po dobu 15 dnů. Tyto zásady uchování je nastavena na základě jednotlivých aplikací. Pokud je potřeba tuto hodnotu zvýšit, můžete požádat o zvýšení tak, že otevřete případ podpory na webu Azure Portal.
+Ladění snímky jsou [uloženy](../../azure-monitor/app/snapshot-debugger.md) po dobu 15 dnů. Tato zásada uchovávání informací je nastavena na základě pro aplikaci. Pokud potřebujete zvýšit tuto hodnotu, můžete požádat o zvýšení otevřením případu podpory na webu Azure Portal.
 
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
-Data jsou viditelná pro vás a v případě, že máte účet organizace, členové týmu. 
+Data jsou viditelná pro vás a pokud máte účet organizace, členové týmu. 
 
-Může být exportována vámi a členy týmu a může být zkopírována do jiných umístění a předána jiným lidem.
+Můžete jej exportovat vy a vaši členové týmu a mohou být zkopírovány do jiných míst a předány jiným osobám.
 
-#### <a name="what-does-microsoft-do-with-the-information-my-app-sends-to-application-insights"></a>Co Microsoft dělá s informacemi, které moje aplikace pošle Application Insights?
-Microsoft Data používá jenom k tomu, aby službu poskytovala.
+#### <a name="what-does-microsoft-do-with-the-information-my-app-sends-to-application-insights"></a>Co microsoft dělá s informacemi, které moje aplikace odesílá do Application Insights?
+Společnost Microsoft používá data pouze k tomu, aby vám službu poskytla.
 
-## <a name="where-is-the-data-held"></a>Kde jsou uložená data?
-* Umístění můžete vybrat při vytváření nového prostředku Application Insights. [Tady](https://azure.microsoft.com/global-infrastructure/services/?products=all)se dozvíte víc o dostupnosti Application Insights v jednotlivých oblastech.
+## <a name="where-is-the-data-held"></a>Kde jsou údaje uchovávány?
+* Umístění můžete vybrat při vytváření nového prostředku Application Insights. Další informace o dostupnosti přehledů aplikací v oblasti [najdete zde](https://azure.microsoft.com/global-infrastructure/services/?products=all).
 
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Znamená to, že moje aplikace musí být hostována v USA, Evropě nebo jihovýchodní Asie?
-* Ne. Vaše aplikace může běžet kdekoli, a to buď na místních hostitelích, nebo v cloudu.
+#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Znamená to, že moje aplikace musí být hostována v USA, Evropě nebo jihovýchodní Asii?
+* Ne. Vaše aplikace může běžet kdekoli, buď ve vlastních místních hostitelích nebo v cloudu.
 
-## <a name="how-secure-is-my-data"></a>Jak zabezpečená má moje data?
-Application Insights je služba Azure. Zásady zabezpečení jsou popsané v [dokumentu White Paper zabezpečení, ochrana osobních údajů a dodržování předpisů v Azure](https://go.microsoft.com/fwlink/?linkid=392408).
+## <a name="how-secure-is-my-data"></a>Jak bezpečná jsou moje data?
+Application Insights je služba Azure. Zásady zabezpečení jsou popsané v [dokumentu white paper azure security, privacy, and compliance](https://go.microsoft.com/fwlink/?linkid=392408).
 
-Data jsou uložená na Microsoft Azure serverech. V případě účtů v Azure Portal jsou omezení účtů popsána v [dokumentu zabezpečení, ochrana osobních údajů a dodržování předpisů v Azure](https://go.microsoft.com/fwlink/?linkid=392408).
+Data se ukládají na serverech Microsoft Azure. U účtů na webu Azure Portal jsou omezení účtu popsána v [dokumentu Azure Security, Privacy a Compliance](https://go.microsoft.com/fwlink/?linkid=392408).
 
-Přístup k datům od zaměstnanců Microsoftu je omezený. K vašim datům přistupuje pouze s vaším svolením a pokud je to nutné pro podporu vašeho používání Application Insights. 
+Přístup pracovníků společnosti Microsoft k vašim datům je omezen. K vašim údajům přistupujeme pouze s vaším svolením a pokud je to nutné pro podporu vašeho používání Application Insights. 
 
-Pro zlepšení Application Insights se používají data agregovaná napříč všemi aplikacemi pro zákazníky (například sazby dat a Průměrná velikost trasování).
+Souhrnná data ve všech aplikacích našich zákazníků (jako jsou rychlosti dat a průměrná velikost trasování) se používají ke zlepšení přehledů aplikací.
 
-#### <a name="could-someone-elses-telemetry-interfere-with-my-application-insights-data"></a>Je možné, že telemetrie někoho jiného narušuje data Application Insights?
-Pomocí klíče instrumentace, který je možné najít v kódu vašich webových stránek, by mohlo odeslat další telemetrii k vašemu účtu. S dostatečnými dodatečnými daty vaše metrika správně nepředstavovala výkon a využití vaší aplikace.
+#### <a name="could-someone-elses-telemetry-interfere-with-my-application-insights-data"></a>Mohla by telemetrie někoho jiného zasahovat do mých dat Application Insights?
+Mohou odeslat další telemetrii na váš účet pomocí instrumentačního klíče, který najdete v kódu vašich webových stránek. S dostatkem dalších dat by metriky nereprezentovaly výkon a využití vaší aplikace správně.
 
 Pokud sdílíte kód s jinými projekty, nezapomeňte odebrat klíč instrumentace.
 
-## <a name="is-the-data-encrypted"></a>Jsou data zašifrovaná?
-Všechna data jsou šifrovaná v klidovém stavu a pohyb mezi datovými centry.
+## <a name="is-the-data-encrypted"></a>Jsou data šifrovaná?
+Všechna data jsou šifrována v klidovém stavu a při pohybu mezi datovými centry.
 
-#### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Jsou data zašifrovaná při přenosu z mé aplikace do Application Insights servery?
-Ano, používáme protokol HTTPS k posílání dat na portál prakticky ze všech sad SDK, včetně webových serverů, zařízení a webových stránek HTTPS. 
+#### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Jsou data při přenosu z aplikace na servery Application Insights zašifrována?
+Ano, používáme protokol https k odesílání dat na portál z téměř všech sad SDK, včetně webových serverů, zařízení a webových stránek HTTPS. 
 
-## <a name="does-the-sdk-create-temporary-local-storage"></a>Vytváří SDK dočasné místní úložiště?
+## <a name="does-the-sdk-create-temporary-local-storage"></a>Vytvoří sada SDK dočasné místní úložiště?
 
-Ano, některé kanály telemetrie budou uchovávat data místně, pokud koncový bod není dostupný. Níže si přečtěte informace o tom, které architektury a kanály telemetrie jsou ovlivněné.
+Ano, některé kanály telemetrie budou uchovávat data místně, pokud nelze dosáhnout koncového bodu. Zkontrolujte níže, abyste zjistili, které architektury a telemetrické kanály jsou ovlivněny.
 
-Kanály telemetrie, které využívají místní úložiště, vytvářejí dočasné soubory v adresářích TEMP nebo v adresářích, které jsou omezené na konkrétní účet, na kterém je spuštěná vaše aplikace. K tomu může dojít v případě, že koncový bod nebyl dočasně dostupný nebo pokud jste dosáhli limitu omezení. Až se tento problém vyřeší, kanál telemetrie bude pokračovat v odesílání všech nových a trvalých dat.
+Telemetrické kanály, které využívají místní úložiště, vytvářejí dočasné soubory v adresářích TEMP nebo APPDATA, které jsou omezeny na konkrétní účet spuštěný v aplikaci. K tomu může dojít, když koncový bod byl dočasně nedostupný nebo pokud jste dosáhli omezení limitu. Po vyřešení tohoto problému bude kanál telemetrie pokračovat v odesílání všech nových a trvalých dat.
 
-Tato trvalá data nejsou šifrována místně. Pokud se to týká, zkontrolujte data a omezte shromažďování soukromých dat. (Další informace najdete v tématu [Jak exportovat a odstranit soukromá data](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data).)
+Tato trvalá data nejsou místně šifrována. Pokud se jedná o problém, zkontrolujte data a omezit shromažďování soukromých dat. (Další informace naleznete v [tématu Jak exportovat a odstranit soukromá data](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data).)
 
-Pokud zákazník potřebuje nakonfigurovat tento adresář s konkrétními požadavky na zabezpečení, je možné ho nakonfigurovat na rozhraní. Ujistěte se prosím, že proces, ve kterém je aplikace spuštěná, má přístup pro zápis do tohoto adresáře, ale také se ujistěte, že je tento adresář chráněný, aby nedocházelo ke čtení telemetrie nezamýšlenými uživateli.
+Pokud zákazník potřebuje nakonfigurovat tento adresář se specifickými požadavky na zabezpečení, lze jej nakonfigurovat podle architektury. Ujistěte se, že proces spuštěný aplikací má přístup pro zápis do tohoto adresáře, ale také ujistěte se, že tento adresář je chráněn, aby se zabránilo telemetrii čtení nezamýšlenými uživateli.
 
 ### <a name="java"></a>Java
 
-`C:\Users\username\AppData\Local\Temp` se používá pro trvalá data. Toto umístění není možné konfigurovat z konfiguračního adresáře a oprávnění pro přístup k této složce jsou omezená na konkrétního uživatele s požadovanými přihlašovacími údaji. (Další informace najdete v tématu [implementace](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
+`C:\Users\username\AppData\Local\Temp`se používá pro uchovávaná data. Toto umístění nelze konfigurovat z adresáře konfigurace a oprávnění pro přístup k této složce jsou omezena na konkrétního uživatele s požadovanými pověřeními. (Další informace naleznete v [tématu implementace](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
 
 ###  <a name="net"></a>.Net
 
-Ve výchozím nastavení `ServerTelemetryChannel` používá složku dat místních aplikací aktuálního uživatele `%localAppData%\Microsoft\ApplicationInsights` nebo dočasné složky `%TMP%`. (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tady.)
+Ve `ServerTelemetryChannel` výchozím nastavení používá místní složku `%localAppData%\Microsoft\ApplicationInsights` dat aplikace `%TMP%`aktuálního uživatele nebo dočasnou složku . (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) zde.)
 
 
 Prostřednictvím konfiguračního souboru:
@@ -142,10 +142,10 @@ Prostřednictvím konfiguračního souboru:
 </TelemetryChannel>
 ```
 
-Prostřednictvím kódu:
+Pomocí kódu:
 
 - Odebrat ServerTelemetryChannel z konfiguračního souboru
-- Přidejte tento fragment kódu do konfigurace:
+- Přidejte tento úryvek do konfigurace:
   ```csharp
   ServerTelemetryChannel channel = new ServerTelemetryChannel();
   channel.StorageFolder = @"D:\NewTestFolder";
@@ -155,33 +155,33 @@ Prostřednictvím kódu:
 
 ### <a name="netcore"></a>NetCore
 
-Ve výchozím nastavení `ServerTelemetryChannel` používá složku dat místních aplikací aktuálního uživatele `%localAppData%\Microsoft\ApplicationInsights` nebo dočasné složky `%TMP%`. (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tady.) V prostředí Linux bude místní úložiště zakázané, pokud není Zadaná složka úložiště.
+Ve `ServerTelemetryChannel` výchozím nastavení používá místní složku `%localAppData%\Microsoft\ApplicationInsights` dat aplikace `%TMP%`aktuálního uživatele nebo dočasnou složku . (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) zde.) V prostředí Linuxu bude místní úložiště zakázáno, pokud není zadána složka úložiště.
 
-Následující fragment kódu ukazuje, jak nastavit `ServerTelemetryChannel.StorageFolder` v metodě `ConfigureServices()` třídy `Startup.cs`:
+Následující fragment kódu ukazuje, jak `ServerTelemetryChannel.StorageFolder` nastavit `ConfigureServices()` metodu `Startup.cs` vaší třídy:
 
 ```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
 ```
 
-(Další informace najdete v tématu [vlastní konfigurace AspNetCore](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration).)
+(Další informace naleznete [v tématu AspNetCore Custom Configuration](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration).)
 
 ### <a name="nodejs"></a>Node.js
 
-Ve výchozím nastavení se `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` používá pro trvalá data. Oprávnění pro přístup k této složce jsou omezená na aktuálního uživatele a správce. (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) tady.)
+Ve `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` výchozím nastavení se používá pro uchovávání dat. Oprávnění k přístupu k této složce jsou omezena na aktuálního uživatele a správce. (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) zde.)
 
-`appInsights-node` předpony složky lze přepsat změnou hodnoty za běhu statické proměnné `Sender.TEMPDIR_PREFIX` nalezené v [sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384).
+Předponu `appInsights-node` složky lze přepsat změnou hodnoty za `Sender.TEMPDIR_PREFIX` běhu statické proměnné nalezené v [souboru Sender.ts](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384).
 
 ### <a name="javascript-browser"></a>JavaScript (prohlížeč)
 
-[Úložiště relací HTML5](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) slouží k uchovávání dat. Používají se dvě samostatné vyrovnávací paměti: `AI_buffer` a `AI_sent_buffer`. Telemetrie, která je v dávce a čeká na odeslání, je uložená v `AI_buffer`. Telemetrii, která byla právě odeslána, je umístěna v `AI_sent_buffer`, dokud server pro příjem dat neodpoví, že byl úspěšně přijat. Po úspěšném přijetí telemetrie se odebere ze všech vyrovnávacích pamětí. Při přechodných chybách (například uživatel ztratí připojení k síti), telemetrie zůstane v `AI_buffer`, dokud se neúspěšně nepřijme, nebo server pro příjem dat přestane reagovat, protože telemetrie není platná (například špatné schéma nebo je příliš staré).
+[Úložiště relací HTML5](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) se používá k uchování dat. Používají se dvě samostatné `AI_buffer` `AI_sent_buffer`nárazníky: a . Telemetrie, která je dávkována a `AI_buffer`čeká na odeslání, je uložena v aplikaci . Telemetrie, která byla `AI_sent_buffer` právě odeslána, je umístěna, dokud server ingestování neodpoví, že byl úspěšně přijat. Když je telemetrie úspěšně přijata, je odebrána ze všech vyrovnávacích pamětí. Při přechodných chybách (například uživatel ztratí připojení k síti) zůstane telemetrie v `AI_buffer` zařízení, dokud není úspěšně přijata nebo server ingestování neodpoví, že telemetrie je neplatná (například chybné schéma nebo příliš staré).
 
-Vyrovnávací paměti telemetrie je možné zakázat nastavením [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) na `false`. Když je úložiště relace vypnuté, místo toho se použije místní pole jako trvalé úložiště. Vzhledem k tomu, že sada JavaScript SDK běží na klientském zařízení, má uživatel k tomuto umístění úložiště přístup prostřednictvím vývojářských nástrojů prohlížeče.
+Telemetrické vyrovnávací paměti lze [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) zakázat nastavením na `false`. Když je úložiště relace vypnuto, místní pole se místo toho používá jako trvalé úložiště. Vzhledem k tomu, že sada JavaScript SDK běží na klientském zařízení, má uživatel přístup k tomuto umístění úložiště prostřednictvím vývojářských nástrojů prohlížeče.
 
 ### <a name="opencensus-python"></a>OpenCensus Python
 
-Ve výchozím nastavení OpenCensus Python SDK používá aktuální složku uživatele `%username%/.opencensus/.azure/`. Oprávnění pro přístup k této složce jsou omezená na aktuálního uživatele a správce. (Viz [implementace](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) tady.) Složka s trvalými daty bude pojmenována po souboru Python, který vygeneroval telemetrii.
+Ve výchozím nastavení opencensus Python SDK používá aktuální uživatelskou složku `%username%/.opencensus/.azure/`. Oprávnění k přístupu k této složce jsou omezena na aktuálního uživatele a správce. (Viz [implementace](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) zde.) Složka s trvalými daty bude pojmenována po souboru Pythonu, který generoval telemetrii.
 
-Umístění souboru úložiště můžete změnit předáním parametru `storage_path` v konstruktoru používaného vývozce.
+Umístění souboru úložiště můžete změnit předáním `storage_path` parametru v konstruktoru exportéra, který používáte.
 
 ```python
 AzureLogHandler(
@@ -190,42 +190,42 @@ AzureLogHandler(
 )
 ```
 
-## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Návody posílat data Application Insights pomocí TLS 1,2?
+## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Jak odešlu data do Application Insights pomocí TLS 1.2?
 
-Aby se zajistilo zabezpečení dat při přenosu do koncových bodů Application Insights, důrazně doporučujeme zákazníkům nakonfigurovat, aby používali aspoň protokol TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje**se a odvětví se rychle přesouvá na zrušení podpory těchto starších protokolů. 
+Chcete-li zajistit zabezpečení dat při přenosu do koncových bodů Application Insights, důrazně doporučujeme zákazníkům, aby nakonfigurovali svou aplikaci tak, aby používala alespoň zabezpečení transportní vrstvy (TLS) 1.2. Starší verze vrstvy SSL (TLS/Secure Sockets Layer) byly shledány zranitelnými a zatímco v současné době stále pracují na povolení zpětné kompatibility, **nejsou doporučeny**a odvětví se rychle přesouvá k opuštění podpory pro tyto starší protokoly. 
 
-[Rada standardů zabezpečení PCI](https://www.pcisecuritystandards.org/) nastavila [konečný termín 30. června 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) pro zakázání starších verzí TLS/SSL a upgradování na bezpečnější protokoly. Až Azure sníží podporu starší verze, pokud vaše aplikace nebo klienti nemůžou komunikovat přes aspoň protokol TLS 1,2, nebudete moct odesílat data Application Insights. Přístup, který jste probrali k otestování a ověření podpory protokolu TLS vaší aplikace, se liší v závislosti na operačním systému nebo platformě a na jazyku nebo architektuře, které vaše aplikace používá.
+[Rada pro bezpečnostní standardy PCI](https://www.pcisecuritystandards.org/) stanovila [lhůtu pro vypnutí starších](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) verzí Protokolu TLS/SSL a upgrade na bezpečnější protokoly. Jakmile Azure klesne starší podporu, pokud vaše aplikace/klienti nemohou komunikovat přes alespoň TLS 1.2, nebudete moct odesílat data do Application Insights. Přístup, který provedete k testování a ověření podpory TLS vaší aplikace, se bude lišit v závislosti na operačním systému nebo platformě a také na jazyku nebo rámci, který vaše aplikace používá.
 
-Nedoporučujeme explicitně nastavovat aplikaci tak, aby používala TLS 1,2, pokud to není nutné, protože může přerušit funkce zabezpečení na úrovni platformy, které vám umožní automaticky zjišťovat a využívat novější bezpečnější protokoly, jako jsou například TLS 1,3. Doporučujeme, abyste provedli důkladné auditování kódu vaší aplikace a zkontrolovali zakódujeme konkrétní verze TLS/SSL.
+Nedoporučujeme explicitně nastavit aplikaci tak, aby používala pouze protokol TLS 1.2, pokud to není nutné, protože to může přerušit funkce zabezpečení na úrovni platformy, které umožňují automaticky detekovat a využívat novější bezpečnější protokoly, jakmile budou k dispozici, například TLS 1,3. Doporučujeme provést důkladnou kontrolu kódu aplikace a zkontrolovat pevné kódování konkrétních verzí TLS/SSL.
 
-### <a name="platformlanguage-specific-guidance"></a>Doprovodné materiály pro konkrétní platformu nebo jazyk
+### <a name="platformlanguage-specific-guidance"></a>Pokyny specifické pro platformu/jazyk
 
-|Platformu nebo jazyk | Podpora | Další informace |
+|Platforma/jazyk | Podpora | Další informace |
 | --- | --- | --- |
-| Azure App Services  | Podporuje se může vyžadovat konfigurace. | Podpora byla oznámena v dubnu 2018. [Podrobnosti o konfiguraci](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)najdete v oznámení.  |
-| Aplikace Function Azure | Podporuje se může vyžadovat konfigurace. | Podpora byla oznámena v dubnu 2018. [Podrobnosti o konfiguraci](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)najdete v oznámení. |
-|.NET | Podporováno, konfigurace se liší podle verze. | Podrobné informace o konfiguraci pro .NET 4,7 a starší verze najdete v [těchto pokynech](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
-|Monitorování stavu | Podporováno, vyžaduje se konfigurace | Monitorování stavu spoléhá na [konfiguraci operačního systému](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [konfiguraci rozhraní .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) pro podporu TLS 1,2.
-|Node.js |  V 10.5.0 může být vyžadována konfigurace, která je podporována. | Pro jakoukoliv konfiguraci specifickou pro aplikaci použijte [oficiální dokumentaci k Node. js TLS/SSL](https://nodejs.org/api/tls.html) . |
-|Java | Podpora JDK pro TLS 1,2 byla přidána do [JDK 6 aktualizace 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) a [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 používá standardně [TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
-|Linux | Distribuce systému Linux se obvykle spoléhají na [OpenSSL](https://www.openssl.org) pro podporu TLS 1,2.  | Zkontrolujte [OpenSSL protokolu změn](https://www.openssl.org/news/changelog.html) a potvrďte, že je podporovaná vaše verze OpenSSL.|
-| Windows 8.0 10 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
-| Windows Server 2012 – 2016 | Podporované a ve výchozím nastavení povolená. | Potvrzení, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale není ve výchozím nastavení povolená. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) .  |
-| Windows Server 2008 SP2 | Podpora protokolu TLS 1.2 vyžaduje aktualizaci. | Pokud [chcete přidat podporu pro TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) ve Windows serveru 2008 SP2, viz aktualizace. |
-|Windows Vista | Nepodporuje se. | Není k dispozici
+| Azure App Services  | Podporováno, může být vyžadována konfigurace. | Podpora byla oznámena v dubnu 2018. Přečtěte si oznámení [o konfiguraci podrobnosti](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/).  |
+| Aplikace Azure Functions | Podporováno, může být vyžadována konfigurace. | Podpora byla oznámena v dubnu 2018. Přečtěte si oznámení [o konfiguraci podrobnosti](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
+|.NET | Podporováno, konfigurace se liší podle verze. | Podrobné informace o konfiguraci pro rozhraní .NET 4.7 a starší verze naleznete v [těchto pokynech](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
+|Monitorování stavu | Podporováno, je vyžadována konfigurace | Sledování stavu závisí na [konfiguraci operačního systému](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET konfigurace](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) pro podporu TLS 1.2.
+|Node.js |  Podporováno, ve v10.5.0 může být vyžadována konfigurace. | Pro libovolnou konfiguraci specifickou pro aplikaci použijte [oficiální dokumentaci Node.js TLS/SSL.](https://nodejs.org/api/tls.html) |
+|Java | Podporováno, podpora JDK pro TLS 1.2 byla přidána v [JDK 6 aktualizace 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) a [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 používá [TLS 1.2 ve výchozím nastavení](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
+|Linux | Linuxové distribuce mají tendenci spoléhat se na [OpenSSL](https://www.openssl.org) pro podporu TLS 1.2.  | Zkontrolujte [OpenSSL Changelog](https://www.openssl.org/news/changelog.html) a potvrďte, že je vaše verze OpenSSL podporována.|
+| Windows 8.0 - 10 | Podporováno a ve výchozím nastavení povoleno. | Chcete-li ověřit, zda stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
+| Windows Server 2012 – 2016 | Podporováno a ve výchozím nastavení povoleno. | Ověření, zda stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Aktualizace Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporováno, ale ve výchozím nastavení není povoleno. | Podrobnosti o povolení najdete na stránce [nastavení registru TLS (Transport Layer Security) (TLS).](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)  |
+| Windows Server 2008 SP2 | Podpora tls 1.2 vyžaduje aktualizaci. | Viz [Aktualizace, která má přidat podporu pro tls 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) v systému Windows Server 2008 SP2. |
+|Windows Vista | Nepodporuje se. | Není dostupné.
 
-### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Ověřte, jakou verzi OpenSSL je vaše distribuce systému Linux spuštěná.
+### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Zkontrolujte, jakou verzi OpenSSL vaše linuxová distribuce běží
 
-Pokud chcete zjistit, jakou verzi OpenSSL máte nainstalovanou, otevřete terminál a spusťte příkaz:
+Chcete-li zkontrolovat, jakou verzi openssl jste nainstalovali, otevřete terminál a spusťte:
 
 ```terminal
 openssl version -a
 ```
 
-### <a name="run-a-test-tls-12-transaction-on-linux"></a>Spuštění testovací transakce TLS 1,2 na Linux
+### <a name="run-a-test-tls-12-transaction-on-linux"></a>Spuštění testovací transakce TLS 1.2 na Linuxu
 
-Chcete-li spustit předběžný test, aby bylo možné zjistit, zda systém Linux může komunikovat přes TLS 1,2, otevřete terminál a spusťte příkaz:
+Chcete-li spustit předběžný test, abyste zjistili, zda váš systém Linux může komunikovat přes TLS 1.2., otevřete terminál a spusťte:
 
 ```terminal
 openssl s_client -connect bing.com:443 -tls1_2
@@ -233,63 +233,63 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Osobní údaje uložené v Application Insights
 
-Náš [článek Application Insights osobních údajů](../../azure-monitor/platform/personal-data-mgmt.md) popisuje tento problém podrobně.
+Náš [článek o osobních údajích Application Insights](../../azure-monitor/platform/personal-data-mgmt.md) podrobně popisuje tento problém.
 
-#### <a name="can-my-users-turn-off-application-insights"></a>Je možné, že se moji uživatelé vypnou Application Insights?
-Ne přímo. Neposkytujeme přepínač, který můžou uživatelé používat k vypnutí Application Insights.
+#### <a name="can-my-users-turn-off-application-insights"></a>Můžou moji uživatelé přehledy aplikací vypnout?
+Ne přímo. Neposkytujeme přepínač, který by vaši uživatelé mohli ovládat, aby vypnuli Application Insights.
 
-Tuto funkci však můžete v aplikaci implementovat. Všechny sady SDK obsahují nastavení rozhraní API, které vypne shromažďování telemetrie. 
+Tuto funkci však můžete implementovat ve vaší aplikaci. Všechny sady SDK obsahují nastavení rozhraní API, které vypne shromažďování telemetrií. 
 
-## <a name="data-sent-by-application-insights"></a>Data odesílaná Application Insights
-Sady SDK se mezi platformami liší a je možné nainstalovat několik součástí. (Podívejte se na [Application Insights – přehled][start].) Každá součást odesílá jiná data.
+## <a name="data-sent-by-application-insights"></a>Data odeslaná application insights
+Sady SDK se liší mezi platformami a existuje několik součástí, které můžete nainstalovat. (Viz [Application Insights - přehled][start].) Každá komponenta odesílá jiná data.
 
-#### <a name="classes-of-data-sent-in-different-scenarios"></a>Třídy dat odesílaných v různých scénářích
+#### <a name="classes-of-data-sent-in-different-scenarios"></a>Třídy dat odeslaných v různých scénářích
 
-| Vaše akce | Shromážděné datové třídy (viz další tabulka) |
+| Vaše akce | Shromažďované třídy dat (viz následující tabulka) |
 | --- | --- |
-| [Přidání sady SDK Application Insights do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Požadavky<br/>**Výjimky**<br/>Relace<br/>uživatelé |
-| [Instalace Monitorování stavu ve službě IIS][redfield] |Závislosti<br/>ServerContext<br/>Odvodit<br/>Čítače výkonu |
-| [Přidání sady SDK Application Insights do webové aplikace v jazyce Java][java] |ServerContext<br/>Odvodit<br/>Žádost<br/>Relace<br/>uživatelé |
-| [Přidat sadu JavaScript SDK na webovou stránku][client] |Instance třídy ClientContext <br/>Odvodit<br/>Stránka<br/>ClientPerf<br/>Jazyka |
-| [Definovat výchozí vlastnosti][apiproperties] |**Vlastnosti** všech standardních a vlastních událostí |
-| [TrackMetric volání][api] |Číselné hodnoty<br/>**Vlastnosti** |
-| [Hovorová stopa *][api] |Název události<br/>**Vlastnosti** |
-| [TrackException volání][api] |**Výjimky**<br/>Výpis zásobníku<br/>**Vlastnosti** |
-| Sada SDK nemůže shromažďovat data. Příklad: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
+| [Přidání sady Application Insights SDK do webového projektu .NET][greenbrown] |ServerKontext<br/>Odvodit<br/>Čítače výkonu<br/>Žádosti<br/>**Výjimky**<br/>Relace<br/>uživatelé |
+| [Instalace sledování stavu ve službě IIS][redfield] |Závislosti<br/>ServerKontext<br/>Odvodit<br/>Čítače výkonu |
+| [Přidání sady Application Insights SDK do webové aplikace Java][java] |ServerKontext<br/>Odvodit<br/>Žádost<br/>Relace<br/>uživatelé |
+| [Přidání sady JavaScript SDK na webovou stránku][client] |Kontext klienta <br/>Odvodit<br/>stránka<br/>KlientPerf<br/>Ajax |
+| [Definování výchozích vlastností][apiproperties] |**Vlastnosti** všech standardních a vlastních událostí |
+| [Volání TrackMetric][api] |Číselné hodnoty<br/>**Vlastnosti** |
+| [Stopa hovoru*][api] |Název události<br/>**Vlastnosti** |
+| [Volání trackexception][api] |**Výjimky**<br/>Výpis zásobníku<br/>**Vlastnosti** |
+| Sada SDK nemůže shromažďovat data. Například: <br/> - nemá přístup k perf čítačům<br/> - výjimka v telemetrickém inicializátoru |Diagnostika sady SDK |
 
-Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
+Sady [SDK pro jiné platformy][platforms]naleznete v jejich dokumentech.
 
-#### <a name="the-classes-of-collected-data"></a>Třídy shromážděných dat
+#### <a name="the-classes-of-collected-data"></a>Třídy shromážděných údajů
 
-| Shromážděná data – třída | Zahrnuje (není vyčerpávající seznam). |
+| Třída shromážděných dat | Zahrnuje (ne vyčerpávající seznam) |
 | --- | --- |
-| **Vlastnosti** |**Všechna data – určená vaším kódem** |
-| DeviceContext |`Id`, IP, národní prostředí, model zařízení, síť, typ sítě, název výrobce OEM, rozlišení obrazovky, instance role, název role, typ zařízení |
-| Instance třídy ClientContext |Rozlišení operačního systému, národního prostředí, jazyka, sítě a oken |
+| **Vlastnosti** |**Jakákoli data určená vaším kódem** |
+| DeviceContext |`Id`, IP, Národní prostředí, Model zařízení, síť, typ sítě, název OEM, rozlišení obrazovky, instance role, název role, typ zařízení |
+| Kontext klienta |Operační systém, národní prostředí, jazyk, síť, rozlišení oken |
 | Relace |`session id` |
-| ServerContext |Název počítače, národní prostředí, operační systém, zařízení, uživatelská relace, kontext uživatele, operace |
-| Odvodit |geografické umístění z IP adresy, časového razítka, operačního systému, prohlížeče |
+| ServerKontext |Název počítače, národní prostředí, operační systém, zařízení, uživatelská relace, uživatelský kontext, operace |
+| Odvodit |geografická poloha z IP adresy, časového razítka, Operačního systému, prohlížeče |
 | Metriky |Název a hodnota metriky |
 | Události |Název a hodnota události |
-| PageViews |Adresa URL a název stránky nebo název obrazovky |
-| Výkon klienta |Adresa URL/název stránky, čas načtení prohlížeče |
-| Jazyka |Volání HTTP z webové stránky na server |
-| Požadavky |Adresa URL, doba trvání, kód odpovědi |
-| Závislosti |Typ (SQL, HTTP,...), připojovací řetězec nebo identifikátor URI, Sync/Async, Duration, úspěch, příkaz SQL (s Monitorování stavu) |
-| **Výjimky** |Typ, **zpráva**, zásobníky volání, zdrojový soubor, číslo řádku, `thread id` |
-| Chybě |`Process id`, `parent process id``crash thread id`; Oprava aplikace, `id`, Build;  Typ výjimky, adresa, důvod; zakódováné symboly a registry, binární počáteční a koncové adresy, binární název a cesta, typ procesoru |
-| Trasování |Úroveň **zprávy** a závažnosti |
-| Čítače výkonu |Čas procesoru, dostupná paměť, frekvence požadavků, četnost výjimek, zpracování soukromých bajtů, frekvence v/v, doba trvání žádosti, délka fronty požadavků |
-| Dostupnost |Kód odpovědi webového testu, doba trvání každého testovacího kroku, název testu, časové razítko, úspěch, doba odezvy, umístění testu |
-| Diagnostika sady SDK |Trasovat zprávu nebo výjimku |
+| Zobrazení |Adresa URL a název stránky nebo název obrazovky |
+| Perf klienta |Název adresy URL/stránky, doba načítání prohlížeče |
+| Ajax |Volání HTTP z webové stránky na server |
+| Žádosti |ADRESA URL, doba trvání, kód odpovědi |
+| Závislosti |Type(SQL, HTTP, ...), připojovací řetězec nebo IDENTIFIKÁTOR URI, synchronizace/asynchronizace, doba trvání, úspěch, příkaz SQL (s monitorem stavu) |
+| **Výjimky** |Typ, **zpráva**, zásobníky volání, zdrojový soubor, číslo řádku,`thread id` |
+| Pády |`Process id`, `parent process id`, `crash thread id`; oprava aplikace, `id`, sestavení;  typ výjimky, adresa, důvod; obfuscated symboly a registry, binární počáteční a koncové adresy, binární název a cesta, typ cpu |
+| Trasování |**Úroveň zprávy** a závažnosti |
+| Čítače výkonu |Čas procesoru, dostupná paměť, rychlost požadavku, míra výjimek, míra soukromých bajtů procesu, rychlost vi, doba trvání požadavku, délka fronty požadavku |
+| Dostupnost |Kód odpovědi webového testu, doba trvání každého kroku testu, název testu, časové razítko, úspěch, doba odezvy, umístění testu |
+| Diagnostika sady SDK |Trasovací zpráva nebo výjimka |
 
-[Některá data můžete odpínat úpravou souboru ApplicationInsights. config.][config]
+Některá data můžete [vypnout úpravou souboru ApplicationInsights.config.][config]
 
 > [!NOTE]
-> IP adresa klienta se používá k odvodit zeměpisnou polohu, ale ve výchozím nastavení se data IP už neukládají a do přidruženého pole se zapisují všechny nuly. Chcete-li získat další informace o zpracování osobních údajů, doporučujeme tento [článek](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Pokud potřebujete ukládat údaje o IP adrese, Projděte si tyto možnosti podle [článku](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) .
+> Ip klienta se používá k odvodit geografické umístění, ale ve výchozím nastavení ip data již nejsou uložena a všechny nuly jsou zapsány do přidruženého pole. Chcete-li se lépe porozumět zpracování osobních údajů, doporučujeme tento [článek](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Pokud potřebujete uložit údaje o IP adrese, náš [článek o shromažďování IP adres](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) vás provede vašimi možnostmi.
 
-## <a name="credits"></a>Závěrečné titulky
-Tento produkt zahrnuje data GeoLite2 vytvořená v MaxMind, která jsou dostupná z [https://www.maxmind.com](https://www.maxmind.com).
+## <a name="credits"></a>Kredity
+Tento produkt obsahuje data GeoLite2 vytvořená [https://www.maxmind.com](https://www.maxmind.com)společností MaxMind, dostupná od společnosti .
 
 
 

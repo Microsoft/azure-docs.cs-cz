@@ -1,6 +1,6 @@
 ---
 title: Přesunutí dat ze serveru FTP pomocí Azure Data Factory
-description: Přečtěte si informace o tom, jak přesunout data ze serveru FTP pomocí Azure Data Factory.
+description: Přečtěte si, jak přesunout data ze serveru FTP pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,72 +13,72 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281402"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Přesunutí dat ze serveru FTP pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](data-factory-ftp-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-ftp.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [konektor FTP v v2](../connector-ftp.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si [téma FTP konektor ve verzi V2](../connector-ftp.md).
 
-Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory přesouvat data ze serveru FTP. Sestavuje se podle článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , který prezentuje obecný přehled přesunu dat s aktivitou kopírování.
+Tento článek vysvětluje, jak použít aktivitu kopírování v Azure Data Factory k přesunutí dat ze serveru FTP. Vychází z článku [Aktivity přesunu dat,](data-factory-data-movement-activities.md) který představuje obecný přehled pohybu dat s aktivitou kopírování.
 
-Data můžete kopírovat ze serveru FTP do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která aktivita kopírování podporuje jako jímky, najdete v tabulce [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Data Factory aktuálně podporuje pouze přesun dat ze serveru FTP do jiných úložišť dat, ale nepřesouvá data z jiných úložišť dat na server FTP. Podporuje místní i cloudové servery FTP.
+Data ze serveru FTP můžete zkopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako jímky naleznete v [tabulce podporovaných úložišť dat.](data-factory-data-movement-activities.md#supported-data-stores-and-formats) Data Factory v současné době podporuje pouze přesouvání dat ze serveru FTP do jiných úložišť dat, ale ne přesouvání dat z jiných úložišť dat na server FTP. Podporuje místní i cloudové servery FTP.
 
 > [!NOTE]
-> Aktivita kopírování neodstraní zdrojový soubor po úspěšném zkopírování do cíle. Pokud potřebujete zdrojový soubor po úspěšné kopii odstranit, vytvořte vlastní aktivitu k odstranění tohoto souboru a použijte aktivitu v kanálu.
+> Aktivita kopírování neodstraní zdrojový soubor po úspěšném zkopírování do cílového umístění. Pokud potřebujete po úspěšné kopii odstranit zdrojový soubor, vytvořte vlastní aktivitu k odstranění souboru a použijte aktivitu v kanálu.
 
-## <a name="enable-connectivity"></a>Povolit připojení
-Pokud přesouváte data z **místního** serveru FTP do cloudového úložiště dat (například do Azure Blob Storage), nainstalujte a použijte Správa dat bránu. Brána Správa dat je klientský Agent, který je nainstalovaný na vašem místním počítači a umožňuje cloudovým službám připojit se k místnímu prostředku. Podrobnosti najdete v tématu [Správa dat Gateway](data-factory-data-management-gateway.md). Podrobné pokyny k nastavení brány a jejím používání najdete v tématu [přesun dat mezi místními umístěními a cloudem](data-factory-move-data-between-onprem-and-cloud.md). Bránu použijete k připojení k serveru FTP, i když je server na virtuálním počítači infrastruktury Azure jako služba (IaaS).
+## <a name="enable-connectivity"></a>Povolení připojení
+Pokud přesouváte data z **místního** serveru FTP do cloudového úložiště dat (například do úložiště objektů Blob Azure), nainstalujte a použijte bránu pro správu dat. Brána pro správu dat je klientský agent, který je nainstalovaný ve vašem místním počítači a umožňuje cloudovým službám připojení k místnímu prostředku. Podrobnosti naleznete v [tématu Brána pro správu dat](data-factory-data-management-gateway.md). Podrobné pokyny k nastavení brány a její používání najdete v tématu [Přesouvání dat mezi místními umístěními a cloudem](data-factory-move-data-between-onprem-and-cloud.md). Bránu se používá k připojení k serveru FTP, i když je server na infrastruktuře Azure jako virtuální počítač (VM) služby (IaaS).
 
-Bránu je možné nainstalovat na stejný místní počítač nebo virtuální počítač IaaS jako server FTP. Doporučujeme ale nainstalovat bránu do samostatného počítače nebo virtuálního počítače s IaaS, abyste se vyhnuli kolize prostředků a zajistili lepší výkon. Když bránu nainstalujete do samostatného počítače, počítač by měl mít přístup k serveru FTP.
+Bránu je možné nainstalovat do stejného místního počítače nebo virtuálního počítače IaaS jako server FTP. Doporučujeme však nainstalovat bránu na samostatný počítač nebo virtuální počítač IaaS, abyste se vyhnuli konfliktům prostředků a pro lepší výkon. Při instalaci brány do samostatného počítače by měl mít počítač přístup k serveru FTP.
 
 ## <a name="get-started"></a>Začínáme
-Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data ze zdroje FTP pomocí různých nástrojů nebo rozhraní API.
+Můžete vytvořit kanál s aktivitou kopírování, která přesune data ze zdroje FTP pomocí různých nástrojů nebo api.
 
-Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním Data Factory**. Rychlý návod najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
+Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním do datové továrny**. Viz [kurz: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) pro rychlý návod.
 
-K vytvoření kanálu můžete použít taky následující nástroje: **Visual Studio**, **PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **PowerShell**, **Šablona Azure Resource Manager**, Rozhraní **.NET API**a ROZHRANÍ REST **API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [Kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) aktivity.
 
-Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, použijte následující postup k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
+Bez ohledu na to, zda používáte nástroje nebo api, proveďte následující kroky k vytvoření kanálu, který přesune data ze zdrojového úložiště dat do úložiště dat jímky:
 
-1. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou.
-2. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování.
-3. Vytvořte **kanál** s aktivitou kopírování, která převezme datovou sadu jako vstup a datovou sadu jako výstup.
+1. Vytvořte **propojené služby** pro propojení vstupních a výstupních úložišť dat s vaší továrně dat.
+2. Vytvořte **datové sady** představující vstupní a výstupní data pro operaci kopírování.
+3. Vytvořte **kanál** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup.
 
-Při použití Průvodce se automaticky vytvoří definice JSON pro tyto Entity Data Factory (propojené služby, datové sady a kanál). Pokud používáte nástroje nebo rozhraní API (s výjimkou rozhraní .NET API), definujete tyto Data Factory entit pomocí formátu JSON. Ukázku s definicemi JSON pro Data Factory entity, které se používají ke kopírování dat z úložiště dat FTP, najdete v části [příklad JSON: kopírování dat z FTP serveru do Azure Blob](#json-example-copy-data-from-ftp-server-to-azure-blob) tohoto článku.
+Při použití průvodce jsou automaticky vytvořeny definice JSON pro tyto entity Data Factory (propojené služby, datové sady a kanál). Při použití nástrojů nebo rozhraní API (s výjimkou rozhraní .NET API) definujete tyto entity Data Factory pomocí formátu JSON. Ukázka s definicemi JSON pro entity Data Factory, které se používají ke kopírování dat z úložiště dat FTP, najdete v [příkladu JSON: Kopírování dat ze serveru FTP do objektu blob Azure](#json-example-copy-data-from-ftp-server-to-azure-blob) v tomto článku.
 
 > [!NOTE]
-> Podrobnosti o podporovaných formátech souborů a kompresi pro použití naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md).
+> Podrobnosti o podporovaných formátech souborů a kompresních formátů, které chcete použít, najdete [v tématu Soubory a kompresní formáty v Azure Data Factory](data-factory-supported-file-and-compression-formats.md).
 
-Následující části obsahují podrobné informace o vlastnostech JSON, které slouží k definování Data Factorych entit specifických pro protokol FTP.
+V následujících částech jsou uvedeny podrobnosti o vlastnostech JSON, které se používají k definování entit Factory dat specifických pro FTP.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojené služby
-Následující tabulka popisuje elementy JSON specifické pro propojenou službu FTP.
+## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
+Následující tabulka popisuje prvky JSON specifické pro propojenou službu FTP.
 
-| Vlastnost | Popis | Požadováno | Výchozí |
+| Vlastnost | Popis | Požaduje se | Výchozí |
 | --- | --- | --- | --- |
-| typ |Nastavte tuto hodnotu na FtpServer. |Ano |&nbsp; |
-| host |Zadejte název nebo IP adresu serveru FTP. |Ano |&nbsp; |
-| authenticationType |Zadejte typ ověřování. |Ano |Základní, anonymní |
-| username jméno |Zadejte uživatele, který má přístup k serveru FTP. |Ne |&nbsp; |
+| type |Nastavte to na FtpServer. |Ano |&nbsp; |
+| host |Zadejte název nebo adresu IP serveru FTP. |Ano |&nbsp; |
+| authenticationType |Zadejte typ ověřování. |Ano |Základní, Anonymní |
+| uživatelské jméno |Zadejte uživatele, který má přístup k serveru FTP. |Ne |&nbsp; |
 | heslo |Zadejte heslo pro uživatele (uživatelské jméno). |Ne |&nbsp; |
-| encryptedCredential |Zadejte šifrované přihlašovací údaje pro přístup k serveru FTP. |Ne |&nbsp; |
-| gatewayName |Zadejte název brány v bráně Správa dat Gateway pro připojení k místnímu serveru FTP. |Ne |&nbsp; |
-| Port |Zadejte port, na kterém server FTP naslouchá. |Ne |21 |
-| enableSsl |Určete, jestli se má používat FTP přes kanál SSL/TLS. |Ne |true |
-| enableServerCertificateValidation |Určete, jestli se má povolit ověřování certifikátu SSL serveru při použití kanálu FTP přes SSL/TLS. |Ne |true |
+| šifrované pověření |Zadejte šifrovaná pověření pro přístup k serveru FTP. |Ne |&nbsp; |
+| název brány |Zadejte název brány v bráně pro správu dat pro připojení k místnímu serveru FTP. |Ne |&nbsp; |
+| port |Určete port, na kterém server FTP naslouchá. |Ne |21 |
+| enableSsl |Určete, zda se má použít FTP přes kanál SSL/TLS. |Ne |true |
+| enableServerCertificateValidation |Určete, zda chcete povolit ověření certifikátu SSL serveru, pokud používáte FTP přes kanál SSL/TLS. |Ne |true |
 
 >[!NOTE]
->Konektor FTP podporuje přístup k serveru FTP bez šifrování nebo explicitního šifrování pomocí protokolu SSL/TLS; nepodporuje implicitní šifrování SSL/TLS.
+>Konektor FTP podporuje přístup k serveru FTP bez šifrování nebo explicitního šifrování SSL/TLS. nepodporuje implicitní šifrování SSL/TLS.
 
-### <a name="use-anonymous-authentication"></a>Použít anonymní ověřování
+### <a name="use-anonymous-authentication"></a>Použití anonymního ověřování
 
 ```JSON
 {
@@ -93,7 +93,7 @@ Následující tabulka popisuje elementy JSON specifické pro propojenou službu
 }
 ```
 
-### <a name="use-username-and-password-in-plain-text-for-basic-authentication"></a>Pro základní ověřování použít uživatelské jméno a heslo v prostém textu
+### <a name="use-username-and-password-in-plain-text-for-basic-authentication"></a>Použití uživatelského jména a hesla ve formátu prostého textu pro základní ověřování
 
 ```JSON
 {
@@ -110,7 +110,7 @@ Následující tabulka popisuje elementy JSON specifické pro propojenou službu
 }
 ```
 
-### <a name="use-port-enablessl-enableservercertificatevalidation"></a>Použijte port, enableSsl, enableServerCertificateValidation
+### <a name="use-port-enablessl-enableservercertificatevalidation"></a>Použít port, enableSsl, enableServerCertificateValidation
 
 ```JSON
 {
@@ -130,7 +130,7 @@ Následující tabulka popisuje elementy JSON specifické pro propojenou službu
 }
 ```
 
-### <a name="use-encryptedcredential-for-authentication-and-gateway"></a>Použití encryptedCredential pro ověřování a bránu
+### <a name="use-encryptedcredential-for-authentication-and-gateway"></a>Použití šifrovaných přihlašovacích údajů pro ověřování a bránu
 
 ```JSON
 {
@@ -148,27 +148,27 @@ Následující tabulka popisuje elementy JSON specifické pro propojenou službu
 ```
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, najdete v tématu [vytváření datových sad](data-factory-create-datasets.md). Oddíly, jako jsou struktura, dostupnost a zásady pro datovou sadu JSON, jsou podobné pro všechny typy datových sad.
+Úplný seznam oddílů a vlastností dostupných pro definování datových sad naleznete v [tématu Vytváření datových sad](data-factory-create-datasets.md). Oddíly, jako je struktura, dostupnost a zásady datové sady JSON jsou podobné pro všechny typy datových sad.
 
-Oddíl **typeProperties** se liší pro každý typ datové sady. Poskytuje informace, které jsou specifické pro typ datové sady. Oddíl **typeProperties** pro datovou sadu typu **Shared** má následující vlastnosti:
+Oddíl **typeProperties** se liší pro každý typ datové sady. Poskytuje informace, které jsou specifické pro typ datové sady. Oddíl **typeProperties** pro datovou sadu typu **FileShare** má následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| folderPath |Dílčí cesta ke složce Pro speciální znaky v řetězci použijte řídicí znak ' \ '. Příklady najdete v tématu Ukázka propojené služby a definice datových sad.<br/><br/>Tuto vlastnost můžete kombinovat s **partitionBy** a mít tak cesty ke složkám na základě počátečního a koncového data v řezu. |Ano |
-| fileName |Pokud chcete, aby tabulka odkazovala na konkrétní soubor ve složce, zadejte název souboru do **FolderPath** . Pokud pro tuto vlastnost nezadáte žádnou hodnotu, odkazuje tabulka na všechny soubory ve složce.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu, je název vygenerovaného souboru v následujícím formátu: <br/><br/>`Data.<Guid>.txt` (příklad: data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt) |Ne |
-| fileFilter |Určete filtr, který se použije k výběru podmnožiny souborů v **FolderPath**, nikoli všech souborů.<br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklad 1: `"fileFilter": "*.log"`<br/>Příklad 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> pro sadu vstupních dat Shared je použitelný **Filtr** . Tato vlastnost není podporována se systémem Hadoop systém souborů DFS (Distributed File System) (HDFS). |Ne |
-| partitionedBy |Slouží k zadání dynamického **FolderPath** a **názvu souboru** pro data časové řady. Můžete například zadat **FolderPath** , který je parametrizovaný za každou hodinu dat. |Ne |
-| format | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v oddílech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), formát [ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formát [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete kopírovat soubory, protože jsou mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |Ne |
-| komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou **gzip**, **Deflate**, **bzip2**a **ZipDeflate**a podporované úrovně jsou **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
-| useBinaryTransfer |Určete, zda se má použít režim binárního přenosu. Hodnoty jsou pravdivé pro binární režim (Jedná se o výchozí hodnotu) a false pro ASCII. Tato vlastnost se dá použít, jenom když je přidružený typ propojené služby typ: FtpServer. |Ne |
+| folderPath |Podcesta ke složce. Pro speciální znaky v řetězci použijte řídicí znak \ ' . Viz Ukázka propojené služby a definice datových sad pro příklady.<br/><br/>Tuto vlastnost můžete kombinovat s **partitionBy** mít cesty ke složkám na základě počátečnía koncové datum řezu. |Ano |
+| fileName |Zadejte název souboru ve **složceCesta,** pokud chcete, aby tabulka odkazovala na určitý soubor ve složce. Pokud pro tuto vlastnost nezadáte žádnou hodnotu, tabulka odkazuje na všechny soubory ve složce.<br/><br/>Pokud není pro výstupní datovou sadu zadán název **souboru file,** je název generovaného souboru v následujícím formátu: <br/><br/>`Data.<Guid>.txt`(Příklad: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Ne |
+| filtr souboru |Určete filtr, který se použije k výběru podmnožiny souborů ve **složcePath**, nikoli všechny soubory.<br/><br/>Povolené hodnoty `*` jsou: (více `?` znaků) a (jeden znak).<br/><br/>Příklad 1:`"fileFilter": "*.log"`<br/>Příklad 2:`"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** je použitelný pro vstupní datovou sadu FileShare. Tato vlastnost není podporována hadoopovým distribuovaným systémem souborů (HDFS). |Ne |
+| partitionedBy |Slouží k určení dynamické **složkyCesta** a **název souboru** pro data časových řad. Můžete například zadat **složkuPath,** která je parametrizována pro každou hodinu dat. |Ne |
+| formát | Podporovány jsou následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte vlastnost **type** ve formátu na jednu z těchto hodnot. Další informace naleznete v části [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [Formát Json](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formát orků](data-factory-supported-file-and-compression-formats.md#orc-format)a [Formát parket.](data-factory-supported-file-and-compression-formats.md#parquet-format) <br><br> Pokud chcete kopírovat soubory tak, jak jsou mezi obchody založenými na souborech (binární kopie), přeskočte oddíl formátu v definicích vstupníi i výstupní datové sady. |Ne |
+| komprese | Určete typ a úroveň komprese dat. Podporované typy jsou **GZip**, **Deflate**, **BZip2**a **ZipDeflate**a podporované úrovně jsou **optimální** a **nejrychlejší**. Další informace najdete [v tématu Soubory a kompresní formáty v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| useBinaryTransfer |Určete, zda se má použít binární režim přenosu. Hodnoty platí pro binární režim (toto je výchozí hodnota) a false pro ASCII. Tuto vlastnost lze použít pouze v případě, že přidružený typ propojené služby je typu: FtpServer. |Ne |
 
 > [!NOTE]
-> **filename** a **FileFilter** nelze použít současně.
+> **fileName** a **fileFilter** nelze použít současně.
 
-### <a name="use-the-partionedby-property"></a>Použití vlastnosti partionedBy
-Jak je uvedeno v předchozí části, můžete zadat dynamický **FolderPath** a **filename** pro data časové řady s vlastností **partitionedBy** .
+### <a name="use-the-partionedby-property"></a>Použít vlastnost partionedBy
+Jak je uvedeno v předchozí části, můžete zadat dynamickou **složkuPath** a **fileName** pro data časových řad s **vlastností partitionedBy.**
 
-Další informace o datových sadách časových řad, plánování a řezech najdete v tématu [vytváření datových sad](data-factory-create-datasets.md), [plánování a spouštění](data-factory-scheduling-and-execution.md)a [vytváření kanálů](data-factory-create-pipelines.md).
+Informace o datových sadách časových řad, plánování a řezech naleznete v [tématech Vytváření datových sad](data-factory-create-datasets.md), [Plánování a spuštění](data-factory-scheduling-and-execution.md)a Vytváření [kanálů](data-factory-create-pipelines.md).
 
 #### <a name="sample-1"></a>Ukázka 1
 
@@ -179,7 +179,7 @@ Další informace o datových sadách časových řad, plánování a řezech na
     { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
 ],
 ```
-V tomto příkladu je {Slice} nahrazen hodnotou Data Factory systémové proměnné vlastnosti slicestart v zadaném formátu (YYYYMMDDHH). Vlastnosti slicestart odkazuje na počáteční čas řezu. Cesta ke složce je pro každý řez odlišná. (Například wikidatagateway/wikisampledataout/2014100103 nebo wikidatagateway/wikisampledataout/2014100104.)
+V tomto příkladu je {Slice} nahrazen hodnotou systémové proměnné Factory SliceStart v určeném formátu (YYYYMMDDHH). ŘezStart odkazuje na čas zahájení řezu. Cesta ke složce se pro každý řez liší. (Například wikidatagateway/wikisampledataout/2014100103 nebo wikidatagateway/wikisampledataout/2014100104.)
 
 #### <a name="sample-2"></a>Ukázka 2
 
@@ -194,41 +194,41 @@ V tomto příkladu je {Slice} nahrazen hodnotou Data Factory systémové proměn
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-V tomto příkladu je rok, měsíc, den a čas vlastnosti slicestart extrahován do samostatných proměnných, které jsou používány vlastnostmi **FolderPath** a **filename** .
+V tomto příkladu jsou rok, měsíc, den a čas SliceStart extrahovány do samostatných proměnných, které jsou používány vlastnostmi **folderPath** a **fileName.**
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
-Úplný seznam oddílů a vlastností dostupných pro definování aktivit najdete v tématu [vytváření kanálů](data-factory-create-pipelines.md). Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásady.
+Úplný seznam oddílů a vlastností dostupných pro definování aktivit naleznete v [tématu Vytváření kanálů](data-factory-create-pipelines.md). Vlastnosti, jako je název, popis, vstupní a výstupní tabulky a zásady jsou k dispozici pro všechny typy aktivit.
 
-Vlastnosti, které jsou k dispozici v části **typeProperties** aktivity, se liší podle typu jednotlivých aktivit. Pro aktivitu kopírování se vlastnosti typu liší v závislosti na typech zdrojů a jímky.
+Vlastnosti, které jsou k dispozici v části **typeProperties** aktivity, se naopak liší podle jednotlivých typů aktivit. Pro aktivitu kopírování se vlastnosti typu liší v závislosti na typech zdrojů a jímek.
 
-Pokud je zdroj v aktivitě kopírování typu **FileSystemSource**, je v části **typeProperties** k dispozici následující vlastnost:
+V aktivitě kopírování, pokud je zdroj typu **FileSystemSource**, je v části **typeProperties** k dispozici následující vlastnost:
 
-| Vlastnost | Popis | Povolené hodnoty | Požadováno |
+| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| rekurzivní |Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. |True, false (výchozí) |Ne |
+| Rekurzivní |Označuje, zda jsou data čtena rekurzivně z podsložek nebo pouze ze zadané složky. |Pravda, Nepravda (výchozí) |Ne |
 
-## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>Příklad JSON: kopírování dat ze serveru FTP do Azure Blob
-V této ukázce se dozvíte, jak kopírovat data ze serveru FTP do úložiště objektů BLOB v Azure. Data je ale možné zkopírovat přímo do kterékoli z jímky uvedených v [podporovaných úložištích a formátech dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats)pomocí aktivity kopírování v Data Factory.
+## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>Příklad JSON: Kopírování dat ze serveru FTP do objektu Blob Azure
+Tato ukázka ukazuje, jak zkopírovat data ze serveru FTP do úložiště objektů blob Azure. Data však lze zkopírovat přímo do libovolného z jímky uvedené v [podporovaných úložišť dat a formátech](data-factory-data-movement-activities.md#supported-data-stores-and-formats), pomocí aktivity kopírování v datové továrně.
 
-V následujících příkladech jsou uvedeny ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)nebo [PowerShellu](data-factory-copy-activity-tutorial-using-powershell.md):
+Následující příklady poskytují ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)nebo prostředí [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md):
 
-* Propojená služba typu [FTPserver](#linked-service-properties)
+* Propojená služba typu [FtpServer](#linked-service-properties)
 * Propojená služba typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
-* Vstupní [datová sada](data-factory-create-datasets.md) typu [sdílení](#dataset-properties) souborů
-* Výstupní [datová sada](data-factory-create-datasets.md) typu [azureblobu](data-factory-azure-blob-connector.md#dataset-properties)
+* Vstupní [datová sada](data-factory-create-datasets.md) typu [FileShare](#dataset-properties)
+* Výstupní [datová sada](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
 * [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [FileSystemSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)
 
-Ukázka kopíruje data ze serveru FTP do objektu blob Azure každou hodinu. Vlastnosti JSON použité v těchto ukázkách jsou popsány v oddílech následujících po ukázkách.
+Ukázka zkopíruje data ze serveru FTP do objektu blob Azure každou hodinu. Vlastnosti JSON použité v těchto vzorcích jsou popsány v následujících částech.
 
 ### <a name="ftp-linked-service"></a>Propojená služba FTP
 
-V tomto příkladu se používá základní ověřování s uživatelským jménem a heslem v prostém textu. Můžete také použít některý z následujících způsobů:
+Tento příklad používá základní ověřování s uživatelským jménem a heslem ve formátu prostého textu. Můžete také použít jeden z následujících způsobů:
 
-* Anonymní ověřování
-* Základní ověřování pomocí šifrovaných přihlašovacích údajů
+* Anonymní ověření
+* Základní ověřování se šifrovanými přihlašovacími údaji
 * FTP přes SSL/TLS (FTPS)
 
-Různé typy ověřování, které můžete použít, najdete v části [propojená služba FTP](#linked-service-properties) .
+Různé typy ověřování, které můžete použít, naleznete v části [propojené služby FTP.](#linked-service-properties)
 
 ```JSON
 {
@@ -259,9 +259,9 @@ Různé typy ověřování, které můžete použít, najdete v části [propoje
 ```
 ### <a name="ftp-input-dataset"></a>Vstupní datová sada FTP
 
-Tato datová sada odkazuje na složku FTP `mysharedfolder` a soubor `test.csv`. Kanál zkopíruje soubor do cílového umístění.
+Tato datová sada odkazuje na `mysharedfolder` složku `test.csv`a soubor FTP . Kanál zkopíruje soubor do cíle.
 
-Když se nastaví **vlastnost** **External** na true, informuje Data Factory službu o tom, že datová sada je externí pro objekt pro vytváření dat, a není vytvořená aktivitou v datové továrně.
+Nastavení **externí** **na hodnotu true** informuje službu Data Factory, že datová sada je externí pro datovou továrnu a není vytvářena aktivitou v datové továrně.
 
 ```JSON
 {
@@ -285,7 +285,7 @@ Když se nastaví **vlastnost** **External** na true, informuje Data Factory slu
 
 ### <a name="azure-blob-output-dataset"></a>Výstupní datová sada Azure Blob
 
-Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce pro objekt BLOB je dynamicky vyhodnocena na základě počátečního času zpracovávaného řezu. Cesta ke složce používá část roku, měsíce, dne a hodiny počátečního času.
+Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce pro objekt blob je dynamicky vyhodnocována na základě počátečního času zpracovávaného řezu. Cesta ke složce používá části počátečního času rok, měsíc, den a hodiny.
 
 ```JSON
 {
@@ -344,9 +344,9 @@ Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, int
 ```
 
 
-### <a name="a-copy-activity-in-a-pipeline-with-file-system-source-and-blob-sink"></a>Aktivita kopírování v kanálu se zdrojem systému souborů a jímkou objektů BLOB
+### <a name="a-copy-activity-in-a-pipeline-with-file-system-source-and-blob-sink"></a>Aktivita kopírování v kanálu se zdrojem systému souborů a jímkou objektů blob
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady, a je naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **FileSystemSource**a typ **jímky** je nastavený na **BlobSink**.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro použití vstupních a výstupních datových sad a je naplánována na každou hodinu. V definici Kanálu JSON je **typ zdroje** nastaven na **FileSystemSource**a typ **jímky** je nastaven na **objekt BlobSink**.
 
 ```JSON
 {
@@ -386,11 +386,11 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 }
 ```
 > [!NOTE]
-> Chcete-li mapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky, přečtěte si téma [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
+> Pokud chcete mapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky, přečtěte si témat [mapování sloupců datových sad v Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-* Další informace o klíčových faktorech, které mají vliv na výkon pohybu dat (aktivita kopírování) v Data Factory a různé způsoby jejich optimalizace, najdete v [Průvodci výkonem a laděním aktivity kopírování](data-factory-copy-activity-performance.md).
+* Informace o klíčových faktorech, které ovlivňují výkon přesunu dat (aktivity kopírování) v datové továrně, a o různých způsobech jeho optimalizace najdete v [tématu Průvodce sledováním aktivity kopírování a laděním](data-factory-copy-activity-performance.md).
 
-* Podrobné pokyny pro vytvoření kanálu s aktivitou kopírování najdete v [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+* Podrobné pokyny k vytvoření kanálu s aktivitou kopírování naleznete v [tématu Kopírování aktivity kurzu](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

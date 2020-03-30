@@ -1,33 +1,33 @@
 ---
-title: Azure Cosmos DB výstupní vazba pro Functions 2. x
-description: Naučte se používat výstupní vazbu Azure Cosmos DB v Azure Functions.
+title: Výstupní vazba Azure Cosmos DB pro funkce 2.x
+description: Naučte se používat výstupní vazbu Azure Cosmos DB ve funkcích Azure.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: 636903c20e07f11a2fd919654cfaa62037171f20
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277762"
 ---
-# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Cosmos DB výstupní vazba pro Azure Functions 2. x
+# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Výstupní vazba Azure Cosmos DB pro Funkce Azure 2.x
 
-Azure Cosmos DB výstupní vazbu umožňuje zapsat nový dokument k databázi Azure Cosmos DB pomocí rozhraní SQL API.
+Výstupní vazba Azure Cosmos DB umožňuje zapsat nový dokument do databáze Azure Cosmos DB pomocí rozhraní SQL API.
 
-Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](./functions-bindings-cosmosdb-v2.md).
+Informace o nastavení a konfiguraci naleznete v [přehledu](./functions-bindings-cosmosdb-v2.md).
 
 <a id="example" name="example"></a>
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 Tato část obsahuje následující příklady:
 
 * [Aktivační událost fronty, zápis jednoho dokumentu](#queue-trigger-write-one-doc-c)
-* [Aktivační událost fronty, zápis dokumentů pomocí IAsyncCollector](#queue-trigger-write-docs-using-iasynccollector-c)
+* [Aktivační událost fronty, zápis dokumentů pomocí nástroje IAsyncCollector](#queue-trigger-write-docs-using-iasynccollector-c)
 
-Příklady odkazují na jednoduchý `ToDoItem` typ:
+Příklady odkazují na `ToDoItem` jednoduchý typ:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -42,9 +42,9 @@ namespace CosmosDBSamplesV2
 
 <a id="queue-trigger-write-one-doc-c"></a>
 
-### <a name="queue-trigger-write-one-doc"></a>Aktivační událost fronty, jeden zápis dokumentu
+### <a name="queue-trigger-write-one-doc"></a>Aktivační událost fronty, zápis jednoho dokumentu
 
-Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která přidá dokument do databáze pomocí dat poskytovaných ve zprávě z úložiště Queue.
+Následující příklad ukazuje [c# funkce,](functions-dotnet-class-library.md) která přidá dokument do databáze, pomocí dat poskytnutých ve zprávě z úložiště fronty.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -76,9 +76,9 @@ namespace CosmosDBSamplesV2
 
 <a id="queue-trigger-write-docs-using-iasynccollector-c"></a>
 
-### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Aktivační událost fronty, zápis dokumentace pomocí IAsyncCollector
+### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Aktivační událost fronty, zápis dokumentů pomocí nástroje IAsyncCollector
 
-Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která do databáze přidává kolekci dokumentů pomocí dat zadaných ve formátu JSON zprávy fronty.
+Následující příklad ukazuje [c# funkce,](functions-dotnet-class-library.md) která přidá kolekci dokumentů do databáze, pomocí dat uvedených ve zprávě fronty JSON.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -112,19 +112,19 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
 Tato část obsahuje následující příklady:
 
 * [Aktivační událost fronty, zápis jednoho dokumentu](#queue-trigger-write-one-doc-c-script)
-* [Aktivační událost fronty, zápis dokumentů pomocí IAsyncCollector](#queue-trigger-write-docs-using-iasynccollector-c-script)
+* [Aktivační událost fronty, zápis dokumentů pomocí nástroje IAsyncCollector](#queue-trigger-write-docs-using-iasynccollector-c-script)
 
 
 <a id="queue-trigger-write-one-doc-c-script"></a>
 
-### <a name="queue-trigger-write-one-doc"></a>Aktivační událost fronty, jeden zápis dokumentu
+### <a name="queue-trigger-write-one-doc"></a>Aktivační událost fronty, zápis jednoho dokumentu
 
-Následující příklad ukazuje výstupní vazbu Azure Cosmos DB v souboru *Function. JSON* a [ C# funkci skriptu](functions-reference-csharp.md) , která používá vazbu. Funkce používá fronty vstupní vazby pro fronty, která přijímá JSON v následujícím formátu:
+Následující příklad ukazuje výstupní vazbu Azure Cosmos DB v souboru *function.json* a [funkci skriptu Jazyka C#,](functions-reference-csharp.md) která používá vazbu. Funkce používá vstupní vazbu fronty pro frontu, která přijímá JSON v následujícím formátu:
 
 ```json
 {
@@ -145,7 +145,7 @@ Funkce vytvoří dokumenty Azure Cosmos DB v následujícím formátu pro každ�
 }
 ```
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Zde jsou data vazby v souboru *function.json:*
 
 ```json
 {
@@ -159,9 +159,9 @@ Tady jsou data vazby v souboru *Function. JSON* :
 }
 ```
 
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
+[Konfigurační](#configuration) část vysvětluje tyto vlastnosti.
 
-Tady je kód skriptu jazyka C#:
+Zde je kód skriptu C#:
 
 ```cs
     #r "Newtonsoft.Json"
@@ -187,11 +187,11 @@ Tady je kód skriptu jazyka C#:
 
 <a id="queue-trigger-write-docs-using-iasynccollector-c-script"></a>
 
-### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Aktivační událost fronty, zápis dokumentace pomocí IAsyncCollector
+### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Aktivační událost fronty, zápis dokumentů pomocí nástroje IAsyncCollector
 
-Chcete-li vytvořit více dokumentů, můžete vytvořit vazby na `ICollector<T>` nebo `IAsyncCollector<T>`, kde `T` je jeden z podporovaných typů.
+Chcete-li vytvořit více dokumentů, `IAsyncCollector<T>` `T` můžete vytvořit vazbu na `ICollector<T>` nebo kde je jeden z podporovaných typů.
 
-Tento příklad odkazuje na jednoduchý typ `ToDoItem`:
+Tento příklad odkazuje na `ToDoItem` jednoduchý typ:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -204,7 +204,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-Tady je soubor function.json:
+Zde je soubor function.json:
 
 ```json
 {
@@ -229,7 +229,7 @@ Tady je soubor function.json:
 }
 ```
 
-Tady je kód skriptu jazyka C#:
+Zde je kód skriptu C#:
 
 ```cs
 using System;
@@ -247,9 +247,9 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Následující příklad ukazuje výstupní vazbu Azure Cosmos DB v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce používá fronty vstupní vazby pro fronty, která přijímá JSON v následujícím formátu:
+Následující příklad ukazuje výstupní vazbu Azure Cosmos DB v souboru *function.json* a [funkci JavaScriptu,](functions-reference-node.md) která používá vazbu. Funkce používá vstupní vazbu fronty pro frontu, která přijímá JSON v následujícím formátu:
 
 ```json
 {
@@ -270,7 +270,7 @@ Funkce vytvoří dokumenty Azure Cosmos DB v následujícím formátu pro každ�
 }
 ```
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Zde jsou data vazby v souboru *function.json:*
 
 ```json
 {
@@ -284,9 +284,9 @@ Tady jsou data vazby v souboru *Function. JSON* :
 }
 ```
 
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
+[Konfigurační](#configuration) část vysvětluje tyto vlastnosti.
 
-Tady je kód jazyka JavaScript:
+Zde je kód JavaScript:
 
 ```javascript
     module.exports = function (context) {
@@ -306,7 +306,7 @@ Tady je kód jazyka JavaScript:
 
 Následující příklad ukazuje, jak zapsat dokument do databáze Azure CosmosDB jako výstup funkce.
 
-Definice vazby je definována v *Function. JSON* , kde *typ* je nastaven na `cosmosDB`.
+Definice vazby je definována v *souboru function.json,* kde je *typ* nastaven na `cosmosDB`.
 
 ```json
 {
@@ -356,17 +356,17 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-* [Aktivační událost fronty, uložení zprávy do databáze prostřednictvím návratové hodnoty](#queue-trigger-save-message-to-database-via-return-value-java)
-* [Aktivační událost HTTP – uložte jeden dokument do databáze prostřednictvím návratové hodnoty.](#http-trigger-save-one-document-to-database-via-return-value-java)
-* [Aktivační procedura HTTP – uložení jednoho dokumentu do databáze prostřednictvím OutputBinding](#http-trigger-save-one-document-to-database-via-outputbinding-java)
-* [Aktivační událost HTTP, uložení více dokumentů do databáze prostřednictvím OutputBinding](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
+* [Aktivační událost fronty, uložení zprávy do databáze pomocí vrácené hodnoty](#queue-trigger-save-message-to-database-via-return-value-java)
+* [Aktivační událost HTTP, uložení jednoho dokumentu do databáze pomocí vrácené hodnoty](#http-trigger-save-one-document-to-database-via-return-value-java)
+* [Aktivační událost HTTP, uložení jednoho dokumentu do databáze pomocí funkce OutputBinding](#http-trigger-save-one-document-to-database-via-outputbinding-java)
+* [Aktivační událost HTTP, uložení více dokumentů do databáze pomocí outputbinding](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
 
 
 <a id="queue-trigger-save-message-to-database-via-return-value-java"></a>
 
-### <a name="queue-trigger-save-message-to-database-via-return-value"></a>Aktivační událost fronty, uložení zprávy do databáze prostřednictvím návratové hodnoty
+### <a name="queue-trigger-save-message-to-database-via-return-value"></a>Aktivační událost fronty, uložení zprávy do databáze pomocí vrácené hodnoty
 
-Následující příklad ukazuje funkci jazyka Java, která přidá dokument do databáze s daty z zprávy ve front-Queue Storage.
+Následující příklad ukazuje funkci Java, která přidá dokument do databáze s daty ze zprávy v úložišti fronty.
 
 ```java
 @FunctionName("getItem")
@@ -385,9 +385,9 @@ public String cosmosDbQueryById(
 ```
 <a id="http-trigger-save-one-document-to-database-via-return-value-java"></a>
 
-#### <a name="http-trigger-save-one-document-to-database-via-return-value"></a>Aktivační událost HTTP – uložte jeden dokument do databáze prostřednictvím návratové hodnoty.
+#### <a name="http-trigger-save-one-document-to-database-via-return-value"></a>Aktivační událost HTTP, uložení jednoho dokumentu do databáze pomocí vrácené hodnoty
 
-Následující příklad ukazuje funkci jazyka Java, jejíž signatura je opatřena poznámkou ```@CosmosDBOutput``` a má návratovou hodnotu typu ```String```. Dokument JSON vrácený funkcí se automaticky zapíše do odpovídající kolekce CosmosDB.
+Následující příklad ukazuje funkci Java, jejíž podpis ```@CosmosDBOutput``` je anotován a má vrácenou hodnotu typu ```String```. Dokument JSON vrácený funkcí bude automaticky zapsán do odpovídající kolekce CosmosDB.
 
 ```java
     @FunctionName("WriteOneDoc")
@@ -424,9 +424,9 @@ Následující příklad ukazuje funkci jazyka Java, jejíž signatura je opatř
 
 <a id="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>
 
-### <a name="http-trigger-save-one-document-to-database-via-outputbinding"></a>Aktivační procedura HTTP – uložení jednoho dokumentu do databáze prostřednictvím OutputBinding
+### <a name="http-trigger-save-one-document-to-database-via-outputbinding"></a>Aktivační událost HTTP, uložení jednoho dokumentu do databáze pomocí funkce OutputBinding
 
-Následující příklad ukazuje funkci jazyka Java, která zapisuje dokument do CosmosDB prostřednictvím výstupní parametr ```OutputBinding<T>```. V tomto příkladu musí být parametr ```outputItem``` poznámkou s ```@CosmosDBOutput```, nikoli signaturou funkce. Použití ```OutputBinding<T>``` umožňuje funkci využít vazby k zápisu dokumentu do CosmosDB a současně umožňuje vracet jinou hodnotu volajícímu funkci, jako je JSON nebo dokument XML.
+Následující příklad ukazuje funkci Java, která zapisuje dokument do CosmosDB prostřednictvím výstupního parametru. ```OutputBinding<T>``` V tomto příkladu ```outputItem``` musí být parametr anotován s ```@CosmosDBOutput```, nikoli podpisem funkce. Použití ```OutputBinding<T>``` umožňuje vaše funkce využít vazby k zápisu dokumentu cosmosdb a zároveň umožňuje vrácení jinou hodnotu volajícího funkce, jako je například Dokument JSON nebo XML.
 
 ```java
     @FunctionName("WriteOneDocOutputBinding")
@@ -470,9 +470,9 @@ Následující příklad ukazuje funkci jazyka Java, která zapisuje dokument do
 
 <a id="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>
 
-### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding"></a>Aktivační událost HTTP, uložení více dokumentů do databáze prostřednictvím OutputBinding
+### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding"></a>Aktivační událost HTTP, uložení více dokumentů do databáze pomocí outputbinding
 
-Následující příklad ukazuje funkci jazyka Java, která zapisuje více dokumentů do CosmosDB prostřednictvím výstupní parametr ```OutputBinding<T>```. V tomto příkladu je parametr ```outputItem``` označen ```@CosmosDBOutput```, nikoli signaturou funkce. Výstupní parametr ```outputItem``` obsahuje seznam ```ToDoItem``` objektů jako typ parametru šablony. Použití ```OutputBinding<T>``` umožňuje funkci využít vazby k zápisu dokumentů do CosmosDB a zároveň umožňuje vracet jiné hodnoty volajícímu funkci, jako je JSON nebo dokument XML.
+Následující příklad ukazuje funkci Java, která zapisuje více dokumentů do CosmosDB prostřednictvím výstupního parametru. ```OutputBinding<T>``` V tomto příkladu ```outputItem``` je parametr anotován s ```@CosmosDBOutput```, nikoli podpisem funkce. Výstupní parametr ```outputItem``` má jako ```ToDoItem``` typ parametru šablony seznam objektů. Použití ```OutputBinding<T>``` umožňuje vaše funkce využít vazby k zápisu dokumentů do CosmosDB a zároveň umožňuje vrácení jinou hodnotu volajícího funkce, jako je například Dokument JSON nebo XML.
 
 ```java
     @FunctionName("WriteMultipleDocsOutputBinding")
@@ -519,17 +519,17 @@ Následující příklad ukazuje funkci jazyka Java, která zapisuje více dokum
     }
 ```
 
-V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@CosmosDBOutput` anotaci u parametrů, které budou zapsány do Cosmos DB.  Typ parametru anotace by měl být ```OutputBinding<T>```, kde T je buď nativní typ Java, nebo POJO.
+V [knihovně runtime funkcí Javy](/java/api/overview/azure/functions/runtime)použijte poznámku `@CosmosDBOutput` o parametrech, které budou zapsány do Cosmos DB.  Typ parametru poznámky ```OutputBinding<T>```by měl být , kde T je buď nativní typ Java nebo POJO.
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte atribut [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) .
+V [knihovnách tříd Jazyka C#](functions-dotnet-class-library.md)použijte atribut [CosmosDB.](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs)
 
-Konstruktor atributu má název databáze a název kolekce. Informace o těchto nastaveních a dalších vlastnostech, které lze konfigurovat, naleznete v tématu [Output-Configuration](#configuration). Tady je příklad atributu `CosmosDB` v signatuře metody:
+Konstruktor atributu přebírá název databáze a název kolekce. Informace o těchto nastaveních a dalších vlastnostech, které můžete konfigurovat, naleznete v [tématu Output - configuration](#configuration). Zde je `CosmosDB` příklad atributu v podpisu metody:
 
 ```csharp
     [FunctionName("QueueToDocDB")]
@@ -541,50 +541,50 @@ Konstruktor atributu má název databáze a název kolekce. Informace o těchto 
     }
 ```
 
-# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-C# Skript nepodporuje atributy.
+Atributy nejsou podporovány skriptem jazyka C#.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Atributy nejsou podporovány jazykem JavaScript.
+Atributy nejsou podporovány javascriptem.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python nepodporuje atributy.
+Atributy nejsou podporovány Pythonem.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Poznámka `CosmosDBOutput` je k dispozici pro zápis dat do Cosmos DB. Můžete použít poznámku na funkci nebo na konkrétní parametr funkce. Při použití v metodě Function je vrácená hodnota funkce ta, která je zapsána do Cosmos DB. Použijete-li anotaci s parametrem, typ parametru musí být deklarován jako `OutputBinding<T>`, kde `T` nativní typ Java nebo POJO.
+Anotace `CosmosDBOutput` je k dispozici pro zápis dat do Cosmos DB. Poznámku můžete použít na funkci nebo na parametr jednotlivé funkce. Při použití na metodu funkce vrácená hodnota funkce je co je zapsána do Cosmos DB. Pokud použijete poznámku s parametrem, musí být typ `OutputBinding<T>` parametru `T` deklarován jako typ where typu Java nebo POJO.
 
 ---
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `CosmosDB`.
+Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nastavili `CosmosDB` v souboru *function.json* a atributu.
 
-|Vlastnost Function.JSON | Vlastnost atributu |Popis|
+|vlastnost function.json | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type**     | neuvedeno | Musí být nastavené na `cosmosDB`.        |
-|**direction**     | neuvedeno | Musí být nastavené na `out`.         |
+|**Typ**     | neuvedeno | Musí být `cosmosDB`nastavena na .        |
+|**direction**     | neuvedeno | Musí být `out`nastavena na .         |
 |**Jméno**     | neuvedeno | Název parametru vazby, který představuje dokument ve funkci.  |
-|**Databáze** | **Databáze**|Databáze obsahující kolekci, do které se vytvoří dokument.     |
-|**collectionName** |**CollectionName**  | Název kolekce, ve kterém se vytvoří dokument. |
-|**createIfNotExists**  |**CreateIfNotExists**    | Logická hodnota označující, zda kolekce je vytvořena při neexistuje. Výchozí hodnota je *false* , protože nové kolekce jsou vytvořeny s rezervovanou propustností, která má vliv na náklady. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).  |
-|**partitionKey**|**PartitionKey** |Pokud je `CreateIfNotExists` true, definuje cestu ke klíči oddílu pro vytvořenou kolekci.|
-|**collectionThroughput**|**CollectionThroughput**| Pokud je `CreateIfNotExists` true, definuje [propustnost](../cosmos-db/set-throughput.md) vytvořené kolekce.|
-|**connectionStringSetting**    |**ConnectionStringSetting** |Název nastavení aplikace, které obsahuje připojovací řetězec služby Azure Cosmos DB.        |
-|**preferredLocations**| **PreferredLocations**| Volitelné Definuje upřednostňovaná umístění (oblasti) pro geograficky replikované databázové účty ve službě Azure Cosmos DB. Hodnoty by měly být oddělené čárkami. Například "Východní USA, Střed USA – jih, Severní Evropa". |
-|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| Volitelné Když nastavíte `true` společně s `PreferredLocations`, může ve službě Azure Cosmos DB využívat [zápis ve více oblastech](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) . |
+|**Databasename** | **DatabaseName**|Databáze obsahující kolekci, kde je dokument vytvořen.     |
+|**název kolekce** |**CollectionName**  | Název kolekce, kde je dokument vytvořen. |
+|**createIfNotExists**  |**CreateIfNotExists**    | Logická hodnota označující, zda je kolekce vytvořena, když neexistuje. Výchozí hodnota je *false,* protože nové kolekce jsou vytvořeny s vyhrazenou propustnost, která má vliv na náklady. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).  |
+|**partitionKey**|**PartitionKey** |Když `CreateIfNotExists` je true, definuje cestu klíče oddílu pro vytvořenou kolekci.|
+|**collectionThroughput**|**CollectionThroughput**| Když `CreateIfNotExists` je true, definuje [propustnost](../cosmos-db/set-throughput.md) vytvořené kolekce.|
+|**connectionStringSetting**    |**ConnectionStringSetting** |Název nastavení aplikace obsahující připojovací řetězec Azure Cosmos DB.        |
+|**preferredLocations**| **Preferované umístění**| (Nepovinné) Definuje upřednostňovaná umístění (oblasti) pro geograficky replikované databázové účty ve službě Azure Cosmos DB. Hodnoty by měly být odděleny čárkami. Například "Východní USA, jižní střed USA, severní Evropa". |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| (Nepovinné) Když je `true` nastavena na spolu s `PreferredLocations`, může využít [zápisy ve více oblastech](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) ve službě Azure Cosmos DB. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Využití
 
-Ve výchozím nastavení při zápisu do výstupního parametru ve funkci, je dokument vytvořené ve vaší databázi. Tento dokument obsahuje automaticky generovaný identifikátor GUID jako identifikátor dokumentu Můžete zadat ID dokumentu výstupního dokumentu zadáním vlastnosti `id` do objektu JSON předaného do výstupního parametru.
+Ve výchozím nastavení je při zápisu do výstupního parametru ve funkci vytvořen dokument v databázi. Tento dokument má jako ID dokumentu automaticky vygenerovaný identifikátor GUID. ID dokumentu výstupního dokumentu můžete určit zadáním `id` vlastnosti v objektu JSON předané výstupnímu parametru.
 
 > [!Note]
-> Pokud chcete zadat ID existující dokument, získá přepsána nový výstupní dokument.
+> Když zadáte ID existujícího dokumentu, přepíše se nový výstupní dokument.
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
@@ -594,9 +594,9 @@ Ve výchozím nastavení při zápisu do výstupního parametru ve funkci, je do
 
 <a name="host-json"></a>
 
-## <a name="hostjson-settings"></a>nastavení Host.JSON
+## <a name="hostjson-settings"></a>nastavení host.json
 
-Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazbu ve verzi 2.x. Další informace o globálních nastaveních konfigurace verze 2. x naleznete v tématu [reference Host. JSON pro Azure Functions verze 2. x](functions-host-json.md).
+Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzi 2.x. Další informace o nastavení globální konfigurace ve verzi 2.x najdete v [tématu host.json reference for Azure Functions version 2.x](functions-host-json.md).
 
 ```json
 {
@@ -615,11 +615,11 @@ Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazb
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
-|GatewayMode|Brána|Režim připojení, který funkce používá při připojování ke službě Azure Cosmos DB. Možnosti jsou `Direct` a `Gateway`|
-|Protokol|Https|Protokol připojení, který funkce používá při připojení ke službě Azure Cosmos DB.  Přečtěte si [zde pro vysvětlení obou režimů](../cosmos-db/performance-tips.md#networking) .|
-|leasePrefix|neuvedeno|Předpona zapůjčení pro použití ve všech funkcích aplikace|
+|Režim brány|brána|Režim připojení používaný funkcí při připojování ke službě Azure Cosmos DB. Možnosti `Direct` jsou a`Gateway`|
+|Protocol (Protokol)|Protokol Https|Protokol připojení používaný funkcí při připojení ke službě Azure Cosmos DB.  Přečtěte si [zde vysvětlení obou režimů](../cosmos-db/performance-tips.md#networking)|
+|zapůjčení předběžné hospo|neuvedeno|Pronajměte předponu, která se použije ve všech funkcích aplikace.|
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Spustit funkci při vytvoření nebo úpravě dokumentu Azure Cosmos DB (aktivační událost)](./functions-bindings-cosmosdb-v2-trigger.md)
+- [Spuštění funkce při vytvoření nebo úpravě dokumentu Azure Cosmos DB (aktivační událost)](./functions-bindings-cosmosdb-v2-trigger.md)
 - [Čtení dokumentu Azure Cosmos DB (vstupní vazba)](./functions-bindings-cosmosdb-v2-input.md)

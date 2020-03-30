@@ -1,7 +1,7 @@
 ---
 title: Správa služeb na portálu
 titleSuffix: Azure Cognitive Search
-description: Pomocí Azure Portalu Spravujte službu Azure Kognitivní hledání hostovaná cloudová vyhledávací služba na Microsoft Azure.
+description: Spravujte službu Azure Cognitive Search, hostovkou služby cloudového vyhledávání v Microsoft Azure, pomocí portálu Azure.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -10,114 +10,114 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282923"
 ---
-# <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Správa služeb pro Azure Kognitivní hledání v Azure Portal
+# <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Správa služeb pro Azure Cognitive Search na webu Azure Portal
 > [!div class="op_single_selector"]
 > * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
-> * [Azure Portal](search-manage.md)
-> * > [Pythonu](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0) 
+> * [ROZHRANÍ API PRO ODPOČINEK](https://docs.microsoft.com/rest/api/searchmanagement/)
+> * [Sada SDK rozhraní .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [Portál](search-manage.md)
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Azure Kognitivní hledání je plně spravovaná cloudová vyhledávací služba, která se používá k vytváření bohatě vyhledávaného prostředí pro vlastní aplikace. Tento článek se zabývá úlohami správy služby, které můžete provádět v [Azure Portal](https://portal.azure.com) pro vyhledávací službu, kterou jste už zřídili. Správa služeb je odlehčená podle návrhu a je omezená na následující úlohy:
+Azure Cognitive Search je plně spravovaná cloudová vyhledávací služba používaná k vytváření bohatého vyhledávacího prostředí do vlastních aplikací. Tento článek popisuje úlohy správy služeb, které můžete provádět na [webu Azure Portal](https://portal.azure.com) pro vyhledávací službu, kterou jste už zřídit. Správa služeb je zjednodušená, je omezena na následující úkoly:
 
 > [!div class="checklist"]
-> * Spravujte přístup k *klíčům API* , které se používají pro přístup pro čtení nebo zápis ke službě.
-> * Změnou přidělení oddílů a replik upravte kapacitu služby.
-> * Monitorujte využití prostředků relativně s maximálními limity vaší úrovně služby.
+> * Spravujte přístup ke *klíčům rozhraní api používaným* pro přístup pro čtení nebo zápis do vaší služby.
+> * Upravte kapacitu služby změnou přidělení oddílů a replik.
+> * Sledujte využití prostředků vzhledem k maximálním limitům úrovně služeb.
 
-Všimněte si, že *upgrade* není uveden jako úloha správy. Vzhledem k tomu, že prostředky jsou přiděleny při zřizování služby, přesun na jinou úroveň vyžaduje novou službu. Podrobnosti najdete v tématu [Vytvoření služby Azure kognitivní hledání](search-create-service-portal.md).
+Všimněte si, že *upgrade* není uveden jako úkol správy. Vzhledem k tomu, že prostředky jsou přiděleny při zřízení služby, přesunutí na jinou úroveň vyžaduje novou službu. Podrobnosti najdete [v tématu Vytvoření služby Azure Cognitive Search](search-create-service-portal.md).
 
-Můžete monitorovat svazky dotazů a další metriky a pomocí těchto přehledů upravovat službu pro rychlejší doby odezvy. Další informace najdete v tématech [monitorování využití a metriky dotazů](search-monitor-usage.md) a [výkonu a optimalizace](search-performance-optimization.md).
+Můžete sledovat objem dotazů a další metriky a pomocí těchto přehledů upravit službu pro rychlejší dobu odezvy. Další informace naleznete v [tématu Sledování metrik využití a dotazů](search-monitor-usage.md) a [výkonu a optimalizace](search-performance-optimization.md).
 
 <a id="admin-rights"></a>
 
 ## <a name="administrator-rights"></a>Práva správce
-Zřizování nebo vyřazení samotné služby může udělat Správce předplatného Azure nebo spolusprávce.
+Zřizování nebo vyřazení samotné služby zřazené z provozu může provádět správce předplatného Azure nebo spolusprávce.
 
-V rámci služby má kdokoli, kdo má přístup k adrese URL služby a klíč rozhraní API pro správu, ke službě přístup pro čtení i zápis. Přístup pro čtení i zápis nabízí možnost přidávat, odstraňovat a upravovat serverové objekty, včetně klíčů rozhraní API, indexů, indexerů, zdrojů dat, plánů a přiřazení rolí, jak je implementováno prostřednictvím [rolí definovaných pomocí RBAC](search-security-rbac.md).
+V rámci služby má každý, kdo má přístup k adrese URL služby a klíč rozhraní API správce, přístup ke službě pro čtení a zápis. Přístup pro čtení a zápis umožňuje přidávat, odstraňovat nebo upravovat objekty serveru, včetně klíčů api, indexů, indexerů, zdrojů dat, plánů a přiřazení rolí implementovaných prostřednictvím [rolí definovaných rbac](search-security-rbac.md).
 
-Veškerá interakce uživatele s Azure Kognitivní hledání spadá do jednoho z těchto režimů: přístup pro čtení i zápis ke službě (oprávnění správce) nebo přístup ke službě jen pro čtení (dotazovaná oprávnění). Další informace najdete v tématu [Správa klíčů rozhraní API](search-security-api-keys.md).
+Veškerá interakce uživatele s Azure Cognitive Search spadá do jednoho z těchto režimů: přístup pro čtení a zápis ke službě (práva správce) nebo přístup ke službě jen pro čtení (práva dotazu). Další informace naleznete [v tématu Správa klíčů rozhraní API](search-security-api-keys.md).
 
 <a id="sys-info"></a>
 
 ## <a name="logging-and-system-information"></a>Protokolování a systémové informace
-Azure Kognitivní hledání nezveřejňuje soubory protokolů pro jednotlivé služby, a to prostřednictvím portálu nebo programových rozhraní. Na úrovni Basic a vyšší Microsoft sleduje všechny služby Azure Kognitivní hledání Services pro 99,9% dostupnost podle smluv o úrovni služeb (SLA). Pokud je služba pomalá nebo propustnost žádosti klesne pod prahové hodnoty smlouvy SLA, Prohlédněte si všechny soubory protokolů, které jsou pro ně k dispozici, a vyřešte problém.
+Azure Cognitive Search nezveřejňuje soubory protokolu pro jednotlivé služby prostřednictvím portálu nebo programová rozhraní. Na úrovni Basic a vyšší, Microsoft monitoruje všechny služby Azure Cognitive Search pro 99,9% dostupnost na úroveň smlouvy (SLA). Pokud je služba pomalá nebo propustnost požadavku klesne pod prahové hodnoty s la, týmy podpory zkontrolují soubory protokolu, které mají k dispozici, a řeší problém.
 
-V souvislosti s obecnými informacemi o vaší službě můžete získat informace následujícími způsoby:
+Pokud jde o obecné informace o vaší službě, můžete získat následující způsoby:
 
-* Na portálu na řídicím panelu služby prostřednictvím oznámení, vlastností a zpráv o stavu.
-* Použití [PowerShellu](search-manage-powershell.md) nebo [REST API správy](https://docs.microsoft.com/rest/api/searchmanagement/) k [získání vlastností služby](https://docs.microsoft.com/rest/api/searchmanagement/services)nebo stavu využití prostředků indexu.
+* Na portálu, na řídicím panelu služby, prostřednictvím oznámení, vlastností a stavových zpráv.
+* Použití [prostředí PowerShell](search-manage-powershell.md) nebo [rozhraní REST pro správu](https://docs.microsoft.com/rest/api/searchmanagement/) k [získání vlastností služby](https://docs.microsoft.com/rest/api/searchmanagement/services)nebo stavu využití prostředků indexu.
 
 
 <a id="sub-5"></a>
 
-## <a name="monitor-resource-usage"></a>Monitorování využití prostředků
-V řídicím panelu je monitorování prostředků omezené na informace zobrazené na řídicím panelu služby a na několik metrik, které můžete získat dotazem na službu. Na řídicím panelu služby můžete v části využití rychle zjistit, jestli jsou pro vaši aplikaci adekvátní úrovně prostředků oddílu. Pokud chcete zachytit a zachovat protokolované události, můžete zřídit externí prostředky, jako je monitorování Azure. Další informace najdete v tématu [monitorování Azure kognitivní hledání](search-monitor-usage.md).
+## <a name="monitor-resource-usage"></a>Sledování využití prostředků
+Na řídicím panelu je monitorování prostředků omezeno na informace zobrazené na řídicím panelu služby a několik metrik, které můžete získat dotazem na službu. Na řídicím panelu služby v části Využití můžete rychle určit, zda jsou úrovně prostředků oddílu pro vaši aplikaci dostatečné. Můžete zřídit externí prostředky, jako je například monitorování Azure, pokud chcete zachytit a zachovat protokolované události. Další informace naleznete [v tématu Monitoring Azure Cognitive Search](search-monitor-usage.md).
 
-Pomocí REST API vyhledávací služby můžete získat počet dokumentů a indexů programově: 
+Pomocí vyhledávací služby REST API můžete získat přehled o dokumentech a indexech programově: 
 
-* [Získat statistiku indexu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Získat statistiku rejstříku](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
 * [Počet dokumentů](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Zotavení po havárii a výpadky služeb
 
-I když můžeme data vyřazením z provozu, služba Azure Kognitivní hledání neposkytuje okamžité převzetí služeb při selhání, pokud dojde k výpadku na úrovni clusteru nebo datového centra. Pokud dojde v datovém centru k chybě clusteru, bude provozní tým zjišťovat a fungovat na obnovení služby. Během obnovování služby dojde k výpadku, ale můžete požádat o kredity služby na nedostupnost služby na [smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
+I když můžeme zachránit vaše data, Azure Cognitive Search neposkytuje okamžité převzetí služeb při selhání služby, pokud je výpadek na úrovni clusteru nebo datového centra. Pokud cluster selže v datovém centru, operační tým zjistí a bude pracovat na obnovení služby. Během obnovení služby dojde k prostojům, ale můžete požádat o kredity služby, které kompenzují nedostupnost služeb podle [smlouvy o úrovni služeb (SLA).](https://azure.microsoft.com/support/legal/sla/search/v1_0/) 
 
-Pokud se v případě závažných selhání mimo kontrolu Microsoftu vyžaduje nepřetržitá služba, můžete [zřídit další službu](search-create-service-portal.md) v jiné oblasti a implementovat strategii geografické replikace, abyste zajistili, že indexy budou plně redundantní napříč všemi službami.
+Pokud je vyžadována nepřetržitá služba v případě katastrofických selhání mimo kontrolu společnosti Microsoft, můžete [zřídit další službu](search-create-service-portal.md) v jiné oblasti a implementovat strategii geografické replikace, abyste zajistili, že indexy jsou plně redundantní ve všech službách.
 
-Zákazníci, kteří používají [indexery](search-indexer-overview.md) k naplnění a aktualizaci indexů, mohou zvládnout zotavení po havárii pomocí geograficky specifických indexerů využívajících stejný zdroj dat. Dvě služby v různých oblastech, z nichž každý spouští indexer, můžou indexovat stejný zdroj dat, aby bylo možné geografickou redundanci. Pokud provádíte indexování ze zdrojů dat, které jsou taky geograficky redundantní, uvědomte si, že služby Azure Kognitivní hledání indexery můžou provádět přírůstkové indexování (sloučení aktualizací z nových, upravených nebo odstraněných dokumentů) z primárních replik. V případě události převzetí služeb při selhání nezapomeňte indexer znovu nasměrovat na novou primární repliku. 
+Zákazníci, kteří používají [indexery](search-indexer-overview.md) k naplnění a aktualizaci indexů, mohou zpracovávat zotavení po havárii prostřednictvím geograficky specifických indexerů využívajících stejný zdroj dat. Dvě služby v různých oblastech, z nichž každá běží indexer, může indexovat stejný zdroj dat k dosažení geografické redundance. Pokud indexujete ze zdrojů dat, které jsou také geograficky redundantní, uvědomte si, že indexery Azure Cognitive Search můžou provádět pouze přírůstkové indexování (slučování aktualizací z nových, upravených nebo odstraněných dokumentů) z primárních replik. V případě převzetí služeb při selhání nezapomeňte indexer znovu nasměrovat na novou primární repliku. 
 
-Pokud nepoužíváte indexery, použijete kód aplikace k paralelnímu nabízení objektů a dat do různých vyhledávacích služeb. Další informace najdete v tématu o [výkonu a optimalizaci v Azure kognitivní hledání](search-performance-optimization.md).
+Pokud nepoužíváte indexery, použijete kód aplikace k nabízení objektů a dat do různých vyhledávacích služeb paralelně. Další informace najdete [v tématu Výkon a optimalizace v Azure Cognitive Search](search-performance-optimization.md).
 
 ## <a name="backup-and-restore"></a>Zálohování a obnovení
 
-Vzhledem k tomu, že Azure Kognitivní hledání není primárním řešením úložiště dat, neposkytujeme formální mechanismus pro samoobslužné zálohování a obnovu. K zálohování definice a snímku indexu do řady souborů JSON ale můžete použít ukázkový kód **index-Backup-Restore** v tomto [úložišti Azure kognitivní hledání .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples) a pak tyto soubory použít k obnovení indexu v případě potřeby. Tento nástroj může také přesouvat indexy mezi úrovněmi služeb.
+Vzhledem k tomu, že Azure Cognitive Search není primární řešení pro ukládání dat, neposkytujeme formální mechanismus pro samoobslužné zálohování a obnovení. Ukázkový kód **obnovení zálohy indexu** v tomto [ukázkovém úložiště Azure Cognitive Search .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples) však můžete použít k zálohování definice indexu a snímku na řadu souborů JSON a v případě potřeby použít tyto soubory k obnovení indexu. Tento nástroj může také přesunout indexy mezi úrovněmi služby.
 
-V opačném případě váš kód aplikace použitý k vytvoření a naplnění indexu je možnost de facto Restore, pokud index omylem odstraníte. Pokud chcete index znovu sestavit, odstraňte ho (za předpokladu, že existuje), znovu vytvořte index ve službě a znovu ho načtěte z primárního úložiště dat.
+V opačném případě je kód aplikace použitý pro vytvoření a vyplnění indexu de facto možností obnovení, pokud omylem odstraníte index. Chcete-li obnovit index, odstraníte jej (za předpokladu, že existuje), znovu vytvořte index ve službě a znovu načtěte načtením dat z primárního úložiště dat.
 
 <a id="scale"></a>
 
 ## <a name="scale-up-or-down"></a>Vertikální navýšení nebo snížení kapacity
-Každá vyhledávací služba začíná minimálně jednou replikou a jedním oddílem. Pokud jste se zaregistrovali do [úrovně, která poskytuje vyhrazené prostředky](search-limits-quotas-capacity.md), klikněte na dlaždici **škálování** na řídicím panelu služby a upravte využití prostředků.
+Každá vyhledávací služba začíná minimálně jednou replikou a jedním oddílem. Pokud jste se zaregistrovali k [vrstvě, která poskytuje vyhrazené prostředky](search-limits-quotas-capacity.md), klikněte na dlaždici **MĚŘÍTKO** na řídicím panelu služby a upravte využití prostředků.
 
-Když přidáváte kapacitu prostřednictvím kteréhokoli prostředku, služba je automaticky používá. V této části se nevyžaduje žádná další akce, ale dojde k mírnému zpoždění před tím, než se dopustí dopad nového prostředku. Zřizování dalších prostředků může trvat 15 minut nebo déle.
+Když přidáte kapacitu prostřednictvím jednoho z prostředků, služba je používá automaticky. Z vaší strany není nutná žádná další akce, ale před realizací dopadu nového zdroje dochází k mírnému zpoždění. Zřízení dalších prostředků může trvat 15 minut nebo déle.
 
  ![][10]
 
-### <a name="add-replicas"></a>Přidat repliky
-Zvýšení počtu dotazů za sekundu (QPS) nebo dosažení vysoké dostupnosti se provádí přidáním replik. Každá replika má jednu kopii indexu, takže další replika je k dispozici pro zpracování požadavků na dotazy služby na jeden další index. Pro zajištění vysoké dostupnosti se vyžadují minimálně 3 repliky (podrobnosti najdete v tématu [plánování kapacity](search-capacity-planning.md) ).
+### <a name="add-replicas"></a>Přidání replik
+Zvýšení dotazů za sekundu (QPS) nebo dosažení vysoké dostupnosti se provádí přidáním repliky. Každá replika má jednu kopii indexu, takže přidání další repliky se přeloží do dalšího indexu, který je k dispozici pro zpracování požadavků na servisní dotazy. Pro vysokou dostupnost jsou vyžadovány minimálně 3 repliky (podrobnosti najdete [v tématu Plánování kapacity).](search-capacity-planning.md)
 
-Vyhledávací služba, která má více replik, může vyrovnávat zatížení požadavků na dotazy přes větší počet indexů. V případě určité úrovně svazku dotazu bude propustnost dotazů rychlejší, pokud jsou k dispozici více kopií indexu pro obsluhu žádosti. Pokud máte latenci dotazů, můžete očekávat kladný dopad na výkon, když jsou další repliky online.
+Vyhledávací služba s více replikami může požadavky na vyrovnávání zatížení dotazu přes větší počet indexů. Vzhledem k úrovni objemu dotazu bude propustnost dotazů rychlejší, pokud je k dispozici více kopií indexu pro zpracování požadavku. Pokud dochází k latenci dotazu, můžete očekávat pozitivní dopad na výkon, jakmile jsou další repliky online.
 
-I když při přidávání replik funguje propustnost dotazů, při přidávání replik do služby není přesně dvojnásobná ani trojnásobná. Všechny vyhledávací aplikace podléhají externím faktorům, které mohou při výkonu dotazů Netestovat jejich test. Složité dotazy a latence sítě jsou dva faktory, které přispívají k variacím v časech odezvy dotazů.
+Přestože propustnost dotazu se zvýší při přidávání replik, není přesně dvojité nebo trojité při přidávání replik do služby. Všechny vyhledávací aplikace podléhají externím faktorům, které mohou zasahovat do výkonu dotazu. Komplexní dotazy a latence sítě jsou dva faktory, které přispívají k odchylkám v době odezvy dotazu.
 
-### <a name="add-partitions"></a>Přidat oddíly
-Většina aplikací služeb má vestavěnou potřebu více replik, nikoli oddílů. V případech, kdy je potřeba zvýšit počet dokumentů, můžete přidat oddíly, pokud jste se zaregistrovali ke standardní službě. Úroveň Basic neposkytuje další oddíly.
+### <a name="add-partitions"></a>Přidání oddílů
+Většina aplikací služby mají vestavěnou potřebu více replik spíše než oddíly. V případech, kdy je vyžadován zvýšený počet dokumentů, můžete přidat oddíly, pokud jste se zaregistrovali ke službě Standard. Základní úroveň neposkytuje další oddíly.
 
-Na úrovni Standard se oddíly přidávají v násobcích 12 (konkrétně 1, 2, 3, 4, 6 nebo 12). Toto je artefakt horizontálního dělení. Index se vytvoří v 12 horizontálních oddílů, který se dá uložit na 1 oddíl nebo rovnoměrně rozdělit do 2, 3, 4, 6 nebo 12 oddílů (jeden horizontálních oddílů na oddíl).
+Na úrovni Standard oddíly jsou přidány v násobcích 12 (konkrétně 1, 2, 3, 4, 6 nebo 12). Tohle je artefakt střepů. Index je vytvořen ve 12 úlomcích, které mohou být všechny uloženy na 1 oddíl nebo rovnoměrně rozděleny do 2, 3, 4, 6 nebo 12 oddílů (jeden oddíl na oddíl).
 
-### <a name="remove-replicas"></a>Odebrat repliky
-Po obdobích s vysokými objemy dotazů můžete pomocí posuvníku snížit počet replik, které jsou po načtení vyhledávacích dotazů normalizovány (například po dobu nedovoleného prodeje). V této části se nevyžadují žádné další kroky. Snížení počtu replik vzhodnotí virtuální počítače v datovém centru. Operace přijímání dotazů a příjmu dat se teď spustí na méně virtuálních počítačích než dřív. Minimální požadavek je jedna replika.
+### <a name="remove-replicas"></a>Odebrání replik
+Po obdobích vysokých objemů dotazů můžete pomocí posuvníku snížit repliky po normalizaci zatížení vyhledávacího dotazu (například po skončení prodeje svátků). Z vaší strany nejsou vyžadovány žádné další kroky. Snížení počtu replik se vzdává virtuálních počítačů v datovém centru. Operace při přijímání dotazů a dat se teď budou spouštět na méně virtuálních počítačích než dříve. Minimální požadavek je jedna replika.
 
-### <a name="remove-partitions"></a>Odebrat oddíly
-Na rozdíl od odebrání replik, které nevyžadují žádné další úsilí na vaši část, můžete nějakou práci udělat, pokud používáte víc úložišť, než je možné snížit. Pokud například vaše řešení používá tři oddíly, možnost do jednoho nebo dvou oddílů vygeneruje chybu, pokud je nový prostor úložiště menší než vyžadovaný pro hostování vašeho indexu. Jak byste mohli očekávat, vaše volby budou odstraňovat indexy nebo dokumenty v rámci přidruženého indexu, aby se uvolnilo místo, nebo můžete zachovat aktuální konfiguraci.
+### <a name="remove-partitions"></a>Odebrání oddílů
+Na rozdíl od odebrání repliky, které nevyžaduje žádné další úsilí z vaší strany, můžete mít nějakou práci, pokud používáte více úložiště, než lze snížit. Například pokud vaše řešení používá tři oddíly, zmenšení na jeden nebo dva oddíly vygeneruje chybu, pokud je nový úložný prostor menší, než je požadováno pro hostování indexu. Jak můžete očekávat, vaše volby jsou odstranit indexy nebo dokumenty v rámci přidruženého indexu uvolnit místo nebo zachovat aktuální konfiguraci.
 
-Neexistuje žádná metoda detekce, která oznamuje, že se horizontálních oddílů indexů ukládají na konkrétní oddíly. Každý oddíl poskytuje úložiště přibližně 25 GB, takže budete muset omezit úložiště na velikost, kterou můžete přizpůsobit podle počtu oddílů, které máte. Pokud se chcete vrátit k jednomu oddílu, bude nutné, aby se všechny 12 horizontálních oddílůy.
+Neexistuje žádná metoda zjišťování, která vám řekne, které indexové šřepy jsou uloženy na konkrétních oddílech. Každý oddíl poskytuje přibližně 25 GB v úložišti, takže budete muset snížit úložiště na velikost, která může být přizpůsobena počtu oddílů, které máte. Pokud se chcete vrátit k jednomu oddílu, bude nutné přizpůsobit všech 12 úlomků.
 
-Pro pomoc s budoucím plánováním můžete chtít ověřit úložiště (pomocí funkce [získat statistiku indexu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)) a zjistit, kolik jste skutečně používali. 
+Chcete-li pomoci s budoucím plánováním, můžete zkontrolovat úložiště (pomocí [statistiky získat index)](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)chcete-li zjistit, kolik jste skutečně použili. 
 
 <a id="next-steps"></a>
 
 ## <a name="next-steps"></a>Další kroky
-Jakmile porozumíte konceptům za správu služeb, zvažte použití [prostředí PowerShell](search-manage-powershell.md) pro automatizaci úloh.
+Až pochopíte koncepty správy služeb, zvažte použití [Prostředí PowerShell](search-manage-powershell.md) k automatizaci úloh.
 
-Doporučujeme také zkontrolovat článek o [výkonu a optimalizaci](search-performance-optimization.md).
+Doporučujeme také zkontrolovat [výkon a optimalizace článku](search-performance-optimization.md).
 
 <!--Image references-->
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png

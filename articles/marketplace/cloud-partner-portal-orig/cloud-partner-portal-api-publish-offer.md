@@ -1,24 +1,23 @@
 ---
-title: Publikování nabídky | Azure Marketplace
-description: Rozhraní API pro publikování zadané nabídky
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Zveřejnit nabídku | Azure Marketplace
+description: Rozhraní API pro publikování zadané nabídky.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b7ad8086c417cf1f14d9116fa4abcb0a88030922
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4163bf5727c327d559b81db42f99684aa0cc8d5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819641"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280520"
 ---
 <a name="publish-an-offer"></a>Publikování nabídky
 ================
 
-Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě běžící operace.
+Spustí proces publikování pro zadanou nabídku. Toto volání je dlouho běžící operace.
 
   `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/publish?api-version=2017-10-31`
 
@@ -27,23 +26,23 @@ Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě
 
 |  **Název**      |    **Popis**                               |  **Datový typ** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | Identifikátor vydavatele, například `contoso`      |   Řetězec       |
-|  Hodnotami OfferId       | Identifikátor nabídky                                 |   Řetězec       |
-|  verze API-Version   | Nejnovější verze rozhraní API                        |   Datum         |
+|  id vydavatele   | Identifikátor vydavatele, například`contoso`      |   Řetězec       |
+|  offerId       | Identifikátor nabídky                                 |   Řetězec       |
+|  verze-api   | Nejnovější verze rozhraní API                        |   Datum         |
 |  |  |
 
 
 <a name="header"></a>Hlavička
 ------
 
-|  **Název**        |    **Hodnota**          |
+|  **Název**        |    **Hodnotu**          |
 |  --------        |    ---------          |
 |  Typ obsahu    | `application/json`    |
 |  Autorizace   |  `Bearer YOUR_TOKEN`  |
 |  |  |
 
 
-<a name="body-example"></a>Příklad textu
+<a name="body-example"></a>Příklad těla
 ------------
 
 ### <a name="request"></a>Žádost
@@ -57,11 +56,11 @@ Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě
   }
 ```
 
-### <a name="request-body-properties"></a>Vlastnosti textu žádosti
+### <a name="request-body-properties"></a>Vlastnosti těla požadavku
 
 |  **Název**               |   **Popis**                                                                                 |
 |  ---------------------  | ------------------------------------------------------------------------------------------------- |
-|  oznámení – e-maily    | Čárkami oddělený seznam e-mailových adres, které se mají upozornit na průběh operace publikování. |
+|  e-maily s oznámením    | Seznam e-mailových adres oddělených čárkami, které mají být oznámeny průběhu operace publikování. |
 |  |  |
 
 
@@ -70,20 +69,20 @@ Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě
    `Operation-Location: /api/operations/contoso$56615b67-2185-49fe-80d2-c4ddf77bb2e8$2$preview?api-version=2017-10-31`
 
 
-### <a name="response-header"></a>Hlavička odezvy
+### <a name="response-header"></a>Hlavička odpovědi
 
-|  **Název**             |    **Hodnota**                                                                 |
+|  **Název**             |    **Hodnotu**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
-| Operace – umístění    | Adresa URL, na kterou lze zadat dotaz, aby bylo možné zjistit aktuální stav operace.    |
+| Umístění operace    | Adresa URL, která může být dotazována k určení aktuálního stavu operace.    |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Stavové kódy odpovědí
+### <a name="response-status-codes"></a>Stavové kódy odpovědi
 
-| **Znakovou** |  **Popis**                                                                                                                           |
+| **kód** |  **Popis**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
-| 202   | `Accepted` – požadavek byl úspěšně přijat. Odpověď obsahuje umístění, které lze použít ke sledování operace, která je spuštěna. |
-| 400   | `Bad/Malformed request` – tělo chybové odpovědi může poskytovat další informace.                                                               |
-| 422   | `Un-processable entity` – určuje, že entita, která má být publikována, se nezdařila.                                                        |
-| 404   | `Not found` – entita určená klientem neexistuje.                                                                              |
+| 202   | `Accepted`- Požadavek byl úspěšně přijat. Odpověď obsahuje umístění, které lze použít ke sledování operace, která je spuštěna. |
+| 400   | `Bad/Malformed request`- Tělo odpovědi na chybu může poskytnout více informací.                                                               |
+| 422   | `Un-processable entity`- Označuje, že entita, která má být publikována, se nezdařila ověření.                                                        |
+| 404   | `Not found`- Entita určená klientem neexistuje.                                                                              |
 |  |  |

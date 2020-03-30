@@ -1,6 +1,6 @@
 ---
-title: Konfigurace vlastního názvu domény pro vaši bránu Azure API Management pro místní hostování | Microsoft Docs
-description: Toto téma popisuje kroky pro konfiguraci vlastního názvu domény pro bránu Azure API Management pro místní hostování.
+title: Konfigurace vlastního názvu domény pro vlastní hostovkou brány azure api managementu | Dokumenty společnosti Microsoft
+description: Toto téma popisuje postup konfigurace vlastního názvu domény pro bránu Azure API Management, která se sama hostuje.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -11,59 +11,59 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: 1df2cce04021c1cd14c356311df921dd1c0298e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1f2184c7c62887a98a76877528b167d173c3d75b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513806"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335936"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény
 
-Když zřídíte místní službu [Azure API Management Gateway](self-hosted-gateway-overview.md) , není přiřazen název hostitele a musí na něj odkazovat jeho IP adresa. V tomto článku se dozvíte, jak namapovat stávající vlastní název DNS (označovaný také jako název hostitele) pro samostatnou hostovanou bránu.
+Když zřídíte [bránu pro správu rozhraní Azure API s vlastním hostitelem,](self-hosted-gateway-overview.md) není jí přiřazen název hostitele a musí na ni odkazovat jeho IP adresa. Tento článek ukazuje, jak mapovat existující vlastní název DNS (označovaný také jako název hostitele) samoobslužné brány.
 
 > [!NOTE]
-> Funkce brány pro samoobslužné hostování je ve verzi Preview. V rámci verze Preview je brána v místním prostředí dostupná jenom pro vývojáře a úrovně Premium bez dalších poplatků. Úroveň pro vývojáře je omezená na jediné nasazení samoobslužné brány.
+> Funkce brány s vlastním hostitelem je ve verzi Preview. Během předběžné verze je brána s vlastním hostitelem dostupná pouze na úrovních Vývojář a Premium bez dalších poplatků. Úroveň pro vývojáře je omezena na jedno nasazení brány hostované sami sebou.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků popsaných v tomto článku musíte mít:
+Chcete-li provést kroky popsané v tomto článku, musíte mít:
 
 -   Aktivní předplatné Azure.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
--   Instance API Management. Další informace najdete v tématu [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
-- Samoobslužná brána. Další informace najdete v tématu [jak zřídit samoobslužnou bránu](api-management-howto-provision-self-hosted-gateway.md) .
--   Vlastní název domény, který vlastníte vy nebo vaše organizace. Toto téma neposkytuje pokyny k získání vlastního názvu domény.
--   Záznam DNS hostovaný na serveru DNS, který mapuje název vlastní domény na IP adresu samoobslužné brány. Toto téma neposkytuje pokyny k hostování záznamu DNS.
--   Musíte mít platný certifikát s veřejným i privátním klíčem (. PFX). Alternativní název předmětu nebo subjektu (SAN) musí odpovídat názvu domény (to umožňuje API Management instance bezpečně vystavit adresy URL přes SSL).
+-   Instance správy rozhraní API. Další informace najdete [v tématu Vytvoření instance Azure API Management](get-started-create-service-instance.md).
+- Brána s vlastním hostitelem. Další informace naleznete v tématu [Jak zřídit samoobslužnou bránu](api-management-howto-provision-self-hosted-gateway.md)
+-   Vlastní název domény, který vlastníte vy nebo vaše organizace. Toto téma neobsahuje pokyny, jak získat vlastní název domény.
+-   Záznam DNS hostovaný na serveru DNS, který mapuje název vlastní domény na adresu IP brány hostované samostatně. Toto téma neobsahuje pokyny k hostování záznamu DNS.
+-   Musíte mít platný certifikát s veřejným a soukromým klíčem (. PFX). Předmět nebo předmět alternativní název (SAN) musí odpovídat názvu domény (to umožňuje instanci api management bezpečně vystavit adresy URL přes TLS).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="add-custom-domain-certificate-to-your-api-management-service"></a>Přidání vlastního certifikátu domény do služby API Management
 
-1. V části **zabezpečení**vyberte **certifikáty** .
+1. V části **Zabezpečení** **vyberte certifikáty.**
 2. Vyberte **+ Přidat**.
-3. Zadejte název prostředku pro certifikát do pole **ID** .
-4. Vyberte soubor, který obsahuje certifikát (. PFX) tak, že vyberete pole **certifikátu** nebo ikonu složky vedle něho.
-5. Do pole **heslo** zadejte heslo pro certifikát.
-6. Vyberte **vytvořit** a přidejte certifikát do služby API Management.
+3. Do pole ID zadejte název zdroje **certifikátu.**
+4. Vyberte soubor obsahující certifikát (. PFX) výběrem pole **Certifikát** nebo vedle něj ikonou složky.
+5. Do pole **Heslo** zadejte heslo certifikátu.
+6. Vyberte **Vytvořit,** chcete-li přidat certifikát do služby api management.
 
-## <a name="use-the-azure-portal-to-set-a-custom-domain-name-for-your-self-hosted-gateway"></a>Použijte Azure Portal k nastavení vlastního názvu domény pro vaši samoobslužnou bránu.
+## <a name="use-the-azure-portal-to-set-a-custom-domain-name-for-your-self-hosted-gateway"></a>Nastavení vlastního názvu domény pro vlastní hostovku brány Azure Portal použijte portál Azure.
 
-1. V části **Nastavení**vyberte **brány** .
-2. Vyberte samoobslužnou bránu, pro kterou chcete nakonfigurovat název domény.
-3. V části **Nastavení**vyberte **názvy hostitelů** .
+1. V části **Nastavení vyberte brány** v části **Nastavení**.
+2. Vyberte bránu s vlastním hostitelem, pro kterou chcete nakonfigurovat název domény.
+3. V části **Nastavení**vyberte **Názvy hostitelů** .
 4. Vybrat **+ Přidat**
-5. Do pole **název** zadejte název prostředku názvu hostitele.
-6. Do pole název **hostitele** zadejte název domény.
-7. V rozevíracím seznamu **certifikát** vyberte certifikát.
-8. Zaškrtněte políčko **vyjednat klientský certifikát** , pokud kterékoli rozhraní API vystavené přes tuto bránu používá ověřování klientským certifikátem.
+5. Do pole **Název** zadejte název zdroje pro název hostitele.
+6. Do pole **Hostname** zadejte název domény.
+7. V rozevíracím souboru **Certifikát** vyberte certifikát.
+8. Zaškrtněte políčko **Vyjednat klientský certifikát,** pokud některá z souborů API vystavená prostřednictvím této brány používají ověřování klientského certifikátu.
     > [!WARNING]
-    > Toto nastavení sdílí všechny názvy domén, které jsou pro bránu nakonfigurované.
-9. Vyberte **Přidat** a přiřaďte vlastní název domény vybrané samoobslužné bráně.
+    > Toto nastavení je sdíleno všemi názvy domén nakonfigurovanými pro bránu.
+9. Vyberte **Přidat,** chcete-li přiřadit vlastní název domény vybrané vlastní hostované bráně.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Upgrade a škálování služby](upgrade-and-scale.md)
+[Upgrade a škálování služeb](upgrade-and-scale.md)

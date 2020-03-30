@@ -1,6 +1,6 @@
 ---
-title: Lepší pochopení cen Azure IoT Hub | Dokumentace Microsoftu
-description: Příručka pro vývojáře – informace o jak měření a cen funguje službou IoT Hub, včetně šlo příklady.
+title: Principy cen azure iot hub | Dokumenty společnosti Microsoft
+description: Průvodce pro vývojáře – informace o tom, jak měření a ceny fungují s IoT Hubem, včetně odpracovaných příkladů.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,59 +9,59 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: 9b6db1b7171652ea5ace4db370b72dc22b6bdc90
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271223"
 ---
-# <a name="azure-iot-hub-pricing-information"></a>Informace o cenách služby Azure IoT Hub
+# <a name="azure-iot-hub-pricing-information"></a>Informace o cenách Azure IoT Hub
 
-[Ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub) poskytují obecné informace o různých SKU a cenách pro IoT Hub. Tento článek obsahuje další podrobnosti o tom, jak se měří různým funkcím služby IoT Hub jako zprávy ve službě IoT Hub.
+[Ceny azure iot hubposkytuje](https://azure.microsoft.com/pricing/details/iot-hub) obecné informace o různých skum a ceny pro Služby IoT Hub. Tento článek obsahuje další podrobnosti o tom, jak se různé funkce IoT Hubu měří jako zprávy pomocí ioT Hubu.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="charges-per-operation"></a>Poplatky za operace
+## <a name="charges-per-operation"></a>Poplatky za operaci
 
-| Operace | Informace o fakturaci | 
+| Operace | Fakturační údaje | 
 | --------- | ------------------- |
-| Operace registru identit <br/> (vytvoření, načtení, výpis, aktualizace nebo odstranění) | Není placený. |
-| Zprávy typu zařízení-cloud | Úspěšně odeslané zprávy se účtují po 4 KB na příchozí přenos dat do služby IoT Hub. Například zpráva 6 KB se účtuje 2 zprávy. |
-| Zprávy typu cloud zařízení | Úspěšně odeslané zprávy se účtují po 4 KB, třeba zprávu 6 KB se účtuje 2 zprávy. |
-| Nahrání souborů | Přenos souborů do služby Azure Storage se měří ve službě IoT Hub. Soubor přenos zahájení a ukončení zprávy se účtují podle messaged Účtovaná podle objemu dat v přírůstcích po 4 KB. Například přenos souboru o velikosti 10 MB se účtuje jako dvě zprávy kromě Azure Storagech nákladů. |
-| Přímé metody | Úspěšné požadavky na metodu se účtují v blocích po 4 KB a odpovědi se účtují jako další zprávy v blocích po 4 KB. Požadavky na odpojená zařízení se účtují jako zprávy v 4 KB blocích. Například metoda se základním textem 4 KB, který má za následek odpověď bez těla ze zařízení, se účtuje jako dvě zprávy. Metody s tělem 6 KB, jehož výsledkem 1 KB odpověď od zařízení, se účtuje jako dvě zprávy požadavku a další zprávu pro odpověď. |
-| Čtení dvojčat zařízení a modul | Čtení dvojčat zařízení nebo modulu a z řešení zpět end se účtují jako zpráv do bloků velikosti 512 bajtů. Například čtení 6-KB dvojčete se účtuje jako 12 zprávy. |
-| Dvojče zařízení a modul aktualizací (značek a vlastnosti) | Aktualizace dvojčat zařízení nebo modulu a z back-end řešení se účtují jako zpráv do bloků velikosti 512 bajtů. Například čtení 6-KB dvojčete se účtuje jako 12 zprávy. |
-| Dotazů na dvojčata zařízení a modul | Dotazy se účtují jako zprávy v závislosti na velikosti výsledek v blocích o velikosti 512 bajtů. |
-| Operace úloh <br/> (vytvoření, aktualizace, výpis, odstranění) | Není placený. |
-| Operace úloh podle zařízení | Operace úloh (jako například aktualizace dvojčat a metody) se účtuje jako obvykle. Úlohy, což vede k volání metody 1000 žádostí 1 KB a prázdné tělo odpovědi je třeba za 1 000 zpráv. |
-| Zprávy keep-alive | Při použití přes protokol AMQP nebo protokol MQTT, neúčtují se vyměňují k navázání připojení a při vyjednávání, které si vyměňují zprávy. |
+| Operace registru identit <br/> (vytvořit, načíst, seznam, aktualizovat, odstranit) | Není nabitá. |
+| Zprávy typu zařízení-cloud | Úspěšně odeslané zprávy se účtují v blocích 4 KB při příchozím přenosu dat do ioT hubu. Například zpráva 6 KB je účtována 2 zprávy. |
+| Zprávy z cloudu na zařízení | Úspěšně odeslané zprávy jsou účtovány v blocích 4 KB, například zpráva 6 KB je účtována 2 zprávy. |
+| Nahrání souborů | Přenos souborů do Azure Storage se neměří službou IoT Hub. Zprávy o zahájení a dokončení přenosu souborů se účtují jako zprávy měřené v přírůstcích po 4 KB. Například přenos souboru 10 MB se účtuje jako dvě zprávy kromě nákladů na úložiště Azure. |
+| Přímé metody | Úspěšné požadavky na metodu jsou účtovány v blocích 4 KB a odpovědi jsou účtovány v blocích 4 KB jako další zprávy. Požadavky na odpojená zařízení se účtují jako zprávy v blocích 4 KB. Například metoda s tělo 4 KB, která má za následek odpověď bez těla ze zařízení se účtuje jako dvě zprávy. Metoda s tělesem 6 KB, která má za následek odpověď 1 KB ze zařízení, se účtuje jako dvě zprávy pro požadavek a další zprávu pro odpověď. |
+| Přečte dvojče zařízení a modulu | Twin čtení ze zařízení nebo modulu a z back-endu řešení se účtuje jako zprávy v blocích 512 bajtů. Například čtení dvojčete 6 KB se účtuje jako 12 zpráv. |
+| Aktualizace dvojčete zařízení a modulu (značky a vlastnosti) | Twin aktualizace ze zařízení nebo modulu a z back-endu řešení se účtují jako zprávy v blocích 512 bajtů. Například čtení dvojčete 6 KB se účtuje jako 12 zpráv. |
+| Dotazy na dvojče zařízení a modul | Dotazy jsou účtovány jako zprávy v závislosti na velikosti výsledku v blocích 512 bajtů. |
+| Operace úloh <br/> (vytvoření, aktualizace, výpis, odstranění) | Není nabitá. |
+| Úlohy na zařízení operace | Operace úloh (například aktualizace dvojčete a metody) se účtují jako obvykle. Například úloha, která má za následek volání metody 1000 s požadavky 1 KB a odpovědi prázdného těla, je účtována 1000 zpráv. |
+| Zprávy keep-alive | Při použití protokolů AMQP nebo MQTT se neúčtují zprávy vyměňované za účelem navázání připojení a zprávy vyměňované při vyjednávání. |
 
 > [!NOTE]
-> Všechny velikosti se vypočítávají vzhledem k tomu, velikost datové části v bajtech (protokol rámce se ignoruje). Pro zprávy, které mají vlastnosti a text, velikost je vypočítán způsobem bez ohledu na protokol. Další informace najdete v tématu [IoT Hub formátu zprávy](iot-hub-devguide-messages-construct.md).
+> Všechny velikosti jsou vypočítány s ohledem na velikost datové části v bajtů (rámování protokolu je ignorováno). Pro zprávy, které mají vlastnosti a tělo, velikost se vypočítá způsobem, který je nezávislá na protokolu. Další informace naleznete v [tématu Formát zpráv služby IoT Hub](iot-hub-devguide-messages-construct.md).
 
 ## <a name="example-1"></a>Příklad #1
 
-Zařízení odesílá do služby IoT Hub, který je pak přečte Azure Stream Analytics jednu zprávu typu zařízení cloud 1 KB za minutu. Back-end řešení vyvolá metodu (s 512 bajtovou částí) na zařízení každých 10 minut, aby aktivoval určitou akci. Zařízení jsou reaguje na metodu s výsledkem 200 bajtů.
+Zařízení odesílá jednu zprávu zařízení ke cloudu o 1 KB za minutu do služby IoT Hub, která se pak čte službou Azure Stream Analytics. Back-end řešení vyvolá metodu (s datovou částí 512 bajtů) v zařízení každých 10 minut, aby se spustila konkrétní akce. Zařízení reaguje na metodu s výsledkem 200 bajtů.
 
-Zařízení využívá:
+Zařízení spotřebovává:
 
-* Jedna zpráva * 60 minut * 24 hodin = 1 440 zpráv za den pro zprávy typu zařízení cloud.
-* Dvě žádosti a odpovědi * 6krát za hodinu * 24 hodin = 288 zprávy pro metody.
+* Jedna zpráva * 60 minut * 24 hodin = 1440 zpráv za den pro zprávy zařízení cloud.
+* Dva požadavky plus odpověď * 6krát za hodinu * 24 hodin = 288 zpráv pro metody.
 
-Tento výpočet dává. 1728 zpráv za den.
+Tento výpočet poskytuje celkem 1728 zpráv za den.
 
 ## <a name="example-2"></a>Příklad #2
 
-Zařízení odesílá zprávy typu zařízení cloud jeden 100 KB každou hodinu. Také jeho dvojče zařízení se aktualizuje datových částí 1 KB každé čtyři hodiny. Řešení zpět ukončit, jednou za den, přečte dvojčeti zařízení 14 KB a aktualizace s datovými částmi 512 bajtů, chcete-li změnit konfigurace.
+Zařízení odešle jednu zprávu zařízení 100 KB zařízení cloud každou hodinu. Také aktualizuje dvojče svého zařízení s datovými zatíženími 1 KB každé čtyři hodiny. Back-end řešení, jednou za den, přečte dvojče zařízení 14 KB a aktualizuje jej s 512bajtovými datovými částmi pro změnu konfigurace.
 
-Zařízení využívá:
+Zařízení spotřebovává:
 
-* 25 zprávy (100 KB a 4 KB) * 24 hodin pro zprávy typu zařízení cloud.
-* Dvě zprávy (1 KB/0,5 KB) * šestkrát za den pro aktualizace dvojčete zařízení.
+* 25 (100 KB / 4 KB) zprávy * 24 hodin pro zprávy zařízení cloud.
+* Dvě zprávy (1 KB / 0,5 KB) * šestkrát denně pro aktualizace dvojčete zařízení.
 
-Tento výpočet poskytuje 612 zpráv za den.
+Tento výpočet poskytuje celkem 612 zpráv za den.
 
-Back-end řešení využívá pro 29 zpráv 28 zprávy (14 KB/0,5 KB) ke čtení dvojčat zařízení plus jedna zpráva, ji aktualizovat.
+Back-end řešení spotřebovává 28 zpráv (14 KB / 0,5 KB) ke čtení dvojčete zařízení, plus jednu zprávu aktualizovat, celkem 29 zpráv.
 
-Celkem zařízení a back-end řešení využívat 641 zpráv denně.
+Celkově zařízení a back-end řešení spotřebovávají 641 zpráv denně.

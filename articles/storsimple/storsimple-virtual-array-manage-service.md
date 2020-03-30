@@ -1,6 +1,6 @@
 ---
-title: Nasadit službu StorSimple Device Manager | Microsoft Docs
-description: Vysvětluje, jak vytvořit a odstranit službu StorSimple Device Manager v Azure Portal a popisuje, jak spravovat registrační klíč služby.
+title: Nasazení služby Správce zařízení StorSimple | Dokumenty společnosti Microsoft
+description: Vysvětluje, jak vytvořit a odstranit službu StorSimple Device Manager na webu Azure Portal a popisuje, jak spravovat registrační klíč služby.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267453"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>Nasazení služby StorSimple Device Manager pro virtuální pole StorSimple
@@ -27,31 +27,31 @@ ms.locfileid: "79267453"
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-Služba StorSimple Device Manager běží v Microsoft Azure a připojuje se k více zařízením StorSimple. Po vytvoření služby ji můžete použít ke správě zařízení z portál Microsoft Azure spuštěné v prohlížeči. To vám umožní monitorovat všechna zařízení, která jsou připojená ke službě StorSimple Device Manager, z jediného centrálního umístění, což minimalizuje administrativní zatížení.
+Služba StorSimple Device Manager běží v Microsoft Azure a připojuje se k více zařízením StorSimple. Po vytvoření služby ji můžete použít ke správě zařízení z portálu Microsoft Azure spuštěného v prohlížeči. To umožňuje sledovat všechna zařízení, která jsou připojena ke službě StorSimple Device Manager z jednoho centrálního umístění, čímž se minimalizuje administrativní zátěž.
 
-Běžné úlohy související se službou StorSimple Device Manager jsou:
+Běžné úkoly související se službou StorSimple Device Manager jsou:
 
 * Vytvoření služby
 * Odstranění služby
 * Získání registračního klíče služby
-* Znovu vygenerovat registrační klíč služby
+* Obnovení registračního klíče služby
 
-V tomto kurzu se dozvíte, jak provést všechny předchozí úlohy. Informace obsažené v tomto článku se vztahují pouze na virtuální pole StorSimple. Další informace o řadě StorSimple 8000 najdete v [nasazení StorSimple Manager služby](storsimple-manage-service.md).
+Tento kurz popisuje, jak provádět každý z předchozích úkolů. Informace obsažené v tomto článku platí pouze pro virtuální pole StorSimple. Další informace o řadě StorSimple 8000 naleznete v [nasazení služby StorSimple Manager](storsimple-manage-service.md).
 
 ## <a name="create-a-service"></a>Vytvoření služby
 
-K vytvoření služby potřebujete:
+Chcete-li vytvořit službu, musíte mít:
 
-* Předplatné s smlouva Enterprise
-* Účet úložiště Active Microsoft Azure
-* Fakturační informace, které se používají pro správu přístupu
+* Předplatné se smlouvou Enterprise
+* Aktivní účet úložiště Microsoft Azure
+* Fakturační údaje, které se používají pro správu přístupu
 
-Při vytváření služby můžete také zvolit, že se má účet úložiště vygenerovat.
+Můžete také vygenerovat účet úložiště při vytváření služby.
 
-Jedna služba může spravovat více zařízení. Zařízení ale nemůže zahrnovat víc služeb. Velký podnik může mít více instancí služby pro práci s různými předplatnými, organizacemi nebo i umístěními nasazení.
+Jedna služba může spravovat více zařízení. Zařízení však nemůže span více služeb. Velký podnik může mít více instancí služeb pro práci s různými předplatnými, organizacemi nebo dokonce umístěními nasazení.
 
 > [!NOTE]
-> Abyste mohli spravovat zařízení řady StorSimple 8000 a virtuální pole StorSimple, potřebujete samostatné instance služby StorSimple Device Manager.
+> Ke správě zařízení řady StorSimple 8000 a virtuálních polí StorSimple potřebujete samostatné instance služby StorSimple Device Manager.
 
 
 Chcete-li vytvořit službu, proveďte následující kroky.
@@ -60,69 +60,69 @@ Chcete-li vytvořit službu, proveďte následující kroky.
 
 ## <a name="delete-a-service"></a>Odstranění služby
 
-Před odstraněním služby se ujistěte, že ji nepoužívají žádná připojená zařízení. Pokud se služba používá, deaktivujte připojená zařízení. Operace deaktivace naruší spojení mezi zařízením a službou, ale zachová data zařízení v cloudu.
+Před odstraněním služby zkontrolujte, zda ji nepoužívají žádná připojená zařízení. Pokud je služba používána, deaktivujte připojená zařízení. Operace deaktivace přeruší spojení mezi zařízením a službou, ale zachová data zařízení v cloudu.
 
 > [!IMPORTANT]
-> Po odstranění služby nelze operaci vrátit zpět. Každé zařízení, které službu používá, bude nutné obnovit tovární nastavení, aby bylo možné ho použít s jinou službou. V tomto scénáři se ztratí místní data na zařízení i konfigurace.
+> Po odstranění služby nelze operaci vrátit zpět. Jakékoli zařízení, které službu používalo, bude muset být před použitím jiné služby nutné obnovit tovární nastavení. V tomto scénáři dojde ke ztrátě místních dat v zařízení, stejně jako konfigurace.
  
 
 Chcete-li odstranit službu, proveďte následující kroky.
 
 #### <a name="to-delete-a-service"></a>Odstranění služby
 
-1. Přejděte na **Všechny prostředky**. Vyhledejte službu StorSimple Device Manager. Vyberte službu, kterou chcete odstranit.
+1. Přejděte na **Všechny prostředky**. Vyhledejte službu Správce zařízení StorSimple. Vyberte službu, kterou chcete odstranit.
    
-    ![Vyberte službu, kterou chcete odstranit.](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. Pokud se chcete ujistit, že nejsou k této službě připojená žádná zařízení, přečtěte si řídicí panel služby. Pokud v této službě nejsou registrována žádná zařízení, zobrazí se také zpráva banner. Klikněte na **Odstranit**.
+    ![Vyberte službu, která má být odstraněna.](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
+2. Přejděte na řídicí panel služby a ujistěte se, že ke službě nejsou připojena žádná zařízení. Pokud nejsou k této službě registrována žádná zařízení, zobrazí se v tomto smyslu také bannerová zpráva. Klepněte na **tlačítko Odstranit**.
    
     ![Odstranit službu](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
-3. Po zobrazení výzvy k potvrzení klikněte v potvrzovacím oznámení na **Ano** . 
+3. Po zobrazení výzvy k potvrzení klikněte v potvrzovacím oznámení na **tlačítko Ano.** 
    
     ![Potvrdit odstranění služby](./media/storsimple-virtual-array-manage-service/deleteservice4.png)
-4. Odstranění služby může trvat několik minut. Po úspěšném odstranění služby se zobrazí oznámení.
+4. Může trvat několik minut, než bude služba odstraněna. Po úspěšném odstranění služby budete upozorněni.
    
     ![Úspěšné odstranění služby](./media/storsimple-virtual-array-manage-service/deleteservice6.png)
 
-Seznam služeb se aktualizuje.
+Seznam služeb bude aktualizován.
 
  ![Aktualizovaný seznam služeb](./media/storsimple-virtual-array-manage-service/deleteservice7.png)
 
 ## <a name="get-the-service-registration-key"></a>Získání registračního klíče služby
-Po úspěšném vytvoření služby budete muset zaregistrovat zařízení StorSimple ve službě. K registraci prvního zařízení StorSimple budete potřebovat registrační klíč služby. K registraci dalších zařízení pomocí existující služby StorSimple budete potřebovat registrační klíč a šifrovací klíč dat služby (který se při registraci generuje na prvním zařízení). Další informace o šifrovacím klíči dat služby najdete v tématu [zabezpečení StorSimple](storsimple-security.md). Registrační klíč můžete získat tak, že získáte přístup k oknu **klíče** pro vaši službu.
+Po úspěšném vytvoření služby budete muset zaregistrovat zařízení StorSimple se službou. Chcete-li zaregistrovat své první zařízení StorSimple, budete potřebovat registrační klíč služby. Chcete-li zaregistrovat další zařízení s existující službou StorSimple, budete potřebovat registrační klíč i šifrovací klíč dat služby (který je generován na prvním zařízení během registrace). Další informace o šifrovacím klíči dat služby naleznete v [tématu StorSimple security](storsimple-security.md). Registrační klíč můžete získat přístupem k blade **keys** pro vaši službu.
 
-K získání registračního klíče služby proveďte následující kroky.
+Chcete-li získat registrační klíč služby, proveďte následující kroky.
 
 #### <a name="to-get-the-service-registration-key"></a>Získání registračního klíče služby
-1. V okně **StorSimple Device Manager** otevřete okno **&gt;** **klíče**pro správu.
+1. V okně **Správce zařízení StorSimple** přejděte na ** &gt; klíči pro správu** . **Keys**
    
    ![Okno Klíče](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. V okně **klíče** se zobrazí registrační klíč služby. Zkopírujte registrační klíč pomocí ikony kopírování. 
+2. V okně **Klíče** se zobrazí registrační klíč služby. Zkopírujte registrační klíč pomocí ikony kopírování. 
 
-Zachovejte registrační klíč služby v bezpečném umístění. K registraci dalších zařízení pomocí této služby budete potřebovat tento klíč a také šifrovací klíč dat služby. Po získání registračního klíče služby budete muset nakonfigurovat své zařízení prostřednictvím rozhraní Windows PowerShell pro StorSimple.
+Uchovávejte registrační klíč služby na bezpečném místě. Tento klíč a šifrovací klíč dat služby budete potřebovat k registraci dalších zařízení s touto službou. Po získání registračního klíče služby budete muset nakonfigurovat zařízení prostřednictvím rozhraní Windows PowerShell for StorSimple.
 
-## <a name="regenerate-the-service-registration-key"></a>Znovu vygenerovat registrační klíč služby
-Registrační klíč služby bude nutné znovu vygenerovat, pokud je nutné provést střídání klíčů nebo pokud se změnil seznam správců služeb. Když znovu vygenerujete klíč, použije se nový klíč jenom k registraci následných zařízení. Zařízení, která jsou už zaregistrovaná, neovlivní tento proces.
+## <a name="regenerate-the-service-registration-key"></a>Obnovení registračního klíče služby
+Pokud je nutné provést střídání klíčů nebo pokud se změnil seznam správců služeb, budete muset znovu vygenerovat registrační klíč služby. Při regeneraci klíče se nový klíč používá pouze pro registraci následných zařízení. Zařízení, která již byla zaregistrována, nejsou tímto procesem ovlivněna.
 
-K opětovnému vygenerování registračního klíče služby proveďte následující kroky.
+Chcete-li znovu vygenerovat registrační klíč služby, proveďte následující kroky.
 
-#### <a name="to-regenerate-the-service-registration-key"></a>Opětovné vygenerování registračního klíče služby
-1. V okně **StorSimple Device Manager** otevřete okno **&gt;** **klíče**pro správu.
+#### <a name="to-regenerate-the-service-registration-key"></a>Obnovení registračního klíče služby
+1. V okně **Správce zařízení StorSimple** přejděte na ** &gt; klíči pro správu** . **Keys**
    
    ![Okno Klíče](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. V okně **klíče** klikněte na **znovu vygenerovat**.
+2. V okně **Klíče** klepněte na tlačítko **Obnovit**.
    
-   ![Kliknout na znovu vygenerovat](./media/storsimple-virtual-array-manage-service/getregkey5.png)
-3. V okně **znovu vygenerovat registrační klíč služby** si Projděte akci potřebnou při opětovném vygenerování klíčů. Všechna následující zařízení, která jsou zaregistrovaná v této službě, budou používat nový registrační klíč. Potvrďte kliknutím na **znovu vygenerovat** . Po dokončení registrace budete upozorněni.
+   ![Klikněte na regenerovat](./media/storsimple-virtual-array-manage-service/getregkey5.png)
+3. V okně **obnovit službu registrace klíče** zkontrolujte akci požadovanou při opětovném vygenerování klíčů. Všechna následující zařízení, která jsou registrována v této službě, budou používat nový registrační klíč. Potvrďte klepnutím na **tlačítko Obnovit.** Po dokončení registrace budete upozorněni.
    
-   ![Potvrdit opětovné vygenerování klíče](./media/storsimple-virtual-array-manage-service/getregkey3.png)
+   ![Potvrdit znovu vygenerovat klíč](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. Zobrazí se nový registrační klíč služby.
    
-    ![Potvrdit opětovné vygenerování klíče](./media/storsimple-virtual-array-manage-service/getregkey4.png)
+    ![Potvrdit znovu vygenerovat klíč](./media/storsimple-virtual-array-manage-service/getregkey4.png)
    
-   Zkopírujte tento klíč a uložte ho pro registraci všech nových zařízení s touto službou.
+   Zkopírujte tento klíč a uložte jej pro registraci nových zařízení s touto službou.
 
 ## <a name="next-steps"></a>Další kroky
-* Naučte se [, jak začít s StorSimple](storsimple-virtual-array-deploy1-portal-prep.md) virtuálním polem.
-* Naučte se [spravovat zařízení StorSimple](storsimple-ova-web-ui-admin.md).
+* Přečtěte si, jak [začít](storsimple-virtual-array-deploy1-portal-prep.md) s virtuálním polem StorSimple.
+* Přečtěte si, jak [spravovat zařízení StorSimple](storsimple-ova-web-ui-admin.md).
 

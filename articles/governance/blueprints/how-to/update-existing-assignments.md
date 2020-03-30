@@ -1,72 +1,72 @@
 ---
 title: Aktualizace existujícího přiřazení z portálu
-description: Přečtěte si o mechanismu Aktualizace existujícího přiřazení podrobného plánu z portálu v Azure Modrotiskys.
+description: Přečtěte si o mechanismu pro aktualizaci existujícího přiřazení podrobného plánu z portálu v Azure Blueprints.
 ms.date: 11/21/2019
 ms.topic: how-to
 ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264658"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak aktualizovat existující přiřazení podrobného plánu
 
-Při přiřazení podrobného plánu se přiřazení dá aktualizovat. Existuje několik důvodů Aktualizace existujícího přiřazení, včetně:
+Při přiřazení podrobného plánu lze přiřazení aktualizovat. Aktualizace existujícího přiřazení má několik důvodů, například:
 
-- Přidat nebo odebrat [uzamykání prostředků](../concepts/resource-locking.md)
+- Přidání nebo odebrání [uzamčení prostředků](../concepts/resource-locking.md)
 - Změna hodnoty [dynamických parametrů](../concepts/parameters.md#dynamic-parameters)
-- Upgradujte přiřazení na novější **publikovanou** verzi podrobného plánu.
+- Upgrade přiřazení na novější **publikovanou** verzi podrobného plánu
 
 ## <a name="updating-assignments"></a>Aktualizace přiřazení
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **podrobné plány**.
 
-1. Na levé straně vyberte **přiřazené plány** .
+1. Na stránce vlevo vyberte **Přiřazené podrobné plány.**
 
-1. V seznamu modrotisky klikněte levým na přiřazení podrobného plánu. Pak klikněte na tlačítko **Aktualizovat přiřazení** nebo klikněte pravým tlačítkem na přiřazení podrobného plánu a vyberte **Aktualizovat přiřazení**.
+1. V seznamu podrobných plánů klikněte levým tlačítkem myši na přiřazení podrobného plánu. Potom klepněte na tlačítko **Aktualizovat přiřazení** nebo klikněte pravým tlačítkem myši na přiřazení podrobného plánu a vyberte **aktualizovat přiřazení**.
 
-   ![Aktualizuje existující přiřazení podrobného plánu.](../media/update-existing-assignments/update-assignment.png)
+   ![Aktualizace existujícího přiřazení podrobného plánu](../media/update-existing-assignments/update-assignment.png)
 
-1. Stránka **přiřadit podrobný plán** načte předem vyplněnou všechny hodnoty z původního přiřazení.
-   Můžete změnit **verzi definice**podrobného plánu, stav **přiřazení zámku** a všechny dynamické parametry, které existují v definici podrobného plánu. Až provedete změny, klikněte na **přiřadit** .
+1. Stránka **Přiřadit podrobný plán** se načte předvyplněná všemi hodnotami z původního přiřazení.
+   Můžete změnit **verzi definice podrobného plánu**, stav **přiřazení zámku** a všechny dynamické parametry, které existují v definici podrobného plánu. Po dokončení změn klikněte na **Přiřadit.**
 
-1. Na stránce aktualizované Podrobnosti přiřazení se podívejte na nový stav. V tomto příkladu jsme přidali **uzamykání** k přiřazení.
+1. Na stránce s aktualizovanými podrobnostmi o přiřazení se podívejte na nový stav. V tomto příkladu jsme přidali **uzamčení** přiřazení.
 
-   ![Aktualizace existujícího přiřazení podrobného plánu – změna režimu zámku](../media/update-existing-assignments/updated-assignment.png)
+   ![Aktualizováno existující přiřazení podrobného plánu – změněn režim uzamčení](../media/update-existing-assignments/updated-assignment.png)
 
-1. Prozkoumejte podrobnosti o dalších **operacích přiřazení** pomocí rozevíracího seznamu. Tabulka s aktualizacemi **spravovaných prostředků** podle vybrané operace přiřazení
+1. Podrobnosti o **dalších operacích přiřazení** naleznete v rozevíracím seznamu. Tabulka **Spravovaných prostředků** se aktualizuje podle vybrané operace přiřazení.
 
-   ![Operace přiřazení přiřazení podrobného plánu](../media/update-existing-assignments/assignment-operations.png)
+   ![Operace přiřazení podrobného plánu](../media/update-existing-assignments/assignment-operations.png)
 
-## <a name="rules-for-updating-assignments"></a>Pravidla aktualizace přiřazení
+## <a name="rules-for-updating-assignments"></a>Pravidla pro aktualizaci přiřazení
 
-Nasazení aktualizovaných přiřazení následuje několik důležitých pravidel. Tato pravidla určují, co se stane s již nasazenými prostředky. Požadovaná změna a typ prostředku artefaktu, který se nasazuje nebo aktualizuje, určují, které akce se mají vzít.
+Nasazení aktualizovaných přiřazení se řídí několika důležitými pravidly. Tato pravidla určují, co se stane s již nasazenými prostředky. Požadovaná změna a typ prostředku artefaktu, který se nasazuje nebo aktualizuje, určují, které akce jsou prováděny.
 
 - Přiřazení rolí
-  - Pokud se změní role nebo zmocněnec role (uživatel, skupina nebo aplikace), vytvoří se nové přiřazení role. Přiřazení rolí, které už byly nasazené, jsou ponechány na svém místě.
-- Policy Assignments (Přiřazení zásad)
-  - Pokud se změní parametry přiřazení zásady, existující přiřazení se aktualizuje.
-  - Pokud se změní definice přiřazení zásady, vytvoří se nové přiřazení zásady.
-    Přiřazení zásad nasazené dříve jsou ponechány na svém místě.
-  - Pokud se artefakt přiřazení zásad odebere z podrobného plánu, nasadí se nasazená přiřazení zásad.
+  - Pokud se role nebo postupník role (uživatel, skupina nebo aplikace) změní, vytvoří se nové přiřazení role. Přiřazení rolí, která byla dříve nasazena, jsou ponechána na místě.
+- Přiřazení zásad
+  - Pokud se změní parametry přiřazení zásad, existující přiřazení se aktualizuje.
+  - Pokud dojde ke změně definice přiřazení zásad, vytvoří se nové přiřazení zásad.
+    Přiřazení zásad, která byla dříve nasazena, jsou ponechána na místě.
+  - Pokud artefakt přiřazení zásad je odebrán z podrobného plánu, nasazená přiřazení zásad jsou ponechány na místě.
 - Šablony Azure Resource Manageru
-  - Šablona je zpracována prostřednictvím Správce prostředků jako **Put**. Vzhledem k tomu, že každý typ prostředku zpracovává tuto akci odlišně, prostudujte si dokumentaci ke všem zahrnutým prostředkům, abyste zjistili dopad této akce při spuštění pomocí modrotisky.
+  - Šablona je zpracována prostřednictvím Správce prostředků jako **PUT**. Jako každý typ prostředku zpracovává tuto akci odlišně, zkontrolujte dokumentaci pro každý zahrnutý prostředek k určení dopadu této akce při spuštění podrobné plány.
 
 ## <a name="possible-errors-on-updating-assignments"></a>Možné chyby při aktualizaci přiřazení
 
-Při aktualizaci přiřazení je možné provést změny, které se při spuštění přeruší. Příkladem je změna umístění skupiny prostředků poté, co již byla nasazena. Všechny změny, které jsou podporovány nástrojem [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) , mohou být provedeny, ale všechny změny, které by způsobily chybu prostřednictvím Azure Resource Manager, budou také mít za následek selhání přiřazení.
+Při aktualizaci přiřazení je možné provést změny, které se při spuštění přeruší. Příkladem je změna umístění skupiny prostředků po jeho nasazení. Všechny změny, které jsou podporovány [Správce prostředků Azure](../../../azure-resource-manager/management/overview.md) lze provést, ale všechny změny, které by vedly k chybě prostřednictvím Správce prostředků Azure bude také mít za následek selhání přiřazení.
 
-Neexistuje žádné omezení počtu, kolikrát může být přiřazení aktualizováno. Pokud dojde k chybě, určete chybu a proveďte další aktualizaci přiřazení.  Příklady scénářů chyb:
+Neexistuje žádné omezení, kolikrát lze přiřazení aktualizovat. Pokud dojde k chybě, určete chybu a proveďte další aktualizaci přiřazení.  Příklad y chybových scénářů:
 
 - Chybný parametr
 - Již existující objekt
-- Změna není podporována nástrojem Azure Resource Manager
+- Změna, kterou správce prostředků Azure nepodporuje
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [životním cyklu podrobného plánu](../concepts/lifecycle.md)
-- Principy použití [statických a dynamických parametrů](../concepts/parameters.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](../concepts/sequencing-order.md)
-- Použití [zamykání prostředků podrobného plánu](../concepts/resource-locking.md)
-- Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)
+- Přečtěte si o [životním cyklu podrobného plánu](../concepts/lifecycle.md).
+- Pochopit, jak používat [statické a dynamické parametry](../concepts/parameters.md).
+- Naučte se přizpůsobit [pořadí sekvencování podrobných plánů](../concepts/sequencing-order.md).
+- Zjistěte, jak využít [zamykání prostředků podrobného plánu](../concepts/resource-locking.md).
+- Vyřešte problémy během přiřazení podrobného plánu s [obecným řešením potíží](../troubleshoot/general.md).

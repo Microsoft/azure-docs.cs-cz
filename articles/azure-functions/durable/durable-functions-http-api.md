@@ -1,40 +1,40 @@
 ---
-title: Rozhraní API HTTP v Durable Functions-Azure Functions
-description: Naučte se implementovat rozhraní API HTTP v rozšíření Durable Functions pro Azure Functions.
+title: HTTP API v trvalých funkcích – funkce Azure
+description: Zjistěte, jak implementovat http api v rozšíření trvalé funkce pro funkce Azure.
 author: cgillum
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278165"
 ---
-# <a name="http-api-reference"></a>Reference k rozhraní HTTP API
+# <a name="http-api-reference"></a>Odkaz na rozhraní API HTTP
 
-Rozšíření Durable Functions zpřístupňuje sadu integrovaných rozhraní API HTTP, která se dají použít k provádění úloh správy [orchestrací](durable-functions-types-features-overview.md#orchestrator-functions), [entit](durable-functions-types-features-overview.md#entity-functions)a [Center úloh](durable-functions-task-hubs.md). Tato rozhraní API HTTP jsou rozšiřitelná Webhooky, které jsou autorizované hostitelem Azure Functions, ale zpracovávají se přímo rozšířením Durable Functions.
+Rozšíření Trvalé funkce zpřístupňuje sadu předdefinovaných http api, které lze použít k provádění úloh správy na [orchestrations](durable-functions-types-features-overview.md#orchestrator-functions), [entity](durable-functions-types-features-overview.md#entity-functions)a [centra úloh](durable-functions-task-hubs.md). Tato http api jsou rozšiřitelnost webhooky, které jsou autorizovány hostitelem Azure Functions, ale zpracovány přímo rozšíření durable functions.
 
-Všechna rozhraní API HTTP implementovaná rozšířením vyžadují následující parametry. Datový typ všech parametrů je `string`.
+Všechna rozhraní HTTP API implementovaná rozšířením vyžadují následující parametry. Datový typ všech parametrů `string`je .
 
 | Parametr        | Typ parametru  | Popis |
 |------------------|-----------------|-------------|
-| **`taskHub`**    | Řetězec dotazu    | Název [centra úloh](durable-functions-task-hubs.md). Pokud není zadaný, předpokládá se aktuální název centra úloh aplikace Function App. |
-| **`connection`** | Řetězec dotazu    | **Název** připojovacího řetězce pro účet úložiště. Pokud není zadaný, předpokládá se výchozí připojovací řetězec pro aplikaci Function App. |
-| **`systemKey`**  | Řetězec dotazu    | Autorizační klíč vyžadovaný k vyvolání rozhraní API. |
+| **`taskHub`**    | Řetězec dotazu    | Název centra [úloh](durable-functions-task-hubs.md). Pokud není zadán, předpokládá se název centra úloh aktuální aplikace funkce. |
+| **`connection`** | Řetězec dotazu    | **Název** připojovacího řetězce pro účet úložiště. Pokud není zadán, předpokládá se výchozí připojovací řetězec pro aplikaci funkce. |
+| **`systemKey`**  | Řetězec dotazu    | Autorizační klíč potřebný k vyvolání rozhraní API. |
 
-`systemKey` je autorizační klíč automaticky generovaný hostitelem Azure Functions. Konkrétně udělí přístup k rozhraním API rozšíření odolného úkolu a lze ho spravovat stejným způsobem jako [ostatní autorizační klíče](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Můžete generovat adresy URL, které obsahují správné `taskHub`, `connection`a `systemKey` hodnoty řetězce dotazu pomocí rozhraní API pro [vázání klienta Orchestration](durable-functions-bindings.md#orchestration-client) , jako jsou například `CreateCheckStatusResponse` a `CreateHttpManagementPayload` rozhraní API v rozhraní .net nebo `createCheckStatusResponse` a `createHttpManagementPayload` rozhraní API v jazyce JavaScript.
+`systemKey`je autorizační klíč automaticky vygenerovaný hostitelem Funkce Azure. Konkrétně uděluje přístup k rozšíření trvalé úlohy API a lze spravovat stejným způsobem jako [ostatní autorizační klíče](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Můžete generovat adresy URL, které `taskHub` `connection`obsahují `systemKey` správné hodnoty řetězce , a hodnoty řetězce `CreateCheckStatusResponse` dotazu pomocí rozhraní API `createCheckStatusResponse` [vazby klienta orchestrace,](durable-functions-bindings.md#orchestration-client) jako jsou rozhraní API a rozhraní `CreateHttpManagementPayload` API v rozhraní .NET nebo rozhraní API a `createHttpManagementPayload` v jazyce JavaScript.
 
-Několik dalších oddílů pokrývá konkrétní rozhraní HTTP API podporovaná rozšířením a poskytuje příklady, jak je lze použít.
+V několika následujících částech se týkají konkrétních http api podporovaných rozšíření a poskytují příklady, jak je lze použít.
 
 ## <a name="start-orchestration"></a>Spustit orchestraci
 
-Spustí provádění nové instance zadané funkce Orchestrator.
+Spustí novou instanci zadané funkce orchestrator.
 
 ### <a name="request"></a>Žádost
 
-V případě verze 1. x modulu runtime Functions je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
+Pro verzi 1.x functions runtime je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
 
 ```http
 POST /admin/extensions/DurableTaskExtension/orchestrators/{functionName}/{instanceId?}
@@ -43,7 +43,7 @@ POST /admin/extensions/DurableTaskExtension/orchestrators/{functionName}/{instan
      &code={systemKey}
 ```
 
-Ve verzi 2. x modulu runtime Functions má formát adresy URL stejné parametry, ale mírně odlišnou předponou:
+Ve verzi 2.x funkce runtime, formát URL má všechny stejné parametry, ale s mírně odlišnou předponou:
 
 ```http
 POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
@@ -52,22 +52,22 @@ POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
      &code={systemKey}
 ```
 
-Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
+Parametry požadavku pro toto rozhraní API zahrnují výchozí sadu uvedenou dříve, stejně jako následující jedinečné parametry:
 
 | Pole              | Typ parametru  | Popis |
 |--------------------|-----------------|-------------|
-| **`functionName`** | Adresa URL             | Název funkce Orchestrator, která se má spustit. |
-| **`instanceId`**   | Adresa URL             | Volitelný parametr. ID instance orchestrace. Pokud není zadán, funkce Orchestrator spustí s náhodným ID instance. |
-| **`{content}`**    | Požadavek na obsah | Volitelná. Vstup funkce Orchestrator ve formátu JSON. |
+| **`functionName`** | zprostředkovatele identity             | Název funkce orchestrator spustit. |
+| **`instanceId`**   | zprostředkovatele identity             | Volitelný parametr. ID instance orchestrace. Pokud není zadán, funkce orchestrator začne s ID náhodné instance. |
+| **`{content}`**    | Žádost o obsah | Nepovinný parametr. Vstup funkce orchestrator ve formátu JSON. |
 
 ### <a name="response"></a>Odpověď
 
-Může být vráceno několik možných hodnot stavového kódu.
+Lze vrátit několik možných hodnot stavového kódu.
 
-* **HTTP 202 (přijato)** : zadaná funkce Orchestrator byla naplánována na spuštění. Hlavička odpovědi `Location` obsahuje adresu URL pro cyklické dotazování na stav orchestrace.
-* **HTTP 400 (chybný požadavek)** : zadaná funkce nástroje Orchestrator neexistuje, zadané ID instance není platné nebo není obsah požadavku platný pro JSON.
+* **HTTP 202 (Přijato)**: Zadaná funkce orchestratoru byla naplánována spuštění. Hlavička `Location` odpovědi obsahuje adresu URL pro dotazování stavu orchestrace.
+* **HTTP 400 (Chybný požadavek):** Zadaná funkce orchestrator neexistuje, zadané ID instance nebylo platné nebo obsah požadavku nebyl platný JSON.
 
-Následuje příklad žádosti, která spustí `RestartVMs` Orchestrator functions a zahrnuje datovou část objektu JSON:
+Následuje příklad požadavku, který `RestartVMs` spustí funkci orchestrator a obsahuje datovou část objektu JSON:
 
 ```http
 POST /runtime/webhooks/durabletask/orchestrators/RestartVMs?code=XXX
@@ -80,20 +80,20 @@ Content-Length: 83
 }
 ```
 
-Datová část odpovědi pro případy **protokolu HTTP 202** je objekt JSON s následujícími poli:
+Datová část odpovědi pro případy **HTTP 202** je objekt JSON s následujícími poli:
 
 | Pole                       | Popis                          |
 |-----------------------------|--------------------------------------|
 | **`id`**                    |ID instance orchestrace. |
 | **`statusQueryGetUri`**     |Adresa URL stavu instance orchestrace. |
-| **`sendEventPostUri`**      |Adresa URL události vyvolání instance orchestrace. |
-| **`terminatePostUri`**      |Adresa URL pro ukončení instance orchestrace. |
-| **`purgeHistoryDeleteUri`** |Adresa URL vyprázdnit historii instance Orchestration |
-| **`rewindPostUri`**         |Tisk Adresa URL "Rewind" instance orchestrace. |
+| **`sendEventPostUri`**      |Adresa URL "raise event" instance orchestrace. |
+| **`terminatePostUri`**      |"Ukončit" URL instance orchestrace. |
+| **`purgeHistoryDeleteUri`** |Adresa URL "historie vymazání" instance orchestrace. |
+| **`rewindPostUri`**         |(náhled) Adresa URL "převinout" instance orchestrace. |
 
-Datový typ všech polí je `string`.
+Datový typ všech polí `string`je .
 
-Tady je příklad datové části odezvy pro instanci orchestrace, která `abc123` jako ID (formátovaná pro čitelnost):
+Zde je příklad datové části odpovědi pro `abc123` instanci orchestrace s jako jeho ID (formátován pro čitelnost):
 
 ```http
 {
@@ -105,12 +105,12 @@ Tady je příklad datové části odezvy pro instanci orchestrace, která `abc12
 }
 ```
 
-Odpověď HTTP má být kompatibilní se *vzorem příjemce cyklického dotazování*. Obsahuje také následující významné hlavičky odpovědí:
+Odpověď HTTP je určena jako kompatibilní se *vzorem dotazování spotřebitelů*. Obsahuje také následující hlavičky významné odpovědi:
 
-* **Umístění**: adresa URL koncového bodu stavu. Tato adresa URL obsahuje stejnou hodnotu jako pole `statusQueryGetUri`.
-* **Opakovat – za**: počet sekund, po který se má čekat mezi operacemi cyklického dotazování. Výchozí hodnota je `10`.
+* **Umístění**: Adresa URL koncového bodu stavu. Tato adresa URL obsahuje `statusQueryGetUri` stejnou hodnotu jako pole.
+* **Opakování po:** Počet sekund čekání mezi operacemi dotazování. Výchozí hodnota je `10`.
 
-Další informace o vzoru asynchronního cyklického dotazování HTTP najdete v dokumentaci pro [sledování asynchronních operací HTTP](durable-functions-http-features.md#async-operation-tracking) .
+Další informace o asynchronní http dotazování vzor, naleznete v [dokumentaci sledování asynchronní operace HTTP.](durable-functions-http-features.md#async-operation-tracking)
 
 ## <a name="get-instance-status"></a>Získat stav instance
 
@@ -118,7 +118,7 @@ Získá stav zadané instance orchestrace.
 
 ### <a name="request"></a>Žádost
 
-V případě verze 1. x modulu runtime Functions je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
+Pro verzi 1.x functions runtime je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
@@ -130,7 +130,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
     &showInput=[true|false]
 ```
 
-Ve verzi 2. x modulu runtime Functions má formát adresy URL stejné parametry, ale mírně odlišnou předponou:
+Ve verzi 2.x funkce runtime, formát URL má všechny stejné parametry, ale s mírně odlišnou předponou:
 
 ```http
 GET /runtime/webhooks/durabletask/instances/{instanceId}
@@ -142,41 +142,41 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
     &showInput=[true|false]
 ```
 
-Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
+Parametry požadavku pro toto rozhraní API zahrnují výchozí sadu uvedenou dříve, stejně jako následující jedinečné parametry:
 
 | Pole                   | Typ parametru  | Popis |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | Adresa URL             | ID instance orchestrace. |
-| **`showInput`**         | Řetězec dotazu    | Volitelný parametr. Pokud je nastavená na `false`, vstup funkce nebude zahrnutý v datové části odpovědi.|
-| **`showHistory`**       | Řetězec dotazu    | Volitelný parametr. Pokud je nastavena na `true`, bude historie spouštění orchestrace obsažena v datové části odpovědi.|
-| **`showHistoryOutput`** | Řetězec dotazu    | Volitelný parametr. Pokud je nastaveno na `true`, budou výstupy funkce zahrnuty do historie spouštění orchestrace.|
-| **`createdTimeFrom`**   | Řetězec dotazu    | Volitelný parametr. Když se tato klauzule zadá, vyfiltruje seznam vrácených instancí, které byly vytvořené na základě zadaného časového razítka ISO8601 nebo po ní.|
-| **`createdTimeTo`**     | Řetězec dotazu    | Volitelný parametr. Při zadání se vyfiltruje seznam vrácených instancí, které byly vytvořeny před zadaným časovým razítkem ISO8601 nebo před ním.|
-| **`runtimeStatus`**     | Řetězec dotazu    | Volitelný parametr. Když se tato parametr zadá, vyfiltruje seznam vrácených instancí na základě jejich běhového stavu. Seznam možných hodnot běhového stavu najdete v článku [dotazování instancí](durable-functions-instance-management.md) . |
+| **`instanceId`**        | zprostředkovatele identity             | ID instance orchestrace. |
+| **`showInput`**         | Řetězec dotazu    | Volitelný parametr. Pokud je `false`nastavena na , vstup funkce nebude zahrnut a datová část odpovědi.|
+| **`showHistory`**       | Řetězec dotazu    | Volitelný parametr. Pokud je `true`nastavena na , historie spuštění orchestrace budou zahrnuty do datové části odpovědi.|
+| **`showHistoryOutput`** | Řetězec dotazu    | Volitelný parametr. Pokud je `true`nastavena na , výstupy funkce budou zahrnuty do historie provádění orchestrace.|
+| **`createdTimeFrom`**   | Řetězec dotazu    | Volitelný parametr. Pokud je zadán, filtruje seznam vrácených instancí, které byly vytvořeny na nebo po dané časové razítko ISO8601.|
+| **`createdTimeTo`**     | Řetězec dotazu    | Volitelný parametr. Pokud je zadán, filtruje seznam vrácených instancí, které byly vytvořeny na nebo před dané časové razítko ISO8601.|
+| **`runtimeStatus`**     | Řetězec dotazu    | Volitelný parametr. Pokud je zadán, filtruje seznam vrácených instancí na základě jejich stavu za běhu. Seznam možných hodnot stavu za běhu naleznete v článku [Dotazování instancí.](durable-functions-instance-management.md) |
 
 ### <a name="response"></a>Odpověď
 
-Může být vráceno několik možných hodnot stavového kódu.
+Lze vrátit několik možných hodnot stavového kódu.
 
-* **HTTP 200 (ok)** : Zadaná instance je v dokončeném stavu.
-* **HTTP 202 (přijato)** : Zadaná instance probíhá.
-* **HTTP 400 (chybný požadavek)** : Zadaná instance se nezdařila nebo byla ukončena.
-* **HTTP 404 (Nenalezeno)** : Zadaná instance neexistuje nebo nebyla spuštěna.
-* **HTTP 500 (interní chyba serveru)** : Zadaná instance selhala s neošetřenou výjimkou.
+* **HTTP 200 (OK)**: Zadaná instance je v dokončeném stavu.
+* **HTTP 202 (Přijato)**: Probíhá zadaná instance.
+* **HTTP 400 (Chybný požadavek):** Zadaná instance se nezdařila nebo byla ukončena.
+* **HTTP 404 (Nebyl nalezen)**: Zadaná instance neexistuje nebo nebyla spuštěna.
+* **HTTP 500 (Vnitřní chyba serveru):** Zadaná instance se nezdařila s neošetřenou výjimkou.
 
-Datová část odpovědi pro případy **http 200** a **HTTP 202** je objekt JSON s následujícími poli:
+Datová část odpovědi pro případy **HTTP 200** a **HTTP 202** je objekt JSON s následujícími poli:
 
-| Pole                 | Typ dat | Popis |
+| Pole                 | Datový typ | Popis |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | řetězec    | Běhový stav instance Mezi hodnoty patří *spuštění*, *čeká*, *Chyba*, *zrušeno*, *ukončeno*, *dokončeno*. |
-| **`input`**           | JSON      | Data JSON používaná k inicializaci instance. Toto pole je `null`, pokud je parametr řetězce dotazu `showInput` nastaven na `false`.|
-| **`customStatus`**    | JSON      | Data JSON používaná pro vlastní stav orchestrace. Toto pole je `null`, pokud není nastaveno. |
-| **`output`**          | JSON      | Výstup JSON instance Toto pole je `null`, pokud instance není v dokončeném stavu. |
-| **`createdTime`**     | řetězec    | Čas, kdy byla vytvořena instance. Používá rozšířený zápis ISO 8601. |
-| **`lastUpdatedTime`** | řetězec    | Čas posledního trvalého uložení instance. Používá rozšířený zápis ISO 8601. |
-| **`historyEvents`**   | JSON      | Pole JSON obsahující historii spuštění orchestrace. Toto pole je `null`, pokud není parametr řetězce dotazu `showHistory` nastaven na `true`. |
+| **`runtimeStatus`**   | řetězec    | Stav runtime instance. Mezi hodnoty patří *Spuštěno*, *Čeká na vyřízení*, *Nepodařilo se,* *Zrušilo,* *Ukončeno*, *Dokončeno*. |
+| **`input`**           | JSON      | Data JSON použitá k inicializaci instance. Toto `null` pole `showInput` je, pokud je `false`parametr řetězce dotazu nastaven na hodnotu .|
+| **`customStatus`**    | JSON      | Data JSON použitá pro vlastní stav orchestrace. Toto `null` pole je nastaveno, pokud není nastaveno. |
+| **`output`**          | JSON      | Výstup JSON instance. Toto `null` pole je, pokud instance není v dokončeném stavu. |
+| **`createdTime`**     | řetězec    | Čas, kdy byla instance vytvořena. Používá rozšířený zápis ISO 8601. |
+| **`lastUpdatedTime`** | řetězec    | Čas, kdy instance naposledy trvala. Používá rozšířený zápis ISO 8601. |
+| **`historyEvents`**   | JSON      | Pole JSON obsahující historii spuštění orchestrace. Toto `null` pole `showHistory` je, pokud není `true`parametr řetězce dotazu nastaven na . |
 
-Tady je příklad datové části odpovědi, včetně historie spouštění Orchestrace a výstupů aktivit (s formátováním pro čitelnost):
+Zde je příklad datové části odpovědi včetně historie provádění orchestrace a výstupů aktivity (formátované pro čitelnost):
 
 ```json
 {
@@ -231,18 +231,18 @@ Tady je příklad datové části odpovědi, včetně historie spouštění Orch
 }
 ```
 
-Odpověď **HTTP 202** obsahuje také hlavičku odpovědi **umístění** , která odkazuje na stejnou adresu URL jako pole `statusQueryGetUri` zmíněné dříve.
+Odpověď **HTTP 202** také obsahuje hlavičku odpovědi **umístění,** `statusQueryGetUri` která odkazuje na stejnou adresu URL jako výše uvedené pole.
 
 ## <a name="get-all-instances-status"></a>Získat stav všech instancí
 
-Můžete také zadat dotaz na stav všech instancí odebráním `instanceId` z žádosti o získání stavu instance. V tomto případě jsou základní parametry stejné jako ' načíst stav instance '. Podporují se taky parametry řetězce dotazu pro filtrování.
+Můžete také dotaz na stav všech instancí odebráním `instanceId` z požadavku "Získat stav instance". V tomto případě jsou základní parametry stejné jako stav get instance. Parametry řetězce dotazu pro filtrování jsou také podporovány.
 
-Jednou z možností, jak si pamatovat, je `connection` a `code` volitelná. Pokud máte funkci anonymního ověřování, pak `code` není nutné.
-Pokud nechcete použít jiný připojovací řetězec úložiště, který je jiný než definovaný v nastavení aplikace AzureWebJobsStorage, můžete parametr řetězce dotazu připojení bezpečně ignorovat.
+Jedna věc k `connection` zapamatování je, že a `code` jsou volitelné. Pokud máte anonymní auth na `code` funkci, pak není nutné.
+Pokud nechcete používat jiný řetězec připojení úložiště, než je definováno v nastavení aplikace AzureWebJobsStorage, můžete bezpečně ignorovat parametr řetězce dotazu připojení.
 
 ### <a name="request"></a>Žádost
 
-V případě verze 1. x modulu runtime Functions je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
+Pro verzi 1.x functions runtime je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances
@@ -256,7 +256,7 @@ GET /admin/extensions/DurableTaskExtension/instances
     &top={integer}
 ```
 
-Ve verzi 2. x modulu runtime Functions má formát adresy URL stejné parametry, ale mírně odlišnou předponou:
+Ve verzi 2.x funkce runtime, formát URL má všechny stejné parametry, ale s mírně odlišnou předponou:
 
 ```http
 GET /runtime/webhooks/durableTask/instances?
@@ -270,22 +270,22 @@ GET /runtime/webhooks/durableTask/instances?
     &top={integer}
 ```
 
-Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
+Parametry požadavku pro toto rozhraní API zahrnují výchozí sadu uvedenou dříve, stejně jako následující jedinečné parametry:
 
 | Pole                   | Typ parametru  | Popis |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | Adresa URL             | ID instance orchestrace. |
-| **`showInput`**         | Řetězec dotazu    | Volitelný parametr. Pokud je nastavená na `false`, vstup funkce nebude zahrnutý v datové části odpovědi.|
-| **`showHistory`**       | Řetězec dotazu    | Volitelný parametr. Pokud je nastavena na `true`, bude historie spouštění orchestrace obsažena v datové části odpovědi.|
-| **`showHistoryOutput`** | Řetězec dotazu    | Volitelný parametr. Pokud je nastaveno na `true`, budou výstupy funkce zahrnuty do historie spouštění orchestrace.|
-| **`createdTimeFrom`**   | Řetězec dotazu    | Volitelný parametr. Když se tato klauzule zadá, vyfiltruje seznam vrácených instancí, které byly vytvořené na základě zadaného časového razítka ISO8601 nebo po ní.|
-| **`createdTimeTo`**     | Řetězec dotazu    | Volitelný parametr. Při zadání se vyfiltruje seznam vrácených instancí, které byly vytvořeny před zadaným časovým razítkem ISO8601 nebo před ním.|
-| **`runtimeStatus`**     | Řetězec dotazu    | Volitelný parametr. Když se tato parametr zadá, vyfiltruje seznam vrácených instancí na základě jejich běhového stavu. Seznam možných hodnot běhového stavu najdete v článku [dotazování instancí](durable-functions-instance-management.md) . |
-| **`top`**               | Řetězec dotazu    | Volitelný parametr. Při zadání omezí počet instancí vrácených dotazem. |
+| **`instanceId`**        | zprostředkovatele identity             | ID instance orchestrace. |
+| **`showInput`**         | Řetězec dotazu    | Volitelný parametr. Pokud je `false`nastavena na , vstup funkce nebude zahrnut a datová část odpovědi.|
+| **`showHistory`**       | Řetězec dotazu    | Volitelný parametr. Pokud je `true`nastavena na , historie spuštění orchestrace budou zahrnuty do datové části odpovědi.|
+| **`showHistoryOutput`** | Řetězec dotazu    | Volitelný parametr. Pokud je `true`nastavena na , výstupy funkce budou zahrnuty do historie provádění orchestrace.|
+| **`createdTimeFrom`**   | Řetězec dotazu    | Volitelný parametr. Pokud je zadán, filtruje seznam vrácených instancí, které byly vytvořeny na nebo po dané časové razítko ISO8601.|
+| **`createdTimeTo`**     | Řetězec dotazu    | Volitelný parametr. Pokud je zadán, filtruje seznam vrácených instancí, které byly vytvořeny na nebo před dané časové razítko ISO8601.|
+| **`runtimeStatus`**     | Řetězec dotazu    | Volitelný parametr. Pokud je zadán, filtruje seznam vrácených instancí na základě jejich stavu za běhu. Seznam možných hodnot stavu za běhu naleznete v článku [Dotazování instancí.](durable-functions-instance-management.md) |
+| **`top`**               | Řetězec dotazu    | Volitelný parametr. Pokud je zadán, omezuje počet instancí vrácených dotazem. |
 
 ### <a name="response"></a>Odpověď
 
-Tady je příklad datových částí odezvy, včetně stavu orchestrace (naformátovaná pro čitelnost):
+Zde je příklad datové části odpovědí včetně stavu orchestrace (formátován pro čitelnost):
 
 ```json
 [
@@ -337,20 +337,20 @@ Tady je příklad datových částí odezvy, včetně stavu orchestrace (naform�
 ```
 
 > [!NOTE]
-> Tato operace může být velmi náročná, pokud jde o Azure Storage I/O, pokud je v tabulce instance mnoho řádků. Další podrobnosti o tabulce instance najdete v dokumentaci [výkon a škálování v Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md#instances-table) .
+> Tato operace může být velmi nákladné z hlediska Azure Storage V/V, pokud existuje velké množství řádků v tabulce instance. Další podrobnosti o tabulce instance najdete v [dokumentaci výkon a škálování v trvalé funkce (Azure Functions).](durable-functions-perf-and-scale.md#instances-table)
 >
 
-Pokud existuje více výsledků, vrátí se token pokračování v hlavičce odpovědi.  Název hlavičky je `x-ms-continuation-token`.
+Pokud existují další výsledky, je v hlavičce odpovědi vrácen token pokračování.  Název záhlaví je `x-ms-continuation-token`.
 
-Pokud nastavíte hodnotu tokenu pokračování v další hlavičce žádosti, můžete získat další stránku s výsledky. Tento název hlavičky požadavku je také `x-ms-continuation-token`.
+Pokud nastavíte hodnotu tokenu pokračování v další hlavičce požadavku, můžete získat další stránku výsledků. Tento název hlavičky požadavku `x-ms-continuation-token`je také .
 
-## <a name="purge-single-instance-history"></a>Vymazat historii jedné instance
+## <a name="purge-single-instance-history"></a>Vyčistit historii jedné instance
 
-Odstraní historii a související artefakty pro zadanou instanci Orchestration.
+Odstraní historii a související artefakty pro zadanou instanci orchestrace.
 
 ### <a name="request"></a>Žádost
 
-V případě verze 1. x modulu runtime Functions je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
+Pro verzi 1.x functions runtime je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
 
 ```http
 DELETE /admin/extensions/DurableTaskExtension/instances/{instanceId}
@@ -359,7 +359,7 @@ DELETE /admin/extensions/DurableTaskExtension/instances/{instanceId}
     &code={systemKey}
 ```
 
-Ve verzi 2. x modulu runtime Functions má formát adresy URL stejné parametry, ale mírně odlišnou předponou:
+Ve verzi 2.x funkce runtime, formát URL má všechny stejné parametry, ale s mírně odlišnou předponou:
 
 ```http
 DELETE /runtime/webhooks/durabletask/instances/{instanceId}
@@ -368,26 +368,26 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
     &code={systemKey}
 ```
 
-Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
+Parametry požadavku pro toto rozhraní API zahrnují výchozí sadu uvedenou dříve, stejně jako následující jedinečné parametry:
 
 | Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | Adresa URL             | ID instance orchestrace. |
+| **`instanceId`**  | zprostředkovatele identity             | ID instance orchestrace. |
 
 ### <a name="response"></a>Odpověď
 
-Je možné vrátit následující hodnoty stavového kódu HTTP.
+Lze vrátit následující hodnoty stavového kódu PROTOKOLU HTTP.
 
-* **HTTP 200 (ok)** : Historie instancí byla úspěšně vyprázdněna.
-* **HTTP 404 (Nenalezeno)** : Zadaná instance neexistuje.
+* **HTTP 200 (OK)**: Historie instancí byla úspěšně vymazána.
+* **HTTP 404 (Nebyl nalezen)**: Zadaná instance neexistuje.
 
 Datová část odpovědi pro případ **HTTP 200** je objekt JSON s následujícím polem:
 
-| Pole                  | Typ dat | Popis |
+| Pole                  | Datový typ | Popis |
 |------------------------|-----------|-------------|
-| **`instancesDeleted`** | integer   | Počet odstraněných instancí. Pro případ jedné instance by tato hodnota měla být vždy `1`. |
+| **`instancesDeleted`** | celé číslo   | Počet odstraněných instancí. Pro případ jedné instance by tato `1`hodnota měla být vždy . |
 
-Tady je příklad datové části odezvy (naformátovaná pro čitelnost):
+Zde je příklad užitečné části odpovědí (formátován pro čitelnost):
 
 ```json
 {
@@ -395,13 +395,13 @@ Tady je příklad datové části odezvy (naformátovaná pro čitelnost):
 }
 ```
 
-## <a name="purge-multiple-instance-histories"></a>Vyprázdnit několik historií instancí
+## <a name="purge-multiple-instance-histories"></a>Vymazání více historie instancí
 
-Můžete také odstranit historii a související artefakty pro více instancí v rámci centra úloh odebráním `{instanceId}` z žádosti o vymazání jedné instance s historií. Chcete-li selektivně vymazat historii instancí, použijte stejné filtry popsané v žádosti o získání všech instancí status.
+Můžete také odstranit historii a související artefakty pro více instancí v rámci centra úloh odebráním `{instanceId}` požadavku "Vymazat historii jedné instance". Chcete-li selektivně vymazat historii instancí, použijte stejné filtry popsané v požadavku "Získat všechny instance".
 
 ### <a name="request"></a>Žádost
 
-V případě verze 1. x modulu runtime Functions je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
+Pro verzi 1.x functions runtime je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
 
 ```http
 DELETE /admin/extensions/DurableTaskExtension/instances
@@ -413,7 +413,7 @@ DELETE /admin/extensions/DurableTaskExtension/instances
     &runtimeStatus={runtimeStatus1,runtimeStatus2,...}
 ```
 
-Ve verzi 2. x modulu runtime Functions má formát adresy URL stejné parametry, ale mírně odlišnou předponou:
+Ve verzi 2.x funkce runtime, formát URL má všechny stejné parametry, ale s mírně odlišnou předponou:
 
 ```http
 DELETE /runtime/webhooks/durabletask/instances
@@ -425,31 +425,31 @@ DELETE /runtime/webhooks/durabletask/instances
     &runtimeStatus={runtimeStatus1,runtimeStatus2,...}
 ```
 
-Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
+Parametry požadavku pro toto rozhraní API zahrnují výchozí sadu uvedenou dříve, stejně jako následující jedinečné parametry:
 
 | Pole                 | Typ parametru  | Popis |
 |-----------------------|-----------------|-------------|
-| **`createdTimeFrom`** | Řetězec dotazu    | Filtruje seznam vyčištěných instancí, které byly vytvořeny v nebo po daném časovém razítku ISO8601.|
-| **`createdTimeTo`**   | Řetězec dotazu    | Volitelný parametr. Při zadání se vyfiltruje seznam vyčištěných instancí, které byly vytvořeny před zadaným časovým razítkem ISO8601 nebo před ním.|
-| **`runtimeStatus`**   | Řetězec dotazu    | Volitelný parametr. Když se tato pole zadáte, vyfiltruje seznam vyčištěných instancí na základě jejich běhového stavu. Seznam možných hodnot běhového stavu najdete v článku [dotazování instancí](durable-functions-instance-management.md) . |
+| **`createdTimeFrom`** | Řetězec dotazu    | Filtruje seznam vyčištěných instancí, které byly vytvořeny na daném časovém razítku ISO8601 nebo po něm.|
+| **`createdTimeTo`**   | Řetězec dotazu    | Volitelný parametr. Pokud je zadán, filtruje seznam vyčištěných instancí, které byly vytvořeny na nebo před daným časovým razítkem ISO8601.|
+| **`runtimeStatus`**   | Řetězec dotazu    | Volitelný parametr. Pokud je zadán, filtruje seznam vyčištěných instancí na základě jejich stavu za běhu. Seznam možných hodnot stavu za běhu naleznete v článku [Dotazování instancí.](durable-functions-instance-management.md) |
 
 > [!NOTE]
-> Tato operace může být velmi náročná, pokud jde o Azure Storage I/O, pokud jsou v tabulkách instance a/nebo historie velké množství řádků. Další podrobnosti o těchto tabulkách najdete v dokumentaci [výkon a škálování v Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md#instances-table) .
+> Tato operace může být velmi nákladné z hlediska Azure Storage V/V, pokud existuje velké množství řádků v instancích nebo historie tabulek. Další podrobnosti o těchto tabulkách najdete v dokumentaci [k výkonu a škálování v dokumentaci durable functions (Azure Functions).](durable-functions-perf-and-scale.md#instances-table)
 
 ### <a name="response"></a>Odpověď
 
-Je možné vrátit následující hodnoty stavového kódu HTTP.
+Lze vrátit následující hodnoty stavového kódu PROTOKOLU HTTP.
 
-* **HTTP 200 (ok)** : Historie instancí byla úspěšně vyprázdněna.
-* **HTTP 404 (Nenalezeno)** : nebyly nalezeny žádné instance odpovídající výrazu filtru.
+* **HTTP 200 (OK)**: Historie instancí byla úspěšně vymazána.
+* **HTTP 404 (Nebyl nalezen)**: Nebyly nalezeny žádné instance, které by odpovídaly výrazu filtru.
 
 Datová část odpovědi pro případ **HTTP 200** je objekt JSON s následujícím polem:
 
-| Pole                   | Typ dat | Popis |
+| Pole                   | Datový typ | Popis |
 |-------------------------|-----------|-------------|
-| **`instancesDeleted`**  | integer   | Počet odstraněných instancí. |
+| **`instancesDeleted`**  | celé číslo   | Počet odstraněných instancí. |
 
-Tady je příklad datové části odezvy (naformátovaná pro čitelnost):
+Zde je příklad užitečné části odpovědí (formátován pro čitelnost):
 
 ```json
 {
@@ -459,11 +459,11 @@ Tady je příklad datové části odezvy (naformátovaná pro čitelnost):
 
 ## <a name="raise-event"></a>Vyvolat událost
 
-Odešle zprávu s oznámením o události do spuštěné instance orchestrace.
+Odešle zprávu s oznámením události spuštěné instanci orchestrace.
 
 ### <a name="request"></a>Žádost
 
-V případě verze 1. x modulu runtime Functions je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
+Pro verzi 1.x functions runtime je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}
@@ -472,7 +472,7 @@ POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{e
     &code={systemKey}
 ```
 
-Ve verzi 2. x modulu runtime Functions má formát adresy URL stejné parametry, ale mírně odlišnou předponou:
+Ve verzi 2.x funkce runtime, formát URL má všechny stejné parametry, ale s mírně odlišnou předponou:
 
 ```http
 POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
@@ -481,24 +481,24 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
     &code={systemKey}
 ```
 
-Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
+Parametry požadavku pro toto rozhraní API zahrnují výchozí sadu uvedenou dříve, stejně jako následující jedinečné parametry:
 
 | Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | Adresa URL             | ID instance orchestrace. |
-| **`eventName`**   | Adresa URL             | Název události, na které instance cílové orchestrace čeká. |
-| **`{content}`**   | Požadavek na obsah | Datová část události ve formátu JSON. |
+| **`instanceId`**  | zprostředkovatele identity             | ID instance orchestrace. |
+| **`eventName`**   | zprostředkovatele identity             | Název události, na kterou čeká instance orchestrace cíle. |
+| **`{content}`**   | Žádost o obsah | Datová část události ve formátu JSON. |
 
 ### <a name="response"></a>Odpověď
 
-Může být vráceno několik možných hodnot stavového kódu.
+Lze vrátit několik možných hodnot stavového kódu.
 
-* **HTTP 202 (přijato)** : vyvolaná událost byla přijata ke zpracování.
-* **HTTP 400 (chybný požadavek)** : obsah požadavku nebyl typu `application/json` nebo nebyl platný formát JSON.
-* **HTTP 404 (Nenalezeno)** : Zadaná instance nebyla nalezena.
-* **HTTP 410 (pryč)** : Zadaná instance byla dokončena nebo se nezdařila a nemůže zpracovat žádné události, které byly vyvolány.
+* **HTTP 202 (Přijato)**: Vyzdvaná událost byla přijata ke zpracování.
+* **HTTP 400 (Chybný požadavek)**: `application/json` Obsah požadavku nebyl typu nebo nebyl platný JSON.
+* **HTTP 404 (Nebyl nalezen)**: Zadaná instance nebyla nalezena.
+* **HTTP 410 (Gone):** Zadaná instance byla dokončena nebo se nezdařila a nemůže zpracovat žádné vyvolané události.
 
-Tady je příklad požadavku, který odesílá řetězec JSON `"incr"` do instance, která čeká na **operaci**s názvem událost:
+Zde je příklad požadavku, který odešle řetězec `"incr"` JSON instanci čekající na operaci s názvem **:**
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -516,7 +516,7 @@ Ukončí spuštěnou instanci orchestrace.
 
 ### <a name="request"></a>Žádost
 
-V případě verze 1. x modulu runtime Functions je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
+Pro verzi 1.x functions runtime je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate
@@ -526,7 +526,7 @@ POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate
     &reason={text}
 ```
 
-Ve verzi 2. x modulu runtime Functions má formát adresy URL stejné parametry, ale mírně odlišnou předponou:
+Ve verzi 2.x funkce runtime, formát URL má všechny stejné parametry, ale s mírně odlišnou předponou:
 
 ```http
 POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
@@ -536,22 +536,22 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
     &reason={text}
 ```
 
-Parametry žádosti pro toto rozhraní API obsahují výchozí sadu uvedenou dříve a také následující jedinečný parametr.
+Parametry požadavku pro toto rozhraní API zahrnují výchozí sadu uvedenou dříve, stejně jako následující jedinečný parametr.
 
 | Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | Adresa URL             | ID instance orchestrace. |
-| **`reason`**      | Řetězec dotazu    | Volitelná. Důvod ukončení instance Orchestration. |
+| **`instanceId`**  | zprostředkovatele identity             | ID instance orchestrace. |
+| **`reason`**      | Řetězec dotazu    | Nepovinný parametr. Důvod pro ukončení instance orchestrace. |
 
 ### <a name="response"></a>Odpověď
 
-Může být vráceno několik možných hodnot stavového kódu.
+Lze vrátit několik možných hodnot stavového kódu.
 
-* **HTTP 202 (přijato)** : žádost o ukončení byla přijata ke zpracování.
-* **HTTP 404 (Nenalezeno)** : Zadaná instance nebyla nalezena.
-* **HTTP 410 (pryč)** : Zadaná instance je dokončená nebo se nezdařila.
+* **HTTP 202 (Přijato)**: Požadavek na ukončení byl přijat ke zpracování.
+* **HTTP 404 (Nebyl nalezen)**: Zadaná instance nebyla nalezena.
+* **HTTP 410 (Gone):** Zadaná instance byla dokončena nebo se nezdařila.
 
-Tady je příklad požadavku, který ukončí spuštěnou instanci a určuje důvod **ladění**:
+Zde je příklad požadavku, který ukončí spuštěnou instanci a určuje důvod **buggy**:
 
 ```
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -559,13 +559,13 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 Odpovědi pro toto rozhraní API neobsahují žádný obsah.
 
-## <a name="rewind-instance-preview"></a>Instance Rewind (Preview)
+## <a name="rewind-instance-preview"></a>Instance převinout zpět (náhled)
 
-Obnoví instanci orchestrace, která selhala, do běžícího stavu přehráním posledních neúspěšných operací.
+Obnoví instanci orchestrace se selháním do spuštěného stavu přehráním posledních neúspěšných operací.
 
 ### <a name="request"></a>Žádost
 
-V případě verze 1. x modulu runtime Functions je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
+Pro verzi 1.x functions runtime je požadavek formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/rewind
@@ -575,7 +575,7 @@ POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/rewind
     &reason={text}
 ```
 
-Ve verzi 2. x modulu runtime Functions má formát adresy URL stejné parametry, ale mírně odlišnou předponou:
+Ve verzi 2.x funkce runtime, formát URL má všechny stejné parametry, ale s mírně odlišnou předponou:
 
 ```http
 POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
@@ -585,22 +585,22 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
     &reason={text}
 ```
 
-Parametry žádosti pro toto rozhraní API obsahují výchozí sadu uvedenou dříve a také následující jedinečný parametr.
+Parametry požadavku pro toto rozhraní API zahrnují výchozí sadu uvedenou dříve, stejně jako následující jedinečný parametr.
 
 | Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | Adresa URL             | ID instance orchestrace. |
-| **`reason`**      | Řetězec dotazu    | Volitelná. Důvod pro převinutí instance Orchestration. |
+| **`instanceId`**  | zprostředkovatele identity             | ID instance orchestrace. |
+| **`reason`**      | Řetězec dotazu    | Nepovinný parametr. Důvod pro převíjení instance orchestrace. |
 
 ### <a name="response"></a>Odpověď
 
-Může být vráceno několik možných hodnot stavového kódu.
+Lze vrátit několik možných hodnot stavového kódu.
 
-* **HTTP 202 (přijato)** : žádost o převinutí byla přijata ke zpracování.
-* **HTTP 404 (Nenalezeno)** : Zadaná instance nebyla nalezena.
-* **HTTP 410 (pryč)** : Zadaná instance je dokončená nebo se ukončila.
+* **HTTP 202 (Přijato)**: Požadavek na převíjení zpět byl přijat ke zpracování.
+* **HTTP 404 (Nebyl nalezen)**: Zadaná instance nebyla nalezena.
+* **HTTP 410 (Gone)**: Zadaná instance byla dokončena nebo byla ukončena.
 
-Tady je příklad požadavku, který převinutí neúspěšné instance a určuje důvod **pevné**:
+Zde je příklad požadavku, který převine instanci se selháním a určuje důvod **pevné**:
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -610,14 +610,14 @@ Odpovědi pro toto rozhraní API neobsahují žádný obsah.
 
 ## <a name="signal-entity"></a>Entita signálu
 
-Pošle jednosměrnou zprávu o operaci na [trvalou entitu](durable-functions-types-features-overview.md#entity-functions). Pokud entita neexistuje, vytvoří se automaticky.
+Odešle zprávu o jednosměrné operaci [trvalé entitě](durable-functions-types-features-overview.md#entity-functions). Pokud entita neexistuje, bude vytvořena automaticky.
 
 > [!NOTE]
-> Trvalé entity jsou k dispozici od Durable Functions 2,0.
+> Trvalé entity jsou k dispozici počínaje trvalé funkce 2.0.
 
 ### <a name="request"></a>Žádost
 
-Požadavek HTTP je naformátován takto (pro přehlednost se zobrazí více řádků):
+Požadavek HTTP je formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
 
 ```http
 POST /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
@@ -627,16 +627,16 @@ POST /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
     &op={operationName}
 ```
 
-Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
+Parametry požadavku pro toto rozhraní API zahrnují výchozí sadu uvedenou dříve, stejně jako následující jedinečné parametry:
 
 | Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
-| **`entityName`**  | Adresa URL             | Název (typ) entity. |
-| **`entityKey`**   | Adresa URL             | Klíč (jedinečné ID) entity |
-| **`op`**          | Řetězec dotazu    | Volitelná. Název uživatelsky definované operace, která má být vyvolána. |
-| **`{content}`**   | Požadavek na obsah | Datová část události ve formátu JSON. |
+| **`entityName`**  | zprostředkovatele identity             | Název (typ) entity. |
+| **`entityKey`**   | zprostředkovatele identity             | Klíč (jedinečné ID) entity. |
+| **`op`**          | Řetězec dotazu    | Nepovinný parametr. Název uživatelem definované operace vyvolat. |
+| **`{content}`**   | Žádost o obsah | Datová část události ve formátu JSON. |
 
-Tady je příklad požadavku, který pošle uživatelem definovanou zprávu "Add" do `Counter` entitě s názvem `steps`. Obsahem zprávy je hodnota `5`. Pokud entita ještě neexistuje, vytvoří se tímto požadavkem:
+Zde je příklad požadavku, který odešle uživatelem `Counter` definovanou `steps`zprávu "Přidat" entitě s názvem . Obsah zprávy je hodnota `5`. Pokud entita ještě neexistuje, bude vytvořena tímto požadavkem:
 
 ```http
 POST /runtime/webhooks/durabletask/entities/Counter/steps?op=Add
@@ -646,17 +646,17 @@ Content-Type: application/json
 ```
 
 > [!NOTE]
-> Ve výchozím nastavení s [entitami založenými na třídě v rozhraní .NET](durable-functions-dotnet-entities.md#defining-entity-classes), přičemž při zadání `op` hodnoty `delete` se odstraní stav entity. Pokud entita definuje operaci s názvem `delete`, bude namísto toho vyvolána operace definovaná uživatelem.
+> Ve výchozím nastavení s [entitami založenými na třídách v rozhraní .NET](durable-functions-dotnet-entities.md#defining-entity-classes)bude zadání `op` hodnoty `delete` odstraněn stav entity. Pokud entita definuje `delete`operaci s názvem , bude však tato uživatelem definovaná operace vyvolána.
 
 ### <a name="response"></a>Odpověď
 
 Tato operace má několik možných odpovědí:
 
-* **HTTP 202 (přijato)** : operace signalizace byla přijata pro asynchronní zpracování.
-* **HTTP 400 (chybný požadavek)** : obsah požadavku nebyl typu `application/json`, nebyl platný formát JSON nebo má neplatnou hodnotu `entityKey`.
-* **HTTP 404 (Nenalezeno)** : zadaný `entityName` nebyl nalezen.
+* **HTTP 202 (Přijato)**: Provoz signálu byl přijat pro asynchronní zpracování.
+* **HTTP 400 (Chybný požadavek)**: `application/json`Obsah požadavku nebyl typu , nebyl `entityKey` platný JSON nebo měl neplatnou hodnotu.
+* **HTTP 404 (Nebyl nalezen)**: Zadaný `entityName` nebyl nalezen.
 
-Úspěšný požadavek protokolu HTTP neobsahuje žádný obsah v odpovědi. Neúspěšný požadavek HTTP může v obsahu odpovědi obsahovat informace o chybě ve formátu JSON.
+Úspěšný požadavek HTTP neobsahuje žádný obsah v odpovědi. Neúspěšný požadavek HTTP může obsahovat informace o chybě ve formátu JSON v obsahu odpovědi.
 
 ## <a name="get-entity"></a>Získat entitu
 
@@ -664,7 +664,7 @@ Získá stav zadané entity.
 
 ### <a name="request"></a>Žádost
 
-Požadavek HTTP je naformátován takto (pro přehlednost se zobrazí více řádků):
+Požadavek HTTP je formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
 
 ```http
 GET /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
@@ -677,19 +677,19 @@ GET /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
 
 Tato operace má dvě možné odpovědi:
 
-* **HTTP 200 (ok)** : zadaná entita existuje.
-* **HTTP 404 (Nenalezeno)** : zadaná entita nebyla nalezena.
+* **HTTP 200 (OK)**: Zadaná entita existuje.
+* **HTTP 404 (Nebyl nalezen)**: Zadaná entita nebyla nalezena.
 
-Úspěšná odpověď obsahuje stav serializovaného prvku ve formátu JSON, který je jeho obsahem.
+Úspěšná odpověď obsahuje json serializovaný stav entity jako její obsah.
 
 ### <a name="example"></a>Příklad
-Následující příklad požadavku HTTP Získá stav existující entity `Counter` s názvem `steps`:
+Následující příklad požadavku HTTP získá stav `Counter` existující `steps`entity s názvem :
 
 ```http
 GET /runtime/webhooks/durabletask/entities/Counter/steps
 ```
 
-Pokud entita `Counter` jednoduše obsahovala určitý počet kroků uložených v poli `currentValue`, může obsah odpovědi vypadat jako v následujícím formátu (naformátovaný pro čtení):
+Pokud `Counter` entita jednoduše obsahovala několik `currentValue` kroků uložených v poli, může obsah odpovědi vypadat takto (formátován pro čitelnost):
 
 ```json
 {
@@ -699,11 +699,11 @@ Pokud entita `Counter` jednoduše obsahovala určitý počet kroků uložených 
 
 ## <a name="list-entities"></a>Entity seznamu
 
-Pomocí názvu entity nebo poslední datum operace můžete zadat dotaz na více entit.
+Můžete dotazovat na více entit podle názvu entity nebo podle data poslední operace.
 
 ### <a name="request"></a>Žádost
 
-Požadavek HTTP je naformátován takto (pro přehlednost se zobrazí více řádků):
+Požadavek HTTP je formátován následujícím způsobem (pro přehlednost je zobrazeno více řádků):
 
 ```http
 GET /runtime/webhooks/durabletask/entities/{entityName}
@@ -716,34 +716,34 @@ GET /runtime/webhooks/durabletask/entities/{entityName}
     &top={integer}
 ```
 
-Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
+Parametry požadavku pro toto rozhraní API zahrnují výchozí sadu uvedenou dříve, stejně jako následující jedinečné parametry:
 
 | Pole                       | Typ parametru  | Popis |
 |-----------------------------|-----------------|-------------|
-| **`entityName`**            | Adresa URL             | Volitelná. Když se tato pole zadáte, vyfiltruje seznam vrácených entit podle jejich názvu (bez rozlišení velkých a malých písmen). |
-| **`fetchState`**            | Řetězec dotazu    | Volitelný parametr. Pokud je nastavená na `true`, bude stav entity obsažený v datové části odpovědi. |
-| **`lastOperationTimeFrom`** | Řetězec dotazu    | Volitelný parametr. Když se tato operace zadá, vyfiltruje seznam vrácených entit, které zpracovaly operace po zadaném časovém razítku ISO8601. |
-| **`lastOperationTimeTo`**   | Řetězec dotazu    | Volitelný parametr. Když se tato operace zadá, vyfiltruje seznam vrácených entit, které zpracovaly operace před zadaným časovým razítkem ISO8601. |
-| **`top`**                   | Řetězec dotazu    | Volitelný parametr. Při zadání omezí počet entit vrácených dotazem. |
+| **`entityName`**            | zprostředkovatele identity             | Nepovinný parametr. Pokud je zadán, filtruje seznam vrácených entit podle jejich názvu entity (malá a velká písmena). |
+| **`fetchState`**            | Řetězec dotazu    | Volitelný parametr. Pokud je `true`nastavena na , stav entity bude zahrnut do datové části odpovědi. |
+| **`lastOperationTimeFrom`** | Řetězec dotazu    | Volitelný parametr. Pokud je zadán, filtruje seznam vrácených entit, které zpracovávaly operace po daném časovém razítku ISO8601. |
+| **`lastOperationTimeTo`**   | Řetězec dotazu    | Volitelný parametr. Pokud je zadán, filtruje seznam vrácených entit, které zpracovávaly operace před daným časovým razítkem ISO8601. |
+| **`top`**                   | Řetězec dotazu    | Volitelný parametr. Pokud je zadán, omezuje počet entit vrácených dotazem. |
 
 
 ### <a name="response"></a>Odpověď
 
-Úspěšná odpověď HTTP 200 obsahuje pole entity Serializované ve formátu JSON a volitelně stav každé entity.
+Úspěšná odpověď HTTP 200 obsahuje serializované pole entit JSON a volitelně stav každé entity.
 
-Ve výchozím nastavení tato operace vrátí prvních 100 entit, které odpovídají kritériím dotazu. Volající může zadat hodnotu parametru řetězce dotazu pro `top`, aby vrátil jiný maximální počet výsledků. Pokud existuje více výsledků nad rámec toho, co je vráceno, v hlavičce odpovědi je také vrácen token pokračování. Název hlavičky je `x-ms-continuation-token`.
+Ve výchozím nastavení vrátí operace prvních 100 entit, které odpovídají kritériím dotazu. Volající může zadat hodnotu parametru řetězce dotazu pro `top` vrácení jiného maximálního počtu výsledků. Pokud existují další výsledky nad rámec co je vrácena, token pokračování je také vrácena v záhlaví odpovědi. Název záhlaví je `x-ms-continuation-token`.
 
-Pokud nastavíte hodnotu tokenu pokračování v další hlavičce žádosti, můžete získat další stránku s výsledky. Tento název hlavičky požadavku je také `x-ms-continuation-token`.
+Pokud nastavíte hodnotu tokenu pokračování v další hlavičce požadavku, můžete získat další stránku výsledků. Tento název hlavičky požadavku `x-ms-continuation-token`je také .
 
-### <a name="example---list-all-entities"></a>Příklad – seznam všech entit
+### <a name="example---list-all-entities"></a>Příklad - seznam všech entit
 
-Následující příklad požadavku HTTP obsahuje seznam všech entit v centru úloh:
+V následujícím příkladu požadavku HTTP jsou uvedeny všechny entity v centru úloh:
 
 ```http
 GET /runtime/webhooks/durabletask/entities
 ```
 
-JSON odpovědi může vypadat podobně jako v následujícím textu (formátovaný pro čtení):
+Odpověď JSON může vypadat takto (formátován pro čitelnost):
 
 ```json
 [
@@ -766,15 +766,15 @@ JSON odpovědi může vypadat podobně jako v následujícím textu (formátovan
 ]
 ```
 
-### <a name="example---filtering-the-list-of-entities"></a>Příklad: filtrování seznamu entit
+### <a name="example---filtering-the-list-of-entities"></a>Příklad - filtrování seznamu entit
 
-Následující příklad požadavku HTTP uvádí pouze první dvě entity typu `counter` a také načítá jejich stav:
+Následující příklad požadavku HTTP uvádí pouze první `counter` dvě entity typu a také načte jejich stav:
 
 ```http
 GET /runtime/webhooks/durabletask/entities/counter?top=2&fetchState=true
 ```
 
-JSON odpovědi může vypadat podobně jako v následujícím textu (formátovaný pro čtení):
+Odpověď JSON může vypadat takto (formátován pro čitelnost):
 
 ```json
 [
@@ -794,4 +794,4 @@ JSON odpovědi může vypadat podobně jako v následujícím textu (formátovan
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Naučte se používat Application Insights k monitorování trvalých funkcí](durable-functions-diagnostics.md)
+> [Naučte se používat Application Insights ke sledování odolných funkcí](durable-functions-diagnostics.md)

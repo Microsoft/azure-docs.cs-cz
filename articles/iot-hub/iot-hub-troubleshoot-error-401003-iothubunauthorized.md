@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s chybami Azure IoT Hub 401003 IoTHubUnauthorized
-description: Vysvětlení, jak opravit chybu 401003 IoTHubUnauthorized
+title: Řešení potíží s chybou služby Azure IoT Hub 401003 IoTHubNeautorizováno
+description: Pochopit, jak opravit chybu 401003 IoTHubNeautorizováno
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -9,64 +9,64 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: d0a9f643516af5945037acb3dd1da24b06944171
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284405"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
-Tento článek popisuje příčiny a řešení 401003 chyb **IoTHubUnauthorized** .
+Tento článek popisuje příčiny a řešení pro **401003 IoTHubNeautorizované** chyby.
 
-## <a name="symptoms"></a>Symptomy
+## <a name="symptoms"></a>Příznaky
 
 ### <a name="symptom-1"></a>Příznak 1
 
-V diagnostických protokolech vidíte vzor zařízení odpojování s **401003 IoTHubUnauthorized**, následovaný **404104 DeviceConnectionClosedRemotely**a pak se úspěšně připojí krátce po.
+V diagnostických protokolech se zobrazí vzor zařízení odpojení s **401003 IoTHubUnauthorized**, následuje **404104 DeviceConnectionClosedRemotely**a potom úspěšně připojení krátce poté.
 
 ### <a name="symptom-2"></a>Příznak 2
 
-Požadavky na IoT Hub selžou s jednou z následujících chybových zpráv:
+Požadavky na službu IoT Hub se nezdaří s jednou z následujících chybových zpráv:
 
-* Chybí autorizační hlavička.
-* IotHub '\*' neobsahuje zadané zařízení '\*'
-* Autorizační pravidlo\*nepovoluje přístup pro\*.
-* Pro toto zařízení se nepovedlo ověřování, obnovit token nebo certifikát a znovu se připojit.
-* Kryptografický otisk neodpovídá konfiguraci: kryptografický otisk: SHA1Hash =\*, SHA2Hash =\*; Konfigurace: PrimaryThumbprint =\*, SecondaryThumbprint =\*
+* Chybí hlavička autorizace.
+* IotHub\*' ' neobsahuje zadané\*zařízení "
+* Autorizační\*pravidlo " " neumožňuje přístup pro "\*
+* Ověřování se nezdařilo pro toto zařízení, obnovení tokenu nebo certifikátu a opětovné připojení
+* Kryptografický otisk neodpovídá konfiguraci: Kryptografický otisk: SHA1Hash=\*, SHA2Hash=\*; Konfigurace: PrimaryThumbprint=\*, SecondaryThumbprint=\*
 
 ## <a name="cause"></a>Příčina
 
-### <a name="cause-1"></a>Příčiny 1
+### <a name="cause-1"></a>Příčina 1
 
-U MQTT se některé sady SDK spoléhají na IoT Hub k vydání odpojení, když vyprší platnost tokenu SAS, který ví, kdy se má obnovit. Abyste 
+Pro MQTT některé sady SDK spoléhají na ioT Hub k vydání odpojení při vypršení platnosti tokenu SAS vědět, kdy jej aktualizovat. Takže 
 
-1. Vyprší platnost tokenu SAS.
-1. IoT Hub si vyvšimla vypršení platnosti a odpojí zařízení s **401003 IoTHubUnauthorized**
-1. Zařízení dokončí odpojení s **404104 DeviceConnectionClosedRemotely**
-1. Sada IoT SDK generuje nový token SAS.
-1. Zařízení se úspěšně znovu připojí k IoT Hub
+1. Platnost tokenu SAS vyprší
+1. IoT Hub si všimne vypršení platnosti a odpojí zařízení s **401003 IoTHubNeautorizované**
+1. Zařízení dokončí odpojení pomocí **404104 DeviceConnectionClosedly**
+1. Sada IoT SDK generuje nový token SAS
+1. Zařízení se úspěšně znovu připojí k službě IoT Hub
 
-### <a name="cause-2"></a>Příčiny 2
+### <a name="cause-2"></a>Příčina 2
 
-IoT Hub nemůže ověřit záhlaví, pravidlo nebo klíč ověřování.
+IoT Hub nemohl ověřit ověřovací hlavičku, pravidlo nebo klíč.
 
 ## <a name="solution"></a>Řešení
 
 ### <a name="solution-1"></a>Řešení 1
 
-Pokud používáte sadu IoT SDK pro připojení pomocí připojovacího řetězce zařízení, není nutná žádná akce. Sada IoT SDK znovu vygeneruje nový token pro opětovné připojení k vypršení platnosti tokenu SAS. 
+Pokud používáte sadu IoT SDK pro připojení pomocí připojovacího řetězce zařízení, není nutná žádná akce. Sada IoT SDK regeneruje nový token pro opětovné připojení při vypršení platnosti tokenu SAS. 
 
-Pokud se jedná o problém, přepněte se na sadu C SDK, která před vypršením platnosti obnoví token SAS. Navíc pro AMQP se může token SAS aktualizovat bez odpojení.
+Pokud objem chyb je problém, přepněte na C SDK, který obnoví token SAS před vypršením platnosti. Navíc pro AMQP token SAS lze aktualizovat bez odpojení.
 
 ### <a name="solution-2"></a>Řešení 2
 
-Obecně uvedená chybová zpráva by měla vysvětlit, jak chybu opravit. Pokud z nějakého důvodu nemáte přístup k podrobnostem chybové zprávy, ujistěte se, že:
+Obecně platí, že chybová zpráva prezentovány by měl vysvětlit, jak opravit chybu. Pokud z nějakého důvodu nemáte přístup k podrobnostem chybové zprávy, ujistěte se, že:
 
-- Platnost SAS nebo jiného tokenu zabezpečení, který používáte, už nevypršela. 
-- Přihlašovací údaje pro autorizaci jsou ve správném formátu pro protokol, který používáte. Další informace najdete v tématu [IoT Hub Access Control](iot-hub-devguide-security.md).
+- Platnost sas nebo jiného tokenu zabezpečení, který používáte, vypršela. 
+- Autorizační pověření je dobře vytvořenpro protokol, který používáte. Další informace najdete v tématu [Řízení přístupu k centru IoT Hub](iot-hub-devguide-security.md).
 - Použité autorizační pravidlo má oprávnění pro požadovanou operaci.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pro snazší ověřování IoT Hub doporučujeme použít sady [SDK Azure IoT](iot-hub-devguide-sdks.md).
+Chcete-li usnadnit ověřování služby IoT Hub, doporučujeme používat [sady Azure IoT SDK](iot-hub-devguide-sdks.md).
