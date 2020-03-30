@@ -1,59 +1,59 @@
 ---
-title: Správa verzí aplikací blockchain – Azure blockchain Workbench
-description: Jak používat verze aplikací v Azure blockchain Workbench Preview.
+title: Správa verzí blockchainových aplikací - Azure Blockchain Workbench
+description: Jak používat verze aplikací ve verzi Azure Blockchain Workbench Preview.
 ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 45219790cf0cd064e0fcd456e262b2f93aa03ac9
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74323911"
 ---
-# <a name="azure-blockchain-workbench-preview-application-versioning"></a>Správa verzí aplikace ve verzi Preview služby Azure blockchain Workbench
+# <a name="azure-blockchain-workbench-preview-application-versioning"></a>Správa verzí aplikací Azure Blockchain Workbench Preview
 
-Můžete vytvářet a používat víc verzí aplikace Azure blockchain Workbench Preview. Pokud je nahráno více verzí stejné aplikace, je k dispozici historie verzí a uživatelé si mohou vybrat, kterou verzi chtějí používat.
+Můžete vytvořit a používat více verzí aplikace Azure Blockchain Workbench Preview. Pokud je odesláno více verzí stejné aplikace, je k dispozici historie verzí a uživatelé si mohou vybrat, kterou verzi chtějí použít.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nasazení aplikace blockchain Workbench Další informace najdete v tématu [nasazení Azure blockchain Workbench](deploy.md) pro podrobnosti o nasazení.
-* Nasazená aplikace blockchain v blockchain Workbench. Další informace najdete [v tématu Vytvoření aplikace v blockchain v Azure blockchain Workbench](create-app.md) .
+* Nasazení blockchainworkbench. Další informace najdete v [tématu Nasazení Azure Blockchain Workbench](deploy.md) podrobnosti o nasazení
+* Nasazená blockchainová aplikace v Blockchain Workbench. Viz [Vytvoření blockchainové aplikace v Azure Blockchain Workbench](create-app.md)
 
 ## <a name="add-an-app-version"></a>Přidání verze aplikace
 
-Pokud chcete přidat novou verzi, nahrajte do aplikace blockchain Workbench nové soubory konfigurace a inteligentních smluv.
+Chcete-li přidat novou verzi, nahrajte novou konfiguraci a inteligentní soubory smluv do Blockchain Workbench.
 
-1. Ve webovém prohlížeči přejděte na webovou adresu blockchain Workbench. Například `https://{workbench URL}.azurewebsites.net/` informace o tom, jak najít webovou adresu blockchain Workbench, najdete v tématu [Webová adresa URL služby blockchain Workbench](deploy.md#blockchain-workbench-web-url) .
-2. Přihlaste se jako [správce aplikace blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
-3. Vyberte aplikaci blockchain, kterou chcete aktualizovat, s jinou verzí.
-4. Vyberte **Přidat verzi**. Zobrazí se podokno **Přidat verzi** .
-5. Vyberte nové konfigurace kontraktu verze a soubory kódu kontraktu, které se mají nahrát. Konfigurační soubor je automaticky ověřen. Před nasazením aplikace opravte všechny chyby ověřování.
-6. Pokud chcete přidat novou verzi aplikace blockchain, vyberte **Přidat verzi** .
+1. Ve webovém prohlížeči přejděte na webovou adresu Blockchain Workbench. Informace o `https://{workbench URL}.azurewebsites.net/` tom, jak najít webovou adresu Blockchain Workbench, najdete například v [tématu Blockchain Workbench Web URL](deploy.md#blockchain-workbench-web-url)
+2. Přihlaste se jako [správce Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
+3. Vyberte blockchainovou aplikaci, kterou chcete aktualizovat s jinou verzí.
+4. Vyberte **Přidat verzi**. Zobrazí se podokno **Přidat verzi.**
+5. Zvolte novou konfiguraci smlouvy verze a soubory kódu smlouvy, které chcete nahrát. Konfigurační soubor je automaticky ověřen. Před nasazením aplikace opravte všechny chyby ověření.
+6. Vyberte **Přidat verzi** a přidejte novou verzi blockchainové aplikace.
 
     ![Přidání nové verze](media/version-app/add-version.png)
 
-Nasazení aplikace blockchain může trvat několik minut. Po dokončení nasazení aktualizujte stránku aplikace. Výběrem aplikace a kliknutím na tlačítko **Historie verzí** zobrazíte historii verzí aplikace.
+Nasazení blockchainové aplikace může trvat několik minut. Po dokončení nasazení aktualizujte stránku aplikace. Výběr aplikace a výběr tlačítka **Historie verzí** zobrazí historii verzí aplikace.
 
 > [!IMPORTANT]
-> Předchozí verze aplikace jsou zakázané. Můžete jednotlivě znovu povolit starší verze.
+> Předchozí verze aplikace jsou zakázány. Můžete jednotlivě znovu povolit minulé verze.
 >
-> Pokud byly provedeny změny v rolích aplikace v nové verzi, bude pravděpodobně nutné znovu přidat členy do aplikačních rolí.
+> Pokud byly v nové verzi provedeny změny rolí aplikace, bude pravděpodobně nutné znovu přidat členy k rolím aplikace.
 
-## <a name="using-app-versions"></a>Používání verzí aplikace
+## <a name="using-app-versions"></a>Používání verzí aplikací
 
-Ve výchozím nastavení se v blockchain Workbench používá nejnovější povolená verze aplikace. Pokud chcete použít předchozí verzi aplikace, musíte nejdřív zvolit verzi ze stránky aplikace.
+Ve výchozím nastavení se v Blockchain Workbench používá nejnovější povolená verze aplikace. Pokud chcete použít předchozí verzi aplikace, musíte nejprve vybrat verzi ze stránky aplikace.
 
-1. V části aplikace blockchain Workbench zaškrtněte políčko aplikace obsahující kontrakt, který chcete použít. Pokud jsou povoleny předchozí verze, je k dispozici tlačítko Historie verzí.
-2. Vyberte tlačítko **Historie verzí** .
-3. V podokně Historie verzí zvolte verzi aplikace výběrem odkazu ve sloupci *Datum změny* .
+1. V části aplikace Blockchain Workbench zaškrtněte políčko aplikace obsahující smlouvu, kterou chcete použít. Pokud jsou povoleny předchozí verze, je k dispozici tlačítko historie verzí.
+2. Vyberte tlačítko **Historie verzí.**
+3. V podokně Historie verzí zvolte verzi aplikace výběrem odkazu ve sloupci *Datum změny.*
 
-    ![Zvolit předchozí verzi](media/version-app/use-version.png)
+    ![Výběr předchozí verze](media/version-app/use-version.png)
 
-    Můžete vytvářet nové smlouvy nebo provádět akce s předchozími smlouvami o verzi. Verze aplikace se zobrazí za názvem aplikace a zobrazí se informace o starší verzi.
+    Můžete vytvořit nové smlouvy nebo provést akce u předchozích smluv verze. Verze aplikace se zobrazí za názvem aplikace a zobrazí se upozornění o starší verzi.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Řešení potíží s Azure blockchain Workbench](troubleshooting.md)
+* [Řešení potíží s pracovní mitinou Azure Blockchain](troubleshooting.md)

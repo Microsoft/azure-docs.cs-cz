@@ -1,130 +1,130 @@
 ---
-title: Profilace produkčních aplikací v Azure pomocí Application Insights Profiler
-description: Identifikujte cestu k Hotu v kódu webového serveru pomocí profileru s nízkou úrovní.
+title: Profilování produkčních aplikací v Azure pomocí Profileru přehledů aplikací
+description: Identifikujte horkou cestu v kódu webového serveru pomocí profileru s nízkým imstopací.
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671643"
 ---
-# <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilace produkčních aplikací v Azure pomocí Application Insights
-## <a name="enable-application-insights-profiler-for-your-application"></a>Povolení Application Insights Profiler pro vaši aplikaci
+# <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilprodukční aplikace v Azure s Application Insights
+## <a name="enable-application-insights-profiler-for-your-application"></a>Povolení profileru přehledů aplikací pro vaši aplikaci
 
-Azure Application Insights Profiler poskytuje trasování výkonu pro aplikace, které běží v produkčním prostředí v Azure. Profiler automaticky zachycuje data ve velkém měřítku bez negativního vlivu na uživatele. Profiler vám pomůže identifikovat "horkou" cestu kódu, která při zpracování konkrétního webového požadavku zabere nejdelší čas. 
+Azure Application Insights Profiler poskytuje sledování výkonu pro aplikace, které běží v produkčním prostředí v Azure. Profiler zachytí data automaticky ve velkém měřítku bez negativního ovlivnění uživatelů. Profiler pomáhá identifikovat "horké" cesta kódu, která trvá nejdelší dobu, když zpracovává konkrétní webový požadavek. 
 
-Profiler funguje s aplikacemi .NET nasazenými na následujících službách Azure. Konkrétní pokyny pro povolení profileru pro každý typ služby jsou uvedené v odkazech níže.
+Profiler pracuje s aplikacemi .NET, které jsou nasazené na následujících službách Azure. Konkrétní pokyny pro povolení Profiler pro každý typ služby jsou v odkazech níže.
 
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Virtual Machines a Virtual Machine Scale Sets](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
-* [**Náhled** ASP.NET Core Azure Linux Web Apps](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
+* [Virtuální počítače Azure a škálovací sady virtuálních počítačů](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [**NÁHLED** ASP.NET základní webové aplikace Azure Pro Linux](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
 
-Pokud jste povolili profilování, ale nevidíte trasování, podívejte se na naše [Průvodce odstraňováním potíží](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
+Pokud jste povolili Profiler, ale nevidíte trasování, podívejte se do našeho [průvodce odstraňováním potíží](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
 
-## <a name="view-profiler-data"></a>Zobrazit data profileru
+## <a name="view-profiler-data"></a>Zobrazení dat profileru
 
-Aby Profiler mohl nahrávat trasování, musí vaše aplikace aktivně zpracovávat požadavky. Pokud provádíte experiment, můžete vygenerovat žádosti do vaší webové aplikace pomocí [Application Insights testování výkonu](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Pokud máte nově povolený Profiler, můžete spustit krátký zátěžový test. Když je spuštěn zátěžový test, v [podokně **Nastavení profileru** ](profiler-settings.md)vyberte tlačítko **profil nyní** . Když je profiler spuštěný, profiluje se náhodně přibližně jednou za hodinu a po dobu 2 minut. Pokud vaše aplikace zpracovává konstantní datový proud požadavků, profilery nahraje každou hodinu.
+Aby profiler mohl nahrávat trasování, musí vaše aplikace aktivně zpracovávat požadavky. Pokud provádíte experiment, můžete generovat požadavky na webovou aplikaci pomocí [testování výkonu Application Insights](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Pokud jste nově povolili Profiler, můžete spustit krátký zátěžový test. Během zátěžového testu vyberte tlačítko **Profil nyní** v [podokně Nastavení **profileru** ](profiler-settings.md). Při profileru je spuštěn, profily náhodně asi jednou za hodinu a po dobu dvou minut. Pokud vaše aplikace zpracovává stálý proud požadavků, Profiler nahraje trasování každou hodinu.
 
-Poté, co vaše aplikace obdrží nějaký provoz a Profiler měl čas na nahrání trasování, byste měli mít trasování k zobrazení. Tento proces může trvat 5 až 10 minut. Chcete-li zobrazit trasování, v podokně **výkon** vyberte **provést akce**a pak vyberte tlačítko **Profiler trasování** .
+Poté, co vaše aplikace obdrží nějaký provoz a Profiler má čas nahrát trasování, měli byste mít trasování k zobrazení. Tento proces může trvat 5 až 10 minut. Chcete-li zobrazit trasování, vyberte v podokně **Výkon** **položku Provést akce**a pak vyberte tlačítko **Trasování profileru.**
 
-![Application Insights náhledu podokna výkonu náhled trasování profileru][performance-blade]
+![Trasování profileru profilování náhledu přehledů přehledů aplikací][performance-blade]
 
-Vyberte ukázku pro zobrazení rozpisu na úrovni kódu pro čas strávený prováděním požadavku.
+Vyberte ukázku, chcete-li zobrazit rozpis času stráveného prováděním požadavku na úrovni kódu.
 
-![Průzkumník trasování Application Insights][trace-explorer]
+![Průzkumník trasování Přehledy aplikací][trace-explorer]
 
-V Průzkumníku trasování se zobrazí následující informace:
+Průzkumník trasování zobrazuje následující informace:
 
-* **Zobrazit horkou cestu**: otevře největší uzel na list nebo alespoň něco blízko. Ve většině případů se tento uzel blíží nekritickému výkonu.
-* **Label**: název funkce nebo události. Strom zobrazuje kombinaci kódu a událostí, ke kterým došlo, jako jsou události SQL a HTTP. Nejvyšší událost představuje celkovou dobu trvání žádosti.
-* **Uplynulý**: časový interval mezi začátkem operace a koncem operace.
-* **Kdy**: čas, kdy byla funkce nebo událost spuštěna ve vztahu k jiným funkcím.
+* **Zobrazit horkou cestu:** Otevře největší listový uzel nebo alespoň něco blízkého. Ve většině případů se tento uzel nachází v blízkosti kritického místa výkonu.
+* **Popisek**: Název funkce nebo události. Strom zobrazuje kombinaci kódu a událostí, ke kterým došlo, jako jsou například události SQL a HTTP. Hlavní událost představuje celkovou dobu trvání požadavku.
+* **Uplynulý**: Časový interval mezi zahájením operace a koncem operace.
+* **Kdy**: Čas, kdy byla spuštěna funkce nebo událost ve vztahu k ostatním funkcím.
 
 ## <a name="how-to-read-performance-data"></a>Jak číst údaje o výkonu
 
-Microsoft Service Profiler používá kombinaci metod vzorkování a instrumentace k analýze výkonu aplikace. V případě, že probíhá podrobná kolekce, Profiler služby v každé milisekundě vyvzorkuje ukazatel na instrukci každého procesoru počítače. Každý vzorek zachytí úplný zásobník volání vlákna, které je právě prováděno. Poskytuje podrobné informace o tom, co vlákno provádělo, na nejvyšší úrovni a na nízké úrovni abstrakce. Profiler služby také shromažďuje další události pro sledování korelace aktivity a jejich příčiny, včetně událostí přepnutí kontextu, událostí paralelní knihovny (TPL) a událostí fondu vláken.
+Profilování služby společnosti Microsoft používá kombinaci metod vzorkování a instrumentace k analýze výkonu vaší aplikace. Když probíhá podrobné shromažďování, profiler služby vzorky ukazatel instrukce každého procesoru počítače každou milisekundu. Každá ukázka zachycuje kompletní zásobník volání vlákna, který je aktuálně spuštěn. Poskytuje podrobné informace o tom, co toto vlákno dělalo, a to jak na vysoké úrovni, tak na nízké úrovni abstrakce. Profiler služby také shromažďuje další události ke sledování korelace aktivita a příčinné souvislosti, včetně události přepínání kontextu, události paralelní knihovny úloh (TPL) a události fondu vláken.
 
-Zásobník volání zobrazený v zobrazení Časová osa je výsledkem vzorkování a instrumentace. Vzhledem k tomu, že každá ukázka zachycuje úplný zásobník volání vlákna, zahrnuje kód z Microsoft .NET Framework a z jiných rozhraní, na které odkazujete.
+Zásobník volání, který je zobrazen v zobrazení časové osy, je výsledkem vzorkování a instrumentace. Vzhledem k tomu, že každá ukázka zachycuje celý zásobník volání vlákna, obsahuje kód z rozhraní Microsoft .NET Framework a z jiných rozhraní, na které odkazujete.
 
-### <a id="jitnewobj"></a>Přidělení objektů (CLR! JIT\_New nebo CLR! JIT\_Newarr1)
+### <a name="object-allocation-clrjit_new-or-clrjit_newarr1"></a><a id="jitnewobj"></a>Přidělení objektu (clr! JIT\_Nové nebo CLR! JIT\_Newarr1)
 
-**CLR! JIT\_New** a **CLR! JIT\_Newarr1** jsou pomocné funkce v .NET Framework, které přidělují paměť ze spravované haldy. **CLR! JIT\_New** je vyvolána, když je objekt přidělen. **CLR!** Je-li přiděleno pole objektu, je vyvolána\_NEWARR1 JIT. Tyto dvě funkce jsou obvykle rychlé a mohou trvat poměrně krátké množství času. Pokud **CLR! JIT\_New** nebo **CLR! JIT\_Newarr1** na časové ose zabere spoustu času, kód může přiřazovat mnoho objektů a spotřebovávat značné množství paměti.
+**Clr! JIT\_Nové** a **CLR! JIT\_Newarr1** jsou pomocné funkce v rozhraní .NET Framework, které přidělují paměť ze spravované haldy. **clr! JIT\_New** je vyvolána při přidělení objektu. **clr! JIT\_Newarr1** je vyvolána při přidělení pole objektu. Tyto dvě funkce jsou obvykle rychlé a trvat relativně malé množství času. Pokud **CLR! JIT\_Nové** nebo **CLR! JIT\_Newarr1** trvá hodně času ve vaší časové ose, kód může být přidělování mnoho objektů a spotřebovává značné množství paměti.
 
-### <a id="theprestub"></a>Načítání kódu (CLR! ThePreStub)
+### <a name="loading-code-clrtheprestub"></a><a id="theprestub"></a>Nakládací kód (clr! PreStub)
 
-**CLR! ThePreStub** je pomocná funkce v .NET Framework, která připravuje kód pro první spuštění. Toto provedení obvykle zahrnuje, ale není omezeno na kompilaci JIT (just-in-time). Pro každou C# metodu **CLR! ThePreStub** by mělo být vyvoláno nejvýše jednou během procesu.
+**clr! PreStub** je pomocná funkce v rozhraní .NET Framework, která připraví kód ke spuštění poprvé. Toto spuštění obvykle zahrnuje, ale není omezena na kompilaci just-in-time (JIT). Pro každou metodu Jazyka C# **clr! PreStub** by měl být vyvolán maximálně jednou během procesu.
 
-Pokud **CLR! ThePreStub** trvá pro požadavek dlouhou dobu, jedná se o první požadavek, který tuto metodu spustí. Čas, kdy má modul runtime .NET Framework načíst první metodu, je významný. Můžete zvážit použití procesu zahřívání, který spustí tuto část kódu předtím, než k němu uživatelé přistupují, nebo můžete ve svých sestaveních spustit generátor nativních bitových kopií (Ngen. exe).
+Pokud **CLR! PreStub** trvá dlouhou dobu pro požadavek, požadavek je první, kdo provede tuto metodu. Čas pro spuštění rozhraní .NET Framework pro načtení první metody je významný. Můžete zvážit použití procesu zahřívání, který spustí tuto část kódu před tím, než k němu uživatelé přistupují, nebo zvažte spuštění generátoru nativních bitových obrázků (ngen.exe) v sestaveních.
 
-### <a id="lockcontention"></a>Zamykání zámků (CLR! JITutil\_MonContention nebo CLR! JITutil\_MonEnterWorker)
+### <a name="lock-contention-clrjitutil_moncontention-or-clrjitutil_monenterworker"></a><a id="lockcontention"></a>Zámek tvrzení (clr! JITutil\_MonContention nebo clr! JITutil\_MonEnterWorker)
 
-**CLR! JITutil\_MonContention** nebo **CLR! JITutil\_MonEnterWorker** označuje, že aktuální vlákno čeká na uvolnění zámku. Tento text se často zobrazuje při C# spuštění příkazu **Lock** , vyvolání metody **monitor. Enter** nebo vyvolání metody s atributem **MethodImplOptions. Synchronized** . K uzamčení zámku obvykle dochází, když vlákno _a získá zámek_ a vlákno _B_ se pokusí získat stejný zámek _před uvolněním_ vlákna.
+**Clr! JITutil\_MonContention** nebo **clr! JITutil\_MonEnterWorker** označuje, že aktuální vlákno čeká na uvolnění zámku. Tento text se často zobrazuje při spuštění příkazu C# **LOCK,** vyvolání metody **Monitor.Enter** nebo vyvolání metody s atributem **MethodImplOptions.Synchronized.** Zámek tvrzení obvykle dochází, když vlákno _A_ získá zámek a vlákno _B_ se pokusí získat stejný zámek před vlákno _a_ uvolní.
 
-### <a id="ngencold"></a>Načítání kódu ([STUDENá])
+### <a name="loading-code-cold"></a><a id="ngencold"></a>Nakládací kód ([COLD])
 
-Pokud název metody obsahuje **[studená]** , například **mscorlib.ni! [ STUDENá] System. Reflection. CustomAttribute.-defined**, .NET Framework runtime spouští kód poprvé, který není optimalizován [optimalizací](/cpp/build/profile-guided-optimizations)na základě profilu. Pro každou metodu by se měla v průběhu procesu zobrazit maximálně jednou.
+Pokud název metody obsahuje **[COLD]**, například **mscorlib.ni![ COLD]System.Reflection.CustomAttribute.IsDefined**, modul runtime rozhraní .NET Framework poprvé provádí kód, který není optimalizován [optimalizací s asistencí profilu](/cpp/build/profile-guided-optimizations). Pro každou metodu by měla být zobrazena maximálně jednou během procesu.
 
-Pokud načítání kódu pro požadavek trvá značnou dobu, je požadavek první z nich pro provedení neoptimalizované části metody. Zvažte použití procesu zahřívání, který spustí část kódu předtím, než k němu uživatelé přistupují.
+Pokud načítání kódu trvá značné množství času pro požadavek, požadavek je první, kdo provede neoptimalizovanou část metody. Zvažte použití zahřívací proces, který spustí tuto část kódu před uživateli přístup.
 
-### <a id="httpclientsend"></a>Odeslat požadavek HTTP
+### <a name="send-http-request"></a><a id="httpclientsend"></a>Odeslat požadavek HTTP
 
-Metody jako **HttpClient. Send** označují, že kód čeká na dokončení požadavku HTTP.
+Metody, jako je **httpclient.send** označují, že kód čeká na dokončení požadavku HTTP.
 
-### <a id="sqlcommand"></a>Databázová operace
+### <a name="database-operation"></a><a id="sqlcommand"></a>Operace databáze
 
-Metody jako **SqlCommand. Execute** označují, že kód čeká na dokončení operace databáze.
+Metody, jako je **sqlcommand.execute** označují, že kód čeká na dokončení operace databáze.
 
-### <a id="await"></a>Čekání (OČEKÁVÁN\_čas)
+### <a name="waiting-await_time"></a><a id="await"></a>Čekání (AWAIT\_TIME)
 
-**AWAIT\_čas** znamená, že kód čeká na dokončení jiné úlohy. K tomuto zpoždění obvykle dochází pomocí C# příkazu **AWAIT** . V případě, že kód C# **očekává**, vlákno odvíjí a vrátí řízení fondu vláken a neexistuje žádné vlákno, které je blokováno pro **dokončení čekání.** Logicky ale vlákno, které **čekalo** , je "blokované" a čeká na dokončení operace. Příkaz **AWAIT\_čas** indikuje čas zablokování, který čeká na dokončení úlohy.
+**AWAIT\_TIME** označuje, že kód čeká na dokončení jiné úlohy. K tomuto zpoždění obvykle dochází s příkazem C# **AWAIT.** Když kód provádí C# **AWAIT**, vlákno odvíjí a vrátí ovládací prvek do fondu vláken a neexistuje žádné vlákno, které je blokováno čekání na dokončení **aWAIT.** Logicky je však vlákno, které provedlo **aWAIT** , "blokováno" a čeká na dokončení operace. Příkaz **AWAIT\_TIME** označuje blokovaný čas čekání na dokončení úkolu.
 
-### <a id="block"></a>Čas zablokování
+### <a name="blocked-time"></a><a id="block"></a>Blokovaný čas
 
-**BLOCKED_TIME** označuje, že kód čeká na zpřístupnění jiného prostředku. Může například čekat na objekt synchronizace, pro vlákno k dispozici nebo pro požadavek na dokončení.
+**BLOCKED_TIME** označuje, že kód čeká na jiný prostředek k dispozici. Může například čekat na objekt synchronizace, na vlákno, které má být k dispozici, nebo pro dokončení požadavku.
 
-### <a name="unmanaged-async"></a>Nespravované asynchronní
+### <a name="unmanaged-async"></a>Nespravovaná synchronizace
 
-Rozhraní .NET Framework generuje události ETW a předá ID aktivity mezi vlákny, aby bylo možné sledovat asynchronní volání napříč vlákny. Nespravovaný kód (nativní kód) a některé starší styly asynchronního kódu neobsahují tyto události a ID aktivit, takže profiler nemůže sdělit, které vlákno a jaké funkce jsou ve vlákně spuštěné. Toto je označeno jako nespravované asynchronní v zásobníku volání. Pokud stáhnete soubor trasování událostí pro Windows, možná budete moct pomocí [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) získat další přehled o tom, co se děje.
+Rozhraní .NET Framework vyzařuje události ETW a předává ID aktivity mezi vlákny, takže asynchronní volání lze sledovat napříč vlákny. Nespravovaný kód (nativní kód) a některé starší styly asynchronního kódu chybí tyto události a ID aktivity, takže profiler nemůže zjistit, jaké vlákno a jaké funkce jsou spuštěny ve vlákně. To je označeno jako "Nespravovaná asynchronizace" v zásobníku volání. Pokud si stáhnete soubor ETW, budete moci použít [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) získat více informací o tom, co se děje.
 
-### <a id="cpu"></a>Čas procesoru
+### <a name="cpu-time"></a><a id="cpu"></a>Čas procesoru
 
-PROCESOR je zaneprázdněn prováděním pokynů.
+Procesor je zaneprázdněn prováděním pokynů.
 
-### <a id="disk"></a>Čas disku
+### <a name="disk-time"></a><a id="disk"></a>Čas disku
 
 Aplikace provádí operace na disku.
 
-### <a id="network"></a>Čas sítě
+### <a name="network-time"></a><a id="network"></a>Čas sítě
 
 Aplikace provádí síťové operace.
 
-### <a id="when"></a>Když sloupec
+### <a name="when-column"></a><a id="when"></a>Když sloupec
 
-Sloupec **when** je vizualizace, jak se shromažďují celkové vzorky pro uzel v průběhu času. Celkový rozsah žádosti je dělený na 32 časových intervalů. Zahrnuté vzorky pro tento uzel se shromažďují v těchto intervalech 32. Jednotlivé intervaly jsou reprezentovány jako pruhy. Výška pruhu představuje hodnotu škálované. Pro uzly, které jsou označeny **CPU_TIME** nebo **BLOCKED_TIME**nebo kde existuje zřejmá relace pro využívání prostředku (například CPU, disku nebo vlákna), představuje tento pruh spotřebu jednoho ze zdrojů během intervalu. Pro tyto metriky je možné získat hodnotu větší než 100% díky využívání více prostředků. Pokud například použijete v průměru dva procesory během intervalu, dostanete 200 procent.
+Když **When** sloupec je vizualizace, jak inclusive vzorky shromážděné pro uzel se liší v čase. Celkový rozsah požadavku je rozdělen do 32 časových intervalů. Včetně vzorky pro tento uzel jsou nahromaděny v těchto 32 kbelíky. Každý kbelík je reprezentován jako bar. Výška pruhu představuje hodnotu měřítka. U uzlů, které jsou označeny **CPU_TIME** nebo **BLOCKED_TIME**nebo kde existuje zřejmý vztah ke spotřebování prostředku (například procesor, disk nebo vlákno), představuje pruh spotřebu jednoho z prostředků během bloku. Pro tyto metriky je možné získat hodnotu větší než 100 procent tím, že spotřebuje více prostředků. Pokud například během intervalu použijete v průměru dva procesory, získáte 200 procent.
 
 ## <a name="limitations"></a>Omezení
 
-Výchozí doba uchovávání dat je pět dní. Maximální množství dat, která se ingestují za den, je 10 GB.
+Výchozí doba uchovávání dat je pět dní. Maximální počet dat, která se ingutuje za den, je 10 GB.
 
-Za použití služby profileru se neúčtují žádné poplatky. Pokud ji chcete použít, musí být webová aplikace hostována alespoň na úrovni Basic funkce Web Apps Azure App Service.
+Za používání služby Profiler se neúčtují žádné poplatky. Abyste ji měli používat, musí být vaše webová aplikace hostovaná alespoň v základní vrstvě funkce Webové aplikace služby Azure App Service.
 
 ## <a name="overhead-and-sampling-algorithm"></a>Algoritmus režie a vzorkování
 
-Profiler náhodně spustí dvě minuty každou hodinu na každém virtuálním počítači, který je hostitelem aplikace s povoleným profilerem pro zachytávání trasování. Když je profiler spuštěný, přidává se na server od 5 do 15 procent zatížení procesoru.
+Profiler náhodně spustí dvě minuty každou hodinu na každém virtuálním počítači, který je hostitelem aplikace, která má profiler povolen pro zachycení trasování. Při profileru je spuštěna, přidá od 5 do 15 procent režie procesoru na server.
 
 ## <a name="next-steps"></a>Další kroky
-Povolte Application Insights Profiler pro vaši aplikaci Azure. Další zdroje informací:
+Povolte Profiler přehledů aplikací pro vaši aplikaci Azure. Další zdroje informací:
 * [App Services](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Virtual Machines a Virtual Machine Scale Sets](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Virtuální počítače Azure a škálovací sady virtuálních počítačů](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 
 [performance-blade]: ./media/profiler-overview/performance-blade-v2-examples.png

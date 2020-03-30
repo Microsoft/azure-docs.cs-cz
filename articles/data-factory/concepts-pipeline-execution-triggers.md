@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.openlocfilehash: 20a5a9c5513c165cd5add2e97f019a741dfd0b03
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246198"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Spouštění kanálů a aktivační události v Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-scheduling-and-execution.md)
 > * [Aktuální verze](concepts-pipeline-execution-triggers.md)
 
@@ -142,7 +142,7 @@ Aktivační události představují další způsob spuštění kanálu. Aktiva�
 
 - Aktivační událost na základě události: Aktivační událost, která reaguje na událost.
 
-Kanály a triggery mají relaci m:n (s výjimkou aktivační události pro bubnové okno). Několik aktivačních událostí může aktivovat jeden kanál, nebo jedna aktivační událost může aktivovat více kanálů. V následující definici aktivační události vlastnost **pipelines** odkazuje na seznam kanálů aktivovaných konkrétní aktivační událostí. Definice vlastnosti obsahuje hodnoty parametrů kanálu.
+Kanály a aktivační události mají vztah N:N (s výjimkou aktivační události omílání okna). Více aktivačních událostí může zahájit jeden kanál nebo jedna aktivační událost může nastartovat více kanálů. V následující definici aktivační události vlastnost **pipelines** odkazuje na seznam kanálů aktivovaných konkrétní aktivační událostí. Definice vlastnosti obsahuje hodnoty parametrů kanálu.
 
 ### <a name="basic-trigger-definition"></a>Definice základní aktivační události
 
@@ -171,7 +171,7 @@ Kanály a triggery mají relaci m:n (s výjimkou aktivační události pro bubno
 }
 ```
 
-## <a name="schedule-trigger"></a>Aktivační procedura Plán
+## <a name="schedule-trigger"></a>Aktivační událost plánovače
 Aktivační událost plánovače spouští kanály podle časového plánu. Tato aktivační událost podporuje pravidelné spouštění i rozšířené možnosti kalendáře. Tato aktivační událost podporuje například intervaly, jako „weekly“ (týdně) nebo „Monday at 5:00 PM and Thursday at 9:00 PM“ (V pondělí v 17:00 a ve čtvrtek ve 21:00). Aktivační událost plánovače je flexibilní, protože je nezávislá na vzorech datových sad a nerozlišuje mezi daty časových řad a daty bez časových řad.
 
 Další informace o aktivačních událostech plánovače a příklady najdete v tématu [Vytvoření aktivační události plánovače](how-to-create-schedule-trigger.md).
@@ -236,9 +236,9 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 | **endTime** | Koncové datum a čas pro aktivační událost. Aktivační událost se nebude spouštět po zadaném koncovém datu a času. Hodnota této vlastnosti nemůže být v minulosti. <!-- This property is optional. --> |
 | **timeZone** | Časové pásmo. V současné době se podporuje pouze časové pásmo UTC. |
 | **recurrence** | Objekt recurrence, který určuje pravidla opakování aktivační události. Objekt recurrence podporuje elementy **frequency** (frekvence), **interval** (interval), **endTime** (koncový čas), **count** (počet) a **schedule** (plán). Když je definovaný objekt recurrence, vyžaduje se element **frequency** (frekvence). Další elementy objektu recurrence jsou volitelné. |
-| **frequency** | Jednotka frekvence, s jakou se aktivační událost opakuje. Mezi podporované hodnoty patří „minute“ (minuta), „hour“ (hodina), „day“ (den), „week“ (týden) a „month“ (měsíc). |
+| **Frekvence** | Jednotka frekvence, s jakou se aktivační událost opakuje. Mezi podporované hodnoty patří „minute“ (minuta), „hour“ (hodina), „day“ (den), „week“ (týden) a „month“ (měsíc). |
 | **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**. Hodnota **frequency** určuje, jak často se má aktivační událost spouštět. Pokud má například **interval** hodnotu 3 a **frequency** hodnotu „week“ (týden), aktivační událost se opakuje každé tři týdny. |
-| **schedule** | Plán opakování pro aktivační událost. Aktivační události se zadanou hodnotou **frequency** mění své opakování na základě plánu opakování. Vlastnost **schedule** obsahuje úpravy opakování na základě minut, hodin, dní v týdnu, dní v měsíci a čísla týdne.
+| **Plán** | Plán opakování pro aktivační událost. Aktivační události se zadanou hodnotou **frequency** mění své opakování na základě plánu opakování. Vlastnost **schedule** obsahuje úpravy opakování na základě minut, hodin, dní v týdnu, dní v měsíci a čísla týdne.
 
 ### <a name="schedule-trigger-example"></a>Příklad plánování aktivační události
 
@@ -276,13 +276,13 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 
 ### <a name="schema-defaults-limits-and-examples"></a>Výchozí hodnoty, omezení a příklady schématu
 
-| Vlastnost JSON | Typ | Požadováno | Výchozí hodnota | Platné hodnoty | Příklad |
+| Vlastnost JSON | Typ | Požaduje se | Výchozí hodnota | Platné hodnoty | Příklad |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | string | Ano | Žádné | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | object | Ano | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **startTime** | řetězec | Ano | Žádný | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | objekt | Ano | Žádný | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | číslo | Ne | 1 | 1 až 1 000 | `"interval":10` |
-| **endTime** | string | Ano | Žádné | Hodnota data a času představující čas v budoucnosti | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | object | Ne | Žádné | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **endTime** | řetězec | Ano | Žádný | Hodnota data a času představující čas v budoucnosti | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **Plán** | objekt | Ne | Žádný | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Vlastnost startTime
 Následující tabulka ukazuje, jakým způsobem vlastnost **startTime** ovládá spouštění aktivační události:
@@ -290,11 +290,11 @@ Následující tabulka ukazuje, jakým způsobem vlastnost **startTime** ovlád�
 | Hodnota startTime | Opakování bez plánu | Opakování s plánem |
 |:--- |:--- |:--- |
 | **Čas začátku je v minulosti** | Vypočítá první čas spuštění v budoucnosti následující po čase začátku a v tomto čase se spustí.<br /><br />Zahájí další spuštění vypočítaná z posledního času spuštění.<br /><br />Prohlédněte si příklad pod touto tabulkou. | Aktivační událost se spustí _až po_ zadaném čase začátku. První výskyt vychází z plánu vypočítaného z času začátku.<br /><br />Zahájí další spuštění na základě plánu opakování. |
-| **Čas začátku je v budoucnosti nebo aktuální čas** | Spustí se jednou v zadaný čas začátku.<br /><br />Zahájí další spuštění vypočítaná z posledního času spuštění. | Aktivační událost se spustí _až po_ zadaném čase začátku. První výskyt vychází z plánu a je vypočítaný z času začátku.<br /><br />Zahájí další spuštění na základě plánu opakování. |
+| **Čas začátku je v budoucnosti nebo aktuální čas** | Spustí se jednou v zadaný čas začátku.<br /><br />Zahájí další spuštění vypočítaná z posledního času spuštění. | Aktivační událost se spustí _nejdříve_ zadaný čas zahájení. První výskyt vychází z plánu a je vypočítaný z času začátku.<br /><br />Zahájí další spuštění na základě plánu opakování. |
 
-Podívejme se na příklad toho, co se stane, když je čas začátku v minulosti a je nastaveno opakování, ale žádný plán. Předpokládejme, že aktuální čas je 8. 4. 2017 13:00, čas začátku je 7. 4. 2017 14:00 a opakování je nastaveno na každé dva dny. (Hodnota **opakování** je definována nastavením vlastnosti **frekvence** na hodnotu "Day" (den) a vlastnost **interval** na 2.) Všimněte si, že hodnota **StartTime** je v minulosti a nastane před aktuálním časem.
+Podívejme se na příklad toho, co se stane, když je čas začátku v minulosti a je nastaveno opakování, ale žádný plán. Předpokládejme, že aktuální čas je 8. 4. 2017 13:00, čas začátku je 7. 4. 2017 14:00 a opakování je nastaveno na každé dva dny. (Hodnota **opakování** je definována nastavením vlastnosti **frekvence** na "den" a vlastnost **intervalu** na 2.) Všimněte si, že hodnota **startTime** je v minulosti a dochází před aktuální čas.
 
-Za těchto podmínek je první spuštění 2017-04-09 na 14:00. Modul plánovače vypočítá výskyty spuštění na základě času začátku. Všechny instance v minulosti se zahodí. Modul použije další instanci, která nastane v budoucnosti. V tomto scénáři je čas začátku 7. 4. 2017 ve 14:00. Další instance nastane o dva dny později, tedy 9. 4. 2017 ve 14:00.
+Za těchto podmínek je první spuštění 2017-04-09 v 14:00. Modul plánovače vypočítá výskyty spuštění na základě času začátku. Všechny instance v minulosti se zahodí. Modul použije další instanci, která nastane v budoucnosti. V tomto scénáři je čas začátku 7. 4. 2017 ve 14:00. Další instance nastane o dva dny později, tedy 9. 4. 2017 ve 14:00.
 
 První čas spuštění je stejný, i když má položka **startTime** hodnotu 2017-04-05 14:00 (5. 4. 2017 ve 14:00) nebo 2017-04-01 14:00 (1. 4. 2017 ve 14:00). Po prvním spuštění se další spuštění vypočítají na základě plánu. Proto další spuštění proběhnou 11. 4. 2017 ve 14:00, pak 13. 4. 2017 ve 14:00, pak 15. 4. 2017 ve 14:00 atd.
 
@@ -312,9 +312,9 @@ Následující tabulka obsahuje podrobný popis elementů **schedule**:
 | Element JSON | Popis | Platné hodnoty |
 |:--- |:--- |:--- |
 | **minutes** | Minuty v hodině, ve kterých se aktivační událost spouští. |– Celé číslo<br />– Pole celých čísel|
-| **hours** | Hodiny dne, ve kterých se aktivační událost spouští. |– Celé číslo<br />– Pole celých čísel|
+| **Hodin** | Hodiny dne, ve kterých se aktivační událost spouští. |– Celé číslo<br />– Pole celých čísel|
 | **weekDays** | Dny v týdnu, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při týdenní frekvenci.|<br />– Monday (Pondělí)<br />– Tuesday (Úterý)<br />– Wednesday (Středa)<br />– Thursday (Čtvrtek)<br />– Friday (Pátek)<br />– Saturday (Sobota)<br />– Sunday (Neděle)<br />– Pole hodnot dní (maximální velikost pole je 7)<br /><br />V hodnotách dní se nerozlišují malá a velká písmena|
-| **monthlyOccurrences** | Dny v měsíci, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. |-Array objektů **monthlyOccurrence** : `{ "day": day, "occurrence": occurrence }`<br />– Atribut **day** představuje den v týdnu, ve kterém se aktivační událost spouští. Například vlastnost **monthlyOccurrences** s atributem **day** s hodnotou `{Sunday}` znamená každou neděli v měsíci. Atribut **day** je povinný.<br />– Atribut **occurrence** představuje výskyt zadaného dne (**day**) v měsíci. Například vlastnost **monthlyOccurrences** s atributy **day** a **occurrence** s hodnotami `{Sunday, -1}` znamená poslední neděli v měsíci. Atribut **occurrence** je volitelný.|
+| **monthlyOccurrences** | Dny v měsíci, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. |- Pole **monthlyOccurrence** objektů:`{ "day": day, "occurrence": occurrence }`<br />– Atribut **day** představuje den v týdnu, ve kterém se aktivační událost spouští. Například vlastnost **monthlyOccurrences** s atributem **day** s hodnotou `{Sunday}` znamená každou neděli v měsíci. Atribut **day** je povinný.<br />– Atribut **occurrence** představuje výskyt zadaného dne (**day**) v měsíci. Například vlastnost **monthlyOccurrences** s atributy **day** a **occurrence** s hodnotami `{Sunday, -1}` znamená poslední neděli v měsíci. Atribut **occurrence** je volitelný.|
 | **monthDays** | Dan v měsíci, ve kterém se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. |– Libovolná hodnota <= −1 a >= −31<br />– Libovolná hodnota >= 1 a <= 31<br />– Pole hodnot|
 
 ## <a name="tumbling-window-trigger"></a>Aktivační událost pro přeskakující okno
@@ -324,7 +324,7 @@ Další informace o aktivačních událostech pro přeskakující okno a příkl
 
 ## <a name="event-based-trigger"></a>Aktivační událost na základě události
 
-Aktivační událost založená na událostech spouští kanály v reakci na událost, jako je například doručení souboru nebo odstranění souboru, v Azure Blob Storage.
+Aktivační událost založená na událostech spouští kanály v reakci na událost, jako je například příchod souboru nebo odstranění souboru, ve službě Azure Blob Storage.
 
 Další informace o aktivačních událostech na základě událostí najdete v tématu věnovaném [vytvoření aktivační události, která spustí kanál v reakci na událost](how-to-create-event-trigger.md).
 
@@ -367,7 +367,7 @@ Aktivační událost pro přeskakující okno i aktivační událost plánovače
 
 Následující tabulka obsahuje porovnání aktivační události pro přeskakující okno a aktivační události plánovače:
 
-|  | Aktivační událost pro přeskakující okno | Aktivační procedura Plán |
+|  | Aktivační událost pro přeskakující okno | Aktivační událost plánovače |
 |:--- |:--- |:--- |
 | **Scénáře obnovení dat** | Podporuje se. Spuštění kanálu je možné naplánovat i pro okna v minulosti. | Není podporováno. Spuštění kanálu je možné provést pouze v časová období od současnosti do budoucnosti. |
 | **Spolehlivost** | 100% spolehlivost. Spuštění kanálu je možné plánovat pro všechna okna od zadaného času začátku, a to bez mezer. | Menší spolehlivost. |

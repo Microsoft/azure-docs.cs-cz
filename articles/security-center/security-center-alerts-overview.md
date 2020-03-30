@@ -1,6 +1,6 @@
 ---
-title: Výstrahy zabezpečení v Azure Security Center | Microsoft Docs
-description: Toto téma vysvětluje, jaké jsou výstrahy zabezpečení, a různé typy, které jsou k dispozici v Azure Security Center.
+title: Výstrahy zabezpečení v Azure Security Center | Dokumenty společnosti Microsoft
+description: Toto téma vysvětluje, co jsou výstrahy zabezpečení a různé typy dostupné v Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,125 +8,88 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 514de1435519282335124bfd67bac82669240b78
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 697c038a2fefdde8e488dad23a4e38e0b2b7b288
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245509"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79415855"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Výstrahy zabezpečení ve službě Azure Security Center
 
-V Azure Security Center existuje celá řada výstrah pro mnoho různých typů prostředků. Security Center generuje výstrahy pro prostředky nasazené v Azure a také pro prostředky nasazené v místních i hybridních cloudových prostředích.
+V Azure Security Center existuje celá řada výstrah pro mnoho různých typů prostředků. Security Center generuje výstrahy pro prostředky nasazené v Azure a také pro prostředky nasazené v místním a hybridním cloudovém prostředí.
 
-Výstrahy zabezpečení se spouštějí pokročilými detekcemi a jsou dostupné jenom na úrovni Standard Azure Security Center. K dispozici je bezplatná zkušební verze. Upgrade můžete provést z nabídky cenových úrovní v [Zásadách zabezpečení](security-center-pricing.md). Další informace o cenách naleznete na stránce [služby Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+Výstrahy zabezpečení se aktivují pomocí pokročilých zjišťování a jsou k dispozici jenom ve standardní vrstvě Azure Security Center. K dispozici je bezplatná zkušební verze. Upgrade můžete provést z nabídky cenových úrovní v [Zásadách zabezpečení](security-center-pricing.md). Další informace o cenách naleznete na stránce [služby Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-## Reakce na dnešní hrozby <a name="respond-threats"></a>
+## <a name="responding-to-todays-threats"></a>Reakce na dnešní hrozby <a name="respond-threats"> </a>
 
-Za posledních 20 let došlo ve světě hrozeb k významným změnám. V minulosti se společnosti obvykle musely obávat pouze poškození vzhledu webu jednotlivými útočníky, které většinou jen zajímalo předvést, co dokážou udělat. Dnešní útočníci jsou mnohem sofistikovanější a organizovanější. Často mají konkrétní finanční a strategické cíle. Mají také k dispozici větší zdroje, protože mohou být financováni státy nebo organizovanou trestnou činností.
+Za posledních 20 let došlo ve světě hrozeb k významným změnám. V minulosti se společnosti obvykle musely starat pouze o znehodnocení webových stránek jednotlivými útočníky, kteří se většinou zajímali o to, "co by mohli udělat". Dnešní útočníci jsou mnohem sofistikovanější a organizovanější. Často mají konkrétní finanční a strategické cíle. Mají také k dispozici větší zdroje, protože mohou být financováni státy nebo organizovanou trestnou činností.
 
-Tyto změny v realitách vedly k navýšení nebývalého profesionálního postavení v útočníkovi. Již je nezajímá pouhé poškození vzhledu webu. Nyní mají zájem ukrást informace, finanční účty a soukromá data – to vše, co můžou využít ke generování hotovosti na otevřeném trhu nebo k využití konkrétní obchodní, politické nebo vojenské pozice. Ještě znepokojivější než útočníci s finančními cíli jsou útočníci, kteří pronikají do sítí s cílem poškodit infrastrukturu a lidi.
+Tyto měnící se skutečnosti vedly k bezprecedentní úrovni profesionality v řadách útočníků. Již je nezajímá pouhé poškození vzhledu webu. Dnes mají zájem krást informace, finanční účty a soukromá data – to vše mohou využít k vytváření hotovosti na otevřeném trhu nebo k využití konkrétní obchodní, politické či vojenské pozice. Ještě znepokojivější než útočníci s finančními cíli jsou útočníci, kteří pronikají do sítí s cílem poškodit infrastrukturu a lidi.
 
 V reakci na tyto hrozby společnosti často nasazují řadu jednotlivých řešení, která se zaměřují na ochranu firemní zóny nebo na koncové body tím, že hledají příznaky známých útoků. Tato řešení často generují velký objem málo specifických výstrah, které pak musí bezpečnostní analytik třídit a prošetřovat. Většina organizací nemá dostatek času a potřebné odborné znalosti, aby si s těmito výstrahami poradily, a mnoho z nich tak zůstane neprošetřených.  
 
-Kromě toho útočníci vyvinuli své metody pro přepočet obrany na základě podpisu a [přizpůsobení cloudovým prostředím](https://azure.microsoft.com/blog/detecting-threats-with-azure-security-center/). Je nutné zavést nové přístupy za účelem rychlejší identifikace nově se vynořujících hrozeb a urychlení detekce a reakce na ně.
+Útočníci navíc vyvinuli své metody, aby rozvrátili mnoho obranných obránců založených na podpisech a [přizpůsobili se cloudovým prostředím](https://azure.microsoft.com/blog/detecting-threats-with-azure-security-center/). Je nutné zavést nové přístupy za účelem rychlejší identifikace nově se vynořujících hrozeb a urychlení detekce a reakce na ně.
 
-## <a name="what-are-security-alerts"></a>Co jsou výstrahy zabezpečení?
+## <a name="what-are-security-alerts-and-security-incidents"></a>Co jsou výstrahy zabezpečení a bezpečnostní incidenty? 
 
-Výstrahy jsou oznámení, která Security Center generují při detekci hrozeb na vašich prostředcích. Security Center určí prioritu a seznam výstrah spolu s informacemi potřebnými k rychlému prozkoumání problému. Security Center také poskytuje doporučení, jak můžete útok napravit.
+**Výstrahy** jsou oznámení, která Centrum zabezpečení generuje, když detekuje hrozby vašich prostředků. Security Center upřednostňuje a uvádí výstrahy spolu s informacemi potřebnými k rychlému prošetření problému. Security Center také poskytuje doporučení pro nápravu útoku.
 
-## Jak Security Center detekuje hrozby? <a name="detect-threats"> </a>
+**Bezpečnostní incident** je kolekce souvisejících výstrah, namísto výpisu každé výstrahy jednotlivě. Security Center používá [Cloud Smart Alert Correlation](security-center-alerts-cloud-smart.md) ke korelaci různých výstrah a signálů s nízkou věrností do bezpečnostních incidentů.
 
-Výzkumníci v oblasti zabezpečení ze společnosti Microsoft neustále vyhledávají nové hrozby. Z důvodu globální přítomnosti Microsoftu v cloudu i v místním prostředí mají přístup k obsáhlém sadě telemetrie. Souběžná a různorodá kolekce datových sad umožňuje zjistit nové vzory útoků a trendy v rámci svých místních zákaznických a podnikových produktů a také jejich online služby. Díky tomu dokáže Security Center rychle aktualizovat své algoritmy detekce spolu s tím, jak útočníci provádějí nové a stále sofistikovanější kousky. Tento přístup pomáhá udržet krok s rychle se rozvíjejícím prostředím hrozeb.
+Pomocí incidentů poskytuje Centrum zabezpečení jediné zobrazení útočné kampaně a všech souvisejících výstrah. Toto zobrazení umožňuje rychle pochopit, jaké akce útočník provedl a jaké prostředky byly ovlivněny. Další informace naleznete v [tématu Cloud smart alert correlation](security-center-alerts-cloud-smart.md).
 
-Security Center shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure a sítě, aby zjistila skutečné hrozby a snížila falešně pozitivní výsledky. Funguje taky s připojenými partnerskými řešeními, jako jsou brány firewall a řešení ochrany koncových bodů. Security Center analyzuje tyto informace a často koreluje informace z různých zdrojů k identifikaci hrozeb.
+
+
+## <a name="how-does-security-center-detect-threats"></a>Jak Security Center detekuje hrozby? <a name="detect-threats"> </a>
+
+Výzkumníci v oblasti zabezpečení ze společnosti Microsoft neustále vyhledávají nové hrozby. Vzhledem k globální přítomnosti společnosti Microsoft v cloudu a v místním prostředí mají přístup k rozsáhlé sadě telemetrie. Rozsáhlá a různorodá kolekce datových sad umožňuje objevovat nové způsoby útoků a trendy napříč místními spotřebitelskými a podnikovými produkty a také online službami. Díky tomu dokáže Security Center rychle aktualizovat své algoritmy detekce spolu s tím, jak útočníci provádějí nové a stále sofistikovanější kousky. Tento přístup pomáhá udržet krok s rychle se rozvíjejícím prostředím hrozeb.
+
+Centrum zabezpečení shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure a ze sítě, aby zjistilo skutečné hrozby a snížilo počet falešných poplachů. Spolupracuje také s připojenými partnerskými řešeními, jako je brána firewall a řešení ochrany koncových bodů. Security Center analyzuje tyto informace, často korelovat informace z více zdrojů, k identifikaci hrozeb.
 
 ![Shromažďování a prezentace dat ve službě Security Center](./media/security-center-alerts-overview/security-center-detection-capabilities.png)
 
 Služba Security Center využívá pokročilou analýzu zabezpečení, která daleko překračuje možnosti detekce založené na signaturách či příznacích. Využívá objevy v oblasti zpracování velkých objemů dat a [strojového učení](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) k vyhodnocování událostí v rámci všech prostředků cloudové infrastruktury – a pomocí manuálních metod a předvídání vývoje útoků detekuje hrozby, které by jinak nebylo možné identifikovat. Do této analýzy zabezpečení patří:
 
-* **Integrovaná analýza hrozeb**: vyhledá známé chybné objekty actor využitím globální analýzy hrozeb z produktů a služeb společnosti Microsoft, jednotky digitálních zločinů společnosti Microsoft (DCU), centra MSRC (Microsoft Security Response Center) a externích informačních kanálů.
-* **Analýza chování**: používá známé vzorce pro zjišťování škodlivého chování.
-* **Detekce anomálií**: používá statistickou profilaci k sestavení historických standardních hodnot. Upozorní na odchylky od zavedených standardních hodnot, které mají potenciál útoku.
+* **Integrovaná analýza hrozeb**: Microsoft má obrovské množství globálních informací o hrozbách. Telemetrie proudí z různých zdrojů, jako je Azure, Office 365, Microsoft CRM online, Microsoft Dynamics AX, outlook.com, MSN.com, Microsoft Digital Crimes Unit (DCU) a Microsoft Security Response Center (MSRC). Výzkumní pracovníci také dostávají informace o informacích o hrozbách, které jsou sdíleny mezi hlavními poskytovateli cloudových služeb a kanály od jiných třetích stran. Služba Azure Security Center vás pomocí těchto informací může upozornit na hrozby známých útočníků.
 
-Níže uvedené části popisují každou z těchto analýz podrobněji.
+* **Behaviorální analýza**: Behaviorální analýza je technika, která analyzuje a porovnává data s kolekcí známých vzorů. Tato schémata však nepředstavují jednoduché příznaky. Určují se prostřednictvím komplexních algoritmů strojového učení, které se aplikují na rozsáhlé datové sady. Určují se také prostřednictvím pečlivé analýzy škodlivého chování, kterou provádí zkušení analytici. Azure Security Center můžete použít behaviorální analýzy k identifikaci ohrožených prostředků na základě analýzy protokolů virtuálních strojů, protokoly virtuálních síťových zařízení, protokoly prostředků infrastruktury, výpisy stavu systému a další zdroje.
 
-### <a name="integrated-threat-intelligence"></a>Integrovaná analýza hrozeb
+* **Detekce anomálií**: Azure Security Center také používá detekci anomálií k identifikaci hrozeb. Na rozdíl od behaviorální analýzy (která závisí na známých vzorcích odvozených z velkých datových sad) je detekce anomálií více "personalizovaná" a zaměřuje se na směrné plány, které jsou specifické pro vaše nasazení. Pomocí strojového učení se určí běžné úrovně aktivity pro vaše nasazení a poté se vygenerují pravidla definující neobvyklé hodnoty, které by mohly představovat událost zabezpečení.
 
-Společnost Microsoft má k dispozici rozsáhlé zdroje globální analýzy hrozeb. Telemetrie se nachází z různých zdrojů, jako je Azure, Office 365, Microsoft CRM Online, Microsoft Dynamics AX, outlook.com, MSN.com, DCU (Microsoft Digital Zločins Unit) a Microsoft Security Response Center (MSRC). Výzkumníki také dostávají informace analýzy hrozeb, které se sdílejí mezi hlavními poskytovateli cloudových služeb a informačními kanály od jiných třetích stran. Služba Azure Security Center vás pomocí těchto informací může upozornit na hrozby známých útočníků.
+## <a name="how-are-alerts-classified"></a>Jak jsou záznamy klasifikovány?
 
-### <a name="behavioral-analytics"></a>Behaviorální analýza
-
-Behaviorální analýza je technika, která analyzuje a porovnává data se sadou známých schémat. Tato schémata však nepředstavují jednoduché příznaky. Určují se prostřednictvím komplexních algoritmů strojového učení, které se aplikují na rozsáhlé datové sady. Určují se také prostřednictvím pečlivé analýzy škodlivého chování, kterou provádí zkušení analytici. Azure Security Center může pomocí analýzy chování identifikovat ohrožené prostředky na základě analýzy protokolů virtuálních počítačů, protokolů virtuálních síťových zařízení, protokolů prostředků infrastruktury, výpisů stavu systému a dalších zdrojů.
-
-Kromě toho existuje korelace s jinými signály pro kontrolu podpory legitimace rozšířené kampaně. Tato korelace pomáhá identifikovat události, které jsou konzistentní se zavedenými ukazateli ohrožení zabezpečení. 
-
-### <a name="anomaly-detection"></a>Detekce anomálií
-
-Služba Azure Security Center také identifikuje hrozby pomocí detekce anomálií. Oproti behaviorální analýze (která závisí na známých schématech odvozovaných z velkých datových sad), je detekce anomálií více „personalizovaná“ a zaměřuje se na standardní hodnoty specifické pro vaše nasazení. Pomocí strojového učení se určí běžné úrovně aktivity pro vaše nasazení a poté se vygenerují pravidla definující neobvyklé hodnoty, které by mohly představovat událost zabezpečení.
-
-## <a name="how-are-alerts-classified"></a>Jak jsou klasifikovány výstrahy?
-
-Security Center přiřadí závažnosti výstrahám, které vám pomůžou určit prioritu pořadí, ve kterém se zúčastníte jednotlivých výstrah, takže pokud dojde k ohrožení určitého prostředku, můžete se k němu hned dostat. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
+Centrum zabezpečení přiřazuje výstrahám závažnost, která vám pomůže určit pořadí, ve kterém se účastníte jednotlivých výstrah, takže když je prostředek ohrožen, můžete se k němu dostat ihned. Závažnost je založena na tom, jak sebevědomý Security Center je v hledání nebo analytice slouží k vydání výstrahy, stejně jako úroveň spolehlivosti, že tam byl škodlivý záměr za aktivitu, která vedla k upozornění.
 
 > [!NOTE]
-> Závažnost výstrahy se na portálu a ve verzích REST API, které předchází 01-01-2019, zobrazuje jinak. Pokud používáte starší verzi rozhraní API, upgradujte na konzistentní prostředí popsané níže.
+> Závažnost výstrahy se zobrazí odlišně na portálu a verze rozhraní REST API, které předcházejí 01-01-2019. Pokud používáte starší verzi rozhraní API, upgradujte pro konzistentní prostředí popsané níže.
 
-- **Vysoká:** Existuje vysoká pravděpodobnost, že dojde k ohrožení zabezpečení prostředku. Měli byste se podívat hned. Security Center má vysokou důvěru v škodlivém záměru i ve zjištěních použitých k vystavení výstrahy. Například výstraha, která detekuje spuštění známého škodlivého nástroje, jako je například Mimikatz, společný nástroj používaný ke krádeži přihlašovacích údajů.
-- **Střední:** Je pravděpodobné, že podezřelá aktivita může znamenat, že došlo k ohrožení zabezpečení prostředku.
-Při analýze nebo hledání je jistota Security Center střední a důvěra škodlivého záměru je střední až vysoká. Obvykle se jedná o strojové učení nebo detekci na základě anomálií. Například pokus o přihlášení z umístění neobvyklé.
-- **Nízká úroveň:** Může se jednat o neškodný pozitivní nebo blokovaný útok.
-   * Security Center není dostatečně jistý, že záměr je škodlivý a aktivita může být Innocent. Například vymazání protokolu je akce, ke které může dojít, když se útočník pokusí skrýt jejich stopy, ale v mnoha případech je rutinní operací prováděná správci.
-   * Security Center vám většinou neřekne při zablokování útoků, pokud se nejedná o zajímavý případ, který doporučujeme najít. 
-- **Informační:** Informační výstrahy se zobrazí jenom v případě, že přejdete k incidentu zabezpečení, nebo pokud použijete REST API s konkrétním ID výstrahy. Incident se většinou skládá z několika výstrah. některé z nich se můžou zobrazovat jenom s informacemi, ale v kontextu dalších výstrah se můžou důvěryhodného o bližším vzhledu. 
- 
+- **Vysoká:** Existuje vysoká pravděpodobnost, že váš prostředek je ohrožena. Měl by ses na to hned podívat. Centrum zabezpečení má vysokou důvěru v škodlivý záměr a v zjištění použitá k vydání výstrahy. Například výstraha, která detekuje spuštění známého škodlivého nástroje, jako je Mimikatz, běžný nástroj používaný pro krádež pověření.
+- **Střední:** Toto je pravděpodobně podezřelá aktivita může znamenat, že prostředek je ohrožena.
+Důvěra Centra zabezpečení v analýzu nebo hledání je střední a důvěra škodlivého záměru je střední až vysoká. Obvykle se jedná o strojové učení nebo detekce založené na anomáliích. Například pokus o přihlášení z neobvyklého umístění.
+- **Nízká:** Může to být neškodný pozitivní nebo blokovaný útok.
+   * Centrum zabezpečení není dostatečně přesvědčeno, že záměr je škodlivý a aktivita může být nevinná. Například log clear je akce, která může nastat, když se útočník pokusí skrýt své stopy, ale v mnoha případech je rutinní operace prováděná správci.
+   * Security Center obvykle neříká, kdy byly útoky zablokovány, pokud se nejedná o zajímavý případ, který doporučujeme, abyste se podívali. 
+- **Informační:** Informační výstrahy se zobrazí pouze při přechodu k podrobnostem o incidentu zabezpečení nebo při použití rozhraní REST API s určitým ID výstrahy. Incident se obvykle skládá z několika výstrah, z nichž některé se mohou samy o sobě jevit jako pouze informační, ale v kontextu ostatních výstrah mohou být hodny bližšího pohledu. 
 
-## <a name="continuous-monitoring-and-assessments"></a>Průběžné monitorování a posouzení
+## <a name="continuous-monitoring-and-assessments"></a>Průběžné monitorování a hodnocení
 
-Azure Security Center výhody z oblasti výzkumu zabezpečení a týmů pro datové vědy v rámci Microsoftu, kteří neustále monitorují změny v rámci hrozby. To zahrnuje následující iniciativy:
+Azure Security Center těží z toho, že má týmy pro výzkum zabezpečení a datové vědy v celém Microsoftu, které průběžně monitorují změny v prostředí hrozeb. To zahrnuje následující iniciativy:
 
-* **Monitorování analýzy hrozeb**: Analýza hrozeb zahrnuje mechanismy, ukazatele, dopady a Rady s případnými názory na stávající nebo nově vznikající hrozby. Tyto informace se sdílí v bezpečnostní komunitě a společnost Microsoft kanály analýzy hrozeb z interních i externích zdrojů nepřetržitě monitoruje.
-* **Sdílení signálu**: Informace od týmu zabezpečení z širokého portfolia cloudových a místních služeb a serverů společnosti Microsoft a z klientských koncových zařízení se sdílí a analyzují.
+* **Sledování analýzy hrozeb**: Analýza hrozeb zahrnuje mechanismy, ukazatele, důsledky a užitečné rady o stávajících nebo vznikajících hrozbách. Tyto informace se sdílí v bezpečnostní komunitě a společnost Microsoft kanály analýzy hrozeb z interních i externích zdrojů nepřetržitě monitoruje.
+* **Sdílení signálu**: Přehledy od bezpečnostních týmů v širokém portfoliu cloudových a místních služeb, serverů a koncových zařízení klienta společnosti Microsoft jsou sdíleny a analyzovány.
 * **Odborníci na zabezpečení společnosti Microsoft**: Průběžné zapojování týmů v rámci společnosti Microsoft, které pracují ve specializovaných oblastech zabezpečení, například forenzní analýza nebo detekce webových útoků.
 * **Optimalizace detekce**: V datových sadách reálných zákazníků se spouští algoritmy a výzkumníci z oblasti bezpečnosti pracují se zákazníky na ověřování výsledků. Pravdivě a falešně pozitivní výsledky pak slouží ke zlepšování algoritmů strojového učení.
 
-Toto celkové úsilí přineslo nové a vylepšené způsoby detekce, ze kterých budete mít okamžitý prospěch – a nemusíte sami nic dělat.
+Toto společné úsilí vyvrcholí novými a vylepšenými detekcemi, které můžete okamžitě využít – není třeba je podniknout.
 
-## Typy <a name="security-alert-types"></a> výstrah zabezpečení
-
-Následující témata vás provedou různými výstrahami v závislosti na typech prostředků:
-
-* [Výstrahy pro počítače s IaaS s Windows](threat-protection.md#windows-machines)
-* [Výstrahy pro počítače se systémem IaaS Linux](threat-protection.md#linux-machines)
-* [Výstrahy pro Azure App Service](threat-protection.md#app-services)
-* [Výstrahy pro kontejnery Azure](threat-protection.md#azure-containers)
-* [Výstrahy pro SQL Database a SQL Data Warehouse](threat-protection.md#data-sql)
-* [Výstrahy pro Azure Storage](threat-protection.md#azure-storage)
-* [Výstrahy pro Cosmos DB](threat-protection.md#cosmos-db)
-
-Následující témata vysvětlují, jak Security Center používá jinou telemetrii, kterou shromažďuje z integrace s infrastrukturou Azure, aby bylo možné použít další vrstvy ochrany pro prostředky nasazené v Azure:
-
-* [Výstrahy pro vrstvu správy Azure (Azure Resource Manager) (Preview)](threat-protection.md#management-layer)
-* [Výstrahy pro Azure Key Vault (Preview)](threat-protection.md#azure-keyvault)
-* [Výstrahy pro síťovou vrstvu Azure](threat-protection.md#network-layer)
-* [Výstrahy z jiných služeb](threat-protection.md#alerts-other)
-
-## <a name="what-are-security-incidents"></a>Co jsou incidenty zabezpečení?
-
-Incident zabezpečení je kolekce souvisejících výstrah, místo aby se jednotlivé výstrahy zobrazovaly jednotlivě. Security Center používá [korelaci cloudových inteligentních výstrah](security-center-alerts-cloud-smart.md) ke korelaci různých výstrah a signálů s nízkou věrností do incidentů zabezpečení.
-
-Pomocí incidentů vám Security Center poskytuje jediné zobrazení kampaně útoku a všech souvisejících výstrah. Toto zobrazení vám umožní rychle pochopit, jaké akce útočníka trvala, a jaké prostředky byly ovlivněny. Další informace najdete v tématu [korelace cloudové inteligentní výstrahy](security-center-alerts-cloud-smart.md).
-
-## <a name="security-alerts-in-azure-activity-log"></a>Výstrahy zabezpečení v protokolu aktivit Azure
-
-Kromě možnosti k dispozici v Azure Portal nebo programově se výstrahy a incidenty zabezpečení auditují jako události v [protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). Další informace o schématu událostí najdete v tématu [výstrahy zabezpečení v protokolu aktivit Azure](https://go.microsoft.com/fwlink/?linkid=2114113).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o různých typech výstrah, které jsou k dispozici v Security Center. Další informace naleznete v tématu:
+V tomto článku jste se dozvěděli o různých typech výstrah dostupných v Centru zabezpečení. Další informace naleznete v tématu:
 
-* [Průvodce plánováním a provozem služby Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
-* [Azure Security Center – nejčastější dotazy](https://docs.microsoft.com/azure/security-center/security-center-faq)
+* [Ochrana před hrozbami v Azure Security Center](threat-protection.md) – stručný popis zdrojů výstrah zabezpečení zobrazených službou Azure Security Center 
+* **Výstrahy zabezpečení v protokolu aktivit Azure** – kromě toho, že jsou k dispozici na webu Azure Portal nebo programově, se výstrahy zabezpečení a incidenty auditují jako události v protokolu aktivit [Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). Další informace o schématu událostí najdete [v tématu výstrahy zabezpečení v protokolu aktivit Azure](https://go.microsoft.com/fwlink/?linkid=2114113)
 

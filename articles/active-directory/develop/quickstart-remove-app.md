@@ -1,5 +1,5 @@
 ---
-title: Odebrat aplikaci registrovanou na platformě Microsoft identity | Azure
+title: Odebrání aplikace registrované na platformě microsoft identit | Azure
 description: Zjistěte, jak odebrat aplikaci zaregistrovanou na platformě Microsoft Identity Platform.
 services: active-directory
 author: rwike77
@@ -13,13 +13,13 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 3cc9e4458f14a63bad7f484bc16683248895ede9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240846"
 ---
-# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Rychlý Start: odebrání aplikace registrované s platformou Microsoft identity
+# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Úvodní příručka: Odebrání aplikace registrované na platformě identit Microsoftu
 
 Podnikoví vývojáři a poskytovatelé softwaru jako služby (SaaS), kteří mají zaregistrované aplikace na platformě Microsoft Identity Platform, můžou potřebovat odebrat registraci aplikace.
 
@@ -30,7 +30,7 @@ V tomto rychlém startu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít klienta, který má zaregistrovaných aplikací. Informace o přidání a registraci aplikací najdete v tématu [Registrace aplikace na platformě Microsoft Identity Platform](quickstart-register-app.md).
+Musíte mít klienta, který má aplikace registrované na něj. Informace o přidání a registraci aplikací najdete v tématu [Registrace aplikace na platformě Microsoft Identity Platform](quickstart-register-app.md).
 
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>Odebrání aplikace vytvořené vámi nebo vaší organizací
 
@@ -40,7 +40,7 @@ Aplikace, které jste zaregistrovali vy nebo vaše organizace, jsou reprezentova
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 2. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-3. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**. Vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** dané aplikace.
+3. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte Registrace **aplikací**. Vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** dané aplikace.
 4. Na stránce **Přehled** vyberte **Odstranit**.
 5. Vybráním **Ano** potvrďte, že chcete aplikaci odstranit.
 

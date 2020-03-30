@@ -1,6 +1,6 @@
 ---
-title: Co je vědecké zpracování týmových dat?
-description: Poskytuje metodologie pro datové vědy dodávat prediktivní analytická řešení a inteligentní aplikace.
+title: Co je proces vědecké vědy o týmových datech?
+description: Poskytuje metodiku datové vědy pro poskytování prediktivních analytických řešení a inteligentních aplikací.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,96 +12,96 @@ ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 10d6e562301e089700940ac5dfb212bcc4e09653
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79088072"
 ---
-# <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?
+# <a name="what-is-the-team-data-science-process"></a>Co je proces vědecké vědy o týmových datech?
 
-Zpracování vědy dat (TDSP) týmu je metodologie pro efektivně dodávat prediktivní analytická řešení a inteligentní aplikace agile, iterativní datové vědy. TDSP pomáhá zdokonalit týmovou spolupráci a učení tím, že navrhuje, jak budou role týmu fungovat nejlépe dohromady. TDSP zahrnuje osvědčené postupy a struktury od Microsoftu a jiných průmyslových vedoucích, které vám pomůžou s úspěšnou implementací iniciativ pro datové vědy. Cílem je umožnit společnostem plně využít výhod jejich analytického programu.
+Team Data Science Process (TDSP) je agilní, iterativní metodika datové vědy, která efektivně poskytuje prediktivní analytická řešení a inteligentní aplikace. TDSP pomáhá zlepšit týmovou spolupráci a učení tím, že navrhuje, jak týmové role fungují nejlépe společně. TDSP obsahuje osvědčené postupy a struktury od společnosti Microsoft a dalších vedoucích pracovníků v oboru, které pomáhají k úspěšné implementaci iniciativ datové vědy. Cílem je umožnit společnostem plně využít výhod jejich analytického programu.
 
-Tento článek obsahuje přehled TDSP a jeho hlavní komponenty. Poskytujeme obecný popis tohoto procesu, který se dá implementovat s různými druhy nástrojů. Podrobnější popis projektu úlohy a role zapojené do životního cyklu procesu najdete v dalších odkazovaných tématech. K dispozici je také pokyny, jak implementovat TDSP pomocí konkrétní sadu nástrojů Microsoft a infrastrukturou, která můžeme použít k implementaci TDSP v našich týmů.
+Tento článek obsahuje přehled TDSP a jeho hlavní součásti. Poskytujeme obecný popis procesu zde, které mohou být implementovány s různými druhy nástrojů. Podrobnější popis projektových úkolů a rolí zapojených do životního cyklu procesu je uveden v dalších propojených tématech. Pokyny k implementaci TDSP pomocí konkrétní sadu nástrojů a infrastruktury Microsoftu, které používáme k implementaci TDSP v našich týmech je také k dispozici.
 
-## <a name="key-components-of-the-tdsp"></a>Klíčové komponenty TDSP
+## <a name="key-components-of-the-tdsp"></a>Klíčové součásti TDSP
 
-TDSP se skládá z následujících klíčových komponent:
+TDSP se skládá z těchto klíčových složek:
 
 - Definice **životního cyklu datové vědy**
 - **Standardizovaná struktura projektu**
-- **Infrastruktura a prostředky** pro projekty pro datové vědy
-- **Nástroje a pomůcky** pro provádění projektů
+- **Infrastruktura a zdroje** pro projekty datové vědy
+- **Nástroje a nástroje** pro realizaci projektu
 
 
-## <a name="data-science-lifecycle"></a>Životního cyklu datové vědy
+## <a name="data-science-lifecycle"></a>Životní cyklus datové vědy
 
-Zpracování vědy dat (TDSP) týmu poskytuje životní cyklus strukturovat vývoj vašich projektů datové vědy. Životní cyklus popisuje všechny kroky, které úspěšné projekty následují.
+Proces vědecké ho procesu týmových dat (TDSP) poskytuje životní cyklus pro strukturu vývoje vašich projektů datové vědy. Životní cyklus popisuje úplné kroky, které úspěšné projekty následují.
 
-Pokud používáte jiný životní cyklus pro datové vědy, jako je například [ostrý, DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [konference KDD](https://wikipedia.org/wiki/Data_mining#Process) nebo vlastní vlastní proces vaší organizace, můžete i nadále používat TDSP založenou na úlohách v kontextu těchto životních cyklů vývoje. Na vysoké úrovni tyto jiné metody mají mnoho společnou. 
+Pokud používáte jiný životní cyklus datové vědy, například [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) nebo vlastní proces vaší organizace, můžete stále používat tdsp založený na úlohách v kontextu těchto životních cyklů vývoje. Na vysoké úrovni mají tyto různé metodiky mnoho společného. 
 
-Tento životní cyklus byly navržené pro projekty datových věd, které se dodávají jako součást inteligentní aplikace. Tyto aplikace nasadit modely strojového učení a umělé inteligence pro prediktivní analýzy. Používání tohoto procesu může být výhodné i pro průzkumné projekty pro zpracování dat nebo projekty Improvised Analytics. Ale v takových případech některé z kroků popsaných nemusí být potřeba.    
+Tento životní cyklus byl navržen pro projekty datové vědy, které jsou dodávány jako součást inteligentních aplikací. Tyto aplikace nasazují modely strojového učení nebo umělé inteligence pro prediktivní analýzu. Z používání tohoto procesu mohou mít prospěch také projekty průzkumné datové vědy nebo improvizované analytické projekty. V takových případech však nemusí být některé popsané kroky potřebné.    
 
-Životní cyklus popisuje hlavní fáze, které jsou projekty obvykle spouštěny, často opakované:
+Životní cyklus popisuje hlavní fáze, které projekty obvykle provádějí, často iterativně:
 
 * **Obchodní porozumění**
 * **Získávání a porozumění dat**
-* **Situací**
+* **Modelování**
 * **Nasazení**
-* **Přijetí zákazníkovi**
+* **Přijetí zákazníkem**
 
-Tady je vizuální reprezentace **životního cyklu vědeckého zpracování týmových dat**. 
+Zde je vizuální reprezentace **životního cyklu procesu vědecké hospo-** 
 
-![TDSP Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
+![TDSP-Životní cyklus2](./media/overview/tdsp-lifecycle2.png) 
 
-Cíle, úlohy a artefakty dokumentace pro každou fázi životního cyklu v TDSP jsou popsány v tématu [životní cyklus procesu vědeckého zpracování dat týmu](lifecycle.md) . Tyto úkoly a artefakty jsou spojeny s rolemi projektu:
+Cíle, úkoly a artefakty dokumentace pro každou fázi životního cyklu v tdsp jsou popsány v tématu [životního cyklu procesu týmových dat.](lifecycle.md) Tyto úkoly a artefakty jsou přidruženy k rolím projektu:
 
 - Architekt řešení
 - Projektový manažer
 - Odborník přes data
 - Vedoucí projektu 
 
-Následující diagram představuje zobrazení mřížky úloh (modře) a artefakty (zeleně), které jsou spojené s každou fázi životního cyklu (na vodorovné ose) pro tyto role (na svislé ose). 
+Následující diagram obsahuje zobrazení mřížky úkolů (modře) a artefaktů (zeleně) spojených s každou fází životního cyklu (na vodorovné ose) pro tyto role (na svislé ose). 
 
-[![TDSP – role a – úkoly](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
+[![TDSP-role a úkoly](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
-## <a name="standardized-project-structure"></a>Struktura standardizované projektu
+## <a name="standardized-project-structure"></a>Standardizovaná struktura projektu
 
-Všechny projekty, sdílet adresářovou strukturu a používat šablony pro dokumenty projektu s usnadňuje členům týmu vyhledat informace o jejich projektech. Všechny kódu a dokumenty jsou uloženy v systému správy verzí (VC), jako je Git, TFS nebo Subversion, umožňuje spolupráci mezi týmy. Sledování úloh a funkcí v projektu aplikace agile sledování systému jako Jira technologie Rally a Azure DevOps umožňuje blíže sledování kódu pro jednotlivé funkce. Tyto sledování také umožňuje týmům získat lepší odhady nákladů. TDSP doporučuje vytvoření oddělené úložiště pro každý projekt na virtuální Clustery pro správu verzí, zabezpečení informací a spolupráci. Standardizované strukturu pro všechny projekty pomáhá institucionální znalosti budovat celé organizace.
+Mít všechny projekty sdílet adresářovou strukturu a používat šablony pro projektové dokumenty usnadňuje členům týmu najít informace o svých projektech. Veškerý kód a dokumenty jsou uloženy v systému správy verzí (VCS), jako je Git, TFS nebo Subversion, aby umožnily týmovou spolupráci. Sledování úkolů a funkcí v agilním systému sledování projektů, jako je Jira, Rally a Azure DevOps, umožňuje bližší sledování kódu pro jednotlivé funkce. Toto sledování také umožňuje týmům získat lepší odhady nákladů. TDSP doporučuje vytvořit samostatné úložiště pro každý projekt na VCS pro správu verzí, zabezpečení informací a spolupráci. Standardizovaná struktura pro všechny projekty pomáhá budovat institucionální znalosti v celé organizaci.
 
-Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardním umístění. Tuto strukturu složek uspořádá soubory, které obsahují kód pro zkoumání dat a extrakci funkce a, který si poznamenejte modelu iterací. Tyto šablony usnadňují členové týmu pochopit práci ostatních nebo přidání nových členů do teams. Je snadné k zobrazování a aktualizace šablony dokumentů ve formátu markdown. Pomocí šablon můžete poskytnout kontrolní seznamy s klíčovými otázkami pro každý projekt, abyste měli jistotu, že problém je dobře definovaný a že dodávky odpovídají očekávané kvalitě. Příklady obsahují:
+Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardních umístěních. Tato struktura složek uspořádá soubory, které obsahují kód pro zkoumání dat a extrakci funkcí a které zaznamenávají iterace modelu. Tyto šablony usnadňují členům týmu pochopit práci ostatních a přidávat nové členy do týmů. Je snadné zobrazit a aktualizovat šablony dokumentů ve formátu markdown. Pomocí šablon můžete poskytnout kontrolní seznamy s klíčovými otázkami pro každý projekt, abyste se ujistili, že problém je dobře definován a že dodávky splňují očekávanou kvalitu. Příklady obsahují:
 
-- Projekt gossmanem dokumentovat obchodního problému a rozsah projektu
-- sestavy dat dokumentu strukturu a statistiky nezpracovaných dat
-- model sestavy do odvozené funkce dokumentů
-- metriky výkonu modelu, jako je například křivky roc s více TŘÍDAMI nebo MSE
+- chartu projektu pro dokumentaci obchodního problému a rozsahu projektu
+- datových zpráv pro dokumentaci struktury a statistiky nezpracovaných údajů
+- sestavy modelů pro dokumentaci odvozených prvků
+- metriky výkonu modelu, jako jsou křivky ROC nebo MSE
 
 
-[![TDSP – adresáře](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
+[![TDSP-adresáře](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
-Adresářová struktura může být klonována z [GitHubu](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
+Adresářovou strukturu lze klonovat z [GitHubu](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
 
-## <a name="infrastructure-and-resources-for-data-science-projects"></a>Infrastrukturu a prostředky pro projekty datových věd  
+## <a name="infrastructure-and-resources-for-data-science-projects"></a>Infrastruktura a zdroje pro projekty datové vědy  
 
-TDSP poskytuje doporučení pro správu sdílené analýzy a infrastruktury úložiště, jako například:
+TDSP poskytuje doporučení pro správu sdílené analýzy a infrastruktury úložišť, jako jsou:
 
-- systémy souborů cloudu pro ukládání datových sad 
+- cloudové souborové systémy pro ukládání datových sad 
 - databáze
 - clustery velkých objemů dat (Hadoop nebo Spark) 
-- Služba Machine learning 
+- služba strojového učení 
 
-Analýza a infrastruktura úložiště, kde jsou uložené a zpracovávané datové sady, můžou být v cloudu nebo místně. Tato infrastruktura umožňuje reprodukovatelné analýzy. Také předejdete duplikace, což může vést k nekonzistencím a zbytečným nákladům na infrastrukturu. Nástroje jsou k dispozici zřízení sdílených prostředků, sledovat a povolit jednotlivým členům týmu se navázat zabezpečené připojení k těmto prostředkům. Je také vhodné mít členy projektu vytvořit konzistentní výpočetní prostředí. Různí členové týmu můžete replikovat a ověřit experimentů.
+Infrastruktura pro analýzy a úložiště, kde jsou uloženy nezpracované a zpracované datové sady, může být v cloudu nebo místně. Tato infrastruktura umožňuje reprodukovatelnou analýzu. Rovněž se vyhýbá duplicitě, což může vést k nesrovnalostem a zbytečným nákladům na infrastrukturu. Nástroje jsou k dispozici pro zřízení sdílených prostředků, jejich sledování a umožnit každému členovi týmu připojit se k těmto prostředkům bezpečně. Je také vhodné mít členy projektu vytvořit konzistentní výpočetní prostředí. Různí členové týmu pak mohou replikovat a ověřovat experimenty.
 
-Tady je příklad sdílení různých komponent infrastruktury cloudové analýzy a práce v několika projektech týmu.
+Tady je příklad týmu, který pracuje na více projektech a sdílí různé komponenty infrastruktury cloudové analýzy.
 
-[![TDSP – infrastruktura](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
+[![Infrastruktura TDSP](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
-## <a name="tools-and-utilities-for-project-execution"></a>Nástroje pro spuštění projektu
+## <a name="tools-and-utilities-for-project-execution"></a>Nástroje a nástroje pro realizaci projektu
 
-Úvod do procesů ve většině organizací je náročná. Nástroje poskytované implementace nápovědy data science procesu a životního cyklu nižší překážky a zvýšit konzistence jejich přijetí. TDSP obsahuje počáteční sadu nástrojů a skriptů k nastartování přijetí TDSP v rámci týmu. Pomáhá také automatizovat některé běžné úlohy v životního cyklu datové vědy například pro zkoumání a modelování směrného plánu. K dispozici je dobře definovaná struktura pro jednotlivce, které přispívat sdíleným nástrojům a nástrojům do úložiště se sdíleným kódem svého týmu. Tyto prostředky mohou pak využívat jiné projekty v rámci týmu nebo organizace. TDSP také v plánu povolit příspěvky nástroje celé komunitě. Nástroje TDSP se dají klonovat z [GitHubu](https://github.com/Azure/Azure-TDSP-Utilities).
+Zavádění procesů ve většině organizací je náročné. Nástroje poskytované k implementaci procesu datové vědy a životního cyklu pomáhají snižovat překážky a zvyšovat konzistentnost jejich přijetí. TDSP poskytuje počáteční sadu nástrojů a skriptů pro nastartování přijetí TDSP v rámci týmu. Pomáhá také automatizovat některé běžné úkoly v životním cyklu datové vědy, jako je průzkum dat a základní modelování. Existuje dobře definovaná struktura, která jednotlivcům poskytuje příspěvky sdílených nástrojů a nástrojů do úložiště sdílených kódů svého týmu. Tyto prostředky pak mohou být využity jinými projekty v rámci týmu nebo organizace. TDSP také plánuje umožnit příspěvky nástrojů a nástrojů pro celou komunitu. Nástroje TDSP lze klonovat z [GitHubu](https://github.com/Azure/Azure-TDSP-Utilities).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vědecké zpracování týmových dat: role a úlohy](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Popisuje klíčové role personálu a jejich přidružené úkoly pro tým pro datové vědy, který se v tomto procesu bude standardizovat. 
+[Proces vědecké ho spoje: Role a úkoly](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Popisuje klíčové role personálu a jejich přidružené úkoly pro tým datové vědy, který standardizuje tento proces. 

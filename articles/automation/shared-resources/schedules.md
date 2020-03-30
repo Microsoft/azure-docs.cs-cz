@@ -1,6 +1,6 @@
 ---
 title: Plány v Azure Automation
-description: Plány automatizace se používají k plánování automatického spouštění Runbooků v Azure Automation. Popisuje, jak vytvořit a spravovat plán v nástroji, abyste mohli automaticky spustit sadu Runbook v určitou dobu nebo podle plánu opakování.
+description: Plány automatizace se používají k plánování runbooků v Azure Automation, aby se automaticky spouštěla. Popisuje, jak vytvořit a spravovat plán, takže můžete automaticky spustit runbook v určitém čase nebo podle opakovaného plánu.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -10,73 +10,73 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: c4898ba62abdc42d95b77b9a77387bfe71fb4771
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252659"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Naplánování runbooku v Azure Automation
 
-Pokud chcete naplánovat spuštění Runbooku v Azure Automation v zadanou dobu, můžete ho propojit s jedním nebo více plány. Plán se dá nakonfigurovat tak, aby se spouštěl buď jednou, nebo na základě hodinových nebo denních plánů pro Runbooky v Azure Portal. Můžete je také naplánovat na týdenní, měsíční, konkrétní dny v týdnu nebo dny v měsíci nebo určitý den v měsíci. Runbook můžete spojit s víc plány a k jednomu plánu může být připojených víc Runbooků.
+Chcete-li naplánovat spuštění sady Runbook v Azure Automation v určeném čase, propojte ho s jedním nebo více plány. Plán lze nakonfigurovat tak, aby se spouštěl jednou nebo podle opakovaného hodinového nebo denního plánu pro runbooky na webu Azure Portal. Můžete je také naplánovat na týdenní, měsíční, konkrétní dny v týdnu nebo dny v měsíci nebo na konkrétní den v měsíci. Runbook můžete spojit s víc plány a k jednomu plánu může být připojených víc Runbooků.
 
 > [!NOTE]
-> Plány v současné době nepodporují Azure Automation konfigurací DSC.
+> Plány aktuálně nepodporují konfigurace DSC azure automatizace.
 
 ## <a name="powershell-cmdlets"></a>Rutiny prostředí PowerShell
 
-Rutiny v následující tabulce se používají k vytváření a správě plánů pomocí prostředí PowerShell v Azure Automation. Dodávají se jako součást [modulu Azure PowerShell](/powershell/azure/overview).
+Rutiny v následující tabulce se používají k vytváření a správě plánů pomocí Prostředí PowerShell v Azure Automation. Dodávají se jako součást [modulu Azure PowerShell](/powershell/azure/overview).
 
-| Rutina | Popis |
+| Rutiny | Popis |
 |:--- |:--- |
 | [Get-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/get-azurermautomationschedule) |Načte plán. |
 | [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) |Vytvoří nový plán. |
 | [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule) |Odebere plán. |
-| [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) |Nastaví vlastnosti pro existující plán. |
-| [Get-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/get-azurermautomationscheduledrunbook) |Načte naplánované Runbooky. |
-| [Registrovat – AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |Přidruží sadu Runbook k plánu. |
-| [Zrušit registraci – AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Dissociates sadu Runbook z plánu. |
+| [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) |Nastaví vlastnosti existujícího plánu. |
+| [Get-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/get-azurermautomationscheduledrunbook) |Načte naplánované sady Runbook. |
+| [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |Přidruží runbook k plánu. |
+| [Unregister-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Disociace runbook z plánu. |
 
 ## <a name="creating-a-schedule"></a>Vytvoření plánu
 
-Můžete vytvořit nový plán pro Runbooky v Azure Portal nebo pomocí PowerShellu.
+Nový plán pro runbooky můžete vytvořit na webu Azure Portal nebo s PowerShellem.
 
 > [!NOTE]
-> Azure Automation používá nejnovější moduly v účtu Automation při spuštění nové naplánované úlohy.  Chcete-li se vyhnout vlivu na vaše Runbooky a procesy, které automatizují, měli byste nejprve otestovat všechny Runbooky, které mají propojené plány, pomocí účtu Automation vyhrazeného pro testování.  Tím se ověří, že vaše naplánované Runbooky budou dál fungovat správně, a pokud ne, můžete pokračovat v řešení potíží a použít všechny změny, které se vyžadují před migrací aktualizované verze Runbooku do produkčního prostředí.
-> Váš účet Automation automaticky nezíská žádné nové verze modulů, pokud jste je neaktualizovali ručně, a to tak, že v **modulech**vyberete možnost [aktualizovat moduly Azure](../automation-update-azure-modules.md) .
+> Azure Automation používá nejnovější moduly ve vašem účtu Automation při spuštění nové naplánované úlohy.  Chcete-li se vyhnout dopadu na vaše sady Runbook a procesy, které automatizují, měli byste nejprve otestovat všechny sady Runbook, které propojili plány s účtem Automation vyhrazeným pro testování.  Tím ověříte, že naplánované sady Runbook nadále fungují správně, a pokud ne, můžete dále řešit potíže a použít všechny změny potřebné před migrací aktualizované verze sady Runbook do produkčního prostředí.
+> Váš účet Automatizace nezíská automaticky žádné nové verze modulů, pokud jste je aktualizovali ručně výběrem [možnosti Aktualizovat moduly Azure](../automation-update-azure-modules.md) z **modulů**.
 
-### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>Vytvoření nového plánu v Azure Portal
+### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>Vytvoření nového plánu na webu Azure Portal
 
-1. V Azure Portal v účtu Automation na levé straně v části **sdílené prostředky** vyberte **plány** .
-2. V horní části stránky klikněte na **Přidat plán** .
-3. V podokně **Nový plán** zadejte **název** a volitelně také **Popis** nového plánu.
-4. Vyberte, jestli se plán spouští jednou, nebo na základě plánu **opakování**, a to tak, že vyberete **jednou** nebo znovu. Pokud vyberete možnost **zadat** **čas zahájení**a pak klikněte na tlačítko **vytvořit**. Pokud vyberete možnost **opakovat, zadejte** **čas zahájení** a **opakování každého**, vyberte frekvenci, s jakou se má sada Runbook opakovat – podle **hodin**, **dnů**, **týdnů**nebo po **měsících**.
-    1. Pokud vyberete **týden**, zobrazí se seznam dnů v týdnu, ze kterých si můžete vybrat. Vyberte tolik dní, kolik chcete. První spuštění vašeho plánu nastane první den, který se vybere po počátečním čase. Chcete-li například zvolit víkendový plán, vyberte možnost **sobota** a **neděle**.
+1. Na webu Azure Portal z účtu automatizace vyberte **plány** v části **Sdílené prostředky** na levé straně.
+2. V horní části stránky klikněte na **Přidat plán.**
+3. V podokně **Nový plán** zadejte **název** a případně **popis** nového plánu.
+4. Vyberte, zda se plán spustí jednou nebo podle opakovaného plánu, a to výběrem **možnosti Jednou** nebo **Opakované**. Pokud vyberete **Jednou** určíte **čas zahájení**a potom klepnete na **tlačítko Vytvořit**. Pokud vyberete **Možnost Opakovat**, zadejte **čas zahájení** a pro opakování **každý ,** vyberte frekvenci, jak často se má runbook opakovat - podle **hodiny**, **dne**, **týdne**nebo **měsíce**.
+    1. Pokud vyberete **týden**, zobrazí se seznam dnů v týdnu, ze kterých si můžete vybrat. Vyberte tolik dní, kolik chcete. První spuštění plánu proběhne první den vybraný po počátečním čase. Chcete-li například zvolit plán víkendu, zvolte **sobota** a **neděle**.
 
-       ![Nastavování opakovaného plánu na víkend](../media/schedules/week-end-weekly-recurrence.png)
+       ![Nastavení víkendového periodického plánu](../media/schedules/week-end-weekly-recurrence.png)
 
-    2. Pokud vyberete možnost **month (měsíc**), budete mít k disdílně různé možnosti. Pro možnost **měsíčních výskytů** vyberte buď **dny v měsíci** nebo **dny v týdnu**. Pokud zvolíte **dny v měsíci**, zobrazí se kalendář, který vám umožní zvolit tolik dní, kolik chcete. Pokud zvolíte datum, například 31, ke kterému nedochází v aktuálním měsíci, plán se nespustí. Pokud chcete, aby plán běžel za poslední den, v části **Spustit za poslední den v měsíci**vyberte **Ano** . Pokud zvolíte **dny v týdnu**, zobrazí se **všechny možnosti opakování** . Vyberte **první**, **druhý**, **třetí**, **čtvrtý**nebo **Poslední**. Nakonec vyberte den, kdy se má opakovat.
+    2. Pokud vyberete **měsíc**, budete mít různé možnosti. Pro možnost **Měsíční výskyty** vyberte buď **dny měsíce,** nebo **Dny týdne**. Pokud zvolíte **Měsíce –** zobrazí se kalendář, který vám umožní vybrat si libovolný počet dní. Pokud zvolíte datum, jako je například 31. Pokud chcete, aby byl plán spuštěn poslední den, zvolte **Ano** v části **Spustit poslední den v měsíci**. Pokud zvolíte **Dny v týdnu**, zobrazí se **možnost Opakovat každou** možnost. Zvolte **První**, **Druhý,** **Třetí,** **Čtvrtý**nebo **Poslední**. Nakonec si vyberte den, který chcete opakovat.
 
-       ![Měsíční plán na prvních, patnáct a poslední den v měsíci](../media/schedules/monthly-first-fifteenth-last.png)
+       ![Měsíční plán na první, patnáctý a poslední den v měsíci](../media/schedules/monthly-first-fifteenth-last.png)
 
-5. Po dokončení klikněte na **vytvořit**.
+5. Po dokončení klepněte na **tlačítko Vytvořit**.
 
 ### <a name="to-create-a-new-schedule-with-powershell"></a>Vytvoření nového plánu pomocí PowerShellu
 
-Pomocí rutiny [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) vytvoříte plány. Zadejte čas spuštění plánu a frekvenci, kterou má spustit. Následující příklady ukazují, jak vytvořit mnoho různých scénářů plánování.
+Rutinu [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) použijete k vytvoření plánů. Zadáte čas zahájení plánu a frekvenci, kterou má spustit. Následující příklady ukazují, jak vytvořit mnoho různých scénářů plánu.
 
-#### <a name="create-a-one-time-schedule"></a>Vytvořit jednorázový plán
+#### <a name="create-a-one-time-schedule"></a>Vytvoření jednorázového plánu
 
-Následující vzorové příkazy vytvoří jeden časový plán.
+Následující ukázkové příkazy vytvoří jednorázový plán.
 
 ```azurepowershell-interactive
 $TimeZone = ([System.TimeZoneInfo]::Local).Id
 New-AzureRmAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "Schedule01" -StartTime "23:00" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
 ```
 
-#### <a name="create-a-recurring-schedule"></a>Vytvoření plánu opakování
+#### <a name="create-a-recurring-schedule"></a>Vytvoření opakovaného plánu
 
-Následující vzorové příkazy ukazují, jak vytvořit opakovaný plán, který se spouští každý den v intervalu 1:13:00 po dobu roku.
+Následující ukázkové příkazy ukazují, jak vytvořit opakovaný plán, který se spouští každý den v 13:00 po dobu jednoho roku.
 
 ```azurepowershell-interactive
 $StartTime = Get-Date "13:00:00"
@@ -86,7 +86,7 @@ New-AzureRmAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "
 
 #### <a name="create-a-weekly-recurring-schedule"></a>Vytvoření týdenního opakovaného plánu
 
-Následující vzorové příkazy ukazují, jak vytvořit týdenní plán, který se spouští jenom v pracovních dnech.
+Následující ukázkové příkazy ukazují, jak vytvořit týdenní plán, který běží pouze ve všední dny.
 
 ```azurepowershell-interactive
 $StartTime = (Get-Date "13:00:00").AddDays(1)
@@ -96,7 +96,7 @@ New-AzureRmAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "
 
 #### <a name="create-a-weekly-recurring-schedule-for-weekends"></a>Vytvoření týdenního opakovaného plánu pro víkendy
 
-Následující vzorové příkazy ukazují, jak vytvořit týdenní plán, který se spouští jenom na víkendech.
+Následující ukázkové příkazy ukazují, jak vytvořit týdenní plán, který běží pouze o víkendech.
 
 ```azurepowershell-interactive
 $StartTime = (Get-Date "18:00:00").AddDays(1)
@@ -104,30 +104,30 @@ $StartTime = (Get-Date "18:00:00").AddDays(1)
 New-AzureRmAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "Weekends 6PM" -StartTime $StartTime -WeekInterval 1 -DaysOfWeek $WeekendDays -ResourceGroupName "ResourceGroup01"
 ```
 
-#### <a name="create-a-recurring-schedule-for-first-15th-and-last-days-of-the-month"></a>Vytvořit plán opakování pro první, 15 a poslední den v měsíci
+#### <a name="create-a-recurring-schedule-for-first-15th-and-last-days-of-the-month"></a>Vytvoření opakovaného plánu pro první, patnáctý a poslední dny v měsíci
 
-Následující vzorové příkazy ukazují, jak vytvořit plán opakování, který se spouští na 1, 15 a poslední den v měsíci.
+Následující ukázkové příkazy ukazují, jak vytvořit opakovaný plán, který se spustí první, patnáctý a poslední den v měsíci.
 
 ```azurepowershell-interactive
 $StartTime = (Get-Date "18:00:00").AddDays(1)
 New-AzureRmAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th and Last" -StartTime $StartTime -DaysOfMonth @("One", "Fifteenth", "Last") -ResourceGroupName "TestAzureAuto" -MonthInterval 1
 ```
 
-## <a name="linking-a-schedule-to-a-runbook"></a>Propojení plánu k sadě Runbook
+## <a name="linking-a-schedule-to-a-runbook"></a>Propojení plánu se knihou Runbook
 
-Runbook můžete spojit s víc plány a k jednomu plánu může být připojených víc Runbooků. Pokud sada Runbook obsahuje parametry, můžete pro ně zadat jejich hodnoty. Je nutné zadat hodnoty pro všechny povinné parametry a může poskytnout hodnoty pro všechny volitelné parametry. Tyto hodnoty se používají při každém spuštění sady Runbook tímto plánem. Stejný Runbook můžete připojit k jinému plánu a zadat jiné hodnoty parametrů.
+Runbook můžete spojit s víc plány a k jednomu plánu může být připojených víc Runbooků. Pokud má runbook parametry, můžete pro ně zadat hodnoty. Musíte zadat hodnoty pro všechny povinné parametry a může poskytnout hodnoty pro všechny volitelné parametry. Tyto hodnoty se používají při každém spuštění runbooku tímto plánem. Můžete připojit stejnou runbook k jinému plánu a zadat různé hodnoty parametrů.
 
-### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Postup připojení plánu k Runbooku pomocí Azure Portal
+### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Propojení plánu s runbookem s portálem Azure
 
-1. V Azure Portal na svém účtu Automation v části **Automatizace procesu** na levé straně vyberte **Runbooky** .
+1. Na portálu Azure z vašeho účtu automatizace vyberte **Runbooky** v části **Automatizace procesů** na levé straně.
 2. Klikněte na název Runbooku, který chcete naplánovat.
-3. Pokud Runbook není aktuálně propojený s plánem, nabídne se vám možnost vytvořit nový plán nebo propojit s existujícím plánem.
-4. Pokud má Runbook parametry, můžete vybrat možnost **Upravit nastavení spouštění (výchozí: Azure)** a podokno **parametry** , kde můžete zadat informace.
+3. Pokud sada Runbook není aktuálně propojena s plánem, bude vám nabídnuta možnost vytvořit nový plán nebo propojit existující plán.
+4. Pokud sada Runbook má parametry, můžete vybrat možnost **Změnit nastavení spuštění (Default:Azure)** a zobrazí se podokno **Parametry,** kde můžete zadat informace.
 
-### <a name="to-link-a-schedule-to-a-runbook-with-powershell"></a>Připojení plánu k Runbooku pomocí PowerShellu
+### <a name="to-link-a-schedule-to-a-runbook-with-powershell"></a>Propojení plánu s runbookem s PowerShellem
 
-K propojení plánu můžete použít rutinu [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) . Parametry Runbooku můžete zadat pomocí parametru Parametry. Další informace o zadávání hodnot parametrů naleznete v tématu [Starting a Runbook in Azure Automation](../automation-starting-a-runbook.md).
-Následující vzorové příkazy znázorňují postup připojení plánu k Runbooku pomocí rutiny Azure Resource Manager s parametry.
+Rutina [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) můžete použít k propojení plánu. Parametry Runbooku můžete zadat pomocí parametru Parametry . Další informace o určení hodnot parametrů najdete v [tématu Spuštění sady Runbook v Azure Automation](../automation-starting-a-runbook.md).
+Následující ukázkové příkazy ukazují, jak propojit plán s runbookpomocí rutiny Správce prostředků Azure s parametry.
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
@@ -139,32 +139,32 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 -ResourceGroupName "ResourceGroup01"
 ```
 
-## <a name="scheduling-runbooks-more-frequently"></a>Častější plánování runbooků
+## <a name="scheduling-runbooks-more-frequently"></a>Častější plánování sad runbooků
 
-Nejčastější interval, po který je možné naplánovat Azure Automation, je jedna hodina. Pokud požadujete, aby se plány spouštěly častěji než to, existují dvě možnosti:
+Nejčastější interval, pro který lze nakonfigurovat plán v Azure Automation, je jedna hodina. Pokud požadujete plány pro provádění častěji než to, existují dvě možnosti:
 
-* Vytvořte [Webhook](../automation-webhooks.md) pro Runbook a použijte [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) pro volání Webhooku. Azure Logic Apps poskytuje přesnější členitost při definování plánu.
+* Vytvořte [webhookpro](../automation-webhooks.md) runbook a pomocí [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) volat webhooku. Azure Logic Apps poskytuje více jemně odstupňované rozlišovací schopnost při definování plánu.
 
-* Vytvořte čtyři plány, které začínají během 15 minut od každé jiné spuštění každou hodinu. Tento scénář umožňuje spuštění sady Runbook každých 15 minut s různými plány.
+* Vytvořte čtyři plány, které začínají do 15 minut od sebe, které se spouštějí jednou za hodinu. Tento scénář umožňuje spuštění runbooku každých 15 minut s různými plány.
 
 ## <a name="disabling-a-schedule"></a>Zakázání plánu
 
-Když plán zakážete, na tento plán se už nespustí žádná sada Runbook, na kterou se odkazuje. Můžete ručně zakázat plán nebo nastavit čas vypršení platnosti plánů s frekvencí při jejich vytváření. Po dosažení doby platnosti je plán zakázán.
+Když zakážete plán, všechny runbook s ním spojené již běží na tomto plánu. Můžete ručně zakázat plán nebo nastavit čas vypršení platnosti pro plány s frekvencí při jejich vytváření. Po dosažení doby vypršení platnosti je plán zakázán.
 
-### <a name="to-disable-a-schedule-from-the-azure-portal"></a>Postup zakázání plánu z Azure Portal
+### <a name="to-disable-a-schedule-from-the-azure-portal"></a>Zakázání plánu z webu Azure Portal
 
-1. V Azure Portal v účtu Automation na levé straně v části **sdílené prostředky** vyberte **plány** .
+1. Na webu Azure Portal z účtu Automation vyberte **plány** v části **Sdílené prostředky** na levé straně.
 2. Kliknutím na název plánu otevřete podokno podrobností.
-3. Změňte možnost **povoleno** na **ne**.
+3. Změnit **povoleno** na **ne**.
 
 > [!NOTE]
-> Pokud chcete zakázat plán, který má čas začátku v minulosti, je nutné před uložením změnit počáteční datum na čas v budoucnosti.
+> Chcete-li zakázat plán, který má čas zahájení v minulosti, je nutné změnit počáteční datum na čas v budoucnu před uložením.
 
-### <a name="to-disable-a-schedule-with-powershell"></a>Postup zakázání plánu pomocí prostředí PowerShell
+### <a name="to-disable-a-schedule-with-powershell"></a>Zakázání plánu pomocí Prostředí PowerShell
 
-Pomocí rutiny [set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) můžete změnit vlastnosti stávajícího plánu. Chcete-li zakázat plán, zadejte **hodnotu false** pro parametr **Enable** .
+Rutinu [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) můžete použít ke změně vlastností existujícího plánu. Chcete-li zakázat plán, zadejte **false** pro **isenabled** parametr.
 
-Následující vzorové příkazy ukazují, jak zakázat plán pro sadu Runbook pomocí rutiny Azure Resource Manager.
+Následující ukázkové příkazy ukazují, jak zakázat plán pro runbook pomocí rutiny Správce prostředků Azure.
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
@@ -175,5 +175,5 @@ Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
 
 ## <a name="next-steps"></a>Další kroky
 
-* Chcete-li začít se sadami Runbook v nástroji Azure Automation, přečtěte si téma [spuštění sady Runbook v Azure Automation](../automation-starting-a-runbook.md)
+* Pokud chcete začít s runbooky v Azure Automation, přečtěte si témat [u tématu Spuštění Runbooku v Azure Automation](../automation-starting-a-runbook.md)
 

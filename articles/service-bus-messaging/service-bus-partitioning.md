@@ -1,6 +1,6 @@
 ---
-title: Vytvořit dělené Azure Service Bus fronty a témata | Microsoft Docs
-description: Popisuje, jak rozdělit Service Bus fronty a témata pomocí více zprostředkovatelů zpráv.
+title: Vytvoření rozdělených front a témat služby Azure Service Bus | Dokumenty společnosti Microsoft
+description: Popisuje, jak rozdělit fronty a témata service bus pomocí více zprostředkovatelů zpráv.
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -10,44 +10,44 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: aschhab
 ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260940"
 ---
 # <a name="partitioned-queues-and-topics"></a>Dělené fronty a témata
 
-Azure Service Bus využívá více zprostředkovatelů zpráv ke zpracování zpráv a více úložišť pro zasílání zpráv pro ukládání zpráv. Konvenční frontu nebo téma zpracovává jeden zprostředkovatel zpráv a ukládá se do jednoho úložiště pro zasílání zpráv. Service Bus *oddíly* umožňují rozdělit do oddílů fronty a témata nebo *entity zasílání zpráv*v rámci více zprostředkovatelů zpráv a úložišť pro zasílání zpráv. Dělení znamená, že celková propustnost entit rozdělená na oddíly již není omezena výkonem jediného zprostředkovatele zpráv nebo úložiště pro zasílání zpráv. Kromě toho dočasný výpadek úložiště pro zasílání zpráv nezobrazuje dělenou frontu nebo téma není k dispozici. Dělené fronty a témata můžou obsahovat všechny pokročilé funkce Service Bus, jako je podpora transakcí a relací.
+Azure Service Bus zaměstnává více zprostředkovatelů zpráv ke zpracování zpráv a více úložišť zpráv pro ukládání zpráv. Konvenční fronty nebo tématu je zpracována jeden zprostředkovatel zpráv a uloženy v jednom úložišti zasílání zpráv. Oddíly *služby* Service Bus umožňují fronty a témata nebo *zasílání zpráv entity*, které mají být rozděleny do oddílů mezi více zprostředkovatelů zpráv a úložiště zpráv. Dělení znamená, že celková propustnost dělené entity již není omezena výkonem zprostředkovatele jedné zprávy nebo úložiště zasílání zpráv. Dočasný výpadek úložiště zpráv navíc neznemožní rozdělení rozdělené fronty nebo tématu. Rozdělené fronty a témata mohou obsahovat všechny pokročilé funkce služby Service Bus, jako je například podpora transakcí a relací.
 
 > [!NOTE]
-> Dělení je k dispozici při vytváření entit pro všechny fronty a témata v jednotkách Basic a Standard. Pro SKU zasílání zpráv na úrovni Premium není k dispozici, ale všechny dříve existující rozdělené entity v oborech názvů Premium budou fungovat podle očekávání.
+> Dělení je k dispozici při vytváření entit pro všechny fronty a témata v základních nebo standardních skum. Není k dispozici pro sku zasílání zpráv Premium, ale všechny dříve existující oddíly entity v oborech názvů Premium nadále fungovat podle očekávání.
  
-Možnost dělení v žádné existující frontě nebo tématu není možné změnit. možnost lze nastavit pouze při vytváření entity.
+Není možné změnit možnost dělení na existující frontu nebo téma; Tuto možnost můžete nastavit pouze při vytváření entity.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Každá dělená fronta nebo téma se skládá z několika oddílů. Každý oddíl je uložený v jiném úložišti pro zasílání zpráv a zpracovávaný jiným zprostředkovatelem zpráv. Po odeslání zprávy do dělené fronty nebo tématu Service Bus přiřadí zprávu k jednomu z oddílů. Výběr se provádí náhodně Service Bus nebo pomocí klíče oddílu, který může odesílatel zadat.
+Každá rozdělená fronta nebo téma se skládá z více oddílů. Každý oddíl je uložen v jiném úložišti zpráv a zpracovány jiným zprostředkovatelem zpráv. Při odeslání zprávy do dělené fronty nebo tématu service bus přiřadí zprávu do jednoho z oddílů. Výběr se provádí náhodně pomocí služby Service Bus nebo pomocí klíče oddílu, který může zadávat odesílatel.
 
-Když chce klient přijmout zprávu z dělené fronty nebo z předplatného oddílu, Service Bus zadá dotaz na všechny oddíly pro zprávy a vrátí první zprávu získanou z úložišť zpráv do přijímače. Service Bus ukládá do mezipaměti ostatní zprávy a vrátí je, když obdrží další žádosti o přijetí. Přijímající klient neví o dělení; chování v dělené frontě nebo tématu s klientským přístupem (například čtení, dokončování, odložení, nedoručené zprávy, předběžné načítání) je stejné jako chování běžné entity.
+Pokud klient chce přijímat zprávy z rozdělené fronty nebo z odběr na rozdělené téma, Service Bus dotazuje všechny oddíly pro zprávy a potom vrátí první zprávu, která je získána z libovolného úložiště zpráv příjemci. Service Bus ukládá do mezipaměti ostatní zprávy a vrátí je, když obdrží další požadavky na příjem. Přijímající klient si není vědom dělení; chování rozdělené fronty nebo tématu orientovaného na klienta (například čtení, dokončení, odložení, nedoručené, předběžné načítání) je shodné s chováním běžné entity.
 
-Při odesílání zprávy do dělené fronty nebo tématu se neúčtují žádné další náklady.
+Při odesílání zprávy do dělené fronty nebo tématu nebo při přijímání zprávy z dělené fronty nebo tématu se neplatí žádné další náklady.
 
-## <a name="enable-partitioning"></a>Povolit dělení
+## <a name="enable-partitioning"></a>Povolení dělení
 
-Pokud chcete použít dělené fronty a témata s Azure Service Bus, použijte Azure SDK verze 2,2 nebo novější, nebo zadejte `api-version=2013-10` nebo novější v požadavcích HTTP.
+Pokud chcete pomocí Služby Azure Service Bus používat dělené fronty a témata, `api-version=2013-10` použijte azure sdk verzi 2.2 nebo novější nebo zadejte nebo novější v požadavcích HTTP.
 
-### <a name="standard"></a>Standardní
+### <a name="standard"></a>Standard
 
-Na úrovni Standard pro zasílání zpráv můžete vytvořit Service Bus fronty a témata ve velikosti 1, 2, 3, 4 nebo 5 GB (výchozí hodnota je 1 GB). Když je zapnuté dělení, Service Bus vytvoří 16 kopií (16 oddílů) entity, každé zadané velikosti. Pokud tedy vytvoříte frontu o velikosti 5 GB s 16 oddíly, maximální velikost fronty se změní na (5 \* 16) = 80 GB. Maximální velikost vaší dělené fronty nebo tématu můžete zobrazit tak, že v okně **Přehled** pro danou entitu prohlížíte její položku v [Azure Portal][Azure portal].
+Ve vrstvě Standardní zasílání zpráv můžete vytvořit fronty a témata služby Service Bus ve velikostech 1, 2, 3, 4 nebo 5 GB (výchozí hodnota je 1 GB). S rozdělením povoleno Service Bus vytvoří 16 kopií (16 oddílů) entity, každý stejné velikosti zadané. Pokud tedy vytvoříte frontu o velikosti 5 GB s 16 oddíly, \* maximální velikost fronty se stane (5 16) = 80 GB. Maximální velikost rozdělené fronty nebo tématu najdete v jeho vstupu na [webu Azure Portal][Azure portal]v okně **Přehled** pro tuto entitu.
 
 ### <a name="premium"></a>Premium
 
-V oboru názvů úrovně Premium se nepodporují dělení entit. Stále ale můžete vytvářet Service Bus fronty a témata v 1, 2, 3, 4, 5, 10, 20, 40 nebo 80-GB (výchozí hodnota je 1 GB). Velikost fronty nebo tématu můžete zobrazit tak, že v okně **Přehled** pro danou entitu prohlížíte její položku v [Azure Portal][Azure portal].
+V oboru názvů úrovně Premium nejsou podporovány entity dělení. Stále však můžete vytvořit fronty a témata služby Service Bus ve velikostech 1, 2, 3, 4, 5, 10, 20, 40 nebo 80 GB (výchozí hodnota je 1 GB). Velikost fronty nebo tématu najdete v jeho vstupu na [webu Azure Portal][Azure portal]v okně **Přehled** pro tuto entitu.
 
 ### <a name="create-a-partitioned-entity"></a>Vytvoření rozdělené entity
 
-Existuje několik způsobů, jak vytvořit dělenou frontu nebo téma. Když vytvoříte frontu nebo téma z aplikace, můžete povolit dělení na oddíly pro frontu nebo téma nastavením vlastnosti [QueueDescription. EnablePartitioning][QueueDescription.EnablePartitioning] nebo [TopicDescription. EnablePartitioning][TopicDescription.EnablePartitioning] na **hodnotu true**. Tyto vlastnosti musí být nastaveny v okamžiku vytvoření fronty nebo tématu a jsou k dispozici pouze ve starší knihovně [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) . Jak bylo uvedeno dříve, není možné tyto vlastnosti změnit ve stávající frontě nebo tématu. Příklad:
+Existuje několik způsobů, jak vytvořit rozdělenou frontu nebo téma. Při vytváření fronty nebo tématu z aplikace můžete povolit dělení fronty nebo tématu nastavením [vlastnosti QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning] nebo [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning] na **true**. Tyto vlastnosti musí být nastaveny v době vytvoření fronty nebo tématu a jsou k dispozici pouze ve starší knihovně [WindowsAzure.ServiceBus.](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) Jak již bylo uvedeno dříve, není možné změnit tyto vlastnosti na existující fronty nebo tématu. Například:
 
 ```csharp
 // Create partitioned topic
@@ -57,37 +57,37 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-Případně můžete vytvořit dělenou frontu nebo téma v [Azure Portal][Azure portal]. Když vytvoříte frontu nebo téma na portálu, ve výchozím nastavení je zaškrtnuta možnost **Povolit dělení** v dialogovém okně **vytvořit nebo vytvořit** téma. Tuto možnost můžete zakázat jenom v entitě úrovně Standard; v dělení úrovně Premium se nepodporuje a zaškrtávací políčko nemá žádný vliv. 
+Případně můžete vytvořit rozdělenou frontu nebo téma na [webu Azure Portal][Azure portal]. Když na portálu vytvoříte frontu nebo téma, je ve výchozím nastavení zaškrtnuta možnost **Povolit dělení** v dialogovém okně **Vytvořit** ve frontě nebo tématu. Tuto možnost můžete zakázat pouze v entitě úrovně Standard. v oddílování úrovně Premium není podporováno a zaškrtávací políčko nemá žádný vliv. 
 
-## <a name="use-of-partition-keys"></a>Použití klíčů oddílu
+## <a name="use-of-partition-keys"></a>Použití klíčů oddílů
 
-Když se do dělené fronty nebo tématu zařadí zpráva do fronty, Service Bus zkontroluje přítomnost klíče oddílu. Pokud najde jednu, vybere oddíl na základě tohoto klíče. Pokud klíč oddílu nenajde, vybere oddíl na základě interního algoritmu.
+Pokud je zpráva zařazena do fronty nebo tématu s oddíly, služba Service Bus zkontroluje přítomnost klíče oddílu. Pokud najde jeden, vybere oddíl na základě tohoto klíče. Pokud nenajde klíč oddílu, vybere oddíl na základě interního algoritmu.
 
 ### <a name="using-a-partition-key"></a>Použití klíče oddílu
 
-Některé scénáře, například relace nebo transakce, vyžadují, aby se zprávy uložily do konkrétního oddílu. Všechny tyto scénáře vyžadují použití klíče oddílu. Všechny zprávy, které používají stejný klíč oddílu, jsou přiřazeny ke stejnému oddílu. Pokud je oddíl dočasně nedostupný, Service Bus vrátí chybu.
+Některé scénáře, například relace nebo transakce, vyžadují zprávy, které mají být uloženy v určitém oddílu. Všechny tyto scénáře vyžadují použití klíče oddílu. Všechny zprávy, které používají stejný klíč oddílu jsou přiřazeny ke stejnému oddílu. Pokud je oddíl dočasně nedostupný, vrátí služba Service Bus chybu.
 
-V závislosti na scénáři se jako klíč oddílu používají různé vlastnosti zpráv:
+V závislosti na scénáři se jako klíč oddílu používají různé vlastnosti zprávy:
 
-**SessionID**: Pokud má zpráva nastavenou vlastnost [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) , Service Bus jako klíč oddílu použije **SessionID** . Tímto způsobem budou všechny zprávy patřící do stejné relace zpracovávány stejným zprostředkovatelem zpráv. Relace umožňují Service Bus zaručit řazení zpráv a také konzistenci stavů relace.
+**SessionId**: Pokud má zpráva nastavenou vlastnost [SessionId,](/dotnet/api/microsoft.azure.servicebus.message.sessionid) pak Service Bus používá **SessionID** jako klíč oddílu. Tímto způsobem všechny zprávy, které patří do stejné relace jsou zpracovány stejné zprostředkovatele zpráv. Relace povolit Service Bus zaručit řazení zpráv, jakož i konzistence stavů relace.
 
-**PartitionKey**: Pokud má zpráva vlastnost [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) , ale ne nastavenou vlastnost [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) , pak Service Bus jako klíč oddílu použije hodnotu vlastnosti [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) . Pokud má zpráva současně nastavené vlastnosti [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) i [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) , musí být obě vlastnosti identické. Pokud je vlastnost [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) nastavena na jinou hodnotu než vlastnost [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) , Service Bus vrátí neplatnou výjimku operace. Vlastnost [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) by měla být použita, pokud odesilatel odesílá transakční zprávy, které nepodporují relaci. Klíč oddílu zajišťuje, že všechny zprávy, které jsou odeslány v rámci transakce, jsou zpracovávány stejným zprostředkovatelem přenosu zpráv.
+**PartitionKey**: Pokud zpráva má [Vlastnost PartitionKey,](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) ale ne [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) vlastnost nastavit, pak Service Bus používá [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) hodnotu vlastnosti jako klíč oddílu. Pokud zpráva má [sessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) a [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) vlastnosti nastavit, obě vlastnosti musí být identické. Pokud [partitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) vlastnost je nastavena na jinou hodnotu než [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) vlastnost, Service Bus vrátí neplatnou výjimku operace. [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) Vlastnost by měla být použita, pokud odesílatel odešle nerelace vědomi transakční zprávy. Klíč oddílu zajišťuje, že všechny zprávy, které jsou odesílány v rámci transakce jsou zpracovány stejným zprostředkovatelem zasílání zpráv.
 
-**MessageID**: Pokud má fronta nebo téma vlastnost [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) nastavenou na **hodnotu true** a vlastnosti [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) nebo [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) nejsou nastaveny, pak hodnota vlastnosti [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid) slouží jako klíč oddílu. (Knihovny Microsoft .NET a AMQP automaticky přiřazují ID zprávy, pokud odesílající aplikace ne.) V tomto případě jsou všechny kopie stejné zprávy zpracovávány stejným zprostředkovatelem zpráv. Toto ID umožňuje Service Bus zjišťování a odstraňování duplicitních zpráv. Pokud vlastnost [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) není nastavena na **hodnotu true**, Service Bus nepovažuje vlastnost [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid) za klíč oddílu.
+**MessageId**: Pokud má fronta nebo téma vlastnost [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) nastavenou na **hodnotu true** a [vlastnosti SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) nebo [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) nejsou nastaveny, slouží hodnota vlastnosti [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) jako klíč oddílu. (Knihovny Microsoft .NET a AMQP automaticky přiřadí ID zprávy, pokud odesílající aplikace nikoli.) V tomto případě jsou všechny kopie stejné zprávy zpracovány stejným zprostředkovatelem zpráv. Toto ID umožňuje service bus zjistit a odstranit duplicitní zprávy. Pokud [vlastnost RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) není nastavena na **hodnotu true**, služba Service Bus nepovažuje vlastnost [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) za klíč oddílu.
 
-### <a name="not-using-a-partition-key"></a>Nepoužívá se klíč oddílu.
+### <a name="not-using-a-partition-key"></a>Nepoužití klíče oddílu
 
-V případě absence klíče oddílu Service Bus distribuuje zprávy v kruhovém dotazování do všech oddílů rozdělené do dělené fronty nebo tématu. Pokud vybraný oddíl není k dispozici, Service Bus přiřadí zprávu na jiný oddíl. Tímto způsobem bude operace odeslání úspěšná bez ohledu na dočasnou nedostupnost úložiště pro zasílání zpráv. Nebudete ale mít zaručené řazení, které poskytuje klíč oddílu.
+V případě, že klíč oddílu Service Bus distribuuje zprávy způsobem kruhového dotazování na všechny oddíly rozdělené fronty nebo tématu. Pokud vybraný oddíl není k dispozici, service bus přiřadí zprávu do jiného oddílu. Tímto způsobem operace odeslání úspěšné i přes dočasnou nedostupnost úložiště zpráv. Však nedosáhnete zaručené řazení, které klíč oddílu poskytuje.
 
-Podrobnější diskuzi o kompromisech mezi dostupností (bez klíče oddílu) a konzistencí (pomocí klíče oddílu) najdete v [tomto článku](../event-hubs/event-hubs-availability-and-consistency.md). Tyto informace se vztahují rovnoměrně na dělené Service Bus entity.
+Podrobnější diskusi o kompromisu mezi dostupností (bez klíče oddílu) a konzistencí (pomocí klíče oddílu) naleznete v [tomto článku](../event-hubs/event-hubs-availability-and-consistency.md). Tyto informace platí stejně pro oddíly Service Bus entity.
 
-Aby bylo Service Bus dostatek času na zařazování zprávy do jiného oddílu, hodnota [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) zadaná klientem, který odesílá zprávu, musí být delší než 15 sekund. Doporučuje se nastavit vlastnost [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) na výchozí hodnotu 60 sekund.
+Chcete-li poskytnout service bus dostatek času na zařazení zprávy do jiného oddílu, musí být hodnota [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) zadaná klientem, který zprávu odesílá, větší než 15 sekund. Doporučujeme nastavit [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) vlastnost výchozí hodnotu 60 sekund.
 
-Klíč oddílu "PIN" zprávy do konkrétního oddílu. Pokud úložiště pro zasílání zpráv, které obsahuje tento oddíl, není k dispozici, Service Bus vrátí chybu. V případě absence klíče oddílu může Service Bus vybrat jiný oddíl a operace bude úspěšná. Proto se doporučuje, abyste klíč oddílu nezadali, pokud ho nepotřebujete.
+Klíč oddílu "připne" zprávu do určitého oddílu. Pokud úložiště zasílání zpráv, který obsahuje tento oddíl není k dispozici, Service Bus vrátí chybu. V případě, že klíč oddílu service bus můžete zvolit jiný oddíl a operace proběhne úspěšně. Proto se doporučuje nezadávat klíč oddílu, pokud je požadováno.
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>Pokročilá témata: použití transakcí s rozdělenými entitami
 
-Zprávy odeslané v rámci transakce musí určovat klíč oddílu. Klíč může být jedna z následujících vlastností: [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)nebo [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid). Všechny zprávy, které jsou odeslány jako součást stejné transakce, musí určovat stejný klíč oddílu. Pokud se pokusíte odeslat zprávu bez klíče oddílu v rámci transakce, Service Bus vrátí neplatnou výjimku operace. Pokud se pokusíte odeslat více zpráv v rámci stejné transakce, které mají různé klíče oddílu, Service Bus vrátí výjimku neplatné operace. Příklad:
+Zprávy odeslané v rámci transakce musí určovat klíč oddílu. Klíč může být jedna z následujících vlastností: [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)nebo [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid). Všechny zprávy, které jsou odesílány jako součást stejné transakce, musí zadat stejný klíč oddílu. Pokud se pokusíte odeslat zprávu bez klíče oddílu v rámci transakce, Service Bus vrátí neplatnou výjimku operace. Pokud se pokusíte odeslat více zpráv v rámci stejné transakce, které mají různé klíče oddílu, Service Bus vrátí neplatnou výjimku operace. Například:
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -101,13 +101,13 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 committableTransaction.Commit();
 ```
 
-Pokud je nastavená kterákoli z vlastností, která slouží jako klíč oddílu, Service Bus zprávu zapnete do konkrétního oddílu. K tomuto chování dochází bez ohledu na to, zda je použita transakce. Doporučuje se, abyste klíč oddílu neurčili, pokud není potřeba.
+Pokud jsou nastaveny některé z vlastností, které slouží jako klíč oddílu, Service Bus připne zprávu na konkrétní oddíl. K tomuto chování dochází, zda je použita transakce. Pokud to není nutné, doporučujeme nezadávat klíč oddílu.
 
 ## <a name="using-sessions-with-partitioned-entities"></a>Použití relací s rozdělenými entitami
 
-Chcete-li odeslat transakční zprávu do tématu nebo fronty využívající relaci, musí mít zpráva nastavenu vlastnost [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) . Pokud je zadána vlastnost [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) , musí být stejná jako vlastnost [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) . Pokud se liší, Service Bus vrátí výjimku neplatné operace.
+Chcete-li odeslat transakční zprávu na téma nebo frontu podporující relaci, musí mít nastavena vlastnost [SessionId.](/dotnet/api/microsoft.azure.servicebus.message.sessionid) Pokud [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) vlastnost je zadán také, musí být shodné [s SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) vlastnost. Pokud se liší, service bus vrátí neplatnou výjimku operace.
 
-Na rozdíl od běžných (nerozdělených) front nebo témat není možné použít jedinou transakci k posílání více zpráv do různých relací. Při pokusu Service Bus vrací výjimku neplatné operace. Příklad:
+Na rozdíl od běžných (nerozdělených) front nebo témat není možné použít jednu transakci k odeslání více zpráv do různých relací. Pokud se o to pokusíte, vrátí služba Service Bus neplatnou výjimku operace. Například:
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -121,33 +121,33 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 committableTransaction.Commit();
 ```
 
-## <a name="automatic-message-forwarding-with-partitioned-entities"></a>Automatické předávání zpráv pomocí dělených entit
+## <a name="automatic-message-forwarding-with-partitioned-entities"></a>Automatické předávání zpráv s rozdělenými entitami
 
-Service Bus podporuje automatické předávání zpráv mezi rozdělenými entitami nebo mezi nimi. Chcete-li povolit automatické předávání zpráv, nastavte vlastnost [QueueDescription. ForwardTo][QueueDescription.ForwardTo] ve zdrojové frontě nebo předplatném. Pokud zpráva Určuje klíč oddílu ([SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)nebo [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid)), použije se tento klíč oddílu pro cílovou entitu.
+Service Bus podporuje automatické předávání zpráv z, do nebo mezi rozdělenými entitami. Chcete-li povolit automatické předávání zpráv, nastavte vlastnost [QueueDescription.ForwardTo][QueueDescription.ForwardTo] ve zdrojové frontě nebo předplatném. Pokud zpráva určuje klíč oddílu ([SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)nebo [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)), tento klíč oddílu se používá pro cílovou entitu.
 
-## <a name="considerations-and-guidelines"></a>Doporučení a pokyny
-* **Funkce s vysokou konzistencí**: Pokud entita používá funkce, jako jsou například relace, zjišťování duplicit nebo explicitní řízení klíče dělení, operace zasílání zpráv se vždycky směrují do konkrétního oddílu. Pokud některý z oddílů pracuje s vysokým provozem nebo je úložiště v pořádku, dojde k selhání a dostupnosti těchto operací. Konzistence je stále mnohem vyšší než nedělené entity; jenom v podmnožině provozu dochází k problémům, a to na rozdíl od všech přenosů. Další informace najdete v této [diskuzi o dostupnosti a konzistenci](../event-hubs/event-hubs-availability-and-consistency.md).
-* **Správa**: operace, jako je vytváření, aktualizace a odstraňování, se musí provádět na všech oddílech entity. Pokud některý oddíl není v pořádku, může pro tyto operace dojít k selhání. V případě operace Get musí být informace, jako jsou počty zpráv, agregované ze všech oddílů. Pokud některý oddíl není v pořádku, je stav dostupnosti entity hlášeno jako omezené.
-* **Scénáře nedostatku zpráv o svazcích**: u takových scénářů, zejména při použití protokolu HTTP, může být nutné provést více operací Receive, aby bylo možné získat všechny zprávy. U žádostí o přijetí se u front-endu provede příjem všech oddílů a uloží do mezipaměti všechny přijaté odpovědi. Další žádost o přijetí na stejné připojení by měla těžit z tohoto ukládání do mezipaměti a latence příjmu budou nižší. Pokud máte ale více připojení nebo používáte protokol HTTP, vytvoří se pro každý požadavek nové připojení. V takovém případě není nijak zaručeno, že by se na stejný uzel nakládal. Pokud jsou všechny existující zprávy uzamčeny a uloženy v mezipaměti v jiném front-end, operace Receive vrátí **hodnotu null**. Zprávy nakonec vyprší a můžete je opět přijmout. Doporučuje se Keep-Alive protokolu HTTP. Při vytváření oddílů ve scénářích s nízkým objemem se můžou operace příjmu trvat déle, než se čekalo. Proto doporučujeme, abyste v těchto scénářích nepoužívali dělení. Pokud chcete zlepšit výkon, odstraňte všechny existující dělené entity a znovu je vytvořte s neaktivovaným rozdělením.
-* **Procházet a prohlížet zprávy**: k dispozici pouze ve starší knihovně [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) . [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) vždy nevrátí počet zpráv zadaný ve vlastnosti [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) . Existují dva běžné důvody pro toto chování. Jedním z důvodů je, že agregovaná velikost kolekce zpráv překračuje maximální velikost 256 KB. Dalším důvodem je, že pokud má fronta nebo téma [vlastnost EnablePartitioning](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning) nastavenou na **hodnotu true**, oddíl nemusí mít dostatek zpráv k dokončení požadovaného počtu zpráv. Obecně platí, že pokud aplikace chce přijmout určitý počet zpráv, měla by volat [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) opakovaně, dokud nezíská tento počet zpráv, nebo neexistují žádné další zprávy, které by bylo možné prohlížet. Další informace, včetně ukázek kódu, naleznete v dokumentaci k rozhraní API [QueueClient. PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) nebo [SubscriptionClient. PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) .
+## <a name="considerations-and-guidelines"></a>Úvahy a pokyny
+* **Funkce vysoké konzistence**: Pokud entita používá funkce, jako jsou relace, vyhledávání duplicit nebo explicitní řízení klíče dělení, jsou operace zasílání zpráv vždy směrovány do určitého oddílu. Pokud některý z oddílů dojít k vysokému provozu nebo základní úložiště není v pořádku, tyto operace nezdaří a dostupnost je snížena. Celkově je konzistence stále mnohem vyšší než nerozdělené entity; pouze podmnožina provozu dochází k problémům, na rozdíl od všech provozu. Další informace naleznete v této [diskusi o dostupnosti a konzistenci](../event-hubs/event-hubs-availability-and-consistency.md).
+* **Správa**: Operace, jako je například Vytvořit, Aktualizovat a Odstranit, musí být provedeny na všech oddílech entity. Pokud některý oddíl není v pořádku, může mít za následek selhání pro tyto operace. Pro get operace informace, jako je počet zpráv musí být agregovány ze všech oddílů. Pokud některý oddíl není v pořádku, stav dostupnosti entity je hlášena jako omezená.
+* **Scénáře zpráv s nízkým objemem**: Pro takové scénáře, zejména při použití protokolu HTTP, bude pravděpodobně muset provést více operací příjmu, aby bylo možné získat všechny zprávy. Pro požadavky na příjem front-end provádí příjem na všech oddílech a ukládá všechny přijaté odpovědi. Následná žádost o přijetí na stejné připojení bude mít prospěch z tohoto ukládání do mezipaměti a latence příjmu bude nižší. Pokud však máte více připojení nebo používáte protokol HTTP, naváže nové připojení pro každý požadavek. Jako takový neexistuje žádná záruka, že by přistát na stejném uzlu. Pokud jsou všechny existující zprávy uzamčeny a uloženy do mezipaměti v jiném front-endu, vrátí operace příjmu **hodnotu null**. Platnost zpráv nakonec vyprší a můžete je znovu obdržet. Doporučuje se udržovat při životě HTTP. Při použití dělení ve scénářích s nízkým objemem může operace příjmu trvat déle, než bylo očekáváno. Proto doporučujeme nepoužívat dělení v těchto scénářích. Odstraňte všechny existující dělené entity a znovu je vytvořte se zakázaným dělením, abyste zvýšili výkon.
+* **Procházet a prohlížet zprávy**: K dispozici pouze ve starší knihovně [WindowsAzure.ServiceBus.](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) ne vždy vrátí počet zpráv zadaných v [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) vlastnost. Existují dva běžné důvody pro toto chování. Jedním z důvodů je, že agregovaná velikost kolekce zpráv překračuje maximální velikost 256 KB. Dalším důvodem je, že pokud fronta nebo téma má [EnablePartitioning vlastnost](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning) nastavena na **hodnotu true**, oddíl nemusí mít dostatek zpráv k dokončení požadovaný počet zpráv. Obecně platí, že pokud aplikace chce přijímat určitý počet zpráv, by měla volat [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) opakovaně, dokud získá tento počet zpráv nebo neexistují žádné další zprávy ke shlédnutí. Další informace, včetně ukázek kódu, naleznete v dokumentaci k rozhraní [API QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) nebo [SubscriptionClient.PeekBatch.](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch)
 
 ## <a name="latest-added-features"></a>Nejnovější přidané funkce
 
-* Pro rozdělené entity se teď podporuje přidat nebo odebrat pravidlo. Liší se od nerozdělených entit, tyto operace nejsou v rámci transakcí podporovány. 
-* AMQP se teď podporuje pro posílání a přijímání zpráv do dělené entity a z ní.
-* AMQP se teď podporuje pro následující operace: [dávkové odeslání](/dotnet/api/microsoft.servicebus.messaging.queueclient.sendbatch), [získání dávky](/dotnet/api/microsoft.servicebus.messaging.queueclient.receivebatch), [příjem podle pořadových čísel](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive), [Náhled](/dotnet/api/microsoft.servicebus.messaging.queueclient.peek), [obnovení zámku](/dotnet/api/microsoft.servicebus.messaging.queueclient.renewmessagelock), [naplánovat zprávu](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync), [zrušit naplánovanou zprávu](/dotnet/api/microsoft.azure.servicebus.queueclient.cancelscheduledmessageasync), [Přidat pravidlo](/dotnet/api/microsoft.azure.servicebus.ruledescription), [odebrat pravidlo](/dotnet/api/microsoft.azure.servicebus.ruledescription), [Zámek obnovení relace](/dotnet/api/microsoft.servicebus.messaging.messagesession.renewlock), [nastavit stav relace](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate), [získat stav](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate)relace a [vytvořit výčet relací](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions).
+* Přidat nebo odebrat pravidlo je nyní podporováno s rozdělenými entitami. Na rozdíl od nerozdělených entit nejsou tyto operace podporovány v rámci transakcí. 
+* AMQP je nyní podporován pro odesílání a přijímání zpráv do a z dělené entity.
+* AMQP je nyní podporován pro následující operace: [Dávkové odesílání,](/dotnet/api/microsoft.servicebus.messaging.queueclient.sendbatch) [Dávkové příjem,](/dotnet/api/microsoft.servicebus.messaging.queueclient.receivebatch) [Příjem podle pořadového čísla](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive), [Náhled](/dotnet/api/microsoft.servicebus.messaging.queueclient.peek), [Obnovit zámek](/dotnet/api/microsoft.servicebus.messaging.queueclient.renewmessagelock), [Naplánovat zprávu](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync), Zrušit [naplánovanou zprávu](/dotnet/api/microsoft.azure.servicebus.queueclient.cancelscheduledmessageasync), Přidat [pravidlo](/dotnet/api/microsoft.azure.servicebus.ruledescription), [Odebrat pravidlo](/dotnet/api/microsoft.azure.servicebus.ruledescription), Zámek obnovení [relace](/dotnet/api/microsoft.servicebus.messaging.messagesession.renewlock), Nastavit [stav relace](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate), Získat stav [relace](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate)a [Výčet relací](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions).
 
-## <a name="partitioned-entities-limitations"></a>Omezení entit s oddíly
+## <a name="partitioned-entities-limitations"></a>Omezení oddílů entit
 
-V současné době Service Bus ukládá na dělené fronty a témata následující omezení:
+V současné době service bus ukládá následující omezení na rozdělené fronty a témata:
 
-* Dělené fronty a témata se v úrovni zasílání zpráv úrovně Premium nepodporují. Relace jsou podporovány ve vrstvě Premier pomocí identifikátoru SessionId. 
-* Dělené fronty a témata nepodporují posílání zpráv, které patří do různých relací v rámci jedné transakce.
-* Service Bus aktuálně umožňuje v jednom oboru názvů až 100 dělených front nebo témat. Každá dělená fronta nebo téma se počítá s kvótou 10 000 entit na obor názvů (nevztahuje se na úroveň Premium).
+* Dělené fronty a témata nejsou podporovány ve vrstvě zasílání zpráv Premium. Relace jsou podporovány v první vrstvě pomocí SessionId. 
+* Dělené fronty a témata nepodporují odesílání zpráv, které patří do různých relací v jedné transakci.
+* Service Bus aktuálně umožňuje v jednom oboru názvů až 100 dělených front nebo témat. Každá rozdělená fronta nebo téma se započítává do kvóty 10 000 entit na obor názvů (nevztahuje se na úroveň Premium).
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si o základních konceptech specifikace zasílání zpráv AMQP 1,0 v [příručce k protokolu AMQP 1,0](service-bus-amqp-protocol-guide.md).
+Přečtěte si o základních konceptech specifikace zasílání zpráv AMQP 1.0 v [průvodci protokolem AMQP 1.0](service-bus-amqp-protocol-guide.md).
 
 [Azure portal]: https://portal.azure.com
 [QueueDescription.EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning

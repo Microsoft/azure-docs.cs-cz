@@ -1,40 +1,40 @@
 ---
-title: Monitorování výkonu webové aplikace Java v systému Linux – Azure | Microsoft Docs
-description: Rozšířené monitorování výkonu aplikace vašeho webu Java pomocí shromážděného modulu plug-in pro Application Insights.
+title: Sledování výkonu java webových aplikací na Linuxu – Azure | Dokumenty společnosti Microsoft
+description: Rozšířené sledování výkonu aplikací na vašich webových stránkách java s modulem plug-in CollectD pro Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 687f97c305bffdfb408feb314ccded4f93ac574a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660729"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>shromažďováno: metriky výkonu Linux v Application Insights
+# <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: Metriky výkonu Linuxu v Application Insights
 
 
-Pokud chcete prozkoumat metriky výkonu systému Linux v [Application Insights](../../azure-monitor/app/app-insights-overview.md), [nainstalujte společně](https://collectd.org/)s modulem plug-in Application Insights. Toto open source řešení shromažďuje různé statistiky systému a sítě.
+Chcete-li prozkoumat metriky výkonu systému Linux v [Application Insights](../../azure-monitor/app/app-insights-overview.md), nainstalujte [shromažďované](https://collectd.org/)a jeho modul plug-in Application Insights. Toto open-source řešení shromažďuje různé systémové a síťové statistiky.
 
-V případě, že jste již [svou webovou službu Java][java]nastavili Application Insights, obvykle budete používat Collect. Poskytuje vám další data, která vám pomůžou vylepšit výkon a diagnostikovat problémy vaší aplikace. 
+Obvykle budete používat sbírat, pokud jste již [instrumentované java webové služby s Application Insights][java]. Poskytuje další data, která vám pomohou zvýšit výkon aplikace nebo diagnostikovat problémy. 
 
-## <a name="get-your-instrumentation-key"></a>Získat klíč instrumentace
-V [portál Microsoft Azure](https://portal.azure.com)otevřete prostředek [Application Insights](../../azure-monitor/app/app-insights-overview.md) , ve kterém chcete zobrazit data. (Nebo [vytvořte nový prostředek](../../azure-monitor/app/create-new-resource.md ).)
+## <a name="get-your-instrumentation-key"></a>Pochutněte si na instrumentační klíč
+Na [portálu Microsoft Azure](https://portal.azure.com)otevřete prostředek [Application Insights,](../../azure-monitor/app/app-insights-overview.md) kde se mají data zobrazit. (Nebo [vytvořit nový zdroj](../../azure-monitor/app/create-new-resource.md ).)
 
-Poznamenejte si kopii klíče instrumentace, který identifikuje prostředek.
+Vezměte kopii klíče instrumentace, který identifikuje prostředek.
 
-![Přejděte na vše, otevřete prostředek a potom v rozevíracím seznamu základy vyberte a zkopírujte klíč instrumentace.](./media/java-collectd/instrumentation-key-001.png)
+![Procházet vše, otevřít svůj zdroj a pak v rozevíracím panelu Essentials vybrat a zkopírovat klíč instrumentace](./media/java-collectd/instrumentation-key-001.png)
 
-## <a name="install-collectd-and-the-plug-in"></a>Nainstalovat shromážděné a modul plug-in
-Na počítačích se systémem Linux Server:
+## <a name="install-collectd-and-the-plug-in"></a>Instalujte shromažďované a zásuvné
+Na vašich počítačích s linuxovými servery:
 
-1. Nainstalujte [shromážděnou](https://collectd.org/) verzi 5.4.0 nebo novější.
-2. Stáhněte si [modul plug-in Application Insights Collected Writer](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal). Poznamenejte si číslo verze.
-3. Zkopírujte SKLENICi modulu plug-in do `/usr/share/collectd/java`.
+1. Nainstalujte [shromažďovku](https://collectd.org/) verzi 5.4.0 nebo novější.
+2. Stáhněte si [plugin pro shromažďovaný modul pro zápisy z aplikací](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal). Poznamenejte si číslo verze.
+3. Zkopírujte plugin `/usr/share/collectd/java`JAR do .
 4. Upravit `/etc/collectd/collectd.conf`:
-   * Ujistěte se, že je povolený [modul plug-in Java](https://collectd.org/wiki/index.php/Plugin:Java) .
-   * Aktualizujte JVMArg pro Java. Class. Path, aby obsahovala následující JAR. Aktualizujte číslo verze tak, aby odpovídalo vašemu staženému:
+   * Ujistěte se, že je povolen [plugin Java.](https://collectd.org/wiki/index.php/Plugin:Java)
+   * Aktualizujte JVMArg pro java.class.path zahrnout následující JAR. Aktualizujte číslo verze tak, aby odpovídalo číslu, který jste si stáhli:
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
-   * Pomocí klíče instrumentace z prostředku přidejte tento fragment kódu:
+   * Přidejte tento úryvek pomocí klíče instrumentace z vašeho prostředku:
 
 ```XML
 
@@ -44,7 +44,7 @@ Na počítačích se systémem Linux Server:
      </Plugin>
 ```
 
-Tady je část ukázkového konfiguračního souboru:
+Zde je část ukázkového konfiguračního souboru:
 
 ```XML
 
@@ -77,47 +77,47 @@ Tady je část ukázkového konfiguračního souboru:
     ...
 ```
 
-Nakonfigurujte další [shromážděné moduly plug-in](https://collectd.org/wiki/index.php/Table_of_Plugins), které mohou shromažďovat různá data z různých zdrojů.
+Konfigurovat další [shromažďované pluginy](https://collectd.org/wiki/index.php/Table_of_Plugins), které mohou shromažďovat různá data z různých zdrojů.
 
-Restart se shromáždí na základě jeho [ručního](https://collectd.org/wiki/index.php/First_steps)spuštění.
+Restart sbírat podle jeho [manuálu](https://collectd.org/wiki/index.php/First_steps).
 
-## <a name="view-the-data-in-application-insights"></a>Zobrazit data v Application Insights
-V Application Insights prostředku otevřete [metriky a přidejte grafy a][metrics]vyberte metriky, které chcete zobrazit, z vlastní kategorie.
+## <a name="view-the-data-in-application-insights"></a>Zobrazení dat v přehledech aplikací
+Ve zdroji Application Insights otevřete [metriky a přidejte grafy][metrics]a vyberte metriky, které chcete zobrazit v kategorii Vlastní.
 
-Ve výchozím nastavení jsou metriky agregované napříč všemi hostitelskými počítači, ze kterých byly metriky shromažďovány. Chcete-li zobrazit metriky na hostitele, v okně podrobností grafu zapněte seskupování a pak zvolte seskupení podle shromážděného-Host.
+Ve výchozím nastavení jsou metriky agregovány ve všech hostitelských počítačích, ze kterých byly metriky shromážděny. Chcete-li zobrazit metriky na hostitele, v okně Podrobnosti grafu zapněte seskupování a pak zvolte seskupení podle collectd-host.
 
-## <a name="to-exclude-upload-of-specific-statistics"></a>Vyloučení odeslání konkrétních statistik
-Ve výchozím nastavení odesílá modul plug-in Application Insights všechna data shromážděná všemi povolenými moduly plug-in "čtení". 
+## <a name="to-exclude-upload-of-specific-statistics"></a>Vyloučení nahrávání konkrétních statistik
+Ve výchozím nastavení plugin Application Insights odesílá všechna data shromážděná všemi povolenými moduly plug-in "read". 
 
-Vyloučení dat z konkrétních modulů plug-in nebo zdrojů dat:
+Vyloučení dat z konkrétních pluginů nebo zdrojů dat:
 
 * Upravte konfigurační soubor. 
-* V `<Plugin ApplicationInsightsWriter>`přidejte řádky direktivy takto:
+* V `<Plugin ApplicationInsightsWriter>`, přidejte direktivy řádky, jako je tento:
 
-| – Direktiva | Účinek |
+| Směrnice | Účinek |
 | --- | --- |
-| `Exclude disk` |Vyloučit všechna data shromážděná modulem plug-in `disk` |
-| `Exclude disk:read,write` |Vylučte z modulu plug-in `disk` zdroje s názvem `read` a `write`. |
+| `Exclude disk` |Vyloučit všechna data `disk` shromážděná pluginem |
+| `Exclude disk:read,write` |Vylučte `read` `write` pojmenované `disk` zdroje a z pluginu. |
 
-Oddělte direktivy novým řádkem.
+Samostatné směrnice s novým řádkem.
 
 ## <a name="problems"></a>Problémy?
 *Na portálu se nezobrazují data*
 
-* Otevřete [vyhledávání][diagnostic] a zjistěte, jestli nezpracované události byly doručeny. Někdy trvá i déle, než se objeví v Průzkumníku metrik.
-* [Pro odchozí data možná budete muset nastavit výjimky brány firewall](../../azure-monitor/app/ip-addresses.md) .
-* Povolte trasování v modulu plug-in Application Insights. Přidat tento řádek do `<Plugin ApplicationInsightsWriter>`:
+* Otevřete [hledání][diagnostic] a zjistěte, zda nezpracované události dorazily. Někdy trvá déle, než se zobrazí v průzkumníku metrik.
+* Možná budete muset [nastavit výjimky brány firewall pro odchozí data.](../../azure-monitor/app/ip-addresses.md)
+* Povolte trasování ve pluginu Application Insights. Přidejte tento `<Plugin ApplicationInsightsWriter>`řádek do :
   * `SDKLogger true`
-* Otevřete terminál a spusťte shromažďování v podrobném režimu, aby se zobrazily případné problémy, které hlásí:
+* Otevřete terminál a spusťte shromažďování v podrobném režimu, abyste viděli všechny problémy, které hlásí:
   * `sudo collectd -f`
 
 ## <a name="known-issue"></a>Známý problém
 
-Modul plug-in pro zápis Application Insights není kompatibilní s některými moduly pro čtení. Některé moduly plug-in někdy odesílají "NaN", kde Application Insights modul plug-in očekává číslo s plovoucí desetinnou čárkou.
+Modul plug-in Application Insights Write není kompatibilní s určitými moduly plug-in pro čtení. Některé pluginy někdy posílají "NaN", kde plugin Application Insights očekává číslo s plovoucí desetinnou tázkou.
 
-Příznak: zachycený protokol zobrazuje chyby, které zahrnují AI:... SyntaxError: Neočekávaný token N
+Příznak: Shromažďovaný protokol zobrazuje chyby, které zahrnují "AI: ... Syntaxerror: Neočekávaný token N".
 
-Alternativní řešení: vylučte data shromážděná potížemi s zápisem modulů plug-in. 
+Řešení: Vyloučit data shromážděná problémem Zapisovat pluginy pro zápis. 
 
 <!--Link references-->
 

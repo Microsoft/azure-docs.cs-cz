@@ -1,6 +1,6 @@
 ---
 title: Porovnání možností úložiště pro použití s clustery Azure HDInsight
-description: Poskytuje přehled o typech úložišť a jejich spolupráci s Azure HDInsight.
+description: Poskytuje přehled typů úložišť a jejich fungování s Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,107 +8,107 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 98d71434ac9e3f712be0cbd8c505b7d5a537e7cc
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79095545"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porovnání možností úložiště pro použití s clustery Azure HDInsight
 
-Při vytváření clusterů HDInsight si můžete vybrat mezi několika různými službami Azure Storage:
+Při vytváření clusterů HDInsight si můžete vybrat mezi několika různými službami úložiště Azure:
 
 * Azure Storage
 * Azure Data Lake Storage Gen2
 * Azure Data Lake Storage Gen1
 
-Tento článek obsahuje přehled těchto typů úložišť a jejich jedinečných funkcí.
+Tento článek obsahuje přehled těchto typů úložišť a jejich jedinečné funkce.
 
-Následující tabulka shrnuje Azure Storage služby, které jsou podporovány v různých verzích služby HDInsight:
+Následující tabulka shrnuje služby Azure Storage, které jsou podporované různými verzemi HDInsightu:
 
 | Služba úložiště | Typ účtu | Typ oboru názvů | Podporované služby | Podporované úrovně výkonu | Podporované úrovně přístupu | Verze HDInsight | Typ clusteru |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage Gen2| Obecné účely v2 | Hierarchický (systém souborů) | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Vše kromě Spark 2,1 a 2,2|
-|Azure Storage| Obecné účely v2 | Objekt | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Vše |
-|Azure Storage| Obecné účely v1 | Objekt | Objekt blob | Standard | neuvedeno | Vše | Vše |
-|Azure Storage| Blob Storage * * | Objekt | Objekt blob bloku | Standard | Horká, studená, archivní | Vše | Vše |
-|Azure Data Lake Storage Gen1| neuvedeno | Hierarchický (systém souborů) | neuvedeno | neuvedeno | neuvedeno | jenom 3,6 | Všechny kromě adaptérů HBA |
+|Azure Data Lake Storage Gen2| Pro všeobecné účely V2 | Hierarchický (souborový systém) | Objekt blob | Standard | Horké, Cool, Archiv | 3.6+ | Všechny kromě Spark 2.1 a 2.2|
+|Azure Storage| Pro všeobecné účely V2 | Objekt | Objekt blob | Standard | Horké, Cool, Archiv | 3.6+ | Všechny |
+|Azure Storage| Pro všeobecné účely V1 | Objekt | Objekt blob | Standard | Není dostupné. | Všechny | Všechny |
+|Azure Storage| Úložiště objektů blob** | Objekt | Objekt blob bloku | Standard | Horké, Cool, Archiv | Všechny | Všechny |
+|Azure Data Lake Storage Gen1| Není dostupné. | Hierarchický (souborový systém) | Není dostupné. | Není dostupné. | Není dostupné. | 3.6 Pouze | Všechny kromě HBase |
 
-\* * Pro clustery HDInsight může být pouze sekundární účty úložiště typu BlobStorage a objekt blob stránky není podporovanou možností úložiště.
+**Pro clustery HDInsight mohou být pouze účty sekundárního úložiště typu BlobStorage a Objekt blob stránky není podporovanou možností úložiště.
 
-Další informace o Azure Storage typech účtů najdete v tématu [Přehled účtu Azure Storage](../storage/common/storage-account-overview.md) .
+Další informace o typech účtů Azure Storage najdete v tématu [Přehled účtu úložiště Azure.](../storage/common/storage-account-overview.md)
 
-Další informace o úrovních přístupu Azure Storage najdete v tématu [úložiště objektů BLOB v Azure: Premium (Preview), horké, studené a archivní úrovně úložiště.](../storage/blobs/storage-blob-storage-tiers.md)
+Další informace o úrovních přístupu k Azure Storage najdete v [tématu Úložiště objektů blob Azure: Premium (preview), Hot, Cool a Archive úrovně úložiště](../storage/blobs/storage-blob-storage-tiers.md)
 
-Cluster můžete vytvořit pomocí různých kombinací služeb pro primární a volitelné sekundární úložiště. Následující tabulka shrnuje konfigurace úložiště clusteru, které jsou aktuálně podporované v HDInsight:
+Cluster můžete vytvořit pomocí různých kombinací služeb pro primární a volitelné sekundární úložiště. Následující tabulka shrnuje konfigurace úložiště clusteru, které jsou aktuálně podporovány v HDInsight:
 
 | Verze HDInsight | Primární úložiště | Sekundární úložiště | Podporuje se |
 |---|---|---|---|
-| 3,6 & 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Ano |
-| 3,6 & 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Data Lake Storage Gen2 | Ne |
-| 3,6 & 4,0 | Data Lake Storage Gen2 * | Data Lake Storage Gen2 | Ano |
-| 3,6 & 4,0 | Data Lake Storage Gen2 * | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Ano |
+| 3,6 & 4,0 | Obecný účel V1 , obecný účel V2 | Obecné použití V1 , pro obecné účely V2, BlobStorage (objekty BLOB bloku) | Ano |
+| 3,6 & 4,0 | Obecný účel V1 , obecný účel V2 | Data Lake Storage Gen2 | Ne |
+| 3,6 & 4,0 | Úložiště datových jezer Gen2* | Data Lake Storage Gen2 | Ano |
+| 3,6 & 4,0 | Úložiště datových jezer Gen2* | Obecné použití V1 , pro obecné účely V2, BlobStorage (objekty BLOB bloku) | Ano |
 | 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | Ne |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Ano |
-| 3.6 | Data Lake Storage Gen1 | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Ano |
+| 3.6 | Data Lake Storage Gen1 | Obecné použití V1 , pro obecné účely V2, BlobStorage (objekty BLOB bloku) | Ano |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Ne |
 | 4.0 | Data Lake Storage Gen1 | Všechny | Ne |
-| 4.0 | Pro obecné účely V1, Pro obecné účely v2 | Data Lake Storage Gen1 | Ne |
+| 4.0 | Obecný účel V1 , obecný účel V2 | Data Lake Storage Gen1 | Ne |
 
-\* = Může to být jeden nebo několik účtů Data Lake Storage Gen2, pokud jsou všechny nastavené tak, aby používaly stejnou spravovanou identitu pro přístup k clusteru.
+*=Může se jedná o jeden nebo více účtů Data Lake Storage Gen2, pokud jsou všechny nastaveny tak, aby používaly stejnou spravovanou identitu pro přístup ke clusteru.
 
 > [!Note] 
-> Data Lake Storage Gen2 primární úložiště není pro clustery Spark 2,1 nebo 2,2 podporováno. 
+> Primární úložiště Data Lake Storage Gen2 není podporováno pro clustery Spark 2.1 nebo 2.2. 
 
 ## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Použití Azure Data Lake Storage Gen2 s Apache Hadoop v Azure HDInsight
 
-Azure Data Lake Storage Gen2 přebírá základní funkce z Azure Data Lake Storage Gen1 a integruje je do úložiště objektů BLOB v Azure. Mezi tyto funkce patří systém souborů, který je kompatibilní se systémy Hadoop, Azure Active Directory (Azure AD) a seznamy řízení přístupu (ACL) založenými na POSIX. Tato kombinace vám umožní využít výkon Azure Data Lake Storage Gen1 a zároveň využívat správu životního cyklu služby Blob Storage pomocí vrstev a dat.
+Azure Data Lake Storage Gen2 přebírá základní funkce z Azure Data Lake Storage Gen1 a integruje je do úložiště objektů blob Azure. Mezi tyto funkce patří systém souborů, který je kompatibilní s Hadoop, Azure Active Directory (Azure AD) a SEZNAMY řízení přístupu na základě POSIX (ACL). Tato kombinace umožňuje využít výhod výkonu Azure Data Lake Storage Gen1 a zároveň pomocí vrstvení a správy životního cyklu dat úložiště objektů blob.
 
-Další informace o Azure Data Lake Storage Gen2 najdete v tématu [Úvod do Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
+Další informace o Azure Data Lake Storage Gen2 najdete [v tématu Úvod do Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
 
 ### <a name="core-functionality-of-azure-data-lake-storage-gen2"></a>Základní funkce Azure Data Lake Storage Gen2
 
-* **Přístup kompatibilní se systémem Hadoop:** V Azure Data Lake Storage Gen2 můžete spravovat data a přistupovat k nim stejným způsobem jako v systém souborů DFS (Distributed File System) Hadoop (HDFS). Ovladač systému souborů objektů BLOB v Azure (ABFS) je k dispozici ve všech Apache Hadoop prostředích, včetně Azure HDInsight a Azure Databricks. Pro přístup k datům uloženým v Data Lake Storage Gen2 použijte ABFS.
+* **Přístup, který je kompatibilní s Hadoopem:** V Azure Data Lake Storage Gen2 můžete spravovat a přistupovat k datům stejně jako pomocí distribuovaného souborového systému Hadoop (HDFS). Ovladač Azure Blob File System (ABFS) je k dispozici ve všech prostředích Apache Hadoop, včetně Azure HDInsight a Azure Databricks. Pomocí ABFS pro přístup k datům uloženým v datovém úložišti data Č. 2.
 
-* **Nadmnožina oprávnění POSIX:** Model zabezpečení pro Data Lake Gen2 podporuje oprávnění ACL a POSIX spolu s některými dalšími podrobnostmi, které jsou specifické pro Data Lake Storage Gen2. Nastavení lze nakonfigurovat prostřednictvím nástrojů pro správu nebo architektury, jako jsou Apache Hive a Apache Spark.
+* **Nadmnožina oprávnění POSIX:** Model zabezpečení pro Data Lake Gen2 podporuje oprávnění ACL a POSIX spolu s některými extra rozlišovací schopnost specifické pro Data Lake Storage Gen2. Nastavení lze konfigurovat pomocí nástrojů pro správu nebo rámců, jako je Apache Hive a Apache Spark.
 
-* **Efektivita nákladů:** Data Lake Storage Gen2 nabízí s nízkými náklady kapacitu a transakce úložiště. Funkce, jako je životní cyklus úložiště objektů BLOB v Azure, vám pomůžou snížit náklady úpravou fakturačních sazeb během jejího životního cyklu.
+* **Efektivita nákladů:** Data Lake Storage Gen2 nabízí nízkonákladovou úložnou kapacitu a transakce. Funkce, jako je životní cyklus úložiště objektů blob Azure, pomáhají snížit náklady úpravou fakturačních sazeb při pohybu dat v průběhu životního cyklu.
 
-* **Kompatibilita s nástroji, rozhraními a aplikacemi služby Blob Storage:** Data Lake Storage Gen2 i nadále pracují se škálou nástrojů, platforem a aplikací pro úložiště objektů BLOB.
+* **Kompatibilita s nástroji, architekturami a aplikacemi pro ukládání objektů Blob:** Data Lake Storage Gen2 pokračuje v práci s širokou škálou nástrojů, architektur a aplikací pro úložiště objektů Blob.
 
-* **Optimalizovaný ovladač:** Ovladač ABFS se optimalizuje speciálně pro analýzy velkých objemů dat. Odpovídající rozhraní REST API se procházejí prostřednictvím koncového bodu systému souborů DFS (Distributed File System), dfs.core.windows.net.
+* **Optimalizovaný ovladač:** Ovladač ABFS je optimalizován speciálně pro analýzu velkých objemů dat. Odpovídající rest API jsou konsurfaced prostřednictvím koncového bodu distribuovaného systému souborů (DFS), dfs.core.windows.net.
 
 ### <a name="whats-new-for-azure-data-lake-storage-gen-2"></a>Co je nového pro Azure Data Lake Storage Gen 2
 
 #### <a name="managed-identities-for-secure-file-access"></a>Spravované identity pro zabezpečený přístup k souborům
 
-Azure HDInsight používá spravované identity k zabezpečení přístupu clusteru k souborům v Azure Data Lake Storage Gen2. Spravované identity jsou funkcí Azure Active Directory, která poskytuje služby Azure se sadou automaticky spravovaných přihlašovacích údajů. Pomocí těchto přihlašovacích údajů se můžete ověřit u jakékoli služby, která podporuje ověřování pomocí služby Active Directory. Použití spravovaných identit nevyžaduje ukládání přihlašovacích údajů do kódu nebo konfiguračních souborů.
+Azure HDInsight používá spravované identity k zabezpečení přístupu clusteru k souborům v Azure Data Lake Storage Gen2. Spravované identity jsou funkce služby Azure Active Directory, která poskytuje službám Azure sadu automaticky spravovaných přihlašovacích údajů. Tato pověření lze použít k ověření jakékoli služby, která podporuje ověřování služby Active Directory. Použití spravovaných identit nevyžaduje ukládání přihlašovacích údajů do kódových nebo konfiguračních souborů.
 
-Další informace najdete v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
+Další informace najdete v tématu [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
-#### <a name="azure-blob-file-system-driver"></a>Ovladač systému souborů Azure Blob
+#### <a name="azure-blob-file-system-driver"></a>Ovladač systému souborů Objektů blob Azure
 
-Apache Hadoop aplikace nativně očekávají čtení a zápis dat z diskového úložiště na místním disku. Ovladač systému souborů Hadoop, jako je ABFS, umožňuje aplikacím Hadoop pracovat s cloudovým úložištěm, a to tak, že emuluje běžné operace se systémem souborů Hadoop. Ovladač převede tyto příkazy přijaté z aplikace na operace, které rozumí skutečná platforma cloudového úložiště.
+Aplikace Apache Hadoop nativně očekávají, že budou číst a zapisovat data z místního úložiště disků. Ovladač systému souborů Hadoop, jako je ABFS, umožňuje aplikacím Hadoop pracovat s cloudovým úložištěm emulací běžných operací systému souborů Hadoop. Ovladač převede tyto příkazy přijaté z aplikace na operace, které rozumí skutečná platforma cloudového úložiště.
 
-Dříve ovladač systému souborů Hadoop převedl všechny operace systému souborů na Azure Storage REST API volání na straně klienta a pak vyvolal REST API. Tento převod na straně klienta však má za následek více REST API volání pro jednu operaci systému souborů, jako je přejmenování souboru. ABFS přesunula část logiky systému souborů Hadoop ze strany klienta na stranu serveru. Rozhraní Azure Data Lake Storage Gen2 API teď běží paralelně s rozhraním API objektů BLOB. Tato migrace zvyšuje výkon, protože teď můžete provádět běžné operace se systémem souborů Hadoop pomocí jednoho REST API volání.
+Dříve ovladač souborového systému Hadoop převedl všechny operace systému souborů na volání rozhraní REST azure na straně klienta a pak vyvolal rozhraní REST API. Tento převod na straně klienta však za následek více volání rozhraní REST API pro jednu operaci systému souborů, jako je přejmenování souboru. ABFS přesunul některé logiky systému souborů Hadoop ze strany klienta na stranu serveru. Rozhraní API Azure Data Lake Storage Gen2 teď běží paralelně s rozhraním BLOB API. Tato migrace zlepšuje výkon, protože nyní běžné operace systému souborů Hadoop lze provést s jedním voláním rozhraní REST API.
 
-Další informace najdete v tématu [ovladač systému souborů objektů BLOB v Azure (ABFS): vyhrazený ovladač Azure Storage pro Hadoop](../storage/blobs/data-lake-storage-abfs-driver.md).
+Další informace najdete [v tématu ovladač souborového systému objektů blob Azure (ABFS): Vyhrazený ovladač úložiště Azure pro Hadoop](../storage/blobs/data-lake-storage-abfs-driver.md).
 
-#### <a name="uri-scheme-for-azure-data-lake-storage-gen-2"></a>Schéma identifikátoru URI pro Azure Data Lake Storage Gen 2 
+#### <a name="uri-scheme-for-azure-data-lake-storage-gen-2"></a>Schéma URI pro úložiště datových jezer Azure Gen 2 
 
-Azure Data Lake Storage Gen2 používá nové schéma identifikátoru URI pro přístup k souborům v Azure Storage ze služby HDInsight:
+Azure Data Lake Storage Gen2 používá nové schéma URI pro přístup k souborům v Azure Storage z HDInsightu:
 
 `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
 
-Schéma identifikátoru URI poskytuje přístup šifrovaný protokolem SSL.
+Schéma URI poskytuje přístup šifrovaný s ssl.
 
-`<FILE_SYSTEM_NAME>` identifikuje cestu k systému souborů Data Lake Storage Gen2.
+`<FILE_SYSTEM_NAME>`identifikuje cestu systému souborů Data Lake Storage Gen2.
 
-`<ACCOUNT_NAME>` identifikuje název účtu Azure Storage. Vyžaduje se plně kvalifikovaný název domény (FQDN).
+`<ACCOUNT_NAME>`identifikuje název účtu Úložiště Azure. Vyžaduje se plně kvalifikovaný název domény (FQDN).
 
-`<PATH>` je název cesty HDFS souboru nebo adresáře.
+`<PATH>`je název cesty HDFS souboru nebo adresáře.
 
-Pokud nejsou zadány hodnoty pro `<FILE_SYSTEM_NAME>` a `<ACCOUNT_NAME>`, použije se výchozí systém souborů. Pro soubory ve výchozím systému souborů použijte relativní cestu nebo absolutní cestu. Například `hadoop-mapreduce-examples.jar` soubor, který je součástí clusterů HDInsight, může odkazovat pomocí jedné z následujících cest:
+Pokud nejsou `<FILE_SYSTEM_NAME>` `<ACCOUNT_NAME>` zadány hodnoty pro a nejsou zadány, použije se výchozí systém souborů. Pro soubory ve výchozím systému souborů použijte relativní cestu nebo absolutní cestu. Například `hadoop-mapreduce-examples.jar` soubor, který je dodáván s clustery HDInsight, může být odkazován pomocí jedné z následujících cest:
 
 ```
 abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
@@ -116,135 +116,135 @@ abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduc
 ```
 
 > [!Note]
-> Název souboru je `hadoop-examples.jar` v clusterech HDInsight verze 2,1 a 1,6. Když pracujete se soubory mimo HDInsight, zjistíte, že většina nástrojů nerozpozná formát ABFS, ale místo toho očekává základní formát cesty, například `example/jars/hadoop-mapreduce-examples.jar`.
+> Název souboru `hadoop-examples.jar` je v clusterech HDInsight verze 2.1 a 1.6. Při práci se soubory mimo HDInsight zjistíte, že většina nástrojů nerozpozná formát ABFS, ale místo toho `example/jars/hadoop-mapreduce-examples.jar`očekává základní formát cesty, například .
 
-Další informace najdete v tématu [použití identifikátoru URI Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction-abfs-uri.md).
+Další informace najdete [v tématu Použití identifikátoru URI úložiště datového jezera Azure.](../storage/blobs/data-lake-storage-introduction-abfs-uri.md)
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Azure Storage je robustní řešení úložiště pro obecné účely, které se bezproblémově integruje se službou HDInsight. HDInsight může jako výchozí systém souborů pro cluster používat kontejner objektů blob ve službě Azure Storage. Prostřednictvím rozhraní HDFS může úplná sada komponent ve službě HDInsight pracovat přímo se strukturovanými nebo nestrukturovanými daty uloženými jako objekty blob.
+Azure Storage je robustní řešení úložiště pro obecné účely, které se bezproblémově integruje s HDInsightem. HDInsight může jako výchozí systém souborů pro cluster používat kontejner objektů blob ve službě Azure Storage. Prostřednictvím rozhraní HDFS může úplná sada součástí v HDInsight pracovat přímo na strukturovaných nebo nestrukturovaných datech uložených jako objekty BLOB.
 
-Doporučujeme používat samostatné kontejnery úložiště pro vaše výchozí úložiště clusteru a podniková data k izolaci protokolů HDInsight a dočasných souborů z vašich vlastních obchodních dat. Doporučujeme také odstranit výchozí kontejner objektů blob, který obsahuje protokoly aplikací a systému, a to po každém použití ke snížení nákladů na úložiště. Než odstraníte kontejner, nezapomeňte tyto protokoly načíst.
+Doporučujeme použít samostatné kontejnery úložiště pro výchozí úložiště clusteru a obchodní data, izolovat protokoly HDInsight a dočasné soubory z vlastních obchodních dat. Doporučujeme také po každém použití smazat výchozí kontejner objektů blob, který obsahuje protokoly aplikací a systému, aby se snížily náklady na úložiště. Než odstraníte kontejner, nezapomeňte tyto protokoly načíst.
 
-Pokud se rozhodnete zabezpečit svůj účet úložiště s omezeními **bran firewall a virtuální sítě** u **vybraných sítí**, Nezapomeňte povolit výjimku pro **důvěryhodné služby Microsoftu...** , aby HDInsight mohla získat přístup k vašemu účtu úložiště.
+Pokud se rozhodnete zabezpečit svůj účet úložiště pomocí **omezení brány firewall a virtuálních sítí** ve vybraných **sítích**, nezapomeňte povolit výjimku **Povolit důvěryhodné služby Microsoftu...** aby hdinsight měl přístup k vašemu účtu úložiště.
 
 ### <a name="hdinsight-storage-architecture"></a>Architektura úložiště HDInsight
 
-Následující diagram nabízí abstraktní zobrazení architektury HDInsight Azure Storage:
+Následující diagram poskytuje abstraktní zobrazení architektury HDInsight služby Azure Storage:
 
-![Architektura HDInsight Storage](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "Architektura HDInsight Storage")
+![Architektura úložiště HDInsight](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "Architektura úložiště HDInsight")
 
 Služba HDInsight poskytuje přístup do systému souborů DFS, který je místně připojen k výpočetním uzlům. Tento systém souborů je přístupný pomocí plně kvalifikovaného identifikátoru URI, například:
 
     hdfs://<namenodehost>/<path>
 
-Prostřednictvím HDInsight můžete také přistupovat k datům v Azure Storage. Syntaxe je následující:
+Prostřednictvím HDInsightu můžete také přistupovat k datům ve službě Azure Storage. Syntaxe je následující:
 
     wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
-Při použití účtu Azure Storage s clustery HDInsight Vezměte v úvahu následující principy:
+Při používání účtu Azure Storage s clustery HDInsight zvažte následující principy:
 
 * **Kontejnery v účtech úložiště, které jsou připojeny ke clusteru:** Vzhledem k tomu, že název účtu a klíč jsou během vytváření přidružené  ke clusteru, máte plný přístup k objektům blob v těchto kontejnerech.
 
-* **Veřejné kontejnery nebo veřejné objekty BLOB v účtech úložiště, které nejsou připojené ke clusteru:** K objektům blob v kontejnerech máte oprávnění jen pro čtení.
+* **Veřejné kontejnery nebo veřejné objekty BLOB v účtech úložiště, které *nejsou* připojené ke clusteru:** Máte oprávnění jen pro čtení k objektům BLOB v kontejnerech.
   
   > [!NOTE]  
-  > Veřejné kontejnery umožňují získat seznam všech objektů blob, které jsou v daném kontejneru k dispozici, a získat metadata kontejneru. Veřejné objekty blob umožňují přístup k objektům blob jenom v případě, že znáte přesnou adresu URL. Další informace najdete v tématu [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](../storage/blobs/storage-manage-access-to-resources.md).
+  > Veřejné kontejnery umožňují získat seznam všech objektů BLOB, které jsou k dispozici v tomto kontejneru a získat metadata kontejneru. Veřejné objekty blob umožňují přístup k objektům blob jenom v případě, že znáte přesnou adresu URL. Další informace naleznete v [tématu Správa anonymního přístupu pro čtení ke kontejnerům a objektům BLOB](../storage/blobs/storage-manage-access-to-resources.md).
 
-* **Privátní kontejnery v účtech úložiště, které *nejsou* připojené ke clusteru:** Nemůžete získat přístup k objektům blob v kontejnerech, pokud nedefinujete účet úložiště při odeslání úloh WebHCat. 
+* **Soukromé kontejnery v účtech úložiště, které *nejsou* připojené ke clusteru:** K objektům BLOB v kontejnerech nelze přistupovat, pokud nedefinujete účet úložiště při odesílání úloh WebHCat. 
 
-Účty úložiště, které se definují v procesu vytváření a jejich klíče jsou uloženy v %HADOOP_HOME%/conf/core-site.xml na uzlech clusteru. Ve výchozím nastavení používá HDInsight účty úložiště definované v souboru Core-site. XML. Toto nastavení můžete upravit pomocí [Apache Ambari](./hdinsight-hadoop-manage-ambari.md).
+Účty úložiště, které se definují v procesu vytváření a jejich klíče jsou uloženy v %HADOOP_HOME%/conf/core-site.xml na uzlech clusteru. Ve výchozím nastavení používá HDInsight účty úložiště definované v souboru core-site.xml. Toto nastavení můžete upravit pomocí [Apache Ambari](./hdinsight-hadoop-manage-ambari.md).
 
-Několik úloh WebHCat, včetně Apache Hive, MapReduce, Apache Hadoop streaming a Apache prasete, může obsahovat popis účtů úložiště a metadat. (V současné době platí pro prasete s účty úložiště, ale ne pro metadata.) Další informace najdete v tématu [použití clusteru HDInsight s alternativním účtem úložiště a metaúložiště](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
+Několik úloh WebHCat, včetně Apache Hive, MapReduce, Apache Hadoop streaming a Apache Pig, může mít s sebou popis účtů úložiště a metadat. (To platí v současné době pro Pig s účty úložiště, ale ne pro metadata.) Další informace naleznete [v tématu Použití clusteru HDInsight s alternativními účty úložiště a metastores](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
 
-Objekty blob lze použít pro strukturovaná i nestrukturovaná data. Kontejnery objektů BLOB ukládají data jako páry klíč/hodnota a nemají žádnou hierarchii adresářů. Název klíče ale může obsahovat lomítko (/), aby se zobrazil jako při uložení souboru do adresářové struktury. Klíč objektu BLOB může být například `input/log1.txt`. Neexistuje žádný skutečný `input` adresář, ale kvůli znaku lomítka v názvu klíče vypadá klíč jako cesta k souboru.
+Objekty blob lze použít pro strukturovaná i nestrukturovaná data. Kontejnery objektů blob ukládají data jako dvojice klíč/hodnota a nemají žádnou hierarchii adresářů. Název klíče však může obsahovat znak lomítka ( / ), aby vypadal, jako by byl soubor uložen v adresářové struktuře. Klíč objektu blob může být `input/log1.txt`například . Neexistuje `input` žádný skutečný adresář, ale kvůli znaku lomítka v názvu klíče klíč vypadá jako cesta k souboru.
 
-### <a id="benefits"></a>Výhody služby Azure Storage
-Výpočetní clustery a prostředky úložiště, které nejsou společně umístěny, mají předpokládané náklady na výkon. Tyto náklady jsou zmírněny způsobem, kterým se výpočetní clustery vytvářejí blízko prostředků účtu úložiště v oblasti Azure. V této oblasti můžou výpočetní uzly efektivně přistupovat k datům přes vysokorychlostní síť v rámci Azure Storage.
+### <a name="benefits-of-azure-storage"></a><a id="benefits"></a>Výhody služby Azure Storage
+Výpočetní clustery a prostředky úložiště, které nejsou společně přiděleny, mají předpokládané náklady na výkon. Tyto náklady jsou zmírněny způsobem, jakým se vytvoří výpočetní clustery v blízkosti prostředků účtu úložiště v oblasti Azure. V této oblasti výpočetní uzly můžete efektivně přistupovat k datům přes vysokorychlostní sítě uvnitř Azure Storage.
 
-Když ukládáte data v Azure Storage místo HDFS, získáte několik výhod:
+Když ukládáte data ve službě Azure Storage místo HDFS, získáte několik výhod:
 
-* **Opakované použití dat a sdílení:** data v HDFS se nachází uvnitř výpočetního clusteru. Jenom aplikace, které mají přístup k výpočetnímu clusteru, můžou používat data pomocí rozhraní API HDFS. Data v Azure Storage naproti tomu mají k dispozici prostřednictvím rozhraní API HDFS nebo rozhraní REST API služby Blob Storage. Z důvodu tohoto uspořádání lze k vytváření a využívání dat použít větší sadu aplikací (včetně dalších clusterů HDInsight) a nástroje.
+* **Opakované použití dat a sdílení:** data v HDFS se nachází uvnitř výpočetního clusteru. Jenom aplikace, které mají přístup k výpočetnímu clusteru, můžou používat data pomocí rozhraní API HDFS. K datům ve službě Azure Storage lze naopak přistupovat prostřednictvím rozhraní API HDFS nebo rozhraní REST rozhraní API úložiště objektů blob. Z důvodu tohoto uspořádání větší sadu aplikací (včetně jiných clusterů HDInsight) a nástroje lze použít k výrobě a využití dat.
 
-* **Archivace dat:** Když jsou data uložená v Azure Storage, clustery HDInsight používané pro výpočty se dají bezpečně odstranit, aniž by došlo ke ztrátě uživatelských dat.
+* **Archivace dat:** Když jsou data uložená ve službě Azure Storage, clustery HDInsight používané pro výpočty lze bezpečně odstranit bez ztráty uživatelských dat.
 
-* **Náklady na úložiště dat:** Ukládání dat v systému souborů DFS je z dlouhodobého hlediska dražší než ukládání dat v Azure Storage, protože náklady na výpočetní cluster jsou vyšší než náklady na Azure Storage. I když se data pro každou generaci výpočetních clusterů nemusí znovu načíst, ukládají se i náklady na načítání dat.
+* **Náklady na ukládání dat:** Dlouhodobé ukládání dat v dfs je nákladnější než ukládání dat ve službě Azure Storage, protože náklady na výpočetní cluster jsou vyšší než náklady na Azure Storage. Také vzhledem k tomu, že data nemusí být znovu načtena pro každou generaci výpočetního clusteru, šetříte také náklady na načítání dat.
 
-* **Elastické škálování:** I když HDFS poskytuje škálovaný systém souborů, škála se určuje podle počtu uzlů, které vytvoříte pro svůj cluster. Změna měřítka může být složitější než spoléhání na možnosti elastického škálování, které se automaticky zobrazí v Azure Storage.
+* **Elastické škálování:** I když HDFS poskytuje škálovaný systém souborů, škála se určuje podle počtu uzlů, které vytvoříte pro svůj cluster. Změna škálování může být složitější než spoléhání se na možnosti elastického škálování, které získáte automaticky ve službě Azure Storage.
 
-* **Geografická replikace:** Vaše Azure Storage může být geograficky replikované. I když geografická replikace poskytuje geografické obnovení a redundanci dat, převzetí služeb při selhání geograficky replikovaným umístěním má vážně vliv na váš výkon a může to mít za následek další náklady. Proto vyberte geografickou replikaci obezřetně a jenom v případě, že hodnota dat odůvodňuje dodatečné náklady.
+* **Geografická replikace:** Vaše Azure Storage může být geograficky replikované. Přestože geografická replikace poskytuje geografické obnovení a redundanci dat, převzetí služeb při selhání do geograficky replikovaného umístění vážně ovlivňuje výkon a může vám vzniknout další náklady. Takže zvolte geografickou replikaci opatrně a pouze v případě, že hodnota dat odůvodňuje dodatečné náklady.
 
-Některé úlohy a balíčky MapReduce můžou vytvořit mezilehlé výsledky, které byste nemuseli ukládat v Azure Storage. V takovém případě se můžete rozhodnout ukládat data do místního HDFS. HDInsight používá DFS pro několik těchto mezilehlých výsledků v úlohách podregistru a dalších procesech.
+Některé úlohy a balíčky MapReduce mohou vytvářet průběžné výsledky, které byste nechtěli ukládat ve službě Azure Storage. V takovém případě můžete zvolit uložení dat v místním HDFS. HDInsight používá dfs pro několik z těchto zprostředkujících výsledků v úlohách Hive a dalších procesech.
 
 > [!NOTE]  
-> Většina příkazů HDFS (například `ls`, `copyFromLocal`a `mkdir`) pracuje podle očekávání v Azure Storage. Pouze příkazy, které jsou specifické pro nativní implementaci HDFS (což se označuje jako DFS), jako je například `fschk` a `dfsadmin`, zobrazují v Azure Storage jiné chování.
+> Většina příkazů HDFS (například `ls`, `copyFromLocal`, a `mkdir`) pracovat podle očekávání v Azure Storage. Pouze příkazy, které jsou specifické pro nativní implementaci HDFS (která `fschk` `dfsadmin`se označuje jako DFS), jako jsou například a , zobrazit různé chování ve službě Azure Storage.
 
 ## <a name="overview-of-azure-data-lake-storage-gen1"></a>Přehled Azure Data Lake Storage Gen1
 
-Azure Data Lake Storage Gen1 je škálovatelné úložiště s velkými objemy dat v podnikové síti pro analytické úlohy s velkým objemem dat. Pomocí Azure Data Lake můžete zachytit data libovolné velikosti, typu a rychlosti příjmu na jednom místě pro provozní a průzkumné analýzy.
+Azure Data Lake Storage Gen1 je celopodnikové úložiště hyperškálování pro analytické úlohy velkých objemů dat. Pomocí Azure Data Lake můžete zachytit data libovolné velikosti, typu a rychlosti ingestování na jednom místě pro provozní a průzkumné analýzy.
 
-Přístup k Data Lake Storage Gen1 z Hadoop (dostupné s clusterem HDInsight) pomocí rozhraní REST API kompatibilního s WebHDFS. Data Lake Storage Gen1 je navržená tak, aby povolovala analýzy uložených dat a vyladěna se na výkon ve scénářích analýzy dat. Mimo pole zahrnuje možnosti, které jsou nezbytné pro reálné podnikové případy použití. Mezi tyto možnosti patří zabezpečení, možnosti správy, škálovatelnost, spolehlivost a dostupnost.
+Přístup k datům Lake Storage Gen1 z Hadoopu (k dispozici v clusteru HDInsight) pomocí rozhraní REST API kompatibilních s WebHDFS. Data Lake Storage Gen1 je navržen tak, aby umožnil analýzu uložených dat a je vyladěn pro výkon ve scénářích analýzy dat. Po vybalení obsahuje funkce, které jsou nezbytné pro případy použití v reálném světě. Mezi tyto funkce patří zabezpečení, možnosti správy, škálovatelnost, spolehlivost a dostupnost.
 
 Další informace o Azure Data Lake Storage Gen1 najdete v podrobném [přehledu Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md).
 
-Mezi klíčové funkce Data Lake Storage Gen1 patří následující.
+Mezi klíčové funkce data Lake Storage Gen1 patří následující.
 
-### <a name="compatibility-with-hadoop"></a>Kompatibilita se systémem Hadoop
+### <a name="compatibility-with-hadoop"></a>Kompatibilita s Hadoopem
 
-Data Lake Storage Gen1 je Apache Hadoop systém souborů, který je kompatibilní se službou HDFS a pracuje s ekosystémem Hadoop.  Stávající aplikace nebo služby HDInsight, které používají rozhraní WebHDFS API, se můžou snadno integrovat s Data Lake Storage Gen1. Data Lake Storage Gen1 také zpřístupňuje rozhraní REST kompatibilní s WebHDFS pro aplikace.
+Data Lake Storage Gen1 je souborový systém Apache Hadoop, který je kompatibilní s HDFS a pracuje s ekosystémem Hadoop.  Vaše stávající aplikace nebo služby HDInsight, které používají rozhraní WebHDFS API, se mohou snadno integrovat s programem Data Lake Storage Gen1. Data Lake Storage Gen1 také zpřístupňuje rozhraní REST kompatibilní s WebHDFS pro aplikace.
 
-Data uložená v Data Lake Storage Gen1 lze snadno analyzovat pomocí analytických rozhraní Hadoop, jako je MapReduce nebo podregistr. Clustery Azure HDInsight je možné zřídit a nakonfigurovat tak, aby přímý přístup k datům uloženým v Data Lake Storage Gen1.
+Data uložená v data lake storage gen1 lze snadno analyzovat pomocí analytických rámců Hadoop, jako je MapReduce nebo Hive. Clustery Azure HDInsight můžou být zřízená a nakonfigurovaná tak, aby měla přímý přístup k datům uloženým v Gen1 úložiště datového jezera.
 
 ### <a name="unlimited-storage-petabyte-files"></a>Neomezené úložiště, petabajtové soubory
 
-Data Lake Storage Gen1 poskytuje neomezené úložiště a je vhodný pro ukládání nejrůznějších dat pro analýzu. Neomezuje velikost účtů, velikosti souborů nebo množství dat, která se dají ukládat do data Lake. Jednotlivé soubory můžou být v rozsahu od kilobajtů až po petabajty, což Data Lake Storage Gen1 skvělou volbou pro ukládání libovolného typu dat. Data se ukládají trvale pomocí několika kopií a neexistují žádná omezení, jak dlouho je možné data do data Lake ukládat.
+Data Lake Storage Gen1 poskytuje neomezené úložiště a je vhodný pro ukládání různých dat pro analýzy. Neukládá omezení velikosti účtů, velikosti souborů nebo množství dat, která mohou být uložena v datovém jezeře. Jednotlivé soubory se mohou pohybovat v rozsahu od kilobajtů až po petabajty, takže data Lake Storage Gen1 je skvělou volbou pro ukládání jakéhokoli typu dat. Data jsou uložena trvale vytvořením více kopií a neexistují žádná omezení, jak dlouho mohou být data uložena v datovém jezeře.
 
-### <a name="performance-tuning-for-big-data-analytics"></a>Optimalizace výkonu pro analýzu velkých objemů dat
+### <a name="performance-tuning-for-big-data-analytics"></a>Ladění výkonu pro analýzu velkých objemů dat
 
-Data Lake Storage Gen1 je postavená na spouštění rozsáhlých analytických systémů, které vyžadují velkou propustnost pro dotazování a analýzu velkých objemů dat. Data Lake rozšíří části souboru na několik jednotlivých úložných serverů. Při analýze dat tato nastavení zvyšují propustnost čtení, pokud je soubor paralelně čten.
+Data Lake Storage Gen1 je navržen tak, aby spouštěl rozsáhlé analytické systémy, které vyžadují obrovskou propustnost pro dotazování a analýzu velkého množství dat. Datové jezero šíří části souboru přes několik jednotlivých serverů úložiště. Při analýze dat toto nastavení zlepšuje propustnost čtení při paralelním čtení souboru.
 
-### <a name="readiness-for-enterprise-highly-available-and-secure"></a>Připravenost pro podniky: vysoce dostupné a zabezpečené
+### <a name="readiness-for-enterprise-highly-available-and-secure"></a>Připravenost pro podniky: Vysoce dostupná a bezpečná
 
-Data Lake Storage Gen1 poskytuje standardní dostupnost a spolehlivost v oboru. Datové assety jsou uložené trvale: redundantní kopie chrání před neočekávanými chybami. Podniky můžou ve svých řešeních používat Data Lake Storage Gen1 jako důležitou součást své stávající datové platformy.
+Data Lake Storage Gen1 poskytuje standardní dostupnost a spolehlivost. Datové prostředky jsou uloženy trvale: redundantní kopie chrání před neočekávanými chybami. Podniky mohou používat Data Lake Storage Gen1 ve svých řešeních jako důležitou součást své stávající datové platformy.
 
-Data Lake Storage Gen1 taky poskytuje zabezpečení uložených dat na podnikové úrovni. Další informace najdete v tématu [zabezpečení dat v Azure Data Lake Storage Gen1](#DataLakeStoreSecurity).
+Data Lake Storage Gen1 také poskytuje podnikové zabezpečení pro uložená data. Další informace najdete [v tématu Zabezpečení dat v Azure Data Lake Storage Gen1](#DataLakeStoreSecurity).
 
 ### <a name="flexible-data-structures"></a>Flexibilní datové struktury
 
-Data Lake Storage Gen1 může ukládat jakákoli data v nativním formátu, jak je, a to bez nutnosti předchozí transformace. Data Lake Storage Gen1 nevyžaduje, aby bylo definováno schéma před načtením dat. Jednotlivé analytické rozhraní interpretuje data a definuje schéma v době analýzy. Protože může ukládat soubory libovolných velikostí a formátů, Data Lake Storage Gen1 mohou zpracovávat strukturovaná, částečně strukturovaných a nestrukturovaná data.
+Data Lake Storage Gen1 můžete ukládat všechna data v jeho nativním formátu, jak je, bez nutnosti předchozí transformace. Úložiště datového jezera Gen1 nevyžaduje, aby bylo před načtením dat definováno schéma. Individuální analytický rámec interpretuje data a definuje schéma v době analýzy. Vzhledem k tomu, že může ukládat soubory libovolných velikostí a formátů, může Data Lake Storage Gen1 zpracovávat strukturovaná, polostrukturovaná a nestrukturovaná data.
 
-Data Lake Storage Gen1 kontejnery pro data jsou v podstatě složky a soubory. Pomocí sad SDK, Azure Portal a Azure PowerShell pracujete s uloženými daty. Pokud zadáte data do úložiště pomocí těchto rozhraní a příslušných kontejnerů, můžete uložit jakýkoli typ dat. Data Lake Storage Gen1 neprovádí žádné speciální zpracování dat na základě typu uložených dat.
+Kontejnery Data Lake Storage Gen1 pro data jsou v podstatě složky a soubory. Na uložených datech pracujete pomocí sad SDK, portálu Azure a Azure PowerShellu. Pokud vložíte data do úložiště pomocí těchto rozhraní a příslušných kontejnerů, můžete uložit libovolný typ dat. Data Lake Storage Gen1 neprovádí žádné zvláštní zpracování dat na základě typu dat, které ukládá.
 
-## <a name="DataLakeStoreSecurity"></a>Zabezpečení dat v Data Lake Storage Gen1
-Data Lake Storage Gen1 používá pro ověřování Azure Active Directory a ke správě přístupu k datům používá seznamy řízení přístupu (ACL).
+## <a name="data-security-in-data-lake-storage-gen1"></a><a name="DataLakeStoreSecurity"></a>Zabezpečení dat v úložišti datového jezera Gen1
+Data Lake Storage Gen1 používá Azure Active Directory pro ověřování a používá seznamy řízení přístupu (ACLs) ke správě přístupu k vašim datům.
 
 | **Funkce** | **Popis** |
 | --- | --- |
-| Ověřování |Data Lake Storage Gen1 se integruje s Azure Active Directory (Azure AD) pro správu identit a přístupu pro všechna data uložená v Data Lake Storage Gen1. Kvůli integraci Data Lake Storage Gen1 výhody ze všech funkcí služby Azure AD. Mezi tyto funkce patří vícefaktorové ověřování, podmíněný přístup, řízení přístupu na základě role, monitorování využití aplikací, monitorování zabezpečení a upozorňování atd. Data Lake Storage Gen1 podporuje protokol OAuth 2,0 pro ověřování v rámci rozhraní REST. Viz [ověřování v rámci Azure Data Lake Storage Gen1 pomocí Azure Active Directory](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
-| Řízení přístupu |Data Lake Storage Gen1 poskytuje řízení přístupu podporou oprávnění ve stylu POSIX, která jsou vystavená protokolem WebHDFS. Seznamy ACL je možné povolit pro kořenovou složku, podsložky a jednotlivé soubory. Další informace o fungování seznamů ACL v kontextu Data Lake Storage Gen1 najdete v tématu [řízení přístupu v Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md). |
-| Šifrování |Data Lake Storage Gen1 taky poskytuje šifrování pro data, která jsou uložená v účtu. Nastavení šifrování určíte při vytváření účtu Data Lake Storage Gen1. Můžete se rozhodnout, že vaše data budou zašifrovaná nebo se můžou rozhodnout bez šifrování. Další informace najdete v tématu [šifrování v Data Lake Storage Gen1](../data-lake-store/data-lake-store-encryption.md). Pokyny k poskytnutí konfigurace související s šifrováním najdete v tématu Začínáme [s Azure Data Lake Storage Gen1 pomocí Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md). |
+| Ověřování |Data Lake Storage Gen1 se integruje s Azure Active Directory (Azure AD) pro správu identit a přístupu pro všechna data uložená v Data Lake Storage Gen1. Díky integraci využívá Data Lake Storage Gen1 všechny funkce Azure AD. Mezi tyto funkce patří vícefaktorové ověřování, podmíněný přístup, řízení přístupu na základě rolí, monitorování využití aplikací, monitorování zabezpečení a upozorňování a tak dále. Data Lake Storage Gen1 podporuje protokol OAuth 2.0 pro ověřování v rámci rozhraní REST. Viz [Ověřování v rámci Azure Data Lake Storage Gen1 pomocí Azure Active Directory](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
+| Řízení přístupu |Data Lake Storage Gen1 poskytuje řízení přístupu podporou oprávnění stylu POSIX, která jsou vystavena protokolem WebHDFS. Seznamy ACL je možné povolit pro kořenovou složku, podsložky a jednotlivé soubory. Další informace o tom, jak akly fungují v kontextu Data Lake Storage Gen1, naleznete [v tématu Řízení přístupu v souboru Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md). |
+| Šifrování |Data Lake Storage Gen1 také poskytuje šifrování pro data, která jsou uložena v účtu. Nastavení šifrování zadáte při vytváření účtu Data Lake Storage Gen1. Můžete zvolit šifrování dat nebo zvolit žádné šifrování. Další informace naleznete [v tématu Šifrování v úložišti datového jezera Gen1](../data-lake-store/data-lake-store-encryption.md). Pokyny, jak poskytnout konfiguraci související s šifrováním, najdete v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí portálu Azure](../data-lake-store/data-lake-store-get-started-portal.md). |
 
-Další informace o zabezpečení dat v Data Lake Storage Gen1 najdete v tématu [zabezpečení dat uložených v Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-secure-data.md).
+Další informace o zabezpečení dat v gen1 úložiště datových jezer, najdete [v tématu Zabezpečení dat uložených v Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-secure-data.md).
 
-## <a name="applications-that-are-compatible-with-data-lake-storage-gen1"></a>Aplikace, které jsou kompatibilní s Data Lake Storage Gen1
-Data Lake Storage Gen1 je kompatibilní s většinou open source komponent v ekosystému Hadoop. Výborně se taky integruje s jinými službami Azure.  Další informace o tom, jak Data Lake Storage Gen1 lze používat s komponentami Open Source i s dalšími službami Azure, najdete na následujících odkazech.
+## <a name="applications-that-are-compatible-with-data-lake-storage-gen1"></a>Aplikace, které jsou kompatibilní s Date Lake Storage Gen1
+Data Lake Storage Gen1 je kompatibilní s většinou open-source komponent v ekosystému Hadoop. Výborně se taky integruje s jinými službami Azure.  Další informace o tom, jak lze funkci Data Lake Storage Gen1 používat jak s open source komponentami, tak s dalšími službami Azure.
 
-* Seznam open source aplikací, které spolupracují s Data Lake Storage Gen1, najdete v tématu [Open Source aplikace s velkými objemy dat, které fungují s Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-compatible-oss-other-applications.md) .
-* Další informace o tom, jak používat Data Lake Storage Gen1 s ostatními službami Azure k zajištění širší škály scénářů, najdete v tématu věnovaném [integraci Azure Data Lake Storage Gen1 s dalšími službami Azure](../data-lake-store/data-lake-store-integrate-with-other-services.md) .
-* Další informace o tom, jak používat Data Lake Storage Gen1 ve scénářích, jako je ingestování dat, zpracování dat, stahování dat a vizualizaci dat, najdete v tématu [použití Azure Data Lake Storage Gen1 pro požadavky na velké](../data-lake-store/data-lake-store-data-scenarios.md) objemy dat.
+* Seznam open [source aplikací pro velké objemy dat, které spolupracují s Azure Data Lake Storage Gen1,](../data-lake-store/data-lake-store-compatible-oss-other-applications.md) najdete v tématu Open source aplikace pro velké objemy dat, které spolupracují s aplikací Data Lake Storage Gen1.
+* V [tématu Integrace Azure Data Lake Storage Gen1 s jinými službami Azure,](../data-lake-store/data-lake-store-integrate-with-other-services.md) kde zjistíte, jak používat Data Lake Storage Gen1 s jinými službami Azure, abyste umožnili širší škálu scénářů.
+* V [článku Použití Azure Data Lake Storage Gen1 pro požadavky na velké objemy dat](../data-lake-store/data-lake-store-data-scenarios.md) se dozvíte, jak používat Data Lake Storage Gen1 ve scénářích, jako je ingestování dat, zpracování dat, stahování dat a vizualizace dat.
 
-## <a name="data-lake-storage-gen1-file-system-adl"></a>Systém souborů Data Lake Storage Gen1 (adl://)
-V prostředích Hadoop (dostupné s clusterem HDInsight) máte přístup k Data Lake Storage Gen1 pomocí nového systému souborů AzureDataLakeFilesystem (adl://). Výkon aplikací a služeb, které používají adl://, je možné optimalizovat způsobem, který momentálně není v WebHDFS k dispozici. Výsledkem je, že když použijete Data Lake Storage Gen1, získáte flexibilitu, aby využívala nejlepší výkon pomocí doporučeného adl://u nebo zachovala existující kód tím, že budete nadále používat rozhraní WebHDFS API přímo. Azure HDInsight plně využívá výhod AzureDataLakeFilesystem k zajištění co nejlepšího výkonu pro Data Lake Storage Gen1.
+## <a name="data-lake-storage-gen1-file-system-adl"></a>Datový lake storage Gen1 souborový systém (adl://)
+V prostředích Hadoop (k dispozici v clusteru HDInsight) můžete přistupovat k Data Lake Storage Gen1 prostřednictvím nového systému souborů AzureDataLakeFilesystem (adl://). Výkon aplikací a služeb, které používají adl:// lze optimalizovat způsobem, který není aktuálně k dispozici v webHDFS. V důsledku toho při použití Data Lake Storage Gen1 získáte flexibilitu buď využít nejlepší výkon pomocí doporučené adl:// nebo udržovat existující kód nadále používat rozhraní API WebHDFS přímo. Azure HDInsight plně využívá azuredatalakefilesystém poskytovat nejlepší výkon na datového jezera Storage Gen1.
 
-K datům v Data Lake Storage Gen1 získáte přístup pomocí následujících kroků:
+Přístup k datům v aplikaci Data Lake Storage Gen1 pomocí následujících možností:
 
 `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net`
 
-Další informace o tom, jak získat přístup k datům v Data Lake Storage Gen1, najdete v tématu [akce, které jsou k dispozici u uložených dat](../data-lake-store/data-lake-store-get-started-portal.md#properties).
+Další informace o tom, jak získat přístup k datům v gen1 úložiště datového jezera, naleznete v [tématu Akce dostupné na uložených datech](../data-lake-store/data-lake-store-get-started-portal.md#properties).
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Úvod do Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
+* [Úvod do úložiště datových jezer Azure Gen2](../storage/blobs/data-lake-storage-introduction.md)
 * [Seznámení se službou Azure Storage](../storage/common/storage-introduction.md)

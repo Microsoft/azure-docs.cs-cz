@@ -1,6 +1,6 @@
 ---
-title: Referenční příručka k operacím s Azure Active Directory
-description: Referenční příručka operací popisuje kontroly a akce, které byste měli provést při zabezpečení a údržbě správy identit a přístupu, ověřování, zásad správného řízení a operací.
+title: Referenční příručka pro operace služby Azure Active Directory
+description: Tato referenční příručka pro operace popisuje kontroly a akce, které byste měli provést k zabezpečení a zabezpečení správy identity a přístupu, ověřování, zásad správného řízení a operací.
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -12,38 +12,38 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: c815256e60e5ca6582220d247d587a4488c4a55a
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74535311"
 ---
-# <a name="azure-active-directory-operations-reference-guide"></a>Referenční příručka k operacím s Azure Active Directory
+# <a name="azure-active-directory-operations-reference-guide"></a>Referenční příručka pro operace služby Azure Active Directory
 
-Referenční příručka operací popisuje kontroly a akce, které byste měli provést při zabezpečení a údržbě těchto oblastí:
+Tato referenční příručka pro operace popisuje kontroly a akce, které byste měli provést k zabezpečení a údržbě následujících oblastí:
 
-- **[Správa identit a přístupu](active-directory-ops-guide-iam.md)** – schopnost spravovat životní cyklus identit a jejich nároků.
-- **[Správa ověřování](active-directory-ops-guide-auth.md)** – možnost spravovat přihlašovací údaje, definovat možnosti ověřování, přiřazení delegáta, využití měr a definovat zásady přístupu na základě podnikového zabezpečení stav.
-- Možnost **[správného řízení](active-directory-ops-guide-govern.md)** – možnost posoudit a ověřit přístup k neprivilegovaným a privilegovaným identitám, auditům a řízením změn v prostředí.
-- **[Operace](active-directory-ops-guide-ops.md)** – optimalizuje provozní Azure Active Directory (Azure AD).
+- **[Správa identit a přístupu](active-directory-ops-guide-iam.md)** – schopnost řídit životní cyklus identit a jejich nároky.
+- **[Správa ověřování](active-directory-ops-guide-auth.md)** – schopnost spravovat přihlašovací údaje, definovat prostředí ověřování, delegovat přiřazení, měřit využití a definovat zásady přístupu založené na stavu zabezpečení rozlehlé sítě.
+- **[Zásady správného řízení](active-directory-ops-guide-govern.md)** – schopnost posoudit a osvědčit přístup udělené neprivilegované a privilegované identity, audit a řízení změny prostředí.
+- **[Operace](active-directory-ops-guide-ops.md)** – optimalizace operací Azure Active Directory (Azure AD).
 
-Některá doporučení se nemusí vztahovat na prostředí všech zákazníků, například AD FS osvědčené postupy nemusí platit, pokud vaše organizace používá synchronizaci hodnot hash hesel.
+Některá doporučení zde nemusí být použitelná pro prostředí všech zákazníků, například doporučené postupy služby AD FS nemusí platit, pokud vaše organizace používá synchronizaci hash hesel.
 
 > [!NOTE]
-> Tato doporučení jsou aktuální k datu publikování, ale mohou se v průběhu času měnit. Organizace by měly průběžně vyhodnocovat své postupy své identity, protože produkty a služby Microsoftu se v průběhu času vyvíjí. Doporučení se můžou změnit, když se organizace přihlásí k odběru jiné licence Azure AD Premium. Například Azure AD Premium P2 bude zahrnovat více doporučení zásad správného řízení.
+> Tato doporučení jsou aktuální k datu publikování, ale mohou se v průběhu času měnit. Organizace by měly průběžně vyhodnocovat své postupy identity, jak se produkty a služby společnosti Microsoft v průběhu času vyvíjejí. Doporučení se můžou změnit, když se organizace přihlásí k odběru jiné licence Azure AD Premium. Například Azure AD Premium P2 bude obsahovat další doporučení zásad správného řízení.
 
-## <a name="stakeholders"></a>Účastníci
+## <a name="stakeholders"></a>Zúčastněné strany
 
-V každé části tohoto referenčního průvodce se doporučuje přiřadit zúčastněné strany k úspěšnému naplánování a implementaci klíčových úloh. Následující tabulka obsahuje seznam všech zúčastněných účastníků v této příručce:
+Každá část v této referenční příručce doporučuje přiřadit zúčastněným stranám, aby úspěšně plánovaly a implementovaly klíčové úkoly. V následující tabulce je uveden seznam všech zúčastněných stran v této příručce:
 
 | Účastník | Popis |
 | :- | :- |
-| Provozní tým IAM | Tento tým zpracovává každodenní provoz systému správy identit a přístupu denně. |
-| Tým pro produktivitu | Tento tým je vlastníkem a spravuje aplikace produktivity, jako je e-mail, sdílení souborů a spolupráce, rychlé zasílání zpráv a konference. |
-| Vlastník aplikace | Tento tým vlastní konkrétní aplikaci z firmy a obvykle je technickou perspektivou v organizaci. |
-| Tým architektury InfoSec | Tento tým plánuje a navrhuje postupy zabezpečení informací v organizaci. |
-| Provozní tým InfoSec | Tento tým používá a sleduje implementované postupy zabezpečení informací týmu architektury InfoSec. |
+| Operační tým IAM | Tento tým zpracovává každodenní řízení systému správy identit a přístupu. |
+| Tým produktivity | Tento tým vlastní a spravuje aplikace pro zvýšení produktivity, jako je e-mail, sdílení souborů a spolupráce, zasílání rychlých zpráv a konference. |
+| Vlastník aplikace | Tento tým vlastní konkrétní aplikaci z firmy a obvykle z technického hlediska v organizaci. |
+| Tým architektury Infosec | Tento tým plánuje a navrhuje postupy zabezpečení informací organizace. |
+| Operační tým InfoSec | Tento tým spouští a monitoruje implementované postupy zabezpečení informací týmu architektury InfoSec. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Začněte s [kontrolami a akcemi správy identit a přístupu](active-directory-ops-guide-iam.md).
+Začínáme s [kontrolami a akcemi správy identit a přístupu](active-directory-ops-guide-iam.md).

@@ -1,6 +1,6 @@
 ---
-title: Co je podmíněný přístup v Azure Active Directory?
-description: Přečtěte si, jak podmíněný přístup je srdcem nové roviny ovládacího prvku řízená identitami.
+title: Co je podmíněný přístup ve službě Azure Active Directory?
+description: Zjistěte, jak je podmíněný přístup jádrem nové řídicí roviny řízené identitou.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,96 +12,96 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240909"
 ---
 # <a name="what-is-conditional-access"></a>Co je podmíněný přístup?
 
-Moderní hraniční zabezpečení teď přesahuje síť organizace, aby zahrnovala identitu uživatelů a zařízení. Organizace můžou tyto signály identity využít jako součást jejich rozhodnutí o řízení přístupu. 
+Moderní bezpečnostní obvod nyní přesahuje síť organizace a zahrnuje identitu uživatele a zařízení. Organizace mohou tyto signály identity využívat jako součást svých rozhodnutí o řízení přístupu. 
 
-Podmíněný přístup je nástroj používaný Azure Active Directory k spojování signálů, k rozhodování a vymáhání zásad organizace. Podmíněný přístup je srdcem nové roviny ovládacího prvku na základě identity.
+Podmíněný přístup je nástroj používaný službou Azure Active Directory k sbližování signálů, rozhodování a vynucování zásad organizace. Podmíněný přístup je jádrem nové řídicí roviny řízené identitou.
 
-![Koncepční podmíněný signál plus rozhodnutí pro získání vynucování](./media/overview/conditional-access-signal-decision-enforcement.png)
+![Koncepční podmíněný signál plus rozhodnutí o výkonu rozhodnutí](./media/overview/conditional-access-signal-decision-enforcement.png)
 
-Zásady podmíněného přístupu jsou v nejjednodušším případě příkazy if a then, pokud chce uživatel získat přístup k prostředku, musí dokončit akci. Příklad: správce mezd chce získat přístup k aplikaci mzdy a vyžaduje k přístupu k němu službu Multi-Factor Authentication.
+Zásady podmíněného přístupu v nejjednodušší jsou příkazy if-then, pokud uživatel chce získat přístup k prostředku, musí provést akci. Příklad: Mzdový manažer chce získat přístup k mzdové aplikaci a je povinen k přístupu k ní provést vícefaktorové ověřování.
 
-Správcům se čelí dva primární cíle:
+Správci čelí dvěma hlavním cílům:
 
 - Umožnit uživatelům být produktivní kdykoli a kdekoli
-- Ochrana prostředků organizace
+- Ochrana majetku organizace
 
-Pomocí zásad podmíněného přístupu můžete použít správné řízení přístupu, pokud je to nutné, aby vaše organizace byla zabezpečená a zůstala v případě potřeby zachována uživateli.
+Pomocí zásad podmíněného přístupu můžete v případě potřeby použít správné ovládací prvky přístupu, abyste udrželi vaši organizaci v bezpečí a zůstali mimo cestu uživatele, když je nepotřebujete.
 
 ![Tok procesu koncepčního podmíněného přístupu](./media/overview/conditional-access-overview-how-it-works.png)
 
-Zásady podmíněného přístupu se vynutily po dokončení prvního faktoru ověřování. Podmíněný přístup není určený jako první linie obrany organizace pro scénáře, jako jsou útoky DoS (Denial-of-Service), ale může k určení přístupu použít signály z těchto událostí.
+Zásady podmíněného přístupu jsou vynuceny po dokončení ověřování prvního faktoru. Podmíněný přístup není určen jako první obranná linie organizace pro scénáře, jako jsou útoky dos (denial of service), ale může používat signály z těchto událostí k určení přístupu.
 
 ## <a name="common-signals"></a>Běžné signály
 
-Běžné signály, které může podmíněný přístup vzít v úvahu při rozhodování o zásadách, zahrnuje tyto signály:
+Běžné signály, které podmíněný přístup může vzít v úvahu při rozhodování o zásadách, zahrnují následující signály:
 
 - Členství uživatele nebo skupiny
-   - Zásady je možné cílit na konkrétní uživatele a skupiny, které správcům poskytují jemně odstupňovanou kontrolu nad přístupem.
-- Informace o umístění IP adresy
-   - Organizace můžou vytvářet důvěryhodné rozsahy IP adres, které se dají použít při rozhodování o zásadách. 
-   - Správci můžou určit rozsahy IP adres celé země pro blokování nebo povolení provozu.
+   - Zásady mohou být zaměřeny na konkrétní uživatele a skupiny, které správcům poskytují jemně odstupňovanou kontrolu nad přístupem.
+- Informace o umístění IP
+   - Organizace mohou vytvářet důvěryhodné rozsahy adres IP, které lze použít při rozhodování o zásadách. 
+   - Správci mohou určit rozsahy IP adres celé země, ze kterých mají být blokovat nebo povolovat provoz.
 - Zařízení
-   - Uživatelé se zařízeními konkrétních platforem nebo označenými určitým stavem lze použít při vynucování zásad podmíněného přístupu.
+   - Uživatelé se zařízeními konkrétních platforem nebo označeni určitým stavem lze použít při vynucování zásad podmíněného přístupu.
 - Aplikace
-   - Uživatelé, kteří se pokoušejí o přístup ke konkrétním aplikacím, můžou aktivovat různé zásady podmíněného přístupu. 
-- Zjišťování rizik v reálném čase a vypočtené riziko
-   - Signály pro integraci s Azure AD Identity Protection umožňují zásadám podmíněného přístupu identifikovat rizikové chování při přihlašování. Zásady potom můžou vynutit, aby uživatelé prováděli změny hesla nebo službu Multi-Factor Authentication, aby omezili jejich úroveň rizika nebo aby měli přístup blokovaný, dokud správce neprovede ruční akci.
-- Microsoft Cloud App Security (MCAS)
-   - Umožňuje monitorovat a kontrolovat přístup k uživatelským aplikacím v reálném čase, což zvyšuje viditelnost a kontrolu nad přístupem a aktivitami provedenými v rámci vašeho cloudového prostředí.
+   - Uživatelé, kteří se pokoušejí o přístup k určitým aplikacím, mohou aktivovat různé zásady podmíněného přístupu. 
+- Detekce rizik v reálném čase a vypočtená detekce rizik
+   - Integrace signálů s Azure AD Identity Protection umožňuje zásady podmíněného přístupu k identifikaci rizikového chování při přihlašování. Zásady pak mohou přinutit uživatele, aby provedli změny hesla nebo vícefaktorové ověřování, aby se snížila jejich úroveň rizika, nebo může být zablokován přístup, dokud správce neprovede ruční akci.
+- Zabezpečení aplikací Microsoft Cloud (MCAS)
+   - Umožňuje sledování a řízení uživatelských aplikací a relací v reálném čase, což zvyšuje viditelnost a kontrolu nad přístupem a aktivitami prováděnými v cloudovém prostředí.
 
 ## <a name="common-decisions"></a>Společná rozhodnutí
 
 - Blokovat přístup
-   - Nejvíce omezující rozhodnutí
+   - Nejrestriktivnější rozhodnutí
 - Udělení přístupu
-   - Minimální omezující rozhodnutí může stále vyžadovat jednu nebo více z následujících možností:
-      - Vyžadovat Multi-Factor Authentication
-      - Vyžadovat, aby zařízení bylo označené jako vyhovující
-      - Vyžadovat zařízení připojené k hybridní službě Azure AD
-      - Vyžaduje se klientem schválená aplikace.
-      - Vyžadovat zásady ochrany aplikací (Preview)
+   - Nejméně omezující rozhodnutí, může stále vyžadovat jednu nebo více z následujících možností:
+      - Vyžadovat vícefaktorové ověřování
+      - Vyžadovat, aby zařízení bylo označeno jako vyhovující
+      - Vyžadovat hybridní zařízení azure ad připojeno
+      - Vyžadovat schválenou klientskou aplikaci
+      - Vyžadovat zásady ochrany aplikací (preview)
 
 ## <a name="commonly-applied-policies"></a>Běžně používané zásady
 
-Mnoho organizací má společný přístup, ke kterým může pomáhat zásada podmíněného přístupu, například:
+Mnoho organizací má společné obavy o přístup, které zásady podmíněného přístupu mohou pomoci například:
 
-- Vyžadování služby Multi-Factor Authentication pro uživatele s administrativními rolemi
-- Vyžadování služby Multi-Factor Authentication pro úlohy správy Azure
-- Blokování přihlášení pro uživatele, kteří se pokoušejí používat starší protokoly ověřování
-- Vyžadování důvěryhodných umístění pro registraci služby Azure Multi-Factor Authentication
-- Blokování a udělení přístupu z určitých umístění
-- Blokování rizikových přihlašovacích chování
+- Vyžadování vícefaktorového ověřování pro uživatele s rolemi pro správu
+- Vyžadování vícefaktorového ověřování pro úlohy správy Azure
+- Blokování přihlášení pro uživatele, kteří se pokoušejí používat starší ověřovací protokoly
+- Vyžadování důvěryhodných umístění pro registraci azure vícefaktorového ověřování
+- Blokování nebo udělení přístupu z konkrétních míst
+- Blokování rizikového chování při hlásek
 - Vyžadování zařízení spravovaných organizací pro konkrétní aplikace
 
 ## <a name="customer-case-studies"></a>Zákaznické případové studie
 
-Zjistěte, jak jiné organizace používají podmíněný přístup Azure AD k definování a implementaci automatického rozhodování o řízení přístupu. Následující doporučené příběhy ukazují, jak se tyto požadavky zákazníků splní.
+Zjistěte, jak ostatní organizace používají podmíněný přístup Azure AD k definování a implementaci rozhodnutí o automatizovaném řízení přístupu. Následující doporučené příběhy ukazují, jak jsou tyto potřeby zákazníků uspokojovány.
 
-* [Společnost Wipro zabezpečí mobilní produktivitu pomocí nástrojů Microsoft Cloud Security Tools a vylepšuje zapojení zákazníků.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Zásady podmíněného přístupu ve službě Azure AD povolily společnosti sdílet dokumenty, prostředky a aplikace s důvěryhodnými externími entitami---, kdo může používat vlastní přihlašovací údaje---a přitom zachovat kontrolu nad svými vlastními podnikovými daty.
-* [Aramex Delivery s omezeným přístupem – globální logistika a dopravní společnost vytváří Office propojené s cloudem a řešení pro správu identit a přístupu](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). Zajištění bezpečného přístupu bylo obzvláště obtížné u vzdálených zaměstnanců Aramex. Společnost teď používá podmíněný přístup, aby tyto vzdálené zaměstnance měli přístup k jejich SaaS aplikacím mimo síť. Pravidlo podmíněného přístupu určí, jestli se má vyhodnotit Multi-Factor Authentication a že jenom ta, která mají správný přístup.
+* [Wipro podporuje mobilní produktivitu pomocí cloudových bezpečnostních nástrojů Microsoftu, které zlepšují zapojení zákazníků.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Zásady podmíněného přístupu ve službě Azure AD umožnily společnosti sdílet dokumenty, prostředky a aplikace s důvěryhodnými externími entitami---, kteří můžou používat vlastní přihlašovací údaje--- při zachování kontroly nad vlastními podnikovými daty.
+* [Aramex delivery limited - Globální logistická a dopravní společnost vytváří kancelář propojenou s cloudem s řešením pro správu identit a přístupu](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). Zajištění bezpečného přístupu bylo obzvláště obtížné u vzdálených zaměstnanců společnosti Aramex. Společnost nyní používá podmíněný přístup, aby těmto vzdáleným zaměstnancům přístup ke svým aplikacím SaaS přistupovala mimo síť. Pravidlo podmíněného přístupu rozhodne, zda vynucuje vícefaktorové ověřování, což poskytuje správnému přístupu pouze správným lidem.
 
 ## <a name="license-requirements"></a>Licenční požadavky
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-Zákazníci s [licencemi Microsoft 365 Business](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) mají taky přístup k funkcím podmíněného přístupu. 
+Zákazníci s [licencemi Microsoft 365 Business](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) mají také přístup k funkcím podmíněného přístupu. 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytvoření zásad podmíněného přístupu podle kusu](concept-conditional-access-policies.md)
+[Vytváření zásad podmíněného přístupu kousek po kousku](concept-conditional-access-policies.md)
 
-Informace o tom, jak implementovat podmíněný přístup ve vašem prostředí, najdete v tématu [Plánování nasazení podmíněného přístupu v Azure Active Directory](plan-conditional-access.md).
+Informace o implementaci podmíněného přístupu ve vašem prostředí najdete v [tématu Plánování nasazení podmíněného přístupu ve službě Azure Active Directory](plan-conditional-access.md).
 
-[Další informace o Identity Protection](../identity-protection/overview-v2.md)
+[Další informace o ochraně identity](../identity-protection/overview-v2.md)
 
-[Informace o Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
+[Další informace o zabezpečení aplikací Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
 
-[Informace o Microsoft Intune](/intune/index)
+[Další informace o Microsoft Intune](/intune/index)

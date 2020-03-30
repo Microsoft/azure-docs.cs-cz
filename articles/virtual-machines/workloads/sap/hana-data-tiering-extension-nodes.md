@@ -1,6 +1,6 @@
 ---
-title: Uzly datových vrstev a rozšíření pro SAP HANA v Azure (velké instance) | Microsoft Docs
-description: Uzly datových vrstev a rozšíření pro SAP HANA v Azure (velké instance).
+title: Vrstvení dat a rozšiřující uzly pro SAP HANA v Azure (velké instance) | Dokumenty společnosti Microsoft
+description: Vrstvení dat a rozšiřující uzly pro SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,25 +14,25 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c3553ac9704ac26d0bdaae0f93b89f41a87ac716
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617167"
 ---
-# <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>Použití SAP HANAch uzlů pro vrstvení dat a rozšíření
+# <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>Použití datových vrstvení a rozšiřujících uzlů SAP HANA
 
-SAP podporuje model datové vrstvy pro SAP BW různých verzí SAP NetWeaver a SAP BW/4HANA. Další informace o modelu datové vrstvy najdete v dokumentu SAP [SAP BW/4HANA a SAP BW na Hana s uzly rozšíření SAP HANA](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#).
-S velkou instancí HANA můžete použít konfiguraci možností SAP HANA s příponou Option-1, jak je vysvětleno v dokumentech na blogu s nejčastějšími dotazy a SAP. Konfigurace Option-2 se dá nastavit s následujícími SKU velkých instancí HANA: S72m, S192, S192m, S384 a S384m. 
+SAP podporuje model vrstvení dat pro SAP BW různých verzí SAP NetWeaver a SAP BW/4HANA. Další informace o modelu vrstvení dat naleznete v dokumentu SAP [SAP BW/4HANA a SAP BW na HANA s rozšiřujícími uzly SAP HANA](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#).
+S hana velké instance, můžete použít možnost-1 konfigurace SAP HANA rozšíření uzlů, jak je vysvětleno v faq a SAP blogu dokumenty. Konfigurace option-2 lze nastavit pomocí následujících velkých instancí HANA SKU: S72m, S192, S192m, S384 a S384m. 
 
-Když se podíváte na dokumentaci, výhoda se nemusí zobrazit hned. Ale když se podíváte na pokyny pro určení velikosti SAP, uvidíte výhodu pomocí uzlů rozšíření Option-1 a Option-2 SAP HANA. Tady jsou příklady:
+Když se podíváte na dokumentaci, výhoda nemusí být viditelné okamžitě. Ale když se podíváte na pokyny pro velikost SAP, můžete vidět výhodu pomocí rozšiřujících uzlů option-1 a option-2 SAP HANA. Tady jsou příklady:
 
-- Pokyny pro změny velikosti SAP HANA obvykle vyžadují dvojnásobek objemu objemů dat jako paměti. Při spuštění instance SAP HANA s aktivními daty máte jenom 50% nebo méně paměti vyplněnou daty. Zbývající část paměti je ideální pro SAP HANA provádění její práce.
-- To znamená, že S192 jednotka velké instance v HANA má 2 TB paměti a spustí databázi SAP BW, stačí mít 1 TB jako datový svazek.
-- Pokud použijete další uzel rozšíření SAP HANA s možností-1, také SKU velké instance S192 HANA, získáte další 2 TB kapacity objemu dat. V konfiguraci možnosti 2 získáte další 4 TB pro teplý objem dat. V porovnání s aktivním uzlem je možné použít úplnou kapacitu paměti uzlu "teplého" rozšíření pro ukládání dat pro možnost-1. Dvojnásobnou velikost paměti lze použít pro datový svazek v konfiguraci uzlu Option-2 SAP HANA rozšíření.
-- Pro vaše data máte kapacitu o kapacitě 3 TB a poměr Hot-to-teplu 1:2 pro možnost 1. Máte 5 TB dat a poměr 1:4 s konfigurací uzlu Option-2.
+- Sap HANA zásady pro nastavení velikosti obvykle vyžadují dvojnásobné množství objemu dat jako paměti. Při spuštění instance SAP HANA s aktivní data, máte pouze 50 procent nebo méně paměti naplněné daty. Zbytek paměti je ideálně držen pro SAP HANA dělá svou práci.
+- To znamená, že v jednotce HANA Large Instance S192 s 2 TB paměti, se spuštěnou databází SAP BW, máte jako datový svazek pouze 1 TB.
+- Pokud používáte další rozšíření SAP HANA uzel option-1, také SKU velké instance S192 HANA, poskytuje další kapacitu 2 TB pro objem dat. V konfiguraci option-2 získáte další 4 TB pro teplý objem dat. Ve srovnání s horkým uzlem lze plnou kapacitu paměti "teplého" rozšiřujícího uzlu použít pro ukládání dat pro možnost 1. Dvojnásobná paměť lze použít pro datový svazek v konfiguraci rozšíření OPTION-2 SAP HANA.
+- Pro vaše data získáte kapacitu 3 TB a poměr tepla a tepla 1:2 pro volbu 1. Máte 5 TB dat a poměr 1:4 s konfigurací rozšíření option-2.
 
-Čím vyšší je objem dat, který je v porovnání s pamětí, tím větší je pravděpodobnost, že se v úložišti na disku ukládají data, která požadujete pro.
+Čím vyšší je objem dat ve srovnání s pamětí, tím vyšší je pravděpodobnost, že teplá data, o která žádáte, jsou uložena na diskovém úložišti.
 
 **Další kroky**
-- Informace [o architektuře SAP Hana (velké instance) v Azure](hana-architecture.md)
+- Odkazování [architektury SAP HANA (velké instance) v Azure](hana-architecture.md)

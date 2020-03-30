@@ -1,44 +1,44 @@
 ---
-title: Změna oznámení inteligentního zjišťování – Azure Application Insights
-description: Přejděte na výchozí příjemce oznámení z inteligentního zjišťování. Inteligentní zjišťování umožňuje monitorovat trasování aplikací pomocí Azure Application Insights pro neobvyklé vzory v telemetrie trasování.
+title: Změna oznámení inteligentní detekce – Přehledy aplikací Azure
+description: Změňte na výchozí příjemce oznámení z inteligentního zjišťování. Inteligentní detekce umožňuje sledovat trasování aplikací pomocí Azure Application Insights pro neobvyklé vzory v telemetrii trasování.
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: f73e5bbdd8585b3367e529a8fa00630042e56cac
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671779"
 ---
-# <a name="smart-detection-e-mail-notification-change"></a>Změna e-mailových oznámení inteligentního zjišťování
+# <a name="smart-detection-e-mail-notification-change"></a>Změna oznámení e-mailem inteligentní detekce
 
-Na základě zpětné vazby od zákazníků od 1. dubna 2019 měníme výchozí role, které přijímají e-mailová oznámení od inteligentního zjišťování.
+Na základě zpětné vazby od zákazníků měníme 1.
 
 ## <a name="what-is-changing"></a>Co se mění?
 
-V současné době se e-mailová oznámení inteligentní detekce standardně odesílají do rolí _vlastník_předplatného, _přispěvatele_předplatného a _modulu pro čtení předplatného_ Tyto role často zahrnují uživatele, kteří nejsou aktivně zapojeni do monitorování, což způsobí, že mnohé z těchto uživatelů dostanou oznámení zbytečně. Pro zlepšení tohoto prostředí provádíme změnu, aby e-mailová oznámení ve výchozím nastavení přešla jenom na role [Čtenář monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) a [sledování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) .
+V současné době inteligentní detekce e-mailová oznámení jsou odesílány ve výchozím nastavení _vlastník předplatného_, _přispěvatel předplatného_, a _čtečka předplatného_ role. Tyto role často zahrnují uživatele, kteří nejsou aktivně zapojeni do monitorování, což způsobuje, že mnoho z těchto uživatelů dostávat oznámení zbytečně. Chcete-li zlepšit toto prostředí, provádíme změnu tak, aby e-mailová oznámení ve výchozím nastavení přecštrápěla pouze do rolí [čtečky monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) a [přispěvatele monitorování.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)
 
 ## <a name="scope-of-this-change"></a>Rozsah této změny
 
-Tato změna bude mít vliv na všechna pravidla inteligentního zjišťování, s výjimkou následujících:
+Tato změna ovlivní všechna pravidla inteligentní detekce, s výjimkou následujících:
 
-* Pravidla inteligentního zjišťování označená jako náhled Tato pravidla inteligentního zjišťování nepodporují e-mailová oznámení ještě dnes.
+* Pravidla inteligentní detekce označená jako náhled. Tato pravidla inteligentní detekce dnes nepodporují e-mailová oznámení.
 
-* Pravidlo anomálií selhání. Toto pravidlo začne cílit na nové výchozí role, jakmile se migruje z klasické výstrahy na platformu Unified Alerts (Další informace jsou k dispozici [zde](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).)
+* Pravidlo anomálií selhání. Toto pravidlo začne cílit na nové výchozí role po migraci z klasické výstrahy na platformu sjednocených výstrah (další informace jsou k dispozici [zde](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).)
 
-## <a name="how-to-prepare-for-this-change"></a>Jak připravit tuto změnu?
+## <a name="how-to-prepare-for-this-change"></a>Jak se připravit na tuto změnu?
 
-Aby bylo zajištěno, že budou pro příslušné uživatele zasílána e-mailová oznámení od inteligentního zjišťování, musí být uživatelé přiřazeni ke službě [Sledování monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) nebo k rolím [přispěvatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) v předplatném.
+Chcete-li zajistit, aby e-mailová oznámení z inteligentní detekce jsou odesílány příslušným uživatelům, musí být tito uživatelé [přiřazeny k monitorování reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) nebo [sledování přispěvatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) role předplatného.
 
-Pokud chcete přiřazovat uživatele k rolím přispěvatele monitorování nebo monitorování pomocí Azure Portal, postupujte podle kroků popsaných v článku [Přidání přiřazení role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment) . Ujistěte se, že jste jako roli, ke které jsou přiřazeni uživatelé, vybrali možnost _Čtenář monitorování_ nebo _Přispěvatel monitorování_ .
+Pokud chcete přiřadit uživatele k rolím čtečky monitorování nebo přispěvatele monitorování prostřednictvím portálu Azure, postupujte podle kroků popsaných v článku [Přidat přiřazení role.](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment) Nezapomeňte vybrat _monitorovací čtečku_ nebo _přispěvatele monitorování_ jako roli, ke které jsou uživatelé přiřazeni.
 
 > [!NOTE]
-> Tato změna nebude mít vliv na konkrétní příjemce oznámení inteligentní detekce nakonfigurovaných pomocí možnosti _Další příjemci e-mailu_ v nastavení pravidla. Tito příjemci budou dál dostávat e-mailová oznámení.
+> Konkrétní příjemci oznámení inteligentní detekce, nakonfigurovaní pomocí _možnosti Další příjemci e-mailu_ v nastavení pravidla, nebudou touto změnou ovlivněni. Tito příjemci budou nadále dostávat e-mailová oznámení.
 
-Pokud máte nějaké dotazy nebo obavy týkající se této změny, váhají [nás kontaktujte](mailto:smart-alert-feedback@microsoft.com).
+Máte-li jakékoli dotazy nebo obavy týkající se této změny, neváhejte [nás kontaktovat](mailto:smart-alert-feedback@microsoft.com).
 
 ## <a name="next-steps"></a>Další kroky
 

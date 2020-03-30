@@ -1,6 +1,6 @@
 ---
-title: Ukončení oznámení pro instance sady škálování virtuálních počítačů Azure
-description: Naučte se, jak povolit koncová oznámení pro instance sady škálování virtuálních počítačů Azure.
+title: Ukončení oznámení pro instance škálovací sady virtuálních strojů Azure
+description: Zjistěte, jak povolit oznámení o ukončení pro instance škálovací sady virtuálních strojů Azure
 author: avirishuv
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -8,38 +8,38 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: avverma
 ms.openlocfilehash: 6023e9bf7539b79446d0135ba731b61be166dd6e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250748"
 ---
-# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Ukončení oznámení pro instance sady škálování virtuálních počítačů Azure
-Instance sady škálování můžou vyjádřit výslovný souhlas s přijetím oznámení o ukončení instance a nastavením předem definovaného časového limitu prodlevy na operaci ukončení. Oznámení ukončení se odesílá prostřednictvím služby Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md), která poskytuje oznámení a zpoždění ovlivněných operací, jako je třeba restartování a opětovné nasazení. Řešení přidá další událost – ukončit – do seznamu Scheduled Events a přidružená prodleva události ukončení bude záviset na limitu zpoždění zadaného uživateli ve svých konfiguracích modelu sady škálování.
+# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Ukončení oznámení pro instance škálovací sady virtuálních strojů Azure
+Instance škálovací sady se mohou přihlásit k přijímání oznámení o ukončení instance a nastavit předdefinovaný časový plán zpoždění pro operaci ukončení. Oznámení o ukončení se odesílá prostřednictvím služby Metadata Azure – [naplánované události](../virtual-machines/windows/scheduled-events.md), která poskytuje oznámení a zpoždění působivých operací, jako je restartování a opětovné nasazení. Řešení přidá další událost – Ukončit – do seznamu naplánované události a přidružené zpoždění události ukončení bude záviset na limitu zpoždění, jak je určeno uživateli v jejich konfigurace modelu škálovací sady.
 
-Po zaregistrování do funkce nemusí instance sady škálování čekat na vypršení platnosti zadaného časového limitu, než se instance odstraní. Po přijetí oznámení o ukončení se může instance kdykoli odstranit, a to až do vypršení časového limitu ukončení.
+Po registraci do funkce nemusí instance škálovací sady čekat, až vyprší zadaný časový limit, než bude instance odstraněna. Po obdržení oznámení ukončit instance může zvolit, které mají být odstraněny kdykoli před vypršením časového limitu ukončení.
 
-## <a name="enable-terminate-notifications"></a>Povolit ukončení oznámení
-Existuje několik způsobů, jak povolit koncová oznámení na instancích sady škálování, jak je popsáno v následujících příkladech.
+## <a name="enable-terminate-notifications"></a>Povolit ukončit oznámení
+Existuje několik způsobů, jak povolit oznámení o ukončení v instancích škálovací sady, jak je podrobně popsáno v následujících příkladech.
 
 ### <a name="azure-portal"></a>portál Azure
 
-Následující kroky umožňují ukončit oznámení při vytváření nové sady škálování. 
+Následující kroky umožňují ukončit oznámení při vytváření nové škálovací sady. 
 
-1. Přejít na **Virtual Machine Scale Sets**.
-1. Vyberte **+ Přidat** a vytvořte novou sadu škálování.
-1. Přejít na kartu **Správa** . 
-1. Vyhledejte část **ukončení instance** .
-1. V případě **oznámení o ukončení instance**vyberte **zapnuto**.
+1. Přejděte na **Škálovací sady virtuálních strojů**.
+1. Výběrem **možnosti + Přidat** vytvoříte novou škálovací sadu.
+1. Přejděte na kartu **Správa.** 
+1. Vyhledejte část **Ukončení instance.**
+1. V **případě oznámení o ukončení instance**vyberte možnost **Zapnuto**.
 1. Pro **zpoždění ukončení (minuty)** nastavte požadovaný výchozí časový limit.
-1. Až budete hotovi s vytvářením nové sady škálování, vyberte tlačítko **zkontrolovat + vytvořit** . 
+1. Po vytvoření nové škálovací sady vyberte **Tlačítko Revize + vytvořit.** 
 
 > [!NOTE]
-> Pro existující sady škálování v Azure Portal nemůžete nastavit oznámení o ukončení.
+> Nemůžete nastavit oznámení o ukončení na existujících škálovacích sadách na webu Azure Portal.
 
 ### <a name="rest-api"></a>REST API
 
-Následující příklad umožňuje ukončení oznámení na modelu sady škálování.
+Následující příklad umožňuje ukončit oznámení na modelu škálovací sady.
 
 ```
 PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version=2019-03-01`
@@ -61,17 +61,17 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 
 ```
 
-Výše uvedený blok Určuje prodlevu s časovým limitem 5 minut (jak je uvedeno v *PT5M*) pro všechny operace ukončení u všech instancí ve vaší sadě škálování. Pole *notBeforeTimeout* může ve formátu ISO 8601 trvat od 5 do 15 minut libovolnou hodnotu. Výchozí časový limit pro operaci ukončení můžete změnit úpravou vlastnosti *notBeforeTimeout* v části *terminateNotificationProfile* popsané výše.
+Výše uvedený blok určuje časové zpoždění 5 minut (jak je uvedeno *v PT5M)* pro všechny operace ukončení ve všech instancích ve vaší škálovací sadě. Pole *notBeforeTimeout* může trvat libovolnou hodnotu mezi 5 a 15 minut ve formátu ISO 8601. Výchozí časový limit pro operaci ukončení můžete změnit úpravou vlastnosti *notBeforeTimeout* v části *terminateNotificationProfile* popsané výše.
 
-Po povolení *scheduledEventsProfile* v modelu sady škálování a nastavení *notBeforeTimeout*aktualizujte jednotlivé instance na [nejnovější model](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , aby se změny projevily.
+Po povolení *scheduledEventsProfile* na modelu škálovací sady a nastavení *notBeforeTimeout*aktualizujte jednotlivé instance na [nejnovější model](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) tak, aby odrážely změny.
 
 > [!NOTE]
->Oznámení o ukončení u instancí sady škálování je možné povolit jenom pomocí rozhraní API verze 2019-03-01 a vyšší.
+>Ukončit oznámení v instancích škálovací sady lze povolit pouze pomocí rozhraní API verze 2019-03-01 a vyšší
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Při vytváření nové sady škálování můžete v sadě škálování povolit oznámení o ukončení pomocí rutiny [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) .
+Při vytváření nové škálovací sady můžete povolit oznámení o ukončení v škálovací sadě pomocí rutiny [New-AzVmssConfig.](/powershell/module/az.compute/new-azvmssconfig)
 
-Tento vzorový skript vás provede vytvořením sady škálování a přidružených prostředků pomocí konfiguračního souboru: [vytvořte úplnou sadu škálování virtuálního počítače](./scripts/powershell-sample-create-complete-scale-set.md). Můžete poskytnout oznámení o ukončení konfigurace přidáním parametrů *TerminateScheduledEvents* a *TerminateScheduledEventNotBeforeTimeoutInMinutes* do objektu konfigurace pro vytvoření sady škálování. Následující příklad povoluje funkci s časovým limitem zpoždění 10 minut.
+Tento ukázkový skript provede vytvoření škálovací sady a přidružených prostředků pomocí konfiguračního souboru: [Vytvořte kompletní škálovací sadu virtuálních počítačů](./scripts/powershell-sample-create-complete-scale-set.md). Můžete zadat konfigurovat oznámení o ukončení přidáním parametrů *TerminateScheduledEvents* a *TerminateScheduledEventNotBeforeTimeoutInMinutes* do objektu konfigurace pro vytvoření škálovací sady. Následující příklad umožňuje funkci s časovým časem zpoždění 10 minut.
 
 ```azurepowershell-interactive
 New-AzVmssConfig `
@@ -83,7 +83,7 @@ New-AzVmssConfig `
   -TerminateScheduledEventNotBeforeTimeoutInMinutes 10
 ```
 
-Pomocí rutiny [Update-AzVmss](/powershell/module/az.compute/update-azvmss) povolte koncová oznámení v existující sadě škálování.
+Pomocí rutiny [Aktualizace AzVmss](/powershell/module/az.compute/update-azvmss) povolte oznámení o ukončení v existující škálovací sadě.
 
 ```azurepowershell-interactive
 Update-AzVmss `
@@ -92,13 +92,13 @@ Update-AzVmss `
   -TerminateScheduledEvents $true
   -TerminateScheduledEventNotBeforeTimeoutInMinutes 15
 ```
-Výše uvedený příklad umožňuje ukončit oznámení v existující sadě škálování a nastavit časový limit 15 minut pro událost ukončení.
+Výše uvedený příklad umožňuje ukončit oznámení na existující škálovací sadu a nastaví časový čas 15 minut pro událost ukončení.
 
-Po povolení plánovaných událostí v modelu sady škálování a nastavení časového limitu aktualizujte jednotlivé instance na [nejnovější model](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , aby se změny projevily.
+Po povolení naplánovaných událostí v modelu škálovací sady a nastavení časového času aktualizujte jednotlivé instance na [nejnovější model](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) tak, aby odrážely změny.
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Následující příklad slouží k povolení oznámení ukončení při vytváření nové sady škálování.
+Následující příklad je pro povolení oznámení o ukončení při vytváření nové škálovací sady.
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -111,9 +111,9 @@ az vmss create \
   --terminate-notification-time 10
 ```
 
-Výše uvedený příklad vytvoří skupinu prostředků a pak vytvoří novou sadu škálování s povolenými oznámeními ukončení pro výchozí časový limit 10 minut.
+Výše uvedený příklad nejprve vytvoří skupinu prostředků a potom vytvoří novou škálovací sadu s povolenými oznámeními o ukončení pro 10minutový výchozí časový limit.
 
-Následující příklad slouží k povolení oznámení ukončení v existující sadě škálování.
+Následující příklad je pro povolení oznámení o ukončení v existující škálovací sadě.
 
 ```azurecli-interactive
 az vmss update \  
@@ -125,22 +125,22 @@ az vmss update \
 
 ## <a name="get-terminate-notifications"></a>Získat oznámení o ukončení
 
-Oznámení o ukončení se doručují prostřednictvím [Scheduled Events](../virtual-machines/windows/scheduled-events.md), což je Azure metadata Service. Služba Azure metadata Service zpřístupňuje informace o spouštění Virtual Machines pomocí koncového bodu REST přístupného v rámci virtuálního počítače. Tyto informace jsou k dispozici prostřednictvím IP adresy bez směrování, takže nejsou vystaveny mimo virtuální počítač.
+Ukončit oznámení se doručují prostřednictvím [naplánovaných událostí](../virtual-machines/windows/scheduled-events.md), což je služba metadat Azure. Služba Metadata Azure poskytuje informace o spuštění virtuálních počítačů pomocí koncového bodu REST přístupného z virtuálního počítače. Informace jsou k dispozici prostřednictvím nesměrovatelné IP tak, aby nebyly vystaveny mimo virtuální hod.
 
-Scheduled Events je povolená pro sadu škálování při prvním vytvoření žádosti o události. Můžete očekávat opožděnou odpověď v prvním volání až do dvou minut. Pravidelné dotazování koncového bodu pro detekci nadcházejících událostí údržby a stavu probíhajících aktivit údržby
+Naplánované události jsou povoleny pro sadu škálování při prvním vytvoření žádosti o události. Můžete očekávat opožděnou odpověď při prvním volání až dvě minuty. Pravidelně se dotazujte na koncový bod, abyste zjistili nadcházející události údržby a stav probíhajících aktivit údržby.
 
-Pokud instance sady škálování nevytváří požadavek na 24 hodin, je Scheduled Events pro sadu škálování zakázané.
+Plánované události jsou pro škálovací sadu zakázány, pokud instance škálovací sady nepožádají o 24 hodin.
 
-### <a name="endpoint-discovery"></a>Zjišťování koncových bodů
-Pro virtuální počítače s povolenými VIRTUÁLNÍmi sítěmi je Metadata Service k dispozici ze statické IP adresy, která není směrovatelný, 169.254.169.254.
+### <a name="endpoint-discovery"></a>Zjišťování koncového bodu
+Pro virtuální sítě povolené virtuální chod, služba metadat je k dispozici ze statické nesměrovatelné IP, 169.254.169.254.
 
-Úplný koncový bod pro nejnovější verzi Scheduled Events je:
+Úplný koncový bod pro nejnovější verzi naplánovaných událostí je:
 > 'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="query-response"></a>Odpověď na dotaz
-Odpověď obsahuje pole naplánovaných událostí. Prázdné pole znamená, že aktuálně nejsou naplánovány žádné události.
+Odpověď obsahuje pole naplánovaných událostí. Prázdné pole znamená, že jsou aktuálně naplánovány žádné události.
 
-V případě naplánovaných událostí obsahuje odpověď pole událostí. V případě události "ukončit" bude odpověď vypadat takto:
+V případě, že jsou naplánované události, odpověď obsahuje pole událostí. U události "Ukončit" bude odpověď vypadat takto:
 ```
 {
     "DocumentIncarnation": {IncarnationID},
@@ -156,14 +156,14 @@ V případě naplánovaných událostí obsahuje odpověď pole událostí. V p�
     ]
 }
 ```
-*DocumentIncarnation* je ETag a poskytuje snadný způsob, jak zkontrolovat, jestli se od posledního dotazu změnila datová část událostí.
+*DocumentInkarnace* je eTag a poskytuje snadný způsob, jak zkontrolovat, pokud události datové části se změnila od posledního dotazu.
 
-Další informace o jednotlivých polích výše naleznete v dokumentaci Scheduled Events pro [systémy Windows](../virtual-machines/windows/scheduled-events.md#event-properties) a [Linux](../virtual-machines/linux/scheduled-events.md#event-properties).
+Další informace o jednotlivých polích výše naleznete v dokumentaci k naplánovaným událostem pro [Windows](../virtual-machines/windows/scheduled-events.md#event-properties) a [Linux](../virtual-machines/linux/scheduled-events.md#event-properties).
 
-### <a name="respond-to-events"></a>Reakce na události
-Jakmile se seznámíte s nadcházející událostí a dokončíte logiku pro řádné vypnutí, můžete tuto událost schválit voláním POST služby metadat pomocí ID události. Volání POST indikuje službě Azure, že může pokračovat v odstranění virtuálního počítače.
+### <a name="respond-to-events"></a>Reagovat na události
+Jakmile se dozvíte o nadcházející události a dokončíte svou logiku pro řádné vypnutí, můžete schválit nevyřízené události tím, že post volání služby metadat s EventId. Volání POST označuje Azure, že může pokračovat s odstraněním virtuálního počítače.
 
-Níže je v textu požadavku POST očekáván kód JSON. Požadavek by měl obsahovat seznam StartRequests. Jednotlivé StartRequest obsahují ID události pro událost, kterou chcete urychlit:
+Níže je json očekává v těle požadavku POST. Požadavek by měl obsahovat seznam StartRequests. Každý StartRequest obsahuje EventId pro událost, kterou chcete urychlit:
 ```
 {
     "StartRequests" : [
@@ -174,28 +174,28 @@ Níže je v textu požadavku POST očekáván kód JSON. Požadavek by měl obsa
 }
 ```
 
-Zajistěte, aby každý virtuální počítač v sadě škálování schválil jenom ID události relevantní pouze pro tento virtuální počítač. VIRTUÁLNÍ počítač může získat vlastní název virtuálního počítače [prostřednictvím metadat instance](virtual-machine-scale-sets-instance-ids.md#instance-metadata-vm-name). Tento název má podobu "{Scale-set-Name} _ {instance-ID}" a zobrazí se v části "prostředky" odpovědi na dotaz popsané výše.
+Ujistěte se, že každý virtuální virtuální mit ve škálovací sadě schvaluje jenom EventID relevantní pro tento virtuální virtuální ms. Virtuální modul může získat svůj vlastní název virtuálního virtuálního virtuálního serveru [prostřednictvím metadat instance](virtual-machine-scale-sets-instance-ids.md#instance-metadata-vm-name). Tento název má podobu "{scale-set-name}_{instance-id}" a zobrazí se v části Zdroje popsané výše.
 
-Můžete se také podívat na ukázky skriptů pro dotazování a reakci na události pomocí [PowerShellu](../virtual-machines/windows/scheduled-events.md#powershell-sample) a [Pythonu](../virtual-machines/linux/scheduled-events.md#python-sample).
+Můžete také odkazovat na ukázky skriptů pro dotazování a odpovídání na události pomocí [PowerShellu](../virtual-machines/windows/scheduled-events.md#powershell-sample) a [Pythonu](../virtual-machines/linux/scheduled-events.md#python-sample).
 
 ## <a name="tips-and-best-practices"></a>Tipy a osvědčené postupy
--   Ukončit oznámení pouze na operacích DELETE – všechny operace odstranění (ruční odstranění nebo škálování iniciované automaticky v měřítku) vygenerují události ukončení, pokud je vaše sada škálování zapnutá *scheduledEventsProfile* . Jiné operace, jako je restartování, obnovení bitové kopie, opětovné nasazení a zastavení nebo zrušení přidělení, negenerují události ukončení. Pro virtuální počítače s nízkou prioritou nejde povolit oznámení ukončení.
--   Žádné povinné čekání na časový limit – operaci ukončení můžete spustit kdykoli po přijetí události a vypršení doby *NotBefore* události.
--   Povinné odstranění v časovém limitu – neexistují žádné možnosti rozšíření hodnoty časového limitu po vygenerování události. Po vypršení časového limitu se zpracuje událost ukončení, která čeká na dokončení, a virtuální počítač se odstraní.
--   Upravitelná hodnota časového limitu – hodnotu časového limitu můžete změnit kdykoli před odstraněním instance, úpravou vlastnosti *notBeforeTimeout* v modelu sady škálování a aktualizací instancí virtuálních počítačů na nejnovější model.
--   Schválit všechna nevyřízená odstranění – Pokud dojde k neschválenému odstranění na VM_1, která není schválená a jste schválili další událost ukončení na VM_2, VM_2 se neodstraní, dokud není schválená událost ukončení pro VM_1 nebo uplynul časový limit. Po schválení události ukončení pro VM_1 se odstraní oba VM_1 a VM_2.
--   Schválení všech současných odstranění – rozšířením výše uvedeného příkladu, pokud VM_1 a VM_2 mají stejný čas *NotBefore* , musí být obě události ukončení schválené nebo se žádný virtuální počítač neodstranil před vypršením časového limitu.
+-   Ukončit oznámení pouze na 'odstranit' operace – Všechny operace odstranění (ruční odstranění nebo automatické škálování iniciované scale-in) bude generovat Ukončit události, pokud vaše škálovací sada má *scheduledEventsProfile* povoleno. Jiné operace, jako je restartování, reimage, znovu nasadit a stop/navrátit negenerují Terminate události. Ukončit oznámení nelze povolit pro virtuální chody s nízkou prioritou.
+-   Žádné povinné čekání na časový limit – operaci ukončení můžete spustit kdykoli po přijetí události a před vypršením časového limitu *NotBefore* události.
+-   Povinné odstranění v časovém odnož – neexistuje žádná možnost rozšíření hodnoty časového času po vygenerování události. Po vypršení časového limitu se zpracuje událost čekající na ukončení a virtuální ho se odstraní.
+-   Modifikovatelné timeout hodnota – můžete upravit hodnotu časového limitu kdykoli před odstraněním instance úpravou *notBeforeTimeout* vlastnost na škálovací sadu modelu a aktualizace instancí virtuálního počítače na nejnovější model.
+-   Schválit všechny čekající odstranění – Pokud je v VM_1 čekající odstranění, které není schváleno, a schválili jste jinou událost ukončení v VM_2, VM_2 se neodstraní, dokud nebude událost ukončení pro VM_1 schválena nebo dokud neuplyne časový limit. Jakmile schválíte událost ukončení pro VM_1, budou odstraněny VM_1 i VM_2.
+-   Schválit všechny souběžné odstranění – Rozšíření výše uvedeného příkladu, pokud VM_1 a VM_2 mají stejný *NotBefore* čas, pak obě události ukončení musí být schváleny nebo ani virtuální hod je odstraněn před vypršením časového limitu.
 
 ## <a name="troubleshoot"></a>Řešení potíží
-### <a name="failure-to-enable-scheduledeventsprofile"></a>Nepovedlo se povolit scheduledEventsProfile.
-Pokud se zobrazí chyba "důvodu chybného požadavku" s chybovou zprávou "nebylo možné najít člena" scheduledEventsProfile "u objektu typu" VirtualMachineProfile ", ověřte verzi rozhraní API použitou pro operace sady škálování. Je vyžadováno rozhraní COMPUTE API verze **2019-03-01** nebo vyšší. 
+### <a name="failure-to-enable-scheduledeventsprofile"></a>Nepodařilo se povolit scheduledEventsProfile.
+Pokud se zobrazí chyba BadRequest s chybovou zprávou "Nelze najít člena 'scheduledEventsProfile' na objekt typu VirtualMachineProfile", zkontrolujte verzi rozhraní API použitou pro operace škálovací sady. Je vyžadováno rozhraní API pro výpočetní prostředí **2019-03-01** nebo vyšší. 
 
-### <a name="failure-to-get-terminate-events"></a>Nepovedlo se získat události ukončení.
-Pokud nezískáváte žádné události **ukončení** prostřednictvím Scheduled Events, zkontrolujte verzi rozhraní API, která se používá pro získání událostí. Pro události ukončení se vyžaduje Metadata Service rozhraní API verze **2019-01-01** nebo vyšší.
+### <a name="failure-to-get-terminate-events"></a>Nepodařilo se získat ukončit události
+Pokud nezískáváte žádné **ukončit** události prostřednictvím naplánovaných událostí, zkontrolujte verzi rozhraní API použitou pro získání událostí. Metadata Service API verze **2019-01-01** nebo vyšší je vyžadována pro terminate události.
 >'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
-### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>Získání události ukončení s nesprávným NotBefore časem  
-Po povolení *scheduledEventsProfile* v modelu sady škálování a nastavení *notBeforeTimeout*aktualizujte jednotlivé instance na [nejnovější model](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , aby se změny projevily.
+### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>Získání ukončit událost s nesprávnou NotBefore čas  
+Po povolení *scheduledEventsProfile* na modelu škálovací sady a nastavení *notBeforeTimeout*aktualizujte jednotlivé instance na [nejnovější model](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) tak, aby odrážely změny.
 
 ## <a name="next-steps"></a>Další kroky
-Naučte se, jak [nasadit vaši aplikaci do služby](virtual-machine-scale-sets-deploy-app.md) Virtual Machine Scale Sets.
+Zjistěte, jak [nasadit aplikaci](virtual-machine-scale-sets-deploy-app.md) na škálovací sady virtuálních strojů.

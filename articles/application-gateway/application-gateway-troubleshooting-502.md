@@ -1,6 +1,6 @@
 ---
-title: Řešení chyb chybných bran – Azure Application Gateway
-description: 'Přečtěte si, jak řešit potíže s Application Gatewaym serverem: 502 – webový server obdržel neplatnou odpověď v době, kdy funguje jako brána nebo proxy server.'
+title: Poradce při potížích s chybami brány – Azure Application Gateway
+description: 'Zjistěte, jak řešit potíže s chybou serveru aplikační brány: 502 – webový server obdržel neplatnou odpověď při působení jako brána nebo proxy server.'
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,59 +8,59 @@ ms.topic: article
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 17bed17b536f6e88fc821fd83e09a1d6ea218bc3
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74130485"
 ---
-# <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Řešení chyb chybných bran v Application Gateway
+# <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Řešení chyb Chybná brána ve službě Application Gateway
 
-Naučte se řešit chybné chyby brány (502) přijaté při použití Azure Application Gateway.
+Zjistěte, jak řešit chybné chyby brány (502), které se při používání brány Aplikace Azure dostaly.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
 
-Po nakonfigurování služby Application Gateway je jednou z chyb, které se mohou zobrazit, chybová zpráva "Chyba serveru: 502-webový server obdržel neplatnou odpověď v době, kdy funguje jako brána nebo proxy server". K této chybě může dojít z následujících hlavních důvodů:
+Po konfiguraci aplikační brány je jednou z chyb, které se mohou zobrazit, "Chyba serveru: 502 - webový server obdržel neplatnou odpověď při působení jako brána nebo proxy server". K této chybě může dojít z následujících hlavních důvodů:
 
-* NSG, UDR nebo vlastní DNS blokují přístup do členů fondu back-end.
-* Back-endové virtuální počítače nebo instance sady škálování virtuálních počítačů nereagují na výchozí sondu stavu.
+* NSG, UDR nebo vlastní DNS blokuje přístup ke členům back-endového fondu.
+* Back-endové virtuální počítače nebo instance škálovací sady virtuálních strojů nereagují na výchozí sondu stavu.
 * Neplatná nebo nesprávná konfigurace vlastních sond stavu.
-* [Fond back-end služby Azure Application Gateway není nakonfigurovaný ani prázdný](#empty-backendaddresspool).
-* Žádný z virtuálních počítačů ani instancí v rámci [sady škálování virtuálních počítačů](#unhealthy-instances-in-backendaddresspool)není v pořádku.
-* [Požadavek na vypršení časového limitu nebo problémy s připojením](#request-time-out) pro požadavky uživatelů
+* Back-endový fond Azure Application Gateway [není nakonfigurovaný ani prázdný](#empty-backendaddresspool).
+* Žádný z virtuálních počítače nebo instancí ve [škálovací sadě virtuálních strojů není v pořádku](#unhealthy-instances-in-backendaddresspool).
+* [Vyžádat si časový čas nebo problémy](#request-time-out) s připojením s požadavky uživatelů.
 
-## <a name="network-security-group-user-defined-route-or-custom-dns-issue"></a>Skupina zabezpečení sítě, trasa definovaná uživatelem nebo vlastní problém DNS
+## <a name="network-security-group-user-defined-route-or-custom-dns-issue"></a>Skupina zabezpečení sítě, uživatelem definovaná trasa nebo vlastní problém dns
 
 ### <a name="cause"></a>Příčina
 
-Pokud se přístup k back-endu zablokoval kvůli NSG, UDR nebo vlastnímu DNS, instance služby Application Gateway se nedostanou do back-endu fondu. Tím dojde k selhání testu, což vede k chybám 502.
+Pokud je přístup k back-endu blokován z důvodu nsg, UDR nebo vlastní DNS, instance brány aplikace se nemohou dostat do back-endového fondu. To způsobí selhání sondy, výsledkem 502 chyb.
 
-NSG/UDR může být přítomná v podsíti služby Application Gateway nebo v podsíti, ve které jsou nasazené virtuální počítače aplikace.
+NSG/UDR může být k dispozici buď v podsíti aplikační brány nebo v podsíti, kde jsou nasazeny virtuální počítače aplikace.
 
-Podobně může přítomnost vlastního DNS ve virtuální síti taky způsobovat problémy. Plně kvalifikovaný název domény, který se používá pro členy fondu back-end, se nemusí správně přeložit uživatelem konfigurovaným serverem DNS pro virtuální síť.
+Podobně přítomnost vlastní DNS ve virtuální síti může také způsobit problémy. FQDN používaný pro členy back-endového fondu nemusí správně vyřešit uživatelem nakonfigurovaný server DNS pro virtuální síť.
 
 ### <a name="solution"></a>Řešení
 
-Pomocí následujících kroků Ověřte konfiguraci NSG, UDR a DNS:
+Ověřte konfiguraci nsg, UDR a DNS pomocí následujících kroků:
 
-* Ověřte skupin zabezpečení sítě přidružené k podsíti aplikační brány. Ujistěte se, že komunikace do back-endu není blokovaná.
-* Ověřte UDR přidružené k podsíti aplikační brány. Ujistěte se, že UDR nesměruje provoz mimo podsíť back-endu. Můžete třeba vyhledat směrování na síťová virtuální zařízení nebo výchozí trasy inzerované do podsítě aplikační brány přes ExpressRoute/VPN.
+* Zkontrolujte skupiny nsg přidružené k podsíti aplikační brány. Ujistěte se, že komunikace s back-endem není blokována.
+* Zkontrolujte UDR přidružené k podsíti aplikační brány. Ujistěte se, že UDR nesměruje provoz mimo podsíť back-endu. Můžete například zkontrolovat směrování do síťových virtuálních zařízení nebo výchozích tras inzerovaných do podsítě aplikační brány prostřednictvím služby ExpressRoute/VPN.
 
 ```azurepowershell
 $vnet = Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName
 Get-AzVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
 ```
 
-* Podívejte se na virtuální počítač back-endu efektivní NSG a Route
+* Zkontrolujte efektivní nsg a trasu pomocí back-endového virtuálního mísy
 
 ```azurepowershell
 Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
 Get-AzEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
 ```
 
-* Ověřte přítomnost vlastního DNS ve virtuální síti. DNS se dá zkontrolovat tak, že ve výstupu prohlížíte podrobnosti vlastností virtuální sítě.
+* Zkontrolujte přítomnost vlastních DNS ve virtuální síti. DNS lze zkontrolovat podle podrobností o vlastnostech virtuální sítě ve výstupu.
 
 ```json
 Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName 
@@ -70,91 +70,91 @@ DhcpOptions            : {
                            ]
                          }
 ```
-Pokud je k dispozici, zajistěte, aby server DNS mohl správně přeložit plně kvalifikovaný název domény člena back-end fondu.
+Pokud je k dispozici, ujistěte se, že server DNS může správně vyřešit fqdn člena back-endového fondu.
 
 ## <a name="problems-with-default-health-probe"></a>Problémy s výchozí sondou stavu
 
 ### <a name="cause"></a>Příčina
 
-chyby 502 můžou být taky časté indikátory, že výchozí sonda stavu nemůže mít přístup k back-endovému virtuálnímu počítači.
+502 chyby mohou být také časté ukazatele, že výchozí sonda stavu nemůže dosáhnout back-end virtuálních připojení.
 
-Při zřizování instance služby Application Gateway automaticky nakonfiguruje výchozí sondu stavu pro každý BackendAddressPool pomocí vlastností BackendHttpSetting. K nastavení tohoto testu není nutný žádný vstup uživatele. Konkrétně je-li nakonfigurováno pravidlo vyrovnávání zatížení, je vytvořeno přidružení mezi BackendHttpSetting a BackendAddressPool. Pro každé z těchto přidružení je nakonfigurován výchozí test a brána Application Gateway spustí pravidelné připojení kontroly stavu ke každé instanci v BackendAddressPool na portu zadaném v elementu BackendHttpSetting. 
+Když je zřízena instance aplikační brány, automaticky nakonfiguruje výchozí sondu stavu pro každý BackendAddressPool pomocí vlastností BackendHttpSetting. K nastavení této sondy není vyžadován žádný vstup uživatele. Konkrétně při konfiguraci pravidla vyrovnávání zatížení je provedeno přidružení mezi BackendHttpSetting a BackendAddressPool. Výchozí sonda je nakonfigurována pro každé z těchto přidružení a aplikační brána spustí pravidelné připojení kontroly stavu ke každé instanci v backendaddresspoolu na portu určeném v elementu BackendHttpSetting. 
 
-Následující tabulka uvádí hodnoty spojené s výchozím testem stavu:
+V následující tabulce jsou uvedeny hodnoty přidružené k výchozí sondě stavu:
 
 | Vlastnost sondy | Hodnota | Popis |
 | --- | --- | --- |
-| Adresa URL testu paměti |`http://127.0.0.1/` |Cesta URL |
-| Interval |30 |Interval testu paměti v sekundách |
-| Časový limit |30 |Časový limit testu v sekundách |
-| Prahová hodnota špatného stavu |3 |Počet opakování testu Back-end Server je označený po po sobě jdoucí počet po sobě jdoucích selhání testu dosáhne prahové hodnoty, která není v pořádku. |
+| Adresa URL sondy |`http://127.0.0.1/` |Cesta url |
+| Interval |30 |Interval sondy v sekundách |
+| Časový limit |30 |Časový rozsah sondy v sekundách |
+| Prahová hodnota pro poškozený stav |3 |Počet opakování sondy. Server back-end je označen dolů po sobě jdoucích počet selhání sondy dosáhne prahovou hodnotu není v pořádku. |
 
 ### <a name="solution"></a>Řešení
 
-* Ujistěte se, že je nakonfigurovaná výchozí lokalita a naslouchá na adrese 127.0.0.1.
-* Pokud BackendHttpSetting určuje jiný port než 80, měla by být výchozí lokalita nakonfigurována tak, aby naslouchala na tomto portu.
-* Volání `http://127.0.0.1:port` by mělo vracet kód výsledku HTTP 200. To by mělo být vráceno v průběhu 30 sekund časového limitu.
-* Ujistěte se, že je port nakonfigurovaný a že nejsou k dispozici žádná pravidla brány firewall nebo skupiny zabezpečení sítě Azure, které blokují příchozí nebo odchozí provoz na konfigurovaném portu.
-* Pokud se virtuální počítače Azure Classic nebo cloudová služba používají s plně kvalifikovaným názvem domény nebo veřejnou IP adresou, ujistěte se, že je otevřený odpovídající [koncový bod](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) .
-* Pokud je virtuální počítač nakonfigurovaný přes Azure Resource Manager a je mimo virtuální síť, ve které je nasazená Aplikační brána, musí být nakonfigurovaná [Skupina zabezpečení sítě](../virtual-network/security-overview.md) , aby se povolil přístup na požadovaném portu.
+* Ujistěte se, že je nakonfigurován výchozí web a naslouchá na 127.0.0.1.
+* Pokud BackendHttpSetting určuje jiný port než 80, výchozí web by měl být nakonfigurován tak, aby naslouchal na tomto portu.
+* Volání `http://127.0.0.1:port` by měl vrátit kód výsledků PROTOKOLU HTTP 200. To by měla být vrácena v rámci časového období 30 sekund.
+* Ujistěte se, že nakonfigurovaný port je otevřený a že neexistují žádná pravidla brány firewall nebo skupiny zabezpečení sítě Azure, které blokují příchozí nebo odchozí provoz na nakonfigurovaném portu.
+* Pokud se klasické virtuální počítače Azure nebo cloudová služba používají s vícenežečným právem nebo veřejnou IP adresou, ujistěte se, že se otevře odpovídající [koncový bod.](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
+* Pokud je virtuální počítač nakonfigurovaný přes Správce prostředků Azure a je mimo virtuální síť, kde se nasadí aplikační brána, musí být nakonfigurovaná [skupina zabezpečení sítě,](../virtual-network/security-overview.md) která umožňuje přístup na požadovaný port.
 
-## <a name="problems-with-custom-health-probe"></a>Problémy s vlastním sondou stavu
+## <a name="problems-with-custom-health-probe"></a>Problémy s vlastní zdravotní sondou
 
 ### <a name="cause"></a>Příčina
 
-Vlastní sondy stavu umožňují větší flexibilitu při výchozím chování při zjišťování. Pokud používáte vlastní testy, můžete nakonfigurovat interval sondy, adresu URL, cestu k otestování a počet neúspěšných odpovědí, které se mají přijmout před označením instance back-end fondu jako chybné.
+Vlastní sondy stavu umožňují další flexibilitu výchozího chování zjišťování. Při použití vlastních sond můžete nakonfigurovat interval sondy, adresu URL, cestu k testování a počet neúspěšných odpovědí, které chcete přijmout před označením instance back-endového fondu jako nefunkční.
 
-Jsou přidány následující další vlastnosti:
+Jsou přidány další další vlastnosti:
 
 | Vlastnost sondy | Popis |
 | --- | --- |
-| Název |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
-| Protocol (Protokol) |Protokol použitý k odeslání testu. Sonda používá protokol definovaný v nastavení back-endu HTTP. |
-| Hostitel |Název hostitele, který má odeslat test. Dá se použít jenom v případě, že je na aplikační bráně nakonfigurovaný vícenásobný Web. To se liší od názvu hostitele virtuálního počítače. |
-| Cesta |Relativní cesta sondy. Platná cesta začíná znakem/. Sonda se pošle do \<protokolu\>://\<hostitel\>:\<port\>\<cesta\> |
-| Interval |Interval testu paměti v sekundách. Toto je časový interval mezi dvěma po sobě jdoucími sondami. |
-| Časový limit |Časový limit testu v sekundách. Pokud v tomto časovém limitu neobdrží platná odpověď, sonda je označena jako neúspěšná. |
-| Prahová hodnota špatného stavu |Počet opakování testu Back-end Server je označený po po sobě jdoucí počet po sobě jdoucích selhání testu dosáhne prahové hodnoty, která není v pořádku. |
+| Name (Název) |Název sondy. Tento název se používá k odkazování na sondu v nastavení http back-endu. |
+| Protocol (Protokol) |Protokol použitý k odeslání sondy. Sonda používá protokol definovaný v nastavení http back-endu. |
+| Hostitel |Název hostitele pro odeslání sondy. Platí pouze v případě, že je v aplikační bráně nakonfigurováno více lokalit. To se liší od názvu hostitele virtuálního serveru. |
+| Cesta |Relativní cesta sondy. Platná cesta začíná od '/'. Sonda je odeslána \<\>do\<\>protokolu\<\>\<:// host : cesta k portu\> |
+| Interval |Interval sondy v sekundách. Toto je časový interval mezi dvěma po sobě jdoucími sondami. |
+| Časový limit |Časový čas sondy v sekundách. Pokud není přijata platná odpověď v tomto časovém období, sonda je označena jako neúspěšná. |
+| Prahová hodnota pro poškozený stav |Počet opakování sondy. Server back-end je označen dolů po sobě jdoucích počet selhání sondy dosáhne prahovou hodnotu není v pořádku. |
 
 ### <a name="solution"></a>Řešení
 
-Ověřte, jestli je vlastní sonda stavu správně nakonfigurovaná jako předchozí tabulka. Kromě předchozích kroků pro řešení potíží také zajistěte následující:
+Ověřte, zda je sonda vlastního stavu správně nakonfigurována jako předchozí tabulka. Kromě předchozích kroků řešení potíží také zajistěte následující:
 
-* Ujistěte se, že je test správně zadaný podle [Průvodce](application-gateway-create-probe-ps.md).
-* Pokud je Aplikační brána nakonfigurovaná pro jednu lokalitu, ve výchozím nastavení by měl být název hostitele zadaný jako `127.0.0.1`, pokud není ve vlastním testu nakonfigurovaný jinak.
-* Ujistěte se, že volání http://\<hostitel\>:\<port\>\<cesta\> vrátí kód výsledku HTTP 200.
-* Zajistěte, aby interval, časový limit a UnhealtyThreshold byly v přijatelných oblastech.
-* Pokud používáte test HTTPS, ujistěte se, že back-end server nevyžaduje SNI konfigurací záložního certifikátu na back-end serveru.
+* Ujistěte se, že sonda je správně zadána podle [vodítka](application-gateway-create-probe-ps.md).
+* Pokud je aplikační brána nakonfigurována pro jednu lokalitu, měl by být ve výchozím nastavení název hostitele zadán jako `127.0.0.1`, pokud není ve vlastní sondě nakonfigurováno jinak.
+* Ujistěte se,\<že\>\<volání\>\<\> http:// hostitele : cesta k portu vrátí kód výsledků PROTOKOLU HTTP 200.
+* Ujistěte se, že Interval, Časový limit a UnhealtyThreshold jsou v přijatelných rozsahech.
+* Pokud používáte sondu HTTPS, ujistěte se, že back-endový server nevyžaduje SNI konfigurací záložního certifikátu na samotném back-endovém serveru.
 
-## <a name="request-time-out"></a>Časový limit požadavku
+## <a name="request-time-out"></a>Požadavek na časový opovce
 
 ### <a name="cause"></a>Příčina
 
-Po přijetí požadavku uživatele použije Aplikační brána konfigurovaná pravidla pro požadavek a směruje je do instance back-end fondu. Čeká na nastavitelný časový interval pro odpověď z back-endové instance. Ve výchozím nastavení je tento interval **20** sekund. Pokud Aplikační brána neobdrží odpověď z back-endové aplikace v tomto intervalu, požadavek uživatele získá chybu 502.
+Když je přijat požadavek uživatele, aplikační brána použije nakonfigurovaná pravidla pro požadavek a směruje ji do instance fondu back-end. Čeká na konfigurovatelný časový interval pro odpověď z instance back-end. Ve výchozím nastavení je tento interval **20** sekund. Pokud brána aplikace neobdrží odpověď z back-endové aplikace v tomto intervalu, požadavek uživatele získá chybu 502.
 
 ### <a name="solution"></a>Řešení
 
-Application Gateway vám umožní nakonfigurovat toto nastavení přes BackendHttpSetting, která se pak dá použít u různých fondů. Různé fondy back-endu mohou mít různé BackendHttpSetting a nakonfigurován jiný časový limit požadavku.
+Aplikační brána umožňuje konfigurovat toto nastavení pomocí BackendHttpSetting, které lze pak použít pro různé fondy. Různé back-endové fondy mohou mít různé BackendHttpSetting a jiný časový čas požadavku nakonfigurován.
 
 ```azurepowershell
     New-AzApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
 ```
 
-## <a name="empty-backendaddresspool"></a>Prázdné BackendAddressPool
+## <a name="empty-backendaddresspool"></a>Vyprázdnit fond backendaddresspool
 
 ### <a name="cause"></a>Příčina
 
-Pokud Aplikační brána nemá žádné virtuální počítače nebo sadu škálování virtuálních počítačů nakonfigurované ve fondu back-end adres, nemůže směrovat žádnou žádost o zákazníky a pošle chybnou bránu.
+Pokud brána aplikace nemá žádné virtuální počítače nebo škálovací sadu virtuálních strojů nakonfigurovanou ve fondu adres back-end, nemůže směrovat žádný požadavek zákazníka a odešle chybu chybné brány.
 
 ### <a name="solution"></a>Řešení
 
-Ujistěte se, že fond adres back-endu není prázdný. To lze provést prostřednictvím PowerShellu, CLI nebo portálu.
+Ujistěte se, že fond adres back-end není prázdný. To lze provést prostřednictvím prostředí PowerShell, CLI nebo portálu.
 
 ```azurepowershell
 Get-AzApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
 ```
 
-Výstup z předchozí rutiny by měl obsahovat neprázdný fond back-end adres. Následující příklad ukazuje dva vrácené fondy, které jsou nakonfigurovány s plně kvalifikovaným názvem domény nebo IP adresami pro virtuální počítače back-endu. Stav zřizování BackendAddressPool musí být úspěšné.
+Výstup z předchozí rutiny by měl obsahovat neprázdný fond adres back-end. Následující příklad ukazuje dva vrácené fondy, které jsou nakonfigurovány s vícenežvištěm nebo IP adresami pro back-endové virtuální počítače. Stav zřizování backendaddresspool musí být "Úspěšné".
 
 BackendAddressPoolsText:
 
@@ -182,15 +182,15 @@ BackendAddressPoolsText:
 }]
 ```
 
-## <a name="unhealthy-instances-in-backendaddresspool"></a>Poškozené instance v BackendAddressPool
+## <a name="unhealthy-instances-in-backendaddresspool"></a>Instance Není v pořádku v backendaddresspoolu
 
 ### <a name="cause"></a>Příčina
 
-Pokud všechny instance BackendAddressPool nejsou v pořádku, pak Aplikační brána nemá žádný back-end ke směrování požadavku uživatele na. Může to také být případ, kdy jsou instance back-endu v pořádku, ale nemáte nasazenou požadovanou aplikaci.
+Pokud všechny instance BackendAddressPool nejsou v pořádku, pak brána aplikace nemá žádný back-end pro směrování požadavku uživatele. To může být také případ, kdy back-end instance jsou v pořádku, ale nemají požadované aplikace nasazené.
 
 ### <a name="solution"></a>Řešení
 
-Ujistěte se, že jsou instance v pořádku a že je aplikace správně nakonfigurovaná. Ověřte, jestli back-endové instance můžou reagovat na příkazy příkazového testu z jiného virtuálního počítače ve stejné virtuální síti. Pokud je nakonfigurovaná s veřejným koncovým bodem, ujistěte se, že požadavek na webovou aplikaci je v prohlížeči.
+Ujistěte se, že instance jsou v pořádku a aplikace je správně nakonfigurována. Zkontrolujte, jestli back-endové instance můžou reagovat na příkaz ping z jiného virtuálního virtuálního serveru ve stejné virtuální síti. Pokud je nakonfigurován s veřejným koncovým bodem, ujistěte se, že požadavek prohlížeče na webovou aplikaci je opravitelný.
 
 ## <a name="next-steps"></a>Další kroky
 

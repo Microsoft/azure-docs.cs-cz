@@ -1,6 +1,6 @@
 ---
 title: Časová pásma spravované instance
-description: Další informace o konkrétních časových pásmech Azure SQL Database Managed instance
+description: Informace o specifikách časového pásma spravované instance Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.custom: ''
@@ -11,29 +11,29 @@ ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 09/03/2019
 ms.openlocfilehash: 0dbed3db8e106b9bfe1b48ff2b9bc52840fc4c3a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79256091"
 ---
-# <a name="time-zones-in-azure-sql-database-managed-instance"></a>Časová pásma ve Azure SQL Database Managed instance
+# <a name="time-zones-in-azure-sql-database-managed-instance"></a>Časová pásma ve spravované instanci Azure SQL Database
 
-Koordinovaný světový čas (UTC) je doporučeným časovým pásmem pro datovou vrstvu cloudových řešení. Azure SQL Database spravovaná instance nabízí také možnost výběru časových pásem pro splnění potřeb stávajících aplikací, které ukládají hodnoty data a času, a volání funkcí data a času s implicitním kontextem konkrétního časového pásma.
+Koordinovaný světový čas (UTC) je doporučené časové pásmo pro datovou vrstvu cloudových řešení. Azure SQL Database Managed Instance také nabízí výběr časových pásem, aby vyhovovaly potřebám existujících aplikací, které ukládají hodnoty data a času a funkce data a času volání s implicitním kontextem určitého časového pásma.
 
-Funkce T-SQL, jako je [GETDATE ()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) nebo CLR Code, sledují časové pásmo nastavené na úrovni instance. Úlohy agenta SQL Server sledují také plány podle časového pásma instance.
+Funkce T-SQL jako [GETDATE()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) nebo KÓD CLR sledují časové pásmo nastavené na úrovni instance. Úlohy agenta serveru SQL Server také sledovat plány podle časového pásma instance.
 
   >[!NOTE]
-  > Managed instance je jediná možnost nasazení Azure SQL Database, která podporuje nastavení časového pásma. Ostatní možnosti nasazení vždy dodržují čas UTC.
-Použijte v [časovém pásmu](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql) v jednoduchých a sdružených DATABÁZÍch SQL, pokud potřebujete interpretovat informace o datu a čase v časovém pásmu UTC.
+  > Spravovaná instance je jedinou možností nasazení azure sql database, která podporuje nastavení časového pásma. Další možnosti nasazení vždy postupujte podle UTC.
+Pokud potřebujete interpretovat informace o datu a čase v časovém pásmu mimo UTC, použijte [v časovém pásmu](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql) v jednoasložkových databázích SQL.
 
 ## <a name="supported-time-zones"></a>Podporovaná časová pásma
 
-Sada podporovaných časových pásem je děděna ze základního operačního systému spravované instance. Pravidelně se aktualizuje a získá nové definice časových pásem a projeví se změny stávajících.
+Sada podporovaných časových pásem je zděděna z podkladového operačního systému spravované instance. Je pravidelně aktualizován, aby získal nové definice časových pásem a odrážel změny stávajících.
 
-[Zásady letního času a časového pásma pro letní](https://aka.ms/time) čas garantuje historickou přesnost od 2010 do výše.
+[Zásady změny letního času a časového pásma](https://aka.ms/time) zaručují historickou přesnost od roku 2010.
 
-Seznam s názvy podporovaných časových pásem je zveřejněn prostřednictvím zobrazení [Sys. time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) System.
+Seznam s názvy podporovaných časových pásem je vystaven prostřednictvím systémového zobrazení [sys.time_zone_info.](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
 
 ## <a name="set-a-time-zone"></a>Nastavení časového pásma
 
@@ -42,15 +42,15 @@ Seznam s názvy podporovaných časových pásem je zveřejněn prostřednictví
   >[!NOTE]
   > Časové pásmo existující spravované instance nelze změnit.
 
-### <a name="set-the-time-zone-through-the-azure-portal"></a>Nastavení časového pásma pomocí Azure Portal
+### <a name="set-the-time-zone-through-the-azure-portal"></a>Nastavení časového pásma prostřednictvím portálu Azure
 
-Když zadáte parametry nové instance, vyberte časové pásmo ze seznamu podporovaných časových pásem.
+Když zadáte parametry pro novou instanci, vyberte časové pásmo ze seznamu podporovaných časových pásem.
   
-![Nastavení časového pásma během vytváření instance](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
+![Nastavení časového pásma při vytváření instance](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
-V [šabloně správce prostředků](https://aka.ms/sql-mi-create-arm-posh) zadejte vlastnost timezoneId, která nastaví časové pásmo během vytváření instance.
+Zadejte vlastnost timezoneId v [šabloně Správce prostředků,](https://aka.ms/sql-mi-create-arm-posh) chcete-li nastavit časové pásmo během vytváření instancí.
 
 ```json
 "properties": {
@@ -67,181 +67,181 @@ V [šabloně správce prostředků](https://aka.ms/sql-mi-create-arm-posh) zadej
 
 ```
 
-Seznam podporovaných hodnot pro vlastnost timezoneId najdete na konci tohoto článku.
+Seznam podporovaných hodnot pro vlastnost timezoneId je na konci tohoto článku.
 
-Pokud není zadán, je časové pásmo nastaveno na hodnotu UTC.
+Pokud není zadán, časové pásmo je nastaveno na Čas UTC.
 
-## <a name="check-the-time-zone-of-an-instance"></a>Zkontroluje časové pásmo instance.
+## <a name="check-the-time-zone-of-an-instance"></a>Kontrola časového pásma instance
 
-Funkce [CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) vrací zobrazovaný název časového pásma instance.
+Funkce [CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) vrátí zobrazovaný název časového pásma instance.
 
-## <a name="cross-feature-considerations"></a>Požadavky na různé funkce
+## <a name="cross-feature-considerations"></a>Důležité informace o funkcích
 
 ### <a name="restore-and-import"></a>Obnovení a import
 
-Můžete obnovit záložní soubor nebo importovat data do spravované instance z instance nebo serveru s jiným nastavením časového pásma. Ujistěte se, že to uděláte opatrně. Analýza chování aplikace a výsledků dotazů a sestav, stejně jako při přenosu dat mezi dvěma SQL Server instancemi s odlišným nastavením časových pásem.
+Záložní soubor můžete obnovit nebo importovat data do spravované instance z instance nebo ze serveru s jiným nastavením časového pásma. Disponujte s opatrností. Analyzujte chování aplikace a výsledky dotazů a sestav, stejně jako při přenosu dat mezi dvěma instancemi serveru SQL Server s různým nastavením časového pásma.
 
 ### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
-Když provedete obnovení k určitému bodu v čase, doba obnovení do je interpretována jako čas UTC. Tímto způsobem se vyhnete nejasnostem způsobeným letním časem a jeho potenciálním změnám.
+Při provádění obnovení bodu v čase, čas obnovení je interpretován jako čas UTC. Tímto způsobem se vyhnete nejasnostem z důvodu letního času a jeho možných změn.
 
 ### <a name="auto-failover-groups"></a>Skupiny automatického převzetí služeb při selhání
 
-Použití stejného časového pásma v rámci primární a sekundární instance ve skupině převzetí služeb při selhání není vynutilo, ale důrazně doporučujeme.
+Použití stejného časového pásma v primární a sekundární instanci ve skupině převzetí služeb při selhání není vynuceno, ale důrazně doporučujeme.
 
   >[!WARNING]
-  > Důrazně doporučujeme použít stejné časové pásmo pro primární a sekundární instanci ve skupině převzetí služeb při selhání. Z důvodu určitých vzácných případů použití je zachovávání stejného časového pásma napříč primárními a sekundárními instancemi vynutilo. Je důležité si uvědomit, že v případě ručního nebo automatického převzetí služeb při selhání sekundární instance uchová své původní časové pásmo.
+  > Důrazně doporučujeme použít stejné časové pásmo pro primární a sekundární instanci ve skupině převzetí služeb při selhání. Z důvodu některých případech vzácné použití zachování stejné časové pásmo v primární a sekundární instance není vynuceno. Je důležité si uvědomit, že v případě ručního nebo automatického převzetí služeb při selhání si sekundární instance zachová původní časové pásmo.
 
 ## <a name="limitations"></a>Omezení
 
 - Časové pásmo existující spravované instance nelze změnit.
-- Externí procesy spouštěné z úloh agenta SQL Server nezohledňují časové pásmo instance.
+- Externí procesy spuštěné z úloh agenta serveru SQL Server nesledují časové pásmo instance.
 
 ## <a name="list-of-supported-time-zones"></a>Seznam podporovaných časových pásem
 
 | **ID časového pásma** | **Zobrazovaný název časového pásma** |
 | --- | --- |
-| Datová hranice ((běžný čas) | (UTC-12:00) Mezinárodní časová osa – západ |
-| UTC-11 | (UTC-11:00) Koordinovaný světový čas-11 |
-| Aleutské (běžný čas) | (UTC-10:00) Aleutské ostrovy |
-| Havajština (běžný čas) | (UTC-10:00) Ostrovy |
-| Souostroví Markézy (běžný čas) | (UTC-09:30) Souostroví Markézy ostrovy |
-| Aljaška ((běžný čas) | (UTC-09:00) Alaska |
-| UTC-09 | (UTC-09:00) Koordinovaný světový čas-09 |
+| Dateline (běžný čas) | (UTC-12:00) Mezinárodní datum linka západ |
+| UTC-11 | (UTC-11:00) Koordinovaný univerzální čas-11 |
+| Aleutský standardní čas | (UTC-10:00) Aleutské ostrovy |
+| Havajský standardní čas | (UTC-10:00) Havaj |
+| Marquesas (běžný čas) | (UTC-09:30) Marquesas ostrovy |
+| Aljašský standardní čas | (UTC-09:00) Aljaška |
+| UTC-09 | (UTC-09:00) Koordinovaný univerzální čas-09 |
 | Tichomoří (běžný čas) (Mexiko) | (UTC-08:00) Baja Kalifornie |
-| UTC-08 | (UTC-08:00) Koordinovaný světový čas – 08 |
-| Tichomoří (běžný čas) | (UTC-08:00) Tichomoří (USA a Kanada) |
-| Horská oblast USA (běžný čas) | (UTC-07:00) Arizona |
-| Horská oblast – Mexiko (běžný čas) | (UTC-07:00) Chihuahua, La Paz, Mazatlan |
-| Horská oblast (běžný čas) | (UTC-07:00) Horská oblast USA & Kanada |
+| UTC-08 | (UTC-08:00) Koordinovaný univerzální čas-08 |
+| Tichomoří (běžný čas) | (UTC-08:00) Tichomoří (US & Kanada) |
+| Americký horský standardní čas | (UTC-07:00) Arizona |
+| Horský standardní čas (Mexiko) | (UTC-07:00) Čivava, La Paz, Mazatlan |
+| Horský standardní čas | (UTC-07:00) Mountain Time (US & Kanada) |
 | Střední Amerika (běžný čas) | (UTC-06:00) Střední Amerika |
-| Střední oblast (běžný čas) | (UTC-06:00) Středový čas (US & Kanada) |
+| Centrální standardní čas | (UTC-06:00) Centrální čas (US & Kanada) |
 | Velikonoční ostrov (běžný čas) | (UTC-06:00) Velikonoční ostrov |
-| Střední oblast – Mexiko (běžný čas) | (UTC-06:00) Guadalajara, Mexiko, Monterrey |
-| Střední Kanada (běžný čas) | (UTC-06:00) Saskatchewan |
-| SA – Tichomoří (běžný čas) | (UTC-05:00) Bogotá, Lima, Quito, Rio Branco |
-| Východní oblast – Mexiko (běžný čas) | (UTC-05:00) Chetumal |
-| Východní oblast (běžný čas) | (UTC-05:00) Východ (USA & Kanada) |
+| Centrální standardní čas (Mexiko) | (UTC-06:00) Guadalajara, Mexico City, Monterrey |
+| Kanada centrální standardní čas | (UTC-06:00) Saskatchewan |
+| SA Tichomoří (běžný čas) | (UTC-05:00) Bogota, Lima, Quito, Rio Branco |
+| Východní standardní čas (Mexiko) | (UTC-05:00) Chetumal |
+| Východní standardní čas | (UTC-05:00) Východní čas (USA & Kanada) |
 | Haiti (běžný čas) | (UTC-05:00) Haiti |
 | Kuba (běžný čas) | (UTC-05:00) Havana |
-| USA – východ (běžný čas) | (UTC-05:00) Indiana (východ) |
-| Turks a Caicos (běžný čas) | (UTC-05:00) Turks a Caicos |
-| Paraguay (běžný čas) | (UTC-04:00) Asunción |
-| Atlantik (běžný čas) | (UTC-04:00) Atlantik (Kanada) |
+| Východní americký standardní čas | (UTC-05:00) Indiana (východ) |
+| Turci a Caicos (běžný čas) | (UTC-05:00) Turci a Caicos |
+| Paraguay (běžný čas) | (UTC-04:00) Asuncion |
+| Atlantický standardní čas | (UTC-04:00) Atlantický čas (Kanada) |
 | Venezuela (běžný čas) | (UTC-04:00) Caracas |
-| Střední Brazílie (běžný čas) | (UTC-04:00) Cuiaba |
-| SA (západní běžný čas) | (UTC-04:00) Georgetown, La Paz, Manaus, San Juan |
-| Tichomoří SA (běžný čas) | (UTC-04:00) Santiago de Chile |
+| Střední brazílie (běžný čas) | (UTC-04:00) Cuiaba |
+| SA západní standardní čas | (UTC-04:00) Georgetown, La Paz, Manaus, San Juan |
+| Tichomoří SA (běžný čas) | (UTC-04:00) Santiago |
 | Newfoundland (běžný čas) | (UTC-03:30) Newfoundland |
-| Tocantins ((běžný čas) | (UTC-03:00) Araguaína |
-| E. Jižní Amerika (běžný čas) | (UTC-03:00) Brazílie |
-| SA – východ (běžný čas) | (UTC-03:00) Cayenne, Fortaleza |
+| Tocantins (běžný čas) | (UTC-03:00) Araguaina |
+| E. Jižní Amerika (běžný čas) | (UTC-03:00) Brasilia |
+| SA východní standardní čas | (UTC-03:00) Cayenne, Fortaleza |
 | Argentina (běžný čas) | (UTC-03:00) Město Buenos Aires |
 | Grónsko (běžný čas) | (UTC-03:00) Grónsko |
-| Montevideo ((běžný čas) | (UTC-03:00) Montevideo ( |
-| Magallanský (běžný čas) | (UTC-03:00) Punta Arenas |
-| Saint-Pierre (běžný čas) | (UTC-03:00) Saint-Pierre a Miquelon |
-| Bahia ((běžný čas) | (UTC-03:00) Salvador |
+| Montevideo (běžný čas) | (UTC-03:00) Montevideo |
+| Magallanes (běžný čas) | (UTC-03:00) Punta Arény |
+| Saint Pierre (běžný čas) | (UTC-03:00) Svatý Pierre a Miquelon |
+| Bahia (běžný čas) | (UTC-03:00) Salvador |
 | UTC-02 | (UTC-02:00) Koordinovaný univerzální čas-02 |
-| Střední Atlantik (běžný čas) | (UTC-02:00) Střední Atlantik – starý |
+| Středoatlantický standardní čas | (UTC-02:00) Střední Atlantik - Starý |
 | Azory (běžný čas) | (UTC-01:00) Azory |
-| Cabo Verde (běžný čas) | (UTC-01:00) Cabo Verde. |
-| UTC | UTC Koordinovaný světový čas |
-| GMT (běžný čas) | (UTC + 00:00) Dublin, Edinburgh, Lisabon, Londýn |
-| Greenwichský běžný čas | (UTC + 00:00) Monrovia, Reykjavík |
-| W. Evropa (běžný čas) | (UTC + 01:00) Amsterdam, Berlín, Bern, Řím, Stockholm, Vídeň |
-| Střední Evropa (běžný čas) | (UTC + 01:00) Praha, Bratislava, Budapešť, Lublaň, Praha |
-| Románské země (běžný čas) | (UTC + 01:00) Brusel, Kodaň, Madrid, Paříž |
-| Maroko (běžný čas) | (UTC + 01:00) Casablanca |
-| Svatý Tomáš (běžný čas) | (UTC + 01:00) Svatý Tomáš |
-| Střední Evropa (běžný čas) | (UTC + 01:00) Sarajevo, Skopje, Varšava, Záhřeb |
-| W. Střední Afrika (běžný čas) | (UTC + 01:00) Západ střední Afriky |
-| Jordánsko (běžný čas) | (UTC + 02:00) Ammán |
-| Balkán ((běžný čas) | (UTC + 02:00) Atény, Bukurešť |
-| Střední východ (běžný čas) | (UTC + 02:00) Bejrút |
-| Egypt (běžný čas) | (UTC + 02:00) Cairo |
-| E. Evropa (běžný čas) | (UTC + 02:00) Kišiněv |
-| Sýrie (běžný čas) | (UTC + 02:00) Damašek |
-| Západní banka (běžný čas) | (UTC + 02:00) Gazy, Hebron |
-| Jižní Afrika (běžný čas) | (UTC + 02:00) Harare, Pretoria |
-| Finsko ((běžný čas) | (UTC + 02:00) Helsinky, Kyjev, Riga, Sofie, Tallin, Vilnius |
-| Izrael (běžný čas) | (UTC + 02:00) Časové |
-| Kaliningrad (běžný čas) | (UTC + 02:00) Kaliningrad |
-| Súdán (běžný čas) | (UTC + 02:00) Chartúm |
-| Libye (běžný čas) | (UTC + 02:00) Tripolis |
-| Namibie (běžný čas) | (UTC + 02:00) Windhoek |
-| Arabský běžný čas | (UTC + 03:00) Bagdád |
-| Turecko (běžný čas) | (UTC + 03:00) Istanbul |
-| Arabského času (běžný čas) | (UTC + 03:00) Kuvajt, Rijád |
-| Bělorusko (běžný čas) | (UTC + 03:00) Minsk |
-| Ruština (běžný čas) | (UTC + 03:00) Moskva, Svatá Petěrburg |
-| E. Afrika (běžný čas) | (UTC + 03:00) Nairobi |
-| Írán (běžný čas) | (UTC + 03:30) Teherán |
-| Arábie ((běžný čas) | (UTC + 04:00) Abú Dhabi, Muskat |
-| Astrachaň (běžný čas) | (UTC + 04:00) Astrachaň, Uljanovsk |
-| Ázerbájdžán (běžný čas) | (UTC + 04:00) Baku |
-| Čas Ruska Zóna 3 | (UTC + 04:00) Iževsk, Samara |
-| Mauricius (běžný čas) | (UTC + 04:00) Louis portu |
-| Saratovský (běžný čas) | (UTC + 04:00) Saratovský |
-| Gruzie (běžný čas) | (UTC + 04:00) Tbilisi |
-| Volgograd (běžný čas) | (UTC + 04:00) Volgograd |
-| Kavkaz ((běžný čas) | (UTC + 04:00) Jerevan |
-| Afghánistán (běžný čas) | (UTC + 04:30) Kábul |
-| Západní Asie (běžný čas) | (UTC + 05:00) Ašchabád, Taškent |
-| Jekatěrinburg (běžný čas) | (UTC + 05:00) Jekatěrinburg |
-| Pákistán (běžný čas) | (UTC + 05:00) Islámábád, Karáčí |
-| Indie (běžný čas) | (UTC + 05:30) Čennaj, Kolkata (Kalkata, Bombaj, Nové Dillí |
-| Srí Lanka (běžný čas) | (UTC + 05:30) Srí Džajawardenepúra |
-| Nepál (běžný čas) | (UTC + 05:45) Káthmándú |
-| Střední Asie (běžný čas) | (UTC + 06:00) Astana |
-| Bangladéš (běžný čas) | (UTC + 06:00) Dháka |
-| Omsk (běžný čas) | (UTC + 06:00) Omsk |
-| Myanmar (běžný čas) | (UTC + 06:30) Yangon (Rangún) |
-| JIHOVÝCHODNÍ Asie (běžný čas) | (UTC + 07:00) Bangkok, Hanoj, Jakarta |
-| Altajský (běžný čas) | (UTC + 07:00) Barnaul, Gorno-Altajsk |
-| W. Mongolsko (běžný čas) | (UTC + 07:00) Chovd |
-| Severní Asie (běžný čas) | (UTC + 07:00) Krasnojarsk |
-| N. Střední Asie (běžný čas) | (UTC + 07:00) Novosibirsk |
-| Tomská oblast (běžný čas) | (UTC + 07:00) Tomská oblast |
-| Čína (běžný čas) | (UTC + 08:00) Peking, Čchung-čching, Hongkong, Urumqi |
-| Východ severní Asie (běžný čas) | (UTC + 08:00) Irkutsk |
-| Singapur (běžný čas) | (UTC + 08:00) Kuala Lumpur, Singapur |
-| W. Austrálie (běžný čas) | (UTC + 08:00) Perth |
-| Taipei (běžný čas) | (UTC + 08:00) WAN |
-| Ulánbátar (běžný čas) | (UTC + 08:00) Ulánbátar |
-| Austrálie – střed (běžný čas) | (UTC + 08:45) Eucla |
-| Zabajkalský (běžný čas) | (UTC + 09:00) Čita |
-| Tokio (běžný čas) | (UTC + 09:00) Ósaka, Sapporo, Tokio |
-| Severní Korea (běžný čas) | (UTC + 09:00) Pchjongjang |
-| Korea (běžný čas) | (UTC + 09:00) Soul |
-| Jakutsk (běžný čas) | (UTC + 09:00) Jakutsk |
-| Normalizovan. Austrálie (běžný čas) | (UTC + 09:30) Adelaide |
-| Střední Austrálie (běžný čas) | (UTC + 09:30) Darwin |
-| E. Austrálie (běžný čas) | (UTC + 10:00) Brisbane |
-| Východní Austrálie (běžný čas) | (UTC + 10:00) Canberra, Melbourne, Sydney |
-| Západní Tichomoří (běžný čas) | (UTC + 10:00) Guam, Port Moresby |
-| Tasmánie ((běžný čas) | (UTC + 10:00) Hobart |
-| Vladivostok Standard Time | (UTC + 10:00) Vladivostok ( |
-| Ostrov lorda Howa (běžný čas) | (UTC + 10:30) Ostrov lorda Howa ostrov |
-| Bougainville (běžný čas) | (UTC + 11:00) Bougainville ostrov |
-| Rusko – časové pásmo 10 | (UTC + 11:00) Čokurdach |
-| Magadan (běžný čas) | (UTC + 11:00) Magadan |
-| Norfolk (běžný čas) | (UTC + 11:00) Ostrov Norfolk |
-| Sachalin (běžný čas) | (UTC + 11:00) Sachalin |
-| Střední Tichomoří (běžný čas) | (UTC + 11:00) Šalamounovy ostrovy, Nová Kaledonie |
-| Rusko – časové pásmo 11 | (UTC + 12:00) Anadyr, Petropavlovsk-Kamčatskij |
-| Nový Zéland (běžný čas) | (UTC + 12:00) Auckland, Wellington |
-| UTC + 12 | (UTC + 12:00) Koordinovaný světový čas + 12 |
-| Fidži (běžný čas) | (UTC + 12:00) Fidži |
-| Kamčatka (běžný čas) | (UTC + 12:00) Petropavlovsk-Kamčatskij – starý |
-| Chathamovy ostrovy (běžný čas) | (UTC + 12:45) Chathamovy ostrovy |
-| UTC+13 | (UTC + 13:00) Koordinovaný světový čas + 13 |
-| Tonga (běžný čas) | (UTC + 13:00) Nuku ' Alofa |
-| Samoa (běžný čas) | (UTC + 13:00) Samoa |
-| Ostrovy line (běžný čas) | (UTC + 14:00) Kiritimati ostrov |
+| Kapverdy (běžný čas) | (UTC-01:00) Cabo Verde je. |
+| UTC | Koordinovaný univerzální čas (UTC) |
+| GMT (běžný čas) | (UTC+00:00) Dublin, Edinburgh, Lisabon, Londýn |
+| Greenwichský standardní čas | (UTC+00:00) Monrovia, Reykjavík |
+| W. Evropa (běžný čas) | (UTC+01:00) Amsterdam, Berlín, Bern, Řím, Stockholm, Vídeň |
+| Střední Evropa (běžný čas) | (UTC+01:00) Bělehrad, Bratislava, Budapešť, Lublaň, Praha |
+| Romance (běžný čas) | (UTC+01:00) Brusel, Kodaň, Madrid, Paříž |
+| Maroko (běžný čas) | (UTC+01:00) Casablanca |
+| Sao Tome (běžný čas) | (UTC+01:00) Sao Tome |
+| Středoevropský standardní čas | (UTC+01:00) Sarajevo, Skopje, Varšava, Záhřeb |
+| W. Střední Afrika (běžný čas) | (UTC+01:00) Západní střední Afrika |
+| Jordánsko (běžný čas) | (UTC+02:00) Amman |
+| STANDARDNÍ ČAS GTB | (UTC+02:00) Atény, Bukurešť |
+| Střední východ (běžný čas) | (UTC+02:00) Bejrút |
+| Egypt (běžný čas) | (UTC+02:00) Káhira |
+| E. Evropa (běžný čas) | (UTC+02:00) Kišiněv |
+| Sýrie (běžný čas) | (UTC+02:00) Damašku |
+| Standardní čas západního břehu Jordánu | (UTC+02:00) Gaza, Hebron |
+| Jihoafrická republika (běžný čas) | (UTC+02:00) Harare, Pretoria |
+| FLE (běžný čas) | (UTC+02:00) Helsinky, Kyjev, Riga, Sofie, Tallinn, Vilnius |
+| Izrael (běžný čas) | (UTC+02:00) Jeruzalém |
+| Kaliningradský standardní čas | (UTC+02:00) Kaliningrad |
+| Súdán (běžný čas) | (UTC+02:00) Chartúm |
+| Libye (běžný čas) | (UTC+02:00) Tripoli |
+| Namibie (běžný čas) | (UTC+02:00) Windhoek |
+| Arabský standardní čas | (UTC+03:00) Bagdádu |
+| Turecko (běžný čas) | (UTC+03:00) Istanbul |
+| Arabský standardní čas | (UTC+03:00) Kuvajt, Rijád |
+| Bělorusko (běžný čas) | (UTC+03:00) Minsk |
+| Ruský standardní čas | (UTC+03:00) Moskva, Petrohrad |
+| E. Afrika (běžný čas) | (UTC+03:00) Nairobi |
+| Írán (běžný čas) | (UTC+03:30) Teheránu |
+| Arabský standardní čas | (UTC+04:00) Abú Zabí, Maskat |
+| Astrachaň (běžný čas) | (UTC+04:00) Astrachaň, Uljanovsk |
+| Ázerbájdžán (běžný čas) | (UTC+04:00) Baku |
+| Časové pásmo Rusko 3 | (UTC+04:00) Iževsk, Samara |
+| Mauricius (běžný čas) | (UTC+04:00) Přístav Louis |
+| Saratov (běžný čas) | (UTC+04:00) Saratov |
+| Gruzínský standardní čas | (UTC+04:00) Tbilisi |
+| Volgograd (běžný čas) | (UTC+04:00) Volgograd |
+| Kavkaz (běžný čas) | (UTC+04:00) Jerevan |
+| Afghánistán (běžný čas) | (UTC+04:30) Kábulu |
+| Západní Asie (běžný čas) | (UTC+05:00) Ašchabad, Taškent |
+| Jekatěrinburg (běžný čas) | (UTC+05:00) Ekaterinburg |
+| Pákistán (běžný čas) | (UTC+05:00) Islámábád, Karáčí |
+| Indie (běžný čas) | (UTC+05:30) Chennai, Kalkata, Bombaj, Nové Dillí |
+| Srí Lanka (běžný čas) | (UTC+05:30) Šrí Jayawardenepura |
+| Nepál (běžný čas) | (UTC+05:45) Kathmandu |
+| Střední Asie (běžný čas) | (UTC+06:00) Astana |
+| Bangladéš (běžný čas) | (UTC+06:00) Dháka |
+| Omsk (běžný čas) | (UTC+06:00) Omsk |
+| Myanmar (běžný čas) | (UTC+06:30) Rangún (Rangún) |
+| SE Asie (běžný čas) | (UTC+07:00) Bangkok, Hanoj, Jakarta |
+| Altai (běžný čas) | (UTC+07:00) Barnaul, Gorno-Altaysk |
+| W. Mongolsko (běžný čas) | (UTC+07:00) Hovd (Hovd) |
+| Severní Asie (běžný čas) | (UTC+07:00) Krasnoyarsk |
+| N. Střední Asie (běžný čas) | (UTC+07:00) Novosibirsk |
+| Tomsk (běžný čas) | (UTC+07:00) Tomsk |
+| Čína (běžný čas) | (UTC+08:00) Peking, Čchung-čching, Hongkong, Urumqi |
+| Severovýchodní severní Asie (běžný čas) | (UTC+08:00) Irkutsk |
+| Singapur (běžný čas) | (UTC+08:00) Kuala Lumpur, Singapur |
+| W. Austrálie (běžný čas) | (UTC+08:00) Perth |
+| Tchaj-pej (běžný čas) | (UTC+08:00) Taipei |
+| Ulaanbaatar (běžný čas) | (UTC+08:00) Ulánbátar |
+| Aus Central W. (běžný čas) | (UTC+08:45) Eucla (Eucla) |
+| Transbajkal (běžný čas) | (UTC+09:00) Chita |
+| Tokio (běžný čas) | (UTC+09:00) Osaka, Sapporo, Tokio |
+| Severní Korea (běžný čas) | (UTC+09:00) Pchjongjangu |
+| Korea (běžný čas) | (UTC+09:00) Soul |
+| Jakutsk (běžný čas) | (UTC+09:00) Yakutsk |
+| Cen. Austrálie (běžný čas) | (UTC+09:30) Adelaide |
+| Centrální standardní čas AUS | (UTC+09:30) Darwin |
+| E. Austrálie (běžný čas) | (UTC+10:00) Brisbane |
+| Východní standardní čas AUS | (UTC+10:00) Canberra, Melbourne, Sydney |
+| Západní Tichomoří (běžný čas) | (UTC+10:00) Guam, Port Moresby |
+| Tasmánie (běžný čas) | (UTC+10:00) Hobart |
+| Vladivostok (běžný čas) | (UTC+10:00) Vladivostok |
+| Lord Howe (běžný čas) | (UTC+10:30) Ostrov Lorda Howea |
+| Bougainville (běžný čas) | (UTC+11:00) Ostrov Bougainville |
+| Rusko časové pásmo 10 | (UTC+11:00) Chokurdakh (Chokurdakh) |
+| Magadan (běžný čas) | (UTC+11:00) Magadan |
+| Norfolk (běžný čas) | (UTC+11:00) Norfolkský ostrov |
+| Sachalin (běžný čas) | (UTC+11:00) Sachalin |
+| Střední Tichomoří (běžný čas) | (UTC+11:00) Šalamoun Is., Nová Kaledonie |
+| Rusko časové pásmo 11 | (UTC+12:00) Anadyr, Petropavlovsk-Kamčatský |
+| Nový Zéland (běžný čas) | (UTC+12:00) Auckland(Wellington) – ovesné |
+| UTC+12 | (UTC+12:00) Koordinovaný světový čas+12 |
+| Fidži (běžný čas) | (UTC+12:00) Fidži |
+| Kamčatka (běžný čas) | (UTC+12:00) Petropavlovsk-Kamčatský - Starý |
+| Chathamské ostrovy (běžný čas) | (UTC+12:45) Chathamské ostrovy |
+| UTC+13 | (UTC+13:00) Koordinovaný světový čas+13 |
+| Tonga (běžný čas) | (UTC+13:00) Nuku'alofa |
+| Samoa (běžný čas) | (UTC+13:00) Samoa |
+| Line Islands (běžný čas) | (UTC+14:00) Ostrov Kiritimati |
 
-## <a name="see-also"></a>Viz také: 
+## <a name="see-also"></a>Viz také 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
-- [V ČASOVÉm PÁSMu (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys. time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [ČASOVÉ PÁSMO (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

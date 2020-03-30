@@ -1,6 +1,6 @@
 ---
-title: Analýza sestavy Plánovač nasazení pro zotavení po havárii VMware pomocí Azure Site Recovery
-description: Tento článek popisuje, jak analyzovat sestavu vygenerovanou Plánovač nasazení pro zotavení po havárii VMware do Azure pomocí Azure Site Recovery.
+title: Analýza sestavy Plánovač nasazení pro zotavení po havárii společnosti VMware pomocí azure site recovery
+description: Tento článek popisuje, jak analyzovat sestavu generovanou plánovačem nasazení obnovení pro zotavení po havárii v systému VMware do Azure pomocí Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257508"
 ---
-# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analýza sestavy Plánovač nasazení pro zotavení po havárii VMware do Azure
+# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analýza sestavy Plánovač nasazení pro zotavení po havárii v systému VMware do Azure
 
 Vygenerovaná sestava aplikace Microsoft Excel obsahuje následující listy:
 ## <a name="on-premises-summary"></a>On-premises summary (Přehled místního prostředí)
@@ -92,7 +92,7 @@ Pokud nástroj spouštíte na konfiguračním serveru nebo procesovém serveru, 
 Pro všechna podniková nasazení Site Recovery doporučujeme použít [ExpressRoute](https://aka.ms/expressroute).
 
 ### <a name="required-storage-accounts"></a>Požadované účty úložiště
-Následující graf znázorňuje celkový počet účtů služby Storage (úrovně Standard a Premium) požadovaných k ochraně všech kompatibilních virtuálních počítačů. Informace o tom, jaký účet úložiště použít pro jednotlivé virtuální počítače, najdete v části VM-storage placement. Pokud používáte v 2.5 Plánovač nasazení, toto doporučení zobrazuje jenom počet účtů úložiště úrovně Standard, které jsou potřeba pro replikaci, protože data se napisují přímo do Managed Disks.
+Následující graf znázorňuje celkový počet účtů služby Storage (úrovně Standard a Premium) požadovaných k ochraně všech kompatibilních virtuálních počítačů. Informace o tom, jaký účet úložiště použít pro jednotlivé virtuální počítače, najdete v části VM-storage placement. Pokud používáte v2.5 Plánovač nasazení, toto doporučení zobrazuje pouze počet účtů úložiště standardní mezipaměti, které jsou potřebné pro replikaci, protože data jsou přímo zapisována na spravované disky.
 
 ![Požadované účty úložiště v Deployment Planneru](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
 
@@ -157,19 +157,19 @@ Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemů�
 ## <a name="vm-storage-placement"></a>Umístění virtuálních počítačů v účtech úložiště
 
 >[!Note]
->Plánovač nasazení v 2.5 a vyšším doporučuje umístění úložiště pro počítače, které se budou replikovat přímo na spravované disky.
+>Plánovač nasazení v2.5 dále doporučuje umístění úložiště pro počítače, které se budou replikovat přímo na spravované disky.
 
 ![Umístění virtuálních počítačů v účtech úložiště](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
-**Typ úložiště replikace**: spravovaný disk Standard nebo Premium, který se používá k replikaci všech odpovídajících virtuálních počítačů uvedených ve sloupci **virtuální počítače do umístění** .
+**Typ úložiště replikace**: Standardní nebo prémiový spravovaný disk, který se používá k replikaci všech odpovídajících virtuálních počítačů uvedených ve **sloupci Virtuální počítače k umístění.**
 
-**Typ účtu úložiště protokolu**: všechny protokoly replikace se ukládají do standardního účtu úložiště.
+**Typ účtu úložiště protokolu**: Všechny protokoly replikace jsou uloženy ve standardním účtu úložiště.
 
-**Navrhovaná předpona pro účet úložiště**: navrhovaná předpona se třemi znaky, kterou lze použít k pojmenování účtu úložiště mezipaměti. Můžete použít vlastní předponu, ale návrh nástroje se řídí [zásadami vytváření názvů pro oddíly účtů úložiště](https://aka.ms/storage-performance-checklist).
+**Navrhovaná předpona pro účet úložiště**: Navrhovaná předpona se třemi znaky, kterou lze použít k pojmenování účtu úložiště mezipaměti. Můžete použít vlastní předponu, ale návrh nástroje se řídí [zásadami vytváření názvů pro oddíly účtů úložiště](https://aka.ms/storage-performance-checklist).
 
-**Navrhovaný název účtu protokolu**: název účtu úložiště po zahrnutí navrhované předpony. Název v ostrých závorkách (< a >) nahraďte vlastním názvem.
+**Navrhovaný název účtu protokolu**: Název účtu úložiště po zahrnutí navrhované předpony. Název v ostrých závorkách (< a >) nahraďte vlastním názvem.
 
-**Shrnutí umístění**: Shrnutí disků potřebných k chráněným virtuálním počítačům podle typu úložiště. Zahrnuje celkový počet virtuálních počítačů, celkovou zřízenou velikost napříč všemi disky a celkový počet disků.
+**Shrnutí umístění**: Souhrn disků potřebných k ochraně virtuálních počítačů podle typu úložiště. Zahrnuje celkový počet virtuálních počítačů, celkovou zjitou velikost na všech discích a celkový počet disků.
 
 **Virtual Machines to Place:** Seznam všech virtuálních počítačů, které by se měly umístit do daného účtu úložiště pro zajištění optimálního výkonu a využití.
 
@@ -178,7 +178,7 @@ Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemů�
 
 **VM Name:** Název nebo IP adresa virtuálního počítače, které se použily v souboru VMListFile při generování sestavy. V tomto sloupci jsou uvedeny také disky (VMDK) připojené k virtuálním počítačům. Aby se rozlišily virtuální počítače vCenter s duplicitními názvy nebo IP adresami, je součástí názvů i název hostitele ESXi. Uvedený hostitel ESXi je ten, na kterém byl virtuální počítač umístěn při zjištění nástrojem během období profilace.
 
-**VM Compatibility** (Kompatibilita virtuálního počítače): Hodnoty jsou **Yes** (Ano) a **Yes\*** (Ano). **Ano**\* je pro instance, ve kterých je virtuální počítač vhodný pro [Premium SSD](../virtual-machines/windows/disks-types.md). V takovém případě profilovaný disk s vysokou četností změn nebo vysokým počtem IOPS spadá do kategorie P20 nebo P30, ale kvůli velikosti se disk mapuje na nižší kategorii P10 nebo P20. Účet úložiště určuje, na jaký disk služby Premium Storage se disk bude mapovat, na základě jeho velikosti. Příklad:
+**VM Compatibility** (Kompatibilita virtuálního počítače): Hodnoty jsou **Yes** (Ano) a **Yes\*** (Ano). **Ano** \* je pro případy, ve kterých je virtuální virtuální ms vhodný pro [prémiové ssd d.](../virtual-machines/windows/disks-types.md) V takovém případě profilovaný disk s vysokou četností změn nebo vysokým počtem IOPS spadá do kategorie P20 nebo P30, ale kvůli velikosti se disk mapuje na nižší kategorii P10 nebo P20. Účet úložiště určuje, na jaký disk služby Premium Storage se disk bude mapovat, na základě jeho velikosti. Například:
 * Menší než 128 GB je P10.
 * 128 GB až 256 GB je P15.
 * 256 GB až 512 GB je P20.
@@ -186,13 +186,13 @@ Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemů�
 * 1 025 GB až 2 048 GB je P40.
 * 2 049 GB až 4 095 GB je P50.
 
-Pokud se například díky charakteristikám úloh disk umístil do kategorie P20 nebo P30, ale kvůli velikosti je mapován na nižší typ disku služby Premium Storage, nástroj označí tento virtuální počítač jako **Yes**\*. Nástroj také doporučí změnit velikost zdrojového disku tak, aby se vešel do doporučeného typu disku služby Premium Storage, nebo po převzetí služeb při selhání změnit typ cílového disku.
+Například pokud charakteristiky pracovního vytížení disku umístit do kategorie P20 nebo P30, ale velikost mapuje dolů na nižší typ úložiště premium, nástroj označí, že virtuální počítače jako **Ano**\*. Nástroj také doporučí změnit velikost zdrojového disku tak, aby se vešel do doporučeného typu disku služby Premium Storage, nebo po převzetí služeb při selhání změnit typ cílového disku.
 
 **Storage Type** (Typ služby Storage): Standard nebo Premium.
 
-**Asrseeddisk (spravovaný disk) vytvořený pro replikaci**: název disku, který se vytvoří při povolení replikace. Ukládá data a její snímky do Azure.
+**Asrseeddisk (Spravovaný disk) vytvořený pro replikaci**: Název disku, který je vytvořen při povolení replikace. Ukládá data a jeho snímky v Azure.
 
-**Peak R/W IOPS (with Growth Factor)** : Počet vstupně-výstupních operací čtení a zápisu na disku ve špičce (výchozí 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celkový počet R/W IOPS virtuálního počítače nebude vždy odpovídat součtu R/W IOPS jednotlivých disků virtuálního počítače, protože počet R/W IOPS virtuálního počítače ve špičce je maximální hodnota součtu R/W IOPS jeho jednotlivých disků v každé minutě období profilace.
+**Peak R/W IOPS (with Growth Factor)**: Počet vstupně-výstupních operací čtení a zápisu na disku ve špičce (výchozí 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celkový počet R/W IOPS virtuálního počítače nebude vždy odpovídat součtu R/W IOPS jednotlivých disků virtuálního počítače, protože počet R/W IOPS virtuálního počítače ve špičce je maximální hodnota součtu R/W IOPS jeho jednotlivých disků v každé minutě období profilace.
 
 **Peak Data Churn in Mbps (with Growth Factor):** Četnost změn dat na disku ve špičce (výchozí 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače, protože četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
 
@@ -210,7 +210,7 @@ Pokud se například díky charakteristikám úloh disk umístil do kategorie P2
 
 **Boot Type:** Typ spuštění virtuálního počítače. Může to být buď BIOS, nebo EFI.  Azure Site Recovery v současnosti podporuje virtuální počítače EFI s Windows Serverem (Windows Server 2012, 2012 R2 a 2016), za předpokladu, že počet oddílů spouštěcího disku je menší než 4 a velikost spouštěcího sektoru je 512 bajtů. Pro zajištění ochrany virtuálních počítačů EFI musí být služba mobility Azure Site Recovery ve verzi 9.13 nebo vyšší. Pro virtuální počítače EFI se podporuje jenom převzetí služeb při selhání. Navrácení služeb po obnovení se nepodporuje.  
 
-**OS Type:** Jde o typ operačního systému virtuálního počítače. Může to být Windows, Linux nebo jiný systém, v závislosti na šabloně zvolené ve VMware vSphere při vytváření virtuálního počítače.  
+**Typ operačního příkazu**: Jedná se o typ operačního příkazu virtuálního soudu. Může to být Windows, Linux nebo jiný systém, v závislosti na šabloně zvolené ve VMware vSphere při vytváření virtuálního počítače.  
 
 ## <a name="incompatible-vms"></a>Nekompatibilní virtuální počítače
 
@@ -221,14 +221,14 @@ Pokud se například díky charakteristikám úloh disk umístil do kategorie P2
 
 **VM Compatibility:** Označujte, proč je daný virtuální počítač nekompatibilní se Site Recovery. Pro každý nekompatibilní disk virtuálního počítače jsou popsané důvody. V závislosti na publikovaných [omezeních úložiště](https://aka.ms/azure-storage-scalbility-performance) může důvodem být některá z následujících možností:
 
-* Nesprávná velikost datového disku nebo nesprávná velikost disku operačního systému. [Zkontrolujte](vmware-physical-azure-support-matrix.md#azure-vm-requirements) omezení podpory. 
+* Nesprávná velikost datového disku nebo nesprávná velikost disku operačního systému. [Zkontrolujte](vmware-physical-azure-support-matrix.md#azure-vm-requirements) limity podpory. 
 * Total VM size (replication + TFO) exceeds the supported storage-account size limit (35 TB) (Celková velikost virtuálního počítače (replikace + testovací převzetí služeb při selhání) překračuje omezení podporované velikosti účtu úložiště (35 TB)). K této nekompatibilitě obvykle dochází, když je ve virtuálním počítači jeden disk, jehož některé charakteristiky výkonu překračují maximální podporovaná omezení systému Azure nebo Site Recovery pro účet služby Storage úrovně Standard. V takové situaci se virtuální počítač dostává do zóny účtu služby Premium Storage. Nicméně maximální podporovaná velikost účtu služby Premium Storage je 35 TB a jeden virtuální počítač nemůže být chráněn v rámci několika účtů úložiště. Všimněte si také, že testovací převzetí služeb při selhání spuštěné na chráněném virtuálním počítači poběží v rámci stejného účtu úložiště, ve kterém probíhá replikace. V takovém případě nastavte dvojnásobnou velikost disku, aby paralelně mohla probíhat replikace a úspěšné testovací převzetí služeb při selhání.
 
 * Source IOPS exceeds supported storage IOPS limit of 7500 per disk (Počet zdrojových IOPS překračuje podporované omezení úložiště – 7 500 IOPS na disk).
 
 * Source IOPS exceeds supported storage IOPS limit of 80,000 per VM (Počet zdrojových IOPS překračuje podporované omezení úložiště – 80 000 IOPS na virtuální počítač).
 
-* Průměrná četnost změn dat překračuje Site Recovery podporované omezení četnosti přenosů dat, které je 20 MB/s, pro průměrnou velikost vstupně-výstupních operací disku.
+* Průměrná hodnota změn dat překračuje podporovaný limit změn dat obnovení webu 20 MB/s pro průměrnou velikost vstupně-va pro disk.
 
 * Četnost změn dat ve špičce na všech discích virtuálního počítače překračuje maximální podporované omezení Site Recovery pro četnost změn dat, které je 54 MB/s na virtuální počítač.
 
@@ -260,7 +260,7 @@ Pokud se například díky charakteristikám úloh disk umístil do kategorie P2
 ## <a name="azure-site-recovery-limits"></a>Omezení Azure Site Recovery
 Následující tabulka obsahuje omezení služby Azure Site Recovery. Tato omezení se zakládají na našich testováních, nemůžou však pokrýt všechny možné kombinace vstupně-výstupních operací aplikace. Skutečné výsledky se můžou lišit v závislosti na kombinaci vstupně-výstupních operací vaší aplikace. Pro dosažení co nejlepších výsledků, a to i po naplánování nasazení, vždy doporučujeme provádět rozsáhlé testování aplikace pomocí testovacího převzetí služeb při selhání, abyste získali skutečnou představu o výkonu aplikace.
 
-**Cíl ukládání replikace** | **Průměrná velikost vstupně-výstupních operací zdrojového disku** |**Průměrná četnost změn dat zdrojového disku** | **Celková denní četnost změn dat zdrojového disku**
+**Cíl úložiště replikace** | **Průměrná velikost vstupně-výstupních operací zdrojového disku** |**Průměrná četnost změn dat zdrojového disku** | **Celkový počet změn dat zdrojového disku za den**
 ---|---|---|---
 Storage úrovně Standard | 8 kB | 2 MB/s | 168 GB na disk
 Disk úrovně Premium P10 nebo P15 | 8 kB  | 2 MB/s | 168 GB na disk

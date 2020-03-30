@@ -1,6 +1,6 @@
 ---
-title: Použití šablony k nasazení virtuálních počítačů Azure na místě (Preview)
-description: Naučte se používat šablonu k nasazení virtuálních počítačů na místě za účelem úspory nákladů.
+title: Nasazení virtuálních virtuálních počítačů Azure Spot (preview) pomocí šablony
+description: Přečtěte si, jak pomocí šablony nasadit virtuální počítače Spot, abyste ušetřili náklady.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,29 +15,29 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: cynthn
 ms.openlocfilehash: 0e635fe7ce9b442a9cc8f0fdf614feef5a3a756a
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79082791"
 ---
-# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Nasazení virtuálních počítačů na místě pomocí šablony Správce prostředků
+# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Nasazení virtuálních virtuálních počítače pomocí šablony Správce prostředků
 
-Použití [přímých virtuálních počítačů](spot-vms.md) vám umožní využít výhod naší nevyužité kapacity s významnou úsporou nákladů. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpátky, vyřadí infrastruktura Azure virtuální počítače na místě. Proto jsou virtuální počítače Skvělé pro úlohy, které mohou zpracovávat přerušení, jako jsou úlohy dávkového zpracování, vývojové a testovací prostředí, velké výpočetní úlohy a další.
+Použití [spotových virtuálních měn](spot-vms.md) vám umožní využít naši nevyužitou kapacitu s výraznými úsporami nákladů. Kdykoli v okamžiku, kdy Azure potřebuje kapacitu zpět, infrastruktura Azure vystěhovává virtuální počítače Spot. Virtuální počítače Spot jsou proto skvělé pro úlohy, které zvládnou přerušení, jako jsou úlohy dávkového zpracování, vývojová a testovací prostředí, velké výpočetní úlohy a další.
 
-Ceny pro virtuální počítače na místě jsou proměnné na základě oblastí a SKU. Další informace najdete v tématu ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
+Ceny pro spotové virtuální počítače jsou variabilní na základě oblasti a skladové položky. Další informace najdete v tématu Ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
-Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu pro virtuální počítač. Maximální cena za virtuální počítač na místě se dá nastavit v amerických dolarech (USD), a to s využitím až 5 desetinných míst. Například hodnota `0.98765`by byla maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu, která se má `-1`, virtuální počítač se nevyřadí na základě ceny. Cena za virtuální počítač bude aktuální cena za bod nebo cena za standardní virtuální počítač, který je stále menší, pokud je dostupná kapacita a kvóta. Další informace o nastavení maximální ceny najdete v tématu [virtuální počítače – ceny](spot-vms.md#pricing).
+Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu za virtuální hod. Maximální cenu pro spotový virtuální virtuální mísu lze nastavit v amerických dolarech (USD) s použitím až 5 desetinných míst. Například hodnota `0.98765`by byla maximální cena $0.98765 USD za hodinu. Pokud nastavíte maximální `-1`cenu , virtuální počítač nebude vystěhován na základě ceny. Cena za virtuální ho virtuálního času bude aktuální cena spotu nebo cena za standardní virtuální ms, která je vždy nižší, pokud je k dispozici kapacita a kvóta. Další informace o nastavení maximální ceny najdete v tématu [Spot Virtuální virtuální chod – ceny](spot-vms.md#pricing).
 
 > [!IMPORTANT]
-> Instance přímých instancí jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se nedoporučuje pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Instance spotů jsou aktuálně ve verzi Public Preview.
+> Tato verze preview se nedoporučuje pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
 ## <a name="use-a-template"></a>Použití šablony
 
-Pro nasazení šablon přímých verzí použijte`"apiVersion": "2019-03-01"` nebo novější. Do šablony přidejte `priority`, `evictionPolicy` a `billingProfile` vlastnosti:
+Pro nasazení šablony Spot`"apiVersion": "2019-03-01"` použijte nebo novější. Do `priority`šablony `evictionPolicy` `billingProfile` přidejte vlastnosti a vlastnosti:
 
 ```json
 "priority": "Spot",
@@ -47,7 +47,7 @@ Pro nasazení šablon přímých verzí použijte`"apiVersion": "2019-03-01"` ne
 }
 ```
 
-Tady je Ukázková šablona s přidanými vlastnostmi pro virtuální počítač s přímým odkazem. Názvy prostředků nahraďte vlastními a `<password>` hesla pro účet místního správce ve VIRTUÁLNÍm počítači.
+Tady je ukázková šablona s přidanými vlastnostmi pro virtuální virtuální počítače s bodem. Nahraďte názvy prostředků `<password>` vlastním a heslem pro účet místního správce na virtuálním počítači.
 
 ```json
 {
@@ -186,6 +186,6 @@ Tady je Ukázková šablona s přidanými vlastnostmi pro virtuální počítač
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete také vytvořit virtuální počítač s přímým použitím [Azure PowerShell](../windows/spot-powershell.md) nebo rozhraní příkazového [řádku Azure](spot-cli.md).
+Virtuální počítač Spot můžete taky vytvořit pomocí [Azure PowerShellu](../windows/spot-powershell.md) nebo [Azure CLI](spot-cli.md).
 
-Pokud dojde k chybě, přečtěte si [kódy chyb](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Pokud narazíte na chybu, přečtěte si informace [o chybových kódech](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

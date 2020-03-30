@@ -1,33 +1,33 @@
 ---
 title: Filtrování telemetrie Azure Application Insights ve webové aplikaci Java
-description: Zmenšení provozu telemetrie filtrováním událostí, které nepotřebujete monitorovat.
+description: Snižte provoz telemetrie filtrováním událostí, které nepotřebujete monitorovat.
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659913"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrování telemetrie ve webové aplikaci Java
 
-Filtry poskytují způsob, jak vybrat telemetrii, kterou vaše [Webová aplikace v jazyce Java odesílá Application Insights](java-get-started.md). K dispozici jsou některé předem připravené filtry, které můžete použít, a můžete také napsat vlastní filtry.
+Filtry umožňují vybrat telemetrii, kterou vaše [webová aplikace Java odesílá do Application Insights](java-get-started.md). Existují některé out-of-the-box filtry, které můžete použít, a můžete také napsat vlastní filtry.
 
-Filtry dodané po box zahrnují:
+Out-of-the-box filtry zahrnují:
 
 * Úroveň závažnosti trasování
 * Konkrétní adresy URL, klíčová slova nebo kódy odpovědí
-* Rychlé odpovědi – to znamená, že žádosti, na které vaše aplikace reaguje, rychle
+* Rychlé odpovědi – to znamená požadavky, na které vaše aplikace rychle reagovala
 * Konkrétní názvy událostí
 
 > [!NOTE]
-> Filtry zkosí metriky vaší aplikace. Můžete se třeba rozhodnout, že při diagnostice pomalých odpovědí nastavíte filtr, který zahodí dobu rychlé odezvy. Je ale nutné si uvědomit, že průměrné doby odezvy hlášené nástrojem Application Insights budou pomalejší než skutečná rychlost a počet požadavků bude menší než skutečný počet.
-> Pokud se to týká, použijte místo toho [vzorkování](../../azure-monitor/app/sampling.md) .
+> Filtry zkreslují metriky vaší aplikace. Můžete se například rozhodnout, že za účelem diagnostiky pomalých odpovědí nastavíte filtr tak, aby se rychle zahodily doby odezvy. Ale musíte si být vědomi toho, že průměrná doba odezvy hlášené Application Insights pak bude pomalejší než skutečná rychlost a počet požadavků bude menší než skutečný počet.
+> Pokud se jedná o problém, použijte [vzorkování](../../azure-monitor/app/sampling.md) místo.
 
 ## <a name="setting-filters"></a>Nastavení filtrů
 
-V souboru ApplicationInsights. xml přidejte `TelemetryProcessors` oddíl podobný tomuto příkladu:
+V souboru ApplicationInsights.xml přidejte oddíl, jako je `TelemetryProcessors` tento příklad:
 
 
 ```XML
@@ -80,11 +80,11 @@ V souboru ApplicationInsights. xml přidejte `TelemetryProcessors` oddíl podobn
 
 
 
-[Zkontrolujte kompletní sadu integrovaných procesorů](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Zkontrolujte úplnou sadu vestavěných procesorů](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
 
-## <a name="built-in-filters"></a>Předdefinované filtry
+## <a name="built-in-filters"></a>Vestavěné filtry
 
-### <a name="metric-telemetry-filter"></a>Filtr telemetrie metriky
+### <a name="metric-telemetry-filter"></a>Metrický filtr telemetrie
 
 ```XML
 
@@ -93,10 +93,10 @@ V souboru ApplicationInsights. xml přidejte `TelemetryProcessors` oddíl podobn
            </Processor>
 ```
 
-* `NotNeeded` čárkami oddělený seznam názvů vlastních metrik.
+* `NotNeeded`- Seznam vlastních názvů metrik oddělených čárkami.
 
 
-### <a name="page-view-telemetry-filter"></a>Filtr telemetrie zobrazení stránky
+### <a name="page-view-telemetry-filter"></a>Telemetrie zobrazení stránky, filtr
 
 ```XML
 
@@ -107,12 +107,12 @@ V souboru ApplicationInsights. xml přidejte `TelemetryProcessors` oddíl podobn
            </Processor>
 ```
 
-* `DurationThresholdInMS`-doba platnosti odkazuje na čas potřebný k načtení stránky. Pokud je tato nastavení nastavena, nejsou hlášeny stránky, které jsou načteny rychleji než tento čas.
-* `NotNeededNames` čárkami oddělený seznam názvů stránek.
-* `NotNeededUrls` – čárkami oddělený seznam fragmentů adresy URL. `"home"` například filtruje všechny stránky, které mají v adrese URL "Home".
+* `DurationThresholdInMS`- Doba trvání se vztahuje k době načtení stránky. Pokud je nastavena, stránky, které se načetly rychleji než tentokrát, nejsou hlášeny.
+* `NotNeededNames`- Seznam názvů stránek oddělených čárkami.
+* `NotNeededUrls`- Seznam fragmentů adres URL oddělených čárkami. Můžete například odfiltruje všechny stránky, `"home"` které mají v adrese URL "domov".
 
 
-### <a name="request-telemetry-filter"></a>Vyžádat filtr telemetrie
+### <a name="request-telemetry-filter"></a>Filtr telemetrie požadavku
 
 
 ```XML
@@ -126,9 +126,9 @@ V souboru ApplicationInsights. xml přidejte `TelemetryProcessors` oddíl podobn
 
 
 
-### <a name="synthetic-source-filter"></a>Filtr syntetického zdroje
+### <a name="synthetic-source-filter"></a>Syntetický zdroj, filtr
 
-Odfiltruje všechny telemetrie, které mají hodnoty vlastnosti SyntheticSource. Patří mezi ně požadavky z testů roboty, Spider a dostupnosti.
+Filtruje všechny telemetrie, které mají hodnoty v SyntheticSource vlastnost. Patří mezi ně požadavky od robotů, pavouků a testy dostupnosti.
 
 Odfiltrovat telemetrii pro všechny syntetické požadavky:
 
@@ -138,7 +138,7 @@ Odfiltrovat telemetrii pro všechny syntetické požadavky:
            <Processor type="SyntheticSourceFilter" />
 ```
 
-Odfiltrovat telemetrii pro konkrétní syntetické zdroje:
+Odfiltrovat telemetrii pro specifické syntetické zdroje:
 
 
 ```XML
@@ -148,11 +148,11 @@ Odfiltrovat telemetrii pro konkrétní syntetické zdroje:
            </Processor>
 ```
 
-* `NotNeeded` čárkami oddělený seznam syntetických názvů zdrojů.
+* `NotNeeded`- Seznam syntetických zdrojových jmen oddělených čárkami.
 
-### <a name="telemetry-event-filter"></a>Filtr událostí telemetrie
+### <a name="telemetry-event-filter"></a>Filtr události telemetrie
 
-Filtruje vlastní události (protokolované pomocí [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)).
+Filtruje vlastní události (protokolované pomocí [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)).
 
 
 ```XML
@@ -163,12 +163,12 @@ Filtruje vlastní události (protokolované pomocí [TrackEvent ()](../../azure-
 ```
 
 
-* `NotNeededNames` čárkami oddělený seznam názvů událostí.
+* `NotNeededNames`- Seznam názvů událostí oddělených čárkami.
 
 
-### <a name="trace-telemetry-filter"></a>Trasovat filtr telemetrie
+### <a name="trace-telemetry-filter"></a>Trasovací telemetrie, filtr
 
-Filtruje trasování protokolů (protokolované pomocí [TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) nebo [kolektoru rozhraní protokolování](java-trace-logs.md)).
+Filtry trasování protokolu (protokolované pomocí [TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) nebo [protokolování kolekce architektury](java-trace-logs.md)).
 
 ```XML
 
@@ -177,20 +177,20 @@ Filtruje trasování protokolů (protokolované pomocí [TrackTrace ()](../../az
            </Processor>
 ```
 
-* `FromSeverityLevel` platné hodnoty jsou:
-  *  Odfiltrovat všechna trasování
-  *  TRACE – bez filtrování. je rovno úrovni trasování
-  *  INFO – filtrování úrovně trasování
-  *  UPOZORNIT a vyfiltrovat trasování a informace
-  *  Chyba: upozornění na vyfiltrování, informace, trasování
-  *  KRITICKÉ – vyfiltrujte všechny, ale kritické.
+* `FromSeverityLevel`platné hodnoty jsou:
+  *  OFF - Odfiltrovat všechny stopy
+  *  TRASOvání - Žádné filtrování. rovná se úrovni trace
+  *  INFO - Odfiltrovat úroveň TRACE
+  *  VAROVAT - odfiltrovat trace a INFO
+  *  CHYBA - Odfiltrovat VAROVAT, INFO, TRACE
+  *  CRITICAL - odfiltrovat všechny, ale kritické
 
 
 ## <a name="custom-filters"></a>Vlastní filtry
 
-### <a name="1-code-your-filter"></a>1. kódování filtru
+### <a name="1-code-your-filter"></a>1. Kódujte filtr
 
-V kódu vytvořte třídu, která implementuje `TelemetryProcessor`:
+V kódu vytvořte třídu, `TelemetryProcessor`která implementuje :
 
 ```Java
 
@@ -227,9 +227,9 @@ V kódu vytvořte třídu, která implementuje `TelemetryProcessor`:
 ```
 
 
-### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. vyvolejte filtr v konfiguračním souboru.
+### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. Vyvolat filtr v konfiguračním souboru
 
-In ApplicationInsights.xml:
+V applicationInsights.xml:
 
 ```XML
 
@@ -246,9 +246,9 @@ In ApplicationInsights.xml:
 
 ```
 
-### <a name="3-invoke-your-filter-java-spring"></a>3. vyvolání filtru (pružina Java)
+### <a name="3-invoke-your-filter-java-spring"></a>3. Vyvolat filtr (Java spring)
 
-Pro aplikace založené na architektuře pružiny musí být vlastní procesory telemetrie registrovány v hlavní třídě aplikace jako Bob. Po spuštění aplikace se pak budou autodrátovat.
+Pro aplikace založené na rámci spring musí být vlastní telemetrické procesory registrovány ve vaší hlavní třídě aplikace jako bean. Poté budou automaticky zapojeny při spuštění aplikace.
 
 ```Java
 @Bean
@@ -257,15 +257,15 @@ public TelemetryProcessor successFilter() {
 }
 ```
 
-V `application.properties` budete muset vytvořit vlastní parametry filtru a využít k předání těchto parametrů do vlastního filtru tyto parametry. 
+Budete muset vytvořit vlastní parametry `application.properties` filtru a využít externalizované konfigurační rozhraní spring boot u dávat průchod těmto parametrům do vlastního filtru. 
 
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 *Můj filtr nefunguje.*
 
-* Ověřte, zda jste zadali platné hodnoty parametrů. Například doba trvání by měla být celá čísla. Neplatné hodnoty způsobí, že se filtr ignoruje. Pokud vlastní filtr vyvolá výjimku z konstruktoru nebo metody set, bude ignorována.
+* Zkontrolujte, zda jste zadali platné hodnoty parametrů. Například doby trvání by měla být celá čísla. Neplatné hodnoty způsobí, že filtr bude ignorován. Pokud vlastní filtr vyvolá výjimku z konstruktoru nebo metody set, bude ignorována.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vzorkování](../../azure-monitor/app/sampling.md) – zvažte vzorkování jako alternativu, která nezkosí vaše metriky.
+* [Vzorkování](../../azure-monitor/app/sampling.md) – zvažte vzorkování jako alternativu, která nezkosení metriky.

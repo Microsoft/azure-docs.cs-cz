@@ -14,23 +14,23 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
 ms.openlocfilehash: 176cd9b0bf72a123bc644ebc27ee0e091aa54e97
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245184"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
 Přiřazením IP adres k prostředkům Azure umožníte komunikaci s ostatními prostředky Azure, místní sítí a internetem. Existují dva typy IP adres, které můžete v Azure využít:
 
-* **Veřejné IP adresy:** Slouží ke komunikaci s internetem, včetně veřejně přístupných služeb Azure.
+* **Veřejné IP adresy**: Používá se pro komunikaci s Internetem, včetně veřejných služeb Azure.
 * **Privátní IP adresy:** Slouží ke komunikaci v rámci virtuální sítě Azure (VNet) a místní sítě, pokud použijete VPN Gateway nebo okruh ExpressRoute pro rozšíření vaší sítě do Azure.
 
 Prostřednictvím předpony veřejné IP adresy můžete vytvořit také souvislý rozsah statických veřejných IP adres. [Informace o předponě veřejné IP adresy](public-ip-address-prefix.md)
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  Tento článek se věnuje modelu nasazení Resource Manager, který Microsoft doporučuje pro většinu nových nasazení namísto [klasického modelu nasazení](virtual-network-ip-addresses-overview-classic.md).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasické](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  Tento článek se věnuje modelu nasazení Resource Manager, který Microsoft doporučuje pro většinu nových nasazení namísto [klasického modelu nasazení](virtual-network-ip-addresses-overview-classic.md).
 > 
 
 Pokud už klasický model nasazení znáte, prohlédněte si [rozdíly v IP adresování mezi klasickým nasazením a nasazením Resource Manageru](/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic#differences-between-resource-manager-and-classic-deployments).
@@ -45,13 +45,13 @@ Veřejné IP adresy umožňují internetovým prostředkům příchozí komunika
 * Internetové nástroje pro vyrovnávání zatížení
 * VPN Gateway
 * Application Gateway
-* Azure Firewall
+* Brána Azure Firewall
 
 ### <a name="ip-address-version"></a>Verze IP adresy
 
 Veřejné IP adresy se vytvářejí s IPv4 nebo IPv6 adresou. 
 
-### <a name="sku"></a>Skladová položka
+### <a name="sku"></a>Skladová jednotka (SKU)
 
 Veřejné IP adresy se vytvářejí s jednou z následujících SKU:
 
@@ -63,26 +63,26 @@ Veřejné IP adresy se vytvářejí s jednou z následujících SKU:
 Všechny veřejné IP adresy vytvořené před zavedením skladových položek jsou veřejné IP adresy základních SKU. Se zavedením skladových položek máte možnost pro veřejnou IP adresu určit požadovanou SKU. Adresy základních SKU:
 
 - Jsou přiřazované pomocí metody statického nebo dynamického přidělení.
-- Musí mít nastavitelný časový limit nečinnosti příchozího výstupního toku 4-30 minut, výchozí hodnota je 4 minuty a pevný časový limit odchozího pocházejícího toku je 4 minuty.
+- Mají nastavitelný příchozí pochází tok časový limit nečinnosti 4-30 minut, s výchozí 4 minuty a pevné odchozí pochází z doby nečinnosti časového limitu 4 minuty.
 - Jsou standardně otevřené.  K omezení příchozího a odchozího provozu se doporučuje použít skupiny zabezpečení sítě, ale není to nezbytné.
 - Jsou přiřazované k jakémukoli prostředku Azure, ke kterému může být přiřazena veřejná IP adresa, jako jsou například síťová rozhraní, brány VPN Gateway, brány Application Gateway a internetové nástroje pro vyrovnávání zatížení.
-- Nepodporují scénáře zón dostupnosti.  Pro scénáře zón dostupnosti je třeba použít veřejnou IP adresu standardního SKU. Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Nepodporují scénáře zóny dostupnosti.  Pro scénáře zóny dostupnosti je třeba použít veřejnou IP adresu Standardní skladová položka. Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-#### <a name="standard"></a>Standardní
+#### <a name="standard"></a>Standard
 
 Veřejné IP adresy standardních SKU jsou:
 
-- Vždy použít metodu statického přidělení.
-- Musí mít nastavitelný časový limit nečinnosti příchozího výstupního toku 4-30 minut, výchozí hodnota je 4 minuty a pevný časový limit odchozího pocházejícího toku je 4 minuty.
+- Vždy používejte statickou metodu přidělení.
+- Mají nastavitelný příchozí pochází tok časový limit nečinnosti 4-30 minut, s výchozí 4 minuty a pevné odchozí pochází z doby nečinnosti časového limitu 4 minuty.
 - Standardně zabezpečené a uzavřené vůči příchozímu provozu. Příchozí provoz je nutné explicitně povolit pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups).
-- Přiřazeno k síťovým rozhraním, standardním veřejným nástrojům pro vyrovnávání zatížení nebo aplikačním branám. Další informace o Standard Load Balancer najdete v tématu [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Zóna redundantní ve výchozím nastavení a volitelná oblast (lze vytvořit oblast a zaručit ji v konkrétní zóně dostupnosti). Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Přiřazeno k síťovým rozhraním, standardním veřejným vykladačům zatížení nebo aplikačním bránám. Další informace o standardním vyvažovači zatížení najdete [v tématu Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Zóna redundantní ve výchozím nastavení a volitelně zonální (může být vytvořena zónová a zaručena v určité zóně dostupnosti). Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
-> Příchozí komunikace se zdrojem standardní skladové položky selže, dokud nevytvoříte a nepřidružíte [skupinu zabezpečení sítě](security-overview.md#network-security-groups) a výslovně nepovolíte požadovaný příchozí provoz.
+> Příchozí komunikace se standardním zdrojem skladové položky se nezdaří, dokud nevytvoříte a nepřidružíte [skupinu zabezpečení sítě](security-overview.md#network-security-groups) a explicitně nepovolíte požadovaný příchozí provoz.
 
 > [!NOTE]
-> Při použití [služby metadata instance IMDS](../virtual-machines/windows/instance-metadata-service.md)jsou k dispozici pouze veřejné IP adresy se základní SKU. Standardní SKU se nepodporuje.
+> Při použití [služby IMDS služby metadat instance](../virtual-machines/windows/instance-metadata-service.md)jsou k dispozici pouze veřejné IP adresy se základní skladovou položkou. Standardní skladová položka není podporována.
 
 ### <a name="allocation-method"></a>Metoda přidělování
 
@@ -106,16 +106,16 @@ Statické veřejné IP adresy se obvykle používají v následujících scéná
 >
 
 ### <a name="dns-hostname-resolution"></a>Překlad názvů hostitelů DNS
-Můžete zadat popisek názvu domény DNS pro veřejný IP prostředek. Na serverech DNS spravovaných Azure se vytvoří mapování *popisek_názvu_domény*.*umístění*.cloudapp.azure.com na veřejnou IP adresu. Pokud například vytvoříte prostředek s veřejnou IP adresou, který jako **popisek_názvu_domény** má *contoso* a jako **umístění** v Azure používá *USA – západ*, plně kvalifikovaný název domény (FQDN) **contoso.westus.cloudapp.azure.com** se přeloží na veřejnou IP adresu tohoto prostředku.
+Můžete zadat popisek názvu domény DNS pro veřejný IP prostředek. Na serverech DNS spravovaných Azure se vytvoří mapování *popisek_názvu_domény*.*umístění*.cloudapp.azure.com na veřejnou IP adresu. Pokud například vytvoříte prostředek s veřejnou IP adresou, který jako *popisek_názvu_domény* má **contoso** a jako *umístění* v Azure používá **USA – západ**, plně kvalifikovaný název domény (FQDN) **contoso.westus.cloudapp.azure.com** se přeloží na veřejnou IP adresu tohoto prostředku.
 
 > [!IMPORTANT]
 > Každý vytvořený popisek názvu domény musí být v rámci příslušného umístění Azure jedinečný.  
 >
 
-### <a name="dns-best-practices"></a>Osvědčené postupy DNS
-Pokud budete někdy potřebovat migrovat do jiné oblasti, nemůžete migrovat plně kvalifikovaný název domény vaší veřejné IP adresy. Jako osvědčený postup můžete použít plně kvalifikovaný název domény k vytvoření vlastního záznamu CNAME domény odkazujícího na veřejnou IP adresu v Azure. Pokud potřebujete přejít na jinou veřejnou IP adresu, bude potřeba aktualizovat záznam CNAME, aniž byste museli ručně aktualizovat plně kvalifikovaný název domény na novou adresu. Pro záznam DNS můžete použít [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) nebo externího poskytovatele DNS. 
+### <a name="dns-best-practices"></a>Doporučené postupy pro DNS
+Pokud budete někdy potřebovat migrovat do jiné oblasti, nemůžete migrovat hlavní přístupkový soubor veřejné IP adresy. Jako osvědčený postup můžete použít hlavní název domény k vytvoření vlastní domény CNAME záznam ukazující na veřejnou IP adresu v Azure. Pokud potřebujete přejít na jinou veřejnou IP adresu, bude vyžadovat aktualizaci záznamu CNAME namísto ruční aktualizace hlavního názvu na novou adresu. Pro záznam DNS můžete použít [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) nebo externího poskytovatele DNS. 
 
-### <a name="virtual-machines"></a>Virtuální počítače
+### <a name="virtual-machines"></a>Virtual Machines
 
 Veřejnou IP adresu můžete k virtuálnímu počítači s [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linuxem](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přidružit tak, že ji přiřadíte jeho **síťovému rozhraní**. Virtuálnímu počítači můžete přiřadit dynamickou nebo statickou veřejnou IP adresu. Další informace o [přiřazování IP adres k síťovým rozhraním](virtual-network-network-interface-addresses.md).
 
@@ -129,17 +129,17 @@ Veřejnou IP adresu vytvořenou s kteroukoli [SKU](#sku) můžete přiřadit slu
 
 ### <a name="application-gateways"></a>Application Gateway
 
-Veřejnou IP adresu můžete přiřadit službě [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) tak, že ji přiřadíte konfiguraci **front-endu** této brány. Tato veřejná IP adresa slouží jako virtuální IP adresa (VIP) s vyrovnáváním zatížení. Konfiguraci front-endu služby Application Gateway v1 můžete přiřadit jenom *dynamickou* základní veřejnou IP adresu a jenom *STATICKOU* standardní adresu SKU na konfiguraci front-endu v2.
+Veřejnou IP adresu můžete přiřadit službě [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) tak, že ji přiřadíte konfiguraci **front-endu** této brány. Tato veřejná IP adresa slouží jako virtuální IP adresa (VIP) s vyrovnáváním zatížení. *Dynamickou* základní veřejnou IP adresu můžete přiřadit pouze k front-endové konfiguraci front-endu aplikační brány V1 a pouze *statickou* standardní adresu skladové položky pro konfiguraci front-endu V2.
 
 ### <a name="at-a-glance"></a>Přehledně
 Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím je možné veřejnou IP adresu přiřadit prostředku nejvyšší úrovně, a metody přidělení (dynamické nebo statické), které je možné použít.
 
-| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamické | Statické |
+| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Statická |
 | --- | --- | --- | --- |
 | Virtuální počítač |Síťové rozhraní |Ano |Ano |
 | Internetový nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
 | VPN Gateway |Konfigurace protokolu IP brány |Ano |Ne |
-| Application Gateway |Konfigurace front-endu |Ano (jenom V1) |Ano (jenom v2) |
+| Application Gateway |Konfigurace front-endu |Ano (pouze V1) |Ano (pouze V2) |
 
 ## <a name="private-ip-addresses"></a>Privátní IP adresy
 Privátní IP adresy umožňují prostředkům Azure komunikovat s ostatními prostředky ve [virtuální](virtual-networks-overview.md) nebo místní síti prostřednictvím brány sítě VPN nebo okruhu ExpressRoute, a to bez použití IP adresy dostupné na internetu.
@@ -152,14 +152,14 @@ V modelu nasazení Azure Resource Manager se IP adresa přidruží k následují
 
 ### <a name="allocation-method"></a>Metoda přidělování
 
-Privátní IP adresa se přiděluje z rozsahu adres podsítě virtuální sítě, ve které je prostředek nasazený. Azure si v rozsahu adres každé podsítě vyhrazuje první čtyři adresy, takže se tyto adresy nepřiřazují prostředkům. Pokud je například rozsah adres podsítě 10.0.0.0/16, adresy 10.0.0.0-10.0.0.3 a 10.0.255.255 nelze přiřadit k prostředkům. IP adresy v rámci rozsahu adres podsítě je možné v každém okamžiku přiřadit jenom jednomu prostředku. 
+Privátní IP adresa se přiděluje z rozsahu adres podsítě virtuální sítě, ve které je prostředek nasazený. Azure si v rozsahu adres každé podsítě vyhrazuje první čtyři adresy, takže se tyto adresy nepřiřazují prostředkům. Pokud je například rozsah adres podsítě 10.0.0.0/16, nelze zdrojům přiřadit adresy 10.0.0.0-10.0.0.3 a 10.0.255.255. IP adresy v rámci rozsahu adres podsítě je možné v každém okamžiku přiřadit jenom jednomu prostředku. 
 
 Existují dvě metody přidělování privátní IP adresy:
 
 - **Dynamická:** Azure přiřadí další dostupnou nepřiřazenou nebo nevyhrazenou IP adresu v rozsahu adres podsítě. Azure novému prostředku například přiřadí 10.0.0.10, pokud adresy 10.0.0.4-10.0.0.9 jsou už přiřazené jiným prostředkům. Dynamická metoda přidělování je výchozí metoda. Jakmile jsou dynamické IP adresy přiřazené, uvolní se pouze v případě odstranění síťového rozhraní, jeho přiřazení k jiné podsíti ve stejné virtuální síti nebo změně metody přidělování na statickou a zadání jiné IP adresy. Když změníte metodu přidělování z dynamické na statickou, Azure ve výchozím nastavení jako statickou IP adresu přiřadí dříve dynamicky přiřazenou adresu.
 - **Statická:** Vyberete a přiřadíte libovolnou nepřiřazenou nebo nevyhrazenou IP adresu v rozsahu adres podsítě. Pokud rozsah adres podsítě je například 10.0.0.0/16 a adresy 10.0.0.4-10.0.0.9 jsou už přiřazené jiným prostředkům, můžete přiřadit libovolnou adresu mezi 10.0.0.10 a 10.0.255.254. Statické adresy se uvolní pouze v případě odstranění síťového rozhraní. Pokud změníte metodu přidělování na dynamickou, Azure jako dynamickou adresu dynamicky přiřadí dříve přiřazenou statickou IP adresu, a to i v případě, že tato adresa není další dostupnou adresou v rozsahu adres podsítě. Adresa se změní také v případě přiřazení síťového rozhraní k jiné podsíti ve stejné virtuální síti. Pokud však chcete síťové rozhraní přiřadit k jiné podsíti, musíte nejprve změnit metodu přidělování ze statické na dynamickou. Jakmile přiřadíte síťové rozhraní k jiné podsíti, můžete metodu přidělování změnit zpět na statickou a přiřadit IP adresu z rozsahu adres nové podsítě.
 
-### <a name="virtual-machines"></a>Virtuální počítače
+### <a name="virtual-machines"></a>Virtual Machines
 
 Jedna nebo několik privátních IP adres se přiřazuje k jednomu nebo několika **síťovým rozhraním** virtuálního počítače s [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linuxem](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro každou privátní IP adresu můžete určit dynamickou nebo statickou metodu přidělování.
 
@@ -178,10 +178,10 @@ Privátní IP adresu můžete přiřadit konfiguraci **front-endu** nástroje [A
 ### <a name="at-a-glance"></a>Přehledně
 Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím je možné privátní IP adresu přiřadit prostředku nejvyšší úrovně, a metody přidělení (dynamické nebo statické), které je možné použít.
 
-| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamické | Statické |
+| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Statická |
 | --- | --- | --- | --- |
 | Virtuální počítač |Síťové rozhraní |Ano |Ano |
-| Load Balancer |Konfigurace front-endu |Ano |Ano |
+| Nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
 | Application Gateway |Konfigurace front-endu |Ano |Ano |
 
 ## <a name="limits"></a>Omezení

@@ -1,7 +1,7 @@
 ---
 title: Analýza změn zákazníků
 titleSuffix: ML Studio (classic) - Azure
-description: Případová studie vývoje integrovaného modelu pro analýzu a vyhodnocování změn zákazníků pomocí Azure Machine Learning Studio (Classic).
+description: Případová studie vývoje integrovaného modelu pro analýzu a vyhodnocování změn zákazníků pomocí Azure Machine Learning Studio (classic).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,221 +11,221 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/18/2017
 ms.openlocfilehash: 4cf918abae51ca330054ef86e57095d29a21a37a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204524"
 ---
-# <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Analýza změn zákazníků pomocí Azure Machine Learning Studio (Classic)
+# <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Analýza změn zákazníků pomocí Azure Machine Learning Studio (klasická)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 ## <a name="overview"></a>Přehled
-Tento článek představuje referenční implementaci projektu analýzy změn zákazníků, který je sestavený pomocí Azure Machine Learning Studio (Classic). V tomto článku se podíváme na přidružených modelech obecné pro holistické řešení problému přechodu firemních zákazníků změn. Můžeme také měřit přesnost modelů, které jsou vytvořeny pomocí Machine Learning a posoudit pokynů pro další vývoj.  
+Tento článek představuje referenční implementaci projektu analýzy změn zákazníků, který je vytvořen pomocí Azure Machine Learning Studio (classic). V tomto článku se zabýváme přidruženými obecnými modely pro holisticky řešení problému průmyslových změn zákazníků. Měříme také přesnost modelů, které jsou vytvořeny pomocí strojového učení, a vyhodnocujeme pokyny pro další vývoj.  
 
 ### <a name="acknowledgements"></a>Poděkování
-Tento experiment jsme vyvinuli a otestovali Serge Berger, hlavními vědeckými daty v Microsoftu a Roger Bargy, dříve produktovým manažerem pro Microsoft Azure Machine Learning Studio (Classic). Děkujeme za jejich má tým dokumentace Azure potvrzuje své znalosti a díky pro tento dokument white paper pro sdílení obsahu.
+Tento experiment byl vyvinut a testován Serge Bergerem, hlavním datovým vědcem společnosti Microsoft, a Rogerem Bargou, dříve produktovým manažerem pro Microsoft Azure Machine Learning Studio (klasika). Dokumentační tým Azure vděčně oceňuje jejich odborné znalosti a děkuje jim za sdílení této bílé knihy.
 
 > [!NOTE]
-> Data pro tento experiment není veřejně k dispozici. Příklad vytvoření modelu strojového učení pro analýzu změn najdete v tématu: [Šablona modelu maloobchodních](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) změn v [Azure AI Gallery](https://gallery.azure.ai/)
+> Data použitá pro tento experiment nejsou veřejně dostupná. Příklad, jak vytvořit model strojového učení pro analýzu změn, najdete v [tématu: Šablona modelu maloobchodních změn](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) v [Galerii Azure AI](https://gallery.azure.ai/)
 > 
 > 
 
 
 
-## <a name="the-problem-of-customer-churn"></a>Problém výpovědi zákazníků
-Firmy na trhu příjemce a ve všech odvětvích enterprise mají se změny. Někdy je příliš vysoká četnost změn a ovlivňuje rozhodnutí o zásadách. Tradiční řešení je k předvídání vysoce tendence churners a řešit jejich potřeby prostřednictvím služby concierge marketingových kampaní, nebo použitím zvláštní výjimky. Tyto přístupy se může lišit od odvětví průmyslu. Můžete dokonce se liší podle konkrétního příjemce clusteru v rámci jednoho oboru (například telekomunikace).
+## <a name="the-problem-of-customer-churn"></a>Problém konve zákazníků
+Podniky na spotřebitelském trhu a ve všech odvětvích podnikání se musí vypořádat s konvemi. Někdy je konve nadměrná a ovlivňuje politická rozhodnutí. Tradičním řešením je předpovídat churners s vysokým sklonem a řešit jejich potřeby prostřednictvím služby concierge, marketingových kampaní nebo použitím speciálních dispensací. Tyto přístupy se mohou v jednotlivých odvětvích lišit. Mohou se dokonce lišit od konkrétního spotřebitelského klastru k jinému v rámci jednoho odvětví (například telekomunikací).
 
-Běžné faktorem je, podniky potřebují, chcete-li minimalizovat tyto aktivity dál rozšiřuji uchování speciální zákazníka. Proto by bylo skóre každý zákazník s pravděpodobnost výpovědi a řešit N nejlepších ty přirozené metody. Hlavní zákazníky může být těm, které jsou nejvíce ziskové. Ve složitějších scénářích je například zisk funkce použijí při výběru kandidáty pro zvláštní výjimku. Tyto aspekty jsou však pouze součástí komplexní strategie pro řešení změn. Také firem vzít v účtu rizika (a související odolnosti vůči rizikům), úroveň a náklady na zásah a segmentu přesvědčivého zákazníků.  
+Společným faktorem je, že podniky musí minimalizovat tyto speciální úsilí o udržení zákazníků. Přirozenou metodikou by tedy bylo skóre každého zákazníka s pravděpodobností konve a řešení nejvyšších N. Nejlepší zákazníci mohou být ty nejziskovější. Například v sofistikovanějších scénářích se při výběru kandidátů na zvláštní výjimku používá funkce zisku. Tyto úvahy jsou však pouze součástí kompletní strategie pro řešení změn. Podniky musí také brát v úvahu riziko (a související toleranci vůči riziku), úroveň a náklady na intervenci a přijatelnou segmentaci zákazníků.  
 
-## <a name="industry-outlook-and-approaches"></a>Outlook odvětví a přístupů
-Sofistikované zpracování změn je znak až po zralé odvětví. Klasickým příkladem je odvětví telekomunikace, ve kterém se ví často přepínání z jednoho poskytovatele do jiného předplatitele. Těchto dobrovolné častých změn dat je primárním zájmem. Kromě toho poskytovatelé shromáždili významné znalosti o *ovladačích*změn, což jsou faktory, které umožňují zákazníkům přepínat.
+## <a name="industry-outlook-and-approaches"></a>Výhled a přístupy průmyslu
+Sofistikované zacházení s konveje je známkou zralého průmyslu. Klasickým příkladem je telekomunikační průmysl, kde je známo, že předplatitelé často přecházejí z jednoho poskytovatele na druhého. Tato dobrovolná konve je prvořadým zájmem. Poskytovatelé navíc nashromáždili významné znalosti o *ovladačích konve*, což jsou faktory, které vedou zákazníky k přechodu.
 
-Například telefonu nebo zařízení je dobře známé ovladač četností změn ve firmě mobilního telefonu. Oblíbené zásady v důsledku toho je subvencovat cena telefonu pro nové předplatitele a účtovat plné ceny pro stávající zákazníky na upgrade. Tyto zásady v minulosti vedlo k zákazníkům přepínání z jednoho poskytovatele do druhého a získat tak nové slevu. To, pak má zprostředkovatele pro upřesnění jejich strategie výzva.
+Například, telefon nebo zařízení volba je známý řidič konve v mobilním telefonu podnikání. V důsledku toho je populární politikou dotovat cenu za sluchátko pro nové předplatitele a účtovat plnou cenu stávajícím zákazníkům za upgrade. Historicky tato politika vedla k tomu, že zákazníci skákali od jednoho poskytovatele k druhému, aby získali novou slevu. To zase přimělo poskytovatele, aby své strategie zpřesňovali.
 
-Vysoká volatility v nabídkách telefonního sluchátka je faktor, který rychle zruší platnost modely četností změn, které jsou založeny na aktuální modely telefonu. Kromě toho mobilní telefony nejsou pouze telekomunikační zařízení, jsou také podporuje příkazy (vezměte v úvahu iPhone). Tyto sociální prediktory jsou nad rámec regulární telekomunikace datových sad.
+Vysoká volatilita v nabídce sluchátek je faktorem, který rychle ruší modely konve, které jsou založeny na aktuálních modelech sluchátek. Kromě toho, mobilní telefony nejsou jen telekomunikační zařízení, ale jsou také módní prohlášení (zvažte iPhone). Tyto sociální prediktory jsou mimo rozsah běžných telekomunikačních datových souborů.
 
-Net výsledek pro modelování je zvukový zásad nelze navrhnout jednoduše tak, že odstranění známých důvody pro změny. V podstatě je **povinná**strategie průběžného modelování, včetně klasických modelů, které kvantifikují proměnné kategorií (například rozhodovací stromy).
+Čistý výsledek pro modelování je, že nelze navrhnout zvuk zásady jednoduše odstraněním známé důvody pro konve. Ve skutečnosti je **povinná**strategie průběžného modelování, včetně klasických modelů, které kvantifikují kategorické proměnné (například rozhodovací stromy).
 
-Použití velkých datových sad na zákazníky, organizace provádění analýzy velkých objemů dat (zejména detekce změn na základě velkých objemů dat) jako efektivního přístupu k problému. Můžete najít další informace o přístupu velkých objemů dat na problém ve doporučení v části ETL.  
+Pomocí velkých objemových datových sad na svých zákaznících provádějí organizace analýzu velkých objemů dat (zejména detekci konve na základě velkých objemů dat) jako účinný přístup k problému. Další informace o přístupu k problému změn o velkých objemech naleznete v části Doporučení na ETL.  
 
-## <a name="methodology-to-model-customer-churn"></a>Metodologie k fluktuaci zákazníků modelu
-Běžné řešení problémů procesu k vyřešení výpovědi zákazníků je znázorněn v obrázky 1 – 3:  
+## <a name="methodology-to-model-customer-churn"></a>Metodika modelování konve zákazníků
+Na obrázcích 1-3 je znázorněn běžný proces řešení problémů pro řešení změn zákazníků:  
 
-1. Model rizika umožňuje zvažte, jaký vliv na akce pravděpodobnosti a rizika.
-2. Model zásah můžete vzít v úvahu, jak úroveň zásah by mohly ovlivnit pravděpodobnost výpovědi a množství zákazníků hodnotu doby života (CLV).
-3. Tato analýza různě kvalitativní analýze, který je eskalován jej proaktivní marketingovou kampaň, která cílí na segmenty zákazníků k zajištění optimální nabídky.  
+1. Rizikový model umožňuje zvážit, jak akce ovlivňují pravděpodobnost a riziko.
+2. Intervenční model umožňuje zvážit, jak by úroveň zásahu mohla ovlivnit pravděpodobnost změn a množství hodnoty životnosti zákazníka (CLV).
+3. Tato analýza se hodí ke kvalitativní analýze, která je eskalována na proaktivní marketingovou kampaň, která se zaměřuje na segmenty zákazníků, aby poskytla optimální nabídku.  
 
-![Diagram znázorňující, jak odolnost proti riziku a modely rozhodování vykazují užitečné poznatky](./media/azure-ml-customer-churn-scenario/churn-1.png)
+![Diagram znázorňující, jak tolerance rizika a rozhodovací modely poskytují užitečné přehledy](./media/azure-ml-customer-churn-scenario/churn-1.png)
 
-Tento přístup vpřed vypadající je nejlepší způsob, jak zpracovávat změny, ale obsahuje složitost: máme pro vývoj vícemodelová archetype a trasování závislosti mezi modely. Interakce mezi modely lze zapouzdřit, jak je znázorněno v následujícím diagramu:  
+Tento přístup hledící dopředu je nejlepší způsob, jak zacházet s konve, ale přichází s složitostí: musíme vyvinout vícemodelový archetyp a trasování závislostí mezi modely. Interakce mezi modely může být zapouzdřena, jak je znázorněno na následujícím diagramu:  
 
-![Diagram interakce modelu změn](./media/azure-ml-customer-churn-scenario/churn-2.png)
+![Diagram interakce modelu churn](./media/azure-ml-customer-churn-scenario/churn-2.png)
 
-*Obrázek 4: sjednocení Archetype s více modely*  
+*Obrázek 4: Jednotný vícemodelový archetyp*  
 
-Interakce mezi modely je klíč, pokud se nám poskytovat holistický přístup k udržení zákazníků. Každý model je nutně zhoršený v čase; Proto je architektura implicitní smyčka (podobně jako Archetype sada se standardem dolování dat, [***3***]).  
+Interakce mezi modely je klíčová, máme-li zajistit holistický přístup k udržení zákazníků. Každý model nutně degraduje v průběhu času; proto architektura je implicitní smyčka (podobně jako archetyp nastavený standardem dolování dat CRISP-DM, [***3***]).  
 
-Celkové cyklu riziko rozhodnutí marketingových segmentace/rozložené je stále zobecněný strukturu, která platí pro mnoho obchodních problémů. Analýzy změn je jednoduše silné zástupce této skupiny problémů, protože vykazuje osobnostní rysy komplexní obchodní problém, který neumožňuje zjednodušené prediktivní řešení. Sociální aspektů moderní přístup ke změny nejsou zejména zvýrazněno přístup, ale na sociálních sítích aspekty jsou zapouzdřeny v archetype modelování, jako by byly v jakékoli modelu.  
+Celkový cyklus segmentace/rozkladu rizika a rozhodování o marketingu je stále zobecněnou strukturou, která je použitelná pro mnoho obchodních problémů. Analýza konve je prostě silným zástupcem této skupiny problémů, protože vykazuje všechny rysy složitého obchodního problému, který neumožňuje zjednodušené prediktivní řešení. Sociální aspekty moderního přístupu k konve nejsou nijak zvlášť zdůrazněny v přístupu, ale sociální aspekty jsou zapouzdřeny v modelování archetypu, jak by tomu bylo v každém modelu.  
 
-Doplněk zajímavé zde je analýzy velkých objemů dat. Dnešní telekomunikace a prodejní firmy shromažďování vyčerpávající dat o svých zákazníků a jsme můžete snadno předvídat, potřebné pro více modelů připojení se stanou běžné trend dané nově vznikající trendy, jako je například Internet věcí a všudypřítomná zařízení, které umožňují firmy, abyste mohli využívat inteligentní řešení na více úrovních.  
+Zajímavým doplňkem je analýza velkých objemů dat. Dnešní telekomunikační a maloobchodní podniky shromažďují vyčerpávající údaje o svých zákaznících a my můžeme snadno předvídat, že potřeba vícemodelové konektivity se stane společným trendem vzhledem k novým trendům, jako je internet věcí a všudypřítomné zařízení, která umožňují podnikům využívat inteligentní řešení na více vrstvách.  
 
  
 
-## <a name="implementing-the-modeling-archetype-in-machine-learning-studio-classic"></a>Implementace Archetype modelování v Machine Learning Studio (Classic)
-Jaký problém je popsaný, jaký je nejlepší způsob, jak implementovat integrovaný modelování a přístup k bodování? V této části ukážeme, jak se to provádí pomocí Azure Machine Learning Studio (Classic).  
+## <a name="implementing-the-modeling-archetype-in-machine-learning-studio-classic"></a>Implementace modelovacího archetypu ve Studiu strojového učení (klasika)
+Vzhledem k popsanému problému, jaký je nejlepší způsob, jak implementovat integrovaný modelovací a bodový přístup? V této části ukážeme, jak jsme toho dosáhli pomocí Azure Machine Learning Studio (klasické).  
 
-Více modelů přístup je nezbytnost při navrhování globální archetype pro změny. I bodování (prediktivní) část přístup by měl být více modelů.  
+Přístup více modelů je nutné při navrhování globální archetyp pro konve. Dokonce i bodování (prediktivní) část přístupu by měla být vícemodelová.  
 
-Následující diagram znázorňuje prototyp, který jsme vytvořili, který využívá čtyři algoritmy bodování v Machine Learning Studio (Classic) k předpovědi změn. Důvod pro více modelů přístup je jenom pro účely vytvoření třídění skupiny stromů zvýšit přesnost, ale také pro ochranu před útoky over-pass-the přizpůsobování a zlepšení výběr Doporučené funkce.  
+Následující diagram znázorňuje prototyp, který jsme vytvořili, který využívá čtyři algoritmy bodování v Machine Learning Studio (klasické) předpovědět konve. Důvodem pro použití přístupu s více modely je nejen vytvoření klasifikátoru souboru pro zvýšení přesnosti, ale také pro ochranu před nadměrnou montáží a zlepšení výběru normativních funkcí.  
 
-![Snímek obrazovky znázorňující komplexní pracovní prostor studia (klasické) s mnoha propojenými moduly](./media/azure-ml-customer-churn-scenario/churn-3.png)
+![Snímek obrazovky znázorňující složitý pracovní prostor Studio (klasický) s mnoha propojenými moduly](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
-*Obrázek 5: prototypy přístupu k modelování změn*  
+*Obrázek 5: Prototyp přístupu modelování konve*  
 
-Následující části obsahují další podrobnosti o modelu bodování prototypu, který jsme implementovali pomocí Machine Learning Studio (Classic).  
+Následující části obsahují další podrobnosti o modelu hodnocení prototypu, který jsme implementovali pomocí Machine Learning Studio (classic).  
 
-### <a name="data-selection-and-preparation"></a>Výběr dat a příprava
-Data se používají k vytváření modelů a zákazníci skóre byl získán z svislé řešení CRM, s daty obfuskovaný na ochranu soukromí zákazníků. Data obsahují informace o předplatných 8 000 v USA a kombinuje tři zdroje: zřizování data (metadata odběru), data o aktivitě (použití systému) a data podpory zákazníků. Data nezahrnují informace o zákaznících, které se týkají podniku; nezahrnuje například věrnostní metadata ani skóre kreditů.  
+### <a name="data-selection-and-preparation"></a>Výběr a příprava dat
+Data použitá k sestavení modelů a skóre zákazníků byla získána z vertikálního řešení CRM, přičemž data byla zamlžena, aby byla chráněna soukromí zákazníků. Data obsahují informace o 8 000 předplatných v USA a kombinují tři zdroje: zřizování dat (metadata předplatného), data o aktivitách (využití systému) a data zákaznické podpory. Data neobsahují žádné obchodní informace o zákaznících; například neobsahuje věrnostní metadata nebo kreditní skóre.  
 
-Pro zjednodušení ETL a procesy pro čištění dat jsou mimo rozsah protože předpokládáme, že už má přípravu dat neprovedlo jinde.
+Pro jednoduchost jsou procesy ETL a čištění dat mimo rozsah, protože předpokládáme, že příprava dat již byla provedena jinde.
 
-Výběr funkce pro modelování je založená na významu předběžné vyhodnocení sady prediktory, součástí procesu, který používá modul náhodné doménové struktury. Pro implementaci v Machine Learning Studio (Classic) jsme vypočítali průměrnou, mediánovou a rozsah pro zástupce funkcí. Například jsme přidali agregace kvalitativní dat, jako je například minimální a maximální hodnoty pro aktivity uživatelů.
+Výběr funkcí pro modelování je založen na předběžném vyhodnocování významnosti sady prediktorů, které jsou součástí procesu, který používá modul náhodné doménové struktury. Pro implementaci v Machine Learning Studio (klasické), jsme vypočítali průměr, medián a rozsahy pro reprezentativní funkce. Například jsme přidali agregace pro kvalitativní data, jako jsou minimální a maximální hodnoty pro aktivitu uživatele.
 
-Také zachyceného dočasné informace pro posledních šest měsíců. Analyzovali jsme data po dobu jednoho roku a nastavení jsme, že i v případě, že došlo k statisticky významná trendy, vliv na četnosti změn je výrazně oslabená po šesti měsících.  
+Také jsme zachytili časové informace za posledních šest měsíců. Analyzovali jsme data za jeden rok a zjistili jsme, že i když došlo ke statisticky významným trendům, účinek na konve se po šesti měsících výrazně snižuje.  
 
-Nejdůležitějším bodem je, že celý proces, včetně ETL, výběru funkcí a modelování, byl implementován v Machine Learning Studio (Classic) pomocí datových zdrojů v Microsoft Azure.   
+Nejdůležitější je, že celý proces, včetně ETL, výběr funkcí a modelování byl implementován v Machine Learning Studio (klasické), pomocí zdrojů dat v Microsoft Azure.   
 
-Následující obrázky znázorňují data, která byla použita.  
+Následující diagramy znázorňují data, která byla použita.  
 
-![Snímek obrazovky znázorňující ukázku dat použitých s nezpracovanými hodnotami](./media/azure-ml-customer-churn-scenario/churn-4.png)
+![Snímek obrazovky s ukázkou dat použitých s nezpracovanými hodnotami](./media/azure-ml-customer-churn-scenario/churn-4.png)
 
-*Obrázek 6: výňatek ze zdroje dat (zakódováno)*  
+*Obrázek 6: Výňatek ze zdroje dat (zamlžený)*  
 
-![Snímek obrazovky znázorňující statistické funkce extrahované ze zdroje dat](./media/azure-ml-customer-churn-scenario/churn-5.png)
+![Snímek obrazovky se statistickými funkcemi extrahovanými ze zdroje dat](./media/azure-ml-customer-churn-scenario/churn-5.png)
 
-*Obrázek 7: funkce extrahované ze zdroje dat*
+*Obrázek 7: Funkce extrahované ze zdroje dat*
  
 
-> Všimněte si, že tato data jsou privátní a proto není možné model a data sdílet.
-> U podobných modelů, které používají veřejně dostupná data, se ale v tomto ukázkovém experimentu [Azure AI Gallery](https://gallery.azure.ai/): [výpovědi změny zákazníků](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Všimněte si, že tato data jsou soukromá, a proto nelze sdílet model a data.
+> Pro podobný model s využitím veřejně dostupných dat však naleznete v tomto ukázkovém experimentu v [galerii Azure AI](https://gallery.azure.ai/): [Telco Customer Churn](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
-> Pokud se chcete dozvědět víc o tom, jak můžete model analýzy změn implementovat pomocí Cortana Intelligence Suite, doporučujeme vám také [Toto video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) od vedoucího programu Hyong tok. 
+> Chcete-li se dozvědět více o tom, jak můžete implementovat model analýzy konve pomocí Cortana Intelligence Suite, doporučujeme také [toto video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) od Senior Program Manager Wee Hyong Tok. 
 > 
 > 
 
-### <a name="algorithms-used-in-the-prototype"></a>Algoritmy používané v prototypu
-Následující čtyři algoritmů strojového učení jsme použili k vytvoření prototypu (bez přizpůsobení):  
+### <a name="algorithms-used-in-the-prototype"></a>Algoritmy použité v prototypu
+K sestavení prototypu jsme použili následující čtyři algoritmy strojového učení (bez přizpůsobení):  
 
-1. Logistické regrese (LR)
+1. Logistická regrese (LR)
 2. Posílený rozhodovací strom (BT)
-3. Průměrné perceptron (AP)
-4. Podpora vector machine (SVM)  
+3. Průměrný perceptron (AP)
+4. Podpůrný vektorový stroj (SVM)  
 
-Následující diagram znázorňuje části návrhové plochy experiment, který určuje pořadí, ve kterém byly vytvořeny modely:  
+Následující diagram znázorňuje část návrhu plochy experimentu, která označuje pořadí, ve kterém byly vytvořeny modely:  
 
-![Snímek obrazovky s malým oddílem plátna experimentu studia](./media/azure-ml-customer-churn-scenario/churn-6.png)  
+![Snímek obrazovky s malou částí plátna studiového experimentu](./media/azure-ml-customer-churn-scenario/churn-6.png)  
 
-*Obrázek 8: vytváření modelů v Machine Learning Studio (klasické)*  
+*Obrázek 8: Vytváření modelů ve studiu Strojového učení (klasické)*  
 
-### <a name="scoring-methods"></a>Vyhodnocení metody
-Jsme skóre čtyři modely s využitím s popiskem trénovací datové sady.  
+### <a name="scoring-methods"></a>Metody hodnocení
+Čtyři modely jsme získali pomocí popisované trénovací datové sady.  
 
-Můžeme také odeslat bodování datovou sadu, která srovnatelné model sestavený pomocí klasické pracovní plochy edice SAS Enterprise Miner 12. Naměřenou přesnost modelu SAS a všech čtyř Machine Learning Studioch (klasických) modelů.  
+Také jsme odeslali datovou sadu hodnocení do srovnatelného modelu vytvořeného pomocí desktopové edice SAS Enterprise Miner 12. Změřili jsme přesnost modelu SAS a všech čtyř modelů Machine Learning Studio (klasické).  
 
 ## <a name="results"></a>Výsledky
-V této části Představujeme naše poznatky o přesnost modelů, které jsou založené na hodnocení datové sadě.  
+V této části uvádíme naše zjištění o přesnosti modelů na základě datové sady bodování.  
 
 ### <a name="accuracy-and-precision-of-scoring"></a>Přesnost a přesnost bodování
-Obecně platí, že implementace v Azure Machine Learning Studio (Classic) je za přesností SAS přibližně o 10-15% (oblast pod křivkou nebo AUC).  
+Obecně platí, že implementace v Azure Machine Learning Studio (klasické) je za Přesnost SAS přibližně o 10-15% (Plocha pod křivkou nebo AUC).  
 
-Nejdůležitější metrika v měně je však **nechybná** míra klasifikace: to znamená horních N změn, které byly předpovězeny tříděním, které jsou ve skutečnosti nezměněné a které ještě přijaly zvláštní ošetření? Následující diagram porovnává tohoto kurzu chybnou pro všechny modely:  
+Nejdůležitější metrikou v konve je však míra chybné klasifikace: to znamená, že z nejlepších n churners, jak předpověděl klasifikátor, který z nich ve skutečnosti nekonve, a přesto obdržel zvláštní zacházení? **not** Následující diagram porovnává tuto míru chybné klasifikace pro všechny modely:  
 
-![Oblast pod grafem křivky porovnáním výkonu 4 algoritmů](./media/azure-ml-customer-churn-scenario/churn-7.png)
+![Plocha pod křivkovým grafem porovnávající výkon 4 algoritmů](./media/azure-ml-customer-churn-scenario/churn-7.png)
 
-*Obrázek 9: oblast Passau prototypu pod křivkou*
+*Obrázek 9: Plocha prototypu Pasova pod křivkou*
 
 ### <a name="using-auc-to-compare-results"></a>Použití AUC k porovnání výsledků
-Plocha pod křivkou (AUC) je metrika, která představuje globální míru *separability* mezi distribucí výsledků pro pozitivní a negativní populaci. Se podobá tradiční grafu příjemce operátor charakteristiku (roc s více TŘÍDAMI), ale jeden důležitý rozdíl je, že AUC metrika není nutné zvolit prahovou hodnotu. Místo toho shrnuje výsledky přes **všechny** možné volby. Naproti tomu tradiční roc s více TŘÍDAMI graf zobrazuje míru pozitivních výsledků svislá osa a míru falešně pozitivních výsledků na vodorovné ose a prahovou hodnotu klasifikace se liší.   
+Oblast pod křivkou (AUC) je metrika, která představuje globální měřítko *oddělitelnosti* mezi rozdělením skóre pro pozitivní a negativní populace. Je podobný grafu tradiční charakteristiky operátora přijímače (ROC), ale jeden důležitý rozdíl je, že metrika AUC nevyžaduje, abyste zvolili prahovou hodnotu. Místo toho shrnuje výsledky nad **všemi** možnými volbami. Naproti tomu tradiční graf ROC zobrazuje kladnou míru na svislé ose a falešně pozitivní míru na vodorovné ose a prahová hodnota klasifikace se liší.   
 
-AUC se používá jako měřítko pro různé algoritmy (nebo různé systémy), protože umožňuje porovnat modely pomocí jejich hodnot AUC. Toto je oblíbený přístup v oborech jako jsou meteorologické a biosciences. Proto AUC představuje oblíbený nástroj pro vyhodnocení výkonu třídění.  
+AUC se používá jako měřítko hodnoty pro různé algoritmy (nebo různé systémy), protože umožňuje porovnávání modelů pomocí jejich hodnot AUC. To je populární přístup v odvětvích, jako je meteorologie a biovědy. AUC tedy představuje populární nástroj pro hodnocení výkonu klasifikátoru.  
 
-### <a name="comparing-misclassification-rates"></a>Porovnání chybnou sazby
-Porovnáním chybnou sazby na této datové sadě s použitím dat CRM přibližně 8 000 předplatných.  
+### <a name="comparing-misclassification-rates"></a>Porovnání míry chybné klasifikace
+Porovnali jsme míry chybné klasifikace na dané datové sadě pomocí dat CRM přibližně 8 000 odběrů.  
 
-* Míra chybnou SAS se 10 až 15 %.
-* Frekvence chybných klasifikací Machine Learning Studio (Classic) byla 15-20% pro prvních 200-300 změn.  
+* Míra chybné klasifikace SAS byla 10–15 %.
+* Míra chybné klasifikace Machine Learning Studio (klasická) byla 15-20% pro top 200-300 churners.  
 
-V odvětví telekomunikace je potřeba vyřešit pouze zákazníci, kteří mají nejvyšší riziko pro změny tím, že je nabízí službu concierge nebo jiné speciální zacházení. V takovém případě implementace Machine Learning Studio (Classic) dosahuje výsledků s použitím modelu SAS.  
+V telekomunikačním průmyslu je důležité oslovit pouze ty zákazníky, kteří mají nejvyšší riziko, že se mohou rozplývat, a to tím, že jim nabídneme službu concierge nebo jiné zvláštní zacházení. V tomto ohledu implementace Machine Learning Studio (classic) dosahuje výsledků na stejné úrovni jako model SAS.  
 
-Ze stejného důvodu je důležitější než přesnost přesnost, protože nás zajímají hlavně správně klasifikace potenciální churners.  
+Ze stejného důvodu je přesnost důležitější než přesnost, protože se většinou zajímáme o správnou klasifikaci potenciálních churners.  
 
-Z Wikipedia následující diagram znázorňuje vztah živá, snadno pochopitelné obrázku:  
+Následující diagram z Wikipedie znázorňuje vztah v živé, snadno pochopitelné graf:  
 
-![Dva cíle. V jednom cíli se zobrazují značky, které jsou volně seskupené, ale poblíž zápasy, která je označena jako nízká přesnost: dobrá pravdivost, nízká přesnost. Jiný cíl úzce seskupený, ale daleko od býků – s označením "nízká přesnost: špatná hodnota pravdivosti", dobrá přesnost "](./media/azure-ml-customer-churn-scenario/churn-8.png)
+![Dva cíle. Jeden cíl ukazuje hit značky volně seskupeny, ale v blízkosti býků-oko označené "Nízká přesnost: dobrá pravdivost, špatná přesnost. Další cíl pevně seskupeny, ale daleko od býků-oko označené "Nízká přesnost: špatná pravdivost, dobrá přesnost"](./media/azure-ml-customer-churn-scenario/churn-8.png)
 
-*Obrázek 10: kompromisy mezi přesností a přesností*
+*Obrázek 10: Kompromis mezi přesností a přesností*
 
-### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Přesnost výsledků pro model posíleného rozhodovacího stromu
-Následující graf zobrazí nezpracované výsledky vyhodnocování pomocí prototypu Machine Learning pro model Posílený rozhodovací strom, což je nejpřesnější mezi čtyři modely:  
+### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Výsledky přesnosti a přesnosti pro posílený model rozhodovacího stromu
+Následující graf zobrazuje nezpracované výsledky z bodování pomocí prototypu Machine Learning pro model posíleného rozhodovacího stromu, který je shodou že nejpřesnější ze čtyř modelů:  
 
-![Fragment kódu tabulky znázorňující přesnost, přesnost, odvolání, F-skóre, AUC, průměrnou ztrátu protokolu a ztrátu protokolu školení pro čtyři algoritmy](./media/azure-ml-customer-churn-scenario/churn-9.png)
+![Fragment tabulky zobrazující přesnost, přesnost, odvolání, F-skóre, AUC, průměrná ztráta protokolu a ztráta protokolu školení pro čtyři algoritmy](./media/azure-ml-customer-churn-scenario/churn-9.png)
 
-*Obrázek 11: zvýšení vlastností modelu rozhodovacího stromu*
+*Obrázek 11: Zesílené charakteristiky modelu rozhodovacího stromu*
 
 ## <a name="performance-comparison"></a>Porovnání výkonu
-Porovnali jsme rychlost, s jakou byly data hodnocena pomocí modelů Machine Learning Studio (Classic) a srovnatelného modelu vytvořeného pomocí stolní edice SAS Enterprise Miner 12,1.  
+Porovnali jsme rychlost, s jakou byla data hodnocena pomocí modelů Machine Learning Studio (klasické) a srovnatelného modelu vytvořeného pomocí desktopové edice SAS Enterprise Miner 12.1.  
 
-Následující tabulka shrnuje výkon algoritmy:  
+Následující tabulka shrnuje výkon algoritmů:  
 
-*Tabulka 1. Obecný výkon (přesnost) algoritmů*
+*Tabulka 1. Celkový výkon (přesnost) algoritmů*
 
-| LR | BT | AP | SVM |
+| LR | BT | AP | Svm |
 | --- | --- | --- | --- |
-| Průměrná modelu |Nejlepší Model |Nevedou podle očekávání |Průměrná modelu |
+| Průměrný model |Nejlepší model |Nedostatečné výsledky |Průměrný model |
 
-Modely hostované v Machine Learning Studio (Classic) převedly SAS 15-25% na rychlost spuštění, ale přesnost byla převážně na nominální hodnotě.  
+Modely hostované v Machine Learning Studio (klasické) překonaly SAS o 15-25% pro rychlost provádění, ale přesnost byla z velké části na stejné úrovni.  
 
-## <a name="discussion-and-recommendations"></a>Informace a doporučení
-V odvětví telekomunikace vznikly několik postupů k analýze četnosti změn, včetně:  
+## <a name="discussion-and-recommendations"></a>Diskuse a doporučení
+V telekomunikačním průmyslu se objevilo několik postupů pro analýzu konve, včetně:  
 
-* Odvození metriky pro čtyři základní kategorie:
-  * **Entita (například předplatné)** . Zřízení základních informací o odběru a/nebo zákazníkovi, který je předmětem změn.
-  * **Aktivita**. Získáte všechny informace o možných využití, která souvisí s entitou, například počet přihlášení.
-  * **Zákaznická podpora**. Získejte informace z protokolů podpory zákazníků k označení, zda u odběru byl problémy nebo interakce s zákaznickou podporu.
-  * **Konkurenční a obchodní data**. Získat všechny informace o možných o zákazníkovi (například může být obtížné sledovat nebo není k dispozici).
-* Použijte význam pro výběr funkcí jednotky. Z toho vyplývá, že model posíleného rozhodovacího stromu je vždy slibně přístup.  
+* Odvodit metriky pro čtyři základní kategorie:
+  * **Entita (například předplatné)**. Poskytování základních informací o předplatném nebo zákazníkovi, který je předmětem změn.
+  * **Aktivita**. Získejte všechny možné informace o použití, které se vztahují k entitě, například počet přihlášení.
+  * **Zákaznická podpora**. Informace o sklizni z protokolů zákaznické podpory označte, zda předplatné mělo problémy nebo interakce se zákaznickou podporou.
+  * **Konkurenceschopné a obchodní údaje**. Získejte veškeré možné informace o zákazníkovi (například může být nedostupné nebo těžko sledovatelné).
+* Použijte důležitost k výběru funkcí jednotky. To znamená, že posílený rozhodovací strom model je vždy slibný přístup.  
 
-Použití těchto čtyř kategorií vytvoří iluzi, že jednoduchý *deterministický* přístup, založený na indexech vytvořených v přiměřených faktorech na kategorii, by měl postačovat k identifikaci zákazníků, kteří mají riziko pro změny. Bohužel i když se vyskytují zdá se, že přesvědčivého, je false principy. Důvodem je, že změny jsou dočasné účinek a faktory přispívající k změn dat se obvykle nacházejí v přechodném stavu. Čeho zákazník vzít v úvahu byste museli opustit ještě dnes se může lišit zítra, a jistě bude různých šest měsíců od této chvíle. Proto je model *pravděpodobnostní* nezbytný.  
+Použití těchto čtyř kategorií vytváří iluzi, že jednoduchý *deterministický* přístup založený na indexech vytvořených na základě přiměřených faktorů podle kategorie by měl postačovat k identifikaci zákazníků ohrožených změnou. Bohužel, i když se tato představa zdá věrohodná, je to falešné pochopení. Důvodem je, že konve je časový efekt a faktory přispívající k konve jsou obvykle v přechodných stavech. To, co zákazníka vede k tomu, aby zvážil odchod dnes, může být zítra jiné a určitě to bude za šest měsíců jiné. Proto je *pravděpodobnostní* model nutností.  
 
-Tato důležité zjišťování je často přehlédnuta ve firmě, což obecně upřednostňuje analýzy a business intelligence objektově orientovaný přístup, většinou, protože se jedná jednodušší prodávat a zavést jednoduché automatizace.  
+Toto důležité pozorování je často přehlíženo v podnikání, které obecně preferuje přístup k analýze orientovaný na business intelligence, hlavně proto, že je to snadnější prodej a připouští přímou automatizaci.  
 
-Snaha o samoobslužné analýzy pomocí Machine Learning Studio (Classic) se ale stane cenným zdrojem pro strojové učení týkající se změn.  
+Příslib samoobslužné analýzy pomocí Machine Learning Studio (klasické) je však, že čtyři kategorie informací, klasifikované podle divize nebo oddělení, se stanou cenným zdrojem pro strojové učení o konve.  
 
-Další zajímavou funkcí přicházejících v Azure Machine Learning Studio (Classic) je možnost přidat vlastní modul do úložiště předdefinovaných modulů, které jsou již k dispozici. Tato funkce, které vytvoří v podstatě možnost vybrat knihovny a vytvořit šablony pro vertikální trhy. Jedná se o důležité odlišnosti Azure Machine Learning Studio (Classic) na trhu.  
+Další vzrušující funkce přicházející v Azure Machine Learning Studio (klasické) je možnost přidat vlastní modul do úložiště předdefinovaných modulů, které jsou již k dispozici. Tato funkce v podstatě vytváří příležitost k výběru knihoven a vytváření šablon pro vertikální trhy. Je to důležitý diferenciátor Azure Machine Learning Studio (klasické) na trhu.  
 
-Věříme, že chcete pokračovat v tomto tématu v budoucnu, zejména související s analýzy velkých objemů dat.
+Doufáme, že v tomto tématu budeme pokračovat i v budoucnu, zejména v souvislosti s analýzou velkých objemů dat.
   
 
 ## <a name="conclusion"></a>Závěr
-Tento dokument popisuje rozumné přístup k řešení běžných problémů výpovědi zákazníků pomocí obecného rozhraní. Pokládáme se za prototyp modelů bodování a implementujeme ho pomocí Azure Machine Learning Studio (Classic). Nakonec jsme posuzuje přesnost a výkon prototypu řešení s ohledem na srovnatelné algoritmy v SAS.  
+Tento článek popisuje rozumný přístup k řešení společného problému změn zákazníků pomocí obecného rámce. Zvažovali jsme prototyp pro vyhodnocování modelů a implementovali ho pomocí Azure Machine Learning Studio (classic). Nakonec jsme vyhodnotili přesnost a výkon prototypového řešení s ohledem na srovnatelné algoritmy v SAS.  
 
  
 
-## <a name="references"></a>Reference
-[1] prediktivní analýza: mimo předpovědi, W. McKnight, Správa informací, červenec/srpen 2011, p. 18-20.  
+## <a name="references"></a>Odkazy
+[1] Prediktivní analýza: Beyond the Predictions, W. McKnight, Information Management, červenec/srpen 2011, s. 18-20.  
 
-[2] Wikipedii článek: [přesnost a přesnost](https://en.wikipedia.org/wiki/Accuracy_and_precision)
+[2] Článek na Wikipedii: [Přesnost a přesnost](https://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [zaostřené-DM 1,0: Průvodce dolováním dat krok za krokem](https://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [CRISP-DM 1.0: Průvodce dolování dat krok za krokem](https://www.the-modeling-agency.com/crisp-dm.pdf)   
 
-[4] [Marketing pro velké objemy dat: efektivnější zapojení zákazníků a jejich hodnoty](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] [Big Data Marketing: Zapojte své zákazníky efektivněji a zvýšit hodnotu](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [Šablona modelu výpovědi](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) změn v [Azure AI Gallery](https://gallery.azure.ai/) 
+[5] [Šablona modelu telco konve](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) v [Galerii Azure AI](https://gallery.azure.ai/) 
  
 
 ## <a name="appendix"></a>Příloha
-![Snímek prezentace v prototypu změn](./media/azure-ml-customer-churn-scenario/churn-10.png)
+![Snímek prezentace na prototypu konve](./media/azure-ml-customer-churn-scenario/churn-10.png)
 
-*Obrázek 12: snímek prezentace v prototypu změn*
+*Obrázek 12: Snímek prezentace na prototypu konve*

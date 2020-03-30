@@ -1,6 +1,6 @@
 ---
 title: Vazby certifikátů
-description: Vysvětlete nejrůznější témata týkající se certifikátů v App Service Environment. Přečtěte si, jak vazby certifikátů fungují na aplikacích s jedním klientem v pomocném mechanismu.
+description: Vysvětlete četná témata související s certifikáty v prostředí služby App Service. Zjistěte, jak fungují vazby certifikátů v aplikacích s jedním klientem ve službě ASE.
 author: ccompy
 ms.assetid: 9e21a7e4-2436-4e81-bb05-4a6ba70eeaf7
 ms.topic: article
@@ -8,38 +8,38 @@ ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 65fc4ed25b0fd360de8e3b1439d1766485eb2e58
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74688643"
 ---
-# <a name="certificates-and-the-app-service-environment"></a>Certifikáty a App Service Environment 
+# <a name="certificates-and-the-app-service-environment"></a>Certifikáty a prostředí služby App Service 
 
-App Service Environment (pomocného programu) je nasazení Azure App Service, které běží v rámci služby Azure Virtual Network (VNet). Dá se nasadit pomocí koncového bodu aplikace přístupného pro Internet nebo koncového bodu aplikace, který je ve vaší virtuální síti. Pokud nasadíte službu pomocného bodu s dostupným koncovým bodem Internetu, toto nasazení se nazývá externí přístupový objekt. Pokud nasadíte službu pomocného bodu s koncovým bodem ve vaší virtuální síti, toto nasazení se nazývá interního nástroje pomocného programu. Další informace o interního nástroje pomocného mechanismu pro vytváření najdete v dokumentu [Vytvoření a použití interního nástroje](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase) .
+Prostředí služby App Service Environment (ASE) je nasazení služby Azure App Service, která běží v rámci vaší virtuální sítě Azure (virtuální sítě). Dá se nasadit s koncovým bodem aplikace přístupné ho k Internetu nebo koncovým bodem aplikace, který je ve vaší virtuální síti. Pokud nasadíte službu ASE s koncovým bodem přístupným pro internet, toto nasazení se nazývá externí služba ASE. Pokud nasadíte službu ASE s koncovým bodem ve vaší virtuální síti, toto nasazení se nazývá služba ASE ILB. Další informace o ase Služby ILB můžete získat z [dokumentu Vytvořit a použít službu ASE iLB.](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase)
 
-Pomocným mechanismem je jeden klientský systém. Vzhledem k tomu, že se jedná o jediného tenanta, jsou k dispozici pouze některé funkce s pomocným mechanismem řízení, které nejsou k dispozici ve víceklientské App Service. 
+ASE je jeden klientský systém. Vzhledem k tomu, že je jeden tenant, existují některé funkce k dispozici pouze se službou ASE, které nejsou k dispozici ve službě aplikace s více tenanty. 
 
-## <a name="ilb-ase-certificates"></a>Certifikáty interního nástroje pomocného mechanismu 
+## <a name="ilb-ase-certificates"></a>Certifikáty Služby ASE ILB 
 
-Pokud používáte externí pomocného mechanismu pro přístup, vaše aplikace se dosáhnou v [AppName]. [asename]. p. azurewebsites. NET. Ve výchozím nastavení jsou všechny služby ASE, dokonce i interního nástroje služby ASE, vytvořené pomocí certifikátů, které následují po tomto formátu. Když máte interního nástroje pomocného nástroje, aplikace se dosáhnou na základě názvu domény, který zadáte při vytváření interního nástroje pro pomocného mechanismu. Aby aplikace podporovaly protokol SSL, musíte nahrávat certifikáty. Získejte platný certifikát SSL pomocí interních certifikačních autorit, zakoupením certifikátu od externího vystavitele nebo pomocí certifikátu podepsaného svým držitelem. 
+Pokud používáte externí službu ASE, vaše aplikace jsou zastižené na [appname]. [asename].p.azurewebsites.net. Ve výchozím nastavení jsou všechny ases, dokonce i ILB ASEs, vytvořeny s certifikáty, které následují tento formát. Pokud máte službu ASE ILB, aplikace jsou dostupné na základě názvu domény, který zadáte při vytváření služby ASE ILB. Aby aplikace podporovaly SSL, musíte nahrát certifikáty. Získejte platný certifikát SSL pomocí interních certifikačních úřadů, zakoupením certifikátu od externího vystavittele nebo pomocí certifikátu podepsaného svým držitelem. 
 
-Existují dvě možnosti konfigurace certifikátů pomocí pomocného programu interního nástroje.  Můžete nastavit výchozí certifikát se zástupnými znaky pro interního nástroje pomocného uživatele nebo nastavit certifikáty pro jednotlivé webové aplikace v pomocném panelu.  Bez ohledu na to, jakou možnost provedete, musí být správně nakonfigurované následující atributy certifikátu:
+Existují dvě možnosti konfigurace certifikátů pomocí služby ILB ASE.  Můžete nastavit výchozí certifikát se zástupnými symboly pro službu ASE ILB nebo certifikáty pro jednotlivé webové aplikace v ase.  Bez ohledu na volbu, kterou provedete, musí být správně nakonfigurovány následující atributy certifikátu:
 
-- **Předmět:** Tento atribut musí být nastaven na hodnotu *. [vaše kořenová doména – tady] pro certifikát se zástupným MECHANISMem interního nástroje. Pokud vytváříte certifikát pro vaši aplikaci, měla by být [AppName]. [vaše kořenová doména – tady]
-- **Alternativní název subjektu:** Tento atribut musí zahrnovat *. [vaše kořenová-doména-sem] a *. SCM. [vaše kořenová doména-tady] pro certifikát interního nástroje pomocného certifikátu. Pokud vytváříte certifikát pro vaši aplikaci, měla by být [AppName]. [vaše-kořenová-doména-sem] a [AppName]. SCM. [vaše kořenová-doména-zde].
+- **Předmět:** Tento atribut musí být nastaven na *. [vaše kořenová doména zde] pro certifikát ase se zástupnými symboly ILB. Pokud vytváříte certifikát pro vaši aplikaci, pak by měl být [appname]. [vaše-root-doména-zde]
+- **Alternativní název předmětu:** Tento atribut musí obsahovat obojí *. [your-root-domain-here] a *.scm. [vaše kořenová doména zde] pro certifikát ase se zástupnými symboly ILB. Pokud vytváříte certifikát pro vaši aplikaci, pak by měl být [appname]. [your-root-domain-here] a [appname].scm. [your-root-domain-here].
 
-Třetí varianta vám umožní vytvořit certifikát interního nástroje pomocného programu, který bude obsahovat všechny názvy jednotlivých aplikací v síti SAN certifikátu namísto použití zástupné odkazy. Problém s touto metodou je, že potřebujete znát název aplikací, které umístíte do pomocného mechanismu, nebo musíte aktualizovat certifikát interního nástroje pomocného programu.
+Jako třetí variantu můžete vytvořit certifikát služby ASE ILB, který obsahuje všechny vaše názvy jednotlivých aplikací v san certifikátu namísto použití zástupného znaku. Problém s touto metodou je, že potřebujete znát předem názvy aplikací, které jsou uvedení do služby ASE nebo je třeba zachovat aktualizaci certifikátu Služby ASE ILB.
 
-### <a name="upload-certificate-to-ilb-ase"></a>Nahrát certifikát do interního nástroje pomocného mechanismu 
+### <a name="upload-certificate-to-ilb-ase"></a>Nahrát certifikát do služby ASE ILB 
 
-Po vytvoření pomocného interního NÁSTROJEu na portálu se musí nastavit certifikát pro pomocného mechanismu interního nástroje. Dokud se certifikát nenastaví, zobrazí se v pomocném okně zpráva, že certifikát nebyl nastaven.  
+Po vytvoření služby ASE ILB na portálu musí být certifikát nastaven pro službu ASE ILB. Dokud není certifikát nastaven, zobrazí se ve službě ASE banner, na který nebyl certifikát nastaven.  
 
-Certifikát, který nahrajete, musí být soubor. pfx. Po nahrání certifikátu pomocného modulu pro nastavení certifikátu provede operaci škálování. 
+Nahraný certifikát musí být soubor .pfx. Po nahrání certifikátu provede ase operace škálování k nastavení certifikátu. 
 
-Nemůžete vytvořit pomocného mechanismu řízení a nahrát ho jako jednu akci na portálu nebo dokonce i v jedné šabloně. V rámci samostatné akce můžete certifikát nahrát pomocí šablony, jak je popsáno v tématu [Vytvoření POmocného programu z dokumentu šablony](./create-from-template.md) .  
+Nelze vytvořit službu ASE a nahrát certifikát jako jednu akci na portálu nebo dokonce v jedné šabloně. Jako samostatnou akci můžete certifikát nahrát pomocí šablony, jak je popsáno v dokumentu [Vytvořit službu ASE z](./create-from-template.md) dokumentu šablony.  
 
-Pokud chcete rychle vytvořit certifikát podepsaný svým vlastníkem pro účely testování, můžete použít tento bit prostředí PowerShell:
+Pokud chcete rychle vytvořit certifikát podepsaný svým držitelem pro testování, můžete použít následující bit prostředí PowerShell:
 
     $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
@@ -48,41 +48,41 @@ Pokud chcete rychle vytvořit certifikát podepsaný svým vlastníkem pro úče
 
     $fileName = "exportedcert.pfx"
     Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
-Při vytváření certifikátu podepsaného svým vlastníkem budete muset ověřit, že název subjektu má formát CN = {ASE_NAME_HERE} _InternalLoadBalancingASE.
+Při vytváření certifikátu podepsaného svým držitelem se budete muset ujistit, že název subjektu má formát CN={ASE_NAME_HERE}_InternalLoadBalancingASE.
 
-## <a name="application-certificates"></a>Certifikáty aplikací 
+## <a name="application-certificates"></a>Certifikáty žádostí 
 
-Aplikace, které jsou hostované v pomocném formuláři, můžou používat funkce certifikátu zaměřené na aplikace, které jsou k dispozici ve víceklientské App Service. Mezi tyto funkce patří:  
+Aplikace, které jsou hostované ve službě ASE, můžou používat funkce certifikátu zaměřené na aplikace, které jsou dostupné ve víceklientské službě App Service. Mezi tyto funkce patří:  
 
 - Certifikáty SNI 
-- Protokol SSL založený na protokolu IP, který je podporován pouze s externím MECHANISMem pro čtení.  INTERNÍHO nástroje pomocného mechanismu nepodporuje protokol SSL založený na protokolu IP.
-- Hostované certifikáty trezoru klíčů 
+- Protokol SSL založený na protokolu IP, který je podporován pouze externí službou ASE.  ASE Služby ILB nepodporuje protokol SSL založený na protokolu IP.
+- Hostované certifikáty KeyVault 
 
-Pokyny pro nahrávání a správu těchto certifikátů jsou k dispozici v tématu [Přidání certifikátu SSL v Azure App Service](../configure-ssl-certificate.md).  Pokud jednoduše konfigurujete certifikáty tak, aby odpovídaly vlastnímu názvu domény, který jste přiřadili k vaší webové aplikaci, budou tyto pokyny stačit. Pokud nahráváte certifikát pro webovou aplikaci interního nástroje pomocného programu pro pojmenování s výchozím názvem domény, zadejte web SCM v síti SAN certifikátu, jak je uvedeno výše. 
+Pokyny pro nahrávání a správu těchto certifikátů jsou k dispozici v [části Přidání certifikátu SSL ve službě Azure App Service](../configure-ssl-certificate.md).  Pokud jednoduše konfigurujete certifikáty tak, aby odpovídaly vlastnímu názvu domény, který jste přiřadili webové aplikaci, budou tyto pokyny stačit. Pokud nahráváte certifikát pro webovou aplikaci Služby ASE ILB s výchozím názvem domény, zadejte web scm v síti SAN certifikátu, jak bylo uvedeno výše. 
 
 ## <a name="tls-settings"></a>Nastavení TLS 
 
 Nastavení TLS můžete nakonfigurovat na úrovni aplikace.  
 
-## <a name="private-client-certificate"></a>Certifikát privátního klienta 
+## <a name="private-client-certificate"></a>Certifikát soukromého klienta 
 
-Běžným případem použití je konfigurace aplikace jako klienta v modelu klient-server. Pokud server zabezpečíte pomocí privátního certifikátu certifikační autority, budete muset klientský certifikát nahrát do své aplikace.  Následující pokyny budou načítat certifikáty do truststore pracovníků, na kterých vaše aplikace běží. Pokud certifikát načtete do jedné aplikace, můžete ho použít spolu s ostatními aplikacemi ve stejném App Service plánu, aniž byste museli znovu odeslat certifikát.
+Běžným případem použití je konfigurace aplikace jako klienta v modelu klienta a serveru. Pokud zabezpečíte server soukromým certifikátem certifikační autority, budete muset klientský certifikát do aplikace nahrát.  Následující pokyny načtou certifikáty do úložiště důvěryhodnosti pracovníků, na kterých vaše aplikace běží. Pokud certifikát načtete do jedné aplikace, můžete ho použít s ostatními aplikacemi ve stejném plánu služby App Service, aniž byste certifikát znovu nahráli.
 
-Pokud chcete nahrát certifikát do vaší aplikace v pomocném mechanismu služby:
+Jak nahrát certifikát do aplikace ve své ase:
 
-1. Vygenerujte soubor *. cer* pro váš certifikát. 
-2. Přejít do aplikace, která potřebuje certifikát, v Azure Portal
-3. V aplikaci přejdete na nastavení SSL. Klikněte na nahrát certifikát. Vyberte možnost veřejné. Vyberte místní počítač. Zadejte název. Procházejte a vyberte svůj soubor *. cer* . Vyberte nahrát. 
-4. Zkopírujte kryptografický otisk.
-5. Přejít na nastavení aplikace. Vytvoří nastavení aplikace WEBSITE_LOAD_ROOT_CERTIFICATES s kryptografickým otiskem jako hodnotou. Pokud máte více certifikátů, můžete je umístit do stejného nastavení oddělené čárkami a bez mezer jako 
+1. Vygenerujte soubor *CER* pro váš certifikát. 
+2. Přejděte do aplikace, která potřebuje certifikát na webu Azure Portal.
+3. Přejděte v aplikaci do nastavení SSL. Klikněte na Nahrát certifikát. Vyberte Veřejné. Vyberte Místní počítač. Zadejte název. Procházejte a vyberte soubor *CER.* Vyberte nahrát. 
+4. Zkopírujte otisk palce.
+5. Přejděte do nastavení aplikace. Vytvořte nastavení aplikace WEBSITE_LOAD_ROOT_CERTIFICATES s kryptografickým otiskem jako hodnotou. Pokud máte více certifikátů, můžete je umístit do stejného nastavení odděleného čárkami a bez mezer, jako je 
 
-    84EC242A4EC7957817B8E48913E50953552DAFA6,6A5C65DC9247F762FE17BF8D4906E04FE6B31819
+    84EC242A4EC7957817B8E48913E509535552DAFA6,6A5C65DC9247F762FE17BF8D4906E04FE6B31819
 
-Certifikát bude k dispozici pro všechny aplikace ve stejném plánu služby App Service jako aplikace, která nakonfiguruje toto nastavení. Pokud potřebujete, aby byla k dispozici pro aplikace v jiném plánu App Service, bude nutné zopakovat operaci nastavení aplikace v aplikaci v tomto plánu App Service. Pokud chcete ověřit, že je certifikát nastavený, otevřete konzolu Kudu a vydejte následující příkaz v konzole ladění PowerShellu:
+Certifikát bude k dispozici všem aplikacím ve stejném plánu služby App Service jako aplikace, která toto nastavení nakonfigurovala. Pokud potřebujete, aby byla dostupná pro aplikace v jiném plánu služby App Service, budete muset zopakovat operaci Nastavení aplikace v aplikaci v tomto plánu služby App Service. Chcete-li zkontrolovat, zda je certifikát nastavený, přejděte na konzolu Kudu a v konzole ladění prostředí PowerShell vyjevte následujícím příkazem:
 
     dir cert:\localmachine\root
 
-K provedení testování můžete vytvořit certifikát podepsaný svým vlastníkem a vygenerovat soubor *. cer* pomocí následujícího prostředí PowerShell: 
+Chcete-li provést testování, můžete vytvořit vlastní podepsaný certifikát a vygenerovat soubor *CER* s následujícím prostředím PowerShell: 
 
     $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com
 

@@ -1,7 +1,7 @@
 ---
-title: Vytvoření SAS účtu pomocí .NET
+title: Vytvoření účtu SAS s rozhraním .NET
 titleSuffix: Azure Storage
-description: Naučte se vytvořit sdílený přístupový podpis (SAS) účtu pomocí klientské knihovny .NET.
+description: Zjistěte, jak vytvořit podpis sdíleného přístupu účtu (SAS) pomocí klientské knihovny .NET.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,23 +11,23 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 9da27cef7bafa94715a42db86fc5a5675a049eb1
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137865"
 ---
-# <a name="create-an-account-sas-with-net"></a>Vytvoření SAS účtu pomocí .NET
+# <a name="create-an-account-sas-with-net"></a>Vytvoření účtu SAS s rozhraním .NET
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-V tomto článku se dozvíte, jak pomocí klíče účtu úložiště vytvořit SAS účtu pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+Tento článek ukazuje, jak pomocí klíče účtu úložiště vytvořit účet SAS s [klientskou knihovnou Úložiště Azure pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
 ## <a name="create-an-account-sas"></a>Vytvoření SAS účtu
 
-Chcete-li vytvořit přidružení zabezpečení účtu pro kontejner, zavolejte metodu [CloudStorageAccount. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) .
+Chcete-li vytvořit účet SAS pro kontejner, zavolejte metodu [CloudStorageAccount.GetSharedAccessSignature.](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature)
 
-Následující příklad kódu vytvoří podpis SAS účtu, který je platný pro objekty BLOB a souborové služby, a poskytne oprávnění ke čtení, zápisu a vypsání oprávnění klienta pro přístup k rozhraním API na úrovni služby. Podpis SAS účtu omezuje protokol na HTTPS, takže požadavek musí být proveden pomocí protokolu HTTPS. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
+Následující příklad kódu vytvoří účet SAS, který je platný pro služby blob a soubor a poskytuje oprávnění klienta ke čtení, zápisu a seznamu oprávnění pro přístup k souborům API na úrovni služby. Účet SAS omezuje protokol na HTTPS, takže požadavek musí být proveden pomocí protokolu HTTPS. Nezapomeňte nahradit zástupné hodnoty v úhlových závorkách vlastními hodnotami:
 
 ```csharp
 static string GetAccountSASToken()
@@ -51,9 +51,9 @@ static string GetAccountSASToken()
 }
 ```
 
-## <a name="use-an-account-sas-from-a-client"></a>Použití SAS účtu z klienta
+## <a name="use-an-account-sas-from-a-client"></a>Použití účtu SAS od klienta
 
-Pokud chcete použít SAS účtu pro přístup k rozhraním API na úrovni služby pro Blob service, Sestavte objekt klienta Blob service pomocí SAS a koncového bodu BLOB Storage pro váš účet úložiště. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
+Chcete-li použít účet SAS pro přístup k api na úrovni služby pro službu Blob, vytvořte objekt klienta služby Blob pomocí Koncového bodu úložiště SAS a úložiště objektů blob pro váš účet úložiště. Nezapomeňte nahradit zástupné hodnoty v úhlových závorkách vlastními hodnotami:
 
 ```csharp
 static void UseAccountSAS(string sasToken)
@@ -97,5 +97,5 @@ static void UseAccountSAS(string sasToken)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](storage-sas-overview.md)
+- [Udělit omezený přístup k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](storage-sas-overview.md)
 - [Vytvoření SAS účtu](/rest/api/storageservices/create-account-sas)

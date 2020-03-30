@@ -1,55 +1,55 @@
 ---
-title: Umožňuje spravovat vaše data pomocí Průzkumníka služby Azure Cosmos DB
-description: Průzkumník služby Azure Cosmos DB je samostatné webové rozhraní, které vám umožní zobrazit a spravovat data uložená ve službě Azure Cosmos DB.
+title: Správa dat pomocí průzkumníka Azure Cosmos DB
+description: Průzkumník Azure Cosmos DB je samostatné webové rozhraní, které umožňuje zobrazit a spravovat data uložená v Azure Cosmos DB.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dech
 ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096815"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Práce s daty s využitím průzkumníka Azure Cosmos 
 
-Průzkumník služby Azure Cosmos DB je samostatné webové rozhraní, které vám umožní zobrazit a spravovat data uložená ve službě Azure Cosmos DB. Azure Cosmos DB Explorer je ekvivalentní existující kartě **Průzkumník dat** , která je k dispozici v Azure Portal při vytváření účtu Azure Cosmos DB. Klíčové výhody služby Azure Cosmos DB explorer přes existující Průzkumník dat jsou:
+Průzkumník Azure Cosmos DB je samostatné webové rozhraní, které umožňuje zobrazit a spravovat data uložená v Azure Cosmos DB. Průzkumník Azure Cosmos DB je ekvivalentní existující kartě **Průzkumníka dat,** která je dostupná na webu Azure Portal při vytváření účtu Azure Cosmos DB. Hlavní výhody průzkumníka Azure Cosmos DB oproti existujícímu průzkumníku dat jsou:
 
-* Máte zobrazení na celé obrazovce využil její plochu naplno k zobrazení dat, spouštění dotazů, uložených procedur, triggerů a zobrazit jejich výsledky.  
+* Máte celou obrazovku real-estate pro zobrazení dat, spouštění dotazů, uložené procedury, aktivační události a zobrazení jejich výsledků.  
 
-* Váš účet databáze a jeho kolekcích ostatním uživatelům, kteří nemají přístup k webu Azure portal nebo předplatného, můžete zadat přístup pro čtení a zápis nebo čtení dočasné nebo trvalé.  
+* Dočasný nebo trvalý přístup k databázovému účtu a jeho kolekcím můžete poskytnout ostatním uživatelům, kteří nemají přístup k portálu Azure nebo předplatnému.  
 
-* Výsledky dotazu můžete sdílet s ostatními uživateli, kteří nemají přístup k webu Azure portal nebo předplatné.  
+* Výsledky dotazu můžete sdílet s ostatními uživateli, kteří nemají přístup k portálu Azure nebo předplatnému.  
 
-## <a name="access-azure-cosmos-db-explorer"></a>Přístup služby Azure Cosmos DB explorer
+## <a name="access-azure-cosmos-db-explorer"></a>Přístup k průzkumníku Azure Cosmos DB
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/). 
 
-2. V části **všechny prostředky**vyhledejte a přejděte na účet Azure Cosmos DB, vyberte klíče a zkopírujte **primární připojovací řetězec**.  
+2. V **části Všechny prostředky**najděte a přejděte na svůj účet Azure Cosmos DB, vyberte klíče a zkopírujte primární **připojovací řetězec**.  
 
-3. Otevřete https://cosmos.azure.com/, vložte připojovací řetězec a vyberte **připojit**. S použitím připojovacího řetězce, dostanete v Průzkumníku služby Azure Cosmos DB bez jakékoli časového omezení.  
+3. Přejděte https://cosmos.azure.com/na , vložte připojovací řetězec a vyberte **Připojit**. Pomocí připojovacího řetězce můžete přistupovat k průzkumníku Azure Cosmos DB bez časového omezení.  
 
-   Pokud chcete ostatním uživatelům poskytnout dočasný přístup k účtu služby Azure Cosmos DB, můžete tak provést pomocí čtení i zápis a čtení adresy URL. 
+   Pokud chcete ostatním uživatelům poskytnout dočasný přístup k vašemu účtu Azure Cosmos DB, můžete tak učinit pomocí adres URL pro čtení a zápis a přístup ke čtení. 
 
-4. Otevřete okno **Průzkumník dat** vyberte otevřít na **celé obrazovce**. V místním dialogovém okně můžete zobrazit dvě adresy URL pro přístup – čtení i **zápis** a **čtení**. Tyto adresy URL umožňují dočasně sdílet účtu služby Azure Cosmos DB s dalšími uživateli. Přístup k účtu vyprší za 24 hodin, po jejichž uplynutí se můžete připojit pomocí nové adresy URL přístupu nebo připojovací řetězec. 
+4. Otevřete okno **Průzkumníka dat** a vyberte **Otevřít celou obrazovku**. V rozbalovacím dialogovém okně můžete zobrazit dvě adresy URL přístupu – **Čtení a zápis** a **čtení**. Tyto adresy URL umožňují dočasně sdílet váš účet Azure Cosmos DB s ostatními uživateli. Přístup k účtu vyprší za 24 hodin, po které se můžete znovu připojit pomocí nové přístupové adresy URL nebo připojovacího řetězce. 
 
-   **Čtení i zápis** – když sdílíte adresu URL pro čtení i zápis s ostatními uživateli, můžou si zobrazit a upravit databáze, kolekce, dotazy a další prostředky, které jsou přidružené k tomuto konkrétnímu účtu.
+   **Čtení a zápis** – při sdílení adresy URL pro čtení a zápis s ostatními uživateli mohou zobrazit a upravit databáze, kolekce, dotazy a další prostředky přidružené k tomuto konkrétnímu účtu.
 
-   **Číst** – když sdílíte adresu URL jen pro čtení s ostatními uživateli, můžou si Zobrazit databáze, kolekce, dotazy a další prostředky, které jsou přidružené k tomuto konkrétnímu účtu. Například pokud chcete sdílet s ostatními členy týmu, kteří nemají přístup k webu Azure portal nebo účtu služby Azure Cosmos DB výsledky dotazu, můžete poskytnout jim tuto adresu URL.
+   **Čtení** – když sdílíte adresu URL jen pro čtení s ostatními uživateli, mohou zobrazit databáze, kolekce, dotazy a další prostředky přidružené k tomuto konkrétnímu účtu. Pokud například chcete sdílet výsledky dotazu se svými spoluhráči, kteří nemají přístup k portálu Azure nebo k vašemu účtu Azure Cosmos DB, můžete jim poskytnout tuto adresu URL.
 
-   Vyberte typ přístupu, se kterým chcete účet otevřít, a klikněte na **otevřít**. Po otevření Průzkumníka zkušenosti se shoduje s jste měli na kartě Průzkumník dat na webu Azure portal.   
+   Vyberte typ přístupu, pomocí kterých chcete účet otevřít, a klikněte na **Otevřít**. Po otevření průzkumníka je prostředí stejné, jako jste měli na kartě Průzkumník dat na webu Azure Portal.   
 
-   ![Otevřete Průzkumníka služby Azure Cosmos DB](./media/data-explorer/open-data-explorer-with-access-url.png)
+   ![Otevření průzkumníku Db Služby Azure Cosmos](./media/data-explorer/open-data-explorer-with-access-url.png)
 
 ## <a name="known-issues"></a>Známé problémy
 
-Aktuálně otevřené prostředí na **celé obrazovce** , které vám umožní sdílet dočasný přístup pro čtení i zápis nebo čtení, se zatím nepodporuje pro účty Azure Cosmos DB Gremlin a rozhraní API pro tabulky. Vaše účty Gremlin a rozhraní API tabulky můžete zobrazit stále předáním připojovací řetězec do Průzkumníka služby Azure Cosmos DB. 
+V současné době prostředí **Otevřít celou obrazovku,** které umožňuje sdílet dočasný přístup pro čtení nebo čtení, ještě není podporováno pro účty Azure Cosmos DB Gremlin a Table API. Stále můžete zobrazit vaše účty Gremlin a Table API předáním připojovacířetězec do Aplikace Azure Cosmos DB Explorer. 
 
-V současné době není v Průzkumník dat podporováno zobrazení dokumentů, které obsahují identifikátor UUID. To nemá vliv na načítání kolekcí, zobrazení pouze jednotlivých dokumentů nebo dotazů, které obsahují tyto dokumenty. Chcete-li zobrazit a spravovat tyto dokumenty, měli by uživatelé nadále používat nástroj, který byl původně použit k vytvoření těchto dokumentů.
+V současné době zobrazení dokumentů, které obsahují UUID není podporovánv Průzkumníku dat. To nemá vliv na načítání kolekcí, pouze zobrazení jednotlivých dokumentů nebo dotazů, které obsahují tyto dokumenty. Chcete-li tyto dokumenty zobrazit a spravovat, měli by uživatelé nadále používat nástroj, který byl původně použit k vytvoření těchto dokumentů.
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili, jak začít pracovat pomocí Průzkumníka služby Azure Cosmos DB a spravovat vaše data, dále můžete:
+Teď, když jste se naučili, jak začít s Průzkumníkem Azure Cosmos DB pro správu dat, můžete dále:
 
-* Začněte s definováním [dotazů](sql-api-query-reference.md) pomocí syntaxe SQL a provádějte [programování na straně serveru](stored-procedures-triggers-udfs.md) pomocí uložených procedur, UDF a triggerů. 
+* Začněte definovat [dotazy](sql-api-query-reference.md) pomocí syntaxe SQL a provádějte [programování na straně serveru](stored-procedures-triggers-udfs.md) pomocí uložených procedur, ufl, aktivačních událostí. 

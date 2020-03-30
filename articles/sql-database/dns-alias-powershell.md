@@ -1,7 +1,7 @@
 ---
 title: PowerShell pro alias DNS
-description: Rutiny PowerShellu, jako je New-AzSqlServerDNSAlias, vám umožní přesměrovat nová připojení klientů na jiný Azure SQL Database Server, aniž byste museli nic upravovat.
-keywords: databáze SQL DNS
+description: Rutiny prostředí PowerShell, jako je například New-AzSqlServerDNSAlias umožňují přesměrovat nová připojení klientů na jiný server Azure SQL Database, aniž byste se museli dotýkat jakékoli konfigurace klienta.
+keywords: DNS SQL databáze
 ms.custom: seo-lt-2019
 services: sql-database
 ms.service: sql-database
@@ -13,52 +13,52 @@ ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
 ms.openlocfilehash: 9232a99ddd29201e6743c09455d79e9ba22b3b9c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74420397"
 ---
-# <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell pro Azure SQL Database aliasu DNS
+# <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell pro alias DNS do databáze Azure SQL
 
-Tento článek poskytuje skript prostředí PowerShell, který ukazuje, jak můžete spravovat alias DNS pro Azure SQL Database.
+Tento článek obsahuje skript prostředí PowerShell, který ukazuje, jak můžete spravovat alias DNS pro Azure SQL Database.
 
 > [!NOTE]
-> Tento článek byl aktualizován tak, aby používal Azure PowerShell AZ Module nebo Azure CLI. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020.
+> Tento článek byl aktualizován tak, aby používal modul Azure PowerShell Az nebo Azure CLI. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020.
 >
-> Další informace o kompatibilitě modulu AZ Module a AzureRM najdete v tématu [představení modulu Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az). Pokyny k instalaci najdete v tématu [instalace Azure PowerShell](/powershell/azure/install-az-ps) nebo instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+> Další informace o modulu Az a kompatibilitě AzureRM najdete [v tématu Představení modulu Azure PowerShell Az](/powershell/azure/new-azureps-module-az). Pokyny k instalaci najdete [v tématu Instalace Azure PowerShellu](/powershell/azure/install-az-ps) nebo [Instalace azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="dns-alias-in-connection-string"></a>Alias DNS v připojovacím řetězci
 
-K připojení konkrétního Azure SQL Databaseho serveru může klient, jako je například SQL Server Management Studio (SSMS), poskytovat název aliasu DNS místo skutečného názvu serveru. V následujícím příkladu řetězce serveru nahradí alias *Any-Unique-alias-Name* první uzel oddělený tečkou v řetězci čtyř serverového serveru:
+Chcete-li připojit konkrétní server Azure SQL Database, klient, jako je SQL Server Management Studio (SSMS) může poskytnout název aliasu DNS namísto skutečného názvu serveru. V následujícím řetězci serveru příkladu nahradí alias *libovolný jedinečný alias-name* první uzel oddělený tečkami v řetězci serveru se čtyřmi uzlemi:
 
    `<yourServer>.database.windows.net`
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete spustit ukázkový skript PowerShellu, který je uvedený v tomto článku, platí následující předpoklady:
+Pokud chcete spustit ukázkový skript Prostředí PowerShell uvedený v tomto článku, platí následující požadavky:
 
-- Předplatné Azure a účet pro bezplatnou zkušební verzi najdete v tématu [zkušební verze Azure](https://azure.microsoft.com/free/) .
-- Dva servery Azure SQL Database
+- Předplatné Azure a účet pro bezplatnou zkušební verzi najdete v [tématu Zkušební verze Azure](https://azure.microsoft.com/free/)
+- Dva databázové servery Azure SQL
 
 ## <a name="example"></a>Příklad
 
-Následující příklad kódu začíná přiřazením literálových hodnot k několika proměnným.
+Následující příklad kódu začíná přiřazením hodnot literálu několika proměnným.
 
-Chcete-li spustit kód, upravte hodnoty zástupných symbolů tak, aby odpovídaly skutečným hodnotám ve vašem systému.
+Chcete-li kód spustit, upravte zástupné hodnoty tak, aby odpovídaly skutečným hodnotám ve vašem systému.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Používají se následující rutiny:
+Použité rutiny jsou následující:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): vytvoří alias DNS v systému služby Azure SQL Database. Alias odkazuje na databázový server 1.
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Získá a vypíše všechny aliasy přiřazené k serveru SQL DB Server 1.
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): upraví název serveru, pro který je nakonfigurován odkaz na, ze serveru 1 na server 2.
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Odeberte alias z databázového serveru 2 pomocí názvu aliasu.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Vytvoří alias DNS v systému služby Azure SQL Database. Alias odkazuje na databázový server 1.
+- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Získejte a seznam všech aliasů přiřazených serveru SQL DB 1.
+- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Upraví název serveru, na který je alias nakonfigurován, ze serveru 1 na server 2.
+- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Odebrat alias z databázového serveru 2 pomocí názvu aliasu.
 
 Pokud chcete provést instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
-K vyhledání verze použijte `Get-Module -ListAvailable Az` v *prostředí powershell\_ISE. exe*.
+Použijte `Get-Module -ListAvailable Az` v *powershellu\_ise.exe*, chcete-li najít verzi.
 
 ```powershell
 $subscriptionName = '<subscriptionName>';
@@ -93,16 +93,16 @@ Remove-AzSqlServerDnsAlias –ResourceGroupName $resourceGroupName2 -ServerName 
     -Name $sqlServerDnsAliasName;
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Používají se následující příkazy:
+Použité příkazy jsou následující:
 
-- [AZ SQL Server DNS-alias Create](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): vytvoří alias DNS v systému služby Azure SQL Database. Alias odkazuje na databázový server 1.
-- [AZ SQL Server DNS-alias show](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Získá a vypíše všechny aliasy přiřazené k serveru SQL DB Server 1.
-- [AZ SQL Server DNS-alias set](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): upraví název serveru, na který je alias nakonfigurován, aby odkazoval na, ze serveru 1 na server 2.
-- [AZ SQL Server DNS-alias Delete](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Odeberte alias z databázového serveru 2 pomocí názvu aliasu.
+- [az sql server dns-alias create](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Vytvoří alias DNS v systému služby Azure SQL Database. Alias odkazuje na databázový server 1.
+- [az sql server dns-alias show](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Získejte a uveďte seznam všech aliasů přiřazených serveru SQL DB 1.
+- [Az sql server dns-alias set](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Upraví název serveru, na který je alias nakonfigurován, ze serveru 1 na server 2.
+- [az sql server dns-alias delete](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Odebrat alias z databázového serveru 2 pomocí názvu aliasu.
 
-Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+Informace o instalaci nebo upgradu najdete [v tématu Instalace příkazového příkazového příkazu k webu Azure](/cli/azure/install-azure-cli).
 
 ```azurecli-interactive
 $subscriptionName = '<subscriptionName>';
@@ -141,4 +141,4 @@ az sql server dns-alias delete –-resource-group $resourceGroupName2 --server $
 
 ## <a name="next-steps"></a>Další kroky
 
-Úplné vysvětlení funkce aliasu DNS pro SQL Database najdete v tématu [DNS alias pro Azure SQL Database](dns-alias-overview.md).
+Úplné vysvětlení funkce aliasu DNS pro databázi SQL najdete v [tématu ALIAS DNS pro databázi Azure SQL](dns-alias-overview.md).

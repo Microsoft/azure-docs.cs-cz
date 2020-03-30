@@ -1,145 +1,145 @@
 ---
-title: Podporované typy prostředků prostřednictvím Azure Resource Health | Microsoft Docs
-description: Podporované typy prostředků prostřednictvím služby Azure Resource Health
+title: Podporované typy prostředků prostřednictvím stavu prostředků Azure | Dokumenty společnosti Microsoft
+description: Podporované typy prostředků prostřednictvím stavu prostředků Azure
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258301"
 ---
-# <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu v Azure Resource Health
-Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím stavu prostředků podle typů prostředků.
+# <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu ve stavu prostředků Azure
+Níže je uveden úplný seznam všech kontrol provedených prostřednictvím stavu prostředků podle typů prostředků.
 
-## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
+## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servery
 |Provedené kontroly|
 |---|
-|<ul><li>Je server v provozu a běží?</li><li>Má server nedostatek paměti?</li><li>Spouští se server?</li><li>Obnovuje se server?</li></ul>|
+|<ul><li>Je server v provozu?</li><li>Došlo serveru k nedostatku paměti?</li><li>Spouští se server?</li><li>Obnovuje se server?</li></ul>|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 |Provedené kontroly|
 |---|
-|<ul><li>Je služba API Management zapnutá a spuštěná?</li></ul>|
+|<ul><li>Je služba Api Management spuštěna?</li></ul>|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |Provedené kontroly|
 |---|
-|<ul><li>Je účet Batch zapnutý a spuštěný?</li><li>Překročila se kvóta fondu pro tento účet Batch?</li></ul>|
+|<ul><li>Je účet Batch spuštěn?</li><li>Byla pro tento dávkový účet překročena kvóta fondu?</li></ul>|
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |Provedené kontroly|
 |---|
-|<ul><li>Jsou všechny uzly mezipaměti v provozu a jsou spuštěné?</li><li>Je možné dosáhnout mezipaměti v datovém centru?</li><li>Dosáhla by mezipaměť maximálního počtu připojení?</li><li> Vyčerpala mezipaměť dostupnou paměť? </li><li>Dochází v mezipaměti k velkému počtu chyb stránek?</li><li>Je mezipaměť v případě velkého zatížení?</li></ul>|
+|<ul><li>Jsou všechny uzly mezipaměti spuštěny?</li><li>Může být do cache dosaženo z datového centra?</li><li>Dosáhla mezipaměť maximálního počtu připojení?</li><li> Vyčerpala mezipaměť dostupnou paměť? </li><li>Dochází v mezipaměti k vysokému počtu chyb stránky?</li><li>Je mezipaměť pod velkým zatížením?</li></ul>|
 
-## <a name="microsoftcdnprofile"></a>Microsoft.CDN/profile
+## <a name="microsoftcdnprofile"></a>Microsoft.CDN/profil
 |Provedené kontroly|
 |---|
-|<ul> <li>Je doplňkový portál přístupný pro operace konfigurace CDN?</li><li>Dochází k průběžným problémům s doručováním s koncovými body CDN?</li><li>Můžou uživatelé měnit konfiguraci svých prostředků CDN?</li><li>Šíří se změny konfigurace za očekávanou rychlost?</li><li>Můžou uživatelé spravovat konfiguraci CDN pomocí Azure Portal, PowerShellu nebo rozhraní API?</li> </ul>|
+|<ul> <li>Je doplňkový portál přístupný pro operace konfigurace CDN?</li><li>Dochází k přetrvávajícím problémům s doručováním koncových bodů CDN?</li><li>Mohou uživatelé změnit konfiguraci svých prostředků CDN?</li><li>Jsou změny konfigurace šířeny očekávaným tempem?</li><li>Můžou uživatelé spravovat konfiguraci CDN pomocí portálu Azure, PowerShellu nebo rozhraní API?</li> </ul>|
 
-## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft. classiccompute/VirtualMachines
+## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |Provedené kontroly|
 |---|
-|<ul><li>Je hostitelský server v provozu a běží?</li><li>Je spuštění hostitelského operačního systému dokončeno?</li><li>Je kontejner virtuálních počítačů zřízený a zapnutý?</li><li>Je mezi hostitelem a účtem úložiště připojení k síti?</li><li>Bylo spuštění hostovaného operačního systému dokončeno?</li><li>Probíhá plánovaná údržba?</li><li>Je hardwarově snížená a předpokládaná chyba v brzké době?</li></ul>|
+|<ul><li>Je hostitelský server v provozu?</li><li>Bylo spuštěno spuštění hostitelského operačního systému?</li><li>Je kontejner virtuálního počítače zřízena a napájena?</li><li>Existuje síťové připojení mezi hostitelem a účtem úložiště?</li><li>Bylo dokončeno zavedení hostovaného operačního systému?</li><li>Probíhá plánovaná údržba?</li><li>Je hostitelský hardware degradován a předpokládá se, že brzy selže?</li></ul>|
 
-## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. cognitiveservices Account/účty
+## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |Provedené kontroly|
 |---|
-|<ul><li>Je možné, že se k účtu dostane v datacentru?</li><li>Je poskytovatel prostředků Cognitive Services k dispozici?</li><li>Je služba rozpoznávání dostupná v příslušné oblasti?</li><li>Můžou se operace čtení provádět na účtu úložiště, který uchovává metadata prostředků?</li><li>Bylo dosaženo kvóty volání rozhraní API?</li><li>Dosáhlo se limitu pro čtení, volání rozhraní API?</li></ul>|
+|<ul><li>Může být účet dostupný z datového centra?</li><li>Je poskytovatel prostředků služeb cognitive services k dispozici?</li><li>Je služba Cognitive Service dostupná v příslušné oblasti?</li><li>Lze číst operace na účtu úložiště, který má metadata prostředku?</li><li>Bylo dosaženo kvóty volání rozhraní API?</li><li>Bylo dosaženo limitu čtení a volání rozhraní API?</li></ul>|
 
-## <a name="microsoftcomputevirtualmachines"></a>Microsoft. COMPUTE/VirtualMachines
+## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |Provedené kontroly|
 |---|
-|<ul><li>Je server hostující tento virtuální počítač v provozu a běží?</li><li>Je spuštění hostitelského operačního systému dokončeno?</li><li>Je kontejner virtuálních počítačů zřízený a zapnutý?</li><li>Je mezi hostitelem a účtem úložiště připojení k síti?</li><li>Bylo spuštění hostovaného operačního systému dokončeno?</li><li>Probíhá plánovaná údržba?</li><li>Je hardwarově snížená a předpokládaná chyba v brzké době?</li></ul>|
+|<ul><li>Je server hostující tento virtuální počítač v provozu?</li><li>Bylo spuštěno spuštění hostitelského operačního systému?</li><li>Je kontejner virtuálního počítače zřízena a napájena?</li><li>Existuje síťové připojení mezi hostitelem a účtem úložiště?</li><li>Bylo dokončeno zavedení hostovaného operačního systému?</li><li>Probíhá plánovaná údržba?</li><li>Je hostitelský hardware degradován a předpokládá se, že brzy selže?</li></ul>|
 
-## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/továrny
+## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/továrny
 |Provedené kontroly|
 |---|
-|<ul><li>Došlo k chybám při spuštění kanálu?</li><li>Je cluster hostující Data Factory v pořádku?</li></ul>|
+|<ul><li>Došlo k selhání spuštění kanálu?</li><li>Je cluster hostující data factory v pořádku?</li></ul>|
 
-## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft. datalakeanalytics/účty
+## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/účty
 |Provedené kontroly|
 |---|
-|<ul><li>Měli by uživatelé narazili na problémy při odesílání nebo výpisu svých Data Lake Analyticsch úloh?</li><li>Jsou Data Lake Analytics úlohy nemohly být dokončeny kvůli chybám systému?</li></ul>|
+|<ul><li>Vyskytly se uživatelům problémy s odesíláním nebo seseznamováním pracovních míst v data lake analytics?</li><li>Nejsou úlohy Služby Data Lake Analytics z důvodu systémových chyb možné dokončit?</li></ul>|
 
 
-## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
+## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/účty
 |Provedené kontroly|
 |---|
-|<ul><li>Měli by uživatelé narazili na problémy při nahrávání dat do Data Lake Store?</li><li>Měli by uživatelé narazili na problémy se stahováním dat z Data Lake Store?</li></ul>|
+|<ul><li>Došlo k problémům s nahráváním dat do úložiště Data Lake Store?</li><li>Došlo k potížím se stahováním dat z úložiště Data Lake Store?</li></ul>|
 
 ## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/services
 |Provedené kontroly|
 |---|
-|<ul><li>Nepovedlo se zřídit službu Database Migration Service?</li><li>Byla služba Database Migration Service zastavena z důvodu neaktivity nebo žádosti uživatele?</li></ul>|
+|<ul><li>Služba migrace databáze se nepodařilo zřídit?</li><li>Byla služba migrace databáze zastavena z důvodu nečinnosti nebo požadavku uživatele?</li></ul>|
 
-## <a name="microsoftdatashareaccounts"></a>Microsoft. datashare/Accounts
+## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/účty
 |Provedené kontroly|
 |---|
-|<ul><li>Je účet pro sdílení dat zapnutý a spuštěný?</li><li>Je cluster hostující sdílená složka dat k dispozici?</li></ul>|
+|<ul><li>Je účet Sdílení dat spuštěn?</li><li>Je cluster hostující sdílenou složku dat k dispozici?</li></ul>|
 
-## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servery
 |Provedené kontroly|
 |---|
-|<ul><li>Je server z důvodu údržby nedostupný?</li><li>Je server z důvodu překonfigurování nedostupný?</li></ul>|
+|<ul><li>Je server nedostupný z důvodu údržby?</li><li>Je server nedostupný z důvodu změny konfigurace?</li></ul>|
 
-## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
+## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servery
 |Provedené kontroly|
 |---|
-|<ul><li>Je server z důvodu údržby nedostupný?</li><li>Je server z důvodu překonfigurování nedostupný?</li></ul>|
+|<ul><li>Je server nedostupný z důvodu údržby?</li><li>Je server nedostupný z důvodu změny konfigurace?</li></ul>|
 
-## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
+## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servery
 |Provedené kontroly|
 |---|
-|<ul><li>Je server z důvodu údržby nedostupný?</li><li>Je server z důvodu překonfigurování nedostupný?</li></ul>|
+|<ul><li>Je server nedostupný z důvodu údržby?</li><li>Je server nedostupný z důvodu změny konfigurace?</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 |Provedené kontroly|
 |---|
-|<ul><li>Je centrum IoT v provozu?</li></ul>|
+|<ul><li>Je centrum IoT zprovozněno?</li></ul>|
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |Provedené kontroly|
 |---|
-|<ul><li>Nějaké žádosti o databázi nebo kolekci nesloužily kvůli nedostupnosti Azure Cosmos DB služby?</li><li>Nedošlo k nedoručení požadavků na dokument kvůli nedostupnosti Azure Cosmos DB služby?</li></ul>|
+|<ul><li>Byly nějaké požadavky na databázi nebo kolekce, které se neobsluhovaly z důvodu nedostupnosti služby Azure Cosmos DB?</li><li>Byly nějaké žádosti o dokumenty nedoručené z důvodu nedostupnosti služby Azure Cosmos DB?</li></ul>|
 
-## <a name="microsofteventhubnamespaces"></a>Microsoft. eventhub/obory názvů
+## <a name="microsofteventhubnamespaces"></a>Obory názvů Microsoft.eventhub/Namespaces
 |Provedené kontroly|
 |---|
-|<ul><li>Má obor názvů Event Hubs u uživatelů generované chyby?</li><li>Je aktuálně upgradovaný obor názvů Event Hubs?</li></ul>|
+|<ul><li>Dochází v oboru názvů Event Hubs k chybám generovaným uživatelem?</li><li>Je obor názvů Event Hubs právě upgradován?</li></ul>|
 
-## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clusters
+## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clustery
 |Provedené kontroly|
 |---|
-|<ul><li>Jsou v clusteru HDInsight k dispozici základní služby?</li><li>Může cluster HDInsight přistupovat ke klíči pro šifrování BYOK v klidovém umístění?</li></ul>|
+|<ul><li>Jsou základní služby dostupné v clusteru HDInsight?</li><li>Může cluster HDInsight přistupovat ke klíči pro šifrování BYOK v klidovém stavu?</li></ul>|
 
-## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
+## <a name="microsoftkeyvaultvaults"></a>Úložiště Microsoft.KeyVault/trezory
 |Provedené kontroly|
 |---|
-|<ul><li>Jsou požadavky na Trezor klíčů neúspěšné kvůli problémům s platformou Azure datatrezoru?</li><li>Jsou požadavky na Trezor klíčů omezené z důvodu příliš velkého počtu požadavků provedených zákazníkem?</li></ul>|
+|<ul><li>Jsou požadavky na trezor klíčů neúspěšné z důvodu problémů s platformou Azure KeyVault?</li><li>Jsou požadavky na trezor klíčů omezeny z důvodu příliš mnoha požadavků ze strany zákazníka?</li></ul>|
 
-## <a name="microsoftmachinelearningwebservices"></a>Microsoft. MachineLearning/WebServices
+## <a name="microsoftmachinelearningwebservices"></a>Microsoft.MachineLearning/webServices
 |Provedené kontroly|
 |---|
-|<ul><li>Je webová služba funkční a spuštěná?</li></ul>|
+|<ul><li>Je webová služba v provozu?</li></ul>|
 
-## <a name="microsoftmediamediaservices"></a>Microsoft. Media/MediaServices
+## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
 |Provedené kontroly|
 |---|
-|<ul><li>Je služba Media Service spuštěná a spuštěná?</li></ul>|
+|<ul><li>Je mediální služba v provozu?</li></ul>|
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
 |Provedené kontroly|
 |---|
-|<ul><li>Je výkon Application Gateway snížený?</li><li>Je Application Gateway k dispozici?</li></ul>|
+|<ul><li>Je výkon aplikační brány snížen?</li><li>Je k dispozici aplikační brána?</li></ul>|
 
-## <a name="microsoftnetworkconnections"></a>Microsoft. Network/připojení
+## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Provedené kontroly|
 |---|
-|<ul><li>Je tunel VPN připojený?</li><li>Existují konflikty konfigurace v připojení?</li><li>Jsou předsdílené klíče správně nakonfigurované?</li><li>Je místní zařízení VPN dostupné?</li><li>Existují v zásadách zabezpečení IPSec/IKE neshoda?</li><li>Je připojení VPN S2S správně zřízené nebo ve stavu selhání?</li><li>Je připojení typu VNET-to-VNET správně zřízené nebo ve stavu selhání?</li></ul>|
+|<ul><li>Je vpn tunel připojen?</li><li>Existují konflikty konfigurace v připojení?</li><li>Jsou předsdílené klíče správně nakonfigurovány?</li><li>Je místní zařízení VPN dostupné?</li><li>Došlo k neshodám v zásadách zabezpečení protokolu IPSec/IKE?</li><li>Je připojení S2S VPN správně zřízeno nebo ve stavu se nezdařilo?</li><li>Je připojení virtuální sítě k virtuální síti správně zřízeno nebo ve stavu selhání?</li></ul>|
 
-## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressroutecircuits
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.network/expressroutecircuits
 |Provedené kontroly|
 |---|
 |<ul><li>Je okruh ExpressRoute v pořádku?</li></ul>|
@@ -147,9 +147,9 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
 |Provedené kontroly|
 |---|
-|<ul><li>Jsou přední dveře back-endy v reakci s chybami sond stavu?</li><li>Jsou změny konfigurace zpožděné?</li></ul>|
+|<ul><li>Jsou back-endy předních dveří reagující s chybami na sondách stavu?</li><li>Zpožďují se změny konfigurace?</li></ul>|
 
-## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/LoadBalancers
+## <a name="microsoftnetworkloadbalancers"></a>Microsoft.network/LoadBalancers
 |Provedené kontroly|
 |---|
 |<ul><li>Jsou k dispozici koncové body vyrovnávání zatížení?</li></ul>|
@@ -157,74 +157,74 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |Provedené kontroly|
 |---|
-|<ul><li>Je Brána VPN dosažitelná z Internetu?</li><li>Je VPN Gateway v pohotovostním režimu?</li><li>Běží v bráně služba VPN?</li></ul>|
+|<ul><li>Je brána VPN dostupná z internetu?</li><li>Je brána VPN v pohotovostním režimu?</li><li>Je služba VPN spuštěna na bráně?</li></ul>|
 
-## <a name="microsoftnotificationhubsnamespace"></a>Microsoft.NotificationHubs/namespace
+## <a name="microsoftnotificationhubsnamespace"></a>Microsoft.NotificationHubs/obor názvů
 |Provedené kontroly|
 |---|
-|<ul><li>Mohou být operace za běhu, jako je registrace, instalace nebo odeslání, prováděny v oboru názvů?</li></ul>|
+|<ul><li>Lze v oboru názvů provádět operace runtime, jako je registrace, instalace nebo odeslání?</li></ul>|
 
-## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.operationalinsights/workspaces
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.operationalinsights/pracovní prostory
 |Provedené kontroly|
 |---|
-|<ul><li>Existují pro tento pracovní prostor zpoždění indexování?</li></ul>|
+|<ul><li>Existují zpoždění indexování pracovního prostoru?</li></ul>|
 
-## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/– kapacity
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Kapacity
 |Provedené kontroly|
 |---|
-|<ul><li>Je prostředek kapacity v provozu a běží?</li><li>Jsou všechny úlohy spuštěné a spuštěné?</li></ul>|
+|<ul><li>Je zdroj kapacity v provozu?</li><li>Jsou všechny úlohy v provozu?</li></ul>|
 
-## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
+## <a name="microsoftpowerbiworkspacecollections"></a>Kolekce Microsoft.PowerBI/workspaceCollections
 |Provedené kontroly|
 |---|
-|<ul><li>Je operační systém hostitele v provozu a běží?</li><li>Je dostupná aplikace pracovní prostorcollection z oblasti mimo datové centrum?</li><li>Je poskytovatel prostředků Power BI k dispozici?</li><li>Je služba Power BI k dispozici v příslušné oblasti?</li></ul>|
+|<ul><li>Je hostitelský operační spoje v provozu?</li><li>Je workspaceCollection dosažitelný mimo datové centrum?</li><li>Je poskytovatel prostředků Power BI k dispozici?</li><li>Je služba Power BI dostupná v příslušné oblasti?</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |Provedené kontroly|
 |---|
-|<ul><li>Můžou se v clusteru provádět diagnostické operace?</li></ul>|
+|<ul><li>Lze v clusteru provádět diagnostické operace?</li></ul>|
 
-## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
+## <a name="microsoftservicebusnamespaces"></a>Obory názvů Microsoft.ServiceBus
 |Provedené kontroly|
 |---|
-|<ul><li>Vycházejí zákazníci s chybami Service Bus generovaných uživatelem?</li><li>Dochází u uživatelů ke zvýšení přechodných chyb v důsledku upgradu oboru názvů Service Bus?</li></ul>|
+|<ul><li>Dochází k chybám sběrnice Service Bus vygenerovanému uživateli?</li><li>Dochází k nárůstu přechodných chyb uživatelů v důsledku upgradu oboru názvů service bus?</li></ul>|
 
-## <a name="microsoftservicefabricclusters"></a>Microsoft. ServiceFabric/clustery
+## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clustery
 |Provedené kontroly|
 |---|
-|<ul><li>Je Cluster Service Fabric spuštěný a spuštěný?</li><li>Dá se Service Fabric cluster spravovat prostřednictvím Azure Resource Manager?</li></ul>|
+|<ul><li>Je cluster Service Fabric zprovozněn?</li><li>Může být cluster Service Fabric spravován prostřednictvím Správce prostředků Azure?</li></ul>|
 
-## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/managedInstances/databáze
+## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
 |Provedené kontroly|
 |---|
-|<ul><li>Je databáze spuštěná a spuštěná?</li></ul>|
+|<ul><li>Je databáze v provozu?</li></ul>|
 
-## <a name="microsoftsqlserverdatabases"></a>Microsoft. SQL/Server/databáze
+## <a name="microsoftsqlserverdatabases"></a>Microsoft.SQL/Server/databáze
 |Provedené kontroly|
 |---|
-|<ul><li>Přihlásili jste se k databázi s přihlášením?</li></ul>|
+|<ul><li>Došlo k přihlášení do databáze?</li></ul>|
 
-## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts.
+## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 |Provedené kontroly|
 |---|
-|<ul><li>Jsou požadavky na čtení dat z účtu úložiště neúspěšné kvůli problémům s Azure Storage platformou?</li><li>Jsou požadavky na zápis dat do účtu úložiště neúspěšné kvůli problémům s Azure Storage platformou?</li><li>Je cluster úložiště, ve kterém se nachází účet úložiště, nedostupný?</li></ul>|
+|<ul><li>Jsou požadavky na čtení dat z účtu úložiště selhání z důvodu problémů platformy Azure Storage?</li><li>Jsou požadavky na zápis dat do účtu úložiště selhání z důvodu problémů platformy Azure Storage?</li><li>Je cluster úložiště, kde se nachází účet úložiště, nedostupný?</li></ul>|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 |Provedené kontroly|
 |---|
-|<ul><li>Jsou všichni hostitelé, na kterých se úloha spouští a běží?</li><li>Nepovedlo se nám spustit úlohu?</li><li>Probíhá probíhající upgrade za běhu?</li><li>Je úloha v očekávaném stavu (například spuštění nebo zastavení zákazníkem)?</li><li>Zjistila se u úlohy výjimky z paměti?</li><li>Existují průběžné plánované aktualizace COMPUTE?</li><li>Je k dispozici Správce spuštění (plán ovládacích prvků)?</li></ul>|
+|<ul><li>Jsou všichni hostitelé, kde je úloha spuštěna?</li><li>Nebylo možné úlohu spustit?</li><li>Existují průběžné inovace za běhu?</li><li>Je úloha v očekávaném stavu (například spuštěna nebo zastavena zákazníkem)?</li><li>Došlo k nedostatku paměti k úloze úlohy?</li><li>Probíhají plánované aktualizace výpočetních prostředků?</li><li>Je k dispozici Správce spuštění (plán řízení)?</li></ul>|
 
-## <a name="microsoftwebserverfarms"></a>Microsoft.web/serverFarms
+## <a name="microsoftwebserverfarms"></a>Microsoft.web/serverFarmy
 |Provedené kontroly|
 |---|
-|<ul><li>Je hostitelský server v provozu a běží?</li><li>Je Internetová informační služba běžet?</li><li>Je spuštěn nástroj pro vyrovnávání zatížení?</li><li>Je možné v rámci datového centra získat App Service plán?</li><li>Je účet úložiště hostující obsah webů pro serverová farma dostupný?</li></ul>|
+|<ul><li>Je hostitelský server v provozu?</li><li>Je spuštěna Internetová informační služba?</li><li>Je spuštěn balancer na zatížení?</li><li>Může být plán služby App Service dostupný z datového centra?</li><li>Je účet úložiště hostující obsah webů pro serverFarm k dispozici?</li></ul>|
 
-## <a name="microsoftwebsites"></a>Microsoft.web/sites
+## <a name="microsoftwebsites"></a>Microsoft.web/weby
 |Provedené kontroly|
 |---|
-|<ul><li>Je hostitelský server v provozu a běží?</li><li>Je spuštěný Internet Information Server?</li><li>Je spuštěn nástroj pro vyrovnávání zatížení?</li><li>Může být webová aplikace dosažitelná v rámci datového centra?</li><li>Je k dispozici účet úložiště hostující obsah webu?</li></ul>|
+|<ul><li>Je hostitelský server v provozu?</li><li>Je spuštěn internetový informační server?</li><li>Je spuštěn balancer na zatížení?</li><li>Může být webová aplikace dostupná z datového centra?</li><li>Je k dispozici účet úložiště hostující obsah webu?</li></ul>|
 
 ## <a name="next-steps"></a>Další kroky
--  Další informace najdete v tématu [Úvod do Azure Service Healthho řídicího panelu](service-health-overview.md) a [Úvod do Azure Resource Health](resource-health-overview.md) . 
--  [Nejčastější dotazy týkající se Azure Resource Health](resource-health-faq.md)
-- Nastavte výstrahy, abyste byli informováni o problémech se stavem. Další informace najdete v tématu [Konfigurace výstrah pro události služby Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
+-  Najdete [v tématu Úvod do Azure Service Health řídicí panel](service-health-overview.md) a úvod do Azure Resource [Health](resource-health-overview.md) pochopit více o nich. 
+-  [Nejčastější dotazy týkající se stavu prostředků Azure](resource-health-faq.md)
+- Nastavte výstrahy tak, abyste byli upozorněni na problémy se stavem. Další informace naleznete v [tématu Konfigurace výstrah pro události stavu služby](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 

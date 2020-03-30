@@ -1,42 +1,42 @@
 ---
-title: Mapování skriptu toku dat
-description: Přehled jazyka kódu Data Factoryho skriptu pro tok dat
+title: Skript toku dat mapování
+description: Přehled jazyka kódu skriptu toku dat v toku dat
 author: kromerm
 ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/10/2019
-ms.openlocfilehash: d861a4355158dfe18ac3aa40a7f98dc11ebda90b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/24/2020
+ms.openlocfilehash: 92421125ecb5f4336922c6e6b4508fcdaf92be6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930262"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246394"
 ---
 # <a name="data-flow-script-dfs"></a>Skript toku dat (DFS)
 
-Skript toku dat (DFS) je podkladová metadata, podobně jako kódovací jazyk, který se používá ke spouštění transformací, které jsou zahrnuty v toku dat mapování. Všechny transformace jsou reprezentovány řadou vlastností, které poskytují nezbytné informace pro správné spuštění úlohy. Skript je viditelný a upravitelný z ADF kliknutím na tlačítko "skript" na horním pásu karet uživatelského rozhraní prohlížeče.
+Skript toku dat (DFS) je základní metadata, podobně jako kódovací jazyk, který se používá ke spuštění transformace, které jsou zahrnuty v toku dat mapování. Každá transformace je reprezentována řadou vlastností, které poskytují potřebné informace pro správné spuštění úlohy. Skript je viditelný a upravitelný z ADF kliknutím na tlačítko "skript" na horní pásu karet prohlížeče.
 
-![Tlačítko skriptu](media/data-flow/scriptbutton.png "Tlačítko skriptu")
+![Tlačítko Skript](media/data-flow/scriptbutton.png "Tlačítko Skript")
 
-`allowSchemaDrift: true,` ve zdrojové transformaci například instruuje službu, aby zahrnovala všechny sloupce ze zdrojové datové sady v toku dat, i když nejsou zahrnuté do projekce schématu.
+Například `allowSchemaDrift: true,` ve zdrojové transformace říká službě zahrnout všechny sloupce ze zdrojové datové sady v toku dat i v případě, že nejsou zahrnuty v projekci schématu.
 
 ## <a name="use-cases"></a>Případy použití
-Systém souborů DFS je automaticky vytvořen uživatelským rozhraním. Kliknutím na tlačítko skript můžete zobrazit a přizpůsobit skript. Můžete také vygenerovat skripty mimo uživatelské rozhraní ADF a pak je předat do rutiny PowerShellu. Při ladění složitých toků dat může být snazší vyhledat kód skriptu, místo aby se kontrolovala reprezentace grafu uživatelského rozhraní.
+Systém souborů DFS je automaticky vytvářen uživatelským rozhraním. Chcete-li skript zobrazit a přizpůsobit, klepněte na tlačítko Skript. Můžete také generovat skripty mimo uj. Při ladění komplexní datové toky, může být snazší skenovat kód skriptu napozadí namísto skenování reprezentace grafu u rozhraní toků.
 
-Tady je několik příkladů případů použití:
-- Programově vytváření mnoha toků dat, které jsou poměrně podobné, tj. toky dat "razítko".
-- Složité výrazy, které se obtížně spravují v uživatelském rozhraní nebo mají za následek problémy s ověřením.
-- Ladění a lepší porozumění různým chybám vráceným během provádění.
+Zde je několik příkladů případů použití:
+- Programově produkující mnoho datových toků, které jsou poměrně podobné, tj.
+- Složité výrazy, které je obtížné spravovat v unovém uj.
+- Ladění a lepší pochopení různých chyb vrácených během provádění.
 
-Když vytváříte skript toku dat pro použití s prostředím PowerShell nebo rozhraním API, je nutné sbalit formátovaný text na jeden řádek. Můžete ponechat tabulátory a newlines jako řídicí znaky. Ale text musí být formátovaný tak, aby se vešel do vlastnosti JSON. V dolní části uživatelského rozhraní editoru skriptů je tlačítko, ve kterém se skript naformátuje jako jeden řádek.
+Při vytváření skriptu toku dat pro použití s Prostředím PowerShell nebo rozhraní API, je nutné sbalit formátovaný text do jednoho řádku. Jako řídicí znaky můžete mít na záložkách a nových řádcích. Ale text musí být formátován tak, aby se vešel do vlastnosti JSON. V dolní části je tlačítko v uzly editoru skriptů, které bude formátovat skript jako jeden řádek pro vás.
 
-![Tlačítko Kopírovat](media/data-flow/copybutton.png "Tlačítko pro kopírování")
+![Tlačítko pro kopírování](media/data-flow/copybutton.png "Tlačítko pro kopírování")
 
-## <a name="how-to-add-transforms"></a>Postup přidání transformací
-Přidání transformací vyžaduje tři základní kroky: Přidání základních transformačních dat, přesměrování vstupního datového proudu a následné přesměrování výstupního datového proudu. To se dá v příkladu zobrazit nejjednodušší.
-Řekněme, že začneme s jednoduchým zdrojem pro tok dat, jako je následující:
+## <a name="how-to-add-transforms"></a>Jak přidat transformace
+Přidání transformací vyžaduje tři základní kroky: přidání základních transformačních dat, přesměrování vstupního datového proudu a následné přesměrování výstupního datového proudu. To lze vidět nejjednodušší v příkladu.
+Řekněme, že začneme s jednoduchým zdrojem pro propad toku dat, jako je následující:
 
 ```
 source(output(
@@ -50,12 +50,12 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Pokud se rozhodnete přidat odvozenou transformaci, nejdřív musíme vytvořit základní transformační text, který má jednoduchý výraz pro přidání nového sloupce s velkými písmeny s názvem `upperCaseTitle`:
+Pokud se rozhodneme přidat odvozenou transformaci, nejprve musíme vytvořit text transformace jádra, který `upperCaseTitle`má jednoduchý výraz pro přidání nového sloupce s názvem :
 ```
 derive(upperCaseTitle = upper(title)) ~> deriveTransformationName
 ```
 
-Pak převezmeme stávající DFS a přidáme transformaci:
+Potom vezmeme existující DFS a přidáme transformaci:
 ```
 source(output(
         movieId as string,
@@ -69,7 +69,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-A teď přesměrujte příchozí datový proud tím, že určíte, kterou transformaci chceme po (v tomto případě `source1`), a zkopírováním názvu streamu do nové transformace:
+A nyní přesměrovádáme příchozí proud určením transformace, kterou chceme, `source1`aby nová transformace přišla po (v tomto případě) a zkopírovali název datového proudu do nové transformace:
 ```
 source(output(
         movieId as string,
@@ -83,7 +83,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Nakonec identifikujeme transformaci, kterou chceme přijít po této nové transformaci, a nahraďte její vstupní proud (v tomto případě `sink1`) s názvem výstupního datového proudu naší nové transformace:
+Nakonec identifikujeme transformaci, kterou chceme přijít po této nové transformaci, a `sink1`nahradíme její vstupní proud (v tomto případě) názvem výstupního datového proudu naší nové transformace:
 ```
 source(output(
         movieId as string,
@@ -97,8 +97,8 @@ deriveTransformationName sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-## <a name="dfs-fundamentals"></a>Základní informace o systému souborů DFS
-DFS se skládá z řady propojených transformací, včetně zdrojů, umyvadel a různých dalších, které mohou přidávat nové sloupce, filtrovat data, spojovat data a mnoho dalšího. Skript obvykle začíná s jedním nebo více zdroji následovanými mnoha transformacemi a končí jednou nebo více jímkami.
+## <a name="dfs-fundamentals"></a>Základy DFS
+Dfs se skládá z řady propojených transformací, včetně zdrojů, jímky a různé další, které můžete přidat nové sloupce, filtrovat data, spojit data a mnoho dalšího. Skript s začít s jedním nebo více zdrojů následuje mnoho transformací a končí jeden nebo více propadů.
 
 Všechny zdroje mají stejnou základní konstrukci:
 ```
@@ -107,7 +107,7 @@ source(
 ) ~> source_name
 ```
 
-Například jednoduchý zdroj se třemi sloupci (movieId, title, žánry) by byl:
+Například jednoduchý zdroj se třemi sloupci (movieId, název, žánry) by bylo:
 ```
 source(output(
         movieId as string,
@@ -118,26 +118,60 @@ source(output(
     validateSchema: false) ~> source1
 ```
 
-Všechny transformace kromě zdrojů mají stejnou základní konstrukci:
+Všechny transformace jiné než zdroje mají stejnou základní konstrukci:
 ```
 name_of_incoming_stream transformation_type(
   properties
 ) ~> new_stream_name
 ```
 
-Například jednoduchá odvozená transformace, která přebírá sloupec (title) a Přepisuje ho pomocí velké verze, by byla následující:
+Například jednoduchá odvozená transformace, která vezme sloupec (název) a přepíše jej s verzí velkých písmen, bude následující:
 ```
 source1 derive(
   title = upper(title)
 ) ~> derive1
 ```
 
-A jímka bez schématu by byla jednoduchá:
+A umyvadlo bez schématu by bylo jednoduše:
 ```
 derive1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
+## <a name="script-snippets"></a>Výstřižky skriptů
+
+### <a name="aggregated-summary-stats"></a>Souhrnné souhrnné statistiky
+Přidejte agregační transformace do toku dat s názvem "SummaryStats" a pak vložte do tohoto kódu níže pro agregační funkce ve skriptu, nahradí existující SummaryStats. To bude poskytovat obecný vzor pro souhrnné statistiky datového profilu.
+
+```
+aggregate(each(match(true()), $$+'_NotNull' = countIf(!isNull($$)), $$ + '_Null' = countIf(isNull($$))),
+        each(match(type=='double'||type=='integer'||type=='short'||type=='decimal'), $$+'_stddev' = round(stddev($$),2), $$ + '_min' = min ($$), $$ + '_max' = max($$), $$ + '_average' = round(avg($$),2), $$ + '_variance' = round(variance($$),2)),
+        each(match(type=='string'), $$+'_maxLength' = max(length($$)))) ~> SummaryStats
+```
+Níže uvedenou ukázku můžete také použít k výpočtu počtu jedinečných a počtu odlišných řádků v datech. Následující příklad lze vložit do toku dat s agregační transformace s názvem ValueDistAgg. Tento příklad používá sloupec s názvem "title". Nezapomeňte nahradit "title" řetězcem ve vašich datech, které chcete použít k získání počtu hodnot.
+
+```
+aggregate(groupBy(title),
+    countunique = count()) ~> ValueDistAgg
+ValueDistAgg aggregate(numofunique = countIf(countunique==1),
+        numofdistinct = countDistinct(title)) ~> UniqDist
+```
+
+### <a name="include-all-columns-in-an-aggregate"></a>Zahrnutí všech sloupců do agregace
+Toto je obecný agregační vzor, který ukazuje, jak můžete zachovat zbývající sloupce ve výstupních metadatech při vytváření agregací. V tomto případě použijeme ```first()``` funkci k výběru první hodnoty v každém sloupci, jehož název není "film". Chcete-li použít, vytvořte agregační transformace s názvem DistinctRows a vložte jej do skriptu přes existující DistinctRows agregační skript.
+
+```
+aggregate(groupBy(movie),
+    each(match(name!='movie'), $$ = first($$))) ~> DistinctRows
+```
+
+### <a name="create-row-hash-fingerprint"></a>Vytvoření otisku prstu hash řádku 
+Tento kód ve skriptu toku dat použijte ```DWhash``` k vytvoření ```sha1``` nového odvozeného sloupce s názvem hash tří sloupců.
+
+```
+derive(DWhash = sha1(Name,ProductNumber,Color))
+```
+
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte toky dat od [článku Přehled toků dat](concepts-data-flow-overview.md)
+Prozkoumejte toky dat tak, že začnete s [článkem přehledu toků dat](concepts-data-flow-overview.md)

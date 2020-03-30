@@ -1,6 +1,6 @@
 ---
-title: Infrastruktura a připojení k SAP HANA v Azure (velké instance) | Microsoft Docs
-description: Nakonfigurujte požadovanou infrastrukturu připojení pro použití SAP HANA v Azure (velké instance).
+title: Infrastruktura a připojení k SAP HANA v Azure (velké instance) | Dokumenty společnosti Microsoft
+description: Nakonfigurujte požadovanou infrastrukturu připojení tak, aby používala SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,43 +14,43 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cea89087742f1987f693b8bfb627bd71038a0c14
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616927"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>Nasazení SAP HANA (velké instance) 
 
-V tomto článku se předpokládá, že jste dokončili nákup SAP HANA v Azure (velké instance) od Microsoftu. Než si přečtete tento článek, Obecné informace najdete v tématu [běžné výrazy pro velké instance Hana](hana-know-terms.md) a [SKU velkých instancí Hana](hana-available-skus.md).
+Tento článek předpokládá, že jste dokončili nákup SAP HANA v Azure (velké instance) od Microsoftu. Před přečtením tohoto článku, obecné pozadí naleznete [v tématu HANA velké instance běžné termíny](hana-know-terms.md) a [HANA velké instance skum](hana-available-skus.md).
 
 
-Aby bylo možné nasadit jednotky velkých instancí HANA, společnost Microsoft vyžaduje následující informace:
+Společnost Microsoft vyžaduje následující informace k nasazení jednotek velkých instancí HANA:
 
 - Jméno zákazníka.
-- Obchodní kontaktní informace (včetně e-mailové adresy a telefonního čísla).
-- Technické kontaktní informace (včetně e-mailové adresy a telefonního čísla)
-- Kontaktní informace pro technické sítě (včetně e-mailové adresy a telefonního čísla)
+- Obchodní kontaktní údaje (včetně e-mailové adresy a telefonního čísla).
+- Technické kontaktní údaje (včetně e-mailové adresy a telefonního čísla).
+- Technické kontaktní informace pro síť (včetně e-mailové adresy a telefonního čísla).
 - Oblast nasazení Azure (například Západní USA, Austrálie – východ nebo Severní Evropa).
-- SAP HANA v Azure (velké instance) SKU (konfigurace).
+- SAP HANA v Azure (velké instance) Skladová položka (konfigurace).
 - Pro každou oblast nasazení Azure:
-    - Rozsah IP adres a/29 pro připojení ER-P2P, která spojují virtuální sítě Azure s velkými instancemi HANA.
-    - Blok CIDR a/24 použitý pro fond IP adres serveru rozsáhlých instancí HANA.
-    - Volitelné při použití [Global REACH ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) k umožnění přímého směrování z místního prostředí do Hana velkých jednotek instancí nebo směrování mezi velkými jednotkami instancí v různých oblastech Azure, je potřeba rezervovat jiný rozsah IP adres/29. Tento konkrétní rozsah se nesmí překrývat s žádným z dalších rozsahů IP adres, které jste definovali dříve.
-- Hodnoty rozsahu IP adres, které se používají v atributu adresního prostoru virtuální sítě v každé službě Azure Virtual Network, která se připojuje ke velkých instancím HANA.
+    - Rozsah IP adres /29 pro připojení ER-P2P, které připojují virtuální sítě Azure k velkým instancím HANA.
+    - Blok /24 CIDR používaný pro fond IP serveru velkých instancí HANA.
+    - Volitelné při použití [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) povolit přímé směrování z místních jednotek velké instance HANA nebo směrování mezi jednotkami velké instance HANA v různých oblastech Azure, je třeba rezervovat další rozsah IP adres /29. Tento konkrétní rozsah se nesmí překrývat s žádným z ostatních rozsahů IP adres, které jste definovali dříve.
+- Hodnoty rozsahu IP adres použité v atributu adresního prostoru virtuální sítě každé virtuální sítě Azure, která se připojuje k velkým instancím HANA.
 - Data pro každý systém velkých instancí HANA:
   - Požadovaný název hostitele, v ideálním případě s plně kvalifikovaným názvem domény.
-  - Požadovaná IP adresa pro jednotku velkých instancí HANA se nenachází mimo rozsah adres fondu IP adres serveru. (Prvních 30 IP adres v rozsahu adresního fondu IP adres je rezervovaný pro interní použití v rámci velkých instancí HANA.)
-  - SAP HANA název SID pro instanci SAP HANA (vyžaduje se k vytvoření potřebných svazků disku souvisejících s SAP HANA). Microsoft potřebuje pro vytváření oprávnění pro sidadm na svazcích NFS identifikátor zabezpečení HANA. Tyto svazky se připojují k jednotce velké instance HANA. Identifikátor SID pro HANA se používá také jako jedna z komponent názvu diskových svazků, které jsou připojeny. Pokud chcete na jednotce spustit více než jednu instanci HANA, měli byste uvést více identifikátorů SID pro HANA. Každý z nich získá samostatnou sadu svazků, které jsou přiřazeny.
-  - V operačním systému Linux má uživatel sidadm ID skupiny. Toto ID je nutné k vytvoření potřebných svazků disku souvisejících s SAP HANA. Instalace SAP HANA obvykle vytvoří skupinu sapsys s ID skupiny 1001. Uživatel sidadm je součástí této skupiny.
-  - V operačním systému Linux má uživatel sidadm ID uživatele. Toto ID je nutné k vytvoření potřebných svazků disku souvisejících s SAP HANA. Pokud na jednotce spouštíte několik instancí HANA, Seznamte se s sidadm uživateli. 
-- ID předplatného Azure pro předplatné Azure, ke kterému SAP HANA ve velkých instancích Azure HANA, bude přímo připojeno. Toto ID předplatného odkazuje na předplatné Azure, které se bude účtovat s jednotkou nebo jednotkami velké instance HANA.
+  - Požadovaná adresa IP pro jednotku velké instance HANA mimo rozsah adres fondu IP serveru. (Prvních 30 adres IP v rozsahu adres fondu IP serveru je vyhrazeno pro interní použití ve velkých instancích HANA.)
+  - Název SAP HANA SID pro instanci SAP HANA (vyžadováno k vytvoření potřebných diskových svazků souvisejících s SAP HANA). Společnost Microsoft potřebuje HANA SID pro vytváření oprávnění pro sidadm na svazcích systému souborů NFS. Tyto svazky připojit k jednotce velké instance HANA. HANA SID se také používá jako jeden z názvů součástí diskových svazků, které si připojen. Pokud chcete spustit více než jednu instanci HANA na jednotce, měli byste uvést více SID HANA. Každý z nich získá samostatnou sadu svazků přiřazených.
+  - V operačním systému Linux má uživatel sidadm ID skupiny. Toto ID je nutné k vytvoření potřebných svazků disku souvisejících s SAP HANA. Instalace SAP HANA obvykle vytvoří skupinu sapsys, s ID skupiny 1001. Uživatel sidadmu je součástí této skupiny.
+  - V operačním systému Linux má uživatel sidadm ID uživatele. Toto ID je nutné k vytvoření potřebných svazků disku souvisejících s SAP HANA. Pokud na jednotce používáte několik instancí HANA, uveďte seznam všech uživatelů sidadmu. 
+- ID předplatného Azure pro předplatné Azure, ke kterému bude SAP HANA ve velkých instancích Azure HANA přímo připojeno. Toto ID předplatného odkazuje na předplatné Azure, které se bude účtovat s jednotkou nebo jednotkami velké instance HANA.
 
-Po zadání výše uvedených informací Microsoft zřídí SAP HANA v Azure (velké instance). Microsoft pošle informace, aby propojí vaše virtuální sítě Azure s velkými instancemi HANA. Můžete také přistupovat k jednotkám velkých instancí HANA.
+Po poskytnutí předchozích informací, Microsoft zřídí SAP HANA v Azure (velké instance). Společnost Microsoft vám odesílá informace k propojení virtuálních sítí Azure s velkými instancemi HANA. Můžete také přistupovat k jednotkám velkých instancí HANA.
 
-Pomocí následujícího postupu se připojte k velkým instancím HANA poté, co ji Microsoft nasadí:
+Pomocí následující sekvence se můžete připojit k velkým instancím HANA po jeho nasazení společností Microsoft:
 
 1. [Připojení virtuálních počítačů Azure k velkým instancím HANA](hana-connect-azure-vm-large-instances.md)
-2. [Připojení virtuální sítě k ExpressRoute velkým instancím v HANA](hana-connect-vnet-express-route.md)
+2. [Připojení virtuální sítě k velkým instancím HANA ExpressRoute](hana-connect-vnet-express-route.md)
 3. [Další požadavky na síť (volitelné)](hana-additional-network-requirements.md)
 

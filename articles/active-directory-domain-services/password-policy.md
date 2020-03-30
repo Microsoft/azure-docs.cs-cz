@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a použití zásad hesel v Azure AD Domain Services | Microsoft Docs
-description: Přečtěte si, jak a proč používat podrobné zásady pro hesla k zabezpečení a řízení hesel účtů ve spravované doméně Azure služba AD DS.
+title: Vytváření a používání zásad hesel ve službě Azure AD Domain Services | Dokumenty společnosti Microsoft
+description: Zjistěte, jak a proč používat jemně odstupňované zásady hesel k zabezpečení a řízení hesel účtů ve spravované doméně Azure AD DS.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,122 +12,122 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77613193"
 ---
-# <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady hesel a uzamčení účtů ve spravovaných doménách
+# <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady uzamčení hesel a účtů ve spravovaných doménách
 
-Pokud chcete spravovat zabezpečení uživatelů v Azure Active Directory Domain Services (Azure služba AD DS), můžete definovat podrobné zásady pro hesla, které řídí nastavení uzamčení účtu nebo minimální délku hesla a složitost. Na všech uživatelích ve spravované doméně Azure služba AD DS se vytvoří a použije výchozí jemně odstupňované zásady hesel. Pro zajištění podrobného řízení a splnění konkrétních potřeb obchodu nebo dodržování předpisů je možné vytvořit další zásady a použít je u konkrétních skupin uživatelů.
+Chcete-li spravovat zabezpečení uživatelů ve službě Azure Active Directory Domain Services (Azure AD DS), můžete definovat jemně odstupňované zásady hesel, které řídí nastavení uzamčení účtu nebo minimální délku a složitost hesla. Výchozí zásady jemně odstupňovaných hesel se vytvoří a použijí pro všechny uživatele ve spravované doméně Azure AD DS. Chcete-li poskytnout podrobné řízení a splnit konkrétní obchodní nebo dodržování předpisů potřeby, další zásady mohou být vytvořeny a použity pro konkrétní skupiny uživatelů.
 
-V tomto článku se dozvíte, jak vytvořit a nakonfigurovat jemně odstupňované zásady pro hesla v Azure služba AD DS pomocí Centrum správy služby Active Directory.
+Tento článek ukazuje, jak vytvořit a nakonfigurovat jemně odstupňované zásady hesel v Azure AD DS pomocí Centra správy služby Active Directory.
 
 > [!NOTE]
-> Zásady hesel jsou dostupné jenom pro spravované domény Azure služba AD DS, které se vytvořily pomocí modelu nasazení Správce prostředků. Pro starší spravované domény vytvořené pomocí klasického nasazení [migrujte z modelu klasických virtuálních sítí na správce prostředků][migrate-from-classic].
+> Zásady hesel jsou dostupné jenom pro spravované domény Azure AD DS vytvořené pomocí modelu nasazení Správce prostředků. U starších spravovaných domén vytvořených pomocí klasické [migrace z modelu klasické virtuální sítě do Správce prostředků][migrate-from-classic].
 
 ## <a name="before-you-begin"></a>Než začnete
 
-K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
+Chcete-li tento článek dokončit, potřebujete následující zdroje a oprávnění:
 
 * Aktivní předplatné Azure.
-  * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
-  * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
-* Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
-  * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
-  * Instance Azure služba AD DS musí být vytvořená pomocí modelu nasazení Správce prostředků. V případě potřeby [migrujte z modelu klasických virtuálních sítí na správce prostředků][migrate-from-classic].
-* Virtuální počítač pro správu Windows serveru, který je připojený k spravované doméně Azure služba AD DS.
-  * V případě potřeby dokončete kurz a [vytvořte virtuální počítač pro správu][tutorial-create-management-vm].
-* Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
+  * Pokud nemáte předplatné Azure, [vytvořte si účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému, synchronizovaný s místním adresářem nebo s adresářem pouze pro cloud.
+  * V případě potřeby [vytvořte klienta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure ke svému účtu][associate-azure-ad-tenant].
+* Spravovaná doména Služby Azure Active Directory Domain Services povolená a nakonfigurovaná ve vašem tenantovi Azure AD.
+  * V případě potřeby proveďte kurz [a vytvořte a nakonfigurujte instanci služby Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+  * Instance Azure AD DS musí být vytvořena pomocí modelu nasazení Správce prostředků. V případě potřeby [migrujte z modelu klasické virtuální sítě do Správce prostředků][migrate-from-classic].
+* Virtuální počítač pro správu Windows Serveru, který je spojený se spravovanou doménou Azure AD DS.
+  * V případě potřeby dokončete kurz [a vytvořte virtuální virtuální virtuální montovny pro správu][tutorial-create-management-vm].
+* Uživatelský účet, který je členem *skupiny správců Azure AD DC* ve vašem tenantovi Azure AD.
 
-## <a name="default-password-policy-settings"></a>Výchozí nastavení zásad hesel
+## <a name="default-password-policy-settings"></a>Výchozí nastavení zásad hesla
 
-Jemně odstupňované zásady hesel (FGPPs) umožňují použít specifická omezení pro zásady hesel a uzamčení účtů pro různé uživatele v doméně. Například pro zabezpečení privilegovaných účtů můžete použít nastavení uzamčení účtu, než běžné účty bez oprávnění. V rámci spravované domény služba AD DS Azure můžete vytvořit několik FGPPs a určit pořadí, ve kterém se mají použít pro uživatele.
+Jemně odstupňované zásady hesel (FGPP) umožňují použít konkrétní omezení pro zásady uzamčení hesla a účtu pro různé uživatele v doméně. Chcete-li například zabezpečit privilegované účty, můžete použít přísnější nastavení uzamčení účtu než běžné účty bez oprávnění. Můžete vytvořit více FGPP v rámci spravované domény Azure AD DS a určit pořadí priority pro jejich použití pro uživatele.
 
-Zásady se distribuují prostřednictvím přidružení skupiny ve spravované doméně Azure služba AD DS a veškeré změny, které provedete, se uplatní při přihlášení dalšího uživatele. Změna zásad neodemkne uživatelský účet, který je už uzamčený.
+Zásady jsou distribuovány prostřednictvím přidružení skupiny ve spravované doméně Azure AD DS a všechny změny, které provedete, se použijí při příštím přihlášení uživatele. Změnou zásadse neodemkne uživatelský účet, který je již uzamčen.
 
-Zásady hesel se chovají trochu různě v závislosti na tom, jak se vytvořil uživatelský účet, na který jste použili. Existují dva způsoby, jak lze vytvořit uživatelský účet v Azure služba AD DS:
+Zásady hesel se chovají trochu jinak v závislosti na tom, jak byl vytvořen uživatelský účet, na který se vztahují. Existují dva způsoby, jak lze vytvořit uživatelský účet ve službě Azure AD DS:
 
-* Uživatelský účet může být synchronizovaný v rámci služby Azure AD. Patří sem pouze cloudové uživatelské účty vytvořené přímo v Azure a hybridní uživatelské účty synchronizované z místního služba AD DS prostředí pomocí Azure AD Connect.
-    * Většina uživatelských účtů ve službě Azure služba AD DS se vytváří prostřednictvím procesu synchronizace z Azure AD.
-* Uživatelský účet se dá ručně vytvořit ve spravované doméně Azure služba AD DS a neexistuje v Azure AD.
+* Uživatelský účet lze synchronizovat v z Azure AD. To zahrnuje uživatelské účty pouze pro cloud vytvořené přímo v Azure a hybridní uživatelské účty synchronizované z místního prostředí Služby AD DS pomocí služby Azure AD Connect.
+    * Většina uživatelských účtů ve službě Azure AD DS se vytvoří prostřednictvím procesu synchronizace z Azure AD.
+* Uživatelský účet lze ručně vytvořit ve spravované doméně Azure AD DS a neexistuje ve službě Azure AD.
 
-Všichni uživatelé, bez ohledu na to, jak jsou vytvořeny, mají následující zásady uzamčení účtu použité výchozími zásadami pro hesla v Azure služba AD DS:
+Všichni uživatelé, bez ohledu na to, jak jsou vytvořeni, mají následující zásady uzamčení účtu použité ve výchozích zásadách hesel ve službě Azure AD DS:
 
-* **Doba trvání uzamčení účtu:** 30
-* **Počet povolených neúspěšných pokusů o přihlášení:** 5
-* **Resetovat počet neúspěšných pokusů o přihlášení za:** 30 minut
-* **Maximální stáří hesla (doba života):** 90 dní
+* **Doba uzamčení účtu:** 30
+* **Počet povolených pokusů o přihlášení, které se nezdařily:** 5
+* **Počet neúspěšných pokusů o přihlášení po:** 30 minutách
+* **Maximální stáří hesla (životnost):** 90 dní
 
-S těmito výchozími nastaveními jsou uživatelské účty uzamčeny po dobu 30 minut, pokud se do 2 minut používá pět neplatných hesel. Účty se po 30 minutách automaticky odemkní.
+Při těchto výchozích nastaveních jsou uživatelské účty uzamčeny po dobu 30 minut, pokud je během 2 minut použito pět neplatných hesel. Účty se automaticky odemknou po 30 minutách.
 
-K uzamčení účtu dochází pouze v rámci spravované domény. Uživatelské účty se v Azure služba AD DS jenom odpojí a v důsledku neúspěšných pokusů o přihlášení proti spravované doméně. Uživatelské účty, které se synchronizovaly z Azure AD nebo místně, nejsou ve zdrojových adresářích uzamčené, jenom v Azure služba AD DS.
+K uzamčení účtu dochází pouze v rámci spravované domény. Uživatelské účty jsou uzamčeny jenom ve službě Azure AD DS a pouze z důvodu neúspěšných pokusů o přihlášení proti spravované doméně. Uživatelské účty, které byly synchronizovány v azure ad nebo místní nejsou uzamčeny ve svých zdrojových adresářích, jenom ve službě Azure AD DS.
 
-Pokud máte zásady hesel Azure AD, které určují maximální stáří hesla delší než 90 dní, toto stáří hesla se použije na výchozí zásady v Azure služba AD DS. V Azure služba AD DS můžete nakonfigurovat vlastní zásady hesel, které definují jiné maximální stáří hesla. Pokud máte kratší stáří hesla, které je nakonfigurované v zásadách hesel služba AD DS Azure, než ve službě Azure AD nebo v místním prostředí služba AD DS, postarejte se pečlivě. V takovém případě může platnost hesla uživatele vypršet v Azure služba AD DS před tím, než se zobrazí výzva ke změně v Azure AD nebo v místním prostředí služba AD DS.
+Pokud máte zásady hesel Azure AD, která určuje maximální stáří hesla větší než 90 dní, stáří hesla se použije na výchozí zásady ve službě Azure AD DS. Můžete nakonfigurovat vlastní zásady hesla definovat jiný maximální stáří hesla v Azure AD DS. Dbát, pokud máte kratší maximální stáří hesla nakonfigurované v zásadách hesla Azure AD DS než ve službě Azure AD nebo v místním prostředí služby AD DS. V tomto scénáři může vypršet heslo uživatele ve službě Azure AD DS dříve, než se zobrazí výzva ke změně ve službě Azure AD nebo v místním prostředí služby AD DS.
 
-Pro uživatelské účty vytvořené ručně ve spravované doméně Azure služba AD DS se z výchozích zásad uplatní taky následující další nastavení hesla. Tato nastavení se nevztahují na uživatelské účty synchronizované v rámci služby Azure AD, protože uživatel nemůže aktualizovat heslo přímo v Azure služba AD DS.
+Pro uživatelské účty vytvořené ručně ve spravované doméně Azure AD DS se také použijí následující další nastavení hesla z výchozí zásady. Tato nastavení se nevztahují na uživatelské účty synchronizované ve službě Azure AD, protože uživatel nemůže aktualizovat své heslo přímo ve službě Azure AD DS.
 
-* **Minimální délka hesla (ve znacích):** 7
-* **Hesla musí splňovat požadavky na složitost.**
+* **Minimální délka hesla (znaky):** 7
+* **Hesla musí splňovat požadavky na složitost**
 
-Nastavení uzamčení nebo hesla účtu nemůžete změnit ve výchozích zásadách hesel. Místo toho můžou členové skupiny *Správci AAD DC* vytvořit vlastní zásady pro hesla a nakonfigurovat je tak, aby se přepsaly (mají přednost před) výchozí vestavěnou zásadou, jak je znázorněno v další části.
+Nastavení uzamčení účtu nebo hesla nelze změnit ve výchozích zásadách hesel. Místo toho mohou členové *skupiny AAD DC Administrators* vytvořit vlastní zásady hesel a nakonfigurovat je tak, aby přepsala (měla přednost před) výchozí předdefinovanou zásadou, jak je znázorněno v další části.
 
 ## <a name="create-a-custom-password-policy"></a>Vytvoření vlastních zásad hesel
 
-Při sestavování a spouštění aplikací v Azure možná budete chtít nakonfigurovat vlastní zásady hesel. Můžete například vytvořit zásadu, která nastaví různá nastavení zásad uzamčení účtů.
+Při vytváření a spouštění aplikací v Azure můžete chtít nakonfigurovat vlastní zásady hesel. Můžete například vytvořit zásadu pro nastavení různých zásad uzamčení účtu.
 
-Vlastní zásady hesel se aplikují na skupiny ve spravované doméně Azure služba AD DS. Tato konfigurace efektivně přepisuje výchozí zásady.
+Vlastní zásady hesel se používají pro skupiny ve spravované doméně Azure AD DS. Tato konfigurace účinně přepíše výchozí zásady.
 
-Pokud chcete vytvořit vlastní zásady pro hesla, použijte nástroje pro správu služby Active Directory z virtuálního počítače připojeného k doméně. Centrum správy služby Active Directory umožňuje zobrazovat, upravovat a vytvářet prostředky ve spravované doméně Azure služba AD DS, včetně organizačních jednotek.
+Chcete-li vytvořit vlastní zásady hesel, použijte nástroje pro správu služby Active Directory z virtuálního počítače přilehlého k doméně. Centrum správy služby Active Directory umožňuje zobrazit, upravit a vytvořit prostředky ve spravované doméně Azure AD DS, včetně vou.
 
 > [!NOTE]
-> Pokud chcete vytvořit vlastní zásady pro hesla ve spravované doméně Azure služba AD DS, musíte být přihlášení k uživatelskému účtu, který je členem skupiny *Administrators řadiče domény AAD* .
+> Chcete-li vytvořit vlastní zásady hesel ve spravované doméně Azure AD DS, musíte být přihlášeni k uživatelskému účtu, který je členem *skupiny Správci řadiče domény Řadičdomény AAD.*
 
-1. Z obrazovky Start vyberte **Nástroje pro správu**. Zobrazí se seznam dostupných nástrojů pro správu, které byly nainstalovány v tomto kurzu, aby bylo možné [vytvořit virtuální počítač pro správu][tutorial-create-management-vm].
-1. Chcete-li vytvořit a spravovat organizační jednotky, vyberte **Centrum správy služby Active Directory** ze seznamu nástrojů pro správu.
-1. V levém podokně vyberte spravovanou doménu Azure služba AD DS, například *aaddscontoso.com*.
-1. Otevřete kontejner **systému** a pak **kontejner nastavení hesel**.
+1. Na úvodní obrazovce vyberte **Nástroje pro správu**. Seznam dostupných nástrojů pro správu je zobrazen, které byly nainstalovány v kurzu [k vytvoření virtuálního virtuálního virtuálního uživatele pro správu][tutorial-create-management-vm].
+1. Chcete-li vytvořit a spravovat hlavní sady, vyberte ze seznamu nástrojů pro správu **Centrum správy služby Active Directory.**
+1. V levém podokně zvolte spravovanou doménu Azure AD DS, například *aaddscontoso.com*.
+1. Otevřete **systémový** kontejner a potom **kontejner nastavení hesla**.
 
-    Zobrazí se předdefinovaná zásada hesla pro spravovanou doménu Azure služba AD DS. Tuto vestavěnou zásadu nemůžete upravit. Místo toho vytvořte vlastní zásadu hesla pro přepsání výchozích zásad.
+    Zobrazí se integrovaná zásada hesel pro spravovanou doménu Azure AD DS. Tuto předdefinovanou zásadu nelze změnit. Místo toho vytvořte vlastní zásady hesel k přepsání výchozí zásady.
 
-    ![Vytvoření zásad pro hesla v Centrum správy služby Active Directory](./media/password-policy/create-password-policy-adac.png)
+    ![Vytvoření zásad hesel v Centru správy služby Active Directory](./media/password-policy/create-password-policy-adac.png)
 
-1. Na panelu **úlohy** na pravé straně vyberte **nové nastavení > hesla**.
-1. V dialogovém okně **vytvořit nastavení hesla** zadejte název zásady, například *MyCustomFGPP*.
-1. Pokud existuje více zásad hesel, uplatní se u uživatele zásada s nejvyšší prioritou nebo prioritou. Čím nižší číslo, tím vyšší Priorita. Výchozí zásady pro hesla mají prioritu *200*.
+1. V panelu **Úkoly** vpravo vyberte **Nový > Nastavení hesla**.
+1. V dialogovém okně **Vytvořit nastavení hesla** zadejte název zásady, například *MyCustomFGPP*.
+1. Pokud existuje více zásad hesel, zásady s nejvyšší prioritou nebo prioritou se použijí na uživatele. Čím nižší číslo, tím vyšší priorita. Výchozí zásady hesel mají prioritu *200*.
 
-    Nastavte prioritu pro vlastní zásady hesel, abyste popsali výchozí hodnotu, třeba *1*.
+    Nastavte prioritu vlastních zásad hesel tak, aby přepsala výchozí hodnotu, například *1*.
 
-1. Podle potřeby upravte další nastavení zásad hesel. Pamatujte na tyto klíčové body:
+1. Podle potřeby upravte další nastavení zásad hesel. Pamatujte si následující klíčové body:
 
-    * Nastavení jako složitost hesla, stáří nebo čas vypršení platnosti pouze uživatelům, kteří jsou ručně vytvořeni ve spravované doméně Azure služba AD DS.
-    * Nastavení uzamčení účtů platí pro všechny uživatele, ale projeví se pouze v rámci spravované domény, nikoli v samotné službě Azure AD.
+    * Nastavení, jako je složitost hesla, věk nebo doba vypršení platnosti jenom pro uživatele ručně vytvořené ve spravované doméně Azure AD DS.
+    * Nastavení uzamčení účtu platí pro všechny uživatele, ale projeví se jenom v rámci spravované domény a ne v samotné azure ad.
 
-    ![Vytvořit vlastní jemně odstupňované zásady pro hesla](./media/how-to/custom-fgpp.png)
+    ![Vytvoření vlastní choujecí zásady hesel](./media/how-to/custom-fgpp.png)
 
-1. Zrušte kontrolu před **náhodným odstraněním**. Pokud je vybraná tato možnost, nemůžete uložit podrobné zásady.
-1. V části **přímo platí pro** vyberte tlačítko **Přidat** . V dialogovém okně **Vybrat uživatele nebo skupiny** vyberte tlačítko **umístění** .
+1. Zrušit zaškrtnutí **políčka Chránit před náhodným odstraněním**. Pokud je tato volba vybraná, fgpp nelze uložit.
+1. V části **Přímo se vztahuje na** vyberte tlačítko **Přidat.** V dialogovém okně **Vybrat uživatele nebo skupiny** vyberte tlačítko **Umístění.**
 
-    ![Vyberte uživatele a skupiny, pro které chcete zásady hesel použít.](./media/how-to/fgpp-applies-to.png)
+    ![Vyberte uživatele a skupiny, na které chcete použít zásady hesel.](./media/how-to/fgpp-applies-to.png)
 
-1. Zásady hesel se dají použít jenom u skupin. V dialogovém okně **umístění** rozbalte název domény, například *aaddscontoso.com*, a pak vyberte organizační jednotku, například **uživatele AADDC**. Pokud máte vlastní organizační jednotku obsahující skupinu uživatelů, kterou chcete použít, vyberte tuto organizační jednotku.
+1. Zásady hesel lze použít pouze pro skupiny. V dialogovém okně **Umístění** rozbalte název domény, například *aaddscontoso.com*, a vyberte ou akci, například **Uživatele AADDC**. Pokud máte vlastní oupoložku, která obsahuje skupinu uživatelů, které chcete použít, vyberte tuto individuální oovou položku.
 
-    ![Vyberte organizační jednotku, do které skupina patří.](./media/how-to/fgpp-container.png)
+    ![Vyberte ou, do které skupina patří.](./media/how-to/fgpp-container.png)
 
-1. Zadejte název skupiny, na kterou chcete zásadu použít, a potom vyberte **Zkontrolovat názvy** , abyste ověřili, že skupina existuje.
+1. Zadejte název skupiny, na kterou chcete zásadu použít, a pak vyberte **Zkontrolovat názvy,** abyste ověřili, zda skupina existuje.
 
-    ![Vyhledejte a vyberte skupinu, kterou chcete použít podrobné zásady](./media/how-to/fgpp-apply-group.png)
+    ![Vyhledejte a vyberte skupinu, která má použít FGPP.](./media/how-to/fgpp-apply-group.png)
 
-1. S názvem skupiny, kterou jste vybrali, se teď zobrazí **přímo v části platí pro** , vyberte **OK** a uložte vlastní zásady hesel.
+1. S názvem skupiny, kterou jste vybrali, se nyní zobrazí v části **Přímo se vztahuje na,** vyberte **OK,** chcete-li uložit vlastní zásady hesel.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o zásadách hesel a používání Centra správy služby Active Directory najdete v následujících článcích:
+Další informace o zásadách hesel a použití Centra pro správu služby Active Directory naleznete v následujících článcích:
 
 * [Informace o jemně odstupňovaných zásadách hesel](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
-* [Konfigurace jemně odstupňovaných zásad hesel pomocí centra pro správu služby AD](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
+* [Konfigurace zásad jemných hesel pomocí Centra pro správu služby AD](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

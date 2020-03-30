@@ -1,58 +1,58 @@
 ---
-title: Omezení přístupu k kubeconfig ve službě Azure Kubernetes (AKS)
-description: Naučte se řídit přístup ke konfiguračnímu souboru Kubernetes (kubeconfig) pro správce clusteru a uživatele clusteru.
+title: Omezení přístupu ke službě kubeconfig ve službě Azure Kubernetes Service (AKS)
+description: Zjistěte, jak řídit přístup ke konfiguračnímu souboru Kubernetes (kubeconfig) pro správce clusteru a uživatele clusteru.
 services: container-service
 ms.topic: article
 ms.date: 01/28/2020
 ms.openlocfilehash: 25c710cce2855d6af985d3f46082f47573bbc101
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259549"
 ---
-# <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Použití řízení přístupu na základě role v Azure k definování přístupu ke konfiguračnímu souboru Kubernetes ve službě Azure Kubernetes Service (AKS)
+# <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Definování přístupu ke konfiguračnímu souboru Kubernetes ve službě Azure Kubernetes Service (AKS) pomocí ovládacích prvků přístupu založených na rolích Azure
 
-Pomocí nástroje `kubectl` můžete komunikovat s clustery s Kubernetes. Rozhraní příkazového řádku Azure nabízí snadný způsob, jak získat přihlašovací údaje a informace o konfiguraci pro připojení k AKS clusterům pomocí `kubectl`. Pokud chcete omezit, kdo může získat informace o konfiguraci Kubernetes (*kubeconfig*) a omezit oprávnění, která pak mají, můžete použít řízení přístupu na základě role (RBAC) v Azure.
+Pomocí `kubectl` nástroje můžete pracovat s clustery Kubernetes. Azure CLI poskytuje snadný způsob, jak získat přístupová pověření a informace o `kubectl`konfiguraci pro připojení k clusterům AKS pomocí . Chcete-li omezit, kdo může získat informace o konfiguraci Kubernetes *(kubeconfig)* a omezit oprávnění, která pak mají, můžete použít ovládací prvky přístupu azure založené na rolích (RBAC).
 
-V tomto článku se dozvíte, jak přiřadit role RBAC, které omezují, kdo může získat informace o konfiguraci pro cluster AKS.
+Tento článek ukazuje, jak přiřadit role RBAC, které omezují, kdo může získat informace o konfiguraci pro cluster AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, podívejte se na aks rychlý start [pomocí Azure CLI][aks-quickstart-cli] nebo [pomocí portálu Azure][aks-quickstart-portal].
 
-Tento článek také vyžaduje, abyste spustili Azure CLI verze 2.0.65 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento článek také vyžaduje, abyste spouštěli Azure CLI verze 2.0.65 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-## <a name="available-cluster-roles-permissions"></a>Oprávnění k dispozici pro role clusteru
+## <a name="available-cluster-roles-permissions"></a>Dostupná oprávnění rolí clusteru
 
-Při interakci s clusterem AKS pomocí nástroje `kubectl` se používá konfigurační soubor, který definuje informace o připojení ke clusteru. Tento konfigurační soubor je obvykle uložený v souboru *~/.Kube/config*. V tomto souboru *kubeconfig* lze definovat více clusterů. Mezi clustery přepínáte pomocí příkazu [kubectl config use-Context][kubectl-config-use-context] .
+Při interakci s clusterem AKS pomocí `kubectl` tohoto nástroje se používá konfigurační soubor, který definuje informace o připojení clusteru. Tento konfigurační soubor je obvykle uložen v *~/.kube/config*. V tomto *souboru kubeconfig* lze definovat více clusterů. Mezi clustery můžete přepínat pomocí příkazu [kubectl config use-context.][kubectl-config-use-context]
 
-Příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] vám umožní získat přihlašovací údaje pro cluster AKS a sloučí je do souboru *kubeconfig* . K řízení přístupu k těmto přihlašovacím údajům můžete použít řízení přístupu na základě role (RBAC) Azure. Tyto role Azure RBAC umožňují definovat, kdo může načíst soubor *kubeconfig* a jaká oprávnění mají v rámci clusteru.
+Příkaz [az aks get-credentials][az-aks-get-credentials] umožňuje získat přístupová pověření pro cluster AKS a sloučit je do souboru *kubeconfig.* Přístup k těmto přihlašovacím údajům můžete použít pomocí ovládacích prvků přístupu založených na rolích Azure (RBAC). Tyto role Azure RBAC umožňují definovat, kdo může načíst soubor *kubeconfig* a jaká oprávnění pak mají v rámci clusteru.
 
-Tyto dvě předdefinované role:
+Dvě předdefinované role jsou:
 
-* **Role Správce clusteru služby Azure Kubernetes**  
-  * Umožňuje přístup k volání rozhraní API *Microsoft. ContainerService/managedClusters/listClusterAdminCredential/Action* API. Toto volání rozhraní API [zobrazí seznam přihlašovacích údajů správce clusteru][api-cluster-admin].
-  * Stáhne *kubeconfig* pro roli *clusterAdmin* .
+* **Role správce clusteru Azure Kubernetes**  
+  * Umožňuje přístup k volání rozhraní API *Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action.* Toto volání rozhraní API [obsahuje seznam pověření správce clusteru][api-cluster-admin].
+  * Stáhne *kubeconfig* pro roli *clusterAdmin.*
 * **Role uživatele clusteru služby Azure Kubernetes**
-  * Umožňuje přístup k volání rozhraní API *Microsoft. ContainerService/managedClusters/listClusterUserCredential/Action* API. Toto volání rozhraní API [zobrazí seznam přihlašovacích údajů uživatele clusteru][api-cluster-user].
-  * Stáhne *kubeconfig* pro roli *clusterUser* .
+  * Umožňuje přístup k volání rozhraní API *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action.* Toto volání rozhraní API [uvádí pověření uživatele clusteru][api-cluster-user].
+  * Ke stažení *kubeconfig* pro *roli clusterUser.*
 
-Tyto role RBAC se dají použít pro uživatele nebo skupinu Azure Active Directory (AD).
+Tyto role RBAC lze použít pro uživatele nebo skupinu služby Azure Active Directory (AD).
 
-> ! ZNAČTE V clusterech používajících službu Azure AD mají uživatelé s rolí *clusterUser* prázdný soubor *kubeconfig* , který vyzývá přihlášení. Po přihlášení uživatelé mají přístup na základě nastavení uživatele nebo skupiny Azure AD. Uživatelé s rolí *clusterAdmin* mají přístup správce.
+> ! [POZNÁMKA] V clusterech, které používají Azure AD, mají uživatelé s rolí *clusterUser* prázdný soubor *kubeconfig,* který vyzve k přihlášení. Po přihlášení mají uživatelé přístup na základě nastavení uživatelů nebo skupin Azure AD. Uživatelé s rolí *clusterAdmin* mají přístup správce.
 >
-> Clustery, které nepoužívají Azure AD, používají jenom roli *clusterAdmin* .
+> Clustery, které nepoužívají Azure AD používat pouze role *clusteradmin.*
 
-## <a name="assign-role-permissions-to-a-user-or-group"></a>Přiřazení oprávnění role uživateli nebo skupině
+## <a name="assign-role-permissions-to-a-user-or-group"></a>Přiřazení oprávnění k rolím uživateli nebo skupině
 
-Pokud chcete přiřadit jednu z dostupných rolí, potřebujete získat ID prostředku clusteru AKS a ID účtu uživatele nebo skupiny Azure AD. Následující příklady příkazů:
+Chcete-li přiřadit jednu z dostupných rolí, musíte získat ID prostředku clusteru AKS a ID uživatelského účtu nebo skupiny Azure AD. Následující ukázkové příkazy:
 
-* Pomocí příkazu [AZ AKS show][az-aks-show] pro cluster s názvem *myAKSCluster* ve skupině prostředků *myResourceGroup* Získejte ID prostředku clusteru. Podle potřeby zadejte vlastní cluster a název skupiny prostředků.
-* K získání ID uživatele použijte příkaz [AZ Account show][az-account-show] a [AZ AD User show][az-ad-user-show] .
-* Nakonec přiřaďte roli pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] .
+* Získejte ID prostředku clusteru pomocí příkazu [az aks show][az-aks-show] pro cluster s názvem *myAKSCluster* ve skupině prostředků *myResourceGroup.* Podle potřeby zadejte vlastní název clusteru a skupiny prostředků.
+* K získání ID uživatele použijte příkazy [az účet show][az-account-show] a [az aad.][az-ad-user-show]
+* Nakonec přiřaďte roli pomocí příkazu [vytvořit přiřazení role az.][az-role-assignment-create]
 
-Následující příklad přiřadí *roli Správce clusteru služby Azure Kubernetes* k jednotlivému uživatelskému účtu:
+Následující příklad přiřadí *roli správce clusteru clusteru Azure Kubernetes* jednotlivým uživatelským účtům:
 
 ```azurecli-interactive
 # Get the resource ID of your AKS cluster
@@ -70,11 +70,11 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Pokud chcete přiřadit oprávnění ke skupině Azure AD, aktualizujte parametr `--assignee` uvedený v předchozím příkladu s ID objektu pro *skupinu* namísto *uživatele*. Chcete-li získat ID objektu pro skupinu, použijte příkaz [AZ AD Group show][az-ad-group-show] . Následující příklad získá ID objektu pro skupinu Azure AD s názvem *appdev*: `az ad group show --group appdev --query objectId -o tsv`
+> Pokud chcete přiřadit oprávnění ke skupině Azure AD, aktualizujte `--assignee` parametr zobrazený v předchozím příkladu s ID objektu pro *skupinu,* nikoli *uživatelem*. Chcete-li získat ID objektu pro skupinu, použijte příkaz [az ad group show.][az-ad-group-show] Následující příklad získá ID objektu pro skupinu Azure AD s názvem *appdev*:`az ad group show --group appdev --query objectId -o tsv`
 
-V případě potřeby můžete změnit předchozí přiřazení na *roli uživatele clusteru* .
+Podle potřeby můžete změnit předchozí přiřazení na *roli uživatele clusteru.*
 
-Následující příklad výstupu ukazuje, že přiřazení role bylo úspěšně vytvořeno:
+Následující ukázkový výstup ukazuje, že přiřazení role bylo úspěšně vytvořeno:
 
 ```
 {
@@ -89,15 +89,15 @@ Následující příklad výstupu ukazuje, že přiřazení role bylo úspěšn�
 }
 ```
 
-## <a name="get-and-verify-the-configuration-information"></a>Získat a ověřit informace o konfiguraci
+## <a name="get-and-verify-the-configuration-information"></a>Získání a ověření informací o konfiguraci
 
-S přiřazenými rolemi RBAC pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] získáte definici *kubeconfig* pro váš cluster AKS. Následující příklad získá přihlašovací údaje *správce* , které fungují správně, pokud byl uživateli udělena *role Správce clusteru*:
+S přiřazenými rolemi RBAC použijte příkaz [az aks get-credentials][az-aks-get-credentials] k získání definice *kubeconfig* pro váš cluster AKS. Následující příklad získá *--admin* pověření, které fungují správně, pokud uživatel i udělena *role správce clusteru*:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-Pak můžete použít příkaz [zobrazení konfigurace kubectl][kubectl-config-view] a ověřit, zda *kontext* pro cluster ukazuje, že byly použity informace o konfiguraci správce:
+Potom můžete použít příkaz [konfiguračního zobrazení kubectl][kubectl-config-view] k ověření, že *kontext* pro cluster ukazuje, že byly použity informace o konfiguraci správce:
 
 ```
 $ kubectl config view
@@ -124,9 +124,9 @@ users:
     token: e9f2f819a4496538b02cefff94e61d35
 ```
 
-## <a name="remove-role-permissions"></a>Odebrat oprávnění role
+## <a name="remove-role-permissions"></a>Odebrání oprávnění role
 
-Chcete-li odebrat přiřazení rolí, použijte příkaz [AZ role Assignment Delete][az-role-assignment-delete] . Zadejte ID účtu a ID prostředku clusteru, jak Získá předchozí příkazy. Pokud jste roli přiřadili skupině místo uživatele, zadejte ID objektu skupiny, místo ID objektu účtu pro parametr `--assignee`:
+Chcete-li odebrat přiřazení rolí, použijte příkaz [odstranění přiřazení role az.][az-role-assignment-delete] Zadejte ID účtu a ID prostředku clusteru, jak bylo získáno v předchozích příkazech. Pokud jste roli přiřadili spíše skupině než uživateli, zadejte pro parametr `--assignee` příslušné ID objektu skupiny, nikoli ID objektu účtu:
 
 ```azurecli-interactive
 az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
@@ -134,7 +134,7 @@ az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
 
 ## <a name="next-steps"></a>Další kroky
 
-Pro zvýšení zabezpečení přístupu ke clusterům AKS [Integrujte ověřování Azure Active Directory][aad-integration].
+Chcete-li zvýšit zabezpečení při přístupu ke clusterům AKS, [integrujte ověřování služby Azure Active Directory][aad-integration].
 
 <!-- LINKS - external -->
 [kubectl-config-use-context]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config

@@ -1,56 +1,56 @@
 ---
 title: Přehled služby Azure Resource Graph
-description: Seznamte se s tím, jak služba Azure Resource Graph umožňuje složitý dotazování na prostředky ve velkém rozsahu napříč předplatnými a klienty.
+description: Zjistěte, jak služba Azure Resource Graph umožňuje komplexní dotazování prostředků ve velkém měřítku napříč předplatnými a klienty.
 ms.date: 03/02/2020
 ms.topic: overview
 ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240055"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph?
 
-Azure Resource Graph je služba v Azure, která je navržená tak, aby rozšířila správu prostředků Azure tím, že poskytuje efektivní a výkonné průzkumy prostředků s možností dotazování ve velkém rozsahu v dané sadě předplatných, abyste mohli efektivně řídit vaše hlediska. Tyto dotazy poskytují následující funkce:
+Azure Resource Graph je služba v Azure, která je navržená k rozšíření správy prostředků Azure tím, že poskytuje efektivní a efektivní průzkum zdrojů s možností dotazovat se ve velkém měřítku napříč danou sadou předplatných, abyste mohli efektivně řídit své Prostředí. Tyto dotazy poskytují následující funkce:
 
 - Možnost dotazu ohledně zdrojů s komplexním filtrováním, seskupováním a řazením podle vlastností zdroje.
-- Možnost iterativního zkoumání prostředků na základě požadavků zásad správného řízení.
+- Schopnost iterativně prozkoumat prostředky na základě požadavků na zásadsprávné řízení.
 - Schopnost posoudit dopad uplatnění zásad v rozsáhlém cloudovém prostředí.
-- Možnost [podrobností změn provedených ve vlastnostech prostředků](./how-to/get-resource-changes.md) (Preview).
+- Možnost [podrobně popsat změny provedené ve vlastnostech prostředků](./how-to/get-resource-changes.md) (náhled).
 
 V této dokumentaci si podrobně projdete jednotlivé funkce.
 
 > [!NOTE]
-> Azure Resource Graph – pravomoci Azure Portal vyhledávací panel, nové možnosti procházet všechny prostředky a [historie změn](../policy/how-to/determine-non-compliance.md#change-history-preview) Azure Policy
-> _vizuální rozdíl_. Je navržena tak, aby zákazníkům pomohla spravovat rozsáhlá prostředí.
+> Azure Resource Graph povyšuje vyhledávací panel portálu Azure, nové prostředí procházení "Všechny prostředky" a_vizuální rozdíl historie_ [změn](../policy/how-to/determine-non-compliance.md#change-history-preview)
+> zásad Azure . Je navržen tak, aby zákazníkům pomohl spravovat rozsáhlá prostředí.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Jak Resource Graph doplňuje Azure Resource Manager
 
-Azure Resource Manager aktuálně podporuje dotazy přes základní pole prostředků, konkrétně název prostředku, ID, typ, skupinu prostředků, předplatné a umístění. Správce prostředků také poskytuje zařízení pro volání jednotlivých poskytovatelů prostředků pro podrobné vlastnosti jednoho prostředku v daném okamžiku.
+Azure Resource Manager aktuálně podporuje dotazy přes základní pole prostředků, konkrétně – název prostředku, ID, typ, skupina prostředků, předplatné a umístění. Správce prostředků také poskytuje zařízení pro volání jednotlivých poskytovatelů prostředků pro podrobné vlastnosti po jednom prostředku.
 
-S Azure Resource Graph můžete získat přístup k těmto vlastnostem, které poskytovatelé zdrojů vrátí, aniž by bylo nutné provádět individuální vyvolání u každého poskytovatele zdrojů. Seznam podporovaných typů prostředků najdete v [odkazu na typ tabulky a prostředku](./reference/supported-tables-resources.md). Alternativním způsobem, jak zobrazit podporované typy prostředků, je použít [prohlížeč schématu Průzkumníka Azure Resource Graph](./first-query-portal.md#schema-browser).
+S Azure Resource Graph můžete získat přístup k těmto vlastnostem, které poskytovatelé zdrojů vrátí, aniž by bylo nutné provádět individuální vyvolání u každého poskytovatele zdrojů. Seznam podporovaných typů prostředků naleznete v [tabulce a odkazu na typ prostředku](./reference/supported-tables-resources.md). Alternativní způsob, jak zobrazit podporované typy prostředků, je prostřednictvím [prohlížeče schématu aplikace Azure Resource Graph .](./first-query-portal.md#schema-browser)
 
-Pomocí Azure Resource graphu můžete:
+Pomocí Azure Resource Graph můžete:
 
-- Přístup k vlastnostem vráceným poskytovateli prostředků bez nutnosti udělat jednotlivá volání na každého poskytovatele prostředků.
-- Podívejte se na posledních 14 dní historie změn provedených u prostředku, abyste viděli, jaké vlastnosti se změnily a kdy. (Preview)
+- Přístup k vlastnostem vráceným poskytovateli prostředků bez nutnosti provádět jednotlivá volání jednotlivým poskytovatelům prostředků.
+- Zobrazení posledních 14 dnů historie změn provedených v prostředku zobrazíte, jaké vlastnosti se změnily a kdy. (Preview)
 
-## <a name="how-resource-graph-is-kept-current"></a>Způsob aktuálnosti grafu prostředků
+## <a name="how-resource-graph-is-kept-current"></a>Jak je graf zdrojů udržován aktuální
 
-Po aktualizaci prostředku Azure je graf prostředků upozorněn Správce prostředků změny.
-Graf prostředků pak aktualizuje svou databázi. Graf prostředků má také pravidelnou _úplnou kontrolu_. Tato kontrola zajistí, že data grafu prostředku jsou aktuální, pokud jsou k dispozici nějaká oznámení nebo když se prostředek aktualizuje mimo Správce prostředků.
+Když je prostředek Azure aktualizován, Resource Graph je upozorněn správceprostředků na změnu.
+Resource Graph pak aktualizuje svou databázi. Resource Graph také provádí pravidelné _úplné skenování_. Tato kontrola zajišťuje, že data grafu prostředků jsou aktuální, pokud jsou zmeškaná oznámení nebo pokud je prostředek aktualizován mimo Správce prostředků.
 
 > [!NOTE]
-> Graf prostředků používá `GET` k nejnovějšímu rozhraní API, které není Preview každého poskytovatele prostředků ke shromáždění vlastností a hodnot. V důsledku toho nemusí být očekávaná vlastnost k dispozici. V některých případech byla použitá verze rozhraní API přepsána tak, aby poskytovala více aktuálních nebo široce používaných vlastností ve výsledcích. Úplný seznam ve vašem prostředí najdete v tématu věnovaném ukázce [verze rozhraní API pro každý typ prostředku](./samples/advanced.md#apiversion) .
+> Resource Graph `GET` používá k nejnovějším non-preview rozhraní API každého poskytovatele prostředků ke shromažďování vlastností a hodnot. V důsledku toho nemusí být očekávaná vlastnost k dispozici. V některých případech byla použitá verze rozhraní API přepsána, aby poskytovala aktuálnější nebo široce používané vlastnosti ve výsledcích. Podívejte se na [zobrazit verzi rozhraní API pro každou](./samples/advanced.md#apiversion) ukázku typu prostředku pro úplný seznam ve vašem prostředí.
 
 ## <a name="the-query-language"></a>Dotazovací jazyk
 
-Teď, když máte lepší přehled o tom, co je Azure Resource Graph, se můžeme podrobně, jak vytvářet dotazy.
+Teď, když máte lepší pochopení toho, co je Azure Resource Graph, pojďme se ponořit do toho, jak vytvářet dotazy.
 
-Je důležité pochopit, že dotazovací jazyk pro Azure Resource Graph je založený na [jazyce dotazů Kusto](../../data-explorer/data-explorer-overview.md) , který používá Azure Průzkumník dat.
+Je důležité si uvědomit, že dotazovací jazyk Azure Resource Graph je založený na [dotazovacím jazyce Kusto](../../data-explorer/data-explorer-overview.md) používaném Průzkumníkem dat Azure.
 
 Nejprve se podívejte na podrobnosti o operacích a funkcích, které lze použít s Azure Resource Graph, viz [ jazyk dotazu pro graf zdrojů ](./concepts/query-language.md).
 Chcete-li procházet zdroje, podívejte se na [ prozkoumat zdroje ](./concepts/explore-resources.md).
@@ -60,35 +60,35 @@ Chcete-li procházet zdroje, podívejte se na [ prozkoumat zdroje ](./concepts/e
 Pokud chcete používat Resource Graph, musíte mít odpovídající oprávnění v [řízení přístupu na základě role](../../role-based-access-control/overview.md), a to alespoň oprávnění ke čtení pro prostředky, které chcete dotazovat. Pokud pro objekt nebo skupinu objektů Azure nemáte alespoň oprávnění `read`, nevrátí se žádné výsledky.
 
 > [!NOTE]
-> V grafu prostředků se při přihlášení používají předplatná, která jsou k objektu zabezpečení k dispozici. Chcete-li zobrazit prostředky nového předplatného přidaného během aktivní relace, objekt zabezpečení musí kontext aktualizovat. Tato akce se provádí automaticky při odhlašování a zpátky v.
+> Resource Graph používá odběry, které jsou k dispozici pro hlavní během přihlášení. Chcete-li zobrazit prostředky nového předplatného přidanéběhem aktivní relace, musí hlavní objekt aktualizovat kontext. Tato akce se stane automaticky při odhlašování a zpět.
 
-Azure CLI a Azure PowerShell používají předplatná, ke kterým má uživatel přístup. Při přímém použití REST API se seznam předplatných poskytuje uživateli. Pokud má uživatel přístup k jakémukoli předplatnému v seznamu, vrátí se výsledky dotazu pro předplatná, ke kterým má uživatel přístup. Toto chování je stejné jako při volání [skupin prostředků – seznam](/rest/api/resources/resourcegroups/list) \- získat skupiny prostředků, ke kterým máte přístup, bez indikace, že výsledek může být částečný.
-Pokud v seznamu odběrů nejsou žádná předplatná, ke kterým má uživatel příslušná práva, odpověď je _403_ (zakázáno).
+Azure CLI a Azure PowerShell používají předplatná, ke kterým má uživatel přístup. Při použití rozhraní REST API přímo, seznam odběrů je poskytován uživatelem. Pokud má uživatel přístup k některému z předplatných v seznamu, výsledky dotazu jsou vráceny pro odběry, ke kterým má uživatel přístup. Toto chování je stejné jako při volání [skupin prostředků – seznam,](/rest/api/resources/resourcegroups/list) \- ke kterému máte přístup, bez jakéhokoli náznaku, že výsledek může být částečný.
+Pokud nejsou žádné odběry v seznamu odběrů, které uživatel má příslušná práva, odpověď je _403_ (Zakázáno).
 
-## <a name="throttling"></a>Omezování
+## <a name="throttling"></a>Throttling
 
-V rámci bezplatné služby jsou dotazy do grafu prostředků omezené, aby poskytovaly nejlepší prostředí a dobu odezvy pro všechny zákazníky. Pokud chce vaše organizace používat Graph API prostředků pro rozsáhlé a časté dotazy, použijte na [stránce portálu pro grafy prostředků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph)možnost zpětné vazby na portálu.
-Zadejte svůj obchodní případ a v případě, že vás tým bude kontaktovat, vyberte zaškrtávací políčko Microsoft vás může poslat e-mailem o zpětné vazbě.
+Jako bezplatná služba jsou dotazy na Resource Graph omezeny, aby poskytovaly nejlepší prostředí a dobu odezvy pro všechny zákazníky. Pokud vaše organizace chce používat rozhraní API grafu prostředků pro rozsáhlé a časté dotazy, použijte portál "Zpětná vazba" ze [stránky portálu Resource Graph](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph).
+Zadejte svůj obchodní případ a zaškrtněte políčko "Microsoft vám může poslat e-mail s vaší zpětnou vazbou", aby vás tým mohl kontaktovat.
 
-Graf prostředků omezuje dotazy na úrovni uživatele. Odpověď služby obsahuje následující hlavičky protokolu HTTP:
+Materiál grafu omezení dotazy na úrovni uživatele. Odpověď služby obsahuje následující hlavičky PROTOKOLU HTTP:
 
-- `x-ms-user-quota-remaining` (int): zbývající kvóta prostředků pro uživatele. Tato hodnota se mapuje na počet dotazů.
-- `x-ms-user-quota-resets-after` (hh: mm: SS): časový interval, po jehož uplynutí se neobnoví spotřeba kvóty uživatele.
+- `x-ms-user-quota-remaining`(int): Zbývající kvóta prostředků pro uživatele. Tato hodnota mapuje počet dotazů.
+- `x-ms-user-quota-resets-after`(hh:mm:ss): Doba trvání do obnovení spotřeby kvóty uživatele
 
-Další informace najdete v tématu [doprovodné materiály k omezení požadavků](./concepts/guidance-for-throttled-requests.md).
+Další informace naleznete v [tématu Pokyny pro omezené požadavky](./concepts/guidance-for-throttled-requests.md).
 
 ## <a name="running-your-first-query"></a>Spusťte váš první dotaz
 
-Průzkumník Azure Resource Graph, součást Azure Portal, umožňuje spouštět dotazy na grafy prostředků přímo v Azure Portal. Připnout výsledky jako dynamické grafy, aby poskytovaly dynamické informace v reálném čase vašemu pracovnímu postupu na portálu. Další informace najdete v tématu [první dotazování pomocí Průzkumníka Azure Resource Graph Exploreru](first-query-portal.md).
+Azure Resource Graph Explorer, součást portálu Azure, umožňuje spouštění dotazů na Graf prostředků přímo na webu Azure Portal. Připněte výsledky jako dynamické grafy a dopracovního postupu portálu můžete poskytnout dynamické informace v reálném čase. Další informace najdete [v tématu První dotaz s Průzkumníkem zdrojů Azure](first-query-portal.md).
 
-Graf prostředků podporuje rozhraní příkazového řádku Azure CLI, Azure PowerShell, sadu Azure SDK pro .NET a další. Dotaz je strukturován pro každý jazyk stejný. Naučte se, jak povolit graf prostředků pomocí:
+Resource Graph podporuje Azure CLI, Azure PowerShell, Azure SDK pro .NET a další. Dotaz je strukturován stejně pro každý jazyk. Zjistěte, jak povolit resource graph pomocí:
 
-- [Azure Portal a Průzkumník diagramů prostředků](first-query-portal.md) 
+- [Portál Azure a Průzkumník grafů prostředků](first-query-portal.md) 
 - [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
 - [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Spusťte první dotaz pomocí [Azure Portal](first-query-portal.md).
-- Spusťte první dotaz pomocí [Azure CLI](first-query-azurecli.md).
-- Spusťte první dotaz pomocí [Azure PowerShell](first-query-powershell.md).
+- Spusťte svůj první dotaz pomocí [portálu Azure](first-query-portal.md).
+- Spusťte svůj první dotaz pomocí [azure cli](first-query-azurecli.md).
+- Spusťte svůj první dotaz s [Azure PowerShell](first-query-powershell.md).

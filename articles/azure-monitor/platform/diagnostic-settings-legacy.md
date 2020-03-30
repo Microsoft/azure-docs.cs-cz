@@ -1,101 +1,101 @@
 ---
-title: Shromažďovat protokol aktivit Azure s nastavením diagnostiky – Azure Monitor | Microsoft Docs
-description: Pomocí nastavení diagnostiky předáte protokoly aktivit Azure, abyste Azure Monitor protokoly, úložiště Azure nebo Azure Event Hubs.
+title: Shromažďování protokolu aktivit Azure s diagnostickým nastavením – Azure Monitor | Dokumenty společnosti Microsoft
+description: Pomocí diagnostických nastavení přepošlete protokoly aktivit Azure do protokolů monitorování Azure, úložiště Azure nebo centra událostí Azure.
 author: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 02/04/2020
 ms.openlocfilehash: 6d4c724c7cfb4c1779f0fc6592a7e61e060755b9
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096905"
 ---
-# <a name="update-to-azure-activity-log-collection-and-export"></a>Aktualizace shromažďování a exportu protokolů aktivit Azure
-[Protokol aktivit Azure](platform-logs-overview.md) je [protokol platformy](platform-logs-overview.md) , který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Metoda odeslání položek protokolu aktivit do [centra událostí nebo účtu úložiště](activity-log-export.md) nebo do [pracovního prostoru Log Analytics](activity-log-collect.md) se změnila na použití [nastavení diagnostiky](diagnostic-settings.md). Tento článek popisuje rozdíl mezi metodami a vymazáním nastavení starší verze v přípravě na možnost změnit nastavení diagnostiky.
+# <a name="update-to-azure-activity-log-collection-and-export"></a>Aktualizace na shromažďování a export protokolu aktivit Azure
+[Protokol aktivit Azure](platform-logs-overview.md) je protokol [platformy,](platform-logs-overview.md) který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Metoda odesílání položek protokolu aktivit do [centra událostí nebo účtu úložiště](activity-log-export.md) nebo do [pracovního prostoru Log Analytics](activity-log-collect.md) se změnila na použití [diagnostických nastavení](diagnostic-settings.md). Tento článek popisuje rozdíl mezi metodami a jak vymazat starší nastavení v rámci přípravy na změnu nastavení diagnostiky.
 
 
 ## <a name="differences-between-methods"></a>Rozdíly mezi metodami
 
 ### <a name="advantages"></a>Výhody
-Použití nastavení diagnostiky má oproti aktuálním metodám následující výhody:
+Použití diagnostického nastavení má následující výhody oproti současným metodám:
 
-- Konzistentní způsob shromažďování všech protokolů platforem.
-- Shromažďování protokolů aktivit napříč několika předplatnými a klienty.
-- Vyfiltruje shromažďování, aby se shromáždily jenom protokoly pro konkrétní kategorie.
-- Shromáždí všechny kategorie protokolů aktivit. Některé kategorie nejsou shromažďovány pomocí starší metody.
-- Rychlejší latence pro přijímání protokolů. Předchozí metoda má latenci přibližně 15 minut, zatímco nastavení diagnostiky se přidá pouze přibližně 1 minutu.
+- Konzistentní metoda pro shromažďování všech protokolů platformy.
+- Shromažďovat protokol aktivit přes více předplatných a klientů.
+- Kolekce filtrů shromažďovat pouze protokoly pro určité kategorie.
+- Shromažďovat všechny kategorie protokolu aktivit. Některé kategorie nejsou shromažďovány pomocí starší metody.
+- Rychlejší latence pro přihlášce protokolu. Předchozí metoda má latenci přibližně 15 minut, zatímco nastavení diagnostiky přidá pouze asi 1 minutu.
 
 ### <a name="considerations"></a>Požadavky
-Než tuto funkci povolíte, zvažte následující podrobnosti o shromažďování protokolů aktivit pomocí nastavení diagnostiky.
+Před povolením této funkce zvažte následující podrobnosti kolekce protokolu aktivit pomocí diagnostických nastavení.
 
-- Nastavení uchování pro shromažďování protokolu aktivit do služby Azure Storage bylo odebráno, což znamená, že data budou ukládána po neomezenou dobu, dokud je neodeberete.
-- V současné době můžete pomocí Azure Portal vytvořit jenom nastavení diagnostiky na úrovni předplatného. Chcete-li použít jiné metody, jako je například PowerShell nebo CLI, můžete vytvořit šablonu Správce prostředků.
+- Nastavení uchovávání informací pro shromažďování protokolu aktivit do úložiště Azure bylo odebráno, což znamená, že data budou uložena po neomezenou dobu, dokud je neodeberete.
+- V současné době můžete pouze vytvořit nastavení diagnostiky na úrovni předplatného pomocí portálu Azure. Chcete-li použít jiné metody, jako je prostředí PowerShell nebo CLI, můžete vytvořit šablonu Správce prostředků.
 
 
 ### <a name="differences-in-data"></a>Rozdíly v datech
-Nastavení diagnostiky shromažďuje stejná data jako předchozí metody použité ke shromáždění protokolu aktivit s následujícími rozdíly:
+Diagnostická nastavení shromažďují stejná data jako předchozí metody používané ke shromažďování protokolu aktivit s následujícími aktuálními rozdíly:
 
-Následující sloupce byly odebrány. Náhrada pro tyto sloupce je v jiném formátu, takže možná budete muset upravit dotazy protokolů, které je používají. Ve schématu můžete stále vidět odebrané sloupce, ale nebudou naplněny daty.
+Následující sloupce byly odebrány. Náhrada za tyto sloupce jsou v jiném formátu, takže budete muset upravit dotazy protokolu, které je používají. Ve schématu se stále mohou zobrazit odebrané sloupce, ale nebudou naplněny daty.
 
-| Odebraný sloupec | Sloupec pro nahrazení |
+| Odstraněný sloupec | Náhradní sloupec |
 |:---|:---|
-| ActivityStatus    | Položka ActivityStatusValue    |
-| ActivitySubstatus | ActivitySubstatusValue |
+| Status aktivity    | ActivityStatusValue    |
+| ActivitySubstatus | Hodnota ActivitySubstatusValue |
 | OperationName     | OperationNameValue     |
 | ResourceProvider  | ResourceProviderValue  |
 
-Byl přidán následující sloupec:
+Byl přidán nový sloupec:
 
 - Authorization_d
 - Claims_d
 - Properties_d
 
 > [!IMPORTANT]
-> V některých případech mohou být hodnoty v těchto sloupcích velkými písmeny. Pokud máte dotaz, který obsahuje tyto sloupce, měli byste použít [operátor = ~](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) pro porovnání velkých a malých písmen.
+> V některých případech mohou být hodnoty v těchto sloupcích velkými písmeny. Pokud máte dotaz, který obsahuje tyto sloupce, měli byste použít [=~ operátor](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) provést porovnání malá a velká písmena.
 
 ## <a name="work-with-legacy-settings"></a>Práce se staršími nastaveními
-Nastavení starší verze pro shromažďování protokolu aktivit budou fungovat i v případě, že se nerozhodnete nahradit nastavením diagnostiky. Pomocí následující metody můžete spravovat profil protokolu pro předplatné.
+Starší nastavení pro shromažďování protokolu aktivit bude i nadále fungovat, pokud nechcete nahradit diagnostické nastavení. Ke správě profilu protokolu pro odběr použijte následující metodu.
 
-1. V nabídce **Azure monitor** v Azure Portal vyberte **Protokol aktivit**.
+1. Z nabídky **Azure Monitor** na webu Azure Portal vyberte **protokol aktivit**.
 3. Klikněte na **Nastavení diagnostiky**.
 
    ![Nastavení diagnostiky](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
-4. Klikněte na fialový banner pro starší verze prostředí.
+4. Klikněte na fialový banner pro starší prostředí.
 
     ![Starší verze prostředí](media/diagnostic-settings-subscription/legacy-experience.png)
 
 
-Podrobnosti o používání starších metod shromažďování najdete v následujících článcích.
+Podrobnosti o používání starších metod kolekce naleznete v následujících článcích.
 
-- [Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](activity-log-collect.md)
-- [Shromažďování protokolů aktivit Azure do Azure Monitor napříč klienty Azure Active Directory](activity-log-collect-tenants.md)
-- [Export protokolu aktivit Azure do úložiště nebo do Azure Event Hubs](activity-log-export.md)
+- [Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure Monitoru](activity-log-collect.md)
+- [Shromažďování protokolů aktivit Azure do Azure Monitoru napříč tenanty Azure Active Directory](activity-log-collect-tenants.md)
+- [Export protokolu aktivit Azure do úložiště nebo Centra událostí Azure](activity-log-export.md)
 
-## <a name="disable-existing-settings"></a>Zakázat existující nastavení
-Existující kolekci aktivity byste měli zakázat předtím, než ji povolíte pomocí nastavení diagnostiky. U obou povolených může být výsledkem duplicitní data.
+## <a name="disable-existing-settings"></a>Zakázání existujících nastavení
+Před povolením pomocí diagnostických nastavení byste měli zakázat existující kolekci aktivity. Povolení obou může mít za následek duplicitní data.
 
-### <a name="disable-collection-into-log-analytics-workspace"></a>Zakázat shromažďování do Log Analyticsho pracovního prostoru
+### <a name="disable-collection-into-log-analytics-workspace"></a>Zakázat kolekci do pracovního prostoru Log Analytics
 
-1. Otevřete nabídku **Log Analytics pracovní prostory** v Azure Portal a vyberte pracovní prostor pro shromáždění protokolu aktivit.
-2. V části **zdroje dat pracovního prostoru** v nabídce pracovního prostoru vyberte **Protokol aktivit Azure**.
+1. Otevřete nabídku **pracovních prostorů Analýzy protokolů** na portálu Azure a vyberte pracovní prostor pro shromažďování protokolu aktivit.
+2. V části **Zdroje dat pracovního prostoru** v nabídce pracovního prostoru vyberte protokol aktivit **Azure**.
 3. Klikněte na předplatné, které chcete odpojit.
-4. Po zobrazení výzvy k potvrzení výběru klikněte na **Odpojit** a pak na **Ano** .
+4. Po zobrazení příkazu K potvrzení volby klikněte na **tlačítko Odpojit** a potom **na Ano.**
 
 ### <a name="disable-log-profile"></a>Zakázat profil protokolu
 
-1. Pomocí postupu popsaného v tématu [práce se staršími verzemi](#work-with-legacy-settings) otevřete nastavení starší verze.
-2. Zakažte všechny aktuální kolekce do úložiště nebo Center událostí.
+1. Pomocí postupu popsaného v [části Práce se staršími nastaveními](#work-with-legacy-settings) otevřete starší nastavení.
+2. Zakažte libovolnou aktuální kolekci do center úložiště nebo událostí.
 
 
 
 ## <a name="activity-log-monitoring-solution"></a>Řešení monitorování protokolu aktivit
-Řešení Azure Log Analytics monitoring zahrnuje několik dotazů a zobrazení protokolů pro analýzu záznamů protokolu aktivit ve vašem pracovním prostoru Log Analytics. Toto řešení využívá data protokolu shromážděná v pracovním prostoru Log Analytics a bude i nadále fungovat bez jakýchkoli změn, pokud shromáždíte protokol aktivit pomocí nastavení diagnostiky. Podrobnosti o tomto řešení najdete v tématu [řešení monitorování analýzy protokolů aktivit](activity-log-collect.md#activity-logs-analytics-monitoring-solution) .
+Řešení monitorování Azure Log Analytics obsahuje více dotazů protokolu a zobrazení pro analýzu záznamů protokolu aktivit v pracovním prostoru Log Analytics. Toto řešení používá data protokolu shromážděná v pracovním prostoru Log Analytics a bude pokračovat v práci bez jakýchkoli změn, pokud shromažďujete protokol aktivit pomocí diagnostických nastavení. Podrobnosti o tomto řešení najdete v [tématu Řešení monitorování protokolů protokolů aktivit.](activity-log-collect.md#activity-logs-analytics-monitoring-solution)
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Další informace o protokolu aktivit](../../azure-resource-manager/management/view-activity-logs.md)
-* [Další informace o nastavení diagnostiky](diagnostic-settings.md)
+* [Další informace o diagnostických nastaveních](diagnostic-settings.md)

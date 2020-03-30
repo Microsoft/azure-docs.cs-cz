@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267986"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Nasazení a správa řešení StorSimple Cloud Appliance v Azure (s aktualizací Update 3 a novější)
@@ -47,12 +47,12 @@ Tento kurz se vztahuje na všechna řešení StorSimple Cloud Appliance s aktual
 | **Maximální kapacita** |30 TB |64 TB |
 | **Virtuální počítač Azure** |Standard_A3 (4 jádra, 7 GB paměti)| Standard_DS3 (4 jádra, 14 GB paměti)|
 | **Dostupnost v oblastech** |Všechny oblasti Azure |Oblasti Azure, které podporují službu Premium Storage a virtuální počítače Azure DS3<br></br>Použijte [tento seznam](https://azure.microsoft.com/regions/services/), abyste zjistili, jestli jsou ve vaší oblasti dostupné obě možnosti **Virtuální počítače > DS-series** a **Úložiště > Diskové úložiště**. |
-| **Typ úložiště** |Pro místní disky používá službu Azure Standard Storage<br></br> Zjistěte, jak [vytvořit účet služby Standard Storage](../storage/common/storage-create-storage-account.md) |Pro místní disky používá Azure Premium Storage.<sup>2</sup> <br></br> |
+| **Typ úložiště** |Pro místní disky používá službu Azure Standard Storage<br></br> Zjistěte, jak [vytvořit účet služby Standard Storage](../storage/common/storage-create-storage-account.md) |Používá Azure Premium Storage pro místní disky<sup>2</sup> <br></br> |
 | **Pokyny týkající se úloh** |Načítání souborů ze zálohy na úrovni položek |Scénáře vývoje a testování v cloudu <br></br>Úlohy s vyšším výkonem a nízkou latencí<br></br>Sekundární zařízení pro zotavení po havárii |
 
-<sup>1</sup> *dřív označovaná jako 1100*.
+<sup>1</sup> *Dříve známý jako 1100*.
 
-<sup>2</sup> *8010 a 8020 používají pro cloudovou vrstvu úložiště Azure Standard. Rozdíl existuje pouze v místní vrstvě v rámci zařízení*.
+<sup>2</sup> *Zařízení 8010 i 8020 používají Azure Standard Storage pro cloudovou vrstvu. Rozdíl existuje pouze v místní vrstvě v rámci zařízení*.
 
 ## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>Rozdíly mezi cloudovým zařízením a fyzickým zařízením
 
@@ -96,7 +96,7 @@ Než zřídíte cloudové zařízení, je třeba provést následující přípr
 Před vytvořením cloudového zařízení aktualizujte službu Správce zařízení StorSimple následujícím způsobem:
 
 * Přidejte [záznamy řízení přístupu](storsimple-8000-manage-acrs.md) pro virtuální počítače, které budou představovat hostitelské servery pro cloudové zařízení.
-* Nastavte používání [účtu úložiště](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) ve stejné oblasti jako cloudové zařízení. Účty úložiště v jiných oblastech mohou vést k nižšímu výkonu. U cloudového zařízení můžete použít účet služby Standard Storage nebo Premium Storage. Další informace o tom, jak vytvořit [účet úložiště úrovně Standard](../storage/common/storage-create-storage-account.md).
+* Nastavte používání [účtu úložiště](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) ve stejné oblasti jako cloudové zařízení. Účty úložiště v jiných oblastech mohou vést k nižšímu výkonu. U cloudového zařízení můžete použít účet služby Standard Storage nebo Premium Storage. Další informace o vytvoření [účtu standard storage](../storage/common/storage-create-storage-account.md).
 * Pro vytvoření cloudového zařízení použijte jiný účet úložiště, než jaký se používá pro vaše data. Použití stejného účtu úložiště může vést k nižšímu výkonu.
 
 Před zahájením se ujistěte, že máte k dispozici následující informace:

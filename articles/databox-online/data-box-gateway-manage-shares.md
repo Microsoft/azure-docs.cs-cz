@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: e5463a32e299d9d4d151049ab5afffd4975d5182
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265438"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Použití webu Azure Portal ke správě sdílených složek ve službě Azure Data Box Gateway 
@@ -47,10 +47,10 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
 4. Je nutné zadat **účet úložiště**, ve kterém se bude sdílená složka nacházet. V účtu úložiště se vytvoří kontejner s názvem sdílené složky, pokud ještě neexistuje. Pokud už kontejner existuje, použije se existující kontejner.  
 
-5. V části **Služba úložiště** zvolte Objekt blob bloku, Objekt blob stránky nebo Soubory. Zvolený typ služby závisí na tom, v jakém formátu chcete ukládat data v Azure. V tomto případě chceme, aby se ukládala jako objekty blob bloku v Azure, proto vybereme **Objekt blob bloku**. Pokud zvolíte **Objekt blob stránky**, je nutné zajistit, aby vaše data byla zarovnaná na 512 bajtů. Formát VHDX je například vždy zarovnaný na 512 bajtů.
+5. V části **Služba úložiště** zvolte Objekt blob bloku, Objekt blob stránky nebo Soubory. Zvolený typ služby závisí na tom, v jakém formátu chcete ukládat data v Azure. V tomto případě chceme, aby se ukládala jako objekty blob bloku v Azure, proto vybereme **Objekt blob bloku**. Pokud zvolíte **Objekt blob stránky**, je nutné zajistit, aby vaše data byla zarovnaná na 512 bajtů. Například formát VHDX je vždy zarovnaný na 512 bajtů.
 
    > [!IMPORTANT]
-   > Ujistěte se, že účet Azure Storage, který používáte, nemá nastavené zásady neměnnosti, pokud ho používáte s Azure Stack Edge nebo Data Box Gateway zařízení. Další informace najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+   > Ujistěte se, že účet Azure Storage, který používáte, nemá zásady neměnnosti, pokud ho používáte se zařízením Azure Stack Edge nebo Data Box Gateway. Další informace najdete v tématu [Nastavení a správa zásad neměnnosti pro úložiště objektů blob](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
 6. Postup v tomto kroku závisí na tom, jestli vytváříte sdílenou složku SMB nebo systému souborů NFS.
     - **Pokud vytváříte sdílenou složku SMB** – v poli **Místní uživatel se všemi oprávněními** zvolte **Vytvořit nový** nebo **Použít existující**. Pokud vytváříte nového místního uživatele, zadejte **uživatelské jméno**, **heslo** a pak potvrďte heslo. Tím se místnímu uživateli přiřadí oprávnění. Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
@@ -70,9 +70,9 @@ Pokud chcete sdílenou složku odstranit, proveďte na webu Azure Portal násled
 
 1. V seznamu sdílených složek vyberte a klikněte na sdílenou složku, kterou chcete odstranit.
 
-    ![Vybrat sdílenou složku](media/data-box-gateway-manage-shares/delete-1.png)
+    ![Vyberte sdílenou složku](media/data-box-gateway-manage-shares/delete-1.png)
 
-2. Klikněte na **Odstranit**. 
+2. Klepněte na **tlačítko Odstranit**. 
 
     ![Kliknutím odstraňte](media/data-box-gateway-manage-shares/delete-2.png)
 
@@ -94,7 +94,7 @@ Pokud chcete sdílenou složku aktualizovat, proveďte na webu Azure Portal nás
 
 1.   Na webu Azure Portal přejděte na **Sdílené složky**. Vyberte a klikněte na sdílenou složku, kterou chcete aktualizovat.
 
-    ![Vybrat sdílenou složku](media/data-box-gateway-manage-shares/refresh-1.png)
+    ![Vyberte sdílenou složku](media/data-box-gateway-manage-shares/refresh-1.png)
 
 2.   Klikněte na **Aktualizovat**. 
 
@@ -113,16 +113,16 @@ Pokud chcete sdílenou složku aktualizovat, proveďte na webu Azure Portal nás
 Pokud dojde k selhání, bude vydána výstraha. Výstraha uvede podrobnosti příčiny a doporučení k vyřešení problému. Výstraha obsahuje také odkazy na soubor s úplným souhrnem chyb, včetně souborů, které se nepovedlo aktualizovat nebo odstranit.
 
 >[!IMPORTANT]
-> V této verzi neobnovujte najednou více než jednu sdílenou složku.
+> V této verzi neaktualizujte více než jednu sdílenou složku najednou.
 
-## <a name="sync-storage-keys"></a>Synchronizovat klíče úložiště
+## <a name="sync-storage-keys"></a>Synchronizace klíčů úložiště
 
 Pokud se klíče k vašemu účtu úložiště obměňovaly, bude potřeba provést synchronizaci přístupových klíčů k úložišti. Synchronizace pomáhá zařízení se získáním nejnovějších klíčů k účtu úložiště.
 
 Pokud chcete synchronizovat přístupový klíč úložiště, proveďte na webu Azure Portal následující kroky.
 
 1. Ve svém prostředku přejděte na **Přehled**. 
-2. V seznamu sdílených složek vyberte a klikněte na sdílenou složku přidruženou k účtu úložiště, kterou potřebujete synchronizovat. Klikněte na **synchronizace klíč úložiště**. 
+2. Ze seznamu sdílených složek zvolte a klikněte na sdílenou složku přidruženou k účtu úložiště, který potřebujete synchronizovat. Klikněte na **Synchronizovat klíč úložiště**. 
 
      ![Synchronizace klíče úložiště 1](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 

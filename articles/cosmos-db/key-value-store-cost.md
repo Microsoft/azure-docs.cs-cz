@@ -1,6 +1,6 @@
 ---
-title: Poplatky za jednotky žádosti pro službu Azure Cosmos DB jako hodnotu klíče úložiště
-description: Další informace o za jednotky žádosti o služby Azure Cosmos DB pro jednoduché zápisu a operace čtení, když se používá jako úložiště dvojic klíč/hodnota.
+title: Vyžádání jednotkových poplatků pro Azure Cosmos DB jako úložiště hodnot klíčů
+description: Další informace o poplatcích jednotky požadavku azure cosmos DB pro jednoduché operace zápisu a čtení, když se používá jako úložiště klíč/hodnota.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,44 +8,44 @@ ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 5b2ee8b5bf19f16d7f7f04e9515fe591db7132f1
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77647507"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB jako úložiště hodnot klíčů – přehled nákladů
 
-Azure Cosmos DB je globálně distribuovaná a vícemodelová databázová služba pro snadné vytváření aplikací s vysokou dostupností, ve velkém měřítku. Ve výchozím nastavení Azure Cosmos DB automaticky a efektivně indexovat všechna data, která ingestují. To umožňuje rychlé a konzistentní dotazy [SQL](how-to-sql-query.md) (a [JavaScript](stored-procedures-triggers-udfs.md)) na data. 
+Azure Cosmos DB je globálně distribuovaná databázová služba s více modely pro snadné vytváření vysoce dostupných rozsáhlých aplikací. Ve výchozím nastavení Azure Cosmos DB automaticky a efektivně indexuje všechna data, která ingestuje. To umožňuje rychlé a konzistentní [dotazy SQL](how-to-sql-query.md) (a [JavaScript)](stored-procedures-triggers-udfs.md)na data. 
 
-Tento článek popisuje náklady na služby Azure Cosmos DB pro jednoduché zápisu a operace čtení, když se používá jako úložiště dvojic klíč/hodnota. Mezi operace zápisu patří vložení, nahrazení, odstranění a upsertuje datových položek. Kromě zaručení smlouvy SLA 99,999% dostupnosti pro všechny účty ve více oblastech Azure Cosmos DB nabízí zaručenou <ou latenci pro čtení a zápisy (indexovaných) na 99 percentil. 
+Tento článek popisuje náklady na Azure Cosmos DB pro jednoduché operace zápisu a čtení při použití jako úložiště klíč/hodnota. Operace zápisu zahrnují vložení, nahrazení, odstranění a upserts datových položek. Kromě záruky 99,999% dostupnost sla pro všechny účty s více oblastmi, Azure Cosmos DB nabízí zaručené <latence 10 ms pro čtení a pro (indexované) zápisy, na 99 percentilu. 
 
-## <a name="why-we-use-request-units-rus"></a>Proč používáme jednotek žádosti (ru)
+## <a name="why-we-use-request-units-rus"></a>Proč používáme jednotky požadavků (RU)
 
-Azure Cosmos DB výkon vychází z množství zřízené propustnosti vyjádřené v [jednotkách žádosti](request-units.md) (ru/s). Zřizování je druhé členitosti a je koupeno v RU/s ([Nezaměňovat se po hodinové fakturaci](https://azure.microsoft.com/pricing/details/cosmos-db/)). Ru by měla být považována za logickou abstrakci (měnu), která zjednodušuje zřizování požadované propustnosti pro aplikaci. Uživatelé nemusejí myslet na rozdíl mezi propustností čtení a zápisu. Model jedné měny ru vytvoří efektivitu sdílet zřízená kapacita mezi operací čtení a zápisu. Tento model zřízené kapacity umožňuje službě poskytovat **předvídatelné a konzistentní propustnost, zaručenou nízkou latenci a vysokou dostupnost**. A konečně, zatímco pro znázornění propustnosti se používá model RU, má každý zřízený RU také definovaný objem prostředků (například paměť, jádra/CPU a IOPS).
+Výkon Azure Cosmos DB je založen na množství zřízené propustnosti vyjádřené v [jednotkách požadavků](request-units.md) (RU/s). Zřizování je na druhé rozlišovací schopnost a je zakoupenv RU /s[(nesmí být zaměňována s hodinovou fakturací](https://azure.microsoft.com/pricing/details/cosmos-db/)). Ru by měly být považovány za logickou abstrakci (měna), která zjednodušuje zřizování požadované propustnost pro aplikaci. Uživatelé nemusí přemýšlet o rozlišení mezi propustností pro čtení a zápisu. Model jednotné měny ru vytváří efektivitu sdílet zřízenou kapacitu mezi čtení a zápisy. Tento model zřízené kapacity umožňuje službě poskytovat **předvídatelnou a konzistentní propustnost, zaručenou nízkou latenci a vysokou dostupnost**. Nakonec zatímco model RU se používá k zobrazení propustnost, každý zřízený RU má také definované množství prostředků (např. paměť, jádra/PROCESOR a VOPS).
 
-Jako globálně distribuovaný databázový systém je Cosmos DB jedinou službou Azure, která poskytuje komplexní SLA, která pokrývá latenci, propustnost, konzistenci a vysokou dostupnost. Propustnost, kterou zřizujete, se použije u každé oblasti přidružené k vašemu účtu Cosmos. Pro čtení Cosmos DB nabízí více jasně definovaných [úrovní konzistence](consistency-levels.md) , ze kterých si můžete vybrat. 
+Jako globálně distribuovaný databázový systém je Cosmos DB jedinou službou Azure, která poskytuje komplexní smlouvy SLA pokrývající latenci, propustnost, konzistenci a vysokou dostupnost. Propustnost, kterou zřídíte, se použije pro každou oblast přidruženou k vašemu účtu Cosmos. Pro čtení Cosmos DB nabízí více, dobře definované [úrovně konzistence](consistency-levels.md) si můžete vybrat. 
 
-Následující tabulka ukazuje počet ru potřebných k provedení operací čtení a zápisu na základě datové položky o velikosti 1 KB a 100 aktualizací KB s výchozím automatickým indexováním vypnuto. 
+V následující tabulce je uveden počet ru potřebných k provádění operací čtení a zápisu na základě datové položky o velikosti 1 KB a 100 kB s vypnutým výchozím automatickým indexováním. 
 
-|Velikost položky|1 pro čtení|Zápis 1|
+|Velikost položky|1 Číst|1 Zápis|
 |-------------|------|-------|
-|1 KB|1 RU|5 ru|
-|100 KB|10 RU|50 jednotek ru|
+|1 kB|1 ŽP|5 Ru|
+|100 KB|10 RU|50 RU|
 
-## <a name="cost-of-reads-and-writes"></a>Náklady na operace čtení a zápisy
+## <a name="cost-of-reads-and-writes"></a>Náklady na čtení a zápisy
 
-Pokud zřídíte 1 000 RU/s, tato množství se zařadí 3 600 000 RU/hod a náklady se budou za hodinu (v USA a Evropě) finančně $0,08. Pro datovou položku velikosti 1 KB to znamená, že můžete pomocí zřízené propustnosti spotřebovat 3 600 000 čtení nebo 720 000 zápisů (3 600 000 RU/5). V normalizovaní na milion čtení a zápisů by náklady byly $0,022/milion čtení ($0,08/3,6) a $0.111/milionů zápisů ($0,08/0,72). Náklady za milionů stane minimální, jak je znázorněno v následující tabulce.
+Pokud zřídíte 1 000 RU/s, činí to 3,6 milionu RU/hodinu a bude to stát 0,08 USD za hodinu (v USA a Evropě). Pro datovou položku velikosti 1 KB to znamená, že můžete spotřebovat 3,6 milionu čtení nebo 0,72 milionu zápisů (3,6 milionu RU / 5) pomocí zřízená propustnost. Normalizováno na milion čtení a zápisů, náklady by byly $0.022 /million čtení ($0.08 / 3.6) a $0.111/million zápisů ($0.08 / 0.72). Náklady na milion se stanou minimálními, jak je uvedeno v následující tabulce.
 
-|Velikost položky|Náklady na 1 000 000 čtení|Náklady na 1 000 000 zápisy|
+|Velikost položky|Náklady na 1 milion čtení|Náklady na 1 milion zápisů|
 |-------------|-------|--------|
-|1 KB|$0.022|$0.111|
-|100 KB|$0.222|$1.111|
+|1 kB|$0.022|$0.111|
+|100 KB|$0.222|1,111 USD|
 
 
-Většina základních objektů blob nebo objektu úložiště služby sazba 0,40 $ za milion transakcí čtení a 5 $ za milion zápisu transakce. Pokud se používá optimálně, Cosmos DB můžou být až 98% levnější než tato další řešení (pro 1 KB transakcí).
+Většina základních služeb blob nebo objekt ukládá poplatky 0,40 dolarů za milion transakcí čtení a 5 dolarů za milion transakcí zápisu. Pokud je cosmos DB použit optimálně, může být až o 98 % levnější než tato jiná řešení (pro transakce 1 KB).
 
 ## <a name="next-steps"></a>Další kroky
 
-* K odhadu propustnosti vašich úloh použijte [kalkulačku ru](https://cosmos.azure.com/capacitycalculator/) .
+* Pomocí [kalkulačky RU](https://cosmos.azure.com/capacitycalculator/) můžete odhadnout propustnost pro vaše úlohy.
 

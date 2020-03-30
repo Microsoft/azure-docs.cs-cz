@@ -1,7 +1,7 @@
 ---
 title: Spouštění skriptů Pythonu
 titleSuffix: ML Studio (classic) - Azure
-description: Naučte se používat modul spouštěného skriptu Pythonu pro použití kódu Pythonu v Machine Learning Studio (klasických) experimentech a webových službách.
+description: Přečtěte si, jak pomocí modulu Execute Python Script používat kód Pythonu v experimentech machine learningového studia (klasické) experimenty a webové služby.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,93 +11,93 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
 ms.openlocfilehash: c79f6bd63fa5d8d8c6b22ff271d8ca513a94fd64
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218088"
 ---
-# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Spouštění skriptů strojového učení v jazyce Python v Azure Machine Learning Studio (Classic)
+# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Spuštění skriptů pro strojové učení v Pythonu v Azure Machine Learning Studio (klasické)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Python je cenným nástrojem v nástroji pro řadu vědeckých dat. Používá se v každé fázi typických pracovních postupů strojového učení, včetně průzkumu dat, extrakce funkcí, školení modelů a ověřování a nasazení.
+Python je cenným nástrojem v truhle nástrojů mnoha datových vědců. Používá se v každé fázi typických pracovních postupů strojového učení, včetně zkoumání dat, extrakce funkcí, školení a ověřování modelů a nasazení.
 
-Tento článek popisuje, jak pomocí modulu spouštěného skriptu Pythonu používat v Azure Machine Learning Studio (klasické) experimenty a webové služby kód Pythonu.
+Tento článek popisuje, jak můžete použít modul Spouštět Python Script k použití kódu Pythonu ve vašem Azure Machine Learning Studio (klasické) experimenty a webové služby.
 
-## <a name="using-the-execute-python-script-module"></a>Použití modulu spuštění skriptu Pythonu
+## <a name="using-the-execute-python-script-module"></a>Použití modulu Spustit skript Pythonu
 
-Primární rozhraní pro Python v studiu (Classic) se provádí pomocí modulu [spouštění skriptu Pythonu][execute-python-script] . Akceptuje až tři vstupy a vytvoří až dva výstupy, podobně jako modul [spuštění skriptu jazyka R][execute-r-script] . Kód Pythonu je zadán do pole parametru prostřednictvím speciálně pojmenované funkce vstupního bodu s názvem `azureml_main`.
+Primární rozhraní pythonu ve studiu (klasické) je přes modul [Spustit pythonskript.][execute-python-script] Přijímá až tři vstupy a vytváří až dva výstupy, podobně jako [modul Execute R Script.][execute-r-script] Kód Pythonu je zadán do pole parametrů prostřednictvím `azureml_main`speciálně pojmenované funkce vstupního bodu s názvem .
 
-![Spustit modul Python Script](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
+![Spuštění modulu Skript Pythonu](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
-![Ukázka kódu Pythonu v poli parametrů modulu](./media/execute-python-scripts/embedded-machine-learning-python-script.png)
+![Ukázkový kód pythonu v poli parametrů modulu](./media/execute-python-scripts/embedded-machine-learning-python-script.png)
 
 ### <a name="input-parameters"></a>Vstupní parametry
 
-Vstupy modulu Pythonu se zveřejňují jako Pandaselné datarámce. Funkce `azureml_main` přijímá až dva volitelné PANDAS dataframes jako parametry.
+Vstupy do modulu Python jsou vystaveny jako Pandas DataFrames. Funkce `azureml_main` přijímá jako parametry až dva volitelné pandas DataFrames.
 
-Mapování mezi vstupními porty a parametry funkce jsou pozice:
+Mapování mezi vstupními porty a parametry funkce je poziční:
 
-- První připojený vstupní port je namapován na první parametr funkce.
-- Druhý vstup (Pokud je připojen) je namapován na druhý parametr funkce.
+- První připojený vstupní port je mapován na první parametr funkce.
+- Druhý vstup (je-li připojen) je mapován na druhý parametr funkce.
 - Třetí vstup se používá k [importu dalších modulů Pythonu](#import-modules).
 
-Podrobnější sémantika způsobu, jakým jsou porty vstupu mapovány na parametry funkce `azureml_main`, jsou uvedeny níže.
+Podrobnější sémantiku, jak se vstupní porty namapují na parametry `azureml_main` funkce, jsou uvedeny níže.
 
-![Tabulka vstupních konfigurací portů a výsledný podpis v jazyce Python](./media/execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
+![Tabulka konfigurací vstupního portu a výsledný podpis Pythonu](./media/execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
-### <a name="output-return-values"></a>Výstupní návratové hodnoty
+### <a name="output-return-values"></a>Výstupní vrácené hodnoty
 
-Funkce `azureml_main` musí vracet jeden PANDAS dataframe zabalený do [sekvence](https://docs.python.org/2/c-api/sequence.html) Pythonu, jako je například řazená kolekce členů, seznam nebo pole numpy. První prvek této sekvence se vrátí na první výstupní port modulu. Druhý výstupní port modulu se používá pro [vizualizace](#visualizations) a nevyžaduje návratovou hodnotu. Toto schéma je uvedené níže.
+Funkce `azureml_main` musí vrátit jeden Pandas DataFrame zabalené v [pythonu sekvence,](https://docs.python.org/2/c-api/sequence.html) jako je například n-tice, seznam nebo NumPy pole. První prvek této sekvence je vrácen a první výstupní port modulu. Druhý výstupní port modulu se používá pro [vizualizace](#visualizations) a nevyžaduje vrácenou hodnotu. Toto schéma je uvedeno níže.
 
-![Mapování vstupních portů na parametry a návratovou hodnotu na výstupní port](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
+![Mapování vstupních portů na parametry a vrácená hodnota na výstupní port](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
 ## <a name="translation-of-input-and-output-data-types"></a>Překlad vstupních a výstupních datových typů
 
-Datové sady studia nejsou stejné jako v případě Panda dataframes. V důsledku toho se vstupní datové sady v studiu (Classic) převedou na PANDAS dataframe a výstupní datové snímky se převedou zpátky na datové sady studia (Classic). Během tohoto procesu převodu jsou provedeny také následující překlady:
+Datové sady studio nejsou stejné jako Panda DataFrames. Výsledkem je, že vstupní datové sady ve studiu (klasické) jsou převedeny na Pandas DataFrame a výstupní datarámce jsou převedeny zpět na datové sady Studio (klasické). Během tohoto procesu převodu jsou také provedeny následující překlady:
 
  **Datový typ Pythonu** | **Postup překladu studia** |
 | --- | --- |
-| Řetězce a číslice| Přeloženo tak, jak je |
-| PANDAS ' NEDEF ' | Přeloženo jako chybějící hodnota |
-| Vektory indexu | Neplatné |
-| Názvy sloupců bez řetězců | `str` volání u názvů sloupců |
-| Duplicitní názvy sloupců | Přidat číselnou příponu: (1), (2), (3) atd.
+| Řetězce a číselné číslo| Přeloženo tak, jak je |
+| Pandy 'NA' | Přeloženo jako Chybějící hodnota. |
+| Vektory indexu | Bez podpory* |
+| Názvy sloupců bez řetězce | Volání `str` na názvy sloupců |
+| Duplicitní názvy sloupců | Přidejte číselnou příponu: (1), (2), (3) a tak dále.
 
-**všechny vstupní datové rámce ve funkci Pythonu mají vždycky 64 bitů číselného indexu od 0 do počtu řádků minus 1* .
+**Všechny rámce vstupních dat ve funkci Pythonu mají vždy 64bitový číselný index od 0 do počtu řádků mínus 1.*
 
-## <a id="import-modules"></a>Importují se existující moduly skriptu Pythonu.
+## <a name="importing-existing-python-script-modules"></a><a id="import-modules"></a>Import existujících modulů skriptů Pythonu
 
-Back-end používaný ke spuštění Pythonu vychází z [Anaconda](https://www.anaconda.com/distribution/), široce používaného vědecké distribuce Pythonu. Obsahuje téměř 200 nejčastějších balíčků Python používaných v úlohách orientovaných na data. Studio (Classic) v současné době nepodporuje pro instalaci a správu externích knihoven použití systémů správy balíčků, jako je PIP nebo conda.  Pokud potřebujete přidat další knihovny, použijte jako vodítko následující scénář.
+Back-end používaný ke spuštění Pythonu je založen na [Anakondě](https://www.anaconda.com/distribution/), široce používané vědecké distribuci Pythonu. Dodává se s téměř 200 nejběžnějšími balíčky Pythonu používanými v úlohách zaměřených na data. Studio (klasické) v současné době nepodporuje použití systémů pro správu balíčků, jako je Pip nebo Conda, k instalaci a správě externích knihoven.  Pokud zjistíte, že je třeba začlenit další knihovny, použijte následující scénář jako vodítko.
 
-Běžným případem použití je zahrnutí stávajících skriptů Pythonu do studia (klasických) experimentů. Modul [spuštění skriptu Pythonu][execute-python-script] přijímá soubor zip, který obsahuje moduly Pythonu na třetím vstupním portu. Soubor je v době běhu extrahován rozhraním a obsah se přidá do cesty knihovny interpretu Pythonu. Funkce vstupního bodu `azureml_main` pak může tyto moduly importovat přímo. 
+Běžným případem použití je začlenění existujících skriptů Pythonu do experimentů Studia (klasické). Modul [Execute Python Script][execute-python-script] přijímá soubor zip obsahující moduly Pythonu na třetím vstupním portu. Soubor je rozbalený prováděcím rámcem za běhu a obsah je přidán do cesty knihovny interpretu Pythonu. Funkce `azureml_main` vstupního bodu pak může importovat tyto moduly přímo. 
 
-Například zvažte, že soubor Hello.py obsahující jednoduchou funkci "Hello, World".
+Jako příklad zvažte Hello.py soubor obsahující jednoduchou funkci "Hello, World".
 
-![Uživatelsky definovaná funkce v souboru Hello.py](./media/execute-python-scripts/figure4.png)
+![Uživatelem definovaná funkce v Hello.py souboru](./media/execute-python-scripts/figure4.png)
 
-V dalším kroku vytvoříme soubor Hello. zip, který obsahuje Hello.py:
+Dále vytvoříme soubor Hello.zip, který obsahuje Hello.py:
 
-![Soubor ZIP obsahující kód Pythonu definovaný uživatelem](./media/execute-python-scripts/figure5.png)
+![SOUBOR ZIP obsahující uživatelem definovaný kód Pythonu](./media/execute-python-scripts/figure5.png)
 
-Nahrajte soubor ZIP jako datovou sadu do studia (Classic). Pak vytvořte a spusťte experiment, který pomocí kódu Pythonu v souboru Hello. zip připojíte k třetímu vstupnímu portu modulu pro **spuštění skriptu Pythonu** , jak je znázorněno na následujícím obrázku.
+Nahrajte soubor zip jako datovou sadu do studia (klasické). Potom vytvořte a spusťte experiment, který používá kód Pythonu v souboru Hello.zip tak, že jej připojíte ke třetímu vstupnímu portu modulu **Execute Python Script,** jak je znázorněno na následujícím obrázku.
 
-![Ukázkový experiment s Hello. zip jako vstup pro modul spuštění skriptu Pythonu](./media/execute-python-scripts/figure6a.png)
+![Ukázkový experiment s Hello.zip jako vstupdo modulu Spustit skript Pythonu](./media/execute-python-scripts/figure6a.png)
 
-![Uživatelsky definovaný kód Pythonu nahraný jako soubor zip](./media/execute-python-scripts/figure6b.png)
+![Uživatelem definovaný kód Pythonu nahraný jako soubor zip](./media/execute-python-scripts/figure6b.png)
 
-Výstup modulu ukazuje, že se soubor zip rozbalí a že funkce `print_hello` byla spuštěna.
+Výstup modulu ukazuje, že soubor zip byl nezabalen a že funkce `print_hello` byla spuštěna.
 
-![Výstup modulu zobrazující uživatelsky definovanou funkci](./media/execute-python-scripts/figure7.png)
+![Výstup modulu znázorňující uživatelem definovanou funkci](./media/execute-python-scripts/figure7.png)
 
-## <a name="accessing-azure-storage-blobs"></a>Přístup k objektům blob Azure Storage
+## <a name="accessing-azure-storage-blobs"></a>Přístup k objektům BLOB úložiště Azure
 
-K datům uloženým v účtu Azure Blob Storage můžete přistupovat pomocí těchto kroků:
+K datům uloženým v účtu úložiště objektů blob Azure můžete přistupovat pomocí těchto kroků:
 
-1. Stáhněte si [balíček Azure Blob Storage pro Python](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) místně.
-1. Nahrajte soubor zip do pracovního prostoru studia (Classic) jako datovou sadu.
-1. Vytvořte objekt BlobService pomocí `protocol='http'`
+1. Stáhněte si [balíček azure blob storage pro Python](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) místně.
+1. Nahrajte soubor zip do pracovního prostoru studia (klasické) jako datovou sadu.
+1. Vytvoření objektu BlobService pomocí`protocol='http'`
 
 ```
 from azure.storage.blob import BlockBlobService
@@ -106,80 +106,80 @@ from azure.storage.blob import BlockBlobService
 block_blob_service = BlockBlobService(account_name='account_name', account_key='account_key', protocol='http')
 ```
 
-1. Zakázat **zabezpečený přenos vyžadovaný** na kartě nastavení **Konfigurace** úložiště
+1. Zakázání **zabezpečeného přenosu vyžadovaného** na kartě **Nastavení konfigurace** úložiště
 
-![Zakázat zabezpečený přenos vyžadovaný v Azure Portal](./media/execute-python-scripts/disable-secure-transfer-required.png)
+![Zakázat zabezpečení přenosu požadované na webu Azure Portal](./media/execute-python-scripts/disable-secure-transfer-required.png)
 
-## <a name="operationalizing-python-scripts"></a>Zprovozňování skripty Pythonu
+## <a name="operationalizing-python-scripts"></a>Zprovoznění skriptů Pythonu
 
-Při publikování jako webové služby se zavolají všechny moduly [spouštění skriptu Pythonu][execute-python-script] používané v experimentu bodování. Například následující obrázek ukazuje experiment bodování, který obsahuje kód pro vyhodnocení jednoho výrazu v Pythonu.
+Všechny [moduly Spouštění skriptů Pythonu][execute-python-script] použité v experimentu hodnocení se nazývají při publikování jako webová služba. Například na obrázku níže ukazuje bodování experiment, který obsahuje kód k vyhodnocení jednoho výrazu Pythonu.
 
-![Pracovní prostor Studio pro webovou službu](./media/execute-python-scripts/figure3a.png)
+![Studiopracovní prostor pro webovou službu](./media/execute-python-scripts/figure3a.png)
 
-![Výraz Python PANDAS](./media/execute-python-scripts/python-script-with-python-pandas.png)
+![Výraz Pandpythona pythonu](./media/execute-python-scripts/python-script-with-python-pandas.png)
 
-Webová služba vytvořená z tohoto experimentu by probrala tyto akce:
+Webová služba vytvořená z tohoto experimentu by přijala následující akce:
 
-1. Převést výraz Pythonu jako vstup (jako řetězec)
-1. Poslat výraz Pythonu Překladači Pythonu
-1. Vrátí tabulku obsahující jak výraz, tak vyhodnocený výsledek.
+1. Vzít výraz Pythonu jako vstup (jako řetězec)
+1. Odeslání výrazu Pythonu překladaci Pythonu
+1. Vrátí tabulku obsahující výraz i vyhodnocený výsledek.
 
-## <a id="visualizations"></a>Práce s vizualizacemi
+## <a name="working-with-visualizations"></a><a id="visualizations"></a>Práce s vizualizacemi
 
-Vykreslení vytvořená pomocí MatplotLib může být vráceno [skriptem Execute Python][execute-python-script]. Vykresluje se ale při použití jazyka R automaticky nepřesměrují na obrázky. Proto uživatel musí explicitně uložit všechny vykreslení do souborů PNG.
+Parcely vytvořené pomocí MatplotLib mohou být vráceny [skriptem Execute Python][execute-python-script]. Obrázky však nejsou automaticky přesměrovány na obrázky tak, jak jsou při použití R. Takže uživatel musí explicitně uložit všechny obrázky do souborů PNG.
 
-K vygenerování imagí z MatplotLib je třeba provést následující kroky:
+Chcete-li generovat obrázky z MatplotLib, musíte provést následující kroky:
 
-1. Přepněte back-end na "AGG" ze výchozího zobrazovacího modulu na bázi QT.
-1. Vytvoří nový objekt obrázku.
-1. Získejte osu a vygenerujte do ní všechny.
+1. Přepněte back-end na "AGG" z výchozího vykreslovače založeného na Qt.
+1. Vytvořte nový objekt obrázku.
+1. Získejte osu a vygenerujte do ní všechny obrázky.
 1. Uložte obrázek do souboru PNG.
 
-Tento proces je znázorněný v následujících obrázcích, které vytvoří matici typu bodový graf pomocí funkce scatter_matrix v PANDAS.
+Tento proces je znázorněn na následujících obrázcích, které vytvářejí matici bodového grafu pomocí funkce scatter_matrix v pandách.
 
-![Kód pro uložení MatplotLibch obrázků do imagí](./media/execute-python-scripts/figure-v1-8.png)
+![Kód pro uložení obrázků MatplotLib do obrázků](./media/execute-python-scripts/figure-v1-8.png)
 
-![Pokud si chcete zobrazit tyto údaje, klikněte na vizualizovat v modulu spuštění skriptu Pythonu.](./media/execute-python-scripts/figure-v2-9a.png)
+![Kliknutím na vizualizovat v modulu Spustit skript Pythonu zobrazíte čísla.](./media/execute-python-scripts/figure-v2-9a.png)
 
-![Vizualizace pro ukázkový experiment pomocí kódu Pythonu](./media/execute-python-scripts/figure-v2-9b.png)
+![Vizualizace parcel pro ukázkový experiment pomocí kódu Pythonu](./media/execute-python-scripts/figure-v2-9b.png)
 
-Je možné vrátit více hodnot tak, že je uložíte do různých imagí. Studio (Classic) runtime vybírá všechny obrázky a zřetězuje je pro vizualizaci.
+Je možné vrátit více číslic jejich uložením do různých obrázků. Studio (klasické) runtime vyzvedne všechny obrázky a zřetězí je pro vizualizaci.
 
-## <a name="advanced-examples"></a>Rozšířené příklady
+## <a name="advanced-examples"></a>Pokročilé příklady
 
-Prostředí Anaconda nainstalované v studiu (Classic) obsahuje běžné balíčky, jako je NumPy, SciPy a Scikits – informace. Tyto balíčky je možné efektivně využít ke zpracování dat v kanálu strojového učení.
+Prostředí Anaconda nainstalované ve studiu (klasické) obsahuje běžné balíčky jako NumPy, SciPy a Scikits-Learn. Tyto balíčky lze efektivně použít pro zpracování dat v kanálu strojového učení.
 
-Například následující experimenty a skripty ilustrují použití Scikitsch doplňků v – informace o hodnocení důležitosti funkcí pro datovou sadu. Skóre lze použít k provedení výběru funkcí pod dohledem před jejich odesláním do jiného modelu.
+Například následující experiment a skript ilustrují použití studentů souborů v Scikits-Learn vypočítat skóre důležitosti funkce pro datovou sadu. Skóre lze použít k provedení výběru funkcí pod dohledem před tím, než jsou vloženy do jiného modelu.
 
-Tady je funkce Pythonu, která slouží k výpočtu skóre důležitosti a objednání funkcí na základě skóre:
+Zde je funkce Pythonu, která slouží k výpočtu skóre důležitosti a pořadí funkcí na základě skóre:
 
 ![Funkce pro hodnocení funkcí podle skóre](./media/execute-python-scripts/figure8.png)
 
-Následující experiment pak vypočítá a vrátí hodnocení důležitosti funkcí v datové sadě "Pima indických diabetes" v Azure Machine Learning Studio (Classic):
+Následující experiment pak vypočítá a vrátí důležitost skóre funkcí v datové sadě "Pima indian diabetes" v Azure Machine Learning Studio (klasické):
 
-![Experimentování k funkcím Rank v Pima datové sadě indických diabetes pomocí Pythonu](./media/execute-python-scripts/figure9a.png)
+![Experimentovat s hodnocením funkcí v datové sadě Pima Indian Diabetes pomocí Pythonu](./media/execute-python-scripts/figure9a.png)
 
-![Vizualizace výstupu modulu spuštění skriptu Pythonu](./media/execute-python-scripts/figure9b.png)
+![Vizualizace výstupu modulu Execute Python Script](./media/execute-python-scripts/figure9b.png)
 
 ## <a name="limitations"></a>Omezení
 
-Modul [spuštění skriptu Pythonu][execute-python-script] má v současné době tato omezení:
+Modul [Spustit skript Pythonu][execute-python-script] má aktuálně následující omezení:
 
 ### <a name="sandboxed-execution"></a>Spuštění v izolovaném prostoru
 
-Modul runtime Pythonu je aktuálně v izolovaném prostoru (sandbox) a trvale neumožňuje přístup k síti nebo místnímu systému souborů. Všechny místně uložené soubory se po dokončení modulu izolují a odstraní. Kód Pythonu nemůže přistupovat ke většině adresářů v počítači, na kterém je spuštěný, a výjimkou je aktuální adresář a jeho podadresáře.
+Modul runtime Pythonu je aktuálně v izolovaném prostoru a trvalým způsobem neumožňuje přístup k síti nebo místnímu systému souborů. Všechny soubory uložené místně jsou izolovány a odstraněny po dokončení modulu. Kód Pythonu nemá přístup k většině adresářů v počítači, ve kterých běží, což je výjimka, která je aktuálním adresářem a jeho podadresáři.
 
-### <a name="lack-of-sophisticated-development-and-debugging-support"></a>Nedostatek sofistikované podpory pro vývoj a ladění
+### <a name="lack-of-sophisticated-development-and-debugging-support"></a>Nedostatečná podpora vývoje a ladění
 
-Modul Python v současné době nepodporuje funkce rozhraní IDE, jako je IntelliSense a ladění. V případě, že dojde k chybě modulu za běhu, je k dispozici kompletní trasování zásobníku Pythonu. Ale musí se zobrazit ve výstupním protokolu pro modul. V současnosti doporučujeme vyvíjet a ladit skripty v jazyce Python v prostředí, jako je IPython, a pak kód importovat do modulu.
+Modul Pythonu v současné době nepodporuje funkce IDE, jako je například intellisense a ladění. Také pokud modul selže za běhu, úplné trasování zásobníku Pythonu je k dispozici. Ale musí být zobrazenve výstupním protokolu pro modul. V současné době doporučujeme vyvíjet a ladit skripty Pythonu v prostředí, jako je IPython a potom importovat kód do modulu.
 
-### <a name="single-data-frame-output"></a>Výstup s jedním datovým snímkem
+### <a name="single-data-frame-output"></a>Výstup jednoho datového rámce
 
-Vstupní bod Pythonu smí vracet pouze jeden datový rámec jako výstup. V současné době není možné vracet libovolné objekty Pythonu, jako jsou například školené modely, přímo zpět do modulu runtime studia (Classic). Stejně jako spouštěcí [skript jazyka R][execute-r-script], který má stejné omezení, je možné v mnoha případech do rozevíracích objektů do pole bajtů a pak vracet v rámci datového rámce.
+Vstupní bod Pythonu je povoleno vrátit pouze jeden datový rámec jako výstup. V současné době není možné vrátit libovolné objekty Pythonu, jako jsou trénované modely přímo zpět do modulu runtime studio (classic). Stejně jako [spustit Skript R][execute-r-script], který má stejné omezení, je možné v mnoha případech nakládat objekty do bajtového pole a pak vrátit, že uvnitř datového rámce.
 
-### <a name="inability-to-customize-python-installation"></a>Nemožnost přizpůsobení instalace Pythonu
+### <a name="inability-to-customize-python-installation"></a>Neschopnost přizpůsobit instalaci Pythonu
 
-V současné době je jediným způsobem, jak přidat vlastní moduly Pythonu, prostřednictvím mechanismu souboru ZIP popsaného výše. I když je to pro malé moduly vhodné, je náročné pro velké moduly (zejména moduly s nativními knihovnami DLL) nebo velký počet modulů.
+V současné době je jediný způsob, jak přidat vlastní moduly Pythonu, prostřednictvím mechanismu zip file popsaného výše. I když je to možné pro malé moduly, je to těžkopádné pro velké moduly (zejména moduly s nativními knihovnami DLL) nebo velký počet modulů.
 
 ## <a name="next-steps"></a>Další kroky
 

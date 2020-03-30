@@ -1,40 +1,40 @@
 ---
 title: Indexování geoprostorových dat pomocí Azure Cosmos DB
-description: Indexace prostorových dat pomocí Azure Cosmos DB
+description: Indexování prostorových dat pomocí Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137899"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Indexování geoprostorových dat pomocí Azure Cosmos DB
 
-Navrhli jsme, aby byl databázový stroj Azure Cosmos DB nezávislá jako skutečně schématu a poskytoval jako první podporu třídy pro JSON. Napsání optimalizovaného databázového stroje Azure Cosmos DB nativně rozumí prostorová data reprezentovaná v rámci standardu injson.
+Databázový stroj Azure Cosmos DB jsme navrhli tak, aby byl skutečně agnostický schématu a poskytoval prvotřídní podporu pro JSON. Databázový stroj optimalizovaný pro zápis služby Azure Cosmos DB nativně rozumí prostorovým datům reprezentovaných ve standardu GeoJSON.
 
-V kostce je geometrie promítnuta z souřadnic Geodetic na 2D rovinu a poté postupně rozdělena do buněk pomocí **quadtree**. Tyto buňky jsou namapovány na 1D na základě umístění buňky v **křivce vyplňování Hilbert prostoru**, která zachovává polohu místa. Kromě toho, když jsou data umístění indexována, projde procesem známým jako **teselaci**, to znamená, že všechny buňky, které protínají umístění, jsou identifikovány a uloženy jako klíče v indexu Azure Cosmos DB. V době zpracování dotazu argumenty, jako je bodů a mnohoúhelníků jsou také teselace sestavy extrahovat ID oblasti relevantní buněk a potom se používá k načtení dat z indexu.
+Stručně řečeno, geometrie je promítána z geodetických souřadnic na 2D rovinu a poté postupně rozdělena na buňky pomocí **quadtree**. Tyto buňky jsou mapovány na 1D na základě umístění buňky v **rámci křivky plnění prostoru Hilbert**, která zachovává lokalitu bodů. Navíc při indexování dat umístění prochází procesem **označovaným**jako mozaikování , to znamená, že všechny buňky, které protínají umístění, jsou identifikovány a uloženy jako klíče v indexu Azure Cosmos DB. V době dotazu argumenty jako body a polygony jsou také tessellated extrahovat příslušné oblasti ID buňky, pak se používá k načtení dat z indexu.
 
-Pokud zadáte zásadu indexování, která zahrnuje prostorový index pro/* (všechny cesty), pak jsou všechna data nalezená v rámci kontejneru indexována pro efektivní prostorové dotazy.
-
-> [!NOTE]
-> Azure Cosmos DB podporuje indexování bodů, LineStrings, mnohoúhelníků a více mnohoúhelníků.
->
->
-
-## <a name="modifying-geospatial-data-type"></a>Úprava geoprostorového datového typu
-
-V kontejneru `geospatialConfig` určuje, jak budou geoprostorové údaje indexovány. Měli byste zadat jeden `geospatialConfig` na kontejner: Geografie nebo geometrie. Pokud tento parametr nezadáte, `geospatialConfig` bude výchozí zeměpisným datovým typem. Když upravíte `geospatialConfig`, všechna existující geoprostorové data v kontejneru se Přeindexují.
+Pokud zadáte zásadu indexování, která zahrnuje prostorový index pro /* (všechny cesty), pak všechna data nalezená v kontejneru jsou indexována pro efektivní prostorové dotazy.
 
 > [!NOTE]
-> Azure Cosmos DB aktuálně podporuje úpravy geospatialConfig v sadě .NET SDK pouze ve verzích 3,6 a vyšších.
+> Azure Cosmos DB podporuje indexování bodů, linestringů, mnohonoly a multipolygonů
+>
 >
 
-Tady je příklad pro úpravu geoprostorového datového typu na `geometry` nastavením vlastnosti `geospatialConfig` a přidáním **boundingBox**:
+## <a name="modifying-geospatial-data-type"></a>Změna typu geoprostorových dat
+
+V kontejneru `geospatialConfig` určuje, jak budou indexována geoprostorová data. Měli byste `geospatialConfig` zadat jeden na kontejner: geografie nebo geometrie. Pokud není zadán, `geospatialConfig` bude výchozí typ zeměpisu data. Při úpravě `geospatialConfig`, budou přeindexována všechna existující geoprostorová data v kontejneru.
+
+> [!NOTE]
+> Azure Cosmos DB aktuálně podporuje změny geospatialConfig v .NET SDK pouze ve verzích 3.6 a vyšší.
+>
+
+Zde je příklad pro úpravu typu `geometry` geoprostorových `geospatialConfig` dat nastavením vlastnosti a přidáním **opojné pole**:
 
 ```csharp
     //Retrieve the container's details
@@ -66,9 +66,9 @@ Tady je příklad pro úpravu geoprostorového datového typu na `geometry` nast
 
 ## <a name="geography-data-indexing-examples"></a>Příklady indexování geografických dat
 
-Následující fragment kódu JSON ukazuje zásadu indexování s povoleným prostorovým indexováním pro **zeměpisný** datový typ. Je platný pro prostorová data s geografickými datovými typy a v dokumentech pro prostorový dotazování vyhledá všechny body pro geografické JSON, mnohoúhelníky, více mnohoúhelníky nebo LineString nalezené v dokumentech. Pokud měníte zásady indexování pomocí Azure Portal, můžete pro zásady indexování zadat následující JSON a povolit prostorové indexování v kontejneru:
+Následující úryvek JSON zobrazuje zásadu indexování s povoleným prostorovým indexováním pro datový typ **zeměpisu.** Je platný pro prostorová data s typem dat geografie a bude indexovat všechny GeoJSON point, Polygon, MultiPolygon nebo LineString nalezené v dokumentech pro prostorové dotazování. Pokud upravujete zásady indexování pomocí portálu Azure, můžete zadat následující JSON pro zásady indexování, abyste povolili prostorové indexování v kontejneru:
 
-**JSON zásad indexování kontejneru s geografickým indexováním**
+**Zásady indexování kontejnerů JSON s prostorovým indexováním zeměpisu**
 
 ```json
     {
@@ -95,26 +95,26 @@ Následující fragment kódu JSON ukazuje zásadu indexování s povoleným pro
 ```
 
 > [!NOTE]
-> Pokud umístění hodnota GeoJSON v rámci dokumentu je chybný nebo není platný, pak ji nebude indexování pro prostorová dotazování. Můžete ověřit pomocí ST_ISVALID a ST_ISVALIDDETAILED hodnoty umístění.
+> Pokud je hodnota umístění GeoJSON v dokumentu poškozená nebo neplatná, nebude indexována pro prostorové dotazování. Hodnoty umístění můžete ověřit pomocí ST_ISVALID a ST_ISVALIDDETAILED.
 
-[Zásady indexování](how-to-manage-indexing-policy.md) můžete také upravit pomocí rozhraní příkazového řádku Azure CLI, PowerShellu nebo jakékoli sady SDK.
+Zásady [indexování](how-to-manage-indexing-policy.md) můžete také upravit pomocí azure cli, powershellu nebo libovolné sady SDK.
 
-## <a name="geometry-data-indexing-examples"></a>Příklady indexování dat geometrie
+## <a name="geometry-data-indexing-examples"></a>Příklady indexování geometrií
 
-S datovým typem **geometrie** , podobně jako zeměpisný datový typ, je nutné zadat relevantní cesty a typy k indexování. Kromě toho musíte také zadat `boundingBox` v rámci zásad indexování, abyste označili požadovanou oblast, která se má indexovat pro danou konkrétní cestu. Každá geoprostorové cesta vyžaduje vlastní`boundingBox`.
+U datového typu **geometrie,** podobně jako datový typ zeměpisu, je nutné zadat příslušné cesty a typy pro indexování. Kromě toho je nutné `boundingBox` také zadat v rámci zásadindexování k označení požadované oblasti, která má být indexována pro danou konkrétní cestu. Každá geoprostorová cesta`boundingBox`vyžaduje svůj vlastní .
 
 Ohraničovací rámeček se skládá z následujících vlastností:
 
-- **XMin**: minimální souřadnice indexovaných x
-- **yMin**: minimální souřadnice indexovaného y
-- **Xmax**: maximální indexovaná souřadnice x
-- **yMax**: maximální souřadnice indexovaných y
+- **xmin**: minimální indexovaná x souřadnice
+- **ymin**: minimální indexovaná souřadnice y
+- **xmax**: maximální indexovaná souřadnice x
+- **ymax**: maximální indexovaná souřadnice y
 
-Ohraničovací rámeček je povinný, protože geometrická data zabírají rovinu, která může být nekonečná. Prostorové indexy ale vyžadují omezené místo. Pro **zeměpisný** datový typ je zemina hranice a není nutné nastavovat ohraničovací rámeček.
+Ohraničovací rámeček je vyžadován, protože geometrická data zabírají rovinu, která může být nekonečná. Prostorové indexy však vyžadují omezený prostor. Pro **geografický** datový typ je Hranice Země a není nutné nastavovat ohraničovací rámeček.
 
-Měli byste vytvořit ohraničující rámeček, který obsahuje všechny (nebo většinu) vašich dat. Prostorové indexy budou moci využívat pouze operace vypočítané na objektech, které jsou zcela uvnitř ohraničujícího pole. Ohraničovací rámeček by neměl být významně větší, než je potřeba, protože to negativně ovlivní výkon dotazů.
+Měli byste vytvořit ohraničovací rámeček, který obsahuje všechna (nebo většina) dat. Pouze operace vypočítané na objekty, které jsou zcela uvnitř ohraničovacího rámečku budou moci využít prostorový index. Ohraničovací rámeček by neměl být výrazně větší, než je nutné, protože to negativně ovlivní výkon dotazu.
 
-Tady je příklad zásady indexování, **která indexuje** data s **geospatialConfig** nastavenou na `geometry`:
+Zde je příklad zásady indexování, která indexuje data `geometry` **geometrie** s **geospatialConfig** nastavenou na :
 
 ```json
  {
@@ -150,15 +150,15 @@ Tady je příklad zásady indexování, **která indexuje** data s **geospatialC
 }
 ```
 
-Výše uvedené zásady indexování mají **boundingBox** (-10, 10) souřadnic x a (-20, 20) souřadnic y. Kontejner s výše uvedenými zásadami indexování bude indexovat všechny body, mnohoúhelníky, více mnohoúhelníky a LineStrings, které jsou zcela v rámci této oblasti.
+Výše uvedené zásady indexování má **ohraničujícíBox** (-10, 10) pro x souřadnice a (-20, 20) pro souřadnice y. Kontejner s výše uvedenými zásadami indexování bude indexovat všechny body, mnohonoly, multipolygony a linestrings, které jsou zcela v této oblasti.
 
 > [!NOTE]
-> Pokud se pokusíte přidat zásadu indexování s **boundingBox** do kontejneru s datovým typem `geography`, selže. Před přidáním **boundingBox**byste měli upravit **geospatialConfig** kontejneru tak, aby byl `geometry`. Můžete přidat data a upravit zbývající část zásad indexování (například cesty a typy) před nebo po výběru geoprostorového datového typu pro kontejner.
+> Pokud se pokusíte přidat zásady indexování s **opojnýBox** do kontejneru s `geography` datovým typem, se nezdaří. Měli byste upravit **geospatialConfig** kontejneru `geometry` být před přidáním **opojnýBox**. Můžete přidat data a upravit zbytek zásad indexování (například cesty a typy) před nebo po výběru typu geoprostorových dat pro kontejner.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak začít pracovat s podporuje geoprostorové funkce ve službě Azure Cosmos DB, dále můžete:
+Teď, když jste se naučili, jak začít s geoprostorovou podporou v Azure Cosmos DB, můžete další:
 
-* Další informace o [Azure Cosmos DB dotaz](sql-query-getting-started.md)
+* Další informace o [dotazu Azure Cosmos DB Query](sql-query-getting-started.md)
 * Další informace o [dotazování prostorových dat pomocí Azure Cosmos DB](sql-query-geospatial-query.md)
-* Další informace o [umístění geoprostorového a geografického umístění JSON v Azure Cosmos DB](sql-query-geospatial-intro.md)
+* Další informace o [geografických prostorových datech a datech o poloze GeoJSON v Azure Cosmos DB](sql-query-geospatial-intro.md)

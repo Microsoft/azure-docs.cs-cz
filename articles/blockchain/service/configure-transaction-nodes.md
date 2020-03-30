@@ -1,137 +1,137 @@
 ---
-title: Konfigurace uzlů transakcí služby Azure blockchain
-description: Jak nakonfigurovat uzly transakcí služby Azure blockchain
+title: Konfigurace transakčních uzlů služby Azure Blockchain Service
+description: Jak nakonfigurovat uzly transakcí služby Azure Blockchain Service
 ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252256"
 ---
-# <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurace uzlů transakcí služby Azure blockchain
+# <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurace transakčních uzlů služby Azure Blockchain Service
 
-Uzly transakce slouží k posílání transakcí blockchain do služby Azure blockchain prostřednictvím veřejného koncového bodu. Výchozí uzel transakce obsahuje privátní klíč účtu Ethereem zaregistrovaného na blockchain a takovým způsobem jej nelze odstranit.
+Transakční uzly se používají k odesílání transakcí blockchain u služby Azure Blockchain Service prostřednictvím veřejného koncového bodu. Výchozí uzel transakce obsahuje soukromý klíč účtu Ethereum registrovaného v blockchainu a jako takový nelze odstranit.
 
-Zobrazení podrobností o výchozích uzlech transakce:
+Zobrazení podrobností o výchozím uzlu transakce:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Přejděte ke členu služby Azure blockchain. Vyberte **uzly transakce**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přejděte na člena služby Azure Blockchain Service. Vyberte **uzly transakce**.
 
     ![Vybrat výchozí uzel transakce](./media/configure-transaction-nodes/nodes.png)
 
-    Souhrnné informace obsahují adresy veřejných koncových bodů a veřejný klíč.
+    Podrobnosti o přehledu zahrnují adresy veřejného koncového bodu a veřejný klíč.
 
 ## <a name="create-transaction-node"></a>Vytvořit uzel transakce
 
-Do blockchain člena můžete přidat až devět dalších uzlů transakcí, a to za celkem 10 uzlů transakcí. Přidáním uzlů transakce můžete zvýšit škálovatelnost nebo distribuovat zatížení. Například můžete mít koncový bod uzlu transakce pro různé klientské aplikace.
+Do člena blockchainu můžete přidat až devět dalších transakčních uzlů, celkem 10 transakčních uzlů. Přidáním uzlů transakcí můžete zvýšit škálovatelnost nebo distribuovat zatížení. Můžete mít například koncový bod uzlu transakce pro různé klientské aplikace.
 
-Chcete-li přidat uzel transakce:
+Přidání uzlu transakce:
 
-1. V Azure Portal přejděte ke členu služby Azure blockchain a vyberte **uzly transakcí > přidat**.
-1. Dokončete nastavení pro nový uzel transakce.
+1. Na webu Azure Portal přejděte na člena služby Azure Blockchain service a vyberte **uzly transakcí > Přidat**.
+1. Dokončete nastavení nového uzlu transakce.
 
     ![Přidat uzel transakce](./media/configure-transaction-nodes/add-node.png)
 
     | Nastavení | Popis |
     |---------|-------------|
-    | Název | Název uzlu transakce. Název slouží k vytvoření adresy DNS pro koncový bod uzlu transakce. například `newnode-myblockchainmember.blockchain.azure.com`. Název uzlu po jeho vytvoření nelze změnit. |
-    | Heslo | Nastavte silné heslo. Použijte heslo pro přístup ke koncovému bodu uzlu transakce pomocí základního ověřování.
+    | Name (Název) | Název uzlu transakce. Název se používá k vytvoření adresy DNS pro koncový bod uzlu transakce. Například, `newnode-myblockchainmember.blockchain.azure.com`. Název uzlu nelze změnit po jeho vytvoření. |
+    | Heslo | Nastavte silné heslo. Pomocí hesla pro přístup ke koncovému bodu uzlu transakce se základním ověřováním.
 
 1. Vyberte **Vytvořit**.
 
-    Zřizování nového uzlu transakce trvá přibližně 10 minut. K dalším uzlům transakce se účtují náklady. Další informace o cenách najdete v tématu [ceny Azure](https://aka.ms/ABSPricing).
+    Zřizování nového uzlu transakce trvá přibližně 10 minut. Dalším uzlem transakcí vznikají náklady. Další informace o nákladech najdete v tématu [Ceny Azure](https://aka.ms/ABSPricing).
 
 ## <a name="endpoints"></a>Koncové body
 
-Uzly transakce mají jedinečný název DNS a veřejné koncové body.
+Transakční uzly mají jedinečný název DNS a veřejné koncové body.
 
-Chcete-li zobrazit podrobnosti o koncovém bodu uzlu transakce:
+Zobrazení podrobností koncového bodu uzlu transakce:
 
-1. V Azure Portal přejděte na jeden z uzlů transakce člena služby Azure blockchain a vyberte **Přehled**.
+1. Na webu Azure Portal přejděte na jeden z uzlů transakcí členů služby Azure Blockchain service a vyberte **Přehled**.
 
     ![Koncové body](./media/configure-transaction-nodes/endpoints.png)
 
-Koncové body uzlu transakce jsou zabezpečené a vyžadují ověření. Můžete se připojit ke koncovému bodu transakce pomocí ověřování Azure AD, základního ověřování HTTPS a pomocí přístupového klíče přes HTTPS nebo WebSocket přes SSL.
+Koncové body uzlu transakce jsou zabezpečené a vyžadují ověření. Ke koncovému bodu transakce se můžete připojit pomocí ověřování Azure AD, základního ověřování HTTPS a použití přístupového klíče přes protokol HTTPS nebo websocket přes protokol SSL.
 
-### <a name="azure-active-directory-access-control"></a>Řízení přístupu Azure Active Directory
+### <a name="azure-active-directory-access-control"></a>Řízení přístupu služby Azure Active Directory
 
-Koncové body uzlu transakce služby Azure blockchain podporují ověřování Azure Active Directory (Azure AD). K vašemu koncovému bodu můžete udělit přístup uživatele, skupiny a instančního objektu služby Azure AD.
+Koncové body transakčních uzlů Služby Azure Blockchain podporují ověřování Azure Active Directory (Azure AD). Uživateli, skupině a instančnímu objektu Azure AD můžete udělit přístup k koncovému bodu.
 
-Udělení řízení přístupu Azure AD ke koncovému bodu:
+Udělení řízení přístupu azure ad do koncového bodu:
 
-1. V Azure Portal přejděte ke členu služby Azure blockchain a vyberte **uzly transakcí > řízení přístupu (IAM) > přidejte > přidání přiřazení role**.
-1. Vytvoří nové přiřazení role pro uživatele, skupinu nebo instanční objekt (aplikační role).
+1. Na webu Azure Portal přejděte na člena služby Azure Blockchain service a vyberte **uzly transakcí > řízení přístupu (IAM) > Přidat > přidat přiřazení role**.
+1. Vytvořte nové přiřazení role pro uživatele, skupinu nebo instanční objekt (role aplikace).
 
     ![Přidat roli IAM](./media/configure-transaction-nodes/add-role.png)
 
     | Nastavení | Akce |
     |---------|-------------|
-    | Role | Vyberte možnost **vlastník**, **Přispěvatel**nebo **Čtenář**.
-    | Přiřadit přístup k | Vyberte **uživatele, skupinu nebo instanční objekt služby Azure AD**.
-    | Vybrat | Vyhledejte uživatele, skupinu nebo instanční objekt, který chcete přidat.
+    | Role | Vyberte **vlastníka**, **přispěvatele**nebo **čtenáře**.
+    | Přiřadit přístup | Vyberte **uživatele, skupinu nebo instanční objekt Služby Azure AD**.
+    | Vyberte | Vyhledejte uživatele, skupinu nebo instanční objekt, který chcete přidat.
 
-1. Vyberte **Uložit** a přidejte přiřazení role.
+1. Chcete-li přidat přiřazení role, vyberte **Uložit.**
 
-Další informace o řízení přístupu Azure AD najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC a Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+Další informace o řízení přístupu k Azure AD najdete v [tématu Správa přístupu k prostředkům Azure pomocí RBAC a portálu Azure](../../role-based-access-control/role-assignments-portal.md)
 
-Podrobnosti o tom, jak se připojit pomocí ověřování Azure AD, najdete v tématu [připojení k uzlu pomocí ověřování AAD](configure-aad.md).
+Podrobnosti o tom, jak se připojit pomocí ověřování Azure AD, najdete [v tématu připojení k uzlu pomocí ověřování AAD](configure-aad.md).
 
 ### <a name="basic-authentication"></a>Základní ověřování
 
-Pro základní ověřování protokolem HTTPS se přihlašovací údaje uživatelského jména a hesla předávají v hlavičce HTTPS žádosti do koncového bodu.
+Pro základní ověřování HTTPS jsou pověření uživatelského jména a hesla předána v hlavičce HTTPS požadavku do koncového bodu.
 
-Podrobnosti koncového bodu základního ověřování uzlu transakce můžete zobrazit v Azure Portal. Přejděte na jeden z uzlů transakcí členů služby Azure blockchain a v nastavení vyberte **základní ověřování** .
+Můžete zobrazit podrobnosti o základním ověřovacím koncovém bodu uzlu transakce na webu Azure Portal. Přejděte na jeden z vašich uzlů transakcí člena služby Azure Blockchain Service a v nastavení vyberte **Základní ověřování.**
 
 ![Základní ověřování](./media/configure-transaction-nodes/basic.png)
 
-Uživatelské jméno je název vašeho uzlu a nelze ho změnit.
+Uživatelské jméno je název uzlu a nelze jej změnit.
 
-Chcete-li použít adresu URL, nahraďte \<heslem\> nastavením hesla, když byl uzel zřízen. Heslo můžete aktualizovat výběrem možnosti **resetovat heslo**.
+Chcete-li použít \<adresu\> URL, nahraďte heslo heslem nastaveným při zřízení uzlu. Heslo můžete aktualizovat výběrem možnosti **Obnovit heslo**.
 
 ### <a name="access-keys"></a>Přístupové klíče
 
-Pro ověřování přístupového klíče je přístupový klíč obsažený v adrese URL koncového bodu. Po zřízení uzlu transakce jsou vygenerovány dva přístupové klíče. Pro ověřování lze použít buď přístupový klíč. Dva klíče umožňují měnit a střídat klíče.
+Pro ověřování pomocí přístupového klíče je přístupový klíč součástí adresy URL koncového bodu. Při zřízení uzlu transakce jsou generovány dva přístupové klíče. Pro ověřování lze použít buď přístupový klíč. Dvě klávesy umožňují měnit a otáčet klávesy.
 
-Můžete zobrazit podrobnosti přístupového klíče uzlu transakce a kopírovat adresy koncových bodů, které obsahují přístupové klíče. Přejděte na jeden z uzlů transakcí členů služby Azure blockchain a vyberte **přístupové klíče** v nastavení.
+Můžete zobrazit podrobnosti o přístupovém klíči uzlu transakce a zkopírovat adresy koncových bodů, které obsahují přístupové klíče. Přejděte na jeden z vašich uzlů transakcí člena služby Azure Blockchain Service a v nastavení vyberte **Přístupové klíče.**
 
 ### <a name="firewall-rules"></a>Pravidla brány firewall
 
-Pravidla brány firewall umožňují omezit IP adresy, které se mohou pokusit ověřit na váš uzel transakce.  Pokud nejsou nakonfigurována žádná pravidla brány firewall pro váš uzel transakce, nemůže být k ní mít k dispozici žádná ze stran.  
+Pravidla brány firewall umožňují omezit adresy IP, které se mohou pokusit ověřit na uzlu transakce.  Pokud pro uzel transakce nejsou nakonfigurována žádná pravidla brány firewall, žádná strana k nim nemůže získat přístup.  
 
-Pokud chcete zobrazit pravidla brány firewall pro uzel transakce, přejděte na jeden z uzlů transakcí členů služby Azure blockchain a v části nastavení vyberte **pravidla brány firewall** .
+Chcete-li zobrazit pravidla brány firewall uzlu transakce, přejděte na jeden z uzlů transakcí člena služby Azure Blockchain Service a v nastavení vyberte **pravidla brány firewall.**
 
-Pravidla brány firewall můžete přidat zadáním názvu pravidla, počáteční IP adresy a koncové IP adresy v mřížce **pravidla brány firewall** .
+Pravidla brány firewall můžete přidat zadáním názvu pravidla, počáteční adresy IP a koncové adresy IP do mřížky **pravidel brány firewall.**
 
 ![Pravidla brány firewall](./media/configure-transaction-nodes/firewall-rules.png)
 
-Povolení:
+Chcete-li povolit:
 
-* **Jedna IP adresa:** Nakonfigurujte stejnou IP adresu pro počáteční a koncové IP adresy.
-* **Rozsah IP adres:** Nakonfigurujte počáteční a koncový rozsah IP adres. Například rozsah začínající na 10.221.34.0 a končící na 10.221.34.255 by povoloval celou 10.221.34.xxx podsíť.
-* **Povolení všech IP adres:** Nakonfigurujte počáteční IP adresu na 0.0.0.0 a koncovou IP adresu 255.255.255.255.
+* **Jedna IP adresa:** Nakonfigurujte stejnou adresu IP pro počáteční a koncovou adresu IP.
+* **Rozsah IP adres:** Nakonfigurujte počáteční a koncový rozsah adres IP. Například rozsah začínající na 10.221.34.0 a končící na 10.221.34.255 by umožnil celou podsíť 10.221.34.xxx.
+* **Povolit všechny adresy IP:** Nakonfigurujte počáteční adresu IP na 0.0.0.0 a koncovou adresu IP na 255.255.255.255.
 
 ## <a name="connection-strings"></a>Připojovací řetězce
 
-Syntaxe připojovacího řetězce pro váš uzel transakce je k dispozici pro základní ověřování nebo pro používání přístupových klíčů. K dispozici jsou připojovací řetězce, včetně přístupových klíčů přes HTTPS a WebSockets.
+Syntaxe připojovacího řetězce pro transakční uzel je k dispozici pro základní ověřování nebo použití přístupových klíčů. K dispozici jsou připojovací řetězce včetně přístupových klíčů přes protokol HTTPS a WebSockets.
 
-Můžete zobrazit připojovací řetězce uzlu transakce a kopírovat adresy koncových bodů. Přejděte na jeden z uzlů transakcí členů služby Azure blockchain a v nastavení vyberte **připojovací řetězce** .
+Můžete zobrazit připojovací řetězce transakčního uzlu a zkopírovat adresy koncového bodu. Přejděte na jeden z uzlů transakcí členů služby Azure Blockchain Service a v nastavení vyberte **připojovací řetězce.**
 
 ![Připojovací řetězce](./media/configure-transaction-nodes/connection-strings.png)
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Vzorový kód je k dispozici pro rychlé povolení připojení k vašemu transakčnímu uzlu prostřednictvím Web3, Nethereum, Web3js a Truffle.
+Ukázkový kód je k dispozici pro rychlé připojení k transakčnímu uzlu přes Web3, Nethereum, Web3js a Lanýž.
 
-Můžete zobrazit ukázkový kód připojení uzlu transakce a zkopírovat ho pro použití s oblíbenými vývojářskými nástroji. Přejít na jeden z uzlů transakcí členů služby Azure blockchain a v nastavení vyberte **vzorový kód** .
+Ukázkový kód připojení uzlu transakce můžete zobrazit a zkopírovat pro použití s oblíbenými vývojářskými nástroji. Přejděte na jeden z uzlů transakcí členů služby Azure Blockchain service a v nastavení vyberte **Ukázkový kód.**
 
-Vyberte kartu Web3, Nethereum, Truffle nebo Web3j a zobrazte ukázku kódu, který chcete použít.
+Zvolte kartu Web3, Nethereum, Lanýž nebo Web3j, abyste zobrazili ukázku kódu, kterou chcete použít.
 
 ![Ukázka kódu](./media/configure-transaction-nodes/sample-code.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Konfigurace uzlů transakcí pomocí Azure CLI](manage-cli.md)
+> [Konfigurace uzlů transakcí pomocí rozhraní příkazového příkazu Azure](manage-cli.md)

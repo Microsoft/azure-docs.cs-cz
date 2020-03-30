@@ -1,57 +1,57 @@
 ---
-title: Mapa aplikace v Azure Application Insights | Microsoft Docs
-description: Monitorování složitých topologií aplikace s mapou aplikace
+title: Mapa aplikací v přehledech aplikací Azure | Dokumenty společnosti Microsoft
+description: Sledování složitých topologií aplikací pomocí mapy aplikace
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.openlocfilehash: dce2fdbe7e0c390309be38d2ebab4c73dbb4ed2e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77666271"
 ---
-# <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: třídění distribuovaných aplikací
+# <a name="application-map-triage-distributed-applications"></a>Mapa aplikací: Třídění distribuovaných aplikací
 
-Mapa aplikace vám pomůže odhalit slabá místa výkonu nebo neúspěšné oblasti selhání napříč všemi komponentami distribuované aplikace. Každý uzel na mapě představuje komponentu aplikace nebo její závislosti; a má stav klíčových ukazatelů výkonu a výstrah. Můžete kliknout na libovolnou komponentu a podrobnou diagnostiku, například Application Insights události. Pokud vaše aplikace používá služby Azure, můžete také kliknout na Azure Diagnostics, jako je SQL Database Advisor doporučení.
+Mapa aplikací vám pomůže odhalit problémová místa výkonu nebo hotspoty selhání ve všech součástech distribuované aplikace. Každý uzel na mapě představuje součást aplikace nebo její závislosti; a má stav klíčového ukazatele výkonu a stavu výstrah. Můžete kliknout z libovolné součásti na podrobnější diagnostiku, jako jsou události Application Insights. Pokud vaše aplikace používá služby Azure, můžete taky kliknout na diagnostiku Azure, jako jsou doporučení SQL Database Advisor.
 
 ## <a name="what-is-a-component"></a>Co je komponenta?
 
-Komponenty jsou nezávisle nasaditelné části distribuované aplikace nebo mikroslužeb. Vývojáři a provozní týmy mají viditelnost na úrovni kódu nebo přístup k telemetrie generované těmito komponentami aplikací. 
+Součásti jsou nezávisle nasaditelné části aplikace distribuovaných nebo mikroslužeb. Vývojáři a provozní týmy mají viditelnost na úrovni kódu nebo přístup k telemetrii generované těmito součástmi aplikace. 
 
-* Komponenty se liší od "pozorovaných" vnějších závislostí, jako je například SQL, EventHub atd. který tým nebo organizace nemusí mít přístup k (kód nebo telemetrie).
-* Komponenty běží na jakémkoli počtu instancí serveru/role/kontejneru.
-* Komponenty mohou být odděleny Application Insights klíče instrumentace (i když se odběry liší) nebo různé role, které se hlásí do jediného klíče instrumentace Application Insights. Funkce mapa ve verzi Preview zobrazuje komponenty bez ohledu na to, jak se nastavují.
+* Součásti se liší od "pozorovaných" externích závislostí, jako je SQL, EventHub atd., ke kterým váš tým/organizace nemusí mít přístup (kód nebo telemetrie).
+* Součásti jsou spuštěny v libovolném počtu instancí serveru/role/kontejneru.
+* Součásti mohou být samostatné klíče instrumentace Application Insights (i když se předplatná liší) nebo různé role, které se hlásí do jednoho klíče instrumentace Application Insights. Náhled zobrazení mapy zobrazuje součásti bez ohledu na to, jak jsou nastaveny.
 
-## <a name="composite-application-map"></a>Mapa kompozitní aplikace
+## <a name="composite-application-map"></a>Složená mapa aplikace
 
-Celou topologii aplikace můžete zobrazit napříč několika úrovněmi souvisejících komponent aplikace. Komponenty mohou být různé Application Insights prostředky nebo různé role v jednom prostředku. Mapa aplikace vyhledá součásti pomocí volání závislosti protokolu HTTP provedených mezi servery s nainstalovanou sadou Application Insights SDK. 
+Můžete zobrazit plnou topologii aplikace na více úrovních souvisejících součástí aplikace. Součásti mohou být různé prostředky Application Insights nebo různé role v jednom prostředku. Mapa aplikace vyhledá součásti podle následujících volání závislostí HTTP mezi servery s nainstalovanou sadou Application Insights SDK. 
 
-Toto prostředí začíná progresivním zjišťováním komponent. Při prvním načtení mapy aplikace se aktivuje sada dotazů, aby bylo možné zjistit komponenty související s touto součástí. Tlačítko v levém horním rohu se aktualizuje o počet komponent ve vaší aplikaci, jak jsou zjištěny. 
+Tato zkušenost začíná postupné zjišťování součástí. Při prvním načtení mapy aplikace se aktivuje sada dotazů, které zjišťují součásti související s touto komponentou. Tlačítko v levém horním rohu se aktualizuje s počtem součástí v aplikaci, jak jsou zjištěny. 
 
-Po kliknutí na možnost aktualizovat součásti mapy se mapa aktualizuje o všechny součásti zjištěné do tohoto bodu. V závislosti na složitosti vaší aplikace může načtení trvat několik minut.
+Po kliknutí na tlačítko "Aktualizovat součásti mapy" je mapa aktualizována se všemi zjištěnými součástmi do tohoto okamžiku. V závislosti na složitosti aplikace to může trvat minutu načíst.
 
-Pokud jsou všechny součásti role v rámci jednoho Application Insights prostředku, tento krok zjišťování se nevyžaduje. Počáteční zatížení této aplikace bude mít všechny své součásti.
+Pokud jsou všechny součásti role v rámci jednoho prostředku Application Insights, pak tento krok zjišťování není vyžadován. Počáteční zatížení pro takovou aplikaci bude mít všechny jeho součásti.
 
 ![Snímek obrazovky s mapou aplikace](media/app-map/app-map-001.png)
 
-Jedním z klíčových cílů tohoto prostředí je, aby bylo možné vizualizovat komplexní topologie se stovkami komponent.
+Jedním z klíčových cílů této zkušenosti je být schopen vizualizovat komplexní topologie se stovkami komponent.
 
-Kliknutím na libovolnou komponentu zobrazíte související přehledy a přejdete na prostředí pro posouzení výkonu a selhání této součásti.
+Kliknutím na libovolnou komponentu zobrazíte související přehledy a přejdete na prostředí s tříděním výkonu a selhání pro tuto komponentu.
 
-![Ukotven](media/app-map/application-map-002.png)
+![Informační rámeček](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>Prověřit chyby
+### <a name="investigate-failures"></a>Prošetření selhání
 
-Vyberte možnost **prozkoumat selhání** a spusťte tak podokno selhání.
+Vyberte **prozkoumat selhání** spuštění podokna selhání.
 
-![Snímek obrazovky s tlačítkem prozkoumat selhání](media/app-map/investigate-failures.png)
+![Snímek obrazovky s tlačítkem prozkoumání selhání](media/app-map/investigate-failures.png)
 
-![Snímek obrazovky s problémy s chybami](media/app-map/failures.png)
+![Snímek obrazovky se selháním](media/app-map/failures.png)
 
-### <a name="investigate-performance"></a>Prověřit výkon
+### <a name="investigate-performance"></a>Prozkoumat výkon
 
-Pokud chcete řešit problémy s výkonem, vyberte **prozkoumat výkon**.
+Chcete-li odstranit problémy s výkonem, vyberte **možnost prozkoumat výkon**.
 
 ![Snímek obrazovky s tlačítkem prozkoumat výkon](media/app-map/investigate-performance.png)
 
@@ -59,35 +59,35 @@ Pokud chcete řešit problémy s výkonem, vyberte **prozkoumat výkon**.
 
 ### <a name="go-to-details"></a>Přejít na podrobnosti
 
-Vyberte **Přejít k podrobnostem** a prozkoumejte koncové prostředí transakce, které může nabídnout zobrazení do úrovně zásobníku volání.
+Vyberte **přejít na podrobnosti** a prozkoumejte prostředí transakcí od konce, které může nabízet zobrazení až na úroveň zásobníku volání.
 
-![Snímek obrazovky s tlačítkem přejít k podrobnostem](media/app-map/go-to-details.png)
+![Snímek obrazovky s tlačítkem Přejít na podrobnosti](media/app-map/go-to-details.png)
 
-![Snímek obrazovky s podrobnostmi o transakci od začátku do konce](media/app-map/end-to-end-transaction.png)
+![Snímek obrazovky s podrobnostmi o transakcích od konce](media/app-map/end-to-end-transaction.png)
 
 ### <a name="view-logs-analytics"></a>Zobrazit protokoly (Analytics)
 
-Pokud chcete svá data aplikací dotazovat a prozkoumat dál, klikněte na **Zobrazit v protokolech (Analytics)** .
+Chcete-li dále dotazovat a zkoumat data aplikací, klikněte na **zobrazení v protokolech (Analytics).**
 
-![Snímek obrazovky s tlačítkem zobrazit v analýze](media/app-map/view-logs.png)
+![Snímek obrazovky s tlačítkem Zobrazení v analytice](media/app-map/view-logs.png)
 
-![Snímek obrazovky s možností analýzy Spojnicový graf shrnující průměrnou dobu trvání žádosti za posledních 12 hodin.](media/app-map/log-analytics.png)
+![Snímek obrazovky s analytickým prostředím Spojinový graf shrnující průměrnou dobu trvání odpovědi požadavku za posledních 12 hodin.](media/app-map/log-analytics.png)
 
 ### <a name="alerts"></a>Výstrahy
 
-Chcete-li zobrazit aktivní výstrahy a podkladová pravidla, která způsobují aktivované výstrahy, vyberte možnost **výstrahy**.
+Chcete-li zobrazit aktivní výstrahy a základní pravidla, která způsobí aktivaci výstrah, vyberte **výstrahy**.
 
-![Snímek obrazovky s tlačítkem výstrahy](media/app-map/alerts.png)
+![Snímek obrazovky s tlačítkem upozornění](media/app-map/alerts.png)
 
-![Snímek obrazovky s možností analýzy](media/app-map/alerts-view.png)
+![Snímek obrazovky s analytickým prostředím](media/app-map/alerts-view.png)
 
-## <a name="set-cloud-role-name"></a>Nastavit název cloudové role
+## <a name="set-cloud-role-name"></a>Nastavení názvu role cloudu
 
-Mapa aplikace používá vlastnost **název cloudové role** k identifikaci komponent na mapě. Sada Application Insights SDK automaticky přidá vlastnost název cloudové role do telemetrie emitované součástmi. Sada SDK například přidá název webu nebo název role služby do vlastnosti název cloudové role. Existují však případy, kdy je vhodné přepsat výchozí hodnotu. Přepsání názvu cloudové role a změna toho, co se zobrazí na mapě aplikace:
+Mapa aplikací používá vlastnost **název role cloudu** k identifikaci součástí na mapě. Sada Application Insights SDK automaticky přidá vlastnost název role cloudu do telemetrie vyzařované součástmi. Sada SDK například přidá název webu nebo název role služby do vlastnosti názvu role cloudu. Existují však případy, kdy můžete chtít přepsat výchozí hodnotu. Chcete-li přepsat název role cloudu a změnit, co se zobrazí na mapě aplikace:
 
-### <a name="netnet-core"></a>.NET/.NET Core
+### <a name="netnet-core"></a>Jádro .NET/.NET
 
-**Pište vlastní TelemetryInitializer, jak je uvedeno níže.**
+**Napište vlastní TelemetryInitializer, jak je uvedeno níže.**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -110,9 +110,9 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**Aplikace ASP.NET: inicializátor zatížení pro aktivní TelemetryConfiguration**
+**ASP.NET aplikace: Načtení inicializátoru do aktivní telemetrické konfigurace**
 
-In ApplicationInsights.config :
+V applicationInsights.config :
 
 ```xml
     <ApplicationInsights>
@@ -124,7 +124,7 @@ In ApplicationInsights.config :
     </ApplicationInsights>
 ```
 
-Alternativním způsobem pro webové aplikace ASP.NET je vytvoření instance inicializátoru v kódu, například v Global.aspx.cs:
+Alternativní metodou pro ASP.NET webových aplikací je vytvoření instance inicializátoru v kódu, například v Global.aspx.cs:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -138,11 +138,11 @@ Alternativním způsobem pro webové aplikace ASP.NET je vytvoření instance in
 ```
 
 > [!NOTE]
-> Přidání inicializátoru pomocí `ApplicationInsights.config` nebo použití `TelemetryConfiguration.Active` není pro ASP.NET Core aplikace platné. 
+> Přidání inicializéru pomocí `ApplicationInsights.config` nebo použití `TelemetryConfiguration.Active` není platné pro ASP.NET základní aplikace. 
 
-**ASP.NET Core aplikace: inicializátor zátěže na TelemetryConfiguration**
+**ASP.NET základní aplikace: Načtení inicializátoru do telemetrieKonfigurace**
 
-U [ASP.NET Corech](asp-net-core.md#adding-telemetryinitializers) aplikací je přidání nového `TelemetryInitializer` provedeno přidáním do kontejneru vkládání závislostí, jak je znázorněno níže. To se provádí v `ConfigureServices` metoda vaší `Startup.cs` třídy.
+Pro [ASP.NET základní](asp-net-core.md#adding-telemetryinitializers) aplikace, `TelemetryInitializer` přidání nového se provádí přidáním do kontejneru vkládání závislostí, jak je znázorněno níže. To se `ConfigureServices` provádí metodou `Startup.cs` vaší třídy.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -162,7 +162,7 @@ appInsights.defaultClient.context.tags["ai.cloud.role"] = "your role name";
 appInsights.defaultClient.context.tags["ai.cloud.roleInstance"] = "your role instance";
 ```
 
-### <a name="alternate-method-for-nodejs"></a>Alternativní metoda pro Node. js
+### <a name="alternate-method-for-nodejs"></a>Alternativní metoda pro soubor Node.js
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -176,7 +176,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 
 ### <a name="java"></a>Java
 
-Počínaje Application Insights Java SDK 2.5.0 můžete zadat název cloudové role přidáním `<RoleName>` do souboru `ApplicationInsights.xml`, např.
+Počínaje aplikací Insights Java SDK 2.5.0, můžete zadat `<RoleName>` název `ApplicationInsights.xml` role cloudu přidáním do souboru, například.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -187,13 +187,13 @@ Počínaje Application Insights Java SDK 2.5.0 můžete zadat název cloudové r
 </ApplicationInsights>
 ```
 
-Pokud používáte jarní spouštění s Application Insightsm Starter Boot Starter, jediná požadovaná změna je nastavení vlastního názvu aplikace v souboru Application. Properties.
+Pokud používáte jarní spuštění se startérem Jarní spouštěcí vlastnosti Application Insights, jedinou požadovanou změnou je nastavení vlastního názvu aplikace v souboru application.properties.
 
 `spring.application.name=<name-of-app>`
 
-Jaře Boot Starter automaticky přiřadí název cloudové role k hodnotě, kterou zadáte do vlastnosti spring.application.name.
+Startér jarního spuštění automaticky přiřadí název role cloudu hodnotě, kterou zadáte pro vlastnost spring.application.name.
 
-### <a name="clientbrowser-side-javascript"></a>JavaScript na straně klienta nebo prohlížeče
+### <a name="clientbrowser-side-javascript"></a>JavaScript na straně klienta/prohlížeče
 
 ```javascript
 appInsights.queue.push(() => {
@@ -204,17 +204,17 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 ```
 
-### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Principy názvu cloudové role v rámci mapy aplikace
+### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Principy názvu role cloudu v kontextu mapy aplikací
 
-Vzhledem k tomu, jak si představit **název cloudové role**, může být užitečné si prohlédnout mapu aplikace, která má několik názvů cloudových rolí, které jsou k dispozici:
+Pokud jde o to, jak přemýšlet o **názvu role cloudu**, může být užitečné podívat se na mapu aplikací, která má více názvů rolí cloudu:
 
 ![Snímek obrazovky s mapou aplikace](media/app-map/cloud-rolename.png)
 
-V mapě aplikace nad každým názvem v zelených polích jsou hodnoty názvu cloudové role pro různé aspekty této konkrétní distribuované aplikace. Takže pro tuto aplikaci se tyto role skládají z: `Authentication`, `acmefrontend`, `Inventory Management`a `Payment Processing Worker Role`. 
+V mapě aplikace nad každý z názvů v zelených polích jsou hodnoty názvů rolí cloud pro různé aspekty této konkrétní distribuované aplikace. Takže pro tuto aplikaci `Authentication`jeho `acmefrontend` `Inventory Management`role `Payment Processing Worker Role`se skládají z: , , , a . 
 
-V případě této aplikace všechny názvy cloudových rolí také představují jiný jedinečný Application Insights prostředek s vlastními klíči instrumentace. Vzhledem k tomu, že vlastník této aplikace má přístup ke každému z těchto čtyř různorodých Application Insightsch prostředků, může mapa aplikace spojovat mapu základních vztahů.
+V případě této aplikace každý z těchto názvů rolí cloudu také představuje jiný jedinečný prostředek Application Insights s vlastními klíči instrumentace. Vzhledem k tomu, že vlastník této aplikace má přístup ke každému z těchto čtyř různorodých prostředků Application Insights, mapa aplikací je schopna sešít mapu základních vztahů.
 
-[Oficiální definice](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93):
+Pro [úřední definice](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93):
 
 ```
    [Description("Name of the role the application is a part of. Maps directly to the role name in azure.")]
@@ -226,52 +226,52 @@ V případě této aplikace všechny názvy cloudových rolí také představuj�
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-Případně **instance cloudové** role může být užitečná ve scénářích, kde **název cloudové role** oznamuje, že se jedná o problém umístěný na front-endu webu, ale může být spuštěný webový front-end na více serverech s vyrovnáváním zatížení, aby bylo možné přejít do vrstvy hlouběji prostřednictvím dotazů Kusto a s vědomím, jestli problém nemá vliv na všechny webové front-end servery/instance nebo jenom na jeden
+Případně **instance role cloudu** může být užitečná pro scénáře, kde **název role cloudu** říká, že problém je někde ve vašem webovém front-endu, ale můžete být spuštěn ý webový front-end na více serverech s vyrovnáváním zatížení, takže můžete přejít k podrobnostem ve vrstvě hlouběji prostřednictvím dotazů Kusto a vědět, zda problém ovlivňuje všechny webové front-endové servery / instance nebo jen jeden může být nesmírně důležitý.
 
-Situaci, kdy byste mohli chtít přepsat hodnotu pro instanci cloudové role, může být, pokud vaše aplikace běží v prostředí s kontejnerem, kde stačí jenom vědět, že jednotlivý server nemusí být k dispozici dostatek informací, aby mohl najít daný problém.
+Scénář, kde můžete chtít přepsat hodnotu pro instanci role cloudu může být, pokud vaše aplikace běží v kontejnerizovaném prostředí, kde jen znalost jednotlivých serverů nemusí být dostatek informací k vyhledání daného problému.
 
-Další informace o tom, jak přepsat vlastnost název cloudové role pomocí inicializátorů telemetrie, najdete v tématu věnovaném [Přidání vlastností: ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
+Další informace o tom, jak přepsat vlastnost názvu role cloudu pomocí inicializátorů telemetrie, naleznete [v tématu Add properties: ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud máte potíže s tím, jak mapa aplikace funguje podle očekávání, zkuste postupovat takto:
+Pokud máte potíže s tím, aby Mapa aplikací fungovala podle očekávání, vyzkoušejte tyto kroky:
 
 ### <a name="general"></a>Obecné
 
 1. Ujistěte se, že používáte oficiálně podporovanou sadu SDK. Nepodporované nebo komunitní sady SDK nemusí podporovat korelaci.
 
-    Seznam podporovaných sad SDK najdete v tomto [článku](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) .
+    Seznam podporovaných sad SDK naleznete v tomto [článku.](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)
 
 2. Upgradujte všechny součásti na nejnovější verzi sady SDK.
 
-3. Pokud používáte Azure Functions s C#, upgradujte na [Functions v2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
+3. Pokud používáte Funkce Azure s C#, upgradujte na [funkce V2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
 
-4. Ověřte, že je [název cloudové role](#set-cloud-role-name) správně nakonfigurovaný.
+4. Potvrďte, že [název role cloudu](#set-cloud-role-name) je správně nakonfigurován.
 
 5. Pokud vám chybí závislost, ujistěte se, že je v seznamu [automaticky shromažďovaných závislostí](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). Pokud ne, můžete ji stále najít ručně pomocí [volání TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 
 ### <a name="too-many-nodes-on-the-map"></a>Příliš mnoho uzlů na mapě
 
-Mapa aplikace vytvoří uzel aplikace pro každý jedinečný název cloudové role přítomný v telemetrie požadavků a uzel závislostí pro každou jedinečnou kombinaci typu, cíle a názvu cloudové role v telemetrii závislosti. Pokud je v telemetrii více než 10 000 uzlů, mapa aplikace nebude moci načíst všechny uzly a odkazy, takže vaše mapa nebude kompletní. Pokud k tomu dojde, zobrazí se při zobrazení mapy zpráva s upozorněním.
+Mapa aplikací vytvoří uzel aplikace pro každý jedinečný název cloudové role, který se vyskytuje v telemetrii požadavku, a uzel závislostí pro každou jedinečnou kombinaci typu, cíle a názvu role cloudu v telemetrii závislostí. Pokud je více než 10 000 uzlů ve vaší telemetrii, mapa aplikace nebude moct načíst všechny uzly a odkazy, takže vaše mapa bude neúplná. Pokud k tomu dojde, zobrazí se při zobrazení mapy varovná zpráva.
 
-Kromě toho mapa aplikace podporuje až 1000 samostatné neseskupené uzly vykreslené najednou. Mapa aplikace zjednodušuje vizuální složitost seskupením závislostí, které mají stejný typ a volající, ale pokud má vaše telemetrie příliš mnoho jedinečných názvů cloudových rolí nebo příliš mnoho typů závislostí, toto seskupení nebude dostatečné a mapa nebude moci činit.
+Kromě toho mapa aplikací podporuje pouze až 1000 samostatných neseskupených uzlů vykreslených najednou. Mapa aplikací snižuje vizuální složitost seskupením závislostí, které mají stejný typ a volající, ale pokud vaše telemetrie obsahuje příliš mnoho jedinečných názvů cloudových rolí nebo příliš mnoho typů závislostí, bude toto seskupení nedostatečné a mapa nebude moci Vykreslení.
 
-Pokud to chcete opravit, budete muset změnit instrumentaci a správně nastavit název cloudové role, typ závislosti a cílová pole závislosti.
+Chcete-li tento problém vyřešit, budete muset změnit instrumentaci správně nastavit název role cloudu, typ závislosti a cílové pole závislostí.
 
-* Cíl závislosti by měl představovat logický název závislosti. V mnoha případech se jedná o ekvivalent názvu serveru nebo prostředku závislosti. Například v případě závislostí HTTP je nastaveno na název hostitele. Neměl by obsahovat jedinečné identifikátory nebo parametry, které se mění z jedné žádosti na jinou.
+* Cíl závislostí by měl představovat logický název závislosti. V mnoha případech je ekvivalentní název serveru nebo prostředku závislosti. Například v případě závislostí HTTP je nastavena na název hostitele. Nemělby obsahovat jedinečné ID nebo parametry, které se mění z jednoho požadavku na jiný.
 
-* Typ závislosti by měl představovat logický typ závislosti. Například protokol HTTP, SQL nebo Azure Blob jsou typické typy závislostí. Neměl by obsahovat jedinečné identifikátory.
+* Typ závislosti by měl představovat logický typ závislosti. Například HTTP, SQL nebo Azure Blob jsou typické typy závislostí. Nemělby obsahovat jedinečná ID.
 
-* Název cloudové role je popsaný v [části výše](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name).
+* Účel názvu role cloudu je popsán ve [výše uvedené části](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name).
 
-## <a name="portal-feedback"></a>Váš názor na portál
+## <a name="portal-feedback"></a>Zpětná vazba portálu
 
-Pokud chcete poskytnout zpětnou vazbu, použijte možnost zpětné vazby.
+Chcete-li poskytnout zpětnou vazbu, použijte možnost zpětné vazby.
 
-![Obrázek MapLink-1](./media/app-map/14-updated.png)
+![MapLink-1 obrázek](./media/app-map/14-updated.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o tom, jak korelace funguje v Application Insights, najdete v [článku korelace telemetrie](correlation.md).
-* [Koncové prostředí pro diagnostiku transakcí](transaction-diagnostics.md) koreluje telemetrie na straně serveru ze všech vašich Application Insights monitorovaných komponent do jednoho zobrazení.
-* Pro pokročilé scénáře korelace v ASP.NET Core a ASP.NET si projděte článek [sledování vlastních operací](custom-operations-tracking.md) .
+* Další informace o tom, jak funguje korelace v Application Insights, naleznete v [článku korelace telemetrie](correlation.md).
+* [Komplexní prostředí diagnostiky transakcí](transaction-diagnostics.md) koreluje telemetrickou na straně serveru ze všech monitorovaných součástí application insights do jednoho zobrazení.
+* Pokročilé scénáře korelace v ASP.NET jádra a ASP.NET naleznete v článku [sledování vlastních operací.](custom-operations-tracking.md)

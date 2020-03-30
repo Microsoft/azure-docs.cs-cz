@@ -1,6 +1,6 @@
 ---
-title: Vytvoření izolované databáze
-description: Vytvořte Azure SQL Database izolovanou databázi pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure. Dotaz na databázi pomocí Editoru dotazů v Azure Portal.
+title: Vytvoření jedné databáze
+description: Vytvořte jednu databázi Azure SQL Database pomocí portálu Azure, PowerShellu nebo Azure CLI. Dotaz na databázi pomocí Editoru dotazů na webu Azure Portal.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,41 +12,41 @@ ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 03/10/2020
 ms.openlocfilehash: 638adaac699bb7aa2774f5cbd37dc8394a2baee3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240517"
 ---
-# <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rychlý Start: vytvoření samostatné databáze Azure SQL Database
+# <a name="quickstart-create-an-azure-sql-database-single-database"></a>Úvodní příručka: Vytvoření jediné databáze Azure SQL Database
 
-V tomto rychlém startu pomocí Azure Portal, skriptu PowerShellu nebo skriptu Azure CLI vytvoříte Azure SQL Database jednu databázi. Pak Dotazujte databázi pomocí **Editoru dotazů** v Azure Portal. 
+V tomto rychlém startu použijete portál Azure, skript PowerShellu nebo skript Azure CLI k vytvoření jediné databáze Azure SQL Database. Potom dotaz databáze pomocí **editoru dotazů** na webu Azure Portal. 
 
-[Jediná databáze](sql-database-single-database.md) je nejrychlejší a nejjednodušší možnost nasazení Azure SQL Database. V rámci [serveru SQL Database](sql-database-servers.md)můžete spravovat izolovanou databázi, která se nachází uvnitř [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) v zadané oblasti Azure. V tomto rychlém startu vytvoříte novou skupinu prostředků a SQL Server pro novou databázi.
+[Jedna databáze](sql-database-single-database.md) je nejrychlejší a nejjednodušší možnost nasazení pro Azure SQL Database. Spravujete jednu databázi v rámci [serveru SQL Database](sql-database-servers.md), který je uvnitř [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) v zadané oblasti Azure. V tomto rychlém startu vytvoříte novou skupinu prostředků a sql server pro novou databázi.
 
-Izolovanou databázi můžete vytvořit na výpočetní úrovni *zřízené* nebo *neserverového serveru* . Zřízená databáze je předem přidělena pevná množství výpočetních prostředků, včetně procesoru a paměti, a používá jeden ze dvou [nákupních modelů](sql-database-purchase-models.md). Tento rychlý Start vytvoří zřízenou databázi pomocí nákupního modelu [založeného na Vcore](sql-database-service-tiers-vcore.md) , ale můžete také zvolit model [založený na DTU](sql-database-service-tiers-DTU.md) . 
+Můžete vytvořit jednu databázi v *zřízené* nebo *bezserverové* výpočetní vrstvy. Zřízená databáze je předem přiděleno pevné množství výpočetních prostředků, včetně procesoru a paměti, a používá jeden ze dvou [nákupních modelů](sql-database-purchase-models.md). Tento rychlý start vytvoří zřízenou databázi pomocí nákupního modelu [založeného na virtuálních jádrech,](sql-database-service-tiers-vcore.md) ale můžete také zvolit model [založený na DTU.](sql-database-service-tiers-DTU.md) 
 
-Výpočetní vrstva bez serveru je dostupná jenom v nákupním modelu založeném na vCore a má automaticky škálované výpočetní prostředky, včetně procesoru a paměti. Pokud chcete vytvořit izolovanou databázi na výpočetní úrovni bez serveru, přečtěte si téma [Vytvoření databáze bez serveru](sql-database-serverless.md#create-new-database-in-serverless-compute-tier).
+Výpočetní vrstva bez serveru je k dispozici pouze v nákupním modelu založeném na virtuálních jádrech a má rozsah výpočetních prostředků s automatickým škálováním, včetně procesoru a paměti. Pokud chcete vytvořit jednu databázi v výpočetní vrstvě bez serveru, [přečtěte si](sql-database-serverless.md#create-new-database-in-serverless-compute-tier)část Vytvoření databáze bez serveru .
 
 ## <a name="prerequisite"></a>Požadavek
 
 - Aktivní předplatné Azure. Pokud žádné nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/). 
 
-## <a name="create-a-single-database"></a>Vytvoření izolované databáze
+## <a name="create-a-single-database"></a>Vytvoření jedné databáze
 
 [!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
-## <a name="query-the-database"></a>Dotazování databáze
+## <a name="query-the-database"></a>Dotaz na databázi
 
-Po vytvoření databáze můžete použít vestavěný **Editor dotazů** v Azure Portal pro připojení k databázi a dotazování na data.
+Po vytvoření databáze můžete pomocí integrovaného **editoru dotazů** na webu Azure Portal připojit k databázi a dotazovat se na data.
 
-1. Na portálu vyhledejte a vyberte **databáze SQL**a pak ze seznamu vyberte svou databázi.
-1. Na stránce **SQL Database** pro vaši databázi v nabídce vlevo vyberte **Editor dotazů (Preview)** .
+1. Na portálu vyhledejte a vyberte **databáze SQL**a vyberte databázi ze seznamu.
+1. Na stránce **Databáze SQL** pro databázi vyberte v levé nabídce **editor dotazů (preview).**
 1. Zadejte přihlašovací údaje správce serveru a vyberte **OK**.
    
-   ![Přihlášení k editoru dotazů](./media/sql-database-single-database-get-started/query-editor-login.png)
+   ![Přihlášení do editoru dotazů](./media/sql-database-single-database-get-started/query-editor-login.png)
 
-1. Do podokna **Editoru dotazů** zadejte následující dotaz.
+1. V podokně **Editor dotazů** zadejte následující dotaz.
 
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -55,29 +55,29 @@ Po vytvoření databáze můžete použít vestavěný **Editor dotazů** v Azur
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-1. Vyberte **Spustit**a potom zkontrolujte výsledky dotazu v podokně **výsledků** .
+1. Vyberte **Spustit**a potom zkontrolujte výsledky dotazu v podokně **Výsledky.**
 
    ![Výsledky editoru dotazů](./media/sql-database-single-database-get-started/query-editor-results.png)
 
-1. Zavřete stránku **Editor dotazů** a po zobrazení výzvy k zahození neuložených úprav vyberte **OK** .
+1. Zavřete stránku **editoru dotazů** a po zobrazení výzvy k zahození neuložených úprav vyberte **OK.**
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Ponechte skupinu prostředků, server a izolovanou databázi, abyste přešli na další kroky, a Naučte se, jak se připojit a dotazovat se na databázi pomocí různých metod.
+Udržujte skupinu prostředků, server a jednu databázi, abyste přešli k dalším krokům, a zjistěte, jak připojit databázi a dotazovat se ji různými metodami.
 
-Po dokončení používání těchto prostředků můžete odstranit vytvořenou skupinu prostředků, která také odstraní Server a samostatnou databázi.
+Po dokončení používání těchto prostředků můžete odstranit skupinu prostředků, kterou jste vytvořili, která také odstraní server a jednu databázi v něm.
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Chcete-li odstranit **myResourceGroup** a všechny jeho prostředky pomocí Azure Portal:
+Odstranění **myResourceGroup** a všech jejích prostředků pomocí portálu Azure:
 
-1. Na portálu vyhledejte a vyberte **skupiny prostředků**a v seznamu vyberte **myResourceGroup** .
-1. Na stránce skupina prostředků vyberte **Odstranit skupinu prostředků**.
-1. V části **Zadejte název skupiny prostředků**zadejte *myResourceGroup*a pak vyberte **Odstranit**.
+1. Na portálu vyhledejte a vyberte **skupiny prostředků**a ze seznamu vyberte **myResourceGroup.**
+1. Na stránce skupiny prostředků vyberte **Odstranit skupinu prostředků**.
+1. V části **Zadejte název skupiny prostředků**zadejte *myResourceGroup*a vyberte **Odstranit**.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz rozhraní příkazového řádku Azure a použijte název vaší skupiny prostředků:
+Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz y Azure CLI pomocí názvu vaší skupiny prostředků:
 
 ```azurecli-interactive
 az group delete --name <your resource group>
@@ -85,7 +85,7 @@ az group delete --name <your resource group>
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující rutinu PowerShellu s použitím názvu vaší skupiny prostředků:
+Chcete-li odstranit skupinu prostředků a všechny její prostředky, spusťte pomocí názvu skupiny prostředků následující rutinu prostředí PowerShell:
 
  ```azurepowershell-interactive
 Remove-AzResourceGroup -Name <your resource group>
@@ -94,7 +94,7 @@ Remove-AzResourceGroup -Name <your resource group>
 ---
 ## <a name="next-steps"></a>Další kroky
 
-[Připojení a dotazování](sql-database-connect-query.md) databáze pomocí různých nástrojů a jazyků:
+[Připojte databázi a zařazujte se tak](sql-database-connect-query.md) pomocí různých nástrojů a jazyků:
 > [!div class="nextstepaction"]
 > [Připojení a dotazování pomocí SQL Server Management Studia](sql-database-connect-query-ssms.md)
 > 

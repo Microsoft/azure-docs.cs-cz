@@ -1,35 +1,35 @@
 ---
-title: Integrace Azure Container Registry se službou Azure Kubernetes
-description: Naučte se integrovat službu Azure Kubernetes Service (AKS) s využitím Azure Container Registry (ACR).
+title: Integrace registru kontejnerů Azure se službou Azure Kubernetes
+description: Zjistěte, jak integrovat službu Azure Kubernetes Service (AKS) s Azure Container Registry (ACR)
 services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
 ms.openlocfilehash: f83faf05eb7099557d5b653e0b24591062c44d11
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79368447"
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověření pomocí Azure Container Registry služby Azure Kubernetes
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověření pomocí Azure Container Registry ze služby Azure Kubernetes Service
 
-Pokud používáte Azure Container Registry (ACR) se službou Azure Kubernetes Service (AKS), je nutné vytvořit ověřovací mechanismus. Tento článek popisuje příklady konfigurace ověřování mezi těmito dvěma službami Azure.
+Když používáte Azure Container Registry (ACR) se službou Azure Kubernetes Service (AKS), je třeba vytvořit mechanismus ověřování. Tento článek obsahuje příklady konfigurace ověřování mezi těmito dvěma službami Azure.
 
-AKS můžete nastavit na integraci ACR v několika jednoduchých příkazech pomocí Azure CLI.
+Integraci AKS do ACR můžete nastavit v několika jednoduchých příkazech pomocí azure CLI.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tyto příklady vyžadují:
 
 * Role **vlastníka** nebo **správce účtu Azure** v **předplatném Azure**
 * Azure CLI verze 2.0.73 nebo novější
 
-Abyste se vyhnuli nutnosti potřebovat roli **vlastníka** nebo **správce účtu Azure** , můžete instanční objekt nakonfigurovat ručně nebo použít existující INSTANČNÍ objekt k ověření ACR z AKS. Další informace najdete v tématech [ověřování ACR pomocí instančních objektů](../container-registry/container-registry-auth-service-principal.md) nebo [ověřování z Kubernetes s tajným klíčem pro vyžádání](../container-registry/container-registry-auth-kubernetes.md)obsahu.
+Chcete-li se vyhnout nutnosti role **vlastníka** nebo **správce účtu Azure,** můžete ručně nakonfigurovat instanční objekt nebo použít existující instanční objekt k ověření ACR z AKS. Další informace naleznete v [tématu Ověřování ACR s objekty zabezpečení služby](../container-registry/container-registry-auth-service-principal.md) nebo [Ověření z Kubernetes s tajným klíčem pro vyžádat](../container-registry/container-registry-auth-kubernetes.md).
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Vytvoření nového clusteru AKS s integrací ACR
 
-Během počátečního vytváření clusteru AKS můžete nastavit integraci AKS a ACR.  Pokud chcete, aby cluster AKS spolupracoval s ACR, použije se Azure Active Directory **instanční objekt** . Následující příkaz rozhraní příkazového řádku umožňuje autorizovat stávající ACR ve vašem předplatném a nakonfiguruje příslušnou roli **ACRPull** pro instanční objekt. Zadejte platné hodnoty pro následující parametry.
+Integrací AKS a ACR můžete nastavit při počátečním vytvoření clusteru AKS.  Chcete-li povolit clusteru AKS pro interakci s ACR, používá se **zaregistrovaný objekt služby** Azure Active Directory. Následující příkaz rozhraní příkazového příkazu umožňuje autorizovat existující ACR ve vašem předplatném a nakonfiguruje příslušnou roli **ACRPull** pro instanční objekt. Zadejte platné hodnoty pro vaše parametry níže.
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
@@ -42,7 +42,7 @@ az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr $MYACR
 ```
 
-Případně můžete zadat název ACR pomocí ID prostředku ACR, který má následující formát:
+Případně můžete zadat název ACR pomocí ID prostředku ACR, které má následující formát:
 
 `/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
 
@@ -50,29 +50,29 @@ Případně můžete zadat název ACR pomocí ID prostředku ACR, který má ná
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry
 ```
 
-Dokončení tohoto kroku může trvat několik minut.
+Tento krok může trvat několik minut.
 
 ## <a name="configure-acr-integration-for-existing-aks-clusters"></a>Konfigurace integrace ACR pro existující clustery AKS
 
-Integrujte stávající ACR s existujícími clustery AKS zadáním platných hodnot pro **ACR-Name** nebo **ACR-Resource-ID** , jak je uvedeno níže.
+Integrujte existující ACR s existujícími clustery AKS zadáním platných hodnot pro **název acr** nebo **acr-resource-id,** jak je uvedeno níže.
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
 ```
 
-nebo,
+Nebo
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
 
-Integraci mezi ACR a clusterem AKS taky můžete odebrat pomocí následujících kroků:
+Můžete také odebrat integraci mezi acr a clusterem AKS s následujícími
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
 ```
 
-or
+– nebo –
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
@@ -80,24 +80,24 @@ az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
 
 ## <a name="working-with-acr--aks"></a>Práce s ACR & AKS
 
-### <a name="import-an-image-into-your-acr"></a>Import obrázku do ACR
+### <a name="import-an-image-into-your-acr"></a>Import obrazu do acr
 
-Naimportujte image z Docker Hub do svého ACR spuštěním následujícího postupu:
+Importujte bitovou kopii z centra dockeru do acr spuštěním následujícího:
 
 
 ```azurecli
 az acr import  -n <myContainerRegistry> --source docker.io/library/nginx:latest --image nginx:v1
 ```
 
-### <a name="deploy-the-sample-image-from-acr-to-aks"></a>Nasazení ukázkové image z ACR do AKS
+### <a name="deploy-the-sample-image-from-acr-to-aks"></a>Nasazení ukázkové bitové kopie z ACR do AKS
 
-Ujistěte se, že máte správné přihlašovací údaje AKS.
+Ujistěte se, že máte správné přihlašovací údaje AKS
 
 ```azurecli
 az aks get-credentials -g myResourceGroup -n myAKSCluster
 ```
 
-Vytvořte soubor s názvem **ACR-Nginx. yaml** , který obsahuje následující:
+Vytvořte soubor s názvem **acr-nginx.yaml,** který obsahuje následující:
 
 ```yaml
 apiVersion: apps/v1
@@ -123,19 +123,19 @@ spec:
         - containerPort: 80
 ```
 
-V dalším kroku spusťte toto nasazení v clusteru AKS:
+Dále spusťte toto nasazení v clusteru AKS:
 
 ```console
 kubectl apply -f acr-nginx.yaml
 ```
 
-Nasazení můžete monitorovat spuštěním:
+Nasazení můžete sledovat spuštěním:
 
 ```console
 kubectl get pods
 ```
 
-Měli byste mít dvě běžící lusky.
+Měli byste mít dva běžící moduly.
 
 ```output
 NAME                                 READY   STATUS    RESTARTS   AGE

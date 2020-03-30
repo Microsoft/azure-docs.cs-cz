@@ -1,16 +1,16 @@
 ---
-title: 'Rychlý Start: váš první dotaz rozhraní příkazového řádku Azure'
-description: V tomto rychlém startu budete postupovat podle pokynů pro povolení rozšíření grafu prostředků pro Azure CLI a spuštění prvního dotazu.
+title: 'Úvodní příručka: První dotaz azure cli'
+description: V tomto rychlém startu postupujte podle pokynů k povolení rozšíření grafu prostředků pro Azure CLI a spusťte první dotaz.
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240664"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Azure CLI
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Úvodní příručka: Spuštění prvního dotazu na graf prostředků pomocí azure cli
 
 Prvním krokem k použití služby Azure Resource Graph je zkontrolovat, že je nainstalované rozšíření pro [ Azure CLI ](/cli/azure/). Tento rychlý start vás provede procesem přidání rozšíření k instalaci rozhraní příkazového řádku Azure CLI. Rozšíření můžete použít pomocí Azure CLI nainstalované místně nebo prostřednictvím [Azure Cloud Shell](https://shell.azure.com).
 
@@ -18,7 +18,7 @@ Na konci tohoto procesu budete mít za sebou přidání rozšíření k vybrané
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -26,7 +26,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 K povolení rozhraní příkazového řádku Azure CLI k dotazu Azure Resource Graph, je nutné přidat rozšíření. Toto rozšíření funguje bez ohledu na to rozhraní příkazového řádku Azure je možné, včetně [bash ve Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (samostatné a uvnitř portálu), [image Dockeru rozhraní příkazového řádku Azure](https://hub.docker.com/r/microsoft/azure-cli/), nebo lokálně nainstalované.
 
-1. Ověřte, že je nainstalované nejnovější rozhraní příkazového řádku Azure (aspoň **2.0.76**). Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+1. Zkontrolujte, zda je nainstalován nejnovější Azure CLI (alespoň **2.0.76**). Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
 
 1. V prostředí Azure CLI podle vašeho výběru ho importujete pomocí následujícího příkazu:
 
@@ -35,7 +35,7 @@ K povolení rozhraní příkazového řádku Azure CLI k dotazu Azure Resource G
    az extension add --name resource-graph
    ```
 
-1. Ověřte, že rozšíření je nainstalované a má očekávanou verzi (minimálně **1.0.0**):
+1. Ověřte, zda bylo rozšíření nainstalováno a zda se jedná o očekávanou verzi (alespoň **1.0.0**):
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -47,7 +47,7 @@ K povolení rozhraní příkazového řádku Azure CLI k dotazu Azure Resource G
 
 ## <a name="run-your-first-resource-graph-query"></a>Spusťte nejdříve dotaz na Resource Graph použitím Azure CLI
 
-Když se rozšíření Azure CLI přidal do vašeho vybraného prostředí, můžete vyzkoušet jednoduchý dotaz na službu Resource Graph. Dotaz vrátí prvních pět zdrojů Azure pomocí **Názvem** a **Typem zdroje** každého zdroje.
+Když se rozšíření Azure CLI přidal do vašeho vybraného prostředí, můžete vyzkoušet jednoduchý dotaz na službu Resource Graph. Dotaz vrátí prvních pět zdrojů Azure pomocí ** Názvem ** a ** Typem zdroje ** každého zdroje.
 
 1. Spusťte nejdřív první dotaz na Azure Resource Graph pomocí `graph` rozšíření a `query` příkazu:
 
@@ -91,7 +91,7 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste přidali rozšíření grafu prostředků do prostředí Azure CLI a spustíte svůj první dotaz. Chcete-li získat další informace o jazyku grafu prostředků, přejděte na stránku podrobností dotazovacího jazyka.
+V tomto rychlém startu jste přidali rozšíření Grafu prostředků do prostředí Azure CLI a spusťte první dotaz. Další informace o jazyce grafu prostředků najdete na stránce podrobností o dotazovacím jazyce.
 
 > [!div class="nextstepaction"]
-> [Získat další informace o dotazovacím jazyku](./concepts/query-language.md)
+> [Získání dalších informací o dotazovacím jazyce](./concepts/query-language.md)

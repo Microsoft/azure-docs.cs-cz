@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus sekvencování a časová razítka zpráv | Microsoft Docs
-description: Tento článek vysvětluje, jak zachovat sekvencování a řazení (s časovými razítky) Azure Service Busch zpráv.
+title: Pořadí zpráv azure service bus a časová razítka | Dokumenty společnosti Microsoft
+description: Tento článek vysvětluje, jak zachovat sekvenování a řazení (s časovými razítky) zpráv Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,41 +14,41 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 54d774c00fa650cb9608f46cc07b9d899709eaa5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261655"
 ---
 # <a name="message-sequencing-and-timestamps"></a>Určování pořadí zpráv a časová razítka
 
-Sekvence a časová razítka jsou dvě funkce, které jsou vždycky povolené u všech Service Bus entit a ploch prostřednictvím vlastností [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) a [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) přijatých nebo procházených zpráv.
+Sekvencování a časové razítko jsou dvě funkce, které jsou vždy povoleny na všech entitách service bus a povrchu prostřednictvím [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) a [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) vlastnosti přijatých nebo procházených zpráv.
 
-V případech, kdy je absolutní pořadí zpráv významné a/nebo kdy spotřebitel potřebuje důvěryhodný jedinečný identifikátor pro zprávy, zprostředkovatel označí zprávy s mezerou a zvyšuje pořadové číslo vzhledem k frontě nebo tématu. Pro dělené entity je číslo sekvence vystaveno relativně k oddílu.
+Pro ty případy, ve kterých absolutní pořadí zpráv je významné a/nebo ve kterých spotřebitel potřebuje důvěryhodný jedinečný identifikátor pro zprávy, zprostředkovatel razítka zprávy s mezery, rostoucí pořadové číslo vzhledem k fronty nebo tématu. Pro dělené entity pořadové číslo je vydáno vzhledem k oddílu.
 
-Hodnota **SequenceNumber** je jedinečné 64 celé číslo, které je přiřazeno ke zprávě, protože je přijata a ukládána zprostředkovatelem a funguje jako jeho vnitřní identifikátor. U dělených entit se v rámci 16 bitů odráží identifikátor oddílu. Pořadová čísla se převádějí na nulu při vyčerpání rozsahu 48/64.
+Hodnota **SequenceNumber** je jedinečné 64bitové celé číslo přiřazené ke zprávě, protože je přijímána a uložena zprostředkovatelem a funguje jako jeho vnitřní identifikátor. Pro rozdělené entity nejvyšší 16 bitů odráží identifikátor oddílu. Po vyčerpání rozsahu 48/64 bitů se pořadová čísla přetoču na nulu.
 
-Pořadové číslo může být důvěryhodné jako jedinečný identifikátor, protože je přiřazený centrální a neutrální autoritou a nikoli klienty. Představuje taky skutečný způsob doručení a je přesnější než časové razítko jako kritérium objednávky, protože časová razítka nemusí mít dostatečně vysokou přesnost na extrémních rychlostech zpráv a můžou se řídit (ale minimální) časovým posunem v situacích, kdy se zprostředkovatel vlastnictví přechodů mezi uzly.
+Pořadové číslo lze považovat za jedinečný identifikátor, protože je přiřazeno centrálním a neutrálním úřadem, nikoli klienty. To také představuje skutečné pořadí příjezdu, a je přesnější než časové razítko jako kritérium objednávky, protože časová razítka nemusí mít dostatečně vysoké rozlišení při extrémních rychlostech zpráv a může být předmětem (jakkoli minimální) hodiny zkosení v situacích, kdy makléř vlastnictví přechody mezi uzly.
 
-Absolutní pořadí doručení, například v obchodních scénářích, ve kterých se v případě, že je v rámci dodávky poskytováno omezené množství nabízených zboží, se zadává na základě prvního přidávaného a koncového nabídky. Příkladem je prodej lístku ve vzájemné shodě.
+Absolutní objednávka příjezdu je důležitá například v obchodních scénářích, kdy je omezený počet nabízených zboží dodáván podle pořadí přijíždějících hostů, dokud dodávky trvají; prodeje vstupenek na koncert jsou příkladem.
 
-Schopnost časová razítka funguje jako neutrální a důvěryhodná autorita, která přesně zachycuje dobu UTC doručení zprávy, která se odráží ve vlastnosti **EnqueuedTimeUtc** . Hodnota je užitečná v případě, že obchodní scénář závisí na konečných termínech, například zda byla pracovní položka odeslána v určitém datu před půlnocí, ale zpracování je daleko za nevyřízenými položkami fronty.
+Funkce časového razítka funguje jako neutrální a důvěryhodná autorita, která přesně zachycuje čas utc doručení zprávy, která se odráží ve **vlastnosti EnqueuedTimeUtc.** Hodnota je užitečná, pokud obchodní scénář závisí na termínech, například zda byla pracovní položka odeslána k určitému datu před půlnocí, ale zpracování je daleko za nevyřízenými položkami fronty.
 
 ## <a name="scheduled-messages"></a>Naplánované zprávy
 
-Pro zpožděné zpracování můžete odesílat zprávy do fronty nebo tématu. například k naplánování úlohy, která bude k dispozici pro zpracování systémem v určitou dobu. Tato schopnost má za sebou spolehlivý distribuovaný Plánovač založený na čase.
+Zprávy můžete odeslat do fronty nebo tématu pro zpožděné zpracování. Můžete třeba naplánovat úlohu, která bude systému pro zpracování dostupná v konkrétní čas. Tato funkce realizuje spolehlivé distribuované plánovače podle času.
 
-Naplánované zprávy se ve frontě nevyhodnotit, dokud není definovaná doba zařazení do fronty. Před uplynutím této doby lze naplánované zprávy zrušit. Zrušení odstraní zprávu.
+Naplánované zprávy se ve frontě nezhmotní, dokud nebude stanoven čas zařazení do fronty. Před tímto časem lze naplánované zprávy zrušit. Zrušení odstraní zprávu.
 
-Zprávy můžete naplánovat buď nastavením vlastnosti [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) při posílání zprávy prostřednictvím cesty pro normální odeslání, nebo explicitně pomocí rozhraní [ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) API. Druhá funkce okamžitě vrátí **SequenceNumber**naplánované zprávy, kterou můžete později použít k zrušení naplánované zprávy v případě potřeby. Naplánované zprávy a jejich pořadová čísla lze také zjistit pomocí [procházení zpráv](message-browsing.md).
+Zprávy můžete naplánovat nastavením [vlastnosti ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) při odesílání zprávy prostřednictvím cesty pravidelného odesílání nebo explicitně pomocí rozhraní [ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) API. Ten okamžitě vrátí naplánované zprávy **SequenceNumber**, které můžete později použít ke zrušení naplánované zprávy v případě potřeby. Naplánované zprávy a jejich pořadová čísla lze také zjistit pomocí [procházení zpráv](message-browsing.md).
 
-**SequenceNumber** pro naplánovanou zprávu je platná pouze v případě, že je zpráva v tomto stavu. Při přechodu na aktivní stav zprávy se zpráva připojí do fronty, jako kdyby byla zařazená do fronty v aktuálním okamžitém stavu, což zahrnuje přiřazení nové **SequenceNumber**.
+**SequenceNumber** pro naplánovanou zprávu je platný pouze v době, kdy je zpráva v tomto stavu. Jako zpráva přechází do aktivního stavu, zpráva je připojena do fronty, jako by byla zařazena do fronty v aktuálním okamžiku, který zahrnuje přiřazení nové **SequenceNumber**.
 
-Vzhledem k tomu, že je tato funkce ukotvena u jednotlivých zpráv a zprávy lze zařadit do fronty pouze jednou, Service Bus nepodporuje opakované plány pro zprávy.
+Vzhledem k tomu, že funkce je ukotvena na jednotlivé zprávy a zprávy lze zařadit do fronty pouze jednou, Service Bus nepodporuje opakované plány pro zprávy.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
+Další informace o zasílání zpráv služby Service Bus najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

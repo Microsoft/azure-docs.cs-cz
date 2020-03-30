@@ -1,6 +1,6 @@
 ---
-title: Připojení aplikace MSIX Virtual Desktop v systému Windows – Azure
-description: Jak nastavit připojení aplikace MSIX pro virtuální počítač s Windows
+title: Připojení aplikace MSIX pro virtuální plochu Windows – Azure
+description: Jak nastavit připojení aplikace MSIX pro virtuální plochu Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,10 +9,10 @@ ms.date: 12/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 20a82cbd7de4b5678648bac19ab9b59bf557b0ff
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128317"
 ---
 # <a name="set-up-msix-app-attach"></a>Nastavení připojení aplikace MSIX
@@ -21,40 +21,40 @@ ms.locfileid: "79128317"
 > Připojení aplikace MSIX je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-V tomto tématu se dozvíte, jak nastavit připojení aplikace MSIX v prostředí virtuálních počítačů s Windows.
+Toto téma vás provede nastavením připojení aplikace MSIX v prostředí Virtuální plochy Windows.
 
 ## <a name="requirements"></a>Požadavky
 
-Než začnete, je potřeba nakonfigurovat připojení aplikace MSIX:
+Než začnete, musíte nakonfigurovat připojení aplikace MSIX takto:
 
-- Přístup k portálu Windows Insider pro získání verze Windows 10 s podporou aplikace MSIX připojit rozhraní API.
-- Funkční nasazení virtuálních počítačů s Windows. Informace najdete v tématu [Vytvoření tenanta ve virtuálním počítači s Windows](tenant-setup-azure-active-directory.md).
-- Nástroj pro zabalení MSIX
-- Sdílená síťová složka v rámci nasazení virtuálního počítače s Windows, kde bude uložený balíček MSIX
+- Přístup k portálu Windows Insider získat verzi Windows 10 s podporou pro aplikaci MSIX připojit API.
+- Funkční nasazení virtuální plochy systému Windows. Další informace naleznete [v tématu Vytvoření klienta ve windows virtuální ploše](tenant-setup-azure-active-directory.md).
+- Balicí nástroj MSIX
+- Sdílená síť ová v nasazení virtuální plochy systému Windows, kde bude uložen balíček MSIX
 
-## <a name="get-the-os-image"></a>Získat bitovou kopii operačního systému
+## <a name="get-the-os-image"></a>Získání obrázku operačního systému
 
-Nejdřív musíte získat image operačního systému, kterou budete používat pro aplikaci MSIX. Získání bitové kopie operačního systému:
+Nejprve musíte získat obrázek operačního systému, který budete používat pro aplikaci MSIX. Chcete-li získat obrázek operačního systému:
 
 1. Otevřete [portál Windows Insider](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) a přihlaste se.
 
      >[!NOTE]
-     >Abyste mohli získat přístup k portálu Windows Insider, musíte být členem programu Windows Insider. Další informace o programu Windows Insider najdete v [dokumentaci k Windows Insider](/windows-insider/at-home/).
+     >Abyste měli přístup k portálu Windows Insider, musíte být členem programu Windows Insider. Další informace o programu Windows Insider najdete v [dokumentaci](/windows-insider/at-home/)k programu Windows Insider .
 
-2. Přejděte dolů k části **Vybrat edici** a vyberte **Windows 10 Insider Preview Enterprise (Fast) – Build 19035** nebo novější.
+2. Přejděte dolů do sekce **Vybrat edici** a vyberte **Windows 10 Insider Preview Enterprise (FAST) – Build 19035** nebo novější.
 
-3. Vyberte **Potvrdit**, pak vyberte jazyk, který chcete použít, a pak vyberte **Potvrdit** znovu.
+3. Vyberte **Potvrdit**, vyberte jazyk, který chcete použít, a pak znovu vyberte **Potvrdit.**
     
      >[!NOTE]
-     >V současné době je anglicky jediný jazyk, který byl testován pomocí funkce. Můžete vybrat jiné jazyky, ale nemusí se zobrazovat tak, jak mají.
+     >V současné době je angličtina jediným jazykem, který byl testován s funkcí. Můžete vybrat jiné jazyky, ale nemusí se zobrazit tak, jak mají.
     
-4. Po vygenerování odkazu ke stažení vyberte **64 stáhnout** a uložte ho na místní pevný disk.
+4. Po vygenerování odkazu ke stažení vyberte **64bitové stažení** a uložte jej na místní pevný disk.
 
-## <a name="prepare-the-vhd-image-for-azure"></a>Příprava image VHD pro Azure 
+## <a name="prepare-the-vhd-image-for-azure"></a>Příprava image Virtuálního pevného disku pro Azure 
 
-Než začnete, budete muset vytvořit hlavní bitovou kopii VHD. Pokud jste ještě nevytvořili image hlavního virtuálního pevného disku, přejděte na [Příprava a přizpůsobení hlavní bitové kopie VHD](set-up-customize-master-image.md) a postupujte podle pokynů. 
+Než začnete, budete muset vytvořit hlavní obraz virtuálního pevného disku. Pokud jste ještě nevytvořili svůj hlavní obrázek virtuálního pevného disku, přejděte na [připravit a přizpůsobit hlavní obrázek virtuálního pevného disku](set-up-customize-master-image.md) a postupujte podle pokynů. 
 
-Po vytvoření hlavní image VHD musíte zakázat automatické aktualizace pro aplikace MSIX připojit aplikace. Chcete-li zakázat automatické aktualizace, bude nutné spustit následující příkazy v příkazovém řádku se zvýšenými oprávněními:
+Po vytvoření hlavní hospo- obraz virtuálního pevného disku je nutné zakázat automatické aktualizace aplikací msix připojit aplikace. Chcete-li zakázat automatické aktualizace, budete muset v příkazovém řádku se zvýšenými oprávněními spustit následující příkazy:
 
 ```cmd
 rem Disable Store auto update:
@@ -74,34 +74,34 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-Dále Připravte virtuální pevný disk virtuálního počítače pro Azure a nahrajte výsledný disk VHD do Azure. Další informace najdete v tématu [Příprava a přizpůsobení hlavního image VHD](set-up-customize-master-image.md).
+Dále připravte virtuální pevné disky v hd pro Azure a nahrajte výsledný disk Virtuálního pevného disku do Azure. Další informace najdete v [tématu Příprava a přizpůsobení hlavního obrazu virtuálního pevného disku](set-up-customize-master-image.md).
 
-Po nahrání virtuálního pevného disku do Azure vytvořte fond hostitelů založený na této nové imagi podle pokynů uvedených v tématu [Vytvoření fondu hostitelů pomocí Azure Marketplaceho](create-host-pools-azure-marketplace.md) kurzu.
+Po nahrání virtuálního pevného disku do Azure vytvořte fond hostitelů, který je založený na této nové image podle pokynů v [centru vytváření hostitelů pomocí výukového](create-host-pools-azure-marketplace.md) programu Azure Marketplace.
 
 ## <a name="prepare-the-application-for-msix-app-attach"></a>Příprava aplikace pro připojení aplikace MSIX 
 
-Pokud už máte balíček MSIX, přeskočte k [konfiguraci infrastruktury virtuálních počítačů s Windows](#configure-windows-virtual-desktop-infrastructure). Pokud chcete testovat starší verze aplikací, postupujte podle pokynů v tématu [Vytvoření balíčku MSIX z desktopového instalačního programu na virtuálním](/windows/msix/packaging-tool/create-app-package-msi-vm/) počítači, aby se starší verze aplikace převedla na balíček MSIX.
+Pokud již balíček MSIX máte, přeskočte na [konfiguraci infrastruktury virtuálních desktopů systému Windows](#configure-windows-virtual-desktop-infrastructure). Pokud chcete otestovat starší aplikace, postupujte podle pokynů v [příkazech Vytvořit balíček MSIX z instalačního programu plochy na virtuálním počítači](/windows/msix/packaging-tool/create-app-package-msi-vm/) převést starší aplikace na balíček MSIX.
 
-## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>Generování balíčku VHD nebo VHDX pro MSIX
+## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>Generovat balíček VHD nebo VHDX pro MSIX
 
-Balíčky jsou ve formátu VHD nebo VHDX k optimalizaci výkonu. MSIX vyžaduje správné fungování balíčků VHD nebo VHDX.
+Balíčky jsou ve formátu VHD nebo VHDX pro optimalizaci výkonu. MSIX vyžaduje, aby balíčky VHD nebo VHDX fungovaly správně.
 
-Vytvoření balíčku VHD nebo VHDX pro MSIX:
+Generování balíčku VHD nebo VHDX pro MSIX:
 
-1. [Stáhněte si nástroj msixmgr](https://aka.ms/msixmgr) a uložte složku. zip do složky v rámci virtuálního počítače hostitele relace.
+1. [Stáhněte si nástroj msixmgr](https://aka.ms/msixmgr) a uložte složku ZIP do složky v rámci virtuálního virtuálního soudu hostitele relace.
 
-2. Rozbalte složku msixmgr Tool. zip.
+2. Rozbalte složku nástroje msixmgr .zip.
 
-3. Zdrojový balíček MSIX umístěte do stejné složky, ve které jste odhlásili nástroj msixmgr.
+3. Vložte zdrojový balíček MSIX do stejné složky, kde jste rozbalili nástroj msixmgr.
 
-4. Spuštěním následující rutiny v PowerShellu vytvořte virtuální pevný disk:
+4. Spusťte následující rutinu v prostředí PowerShell a vytvořte virtuální pevný disk:
 
     ```powershell
     New-VHD -SizeBytes <size>MB -Path c:\temp\<name>.vhd -Dynamic -Confirm:$false
     ```
 
     >[!NOTE]
-    >Ujistěte se, že velikost virtuálního pevného disku je dostatečně velká, aby bylo možné rozšířit MSIX. *
+    >Ujistěte se, že velikost virtuálního pevného disku je dostatečně velká pro uložení rozšířeného msix.*
 
 5. Spusťte následující rutinu pro připojení nově vytvořeného virtuálního pevného disku:
 
@@ -109,109 +109,109 @@ Vytvoření balíčku VHD nebo VHDX pro MSIX:
     $vhdObject = Mount-VHD c:\temp\<name>.vhd -Passthru
     ```
 
-6. Spusťte tuto rutinu pro inicializaci VHD:
+6. Spuštěním této rutiny inicializujte virtuální pevný disk:
 
     ```powershell
     $disk = Initialize-Disk -Passthru -Number $vhdObject.Number
     ```
 
-7. Spuštěním této rutiny vytvoříte nový oddíl:
+7. Spusťte tuto rutinu a vytvořte nový oddíl:
 
     ```powershell
     $partition = New-Partition -AssignDriveLetter -UseMaximumSize -DiskNumber $disk.Number
     ```
 
-8. Ke zformátování oddílu spusťte tuto rutinu:
+8. Spusťte tuto rutinu pro formátování oddílu:
 
     ```powershell
     Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
     ```
 
-9. Vytvořte nadřazenou složku na připojeném virtuálním pevném disku. Tento krok je povinný, protože připojení aplikace MSIX vyžaduje nadřazenou složku. Nadřazenou složku si můžete pojmenovat, ať už chcete.
+9. Vytvořte nadřazenou složku na připojeném virtuálním pevném disku. Tento krok je povinný, protože připojení aplikace MSIX vyžaduje nadřazenou složku. Nadřazenou složku můžete pojmenovat, jak chcete.
 
 ### <a name="expand-msix"></a>Rozbalit MSIX
 
-Potom budete muset "rozbalit" MSIX Image tím, že ji rozbalíte. Rozbalení image MSIX:
+Poté budete muset obraz MSIX "rozbalit" rozbalením. Rozbalení obrázku MSIX:
 
-1. Otevřete příkazový řádek jako správce a přejděte do složky, do které jste stáhli a rozmsixmgrte nástroj.
+1. Otevřete příkazový řádek jako správce a přejděte do složky, do které jste stáhli a rozbalili nástroj msixmgr.
 
-2. Spuštěním následující rutiny rozbalte MSIX do virtuálního pevného disku, který jste vytvořili a připojili v předchozí části.
+2. Spusťte následující rutinu a rozbalte MSIX do virtuálního pevného disku, který jste vytvořili a namontovali v předchozí části.
 
     ```powershell
     msixmgr.exe -Unpack -packagePath <package>.msix -destination "f:\<name of folder you created earlier>" -applyacls
     ```
 
-    Po dokončení dekomprimace by se měla zobrazit následující zpráva:
+    Po rozbalení by se měla zobrazit následující zpráva:
 
     `Successfully unpacked and applied ACLs for package: <package name>.msix`
 
     >[!NOTE]
-    > Pokud používáte balíčky z Microsoft Store pro firmy (nebo školství) v rámci vaší sítě nebo na zařízeních, která nejsou připojená k Internetu, budete muset získat licence k balíčku z úložiště a nainstalovat je, aby se aplikace úspěšně spustila. Viz [použití balíčků offline](#use-packages-offline).
+    > Pokud používáte balíčky z Obchodu Microsoft Store pro firmy (nebo školství) v rámci vaší sítě nebo na zařízeních, která nejsou připojená k internetu, budete muset získat licence balíčků ze storu a nainstalovat je, aby se aplikace úspěšně spouštěla. Viz [Použití balíčků offline](#use-packages-offline).
 
-3. Přejděte na připojený virtuální pevný disk a otevřete složku aplikace a ověřte, jestli je přítomen obsah balíčku.
+3. Přejděte na připojený virtuální pevný disk a otevřete složku aplikace a potvrďte, že je k dispozici obsah balíčku.
 
-4. Odpojte virtuální pevný disk.
+4. Odpojte virtuální pevný disk(VHD).
 
-## <a name="configure-windows-virtual-desktop-infrastructure"></a>Konfigurace infrastruktury virtuálních počítačů s Windows
+## <a name="configure-windows-virtual-desktop-infrastructure"></a>Konfigurace infrastruktury virtuálních desktopů windows
 
-Podle návrhu se dá sdílet jeden MSIX rozbalený balíček (VHD, který jste vytvořili v předchozí části) mezi virtuálními počítači hostitele s více relacemi, protože virtuální pevné disky jsou připojené v režimu jen pro čtení.
+Podle návrhu jeden msix rozbalený balíček (VHD jste vytvořili v předchozí části) lze sdílet mezi více virtuálních počítačích hostitele relace jako Virtuální pevné disky jsou připojeny v režimu jen pro čtení.
 
-Než začnete, ujistěte se, že vaše sdílená síťová složka splňuje tyto požadavky:
+Než začnete, ujistěte se, že sdílená síťsplňuje tyto požadavky:
 
-- Sdílená složka je kompatibilní s protokolem SMB.
-- Virtuální počítače, které jsou součástí fondu hostitelů relací, mají ke sdílené složce oprávnění NTFS.
+- Sdílená složky jsou kompatibilní s s rozhraním SMB.
+- Virtuální společnosti, které jsou součástí fondu hostitelů relací, mají oprávnění ntfs ke sdílené položce.
 
-### <a name="set-up-an-msix-app-attach-share"></a>Nastavení aplikace MSIX připojit ke sdílené složce 
+### <a name="set-up-an-msix-app-attach-share"></a>Nastavení sdílené složky připojení aplikace MSIX 
 
-V prostředí virtuálních počítačů s Windows vytvořte sdílenou síťovou složku a přesuňte balíček.
+V prostředí Virtuální plochy systému Windows vytvořte sdílenou síťovou složku a přesuňte balíček tam.
 
 >[!NOTE]
-> Osvědčeným postupem při vytváření sdílených síťových složek MSIX je nastavení sdílené síťové složky s oprávněními NTFS jen pro čtení.
+> Osvědčeným postupem pro vytváření sdílených síťových složek MSIX je nastavení sdílené síťové složky s oprávněními ntfs jen pro čtení.
 
 ## <a name="install-certificates"></a>Instalace certifikátů
 
-Pokud vaše aplikace používá certifikát, který není veřejný nebo podepsaný svým držitelem, tady je postup, jak ho nainstalovat:
+Pokud vaše aplikace používá certifikát, který není veřejně důvěryhodný nebo byl podepsaný svým držitelem, nainstalujte ho takto:
 
-1. Klikněte pravým tlačítkem na balíček a vyberte **vlastnosti**.
-2. V zobrazeném okně vyberte kartu **digitální podpisy** . V seznamu na kartě by měla být pouze jedna položka, jak je znázorněno na následujícím obrázku. Vyberte tuto položku, chcete-li položku zvýraznit, a pak vyberte **Podrobnosti**.
-3. Po zobrazení okna podrobnosti digitálního podpisu vyberte kartu **Obecné** a pak vyberte **instalovat certifikát**.
-4. Jakmile se instalační program otevře, vyberte **místní počítač** jako umístění úložiště a pak vyberte **Další**.
-5. Pokud se instalační program zeptá, jestli chcete aplikaci umožnit, aby na svém zařízení provedla změny, vyberte **Ano**.
-6. Vyberte možnost **umístit všechny certifikáty do následujícího úložiště**a pak vyberte **Procházet**.
-7. Když se zobrazí okno vybrat úložiště certifikátů, vyberte **Důvěryhodné osoby**a pak vyberte **OK**.
+1. Klepněte pravým tlačítkem myši na balíček a vyberte **příkaz Vlastnosti**.
+2. V okně, které se zobrazí, vyberte kartu **Digitální podpisy.** V seznamu na kartě by měla být pouze jedna položka, jak je znázorněno na následujícím obrázku. Vyberte tuto položku, chcete-li položku zvýraznit, a pak vyberte **Podrobnosti**.
+3. Po zobrazení okna podrobností digitálního podpisu vyberte kartu **Obecné** a pak vyberte **Instalovat certifikát**.
+4. Po otevření instalačního programu vyberte jako umístění úložiště **místní počítač** a pak vyberte **Další**.
+5. Pokud se vás instalační program zeptá, jestli chcete aplikaci povolit změny v zařízení, vyberte **Ano**.
+6. Vyberte **Umístit všechny certifikáty do následujícího obchodu**a pak vyberte **Procházet**.
+7. Po zobrazíní okno úložiště vybraných certifikátů vyberte **položku Důvěryhodné osoby**a pak vyberte **ok**.
 8. Vyberte **Finish** (Dokončit).
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Příprava skriptů PowerShellu pro připojení aplikace MSIX
 
-Připojení aplikace MSIX má čtyři samostatné fáze, které je potřeba provést v uvedeném pořadí:
+Připojení aplikace MSIX má čtyři odlišné fáze, které je třeba provést v následujícím pořadí:
 
 1. Krok
-2. Registrace
-3. Zrušení registrace
-4. Depříprava
+2. Zaregistrovat
+3. Zrušit registraci
+4. Destage
 
 Každá fáze vytvoří skript prostředí PowerShell. Ukázkové skripty pro každou fázi jsou k dispozici [zde](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach).
 
-### <a name="stage-the-powershell-script"></a>Příprava skriptu PowerShellu
+### <a name="stage-the-powershell-script"></a>Vymezení skriptu PowerShellu
 
-Než začnete aktualizovat skripty PowerShellu, ujistěte se, že máte identifikátor GUID svazku na virtuálním pevném disku. Získání identifikátoru GUID svazku:
+Před aktualizací skriptů prostředí PowerShell zkontrolujte, zda máte identifikátor GUID svazku ve virtuálním pevném disku. Chcete-li získat identifikátor GUID hlasitosti:
 
-1.  Otevřete sdílenou síťovou složku, kde se nachází virtuální pevný disk ve virtuálním počítači, na kterém spouštíte skript.
+1.  Otevřete sdílenou síťovou složku, kde se virtuální pevný disk nachází uvnitř virtuálního virtuálního zařízení, kde spustíte skript.
 
-2.  Klikněte pravým tlačítkem na virtuální pevný disk a vyberte **připojit**. Tím se virtuální pevný disk připojí k písmenu jednotky.
+2.  Klepněte pravým tlačítkem myši na virtuální pevný disk a vyberte **možnost Připojit**. Tím se virtuální pevný disk připojí k písmenu jednotky.
 
-3.  Po připojení virtuálního pevného disku se otevře okno **Průzkumník souborů** . Zachytit nadřazenou složku a aktualizovat **$parentFolder** proměnnou
+3.  Po připojení virtuálního pevného disku se otevře okno **Průzkumník souborů.** Zachycení nadřazené složky a aktualizace proměnné **$parentFolder**
 
     >[!NOTE]
-    >Pokud se nezobrazuje nadřazená složka, znamená to, že se MSIX nerozšířila správně. Zopakuje předchozí oddíl a pak to zkuste znovu.
+    >Pokud nevidíte nadřazenou složku, znamená to, že MSIX nebyl správně rozbalen. Zopakujte předchozí část a akci opakujte.
 
-4.  Otevřete nadřazenou složku. Pokud je správně rozbalený, zobrazí se složka se stejným názvem jako balíček. Aktualizujte **$PackageName** proměnnou tak, aby odpovídala názvu této složky.
+4.  Otevřete nadřazenou složku. Pokud je správně rozbaleno, zobrazí se složka se stejným názvem jako balíček. Aktualizujte **proměnnou $packageName** tak, aby odpovídala názvu této složky.
 
-    například `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
+    Například, `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
-5.  Otevřete příkazový řádek a zadejte příkaz **mountvol**. Tento příkaz zobrazí seznam svazků a jejich identifikátorů GUID. Zkopírujte identifikátor GUID svazku, ve kterém písmeno jednotky odpovídá jednotce, ke které jste připojili VHD v kroku 2.
+5.  Otevřete příkazový řádek a zadejte **mountvol**. Tento příkaz zobrazí seznam svazků a jejich identifikátorů GUID. Zkopírujte identifikátor GUID svazku, na kterém písmeno jednotky odpovídá jednotce, na kterou jste namontovali virtuální pevný disk, v kroku 2.
 
-    Například v tomto příkladu výstupu pro příkaz mountvol, pokud jste připojili virtuální pevný disk k jednotce C, budete chtít zkopírovat hodnotu vyšší `C:\`:
+    Například v tomto příkladu výstup pro příkaz mountvol, pokud jste připojeni v hd na `C:\`disk C, budete chtít zkopírovat výše uvedenou hodnotu :
 
     ```cmd
     Possible values for VolumeName along with current mount points are:
@@ -228,9 +228,9 @@ Než začnete aktualizovat skripty PowerShellu, ujistěte se, že máte identifi
     ```
 
 
-6.  Aktualizujte **$volumeGuid** PROMĚNNOU s identifikátorem GUID svazku, který jste právě zkopírovali.
+6.  Aktualizujte **proměnnou $volumeGuid** pomocí identifikátoru GUID svazku, který jste právě zkopírovali.
 
-7. Otevřete příkazový řádek prostředí PowerShell pro správu a aktualizujte následující skript prostředí PowerShell s proměnnými, které se vztahují na vaše prostředí.
+7. Otevřete výzvu prostředí PowerShell pro správce a aktualizujte následující skript Prostředí PowerShell s proměnnými, které se vztahují na vaše prostředí.
 
     ```powershell
     #MSIX app attach staging sample
@@ -321,9 +321,9 @@ Než začnete aktualizovat skripty PowerShellu, ujistěte se, že máte identifi
     #endregion
     ```
 
-### <a name="register-powershell-script"></a>Registrovat PowerShellový skript
+### <a name="register-powershell-script"></a>Registrace skriptu Prostředí PowerShell
 
-Pokud chcete spustit registrační skript, spusťte následující rutiny PowerShellu se zástupnými hodnotami nahrazené hodnotami, které se vztahují na vaše prostředí.
+Chcete-li spustit skript registru, spusťte následující rutiny prostředí PowerShell se zástupnými hodnotami nahrazenými hodnotami, které platí pro vaše prostředí.
 
 ```powershell
 #MSIX app attach registration sample
@@ -343,9 +343,9 @@ Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 #endregion
 ```
 
-### <a name="deregister-powershell-script"></a>Zrušit registraci skriptu PowerShellu
+### <a name="deregister-powershell-script"></a>Zrušení registrace skriptu prostředí PowerShell
 
-Pro tento skript nahraďte zástupný symbol pro **$PackageName** názvem testovaného balíčku.
+Pro tento skript nahraďte zástupný symbol pro **$packageName** názvem balíčku, který testujete.
 
 ```powershell
 #MSIX app attach deregistration sample
@@ -363,9 +363,9 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 #endregion
 ```
 
-### <a name="destage-powershell-script"></a>Depříprava skriptu PowerShellu
+### <a name="destage-powershell-script"></a>Destage PowerShell skript
 
-Pro tento skript nahraďte zástupný symbol pro **$PackageName** názvem testovaného balíčku.
+Pro tento skript nahraďte zástupný symbol pro **$packageName** názvem balíčku, který testujete.
 
 ```powershell
 #MSIX app attach de staging sample
@@ -389,30 +389,30 @@ rmdir $packageName -Force -Verbose
 #endregion
 ```
 
-## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Nastavení skriptů simulace pro připojení agenta aplikace MSIX
+## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Nastavení simulačních skriptů pro agenta připojení aplikace MSIX
 
-Po vytvoření skriptů je uživatelé můžou ručně spustit nebo je nastavit tak, aby se spouštěly automaticky jako spouštěcí, přihlašovací, odhlašovací a ukončovací skripty. Další informace o těchto typech skriptů najdete [v tématu Použití spouštěcích, ukončovacích, přihlašovacích a odhlašovacích skriptů v Zásady skupiny](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/).
+Po vytvoření skriptů je uživatelé mohou ručně spustit nebo je nastavit tak, aby se spouštěly automaticky jako skripty pro spuštění, přihlášení, odhlášení a vypnutí. Další informace o těchto typech skriptů naleznete [v tématu Použití skriptů pro spuštění, vypnutí, přihlášení a odhlášení v zásadách skupiny](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/).
 
-Každý z těchto automatických skriptů spouští jednu fázi připojovat skripty aplikace:
+Každý z těchto automatických skriptů spustí jednu fázi aplikace připojit skripty:
 
-- Spouštěcí skript spustí skript fáze.
-- Přihlašovací skript spustí registrační skript.
-- Skript pro odhlášení spustí skript pro zrušení registrace.
-- Skript pro vypnutí spustí skript pro depřípravu.
+- Spouštěcí skript spustí stage skript.
+- Přihlašovací skript spustí skript registru.
+- Odhlašovací skript spustí skript zrušení registrace.
+- Skript vypnutí spustí skript destage.
 
-## <a name="use-packages-offline"></a>Používat balíčky offline
+## <a name="use-packages-offline"></a>Použití balíčků offline
 
-Pokud používáte balíčky z [Microsoft Store pro firmy](https://businessstore.microsoft.com/) nebo [Microsoft Store pro vzdělávání](https://educationstore.microsoft.com/) ve vaší síti nebo na zařízeních, která nejsou připojená k Internetu, musíte získat licence k balíčku z Microsoft Store a nainstalovat je do vašeho zařízení, aby bylo možné aplikaci úspěšně spustit. Pokud je zařízení online a může se připojit k Microsoft Store pro firmy, musí se požadované licence stáhnout automaticky, ale pokud jste offline, budete muset licence nastavit ručně. 
+Pokud používáte balíčky z [Microsoft Storu pro firmy](https://businessstore.microsoft.com/) nebo z Microsoft [Storu pro vzdělávání](https://educationstore.microsoft.com/) v síti nebo na zařízeních, která nejsou připojená k internetu, musíte získat licence na balíčky z Microsoft Storu a nainstalovat je do zařízení, aby se aplikace úspěšně spouštěla. Pokud je vaše zařízení online a může se připojit k Microsoft Storu pro firmy, požadované licence by se měly stahovat automaticky, ale pokud jste offline, budete muset licence nastavit ručně. 
 
-Chcete-li nainstalovat licenční soubory, bude nutné použít skript prostředí PowerShell, který volá třídu MDM_EnterpriseModernAppManagement_StoreLicenses02_01 v poskytovateli mostu rozhraní WMI.  
+Chcete-li nainstalovat licenční soubory, budete muset použít skript prostředí PowerShell, který volá MDM_EnterpriseModernAppManagement_StoreLicenses02_01 třídy v zprostředkovateli mostu služby WMI.  
 
-Tady je postup nastavení licencí pro použití v režimu offline: 
+Licence pro offline použití nastavíte takto: 
 
-1. Stáhněte si balíček aplikace, licence a požadovaná rozhraní z Microsoft Store pro firmy. Potřebujete jak kódované, tak nekódované licenční soubory. Podrobné pokyny ke stažení najdete [tady](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
-2. Aktualizujte ve skriptu následující proměnné pro krok 3:
-      1. `$contentID` je hodnota ID obsahu z nekódovaného souboru s licencí (. XML). Soubor s licencí můžete otevřít v textovém editoru podle vašeho výběru.
-      2. `$licenseBlob` je celý řetězec pro objekt BLOB licence v souboru kódované licence (. bin). Kódovaný soubor s licencí můžete otevřít v textovém editoru podle vašeho výběru. 
-3. Spusťte následující skript z příkazového řádku PowerShellu pro správu. Vhodným místem pro instalaci licence je na konci [přípravného skriptu](#stage-the-powershell-script) , který se taky musí spustit z příkazového řádku správce.
+1. Stáhněte si balíček aplikací, licence a požadované architektury z Microsoft Storu pro firmy. Potřebujete kódované i nekódované licenční soubory. Podrobné pokyny ke stažení naleznete [zde](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
+2. Aktualizujte následující proměnné ve skriptu pro krok 3:
+      1. `$contentID`je hodnota ContentID z nekódovaného licenčního souboru (.xml). Licenční soubor můžete otevřít v textovém editoru podle vašeho výběru.
+      2. `$licenseBlob`je celý řetězec pro objekt blob licence v souboru licence (.bin). Kódovaný licenční soubor můžete otevřít v textovém editoru podle vašeho výběru. 
+3. Spusťte následující skript z výzvy prostředí PowerShell pro správce. Dobrým místem pro instalaci licence je na konci [pracovního skriptu,](#stage-the-powershell-script) který je také třeba spustit z výzvy správce.
 
 ```powershell
 $namespaceName = "root\cimv2\mdm\dmmap"
@@ -450,6 +450,6 @@ catch [Exception]
 
 ## <a name="next-steps"></a>Další kroky
 
-Tato funkce se momentálně nepodporuje, ale můžete klást otázky komunitě na [virtuálním počítači s Windows TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
+Tato funkce není v současné době podporována, ale můžete komunitě klást otázky v [komunitě Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 
-Zpětnou vazbu k virtuálnímu počítači s Windows můžete také opustit v [centru pro zpětnou vazbu na virtuálním počítači s Windows](https://aka.ms/MRSFeedbackHub)nebo si můžete nechat svůj názor na MSIX aplikaci a nástroj pro balení v [aplikaci MSIX připojit Centrum zpětné vazby](https://aka.ms/msixappattachfeedback) a [Centrum pro zabalení MSIX](https://aka.ms/msixtoolfeedback).
+Zpětnou vazbu pro Windows Virtual Desktop můžete také zanechat v [centru pro zpětnou vazbu pro Windows Virtual Desktop](https://aka.ms/MRSFeedbackHub)nebo zanechat zpětnou vazbu pro aplikaci MSIX a balicí nástroj v [aplikaci MSIX připojit centrum pro zpětnou vazbu](https://aka.ms/msixappattachfeedback) a [centrum zpětné vazby nástroje pro balení MSIX](https://aka.ms/msixtoolfeedback).

@@ -1,7 +1,7 @@
 ---
-title: Převést konfigurace na složené prostředky pro konfiguraci stavu – Azure Automation
-description: Přečtěte si, jak převést konfigurace na složené prostředky pro konfiguraci stavu v Azure Automation.
-keywords: DSC, PowerShell, konfigurace, instalace
+title: Převod konfigurací na složené prostředky pro konfiguraci stavu – Azure Automation
+description: Zjistěte, jak převést konfigurace na složené prostředky pro konfiguraci stavu v Azure Automation.
+keywords: dsc,powershell,konfigurace,nastavení
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -11,52 +11,52 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 05f0a81a738688df15ea9060071d9e266b54b7d2
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136651"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Převod konfigurací na složené prostředky
 
-> Platí pro: Windows PowerShell 5,1
+> Platí pro: Windows PowerShell 5.1
 
-Jakmile začnete s konfiguracemi, můžete rychle vytvořit "scénáře", které spravují skupiny nastavení.
+Jakmile začnete vytvářet konfigurace, můžete rychle vytvořit "scénáře", které spravují skupiny nastavení.
 Příkladem může být:
 
-- Vytvoření webového serveru
-- Vytvoření serveru DNS
-- Vytvoření serveru SharePoint
-- Konfigurace clusteru SQL
-- Správa nastavení brány firewall
-- spravovat nastavení hesla
+- vytvoření webového serveru
+- vytvoření serveru DNS
+- vytvoření sharepointového serveru
+- konfigurace clusteru SQL
+- správa nastavení brány firewall
+- správa nastavení hesla
 
-Pokud vás zajímá sdílení této práce s ostatními, je nejlepší volbou pro zabalení konfigurace jako [složeného prostředku](/powershell/scripting/dsc/resources/authoringresourcecomposite).
-První vytvoření složených prostředků může být zahlcené.
+Máte-li zájem o sdílení této práce s ostatními, nejlepší možností je zabalit konfiguraci jako [složený prostředek](/powershell/scripting/dsc/resources/authoringresourcecomposite).
+Vytvoření složených prostředků poprvé může být ohromující.
 
 > [!NOTE]
-> Tento článek popisuje řešení, které spravuje komunita open source.
-> Podpora je dostupná jenom ve formě spolupráce na GitHubu, ne od Microsoftu.
+> Tento článek odkazuje na řešení, které je udržováno komunitou open source.
+> Podpora je k dispozici pouze ve formě spolupráce githubu, ne od Microsoftu.
 
-## <a name="community-project-compositeresource"></a>Projekt komunity: CompositeResource
+## <a name="community-project-compositeresource"></a>Komunitní projekt: CompositeResource
 
-Pro vyřešení této výzvy bylo vytvořeno řešení udržované komunitou s názvem [CompositeResource](https://github.com/microsoft/compositeresource) .
+Komunita udržované řešení s názvem [CompositeResource](https://github.com/microsoft/compositeresource) byla vytvořena k vyřešení tohoto problému.
 
-CompositeResource automatizuje proces vytváření nového modulu z konfigurace.
-Začnete tím, že nakonfigurujete konfigurační [skript na pracovní](https://blogs.technet.microsoft.com/heyscriptingguy/2010/08/10/how-to-reuse-windows-powershell-functions-in-scripts/) stanici (nebo na serveru sestavení), aby byl načten do paměti.
-Dále místo spuštění konfigurace pro vygenerování souboru MOF použijte funkci poskytnutou modulem CompositeResource k automatizaci převodu.
-Rutina načte obsah vaší konfigurace, získá seznam parametrů a vygeneruje nový modul se všemi potřebnými.
+CompositeResource automatizuje proces vytváření nového modulu z vaší konfigurace.
+Můžete začít [dot získávání](https://blogs.technet.microsoft.com/heyscriptingguy/2010/08/10/how-to-reuse-windows-powershell-functions-in-scripts/) konfigurační skript na pracovní stanici (nebo sestavení serveru), takže je načten do paměti.
+Dále, spíše než spuštění konfigurace pro generování souboru MOF, použijte funkci poskytovanou modulem CompositeResource k automatizaci převodu.
+Rutina načte obsah vaší konfigurace, získá seznam parametrů a vygeneruje nový modul se vším, co potřebujete.
 
-Jakmile vygenerujete modul, můžete zvýšit verzi a přidat poznámky k verzi pokaždé, když provedete změny a publikujete ji do vlastního [úložiště PowerShellGet](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo).
+Jakmile vygenerujete modul, můžete zvýšit verzi a přidat poznámky k verzi pokaždé, když provedete změny a publikujete je do vlastního [úložiště PowerShellGet](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo).
 
-Jakmile vytvoříte složený modul prostředků obsahující vaši konfiguraci (nebo několik konfigurací), můžete je použít v [prostředí pro vytváření obsahu](/azure/automation/compose-configurationwithcompositeresources) v Azure nebo je přidat do [konfiguračních skriptů DSC](/powershell/scripting/dsc/configurations/configurations) a vygenerovat soubory MOF a [nahrajte soubory MOF do Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Pak můžete své servery zaregistrovat z [místního](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) prostředí nebo [v Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a vyžádat si konfigurace.
-Nejnovější aktualizace projektu také publikovala [Runbooky](https://www.powershellgallery.com/packages?q=DscGallerySamples) pro Azure Automation pro automatizaci procesu importu konfigurací z Galerie prostředí PowerShell.
+Jakmile vytvoříte modul složených prostředků obsahující konfiguraci (nebo více konfigurací), můžete je použít v [prostředí composable Authoring Experience](/azure/automation/compose-configurationwithcompositeresources) v Azure nebo je přidat do [skriptů Konfigurace DSC](/powershell/scripting/dsc/configurations/configurations) pro generování souborů MOF a [nahrání souborů MOF do Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Pak zaregistrujte své servery z [místního](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) prostředí nebo [v Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) pro vyžádat konfigurace.
+Nejnovější aktualizace projektu také [publikovala runbooky](https://www.powershellgallery.com/packages?q=DscGallerySamples) pro Azure Automation pro automatizaci procesu importu konfigurací z Galerie Prostředí PowerShell.
 
-Chcete-li se pokusit automatizovat vytváření složených prostředků pro DSC, navštivte [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/compositeresource/) a Stáhněte řešení nebo klikněte na web projektu a zobrazte [dokumentaci](https://github.com/microsoft/compositeresource).
+Chcete-li vyzkoušet automatizaci vytváření složených zdrojů pro DSC, navštivte [Galerii prostředí PowerShell](https://www.powershellgallery.com/packages/compositeresource/) a stáhněte si řešení nebo klikněte na "Web projektu" a prohlédněte si [dokumentaci](https://github.com/microsoft/compositeresource).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview)
-- [Prostředky DSC](/powershell/scripting/dsc/resources/resources)
-- [Konfigurace místní Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [Windows PowerShell – přehled konfigurace požadovaného stavu](/powershell/scripting/dsc/overview/overview)
+- [Zdroje dsc](/powershell/scripting/dsc/resources/resources)
+- [Konfigurace správce místní konfigurace](/powershell/scripting/dsc/managing-nodes/metaconfig)

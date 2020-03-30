@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73664286"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rychlý start: Připojení předplatného Azure ke službě Security Center úrovně Standard
-Azure Security Center zajišťuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. Zatímco úroveň Free nabízí pouze omezené zabezpečení vašich prostředků Azure, úroveň Standard tyto možnosti rozšiřuje do místního prostředí a jiných cloudů. Security Center úrovně Standard pomáhá vyhledávat a opravovat ohrožení zabezpečení, blokovat škodlivou aktivitu pomocí ovládacích prvků přístupu a aplikací, detekovat hrozby s využitím analýz a inteligentních funkcí a rychle reagovat v případě útoku. Můžete vyzkoušet Security Center Standard bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
+Azure Security Center zajišťuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. Zatímco úroveň Free nabízí pouze omezené zabezpečení vašich prostředků Azure, úroveň Standard tyto možnosti rozšiřuje do místního prostředí a jiných cloudů. Security Center úrovně Standard pomáhá vyhledávat a opravovat ohrožení zabezpečení, blokovat škodlivou aktivitu pomocí ovládacích prvků přístupu a aplikací, detekovat hrozby s využitím analýz a inteligentních funkcí a rychle reagovat v případě útoku. Můžete zkusit Security Center Standard zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 V tomto článku provedete upgrade na úroveň Standard, která poskytuje dodatečné zabezpečení, a nainstalujete na své virtuální počítače agenta Microsoft Monitoring Agent, který bude monitorovat ohrožení zabezpečení a hrozby.
 
@@ -33,7 +33,7 @@ Pro upgrade předplatného na úroveň Standard musíte mít přiřazenou roli V
 
 ## <a name="enable-your-azure-subscription"></a>Povolení předplatného Azure
 
-1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+1. Přihlaste se k [portálu Azure](https://azure.microsoft.com/features/azure-portal/).
 2. V nabídce **Microsoft Azure** vyberte **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
 
    ![Přehled služby Security Center][2]
@@ -50,7 +50,7 @@ Během několika minut od prvního spuštění služby Security Center se může
 Pokud chcete využívat všech výhod služby Security Center, musíte dokončením níže uvedených kroků provést upgrade na úroveň Standard a nainstalovat agenta Microsoft Monitoring Agent.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Upgrade na úroveň Standard
-Pro účely rychlých startů a kurzů pro službu Security Center musíte provést upgrade na úroveň Standard. K dispozici je bezplatná zkušební verze Security Center Standard. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). 
+Pro účely rychlých startů a kurzů pro službu Security Center musíte provést upgrade na úroveň Standard. K dispozici je bezplatná zkušební verze Standard Security Center. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). 
 
 1. V hlavní nabídce služby Security Center vyberte **Začínáme**.
  
@@ -72,8 +72,8 @@ Pokud je povoleno automatické zřizování, Security Center nainstaluje agenta 
 
 Povolení automatického zřizování agenta Microsoft Monitoring Agent:
 
-1. V hlavní nabídce Security Center vyberte **cenové & nastavení**.
-2. Na řádku předplatného klikněte na předplatné, pro které chcete změnit nastavení.
+1. V hlavní nabídce Centra zabezpečení vyberte **Nastavení & ceny**.
+2. Na řádku předplatného klikněte na předplatné, u kterého chcete změnit nastavení.
 3. Na kartě **Shromažďování dat** nastavte **Automatické zřizování** na **Zapnuto**.
 4. Vyberte **Uložit**.
 ---
@@ -86,15 +86,15 @@ Díky tomuto novému přehledu o vašich virtuálních počítačích Azure mů�
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud budete chtít pokračovat v práci s následnými kurzy a rychlými starty, ponechte v provozu úroveň Standard a nechte zapnuté automatické zřizování. Pokud neplánujete pokračovat nebo se chcete vrátit na úroveň Free:
 
-1. Vraťte se do hlavní nabídky Security Center a vyberte **cenové & nastavení**.
-2. Klikněte na předplatné, které chcete změnit na úroveň Free.
+1. Vraťte se do hlavní nabídky Centra zabezpečení a vyberte **nastavení cenové &**.
+2. Klikněte na předplatné, které chcete změnit na bezplatnou úroveň.
 3. Vyberte položku **Cenová úroveň** a pak vyberte **Bezplatné**. Standardní úroveň předplatného se změní na bezplatnou.
 5. Vyberte **Uložit**.
 
 Pokud chcete vypnout automatické zřizování:
 
-1. Vraťte se do hlavní nabídky Security Center a vyberte **cenové & nastavení**.
-2. Vyčistěte u předplatného, u kterého chcete zakázat Automatické zřizování.
+1. Vraťte se do hlavní nabídky Centra zabezpečení a vyberte **nastavení cenové &**.
+2. Vyčistit na předplatné, které chcete zakázat automatické zřizování na.
 3. Na kartě **Shromažďování dat** nastavte **Automatické zřizování** na **Vypnuto**.
 4. Vyberte **Uložit**.
 

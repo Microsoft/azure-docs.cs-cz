@@ -1,59 +1,59 @@
 ---
-title: Zabezpečené připojení k clusteru Azure Service Fabric
-description: Popisuje ověření přístupu klienta ke clusteru Service Fabric a způsob zabezpečení komunikace mezi klienty a clusterem.
+title: Bezpečné připojení ke clusteru Azure Service Fabric
+description: Popisuje, jak ověřit přístup klientů ke clusteru Service Fabric a jak zabezpečit komunikaci mezi klienty a clusterem.
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258574"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
 
-Když se klient připojí k uzlu Service Fabric clusteru, může být klient ověřen a zabezpečená komunikace vytvořená pomocí zabezpečení certifikátů nebo Azure Active Directory (AAD). Toto ověřování zajišťuje, že přístup ke clusteru a nasazování aplikací a provádění úloh správy bude mít jenom autorizovaní uživatelé.  V době, kdy byl cluster vytvořen, musí být zabezpečení certifikátu nebo AAD v clusteru dříve povolené.  Další informace o scénářích zabezpečení clusteru najdete v tématu [zabezpečení clusteru](service-fabric-cluster-security.md). Pokud se připojujete ke clusteru zabezpečenému pomocí certifikátů, [nastavte klientský certifikát](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) na počítači, který se připojuje ke clusteru. 
+Když se klient připojí k uzlu clusteru Service Fabric, může být klient ověřena a zabezpečena pomocí zabezpečení certifikátů nebo služby Azure Active Directory (AAD). Toto ověřování zajišťuje, že pouze oprávnění uživatelé mají přístup ke clusteru a nasazeným aplikacím a provádějí úlohy správy.  Zabezpečení certifikátu nebo aad musí být v clusteru při vytvoření clusteru dříve povoleno.  Další informace o scénářích zabezpečení clusteru naleznete v [tématu Zabezpečení clusteru](service-fabric-cluster-security.md). Pokud se připojujete ke clusteru zabezpečenému certifikáty, [nastavte klientský certifikát](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) v počítači, který se připojuje ke clusteru. 
 
 <a id="connectsecureclustercli"></a> 
 
-## <a name="connect-to-a-secure-cluster-using-azure-service-fabric-cli-sfctl"></a>Připojení k zabezpečenému clusteru pomocí Azure Service Fabric CLI (sfctl)
+## <a name="connect-to-a-secure-cluster-using-azure-service-fabric-cli-sfctl"></a>Připojení k zabezpečenému clusteru pomocí příkazového příkazu Azure Service Fabric (sfctl)
 
-Existuje několik různých způsobů, jak se připojit k zabezpečenému clusteru pomocí rozhraní příkazového řádku Service Fabric (sfctl). Pokud k ověřování používáte klientský certifikát, podrobnosti o certifikátu musí odpovídat certifikátu nasazenému do uzlů clusteru. Pokud váš certifikát má certifikační autority (CA), musíte taky zadat důvěryhodné certifikační autority.
+Existuje několik různých způsobů, jak se připojit k zabezpečenému clusteru pomocí cli service fabric (sfctl). Pokud k ověřování používáte klientský certifikát, podrobnosti o certifikátu musí odpovídat certifikátu nasazenému do uzlů clusteru. Pokud certifikát má certifikační autority (CERTIFIKAČNÍ autority), je třeba navíc zadat důvěryhodné certifikační autority.
 
-Ke clusteru se můžete připojit pomocí příkazu `sfctl cluster select`.
+Ke clusteru se můžete `sfctl cluster select` připojit pomocí příkazu.
 
-Klientské certifikáty lze zadat dvěma různými způsoby, buď jako certifikát, jako dvojici klíčů, nebo jako jeden soubor PFX. Pro soubory PEM chráněné heslem se zobrazí výzva k automatickému zadání hesla. Pokud jste certifikát klienta získali jako soubor PFX, nejprve převeďte soubor PFX na soubor PEM pomocí následujícího příkazu. 
+Klientské certifikáty lze zadat dvěma různými způsoby, buď jako certifikát a pár klíčů, nebo jako jeden soubor PFX. U souborů PEM chráněných heslem budete automaticky vyzváni k zadání hesla. Pokud jste získali klientský certifikát jako soubor PFX, nejprve převeďte soubor PFX do souboru PEM pomocí následujícího příkazu. 
 
 ```shell
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
-Pokud Váš soubor. pfx není chráněný heslem, použijte parametr-Passin Pass: pro poslední parametr.
+Pokud váš soubor .pfx není chráněn heslem, použijte -passin pass: pro poslední parametr.
 
-Chcete-li zadat klientský certifikát jako soubor PEM, zadejte cestu k souboru v argumentu `--pem`. Příklad:
+Chcete-li zadat klientský certifikát jako soubor pem, zadejte cestu k souboru v argumentu. `--pem` Například:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
-Soubory PEM chráněné heslem se před spuštěním libovolného příkazu zobrazí výzva k zadání hesla.
+Heslem chráněné pem soubory vyzve k zadání hesla před spuštěním libovolného příkazu.
 
-Chcete-li zadat certifikát, dvojici klíčů použijte argumenty `--cert` a `--key` k určení cest souborů ke každému příslušnému souboru.
+Chcete-li určit certifikát, dvojice `--cert` `--key` klíčů použijte argumenty a k určení cest k jednotlivým souborům.
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Někdy certifikáty, které se používají k zabezpečení testovacích nebo vývojových clusterů, selžou při ověřování certifikátů. Pokud chcete obejít ověření certifikátu, zadejte možnost `--no-verify`. Příklad:
+Někdy certifikáty používané k zabezpečení testovacích nebo dev clusterů nepodaří ověření certifikátu. Chcete-li obejít `--no-verify` ověření certifikátu, zadejte možnost. Například:
 
 > [!WARNING]
-> Při připojování k produkčním Service Fabricm clusterům nepoužívejte možnost `no-verify`.
+> Nepoužívejte `no-verify` tuto možnost při připojování k produkčním clusterům Service Fabric.
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Kromě toho můžete zadat cesty k adresářům důvěryhodných certifikátů CA nebo jednotlivých certifikátů. K určení těchto cest použijte argument `--ca`. Příklad:
+Kromě toho můžete určit cesty k adresářům důvěryhodných certifikátů certifikační autority nebo jednotlivých certifikátů. Chcete-li zadat tyto `--ca` cesty, použijte argument. Například:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
@@ -64,19 +64,19 @@ Po připojení byste měli být schopni [spustit další příkazy sfctl](servic
 <a id="connectsecurecluster"></a>
 
 ## <a name="connect-to-a-cluster-using-powershell"></a>Připojení ke clusteru pomocí PowerShellu
-Než provedete operace s clusterem přes PowerShell, napřed navažte připojení ke clusteru. Připojení clusteru se používá pro všechny následné příkazy v dané relaci prostředí PowerShell.
+Před provedením operací v clusteru prostřednictvím prostředí PowerShell nejprve nastavte připojení ke clusteru. Připojení clusteru se používá pro všechny následné příkazy v dané relaci prostředí PowerShell.
 
 ### <a name="connect-to-an-unsecure-cluster"></a>Připojení k nezabezpečenému clusteru
 
-Pokud se chcete připojit k nezabezpečenému clusteru, zadejte adresu koncového bodu clusteru do příkazu **Connect-ServiceFabricCluster** :
+Chcete-li se připojit k nezabezpečenému clusteru, zadejte **příkazu Connect-ServiceFabricCluster** adresu koncového bodu clusteru:
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 
 ```
 
-### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Připojení k zabezpečenému clusteru pomocí Azure Active Directory
+### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Připojení k zabezpečenému clusteru pomocí služby Azure Active Directory
 
-Pokud se chcete připojit k zabezpečenému clusteru, který používá Azure Active Directory k autorizaci přístupu správce clusteru, zadejte kryptografický otisk certifikátu clusteru a použijte příznak *azureactivedirectory selhala* .  
+Chcete-li se připojit k zabezpečenému clusteru, který používá službu Azure Active Directory k autorizaci přístupu správce clusteru, zadejte kryptografický otisk certifikátu clusteru a použijte příznak *AzureActiveDirectory.*  
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
@@ -85,10 +85,10 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Připojení k zabezpečenému clusteru pomocí klientského certifikátu
-Spusťte následující příkaz prostředí PowerShell pro připojení k zabezpečenému clusteru, který používá klientské certifikáty k autorizaci přístupu správce. 
+Spusťte následující příkaz Prostředí PowerShell a připojte se k zabezpečenému clusteru, který k autorizaci přístupu správce používá klientské certifikáty. 
 
-#### <a name="connect-using-certificate-common-name"></a>Připojit pomocí společného názvu certifikátu
-Zadejte běžný název certifikátu clusteru a běžný název klientského certifikátu, kterému bylo uděleno oprávnění ke správě clusteru. Podrobnosti o certifikátu se musí shodovat s certifikátem na uzlech clusteru.
+#### <a name="connect-using-certificate-common-name"></a>Připojit pomocí běžného názvu certifikátu
+Zadejte běžný název certifikátu clusteru a běžný název klientského certifikátu, kterému byla udělena oprávnění pro správu clusteru. Podrobnosti o certifikátu se musí shodovat s certifikátem v uzlech clusteru.
 
 ```powershell
 Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
@@ -99,7 +99,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -StoreLocation CurrentUser `
     -StoreName My 
 ```
-*ServerCommonName* je běžný název certifikátu serveru nainstalovaného na uzlech clusteru. *FindValue* je běžný název certifikátu klienta správce. Po vyplnění parametrů bude příkaz vypadat jako v následujícím příkladu:
+*ServerCommonName* je běžný název certifikátu serveru nainstalovaného v uzlech clusteru. *FindValue* je běžný název klientského certifikátu správce. Po vyplnění parametrů bude příkaz vypadat jako v následujícím příkladu:
 ```powershell
 $ClusterName= "sf-commonnametest-scus.southcentralus.cloudapp.azure.com:19000"
 $certCN = "sfrpe2eetest.southcentralus.cloudapp.azure.com"
@@ -113,8 +113,8 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -StoreName My 
 ```
 
-#### <a name="connect-using-certificate-thumbprint"></a>Připojit pomocí kryptografického otisku certifikátu
-Zadejte kryptografický otisk certifikátu clusteru a kryptografický otisk klientského certifikátu, kterému bylo uděleno oprávnění ke správě clusteru. Podrobnosti o certifikátu se musí shodovat s certifikátem na uzlech clusteru.
+#### <a name="connect-using-certificate-thumbprint"></a>Připojení pomocí kryptografického otisku certifikátu
+Zadejte kryptografický otisk certifikátu clusteru a kryptografický otisk klientského certifikátu, kterému byla udělena oprávnění pro správu clusteru. Podrobnosti o certifikátu se musí shodovat s certifikátem v uzlech clusteru.
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `  
@@ -124,7 +124,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
           -StoreLocation CurrentUser -StoreName My
 ```
 
-*ServerCertThumbprint* je kryptografický otisk certifikátu serveru nainstalovaného na uzlech clusteru. *FindValue* je kryptografický otisk certifikátu klienta správce.  Po vyplnění parametrů bude příkaz vypadat jako v následujícím příkladu:
+*ServerCertThumbprint* je kryptografický otisk certifikátu serveru nainstalovaného v uzlech clusteru. *FindValue* je kryptografický otisk klientského certifikátu správce.  Po vyplnění parametrů bude příkaz vypadat jako v následujícím příkladu:
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `  
@@ -135,7 +135,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azu
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-windows-active-directory"></a>Připojení k zabezpečenému clusteru pomocí služby Windows Active Directory
-Pokud je váš samostatný cluster nasazený pomocí zabezpečení služby AD, připojte se ke clusteru připojením přepínače "WindowsCredential".
+Pokud je samostatný cluster nasazen pomocí zabezpečení služby AD, připojte se ke clusteru připojením přepínače "WindowsCredential".
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
@@ -144,18 +144,18 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 
 <a id="connectsecureclusterfabricclient"></a>
 
-## <a name="connect-to-a-cluster-using-the-fabricclient-apis"></a>Připojení ke clusteru pomocí rozhraní FabricClient API
-Sada Service Fabric SDK poskytuje třídu [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) pro správu clusteru. Pokud chcete používat rozhraní API FabricClient, Získejte balíček NuGet Microsoft. ServiceFabric.
+## <a name="connect-to-a-cluster-using-the-fabricclient-apis"></a>Připojení ke clusteru pomocí infrastruktury klienta API
+Sada Service Fabric SDK poskytuje třídu [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) pro správu clusteru. Chcete-li použít rozhraní API infrastruktury klienta, získejte balíček Microsoft.ServiceFabric NuGet.
 
 ### <a name="connect-to-an-unsecure-cluster"></a>Připojení k nezabezpečenému clusteru
 
-Pokud se chcete připojit ke vzdálenému nezabezpečenému clusteru, vytvořte instanci FabricClient a zadejte adresu clusteru:
+Chcete-li se připojit ke vzdálenému nezabezpečenému clusteru, vytvořte instanci fabricclient a zadejte adresu clusteru:
 
 ```csharp
 FabricClient fabricClient = new FabricClient("clustername.westus.cloudapp.azure.com:19000");
 ```
 
-Pro kód, který běží v rámci clusteru, například ve spolehlivé službě, vytvořte FabricClient *bez* zadání adresy clusteru. FabricClient se připojí k místní bráně pro správu na uzlu, na kterém je kód aktuálně spuštěný, a vyloučí se tak další síťové směrování.
+Pro kód, který je spuštěn z v rámci clusteru, například ve spolehlivé službě, vytvořte FabricClient *bez* zadání adresy clusteru. FabricClient se připojí k místní bráně pro správu v uzlu, na který je aktuálně spuštěn kód, čímž se vyhne dalšímu směrování do sítě.
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -163,7 +163,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Připojení k zabezpečenému clusteru pomocí klientského certifikátu
 
-Uzly v clusteru musí mít platné certifikáty, jejichž běžný název nebo název DNS v síti SAN se zobrazí ve [vlastnosti RemoteCommonNames](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) nastavené na [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient). Následující postup umožňuje vzájemné ověřování mezi klientem a uzly clusteru.
+Uzly v clusteru musí mít platné certifikáty, jejichž běžný název nebo název DNS v programu SAN se zobrazí ve [vlastnosti RemoteCommonNames](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) nastavené na [službě FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient). Po tomto procesu umožňuje vzájemné ověřování mezi klientem a uzly clusteru.
 
 ```csharp
 using System.Fabric;
@@ -201,11 +201,11 @@ static X509Credentials GetCredentials(string clientCertThumb, string serverCertT
 }
 ```
 
-### <a name="connect-to-a-secure-cluster-interactively-using-azure-active-directory"></a>Připojení k zabezpečenému clusteru interaktivně pomocí Azure Active Directory
+### <a name="connect-to-a-secure-cluster-interactively-using-azure-active-directory"></a>Interaktivní připojení k zabezpečenému clusteru pomocí služby Azure Active Directory
 
-Následující příklad používá Azure Active Directory pro identitu klienta a certifikát serveru pro identitu serveru.
+Následující příklad používá službu Azure Active Directory pro identitu klienta a certifikát serveru pro identitu serveru.
 
-Po připojení ke clusteru se automaticky zobrazí dialogové okno pro interaktivní přihlašování.
+Po připojení ke clusteru se automaticky objeví dialogové okno pro interaktivní přihlášení.
 
 ```csharp
 string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
@@ -227,11 +227,11 @@ catch (Exception e)
 }
 ```
 
-### <a name="connect-to-a-secure-cluster-non-interactively-using-azure-active-directory"></a>Připojení k zabezpečenému clusteru bez interaktivně pomocí Azure Active Directory
+### <a name="connect-to-a-secure-cluster-non-interactively-using-azure-active-directory"></a>Připojení k zabezpečenému clusteru neinteraktivně pomocí služby Azure Active Directory
 
-Následující příklad spoléhá na Microsoft. IdentityModel. clients. Active, Version: 2.19.208020213.
+Následující příklad závisí na Microsoft.IdentityModel.Clients.ActiveDirectory, Verze: 2.19.208020213.
 
-Další informace o získání tokenu AAD najdete v tématu [Microsoft. IdentityModel. clients. Active](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx).
+Další informace o získávání tokenů AAD naleznete v tématu [Microsoft.IdentityModel.Clients.ActiveDirectory](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx).
 
 ```csharp
 string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";
@@ -284,9 +284,9 @@ static string GetAccessToken(
 
 ```
 
-### <a name="connect-to-a-secure-cluster-without-prior-metadata-knowledge-using-azure-active-directory"></a>Připojení k zabezpečenému clusteru bez předchozích znalostí metadat pomocí Azure Active Directory
+### <a name="connect-to-a-secure-cluster-without-prior-metadata-knowledge-using-azure-active-directory"></a>Připojení k zabezpečenému clusteru bez předchozích znalostí metadat pomocí služby Azure Active Directory
 
-Následující příklad používá neinteraktivní získání tokenu, ale stejný přístup lze použít k vytvoření vlastního interaktivního prostředí pro získání interaktivního tokenu. Metadata Azure Active Directory potřebná pro získání tokenu jsou čtena z konfigurace clusteru.
+Následující příklad používá neinteraktivní získávání tokenů, ale stejný přístup lze použít k vytvoření vlastního interaktivního prostředí pro získávání tokenů. Metadata služby Azure Active Directory potřebná pro získání tokenů se čtou z konfigurace clusteru.
 
 ```csharp
 string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
@@ -329,38 +329,38 @@ static string GetAccessToken(AzureActiveDirectoryMetadata aad)
 
 <a id="connectsecureclustersfx"></a>
 
-## <a name="connect-to-a-secure-cluster-using-service-fabric-explorer"></a>Připojení k zabezpečenému clusteru pomocí Service Fabric Explorer
-Pokud chcete získat [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) pro daný cluster, najeďte do prohlížeče:
+## <a name="connect-to-a-secure-cluster-using-service-fabric-explorer"></a>Připojení k zabezpečenému clusteru pomocí Průzkumníka prostředků infrastruktury služby
+Chcete-li se dostat do [Aplikace Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) pro daný cluster, přejděte prohlížeč na:
 
 `http://<your-cluster-endpoint>:19080/Explorer`
 
-Úplná adresa URL je také k dispozici v podokně základy clusteru Azure Portal.
+Úplná adresa URL je taky dostupná v podokně základů clusteru na webu Azure Portal.
 
-Pro připojení k zabezpečenému clusteru v systému Windows nebo OS X pomocí prohlížeče můžete importovat certifikát klienta a v prohlížeči se zobrazí výzva k zadání certifikátu, který chcete použít pro připojení ke clusteru.  V počítačích se systémem Linux bude nutné certifikát importovat pomocí pokročilých nastavení prohlížeče (každý prohlížeč má různé mechanismy) a nasměrovat ho na umístění certifikátu na disku. Další informace najdete v tématu [nastavení klientského certifikátu](#connectsecureclustersetupclientcert) .
+Pro připojení k zabezpečenému clusteru v systému Windows nebo OS X pomocí prohlížeče můžete importovat klientský certifikát a prohlížeč vás vyzve k použití certifikátu pro připojení ke clusteru.  Na počítačích s Linuxem bude nutné certifikát importovat pomocí pokročilých nastavení prohlížeče (každý prohlížeč má jiné mechanismy) a nasměrovat jej na umístění certifikátu na disku. Další informace naleznete [v článek Nastavení klientského certifikátu.](#connectsecureclustersetupclientcert)
 
-### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Připojení k zabezpečenému clusteru pomocí Azure Active Directory
+### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Připojení k zabezpečenému clusteru pomocí služby Azure Active Directory
 
-Pokud se chcete připojit ke clusteru, který je zabezpečený pomocí AAD, najeďte na prohlížeč:
+Chcete-li se připojit ke clusteru zabezpečenému pomocí služby AAD, namiřte prohlížeč na:
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-Automaticky se zobrazí výzva, abyste se přihlásili pomocí AAD.
+Budete automaticky vyzváni k přihlášení pomocí aplikace AAD.
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Připojení k zabezpečenému clusteru pomocí klientského certifikátu
 
-Pokud se chcete připojit ke clusteru, který je zabezpečený pomocí certifikátů, najeďte na prohlížeč:
+Chcete-li se připojit ke clusteru, který je zabezpečen certifikáty, namiřte prohlížeč na:
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-Automaticky se zobrazí výzva k výběru klientského certifikátu.
+Budete automaticky vyzváni k výběru klientského certifikátu.
 
 <a id="connectsecureclustersetupclientcert"></a>
 
-## <a name="set-up-a-client-certificate-on-the-remote-computer"></a>Nastavení klientského certifikátu na vzdáleném počítači
+## <a name="set-up-a-client-certificate-on-the-remote-computer"></a>Nastavení klientského certifikátu ve vzdáleném počítači
 
-Pro zabezpečení clusteru, jednoho pro cluster a certifikát serveru a další pro klientský přístup by se měly použít aspoň dva certifikáty.  Doporučujeme také použít další sekundární certifikáty a certifikáty klientského přístupu.  Aby bylo možné zabezpečit komunikaci mezi klientem a uzlem clusteru pomocí zabezpečení certifikátů, musíte nejprve získat a nainstalovat certifikát klienta. Certifikát může být nainstalován do osobního (osobního) úložiště místního počítače nebo aktuálního uživatele.  Budete také potřebovat kryptografický otisk certifikátu serveru, aby mohl klient ověřit cluster.
+K zabezpečení clusteru by měly být použity alespoň dva certifikáty, jeden pro certifikát clusteru a serveru a druhý pro přístup klienta.  Doporučujeme také použít další sekundární certifikáty a certifikáty klientského přístupu.  Chcete-li zabezpečit komunikaci mezi klientem a uzlem clusteru pomocí zabezpečení certifikátu, musíte nejprve získat a nainstalovat klientský certifikát. Certifikát lze nainstalovat do osobního (moje) úložiště místního počítače nebo aktuálního uživatele.  Potřebujete také kryptografický otisk certifikátu serveru, aby klient mohl cluster ověřovat.
 
-* Windows: Dvakrát klikněte na soubor PFX a podle zobrazených výzev nainstalujte certifikát do svého osobního úložiště `Certificates - Current User\Personal\Certificates`. Případně můžete použít příkaz prostředí PowerShell:
+* Windows: Dvakrát klikněte na soubor PFX a podle zobrazených výzev nainstalujte certifikát do svého osobního úložiště `Certificates - Current User\Personal\Certificates`. Případně můžete použít příkaz PowerShell:
 
     ```powershell
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
@@ -368,7 +368,7 @@ Pro zabezpečení clusteru, jednoho pro cluster a certifikát serveru a další 
             -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
     ```
 
-    Pokud se jedná o certifikát podepsaný svým držitelem, budete ho muset před použitím tohoto certifikátu importovat do úložiště Důvěryhodné osoby v počítači, aby se mohl připojit k zabezpečenému clusteru.
+    Pokud se jedná o certifikát podepsaný svým držitelem, musíte jej před připojením k zabezpečenému clusteru importovat do úložiště důvěryhodných osob počítače.
 
     ```powershell
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople `
@@ -380,8 +380,8 @@ Pro zabezpečení clusteru, jednoho pro cluster a certifikát serveru a další 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Service Fabric proces upgradu clusteru a očekávání od vás](service-fabric-cluster-upgrade.md)
-* [Správa aplikací Service Fabric v aplikaci Visual Studio](service-fabric-manage-application-in-visual-studio.md)
-* [Úvod do modelu Service Fabric Health](service-fabric-health-introduction.md)
-* [Zabezpečení aplikací a RunAs](service-fabric-application-runas-security.md)
+* [Proces upgradu clusteru Service Fabric a očekávání od vás](service-fabric-cluster-upgrade.md)
+* [Správa aplikací Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md)
+* [Úvod modelu service fabric zdraví](service-fabric-health-introduction.md)
+* [Zabezpečení aplikací a runas](service-fabric-application-runas-security.md)
 * [Začínáme se Service Fabric CLI](service-fabric-cli.md)

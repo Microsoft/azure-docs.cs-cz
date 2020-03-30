@@ -1,6 +1,6 @@
 ---
-title: Řízení přístupu k Azure Monitor sešitům
-description: Zjednodušení složitých sestav s předem sestavenými a vlastními parametrizovanými sešity s řízením přístupu na základě rolí
+title: Řízení přístupu k sešitům Azure Monitor
+description: Zjednodušení složitých sestav pomocí předem vytvořených a vlastních parametrizovaných sešitů s řízením přístupu na základě rolí
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,35 +10,35 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 20116ab105e4eb12875ba3cb279fb261eb5c70e4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658417"
 ---
 # <a name="access-control"></a>Řízení přístupu
 
 Řízení přístupu v sešitech odkazuje na dvě věci:
 
-* Přístup je vyžadován pro čtení dat v sešitu. Tento přístup se řídí standardními [rolemi Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) u prostředků použitých v sešitu. Sešity neurčují ani nekonfigurují přístup k těmto prostředkům. Uživatelé obvykle získají tento přístup k těmto prostředkům pomocí role [Čtenář monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) v těchto prostředcích.
+* Ke čtení dat v sešitu je nutný přístup. Tento přístup je řízen [standardnírole Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) na prostředky používané v sešitu. Sešity neurčují ani nekonfigurují přístup k těmto prostředkům. Uživatelé by obvykle získat tento přístup k těmto prostředkům pomocí [role sledování čtečky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) na tyto prostředky.
 
-* Vyžaduje se přístup k ukládání sešitů.
+* K uložení sešitů je nutný přístup
 
-    - Ukládání privátních `("My")` sešitů nevyžaduje žádná další oprávnění. Všichni uživatelé můžou ukládat soukromé sešity a můžou tyto sešity zobrazit jenom.
-    - Ukládání sdílených sešitů vyžaduje oprávnění k zápisu do skupiny prostředků pro uložení sešitu. Tato oprávnění jsou obvykle určena rolí [přispěvatele monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) , ale lze je také nastavit prostřednictvím role *přispěvatele pracovní sešity* .
+    - Uložení `("My")` soukromých sešitů nevyžaduje žádná další oprávnění. Všichni uživatelé mohou ukládat soukromé sešity a pouze oni mohou tyto sešity zobrazit.
+    - Uložení sdílených sešitů vyžaduje k uložení sešitu oprávnění k zápisu do skupiny prostředků. Tato oprávnění jsou obvykle určena rolí [Přispěvatel monitorování,](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) ale lze je také nastavit prostřednictvím role *Přispěvatel sešitů.*
     
-## <a name="standard-roles-with-workbook-related-privileges"></a>Standardní role s oprávněními souvisejícími s sešitem
+## <a name="standard-roles-with-workbook-related-privileges"></a>Standardní role s oprávněními souvisejícími se sešitem
 
-[Čtečka monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) zahrnuje standardní/Read oprávnění, která by používaly nástroje pro monitorování (včetně sešitů) ke čtení dat z prostředků.
+[Sledování Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) obsahuje standardní /read oprávnění, která by byla použita pomocí nástrojů pro sledování (včetně sešitů) ke čtení dat z prostředků.
 
-[Přispěvatel monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) zahrnuje obecná oprávnění `/write` používaná různými monitorovacími nástroji pro ukládání položek (včetně oprávnění `workbooks/write` k ukládání sdílených sešitů).
-"Přispěvatelé sešity" přidává do objektu oprávnění "sešity/zápis" do objektu pro ukládání sdílených sešitů.
-Uživatelé nemůžou ukládat soukromé sešity, které uvidí jenom, a nemusí žádná zvláštní oprávnění.
+[Přispěvatel monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) `/write` zahrnuje obecná oprávnění používaná různými nástroji `workbooks/write` pro monitorování pro ukládání položek (včetně oprávnění k ukládání sdílených sešitů).
+"Přispěvatel sešitů" přidá k objektu oprávnění "sešity/zápisy" pro uložení sdílených sešitů.
+Pro ukládání soukromých sešitů, které mohou zobrazit pouze oni, nejsou vyžadována žádná zvláštní oprávnění.
 
 Pro vlastní řízení přístupu na základě rolí:
 
-Přidejte `microsoft.insights/workbooks/write` pro uložení sdílených sešitů. Další podrobnosti najdete v tématu role [přispěvatele sešitu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) .
+Přidáním `microsoft.insights/workbooks/write` uložíte sdílené sešity. Další podrobnosti najdete v roli [Přispěvatel sešitu.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme](workbooks-visualizations.md) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
+* [Začínáte](workbooks-visualizations.md) se učit další informace o sešitech, mnoho bohatých možností vizualizací.

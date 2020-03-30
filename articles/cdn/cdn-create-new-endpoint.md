@@ -16,10 +16,10 @@ ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 2a3325217c1ec854e4f6cef3facce5580fb06a57
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240265"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Rychlý start: Vytvoření profilu a koncového bodu Azure CDN
@@ -28,9 +28,9 @@ V tomto rychlém startu povolíte Azure Content Delivery Network (CDN) prostřed
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Pro účely tohoto rychlého startu musíte mít vytvořený účet úložiště *mystorageacct123*, který použijete jako název počátečního hostitele. Další informace najdete v článku o [integraci účtu úložiště Azure s Azure CDN](cdn-create-a-storage-account-with-cdn.md).
+Pro účely tohoto rychlého startu musíte mít vytvořený účet úložiště *mystorageacct123*, který použijete jako název počátečního hostitele. Další informace najdete [v tématu Integrace účtu úložiště Azure s Azure CDN](cdn-create-a-storage-account-with-cdn.md).
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="log-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého účtu Azure.
 
 [!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
@@ -43,7 +43,7 @@ Po vytvoření profilu CDN ho můžete použít k vytvoření koncového bodu.
    
     Zobrazí se stránka Profil CDN.
 
-2. Vyberte **Koncový bod**.
+2. Vyberte **koncový bod**.
    
     ![Profil CDN](./media/cdn-create-new-endpoint/cdn-select-endpoint.png)
    
@@ -53,8 +53,8 @@ Po vytvoření profilu CDN ho můžete použít k vytvoření koncového bodu.
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | **Název** | Jako název hostitele koncového bodu zadejte *my-endpoint-123*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _&lt;název_koncového_bodu&gt;_ .azureedge.net.|
-    | **Typ zdroje** | Vyberte **Úložiště**. | 
+    | **Název** | Jako název hostitele koncového bodu zadejte *my-endpoint-123*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název. Tento název se používá pro přístup k prostředkům uložených v mezipaměti v _ &lt;názvu&gt;koncového bodu_domény .azureedge.net.|
+    | **Typ zdroje** | Vyberte **možnost Úložiště**. | 
     | **Název počátečního hostitele** | Jako název hostitele zadejte *mystorageacct123.blob.core.windows.net*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název. |
     | **Cesta ke zdroji** | Ponechte prázdné. |
     | **Hlavička počátečního hostitele** | Ponechte výchozí vygenerovanou hodnotu. |  
@@ -71,7 +71,7 @@ Po vytvoření profilu CDN ho můžete použít k vytvoření koncového bodu.
    ![Koncový bod CDN](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
    Vzhledem k tomu, že rozšíření registrace nějakou dobu trvá, koncový bod není okamžitě dostupný pro použití: 
-   - U profilů **Azure CDN Standard od Microsoftu** šíření trvá většinou 10 minut. 
+   - U profilů **Azure CDN Standard od Microsoftu** trvá šíření většinou 10 minut. 
    - V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
    - V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 90 minut. 
 

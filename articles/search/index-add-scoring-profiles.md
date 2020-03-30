@@ -1,7 +1,7 @@
 ---
-title: Zvýšení pořadí vyhledávání pomocí profilů vyhodnocování
+title: Zvýšení pořadí vyhledávání pomocí profilů hodnocení
 titleSuffix: Azure Cognitive Search
-description: Zvyšte skóre pořadí hledání pro Azure Kognitivní hledání výsledky přidáním profilů vyhodnocování.
+description: Přidáním profilů hodnocení zvyšte skóre pořadí vyhledávání pro výsledky Azure Cognitive Search.
 manager: nitinme
 author: Brjohnstmsft
 ms.author: brjohnst
@@ -20,21 +20,21 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245457"
 ---
-# <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Přidání profilů vyhodnocování do indexu služby Azure Kognitivní hledání
+# <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Přidání profilů vyhodnocování do indexu služby Azure Cognitive Search
 
-  Bodování označuje výpočet *skóre vyhledávání* pro každou položku vrácenou ve výsledcích hledání. Skóre je indikátorem relevance položek v kontextu aktuální operace vyhledávání. Čím vyšší je skóre, tím je daná položka relevantnější. Ve výsledcích hledání jsou položky seřazeny od vysoké po nejnižší na základě skóre hledání vypočítaného pro každou položku.  
+  Hodnocení odkazuje na výpočtu *skóre vyhledávání* pro každou položku vrácenou ve výsledcích hledání. Skóre je indikátorem relevance položek v kontextu aktuální operace vyhledávání. Čím vyšší je skóre, tím je daná položka relevantnější. Ve výsledcích hledání jsou položky seřazeny od nejvyššího k nízkému na základě skóre vyhledávání vypočítaného pro každou položku.  
 
- Azure Kognitivní hledání používá k výpočtu počátečního skóre výchozí bodování, ale tento výpočet můžete přizpůsobit pomocí *profilu vyhodnocování*. Profily vyhodnocování poskytují větší kontrolu nad hodnocením položek ve výsledcích vyhledávání. Například můžete chtít zvýšit množství položek na základě jejich potenciálních výnosů, zvýšit úroveň nových položek nebo možná zvýšit množství položek, které byly v inventáři příliš dlouho.  
+ Azure Cognitive Search používá výchozí bodování k výpočtu počáteční skóre, ale můžete přizpůsobit výpočet prostřednictvím *profil bodování*. Profily hodnocení poskytují větší kontrolu nad pořadím položek ve výsledcích vyhledávání. Můžete například chtít zvýšit položky na základě jejich potenciálu výnosů, propagovat novější položky nebo možná zvýšit položky, které byly ve skladu příliš dlouho.  
 
- Profil vyhodnocování je součástí definice indexu, která se skládá z vážených polí, funkcí a parametrů.  
+ Profil hodnocení je součástí definice indexu, která se skládá z vážených polí, funkcí a parametrů.  
 
- Chcete-li poskytnout představu o tom, jak profil vyhodnocování vypadá, následující příklad ukazuje jednoduchý profil s názvem geo. Tato jedna zvyšuje položky, které mají hledaný termín v poli **hotely** . Používá také funkci `distance` k upřednostnění položek, které spadají do deseti kilometrů aktuálního umístění. Pokud někdo vyhledá pojem "Inn" a "Inn" se stane součástí názvu hotelu, dokumenty, které obsahují Hotely s "Inn" v rámci poloměru 10 KM v aktuálním umístění, se ve výsledcích hledání zobrazí výše.  
+ Abyste měli představu o tom, jak profil hodnocení vypadá, následující příklad ukazuje jednoduchý profil s názvem "geo". Tento zvýrazní položky, které mají hledaný výraz v poli **hotelName.** Používá také `distance` funkci upřednostnit položky, které jsou do deseti kilometrů od aktuální polohy. Pokud někdo vyhledá termín "hostinec" a "hostinec" je náhodou součástí názvu hotelu, dokumenty, které zahrnují hotely s "hostincí" v okruhu 10 KM od aktuální polohy, se ve výsledcích vyhledávání zobrazí výše.  
 
 
 ```json
@@ -63,34 +63,34 @@ ms.locfileid: "79245457"
 ```  
 
 
- Chcete-li použít tento profil vyhodnocování, je dotaz určen k určení profilu v řetězci dotazu. V následujícím dotazu si všimněte parametru dotazu `scoringProfile=geo` v žádosti.  
+ Chcete-li použít tento profil hodnocení, je váš dotaz formulován tak, aby určil profil v řetězci dotazu. V níže uvedeném dotazu `scoringProfile=geo` si všimněte parametru dotazu v požadavku.  
 
 ```  
 GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2019-05-06 
 ```  
 
- Tento dotaz vyhledá pojem ' Inn ' a předá ho do aktuálního umístění. Všimněte si, že tento dotaz obsahuje další parametry, například `scoringParameter`. Parametry dotazu jsou popsány v [dokumentu &#40;hledání ve&#41;službě Azure kognitivní hledání REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).  
+ Tento dotaz vyhledá termín "hostinec" a předá v aktuálním umístění. Všimněte si, že tento dotaz `scoringParameter`obsahuje další parametry, například . Parametry dotazu jsou popsány v [dokumentech vyhledávání &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).  
 
- Kliknutím na [příklad](#bkmk_ex) můžete zkontrolovat podrobnější příklad profilu vyhodnocování.  
+ Kliknutím na [Příklad](#bkmk_ex) zkontrolujte podrobnější příklad profilu hodnocení.  
 
 ## <a name="what-is-default-scoring"></a>Co je výchozí bodování?  
- Bodování počítá skóre hledání pro každou položku v sadě výsledků seřazené podle pořadí. Každé položce v sadě výsledků hledání je přiřazeno skóre hledání, seřazené od nejvyšší po nejnižší. Do aplikace se vrátí položky s vyšším skóre. Ve výchozím nastavení se vrátí nejvyšší 50, ale můžete použít parametr `$top` k vrácení menšího nebo většího počtu položek (až 1000 v jedné odpovědi).  
+ Vyhodnocování vypočítá skóre vyhledávání pro každou položku v seřazené sadě výsledků. Každé položce ve výsledkové sadě vyhledávání je přiřazeno skóre vyhledávání a poté se řadí na nejvyšší hodnotu za nejnižší. Položky s vyšším skóre jsou vráceny do aplikace. Ve výchozím nastavení je vráceno prvních 50, ale `$top` parametr můžete použít k vrácení menšího nebo většího počtu položek (až 1000 v jedné odpovědi).  
 
-Skóre hledání je vypočítáno na základě statistických vlastností dat a dotazu. Azure Kognitivní hledání najde dokumenty, které obsahují hledané termíny do řetězce dotazu (v závislosti na `searchMode`), a upřednostňuje dokumenty, které obsahují mnoho instancí hledaného termínu. Skóre hledání bude ještě vyšší, pokud je v indexu dat zřídka, ale v dokumentu běžné. Základem pro tento přístup k výpočetním významům je známý jako [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) nebo četnost termínů – inverzní frekvence dokumentů.  
+Skóre hledání se vypočítá na základě statistických vlastností dat a dotazu. Azure Cognitive Search vyhledá dokumenty, které obsahují hledané termíny `searchMode`v řetězci dotazu (některé nebo všechny, v závislosti na ), upřednostňující dokumenty, které obsahují mnoho instancí hledaného výrazu. Skóre vyhledávání se zvýší ještě vyšší, pokud je termín v celém indexu dat vzácný, ale v dokumentu běžný. Základem pro tento přístup k výpočtu relevance se označuje jako [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) nebo termín frekvence inverzní frekvence dokumentu frekvence.  
 
- Za předpokladu, že neexistuje žádné vlastní řazení, výsledky se pak seřazené podle skóre vyhledávání, než se vrátí do volající aplikace. Pokud není zadán $top, jsou vráceny 50 položky, které mají nejvyšší skóre hledání.  
+ Za předpokladu, že neexistuje žádné vlastní řazení, výsledky jsou pak seřazeny podle skóre hledání před jejich vrácením do volající aplikace. Pokud není zadán $top, je vráceno 50 položek s nejvyšším skóre vyhledávání.  
 
- Hodnoty skóre hledání je možné opakovat v rámci sady výsledků dotazu. Můžete mít například 10 položek s skóre 1,2, 20 položek se skóre 1,0 a 20 položek se skóre 0,5. Pokud má více přístupů stejný výsledek hledání, řazení stejných položek skóre není definováno a není stabilní. Spusťte dotaz znovu a můžete se podívat na pozici posunu položek. Vzhledem k tomu, že se dvě položky shodují se stejným skóre, neexistuje žádná záruka, která se zobrazí jako první.  
+ Hodnoty skóre hledání lze opakovat v celé sadě výsledků. Můžete mít například 10 položek se skóre 1,2, 20 položek se skóre 1,0 a 20 položek se skóre 0,5. Pokud má více přístupů stejné skóre vyhledávání, řazení stejných položek s hodnocením není definováno a není stabilní. Spusťte dotaz znovu a může se zobrazit pozice posunu položek. Vzhledem k tomu, dvě položky s identickým skóre, neexistuje žádná záruka, která z nich se objeví jako první.  
 
-## <a name="when-to-use-custom-scoring"></a>Kdy použít vlastní bodování  
- Jeden nebo více profilů vyhodnocování byste měli vytvořit v případě, že výchozí chování hodnocení nebude v souladu s vašimi podnikovými záměry dostatečně daleko. Například se můžete rozhodnout, že se má při hledání upřednostňovat nové přidávané položky. Podobně může být pole, které obsahuje ziskové marže, nebo jiné pole, které indikuje potenciální výnosy. Zvýšení počtu přístupů, které přinášejí výhody vašemu podniku, může být důležitým faktorem při rozhodování o používání profilů vyhodnocování.  
+## <a name="when-to-use-custom-scoring"></a>Kdy použít vlastní vyhodnocování  
+ Pokud výchozí chování hodnocení neodpovídá dostatečně daleko při plnění obchodních cílů, měli byste vytvořit jeden nebo více profilů hodnocení. Můžete se například rozhodnout, že relevance vyhledávání by měla upřednostňovat nově přidané položky. Podobně můžete mít pole, které obsahuje ziskovou marži, nebo jiné pole označující výnosový potenciál. Zvýšení počet zásahů, které přinášejí výhody vaší firmě, může být důležitým faktorem při rozhodování o použití profilů hodnocení.  
 
- Řazení založené na relevanci se také implementuje prostřednictvím profilů vyhodnocování. Vezměte v úvahu stránky výsledků hledání, které jste použili v minulosti, které vám umožňují řadit podle ceny, data, hodnocení nebo relevance. V Azure Kognitivní hledání se profily vyhodnocování řídí možností "závažnost". Definice relevance je řízena vámi, s predikátem pro obchodní cíle a typem vyhledávacího prostředí, které chcete doručit.  
+ Pořadí založené na relevanci je také implementováno prostřednictvím profilů hodnocení. Zvažte stránky s výsledky vyhledávání, které jste použili v minulosti a které umožňují řazení podle ceny, data, hodnocení nebo relevance. V Azure Cognitive Search, vyhodnocování profily řídit možnost 'relevance'. Definici relevance řídíte vy, založená na obchodních cílech a typu vyhledávání, které chcete poskytovat.  
 
-##  <a name="bkmk_ex"></a>Případě  
- Jak bylo uvedeno dříve, přizpůsobené hodnocení je implementováno prostřednictvím jednoho nebo více profilů vyhodnocování definovaných ve schématu indexu.  
+##  <a name="example"></a><a name="bkmk_ex"></a>Příklad  
+ Jak již bylo uvedeno dříve, vlastní bodování je implementováno prostřednictvím jednoho nebo více profilů hodnocení definovaných ve schématu indexu.  
 
- Tento příklad ukazuje schéma indexu se dvěma profily bodování (`boostGenre`, `newAndHighlyRated`). Každý dotaz na tento index, který obsahuje buď profil jako parametr dotazu, použije profil k vyhodnocení sady výsledků dotazu.  
+ Tento příklad ukazuje schéma indexu se dvěma profily hodnocení (`boostGenre`, `newAndHighlyRated`). Jakýkoli dotaz proti tomuto indexu, který obsahuje buď profil jako parametr dotazu, použije profil ke skóre sady výsledků.  
 
 ```json
 {  
@@ -158,23 +158,23 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 ```  
 
 ## <a name="workflow"></a>Pracovní postup  
- Chcete-li implementovat vlastní chování bodování, přidejte profil vyhodnocování do schématu definujícího index. V rámci indexu můžete mít až 100 profilů vyhodnocování (viz [omezení služby](search-limits-quotas-capacity.md)), ale v libovolném daném dotazu můžete zadat jenom jeden profil v čase.  
+ Chcete-li implementovat vlastní hodnocení chování, přidejte profil hodnocení do schématu, který definuje index. V rámci indexu můžete mít až 100 profilů hodnocení (viz [Omezení služeb](search-limits-quotas-capacity.md)), ale v libovolném dotazu můžete zadat pouze jeden profil najednou.  
 
- Začněte [šablonou](#bkmk_template) uvedeným v tomto tématu.  
+ Začněte [šablonou](#bkmk_template) uvedenou v tomto tématu.  
 
- Zadejte název. Profily vyhodnocování jsou volitelné, ale pokud ho přidáte, název je povinný. Nezapomeňte dodržovat zásady vytváření názvů pro pole (začíná písmenem, vyhněte se speciálním znakům a rezervovaným slovům). Úplný seznam najdete v tématu [pravidla &#40;pojmenování Azure kognitivní hledání&#41; ](https://docs.microsoft.com/rest/api/searchservice/naming-rules) .  
+ Zadejte název. Profily hodnocení jsou volitelné, ale pokud jej přidáte, bude vyžadován název. Ujistěte se, že postupujte podle zásad pojmenování pro pole (začíná písmenem, vyhýbá se speciální znaky a vyhrazená slova). Úplný seznam najdete [v tématu Pravidla pojmenování &#40;Azure Cognitive Search&#41;.](https://docs.microsoft.com/rest/api/searchservice/naming-rules)  
 
- Tělo profilu vyhodnocování je vyrobeno z vážených polí a funkcí.  
+ Tělo profilu hodnocení je vyrobeno z vážených polí a funkcí.  
 
 |||  
 |-|-|  
-|**Váhu**|Zadejte páry název-hodnota, které poli přiřadí relativní váhu. V [příkladu](#bkmk_ex)jsou pole albumTitle, Žánr a umělec posílena 1,5, 5 a 2 v uvedeném pořadí. Proč se Žánr zvýšilo, takže je mnohem větší než ostatní? Pokud je hledání prováděno nad daty, která jsou poměrně homogenní (stejně jako u "žánru" v `musicstoreindex`), možná budete potřebovat větší odchylku v relativních závažích. Například v `musicstoreindex`se "Rock" zobrazí jako žánr i v popiscích žánrů ve stejné větě. Pokud chcete, aby měl Žánr popis žánru, bude mít pole Žánr mnohem vyšší relativní váhu.|  
-|**Functions**|Používá se, pokud jsou pro konkrétní kontexty vyžadovány další výpočty. Platné hodnoty jsou `freshness`, `magnitude`, `distance`a `tag`. Každá funkce má parametry, které jsou pro ni jedinečné.<br /><br /> -   `freshness` by se měla použít, když chcete zvýšit způsob, jakým je položka nová nebo stará. Tato funkce se dá použít jenom s `datetime`mi poli (EDM. DataTimeOffset). Všimněte si, že atribut `boostingDuration` se používá pouze s funkcí `freshness`.<br />-   `magnitude` by se měla použít, když se chcete zvýšit na základě vysoké nebo nízké číselné hodnoty. Mezi scénáře, které volají tuto funkci, patří zvýšení úrovně zisku za ziskové marže, nejvyšší cena, nejnižší cena nebo počet souborů ke stažení. Tato funkce se dá použít jenom s poli Double a Integer.<br />     U funkce `magnitude` můžete obrátit rozsah, maximum na minimum, pokud chcete inverzní vzorek (například pro zvýšení snížení ceny položek s více než cenami zboží). Vzhledem k rozsahu cen od $100 do $1 jste nastavili `boostingRangeStart` na 100 a `boostingRangeEnd` na 1, aby se zvýšily množství položek snížení ceny.<br />-   `distance` by se měla použít, když chcete zvýšit polohu v blízkosti nebo zeměpisné poloze. Tato funkce se dá použít jenom s `Edm.GeographyPoint` poli.<br />-   `tag` by se měly používat, pokud chcete zvýšit podle značek běžných mezi dokumenty a vyhledávacími dotazy. Tato funkce se dá použít jenom s poli `Edm.String` a `Collection(Edm.String)`.<br /><br /> **Pravidla pro používání funkcí**<br /><br /> Typ funkce (`freshness`, `magnitude`, `distance`), `tag` musí být malá.<br /><br /> Funkce nesmí obsahovat hodnoty null nebo prázdné hodnoty. Konkrétně, pokud zahrnete NázevPole, je nutné jej nastavit na něco.<br /><br /> Funkce se dají použít jenom u filtrovaných polí. Další informace o polích, která se filtrují, najdete v tématu [vytvoření indexu &#40;Azure kognitivní hledání REST API&#41; ](https://docs.microsoft.com/rest/api/searchservice/create-index) .<br /><br /> Funkce lze použít pouze pro pole, která jsou definována v kolekci pole v indexu.|  
+|**Hmotnosti**|Zadejte dvojice název-hodnota, které přiřazují pole relativní váhu. V [poli Example](#bkmk_ex)jsou pole název alba, žánr a název interpreta posílena 1,5, 5 a 2. Proč je žánr posílen a vyšší než ostatní? Pokud se vyhledávání provádí přes data, která jsou poněkud homogenní (jako je `musicstoreindex`tomu v případě 'žánr' v ), budete potřebovat větší odchylku v relativní váhy. Například v `musicstoreindex`, 'rock' se zobrazí jako žánr a ve stejně formulované žánrové popisy. Pokud chcete, aby žánr převážil nad popisem žánru, pole žánru bude potřebovat mnohem vyšší relativní váhu.|  
+|**Functions**|Používá se v případě, že jsou požadovány další výpočty pro konkrétní kontexty. Platné hodnoty `freshness` `magnitude`jsou `distance`, `tag`, a . Každá funkce má parametry, které jsou jedinečné.<br /><br /> -   `freshness`by měl být použit, pokud chcete zvýšit tím, jak nová nebo stará položka je. Tuto funkci lze použít `datetime` pouze s poli (edm. DataTimeOffset). Všimněte `boostingDuration` si, že `freshness` atribut se používá pouze s funkcí.<br />-   `magnitude`by měl být použit, pokud chcete zvýšit na základě toho, jak vysoká nebo nízká číselná hodnota je. Scénáře, které vyžadují tuto funkci, zahrnují zvýšení ziskové marže, nejvyšší ceny, nejnižší ceny nebo počtu stažení. Tuto funkci lze použít pouze s dvojitými a celými poli.<br />     Pro `magnitude` funkci můžete obrátit rozsah, vysoká až nízká, pokud chcete inverzní vzor (například zvýšit nižší ceny položek více než vyšší ceny položek). Vzhledem k tomu, rozsah cen od $ 100 do $ 1, měli byste nastavit `boostingRangeStart` na 100 a `boostingRangeEnd` na 1 zvýšit nižší ceny-položky.<br />-   `distance`by měl být použit, pokud chcete zvýšit o blízkost nebo zeměpisné polohy. Tuto funkci lze použít `Edm.GeographyPoint` pouze s poli.<br />-   `tag`by měl být použit, pokud chcete zvýšit značky společné mezi dokumenty a vyhledávacídotazy. Tuto funkci lze použít `Edm.String` `Collection(Edm.String)` pouze s poli a.<br /><br /> **Pravidla pro používání funkcí**<br /><br /> Typ funkce`freshness` `magnitude`( `distance` `tag` , , ), musí být malá písmena.<br /><br /> Funkce nemohou obsahovat nulové nebo prázdné hodnoty. Konkrétně pokud zahrnete název pole, musíte jej nastavit na něco.<br /><br /> Funkce lze použít pouze pro filtrovatelná pole. Další informace o filtrovatelných polích najdete v tématu Vytvoření indexu &#40;&#41;rozhraní REST API azure [kognitivního vyhledávání.](https://docs.microsoft.com/rest/api/searchservice/create-index)<br /><br /> Funkce lze použít pouze pro pole, která jsou definována v polích kolekce indexu.|  
 
- Po definování indexu Sestavte index tak, že nahrajete schéma indexu, po kterém následují dokumenty. Pokyny k těmto operacím najdete v tématu [vytvoření &#40;indexu Azure kognitivní hledání&#41; REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) a [Přidání, aktualizace nebo odstranění dokumentů &#40;Azure kognitivní hledání REST API&#41; ](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) . Po vytvoření indexu byste měli mít funkční profil pro vyhodnocování, který pracuje s vašimi vyhledávacími daty.  
+ Po definování indexu vytvořte index nahráním schématu indexu následovaným dokumenty. Pokyny k těmto operacím najdete [v tématu Vytvoření indexu &#40;rozhraní REST ROZHRANÍ API azure kognitivního vyhledávání a&#41;přidání,](https://docs.microsoft.com/rest/api/searchservice/create-index) [aktualizaci nebo odstranění dokumentů &#40;&#41;rozhraní REST API pro azure cognitive search.](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) Jakmile je index sestaven, měli byste mít funkční profil hodnocení, který pracuje s vyhledávacími daty.  
 
-##  <a name="bkmk_template"></a>Vzhledu  
- Tato část ukazuje syntaxi a šablonu pro profily vyhodnocování. Popisy atributů najdete v tématu Referenční informace k [atributům indexu](#bkmk_indexref) v následující části.  
+##  <a name="template"></a><a name="bkmk_template"></a>Šablony  
+ Tato část zobrazuje syntaxi a šablonu pro profily hodnocení. Popis atributů naleznete v [odkazu na odkazy na atributy Rejstříku](#bkmk_indexref) v další části.  
 
 ```  
 . . .   
@@ -227,64 +227,64 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 . . .  
 ```  
 
-##  <a name="bkmk_indexref"></a>Reference k atributům indexu  
+##  <a name="index-attributes-reference"></a><a name="bkmk_indexref"></a>Odkaz na atributy rejstříku  
 
 > [!NOTE]  
->  Funkci bodování lze použít pouze pro pole, která lze filtrovat.  
+>  Funkci hodnocení lze použít pouze u polí, která lze filtrovat.  
 
 |Atribut|Popis|  
 |---------------|-----------------|  
-|`name`|Požadováno. Toto je název profilu vyhodnocování. Řídí se stejnými zásadami pro pojmenování pole. Musí začínat písmenem, nesmí obsahovat tečky, dvojtečky nebo @ symboly a nemůže začínat slovem ' azureSearch ' (rozlišuje velká a malá písmena).|  
-|`text`|Obsahuje vlastnost váhy.|  
-|`weights`|Volitelná. Obsahuje páry název-hodnota, které určují název pole a relativní váhu. Relativní váha musí být kladné celé číslo nebo číslo s plovoucí desetinnou čárkou.<br /><br /> Váhy se používají k označení důležitosti jednoho vyhledávacího pole relativně k druhému.|  
-|`functions`|Volitelná. Funkci bodování lze použít pouze pro pole, která lze filtrovat.|  
-|`type`|Vyžaduje se pro funkce bodování. Určuje typ funkce, která se má použít. Platné hodnoty zahrnují velikost, aktuálnost, vzdálenost a značku. Do každého profilu vyhodnocování můžete zahrnout více než jednu funkci. Název funkce musí být malými písmeny.|  
-|`boost`|Vyžaduje se pro funkce bodování. Kladné číslo, které se používá jako násobitel pro nezpracované skóre. Nemůže být rovna 1.|  
-|`fieldname`|Vyžaduje se pro funkce bodování. Funkci bodování lze použít pouze pro pole, která jsou součástí kolekce polí indexu a která jsou filtrovatelné. Kromě toho každý typ funkce zavádí další omezení (aktuálnost se používá s poli DateTime, rozsah s celočíselnými nebo dvojitými poli a vzdáleností s poli umístění). Pro každou definici funkce můžete zadat jenom jedno pole. Chcete-li například použít velikost dvakrát ve stejném profilu, je třeba zahrnout velikost dvou definic, jednu pro každé pole.|  
-|`interpolation`|Vyžaduje se pro funkce bodování. Definuje sklon, pro který se zvyšování skóre zvyšuje od začátku rozsahu až po konec rozsahu. Mezi platné hodnoty patří lineární (výchozí), konstanta, kvadratická a logaritmická. Podrobnosti najdete v tématu [Nastavení interpolací](#bkmk_interpolation) .|  
-|`magnitude`|Funkce hodnocení velikosti se používá ke změně pořadí na základě rozsahu hodnot číselného pole. Mezi nejběžnější příklady použití patří:<br /><br /> -   **hodnocení hvězdičkami:** změňte hodnocení na základě hodnoty v poli hodnocení hvězdičkami. V případě, že jsou relevantní dvě položky, zobrazí se jako první položka s vyšším hodnocením.<br />-   **marže:** když jsou relevantní dva dokumenty, může maloobchodní prodejce chtít zvýšit dokumenty, které mají vyšší marže jako první.<br />-   **kliknutí na počty:** u aplikací, které sledují kliknutí prostřednictvím akcí na produkty nebo stránky, můžete použít velikost ke zvýšení počtu položek, které mají za následek největší přenos dat.<br />-   **počty stahování:** u aplikací, které sledují stahování, funkce velikost umožňuje zvýšit počet položek, které mají nejvíce souborů ke stažení.|  
-|`magnitude` &#124; `boostingRangeStart`|Nastaví počáteční hodnotu rozsahu, jehož velikost je vyhodnocena. Hodnota musí být celé číslo nebo číslo s plovoucí desetinnou čárkou. Pro hodnocení hvězdičkami 1 až 4 by to bylo 1. Pro okraje větší než 50% by to bylo 50.|  
-|`magnitude` &#124; `boostingRangeEnd`|Nastaví koncovou hodnotu rozsahu, jehož velikost je vyhodnocena. Hodnota musí být celé číslo nebo číslo s plovoucí desetinnou čárkou. Pro hodnocení hvězdičkami 1 až 4 by to bylo 4.|  
-|`magnitude` &#124; `constantBoostBeyondRange`|Platné hodnoty jsou true nebo false (výchozí). Při nastavení na hodnotu true bude úplný nárůst platit i pro dokumenty, které mají hodnotu pro cílové pole, které je vyšší než horní konec rozsahu. Pokud je hodnota false, zvýšení této funkce se nepoužije na dokumenty, které mají hodnotu cílového pole, které spadají mimo rozsah.|  
-|`freshness`|Funkce pro vyhodnocování aktuálnosti se používá pro změnu hodnocení skóre pro položky na základě hodnot v `DateTimeOffset` polích. Například položka s novějším datem může být seřazena více než staršími položkami.<br /><br /> Je také možné seřadit položky, jako jsou například události kalendáře s budoucími kalendářními daty, aby se položky blíže k tomuto seznamu mohly v budoucnu seřadit výše než položky.<br /><br /> V aktuální verzi služby bude jeden konec rozsahu pevně stanoven na aktuální čas. Druhý konec je čas v minulosti na základě `boostingDuration`. Pokud chcete v budoucnu zvýšit časový rozsah, použijte negativní `boostingDuration`.<br /><br /> Frekvence, s jakou se zvyšují změny z maximálního a minimálního rozsahu, je určena interpolací použitou pro profil vyhodnocování (viz následující obrázek). Chcete-li obrátit faktor zvýšení úrovně, vyberte faktor zvýšení, který je menší než 1.|  
-|`freshness` &#124; `boostingDuration`|Nastaví období vypršení platnosti, po kterém se u konkrétního dokumentu zastaví zvýšení úrovně. Syntaxe a příklady najdete v tématu [set boostingDuration](#bkmk_boostdur) v následující části.|  
-|`distance`|Funkce bodování vzdálenosti se používá k ovlivnění skóre dokumentů na základě toho, jak blízko nebo daleko jsou relativní vzhledem k geografickému umístění odkazu. Referenční umístění je zadáno jako součást dotazu v parametru (pomocí možnosti `scoringParameterquery` řetězec) jako argument Lon, lat.|  
-|`distance` &#124; `referencePointParameter`|Parametr, který se má předat v dotazech, který se má použít jako referenční umístění `scoringParameter` je parametr dotazu. Popisy parametrů dotazů najdete v tématu [hledání dokumentů &#40;Azure kognitivní hledání REST API&#41; ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .|  
-|`distance` &#124; `boostingDistance`|Číslo, které označuje vzdálenost v kilometrech od místa odkazu, kde končí rozsah zvyšování úrovně.|  
-|`tag`|Funkce bodování značek se používá k ovlivnění skóre dokumentů na základě značek v dokumentech a vyhledávacích dotazech. Dokumenty, které mají Tagy společné s vyhledávacím dotazem, se budou zvyšovat. Značky pro vyhledávací dotaz jsou k dispozici jako parametr bodování v každé žádosti o vyhledávání (pomocí možnosti `scoringParameterquery` řetězec).|  
-|`tag` &#124; `tagsParameter`|Parametr, který se má předat v dotazech k určení značek pro konkrétní požadavek. `scoringParameter` je parametr dotazu. Popisy parametrů dotazů najdete v tématu [hledání dokumentů &#40;Azure kognitivní hledání REST API&#41; ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .|  
-|`functionAggregation`|Volitelná. Platí pouze v případě, že jsou zadány funkce. Platné hodnoty jsou: Sum (výchozí), Average, minim, maximum a firstMatching. Skóre hledání je jediná hodnota, která je vypočítána z více proměnných, včetně více funkcí. Tento atribut určuje, jakým způsobem jsou kombinování všech funkcí zkombinovány do jediného souhrnného zvýšení, které je následně použito pro základní skóre dokumentu. Základní skóre vychází z hodnoty [TF-IDF](http://www.tfidf.com/) vypočítané z dokumentu a vyhledávacího dotazu.|  
-|`defaultScoringProfile`|Pokud není zadán žádný profil vyhodnocování, je při spuštění žádosti o vyhledávání použit výchozí bodování (pouze[TF-IDF](http://www.tfidf.com/) ).<br /><br /> Tady můžete nastavit výchozí název profilu vyhodnocování, což způsobí, že Azure Kognitivní hledání používat tento profil, když v žádosti o vyhledávání není zadaný žádný konkrétní profil.|  
+|`name`|Povinná hodnota. Toto je název profilu hodnocení. Řídí se stejnými konvencemi pojmenování pole. Musí začínat písmenem, nesmí obsahovat tečky, dvojtečky nebo symboly @ a nemůže začínat frází "azureSearch" (rozlišují malá a velká písmena).|  
+|`text`|Obsahuje vlastnost weights.|  
+|`weights`|Nepovinný parametr. Obsahuje dvojice název-hodnota, které každý zadat název pole a relativní hmotnost. Relativní hmotnost musí být kladné celé číslo nebo číslo s plovoucí desetinnou desetinnou desetinnou stou.<br /><br /> Závaží se používají k označení důležitosti jednoho prohledávatelného pole vzhledem k jinému.|  
+|`functions`|Nepovinný parametr. Funkci hodnocení lze použít pouze u polí, která lze filtrovat.|  
+|`type`|Vyžadováno pro funkce bodování. Označuje typ funkce, která má být používána. Mezi platné hodnoty patří velikost, čerstvost, vzdálenost a značka. Do každého profilu hodnocení můžete zahrnout více funkcí. Název funkce musí být malá písmena.|  
+|`boost`|Vyžadováno pro funkce bodování. Kladné číslo použité jako multiplikátor pro nezpracované skóre. Nemůže se rovnat 1.|  
+|`fieldname`|Vyžadováno pro funkce bodování. Funkci hodnocení lze použít pouze pro pole, která jsou součástí kolekce polí indexu a která jsou filtrovatelná. Kromě toho každý typ funkce zavádí další omezení (čerstvost se používá s datetime pole, velikost s celá čísla nebo dvojité pole a vzdálenost s umístění polí). Pro každou definici funkce můžete zadat pouze jedno pole. Chcete-li například použít velikost dvakrát ve stejném profilu, je třeba zahrnout dvě definice velikost, jeden pro každé pole.|  
+|`interpolation`|Vyžadováno pro funkce bodování. Definuje sklon, pro který se zvyšuje zvýšení skóre od začátku rozsahu až do konce rozsahu. Mezi platné hodnoty patří Lineární (výchozí), Konstanta, Kvadratická a Logaritmická. Podrobnosti najdete [v tématu Nastavení interpolací.](#bkmk_interpolation)|  
+|`magnitude`|Funkce hodnocení velikosti se používá ke změně pořadí na základě rozsahu hodnot pro číselné pole. Některé z nejběžnějších příkladů použití jsou:<br /><br /> -   **Hodnocení hvězdičkami:** Změňte hodnocení na základě hodnoty v poli "Hodnocení hvězdičkami". Pokud jsou relevantní dvě položky, zobrazí se nejprve položka s vyšším hodnocením.<br />-   **Marže:** Pokud jsou relevantní dva dokumenty, může maloobchodník chtít nejprve posílit dokumenty, které mají vyšší marže.<br />-   **Počty kliknutí:** U aplikací, které sledují proklikávky akcí na produkty nebo stránky, můžete použít velikost k posílení položek, které mají tendenci získat největší návštěvnost.<br />-   **Počet stažení:** U aplikací, které sledují stahování, umožňuje funkce velikosti propagovat položky, které mají nejvíce stahování.|  
+|`magnitude`&#124;`boostingRangeStart`|Nastaví počáteční hodnotu rozsahu, ve kterém je hodnota velikosti skórována. Hodnota musí být celé číslo nebo číslo s plovoucí desetinnou desetinnou desetinnou tísní. Pro hodnocení hvězdičkami 1 až 4 by to bylo 1. Pro marže nad 50% by to bylo 50.|  
+|`magnitude`&#124;`boostingRangeEnd`|Nastaví koncovou hodnotu rozsahu, ve kterém je hodnota velikosti hodnocena. Hodnota musí být celé číslo nebo číslo s plovoucí desetinnou desetinnou desetinnou tísní. Pro hodnocení hvězdičkami 1 až 4 by to bylo 4.|  
+|`magnitude`&#124;`constantBoostBeyondRange`|Platné hodnoty jsou pravdivé nebo nepravdivé (výchozí). Pokud je nastavena na hodnotu true, úplné zvýšení bude nadále platit pro dokumenty, které mají hodnotu pro cílové pole, které je vyšší než horní konec rozsahu. Pokud false, zvýšení této funkce nebude použita na dokumenty, které mají hodnotu pro cílové pole, které spadá mimo rozsah.|  
+|`freshness`|Funkce hodnocení čerstvosti se používá ke změně skóre `DateTimeOffset` hodnocení položek na základě hodnot v polích. Například položku s novějším datem lze seřadit výše než starší položky.<br /><br /> Je také možné seřadit položky, jako jsou události kalendáře s budoucími daty, tak, aby položky blíže k současnosti mohly být v budoucnu zařazeny výše než položky.<br /><br /> V aktuální verzi služby bude jeden konec rozsahu fixován na aktuální čas. Druhý konec je čas v minulosti `boostingDuration`na základě . Chcete-li v budoucnu zvýšit rozsah `boostingDuration`opakování, použijte záporný program .<br /><br /> Rychlost, s jakou se zvýšení mění z maximálního a minimálního rozsahu, je určena interpolací použitou na bodovací profil (viz obrázek níže). Chcete-li zvrátit použitý faktor zesílení, zvolte faktor zvýšení menší než 1.|  
+|`freshness`&#124;`boostingDuration`|Nastaví dobu vypršení platnosti, po jejímž uplynutí se propagace zastaví pro určitý dokument. Syntaxi a příklady najdete v tématu [Nastavení boostingDuration](#bkmk_boostdur) v následující části.|  
+|`distance`|Funkce vyhodnocování vzdálenosti se používá k ovlivnění skóre dokumentů na základě toho, jak blízko nebo daleko jsou vzhledem k referenční zeměpisné poloze. Umístění odkazu je dáno jako součást dotazu `scoringParameterquery` v parametru (pomocí možnosti řetězce) jako argument lon,lat.|  
+|`distance`&#124;`referencePointParameter`|Parametr, který má být předán v dotazech, které mají být používány jako referenční umístění. `scoringParameter`je parametr dotazu. Popis parametrů dotazu najdete v tématu [Search Documents &#40;Azure Cognitive Search REST API&#41;.](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)|  
+|`distance`&#124;`boostingDistance`|Číslo, které označuje vzdálenost v kilometrech od referenčního místa, kde končí dosah zesílení.|  
+|`tag`|Funkce vyhodnocování značek se používá k ovlivnění skóre dokumentů na základě značek v dokumentech a vyhledávacích dotazech. Dokumenty, které mají značky společné s vyhledávacím dotazem, budou posíleny. Značky pro vyhledávací dotaz jsou k dispozici jako parametr hodnocení `scoringParameterquery` v každém požadavku hledání (pomocí možnosti řetězec).|  
+|`tag`&#124;`tagsParameter`|Parametr, který má být předán v dotazech k určení značek pro konkrétní požadavek. `scoringParameter`je parametr dotazu. Popis parametrů dotazu najdete v tématu [Search Documents &#40;Azure Cognitive Search REST API&#41;.](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)|  
+|`functionAggregation`|Nepovinný parametr. Platí pouze v případě, že jsou zadány funkce. Platné hodnoty zahrnují: součet (výchozí), průměr, minimum, maximum a firstMatching. Skóre vyhledávání je jedna hodnota, která je vypočítána z více proměnných, včetně více funkcí. Tento atribut označuje, jak jsou zesílení všech funkcí sloučeny do jednoho agregačního zesílení, které se pak použije na skóre základního dokumentu. Základní skóre je založeno na hodnotě [tf-idf](http://www.tfidf.com/) vypočítané z dokumentu a vyhledávacího dotazu.|  
+|`defaultScoringProfile`|Při provádění požadavku hledání, pokud není zadán žádný profil hodnocení, pak se použije výchozí bodování (pouze[tf-idf).](http://www.tfidf.com/)<br /><br /> Zde lze nastavit název výchozího profilu hodnocení, což způsobí, že Azure Cognitive Search použije tento profil, když v požadavku na hledání není uveden žádný konkrétní profil.|  
 
-##  <a name="bkmk_interpolation"></a>Nastavit interpoly  
- Interpolace umožňují nastavit tvar sklonu, který se používá pro bodování. Vzhledem k tomu, že je bodování vysoké, je sklon vždy nižší, ale interpolace určuje křivku sklonu dolů. Můžete použít následující interpolace:  
+##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a>Nastavení interpolací  
+ Interpolace umožňují nastavit tvar sklonu použitého pro vyhodnocování. Vzhledem k tomu, že vyhodnocování je od shora až nízké, sklon se vždy snižuje, ale interpolace určuje křivku sestupného svahu. Lze použít následující interpolace:  
 
 |||  
 |-|-|  
-|`linear`|U položek, které jsou v rozsahu Max a min, se zvýšení použité pro položku provede v nepřetržitém snížení množství. Lineární je výchozí interpolací pro profil vyhodnocování.|  
-|`constant`|Pro položky, které jsou v rozsahu od začátku do konce, se pro výsledky řazení použije konstantní zvýšení.|  
-|`quadratic`|V porovnání s lineární interpolací, která má neustále se zmenšující zvýšení, se zpočátku zkrátí na menší tempo a pak při blížící se k koncovému rozsahu se zmenší v mnohem větším intervalu. Tato možnost interpolace není povolená ve funkcích bodování značek.|  
-|`logarithmic`|V porovnání s lineární interpolací, která má neustále se zmenšující zvýšení, se logaritmická hodnota zpočátku zmenší při větším tempu a potom se blíží koncovému rozsahu, sníží se v mnohem kratším intervalu. Tato možnost interpolace není povolená ve funkcích bodování značek.|  
+|`linear`|U položek, které jsou v rozsahu max a min, bude zesílení aplikované na položku provedeno v neustále klesajícím množství. Lineární je výchozí interpolace pro profil hodnocení.|  
+|`constant`|U položek, které jsou v počátečním a koncovém rozsahu, bude na výsledky hodnocení použito konstantní zesílení.|  
+|`quadratic`|Ve srovnání s lineární interpolací, která má neustále klesající zesílení, quadratic bude zpočátku klesat menším tempem a pak, jak se blíží ke koncovému rozsahu, klesá v mnohem vyšším intervalu. Tato možnost interpolace není povolena ve funkcích hodnocení tagů.|  
+|`logarithmic`|Ve srovnání s lineární interpolací, která má neustále klesající podporu, bude Logaritmic zpočátku klesat vyšším tempem a pak, jak se blíží ke konečnému rozsahu, klesá v mnohem menším intervalu. Tato možnost interpolace není povolena ve funkcích hodnocení tagů.|  
 
- ![Konstanta, lineární, kvadratická, log10 –ová čára v grafu](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
+ ![Konstantní, lineární, kvadratické, log10 čáry na grafu](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 
-##  <a name="bkmk_boostdur"></a>Nastavení boostingDuration  
- `boostingDuration` je atributem funkce `freshness`. Použijete ji k nastavení období vypršení platnosti, po kterém se u konkrétního dokumentu zastaví zvyšování úrovně. Chcete-li například zvýšit množství produktů nebo označení na 10 dní propagačního období, zadejte pro tyto dokumenty 10 dní tečku jako "P10D".  
+##  <a name="set-boostingduration"></a><a name="bkmk_boostdur"></a>Nastavit boostingDuration  
+ `boostingDuration`je atributem `freshness` funkce. Slouží k nastavení období vypršení platnosti, po jehož uplynutí se zvýšení zastaví pro určitý dokument. Chcete-li například zvýšit produktovou řadu nebo značku na 10denní období propagační akce, zadejte pro tyto dokumenty 10denní období jako "P10D".  
 
- `boostingDuration` musí být formátována jako hodnota XSD "dayTimeDuration" (omezená podmnožina hodnoty Duration ISO 8601). Vzor pro tuto položku je: "P [nD] [T [nH] [nM] [nS]]".  
+ `boostingDuration`musí být formátována jako hodnota XSD "dayTimeDuration" (omezená podmnožina hodnoty trvání ISO 8601). Vzor pro toto je: "P[nD][T[nH][nM][nS]]".  
 
- Následující tabulka uvádí několik příkladů.  
+ Následující tabulka obsahuje několik příkladů.  
 
-|Doba platnosti|boostingDuration|  
+|Doba trvání|boostingDoba trvání|  
 |--------------|----------------------|  
 |1 den|"P1D"|  
 |2 dny a 12 hodin|"P2DT12H"|  
 |15 minut|"PT15M"|  
-|30 dní, 5 hodin, 10 minut a 6,334 sekund|"P30DT5H10M 6.334 S"|  
+|30 dní, 5 hodin, 10 minut a 6,334 sekundy|"P30DT5H10M6.334S"|  
 
- Další příklady naleznete v tématu [schéma XML: DataTypes (w3.org Web)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration).  
+ Další příklady naleznete [v tématu schéma XML: Datové typy (W3.org webu).](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)  
 
-## <a name="see-also"></a>Viz také:  
- [Azure kognitivní hledání REST](https://docs.microsoft.com/rest/api/searchservice/)   
- [Vytvoření indexu &#40;služby Azure kognitivní hledání&#41; REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)   
- [Sada Azure Kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
+## <a name="see-also"></a>Viz také  
+ [Azure Kognitivní vyhledávání REST](https://docs.microsoft.com/rest/api/searchservice/)   
+ [Vytvoření indexu &#40;rozhraní REST API pro kognitivní vyhledávání Azure&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
+ [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

@@ -1,6 +1,6 @@
 ---
-title: Použít licenci Windows na virtuální počítače hostitele relace – Azure
-description: Popisuje, jak použít licenci Windows pro virtuální počítače virtuálních počítačů s Windows.
+title: Použití licence Windows pro virtuální počítače hostitele relací – Azure
+description: Popisuje, jak použít licenci systému Windows pro virtuální počítače virtuální plochy systému Windows.
 services: virtual-desktop
 author: ChristianMontoya
 ms.service: virtual-desktop
@@ -8,26 +8,26 @@ ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: chrimo
 ms.openlocfilehash: 2543dd12e8a75a038a1fc04371b8c562ef696e25
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254232"
 ---
-# <a name="apply-windows-license-to-session-host-virtual-machines"></a>Použít licenci Windows na virtuální počítače hostitele relace
+# <a name="apply-windows-license-to-session-host-virtual-machines"></a>Použití licence systému Windows pro virtuální počítače hostitele relací
 
-Zákazníci, kteří mají správnou licenci na spouštění úloh virtuálních klientů Windows, mají nárok na použití licence Windows na virtuální počítače hostitele relace a jejich spuštění bez placení jiné licence. Další informace najdete v tématu [ceny pro virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+Zákazníci, kteří mají řádnou licenci ke spuštění úloh Windows Virtual Desktop, mohou použít licenci systému Windows pro své virtuální počítače hostitele relací a spustit je bez placení za jinou licenci. Další informace naleznete v tématu [Windows Virtual Desktop pricing](https://azure.microsoft.com/pricing/details/virtual-desktop/).
 
-## <a name="ways-to-use-your-windows-virtual-desktop-license"></a>Způsoby použití licence na virtuální počítače s Windows
-Licencování virtuálních klientských počítačů s Windows umožňuje použít licenci na libovolný virtuální počítač s Windows nebo Windows serverem, který je registrovaný jako hostitel relace v hostitelském fondu a přijímá připojení uživatele. Tato licence se nevztahuje na virtuální počítače, které jsou spuštěny jako servery sdílené složky, řadiče domény a tak dále.
+## <a name="ways-to-use-your-windows-virtual-desktop-license"></a>Způsoby použití licence na virtuální plochu systému Windows
+Licencování virtuální plochy systému Windows umožňuje použít licenci pro jakýkoli virtuální počítač se systémem Windows nebo Windows Server, který je registrován jako hostitel relací ve fondu hostitelů a přijímá uživatelská připojení. Tato licence se nevztahuje na virtuální počítače, které jsou spuštěny jako servery pro sdílení souborů, řadiče domény a tak dále.
 
-Existuje několik způsobů, jak použít licenci pro virtuální počítače s Windows:
-- Fond hostitelů a jeho hostitele virtuálních počítačů můžete vytvořit pomocí [nabídky Azure Marketplace](./create-host-pools-azure-marketplace.md). Virtuální počítače vytvořené tímto způsobem mají automaticky použitu licenci.
-- Pomocí [šablony Azure Resource Manager GitHubu](./create-host-pools-arm-template.md)můžete vytvořit fond hostitelů a jeho virtuální počítače hostitele relace. Virtuální počítače vytvořené tímto způsobem mají automaticky použitu licenci.
-- Licenci můžete použít pro existující virtuální počítač hostitele relace. Pokud to chcete provést, postupujte podle pokynů v části [Vytvoření fondu hostitelů s prostředím PowerShell](./create-host-pools-powershell.md) pro vytvoření fondu hostitelů a přidružených virtuálních počítačů a pak se vraťte k tomuto článku a Naučte se, jak tuto licenci použít.
+Licenci Virtuální plochy systému Windows můžete používat několika způsoby:
+- Fond hostitelů a jeho virtuální počítače hostitele relací můžete vytvořit pomocí [nabídky Azure Marketplace](./create-host-pools-azure-marketplace.md). Virtuální počítače vytvořené tímto způsobem automaticky mají licenci použita.
+- Fond hostitelů a jeho virtuální počítače hostitele relací můžete vytvořit pomocí [šablony GitHub Azure Resource Manager](./create-host-pools-arm-template.md). Virtuální počítače vytvořené tímto způsobem automaticky mají licenci použita.
+- Licenci můžete použít pro existující virtuální počítač hostitele relace. Chcete-li to provést, nejprve postupujte podle pokynů v [vytvořit fond hostitelů s PowerShell](./create-host-pools-powershell.md) vytvořit fond hostitelů a přidružené virtuální chody a pak se vrátit k tomuto článku se dozvíte, jak použít licenci.
 
-## <a name="apply-a-windows-license-to-a-session-host-vm"></a>Použití licence Windows na virtuální počítač hostitele relace
-Ujistěte se, že máte [nainstalovanou a nakonfigurovanou nejnovější Azure PowerShell](/powershell/azure/overview). Pokud chcete použít licenci Windows, spusťte následující rutinu PowerShellu:
+## <a name="apply-a-windows-license-to-a-session-host-vm"></a>Použití licence systému Windows u hostitelského virtuálního uživatele relace
+Ujistěte se, že jste [nainstalovali a nakonfigurovali nejnovější Azure PowerShell](/powershell/azure/overview). Spusťte následující rutinu prostředí PowerShell a použijte licenci systému Windows:
 
 ```powershell
 $vm = Get-AzVM -ResourceGroup <resourceGroupName> -Name <vmName>
@@ -35,13 +35,13 @@ $vm.LicenseType = "Windows_Client"
 Update-AzVM -ResourceGroupName <resourceGroupName> -VM $vm
 ```
 
-## <a name="verify-your-session-host-vm-is-utilizing-the-licensing-benefit"></a>Ověřte, že váš virtuální počítač hostitele relace využívá výhod licencování.
-Po nasazení virtuálního počítače spusťte tuto rutinu, která ověří typ licence:
+## <a name="verify-your-session-host-vm-is-utilizing-the-licensing-benefit"></a>Ověřte, zda hostitelský virtuální počítač relace využívá výhody licencování
+Po nasazení virtuálního počítače spusťte tuto rutinu ot ověřit typ licence:
 ```powershell
 Get-AzVM -ResourceGroupName <resourceGroupName> -Name <vmName>
 ```
 
-Virtuální počítač hostitele relace s použitou licencí Windows vám ukáže něco podobného:
+Virtuální virtuální hostitel relace s použitou licencí systému Windows vám zobrazí něco takového:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -49,7 +49,7 @@ Location                 : westus
 LicenseType              : Windows_Client
 ```
 
-Virtuální počítače bez použité licence Windows vám ukáže něco podobného:
+Virtuální servery bez použité licence systému Windows vám zobrazí něco takového:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -57,7 +57,7 @@ Location                 : westus
 LicenseType              :
 ```
 
-Spuštěním následující rutiny zobrazíte seznam všech virtuálních počítačů hostitelů relací, ve kterých se ve vašem předplatném Azure použili licence Windows:
+Spuštěním následující rutiny zobrazíte seznam všech hostitelských virtuálních počítačů relací, u kterých je ve vašem předplatném Azure použita licence systému Windows:
 
 ```powershell
 $vms = Get-AzVM

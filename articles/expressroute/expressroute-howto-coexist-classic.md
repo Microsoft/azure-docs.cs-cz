@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurace současně existujících připojení ExpressRoute a S2S VPN: Classic'
+title: 'Konfigurace koexistujících připojení ExpressRoute a S2S VPN: klasická'
 description: Tento článek vás provede konfigurací ExpressRoute a připojení VPN typu site-to-site, která mohou v modelu nasazení Classic existovat vedle sebe.
 documentationcenter: na
 services: expressroute
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: charwen
 ms.openlocfilehash: aba07e0a1dd8e7b1db8677907672d919ef034057
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272926"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Konfigurace společně používaných připojení typu Site-to-Site a ExpressRoute (Classic)
@@ -22,7 +22,7 @@ ms.locfileid: "79272926"
 > 
 > 
 
-Tento článek vám pomůže nakonfigurovat připojení ExpressRoute a VPN typu Site-to-Site, která existovat vedle sebe. Možnost konfigurace VPN typu site-to-site a ExpressRoute má několik výhod. Můžete nakonfigurovat VPN typu Site-to-Site jako cestu zabezpečené převzetí služeb při selhání pro ExpressRoute, nebo použít VPN typu Site-to-Site pro připojení k webům, které nejsou připojené prostřednictvím ExpressRoute. V tomto článku vám nabídneme postupy konfigurace pro oba scénáře. Tento článek se týká modelu nasazení Classic. Tato konfigurace není k dispozici na portálu.
+Tento článek vám pomůže nakonfigurovat připojení sítě VPN ExpressRoute a Site-to-Site, která existují společně. Možnost konfigurace VPN typu site-to-site a ExpressRoute má několik výhod. Vpn site-to-site můžete nakonfigurovat jako bezpečnou cestu převzetí služeb při selhání pro ExpressRoute nebo pomocí vpn site-to-site pro připojení k webům, které nejsou připojeny přes ExpressRoute. V tomto článku vám nabídneme postupy konfigurace pro oba scénáře. Tento článek se týká modelu nasazení Classic. Tato konfigurace není k dispozici na portálu.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -73,7 +73,7 @@ Existují dvě sady postupů, ze kterých si můžete vybrat, když konfigurujet
     Pokud ještě nemáte virtuální síť, tento postup vás provede procesem vytvoření nové virtuální sítě pomocí modelu nasazení Classic a vytvoření nových připojení ExpressRoute a VPN typu site-to-site. Konfiguraci provedete podle kroků v části [Vytvoření nové virtuální sítě a koexistujících připojení](#new).
 * Už mám virtuální síť modelu nasazení Classic.
   
-    Už můžete mít virtuální síť s existujícím připojením VPN typu site-to-site nebo připojením ExpressRoute. Část článku Konfigurace souběžných [připojení pro už existující virtuální síť](#add) vás provede odstraněním brány a následným vytvořením nových připojení EXPRESSROUTE a VPN typu Site-to-site. Uvědomte si, že při vytváření nových připojení musí být kroky provedené ve velmi specifickém pořadí. Nepoužívejte pro vytvoření připojení a bran pokyny z jiných článků.
+    Už můžete mít virtuální síť s existujícím připojením VPN typu site-to-site nebo připojením ExpressRoute. Článek část [Chcete-li nakonfigurovat koexistující připojení pro již existující virtuální síť](#add) vás provede odstraněním brány a následným vytvořením nových připojení ExpressRoute a Site-to-Site VPN. Uvědomte si, že při vytváření nových připojení musí být kroky provedené ve velmi specifickém pořadí. Nepoužívejte pro vytvoření připojení a bran pokyny z jiných článků.
   
     V tomto postupu bude vytvoření připojení, která mohou existovat společně, vyžadovat, abyste odstranili bránu a pak nakonfigurovali nové brány. To znamená, že budete mít během odstraňování a opětného vytváření brány a připojení výpadek připojení mezi místy, ale nebude nutné migrovat žádné virtuální počítače a služby do nové virtuální sítě. Virtuální počítače a služby budou během konfigurace brány stále schopné komunikovat prostřednictvím nástroje pro vyrovnávání zatížení, pokud jsou tak nakonfigurované.
 
@@ -81,7 +81,7 @@ Existují dvě sady postupů, ze kterých si můžete vybrat, když konfigurujet
 
 [!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
-## <a name="new"></a>Vytvoření nové virtuální sítě a současně existujících připojení
+## <a name="to-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>Vytvoření nové virtuální sítě a koexistujících připojení
 Tento postup vás provede procesem vytvoření virtuální sítě a vytvoření připojení ExpressRoute a VPN site-to-site, která budou existovat společně.
 
 1. Budete potřebovat nainstalovat nejnovější verzi rutin Azure PowerShellu. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Všimněte si, že rutiny, které budete používat pro tuto konfiguraci, se můžou mírně lišit od těch, co znáte. Ujistěte se, že používáte rutiny určené v těchto pokynech. 
@@ -187,7 +187,7 @@ Tento postup vás provede procesem vytvoření virtuální sítě a vytvoření 
 
         New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
 
-## <a name="add"></a>Konfigurace současně existujících připojení pro už existující virtuální síť
+## <a name="to-configure-coexisting-connections-for-an-already-existing-vnet"></a><a name="add"></a>Konfigurace současně existujících připojení pro už existující virtuální síť
 Pokud máte existující virtuální síť, zkontrolujte velikost podsítě brány. Pokud podsíť brány je /28 nebo /29, musíte nejdřív bránu virtuální sítě odstranit a zvýšit velikost podsítě brány. Postup v této části ukazuje, jak to provést.
 
 Pokud podsíť brány je /27 nebo větší a virtuální síť je připojená přes ExpressRoute, můžete přeskočit následující kroky a přejít ke [kroku 6 – Vytvoření brány VPN typu site-to-site](#vpngw) v předchozí části.

@@ -1,6 +1,6 @@
 ---
-title: Azure soubory škálovatelnost a výkonnostní cíle
-description: Další informace o škálovatelnost a výkonnostní cíle pro soubory Azure, včetně kapacity, frekvence požadavků a omezení šířky příchozího a odchozího pásma.
+title: Škálovatelnost a cíle výkonnosti služby Azure Files
+description: Seznamte se s cíli škálovatelnosti a výkonu pro soubory Azure, včetně kapacity, rychlosti požadavků a omezení šířky pásma příchozích a odchozích.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,110 +8,110 @@ ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255129"
 ---
-# <a name="azure-files-scalability-and-performance-targets"></a>Azure soubory škálovatelnost a výkonnostní cíle
+# <a name="azure-files-scalability-and-performance-targets"></a>Škálovatelnost a cíle výkonnosti služby Azure Files
 
-[Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní průmyslový protokol SMB. Tento článek popisuje škálovatelnost a výkonnostní cíle pro soubory Azure a Azure File Sync.
+[Azure Files](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardního protokolu SMB. Tento článek popisuje škálovatelnost a výkonnostní cíle pro soubory Azure a Azure File Sync.
 
-Škálovatelnost a výkonnostní cíle, které jsou zde uvedeny jsou vyšší kategorie cíle, ale mohou být ovlivněny jiné proměnné ve vašem nasazení. Například propustnost pro soubor může být také omezen ve vaši dostupnou šířku pásma sítě, nikoli pouze servery, které hostují služby soubory Azure. Důrazně doporučujeme testování vaší vzor používání a zjistit, zda škálovatelnost a výkon Azure Files splňují vaše požadavky. Můžeme také usilujeme o to zvyšujícími se tato omezení v čase. Nemusíte si prosím váhajíi sdělit svůj názor, a to buď v komentářích níže, nebo ve [službě Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files), o kterých omezeních byste chtěli zobrazit zvýšení.
+Škálovatelnost a výkonnostní cíle uvedené zde jsou špičkové cíle, ale mohou být ovlivněny jinými proměnnými ve vašem nasazení. Propustnost souboru může být například také omezena dostupnou šířkou pásma sítě, nikoli pouze servery hostujícími službu Azure Files. Důrazně doporučujeme otestovat vzor využití, abyste zjistili, jestli škálovatelnost a výkon souborů Azure splňují vaše požadavky. Jsme také odhodláni tyto limity časem zvyšovat. Neváhejte nám poskytnout zpětnou vazbu, ať už v komentářích níže nebo na [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files), o kterých limitech byste chtěli, abychom se zvýšili.
 
-## <a name="azure-storage-account-scale-targets"></a>Cíle škálování účtu Azure storage
+## <a name="azure-storage-account-scale-targets"></a>Cíle škálování účtu úložiště Azure
 
-Nadřazený prostředek pro sdílené složky Azure je účet úložiště Azure. Účet úložiště představuje fond úložiště v Azure, které je možné k ukládání dat pomocí několika služeb úložiště, včetně souborů Azure. Jiné služby, které ukládají data v účtech úložiště, jsou Azure Blob storage, Azure Queue storage a Azure Table storage. Následující cíle, které se vztahují všechny služby storage, ukládání dat v účtu úložiště:
+Nadřazený prostředek pro sdílenou složku Azure je účet úložiště Azure. Účet úložiště představuje fond úložiště v Azure, který může používat více služeb úložiště, včetně souborů Azure, k ukládání dat. Další služby, které ukládají data v účtech úložiště, jsou úložiště objektů blob Azure, úložiště fronty Azure a úložiště Azure Table. Následující cíle platí pro všechny služby úložiště, které ukládají data v účtu úložiště:
 
 [!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 > [!Important]  
-> Využití účtu úložiště pro obecné účely z jiných služeb úložiště má vliv na sdílené složky Azure v účtu úložiště. Například pokud dosáhnete maximální úložnou kapacitu účtu úložiště objektů Blob v Azure, nebudete moct vytvořit nové soubory ve sdílené složky Azure, i v případě, že sdílené složky Azure je nižší než maximální sdílené složky size.
+> Využití účtu úložiště pro obecné účely z jiných služeb úložiště ovlivňuje vaše sdílené složky Azure ve vašem účtu úložiště. Pokud například dosáhnete maximální kapacity účtu úložiště úložiště objektů blob Azure, nebudete moct vytvářet nové soubory ve sdílené složce Azure, i když je sdílená složka Azure pod maximální velikostí sdílené složky.
 
-## <a name="azure-files-scale-targets"></a>Azure soubory měřítko cíle
+## <a name="azure-files-scale-targets"></a>Cíle škálování souborů Azure
 
-Existují tři kategorie omezení, které je třeba vzít v úvahu pro soubory Azure: účty úložiště, sdílené složky a soubory.
+Existují tři kategorie omezení, která je třeba zvážit pro soubory Azure: účty úložiště, sdílené složky a soubory.
 
-Například: u souborů úrovně Premium může jedna sdílená složka dosahovat 100 000 vstupně-výstupních operací a jeden soubor může škálovat až 5 000 IOPS. Takže pokud máte tři soubory v jedné sdílené složce, maximální IOPS, kterou můžete z této sdílené složky získat, je 15 000.
+Příklad: U prémiových sdílených složek může jedna sdílená složka dosáhnout 100 000 vstupně-upů a jeden soubor může škálovat až na 5 000 vstupně-upů. Takže pokud máte tři soubory v jedné sdílené složce, maximální viops můžete získat z této sdílené položky je 15 000.
 
-### <a name="standard-storage-account-limits"></a>Omezení účtu úložiště úrovně Standard
+### <a name="standard-storage-account-limits"></a>Standardní limity účtů úložiště
 
-Tato omezení najdete v části [cíle škálování účtu Azure Storage](#azure-storage-account-scale-targets) .
+Viz oddíl [cíle škálování účtu úložiště Azure](#azure-storage-account-scale-targets) pro tato omezení.
 
-### <a name="premium-filestorage-account-limits"></a>Omezení účtu úložiště na úrovni Premium
+### <a name="premium-filestorage-account-limits"></a>Omezení účtu Premium FileStorage
 
 [!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
 
 > [!IMPORTANT]
-> Limity účtu úložiště se vztahují na všechny sdílené složky. Horizontální navýšení kapacity účtů úložiště je možné pouze v případě, že je pro každý účet úložiště k dispozici pouze jedna sdílená složka.
+> Limity účtu úložiště platí pro všechny sdílené složky. Škálování až na max pro účty FileStorage je dosažitelné pouze v případě, že existuje pouze jedna sdílená složka na účet FileStorage.
 
-### <a name="file-share-and-file-scale-targets"></a>Sdílení souborů a cíle pro škálování souborů
+### <a name="file-share-and-file-scale-targets"></a>Cíle sdílení souborů a škálování souborů
 
 > [!NOTE]
 > Standardní sdílené složky větší než 5 TiB mají určitá omezení a regionální omezení.
-> Seznam omezení, regionálních informací a pokynů, jak tyto větší velikosti sdílených složek povolit, najdete v části připojení [k větším sdíleným složkám](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) v příručce pro plánování souborů.
+> Seznam omezení, místní informace a pokyny k povolení těchto větších velikostí sdílené složky naleznete v části [Onboard to larger file shares](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) v příručce pro plánování.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
 [!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
-## <a name="azure-file-sync-scale-targets"></a>Azure File Sync měřítko cíle
+## <a name="azure-file-sync-scale-targets"></a>Cíle škálování v Synchronizaci souborů Azure
 
-Azure File Sync byla navržena s cílem neomezeného využití, ale neomezené využití není vždy možné. Následující tabulka uvádí hranice testování Microsoftu a také uvádí, které cíle jsou pevné meze:
+Azure File Sync byl navržen s cílem neomezené využití, ale neomezené využití není vždy možné. Následující tabulka označuje hranice testování společnosti Microsoft a také označuje, které cíle jsou pevné limity:
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
-### <a name="azure-file-sync-performance-metrics"></a>Metriky výkonu služby Azure File Sync
+### <a name="azure-file-sync-performance-metrics"></a>Metriky výkonu v Synchronizaci souborů Azure
 
-Agenta Azure File Sync běží na počítače s Windows serverem, který se připojuje k sdílené složky Azure, výkonu efektivní synchronizace závisí na řadě faktorů ve vaší infrastruktuře: Windows Server a základní konfiguraci disku, šířka pásma sítě mezi serverem a Azure storage, velikost souboru, velikost celkového datové sady a aktivit na datové sadě. Protože Azure File Sync funguje na úrovni souboru, výkonové charakteristiky řešení založené na Azure File Sync se lépe měří v počet objektů (soubory a adresáře) zpracovaných za sekundu.
+Vzhledem k tomu, že agent Azure File Sync běží na počítači se systémem Windows Server, který se připojuje ke sdíleným položkám souborů Azure, závisí efektivní výkon synchronizace na řadě faktorů ve vaší infrastruktuře: Windows Server a základní konfigurace disku, šířka pásma sítě mezi serverem a úložištěm Azure, velikostí souboru, celkovou velikostí datové sady a aktivitou v datové sadě. Vzhledem k tomu, že Azure File Sync funguje na úrovni souborů, výkonové charakteristiky řešení založené na synchronizaci souborů Azure se lépe měří v počtu objektů (souborů a adresářů) zpracovaných za sekundu.
 
-Výkon pro Azure File Sync, je důležité ve dvou fázích:
+Pro Azure File Sync je výkon důležitý ve dvou fázích:
 
-1. **Prvotní zřizování**: pro optimalizaci výkonu při počátečním zřizování najdete informace o optimálních podrobnostech o nasazení [pomocí Azure File Sync](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) .
-2. **Průběžná synchronizace**: po počátečním navýšení dat ve sdílených složkách Azure Azure File Sync udržuje několik koncových bodů v synchronizaci.
+1. **Počáteční jednorázové zřizování : Chcete-li**optimalizovat výkon při počátečním zřizování, podívejte se [na onboarding s Azure File Sync](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) pro podrobnosti o optimálním nasazení.
+2. **Průběžná synchronizace**: Po počátečním nastavení dat ve sdílených složek souborů Azure azure file sync udržuje více koncových bodů v synchronizaci.
 
-Při plánování nasazení pro každou z fází, níže jsou výsledky pozorovány při interním testování v systému, konfigurace
+Chcete-li naplánovat nasazení pro každou z fází, níže jsou níže zjištěné výsledky během interního testování v systému s konfigurací
 
 | Konfigurace systému |  |
 |-|-|
-| Procesor | 64 virtuálních jader s 64 MiB L3 |
-| Paměť | 128 GiB |
-| Disk | Disky SAS pomocí diskového pole RAID 10 s baterie podporou mezipaměti |
-| Síť | 1 GB/s síť |
-| Úloha | Souborový Server pro obecné účely|
+| Procesor | 64 virtuálních jader s 64 mib l3 cache |
+| Memory (Paměť) | 128 GiB |
+| Disk | Disky SAS s raidem 10 s bateriovou zpětnou mezipaměťí |
+| Network (Síť) | Síť 1 Gb/s |
+| Úloha | Souborový server pro obecné účely|
 
 | Počáteční jednorázové zřizování  |  |
 |-|-|
-| Počet objektů | objekty 25 000 000 |
-| Velikost datové sady| ~ 4,7 TiB |
+| Počet objektů | 25 milionů objektů |
+| Velikost datové sady| ~4,7 TiB |
 | Průměrná velikost souboru | ~ 200 KiB (největší soubor: 100 GiB) |
-| Nahrát propustnost | 20 objektů za sekundu na skupinu synchronizace |
-| Namespace stahování propustnost * | 400 objektů za sekundu |
+| Propustnost nahrávání | 20 objektů za sekundu na skupinu synchronizace |
+| Propustnost ke stažení oboru názvů* | 400 objektů za sekundu |
 
-\* Když se vytvoří nový koncový bod serveru, agenta Azure File Sync nebude stahovat žádný obsah souboru. Nejprve synchronizuje úplný obor názvů a pak aktivační události na pozadí spojené s vracením ke stažení souborů, buď v plné výši nebo vrstvení cloudu, pokud je povoleno, nastavte na koncovém bodu serveru zásad vrstvení cloudu.
+*Při vytvoření nového koncového bodu serveru agent Azure File Sync nestáhne žádný obsah souboru. Nejprve synchronizuje celý obor názvů a potom aktivuje vyvolání pozadí ke stažení souborů, a to buď v plném rozsahu, nebo, pokud je povoleno vrstvení cloudu, do zásady vrstvení cloudu nastavené na koncovém bodu serveru.
 
 | Probíhající synchronizace  |   |
 |-|--|
-| Počet objektů, které jsou synchronizovány| 125,000 objekty (klidové vytížení ~ 1 %) |
-| Velikost datové sady| 50 GB |
-| Průměrná velikost souboru | ~ 500 KiB |
-| Nahrát propustnost | 20 objektů za sekundu na skupinu synchronizace |
-| Úplné stažení propustnost * | 60 objektů za sekundu |
+| Počet synchronizovaných objektů| 125 000 objektů (~1% konve) |
+| Velikost datové sady| 50 GiB |
+| Průměrná velikost souboru | ~500 KiB |
+| Propustnost nahrávání | 20 objektů za sekundu na skupinu synchronizace |
+| Úplná propustnost ke stažení* | 60 objektů za sekundu |
 
-\* Pokud cloudu ovládání datových vrstev je povolená, budete pravděpodobně sledovat lepší výkon jako pouze některá data se stáhne soubor. Azure File Sync stáhne jenom data uložená v mezipaměti souborů, když se změní na žádném z koncových bodů. Vrstvené nebo nově vytvořené soubory agent nebude stahovat data souborů a místo toho synchronizuje pouze obor názvů pro všechny koncové body serveru. Agent také podporuje částečné stažení vrstvené soubory jsou přístupné uživatelem. 
+*Pokud je povoleno vrstvení cloudu, budete pravděpodobně sledovat lepší výkon, protože se stahují pouze některá data souboru. Azure File Sync stáhne data souborů uložených v mezipaměti pouze v případě, že jsou změněny na některý z koncových bodů. U všech vrstvených nebo nově vytvořených souborů agent nestáhne data souboru a místo toho pouze synchronizuje obor názvů se všemi koncovými body serveru. Agent také podporuje částečné stahování vrstvených souborů, jak jsou přístupné uživatelem. 
 
 > [!Note]  
-> Výše uvedených čísel nejsou údaj o výkon, který bude probíhat. Skutečný výkon bude záviset na několika faktorech, jak je uvedeno na začátku této části.
+> Výše uvedená čísla nejsou známkou výkonu, který zažijete. Skutečný výkon bude záviset na více faktorech, jak je uvedeno na začátku této části.
 
-Jako obecné vodítko pro vaše nasazení byste měli mít na paměti několik věcí:
+Jako obecný průvodce pro vaše nasazení, měli byste mít na paměti několik věcí:
 
-- Objekt propustnost přibližně škáluje poměru k počtu skupin synchronizace na serveru. Rozdělení dat do více skupin synchronizace na serveru poskytuje vyšší propustnost, což je také omezena serveru a sítě.
-- Objekt propustnost je nepřímo úměrná MiB za druhé propustnost. Pro menší soubory se budou mít vyšší výkon z hlediska počtu objektů zpracovaných za druhé, ale nižší MiB za druhé propustnost. Naopak pro větší soubory, zobrazí se méně objektů zpracovaných za druhé, ale vyšší MiB za druhé propustnost. MiB za druhé propustnost je omezená cíle škálování Azure Files.
+- Propustnost objektu se přibližně škáluje v poměru k počtu skupin synchronizace na serveru. Rozdělení dat do více skupin synchronizace na serveru poskytuje lepší propustnost, která je také omezena serverem a sítí.
+- Propustnost objektu je nepřímo úměrná propustnostmi MiB za sekundu. U menších souborů dojde k vyšší propustnosti z hlediska počtu objektů zpracovaných za sekundu, ale nižší propustnost MiB za sekundu. Naopak u větších souborů získáte méně objektů zpracovaných za sekundu, ale vyšší propustnost MiB za sekundu. Propustnost MiB za sekundu je omezena cíli škálování souborů Azure.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
 - [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)

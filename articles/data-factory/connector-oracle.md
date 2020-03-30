@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z a do Oracle pomocí Azure Data Factory
-description: Naučte se, jak kopírovat data z podporovaných úložišť zdrojů do databáze Oracle nebo z Oracle na podporovaná úložiště jímky pomocí Data Factory.
+title: Kopírování dat do a z Oracle pomocí Azure Data Factory
+description: Zjistěte, jak kopírovat data z podporovaných zdrojových úložišť do databáze Oracle nebo z databáze Oracle do podporovaných úložišť jímek pomocí data factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,87 +12,87 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244508"
 ---
-# <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do Oracle pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
+# <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do společnosti Oracle pomocí Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-onprem-oracle-connector.md)
 > * [Aktuální verze](connector-oracle.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z a do databáze Oracle. Sestaví se na [Přehled aktivit kopírování](copy-activity-overview.md).
+Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat z databáze Oracle a do databáze Oracle. Vychází z [přehledu aktivity kopírování](copy-activity-overview.md).
 
-## <a name="supported-capabilities"></a>Podporované funkce
+## <a name="supported-capabilities"></a>Podporované možnosti
 
-Tento konektor Oracle se podporuje pro následující činnosti:
+Tento konektor Oracle je podporován pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
-- [Aktivita Lookup](control-flow-lookup-activity.md)
+- [Kopírování aktivity](copy-activity-overview.md) s [podporovanou maticí zdrojového/jímky](copy-activity-overview.md)
+- [Vyhledávací aktivita](control-flow-lookup-activity.md)
 
-Data z databáze Oracle můžete kopírovat do libovolného podporovaného úložiště dat jímky. Data můžete také kopírovat z libovolného podporovaného zdrojového úložiště dat do databáze Oracle. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje nebo jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
+Data z databáze Oracle můžete zkopírovat do libovolného podporovaného úložiště dat jímky. Můžete také zkopírovat data z libovolného podporovaného zdrojového úložiště dat do databáze Oracle. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivity kopírování, naleznete v tabulce [Podporovaná úložiště dat.](copy-activity-overview.md#supported-data-stores-and-formats)
 
 Konkrétně tento konektor Oracle podporuje:
 
 - Následující verze databáze Oracle:
-    - Oracle 18c R1 (18,1) a vyšší
-    - Oracle 12c R1 (12,1) a vyšší
-    - Oracle 11g R1 (11,1) a vyšší
-    - Oracle 10g R1 (10,1) a vyšší
-    - Oracle 9i R2 (9,2) a vyšší
+    - Oracle 18c R1 (18.1) a vyšší
+    - Oracle 12c R1 (12.1) a vyšší
+    - Oracle 11g R1 (11.1) a vyšší
+    - Oracle 10g R1 (10.1) a vyšší
+    - Oracle 9i R2 (9.2) a vyšší
     - Oracle 8i R3 (8.1.7) a vyšší
-    - Služba Oracle Database Cloud Exadata
-- Paralelní kopírování ze zdroje Oracle. Podrobnosti najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) .
+    - Služba Exadata Oracle Database Cloud
+- Paralelní kopírování ze zdroje Oracle. Podrobnosti najdete v části [Paralelní kopie z oracle.](#parallel-copy-from-oracle)
 
 > [!Note]
-> Proxy server Oracle se nepodporuje.
+> Proxy server Oracle není podporován.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
 
-Modul runtime integrace poskytuje integrovaný ovladač Oracle. Proto nemusíte při kopírování dat z a do Oracle ručně instalovat ovladač.
+Integrační runtime poskytuje integrovaný ovladač Oracle. Proto není nutné ručně nainstalovat ovladač při kopírování dat z a do Oracle.
 
 ## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro konektor Oracle.
+V následujících částech jsou uvedeny podrobnosti o vlastnostech, které se používají k definování entit Data Factory specifických pro konektor Oracle.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
 
 Propojená služba Oracle podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavena na hodnotu **Oracle**. | Ano |
-| connectionString | Určuje informace potřebné pro připojení k instanci Oracle Database. <br/>Můžete také vložit heslo do Azure Key Vault a načíst `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje uložené v Azure Key Vault](store-credentials-in-key-vault.md) . <br><br>**Podporovaný typ připojení**: k identifikaci databáze můžete použít název **Oracle SID** nebo **Oracle** :<br>– Pokud používáte SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud používáte název služby: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>V případě pokročilých možností nativního připojení Oracle se můžete rozhodnout přidat položku v [souboru Tnsnames. ORA](http://www.orafaq.com/wiki/Tnsnames.ora) soubor na serveru Oracle a v propojené službě ADF Oracle vyberte použít typ připojení název služby Oracle a nakonfigurujte odpovídající název služby. | Ano |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
+| type | Vlastnost type musí být nastavena na **oracle**. | Ano |
+| připojovací řetězec | Určuje informace potřebné k připojení k instanci databáze Oracle Database. <br/>Můžete také umístit heslo v Azure Key `password` Vault a vyžádat konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovacích údajích úložiště v úložišti klíčů Azure.](store-credentials-in-key-vault.md) <br><br>**Podporovaný typ připojení**: K identifikaci databáze můžete použít aplikaci **Oracle SID** nebo **Název služby Oracle:**<br>- Pokud používáte SID:`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- Pokud používáte název služby:`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>Pro pokročilé možnosti nativního připojení Oracle můžete přidat položku v [TNSNAMES. Ora](http://www.orafaq.com/wiki/Tnsnames.ora) na serveru Oracle a ve službě ADF Oracle linked service se rozhodnete použít typ připojení Název služby Oracle a nakonfigurovat odpovídající název služby. | Ano |
+| connectVia | [Integrační runtime,](concepts-integration-runtime.md) který se má použít k připojení k úložišti dat. Další informace naleznete v části [Požadavky.](#prerequisites) Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!TIP]
->Pokud se zobrazí chyba, "ORA-01025: parametr UPI je mimo rozsah", a vaše verze Oracle je 8i, přidejte `WireProtocolMode=1` do připojovacího řetězce. Pak to zkuste znovu.
+>Pokud se zobrazí chyba "ORA-01025: UPI parametr mimo rozsah" a vaše `WireProtocolMode=1` verze Oracle je 8i, přidejte do připojovacího řetězce. Opakujte.
 
-Další vlastnosti připojení můžete nastavit v připojovacím řetězci pro váš případ:
+Další vlastnosti připojení, které můžete nastavit v připojovacím řetězci podle případu:
 
 | Vlastnost | Popis | Povolené hodnoty |
 |:--- |:--- |:--- |
-| ArraySize |Počet bajtů, které může konektor načíst v jedné síťové výměně. Například `ArraySize=‭10485760‬`.<br/><br/>Větší hodnoty zvyšují propustnost tím, že se snižuje počet načítajících dat napříč sítí. Menší hodnoty zvyšují dobu odezvy, protože existuje méně zpoždění čekání na server, který odesílá data. | Celé číslo od 1 do 4294967296 (4 GB). Výchozí hodnota je `60000`. Hodnota 1 nedefinuje počet bajtů, ale označuje přidělení místa pro přesně jeden řádek dat. |
+| Velikost pole |Počet bajtů, které může konektor načíst v jedné síti. `ArraySize=‭10485760‬`Např.<br/><br/>Větší hodnoty zvyšují propustnost snížením počtu načítání dat v síti. Menší hodnoty zvyšují dobu odezvy, protože je menší zpoždění čekání na server k přenosu dat. | Celé číslo od 1 do 4294967296 (4 GB). Výchozí hodnota `60000`je . Hodnota 1 nedefinuje počet bajtů, ale označuje přidělení místa přesně pro jeden řádek dat. |
 
-Pokud chcete povolit šifrování u připojení Oracle, máte dvě možnosti:
+Chcete-li povolit šifrování v připojení Oracle, máte dvě možnosti:
 
--   Pokud chcete použít **šifrování 3DES (Triple-DES) a standard AES (Advanced Encryption Standard) (AES)** , na straně serveru Oracle přejít na server Oracle Advanced Security (OAS) a nakonfigurovat nastavení šifrování. Podrobnosti najdete v [dokumentaci k systému Oracle](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Konektor pro vývoj aplikací Oracle (ADF) automaticky vyjednává metodu šifrování, aby používala tu, kterou nakonfigurujete v OAS při navazování připojení k Oracle.
+-   Chcete-li použít **triple-DES encryption (3DES) a Advanced Encryption Standard (AES) ( AES)** na straně serveru Oracle, přejděte na oracle advanced security (OAS) a nakonfigurujte nastavení šifrování. Podrobnosti naleznete v této [dokumentaci k řešení Oracle](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Konektor Oracle Application Development Framework (ADF) automaticky vyjedná metodu šifrování tak, aby při navazování připojení k řešení Oracle používala metodu konfigurace v aplikaci OAS.
 
--   Použití **protokolu SSL**:
+-   Použití **ssl**:
 
-    1.  Získejte informace o certifikátu SSL. Získejte informace o certifikátu SSL s kódováním kódování DER (DER) a uložte výstup (-----zahájit certifikát... Ukončit certifikát-----) jako textový soubor.
+    1.  Získejte informace o certifikátu SSL. Získejte informace o certifikátu s kódováním (DER) kódovaná odlišenými písmeny (DER) a uložte výstup (----- Begin Certificate ... Koncový certifikát -----) jako textový soubor.
 
         ```
         openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text
         ```
 
-        **Příklad:** Extrahujte informace o certifikátu z DERcert. cer a pak výstup uložte do souboru CERT. txt.
+        **Příklad:** Extrahujte informace o certifikátu z souboru DERcert.cer a potom uložte výstup na soubor cert.txt.
 
         ```
         openssl x509 -inform DER -in DERcert.cer -text
@@ -106,7 +106,7 @@ Pokud chcete povolit šifrování u připojení Oracle, máte dvě možnosti:
         -----END CERTIFICATE-----
         ```
     
-    2.  Sestavte `keystore` nebo `truststore`. Následující příkaz vytvoří soubor `truststore` s heslem nebo bez něj, ve formátu PKCS-12.
+    2.  Sestavení `keystore` nebo `truststore`. Následující příkaz vytvoří `truststore` soubor, s nebo bez hesla, ve formátu PKCS-12.
 
         ```
         openssl pkcs12 -in [Path to the file created in the previous step] -out [Path and name of TrustStore] -passout pass:[Keystore PWD] -nokeys -export
@@ -118,8 +118,8 @@ Pokud chcete povolit šifrování u připojení Oracle, máte dvě možnosti:
         openssl pkcs12 -in cert.txt -out MyTrustStoreFile -passout pass:ThePWD -nokeys -export  
         ```
 
-    3.  `truststore` soubor umístěte do místního počítače IR. Soubor umístěte například na C:\MyTrustStoreFile.
-    4.  V Azure Data Factory nakonfigurujte připojovací řetězec Oracle pomocí `EncryptionMethod=1` a odpovídající `TrustStore`/`TrustStorePassword`hodnota. například `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`.
+    3.  Umístěte `truststore` soubor na samoobslužný infračervený počítač. Umístěte například soubor na c:\MyTrustStoreFile.
+    4.  V Azure Data Factory nakonfigurujte `TrustStore` / `TrustStorePassword`připojovací řetězec Oracle s `EncryptionMethod=1` odpovídající hodnotou. Například, `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`.
 
 **Příklad:**
 
@@ -139,7 +139,7 @@ Pokud chcete povolit šifrování u připojení Oracle, máte dvě možnosti:
 }
 ```
 
-**Příklad: uložení hesla v Azure Key Vault**
+**Příklad: ukládání hesla v trezoru klíčů Azure**
 
 ```json
 {
@@ -166,16 +166,16 @@ Pokud chcete povolit šifrování u připojení Oracle, máte dvě možnosti:
 ```
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-V této části najdete seznam vlastností podporovaných datovou sadou Oracle. Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v tématu [datové sady](concepts-datasets-linked-services.md). 
+Tato část obsahuje seznam vlastností podporovaných datovou sadou Oracle. Úplný seznam oddílů a vlastností dostupných pro definování datových sad naleznete v [tématu Datové sady](concepts-datasets-linked-services.md). 
 
-Chcete-li kopírovat data z a do Oracle, nastavte vlastnost typ datové sady na `OracleTable`. Jsou podporovány následující vlastnosti.
+Chcete-li kopírovat data z a do oracle, `OracleTable`nastavte vlastnost typu datové sady na . Podporovány jsou následující vlastnosti.
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na `OracleTable`. | Ano |
-| schéma | Název schématu. |Ne pro zdroj, Ano pro jímku  |
-| tabulka | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
-| tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table`. | Ne pro zdroj, Ano pro jímku |
+| type | Vlastnost type datové sady musí být `OracleTable`nastavena na . | Ano |
+| Schématu | Název schématu. |Ne pro zdroj, Ano pro umyvadlo  |
+| tabulka | Název tabulky/zobrazení. |Ne pro zdroj, Ano pro umyvadlo  |
+| tableName | Název tabulky/zobrazení se schématem. Tato vlastnost je podporována pro zpětnou kompatibilitu. Pro nové pracovní `schema` `table`vytížení, použití a . | Ne pro zdroj, Ano pro umyvadlo |
 
 **Příklad:**
 
@@ -200,25 +200,25 @@ Chcete-li kopírovat data z a do Oracle, nastavte vlastnost typ datové sady na 
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-V této části najdete seznam vlastností podporovaných zdrojem a jímkou Oracle. Úplný seznam oddílů a vlastností dostupných pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md). 
+Tato část obsahuje seznam vlastností podporovaných zdrojem oracle a jímkou. Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v [tématu Potrubí](concepts-pipelines-activities.md). 
 
-### <a name="oracle-as-source"></a>Oracle as source
+### <a name="oracle-as-source"></a>Oracle jako zdroj
 
 >[!TIP]
->Pokud chcete data z Oracle načítat efektivně pomocí dělení dat, přečtěte si další informace z [paralelní kopie od Oracle](#parallel-copy-from-oracle).
+>Chcete-li efektivně načítat data z oracle pomocí dělení dat, další informace z [paralelní kopie od oracle](#parallel-copy-from-oracle).
 
-Chcete-li kopírovat data z Oracle, nastavte typ zdroje v aktivitě kopírování na `OracleSource`. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti.
+Chcete-li zkopírovat data z oracle, nastavte `OracleSource`typ zdroje v aktivitě kopírování na . Následující vlastnosti jsou podporovány v části **zdroje aktivity** kopírování.
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na `OracleSource`. | Ano |
-| oracleReaderQuery | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"`.<br>Pokud povolíte rozdělené zatížení, musíte v dotazu připojit všechny odpovídající předdefinované parametry oddílu. Příklady najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | Ne |
-| partitionOptions | Určuje možnosti dělení dat, které se používají k načtení dat z Oracle. <br>Povolené hodnoty jsou: **none** (default), **PhysicalPartitionsOfTable** a **DynamicRange**.<br>Když je povolená možnost oddílu (to znamená, že ne `None`), je stupeň paralelismu na souběžně načtené data z databáze Oracle ovládán nastavením [`parallelCopies`](copy-activity-performance.md#parallel-copy) v aktivitě kopírování. | Ne |
-| partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud není možnost oddílu `None`. | Ne |
-| partitionNames | Seznam fyzických oddílů, které je třeba zkopírovat. <br>Použijte, pokud je možnost oddílu `PhysicalPartitionsOfTable`. Pokud použijete dotaz k načtení zdrojových dat, zapojte `?AdfTabularPartitionName` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | Ne |
-| partitionColumnName | Zadejte název zdrojového sloupce **v typu Integer** , který bude použit pro vytváření oddílů rozsahu pro paralelní kopírování. Pokud není zadaný, primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition. <br>Použijte, pokud je možnost oddílu `DynamicRange`. Pokud použijete dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionColumnName` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | Ne |
-| partitionUpperBound | Maximální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je možnost oddílu `DynamicRange`. Pokud použijete dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionUpbound` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | Ne |
-| partitionLowerBound | Minimální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je možnost oddílu `DynamicRange`. Pokud použijete dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionLowbound` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | Ne |
+| type | Vlastnost type zdroje aktivity kopírování musí `OracleSource`být nastavena na . | Ano |
+| oracleReaderQuery | Ke čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`.<br>Když povolíte rozdělené zatížení, je třeba připojit všechny odpovídající vestavěné parametry oddílu v dotazu. Příklady naleznete [paralelní kopie z Oracle](#parallel-copy-from-oracle) části. | Ne |
+| partitionOptions | Určuje možnosti dělení dat použité k načtení dat z oracle. <br>Povolené hodnoty jsou: **None** (výchozí), **PhysicalPartitionsOfTable** , a **DynamicRange**.<br>Pokud je povolena možnost oddílu `None`(to znamená, že ne ), stupeň paralelismu souběžně načítat data z databáze Oracle je řízen [`parallelCopies`](copy-activity-performance.md#parallel-copy) nastavení na aktivitu kopírování. | Ne |
+| partitionSettings | Zadejte skupinu nastavení pro dělení dat. <br>Použít, pokud možnost oddílu není `None`. | Ne |
+| partitionNames | Seznam fyzických oddílů, které je třeba zkopírovat. <br>Použít, pokud je `PhysicalPartitionsOfTable`možnost oddílu . Pokud použijete dotaz k načtení `?AdfTabularPartitionName` zdrojových dat, zavěste do klauzule WHERE. Příklad naleznete v části [Paralelní kopie z oracle.](#parallel-copy-from-oracle) | Ne |
+| partitionColumnName | Zadejte název zdrojového sloupce **v typu celé číslo,** který bude použit dělením rozsahu pro paralelní kopírování. Pokud není zadán, primární klíč tabulky je automaticky rozpoznán a použit jako sloupec oddílu. <br>Použít, pokud je `DynamicRange`možnost oddílu . Pokud použijete dotaz k načtení `?AdfRangePartitionColumnName` zdrojových dat, zavěste do klauzule WHERE. Příklad naleznete v části [Paralelní kopie z oracle.](#parallel-copy-from-oracle) | Ne |
+| partitionUpperBound | Maximální hodnota sloupce oddílu pro kopírování dat. <br>Použít, pokud je `DynamicRange`možnost oddílu . Pokud použijete dotaz k načtení `?AdfRangePartitionUpbound` zdrojových dat, zavěste do klauzule WHERE. Příklad naleznete v části [Paralelní kopie z oracle.](#parallel-copy-from-oracle) | Ne |
+| oddíl LowerBound | Minimální hodnota sloupce oddílu zkopírovat data. <br>Použít, pokud je `DynamicRange`možnost oddílu . Pokud použijete dotaz k načtení `?AdfRangePartitionLowbound` zdrojových dat, zavěste do klauzule WHERE. Příklad naleznete v části [Paralelní kopie z oracle.](#parallel-copy-from-oracle) | Ne |
 
 **Příklad: kopírování dat pomocí základního dotazu bez oddílu**
 
@@ -252,16 +252,16 @@ Chcete-li kopírovat data z Oracle, nastavte typ zdroje v aktivitě kopírován�
 ]
 ```
 
-### <a name="oracle-as-sink"></a>Oracle jako jímka
+### <a name="oracle-as-sink"></a>Oracle jako umyvadlo
 
-Chcete-li kopírovat data do Oracle, nastavte typ jímky v aktivitě kopírování na `OracleSink`. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti.
+Chcete-li zkopírovat data do společnosti Oracle, `OracleSink`nastavte typ jímky v aktivitě kopírování na . Následující vlastnosti jsou podporovány v části **jímky** aktivity kopírování.
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na `OracleSink`. | Ano |
-| writeBatchSize | Když velikost vyrovnávací paměti dosáhne `writeBatchSize`, vloží data do tabulky SQL.<br/>Povolené hodnoty jsou celé číslo (počet řádků). |Ne (výchozí hodnota je 10 000) |
-| writeBatchTimeout | Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu.<br/>Povolené hodnoty jsou TimeSpan. Příklad je 00:30:00 (30 minut). | Ne |
-| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do Oracle při každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. | Ne |
+| type | Vlastnost type jímky aktivity kopírování `OracleSink`musí být nastavena na . | Ano |
+| writeBatchSize | Vloží data do tabulky SQL, když `writeBatchSize`velikost vyrovnávací paměti dosáhne .<br/>Povolené hodnoty jsou Integer (počet řádků). |Ne (výchozí hodnota je 10 000) |
+| writeBatchTimeout | Čekací doba pro operaci dávkové vložení k dokončení před časovým oběhem.<br/>Povolené hodnoty jsou Timespan. Příkladem je 00:30:00 (30 minut). | Ne |
+| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která má být spuštěna před zápisem dat do oracle v každém spuštění. Tuto vlastnost můžete použít k vyčištění přednačtených dat. | Ne |
 
 **Příklad:**
 
@@ -294,24 +294,24 @@ Chcete-li kopírovat data do Oracle, nastavte typ jímky v aktivitě kopírován
 ]
 ```
 
-## <a name="parallel-copy-from-oracle"></a>Paralelní kopírování z Oracle
+## <a name="parallel-copy-from-oracle"></a>Paralelní kopie od společnosti Oracle
 
-Konektor Data Factory Oracle nabízí integrované vytváření oddílů dat pro kopírování dat z Oracle paralelně. Možnosti dělení dat můžete najít na kartě **zdroj** aktivity kopírování.
+Konektor Oracle data factory poskytuje integrované dělení dat pro paralelní kopírování dat z oracle. Možnosti dělení dat najdete na kartě **Zdroj** aktivity kopírování.
 
-![Snímek obrazovky s možnostmi oddílů](./media/connector-oracle/connector-oracle-partition-options.png)
+![Snímek obrazovky s možnostmi oddílu](./media/connector-oracle/connector-oracle-partition-options.png)
 
-Když povolíte dělenou kopii, Data Factory spustí paralelní dotazy na zdroj Oracle a načte data podle oddílů. Paralelní míra je řízena nastavením [`parallelCopies`](copy-activity-performance.md#parallel-copy) u aktivity kopírování. Pokud jste například nastavili `parallelCopies` na čtyři, Data Factory souběžně generuje a spustí čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z databáze Oracle.
+Když povolíte dělenou kopii, Data Factory spustí paralelní dotazy proti zdroji Oracle pro načtení dat pomocí oddílů. Paralelní stupeň je [`parallelCopies`](copy-activity-performance.md#parallel-copy) řízen nastavením aktivity kopírování. Pokud například nastavíte `parallelCopies` na čtyři, data factory současně generuje a spouští čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z databáze Oracle.
 
-Navrhnete, abyste umožnili paralelní kopírování s vytvářením oddílů dat zvlášť při načítání velkého množství dat z databáze Oracle. Následují Doporučené konfigurace pro různé scénáře. Při kopírování dat do úložiště dat založeného na souborech je znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (zadejte pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
+Doporučujeme povolit paralelní kopírování s dělením dat, zejména při načítání velkého množství dat z databáze Oracle. Níže jsou navrženy konfigurace pro různé scénáře. Při kopírování dat do úložiště dat založeného na souborech je připonuto zapisovat do složky jako více souborů (pouze zadejte název složky), v takovém případě je výkon lepší než zápis do jednoho souboru.
 
 | Scénář                                                     | Navrhovaná nastavení                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Úplné načtení z velké tabulky s fyzickými oddíly.          | **Možnost oddílu**: fyzické oddíly tabulky. <br><br/>Během provádění Data Factory automaticky detekuje fyzické oddíly a kopíruje data podle oddílů. |
-| Úplné načtení z velké tabulky bez fyzických oddílů spolu se sloupcem typu Integer pro dělení dat. | **Možnosti oddílu**: dynamický oddíl rozsahu.<br>**Partition – sloupec**: Určete sloupec, který se používá k dělení dat. Pokud není zadaný, použije se sloupec primárního klíče. |
-| Pomocí vlastního dotazu s fyzickými oddíly načtěte velké množství dat. | **Možnost oddílu**: fyzické oddíly tabulky.<br>**Dotaz**: `SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`.<br>**Název oddílu**: Zadejte názvy oddílů, ze kterých se mají kopírovat data. Pokud není zadaný, Data Factory automaticky detekuje fyzické oddíly v tabulce, kterou jste zadali v datové sadě Oracle.<br><br>Během provádění Data Factory nahradí `?AdfTabularPartitionName` skutečným názvem oddílu a odesílá je do Oracle. |
-| Načtěte velké množství dat pomocí vlastního dotazu bez fyzických oddílů a zároveň se sloupcem typu Integer pro dělení dat. | **Možnosti oddílu**: dynamický oddíl rozsahu.<br>**Dotaz**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Partition – sloupec**: Určete sloupec, který se používá k dělení dat. Můžete rozdělit na sloupec s datovým typem Integer.<br>**Horní hranice oddílu** a **dolní mez oddílu**: Určete, jestli chcete filtrovat podle sloupce oddílů, aby se načetla data jenom mezi dolním a horním rozsahem.<br><br>Během provádění Data Factory nahradí `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound`a `?AdfRangePartitionLowbound` skutečný název sloupce a rozsahy hodnot pro každý oddíl a pošle je do Oracle. <br>Pokud je například sloupec oddílu "ID" nastaven s dolní hranicí jako 1 a horní mez jako 80, s paralelní kopií nastavenou na 4, Data Factory načte data po 4 oddíly. Jejich ID jsou mezi [1, 20], [21, 40], [41, 60] a [61, 80] v uvedeném pořadí. |
+| Plné zatížení z velké tabulky s fyzickými oddíly.          | **Možnost oddílu**: Fyzické oddíly tabulky. <br><br/>Během provádění Data Factory automaticky detekuje fyzické oddíly a zkopíruje data podle oddílů. |
+| Úplné zatížení z velké tabulky, bez fyzických oddílů, zatímco s celočíselným sloupcem pro dělení dat. | **Možnosti oddílu**: Oddíl dynamického rozsahu.<br>**Sloupec oddílu**: Zadejte sloupec použitý k rozdělení dat. Pokud není zadán, použije se sloupec primárního klíče. |
+| Načtěte velké množství dat pomocí vlastního dotazu s fyzickými oddíly. | **Možnost oddílu**: Fyzické oddíly tabulky.<br>**Dotaz** `SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`: .<br>**Název oddílu**: Zadejte názvy oddílů, ze kterých chcete kopírovat data. Pokud není zadán, data factory automaticky detekuje fyzické oddíly v tabulce, kterou jste zadali v datové sadě Oracle.<br><br>Během provádění data factory `?AdfTabularPartitionName` nahradí skutečný název oddílu a odešle společnosti Oracle. |
+| Načtěte velké množství dat pomocí vlastního dotazu bez fyzických oddílů, zatímco s celým sloupcem pro dělení dat. | **Možnosti oddílu**: Oddíl dynamického rozsahu.<br>**Dotaz** `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`: .<br>**Sloupec oddílu**: Zadejte sloupec použitý k rozdělení dat. Můžete oddíl proti sloupci s celýdatový typ.<br>**Horní mez oddílu** a **dolní mez oddílu**: Určete, zda chcete filtrovat proti sloupci oddílu, chcete-li načíst data pouze mezi dolní a horní oblastí.<br><br>Během provádění data factory `?AdfRangePartitionColumnName` `?AdfRangePartitionUpbound`nahradí `?AdfRangePartitionLowbound` , a skutečné názvy sloupců a rozsahy hodnot pro každý oddíl a odešle společnosti Oracle. <br>Například pokud je sloupec oddílu "ID" nastaven s dolní mezí jako 1 a horní mez jako 80, s paralelní kopií nastavenou jako 4, Data Factory načte data o 4 oddíly. Jejich ID jsou mezi [1,20], [21, 40], [41, 60], a [61, 80]. |
 
-**Příklad: dotazování pomocí fyzického oddílu**
+**Příklad: dotaz s fyzickým oddílem**
 
 ```json
 "source": {
@@ -327,7 +327,7 @@ Navrhnete, abyste umožnili paralelní kopírování s vytvářením oddílů da
 }
 ```
 
-**Příklad: dotaz s dynamickým oddílem rozsahu**
+**Příklad: dotaz s oddílem dynamického rozsahu**
 
 ```json
 "source": {
@@ -342,40 +342,40 @@ Navrhnete, abyste umožnili paralelní kopírování s vytvářením oddílů da
 }
 ```
 
-## <a name="data-type-mapping-for-oracle"></a>Mapování datových typů pro Oracle
+## <a name="data-type-mapping-for-oracle"></a>Mapování datových typů pro oracle
 
-Při kopírování dat z a do Oracle platí následující mapování. Další informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ k jímky, najdete v tématu [mapování schémat a datových typů](copy-activity-schema-and-type-mapping.md).
+Při kopírování dat z a do oracle platí následující mapování. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ do jímky, naleznete v [tématu Schémata a mapování datových typů](copy-activity-schema-and-type-mapping.md).
 
-| Datový typ Oracle | Data Factory dočasné datový typ |
+| Datový typ Oracle | Dočasný datový typ datové továrny |
 |:--- |:--- |
-| BFILE |Byte[] |
-| PŘÍZNAKY |Byte[]<br/>(podporuje se jenom v Oracle 10g a vyšších verzích) |
-| CHAR |String |
-| CLOB |String |
-| DATUM |Datum a čas |
-| FLOAT |Decimal, String (Pokud přesnost > 28) |
-| INTEGER |Decimal, String (Pokud přesnost > 28) |
-| DLOUHOU |String |
-| LONG RAW |Byte[] |
-| NCHAR |String |
-| NCLOB |String |
-| NUMBER |Decimal, String (Pokud přesnost > 28) |
-| NVARCHAR2 |String |
-| ZÍSKÁNÍ |Byte[] |
-| ROWID |String |
-| TIMESTAMP |Datum a čas |
-| TIMESTAMP WITH LOCAL TIME ZONE |String |
-| TIMESTAMP WITH TIME ZONE |String |
-| UNSIGNED INTEGER |Počet |
-| VARCHAR2 |String |
-| XML |String |
+| BFILE |Bajt[] |
+| Blob |Bajt[]<br/>(podporováno pouze u oracle 10g a vyšší) |
+| Char |Řetězec |
+| Clob |Řetězec |
+| DATE (Datum) |DateTime |
+| Float |Desetinné číslo, řetězec (pokud je přesnost > 28) |
+| CELÉ ČÍSLO |Desetinné číslo, řetězec (pokud je přesnost > 28) |
+| Dlouhé |Řetězec |
+| DLOUHÉ RAW |Bajt[] |
+| Nchar |Řetězec |
+| Nclob |Řetězec |
+| Číslo |Desetinné číslo, řetězec (pokud je přesnost > 28) |
+| NVARCHAR2 |Řetězec |
+| Syrové |Bajt[] |
+| ROWID |Řetězec |
+| Časové razítko |DateTime |
+| ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÝM PÁSMEM |Řetězec |
+| ČASOVÉ RAZÍTKO S ČASOVÝM PÁSMEM |Řetězec |
+| NEPODEPSANÉ CELÉ ČÍSLO |Číslo |
+| VARCHAR2 |Řetězec |
+| XML |Řetězec |
 
 > [!NOTE]
-> Datový typ INTERVAL v roce do měsíce a druhý den v sekundách se nepodporuje.
+> Datové typy INTERVAL INTERVAL OD MĚSÍCE a INTERVAL OD DNE DO DRUHÉHO nejsou podporovány.
 
-## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
 
-Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a propady aktivitou kopírování v datové továrně naleznete v [tématu Podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -1,7 +1,7 @@
 ---
-title: Keras modely výukového vzdělávání
+title: Trénujte modely Keras s hlubokým učením
 titleSuffix: Azure Machine Learning
-description: Naučte se naučit a registrovat model klasifikace Keras hloubkové neuronové sítě běžící na TensorFlow pomocí Azure Machine Learning.
+description: Naučte se trénovat a registrovat model klasifikace hluboké neuronové sítě Keras běžící na TensorFlow pomocí Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,47 +12,47 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: ba7976d602412037578d0a324916718b2d515aac
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269962"
 ---
-# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Proveďte výuku a zaregistrujte model klasifikace Keras pomocí Azure Machine Learning
+# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Trénování a registrace klasifikačního modelu Keras pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak vytvořit model klasifikace Keras sestavený na TensorFlow pomocí Azure Machine Learning. Používá oblíbenou [datovou sadu mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) ke klasifikaci psaných číslic pomocí neuronové sítě (DNN) sestavené pomocí [Keras Python Library](https://keras.io) běžící nad [TensorFlow](https://www.tensorflow.org/overview).
+Tento článek ukazuje, jak trénovat a registrovat model klasifikace Keras postavený na TensorFlow pomocí Azure Machine Learning. Používá populární [datovou sadu MNIST](http://yann.lecun.com/exdb/mnist/) ke klasifikaci ručně psaných číslic pomocí hluboké neuronové sítě (DNN) postavené pomocí [knihovny Keras Python](https://keras.io) běžící na vrcholu [TensorFlow](https://www.tensorflow.org/overview).
 
-Keras je neuronové síťové rozhraní API, které se dá používat v horní části dalších oblíbených DNN architektur pro zjednodušení vývoje. Pomocí Azure Machine Learning můžete rychle škálovat školicí úlohy pomocí výpočetních prostředků elastického cloudu. Můžete také sledovat vaše školicí běhy, modely verzí, nasazovat modely a mnohem víc.
+Keras je rozhraní API neuronové sítě na vysoké úrovni schopné provozovat špičkové další populární architektury DNN pro zjednodušení vývoje. S Azure Machine Learning můžete rychle škálovat úlohy školení pomocí elastických cloudových výpočetních prostředků. Můžete také sledovat vaše tréninkové běhy, modely verzí, nasazovat modely a mnoho dalšího.
 
-Bez ohledu na to, jestli vyvíjíte model Keras z provozu nebo přenášíte existující model do cloudu, vám Azure Machine Learning může pomáhat při sestavování modelů připravených pro produkční prostředí.
+Ať už vyvíjíte model Keras od základu nebo přinášíte existující model do cloudu, Azure Machine Learning vám pomůže vytvářet modely připravené pro produkční prostředí.
 
-Informace o rozdílech mezi strojovým učením a obsáhlým učením najdete v [koncepčním článku](concept-deep-learning-vs-machine-learning.md) .
+Informace o rozdílech mezi strojovým učením a hloubkovým učením najdete v [koncepčním článku.](concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Spusťte tento kód v jednom z těchto prostředí:
+Spusťte tento kód v některém z těchto prostředí:
 
-- Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
+- Výpočetní instance Azure Machine Learning – není nutné žádné stahování ani instalace
 
-     - Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
-    - Ve složce Samples na serveru poznámkového bloku najděte dokončený a rozbalený Poznámkový blok tak, že přejdete na tento adresář: **postupy-použití-azureml > školení – with-learning > výuka-keras** .
+     - Dokončete [kurz: Instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) a vytvořte vyhrazený notebook ový server s předinstalovaným sadou SDK a ukázkovým úložištěm.
+    - Ve složce ukázky na serveru notebooku vyhledejte vyplněný a rozšířený poznámkový blok tak, že přejdete do tohoto adresáře: **> školení s hloubkovým učením s podrobným učením > vlak-hyperparameter-tune-deploy-with-keras.**
 
- - Váš vlastní server Jupyter Notebook
+ - Váš vlastní Jupyter Notebook server
 
-    - [Nainstalujte sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Nainstalujte azure machine learning sdk](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
     - [Vytvořte konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
-    - [Stažení ukázkových souborů skriptu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras) `mnist-keras.py` a `utils.py`
+    - [Stáhněte si ukázkové soubory skriptů](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras) `mnist-keras.py` a`utils.py`
 
-    Dokončenou [Jupyter notebook verzi](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb) tohoto průvodce najdete na stránce ukázek na GitHubu. Poznámkový blok obsahuje rozšířené oddíly, které pokrývají inteligentní ladění parametrů, nasazení modelů a widgety poznámkových bloků.
+    Můžete také najít vyplněnou [verzi jupyterského poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb) této příručky na stránce ukázek GitHub. Poznámkový blok obsahuje rozšířené sekce, které zahrnují inteligentní ladění hyperparametrů, nasazení modelu a widgety poznámkových bloků.
 
 ## <a name="set-up-the-experiment"></a>Nastavení experimentu
 
-Tato část nastavuje experiment pro školení načtením požadovaných balíčků Pythonu, inicializací pracovního prostoru, vytvořením experimentu a nahráním školicích dat a školicích skriptů.
+Tato část nastaví trénovací experiment načtením požadovaných balíčků pythonu, inicializací pracovního prostoru, vytvořením experimentu a nahráním trénovacích dat a trénovacích skriptů.
 
 ### <a name="import-packages"></a>Import balíčků
 
-Nejdřív importujte nezbytné knihovny Pythonu.
+Nejprve importujte potřebné knihovny Pythonu.
 
 ```Python
 import os
@@ -63,11 +63,11 @@ from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
 ```
 
-### <a name="initialize-a-workspace"></a>Inicializovat pracovní prostor
+### <a name="initialize-a-workspace"></a>Inicializaci pracovního prostoru
 
-[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK můžete získat přístup k artefaktům pracovního prostoru vytvořením objektu [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) .
+[Pracovní prostor Azure Machine Learning](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje vám centralizované místo pro práci se všemi artefakty, které vytvoříte. V pythonu SDK můžete přistupovat k artefaktům [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) pracovního prostoru vytvořením objektu.
 
-Vytvořte objekt pracovního prostoru ze souboru `config.json` vytvořeného v [části požadavky](#prerequisites).
+Vytvořte objekt pracovního `config.json` prostoru ze souboru vytvořeného v [části požadavky](#prerequisites).
 
 ```Python
 ws = Workspace.from_config()
@@ -75,7 +75,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-an-experiment"></a>Vytvoření experimentu
 
-V pracovním prostoru vytvořte experiment s názvem "keras-mnist ručně zapsaných".
+Vytvořte experiment s názvem "keras-mnist" ve vašem pracovním prostoru.
 
 ```Python
 exp = Experiment(workspace=ws, name='keras-mnist')
@@ -84,7 +84,7 @@ exp = Experiment(workspace=ws, name='keras-mnist')
 <a name="data-upload"></a>
 ### <a name="create-a-file-dataset"></a>Vytvoření datové sady souborů
 
-Objekt `FileDataset` odkazuje na jeden nebo více souborů v úložišti dat pracovního prostoru nebo veřejné adresy URL. Soubory mohou být libovolného formátu a třída poskytuje možnost stahovat nebo připojovat soubory do výpočtů. Vytvořením `FileDataset`vytvoříte odkaz na umístění zdroje dat. Pokud jste v sadě dat použili jakékoli transformace, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště. Další informace najdete [v příručce k](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) `Dataset`mu balíčku.
+Objekt `FileDataset` odkazuje na jeden nebo více souborů v úložišti dat pracovního prostoru nebo na veřejné adresy URL. Soubory mohou mít libovolný formát a třída vám poskytuje možnost stáhnout nebo připojit soubory k výpočtu. Vytvořením `FileDataset`aplikace vytvoříte odkaz na umístění zdroje dat. Pokud jste na sadu dat použili nějaké transformace, budou uloženy také v sadě dat. Data zůstanou ve stávajícím umístění, takže nevznikají žádné další náklady na úložiště. Další [how-to](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) informace naleznete v `Dataset` návodu k balíčku.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -98,7 +98,7 @@ web_paths = [
 dataset = Dataset.File.from_files(path=web_paths)
 ```
 
-Pomocí metody `register()` zaregistrujete datovou sadu do svého pracovního prostoru, aby bylo možné je sdílet s ostatními uživateli, znovu použít v různých experimentech a v rámci školicího skriptu označovaného jako název.
+Pomocí `register()` této metody můžete zaregistrovat sadu dat do pracovního prostoru, aby mohla být sdílena s ostatními, znovu použita v různých experimentech a v trénovacím skriptu označována podle názvu.
 
 ```python
 dataset = dataset.register(workspace=ws,
@@ -107,9 +107,9 @@ dataset = dataset.register(workspace=ws,
                            create_new_version=True)
 ```
 
-## <a name="create-a-compute-target"></a>Vytvořte cílové výpočetní prostředí
+## <a name="create-a-compute-target"></a>Vytvoření výpočetního cíle
 
-Vytvořte výpočetní cíl pro úlohu TensorFlow, na které se má spustit. V tomto příkladu vytvoříte výpočetní cluster Azure Machine Learning s podporou GPU.
+Vytvořte výpočetní cíl pro úlohu TensorFlow, na které se má spustit. V tomto příkladu vytvořte výpočetní cluster Azure Machine Learning s podporou GPU.
 
 ```Python
 cluster_name = "gpucluster"
@@ -127,13 +127,13 @@ except ComputeTargetException:
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-Další informace o výpočetních cílech najdete v článku [co je cílový výpočetní cíl](concept-compute-target.md) .
+Další informace o výpočetních cílech najdete v článku, [co je cíl výpočetního cíle.](concept-compute-target.md)
 
-## <a name="create-a-tensorflow-estimator-and-import-keras"></a>Vytvoření TensorFlow Estimator a import Keras
+## <a name="create-a-tensorflow-estimator-and-import-keras"></a>Vytvoření odhadu Tentendotu a import kerasu
 
-[TensorFlow Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) poskytuje jednoduchý způsob spouštění školicích úloh TensorFlow v cíli výpočtů. Vzhledem k tomu, že Keras běží nad TensorFlow, můžete použít TensorFlow Estimator a importovat knihovnu Keras pomocí argumentu `pip_packages`.
+[Odhad TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) poskytuje jednoduchý způsob spuštění úloh y tenterového školení na výpočetní cíl. Vzhledem k tomu, že Keras běží nad TensorFlow, můžete použít odhad `pip_packages` TensorFlow a importovat knihovnu Keras pomocí argumentu.
 
-Nejdřív načtěte data z úložiště dat v pracovním prostoru pomocí třídy `Dataset`.
+Nejprve získat data z úložiště dat `Dataset` pracovního prostoru pomocí třídy.
 
 ```python
 dataset = Dataset.get_by_name(ws, 'mnist dataset')
@@ -142,7 +142,7 @@ dataset = Dataset.get_by_name(ws, 'mnist dataset')
 dataset.to_path()
 ```
 
-TensorFlow Estimator je implementován prostřednictvím obecné [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) třídy, kterou lze použít k podpoře libovolného rozhraní. Kromě toho vytvořte slovník `script_params`, který obsahuje nastavení parametrů DNN. Další informace o školicích modelech pomocí obecného Estimator najdete v tématu [výuka modelů s Azure Machine Learning pomocí Estimator](how-to-train-ml-models.md) .
+Odhad TentenzorFlow je implementován prostřednictvím obecné [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) třídy, kterou lze použít pro podporu libovolného rámce. Kromě toho vytvořte `script_params` slovník, který obsahuje nastavení hyperparameter DNN. Další informace o trénovacích modelech pomocí obecného odhadu najdete v tématu [trénování modelů s Azure Machine Learning pomocí odhadu](how-to-train-ml-models.md)
 
 ```python
 from azureml.train.dnn import TensorFlow
@@ -165,35 +165,35 @@ est = TensorFlow(source_directory=script_folder,
 
 ## <a name="submit-a-run"></a>Odeslat běh
 
-[Objekt Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) poskytuje rozhraní k historii spuštění, když je úloha spuštěná a po jejím dokončení.
+Run [Objekt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) poskytuje rozhraní pro historii spuštění, zatímco úloha je spuštěna a po dokončení.
 
 ```Python
 run = exp.submit(est)
 run.wait_for_completion(show_output=True)
 ```
 
-Po spuštění se spustí v následujících fázích:
+Jako run je proveden, prochází následujícími fázemi:
 
-- **Příprava**: obrázek Docker se vytvoří podle TensorFlow Estimator. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu.
+- **Příprava**: Obrázek dockeru je vytvořen podle odhadu TensorFlow. Bitová kopie se nahraje do registru kontejnerů pracovního prostoru a uloží do mezipaměti pro pozdější spuštění. Protokoly jsou také přenášeny do historie spuštění a lze je zobrazit za účelem sledování průběhu.
 
-- **Škálování**: cluster se pokusí o horizontální navýšení kapacity, pokud Batch AI cluster vyžaduje více uzlů pro spuštění běhu, než je aktuálně k dispozici.
+- **Škálování:** Cluster se pokusí vertikálně navýšit kapacitu, pokud cluster Batch AI vyžaduje ke spuštění spuštění více uzlů, než je aktuálně k dispozici.
 
-- **Spuštěno**: všechny skripty ve složce skriptu se nahrají do cílového výpočetního prostředí, úložiště dat se připojí nebo zkopírují a entry_script se spustí. Výstupy z stdout a složky./logs se streamují do historie spuštění a dají se použít k monitorování běhu.
+- **Spuštění**: Všechny skripty ve složce skriptu jsou odeslány do výpočetního cíle, úložiště dat jsou připojena nebo zkopírována a entry_script se spustí. Výstupy ze složky stdout a ./logs jsou přenášeny do historie spuštění a lze je použít ke sledování běhu.
 
-- **Následné zpracování**: složka./Outputs se v běhu kopíruje do historie spuštění.
+- **Post-Processing**: Složka ./výstupy spuštění je zkopírována do historie spuštění.
 
-## <a name="register-the-model"></a>Zaregistrujte model
+## <a name="register-the-model"></a>Registrace modelu
 
-Po proškolení modelu DNN ho můžete zaregistrovat do svého pracovního prostoru. Registrace modelu umožňuje ukládat a modelovat vaše modely do svého pracovního prostoru, aby bylo možné zjednodušit [správu modelů a nasazení](concept-model-management-and-deployment.md).
+Jakmile vycvičíte model DNN, můžete jej zaregistrovat do pracovního prostoru. Registrace modelu umožňuje ukládat a nakládat s modely v pracovním prostoru a zjednodušit [tak správu a nasazení modelu](concept-model-management-and-deployment.md).
 
 ```Python
 model = run.register_model(model_name='keras-dnn-mnist', model_path='outputs/model')
 ```
 
 > [!TIP]
-> Model, který jste právě zaregistrovali, je nasazen stejným způsobem jako jakýkoli jiný registrovaný model v Azure Machine Learning, bez ohledu na to, který Estimator jste použili pro školení. Postup nasazení obsahuje část týkající se registrace modelů, ale můžete přeskočit přímo na [Vytvoření výpočetního cíle](how-to-deploy-and-where.md#choose-a-compute-target) pro nasazení, protože již máte registrovaný model.
+> Model, který jste právě zaregistrovali, se nasadí přesně stejným způsobem jako jakýkoli jiný registrovaný model v Azure Machine Learning, bez ohledu na to, který odhad jste použili pro školení. Postup nasazení obsahuje oddíl o registraci modelů, ale můžete přeskočit přímo k [vytvoření výpočetního cíle](how-to-deploy-and-where.md#choose-a-compute-target) pro nasazení, protože již máte registrovaný model.
 
-Můžete si také stáhnout místní kopii modelu. To může být užitečné pro místní práci s ověřováním modelu. Ve školicím skriptu `mnist-keras.py`objekt spořiče TensorFlow udržuje model do místní složky (místní do výpočetního cíle). Pomocí objektu spustit můžete stáhnout kopii z úložiště dat.
+Můžete si také stáhnout místní kopii modelu. To může být užitečné pro provedení další ověření modelu pracovat místně. V trénovací skript , `mnist-keras.py`TensorFlow spořič objekt uchovává model do místní složky (místní výpočetní cíl). Objekt Spustit můžete použít ke stažení kopie z úložiště dat.
 
 ```Python
 # Create a model folder in the current directory
@@ -208,11 +208,11 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste si vyškole a zaregistrovali Keras model na Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek nasazení modelu.
+V tomto článku jste vyškolili a zaregistrovali model Keras na Azure Machine Learning. Chcete-li se dozvědět, jak nasadit model, pokračujte v našem článku nasazení modelu.
 
 > [!div class="nextstepaction"]
 > [Jak a kde nasadit modely](how-to-deploy-and-where.md)
-* [Sledovat metriky spuštění během školení](how-to-track-experiments.md)
-* [Ladit parametry](how-to-tune-hyperparameters.md)
-* [Nasazení trained model](how-to-deploy-and-where.md)
-* [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)
+* [Sledovat metriky běhu během tréninku](how-to-track-experiments.md)
+* [Ladění hyperparametrů](how-to-tune-hyperparameters.md)
+* [Nasazení trénovaného modelu](how-to-deploy-and-where.md)
+* [Referenční architektura pro distribuované školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

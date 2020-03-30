@@ -1,37 +1,37 @@
 ---
-title: Horizontální navýšení nebo navýšení Service Fabric clusteru
-description: Škálujte Service Fabric clusteru v nebo v souladu s požadavky nastavením pravidel automatického škálování pro každý typ uzlu nebo sadu škálování virtuálního počítače. Přidávání a odebírání uzlů do clusteru Service Fabric
+title: Škálování clusteru Service Fabric dovnitř nebo ven
+description: Škálování clusteru Service Fabric v nebo mimo tak, aby odpovídaly poptávce nastavením pravidla automatického škálování pro každý typ uzlu nebo virtuální stroj škálovací sady. Přidání nebo odebrání uzlů do clusteru Service Fabric
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258730"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Horizontální snížení nebo navýšení kapacity clusteru
 
 > [!WARNING]
-> Přečtěte si tento oddíl před škálováním.
+> Přečtěte si tuto část před použitím měřítka
 
-Škálování výpočetních prostředků ke zdroji pracovního zatížení vaší aplikace vyžaduje úmyslné plánování, téměř vždy trvá déle než hodinu, než se dokončí pro produkční prostředí, a vyžaduje, abyste porozuměli vašim úlohám a obchodním kontextům. Pokud jste tuto aktivitu ještě nikdy neudělali, doporučujeme začít čtením a porozuměním [Service Fabric posouzení kapacity clusteru](service-fabric-cluster-capacity.md), než budete pokračovat ve zbývající části tohoto dokumentu. Toto doporučení je aby se zabránilo neúmyslnému LiveSite problémům a doporučuje se také, že je úspěšně otestovat operace, které se rozhodnete provést proti mimo produkční prostředí. Kdykoli můžete [nahlásit výrobní problémy nebo požádat o vyplacenou podporu pro Azure](service-fabric-support.md#report-production-issues-or-request-paid-support-for-azure). Pro techniky přidělené k provedení těchto operací, které mají odpovídající kontext Tento článek popisuje, operace škálování, ale je nutné rozhodnout a pochopit operace, které jsou vhodné pro případy použití; například prostředky škálování (CPU, úložiště, paměť) směr škálování (vertikálně nebo horizontálně) a jaké operace k provedení (nasazení prostředku šablony, portálu, Powershellu nebo rozhraní příkazového řádku).
+Škálování výpočetních prostředků pro zdroj pracovní zátěže aplikace vyžaduje záměrné plánování, bude téměř vždy trvat déle než hodinu pro produkční prostředí a vyžaduje, abyste pochopili vaše pracovní vytížení a obchodní kontext; Ve skutečnosti, pokud jste nikdy neprovedli tuto činnost dříve, je doporučeno začít čtením a pochopení [service fabric aspekty plánování clusteru](service-fabric-cluster-capacity.md), před pokračováním zbývající části tohoto dokumentu. Toto doporučení je, aby se zabránilo nezamýšleným problémům LiveSite a je také doporučeno úspěšně otestovat operace, které se rozhodnete provést proti neprodukčním prostředí. Kdykoli můžete [nahlásit problémy s výrobou nebo požádat o placenou podporu pro Azure](service-fabric-support.md#report-production-issues-or-request-paid-support-for-azure). Pro inženýry přidělené k provádění těchto operací, které mají odpovídající kontext, tento článek bude popisovat operace škálování, ale musíte rozhodnout a pochopit, které operace jsou vhodné pro případ použití; například jaké prostředky škálovat (procesor, úložiště, paměť), jaký směr škálování (svisle nebo vodorovně) a jaké operace se mají provádět (nasazení šablony prostředků, portál, powershell/cli).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Horizontální snížení nebo navýšení kapacity pomocí pravidel automatického škálování clusteru Service Fabric, nebo ručně
-Škálovací sady virtuálních počítačů jsou výpočetním prostředkem Azure, můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Service Fabric je nastavený jako samostatný virtuální počítač škálovací sady. U každého typu uzlu pak možné horizontálně snížit nebo navýšení kapacity nezávisle na sobě mají různé sady otevřených portů a může mít různé metriky kapacity. Přečtěte si další informace o tom v dokumentu [typy Service Fabricch uzlů](service-fabric-cluster-nodetypes.md) . Vzhledem k tomu, že typy uzlů Service Fabric v clusteru jsou v rámci back-endu sady virtuálních počítačů, je třeba nastavit pravidla automatického škálování pro každý typ uzlu nebo sadu škálování virtuálního počítače.
+## <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Škálování clusteru Service Fabric při použití nebo získaní pomocí pravidel automatického škálování nebo ručně
+Škálovací sady virtuálních počítačů jsou výpočetní prostředek Azure, který můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Service Fabric, je nastaven jako samostatná škálovací sada virtuálních strojů. Každý typ uzlu pak lze škálovat nebo zmenšovat nezávisle, mají různé sady portů otevřené a může mít různé metriky kapacity. Další informace o tom načtete v dokumentu [typů uzlů Service Fabric.](service-fabric-cluster-nodetypes.md) Vzhledem k tomu, že typy uzlů Service Fabric v clusteru jsou tvořeny škálovacími sadami virtuálních počítačů v back-endu, je třeba nastavit pravidla automatického škálování pro každý typ uzlu/sadu škálovacísady virtuálních počítačů.
 
 > [!NOTE]
-> Předplatné musí mít dostatek jader, které chcete přidat nové virtuální počítače, které tvoří tento cluster. Proto pokud některý z limitů kvóty spuštění se zobrazí čas selhání nasazení není žádná ověření modelu v současné době. Také jednoho typu může mít maximálně pouze 100 uzlů na VMSS. Budete muset přidat VMSS je jedině tak dosáhnete cílové škálování a automatickým Škálováním můžete není automagically přidat VMSS společnosti. Přidávání VMSS do živého clusteru je náročné, a to obvykle vede k tomu, že uživatelé zřídí nové clustery s příslušnými typy uzlů zřízenými během vytváření. podle potřeby [Naplánujte kapacitu clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) . 
+> Vaše předplatné musí mít dostatek jader pro přidání nových virtuálních počítačů, které tvoří tento cluster. V současné době neexistuje žádné ověření modelu, takže získáte selhání času nasazení, pokud jsou přístupná některá z omezení kvóty. Také jeden typ uzlu nemůže jednoduše překročit 100 uzlů na VMSS. Možná budete muset přidat VMSS k dosažení cílové škálování a automatické škálování nelze automaticky přidat VMSS. Přidání vmss je na místě do živého clusteru je náročná úloha a obvykle to má za následek uživatelům zřizování nových clusterů s příslušnými typy uzlů zřízených v době vytvoření; [odpovídajícím](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) způsobem plánovat kapacitu clusteru. 
 > 
 > 
 
-## <a name="choose-the-node-typevirtual-machine-scale-set-to-scale"></a>Zvolte typ/virtuální uzel škálovací sady škálování počítačů
-V současné době nejste schopni k určení pravidel automatického škálování pro škálovací sady virtuálních počítačů pomocí portálu k vytvoření clusteru Service Fabric, proto nám dejte seznam typy uzlů a pak do nich přidejte pravidel automatického škálování pomocí Azure Powershellu (1.0 +).
+## <a name="choose-the-node-typevirtual-machine-scale-set-to-scale"></a>Volba škálovací sady typu uzlu/virtuálního počítače pro škálování
+V současné době nejste schopni zadat pravidla automatického škálování pro škálovací sady virtuálních počítačů pomocí portálu k vytvoření clusteru Service Fabric, takže použijte Azure PowerShell (1.0+) k vypsat typy uzlů a pak k nim přidat pravidla automatického škálování.
 
-Pokud chcete získat seznam škálovací sadu virtuálních počítačů, kterých se skládá cluster, spusťte následující rutiny:
+Chcete-li získat seznam škálovací sady virtuálních strojů, které tvoří váš cluster, spusťte následující rutiny:
 
 ```powershell
 Get-AzResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/VirtualMachineScaleSets
@@ -39,35 +39,35 @@ Get-AzResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/Virtu
 Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale set name>
 ```
 
-## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>Nastavení pravidel automatického škálování pro typ uzlu/sadu škálování virtuálního počítače
-Pokud má cluster více typů uzlů, opakujte tento postup pro všechny typy uzlů/sady škálování virtuálních počítačů, které chcete škálovat (nebo z nich). Před nastavením automatického škálování vezměte v úvahu potřebný počet uzlů. Minimální počet uzlů, který je potřeba pro primární typ uzlu, vychází ze zvolené úrovně spolehlivosti. Přečtěte si další informace o [úrovních spolehlivosti](service-fabric-cluster-capacity.md).
+## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>Nastavení pravidel automatického škálování pro škálovací sadu typu uzlu nebo virtuálního počítače
+Pokud má váš cluster více typů uzlů, opakujte to pro každý typ uzlů nebo škálovací sady virtuálních počítačů, které chcete škálovat (dovnitř nebo ven). Před nastavením automatického škálování vezměte v úvahu potřebný počet uzlů. Minimální počet uzlů, který je potřeba pro primární typ uzlu, vychází ze zvolené úrovně spolehlivosti. Přečtěte si další informace o [úrovních spolehlivosti](service-fabric-cluster-capacity.md).
 
 > [!NOTE]
-> Škálování a primární uzel typ na hodnotu menší než minimální počet zkontrolujte nestabilní clusteru nebo přenést. To může způsobit ztrátu dat pro vaše aplikace a služby systému.
+> Škálování typu primárního uzlu na menší než minimální počet způsobit, že cluster nestabilní nebo přenést dolů. To může mít za následek ztrátu dat pro vaše aplikace a pro systémové služby.
 > 
 > 
 
-Funkce automatického škálování není aktuálně využitím zatížení, které vaše aplikace může odesílajících sestavy do Service Fabric. Takže v tuto chvíli, automatické škálování, které získáte čistě doprovází čítače výkonu, které jsou emitovány každou z virtuálního počítače instance ve škálovací sadě.  
+V současné době funkce automatického škálování není řízena zatížení, které vaše aplikace může být hlášení Service Fabric. Takže v tomto okamžiku automatické škálování získáte je čistě řízenčí výkon čítače, které jsou vydávány každý z instancí škálovací sady virtuálních počítačů.  
 
-Podle těchto pokynů [nastavte automatické škálování pro jednotlivé sady škálování virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
+Podle těchto pokynů [nastavte automatické škálování pro každou škálovací sadu virtuálních strojů](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
 
 > [!NOTE]
-> Ve scénáři horizontálního navýšení kapacity, pokud váš typ uzlu nemá [úroveň odolnosti][durability] Gold nebo stříbrné, je nutné volat [rutinu Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) s odpovídajícím názvem uzlu. Pro bronzovou odolnost se nedoporučuje škálovat více než jeden uzel současně.
+> Ve scénáři škálování dolů, pokud typ uzlu má [úroveň odolnosti][durability] zlaťáky nebo stříbra, musíte volat [rutinu Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) s příslušným názvem uzlu. U bronzové odolnosti se nedoporučuje zmenšovat více uzlů najednou.
 > 
 > 
 
-## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>Ruční přidání virtuálních počítačů do typu uzlu/sady škálování virtuálních počítačů
+## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>Ruční přidání virtuálních počítačů do škálovací sady typu uzlu nebo virtuálního počítače
 
 Při horizontálním navyšování kapacity přidáte do škálovací sady více instancí virtuálních počítačů. Tyto instance se stanou uzly, které bude Service Fabric používat. Service Fabric to pozná, když se do škálovací sady přidají další instance (díky horizontálnímu navýšení kapacity), a automaticky zareaguje. 
 
 > [!NOTE]
-> Přidání virtuálních počítačů trvá určitou dobu, takže neočekáváme, že se doplňují. Proto si naplánujte, abyste předem nastavili kapacitu ještě více než 10 minut, než bude k dispozici kapacita virtuálního počítače pro repliky/instance služby, které se mají načíst.
+> Přidání virtuálních operátorů nějakou dobu trvá, takže neočekávejte, že dodatky budou okamžité. Takže plán přidat kapacitu v dostatečném předstihu, aby více než 10 minut před kapacitou virtuálního počítače je k dispozici pro repliky nebo služby instance získat umístěny.
 > 
 
-### <a name="add-vms-using-a-template"></a>Přidání virtuálních počítačů pomocí šablony
-Podle ukázky nebo pokynů v [galerii šablon pro rychlé](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) zprovoznění změňte počet virtuálních počítačů v jednotlivých typech uzlů. 
+### <a name="add-vms-using-a-template"></a>Přidání virtuálních počítače pomocí šablony
+Podle ukázky/pokynů v [galerii šablon rychlého startu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) změňte počet virtuálních počítačů v jednotlivých typech uzlů. 
 
-### <a name="add-vms-using-powershell-or-cli-commands"></a>Přidání virtuálních počítačů pomocí příkazů PowerShellu nebo rozhraní příkazového řádku
+### <a name="add-vms-using-powershell-or-cli-commands"></a>Přidání virtuálních proudů pomocí příkazů PowerShellu nebo CLI
 Následující kód načte škálovací sadu podle názvu a zvýší její **kapacitu** o 1.
 
 ```powershell
@@ -87,16 +87,16 @@ az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
 az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
 ```
 
-## <a name="manually-remove-vms-from-a-node-typevirtual-machine-scale-set"></a>Ruční odebrání virtuálních počítačů z typu uzlu nebo sady škálování virtuálních počítačů
-Při horizontálním navýšení kapacity v typu uzlu odeberete instance virtuálních počítačů ze sady škálování. Je-li typ uzlu Bronzová úroveň trvanlivosti, Service Fabric nevíte, co se stalo, a oznamuje, že chybí uzel. Service Fabric pak hlásí, že stav clusteru není v pořádku. Chcete-li zabránit tomuto špatnému stavu, je nutné explicitně odebrat uzel z clusteru a odebrat stav uzlu.
+## <a name="manually-remove-vms-from-a-node-typevirtual-machine-scale-set"></a>Ruční odebrání virtuálních počítačů z škálovací sady typu uzlu nebo virtuálního počítače
+Při škálování v typu uzlu odeberete instance virtuálních virtuálních můek z škálovací sady. Pokud typ uzlu je bronzová úroveň trvanlivosti, Service Fabric neví, co se stalo a hlásí, že uzel zmizel. Service Fabric pak hlásí, že stav clusteru není v pořádku. Chcete-li tomuto chybnému stavu zabránit, je nutné explicitně odebrat uzel z clusteru a odebrat stav uzlu.
 
-Systémové služby Service Fabric běží ve vašem clusteru v typu primární uzel. Při horizontálním navýšení kapacity typu primární uzel nikdy nezmenšujte počet instancí na míň, než kolik zaručuje [úroveň spolehlivosti](service-fabric-cluster-capacity.md) . 
+Systémové služby service fabric jsou spuštěny v primárním typu uzlu v clusteru. Při škálování dolů typu primárníuzel nikdy vertikálně snížit počet instancí na méně, než co [vyžaduje úroveň spolehlivosti.](service-fabric-cluster-capacity.md) 
  
-Stavové služby je nutné je určitý počet uzlů se vždy až zachování dostupnosti a zachovat stav vaší služby. Ve velmi minimální je třeba počet uzlů roven počtu cílových replik sady oddílu/služby.
+Pro stavové služby, budete potřebovat určitý počet uzlů, které mají být vždy až k udržení dostupnosti a zachování stavu služby. Minimálně potřebujete počet uzlů rovnající se počet cílových replik sady oddílu nebo služby.
 
 ### <a name="remove-the-service-fabric-node"></a>Odebrání uzlu Service Fabric
 
-Postup ručního odebrání stavu uzlu se vztahuje pouze na typy uzlů s *bronzovou* úrovní odolnosti.  Pro *stříbro* a *zlatou* úroveň odolnosti se tyto kroky provádí automaticky na platformě. Další informace o odolnosti najdete v tématu [Service Fabric plánování kapacity clusteru][durability].
+Kroky pro ruční odebrání stavu uzlu platí pouze pro typy uzlů s *úrovní odolnosti bronz.*  U úrovně odolnosti *stříbra* a *zlaťáků* jsou tyto kroky prováděny automaticky platformou. Další informace o odolnosti najdete v článku [Plánování kapacity clusteru Service Fabric][durability].
 
 V zájmu toho, aby byly uzly clusteru rovnoměrně rozdělené v doménách upgradu a doménách selhání a aby se tedy i rovnoměrně využívaly, je potřeba jako první odebrat naposledy vytvořený uzel. Jinak řečeno, uzly by se měly odebírat v opačném pořadí, než v jakém došlo k jejich vytvoření. Naposledy vytvořený uzel je uzel s nejvyšší hodnotou vlastnosti `virtual machine scale set InstanceId`. Následující příklady kódu vracejí naposledy vytvořený uzel.
 
@@ -122,7 +122,7 @@ sfctl: `sfctl node transition --node-transition-type Stop`
 PowerShell: `Remove-ServiceFabricNodeState`  
 sfctl: `sfctl node remove-state`
 
-Jakmile na uzel aplikujete tyto tři kroky, může se odebrat ze škálovací sady. Pokud používáte jakoukoli úroveň odolnosti kromě [bronzu][durability], jsou tyto kroky provedeny po odebrání instance sady škálování.
+Jakmile na uzel aplikujete tyto tři kroky, může se odebrat ze škálovací sady. Pokud používáte nějakou jinou úroveň odolnosti než [bronzovou][durability], tyto kroky se provedou za vás při odebrání instance škálovací sady.
 
 Následující blok kódu získá poslední vytvořený uzel a zakáže ho, zastaví a odebere z clusteru.
 
@@ -203,7 +203,7 @@ sfctl node remove-state --node-name _nt1vm_5
 > **Kontrola stavu deaktivace**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
 >
-> **Kontrola stavu zastavení**
+> **Zkontrolovat stav zastavení**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
 >
 
@@ -228,31 +228,31 @@ az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
 az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
-## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Chování, které můžete sledovat v Service Fabric Exploreru
-Při škálování clusteru Service Fabric Explorer bude odrážet počet uzlů (virtuálních počítačů instance ve škálovací sadě), které jsou součástí clusteru.  Když ale škálovat cluster dolů, uvidíte, že odebraný uzel/instance virtuálního počítače se zobrazí ve stavu není v pořádku, pokud nebudete volat příkaz [Remove-ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) s příslušným názvem uzlu.   
+## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Chování, která můžete pozorovat v aplikaci Service Fabric Explorer
+Při vertikálně navýšit kapacitu clusteru Aplikace Service Fabric Explorer bude odrážet počet uzlů (instance škálovací sady virtuálních strojů), které jsou součástí clusteru.  Však při škálování clusteru dolů se zobrazí odebránuzel/virtuální hod instance zobrazí v stavu není v pořádku, pokud zavoláte [Remove-ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) s příslušným názvem uzlu.   
 
-Následuje vysvětlení tohoto chování.
+Zde je vysvětlení pro toto chování.
 
-Uzly uvedené v Service Fabric Exploreru se odraz jaké systémové služby Service Fabric (převzetí služeb při selhání konkrétně) ví o počet uzlů clusteru měly nebo má. Když horizontálně snížíte kapacitu škálovací sady virtuálních počítačů, virtuální počítač byl odstraněn, ale služba převzetí služeb při selhání systému stále domnívá, že uzel, (, který je namapovaný na virtuální počítač, který byl odstraněn) bude vracet. Service Fabric Exploreru tak stále zobrazuje tento uzel (i když stav může být chyba nebo neznámá).
+Uzly uvedené v aplikaci Service Fabric Explorer jsou odrazem toho, co systémové služby Service Fabric (FM konkrétně) ví o počtu uzlů, které cluster měl nebo má. Při škálování nastavování velikosti virtuálního počítače byl odstraněn virtuální počítač, ale systémová služba FM si stále myslí, že uzel (který byl namapován na virtuální počítač, který byl odstraněn) se vrátí. Takže Service Fabric Explorer nadále zobrazovat, že uzel (i když stav může být chyba nebo neznámý).
 
-Pokud chcete mít jistotu, že je uzel odebrán při odebrání virtuálního počítače, máte dvě možnosti:
+Chcete-li se ujistit, že uzel je odebrán při odebrání virtuálního virtuálního zařízení, máte dvě možnosti:
 
-1. Zvolte úroveň odolnosti Gold a Silver pro typy uzlů v clusteru, který poskytuje integraci infrastruktury. Které pak automaticky odebere uzly z našich stavu služby (převzetí služeb při selhání) systému při vertikálně snížit kapacitu.
-Tady najdete [Podrobnosti o úrovních trvanlivosti](service-fabric-cluster-capacity.md) .
+1. Zvolte úroveň odolnosti zlaťáků nebo stříbra pro typy uzlů v clusteru, což vám umožní integraci infrastruktury. Který pak automaticky odebere uzly ze stavu našich systémových služeb (FM) při škálování dolů.
+Podrobnosti [o úrovních trvanlivosti](service-fabric-cluster-capacity.md) naleznete zde
 
-2. Po horizontálním navýšení kapacity instance virtuálního počítače je potřeba zavolat [rutinu Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate).
+2. Po zmenšení instance virtuálního soudu je třeba volat [rutinu Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate).
 
 > [!NOTE]
-> Clustery Service Fabric vyžadují určitý počet uzlů dá zvládnout za celou dobu, aby bylo možné zachovat dostupnost a zachovat stav – označuje jako "Správa kvora." Proto je obvykle bezpečné vypnout všechny počítače v clusteru, pokud jste nejprve neprováděli [úplné zálohování vašeho stavu](service-fabric-reliable-services-backup-restore.md).
+> Clustery Service Fabric vyžadují určitý počet uzlů, které mají být vždy nahoru, aby byla zachována dostupnost a zachovat stav - označované jako "udržování kvora." Proto je obvykle nebezpečné vypnout všechny počítače v clusteru, pokud jste nejprve provedli [úplnou zálohu stavu](service-fabric-reliable-services-backup-restore.md).
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si následující také další informace o plánování kapacity clusteru, inovace clusteru a vytváření oddílů služby:
+Přečtěte si následující informace o plánování kapacity clusteru, upgradu clusteru a dělení služeb:
 
 * [Plánování kapacity clusteru](service-fabric-cluster-capacity.md)
 * [Upgrady clusteru](service-fabric-cluster-upgrade.md)
-* [Stavové služby pro oddíly pro maximální škálování](service-fabric-concepts-partitioning.md)
+* [Stavové služby oddílů pro maximální škálování](service-fabric-concepts-partitioning.md)
 
 <!--Image references-->
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png

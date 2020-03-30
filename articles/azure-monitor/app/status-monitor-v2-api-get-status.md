@@ -1,35 +1,35 @@
 ---
-title: Reference k rozhraní API agenta Azure Application Insights
-description: Reference k rozhraní API agenta Application Insights. Get-ApplicationInsightsMonitoringStatus. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s místně hostovanými webovými aplikacemi v ASP.NET, na virtuálních počítačích nebo v Azure.
+title: Odkaz na rozhraní API agenta Azure Application Insights
+description: Odkaz na rozhraní API agenta Application Insights. Get-ApplicationInsightsMonitoringStatus. Sledujte výkon webových stránek bez opětovného nasazení webu. Funguje s místně hostovanými webovými aplikacemi v ASP.NET, na virtuálních počítačích nebo v Azure.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 159dab4a228c822ef62c45c9ccceff638a9bea45
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671252"
 ---
-# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Rozhraní API pro Application Insights agenta: Get-ApplicationInsightsMonitoringStatus
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Rozhraní API agenta Application Insights: Get-ApplicationInsightsMonitoringStatus
 
-Tento článek popisuje rutinu, která je členem [modulu PowerShellu AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+Tento článek popisuje rutinu, která je členem [modulu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Popis
 
-Tato rutina poskytuje informace o řešení potíží s Monitorování stavu.
-Pomocí této rutiny můžete prozkoumat stav monitorování, verzi modulu PowerShellu a zkontrolovat běžící proces.
-Tato rutina oznámí informace o verzi a informace o souborech klíčů potřebných pro monitorování.
+Tato rutina poskytuje informace o řešení potíží s monitorováním stavu.
+Tato rutina slouží k prozkoumání stavu monitorování, verze modulu prostředí PowerShell a ke kontrole spuštěného procesu.
+Tato rutina bude hlásit informace o verzi a informace o klíčových souborů potřebných pro monitorování.
 
 > [!IMPORTANT] 
-> Tato rutina vyžaduje relaci PowerShellu s oprávněními správce.
+> Tato rutina vyžaduje relaci prostředí PowerShell s oprávněními správce.
 
 ## <a name="examples"></a>Příklady
 
-### <a name="example-application-status"></a>Příklad: stav aplikace
+### <a name="example-application-status"></a>Příklad: Stav aplikace
 
-Spusťte `Get-ApplicationInsightsMonitoringStatus` příkazu, abyste zobrazili stav monitorování webů.
+Spuštěním `Get-ApplicationInsightsMonitoringStatus` příkazu zobrazíte stav monitorování webových serverů.
 
 ```
 PS C:\Windows\system32> Get-ApplicationInsightsMonitoringStatus
@@ -66,16 +66,16 @@ AppAlreadyInstrumented : true
 ```
 
 V tomto příkladu;
-- **Identifikátor počítače** je anonymní ID, které slouží k jednoznačné identifikaci vašeho serveru. Pokud vytvoříte žádost o podporu, budeme toto ID potřebovat k nalezení protokolů pro váš server.
-- **Výchozí web** je zastavený ve službě IIS.
-- Služba **DemoWebApp111** byla spuštěna ve službě IIS, ale neobdržela žádné požadavky. Tato sestava obsahuje nespuštěný proces (ProcessId: Nenalezeno).
-- Služba **DemoWebApp222** je spuštěná a monitorovaná (instrumentovaná: true). Na základě konfigurace uživatele instrumentace klíče xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 byla pro tento web shodná.
-- **DemoWebApp333** se ručně instrumentoval pomocí sady Application Insights SDK. Monitorování stavu zjistila sadu SDK a nebude monitorovat tuto lokalitu.
+- **Identifikátor počítače** je anonymní ID používané k jednoznačné identifikaci serveru. Pokud vytvoříte žádost o podporu, budeme potřebovat toto ID k vyhledání protokolů pro váš server.
+- **Výchozí web** je ve službě IIS zastaven.
+- **DemoWebApp111** byl spuštěn ve službě IIS, ale neobdržel žádné požadavky. Tato sestava ukazuje, že neexistuje žádný spuštěný proces (ProcessId: nebyl nalezen).
+- **DemoWebApp222** je spuštěn a je monitorován (Instrumented: true). Na základě konfigurace uživatele, Instrumentation Key xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 byl uzavřeno pro tento web.
+- **DemoWebApp333** byl ručně instrumentován pomocí sady Application Insights SDK. Sledování stavu zjistilo sadu SDK a nebude tento web monitorovat.
 
 
-### <a name="example-powershell-module-information"></a>Příklad: informace o modulu PowerShellu
+### <a name="example-powershell-module-information"></a>Příklad: Informace o modulu PowerShellu
 
-Spusťte `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` příkazu, abyste zobrazili informace o aktuálním modulu:
+Spuštěním `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` příkazu zobrazíte informace o aktuálním modulu:
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule
@@ -127,11 +127,11 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-### <a name="example-runtime-status"></a>Příklad: běhový stav
+### <a name="example-runtime-status"></a>Příklad: Stav runtime
 
-Můžete zkontrolovat proces v instrumentované počítači a zjistit, jestli jsou všechny knihovny DLL načtené. Pokud monitorování funguje, měli byste načíst aspoň 12 knihoven DLL.
+Můžete zkontrolovat proces v počítači s přístrojem a zjistit, zda jsou načteny všechny knihovny DLL. Pokud monitorování funguje, by mělo být načteno alespoň 12 knihoven DLL.
 
-Spusťte příkaz `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
+Spusťte `Get-ApplicationInsightsMonitoringStatus -InspectProcess`příkaz :
 
 
 ```
@@ -169,33 +169,33 @@ listdlls64.exe -accepteula w3wp
 
 ### <a name="no-parameters"></a>(Žádné parametry)
 
-Ve výchozím nastavení tato rutina oznámí stav monitorování webových aplikací.
-Tuto možnost použijte, pokud chcete zkontrolovat, jestli se aplikace úspěšně instrumentoval.
-Můžete také zkontrolovat, který klíč instrumentace byl spárován s vaší lokalitou.
+Ve výchozím nastavení bude tato rutina hlásit stav monitorování webových aplikací.
+Tuto možnost použijte ke kontrole, pokud byla vaše aplikace úspěšně instrumentována.
+Můžete si také prohlédnout, který klíč instrumentace byl spárován s vaším webem.
 
 
-### <a name="-powershellmodule"></a>-PowerShellModule
-**Volitelné**. Pomocí tohoto přepínače můžete nahlásit čísla verzí a cesty knihoven DLL, které jsou požadovány pro monitorování.
-Tuto možnost použijte, pokud potřebujete určit verzi jakékoli knihovny DLL, včetně sady Application Insights SDK.
+### <a name="-powershellmodule"></a>-PowerShellModul
+**Nepovinné**. Tento přepínač slouží k vykazovat čísla verzí a cesty knihoven DLL potřebných pro monitorování.
+Tuto možnost použijte, pokud potřebujete identifikovat verzi libovolné dll, včetně sady Application Insights SDK.
 
 ### <a name="-inspectprocess"></a>-InspectProcess
 
-**Volitelné**. Pomocí tohoto přepínače můžete ohlásit, jestli je služba IIS spuštěná.
-Stáhne také externí nástroje a určí, zda jsou potřebné knihovny DLL načteny do modulu runtime služby IIS.
+**Nepovinné**. Pomocí tohoto přepínače můžete ohlásit, zda je spuštěna iis.
+Bude také stahovat externí nástroje k určení, zda jsou potřebné knihovny DLL načteny do běhu iis.
 
 
-Pokud se tento proces z jakéhokoli důvodu nepovede, můžete tyto příkazy spustit ručně:
-- iisreset. exe/status
-- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) – p W3wp | Findstr/I "InstrumentationEngine AI". ApplicationInsights"
-- [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | Findstr/I "InstrumentationEngine AI ApplicationInsights"
+Pokud se tento proces z nějakého důvodu nezdaří, můžete tyto příkazy spustit ručně:
+- iisreset.exe /stav
+- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp | findstr /I "InstrumentationEngineEngine AI. ApplicationInsights"
+- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp | findstr /I "InstrumentationEngineEngine AI ApplicationInsights"
 
 
 ### <a name="-force"></a>-Force
 
-**Volitelné**. Používáno pouze s InspectProcess. Pomocí tohoto přepínače přeskočíte výzvu uživatele, která se zobrazí před stažením dalších nástrojů.
+**Nepovinné**. Používá se pouze s InspectProcess. Pomocí tohoto přepínače můžete přeskočit výzvu uživatele, která se zobrazí před stažením dalších nástrojů.
 
 
 ## <a name="next-steps"></a>Další kroky
 
- Další Application Insights agenta:
- - Pomocí naší příručky můžete [řešit potíže s](status-monitor-v2-troubleshoot.md) agentem Application Insights.
+ S agentem Application Insights toho zvládnete víc:
+ - Použijte náš průvodce [k řešení potíží s](status-monitor-v2-troubleshoot.md) agentem Application Insights.

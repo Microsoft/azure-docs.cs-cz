@@ -1,6 +1,6 @@
 ---
-title: Omezení velikosti požadavků firewallu webových aplikací a seznamy vyloučení v Azure Application Gateway-Azure Portal
-description: Tento článek obsahuje informace o omezeních velikosti požadavků firewallu webových aplikací a seznamech vyloučení v Application Gateway s Azure Portal.
+title: Omezení velikosti a seznamy vyloučení brány firewall webových aplikací v Azure Application Gateway – portál Azure
+description: Tento článek obsahuje informace o omezení velikosti webových aplikací firewall a vyloučení seznamy konfigurace v application gateway s portálem Azure.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,47 +8,47 @@ ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77526786"
 ---
-# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Omezení velikosti a seznamů vyloučení požadavků firewallu webových aplikací
+# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Omezení velikosti a seznamy vyloučení brány firewall webových aplikací
 
-Firewall webových aplikací (WAF) služby Azure Application Gateway poskytuje ochranu pro webové aplikace. Tento článek popisuje WAF omezení velikosti požadavků a seznam vyloučení. Tato nastavení se nacházejí v zásadách WAF přidružených k vašemu Application Gateway. Další informace o zásadách WAF najdete v tématu [Brána Firewall webových aplikací Azure v azure Application Gateway](ag-overview.md) a [vytváření zásad firewallu webových aplikací pro Application Gateway](create-waf-policy-ag.md)
+Brána webových aplikací Azure Application Gateway (WAF) poskytuje ochranu webových aplikací. Tento článek popisuje omezení velikosti požadavku WAF a konfiguraci seznamů vyloučení. Tato nastavení jsou umístěna v zásadách WAF přidružených k bráně aplikace. Další informace o zásadách WAF najdete v [tématu Azure Web Application Firewall v bráně aplikací Azure](ag-overview.md) a Vytvoření zásad brány brány [webových aplikací pro aplikační bránu.](create-waf-policy-ag.md)
 
 ## <a name="waf-exclusion-lists"></a>Seznamy vyloučení WAF
 
-![Omezení velikosti požadavku](../media/application-gateway-waf-configuration/waf-policy.png)
+![Požadavky na omezení velikosti](../media/application-gateway-waf-configuration/waf-policy.png)
 
-Seznamy vyloučení WAF umožňují vynechat určité atributy žádostí z vyhodnocení WAF. Běžným příkladem jsou vložené tokeny služby Active Directory, které se používají pro pole ověřování nebo hesla. Tyto atributy jsou náchylné k zahrnutí speciálních znaků, které mohou aktivovat falešně pozitivní hodnoty z pravidel WAF. Po přidání atributu do seznamu vyloučení WAF se tento atribut nepovažuje za žádné nakonfigurované a aktivní WAF pravidlo. Seznamy vyloučení jsou globální v oboru.
+Seznamy vyloučení WAF umožňují vynechat určité atributy požadavku z vyhodnocení WAF. Běžným příkladem jsou vložené tokeny služby Active Directory, které se používají pro pole ověřování nebo hesla. Tyto atributy jsou náchylné k obsahovat speciální znaky, které mohou vyvolat falešně pozitivní z pravidel WAF. Jakmile je atribut přidán do seznamu vyloučení WAF, nepovažuje jej žádné nakonfigurované a aktivní pravidlo WAF. Seznamy vyloučení mají globální rozsah.
 
-Následující atributy lze přidat do seznamů vyloučení podle názvu. Hodnoty zvoleného pole nejsou vyhodnoceny proti pravidlům WAF, ale jejich názvy jsou stále (viz příklad 1 níže, hodnota hlavičky uživatelského agenta je vyloučena z vyhodnocení WAF). Seznamy vyloučení odstraňují kontrolu hodnoty pole.
+Následující atributy lze přidat do seznamů vyloučení podle názvu. Hodnoty zvoleného pole nejsou vyhodnoceny podle pravidel WAF, ale jejich názvy stále jsou (viz příklad 1 níže, hodnota hlavičky User-Agent je vyloučena z vyhodnocení WAF). Seznamy vyloučení odeberou kontrolu hodnoty pole.
 
-* Záhlaví žádostí
-* Soubory cookie požadavků
-* Název atributu žádosti (args) se dá přidat jako element vyloučení, třeba:
+* Hlavičky požadavku
+* Žádost o soubory cookie
+* Název atributu požadavku (args) lze přidat jako prvek vyloučení, například:
 
    * Název pole formuláře
    * Entita XML
    * Entita JSON
-   * Argumenty řetězce dotazu adresy URL
+   * Řetězec dotazu URL args
 
-Můžete zadat přesně takovou hlavičku požadavku, tělo, soubor cookie nebo atribut řetězce dotazu.  Případně můžete volitelně zadat částečné shody. Pravidla vyloučení jsou globální v oboru a platí pro všechny stránky a všechna pravidla.
+Můžete zadat přesnou shodu záhlaví, těla, souboru cookie nebo řetězce dotazu.  Nebo můžete volitelně zadat částečné shody. Pravidla vyloučení mají globální rozsah a vztahují se na všechny stránky a všechna pravidla.
 
 Následují podporované operátory kritérií shody:
 
-- **Equals**: Tento operátor se používá pro přesnou shodu. Jako příklad pro výběr záhlaví s názvem **bearerToken**použijte operátor Equals se sadou selektoru jako **bearerToken**.
-- **Začíná**na: Tento operátor odpovídá všem polím, která začínají zadanou hodnotou selektoru.
-- **Končí**na: Tento operátor odpovídá všem polím žádosti, která končí zadanou hodnotou selektoru.
-- **Obsahuje**: Tento operátor odpovídá všem polím požadavku, která obsahují zadanou hodnotu selektoru.
-- **Equals**: Tento operátor odpovídá všem polím žádosti. * bude hodnota selektoru.
+- **Rovná se**: Tento operátor se používá pro přesnou shodu. Jako příklad pro výběr hlavičky s názvem **bearerToken**použijte operátor equals s voličem nastaveným jako **bearerToken**.
+- **Začíná na**: Tento operátor odpovídá všem polím, která začínají zadanou hodnotou voliče.
+- **Končí :** Tento operátor porovnává všechna pole požadavku, která končí se zadanou hodnotou voliče.
+- **Obsahuje**: Tento operátor odpovídá všem polím požadavku, která obsahují zadanou hodnotu voliče.
+- **Rovná se všem**: Tento operátor odpovídá všem polím požadavku. * bude hodnota voliče.
 
-Ve všech případech porovnávání nerozlišuje velká a malá písmena a regulární výraz nejsou povoleny jako selektory.
+Ve všech případech je porovnávání malá a velká písmena a regulární výraz není povolen jako voliče.
 
 > [!NOTE]
-> Další informace a nápovědu k řešení potíží najdete v tématu [řešení potíží s WAF](web-application-firewall-troubleshoot.md).
+> Další informace a nápovědu k řešení potíží naleznete v [tématu WAF troubleshooting](web-application-firewall-troubleshoot.md).
 
 ### <a name="examples"></a>Příklady
 
@@ -58,11 +58,11 @@ Následující příklady ukazují použití vyloučení.
 
 #### <a name="example-1"></a>Příklad 1
 
-V tomto příkladu chcete vyloučit hlavičku User-Agent. Hlavička požadavku User-Agent obsahuje charakteristický řetězec, který umožňuje partnerům síťového protokolu identifikovat typ aplikace, operační systém, výrobce softwaru nebo verzi softwaru žádajícího softwarového agenta. Další informace najdete v tématu [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
+V tomto příkladu chcete vyloučit hlavičku uživatelského agenta. Hlavička požadavku uživatelského agenta obsahuje charakteristický řetězec, který umožňuje partnerům síťového protokolu identifikovat typ aplikace, operační systém, dodavatele softwaru nebo verzi softwaru ožádajíného softwarového uživatelského agenta. Další informace naleznete [v tématu User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
 
-Je možné zakázat vyhodnocování této hlavičky z libovolného počtu důvodů. Může se jednat o řetězec, který WAF uvidí a předpokládá, že je škodlivý. Například klasický útok SQL "x = x" v řetězci. V některých případech to může být legitimní provoz. Proto může být nutné vyřadit tuto hlavičku z WAF vyhodnocení.
+Může existovat libovolný počet důvodů zakázat vyhodnocení této hlavičky. Tam by mohl být řetězec, který WAF vidí a předpokládá, že je škodlivý. Například klasický útok SQL "x=x" v řetězci. V některých případech to může být legitimní provoz. Takže možná budete muset vyloučit tuto hlavičku z hodnocení WAF.
 
-Následující rutina Azure PowerShell vyloučí hlavičku User-Agent z vyhodnocení:
+Následující rutina prostředí Azure PowerShell vyloučí hlavičku uživatelského agenta z vyhodnocení:
 
 ```azurepowershell
 $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
@@ -72,9 +72,9 @@ $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
 ```
 #### <a name="example-2"></a>Příklad 2
 
-Tento příklad vylučuje hodnotu v *uživatelském* parametru, který se předává v požadavku přes adresu URL. Řekněme například, že ve vašem prostředí je běžné, že pole pro uživatele obsahuje řetězec, který WAF zobrazí jako škodlivý obsah, takže ho zablokuje.  V tomto případě můžete v tomto případě vyloučit parametr uživatele tak, aby WAF nevyhodnotil cokoli v poli.
+Tento příklad vylučuje hodnotu v *parametru uživatele,* který je předán v požadavku prostřednictvím adresy URL. Řekněme například, že je ve vašem prostředí běžné, že uživatelské pole obsahuje řetězec, který waf zobrazí jako škodlivý obsah, takže jej blokuje.  V tomto případě můžete vyloučit parametr uživatele, aby WAF nevyhodnotil nic v poli.
 
-Následující rutina Azure PowerShell vyloučí parametr uživatele z vyhodnocení:
+Následující rutina prostředí Azure PowerShell vyloučí uživatelský parametr z vyhodnocení:
 
 ```azurepowershell
 $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
@@ -82,25 +82,25 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Takže pokud je adresa URL `http://www.contoso.com/?user%281%29=fdafdasfda` předána do WAF, nevyhodnotí se řetězec **fdafdasfda**, ale přesto bude vyhodnocen uživatel s názvem parametru **%281 %29**. 
+Takže pokud `http://www.contoso.com/?user%281%29=fdafdasfda` je adresa URL předána WAF, nebude hodnotit řetězec **fdafdasfda**, ale bude stále hodnotit název parametru **uživatele%281%29**. 
 
-## <a name="waf-request-size-limits"></a>Omezení velikosti žádosti WAF
+## <a name="waf-request-size-limits"></a>Omezení velikosti požadavku WAF
 
 
 
-Firewall webových aplikací umožňuje konfigurovat omezení velikosti požadavků v rámci dolních a horních mezí. K dispozici jsou následující dvě konfigurace omezení velikosti:
+Brána firewall webových aplikací umožňuje konfigurovat omezení velikosti požadavků v dolní a horní meze. K dispozici jsou následující dvě konfigurace omezení velikosti:
 
-- Pole Maximální velikost textu požadavku je zadáno v kilobajtech a řídí celkové omezení velikosti požadavku bez jakýchkoli nahrávání souborů. Toto pole může být v rozsahu od 1 do KB minimálně až 128-maximální hodnota KB. Výchozí hodnota velikosti textu požadavku je 128 KB.
-- Pole limit pro nahrání souboru je zadané v MB a určuje maximální povolenou velikost nahrávání souborů. Toto pole může mít minimální hodnotu 1 MB a následující maximum:
+- Maximální velikost těla požadavku pole je určena v kilobajtech a řídí celkový limit velikosti požadavku bez nahrání souborů. Toto pole může být v rozsahu od minimální hodnoty 1 KB do 128 KB. Výchozí hodnota pro velikost těla požadavku je 128 KB.
+- Pole limitu pro odeslání souboru je určeno v MB a určuje maximální povolenou velikost odesílání souborů. Toto pole může mít minimální hodnotu 1 MB a následující maxima:
 
    - 100 MB pro brány v1 Medium WAF
-   - 500 MB pro velké WAF brány v1
-   - 750 MB pro WAF brány v2 
+   - 500 MB pro v1 Velké WAF brány
+   - 750 MB pro brány v2 WAF 
 
- Výchozí hodnota pro limit nahrávání souborů je 100 MB.
+ Výchozí hodnota pro limit pro odesílání souborů je 100 MB.
 
-WAF také nabízí konfigurovatelný ovladač pro zapnutí nebo vypnutí kontroly textu žádosti. Ve výchozím nastavení je kontrola textu žádosti povolena. Pokud je kontrola těla požadavku vypnutá, WAF nevyhodnotí obsah zprávy HTTP. V takových případech WAF nadále vynutil pravidla WAF u hlaviček, souborů cookie a identifikátorů URI. Pokud je kontrola těla žádosti vypnutá, pole Maximální velikost textu požadavku se nedá použít a nedá se nastavit. Vypnutí kontroly textu požadavku umožňuje odeslat zprávy větší než 128 KB do WAF, ale tělo zprávy není zkontrolováno pro ohrožení zabezpečení.
+WAF také nabízí konfigurovatelný knoflík pro zapnutí nebo vypnutí kontroly těla požadavku. Ve výchozím nastavení je povolena kontrola těla požadavku. Pokud je kontrola těla požadavku vypnutá, WAF nevyhodnocuje obsah textu zprávy HTTP. V takových případech WAF nadále vynucuje pravidla WAF pro záhlaví, soubory cookie a identifikátor URI. Pokud je kontrola těla požadavku vypnutá, pole maximální velikosti těla požadavku není použitelné a nelze je nastavit. Vypnutí kontroly těla požadavku umožňuje zprávy větší než 128 KB, které mají být odeslány do WAF, ale tělo zprávy není kontrolována na chyby zabezpečení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování nastavení WAF se můžete dozvědět, jak zobrazit protokoly WAF. Další informace najdete v tématu [diagnostika Application Gateway](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
+Po konfiguraci nastavení WAF se můžete dozvědět, jak zobrazit protokoly WAF. Další informace naleznete v tématu [Diagnostika aplikační brány](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
