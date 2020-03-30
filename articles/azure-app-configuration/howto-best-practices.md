@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy pro konfiguraci aplikací Azure | Microsoft Docs
-description: Informace o tom, jak nejlépe využít Azure App Configuration
+title: Doporučené postupy konfigurace azure aplikací | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak nejlépe využít Azure App Configuration
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -12,39 +12,39 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 37f93099027f810e8089119536e089e07080d0bc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: df56f53b64a35737700529b80c004efeb31eaabc
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898628"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348659"
 ---
-# <a name="azure-app-configuration-best-practices"></a>Osvědčené postupy pro konfiguraci aplikací Azure
+# <a name="azure-app-configuration-best-practices"></a>Doporučené postupy konfigurace azure aplikací
 
-Tento článek popisuje běžné vzory a osvědčené postupy při použití konfigurace aplikace Azure.
+Tento článek popisuje běžné vzory a osvědčené postupy při použití Konfigurace aplikací Azure.
 
-## <a name="key-groupings"></a>Seskupení klíčů
+## <a name="key-groupings"></a>Skupiny klíčů
 
 Konfigurace aplikace nabízí dvě možnosti pro uspořádání klíčů:
 
-* Klíčové předpony
+* Předpony klíčů
 * Popisky
 
-K seskupení klíčů můžete použít buď jednu, nebo obě možnosti.
+Klíče můžete seskupit pomocí jedné nebo obou možností.
 
-*Předpony klíčů* jsou počátečními částmi klíčů. Můžete logicky seskupovat sadu klíčů pomocí stejné předpony v jejich názvech. Předpony mohou obsahovat více komponent propojených pomocí oddělovače, například `/`, podobně jako cesta URL, pro vytvoření oboru názvů. Tyto hierarchie jsou užitečné, když ukládáte klíče pro spoustu aplikací, služeb komponent a prostředí v jednom úložišti konfigurace aplikace.
+*Předpony klíčů* jsou počáteční části klíčů. Sadu klíčů můžete logicky seskupit pomocí stejné předpony v jejich názvech. Předpony mohou obsahovat více součástí připojených oddělovačem, například `/`podobně jako cesta url, a vytvořit tak obor názvů. Tyto hierarchie jsou užitečné při ukládání klíčů pro mnoho aplikací, služeb komponent a prostředí v jednom úložišti konfigurace aplikací.
 
-Je důležité si uvědomit, že klíče jsou v souladu s tím, jak kód aplikace odkazuje na načtení hodnot odpovídajících nastavení. Klíče by se neměly měnit, jinak budete muset kód kdykoli upravovat.
+Důležité je mít na paměti, že klíče jsou to, co váš kód aplikace odkazuje na načtení hodnot odpovídající nastavení. Klíče by se neměly měnit, jinak budete muset upravit kód pokaždé, když se to stane.
 
-*Popisky* jsou atributy na klíčích. Používají se k vytváření variant klíče. Můžete například přiřadit popisky k několika verzím klíče. Verze může být iterací, prostředí nebo některé jiné kontextové informace. Vaše aplikace může vyžádat zcela jinou sadu hodnot klíče zadáním jiného popisku. V důsledku toho zůstanou všechny odkazy na klíče ve vašem kódu beze změny.
+*Popisky* jsou atributem klíčů. Používají se k vytvoření variant klíče. Popisky můžete například přiřadit více verzím klíče. Verze může být iterace, prostředí nebo jiné kontextové informace. Aplikace může požádat o zcela jinou sadu hodnot klíče zadáním jiného popisku. V důsledku toho všechny odkazy na klíče zůstávají beze změny v kódu.
 
-## <a name="key-value-compositions"></a>Složení hodnot klíčů
+## <a name="key-value-compositions"></a>Složení hodnoty klíče
 
-Konfigurace aplikace považuje všechny klíče uložené s nimi jako nezávislé entity. Konfigurace aplikace se nepokouší odvodit žádnou relaci mezi klíči nebo zdědit hodnoty klíčů na základě jejich hierarchie. Můžete agregovat více sad klíčů, ale pomocí popisků, které jsou v kódu aplikace v kombinaci se správnými konfiguračními balíčky.
+Konfigurace aplikace považuje všechny klíče uložené s ním jako nezávislé entity. Konfigurace aplikace se nepokouší odvodit žádný vztah mezi klíči nebo dědit hodnoty klíče na základě jejich hierarchie. Můžete však agregovat více sad klíčů pomocí popisků ve spojení se správným stohováním konfigurace v kódu aplikace.
 
-Pojďme se podívat na příklad. Předpokládejme, že máte nastavení s názvem **Asset1**, jehož hodnota se může lišit v závislosti na vývojovém prostředí. Pomocí prázdného popisku a popisku s názvem "vývoj" vytvoříte klíč s názvem "Asset1". Do prvního popisku vložíte výchozí hodnotu pro **Asset1**a do druhé hodnoty vložíte určitou hodnotu "vývoj".
+Pojďme se podívat na příklad. Předpokládejme, že máte nastavení s názvem **Asset1**, jehož hodnota se může lišit v závislosti na vývojovém prostředí. Vytvoříte klíč s názvem "Asset1" s prázdným popiskem a popiskem s názvem "Vývoj". V prvním popisku vložíte výchozí hodnotu pro **Asset1**a do druhého vložíte konkrétní hodnotu pro "Vývoj".
 
-Ve vašem kódu nejdříve načtete hodnoty klíčů bez popisků a potom navedete stejnou sadu hodnot klíčů podruhé s označením "vývoj". Při druhém načtení hodnot se přepíší předchozí hodnoty klíčů. Konfigurační systém .NET Core umožňuje "sestavovat" více sad konfiguračních dat nad sebou. Pokud klíč existuje ve více než jedné sadě, použije se poslední sada, která ho obsahuje. V případě moderního programovacího rozhraní, jako je .NET Core, získáte tuto funkci zásobníku zdarma, pokud pro přístup ke konfiguraci aplikací použijete nativního poskytovatele konfigurace. Následující fragment kódu ukazuje, jak lze implementovat skládání do aplikace .NET Core:
+V kódu nejprve načíst hodnoty klíče bez popisky a potom načíst stejnou sadu hodnot klíče podruhé s popiskem "Vývoj". Při načtení hodnot podruhé jsou přepsány předchozí hodnoty klíčů. Konfigurační systém .NET Core umožňuje "stohovat" více sad konfiguračních dat na sebe. Pokud klíč existuje ve více než jedné sadě, použije se poslední sada, která jej obsahuje. S moderní programovací rámec, jako je například .NET Core, získáte tuto možnost stohování zdarma, pokud používáte nativní poskytovatele konfigurace pro přístup ke konfiguraci aplikace. Následující fragment kódu ukazuje, jak můžete implementovat stohování v aplikaci .NET Core:
 
 ```csharp
 // Augment the ConfigurationBuilder with Azure App Configuration
@@ -56,20 +56,36 @@ configBuilder.AddAzureAppConfiguration(options => {
 });
 ```
 
-## <a name="app-configuration-bootstrap"></a>Zavedení konfigurace aplikace
+[Pomocí popisků povolit různé konfigurace pro různá prostředí](./howto-labels-aspnet-core.md) poskytuje úplný příklad.
 
-Pokud chcete získat přístup k úložišti konfigurace aplikace, můžete použít jeho připojovací řetězec, který je k dispozici v Azure Portal. Protože připojovací řetězce obsahují informace o přihlašovacích údajích, považují se za tajné klíče. Tyto tajné klíče je potřeba uložit v Azure Key Vault a váš kód se musí ověřit, aby se Key Vault, aby se načetly.
+## <a name="app-configuration-bootstrap"></a>Zaváděcí past konfigurace aplikace
 
-Lepší možností je použít funkci spravované identity v Azure Active Directory. U spravovaných identit potřebujete jenom adresu URL koncového bodu konfigurace aplikace, abyste mohli spustit přístup k úložišti konfigurace aplikace. Adresu URL můžete vložit do kódu aplikace (například v souboru *appSettings. JSON* ). Podrobnosti najdete v tématu věnovaném [integraci se spravovanými identitami Azure](howto-integrate-azure-managed-service-identity.md) .
+Pro přístup k úložišti konfigurace aplikací můžete použít jeho připojovací řetězec, který je k dispozici na webu Azure Portal. Vzhledem k tomu, že připojovací řetězce obsahují informace o pověření, jsou považovány za tajné klíče. Tyto tajné klíče je třeba uložit v trezoru klíčů Azure a váš kód musí ověřit key vault načíst.
 
-## <a name="app-or-function-access-to-app-configuration"></a>Přístup aplikací nebo funkcí k konfiguraci aplikace
+Lepší možností je použít funkci spravovaných identit ve službě Azure Active Directory. Se spravovanými identitami potřebujete k zavádění přístupu do obchodu Konfigurace aplikací je potřeba pouze adresa URL koncového bodu Konfigurace aplikace. Adresu URL můžete vložit do kódu aplikace (například do souboru *appsettings.json).* Podrobnosti [najdete v tématu Integrace se spravovanými identitami Azure.](howto-integrate-azure-managed-service-identity.md)
 
-Přístup ke konfiguraci aplikací pro webové aplikace nebo funkce můžete zajistit pomocí kterékoli z následujících metod:
+## <a name="app-or-function-access-to-app-configuration"></a>Přístup k aplikaci nebo funkci ke konfiguraci aplikace
 
-* Prostřednictvím Azure Portal do nastavení aplikace App Service zadejte připojovací řetězec do úložiště konfigurace aplikace.
-* Uložte připojovací řetězec do úložiště konfigurace aplikace v Key Vault a [odkázat ho z App Service](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
-* Použijte spravované identity Azure pro přístup k úložišti konfigurace aplikace. Další informace najdete v tématu [integrace se spravovanými identitami Azure](howto-integrate-azure-managed-service-identity.md).
-* Doručovat konfiguraci z konfigurace aplikace do App Service. Konfigurace aplikace poskytuje funkci exportu (v Azure Portal a Azure CLI), která odesílá data přímo do App Service. V této metodě nemusíte vůbec měnit kód aplikace.
+Ke konfiguraci aplikací pro webové aplikace nebo funkce můžete poskytnout přístup pomocí některé z následujících metod:
+
+* Prostřednictvím portálu Azure zadejte připojovací řetězec do úložiště konfigurace aplikací v nastavení aplikace služby App Service.
+* Uložte připojovací řetězec do úložiště konfigurace aplikací v trezoru klíčů a [odkazovat na něj ze služby App Service](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
+* Pomocí spravovaných identit Azure přemístíme úložiště Konfigurace aplikací. Další informace najdete [v tématu Integrace se spravovanými identitami Azure](howto-integrate-azure-managed-service-identity.md).
+* Nabízená konfigurace z konfigurace aplikace do služby App Service. Konfigurace aplikace poskytuje funkci exportu (na webu Azure Portal a Azure CLI), která odesílá data přímo do služby App Service. Pomocí této metody není nutné kód aplikace vůbec měnit.
+
+## <a name="reduce-requests-made-to-app-configuration"></a>Snížení požadavků na konfiguraci aplikace
+
+Nadměrné požadavky na konfiguraci aplikace může mít za následek omezení nebo překročení poplatků. Chcete-li snížit počet žádostí:
+
+* Zvyšte časový interval aktualizace, zejména pokud se hodnoty konfigurace často nemění. Zadejte nový časový plán aktualizace pomocí [ `SetCacheExpiration` metody](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration).
+
+* Podívejte se na jeden *sentinelový klíč*, místo sledování jednotlivých kláves. Aktualizujte všechny konfigurace pouze v případě, že se změní klíč sentinelu. Příklad najdete [v tématu Použití dynamické konfigurace v aplikaci ASP.NET Core.](enable-dynamic-configuration-aspnet-core.md)
+
+* Azure Event Grid slouží k přijímání oznámení při změně konfigurace, nikoli k neustálému dotazování pro všechny změny. Další informace najdete [v tématu Route Azure App Configuration events to a web endpoint.See Route Azure App Configuration events to a web endpoint](./howto-app-configuration-event.md) for more information
+
+## <a name="importing-configuration-data-into-app-configuration"></a>Import konfiguračních dat do konfigurace aplikace
+
+Konfigurace aplikace nabízí možnost hromadného [importu](https://aka.ms/azconfig-importexport1) nastavení konfigurace z aktuálních konfiguračních souborů pomocí portálu Azure nebo příkazového příkazu k použití příkazového příkazu. Stejné možnosti můžete také použít k exportu hodnot z konfigurace aplikace, například mezi souvisejícími obchody. Pokud chcete nastavit průběžnou synchronizaci s úložištěm GitHub, můžete použít naši [akci GitHub,](https://aka.ms/azconfig-gha2) abyste mohli pokračovat v používání stávajících postupů správy zdrojového kódu a zároveň získat výhody konfigurace aplikací.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: dc0f8171e18598e4f805a03a4bc6d17de220fbe1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68698979"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Ověření metrik latence a propustnosti pro účet úložiště
@@ -28,7 +28,7 @@ Azure Monitor s využitím [metrik úložiště Azure](../common/storage-metrics
 
 ## <a name="configure-metrics"></a>Konfigurace metrik
 
-V **NASTAVENÍ** svého účtu úložiště přejděte do části **Metriky (Preview)** .
+V **NASTAVENÍ** svého účtu úložiště přejděte do části **Metriky (Preview)**.
 
 Z rozevíracího seznamu **DÍLČÍ SLUŽBA** zvolte objekt blob.
 
@@ -44,7 +44,7 @@ Pomocí následujících metrik získáte představu o latenci a propustnosti ap
 |**Příchozí přenos dat**|Množství příchozích dat. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure. |
 |**Výchozí přenos dat**|Množství výchozích dat. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat. |
 
-Vedle možnosti **Čas** vyberte **Posledních 24 hodin (automaticky)** . Zvolte **Poslední hodina**, jako **Časové intervaly** zvolte **Minuta** a pak klikněte na **Použít**.
+Vedle možnosti **Čas** vyberte **Posledních 24 hodin (automaticky)**. Zvolte **Poslední hodina**, jako **Časové intervaly** zvolte **Minuta** a pak klikněte na **Použít**.
 
 ![Metriky účtu úložiště](./media/storage-blob-scalable-app-verify-metrics/figure1.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Schéma událostí Azure konfiguraci aplikací Azure mřížka událostí
-description: Popisuje vlastnosti, které jsou k dispozici pro události konfigurace aplikace Azure pomocí služby Azure Event Grid
+title: Schéma události konfigurace aplikace Azure Event Grid Azure
+description: Popisuje vlastnosti, které jsou k dispozici pro události konfigurace aplikací Azure s Azure Event Grid
 services: event-grid
 author: jimmyca
 ms.service: event-grid
@@ -8,30 +8,30 @@ ms.topic: reference
 ms.date: 05/30/2019
 ms.author: jimmyca
 ms.openlocfilehash: fe0274f723692eea3cfd25cc0e9e146b35dce2ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66735778"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Schéma událostí Azure Event Grid pro konfiguraci aplikací Azure
 
-Tento článek obsahuje vlastnosti a schéma pro události konfigurace aplikace Azure. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma pro události konfigurace aplikací Azure. Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
 
-Seznam ukázkových skriptů a kurzy, naleznete v tématu [zdroj událostí konfigurace aplikace pro Azure](event-sources.md#app-configuration).
+Seznam ukázkových skriptů a kurzů najdete v tématu [Zdroj událostí konfigurace aplikace Azure](event-sources.md#app-configuration).
 
-## <a name="available-event-types"></a>Typy událostí k dispozici
+## <a name="available-event-types"></a>Dostupné typy událostí
 
-Konfigurace aplikace pro Azure generuje následující typy událostí:
+Azure App Configuration vydává následující typy událostí:
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.AppConfiguration.KeyValueModified | Vyvoláno, když je vytvořen nebo výměny páru klíč hodnota. |
-| Microsoft.AppConfiguration.KeyValueDeleted | Vyvoláno, když se odstraní páru klíč hodnota. |
+| Microsoft.AppConfiguration.KeyHodnotaZměněno | Je aktivována při vytvoření nebo nahrazení hodnoty klíče. |
+| Microsoft.AppConfiguration.KeyValueDeleted | Je aktivována při odstranění hodnoty klíče. |
 
 ## <a name="example-event"></a>Příklad události
 
-Následující příklad ukazuje schématu upravené události klíč hodnota: 
+Následující příklad ukazuje schéma události upravené hodnotou klíče: 
 
 ```json
 [{
@@ -50,7 +50,7 @@ Následující příklad ukazuje schématu upravené události klíč hodnota:
 }]
 ```
 
-Schéma pro odstraněnou událost klíč hodnota se podobá: 
+Schéma odstraněné události s hodnotou klíče je podobné: 
 
 ```json
 [{
@@ -71,29 +71,29 @@ Schéma pro odstraněnou událost klíč hodnota se podobá:
  
 ## <a name="event-properties"></a>Vlastnosti události
 
-Událost má následující dat nejvyšší úrovně:
+Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| subject | string | Vydavatel definované cesta předmět události. |
-| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
-| id | string | Jedinečný identifikátor pro událost. |
+| téma | řetězec | Úplná cesta k prostředku ke zdroji události. Toto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| Předmět | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| Eventtype | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy je událost generována na základě času UTC zprostředkovatele. |
+| id | řetězec | Jedinečný identifikátor události |
 | data | objekt | Data událostí konfigurace aplikace. |
-| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
+| metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| key | string | Klíč klíč hodnota, která byla změněna nebo odstraněna. |
-| label | string | Popisek, pokud je libovolná z klíč hodnota, která byla změněna nebo odstraněna. |
-| etag | string | Pro `KeyValueModified` etag nový klíč hodnota. Pro `KeyValueDeleted` etag klíč hodnota, která byla odstraněna. |
+| key | řetězec | Klíč hodnoty klíče, která byla změněna nebo odstraněna. |
+| label | řetězec | Popisek, pokud existuje, hodnoty klíče, která byla změněna nebo odstraněna. |
+| Etag | řetězec | Pro `KeyValueModified` etag nové hodnoty klíče. Pro `KeyValueDeleted` etag klíč-hodnota, která byla odstraněna. |
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Úvod do služby Azure Event Grid najdete v tématu [novinky služby Event Grid?](overview.md)
-* Další informace o vytváření předplatného služby Azure Event Grid najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).
-* Úvod k práci s událostmi konfigurace aplikace pro Azure, najdete v článku [trasy konfiguraci aplikací Azure události – Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json). 
+* Úvod do Služby Azure Event Grid najdete v tématu [Co je event grid?](overview.md)
+* Další informace o vytvoření předplatného Služby Azure Event Grid najdete v [tématu schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Úvod k práci s událostmi konfigurace aplikací Azure najdete v tématu [Route Azure App Configuration events – Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json). 

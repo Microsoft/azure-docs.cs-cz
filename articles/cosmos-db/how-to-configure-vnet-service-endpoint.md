@@ -1,195 +1,162 @@
 ---
-title: Konfigurace přístupu na základě virtuální sítě pro účet Azure Cosmos
+title: Konfigurace přístupu založeného na virtuální síti pro účet Azure Cosmos
 description: Tento dokument popisuje kroky potřebné k nastavení koncového bodu služby virtuální sítě pro Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 03/26/2020
 ms.author: mjbrown
-ms.openlocfilehash: 36f6152e52d6cb45d0a30b385678596331232560
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 442623880c1b95f3d7e038ae44832b74853d2c4a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980679"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366229"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurace přístupu z virtuálních sítí (VNet)
 
-Účty služby Azure Cosmos DB můžete nakonfigurovat tak, aby umožňovaly přístup pouze z konkrétní podsítě virtuální sítě Azure. Chcete-li omezit přístup k účtu Azure Cosmos DB s připojením z podsítě ve virtuální síti:
+Účty služby Azure Cosmos DB můžete nakonfigurovat tak, aby umožňovaly přístup pouze z konkrétní podsítě virtuální sítě Azure. Omezení přístupu k účtu Azure Cosmos DB pomocí připojení z podsítě ve virtuální síti:
 
-1. Umožněte, aby podsíť odesílala podsíť a identitu virtuální sítě do Azure Cosmos DB. To můžete dosáhnout povolením koncového bodu služby pro Azure Cosmos DB v konkrétní podsíti.
+1. Povolte podsíti odeslat identitu podsítě a virtuální sítě do Azure Cosmos DB. Toho lze dosáhnout povolením koncového bodu služby pro Azure Cosmos DB v konkrétní podsíti.
 
-1. Přidejte do účtu Azure Cosmos DB pravidlo, abyste mohli určit podsíť jako zdroj, ze kterého je účet k účtu k dispozici.
+1. Přidejte pravidlo v účtu Azure Cosmos DB k určení podsítě jako zdroje, ze kterého je přístupk účtu.
 
 > [!NOTE]
-> Pokud je v podsíti povolen koncový bod služby pro váš Azure Cosmos DB účet, zdroj provozu, který dosáhne Azure Cosmos DB přepínačů z veřejné IP adresy do virtuální sítě a podsítě. Přepínání přenosů se vztahuje na libovolný účet Azure Cosmos DB, který je z této podsítě k dispozici. Pokud vaše účty Azure Cosmos DB mají bránu firewall založenou na protokolu IP, která by umožňovala tuto podsíť, požadavky z podsítě s povolenými službami už nebudou odpovídat pravidlům brány firewall protokolu IP a budou odmítnuty.
+> Když je koncový bod služby pro váš účet Azure Cosmos DB povolen v podsíti, zdroj provozu, který dosáhne Azure Cosmos DB, se přepne z veřejné IP adresy do virtuální sítě a podsítě. Přepínání provozu platí pro všechny účty Azure Cosmos DB, které jsou přístupné z této podsítě. Pokud vaše účty Azure Cosmos DB mají bránu firewall založenou na PROTOKOLU IP, která tuto podsíť povoluje, požadavky z podsítě s podporou služby již neodpovídají pravidlům brány firewall IP a jsou odmítnuty.
 >
-> Další informace najdete v části Postup [migrace z pravidla brány firewall protokolu IP na virtuální síť](#migrate-from-firewall-to-vnet) v tomto článku.
+> Další informace naleznete v postupech popsaných v [části Migrace z pravidla brány firewall IP do seznamu řízení přístupu virtuální sítě](#migrate-from-firewall-to-vnet) v tomto článku.
 
-Následující části popisují, jak nakonfigurovat koncový bod služby virtuální sítě pro účet Azure Cosmos DB.
+Následující části popisují, jak nakonfigurovat koncový bod virtuální síťové služby pro účet Azure Cosmos DB.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a id="configure-using-portal"></a>Konfigurace koncového bodu služby pomocí Azure Portal
+## <a name="configure-a-service-endpoint-by-using-the-azure-portal"></a><a id="configure-using-portal"></a>Konfigurace koncového bodu služby pomocí portálu Azure
 
-### <a name="configure-a-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>Konfigurace koncového bodu služby pro existující virtuální síť Azure a podsíť
+### <a name="configure-a-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>Konfigurace koncového bodu služby pro existující virtuální síť a podsíť Azure
 
-1. V okně **všechny prostředky** Najděte Azure Cosmos DB účet, který chcete zabezpečit.
+1. Z okna **Všechny prostředky** najděte účet Azure Cosmos DB, který chcete zabezpečit.
 
-1. V nabídce nastavení vyberte možnost **brány firewall a virtuální sítě** a zvolte možnost povolení přístupu z **vybraných sítí**.
+1. V nabídce nastavení vyberte **brány firewall a virtuální sítě** a zvolte povolení přístupu z vybraných **sítí**.
 
-1. Pokud chcete udělit přístup k podsíti existující virtuální sítě, vyberte v části **virtuální sítě**možnost **Přidat existující virtuální síť Azure**.
+1. Pokud chcete udělit přístup k podsíti existující virtuální sítě, vyberte v části **Virtuální sítě**možnost Přidat existující virtuální **síť Azure**.
 
-1. Vyberte **předplatné** , ze kterého chcete přidat virtuální síť Azure. Vyberte **virtuální sítě** a **podsítě** Azure, které chcete poskytnout přístup k vašemu Azure Cosmos DB účtu. V dalším kroku vyberte **Povolit** a povolte vybrané sítě s koncovými body služby pro Microsoft. AzureCosmosDB. Až se dokončí, vyberte **Přidat**.
+1. Vyberte **předplatné,** ze kterého chcete přidat virtuální síť Azure. Vyberte **virtuální sítě** a **podsítě** Azure, které chcete poskytnout přístup k účtu Azure Cosmos DB. Dále vyberte **Povolit,** chcete-li povolit vybrané sítě s koncovými body služby pro "Microsoft.AzureCosmosDB". Po dokončení vyberte **Přidat**.
 
-   ![Vybrat virtuální síť a podsíť](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
+   ![Výběr virtuální sítě a podsítě](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
 
-1. Až bude účet Azure Cosmos DB povolený pro přístup z virtuální sítě, povolí provoz jenom z této zvolené podsítě. Virtuální síť a podsíť, kterou jste přidali, by se měla zobrazit, jak je znázorněno na následujícím snímku obrazovky:
+1. Po azure cosmos DB účet je povolen přístup z virtuální sítě, bude povolit provoz pouze z této vybrané podsítě. Přidaná virtuální síť a podsíť by se měla zobrazit tak, jak je znázorněno na následujícím snímku obrazovky:
 
-   ![Virtuální síť a podsíť se úspěšně nakonfigurovaly.](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
+   ![Úspěšně nakonfigurovaná virtuální síť a podsíť](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
 > [!NOTE]
-> K povolení koncových bodů služby virtuální sítě budete potřebovat následující oprávnění předplatného:
->   * Předplatné s virtuální sítí: Přispěvatel sítě
->   * Předplatné s Azure Cosmos DBm účtem: Přispěvatel účtu DocumentDB
->   * Pokud je vaše virtuální síť a účet Azure Cosmos DB v různých předplatných, ujistěte se, že předplatné, které má virtuální síť, má také zaregistrované `Microsoft.DocumentDB` poskytovatele prostředků. Pokud chcete zaregistrovat poskytovatele prostředků, přečtěte si článek [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md) .
+> Chcete-li povolit koncové body služby virtuální sítě, potřebujete následující oprávnění předplatného:
+>   * Předplatné s virtuální sítí: Síťový přispěvatel
+>   * Předplatné s účtem Azure Cosmos DB: Přispěvatel účtu DocumentDB
+>   * Pokud vaše virtuální síť a účet Azure Cosmos DB jsou v různých předplatných, ujistěte se, že předplatné, které má virtuální síť má `Microsoft.DocumentDB` také registrovaný poskytovatel prostředků. Pokud chcete zaregistrovat poskytovatele prostředků, přečtěte si článek [Poskytovatelé a typy prostředků Azure.](../azure-resource-manager/management/resource-providers-and-types.md)
 
 Tady jsou pokyny pro registraci předplatného u poskytovatele prostředků.
 
 ### <a name="configure-a-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Konfigurace koncového bodu služby pro novou virtuální síť Azure a podsíť
 
-1. V okně **všechny prostředky** Najděte Azure Cosmos DB účet, který chcete zabezpečit.  
+1. Z okna **Všechny prostředky** najděte účet Azure Cosmos DB, který chcete zabezpečit.  
 
-1. V nabídce nastavení vyberte **brány firewall a Azure Virtual Networks** a zvolte možnost povolení přístupu z **vybraných sítí**.  
+1. V nabídce nastavení vyberte **brány firewall a virtuální sítě Azure** a zvolte povolení přístupu z vybraných **sítí**.  
 
-1. Pokud chcete udělit přístup k nové službě Azure Virtual Network, vyberte v části **virtuální sítě**možnost **Přidat novou virtuální síť**.  
+1. Pokud chcete udělit přístup k nové virtuální síti Azure, vyberte v části **Virtuální sítě**možnost Přidat novou **virtuální síť**.  
 
-1. Zadejte podrobnosti požadované k vytvoření nové virtuální sítě a pak vyberte **vytvořit**. Podsíť se vytvoří s koncovým bodem služby pro Microsoft. AzureCosmosDB, který je povolený.
+1. Zadejte podrobnosti potřebné k vytvoření nové virtuální sítě a pak vyberte **Vytvořit**. Podsíť bude vytvořena s povoleným koncovým bodem služby pro "Microsoft.AzureCosmosDB".
 
-   ![Vyberte virtuální síť a podsíť pro novou virtuální síť.](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
+   ![Výběr virtuální sítě a podsítě pro novou virtuální síť](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-Pokud váš Azure Cosmos DB účet používají jiné služby Azure, jako je Azure Kognitivní hledání nebo ke kterému se přistupuje ze služby Stream Analytics nebo Power BI, povolíte přístup tak, že **v globálním datacentru Azure vyberete přijímat připojení**.
+Pokud váš účet Azure Cosmos DB používají jiné služby Azure, jako je Azure Cognitive Search, nebo se k němu přistupuje z analýzy Stream nebo Power BI, povolíte přístup výběrem **možnosti Přijmout připojení z globálních datových center Azure**.
 
-Abyste měli jistotu, že máte přístup k Azure Cosmos DB metriky z portálu, musíte povolit možnost **Povolit přístup z možností Azure Portal** . Další informace o těchto možnostech najdete v článku [Konfigurace brány firewall protokolu IP](how-to-configure-firewall.md) . Po povolení přístupu vyberte **Uložit** a uložte nastavení.
+Chcete-li zajistit, že máte přístup k metrikám Azure Cosmos DB z portálu, musíte povolit povolení přístupu z možností **portálu Azure.** Další informace o těchto možnostech naleznete v článku [Konfigurace brány firewall IP.](how-to-configure-firewall.md) Po povolení přístupu uložte nastavení výběrem **možnosti Uložit.**
 
-## <a id="remove-vnet-or-subnet"></a>Odebrat virtuální síť nebo podsíť
+## <a name="remove-a-virtual-network-or-subnet"></a><a id="remove-vnet-or-subnet"></a>Odebrání virtuální sítě nebo podsítě
 
-1. V okně **všechny prostředky** najděte účet Azure Cosmos DB, pro který jste přiřadili koncové body služby.  
+1. V okně **Všechny prostředky** najděte účet Azure Cosmos DB, pro který jste přiřadili koncové body služby.  
 
-2. V nabídce nastavení vyberte možnost **brány firewall a virtuální sítě** .  
+1. V nabídce nastavení vyberte **brány firewall a virtuální sítě.**  
 
-3. Chcete-li odebrat virtuální síť nebo pravidlo podsítě, vyberte **...** vedle virtuální sítě nebo podsítě a vyberte možnost **Odebrat**.
+1. Pokud chcete odebrat pravidlo virtuální sítě nebo podsítě, vyberte **...** vedle virtuální sítě nebo podsítě a vyberte **Odebrat**.
 
    ![Odebrání virtuální sítě](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
 
-4. Vyberte **Uložit**, aby se tyto změny použily.
+1. Vyberte **Uložit**, aby se tyto změny použily.
 
-## <a id="configure-using-powershell"></a>Konfigurace koncového bodu služby pomocí Azure PowerShell
+## <a name="configure-a-service-endpoint-by-using-azure-powershell"></a><a id="configure-using-powershell"></a>Konfigurace koncového bodu služby pomocí Azure PowerShellu
 
 > [!NOTE]
-> Pokud používáte PowerShell nebo rozhraní příkazového řádku Azure CLI, nezapomeňte v parametrech zadat úplný seznam filtrů IP adres a seznamů ACL virtuální sítě v parametrech, nikoli jenom ty, které je potřeba přidat.
+> Když používáte PowerShell nebo Azure CLI, nezapomeňte zadat úplný seznam IP filtrů a virtuálnísítě ACL v parametrech, ne jen ty, které je potřeba přidat.
 
-Pomocí následujících kroků můžete nakonfigurovat koncový bod služby na účet Azure Cosmos DB pomocí Azure PowerShell:  
+Pomocí následujících kroků nakonfigurujte koncový bod služby pro účet Azure Cosmos DB pomocí Azure PowerShellu:  
 
-1. Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) a [Přihlaste se](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
+1. Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) a [přihlaste se](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
 
 1. Povolte koncový bod služby pro existující podsíť virtuální sítě.  
 
    ```powershell
-   $rgname = "<Resource group name>"
-   $vnName = "<Virtual network name>"
-   $sname = "<Subnet name>"
+   $resourceGroupName = "<Resource group name>"
+   $vnetName = "<Virtual network name>"
+   $subnetName = "<Subnet name>"
    $subnetPrefix = "<Subnet address range>"
+   $serviceEndpoint = "Microsoft.AzureCosmosDB"
 
    Get-AzVirtualNetwork `
-    -ResourceGroupName $rgname `
-    -Name $vnName | Set-AzVirtualNetworkSubnetConfig `
-    -Name $sname  `
-    -AddressPrefix $subnetPrefix `
-    -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzVirtualNetwork
+      -ResourceGroupName $resourceGroupName `
+      -Name $vnetName | Set-AzVirtualNetworkSubnetConfig `
+      -Name $subnetName `
+      -AddressPrefix $subnetPrefix `
+      -ServiceEndpoint $serviceEndpoint | Set-AzVirtualNetwork
    ```
 
-1. Získat informace o virtuální síti
+1. Získejte informace o virtuální síti.
 
    ```powershell
-   $vnProp = Get-AzVirtualNetwork `
-     -Name $vnName `
-     -ResourceGroupName $rgName
+   $vnet = Get-AzVirtualNetwork `
+      -ResourceGroupName $resourceGroupName `
+      -Name $vnetName
+
+   $subnetId = $vnet.Id + "/subnets/" + $subnetName
    ```
 
-1. Vlastnosti Azure Cosmos DB účtu získáte spuštěním následující rutiny:  
+1. Příprava pravidla virtuální sítě Cosmos DB
 
    ```powershell
-   $apiVersion = "2015-04-08"
-   $acctName = "<Azure Cosmos DB account name>"
-
-   $cosmosDBConfiguration = Get-AzResource `
-     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-     -ApiVersion $apiVersion `
-     -ResourceGroupName $rgName `
-     -Name $acctName
+   $vnetRule = New-AzCosmosDBVirtualNetworkRule `
+      -Id $subnetId
    ```
 
-1. Inicializujte proměnné pro pozdější použití. Nastavte všechny proměnné z existující definice účtu.
+1. Aktualizujte vlastnosti účtu Azure Cosmos DB pomocí nové konfigurace koncového bodu virtuální sítě: 
 
    ```powershell
-   $locations = @()
+   $accountName = "<Cosmos DB account name>"
 
-   foreach ($readLocation in $cosmosDBConfiguration.Properties.readLocations) {
-      $locations += , @{
-         locationName     = $readLocation.locationName;
-         failoverPriority = $readLocation.failoverPriority;
-      }
-   }
-
-   $virtualNetworkRules = @(@{
-      id = "$($vnProp.Id)/subnets/$sname";
-   })
-
-   if ($cosmosDBConfiguration.Properties.isVirtualNetworkFilterEnabled) {
-      $virtualNetworkRules = $cosmosDBConfiguration.Properties.virtualNetworkRules + $virtualNetworkRules
-   }
+   Update-AzCosmosDBAccount `
+      -ResourceGroupName $resourceGroupName `
+      -Name $accountName `
+      -EnableVirtualNetwork $true `
+      -VirtualNetworkRuleObject @($vnetRule)
    ```
 
-1. Aktualizujte vlastnosti účtu Azure Cosmos DB s novou konfigurací spuštěním následujících rutin: 
+1. Spusťte následující příkaz a ověřte, že váš účet Azure Cosmos DB je aktualizovaný koncovým bodem služby virtuální sítě, který jste nakonfigurovali v předchozím kroku:
 
    ```powershell
-   $cosmosDBProperties = @{
-      databaseAccountOfferType      = $cosmosDBConfiguration.Properties.databaseAccountOfferType;
-      consistencyPolicy             = $cosmosDBConfiguration.Properties.consistencyPolicy;
-      ipRangeFilter                 = $cosmosDBConfiguration.Properties.ipRangeFilter;
-      locations                     = $locations;
-      virtualNetworkRules           = $virtualNetworkRules;
-      isVirtualNetworkFilterEnabled = $True;
-   }
+   $account = Get-AzCosmosDBAccount `
+      -ResourceGroupName $resourceGroupName `
+      -Name $accountName
 
-   Set-AzResource `
-     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-     -ApiVersion $apiVersion `
-     -ResourceGroupName $rgName `
-     -Name $acctName `
-     -Properties $CosmosDBProperties
+   $account.IsVirtualNetworkFilterEnabled
+   $account.VirtualNetworkRules
    ```
 
-1. Spuštěním následujícího příkazu ověřte, že se účet Azure Cosmos DB aktualizoval pomocí koncového bodu služby virtuální sítě, který jste nakonfigurovali v předchozím kroku:
+## <a name="configure-a-service-endpoint-by-using-the-azure-cli"></a><a id="configure-using-cli"></a>Konfigurace koncového bodu služby pomocí rozhraní příkazového příkazu Azure
 
-   ```powershell
-   $UpdatedcosmosDBConfiguration = Get-AzResource `
-     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-     -ApiVersion $apiVersion `
-     -ResourceGroupName $rgName `
-     -Name $acctName
+Účty Azure Cosmos lze nakonfigurovat pro koncové body služby při jejich vytvoření nebo aktualizaci později, pokud je pro ně podsíť již nakonfigurovaná. Koncové body služby lze také povolit na účtu Cosmos, kde pro ně podsíť ještě není nakonfigurována, a pak začne fungovat, když je podsíť nakonfigurována později. Tato flexibilita umožňuje správcům, kteří nemají přístup k účtu Cosmos a prostředkům virtuální sítě, aby jejich konfigurace byly na sobě nezávislé.
 
-   $UpdatedcosmosDBConfiguration.Properties
-   ```
+### <a name="create-a-new-cosmos-account-and-connect-it-to-a-back-end-subnet-for-a-new-virtual-network"></a>Vytvoření nového účtu Cosmos a jeho připojení k back-endové podsíti pro novou virtuální síť
 
-## <a id="configure-using-cli"></a>Konfigurace koncového bodu služby pomocí rozhraní příkazového řádku Azure
-
-Účty Azure Cosmos se dají nakonfigurovat pro koncové body služby, když se vytvoří nebo aktualizují v pozdější době, pokud je pro ně už nakonfigurovaná podsíť. Koncové body služby je možné povolit taky na účtu Cosmos, kde pro ně není ještě nakonfigurovaná podsíť, a pak začnou fungovat, když je podsíť nakonfigurovaná později. Tato flexibilita umožňuje správcům, kteří nemají přístup k účtu Cosmos i k virtuálním síťovým prostředkům, navzájem nezávisle na sobě navzájem.
-
-### <a name="create-a-new-cosmos-account-and-connect-it-to-a-back-end-subnet-for-a-new-virtual-network"></a>Vytvoření nového účtu Cosmos a jeho připojení k podsíti back-end pro novou virtuální síť
-
-V tomto příkladu se vytvoří virtuální síť a podsíť s povolenými koncovými body služby při jejich vytváření.
+V tomto příkladu je virtuální síť a podsíť vytvořena s povolenými koncovými body služby pro obě, když jsou vytvořeny.
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
@@ -233,9 +200,9 @@ az cosmosdb create \
    --virtual-network-rules $svcEndpoint
 ```
 
-### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>Připojení a konfigurace účtu Cosmos k podsíti back-endu nezávisle na sobě
+### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>Nezávislé připojení a konfigurace účtu Cosmos k podsíti back-end
 
-Tato ukázka je určená k tomu, aby ukázala, jak připojit účet Azure Cosmos k existující nové virtuální síti, ve které ještě není nakonfigurovaná podsíť pro koncové body služby. To se provádí pomocí parametru `--ignore-missing-vnet-service-endpoint`. To umožňuje, aby se konfigurace účtu Cosmos dokončila bez chyby předtím, než se dokončí konfigurace do podsítě virtuální sítě. Po dokončení konfigurace podsítě bude účet Cosmos dostupný přes nakonfigurovanou podsíť.
+Tato ukázka je určena k zobrazení, jak připojit účet Azure Cosmos k existující nové virtuální síti, kde podsíť ještě není nakonfigurovaná pro koncové body služby. To se provádí `--ignore-missing-vnet-service-endpoint` pomocí parametru. To umožňuje konfiguraci účtu Cosmos dokončit bez chyby před dokončením konfigurace podsítě virtuální sítě. Po dokončení konfigurace podsítě bude účet Cosmos přístupný prostřednictvím nakonfigurované podsítě.
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
@@ -291,91 +258,50 @@ az network vnet subnet update \
    --service-endpoints Microsoft.AzureCosmosDB
 ```
 
-## <a id="migrate-from-firewall-to-vnet"></a>Migrace z pravidla brány firewall protokolu IP do seznamu ACL virtuální sítě
+## <a name="migrating-from-an-ip-firewall-rule-to-a-virtual-network-acl"></a><a id="migrate-from-firewall-to-vnet"></a>Migrace z pravidla brány firewall IP na seznam ACL virtuální sítě
 
-Následující postup použijte pouze pro účty Azure Cosmos DB s existujícími pravidly brány firewall protokolu IP, které povolují podsíť, pokud chcete místo pravidla brány firewall protokolu IP použít virtuální síť a seznamy ACL založené na podsíti.
+Chcete-li migrovat účet Azure Cosmos DB z použití pravidel brány firewall IP na použití koncových bodů služby virtuální sítě, použijte následující kroky.
 
-Po zapnutí koncového bodu služby pro účet Azure Cosmos DB pro podsíť se požadavky odesílají se zdrojem, který obsahuje informace o virtuální síti a podsíti namísto veřejné IP adresy. Tyto požadavky se neshodují s filtrem IP adres. Tento přepínač zdrojového kódu se stane pro všechny účty Azure Cosmos DB, ke kterým přistupovala z podsítě s povoleným koncovým bodem služby. Chcete-li zabránit výpadkům, použijte následující postup:
+Po nakonfigurovaný účet služby Cosmos DB pro podsíť se požadavky z této podsítě odesílají do Azure Cosmos DB s informacemi o virtuální síti a zdroji podsítě namísto zdrojové veřejné IP adresy. Tyto požadavky již nebudou odpovídat filtru IP nakonfigurovanému na účtu Azure Cosmos DB, a proto jsou nezbytné následující kroky, aby se zabránilo prostojům.
 
-1. Vlastnosti Azure Cosmos DB účtu získáte spuštěním následující rutiny:
+Než budete pokračovat, povolte koncový bod služby Azure Cosmos DB ve virtuální síti a podsíti pomocí výše uvedeného kroku v části Povolení koncového bodu služby pro existující podsíť virtuální sítě.
 
-   ```powershell
-   $apiVersion = "2015-04-08"
-   $acctName = "<Azure Cosmos DB account name>"
-
-   $cosmosDBConfiguration = Get-AzResource `
-     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-     -ApiVersion $apiVersion `
-     -ResourceGroupName $rgName `
-     -Name $acctName
-   ```
-
-1. Inicializujte proměnné pro pozdější použití. Nastavte všechny proměnné z existující definice účtu. Přidejte seznam ACL virtuální sítě ke všem účtům Azure Cosmos DB, ke kterým se přistupoval z podsítě s příznakem `ignoreMissingVNetServiceEndpoint`.
+1. Získání informací o virtuální síti a podsíti:
 
    ```powershell
-   $locations = @()
+   $resourceGroupName = "myResourceGroup"
+   $accountName = "mycosmosaccount"
+   $vnetName = "myVnet"
+   $subnetName = "mySubnet"
 
-   foreach ($readLocation in $cosmosDBConfiguration.Properties.readLocations) {
-      $locations += , @{
-         locationName     = $readLocation.locationName;
-         failoverPriority = $readLocation.failoverPriority;
-      }
-   }
+   $vnet = Get-AzVirtualNetwork `
+      -ResourceGroupName $resourceGroupName `
+      -Name $vnetName
 
-   $subnetID = "Subnet ARM URL" e.g "/subscriptions/f7ddba26-ab7b-4a36-a2fa-7d01778da30b/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/subnet1"
-
-   $virtualNetworkRules = @(@{
-      id = $subnetID;
-      ignoreMissingVNetServiceEndpoint = "True";
-   })
-
-   if ($cosmosDBConfiguration.Properties.isVirtualNetworkFilterEnabled) {
-      $virtualNetworkRules = $cosmosDBConfiguration.Properties.virtualNetworkRules + $virtualNetworkRules
-   }
+   $subnetId = $vnet.Id + "/subnets/" + $subnetName
    ```
 
-1. Aktualizujte vlastnosti účtu Azure Cosmos DB s novou konfigurací spuštěním následujících rutin:
+1. Příprava nového objektu pravidla virtuální sítě pro účet Azure Cosmos DB:
 
    ```powershell
-   $cosmosDBProperties = @{
-      databaseAccountOfferType      = $cosmosDBConfiguration.Properties.databaseAccountOfferType;
-      consistencyPolicy             = $cosmosDBConfiguration.Properties.consistencyPolicy;
-      ipRangeFilter                 = $cosmosDBConfiguration.Properties.ipRangeFilter;
-      locations                     = $locations;
-      virtualNetworkRules           = $virtualNetworkRules;
-      isVirtualNetworkFilterEnabled = $True;
-   }
-
-   Set-AzResource `
-      -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-      -ApiVersion $apiVersion `
-      -ResourceGroupName $rgName `
-      -Name $acctName `
-      -Properties $CosmosDBProperties
+   $vnetRule = New-AzCosmosDBVirtualNetworkRule `
+      -Id $subnetId
    ```
 
-1. Opakujte kroky 1-3 pro všechny účty Azure Cosmos DB, ke kterým přistupujete z podsítě.
+1. Aktualizujte účet Azure Cosmos DB, abyste povolili přístup ke koncovému bodu služby z podsítě:
 
-1.  Počkejte 15 minut a pak aktualizujte podsíť, aby se povolil koncový bod služby.
+   ```powershell
+   Update-AzCosmosDBAccount `
+      -ResourceGroupName $resourceGroupName `
+      -Name $accountName `
+      -EnableVirtualNetwork $true `
+      -VirtualNetworkRuleObject @($vnetRule)
+   ```
 
-1.  Povolte koncový bod služby pro existující podsíť virtuální sítě.
+1. Opakujte předchozí kroky pro všechny účty Azure Cosmos DB přístupné z podsítě.
 
-    ```powershell
-    $rgname= "<Resource group name>"
-    $vnName = "<virtual network name>"
-    $sname = "<Subnet name>"
-    $subnetPrefix = "<Subnet address range>"
-
-    Get-AzVirtualNetwork `
-       -ResourceGroupName $rgname `
-       -Name $vnName | Set-AzVirtualNetworkSubnetConfig `
-       -Name $sname `
-       -AddressPrefix $subnetPrefix `
-       -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzVirtualNetwork
-    ```
-
-1. Odeberte pravidlo brány firewall protokolu IP pro podsíť.
+1. Odeberte pravidlo brány firewall IP pro podsíť z pravidel brány firewall účtu Azure Cosmos DB.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete nakonfigurovat bránu firewall pro Azure Cosmos DB, přečtěte si článek [Podpora brány firewall](firewall-support.md) .
+* Pokud chcete nakonfigurovat bránu firewall pro Azure Cosmos DB, přečtěte si článek [o podpoře brány firewall.](firewall-support.md)

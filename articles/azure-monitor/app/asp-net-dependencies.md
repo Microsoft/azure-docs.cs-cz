@@ -1,64 +1,66 @@
 ---
-title: Závislost sledování ve službě Azure Application Insights | Dokumentace Microsoftu
-description: Monitorování volání závislostí z vaší místní nebo Microsoft Azure webové aplikace s využitím Application Insights.
+title: Sledování závislostí v přehledech aplikací Azure | Dokumenty společnosti Microsoft
+description: Sledujte volání závislostí z místní webové aplikace nebo webové aplikace Microsoft Azure pomocí application insights.
 ms.topic: conceptual
-ms.date: 06/25/2019
-ms.openlocfilehash: 8fb1550a3f1d4b3336384139b049b60e23e648d7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/26/2020
+ms.openlocfilehash: 1d4e8d1a0482257c92f47a00bd440e786c09c7aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79276293"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292131"
 ---
-# <a name="dependency-tracking-in-azure-application-insights"></a>Sledování závislostí v Azure Application Insights 
+# <a name="dependency-tracking-in-azure-application-insights"></a>Sledování závislostí v přehledech aplikací Azure 
 
-*Závislost* je externí komponenta, která je volána vaší aplikací. Obvykle se jedná o službu volána pomocí protokolu HTTP, nebo databázi nebo systému souborů. [Application Insights](../../azure-monitor/app/app-insights-overview.md) měří dobu trvání volání závislostí, bez ohledu na to, jestli se nedaří, nebo ne, spolu s dalšími informacemi, jako je název závislosti a tak dále. Můžete prozkoumat konkrétní volání závislosti a korelovat je s požadavky a výjimkami.
+*Závislost* je externí součást, která je volána vaší aplikací. Obvykle se jedná o službu volanou pomocí protokolu HTTP, databáze nebo systému souborů. [Application Insights](../../azure-monitor/app/app-insights-overview.md) měří dobu trvání volání závislostí, ať už se jedná o selhání nebo ne, spolu s dalšími informacemi, jako je název závislosti a tak dále. Můžete prozkoumat konkrétní volání závislostí a korelovat je s požadavky a výjimky.
 
 ## <a name="automatically-tracked-dependencies"></a>Automaticky sledované závislosti
 
-Application Insights sady SDK pro .NET a .NET Core dodávané s `DependencyTrackingTelemetryModule` je modul telemetrie, který automaticky shromažďuje závislosti. Tato kolekce závislostí je automaticky povolená pro [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) a [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) aplikace, pokud je nakonfigurovaná podle propojených oficiálních dokumentů. `DependencyTrackingTelemetryModule` se dodává jako [Tento](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) balíček NuGet a automaticky se připravuje při použití některého z balíčků NuGet `Microsoft.ApplicationInsights.Web` nebo `Microsoft.ApplicationInsights.AspNetCore`.
+Sady SDK Application Insights pro .NET `DependencyTrackingTelemetryModule` a .NET Core jsou součástí modulu telemetrie, který automaticky shromažďuje závislosti. Tato kolekce závislostí je povolena automaticky pro [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) a [ASP.NET základní](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) aplikace, pokud jsou konfigurovány podle propojených oficiálních dokumentů. `DependencyTrackingTelemetryModule` je dodáván jako [tento](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) balíček NuGet a je automaticky přenesen `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.AspNetCore`při použití balíčků NuGet nebo .
 
- `DependencyTrackingTelemetryModule` aktuálně sleduje následující závislosti automaticky:
+ `DependencyTrackingTelemetryModule`v současné době sleduje následující závislosti automaticky:
 
 |Závislosti |Podrobnosti|
 |---------------|-------|
-|Http/https | Místní nebo vzdálené volání http/https |
-|Volání WCF| Automaticky sledováno pouze v případě, že jsou použity vazby založené na protokolu HTTP.|
-|SQL | Volání prováděná pomocí `SqlClient`. Podívejte se na [Tento](#advanced-sql-tracking-to-get-full-sql-query) záznam pro zachycení dotazu SQL.  |
-|[Azure Storage (objekt blob, tabulka, fronta)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Volání prováděná klientem Azure Storage. |
-|[Klientská sada SDK pro EventHub](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | Verze 1.1.0 a vyšší. |
-|[Klientská sada SDK pro ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| Verze 3.0.0 a vyšší. |
-|Azure Cosmos DB | Automaticky sledováno pouze v případě, že se používá protokol HTTP/HTTPS. Režim TCP nebude zachycena Application Insights. |
+|Http/Https | Místní nebo vzdálené volání http/https |
+|Volání WCF| Sledovány pouze automaticky, pokud jsou použity vazby založené na protokolu Http.|
+|SQL | Hovory uskutečněné s `SqlClient`. Podívejte se na [toto](#advanced-sql-tracking-to-get-full-sql-query) pro zachycení dotazu SQL.  |
+|[Úložiště Azure (objekt blob, tabulka, fronta)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Volání uskutečněná s klientem úložiště Azure. |
+|[EventHub Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | Verze 1.1.0 a vyšší. |
+|[Sada ServiceBus klienta SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| Verze 3.0.0 a vyšší. |
+|Azure Cosmos DB | Sledováno automaticky pouze v případě, že je použit protokol HTTP/HTTPS. Režim TCP nebude zachycen application insights. |
 
-Pokud nemůžete najít závislost nebo používáte jinou sadu SDK, ujistěte se, že je v seznamu [automaticky shromážděných závislostí](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). Pokud není závislost automaticky shromažďována, můžete ji stále sledovat ručně pomocí [volání sledování závislostí](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
+Pokud vám chybí závislost nebo používáte jinou sadu SDK, ujistěte se, že je v seznamu [automaticky shromážděných závislostí](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). Pokud závislost není automaticky shromažďována, můžete ji stále sledovat ručně pomocí [volání závislosti sledování](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 
-## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Nastavení automatického sledování závislosti v konzolových aplikacích
+## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Nastavení automatického sledování závislostí v konzolových aplikacích
 
-Pokud chcete automaticky sledovat závislosti z konzolových aplikací .NET/.NET Core, nainstalujte balíček NuGet `Microsoft.ApplicationInsights.DependencyCollector`a inicializujte `DependencyTrackingTelemetryModule` následujícím způsobem:
+Chcete-li automaticky sledovat závislosti z konzolových aplikací `Microsoft.ApplicationInsights.DependencyCollector`rozhraní .NET, nainstalujte balíček Nuget a inicializujte `DependencyTrackingTelemetryModule` následujícím způsobem:
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
     depModule.Initialize(TelemetryConfiguration.Active);
 ```
 
+Pro aplikace konzoly .NET Core je TelemetryConfiguration.Active zastaralý. Podívejte se na pokyny v [dokumentaci k pracovníslužbě](https://docs.microsoft.com/azure/azure-monitor/app/worker-service) a [ASP.NET základní monitorovací dokumentaci](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
+
 ### <a name="how-automatic-dependency-monitoring-works"></a>Jak funguje automatické monitorování závislostí?
 
-Závislosti se automaticky shromažďují pomocí jednoho z následujících postupů:
+Závislosti jsou automaticky shromažďovány pomocí jedné z následujících technik:
 
-* Použití instrumentace bajtového kódu kolem metod výběru. (InstrumentationEngine buď z StatusMonitor nebo rozšíření webové aplikace Azure)
+* Použití instrumentace bajtového kódu kolem vybraných metod. (InstrumentationEngine buď z StatusMonitor nebo Rozšíření Azure Web App)
 * Zpětná volání EventSource
-* DiagnosticSource zpětná volání (v nejnovějších sadách SDK .NET/.NET Core)
+* DiagnosticSource Zpětná volání (v nejnovějších sadách SDK jádra .NET/.NET)
 
 ## <a name="manually-tracking-dependencies"></a>Ruční sledování závislostí
 
-Níže jsou uvedeny některé příklady závislostí, které nejsou shromažďovány automaticky, a proto vyžadují ruční sledování.
+Následují některé příklady závislostí, které nejsou automaticky shromažďovány a proto vyžadují ruční sledování.
 
-* Azure Cosmos DB se sleduje automaticky jenom v případě, že se používá [protokol HTTP/HTTPS](../../cosmos-db/performance-tips.md#networking) . Režim TCP nebude zachycena Application Insights.
+* Azure Cosmos DB se automaticky sleduje, jenom když se používá [HTTP/HTTPS.](../../cosmos-db/performance-tips.md#networking) Režim TCP nebude zachycen application insights.
 * Redis
 
-Pro tyto závislosti, které nejsou automaticky shromažďovány sadou SDK, je můžete sledovat ručně pomocí [rozhraní TrackDependency API](api-custom-events-metrics.md#trackdependency) , které jsou používány standardními moduly pro automatické shromažďování dat.
+Pro tyto závislosti, které nejsou automaticky shromažďovány sadou SDK, můžete je sledovat ručně pomocí [rozhraní TRACKDependency API,](api-custom-events-metrics.md#trackdependency) které se používá standardní moduly automatické kolekce.
 
-Například pokud vytváření kódu pomocí sestavení, které jste sami nenapsali může čas všechna volání, a zjistěte, jaké příspěvek, odešle vaše doby odezvy. Chcete-li tato data zobrazit v grafech závislostí v Application Insights, odešlete je pomocí `TrackDependency`.
+Například pokud vytvoříte kód s sestavením, které jste nenapsali sami, můžete čas všechny volání na něj zjistit, jaký příspěvek to dělá pro vaše doby odezvy. Chcete-li, aby se tato data zobrazovala v `TrackDependency`grafech závislostí v application insights, odešlete je pomocí .
 
 ```csharp
 
@@ -76,88 +78,88 @@ Například pokud vytváření kódu pomocí sestavení, které jste sami nenaps
     }
 ```
 
-Alternativně `TelemetryClient` poskytuje rozšiřující metody `StartOperation` a `StopOperation`, které se dají použít k ručnímu sledování závislostí, jak je vidět [tady](custom-operations-tracking.md#outgoing-dependencies-tracking) .
+Alternativně `TelemetryClient` poskytuje metody `StartOperation` `StopOperation` rozšíření a které lze použít k ručnímu sledování závislostí, jak je znázorněno [zde](custom-operations-tracking.md#outgoing-dependencies-tracking)
 
-Pokud chcete přepnout na standardní modul sledování závislostí, odeberte odkaz na DependencyTrackingTelemetryModule v [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) pro aplikace ASP.NET. V případě aplikací ASP.NET Core postupujte podle [pokynů.](asp-net-core.md#configuring-or-removing-default-telemetrymodules)
+Pokud chcete vypnout modul sledování standardní závislosti, odeberte odkaz na DependencyTrackingTelemetryModule v [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) pro ASP.NET aplikace. Pro ASP.NET základní aplikace postupujte podle pokynů [zde](asp-net-core.md#configuring-or-removing-default-telemetrymodules).
 
 ## <a name="tracking-ajax-calls-from-web-pages"></a>Sledování volání AJAX z webových stránek
 
-Pro webové stránky Application Insights JavaScript SDK automaticky shromáždí volání AJAX jako závislosti.
+Pro webové stránky JavaScript SDK Application Insights automaticky shromažďuje volání AJAX jako závislosti.
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Rozšířené sledování SQL pro získání úplného dotazu SQL
 
-V případě volání SQL se název serveru a databáze vždycky shromažďují a ukládají jako název shromážděných `DependencyTelemetry`. K dispozici je další pole s názvem data, které může obsahovat úplný text dotazu SQL.
+U volání SQL je název serveru a databáze vždy shromažďován a `DependencyTelemetry`uložen jako název shromážděných . Existuje další pole s názvem "data", které může obsahovat úplný text dotazu SQL.
 
-Pro ASP.NET Core aplikace není k dispozici žádný další krok potřebný k získání úplného dotazu SQL.
+Pro ASP.NET základní aplikace, neexistuje žádný další krok potřebný k získání úplného dotazu SQL.
 
-V případě aplikací ASP.NET je úplný dotaz SQL shromážděn s využitím instrumentace kódu, který vyžaduje instrumentaci jádra. Další kroky specifické pro platformu, jak je popsáno níže, jsou povinné.
+Pro ASP.NET aplikace je úplný dotaz SQL shromažďován pomocí instrumentace bajtového kódu, který vyžaduje instrumentaci motoru. Další kroky specifické pro platformu, jak je popsáno níže, jsou povinné.
 
-| Platforma | Krok (y) potřebný k získání úplného dotazu SQL |
+| Platforma | Krok (y) Potřebné k získání úplného dotazu SQL |
 | --- | --- |
-| Webové aplikace Azure |V ovládacím panelu webové aplikace otevřete okno [Application Insights](../../azure-monitor/app/azure-web-apps.md) a povolte příkazy SQL pod položkou .NET. |
-| Server IIS (virtuální počítač Azure, on-Prem atd.) | Pomocí modulu Monitorování stavu PowerShellu [nainstalujte modul instrumentace](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md) a restartujte službu IIS. |
-| Cloudové služby Azure | Přidat [úlohu po spuštění pro instalaci StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Vaše aplikace by se měla připojit k ApplicationInsights SDK v době sestavení instalací balíčků NuGet pro [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) nebo [aplikace ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) . |
-| Služba IIS Express | Nepodporováno
+| Webová aplikace Azure |Na ovládacím panelu webové aplikace [otevřete okno Application Insights](../../azure-monitor/app/azure-web-apps.md) a povolte příkazy SQL v části .NET. |
+| Server Služby IIS (virtuální počítač Azure, on-prem a tak dále.) | Pomocí modulu PowerShell monitoru stavu [nainstalujte modul Instrumentation Engine](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md) a restartujte službu IIS. |
+| Cloudová služba Azure | Přidání [úlohy při spuštění k instalaci služby StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Vaše aplikace by měla být připojena k ApplicationInsights SDK v době sestavení instalací balíčků NuGet pro [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) nebo [ASP.NET základní aplikace](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) |
+| IIS Express | Nepodporuje se
 
-Ve výše uvedených případech je správným způsobem, jak ověřit, že je modul instrumentace správně nainstalován, ověření, že verze sady SDK shromážděná `DependencyTelemetry` je "rddp". ' rdddsd ' nebo ' rddf ' označuje závislosti, které jsou shromažďovány prostřednictvím zpětného volání DiagnosticSource nebo EventSource, takže plný dotaz SQL nebude zachycen.
+Ve výše uvedených případech je správný způsob ověření správné instalace přístrojového stroje ověřením, `DependencyTelemetry` že verze sdk shromážděných je "RDDP". 'rdddsd' nebo 'rddf' označuje, že závislosti jsou shromažďovány prostřednictvím DiagnosticSource nebo EventSource zpětná volání, a proto nebude zachycen úplný dotaz SQL.
 
 ## <a name="where-to-find-dependency-data"></a>Kde najít data závislostí
 
-* [Mapa aplikace](app-map.md) vizualizuje závislosti mezi vaší aplikací a sousedními komponentami.
-* [Diagnostika transakcí](transaction-diagnostics.md) zobrazuje jednotná a korelujovaná data serveru.
-* [Karta prohlížeče](javascript.md) zobrazuje volání AJAX z prohlížečů uživatelů.
-* Kliknutím na z pomalých nebo neúspěšných žádostí zkontrolujete svá volání závislostí.
-* [Analýza](#logs-analytics) se dá použít k dotazování na data závislostí.
+* [Mapa aplikací](app-map.md) vizualizuje závislosti mezi aplikací a sousedními součástmi.
+* [Diagnostika transakcí](transaction-diagnostics.md) zobrazuje jednotná, korelační serverová data.
+* [Karta Prohlížeče](javascript.md) zobrazuje volání AJAX z prohlížečů vašich uživatelů.
+* Proklikejte se z pomalých nebo neúspěšných požadavků a zkontrolujte jejich volání závislostí.
+* [Analýzu](#logs-analytics) lze použít k dotazování na data závislostí.
 
-## <a name="diagnosis"></a>Diagnostika pomalých požadavků
+## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a>Diagnostika pomalých požadavků
 
-Každá událost žádosti je přidružená k voláním závislosti, výjimkám a dalším událostem, které jsou sledovány během zpracování požadavku vaší aplikací. Takže pokud některé požadavky nefungují správně, můžete zjistit, zda se jedná z důvodu pomalé odezvy ze závislosti.
+Každá událost požadavku je přidružena k volání závislostí, výjimkám a dalším událostem, které jsou sledovány při zpracování požadavku vaší aplikací. Takže pokud některé požadavky dělají špatně, můžete zjistit, zda je to z důvodu pomalé odpovědi ze závislosti.
 
-### <a name="tracing-from-requests-to-dependencies"></a>Trasování požadavků závislostí
+### <a name="tracing-from-requests-to-dependencies"></a>Trasování z požadavků na závislosti
 
-Otevřete kartu **výkon** a v horní části vedle operací přejděte na kartu **závislosti** .
+Otevřete kartu **Výkon** a přejděte na kartu **Závislosti** v horní části vedle operací.
 
-V části celkové klikněte na **Název závislosti** . Po výběru závislosti se zobrazí graf s distribucí trvání této závislosti na pravé straně.
+Klikněte na **název závislosti** v části celkově. Po výběru závislosti se vpravo zobrazí graf rozdělení doby trvání této závislosti.
 
-![Na kartě výkon klikněte v horní části na kartu závislost a pak na název závislosti v grafu.](./media/asp-net-dependencies/2-perf-dependencies.png)
+![Na kartě výkon klikněte na kartu Závislost v horní části a potom na název závislosti v grafu](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-Kliknutím na tlačítko modré **ukázky** v pravém dolním rohu a pak na ukázce zobrazíte podrobnosti o koncových transakcích.
+Klikněte na modré tlačítko **Vzorky** v pravém dolním rohu a pak na vzorku zobrazíte podrobnosti o transakci od konce.
 
-![Kliknutím na ukázku zobrazíte podrobnosti o kompletní transakci.](./media/asp-net-dependencies/3-end-to-end.png)
+![Kliknutím na ukázku zobrazíte podrobnosti o transakcích od konce.](./media/asp-net-dependencies/3-end-to-end.png)
 
-### <a name="profile-your-live-site"></a>Profil živého webu
+### <a name="profile-your-live-site"></a>Profilujte svůj živý web
 
-Představu kde čas prochází? [Application Insights Profiler](../../azure-monitor/app/profiler.md) sleduje volání http na svůj živý web a zobrazí funkce v kódu, které trvaly nejdelší čas.
+Netušíte, kam ten čas sem jde? Profiler [Application Insights](../../azure-monitor/app/profiler.md) sleduje volání HTTP na váš živý web a zobrazuje funkce v kódu, které trvaly nejdelší dobu.
 
 ## <a name="failed-requests"></a>Neúspěšné požadavky
 
-Neúspěšné požadavky může být také přidružen neúspěšných volání závislostí.
+Neúspěšné požadavky mohou být také přidruženy k neúspěšným voláním závislostí.
 
-Na levé straně můžeme přejít na kartu **chyby** a potom kliknout na kartu **závislosti** v horní části.
+Můžeme přejít na kartu **Selhání** vlevo a kliknout na kartu **závislosti** v horní části.
 
-![Klikněte na graf neúspěšných žádostí](./media/asp-net-dependencies/4-fail.png)
+![Klikněte na graf neúspěšných požadavků.](./media/asp-net-dependencies/4-fail.png)
 
-Tady budete moct zobrazit počet neúspěšných závislostí. Pokud chcete získat další podrobnosti o neúspěšném výskytu, zkuste kliknout na název závislosti v dolní tabulce. Můžete kliknout na tlačítko modré **závislosti** v pravém dolním rohu a získat podrobnosti o koncových transakcích.
+Zde budete moci zobrazit počet neúspěšných závislostí. Chcete-li získat další podrobnosti o neúspěšném výskytu, pokusem o kliknutí na název závislosti v dolní tabulce. Kliknutím na modré tlačítko **Závislosti** v pravém dolním rohu získáte podrobnosti o transakcích od konce.
 
-## <a name="logs-analytics"></a>Protokoly (analýza)
+## <a name="logs-analytics"></a>Protokoly (Analytics)
 
-Závislosti můžete sledovat v [dotazovacím jazyku Kusto](/azure/kusto/query/). Zde je několik příkladů:
+Závislosti můžete sledovat v [dotazovacím jazyce Kusto](/azure/kusto/query/). Zde je několik příkladů:
 
-* Najdete všechna neúspěšná volání:
+* Vyhledání všech neúspěšných volání závislostí:
 
 ``` Kusto
 
     dependencies | where success != "True" | take 10
 ```
 
-* Najděte volání AJAX:
+* Najít VOLÁNÍ AJAX:
 
 ``` Kusto
 
     dependencies | where client_Type == "Browser" | take 10
 ```
 
-* Vyhledejte žádosti spotřebují volání závislostí:
+* Hledání volání závislostí přidružených k požadavkům:
 
 ``` Kusto
 
@@ -168,7 +170,7 @@ Závislosti můžete sledovat v [dotazovacím jazyku Kusto](/azure/kusto/query/)
 ```
 
 
-* Najít volání AJAX přidružený k zobrazení stránek:
+* Najít VOLÁNÍ AJAX přidružené k zobrazení stránky:
 
 ``` Kusto 
 
@@ -180,15 +182,15 @@ Závislosti můžete sledovat v [dotazovacím jazyku Kusto](/azure/kusto/query/)
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Jak automatické shromažďování závislostí hlásí neúspěšná volání závislostí?*
+### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Jak se selhání sestavy automatického kolektoru závislostí na závislostech?*
 
-* Neúspěšná volání závislostí budou mít pole Success nastaveno na hodnotu false. `DependencyTrackingTelemetryModule` nehlásí `ExceptionTelemetry`. Úplný datový model pro závislost je popsán [zde](data-model-dependency-telemetry.md).
+* Neúspěšná volání závislostí budou mít pole "úspěch" nastaveno na hodnotu False. `DependencyTrackingTelemetryModule`nehlásí `ExceptionTelemetry`. Úplný datový model pro závislost je popsán [zde](data-model-dependency-telemetry.md).
 
-## <a name="open-source-sdk"></a>Open-Source sada SDK
-Stejně jako každý Application Insights SDK je modul pro shromažďování závislostí také open source. Přečtěte si kód, přispívat k němu nebo nahlaste problémy v [oficiálním úložišti GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
+## <a name="open-source-sdk"></a>Sada SDK s otevřeným zdrojovým kódem
+Stejně jako každý Application Insights SDK, modul kolekce závislostí je také open source. Přečtěte si kód a přispějte k něm nebo nahlaste problémy na [oficiálním úložišti GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Výjimky](../../azure-monitor/app/asp-net-exceptions.md)
-* [Data stránky uživatele &](../../azure-monitor/app/javascript.md)
+* [Uživatelská & stránková data](../../azure-monitor/app/javascript.md)
 * [Dostupnost](../../azure-monitor/app/monitor-web-app-availability.md)

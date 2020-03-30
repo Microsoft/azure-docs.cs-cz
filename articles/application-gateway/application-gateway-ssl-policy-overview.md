@@ -1,28 +1,28 @@
 ---
-title: Přehled zásad protokolu SSL pro Azure Application Gateway
-description: Naučte se konfigurovat zásady SSL pro Azure Application Gateway a snížit zatížení a dešifrovací režii z back-endové serverové farmy.
+title: Přehled zásad TLS pro Aplikační bránu Azure
+description: Zjistěte, jak nakonfigurovat zásady TLS pro Azure Application Gateway a snížit nároky na šifrování a dešifrování z back-endové serverové farmy.
 services: application gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: fe70bd5994d835bdc2651a64d35c988ea38b8511
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 871cb930e867002d8af1e7755de27d4873327543
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770029"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257372"
 ---
-# <a name="application-gateway-ssl-policy-overview"></a>Application Gateway Přehled zásad protokolu SSL
+# <a name="application-gateway-tls-policy-overview"></a>Přehled zásad TLS aplikační brány
 
-Azure Application Gateway můžete použít k centralizaci správy certifikátů SSL a snížení režie šifrování a dešifrování ze serverové farmy back-end serveru. Toto centralizované zpracování protokolu SSL také umožňuje zadat centrální zásady protokolu SSL, které jsou vhodné pro vaše požadavky na zabezpečení vaší organizace. To vám pomůže splnit požadavky na dodržování předpisů a pokyny pro zabezpečení a Doporučené postupy.
+Pomocí brány Aplikace Azure můžete centralizovat správu certifikátů TLS/SSL a snížit nároky na šifrování a dešifrování z back-endové serverové farmy. Toto centralizované zpracování TLS také umožňuje určit centrální zásady TLS, které jsou vhodné pro vaše požadavky na zabezpečení organizace. To vám pomůže splnit požadavky na dodržování předpisů, bezpečnostní pokyny a doporučené postupy.
 
-Zásada protokolu SSL zahrnuje kontrolu verze protokolu SSL a šifrovací sady a pořadí, ve kterém se šifry používají při ověřování SSL. Application Gateway nabízí dva mechanismy pro řízení zásad protokolu SSL. Můžete použít předdefinovanou zásadu nebo vlastní zásadu.
+Zásady TLS zahrnují řízení verze protokolu TLS, stejně jako šifrovací sady a pořadí, ve kterém jsou šifry používány během handshake TLS. Aplikační brána nabízí dva mechanismy pro řízení zásad TLS. Můžete použít předdefinovanou zásadu nebo vlastní zásadu.
 
-## <a name="predefined-ssl-policy"></a>Předdefinované zásady SSL
+## <a name="predefined-tls-policy"></a>Předdefinovaná zásada TLS
 
-Application Gateway má tři předdefinované zásady zabezpečení. Bránu můžete nakonfigurovat pomocí kterékoli z těchto zásad, abyste získali odpovídající úroveň zabezpečení. Názvy zásad jsou opatřeny poznámkami v roce a měsíci, ve kterých byly nakonfigurovány. Každá zásada nabízí různé verze protokolu SSL a šifrovací sady. Pro zajištění nejlepšího zabezpečení SSL doporučujeme použít nejnovější zásady SSL.
+Aplikační brána má tři předdefinované zásady zabezpečení. Bránu můžete nakonfigurovat s některou z těchto zásad, abyste získali odpovídající úroveň zabezpečení. Názvy zásad jsou anotovány podle roku a měsíce, ve kterém byly nakonfigurovány. Každá zásada nabízí různé verze protokolu TLS a šifrovací sady. Doporučujeme používat nejnovější zásady TLS k zajištění nejlepšího zabezpečení TLS.
 
 ### <a name="appgwsslpolicy20150501"></a>AppGwSslPolicy20150501
 
@@ -30,7 +30,7 @@ Application Gateway má tři předdefinované zásady zabezpečení. Bránu mů�
 |---|---|
 |Name (Název)     | AppGwSslPolicy20150501        |
 |MinProtocolVersion     | TLSv1_0        |
-|Výchozí| Pravda (pokud nejsou zadány žádné předdefinované zásady) |
+|Výchozí| True (pokud není zadána žádná předdefinovaná zásada) |
 |CipherSuites     |TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_DHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_DHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_DHE_DSS_WITH_AES_256_CBC_SHA256<br>TLS_DHE_DSS_WITH_AES_128_CBC_SHA256<br>TLS_DHE_DSS_WITH_AES_256_CBC_SHA<br>TLS_DHE_DSS_WITH_AES_128_CBC_SHA<br>TLS_RSA_WITH_3DES_EDE_CBC_SHA<br>TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA |
   
 ### <a name="appgwsslpolicy20170401"></a>AppGwSslPolicy20170401
@@ -39,7 +39,7 @@ Application Gateway má tři předdefinované zásady zabezpečení. Bránu mů�
 |   ---      |  ---       |
 |Name (Název)     | AppGwSslPolicy20170401        |
 |MinProtocolVersion     | TLSv1_1        |
-|Výchozí| Nepravda |
+|Výchozí| False |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA |
   
 ### <a name="appgwsslpolicy20170401s"></a>AppGwSslPolicy20170401S
@@ -48,22 +48,22 @@ Application Gateway má tři předdefinované zásady zabezpečení. Bránu mů�
 |---|---|
 |Name (Název)     | AppGwSslPolicy20170401S        |
 |MinProtocolVersion     | TLSv1_2        |
-|Výchozí| Nepravda |
+|Výchozí| False |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 <br>    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 <br>    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br> |
 
-## <a name="custom-ssl-policy"></a>Vlastní zásada SSL
+## <a name="custom-tls-policy"></a>Vlastní zásady TLS
 
-Pokud je potřeba nakonfigurovat předdefinované zásady SSL pro vaše požadavky, musíte definovat vlastní zásadu protokolu SSL. Díky vlastním zásadám SSL máte plnou kontrolu nad minimální verzí protokolu SSL, která se má podporovat, a také s podporovanými šifrovacími sadami a jejich pořadím priority.
+Pokud je třeba nakonfigurovat předdefinovanou zásadu TLS pro vaše požadavky, musíte definovat vlastní zásady TLS. S vlastní zásady TLS máte úplnou kontrolu nad minimální verzí protokolu TLS pro podporu, stejně jako podporované šifrovací sady a jejich pořadí priorit.
  
-### <a name="ssl-protocol-versions"></a>Verze protokolu SSL
+### <a name="tlsssl-protocol-versions"></a>Verze protokolů TLS/SSL
 
-* SSL 2,0 a 3,0 jsou ve výchozím nastavení pro všechny aplikační brány zakázané. Tyto verze protokolu se nedají konfigurovat.
-* Vlastní zásada SSL vám umožní vybrat libovolný z následujících tří protokolů jako minimální verzi protokolu SSL pro bránu: TLSv1_0, TLSv1_1 a TLSv1_2.
-* Pokud nejsou definované žádné zásady protokolu SSL, jsou povolené všechny tři protokoly (TLSv1_0, TLSv1_1 a TLSv1_2).
+* SSL 2.0 a 3.0 jsou ve výchozím nastavení zakázány pro všechny aplikační brány. Tyto verze protokolu nelze konfigurovat.
+* Vlastní zásady TLS vám dávají možnost vybrat některý z následujících tří protokolů jako minimální verzi protokolu TLS pro vaši bránu: TLSv1_0, TLSv1_1 a TLSv1_2.
+* Pokud není definována žádná zásada TLS, jsou povoleny všechny tři protokoly (TLSv1_0, TLSv1_1 a TLSv1_2).
 
-### <a name="cipher-suites"></a>Šifrovací sady
+### <a name="cipher-suites"></a>Šifrovací apartmány
 
-Application Gateway podporuje následující šifrovací sady, ze kterých můžete zvolit vlastní zásady. Řazení šifrovacích sad určuje pořadí priority během vyjednávání SSL.
+Aplikační brána podporuje následující šifrovací sady, ze kterých si můžete vybrat vlastní zásady. Řazení šifrovacích sad určuje pořadí priorit během vyjednávání TLS.
 
 
 - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
@@ -96,10 +96,10 @@ Application Gateway podporuje následující šifrovací sady, ze kterých můž
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
 > [!NOTE]
-> Šifrovací sady SSL použité pro připojení jsou založené i na typu používaného certifikátu. V klientech připojení služby Application Gateway jsou použité šifrovací sady založené na typu certifikátů serveru v naslouchací službě Application Gateway. V případě připojení služby Application Gateway do fondu back-endu jsou použité šifrovací sady založené na typu certifikátů serveru na serverech fondu back-endu.
+> Šifrovací sady TLS používané pro připojení jsou také založeny na typu používaného certifikátu. V připojení klienta k bráně aplikace jsou použité šifrovací sady založeny na typu certifikátů serveru na naslouchacím procesu aplikační brány. V aplikaci gateway do back-endového fondu připojení, šifrovací sady používané jsou založeny na typu certifikátů serveru na serverech back-endfondu.
 
 ## <a name="known-issue"></a>Známý problém
-Application Gateway V2 v současné době nepodporuje následující šifry:
+Aplikační brána v2 aktuálně nepodporuje následující šifry:
 - DHE-RSA-AES128-GCM-SHA256
 - DHE-RSA-AES128-SHA
 - DHE-RSA-AES256-GCM-SHA384
@@ -111,4 +111,4 @@ Application Gateway V2 v současné době nepodporuje následující šifry:
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět, jak nakonfigurovat zásadu protokolu SSL, přečtěte si téma [Konfigurace zásad protokolu SSL na aplikační bráně](application-gateway-configure-ssl-policy-powershell.md).
+Pokud se chcete naučit konfigurovat zásady TLS, přečtěte si informace [o konfiguraci verzí zásad TLS a šifrovacích sad v application gateway](application-gateway-configure-ssl-policy-powershell.md).

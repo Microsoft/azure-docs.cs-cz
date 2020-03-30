@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: b7a86963c657524fa91c4eb824ced1a495391f3f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175201"
 ---
-#### <a name="to-delete-a-storsimple-backup-policy"></a>Chcete-li odstranit zásady zálohování StorSimple
+#### <a name="to-delete-a-storsimple-backup-policy"></a>Odstranění zásadzálohování StorSimple
 
 1. Přejděte ke svému zařízení StorSimple a klikněte na **Zásady zálohování**.
 
-2. V tabulkovém výpisu zásady zálohování vyberte zásadu, kterou chcete odstranit. Klikněte pravým tlačítkem a v místní nabídce vyberte **odstranit**.
+2. V tabulkovém výpisu zásad zálohování vyberte zásady, které chcete odstranit. Klepněte pravým tlačítkem myši a v místní nabídce vyberte **odstranit**.
 
-    ![Vyberte zásady zálohování a odstranit](./media/storsimple-8000-delete-backup-policy/deletebupol1.png)
+    ![Vyberte zásadu zálohování, která chcete odstranit.](./media/storsimple-8000-delete-backup-policy/deletebupol1.png)
 
-3. Zobrazí se výzva k potvrzení. Mějte na paměti, že při odstraňování zásad zálohování se odstraní všechny přidružené zálohy. Klikněte na tlačítko **Ano** odstranit.
+3. Zobrazí se výzva k potvrzení. Mějte na paměti, že odstraněním zásad zálohování odstraníte všechny přidružené zálohy. Chcete-li odstranit, klepněte na tlačítko **Ano.**
 
     ![Potvrzení odstranění](./media/storsimple-8000-delete-backup-policy/deletebupol2.png)
 
-V seznamu zásad zálohování se aktualizuje a zobrazí nový seznam zásad.
+Seznam zásad zálohování bude aktualizován tak, aby zobrazoval nový seznam zásad.
 
-![Aktualizuje seznam zásad zálohování](./media/storsimple-8000-delete-backup-policy/deletebupol5.png)
+![Aktualizovaný seznam zásad zálohování](./media/storsimple-8000-delete-backup-policy/deletebupol5.png)

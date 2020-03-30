@@ -1,16 +1,16 @@
 ---
 ms.openlocfilehash: bdd46f06357a806a707882a623520235e3903581
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79382144"
 ---
 ## <a name="app-configuration"></a>App Configuration
 
 [!INCLUDE [azure-policy-samples-policies-app-configuration](azure-policy-samples-policies-app-configuration.md)]
 
-## <a name="app-platform"></a>Aplikační platforma
+## <a name="app-platform"></a>Platforma aplikace
 
 [!INCLUDE [azure-policy-samples-policies-app-platform](azure-policy-samples-policies-app-platform.md)]
 
@@ -18,11 +18,11 @@ ms.locfileid: "79382144"
 
 [!INCLUDE [azure-policy-samples-policies-app-service](azure-policy-samples-policies-app-service.md)]
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatizace
 
 [!INCLUDE [azure-policy-samples-policies-automation](azure-policy-samples-policies-automation.md)]
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Zálohování
 
 [!INCLUDE [azure-policy-samples-policies-backup](azure-policy-samples-policies-backup.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "79382144"
 
 [!INCLUDE [azure-policy-samples-policies-cache](azure-policy-samples-policies-cache.md)]
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Služba Compute
 
 [!INCLUDE [azure-policy-samples-policies-compute](azure-policy-samples-policies-compute.md)]
 
@@ -42,7 +42,7 @@ ms.locfileid: "79382144"
 
 [!INCLUDE [azure-policy-samples-policies-container-registry](azure-policy-samples-policies-container-registry.md)]
 
-## <a name="cosmos-db"></a>Databáze Cosmos
+## <a name="cosmos-db"></a>Cosmos DB
 
 [!INCLUDE [azure-policy-samples-policies-cosmos-db](azure-policy-samples-policies-cosmos-db.md)]
 
@@ -78,7 +78,7 @@ ms.locfileid: "79382144"
 
 [!INCLUDE [azure-policy-samples-policies-kubernetes](azure-policy-samples-policies-kubernetes.md)]
 
-## <a name="kubernetes-service"></a>Služba Kubernetes
+## <a name="kubernetes-service"></a>Kubernetes servis
 
 [!INCLUDE [azure-policy-samples-policies-kubernetes-service](azure-policy-samples-policies-kubernetes-service.md)]
 
@@ -98,11 +98,11 @@ ms.locfileid: "79382144"
 
 [!INCLUDE [azure-policy-samples-policies-monitoring](azure-policy-samples-policies-monitoring.md)]
 
-## <a name="network"></a>Síť
+## <a name="network"></a>Network (Síť)
 
 [!INCLUDE [azure-policy-samples-policies-network](azure-policy-samples-policies-network.md)]
 
-## <a name="search"></a>Hledání
+## <a name="search"></a>Search
 
 [!INCLUDE [azure-policy-samples-policies-search](azure-policy-samples-policies-search.md)]
 

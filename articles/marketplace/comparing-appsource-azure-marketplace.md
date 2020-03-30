@@ -1,18 +1,18 @@
 ---
 title: Porovnání AppSource a Azure Marketplace | Azure
 description: Tento článek popisuje výkladní skříně v Microsoft AppSource a Azure Marketplace.
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
-ms.openlocfilehash: c07bba7340a1934fc422598c798022602e7c046a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd6c375231facc3d7afb35df74210d26b5f50ba8
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281608"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387780"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>Porovnání AppSource a Azure Marketplace
 Výlohy na [Azure Marketplace](https://azuremarketplace.microsoft.com) a Microsoft [AppSource](https://appsource.microsoft.com) slouží jedinečným požadavkům zákazníků. Pomocí výlpoobchodů zacilte na zákazníky podle rolí. Můžete nabídnout správné řešení nebo služby založené na vašem zákazníkovi.
