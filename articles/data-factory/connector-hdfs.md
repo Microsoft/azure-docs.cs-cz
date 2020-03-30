@@ -1,6 +1,6 @@
 ---
 title: Kopírování dat z HDFS pomocí Azure Data Factory
-description: Naučte se, jak kopírovat data z cloudu nebo místního zdroje HDFS do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+description: Zjistěte, jak kopírovat data z cloudu nebo místního zdroje HDFS do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,57 +12,57 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 2cd76afa9412e89c57cfb6c357eb164ce5d3d1c4
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75830424"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopírování dat z HDFS pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-hdfs-connector.md)
 > * [Aktuální verze](connector-hdfs.md)
 
-Tento článek popisuje, jak kopírovat data ze HDFS serveru. Další informace o Azure Data Factory najdete v článku [úvodní článek](introduction.md).
+Tento článek popisuje, jak kopírovat data ze serveru HDFS. Další informace o Azure Data Factory najdete v [úvodním článku](introduction.md).
 
-## <a name="supported-capabilities"></a>Podporované funkce
+## <a name="supported-capabilities"></a>Podporované možnosti
 
-Tento konektor HDFS se podporuje pro následující činnosti:
+Tento konektor HDFS je podporován pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
-- [Aktivita Lookup](control-flow-lookup-activity.md)
+- [Kopírování aktivity](copy-activity-overview.md) s [podporovanou maticí zdrojového/jímky](copy-activity-overview.md)
+- [Vyhledávací aktivita](control-flow-lookup-activity.md)
 
 Konkrétně tento konektor HDFS podporuje:
 
-- Kopírování souborů pomocí **Windows** (Kerberos) nebo **anonymního** ověřování.
-- Kopírování souborů pomocí protokolu **webhdfs** nebo **integrované podpory DistCp** .
-- Kopírování souborů jako-je nebo analýze a generování souborů pomocí [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
+- Kopírování souborů pomocí **systému Windows** (Kerberos) nebo **anonymního** ověřování.
+- Kopírování souborů pomocí protokolu **webhdfs** nebo integrované podpory **DistCp.**
+- Kopírování souborů tak, jak je nebo analýza / generování souborů s [podporovanými formáty souborů a kompresními kodeky](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 > [!NOTE]
-> Ujistěte se, že Integration Runtime mít přístup ke **všem** [názvový server Node]: [název uzlu port] a [servery datových uzlů]: [port datového uzlu] clusteru Hadoop. Výchozí [název uzlu port] je 50070 a výchozí [port datového uzlu] je 50075.
+> Ujistěte se, že prostředí Integration Runtime má přístup k **all** [name node server]:[name node port] a [data node servers]:[data node port] clusteru Hadoop. Výchozí [port uzlu názvu] je 50070 a výchozí [datový uzel] je 50075.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobné informace o vlastnostech, které se používají k definování Data Factory entit specifických pro HDFS.
+V následujících částech jsou uvedeny podrobnosti o vlastnostech, které se používají k definování entit datové továrny specifických pro HDFS.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
 
 Pro propojenou službu HDFS jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **HDFS**. | Ano |
-| url |Adresa URL k HDFS |Ano |
-| authenticationType. | Povolené hodnoty jsou: **anonymní**nebo **Windows**. <br><br> Pokud chcete pro konektor HDFS použít **ověřování pomocí protokolu Kerberos** , v [této části](#use-kerberos-authentication-for-hdfs-connector) si odpovídajícím způsobem nastavte místní prostředí. |Ano |
-| userName |Uživatelské jméno pro ověřování systému Windows. Pro ověřování protokolem Kerberos zadejte `<username>@<domain>.com`. |Ano (pro ověřování systému Windows) |
-| heslo |Heslo pro ověřování systému Windows. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano (pro ověřování systému Windows) |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
+| type | Vlastnost type musí být nastavena na: **Hdfs**. | Ano |
+| url |Adresa URL systému HDFS |Ano |
+| authenticationType | Povolené hodnoty jsou: **Anonymní**nebo **Windows**. <br><br> Chcete-li použít **ověřování protokolem Kerberos** pro konektor HDFS, v [této části](#use-kerberos-authentication-for-hdfs-connector) nastavte místní prostředí odpovídajícím způsobem. |Ano |
+| userName |Uživatelské jméno pro ověřování systému Windows. Pro ověřování protokolem `<username>@<domain>.com`Kerberos zadejte . |Ano (pro ověřování systému Windows) |
+| heslo |Heslo pro ověřování systému Windows. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). |Ano (pro ověřování systému Windows) |
+| connectVia | [Prostředí Integrace Runtime,](concepts-integration-runtime.md) které se má použít k připojení k úložišti dat. Další informace naleznete v části [Požadavky.](#prerequisites) Pokud není zadán, používá výchozí Azure Integration Runtime. |Ne |
 
 **Příklad: použití anonymního ověřování**
 
@@ -110,17 +110,17 @@ Pro propojenou službu HDFS jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. 
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [Datové sady.](concepts-datasets-linked-services.md) 
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-V rámci `location` nastavení v datové sadě založené na formátu jsou podporovány následující vlastnosti HDFS:
+Následující vlastnosti jsou podporovány `location` pro HDFS v nastavení v datové sadě založené na formátu:
 
 | Vlastnost   | Popis                                                  | Požaduje se |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Vlastnost Type v rámci objektu DataSet `location` musí být nastavena na hodnotu **HdfsLocation**. | Ano      |
-| folderPath | Cesta ke složce Pokud chcete použít zástupný znak k filtrování složky, toto nastavení nechejte a zadejte v nastavení zdroje aktivity. | Ne       |
-| fileName   | Název souboru pod daným folderPath. Pokud chcete použít zástupný znak k filtrování souborů, přeskočte toto nastavení a zadejte v nastavení zdroje aktivity. | Ne       |
+| type       | Vlastnost type `location` pod v datové sadě musí být nastavena na **HdfsLocation**. | Ano      |
+| folderPath | Cesta ke složce. Chcete-li k filtrování složky použít zástupný znak, přeskočte toto nastavení a zadejte v nastavení zdroje aktivity. | Ne       |
+| fileName   | Název souboru pod danou složkouPath. Chcete-li k filtrování souborů použít zástupný znak, přeskočte toto nastavení a určete v nastavení zdroje aktivity. | Ne       |
 
 **Příklad:**
 
@@ -150,27 +150,27 @@ V rámci `location` nastavení v datové sadě založené na formátu jsou podpo
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. V této části najdete seznam vlastností podporovaných zdrojem HDFS.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných zdrojem HDFS.
 
 ### <a name="hdfs-as-source"></a>HDFS jako zdroj
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Následující vlastnosti jsou podporovány pro HDFS v části nastavení `storeSettings` ve zdroji kopírování založeném na formátu:
+Následující vlastnosti jsou podporovány `storeSettings` pro HDFS v rámci nastavení ve zdroji kopírování založeném na formátu:
 
 | Vlastnost                 | Popis                                                  | Požaduje se                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | Vlastnost Type v rámci `storeSettings` musí být nastavená na **HdfsReadSettings**. | Ano                                           |
-| recursive                | Určuje, jestli se data číst rekurzivně z podsložky nebo pouze z určené složky. Všimněte si, že pokud rekurzivní je nastavena na hodnotu true a jímku je souborové úložiště prázdnou složku nebo podsložku není zkopírován či vytvořili na jímce. Povolené hodnoty jsou **true** (výchozí) a **false**. | Ne                                            |
-| wildcardFolderPath       | Cesta ke složce se zástupnými znaky pro filtrování zdrojových složek. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); Pokud vlastní název složky obsahuje zástupný znak nebo tento řídicí znak v rámci, použijte `^`. <br>Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ne                                            |
-| wildcardFileName         | Název souboru se zástupnými znaky v rámci daného folderPath/wildcardFolderPath pro filtrování zdrojových souborů. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); Pokud vlastní název složky obsahuje zástupný znak nebo tento řídicí znak v rámci, použijte `^`.  Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ano, pokud v sadě dat není zadaný `fileName` |
-| modifiedDatetimeStart    | Soubory filtru na základě atributu: naposledy upraveno. Soubory bude vybrána, pokud jejich poslední úpravy jsou v rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd`. Čas se použije na časovém pásmu UTC ve formátu "2018-12-01T05:00:00Z". <br> Vlastnosti může mít hodnotu NULL, což znamená, že žádný soubor filtr atributu se použijí k datové sadě.  Když `modifiedDatetimeStart` má hodnotu data a času, ale `modifiedDatetimeEnd` má hodnotu NULL, to znamená, že soubory, jejichž poslední změny atributů je větší než nebo rovná s hodnotou data a času bude vybrána.  Když `modifiedDatetimeEnd` má hodnotu data a času, ale `modifiedDatetimeStart` má hodnotu NULL, to znamená, že soubory, jejichž poslední upravené atribut je menší než hodnota data a času bude vybraná. | Ne                                            |
-| modifiedDatetimeEnd      | Stejné jako výše.                                               | Ne                                            |
-| distcpSettings | Skupina vlastností při použití HDFS DistCp | Ne |
-| resourceManagerEndpoint | Správce prostředků koncový bod příze | Ano, pokud se používá DistCp |
-| tempScriptPath | Cesta ke složce, která se používá k uložení DistCp skriptu pro dočasný příkaz. Soubor skriptu je vygenerován nástrojem Data Factory a po dokončení úlohy kopírování bude odebrán. | Ano, pokud se používá DistCp |
-| distcpOptions | Další možnosti, které jsou k dispozici pro příkaz DistCp | Ne |
-| maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne                                            |
+| type                     | Vlastnost type `storeSettings` pod musí být nastavena na **HdfsReadSettings**. | Ano                                           |
+| Rekurzivní                | Označuje, zda jsou data čtena rekurzivně z podsložek nebo pouze ze zadané složky. Všimněte si, že pokud je rekurzivní nastavena na hodnotu true a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není zkopírována nebo vytvořena v jímce. Povolené hodnoty jsou **true** (výchozí) a **false**. | Ne                                            |
+| program se zástupnými_znakem       | Cesta ke složce se zástupnými znaky pro filtrování zdrojových složek. <br>Povolené zástupné `*` znaky jsou: (odpovídá `?` nula nebo více znaků) a (odpovídá nula nebo jeden znak); použijte `^` k útěku, pokud váš skutečný název složky má zástupný znak nebo tento escape char uvnitř. <br>Další příklady naleznete v [příkladech filtrů složek a souborů](#folder-and-file-filter-examples). | Ne                                            |
+| název souboru se zástupnými_znakové_         | Název souboru se zástupnými znaky pod danou složkouPath/wildcardFolderPath pro filtrování zdrojových souborů. <br>Povolené zástupné `*` znaky jsou: (odpovídá `?` nula nebo více znaků) a (odpovídá nula nebo jeden znak); použijte `^` k útěku, pokud váš skutečný název složky má zástupný znak nebo tento escape char uvnitř.  Další příklady naleznete v [příkladech filtrů složek a souborů](#folder-and-file-filter-examples). | Ano, `fileName` pokud není zadán v datové sadě |
+| modifiedDatetimeStart    | Filtr souborů založený na atributu: Poslední změna. Soubory budou vybrány, pokud jejich poslední upravený `modifiedDatetimeStart` čas `modifiedDatetimeEnd`je v časovém rozmezí mezi a . Čas je použit pro časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br> Vlastnosti mohou být NULL, což znamená, že žádný filtr atributů souboru bude použit pro datovou sadu.  Pokud `modifiedDatetimeStart` má hodnotu `modifiedDatetimeEnd` datetime, ale je NULL, znamená to, že budou vybrány soubory, jejichž poslední změněný atribut je větší nebo roven hodnotě datetime.  Pokud `modifiedDatetimeEnd` má hodnotu `modifiedDatetimeStart` datetime, ale je NULL, znamená to, že budou vybrány soubory, jejichž poslední změněný atribut je menší než hodnota datetime. | Ne                                            |
+| modifiedDatetimeEnd      | Stejně jako výše.                                               | Ne                                            |
+| distcpSettings | Skupina vlastností při použití HDFS DistCp. | Ne |
+| resourceManagerEndpoint | Koncový bod Správce zdrojů příze | Ano, pokud používáte DistCp |
+| tempScriptPath | Cesta ke složce používaná k uložení příkazového skriptu temp DistCp. Soubor skriptu je generován factory a bude odebrán po dokončení úlohy kopírování. | Ano, pokud používáte DistCp |
+| možnosti distcpOptions | Další možnosti poskytované příkazu DistCp. | Ne |
+| maxConcurrentConnections | Počet připojení pro připojení k úložišti úložiště současně. Zadejte pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne                                            |
 
 **Příklad:**
 
@@ -216,92 +216,92 @@ Následující vlastnosti jsou podporovány pro HDFS v části nastavení `store
 ]
 ```
 
-### <a name="folder-and-file-filter-examples"></a>Příklady filtru složek a souborů
+### <a name="folder-and-file-filter-examples"></a>Příklady filtrů složek a souborů
 
-Tato část popisuje výsledné chování cesty ke složce a názvu souboru s filtry zástupných znaků.
+Tato část popisuje výsledné chování cesty ke složce a názvu souboru pomocí filtrů se zástupnými kódy.
 
-| folderPath | fileName             | recursive | Struktura zdrojové složky a výsledek filtru (jsou načteny soubory **tučně** ) |
+| folderPath | fileName             | Rekurzivní | Struktura zdrojové složky a výsledek filtru (soubory **tučně** jsou načteny) |
 | :--------- | :------------------- | :-------- | :----------------------------------------------------------- |
-| `Folder*`  | (empty, use default) | false     | Složka<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
-| `Folder*`  | (empty, use default) | true      | Složka<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**file3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
-| `Folder*`  | `*.csv`              | false     | Složka<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
-| `Folder*`  | `*.csv`              | true      | Složka<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**file3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
+| `Folder*`  | (prázdný, použijte výchozí) | false (nepravda)     | SložkaA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Soubor1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Soubor2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Podsložka1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor5.csv<br/>Jiný FolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor6.csv |
+| `Folder*`  | (prázdný, použijte výchozí) | true      | SložkaA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Soubor1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Soubor2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Podsložka1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Soubor3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Soubor4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Soubor5.csv**<br/>Jiný FolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor6.csv |
+| `Folder*`  | `*.csv`              | false (nepravda)     | SložkaA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Soubor1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Podsložka1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor5.csv<br/>Jiný FolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor6.csv |
+| `Folder*`  | `*.csv`              | true      | SložkaA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Soubor1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Podsložka1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Soubor3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Soubor5.csv**<br/>Jiný FolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor6.csv |
 
-## <a name="use-distcp-to-copy-data-from-hdfs"></a>Kopírování dat ze HDFS pomocí DistCp
+## <a name="use-distcp-to-copy-data-from-hdfs"></a>Kopírování dat z HDFS pomocí funkce DistCp
 
-[DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) je nativní nástroj příkazového řádku Hadoop pro distribuované kopírování v clusteru Hadoop. Když se spustí příkaz Distcp, nejdřív se vypíše všechny soubory, které se mají zkopírovat, vytvoří se několik mapových úloh do clusteru Hadoop a Každá úloha mapování provede binární kopírování ze zdroje do jímky.
+[DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) je hadoopský nativní nástroj příkazového řádku pro distribuovanou kopii v clusteru Hadoop. Při spuštění příkazu Distcp nejprve zobrazí seznam všech souborů, které mají být zkopírovány, vytvoří několik úloh map do clusteru Hadoop a každá úloha mapy provede binární kopii ze zdroje do jímky.
 
-Podpora kopírování aktivit pomocí DistCp ke kopírování souborů do objektu blob Azure (včetně [dvoufázové kopie](copy-activity-performance.md)) nebo Azure Data Lake Store. v takovém případě může plně využít výkon vašeho clusteru, ale nemusíte ho spouštět na samoobslužném Integration runtime. Poskytne lepší propustnost při kopírování, zejména pokud je cluster velmi výkonný. V závislosti na vaší konfiguraci v Azure Data Factory se aktivita kopírování automaticky vytvoří příkaz Distcp, odešle se do vašeho clusteru Hadoop a monitoruje stav kopírování.
+Podpora aktivit kopírování pomocí DistCp ke kopírování souborů tak, jak je do objektu Blob Azure (včetně [fázované kopie)](copy-activity-performance.md)nebo Azure Data Lake Store, v takovém případě může plně využít výkon vašeho clusteru namísto spuštění v prostředí Runtime integrace s vlastním hostitelem. Bude poskytovat lepší propustnost kopírování, zejména v případě, že váš cluster je velmi silný. Na základě vaší konfigurace v Azure Data Factory, Kopírování aktivity automaticky vytvořit příkaz distcp, odeslat do clusteru Hadoop a sledovat stav kopírování.
 
 ### <a name="prerequisites"></a>Požadavky
 
-Pokud chcete použít DistCp ke kopírování souborů z HDFS do Azure Blob (včetně připravené kopie) nebo Azure Data Lake Store, ujistěte se, že váš cluster Hadoop splňuje tyto požadavky:
+Pokud chcete pomocí DistCp kopírovat soubory tak, jak jsou z HDFS do objektu Blob Azure (včetně fázované kopie) nebo Azure Data Lake Store, ujistěte se, že cluster Hadoop splňuje níže uvedené požadavky:
 
-1. MapReduce a přízové služby jsou povoleny.
+1. Služby MapReduce a Yarn jsou povoleny.
 2. Verze příze je 2,5 nebo vyšší.
-3. HDFS Server je integrovaný s vaším cílovým úložištěm dat – Azure Blob nebo Azure Data Lake Store:
+3. HDFS server je integrovaný s cílovým úložištěm dat – Azure Blob nebo Azure Data Lake Store:
 
-    - Systém souborů BLOB v Azure je nativně podporovaný od Hadoop 2,7. Stačí zadat cestu jar v konfiguraci Hadoop env.
-    - Systém souborů Azure Data Lake Store je zabalený počínaje systémem Hadoop 3.0.0-Alpha1. Pokud je cluster Hadoop nižší než tato [verze, budete z něj](https://hadoop.apache.org/releases.html)muset ručně naimportovat adls balíčky jar (Azure-datalake-Store. jar) do clusteru a zadat cestu jar v konfiguraci Hadoop env.
+    - Azure Blob FileSystem je nativně podporována od Hadoop 2.7. Stačí zadat jar cestu v Hadoop env config.
+    - Azure Data Lake Store FileSystem je zabalen od Hadoop 3.0.0-alpha1. Pokud je váš cluster Hadoop nižší než tato verze, je třeba ručně importovat balíčky jar související s ADLS (azure-datalake-store.jar) do [clusteru odtud](https://hadoop.apache.org/releases.html)a zadat jar cestu v konfiguračním programu Hadoop env.
 
-4. Připravte dočasnou složku v HDFS. Tato dočasná složka se používá k uložení skriptu prostředí DistCp, takže bude zabírat místo na úrovni KB.
-5. Ujistěte se, že uživatelský účet, který je součástí HDFS, má oprávnění k odeslání aplikace v přízi; b) mít oprávnění k vytváření podsložek, čtení a zápisu souborů v rámci složky Temp.
+4. Připravte dočasnou složku v HDFS. Tato dočasná složka se používá k ukládání skriptu prostředí DistCp, takže bude zabírat místo na úrovni KB.
+5. Ujistěte se, že uživatelský účet poskytnutý v HDFS Linked Service mají oprávnění k a) podat žádost v Příze; b) mít oprávnění k vytvoření podsložky, číst / zapisovat soubory pod výše temp složky.
 
 ### <a name="configurations"></a>Konfigurace
 
-Viz konfigurace a příklady související s DistCp v [HDFS jako zdrojový](#hdfs-as-source) oddíl.
+Viz DistCp související konfigurace a příklady v [HDFS jako zdroj ové](#hdfs-as-source) části.
 
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Použití ověřování protokolem Kerberos pro konektor HDFS
 
-Existují dvě možnosti nastavení místního prostředí, aby se používalo ověřování pomocí protokolu Kerberos v konektoru HDFS. Můžete si vybrat, který lépe vyhovuje vašemu případu.
-* Možnost 1: [připojení počítače s místním hostováním Integration runtime ve sféře protokolu Kerberos](#kerberos-join-realm)
-* Možnost 2: [Povolení vzájemné důvěry mezi doménou systému Windows a sférou protokolu Kerberos](#kerberos-mutual-trust)
+Existují dvě možnosti nastavení místního prostředí tak, aby bylo použití ověřování protokolem Kerberos v konektoru HDFS. Můžete si vybrat ten, který lépe vyhovuje vašemu případu.
+* Možnost 1: [Připojte se k vlastnímu hostovanému integračnímu runtime počítači ve sféře Protokolu Kerberos](#kerberos-join-realm)
+* Možnost 2: [Povolení vzájemné důvěryhodnosti mezi doménou systému Windows a sférou protokolu Kerberos](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>Možnost 1: připojení počítače s místním hostováním Integration Runtime ve sféře protokolu Kerberos
+### <a name="option-1-join-self-hosted-integration-runtime-machine-in-kerberos-realm"></a><a name="kerberos-join-realm"></a>Možnost 1: Připojte se k vlastnímu hostovanému integračnímu runtime počítači ve sféře Protokolu Kerberos
 
 #### <a name="requirements"></a>Požadavky
 
-* Počítač s místním prostředím Integration Runtime se musí připojit k sféře protokolu Kerberos a nemůže se připojit k žádné doméně systému Windows.
+* Počítač Integrovaný integrační běh stroj s vlastním hostitelem se musí připojit k sféře Protokolu Kerberos a nemůže se připojit k žádné doméně systému Windows.
 
 #### <a name="how-to-configure"></a>Jak nakonfigurovat
 
-**V počítači Integration Runtime v místním prostředí:**
+**Na vlastním integračním runtime stroji:**
 
-1.  Spusťte nástroj **Ksetup** a nakonfigurujte server a sféru protokolu Kerberos.
+1.  Spusťte nástroj **Ksetup** a nakonfigurujte server a sféru protokolu Kerberos KDC.
 
-    Počítač musí být nakonfigurován jako člen pracovní skupiny, protože se liší sféra protokolu Kerberos od domény systému Windows. Toho je možné dosáhnout nastavením sféry protokolu Kerberos a přidáním serveru KDC následujícím způsobem. V případě potřeby nahraďte *REALM.com* vlastním odpovídajícím sférou.
+    Počítač musí být nakonfigurován jako člen pracovní skupiny, protože sféra protokolu Kerberos se liší od domény systému Windows. Toho lze dosáhnout nastavením sféry Protokolu Kerberos a přidáním serveru KDC následujícím způsobem. Podle potřeby *REALM.COM* nahraďte vlastní sférou.
 
             C:> Ksetup /setdomain REALM.COM
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
 
-    Po provedení těchto dvou příkazů **restartujte** počítač.
+    **Restartujte** počítač po provedení těchto 2 příkazů.
 
-2.  Ověřte konfiguraci pomocí příkazu **Ksetup** . Výstup by měl vypadat takto:
+2.  Ověřte konfiguraci pomocí příkazu **Ksetup.** Výstup by měl být jako:
 
             C:> Ksetup
             default realm = REALM.COM (external)
             REALM.com:
                 kdc = <your_kdc_server_address>
 
-**V Azure Data Factory:**
+**Ve Službě Azure Data Factory:**
 
-* Nakonfigurujte konektor HDFS pomocí **ověřování systému Windows** společně s vaším hlavním jménem a heslem protokolu Kerberos pro připojení ke zdroji dat HDFS. Podrobnosti o konfiguraci najdete v části [Vlastnosti propojené služby HDFS](#linked-service-properties) .
+* Nakonfigurujte konektor HDFS pomocí **ověřování systému Windows** spolu s hlavním jménem a heslem protokolu Kerberos pro připojení ke zdroji dat HDFS. Podrobnosti o konfiguraci najdete v části [vlastnosti propojené služby HDFS.](#linked-service-properties)
 
-### <a name="kerberos-mutual-trust"></a>Možnost 2: povolení vzájemné důvěry mezi doménou systému Windows a sférou protokolu Kerberos
+### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>Možnost 2: Povolení vzájemné důvěryhodnosti mezi doménou systému Windows a sférou protokolu Kerberos
 
 #### <a name="requirements"></a>Požadavky
 
-*   Počítač Integration Runtime v místním prostředí se musí připojit k doméně systému Windows.
+*   Počítač Integrovaný integrační běhový stroj s vlastním hostitelem se musí připojit k doméně systému Windows.
 *   K aktualizaci nastavení řadiče domény potřebujete oprávnění.
 
 #### <a name="how-to-configure"></a>Jak nakonfigurovat
 
 > [!NOTE]
-> V následujícím kurzu nahraďte REALM.COM a AD.COM podle potřeby vlastní odpovídající sférou a řadičem domény.
+> Podle potřeby nahraďte REALM.COM a AD.COM v následujícím kurzu vlastní sférou a řadičem domény.
 
 **Na serveru KDC:**
 
-1. Upravte konfiguraci služby KDC v souboru **krb5. conf** , aby se doména Windows vztahu důvěryhodnosti služby KDC odkazovala na následující šablonu konfigurace. Ve výchozím nastavení se konfigurace nachází na adrese **/etc/krb5.conf**.
+1. Upravte konfiguraci KDC v souboru **krb5.conf,** aby kdc důvěřoval doméně systému Windows odkazující na následující konfigurační šablonu. Ve výchozím nastavení je konfigurace umístěna na **adrese /etc/krb5.conf**.
 
            [logging]
             default = FILE:/var/log/krb5libs.log
@@ -337,85 +337,85 @@ Existují dvě možnosti nastavení místního prostředí, aby se používalo o
              REALM.COM = .
             }
 
-   Po dokončení konfigurace **restartujte** službu KDC.
+   Po konfiguraci **restartujte** službu KDC.
 
-2. Připravte objekt zabezpečení s názvem **KRBTGT/REALM. COM\@AD.com** na serveru KDC pomocí následujícího příkazu:
+2. Připravte objekt zabezpečení s názvem **krbtgt/REALM.COM\@AD.COM** na serveru KDC pomocí následujícího příkazu:
 
            Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3. V **hadoop.security.auth_to_local**  konfigurace služby HDFS přidejte `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`.
+3. V souboru konfigurace služby **hadoop.security.auth_to_local** HDFS přidejte `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`.
 
 **Na řadiči domény:**
 
-1.  Chcete-li přidat položku sféry, spusťte následující příkazy **Ksetup** :
+1.  Spusťte následující příkazy **Ksetup** a přidejte položku sféry:
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Vytvořte vztah důvěryhodnosti mezi doménou systému Windows a sférou protokolu Kerberos. [heslo] je heslo pro objekt zabezpečení **KRBTGT/REALM. COM\@AD.com**.
+2.  Vytvořte vztah důvěryhodnosti z domény systému Windows do sféry protokolu Kerberos. [heslo] je heslo pro hlavní **krbtgt/REALM.COM\@AD.COM**.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
 3.  Vyberte šifrovací algoritmus používaný v protokolu Kerberos.
 
-    1. Přejít na Správce serveru > Zásady skupiny Správa > doméně > Zásady skupiny objekty > výchozí nebo aktivní zásady domény a upravit.
+    1. Přejděte na Správce serveru > správa zásad skupiny > objekty zásad skupiny > domény > výchozí nebo aktivní zásady domény a upravit.
 
-    2. V místním okně **Editor pro správu zásad skupiny** přejít na konfigurace počítače > zásady > nastavení systému Windows > nastavení zabezpečení > místní zásady > možnosti zabezpečení a konfigurace **zabezpečení sítě: Konfigurace typů šifrování povolených pro protokol Kerberos**.
+    2. V místním okně **Editor správy zásad skupiny** přejděte na položku Zásady konfigurace počítače > > Nastavení systému Windows > Nastavení zabezpečení > Místní zásady > možnosti zabezpečení a konfigurace **zabezpečení sítě: Konfigurace typů šifrování povolených pro protokol Kerberos**.
 
-    3. Vyberte šifrovací algoritmus, který chcete použít pro připojení ke službě KDC. Obvykle můžete jednoduše vybrat všechny možnosti.
+    3. Vyberte šifrovací algoritmus, který chcete použít při připojení k KDC. Obvykle můžete jednoduše vybrat všechny možnosti.
 
-        ![Typy šifrování konfigurace pro Kerberos](media/connector-hdfs/config-encryption-types-for-kerberos.png)
+        ![Typy šifrování konfigurace pro protokol Kerberos](media/connector-hdfs/config-encryption-types-for-kerberos.png)
 
-    4. Pomocí příkazu **Ksetup** určete šifrovací algoritmus, který se má použít pro konkrétní sféru.
+    4. Pomocí příkazu **Ksetup** určete šifrovací algoritmus, který se má použít v konkrétní skutečnosti REALM.
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.  Vytvořte mapování mezi účtem domény a hlavním objektem Kerberos, aby bylo možné v doméně systému Windows použít zabezpečení Kerberos.
+4.  Vytvořte mapování mezi účtem domény a objektem zabezpečení protokolu Kerberos, abyste mohli použít objekt zabezpečení protokolu Kerberos v doméně systému Windows.
 
-    1. Spusťte nástroje pro správu > **Uživatelé a počítače služby Active Directory**.
+    1. Spusťte nástroje pro správu > **uživatelé a počítače služby Active Directory**.
 
-    2. Nakonfigurujte pokročilé funkce kliknutím na **zobrazit** > **Pokročilé funkce**.
+    2. Nakonfigurujte pokročilé funkce klepnutím na tlačítko **Zobrazit** > **rozšířené funkce**.
 
-    3. Vyhledejte účet, pro který chcete vytvořit mapování, a kliknutím pravým tlačítkem zobrazte **mapování názvů** > klikněte na kartu **názvy protokolu Kerberos** .
+    3. Vyhledejte účet, pro který chcete vytvořit mapování, a kliknutím pravým tlačítkem myši **zobrazte položku Mapování názvů** > klikněte na kartu **Názvy kerberos.**
 
-    4. Přidejte objekt zabezpečení ze sféry.
+    4. Přidejte objekt zabezpečení z říše.
 
-        ![Mapovat identitu zabezpečení](media/connector-hdfs/map-security-identity.png)
+        ![Identita zabezpečení mapy](media/connector-hdfs/map-security-identity.png)
 
-**V počítači Integration Runtime v místním prostředí:**
+**Na vlastním integračním runtime stroji:**
 
-* Spuštěním následujících příkazů **Ksetup** přidejte položku sféry.
+* Spusťte následující příkazy **Ksetup** a přidejte položku sféry.
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-**V Azure Data Factory:**
+**Ve Službě Azure Data Factory:**
 
-* Nakonfigurujte konektor HDFS pomocí **ověřování systému Windows** společně s účtem domény nebo objektem Kerberos pro připojení ke zdroji dat HDFS. Podrobnosti o konfiguraci najdete v části [Vlastnosti propojené služby HDFS](#linked-service-properties) .
+* Nakonfigurujte konektor HDFS pomocí **ověřování systému Windows** společně s vaším účtem domény nebo objektem Kerberos Pro připojení ke zdroji dat HDFS. Podrobnosti o konfiguraci najdete v části [vlastnosti propojené služby HDFS.](#linked-service-properties)
 
-## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
 
-Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="legacy-models"></a>Starší modely
 
 >[!NOTE]
->Následující modely jsou stále podporovány, protože jsou z důvodu zpětné kompatibility. Navrhnete použití nového modelu uvedeného výše v předchozích částech a uživatelské rozhraní pro vytváření ADF bylo přepnuto na generování nového modelu.
+>Následující modely jsou stále podporovány jako-je pro zpětnou kompatibilitu. Doporučujeme použít nový model uvedený ve výše uvedených oddílech do budoucna a vývojové uontové pole ADF přešlo na generování nového modelu.
 
-### <a name="legacy-dataset-model"></a>Model zastaralé sady dat
+### <a name="legacy-dataset-model"></a>Starší model datové sady
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **sdílenou složku.** |Ano |
-| folderPath | Cesta ke složce. Filtr zástupných znaků je podporován, povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); Pokud skutečný název souboru obsahuje zástupný znak nebo tento řídicí znak v rámci, použijte `^`. <br/><br/>Příklady: RootFolder/podsložce/, další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). |Ano |
-| fileName |  **Název nebo zástupný filtr** pro soubory v zadané "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny soubory ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (odpovídá žádnému nebo více znaků) a `?` (odpovídá nula nebo jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>– Příklad 2: `"fileName": "???20180427.txt"`<br/>Pokud vlastní název složky obsahuje zástupný znak nebo tento řídicí znak v rámci, použijte `^`. |Ne |
-| modifiedDatetimeStart | Soubory filtru na základě atributu: naposledy upraveno. Soubory bude vybrána, pokud jejich poslední úpravy jsou v rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd`. Čas se použije na časovém pásmu UTC ve formátu "2018-12-01T05:00:00Z". <br/><br/> Počítejte s tím, že bude ovlivněn celkový výkon přesunu dat tím, že toto nastavení povolíte, pokud chcete provádět filtr souborů z obrovských objemů souborů. <br/><br/> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu nebude použit filtr atributů souboru.  Když `modifiedDatetimeStart` má hodnotu data a času, ale `modifiedDatetimeEnd` má hodnotu NULL, to znamená, že soubory, jejichž poslední změny atributů je větší než nebo rovná s hodnotou data a času bude vybrána.  Když `modifiedDatetimeEnd` má hodnotu data a času, ale `modifiedDatetimeStart` má hodnotu NULL, to znamená, že soubory, jejichž poslední upravené atribut je menší než hodnota data a času bude vybraná.| Ne |
-| modifiedDatetimeEnd | Soubory filtru na základě atributu: naposledy upraveno. Soubory bude vybrána, pokud jejich poslední úpravy jsou v rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd`. Čas se použije na časovém pásmu UTC ve formátu "2018-12-01T05:00:00Z". <br/><br/> Počítejte s tím, že bude ovlivněn celkový výkon přesunu dat tím, že toto nastavení povolíte, pokud chcete provádět filtr souborů z obrovských objemů souborů. <br/><br/> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu nebude použit filtr atributů souboru.  Když `modifiedDatetimeStart` má hodnotu data a času, ale `modifiedDatetimeEnd` má hodnotu NULL, to znamená, že soubory, jejichž poslední změny atributů je větší než nebo rovná s hodnotou data a času bude vybrána.  Když `modifiedDatetimeEnd` má hodnotu data a času, ale `modifiedDatetimeStart` má hodnotu NULL, to znamená, že soubory, jejichž poslední upravené atribut je menší než hodnota data a času bude vybraná.| Ne |
-| formát | Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady.<br/><br/>Chcete-li analyzovat soubory s konkrétním formátem, jsou podporovány následující typy formátu souboru: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](supported-file-formats-and-compression-codecs-legacy.md#text-format), [formátu Json](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro formát](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [Orc formát](supported-file-formats-and-compression-codecs-legacy.md#orc-format), a [formát Parquet](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) oddíly. |Ne (pouze pro binární kopie scénář) |
-| compression | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Jsou podporované úrovně: **Optimal** a **nejrychlejší**. |Ne |
+| type | Vlastnost type datové sady musí být nastavena na: **FileShare** |Ano |
+| folderPath | Cesta ke složce. Filtr se zástupnými znaky je `*` podporován, povolené zástupné `?` znaky jsou: (odpovídá nule nebo více znaků) a (odpovídá nule nebo jeden znak); použijte `^` k útěku, pokud váš skutečný název souboru má zástupný znak nebo tento escape char uvnitř. <br/><br/>Příklady: kořenová složka/podsložka/, další příklady naleznete v [příkladech filtrů složek a souborů](#folder-and-file-filter-examples). |Ano |
+| fileName |  **Filtr názvu nebo zástupných symbolů** pro soubor (soubory) pod zadanou "folderPath". Pokud pro tuto vlastnost nezadáte hodnotu, datová sada odkazuje na všechny soubory ve složce. <br/><br/>Pro filtr jsou povoleny `*` zástupné znaky: (odpovídá nula nebo více znaků) a `?` (odpovídá nule nebo jeden znak).<br/>- Příklad 1:`"fileName": "*.csv"`<br/>- Příklad 2:`"fileName": "???20180427.txt"`<br/>Použijte `^` k útěku, pokud váš skutečný název složky má zástupný znak nebo tento escape char uvnitř. |Ne |
+| modifiedDatetimeStart | Filtr souborů založený na atributu: Poslední změna. Soubory budou vybrány, pokud jejich poslední upravený `modifiedDatetimeStart` čas `modifiedDatetimeEnd`je v časovém rozmezí mezi a . Čas je použit pro časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br/><br/> Uvědomte si, že celkový výkon přesunu dat bude ovlivněn povolením tohoto nastavení, pokud chcete provést filtrování souborů z velkého množství souborů. <br/><br/> Vlastnosti mohou být NULL, což znamená, že žádný filtr atributů souboru bude použit pro datovou sadu.  Pokud `modifiedDatetimeStart` má hodnotu `modifiedDatetimeEnd` datetime, ale je NULL, znamená to, že budou vybrány soubory, jejichž poslední změněný atribut je větší nebo roven hodnotě datetime.  Pokud `modifiedDatetimeEnd` má hodnotu `modifiedDatetimeStart` datetime, ale je NULL, znamená to, že budou vybrány soubory, jejichž poslední změněný atribut je menší než hodnota datetime.| Ne |
+| modifiedDatetimeEnd | Filtr souborů založený na atributu: Poslední změna. Soubory budou vybrány, pokud jejich poslední upravený `modifiedDatetimeStart` čas `modifiedDatetimeEnd`je v časovém rozmezí mezi a . Čas je použit pro časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br/><br/> Uvědomte si, že celkový výkon přesunu dat bude ovlivněn povolením tohoto nastavení, pokud chcete provést filtrování souborů z velkého množství souborů. <br/><br/> Vlastnosti mohou být NULL, což znamená, že žádný filtr atributů souboru bude použit pro datovou sadu.  Pokud `modifiedDatetimeStart` má hodnotu `modifiedDatetimeEnd` datetime, ale je NULL, znamená to, že budou vybrány soubory, jejichž poslední změněný atribut je větší nebo roven hodnotě datetime.  Pokud `modifiedDatetimeEnd` má hodnotu `modifiedDatetimeStart` datetime, ale je NULL, znamená to, že budou vybrány soubory, jejichž poslední změněný atribut je menší než hodnota datetime.| Ne |
+| formát | Pokud chcete **kopírovat soubory jako -je** mezi obchody založenými na souborech (binární kopie), přeskočte oddíl formátu v definicích vstupní i výstupní datové sady.<br/><br/>Chcete-li analyzovat soubory v určitém formátu, jsou podporovány následující typy formátů souborů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte vlastnost **type** ve formátu na jednu z těchto hodnot. Další informace naleznete v části [Formát textu](supported-file-formats-and-compression-codecs-legacy.md#text-format), Formát [Json](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Formát Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format), Formát [orků](supported-file-formats-and-compression-codecs-legacy.md#orc-format)a [Formát parket.](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) |Ne (pouze pro binární scénář kopírování) |
+| komprese | Určete typ a úroveň komprese dat. Další informace naleznete [v tématu Podporované formáty souborů a kompresní kodeky](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Podporované typy jsou: **GZip**, **Deflate**, **BZip2**a **ZipDeflate**.<br/>Podporované úrovně jsou: **Optimální** a **nejrychlejší**. |Ne |
 
 >[!TIP]
->Zkopírujte všechny soubory ve složce, zadejte **folderPath** pouze.<br>Pokud chcete zkopírovat jeden soubor s daným názvem, zadejte **folderPath** s složkovou část a **fileName** s názvem souboru.<br>Chcete-li zkopírovat podmnožinu souborů ve složce, zadejte **folderPath** s složkovou část a **fileName** s filtr zástupných znaků.
+>Chcete-li zkopírovat všechny soubory pod složku, zadejte pouze **složkuCesta.**<br>Chcete-li zkopírovat jeden soubor s daným názvem, zadejte **složkuCesta** s částí složky a **název_souboru** s názvem souboru.<br>Chcete-li zkopírovat podmnožinu souborů pod složku, zadejte **složkuCesta** s částí složky a **název_souboru** s filtrem se zástupnými symboly.
 
 **Příklad:**
 
@@ -447,19 +447,19 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](c
 }
 ```
 
-### <a name="legacy-copy-activity-source-model"></a>Starší zdrojový model aktivity kopírování
+### <a name="legacy-copy-activity-source-model"></a>Starší model zdroje aktivity kopírování
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **HdfsSource** . |Ano |
-| recursive | Určuje, jestli se data ze složek sub nebo pouze z určené složky Číst rekurzivně. Poznámka: Pokud rekurzivní je nastavena na hodnotu true a datovou sadu jímky souborové úložiště je prázdné složky/dílčí-folder nebudou zkopírovány/vytvořili na jímky.<br/>Povolené hodnoty jsou: **true** (výchozí), **false** | Ne |
-| distcpSettings | Skupina vlastností při použití HDFS DistCp | Ne |
-| resourceManagerEndpoint | Správce prostředků koncový bod příze | Ano, pokud se používá DistCp |
-| tempScriptPath | Cesta ke složce, která se používá k uložení DistCp skriptu pro dočasný příkaz. Soubor skriptu je vygenerován nástrojem Data Factory a po dokončení úlohy kopírování bude odebrán. | Ano, pokud se používá DistCp |
-| distcpOptions | Další možnosti, které jsou k dispozici pro příkaz DistCp | Ne |
-| maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavena **na: HdfsSource.** |Ano |
+| Rekurzivní | Označuje, zda jsou data čtena rekurzivně z podsložek nebo pouze ze zadané složky. Poznámka: Pokud je rekurzivní nastavena na hodnotu true a jímka je úložiště založené na souborech, prázdná složka nebo podsložka nebudou zkopírovány nebo vytvořeny na jímce.<br/>Povolené hodnoty jsou: **true** (výchozí), **false** | Ne |
+| distcpSettings | Skupina vlastností při použití HDFS DistCp. | Ne |
+| resourceManagerEndpoint | Koncový bod Správce zdrojů příze | Ano, pokud používáte DistCp |
+| tempScriptPath | Cesta ke složce používaná k uložení příkazového skriptu temp DistCp. Soubor skriptu je generován factory a bude odebrán po dokončení úlohy kopírování. | Ano, pokud používáte DistCp |
+| možnosti distcpOptions | Další možnosti poskytované příkazu DistCp. | Ne |
+| maxConcurrentConnections | Počet připojení pro připojení k úložišti úložiště současně. Zadejte pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne |
 
-**Příklad: HDFS zdroj v aktivitě kopírování pomocí DistCp**
+**Příklad: Zdroj HDFS v aktivitě kopírování pomocí DistCp**
 
 ```json
 "source": {
@@ -473,4 +473,4 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](c
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a propady aktivitou kopírování v Azure Data Factory najdete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

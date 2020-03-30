@@ -8,24 +8,24 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75707182"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>Správa e-mailů, kalendářů a kontaktů v Outlook.com pomocí Azure Logic Apps
 
-Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Outlook.com](/connectors/outlook/)můžete vytvářet automatizované úlohy a pracovní postupy, které spravují účet @outlook.com nebo @hotmail.com, a to díky vytváření Logic Apps. Tyto úlohy můžete automatizovat například takto:
+Pomocí [aplikací Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Outlook.com](/connectors/outlook/)můžete vytvářet automatizované úlohy a pracovní postupy, které spravují vaše @outlook.com nebo @hotmail.com účet, a to vytvářením aplikací logiky. Můžete například automatizovat tyto úkoly:
 
-* Získání, odeslání a odpověď na e-mail.
+* Získejte, odesílejte a odpovězte na e-mail.
 * Naplánujte schůzky v kalendáři.
-* Přidávání a úpravy kontaktů.
+* Přidejte a upravte kontakty.
 
-Můžete použít libovolný Trigger ke spuštění pracovního postupu, například při přijetí nového e-mailu, při aktualizaci položky kalendáře nebo v případě, že dojde k události v rozdílové službě. Můžete použít akce, které reagují na událost triggeru, například odeslat e-mail nebo vytvořit novou událost v kalendáři.
+Ke spuštění pracovního postupu můžete použít libovolnou aktivační událost, například při příchodu nového e-mailu, při aktualizaci položky kalendáře nebo při události ve službě rozdíl. Můžete použít akce, které reagují na aktivační událost, například odeslat e-mail nebo vytvořit novou událost kalendáře.
 
 > [!NOTE]
-> K automatizaci úloh pro pracovní účet Microsoft, jako je například @fabrikam.onmicrosoft.com, použijte [konektor Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md).
+> Chcete-li automatizovat úkoly pro @fabrikam.onmicrosoft.compracovní účet Microsoft, například , použijte [konektor Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,46 +33,46 @@ Můžete použít libovolný Trigger ke spuštění pracovního postupu, napří
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Aplikace logiky, ke které chcete získat přístup k účtu Outlook.com. Abyste mohli pracovní postup spustit pomocí triggeru Outlook.com, musíte mít [prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Chcete-li do pracovního postupu přidat akci Outlook.com, musí mít aplikace logiky již Trigger.
+* Aplikace logiky, kde chcete získat přístup k účtu Outlook.com. Chcete-li spustit pracovní postup pomocí Outlook.com aktivační události, musíte mít [prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Chcete-li přidat akci Outlook.com do pracovního postupu, aplikace logiky už musí mít aktivační událost.
 
 ## <a name="add-a-trigger"></a>Přidání triggeru
 
-[Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) je událost, která spouští pracovní postup ve vaší aplikaci logiky. Tato ukázková aplikace logiky používá aktivační událost "cyklického dotazování", která v závislosti na zadaném intervalu a četnosti kontroluje všechny nové e-maily v e-mailovém účtu.
+[Aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts) je událost, která spustí pracovní postup v aplikaci logiky. Tato ukázková aplikace logiky používá aktivační událost "dotazování", která kontroluje všechny nové e-maily ve vašem e-mailovém účtu na základě zadaného intervalu a četnosti.
 
-1. V [Azure Portal](https://portal.azure.com)otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Na [webu Azure Portal](https://portal.azure.com)otevřete prázdnou aplikaci logiky v Návrháři aplikací logiky.
 
-1. Do vyhledávacího pole zadejte "outlook.com" jako filtr. V tomto příkladu vyberte, **kdy přijde nový e-mail**.
+1. Do vyhledávacího pole zadejte jako filtr "outlook.com". V tomto příkladu vyberte **Při příchodu nového e-mailu**.
 
-1. Pokud se zobrazí výzva k přihlášení, zadejte přihlašovací údaje pro Outlook.com, aby se vaše aplikace logiky mohla připojit k vašemu účtu. Jinak, pokud připojení již existuje, zadejte informace o vlastnostech triggeru:
+1. Pokud se zobrazí výzva k přihlášení, zadejte Outlook.com přihlašovací údaje, aby se aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud připojení již existuje, zadejte informace o vlastnostech aktivační události:
 
-1. V aktivační události nastavte hodnoty **frekvence** a **interval** .
+1. V aktivační události nastavte hodnoty **Frekvence** a **Interval.**
 
-   Například pokud chcete, aby se Trigger dotazoval každých 15 minut, nastavte **četnost** na **minuty**a nastavte **interval** na **15**.
+   Chcete-li například, aby se aktivační událost každých 15 minut dotazovala, nastavte **frekvenci** na **minutu**a nastavte **interval** na **15**.
 
-1. Na panelu nástrojů návrháře vyberte **Save (Uložit**), která uloží vaši aplikaci logiky.
+1. Na panelu nástrojů návrháře vyberte **Uložit**, který uloží aplikaci logiky.
 
-Pokud chcete na Trigger reagovat, přidejte další akci. Můžete například přidat akci **Odeslat zprávu** Twilio, která pošle text při přijetí e-mailu.
+Chcete-li reagovat na aktivační událost, přidejte další akci. Můžete například přidat akci Twilio **Odeslat zprávu,** která odešle textovou zprávu při doručení e-mailu.
 
 ## <a name="add-an-action"></a>Přidání akce
 
-[Akce](../logic-apps/logic-apps-overview.md#logic-app-concepts) je operace, kterou spouští pracovní postup ve vaší aplikaci logiky. Tato ukázková aplikace logiky pošle e-mail z vašeho účtu Outlook.com. K naplnění akce můžete použít výstup z jiné triggeru. Předpokládejme například, že vaše aplikace logiky používá SalesForce **při vytvoření objektu** . Můžete přidat akci Outlook.com **Odeslat e-mail** a použít výstupy z triggeru Salesforce v e-mailu.
+[Akce](../logic-apps/logic-apps-overview.md#logic-app-concepts) je operace, která je spuštěna pracovním postupem v aplikaci logiky. Tento příklad aplikace logiky odešle e-mail z vašeho účtu Outlook.com. K naplnění akce můžete použít výstup z jiné aktivační události. Předpokládejme například, že vaše aplikace logiky používá SalesForce **Při vytvoření objektu** aktivační událost. Můžete přidat Outlook.com **Odeslat akci e-mailu** a použít výstupy z aktivační události SalesForce v e-mailu.
 
-1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Na [webu Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v Návrháři aplikací logiky.
 
-1. Pokud chcete přidat akci jako poslední krok pracovního postupu, vyberte **Nový krok**. 
+1. Chcete-li přidat akci jako poslední krok pracovního postupu, vyberte **Nový krok**. 
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte znaménko plus (**+**), které se zobrazí, a pak vyberte Přidat **akci**.
 
-1. Do vyhledávacího pole zadejte "outlook.com" jako filtr. V tomto příkladu vyberte **Odeslat e-mail**. 
+1. Do vyhledávacího pole zadejte jako filtr "outlook.com". V tomto příkladu vyberte **Odeslat e-mail**. 
 
-1. Pokud se zobrazí výzva k přihlášení, zadejte přihlašovací údaje pro Outlook.com, aby se vaše aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud vaše připojení již existuje, zadejte informace o vlastnostech akce.
+1. Pokud se zobrazí výzva k přihlášení, zadejte Outlook.com přihlašovací údaje, aby se aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud připojení již existuje, zadejte informace o vlastnostech akce.
 
-1. Na panelu nástrojů návrháře vyberte **Save (Uložit**), která uloží vaši aplikaci logiky.
+1. Na panelu nástrojů návrháře vyberte **Uložit**, který uloží aplikaci logiky.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Podrobnosti o technických podrobnostech, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/outlook/). 
+Technické podrobnosti, jako jsou aktivační události, akce a omezení, jak je popsáno v souboru Swagger konektoru, naleznete [na referenční stránce konektoru](/connectors/outlook/). 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech logic apps](../connectors/apis-list.md)

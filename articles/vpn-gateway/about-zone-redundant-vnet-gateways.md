@@ -1,6 +1,6 @@
 ---
-title: Informace o branách redundantní virtuální sítě v zóně Zóny dostupnosti Azure
-description: Seznamte se s VPN Gateway a ExpressRoute branami v Zóny dostupnosti.
+title: Informace o zónově redundantních privátních síťových branách v zónách dostupnosti Azure
+description: Další informace o branách VPN Gateway a ExpressRoute v zónách dostupnosti.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -10,80 +10,80 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.openlocfilehash: f1bbaab99b6422de4053839e2099869d2d08db95
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864294"
 ---
-# <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Informace o branách redundantní virtuální sítě v zóně Zóny dostupnosti Azure
+# <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Informace o zónově redundantních privátních síťových branách v zónách dostupnosti Azure
 
-V [zóny dostupnosti Azure](../availability-zones/az-overview.md)můžete nasadit brány VPN a ExpressRoute. To přináší odolnost proti chybám, škálovatelnost a vyšší dostupnost bran virtuálních sítí. Nasazování bran v rámci Zón dostupnosti Azure fyzicky a logicky odděluje brány v rámci oblasti, přičemž zároveň chrání připojení vaší místní sítě k Azure před výpadky na úrovni zóny.
+Brány VPN a ExpressRoute můžete nasadit v [zónách dostupnosti Azure](../availability-zones/az-overview.md). To přináší odolnost proti chybám, škálovatelnost a vyšší dostupnost bran virtuálních sítí. Nasazování bran v rámci Zón dostupnosti Azure fyzicky a logicky odděluje brány v rámci oblasti, přičemž zároveň chrání připojení vaší místní sítě k Azure před výpadky na úrovni zóny.
 
-### <a name="zrgw"></a>Redundantní brány v zóně
+### <a name="zone-redundant-gateways"></a><a name="zrgw"></a>Zónově redundantní brány
 
-Pokud chcete automaticky nasadit brány virtuální sítě napříč zónami dostupnosti, můžete použít brány virtuální sítě redundantní v zóně. U redundantních bran v zóně můžete využívat výhody zóny – odolnost pro přístup k důležitým a škálovatelným službám v Azure.
-
-<br>
-<br>
-
-![grafika – redundantní brány – grafika](./media/create-zone-redundant-vnet-gateway/zonered.png)
-
-### <a name="zgw"></a>Brány pro oblast
-
-Chcete-li nasadit brány v určité zóně, můžete použít brány oblastí. Když nasadíte bránu pro oblast, budou všechny instance brány nasazené ve stejné zóně dostupnosti.
+Chcete-li automaticky nasadit brány virtuální sítě napříč zónami dostupnosti, můžete použít zóny redundantní brány virtuální sítě. Díky zónově redundantním bránám můžete využívat odolnost zón pro přístup k důležitým a škálovatelným službám v Azure.
 
 <br>
 <br>
 
-![grafika v bráně oblast](./media/create-zone-redundant-vnet-gateway/zonal.png)
+![zónově redundantní brány – grafika](./media/create-zone-redundant-vnet-gateway/zonered.png)
 
-## <a name="gwskus"></a>SKU brány
+### <a name="zonal-gateways"></a><a name="zgw"></a>Zonální brány
 
-Brány redundantní a oblasti oblastí jsou k dispozici jako nové SKU brány. Přidali jsme nové skladové položky brány virtuální sítě v Azure v oblastech AZ. Tyto SKU jsou podobné odpovídajícím existujícím SKU pro ExpressRoute a VPN Gateway s tím rozdílem, že jsou specifické pro brány redundantní v zóně a oblasti. Tyto SKU můžete identifikovat pomocí příkazu AZ v názvu SKU.
+Chcete-li nasadit brány v určité zóně, můžete použít zónové brány. Když nasadíte zónovou bránu, všechny instance brány jsou nasazeny ve stejné zóně dostupnosti.
 
-Informace o SKU brány najdete v tématu SKU [brány VPN](vpn-gateway-about-vpngateways.md#gwsku) a [SKU brány ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku).
+<br>
+<br>
 
-## <a name="pipskus"></a>SKU veřejných IP adres
+![zonální brány – grafika](./media/create-zone-redundant-vnet-gateway/zonal.png)
 
-Sítě redundantní brány a brány oblastí jsou závislé na *standardu* SKU prostředků veřejné IP adresy Azure. Konfigurace prostředku veřejné IP adresy Azure určuje, jestli je brána, kterou nasazujete, redundantní v zóně nebo v oblasti. Pokud vytvoříte prostředek veřejné IP adresy se *základní* skladovou jednotkou, brána nebude mít žádnou redundanci zóny a prostředky brány budou regionální.
+## <a name="gateway-skus"></a><a name="gwskus"></a>SKU brány
 
-### <a name="pipzrg"></a>Redundantní brány v zóně
+Zónově redundantní a zónové brány jsou k dispozici jako nové brány sloky brány. Přidali jsme nové virtuální síťové brány skutáleny v oblastech Azure AZ. Tyto sloky jsou podobné odpovídající existující sku pro ExpressRoute a VPN gateway, s tím rozdílem, že jsou specifické pro zóny redundantní a zónonální brány. Tyto skladové položky můžete identifikovat podle "AZ" v názvu skladové položky.
 
-Když vytvoříte veřejnou IP adresu pomocí **standardní** SKU veřejné IP adresy, aniž byste určili zónu, chování se liší v závislosti na tom, jestli je brána bránou VPN nebo bránou ExpressRoute. 
+Informace o su su brány naleznete v tématu [VPN gateway SKU](vpn-gateway-about-vpngateways.md#gwsku) a [ExpressRoute gateway SKU](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku).
 
-* Pro bránu sítě VPN se tyto dvě instance brány nasadí do každé 2 z těchto tří zón, aby se zajistila redundance zóny. 
-* Pro bránu ExpressRoute, protože může být víc než dvě instance, může Brána zahrnovat celou tři zóny.
+## <a name="public-ip-skus"></a><a name="pipskus"></a>Veřejná IP SKUs
 
-### <a name="pipzg"></a>Brány pro oblast
+Zóny redundantní brány a zónové brány spoléhají na standardní skladovou položku *pro* veřejné IP prostředky Azure. Konfigurace prostředku veřejné IP azure určuje, zda je brána, kterou nasadíte, zónově redundantní nebo zónová. Pokud vytvoříte veřejný prostředek IP se *základní* skladovou položkou, brána nebude mít žádnou redundanci zóny a prostředky brány budou místní.
 
-Když vytvoříte veřejnou IP adresu pomocí **standardní** SKU veřejné IP adresy a zadáte zónu (1, 2 nebo 3), všechny instance brány se nasadí ve stejné zóně.
+### <a name="zone-redundant-gateways"></a><a name="pipzrg"></a>Zónově redundantní brány
 
-### <a name="piprg"></a>Regionální brány
+Když vytvoříte veřejnou IP adresu pomocí **standardní** veřejné ip skladové položky bez určení zóny, chování se liší v závislosti na tom, zda je brána VPN brána nebo brána ExpressRoute. 
 
-Když vytvoříte veřejnou IP adresu pomocí **základní** veřejné IP adresy (SKU), brána se nasadí jako místní brána a nebude mít do brány vestavěnou redundanci zón.
+* Pro bránu VPN budou dvě instance brány nasazeny v libovolném 2 z těchto tří zón, aby byla zajištěna redundance zóny. 
+* Pro bránu ExpressRoute, protože může existovat více než dvě instance, brána může protábovat všechny tři zóny.
 
-## <a name="faq"></a>Nejčastější dotazy
+### <a name="zonal-gateways"></a><a name="pipzg"></a>Zonální brány
 
-### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Co se změní při nasazení těchto nových SKU?
+Když vytvoříte veřejnou IP adresu pomocí **standardní** veřejné IP skladové položky a určíte zónu (1, 2 nebo 3), všechny instance brány budou nasazeny ve stejné zóně.
 
-Z perspektivy můžete nasadit brány s využitím redundance zón. To znamená, že všechny instance bran budou nasazeny v rámci Zóny dostupnosti Azure a každá zóna dostupnosti je jinou chybou a aktualizační doménou. Díky tomu jsou brány spolehlivější, dostupné a odolné vůči selháním zón.
+### <a name="regional-gateways"></a><a name="piprg"></a>Regionální brány
 
-### <a name="can-i-use-the-azure-portal"></a>Můžu použít Azure Portal?
+Když vytvoříte veřejnou IP adresu pomocí **základní** veřejné IP skladové položky, brána se nasadí jako místní brána a nemá do brány zabudovanou žádnou redundanci zóny.
 
-Ano, můžete použít Azure Portal k nasazení nových SKU. Tyto nové SKU se ale zobrazí jenom v oblastech Azure, které mají Zóny dostupnosti Azure.
+## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
 
-### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Jaké oblasti máte k dispozici pro použití nových SKU?
+### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Co se změní, když nasadím tyto nové souku?
 
-Nové SKU jsou dostupné v oblastech Azure, které mají Zóny dostupnosti Azure-Střed USA, Francii Central, Severní Evropa, Západní Evropa a Západní USA 2 oblasti, Východní USA, Východní USA 2, jihovýchodní Asie, Japonsko – východ, Velká Británie – jih. V dalších veřejných oblastech Azure budeme mít k dispozici redundantní brány pro zóny, které máte k dispozici.
+Z vašeho pohledu můžete nasadit brány s redundancí zóny. To znamená, že všechny instance bran se nasadí napříč zónami dostupnosti Azure a každá zóna dostupnosti je jiná doména poruchy a aktualizace. Díky tomu jsou vaše brány spolehlivější, dostupnější a odolnější vůči selhání zóny.
 
-### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Můžu změnit/migrovat nebo upgradovat stávající brány virtuální sítě na brány, které mají zóny redundantní nebo rozbrané?
+### <a name="can-i-use-the-azure-portal"></a>Můžu používat portál Azure?
 
-Migrace stávajících bran virtuální sítě na brány, které nejsou v současné době podporované, se nepodporují. Můžete ale odstranit stávající bránu a znovu vytvořit bránu, která je nadbytečná nebo se zónou.
+Ano, na webu Azure Portal můžete nasadit nové sku- tu. Tyto nové souny však uvidíte pouze v těch oblastech Azure, které mají zóny dostupnosti Azure.
 
-### <a name="can-i-deploy-both-vpn-and-express-route-gateways-in-same-virtual-network"></a>Můžu ve stejné virtuální síti nasazovat brány sítě VPN i Express?
+### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Jaké oblasti jsou k dispozici pro použití nových skutých.
 
-Podporuje se souběžná existence bran sítě VPN i Express Route ve stejné virtuální síti. Měli byste si však vyhradit rozsah IP adres a/27 pro podsíť brány.
+Nové skum jsou dostupné v oblastech Azure, které mají zóny dostupnosti Azure – střední USA, Francie – střed, Severní Evropa, Západní Evropa a Západní USA 2 oblasti, Východní USA, Východní USA 2, Jihovýchodní Asie, Japonsko – východ, Velká Británie – jih. Do budoucna vám zpřístupníme zóny redundantní brány v jiných veřejných oblastech Azure.
+
+### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Můžu změnit/migrovat/upgradovat své stávající brány virtuální sítě na zónově redundantní nebo zónové brány?
+
+Migrace existujících bran virtuální sítě do zónově redundantních nebo zónových bran není momentálně podporována. Můžete však odstranit existující bránu a znovu vytvořit zónovou nebo zónovou bránu.
+
+### <a name="can-i-deploy-both-vpn-and-express-route-gateways-in-same-virtual-network"></a>Můžu nasadit brány VPN i Express Route ve stejné virtuální síti?
+
+Koexistence bran VPN i Express Route ve stejné virtuální síti je podporována. Měli byste však rezervovat rozsah IP adres /27 pro podsíť brány.
 
 ## <a name="next-steps"></a>Další kroky
 

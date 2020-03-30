@@ -6,24 +6,24 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: alkohli
 ms.openlocfilehash: bc156b8c18f46cccf6fc775b82f76383b8c43861
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66242154"
 ---
-Tady je seznam účtů úložiště podporuje a typy úložiště pro zařízení Data Box. Úplný seznam všech různých typů účtů úložiště a jejich úplné možnosti najdete v tématu [typy účtů úložiště](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
+Tady je seznam podporovaných účtů úložiště a typů úložiště pro zařízení Data Box. Úplný seznam všech různých typů účtů úložiště a jejich úplné možnosti naleznete v [tématu Typy účtů úložiště](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 
-| **Účet úložiště / podporované typy úložiště** | **Objekt blob bloku** |**Objekt blob stránky*** |**Služba soubory Azure** |**Poznámky**|
+| **Účet úložiště / Podporované typy úložišť** | **Objekt blob bloku** |**Objekt blob stránky*** |**Soubory Azure** |**Poznámky**|
 | --- | --- | -- | -- | -- |
-| Klasické Standard | Ano | Ano | Ano |
-| Standard pro obecné účely v1  | Ano | Ano | Ano | Horká a studená jsou podporovány.|
-| Premium pro obecné účely v1  |  | Ano| | |
-| Standard pro obecné účely v2  | Ano | Ano | Ano | Horká a studená jsou podporovány.|
-| Premium pro obecné účely v2  |  |Ano | | |
-| Úložiště objektů BLOB Standard |Ano | | |Horká a studená jsou podporovány. |
+| Klasický standard | Ano | Ano | Ano |
+| Pro všeobecné účely v1 Standard  | Ano | Ano | Ano | Jsou podporovány horké i chladné.|
+| Obecné účely v1 Premium  |  | Ano| | |
+| Pro všeobecné použití v2 Standard  | Ano | Ano | Ano | Jsou podporovány horké i chladné.|
+| Obecné účely v2 Premium  |  |Ano | | |
+| Úložiště objektů blob Standard |Ano | | |Jsou podporovány horké i chladné. |
 
-\* *-Daty nahranými do objektů BLOB stránky musí být zarovnán jako je například virtuální pevné disky 512 bajtů.*
+\**- Data nahraná na objekty BLOB stránky musí být 512 bajtů zarovnaných například v protiis.*
 
 >[!NOTE]
-> Účty Azure Data Lake Storage generace 2 nejsou podporovány.
+> Účty Azure Data Lake Storage Gen2 se nepodporují.

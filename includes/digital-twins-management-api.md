@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 01/06/2020
 ms.custom: include file
 ms.openlocfilehash: bacb665eeffc6bb5351d11ec74139a272c95a9fb
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75692517"
 ---
-V níže uvedených příkladech `YOUR_MANAGEMENT_API_URL` odkaz na identifikátor URI digitálních vláken rozhraní API:
+V níže uvedených `YOUR_MANAGEMENT_API_URL` příkladech odkazuje na identifikátor URI v oblasti api pro digitální dvojčata:
 
 ```URL
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0
@@ -24,5 +24,5 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.
 
 | Name (Název) | Nahradit hodnotou |
 | --- | --- |
-| YOUR_INSTANCE_NAME | Název instance digitálního vlákna Azure |
-| YOUR_LOCATION | Oblast, ve které je vaše instance hostována |
+| YOUR_INSTANCE_NAME | Název instance Azure Digital Twins |
+| YOUR_LOCATION | Oblast, na které je vaše instance hostována |

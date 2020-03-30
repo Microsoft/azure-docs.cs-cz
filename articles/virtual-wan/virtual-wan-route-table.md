@@ -1,6 +1,6 @@
 ---
-title: 'Virtuální síť WAN: vytvoření tabulky směrování virtuálního rozbočovače do síťové virtuální zařízení: Azure PowerShell'
-description: Tabulka směrování virtuálních rozbočovačů sítě WAN pro řízení provozu do síťového virtuálního zařízení.
+title: 'Virtuální WAN: Vytvoření tabulky směrování virtuálního rozbočovače do NVA: Azure PowerShell'
+description: Virtuální wan virtuální rozbočovací tabulka směrovat provoz do sítě virtuálního zařízení.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,15 +9,15 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
 ms.openlocfilehash: a55e1453fe7fe4d135286b22dabf58d434762581
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645102"
 ---
-# <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Vytvoření směrovací tabulky virtuálního centra pro řízení provozu do síťového virtuálního zařízení
+# <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Vytvoření směrovací tabulky virtuálního centra pro řízení provozu na síťové virtuální zařízení
 
-V tomto článku se dozvíte, jak řídit provoz z virtuálního rozbočovače do síťového virtuálního zařízení. 
+Tento článek ukazuje, jak řídit provoz z virtuálního rozbočovače do síťového virtuálního zařízení. 
 
 ![Diagram virtuální sítě WAN](./media/virtual-wan-route-table/vwanroute.png)
 
@@ -25,29 +25,29 @@ V tomto článku získáte informace o těchto tématech:
 
 * Vytvoření sítě WAN
 * Vytvoření rozbočovače
-* Vytvoření připojení k virtuální síti centra
-* Vytvoření trasy centra
+* Vytvoření připojení virtuální sítě rozbočovače
+* Vytvoření trasy rozbočovače
 * Vytvoření směrovací tabulky
-* Použít směrovací tabulku
+* Použití tabulky tras
 
 ## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ověřte, že splňujete následující kritéria:
+Ověřte, zda jste splnili následující kritéria:
 
-1. Máte síťové virtuální zařízení (síťové virtuální zařízení). Toto je software od jiného výrobce, který je obvykle zřízený z Azure Marketplace ve virtuální síti.
-2. Máte přiřazenou privátní IP adresu k síťové virtuální zařízení síťovému rozhraní. 
-3. SÍŤOVÉ virtuální zařízení nejde nasadit ve virtuálním centru. Musí být nasazené v samostatné virtuální síti. V tomto článku se virtuální síť síťové virtuální zařízení označuje jako DMZ VNet.
-4. K virtuálním sítím DMZ je možné připojit jednu nebo více virtuálních sítí. V tomto článku se tato virtuální síť označuje jako "nepřímá virtuální síť rozbočovače". Tyto virtuální sítě můžou být připojené k virtuální síti DMZ pomocí partnerského vztahu virtuálních sítí.
-5. Ověřte, že už máte vytvořené 2 virtuální sítě. Budou použity jako paprskový virtuální sítě. V tomto článku jsou adresní prostory ve virtuální síti 10.0.2.0/24 a 10.0.3.0/24. Pokud potřebujete informace o tom, jak vytvořit virtuální síť, přečtěte si téma [vytvoření virtuální sítě pomocí PowerShellu](../virtual-network/quick-create-powershell.md).
-6. Zajistěte, aby v žádném virtuální sítě neexistovaly žádné brány virtuální sítě.
+1. Máte síťové virtuální zařízení (NVA). Jedná se o software jiného výrobce podle vašeho výběru, který se obvykle zřizoval z Azure Marketplace ve virtuální síti.
+2. K síťovému rozhraní síťového virtuálního zařízení je přiřazena privátní adresa IP. 
+3. NVA nelze nasadit ve virtuálním rozbočovači. Musí být nasazený v samostatné virtuální síti. Pro tento článek virtuální síť NVA se označuje jako "Virtuální síť DMZ".
+4. "Virtuální síť DMZ" může mít jednu nebo mnoho virtuálních sítí, které jsou k němu připojeny. V tomto článku se tato virtuální síť označuje jako "Virtuální síť s nepřímým paprskem". Tyto virtuální sítě se můžou připojit k virtuální síti DMZ pomocí partnerského vztahu virtuální sítě.
+5. Ověřte, že už máte 2 virtuální sítě. Ty se budou používat jako virtuální sítě paprsku. Pro tento článek jsou adresní prostory virtuální sítě pro paprsky 10.0.2.0/24 a 10.0.3.0/24. Pokud potřebujete informace o tom, jak vytvořit virtuální síť, přečtěte si informace [o vytvoření virtuální sítě pomocí PowerShellu](../virtual-network/quick-create-powershell.md).
+6. Ujistěte se, že v žádné virtuální sítě nejsou žádné brány virtuální sítě.
 
-## <a name="signin"></a>1. přihlášení
+## <a name="1-sign-in"></a><a name="signin"></a>1. Přihlaste se
 
-Ujistěte se, že instalujete nejnovější verzi rutin Správce prostředků PowerShellu. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-az-ps). To je důležité, protože starší verze rutin neobsahují aktuální hodnoty, které potřebujete pro toto cvičení.
+Ujistěte se, že jste nainstalovali nejnovější verzi rutin prostředí PowerShell správce prostředků. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-az-ps). To je důležité, protože starší verze rutin neobsahují aktuální hodnoty, které potřebujete pro toto cvičení.
 
-1. Otevřete konzolu PowerShellu se zvýšenými oprávněními a přihlaste se ke svému účtu Azure. Tato rutina vás vyzve k zadání přihlašovacích údajů. Po přihlášení se stáhne nastavení účtu, aby bylo možné Azure PowerShell.
+1. Otevřete konzolu PowerShell se zvýšenými oprávněními a přihlaste se ke svému účtu Azure. Tato rutina vás vyzve k zadání přihlašovacích údajů. Po přihlášení stáhne nastavení vašeho účtu, aby byly dostupné pro Azure PowerShell.
 
    ```powershell
    Connect-AzAccount
@@ -63,14 +63,14 @@ Ujistěte se, že instalujete nejnovější verzi rutin Správce prostředků Po
    Select-AzSubscription -SubscriptionName "Name of subscription"
    ```
 
-## <a name="rg"></a>2. vytváření prostředků
+## <a name="2-create-resources"></a><a name="rg"></a>2. Vytváření zdrojů
 
 1. Vytvořte skupinu prostředků.
 
    ```powershell
    New-AzResourceGroup -Location "West US" -Name "testRG"
    ```
-2. Vytvořte virtuální síť WAN.
+2. Vytvořte virtuální WAN.
 
    ```powershell
    $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
@@ -81,9 +81,9 @@ Ujistěte se, že instalujete nejnovější verzi rutin Správce prostředků Po
    New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -Location "West US"
    ```
 
-## <a name="connections"></a>3. vytváření připojení
+## <a name="3-create-connections"></a><a name="connections"></a>3. Vytvoření připojení
 
-Vytvořte připojení k virtuální síti rozbočovače z nepřímé virtuální sítě a virtuální sítě DMZ k virtuálnímu rozbočovači.
+Vytvořte připojení virtuální sítě rozbočovače z virtuální sítě Nepřímý paprsek a virtuální sítě DMZ do virtuálního rozbočovače.
 
   ```powershell
   $remoteVirtualNetwork1= Get-AzVirtualNetwork -Name "indirectspoke1" -ResourceGroupName "testRG"
@@ -95,25 +95,25 @@ Vytvořte připojení k virtuální síti rozbočovače z nepřímé virtuální
   New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "westushub" -Name  "testvnetconnection3" -RemoteVirtualNetwork $remoteVirtualNetwork3
   ```
 
-## <a name="route"></a>4. vytvoření trasy virtuálního rozbočovače
+## <a name="4-create-a-virtual-hub-route"></a><a name="route"></a>4. Vytvoření trasy virtuálního rozbočovače
 
-V tomto článku jsou adresní prostory nepřímých virtuálních sítí 10.0.2.0/24 a 10.0.3.0/24 a privátní IP adresa síťového rozhraní DMZ síťové virtuální zařízení je 10.0.4.5.
+Pro tento článek jsou adresní prostory virtuální sítě Nepřímý paprsek 10.0.2.0/24 a 10.0.3.0/24 a privátní IP adresa síťového rozhraní NVA DMZ je 10.0.4.5.
 
 ```powershell
 $route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/24") -NextHopIpAddress "10.0.4.5"
 ```
 
-## <a name="applyroute"></a>5. vytvoření tabulky směrování virtuálního rozbočovače
+## <a name="5-create-a-virtual-hub-route-table"></a><a name="applyroute"></a>5. Vytvoření směrovací tabulky virtuálního rozbočovače
 
-Vytvořte tabulku směrování virtuálního rozbočovače a pak na ni použijte vytvořenou trasu.
+Vytvořte tabulku směrování virtuálního rozbočovače a potom na ni použijte vytvořenou trasu.
  
 ```powershell
 $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 ```
 
-## <a name="commit"></a>6. potvrďte změny.
+## <a name="6-commit-the-changes"></a><a name="commit"></a>6. Potvrzení změn
 
-Potvrďte změny ve virtuálním centru.
+Potvrdí změny do virtuálního rozbočovače.
 
 ```powershell
 Update-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub" -RouteTable $routeTable

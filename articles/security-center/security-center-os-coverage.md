@@ -1,6 +1,6 @@
 ---
-title: Platformy podporované aplikací Azure Security Center | Microsoft Docs
-description: Tento dokument poskytuje seznam platforem podporovaných nástrojem Azure Security Center.
+title: Platformy podporované Azure Security Center | Dokumenty společnosti Microsoft
+description: Tento dokument obsahuje seznam platforem podporovaných Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,83 +14,83 @@ ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
 ms.openlocfilehash: e13149ba802f0f8b9a565e0aabd86ae05167f18b
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208811"
 ---
 # <a name="supported-platforms"></a>Podporované platformy 
 
-## Virtuální počítače a servery<a name="vm-server"></a>
+## <a name="virtual-machines--servers"></a>Virtuální stroje / servery<a name="vm-server"></a>
 
-Security Center podporuje virtuální počítače a servery v různých typech hybridních prostředí:
+Security Center podporuje virtuální počítače / servery na různých typech hybridních prostředí:
 
 * Jenom Azure
 * Azure a místní
 * Azure a další cloudy
-* Azure, ostatní cloudy a místní
+* Azure, další cloudy a místní
 
-Pro prostředí Azure aktivované v rámci předplatného Azure Azure Security Center automaticky zjišťovat prostředky IaaS nasazené v rámci předplatného.
+Pro prostředí Azure aktivované na předplatné Azure Azure Centrum zabezpečení automaticky zjišťuje prostředky IaaS, které jsou nasazené v rámci předplatného.
 
 > [!NOTE]
-> Chcete-li získat kompletní sadu funkcí zabezpečení, je nutné mít [agenta Log Analytics](../azure-monitor/platform/agents-overview.md#log-analytics-agent), který je používán Azure Security Center, nainstalován a [správně nakonfigurován k odesílání dat do Azure Security Center](security-center-enable-data-collection.md#manual-agent).
+> Chcete-li získat úplnou sadu funkcí zabezpečení, musíte mít [agenta analýzy protokolů](../azure-monitor/platform/agents-overview.md#log-analytics-agent), který používá Azure Security Center, nainstalovaný a [správně nakonfigurovaný k odesílání dat do Centra zabezpečení Azure](security-center-enable-data-collection.md#manual-agent).
 
-V následujících oddílech jsou uvedeny podporované serverové operační systémy, na kterých je možné spustit [agenta Log Analytics](../azure-monitor/platform/agents-overview.md#log-analytics-agent), který používá služba Azure Security Center.
+V následujících částech jsou uvedeny podporované operační systémy pro servery, na kterých může spustit [agent analýzy protokolů](../azure-monitor/platform/agents-overview.md#log-analytics-agent), který používá Azure Security Center.
 
-### Operační systémy Windows Server<a name="os-windows"></a>
+### <a name="windows-server-operating-systems"></a>Operační systémy Windows pro servery<a name="os-windows"></a>
 
-|OS|Podporováno aplikací Azure Security Center|Podpora integrace s Microsoft Defender ATP|
+|Operační systém|Podporované Azure Security Center|Podpora integrace s programem Microsoft Defender ATP|
 |:---|:-:|:-:|
-|Windows Server. 2019|✔|X|
+|Windows Server 2019|✔|×|
 |Windows Server 2016|✔|✔|
 |Windows Server 2012 R2|✔|✔|
 |Windows Server 2008 R2|✔|✔|
 
-Další informace o podporovaných funkcích pro operační systémy Windows, které jsou uvedené výše, najdete v tématu [funkce podporované virtuálním počítačem/serverem](security-center-services.md#vm-server-features).
+Další informace o podporovaných funkcích operačních systémů Windows, které jsou uvedeny výše, naleznete v [tématu Funkce podporované virtuálním počítačem a serverem](security-center-services.md#vm-server-features).
 
-### Operační systémy Windows<a name="os-windows (non-server)"></a>
+### <a name="windows-operating-systems"></a>Operační systémy Windows<a name="os-windows (non-server)"></a>
 
-Azure Security Center se integruje se službami Azure za účelem monitorování a ochrany virtuálních počítačů založených na systému Windows.
+Azure Security Center se integruje se službami Azure a monitoruje a chrání vaše virtuální počítače s Windows.
 
-### Operační systémy Linux<a name="os-linux"></a>
+### <a name="linux-operating-systems"></a>Operační systémy Linux<a name="os-linux"></a>
 
-64bitový
+64bitová
 
 * CentOS 6 a 7
 * Amazon Linux 2017.09
 * Oracle Linux 6 a Oracle Linux 7
 * Red Hat Enterprise Linux Server 6 a 7
 * Debian GNU/Linux 8 a 9
-* Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
+* Ubuntu Linux 14.04 LTS, 16.04 LTS a 18.04 LTS
 * SUSE Linux Enterprise Server 12
 
-32bitový
-* CentOS 6
+32bitová
+* Centos 6
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6
 * Debian GNU/Linux 8 a 9
-* Ubuntu Linux 14,04 LTS a 16,04 LTS
+* Ubuntu Linux 14.04 LTS a 16.04 LTS
 
 > [!NOTE]
-> Vzhledem k tomu, že se seznam podporovaných operačních systémů Linux neustále mění, pokud chcete, kliknutím [sem](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) zobrazíte nejaktuálnější seznam podporovaných verzí, v případě, že došlo ke změnám od posledního publikování tohoto tématu.
+> Vzhledem k tomu, že seznam podporovaných operačních systémů Linux se neustále mění, pokud dáváte přednost, klikněte [zde](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) pro zobrazení nejaktuálnějšího seznamu podporovaných verzí, v případě, že došlo ke změnám od posledního publikování tohoto tématu.
 
-Další informace o podporovaných funkcích pro operační systémy Linux, které jsou uvedené výše, najdete v tématu [funkce podporované virtuálním počítačem/serverem](security-center-services.md#vm-server-features).
+Další informace o podporovaných funkcích operačních systémů Linux, které jsou uvedeny výše, naleznete v [tématu Funkce podporované virtuálním počítačem a serverem](security-center-services.md#vm-server-features).
 
-### Spravované služby virtuálních počítačů<a name="virtual-machine"></a>
+### <a name="managed-virtual-machine-services"></a>Spravované služby virtuálních strojů<a name="virtual-machine"></a>
 
-Virtuální počítače se také vytvoří v rámci zákaznického předplatného jako součást některých spravovaných služeb Azure, jako je například Azure Kubernetes (AKS), Azure Databricks a další. Tyto virtuální počítače se taky zjišťují pomocí Azure Security Center a Agent Log Analytics se dá nainstalovat a nakonfigurovat podle podporovaných [operačních systémů Windows/Linux](#os-windows)uvedených výše.
+Virtuální počítače se taky vytvářejí v zákaznickém předplatném jako součást některých spravovaných služeb Azure, jako jsou Azure Kubernetes (AKS), Azure Databricks a další. Tyto virtuální počítače jsou také zjištěny azure security center a agent analýzy protokolů lze nainstalovat a nakonfigurovat podle [podporovaných operačních systémů Windows/Linux](#os-windows), které jsou uvedeny výše.
 
-### Cloud Services<a name="cloud-services"></a>
+### <a name="cloud-services"></a>Cloudové služby<a name="cloud-services"></a>
 
-Podporují se také virtuální počítače, které běží v cloudové službě. Monitorují se jenom webové role a role pracovních procesů Cloud Services, které běží v produkčních slotech. Další informace o cloudových službách najdete v tématu [Přehled Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
+Virtuální počítače, které běží v cloudové službě jsou také podporovány. Monitorují se pouze webové a pracovní role cloudových služeb, které běží v produkčních slotech. Další informace o cloudových službách najdete v [tématu Přehled cloudových služeb Azure](../cloud-services/cloud-services-choose-me.md).
 
-Také je podporována ochrana pro Virtual Machines umístěná v Azure Stack. Další informace o integraci Security Center s Azure Stack najdete v tématu připojení [virtuálních počítačů s Azure Stack k Security Center](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack).
+Ochrana virtuálních počítačů s bydlištěm v Azure Stack je také podporována. Další informace o integraci Centra zabezpečení s Azure Stack najdete [v tématu Onboard your Azure Stack virtual machines to Security Center](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [Security Center shromažďuje data a agenta Log Analytics](security-center-enable-data-collection.md).
-- Přečtěte si [, jak Security Center spravuje a chrání data](security-center-data-security.md).
-- Naučte se [plánovat a porozumět hlediskům návrhu, které je potřeba přijmout Azure Security Center](security-center-planning-and-operations-guide.md).
-- Seznamte [se s funkcemi dostupnými pro různá cloudová prostředí](security-center-services.md).
-- Přečtěte si další informace o [ochraně před hrozbami pro počítače se systémem Windows a Linux v Azure Security Center](threat-protection.md#windows-machines).
+- Zjistěte, jak [Security Center shromažďuje data a agent a analýzy protokolů](security-center-enable-data-collection.md).
+- Zjistěte, jak [Security Center spravuje a zabezpečuje data](security-center-data-security.md).
+- Přečtěte si, jak [naplánovat a pochopit aspekty návrhu a přijmout Azure Security Center](security-center-planning-and-operations-guide.md).
+- Informace o [funkcích dostupných pro různá cloudová prostředí](security-center-services.md).
+- Další informace o [ochraně před hrozbami pro počítače s Windows a Linuxem v Azure Security Center](threat-protection.md#windows-machines).

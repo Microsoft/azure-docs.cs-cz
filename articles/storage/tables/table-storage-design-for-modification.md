@@ -1,6 +1,6 @@
 ---
-title: Návrh úložiště tabulek Azure pro úpravu dat | Microsoft Docs
-description: Navrhněte tabulky pro úpravu dat v úložišti tabulek Azure.
+title: Návrh úložiště tabulek Azure pro úpravy dat | Dokumenty společnosti Microsoft
+description: Navrhněte tabulky pro úpravy dat v úložišti Azure Table.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -9,43 +9,43 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: c95be7afae5c0a84c06b691c8225f32f2aa68260
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75771542"
 ---
 # <a name="design-for-data-modification"></a>Návrh pro úpravu dat
-Tento článek se zaměřuje na požadavky návrhu na optimalizaci vložení, aktualizace a odstranění. V některých případech budete muset vyhodnotit kompromis mezi návrhy, které je optimální pro dotazování na návrhy, které je optimální pro úpravu dat stejně jako je tomu v návrhy pro relační databáze (i když jsou techniky pro správu kompromisy návrhu různé v relační databázi). Vzory návrhu tabulek oddílu popisují některé podrobné vzory návrhu Table service a zvýrazňují některé z těchto kompromisů. V praxi zjistíte, že řada návrhů, které jsou optimalizované pro dotazování entity také fungovat dobře pro úpravu entity.  
+Tento článek se zaměřuje na aspekty návrhu pro optimalizaci vložení, aktualizace a odstranění. V některých případech budete muset vyhodnotit kompromis mezi návrhy, které optimalizují pro dotazování proti návrhům, které optimalizují pro úpravy dat stejně jako v návrzích pro relační databáze (ačkoli techniky pro správu kompromisů návrhu jsou v relační databázi). V části Návrhové vzory tabulky popisuje některé podrobné návrhové vzory pro službu Table service a upozorňuje na některé tyto kompromisy. V praxi zjistíte, že mnoho návrhů optimalizovaných pro dotazování entit také dobře funguje pro úpravy entit.  
 
 ## <a name="optimize-the-performance-of-insert-update-and-delete-operations"></a>Optimalizace výkonu operací vložení, aktualizace a odstranění
-Aktualizovat nebo odstranit entitu, musíte být schopni identifikovat pomocí **PartitionKey** a **RowKey** hodnoty. V tomto ohledu podle vaší volby **PartitionKey** a **RowKey** úprava entit by podle podobných kritérií zadaným hodnotám pro podporu bodových dotazů, protože chcete, k identifikaci entity jako efektivní nejvíce. Nechcete použijte neefektivní kontroly oddíl nebo tabulky a vyhledejte entitu Chcete-li vyhledat **PartitionKey** a **RowKey** hodnoty je potřeba aktualizovat nebo odstranit.  
+Chcete-li aktualizovat nebo odstranit entitu, musíte být schopni ji identifikovat pomocí hodnot **PartitionKey** a **RowKey.** V tomto ohledu vaše volba **PartitionKey** a **RowKey** pro úpravu entit by měla následovat podobná kritéria, která vaše volba pro podporu bodových dotazů, protože chcete identifikovat entity co nejefektivněji. Nechcete použít neefektivní oddíl nebo prohledávač tabulky k vyhledání entity za účelem zjištění hodnot **PartitionKey** a **RowKey,** které potřebujete k aktualizaci nebo odstranění.  
 
-Následující vzory vzorů návrhu tabulek řeší optimalizaci výkonu nebo operací vložení, aktualizace a odstranění:  
+Následující vzory v části Návrhové vzory tabulky řeší optimalizaci výkonu nebo operací vložení, aktualizace a odstranění:  
 
-* [Velký objem odstranit vzor](table-storage-design-patterns.md#high-volume-delete-pattern) -Povolit odstranění k velkému počtu entit uložením všechny entity pro souběžné odstranění vlastních samostatné tabulky, odstranit entity odstraněním tabulky.  
-* [Vzor data řady](table-storage-design-patterns.md#data-series-pattern) -series kompletní data Store v jedné entity, chcete-li minimalizovat počet požadavků, které provedete.  
-* [Vzor široké entity](table-storage-design-patterns.md#wide-entities-pattern) – použití více fyzických entit k ukládání logické entity s více než 252 vlastností.  
-* [Vzor velkých entit](table-storage-design-patterns.md#large-entities-pattern) – použití úložiště objektů blob pro uložení hodnoty vlastnosti velké.  
+* [Vzor odstranění velkého objemu](table-storage-design-patterns.md#high-volume-delete-pattern) – povolí odstranění velkého objemu entit uložením všech entit pro současné odstranění ve vlastní samostatné tabulce; odstraníte entity odstraněním tabulky.  
+* [Vzor datových řad](table-storage-design-patterns.md#data-series-pattern) – uložte kompletní datové řady do jedné entity, abyste minimalizovali počet požadavků, které provedete.  
+* [Vzor širokých entit](table-storage-design-patterns.md#wide-entities-pattern) – k ukládání logických entit s více než 252 vlastnostmi použijte více fyzických entit.  
+* [Vzor velkých entit](table-storage-design-patterns.md#large-entities-pattern) – k ukládání velkých hodnot vlastností použijte úložiště objektů blob.  
 
 ## <a name="ensure-consistency-in-your-stored-entities"></a>Zajištění konzistence uložených entit
-Klíčovým faktorem, který ovlivňuje podle vašeho výběru klíče pro optimalizaci změny dat je jak zajistit soulad s použitím atomické transakce. Můžete použít pouze EGT pracovat u entit se ukládají do stejného oddílu.  
+Dalším klíčovým faktorem, který ovlivňuje výběr klíčů pro optimalizaci změn dat, je, jak zajistit konzistenci pomocí atomických transakcí. EGT lze použít pouze k provozu s entitami uloženými ve stejném oddílu.  
 
-Následující vzory v [vzorcích návrhu tabulek](table-storage-design-patterns.md) článků řeší konzistenci správy:  
+Následující vzory v článku [Návrhové vzory tabulky](table-storage-design-patterns.md) řeší správu konzistence:  
 
-* [Vzor sekundární index oddílu uvnitř](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) -Store několik kopií každého entitu s využitím různých **RowKey** hodnot (ve stejném oddílu) Chcete-li povolit rychlé a efektivní vyhledávání a alternativní pořadí řazení s použitím různých **RowKey** hodnoty.  
-* [Sekundární index oddílu mezi vzor](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - Store několik kopií každé entity pomocí různých hodnot RowKey v samostatných oddílech nebo v samostatných tabulkách a umožňuje rychlé a efektivní vyhledávání a řazení alternativní objednávky s použitím různých **RowKey** hodnoty.  
-* [Vzor konečnou konzistenci transakcí](table-storage-design-patterns.md#eventually-consistent-transactions-pattern) -povolit konzistentní chování v rámci hranic oddílů nebo systému hranice úložiště pomocí front Azure.
-* [Index entity vzor](table-storage-design-patterns.md#index-entities-pattern) – Udržujte entity indexu, které umožňují efektivní hledání, které vrací seznam entit.  
-* [Vzor denormalizace](table-storage-design-patterns.md#denormalization-pattern) -kombinování souvisejících dat společně v jedné entitě umožňuje načíst všechna data, je nutné pomocí dotazu jediný bod.  
-* [Vzor data řady](table-storage-design-patterns.md#data-series-pattern) -series kompletní data Store v jedné entity, chcete-li minimalizovat počet požadavků, které provedete.  
+* [Vzor sekundárního indexu uvnitř oddílu](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – uložte více kopií každé entity pomocí různých hodnot **RowKey** (ve stejném oddílu), abyste povolili rychlé a efektivní vyhledávání a alternativní pořadí řazení pomocí různých hodnot **RowKey.**  
+* [Vzor sekundárního indexu mezi oddíly](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – uložte více kopií každé entity pomocí různých hodnot RowKey v samostatných oddílech nebo v samostatných tabulkách, abyste povolili rychlé a efektivní vyhledávání a alternativní pořadí řazení pomocí různých hodnot **RowKey.**  
+* [Nakonec konzistentní transakce vzor](table-storage-design-patterns.md#eventually-consistent-transactions-pattern) – Povolit nakonec konzistentní chování přes hranice oddílu nebo hranice systému úložiště pomocí front Azure.
+* [Vzor entit indexu](table-storage-design-patterns.md#index-entities-pattern) – Udržovat entity indexu, aby bylo možné efektivně vyhledávat, které vracejí seznamy entit.  
+* [Vzor denormalizace](table-storage-design-patterns.md#denormalization-pattern) – zkombinujte související data do jedné entity, abyste mohli načíst všechna data, která potřebujete, pomocí dotazu s jedním bodem.  
+* [Vzor datových řad](table-storage-design-patterns.md#data-series-pattern) – uložte kompletní datové řady do jedné entity, abyste minimalizovali počet požadavků, které provedete.  
 
-Informace o transakcích skupin entit najdete v oddílu [transakce skupin entit](table-storage-design.md#entity-group-transactions).  
+Informace o transakcích skupiny entit naleznete v části [Transakce skupiny entit](table-storage-design.md#entity-group-transactions).  
 
-## <a name="ensure-your-design-for-efficient-modifications-facilitates-efficient-queries"></a>Ujistěte se, že návrh efektivních úprav usnadňuje efektivní dotazy.
-V mnoha případech by měl návrh pro efektivní dotazování výsledků v efektivní úpravy, ale vždy vyhodnoťte, jestli to platí pro váš konkrétní scénář. Některé ze vzorů v [vzorcích návrhu tabulek](table-storage-design-patterns.md) článků explicitně vyhodnocují kompromisy mezi dotazování a úpravou entit a měli byste vždycky vzít v úvahu počet jednotlivých typů operací.  
+## <a name="ensure-your-design-for-efficient-modifications-facilitates-efficient-queries"></a>Ujistěte se, že váš návrh pro efektivní úpravy usnadňuje efektivní dotazy
+V mnoha případech návrh pro efektivní dotazování výsledky efektivní změny, ale vždy byste měli vyhodnotit, zda se jedná o tento případ pro konkrétní scénář. Některé vzory v článku [Návrhy tabulek](table-storage-design-patterns.md) explicitně vyhodnocují kompromisy mezi dotazováním a úpravou entit a vždy byste měli vzít v úvahu počet jednotlivých typů operací.  
 
-V následujících vzorcích jsou [vzory návrhu tabulek](table-storage-design-patterns.md) článků řeší kompromisy mezi návrhem pro efektivní dotazy a návrhem pro efektivní úpravu dat:  
+Následující vzory v článku [Návrhové vzory tabulky](table-storage-design-patterns.md) řeší kompromisy mezi návrhem efektivních dotazů a návrhem pro efektivní úpravy dat:  
 
-* [Vzor složeného klíče](table-storage-design-patterns.md#compound-key-pattern) – pomocí složených hodnot **RowKey** můžete klientovi povolit vyhledávání souvisejících dat pomocí dotazu s jedním bodem.  
-* [Vzor log tail](table-storage-design-patterns.md#log-tail-pattern) – načíst *n* naposledy přidaný do oddílu s použitím entity **RowKey** hodnotu, která seřadí reverzní datum a čas objednávky.  
+* [Vzor složeného klíče](table-storage-design-patterns.md#compound-key-pattern) – Pomocí složených hodnot **RowKey** umožníte klientovi vyhledávat související data pomocí dotazu s jedním bodem.  
+* [Vzor ocasu protokolu](table-storage-design-patterns.md#log-tail-pattern) - načíst *n* entity naposledy přidané do oddílu pomocí **RowKey** hodnotu, která seřadí v obráceném pořadí data a času.  

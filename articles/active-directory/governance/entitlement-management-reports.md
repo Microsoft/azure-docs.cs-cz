@@ -1,9 +1,9 @@
 ---
 title: Zobrazení sestav & protokolů ve správě nároků – Azure AD
-description: Naučte se, jak zobrazit sestavu přiřazení uživatelů a protokoly auditu v Azure Active Directory správu nároků.
+description: Přečtěte si, jak zobrazit sestavu přiřazení uživatelů a protokoly auditování ve správě nároků služby Azure Active Directory.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: jocastel-MSFT
 ms.service: active-directory
@@ -12,103 +12,103 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/28/2019
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c98a583e2aa8ac679842e16d1c0cc36811db90de
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 514f8e86d6bd28cc5212e0f0058f00e270f43e35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79261733"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128418"
 ---
-# <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Zobrazení sestav a protokolů v Azure AD – Správa nároků
+# <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Zobrazení sestav a protokolů ve správě oprávnění Azure AD
 
-Sestavy správy opravňujících k Azure AD a protokolu auditu Azure AD poskytují další podrobnosti o tom, k jakým prostředkům mají uživatelé přístup. Jako správce můžete zobrazit balíčky pro přístup a přiřazení prostředků pro uživatele a zobrazit protokoly žádostí pro účely auditování nebo určit stav požadavku uživatele. Tento článek popisuje, jak používat sestavy správy oprávnění a protokoly auditu Azure AD.
+Sestavy správy nároků Azure AD a protokol auditu Azure AD poskytují další podrobnosti o tom, k jakým prostředkům mají uživatelé přístup. Jako správce můžete zobrazit přístupové balíčky a přiřazení prostředků pro uživatele a zobrazit protokoly požadavků pro účely auditování nebo určit stav požadavku uživatele. Tento článek popisuje, jak používat sestavy správy nároků a protokoly auditu Azure AD.
 
-Podívejte se na následující video, kde se dozvíte, jak zobrazit prostředky, ke kterým mají uživatelé přístup v rámci správy nároků:
+Následující video se dozvíte, jak zobrazit, k jakým prostředkům mají uživatelé při správě nároků přístup:
 
 >[!VIDEO https://www.youtube.com/embed/omtNJ7ySjS0]
 
-## <a name="view-access-packages-for-a-user"></a>Zobrazit balíčky pro přístup pro uživatele
+## <a name="view-access-packages-for-a-user"></a>Zobrazení přístupových balíčků pro uživatele
 
-Tato sestava umožňuje zobrazit seznam všech přístupových balíčků, které může uživatel požadovat, a balíčky pro přístup, které jsou aktuálně přiřazeny uživateli.
+Tato sestava umožňuje vypsat všechny přístupové balíčky, které může uživatel požadovat, a přístupové balíčky, které jsou aktuálně přiřazeny uživateli.
 
-**Požadovaná role:** Globální správce nebo Správce uživatelů
+**Předpokladová role:** Globální správce nebo správce uživatelů
 
-1. Klikněte na **Azure Active Directory** a pak na zásady **správného řízení identity**.
+1. Klikněte na **Azure Active Directory** a potom klikněte na **Zásadsprávné řízení identit .**
 
-1. V nabídce vlevo klikněte na **sestavy**.
+1. V levé nabídce klikněte na **Sestavy**.
 
-1. Klikněte na **přístupové balíčky pro uživatele**.
+1. Klikněte na **položku Přístup k balíčkům pro uživatele**.
 
-1. Kliknutím na **Vybrat uživatele** otevřete podokno vybrat uživatele.
+1. Kliknutím na **Vybrat uživatele** otevřete podokno Vybrat uživatele.
 
-1. Vyhledejte uživatele v seznamu a klikněte na tlačítko **Vybrat**.
+1. Vyhledejte uživatele v seznamu a klepněte na tlačítko **Vybrat**.
 
-    Karta **může vyžadovat** zobrazení seznamu balíčků přístupu, které si uživatel může vyžádat. Tento seznam je určený zásadami pro [žádosti](entitlement-management-access-package-request-policy.md#for-users-in-your-directory) definovanými pro balíčky přístupu. 
+    Na kartě **Může požadovat** zobrazí seznam přístupových balíčků, které může uživatel požadovat. Tento seznam je určen [zásadami požadavků](entitlement-management-access-package-request-policy.md#for-users-in-your-directory) definovanými pro přístupové balíčky. 
 
     ![Přístup k balíčkům pro uživatele](./media/entitlement-management-reports/access-packages-report.png)
 
-1. Pokud existuje více než jedna role nebo zásady prostředků pro balíček přístupu, zobrazí se podrobnosti výběru kliknutím na položku role nebo zásady prostředků.
+1. Pokud existuje více než jednu roli prostředků nebo zásady pro balíček přístupu, klikněte na role prostředků nebo položku zásad zobrazíte podrobnosti výběru.
 
-1. Kliknutím na kartu **přiřazeno** zobrazíte seznam balíčků pro přístup, které jsou aktuálně přiřazeny uživateli. Když se k uživateli přiřadí balíček pro přístup, znamená to, že uživatel má přístup ke všem rolím prostředků v balíčku pro přístup.
+1. Kliknutím na kartu **Přiřazeno** zobrazíte seznam přístupových balíčků aktuálně přiřazených uživateli. Pokud je uživateli přiřazen přístupový balíček, znamená to, že uživatel má přístup ke všem rolím prostředků v balíčku přístupu.
 
-## <a name="view-resource-assignments-for-a-user"></a>Zobrazení přiřazení prostředků pro uživatele
+## <a name="view-resource-assignments-for-a-user"></a>Zobrazení přiřazení zdrojů pro uživatele
 
-Tato sestava umožňuje zobrazit seznam prostředků, které jsou aktuálně přiřazeny uživateli v rámci správy oprávnění. Všimněte si, že tato sestava je určena pro prostředky spravované pomocí správy nároků. Uživatel může mít přístup k jiným prostředkům ve vašem adresáři mimo správu nároků.
+Tato sestava umožňuje vypsat zdroje aktuálně přiřazené uživateli ve správě nároků. Všimněte si, že tato sestava je pro prostředky spravované se správou nároků. Uživatel může mít přístup k jiným prostředkům ve vašem adresáři mimo správu nároků.
 
-**Požadovaná role:** Globální správce nebo Správce uživatelů
+**Předpokladová role:** Globální správce nebo správce uživatelů
 
-1. Klikněte na **Azure Active Directory** a pak na zásady **správného řízení identity**.
+1. Klikněte na **Azure Active Directory** a potom klikněte na **Zásadsprávné řízení identit .**
 
-1. V nabídce vlevo klikněte na **sestavy**.
+1. V levé nabídce klikněte na **Sestavy**.
 
-1. Klikněte na **přiřazení prostředků pro uživatele**.
+1. Klepněte na **položku Přiřazení zdrojů pro uživatele**.
 
-1. Kliknutím na **Vybrat uživatele** otevřete podokno vybrat uživatele.
+1. Kliknutím na **Vybrat uživatele** otevřete podokno Vybrat uživatele.
 
-1. Vyhledejte uživatele v seznamu a klikněte na tlačítko **Vybrat**.
+1. Vyhledejte uživatele v seznamu a klepněte na tlačítko **Vybrat**.
 
-    Zobrazí se seznam prostředků, které jsou aktuálně přiřazeny uživateli. V seznamu se taky zobrazuje balíček pro přístup a zásady, ze kterých se role prostředků dostaly, spolu s počátečním a koncovým datem pro přístup.
+    Zobrazí se seznam zdrojů aktuálně přiřazených uživateli. Seznam také zobrazuje balíček přístupu a zásady, ze kterých získali roli prostředku, spolu s počátečním a koncovým datem pro přístup.
     
-    Pokud má uživatel přístup ke stejnému prostředku ve dvou nebo více balíčcích, můžete kliknutím na šipku zobrazit jednotlivé balíčky a zásady.
+    Pokud uživatel získal přístup ke stejnému prostředku ve dvou nebo více balíčcích, můžete klepnutím na šipku zobrazit každý balíček a zásady.
 
-    ![Přiřazení prostředků pro uživatele](./media/entitlement-management-reports/resource-assignments-report.png)
+    ![Přiřazení zdrojů pro uživatele](./media/entitlement-management-reports/resource-assignments-report.png)
 
 ## <a name="determine-the-status-of-a-users-request"></a>Určení stavu požadavku uživatele
 
-Pokud chcete získat další podrobnosti o tom, jak si uživatel vyžádal a přijal přístup k balíčku přístupu, můžete použít protokol auditu Azure AD. Konkrétně můžete použít záznamy protokolu v kategoriích `EntitlementManagement` a `UserManagement` a získat další podrobnosti o krocích zpracování pro jednotlivé požadavky.  
+Chcete-li získat další podrobnosti o tom, jak uživatel požadoval a přijal přístup k balíčku přístupu, můžete použít protokol auditu Azure AD. Zejména můžete použít záznamy protokolu v `EntitlementManagement` `UserManagement` a kategorie získat další podrobnosti o postupech zpracování pro každý požadavek.  
 
-1. Klikněte na **Azure Active Directory** a pak klikněte na **protokoly auditu**.
+1. Klikněte na **službu Azure Active Directory** a potom na **položku Protokoly auditování**.
 
-1. V horní části změňte **kategorii** na buď `EntitlementManagement` nebo `UserManagement`, v závislosti na záznamu auditu, který hledáte.  
+1. V horní části **Category** změňte kategorii `EntitlementManagement` `UserManagement`na jednu nebo , v závislosti na záznamu auditu, který hledáte.  
 
 1. Klikněte na **Použít**.
 
-1. Chcete-li stáhnout protokoly, klikněte na tlačítko **Stáhnout**.
+1. Chcete-li protokoly stáhnout, klepněte na tlačítko **Stáhnout**.
 
-Když Azure AD obdrží novou žádost, zapíše záznam auditu, ve kterém se **kategorie** `EntitlementManagement` a **aktivita** se obvykle `User requests access package assignment`.  V případě přímého přiřazení vytvořeného v Azure Portal je pole **aktivita** záznamu auditu `Administrator directly assigns user to access package`a uživatel, který provádí přiřazení, je identifikován funkcí **ActorUserPrincipalName**.
+Když Azure AD obdrží nový požadavek, zapíše záznam auditu, ve kterém `User requests access package assignment`je `EntitlementManagement` **kategorie** a **aktivita** je obvykle .  V případě přímého přiřazení vytvořeného na portálu Azure je `Administrator directly assigns user to access package`pole **Aktivita** záznamu auditu a uživatel provádějící přiřazení je identifikován **actoruserprincipalname**.
 
-Služba Azure AD bude během žádosti zapisovat další záznamy auditu, včetně:
+Azure AD bude psát další záznamy auditu, zatímco žádost probíhá, včetně:
 
-| Kategorie | Aktivita | Stav žádosti |
+| Kategorie | Aktivita | Stav požadavku |
 | :---- | :------------ | :------------ |
-| `EntitlementManagement` | `Auto approve access package assignment request` | Požadavek nevyžaduje schválení. |
-| `UserManagement` | `Create request approval` | Požadavek vyžaduje schválení. |
-| `UserManagement` | `Add approver to request approval` | Požadavek vyžaduje schválení. |
+| `EntitlementManagement` | `Auto approve access package assignment request` | Požadavek nevyžaduje schválení |
+| `UserManagement` | `Create request approval` | Žádost vyžaduje schválení |
+| `UserManagement` | `Add approver to request approval` | Žádost vyžaduje schválení |
 | `EntitlementManagement` | `Approve access package assignment request` | Žádost schválena |
 | `EntitlementManagement` | `Ready to fulfill access package assignment request` |Žádost schválena nebo nevyžaduje schválení |
 
-Když se uživateli přiřadí přístup, služba Azure AD zapíše záznam auditu pro kategorii `EntitlementManagement` s `Fulfill access package assignment`**aktivity** .  Uživatel, který obdržel přístup, identifikuje pole **ActorUserPrincipalName** .
+Když je uživateli přiřazen přístup, Azure AD `EntitlementManagement` zapíše záznam auditu pro kategorii s **aktivitou** `Fulfill access package assignment`.  Uživatel, který obdržel přístup, je identifikován polem **ActorUserPrincipalName.**
 
-Pokud se přístup nepřiřadil, služba Azure AD zapíše záznam auditu pro `EntitlementManagement` kategorii s **aktivitou** `Deny access package assignment request`, pokud byl požadavek zamítnutý schvalovatelem nebo `Access package assignment request timed out (no approver action taken)`, pokud vypršel časový limit žádosti, než Schvalovatel schválí.
+Pokud přístup nebyl přiřazen, pak Azure AD `EntitlementManagement` zapíše záznam `Deny access package assignment request`auditu pro kategorii s **aktivitou** `Access package assignment request timed out (no approver action taken)`buď, pokud byl požadavek zamítnut schvalovatelem, nebo , pokud časový čas požadavku před schvalovatel mohl schválit.
 
-Když platnost přiřazení balíčku přístupu uživatele vyprší, zruší ho uživatel nebo ho odebral správce, služba Azure AD zapíše záznam auditu pro kategorii `EntitlementManagement` s **aktivitou** `Remove access package assignment`.
+Když vyprší přiřazení balíčku přístupu uživatele, je zrušena uživatelem nebo odebrána správcem, pak Azure `EntitlementManagement` AD zapíše `Remove access package assignment`záznam auditu pro kategorii s **Activity** of .
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Archivace sestav a protokolů](entitlement-management-logs-and-reporting.md)
-- [Řešení potíží se správou nároků Azure AD](entitlement-management-troubleshoot.md)
+- [Archivovat sestavy a protokoly](entitlement-management-logs-and-reporting.md)
+- [Poradce při potížích se správou nároků Azure AD](entitlement-management-troubleshoot.md)
 - [Obvyklé scénáře](entitlement-management-scenarios.md)

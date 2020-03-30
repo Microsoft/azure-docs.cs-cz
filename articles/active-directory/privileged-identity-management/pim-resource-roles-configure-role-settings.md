@@ -1,6 +1,6 @@
 ---
-title: Konfigurace nastavení role prostředků Azure v PIM – Azure AD | Microsoft Docs
-description: Přečtěte si, jak nakonfigurovat nastavení role prostředků Azure v Azure AD Privileged Identity Management (PIM).
+title: Konfigurace nastavení role prostředků Azure v PIM – Azure AD | Dokumenty společnosti Microsoft
+description: Zjistěte, jak nakonfigurovat nastavení role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,126 +16,126 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4db330a875b8241b642bcbc71fb0866c9833ee7e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75638676"
 ---
-# <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role prostředků Azure v Privileged Identity Management
+# <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role prostředků Azure ve správě privilegovaných identit
 
-Při konfiguraci nastavení role prostředku Azure definujete výchozí nastavení, která se aplikují na přiřazení rolí prostředků Azure v Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Pomocí následujících postupů můžete nakonfigurovat pracovní postup schvalování a určit, kdo může žádosti schvalovat nebo zamítnout.
+Při konfiguraci nastavení role prostředků Azure definujete výchozí nastavení, která se použijí na přiřazení rolí prostředků Azure ve službě Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Pomocí následujících postupů nakonfigurujte pracovní postup schválení a určete, kdo může schválit nebo odepřít žádosti.
 
 ## <a name="open-role-settings"></a>Otevřít nastavení role
 
-Pomocí těchto kroků otevřete nastavení pro roli prostředku Azure.
+Podle těchto kroků otevřete nastavení role prostředků Azure.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. Přihlaste se na [portál Azure](https://portal.azure.com/) s uživatelem v roli [Správce privilegovaných rolí.](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
-1. Otevřete **Azure AD Privileged Identity Management**.
+1. Otevřete **správu privilegovaných identit Azure AD**.
 
 1. Vyberte **prostředky Azure**.
 
-1. Vyberte prostředek, který chcete spravovat, jako je například předplatné nebo skupina pro správu.
+1. Vyberte prostředek, který chcete spravovat, například předplatné nebo skupinu pro správu.
 
-    ![Prostředky Azure stránka výpisu prostředků, které se dají spravovat](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![Stránka prostředků Azure se seznamem prostředků, které se dá spravovat](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-1. Vyberte **Nastavení role**.
+1. Vyberte **nastavení role**.
 
-    ![Stránka nastavení role výpis rolí prostředků Azure](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Stránka nastavení role se seznamem rolí prostředků Azure](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
-1. Vyberte roli, jejíž nastavení chcete nakonfigurovat.
+1. Vyberte roli, jejíž nastavení chcete konfigurovat.
 
-    ![Stránka s podrobnostmi nastavení role – seznam několika přiřazení a nastavení aktivace](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![Stránka podrobností o nastavení role se seznamem několika nastavení přiřazení a aktivace](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. Výběrem možnosti **Upravit** otevřete podokno **Nastavení role** . První karta vám umožní aktualizovat konfiguraci pro aktivaci rolí v Privileged Identity Management.
+1. Vyberte **Upravit,** chcete-li otevřít podokno **Nastavení role.** První karta umožňuje aktualizovat konfiguraci pro aktivaci role v privilegované správě identit.
 
-    ![Stránka upravit nastavení role s otevřenou kartou aktivace](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
+    ![Upravit stránku nastavení role s otevřenou kartou Aktivace](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
 
-1. Vyberte kartu **přiřazení** nebo tlačítko **Další: přiřazení** v dolní části stránky a otevřete tak kartu Nastavení přiřazení. Tato nastavení řídí přiřazení rolí v rozhraní Privileged Identity Management.
+1. Vyberte kartu **Přiřazení** nebo **Tlačítko Další: Přiřazení** v dolní části stránky a otevřete kartu nastavení úlohy. Tato nastavení řídí přiřazení rolí provedená v rozhraní Správy privilegovaných identit.
 
-    ![Karta přiřazení role na stránce nastavení role](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
+    ![Karta Přiřazení role na stránce nastavení role](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
 
-1. Použijte kartu **oznámení** nebo tlačítko **Další: Aktivace** v dolní části stránky, abyste se dostali na kartu nastavení oznámení pro tuto roli. Tato nastavení řídí všechna e-mailová oznámení týkající se této role.
+1. Pomocí karty **Oznámení** nebo **Tlačítka Další: Aktivace** v dolní části stránky se dostanete na kartu nastavení oznámení pro tuto roli. Tato nastavení řídí všechna e-mailová oznámení související s touto rolí.
 
-    ![Karta oznámení role na stránce nastavení role](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+    ![Karta Oznámení rolí na stránce Nastavení rolí](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
 
-    Na kartě **oznámení** na stránce nastavení role Privileged Identity Management umožňuje detailní kontrolu nad tím, kdo obdrží oznámení a která oznámení obdrží.
+    Na kartě **Oznámení** na stránce Nastavení rolí umožňuje správa privilegovaných identit podrobnou kontrolu nad tím, kdo přijímá oznámení a jaká oznámení obdrží.
 
-    - **Vypnutí e-mailu**<br>Konkrétní e-maily můžete vypnout zrušením zaškrtnutí políčka Výchozí příjemce a odstraněním dalších příjemců.  
+    - **Vypnutí e-mailu**<br>Konkrétní e-maily můžete vypnout zrušením zaškrtnutí výchozího políčka příjemce a odstraněním dalších příjemců.  
 
-    - **Omezit e-maily na zadané e-mailové adresy**<br>E-maily odeslané výchozím příjemcům můžete vypnout zrušením zaškrtnutí políčka Výchozí příjemce. Pak můžete přidat další e-mailové adresy jako další příjemce. Chcete-li přidat více než jednu e-mailovou adresu, oddělte je středníkem (;).
+    - **Omezení e-mailů na zadané e-mailové adresy**<br>E-maily odeslané výchozím příjemcům můžete vypnout zrušením zaškrtnutí políčka výchozího příjemce. Jako další příjemce pak můžete přidat další e-mailové adresy. Pokud chcete přidat více než jednu e-mailovou adresu, oddělte je pomocí středníku (;).
 
-    - **Posílat e-maily oběma výchozím příjemcům a dalším příjemcům**<br>E-maily můžete odesílat jak výchozímu příjemci, tak i dalšímu příjemci. stačí zaškrtnout políčko výchozí příjemce a přidat e-mailové adresy pro další příjemce.
+    - **Odesílání e-mailů výchozím i dalším příjemcům**<br>E-maily můžete odesílat jak výchozímu příjemci, tak dalšímu příjemci, zaškrtnutím políčka výchozího příjemce a přidáním e-mailových adres pro další příjemce.
 
-    - **Jenom kritické e-maily**<br>Pro každý typ e-mailu můžete zaškrtnout políčko pro příjem pouze důležitých e-mailů. To znamená, že Privileged Identity Management bude dál posílat e-maily nakonfigurovaným příjemcům jenom v případě, že e-mail vyžaduje okamžitou akci. Například e-maily požadující uživatele, aby rozšířili přiřazení role, se nebudou aktivovat, zatímco budou aktivovány e-maily vyžadující správcům schválení žádosti o rozšíření.
+    - **Pouze kritické e-maily**<br>U každého typu e-mailu můžete zaškrtnout políčko pro příjem pouze kritických e-mailů. To znamená, že správa privilegovaných identit bude nadále odesílat e-maily nakonfigurovaným příjemcům pouze v případě, že e-mail vyžaduje okamžitou akci. Například e-maily s žádostí o rozšíření přiřazení role se nespustí, zatímco se spustí e-maily vyžadující, aby správci schválili žádost o rozšíření.
 
-1. Pokud chcete aktualizovat nastavení role, vyberte tlačítko **aktualizovat** .
+1. Kdykoli vyberte tlačítko **Aktualizovat** a aktualizujte nastavení role.
 
 ## <a name="assignment-duration"></a>Doba trvání přiřazení
 
-Při konfiguraci nastavení role můžete vybrat ze dvou možností trvání přiřazení pro každý typ přiřazení (způsobilé a aktivní). Tyto možnosti se stanou výchozím maximálním trváním, když je uživatel přiřazen k roli v Privileged Identity Management.
+Při konfiguraci nastavení role můžete vybrat ze dvou možností doby trvání přiřazení pro každý typ přiřazení (způsobilý a aktivní). Tyto možnosti se stanou výchozí maximální dobou trvání, pokud je uživatel přiřazen k roli ve správě privilegovaných identit.
 
-Můžete vybrat jednu z následujících možností trvání přiřazení s **nárokem** :
-
-| | |
-| --- | --- |
-| **Povolení trvalého oprávněného přiřazení** | Správci prostředků mohou přiřadit trvalé oprávněné přiřazení. |
-| **Vypršení platnosti oprávněného přiřazení** | Správci prostředků mohou vyžadovat, aby u všech oprávněných přiřazení bylo zadané počáteční a koncové datum. |
-
-A můžete zvolit jednu z těchto **aktivních** možností trvání přiřazení:
+Můžete zvolit jednu z těchto **možností způsobilé** doby trvání přiřazení:
 
 | | |
 | --- | --- |
-| **Povoluje trvalé aktivní přiřazení** | Správci prostředků mohou přiřadit trvalé aktivní přiřazení. |
-| **Po vypršení platnosti aktivního přiřazení** | Správci prostředků mohou vyžadovat, aby u všech aktivních přiřazení bylo zadané počáteční a koncové datum. |
+| **Povolit trvalé způsobilé přiřazení** | Správci prostředků mohou přiřadit trvalé způsobilé přiřazení. |
+| **Vypršet platnost způsobilého přiřazení po** | Správci prostředků mohou vyžadovat, aby všechna způsobilá přiřazení měla zadané počáteční a koncové datum. |
+
+A můžete zvolit jednu z těchto **aktivních** možností doby trvání přiřazení:
+
+| | |
+| --- | --- |
+| **Povolit trvalé aktivní přiřazení** | Správci prostředků mohou přiřadit trvalé aktivní přiřazení. |
+| **Vyprší platnost aktivního přiřazení po** | Správci prostředků mohou vyžadovat, aby všechna aktivní přiřazení měla zadané počáteční a koncové datum. |
 
 > [!NOTE]
-> Všechna přiřazení, která mají zadané koncové datum, může obnovit správci prostředků. Uživatelé můžou taky iniciovat žádosti samoobslužné služby a [prodloužit nebo prodloužit přiřazení rolí](pim-resource-roles-renew-extend.md).
+> Všechna přiřazení, která mají zadané koncové datum, mohou být obnovena správci prostředků. Uživatelé mohou také iniciovat samoobslužné požadavky na [rozšíření nebo obnovení přiřazení rolí](pim-resource-roles-renew-extend.md).
 
-## <a name="require-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication
+## <a name="require-multi-factor-authentication"></a>Vyžadovat vícefaktorové ověřování
 
-Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure pro dva různé scénáře.
+Správa privilegovaných identit poskytuje volitelné vynucení vícefaktorového ověřování Azure pro dva odlišné scénáře.
 
-### <a name="require-multi-factor-authentication-on-active-assignment"></a>Vyžadovat Multi-Factor Authentication aktivnímu přiřazení
+### <a name="require-multi-factor-authentication-on-active-assignment"></a>Vyžadovat vícefaktorové ověřování při aktivním přiřazení
 
-V některých případech můžete chtít přiřadit uživatele nebo skupinu do role po krátkou dobu (například jeden den). V takovém případě nemusíte přiřazeným uživatelům požádat o aktivaci. V tomto scénáři Privileged Identity Management nemůžou vymáhat ověřování službou Multi-Factor Authentication, pokud uživatel použije přiřazení role, protože už je v roli aktivní od okamžiku, kdy je přiřazený.
+V některých případech můžete chtít přiřadit uživatele nebo skupinu k roli na krátkou dobu (například jeden den). V takovém případě přiřazení uživatelé nemusí žádat o aktivaci. V tomto scénáři správa privilegovaných identit nemůže vynutit vícefaktorové ověřování, když uživatel používá přiřazení role, protože jsou již aktivní v roli od okamžiku, kdy je přiřazena.
 
-Chcete-li zajistit, že správce prostředků, který odpovídá přiřazení, říká, že jsou k němu přihlášeni, můžete vynutit vícefaktorové ověřování u aktivního přiřazení zaškrtnutím políčka **vyžadovat Multi-Factor Authentication v aktivním přiřazení** .
+Chcete-li zajistit, aby správce prostředků, který úkol plní, byl tím, kým se podle nich je, můžete vynutit vícefaktorové ověřování při aktivním přiřazení zaškrtnutím políčka **Vyžadovat vícefaktorové ověřování u aktivního přiřazení.**
 
-### <a name="require-multi-factor-authentication-on-activation"></a>Při aktivaci vyžadovat vícefaktorové ověřování
+### <a name="require-multi-factor-authentication-on-activation"></a>Vyžadovat vícefaktorové ověřování při aktivaci
 
-Můžete vyžadovat, aby uživatelé, kteří mají nárok na roli, prokázali, že používají Multi-Factor Authentication Azure, než se můžou aktivovat. Multi-Factor Authentication zajišťuje uživatelům, kteří říkají, že mají rozumnou jistotu. Vynucování této možnosti chrání kritické prostředky v situacích, kdy může dojít k ohrožení uživatelského účtu.
+Můžete vyžadovat, aby uživatelé, kteří mají nárok na roli, před aktivací prokázali, kdo používají Azure Multi-Factor Authentication. Vícefaktorové ověřování zajišťuje, že uživatel je tím, za koho se s přiměřenou jistotou jedná. Vynucení této možnosti chrání kritické prostředky v situacích, kdy uživatelský účet mohl být ohrožen.
 
-Chcete-li před aktivací vyžadovat službu Multi-Factor Authentication, zaškrtněte políčko **vyžadovat Multi-Factor Authentication při aktivaci** .
+Chcete-li před aktivací vyžadovat vícefaktorové ověřování, zaškrtněte políčko **Vyžadovat vícefaktorové ověřování při aktivaci.**
 
-Další informace naleznete v tématu [Multi-Factor Authentication a Privileged Identity Management](pim-how-to-require-mfa.md).
+Další informace naleznete [v tématu Vícefaktorové ověřování a Správa privilegovaných identit](pim-how-to-require-mfa.md).
 
 ## <a name="activation-maximum-duration"></a>Maximální doba trvání aktivace
 
-Pomocí posuvníku **maximální doby trvání aktivace** můžete nastavit maximální dobu v hodinách, po kterou role zůstane aktivní, než vyprší její platnost. Tato hodnota může být od 1 do 24 hodin.
+Pomocí jezdce **Maximální doba trvání aktivace** nastavte maximální dobu v hodinách, po kterou zůstane role aktivní, než vyprší její platnost. Tato hodnota může být od jedné do 24 hodin.
 
 ## <a name="require-justification"></a>Vyžadovat odůvodnění
 
-Můžete vyžadovat, aby uživatelé při aktivaci zadali obchodní odůvodnění. Chcete-li vyžadovat odůvodnění, zaškrtněte políčko **vyžadovat odůvodnění u aktivního přiřazení** nebo políčko **vyžadovat odůvodnění při aktivaci** .
+Můžete požadovat, aby uživatelé při aktivaci zadali obchodní odůvodnění. Chcete-li vyžadovat zarovnání, zaškrtněte políčko **Vyžadovat zarovnání aktivního přiřazení** nebo **Vyžadovat zarovnání při aktivaci.**
 
-## <a name="require-approval-to-activate"></a>Vyžadovat schválení pro aktivaci
+## <a name="require-approval-to-activate"></a>Vyžadovat schválení aktivace
 
-Pokud chcete pro aktivaci role vyžadovat schválení, postupujte podle těchto kroků.
+Pokud chcete k aktivaci role vyžadovat schválení, postupujte takto.
 
-1. Zaškrtněte políčko **vyžadovat schválení k aktivaci** .
+1. Zaškrtněte políčko **Vyžadovat schválení pro aktivaci.**
 
-1. Vyberte **Vybrat schvalovatelé** a otevřete stránku **Vybrat člen nebo skupinu** .
+1. Výběrem **možnosti Vybrat schvalovatele** otevřete **stránku Vybrat člena nebo skupinu.**
 
-    ![Vyberte uživatele nebo podokno skupiny pro výběr schvalovatelů.](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![Výběr emisi nebo podokna skupiny pro výběr schvalovatelů](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. Vyberte aspoň jednoho uživatele nebo skupinu a potom klikněte na **Vybrat**. Můžete přidat libovolnou kombinaci uživatelů a skupin. Musíte vybrat aspoň jednoho schvalovatele. Neexistují žádní výchozí schvalovatelé.
+1. Vyberte alespoň jednoho uživatele nebo skupinu a klepněte na tlačítko **Vybrat**. Můžete přidat libovolnou kombinaci uživatelů a skupin. Je nutné vybrat alespoň jednoho schvalovatele. Neexistují žádní výchozí schvalovatelé.
 
     Vaše výběry se zobrazí v seznamu vybraných schvalovatelů.
 
-1. Po zadání všech nastavení role vyberte **aktualizovat** , aby se změny uložily.
+1. Jakmile zadáte všechna nastavení role, vyberte **Aktualizovat a** uložte změny.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přiřazení rolí prostředků Azure v Privileged Identity Management](pim-resource-roles-assign-roles.md)
-- [Konfigurace výstrah zabezpečení pro role prostředků Azure v Privileged Identity Management](pim-resource-roles-configure-alerts.md)
+- [Přiřazení rolí prostředků Azure ve správě privilegovaných identit](pim-resource-roles-assign-roles.md)
+- [Konfigurace výstrah zabezpečení pro role prostředků Azure ve správě privilegovaných identit](pim-resource-roles-configure-alerts.md)

@@ -1,6 +1,6 @@
 ---
-title: Otevření portů k virtuálnímu počítači pomocí Azure PowerShell
-description: Přečtěte si, jak otevřít port/vytvořit koncový bod pro virtuální počítač s Windows pomocí režimu nasazení Azure Resource Manager a Azure PowerShell
+title: Otevření portů k virtuálnímu počítači pomocí Azure PowerShellu
+description: Zjistěte, jak otevřít port nebo vytvořit koncový bod pro virtuální počítač s Windows pomocí režimu nasazení Správce prostředků Azure a Azure PowerShellu
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.openlocfilehash: 547ca9c98d77b2aaa6d3630bff4b2ec10dcc5be0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75754166"
 ---
-# <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Postup otevření portů a koncových bodů pro virtuální počítač v Azure pomocí PowerShellu
+# <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Jak otevřít porty a koncové body k virtuálnímu počítači v Azure pomocí PowerShellu
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>Rychlé příkazy
-K vytvoření skupiny zabezpečení sítě a pravidel seznamu ACL potřebujete [nejnovější verzi Azure PowerShell nainstalovanou](/powershell/azureps-cmdlets-docs). [Tyto kroky můžete provést také pomocí Azure Portal](nsg-quickstart-portal.md).
+Chcete-li vytvořit skupinu zabezpečení sítě a pravidla acl, potřebujete [nainstalovanou nejnovější verzi prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs). Tyto kroky můžete provést také [pomocí portálu Azure](nsg-quickstart-portal.md).
 
 Přihlaste se ke svému účtu Azure:
 
@@ -32,9 +32,9 @@ Přihlaste se ke svému účtu Azure:
 Connect-AzAccount
 ```
 
-V následujících příkladech nahraďte názvy parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují *myResourceGroup*, *myNetworkSecurityGroup*a *myVnet*.
+V následujících příkladech nahraďte názvy parametrů vlastními hodnotami. Mezi příklady názvů parametrů patřily *myResourceGroup*, *myNetworkSecurityGroup*a *myVnet*.
 
-Vytvořte pravidlo pomocí [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig). Následující příklad vytvoří pravidlo s názvem *myNetworkSecurityGroupRule* , které povoluje přenosy *tcp* na portu *80*:
+Vytvořte pravidlo pomocí [funkce New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig). Následující příklad vytvoří pravidlo s názvem *myNetworkSecurityGroupRule,* které povolí přenos *protokolu TCP* na portu *80*:
 
 ```powershell
 $httprule = New-AzNetworkSecurityRuleConfig `
@@ -50,7 +50,7 @@ $httprule = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-Dále vytvořte skupinu zabezpečení sítě pomocí příkazu [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) a přiřaďte právě vytvořené pravidlo protokolu HTTP následujícím způsobem. Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup*:
+Dále vytvořte skupinu zabezpečení sítě pomocí [skupiny New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) a přiřaďte právě vytvořené pravidlo HTTP následujícím způsobem. Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup*:
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `
@@ -60,7 +60,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-Teď k podsíti přiřadíme skupinu zabezpečení sítě. Následující příklad přiřadí existující virtuální síť s názvem *myVnet* k proměnné *$VNet* pomocí [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork):
+Nyní přiřazujeme skupinu zabezpečení sítě k podsíti. Následující příklad přiřadí existující virtuální síť s názvem *myVnet* proměnné *$vnet* s [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork):
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -68,7 +68,7 @@ $vnet = Get-AzVirtualNetwork `
     -Name "myVnet"
 ```
 
-Přidružte skupinu zabezpečení sítě k vaší podsíti pomocí [set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig). Následující příklad přidruží podsíť s názvem *mySubnet* ke skupině zabezpečení sítě:
+Přidružte skupinu zabezpečení sítě k podsíti k [programu Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig). Následující příklad přidruží podsíť s názvem *mySubnet* ke skupině zabezpečení sítě:
 
 ```powershell
 $subnetPrefix = $vnet.Subnets|?{$_.Name -eq 'mySubnet'}
@@ -80,7 +80,7 @@ Set-AzVirtualNetworkSubnetConfig `
     -NetworkSecurityGroup $nsg
 ```
 
-Nakonec aktualizujte svou virtuální síť pomocí [set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) , aby se provedené změny projevily:
+Nakonec aktualizujte virtuální síť pomocí [programu Set-AzVirtualNetwork,](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) aby se změny projevily:
 
 ```powershell
 Set-AzVirtualNetwork -VirtualNetwork $vnet
@@ -88,14 +88,14 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 
 ## <a name="more-information-on-network-security-groups"></a>Další informace o skupinách zabezpečení sítě
-Rychlé příkazy, které vám pomůžou začít pracovat s přenosem dat do virtuálního počítače. Skupiny zabezpečení sítě poskytují mnoho skvělých funkcí a členitosti pro řízení přístupu k vašim prostředkům. Tady si můžete přečíst další informace o [vytváření skupin zabezpečení sítě a pravidel seznamu ACL](tutorial-virtual-network.md#secure-network-traffic).
+Rychlé příkazy zde umožňují vstát a spustit s provozem proudícím do virtuálního počítače. Skupiny zabezpečení sítě poskytují mnoho skvělých funkcí a rozlišovací schopnost pro řízení přístupu k prostředkům. Další informace o [vytváření skupiny zabezpečení sítě a pravidel seznamu Řízení přístupu](tutorial-virtual-network.md#secure-network-traffic)naleznete zde .
 
-Pro webové aplikace s vysokou dostupností byste měli své virtuální počítače umístit za Azure Load Balancer. Nástroj pro vyrovnávání zatížení distribuuje provoz do virtuálních počítačů pomocí skupiny zabezpečení sítě, která poskytuje filtrování přenosů. Další informace najdete v tématu [Postup při vyrovnávání zatížení virtuálních počítačů se systémem Linux v Azure za účelem vytvoření vysoce dostupné aplikace](tutorial-load-balancer.md).
+Pro vysoce dostupné webové aplikace byste měli umístit virtuální počítače za Azure Balancer. Správce načítání distribuuje provoz do virtuálních pozemních disponujících pomocí skupiny zabezpečení sítě, která poskytuje filtrování provozu. Další informace najdete v tématu [Jak vyrovnat vyrovnávání zatížení virtuálních počítačů Linuxu v Azure k vytvoření vysoce dostupné aplikace](tutorial-load-balancer.md).
 
 ## <a name="next-steps"></a>Další kroky
-V tomto příkladu jste vytvořili jednoduché pravidlo pro povolení přenosů HTTP. Informace o vytváření podrobnějších prostředí najdete v následujících článcích:
+V tomto příkladu jste vytvořili jednoduché pravidlo umožňující přenos http. Informace o vytváření podrobnějších prostředí naleznete v následujících článcích:
 
-* [Přehled Azure Resource Manageru](../../azure-resource-manager/management/overview.md)
+* [Přehled Správce prostředků Azure](../../azure-resource-manager/management/overview.md)
 * [Co je skupina zabezpečení sítě?](../../virtual-network/security-overview.md)
-* [Přehled Azure Load Balancer](../../load-balancer/load-balancer-overview.md)
+* [Přehled nástroje pro vyrovnávání zatížení Azure](../../load-balancer/load-balancer-overview.md)
 

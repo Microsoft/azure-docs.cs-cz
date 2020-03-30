@@ -1,6 +1,6 @@
 ---
-title: Transformace XML s mapami XSLT
-description: Přidat mapy XSLT pro transformaci XML v Azure Logic Apps pomocí Enterprise Integration Pack
+title: Transformace XML pomocí map XSLT
+description: Přidání map XSLT pro transformaci XML v aplikacích Azure Logic Apps pomocí sady Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,218 +9,218 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979413"
 ---
-# <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformuje XML pomocí map v Azure Logic Apps s Enterprise Integration Pack
+# <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformace XML s využitím map v Azure Logic Apps s rozšířením Enterprise Integration Pack
 
-Pro přenos dat XML mezi formáty pro scénáře podnikové integrace v Azure Logic Apps může vaše aplikace logiky používat mapy, nebo konkrétně mapy XSLT (Extensible Style Language Transformations). Mapa je dokument XML, který popisuje, jak převést data z dokumentu XML do jiného formátu. 
+Chcete-li přenášet data XML mezi formáty pro scénáře podnikové integrace v Azure Logic Apps, vaše aplikace logiky můžete použít mapy nebo přesněji rozšiřitelné transformace šablony stylů (XSLT) mapy. Mapa je dokument XML, který popisuje, jak převést data z dokumentu XML do jiného formátu. 
 
-Předpokládejme například, že pravidelně dostanete objednávky B2B nebo faktury od zákazníka, který používá formát data YYYMMDD. Vaše organizace ale používá formát data MMDDYYY. Můžete definovat a použít mapu, která transformuje formát data YYYMMDD na formát MMDDYYY před uložením podrobností o objednávce nebo faktuře do vaší databáze aktivity zákazníka.
+Předpokládejme například, že pravidelně přijímáte objednávky B2B nebo faktury od zákazníka, který používá formát data YYYMMDDD. Vaše organizace však používá formát data MMDDYYY. Před uložením podrobností o objednávce nebo faktuře do databáze aktivit zákazníků můžete definovat a použít mapu, která transformuje formát data YYYMMDDD na formát MMDDYYY.
 
-Omezení související s integračními účty a artefakty, jako jsou mapy, najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
+Omezení související s účty integrace a artefakty, jako jsou mapy, najdete [v tématu omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* [Účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , kam ukládáte své mapy a další artefakty pro podnikovou integraci a řešení B2B (Business-to-Business).
+* [Účet integrace,](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) ve kterém ukládáte mapy a další artefakty pro podnikovou integraci a řešení B2B (business-to-business).
 
-* Pokud vaše mapa odkazuje na externí sestavení, je nutné nahrát *sestavení i mapu* do svého účtu pro integraci. [*Nejprve nahrajte sestavení*](#add-assembly)a poté nahrajte mapu, která na sestavení odkazuje.
+* Pokud vaše mapa odkazuje na externí sestavení, musíte nahrát *sestavení i mapu* do účtu integrace. Ujistěte se, že [*nejprve nahrajete sestavení*](#add-assembly)a pak nahrajete mapu, která odkazuje na sestavení.
 
-  Pokud je vaše sestavení 2 MB nebo menší, můžete přidat sestavení k účtu integrace *přímo* z Azure Portal. Pokud je však sestavení nebo mapa větší než 2 MB, ale není větší než [omezení velikosti pro sestavení nebo mapy](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits), máte tyto možnosti:
+  Pokud je vaše sestavení 2 MB nebo menší, můžete přidat sestavení do účtu integrace *přímo* z portálu Azure. Pokud je však vaše sestava nebo mapa větší než 2 MB, ale není větší než [limit velikosti pro sestavení nebo mapy](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits), máte tyto možnosti:
 
-  * Pro sestavení potřebujete kontejner objektů blob Azure, kde můžete nahrát sestavení a umístění tohoto kontejneru. Tímto způsobem můžete toto umístění poskytnout později po přidání sestavení do účtu pro integraci. 
-  Pro tento úkol budete potřebovat tyto položky:
+  * Pro sestavení potřebujete kontejner objektů blob Azure, kde můžete nahrát sestavení a umístění tohoto kontejneru. Tímto způsobem můžete zadat toto umístění později při přidání sestavení do účtu integrace. 
+  Pro tento úkol potřebujete tyto položky:
 
     | Položka | Popis |
     |------|-------------|
-    | [Účet služby Azure Storage](../storage/common/storage-account-overview.md) | V tomto účtu vytvořte kontejner objektů BLOB v Azure pro vaše sestavení. Naučte [se vytvořit účet úložiště](../storage/common/storage-account-create.md). |
-    | Kontejner objektů blob | V tomto kontejneru můžete nahrát sestavení. Toto umístění kontejneru budete potřebovat také při přidávání sestavení do účtu pro integraci. Přečtěte si, jak [vytvořit kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md). |
-    | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Tento nástroj vám pomůže snadněji spravovat účty úložiště a kontejnery objektů BLOB. Chcete-li použít Průzkumník služby Storage, buď [Stáhněte a nainstalujte Průzkumník služby Azure Storage](https://www.storageexplorer.com/). Potom připojte Průzkumník služby Storage k účtu úložiště podle kroků uvedených v části [Začínáme s Průzkumník služby Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md). Další informace najdete v tématu [rychlý Start: vytvoření objektu BLOB v úložišti objektů pomocí Průzkumník služby Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Nebo v Azure Portal vyhledejte a vyberte svůj účet úložiště. V nabídce účtu úložiště vyberte **Průzkumník služby Storage**. |
+    | [Účet služby Azure Storage](../storage/common/storage-account-overview.md) | V tomto účtu vytvořte kontejner objektů blob Azure pro vaše sestavení. Přečtěte [si, jak vytvořit účet úložiště](../storage/common/storage-account-create.md). |
+    | Kontejner objektů blob | V tomto kontejneru můžete nahrát sestavení. Potřebujete také umístění tohoto kontejneru při přidání sestavení do účtu integrace. Přečtěte si, jak [vytvořit kontejner objektů blob](../storage/blobs/storage-quickstart-blobs-portal.md). |
+    | [Průzkumník úložišť Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Tento nástroj vám pomůže snadněji spravovat účty úložiště a kontejnery objektů blob. Pokud chcete použít Průzkumníka úložiště, [stáhněte a nainstalujte Azure Storage Explorer](https://www.storageexplorer.com/). Potom připojte Průzkumníka úložiště ke svému účtu úložiště podle kroků v [části Začínáme s Průzkumníkem úložiště](../vs-azure-tools-storage-manage-with-storage-explorer.md). Další informace najdete [v tématu Úvodní příručka: Vytvoření objektu blob v úložišti objektů pomocí Průzkumníka úložiště Azure](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Nebo na webu Azure Portal najděte a vyberte svůj účet úložiště. V nabídce účtu úložiště vyberte **Průzkumník a ukládání dat**. |
     |||
 
-  * U map můžete v současnosti přidat větší mapy pomocí [Azure Logic Apps REST API Maps](https://docs.microsoft.com/rest/api/logic/maps/createorupdate).
+  * Pro mapy můžete aktuálně přidat větší mapy pomocí [rozhraní AZURE Logic Apps REST API - Mapy](https://docs.microsoft.com/rest/api/logic/maps/createorupdate).
 
-Při vytváření a přidávání map nepotřebujete aplikaci logiky. Pokud ale chcete použít mapu, vaše aplikace logiky potřebuje propojit s integračním účtem, kam tuto mapu ukládáte. Přečtěte si, [Jak propojit Logic Apps s účty pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Pokud ještě nemáte aplikaci logiky, přečtěte si, [jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Při vytváření a přidávání map nepotřebujete aplikaci logiky. Chcete-li však použít mapu, aplikace logiky potřebuje propojení s účtem integrace, kde tuto mapu uložíte. Přečtěte [si, jak propojit aplikace logiky s účty integrace](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Pokud ještě nemáte aplikaci logiky, přečtěte si, [jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="add-assembly"></a>
 
-## <a name="add-referenced-assemblies"></a>Přidat odkazovaná sestavení
+## <a name="add-referenced-assemblies"></a>Přidání odkazovaných sestav
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
 
-1. Pokud chcete najít a otevřít účet pro integraci, v hlavní nabídce Azure vyberte **všechny služby**. 
-   Do vyhledávacího pole zadejte "účet pro integraci". 
-   Vyberte **účty pro integraci**.
+1. Pokud chcete najít a otevřít účet integrace, v hlavní nabídce Azure vyberte **Všechny služby**. 
+   Do vyhledávacího pole zadejte "účet integrace". 
+   Vyberte **integrační účty**.
 
-   ![Najít účet pro integraci](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
+   ![Najít účet integrace](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
 
-1. Vyberte účet pro integraci, do kterého chcete přidat sestavení, například:
+1. Vyberte účet integrace, do kterého chcete přidat sestavení, například:
 
-   ![Vybrat účet pro integraci](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
+   ![Vybrat účet integrace](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Na stránce **Přehled** účtu pro integraci vyberte v části **komponenty**dlaždici **sestavení** .
+1. Na stránce **Přehled** účtu integrace vyberte v části **Komponenty**dlaždici **Sestavení.**
 
-   ![Vybrat sestavení](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
+   ![Vyberte možnost Sestavení.](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
 
-1. Po otevření stránky **sestavení** klikněte na tlačítko **Přidat**.
+1. Po otevření stránky **Sestavení** zvolte **Přidat**.
 
-   ![Zvolit přidat](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
+   ![Zvolte "Přidat"](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
-V závislosti na velikosti souboru sestavení, postupujte podle kroků pro nahrání sestavení, které je buď [na 2 MB](#smaller-assembly) , nebo [více než 2 MB, ale pouze až 8 MB](#larger-assembly).
-Omezení množství sestavení v integračních účtech najdete v tématu [omezení a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
+Na základě velikosti souboru sestavení postupujte podle pokynů pro nahrání sestavení, které je až [2 MB](#smaller-assembly) nebo více než [2 MB, ale pouze do 8 MB](#larger-assembly).
+Omezení množství sestavení v účtech integrace najdete v tématu [Limity a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
 
 > [!NOTE]
-> Pokud změníte sestavení, je nutné také aktualizovat mapu bez ohledu na to, zda mapa obsahuje změny.
+> Pokud změníte sestavení, musíte také aktualizovat mapu bez ohledu na to, zda mapa obsahuje změny.
 
 <a name="smaller-assembly"></a>
 
-### <a name="add-assemblies-up-to-2-mb"></a>Přidat sestavení až do 2 MB
+### <a name="add-assemblies-up-to-2-mb"></a>Přidání sestavení do 2 MB
 
-1. V části **Přidat sestavení**zadejte název sestavení. Ponechat vybraný **malý soubor** . Vedle pole **sestavení** vyberte ikonu složky. Vyhledejte a vyberte sestavení, které nahráváte, například:
+1. V **části Přidat sestavení**zadejte název sestavení. Zachovat **vybraný malý soubor.** Vedle pole **Sestava** zvolte ikonu složky. Najděte a vyberte nahrané sestavení, například:
 
-   ![Nahrát menší sestavení](./media/logic-apps-enterprise-integration-maps/upload-assembly-file.png)
+   ![Nahrání menší sestavy](./media/logic-apps-enterprise-integration-maps/upload-assembly-file.png)
 
-   Ve vlastnosti **název sestavení** se název souboru sestavení zobrazuje automaticky po výběru sestavení.
+   Ve vlastnosti **Název sestavení** se název souboru sestavení zobrazí automaticky po výběru sestavení.
 
-1. Až budete připraveni, klikněte na **tlačítko OK**.
+1. Až budete připraveni, zvolte **OK**.
 
-   Po nahrání souboru sestavení se sestavení zobrazí v seznamu **sestavení** .
+   Po dokončení nahrávání souboru sestavení se sestavení zobrazí v seznamu **Sestavení.**
 
-   ![Seznam odeslaných sestavení](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies-list.png)
+   ![Seznam nahraných sestavení](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies-list.png)
 
-   Na stránce **Přehled** v účtu pro integraci se teď v části **komponenty**na dlaždici **sestavení** zobrazuje počet nahraných sestavení, například:
+   Na stránce **Přehled** účtu integrace v části **Komponenty**nyní dlaždice **Sestavení** zobrazuje počet nahraných sestavení, například:
 
-   ![Odeslaná sestavení](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies.png)
+   ![Nahraná sestavení](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies.png)
 
 <a name="larger-assembly"></a>
 
-### <a name="add-assemblies-more-than-2-mb"></a>Přidat sestavení více než 2 MB
+### <a name="add-assemblies-more-than-2-mb"></a>Přidání sestavení větší než 2 MB
 
-Chcete-li přidat větší sestavení, můžete nahrát sestavení do kontejneru objektů blob Azure v účtu úložiště Azure. Postup pro přidání sestavení se liší v závislosti na tom, jestli má váš kontejner objektů BLOB veřejný přístup pro čtení. Nejdřív ověřte, jestli má váš kontejner objektů BLOB veřejný přístup pro čtení, a to pomocí následujících kroků: [Nastavení úrovně veřejného přístupu pro kontejner objektů BLOB](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+Chcete-li přidat větší sestavení, můžete nahrát sestavení do kontejneru objektů blob Azure ve vašem účtu úložiště Azure. Postup přidání sestavení se liší podle toho, zda má kontejner objektů blob veřejný přístup pro čtení. Takže nejprve zkontrolujte, jestli váš kontejner objektů blob má veřejný přístup pro čtení podle následujících kroků: [Nastavení úrovně veřejného přístupu pro kontejner objektů blob](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
-#### <a name="check-container-access-level"></a>Kontrolovat úroveň přístupu kontejneru
+#### <a name="check-container-access-level"></a>Zkontrolovat úroveň přístupu ke kontejneru
 
-1. Otevřete Průzkumník služby Azure Storage. V okně Průzkumníka rozbalte své předplatné Azure, pokud ještě není rozbalené.
+1. Otevřete Průzkumníka úložišť Azure. V okně Průzkumníka rozbalte předplatné Azure, pokud už není rozšířené.
 
-1. Rozbalte položku **účty úložiště** > {*Your-Storage-Account*} > **kontejnerů objektů BLOB**. Vyberte kontejner objektů BLOB.
+1. Rozbalte **položku Účty úložiště** > {*váš účet úložiště*} > **kontejnery objektů blob**. Vyberte kontejner objektů blob.
 
-1. V místní nabídce kontejneru objektů BLOB vyberte **nastavit úroveň veřejného přístupu**.
+1. V místní nabídce kontejneru objektů blob vyberte **Nastavit úroveň veřejného přístupu**.
 
-   * Pokud má váš kontejner objektů BLOB aspoň veřejný přístup, klikněte na **Zrušit**a pak na této stránce použijte následující postup: [nahrání do kontejnerů s veřejným přístupem](#public-access-assemblies)
+   * Pokud má kontejner objektů blob alespoň veřejný přístup, zvolte **Zrušit**a na této stránce postupujte takto: [Nahrát do kontejnerů s veřejným přístupem](#public-access-assemblies)
 
-     ![Veřejný přístup](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
+     ![Přístup veřejnosti](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * Pokud Váš kontejner objektů BLOB nemá veřejný přístup, klikněte na **Zrušit**a pak na této stránce proveďte následující kroky: [nahrání do kontejnerů bez veřejného přístupu](#no-public-access-assemblies) .
+   * Pokud váš kontejner objektů blob nemá veřejný přístup, zvolte **Zrušit**a na této stránce postupujte takto: [Nahrát do kontejnerů bez veřejného přístupu](#no-public-access-assemblies)
 
-     ![Bez veřejného přístupu](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
+     ![Žádný veřejný přístup](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
 <a name="public-access-assemblies"></a>
 
-#### <a name="upload-to-containers-with-public-access"></a>Odeslat do kontejnerů s veřejným přístupem
+#### <a name="upload-to-containers-with-public-access"></a>Nahrávání do kontejnerů s veřejným přístupem
 
 1. Nahrajte sestavení do svého účtu úložiště. 
-   V pravém okně vyberte **nahrát**.
+   V pravém okně zvolte **Nahrát**.
 
-1. Po dokončení nahrávání vyberte vaše nahrané sestavení. Na panelu nástrojů vyberte možnost **Kopírovat adresu URL** , abyste ZKOPÍROVALI adresu URL sestavení.
+1. Po dokončení nahrávání vyberte nahrané sestavení. Na panelu nástrojů zvolte **Kopírovat adresu URL,** abyste zkopírovali adresu URL sestavení.
 
-1. Vraťte se do Azure Portal, kde je otevřeno podokno **Přidat sestavení** . 
-   Zadejte název pro sestavení. 
-   Vyberte **velký soubor (větší než 2 MB)** .
+1. Vraťte se na portál Azure, kde je otevřené podokno **Přidat sestavení.** 
+   Zadejte název sestavení. 
+   Zvolte **Velký soubor (větší než 2 MB).**
 
-   Nyní se zobrazí pole **identifikátor URI obsahu** , nikoli pole **sestavení** .
+   Nyní se zobrazí pole **IDENTIFIKÁTOR URI obsahu,** nikoli pole **Sestavení.**
 
-1. Do pole **identifikátor URI obsahu** vložte adresu URL vašeho sestavení. 
-   Dokončete přidání sestavení.
+1. Do pole **Identifikátor URI obsahu** vložte adresu URL sestavení. 
+   Dokončete přidávání sestavy.
 
-Po dokončení nahrávání sestavení se schéma zobrazí v seznamu **sestavení** .
-Na stránce **Přehled** v účtu pro integraci teď v části **komponenty**dlaždice **sestavení** zobrazuje počet nahraných sestavení.
+Po dokončení nahrávání sestavení se schéma zobrazí v seznamu **sestavení.**
+Na stránce **Přehled** účtu integrace v části **Komponenty**nyní dlaždice **Sestavení** zobrazuje počet nahraných sestavení.
 
 <a name="no-public-access-assemblies"></a>
 
-#### <a name="upload-to-containers-without-public-access"></a>Odeslat do kontejnerů bez přístupu veřejnosti
+#### <a name="upload-to-containers-without-public-access"></a>Nahrávání do kontejnerů bez přístupu veřejnosti
 
 1. Nahrajte sestavení do svého účtu úložiště. 
-   V pravém okně vyberte **nahrát**.
+   V pravém okně zvolte **Nahrát**.
 
 1. Po dokončení nahrávání vygenerujte sdílený přístupový podpis (SAS) pro vaše sestavení. 
-   V místní nabídce vašeho sestavení vyberte **získat sdílený přístupový podpis**.
+   V místní nabídce sestavení vyberte **Získat sdílený přístupový podpis**.
 
-1. V podokně **sdílený přístupový podpis** vyberte možnost **generovat identifikátor URI sdíleného přístupového podpisu na úrovni kontejneru** > **vytvořit**. 
-   Po vygenerování adresy URL SAS klikněte vedle pole **Adresa URL** na možnost **Kopírovat**.
+1. V podokně **Sdílený přístupový podpis** vyberte **Generovat vytvoření identifikátoru URI** > na úrovni kontejneru na úrovni kontejneru .**Create** 
+   Po vygenerování adresy URL SAS zvolte vedle pole **ADRESA URL** **možnost Kopírovat**.
 
-1. Vraťte se do Azure Portal, kde je otevřeno podokno **Přidat sestavení** . 
-   Zadejte název pro sestavení. 
-   Vyberte **velký soubor (větší než 2 MB)** .
+1. Vraťte se na portál Azure, kde je otevřené podokno **Přidat sestavení.** 
+   Zadejte název sestavení. 
+   Zvolte **Velký soubor (větší než 2 MB).**
 
-   Nyní se zobrazí pole **identifikátor URI obsahu** , nikoli pole **sestavení** .
+   Nyní se zobrazí pole **IDENTIFIKÁTOR URI obsahu,** nikoli pole **Sestavení.**
 
-1. Do pole **identifikátor URI obsahu** vložte identifikátor URI SAS, který jste předtím vygenerovali. Dokončete přidání sestavení.
+1. Do pole **Identifikátor URI obsahu** vložte identifikátor URI SAS, který jste dříve vygenerovali. Dokončete přidávání sestavy.
 
-Po dokončení nahrávání sestavení se sestavení zobrazí v seznamu **schémata** . Na stránce **Přehled** v účtu pro integraci teď v části **komponenty**dlaždice **sestavení** zobrazuje počet nahraných sestavení.
+Po dokončení nahrávání sestavení se sestavení zobrazí v seznamu **schémat.** Na stránce **Přehled** účtu integrace v části **Komponenty**nyní dlaždice **Sestavení** zobrazuje počet nahraných sestavení.
 
-## <a name="create-maps"></a>Vytvořit mapy
+## <a name="create-maps"></a>Vytváření map
 
-Chcete-li vytvořit dokument XSLT, který můžete použít jako mapu, můžete použít Visual Studio 2015 pro vytvoření projektu integrace BizTalk pomocí [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md). V tomto projektu můžete sestavit soubor integrační mapy, který umožňuje vizuálně mapovat položky mezi dvěma soubory schématu XML. Po sestavení tohoto projektu získáte dokument XSLT.
-Omezení množství na mapě v integračních účtech najdete v tématu [omezení a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits). 
+Chcete-li vytvořit dokument XSLT, který můžete použít jako mapu, můžete použít Visual Studio 2015 pro vytvoření projektu BizTalk integrace pomocí [sady Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md). V tomto projektu můžete vytvořit soubor mapy integrace, který umožňuje vizuálně mapovat položky mezi dvěma soubory schématu XML. Po sestavení tohoto projektu získáte dokument XSLT.
+Omezení mapových množství v účtech integrace najdete v tématu [Limity a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits). 
 
-## <a name="add-maps"></a>Přidat mapy
+## <a name="add-maps"></a>Přidávání map
 
-Po nahrání všech sestavení, na která mapa odkazuje, teď můžete nahrát mapu.
+Po nahrání všech sestavení, na která vaše mapa odkazuje, můžete nyní nahrát mapu.
 
-1. Pokud jste to ještě neudělali, přihlaste se k [Azure Portal](https://portal.azure.com) pomocí svých přihlašovacích údajů k účtu Azure. 
+1. Pokud jste se ještě nepřihlásili, přihlaste se na [portál Azure](https://portal.azure.com) pomocí přihlašovacích údajů k účtu Azure. 
 
-1. Pokud váš účet pro integraci ještě není otevřený, vyberte v hlavní nabídce Azure možnost **všechny služby**. 
-   Do vyhledávacího pole zadejte "účet pro integraci". 
-   Vyberte **účty pro integraci**.
+1. Pokud váš účet integrace ještě není otevřený, v hlavní nabídce Azure vyberte **Všechny služby**. 
+   Do vyhledávacího pole zadejte "účet integrace". 
+   Vyberte **integrační účty**.
 
-   ![Najít účet pro integraci](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
+   ![Najít účet integrace](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
 
-1. Vyberte účet pro integraci, do kterého chcete přidat mapu, například:
+1. Vyberte účet integrace, do kterého chcete přidat mapu, například:
 
-   ![Vybrat účet pro integraci](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
+   ![Vybrat účet integrace](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Na stránce **Přehled** účtu Integration klikněte v části **komponenty**na dlaždici **mapy** .
+1. Na stránce **Přehled** účtu integrace vyberte v části **Komponenty**dlaždici **Mapy.**
 
-   ![Vyberte Maps](./media/logic-apps-enterprise-integration-maps/select-maps.png)
+   ![Vyberte "Mapy"](./media/logic-apps-enterprise-integration-maps/select-maps.png)
 
-1. Po otevření stránky **mapy** klikněte na tlačítko **Přidat**.
+1. Po otevření stránky **Mapy** zvolte **Přidat**.
 
-   ![Zvolit přidat](./media/logic-apps-enterprise-integration-maps/add-map.png)  
+   ![Zvolte "Přidat"](./media/logic-apps-enterprise-integration-maps/add-map.png)  
 
 <a name="smaller-map"></a>
 
-### <a name="add-maps-up-to-2-mb"></a>Přidat mapy až do 2 MB
+### <a name="add-maps-up-to-2-mb"></a>Přidání map až do 2 MB
 
 1. V části **Přidat mapu**zadejte název mapy. 
 
-1. V části **typ mapy**vyberte typ, například: **Liquid**, **XSLT**, **XSLT 2,0**nebo **XSLT 3,0**.
+1. V části **Map type**vyberte typ, například **Liquid**, **XSLT**, **XSLT 2.0**nebo **XSLT 3.0**.
 
-1. Ponechat vybraný **malý soubor** . Vedle pole **Mapa** vyberte ikonu složky. Najděte a vyberte mapu, kterou nahráváte, například:
+1. Zachovat **vybraný malý soubor.** Vedle pole **Mapa** zvolte ikonu složky. Najděte a vyberte mapu, kterou nahráváte, například:
 
    ![Nahrát mapu](./media/logic-apps-enterprise-integration-maps/upload-map-file.png)
 
-   Pokud jste ponechali vlastnost **Name** prázdnou, název souboru mapy se automaticky zobrazí v této vlastnosti automaticky po výběru souboru mapování. 
-   Můžete ale použít libovolný jedinečný název.
+   Pokud jste ponechali vlastnost **Name** prázdnou, název souboru mapy se automaticky zobrazí v této vlastnosti po výběru souboru mapy. 
+   Můžete však použít libovolný jedinečný název.
 
-1. Až budete připraveni, klikněte na **tlačítko OK**. 
-   Po dokončení nahrávání souboru mapy se mapa zobrazí v seznamu **mapy** .
+1. Až budete připraveni, zvolte **OK**. 
+   Po dokončení nahrávání mapového souboru se mapa zobrazí v seznamu **Mapy.**
 
-   ![Seznam odeslaných map](./media/logic-apps-enterprise-integration-maps/uploaded-maps-list.png)
+   ![Seznam nahraných map](./media/logic-apps-enterprise-integration-maps/uploaded-maps-list.png)
 
-   Na stránce **Přehled** účtu pro integraci teď v části **komponenty**zobrazuje dlaždice **mapy** počet nahraných map, například:
+   Na stránce **Přehled** účtu integrace se **na** **dlaždici Komponenty**nyní zobrazuje počet nahraných map, například:
 
    ![Nahrané mapy](./media/logic-apps-enterprise-integration-maps/uploaded-maps.png)
 
 <a name="larger-map"></a>
 
-### <a name="add-maps-more-than-2-mb"></a>Přidat mapy více než 2 MB
+### <a name="add-maps-more-than-2-mb"></a>Přidání map o více než 2 MB
 
-V současné době přidejte větší mapy pomocí [Azure Logic Apps mapování REST API](https://docs.microsoft.com/rest/api/logic/maps/createorupdate).
+V současné době chcete přidat větší mapy, použijte [Azure Logic Apps REST API - Mapy](https://docs.microsoft.com/rest/api/logic/maps/createorupdate).
 
 <!--
 
@@ -308,44 +308,44 @@ the map appears in the **Maps** list.
 
 -->
 
-## <a name="edit-maps"></a>Upravit mapy
+## <a name="edit-maps"></a>Úpravy map
 
-Chcete-li aktualizovat existující mapu, je nutné nahrát nový soubor mapy, který obsahuje požadované změny. Můžete ale nejdřív stáhnout stávající mapu pro úpravy.
+Chcete-li aktualizovat existující mapu, musíte nahrát nový mapový soubor, který obsahuje požadované změny. Můžete si však nejprve stáhnout existující mapu pro úpravy.
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a otevřete účet pro integraci, pokud ještě není otevřený.
+1. Na [webu Azure Portal](https://portal.azure.com)najděte a otevřete svůj účet integrace, pokud už není otevřený.
 
-1. V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte "účet pro integraci". Vyberte **účty pro integraci**.
+1. V hlavní nabídce Azure vyberte **Všechny služby**. Do vyhledávacího pole zadejte "účet integrace". Vyberte **integrační účty**.
 
-1. Vyberte účet pro integraci, ve kterém chcete aktualizovat mapu.
+1. Vyberte účet integrace, ve kterém chcete mapu aktualizovat.
 
-1. Na stránce **Přehled** účtu Integration klikněte v části **komponenty**na dlaždici **mapy** .
+1. Na stránce **Přehled** účtu integrace vyberte v části **Komponenty**dlaždici **Mapy.**
 
-1. Po otevření stránky **mapy** vyberte mapu. 
-   Chcete-li nejprve stáhnout a upravit mapu, vyberte možnost **Stáhnout**a mapa uložte.
+1. Po otevření stránky **Mapy** vyberte mapu. 
+   Chcete-li mapu nejprve stáhnout a upravit, zvolte **Stáhnout**a uložte mapu.
 
-1. Až budete připraveni nahrát aktualizovanou mapu, vyberte na stránce **mapy** mapu, kterou chcete aktualizovat, a zvolte **aktualizovat**.
+1. Až budete připraveni nahrát aktualizovanou mapu, vyberte na stránce **Mapy** mapu, kterou chcete aktualizovat, a zvolte **Aktualizovat**.
 
-1. Vyhledejte a vyberte aktualizovanou mapu, kterou chcete nahrát. 
-   Po nahrání souboru mapy se v seznamu **mapy** zobrazí aktualizované mapování.
+1. Najděte a vyberte aktualizovanou mapu, kterou chcete nahrát. 
+   Po dokončení nahrávání souboru mapy se aktualizovaná mapa zobrazí v seznamu **Mapy.**
 
-## <a name="delete-maps"></a>Odstranit mapy
+## <a name="delete-maps"></a>Odstraňování map
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a otevřete účet pro integraci, pokud ještě není otevřený.
+1. Na [webu Azure Portal](https://portal.azure.com)najděte a otevřete svůj účet integrace, pokud už není otevřený.
 
-1. V hlavní nabídce Azure vyberte **všechny služby**. 
-   Do vyhledávacího pole zadejte "účet pro integraci". 
-   Vyberte **účty pro integraci**.
+1. V hlavní nabídce Azure vyberte **Všechny služby**. 
+   Do vyhledávacího pole zadejte "účet integrace". 
+   Vyberte **integrační účty**.
 
-1. Vyberte účet pro integraci, ve kterém chcete mapu odstranit.
+1. Vyberte účet integrace, ve kterém chcete mapu odstranit.
 
-1. Na stránce **Přehled** účtu Integration klikněte v části **komponenty**na dlaždici **mapy** .
+1. Na stránce **Přehled** účtu integrace vyberte v části **Komponenty**dlaždici **Mapy.**
 
-1. Po otevření stránky **mapy** vyberte mapu a zvolte **Odstranit**.
+1. Po otevření stránky **Mapy** vyberte mapu a zvolte **Odstranit**.
 
-1. Pokud chcete potvrdit, že chcete mapu odstranit, klikněte na **Ano**.
+1. Chcete-li potvrdit, že chcete mapu odstranit, zvolte **Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)  
+* [Další informace o balíčku Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)  
 * [Další informace o schématech](../logic-apps/logic-apps-enterprise-integration-schemas.md)
 * [Další informace o transformacích](../logic-apps/logic-apps-enterprise-integration-transform.md)

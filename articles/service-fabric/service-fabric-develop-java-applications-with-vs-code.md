@@ -1,125 +1,125 @@
 ---
-title: Vývoj aplikací v jazyce Java pomocí Visual Studio Code
-description: Tento článek popisuje, jak vytvářet, nasazovat a ladit aplikace Java Service Fabric pomocí Visual Studio Code.
+title: Vývoj aplikací Java s visual studio kód
+description: Tento článek ukazuje, jak vytvářet, nasazovat a ladit java service fabric aplikace pomocí visual studio kód.
 author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 999dbb8c36c4e0413f287b2a73cf39ab4acd15f5
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610042"
 ---
-# <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Vývoj aplikací Service Fabric Java pomocí Visual Studio Code
+# <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Vývoj aplikací Java Service Fabric pomocí kódu Visual Studia
 
-[Rozšíření Service Fabric Reliable Services pro vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) usnadňuje vytváření aplikací Java Service Fabric v operačních systémech Windows, Linux a MacOS.
+Rozšíření [Service Fabric Reliable Services pro Kód VS](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) usnadňuje vytváření aplikací Java Service Fabric v operačních systémech Windows, Linux a macOS.
 
-V tomto článku se dozvíte, jak sestavit, nasadit a ladit aplikaci Service Fabric Java pomocí Visual Studio Code.
+Tento článek ukazuje, jak vytvořit, nasadit a ladit java service fabric aplikace pomocí visual studio kód.
 
 > [!IMPORTANT]
-> Aplikace Service Fabric Java je možné vyvíjet na počítačích s Windows, ale dají se nasadit jenom do clusterů Azure Linux. Ladění aplikací Java není v systému Windows podporováno.
+> Aplikace Service Fabric Java lze vyvíjet na počítačích s Windows, ale lze je nasadit jenom do clusterů Azure Linux. Ladění aplikací jazyka Java není v systému Windows podporováno.
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto článku se předpokládá, že jste už nainstalovali VS Code, Service Fabric Reliable Services rozšíření pro VS Code a všechny závislosti, které jsou pro vaše vývojové prostředí potřeba. Další informace najdete v tématu [Začínáme](./service-fabric-get-started-vs-code.md#prerequisites).
+Tento článek předpokládá, že jste již nainstalovali VS Kód, service fabric spolehlivé služby rozšíření pro VS kód a všechny závislosti potřebné pro vývojové prostředí. Další informace najdete v [tématu Začínáme](./service-fabric-get-started-vs-code.md#prerequisites).
 
 ## <a name="download-the-sample"></a>Stažení ukázky
-V tomto článku se používá hlasovací aplikace v [ukázkovém úložišti GitHub aplikace Service Fabric Java Application Starter](https://github.com/Azure-Samples/service-fabric-java-quickstart). 
+Tento článek používá hlasovací aplikaci v [aplikaci Service Fabric Java rychlý start ukázkový úložiště GitHub](https://github.com/Azure-Samples/service-fabric-java-quickstart). 
 
-Pokud chcete klonovat úložiště do vývojového počítače, spusťte následující příkaz z okna terminálu (příkazové okno ve Windows):
+Chcete-li naklonovat úložiště do vývojového počítače, spusťte následující příkaz z okna terminálu (příkazové okno v systému Windows):
 
 ```sh
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 ```
 
-## <a name="open-the-application-in-vs-code"></a>Otevřete aplikaci v VS Code
+## <a name="open-the-application-in-vs-code"></a>Otevření aplikace v kódu VS
 
-Otevřete VS Code.  Klikněte na ikonu Průzkumníka na **řádku aktivity** a klikněte na **Otevřít složku**, nebo na **soubor – > otevřít složku**. Přejděte do adresáře *./Service-Fabric-Java-Quickstart/voting* ve složce, kam jste naklonováni úložiště, a pak klikněte na **OK**. Pracovní prostor by měl obsahovat stejné soubory zobrazené na snímku obrazovky níže.
+Otevřete vs kód.  Klepněte na ikonu Průzkumníka na **panelu aktivit** a klepněte na **příkaz Otevřít složku**nebo klepněte na příkaz Soubor **-> Otevřít složku**. Přejděte do adresáře *./service-fabric-java-quickstart/Voting* ve složce, do které jste úložiště naklonovali, a pak klepněte na tlačítko **OK**. Pracovní prostor by měl obsahovat stejné soubory zobrazené na následujícím snímku obrazovky.
 
-![Hlasovací aplikace v jazyce Java v pracovním prostoru](./media/service-fabric-develop-java-applications-with-vs-code/java-voting-application.png)
+![Java hlasovací aplikace v pracovním prostoru](./media/service-fabric-develop-java-applications-with-vs-code/java-voting-application.png)
 
 ## <a name="build-the-application"></a>Sestavení aplikace
 
-1. Stisknutím klávesy (CTRL + SHIFT + p) otevřete **paletu příkazů** v vs Code.
-2. Vyhledejte a vyberte příkaz **Service Fabric: sestavit aplikaci** . Výstup sestavení se odešle do integrovaného terminálu.
+1. Stisknutím klávesy (Ctrl + Shift + p) otevřete **paletu příkazů** v kódu VS.
+2. Vyhledejte a vyberte příkaz **Service Fabric: Build Application** . Výstup sestavení je odeslán do integrovaného terminálu.
 
-   ![Příkaz sestavit aplikaci v VS Code](./media/service-fabric-develop-java-applications-with-vs-code/sf-build-application.png)
+   ![Příkaz k sestavení aplikace v kódu VS](./media/service-fabric-develop-java-applications-with-vs-code/sf-build-application.png)
 
 ## <a name="deploy-the-application-to-the-local-cluster"></a>Nasazení aplikace do místního clusteru
 Po vytvoření aplikace ji můžete nasadit do místního clusteru. 
 
 > [!IMPORTANT]
-> V počítačích s Windows není podporováno nasazení aplikací Java do místního clusteru.
+> Nasazení aplikací Java do místního clusteru není v počítačích se systémem Windows podporováno.
 
-1. Z **palety příkazů**vyberte **příkaz Service Fabric: nasadit aplikaci (localhost)** . Výstup procesu instalace se pošle do integrovaného terminálu.
+1. V **paletě příkazů**vyberte **příkaz Service Fabric: Deploy Application (Localhost).** Výstup instalačního procesu je odeslán do integrovaného terminálu.
 
-   ![Příkaz nasadit aplikaci v VS Code](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
+   ![Příkaz nasazení aplikace v kódu VS](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
-4. Po dokončení nasazení spusťte prohlížeč a otevřete Service Fabric Explorer: `http://localhost:19080/Explorer`. Měli byste vidět, že aplikace běží. To může nějakou dobu trvat, tedy pacient. 
+4. Po dokončení nasazení spusťte prohlížeč a otevřete Service Fabric Explorer: `http://localhost:19080/Explorer`. Měli byste vidět, že aplikace je spuštěna. To může nějakou dobu trvat, takže buďte trpěliví. 
 
-   ![Hlasovací aplikace v Service Fabric Explorer](./media/service-fabric-develop-java-applications-with-vs-code/sfx-localhost-java.png)
+   ![Aplikace pro hlasování v průzkumníku infrastruktury služby](./media/service-fabric-develop-java-applications-with-vs-code/sfx-localhost-java.png)
 
-4. Po ověření, že je aplikace spuštěná, spusťte prohlížeč a otevřete tuto stránku: `http://localhost:8080`. Toto je webový front-end aplikace. Můžete přidat položky a kliknout na ně, abyste mohli hlasovat.
+4. Po ověření, že je aplikace spuštěná, spusťte `http://localhost:8080`prohlížeč a otevřete tuto stránku: . Toto je webový front-end aplikace. Můžete přidat položky a klikněte na ně hlasovat.
 
    ![Hlasovací aplikace v prohlížeči](./media/service-fabric-develop-java-applications-with-vs-code/voting-sample-in-browser.png)
 
-5. Chcete-li odebrat aplikaci z clusteru, vyberte příkaz **Service Fabric: odebrat aplikaci** z **palety příkazů**. Výstup procesu odinstalace se pošle do integrovaného terminálu. Pomocí nástroje Service Fabric Explorer lze ověřit, zda byla aplikace odebrána z místního clusteru.
+5. Chcete-li aplikaci odebrat z clusteru, vyberte příkaz **Service Fabric: Remove Application** z **palety příkazů**. Výstup procesu odinstalace je odeslán do integrovaného terminálu. Pomocí aplikace Service Fabric Explorer můžete ověřit, zda byla aplikace odebrána z místního clusteru.
 
 ## <a name="debug-the-application"></a>Ladění aplikace
-Při ladění aplikací v VS Code musí být aplikace spuštěná v místním clusteru. Zarážky lze následně přidat do kódu.
+Při ladění aplikací v kódu VS musí být aplikace spuštěna v místním clusteru. Zarážky pak mohou být přidány do kódu.
 
 > [!IMPORTANT]
-> Ladění aplikací Java není v počítačích s Windows podporováno.
+> Ladění aplikací jazyka Java není v počítačích se systémem Windows podporováno.
 
-Chcete-li připravit VotingDataService a hlasovací aplikaci pro ladění, proveďte následující kroky:
+Chcete-li připravit službu VotingDataService a aplikaci Hlasování pro ladění, proveďte následující kroky:
 
-1. Aktualizujte soubor *hlasovacího/VotingApplication/VotingDataServicePkg/Code/EntryPoint. sh* .
-Přidejte komentář na řádek 6 (použijte ' # ') a přidejte do dolní části souboru následující příkaz:
+1. Aktualizujte soubor *Hlasování/HlasováníApplication/VotingDataServicePkg/Code/entryPoint.sh.*
+Zakomentujte příkaz na řádku 6 (použijte '#') a přidejte následující příkaz do dolní části souboru:
 
    ```
    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar VotingDataService.jar
    ```
 
-2. Aktualizujte soubor *hlasovacího/VotingApplication/souboru ApplicationManifest. XML* . V elementu **StatefulService** nastavte atributy **MinReplicaSetSize** a **TargetReplicaSetSize** na hodnotu "1":
+2. Aktualizujte soubor *Hlasování/HlasováníAplikace/ApplicationManifest.xml.* Nastavte atributy **MinReplicaSetSize** a **TargetReplicaSetSize** na "1" v elementu **StavfulService:**
    
    ```xml
          <StatefulService MinReplicaSetSize="1" ServiceTypeName="VotingDataServiceType" TargetReplicaSetSize="1">
    ```
 
-3. Kliknutím na ikonu ladění na **řádku aktivity** otevřete zobrazení ladicího programu v vs Code. V horní části zobrazení ladicího programu klikněte na ikonu ozubeného kolečka a v nabídce rozevíracího prostředí vyberte **Java** . Otevře se soubor Launch. JSON. 
+3. Kliknutím na ikonu Ladění na **panelu aktivit** otevřete zobrazení ladicího programu v kódu VS. Klikněte na ikonu ozubeného kola v horní části zobrazení ladicího programu a v rozbalovací nabídce prostředí vyberte **Javu.** Otevře se soubor launch.json. 
 
-   ![Ikona ladění v pracovním prostoru VS Code](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
+   ![Ikona ladění v pracovním prostoru kódu VS](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
 
-3. V souboru Launch. JSON nastavte hodnotu portu v konfiguraci s názvem **Debug (připojit)** na **8001**. Uložte soubor.
+3. V souboru launch.json nastavte hodnotu portu v konfiguraci s názvem **Ladění (Připojit)** na **8001**. Uložte soubor.
 
-   ![Konfigurace ladění pro Launch. JSON](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
+   ![Konfigurace ladění pro soubor launch.json](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
 
-4. Nasaďte aplikaci do místního clusteru pomocí příkazu **Service Fabric: nasadit aplikaci (localhost)** . Ověřte, zda je aplikace spuštěna v Service Fabric Explorer. Vaše aplikace je teď připravená k ladění.
+4. Nasaďte aplikaci do místního clusteru pomocí příkazu **Service Fabric: Deploy Application (Localhost).** Ověřte, zda je aplikace spuštěna v aplikaci Service Fabric Explorer. Aplikace je nyní připravena k odladění.
 
 Chcete-li nastavit zarážku, proveďte následující kroky:
 
-1. V Průzkumníkovi otevřete soubor */voting/VotingDataService/src/statefulservice/VotingDataService.Java* . Nastavte zarážku na první řádek kódu v bloku `try` v metodě `addItem` (řádek 80).
+1. V Průzkumníkovi otevřete soubor */Voting/VotingDataService/src/stavfulservice/VotingDataService.java.* Nastavte zarážku na prvním `try` řádku kódu `addItem` v bloku v metodě (řádek 80).
    
-   ![Nastavit zarážku ve službě hlasovacích dat](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-set.png)
+   ![Nastavení zarážky ve službě Data Hlasování](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-set.png)
 
    > [!IMPORTANT]
-   > Ujistěte se, že jste nastavili zarážky na spustitelných řádcích kódu. Například zarážky nastavené v deklaracích metod, `try` příkazy nebo příkazy `catch` vynechá ladicí program.
-2. Ladění spustíte tak, že kliknete na ikonu ladění na **řádku aktivity**, vyberete konfiguraci **ladění (připojit)** z nabídky ladění a kliknete na tlačítko spustit (zelená šipka).
+   > Ujistěte se, že jste nastavili zarážky na spustitelných řádcích kódu. Například zarážky nastavené na `try` deklaraci `catch` metody, příkazy nebo příkazy budou vynechány ladicím programem.
+2. Chcete-li začít ladit, klepněte na ikonu Ladění na **panelu aktivit**, vyberte konfiguraci **ladění (Připojit)** z nabídky ladění a klepněte na tlačítko spustit (zelená šipka).
 
-   ![Ladit (připojit) konfiguraci](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)
+   ![Konfigurace ladění (připojit)](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)
 
-3. Ve webovém prohlížeči, přejít na `http://localhost:8080`. Do textového pole zadejte novou položku a klikněte na **+ Přidat**. Měla by být vybrána vaše zarážka. Pomocí panelu nástrojů ladění v horní části VS Code můžete pokračovat v provádění, krokovat přes řádky, Krokovat s vnořením do metod nebo krokovat s aktuální metodou. 
+3. Ve webovém prohlížeči přejděte na `http://localhost:8080`. Do textového pole zadejte novou položku a klepněte na **tlačítko + Přidat**. Vaše zarážka by měla být přístupů. Můžete použít ladicí panel nástrojů v horní části Kódu VS pokračovat v provádění, krok ování řádky, krok do metody nebo krok z aktuální metody. 
    
-   ![Zarážka volání](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-hit.png)
+   ![Zarážka přístupu](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-hit.png)
        
-4. Chcete-li ukončit relaci ladění, klikněte na ikonu plug-in na panelu nástrojů ladění v horní části VS Code.
+4. Chcete-li ukončit relaci ladění, klepněte na ikonu plug na panelu nástrojů Ladění v horní části kódu VS.
    
    ![Odpojit od ladicího programu](./media/service-fabric-develop-java-applications-with-vs-code/debug-bar-disconnect.png)
        
-5. Po dokončení ladění můžete použít příkaz **Service Fabric: Remove Application** k odebrání hlasovací aplikace z místního clusteru. 
+5. Po dokončení ladění můžete pomocí příkazu Service **Fabric: Remove Application** odebrat aplikaci Hlasování z místního clusteru. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte [se vyvíjet a ladit C# Service Fabric aplikace pomocí vs Code](./service-fabric-develop-csharp-applications-with-vs-code.md).
+* Naučte se [vyvíjet a ladit aplikace Jazyka C# Service Fabric pomocí kódu VS](./service-fabric-develop-csharp-applications-with-vs-code.md).

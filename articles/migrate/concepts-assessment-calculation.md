@@ -1,218 +1,236 @@
 ---
-title: Posouzení v Azure Migrate
-description: Přečtěte si o hodnoceních v Azure Migrate.
+title: Hodnocení v azure migrate server hodnocení
+description: Informace o hodnoceních v Azure Migrate Server Assessment
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 0cf933dd1c8c61edfcea20ea954c5813f3848b28
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ae55686f0152d9c2b170ae1b34d7493ed7ac8d94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79269689"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127778"
 ---
-# <a name="about-assessments-in-azure-migrate"></a>O hodnoceních v Azure Migrate
+# <a name="assessments-in-azure-migrateserver-assessment"></a>Hodnocení v Azure Migrate:Vyhodnocení serveru
 
-Tento článek popisuje, jak se vypočítávají vyhodnocení v [Azure Migrate: posouzení serveru](migrate-services-overview.md#azure-migrate-server-assessment-tool). Vyhledáte vyhodnocení u skupin místních počítačů, abyste zjistili, jestli jsou připravené na migraci na Azure Migrate.
+Tento článek obsahuje přehled hodnocení v nástroji [Azure Migrate:Server Assessment.](migrate-services-overview.md#azure-migrate-server-assessment-tool) Nástroj Vyhodnocení serveru může vyhodnotit místní virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery pro migraci do Azure.
 
-## <a name="how-do-i-run-an-assessment"></a>Návody spustit posouzení?
-Můžete spustit posouzení pomocí Azure Migrate: posouzení serveru nebo jiného nástroje Azure nebo nástroje třetí strany. Po vytvoření projektu Azure Migrate přidejte potřebný nástroj. [Další informace](how-to-add-tool-first-time.md)
+## <a name="whats-an-assessment"></a>Co je to hodnocení?
 
-### <a name="collect-compute-data"></a>Shromažďování výpočetních dat
+Posouzení pomocí nástroje Hodnocení serveru měří připravenost a odhaduje dopad migrace místních serverů do Azure.
 
-Údaje o výkonu pro výpočetní nastavení jsou shromažďovány takto:
+## <a name="types-of-assessments"></a>Druhy hodnocení
 
-1. [Zařízení Azure Migrate](migrate-appliance.md) shromažďuje vzorový bod v reálném čase:
-
-    - **Virtuální počítače VMware**: u virtuálních počítačů VMware bude zařízení Azure Migrate shromažďovat ukázkový bod v reálném čase v intervalu 20 sekund.
-    - **Virtuální počítače Hyper-v**: pro virtuální počítače Hyper-v se v každém intervalu 30 sekund shromáždí ukázkový bod v reálném čase.
-    - **Fyzické servery**: u fyzických serverů se ukázkový bod v reálném čase shromažďuje každých pět minut. 
-    
-2. Zařízení zahrne ukázkové body (20 sekund, 30 sekund, pět minut) k vytvoření jednoho datového bodu každých 10 minut. Pokud chcete vytvořit jeden datový bod, zařízení vybere nejvyšší hodnotu ze všech ukázek a pak je pošle do Azure.
-3. Vyhodnocování serveru ukládá všechny vzorkovací body 10 minut za poslední měsíc.
-4. Když vytvoříte posouzení, vyhodnocování serveru identifikuje vhodný datový bod, který se má použít pro správnou velikost, a to na základě hodnot percentilu pro *historii výkonu* a *využití percentilu*.
-
-    - Například pokud je historie výkonu nastavená na jeden týden a procento využití je 95. percentil, vyřadí vyhodnocení serveru ve vzestupném pořadí 10 minutové ukázkové body za poslední týden ve vzestupném pořadí a vybere hodnotu percentilu 95. pro správnou velikost. 
-    - Hodnota 95. percentilu zajišťuje, že budete ignorovat jakékoli odlehlé hodnoty, které mohou být zahrnuty, pokud vyberete 99 percentil.
-    - Pokud chcete vybrat špičku pro období a nechcete vyznačit žádné z nich, měli byste vybrat 99 percentil pro využití percentilu.
-
-5. Tato hodnota je vynásobena faktorem komfortu, aby získala efektivní data o využití výkonu pro jednotlivé metriky (využití procesoru, využití paměti, IOPS disku (čtení a zápis), propustnost disku (čtení a zápis) a propustnost sítě (v/v). zařízení shromažďuje.
-
-Pokud chcete spustit posouzení v rámci posouzení serveru, připravte se na posouzení v místním prostředí a v Azure a nastavte zařízení Azure Migrate pro nepřetržité zjišťování místních počítačů. Po zjištění počítačů je budete shromažďovat do skupin, abyste je vyhodnotili. Pro podrobnější a vysoce spolehlivé hodnocení můžete vizualizovat a mapovat závislosti mezi počítači a zjistit, jak je migrovat.
-
-- Seznamte se se spouštěním posouzení pro [virtuální počítače VMware](tutorial-prepare-vmware.md), [virtuální počítače Hyper-V](tutorial-prepare-hyper-v.md)a [fyzické servery](tutorial-prepare-physical.md).
-- Seznamte se s vyhodnocováním serverů [importovaných pomocí souboru CSV](tutorial-assess-import.md).
-- Přečtěte si o nastavení [Vizualizace závislostí](concepts-dependency-visualization.md).
-
-## <a name="assessments-in-server-assessment"></a>Posouzení v posouzení serveru 
-
-Posouzení, které vytvoříte pomocí Azure Migrate posouzení serveru, jsou snímkem dat v určitém časovém okamžiku. Nástroj pro vyhodnocení serveru nabízí dva typy posouzení.
+Hodnocení, která vytvoříte pomocí vyhodnocení serveru, jsou snímek dat v čase. Vyhodnocení serveru poskytuje dva typy hodnocení.
 
 **Typ posouzení** | **Podrobnosti** | **Data**
 --- | --- | ---
-**Na základě výkonu** | Posouzení, která vytvářejí doporučení na základě shromážděných údajů o výkonu | Doporučení na velikost virtuálního počítače vychází z dat využití procesoru a paměti.<br/><br/> Doporučení pro typ disku (standardní disková jednotka/SSD nebo Premium – spravované disky) vychází z IOPS a propustnosti místních disků.
-**V místním prostředí** | Posouzení, které nepoužívají údaje o výkonu k vytváření doporučení. | Doporučení velikosti virtuálního počítače je založené na velikosti místního virtuálního počítače.<br/><br> Doporučený typ disku je založený na vybraném typu úložiště pro posouzení.
+**Na základě výkonu** | Hodnocení, která doporučení vyhovují na základě shromážděných údajů o výkonnosti | Doporučení velikosti virtuálního počítače je založené na datech využití procesoru a paměti.<br/><br/> Doporučení typu disku (standardní disky HDD/SSD nebo disky spravované s prémií) je založeno na iOPS a propustnosti místních disků.
+**As-je v místním prostředí** | Hodnocení, která nepoužívají údaje o výkonu k doporučení. | Doporučení velikosti virtuálního počítače je založené na velikosti místního virtuálního počítače<br/><br> Doporučený typ disku je založen na vybraném typu úložiště pro posouzení.
 
-## <a name="collecting-performance-data"></a>Shromažďování údajů o výkonu
+## <a name="how-do-i-run-an-assessment"></a>Jak spustím hodnocení?
 
-Údaje o výkonu jsou shromažďovány takto:
+Existuje několik způsobů, jak spustit hodnocení:
 
-1. [Zařízení Azure Migrate](migrate-appliance.md) shromažďuje vzorový bod v reálném čase:
+- Vyhodnoťte počítače pomocí metadat serveru shromážděných zjednodušenou službou Azure Migrate. Zařízení zjišťuje místní počítače a odesílá data metadat a výkonu počítače do Migrace Azure.
+- Vyhodnoťte počítače pomocí metadat serveru, která jsou importována ve formátu CSV (csv) oddělených čárkami.
 
-    - **Virtuální počítače VMware**: u virtuálních počítačů VMware bude zařízení Azure Migrate shromažďovat ukázkový bod v reálném čase v intervalu 20 sekund.
-    - **Virtuální počítače Hyper-v**: pro virtuální počítače Hyper-v se v každém intervalu 30 sekund shromáždí ukázkový bod v reálném čase.
-    - **Fyzické servery**: u fyzických serverů se ukázkový bod v reálném čase shromažďuje každých pět minut. 
+## <a name="how-do-i-assess-with-the-appliance"></a>Jak hodnotím s přístrojem?
+
+Pokud nasazujete zařízení Azure Migrate ke zjišťování místních serverů, postupujte takto:
+
+1. Azure a místní prostředí nastavíte tak, aby fungovalo s vyhodnocením serveru.
+2. Pro první hodnocení vytvoříte projekt Azure a přidáte do něj nástroj Hodnocení serveru.
+3. Nasadíte zjednodušené zařízení Azure Migrate. Zařízení průběžně zjišťuje místní počítače a odesílá metadata a údaje o výkonu počítače do Migrace Azure. Zařízení se nasazuje jako virtuální počítač nebo fyzický počítač. Není třeba instalovat nic na počítačích, které chcete posoudit.
+4. Po spuštění zjišťování stroje můžete shromáždit stroje, které chcete posoudit do skupiny, a spustit hodnocení pro skupinu.
+
+Můžete sledovat naše výukové programy pro [VMware](tutorial-prepare-vmware.md), [Hyper-V](tutorial-prepare-hyper-v.md)nebo [fyzické servery](tutorial-prepare-physical.md) vyzkoušet tyto kroky.
+
+## <a name="how-do-i-assess-with-imported-data"></a>Jak hodnotím s importovanými daty?
+
+Pokud vyhodnocujete servery pomocí souboru CSV, nepotřebujete zařízení. Místo toho provést následující kroky:
+
+1. Azure nastavíte tak, aby fungoval s vyhodnocením serveru.
+2. Pro první hodnocení vytvoříte projekt Azure a přidáte do něj nástroj Hodnocení serveru.
+3. Stáhnete šablonu CSV a přidáte do ní data serveru.
+4. Šablonu importujete do vyhodnocení serveru.
+5. Zjistíte servery přidané s importem, shromáždíte se do skupiny a spustíte hodnocení pro skupinu.
+
+## <a name="what-data-does-the-appliance-collect"></a>Jaká data přístroj shromažďuje?
+
+Pokud používáte zařízení Azure Migrate pro posouzení, přečtěte si informace o metadatech a údajích o výkonu shromážděných pro [společnosti VMware](migrate-appliance.md#collected-data---vmware) a [Hyper-V](migrate-appliance.md#collected-data---hyper-v).
+
+## <a name="how-does-the-appliance-calculate-performance-data"></a>Jak zařízení vypočítává údaje o výkonu?
+
+Pokud zařízení používáte k zjišťování, data o výkonu pro nastavení výpočetních prostředků se shromažďují následujícím způsobem:
+
+1. Přístroj shromažďuje bod vzorku v reálném čase:
+
+    - **Virtuální zařízení VMware**: Zařízení shromažďuje bod vzorkování v reálném čase v intervalu 20 sekund.
+    - **Virtuální aplikace Hyper-V**: Bod vzorkování v reálném čase se shromažďuje v intervalu 30 sekund.
+    - **Fyzické servery**: Bod ukázky v reálném čase se shromažďuje v intervalu pěti minut. 
     
-2. Zařízení zahrne ukázkové body (20 sekund, 30 sekund, pět minut) k vytvoření jednoho datového bodu každých 10 minut. Pokud chcete vytvořit jeden datový bod, zařízení vybere nejvyšší hodnotu ze všech ukázek a pak je pošle do Azure.
-3. Vyhodnocování serveru ukládá všechny vzorkovací body 10 minut za poslední měsíc.
-4. Když vytvoříte posouzení, vyhodnocování serveru identifikuje vhodný datový bod, který se má použít pro správnou velikost, a to na základě hodnot percentilu pro *historii výkonu* a *využití percentilu*.
+2. Zařízení shrnuje vzorkovací body (20 sekund, 30 sekund, pět minut) a každých 10 minut vytvoří jeden datový bod. Chcete-li vytvořit jeden bod, zařízení vybere hodnotu špičky ze všech vzorků a odešle ji do Azure.
+3. Vyhodnocení serveru ukládá všechny ukázkové body za poslední měsíc za 10 minut.
+4. Při vytváření hodnocení určuje vyhodnocení serveru příslušný datový bod, který se má použít pro správnou velikost, na základě hodnot percentilu pro *historii výkonu* a *využití percentilu*.
 
-    - Například pokud je historie výkonu nastavená na jeden týden a procento využití je 95. percentil, vyřadí vyhodnocení serveru ve vzestupném pořadí 10 minutové ukázkové body za poslední týden ve vzestupném pořadí a vybere hodnotu percentilu 95. pro správnou velikost. 
-    - Hodnota 95. percentilu zajišťuje, že budete ignorovat jakékoli odlehlé hodnoty, které mohou být zahrnuty, pokud vyberete 99 percentil.
-    - Pokud chcete vybrat špičku pro období a nechcete vyznačit žádné z nich, měli byste vybrat 99 percentil pro využití percentilu.
+    - Pokud je například historie výkonu nastavena na jeden týden a využití percentilu je 95 percentil, vyhodnocení serveru seřadí 10minutové ukázkové body za poslední týden ve vzestupném pořadí a vybere hodnotu 95 percentilu pro správné nastavení velikosti. 
+    - Hodnota 95. percentilu zajišťuje, že ignorujete všechny odlehlé hodnoty, které mohou být zahrnuty, pokud vyberete 99.
+    - Pokud chcete vybrat využití ve špičce pro období a nechcete zmeškat žádné odlehlé hodnoty, měli byste vybrat 99 percentil pro využití percentilu.
 
-5. Tato hodnota je vynásobena faktorem komfortu, aby získala efektivní data o využití výkonu pro jednotlivé metriky (využití procesoru, využití paměti, IOPS disku (čtení a zápis), propustnost disku (čtení a zápis) a propustnost sítě (v/v). zařízení shromažďuje.
+5. Tato hodnota je vynásobena faktorem komfortu pro získání efektivních dat využití výkonu pro každou metriku (využití procesoru, využití paměti, vodvicí disk (čtení a zápis), propustnost disku (čtení a zápis) a propustnost sítě (dovnitř a ven), že zařízení shromažďuje.
+
+
+
+## <a name="how-are-assessments-calculated"></a>Jak se hodnocení počítají? 
+
+Hodnocení v vyhodnocení serveru se vypočítají pomocí metadat/údajů o výkonu pro místní počítače. Pokud nasadíte zařízení Azure Migrate, pak posouzení pomocí dat shromážděných zařízení. Pokud spustíte hodnocení pro počítače importované pomocí . CSV, zadáte metadata pro výpočet. Výpočty probíhají ve třech fázích:
+
+1. **Výpočet připravenosti Azure**: Vyhodnoťte, jestli jsou počítače vhodné pro migraci do Azure.
+2. **Výpočet doporučení pro velikost**: Odhadujte výpočetní, úložnou a síťovou velikost. 
+2. **Výpočet měsíčních nákladů**: Vypočítejte odhadované měsíční náklady na výpočetní výkon a úložiště pro spouštění počítačů v Azure po migraci.
+
+Výpočty jsou v pořádku a strojový server se přesune do pozdější fáze pouze v případě, že projde předchozí fází. Například pokud server selže připravenost Azure, je označen jako nevhodné pro Azure a velikosti a náklady se neprovádí pro tento server.
+
+
 ## <a name="whats-in-an-assessment"></a>Co je součástí posouzení?
 
-Tady je postup, který je součástí posouzení Azure Migrate: posouzení serveru.
+Zde je to, co zahrnuto v hodnocení v hodnocení serveru.
 
 **Vlastnost** | **Podrobnosti**
 --- | ---
-**Cílové umístění** | Umístění, do kterého chcete migrovat. Posouzení serveru aktuálně podporuje tyto cílové oblasti Azure:<br/><br/> Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Střed Indie, Střed USA, Čína – východ, Čína – sever, Východní Asie, Východní USA, východní USA 2, Německo – střed, Německo – jihovýchod, Japonsko – východ, Japonsko – západ, Jižní Korea, Korea – jih, Severní Střed USA, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Velká Británie – západ, US Gov – Arizona, US Gov – Texas, US Gov – Virginie, Středozápadní USA, Západní Evropa, Západní Indie, Západní USA a západní USA 2.
-*Cílový disk úložiště (stejně jako velikost)* * | Typ disků, které se mají použít pro úložiště v Azure. <br/><br/> Zadejte cílový disk úložiště jako spravovaný na úrovni Premium, Standard SSD spravovaná nebo standardní pevný disk.
-**Cílový disk úložiště (Změna velikosti na základě výkonu)** | Zadejte typ cílového disku úložiště jako automatické, spravované na úrovni Premium, standardně spravované HDD nebo standardní SSD spravovaná.<br/><br/> **Automaticky**: doporučení na disku vychází z údajů o výkonu disků (vstupně-výstupní operace za sekundu (IOPS) a propustnost).<br/><br/>**Premium/Standard**: posouzení doporučuje SKU disku v rámci vybraného typu úložiště.<br/><br/> Pokud chcete dosáhnout smlouvy SLA pro virtuální počítače s jednou instancí 99,9%, zvažte použití služeb Premium Managed disks. Tím se zajistí, že se všechny disky v posouzení doporučují jako disky spravované na úrovni Premium.<br/><br/> Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
-**Rezervované instance (RIs)** | Zadejte [rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/) v Azure, aby se odhady nákladů v rámci posouzení převzaly v úvahu slevy na vyhrazené platformě.<br/><br/> Služby RIs se momentálně podporují jenom pro nabídky s průběžnými platbami v Azure Migrate.
-**Kritéria změny velikosti** | Slouží k napravení velikosti virtuálního počítače v Azure.<br/><br/> Použijte změnu velikosti nebo určení velikosti na základě výkonu.
-**Historie výkonu** | Používá se při změně velikosti na základě výkonu. Zadejte dobu trvání použitou při vyhodnocení údajů o výkonu.
-**Percentilové využití** | Používá se při změně velikosti na základě výkonu. Určuje hodnotu percentilu pro vzorek výkonu, který se má použít pro správnou velikost. 
-**Řada virtuálních počítačů** | Zadejte řadu virtuálních počítačů Azure, které chcete zvážit pro správnou velikost. Pokud například nemáte produkční prostředí, které potřebuje pro virtuální počítače řady A-Series v Azure, můžete z tohoto seznamu nebo řady vyřadit řady.
-**Faktor komfortu** | Vyrovnávací paměť použitá během posouzení Použito na data o využití počítače pro virtuální počítače (CPU, paměť, disk a síť). Účty IT mají problémy, jako je sezónní využití, krátká historie výkonu a pravděpodobná zvýšení využití v budoucnu.<br/><br/> Například virtuální počítač s 10 jádry s 20% využitím obvykle vede k virtuálnímu počítači se dvěma jádry. Výsledkem je faktor komfortu 2.0 x, ale výsledkem je virtuální počítač se čtyřmi jádry.
-**Nabídka** | Zobrazí [nabídku Azure](https://azure.microsoft.com/support/legal/offer-details/) , do které jste zaregistrovaní. Vyhodnocení serveru odhadá náklady odpovídajícím způsobem.
-**Měna** | Fakturační měna vašeho účtu.
-**Sleva (%)** | Zobrazí seznam slev specifických pro předplatné, které obdržíte nad nabídkou Azure. Výchozí nastavení je 0 %.
-**Doba provozu virtuálního počítače** | Pokud virtuální počítače Azure nebudou běžet 24 hodin denně, 7 dní v týdnu, můžete zadat dobu trvání (dny za měsíc a hodiny za den), které budou spuštěny. Odhad nákladů se zpracovává odpovídajícím způsobem.<br/><br/> Výchozí hodnota je 31 dní za měsíc a 24 hodin denně.
-**Zvýhodněné hybridní využití Azure** | Určuje, jestli máte program Software Assurance a máte nárok na [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Pokud je nastavená hodnota Ano (výchozí nastavení), ceny jiné než Windows Azure se považují za virtuální počítače s Windows.
+**Cílové umístění** | Umístění, do kterého chcete migrovat. Server Assessment aktuálně podporuje tyto cílové oblasti Azure:<br/><br/> Austrálie – východ, Austrálie – jihovýchod, Brazílie jih, Kanada – střed, Kanada – východ, střední Indie, střední USA, Čína – východ, Čína – sever, východní Asie, východní USA, východní USA2, Německo – střed, Německo – severovýchod, Japonsko – východ, Japonsko – západ, Korea – střed, Korea – jih, sever Střední USA, Severní Evropa, Jižní Střed USA, Jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Velká Británie – západ, US Gov Arizona, US Gov Texas, US Gov Virginia, West Central US, West Europe, West India, West US a West US2.
+*Cílový disk úložiště (velikost stejně jako velikost)** | Typ disků, které se mají používat pro úložiště v Azure. <br/><br/> Zadejte cílový disk úložiště jako spravovaný prémiový, standardní spravovaný disk SSD nebo standardní pevný disk.
+**Cílový disk úložiště (velikost založená na výkonu)** | Zadejte typ cílového úložného disku jako automatického, prémiově spravovaného, standardního spravovaného pevného disku nebo standardního spravovaného ssd disku.<br/><br/> **Automatické**: Doporučení disku je založeno na údajích o výkonu disků (vstupní ch a výstupní operace za sekundu (IOPS) a propustnost).<br/><br/>**Premium/standard**: Hodnocení doporučuje disk ovou položku v rámci vybraného typu úložiště.<br/><br/> Pokud chcete dosáhnout jedné instance SLA virtuálního počítače 99,9 %, zvažte použití prémiových spravovaných disků. Tím je zajištěno, že všechny disky v hodnocení jsou doporučeny jako disky spravované prémií.<br/><br/> Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
+**Rezervované instance (RIs)** | Zadejte [rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/) v Azure, aby odhady nákladů v posouzení braly v úvahu slevy RI.<br/><br/> ReIs jsou v současné době podporované jenom pro nabídky s průběžným platbami v Azure Migrate.
+**Kritéria pro velikost** | Používá se k správné velikosti virtuálního počítače v Azure.<br/><br/> Použití velikosti podle velikosti nebo velikosti založené na výkonu.
+**Historie výkonu** | Používá se s velikosti založené na výkonu. Určete dobu trvání použitou při vyhodnocování dat o výkonu.
+**Percentilové využití** | Používá se s velikosti založené na výkonu. Určuje hodnotu percentilu vzorku výkonu, který má být použit pro správné velikosti. 
+**Řada virtuálních počítačů** | Zadejte řadu virtuálních počítačových virtuálních počítače Azure, které chcete zvážit pro správné velikosti. Například pokud nemáte produkční prostředí, které potřebuje virtuální počítače řady A v Azure, můžete vyloučit řady A ze seznamu nebo řady.
+**Faktor komfortu** | Vyrovnávací paměť použitá při hodnocení. Použito nad daty využití počítače pro virtuální počítače (procesor, paměť, disk a síť). Zodpovídá problémy, jako je sezónní využití, krátká historie výkonu a pravděpodobné zvýšení budoucího využití.<br/><br/> Například 10jádrový virtuální virtuální ms s 20 % využití obvykle vede k virtuálnímu virtuálnímu virtuálnímu virtuálnímu virtuálnímu provozu se dvěma jádry. S faktorem pohodlí 2,0x je výsledkem čtyřjádrový virtuální virtuální mon....
+**Nabízejí** | Zobrazí [nabídku Azure,](https://azure.microsoft.com/support/legal/offer-details/) ve které jste zaregistrovaní. Vyhodnocení serveru odpovídajícím způsobem odhadne náklady.
+**Měna** | Fakturace měny pro váš účet.
+**Sleva (%)** | Zobrazí seznam všech slev specifických pro předplatné, které obdržíte nad nabídku Azure. Výchozí nastavení je 0 %.
+**Doba provozu virtuálního počítače** | Pokud virtuální počítače Azure neběží 24 hodin denně, 7 dní v týdnu, můžete určit dobu trvání (dny za měsíc a hodiny za den), které se spustí. Odhady nákladů jsou zpracovány odpovídajícím způsobem.<br/><br/> Výchozí hodnota je 31 dní v měsíci a 24 hodin denně.
+**Zvýhodněné hybridní využití Azure** | Určuje, zda máte jistotu softwaru a máte nárok na [hybridní výhody Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Pokud je nastavena na Ano (výchozí nastavení), ceny než Windows Azure jsou považovány za pro virtuální počítače s Windows.
 
-[Projděte si osvědčené postupy](best-practices-assessment.md) pro vytváření posouzení pomocí posouzení serveru.
-
-## <a name="how-are-assessments-calculated"></a>Jak se počítají posouzení? 
-
-Posouzení v Azure Migrate: posouzení serveru se počítá pomocí metadat shromážděných v místních počítačích. Pokud spustíte posouzení na počítačích importovaných pomocí. Soubor CSV vám poskytne metadata pro výpočet. K výpočtům dochází ve třech fázích:
-
-1. **Výpočet připravenosti na Azure**: Vyhodnoťte, jestli jsou počítače vhodné pro migraci do Azure.
-2. **Výpočet doporučení pro velikost**: odhad výpočetních prostředků, úložiště a velikosti sítě. 
-2. **Výpočet měsíčních nákladů**: Vypočítejte Odhadované měsíční náklady na výpočetní prostředky a úložiště pro provoz počítačů v Azure po migraci.
-
-Výpočty jsou v pořadí a počítačový Server se přesune do pozdější fáze, jenom když projde předchozí. Pokud třeba server neprojde připravenost Azure, je označený jako nevhodný pro Azure a u tohoto serveru se neprovádí Změna velikosti a nákladů.
-
+[Projděte si osvědčené postupy](best-practices-assessment.md) pro vytváření hodnocení pomocí vyhodnocení serveru.
 
 
 ## <a name="calculate-readiness"></a>Vypočítat připravenost
 
-Ne všechny počítače jsou vhodné ke spuštění v Azure. Posouzení serveru vyhodnocuje každý místní počítač a přiřadí mu kategorii připravenosti. 
-- **Připraveno pro Azure**: počítač se dá migrovat tak, jak je, do Azure bez jakýchkoli změn. Spustí se v Azure s plnou podporou Azure.
-- **Podmíněně připravené pro Azure**: počítač se může v Azure spustit, ale nemusí mít plnou podporu Azure. Například počítač, na kterém běží starší verze Windows serveru, se v Azure nepodporuje. Než tyto počítače migrujete do Azure, musíte být opatrní. Podle pokynů k nápravě navrhovaných v posouzení Opravte problémy s připraveností.
-- **Nepřipraveno pro Azure**: počítač se v Azure nespustí. Pokud je například disk místního počítače větší než 64 – TBs, nejde ho hostovat v Azure. Pokud chcete problém vyřešit před migrací, postupujte podle pokynů k nápravě. 
-- **Připravenost je neznámá**: Azure Migrate nedokázal určit připravenost počítače z důvodu nedostatečných metadat.
+Ne všechny počítače jsou vhodné pro spuštění v Azure. Vyhodnocení serveru vyhodnotí každý místní počítač a přiřadí mu kategorii připravenosti. 
+- **Připraveno pro Azure**: Počítač lze migrovat jako je do Azure bez jakýchkoli změn. Spustí se v Azure s plnou podporou Azure.
+- **Podmíněně připravený pro Azure**: Počítač se může spustit v Azure, ale nemusí mít plnou podporu Azure. Například počítač, který používá starší verzi Windows Serveru, není v Azure podporovaný. Před migrací těchto počítačů do Azure musíte být opatrní. Postupujte podle pokynů pro nápravu navržených v posouzení, abyste opravili problémy s připraveností.
+- **Není připraven pro Azure**: počítač se nespustí v Azure. Například pokud je místní počítačový disk více než 64-TBs, nemůže být hostovaný v Azure. Chcete-li problém vyřešit před migrací, postupujte podle pokynů pro nápravu. 
+- **Připravenost neznámý**: Azure Migrate nelze určit připravenost počítače, z důvodu nedostatečné metadata.
 
-Pro výpočet připravenosti vyhodnocování serveru kontroluje vlastnosti počítače a nastavení operačního systému shrnuté v následujících tabulkách. 
+Chcete-li vypočítat připravenost, vyhodnocení serveru zkontroluje vlastnosti počítače a nastavení operačního systému shrnuté v následujících tabulkách. 
 
-### <a name="machine-properties"></a>Vlastnosti počítače
+### <a name="machine-properties"></a>Vlastnosti stroje
 
-Posouzení serveru kontroluje následující vlastnosti místního virtuálního počítače, aby zjistil, jestli je možné ho spustit v Azure.
+Vyhodnocení serveru zkontroluje následující vlastnosti místního virtuálního počítače k určení, zda může běžet v Azure.
 
-**Vlastnost** | **Podrobnosti** | **Stav připravenosti na Azure**
+**Vlastnost** | **Podrobnosti** | **Stav připravenosti Azure**
 --- | --- | ---
-**Typ spouštění** | Azure podporuje virtuální počítače s typem spouštění systému BIOS, nikoli UEFI. | Podmíněně připravený, pokud je typ spouštění UEFI.
-**Jader** | Počet jader v počítačích musí být větší nebo roven maximálnímu počtu jader (128) podporovanému pro virtuální počítač Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využité jádra k porovnání. Pokud je v nastavení hodnocení určen faktor komfortu, je počet využitých jader vynásoben faktorem pohodlí.<br/><br/> Pokud není k dispozici žádná historie výkonu, Azure Migrate používá přidělená jádra bez použití faktoru pohodlí. | Připraveno, pokud je omezení menší nebo rovno.
-**Rezident** | Velikost paměti počítače musí být menší nebo rovna maximální paměti (3892 GB [GB] v řadě Azure M Standard_M128m&nbsp;<sup>2</sup>), která je povolená pro virtuální počítač Azure. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využití paměti za využitou paměť k porovnání. Pokud je určen faktor komfortu, vyhodnotí se využitá paměť podle faktoru pohodlí.<br/><br/> Pokud není k dispozici žádná historie, přidělená paměť se použije bez použití faktoru pohodlí.<br/><br/> | V rámci omezení je připravený.
-**Disk úložiště** | Přidělená velikost disku musí být 32 TB nebo méně. I když Azure podporuje disky 64 – TB s SSD úrovně Ultra disky, Azure Migrate: posouzení serveru aktuálně kontroluje 32 TB jako omezení velikosti disku, protože ještě nepodporuje SSD úrovně Ultra. <br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disku s operačním systémem. | V rámci omezení je připravený.
-**Networking** | Počítač musí mít k tomuto počítači připojenou 32 nebo méně síťových rozhraní (nic). | V rámci omezení je připravený.
+**Typ spouštění** | Azure podporuje virtuální počítače s typem spouštění systému BIOS, nikoli uefi. | Podmíněně připraven, pokud je typ spouštění UEFI.
+**Cores** | Počet jader v počítačích musí být rovna nebo menší než maximální počet jader (128) podporovaných pro virtuální počítač Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využitá jádra pro porovnání. Pokud je v nastavení hodnocení specifikován faktor komfortu, počet využitých jader se vynásobí faktorem komfortu.<br/><br/> Pokud neexistuje žádná historie výkonu, Azure Migrate používá přidělená jádra bez použití faktoru pohodlí. | Připraven, pokud je menší nebo rovno limitům.
+**Paměti** | Velikost paměti počítače musí být rovna nebo menší než maximální paměti (3892 gigabajtů [GB] v řadě Azure M Standard_M128m&nbsp;<sup>2</sup>) povolené pro virtuální počítač Azure. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využité paměti pro porovnání. Je-li zadán komfortní faktor, využitá paměť se vynásobí faktorem komfortu.<br/><br/> Pokud neexistuje žádná historie, přidělená paměť se používá bez použití faktoru pohodlí.<br/><br/> | Připraven, pokud v mezích.
+**Disk úložiště** | Přidělená velikost disku musí být 32 TB nebo méně. Přestože Azure podporuje disky o velikosti 64 TB s disky Ultra SSD, Azure Migrate: Server Assessment aktuálně kontroluje 32 TB jako omezení velikosti disku, protože ještě nepodporuje Ultra SSD. <br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disku operačního systému. | Připraven, pokud v mezích.
+**Síťové služby** | K počítači musí být připojeno 32 nebo méně síťových rozhraní. | Připraven, pokud v mezích.
 
 ### <a name="guest-operating-system"></a>Hostovaný operační systém
-Posouzení serveru spolu s vlastnostmi virtuálního počítače podívá na hostovaný operační systém počítačů a určí, jestli se dá spustit na Azure.
+Spolu s vlastnostmi virtuálního počítače, vyhodnocení serveru se dívá na hostovanéoperační systém počítačů k určení, zda lze spustit v Azure.
 
 > [!NOTE]
-> U virtuálních počítačů VMware používá posouzení serveru operační systém, který je zadaný pro virtuální počítač v vCenter Server pro zpracování analýzy hostovaného operačního systému. Pro virtuální počítače se systémem Linux běžící na VMware aktuálně neidentifikuje přesnou verzi jádra hostovaného operačního systému.
+> Pro virtuální servery VMware používá vyhodnocení serveru operační systém určený pro virtuální ho virtuální ho schod v serveru vCenter ke zpracování analýzy hostovaného operačního systému. U virtuálních počítačů s Linuxem spuštěných na vmware aktuálně neidentifikuje přesnou verzi jádra hostovaného operačního systému.
 
-Následující logiku používá posouzení serveru k identifikaci připravenosti na Azure podle operačního systému.
+Následující logika se používá server assessment k identifikaci připravenosti Azure na základě operačního systému.
 
-**Operační systém** | **Podrobnosti** | **Stav připravenosti na Azure**
+**Operační systém** | **Podrobnosti** | **Stav připravenosti Azure**
 --- | --- | ---
-Windows Server 2016 & všechny SPs | Azure poskytuje plnou podporu. | Připraveno pro Azure
-Windows Server 2012 R2 & všechny SPs | Azure poskytuje plnou podporu. | Připraveno pro Azure
-Windows Server 2012 & všechny SPs | Azure poskytuje plnou podporu. | Připraveno pro Azure
-Windows Server 2008 R2 se všemi službami SPs | Azure poskytuje plnou podporu.| Připraveno pro Azure
-Windows Server 2008 (32 a 64-bit) | Azure poskytuje plnou podporu. | Připraveno pro Azure
-Windows Server 2003, 2003 R2 | Tyto operační systémy prošly datem ukončení podpory a potřebují pro podporu v Azure [vlastní smlouvu o podpoře (CSA)](https://aka.ms/WSosstatement) . | Podmíněně připravené pro Azure. Před migrací do Azure zvažte možnost upgradovat operační systém.
-Windows 2000, 98, 95, NT, 3,1, MS-DOS | Tyto operační systémy prošly datem ukončení podpory. Počítač se může v Azure spustit, ale Azure neposkytuje žádnou podporu operačního systému. | Podmíněně připravené pro Azure. Před migrací do Azure doporučujeme upgradovat operační systém.
-Klient Windows 7, 8 a 10 | Azure poskytuje podporu [jenom pro předplatné sady Visual Studio.](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Připraveno pro Azure s podmínkou
-Stolní počítač s Windows 10 pro | Azure podporuje [práva hostování s více klienty.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Připraveno pro Azure s podmínkou
-Windows Vista, XP Professional | Tyto operační systémy prošly datem ukončení podpory. Počítač se může v Azure spustit, ale Azure neposkytuje žádnou podporu operačního systému. | Podmíněně připravené pro Azure. Před migrací do Azure doporučujeme upgradovat operační systém.
-Linux | Azure tyto [operační systémy pro Linux](../virtual-machines/linux/endorsed-distros.md)schválí. Ostatní operační systémy Linux se můžou v Azure spustit, ale před migrací do Azure doporučujeme upgradovat operační systém na schválenou verzi. | Je připravený pro Azure, pokud je verze schválená.<br/><br/>Podmíněně připravený, pokud verze není schválená.
-Jiné operační systémy<br/><br/> Například Oracle Solaris, Apple macOS atd., FreeBSD atd. | Azure tyto operační systémy neschvaluje. Počítač se může v Azure spustit, ale Azure neposkytuje žádnou podporu operačního systému. | Podmíněně připravené pro Azure. Před migrací do Azure doporučujeme nainstalovat podporovaný operační systém.  
-Operační systém určený jako **jiný** v vCenter Server | Azure Migrate nemůže v tomto případě identifikovat operační systém. | Neznámá připravenost. Ujistěte se, že operační systém běžící v rámci virtuálního počítače je podporovaný v Azure.
-32 – bitové operační systémy | Počítač se může v Azure spustit, ale Azure možná neposkytne plnou podporu. | Podmíněně připravené pro Azure. Před migrací do Azure zvažte možnost upgradovat operační systém počítače z 32 operačního systému na 64.
+Windows Server 2016 & všechny sp | Azure poskytuje plnou podporu. | Připraveno pro Azure
+Windows Server 2012 R2 & všechny sp | Azure poskytuje plnou podporu. | Připraveno pro Azure
+Windows Server 2012 & všechny sp | Azure poskytuje plnou podporu. | Připraveno pro Azure
+Windows Server 2008 R2 se všemi sp | Azure poskytuje plnou podporu.| Připraveno pro Azure
+Windows Server 2008 (32bitový a 64bitový) | Azure poskytuje plnou podporu. | Připraveno pro Azure
+Windows Server 2003, 2003 R2 | Tyto operační systémy prošly datem ukončení podpory a potřebují [vlastní smlouvu o podpoře (CSA)](https://aka.ms/WSosstatement) pro podporu v Azure. | Podmíněně připraven pro Azure. Před migrací do Azure zvažte upgrade operačního systému.
+Windows 2000, 98, 95, NT, 3.1, MS-DOS | Tyto operační systémy prošly datem ukončení podpory. Počítač se může spustit v Azure, ale Azure neposkytuje žádnou podporu operačního serveru. | Podmíněně připraven pro Azure. Doporučujeme upgradovat operační systém před migrací do Azure.
+Klient Windows 7, 8 a 10 | Azure poskytuje podporu [jenom s předplatným Visual Studia.](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Připraveno pro Azure s podmínkou
+Plocha Windows 10 Pro | Azure poskytuje podporu s [víceklientských práv hostingu.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Připraveno pro Azure s podmínkou
+Windows Vista, XP Professional | Tyto operační systémy prošly datem ukončení podpory. Počítač se může spustit v Azure, ale Azure neposkytuje žádnou podporu operačního serveru. | Podmíněně připraven pro Azure. Doporučujeme upgradovat operační systém před migrací do Azure.
+Linux | Azure podporuje tyto [operační systémy Linuxu](../virtual-machines/linux/endorsed-distros.md). Jiné operační systémy Linuxu se mohou spustit v Azure, ale doporučujeme upgradovat operační systém na schválenou verzi před migrací do Azure. | Připraveno pro Azure, pokud je verze schválena.<br/><br/>Podmíněně připraven, pokud verze není schválena.
+Ostatní operační systémy<br/><br/> Například Oracle Solaris, Apple macOS atd., FreeBSD atd. | Azure tyto operační systémy neschvaluje. Počítač se může spustit v Azure, ale Azure neposkytuje žádnou podporu operačního serveru. | Podmíněně připraven pro Azure. Doporučujeme nainstalovat podporovaný operační systém před migrací do Azure.  
+Operační systém byl zadán jako **Jiný** na serveru vCenter | Azure Migrate nemůže identifikovat operační systém v tomto případě. | Neznámá připravenost. Ujistěte se, že operační systém spuštěný uvnitř virtuálního počítače je podporovaný v Azure.
+32bitové operační systémy | Počítač se může spustit v Azure, ale Azure nemusí poskytovat plnou podporu. | Podmíněně připraven pro Azure. Před migrací do Azure zvažte upgrade operačního systému počítače z 32bitového operačního systému na 64bitový operační systém.
 
-## <a name="calculate-sizing-as-is-on-premises"></a>Vypočítat velikost (jako místní)
-
-Jakmile je počítač označený jako připravený pro Azure, vyhodnocování serveru vytvoří doporučení pro změnu velikosti, která identifikují virtuální počítač Azure a diskovou jednotku disku. Pokud používáte místní velikost, vyhodnocování serveru nebere v úvahu historii výkonu virtuálních počítačů a disků.
-
-**Výpočet velikosti**: PŘIDĚLUJE SKU virtuálního počítače Azure na základě velikosti přidělené místně.
-**Velikost úložiště a disku**: posouzení serveru vypadá na typu úložiště, který je určený ve vlastnostech posouzení (standardní pevný disk/SSD/Premium), a podle toho doporučuje typ disku. Výchozí typ úložiště je prémiové disky.
-**Změna velikosti sítě**: vyhodnocování serveru bere síťový adaptér na místním počítači.
+## <a name="calculating-sizing"></a>Výpočet velikosti
 
 
-## <a name="calculate-sizing-performance-based"></a>Vypočítat velikost (na základě výkonu)
+Po zařízení je označenjako připravený pro Azure, vyhodnocení serveru umožňuje doporučení pro měření velikosti k identifikaci virtuálního počítače Azure a diskové skladové položky. Výpočty velikosti závisí na tom, zda používáte místní velikosti jako místní, nebo na velikosti založené na výkonu.
 
-Když je počítač označený jako připravený pro Azure, pokud použijete změnu velikosti na základě výkonu, vyhodnocování serveru provede doporučení pro změnu velikosti následujícím způsobem:
+### <a name="calculate-sizing-as-is-on-premises"></a>Výpočet velikosti (místní)
 
-- Posouzení serveru považuje historii výkonu počítače za účelem identifikace velikosti virtuálního počítače a typu disku v Azure.
-- Pokud byly servery importovány pomocí souboru CSV, budou použity zadané hodnoty. Tato metoda je užitečná hlavně v případě, že jste přestali mít přidělený místní počítač, protože využití je ve skutečnosti nízké a vy chcete ušetřit náklady v Azure na správnou velikost. 
-- Pokud nechcete data o výkonu používat, obnovte kritéria změny velikosti na místní, jak je popsáno v předchozí části.
+ Pokud používáte jako místní velikosti, hodnocení serveru nebere v úvahu historii výkonu virtuálních počítačů a disků.
 
-### <a name="calculate-storage-sizing"></a>Výpočet velikosti úložiště
-
-V případě velikosti úložiště se Azure Migrate pokusí mapovat všechny disky připojené k počítači na disk v Azure a funguje následujícím způsobem:
-
-1. Posouzení serveru přidá IOPS čtení a zápisu disku, aby bylo možné získat celkový počet požadovaných IOPS. Podobně přidá hodnoty propustnosti čtení a zápisu k získání celkové propustnosti každého disku.
-2. Pokud jste zadali typ úložiště jako automatický, vychází na základě platných hodnot IOPS a propustnosti serveru k vyhodnocení, jestli by měl být disk v Azure namapovaný na standardní HDD, Standard SSD nebo disk Premium. Pokud je typ úložiště nastavený na HDD úrovně Standard/SSD/Premium, vyhodnocování serveru se pokusí najít SKU disku v rámci vybraného typu úložiště (disky HDD úrovně Standard/SSD/Premium).
-3. Disky jsou vybrané takto:
-    - Pokud server Assessment nenalezne disk s požadovanými vstupně-výstupními operacemi a propustností, označí počítač jako nevhodný pro Azure.
-    - Pokud posouzení serveru najde sadu vhodných disků, vybere disky, které podporují umístění zadané v nastavení posouzení.
-    - Pokud je k dispozici více opravňujících disků, vybírá Server Assessment disk s nejnižšími náklady.
-    - Pokud nejsou k dispozici údaje o výkonu pro jakýkoli disk, k nalezení standardního disku SSD v Azure se použije konfigurační data disku (velikost disku).
-
-### <a name="calculate-network-sizing"></a>Výpočet velikosti sítě
-
-Vyhodnocování serveru se pokouší najít virtuální počítač Azure, který může podporovat počet síťových adaptérů připojených k místnímu počítači a výkon vyžadovaný těmito síťovými adaptéry.
-- Aby se dosáhlo efektivního výkonu sítě v místním VIRTUÁLNÍm počítači, vyhodnocování serveru agreguje data přenášená za sekundu (MB/s) na všech síťových adaptérech a uplatní faktor komfortu. Pomocí tohoto čísla vyhledá virtuální počítač Azure, který může podporovat požadovaný výkon sítě.
-- Společně s výkonem sítě taky posouzení serveru bere v úvahu, jestli virtuální počítač Azure může podporovat požadovaný počet síťových adaptérů.
-- Pokud nejsou k dispozici žádná data o výkonu sítě, posouzení serveru považuje pouze počet síťových adaptérů pro velikost virtuálního počítače.
+- **Velikost výpočetních prostředků**: Přiděluje skladovou jednotku virtuálního počítače Azure na základě velikosti přidělené místně.
+- **Velikost úložiště/disku**: Vyhodnocení serveru se zabývá typem úložiště zadaným ve vlastnostech hodnocení (standardní HDD/SSD/premium) a odpovídajícím způsobem doporučuje typ disku. Výchozí typ úložiště jsou disky premium.
+- **Velikost sítě**: Vyhodnocení serveru bere v úvahu síťový adaptér v místním počítači.
 
 
-### <a name="calculate-compute-sizing"></a>Vypočítat výpočetní velikost
+### <a name="calculate-sizing-performance-based"></a>Vypočítat velikost (na základě výkonu)
 
-Jakmile vypočítá požadavky na úložiště a síť, vyhodnotí se požadavky na procesor a paměť, aby se v Azure vyhledala vhodná velikost virtuálního počítače.
-- Azure Migrate podíváme se na efektivní využité jádra a paměť a najděte vhodnou velikost virtuálního počítače v Azure.
-- Pokud se nenajde žádná vhodná velikost, je počítač označený jako nevhodný pro Azure.
-- Pokud se najde vhodná velikost, Azure Migrate použije výpočty úložiště a sítě. Pak použije nastavení umístění a cenové úrovně pro konečné doporučení velikosti virtuálního počítače.
+Pokud používáte velikost i na základě výkonu, vyhodnocení serveru, které doporučení pro stanovení velikosti provádí takto:
+
+- Vyhodnocení serveru bere v úvahu historii výkonu počítače k identifikaci velikosti virtuálního počítače a typu disku v Azure.
+- Pokud byly servery importovány pomocí souboru CSV, použijí se zadané hodnoty. Tato metoda je užitečná zejména v případě, že jste přerozděleny místní počítač, využití je ve skutečnosti nízká a chcete správně velikost virtuálního počítače v Azure ušetřit náklady. 
+- Pokud nechcete používat data o výkonu, obnovte kritéria velikosti tak, aby byla místní, jak je popsáno v předchozí části.
+
+#### <a name="calculate-storage-sizing"></a>Výpočet velikosti úložiště
+
+Pro velikost úložiště Azure Migrate se pokusí mapovat každý disk připojený k počítači na disk v Azure a funguje takto:
+
+1. Vyhodnocení serveru přidá čtení a zápis viop disku získat celkový požadovaný vipos. Podobně přidá hodnoty propustnosti pro čtení a zápisu, aby získal celkovou propustnost každého disku.
+2. Pokud jste zadali typ úložiště jako automatické, na základě efektivní viops a propustnost hodnoty, vyhodnocení serveru určuje, zda disk by měl být mapován na standardní HDD, standardní SSD nebo premium disk v Azure. Pokud je typ úložiště nastaven na standardní pevný disk/SSD/Premium, vyhodnocení serveru se pokusí najít diskovou skladovou položku v rámci vybraného typu úložiště (disky Standard HDD/SSD/Premium).
+3. Disky jsou vybrány takto:
+    - Pokud server Assessment nemůže najít disk s požadovanými viopy a propustnost, označí počítač jako nevhodný pro Azure.
+    - Pokud vyhodnocení serveru najde sadu vhodných disků, vybere disky, které podporují umístění zadané v nastavení hodnocení.
+    - Pokud existuje více způsobilých disků, vyhodnocení serveru vybere disk s nejnižšími náklady.
+    - Pokud nejsou k dispozici data o výkonu pro libovolný disk, konfigurační data disku (velikost disku) se používají k vyhledání standardního disku SSD v Azure.
+
+#### <a name="calculate-network-sizing"></a>Vypočítat velikost sítě
+
+Vyhodnocení serveru se pokusí najít virtuální počítač Azure, který podporuje počet síťových adaptérů připojených k místnímu počítači a výkon vyžadovaný těmito síťovými adaptéry.
+- Chcete-li získat efektivní výkon sítě místního virtuálního počítače, vyhodnocení serveru agreguje data přenášená za sekundu (Mb/s) z počítače (síť out), přes všechny síťové adaptéry a použije faktor pohodlí. Toto číslo používá k vyhledání virtuálního počítače Azure, který podporuje požadovaný výkon sítě.
+- Spolu s výkonem sítě, vyhodnocení serveru také zvažuje, zda virtuální počítač Azure podporuje požadovaný počet síťových adaptérů.
+- Pokud nejsou k dispozici žádná data o výkonu sítě, vyhodnocení serveru bere v úvahu pouze počet síťových adaptérů pro velikost virtuálního adaptéru.
+
+
+#### <a name="calculate-compute-sizing"></a>Vypočítat velikost výpočetní hodnoty
+
+Po výpočtu požadavků na úložiště a síť, vyhodnocení serveru zvažuje požadavky na procesor a paměť najít vhodnou velikost virtuálního počítače v Azure.
+- Azure Migrate vyhledá efektivní využívaná jádra a paměť a najde v Azure vhodnou velikost virtuálního počítače.
+- Pokud není nalezena žádná vhodná velikost, je počítač označen jako nevhodný pro Azure.
+- Pokud je nalezena vhodná velikost, Azure Migrate použije výpočty úložiště a sítě. Potom použije nastavení umístění a cenové úrovně pro konečné doporučení velikosti virtuálního počítače.
 - Pokud existuje více vhodných velikostí virtuálních počítačů Azure, doporučí se virtuální počítač s nejnižšími náklady.
 
 
-### <a name="calculate-confidence-ratings"></a>Vypočítat hodnocení spolehlivosti
+## <a name="confidence-ratings-performance-based"></a>Hodnocení spolehlivosti (založené na výkonu)
 
-Každé posouzení na základě výkonu v Azure Migrate je přidruženo k hodnocení spolehlivosti, které je v rozsahu od jednoho (nejnižší) po pět hvězdiček (nejvyšší).
+Každé hodnocení založené na výkonu v Azure Migrate je spojeno s hodnocením spolehlivosti, které se pohybuje od jedné (nejnižší) do pěti hvězdiček (nejvyšší). Hodnocení spolehlivosti vám pomůže odhadnout spolehlivost doporučení velikosti poskytovaných Azure Migrate.
+
 - Hodnocení spolehlivosti se k posouzení přiřadí na základě dostupnosti datových bodů potřebných pro výpočet posouzení.
-- Hodnocení spolehlivosti posouzení pomáhá odhadnout spolehlivost doporučení velikostí poskytovaných službou Azure Migrate.
-- Hodnocení spolehlivosti není použitelné pro vyhodnocení *místních* hodnot.
-- Pro určení velikosti na základě výkonu, požadavky na vyhodnocení serveru:
-    - Data o využití procesoru a paměti virtuálního počítače.
-    - IOPS disku a data propustnosti pro každý disk připojený k virtuálnímu počítači.
-    - I/O sítě pro zpracování velikosti pro každý síťový adaptér připojený k virtuálnímu počítači na základě výkonu.
+- Pro velikost na základě výkonu, server hodnocení potřebuje:
+    - Data využití paměti procesoru a virtuálního počítače.
+    - Data viopů disku a propustnost pro každý disk připojený k virtuálnímu počítače.
+    - Vstupně-založené na síťovém vstupně-založené pro zpracování velikosti založené na výkonu pro každý síťový adaptér připojený k virtuálnímu virtuálnímu připojení.
+    - Pokud některý z těchto čísel využití nejsou k dispozici, velikost doporučení nemusí být spolehlivé.
 
-   Pokud některá z těchto čísel využití nejsou v vCenter Server k dispozici, doporučení velikosti nemusí být spolehlivé.
+> [!NOTE]
+> Hodnocení spolehlivosti se nepřiřazuje pro servery hodnocené pomocí importovaného . CSV. Hodnocení se také nevztahují na místní hodnocení podle pohlaví.
+   
+### <a name="ratings"></a>Ratings
 
-V závislosti na procentu dostupných datových bodů se hodnocení spolehlivosti pro posouzení provede následujícím způsobem.
+V závislosti na procentu dostupných datových bodů je hodnocení spolehlivosti pro hodnocení následující.
 
    **Dostupnost datových bodů** | **Hodnocení spolehlivosti**
    --- | ---
@@ -222,34 +240,36 @@ V závislosti na procentu dostupných datových bodů se hodnocení spolehlivost
    61-80% | 4 hvězdičky
    81-100% | 5 hvězdiček
 
-> [!NOTE]
-> Hodnocení spolehlivosti nejsou přiřazena k posouzení serverů importovaných pomocí. Soubor CSV do Azure Migrate. 
+### <a name="low-confidence-ratings"></a>Nízké hodnocení spolehlivosti
 
-#### <a name="low-confidence-ratings"></a>Hodnocení nízké důvěry
+Zde je několik důvodů, proč by hodnocení mohlo získat nízké hodnocení spolehlivosti:
 
-Tady je několik důvodů, proč hodnocení může získat nízkou spolehlivost:
-
-- Nevytvořili jste profil svého prostředí po dobu, po kterou vytváříte posouzení. Pokud například vytvoříte hodnocení s trváním výkonu nastaveným na jeden den, musíte po spuštění zjišťování pro všechny datové body, které se mají shromáždit, počkat aspoň jeden den.
-- Některé virtuální počítače se vypnuly během období, pro které se hodnocení vypočítalo. Pokud jsou některé virtuální počítače po určitou dobu vypnuté, vyhodnocování serveru nemůže shromažďovat data o výkonu pro tuto dobu.
-- Některé virtuální počítače byly vytvořeny během období, pro které bylo hodnocení vypočítáno. Pokud jste například vytvořili vyhodnocení pro historii výkonu za poslední měsíc, ale některé virtuální počítače byly vytvořeny pouze před týdnem, historie výkonu nových virtuálních počítačů nebude po celou dobu trvání k dispozici.
+- Neprofilovat prostředí po dobu, po kterou vytváříte hodnocení. Pokud například vytvoříte hodnocení s dobou trvání výkonu nastavenou na jeden den, musíte počkat alespoň jeden den po spuštění zjišťování pro všechny datové body, které mají být shromážděny.
+- Některé virtuální společnosti byly vypnuty během období, pro které bylo vypočteno posouzení. Pokud jsou některé virtuální servery po určitou dobu vypnuté, hodnocení serveru nemůže shromažďovat údaje o výkonu za toto období.
+- Některé virtuální společnosti byly vytvořeny během období, pro které bylo vypočteno posouzení. Například pokud jste vytvořili hodnocení pro historii výkonu za poslední měsíc, ale některé virtuální chody byly vytvořeny v prostředí pouze před týdnem, historie výkonu nových virtuálních hrach nebude existovat po celou dobu trvání.
 
 > [!NOTE]
-> Pokud je hodnocení spolehlivosti nějakého posouzení menší než pět hvězdiček, doporučujeme, abyste počkali aspoň jeden den, než zařízení profiluje prostředí, a pak posouzení přepočítá. Pokud to neuděláte, velikost na základě výkonu nemusí být spolehlivá. V takovém případě doporučujeme, abyste přepnuli posouzení na místní nastavení velikosti.
+> Pokud je hodnocení spolehlivosti jakéhokoli hodnocení menší než pět hvězdiček, doporučujeme počkat alespoň jeden den, než zařízení profiluje prostředí, a poté přepočítat hodnocení. Pokud tak nechcete, velikost na základě výkonu nemusí být spolehlivé. V takovém případě doporučujeme přepnout hodnocení na místní velikosti.
 
-## <a name="calculate-monthly-costs"></a>Vypočítat měsíční náklady
+## <a name="calculate-monthly-costs"></a>Výpočet měsíčních nákladů
 
-Až se dokončí Změna velikosti doporučení, Azure Migrate vypočítá náklady na výpočetní prostředky a úložiště pro po migraci.
+Po dokončení doporučení pro nastavení velikosti Azure Migrate vypočítá náklady na výpočetní prostředky a úložiště po migraci.
 
-- **Náklady na výpočetní**výkon: používá se doporučená velikost virtuálního počítače Azure, Azure Migrate pro výpočet měsíčních nákladů na virtuální počítač používá rozhraní API pro fakturaci.
-    - Výpočet vezme v úvahu operační systém, Software Assurance, rezervované instance, dobu provozu virtuálního počítače, umístění a nastavení měny.
-    - Agreguje náklady napříč všemi počítači za účelem výpočtu celkových měsíčních výpočetních nákladů.
-- **Náklady na úložiště**: měsíční náklady na úložiště pro počítač se počítají pomocí agregace měsíčních nákladů na všechny disky připojené k počítači, a to takto:
-    - Posouzení serveru vypočítá celkové měsíční náklady na úložiště tím, že agreguje náklady na úložiště pro všechny počítače.
-    - V současné době Výpočet nebere v úvahu nabídky uvedené v nastavení hodnocení.
+- **Náklady na výpočetní výkon**: Pomocí doporučené velikosti virtuálního počítače Azure migrace používá rozhraní API pro fakturaci k výpočtu měsíčních nákladů na virtuální počítač.
+    - Výpočet bere v úvahu operační systém, zabezpečení softwaru, rezervované instance, dobu provozu virtuálního počítače, umístění a nastavení měny.
+    - Agreguje náklady napříč všemi počítači a vypočítá celkové měsíční výpočetní náklady.
+- **Náklady na úložiště**: Měsíční náklady na úložiště pro stroj se vypočítátak, že se agregují měsíční náklady na všechny disky připojené k počítači, a to následovně:
+    - Vyhodnocení serveru vypočítá celkové měsíční náklady na úložiště agregací nákladů na úložiště všech počítačů.
+    - V současné době výpočet nebere v úvahu nabídky zadané v nastavení hodnocení.
 
-Náklady se zobrazují v měně určené v nastavení hodnocení.
+Náklady jsou zobrazeny v měně zadané v nastavení hodnocení.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 [Projděte si](best-practices-assessment.md) osvědčené postupy pro vytváření hodnocení. 
+
+
+- Další informace o spuštění hodnocení pro [virtuální zařízení VMware](tutorial-prepare-vmware.md), [virtuální chod y Hyper-V](tutorial-prepare-hyper-v.md)a [fyzické servery](tutorial-prepare-physical.md).
+- Informace o hodnocení serverů [importovaných pomocí souboru CSV](tutorial-assess-import.md).
+- Informace o nastavení [vizualizace závislostí](concepts-dependency-visualization.md).

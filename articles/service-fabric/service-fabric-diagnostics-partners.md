@@ -1,46 +1,46 @@
 ---
-title: Partneři monitorování Azure Service Fabric
-description: Naučte se monitorovat aplikace, clustery a infrastrukturu Azure Service Fabric pomocí řešení monitorování partnerů.
+title: Partneři pro monitorování infrastruktury služeb Azure
+description: Zjistěte, jak monitorovat aplikace, clustery a infrastrukturu Azure Service Fabric pomocí řešení pro monitorování partnerů.
 author: srrengar
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: srrengar
 ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645714"
 ---
-# <a name="azure-service-fabric-monitoring-partners"></a>Partneři monitorování Azure Service Fabric
+# <a name="azure-service-fabric-monitoring-partners"></a>Partneři pro monitorování infrastruktury služeb Azure
 
-Tento článek ukazuje, jak může monitorovat své Service Fabric aplikace, clustery a infrastrukturu několik partnerskými řešeními. Společně s každým z partnerů jsme pracovali pro vytváření integrovaných nabídek pro Service Fabric.
+Tento článek ukazuje, jak lze sledovat jejich service fabric aplikace, clustery a infrastrukturu s několika partnerských řešení. Spolupracovali jsme s každým z níže uvedených partnerů na vytvoření integrovaných nabídek pro Service Fabric.
 
 ## <a name="dynatrace"></a>Dynatrace
 
-Naše integrace s dynaTrace poskytuje mnoho funkcí v krabicích pro monitorování clusterů Service Fabric. Při instalaci dynaTrace OneAgent na vaše instance VMSS získáte čítače výkonu a topologii nasazení Service Fabric až do úrovně aplikace. DynaTrace je také skvělou volbou pro místní monitorování. Podívejte se na více funkcí uvedených v [oznámení](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) a [pokyny](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) , jak povolit dynaTrace v clusteru. 
+Naše integrace s Dynatrace poskytuje mnoho funkcí po vybalení z krabice pro sledování clusterů Service Fabric. Instalace Dynatrace OneAgent na vaše instance VMSS vám poskytuje čítače výkonu a topologie nasazení Service Fabric až na úroveň aplikace. Dynatrace je také skvělou volbou pro místní monitorování. Podívejte se na další funkce uvedené v [oznámení](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) a [pokyny](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) k povolení Dynatrace ve vašem clusteru. 
 
-## <a name="datadog"></a>Datadog
+## <a name="datadog"></a>Datový pes
 
-Služby Datadog má rozšíření pro VMSS pro instance systému Windows i Linux. Pomocí služby Datadog můžete shromažďovat protokoly událostí Windows a shromažďovat tak Service Fabric události platformy ve Windows. Přečtěte si pokyny k odeslání diagnostických dat [do služby Datadog.](https://www.datadoghq.com/blog/azure-monitoring-enhancements/#integrate-with-azure-service-fabric)
+Datadog má rozšíření pro VMSS pro Windows i Linux instance. Pomocí Datadog můžete shromažďovat protokoly událostí systému Windows a tím shromažďovat události platformy Service Fabric v systému Windows. Podívejte se na pokyny, jak odeslat diagnostická data data Datadog [zde](https://www.datadoghq.com/blog/azure-monitoring-enhancements/#integrate-with-azure-service-fabric).
 
 ## <a name="appdynamics"></a>AppDynamics
 
-Service Fabric integrace s AppDynamics je na úrovni aplikace. Díky aktualizaci proměnných prostředí a používání aplikace Dynamics balíčky NuGet můžete odeslat telemetrii aplikace do AppDynamics. Informace o tom, jak integrovat aplikace Service Fabric .NET pomocí AppDynamics, najdete v těchto [pokynech](https://docs.appdynamics.com/display/AZURE/Install+AppDynamics+for+Azure+Service+Fabric) .
+Integrace Service Fabric s AppDynamics je na úrovni aplikace. Aktualizací proměnných prostředí a pomocí aplikace Dynamics NuGets můžete odeslat telemetrii aplikace do AppDynamics. V těchto [pokynech](https://docs.appdynamics.com/display/AZURE/Install+AppDynamics+for+Azure+Service+Fabric) naleznete informace o integraci aplikací .NET Service Fabric s aplikací AppDynamics.
 
 ## <a name="new-relic"></a>New Relic
 
-New Relic je další nástroj pro správu výkonu aplikací, který se dobře integruje s Service Fabric aplikacemi. Můžete nainstalovat nové balíčky NuGet Relic a přidat konkrétní proměnné prostředí do souborů manifestu pro odeslání telemetrie aplikace do nového Relic. Podívejte se na tyto [pokyny](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/install-net-agent-azure-service-fabric) , abyste povolili novou telemetrii Relic pro aplikace Service Fabric .NET.
+New Relic je další nástroj pro správu výkonu aplikací, který se dobře integruje s aplikacemi Service Fabric. Můžete nainstalovat nové balíčky Relic NuGet a přidat specifické proměnné prostředí v souborech manifestu k odeslání telemetrie aplikace do new relic. V těchto [pokynech](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/install-net-agent-azure-service-fabric) povolte novou telemetrická data relic pro aplikace .NET Service Fabric.
 
-## <a name="elk"></a>ELK 
+## <a name="elk"></a>Elk 
 
-ELK Stack je kolekcí Open Source technologií: Elasticsearch, Logstash a Kibana. Pomocí těchto technologií v kombinaci můžete shromažďovat, ukládat a analyzovat Service Fabric monitorování a diagnostická data. V tomto kurzu se naučíme, jak to udělat s Service Fabric nativními [aplikacemi Java](service-fabric-tutorial-java-elk.md). 
+Zásobník ELK je kolekce open source technologií: Elasticsearch, Logstash a Kibana. Pomocí těchto technologií v kombinaci, můžete shromažďovat, ukládat a analyzovat service fabric monitorování a diagnostická data. Máme návod, jak to udělat s service fabric nativní Java aplikace [zde](service-fabric-tutorial-java-elk.md). 
 
 ## <a name="humio"></a>Humio
 
-Humio je služba Shromažďování protokolů, která dokáže shromažďovat protokoly z vašich aplikací a událostí z Service Fabric v cloudu nebo místně v reálném čase. Kromě živého pozorování Humio nabízí špičkové možnosti analýzy a vizualizace pro zobrazení a shromažďování informací z diagnostiky. Humio má nákladově efektivní cenové plány a je sestavená tak, aby bylo možné škálovat a současně udržet rychlou rychlost. Přímo se integruje s Service Fabricmi událostmi platforem a Telemetrie aplikací. [Tady](https://github.com/humio/service-fabric-humio)si můžete přečíst další informace o integraci Humio a Service Fabric.
+Humio je služba shromažďování protokolů, která může shromažďovat protokoly z vašich aplikací a událostí z Service Fabric v cloudu nebo v místním prostředí v reálném čase. Kromě živé pozorovatelnosti nabízí humio nejmodernější možnosti analýzy a vizualizace pro prohlížení a shromažďování informací z vaší diagnostiky. Humio má nákladově efektivní cenové plány a je postaven tak, aby škálovat při zachování je to odlehčení rychlé rychlosti. Přímo se integruje s událostmi platformy Service Fabric a telemetrií aplikací. Více informací o integraci Humio a Service Fabric si můžete přečíst [zde](https://github.com/humio/service-fabric-humio).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled monitorování a diagnostiky](service-fabric-diagnostics-overview.md) v Service Fabric
-* Naučte se [diagnostikovat běžné scénáře](service-fabric-diagnostics-common-scenarios.md) pomocí našich nástrojů první strany.
+* Získejte [přehled o monitorování a diagnostice](service-fabric-diagnostics-overview.md) v service fabric
+* Naučte se [diagnostikovat běžné scénáře](service-fabric-diagnostics-common-scenarios.md) pomocí našich nástrojů první strany

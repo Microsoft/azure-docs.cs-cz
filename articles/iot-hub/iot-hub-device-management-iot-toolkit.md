@@ -1,6 +1,6 @@
 ---
 title: Správa zařízení Azure IoT pomocí nástrojů Azure IoT pro VSCode
-description: Využijte Azure IoT Tools for Visual Studio Code pro správu zařízení Azure IoT Hub, která nabízí přímé metody a možnosti správy požadovaných vlastností.
+description: Použijte nástroje Azure IoT Tools for Visual Studio Code for Azure IoT Hub správa zařízení, představovat přímé metody a twin požadované možnosti správy vlastností.
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
@@ -8,97 +8,97 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75911916"
 ---
-# <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Použití nástrojů Azure IoT pro Visual Studio Code pro správu zařízení Azure IoT Hub
+# <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Použití nástrojů Azure IoT tools for Visual Studio Code for Azure IoT Hub management
 
-![Komplexní diagram](media/iot-hub-get-started-e2e-diagram/2.png)
+![Diagram koncového bodu](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) jsou užitečnou příponou Visual Studio Code, která usnadňuje vývoj IoT Hub a správu aplikací IoT. Obsahuje možnosti správy, které můžete použít k provádění různých úloh.
+[Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) je užitečné rozšíření kódu Visual Studia, které usnadňuje správu ioT hubu a vývoj aplikací IoT. Dodává se s možnostmi správy, které můžete použít k provádění různých úkolů.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Možnost správy          | Úkol                    |
+| Možnost řízení          | Úkol                    |
 |----------------------------|--------------------------------|
-| Přímé metody             | Udělejte zařízení jako takové, jako je spuštění nebo zastavení odesílání zpráv nebo restartování zařízení.                                        |
-| Čtení z vlákna zařízení           | Načte stav nahlášeného zařízení. Například zařízení nahlásí, že indikátor LED právě bliká.                                    |
-| Aktualizovat dvojitou dvojici zařízení         | Vložte zařízení do určitých stavů, jako je například nastavení indikátoru LED na zelenou nebo nastavení intervalu odesílání telemetrie na 30 minut.         |
-| Zprávy typu cloud zařízení   | Odesílání oznámení do zařízení. Například "je velmi pravděpodobnost, že už ještě nejste v dnešní době deště. Nezapomeňte uvést deštník. "              |
+| Přímé metody             | Nastavíte zařízení tak, aby spouštění nebo zastavování odesílání zpráv nebo restartování zařízení.                                        |
+| Čtení dvojčete zařízení           | Získejte nahlášený stav zařízení. Zařízení například hlásí, že led dioda nyní bliká.                                    |
+| Aktualizovat dvojče zařízení         | Přepni zařízení do určitých stavů, například nastavení led diody na zelenou nebo nastavení intervalu odesílání telemetrie na 30 minut.         |
+| Zprávy z cloudu na zařízení   | Odesílat oznámení do zařízení. Například, "Je velmi pravděpodobné, že déšť dnes. Nezapomeň si vzít deštník."              |
 
-Podrobnější vysvětlení rozdílů a pokynů k používání těchto možností najdete v tématu [pokyny k komunikaci mezi zařízeními a cloudem](iot-hub-devguide-d2c-guidance.md) a [pokyny pro komunikaci z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md).
+Podrobnější vysvětlení rozdílů a pokyny k použití těchto možností naleznete v tématu [Pokyny pro komunikaci mezi zařízeními](iot-hub-devguide-d2c-guidance.md) a pokyny ke komunikaci mezi [cloudem](iot-hub-devguide-c2d-guidance.md).
 
-Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu zařízení (metadata, konfigurace a podmínky). IoT Hub přetrvává pro každé zařízení, které se k němu připojuje. Další informace o nevlákenách zařízení najdete v tématu [Začínáme s dvojitými zprávami](iot-hub-node-node-twin-getstarted.md)o zařízení.
+Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu zařízení (metadata, konfigurace a podmínky). IoT Hub zachová dvojče zařízení pro každé zařízení, které se k němu připojí. Další informace o dvojčatech zařízení najdete [v tématu Začínáme s dvojčaty zařízení](iot-hub-node-node-twin-getstarted.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-Naučíte se používat nástroje Azure IoT pro Visual Studio Code s různými možnostmi správy ve vývojovém počítači.
+Naučíte se pomocí Nástroje Azure IoT pro Visual Studio kód s různými možnostmi správy na vývojovém počítači.
 
-## <a name="what-you-do"></a>Co dělat
+## <a name="what-you-do"></a>Co děláte
 
-Spusťte nástroje Azure IoT Tools pro Visual Studio Code s různými možnostmi správy.
+Spouštějte nástroje Azure IoT pro kód Visual Studia s různými možnostmi správy.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
 * Aktivní předplatné Azure.
-* Azure IoT Hub v rámci vašeho předplatného.
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [Nástroje Azure IoT pro vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo [otevřete tento odkaz v Visual Studio Code](vscode:extension/vsciot-vscode.azure-iot-tools).
+* Azure IoT hub v rámci vašeho předplatného.
+* [Kód visual studia](https://code.visualstudio.com/)
+* [Nástroje Azure IoT pro kód VS](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo [otevřete tento odkaz v kódu Visual Studia](vscode:extension/vsciot-vscode.azure-iot-tools).
 
-## <a name="sign-in-to-access-your-iot-hub"></a>Přihlaste se ke službě IoT hub
+## <a name="sign-in-to-access-your-iot-hub"></a>Přihlášení pro přístup k centru IoT hub
 
-1. V **Průzkumníkovi** zobrazení vs Code rozbalte v levém dolním rohu část **Azure IoT Hub Devices** .
+1. V **zobrazení Exploreru** v kódu VS rozbalte oddíl **Zařízení Azure IoT Hub** v levém dolním rohu.
 
-2. V místní nabídce klikněte na **vybrat IoT Hub** .
+2. V místní nabídce klikněte na **Vybrat centrum IoT Hub.**
 
-3. Automaticky otevírané okno se zobrazí v pravém dolním rohu, abyste se mohli poprvé přihlásit do Azure.
+3. V pravém dolním rohu se zobrazí vyskakovací okno, které vám umožní poprvé se přihlásit do Azure.
 
-4. Po přihlášení se zobrazí seznam předplatných Azure a pak vyberte předplatné Azure a IoT Hub.
+4. Po přihlášení se zobrazí váš seznam předplatných Azure a pak vyberte Předplatné Azure a IoT Hub.
 
-5. Seznam zařízení se během několika sekund zobrazí na kartě **zařízení Azure IoT Hub** .
+5. Seznam zařízení se zobrazí na kartě **Zařízení Služby Azure IoT Hub** během několika sekund.
 
    > [!Note]
-   > Nastavení můžete taky dokončit výběrem možnosti **Set IoT Hub Connection String** (Nastavení připojovacího řetězce IoT Hubu). Zadejte připojovací řetězec zásad **iothubowner** pro IoT Hub, ke kterému se vaše zařízení IoT připojuje v místním okně.
+   > Nastavení můžete taky dokončit výběrem možnosti **Set IoT Hub Connection String** (Nastavení připojovacího řetězce IoT Hubu). Zadejte připojovací řetězec zásad **iothubowner** pro službu IoT hub, ke kterému se vaše zařízení IoT připojuje v automaticky otevíranéokno.
 
 ## <a name="direct-methods"></a>Přímé metody
 
-1. Klikněte pravým tlačítkem na zařízení a vyberte **vyvolat přímou metodu**. 
+1. Klepněte pravým tlačítkem myši na zařízení a vyberte **příkaz Vyvolat přímou metodu**. 
 
-2. Do vstupního pole zadejte název metody a datovou část.
+2. Zadejte název metody a datovou část do vstupního pole.
 
-3. Výsledky se zobrazí ve **výstupu** > zobrazení **Azure IoT Hub** .
+3. Výsledky se zobrazí v zobrazení **SLUŽBY OUTPUT** > **Azure IoT Hub.**
 
-## <a name="read-device-twin"></a>Čtení z vlákna zařízení
+## <a name="read-device-twin"></a>Čtení dvojčete zařízení
 
-1. Klikněte pravým tlačítkem na zařízení a vyberte **Upravit nevlákenné zařízení**. 
+1. Klikněte pravým tlačítkem myši na zařízení a vyberte **upravit dvojče zařízení**. 
 
-2. Soubor **Azure-IoT-Device-s dvojitou příponou. JSON** se otevře s obsahem vlákna zařízení.
+2. Soubor **azure-iot-device-twin.json** se otevře s obsahem dvojčete zařízení.
 
-## <a name="update-device-twin"></a>Aktualizovat dvojitou dvojici zařízení
+## <a name="update-device-twin"></a>Aktualizovat dvojče zařízení
 
-1. Proveďte některé úpravy **značek** nebo **vlastností. požadované** pole.
+1. Proveďte některé úpravy **značek** nebo **polí properties.desired.**
 
-2. Klikněte pravým tlačítkem na soubor **Azure-IoT-Device-zdvojené. JSON** .
+2. Klikněte pravým tlačítkem myši na soubor **azure-iot-device-twin.json.**
 
-3. Vyberte možnost **aktualizovat dvojitou adresu zařízení** , aby se aktualizovaly vlákna zařízení.
+3. Chcete-li aktualizovat dvojče zařízení, vyberte **aktualizovat dvojče zařízení.**
 
-## <a name="send-cloud-to-device-messages"></a>Posílání zpráv z cloudu na zařízení
+## <a name="send-cloud-to-device-messages"></a>Odesílání zpráv z cloudu do zařízení
 
-Pokud chcete poslat zprávu ze služby IoT Hub do svého zařízení, postupujte podle těchto kroků:
+Pokud chcete do zařízení poslat zprávu z centra IoT, postupujte takto:
  
-1. Klikněte pravým tlačítkem na zařízení a vyberte **Odeslat zprávu C2D do zařízení**. 
+1. Klikněte pravým tlačítkem myši na zařízení a vyberte **Odeslat zprávu C2D do zařízení**. 
 
-2. Do vstupního pole zadejte zprávu.
+2. Zadejte zprávu do vstupního pole.
 
-3. Výsledky se zobrazí ve **výstupu** > zobrazení **Azure IoT Hub** .
+3. Výsledky se zobrazí v zobrazení **SLUŽBY OUTPUT** > **Azure IoT Hub.**
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistili jste, jak používat rozšíření Azure IoT Tools pro Visual Studio Code s různými možnostmi správy.
+Naučili jste se používat rozšíření nástrojů Azure IoT pro kód Sady Visual Studio s různými možnostmi správy.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

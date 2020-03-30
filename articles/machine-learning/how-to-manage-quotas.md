@@ -1,7 +1,7 @@
 ---
-title: Správa prostředků & kvót
+title: Správa zdrojů & kvótách
 titleSuffix: Azure Machine Learning
-description: Přečtěte si o kvótách prostředků pro Azure Machine Learning a o tom, jak požádat o větší kvótu.
+description: Přečtěte si o kvótách na prostředky pro Azure Machine Learning a jak požádat o další kvóty.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,134 +11,134 @@ author: nishankgu
 ms.author: nigup
 ms.date: 03/05/2020
 ms.openlocfilehash: 17a4652604c0faa804d24530869aac0848c972b3
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399160"
 ---
-# <a name="manage-and-request-quotas-for-azure-resources"></a>Správa a požádat o kvóty pro prostředky Azure
+# <a name="manage-and-request-quotas-for-azure-resources"></a>Správa a vyžádání kvót pro prostředky Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Tento článek poskytuje podrobné informace o předkonfigurovaných omezeních prostředků Azure pro vaše předplatné. K dispozici jsou také pokyny k vyžádání vylepšení kvóty pro jednotlivé typy prostředků. Tato omezení jsou umístěny v místě, aby se zabránilo rozpočtu překračující z důvodu možných podvodů a případném dalším sdílení dodržovat omezení kapacity Azure.
+Tento článek obsahuje podrobnosti o předem nakonfigurovaných omezení prostředků Azure pro vaše předplatné. Zahrnuty jsou také pokyny, jak požádat o vylepšení kvót pro každý typ prostředku. Tato omezení jsou zavedena, aby se zabránilo překročení rozpočtu z důvodu podvodů a dodržovat omezení kapacity Azure.
 
-Stejně jako u ostatních služeb Azure platí omezení pro určité prostředky spojené s Azure Machine Learning. Tato omezení omezují rozsah od limitu na počet pracovních prostorů, který se má omezit na skutečné základní výpočetní prostředky, které se používají pro školení modelů nebo odvozování a bodování. 
+Stejně jako u jiných služeb Azure existují omezení na určité prostředky spojené s Azure Machine Learning. Tyto limity se pohybují od omezení počtu pracovních prostorů až po omezení skutečného podkladového výpočetního výkonu, který se používá pro školení modelu nebo odvození/vyhodnocování. 
 
-Při návrhu a škálování prostředků Azure Machine Learning pro produkční úlohy zvažte Tato omezení. Pokud například váš cluster nedosáhne cílového počtu uzlů, možná jste dosáhli limitu Azure Machine Learning výpočetních jader pro vaše předplatné. Pokud chcete zvýšit limit nebo kvóty nad výchozí omezení, otevřete žádost o podporu online zákazníků bez poplatků. Omezení nelze zvýšit nad maximální mezní hodnoty uvedené v následujících tabulkách z důvodu omezení kapacity Azure. Pokud neexistuje žádný sloupec maximálního limitu, prostředek nemá nastavitelná omezení.
+Při navrhování a škálování prostředků Azure Machine Learning pro produkční úlohy zvažte tato omezení. Například pokud váš cluster nedosáhne cílového počtu uzlů, pak jste pravděpodobně dosáhli limitu výpočetních jader Azure Machine Learning pro vaše předplatné. Pokud chcete zvýšit limit nebo kvótu nad výchozí limit, otevřete online žádost o zákaznickou podporu zdarma. Omezení nelze zvýšit nad maximální limit hodnotu zobrazenou v následujících tabulkách z důvodu omezení kapacity Azure. Pokud není žádný sloupec Maximální limit, zdroj nemá nastavitelná omezení.
 
-## <a name="special-considerations"></a>Zvláštní upozornění
+## <a name="special-considerations"></a>Zvláštní aspekty
 
-+ Kvóta je kreditního limitu záruku kapacity. Pokud máte velkou kapacitu, obraťte se na podporu Azure.
++ Kvóta je úvěrový limit, nikoli záruka kapacity. Pokud máte rozsáhlé kapacity, obraťte se na podporu Azure.
 
-+ Vaše kvóta se sdílí mezi všemi službami ve vašich předplatných, včetně Azure Machine Learning. Jedinou výjimkou je Azure Machine Learning výpočetní prostředí, které má samostatnou kvótu od základní výpočetní kvóty. Je potřeba Vypočítat využití kvót ve všech službách při vyhodnocení potřeb kapacity.
++ Vaše kvóta je sdílena ve všech službách ve vašich předplatných, včetně Azure Machine Learning. Jedinou výjimkou je Azure Machine Learning výpočetní prostředky, které má samostatnou kvótu od kvóty základní výpočetní. Při vyhodnocování potřeb kapacity nezapomeňte vypočítat využití kvóty ve všech službách.
 
-+ Výchozí limity se liší podle typu kategorie nabídky, jako je bezplatná zkušební verze, průběžné platby a série virtuálních počítačů, například Dv2, F, G atd.
++ Výchozí limity se liší podle typu kategorie nabídky, jako je bezplatná zkušební verze, průběžná platba a řada virtuálních počítačích, například Dv2, F, G a tak dále.
 
 ## <a name="default-resource-quotas"></a>Výchozí kvóty prostředků
 
-Tady je rozpis kvóty podle různých typů prostředků v rámci vašeho předplatného Azure.
+Tady je rozpis limitů kvót podle různých typů prostředků v rámci předplatného Azure.
 
 > [!IMPORTANT]
-> Omezení se můžou změnit. Nejnovější lze vždy najít v [dokumentu](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) kvót na úrovni služby pro všechny Azure.
+> Limity se mohou změnit. Nejnovější lze vždy nalézt na úrovni služby [kvóty dokumentu](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) pro všechny Azure.
 
-### <a name="virtual-machines"></a>Virtuální počítače
-U každého předplatného Azure existuje omezení počtu virtuálních počítačů, které můžete mít v rámci služeb nebo samostatně. Toto omezení je na úrovni oblasti, jak na celkový počet jader a také na základě za řady.
+### <a name="virtual-machines"></a>Virtual Machines
+Pro každé předplatné Azure existuje limit na počet virtuálních počítačů, které můžete mít napříč službami nebo samostatnými. Tento limit je na úrovni regionu jak na celkovém jádru, tak i na základě počtu rodin.
 
-V jádrech virtuálních počítačů je omezení regionálního celkového počtu a rozsah řady podle velikosti (Dv2, F atd.), které jsou samostatně vynutily. Představte si například předplatné s omezením celkového počtu 30 jader virtuálního počítače na oblast USA – východ, omezením počtu 30 jader na řadu A a 30 jader na řadu D. V tomto předplatném by bylo možné nasadit 30 virtuálních počítačů řady A1, 30 virtuálních počítačů řady D1 nebo jejich kombinaci, která nepřekročí celkový počet 30 jader (například 10 virtuálních počítačů řady A1 a 20 virtuálních počítačů řady D1).
+Jádra virtuálních strojů mají regionální celkový limit a regionální limit na velikost (Dv2, F atd.), které jsou vynuceny samostatně. Představte si například předplatné s omezením celkového počtu 30 jader virtuálního počítače na oblast USA – východ, omezením počtu 30 jader na řadu A a 30 jader na řadu D. V tomto předplatném by bylo možné nasadit 30 virtuálních počítačů řady A1, 30 virtuálních počítačů řady D1 nebo jejich kombinaci, která nepřekročí celkový počet 30 jader (například 10 virtuálních počítačů řady A1 a 20 virtuálních počítačů řady D1).
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-Podrobnější a aktuální seznam limitů [kvót najdete v článku o](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)kvótě v rámci Azure.
+Podrobnější a aktuální seznam limitů kvót najdete v článku kvóty pro celý Azure [zde](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
-Pro Azure Machine Learning Compute je výchozí limit kvóty na počtu jader a počet jednu oblast v rámci předplatného jedinečný výpočetní prostředky. Tato kvóta je oddělená od výše uvedené kvóty virtuálních počítačů a omezení jádra nejsou sdílená mezi těmito dvěma typy prostředků, protože AmlCompute je spravovaná služba, která nasazuje prostředky v hostovaném modelu.
+Pro Azure Machine Learning Compute je výchozí limit kvóty na počet jader a počet jedinečných výpočetních prostředků povolených pro oblast v předplatném. Tato kvóta je oddělená od kvóty jádra virtuálního počítače výše a základní limity nejsou sdíleny mezi dvěma typy prostředků, protože AmlCompute je spravovaná služba, která nasazuje prostředky v hostovaném modelu.
 
-K dispozici prostředky:
-+ Vyhrazená jádra na oblast mají výchozí omezení 24-300 v závislosti na typu nabídky předplatného s vyšším počtem výchozích hodnot pro typy nabídek EA a CSP.  Počet vyhrazených jader na předplatné se dá zvýšit a pro každou rodinu virtuálních počítačů se liší. Některé specializované rodiny virtuálních počítačů, jako jsou NCv2, NCv3 nebo ND Series, začínají výchozím nastavením s nulovými jádry. Kontaktujte podporu Azure tím, že si vyžádáte žádost o kvótu a prodiskutujte možnosti zvýšení.
+Dostupné zdroje:
++ Vyhrazená jádra pro oblast mají výchozí limit 24–300 v závislosti na typu nabídky předplatného s vyššími výchozími hodnotami pro typy nabídek EA a CSP.  Počet vyhrazených jader na jedno předplatné se dá zvýšit a pro každou rodinu virtuálních aplikací se liší. Některé specializované rodiny virtuálních zařízení, jako jsou řady NCv2, NCv3 nebo ND, začínají s výchozím nastavením nulových jader. Obraťte se na podporu Azure tím, že vyvolá žádost o kvótu k projednání možnosti zvýšení.
 
-+ Jádra s nízkou prioritou na oblast mají výchozí limit 100 – 3000 v závislosti na typu nabídky předplatného s vyššími výchozími hodnotami pro nabídky EA a CSP. Počet jader s nízkou prioritou na předplatné se dá zvýšit a v rámci rodiny virtuálních počítačů je jediná hodnota. Požádejte podporu Azure o zvýšení možnosti.
++ Jádra s nízkou prioritou na oblast mají výchozí limit 100 – 3000 v závislosti na typu nabídky předplatného s vyššími výchozími hodnotami pro typy nabídek EA a CSP. Počet jader s nízkou prioritou na jedno předplatné se může zvýšit a je to jedna hodnota napříč rodinami virtuálních aplikací. Obraťte se na podporu Azure diskutovat o možnosti zvýšení.
 
-+ Počet clusterů na oblast má výchozí limit 200. Sdílí se mezi školicím clusterem a výpočetní instancí (což se pro účely kvót považuje za cluster s jedním uzlem). Pokud chcete nad tento limit zvýšit, kontaktujte podporu Azure.
++ Clustery na oblast mají výchozí limit 200. Ty jsou sdíleny mezi trénovací cluster a výpočetní instance (která je považována za jeden uzel clusteru pro účely kvóty). Pokud chcete požádat o zvýšení nad rámec tohoto limitu, obraťte se na podporu Azure.
 
-+ K dispozici je * * dalších striktních omezení, která nelze po dosažení limitu překročit.
++ Existují ** další přísné limity, které nelze překročit po zásahu.
 
-| **Prostředek** | **Maximální limit** |
+| **Zdrojů** | **Maximální limit** |
 | --- | --- |
-| Maximální pracovních prostorů na skupinu prostředků | 800 |
-| Maximální počet uzlů v jediném prostředku Azure Machine Learning Compute (AmlCompute) | 100 uzlů |
-| Maximální GPU MPI zpracovává jeden uzel | 1 – 4 |
-| Maximální pracovních procesů GPU na uzlu | 1 – 4 |
-| Maximální doba života | 90 dnů<sup>1</sup> |
-| Maximální doba života úlohy na uzlu s nízkou prioritou | 7 dnů<sup>2</sup> |
-| Servery parametr maximálního počtu uzlů | 1 |
+| Maximální počet pracovních prostorů na skupinu prostředků | 800 |
+| Maximální počet uzlů v jednom prostředku Azure Machine Learning Compute (AmlCompute) | 100 uzlů |
+| Maximální počet procesů GPU MPI na uzel | 1-4 |
+| Maximální počet pracovníků GPU na uzel | 1-4 |
+| Maximální životnost úlohy | 90 dní<sup>1</sup> |
+| Maximální životnost úlohy v uzlu s nízkou prioritou | 7 dní<sup>2</sup> |
+| Maximální parametrservery na uzel | 1 |
 
-<sup>1</sup> maximální doba života označuje čas spuštění a jeho dokončení. Dokončené běhy zachovávají po neomezenou dobu; data pro spuštění se nedokončí v rámci maximální doby života není přístupný.
-<sup>2</sup> úlohy v uzlu s nízkou prioritou by mohly být přerušeny, kdykoli existuje omezení kapacity. V rámci úlohy doporučujeme implementovat kontrolní body.
+<sup>1</sup> Maximální životnost se vztahuje k době spuštění spuštění a po jejím dokončení. Dokončené spuštění přetrvávají po neomezenou dobu; data pro spuštění, která nebyla dokončena během maximální životnosti, nejsou přístupná.
+<sup>2</sup> Úlohy v uzlu s nízkou prioritou mohou být vystavovány, kdykoli dojde k omezení kapacity. Doporučujeme implementovat kontrolní body ve vaší práci.
 
-### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning kanály
-U Azure Machine Learningch kanálů existuje kvótový limit počtu kroků v kanálu a počtu spuštění publikovaných kanálů na základě plánu na oblast v rámci předplatného.
-- Maximální počet kroků povolených v kanálu je 30 000.
-- Maximální počet spuštění založených na plánech a přijetí změn objektů BLOB pro plány publikovaných kanálů publikovaných na blogu v rámci předplatného za měsíc je 100 000
+### <a name="azure-machine-learning-pipelines"></a>Kanály Azure Machine Learning
+Pro Azure Machine Learning kanály je omezení kvóty na počet kroků v kanálu a na počet spuštění na základě plánu publikovaných kanálů na oblast v předplatném.
+- Maximální povolený počet kroků v kanálu je 30 000
+- Maximální počet součtu spuštění založených na plánu a vyžádat objekt blob pro plány publikovaných kanálů aktivované blogem na jedno předplatné za měsíc je 100 000
 
 > [!NOTE]
-> Pokud chcete tento limit zvýšit, kontaktujte [Podpora Microsoftu](https://azure.microsoft.com/support/options/).
+> Chcete-li tento limit zvýšit, obraťte se na [podporu společnosti Microsoft](https://azure.microsoft.com/support/options/).
 
-### <a name="container-instances"></a>Instance kontejneru
+### <a name="container-instances"></a>Instance kontejnerů
 
-Platí omezení na počet instancí kontejneru, který můžete aktivovat v daném časovém období (každou hodinu s rozsahem) nebo napříč celé předplatné.
+Existuje také omezení počtu instancí kontejneru, které můžete střídat v daném časovém období (s rozsahem každou hodinu) nebo v rámci celého předplatného.
 
 [!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
 
-Podrobnější a aktuální seznam limitů [kvót najdete v článku o](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)kvótě v rámci Azure.
+Podrobnější a aktuální seznam limitů kvót najdete v článku kvóty pro celý Azure [zde](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
 
 ### <a name="storage"></a>Úložiště
-Platí omezení na počet účtů úložiště na oblast i v rámci daného předplatného. Výchozí limit je 250 a zahrnuje účty Standard a Premium Storage. Pokud v dané oblasti potřebujete více než 250 účtů úložiště, vytvořte žádost prostřednictvím [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Tým Azure Storage bude váš obchodní případ podívá a může schválit až 250 účtů úložiště pro příslušnou oblast.
+Počet účtů úložiště na oblast je omezen také v daném předplatném. Výchozí limit je 250 a zahrnuje účty standardu i úložiště Premium. Pokud v dané oblasti požadujete více než 250 účtů úložiště, požádejte o to prostřednictvím [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Tým Azure Storage zkontroluje váš obchodní případ a může schválit až 250 účtů úložiště pro danou oblast.
 
 
 ## <a name="workspace-level-quota"></a>Kvóta na úrovni pracovního prostoru
 
-Abychom mohli lépe spravovat přidělení prostředků pro Amlcompute mezi různými pracovními prostory, představili jsme funkci, která vám umožní distribuovat kvóty na úrovni předplatného (pomocí rodiny virtuálních počítačů) a nakonfigurovat je na úrovni pracovního prostoru. Výchozím chováním je, že všechny pracovní prostory mají stejnou kvótu jako kvóta na úrovni předplatného pro jakoukoli rodinu virtuálních počítačů. Jak se ale zvyšuje počet pracovních prostorů a zatížení s proměnlivou prioritou začíná sdílet stejné prostředky, chtějí uživatelé způsob, jak lépe sdílet kapacitu a vyhnout se problémům s kolize prostředků. Azure Machine Learning poskytuje řešení s využitím spravované výpočetní nabídky tím, že umožňuje uživatelům nastavit maximální kvótu pro konkrétní rodinu virtuálních počítačů v každém pracovním prostoru. To je obdobou distribuce kapacity mezi pracovními prostory a uživatelé si můžou vybrat, jestli se má vyhradit k maximálnímu využití. 
+Abychom lépe spravovali přidělení prostředků pro Amlcompute mezi různými pracovními prostory, zavedli jsme funkci, která umožňuje distribuovat kvóty na úrovni předplatného (podle rodiny virtuálních počítačů) a konfigurovat je na úrovni pracovního prostoru. Výchozí chování je, že všechny pracovní prostory mají stejnou kvótu jako kvóta na úrovni předplatného pro všechny rodiny virtuálních počítače. S tím, jak se zvyšuje počet pracovních prostorů a úlohy s různou prioritou začínají sdílet stejné prostředky, však uživatelé chtějí způsob, jak lépe sdílet kapacitu a vyhnout se problémům s konflikty prostředků. Azure Machine Learning poskytuje řešení s nabídkou spravovaných výpočetních prostředků tím, že umožňuje uživatelům nastavit maximální kvótu pro konkrétní rodinu virtuálních počítačů v každém pracovním prostoru. To je analogické k distribuci kapacity mezi pracovní prostory a uživatelé se mohou rozhodnout také přerozdělit, aby řídili maximální využití. 
 
-Pokud chcete nastavit kvóty na úrovni pracovního prostoru, přejděte na libovolný pracovní prostor ve vašem předplatném a v levém podokně klikněte na **používání a kvóty** . Pak vyberte kartu **Konfigurace kvót** pro zobrazení kvót, rozbalte libovolnou rodinu virtuálních počítačů a nastavte limit kvóty pro libovolný pracovní prostor uvedený v této rodině virtuálních počítačů. Pamatujte, že nemůžete nastavit zápornou hodnotu nebo vyšší hodnotu než kvóta úrovně předplatného. Stejně tak, jak byste měli pozor, se ve výchozím nastavení pro všechny pracovní prostory přiřadí celá kvóta předplatného, aby bylo umožněno plné využití přidělené kvóty.
+Pokud chcete nastavit kvóty na úrovni pracovního prostoru, přejděte do libovolného pracovního prostoru v předplatném a v levém podokně klikněte na **Využití + kvóty.** Pak vyberte kartu **Konfigurovat kvóty,** chcete-li kvóty zobrazit, rozbalte libovolnou rodinu virtuálních počítačů a nastavte limit kvóty pro libovolný pracovní prostor uvedený pod uvedenou rodinou virtuálních počítače. Nezapomeňte, že nelze nastavit zápornou hodnotu nebo hodnotu vyšší, než je kvóta na úrovni předplatného. Také, jak byste poznamenali, ve výchozím nastavení jsou všem pracovním prostorům přiřazena celá kvóta předplatného, aby bylo možné plně využít přidělenou kvótu.
 
-[kvóta na úrovni pracovního prostoru ![Azure Machine Learning](./media/how-to-manage-quotas/azure-machine-learning-workspace-quota.png)](./media/how-to-manage-quotas/azure-machine-learning-workspace-quota.png)
+[![Kvóta na úrovni pracovního prostoru Azure Machine Learning](./media/how-to-manage-quotas/azure-machine-learning-workspace-quota.png)](./media/how-to-manage-quotas/azure-machine-learning-workspace-quota.png)
 
 
 > [!NOTE]
-> Toto je jenom funkce edice Enterprise. Pokud v předplatném máte pracovní prostor Basic i Enterprise Edition, můžete ho použít jenom v pracovních prostorech vaší organizace. Vaše základní pracovní prostory budou i nadále mít kvótu na úrovni předplatného, což je výchozí chování.
+> Toto je pouze funkce edice Enterprise. Pokud máte v předplatném pracovní prostor Basic i Enterprise edition, můžete to použít pouze k nastavení kvót v pracovních prostorech Enterprise. Základní pracovní prostory budou mít i nadále kvótu na úrovni předplatného, což je výchozí chování.
 >
-> Pro nastavení kvóty na úrovni pracovního prostoru potřebujete oprávnění na úrovni předplatného. Tím se vynutilo, že jednotliví vlastníci pracovního prostoru neupravují ani nezvyšují své kvóty a začnou encroaching na prostředky, které jsou pro jiný pracovní prostor vyhrazené. Správce předplatného se proto nejlépe hodí k přidělování a distribuci těchto kvót napříč pracovními prostory.
+> K nastavení kvóty na úrovni pracovního prostoru potřebujete oprávnění na úrovni předplatného. To je vynuceno tak, aby jednotliví vlastníci pracovního prostoru neupravovali nebo nezvyšovali své kvóty a začali zasahovat do prostředků vyhrazených pro jiný pracovní prostor. Proto správce předplatného je nejvhodnější pro přidělení a distribuci těchto kvót napříč pracovními prostory.
 
 
 
 ## <a name="view-your-usage-and-quotas"></a>Zobrazení využití a kvót
 
-Zobrazení vaší kvóty pro různé prostředky, jako jsou virtuální počítače, úložiště, sítě, je snadné prostřednictvím webu Azure portal.
+Zobrazení kvóty pro různé prostředky, jako jsou virtuální počítače, úložiště, síť, je snadné prostřednictvím portálu Azure.
 
-1. V levém podokně vyberte **všechny služby** a potom v kategorii Obecné vyberte **předplatná** .
+1. V levém podokně vyberte **Všechny služby** a pak v yberte **Předplatná** v kategorii Obecné.
 
-1. Seznam předplatných vyberte předplatné, jehož kvóty, které hledáte.
+1. Ze seznamu předplatných vyberte předplatné, jehož kvótu hledáte.
 
-   K **dispozici je upozornění**, konkrétně pro zobrazení Azure Machine Learning kvóty Compute. Jak je uvedeno výše, tato kvóta je oddělené od kvóta výpočetních prostředků v rámci předplatného.
+   **Je upozornění**, konkrétně pro zobrazení kvóty Azure Machine Learning Compute. Jak bylo uvedeno výše, tato kvóta je oddělená od výpočetní kvóty ve vašem předplatném.
 
-1. V levém podokně vyberte **službu Machine Learning Service** a pak vyberte libovolný pracovní prostor ze seznamu zobrazených
+1. V levém podokně vyberte **službu Machine Learning** a pak vyberte libovolný pracovní prostor ze zobrazeného seznamu.
 
-1. V dalším okně vyberte v části **Podpora a Poradce při potížích** možnost **využití + kvóty** , abyste zobrazili aktuální limity a využití kvóty.
+1. Na dalším okně v části **Podpora + řešení potíží** vyberte Využití + **kvóty,** abyste zobrazili aktuální limity kvót a využití.
 
-1. Vyberte předplatné, chcete-li zobrazit kvóty. Mějte na paměti pro filtrování do oblasti, které vás zajímají.
+1. Výběrem předplatného zobrazíte limity kvót. Nezapomeňte filtrovat do oblasti, která vás zajímá.
 
-1. Nyní můžete přepínat mezi zobrazením na úrovni předplatného a zobrazením na úrovni pracovního prostoru:
-    + **Zobrazení odběru:** Díky tomu můžete zobrazit využití základní kvóty podle rodiny virtuálních počítačů, rozšířit je podle pracovního prostoru a dále je rozšířit o skutečné názvy clusterů. Toto zobrazení je optimální pro rychlé získání podrobností o základním využití konkrétní rodiny virtuálních počítačů, aby se zobrazilo rozdělení v pracovních prostorech a dále podle základních clusterů pro každý z těchto pracovních prostorů. Obecná konvence v tomto zobrazení je (využití/kvóta), kde využití je aktuální počet jader s horizontálním škálováním a kvóta představuje logický maximální počet jader, na které se může prostředek škálovat. U každého **pracovního prostoru**by kvóta byla kvóta na úrovni pracovního prostoru (jak je vysvětleno výše), která označuje maximální počet jader, na které se dá pro konkrétní rodinu virtuálních počítačů škálovat. Pro **cluster** podobně je kvóta ve skutečnosti jádry, které odpovídají maximálnímu počtu uzlů, které může cluster škálovat, aby byl definovaný vlastností max_nodes.
+1. Nyní můžete přepínat mezi zobrazením úrovně předplatného a zobrazením na úrovni pracovního prostoru:
+    + **Zobrazení předplatného:** To vám umožní zobrazit využití kvóty jádra podle rodiny virtuálních počítačů, rozšířit ji o pracovní prostor a dále ji rozšířit o skutečné názvy clusterů. Toto zobrazení je optimální pro rychlé získání podrobností o využití jádra pro konkrétní rodinu virtuálních počítače, abyste viděli rozdělení podle pracovních prostorů a dále podle základních clusterů pro každý z těchto pracovních prostorů. Obecná konvence v tomto zobrazení je (použití/kvóta), kde použití je aktuální počet navýšil jádra a kvóta je logický maximální počet jader, které prostředek lze škálovat. Pro každý **pracovní prostor**by kvóta byla kvóta na úrovni pracovního prostoru (jak je vysvětleno výše), která označuje maximální počet jader, na které můžete škálovat pro určitou rodinu virtuálních zařízení. Pro **cluster** podobně kvóta je ve skutečnosti jádra odpovídající maximální počet uzlů, které cluster uvažuje podle definice max_nodes vlastnost.
 
-    + **Zobrazení pracovního prostoru:** Díky tomu můžete zobrazit využití základních kvót podle pracovního prostoru, rozšíříte je pomocí rodiny virtuálních počítačů a dále je rozšíříte pomocí skutečných názvů clusterů. Toto zobrazení je optimální pro rychlé získání podrobností o základním použití pro konkrétní pracovní prostor, aby se mohla zobrazit zaregistrované v rámci rodin virtuálních počítačů a dále podkladové clustery pro každou z těchto rodin.
+    + **Zobrazení pracovního prostoru:** To vám umožní zobrazit využití kvóty jádra podle workspace, rozšířit ji podle rodiny virtuálních počítačů a dále ji rozšířit o skutečné názvy clusterů. Toto zobrazení je optimální pro rychlé získání podrobností o využití jádra pro konkrétní pracovní prostor, abyste viděli rozdělení rodinami virtuálních počítače a dále základníclustery pro každou z těchto rodin.
 
 ## <a name="request-quota-increases"></a>Žádost o navýšení kvóty
 
-Pokud chcete limit nebo kvótu nad výchozím limitem zvýšit, [otevřete online žádost o zákaznickou podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/) zdarma.
+Pokud chcete zvýšit limit nebo kvótu nad výchozí limit, [otevřete online žádost o zákaznickou podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/) zdarma.
 
-Mezní hodnoty se nedají vyhodnotit nad maximální hodnotou limitu zobrazenou v tabulkách. Pokud není maximální omezení, prostředek nemá nastavitelný limit. [Tento](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors) článek popisuje proces zvýšení kvóty podrobněji.
+Limity nelze zvýšit nad maximální limitní hodnotu uvedenou v tabulkách. Pokud neexistuje žádný maximální limit, pak prostředek nemá nastavitelná omezení. [Tento](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors) článek popisuje proces zvýšení kvóty podrobněji.
 
-Pokud se požaduje zvýšení kvóty, budete muset vyberte službu požadujete navýšení kvóty, které by mohly být služeb, jako je kvóty služby Machine Learning, Container instances nebo kvóty úložiště. Kromě Azure Machine Learning COMPUTE můžete kliknout na tlačítko **kvóta žádosti** a při zobrazení kvóty podle výše uvedeného postupu.
+Při požadování zvýšení kvóty je třeba vybrat službu, kterou požadujete ke zvýšení kvóty, což mohou být služby, jako je kvóta služby Machine Learning, instance kontejnerů nebo kvóta úložiště. Kromě azure machine learning výpočetní prostředky, můžete kliknout na tlačítko **Požádat kvótu** při zobrazení kvóty následující výše uvedené kroky.
 
 > [!NOTE]
-> [Bezplatné zkušební odběry](https://azure.microsoft.com/offers/ms-azr-0044p) nejsou způsobilé pro zvýšení limitu nebo kvóty. Pokud máte [bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na předplatné s průběžnými [platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) . Další informace najdete v tématu [upgrade bezplatné zkušební verze Azure na](../billing/billing-upgrade-azure-subscription.md) Nejčastější dotazy týkající se průběžných plateb a [bezplatné zkušební verze předplatného](https://azure.microsoft.com/free/free-account-faq).
+> [Bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p) nemá nárok na omezení nebo zvýšení kvóty. Pokud máte [bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na předplatné [s průběžným platbou.](https://azure.microsoft.com/offers/ms-azr-0003p/) Další informace najdete [v tématu Upgrade bezplatné zkušební verze Azure na nejčastější platby](../billing/billing-upgrade-azure-subscription.md) a [nejčastější dotazy k bezplatné zkušební verzi](https://azure.microsoft.com/free/free-account-faq).

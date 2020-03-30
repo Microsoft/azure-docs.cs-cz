@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175060"
 ---
 #### <a name="to-create-a-volume"></a>Vytvoření svazku
@@ -45,7 +45,7 @@ ms.locfileid: "67175060"
          1. Zadejte **Název** záznamu ACR.
          2. V části **Název iniciátoru iSCSI** zadejte kvalifikovaný název iSCSI (IQN) hostitele s Windows. Pokud název IQN nemáte, přejděte do části [Získání názvu hostitele se systémem Windows Server](#get-the-iqn-of-a-windows-server-host).
 
-      1. Klikněte na možnost **Vytvořit**. Vytvoří se svazek se zadaným nastavením.
+      1. Klikněte na **Vytvořit**. Vytvoří se svazek se zadaným nastavením.
 
          ![Kliknutí na Vytvořit](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 

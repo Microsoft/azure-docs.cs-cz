@@ -1,6 +1,6 @@
 ---
-title: Přesunutí účtu Azure Automation do jiného předplatného
-description: Tento článek popisuje, jak přesunout účet Automation do jiného předplatného.
+title: Přesunutí účtu Azure Automation na jiné předplatné
+description: Tento článek popisuje, jak přesunout účet Automation do jiného předplatného
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -10,38 +10,38 @@ ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 1aa759a2984764169eb28935e095d0f7c0f90c08
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75969828"
 ---
-# <a name="move-your-azure-automation-account-to-another-subscription"></a>Přesunutí účtu Azure Automation do jiného předplatného
+# <a name="move-your-azure-automation-account-to-another-subscription"></a>Přesunutí účtu Azure Automation na jiné předplatné
 
-Azure poskytuje možnost přesunout některé prostředky do nové skupiny prostředků nebo předplatného. Prostředky můžete přesunout pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure nebo REST API. Další informace o tomto procesu najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
+Azure poskytuje možnost přesunout některé prostředky do nové skupiny prostředků nebo předplatného. Prostředky můžete přesunout přes portál Azure, PowerShell, rozhraní API Azure nebo rozhraní REST API. Další informace o procesu najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-Účty Azure Automation jsou jedním z prostředků, které se dají přesunout. V tomto článku se seznámíte s postupem přesunutí účtů Automation do jiného prostředku nebo předplatného.
+Účty Azure Automation jsou jedním z prostředků, které lze přesunout. V tomto článku se dozvíte, jak přesunout účty automatizace do jiného prostředku nebo předplatného.
 
-Mezi kroky vysoké úrovně přesunutí účtu Automation patří:
+Kroky na vysoké úrovni k přesunutí účtu Automation jsou:
 
 1. Odeberte svá řešení.
-2. Odpojte svůj pracovní prostor.
-3. Přesuňte účet Automation.
+2. Odpojte pracovní prostor.
+3. Přesuňte účet automatizace.
 4. Odstraňte a znovu vytvořte účty Spustit jako.
-5. Znovu povolte vaše řešení.
+5. Znovu povolte svá řešení.
 
-## <a name="remove-solutions"></a>Odebrat řešení
+## <a name="remove-solutions"></a>Odebrání řešení
 
-Pokud chcete odpojit svůj pracovní prostor od svého účtu Automation, musíte tato řešení odebrat z vašeho pracovního prostoru:
-- **Change Tracking a inventář**
-- **Správa aktualizací**
-- **Spouštění/zastavování virtuálních počítačů v době mimo špičku**
+Chcete-li odpojit pracovní prostor od účtu Automation, je nutné z pracovního prostoru odebrat tato řešení:
+- **Change Tracking a Inventory**
+- **Update Management**
+- **Spuštění/zastavení virtuálních discích mimo pracovní dobu**
 
-Ve vaší skupině prostředků Najděte každé řešení a vyberte **Odstranit**. Na stránce **Odstranit prostředky** potvrďte prostředky, které se mají odebrat, a vyberte **Odstranit**.
+Ve skupině prostředků vyhledejte každé řešení a vyberte **odstranit**. Na stránce **Odstranit prostředky** potvrďte prostředky, které mají být odebrány, a vyberte **Odstranit**.
 
-![Odstranit řešení z Azure Portal](../media/move-account/delete-solutions.png)
+![Odstranění řešení z webu Azure Portal](../media/move-account/delete-solutions.png)
 
-Stejnou úlohu můžete provést pomocí rutiny [Remove-AzureRmResource](/powershell/module/azurerm.resources/remove-azurermresource) , jak je znázorněno v následujícím příkladu:
+Můžete provést stejný úkol s [Odebrat-AzureRmResource](/powershell/module/azurerm.resources/remove-azurermresource) rutina, jak je znázorněno v následujícím příkladu:
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -51,100 +51,100 @@ Remove-AzureRmResource -ResourceType 'Microsoft.OperationsManagement/solutions' 
 Remove-AzureRmResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM($workspaceName)" -ResourceGroupName $resourceGroupName
 ```
 
-### <a name="additional-steps-for-startstop-vms"></a>Další kroky pro spouštění a zastavování virtuálních počítačů
+### <a name="additional-steps-for-startstop-vms"></a>Další kroky pro virtuální chod start/stop
 
-Pro řešení **spouštění a zastavování virtuálních počítačů** je také potřeba odebrat pravidla upozornění vytvořená řešením.
+Pro **řešení Start/Stop virtuálních her** je také nutné odebrat pravidla výstrah vytvořených řešením.
 
-V Azure Portal přejdete do skupiny prostředků a vyberte **monitorování** > **výstrahy** > **Spravovat pravidla výstrah**.
+Na webu Azure Portal přejděte do skupiny prostředků a vyberte **Sledování** > **výstrah** > **Správa pravidel výstrah**.
 
-![Stránka s výstrahami ukazující výběr pravidel pro správu pravidel výstrah](../media/move-account/alert-rules.png)
+![Stránka Upozornění zobrazující výběr pravidel správy výstrah](../media/move-account/alert-rules.png)
 
-Na stránce **pravidla** by se měl zobrazit seznam výstrah nakonfigurovaných v této skupině prostředků. Řešení **spouštění a zastavování virtuálních počítačů** vytvoří tři pravidla upozornění:
+Na stránce **Pravidla** byste měli vidět seznam výstrah nakonfigurovaných v této skupině prostředků. Řešení **Start/Stop virtuálních her** vytvoří tři pravidla výstrah:
 
 * AutoStop_VM_Child
 * ScheduledStartStop_Parent
 * SequencedStartStop_Parent
 
-Vyberte tato tři pravidla upozornění a pak vyberte **Odstranit**. Tato akce odstraní tato pravidla upozornění.
+Vyberte tato tři pravidla výstrah a pak vyberte **Odstranit**. Tato akce odebere tato pravidla výstrah.
 
-![Stránka pravidla požadující potvrzení odstranění pro vybraná pravidla](../media/move-account/delete-rules.png)
+![Stránka pravidel požadující potvrzení o odstranění pro vybraná pravidla](../media/move-account/delete-rules.png)
 
 > [!NOTE]
-> Pokud nevidíte žádná pravidla výstrahy na stránce **pravidla** , změňte **stav** tak, aby zobrazoval výstrahy **zakázané** , protože je možné, že jste je zakázali.
+> Pokud na stránce **Pravidla** nevidíte žádná pravidla výstrah, změňte **stav** tak, aby **zobrazoval zakázané** výstrahy, protože jste je mohli zakázat.
 
-Po odebrání pravidel upozornění odeberte skupinu akcí vytvořenou pro oznámení řešení **Spustit nebo zastavit virtuální počítače** .
+Po odebrání pravidel výstrah odeberte skupinu akcí, která byla vytvořena pro oznámení řešení **řešení Start/Stop.**
 
-V Azure Portal vyberte **sledovat** > **výstrahy** > **Spravovat skupiny akcí**.
+Na webu Azure Portal vyberte **Monitor** > **Alerts** > **Manage skupinakcí**.
 
-V seznamu vyberte **StartStop_VM_Notification** . Na stránce skupina akcí vyberte **Odstranit**.
+Vyberte **StartStop_VM_Notification** ze seznamu. Na stránce skupiny akcí vyberte **Odstranit**.
 
-![Stránka skupiny akcí, vyberte Odstranit](../media/move-account/delete-action-group.png)
+![Stránka skupiny akcí, vyberte odstranit](../media/move-account/delete-action-group.png)
 
-Podobně můžete odstranit skupinu akcí pomocí prostředí PowerShell pomocí rutiny [Remove-AzureRmActionGroup](/powershell/module/azurerm.insights/remove-azurermactiongroup) , jak je vidět v následujícím příkladu:
+Podobně můžete odstranit skupinu akcí pomocí prostředí PowerShell s rutinou [Remove-AzureRmActionGroup,](/powershell/module/azurerm.insights/remove-azurermactiongroup) jak je vidět v následujícím příkladu:
 
 ```azurepowershell-interactive
 Remove-AzureRmActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Notification
 ```
 
-## <a name="unlink-your-workspace"></a>Zrušit propojení pracovního prostoru
+## <a name="unlink-your-workspace"></a>Odpojení pracovního prostoru
 
-V Azure Portal vyberte **účet Automation** > **související prostředky** > **propojený pracovní prostor**. Vyberte zrušit **propojení pracovního prostoru** , abyste mohli zrušit propojení pracovního prostoru s vaším účtem Automation.
+Na portálu Azure vyberte pracovní**prostor propojený****s účtem** >  **automation účtu** > . Výběrem **možnosti Odpojítit pracovní prostor** odpojíte pracovní prostor od účtu automatizace.
 
-![Zrušení propojení pracovního prostoru s účtem Automation](../media/move-account/unlink-workspace.png)
+![Odpojení pracovního prostoru od účtu automatizace](../media/move-account/unlink-workspace.png)
 
 ## <a name="move-your-automation-account"></a>Přesunutí účtu Automation
 
-Po odebrání předchozích položek můžete i nadále odebírat svůj účet Automation a jeho Runbooky. V Azure Portal přejděte do skupiny prostředků svého účtu Automation. Vyberte **přesunout** > **přesunout do jiného předplatného**.
+Po odebrání předchozích položek můžete pokračovat v odebrání účtu Automation a jeho runbooků. Na webu Azure Portal přejděte na skupinu prostředků vašeho účtu Automation. Vyberte **Přesunout** > **přesunout do jiného předplatného**.
 
-![Stránka skupiny prostředků, přejít na jiné předplatné](../media/move-account/move-resources.png)
+![Stránka skupiny prostředků, přechod na jiné předplatné](../media/move-account/move-resources.png)
 
-Vyberte prostředky ve vaší skupině prostředků, které chcete přesunout. Ujistěte se, že jste zahrnuli prostředky **účtu Automation**, **Runbook**a **Log Analytics pracovního prostoru** .
+Vyberte prostředky ve skupině prostředků, které chcete přesunout. Ujistěte se, že jste **zahrnuli svůj účet Automation**, **runbook**a prostředky **pracovního prostoru Log Analytics.**
 
-Po dokončení přesunu je potřeba provést další kroky, aby všechno fungovalo.
+Po dokončení přesunu jsou nutné další kroky, aby vše fungovalo.
 
-## <a name="re-create-run-as-accounts"></a>Opětovné vytvoření účtů spustit jako
+## <a name="re-create-run-as-accounts"></a>Znovu vytvořit účty Spustit jako
 
-[Účty Spustit jako](../manage-runas-account.md) vytvoří instanční objekt v Azure Active Directory k ověřování pomocí prostředků Azure. Když změníte předplatné, účet Automation už nepoužívá existující účet Spustit jako.
+[Spustit jako účty](../manage-runas-account.md) vytvořit instanční objekt ve službě Azure Active Directory k ověření pomocí prostředků Azure. Když změníte odběry, účet automatizace již používá existující účet Spustit jako.
 
-V rámci nového předplatného vyberte účet Automation a v části **Nastavení účtu**vyberte **účty Spustit jako** . Uvidíte, že účty Spustit jako jsou nyní zobrazeny jako nedokončené.
+V novém předplatném přejděte na svůj účet Automation a v části **Nastavení účtu**vyberte Spustit **jako účty** . Uvidíte, že účty Spustit jako nyní jsou neúplné.
 
-![Účty Spustit jako jsou neúplné](../media/move-account/run-as-accounts.png)
+![Spustit jako účty jsou neúplné](../media/move-account/run-as-accounts.png)
 
-Vyberte každý účet Spustit jako. Na stránce **vlastnosti** vyberte **Odstranit** a odstraňte účet Spustit jako.
+Vyberte každý účet Spustit jako. Na stránce **Vlastnosti** vyberte **Odstranit,** chcete-li odstranit účet Spustit jako.
 
 > [!NOTE]
-> Pokud nemáte oprávnění k vytvoření nebo zobrazení účtů spustit jako, zobrazí se následující zpráva: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` Chcete-li získat informace o oprávněních potřebných ke konfiguraci účtu Spustit jako, přečtěte si téma [oprávnění vyžadovaná ke konfiguraci účtů spustit jako](../manage-runas-account.md#permissions).
+> Pokud nemáte oprávnění k vytvoření nebo zobrazení účtů Spustit jako, zobrazí `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` se následující zpráva: Informace o oprávněních potřebných ke konfiguraci účtu Spustit jako naleznete v [tématu Oprávnění potřebná ke konfiguraci účtů Spustit jako](../manage-runas-account.md#permissions).
 
-Po odstranění účtů spustit jako vyberte **vytvořit** v části **účet Spustit jako pro Azure**. Na stránce **Přidat účet Spustit jako pro Azure** vyberte **vytvořit** a vytvořte účet Spustit jako a instanční objekt. Předchozí kroky opakujte s **účtem spustit jako pro Azure Classic**.
+Po odstranění účtů Spustit jako vyberte **vytvořit** v části **Účet Azure Spustit jako**. Na stránce **Přidat účet Azure Run As** vyberte **Vytvořit** a vytvořte účet Spustit jako a instanční objekt služby. Opakujte předchozí kroky s **účtem Azure Classic Run As**.
 
 ## <a name="enable-solutions"></a>Povolení řešení
 
-Po opětovném vytvoření účtů spustit jako znovu povolíte řešení, která jste odebrali před přesunutím. Pokud chcete zapnout **Change Tracking a inventář** a **Update Management**, vyberte příslušnou funkci v účtu Automation. Zvolte pracovní prostor Log Analytics, který jste přesunuli, a vyberte **Povolit**.
+Po opětovném vytvoření účtů Spustit jako znovu povolíte řešení, která jste odebrali před přesunutím. Chcete-li zapnout **funkci Sledování změn a Správu inventáře** a **aktualizací**, vyberte příslušnou funkci v účtu automatizace. Zvolte pracovní prostor Log Analytics, přes který jste se přesunuli, a vyberte **Povolit**.
 
-![Opětovné povolení řešení na přesunutém účtu Automation](../media/move-account/reenable-solutions.png)
+![Opětovné povolení řešení v přesunutém účtu Automation](../media/move-account/reenable-solutions.png)
 
-Počítače, které jsou připojené s vašimi řešeními, se budou zobrazovat, až budete připojeni k existujícímu pracovnímu prostoru Log Analytics.
+Počítače, které jsou součástí s vašimi řešeními, budou viditelné, když jste připojili stávající pracovní prostor Log Analytics.
 
-Pokud chcete zapnout **a vypnout virtuální počítače** v době mimo špičku, budete muset řešení znovu nasadit. V části **související prostředky**vyberte **Spustit nebo zastavit virtuální počítače** > další **informace o a povolení řešení** > **Vytvoření** pro spuštění nasazení.
+Chcete-li zapnout **spuštění a zastavení virtuálních počítačů** během mimo pracovní dobu řešení, budete muset znovu nasadit řešení. V části **Související prostředky**vyberte Možnost Spuštění a **zastavení virtuálních počítače** > **Další informace o a povolit řešení** > **Vytvořit** pro spuštění nasazení.
 
-Na stránce **Přidat řešení** vyberte pracovní prostor Log Analytics a účet Automation.
+Na stránce **Přidat řešení** zvolte svůj účet pracovního prostoru analýzy protokolů a automatizace.
 
-![Přidat nabídku řešení](../media/move-account/add-solution-vm.png)
+![Nabídka Přidat řešení](../media/move-account/add-solution-vm.png)
 
-Podrobné pokyny týkající se konfigurace řešení najdete v tématu [Start/Stop VMS during off-hours řešení v Azure Automation](../automation-solution-vm-management.md).
+Podrobné pokyny ke konfiguraci řešení najdete v tématu [Spuštění a zastavení virtuálních počítačů během mimopracovní doby řešení v Azure Automation](../automation-solution-vm-management.md).
 
 ## <a name="post-move-verification"></a>Ověření po přesunutí
 
-Po dokončení přesunu se podívejte na následující seznam úloh, které se mají ověřit:
+Po dokončení přesunu zkontrolujte následující seznam úkolů, které by měly být ověřeny:
 
 |Schopnost|Testy|Odkaz pro řešení potíží|
 |---|---|---|
-|Runbooky|Sada Runbook může úspěšně běžet a připojovat se k prostředkům Azure.|[Řešení potíží s runbooky](../troubleshoot/runbooks.md)
-|Správa zdrojového kódu|V úložišti správy zdrojových kódů můžete spustit ruční synchronizaci.|[Integrace správy zdrojového kódu](../source-control-integration.md)|
-|Sledování změn a inventáře|Ověřte, že se na vašich počítačích zobrazují aktuální data inventáře.|[Řešení potíží se sledováním změn](../troubleshoot/change-tracking.md)|
-|Správa aktualizací|Ověřte, že jsou vaše počítače v pořádku.</br>Spusťte testovací nasazení aktualizace softwaru.|[Řešení potíží se správou aktualizací](../troubleshoot/update-management.md)|
-|Sdílené prostředky|Ověřte, že vidíte všechny sdílené prostředky, jako jsou například [přihlašovací údaje](../shared-resources/credentials.md), [proměnné](../shared-resources/variables.md)atd.|
+|Runbooky|Runbook můžete úspěšně spustit a připojit se k prostředkům Azure.|[Poradce při potížích se sadkami Runbook](../troubleshoot/runbooks.md)
+|Správa zdrojového kódu|Ruční synchronizaci můžete spustit v repo správy zdrojového kódu.|[Integrace správy zdrojového kódu](../source-control-integration.md)|
+|Sledování změn a zásoby|Ověřte, zda se zobrazují aktuální data zásob z vašich počítačů.|[Poradce při potížích se sledováním změn](../troubleshoot/change-tracking.md)|
+|Správa aktualizací|Ověřte, zda vidíte své počítače a jsou zdravé.</br>Spusťte nasazení aktualizace testovacího softwaru.|[Poradce při potížích se správou aktualizací](../troubleshoot/update-management.md)|
+|Sdílené prostředky|Ověřte, zda se zobrazí všechny sdílené prostředky, například [přihlašovací údaje](../shared-resources/credentials.md), [proměnné](../shared-resources/variables.md)atd.|
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o přesouvání prostředků v Azure najdete v tématu [Přesunutí prostředků v Azure](../../azure-resource-manager/management/move-support-resources.md).
+Další informace o přesouvání prostředků v Azure najdete v tématu [Přesun prostředků v Azure](../../azure-resource-manager/management/move-support-resources.md).

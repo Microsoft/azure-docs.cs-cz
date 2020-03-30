@@ -1,6 +1,6 @@
 ---
-title: Přehled funkcí Microsoft Threat Modeling Tool – Azure
-description: Přečtěte si o všech funkcích, které jsou k dispozici v Threat Modeling Tool
+title: Přehled funkcí Nástroje pro modelování hrozeb Microsoft – Azure
+description: Informace o všech funkcích dostupných v nástroji pro modelování hrozeb
 author: jegeib
 ms.author: jegeib
 ms.service: security
@@ -8,143 +8,143 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552113"
 ---
-# <a name="threat-modeling-tool-feature-overview"></a>Přehled funkcí Threat Modeling Tool
+# <a name="threat-modeling-tool-feature-overview"></a>Přehled funkcí nástroje modelování hrozeb
 
-Threat Modeling Tool vám může pomáhat s potřebou modelování hrozeb. Základní informace o nástroji najdete v tématu [Začínáme s Threat Modeling Tool](threat-modeling-tool-getting-started.md).
+Nástroj pro modelování hrozeb vám může pomoci s potřebami modelování hrozeb. Základní úvod k nástroji najdete v tématu [Začínáme s nástrojem pro modelování hrozeb](threat-modeling-tool-getting-started.md).
 
 > [!NOTE]
->Threat Modeling Tool se často aktualizují, proto si přečtěte v této příručce naše nejnovější funkce a vylepšení.
+>Nástroj pro modelování hrozeb je často aktualizován, proto často kontrolujte tuto příručku, abyste viděli naše nejnovější funkce a vylepšení.
 
-Chcete-li otevřít prázdnou stránku, vyberte možnost **vytvořit model**.
+Chcete-li otevřít prázdnou stránku, vyberte **Vytvořit model**.
 
 ![Prázdná stránka](./media/threat-modeling-tool-feature-overview/tmtstart.png)
 
-Chcete-li zobrazit funkce, které jsou aktuálně k dispozici v nástroji, použijte model hrozby vytvořený naším týmem v příkladu [Začínáme](threat-modeling-tool-getting-started.md) .
+Chcete-li zobrazit funkce, které jsou v nástroji aktuálně k dispozici, použijte model hrozeb vytvořený naším týmem v příkladu [Začínáme.](threat-modeling-tool-getting-started.md)
 
-![Model Basic Threat](./media/threat-modeling-tool-feature-overview/basictmt.png)
+![Základní model hrozeb](./media/threat-modeling-tool-feature-overview/basictmt.png)
 
 ## <a name="navigation"></a>Navigace
 
-Než se podíváme na předdefinované funkce, Podívejme se na hlavní komponenty, které jsme našli v nástroji.
+Než budeme diskutovat o vestavěných funkcích, podívejme se na hlavní součásti, které se nacházejí v nástroji.
 
 ### <a name="menu-items"></a>Položky nabídky
 
-Prostředí je podobné ostatním produktům společnosti Microsoft. Pojďme si prohlédnout položky nabídky nejvyšší úrovně.
+Prostředí je podobné jako u jiných produktů společnosti Microsoft. Podívejme se na položky nabídky nejvyšší úrovně.
 
 ![Položky nabídky](./media/threat-modeling-tool-feature-overview/menuitems.png)
 
-| Štítek                               | Podrobnosti      |
+| Popisek                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
-| **File** | <ul><li>Otevření, uložení a zavření souborů</li><li>Přihlaste se a odhlaste se z účtů OneDrive.</li><li>Sdílet odkazy (Zobrazit a upravit).</li><li>Zobrazit informace o souboru.</li><li>Použijte novou šablonu pro existující modely.</li></ul> |
-| **Upravit** | Akce zpět a znovu a také kopírovat, vložit a odstranit. |
-| **Zobrazení** | <ul><li>Přepínání mezi zobrazeními pro **analýzu** a **Návrh**</li><li>Otevřete uzavřená okna (například vzorníky, vlastnosti prvku a zprávy).</li><li>Obnovit rozložení na výchozí nastavení.</li></ul> |
-| **Znázorňuje** | Přidejte a odstraňte diagramy a přejděte na karty diagramů. |
-| **Sestavy** | Vytváření sestav HTML pro sdílení s ostatními. |
-| **Pomoc** | Najděte si příručky, které vám pomůžou nástroj používat. |
+| **Soubor** | <ul><li>Otevírání, ukládání a zavírání souborů</li><li>Přihlaste se a odhlaste se z účtů OneDrivu.</li><li>Sdílení odkazů (zobrazení a úpravy).</li><li>Zobrazení informací o souboru.</li><li>Použijte novou šablonu u existujících modelů.</li></ul> |
+| **Upravit** | Vrátit a znovu provést akce, stejně jako kopírovat, vkládat a odstraňovat. |
+| **Zobrazit** | <ul><li>Přepínání mezi **pohledy analýzy** a **návrhu**</li><li>Otevřete zavřená okna (například vzorníky, vlastnosti elementu a zprávy).</li><li>Obnovit výchozí nastavení rozložení.</li></ul> |
+| **Diagram** | Přidejte a odstraňte diagramy a procházeněte kartami diagramů. |
+| **Sestavy** | Vytvořte sestavy HTML, které chcete sdílet s ostatními. |
+| **Nápověda** | Najděte vodítka, která vám pomohou s použitím nástroje. |
 
 Symboly jsou zkratky pro nabídky nejvyšší úrovně:
 
 | Symbol                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
 | **Otevřít** | Otevře nový soubor. |
-| **Uložení** | Uloží aktuální soubor. |
-| **Návrh** | Otevře zobrazení **Návrh** , kde můžete vytvářet modely. |
-| **Analýza** | Zobrazuje vygenerované hrozby a jejich vlastnosti. |
-| **Přidat diagram** | Přidá nový diagram (podobně jako nové karty v Excelu). |
+| **Uložit** | Uloží aktuální soubor. |
+| **Návrh** | Otevře **návrhové** zobrazení, ve kterém můžete vytvářet modely. |
+| **Analýza** | Zobrazuje generované hrozby a jejich vlastnosti. |
+| **Přidat diagram** | Přidá nový diagram (podobně jako nové karty v aplikaci Excel). |
 | **Odstranit diagram** | Odstraní aktuální diagram. |
-| **Kopírování, vyjmutí a vložení** | Kopie, řezy a minulé prvky. |
-| **Vrátit zpět/znovu** | Vrátí akce a provede akci znovu. |
-| **Přiblížení/oddálení** | Přiblížení a oddálení diagramu pro lepší zobrazení. |
-| **Váš názor** | Otevře Fórum MSDN. |
+| **Kopírovat/vyjmout/vložit** | Kopíruje, vyjme a vkládá prvky. |
+| **Vrátit a vrátit znovu** | Znovu se odvádí a znovu provádí akce. |
+| **Přiblížení/oddálení** | Přiblíží a oddálí diagram pro lepší zobrazení. |
+| **Váš názor** | Otevře fórum MSDN. |
 
 ### <a name="canvas"></a>Plátno
 
-Plátno je místo, kam přetahujete prvky. Přetahování je nejrychlejší a nejúčinnější způsob sestavování modelů. Můžete také kliknout pravým tlačítkem a vybrat položky z nabídky, chcete-li přidat obecné verze prvků, jak je znázorněno níže:
+Plátno je prostor, kde přetáhnete prvky. Přetažení je nejrychlejší a nejefektivnější způsob vytváření modelů. Můžete také klepnout pravým tlačítkem myši a vybrat položky z nabídky a přidat obecné verze prvků, jak je znázorněno:
 
-#### <a name="drop-the-stencil-on-the-canvas"></a>Vyřazení vzorníku na plátně
+#### <a name="drop-the-stencil-on-the-canvas"></a>Drop šablonu na plátně
 
 ![Přetažení plátna](./media/threat-modeling-tool-feature-overview/canvasdrop1.png)
 
 #### <a name="select-the-stencil"></a>Výběr vzorníku
 
-![Vlastnosti elementu](./media/threat-modeling-tool-feature-overview/canvasdrop2.png)
+![Vlastnosti prvku](./media/threat-modeling-tool-feature-overview/canvasdrop2.png)
 
 ### <a name="stencils"></a>Vzorníky
 
-Na základě vámi vybrané šablony můžete najít všechny vzorníky, které jsou k dispozici pro použití. Pokud nemůžete najít správné prvky, použijte jinou šablonu. Případně můžete šablonu upravit tak, aby vyhovovala vašim potřebám. Obecně můžete najít kombinaci kategorií, jako jsou tyto:
+Na základě vybrané šablony najdete všechny vzorníky, které jsou k dispozici. Pokud nemůžete najít správné prvky, použijte jinou šablonu. Nebo můžete upravit šablonu tak, aby vyhovovala vašim potřebám. Obecně můžete najít kombinaci kategorií, jako jsou tyto:
 
 | Název vzorníku                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
-| **Přihlášení** | Aplikace, moduly plug-in prohlížeče, vlákna, virtuální počítače |
-| **Externí interakce** | Poskytovatelé ověřování, prohlížeče, uživatelé, webové aplikace |
-| **Úložiště dat** | Mezipaměť, úložiště, konfigurační soubory, databáze, Registry |
+| **Proces** | Aplikace, pluginy prohlížeče, vlákna, virtuální počítače |
+| **Externí interagátor** | Poskytovatelé ověřování, prohlížeče, uživatelé, webové aplikace |
+| **Úložiště dat** | Cache, úložiště, konfigurační soubory, databáze, registr |
 | **Tok dat** | Binární, ALPC, HTTP, HTTPS/TLS/SSL, IOCTL, IPSec, pojmenovaný kanál, RPC/DCOM, SMB, UDP |
-| **Čára vztahu důvěryhodnosti/hranice ohraničení** | Podnikové sítě, Internet, počítač, izolovaný režim, uživatel nebo režim jádra |
+| **Čára důvěryhodnosti/hranice ohraničení** | Podnikové sítě, internet, stroj, pískoviště, režim user/kernel |
 
-### <a name="notesmessages"></a>Poznámky a zprávy
+### <a name="notesmessages"></a>Poznámky/zprávy
 
-| Součást                               | Podrobnosti      |
+| Komponenta                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
-| **Zprávy** | Interní logika nástrojů, která upozorní uživatele vždy, když dojde k chybě, například bez toků dat mezi prvky. |
-| **Poznámky** | V rámci procesu návrhu a kontroly jsou do souboru přidány ruční poznámky. |
+| **Zprávy** | Interní logika nástroje, která upozorňuje uživatele, kdykoli dojde k chybě, jako je například žádné toky dat mezi prvky. |
+| **Poznámky** | Ruční poznámky jsou přidány do souboru inženýrskými týmy v průběhu procesu návrhu a revize. |
 
-### <a name="element-properties"></a>Vlastnosti elementu
+### <a name="element-properties"></a>Vlastnosti prvku
 
-Vlastnosti elementu se liší podle vybraných prvků. Kromě hranic vztahů důvěryhodnosti všechny ostatní prvky obsahují tři obecné výběry:
+Vlastnosti prvku se liší podle vybraných prvků. Kromě hranic důvěryhodnosti obsahují všechny ostatní prvky tři obecné výběry:
 
 | Vlastnost elementu                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
-| **Název** | Užitečné pro pojmenovávání procesů, obchodů, interakcí a toků, aby byly snadno rozpoznané. |
-| **Mimo rozsah** | Pokud je tato možnost vybrána, bude prvek vybraný z matice generace hrozeb (nedoporučuje se). |
-| **Důvod mimo rozsah** | Pole odůvodnění, aby uživatelé věděli, proč je vybraný rozsah. |
+| **Název** | Užitečné pro pojmenování procesů, obchodů, mezihera a toků tak, aby byly snadno rozpoznatelné. |
+| **Mimo rozsah** | Pokud je tato možnost vybrána, prvek je odebrán z matice generování hrozeb (nedoporučuje se). |
+| **Důvod nedoslýchavosti** | Pole Zarovnání, které uživatelům umožní zjistit, proč byla vybrána možnost Mimo rozsah. |
 
-Vlastnosti se mění v rámci každé kategorie elementu. Vyberte jednotlivé prvky a zkontrolujte dostupné možnosti. Případně můžete otevřít šablonu a získat další informace. Pojďme se podívat na funkce.
+Vlastnosti jsou změněny v rámci každé kategorie prvku. Vyberte každý prvek a zkontrolujte dostupné možnosti. Nebo můžete otevřít šablonu a dozvědět se více. Podívejme se na funkce.
 
-## <a name="welcome-screen"></a>Úvodní obrazovka
+## <a name="welcome-screen"></a>Obrazovka Vítejte
 
-Když aplikaci otevřete, zobrazí se **uvítací** obrazovka.
+Když otevřete aplikaci, zobrazí se **úvodní** obrazovka.
 
 ### <a name="open-a-model"></a>Otevření modelu
 
-Najeďte myší na **Otevřít model** a odhalte dvě možnosti: **otevřít z tohoto počítače** a **otevřít z OneDrivu**. První možnost otevře obrazovku **otevřít soubor** . Druhá možnost vás provede procesem přihlášení pro OneDrive. Po úspěšném ověření můžete vybrat složky a soubory.
+Najeďte přes **Otevřít model a** zobrazte dvě možnosti: Otevřít z tohoto **počítače** a Otevřít **z OneDrivu**. První možnost otevře obrazovku **Otevřít soubor.** Druhá možnost vás provede procesem přihlášení pro OneDrive. Po úspěšném ověření můžete vybrat složky a soubory.
 
 ![Otevřít model](./media/threat-modeling-tool-feature-overview/openmodel.png)
 
-![Otevřít z počítače nebo OneDrivu](./media/threat-modeling-tool-feature-overview/openmodel2.png)
+![Otevření z počítače nebo OneDrivu](./media/threat-modeling-tool-feature-overview/openmodel2.png)
 
-### <a name="feedback-suggestions-and-issues"></a>Názory, návrhy a problémy
+### <a name="feedback-suggestions-and-issues"></a>Zpětná vazba, návrhy a problémy
 
-Když vyberete **zpětnou vazbu, návrhy a problémy**, přejdete na Fórum MSDN pro nástroje SDL. Můžete si přečíst, co o nástroji říká další lidé, včetně řešení a nových nápadů.
+Když vyberete **zpětnou vazbu, návrhy a problémy**, přejdete na Fórum MSDN pro nástroje SDL. Můžete si přečíst, co ostatní lidé říkají o nástroji, včetně řešení a nových nápadů.
 
 ![Váš názor](./media/threat-modeling-tool-feature-overview/feedback.png)
 
-## <a name="design-view"></a>zobrazení Návrh
+## <a name="design-view"></a>Návrhové zobrazení
 
 Když otevřete nebo vytvoříte nový model, otevře se **návrhové** zobrazení.
 
 ### <a name="add-elements"></a>Přidání prvků
 
-Prvky mřížky můžete přidat dvěma způsoby:
+Prvky můžete do mřížky přidat dvěma způsoby:
 
-- **Přetažení: přetáhněte**požadovaný prvek do mřížky. Pak použijte vlastnosti prvku k poskytnutí dalších informací.
-- Klikněte **pravým tlačítkem**myši na libovolné místo v mřížce a vyberte položku z rozevírací nabídky. Obecná reprezentace prvku, který vyberete, se zobrazí na obrazovce.
+- **Přetažení**: Přetáhněte požadovaný prvek do mřížky. Potom použijte vlastnosti prvku poskytnout další informace.
+- **Klikněte pravým tlačítkem myši**: Klikněte pravým tlačítkem myši na libovolné místo v mřížce a v rozevírací nabídce vyberte položky. Na obrazovce se zobrazí obecná reprezentace vybraného prvku.
 
-### <a name="connect-elements"></a>Propojit prvky
+### <a name="connect-elements"></a>Připojení prvků
 
-Prvky lze spojit dvěma způsoby:
+Prvky můžete propojit dvěma způsoby:
 
-- **Přetažení**: přetáhněte požadovaný tok dat do mřížky a oba elementy end připojte k odpovídajícím prvkům.
-- **Klikněte na + Shift**: klikněte na první prvek (odesílá data), stiskněte a podržte klávesu SHIFT a potom vyberte druhý prvek (příjem dat). Klikněte pravým tlačítkem a vyberte **připojit**. Pokud používáte obousměrný tok dat, pořadí není důležité.
+- **Přetažení**: Přetáhněte požadovaný tok dat do mřížky a připojte oba konce k příslušným prvkům.
+- **Klepněte na + Shift**: Klikněte na první prvek (odesílání dat), stiskněte a podržte klávesu Shift a pak vyberte druhý prvek (příjem dat). Klepněte pravým tlačítkem myši a vyberte **připojit**. Pokud používáte obousměrný tok dat, pořadí není tak důležité.
 
 ### <a name="properties"></a>Vlastnosti
 
- Chcete-li zobrazit vlastnosti, které lze upravovat ve vzornících, vyberte Vzorník a příslušné informace naplní odpovídajícím způsobem. Následující příklad ukazuje, že před a po přetažení vzorníku **databáze** do diagramu:
+ Chcete-li zobrazit vlastnosti, které lze upravit na vzorníky, vyberte vzorník a informace naplní odpovídajícím způsobem. Následující příklad ukazuje před a po **databázi** vzorník je přetažen do diagramu:
 
 #### <a name="before"></a>Před
 
@@ -156,49 +156,49 @@ Prvky lze spojit dvěma způsoby:
 
 ### <a name="messages"></a>Zprávy
 
-Pokud vytvoříte model hrozeb a zapomenete připojit toky dat k prvkům, dostanete oznámení. Tuto zprávu můžete ignorovat, nebo můžete podle pokynů tento problém vyřešit. 
+Pokud vytvoříte model hrozeb a zapomenete připojit toky dat k prvkům, dostanete oznámení. Zprávu můžete ignorovat nebo můžete problém vyřešit podle pokynů. 
 
 ![Zprávy](./media/threat-modeling-tool-feature-overview/messages.png)
 
 ### <a name="notes"></a>Poznámky
 
-Chcete-li přidat poznámky do diagramu, přepněte z karty **zprávy** na kartu **poznámky** .
+Pokud chcete do diagramu přidat poznámky, přepněte z karty **Zprávy** na kartu **Poznámky.**
 
-## <a name="analysis-view"></a>Zobrazení analýzy
+## <a name="analysis-view"></a>Pohled analýzy
 
-Po sestavení diagramu vyberte symbol **analýzy** (Lupa) na panelu nástrojů zástupci a přepněte se do zobrazení **analýzy** .
+Po vytvoření diagramu vyberte symbol **analýzy** (lupa) na panelu nástrojů zástupců a přepněte do **pohledu Analýza.**
 
-![Zobrazení analýzy](./media/threat-modeling-tool-feature-overview/analysisview.png)
+![Pohled analýzy](./media/threat-modeling-tool-feature-overview/analysisview.png)
 
-### <a name="generated-threat-selection"></a>Výběr vygenerované hrozby
+### <a name="generated-threat-selection"></a>Výběr generované hrozby
 
-Když vyberete hrozbu, můžete použít tři různé funkce:
+Když vyberete hrozbu, můžete použít tři odlišné funkce:
 
 | Funkce                               | Informace      |
 | --------------------------------------- | ------------ |
-| **Přečíst ukazatel** | <p>Hrozba je označena jako přečtená, která pomáhá sledovat položky, které jste zkontrolovali.</p><p>![Indikátor čtení a nepřečtené](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
-| **Fokus interakce** | <p>Je zvýrazněna interakce v diagramu, která patří k hrozbě.</p><p>![Fokus interakce](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
-| **Vlastnosti hrozby** | <p>Další informace o hrozbě se zobrazí v okně **vlastnosti hrozby** .</p><p>vlastnosti ![hrozeb](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
+| **Indikátor čtení** | <p>Hrozba je označena jako přečtená, což vám pomůže sledovat položky, které jste zkontrolovali.</p><p>![Indikátor čtení/nepřečteného](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
+| **Zaměření interakce** | <p>Interakce v diagramu, který patří k hrozbě je zvýrazněna.</p><p>![Zaměření interakce](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
+| **Vlastnosti hrozby** | <p>Další informace o hrozbě se zobrazí v okně **Vlastnosti hrozby.**</p><p>![Vlastnosti hrozby](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>Změna priority
 
-Úroveň priority každé vygenerované hrozby můžete změnit. Různé barvy usnadňují identifikaci vysoce, střední a nízké priority hrozeb.
+Můžete změnit úroveň priority každé generované hrozby. Různé barvy usnadňují identifikaci hrozeb s vysokou, střední a nízkou prioritou.
 
 ![Změna priority](./media/threat-modeling-tool-feature-overview/prioritychange.png)
 
-### <a name="threat-properties-editable-fields"></a>Vlastnosti hrozby – upravitelné pole
+### <a name="threat-properties-editable-fields"></a>Upravitelná pole vlastností hrozby
 
-Jak je vidět na předchozím obrázku, můžete změnit informace vygenerované nástrojem. Můžete také přidat informace do určitých polí, jako je například odůvodnění. Tato pole jsou generována šablonou. Pokud pro každou hrozbu potřebujete další informace, můžete provést úpravy.
+Jak je vidět na předchozím obrázku, můžete změnit informace generované nástrojem. Do určitých polí můžete také přidat informace, například zarovnání. Tato pole jsou generována šablonou. Pokud potřebujete více informací pro každou hrozbu, můžete provést změny.
 
 ![Vlastnosti hrozby](./media/threat-modeling-tool-feature-overview/threatproperties.png)
 
 ## <a name="reports"></a>Sestavy
 
-Až dokončíte měnící se priority a aktualizujete stav každé vygenerované hrozby, můžete soubor uložit nebo vytisknout sestavu. Přejít na **sestavu** > **vytvořit úplnou sestavu**. Pojmenujte sestavu a měli byste vidět něco podobného jako na následujícím obrázku:
+Po dokončení změny priorit a aktualizaci stavu každé generované hrozby můžete soubor uložit nebo vytisknout sestavu. Přejděte na **Vytvořit** > **úplnou sestavu**. Pojmenujte sestavu a měli byste vidět něco podobného následujícímu obrázku:
 
-![Zpráva](./media/threat-modeling-tool-feature-overview/report.png)
+![Sestava](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pošlete své dotazy, komentáře a problémy tmtextsupport@microsoft.com. Začněte **[stažením](https://aka.ms/threatmodelingtool)** Threat Modeling Tool.
-- Pokud chcete přispívat šablonu pro komunitu, podívejte se na naši stránku [GitHub](https://github.com/Microsoft/threat-modeling-templates) .
+- Své dotazy, připomínky tmtextsupport@microsoft.coma připomínky zasílejte společnosti . **[Stáhněte si](https://aka.ms/threatmodelingtool)** nástroj pro modelování hrozeb a můžete začít.
+- Pokud chcete přispět šablonou pro komunitu, přejděte na naši stránku [GitHub.](https://github.com/Microsoft/threat-modeling-templates)

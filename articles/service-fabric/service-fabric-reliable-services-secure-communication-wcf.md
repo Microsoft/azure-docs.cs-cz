@@ -1,23 +1,23 @@
 ---
-title: Zabezpečená komunikace služby založené na WCF
-description: Naučte se zabezpečit komunikaci založenou na WCF pro spolehlivé služby, které běží v clusteru Azure Service Fabric.
+title: Zabezpečená komunikace služeb založená na WCF
+description: Zjistěte, jak zabezpečit komunikaci založenou na WCF pro spolehlivé služby, které běží v clusteru Azure Service Fabric.
 author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614158"
 ---
-# <a name="secure-wcf-based-communications-for-a-service"></a>Zabezpečená komunikace založená na technologii WCF pro službu
-Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní Reliable Services Application Framework poskytuje několik předem připravených komunikačních zásobníků a nástrojů, které můžete použít ke zvýšení zabezpečení. Tento článek pojednává o tom, jak zvýšit zabezpečení při použití vzdálené komunikace služby.
+# <a name="secure-wcf-based-communications-for-a-service"></a>Zabezpečená komunikace založená na WCF pro službu
+Bezpečnost je jedním z nejdůležitějších aspektů komunikace. Architektura aplikací služby spolehlivé služby poskytuje několik předem vytvořených komunikačních zásobníků a nástrojů, které můžete použít ke zlepšení zabezpečení. Tento článek popisuje, jak zlepšit zabezpečení, když používáte vzdálené služby.
 
-Používáme existující [příklad](service-fabric-reliable-services-communication-wcf.md) , který vysvětluje způsob nastavení komunikačního zásobníku založeného na WCF pro spolehlivé služby. Chcete-li zajistit zabezpečení služby při použití komunikačního balíku založeného na technologii WCF, postupujte podle následujících kroků:
+Používáme existující [příklad,](service-fabric-reliable-services-communication-wcf.md) který vysvětluje, jak nastavit zásobník komunikace založené na WCF pro spolehlivé služby. Chcete-li zabezpečit službu při používání komunikačního zásobníku založeného na WCF, postupujte takto:
 
-1. Pro službu je potřeba zajistit, aby bylo možné zabezpečit naslouchací proces komunikace WCF (`WcfCommunicationListener`), který vytvoříte. Chcete-li to provést, upravte metodu `CreateServiceReplicaListeners`.
+1. Pro službu je třeba pomoci zabezpečit naslouchací proces komunikace WCF (`WcfCommunicationListener`), který vytvoříte. Chcete-li to `CreateServiceReplicaListeners` provést, upravte metodu.
 
     ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -54,7 +54,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
         return b;
     }
     ```
-2. V klientovi zůstane třída `WcfCommunicationClient`, která byla vytvořena v předchozím [příkladu](service-fabric-reliable-services-communication-wcf.md) , beze změny. Je ale nutné přepsat metodu `CreateClientAsync` `WcfCommunicationClientFactory`:
+2. V klientovi `WcfCommunicationClient` třída, která byla vytvořena v předchozím [příkladu](service-fabric-reliable-services-communication-wcf.md) zůstane beze změny. Ale musíte přepsat metodu `CreateClientAsync` `WcfCommunicationClientFactory`:
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class
@@ -104,7 +104,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
     }
     ```
 
-    Pomocí `SecureWcfCommunicationClientFactory` vytvořit klienta komunikace WCF (`WcfCommunicationClient`). K vyvolání metod služby použijte klienta.
+    Slouží `SecureWcfCommunicationClientFactory` k vytvoření komunikačního`WcfCommunicationClient`klienta WCF ( ). Pomocí klienta vyvolat metody služby.
 
     ```csharp
     IServicePartitionResolver partitionResolver = ServicePartitionResolver.GetDefault();
@@ -120,4 +120,4 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
         client => client.Channel.Add(2, 3)).Result;
     ```
 
-V dalším kroku si přečtete [webové rozhraní API s Owin v Reliable Services](service-fabric-reliable-services-communication-webapi.md).
+Jako další krok si přečtěte [webové rozhraní API s OWIN ve spolehlivých službách](service-fabric-reliable-services-communication-webapi.md).

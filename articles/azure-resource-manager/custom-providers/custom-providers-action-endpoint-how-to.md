@@ -1,26 +1,26 @@
 ---
-title: Přidání vlastních akcí do Azure REST API
-description: Přečtěte si, jak přidat vlastní akce do Azure REST API. Tento článek vás provede požadavky a osvědčenými postupy pro koncové body, které chtějí implementovat vlastní akce.
+title: Přidání vlastních akcí do rozhraní AZURE REST API
+description: Přečtěte si, jak přidat vlastní akce do rozhraní AZURE REST API. Tento článek bude procházet požadavky a osvědčené postupy pro koncové body, které chtějí implementovat vlastní akce.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650393"
 ---
-# <a name="adding-custom-actions-to-azure-rest-api"></a>Přidání vlastních akcí do Azure REST API
+# <a name="adding-custom-actions-to-azure-rest-api"></a>Přidání vlastních akcí do rozhraní AZURE REST API
 
-Tento článek prochází požadavky a osvědčenými postupy pro vytváření koncových bodů poskytovatele vlastních prostředků Azure, které implementují vlastní akce. Pokud nejste obeznámeni s vlastními poskytovateli prostředků Azure, přečtěte si [Přehled o vlastních poskytovatelích prostředků](overview.md).
+Tento článek projde požadavky a osvědčené postupy pro vytváření koncových bodů Azure vlastní zprostředkovatele prostředků, které implementují vlastní akce. Pokud nejste obeznámeni s Azure Vlastní zprostředkovatelé prostředků, podívejte se [na přehled o vlastní zprostředkovatelé prostředků](overview.md).
 
-## <a name="how-to-define-an-action-endpoint"></a>Definování koncového bodu akce
+## <a name="how-to-define-an-action-endpoint"></a>Jak definovat koncový bod akce
 
-**Koncový bod** je adresa URL, která odkazuje na službu, která implementuje základní smlouvu mezi IT a Azure. Koncový bod je definovaný ve vlastním poskytovateli prostředků a může být libovolná veřejně přístupná adresa URL. Následující ukázka má **akci** nazvanou `myCustomAction` implementované pomocí `endpointURL`.
+**Koncový bod** je adresa URL, která odkazuje na službu, která implementuje základní kontrakt mezi ní a Azure. Koncový bod je definován ve vlastním zprostředkovateli prostředků a může být libovolná veřejně přístupná adresa URL. Níže uvedený příklad má `myCustomAction` **akci,** kterou implementuje `endpointURL`aplikace .
 
-Vzorový **ResourceProvider**:
+Ukázkový **zprostředkovatel prostředků**:
 
 ```JSON
 {
@@ -40,15 +40,15 @@ Vzorový **ResourceProvider**:
 }
 ```
 
-## <a name="building-an-action-endpoint"></a>Sestavení koncového bodu akce
+## <a name="building-an-action-endpoint"></a>Vytvoření koncového bodu akce
 
-**Koncový bod** , který implementuje **akci** , musí zpracovat požadavek a odpověď na nové rozhraní API v Azure. Když se vytvoří vlastní poskytovatel prostředků s **akcí** , vygeneruje se v Azure nová sada rozhraní API. V takovém případě bude tato akce generovat nové rozhraní Azure Action API pro `POST` volání:
+**Koncový bod,** který implementuje **akci** musí zpracovat požadavek a odpověď pro nové rozhraní API v Azure. Když se vytvoří vlastní poskytovatel prostředků s **akcí,** vygeneruje novou sadu api v Azure. V takovém případě akce vygeneruje nové `POST` rozhraní API akce Azure pro volání:
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction
 ```
 
-Příchozí požadavek rozhraní API Azure:
+Příchozí požadavek na rozhraní AZURE API:
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction?api-version=2018-09-01-preview
@@ -63,7 +63,7 @@ Content-Type: application/json
 }
 ```
 
-Tato žádost se pak přepošle na **koncový bod** ve formátu:
+Tento požadavek pak bude předán **ke koncovému bodu** ve formuláři:
 
 ``` HTTP
 POST https://{endpointURL}/?api-version=2018-09-01-preview
@@ -78,10 +78,10 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-Podobně odpověď z **koncového bodu** se pak přepošle zpátky zákazníkovi. Odpověď z koncového bodu by měla vracet:
+Podobně odpověď z **koncového bodu** je pak předána zpět zákazníkovi. Odpověď z koncového bodu by měla vrátit:
 
-- Platný dokument objektu JSON. Všechna pole a řetězce by měly být vnořeny do objektu nejvyšší úrovně.
-- Záhlaví `Content-Type` musí být nastavené na "Application/JSON; charset = UTF-8.
+- Platný dokument objektu JSON. Všechna pole a řetězce by měly být vnořeny pod horní objekt.
+- Záhlaví `Content-Type` by měla být nastavena na "application/json; charset=utf-8".
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -95,7 +95,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Odpověď zprostředkovatele vlastního prostředku Azure:
+Odpověď na vlastní zprostředkovatele prostředků Azure:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -111,10 +111,10 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="calling-a-custom-action"></a>Volání vlastní akce
 
-Existují dva hlavní způsoby volání vlastní akce od vlastního poskytovatele prostředků:
+Existují dva hlavní způsoby volání vlastní akce mimo vlastního poskytovatele prostředků:
 
 - Azure CLI
-- Šablony Azure Resource Manager
+- Šablony Azure Správce prostředků
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -133,15 +133,15 @@ az resource invoke-action --action {actionName} \
 Parametr | Požaduje se | Popis
 ---|---|---
 action | *Ano* | Název akce definované v **ResourceProvider**.
-identifikační | *Ano* | ID prostředku **ResourceProvider**.
-tělo žádosti | *Ne* | Text žádosti, který se odešle do **koncového bodu**.
+Id | *Ano* | ID prostředku **zprostředkovatele prostředků**.
+orgán žádosti | *ne* | Tělo požadavku, který bude odeslán do **koncového bodu**.
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
 > [!NOTE]
-> Akce mají v šablonách Azure Resource Manager omezenou podporu. Aby byla akce volána uvnitř šablony, musí v názvu obsahovat předponu [`list`](../templates/template-functions-resource.md#list) .
+> Akce mají omezenou podporu v šablonách Azure Resource Manager. Aby byla akce volána uvnitř šablony, musí [`list`](../templates/template-functions-resource.md#list) obsahovat předponu v jejím názvu.
 
-Ukázka **ResourceProvider** s akcí list:
+Ukázkový **zprostředkovatel prostředků** s akcí seznamu:
 
 ```JSON
 {
@@ -158,7 +158,7 @@ Ukázka **ResourceProvider** s akcí list:
 }
 ```
 
-Ukázka šablony Azure Resource Manager:
+Ukázková šablona Správce prostředků Azure:
 
 ``` JSON
 {
@@ -186,13 +186,13 @@ Ukázka šablony Azure Resource Manager:
 
 Parametr | Požaduje se | Popis
 ---|---|---
-resourceIdentifier | *Ano* | ID prostředku **ResourceProvider**.
-apiVersion | *Ano* | Verze rozhraní API modulu runtime prostředků Tato možnost by měla být vždy "2018-09-01-Preview".
-functionValues | *Ne* | Text žádosti, který se odešle do **koncového bodu**.
+resourceIdentifier | *Ano* | ID prostředku **zprostředkovatele prostředků**.
+apiVersion | *Ano* | Verze rozhraní API za běhu prostředků. To by mělo být vždy "2018-09-01-preview".
+functionValues | *ne* | Tělo požadavku, který bude odeslán do **koncového bodu**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled zprostředkovatelů vlastních prostředků Azure](overview.md)
-- [Rychlý Start: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
-- [Kurz: vytvoření vlastních akcí a prostředků v Azure](./tutorial-get-started-with-custom-providers.md)
-- [Postupy: Přidání vlastních prostředků do Azure REST API](./custom-providers-resources-endpoint-how-to.md)
+- [Přehled o poskytovatelích vlastních prostředků Azure](overview.md)
+- [Úvodní příručka: Vytvoření vlastního zprostředkovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
+- [Kurz: Vytváření vlastních akcí a prostředků v Azure](./tutorial-get-started-with-custom-providers.md)
+- [Postup: Přidání vlastních prostředků do rozhraní API Azure REST](./custom-providers-resources-endpoint-how-to.md)

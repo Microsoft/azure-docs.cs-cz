@@ -1,6 +1,6 @@
 ---
-title: Analýza statistiky o využití s Azure CDN, Rozšířené sestavy HTTP | Dokumentace Microsoftu
-description: Naučíte se vytvářet pokročilé sestavy HTTP v Microsoft Azure CDN. Tyto sestavy poskytují podrobné informace o činnosti CDN.
+title: Analýza statistik využití pomocí rozšířených sestav HTTP Azure CDN | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak vytvářet pokročilé sestavy HTTP v microsoft azure cdn. Tyto zprávy poskytují podrobné informace o činnosti CDN.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,193 +15,193 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 0b0eec2425f8a1663eb7a09c83a6bad037d1d79c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67594114"
 ---
-# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analýza statistiky o využití s Azure CDN, Rozšířené sestavy HTTP
+# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analýza statistik využití pomocí pokročilých sestav HTTP Azure CDN
 ## <a name="overview"></a>Přehled
-Tento dokument popisuje pokročilých sestav HTTP v Microsoft Azure CDN. Tyto sestavy poskytují podrobné informace o činnosti CDN.
+Tento dokument vysvětluje pokročilé vytváření sestav PROTOKOLU HTTP v microsoft azure cdn. Tyto zprávy poskytují podrobné informace o činnosti CDN.
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="accessing-advanced-http-reports"></a>Přístup k rozšířené sestavy HTTP
-1. Z okna profil CDN, klikněte na tlačítko **spravovat** tlačítko.
+## <a name="accessing-advanced-http-reports"></a>Přístup k pokročilým sestavm HTTP
+1. V okně profilu CDN klepněte na tlačítko **Spravovat.**
    
-    ![Tlačítko Spravovat okno profilu CDN](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
+    ![Tlačítko pro správu okna profilu CDN](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
-    Otevře se na portálu pro správu CDN.
-2. Najeďte myší **Analytics** kartu a pak najeďte myší **pokročilé sestavy HTTP** Kontextová nabídka.  Klikněte na **velké platformy HTTP**.
+    Otevře se portál pro správu CDN.
+2. Najeďte na kartu **Analytics** a najeďte na informační rámeček **Rozšířené přehledy HTTP.**  Klikněte na **HTTP Velké platformy**.
    
-    ![Portál pro správu CDN – nabídka Rozšířené sestavy](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
+    ![Portál pro správu CDN - Nabídka Rozšířené sestavy](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    
-    Možnosti sestavy jsou zobrazeny.
+    Zobrazí se možnosti sestavy.
 
-## <a name="geography-reports-map-based"></a>Sestavy zeměpisné oblasti (založený mapě)
-Existuje pět sestav, které budou využívat mapu, která bude určit oblasti, ze kterých je požadovaný obsah. Tyto sestavy jsou mapu světa, mapa USA, Kanadě mapy, mapy Evropa a Asie a Tichomoří mapy.
+## <a name="geography-reports-map-based"></a>Sestavy zeměpisu (založené na mapě)
+Existuje pět sestav, které využívají mapy k označení oblastí, ze kterých je váš obsah požadován. Jedná se o mapu světa, mapu Spojených států, mapu Kanady, mapu Evropy a mapu Asie a Tichomoří.
 
-Každá sestava mapovou řadí geografické entity (to znamená, zemích nebo oblastech, mapy je k dispozici pro lepší vizualizaci umístění, ze které je požadováno váš obsah. Je možné to tak, že se zdají nezvyklé každé oblasti závisí na množství vyžádání zkušení v dané oblasti. Zapalovače vystínovanou oblasti označení nižšími požadavky pro obsah, zatímco tmavší oblastech znamenat vyšší úrovně pro váš obsah na vyžádání.
+Každá sestava založená na mapě řadí geografické entity (tj. země nebo oblasti, je k dispozici mapa, která vám pomůže vizualizovat místa, ze kterých je váš obsah požadován. Je toho schopen tak učinit barevným kódováním každého regionu podle množství poptávky, které se v této oblasti vyskytly. Světlejší stínované oblasti označují nižší poptávku po obsahu, zatímco tmavší oblasti označují vyšší úroveň poptávky po obsahu.
 
-Podrobné informace o provozu a šířky pásma pro každou oblast je k dispozici přímo pod mapou. Díky tomu můžete zobrazit celkový počet přístupů, procenta přístupů, celkové množství dat přenosu (v gigabajtech) a procentuální podíl data přenesená pro každou oblast. Zobrazte popis pro každé z těchto měřítek. Nakonec se při najetí myší na oblasti (to znamená, země/oblast, stát nebo kraj), název a procenta přístupů, ke kterým došlo v oblasti se zobrazí jako popisek.
+Podrobné informace o provozu a šířce pásma pro každou oblast jsou k dispozici přímo pod mapou. To umožňuje zobrazit celkový počet přístupů, procento přístupů, celkové množství přenesených dat (v gigabajtů) a procento dat přenesených pro každou oblast. Zobrazení popisu pro každou z těchto metrik. Nakonec, když najedete na oblast (tj. zemi nebo oblast, stát nebo provincii), název a procento přístupů, ke kterým došlo v oblasti, se zobrazí jako popis.
 
-Níže je uvedený stručný popis pro každý typ sestavy na základě mapy zeměpisné oblasti.
+Stručný popis je uveden níže pro každý typ sestavy zeměpisu založené na mapě.
 
-| Název sestavy | Popis |
+| Report Name | Popis |
 | --- | --- |
-| Mapu světa |Tato sestava umožňuje zobrazit po celém světě poptávka po vaší obsahu CDN. Každé země/oblasti, jsou rozlišené na mapu světa označuje Procento přístupů, které pochází z dané oblasti. |
-| Mapa USA |Tato sestava umožňuje zobrazit poptávka po vaší obsahu CDN ve Spojených státech. Každý stav je barevné označení na tuto mapu k označení procenta přístupů, které pochází z dané oblasti. |
-| Kanada mapy |Tato sestava umožňuje zobrazit poptávka po vaší obsahu CDN v Kanadě. Každý Kraj je barevné označení na tuto mapu k označení procenta přístupů, které pochází z dané oblasti. |
-| Evropa mapy |Tato sestava umožňuje zobrazit poptávka po vaší obsahu CDN v Evropě. Každé země/oblasti je barevné označení na tuto mapu k označení procenta přístupů, které pochází z dané oblasti. |
-| Asie a Tichomoří mapy |Tato sestava umožňuje zobrazit poptávka po vaší obsahu CDN v Asii. Každé země/oblasti je barevné označení na tuto mapu k označení procenta přístupů, které pochází z dané oblasti. |
+| Mapa světa |Tato sestava umožňuje zobrazit celosvětovou poptávku po obsahu CDN. Každá země nebo oblast je barevně odlišena na mapě světa, aby bylo označení procenta přístupů, které pocházejí z této oblasti. |
+| Mapa Spojených států |Tato sestava umožňuje zobrazit poptávku po obsahu CDN ve Spojených státech. Každý stav je barevně rozlišen na této mapě k označení procenta přístupů, které pocházejí z této oblasti. |
+| Mapa Kanady |Tato sestava umožňuje zobrazit poptávku po obsahu CDN v Kanadě. Každá provincie je na této mapě barevně rozlišena, aby označila procento přístupů, které pocházejí z této oblasti. |
+| Mapa Evropy |Tato sestava umožňuje zobrazit poptávku po obsahu CDN v Evropě. Každá země nebo oblast je na této mapě barevně odlišena a označuje procento přístupů, které pocházejí z této oblasti. |
+| Mapa Asie a Tichomoří |Tato sestava umožňuje zobrazit poptávku po obsahu CDN v Asii. Každá země nebo oblast je na této mapě barevně odlišena a označuje procento přístupů, které pocházejí z této oblasti. |
 
-## <a name="geography-reports-bar-charts"></a>Sestavy zeměpisné oblasti (pruhové grafy)
-Existují dva další sestav, které poskytují statistické údaje podle zeměpisné oblasti, které jsou horní měst a horní zemích. Tyto sestavy řadit měst a země nebo oblasti, v uvedeném pořadí podle počtu přístupů, které pochází z těchto zemí nebo oblastí. Při generování tento typ sestavy, pruhového grafu označí 10 nejčastějších měst nebo země/oblasti, které požadovaný obsah přes konkrétní platformy. Tomto pruhovém grafu umožňuje rychle posoudit oblastí, které generují nejvyšším počtem žádostí pro váš obsah.
+## <a name="geography-reports-bar-charts"></a>Sestavy zeměpisu (pruhové grafy)
+Existují dvě další sestavy, které poskytují statistické informace podle zeměpisné polohy, což jsou nejlepší města a země. Tyto sestavy řadí města a země nebo oblasti podle počtu přístupů, které pocházejí z těchto zemí nebo oblastí. Při generování tohoto typu sestavy bude pruhový graf označovat prvních 10 měst nebo zemí nebo oblastí, které požadovaly obsah přes konkrétní platformu. Tento pruhový graf umožňuje rychle posoudit oblasti, které generují nejvyšší počet žádostí o obsah.
 
-Levá strana příkazu grafu (y) označuje, kolik přístupů došlo k chybě v zadané oblasti. Přímo pod grafem (osa x) zjistíte popisek pro každou hlavní oblasti 10.
+Levá strana grafu (osa y) označuje, kolik přístupů došlo v zadané oblasti. Přímo pod grafem (osa x) najdete popisek pro každou z 10 nejlepších oblastí.
 
-### <a name="using-the-bar-charts"></a>Pomocí pruhových grafů
-* Pokud najedete myší na pruh, název celkový počet přístupů, ke kterým došlo v oblasti se zobrazí jako popisek.
-* Popis pro sestavu horní měst identifikuje Město podle jeho názvu, Kraj a země/oblast – zkratka.
-* Pokud nelze určit město nebo oblast (například stát/kraj), ze které žádost pochází, pak ho bude označovat, že neznámé. Pokud země/oblast je neznámý, pak dvě otazníky (tj.)??), zobrazí se.
-* Sestavy mohou zahrnovat metriky pro "Evropě" nebo "Oblast Asie/Tichomoří." Tyto položky nejsou určeny k poskytování statistické údaje na všechny IP adresy v těchto oblastech. Místo toho že platí jenom pro požadavky, které pocházejí z IP adresy, které jsou umístěny na Evropa nebo Asie/Tichomoří místo pro konkrétní město nebo země/oblast.
+### <a name="using-the-bar-charts"></a>Použití pruhových grafů
+* Pokud najedete ukazatel na panel, zobrazí se jako popis ekonovaný název a celkový počet přístupů, ke kterým v oblasti došlo.
+* Popisek sestavy Nejvyšší města identifikuje město podle názvu, státu/provincie a zkratky země/oblasti.
+* Pokud nelze určit město nebo oblast (tj. stát/provincii), ze kterého žádost pochází, pak to bude znamenat, že nejsou známy. Pokud je země nebo oblast neznámá, zobrazí se dva otazníky (tj. ??).
+* Přehled může obsahovat metriky pro "Evropa" nebo "Oblast Asie a Tichomoří". Tyto položky nejsou určeny k poskytování statistických informací o všech IP adresách v těchto oblastech. Místo toho se vztahují pouze na požadavky, které pocházejí z IP adres, které jsou rozloženy po Evropě nebo Asii a Tichomoří místo na konkrétní město nebo zemi nebo oblast.
 
-Data, která se použil k vygenerování pruhovém grafu lze zobrazit pod ní. Zde zjistíte celkový počet přístupů, procenta přístupů, objemu dat přenesených (v gigabajtech) a procentuální podíl data přenesená pro oblasti horní 250. Zobrazte popis pro každé z těchto měřítek.
+Data, která byla použita ke generování pruhového grafu, lze zobrazit pod ním. Zde najdete celkový počet přístupů, procento přístupů, množství přenesených dat (v gigabajtů) a procento dat přenesených pro prvních 250 oblastí. Zobrazení popisu pro každou z těchto metrik.
 
-Stručný popis se poskytuje pro oba typy sestav níže.
+Stručný popis je uveden pro oba typy zpráv níže.
 
-| Název sestavy | Popis |
+| Report Name | Popis |
 | --- | --- |
-| Horní měst |Tato sestava řadí měst podle počtu přístupů, které pocházely z této oblasti. |
-| Hlavní země |Tato sestava řadí země/oblasti podle počtu přístupů, které pochází z zemi/oblast. |
+| Nejlepší města |Tato sestava řadí města podle počtu přístupů, které pocházejí z tohoto regionu. |
+| Nejlepší země |Tato sestava řadí země nebo oblasti podle počtu přístupů, které pocházejí z této země nebo oblasti. |
 
 ## <a name="daily-summary"></a>Denní souhrn
-Denní souhrn sestava umožňuje zobrazit celkový počet přístupů a data přenesená prostřednictvím jednotlivých platformách každý den. Tyto informace lze rychle rozpoznat vzory aktivity CDN. Například tato sestava vám může pomoct zjistit, které dny zkušení vyšší nebo nižší než očekávaném provozu.
+Sestava Denní souhrn umožňuje zobrazit celkový počet přístupů a dat přenášených přes určitou platformu na denní bázi. Tyto informace lze použít k rychlému rozpoznání vzorců aktivity CDN. Tato sestava vám například může pomoci zjistit, ve kterých dnech došlo k vyššímu nebo nižšímu než očekávanému provozu.
 
-Při generování tento typ sestavy, pruhového grafu poskytne vizuální označení jde o množství specifické pro platformu vyžádání zkušení každý den za časové období, kterou sestava postihuje. Provede to tím, že zobrazuje pruh za každý den v sestavě. Například vyberte časové období názvem "Minulý týden" vygeneruje pruhový graf s sedm pruhy. Každý panel označí celkový počet přístupů zkušení v daný den.
+Při generování tohoto typu sestavy bude pruhový graf poskytovat vizuální indikaci, pokud jde o množství poptávky specifické pro platformu, ke které dochází denně v časovém období, na které se sestava vztahuje. Provede tak zobrazením pruhu pro každý den v sestavě. Například výběrem časového období s názvem "Minulý týden" se vygeneruje pruhový graf se sedmi pruhy. Každý pruh bude uvádět celkový počet stisků v ten den.
 
-Levá strana příkazu grafu (y) označuje, kolik přístupů došlo k zadanému datu. Přímo pod grafem (osa x), zjistíte popisek, který označuje datum (formát: YYYY-MM-DD) pro každý den v sestavě zahrnuté.
-
-> [!TIP]
-> Pokud najedete myší na pruh, celkový počet přístupů, ke kterým došlo k tomuto datu se zobrazí jako popisek.
-> 
-> 
-
-Data, která se použil k vygenerování pruhovém grafu lze zobrazit pod ní. Zde zjistíte celkový počet přístupů a objemu dat přenesených (v gigabajtech) pro každý den, kterou sestava postihuje.
-
-## <a name="by-hour"></a>By Hour
-Podle hodin sestava umožňuje zobrazit celkový počet přístupů a data přenesená prostřednictvím jednotlivých platformách po hodinách. Tyto informace lze rychle rozpoznat vzory aktivity CDN. Například tato sestava vám může pomoci odhalit časová období během dne, které prostředí vyšší nebo nižší, než očekávaném provozu.
-
-Při generování tento typ sestavy, pruhového grafu poskytne vizuální označení jde o množství došlo po hodinách za časové období, kterou sestava postihuje vyžádání specifické pro platformu. Provede to tím, že zobrazuje pruh pro každou hodinu, kterou sestava postihuje. Například výběrem 24 hodin časové období bude generovat pruhový graf s dvacet čtyři pruhy. Každý panel označí celkový počet přístupů došlo během dané hodiny.
-
-Levá strana příkazu grafu (y) označuje, kolik přístupů došlo k chybě na určenou hodinu. Přímo pod grafem (osa x), zjistíte popisek, který určuje datum a čas (formát: YYYY-MM-DD hh: mm) pro každou hodinu zahrnuty do sestavy. Čas se použije v hlášení pomocí 24hodinový formát a je zadán v časovém pásmu UTC/GMT.
+Levá strana grafu (osa y) označuje, kolik přístupů došlo k zadanému datu. Přímo pod grafem (osa x) najdete popisek, který označuje datum (Formát: YYYY-MM-DD) pro každý den zahrnutý do sestavy.
 
 > [!TIP]
-> Pokud najedete myší na pruh, zobrazí se celkový počet přístupů, ke kterým došlo během dané hodiny jako popisek.
+> Pokud najedete na panel, zobrazí se jako popisek celkový počet přístupů, ke kterým k tomuto datu došlo.
 > 
 > 
 
-Data, která se použil k vygenerování pruhovém grafu lze zobrazit pod ní. Zde zjistíte celkový počet přístupů a objemu dat přenesených (v gigabajtech) pro každou hodinu, kterou sestava postihuje.
+Data, která byla použita ke generování pruhového grafu, lze zobrazit pod ním. Zde najdete celkový počet přístupů a množství přenesených dat (v gigabajtů) za každý den, na který se sestava vztahuje.
 
-## <a name="by-file"></a>Pomocí souboru
-Sestava po souboru umožňuje zobrazení částky poptávky a provozu, které vznikly v průběhu konkrétní platformu nejčastěji požadovaných prostředků. Při generování tento typ sestavy, pruhový graf se vygeneruje na začátek 10 nejžádanějších prostředků za zadané časové období.
+## <a name="by-hour"></a>Podle hodiny
+Sestava Podle hodin umožňuje zobrazit celkový počet přístupů a dat přenesených přes určitou platformu na hodinovém základě. Tyto informace lze použít k rychlému rozpoznání vzorců aktivity CDN. Tato sestava vám například může pomoci zjistit časová období během dne, u kterých dochází k vyššímnebo nižším než očekávaným přenosům.
+
+Při generování tohoto typu sestavy bude pruhový graf poskytovat vizuální indikaci, pokud jde o množství poptávky specifické pro platformu, ke které dochází na hodinovém základě v časovém období, na které se sestava vztahuje. Učiní tak zobrazením pruhu pro každou hodinu, na kterou se sestava vztahuje. Například výběrem časového období 24 hodin se vygeneruje pruhový graf s dvaceti čtyřmi pruhy. Každý pruh bude uvádět celkový počet přístupů během této hodiny.
+
+Levá strana grafu (osa y) označuje, kolik přístupů došlo v zadané hodině. Přímo pod grafem (osa x) najdete popisek, který označuje datum a čas (Formát: YYYY-MM-DD hh:mm) pro každou hodinu zahrnutou v sestavě. Čas je hlášen ve formátu 24 hodin a je určen pomocí časového pásma UTC/GMT.
+
+> [!TIP]
+> Pokud najedete ukazatel na panel, zobrazí se jako popisek celkový počet přístupů, ke kterým během této hodiny došlo.
+> 
+> 
+
+Data, která byla použita ke generování pruhového grafu, lze zobrazit pod ním. Zde najdete celkový počet přístupů a množství přenesených dat (v gigabajtů) za každou hodinu, na kterou se sestava vztahuje.
+
+## <a name="by-file"></a>Podle souboru
+Sestava Podle souboru umožňuje zobrazit množství poptávky a provoz vzniklý přes konkrétní platformu pro nejžádanější prostředky. Po vygenerování tohoto typu sestavy bude v zadaném časovém období vygenerován pruhový graf v horních 10 nejžádanějších aktivech.
 
 > [!NOTE]
-> Pro účely této sestavy adresy URL CNAME edge se převedou na jejich odpovídající adresy URL CDN. To umožňuje přesné záznamů pro celkový počet přístupů, které jsou přidružené k prostředku bez ohledu na to CDN nebo edge CNAME adresa URL používaná pro požádání o ho.
+> Pro účely této sestavy jsou adresy URL CNAME na okraji převedeny na ekvivalentní adresy URL CDN. To umožňuje přesný součet celkového počtu přístupů přidružených k datovému zdroji bez ohledu na adresu URL CN nebo okrajovou adresu URL použitou k jeho vyžádání.
 > 
 > 
 
-Levá strana příkazu grafu (y) označuje počet požadavků pro každý prostředek za zadané časové období. Přímo pod grafem (osa x), zjistíte popisek, který určuje název souboru pro každou hlavní 10 požadovaných prostředků.
+Levá strana grafu (osa y) označuje počet požadavků na každý datový zdroj za zadané časové období. Přímo pod grafem (osa x) najdete popisek, který označuje název souboru pro každý z 10 nejlepších požadovaných datových zdrojů.
 
-Data, která se použil k vygenerování pruhovém grafu lze zobrazit pod ní. Zde najdete následující informace pro každou hlavní 250 požadovaných prostředků: relativní cestu, celkový počet přístupů, procenta přístupů, objemu dat přenesených (v gigabajtech) a procentuální podíl data přenést.
+Data, která byla použita ke generování pruhového grafu, lze zobrazit pod ním. Zde najdete následující informace pro každý z 250 nejlepších požadovaných datových zdrojů: relativní cesta, celkový počet přístupů, procento přístupů, množství přenesených dat (v gigabajtů) a procento přenesených dat.
 
-## <a name="by-file-detail"></a>Pomocí podrobností souboru
-Sestava podrobnosti o souboru umožňuje uživateli zobrazit objem poptávky a provoz, které vznikly v průběhu konkrétní platformu pro konkrétní prostředek. Na začátek této sestavy je možnost podrobnosti pro soubor. Tato možnost poskytuje seznam nejžádanějších prostředky ve vybrané platformě. Pokud chcete vygenerovat sestavu Podrobnosti o souboru, bude nutné vybrat požadovaný prostředek ze souboru podrobnosti pro možnost. A pruhový graf označí množství denní vyžádání, který je generován za zadané časové období.
+## <a name="by-file-detail"></a>Podle podrobností souboru
+Sestava Podle podrobností souboru umožňuje zobrazit množství poptávky a provoz vzniklý přes konkrétní platformu pro konkrétní majetek. V horní části této sestavy je možnost Podrobnosti o souboru. Tato možnost poskytuje seznam nejžádanějších datových zdrojů na vybrané platformě. Chcete-li vygenerovat sestavu podle podrobností souboru, budete muset vybrat požadovaný datový zdroj z možnosti Podrobnosti souboru. Poté bude pruhový graf uvádět množství denní poptávky, kterou generuje za zadané časové období.
 
-Levá strana příkazu grafu (y) označuje celkový počet požadavků, že prostředek došlo v určitý den. Přímo pod grafem (osa x), zjistíte popisek, který označuje datum (formát: YYYY-MM-DD) pro CDN, která byla nahlášena poptávka po assetu.
+Levá strana grafu (osa y) označuje celkový počet požadavků, které má aktivum k určitému dni. Přímo pod grafem (osa x) najdete popisek, který označuje datum (Formát: YYYY-MM-DD), pro který byla hlášena poptávka CDN po majetku.
 
-Data, která se použil k vygenerování pruhovém grafu lze zobrazit pod ní. Zde zjistíte celkový počet přístupů a objemu dat přenesených (v gigabajtech) pro každý den, kterou sestava postihuje.
+Data, která byla použita ke generování pruhového grafu, lze zobrazit pod ním. Zde najdete celkový počet přístupů a množství přenesených dat (v gigabajtů) za každý den, na který se sestava vztahuje.
 
 ## <a name="by-file-type"></a>Podle typu souboru
-Podle typu souboru sestavy můžete zobrazit objem poptávky a provoz účtují podle typu souboru. Při generování tento typ sestavy, označí prstencový graf procenta přístupů vygenerovaný hlavní typy 10 souborů.
+Sestava Podle typu souboru umožňuje zobrazit množství poptávky a provoz vzniklý typem souboru. Při generování tohoto typu sestavy bude graf koblihy označovat procento přístupů generovaných top 10 typy souborů.
 
 > [!TIP]
-> Pokud najedete myší na výseč prstencový graf, Internet typ média, typ souboru se zobrazí jako popisek.
+> Pokud najedete na výseč v grafu koblih, bude jako popisek zobrazen typ internetového média tohoto typu souboru.
 > 
 > 
 
-Pod ní lze zobrazit data, která se použil k vygenerování prstencový graf. Zde najdete typ média souboru název rozšíření/Internet, celkový počet přístupů, procenta přístupů, množství dat přenášených (v gigabajtech) a procentuální podíl data přenesená pro každý typ souborů horní 250.
+Data, která byla použita ke generování grafu koblihy lze zobrazit pod ním. Tam najdete název souboru rozšíření / typ média Internet, celkový počet přístupů, procento přístupů, množství přenesených dat (v gigabajtů), a procento dat přenesených pro každý z top 250 typů souborů.
 
-## <a name="by-directory"></a>Službou Active Directory
-Sestavy podle adresáře umožňuje uživateli zobrazit objem poptávky a provoz, které vznikly v průběhu konkrétní platformu pro obsah z konkrétního adresáře. Při generování tento typ sestavy, označí pruhový graf celkový počet přístupů generovaný obsah z hlavní 10 adresářů.
+## <a name="by-directory"></a>Podle adresáře
+Sestava Podle adresáře umožňuje zobrazit množství poptávky a provoz vzniklý přes určitou platformu pro obsah z určitého adresáře. Při generování tohoto typu sestavy bude pruhový graf uvádět celkový počet přístupů generovaných obsahem v prvních 10 adresářích.
 
-### <a name="using-the-bar-chart"></a>Pomocí pruhový graf
-* Najeďte myší na pruh zobrazíte relativní cestu k adresáři odpovídající.
-* Obsah uložený v podsložce v adresáři nepočítá při výpočtu vyžádání službou Active directory. Tento výpočet spoléhá výhradně na počet požadavkům vygenerovaným obsahu uloženého v adresáři skutečný.
-* Pro účely této sestavy adresy URL CNAME edge se převedou na jejich odpovídající adresy URL CDN. To umožňuje přesné záznamů pro všechny statistiky, které jsou přidružené k prostředku bez ohledu na to CDN nebo edge CNAME adresa URL používaná pro požádání o ho.
+### <a name="using-the-bar-chart"></a>Použití pruhového grafu
+* Najeďte nad pruhem a zobrazte relativní cestu k odpovídajícímu adresáři.
+* Obsah uložený v podsložce adresáře se nepočítá při výpočtu poptávky podle adresáře. Tento výpočet závisí výhradně na počtu požadavků generovaných pro obsah uložený ve skutečném adresáři.
+* Pro účely této sestavy jsou adresy URL CNAME na okraji převedeny na ekvivalentní adresy URL CDN. To umožňuje přesný součet pro všechny statistiky spojené s datovým zdrojem bez ohledu na adresu URL CDN nebo okraj CNAME, která se používá k jeho vyžádání.
 
-Levá strana příkazu grafu (y) označuje celkový počet požadavků obsahu uloženého v prvních 10 adresářů. Každý panel v grafu představuje adresáře. Použijte schéma barevného kódování shodu se panel do adresáře uvedených v části horní 250 úplné adresáře.
+Levá strana grafu (osa y) označuje celkový počet požadavků na obsah uložený v prvních 10 adresářích. Každý pruh v grafu představuje adresář. Pomocí schématu barevného kódování můžete přizpůsobit pruh adresáři uvedenému v části Prvních 250 úplných adresářů.
 
-Data, která se použil k vygenerování pruhovém grafu lze zobrazit pod ní. Zde najdete následující informace pro každý z adresáře horní 250: relativní cestu, celkový počet přístupů, procenta přístupů, objemu dat přenesených (v gigabajtech) a procentuální podíl data přenést.
+Data, která byla použita ke generování pruhového grafu, lze zobrazit pod ním. Zde najdete následující informace pro každý z 250 nejlepších adresářů: relativní cesta, celkový počet přístupů, procento přístupů, množství přenesených dat (v gigabajtů) a procento přenesených dat.
 
-## <a name="by-browser"></a>Pomocí prohlížeče
-Pomocí prohlížeče sestav umožňuje zobrazit, které prohlížeče se používaly pro požadavek na obsah. Při generování tento typ sestavy, výsečový graf indikuje procentuální podíl požadavků zpracovávaných hlavní 10 prohlížeče.
+## <a name="by-browser"></a>Podle prohlížeče
+Přehled Podle prohlížeče umožňuje zobrazit, které prohlížeče byly použity k vyžádání obsahu. Při generování tohoto typu sestavy bude výsečový graf označovat procento požadavků zpracovaných 10 nejzeminací.
 
 ### <a name="using-the-pie-chart"></a>Použití výsečového grafu
-* Najeďte myší na výseč výsečový graf, chcete-li zobrazit název a verze prohlížeče.
-* Pro účely této sestavy se považuje každá kombinace jedinečné prohlížeče jiný prohlížeč.
-* Řez nazývá "Ostatní" informuje o procentu žádosti zpracovat všechny ostatní prohlížeče a verze.
+* Najeďte nad výsečí ve výsečovém grafu a zobrazte název a verzi prohlížeče.
+* Pro účely této sestavy je každá jedinečná kombinace prohlížeče a verze považována za jiný prohlížeč.
+* Výseč s názvem "Ostatní" označuje procento požadavků zpracovaných všemi ostatními prohlížeči a verzemi.
 
-Data, která se použil k vygenerování výsečového grafu lze zobrazit pod ní. Zde najdete číslo typu a verzi prohlížeče, celkový počet přístupů a procenta přístupů pro každou z prohlížečů 250.
+Data použitá ke generování výsečového grafu lze zobrazit pod ním. Tam najdete typ prohlížeče / číslo verze, celkový počet přístupů a procento přístupů pro každý z top 250 prohlížečů.
 
-## <a name="by-referrer"></a>Podle odkazující server
-Sestavy podle odkazující server umožňuje zobrazit horní odkazující servery obsahu ve vybrané platformě. Odkazující server určuje název hostitele, ze kterého byl vytvořen požadavek. Při generování tento typ sestavy, označí pruhový graf množství poptávky (například přístupů) vygenerovaný hlavní 10 odkazující servery.
+## <a name="by-referrer"></a>Podle Referrer
+Sestava Podle odkazovat umožňuje zobrazit horní referrers k obsahu na vybrané platformě. Odkazovatelist označuje název hostitele, ze kterého byl vygenerován požadavek. Při generování tohoto typu sestavy bude pruhový graf označovat množství poptávky (tj. přístupů) generovaných 10 odkazujícími osobami.
 
-Levá strana příkazu grafu (y) označuje celkový počet požadavků, že došlo k prostředku pro každý odkaz poskytuje. Každý panel v grafu představuje odkazující server. Použijte schéma barevného kódování shodu se panelu se referrer uvedených v části Referrer 250 nahoru.
+Levá strana grafu (osa y) označuje celkový počet požadavků, které má aktivum pro každou odkazovnou. Každý pruh v grafu představuje odkazovat. Pomocí schématu barevného kódování přiřazujete pruh odkazujícímu subjektu uvedenému v části 250 odkazujících barev.
 
-Data, která se použil k vygenerování pruhovém grafu lze zobrazit pod ní. Zde najdete adresu URL, celkový počet přístupů a procenta přístupů vygenerované ze všech nejvyšší 250 odkazující servery.
+Data, která byla použita ke generování pruhového grafu, lze zobrazit pod ním. Tam najdete ADRESU URL, celkový počet přístupů a procento přístupů generovaných z každého z nejlepších 250 odkazujících.
 
-## <a name="by-download"></a>Stažením
-Podle stáhnout sestavu můžete analyzovat vzory stahování pro váš nejžádanějších obsah. Horní části sestavy obsahuje pruhový graf, že porovná se pokusil počet jejích stažení dokončené soubory ke stažení pro začátek 10 požadovaných prostředků. Každý panel, jsou rozlišené podle Určuje, zda je pokusu o stažení (modrá) nebo stahování dokončeno (zelený).
+## <a name="by-download"></a>Podle stažení
+Přehled Podle stažení umožňuje analyzovat vzory stahování pro nejžádanější obsah. Horní část sestavy obsahuje pruhový graf, který porovnává pokusy o stažení s dokončenými soubory ke stažení pro prvních 10 požadovaných datových zdrojů. Každý pruh je barevně rozlišen podle toho, zda se jedná o pokus o stažení (modrý) nebo o dokončené stahování (zelené).
 
 > [!NOTE]
-> Pro účely této sestavy adresy URL CNAME edge se převedou na jejich odpovídající adresy URL CDN. To umožňuje přesné záznamů pro všechny statistiky, které jsou přidružené k prostředku bez ohledu na to CDN nebo edge CNAME adresa URL používaná pro požádání o ho.
+> Pro účely této sestavy jsou adresy URL CNAME na okraji převedeny na ekvivalentní adresy URL CDN. To umožňuje přesný součet pro všechny statistiky spojené s datovým zdrojem bez ohledu na adresu URL CDN nebo okraj CNAME, která se používá k jeho vyžádání.
 > 
 > 
 
-Levá strana příkazu grafu (y) určuje název souboru pro každou hlavní 10 požadovaných prostředků. Přímo pod grafem (osa x) zjistíte popisků, které se zobrazí celkový počet pokusili a dokončí stahování.
+Levá strana grafu (osa y) označuje název souboru pro každý z prvních 10 požadovaných datových zdrojů. Přímo pod grafem (osa x) najdete popisky, které udávají celkový počet pokusů/dokončených stažení.
 
-Přímo pod pruhový graf, následující informace budou uvedené pro začátek 250 požadovaných prostředků: relativní cestu (včetně názvu souboru), počet případů, kdy byl stažen do konce, počet případů, kdy byla vyžádána a procento požadavky na, z kterých vzniklo kompletní soubor ke stažení.
+Přímo pod pruhovým grafem budou uvedeny následující informace pro 250 požadovaných datových zdrojů: relativní cesta (včetně názvu souboru), počet stažení do dokončení, počet žádostí o požadovaný počet a procento požadavky, které vedly k úplnému stažení.
 
 > [!TIP]
-> Naše CDN není informována klientem HTTP (například prohlížeče) když prostředek kompletně stáhl. Díky tomu budeme mít k výpočtu, jestli určitý prostředek kompletně stáhl podle stavové kódy a rozsah bajtů požadavky. Všimnou si nejprve vyhledáme při provádění tohoto výpočtu je, zda požadavek vede ke kódu stavový kód 200 OK. Pokud ano, pak podíváme na rozsah bajtů požadavků k zajištění, že pokrývají celou asset. Nakonec jsme porovnat objem data přenesená do velikosti požadovaný prostředek. Pokud jsou vhodné pro příslušný prostředek žádosti o rozsah bajtů přenesených dat je roven nebo větší než velikost souboru, bude shodu počítat jako kompletní soubor ke stažení.
+> Naše CDN není informována klientem HTTP (tj. prohlížečem), pokud byl datový zdroj zcela stažen. V důsledku toho musíme vypočítat, zda byl datový zdroj zcela stažen podle stavových kódů a požadavků na rozsah bajtů. První věc, kterou hledáme při provádění tohoto výpočtu je, zda požadavek má za následek stavový kód 200 OK. Pokud ano, pak se podíváme na požadavky rozsahu bajtů, abychom zajistili, že pokrývají celý majetek. Nakonec porovnáme množství přenesených dat s velikostí požadovaného majetku. Pokud jsou přenesená data rovna nebo větší než velikost souboru a požadavky na rozsah bajtů jsou vhodné pro tento datový zdroj, bude požadavek na přístup k přístupu započítán jako úplné stažení.
 > 
-> Z důvodu interpretativní povaha této sestavy byste měli mít na paměti následující body, které mohou změnit konzistence a přesnost této sestavy.
+> Vzhledem k interpretační povaze této zprávy byste měli mít na paměti následující body, které mohou změnit konzistenci a přesnost této zprávy.
 > 
-> * Vzory provozu nemůže být předpovězen přesně při Uživatelští agenti chovat jinak. To může způsobit výsledky stahování dokončeno, které jsou větší než 100 %.
-> * Prostředky, které budou využívat protokol HTTP progresivní stahování nemusí přesně reprezentovat v této sestavě. To je způsobené uživateli, kteří se snaží jinou pozici ve videu.
+> * Vzorce provozu nelze přesně předpovědět, když se agenti uživatelů chovají jinak. To může způsobit dokončení výsledků stahování, které jsou větší než 100 %.
+> * Prostředky, které využívají progresivní stahování HTTP, nemusí být touto sestavou přesně reprezentovány. To je způsobeno tím, že uživatelé hledají různé pozice ve videu.
 > 
 > 
 
-## <a name="by-404-errors"></a>Pomocí chyby 404
-Pomocí chyby 404 sestava umožňuje identifikovat typ obsahu, který generuje nejvíce 404 Nenalezeno stavové kódy. Horní části sestavy obsahuje pruhový graf pro prvních 10 prostředky, pro které byl vrácen stavový kód 404 nebyl nalezen. Tento panel srovnává celkový počet požadavků s žádostí, z kterých vzniklo 404 Nenalezeno stavový kód pro tyto prostředky. Každý panel, jsou rozlišené. Žlutý pruh se používá k označení, že žádost způsobila stavový kód 404 nebyl nalezen. Červený panel slouží k označení celkový počet požadavků pro prostředek.
+## <a name="by-404-errors"></a>Podle 404 chyb
+Sestava Chyby podle 404 umožňuje identifikovat typ obsahu, který generuje největší počet stavových kódů 404 Nenalezeno. Horní část sestavy obsahuje pruhový graf pro prvních 10 datových zdrojů, pro které byl vrácen stavový kód 404 Not Found. Tento pruhový graf porovnává celkový počet požadavků s požadavky, které vedly k 404 nebyl nalezen stavový kód pro tyto prostředky. Každý pruh je barevně rozlišený. Žlutý pruh se používá k označení, že požadavek za následek 404 nebyl nalezen stavový kód. Červený pruh se používá k označení celkového počtu požadavků na datový zdroj.
 
 > [!NOTE]
-> Pro účely této sestavy vezměte na vědomí následující:
+> Pro účely této zprávy je třeba poznamenat, že:
 > 
-> * Nalezený představuje jakoukoli žádost pro určitý prostředek, bez ohledu na stavový kód.
-> * Adresy URL CNAME Edge se převedou na jejich odpovídající adresy URL pro CDN. To umožňuje přesné záznamů pro všechny statistiky, které jsou přidružené k prostředku bez ohledu na to CDN nebo edge CNAME adresa URL používaná pro požádání o ho.
+> * Požadavek na přístup k přístupu představuje jakýkoli požadavek na prostředek bez ohledu na stavový kód.
+> * Adresy URL CNAME okrajů jsou převedeny na ekvivalentní adresy URL CDN. To umožňuje přesný součet pro všechny statistiky spojené s datovým zdrojem bez ohledu na adresu URL CDN nebo okraj CNAME, která se používá k jeho vyžádání.
 > 
 > 
 
-Levá strana příkazu grafu (y) určuje název souboru pro každou hlavní 10 požadovaných prostředků, z kterých vzniklo stavový kód 404 nebyl nalezen. Přímo pod grafem (osa x) zjistíte popisky, který indikuje celkový počet požadavků a počet požadavků, z kterých vzniklo stavový kód 404 nebyl nalezen.
+Levá strana grafu (osa y) označuje název souboru pro každý z prvních 10 požadovaných datových zdrojů, který vyústil ve stavový kód 404 Nebyl nalezen. Přímo pod grafem (osa x) najdete popisky označující celkový počet požadavků a počet požadavků, které vedly ke stavu 404 Nenalezeno.
 
-Přímo pod pruhový graf, následující informace budou uvedené pro začátek 250 požadovaných prostředků: relativní cestu (včetně názvu souboru), počet požadavků, z kterých vzniklo 404 Nenalezeno stavový kód, celkový počet případů, kdy se prostředek byl vyžádán, a Procento požadavků, z kterých vzniklo stavový kód 404 nebyl nalezen.
+Přímo pod pruhovým grafem budou uvedeny následující informace pro 250 požadovaných prostředků: relativní cesta (včetně názvu souboru), počet požadavků, které vedly ke stavovému kódu 404 Not Found, celkový počet žádostí o majetek a procento požadavků, které vedly ke stavovému kódu 404 Not Found.
 
-## <a name="see-also"></a>Viz také:
-* [Azure CDN – přehled](cdn-overview.md)
-* [Statistiky v reálném čase v Microsoft Azure CDN](cdn-real-time-stats.md)
-* [Přepisování výchozího chování HTTP pomocí stroje pravidel](cdn-rules-engine.md)
-* [Analýza výkonu hraničního](cdn-edge-performance.md)
+## <a name="see-also"></a>Viz také
+* [CDN Azure – Přehled](cdn-overview.md)
+* [Statistiky v reálném čase v microsoft azure cdn](cdn-real-time-stats.md)
+* [Přepsání výchozího chování PROTOKOLU HTTP pomocí modulu pravidel](cdn-rules-engine.md)
+* [Analýza výkonu hran](cdn-edge-performance.md)
 

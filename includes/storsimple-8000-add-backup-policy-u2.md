@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 02274bacb66a33ef54e07bc8113d7db46d4d5296
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175197"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>Přidání zásady zálohování StorSimple
@@ -23,7 +23,7 @@ ms.locfileid: "67175197"
    
    1. Pole **Vybrat zařízení** se automaticky vyplní podle zařízení, které jste vybrali.
    
-   2. Zadejte **Název zásady** zálohování, který obsahuje 3 až 150 znaků. Po vytvoření už zásadu není možné přejmenovat.
+   2. Zadejte **název zásady** zálohování, který obsahuje 3 až 150 znaků. Po vytvoření už zásadu není možné přejmenovat.
        
    3. Pokud chcete k této zásadě zálohování přiřadit svazky, vyberte **Přidat svazky** a potom v tabulkovém výpisu svazků zaškrtnutím políček přiřaďte této zásadě zálohování jeden nebo několik svazků.
 
@@ -35,7 +35,7 @@ ms.locfileid: "67175197"
 
        1. Jako **Typ snímku** vyberte **Cloud** nebo **Místní**.
 
-       2. Určete frekvenci záloh (zadejte počet a vyberte z rozevíracího seznamu buď **Dny**, nebo **Týdny**).
+       2. Uveďte frekvenci zálohování (zadejte číslo a v rozevíracím seznamu zvolte **Dny** nebo **Týdny.**
 
        3. Zadejte plán uchovávání.
 

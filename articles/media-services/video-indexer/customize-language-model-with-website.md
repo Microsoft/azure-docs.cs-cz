@@ -1,7 +1,7 @@
 ---
-title: Přizpůsobení jazykových modelů pomocí Video Indexer webu – Azure
+title: Přizpůsobení jazykového modelu pomocí webu Video Indexer
 titleSuffix: Azure Media Services
-description: Tento článek popisuje, jak přizpůsobit jazykový model pomocí Video Indexer webu.
+description: Přečtěte si, jak přizpůsobit jazykový model pomocí webu Video Indexer.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,141 +10,145 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 329da39914ef957d3a5376ba59e0c7103ad6a5dd
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 8917a3ac302d18337d79bffce69bad108667b4d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513911"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128078"
 ---
-# <a name="customize-a-language-model-with-the-video-indexer-website"></a>Přizpůsobení jazykového modelu pomocí Video Indexer webu
+# <a name="customize-a-language-model-with-the-video-indexer-website"></a>Přizpůsobení jazykového modelu pomocí webu Video Indexer
 
-Video Indexer vám umožní vytvářet vlastní jazykové modely pro přizpůsobení rozpoznávání řeči odesláním přizpůsobeného textu, konkrétně textu z domény, kde chcete, aby se modul přizpůsobil. Jakmile svůj model vytvoříte, budou se nová slova uvedená v textu přizpůsobení rozpoznat. 
+Video Indexer umožňuje vytvářet vlastní jazykové modely pro přizpůsobení rozpoznávání řeči nahráním textu adaptace, konkrétně textu z domény, jehož slovní zásobu chcete, aby se motor přizpůsobil. Jakmile táhejte model, budou rozpoznána nová slova uvedená v textu přizpůsobení.
 
-Podrobný přehled a osvědčené postupy pro vlastní jazykové modely najdete v tématu [přizpůsobení jazykového modelu pomocí video indexer](customize-language-model-overview.md).
+Podrobný přehled a doporučené postupy pro vlastní jazykové modely naleznete v [tématu Přizpůsobení jazykového modelu pomocí nástroje Video Indexer](customize-language-model-overview.md).
 
-Web Video Indexer můžete použít k vytvoření a úpravě vlastních jazykových modelů v účtu, jak je popsáno v tomto tématu. Můžete také použít rozhraní API, jak je popsáno v tématu [přizpůsobení jazykového modelu pomocí rozhraní API](customize-language-model-with-api.md).
+Pomocí webu Video Indexer můžete ve svém účtu vytvářet a upravovat vlastní jazykové modely, jak je popsáno v tomto tématu. Rozhraní API můžete také použít, jak je popsáno v [části Přizpůsobit jazykový model pomocí rozhraní API](customize-language-model-with-api.md).
 
 ## <a name="create-a-language-model"></a>Vytvoření jazykového modelu
 
 1. Přejděte na web [Video Indexer](https://www.videoindexer.ai/) a přihlaste se.
-2. Pokud chcete ve svém účtu přizpůsobit model, klikněte na tlačítko **Přizpůsobení modelu obsahu** v pravém horním rohu stránky.
+2. Chcete-li přizpůsobit model v účtu, vyberte tlačítko **Přizpůsobení modelu obsahu** v pravém horním rohu stránky.
 
-   ![Přizpůsobení modelu obsahu](./media/content-model-customization/content-model-customization.png)
+   ![Přizpůsobení modelu obsahu v videoindexeru](./media/content-model-customization/content-model-customization.png)
 
-3. Vyberte kartu **jazyk** .
+3. Vyberte kartu **Jazyk.**
 
-    Zobrazí se seznam podporovaných jazyků. 
+    Zobrazí se seznam podporovaných jazyků.
 
-    ![Přizpůsobení jazykového modelu](./media/customize-language-model/customize-language-model.png)
+    ![Seznam modelů jazyků v video indexeru](./media/customize-language-model/customize-language-model.png)
 
-4. V části požadovaný jazyk klikněte na **přidat model**.
-5. Zadejte název pro jazykový model a stiskněte ENTER.
+4. V požadovaném jazyce vyberte **Přidat model**.
+5. Zadejte název jazykového modelu a stiskněte klávesu ENTER.
 
-    Tím se vytvoří model a nabídne možnost nahrání textových souborů do modelu.
-6. Chcete-li přidat textový soubor, klikněte na tlačítko **Přidat soubor**. Tím otevřete Průzkumníka souborů.
+    Tento krok vytvoří model a dává možnost nahrát textové soubory do modelu.
 
-7. Přejděte na a vyberte textový soubor. Do modelu jazyka můžete přidat více textových souborů.
+6. Chcete-li přidat textový soubor, vyberte **Přidat soubor**. Otevře se průzkumník souborů.
 
-    Můžete také přidat textový soubor kliknutím na tlačítko **...** na pravé straně jazykového modelu a výběrem možnosti **Přidat soubor**.
-8. Po dokončení nahrávání textových souborů klikněte na zelenou možnost **vlaku** .
+7. Přejděte do textového souboru a vyberte ho. Do jazykového modelu můžete přidat více textových souborů.
 
-    ![Jazykový model výuky](./media/customize-language-model/train-model.png)
+    Textový soubor můžete přidat také tak, že vyberete tlačítko **...** na pravé straně jazykového modelu a vyberete **přidat soubor**.
 
-Proces školení může trvat několik minut. Po dokončení školení se zobrazí **školení** vedle modelu. Můžete zobrazit náhled, stáhnout a odstranit soubor z modelu.
+8. Po dokončení nahrávání textových souborů vyberte zelenou možnost **Vlak.**
 
-![Vyškolený jazykový model](./media/customize-language-model/preview-model.png)
+    ![Model jazyka Trénování v videoindexeru](./media/customize-language-model/train-model.png)
 
-### <a name="using-a-language-model-on-a-new-video"></a>Použití jazykového modelu na novém videu
+Tréninkový proces může trvat několik minut. Po dokončení školení se zobrazí **trénovaný** vedle modelu. Soubor z modelu můžete zobrazit náhled, stáhnout a odstranit.
 
-Chcete-li použít svůj jazykový model na novém videu, proveďte jednu z následujících akcí:
+![Trénovaný jazykový model v video indexeru](./media/customize-language-model/preview-model.png)
 
-* Klikněte na tlačítko **nahrát** v horní části stránky. 
+### <a name="using-a-language-model-on-a-new-video"></a>Použití jazykového modelu v novém videu
 
-    ![Nahrávání](./media/customize-language-model/upload.png)
-* Zařaďte svůj zvukový nebo videosoubor do kruhu nebo ho vyhledejte.
+Chcete-li použít jazykový model v novém videu, proveďte jednu z následujících akcí:
 
-    ![Nahrávání](./media/customize-language-model/upload2.png)
+* V horní části stránky vyberte tlačítko **Nahrát.**
 
-Tím získáte možnost vybrat **zdrojový jazyk videa**. Klikněte na rozevírací seznam a vyberte jazykový model, který jste vytvořili ze seznamu. Měl by to být jazyk vašeho jazykového modelu a název, který jste mu přiřadili v závorkách.
+    ![Tlačítko Nahrát Video Indexer](./media/customize-language-model/upload.png)
 
-V dolní části stránky klikněte na možnost **nahrát** a nové video bude indexováno pomocí vašeho jazykového modelu.
+* Přetáhněte zvukový soubor nebo video soubor do kruhu nebo vyhledejte soubor.
 
-### <a name="using-a-language-model-to-reindex"></a>Reindexace pomocí jazykového modelu
+    ![Nahrát mediální soubor Video Indexer](./media/customize-language-model/upload2.png)
 
-Pokud chcete pomocí vašeho jazykového modelu znovu indexovat video v kolekci, přejděte na video o **účtu** na domovské stránce [video indexer](https://www.videoindexer.ai/) a umístěte ukazatel myši na název videa, které chcete znovu indexovat.
+Máte možnost vybrat **zdrojový jazyk videa**. Vyberte rozevírací seznam a vyberte jazykový model, který jste vytvořili ze seznamu. Měl by vněm být vyslovuje se jazyk emaského modelu a název, který jste mu dali v závorce.
 
-Uvidíte možnosti, jak upravit vaše video, odstranit video a znovu indexovat video. Pokud chcete video znovu indexovat, klikněte na možnost.
+V dolní části stránky vyberte možnost **Nahrát** a nové video bude indexováno podle jazykového modelu.
 
-![Přeindexování](./media/customize-language-model/reindex1.png)
+### <a name="using-a-language-model-to-reindex"></a>Použití jazykového modelu k přeindexování
 
-Díky tomu máte možnost vybrat **zdrojový jazyk videa** , pomocí kterého se má video znovu indexovat. Klikněte na rozevírací seznam a vyberte jazykový model, který jste vytvořili ze seznamu. Měl by to být jazyk vašeho jazykového modelu a název, který jste mu přiřadili v závorkách.
+Pokud chcete použít jazykový model k přeindexování videa v kolekci, přejděte na domovskou stránku Video Indexer na **domovské** stránce [Video Indexer](https://www.videoindexer.ai/) a najeďte na název videa, které chcete přeindexovat.
 
-![Přeindexování](./media/customize-language-model/reindex.png)
+Zobrazí se možnosti úprav videa, odstranění videa a přeindexování videa. Vyberte možnost přeindexování videa.
 
-Klikněte na tlačítko **znovu index** a vaše video se přeindexuje pomocí jazykového modelu.
+![Přeindexování pomocí videoindexeru](./media/customize-language-model/reindex1.png)
+
+Budete mít možnost vybrat **zdrojový jazyk videa,** ve kterých chcete video přeindexovat. Vyberte rozevírací seznam a vyberte jazykový model, který jste vytvořili ze seznamu. Měl by vněm být vyslovuje se v jazyce vašeho jazykového modelu a název, který jste mu dali v závorce.
+
+![Volba jazyka zdroje videa – Přeindexování videa pomocí videoindexeru](./media/customize-language-model/reindex.png)
+
+Vyberte tlačítko **Přeindexovat** a vaše video bude přeindexováno pomocí jazykového modelu.
 
 ## <a name="edit-a-language-model"></a>Úprava jazykového modelu
 
-Můžete upravit jazykový model změnou jeho názvu, přidáním souborů do něj a odstraněním souborů z něj.
+Jazykový model můžete upravit změnou jeho názvu, přidáním souborů a odstraněním souborů z něj.
 
-Pokud přidáváte nebo odstraňujete soubory z jazykového modelu, budete si muset model znovu vytvořit kliknutím na zelenou možnost **vlaku** .
+Pokud přidáte nebo odstraníte soubory z jazykového modelu, budete muset model znovu trénovat výběrem zelené **možnosti Vlak.**
 
 ### <a name="rename-the-language-model"></a>Přejmenování jazykového modelu
 
-Název jazykového modelu můžete změnit kliknutím na **...** na pravé straně jazykového modelu a výběrem možnosti **Přejmenovat**. 
+Název jazykového modelu můžete změnit tak, že na pravé straně jazykového modelu vyberete tlačítko Tři tečky (**...**) a **vyberete přejmenovat**.
 
 Zadejte nový název a stiskněte klávesu ENTER.
 
-### <a name="add-files"></a>Přidat soubory
+### <a name="add-files"></a>Přidání souborů
 
-Chcete-li přidat textový soubor, klikněte na tlačítko **Přidat soubor**. Tím otevřete Průzkumníka souborů.
+Chcete-li přidat textový soubor, vyberte **Přidat soubor**. Otevře se průzkumník souborů.
 
-Přejděte na a vyberte textový soubor. Do modelu jazyka můžete přidat více textových souborů.
+Přejděte do textového souboru a vyberte ho. Do jazykového modelu můžete přidat více textových souborů.
 
-Můžete také přidat textový soubor kliknutím na tlačítko **...** na pravé straně jazykového modelu a výběrem možnosti **Přidat soubor**.
+Textový soubor můžete přidat také tak, že na pravé straně jazykového modelu vyberete tlačítko Tři tečky (**...**) a vyberete **přidat soubor**.
 
 ### <a name="delete-files"></a>Odstranění souborů
 
-Pokud chcete odstranit soubor z jazykového modelu, klikněte na pravé straně textového souboru na tlačítko **...** a vyberte **Odstranit**. Tím se zobrazí nové okno s oznámením, že odstranění nelze vrátit zpět. V novém okně klikněte na možnost **Odstranit** .
+Chcete-li odstranit soubor z jazykového modelu, vyberte tlačítko tři tečky (**...**) na pravé straně textového souboru a vyberte **Odstranit**. Objeví se nové okno s tím, že odstranění nelze vrátit zpět. V novém okně vyberte možnost **Odstranit.**
 
-Tato akce odebere soubor úplně z jazykového modelu.
+Tato akce odebere soubor zcela z jazykového modelu.
 
 ## <a name="delete-a-language-model"></a>Odstranění jazykového modelu
 
-Pokud chcete z účtu odstranit jazykový model, klikněte na pravé straně jazykového modelu na tlačítko **...** a vyberte **Odstranit**.
+Chcete-li odstranit jazykový model ze svého účtu, vyberte tlačítko tři tečky (**...**) na pravé straně jazykového modelu a vyberte **odstranit**.
 
-Tím se zobrazí nové okno s oznámením, že odstranění nelze vrátit zpět. V novém okně klikněte na možnost **Odstranit** .
+Objeví se nové okno s tím, že odstranění nelze vrátit zpět. V novém okně vyberte možnost **Odstranit.**
 
-Tato akce zcela odebere jazykový model z vašeho účtu. Všechna videa, která používala odstraněný jazykový model, budou mít stejný index, dokud video znovu neindexujte. Pokud video znovu indexovat, můžete video přiřadit nový jazykový model. V opačném případě Video Indexer použije výchozí model k opakovanému indexování videa. 
+Tato akce zcela odebere jazykový model z vašeho účtu. Jakékoli video, které používalo odstraněný jazykový model, bude mít stejný index, dokud video nepřeindexujete. Pokud video přeindexujete, můžete k videu přiřadit nový jazykový model. V opačném případě video Indexer použije svůj výchozí model k přeindexování videa.
 
 ## <a name="customize-language-models-by-correcting-transcripts"></a>Přizpůsobení jazykových modelů opravou přepisů
 
-Video Indexer podporuje automatické přizpůsobení jazykových modelů na základě skutečného počtu oprav, které uživatelé provedou v přepisu jejich videí.
+Video Indexer podporuje automatické přizpůsobení jazykových modelů na základě skutečných oprav, které uživatelé provází v přepisech svých videí.
 
-1. Pokud chcete provést opravy přepisu, otevřete video, které chcete upravit, z videí k účtu. Vyberte kartu **Časová osa** .
+1. Chcete-li provést opravy přepisu, otevřete video, které chcete upravit z videí účtu. Vyberte kartu **Časová osa.**
 
-    ![Přizpůsobení jazykového modelu](./media/customize-language-model/timeline.png)
-1. Kliknutím na ikonu tužky upravte přepis svého přepisu. 
+    ![Přizpůsobit kartu časové osy jazykového modelu – Video Indexer](./media/customize-language-model/timeline.png)
 
-    ![Přizpůsobení jazykového modelu](./media/customize-language-model/edits.png)
+1. Vyberte ikonu tužky a upravte přepis přepisu.
 
-    Video Indexer zachycuje všechny řádky, které jsou opraveny v přepisu videa, a automaticky je přidá do textového souboru s názvem "z úprav přepisu". Tyto úpravy slouží k opětovnému vytvoření výukového modelu konkrétního jazyka, který se použil k indexování tohoto videa. 
+    ![Přizpůsobení přepisu úprav jazykového modelu – Video Indexer](./media/customize-language-model/edits.png)
+
+    Video Indexer zachytí všechny řádky, které jste opravili v přepisu videa, a automaticky je přidá do textového souboru s názvem "Z úprav přepisu". Tyto úpravy se používají k přeškolení konkrétního jazykového modelu, který byl použit k indexování tohoto videa.
     
-    Pokud jste při indexování tohoto videa neurčili jazykový model, všechny úpravy tohoto videa budou uloženy ve výchozím jazykovém modelu nazývaném přizpůsobení účtu v rámci zjištěného jazyka videa. 
+    Pokud jste při indexování tohoto videa nezadali jazykový model, budou všechny úpravy tohoto videa uloženy ve výchozím jazykovém modelu nazvaném "Úpravy účtu" v detekovaném jazyce videa.
     
-    V případě, že se na stejném řádku provedlo několik úprav, použije se k aktualizaci jazykového modelu jenom poslední verze opraveného řádku.  
+    V případě, že bylo provedeno více úprav na stejném řádku, bude pro aktualizaci jazykového modelu použita pouze poslední verze opraveného řádku.  
     
     > [!NOTE]
-    > Pro vlastní nastavení se používají jenom textové opravy. To znamená, že nejsou zahrnuté opravy, které nezahrnují skutečná slova (například interpunkční znaménka nebo mezery). 
+    > Pro vlastní nastavení se používají pouze textové opravy. Opravy, které nezahrnují skutečná slova (například interpunkční znaménka nebo mezery), nejsou zahrnuty.
     
-1. Na kartě jazyk na stránce přizpůsobení modelu obsahu se zobrazí opravy přepisu.
+1. Opravy přepisu se zobrazí na kartě Jazyk na stránce Přizpůsobení modelu obsahu.
 
-    ![Přizpůsobení jazykového modelu](./media/customize-language-model/customize.png)
+    ![Přizpůsobení jazykového modelu – Video Indexer](./media/customize-language-model/customize.png)
 
-   Pokud se chcete podívat na soubor "od úprav přepisu" pro každý jazykový model, klikněte na něj a otevřete ho. 
+   Chcete-li se podívat na soubor "Z úprav přepisů" pro každý z vašich jazykových modelů, vyberte jej, abyste jej otevřeli.
 
-    ![Od úprav přepisu](./media/customize-language-model/from-transcript-edits.png)
+    ![Z úprav přepisu – Video Indexer](./media/customize-language-model/from-transcript-edits.png)
 
 ## <a name="next-steps"></a>Další kroky
 

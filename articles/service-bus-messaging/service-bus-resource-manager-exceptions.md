@@ -1,6 +1,6 @@
 ---
-title: Výjimky Azure Service Bus Správce prostředků | Microsoft Docs
-description: Seznam výjimek Service Bus Azure Resource Manager a navrhovaných akcí
+title: Výjimky správce prostředků služby Azure Service Bus | Dokumenty společnosti Microsoft
+description: Seznam výjimek service bus, které se objevily ve Správci prostředků Azure a navrhovaných akcích.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -15,77 +15,77 @@ ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
 ms.openlocfilehash: 0f328651ac4422226071d2de12e9cbc787ef64be
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978272"
 ---
-# <a name="service-bus-resource-manager-exceptions"></a>Výjimky Service Bus Správce prostředků
+# <a name="service-bus-resource-manager-exceptions"></a>Výjimky správce prostředků služby Service Bus
 
-V tomto článku jsou vygenerovány výjimky, které jsou vygenerovány při interakci s Azure Service Bus Azure Resource Manager prostřednictvím šablon nebo přímých volání.
+Tento článek uvádí výjimky generované při interakci s Azure Service Bus pomocí Azure Resource Manager – prostřednictvím šablon nebo přímých volání.
 
 > [!IMPORTANT]
-> Tento dokument se často aktualizuje. Vraťte se prosím na aktualizace.
+> Tento dokument je často aktualizován. Zkontrolujte, zda neobsahuje aktualizace.
 
-Níže jsou uvedeny různé výjimky a chyby, které jsou provedené prostřednictvím Azure Resource Manager.
+Níže jsou uvedeny různé výjimky nebo chyby, které jsou uvedeny prostřednictvím Správce prostředků Azure.
 
 ## <a name="error-bad-request"></a>Chyba: Chybný požadavek
 
-Chybný požadavek znamená, že žádost přijatá Správce prostředků neprošla ověřením.
+"Chybný požadavek" znamená, že požadavek přijatý správcem prostředků se nezdařil o ověření.
 
-| Kód chyby | Chybový kód | Chybová zpráva | Popis | Doporučení |
+| Kód chyby | Chyba dílčího kódu | Chybová zpráva | Popis | Doporučení |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Chybný požadavek | 40000 | Subcode = 40 000. Vlastnost *' name '* nemůže být nastavena při vytváření fronty, protože obor názvů *' název oboru názvů '* používá vrstvu ' Basic '. Tato operace je podporovaná jenom v úrovni Standard nebo Premium. | Na úrovni Basic Azure Service Bus nelze nastavit ani aktualizovat tyto vlastnosti – <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Témata </li> </ul> | Pokud chcete používat tuto funkci, zvažte upgrade z úrovně Basic na úroveň Standard nebo Premium. |
-| Chybný požadavek | 40000 | Subcode = 40 000. Hodnotu vlastnosti ' requiresDuplicateDetection ' existující fronty (nebo tématu) nelze změnit. | Zjišťování duplicitních hodnot musí být povoleno/zakázáno v době vytváření entity. Konfigurační parametr detekce duplicit nelze po vytvoření změnit. | Pokud chcete povolit detekci duplicit u dříve vytvořené fronty nebo tématu, můžete vytvořit novou frontu nebo téma s detekcí duplicit a pak přesměrovat z původní fronty do nové fronty nebo tématu. |
-| Chybný požadavek | 40000 | Subcode = 40 000. Zadaná hodnota 16384 je neplatná. Vlastnost ' MaxSizeInMegabytes ' musí mít jednu z následujících hodnot: 1024; 2048; 3072/95; 4096; 5 120. | Hodnota MaxSizeInMegabytes je neplatná. | Ujistěte se, že MaxSizeInMegabytes je jedním z následujících 1024, 2048, 3072, 4096, 5120. |
-| Chybný požadavek | 40000 | Subcode = 40 000. Dělení nelze změnit pro frontu či téma. | Dělení nelze změnit pro entitu. | Vytvořte novou entitu (frontu nebo téma) a povolte oddíly. | 
-| Chybný požadavek | Žádná | Obor názvů *"název oboru názvů"* neexistuje. | Obor názvů v rámci vašeho předplatného Azure neexistuje. | Pokud chcete tuto chybu vyřešit, zkuste prosím níže. <ul> <li> Ujistěte se, že je předplatné Azure správné. </li> <li> Ujistěte se, že obor názvů existuje. </li> <li> Ověřte, že je název oboru názvů správný (žádné chyby pravopisu nebo řetězce s hodnotou null). </li> </ul> | 
-| Chybný požadavek | 40400 | Subcode = 40400. Cílová entita automatického předávání neexistuje. | Cíl pro cílovou entitu autopřesměrovává neexistuje. | Cílovou entitu (frontu nebo téma) musí existovat před vytvořením zdroje. Po vytvoření cílové entity zkuste akci zopakovat. |
-| Chybný požadavek | 40000 | Subcode = 40 000. Zadaný čas uzamčení překračuje povolené maximum 5 minut. | Čas, kdy může být zpráva uzamčena, musí být v rozmezí 1 minuty (minimálně) až 5 minut (maximum). | Zajistěte, aby zadaný čas uzamčení byl mezi 1 min a 5 minutami. |
-| Chybný požadavek | 40000 | Subcode = 40 000. Vlastnost DelayedPersistence i RequiresDuplicateDetection nelze současně povolit. | Entity s povoleným vyhledáváním duplicit musí být trvalé, takže stálost nelze zpozdit. | Další informace o [detekci duplicit](duplicate-detection.md) |
-| Chybný požadavek | 40000 | Subcode = 40 000. Hodnotu vlastnosti RequiresSession existující fronty nelze změnit. | V době vytváření entity by měla být povolená podpora pro relace. Po vytvoření nemůžete povolit nebo zakázat relace u existující entity (fronty nebo předplatného). | Odstraňte a znovu vytvořte novou frontu (nebo předplatné) s povolenou vlastností "RequiresSession". |
-| Chybný požadavek | 40000 | Subcode = 40 000. ' URI_PATH ' obsahuje znaky, které nejsou povoleny Service Bus. Segmenty entit můžou obsahovat jenom písmena, číslice, tečky (.), spojovníky (-) a podtržítka (_). | Segmenty entit můžou obsahovat jenom písmena, číslice, tečky (.), spojovníky (-) a podtržítka (_). Jakékoli jiné znaky způsobí selhání požadavku. | Zajistěte, aby v cestě identifikátoru URI neexistovaly žádné neplatné znaky. |
+| Chybný požadavek | 40000 | SubCode=40000. Vlastnost *"název vlastnosti"* nelze nastavit při vytváření fronty, protože obor názvů *"název oboru názvů"* používá úroveň "Basic". Tato operace je podporována pouze ve vrstvě "Standard" nebo "Premium". | Na základní úrovni Azure Service Bus nelze nastavit nebo aktualizovat níže uvedené vlastnosti. <ul> <li> Vyžaduje odstranění duplicit </li> <li> AutodeleteOnIdle </li> <li>Vyžadujerelace</li> <li>VýchozíMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeOkno </li> <li> EnableExpress </li> <li> Vpřed </li> <li> Témata </li> </ul> | Zvažte upgrade ze základní na standardní nebo premium úroveň používat tuto funkci. |
+| Chybný požadavek | 40000 | SubCode=40000. Hodnotu vlastnosti "requiresDuplicateDetection" existující ho queue(nebo topic) nelze změnit. | Vyhledávání duplicit musí být povoleno nebo zakázáno v době vytvoření entity. Parametr konfigurace vyhledávání duplicit nelze po vytvoření změnit. | Chcete-li povolit vyhledávání duplicit v dříve vytvořené frontě nebo tématu, můžete vytvořit novou frontu nebo téma s vyhledáváním duplicit a poté předat z původní fronty do nové fronty nebo tématu. |
+| Chybný požadavek | 40000 | SubCode=40000. Zadaná hodnota 16384 je neplatná. Vlastnost MaxSizeInMegabytes musí být jedna z následujících hodnot: 1024;2048;3072;4096;5120. | Hodnota MaxSizeInMegabytes je neplatná. | Ujistěte se, že MaxSizeInMegabytes je jedním z následujících - 1024, 2048, 3072, 4096, 5120. |
+| Chybný požadavek | 40000 | SubCode=40000. Dělení nelze změnit pro frontu nebo téma. | Dělení nelze změnit pro entitu. | Vytvořte novou entitu (frontu nebo téma) a povolte oddíly. | 
+| Chybný požadavek | Žádná | Název *oboru* názvů neexistuje. | Obor názvů neexistuje v rámci předplatného Azure. | Chcete-li tuto chybu vyřešit, vyzkoušejte níže <ul> <li> Ujistěte se, že předplatné Azure je správné. </li> <li> Ujistěte se, že obor názvů existuje. </li> <li> Ověřte, zda je název oboru názvů správný (žádné pravopisné chyby nebo nulové řetězce). </li> </ul> | 
+| Chybný požadavek | 40400 | Podkód=40400. Cílová entita automatického předávání neexistuje. | Cíl cílové entity automatického předávání neexistuje. | Cílová entita (fronta nebo téma) musí existovat před vytvořením zdroje. Opakujte akci po vytvoření cílové entity. |
+| Chybný požadavek | 40000 | SubCode=40000. Dodaná doba uzamčení přesahuje povolený maximální počet minut "5". | Doba, po kterou může být zpráva uzamčena, musí být mezi 1 minutou (minimálně) a 5 minutami (maximálně). | Ujistěte se, že dodaný zámek je mezi 1 min a 5 min. |
+| Chybný požadavek | 40000 | SubCode=40000. Vlastnost DelayedPersistence a RequiresDuplicateDetection nelze povolit společně. | Entity s povoleným vyhledáváním duplicit musí být trvalé, takže trvalost nemůže být zpožděna. | Další informace o [vyhledávání duplicit](duplicate-detection.md) |
+| Chybný požadavek | 40000 | SubCode=40000. Vlastnost RequiresSession existující fronty nelze změnit. | Podpora pro relace by měla být povolena v době vytvoření entity. Po vytvoření nelze povolit nebo zakázat relace u existující entity (fronty nebo předplatného) | Odstraňte a znovu vytvořte novou frontu (nebo předplatné) s povolenou vlastností "RequiresSession". |
+| Chybný požadavek | 40000 | SubCode=40000. 'URI_PATH' obsahuje znak (znaky), který není povolen Service Bus. Segmenty entit mohou obsahovat pouze písmena, čísla, tečky, pomlčky(-) a podtržítka(_). | Segmenty entit mohou obsahovat pouze písmena, čísla, tečky, pomlčky(-) a podtržítka(_). Všechny ostatní znaky způsobit selhání požadavku. | Ujistěte se, že v cestě URI nejsou žádné neplatné znaky. |
 
 
 ## <a name="error-code-429"></a>Kód chyby: 429
 
-Stejně jako v HTTP, "kód chyby 429" indikuje "příliš mnoho požadavků". Implikuje omezení konkrétního prostředku (namespace) z důvodu příliš velkého počtu požadavků (nebo z důvodu konfliktních operací) na tomto prostředku.
+Stejně jako v protokolu HTTP označuje "Kód chyby 429" "příliš mnoho požadavků". To znamená, že konkrétní prostředek (obor názvů) je omezen z důvodu příliš mnoho požadavků (nebo z důvodu konfliktní operace) na tento prostředek.
 
-| Kód chyby | Chybový kód | Chybová zpráva | Popis | Doporučení |
+| Kód chyby | Chyba dílčího kódu | Chybová zpráva | Popis | Doporučení |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| 429 | 50004 | Subcode = 50004. Žádost se ukončila, protože obor názvů *váš obor názvů* se omezuje. | K tomuto chybovému stavu dojde, když počet příchozích požadavků překročí omezení prostředku. | Počkejte několik sekund a zkuste to znovu. <br/> <br/> Další informace o [kvótách](service-bus-quotas.md) a [Azure Resource Manager omezeních požadavků](../azure-resource-manager/management/request-limits-and-throttling.md)|
-| 429 | 40901 | Subcode = 40901. Probíhá jiná konfliktní operace. | U stejného prostředku nebo entity probíhá jiná konfliktní operace. | Než budete zkoušet znovu, počkejte, než se aktuální probíhající operace dokončí. |
-| 429 | 40900 | Subcode = 40900. Došlo. Požadujete operaci, která není v aktuálním stavu prostředku povolena. | K tomuto stavu může dojít, když se k provádění operací u stejné entity (fronty, tématu, předplatného nebo pravidla) provede více požadavků. | Počkejte několik sekund a zkuste to znovu. |
-| 429 | 40901 | Požadavek na entitu *název entity* je v konfliktu s jiným požadavkem. | U stejného prostředku nebo entity probíhá jiná konfliktní operace. | Než budete zkoušet znovu, počkejte na dokončení předchozí operace. |
-| 429 | 40901 | Pro entitu *název entity*je zpracovávána jiná žádost o aktualizaci. | U stejného prostředku nebo entity probíhá jiná konfliktní operace. | Než budete zkoušet znovu, počkejte na dokončení předchozí operace. |
-| 429 | Žádná | Došlo ke konfliktu prostředků. Může probíhat jiná konfliktní operace. Pokud se jedná o opakování operace selhání, bude vyčištění na pozadí stále čeká na vyřízení. Opakujte akci později. | K tomuto stavu může dojít, pokud se u stejné entity čeká na operaci. | Než budete operaci opakovat, počkejte na dokončení předchozí operace. |
+| 429 | 50004 | SubCode=50004. Požadavek byl ukončen, protože *obor* názvů je omezen. | Tento chybový stav je přístupů, pokud počet příchozích požadavků překročí omezení prostředku. | Počkejte několik sekund a akci opakujte. <br/> <br/> Další informace o [kvótách](service-bus-quotas.md) a [limitech požadavků Azure Resource Manageru](../azure-resource-manager/management/request-limits-and-throttling.md)|
+| 429 | 40901 | SubCode=40901. Probíhá další konfliktní operace. | Probíhá další konfliktní operace se stejným zdrojem/entitou. | Před opakovaným pokusem počkejte na dokončení aktuální probíhající operace. |
+| 429 | 40900 | SubCode=40900. Konflikt. Požadujete operaci, která není povolena v aktuálním stavu zdroje. | Tato podmínka může být přístupů při více požadavků jsou provedeny k provedení operací na stejnou entitu (fronty, téma, odběr nebo pravidlo) ve stejnou dobu. | Počkejte několik sekund a akci opakujte. |
+| 429 | 40901 | Požadavek na název entity *je* v konfliktu s jiným požadavkem. | Probíhá další konfliktní operace se stejným zdrojem/entitou. | Před opakováním operace počkejte na dokončení předchozí operace. |
+| 429 | 40901 | Probíhá další požadavek na aktualizaci pro *entitu "název entity"*. | Probíhá další konfliktní operace se stejným zdrojem/entitou. | Před opakováním operace počkejte na dokončení předchozí operace. |
+| 429 | Žádná | Došlo ke konfliktu prostředků. Možná probíhá další konfliktní operace. Pokud se jedná o opakování pro neúspěšnou operaci, vyčištění na pozadí stále čeká na vyřízení. Zkuste to později. | Tato podmínka může být přístupů, pokud je čekající operace proti stejné entity. | Před opakováním operace počkejte na dokončení předchozí operace. |
 
 
-## <a name="error-code-not-found"></a>Kód chyby: Nenalezeno
+## <a name="error-code-not-found"></a>Kód chyby: Nebyl nalezen.
 
-Tato třída chyb indikuje, že prostředek nebyl nalezen.
+Tato třída chyb označuje, že prostředek nebyl nalezen.
 
-| Kód chyby | Chybový kód | Chybová zpráva | Popis | Doporučení |
+| Kód chyby | Chyba dílčího kódu | Chybová zpráva | Popis | Doporučení |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Nenalezeno | Žádná | Entitu *název entity* se nepovedlo najít. | Entita, proti které nebyla operace nalezena. | Ověřte, zda entita existuje, a operaci opakujte. |
-| Nenalezeno | Žádná | Nenalezeno. Operace neexistuje. | Operace, kterou se pokoušíte provést, neexistuje. | Ověřte operaci a zkuste to znovu. |
-| Nenalezeno | Žádná | Příchozí žádost není rozpoznaná jako požadavek PUT zásady oboru názvů. | Text příchozího požadavku má hodnotu null, a proto jej nelze provést jako požadavek PUT. | Zkontrolujte text žádosti, abyste se ujistili, že není null. | 
-| Nenalezeno | Žádná | Entita zasílání zpráv *' název entity '* nebyla nalezena. | Entita, u které se pokoušíte provést operaci, nebyla nalezena. | Zkontrolujte prosím, zda entita existuje, a operaci opakujte. |
+| Nebyl nalezen. | Žádná | Nebyl nalezen *název entity.* | Entita, proti které nebyla operace nalezena. | Zkontrolujte, zda entita existuje, a zkuste operaci znovu. |
+| Nebyl nalezen. | Žádná | Nebyl nalezen. Operace neexistuje. | Operace, kterou se pokoušíte provést, neexistuje. | Zkontrolujte operaci a akci opakujte. |
+| Nebyl nalezen. | Žádná | Příchozí požadavek není rozpoznán jako požadavek na zadání zásad oboru názvů. | Text příchozího požadavku má hodnotu null, a proto jej nelze provést jako požadavek put. | Zkontrolujte tělo požadavku, abyste se ujistili, že není null. | 
+| Nebyl nalezen. | Žádná | Entita zasílání zpráv *"název entity"* nebyla nalezena. | Entita, proti které se pokoušíte provést operaci, nebyla nalezena. | Zkontrolujte, zda entita existuje, a akci opakujte. |
 
-## <a name="error-code-internal-server-error"></a>Kód chyby: interní chyba serveru
+## <a name="error-code-internal-server-error"></a>Kód chyby: Vnitřní chyba serveru
 
-Tato třída chyb indikuje, že došlo k vnitřní chybě serveru.
+Tato třída chyb označuje, že došlo k chybě interního serveru.
 
-| Kód chyby | Chybový kód | Chybová zpráva | Popis | Doporučení |
+| Kód chyby | Chyba dílčího kódu | Chybová zpráva | Popis | Doporučení |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Vnitřní chyba serveru | 50000 | Subcode = 50000. Vnitřní chyba serveru| K tomu může dojít z různých důvodů. Některé příznaky jsou- <ul> <li> Požadavek nebo tělo klienta je poškozené a vede k chybě. </li> <li> Časový limit žádosti klienta vypršel kvůli problémům se zpracováním služby. </li> </ul> | Pro vyřešení tohoto problému <ul> <li> Ujistěte se, že parametry požadavků nemají hodnotu null nebo jsou chybné. </li> <li> Opakujte požadavek. </li> </ul> |
+| Vnitřní chyba serveru | 50000 | SubCode=50000. Vnitřní chyba serveru| Může se to stát z různých důvodů. Některé z příznaků jsou - <ul> <li> Požadavek/tělo klienta je poškozen a vede k chybě. </li> <li> Časový rozsah požadavku klienta z důvodu problémů se zpracováním služby. </li> </ul> | Chcete-li tento problém vyřešit <ul> <li> Ujistěte se, že parametry požadavků nejsou null nebo poškozený. </li> <li> Opakujte požadavek. </li> </ul> |
 
 ## <a name="error-code-unauthorized"></a>Kód chyby: Neautorizováno
 
-Tato třída chyb označuje absenci autorizace pro spuštění příkazu.
+Tato třída chyb označuje absenci oprávnění ke spuštění příkazu.
 
-| Kód chyby | Chybový kód | Chybová zpráva | Popis | Doporučení |
+| Kód chyby | Chyba dílčího kódu | Chybová zpráva | Popis | Doporučení |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Neautorizováno | Žádná | Neplatná operace na sekundárním oboru názvů. Sekundární obor názvů je jen pro čtení. | Operace byla provedena proti sekundárnímu oboru názvů, který je nastaven jako obor názvů jen pro čtení. | Opakujte příkaz s primárním oborem názvů. Další informace o [sekundárním oboru názvů](service-bus-geo-dr.md) |
-| Neautorizováno | Žádná | MissingToken: autorizační hlavička se nenašla. | K této chybě dochází, pokud má autorizace hodnotu null nebo jsou nesprávné hodnoty. | Ujistěte se, že hodnota tokenu uvedená v autorizační hlavičce je správná a není null. |
+| Neautorizováno | Žádná | Neplatná operace v sekundárním oboru názvů. Sekundární obor názvů je jen pro čtení. | Operace byla provedena proti sekundárnímu oboru názvů, který je nastaven jako obor názvů jen pro čtení. | Opakujte příkaz proti primárnímu oboru názvů. Další informace o [sekundárním oboru názvů](service-bus-geo-dr.md) |
+| Neautorizováno | Žádná | MissingToken: Hlavička autorizace nebyla nalezena. | K této chybě dochází, pokud má autorizace nulové nebo nesprávné hodnoty. | Ujistěte se, že hodnota tokenu uvedená v hlavičce autorizace je správná a není null. |

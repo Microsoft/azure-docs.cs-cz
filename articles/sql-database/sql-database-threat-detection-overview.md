@@ -1,6 +1,6 @@
 ---
 title: Rozšířená ochrana před internetovými útoky
-description: Rozšířená ochrana před internetovými útoky detekuje neobvyklé databázové aktivity, které indikují potenciální bezpečnostní hrozby v Azure SQL Database.
+description: Pokročilá ochrana před hrozbami detekuje neobvyklé databázové aktivity označující potenciální ohrožení zabezpečení v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,33 +12,33 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: 473c58fa5097c4f4e318543c59ad1cf3a3899594
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 17ca8cbb7a55e9c0d44af099f4884f71b1cd457a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194083"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124761"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection pro Azure SQL Database
 
-Rozšířená ochrana před internetovými útoky pro [Azure SQL Database](sql-database-technical-overview.md) a [Azure synapse Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
+Pokročilá ochrana před hrozbami pro [Azure SQL Database](sql-database-technical-overview.md) a Azure [Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) detekuje neobvyklé aktivity označující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
-Rozšířená ochrana před internetovými útoky je součástí nabídky [Rozšířené služby Data Security](sql-database-advanced-data-security.md) (ADS), což je jednotný balíček pro pokročilé funkce zabezpečení SQL. Rozšířená ochrana před internetovými útoky je dostupná a spravovaná prostřednictvím centrálního portálu SQL ADS.
+Advanced Threat Protection je součástí nabídky [Advanced data Security](sql-database-advanced-data-security.md) (ADS), což je jednotný balíček pro pokročilé možnosti zabezpečení SQL. Správa Advanced Threat Protection je dostupná prostřednictvím centrálního portálu SQL ADS.
 
 > [!NOTE]
-> Toto téma se týká Azure SQL serveru a SQL Database a Azure synapse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá při odkazování na SQL Database a Azure synapse.
+> Toto téma se týká Serveru Azure SQL a databáze SQL a Azure Synapse, které jsou vytvořené na serveru Azure SQL. Pro jednoduchost SQL Database se používá při odkazování na SQL Database a Azure Synapse.
 
-## <a name="what-is-advanced-threat-protection"></a>Co je rozšířená ochrana před internetovými útoky
+## <a name="what-is-advanced-threat-protection"></a>Co je pokročilá ochrana před hrozbami
 
- Rozšířená ochrana před internetovými útoky poskytuje novou vrstvu zabezpečení, která zákazníkům umožňuje rozpoznávat a reagovat na potenciální hrozby při jejich výskytu tím, že poskytuje výstrahy zabezpečení pro aktivity neobvyklé. Uživatelům se zobrazí výstraha o podezřelých databázových aktivitách, potenciálních ohroženích zabezpečení a útocích prostřednictvím injektáže SQL a také o vzorcích dotazů neobvyklé Database. Rozšířená ochrana před internetovými útoky integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/), což zahrnuje podrobnosti o podezřelé aktivitě a doporučuje akci, jak tuto hrozbu prozkoumat a zmírnit. Rozšířená ochrana před internetovými útoky usnadňuje řešení potenciálních hrozeb pro databázi, aniž by museli být odborníkem na zabezpečení nebo mohli spravovat pokročilé systémy monitorování zabezpečení.
+ Pokročilá ochrana před hrozbami poskytuje novou vrstvu zabezpečení, která zákazníkům umožňuje detekovat potenciální hrozby a reagovat na ně tak, že poskytují výstrahy zabezpečení na neobvyklé aktivity. Uživatelé obdrží upozornění na podezřelé databázové aktivity, potenciální chyby zabezpečení a útoky injektáže SQL, stejně jako neobvyklé přístup k databázi a dotazy vzory. Pokročilá ochrana před internetovými zprávami integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/), které obsahují podrobnosti o podezřelé aktivitě a doporučují akce, jak prozkoumat a zmírnit hrozbu. Pokročilá ochrana před hrozbami usnadňuje řešení potenciálních hrozeb pro databázi bez nutnosti být odborníkem na zabezpečení nebo spravovat pokročilé systémy monitorování zabezpečení.
 
-V případě úplného šetření doporučujeme povolit [SQL Database auditování](sql-database-auditing.md), které zapisuje databázové události do protokolu auditu ve vašem účtu služby Azure Storage.  
+Pro úplné šetření prostředí se doporučuje povolit [auditování databáze SQL](sql-database-auditing.md), který zapisuje události databáze do protokolu auditování v účtu úložiště Azure.  
 
-## <a name="advanced-threat-protection-alerts"></a>Výstrahy rozšířené ochrany před internetovými útoky
+## <a name="advanced-threat-protection-alerts"></a>Pokročilá upozornění na ochranu před hrozbami
 
-Rozšířená ochrana před internetovými útoky pro Azure SQL Database detekuje aktivity neobvyklé indikující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití a může aktivovat následující výstrahy:
+Pokročilá ochrana před internetovými technologiemi pro Azure SQL Database detekuje neobvyklé aktivity označující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití a může aktivovat následující výstrahy:
 
-- **Zranitelnost vůči INJEKTÁŽE SQL**: Tato výstraha se aktivuje, když aplikace vygeneruje chybný příkaz SQL v databázi. Tato výstraha může značit možnou zranitelnost vůči útokům prostřednictvím injektáže SQL. Existují dva možné důvody vygenerování chybného příkazu:
+- **Chyba zabezpečení vůči vkládání SQL**: Tato výstraha se aktivuje, když aplikace generuje vadný příkaz SQL v databázi. Tato výstraha může značit možnou zranitelnost vůči útokům prostřednictvím injektáže SQL. Existují dva možné důvody vygenerování chybného příkazu:
 
   - Chyba v kódu aplikace, která způsobí sestavení chybného příkazu jazyka SQL
   - Kód aplikace ani uložené procedury neupravují uživatelský vstup při sestavování chybného příkazu SQL, který může být zneužit pro injektáž SQL.
@@ -49,37 +49,37 @@ Rozšířená ochrana před internetovými útoky pro Azure SQL Database detekuj
 - **Přístup z potenciálně škodlivé aplikace:** Tato výstraha se aktivuje, pokud je pro přístup k databázi použita potenciálně škodlivá aplikace. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok pomocí běžných nástrojů útoku.
 - **Útok hrubou silou na přihlašovací údaje SQL:** Tato výstraha se aktivuje, pokud byly zaznamenán neobvykle vysoký počet neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.
 
-## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Prozkoumejte aktivity databáze neobvyklé při detekci podezřelé události
+## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Prozkoumejte neobvyklé databázové aktivity po zjištění podezřelé události
 
-Po detekci neobvykléch databázových aktivit obdržíte e-mailové oznámení. E-mail obsahuje informace o podezřelé události zabezpečení, včetně povahy aktivit neobvyklé, názvu databáze, názvu serveru, názvu aplikace a času události. Kromě toho e-mail poskytuje informace o možných příčinách a doporučených akcích k prošetření a zmírnění potenciální hrozby pro databázi.
+Obdržíte e-mailové oznámení po zjištění neobvyklé databázové aktivity. E-mail obsahuje informace o podezřelé události zabezpečení, včetně povahy anomální chaktivity, název databáze, název serveru, název aplikace a čas události. Kromě toho e-mail poskytuje informace o možných příčinách a doporučených akcích k prošetření a zmírnění potenciálního ohrožení databáze.
 
-![Sestava aktivity neobvyklé](./media/sql-database-threat-detection/anomalous_activity_report.png)
+![Sestava anomální aktivity](./media/sql-database-threat-detection/anomalous_activity_report.png)
 
-1. Kliknutím na odkaz **Zobrazit nedávné výstrahy SQL** v e-mailu spustíte Azure Portal a zobrazí se stránka Azure Security Center výstrahy, která poskytuje přehled aktivních hrozeb zjištěných v databázi SQL.
+1. Kliknutím na odkaz **Zobrazit poslední výstrahy SQL** v e-mailu spusťte portál Azure portal a zobrazili stránku výstrah Centra zabezpečení Azure, která poskytuje přehled aktivních hrozeb zjištěných v databázi SQL.
 
-   ![Hrozby aktivit](./media/sql-database-threat-detection/active_threats.png)
+   ![Ohrožení aktivity](./media/sql-database-threat-detection/active_threats.png)
 
-2. Kliknutím na konkrétní výstrahu získáte další podrobnosti a akce pro šetření této hrozby a opravaí budoucích hrozeb.
+2. Kliknutím na konkrétní výstrahu získáte další podrobnosti a akce pro vyšetřování této hrozby a nápravu budoucích hrozeb.
 
-   Například injektáže SQL je jedním z nejběžnějších problémů zabezpečení webových aplikací na internetu, které se používají k útoku na aplikace řízené daty. Útočníci využívají chyby zabezpečení aplikací k vkládání škodlivých příkazů SQL do vstupních polí aplikace, při porušení nebo úpravě dat v databázi. V případě výstrah pro vložení SQL zahrnuje podrobnosti výstrahy ohrožený příkaz SQL, který byl zneužit.
+   Například vkládání SQL je jedním z nejběžnějších problémů zabezpečení webových aplikací v Síti Internet, který se používá k útoku na aplikace řízené daty. Útočníci využívají výhod zranitelnosti aplikací k vložení škodlivých příkazů SQL do polí pro zadávání aplikací, porušení nebo úpravy dat v databázi. Pro výstrahy sql injection podrobnosti výstrahy patří zranitelné příkaz SQL, který byl zneužit.
 
    ![Konkrétní výstraha](./media/sql-database-threat-detection/specific_alert.png)
 
-## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>Prozkoumejte rozšířené výstrahy ochrany před hrozbami pro vaši databázi v Azure Portal
+## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>Prozkoumejte pokročilá upozornění na ochranu před hrozbami pro vaši databázi na webu Azure Portal
 
-Rozšířená ochrana před internetovými útoky integruje své výstrahy se službou [Azure Security Center](https://azure.microsoft.com/services/security-center/). Živé SQL Advanced Threat Protection dlaždice v rámci databáze a okna služby SQL ADS v Azure Portal sledují stav aktivních hrozeb.
+Advanced Threat Protection integruje své výstrahy s [Azure security center](https://azure.microsoft.com/services/security-center/). Živé dlaždice SQL Advanced Threat Protection v rámci databáze a rozhraní SQL ADS na portálu Azure sledují stav aktivních hrozeb.
 
-Kliknutím na **Rozšířená výstraha ochrany před internetovými útoky** spustíte stránku Azure Security Center výstrahy a získáte přehled o aktivních hrozbách SQL zjištěných v databázi.
+Kliknutím na **upozornění Rozšířené ochrany před hrozbami** spusťte stránku výstrah Centra zabezpečení Azure a získejte přehled o aktivních hrozbách SQL zjištěných v databázi.
 
-   ![Výstraha rozšířené ochrany před internetovými útoky](./media/sql-database-threat-detection/threat_detection_alert.png)
+   ![Výstraha pokročilé ochrany před hrozbami](./media/sql-database-threat-detection/threat_detection_alert.png)
 
-   ![Rozšířená ochrana před internetovými útoky alert2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
+   ![Výstraha pokročilé ochrany před hrozbami2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si víc o [Rozšířené ochraně před internetovými útoky v databázích s jednou a ve fondu](sql-database-threat-detection.md).
-- Přečtěte si víc o [Rozšířené ochraně před internetovými útoky ve spravované instanci](sql-database-managed-instance-threat-detection.md).
-- Přečtěte si další informace o [pokročilém zabezpečení dat](sql-database-advanced-data-security.md).
+- Další informace o [rozšířené ochraně před internetovými hrozbami v jedné a sdružené databázi](sql-database-threat-detection.md).
+- Další informace o [rozšířené ochraně před internetovými hrozbami ve spravované instanci](sql-database-managed-instance-threat-detection.md).
+- Přečtěte si další informace o [rozšířeném zabezpečení dat](sql-database-advanced-data-security.md).
 - Další informace o [auditování Azure SQL Database](sql-database-auditing.md)
-- Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- Další informace o cenách najdete na stránce s [cenami SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) .  
+- Další informace o [Centru zabezpečení Azure](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Další informace o cenách najdete na [stránce s cenami databáze SQL.](https://azure.microsoft.com/pricing/details/sql-database/)  

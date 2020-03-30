@@ -1,6 +1,6 @@
 ---
-title: BindException – adresa se už používá ve službě Azure HDInsight.
-description: BindException – adresa se už používá ve službě Azure HDInsight.
+title: BindException – adresa, která se už používá v Azure HDInsightu
+description: BindException – adresa, která se už používá v Azure HDInsightu
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 80f984643d6d8be88b381881c6fc1cb1cb5f1815
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887338"
 ---
-# <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>Scénář: BindException-Address se už používá ve službě Azure HDInsight.
+# <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>Scénář: BindException – adresa, která se už používá v Azure HDInsightu
 
-Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
+Tento článek popisuje kroky řešení potíží a možná řešení problémů při interakci s clustery Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-Operaci restartování na serveru oblasti Apache Hbas se nepodařilo dokončit. Z `region-server.log` v adresáři `/var/log/hbase` v pracovních uzlech, kde se nepovede Server oblasti Start, se může zobrazit chybová zpráva podobná následující:
+Operace restartování na serveru Apache HBase Region se nepodařilo dokončit. Z `region-server.log` adresáře in `/var/log/hbase` na pracovních uzlech, kde se nezdaří spuštění serveru oblasti, se může zobrazit chybová zpráva podobná takto:
 
 ```
 Caused by: java.net.BindException: Problem binding to /10.2.0.4:16020 : Address already in use
@@ -32,23 +32,23 @@ Caused by: java.net.BindException: Address already in use
 
 ## <a name="cause"></a>Příčina
 
-Restartování serverů oblastí Apache HBA během náročné aktivity úlohy. Níže najdete informace o tom, co se stane na pozadí, když uživatel zahájí operaci restartování na Hbach serveru oblasti z uživatelského rozhraní Apache Ambari:
+Restartování serverů Apache HBase Region během velké aktivity pracovního vytížení. Níže je uvedeno, co se děje na pozadí, když uživatel zahájí operaci restartování na serveru oblasti HBase z uživatelského rozhraní Apache Ambari:
 
 1. Agent Ambari odešle požadavek na zastavení na server oblasti.
 
-1. Agent Ambari počká 30 sekund, aby se server oblasti mohl řádně vypnout.
+1. Agent Ambari čeká 30 sekund, než se server oblasti řádně vypne.
 
-1. Pokud se vaše aplikace nadále připojuje k serveru oblastí, server se nevypne hned. Časový limit 30 sekund vyprší, než dojde k vypnutí.
+1. Pokud se aplikace nadále připojuje k serveru oblasti, server se okamžitě nevypne. Časový limit 30 sekund vyprší před vypnutím dojde.
 
-1. Po 30 sekundách pošle agent Ambari na server oblasti příkaz Force-Kill (`kill -9`).
+1. Po 30 sekundách odešle agent Ambari`kill -9`příkaz force-kill ( ) na oblastní server.
 
-1. Z důvodu tohoto náhlého vypnutí se i když proces serveru oblasti ukončí, port přidružený k procesu se nemusí uvolnit, což nakonec vede k `AddressBindException`.
+1. Z důvodu tohoto náhlého vypnutí, přestože proces serveru oblasti je ukončen, port přidružený `AddressBindException`k procesu nemusí být uvolněna, což nakonec vede k .
 
-## <a name="resolution"></a>Rozlišení
+## <a name="resolution"></a>Řešení
 
-Před zahájením restartování snižte zatížení serverů oblastí HBA. Je také vhodné nejprve vyprázdnit všechny tabulky. Referenční informace o tom, jak vyprázdnit tabulky, najdete v tématu [HDInsight hbas: jak zlepšit dobu restartování clusteru Apache HBA vyprázdněním tabulek](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Před zahájením restartování snižte zatížení serverů oblasti HBase. Také je vhodné nejprve spláchnout všechny stoly. Informace o tom, jak vyprázdnit tabulky, najdete v [tématu HDInsight HBase: Jak zlepšit čas restartování clusteru Apache HBase vyprázdněním tabulek](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
-Případně se pokuste ručně restartovat servery oblastí na pracovních uzlech pomocí následujících příkazů:
+Případně zkuste ručně restartovat servery oblastí v pracovních uzlech pomocí následujících příkazů:
 
 ```bash
 sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"
@@ -57,10 +57,10 @@ sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh star
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
+* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory Azure Community Support](https://azure.microsoft.com/support/community/).
 
-* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s oficiálním účtem Microsoft Azure pro zlepšení zákaznického prostředí. Propojení komunity Azure se správnými prostředky: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na řádku nabídek vyberte **Podpora** nebo otevřete centrum **Nápověda + podpora.** Podrobnější informace najděte v části [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatného a fakturační podpoře je součástí vašeho předplatného Microsoft Azure a technická podpora se poskytuje prostřednictvím jednoho z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

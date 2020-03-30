@@ -1,6 +1,6 @@
 ---
-title: Migrace a integrace aplikací v Azure DevTest Labs
-description: Tento článek poskytuje pokyny pro řízení infrastruktury Azure DevTest Labs v kontextu migrace a integrace aplikací.
+title: Migrace a integrace aplikací v azure devtest labs
+description: Tento článek obsahuje pokyny pro zásady správného řízení infrastruktury Azure DevTest Labs v kontextu migrace a integrace aplikací.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,123 +14,123 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644882"
 ---
-# <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Řízení Azure DevTest Labs infrastruktury – migrace a integrace aplikací
-Po navázání vývojového a testovacího prostředí je potřeba vzít v úvahu následující otázky:
+# <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Řízení infrastruktury Azure DevTest Labs – migrace a integrace aplikací
+Jakmile je vaše vývojové /testovací prostředí zřízeno, musíte se zamyslet nad následujícími otázkami:
 
-- Jak využít prostředí v rámci vašeho projektového týmu?
-- Jak zajistíte, že budete dodržovat požadované zásady organizace a zachováte flexibilitu pro přidání hodnoty do vaší aplikace?
+- Jak využíváte prostředí v rámci vašeho projektového týmu?
+- Jak zajistíte, že budete dodržovat požadované zásady organizace a zachovat flexibilitu přidat hodnotu vaší aplikace?
 
-## <a name="azure-marketplace-images-vs-custom-images"></a>Azure Marketplace obrázků vs. vlastní image
-
-### <a name="question"></a>Otázka
-Kdy mám použít Azure Marketplace image vs. vlastní organizační image?
-
-### <a name="answer"></a>Odpověď
-Azure Marketplace by se měla používat ve výchozím nastavení, pokud nemáte konkrétní obavy nebo organizační požadavky. Mezi běžné příklady patří:
-
-- Komplexní instalace softwaru, která vyžaduje, aby aplikace byla součástí základní image.
-- Instalace a nastavení aplikace může trvat mnoho hodin, což není efektivní využití výpočetního času k přidání na Azure Marketplace image.
-- Vývojáři a testeri vyžadují rychlý přístup k virtuálnímu počítači a chtějí minimalizovat dobu nastavení nového virtuálního počítače.
-- Podmínky dodržování předpisů nebo regulativní podmínky (například zásady zabezpečení), které musí být na místě pro všechny počítače.
-
-Použití vlastních imagí by se nemělo považovat za lehce. Představují velmi složitost, protože teď musíte spravovat soubory VHD pro tyto základní image. Také je potřeba rutinním pomocí aktualizací softwaru rutiny opravit. Tyto aktualizace zahrnují nové aktualizace operačního systému (OS) a všechny aktualizace nebo změny konfigurace, které jsou potřeba pro samotný softwarový balíček.
-
-## <a name="formula-vs-custom-image"></a>Vzorec vs. vlastní image
+## <a name="azure-marketplace-images-vs-custom-images"></a>Image Azure Marketplace vs. vlastní image
 
 ### <a name="question"></a>Otázka
-Kdy mám použít vzorec vs. vlastní image?
+Kdy mám použít image Azure Marketplace vs. vlastní image organizace?
 
 ### <a name="answer"></a>Odpověď
-Obvykle je rozhodující faktor v tomto scénáři náklady a znovu použít.
+Azure Marketplace by se měl používat ve výchozím nastavení, pokud nemáte konkrétní obavy nebo organizační požadavky. Některé běžné příklady zahrnují;
 
-Pokud máte scénář, ve kterém mnoho uživatelů/cvičení vyžaduje image s velkým množstvím softwaru nad základní imagí, pak můžete snížit náklady vytvořením vlastní image. To znamená, že se obrázek vytvoří jednou. Zkracuje dobu nastavení virtuálního počítače a náklady vzniklé v důsledku toho, že dojde k instalaci na virtuálním počítači.
+- Komplexní nastavení softwaru, které vyžaduje, aby aplikace byla zahrnuta jako součást základní bitové kopie.
+- Instalace a nastavení aplikace může trvat mnoho hodin, což není efektivní využití výpočetního času, které mají být přidány na image Azure Marketplace.
+- Vývojáři a testeři vyžadují rychlý přístup k virtuálnímu počítači a chtějí minimalizovat dobu nastavení nového virtuálního počítače.
+- Dodržování předpisů nebo regulační podmínky (například zásady zabezpečení), které musí být zavedeny pro všechny počítače.
 
-Dodatečný faktor k poznámení je ale frekvence změn balíčku softwaru. Pokud spouštíte každodenní sestavení a požadujete, aby byl software na virtuálních počítačích vašich uživatelů, zvažte použití vzorce místo vlastní image.
+Použití vlastních obrázků by nemělo být považováno za lehce. Zavádějí další složitost, protože nyní musíte spravovat soubory VHD pro tyto základní image. Je také nutné pravidelně opravovat tyto základní bitové kopie aktualizacemi softwaru. Tyto aktualizace zahrnují nové aktualizace operačního systému (OS) a všechny aktualizace nebo změny konfigurace potřebné pro samotný softwarový balíček.
 
-## <a name="use-custom-organizational-images"></a>Použití vlastních organizačních imagí
+## <a name="formula-vs-custom-image"></a>Vzorec vs. vlastní obrázek
 
 ### <a name="question"></a>Otázka
-Jak můžu snadno opakovat a přenést vlastní organizační image do prostředí DevTest Labs?
+Kdy mám použít vzorec vs. vlastní obrázek?
 
 ### <a name="answer"></a>Odpověď
-Podívejte se [na toto video ve vzoru pro vytváření imagí](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Tento scénář je pokročilý scénář a poskytují se jenom ukázkové skripty. Pokud se vyžadují nějaké změny, budete muset spravovat a udržovat skripty používané ve vašem prostředí.
+Rozhodujícím faktorem v tomto scénáři je obvykle náklady a opětovné použití.
 
-Použití DevTest Labs k vytvoření vlastního kanálu obrázků v Azure Pipelines:
+Pokud máte scénář, kdy mnoho uživatelů nebo testovacích prostředí vyžaduje bitovou kopii s velkým množstvím softwaru nad základní bitovou kopii, můžete snížit náklady vytvořením vlastní bitové kopie. To znamená, že obraz je vytvořen jednou. Snižuje dobu nastavení virtuálního počítače a náklady vzniklé v důsledku spuštění virtuálního počítače při instalaci.
 
-- [Úvod: Příprava virtuálních počítačů během několika minut nastavením objektu pro vytváření imagí v Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
-- [Továrna imagí – část 2! Nastavení Azure Pipelines a výrobního prostředí pro vytváření virtuálních počítačů](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
-- [Továrna obrázků – část 3: uložení vlastních imagí a distribuce do více cvičení](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
-- [Video: vytváření vlastních imagí pomocí Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
+Dalším faktorem, který je třeba poznamenat, je však četnost změn softwarového balíčku. Pokud spustíte denní sestavení a budete vyžadovat, aby tento software byl na virtuálních počítačích vašich uživatelů, zvažte použití vzorce namísto vlastní bitové kopie.
+
+## <a name="use-custom-organizational-images"></a>Použití vlastních organizačních bitových kopií
+
+### <a name="question"></a>Otázka
+Jak lze nastavit snadno opakovatelný proces, který přenese mé vlastní organizační obrázky do prostředí DevTest Labs?
+
+### <a name="answer"></a>Odpověď
+Podívejte se [na toto video na vzoru Image Factory](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Tento scénář je pokročilý scénář a poskytované skripty jsou pouze ukázkové skripty. Pokud jsou požadovány nějaké změny, je třeba spravovat a udržovat skripty používané ve vašem prostředí.
+
+Použití devTest Labs k vytvoření vlastního kanálu image v Azure Pipelines:
+
+- [Úvod: Příprava virtuálních počítačen během několika minut nastavením továrny na image v Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
+- [Image Factory - Část 2! Nastavení azure potrubí a tovární laboratoře k vytváření virtuálních počítačů](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
+- [Image Factory - Část 3: Uložit vlastní obrázky a distribuovat do více labs](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
+- [Video: Vlastní továrna na image s Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>Vzory pro nastavení konfigurace sítě
 
 ### <a name="question"></a>Otázka
-Návody zajistěte, aby vývojové a testovací virtuální počítače nedokázaly získat přístup k veřejnému Internetu? Existují nějaké Doporučené vzory pro nastavení konfigurace sítě?
+Jak zajistím, aby se vývojové a testovací virtuální počítače nemohly dostat k veřejnému internetu? Existují nějaké doporučené vzory pro nastavení konfigurace sítě?
 
 ### <a name="answer"></a>Odpověď
-Ano. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
+Ano. Existují dva aspekty, které je třeba zvážit – příchozí a odchozí provoz.
 
-**Příchozí provoz** – Pokud virtuální počítač nemá veřejnou IP adresu, nemusíte ho kontaktovat internetem. Běžným přístupem je zajistit, že jsou nastavené zásady na úrovni předplatného, takže žádný uživatel nemůže vytvořit veřejnou IP adresu.
+**Příchozí provoz** – Pokud virtuální počítač nemá veřejnou IP adresu, nemůže být dosaženo prostřednictvím internetu. Běžným přístupem je zajistit, aby byla nastavena zásada na úrovni předplatného, takže žádný uživatel nebude moci vytvořit veřejnou IP adresu.
 
-**Odchozí provoz** – Pokud chcete zabránit virtuálním počítačům přejít přímo k veřejnému Internetu a vynutit provoz přes podnikovou bránu firewall, můžete směrovat provoz místně přes Express Route nebo VPN pomocí vynuceného směrování.
+**Odchozí provoz** – Pokud chcete zabránit tomu, aby virtuální počítače směřovaly přímo k veřejnému internetu a vynutit provoz prostřednictvím podnikové brány firewall, můžete směrovat provoz místně přes expresní trasu nebo VPN pomocí vynuceného směrování.
 
 > [!NOTE]
-> Pokud máte proxy server, která blokuje provoz bez nastavení proxy serveru, nezapomeňte přidat výjimky do účtu úložiště artefaktu testovacího prostředí.
+> Pokud máte proxy server, který blokuje provoz bez nastavení proxy serveru, nezapomeňte přidat výjimky do účtu úložiště artefaktů testovacího prostředí .
 
-Skupiny zabezpečení sítě můžete použít také pro virtuální počítače nebo podsítě. Tento krok přidá další vrstvu ochrany pro povolení/blokování provozu.
+Skupiny zabezpečení sítě můžete také použít pro virtuální počítače nebo podsítě. Tento krok přidá další vrstvu ochrany povolit / blokovat provoz.
 
-## <a name="new-vs-existing-virtual-network"></a>Nová a stávající virtuální síť
-
-### <a name="question"></a>Otázka
-Kdy je vhodné vytvořit novou virtuální síť pro prostředí DevTest Labs a použít stávající virtuální síť?
-
-### <a name="answer"></a>Odpověď
-Pokud vaše virtuální počítače potřebují komunikovat se stávající infrastrukturou, měli byste zvážit použití existující virtuální sítě v prostředí DevTest Labs. Pokud navíc používáte ExpressRoute, možná budete chtít minimalizovat množství virtuální sítě/podsítí, abyste nefragmentoval adresní prostor IP adres, který se přiřadí k použití v předplatných. Měli byste taky zvážit použití vzoru partnerského vztahu virtuálních sítí (hvězdicové model). Tento přístup umožňuje komunikaci VNet/Subnet napříč předplatnými v dané oblasti, i když partnerský vztah mezi oblastmi je funkce, která je součástí sítě Azure.
-
-V opačném případě by každé prostředí DevTest Labs mohlo mít vlastní virtuální síť. Upozorňujeme však, že existují [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md) počtu virtuálních sítí na jedno předplatné. Výchozí hodnota je 50, i když tento limit lze vystoupl na 100.
-
-## <a name="shared-public-or-private-ip"></a>Sdílená, veřejná nebo privátní IP adresa
+## <a name="new-vs-existing-virtual-network"></a>Nová vs. stávající virtuální síť
 
 ### <a name="question"></a>Otázka
-Kdy mám použít sdílenou IP adresu a veřejnou IP adresu a soukromou IP adresu?
+Kdy mám vytvořit novou virtuální síť pro prostředí DevTest Labs vs. pomocí existující virtuální sítě?
 
 ### <a name="answer"></a>Odpověď
-Pokud používáte síť Site-to-Site VPN nebo Express Route, zvažte použití privátních IP adres, aby vaše počítače byly přístupné prostřednictvím interní sítě a nepřístupné přes veřejný Internet.
+Pokud vaše virtuální počítače potřebují interakci s existující infrastrukturou, měli byste zvážit použití existující virtuální sítě v prostředí DevTest Labs. Kromě toho pokud používáte ExpressRoute, můžete minimalizovat množství virtuálních sítí / podsítí tak, aby nedošlo k fragmentaci ip adresního prostoru, který se přiřadí k použití v předplatných. Měli byste také zvážit použití vzoru partnerského vztahu virtuální sítě zde (model Hub-Spoke). Tento přístup umožňuje komunikaci virtuálnísítě/podsítě mezi předplatnými v rámci dané oblasti, i když partnerský vztah napříč oblastmi je nadcházející funkcí v azure sítích.
+
+V opačném případě může mít každé prostředí DevTest Labs vlastní virtuální síť. Všimněte si však, že existují [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md) počtu virtuálních sítí na předplatné. Výchozí částka je 50, i když tento limit lze zvýšit na 100.
+
+## <a name="shared-public-or-private-ip"></a>Sdílená, veřejná nebo soukromá IP adresa
+
+### <a name="question"></a>Otázka
+Kdy mám použít sdílenou IP adresu vs. veřejnou IP adresu vs. soukromou IP adresu?
+
+### <a name="answer"></a>Odpověď
+Pokud používáte síť VPN nebo Express Route mezi webovými servery, zvažte použití privátních IP služeb tak, aby vaše počítače byly přístupné prostřednictvím interní sítě a nepřístupné prostřednictvím veřejného internetu.
 
 > [!NOTE]
-> Vlastníci testovacího prostředí můžou tyto zásady podsítě změnit, aby se zajistilo, že nikdo nechtěně nevytvoří veřejné IP adresy pro své virtuální počítače Vlastník předplatného by měl vytvořit zásady předplatného, které brání v vytváření veřejných IP adres.
+> Vlastníci testovacího prostředí můžete změnit tuto zásadu podsítě zajistit, že nikdo omylem vytvoří veřejné IP adresy pro své virtuální chod. Vlastník předplatného by měl vytvořit zásady předplatného, které zabrání vytváření veřejných IP služeb.
 
-Při použití sdílených veřejných IP adres sdílí virtuální počítače v testovacím prostředí veřejnou IP adresu. Tento přístup může být užitečný v případě, že se potřebujete vyhnout porušení limitů u veřejných IP adres daného předplatného.
+Při použití sdílených veřejných IP adres virtuální počítače v testovacím prostředí sdílejí veřejnou IP adresu. Tento přístup může být užitečný, když potřebujete zabránit porušení limitů na veřejné IP adresy pro dané předplatné.
 
 ## <a name="limits-of-number-of-virtual-machines-per-user-or-lab"></a>Omezení počtu virtuálních počítačů na uživatele nebo testovací prostředí
 
 ### <a name="question"></a>Otázka
-Je nějaké pravidlo, které se dá nastavit na počet virtuálních počítačů, které mám nastavit na uživatele nebo na testovací prostředí?
+Existuje pravidlo, pokud jde o to, kolik virtuálních počítačů mám nastavit na uživatele nebo na testovací prostředí?
 
 ### <a name="answer"></a>Odpověď
-Při zvažování počtu virtuálních počítačů na uživatele nebo na laboratorní prostředí existují tři hlavní aspekty:
+Při zvažování počtu virtuálních počítačů na uživatele nebo na testovací prostředí existují tři hlavní problémy:
 
-- **Celkové náklady** , které tým může strávit na prostředky v testovacím prostředí. Mnoho počítačů je snadné. Pro řízení nákladů jeden mechanismus omezí počet virtuálních počítačů na uživatele nebo na jedno testovací prostředí.
-- Celkový počet virtuálních počítačů v testovacím prostředí je ovlivněný dostupnými [kvótami na úrovni předplatného](../azure-resource-manager/management/azure-subscription-service-limits.md) . Jedna z horních limitů je 800 skupin prostředků v rámci předplatného. DevTest Labs aktuálně pro každý virtuální počítač vytvoří novou skupinu prostředků (Pokud se nepoužívají sdílené veřejné IP adresy). Pokud je v předplatném 10 laboratoří, laboratoře můžou do každého testovacího prostředí umístit přibližně 79 virtuálních počítačů (800 horní limit – 10 skupin prostředků pro sebe sama o 10 laboratoří) = 79 virtuálních počítačů na testovací prostředí.
-- Pokud je testovací prostředí připojené k místní síti přes Express Route (například), jsou **k dispozici definované adresní prostory IP adres** pro virtuální síť nebo podsíť. Aby se zajistilo, že se virtuální počítače v testovacím prostředí nedaří vytvořit (Chyba: nejde získat IP adresu), vlastníci testovacího prostředí můžou určit maximální počet virtuálních počítačů na testovací prostředí, které jsou zarovnané na adresní prostor IP adres.
+- **Celkové náklady,** které může tým utratit za prostředky v testovacím prostředí. Je snadné roztočit mnoho strojů. Pro řízení nákladů je jedním mechanismem omezení počtu virtuálních uživatelů na uživatele a/nebo na testovací prostředí.
+- Celkový počet virtuálních počítačů v testovacím prostředí je ovlivněn [kvótami na úrovni předplatného,](../azure-resource-manager/management/azure-subscription-service-limits.md) které jsou k dispozici. Jedním z horních limitů je 800 skupin prostředků na předplatné. DevTest Labs aktuálně vytvoří novou skupinu prostředků pro každý virtuální virtuální ms (pokud se nepoužívají sdílené veřejné IP adresy). Pokud existuje 10 testovacích prostředí v předplatném, testovací prostředí by se vešly přibližně 79 virtuálních počítačů v každé laboratoři (800 horní limit – 10 skupin prostředků pro 10 testovacích prostředí sami) = 79 virtuálních počítačů na testovací prostředí.
+- Pokud je testovací prostředí připojené k místnímu prostřednictvím expresní trasy (například), jsou pro virtuální síť/podsíť **k dispozici definované adresní prostory IP.** Chcete-li zajistit, že virtuální chody v testovacím prostředí nepodaří vytvořit (chyba: nelze získat IP adresu), vlastníci testovacího prostředí můžete zadat maximální virtuální chodů na testovací prostředí zarovnány s IP adresní prostor k dispozici.
 
-## <a name="use-resource-manager-templates"></a>Používání šablon Správce prostředků
+## <a name="use-resource-manager-templates"></a>Použití šablon Resource Manageru
 
 ### <a name="question"></a>Otázka
-Jak můžu použít šablony Správce prostředků v prostředí DevTest Labs?
+Jak lze používat šablony Správce prostředků v prostředí DevTest Labs?
 
 ### <a name="answer"></a>Odpověď
-Šablony Správce prostředků můžete nasadit do prostředí DevTest Labs pomocí kroků uvedených v tématu [funkce prostředí v článku DevTest Labs](devtest-lab-test-env.md) . V podstatě zkontrolujete šablony Správce prostředků do úložiště Git (buď Azure Repos nebo GitHub), a přidejte do testovacího prostředí [privátní úložiště pro vaše šablony](devtest-lab-test-env.md) .
+Nasadíte šablony Správce prostředků do prostředí DevTest Labs pomocí kroků uvedených v funkci Prostředí v článku [DevTest labs.](devtest-lab-test-env.md) V podstatě zkontrolujete šablony Správce prostředků do úložiště Git (azure úložiště nebo GitHub) a přidáte [privátní úložiště pro šablony](devtest-lab-test-env.md) do testovacího prostředí.
 
-Tento scénář nemusí být užitečný, pokud používáte DevTest Labs k hostování vývojových počítačů, ale může být užitečný, když vytváříte přípravné prostředí, které je reprezentativní pro produkci.
+Tento scénář nemusí být užitečné, pokud používáte DevTest Labs k hostování vývojových počítačů, ale může být užitečné, pokud vytváříte pracovní prostředí, které je reprezentativní pro produkční prostředí.
 
-Také je potřeba poznamenat, že počet virtuálních počítačů na testovací prostředí nebo na uživatele omezuje jenom počet počítačů nativně vytvořených v testovacím prostředí, a ne podle prostředí (Správce prostředků šablony).
+Je také třeba poznamenat, že počet virtuálních počítačů na testovací prostředí nebo na uživatele možnost omezuje pouze počet počítačů nativně vytvořených v samotném testovacím prostředí, a nikoli v žádném prostředí (šablony Správce prostředků).
 
 ## <a name="next-steps"></a>Další kroky
-Viz [použití prostředí v DevTest Labs](devtest-lab-test-env.md).
+Viz [Použití prostředí v devTest Labs](devtest-lab-test-env.md).

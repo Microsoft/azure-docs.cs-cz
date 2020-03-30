@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: 687a1963ca34f2b053b479ff92f7ccdcd80b5588
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175687"
 ---
-* [ID aplikace pro svou aplikaci zaregistrovat](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW991). Vytvoření explicit app ID (ne Identifikátor aplikace zástupných znaků) a pro **ID sady prostředků**, použijte ID přesnou sadu, která je ve vašem projektu Xcode rychlý start. Je také důležité, že jste vybrali **nabízená oznámení** možnost. 
-* Dále [Příprava ke konfiguraci nabízená oznámení](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6), vytvořte certifikát SSL "Vývoj" nebo "Distribution".
+* [Zaregistrujte ID aplikace pro aplikaci](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW991). Vytvořte explicitní ID aplikace (nikoli ID aplikace se zástupnými symboly) a pro **ID sady**použijte přesné ID sady, které je v projektu rychlého startu Xcode. Je také důležité, abyste vybrali možnost **Nabízená oznámení.** 
+* Dále [pro přípravu na konfiguraci nabízených oznámení](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)vytvořte certifikát SSL "Vývoj" nebo "Distribuce".

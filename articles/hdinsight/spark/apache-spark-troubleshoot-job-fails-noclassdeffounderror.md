@@ -1,6 +1,6 @@
 ---
-title: NoClassDefFoundError – Apache Spark s Apache Kafka daty ve službě Azure HDInsight
-description: Úloha streamování Apache Spark, která načítá data z Apache Kafka clusteru, se nezdařila s NoClassDefFoundError ve službě Azure HDInsight.
+title: NoClassDefFoundError – Apache Spark s daty Apache Kafka v Azure HDInsight
+description: Úloha streamování Apache Spark, která čte data z clusteru Apache Kafka, se nezdaří s noclassdeffounderror em azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 4659274110add96613ca88560edfb459b20a99cb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894353"
 ---
-# <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>Úloha streamování Apache Spark, která čte Apache Kafka data, se nezdařila s NoClassDefFoundError ve službě HDInsight
+# <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>Apache Spark streamování úloha, která čte Apache Kafka data selže s NoClassDefFoundError v HDInsight
 
-Tento článek popisuje postup řešení potíží a možná řešení potíží při používání komponent Apache Spark v clusterech Azure HDInsight.
+Tento článek popisuje kroky řešení potíží a možná řešení problémů při používání komponent Apache Spark v clusterech Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-Cluster Apache Spark spustí úlohu streamování Sparku, která čte data z clusteru Apache Kafka. Úloha streamování Sparku se nezdařila, pokud je zapnutá komprese streamu Kafka. V takovém případě se application_1525986016285_0193 aplikace pro streamování Sparku nezdařila, protože došlo k chybě:
+Cluster Apache Spark spouští streamovací úlohu Spark, která čte data z clusteru Apache Kafka. Úloha streamování Spark se nezdaří, pokud je zapnutá komprese datového proudu Kafka. V tomto případě application_1525986016285_0193 aplikace Streamovací příze Spark selhala kvůli chybě:
 
 ```
 18/05/17 20:01:33 WARN YarnAllocator: Container marked as failed: container_e25_1525986016285_0193_01_000032 on host: wn87-Scaled.2ajnsmlgqdsutaqydyzfzii3le.cx.internal.cloudapp.net. Exit status: 50. Diagnostics: Exception from container-launch.
@@ -32,9 +32,9 @@ Stack trace: ExitCodeException exitCode=50:
 
 ## <a name="cause"></a>Příčina
 
-Tato chyba může být způsobena zadáním verze `spark-streaming-kafka` souboru jar, která se liší od verze clusteru Kafka, který používáte.
+Tato chyba může být způsobena zadáním verze souboru `spark-streaming-kafka` jar, která se liší od verze clusteru Kafka, který používáte.
 
-Pokud například používáte cluster Kafka verze 0.10.1, následující příkaz způsobí chybu:
+Pokud například používáte cluster Kafka verze 0.10.1, bude následující příkaz mít za následek chybu:
 
 ```
 spark-submit \
@@ -44,16 +44,16 @@ spark-submit \
 ~/Kafka_Spark_SQL.py <bootstrap server details>
 ```
 
-## <a name="resolution"></a>Rozlišení
+## <a name="resolution"></a>Řešení
 
-Použijte příkaz Spark-submit s možností `–packages` a ujistěte se, že verze souboru jar-streaming-Kafka je stejná jako verze clusteru Kafka, kterou používáte.
+Použijte příkaz Spark-submit `–packages` s možností a ujistěte se, že verze souboru spark-streaming-kafka jar je stejná jako verze clusteru Kafka, kterou používáte.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
+* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory Azure Community Support](https://azure.microsoft.com/support/community/).
 
-* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s oficiálním účtem Microsoft Azure, který zlepšuje zákaznickou zkušenost tím, že propojuje komunitu Azure se správnými prostředky: odpověďmi, podporou a odborníky.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na řádku nabídek vyberte **Podpora** nebo otevřete centrum **Nápověda + podpora.** Podrobnější informace najdete v části [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatného a fakturační podpoře je součástí vašeho předplatného Microsoft Azure a technická podpora se poskytuje prostřednictvím jednoho z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

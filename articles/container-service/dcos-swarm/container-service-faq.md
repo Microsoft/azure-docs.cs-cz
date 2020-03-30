@@ -1,5 +1,5 @@
 ---
-title: ZASTARALÉ Azure Container Service – Nejčastější dotazy
+title: (ZASTARALÉ) Služba Kontejnerazure – nejčastější dotazy
 description: Odpovědi na nejčastější dotazy týkající se Azure Container Service, služby, která zjednodušuje vytváření, konfiguraci a správu clusterů virtuálních počítačů pro spouštění aplikací typu kontejner Docker.
 services: container-service
 author: mlearned
@@ -10,17 +10,17 @@ ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
 ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887916"
 ---
-# <a name="deprecated-container-service-frequently-asked-questions"></a>ZASTARALÉ Nejčastější dotazy ke službě kontejneru
+# <a name="deprecated-container-service-frequently-asked-questions"></a>(ZASTARALÉ) Nejčastější dotazy týkající se kontejnerové služby
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-## <a name="orchestrators"></a>Orchestrátoři
+## <a name="orchestrators"></a>Orchestrátory
 
 ### <a name="which-container-orchestrators-do-you-support-on-azure-container-service"></a>Jaké orchestrátory kontejneru podporujete ve službě Azure Container Service? 
 
@@ -52,11 +52,11 @@ Další podrobnosti najdete v našich [zásadách podpory pro kontejnery](https:
 
 Můžete použít standardní nástroje vašeho operačního systému a vytvořit pro cluster pár veřejného a privátního klíče SSH RSA pro ověřování u virtuálních počítačů. Pokyny najdete v doprovodných materiálech k [OS X a Linuxu](../../virtual-machines/linux/mac-create-ssh-keys.md) nebo [Windows](../../virtual-machines/linux/ssh-from-windows.md). 
 
-Pokud k nasazení clusteru služby Container Service použijete příkazy rozhraní příkazového řádku Azure, je možné klíče SSH pro cluster vygenerovat automaticky.
+Pokud k nasazení clusteru služby kontejneru použijete příkazy rozhraní příkazového řádku Azure, je možné klíče SSH pro cluster vygenerovat automaticky.
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>Jak vytvořím instanční objekt pro cluster Kubernetes?
 
-K vytvoření clusteru Kubernetes ve službě Azure Container Service je potřeba také ID a heslo instančního objektu služby Azure Active Directory. Další informace najdete v tématu [O instančním objektu pro cluster Kubernetes](../../container-service/kubernetes/container-service-kubernetes-service-principal.md).
+K vytvoření clusteru Kubernetes ve službě Azure Container Service je potřeba také ID a heslo instančního objektu služby Azure Active Directory. Další informace naleznete [v tématu O instančním objektu clusteru Kubernetes](../../container-service/kubernetes/container-service-kubernetes-service-principal.md).
 
 Pokud k nasazení clusteru Kubernetes použijete [příkazy rozhraní příkazového řádku Azure](../../container-service/dcos-swarm/container-service-create-acs-cluster-cli.md), je možné přihlašovací údaje instančního objektu pro cluster vygenerovat automaticky.
 
@@ -104,7 +104,7 @@ Připojovací řetězec najdete na webu Azure Portal nebo pomocí nástrojů př
 
 4. Na stránce **Souhrn** v části **Výstupy** je uvedeno několik odkazů na cluster. **SSHMaster0** představuje připojovací řetězec SSH k prvnímu hlavnímu serveru ve vašem clusteru služby Container Service. 
 
-Jak bylo uvedeno výše, plně kvalifikovaný název domény hlavního serveru můžete najít také pomocí nástrojů Azure. Vytvořte připojení SSH k hlavnímu serveru pomocí plně kvalifikovaného názvu domény hlavního serveru a uživatelského jména, které jste zadali při vytváření clusteru. Příklad:
+Jak bylo uvedeno výše, plně kvalifikovaný název domény hlavního serveru můžete najít také pomocí nástrojů Azure. Vytvořte připojení SSH k hlavnímu serveru pomocí plně kvalifikovaného názvu domény hlavního serveru a uživatelského jména, které jste zadali při vytváření clusteru. Například:
 
 ```bash
 ssh userName@masterFQDN –A –p 22 
@@ -112,9 +112,9 @@ ssh userName@masterFQDN –A –p 22 
 
 Další informace najdete v [Připojení ke clusteru služby Azure Container Service](../../container-service/kubernetes/container-service-connect.md).
 
-### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Nefunguje mi překlad názvů DNS ve Windows. Co mám dělat?
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Nefunguje mi překlad názvů DNS ve Windows. Co bych měl/a dělat?
 
-V systému Windows existují známé problémy služby DNS, jejichž opravy jsou stále aktivně odebírány. Ujistěte se prosím, že používáte nejnovější aktualizovanou verzi služby ACS-Engine a Windows (s nainstalovanou [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) a [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) ), aby vaše prostředí mohlo využívat výhod. Jinak si přečtěte kroky pro zmírnění rizika v následující tabulce:
+Existují některé známé problémy se službou DNS v systému Windows, jejichž opravy jsou stále aktivně ukončovány. Ujistěte se, že používáte nejaktuálnější acs-engine a windows verze (s [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) a [KB4089848),](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) takže vaše prostředí může těžit z tohoto. Jinak si přečtěte kroky pro zmírnění rizika v následující tabulce:
 
 | Příznak DNS | Alternativní řešení  |
 |-------------|-------------|

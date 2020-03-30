@@ -1,26 +1,26 @@
 ---
 title: Referenční informace k mezipaměti vlastních prostředků
-description: Odkaz na vlastní mezipaměť prostředků pro poskytovatele vlastních prostředků Azure Tento článek prochází požadavky na koncové body, které implementují vlastní prostředky mezipaměti.
+description: Odkaz na vlastní mezipaměť prostředků pro zprostředkovatele vlastních prostředků Azure. Tento článek projde požadavky na koncové body implementující vlastní prostředky mezipaměti.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650380"
 ---
-# <a name="custom-resource-cache-reference"></a>Vlastní odkaz na mezipaměť prostředků
+# <a name="custom-resource-cache-reference"></a>Odkaz na vlastní mezipaměť prostředků
 
-Tento článek prochází požadavky na koncové body, které implementují vlastní prostředky mezipaměti. Pokud nejste obeznámeni s vlastními poskytovateli prostředků Azure, přečtěte si [Přehled o vlastních poskytovatelích prostředků](overview.md).
+Tento článek projde požadavky na koncové body implementující vlastní prostředky mezipaměti. Pokud nejste obeznámeni s Azure Vlastní zprostředkovatelé prostředků, podívejte se [na přehled o vlastní zprostředkovatelé prostředků](overview.md).
 
-## <a name="how-to-define-a-cache-resource-endpoint"></a>Definování koncového bodu prostředku mezipaměti
+## <a name="how-to-define-a-cache-resource-endpoint"></a>Jak definovat koncový bod prostředku mezipaměti
 
-Prostředek proxy serveru se dá vytvořit zadáním **routingType** na proxy, cache.
+Prostředek proxy lze vytvořit zadáním **routingType** na "Proxy, Cache".
 
-Ukázkový vlastní poskytovatel prostředků:
+Ukázka vlastního zprostředkovatele prostředků:
 
 ```JSON
 {
@@ -40,17 +40,17 @@ Ukázkový vlastní poskytovatel prostředků:
 }
 ```
 
-## <a name="building-proxy-resource-endpoint"></a>Vytváření koncového bodu prostředku proxy serveru
+## <a name="building-proxy-resource-endpoint"></a>Vytváření koncového bodu prostředků proxy
 
-**Koncový** bod, který implementuje "proxy server, mezipaměť" **, musí zpracovat** požadavek a odpověď na nové rozhraní API v Azure. V takovém případě **ResourceType** vygeneruje nové rozhraní Azure Resource API pro `PUT`, `GET`a `DELETE` k provedení CRUD na jednom prostředku a také `GET` k načtení všech existujících prostředků:
+**Koncový bod,** který implementuje koncový **bod** prostředku "Proxy, cache" musí zpracovat požadavek a odpověď pro nové rozhraní API v Azure. V takovém případě **resourceType** vygeneruje nové `PUT`rozhraní `GET`API `DELETE` prostředků Azure pro , a provádět `GET` CRUD na jeden prostředek, stejně jako načíst všechny existující prostředky:
 
 > [!NOTE]
-> Rozhraní API Azure vygeneruje metody žádosti `PUT`, `GET`a `DELETE`, ale **koncový bod** mezipaměti potřebuje zpracovat `PUT` a `DELETE`.
-> Doporučujeme, aby **koncový bod** taky implementoval `GET`.
+> Rozhraní Azure `PUT`API vygeneruje metody požadavku , `GET`a `DELETE`, ale `DELETE`koncový **bod** mezipaměti potřebuje jenom zpracování `PUT` a .
+> Doporučujeme, aby **koncový** bod `GET`také implementuje .
 
 ### <a name="create-a-custom-resource"></a>Vytvoření vlastního prostředku
 
-Příchozí požadavek rozhraní API Azure:
+Příchozí požadavek na rozhraní AZURE API:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -67,7 +67,7 @@ Content-Type: application/json
 }
 ```
 
-Tato žádost se pak přepošle na **koncový bod** ve formátu:
+Tento požadavek pak bude předán **ke koncovému bodu** ve formuláři:
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -84,14 +84,14 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-Podobně odpověď z **koncového bodu** se pak přepošle zpátky zákazníkovi. Odpověď z koncového bodu by měla vracet:
+Podobně odpověď z **koncového bodu** je pak předána zpět zákazníkovi. Odpověď z koncového bodu by měla vrátit:
 
-- Platný dokument objektu JSON. Všechna pole a řetězce by měly být vnořeny do objektu nejvyšší úrovně.
-- Záhlaví `Content-Type` musí být nastavené na "Application/JSON; charset = UTF-8.
-- Vlastní poskytovatel prostředků přepíše pole `name`, `type`a `id` pro požadavek.
-- Vlastní poskytovatel prostředků vrátí pouze pole pod objektem `properties` pro koncový bod mezipaměti.
+- Platný dokument objektu JSON. Všechna pole a řetězce by měly být vnořeny pod horní objekt.
+- Záhlaví `Content-Type` by měla být nastavena na "application/json; charset=utf-8".
+- Vlastní zprostředkovatel prostředků přepíše `name` `type`pole `id` , a pole pro požadavek.
+- Vlastní zprostředkovatel prostředků vrátí pouze `properties` pole pod objektem pro koncový bod mezipaměti.
 
-**Koncový bod** Základě
+**Koncový bod** Reakce:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -107,9 +107,9 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Pole `name`, `id`a `type` budou automaticky vygenerována vlastním poskytovatelem prostředků.
+Pole `name` `id`, `type` a budou automaticky generována pro vlastní prostředek vlastním poskytovatelem prostředků.
 
-Odpověď zprostředkovatele vlastního prostředku Azure:
+Odpověď na vlastní zprostředkovatele prostředků Azure:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -130,7 +130,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="remove-a-custom-resource"></a>Odebrání vlastního prostředku
 
-Příchozí požadavek rozhraní API Azure:
+Příchozí požadavek na rozhraní AZURE API:
 
 ``` HTTP
 Delete https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -138,7 +138,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-Tato žádost se pak přepošle na **koncový bod** ve formátu:
+Tento požadavek pak bude předán **ke koncovému bodu** ve formuláři:
 
 ``` HTTP
 Delete https://{endpointURL}/?api-version=2018-09-01-preview
@@ -146,20 +146,20 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-Podobně odpověď z **koncového bodu** se pak přepošle zpátky zákazníkovi. Odpověď z koncového bodu by měla vracet:
+Podobně ,odpověď z **koncového bodu** je pak předána zpět zákazníkovi. Odpověď z koncového bodu by měla vrátit:
 
-- Platný dokument objektu JSON. Všechna pole a řetězce by měly být vnořeny do objektu nejvyšší úrovně.
-- Záhlaví `Content-Type` musí být nastavené na "Application/JSON; charset = UTF-8.
-- Poskytovatel vlastního prostředku Azure odstraní jenom položku ze své mezipaměti, pokud se vrátí odpověď na úrovni 200. I v případě, že prostředek neexistuje, **koncový bod** by měl vrátit 204.
+- Platný dokument objektu JSON. Všechna pole a řetězce by měly být vnořeny pod horní objekt.
+- Záhlaví `Content-Type` by měla být nastavena na "application/json; charset=utf-8".
+- Zprostředkovatel vlastních prostředků Azure odebere položku z mezipaměti pouze v případě, že je vrácena odpověď na úrovni 200. I v případě, že prostředek neexistuje, **koncový bod** by měl vrátit 204.
 
-**Koncový bod** Základě
+**Koncový bod** Reakce:
 
 ``` HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ```
 
-Odpověď zprostředkovatele vlastního prostředku Azure:
+Odpověď na vlastní zprostředkovatele prostředků Azure:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -168,7 +168,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="retrieve-a-custom-resource"></a>Načtení vlastního prostředku
 
-Příchozí požadavek rozhraní API Azure:
+Příchozí požadavek na rozhraní AZURE API:
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -176,9 +176,9 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-Požadavek **se** nepřepošle na **koncový bod**.
+Požadavek **nebude** předán ke **koncovému bodu**.
 
-Odpověď zprostředkovatele vlastního prostředku Azure:
+Odpověď na vlastní zprostředkovatele prostředků Azure:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -197,9 +197,9 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="enumerate-all-custom-resources"></a>Zobrazení výčtu všech vlastních prostředků
+### <a name="enumerate-all-custom-resources"></a>Výčet všech vlastních prostředků
 
-Příchozí požadavek rozhraní API Azure:
+Příchozí požadavek na rozhraní AZURE API:
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources?api-version=2018-09-01-preview
@@ -207,9 +207,9 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-Tato **žádost se** nepřepošle na **koncový bod**.
+Tento požadavek **nebude** předán ke **koncovému bodu**.
 
-Odpověď zprostředkovatele vlastního prostředku Azure:
+Odpověď na vlastní zprostředkovatele prostředků Azure:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -234,8 +234,8 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled zprostředkovatelů vlastních prostředků Azure](overview.md)
-- [Rychlý Start: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
-- [Kurz: vytvoření vlastních akcí a prostředků v Azure](./tutorial-get-started-with-custom-providers.md)
-- [Postupy: Přidání vlastních akcí do Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [Referenční dokumentace: odkaz na vlastní proxy prostředků](proxy-resource-endpoint-reference.md)
+- [Přehled o poskytovatelích vlastních prostředků Azure](overview.md)
+- [Úvodní příručka: Vytvoření vlastního zprostředkovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
+- [Kurz: Vytváření vlastních akcí a prostředků v Azure](./tutorial-get-started-with-custom-providers.md)
+- [Postup: Přidání vlastních akcí do rozhraní API Azure REST](./custom-providers-action-endpoint-how-to.md)
+- [Odkaz: Odkaz na vlastní proxy prostředek](proxy-resource-endpoint-reference.md)

@@ -1,6 +1,6 @@
 ---
-title: Úrovně služeb pro Azure NetApp Files | Microsoft Docs
-description: Popisuje výkon propustnosti pro úrovně služby Azure NetApp Files.
+title: Úrovně služeb pro soubory Azure NetApp | Dokumenty společnosti Microsoft
+description: Popisuje výkon propustnost pro úrovně služeb souborů Azure NetApp.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,48 +15,48 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: b-juche
 ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75832584"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Úrovně služeb pro Azure NetApp Files
-Úrovně služeb jsou atributem fondu kapacit. Úrovně služeb jsou definované a rozlišené o povolenou maximální propustnost svazku ve fondu kapacity na základě kvóty, která je přiřazená ke svazku.
+Úrovně služeb jsou atributem fondu kapacity. Úrovně služeb jsou definovány a rozlišeny povolenou maximální propustností pro objem ve fondu kapacity na základě kvóty, která je přiřazena k svazku.
 
 ## <a name="supported-service-levels"></a>Podporované úrovně služeb
 
-Azure NetApp Files podporuje tři úrovně služeb: *Ultra*, *Premium*a *Standard*. 
+Soubory Azure NetApp podporují tři úrovně služeb: *Ultra*, *Premium*a *Standard*. 
 
-* <a name="Ultra"></a>Ultra Storage
+* <a name="Ultra"></a>Ultra úložiště
 
-    Úroveň úložiště úrovně Ultra poskytuje až 128 MiB/s za propustnost na 1 TiB přidělené kvóty. 
+    Úroveň úložiště Ultra poskytuje až 128 MiB/s propustnostna na 1 TiB kvóty svazku přiřazena. 
 
 * <a name="Premium"></a>Premium Storage
 
-    Úroveň Premium Storage poskytuje až 64 MiB/s propustnosti na 1 TiB přidělené kvóty. 
+    Úroveň úložiště Premium poskytuje až 64 MiB/s propustnostna na 1 TiB kvóty svazku přiřazena. 
 
-* <a name="Standard"></a>Storage úrovně Standard
+* <a name="Standard"></a>Standardní úložiště
 
-    Úroveň Standard úložiště poskytuje až 16 MiB/s propustnost na 1 TiB přidělené kvóty.
+    Úroveň úložiště Standard poskytuje až 16 MiB/s propustnostna na 1 TiB kvóty svazku přiřazena.
 
 ## <a name="throughput-limits"></a>Omezení propustnosti
 
-Omezení propustnosti svazku je určeno kombinací následujících faktorů:
-* Úroveň služby fondu kapacity, do které patří svazek
-* Kvóta přiřazená ke svazku  
+Limit propustnost pro objem je určen kombinací následujících faktorů:
+* Úroveň služeb fondu kapacity, do kterého svazek patří
+* Kvóta přiřazená svazku  
 
-Tento koncept je znázorněný v následujícím diagramu:
+Tento koncept je znázorněn na obrázku níže:
 
-![Ilustrace úrovně služeb](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
+![Ilustrace na úrovni služby](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
 
-V příkladu 1 výše se ke svazku z fondu kapacit s úrovní Premium Storage přiřazeným 2 TiB kvótě přiřadí limit propustnosti 128 MiB/s (2 TiB * 64 MiB/s). Tento scénář se vztahuje bez ohledu na velikost fondu kapacity nebo skutečnou spotřebu svazku.
+V příkladu 1 výše bude svazku z fondu kapacity s úrovní úložiště Premium, kterému je přiřazena 2 TiB kvóty, přiřazen limit propustnosti 128 MiB/s (2 TiB * 64 MiB/s). Tento scénář platí bez ohledu na velikost fondu kapacity nebo skutečnou spotřebu objemu.
 
-V příkladu 2 výše se ke skupině kapacity s úrovní úložiště úrovně Premium, která je přiřazená 100 GiB kvóty, přiřadí limit propustnosti 6,25 MiB/s (0,09765625 TiB * 64 MiB/s). Tento scénář se vztahuje bez ohledu na velikost fondu kapacity nebo skutečnou spotřebu svazku.
+V příkladu 2 výše bude svazku z fondu kapacity s úrovní úložiště Premium, kterému je přiřazeno 100 GB kvóty, přiřazen limit propustnosti 6,25 MiB/s (0,09765625 TiB * 64 MiB/s). Tento scénář platí bez ohledu na velikost fondu kapacity nebo skutečnou spotřebu objemu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Ceny různých úrovní služeb najdete na [stránce s cenami Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/) .
-- Přečtěte si článek [cost model pro Azure NetApp Files](azure-netapp-files-cost-model.md) pro výpočet spotřeby kapacity ve fondu kapacit. 
+- Ceny různých úrovní služeb najdete na [stránce s cenami souborů Azure NetApp.](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- Viz [Nákladový model pro soubory Azure NetApp](azure-netapp-files-cost-model.md) pro výpočet spotřeby kapacity ve fondu kapacity 
 - [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)
-- Azure NetApp Files najdete v tématu [smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/) .
+- Viz [Smlouva o úrovni služeb (SLA) pro soubory Azure NetApp](https://azure.microsoft.com/support/legal/sla/netapp/)

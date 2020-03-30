@@ -1,7 +1,7 @@
 ---
-title: Rozpoznávání rozpoznávání jazyka – dovednost
+title: Kognitivní dovednosti detekce jazyka
 titleSuffix: Azure Cognitive Search
-description: Vyhodnotí nestrukturovaný text a pro každý záznam vrátí identifikátor jazyka se skóre udávajícím sílu analýzy v kanálu rozšíření AI v Azure Kognitivní hledání.
+description: Vyhodnotí nestrukturovaný text a pro každý záznam vrátí identifikátor jazyka se skóre označujícím sílu analýzy v kanálu obohacení ai v Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,31 +9,31 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 8439788c63ec1b9feaea148ab52aba498791dc12
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045017"
 ---
-#   <a name="language-detection-cognitive-skill"></a>Rozpoznávání rozpoznávání jazyka – dovednost
+#   <a name="language-detection-cognitive-skill"></a>Kognitivní dovednosti detekce jazyka
 
-**Rozpoznávání jazyka** dovednost detekuje jazyk vstupního textu a oznamuje každému dokumentu odeslanému na žádost jeden kód jazyka. Kód jazyka se spáruje se skóre, které indikuje sílu analýzy. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) .
+Dovednost **Rozpoznávání jazyků** detekuje jazyk vstupního textu a hlásí jeden kód jazyka pro každý dokument odeslaný na žádost. Kód jazyka je spárován se skóre označujícím sílu analýzy. Tato dovednost používá modely strojového učení poskytované [textovou analýzou](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) ve službách Cognitive Services.
 
-Tato možnost je užitečná hlavně v případě, že potřebujete zadat jazyk textu jako vstup do jiných dovedností (například [Analýza mínění dovednosti](cognitive-search-skill-sentiment.md) nebo [dovednost rozdělení textu](cognitive-search-skill-textsplit.md)).
+Tato funkce je užitečná zejména v případě, že potřebujete poskytnout jazyk textu jako vstup do jiných dovedností (například [dovednost Analýza mínění](cognitive-search-skill-sentiment.md) nebo Dovednost rozdělení [textu](cognitive-search-skill-textsplit.md)).
 
-Rozpoznávání jazyka využívá knihovny pro zpracování v přirozeném jazyce Bingu, což překračuje počet [podporovaných jazyků a oblastí](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support) uvedených analýza textu. Přesný seznam jazyků není publikovaný, ale obsahuje všechny široce mluvené jazyky, navíc varianty, dialekty a některé regionální a kulturní jazyky. Pokud máte obsah vyjádřený v méně často používaném jazyce, můžete [vyzkoušet rozhraní API pro rozpoznávání jazyka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) , abyste viděli, jestli vrátí kód. Odpověď pro jazyky, které se nedají detekovat, je `unknown`.
+Zjišťování jazyků využívá knihovny bingu pro zpracování přirozeného jazyka, které přesahují počet [podporovaných jazyků a oblastí](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support) uvedených pro analýzu textu. Přesný seznam jazyků není publikován, ale obsahuje všechny široce mluvené jazyky, plus varianty, dialekty a některé regionální a kulturní jazyky. Pokud máte obsah vyjádřený v méně často používaném jazyce, můžete [zkusit rozhraní API pro detekci jazyka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) a zjistit, zda vrátí kód. Odpověď pro jazyky, které `unknown`nelze zjistit, je .
 
 > [!NOTE]
-> Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
+> Při rozšiřování oboru zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI budete muset [připojit fakturovatelný prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Poplatky narůstají při volání API ve službách Cognitive Services a pro extrakci image jako součást fáze prolomení dokumentů v Azure Cognitive Search. Za extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Provádění vestavěných dovedností se účtuje za stávající [cenu průběžných plateb služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci obrázků jsou popsané na [stránce s cenami Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.LanguageDetectionSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 50 000 znaků měřenou [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do odbornosti detekce jazyka rozdělit, můžete použít [dovednost rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu by měla být 50 000 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)znaků měřená písmenem . Pokud potřebujete rozdělit data před odesláním do dovednosti rozpoznávání jazyka, můžete použít [dovednost Rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
@@ -48,8 +48,8 @@ U parametrů se rozlišují malá a velká písmena.
 | Název výstupu    | Popis |
 |--------------------|-------------|
 | languageCode | Kód jazyka ISO 6391 pro identifikovaný jazyk. Například "en". |
-| jazykový | Název jazyka Například "Angličtina". |
-| skóre | Hodnota v rozsahu 0 až 1. Pravděpodobnost, že je jazyk správně identifikovaný. Skóre může být menší než 1, pokud má věta smíšené jazyky.  |
+| languageName | Název jazyka. Například "Angličtina". |
+| skóre | Hodnota mezi 0 a 1. Pravděpodobnost, že jazyk je správně identifikován. Skóre může být nižší než 1, pokud věta má smíšené jazyky.  |
 
 ##  <a name="sample-definition"></a>Definice vzorku
 
@@ -80,7 +80,7 @@ U parametrů se rozlišují malá a velká písmena.
   }
 ```
 
-##  <a name="sample-input"></a>Vzorový vstup
+##  <a name="sample-input"></a>Vstup vzorku
 
 ```json
 {
@@ -132,9 +132,9 @@ U parametrů se rozlišují malá a velká písmena.
 
 
 ## <a name="error-cases"></a>Chybové případy
-Pokud je text vyjádřen v nepodporovaném jazyce, je vygenerována chyba a není vrácen žádný identifikátor jazyka.
+Pokud je text vyjádřen v nepodporovaném jazyce, je generována chyba a není vrácen žádný identifikátor jazyka.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
++ [Jak definovat sadu dovedností](cognitive-search-defining-skillset.md)

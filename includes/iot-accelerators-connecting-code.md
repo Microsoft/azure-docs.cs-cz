@@ -9,52 +9,52 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: c79b6f854dc78670a7eb8a1275c3e2fc46fcdd99
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175442"
 ---
-### <a name="code-walkthrough"></a>Původce kódem
+### <a name="code-walkthrough"></a>Průvodce kódem
 
-Tato část popisuje některé z klíčových částí tohoto ukázkového kódu a vysvětluje, jak se vztahují k akcelerátoru řešení vzdáleného monitorování.
+Tato část popisuje některé klíčové části ukázkového kódu a vysvětluje, jak souvisejí s akcelerátorem řešení vzdáleného monitorování.
 
-Následující fragment kódu ukazuje, jak jsou definované ohlášené vlastnosti, které popisují funkce zařízení. Tyto vlastnosti patří:
+Následující úryvek ukazuje, jak jsou definovány hlášené vlastnosti, které popisují možnosti zařízení. Mezi tyto vlastnosti patří:
 
-- Umístění zařízení na akcelerátor řešení přidat zařízení do mapy.
+- Umístění zařízení, které umožňuje akcelerátoru řešení přidat zařízení do mapy.
 - Aktuální verze firmwaru.
 - Seznam metod, které zařízení podporuje.
-- Schéma telemetrické zprávy odeslané ze zařízení.
+- Schéma telemetrických zpráv odeslaných zařízením.
 
 [!code-cpp[Define data structures for Chiller](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=datadefinition "Define data structures for Chiller")]
 
-Ukázka zahrnuje **serializeToJson** funkce, která serializuje datovou strukturu pomocí Parson knihovny.
+Ukázka obsahuje **serializeToJson** funkce, která serializuje tuto datovou strukturu pomocí knihovny Parson.
 
-Ukázka zahrnuje několik funkcí zpětného volání, které tisknou informace do konzoly jako klient komunikuje s akcelerátor řešení:
+Ukázka obsahuje několik funkcí zpětného volání, které tisknou informace do konzoly jako klient spolupracuje s akcelerátorem řešení:
 
 - **connection_status_callback**
 - **send_confirm_callback**
 - **reported_state_callback**
 - **device_method_callback**
 
-Následující fragment kódu ukazuje **device_method_callback** funkce. Tato funkce určuje akci, která má provést při volání metody při obdržení ze akcelerátor řešení. Funkce přijímá odkaz na **chladič** datové struktury v **userContextCallback** parametru. Hodnota **userContextCallback** nastavená, pokud je nakonfigurovaná funkce zpětného volání v **hlavní** funkce:
+Následující úryvek zobrazuje **funkci device_method_callback.** Tato funkce určuje akci, která má být přijata při přijetí volání metody z akcelerátoru řešení. Funkce obdrží odkaz na datovou strukturu **chladiče** v parametru **userContextCallback.** Hodnota **userContextCallback** je nastavena, když je funkce zpětného volání nakonfigurována v **hlavní** funkci:
 
 [!code-cpp[Device method callback](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=devicemethodcallback "Device method callback")]
 
-Když akcelerátor řešení volá metodu aktualizace firmwaru, vzorek deserializuje datovou část JSON a spuštění vlákna na pozadí k dokončení procesu aktualizace. Následující fragment kódu ukazuje **do_firmware_update** , který běží na vlákně:
+Když akcelerátor řešení volá metodu aktualizace firmwaru, ukázka deserializuje datovou část JSON a spustí vlákno na pozadí k dokončení procesu aktualizace. Následující úryvek zobrazuje **do_firmware_update,** který běží ve vlákně:
 
 [!code-cpp[Firmware update thread](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=firmwareupdate "Firmware update thread")]
 
-Následující fragment kódu ukazuje, jak klient odešle zprávu telemetrických dat do akcelerátoru řešení. Vlastnosti zprávy zahrnují schéma zpráva umožňující akcelerátor řešení zobrazit telemetrická data na řídicím panelu:
+Následující úryvek ukazuje, jak klient odešle telemetrickou zprávu do akcelerátoru řešení. Vlastnosti zprávy zahrnují schéma zprávy, které pomáhá akcelerátoru řešení zobrazit telemetrii na řídicím panelu:
 
 [!code-cpp[Send telemetry](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=sendmessage "Send telemetry")]
 
-**Hlavní** funkce v ukázce:
+**Hlavní** funkce ve vzorku:
 
-- Inicializuje a ukončí se subsystém SDK.
-- Inicializuje **chladič** datové struktury.
-- Odesílá ohlášené vlastnosti k akcelerátoru řešení.
-- Konfiguruje zařízení metoda zpětného volání funkce.
-- Odesílá Simulovaná telemetrická data hodnoty na akcelerátor řešení.
+- Inicializuje a vypne subsystém SDK.
+- Inicializuje datovou strukturu **chladiče.**
+- Odešle hlášené vlastnosti akcelerátoru řešení.
+- Konfiguruje funkci zpětného volání metody zařízení.
+- Odešle simulované hodnoty telemetrie do akcelerátoru řešení.
 
 [!code-cpp[Main](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=main "Main")]

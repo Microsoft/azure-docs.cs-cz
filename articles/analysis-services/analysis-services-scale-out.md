@@ -1,6 +1,6 @@
 ---
-title: Azure Analysis Services škálování na více instancí | Microsoft Docs
-description: Replikace Azure Analysis Services serverů s možností horizontálního navýšení kapacity Dotazy klientů je pak možné distribuovat mezi několik replik dotazů ve fondu dotazů se škálováním na více instancí.
+title: Horizontální navýšení kapacity služby Azure Analysis Services| Dokumenty společnosti Microsoft
+description: Replikujte servery Služby Azure Analysis Services pomocí horizontálního navýšení kapacity. Dotazy klientů pak mohou být distribuovány mezi více replik dotazů ve fondu dotazů s horizontálním navýšením kapacity.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,137 +8,137 @@ ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78247994"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Škálování služby Azure Analysis Services na více instancí
 
-Díky škálování na více instancí je možné klientské dotazy distribuovat mezi několik *replik dotazů* ve *fondu dotazů*a zkrátit tak dobu odezvy během úloh s vysokým počtem dotazů. Můžete také oddělit zpracování z fondu dotazů a zajistit, aby dotazy klienta nepříznivě ovlivnily operace zpracování. Horizontální navýšení kapacity lze nakonfigurovat v Azure Portal nebo pomocí REST API Analysis Services.
+S horizontálnínavýšení kapacity klienta dotazy mohou být distribuovány mezi více *replik dotazů* ve *fondu dotazů*, zkrácení doby odezvy během úlohy vysoké dotazu. Můžete také oddělit zpracování z fondu dotazů, zajištění klientdotazy nejsou nepříznivě ovlivněny operace zpracování. Horizontální navýšení kapacity lze nakonfigurovat na webu Azure Portal nebo pomocí rozhraní API REST analysis services.
 
-Horizontální navýšení kapacity je k dispozici pro servery v cenové úrovni Standard. Každá replika dotazu se účtuje stejnou sazbou jako váš server. Všechny repliky dotazů se vytvoří ve stejné oblasti jako váš server. Počet replik dotazů, které můžete nakonfigurovat, je omezený oblastí, ve které je váš server. Další informace najdete v tématu [dostupnost podle oblasti](analysis-services-overview.md#availability-by-region). Horizontální navýšení kapacity nezvyšuje velikost dostupné paměti pro váš server. Chcete-li zvýšit velikost paměti, je třeba upgradovat svůj plán. 
+Horizontální navýšení kapacity je k dispozici pro servery v cenové úrovni Standard. Každá replika dotazu se účtuje stejnou rychlostí jako váš server. Všechny repliky dotazů jsou vytvořeny ve stejné oblasti jako server. Počet replik dotazů, které můžete nakonfigurovat, je omezen oblastí, ve které se server nachází. Další informace najdete v [tématu Dostupnost podle oblasti](analysis-services-overview.md#availability-by-region). Horizontální navýšení kapacity nezvyšuje množství dostupné paměti pro server. Chcete-li zvýšit paměť, je třeba upgradovat plán. 
 
-## <a name="why-scale-out"></a>Proč horizontální navýšení kapacity?
+## <a name="why-scale-out"></a>Proč se vynožit?
 
-V typickém nasazení serveru slouží jeden server jako server pro zpracování i pro dotazování. Pokud počet dotazů klientů u modelů na serveru překročí jednotky pro zpracování dotazů (QPU) pro plán vašeho serveru nebo ke zpracování modelu dojde současně s vysokými úlohami dotazování, může dojít ke snížení výkonu. 
+Při typickém nasazení serveru slouží jeden server jako server pro zpracování i jako dotazovací server. Pokud počet dotazů klientů na modely na serveru překročí jednotky zpracování dotazů (QPU) pro plán serveru nebo ke zpracování modelu dochází současně s vysokými úlohami dotazů, může se snížit výkon. 
 
-Díky škálování na více instancí můžete vytvořit fond dotazů s až sedmi dalšími prostředky repliky dotazů (celkem osm, včetně vašeho *primárního* serveru). Počet replik ve fondu dotazů můžete škálovat tak, aby splňoval požadavky QPU v kritickém čase, a můžete kdykoli oddělit výpočetní Server od fondu dotazů. 
+S horizontálnínavýšení kapacity, můžete vytvořit fond dotazů s až sedm dalších prostředků repliky dotazu (osm celkem, včetně *primárního* serveru). Můžete škálovat počet replik ve fondu dotazů tak, aby splňovaly požadavky QPU v kritických časech a můžete kdykoli oddělit server zpracování z fondu dotazů. 
 
-Bez ohledu na počet replik dotazů, které máte ve fondu dotazů, se úlohy zpracování nedistribuují mezi replikami dotazů. Primární server slouží jako server pro zpracování. Repliky dotazů slouží pouze k vytváření dotazů na databáze modelů synchronizovaných mezi primárním serverem a každou replikou ve fondu dotazů. 
+Bez ohledu na počet replik dotazů, které máte ve fondu dotazů, nejsou úlohy zpracování distribuovány mezi repliky dotazů. Primární server slouží jako server pro zpracování. Repliky dotazů slouží pouze k dotazům na databáze modelů synchronizované mezi primárním serverem a každou replikou ve fondu dotazů. 
 
-Při horizontálním navýšení kapacity může trvat až pět minut, než se nové repliky dotazu postupně přidají do fondu dotazů. Když jsou všechny nové repliky dotazů v provozu a jsou spuštěné nové připojení klientů, vyrovnávají se zatížení mezi prostředky ve fondu dotazů. Existující připojení klientů se nemění z prostředku, ke kterému jsou aktuálně připojeni. Při škálování se ukončí všechna existující připojení klientů k prostředku fondu dotazů, který se odebírá z fondu dotazů. Klienti se mohou znovu připojit k zbývajícímu prostředku fondu dotazů.
+Při horizontálním navýšení kapacity může trvat až pět minut, než se do fondu dotazů postupně přidají nové repliky dotazů. Když jsou všechny nové repliky dotazů v provozu, nová klientská připojení jsou vyrovnávána zatížením mezi prostředky ve fondu dotazů. Existující klientská připojení se nezmění z prostředku, ke které jsou aktuálně připojena. Při škálování v, všechny existující připojení klienta k prostředku fondu dotazů, který je odebírán z fondu dotazů jsou ukončeny. Klienti se mohou znovu připojit k prostředku fondu zbývajících dotazů.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Při první konfiguraci horizontálního navýšení kapacity se databáze modelů na primárním serveru *automaticky* synchronizují s novými replikami v novém fondu dotazů. Automatická synchronizace probíhá pouze jednou. Během automatické synchronizace se datové soubory primárního serveru (šifrované v klidovém úložišti objektů BLOB) zkopírují do druhého umístění, které se taky zašifrují v klidovém úložišti objektů BLOB. Repliky ve fondu dotazů jsou následně *vysušeny* daty z druhé sady souborů. 
+Při první konfiguraci horizontálního navýšení kapacity jsou databáze modelů na primárním serveru *automaticky* synchronizovány s novými replikami v novém fondu dotazů. Automatická synchronizace probíhá pouze jednou. Během automatické synchronizace se datové soubory primárního serveru (zašifrované v úložišti objektů blob) zkopírují do druhého umístění, které je také zašifrováno v klidovém stavu v úložišti objektů blob. Repliky ve fondu dotazů jsou pak *hydratovány daty* z druhé sady souborů. 
 
-Automatická synchronizace se provádí jenom při prvním horizontálním navýšení kapacity serveru. můžete také provést ruční synchronizaci. Při synchronizaci se zajišťují, že se data replik ve fondu dotazů shodují s primárním serverem. Při zpracování (obnovení) modelů na primárním serveru musí být provedena synchronizace *po* dokončení operací zpracování. Tato synchronizace kopíruje aktualizovaná data ze souborů primárního serveru v úložišti objektů blob do druhé sady souborů. Repliky ve fondu dotazů se pak procházejí aktualizovanými daty z druhé sady souborů v úložišti objektů BLOB. 
+Zatímco automatická synchronizace se provádí pouze při horizontálnínavýšení kapacity serveru poprvé, můžete také provést ruční synchronizaci. Synchronizace zajišťuje, že data na replikách ve fondu dotazů se shodují s daty primárního serveru. Při zpracování (aktualizovat) modely na primárním serveru, synchronizace musí být provedena *po* dokončení operací zpracování. Tato synchronizace zkopíruje aktualizovaná data ze souborů primárního serveru v úložišti objektů blob do druhé sady souborů. Repliky ve fondu dotazů jsou pak hydratovány s aktualizovanými daty z druhé sady souborů v úložišti objektů blob. 
 
-Při provádění následných operací škálování, například zvýšení počtu replik ve fondu dotazů od dvou na pět, jsou nové repliky vysušeny daty z druhé sady souborů v úložišti objektů BLOB. Není k dispozici žádná synchronizace. Pokud po horizontálním navýšení kapacity provádíte synchronizaci, nové repliky ve fondu dotazů by byly vysušeny dvakrát – redundantním vysazováním. Při provádění následných operací škálování je důležité mít na paměti:
+Při provádění následné operace horizontálnínavýšení kapacity, například zvýšení počtu replik ve fondu dotazů ze dvou na pět, nové repliky jsou hydratovány s daty z druhé sady souborů v úložišti objektů blob. Neexistuje žádná synchronizace. Pokud potom provedete synchronizaci po horizontálnínavýšení kapacity, nové repliky ve fondu dotazů by být hydratovány dvakrát - redundantní hydratace. Při provádění následné operace horizontálního navýšení kapacity je důležité mít na paměti:
 
-* *Před operací horizontálního* navýšení kapacity proveďte synchronizaci, aby nedocházelo k redundantnímu vysazování přidaných replik. Souběžná synchronizace a běžící operace škálování na více instancí se nepovolují ve stejnou dobu.
+* Proveďte synchronizaci *před operací horizontálnínavýšení kapacity,* abyste se vyhnuli redundantní hydrataci přidaných replik. Souběžná synchronizace a operace horizontálního navýšení kapacity spuštěné současně nejsou povoleny.
 
-* Při automatizaci operací zpracování *i* škálování je důležité nejprve zpracovat data na primárním serveru, pak provést synchronizaci a pak provést operaci škálování na více instancí. Tato sekvence zaručuje minimální dopad na QPU a paměťové prostředky.
+* Při automatizaci operací zpracování *i* horizontálního navýšení kapacity je důležité nejprve zpracovat data na primárním serveru, potom provést synchronizaci a potom provést operaci horizontálního navýšení kapacity. Tato sekvence zajišťuje minimální dopad na QPU a paměťové prostředky.
 
-* Synchronizace je povolená i v případě, že ve fondu dotazů nejsou žádné repliky. Pokud provádíte horizontální navýšení kapacity z nuly na jednu nebo více replik s novými daty z operace zpracování na primárním serveru, proveďte nejprve synchronizaci bez replik ve fondu dotazů a pak navýšení kapacity. Synchronizace před změnou kapacity zabrání redundantnímu vysazování nově přidaných replik.
+* Synchronizace je povolena i v případě, že ve fondu dotazů nejsou žádné repliky. Pokud horizontální navýšení kapacity z nuly na jednu nebo více replik s novými daty z operace zpracování na primárním serveru, proveďte synchronizaci nejprve bez replik ve fondu dotazů a potom horizontální navýšení kapacity. Synchronizace před horizontálním navýšením kapacity zabraňuje redundantní hydrataci nově přidaných replik.
 
-* Při odstraňování modelu databáze z primárního serveru se automaticky neodstraní z replik ve fondu dotazů. Operaci synchronizace musíte provést pomocí příkazu [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) prostředí PowerShell, který odebere soubory pro tuto databázi z umístění sdíleného úložiště objektů BLOB repliky a pak odstraní databázi modelů v replikách ve fondu dotazů. Chcete-li zjistit, zda databáze modelů existuje ve replikách ve fondu dotazů, ale ne na primárním serveru, zajistěte, aby byl **samostatný server pro zpracování dotazů od fondu** dotazů nastaven na **hodnotu Ano**. Pak pomocí SSMS se připojte k primárnímu serveru pomocí kvalifikátoru `:rw` a zjistěte, jestli databáze existuje. Pak se pomocí připojení bez kvalifikátoru `:rw` připojte k replikám ve fondu dotazů, jestli existuje i stejná databáze. Pokud databáze existuje na replikách ve fondu dotazů, ale ne na primárním serveru, spusťte operaci synchronizace.   
+* Při odstraňování databáze modelu z primárního serveru se automaticky neodstraní z replik ve fondu dotazů. Operaci synchronizace je nutné provést pomocí příkazu [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell, který odebere soubor/soubory pro tuto databázi ze sdíleného umístění úložiště objektů blob repliky a odstraní databázi modelů replik ve fondu dotazů. Chcete-li zjistit, zda existuje databáze modelu na replikách ve fondu dotazů, ale ne na primárním serveru, ujistěte se, že **nastavení Oddělit zpracování serveru od dotazování je** nastavení fondu **dotazů**na Ano . Potom použijte SSMS pro připojení k `:rw` primárnímu serveru pomocí kvalifikátoru, abyste zjistili, zda databáze existuje. Pak se připojte k replikám ve fondu `:rw` dotazů připojením bez kvalifikátoru a zjistěte, zda existuje také stejná databáze. Pokud databáze existuje na replikách ve fondu dotazů, ale ne na primárním serveru, spusťte operaci synchronizace.   
 
-* Při přejmenování databáze na primárním serveru je potřeba další krok, který zajistí, že je databáze správně synchronizovaná na všechny repliky. Po přejmenování proveďte synchronizaci pomocí příkazu [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) , který určuje parametr `-Database` se starým názvem databáze. Tato synchronizace odebere ze všech replik databázi a soubory se starým názvem. Pak proveďte jinou synchronizaci s parametrem `-Database` s novým názvem databáze. Druhá synchronizace zkopíruje nově pojmenovanou databázi do druhé sady souborů a napředá všechny repliky. Tyto synchronizace nelze provést pomocí příkazu synchronizovat model na portálu.
+* Při přejmenování databáze na primárním serveru je k dispozici další krok, který je nutný k zajištění správné synchronizace databáze s replikami. Po přejmenování proveďte synchronizaci pomocí příkazu [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) určujícím `-Database` parametr se starým názvem databáze. Tato synchronizace odebere databázi a soubory se starým názvem ze všech replik. Potom proveďte další synchronizaci určující `-Database` parametr s novým názvem databáze. Druhá synchronizace zkopíruje nově pojmenovanou databázi do druhé sady souborů a hydratuje všechny repliky. Tyto synchronizace nelze provést pomocí příkazu Synchronizovat model na portálu.
 
 ### <a name="synchronization-mode"></a>Režim synchronizace
 
-Ve výchozím nastavení jsou repliky dotazů v plném rozsahu dehydratované, nikoli přírůstkově. K dehydrataci dochází ve fázích. Jsou odpojeny a připojeny dvakrát (za předpokladu, že jsou k dispozici alespoň tři repliky), aby bylo zajištěno, že nejméně jedna replika bude pro dotazy v daném okamžiku udržována online. V některých případech se může stát, že se klienti budou muset při provádění tohoto procesu znovu připojit k jedné z online replik. Když použijete nastavení **ReplicaSyncMode** (v Preview), můžete teď zadat synchronizaci repliky dotazů paralelně. Paralelní synchronizace přináší následující výhody: 
+Ve výchozím nastavení jsou repliky dotazů rehydratovány v plném rozsahu, nikoli postupně. Rehydratace probíhá postupně. Jsou odpojeny a připojeny dva najednou (za předpokladu, že existují alespoň tři repliky) zajistit alespoň jednu repliku je udržována online pro dotazy v daném okamžiku. V některých případech může být nutné, aby se klienti znovu připojili k jedné z replik online během tohoto procesu. Pomocí nastavení **Replika SyncMode** (ve verzi Preview) můžete nyní zadat paralelní synchronizaci replik dotazu. Paralelní synchronizace poskytuje následující výhody: 
 
-- Významné snížení doby synchronizace. 
-- Data napříč replikami jsou pravděpodobně během procesu synchronizace konzistentní. 
-- Vzhledem k tomu, že databáze jsou v průběhu procesu synchronizace online, je nutné, aby se klienti znovu nepřipojovali. 
-- Mezipaměť v paměti je přírůstkově aktualizována pouze změněnými daty, což může být rychlejší než plně prokládání modelu. 
+- Významné zkrácení času synchronizace. 
+- Data mezi replikami jsou pravděpodobně konzistentní během procesu synchronizace. 
+- Vzhledem k tomu, že databáze jsou udržovány online na všech replikách v průběhu procesu synchronizace, klienti nemusí znovu připojit. 
+- Mezipaměť v paměti je aktualizována postupně pouze se změněnými daty, která mohou být rychlejší než úplné opětovné hydratace modelu. 
 
-#### <a name="setting-replicasyncmode"></a>Nastavení ReplicaSyncMode
+#### <a name="setting-replicasyncmode"></a>Nastavení režimu Replikasyncmode
 
-Pomocí SSMS můžete nastavit ReplicaSyncMode v upřesňujících vlastnostech. Možné hodnoty jsou: 
+Pomocí ssms nastavit ReplicaSyncMode v rozšířené vlastnosti. Možné hodnoty jsou: 
 
-- `1` (výchozí): dosazení databáze s úplným replikací ve fázích (přírůstkově). 
-- `2`: paralelně optimalizovaná synchronizace. 
+- `1`(výchozí): Rehydratace databáze úplné repliky ve fázích (přírůstkové). 
+- `2`: Optimalizovaná synchronizace paralelně. 
 
-![Nastavení RelicaSyncMode](media/analysis-services-scale-out/aas-scale-out-sync-mode.png)
+![RelicaSyncMode, nastavení](media/analysis-services-scale-out/aas-scale-out-sync-mode.png)
 
-Při nastavení **ReplicaSyncMode = 2**v závislosti na tom, kolik mezipaměti je potřeba aktualizovat, můžou repliky dotazů spotřebovat další paměť. Aby databáze zůstala online a dostupná pro dotazy v závislosti na tom, kolik dat se změnilo, může operace vyžadovat až *dvojnásobek paměti* v replice, protože staré i nové segmenty jsou v paměti současně zachované. Uzly repliky mají stejné přidělení paměti jako primární uzel a v primárním uzlu je obvykle k dispozici další paměť pro operace obnovení, takže může být nepravděpodobné, že by repliky vyčerpaly paměť. Běžným scénářem je navíc přírůstkově aktualizovaný databáze na primárním uzlu, a proto by požadavek na zdvojnásobení paměti měl být neobvyklý. Pokud při operaci synchronizace dojde k chybě při nedostatku paměti, pokusí se znovu použít výchozí techniku (připojit nebo odpojit dvakrát). 
+Při nastavování **ReplicaSyncMode=2**, v závislosti na tom, kolik mezipaměti je třeba aktualizovat, může být repliky dotazu spotřebovány další paměti. Chcete-li zachovat databázi online a k dispozici pro dotazy, v závislosti na tom, jak velká část dat se změnila, operace může vyžadovat až *zdvojnásobení paměti* v replice, protože staré i nové segmenty jsou uloženy v paměti současně. Uzly replik mají stejné přidělení paměti jako primární uzel a obvykle je další paměť na primární uzel pro operace aktualizace, takže je nepravděpodobné, že repliky by nedostatek paměti. Kromě toho běžný scénář je, že databáze je postupně aktualizován na primární uzel, a proto požadavek na dvojité paměti by měla být neobvyklé. Pokud operace synchronizace dojde k chybě nedostatku paměti, bude opakovat pomocí výchozí techniky (připojit/odpojit dva najednou). 
 
 ### <a name="separate-processing-from-query-pool"></a>Samostatné zpracování z fondu dotazů
 
-Pro maximální výkon operací zpracování a dotazování se můžete rozhodnout oddělit svůj server pro zpracování od fondu dotazů. Když se oddělí, přiřadí se nová připojení klientů k replikám dotazů ve fondu dotazů. Pokud se zpracování operací zahájí jenom krátkou dobu, můžete zvolit oddělení zpracovatelského serveru od fondu dotazů jenom po dobu potřebnou k provedení operací zpracování a synchronizace a pak ho zahrnout zpátky do fondu dotazů. Při oddělení zpracovatelského serveru z fondu dotazů nebo jeho přidání zpět do fondu dotazů může trvat až pět minut, než se operace dokončí.
+Pro maximální výkon pro zpracování i operace dotazu můžete oddělit server zpracování od fondu dotazů. Při oddělení jsou nová klientská připojení přiřazena pouze replikám dotazů ve fondu dotazů. Pokud operace zpracování zabírají pouze krátkou dobu, můžete oddělit server zpracování od fondu dotazů pouze po dobu, kterou trvá provedení operací zpracování a synchronizace, a pak jej zahrnout zpět do fondu dotazů. Při oddělení serveru zpracování od fondu dotazů nebo jeho přidání zpět do fondu dotazů může trvat až pět minut pro dokončení operace.
 
-## <a name="monitor-qpu-usage"></a>Monitorování využití QPU
+## <a name="monitor-qpu-usage"></a>Sledování využití QPU
 
-Pokud chcete zjistit, jestli je na serveru potřeba horizontální navýšení kapacity, [monitorujte svůj server](analysis-services-monitor.md) v Azure Portal pomocí metrik. Pokud se vaše QPU pravidelně navyšuje, znamená to, že počet dotazů na vaše modely přesahuje limit QPU pro váš plán. Metrika délky fronty úloh fondu dotazů se zvyšuje také v případě, že počet dotazů ve frontě fondu vláken dotazu překročí dostupné QPU. 
+Chcete-li zjistit, zda je nutné horizontální navýšení kapacity pro váš server, [sledujte server](analysis-services-monitor.md) na webu Azure Portal pomocí metrik. Pokud vaše QPU pravidelně maxes ven, to znamená, že počet dotazů proti vašim modelům je vyšší limit QPU pro váš plán. Metrika délky fronty úlohfondu dotazů se také zvyšuje, když počet dotazů ve frontě fondu vláken dotazu překročí dostupné QPU. 
 
-Další užitečnou metrikou ke sledování je průměrná QPUa podle ServerResourceType. Tato metrika porovnává průměrnou QPU primárního serveru s fondem dotazů. 
+Další dobrou metrikou ke sledování je průměrná QPU podle ServerResourceType. Tato metrika porovnává průměrné QPU pro primární server s fondem dotazů. 
 
 ![Metriky horizontálního navýšení kapacity dotazu](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
-**Konfigurace QPU pomocí ServerResourceType**
+**Konfigurace QPU podle typu ServerResourceType**
 
-1. V spojnicovém grafu metriky klikněte na **Přidat metriku**. 
-2. V **prostředku**vyberte váš server, potom v **oboru názvů metriky**vyberte **Analysis Services standardní metriky**, potom v **Metrikě**vyberte **QPU**a potom v **agregaci**vyberte **AVG**. 
-3. Klikněte na **použít rozdělení**. 
-4. V **hodnoty**vyberte **ServerResourceType**.  
+1. V spojnicovém grafu Metriky klikněte na **Přidat metriku**. 
+2. V **aplikaci RESOURCE**vyberte server a pak v **metrickém oboru NAMESPACE**vyberte **standardní metriky služby Analysis Services**, pak v **metrickách**, vyberte **QPU**a potom v **agregaci**možnost **Avg**. 
+3. Klepněte na **tlačítko Použít rozdělení**. 
+4. V **posuzovacím okně HODNOTY**vyberte **položku ServerResourceType**.  
 
-### <a name="detailed-diagnostic-logging"></a>Podrobné protokolování diagnostiky
+### <a name="detailed-diagnostic-logging"></a>Podrobné diagnostické protokolování
 
-Podrobnější diagnostiku prostředků serveru s horizontálním navýšení kapacity použijte Azure Monitor protokoly. Pomocí protokolů můžete pomocí Log Analyticsch dotazů přerušit QPU a paměť podle serveru a repliky. Další informace najdete v tématu Příklady dotazů v [protokolování diagnostiky Analysis Services](analysis-services-logging.md#example-queries).
+Protokoly monitorování Azure slouží k podrobnější diagnostice škálovaných prostředků serveru. Pomocí protokolů můžete pomocí dotazů Log Analytics rozdělit QPU a paměť podle serveru a repliky. Další informace naleznete v ukázkových dotazech v [protokolování diagnostiky služby Analysis Services](analysis-services-logging.md#example-queries).
 
 
 ## <a name="configure-scale-out"></a>Konfigurace škálování na více instancí
 
-### <a name="in-azure-portal"></a>V Azure Portal
+### <a name="in-azure-portal"></a>Na portálu Azure
 
-1. Na portálu klikněte na horizontální navýšení **kapacity**. Pomocí posuvníku vyberte počet serverů repliky dotazů. Počet replik, které jste si zvolili, je navíc k vašemu stávajícímu serveru.  
+1. Na portálu klikněte na **horizontální navýšení kapacity**. Pomocí posuvníku vyberte počet serverů replik dotazů. Počet replik, které zvolíte, je navíc k existujícímu serveru.  
 
-2. V **samostatném serveru pro zpracování z fondu dotazování**vyberte možnost Ano, pokud chcete server pro zpracování vyloučit ze serverů dotazů. [Připojení](#connections) klienta pomocí výchozího připojovacího řetězce (bez `:rw`) se přesměrují na repliky ve fondu dotazů. 
+2. V **části Oddělit server pro zpracování od fondu dotazů**vyberte možnost ANO, chcete-li vyloučit server pro zpracování z dotazovacích serverů. Připojení [connections](#connections) klientů pomocí výchozího `:rw`připojovacího řetězce (bez) jsou přesměrována na repliky ve fondu dotazů. 
 
-   ![Posuvník horizontálního navýšení kapacity](media/analysis-services-scale-out/aas-scale-out-slider.png)
+   ![Jezdec horizontálního navýšení kapacity](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
-3. Kliknutím na **Uložit** zřídíte nové servery repliky dotazů. 
+3. Chcete-li zřídit nové servery replik dotazů, klepněte na tlačítko **Uložit.** 
 
-Při prvním nastavování horizontálního škálování serveru se modely na primárním serveru automaticky synchronizují s replikami ve fondu dotazů. Automatická synchronizace nastane jenom jednou, když nakonfigurujete horizontální navýšení kapacity na jednu nebo víc replik. Následné změny počtu replik na stejném serveru nebudou *aktivovat další automatickou synchronizaci*. Automatická synchronizace se znovu neprojeví, i když nastavíte server na nulové repliky a pak znovu nasadíte na libovolný počet replik. 
+Při první konfiguraci horizontálního navýšení kapacity pro server jsou modely na primárním serveru automaticky synchronizovány s replikami ve fondu dotazů. K automatické synchronizaci dochází pouze jednou při první konfiguraci horizontálního navýšení kapacity na jednu nebo více replik. Následné změny počtu replik na stejném serveru *nespustí další automatickou synchronizaci*. Automatická synchronizace se znovu neuskuteční ani v případě, že server nastavíte na nulové repliky a znovu horizontální navýšení kapacity na libovolný počet replik. 
 
 ## <a name="synchronize"></a>Synchronizace 
 
-Operace synchronizace se musí provádět ručně nebo pomocí REST API.
+Synchronizační operace musí být provedeny ručně nebo pomocí rozhraní REST API.
 
-### <a name="in-azure-portal"></a>V Azure Portal
+### <a name="in-azure-portal"></a>Na portálu Azure
 
-V **přehledu** > model > **synchronizovat model**.
+V **přehledu** > modelu > **synchronizačnímodel**.
 
-![Posuvník horizontálního navýšení kapacity](media/analysis-services-scale-out/aas-scale-out-sync.png)
+![Jezdec horizontálního navýšení kapacity](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
 
-Použijte operaci **synchronizace** .
+Použijte operaci **synchronizace.**
 
 #### <a name="synchronize-a-model"></a>Synchronizace modelu   
 
 `POST https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
-#### <a name="get-sync-status"></a>Získat stav synchronizace  
+#### <a name="get-sync-status"></a>Získání stavu synchronizace  
 
 `GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
 
-Vrátit stavové kódy:
+Stavové kódy pro vrácení:
 
 
-|Kód  |Popis  |
+|kód  |Popis  |
 |---------|---------|
 |-1     |  Neplatný       |
-|0     | Replikaci        |
-|1     |  Dosazování dat       |
+|0     | Replikace        |
+|1     |  Rehydratace       |
 |2     |   Dokončeno       |
-|3     |   Neúspěch      |
-|4     |    Dokončuje     |
+|3     |   Failed      |
+|4     |    Dokončení     |
 |||
 
 
@@ -146,39 +146,39 @@ Vrátit stavové kódy:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Před použitím PowerShellu [nainstalujte nebo aktualizujte nejnovější modul Azure PowerShell](/powershell/azure/install-az-ps). 
+Před použitím [PowerShellu nainstalujte nebo aktualizujte nejnovější modul Azure PowerShellu](/powershell/azure/install-az-ps). 
 
-Chcete-li spustit synchronizaci, použijte rutinu [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
+Chcete-li spustit synchronizaci, použijte [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
 
-K nastavení počtu replik dotazů použijte [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte volitelný parametr `-ReadonlyReplicaCount`.
+Chcete-li nastavit počet replik dotazů, použijte [set-azAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte `-ReadonlyReplicaCount` volitelný parametr.
 
-K oddělení zpracovatelského serveru z fondu dotazů použijte [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte volitelný parametr `-DefaultConnectionMode` pro použití `Readonly`.
+Chcete-li oddělit server pro zpracování od fondu dotazů, použijte [set-azAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte `-DefaultConnectionMode` volitelný parametr, který se má použít `Readonly`.
 
-Další informace najdete v tématu [použití instančního objektu s modulem AZ. AnalysisServices](analysis-services-service-principal.md#azmodule).
+Další informace naleznete [v tématu Použití instančního objektu pomocí modulu Az.AnalysisServices](analysis-services-service-principal.md#azmodule).
 
 ## <a name="connections"></a>Připojení
 
-Na stránce Přehled vašeho serveru jsou k dispozici dva názvy serverů. Pokud jste u serveru ještě nenakonfigurovali horizontální navýšení kapacity, názvy obou serverů fungují stejně. Jakmile nakonfigurujete horizontální navýšení kapacity pro server, je nutné zadat příslušný název serveru v závislosti na typu připojení. 
+Na stránce Přehled serveru jsou dva názvy serverů. Pokud jste ještě nenakonfigurovali horizontální navýšení kapacity pro server, oba názvy serverů fungují stejně. Po konfiguraci horizontálního navýšení kapacity pro server je třeba zadat příslušný název serveru v závislosti na typu připojení. 
 
-Pro klientská připojení koncových uživatelů, jako jsou Power BI Desktop, Excel a vlastní aplikace, použijte **název serveru**. 
+Pro připojení klientů koncových uživatelů, jako je Power BI Desktop, Excel a vlastní aplikace, použijte **název serveru**. 
 
-V případě SSMS, sady Visual Studio a připojovacích řetězců v prostředí PowerShell, Azure Function Apps a AMO použijte **název serveru pro správu**. Název management server obsahuje speciální kvalifikátor `:rw` (pro čtení i zápis). Všechny operace zpracování se vyskytují na primárním management server.
+Pro SSMS, Visual Studio a připojovací řetězce v PowerShellu, aplikacích Azure Function a AMO použijte **název serveru pro správu**. Název serveru pro správu obsahuje speciální `:rw` kvalifikátor (čtení a zápis). Všechny operace zpracování probíhají na (primární) serveru pro správu.
 
 ![Názvy serverů](media/analysis-services-scale-out/aas-scale-out-name.png)
 
-## <a name="scale-up-scale-down-vs-scale-out"></a>Horizontální navýšení kapacity, horizontální navýšení kapacity vs. škálování na více instancí
+## <a name="scale-up-scale-down-vs-scale-out"></a>Škálování nahoru, škálování dolů vs. horizontální navýšení kapacity
 
-Cenovou úroveň můžete na serveru změnit několika replikami. Stejná cenová úroveň se vztahuje na všechny repliky. Operace škálování nejprve odnese všechny repliky najednou a pak zobrazí všechny repliky v nové cenové úrovni.
+Cenovou úroveň můžete změnit na serveru s více replikami. Stejná cenová úroveň platí pro všechny repliky. Operace škálování nejprve znese všechny repliky najednou a pak zobrazí všechny repliky na nové cenové úrovni.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-**Problém:** Při chybě uživatelé **se nepodařilo najít server\<název instance > serveru v režimu připojení ReadOnly.**
+**Problém:** Chyba uživatele **Nelze najít\<server ' Název instance server> ' v režimu připojení "ReadOnly".**
 
-**Řešení:** Při výběru **samostatného serveru pro zpracování z možnosti fond dotazování** se připojení klienta pomocí výchozího připojovacího řetězce (bez `:rw`) přesměrují na repliky fondu dotazů. Pokud repliky ve fondu dotazů ještě nejsou online, protože synchronizace ještě není dokončená, přesměrovaná připojení klienta můžou selhat. Aby nedocházelo k neúspěšným připojením, musí být ve fondu dotazů při provádění synchronizace k dispozici alespoň dva servery. Každý server se synchronizuje jednotlivě, zatímco ostatní zůstávají online. Pokud se rozhodnete, že během zpracování nebude mít server pro zpracování ve fondu dotazů, můžete jej odebrat z fondu ke zpracování a pak jej přidat zpátky do fondu po dokončení zpracování, ale před synchronizací. K monitorování stavu synchronizace použijte metriky paměti a QPU.
+**Řešení:** Při výběru **možnosti Oddělit server pro zpracování od** fondu dotazů jsou `:rw`připojení klientů používající výchozí připojovací řetězec (bez) přesměrována na repliky fondu dotazů. Pokud repliky ve fondu dotazů ještě nejsou online, protože synchronizace ještě nebyla dokončena, může přesměrovaná připojení klientů selhat. Chcete-li zabránit selhání připojení, musí být alespoň dva servery ve fondu dotazů při provádění synchronizace. Každý server je synchronizován jednotlivě, zatímco ostatní zůstávají online. Pokud se rozhodnete nemít server pro zpracování ve fondu dotazů během zpracování, můžete jej odebrat z fondu pro zpracování a poté jej přidat zpět do fondu po dokončení zpracování, ale před synchronizací. Ke sledování stavu synchronizace použijte metriky Paměť a QPU.
 
 
 
 ## <a name="related-information"></a>Související informace
 
-[Monitorovat metriky serveru](analysis-services-monitor.md)   
-[Správa Azure Analysis Services](analysis-services-manage.md) 
+[Sledování metrik serveru](analysis-services-monitor.md)   
+[Správa služby Azure Analysis Services](analysis-services-manage.md) 

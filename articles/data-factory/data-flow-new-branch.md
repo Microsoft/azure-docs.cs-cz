@@ -1,5 +1,5 @@
 ---
-title: Více větví v toku mapování dat
+title: Více větví v mapování toku dat
 description: Replikace datových proudů v mapování toku dat s více větvemi
 author: kromerm
 ms.author: makromer
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/08/2020
 ms.openlocfilehash: 71fb9f1ba9952be0e6b3910dd1079aa6d3c0482d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75834514"
 ---
-# <a name="creating-a-new-branch-in-mapping-data-flow"></a>Vytvoření nové větve v mapování toku dat
+# <a name="creating-a-new-branch-in-mapping-data-flow"></a>Vytvoření nové větve v toku dat mapování
 
-Přidejte novou větev a proveďte několik sad operací a transformací proti stejnému datovému proudu. Přidání nové větve je užitečné v případě, že chcete použít stejný zdroj pro pro více umyvadel nebo pro vzájemnou spojování dat.
+Přidejte novou větev pro více sad operací a transformací proti stejnému datovému proudu. Přidání nové větve je užitečné, pokud chcete použít stejný zdroj pro více jímek nebo pro vlastní spojování dat dohromady.
 
-Novou větev lze přidat ze seznamu transformací podobně jako jiné transformace. **Nová větev** bude k dispozici jako akce pouze v případě, že po transformaci, kterou zkoušíte vytvořit, existuje existující transformace.
+Novou větev lze přidat ze seznamu transformace podobné jiné transformace. **Nová větev** bude k dispozici pouze jako akce, pokud existuje existující transformace po transformaci, kterou se pokoušíte větev.
 
-![Přidávání nové větve](media/data-flow/new-branch2.png "Přidávání nové větve")
+![Přidání nové větve](media/data-flow/new-branch2.png "Přidání nové větve")
 
-V následujícím příkladu tok dat čte data taxislužby Trip. Výstup agregovaný podle dne a dodavatele je povinný. Místo vytváření dvou samostatných toků dat, které se čtou ze stejného zdroje, je možné přidat novou větev. Tímto způsobem lze obě agregace spustit v rámci stejného toku dat. 
+V níže uvedeném příkladu je tok dat čtení dat o jízdě taxi. Výstup agregovaný podle dne i dodavatele je povinný. Namísto vytváření dvou samostatných datových toků, které se čtou ze stejného zdroje, lze přidat novou větev. Tímto způsobem obě agregace lze provést jako součást stejného toku dat. 
 
-![Přidávání nové větve](media/data-flow/new-branch.png "Přidávání nové větve")
+![Přidání nové větve](media/data-flow/new-branch.png "Přidání nové větve")

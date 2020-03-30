@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 37d4c295fe8a89a8b32364f42e8fb4c5a4caf777
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175530"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Instalace aktualizací prostřednictvím webu Azure Portal
@@ -33,7 +33,7 @@ ms.locfileid: "67175530"
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate6m.png)
 
-5. V okně **Nové aktualizace** si prohlédněte informaci o nutnosti potvrdit instalaci po stažení aktualizací. Klikněte na **OK**.
+5. V okně **Nové aktualizace** si prohlédněte informaci o nutnosti potvrdit instalaci po stažení aktualizací. Klikněte na tlačítko **OK**.
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate7m.png)
 
@@ -61,6 +61,6 @@ ms.locfileid: "67175530"
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate16m.png)
 
-9. Jakmile se aktualizace úspěšně nainstalovaly, zobrazí se zpráva k tomuto chování v okně aktualizace zařízení. Verze softwaru se zároveň změní na **10.0.10288.0**. 
+9. Po úspěšné instalaci aktualizací se o tom zobrazí zpráva v okně Aktualizace zařízení. Verze softwaru se také změní na **10.0.10288.0**. 
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate17m.png)

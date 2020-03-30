@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 0755c01fe8e13e8e39c0b453198f2b67c51a2bc4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175206"
 ---
 #### <a name="to-download-hotfixes"></a>Stažení oprav hotfix
 
 Provedením následujících kroků si stáhněte aktualizace softwaru z Katalogu služby Microsoft Update.
 
-1. Spustit aplikaci Internet Explorer a přejděte do [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
+1. Spusťte aplikaci [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)Internet Explorer a přejděte na .
 2. Pokud na tomto počítači používáte Katalog služby Microsoft Update poprvé, po zobrazení výzvy k instalaci doplňku Katalog služby Microsoft Update klikněte na **Nainstalovat**.
 
     ![Instalace katalogu](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -26,20 +26,20 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
    
     ![Prohledávání katalogu](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
-4. Klikněte na tlačítko **Stáhnout**. Zadejte místní umístění, do kterého chcete aktualizace stáhnout, nebo do něj přejděte pomocí tlačítka **Procházet**. Klikněte na soubory ke stažení na zadaném umístění a složky. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
-5. Vyhledejte všechny další opravy hotfix uvedené v tabulce výše (**4011841**) a stáhněte si odpovídající soubory do určených složek, jak je uvedeno v předchozí tabulce.
+4. Klepněte na tlačítko **Stáhnout**. Zadejte místní umístění, do kterého chcete aktualizace stáhnout, nebo do něj přejděte pomocí tlačítka **Procházet**. Klikněte na soubory, které chcete stáhnout do zadaného umístění a složky. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
+5. Vyhledejte všechny další opravy hotfix uvedené ve výše uvedené tabulce (**40111841**) a stáhněte odpovídající soubory do konkrétních složek uvedených v předchozí tabulce.
 
 > [!NOTE]
-> Opravy hotfix musí být dostupný z obou kontrolerů kvůli detekci potenciálních chybových zpráv z kontroleru partnera.
+> Opravy hotfix musí být přístupné z obou řadičů, aby bylo možné zjistit případné chybové zprávy z peer řadiče.
 >
-> Opravy hotfix je nutné zkopírovat do 3 oddělených složek. Například aktualizace softwaru/Cis/MDS agenta zařízení je možné zkopírovat do _FirstOrderUpdate_ složky, všechny ostatní nenarušující aktualizace by mohl zkopírovat do _SecondOrderUpdate_ složky, a aktualizace režimu údržby zkopírovali v _ThirdOrderUpdate_ složky.
+> Opravy hotfix je nutné zkopírovat do 3 oddělených složek. Například aktualizace softwaru zařízení/cis/mds agenta může být zkopírována ve složce _FirstOrderUpdate,_ všechny ostatní nerušivé aktualizace mohou být zkopírovány ve složce _SecondOrderUpdate_ a aktualizace režimu údržby zkopírovány ve složce _ThirdOrderUpdate._
 
 #### <a name="to-install-and-verify-regular-mode-hotfixes"></a>Instalace a ověření oprav hotfix běžného režimu
 
 Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžného režimu. Pokud jste je již nainstalovali pomocí portálu Azure Classic, přeskočte k [instalaci a ověření oprav hotfix režimu údržby](#to-install-and-verify-maintenance-mode-hotfixes).
 
 1. Pokud chcete nainstalovat opravy hotfix, v konzole sériového portu zařízení StorSimple spusťte rozhraní Windows PowerShell. Postupujte podle podrobných pokynů v článku [Připojení ke konzole sériového portu pomocí klienta PuTTy](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). Na příkazovém řádku stiskněte **Enter**.
-2. Vyberte možnost 1, **přihlášení pomocí úplný přístup**. Doporučujeme opravu hotfix nejprve nainstalovat na pasivním kontroleru.
+2. Vyberte možnost 1, **Přihlaste se s úplným přístupem**. Doporučujeme opravu hotfix nejprve nainstalovat na pasivním kontroleru.
 3. Pokud chcete nainstalovat opravu hotfix, na příkazovém řádku zadejte:
    
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
@@ -50,7 +50,7 @@ Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžn
    
     Po zobrazení výzvy zadejte heslo.
    
-    Ukázkový výstup instalace aktualizací prvního řádu najdete níž. Pro první pořadí aktualizací musíte odkazovat na konkrétní soubor.
+    Ukázkový výstup instalace aktualizací prvního řádu najdete níž. Pro aktualizaci první objednávky je třeba přejděte na konkrétní soubor.
    
         ```
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
@@ -104,10 +104,10 @@ Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžn
      Pokud se číslo verze po instalaci aktualizace nezměnilo, znamená to, že se instalace opravy hotfix nezdařila. Pokud je to váš případ a potřebujete další pomoc, kontaktujte [podporu Microsoftu](../articles/storsimple/storsimple-contact-microsoft-support.md).
      
      > [!IMPORTANT]
-     > Je nutné restartovat aktivní kontroler pomocí `Restart-HcsController` rutiny před použitím příští aktualizace.
+     > Před použitím další aktualizace `Restart-HcsController` je nutné restartovat aktivní ovladač prostřednictvím rutiny.
      
-7. Zopakujte kroky 3 až 5 pro instalaci agenta Cis/MDS stažena do vašeho _FirstOrderUpdate_ složky. 
-8. Opakujte kroky 3–5 a nainstalujte aktualizace druhého řádu. **Pro aktualizace druhého řádu, více aktualizací můžete nainstalovat jednoduše spuštěním `Start-HcsHotfix cmdlet` a přejděte do složky, ve kterém jsou uložené aktualizace druhého řádu. Rutina spustí všechny aktualizace, které jsou k dispozici ve složce.** Pokud je aktualizace již nainstalovaná, logika aktualizace to pozná a nebude ji instalovat. 
+7. Opakujte kroky 3-5 k instalaci agenta Cis/MDS staženého do složky _FirstOrderUpdate._ 
+8. Opakujte kroky 3–5 a nainstalujte aktualizace druhého řádu. **Pro aktualizace druhého řádu lze nainstalovat více `Start-HcsHotfix cmdlet` aktualizací pouhým spuštěním a odkazem na složku, kde jsou umístěny aktualizace druhého řádu. Rutina provede všechny aktualizace, které jsou k dispozici ve složce.** Pokud je aktualizace již nainstalovaná, logika aktualizace to pozná a nebude ji instalovat. 
 
 Jakmile budou nainstalované všechny opravy hotfix, použijte rutinu `Get-HcsSystem`. Verze by měly být:
 
@@ -123,7 +123,7 @@ Poznámka: Pokud je váš firmware disku aktuální, není třeba instalovat tyt
 
 Pokud chcete nainstalovat aktualizace firmwaru disku, postupujte podle následujících pokynů.
 
-1. Umístíte zařízení do režimu údržby. **Upozorňujeme, že pro připojení k zařízení v režimu údržby byste neměli používat vzdálenou komunikaci prostředí Windows PowerShell. Místo toho se připojte prostřednictvím konzoly sériového portu zařízení a spusťte v kontroleru zařízení tuto rutinu.** Zadejte:
+1. Umístíte zařízení do režimu údržby. **Všimněte si, že byste neměli používat vzdálené komunikace prostředí Windows PowerShell při připojování k zařízení v režimu údržby. Místo toho spusťte tuto rutinu na ovladači zařízení při připojení přes sériovou konzolu zařízení.** Zadejte:
    
     `Enter-HcsMaintenanceMode`
    
@@ -164,7 +164,7 @@ Pokud chcete nainstalovat aktualizace firmwaru disku, postupujte podle následuj
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. Průběh instalace můžete sledovat pomocí příkazu `Get-HcsUpdateStatus`. Když se `RunInProgress` změní na `False`, aktualizace je dokončena.
-4. Po dokončení instalace se kontroler, na který se instalovala oprava hotfix režimu údržby, restartuje. V parametru 1, podepsat **přihlášení pomocí úplný přístup**a zkontrolujte verzi firmwaru disku. Zadejte:
+4. Po dokončení instalace se kontroler, na který se instalovala oprava hotfix režimu údržby, restartuje. Přihlaste se jako možnost 1, **přihlaste se s úplným přístupem**a ověřte verzi firmwaru disku. Zadejte:
    
    `Get-HcsFirmwareVersion`
    

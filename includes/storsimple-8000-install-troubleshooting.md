@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: ebe112103bc3eb30239e80095db9bb91a33bebf3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175202"
 ---
 ## <a name="troubleshooting-update-failures"></a>Řešení potíží se selháním aktualizací
 **Co dělat, pokud se zobrazí oznámení o selhání kontrol před upgradem?**
 
-Pokud selže předběžná kontrola, nezapomeňte se podívat na podrobný oznamovací pruh v dolní části stránky. Najdete tam pokyny k předběžným kontrolám, které selhaly. Například obdržíte oznámení, která mají selhala Kontrola stavu řadičů a kontrola stavu komponent. Přejděte na **sledování > Stav hardwaru**. Potřebujete, abyste měli jistotu, že jsou oba řadiče v pořádku a online. Budete také muset Ujistěte se, že všechny hardwarové komponenty v zařízení StorSimple jsou zobrazeny se stavem v pořádku v tomto okně. Potom se můžete pokusit nainstalovat aktualizace. Pokud se vám nedaří vyřešit problémy s hardwarovými komponentami, budete muset kontaktovat podporu Microsoftu, která vám pomůže s dalšími kroky.
+Pokud selže předběžná kontrola, nezapomeňte se podívat na podrobný oznamovací pruh v dolní části stránky. Najdete tam pokyny k předběžným kontrolám, které selhaly. Například obdržíte oznámení, že kontrola stavu řadiče a kontrola stavu hardwarové součásti se nezdařily. Přejděte na **informace o stavu > hardwaru**. Musíte se ujistit, že oba řadiče jsou v pořádku a online. Také je třeba se ujistit, že všechny hardwarové součásti v zařízení StorSimple jsou zobrazeny jako v pořádku v tomto okně. Potom se můžete pokusit nainstalovat aktualizace. Pokud se vám nedaří vyřešit problémy s hardwarovými komponentami, budete muset kontaktovat podporu Microsoftu, která vám pomůže s dalšími kroky.
 
 **Co dělat, pokud se zobrazí chybová zpráva „Nepovedlo se nainstalovat aktualizace“ s doporučením použít průvodce odstraňováním potíží s aktualizacemi k určení příčiny selhání?**
 

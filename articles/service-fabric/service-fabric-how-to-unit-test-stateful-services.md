@@ -1,43 +1,43 @@
 ---
-title: Vývoj testů jednotek pro stavové služby
-description: Přečtěte si o testování částí v Azure Service Fabric pro stavové služby a o speciálních faktorech, které byste měli mít na paměti při vývoji.
+title: Vývoj testů částí pro stavové služby
+description: Další informace o testování částí v Azure Service Fabric pro stavové služby a zvláštní aspekty, které je třeba mít na paměti během vývoje.
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639832"
 ---
-# <a name="create-unit-tests-for-stateful-services"></a>Vytváření testů jednotek pro stavové služby
-Testování částí Service Fabric stavové služby odhalí běžné chyby, které by se nemusely zachytit konvenční aplikací nebo testováním jednotek specifických pro doménu. Při vývoji testů jednotek pro stavové služby je potřeba mít na paměti několik zvláštních hledisek, které byste měli mít na paměti.
+# <a name="create-unit-tests-for-stateful-services"></a>Vytvořit testy částí pro stavové služby
+Testování částí Service Fabric stavové služby odkrývá běžné chyby, které by nutně být zachyceny konvenční aplikace nebo testování částí specifické pro doménu. Při vývoji testování částí pro stavové služby, existují některé zvláštní aspekty, které je třeba mít na paměti.
 
-1. Každá replika spustí kód aplikace, ale v jiném kontextu. Pokud služba používá tři repliky, kód služby se spouští na třech uzlech paralelně pod jiným kontextem/rolí.
-2. Stav uložený v rámci stavové služby by měl být konzistentní mezi všemi replikami. Tato konzistence bude poskytovat správce stavu a spolehlivé kolekce. Stav v paměti bude však nutné spravovat pomocí kódu aplikace.
-3. Každá replika při spuštění v clusteru změní role v určitém bodě. Sekundární replika se stane primárním v případě, že uzel hostující primární uzel přestane být dostupný nebo přetížený. Jedná se o přirozené chování, které Service Fabric proto, aby služby bylo nutné naplánovat na jejich případné provedení v rámci jiné role.
+1. Každá replika spustí kód aplikace, ale v jiném kontextu. Pokud služba používá tři repliky, kód služby se provádí na třech uzlech paralelně v jiném kontextu nebo roli.
+2. Stav uložený v rámci stavové služby by měl být konzistentní mezi všemi replikami. Správce stavu a spolehlivé kolekce bude poskytovat tuto konzistenci out-of-the-box. Stav v paměti však bude muset být spravován kódem aplikace.
+3. Každá replika změní role v určitém okamžiku při spuštění v clusteru. Sekundární replika se stane primární v případě, že uzel hostující primární stane nedostupný nebo přetížené. Toto je přirozené chování pro Service Fabric proto služby musí plánovat pro nakonec provádění pod jinou roli.
 
-V tomto článku se předpokládá, že jste si přečetli [stavové služby testování částí v Service Fabric](service-fabric-concepts-unit-testing.md) .
+Tento článek předpokládá, že [testování částí stavové služby v Service Fabric](service-fabric-concepts-unit-testing.md) byla přečtena.
 
-## <a name="the-servicefabricmocks-library"></a>Knihovna ServiceFabric. makety
-Od verze 3.3.0 poskytuje [ServiceFabric. makety](https://www.nuget.org/packages/ServiceFabric.Mocks/) rozhraní API pro napodobování orchestrace replik a správy stavů. Tato akce bude použita v příkladech.
+## <a name="the-servicefabricmocks-library"></a>Knihovna ServiceFabric.Mocks
+Od verze 3.3.0 [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) poskytuje rozhraní API pro zesměšňování orchestraci replik a správy stavu. To bude použito v příkladech.
 
 [Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
-[GitHubu](https://github.com/loekd/ServiceFabric.Mocks)
+[GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
-*ServiceFabric. makety nejsou vlastněny nebo spravovány společností Microsoft. Tato služba je však v současnosti doporučenou knihovnou pro stavové služby testování částí.*
+*ServiceFabric.Mocks není vlastněna nebo udržována společností Microsoft. Vsoučasné době se však jedná o knihovnu doporučenou společností Microsoft pro stavové služby testování částí.*
 
-## <a name="set-up-the-mock-orchestration-and-state"></a>Nastavení modelu a orchestrace a stavu
-V rámci uspořádání v rámci testu se vytvoří podobná sada replik a stavový správce. Sada replik pak bude vlastnit vytvoření instance testované služby pro každou repliku. Bude také vlastnit události životního cyklu, například `OnChangeRole` a `RunAsync`. Správce státních stavů zajistí, že všechny operace provedené proti správci stavu jsou spuštěny a udržovány jako skutečný správce stavu.
+## <a name="set-up-the-mock-orchestration-and-state"></a>Nastavení falešné orchestrace a stavu
+Jako součást uspořádat část testu mock replika sada a správce stavu budou vytvořeny. Sada replik pak bude vlastnit vytvoření instance testované služby pro každou repliku. Bude také vlastnit provádění událostí životního `OnChangeRole` `RunAsync`cyklu, jako je například a . Falešný správce stavu zajistí, že všechny operace prováděné proti správci stavu jsou spuštěny a udržovány jako skutečný správce stavu.
 
-1. Vytvořte delegáta továrny služby, který vytvoří instanci testované služby. To by mělo být podobné nebo stejné jako zpětné volání služby Service Factory obvykle nalezeno v `Program.cs` pro Service Fabric službu nebo objekt actor. Mělo by následovat následující signatura:
+1. Vytvořte delegáta factory služby, který vytvoří instanci testované služby. To by mělo být podobné nebo stejné jako `Program.cs` zpětné volání factory služby obvykle nalézt v pro službu Service Fabric nebo objekt actor. To by mělo následovat následující podpis:
    ```csharp
    MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
    ```
-2. Vytvoří instanci třídy `MockReliableStateManager`. Tím se navede všechny interakce se správcem stavu.
-3. Vytvořte instanci `MockStatefulServiceReplicaSet<TStatefulService>`, kde `TStatefulService` je typ testované služby. To bude vyžadovat, aby byl delegát vytvořen v kroku #1 a vytvořila se instance Správce stavu v #2
-4. Přidejte repliky do sady replik. Zadejte roli (například primární, ActiveSecondary, IdleSecondary) a ID repliky.
-   > Přidržte se k ID repliky. Tyto akce budou pravděpodobně použity během provádění a vyhodnocení částí testu jednotek.
+2. Vytvořte instanci třídy. `MockReliableStateManager` To bude zesměšňovat všechny interakce se správcem stavu.
+3. Vytvořte instanci, `MockStatefulServiceReplicaSet<TStatefulService>` kde `TStatefulService` je typ testované služby. To bude vyžadovat delegáta vytvořeného v kroku #1 a správce stavu vytvořený v #2
+4. Přidejte repliky do sady replik. Zadejte roli (například Primární, ActiveSecondary, IdleSecondary) a ID repliky
+   > Držte si id repliky! Ty budou pravděpodobně použity během úkonu a uplatnit části testu částí.
 
 ```csharp
 //service factory to instruct how to create the service instance
@@ -54,8 +54,8 @@ await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 2);
 await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 3);
 ```
 
-## <a name="execute-service-requests"></a>Spustit žádosti o služby
-Žádosti o službu se dají provádět na konkrétní replice s použitím vlastností a vyhledávání na pohodlí.
+## <a name="execute-service-requests"></a>Spouštět požadavky na služby
+Požadavky na služby lze provést na konkrétní repliku pomocí pohodlí vlastnosti a vyhledávání.
 ```csharp
 const string stateName = "test";
 var payload = new Payload(StatePayload);
@@ -70,8 +70,8 @@ await replicaSet[2].ServiceInstance.InsertAsync(stateName, payload);
 await replicaSet.FirstActiveSecondary.InsertAsync(stateName, payload);
 ```
 
-## <a name="execute-a-service-move"></a>Provést přesun služby
-Sada popsaných replik zpřístupňuje několik pohodlných metod, které aktivují různé typy přesunů služeb.
+## <a name="execute-a-service-move"></a>Provedení přesunu služby
+Falešná sada replik poskytuje několik metod pohodlí pro aktivaci různých typů přesunů služby.
 ```csharp
 //promote the first active secondary to primary
 replicaSet.PromoteNewReplicaToPrimaryAsync();
@@ -90,7 +90,7 @@ PromoteNewReplicaToPrimaryAsync(4)
 ```
 
 ## <a name="putting-it-all-together"></a>Spojení všech součástí dohromady
-Následující test znázorňuje nastavení sady replik tří uzlů a ověření, že data jsou k dispozici ze sekundárního po změně role. Typický problém, který může být zachycen, je v případě, že data přidaná během `InsertAsync` byla uložena do nějaké paměti nebo do spolehlivé kolekce bez spuštění `CommitAsync`. V obou případech by sekundární databáze nebyla synchronizovaná s primární. To by mohlo vést k nekonzistentním odpovědím po přesunu služby.
+Následující test ukazuje nastavení sady replik tří uzlů a ověření, zda jsou data po změně role k dispozici ze sekundárního stavu. Typický problém to může zachytit je, `InsertAsync` pokud data přidaná během byl uložen buď `CommitAsync`do něco v paměti nebo spolehlivé kolekce bez spuštění . V obou případech sekundární by být synchronizovány s primární. To by vedlo k nekonzistentní odpovědi po přesuny služby.
 
 ```csharp
 [TestMethod]
@@ -128,4 +128,4 @@ public async Task TestServiceState_InMemoryState_PromoteActiveSecondary()
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Naučte se testovat [komunikaci](service-fabric-testability-scenarios-service-communication.md) mezi službami a [Simulovat selhání pomocí řízených chaos](service-fabric-controlled-chaos.md).
+Naučte se testovat [komunikaci mezi službami](service-fabric-testability-scenarios-service-communication.md) a [simulovat selhání pomocí řízeného chaosu](service-fabric-controlled-chaos.md).

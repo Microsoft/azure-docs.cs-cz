@@ -9,13 +9,13 @@ ms.date: 11/06/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 9333bb36971fc28a23a443e50d191abeef05b758
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208256"
 ---
-Zobrazení a zkopírování přístupových klíčů účtu úložiště nebo připojovacího řetězce z Azure Portal:
+Zobrazení a zkopírování přístupových klíčů účtu úložiště nebo připojovacího řetězce z webu Azure Portal:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. Vyhledejte svůj účet úložiště.
@@ -23,6 +23,6 @@ Zobrazení a zkopírování přístupových klíčů účtu úložiště nebo p�
 4. V části **key1** vyhledejte hodnotu **Klíč** a kliknutím na tlačítko **Kopírovat** zkopírujte klíč účtu.
 5. Alternativně můžete zkopírovat celý připojovací řetězec. V části **key1** vyhledejte hodnotu **Připojovací řetězec** a kliknutím na tlačítko **Kopírovat** zkopírujte připojovací řetězec.
 
-    ![Snímek obrazovky znázorňující zobrazení přístupových klíčů v Azure Portal](media/storage-view-keys-include/portal-connection-string.png)
+    ![Snímek obrazovky znázorňující zobrazení přístupových klíčů na webu Azure Portal](media/storage-view-keys-include/portal-connection-string.png)
 
-Pro přístup k Azure Storage můžete použít libovolný klíč, ale obecně je dobrým zvykem použít první klíč a při střídání klíčů rezervovat použití druhého klíče.
+Můžete použít buď klíč pro přístup k Azure Storage, ale obecně je vhodné použít první klíč a rezervovat použití druhého klíče při otáčení klíčů.

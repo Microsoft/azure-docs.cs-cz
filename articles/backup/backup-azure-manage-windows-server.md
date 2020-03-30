@@ -1,200 +1,200 @@
 ---
-title: Správa serverů a trezorů služby Azure Recovery Services
-description: V tomto článku se dozvíte, jak pomocí řídicího panelu přehled služby Recovery Services trezor monitorovat a spravovat vaše trezory Recovery Services.
+title: Správa trezorů a serverů služby Azure Recovery Services
+description: V tomto článku se dozvíte, jak pomocí řídicího panelu Přehled úložiště služby Recovery Services sledovat a spravovat trezory služby Recovery Services.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: b57d6eff5f5dfa2163962a47eee079d7e26257b5
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: 1a4d23c157700f42422cfe7ca8fa1c49e2cf128a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136952"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131977"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
 
-Tento článek vysvětluje, jak pomocí řídicího panelu **Přehled** služby Recovery Services trezor monitorovat a spravovat vaše trezory Recovery Services. Když v seznamu otevřete trezor Recovery Services, otevře se řídicí panel **Přehled** vybraného trezoru. Řídicí panel poskytuje různé podrobnosti o trezoru. K dispozici jsou *dlaždice* , které znázorňují stav kritických a varovných výstrah, probíhajících a neúspěšných úloh zálohování a množství místně redundantního úložiště (LRS) a geograficky redundantního úložiště (GRS). Pokud zálohujete virtuální počítače Azure do trezoru, na [dlaždici **stav předběžné kontroly zálohování** se zobrazí všechny kritické nebo varovné položky](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/). Následující obrázek je řídicí panel s **přehledem** pro **trezor společnosti Contoso**. Na dlaždici **zálohované položky** se zobrazí devět položek zaregistrovaných do trezoru.
+Tento článek vysvětluje, jak pomocí řídicího panelu **Přehled** úložiště služby Recovery Services sledovat a spravovat trezory služby Recovery Services. Když ze seznamu otevřete trezor služby Recovery Services, otevře se řídicí panel **Přehled** pro vybraný trezor. Řídicí panel poskytuje různé podrobnosti o úschovně. Existují *dlaždice,* které ukazují: stav kritických a upozornění, probíhající a neúspěšné úlohy zálohování a množství místně redundantního úložiště (LRS) a geograficky redundantního úložiště (GRS). Pokud zálohujete virtuální počítače Azure do trezoru, zobrazí se na [dlaždici **Stav před kontrolou zálohování** všechny důležité nebo varovné položky](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status). Následující obrázek je řídicí panel **Přehled** pro **contoso-vault**. Dlaždice **Položky zálohování** ukazuje, že v úschovně je registrováno devět položek.
 
-![řídicí panel trezoru služby Recovery Services](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
+![Řídicí panel trezoru služby obnovení](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
-Požadavky pro tento článek jsou: předplatné Azure, Recovery Services trezor a že je pro trezor nakonfigurovaná aspoň jedna položka zálohování.
+Předpoklady pro tento článek jsou: předplatné Azure, trezor služby Recovery Services a že pro trezor je nakonfigurovaná alespoň jedna položka zálohování.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="open-a-recovery-services-vault"></a>Otevření trezoru Recovery Services
+## <a name="open-a-recovery-services-vault"></a>Otevření trezoru služby Recovery Services
 
-Pokud chcete monitorovat výstrahy nebo zobrazit data správy o trezoru Recovery Services, otevřete trezor.
+Chcete-li sledovat výstrahy nebo zobrazit data správy týkající se trezoru služby Recovery Services, otevřete trezor.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí svého předplatného Azure.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého předplatného Azure.
 
-2. Na portálu klikněte na **všechny služby**.
+2. Na portálu klikněte na **Všechny služby**.
 
-   ![Otevřít seznam trezorů Recovery Services Krok 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png)
+   ![Otevřít seznam trezorů služby Recovery Services krok 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png)
 
-3. V dialogovém okně **všechny služby** zadejte **Recovery Services**. Seznam se průběžně filtruje podle zadávaného textu. Když se zobrazí možnost **trezory Recovery Services** , kliknutím na ni otevřete seznam trezorů Recovery Services ve vašem předplatném.
+3. V dialogovém okně **Všechny služby** zadejte **služby obnovení**. Seznam se průběžně filtruje podle zadávaného textu. Po zobrazení možnosti **trezory služby Recovery Services** na ni kliknutím otevřete seznam trezorů služby Recovery Services ve vašem předplatném.
 
-    ![Vytvoření trezoru Služeb zotavení – krok 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
+    ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. V seznamu trezorů kliknutím na trezor otevřete jeho řídicí panel s **přehledem** .
+4. V seznamu úschoven kliknutím na úschovnu otevřete řídicí panel **Přehled.**
 
-    ![řídicí panel trezoru služby Recovery Services](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
+    ![Řídicí panel trezoru služby obnovení](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
-    Řídicí panel přehled používá dlaždice pro poskytování výstrah a dat úloh zálohování.
+    Řídicí panel Přehled používá dlaždice k poskytování výstrah a dat úloh zálohování.
 
-## <a name="monitor-backup-jobs-and-alerts"></a>Monitorování úloh a upozornění zálohování
+## <a name="monitor-backup-jobs-and-alerts"></a>Sledování úloh a výstrah zálohování
 
-Řídicí panel **Přehled** služby Recovery Services trezor poskytuje dlaždice pro informace o monitorování a využití. Dlaždice v části monitorování zobrazují kritická upozornění a upozorňující výstrahy a probíhající a neúspěšné úlohy. Kliknutím na konkrétní výstrahu nebo úlohu otevřete nabídku zálohovací výstrahy nebo úlohy zálohování, která je filtrovaná pro danou úlohu nebo výstrahu.
+Řídicí panel **Přehled** úložiště služby Recovery Services poskytuje dlaždice pro informace o monitorování a používání. Dlaždice v části Monitorování zobrazují kritické a varovné výstrahy a probíhající úlohy a neúspěšné úlohy. Kliknutím na konkrétní výstrahu nebo úlohu otevřete nabídku Zálohování výstrah nebo úloh y zálohování filtrované pro tuto úlohu nebo výstrahu.
 
-![Úlohy řídicího panelu pro zálohování](./media/backup-azure-manage-windows-server/monitor-dashboard-tiles-warning.png)
+![Úlohy řídicího panelu zálohování](./media/backup-azure-manage-windows-server/monitor-dashboard-tiles-warning.png)
 
-V části monitorování se zobrazují výsledky předdefinovaných **výstrah zálohování** a dotazy na **úlohy zálohování** . Dlaždice monitorování poskytují aktuální informace o:
+Část Monitorování zobrazuje výsledky předdefinovaných **dotazů na výstrahy zálohování** a **úlohy zálohování.** Dlaždice Monitorování poskytují aktuální informace o:
 
-* Kritické výstrahy a upozornění na úlohy zálohování (za posledních 24 hodin)
-* Stav předběžné kontroly pro virtuální počítače Azure Úplné informace o stavu předběžné kontroly najdete v tématu [stav předběžné kontroly zálohování](#backup-pre-check-status).
-* Probíhající úlohy zálohování a úlohy, které selhaly (za posledních 24 hodin).
+* Kritická a varovná upozornění pro úlohy zálohování (za posledních 24 hodin)
+* Předběžná kontrola stavu virtuálních počítačích Azure. Úplné informace o stavu předběžné kontroly naleznete v [tématu Backup Pre-Check Status](#backup-pre-check-status).
+* Probíhá zálohování a úlohy, které se nezdařily (za posledních 24 hodin).
 
-Dlaždice využití poskytují:
+Dlaždice Využití poskytují:
 
-* Počet zálohovaných položek nakonfigurovaných pro trezor
-* Služba Azure Storage (oddělená LRS a GRS) spotřebovaná trezorem.
+* Počet položek zálohování nakonfigurovaných pro úschovnu.
+* Úložiště Azure (oddělené LRS a GRS) spotřebované trezoru.
 
-Kliknutím na dlaždice (s výjimkou úložiště zálohování) otevřete přidruženou nabídku. Na obrázku výše na dlaždici zálohovací výstrahy se zobrazují tři kritické výstrahy. Kliknutím na řádek kritické výstrahy na dlaždici zálohovací výstrahy otevřete výstrahy zálohování, které se vyfiltrují pro kritické výstrahy.
+Kliknutím na dlaždice (kromě úložiště zálohování) otevřete přidruženou nabídku. Na obrázku výše se na dlaždici Výstrahy zálohování zobrazují tři kritické výstrahy. Kliknutím na řádek Kritické výstrahy na dlaždici Výstrahy zálohování se otevřou výstrahy zálohování filtrované pro kritické výstrahy.
 
-![Nabídka výstrah zálohování je filtrovaná pro kritické výstrahy.](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
+![Nabídka Výstrahy zálohování filtrovaná pro kritické výstrahy](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
-V nabídce výstrahy zálohování se na obrázku výše filtruje podle: stav je aktivní, závažnost je kritická a čas je uvedený za posledních 24 hodin.
+Nabídka Výstrahy zálohování na obrázku výše je filtrována podle: Stav je aktivní, závažnost je kritická a čas je předchozích 24 hodin.
 
 ### <a name="backup-pre-check-status"></a>Stav předběžné kontroly zálohování
 
-Předběžná kontrola zálohování kontroluje v konfiguraci virtuálních počítačů problémy, které můžou negativně ovlivnit zálohy. Tyto informace jsou shrnuté, takže je můžete zobrazit přímo z řídicího panelu Recovery Services trezoru a poskytnout doporučení pro nápravná opatření, aby bylo zajištěno úspěšné zálohování konzistentní se soubory nebo aplikacemi. Nevyžadují žádnou infrastrukturu a nemají žádné další náklady.  
+Předběžné kontroly zálohování zkontrolujte konfiguraci virtuálních počítačů, zda nenajdete problémy, které mohou nepříznivě ovlivnit zálohování. Tyto informace agregují, takže je můžete zobrazit přímo z řídicího panelu úložiště služby Recovery Services a poskytnout doporučení pro nápravná opatření k zajištění úspěšných záloh konzistentních souborů nebo konzistentních s aplikacemi. Nevyžadují žádnou infrastrukturu a nemají žádné další náklady.  
 
-Předběžné kontroly zálohování se spouštějí jako součást plánovaných operací zálohování pro vaše virtuální počítače Azure. Dokončí jeden z následujících stavů:
+Předběžné kontroly zálohování se spustí jako součást naplánovaných operací zálohování pro vaše virtuální počítače Azure. Končí jedním z těchto stavů:
 
-* **Úspěch**: Tento stav označuje, že by konfigurace vašeho virtuálního počítače měla vést k úspěšným zálohám a není nutné provádět žádné nápravné akce.
-* **Upozornění**: Tento stav označuje jeden nebo více problémů v konfiguraci virtuálního počítače, které *mohou* vést k selhání zálohování. Poskytuje *Doporučené* kroky k zajištění úspěšných záloh. Například pokud není nainstalován nejnovější agent virtuálního počítače, může dojít k výpadku zálohování. Tato situace by poskytovala stav upozornění.
-* **Kritické**: Tento stav indikuje minimálně jeden kritický problém v konfiguraci virtuálního *počítače, který vede k* selhání zálohování, a poskytne *potřebné* kroky k zajištění úspěšných záloh. Například problém se sítí způsobený aktualizací pravidel NSG virtuálního počítače způsobí selhání zálohování, protože zabrání tomu, aby virtuální počítač komunikoval se službou Azure Backup. Tato situace by poskytovala kritický stav.
+* **Předáno**: Tento stav označuje, že konfigurace virtuálního počítače by měla vést k úspěšné zálohy a není třeba přijmout žádná nápravná opatření.
+* **Upozornění**: Tento stav označuje jeden nebo více problémů v konfiguraci virtuálního počítače, které *mohou* vést k selhání zálohování. Poskytuje *doporučené* kroky k zajištění úspěšného zálohování. Například není nainstalován nejnovější agent virtuálního počítače může způsobit zálohování selhání občas. Tato situace by poskytla stav upozornění.
+* **Kritický**: Tento stav označuje jeden nebo více kritických problémů v konfiguraci virtuálního počítače, které *povedou* k selhání zálohování a poskytuje *požadované* kroky k zajištění úspěšných záloh. Například problém se sítí způsobený aktualizací pravidel sítě zabezpečení sítě virtuálního počítače způsobí selhání zálohování, protože brání virtuálnímu počítači v komunikaci se službou Azure Backup. Tato situace by poskytla kritický stav.
 
-Postupujte podle následujících kroků a začněte řešit všechny problémy hlášené předběžnými kontrolami zálohování virtuálních počítačů ve vašem úložišti Recovery Services.
+Podle následujících kroků začněte řešit všechny problémy hlášené zálohováním předem kontroly záloh virtuálních počítačích v trezoru služby Recovery Services.
 
-* Na řídicím panelu trezoru Recovery Services vyberte dlaždici **stav předběžné kontroly zálohování (virtuální počítače Azure)** .
-* Vyberte libovolný virtuální počítač se stavem předběžné kontroly zálohování buď **kritického** , nebo **Upozornění**. Tato akce otevře podokno **Podrobnosti o virtuálním počítači** .
-* V horní části podokna vyberte oznámení v podokně, které odhalí popis problému s konfigurací a nápravné kroky.
+* Vyberte **dlaždici Stav před kontrolou zálohování (virtuální počítače Azure)** na řídicím panelu trezoru služby Recovery Services.
+* Vyberte libovolný virtuální virtuální počítače se stavem Před kontrolou zálohování **kritické** nebo **upozornění**. Tato akce otevře podokno **podrobností virtuálního soudu.**
+* Vyberte oznámení podokna v horní části podokna, abyste odhalili popis problému konfigurace a nápravné kroky.
 
-## <a name="manage-backup-alerts"></a>Spravovat výstrahy zálohování
+## <a name="manage-backup-alerts"></a>Správa výstrah zálohování
 
-Chcete-li získat přístup k nabídce výstrahy zálohování, v nabídce trezoru Recovery Services klikněte na možnost **zálohování výstrah**.
+Chcete-li získat přístup k nabídce Výstrahy zálohování, klepněte v nabídce trezoru služby Recovery Services na **položku Výstrahy zálohování**.
 
-![Výstrahy záloh](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
+![Výstrahy zálohování](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
-Sestava výstrahy zálohování obsahuje výstrahy pro trezor.
+Sestava Výstrahy zálohování obsahuje seznam výstrah pro úschovnu.
 
-![Výstrahy záloh](./media/backup-azure-manage-windows-server/backup-alerts.png)
+![Výstrahy zálohování](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
 ### <a name="alerts"></a>Výstrahy
 
-V seznamu výstrahy zálohování se zobrazí vybrané informace pro filtrovaná upozornění. V nabídce výstrahy zálohování můžete vyfiltrovat kritické výstrahy nebo upozornění.
+V seznamu Výstrahy zálohování se zobrazí vybrané informace pro filtrované výstrahy. V nabídce Zálohování výstrah můžete filtrovat kritické výstrahy nebo upozornění.
 
-| Úroveň výstrahy | Události, které generují výstrahy |
+| Alert Level | Události, které generují výstrahy |
 | ----------- | ----------- |
-| Kritická | Zobrazí se důležité výstrahy, když se nezdaří úlohy zálohování, úlohy obnovení selžou a když zastavíte ochranu na serveru, ale zachováte data.|
-| Upozornění | Upozornění se zobrazí, když se úlohy zálohování dokončí s upozorněními, například pokud je méně než 100 souborů nezálohovaných kvůli problémům s poškozením nebo při úspěšném zálohování více než 1 000 000 souborů. |
-| Informativní | v současné době se nepoužívají žádné informativní výstrahy. |
+| Kritická | Obdržíte kritické výstrahy, když: Úlohy zálohování se nezdaří, úlohy obnovení se nezdaří a když zastavíte ochranu na serveru, ale zachováte data.|
+| Upozornění | Zobrazí se upozornění, když: Úlohy zálohování s úplnými upozorněními, například pokud není zálohováno méně než 100 souborů z důvodu problémů s poškozením nebo pokud je úspěšně zálohováno více než 1 000 000 souborů). |
+| Informační | v současné době nejsou používána žádná informační upozornění. |
 
-### <a name="viewing-alert-details"></a>Zobrazení podrobností výstrahy
+### <a name="viewing-alert-details"></a>Zobrazení podrobností výstrah
 
-Sestava výstrahy zálohování sleduje osm podrobností o jednotlivých výstrahách. Použijte tlačítko **Vybrat sloupce** a upravte podrobnosti v sestavě.
+Sestava výstrah zálohování sleduje osm podrobností o každé výstrahě. Pomocí tlačítka **Vybrat sloupce** upravte podrobnosti v sestavě.
 
-![Výstrahy záloh](./media/backup-azure-manage-windows-server/backup-alerts.png)
+![Výstrahy zálohování](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
-Ve výchozím nastavení se v sestavě zobrazí všechny podrobnosti, s výjimkou **času posledního výskytu**.
+Ve výchozím nastavení se v sestavě zobrazí všechny podrobnosti kromě **posledního času výskytu**.
 
-* Výstraha
-* Zálohovaná položka
-* Chráněný Server
-* Závažnost
-* Doba platnosti
+* Výstrahy
+* Položka zálohování
+* Chráněný server
+* Severity
+* Doba trvání
 * Čas vytvoření
-* Stav
+* Status
 * Čas posledního výskytu
 
-### <a name="change-the-details-in-alerts-report"></a>Změna podrobností v sestavě výstrahy
+### <a name="change-the-details-in-alerts-report"></a>Změna podrobností v sestavě upozornění
 
-1. Chcete-li změnit informace o sestavě, klikněte v nabídce **výstrahy zálohování** na možnost **Zvolit sloupce**.
+1. Chcete-li změnit informace sestavy, klikněte v nabídce **Zálohování upozornění** na tlačítko **Vybrat sloupce**.
 
-   ![Výstrahy záloh](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
+   ![Výstrahy zálohování](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
 
-   Otevře se nabídka **Zvolit sloupce** .
+   Otevře se nabídka **Vybrat sloupce.**
 
-2. V nabídce **Vybrat sloupce** vyberte podrobnosti, které chcete zobrazit v sestavě.
+2. V nabídce **Zvolit sloupce** zvolte podrobnosti, které se mají v sestavě zobrazit.
 
-    ![Nabídka zvolit sloupce](./media/backup-azure-manage-windows-server/choose-columns-menu.png)
+    ![Nabídka Vybrat sloupce](./media/backup-azure-manage-windows-server/choose-columns-menu.png)
 
-3. Kliknutím na **Hotovo** uložte změny a zavřete nabídku vybrat sloupce.
+3. Kliknutím na **Hotovo** uložte změny a zavřete nabídku Vybrat sloupce.
 
-   Pokud provedete změny, ale nechcete změny zachovat, kliknutím na **obnovit** vraťte vybrané nastavení k poslední uložené konfiguraci.
+   Pokud provedete změny, ale nechcete je zachovat, kliknutím na **Obnovit** vrátíte vybranou vybranou vybranou konfiguraci do poslední uložené konfigurace.
 
-### <a name="change-the-filter-in-alerts-report"></a>Změna filtru v sestavě výstrahy
+### <a name="change-the-filter-in-alerts-report"></a>Změna filtru v sestavě výstrah
 
-Pomocí nabídky **Filtr** můžete změnit závažnost, stav, čas spuštění a čas ukončení pro výstrahy.
+Pomocí nabídky **Filtr** můžete změnit závažnost, stav, čas zahájení a čas ukončení výstrah.
 
 > [!NOTE]
-> Když upravíte filtr výstrahy zálohování, nemění se kritická upozornění nebo upozornění na řídicím panelu přehled trezoru.
+> Úprava filtru Výstrahy zálohování nezmění kritické výstrahy nebo upozornění v řídicím panelu Přehled úschovny.
 >  
 
-1. Chcete-li změnit filtr výstrahy zálohování, klikněte v nabídce výstrahy zálohování na možnost **Filtr**.
+1. Chcete-li změnit filtr Upozornění na zálohování, klepněte v nabídce Výstrahy zálohování na **tlačítko Filtrovat**.
 
-   ![Výběr nabídky filtru](./media/backup-azure-manage-windows-server/alerts-menu-choose-filter.png)
+   ![Zvolte nabídku filtru](./media/backup-azure-manage-windows-server/alerts-menu-choose-filter.png)
 
-   Zobrazí se nabídka filtr.
+   Zobrazí se nabídka Filtr.
 
-   ![Výběr nabídky filtru](./media/backup-azure-manage-windows-server/filter-alert-menu.png)
+   ![Zvolte nabídku filtru](./media/backup-azure-manage-windows-server/filter-alert-menu.png)
 
-2. Upravte závažnost, stav, čas spuštění nebo čas ukončení a klikněte na **Hotovo** a uložte provedené změny.
+2. Upravte závažnost, stav, čas zahájení nebo čas ukončení a kliknutím na **Hotovo** uložte změny.
 
 ## <a name="configuring-notifications-for-alerts"></a>Konfigurace oznámení pro výstrahy
 
-Konfigurace oznámení pro generování e-mailů při výskytu upozornění nebo kritické výstrahy. Můžete posílat e-mailová upozornění každou hodinu nebo v případě, že dojde k určité výstraze.
+Nakonfigurujte oznámení tak, aby generovala e-maily, když dojde k upozornění nebo kritické výstraze. E-mailová upozornění můžete odesílat každou hodinu nebo v případě, že dojde k určitému upozornění.
 
-   ![Filtrovat výstrahy](./media/backup-azure-manage-windows-server/configure-notification.png)
+   ![Upozornění na filtry](./media/backup-azure-manage-windows-server/configure-notification.png)
 
-Ve výchozím nastavení jsou e-mailová oznámení **zapnutá**. Kliknutím na **vypnout** zastavte e-mailová oznámení.
+Ve výchozím nastavení jsou e-mailová oznámení **zapnuta**. Kliknutím na **Vypnuto** zastavíte e-mailová oznámení.
 
-V ovládacím prvku **Upozornění** vyberte **výstrahu** v případě, že nechcete seskupení nebo nemá mnoho položek, které by mohly generovat výstrahy. Každá výstraha má za následek jedno oznámení (výchozí nastavení) a okamžitě se pošle e-mail s řešením.
+V ovládacím prvku **Upozornit** zvolte **Na výstrahu,** pokud nechcete seskupit nebo nemáte mnoho položek, které by mohly generovat výstrahy. Každá výstraha má za následek jedno oznámení (výchozí nastavení) a e-mail s rozlišením je odeslán okamžitě.
 
-Když vyberete **hodinový výtah**, pošle se příjemci e-mail s vysvětlením nevyřešených výstrah vygenerovaných za poslední hodinu. E-mail s rozlišením se pošle na konci hodiny.
+Pokud vyberete **hodinovou digest**, bude příjemcům odeslán e-mail s vysvětlením nevyřešených výstrah generovaných za poslední hodinu. Na konci hodiny je odeslán e-mail s rozlišením.
 
-Vyberte Závažnost výstrahy (kritickou nebo varovnou) použitou k vygenerování e-mailu. V současné době nejsou k dispozici žádné informační výstrahy.
+Zvolte závažnost výstrahy (kritická nebo upozornění) použitá ke generování e-mailu. V současné době neexistují žádné informační výstrahy.
 
-## <a name="manage-backup-items"></a>Spravovat zálohované položky
+## <a name="manage-backup-items"></a>Správa položek zálohování
 
-Trezor Recovery Services obsahuje mnoho typů zálohovaných dat. [Přečtěte si další informace](backup-overview.md#what-can-i-back-up) o tom, co můžete zálohovat. Pokud chcete spravovat různé servery, počítače, databáze a úlohy, klikněte na dlaždici **zálohované položky** a zobrazte obsah trezoru.
+Trezor služby Recovery Services obsahuje mnoho typů záložních dat. [Přečtěte si další informace](backup-overview.md#what-can-i-back-up) o tom, co můžete zálohovat. Chcete-li spravovat různé servery, počítače, databáze a úlohy, zobrazte obsah trezoru klepnutím na dlaždici **Zálohovat položky.**
 
-![Dlaždice zálohované položky](./media/backup-azure-manage-windows-server/backup-items.png)
+![Dlaždice zálohovacích položek](./media/backup-azure-manage-windows-server/backup-items.png)
 
-Otevře se seznam zálohovaných položek uspořádaných podle typu správy zálohování.
+Otevře se seznam položek zálohování uspořádaný podle typu správy zálohování.
 
-![seznam zálohovaných položek](./media/backup-azure-manage-windows-server/list-backup-items.png)
+![seznam položek zálohování](./media/backup-azure-manage-windows-server/list-backup-items.png)
 
-Pokud chcete prozkoumat konkrétní typ chráněné instance, klikněte na položku ve sloupci typ správy zálohování. Například na výše uvedeném obrázku existují dva virtuální počítače Azure chráněné v tomto trezoru. Kliknutím na **virtuální počítač Azure**otevřete seznam chráněných virtuálních počítačů v tomto trezoru.
+Chcete-li prozkoumat určitý typ chráněné instance, klepněte na položku ve sloupci Typ správy zálohování. Například ve výše uvedené bitové kopii existují dva virtuální počítače Azure chráněné v tomto trezoru. Kliknutím na **Azure Virtual Machine**otevře seznam chráněných virtuálních počítačů v tomto trezoru.
 
-![seznam typu zálohování](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
+![seznam typu Zálohování](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
-Seznam virtuálních počítačů má užitečná data: přidružená skupina prostředků, předchozí [záloha před kontrolou](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/), poslední stav zálohování a datum posledního bodu obnovení. Tři tečky v posledním sloupci otevřou nabídku pro aktivaci běžných úloh. Užitečná data, která jsou uvedena ve sloupcích, se liší pro každý typ zálohování.
+Seznam virtuálních počítačů obsahuje užitečná data: přidružená skupina prostředků, předchozí [předběžná kontrola zálohování](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status), stav poslední zálohy a datum posledního bodu obnovení. Tři tečky v posledním sloupci otevřou nabídku pro spuštění běžných úloh. Užitečná data uvedená ve sloupcích se liší pro každý typ zálohování.
 
-![seznam typu zálohování](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
+![seznam typu Zálohování](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
 
 ## <a name="manage-backup-jobs"></a>Správa úloh zálohování
 
-Dlaždice **úlohy zálohování** na řídicím panelu trezoru zobrazuje počet probíhajících úloh nebo selhání za posledních 24 hodin. Dlaždice poskytuje nakoukněte do nabídky úlohy zálohování.
+Dlaždice **Úlohy zálohování** na řídicím panelu úschovny zobrazuje počet probíhajících úloh nebo neúspěšných za posledních 24 hodin. Dlaždice poskytuje pohled do nabídky Úlohy zálohování.
 
 ![Zálohování položek z nastavení](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
 
-Pokud chcete zobrazit další podrobnosti o úlohách, klikněte na **průběh** nebo **se nepodařilo** otevřít nabídku zálohovací úlohy, která je pro daný stav filtrovaná.
+Chcete-li zobrazit další podrobnosti o úlohách, klepněte na tlačítko **Probíhá** nebo **se nezdařilo** otevření nabídky Zálohování úloh filtrované pro tento stav.
 
-### <a name="backup-jobs-menu"></a>Nabídka úlohy zálohování
+### <a name="backup-jobs-menu"></a>Nabídka úloh zálohování
 
-V nabídce **úlohy zálohování** se zobrazí informace o typu položky, operaci, stavu, času spuštění a době trvání.  
+V nabídce **Úlohy zálohování** se zobrazují informace o typu položky, operaci, stavu, čase zahájení a době trvání.  
 
-Chcete-li otevřít nabídku úlohy zálohování, v hlavní nabídce trezoru klikněte na **úlohy zálohování**.
+Chcete-li otevřít nabídku Úlohy zálohování, klepněte v hlavní nabídce úschovny na položku **Zálohování úloh**.
 
 ![Zálohování položek z nastavení](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
@@ -202,89 +202,89 @@ Otevře se seznam úloh zálohování.
 
 ![Zálohování položek z nastavení](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
 
-V nabídce úlohy zálohování se zobrazuje stav všech operací pro všechny typy zálohování za posledních 24 hodin. Filtry změníte pomocí **filtru** . Filtry jsou vysvětleny v následujících částech.
+Nabídka Úlohy zálohování zobrazuje stav pro všechny operace, na všech typech zálohování za posledních 24 hodin. Pomocí **filtru** můžete filtry změnit. Filtry jsou vysvětleny v následujících částech.
 
 Změna filtrů:
 
-1. V nabídce zálohovací úlohy trezoru klikněte na **Filtr**.
+1. V nabídce Úlohy zálohování trezoru klepněte na **tlačítko Filtrovat**.
 
    ![Zálohování položek z nastavení](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
 
-    Otevře se nabídka filtr.
+    Otevře se nabídka Filtr.
 
    ![Zálohování položek z nastavení](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
 
-2. Vyberte nastavení filtru a klikněte na **Hotovo**. Filtrovaný seznam se aktualizuje v závislosti na novém nastavení.
+2. Zvolte nastavení filtru a klepněte na **tlačítko Hotovo**. Filtrovaný seznam se aktualizuje na základě nového nastavení.
 
 #### <a name="item-type"></a>Typ položky
 
-Typ položky je typ správy zálohování chráněné instance. Existují čtyři typy; Podívejte se na následující seznam. Můžete zobrazit všechny typy položek nebo jeden typ položky. Nemůžete vybrat dva nebo tři typy položek. Dostupné typy položek jsou:
+Typ Item je typ správy zálohování chráněné instance. Existují čtyři typy; naleznete v následujícím seznamu. Můžete zobrazit všechny typy položek nebo jeden typ položky. Nelze vybrat dva nebo tři typy položek. Dostupné typy položek jsou:
 
 * Všechny typy položek
 * Virtuální počítač Azure
 * Soubory a složky
 * Azure Storage
-* Zatížení Azure
+* Pracovní vytížení Azure
 
 #### <a name="operation"></a>Operace
 
-Můžete zobrazit jednu operaci nebo všechny operace. Nemůžete vybrat dvě nebo tři operace. K dispozici jsou tyto operace:
+Můžete zobrazit jednu operaci nebo všechny operace. Nelze vybrat dvě nebo tři operace. Dostupné operace jsou:
 
 * Všechny operace
-* Registrace
+* Zaregistrovat
 * Konfigurace zálohování
-* Zálohovat
+* Zálohování
 * Obnovení
 * Zakázat zálohování
-* Odstranit data zálohy
+* Odstranění zálohovaných dat
 
-#### <a name="status"></a>Stav
+#### <a name="status"></a>Status
 
-Můžete zobrazit všechny stavy nebo jeden. Nemůžete vybrat dva nebo tři stavy. Dostupné stavy jsou:
+Můžete zobrazit veškerý stav nebo jeden. Nelze vybrat dva nebo tři stavy. Dostupné stavy jsou:
 
-* Všechny stavy
+* Veškerý stav
 * Dokončeno
 * Probíhá
-* Neúspěšné
+* Failed
 * Zrušeno
-* Dokončeno s upozorněními
+* Doplněno varováním
 
 #### <a name="start-time"></a>Čas spuštění
 
-Den a čas, kdy dotaz začíná. Výchozí hodnota je 24 hodinová perioda.
+Den a čas, kdy dotaz začíná. Výchozí hodnota je 24 hodin.
 
 #### <a name="end-time"></a>Čas ukončení
 
-Den a čas, kdy má dotaz končit.
+Den a čas ukončení dotazu.
 
-### <a name="export-jobs"></a>Exportovat úlohy
+### <a name="export-jobs"></a>Export úlohy
 
-Pomocí **úlohy exportu** můžete vytvořit tabulku obsahující informace nabídky všechny úlohy. Tabulka obsahuje jeden list, který obsahuje souhrn všech úloh a jednotlivých listů pro každou úlohu.
+Pomocí **exportních úloh** vytvořte tabulku obsahující všechny informace o nabídce úloh. Tabulka obsahuje jeden list, který obsahuje souhrn všech úloh a jednotlivé listy pro každou úlohu.
 
-Pokud chcete exportovat informace o úlohách do tabulky, klikněte na **exportovat úlohy**. Služba vytvoří tabulku pomocí názvu trezoru a data, ale můžete změnit název.
+Chcete-li exportovat informace o úlohách do tabulky, klepněte na **položku Exportovat úlohy**. Služba vytvoří tabulku s názvem trezoru a data, ale název můžete změnit.
 
-## <a name="monitor-backup-usage"></a>Monitorování využití zálohy
+## <a name="monitor-backup-usage"></a>Sledování využití záloh
 
-Dlaždice úložiště zálohování na řídicím panelu zobrazuje úložiště spotřebované v Azure. Využití úložiště je k dispozici pro:
+Dlaždice úložiště zálohování na řídicím panelu zobrazuje úložiště spotřebované v Azure. Využití úložiště je zajištěno:
 
-* Využití úložiště Cloud LRS přidružené k trezoru
-* Využití úložiště Cloud GRS přidružené k trezoru
+* Využití úložiště LRS v cloudu přidružené k trezoru
+* Využití úložiště CLOUD GRS přidružené k trezoru
 
-## <a name="troubleshooting-monitoring-issues"></a>Řešení potíží s monitorováním
+## <a name="troubleshooting-monitoring-issues"></a>Poradce při potížích s monitorováním
 
-**Problém:** Úlohy a výstrahy od agenta Azure Backup se nezobrazí na portálu.
+**Problém:** Úlohy nebo výstrahy od agenta azure zálohování se nezobrazují na portálu.
 
-**Postup řešení potíží:** Proces, ```OBRecoveryServicesManagementAgent```, odešle data úlohy a výstrahy do služby Azure Backup. Občas se může stát, že se tento proces zablokuje nebo vypne.
+**Postup řešení potíží:** Proces , ```OBRecoveryServicesManagementAgent```odešle data úlohy a výstrahy do služby Azure Backup. V některých se tento proces může zaseknout nebo vypnout.
 
-1. Pokud chcete ověřit, že proces není spuštěný, otevřete **Správce úloh**a zkontrolujte, že je spuštěný ```OBRecoveryServicesManagementAgent```.
+1. Chcete-li ověřit, zda proces není spuštěn, ```OBRecoveryServicesManagementAgent``` otevřete Správce **úloh**a kontrola je spuštěna.
 
-2. Pokud proces není spuštěn, otevřete **Ovládací panely**a procházejte seznam služeb. Spusťte nebo restartujte **agenta pro správu Microsoft Azure Recovery Services**.
+2. Pokud proces není spuštěn, otevřete **Ovládací panely**a projděte seznam služeb. Spusťte nebo restartujte **agenta microsoft azure recovery services management agenta**.
 
-    Další informace najdete v protokolech v těchto umístěních:<br/>
-   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` například:<br/>
+    Další informace naleznete v protokolech na adrese:<br/>
+   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`Například:<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Obnovení Windows serveru nebo klienta Windows z Azure](backup-azure-restore-windows-server.md)
-* Další informace o Azure Backup najdete v tématu [Azure Backup Overview](backup-introduction-to-azure-backup.md) .
+* [Obnovení windows serveru nebo klienta Windows z Azure](backup-azure-restore-windows-server.md)
+* Další informace o Azure Backup najdete v [tématu Přehled zálohování Azure](backup-introduction-to-azure-backup.md)

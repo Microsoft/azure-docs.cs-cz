@@ -1,22 +1,22 @@
 ---
-title: TextBlock – element uživatelského rozhraní
-description: Popisuje prvek uživatelského rozhraní Microsoft. Common. TextBlock pro Azure Portal. Slouží k přidání textu do rozhraní.
+title: Element ui textblock
+description: Popisuje element microsoft.common.textblock ui pro portál Azure. Slouží k přidání textu do rozhraní.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 418056cb149f4441bac49db839a0dba40c2bb42d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652213"
 ---
-# <a name="microsoftcommontextblock-ui-element"></a>Microsoft. Common. TextBlock – element uživatelského rozhraní
+# <a name="microsoftcommontextblock-ui-element"></a>Element ui rozhraní Microsoft.Common.TextBlock
 
 Ovládací prvek, který lze použít k přidání textu do rozhraní portálu.
 
-## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
+## <a name="ui-sample"></a>Ukázka ui
 
 ![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textblock.png)
 
@@ -45,5 +45,5 @@ Ovládací prvek, který lze použít k přidání textu do rozhraní portálu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).
+* Úvod k vytváření definic ui naleznete [v tématu Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v [tématu CreateUiDefinition elements](create-uidefinition-elements.md).

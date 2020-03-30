@@ -1,7 +1,7 @@
 ---
-title: Použití Azure Toolkit for IntelliJ s izolovaným prostorem Hortonworks
-description: Naučte se používat nástroje HDInsight v Azure Toolkit for IntelliJ s izolovaným prostorem (Hortonworks).
-keywords: nástroje Hadoop, dotaz na podregistry, IntelliJ, Hortonworks Sandbox, sada nástrojů Azure pro IntelliJ
+title: Použití sady Nástrojů Azure pro IntelliJ s sandboxem Hortonworks
+description: Přečtěte si, jak používat nástroje HDInsight v sadě nástrojů Azure toolkit pro IntelliJ s hortonworks sandboxem.
+keywords: hadoop nástroje, dotaz úlu,intellij,hortonworks pískoviště, azurová sada nástrojů pro intellij
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,73 +10,73 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/16/2018
 ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75647828"
 ---
-# <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Používání nástrojů HDInsight pro IntelliJ s izolovaným prostorem Hortonworks
+# <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Použití nástrojů HDInsight pro IntelliJ s sandboxem Hortonworks
 
-Naučte se používat nástroje HDInsight pro IntelliJ k vývoji aplikací Apache Scala a testování aplikací v [Hortonworks izolovaném prostoru (sandbox)](https://hortonworks.com/products/sandbox/) spuštěném ve vašem počítači. 
+Naučte se používat nástroje HDInsight pro IntelliJ k vývoji aplikací Apache Scala a potom otestovat aplikace v [sandboxu Hortonworks spuštěném](https://hortonworks.com/products/sandbox/) v počítači. 
 
-[INTELLIJ nápad](https://www.jetbrains.com/idea/) je Java INTEGRATED Development Environment (IDE) pro vývoj počítačového softwaru. Po vývoji a testování aplikací v izolovaném prostoru (Hortonworks) můžete aplikace přesunout do služby [Azure HDInsight](apache-hadoop-introduction.md).
+[IntelliJ IDEA](https://www.jetbrains.com/idea/) je java integrované vývojové prostředí (IDE) pro vývoj počítačového softwaru. Po vývoji a testování aplikací v sandboxu Hortonworks můžete aplikace přesunout do [Azure HDInsight](apache-hadoop-introduction.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete tento článek, musíte mít následující položky:
 
-- Hortonworks data Platform (HDP) 2,4 v izolovaném prostoru Hortonworks běžícím na místním počítači. Pokud chcete nastavit HDP, přečtěte si téma Začínáme [v Apache Hadoop ekosystému s izolovaným prostorem Hadoop na virtuálním počítači](apache-hadoop-emulator-get-started.md). 
+- Hortonworks Data Platform (HDP) 2.4 na Hortonworks Sandbox běží na místním počítači. Pokud chcete nastavit HDP, přečtěte si informace [o tom, jak začít v ekosystému Apache Hadoop s pískovištěm Hadoop na virtuálním počítači](apache-hadoop-emulator-get-started.md). 
     > [!NOTE]
-    > Nástroje HDInsight pro IntelliJ byly testovány pouze pomocí HDP 2,4. Pokud chcete získat HDP 2,4, rozbalte **archiv izolovaného prostoru Hortonworks** na [webu Hortonworks pro stahování souborů izolovaného prostoru](https://hortonworks.com/downloads/#sandbox).
+    > Nástroje HDInsight pro IntelliJ byly testovány pouze s HDP 2.4. Chcete-li získat HDP 2.4, rozbalte **Hortonworks Sandbox Archive** na [Hortonworks Sandbox ke stažení stránky](https://hortonworks.com/downloads/#sandbox).
 
-- [Java Developer Kit (JDK) verze 1,8 nebo novější](https://aka.ms/azure-jdks). Azure Toolkit for IntelliJ vyžaduje JDK.
+- [Java Developer Kit (JDK) verze 1.8 nebo novější](https://aka.ms/azure-jdks). Azure Toolkit pro IntelliJ vyžaduje JDK.
 
-- [INTELLIJ myšlenku Community Edition](https://www.jetbrains.com/idea/download) s modulem plug-in [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) a modulem plug-in [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij) . Nástroje HDInsight pro IntelliJ jsou k dispozici jako součást Azure Toolkit for IntelliJ. 
+- [Komunitní edice IntelliJ IDEA](https://www.jetbrains.com/idea/download) s modulem plug-in [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) a [sadou Azure Toolkit for IntelliJ.](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij) Nástroje HDInsight pro IntelliJ jsou k dispozici jako součást sady Nástrojů Azure pro IntelliJ. 
 
 Instalace modulů plug-in:
 
   1. Otevřete IntelliJ IDEA.
-  2. Na **úvodní** stránce vyberte **Konfigurovat**a pak vyberte **moduly plug-in**.
-  3. V levém dolním rohu vyberte **nainstalovat modul plug-in JetBrains**.
-  4. Pomocí vyhledávací funkce vyhledejte **Scala**a pak vyberte **nainstalovat**.
-  5. Pokud chcete dokončit instalaci, vyberte **restartovat INTELLIJ nápad**.
-  6. Opakujte kroky 4 a 5 a nainstalujte **Azure Toolkit for IntelliJ**. Další informace najdete v tématu [instalace Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation).
+  2. Na **úvodní** stránce vyberte **Konfigurovat**a pak vyberte **Moduly plug-in**.
+  3. V levém dolním rohu vyberte **modul plug-in Instalovat jetBrains**.
+  4. Pomocí funkce vyhledávání vyhledejte **Scalu**a pak vyberte **Instalovat**.
+  5. Chcete-li instalaci dokončit, vyberte **možnost Restartovat aplikaci IntelliJ IDEA**.
+  6. Opakováním kroků 4 a 5 nainstalujte **sadu Nástrojů Azure pro IntelliJ**. Další informace naleznete [v tématu Instalace sady Nástrojů Azure pro IntelliJ](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation).
 
 ## <a name="create-an-apache-spark-scala-application"></a>Vytvoření aplikace Apache Spark Scala
 
-V této části vytvoříte ukázkový projekt Scala pomocí NÁPADu IntelliJ. V další části propojíte IntelliJ nápad s izolovaným prostorem Hortonworks (emulátor) před odesláním projektu.
+V této části vytvoříte ukázkový projekt Scala pomocí IntelliJ IDEA. V další části propojíte IntelliJ IDEA s hortonworks sandbox (emulátor) před odesláním projektu.
 
-1. Otevřete IntelliJ nápad na svém počítači. V dialogovém okně **Nový projekt** proveďte tyto kroky:
+1. Otevřete intelliJ IDEA v počítači. V dialogovém okně **Nový projekt** proveďte tyto kroky:
 
-   1. Vyberte **HDInsight** > **Spark on HDInsight (Scala)** (Spark v HDInsight (Scala)).
-   2. V seznamu **Nástroj sestavení** vyberte jednu z následujících možností v závislosti na vašem scénáři:
+   1. Vyberte **HDInsight** > **Spark na HDInsight (Scala)**.
+   2. V seznamu **nástrojů sestavení** vyberte jednu z následujících možností na základě vašeho scénáře:
 
-      * **Maven**: v Průvodci vytvořením projektu Scala je podpora.
-      * **SBT**: pro správu závislostí a vytváření projektu Scala.
+      * **Maven**: Pro podporu průvodce vytvořením projektu Scala.
+      * **SBT**: Pro správu závislostí a vytváření pro projekt Scala.
 
-   ![IntelliJ vytvořit nový projekt Scala](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
+   ![Intellij vytvořit nový projekt Scala](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
-2. Vyberte **Next** (Další).
+2. Vyberte **další**.
 3. V dalším dialogovém okně **Nový projekt** proveďte následující kroky:
 
-   1. Do pole **název projektu** zadejte název projektu.
-   2. Do pole **umístění projektu** zadejte umístění projektu.
-   3. Vedle rozevíracího seznamu **sada SDK projektu** vyberte **Nový**, vyberte **JDK**a pak zadejte složku pro Java JDK verze 1,7 nebo novější. Vyberte **Java 1,8** pro cluster Spark 2. x. Vyberte **Java 1,7** pro cluster Spark 1. x. Výchozí umístění je C:\Program Files\Java\jdk1.8. x_xxx.
-   4. V rozevíracím seznamu **verze Sparku** se v Průvodci vytvořením projektu Scala integruje správná verze sady Spark SDK a sady Scala SDK. Pokud je verze clusteru Spark nižší než 2.0, vyberte **Spark 1.x**. V opačném případě vyberte **Spark 2.x**. V tomto příkladu se používá Spark 1.6.2 (Scala 2.10.5). Ujistěte se, že používáte úložiště označené **Scala 2.10. x**. Nepoužívejte úložiště označené jako Scala 2.11. x.
+   1. Do pole **Název projektu** zadejte název projektu.
+   2. Do pole **Umístění projektu** zadejte umístění projektu.
+   3. Vedle rozevíracího seznamu **Sady Project SDK** vyberte **Nový**, vyberte **JDK**a zadejte složku pro Java JDK verze 1.7 nebo novější. Pro cluster Spark 2.x vyberte **Java 1.8.** Pro cluster Spark 1.x vyberte **Java 1.7.** Výchozí umístění je C:\Program Files\Java\jdk1.8.x_xxx.
+   4. V rozevíracím seznamu **verze Spark** integruje Průvodce vytvořením projektu Scala správnou verzi pro Spark SDK a Scala SDK. Pokud je verze clusteru Spark nižší než 2.0, vyberte **Spark 1.x**. V opačném případě vyberte **Spark 2.x**. Tento příklad používá Spark 1.6.2 (Scala 2.10.5). Ujistěte se, že používáte repozitář označený **Scala 2.10.x**. Nepoužívejte repozitář označený Scala 2.11.x.
     
       ![Vytvoření vlastností projektu IntelliJ Scala](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
 
 4. Vyberte **Finish** (Dokončit).
-5. Pokud zobrazení **projektu** ještě není otevřené, otevřete ho stisknutím **kombinace kláves ALT + 1** .
-6. V **Průzkumníku projektu**rozbalte projekt a pak vyberte **Src**.
-7. Klikněte pravým tlačítkem na **Src**, přejděte na **Nový**a pak vyberte **Třída Scala**.
-8. Zadejte název do pole **Název**. V poli **druh** vyberte **objekt**. Pak vyberte **OK**.
+5. Pokud zobrazení **Project** ještě není otevřené, otevřete ho stisknutím **klávesalt+1.**
+6. V **Průzkumníkovi projektu**rozbalte projekt a vyberte **src**.
+7. Klepněte pravým tlačítkem myši na **položku src**, přejděte na **nový**a pak vyberte **třídu Scala**.
+8. Zadejte název do pole **Název**. V poli **DRUH** vyberte **Objekt**. Potom vyberte **OK**.
 
-    ![Dialogové okno vytvořit novou třídu Scala](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
+    ![Dialogové okno Vytvořit novou třídu Scaly](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
 
-9. Do souboru. Scala vložte následující kód:
+9. Do souboru .scala vložte následující kód:
 
         import java.util.Random
         import org.apache.spark.{SparkConf, SparkContext}
@@ -112,49 +112,49 @@ V této části vytvoříte ukázkový projekt Scala pomocí NÁPADu IntelliJ. V
             }
         }
 
-10. V nabídce **sestavení** vyberte **sestavit projekt**. Zajistěte, aby se kompilace úspěšně dokončí.
+10. V nabídce **Sestavení** vyberte **Build project**. Ujistěte se, že kompilace úspěšně dokončí.
 
 
-## <a name="link-to-the-hortonworks-sandbox"></a>Odkaz na izolovaný prostor Hortonworks
+## <a name="link-to-the-hortonworks-sandbox"></a>Odkaz na hortonworks pískoviště
 
-Než budete moct připojit k izolovanému prostoru Hortonworks (emulátor), musíte mít existující aplikaci IntelliJ.
+Před propojením s renesorištěm Hortonworks (emulátorem) musíte mít existující aplikaci IntelliJ.
 
-Připojení k emulátoru:
+Propojení s emulátorem:
 
-1. Otevřete projekt v IntelliJ.
-2. V nabídce **zobrazení** vyberte možnost **okna nástrojů**a pak vyberte **Průzkumník Azure**.
-3. Rozbalte **Azure**, klikněte pravým tlačítkem na **HDInsight**a pak vyberte **propojit emulátor**.
-4. V dialogovém okně **připojit k novému emulátoru** zadejte heslo, které jste nastavili pro kořenový účet Hortonworks izolovaného prostoru (sandboxu). Dále zadejte hodnoty podobné těm, které jsou použity na následujícím snímku obrazovky. Pak vyberte **OK**. 
+1. Otevřete projekt v aplikaci IntelliJ.
+2. V nabídce **View** vyberte **Nástroje Windows**a pak vyberte **Průzkumníka Azure**.
+3. Rozbalte **Azure**, klikněte pravým tlačítkem myši na **HDInsight**a vyberte **propojit emulátor**.
+4. V dialogovém okně **Nový emulátor propojení** zadejte heslo, které jste nastavili pro kořenový účet pískoviště Hortonworks. Dále zadejte hodnoty podobné těm, které byly použity na následujícím snímku obrazovky. Potom vyberte **OK**. 
 
-   ![Dialogové okno propojit nový emulátor](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-link-an-emulator.png)
+   ![Dialogové okno Propojit nový emulátor](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-link-an-emulator.png)
 
-5. Chcete-li nakonfigurovat emulátor, vyberte možnost **Ano**.
+5. Chcete-li nakonfigurovat emulátor, vyberte **možnost Ano**.
 
-Po úspěšném připojení emulátoru se emulátor (Hortonworks izolovaného prostoru (sandbox) zobrazí v uzlu HDInsight.
+Když je emulátor úspěšně připojen, emulátor (Hortonworks Sandbox) je uveden v uzlu HDInsight.
 
-## <a name="submit-the-spark-scala-application-to-the-hortonworks-sandbox"></a>Odeslání aplikace Spark Scala do izolovaného prostoru (sandbox) Hortonworks
+## <a name="submit-the-spark-scala-application-to-the-hortonworks-sandbox"></a>Odeslání aplikace Spark Scala do sandboxu Hortonworks
 
-Po propojení IntelliJ NÁPADu k emulátoru můžete odeslat svůj projekt.
+Po propojení IntelliJ IDEA s emulátorem můžete odeslat svůj projekt.
 
-Odeslání projektu do emulátoru:
+Odeslání projektu emulátoru:
 
-1. V **Průzkumníku projektu**klikněte pravým tlačítkem na projekt a pak vyberte **Odeslat aplikaci Spark do HDInsight**.
+1. V **Průzkumníkovi projektu**klikněte pravým tlačítkem myši na projekt a potom vyberte **Odeslat aplikaci Spark do HDInsightu**.
 2. Proveďte následující kroky:
 
-    1. V rozevíracím seznamu **cluster Spark (pouze Linux)** vyberte místní izolovaný prostor Hortonworks.
-    2. V poli **název hlavní třídy** vyberte nebo zadejte název hlavní třídy. V tomto článku je název **GroupByTest**.
+    1. V rozevíracím seznamu **clusteru Spark (pouze Linux)** vyberte místní sandbox Hortonworks.
+    2. Do pole **Název hlavní třídy** vyberte nebo zadejte název hlavní třídy. Pro tento článek je název **GroupByTest**.
 
-3. Vyberte **odeslat**. Protokoly odeslání úlohy se zobrazí v okně nástroje pro odeslání Sparku.
+3. Vyberte **Odeslat**. Protokoly odeslání úlohy jsou zobrazeny v okně nástroje pro odesílání spark.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [používat nástroje HDInsight v Azure Toolkit for IntelliJ k vytváření Apache Sparkch aplikací pro cluster HDInsight Spark Linux](../spark/apache-spark-intellij-tool-plugin.md).
+- Naučte se [používat nástroje HDInsight v Sadě nástrojů Azure pro IntelliJ k vytváření aplikací Apache Spark pro cluster HDInsight Spark Linux](../spark/apache-spark-intellij-tool-plugin.md).
 
-- Video o nástrojích HDInsight pro IntelliJ najdete v tématu [představení nástrojů HDInsight pro IntelliJ pro vývoj Apache Spark](https://www.youtube.com/watch?v=YTZzYVgut6c).
+- Video o nástrojích HDInsight tools for IntelliJ [najdete v tématu Introduce HDInsight Tools for IntelliJ for Apache Spark development](https://www.youtube.com/watch?v=YTZzYVgut6c).
 
-- Naučte se [vzdáleně ladit Apache Spark aplikace v clusteru HDInsight s Azure Toolkit for IntelliJ prostřednictvím SSH](../spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md).
+- Naučte se [vzdáleně ladit aplikace Apache Spark v clusteru HDInsight pomocí Azure Toolkit for IntelliJ prostřednictvím SSH](../spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md).
 
-- Naučte se [používat nástroje HDInsight v Azure Toolkit for IntelliJ ke vzdálenému ladění Apache Spark aplikací v clusteru HDInsight Spark Linux](../spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md).
+- Naučte se [používat nástroje HDInsight v Sadě nástrojů Azure pro IntelliJ k vzdálenému ladění aplikací Apache Spark v clusteru HDInsight Spark Linux](../spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md).
 
-- Naučte se [používat nástroje HDInsight v Azure Toolkit for Eclipse k vytváření Apache Sparkch aplikací](../spark/apache-spark-eclipse-tool-plugin.md).
+- Naučte se [používat nástroje HDInsight v sadě nástrojů Azure Toolkit for Eclipse k vytváření aplikací Apache Spark](../spark/apache-spark-eclipse-tool-plugin.md).
 
